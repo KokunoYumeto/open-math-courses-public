@@ -1,0 +1,195 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Punctured lines and the complex</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A hyperbolic group that is not residually finite)</a><a href="thin-diagrams-and-hyperbolicity.html">Previous lesson</a><a href="the-rank-obstruction.html">Next lesson</a><a href="src/punctured-lines-and-the-complex.md">Editable source</a></nav><main><article><h1 id="punctured-lines-and-the-complex">Punctured lines and the complex</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The group of this course is the fundamental group of a finite triangle complex <span class="math" data-tex="\(K\)">\(K\)</span> with three vertices. Its edges and triangles are indexed by an incidence structure of punctured affine lines over a finite field: many lines, each with a marked point removed, such that the incidence graph has no short cycles while almost every point lies on many lines. This lesson constructs the incidence structure (Lemma 1.2), the complex (Section 2), checks the link condition of the triangle complex criterion (Lemma 3.1), and proves that certain words of length four, the rectangular words, are nontrivial in the fundamental group (Proposition 4.2). The next lesson, <a href="the-rank-obstruction.html">The rank obstruction</a>, shows that every homomorphism to a finite group kills one of them.</p>
+<ul>
+<li>Punctured lines with few short cycles (Lemma 1.2).</li>
+<li>Blocks and the complex (Section 2).</li>
+<li>The links (Lemma 3.1).</li>
+<li>The group and its rectangular words (Proposition 4.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-RF, Sections 2.2 and 2.3]. It uses the triangle complex criterion, Theorem 2.1 of <a href="triangle-complexes-and-their-links.html">Triangle complexes and their links</a>, proved in the lessons before this one.</p>
+<h2 id="1-punctured-lines-with-few-short-cycles">1. Punctured lines with few short cycles</h2>
+<p>Fix the integers and the constant
+<span class="math math-display" data-tex="\[
+h=20,\qquad c=100^{-h},
+\]">\[
+h=20,\qquad c=100^{-h},
+\]</span>
+and an integer <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> with <span class="math" data-tex="\(cr\ge100\)">\(cr\ge100\)</span>. For a prime <span class="math" data-tex="\(q\)">\(q\)</span>, put <span class="math" data-tex="\(P=\mathbb F_q^h\)">\(P=\mathbb F_q^h\)</span>, <span class="math" data-tex="\(m=q^h\)">\(m=q^h\)</span>, and choose a subset <span class="math" data-tex="\(S\subset\mathbb F_q\)">\(S\subset\mathbb F_q\)</span> with <span class="math" data-tex="\(|S|=\lfloor q/100\rfloor\)">\(|S|=\lfloor q/100\rfloor\)</span>. Statements &quot;for large <span class="math" data-tex="\(q\)">\(q\)</span>&quot; refer to primes <span class="math" data-tex="\(q\)">\(q\)</span> beyond a bound that depends only on <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>An <em>affine line</em> in <span class="math" data-tex="\(P\)">\(P\)</span> is a set <span class="math" data-tex="\(\{a+sd:s\in\mathbb F_q\}\)">\(\{a+sd:s\in\mathbb F_q\}\)</span> with <span class="math" data-tex="\(d\ne0\)">\(d\ne0\)</span>; it has <span class="math" data-tex="\(q\)">\(q\)</span> points, and its <em>direction</em> is the one-dimensional subspace <span class="math" data-tex="\(\mathbb F_qd\)">\(\mathbb F_qd\)</span>. There are
+<span class="math math-display" data-tex="\[
+J=\frac{q^h-1}{q-1}\ge q^{h-1}
+\]">\[
+J=\frac{q^h-1}{q-1}\ge q^{h-1}
+\]</span>
+directions, and two distinct points lie on exactly one line.</p>
+<p><strong>Lemma 1.1</strong> (two inequalities of probability). Let <span class="math" data-tex="\(X\ge0\)">\(X\ge0\)</span> be a random variable with finitely many values, and <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Then <span class="math" data-tex="\(\Pr(X\ge a)\le\mathbb EX/a\)">\(\Pr(X\ge a)\le\mathbb EX/a\)</span> (Markov). If <span class="math" data-tex="\(X\)">\(X\)</span> is a sum of independent indicator variables with mean <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(0\le s&lt;\mu\)">\(0\le s&lt;\mu\)</span>, then <span class="math" data-tex="\(\Pr(X\le\mu-s)\le\mu/s^2\)">\(\Pr(X\le\mu-s)\le\mu/s^2\)</span> for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> (Chebyshev).</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(a\,\mathbf 1_{X\ge a}\le X\)">\(a\,\mathbf 1_{X\ge a}\le X\)</span>; take expectations. For the second, the variance of a sum of independent indicators with probabilities <span class="math" data-tex="\(p_k\)">\(p_k\)</span> is <span class="math" data-tex="\(\sum_kp_k(1-p_k)\le\mu\)">\(\sum_kp_k(1-p_k)\le\mu\)</span>, and Markov's inequality for <span class="math" data-tex="\((X-\mu)^2\)">\((X-\mu)^2\)</span> gives <span class="math" data-tex="\(\Pr(|X-\mu|\ge s)\le\operatorname{Var}X/s^2\le\mu/s^2\)">\(\Pr(|X-\mu|\ge s)\le\operatorname{Var}X/s^2\le\mu/s^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 1.2</strong> ([OpenAI-RF, Lemma 2.2]). For all large primes <span class="math" data-tex="\(q\)">\(q\)</span> there are affine lines <span class="math" data-tex="\(\ell_i\subset P\)">\(\ell_i\subset P\)</span>, indexed by a finite set <span class="math" data-tex="\(I\)">\(I\)</span> of size <span class="math" data-tex="\(N\)">\(N\)</span>, with distinct marked points <span class="math" data-tex="\(a_i\in S^h\cap\ell_i\)">\(a_i\in S^h\cap\ell_i\)</span>, and a set <span class="math" data-tex="\(E\subset P\)">\(E\subset P\)</span>, such that:</p>
+<ol>
+<li>the bipartite graph on <span class="math" data-tex="\(P\sqcup I\)">\(P\sqcup I\)</span>, with an edge between <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(i\)">\(i\)</span> when <span class="math" data-tex="\(z\in\ell_i\setminus\{a_i\}\)">\(z\in\ell_i\setminus\{a_i\}\)</span>, has no cycle of length at most <span class="math" data-tex="\(12\)">\(12\)</span>;</li>
+<li><span class="math" data-tex="\(|I(z)|\ge4r^2\)">\(|I(z)|\ge4r^2\)</span> for <span class="math" data-tex="\(z\notin E\)">\(z\notin E\)</span>, where
+<span class="math math-display" data-tex="\[
+I(z)=\{i\in I:z\in\ell_i\setminus\{a_i\}\};
+\]">\[
+I(z)=\{i\in I:z\in\ell_i\setminus\{a_i\}\};
+\]</span></li>
+<li><span class="math" data-tex="\(N/m\to c\)">\(N/m\to c\)</span> and <span class="math" data-tex="\(|E|/m\to0\)">\(|E|/m\to0\)</span> as <span class="math" data-tex="\(q\to\infty\)">\(q\to\infty\)</span>.</li>
+</ol>
+<p>In particular, for large <span class="math" data-tex="\(q\)">\(q\)</span> these data can be chosen with
+<span class="math math-display" data-tex="\[
+q&gt;r,\qquad\frac{Nr}4&gt;2m+r|E|.
+\]">\[
+q&gt;r,\qquad\frac{Nr}4&gt;2m+r|E|.
+\]</span></p>
+<p>The graph in (1) is the <em>incidence graph of the punctured lines</em>; a cycle in it alternates between points and labels.</p>
+<p><em>Proof.</em> <em>Random lines.</em> Use every point <span class="math" data-tex="\(a\in S^h\)">\(a\in S^h\)</span> as a mark, and choose for it a direction uniformly at random, independently for different marks; let <span class="math" data-tex="\(\ell_a\)">\(\ell_a\)</span> be the line through <span class="math" data-tex="\(a\)">\(a\)</span> with that direction. For a fixed <span class="math" data-tex="\(z\in P\)">\(z\in P\)</span> and a mark <span class="math" data-tex="\(a\ne z\)">\(a\ne z\)</span>, the event <span class="math" data-tex="\(z\in\ell_a\)">\(z\in\ell_a\)</span> is the event that the chosen direction is that of <span class="math" data-tex="\(z-a\)">\(z-a\)</span>, of probability <span class="math" data-tex="\(1/J\)">\(1/J\)</span>. So the degree <span class="math" data-tex="\(X_z=|I(z)|\)">\(X_z=|I(z)|\)</span> of <span class="math" data-tex="\(z\)">\(z\)</span> is a sum of independent indicators with mean
+<span class="math math-display" data-tex="\[
+\mu_z=\frac{|S|^h-[z\in S^h]}J .
+\]">\[
+\mu_z=\frac{|S|^h-[z\in S^h]}J .
+\]</span>
+Since <span class="math" data-tex="\(|S|^h=(c+o(1))q^h\)">\(|S|^h=(c+o(1))q^h\)</span> and <span class="math" data-tex="\(J=(1+o(1))q^{h-1}\)">\(J=(1+o(1))q^{h-1}\)</span>, <span class="math" data-tex="\(\mu_z=(c+o(1))q\)">\(\mu_z=(c+o(1))q\)</span> uniformly in <span class="math" data-tex="\(z\)">\(z\)</span>. For large <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(\mu_z\ge8r^2\)">\(\mu_z\ge8r^2\)</span>, and Lemma 1.1 with <span class="math" data-tex="\(s=\mu_z-4r^2\ge\mu_z/2\)">\(s=\mu_z-4r^2\ge\mu_z/2\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Pr\bigl(X_z&lt;4r^2\bigr)&amp;\le\frac{\mu_z}{(\mu_z/2)^2}\\
+&amp;=\frac4{\mu_z}=O(q^{-1}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Pr\bigl(X_z&lt;4r^2\bigr)&amp;\le\frac{\mu_z}{(\mu_z/2)^2}\\
+&amp;=\frac4{\mu_z}=O(q^{-1}).
+\end{aligned}
+\]</span>
+So the expected number of points of degree less than <span class="math" data-tex="\(4r^2\)">\(4r^2\)</span> is <span class="math" data-tex="\(O(m/q)\)">\(O(m/q)\)</span>, and by Markov's inequality, with probability tending to <span class="math" data-tex="\(1\)">\(1\)</span>, there are at most <span class="math" data-tex="\(mq^{-1/2}\)">\(mq^{-1/2}\)</span> of them.</p>
+<p><em>Short cycles.</em> Let <span class="math" data-tex="\(2\le s\le6\)">\(2\le s\le6\)</span>. A cycle of length <span class="math" data-tex="\(2s\)">\(2s\)</span> passes through distinct points <span class="math" data-tex="\(z_1,\dots,z_s\)">\(z_1,\dots,z_s\)</span> and distinct marks <span class="math" data-tex="\(a_1,\dots,a_s\)">\(a_1,\dots,a_s\)</span> with <span class="math" data-tex="\(z_t,z_{t+1}\in\ell_{a_t}\)">\(z_t,z_{t+1}\in\ell_{a_t}\)</span> (indices modulo <span class="math" data-tex="\(s\)">\(s\)</span>). There are at most <span class="math" data-tex="\(m^s\)">\(m^s\)</span> choices of the points. The line through <span class="math" data-tex="\(z_t\)">\(z_t\)</span> and <span class="math" data-tex="\(z_{t+1}\)">\(z_{t+1}\)</span> is determined, and the mark <span class="math" data-tex="\(a_t\)">\(a_t\)</span> is one of its at most <span class="math" data-tex="\(q\)">\(q\)</span> points; so there are at most <span class="math" data-tex="\(q^s\)">\(q^s\)</span> choices of the marks. For distinct marks, the probability that all <span class="math" data-tex="\(s\)">\(s\)</span> chosen directions are the prescribed ones is <span class="math" data-tex="\(J^{-s}\)">\(J^{-s}\)</span>, by independence. So the expected number of such cycles is at most
+<span class="math math-display" data-tex="\[
+m^sq^sJ^{-s}\le q^{hs}q^sq^{-(h-1)s}=q^{2s}.
+\]">\[
+m^sq^sJ^{-s}\le q^{hs}q^sq^{-(h-1)s}=q^{2s}.
+\]</span>
+Summing over <span class="math" data-tex="\(s\le6\)">\(s\le6\)</span>, the expected number of cycles of length at most <span class="math" data-tex="\(12\)">\(12\)</span> is at most <span class="math" data-tex="\(5q^{12}\)">\(5q^{12}\)</span>, and by Markov's inequality it is at most <span class="math" data-tex="\(q^{13}\)">\(q^{13}\)</span> with probability tending to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><em>Deletion.</em> For large <span class="math" data-tex="\(q\)">\(q\)</span>, choose an outcome with both properties. Delete every mark that lies on a cycle of length at most <span class="math" data-tex="\(12\)">\(12\)</span>: at most <span class="math" data-tex="\(6q^{13}\)">\(6q^{13}\)</span> marks. Let <span class="math" data-tex="\(I\)">\(I\)</span> be the remaining marks, with their lines, and let <span class="math" data-tex="\(E\)">\(E\)</span> consist of the points of degree less than <span class="math" data-tex="\(4r^2\)">\(4r^2\)</span> before the deletion and of all points of the deleted lines. Deleting labels creates no cycle, so (1) holds. A point outside <span class="math" data-tex="\(E\)">\(E\)</span> lies on no deleted line, so its degree is unchanged, at least <span class="math" data-tex="\(4r^2\)">\(4r^2\)</span>: (2) holds. Finally
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|E|\le mq^{-1/2}+6q^{14}=o(m),\\
+N\ge|S|^h-6q^{13}=(c+o(1))m,
+\end{gathered}
+\]">\[
+\begin{gathered}
+|E|\le mq^{-1/2}+6q^{14}=o(m),\\
+N\ge|S|^h-6q^{13}=(c+o(1))m,
+\end{gathered}
+\]</span>
+because <span class="math" data-tex="\(m=q^{20}\)">\(m=q^{20}\)</span>; and <span class="math" data-tex="\(N\le|S|^h\)">\(N\le|S|^h\)</span>. This proves (3).</p>
+<p>For the last assertion, as <span class="math" data-tex="\(q\to\infty\)">\(q\to\infty\)</span>, <span class="math" data-tex="\(\frac{Nr}{4m}\to\frac{cr}4\ge25\)">\(\frac{Nr}{4m}\to\frac{cr}4\ge25\)</span>, while <span class="math" data-tex="\(\frac{2m+r|E|}m\to2\)">\(\frac{2m+r|E|}m\to2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>From now on the data of Lemma 1.2 are fixed, for one prime <span class="math" data-tex="\(q\)">\(q\)</span> that also satisfies the last two inequalities. Nothing chosen later changes <span class="math" data-tex="\(q\)">\(q\)</span> or these data.</p>
+<h2 id="2-blocks-and-the-complex">2. Blocks and the complex</h2>
+<p><strong>Blocks.</strong> Let <span class="math" data-tex="\(z\notin E\)">\(z\notin E\)</span> and <span class="math" data-tex="\(d=|I(z)|\ge4r^2\)">\(d=|I(z)|\ge4r^2\)</span>. Choose <span class="math" data-tex="\(n_2\in[r,2r-1]\)">\(n_2\in[r,2r-1]\)</span> with <span class="math" data-tex="\(n_2\equiv d\pmod r\)">\(n_2\equiv d\pmod r\)</span>, and put <span class="math" data-tex="\(n_1=(d-(r+1)n_2)/r\)">\(n_1=(d-(r+1)n_2)/r\)</span>. Then <span class="math" data-tex="\(n_1\)">\(n_1\)</span> is an integer and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+n_1&amp;\ge\frac{4r^2-(r+1)(2r-1)}r\\
+&amp;=\frac{2r^2-r+1}r\ge r .
+\end{aligned}
+\]">\[
+\begin{aligned}
+n_1&amp;\ge\frac{4r^2-(r+1)(2r-1)}r\\
+&amp;=\frac{2r^2-r+1}r\ge r .
+\end{aligned}
+\]</span>
+Partition <span class="math" data-tex="\(I(z)\)">\(I(z)\)</span> into two <em>blocks</em> of sizes <span class="math" data-tex="\(rn_1\)">\(rn_1\)</span> and <span class="math" data-tex="\((r+1)n_2\)">\((r+1)n_2\)</span>. Write <span class="math" data-tex="\(|I_b|=s_bt_b\)">\(|I_b|=s_bt_b\)</span> for a block <span class="math" data-tex="\(b\)">\(b\)</span>, with <span class="math" data-tex="\((s_b,t_b)=(r,n_1)\)">\((s_b,t_b)=(r,n_1)\)</span> and <span class="math" data-tex="\((r+1,n_2)\)">\((r+1,n_2)\)</span> respectively; so <span class="math" data-tex="\(s_b,t_b\ge r\)">\(s_b,t_b\ge r\)</span>. Blocks at different points are different blocks, and <span class="math" data-tex="\(p(b)\)">\(p(b)\)</span> denotes the point of <span class="math" data-tex="\(b\)">\(b\)</span>. Points of <span class="math" data-tex="\(E\)">\(E\)</span> get no blocks. For each block fix a bijection
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+I_b\to\mathbb Z/s_b\times\mathbb Z/t_b,\\
+i\mapsto\bigl(\alpha_b(i),\beta_b(i)\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+I_b\to\mathbb Z/s_b\times\mathbb Z/t_b,\\
+i\mapsto\bigl(\alpha_b(i),\beta_b(i)\bigr).
+\end{gathered}
+\]</span>
+A label <span class="math" data-tex="\(i\)">\(i\)</span> lies in at most one block at each point, and in a block at every point of <span class="math" data-tex="\(\ell_i\setminus(\{a_i\}\cup E)\)">\(\ell_i\setminus(\{a_i\}\cup E)\)</span>.</p>
+<p><strong>The complex.</strong> Let <span class="math" data-tex="\([r]=\{0,\dots,r-1\}\)">\([r]=\{0,\dots,r-1\}\)</span>. The complex <span class="math" data-tex="\(K\)">\(K\)</span> has three vertices <span class="math" data-tex="\(O\)">\(O\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span>, and the edges
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x_{iuv}\colon V\to W\quad(i\in I,\ u,v\in[r]),\\
+L_{b,u,j}\colon O\to V\quad(u\in[r],\ j\in\mathbb Z/s_b),\\
+R_{b,v,k}\colon O\to W\quad(v\in[r],\ k\in\mathbb Z/t_b).
+\end{gathered}
+\]">\[
+\begin{gathered}
+x_{iuv}\colon V\to W\quad(i\in I,\ u,v\in[r]),\\
+L_{b,u,j}\colon O\to V\quad(u\in[r],\ j\in\mathbb Z/s_b),\\
+R_{b,v,k}\colon O\to W\quad(v\in[r],\ k\in\mathbb Z/t_b).
+\end{gathered}
+\]</span>
+For every block <span class="math" data-tex="\(b\)">\(b\)</span>, every <span class="math" data-tex="\(i\in I_b\)">\(i\in I_b\)</span> and all <span class="math" data-tex="\(u,v\in[r]\)">\(u,v\in[r]\)</span>, attach a triangle with the sides
+<span class="math math-display" data-tex="\[
+x_{iuv},\qquad L_{b,u,\alpha_b(i)+v},\qquad R_{b,v,\beta_b(i)+u},
+\]">\[
+x_{iuv},\qquad L_{b,u,\alpha_b(i)+v},\qquad R_{b,v,\beta_b(i)+u},
+\]</span>
+whose oriented boundary runs from <span class="math" data-tex="\(O\)">\(O\)</span> along <span class="math" data-tex="\(L\)">\(L\)</span> to <span class="math" data-tex="\(V\)">\(V\)</span>, along <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span>, and back along <span class="math" data-tex="\(R\)">\(R\)</span>. All triangles have one fixed Euclidean shape with the angles
+<span class="math math-display" data-tex="\[
+\frac{3\pi}5\ \text{at}\ O,\qquad\frac\pi5\ \text{at}\ V,\qquad\frac\pi5\ \text{at}\ W ;
+\]">\[
+\frac{3\pi}5\ \text{at}\ O,\qquad\frac\pi5\ \text{at}\ V,\qquad\frac\pi5\ \text{at}\ W ;
+\]</span>
+so every edge <span class="math" data-tex="\(x\)">\(x\)</span> has one length, every edge <span class="math" data-tex="\(L\)">\(L\)</span> or <span class="math" data-tex="\(R\)">\(R\)</span> another, and the gluings are isometric. The three vertices of each triangle are distinct, so closed cells embed, and <span class="math" data-tex="\(K\)">\(K\)</span> is a connected finite Euclidean triangle complex in the sense of the first lesson (there are points outside <span class="math" data-tex="\(E\)">\(E\)</span>, hence blocks, and every edge lies in a triangle or joins <span class="math" data-tex="\(O\)">\(O\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span>).</p>
+<p>The larger angle at <span class="math" data-tex="\(O\)">\(O\)</span> will control the short cycles in the link of <span class="math" data-tex="\(O\)">\(O\)</span>; the smaller angles at <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> are paired with the large girth of the incidence graph.</p>
+<h2 id="3-the-links">3. The links</h2>
+<p><strong>Lemma 3.1</strong> ([OpenAI-RF, Lemma 2.3]). The complex <span class="math" data-tex="\(K\)">\(K\)</span> satisfies the hypothesis of the triangle complex criterion with <span class="math" data-tex="\(\eta=2\pi/5\)">\(\eta=2\pi/5\)</span>. At <span class="math" data-tex="\(V\)">\(V\)</span>, and at <span class="math" data-tex="\(W\)">\(W\)</span>, the link distance between two different directions of edges <span class="math" data-tex="\(x_{iuv}\)">\(x_{iuv}\)</span> with the same label <span class="math" data-tex="\(i\)">\(i\)</span> is at least <span class="math" data-tex="\(14\pi/5\)">\(14\pi/5\)</span>, or infinite.</p>
+<p><em>Proof.</em> <em>The link of <span class="math" data-tex="\(O\)">\(O\)</span>.</em> Its vertices are the directions of the edges <span class="math" data-tex="\(L_{b,u,j}\)">\(L_{b,u,j}\)</span> and <span class="math" data-tex="\(R_{b,v,k}\)">\(R_{b,v,k}\)</span>, and each triangle contributes one link edge of length <span class="math" data-tex="\(3\pi/5\)">\(3\pi/5\)</span>, joining <span class="math" data-tex="\(L_{b,u,\alpha_b(i)+v}\)">\(L_{b,u,\alpha_b(i)+v}\)</span> to <span class="math" data-tex="\(R_{b,v,\beta_b(i)+u}\)">\(R_{b,v,\beta_b(i)+u}\)</span>. For fixed <span class="math" data-tex="\(b,u,v,j,k\)">\(b,u,v,j,k\)</span>, the equations
+<span class="math math-display" data-tex="\[
+\alpha_b(i)=j-v,\qquad\beta_b(i)=k-u
+\]">\[
+\alpha_b(i)=j-v,\qquad\beta_b(i)=k-u
+\]</span>
+have exactly one solution <span class="math" data-tex="\(i\in I_b\)">\(i\in I_b\)</span>. So, for each block, every <span class="math" data-tex="\(L_{b,\cdot,\cdot}\)">\(L_{b,\cdot,\cdot}\)</span>-direction is joined to every <span class="math" data-tex="\(R_{b,\cdot,\cdot}\)">\(R_{b,\cdot,\cdot}\)</span>-direction by exactly one link edge, and there are no other link edges. The link of <span class="math" data-tex="\(O\)">\(O\)</span> is a disjoint union of complete bipartite graphs without multiple edges, so every nonempty cyclically reduced closed walk in it has at least four edges and angular length at least <span class="math" data-tex="\(12\pi/5=2\pi+2\pi/5\)">\(12\pi/5=2\pi+2\pi/5\)</span>.</p>
+<p><em>The link of <span class="math" data-tex="\(V\)">\(V\)</span>.</em> Its vertices are the directions of the edges <span class="math" data-tex="\(x_{iuv}\)">\(x_{iuv}\)</span> and <span class="math" data-tex="\(L_{b,u,j}\)">\(L_{b,u,j}\)</span>; the triangle <span class="math" data-tex="\((b,i,u,v)\)">\((b,i,u,v)\)</span> contributes a link edge of length <span class="math" data-tex="\(\pi/5\)">\(\pi/5\)</span> joining <span class="math" data-tex="\(x_{iuv}\)">\(x_{iuv}\)</span> to <span class="math" data-tex="\(L_{b,u,\alpha_b(i)+v}\)">\(L_{b,u,\alpha_b(i)+v}\)</span>. Map the link to the incidence graph of Lemma 1.2: send <span class="math" data-tex="\(x_{iuv}\)">\(x_{iuv}\)</span> to <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(L_{b,u,j}\)">\(L_{b,u,j}\)</span> to <span class="math" data-tex="\(p(b)\)">\(p(b)\)</span>, and the link edge of <span class="math" data-tex="\((b,i,u,v)\)">\((b,i,u,v)\)</span> to the incidence edge between <span class="math" data-tex="\(p(b)\)">\(p(b)\)</span> and <span class="math" data-tex="\(i\)">\(i\)</span>, which exists because <span class="math" data-tex="\(i\in I_b\subset I(p(b))\)">\(i\in I_b\subset I(p(b))\)</span>. This map is injective on the link edges at each link vertex. At <span class="math" data-tex="\(x_{iuv}\)">\(x_{iuv}\)</span>, the incident link edges are given by the blocks <span class="math" data-tex="\(b\)">\(b\)</span> containing <span class="math" data-tex="\(i\)">\(i\)</span>, at most one at each point, so their images, the edges between <span class="math" data-tex="\(p(b)\)">\(p(b)\)</span> and <span class="math" data-tex="\(i\)">\(i\)</span>, are different. At <span class="math" data-tex="\(L_{b,u,j}\)">\(L_{b,u,j}\)</span>, the incident link edges are given by the pairs <span class="math" data-tex="\((i,v)\)">\((i,v)\)</span> with <span class="math" data-tex="\(i\in I_b\)">\(i\in I_b\)</span>, <span class="math" data-tex="\(v\in[r]\)">\(v\in[r]\)</span> and <span class="math" data-tex="\(\alpha_b(i)+v=j\)">\(\alpha_b(i)+v=j\)</span>; for a given <span class="math" data-tex="\(i\)">\(i\)</span>, this determines <span class="math" data-tex="\(v\)">\(v\)</span> modulo <span class="math" data-tex="\(s_b\)">\(s_b\)</span>, hence uniquely in <span class="math" data-tex="\([r]\)">\([r]\)</span>, because <span class="math" data-tex="\(s_b\ge r\)">\(s_b\ge r\)</span>. So different incident link edges have different labels <span class="math" data-tex="\(i\)">\(i\)</span>, and different images.</p>
+<p>A reduced walk in the link therefore maps to a walk in the incidence graph without immediate reversals, and a cyclically reduced closed walk maps to a cyclically reduced closed walk. A nonempty cyclically reduced closed walk in a graph contains a cycle: take a shortest closed subwalk of positive length; it has length at least three, since length one is a loop and length two a reversal, and it repeats no vertex. The incidence graph is bipartite without cycles of length at most <span class="math" data-tex="\(12\)">\(12\)</span>, so this cycle, and the walk, has at least <span class="math" data-tex="\(14\)">\(14\)</span> edges, of angular length at least <span class="math" data-tex="\(14\pi/5&gt;2\pi+2\pi/5\)">\(14\pi/5&gt;2\pi+2\pi/5\)</span>.</p>
+<p><em>The link of <span class="math" data-tex="\(W\)">\(W\)</span></em> is treated in the same way, with the edges <span class="math" data-tex="\(R_{b,v,k}\)">\(R_{b,v,k}\)</span>, <span class="math" data-tex="\(k=\beta_b(i)+u\)">\(k=\beta_b(i)+u\)</span>, and <span class="math" data-tex="\(t_b\ge r\)">\(t_b\ge r\)</span>.</p>
+<p><em>Same-label directions.</em> Let a reduced link path at <span class="math" data-tex="\(V\)">\(V\)</span> join <span class="math" data-tex="\(x_{iuv}\)">\(x_{iuv}\)</span> to <span class="math" data-tex="\(x_{iu&#x27;v&#x27;}\)">\(x_{iu&#x27;v&#x27;}\)</span> with <span class="math" data-tex="\((u,v)\ne(u&#x27;,v&#x27;)\)">\((u,v)\ne(u&#x27;,v&#x27;)\)</span>. It has positive length, and its image is a walk from <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(i\)">\(i\)</span> without reversals at its interior vertices; it may reverse at the closing point. A shortest closed subwalk of positive length is again a cycle: its middle vertices are interior vertices of the walk. So the path has at least <span class="math" data-tex="\(14\)">\(14\)</span> edges and length at least <span class="math" data-tex="\(14\pi/5\)">\(14\pi/5\)</span>. A shortest link path between two vertices is reduced, so the link distance is at least <span class="math" data-tex="\(14\pi/5\)">\(14\pi/5\)</span>, or infinite if there is no path. The same holds at <span class="math" data-tex="\(W\)">\(W\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Excluding cycles of length at most <span class="math" data-tex="\(10\)">\(10\)</span> would already give the link condition (Exercise 5.3); the stronger bound at same-label directions is used only for the turns in Proposition 4.2, where any bound <span class="math" data-tex="\(\ge\pi\)">\(\ge\pi\)</span> suffices.</p>
+<h2 id="4-the-group-and-its-rectangular-words">4. The group and its rectangular words</h2>
+<p>Let <span class="math" data-tex="\(G=\pi_1(K,O)\)">\(G=\pi_1(K,O)\)</span>. By the triangle complex criterion and Lemma 3.1, <span class="math" data-tex="\(G\)">\(G\)</span> is torsion-free and word-hyperbolic.</p>
+<p>Choose an edge path <span class="math" data-tex="\(\tau_X\)">\(\tau_X\)</span> from <span class="math" data-tex="\(O\)">\(O\)</span> to each vertex <span class="math" data-tex="\(X\)">\(X\)</span>, with <span class="math" data-tex="\(\tau_O\)">\(\tau_O\)</span> constant. For an oriented edge <span class="math" data-tex="\(e\)">\(e\)</span> from <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(Y\)">\(Y\)</span>, let <span class="math" data-tex="\(g_e\in G\)">\(g_e\in G\)</span> be the class of the loop <span class="math" data-tex="\(\tau_Xe\tau_Y^{-1}\)">\(\tau_Xe\tau_Y^{-1}\)</span>, and write <span class="math" data-tex="\(g_{iuv}=g_{x_{iuv}}\)">\(g_{iuv}=g_{x_{iuv}}\)</span>. Products are taken in path order.</p>
+<p><strong>Lemma 4.1</strong> (the triangle relations). For every block <span class="math" data-tex="\(b\)">\(b\)</span>, every <span class="math" data-tex="\(i\in I_b\)">\(i\in I_b\)</span> and all <span class="math" data-tex="\(u,v\in[r]\)">\(u,v\in[r]\)</span>,
+<span class="math math-display" data-tex="\[
+g_{iuv}=g_{L_{b,u,\alpha_b(i)+v}}^{-1}\,g_{R_{b,v,\beta_b(i)+u}} .
+\]">\[
+g_{iuv}=g_{L_{b,u,\alpha_b(i)+v}}^{-1}\,g_{R_{b,v,\beta_b(i)+u}} .
+\]</span></p>
+<p><em>Proof.</em> For the triangle with these sides, the loop <span class="math" data-tex="\(L\,x\,R^{-1}\)">\(L\,x\,R^{-1}\)</span> bounds the triangle, so it is nullhomotopic. Inserting <span class="math" data-tex="\(\tau_V^{-1}\tau_V\)">\(\tau_V^{-1}\tau_V\)</span> and <span class="math" data-tex="\(\tau_W^{-1}\tau_W\)">\(\tau_W^{-1}\tau_W\)</span> gives <span class="math" data-tex="\(g_Lg_xg_R^{-1}=1\)">\(g_Lg_xg_R^{-1}=1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 4.2</strong> (rectangular words; [OpenAI-RF, Section 2.3]). For every <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span> and all <span class="math" data-tex="\(u\ne u&#x27;\)">\(u\ne u&#x27;\)</span>, <span class="math" data-tex="\(v\ne v&#x27;\)">\(v\ne v&#x27;\)</span> in <span class="math" data-tex="\([r]\)">\([r]\)</span>,
+<span class="math math-display" data-tex="\[
+g_{iuv}\,g_{iu&#x27;v}^{-1}\,g_{iu&#x27;v&#x27;}\,g_{iuv&#x27;}^{-1}\ne1 .
+\]">\[
+g_{iuv}\,g_{iu&#x27;v}^{-1}\,g_{iu&#x27;v&#x27;}\,g_{iuv&#x27;}^{-1}\ne1 .
+\]</span></p>
+<p><em>Proof.</em> The connecting paths cancel, so the word is conjugate to the class of the closed edge path
+<span class="math math-display" data-tex="\[
+x_{iuv}\,x_{iu&#x27;v}^{-1}\,x_{iu&#x27;v&#x27;}\,x_{iuv&#x27;}^{-1}
+\]">\[
+x_{iuv}\,x_{iu&#x27;v}^{-1}\,x_{iu&#x27;v&#x27;}\,x_{iuv&#x27;}^{-1}
+\]</span>
+from <span class="math" data-tex="\(V\)">\(V\)</span> through <span class="math" data-tex="\(W\)">\(W\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span> back to <span class="math" data-tex="\(V\)">\(V\)</span>. Its four turns compare, in a link at <span class="math" data-tex="\(W\)">\(W\)</span> or at <span class="math" data-tex="\(V\)">\(V\)</span>, the directions of two different edges with label <span class="math" data-tex="\(i\)">\(i\)</span>: at <span class="math" data-tex="\(W\)">\(W\)</span> the edges <span class="math" data-tex="\(x_{iuv}\)">\(x_{iuv}\)</span> and <span class="math" data-tex="\(x_{iu&#x27;v}\)">\(x_{iu&#x27;v}\)</span> (as <span class="math" data-tex="\(u\ne u&#x27;\)">\(u\ne u&#x27;\)</span>), at <span class="math" data-tex="\(V\)">\(V\)</span> the edges <span class="math" data-tex="\(x_{iu&#x27;v}\)">\(x_{iu&#x27;v}\)</span> and <span class="math" data-tex="\(x_{iu&#x27;v&#x27;}\)">\(x_{iu&#x27;v&#x27;}\)</span>, at <span class="math" data-tex="\(W\)">\(W\)</span> the edges <span class="math" data-tex="\(x_{iu&#x27;v&#x27;}\)">\(x_{iu&#x27;v&#x27;}\)</span> and <span class="math" data-tex="\(x_{iuv&#x27;}\)">\(x_{iuv&#x27;}\)</span>, and at the closing point <span class="math" data-tex="\(V\)">\(V\)</span> the edges <span class="math" data-tex="\(x_{iuv&#x27;}\)">\(x_{iuv&#x27;}\)</span> and <span class="math" data-tex="\(x_{iuv}\)">\(x_{iuv}\)</span>. By Lemma 3.1 each turn has link distance at least <span class="math" data-tex="\(14\pi/5\ge\pi\)">\(14\pi/5\ge\pi\)</span>, and by the closed-path part of the triangle complex criterion the path is not nullhomotopic. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>These elements are the <em>rectangular words</em>; let <span class="math" data-tex="\(\mathcal R\subset G\)">\(\mathcal R\subset G\)</span> be the finite set of them. For <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span> or <span class="math" data-tex="\(v=v&#x27;\)">\(v=v&#x27;\)</span> the same expression is the identity, so the rectangles with two distinct rows and two distinct columns are exactly the nontrivial ones.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> For <span class="math" data-tex="\(r=2\)">\(r=2\)</span> and <span class="math" data-tex="\(d=16\)">\(d=16\)</span>, find <span class="math" data-tex="\(n_1\)">\(n_1\)</span>, <span class="math" data-tex="\(n_2\)">\(n_2\)</span> and the two block shapes <span class="math" data-tex="\((s_b,t_b)\)">\((s_b,t_b)\)</span>.</p>
+<p><strong>5.2.</strong> Show that the link of <span class="math" data-tex="\(O\)">\(O\)</span> restricted to one block is the complete bipartite graph with <span class="math" data-tex="\(rs_b\)">\(rs_b\)</span> and <span class="math" data-tex="\(rt_b\)">\(rt_b\)</span> vertices, by counting its edges.</p>
+<p><strong>5.3.</strong> Show that, without cycles of length at most <span class="math" data-tex="\(10\)">\(10\)</span> in the incidence graph, the links of <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> would still satisfy the hypothesis of the criterion with <span class="math" data-tex="\(\eta=2\pi/5\)">\(\eta=2\pi/5\)</span>.</p>
+<p><strong>5.4.</strong> Show that <span class="math" data-tex="\(\mu_z=(c+o(1))q\)">\(\mu_z=(c+o(1))q\)</span> uniformly in <span class="math" data-tex="\(z\)">\(z\)</span> in the proof of Lemma 1.2.</p>
+<p><strong>5.5.</strong> Show that <span class="math" data-tex="\(g_{iuv}g_{iu&#x27;v}^{-1}g_{iu&#x27;v&#x27;}g_{iuv&#x27;}^{-1}=1\)">\(g_{iuv}g_{iu&#x27;v}^{-1}g_{iu&#x27;v&#x27;}g_{iuv&#x27;}^{-1}=1\)</span> when <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span> or <span class="math" data-tex="\(v=v&#x27;\)">\(v=v&#x27;\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(n_2\in\{2,3\}\)">\(n_2\in\{2,3\}\)</span> with <span class="math" data-tex="\(n_2\equiv16\equiv0\pmod2\)">\(n_2\equiv16\equiv0\pmod2\)</span> gives <span class="math" data-tex="\(n_2=2\)">\(n_2=2\)</span>, and <span class="math" data-tex="\(n_1=(16-3\cdot2)/2=5\)">\(n_1=(16-3\cdot2)/2=5\)</span>. The blocks have sizes <span class="math" data-tex="\(10=2\cdot5\)">\(10=2\cdot5\)</span> and <span class="math" data-tex="\(6=3\cdot2\)">\(6=3\cdot2\)</span>, with <span class="math" data-tex="\((s_b,t_b)=(2,5)\)">\((s_b,t_b)=(2,5)\)</span> and <span class="math" data-tex="\((3,2)\)">\((3,2)\)</span>.</p>
+<p><strong>5.2.</strong> The triangles of the block are indexed by <span class="math" data-tex="\((i,u,v)\)">\((i,u,v)\)</span> with <span class="math" data-tex="\(i\in I_b\)">\(i\in I_b\)</span>, so there are <span class="math" data-tex="\(r^2s_bt_b=(rs_b)(rt_b)\)">\(r^2s_bt_b=(rs_b)(rt_b)\)</span> link edges at <span class="math" data-tex="\(O\)">\(O\)</span> from this block, and by the proof of Lemma 3.1 at most one between any <span class="math" data-tex="\(L\)">\(L\)</span>- and <span class="math" data-tex="\(R\)">\(R\)</span>-direction. So every pair is joined exactly once.</p>
+<p><strong>5.3.</strong> The incidence graph is bipartite, so its cycles have even length; without cycles of length at most <span class="math" data-tex="\(10\)">\(10\)</span>, they have length at least <span class="math" data-tex="\(12\)">\(12\)</span>, and the argument of Lemma 3.1 gives angular length at least <span class="math" data-tex="\(12\pi/5=2\pi+2\pi/5\)">\(12\pi/5=2\pi+2\pi/5\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(|S|^h-1\le|S|^h-[z\in S^h]\le|S|^h\)">\(|S|^h-1\le|S|^h-[z\in S^h]\le|S|^h\)</span> and <span class="math" data-tex="\(\bigl(q/100-1\bigr)^h\le|S|^h\le(q/100)^h\)">\(\bigl(q/100-1\bigr)^h\le|S|^h\le(q/100)^h\)</span>, so <span class="math" data-tex="\(|S|^h=(c+o(1))q^h\)">\(|S|^h=(c+o(1))q^h\)</span>; and <span class="math" data-tex="\(q^{h-1}\le J\le q^h/(q-1)\)">\(q^{h-1}\le J\le q^h/(q-1)\)</span>, so <span class="math" data-tex="\(J=(1+o(1))q^{h-1}\)">\(J=(1+o(1))q^{h-1}\)</span>.</p>
+<p><strong>5.5.</strong> For <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span> the word is <span class="math" data-tex="\(g_{iuv}g_{iuv}^{-1}g_{iuv&#x27;}g_{iuv&#x27;}^{-1}=1\)">\(g_{iuv}g_{iuv}^{-1}g_{iuv&#x27;}g_{iuv&#x27;}^{-1}=1\)</span>; for <span class="math" data-tex="\(v=v&#x27;\)">\(v=v&#x27;\)</span> it is <span class="math" data-tex="\(g_{iuv}g_{iu&#x27;v}^{-1}g_{iu&#x27;v}g_{iuv}^{-1}=1\)">\(g_{iuv}g_{iu&#x27;v}^{-1}g_{iu&#x27;v}g_{iuv}^{-1}=1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-RF] OpenAI, <em>A torsion-free hyperbolic group that is not residually finite</em>, OpenAI Math Release preprint, 23 September 2026, Sections 2.2 and 2.3. https://github.com/openai/math/tree/main/preprints/a-torsion-free-hyperbolic-group-that-is-not-residually-finite-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

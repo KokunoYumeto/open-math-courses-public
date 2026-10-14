@@ -1,0 +1,202 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The rank obstruction</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A hyperbolic group that is not residually finite)</a><a href="punctured-lines-and-the-complex.html">Previous lesson</a><a href="src/the-rank-obstruction.md">Editable source</a></nav><main><article><h1 id="the-rank-obstruction">The rank obstruction</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The previous lesson, <a href="punctured-lines-and-the-complex.html">Punctured lines and the complex</a>, built a finite triangle complex <span class="math" data-tex="\(K\)">\(K\)</span> whose fundamental group <span class="math" data-tex="\(G\)">\(G\)</span> is torsion-free and word-hyperbolic, together with a finite set <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> of nontrivial elements, the rectangular words. This lesson proves that no finite quotient of <span class="math" data-tex="\(G\)">\(G\)</span> keeps all of them nontrivial (Theorem 3.4). Consequently one fixed rectangular word dies in every finite quotient, and <span class="math" data-tex="\(G\)">\(G\)</span> is not residually finite: this is the theorem of the course. With Malcev's theorem the same word is killed by every finite-dimensional linear representation over a field (Corollary 4.3).</p>
+<p>The argument compares ranks. In the regular representation of a finite quotient that keeps all rectangular words, an <span class="math" data-tex="\(r\times r\)">\(r\times r\)</span> array of permutation matrices has large real rank (Section 2). A rank lower bound survives reduction modulo the fixed prime <span class="math" data-tex="\(q\)">\(q\)</span> of the construction (Lemma 1.2). Over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, the triangle relations factor the sums of these arrays over the blocks at each point through a small space, and an interpolation identity over the punctured lines expresses the direct sum of all arrays through these sums (Section 3). The two rank estimates contradict the numerical budget of the construction.</p>
+<ul>
+<li>Rank under reduction modulo a prime (Lemma 1.2).</li>
+<li>Arrays of permutation matrices (Proposition 2.2).</li>
+<li>Local factorizations and the line certificate (Lemmas 3.1–3.3, Theorem 3.4).</li>
+<li>Residual finiteness and linear representations (Theorems 4.1 and 4.2, Corollary 4.3).</li>
+</ul>
+<p>The lesson follows [OpenAI-RF, Sections 1, 2.4 and 2.5]. Notation is that of the previous lesson: the prime <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(P=\mathbb F_q^h\)">\(P=\mathbb F_q^h\)</span>, <span class="math" data-tex="\(m=q^h\)">\(m=q^h\)</span>, the labels <span class="math" data-tex="\(I\)">\(I\)</span> with <span class="math" data-tex="\(|I|=N\)">\(|I|=N\)</span>, marks <span class="math" data-tex="\(a_i\in S^h\)">\(a_i\in S^h\)</span>, the sets <span class="math" data-tex="\(I(z)\)">\(I(z)\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span>, the blocks <span class="math" data-tex="\(b\)">\(b\)</span> with their bijections <span class="math" data-tex="\(\alpha_b,\beta_b\)">\(\alpha_b,\beta_b\)</span>, the elements <span class="math" data-tex="\(g_e\in G\)">\(g_e\in G\)</span>, and the budget
+<span class="math math-display" data-tex="\[
+q&gt;r,\qquad\frac{Nr}4&gt;2m+r|E| .
+\]">\[
+q&gt;r,\qquad\frac{Nr}4&gt;2m+r|E| .
+\]</span></p>
+<h2 id="1-rank-under-reduction">1. Rank under reduction</h2>
+<p><strong>Lemma 1.1</strong> (Hadamard's inequality). For a real <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> matrix <span class="math" data-tex="\(B\)">\(B\)</span> with rows <span class="math" data-tex="\(b_1,\dots,b_d\)">\(b_1,\dots,b_d\)</span>, <span class="math" data-tex="\(|\det B|\le\prod_k\|b_k\|\)">\(|\det B|\le\prod_k\|b_k\|\)</span>.</p>
+<p><em>Proof.</em> If the rows are dependent, <span class="math" data-tex="\(\det B=0\)">\(\det B=0\)</span>. Otherwise the Gram–Schmidt process writes <span class="math" data-tex="\(B=TQ\)">\(B=TQ\)</span> with <span class="math" data-tex="\(T\)">\(T\)</span> lower triangular and <span class="math" data-tex="\(Q\)">\(Q\)</span> orthogonal; the <span class="math" data-tex="\(k\)">\(k\)</span>-th diagonal entry of <span class="math" data-tex="\(T\)">\(T\)</span> is the distance from <span class="math" data-tex="\(b_k\)">\(b_k\)</span> to the span of <span class="math" data-tex="\(b_1,\dots,b_{k-1}\)">\(b_1,\dots,b_{k-1}\)</span>, at most <span class="math" data-tex="\(\|b_k\|\)">\(\|b_k\|\)</span>. So <span class="math" data-tex="\(|\det B|=|\det T|\le\prod_k\|b_k\|\)">\(|\det B|=|\det T|\le\prod_k\|b_k\|\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 1.2</strong> (rank under reduction; [OpenAI-RF, Lemma 2.4]). Let <span class="math" data-tex="\(M\)">\(M\)</span> be an integer matrix whose rows have Euclidean norm at most <span class="math" data-tex="\(\sqrt r\)">\(\sqrt r\)</span>, where <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>. For every prime <span class="math" data-tex="\(q&gt;r\)">\(q&gt;r\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{rank}_{\mathbb F_q}M\ge\tfrac12\operatorname{rank}_{\mathbb R}M .
+\]">\[
+\operatorname{rank}_{\mathbb F_q}M\ge\tfrac12\operatorname{rank}_{\mathbb R}M .
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(d=\operatorname{rank}_{\mathbb R}M\)">\(d=\operatorname{rank}_{\mathbb R}M\)</span>; there is nothing to prove for <span class="math" data-tex="\(d=0\)">\(d=0\)</span>. Choose a <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> submatrix <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(\det B\ne0\)">\(\det B\ne0\)</span>. Then <span class="math" data-tex="\(1\le|\det B|\le r^{d/2}\)">\(1\le|\det B|\le r^{d/2}\)</span>, by Lemma 1.1 and because <span class="math" data-tex="\(\det B\)">\(\det B\)</span> is a nonzero integer. Let <span class="math" data-tex="\(d&#x27;\)">\(d&#x27;\)</span> be the rank of <span class="math" data-tex="\(B\)">\(B\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span>, and choose <span class="math" data-tex="\(d&#x27;\)">\(d&#x27;\)</span> rows of <span class="math" data-tex="\(B\)">\(B\)</span> whose reductions span the row space of <span class="math" data-tex="\(B\)">\(B\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span>. Subtract from each other row an integer combination of the chosen rows that agrees modulo <span class="math" data-tex="\(q\)">\(q\)</span> with its expression through them. These operations do not change <span class="math" data-tex="\(\det B\)">\(\det B\)</span>, and afterwards <span class="math" data-tex="\(d-d&#x27;\)">\(d-d&#x27;\)</span> rows are divisible by <span class="math" data-tex="\(q\)">\(q\)</span>. Hence <span class="math" data-tex="\(q^{d-d&#x27;}\)">\(q^{d-d&#x27;}\)</span> divides <span class="math" data-tex="\(\det B\)">\(\det B\)</span>, and
+<span class="math math-display" data-tex="\[
+q^{d-d&#x27;}\le r^{d/2}&lt;q^{d/2}.
+\]">\[
+q^{d-d&#x27;}\le r^{d/2}&lt;q^{d/2}.
+\]</span>
+So <span class="math" data-tex="\(d&#x27;&gt;d/2\)">\(d&#x27;&gt;d/2\)</span>, and <span class="math" data-tex="\(\operatorname{rank}_{\mathbb F_q}M\ge d&#x27;\)">\(\operatorname{rank}_{\mathbb F_q}M\ge d&#x27;\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The prime <span class="math" data-tex="\(q\)">\(q\)</span> was fixed before any finite quotient is considered; Lemma 1.2 applies to integer matrices of every size, with a bound that does not depend on their size.</p>
+<h2 id="2-arrays-of-permutation-matrices">2. Arrays of permutation matrices</h2>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be a finite group and <span class="math" data-tex="\(\pi\colon G\to Q\)">\(\pi\colon G\to Q\)</span> a surjective homomorphism, with <span class="math" data-tex="\(D=|Q|\)">\(D=|Q|\)</span>. For <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, let <span class="math" data-tex="\(U(g)\)">\(U(g)\)</span> be the <span class="math" data-tex="\(D\times D\)">\(D\times D\)</span> permutation matrix of left multiplication by <span class="math" data-tex="\(\pi(g)\)">\(\pi(g)\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span>, acting on column vectors indexed by <span class="math" data-tex="\(Q\)">\(Q\)</span>. Then <span class="math" data-tex="\(U\)">\(U\)</span> is a homomorphism, <span class="math" data-tex="\(U(g)^{\mathsf T}=U(g^{-1})\)">\(U(g)^{\mathsf T}=U(g^{-1})\)</span>, and
+<span class="math math-display" data-tex="\[
+\operatorname{tr}U(g)=\begin{cases}D,&amp;\pi(g)=1,\\0,&amp;\pi(g)\ne1,\end{cases}
+\]">\[
+\operatorname{tr}U(g)=\begin{cases}D,&amp;\pi(g)=1,\\0,&amp;\pi(g)\ne1,\end{cases}
+\]</span>
+because left multiplication by a nonidentity element has no fixed point. For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span> let <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> be the <span class="math" data-tex="\(rD\times rD\)">\(rD\times rD\)</span> block matrix
+<span class="math math-display" data-tex="\[
+Y_i=\bigl(U(g_{iuv})\bigr)_{u,v\in[r]} .
+\]">\[
+Y_i=\bigl(U(g_{iuv})\bigr)_{u,v\in[r]} .
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> For a nonzero positive semidefinite real matrix <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{rank}A\ge\frac{(\operatorname{tr}A)^2}{\operatorname{tr}A^2}.
+\]">\[
+\operatorname{rank}A\ge\frac{(\operatorname{tr}A)^2}{\operatorname{tr}A^2}.
+\]</span></p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(\lambda_1,\dots,\lambda_\rho&gt;0\)">\(\lambda_1,\dots,\lambda_\rho&gt;0\)</span> are the nonzero eigenvalues, the Cauchy–Schwarz inequality gives <span class="math" data-tex="\((\sum_k\lambda_k)^2\le\rho\sum_k\lambda_k^2\)">\((\sum_k\lambda_k)^2\le\rho\sum_k\lambda_k^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 2.2</strong> ([OpenAI-RF, Section 2.4]). Suppose that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> keeps every rectangular word nontrivial. Then, for every <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{rank}_{\mathbb F_q}Y_i\ge\frac{rD}4 .
+\]">\[
+\operatorname{rank}_{\mathbb F_q}Y_i\ge\frac{rD}4 .
+\]</span></p>
+<p><em>Proof.</em> The block <span class="math" data-tex="\((u,u&#x27;)\)">\((u,u&#x27;)\)</span> of <span class="math" data-tex="\(Y_iY_i^{\mathsf T}\)">\(Y_iY_i^{\mathsf T}\)</span> is <span class="math" data-tex="\(\sum_vU(g_{iuv}g_{iu&#x27;v}^{-1})\)">\(\sum_vU(g_{iuv}g_{iu&#x27;v}^{-1})\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{tr}(Y_iY_i^{\mathsf T})=\sum_{u,v}\operatorname{tr}U(1)=r^2D,
+\]">\[
+\operatorname{tr}(Y_iY_i^{\mathsf T})=\sum_{u,v}\operatorname{tr}U(1)=r^2D,
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{tr}\bigl((Y_iY_i^{\mathsf T})^2\bigr)\\
+&amp;\quad=\sum_{u,u&#x27;,v,v&#x27;}\operatorname{tr}U\bigl(w_{uu&#x27;vv&#x27;}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{tr}\bigl((Y_iY_i^{\mathsf T})^2\bigr)\\
+&amp;\quad=\sum_{u,u&#x27;,v,v&#x27;}\operatorname{tr}U\bigl(w_{uu&#x27;vv&#x27;}\bigr),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(w_{uu&#x27;vv&#x27;}=g_{iuv}g_{iu&#x27;v}^{-1}g_{iu&#x27;v&#x27;}g_{iuv&#x27;}^{-1}\)">\(w_{uu&#x27;vv&#x27;}=g_{iuv}g_{iu&#x27;v}^{-1}g_{iu&#x27;v&#x27;}g_{iuv&#x27;}^{-1}\)</span>. This element is <span class="math" data-tex="\(1\)">\(1\)</span> when <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span> or <span class="math" data-tex="\(v=v&#x27;\)">\(v=v&#x27;\)</span>, and a rectangular word otherwise, which <span class="math" data-tex="\(\pi\)">\(\pi\)</span> keeps nontrivial. There are <span class="math" data-tex="\(2r^3-r^2\)">\(2r^3-r^2\)</span> choices with <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span> or <span class="math" data-tex="\(v=v&#x27;\)">\(v=v&#x27;\)</span>, so
+<span class="math math-display" data-tex="\[
+\operatorname{tr}\bigl((Y_iY_i^{\mathsf T})^2\bigr)=(2r^3-r^2)D .
+\]">\[
+\operatorname{tr}\bigl((Y_iY_i^{\mathsf T})^2\bigr)=(2r^3-r^2)D .
+\]</span>
+By Lemma 2.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{rank}_{\mathbb R}Y_i&amp;\ge\frac{r^4D^2}{(2r^3-r^2)D}\\
+&amp;=\frac{r^2D}{2r-1}\ge\frac{rD}2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{rank}_{\mathbb R}Y_i&amp;\ge\frac{r^4D^2}{(2r^3-r^2)D}\\
+&amp;=\frac{r^2D}{2r-1}\ge\frac{rD}2 .
+\end{aligned}
+\]</span>
+Each row of <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> has exactly <span class="math" data-tex="\(r\)">\(r\)</span> entries <span class="math" data-tex="\(1\)">\(1\)</span> and the others <span class="math" data-tex="\(0\)">\(0\)</span>, so its norm is <span class="math" data-tex="\(\sqrt r\)">\(\sqrt r\)</span>, and Lemma 1.2 with <span class="math" data-tex="\(q&gt;r\)">\(q&gt;r\)</span> gives the claim. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>No condition relates <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span>; in particular <span class="math" data-tex="\(q\)">\(q\)</span> may divide <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<h2 id="3-local-factorizations-and-the-line-certificate">3. Local factorizations and the line certificate</h2>
+<p>From now on all matrices are reduced modulo <span class="math" data-tex="\(q\)">\(q\)</span>, over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>. For <span class="math" data-tex="\(z\in P\)">\(z\in P\)</span> put
+<span class="math math-display" data-tex="\[
+Z(z)=\sum_{i\in I(z)}Y_i ,
+\]">\[
+Z(z)=\sum_{i\in I(z)}Y_i ,
+\]</span>
+an <span class="math" data-tex="\(rD\times rD\)">\(rD\times rD\)</span> matrix.</p>
+<p><strong>Lemma 3.1</strong> (local factorization). If <span class="math" data-tex="\(z\notin E\)">\(z\notin E\)</span>, then <span class="math" data-tex="\(\operatorname{rank}Z(z)\le2D\)">\(\operatorname{rank}Z(z)\le2D\)</span>. For every <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(\operatorname{rank}Z(z)\le rD\)">\(\operatorname{rank}Z(z)\le rD\)</span>.</p>
+<p><em>Proof.</em> The second bound is the size of the matrix. For <span class="math" data-tex="\(z\notin E\)">\(z\notin E\)</span>, <span class="math" data-tex="\(I(z)\)">\(I(z)\)</span> is the union of its two blocks, so it suffices to show that <span class="math" data-tex="\(\sum_{i\in I_b}Y_i\)">\(\sum_{i\in I_b}Y_i\)</span> has rank at most <span class="math" data-tex="\(D\)">\(D\)</span> for a block <span class="math" data-tex="\(b\)">\(b\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_u&amp;=\sum_{j\in\mathbb Z/s_b}U\bigl(g_{L_{b,u,j}}^{-1}\bigr),\\
+B_v&amp;=\sum_{k\in\mathbb Z/t_b}U\bigl(g_{R_{b,v,k}}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+A_u&amp;=\sum_{j\in\mathbb Z/s_b}U\bigl(g_{L_{b,u,j}}^{-1}\bigr),\\
+B_v&amp;=\sum_{k\in\mathbb Z/t_b}U\bigl(g_{R_{b,v,k}}\bigr).
+\end{aligned}
+\]</span>
+By the triangle relations (Lemma 4.1 of the previous lesson), the block <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> of <span class="math" data-tex="\(\sum_{i\in I_b}Y_i\)">\(\sum_{i\in I_b}Y_i\)</span> is
+<span class="math math-display" data-tex="\[
+\sum_{i\in I_b}U\bigl(g_{L_{b,u,\alpha_b(i)+v}}^{-1}\bigr)\,U\bigl(g_{R_{b,v,\beta_b(i)+u}}\bigr).
+\]">\[
+\sum_{i\in I_b}U\bigl(g_{L_{b,u,\alpha_b(i)+v}}^{-1}\bigr)\,U\bigl(g_{R_{b,v,\beta_b(i)+u}}\bigr).
+\]</span>
+As <span class="math" data-tex="\(i\)">\(i\)</span> runs through <span class="math" data-tex="\(I_b\)">\(I_b\)</span>, the pair <span class="math" data-tex="\((\alpha_b(i)+v,\beta_b(i)+u)\)">\((\alpha_b(i)+v,\beta_b(i)+u)\)</span> runs through <span class="math" data-tex="\(\mathbb Z/s_b\times\mathbb Z/t_b\)">\(\mathbb Z/s_b\times\mathbb Z/t_b\)</span> exactly once, so this block equals <span class="math" data-tex="\(A_uB_v\)">\(A_uB_v\)</span>. Hence <span class="math" data-tex="\(\sum_{i\in I_b}Y_i\)">\(\sum_{i\in I_b}Y_i\)</span> is the product of the block column <span class="math" data-tex="\((A_u)_u\)">\((A_u)_u\)</span> and the block row <span class="math" data-tex="\((B_v)_v\)">\((B_v)_v\)</span>, whose inner dimension is <span class="math" data-tex="\(D\)">\(D\)</span>. The order of the factors is kept; no commutativity is used. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2</strong> (sums over lines). Let <span class="math" data-tex="\(F\in\mathbb F_q[X_1,\dots,X_h]\)">\(F\in\mathbb F_q[X_1,\dots,X_h]\)</span> have total degree less than <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. Then <span class="math" data-tex="\(\sum_{z\in\ell}F(z)=0\)">\(\sum_{z\in\ell}F(z)=0\)</span> for every affine line <span class="math" data-tex="\(\ell\subset P\)">\(\ell\subset P\)</span>.</p>
+<p><em>Proof.</em> Parametrizing <span class="math" data-tex="\(\ell=\{a+sd\}\)">\(\ell=\{a+sd\}\)</span>, <span class="math" data-tex="\(F(a+sd)\)">\(F(a+sd)\)</span> is a polynomial in <span class="math" data-tex="\(s\)">\(s\)</span> of degree less than <span class="math" data-tex="\(q-1\)">\(q-1\)</span>, so it suffices that <span class="math" data-tex="\(\sum_{s\in\mathbb F_q}s^n=0\)">\(\sum_{s\in\mathbb F_q}s^n=0\)</span> for <span class="math" data-tex="\(0\le n&lt;q-1\)">\(0\le n&lt;q-1\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the sum is <span class="math" data-tex="\(q\cdot1=0\)">\(q\cdot1=0\)</span>. For <span class="math" data-tex="\(1\le n&lt;q-1\)">\(1\le n&lt;q-1\)</span>, the polynomial <span class="math" data-tex="\(T^n-1\)">\(T^n-1\)</span> has at most <span class="math" data-tex="\(n&lt;q-1\)">\(n&lt;q-1\)</span> roots, so some <span class="math" data-tex="\(a\in\mathbb F_q^\times\)">\(a\in\mathbb F_q^\times\)</span> has <span class="math" data-tex="\(a^n\ne1\)">\(a^n\ne1\)</span>. Multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> permutes <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, so <span class="math" data-tex="\(a^n\sum_ss^n=\sum_s(as)^n=\sum_ss^n\)">\(a^n\sum_ss^n=\sum_s(as)^n=\sum_ss^n\)</span>, and the sum vanishes. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.3</strong> (the line certificate). There are <span class="math" data-tex="\(N\times N\)">\(N\times N\)</span> matrices <span class="math" data-tex="\(H(z)\)">\(H(z)\)</span> over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, <span class="math" data-tex="\(z\in P\)">\(z\in P\)</span>, with <span class="math" data-tex="\(\operatorname{rank}H(z)\le1\)">\(\operatorname{rank}H(z)\le1\)</span> and
+<span class="math math-display" data-tex="\[
+\sum_{z:\,i\in I(z)}H(z)=-E_{ii}\qquad(i\in I),
+\]">\[
+\sum_{z:\,i\in I(z)}H(z)=-E_{ii}\qquad(i\in I),
+\]</span>
+where <span class="math" data-tex="\(E_{ii}\)">\(E_{ii}\)</span> is the diagonal matrix unit.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span> with mark <span class="math" data-tex="\(a_i=(a_{i1},\dots,a_{ih})\in S^h\)">\(a_i=(a_{i1},\dots,a_{ih})\in S^h\)</span>, put
+<span class="math math-display" data-tex="\[
+f_i(X)=\prod_{t=1}^h\ \prod_{a\in S\setminus\{a_{it}\}}\frac{X_t-a}{a_{it}-a}.
+\]">\[
+f_i(X)=\prod_{t=1}^h\ \prod_{a\in S\setminus\{a_{it}\}}\frac{X_t-a}{a_{it}-a}.
+\]</span>
+This polynomial has total degree at most <span class="math" data-tex="\(h(|S|-1)\)">\(h(|S|-1)\)</span>; it is <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> at every other point of <span class="math" data-tex="\(S^h\)">\(S^h\)</span>, in particular at the other marks. Let <span class="math" data-tex="\(f\)">\(f\)</span> be the column of the <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, and <span class="math" data-tex="\(H(z)=f(z)f(z)^{\mathsf T}\)">\(H(z)=f(z)f(z)^{\mathsf T}\)</span>; it has rank at most <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(H(a_i)=E_{ii}\)">\(H(a_i)=E_{ii}\)</span>. Every entry of <span class="math" data-tex="\(H\)">\(H\)</span> is a polynomial of degree at most
+<span class="math math-display" data-tex="\[
+2h(|S|-1)&lt;\frac{2hq}{100}=\frac{2q}5&lt;q-1 .
+\]">\[
+2h(|S|-1)&lt;\frac{2hq}{100}=\frac{2q}5&lt;q-1 .
+\]</span>
+By Lemma 3.2 its sum over the line <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span> is zero, so the sum of <span class="math" data-tex="\(H(z)\)">\(H(z)\)</span> over <span class="math" data-tex="\(z\in\ell_i\setminus\{a_i\}\)">\(z\in\ell_i\setminus\{a_i\}\)</span>, which is exactly the set of <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(i\in I(z)\)">\(i\in I(z)\)</span>, equals <span class="math" data-tex="\(-H(a_i)=-E_{ii}\)">\(-H(a_i)=-E_{ii}\)</span>. Other marks on <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span>, if any, remain in the sum. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 3.4</strong> ([OpenAI-RF, Section 2.5]). No homomorphism from <span class="math" data-tex="\(G\)">\(G\)</span> onto a finite group keeps every rectangular word nontrivial.</p>
+<p><em>Proof.</em> Suppose <span class="math" data-tex="\(\pi\colon G\to Q\)">\(\pi\colon G\to Q\)</span> does, and use the matrices above. Exchanging finite sums and using Lemma 3.3,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{z\in P}H(z)\otimes Z(z)\\
+&amp;\quad=\sum_{i\in I}\Bigl(\sum_{z:\,i\in I(z)}H(z)\Bigr)\otimes Y_i\\
+&amp;\quad=-\sum_{i\in I}E_{ii}\otimes Y_i ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{z\in P}H(z)\otimes Z(z)\\
+&amp;\quad=\sum_{i\in I}\Bigl(\sum_{z:\,i\in I(z)}H(z)\Bigr)\otimes Y_i\\
+&amp;\quad=-\sum_{i\in I}E_{ii}\otimes Y_i ,
+\end{aligned}
+\]</span>
+which is the block diagonal matrix <span class="math" data-tex="\(-\bigoplus_iY_i\)">\(-\bigoplus_iY_i\)</span>. By Proposition 2.2 its rank is at least <span class="math" data-tex="\(NrD/4\)">\(NrD/4\)</span>. The image of <span class="math" data-tex="\(H(z)\otimes Z(z)\)">\(H(z)\otimes Z(z)\)</span> lies in the tensor product of the images, of dimension at most <span class="math" data-tex="\(\operatorname{rank}Z(z)\)">\(\operatorname{rank}Z(z)\)</span>, since <span class="math" data-tex="\(\operatorname{rank}H(z)\le1\)">\(\operatorname{rank}H(z)\le1\)</span>. By subadditivity of rank and Lemma 3.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{NrD}4&amp;\le2D\,|P\setminus E|+rD\,|E|\\
+&amp;\le2mD+r|E|D .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{NrD}4&amp;\le2D\,|P\setminus E|+rD\,|E|\\
+&amp;\le2mD+r|E|D .
+\end{aligned}
+\]</span>
+Dividing by <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span> contradicts the budget <span class="math" data-tex="\(Nr/4&gt;2m+r|E|\)">\(Nr/4&gt;2m+r|E|\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-residual-finiteness-and-linear-representations">4. Residual finiteness and linear representations</h2>
+<p>A group is <em>residually finite</em> if every nonidentity element has a nonidentity image under some homomorphism to a finite group. The intersection <span class="math" data-tex="\(R_f(G)\)">\(R_f(G)\)</span> of the kernels of all homomorphisms from <span class="math" data-tex="\(G\)">\(G\)</span> to finite groups is its <em>finite residual</em>; <span class="math" data-tex="\(G\)">\(G\)</span> is residually finite exactly when <span class="math" data-tex="\(R_f(G)=1\)">\(R_f(G)=1\)</span>.</p>
+<p><strong>Theorem 4.1</strong> (the theorem of the course; [OpenAI-RF, Theorem 1.1]). The group <span class="math" data-tex="\(G=\pi_1(K)\)">\(G=\pi_1(K)\)</span> is torsion-free and word-hyperbolic, and it is not residually finite: some rectangular word lies in <span class="math" data-tex="\(R_f(G)\)">\(R_f(G)\)</span>.</p>
+<p><em>Proof.</em> Torsion-freeness and hyperbolicity follow from the triangle complex criterion and Lemma 3.1 of the previous lesson (Section 4 there). Suppose that every <span class="math" data-tex="\(w\in\mathcal R\)">\(w\in\mathcal R\)</span> has a nonidentity image under some homomorphism <span class="math" data-tex="\(\varphi_w\colon G\to F_w\)">\(\varphi_w\colon G\to F_w\)</span> to a finite group. The product homomorphism <span class="math" data-tex="\(G\to\prod_{w\in\mathcal R}F_w\)">\(G\to\prod_{w\in\mathcal R}F_w\)</span>, followed by its image, is a homomorphism onto a finite group that keeps every rectangular word nontrivial, contradicting Theorem 3.4. So some <span class="math" data-tex="\(w\in\mathcal R\)">\(w\in\mathcal R\)</span> has trivial image under every homomorphism to a finite group, that is, <span class="math" data-tex="\(w\in R_f(G)\)">\(w\in R_f(G)\)</span>; and <span class="math" data-tex="\(w\ne1\)">\(w\ne1\)</span> by Proposition 4.2 of the previous lesson. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The argument is existential: one member of the finite set <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> works for all finite quotients, without identifying which one.</p>
+<p><strong>Theorem 4.2</strong> (Malcev). A finitely generated subgroup <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> of <span class="math" data-tex="\(\mathrm{GL}_n(F)\)">\(\mathrm{GL}_n(F)\)</span>, for a field <span class="math" data-tex="\(F\)">\(F\)</span>, is residually finite.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(A\subset F\)">\(A\subset F\)</span> be the subring generated by the entries of finitely many generators of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and of their inverses. Then <span class="math" data-tex="\(\Gamma\subset\mathrm{GL}_n(A)\)">\(\Gamma\subset\mathrm{GL}_n(A)\)</span>, and <span class="math" data-tex="\(A\)">\(A\)</span> is a domain of finite type over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The ring <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is a Jacobson ring, so <span class="math" data-tex="\(A\)">\(A\)</span> is Jacobson, and for every maximal ideal <span class="math" data-tex="\(\mathfrak n\subset A\)">\(\mathfrak n\subset A\)</span> the residue field <span class="math" data-tex="\(A/\mathfrak n\)">\(A/\mathfrak n\)</span> is a finite extension of <span class="math" data-tex="\(\mathbb Z/(p)\)">\(\mathbb Z/(p)\)</span> for the prime <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(\mathfrak n\cap\mathbb Z=(p)\)">\(\mathfrak n\cap\mathbb Z=(p)\)</span> (<a href="../AG-CA/the-nullstellensatz-and-jacobson-rings.html">The Nullstellensatz and Jacobson rings</a>, Proposition 3.2 and Theorem 4.2). Let <span class="math" data-tex="\(g\in\Gamma\)">\(g\in\Gamma\)</span>, <span class="math" data-tex="\(g\ne1\)">\(g\ne1\)</span>, and choose a nonzero entry <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(g-1\)">\(g-1\)</span>. In the Jacobson domain <span class="math" data-tex="\(A\)">\(A\)</span> the maximal ideals intersect in <span class="math" data-tex="\(0\)">\(0\)</span>, so some maximal ideal <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> does not contain <span class="math" data-tex="\(a\)">\(a\)</span>. Reduction modulo <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> is a homomorphism <span class="math" data-tex="\(\mathrm{GL}_n(A)\to\mathrm{GL}_n(A/\mathfrak n)\)">\(\mathrm{GL}_n(A)\to\mathrm{GL}_n(A/\mathfrak n)\)</span> to a finite group, and the image of <span class="math" data-tex="\(g\)">\(g\)</span> is not <span class="math" data-tex="\(1\)">\(1\)</span>, because the image of <span class="math" data-tex="\(a\)">\(a\)</span> is not <span class="math" data-tex="\(0\)">\(0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 4.3</strong> ([OpenAI-RF, Corollary 1.2]). For every field <span class="math" data-tex="\(F\)">\(F\)</span>, every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and every homomorphism <span class="math" data-tex="\(\rho\colon G\to\mathrm{GL}_n(F)\)">\(\rho\colon G\to\mathrm{GL}_n(F)\)</span>, <span class="math" data-tex="\(R_f(G)\subset\ker\rho\)">\(R_f(G)\subset\ker\rho\)</span>. In particular the nonidentity rectangular word of Theorem 4.1 is killed by all these representations, and <span class="math" data-tex="\(G\)">\(G\)</span> is not linear over any field.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\rho(G)\)">\(\rho(G)\)</span> is finitely generated, hence residually finite by Theorem 4.2. If <span class="math" data-tex="\(g\in R_f(G)\)">\(g\in R_f(G)\)</span> had <span class="math" data-tex="\(\rho(g)\ne1\)">\(\rho(g)\ne1\)</span>, a homomorphism from <span class="math" data-tex="\(\rho(G)\)">\(\rho(G)\)</span> to a finite group not killing <span class="math" data-tex="\(\rho(g)\)">\(\rho(g)\)</span>, composed with <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, would not kill <span class="math" data-tex="\(g\)">\(g\)</span>, contrary to <span class="math" data-tex="\(g\in R_f(G)\)">\(g\in R_f(G)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The corollary does not say that every representation of <span class="math" data-tex="\(G\)">\(G\)</span> is trivial, and it concerns commutative fields and finite dimensions only.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Show that a finite group <span class="math" data-tex="\(Q\)">\(Q\)</span> acts on itself by left multiplication without fixed points for <span class="math" data-tex="\(g\ne1\)">\(g\ne1\)</span>, and compute <span class="math" data-tex="\(\operatorname{tr}U(g)\)">\(\operatorname{tr}U(g)\)</span>.</p>
+<p><strong>5.2.</strong> Give an integer matrix whose rank drops modulo a prime <span class="math" data-tex="\(q\)">\(q\)</span>, and check that Lemma 1.2 is not contradicted.</p>
+<p><strong>5.3.</strong> In Lemma 3.2, show that <span class="math" data-tex="\(\sum_{s\in\mathbb F_q}s^{q-1}=-1\)">\(\sum_{s\in\mathbb F_q}s^{q-1}=-1\)</span>, so the degree bound cannot be dropped.</p>
+<p><strong>5.4.</strong> Count the choices of <span class="math" data-tex="\((u,u&#x27;,v,v&#x27;)\in[r]^4\)">\((u,u&#x27;,v,v&#x27;)\in[r]^4\)</span> with <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span> or <span class="math" data-tex="\(v=v&#x27;\)">\(v=v&#x27;\)</span>.</p>
+<p><strong>5.5.</strong> Why is it essential that <span class="math" data-tex="\(q\)">\(q\)</span> was chosen before the finite quotient <span class="math" data-tex="\(Q\)">\(Q\)</span>?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(\pi(g)x=x\)">\(\pi(g)x=x\)</span> forces <span class="math" data-tex="\(\pi(g)=1\)">\(\pi(g)=1\)</span>. So <span class="math" data-tex="\(U(g)\)">\(U(g)\)</span> has no diagonal entry <span class="math" data-tex="\(1\)">\(1\)</span> when <span class="math" data-tex="\(\pi(g)\ne1\)">\(\pi(g)\ne1\)</span>, and <span class="math" data-tex="\(\operatorname{tr}U(g)=0\)">\(\operatorname{tr}U(g)=0\)</span>; for <span class="math" data-tex="\(\pi(g)=1\)">\(\pi(g)=1\)</span> it is the identity, of trace <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(M=\bigl(\begin{smallmatrix}1&amp;1\\1&amp;-1\end{smallmatrix}\bigr)\)">\(M=\bigl(\begin{smallmatrix}1&amp;1\\1&amp;-1\end{smallmatrix}\bigr)\)</span> has real rank <span class="math" data-tex="\(2\)">\(2\)</span> and determinant <span class="math" data-tex="\(-2\)">\(-2\)</span>, so rank <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(2\)">\(2\)</span>. Its rows have norm <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, so Lemma 1.2 requires <span class="math" data-tex="\(q&gt;2\)">\(q&gt;2\)</span>, and indeed for <span class="math" data-tex="\(q&gt;2\)">\(q&gt;2\)</span> the rank is <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>5.3.</strong> Every <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span> has <span class="math" data-tex="\(s^{q-1}=1\)">\(s^{q-1}=1\)</span>, and <span class="math" data-tex="\(0^{q-1}=0\)">\(0^{q-1}=0\)</span>, so the sum is <span class="math" data-tex="\(q-1=-1\)">\(q-1=-1\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(r\cdot r^2\)">\(r\cdot r^2\)</span> with <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span>, <span class="math" data-tex="\(r^2\cdot r\)">\(r^2\cdot r\)</span> with <span class="math" data-tex="\(v=v&#x27;\)">\(v=v&#x27;\)</span>, and <span class="math" data-tex="\(r^2\)">\(r^2\)</span> with both, so <span class="math" data-tex="\(2r^3-r^2\)">\(2r^3-r^2\)</span>.</p>
+<p><strong>5.5.</strong> The rank comparison needs <span class="math" data-tex="\(q&gt;r\)">\(q&gt;r\)</span> and the budget of Lemma 1.2 of the previous lesson, which concern the construction only. If <span class="math" data-tex="\(q\)">\(q\)</span> had to depend on <span class="math" data-tex="\(Q\)">\(Q\)</span>, the complex, and so the group, would change with the quotient, and the argument would say nothing about one fixed group.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-RF] OpenAI, <em>A torsion-free hyperbolic group that is not residually finite</em>, OpenAI Math Release preprint, 23 September 2026, Sections 1, 2.4 and 2.5. https://github.com/openai/math/tree/main/preprints/a-torsion-free-hyperbolic-group-that-is-not-residually-finite-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

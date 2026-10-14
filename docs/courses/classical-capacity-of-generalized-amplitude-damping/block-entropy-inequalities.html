@@ -1,0 +1,301 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Block entropy inequalities</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Classical capacity of generalized amplitude damping)</a><a href="entropy-differences-and-log-determinants.html">Previous lesson</a><a href="output-entropy-of-damping-blocks.html">Next lesson</a><a href="src/block-entropy-inequalities.md">Editable source</a></nav><main><article><h1 id="block-entropy-inequalities">Block entropy inequalities</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>When a qubit and a second system are in a joint pure state, one use of the damping channel on the qubit produces a block matrix whose blocks are built from the outputs of the second system's two conditional states. This lesson proves the two entropy inequalities for such block matrices on which the whole course rests. The first concerns a Gram matrix <span class="math" data-tex="\(MM^*\)">\(MM^*\)</span> of a two-by-two block matrix <span class="math" data-tex="\(M\)">\(M\)</span> with one zero block: its entropy is at least the weighted entropies of the three blocks plus the entropy of the scalar matrix of their norms (Theorem 1.1). The second extends this to the block matrices that appear for thermal damping, which have no zero block, by writing them as mixtures of two zero-block matrices with the same scalar term (Theorem 2.1).</p>
+<ul>
+<li>The zero-block inequality (Theorem 1.1).</li>
+<li>The thermal block inequality (Theorem 2.1) and its sharpness (Remark 2.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-GAD, Sections 2 and 3]. It uses the integral formula, the joint convexity and the scalar deficit of <a href="entropy-differences-and-log-determinants.html">Entropy differences and log-determinants</a>, and the facts on entropy of <a href="quantum-channels-and-holevo-information.html">Quantum channels and Holevo information</a>, Section 2, in particular concavity (Proposition 2.1 there).</p>
+<h2 id="1-the-zero-block-inequality">1. The zero-block inequality</h2>
+<p><strong>Theorem 1.1</strong> ([OpenAI-GAD, Theorem 2.1]). Let <span class="math" data-tex="\(A,B,C\in\mathbb C^{d\times e}\)">\(A,B,C\in\mathbb C^{d\times e}\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M=\begin{pmatrix}A&amp;B\\ C&amp;0\end{pmatrix},\qquad x=\operatorname{Tr}AA^*,\\
+y=\operatorname{Tr}BB^*,\qquad z=\operatorname{Tr}CC^*.
+\end{gathered}
+\]">\[
+\begin{gathered}
+M=\begin{pmatrix}A&amp;B\\ C&amp;0\end{pmatrix},\qquad x=\operatorname{Tr}AA^*,\\
+y=\operatorname{Tr}BB^*,\qquad z=\operatorname{Tr}CC^*.
+\end{gathered}
+\]</span>
+If <span class="math" data-tex="\(x+y+z=1\)">\(x+y+z=1\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S(MM^*)&amp;\ge xS\Bigl(\frac{AA^*}x\Bigr)+yS\Bigl(\frac{BB^*}y\Bigr)\\
+&amp;\quad+zS\Bigl(\frac{CC^*}z\Bigr)+g(yz),
+\end{aligned}
+\]">\[
+\begin{aligned}
+S(MM^*)&amp;\ge xS\Bigl(\frac{AA^*}x\Bigr)+yS\Bigl(\frac{BB^*}y\Bigr)\\
+&amp;\quad+zS\Bigl(\frac{CC^*}z\Bigr)+g(yz),
+\end{aligned}
+\]</span>
+where a term with zero weight is omitted.</p>
+<p>The term <span class="math" data-tex="\(g(yz)\)">\(g(yz)\)</span> is the entropy of the Gram matrix of the scalar matrix <span class="math" data-tex="\(\bigl(\begin{smallmatrix}\sqrt x&amp;\sqrt y\\ \sqrt z&amp;0\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}\sqrt x&amp;\sqrt y\\ \sqrt z&amp;0\end{smallmatrix}\bigr)\)</span> of the block norms: its trace is <span class="math" data-tex="\(1\)">\(1\)</span> and its determinant is <span class="math" data-tex="\(yz\)">\(yz\)</span>. For blocks of size <span class="math" data-tex="\(1\times1\)">\(1\times1\)</span> the inequality is therefore an equality. The next section applies the theorem to block matrices without a zero block, by writing them as mixtures of matrices with one.</p>
+<p><em>Proof.</em> <em>The deficit.</em> Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta&amp;=S(AA^*)+S(BB^*)\\
+&amp;\quad+S(CC^*)-S(MM^*).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta&amp;=S(AA^*)+S(BB^*)\\
+&amp;\quad+S(CC^*)-S(MM^*).
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, fact 3 of Section 2 of the first lesson gives <span class="math" data-tex="\(S(AA^*)=xS(AA^*/x)-x\ln x\)">\(S(AA^*)=xS(AA^*/x)-x\ln x\)</span>, and similarly for the other blocks; a block of mass zero is zero and contributes nothing. Since <span class="math" data-tex="\(F(x,y,z)=H(x,y,z)-g(yz)\)">\(F(x,y,z)=H(x,y,z)-g(yz)\)</span> on the simplex (Section 4 of the second lesson), the theorem is equivalent to
+<span class="math math-display" data-tex="\[
+\Delta\le F(x,y,z).
+\]">\[
+\Delta\le F(x,y,z).
+\]</span>
+We prove this inequality for all masses <span class="math" data-tex="\(x,y,z\ge0\)">\(x,y,z\ge0\)</span>, first for square blocks.</p>
+<p><em>Square blocks.</em> Let <span class="math" data-tex="\(d=e=N\)">\(d=e=N\)</span>. The matrices <span class="math" data-tex="\(U=AA^*\oplus BB^*\oplus CC^*\)">\(U=AA^*\oplus BB^*\oplus CC^*\)</span> and <span class="math" data-tex="\(V=MM^*\)">\(V=MM^*\)</span> have the same trace <span class="math" data-tex="\(x+y+z\)">\(x+y+z\)</span>, so by Lemma 1.1 of the second lesson
+<span class="math math-display" data-tex="\[
+\Delta=\int_0^\infty\frac{f(r)}{r^2}\,dr,
+\]">\[
+\Delta=\int_0^\infty\frac{f(r)}{r^2}\,dr,
+\]</span>
+where <span class="math" data-tex="\(f(r)\)">\(f(r)\)</span> is the difference of <span class="math" data-tex="\(\ln\det(I+rU)\)">\(\ln\det(I+rU)\)</span> and <span class="math" data-tex="\(\ln\det(I+rV)\)">\(\ln\det(I+rV)\)</span>. Fix <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> and put <span class="math" data-tex="\(D=I+rBB^*\)">\(D=I+rBB^*\)</span> and <span class="math" data-tex="\(E=I+rC^*C\)">\(E=I+rC^*C\)</span>. In block form, <span class="math" data-tex="\(I+rMM^*\)">\(I+rMM^*\)</span> has the diagonal blocks <span class="math" data-tex="\(I+rAA^*+rBB^*\)">\(I+rAA^*+rBB^*\)</span> and <span class="math" data-tex="\(I+rCC^*\)">\(I+rCC^*\)</span> and the off-diagonal blocks <span class="math" data-tex="\(rAC^*\)">\(rAC^*\)</span> and <span class="math" data-tex="\(rCA^*\)">\(rCA^*\)</span>. Its lower right block is positive definite, and elimination gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\det(I+rMM^*)\\
+&amp;\quad=\det(I+rCC^*)\\
+&amp;\qquad\times\det(D+rA\,\Xi A^*),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\det(I+rMM^*)\\
+&amp;\quad=\det(I+rCC^*)\\
+&amp;\qquad\times\det(D+rA\,\Xi A^*),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(\Xi=I-rC^*(I+rCC^*)^{-1}C\)">\(\Xi=I-rC^*(I+rCC^*)^{-1}C\)</span>. Since <span class="math" data-tex="\(C^*(I+rCC^*)^{-1}=(I+rC^*C)^{-1}C^*\)">\(C^*(I+rCC^*)^{-1}=(I+rC^*C)^{-1}C^*\)</span>, we have <span class="math" data-tex="\(\Xi=(I+rC^*C)^{-1}=E^{-1}\)">\(\Xi=(I+rC^*C)^{-1}=E^{-1}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\det(I+rMM^*)\\
+&amp;\quad=\det(I+rCC^*)\\
+&amp;\qquad\times\det(D+rAE^{-1}A^*),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\det(I+rMM^*)\\
+&amp;\quad=\det(I+rCC^*)\\
+&amp;\qquad\times\det(D+rAE^{-1}A^*),
+\end{aligned}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+f(r)=\ln\det(I+rAA^*)-G_{\sqrt rA}(D,E),
+\]">\[
+f(r)=\ln\det(I+rAA^*)-G_{\sqrt rA}(D,E),
+\]</span>
+with the function <span class="math" data-tex="\(G\)">\(G\)</span> of Lemma 2.1 of the second lesson, because <span class="math" data-tex="\(\ln\det(I+rBB^*)=\ln\det D\)">\(\ln\det(I+rBB^*)=\ln\det D\)</span>.</p>
+<p><em>Diagonal <span class="math" data-tex="\(A\)">\(A\)</span>.</em> Choose a singular value decomposition <span class="math" data-tex="\(A=U_A\Sigma V_A^*\)">\(A=U_A\Sigma V_A^*\)</span> with unitaries <span class="math" data-tex="\(U_A,V_A\)">\(U_A,V_A\)</span>. Replacing <span class="math" data-tex="\((A,B,C)\)">\((A,B,C)\)</span> by <span class="math" data-tex="\((\Sigma,U_A^*B,CV_A)\)">\((\Sigma,U_A^*B,CV_A)\)</span> replaces <span class="math" data-tex="\(M\)">\(M\)</span> by <span class="math" data-tex="\(\operatorname{diag}(U_A^*,I)\,M\operatorname{diag}(V_A,I)\)">\(\operatorname{diag}(U_A^*,I)\,M\operatorname{diag}(V_A,I)\)</span>, which conjugates <span class="math" data-tex="\(MM^*\)">\(MM^*\)</span>, <span class="math" data-tex="\(AA^*\)">\(AA^*\)</span> and <span class="math" data-tex="\(BB^*\)">\(BB^*\)</span> by unitaries and leaves <span class="math" data-tex="\(CC^*\)">\(CC^*\)</span> unchanged. All entropies and masses are preserved, so we may assume
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=\operatorname{diag}(\sqrt{x_1},\dots,\sqrt{x_N}),\\
+y_i=(BB^*)_{ii},\qquad z_i=(C^*C)_{ii},
+\end{gathered}
+\]">\[
+\begin{gathered}
+A=\operatorname{diag}(\sqrt{x_1},\dots,\sqrt{x_N}),\\
+y_i=(BB^*)_{ii},\qquad z_i=(C^*C)_{ii},
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(x_i,y_i,z_i\ge0\)">\(x_i,y_i,z_i\ge0\)</span> and <span class="math" data-tex="\(\sum_i(x_i,y_i,z_i)=(x,y,z)\)">\(\sum_i(x_i,y_i,z_i)=(x,y,z)\)</span>.</p>
+<p><em>Averaging over signs.</em> For <span class="math" data-tex="\(\varepsilon\in\{-1,1\}^N\)">\(\varepsilon\in\{-1,1\}^N\)</span> let <span class="math" data-tex="\(S_\varepsilon=\operatorname{diag}(\varepsilon_1,\dots,\varepsilon_N)\)">\(S_\varepsilon=\operatorname{diag}(\varepsilon_1,\dots,\varepsilon_N)\)</span>. Since <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(S_\varepsilon\)">\(S_\varepsilon\)</span> are diagonal, <span class="math" data-tex="\(S_\varepsilon AS_\varepsilon=A\)">\(S_\varepsilon AS_\varepsilon=A\)</span> and <span class="math" data-tex="\(AS_\varepsilon=S_\varepsilon A\)">\(AS_\varepsilon=S_\varepsilon A\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S_\varepsilon DS_\varepsilon+rA(S_\varepsilon ES_\varepsilon)^{-1}A\\
+&amp;\qquad=S_\varepsilon(D+rAE^{-1}A)S_\varepsilon ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;S_\varepsilon DS_\varepsilon+rA(S_\varepsilon ES_\varepsilon)^{-1}A\\
+&amp;\qquad=S_\varepsilon(D+rAE^{-1}A)S_\varepsilon ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(G_{\sqrt rA}(S_\varepsilon DS_\varepsilon,S_\varepsilon ES_\varepsilon)=G_{\sqrt rA}(D,E)\)">\(G_{\sqrt rA}(S_\varepsilon DS_\varepsilon,S_\varepsilon ES_\varepsilon)=G_{\sqrt rA}(D,E)\)</span>. The average of <span class="math" data-tex="\(S_\varepsilon DS_\varepsilon\)">\(S_\varepsilon DS_\varepsilon\)</span> over all <span class="math" data-tex="\(2^N\)">\(2^N\)</span> sign vectors is the diagonal part of <span class="math" data-tex="\(D\)">\(D\)</span>, because the entry <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> is multiplied by <span class="math" data-tex="\(\varepsilon_i\varepsilon_j\)">\(\varepsilon_i\varepsilon_j\)</span>, whose average is <span class="math" data-tex="\(0\)">\(0\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>; likewise for <span class="math" data-tex="\(E\)">\(E\)</span>. The diagonal parts are <span class="math" data-tex="\(D&#x27;=\operatorname{diag}(1+ry_i)\)">\(D&#x27;=\operatorname{diag}(1+ry_i)\)</span> and <span class="math" data-tex="\(E&#x27;=\operatorname{diag}(1+rz_i)\)">\(E&#x27;=\operatorname{diag}(1+rz_i)\)</span>, and joint convexity (Lemma 2.1 of the second lesson) therefore gives
+<span class="math math-display" data-tex="\[
+G_{\sqrt rA}(D,E)\ge G_{\sqrt rA}(D&#x27;,E&#x27;).
+\]">\[
+G_{\sqrt rA}(D,E)\ge G_{\sqrt rA}(D&#x27;,E&#x27;).
+\]</span>
+The right side is a sum of scalar terms, so <span class="math" data-tex="\(f(r)\)">\(f(r)\)</span> is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_i\Bigl[&amp;\ln(1+rx_i)\\
+&amp;-\ln\Bigl(1+\frac{rx_i}{(1+ry_i)(1+rz_i)}\Bigr)\Bigr].
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_i\Bigl[&amp;\ln(1+rx_i)\\
+&amp;-\ln\Bigl(1+\frac{rx_i}{(1+ry_i)(1+rz_i)}\Bigr)\Bigr].
+\end{aligned}
+\]</span>
+By the integral formula in the proof of Proposition 4.1 of the second lesson, the <span class="math" data-tex="\(i\)">\(i\)</span>-th summand integrates against <span class="math" data-tex="\(dr/r^2\)">\(dr/r^2\)</span> to <span class="math" data-tex="\(F(x_i,y_i,z_i)\)">\(F(x_i,y_i,z_i)\)</span>. Integrating, and using the superadditivity of <span class="math" data-tex="\(F\)">\(F\)</span>,
+<span class="math math-display" data-tex="\[
+\Delta\le\sum_iF(x_i,y_i,z_i)\le F(x,y,z).
+\]">\[
+\Delta\le\sum_iF(x_i,y_i,z_i)\le F(x,y,z).
+\]</span>
+Only inverses of positive definite matrices occur, also when <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span> or <span class="math" data-tex="\(C\)">\(C\)</span> is singular, so this covers all square blocks.</p>
+<p><em>Rectangular blocks.</em> For <span class="math" data-tex="\(d\times e\)">\(d\times e\)</span> blocks let <span class="math" data-tex="\(N=\max(d,e)\)">\(N=\max(d,e)\)</span> and let <span class="math" data-tex="\(J\colon\mathbb C^d\to\mathbb C^N\)">\(J\colon\mathbb C^d\to\mathbb C^N\)</span> and <span class="math" data-tex="\(K\colon\mathbb C^e\to\mathbb C^N\)">\(K\colon\mathbb C^e\to\mathbb C^N\)</span> be the coordinate isometries. Replace each block <span class="math" data-tex="\(X\)">\(X\)</span> by <span class="math" data-tex="\(JXK^*\)">\(JXK^*\)</span>. The new block matrix is <span class="math" data-tex="\((J\oplus J)M(K\oplus K)^*\)">\((J\oplus J)M(K\oplus K)^*\)</span>, whose Gram matrix <span class="math" data-tex="\((J\oplus J)MM^*(J\oplus J)^*\)">\((J\oplus J)MM^*(J\oplus J)^*\)</span> has the nonzero eigenvalues of <span class="math" data-tex="\(MM^*\)">\(MM^*\)</span>; the same holds for each block, and the masses do not change. So <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> and <span class="math" data-tex="\(F(x,y,z)\)">\(F(x,y,z)\)</span> do not change, and the square case applies. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Theorem 1.1 is the case of blocks of one common shape of the triangular block entropy inequality of Tang, Zhu, Bai and Wang [TZBW, Theorem 4.2], after exchanging the two block rows: their lower triangular matrix <span class="math" data-tex="\(\bigl(\begin{smallmatrix}A&#x27;&amp;0\\ B&#x27;&amp;D&#x27;\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}A&#x27;&amp;0\\ B&#x27;&amp;D&#x27;\end{smallmatrix}\bigr)\)</span> becomes ours with <span class="math" data-tex="\(A&#x27;=C\)">\(A&#x27;=C\)</span>, <span class="math" data-tex="\(B&#x27;=A\)">\(B&#x27;=A\)</span> and <span class="math" data-tex="\(D&#x27;=B\)">\(D&#x27;=B\)</span>, and their scalar term, written with the concurrence <span class="math" data-tex="\(2\sqrt{\operatorname{Tr}A&#x27;A&#x27;^*\cdot\operatorname{Tr}D&#x27;D&#x27;^*}\)">\(2\sqrt{\operatorname{Tr}A&#x27;A&#x27;^*\cdot\operatorname{Tr}D&#x27;D&#x27;^*}\)</span>, is <span class="math" data-tex="\(g(yz)\)">\(g(yz)\)</span>. They allow blocks of different shapes; the case of a common shape is the one needed below.</p>
+<h2 id="2-the-thermal-block-inequality">2. The thermal block inequality</h2>
+<p>For thermal damping both excitation and decay occur, and the output of a branch decomposition has the following form.</p>
+<p><strong>Theorem 2.1</strong> ([OpenAI-GAD, Theorem 3.1]). Let <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> be complex matrices of the same shape with <span class="math" data-tex="\(\operatorname{Tr}XX^*=\operatorname{Tr}YY^*=1\)">\(\operatorname{Tr}XX^*=\operatorname{Tr}YY^*=1\)</span>. Let <span class="math" data-tex="\(\alpha,\beta,\eta,\delta\ge0\)">\(\alpha,\beta,\eta,\delta\ge0\)</span> with <span class="math" data-tex="\(\alpha+\beta+\eta+\delta=1\)">\(\alpha+\beta+\eta+\delta=1\)</span> and
+<span class="math math-display" data-tex="\[
+\alpha\delta-\beta\eta=K^2,\qquad K\ge0 .
+\]">\[
+\alpha\delta-\beta\eta=K^2,\qquad K\ge0 .
+\]</span>
+Put <span class="math" data-tex="\(U_0=\alpha+\beta\)">\(U_0=\alpha+\beta\)</span>, <span class="math" data-tex="\(U_1=\eta+\delta\)">\(U_1=\eta+\delta\)</span>, <span class="math" data-tex="\(u=U_0U_1-K^2\)">\(u=U_0U_1-K^2\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T=\begin{pmatrix}T_{00}&amp;KXY^*\\ KYX^*&amp;T_{11}\end{pmatrix},\\
+T_{00}=\alpha XX^*+\beta YY^*,\\
+T_{11}=\eta XX^*+\delta YY^*.
+\end{gathered}
+\]">\[
+\begin{gathered}
+T=\begin{pmatrix}T_{00}&amp;KXY^*\\ KYX^*&amp;T_{11}\end{pmatrix},\\
+T_{00}=\alpha XX^*+\beta YY^*,\\
+T_{11}=\eta XX^*+\delta YY^*.
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(T\)">\(T\)</span> is a state, <span class="math" data-tex="\(0\le u\le\frac14\)">\(0\le u\le\frac14\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S(T)&amp;\ge(\alpha+\eta)S(XX^*)\\
+&amp;\quad+(\beta+\delta)S(YY^*)+g(u).
+\end{aligned}
+\]">\[
+\begin{aligned}
+S(T)&amp;\ge(\alpha+\eta)S(XX^*)\\
+&amp;\quad+(\beta+\delta)S(YY^*)+g(u).
+\end{aligned}
+\]</span></p>
+<p>No orthogonality of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>, and no commutation of <span class="math" data-tex="\(XX^*\)">\(XX^*\)</span> and <span class="math" data-tex="\(YY^*\)">\(YY^*\)</span>, is assumed.</p>
+<p><em>Proof.</em> <em>The parameter <span class="math" data-tex="\(u\)">\(u\)</span>.</em> Expanding <span class="math" data-tex="\(U_0U_1\)">\(U_0U_1\)</span> and subtracting <span class="math" data-tex="\(K^2=\alpha\delta-\beta\eta\)">\(K^2=\alpha\delta-\beta\eta\)</span> gives
+<span class="math math-display" data-tex="\[
+u=\alpha\eta+2\beta\eta+\beta\delta=\beta U_1+\eta U_0 .
+\]">\[
+u=\alpha\eta+2\beta\eta+\beta\delta=\beta U_1+\eta U_0 .
+\]</span>
+Hence <span class="math" data-tex="\(0\le u\le U_0U_1\le\frac14\)">\(0\le u\le U_0U_1\le\frac14\)</span>, since <span class="math" data-tex="\(U_0+U_1=1\)">\(U_0+U_1=1\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>.</em> Then <span class="math" data-tex="\(U_0,U_1&gt;0\)">\(U_0,U_1&gt;0\)</span>: if <span class="math" data-tex="\(U_0=0\)">\(U_0=0\)</span>, then <span class="math" data-tex="\(\alpha=\beta=0\)">\(\alpha=\beta=0\)</span>, so <span class="math" data-tex="\(K=0\)">\(K=0\)</span> and <span class="math" data-tex="\(u=0\)">\(u=0\)</span>; similarly for <span class="math" data-tex="\(U_1\)">\(U_1\)</span>. Keep <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and <span class="math" data-tex="\(U_1\)">\(U_1\)</span> fixed. Writing <span class="math" data-tex="\(\alpha=U_0-\beta\)">\(\alpha=U_0-\beta\)</span> and <span class="math" data-tex="\(\delta=U_1-\eta\)">\(\delta=U_1-\eta\)</span>, the condition <span class="math" data-tex="\(\alpha\delta-\beta\eta=K^2\)">\(\alpha\delta-\beta\eta=K^2\)</span> becomes the linear equation <span class="math" data-tex="\(U_1\beta+U_0\eta=u\)">\(U_1\beta+U_0\eta=u\)</span>, whose nonnegative solutions form the segment from <span class="math" data-tex="\((\beta,\eta)=(u/U_1,0)\)">\((\beta,\eta)=(u/U_1,0)\)</span> to <span class="math" data-tex="\((0,u/U_0)\)">\((0,u/U_0)\)</span>. At each end one coefficient vanishes. The two ends give the coefficient sets
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_1=\frac{K^2}{U_1},\quad\beta_1=\frac u{U_1},\\
+\eta_1=0,\quad\delta_1=U_1;\\
+\alpha_2=U_0,\quad\beta_2=0,\\
+\eta_2=\frac u{U_0},\quad\delta_2=\frac{K^2}{U_0},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\alpha_1=\frac{K^2}{U_1},\quad\beta_1=\frac u{U_1},\\
+\eta_1=0,\quad\delta_1=U_1;\\
+\alpha_2=U_0,\quad\beta_2=0,\\
+\eta_2=\frac u{U_0},\quad\delta_2=\frac{K^2}{U_0},
+\end{gathered}
+\]</span>
+and the weights that express the given coefficients as their mixture are
+<span class="math math-display" data-tex="\[
+w_1=\frac{\beta U_1}u,\qquad w_2=\frac{\eta U_0}u .
+\]">\[
+w_1=\frac{\beta U_1}u,\qquad w_2=\frac{\eta U_0}u .
+\]</span>
+Both sets are nonnegative with <span class="math" data-tex="\(\alpha_i+\beta_i=U_0\)">\(\alpha_i+\beta_i=U_0\)</span> and <span class="math" data-tex="\(\eta_i+\delta_i=U_1\)">\(\eta_i+\delta_i=U_1\)</span>, because <span class="math" data-tex="\(K^2+u=U_0U_1\)">\(K^2+u=U_0U_1\)</span>; so each set sums to <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(\alpha_i\delta_i-\beta_i\eta_i=K^2\)">\(\alpha_i\delta_i-\beta_i\eta_i=K^2\)</span>. The weights satisfy <span class="math" data-tex="\(w_1+w_2=1\)">\(w_1+w_2=1\)</span> by the formula for <span class="math" data-tex="\(u\)">\(u\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w_1\beta_1+w_2\beta_2=\beta,\\
+w_1\eta_1+w_2\eta_2=\eta ;
+\end{gathered}
+\]">\[
+\begin{gathered}
+w_1\beta_1+w_2\beta_2=\beta,\\
+w_1\eta_1+w_2\eta_2=\eta ;
+\end{gathered}
+\]</span>
+with the fixed sums <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and <span class="math" data-tex="\(U_1\)">\(U_1\)</span>, the mixture also recovers <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<p>Let <span class="math" data-tex="\(T_i\)">\(T_i\)</span> be the matrix <span class="math" data-tex="\(T\)">\(T\)</span> built with the coefficient set <span class="math" data-tex="\(i\)">\(i\)</span>. Both have the off-diagonal blocks <span class="math" data-tex="\(KXY^*\)">\(KXY^*\)</span> and <span class="math" data-tex="\(KYX^*\)">\(KYX^*\)</span>, so <span class="math" data-tex="\(T=w_1T_1+w_2T_2\)">\(T=w_1T_1+w_2T_2\)</span>. Each is a Gram matrix with a zero block:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_1=\begin{pmatrix}\sqrt{\alpha_1}X&amp;\sqrt{\beta_1}Y\\ \sqrt{\delta_1}Y&amp;0\end{pmatrix},\\
+M_2=\begin{pmatrix}\sqrt{\alpha_2}X&amp;0\\ \sqrt{\delta_2}Y&amp;\sqrt{\eta_2}X\end{pmatrix},\\
+T_i=M_iM_i^* ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+M_1=\begin{pmatrix}\sqrt{\alpha_1}X&amp;\sqrt{\beta_1}Y\\ \sqrt{\delta_1}Y&amp;0\end{pmatrix},\\
+M_2=\begin{pmatrix}\sqrt{\alpha_2}X&amp;0\\ \sqrt{\delta_2}Y&amp;\sqrt{\eta_2}X\end{pmatrix},\\
+T_i=M_iM_i^* ,
+\end{gathered}
+\]</span>
+using <span class="math" data-tex="\(\eta_1=\beta_2=0\)">\(\eta_1=\beta_2=0\)</span> and <span class="math" data-tex="\(\sqrt{\alpha_i\delta_i}=K\)">\(\sqrt{\alpha_i\delta_i}=K\)</span>. In particular <span class="math" data-tex="\(T_1\)">\(T_1\)</span>, <span class="math" data-tex="\(T_2\)">\(T_2\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> are positive semidefinite with trace <span class="math" data-tex="\(1\)">\(1\)</span>. Apply Theorem 1.1 to <span class="math" data-tex="\(M_1\)">\(M_1\)</span>, and to <span class="math" data-tex="\(M_2\)">\(M_2\)</span> after exchanging its two block rows, which conjugates <span class="math" data-tex="\(M_2M_2^*\)">\(M_2M_2^*\)</span> by a unitary. The products of the masses of the two blocks next to the zero block are
+<span class="math math-display" data-tex="\[
+\beta_1\delta_1=u,\qquad\eta_2\alpha_2=u ,
+\]">\[
+\beta_1\delta_1=u,\qquad\eta_2\alpha_2=u ,
+\]</span>
+so the same scalar term <span class="math" data-tex="\(g(u)\)">\(g(u)\)</span> appears in both inequalities:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S(T_i)&amp;\ge(\alpha_i+\eta_i)S(XX^*)\\
+&amp;\quad+(\beta_i+\delta_i)S(YY^*)+g(u).
+\end{aligned}
+\]">\[
+\begin{aligned}
+S(T_i)&amp;\ge(\alpha_i+\eta_i)S(XX^*)\\
+&amp;\quad+(\beta_i+\delta_i)S(YY^*)+g(u).
+\end{aligned}
+\]</span>
+Concavity of entropy, <span class="math" data-tex="\(S(T)\ge w_1S(T_1)+w_2S(T_2)\)">\(S(T)\ge w_1S(T_1)+w_2S(T_2)\)</span>, and the mixture identities for the coefficients give the claim. A zero weight does not affect the argument.</p>
+<p><em>The case <span class="math" data-tex="\(u=0\)">\(u=0\)</span>.</em> If <span class="math" data-tex="\(U_0=0\)">\(U_0=0\)</span>, then <span class="math" data-tex="\(\alpha=\beta=0\)">\(\alpha=\beta=0\)</span> and <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, so <span class="math" data-tex="\(T=0\oplus(\eta XX^*+\delta YY^*)\)">\(T=0\oplus(\eta XX^*+\delta YY^*)\)</span> with <span class="math" data-tex="\(\eta+\delta=1\)">\(\eta+\delta=1\)</span>; it is a state, and concavity and <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span> give the claim. The case <span class="math" data-tex="\(U_1=0\)">\(U_1=0\)</span> is the same. If <span class="math" data-tex="\(U_0,U_1&gt;0\)">\(U_0,U_1&gt;0\)</span>, then <span class="math" data-tex="\(u=\beta U_1+\eta U_0=0\)">\(u=\beta U_1+\eta U_0=0\)</span> forces <span class="math" data-tex="\(\beta=\eta=0\)">\(\beta=\eta=0\)</span> and <span class="math" data-tex="\(K=\sqrt{\alpha\delta}\)">\(K=\sqrt{\alpha\delta}\)</span>. Then <span class="math" data-tex="\(T=MM^*\)">\(T=MM^*\)</span> for
+<span class="math math-display" data-tex="\[
+M=\begin{pmatrix}\sqrt\alpha X&amp;0\\ \sqrt\delta Y&amp;0\end{pmatrix},
+\]">\[
+M=\begin{pmatrix}\sqrt\alpha X&amp;0\\ \sqrt\delta Y&amp;0\end{pmatrix},
+\]</span>
+which is the matrix <span class="math" data-tex="\(M_1\)">\(M_1\)</span> built with the coefficients <span class="math" data-tex="\((\alpha,0,0,\delta)\)">\((\alpha,0,0,\delta)\)</span>. So <span class="math" data-tex="\(T\)">\(T\)</span> is a state, and Theorem 1.1, with a zero block mass, gives <span class="math" data-tex="\(S(T)\ge\alpha S(XX^*)+\delta S(YY^*)\)">\(S(T)\ge\alpha S(XX^*)+\delta S(YY^*)\)</span>, which is the claim because <span class="math" data-tex="\(\beta=\eta=0\)">\(\beta=\eta=0\)</span> and <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Remark 2.2</strong> (sharpness). For <span class="math" data-tex="\(X=Y\)">\(X=Y\)</span>,
+<span class="math math-display" data-tex="\[
+T=\begin{pmatrix}U_0&amp;K\\K&amp;U_1\end{pmatrix}\otimes XX^* ,
+\]">\[
+T=\begin{pmatrix}U_0&amp;K\\K&amp;U_1\end{pmatrix}\otimes XX^* ,
+\]</span>
+the first factor is a state on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> with determinant <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(S(T)=g(u)+S(XX^*)\)">\(S(T)=g(u)+S(XX^*)\)</span>, which is the right side of Theorem 2.1. So the inequality is sharp for every admissible choice of coefficients.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be a matrix with <span class="math" data-tex="\(\operatorname{Tr}RR^*=1\)">\(\operatorname{Tr}RR^*=1\)</span>, and <span class="math" data-tex="\(A=\sqrt xR\)">\(A=\sqrt xR\)</span>, <span class="math" data-tex="\(B=\sqrt yR\)">\(B=\sqrt yR\)</span>, <span class="math" data-tex="\(C=\sqrt zR\)">\(C=\sqrt zR\)</span> with <span class="math" data-tex="\(x+y+z=1\)">\(x+y+z=1\)</span>. Show that Theorem 1.1 holds with equality.</p>
+<p><strong>3.2.</strong> Show that Theorem 1.1 with <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, and with <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, is the concavity of entropy for two states.</p>
+<p><strong>3.3.</strong> Show that <span class="math" data-tex="\(g(yz)\)">\(g(yz)\)</span> in Theorem 1.1 cannot be replaced by a larger function of <span class="math" data-tex="\(yz\)">\(yz\)</span>.</p>
+<p><strong>3.4.</strong> For <span class="math" data-tex="\(\alpha=\delta=0.4\)">\(\alpha=\delta=0.4\)</span> and <span class="math" data-tex="\(\beta=\eta=0.1\)">\(\beta=\eta=0.1\)</span>, compute <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span>, the two coefficient sets and the weights in the proof of Theorem 2.1, and check the mixture identities.</p>
+<p><strong>3.5.</strong> In Theorem 2.1 let <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, that is <span class="math" data-tex="\(\alpha\delta=\beta\eta\)">\(\alpha\delta=\beta\eta\)</span>, with <span class="math" data-tex="\(U_0,U_1&gt;0\)">\(U_0,U_1&gt;0\)</span>. Show that the inequality follows directly from the concavity of entropy.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> Here <span class="math" data-tex="\(M=\bigl(\begin{smallmatrix}\sqrt x&amp;\sqrt y\\ \sqrt z&amp;0\end{smallmatrix}\bigr)\otimes R\)">\(M=\bigl(\begin{smallmatrix}\sqrt x&amp;\sqrt y\\ \sqrt z&amp;0\end{smallmatrix}\bigr)\otimes R\)</span> in block form, so <span class="math" data-tex="\(MM^*\)">\(MM^*\)</span> is the tensor product of the scalar Gram matrix, with entropy <span class="math" data-tex="\(g(yz)\)">\(g(yz)\)</span>, and <span class="math" data-tex="\(RR^*\)">\(RR^*\)</span>. Hence <span class="math" data-tex="\(S(MM^*)=g(yz)+S(RR^*)\)">\(S(MM^*)=g(yz)+S(RR^*)\)</span>, and the right side is <span class="math" data-tex="\((x+y+z)S(RR^*)+g(yz)\)">\((x+y+z)S(RR^*)+g(yz)\)</span>.</p>
+<p><strong>3.2.</strong> For <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, <span class="math" data-tex="\(C=0\)">\(C=0\)</span> and <span class="math" data-tex="\(MM^*=(AA^*+BB^*)\oplus0\)">\(MM^*=(AA^*+BB^*)\oplus0\)</span>; the inequality says that <span class="math" data-tex="\(S(AA^*+BB^*)\)">\(S(AA^*+BB^*)\)</span> is at least <span class="math" data-tex="\(xS(AA^*/x)+yS(BB^*/y)\)">\(xS(AA^*/x)+yS(BB^*/y)\)</span>, with <span class="math" data-tex="\(x+y=1\)">\(x+y=1\)</span>. For <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, and <span class="math" data-tex="\(MM^*\)">\(MM^*\)</span> is the Gram matrix of the column <span class="math" data-tex="\(\bigl(\begin{smallmatrix}A\\ C\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}A\\ C\end{smallmatrix}\bigr)\)</span>, whose nonzero eigenvalues are those of <span class="math" data-tex="\(A^*A+C^*C\)">\(A^*A+C^*C\)</span>; the inequality says that <span class="math" data-tex="\(S(A^*A+C^*C)\)">\(S(A^*A+C^*C)\)</span> is at least <span class="math" data-tex="\(xS(A^*A/x)+zS(C^*C/z)\)">\(xS(A^*A/x)+zS(C^*C/z)\)</span>, using <span class="math" data-tex="\(S(AA^*)=S(A^*A)\)">\(S(AA^*)=S(A^*A)\)</span>.</p>
+<p><strong>3.3.</strong> For <span class="math" data-tex="\(1\times1\)">\(1\times1\)</span> blocks <span class="math" data-tex="\(S(MM^*)=g(yz)\)">\(S(MM^*)=g(yz)\)</span> and the block entropies vanish (Exercise 3.1 with <span class="math" data-tex="\(R=(1)\)">\(R=(1)\)</span>). If a function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> with <span class="math" data-tex="\(\phi(yz)&gt;g(yz)\)">\(\phi(yz)&gt;g(yz)\)</span> for some admissible <span class="math" data-tex="\(y,z\)">\(y,z\)</span> replaced <span class="math" data-tex="\(g\)">\(g\)</span>, the inequality would fail for those scalar blocks.</p>
+<p><strong>3.4.</strong> <span class="math" data-tex="\(K^2=0.16-0.01=0.15\)">\(K^2=0.16-0.01=0.15\)</span>, <span class="math" data-tex="\(U_0=U_1=0.5\)">\(U_0=U_1=0.5\)</span>, <span class="math" data-tex="\(u=0.25-0.15=0.1\)">\(u=0.25-0.15=0.1\)</span>. The first set is <span class="math" data-tex="\((0.3,0.2,0,0.5)\)">\((0.3,0.2,0,0.5)\)</span> with <span class="math" data-tex="\(w_1=0.05/0.1=0.5\)">\(w_1=0.05/0.1=0.5\)</span>, the second <span class="math" data-tex="\((0.5,0,0.2,0.3)\)">\((0.5,0,0.2,0.3)\)</span> with <span class="math" data-tex="\(w_2=0.5\)">\(w_2=0.5\)</span>. Then <span class="math" data-tex="\(0.5\cdot0.2=0.1=\beta=\eta\)">\(0.5\cdot0.2=0.1=\beta=\eta\)</span>, <span class="math" data-tex="\(0.5(0.3+0.5)=0.4=\alpha\)">\(0.5(0.3+0.5)=0.4=\alpha\)</span> and <span class="math" data-tex="\(0.5(0.5+0.3)=0.4=\delta\)">\(0.5(0.5+0.3)=0.4=\delta\)</span>; each set has <span class="math" data-tex="\(\alpha_i\delta_i=0.15\)">\(\alpha_i\delta_i=0.15\)</span>.</p>
+<p><strong>3.5.</strong> The off-diagonal blocks vanish, so <span class="math" data-tex="\(T=T_0\oplus T_1\)">\(T=T_0\oplus T_1\)</span> with <span class="math" data-tex="\(T_0=\alpha XX^*+\beta YY^*\)">\(T_0=\alpha XX^*+\beta YY^*\)</span> of trace <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and <span class="math" data-tex="\(T_1=\eta XX^*+\delta YY^*\)">\(T_1=\eta XX^*+\delta YY^*\)</span> of trace <span class="math" data-tex="\(U_1\)">\(U_1\)</span>. By facts 2 and 3 of Section 2 of the first lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S(T)&amp;=U_0S\Bigl(\frac{T_0}{U_0}\Bigr)+U_1S\Bigl(\frac{T_1}{U_1}\Bigr)\\
+&amp;\quad+h(U_0).
+\end{aligned}
+\]">\[
+\begin{aligned}
+S(T)&amp;=U_0S\Bigl(\frac{T_0}{U_0}\Bigr)+U_1S\Bigl(\frac{T_1}{U_1}\Bigr)\\
+&amp;\quad+h(U_0).
+\end{aligned}
+\]</span>
+Concavity gives <span class="math" data-tex="\(U_0S(T_0/U_0)\ge\alpha S(XX^*)+\beta S(YY^*)\)">\(U_0S(T_0/U_0)\ge\alpha S(XX^*)+\beta S(YY^*)\)</span> and <span class="math" data-tex="\(U_1S(T_1/U_1)\ge\eta S(XX^*)+\delta S(YY^*)\)">\(U_1S(T_1/U_1)\ge\eta S(XX^*)+\delta S(YY^*)\)</span>. Finally <span class="math" data-tex="\(u=U_0U_1=U_0(1-U_0)\)">\(u=U_0U_1=U_0(1-U_0)\)</span>, so <span class="math" data-tex="\(g(u)=h(U_0)\)">\(g(u)=h(U_0)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-GAD] OpenAI, <em>Classical capacity and entropy inequalities for generalized amplitude damping</em>, OpenAI Math Release preprint, 24 September 2026, Sections 2 and 3. https://github.com/openai/math/tree/main/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026</li>
+<li>[TZBW] Z. Tang, C. Zhu, G. Bai and X. Wang, <em>Classical capacity and entanglement cost of the amplitude damping channel</em>, arXiv:2609.28592 (2026), Theorem 4.2. https://arxiv.org/abs/2609.28592</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

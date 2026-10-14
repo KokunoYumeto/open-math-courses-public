@@ -1,0 +1,251 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Output entropy of damping blocks</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Classical capacity of generalized amplitude damping)</a><a href="block-entropy-inequalities.html">Previous lesson</a><a href="additivity-with-an-arbitrary-partner.html">Next lesson</a><a href="src/output-entropy-of-damping-blocks.md">Editable source</a></nav><main><article><h1 id="output-entropy-of-damping-blocks">Output entropy of damping blocks</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A pure input of one qubit with excited population <span class="math" data-tex="\(p\)">\(p\)</span> leaves the generalized amplitude-damping channel <span class="math" data-tex="\(\mathcal A=\mathcal A_{\gamma,\nu}\)">\(\mathcal A=\mathcal A_{\gamma,\nu}\)</span> with entropy <span class="math" data-tex="\(e(p)=g(v(p))\)">\(e(p)=g(v(p))\)</span> (<a href="quantum-channels-and-holevo-information.html">Quantum channels and Holevo information</a>, Lemma 5.2). This lesson proves that the same bound holds site by site for every input of <span class="math" data-tex="\(n\)">\(n\)</span> qubits, however entangled:
+<span class="math math-display" data-tex="\[
+S\bigl(\mathcal A^{\otimes n}(\rho)\bigr)\ge\sum_{j=1}^ne(p_j),
+\]">\[
+S\bigl(\mathcal A^{\otimes n}(\rho)\bigr)\ge\sum_{j=1}^ne(p_j),
+\]</span>
+where <span class="math" data-tex="\(p_j\)">\(p_j\)</span> is the excited population of the input at site <span class="math" data-tex="\(j\)">\(j\)</span> (Proposition 3.1 and Corollary 3.2). Together with an upper bound for the entropy of a mean output, this proves that the Holevo information of <span class="math" data-tex="\(n\)">\(n\)</span> uses is <span class="math" data-tex="\(n\)">\(n\)</span> times that of one use (Theorem 4.1).</p>
+<ul>
+<li>Convexity of <span class="math" data-tex="\(e\)">\(e\)</span> (Lemma 1.1).</li>
+<li>One damping use next to an arbitrary channel (Lemma 2.1).</li>
+<li>Many uses, pure and mixed inputs (Proposition 3.1, Corollary 3.2).</li>
+<li>The Holevo information of <span class="math" data-tex="\(n\)">\(n\)</span> uses (Theorem 4.1) and the capacity (Corollary 4.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-GAD, Sections 4 and 5]. It uses the thermal block inequality of <a href="block-entropy-inequalities.html">Block entropy inequalities</a> (Theorem 2.1 there), the convexity of <span class="math" data-tex="\(s\mapsto g(s^2)\)">\(s\mapsto g(s^2)\)</span> from <a href="entropy-differences-and-log-determinants.html">Entropy differences and log-determinants</a> (Lemma 5.2 there), and the framework of the first lesson.</p>
+<p>Throughout, <span class="math" data-tex="\(\gamma,\nu\in[0,1]\)">\(\gamma,\nu\in[0,1]\)</span> are fixed, <span class="math" data-tex="\(\mathcal A=\mathcal A_{\gamma,\nu}\)">\(\mathcal A=\mathcal A_{\gamma,\nu}\)</span>, and <span class="math" data-tex="\(k,a,b,c,d\)">\(k,a,b,c,d\)</span> are as in Section 5 of the first lesson: <span class="math" data-tex="\(a+c=b+d=1\)">\(a+c=b+d=1\)</span> and <span class="math" data-tex="\(ad-bc=k^2\)">\(ad-bc=k^2\)</span>. A lower bound for the entropy of each output is needed, and it must depend on the input populations: the entropy of a mean output is controlled by the mean populations (Section 4), and a bound for the minimum output entropy alone would lose this information.</p>
+<h2 id="1-convexity-of-the-one-qubit-output-entropy">1. Convexity of the one-qubit output entropy</h2>
+<p><strong>Lemma 1.1</strong> ([OpenAI-GAD, Lemma 4.1]). The function
+<span class="math math-display" data-tex="\[
+e(p)=g\bigl(\gamma\nu(1-\nu)+\gamma(1-\gamma)(p-\nu)^2\bigr)
+\]">\[
+e(p)=g\bigl(\gamma\nu(1-\nu)+\gamma(1-\gamma)(p-\nu)^2\bigr)
+\]</span>
+is convex on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<p><em>Proof.</em> By the completed square of Lemma 5.2 of the first lesson,
+<span class="math math-display" data-tex="\[
+\sqrt{v(p)}=\left\|\begin{pmatrix}\sqrt{\gamma\nu(1-\nu)}\\\sqrt{\gamma(1-\gamma)}\,(p-\nu)\end{pmatrix}\right\|,
+\]">\[
+\sqrt{v(p)}=\left\|\begin{pmatrix}\sqrt{\gamma\nu(1-\nu)}\\\sqrt{\gamma(1-\gamma)}\,(p-\nu)\end{pmatrix}\right\|,
+\]</span>
+the Euclidean norm of a vector that depends affinely on <span class="math" data-tex="\(p\)">\(p\)</span>. So <span class="math" data-tex="\(p\mapsto\sqrt{v(p)}\)">\(p\mapsto\sqrt{v(p)}\)</span> is convex, also when a coefficient vanishes. Its values lie in <span class="math" data-tex="\([0,\frac12]\)">\([0,\frac12]\)</span>, where <span class="math" data-tex="\(s\mapsto g(s^2)\)">\(s\mapsto g(s^2)\)</span> is nondecreasing and convex (Lemma 5.2 of the second lesson). A nondecreasing convex function of a convex function is convex: for <span class="math" data-tex="\(0\le\theta\le1\)">\(0\le\theta\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;g\bigl(v(\theta p+(1-\theta)p&#x27;)\bigr)\\
+&amp;\quad\le g\Bigl(\bigl(\theta\sqrt{v(p)}+(1-\theta)\sqrt{v(p&#x27;)}\bigr)^2\Bigr)\\
+&amp;\quad\le\theta e(p)+(1-\theta)e(p&#x27;),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;g\bigl(v(\theta p+(1-\theta)p&#x27;)\bigr)\\
+&amp;\quad\le g\Bigl(\bigl(\theta\sqrt{v(p)}+(1-\theta)\sqrt{v(p&#x27;)}\bigr)^2\Bigr)\\
+&amp;\quad\le\theta e(p)+(1-\theta)e(p&#x27;),
+\end{aligned}
+\]</span>
+by convexity of <span class="math" data-tex="\(\sqrt v\)">\(\sqrt v\)</span> and monotonicity, then convexity of <span class="math" data-tex="\(s\mapsto g(s^2)\)">\(s\mapsto g(s^2)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-one-damping-use-next-to-an-arbitrary-channel">2. One damping use next to an arbitrary channel</h2>
+<p><strong>Lemma 2.1</strong> ([OpenAI-GAD, Lemma 4.2]). Let <span class="math" data-tex="\(\mathcal N\colon\mathcal B(\mathcal H_{\mathrm{in}})\to\mathcal B(\mathcal H_{\mathrm{out}})\)">\(\mathcal N\colon\mathcal B(\mathcal H_{\mathrm{in}})\to\mathcal B(\mathcal H_{\mathrm{out}})\)</span> be a channel between nonzero finite-dimensional spaces. For a unit vector <span class="math" data-tex="\(\psi\in\mathbb C^2\otimes\mathcal H_{\mathrm{in}}\)">\(\psi\in\mathbb C^2\otimes\mathcal H_{\mathrm{in}}\)</span>, write
+<span class="math math-display" data-tex="\[
+\psi=\sqrt{1-p}\,|0\rangle\otimes\psi_0+\sqrt p\,|1\rangle\otimes\psi_1,
+\]">\[
+\psi=\sqrt{1-p}\,|0\rangle\otimes\psi_0+\sqrt p\,|1\rangle\otimes\psi_1,
+\]</span>
+with <span class="math" data-tex="\(0\le p\le1\)">\(0\le p\le1\)</span> and unit vectors <span class="math" data-tex="\(\psi_0,\psi_1\)">\(\psi_0,\psi_1\)</span>; a branch of weight zero may be chosen arbitrarily. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S\bigl((\mathcal A\otimes\mathcal N)(\psi\psi^*)\bigr)\\
+&amp;\quad\ge e(p)+(1-p)\,S\bigl(\mathcal N(\psi_0\psi_0^*)\bigr)\\
+&amp;\qquad+p\,S\bigl(\mathcal N(\psi_1\psi_1^*)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;S\bigl((\mathcal A\otimes\mathcal N)(\psi\psi^*)\bigr)\\
+&amp;\quad\ge e(p)+(1-p)\,S\bigl(\mathcal N(\psi_0\psi_0^*)\bigr)\\
+&amp;\qquad+p\,S\bigl(\mathcal N(\psi_1\psi_1^*)\bigr).
+\end{aligned}
+\]</span></p>
+<p>The branch vectors need not be orthogonal, and each may be entangled across the factors of <span class="math" data-tex="\(\mathcal H_{\mathrm{in}}\)">\(\mathcal H_{\mathrm{in}}\)</span> when <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> is itself a tensor product.</p>
+<p><em>Proof.</em> Choose a Kraus representation <span class="math" data-tex="\(\mathcal N(P)=\sum_{\ell=1}^rV_\ell PV_\ell^*\)">\(\mathcal N(P)=\sum_{\ell=1}^rV_\ell PV_\ell^*\)</span> with <span class="math" data-tex="\(\sum_\ell V_\ell^*V_\ell=I\)">\(\sum_\ell V_\ell^*V_\ell=I\)</span> (Theorem 1.2 of the first lesson). Let <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> be the matrices of size <span class="math" data-tex="\(\dim\mathcal H_{\mathrm{out}}\times r\)">\(\dim\mathcal H_{\mathrm{out}}\times r\)</span> whose <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th columns are <span class="math" data-tex="\(V_\ell\psi_0\)">\(V_\ell\psi_0\)</span> and <span class="math" data-tex="\(V_\ell\psi_1\)">\(V_\ell\psi_1\)</span>. The common column index gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+XX^*=\mathcal N(\psi_0\psi_0^*),\\
+YY^*=\mathcal N(\psi_1\psi_1^*),\\
+XY^*=\mathcal N(\psi_0\psi_1^*),\\
+\operatorname{Tr}XX^*=\operatorname{Tr}YY^*=1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+XX^*=\mathcal N(\psi_0\psi_0^*),\\
+YY^*=\mathcal N(\psi_1\psi_1^*),\\
+XY^*=\mathcal N(\psi_0\psi_1^*),\\
+\operatorname{Tr}XX^*=\operatorname{Tr}YY^*=1 .
+\end{gathered}
+\]</span>
+No relation between <span class="math" data-tex="\(\dim\mathcal H_{\mathrm{out}}\)">\(\dim\mathcal H_{\mathrm{out}}\)</span>, <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(\dim\mathcal H_{\mathrm{in}}\)">\(\dim\mathcal H_{\mathrm{in}}\)</span> is needed.</p>
+<p>Put <span class="math" data-tex="\(x=1-p\)">\(x=1-p\)</span> and <span class="math" data-tex="\(y=p\)">\(y=p\)</span>. Then <span class="math" data-tex="\(\psi\psi^*=\sum_{i,j\in\{0,1\}}\sqrt{x_ix_j}\,|i\rangle\langle j|\otimes\psi_i\psi_j^*\)">\(\psi\psi^*=\sum_{i,j\in\{0,1\}}\sqrt{x_ix_j}\,|i\rangle\langle j|\otimes\psi_i\psi_j^*\)</span> with <span class="math" data-tex="\(x_0=x\)">\(x_0=x\)</span>, <span class="math" data-tex="\(x_1=y\)">\(x_1=y\)</span>. The channel <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> maps <span class="math" data-tex="\(|0\rangle\langle0|\mapsto\operatorname{diag}(a,c)\)">\(|0\rangle\langle0|\mapsto\operatorname{diag}(a,c)\)</span>, <span class="math" data-tex="\(|1\rangle\langle1|\mapsto\operatorname{diag}(b,d)\)">\(|1\rangle\langle1|\mapsto\operatorname{diag}(b,d)\)</span>, <span class="math" data-tex="\(|0\rangle\langle1|\mapsto k|0\rangle\langle1|\)">\(|0\rangle\langle1|\mapsto k|0\rangle\langle1|\)</span> and <span class="math" data-tex="\(|1\rangle\langle0|\mapsto k|1\rangle\langle0|\)">\(|1\rangle\langle0|\mapsto k|1\rangle\langle0|\)</span>. In block form with respect to the first factor, <span class="math" data-tex="\((\mathcal A\otimes\mathcal N)(\psi\psi^*)\)">\((\mathcal A\otimes\mathcal N)(\psi\psi^*)\)</span> has the diagonal blocks <span class="math" data-tex="\(axXX^*+byYY^*\)">\(axXX^*+byYY^*\)</span> and <span class="math" data-tex="\(cxXX^*+dyYY^*\)">\(cxXX^*+dyYY^*\)</span> and the off-diagonal blocks <span class="math" data-tex="\(k\sqrt{xy}\,XY^*\)">\(k\sqrt{xy}\,XY^*\)</span> and <span class="math" data-tex="\(k\sqrt{xy}\,YX^*\)">\(k\sqrt{xy}\,YX^*\)</span>. This is the matrix <span class="math" data-tex="\(T\)">\(T\)</span> of Theorem 2.1 of the third lesson, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha=ax,\quad\beta=by,\quad\eta=cx,\\
+\delta=dy,\quad K=k\sqrt{xy}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\alpha=ax,\quad\beta=by,\quad\eta=cx,\\
+\delta=dy,\quad K=k\sqrt{xy}.
+\end{gathered}
+\]</span>
+These coefficients are nonnegative with sum <span class="math" data-tex="\((a+c)x+(b+d)y=1\)">\((a+c)x+(b+d)y=1\)</span>, and <span class="math" data-tex="\(\alpha\delta-\beta\eta=(ad-bc)xy=K^2\)">\(\alpha\delta-\beta\eta=(ad-bc)xy=K^2\)</span>. Moreover <span class="math" data-tex="\(\alpha+\eta=x\)">\(\alpha+\eta=x\)</span>, <span class="math" data-tex="\(\beta+\delta=y\)">\(\beta+\delta=y\)</span>, and since <span class="math" data-tex="\(ax+by=1-t(p)\)">\(ax+by=1-t(p)\)</span> and <span class="math" data-tex="\(cx+dy=t(p)\)">\(cx+dy=t(p)\)</span> are the output populations of Lemma 5.2 of the first lesson,
+<span class="math math-display" data-tex="\[
+u=t(p)\bigl(1-t(p)\bigr)-k^2xy=v(p)
+\]">\[
+u=t(p)\bigl(1-t(p)\bigr)-k^2xy=v(p)
+\]</span>
+by the first form of <span class="math" data-tex="\(v\)">\(v\)</span> there. Theorem 2.1 of the third lesson gives the claim; it includes <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, and the terms of a branch of weight zero vanish, so <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, <span class="math" data-tex="\(p=1\)">\(p=1\)</span> and all boundary values of <span class="math" data-tex="\(\gamma,\nu\)">\(\gamma,\nu\)</span> are covered. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-many-uses">3. Many uses</h2>
+<p>For a state <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\((\mathbb C^2)^{\otimes n}\)">\((\mathbb C^2)^{\otimes n}\)</span>, the <em>excited population at site <span class="math" data-tex="\(j\)">\(j\)</span></em> is the probability of the outcome <span class="math" data-tex="\(1\)">\(1\)</span> at site <span class="math" data-tex="\(j\)">\(j\)</span> in the standard basis: <span class="math" data-tex="\(p_j=\langle1|\rho_j|1\rangle\)">\(p_j=\langle1|\rho_j|1\rangle\)</span> for the marginal <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on site <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Proposition 3.1</strong> ([OpenAI-GAD, Proposition 4.3]). For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and every unit vector <span class="math" data-tex="\(\psi\in(\mathbb C^2)^{\otimes n}\)">\(\psi\in(\mathbb C^2)^{\otimes n}\)</span>, with site populations <span class="math" data-tex="\(p_1,\dots,p_n\)">\(p_1,\dots,p_n\)</span>,
+<span class="math math-display" data-tex="\[
+S\bigl(\mathcal A^{\otimes n}(\psi\psi^*)\bigr)\ge\sum_{j=1}^ne(p_j).
+\]">\[
+S\bigl(\mathcal A^{\otimes n}(\psi\psi^*)\bigr)\ge\sum_{j=1}^ne(p_j).
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> this is an equality by Lemma 5.2 of the first lesson. Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, assume the claim for <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, and write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\psi=\sqrt x\,|0\rangle\otimes\psi_0+\sqrt y\,|1\rangle\otimes\psi_1,\\
+x=1-p_1,\qquad y=p_1 ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\psi=\sqrt x\,|0\rangle\otimes\psi_0+\sqrt y\,|1\rangle\otimes\psi_1,\\
+x=1-p_1,\qquad y=p_1 ,
+\end{gathered}
+\]</span>
+with unit vectors <span class="math" data-tex="\(\psi_0,\psi_1\)">\(\psi_0,\psi_1\)</span> on the remaining <span class="math" data-tex="\(n-1\)">\(n-1\)</span> sites; a branch of weight zero is chosen arbitrarily. The branch vectors need not be orthogonal and may be entangled across the remaining sites. Lemma 2.1 with <span class="math" data-tex="\(\mathcal N=\mathcal A^{\otimes(n-1)}\)">\(\mathcal N=\mathcal A^{\otimes(n-1)}\)</span>, and <span class="math" data-tex="\(\sigma_i=\mathcal A^{\otimes(n-1)}(\psi_i\psi_i^*)\)">\(\sigma_i=\mathcal A^{\otimes(n-1)}(\psi_i\psi_i^*)\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S\bigl(\mathcal A^{\otimes n}(\psi\psi^*)\bigr)\\
+&amp;\quad\ge e(p_1)+x\,S(\sigma_0)+y\,S(\sigma_1).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;S\bigl(\mathcal A^{\otimes n}(\psi\psi^*)\bigr)\\
+&amp;\quad\ge e(p_1)+x\,S(\sigma_0)+y\,S(\sigma_1).
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(p_{j|i}\)">\(p_{j|i}\)</span> be the excited population of site <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span> in <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span>. Tracing out the first site removes the cross terms, because <span class="math" data-tex="\(\langle1|0\rangle=0\)">\(\langle1|0\rangle=0\)</span>: the marginal of <span class="math" data-tex="\(\psi\psi^*\)">\(\psi\psi^*\)</span> on the remaining sites is <span class="math" data-tex="\(x\,\psi_0\psi_0^*+y\,\psi_1\psi_1^*\)">\(x\,\psi_0\psi_0^*+y\,\psi_1\psi_1^*\)</span>. Hence
+<span class="math math-display" data-tex="\[
+p_j=x\,p_{j|0}+y\,p_{j|1}\qquad(j\ge2),
+\]">\[
+p_j=x\,p_{j|0}+y\,p_{j|1}\qquad(j\ge2),
+\]</span>
+whether or not <span class="math" data-tex="\(\psi_0\perp\psi_1\)">\(\psi_0\perp\psi_1\)</span>. By the induction hypothesis for both branches and the convexity of <span class="math" data-tex="\(e\)">\(e\)</span> (Lemma 1.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;xS(\sigma_0)+yS(\sigma_1)\\
+&amp;\quad\ge\sum_{j=2}^n\bigl(x\,e(p_{j|0})+y\,e(p_{j|1})\bigr)\\
+&amp;\quad\ge\sum_{j=2}^ne(p_j).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;xS(\sigma_0)+yS(\sigma_1)\\
+&amp;\quad\ge\sum_{j=2}^n\bigl(x\,e(p_{j|0})+y\,e(p_{j|1})\bigr)\\
+&amp;\quad\ge\sum_{j=2}^ne(p_j).
+\end{aligned}
+\]</span>
+Terms of a branch of weight zero have coefficient zero, so <span class="math" data-tex="\(p_1\in\{0,1\}\)">\(p_1\in\{0,1\}\)</span> is included. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 3.2</strong> ([OpenAI-GAD, Corollary 4.4]). For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and every state <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\((\mathbb C^2)^{\otimes n}\)">\((\mathbb C^2)^{\otimes n}\)</span> with site populations <span class="math" data-tex="\(p_1,\dots,p_n\)">\(p_1,\dots,p_n\)</span>,
+<span class="math math-display" data-tex="\[
+S\bigl(\mathcal A^{\otimes n}(\rho)\bigr)\ge\sum_{j=1}^ne(p_j).
+\]">\[
+S\bigl(\mathcal A^{\otimes n}(\rho)\bigr)\ge\sum_{j=1}^ne(p_j).
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(\rho=\sum_aq_a\psi_a\psi_a^*\)">\(\rho=\sum_aq_a\psi_a\psi_a^*\)</span> with unit vectors <span class="math" data-tex="\(\psi_a\)">\(\psi_a\)</span>, and let <span class="math" data-tex="\(p_{a,j}\)">\(p_{a,j}\)</span> be their site populations; then <span class="math" data-tex="\(p_j=\sum_aq_ap_{a,j}\)">\(p_j=\sum_aq_ap_{a,j}\)</span>. Concavity of entropy, Proposition 3.1 and convexity of <span class="math" data-tex="\(e\)">\(e\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S\bigl(\mathcal A^{\otimes n}(\rho)\bigr)\ge\sum_aq_a\sum_je(p_{a,j})\\
+&amp;\quad\ge\sum_je\Bigl(\sum_aq_ap_{a,j}\Bigr)=\sum_je(p_j).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;S\bigl(\mathcal A^{\otimes n}(\rho)\bigr)\ge\sum_aq_a\sum_je(p_{a,j})\\
+&amp;\quad\ge\sum_je\Bigl(\sum_aq_ap_{a,j}\Bigr)=\sum_je(p_j).
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-the-holevo-information-of-many-uses">4. The Holevo information of many uses</h2>
+<p>Recall from the first lesson the function
+<span class="math math-display" data-tex="\[
+f(p)=h\bigl(t(p)\bigr)-e(p),
+\]">\[
+f(p)=h\bigl(t(p)\bigr)-e(p),
+\]</span>
+where <span class="math" data-tex="\(t(p)=(1-\gamma)p+\gamma\nu\)">\(t(p)=(1-\gamma)p+\gamma\nu\)</span> and <span class="math" data-tex="\(0\le p\le1\)">\(0\le p\le1\)</span>.
+It is continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and attains its maximum.</p>
+<p><strong>Theorem 4.1</strong> ([OpenAI-GAD, Theorem 1.1]; Theorem 5.3(1) of the first lesson). For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\chi(\mathcal A^{\otimes n})=n\,\chi(\mathcal A)=\frac n{\ln2}\max_{0\le p\le1}f(p).
+\]">\[
+\chi(\mathcal A^{\otimes n})=n\,\chi(\mathcal A)=\frac n{\ln2}\max_{0\le p\le1}f(p).
+\]</span>
+If <span class="math" data-tex="\(p\)">\(p\)</span> maximizes <span class="math" data-tex="\(f\)">\(f\)</span>, the <span class="math" data-tex="\(2^n\)">\(2^n\)</span> tensor products of <span class="math" data-tex="\(\phi_\pm=\sqrt{1-p}\,|0\rangle\pm\sqrt p\,|1\rangle\)">\(\phi_\pm=\sqrt{1-p}\,|0\rangle\pm\sqrt p\,|1\rangle\)</span>, with probabilities <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>, form an ensemble that attains <span class="math" data-tex="\(\chi(\mathcal A^{\otimes n})\)">\(\chi(\mathcal A^{\otimes n})\)</span>.</p>
+<p><em>Proof.</em> <em>Upper bound.</em> Let <span class="math" data-tex="\(\{q_a,\rho_a\}\)">\(\{q_a,\rho_a\}\)</span> be an ensemble of states on <span class="math" data-tex="\((\mathbb C^2)^{\otimes n}\)">\((\mathbb C^2)^{\otimes n}\)</span>; the <span class="math" data-tex="\(\rho_a\)">\(\rho_a\)</span> may be mixed and entangled across the sites. Let <span class="math" data-tex="\(p_{a,j}\)">\(p_{a,j}\)</span> be the population of <span class="math" data-tex="\(\rho_a\)">\(\rho_a\)</span> at site <span class="math" data-tex="\(j\)">\(j\)</span>, and <span class="math" data-tex="\(\bar p_j=\sum_aq_ap_{a,j}\)">\(\bar p_j=\sum_aq_ap_{a,j}\)</span>. Corollary 3.2 and the convexity of <span class="math" data-tex="\(e\)">\(e\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_aq_aS\bigl(\mathcal A^{\otimes n}(\rho_a)\bigr)&amp;\ge\sum_{j=1}^n\sum_aq_ae(p_{a,j})\\
+&amp;\ge\sum_{j=1}^ne(\bar p_j).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_aq_aS\bigl(\mathcal A^{\otimes n}(\rho_a)\bigr)&amp;\ge\sum_{j=1}^n\sum_aq_ae(p_{a,j})\\
+&amp;\ge\sum_{j=1}^ne(\bar p_j).
+\end{aligned}
+\]</span>
+The mean output <span class="math" data-tex="\(\bar\sigma=\sum_aq_a\mathcal A^{\otimes n}(\rho_a)\)">\(\bar\sigma=\sum_aq_a\mathcal A^{\otimes n}(\rho_a)\)</span> has, at site <span class="math" data-tex="\(j\)">\(j\)</span>, the marginal <span class="math" data-tex="\(\mathcal A(\bar\rho_j)\)">\(\mathcal A(\bar\rho_j)\)</span>, where <span class="math" data-tex="\(\bar\rho_j\)">\(\bar\rho_j\)</span> is the marginal of the mean input <span class="math" data-tex="\(\sum_aq_a\rho_a\)">\(\sum_aq_a\rho_a\)</span> at site <span class="math" data-tex="\(j\)">\(j\)</span>; this follows from Lemma 1.3 of the first lesson, because the channels at the other sites preserve traces. So the excited population of <span class="math" data-tex="\(\bar\sigma\)">\(\bar\sigma\)</span> at site <span class="math" data-tex="\(j\)">\(j\)</span> is <span class="math" data-tex="\(t_j=(1-\gamma)\bar p_j+\gamma\nu\)">\(t_j=(1-\gamma)\bar p_j+\gamma\nu\)</span>. Corollary 2.2 of the first lesson, in the standard basis at every site, gives
+<span class="math math-display" data-tex="\[
+S(\bar\sigma)\le\sum_{j=1}^nh\bigl((1-\gamma)\bar p_j+\gamma\nu\bigr).
+\]">\[
+S(\bar\sigma)\le\sum_{j=1}^nh\bigl((1-\gamma)\bar p_j+\gamma\nu\bigr).
+\]</span>
+Subtracting,
+<span class="math math-display" data-tex="\[
+\chi_{\mathcal A^{\otimes n}}\{q_a,\rho_a\}\le\sum_{j=1}^nf(\bar p_j)\le n\max_{[0,1]}f .
+\]">\[
+\chi_{\mathcal A^{\otimes n}}\{q_a,\rho_a\}\le\sum_{j=1}^nf(\bar p_j)\le n\max_{[0,1]}f .
+\]</span>
+Taking the supremum over ensembles, <span class="math" data-tex="\((\ln2)\,\chi(\mathcal A^{\otimes n})\le n\max f\)">\((\ln2)\,\chi(\mathcal A^{\otimes n})\le n\max f\)</span>.</p>
+<p><em>Attainment.</em> Let <span class="math" data-tex="\(p\)">\(p\)</span> maximize <span class="math" data-tex="\(f\)">\(f\)</span>. The states <span class="math" data-tex="\(\phi_\pm\phi_\pm^*\)">\(\phi_\pm\phi_\pm^*\)</span> have the population <span class="math" data-tex="\(p\)">\(p\)</span> and the coherences <span class="math" data-tex="\(\pm\sqrt{p(1-p)}\)">\(\pm\sqrt{p(1-p)}\)</span>, so each output has entropy <span class="math" data-tex="\(e(p)\)">\(e(p)\)</span>, and the mean input <span class="math" data-tex="\(\operatorname{diag}(1-p,p)\)">\(\operatorname{diag}(1-p,p)\)</span> has the mean output <span class="math" data-tex="\(\operatorname{diag}(1-t,t)\)">\(\operatorname{diag}(1-t,t)\)</span> with <span class="math" data-tex="\(t=(1-\gamma)p+\gamma\nu\)">\(t=(1-\gamma)p+\gamma\nu\)</span>, whose entropy is <span class="math" data-tex="\(h(t)\)">\(h(t)\)</span>. So the pair with probabilities <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> has Holevo quantity <span class="math" data-tex="\(f(p)\)">\(f(p)\)</span>. For <span class="math" data-tex="\(n\)">\(n\)</span> uses, take the <span class="math" data-tex="\(2^n\)">\(2^n\)</span> tensor products with probabilities <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>. Each output and the mean output are tensor products of one-site outputs and of the one-site mean output, and entropy is additive on tensor products, so the Holevo quantity is <span class="math" data-tex="\(nf(p)\)">\(nf(p)\)</span>. For <span class="math" data-tex="\(p\in\{0,1\}\)">\(p\in\{0,1\}\)</span> the two states coincide, and repeated members of the ensemble may be merged. So <span class="math" data-tex="\((\ln2)\,\chi(\mathcal A^{\otimes n})\ge nf(p)=n\max f\)">\((\ln2)\,\chi(\mathcal A^{\otimes n})\ge nf(p)=n\max f\)</span>.</p>
+<p>The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> gives <span class="math" data-tex="\(\chi(\mathcal A)=\max f/\ln2\)">\(\chi(\mathcal A)=\max f/\ln2\)</span>, and the general case gives <span class="math" data-tex="\(\chi(\mathcal A^{\otimes n})=n\chi(\mathcal A)\)">\(\chi(\mathcal A^{\otimes n})=n\chi(\mathcal A)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 4.2</strong> (the capacity; Theorem 5.3(3) of the first lesson). Under Hypothesis (CT) of the first lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C(\mathcal A_{\gamma,\nu})&amp;=\chi(\mathcal A_{\gamma,\nu})\\
+&amp;=\frac1{\ln2}\max_{0\le p\le1}f(p)
+\end{aligned}
+\]">\[
+\begin{aligned}
+C(\mathcal A_{\gamma,\nu})&amp;=\chi(\mathcal A_{\gamma,\nu})\\
+&amp;=\frac1{\ln2}\max_{0\le p\le1}f(p)
+\end{aligned}
+\]</span>
+bits per use.</p>
+<p><em>Proof.</em> By Theorem 4.1, <span class="math" data-tex="\(\sup_n\frac1n\chi(\mathcal A^{\otimes n})=\chi(\mathcal A)\)">\(\sup_n\frac1n\chi(\mathcal A^{\otimes n})=\chi(\mathcal A)\)</span>, and (CT) identifies the left side with <span class="math" data-tex="\(C(\mathcal A)\)">\(C(\mathcal A)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Theorem 4.1 is a statement about all inputs of <span class="math" data-tex="\(n\)">\(n\)</span> uses and all measurements of their outputs; Corollary 4.2 turns it into a statement about codes. Entangled inputs are allowed in the codes, and the theorem shows that they do not increase the Holevo information per use. The codes of the coding theorem that achieve the capacity use product inputs and a measurement on whole blocks of outputs.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Show that equality holds in Proposition 3.1 for product inputs <span class="math" data-tex="\(\psi=\psi_1\otimes\dots\otimes\psi_n\)">\(\psi=\psi_1\otimes\dots\otimes\psi_n\)</span>.</p>
+<p><strong>5.2.</strong> Show that <span class="math" data-tex="\(h(t)=g\bigl(t(1-t)\bigr)\)">\(h(t)=g\bigl(t(1-t)\bigr)\)</span> for <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>, and deduce that <span class="math" data-tex="\(f(p)=g\bigl(t(1-t)\bigr)-g\bigl(v(p)\bigr)\)">\(f(p)=g\bigl(t(1-t)\bigr)-g\bigl(v(p)\bigr)\)</span> with <span class="math" data-tex="\(t=t(p)\)">\(t=t(p)\)</span> and <span class="math" data-tex="\(v(p)=t(1-t)-(1-\gamma)p(1-p)\)">\(v(p)=t(1-t)-(1-\gamma)p(1-p)\)</span>. Conclude that <span class="math" data-tex="\(f(0)=f(1)=0\)">\(f(0)=f(1)=0\)</span>, and that <span class="math" data-tex="\(\chi(\mathcal A_{\gamma,\nu})&gt;0\)">\(\chi(\mathcal A_{\gamma,\nu})&gt;0\)</span> for <span class="math" data-tex="\(\gamma&lt;1\)">\(\gamma&lt;1\)</span>.</p>
+<p><strong>5.3.</strong> Let <span class="math" data-tex="\(p\in(0,1)\)">\(p\in(0,1)\)</span> and <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>. Show that the ensemble of the <span class="math" data-tex="\(m\)">\(m\)</span> states <span class="math" data-tex="\(\sqrt{1-p}\,|0\rangle+e^{2\pi ik/m}\sqrt p\,|1\rangle\)">\(\sqrt{1-p}\,|0\rangle+e^{2\pi ik/m}\sqrt p\,|1\rangle\)</span>, <span class="math" data-tex="\(k=1,\dots,m\)">\(k=1,\dots,m\)</span>, with equal probabilities, also has Holevo quantity <span class="math" data-tex="\(f(p)\)">\(f(p)\)</span>.</p>
+<p><strong>5.4.</strong> Show that Proposition 3.1 implies <span class="math" data-tex="\(S_{\min}(\mathcal A^{\otimes n})=n\,S_{\min}(\mathcal A)\)">\(S_{\min}(\mathcal A^{\otimes n})=n\,S_{\min}(\mathcal A)\)</span>.</p>
+<p><strong>5.5.</strong> In the proof of Proposition 3.1, why is it necessary to keep the populations <span class="math" data-tex="\(p_{j|i}\)">\(p_{j|i}\)</span> of the branches, instead of bounding <span class="math" data-tex="\(S(\sigma_i)\)">\(S(\sigma_i)\)</span> below by <span class="math" data-tex="\((n-1)S_{\min}(\mathcal A)\)">\((n-1)S_{\min}(\mathcal A)\)</span>?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> For a product input, the output is the tensor product of the one-site outputs, whose entropies are <span class="math" data-tex="\(e(p_j)\)">\(e(p_j)\)</span> by Lemma 5.2 of the first lesson; entropy is additive on tensor products.</p>
+<p><strong>5.2.</strong> A state <span class="math" data-tex="\(\operatorname{diag}(1-t,t)\)">\(\operatorname{diag}(1-t,t)\)</span> has determinant <span class="math" data-tex="\(t(1-t)\)">\(t(1-t)\)</span>, so its entropy is both <span class="math" data-tex="\(h(t)\)">\(h(t)\)</span> and <span class="math" data-tex="\(g(t(1-t))\)">\(g(t(1-t))\)</span>. By Lemma 5.2 of the first lesson, <span class="math" data-tex="\(e(p)=g(v(p))\)">\(e(p)=g(v(p))\)</span> with <span class="math" data-tex="\(v(p)=t(1-t)-(1-\gamma)p(1-p)\)">\(v(p)=t(1-t)-(1-\gamma)p(1-p)\)</span>. At <span class="math" data-tex="\(p\in\{0,1\}\)">\(p\in\{0,1\}\)</span> the two arguments of <span class="math" data-tex="\(g\)">\(g\)</span> agree, so <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. For <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span> and <span class="math" data-tex="\(\gamma&lt;1\)">\(\gamma&lt;1\)</span>, the second argument is smaller, and <span class="math" data-tex="\(g\)">\(g\)</span> is strictly increasing (its derivative <span class="math" data-tex="\(2L\)">\(2L\)</span> is positive, Lemma 5.1 of the second lesson), so <span class="math" data-tex="\(f(p)&gt;0\)">\(f(p)&gt;0\)</span>.</p>
+<p><strong>5.3.</strong> Each state has population <span class="math" data-tex="\(p\)">\(p\)</span> and output entropy <span class="math" data-tex="\(e(p)\)">\(e(p)\)</span>. The mean of the coherences <span class="math" data-tex="\(e^{2\pi ik/m}\sqrt{p(1-p)}\)">\(e^{2\pi ik/m}\sqrt{p(1-p)}\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>, so the mean input is <span class="math" data-tex="\(\operatorname{diag}(1-p,p)\)">\(\operatorname{diag}(1-p,p)\)</span> and the mean output has entropy <span class="math" data-tex="\(h(t)\)">\(h(t)\)</span>.</p>
+<p><strong>5.4.</strong> By Lemma 3.1(4) of the first lesson, <span class="math" data-tex="\(S_{\min}(\mathcal A^{\otimes n})\le nS_{\min}(\mathcal A)\)">\(S_{\min}(\mathcal A^{\otimes n})\le nS_{\min}(\mathcal A)\)</span>. Conversely, by Lemma 3.1(2) there a pure input attains <span class="math" data-tex="\(S_{\min}(\mathcal A^{\otimes n})\)">\(S_{\min}(\mathcal A^{\otimes n})\)</span>, and by Proposition 3.1 its output entropy is at least <span class="math" data-tex="\(\sum_je(p_j)\ge n\min_pe(p)=nS_{\min}(\mathcal A)\)">\(\sum_je(p_j)\ge n\min_pe(p)=nS_{\min}(\mathcal A)\)</span>.</p>
+<p><strong>5.5.</strong> The induction must reproduce the bound <span class="math" data-tex="\(\sum_{j\ge2}e(p_j)\)">\(\sum_{j\ge2}e(p_j)\)</span> in terms of the populations of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. A bound by <span class="math" data-tex="\((n-1)S_{\min}(\mathcal A)\)">\((n-1)S_{\min}(\mathcal A)\)</span> would give only <span class="math" data-tex="\(S\ge e(p_1)+(n-1)S_{\min}(\mathcal A)\)">\(S\ge e(p_1)+(n-1)S_{\min}(\mathcal A)\)</span>, which loses the dependence on <span class="math" data-tex="\(p_2,\dots,p_n\)">\(p_2,\dots,p_n\)</span>; but the Holevo bound in Section 4 needs <span class="math" data-tex="\(\sum_je(\bar p_j)\)">\(\sum_je(\bar p_j)\)</span> to compare with <span class="math" data-tex="\(\sum_jh(t_j)\)">\(\sum_jh(t_j)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-GAD] OpenAI, <em>Classical capacity and entropy inequalities for generalized amplitude damping</em>, OpenAI Math Release preprint, 24 September 2026, Sections 4 and 5. https://github.com/openai/math/tree/main/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

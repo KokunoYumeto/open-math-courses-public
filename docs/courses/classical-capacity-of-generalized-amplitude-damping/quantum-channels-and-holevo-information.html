@@ -1,0 +1,372 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quantum channels and Holevo information</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Classical capacity of generalized amplitude damping)</a><a href="entropy-differences-and-log-determinants.html">Next lesson</a><a href="src/quantum-channels-and-holevo-information.md">Editable source</a></nav><main><article><h1 id="quantum-channels-and-holevo-information">Quantum channels and Holevo information</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A qubit in contact with an environment at a fixed temperature relaxes towards a stationary state: it loses and gains excitations, and its coherences decay. One use of such a qubit as a communication line is described by the <em>generalized amplitude-damping channel</em> <span class="math" data-tex="\(\mathcal A_{\gamma,\nu}\)">\(\mathcal A_{\gamma,\nu}\)</span>, with damping strength <span class="math" data-tex="\(\gamma\in[0,1]\)">\(\gamma\in[0,1]\)</span> and stationary excited population <span class="math" data-tex="\(\nu\in[0,1]\)">\(\nu\in[0,1]\)</span>. This course proves the theorem of [OpenAI-GAD]: for all <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, the Holevo information of <span class="math" data-tex="\(n\)">\(n\)</span> uses of the channel is <span class="math" data-tex="\(n\)">\(n\)</span> times the Holevo information of one use, and the latter is an explicit maximum over one variable. With the classical coding theorem, the classical capacity of the channel is its one-use Holevo information. The Holevo information, the minimum output entropy and the regularized Holevo information are moreover additive when the channel is used together with any finite-dimensional channel.</p>
+<p>This lesson sets up the finite-dimensional framework and states the theorem.</p>
+<ul>
+<li>Channels and their Kraus representations (Theorem 1.2).</li>
+<li>Entropy: the diagonal bound and concavity (Proposition 2.1), subadditivity in a product basis (Corollary 2.2).</li>
+<li>Holevo information and minimum output entropy (Lemma 3.1).</li>
+<li>Codes, capacity and the coding theorem (Hypothesis (CT), Proposition 4.2).</li>
+<li>The generalized amplitude-damping channel and the theorem of the course (Theorem 5.3).</li>
+</ul>
+<p>The lesson follows [OpenAI-GAD, Section 1]. The classical entropy inequalities and the continuity of entropy are taken from the lesson <a href="../entropy-of-automorphisms/operator-convex-functions-and-the-continuity-of-entropy.html">Operator convex functions and the continuity of entropy</a> (Proposition 4.1 and Theorem 7.1 there).</p>
+<h2 id="1-states-and-channels">1. States and channels</h2>
+<p>All Hilbert spaces in this course are complex and finite dimensional. For such a space <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, <span class="math" data-tex="\(\mathcal B(\mathcal H)\)">\(\mathcal B(\mathcal H)\)</span> is the algebra of linear operators on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, and <span class="math" data-tex="\(X^*\)">\(X^*\)</span> is the adjoint of <span class="math" data-tex="\(X\)">\(X\)</span>. We write <span class="math" data-tex="\(P\ge0\)">\(P\ge0\)</span> when <span class="math" data-tex="\(P\)">\(P\)</span> is positive semidefinite. A <em>state</em> is an operator <span class="math" data-tex="\(\rho\ge0\)">\(\rho\ge0\)</span> with <span class="math" data-tex="\(\operatorname{Tr}\rho=1\)">\(\operatorname{Tr}\rho=1\)</span>. For a unit vector <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, the <em>pure state</em> <span class="math" data-tex="\(\psi\psi^*\)">\(\psi\psi^*\)</span> is the orthogonal projection onto <span class="math" data-tex="\(\mathbb C\psi\)">\(\mathbb C\psi\)</span>.</p>
+<p>On <span class="math" data-tex="\(\mathcal H_1\otimes\mathcal H_2\)">\(\mathcal H_1\otimes\mathcal H_2\)</span>, the <em>partial trace</em> <span class="math" data-tex="\(\operatorname{Tr}_1\colon\mathcal B(\mathcal H_1\otimes\mathcal H_2)\to\mathcal B(\mathcal H_2)\)">\(\operatorname{Tr}_1\colon\mathcal B(\mathcal H_1\otimes\mathcal H_2)\to\mathcal B(\mathcal H_2)\)</span> is the linear map with <span class="math" data-tex="\(\operatorname{Tr}_1(X_1\otimes X_2)=(\operatorname{Tr}X_1)X_2\)">\(\operatorname{Tr}_1(X_1\otimes X_2)=(\operatorname{Tr}X_1)X_2\)</span>, and <span class="math" data-tex="\(\operatorname{Tr}_2\)">\(\operatorname{Tr}_2\)</span> is defined in the same way. For an orthonormal basis <span class="math" data-tex="\((e_i)\)">\((e_i)\)</span> of <span class="math" data-tex="\(\mathcal H_1\)">\(\mathcal H_1\)</span> and <span class="math" data-tex="\(y\in\mathcal H_2\)">\(y\in\mathcal H_2\)</span>,
+<span class="math math-display" data-tex="\[
+\langle y,\operatorname{Tr}_1(X)\,y\rangle=\sum_i\langle e_i\otimes y,X(e_i\otimes y)\rangle ,
+\]">\[
+\langle y,\operatorname{Tr}_1(X)\,y\rangle=\sum_i\langle e_i\otimes y,X(e_i\otimes y)\rangle ,
+\]</span>
+as one checks on products <span class="math" data-tex="\(X=X_1\otimes X_2\)">\(X=X_1\otimes X_2\)</span>. Hence partial traces of states are states. For several factors, the <em>marginal</em> of a state on one factor is its partial trace over all the others.</p>
+<p>A linear map <span class="math" data-tex="\(\mathcal N\colon\mathcal B(\mathcal H_{\mathrm{in}})\to\mathcal B(\mathcal H_{\mathrm{out}})\)">\(\mathcal N\colon\mathcal B(\mathcal H_{\mathrm{in}})\to\mathcal B(\mathcal H_{\mathrm{out}})\)</span> is <em>positive</em> if it maps positive semidefinite operators to positive semidefinite operators, and <em>completely positive</em> if <span class="math" data-tex="\(\mathrm{id}_k\otimes\mathcal N\)">\(\mathrm{id}_k\otimes\mathcal N\)</span> is positive for every <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, where <span class="math" data-tex="\(\mathrm{id}_k\)">\(\mathrm{id}_k\)</span> is the identity map of <span class="math" data-tex="\(\mathcal B(\mathbb C^k)\)">\(\mathcal B(\mathbb C^k)\)</span>. It is <em>trace preserving</em> if <span class="math" data-tex="\(\operatorname{Tr}\mathcal N(X)=\operatorname{Tr}X\)">\(\operatorname{Tr}\mathcal N(X)=\operatorname{Tr}X\)</span> for all <span class="math" data-tex="\(X\)">\(X\)</span>. A <em>channel</em> is a completely positive trace-preserving map; it maps states to states.</p>
+<p><strong>Lemma 1.1</strong> (Kraus families give channels). Let <span class="math" data-tex="\(V_1,\dots,V_r\colon\mathcal H_{\mathrm{in}}\to\mathcal H_{\mathrm{out}}\)">\(V_1,\dots,V_r\colon\mathcal H_{\mathrm{in}}\to\mathcal H_{\mathrm{out}}\)</span> be linear maps with <span class="math" data-tex="\(\sum_\ell V_\ell^*V_\ell=I\)">\(\sum_\ell V_\ell^*V_\ell=I\)</span>. Then <span class="math" data-tex="\(\mathcal N(X)=\sum_\ell V_\ell XV_\ell^*\)">\(\mathcal N(X)=\sum_\ell V_\ell XV_\ell^*\)</span> is a channel.</p>
+<p><em>Proof.</em> On products, and hence for all <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\((\mathrm{id}_k\otimes\mathcal N)(Y)=\sum_\ell(I\otimes V_\ell)Y(I\otimes V_\ell)^*\)">\((\mathrm{id}_k\otimes\mathcal N)(Y)=\sum_\ell(I\otimes V_\ell)Y(I\otimes V_\ell)^*\)</span>. This is positive semidefinite when <span class="math" data-tex="\(Y\)">\(Y\)</span> is, because <span class="math" data-tex="\(\langle w,ZYZ^*w\rangle=\langle Z^*w,YZ^*w\rangle\ge0\)">\(\langle w,ZYZ^*w\rangle=\langle Z^*w,YZ^*w\rangle\ge0\)</span> for every operator <span class="math" data-tex="\(Z\)">\(Z\)</span>. Cyclicity of the trace gives <span class="math" data-tex="\(\operatorname{Tr}\mathcal N(X)=\operatorname{Tr}\bigl(X\sum_\ell V_\ell^*V_\ell\bigr)=\operatorname{Tr}X\)">\(\operatorname{Tr}\mathcal N(X)=\operatorname{Tr}\bigl(X\sum_\ell V_\ell^*V_\ell\bigr)=\operatorname{Tr}X\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 1.2</strong> (Kraus representation). Every channel <span class="math" data-tex="\(\mathcal N\colon\mathcal B(\mathcal H_{\mathrm{in}})\to\mathcal B(\mathcal H_{\mathrm{out}})\)">\(\mathcal N\colon\mathcal B(\mathcal H_{\mathrm{in}})\to\mathcal B(\mathcal H_{\mathrm{out}})\)</span> has the form of Lemma 1.1, with at most <span class="math" data-tex="\(\dim\mathcal H_{\mathrm{in}}\cdot\dim\mathcal H_{\mathrm{out}}\)">\(\dim\mathcal H_{\mathrm{in}}\cdot\dim\mathcal H_{\mathrm{out}}\)</span> operators <span class="math" data-tex="\(V_\ell\)">\(V_\ell\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(e_1,\dots,e_m\)">\(e_1,\dots,e_m\)</span> be an orthonormal basis of <span class="math" data-tex="\(\mathcal H_{\mathrm{in}}\)">\(\mathcal H_{\mathrm{in}}\)</span>, and <span class="math" data-tex="\(\Omega=\sum_ie_i\otimes e_i\in\mathcal H_{\mathrm{in}}\otimes\mathcal H_{\mathrm{in}}\)">\(\Omega=\sum_ie_i\otimes e_i\in\mathcal H_{\mathrm{in}}\otimes\mathcal H_{\mathrm{in}}\)</span>. Identify the first factor with <span class="math" data-tex="\(\mathbb C^m\)">\(\mathbb C^m\)</span>. Complete positivity with <span class="math" data-tex="\(k=m\)">\(k=m\)</span> shows that the <em>Choi operator</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C&amp;=(\mathrm{id}_m\otimes\mathcal N)(\Omega\Omega^*)\\
+&amp;=\sum_{i,j}e_ie_j^*\otimes\mathcal N(e_ie_j^*)
+\end{aligned}
+\]">\[
+\begin{aligned}
+C&amp;=(\mathrm{id}_m\otimes\mathcal N)(\Omega\Omega^*)\\
+&amp;=\sum_{i,j}e_ie_j^*\otimes\mathcal N(e_ie_j^*)
+\end{aligned}
+\]</span>
+is positive semidefinite. By the spectral theorem, <span class="math" data-tex="\(C=\sum_{\ell=1}^rw_\ell w_\ell^*\)">\(C=\sum_{\ell=1}^rw_\ell w_\ell^*\)</span> for vectors <span class="math" data-tex="\(w_\ell\in\mathcal H_{\mathrm{in}}\otimes\mathcal H_{\mathrm{out}}\)">\(w_\ell\in\mathcal H_{\mathrm{in}}\otimes\mathcal H_{\mathrm{out}}\)</span>, with <span class="math" data-tex="\(r\le m\dim\mathcal H_{\mathrm{out}}\)">\(r\le m\dim\mathcal H_{\mathrm{out}}\)</span>. Each <span class="math" data-tex="\(w_\ell\)">\(w_\ell\)</span> is uniquely of the form <span class="math" data-tex="\(\sum_ie_i\otimes x_{\ell i}\)">\(\sum_ie_i\otimes x_{\ell i}\)</span> with <span class="math" data-tex="\(x_{\ell i}\in\mathcal H_{\mathrm{out}}\)">\(x_{\ell i}\in\mathcal H_{\mathrm{out}}\)</span>; let <span class="math" data-tex="\(V_\ell\)">\(V_\ell\)</span> be the linear map with <span class="math" data-tex="\(V_\ell e_i=x_{\ell i}\)">\(V_\ell e_i=x_{\ell i}\)</span>. Since <span class="math" data-tex="\(x_{\ell i}x_{\ell j}^*=V_\ell e_ie_j^*V_\ell^*\)">\(x_{\ell i}x_{\ell j}^*=V_\ell e_ie_j^*V_\ell^*\)</span>,
+<span class="math math-display" data-tex="\[
+C=\sum_{i,j}e_ie_j^*\otimes\sum_\ell V_\ell e_ie_j^*V_\ell^* .
+\]">\[
+C=\sum_{i,j}e_ie_j^*\otimes\sum_\ell V_\ell e_ie_j^*V_\ell^* .
+\]</span>
+An operator <span class="math" data-tex="\(\sum_{i,j}e_ie_j^*\otimes Y_{ij}\)">\(\sum_{i,j}e_ie_j^*\otimes Y_{ij}\)</span> determines its blocks <span class="math" data-tex="\(Y_{ij}\)">\(Y_{ij}\)</span>, so <span class="math" data-tex="\(\mathcal N(e_ie_j^*)=\sum_\ell V_\ell e_ie_j^*V_\ell^*\)">\(\mathcal N(e_ie_j^*)=\sum_\ell V_\ell e_ie_j^*V_\ell^*\)</span> for all <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, and by linearity <span class="math" data-tex="\(\mathcal N(X)=\sum_\ell V_\ell XV_\ell^*\)">\(\mathcal N(X)=\sum_\ell V_\ell XV_\ell^*\)</span> for all <span class="math" data-tex="\(X\)">\(X\)</span>. Trace preservation gives <span class="math" data-tex="\(\operatorname{Tr}\bigl(X(\sum_\ell V_\ell^*V_\ell-I)\bigr)=0\)">\(\operatorname{Tr}\bigl(X(\sum_\ell V_\ell^*V_\ell-I)\bigr)=0\)</span> for all <span class="math" data-tex="\(X\)">\(X\)</span>, hence <span class="math" data-tex="\(\sum_\ell V_\ell^*V_\ell=I\)">\(\sum_\ell V_\ell^*V_\ell=I\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For linear maps <span class="math" data-tex="\(\mathcal N_i\colon\mathcal B(\mathcal H_i)\to\mathcal B(\mathcal K_i)\)">\(\mathcal N_i\colon\mathcal B(\mathcal H_i)\to\mathcal B(\mathcal K_i)\)</span>, the tensor product <span class="math" data-tex="\(\mathcal N_1\otimes\mathcal N_2\)">\(\mathcal N_1\otimes\mathcal N_2\)</span> is the linear map that sends <span class="math" data-tex="\(X_1\otimes X_2\)">\(X_1\otimes X_2\)</span> to <span class="math" data-tex="\(\mathcal N_1(X_1)\otimes\mathcal N_2(X_2)\)">\(\mathcal N_1(X_1)\otimes\mathcal N_2(X_2)\)</span>. If <span class="math" data-tex="\((V_\ell)\)">\((V_\ell)\)</span> and <span class="math" data-tex="\((W_m)\)">\((W_m)\)</span> are Kraus families of two channels, then, on products and hence everywhere,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(\mathcal N_1\otimes\mathcal N_2)(X)\\
+&amp;\quad=\sum_{\ell,m}(V_\ell\otimes W_m)X(V_\ell\otimes W_m)^*,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(\mathcal N_1\otimes\mathcal N_2)(X)\\
+&amp;\quad=\sum_{\ell,m}(V_\ell\otimes W_m)X(V_\ell\otimes W_m)^*,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\sum_{\ell,m}(V_\ell\otimes W_m)^*(V_\ell\otimes W_m)=I\)">\(\sum_{\ell,m}(V_\ell\otimes W_m)^*(V_\ell\otimes W_m)=I\)</span>. By Lemma 1.1, a tensor product of channels is a channel. In particular <span class="math" data-tex="\(n\)">\(n\)</span> independent uses of a channel <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> form the channel <span class="math" data-tex="\(\mathcal N^{\otimes n}\)">\(\mathcal N^{\otimes n}\)</span> on <span class="math" data-tex="\(\mathcal B(\mathcal H_{\mathrm{in}}^{\otimes n})\)">\(\mathcal B(\mathcal H_{\mathrm{in}}^{\otimes n})\)</span>.</p>
+<p><strong>Lemma 1.3</strong> (marginals of outputs). If <span class="math" data-tex="\(\mathcal N_2\)">\(\mathcal N_2\)</span> is trace preserving, then <span class="math" data-tex="\(\operatorname{Tr}_2\bigl((\mathcal N_1\otimes\mathcal N_2)(X)\bigr)=\mathcal N_1(\operatorname{Tr}_2X)\)">\(\operatorname{Tr}_2\bigl((\mathcal N_1\otimes\mathcal N_2)(X)\bigr)=\mathcal N_1(\operatorname{Tr}_2X)\)</span> for all <span class="math" data-tex="\(X\)">\(X\)</span>. If <span class="math" data-tex="\(\mathcal N_1\)">\(\mathcal N_1\)</span> is trace preserving, then <span class="math" data-tex="\(\operatorname{Tr}_1\bigl((\mathcal N_1\otimes\mathcal N_2)(X)\bigr)=\mathcal N_2(\operatorname{Tr}_1X)\)">\(\operatorname{Tr}_1\bigl((\mathcal N_1\otimes\mathcal N_2)(X)\bigr)=\mathcal N_2(\operatorname{Tr}_1X)\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(X=X_1\otimes X_2\)">\(X=X_1\otimes X_2\)</span>, both sides of the first identity equal <span class="math" data-tex="\((\operatorname{Tr}X_2)\,\mathcal N_1(X_1)\)">\((\operatorname{Tr}X_2)\,\mathcal N_1(X_1)\)</span>, and both sides are linear in <span class="math" data-tex="\(X\)">\(X\)</span>. The second identity is the same argument. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-entropy">2. Entropy</h2>
+<p>For <span class="math" data-tex="\(P\ge0\)">\(P\ge0\)</span> let
+<span class="math math-display" data-tex="\[
+S(P)=-\operatorname{Tr}P\ln P=\sum_\lambda\eta(\lambda),
+\]">\[
+S(P)=-\operatorname{Tr}P\ln P=\sum_\lambda\eta(\lambda),
+\]</span>
+the sum over the eigenvalues <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span> with multiplicity, where <span class="math" data-tex="\(\eta(t)=-t\ln t\)">\(\eta(t)=-t\ln t\)</span> and <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>. On states, <span class="math" data-tex="\(S\)">\(S\)</span> is the von Neumann entropy in nats. For a probability vector <span class="math" data-tex="\(q=(q_1,\dots,q_m)\)">\(q=(q_1,\dots,q_m)\)</span>, <span class="math" data-tex="\(H(q)=\sum_i\eta(q_i)\)">\(H(q)=\sum_i\eta(q_i)\)</span> is its Shannon entropy, and <span class="math" data-tex="\(h(q)=\eta(q)+\eta(1-q)\)">\(h(q)=\eta(q)+\eta(1-q)\)</span> is the binary entropy. The following facts are read off from the eigenvalues.</p>
+<ol>
+<li><span class="math" data-tex="\(S(P)\)">\(S(P)\)</span> depends only on the nonzero eigenvalues of <span class="math" data-tex="\(P\)">\(P\)</span>. Hence <span class="math" data-tex="\(S(UPU^*)=S(P)\)">\(S(UPU^*)=S(P)\)</span> for every isometry <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(S(XX^*)=S(X^*X)\)">\(S(XX^*)=S(X^*X)\)</span> for every rectangular matrix <span class="math" data-tex="\(X\)">\(X\)</span>.</li>
+<li><span class="math" data-tex="\(S(P_1\oplus P_2)=S(P_1)+S(P_2)\)">\(S(P_1\oplus P_2)=S(P_1)+S(P_2)\)</span>.</li>
+<li><span class="math" data-tex="\(S(cP)=cS(P)-c\ln c\,\operatorname{Tr}P\)">\(S(cP)=cS(P)-c\ln c\,\operatorname{Tr}P\)</span> for <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.</li>
+<li><span class="math" data-tex="\(S(\rho_1\otimes\rho_2)=S(\rho_1)+S(\rho_2)\)">\(S(\rho_1\otimes\rho_2)=S(\rho_1)+S(\rho_2)\)</span> for states, because the eigenvalues of <span class="math" data-tex="\(\rho_1\otimes\rho_2\)">\(\rho_1\otimes\rho_2\)</span> are the products <span class="math" data-tex="\(\lambda\mu\)">\(\lambda\mu\)</span> of eigenvalues, and <span class="math" data-tex="\(\eta(\lambda\mu)=\mu\,\eta(\lambda)+\lambda\,\eta(\mu)\)">\(\eta(\lambda\mu)=\mu\,\eta(\lambda)+\lambda\,\eta(\mu)\)</span>.</li>
+<li>A state on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> with determinant <span class="math" data-tex="\(u\)">\(u\)</span> has the eigenvalues <span class="math" data-tex="\((1\pm\sqrt{1-4u})/2\)">\((1\pm\sqrt{1-4u})/2\)</span>, so its entropy is <span class="math" data-tex="\(g(u)\)">\(g(u)\)</span>, where, for <span class="math" data-tex="\(0\le u\le\frac14\)">\(0\le u\le\frac14\)</span>,
+<span class="math math-display" data-tex="\[
+g(u)=h\Bigl(\frac{1+\sqrt{1-4u}}2\Bigr).
+\]">\[
+g(u)=h\Bigl(\frac{1+\sqrt{1-4u}}2\Bigr).
+\]</span>
+The function <span class="math" data-tex="\(g\)">\(g\)</span> is continuous, with <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span> and <span class="math" data-tex="\(g(\frac14)=\ln2\)">\(g(\frac14)=\ln2\)</span>. It is nondecreasing: as <span class="math" data-tex="\(u\)">\(u\)</span> increases, the argument of <span class="math" data-tex="\(h\)">\(h\)</span> decreases from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>, and <span class="math" data-tex="\(h\)">\(h\)</span> is decreasing on <span class="math" data-tex="\([\frac12,1]\)">\([\frac12,1]\)</span>.</li>
+</ol>
+<p>On the states of a fixed space of dimension <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span> is continuous by the Fannes–Audenaert inequality <span class="math" data-tex="\(|S(\rho)-S(\sigma)|\le T\ln(d-1)+h(T)\)">\(|S(\rho)-S(\sigma)|\le T\ln(d-1)+h(T)\)</span>, <span class="math" data-tex="\(T=\frac12\|\rho-\sigma\|_1\)">\(T=\frac12\|\rho-\sigma\|_1\)</span> (<a href="../entropy-of-automorphisms/operator-convex-functions-and-the-continuity-of-entropy.html">Operator convex functions and the continuity of entropy</a>, Theorem 7.1).</p>
+<p><strong>Proposition 2.1.</strong> (1) (Diagonal bound.) If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a state and <span class="math" data-tex="\(f_1,\dots,f_m\)">\(f_1,\dots,f_m\)</span> is an orthonormal basis, then <span class="math" data-tex="\(S(\rho)\le H\bigl((\langle f_k,\rho f_k\rangle)_k\bigr)\)">\(S(\rho)\le H\bigl((\langle f_k,\rho f_k\rangle)_k\bigr)\)</span>. (2) (Concavity.) If <span class="math" data-tex="\(\rho_1,\dots,\rho_N\)">\(\rho_1,\dots,\rho_N\)</span> are states and <span class="math" data-tex="\(w\)">\(w\)</span> is a probability vector, then
+<span class="math math-display" data-tex="\[
+S\Bigl(\sum_iw_i\rho_i\Bigr)\ge\sum_iw_iS(\rho_i).
+\]">\[
+S\Bigl(\sum_iw_i\rho_i\Bigr)\ge\sum_iw_iS(\rho_i).
+\]</span></p>
+<p><em>Proof.</em> (1) Let <span class="math" data-tex="\(\rho=\sum_l\lambda_lg_lg_l^*\)">\(\rho=\sum_l\lambda_lg_lg_l^*\)</span> with an orthonormal basis <span class="math" data-tex="\((g_l)\)">\((g_l)\)</span>. Then <span class="math" data-tex="\(\langle f_k,\rho f_k\rangle=\sum_lD_{kl}\lambda_l\)">\(\langle f_k,\rho f_k\rangle=\sum_lD_{kl}\lambda_l\)</span> with <span class="math" data-tex="\(D_{kl}=|\langle f_k,g_l\rangle|^2\)">\(D_{kl}=|\langle f_k,g_l\rangle|^2\)</span>, and the rows and the columns of <span class="math" data-tex="\(D\)">\(D\)</span> sum to <span class="math" data-tex="\(1\)">\(1\)</span> because both bases are orthonormal. Concavity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives <span class="math" data-tex="\(\eta(\sum_lD_{kl}\lambda_l)\ge\sum_lD_{kl}\eta(\lambda_l)\)">\(\eta(\sum_lD_{kl}\lambda_l)\ge\sum_lD_{kl}\eta(\lambda_l)\)</span>; summing over <span class="math" data-tex="\(k\)">\(k\)</span> and using the column sums gives <span class="math" data-tex="\(H\ge S(\rho)\)">\(H\ge S(\rho)\)</span>.</p>
+<p>(2) Choose an orthonormal basis <span class="math" data-tex="\((f_k)\)">\((f_k)\)</span> of eigenvectors of <span class="math" data-tex="\(\bar\rho=\sum_iw_i\rho_i\)">\(\bar\rho=\sum_iw_i\rho_i\)</span>. Concavity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and then (1) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S(\bar\rho)&amp;=\sum_k\eta\Bigl(\sum_iw_i\langle f_k,\rho_if_k\rangle\Bigr)\\
+&amp;\ge\sum_iw_i\sum_k\eta(\langle f_k,\rho_if_k\rangle)\\
+&amp;\ge\sum_iw_iS(\rho_i) .\qquad\blacksquare
+\end{aligned}
+\]">\[
+\begin{aligned}
+S(\bar\rho)&amp;=\sum_k\eta\Bigl(\sum_iw_i\langle f_k,\rho_if_k\rangle\Bigr)\\
+&amp;\ge\sum_iw_i\sum_k\eta(\langle f_k,\rho_if_k\rangle)\\
+&amp;\ge\sum_iw_iS(\rho_i) .\qquad\blacksquare
+\end{aligned}
+\]</span></p>
+<p><strong>Corollary 2.2</strong> (subadditivity in a product basis). Let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> be a state on <span class="math" data-tex="\(\mathcal H_1\otimes\dots\otimes\mathcal H_n\)">\(\mathcal H_1\otimes\dots\otimes\mathcal H_n\)</span> with marginals <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span> on <span class="math" data-tex="\(\mathcal H_j\)">\(\mathcal H_j\)</span>, and for each <span class="math" data-tex="\(j\)">\(j\)</span> let <span class="math" data-tex="\((f^{(j)}_k)_k\)">\((f^{(j)}_k)_k\)</span> be an orthonormal basis of <span class="math" data-tex="\(\mathcal H_j\)">\(\mathcal H_j\)</span>. Then
+<span class="math math-display" data-tex="\[
+S(\sigma)\le\sum_{j=1}^nH\Bigl(\bigl(\langle f^{(j)}_k,\sigma_jf^{(j)}_k\rangle\bigr)_k\Bigr).
+\]">\[
+S(\sigma)\le\sum_{j=1}^nH\Bigl(\bigl(\langle f^{(j)}_k,\sigma_jf^{(j)}_k\rangle\bigr)_k\Bigr).
+\]</span>
+When <span class="math" data-tex="\((f^{(j)}_k)_k\)">\((f^{(j)}_k)_k\)</span> is an eigenbasis of <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span>, the <span class="math" data-tex="\(j\)">\(j\)</span>-th term is <span class="math" data-tex="\(S(\sigma_j)\)">\(S(\sigma_j)\)</span>.</p>
+<p><em>Proof.</em> By Proposition 2.1(1) in the product basis, <span class="math" data-tex="\(S(\sigma)\)">\(S(\sigma)\)</span> is at most the Shannon entropy of the probability distribution
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(k_1,\dots,k_n)=\langle F,\sigma F\rangle,\\
+F=f^{(1)}_{k_1}\otimes\dots\otimes f^{(n)}_{k_n}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+P(k_1,\dots,k_n)=\langle F,\sigma F\rangle,\\
+F=f^{(1)}_{k_1}\otimes\dots\otimes f^{(n)}_{k_n}.
+\end{gathered}
+\]</span>
+By the formula for partial traces in Section 1, the <span class="math" data-tex="\(j\)">\(j\)</span>-th marginal distribution of <span class="math" data-tex="\(P\)">\(P\)</span> is <span class="math" data-tex="\(k\mapsto\langle f^{(j)}_k,\sigma_jf^{(j)}_k\rangle\)">\(k\mapsto\langle f^{(j)}_k,\sigma_jf^{(j)}_k\rangle\)</span>. Subadditivity of Shannon entropy, <span class="math" data-tex="\(H(U,V)\le H(U)+H(V)\)">\(H(U,V)\le H(U)+H(V)\)</span> for random variables with finitely many values (<a href="../entropy-of-automorphisms/operator-convex-functions-and-the-continuity-of-entropy.html">Operator convex functions and the continuity of entropy</a>, Proposition 4.1(3)), applied <span class="math" data-tex="\(n-1\)">\(n-1\)</span> times, gives the claim. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-holevo-information-and-minimum-output-entropy">3. Holevo information and minimum output entropy</h2>
+<p>An <em>ensemble</em> on <span class="math" data-tex="\(\mathcal H_{\mathrm{in}}\)">\(\mathcal H_{\mathrm{in}}\)</span> is a finite family <span class="math" data-tex="\(\{q_a,\rho_a\}\)">\(\{q_a,\rho_a\}\)</span> of states <span class="math" data-tex="\(\rho_a\)">\(\rho_a\)</span> with probabilities <span class="math" data-tex="\(q_a\ge0\)">\(q_a\ge0\)</span>, <span class="math" data-tex="\(\sum_aq_a=1\)">\(\sum_aq_a=1\)</span>. Its <em>Holevo quantity</em> for a channel <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, in nats, is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\chi_{\mathcal N}\{q_a,\rho_a\}&amp;=S\Bigl(\sum_aq_a\mathcal N(\rho_a)\Bigr)\\
+&amp;\quad-\sum_aq_aS\bigl(\mathcal N(\rho_a)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\chi_{\mathcal N}\{q_a,\rho_a\}&amp;=S\Bigl(\sum_aq_a\mathcal N(\rho_a)\Bigr)\\
+&amp;\quad-\sum_aq_aS\bigl(\mathcal N(\rho_a)\bigr).
+\end{aligned}
+\]</span>
+It is nonnegative by concavity, and at most <span class="math" data-tex="\(\ln\dim\mathcal H_{\mathrm{out}}\)">\(\ln\dim\mathcal H_{\mathrm{out}}\)</span>, because <span class="math" data-tex="\(0\le S(\rho)\le\ln\dim\)">\(0\le S(\rho)\le\ln\dim\)</span> for states by Proposition 2.1(1). The <em>Holevo information</em> of <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, in bits, is
+<span class="math math-display" data-tex="\[
+\chi(\mathcal N)=\frac1{\ln2}\sup\chi_{\mathcal N}\{q_a,\rho_a\},
+\]">\[
+\chi(\mathcal N)=\frac1{\ln2}\sup\chi_{\mathcal N}\{q_a,\rho_a\},
+\]</span>
+the supremum over all ensembles on <span class="math" data-tex="\(\mathcal H_{\mathrm{in}}\)">\(\mathcal H_{\mathrm{in}}\)</span>. For a tensor product of channels, the states of an ensemble are arbitrary states on the whole input space; they may be entangled across the factors. The <em>minimum output entropy</em> of <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, in nats, is
+<span class="math math-display" data-tex="\[
+S_{\min}(\mathcal N)=\min_\rho S(\mathcal N(\rho)),
+\]">\[
+S_{\min}(\mathcal N)=\min_\rho S(\mathcal N(\rho)),
+\]</span>
+the minimum over the states of <span class="math" data-tex="\(\mathcal H_{\mathrm{in}}\)">\(\mathcal H_{\mathrm{in}}\)</span>; it exists because the states form a compact set on which <span class="math" data-tex="\(\rho\mapsto S(\mathcal N(\rho))\)">\(\rho\mapsto S(\mathcal N(\rho))\)</span> is continuous.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, <span class="math" data-tex="\(\mathcal N_1\)">\(\mathcal N_1\)</span> and <span class="math" data-tex="\(\mathcal N_2\)">\(\mathcal N_2\)</span> be channels.</p>
+<ol>
+<li><span class="math" data-tex="\(\chi(\mathcal N)\)">\(\chi(\mathcal N)\)</span> is the supremum of the Holevo quantities of the ensembles of pure states.</li>
+<li>Some pure state attains <span class="math" data-tex="\(S_{\min}(\mathcal N)\)">\(S_{\min}(\mathcal N)\)</span>.</li>
+<li>For unitaries <span class="math" data-tex="\(U\)">\(U\)</span> on <span class="math" data-tex="\(\mathcal H_{\mathrm{out}}\)">\(\mathcal H_{\mathrm{out}}\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> on <span class="math" data-tex="\(\mathcal H_{\mathrm{in}}\)">\(\mathcal H_{\mathrm{in}}\)</span>, the channel <span class="math" data-tex="\(X\mapsto U\mathcal N(VXV^*)U^*\)">\(X\mapsto U\mathcal N(VXV^*)U^*\)</span> has the same Holevo information and the same minimum output entropy as <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>.</li>
+<li><span class="math" data-tex="\(\chi(\mathcal N_1\otimes\mathcal N_2)\ge\chi(\mathcal N_1)+\chi(\mathcal N_2)\)">\(\chi(\mathcal N_1\otimes\mathcal N_2)\ge\chi(\mathcal N_1)+\chi(\mathcal N_2)\)</span>, and <span class="math" data-tex="\(S_{\min}(\mathcal N_1\otimes\mathcal N_2)\)">\(S_{\min}(\mathcal N_1\otimes\mathcal N_2)\)</span> is at most <span class="math" data-tex="\(S_{\min}(\mathcal N_1)+S_{\min}(\mathcal N_2)\)">\(S_{\min}(\mathcal N_1)+S_{\min}(\mathcal N_2)\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) Write each <span class="math" data-tex="\(\rho_a\)">\(\rho_a\)</span> as <span class="math" data-tex="\(\sum_k\mu_{ak}\psi_{ak}\psi_{ak}^*\)">\(\sum_k\mu_{ak}\psi_{ak}\psi_{ak}^*\)</span> by the spectral theorem, and replace it by the pure states <span class="math" data-tex="\(\psi_{ak}\psi_{ak}^*\)">\(\psi_{ak}\psi_{ak}^*\)</span> with probabilities <span class="math" data-tex="\(q_a\mu_{ak}\)">\(q_a\mu_{ak}\)</span>. The mean output does not change, and by concavity
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{a,k}q_a\mu_{ak}S\bigl(\mathcal N(\psi_{ak}\psi_{ak}^*)\bigr)\\
+&amp;\qquad\le\sum_aq_aS\bigl(\mathcal N(\rho_a)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{a,k}q_a\mu_{ak}S\bigl(\mathcal N(\psi_{ak}\psi_{ak}^*)\bigr)\\
+&amp;\qquad\le\sum_aq_aS\bigl(\mathcal N(\rho_a)\bigr),
+\end{aligned}
+\]</span>
+so the Holevo quantity does not decrease.</p>
+<p>(2) If <span class="math" data-tex="\(\rho=\sum_k\mu_k\psi_k\psi_k^*\)">\(\rho=\sum_k\mu_k\psi_k\psi_k^*\)</span> attains the minimum, concavity gives <span class="math" data-tex="\(S(\mathcal N(\rho))\ge\sum_k\mu_kS(\mathcal N(\psi_k\psi_k^*))\)">\(S(\mathcal N(\rho))\ge\sum_k\mu_kS(\mathcal N(\psi_k\psi_k^*))\)</span>, so some <span class="math" data-tex="\(\psi_k\psi_k^*\)">\(\psi_k\psi_k^*\)</span> attains it too.</p>
+<p>(3) The map <span class="math" data-tex="\(\rho\mapsto V\rho V^*\)">\(\rho\mapsto V\rho V^*\)</span> is a bijection of the states of <span class="math" data-tex="\(\mathcal H_{\mathrm{in}}\)">\(\mathcal H_{\mathrm{in}}\)</span>, and conjugation by <span class="math" data-tex="\(U\)">\(U\)</span> does not change the spectrum of any output or mean output.</p>
+<p>(4) For ensembles <span class="math" data-tex="\(\{q_a,\rho_a\}\)">\(\{q_a,\rho_a\}\)</span> and <span class="math" data-tex="\(\{r_b,\sigma_b\}\)">\(\{r_b,\sigma_b\}\)</span>, the product ensemble <span class="math" data-tex="\(\{q_ar_b,\rho_a\otimes\sigma_b\}\)">\(\{q_ar_b,\rho_a\otimes\sigma_b\}\)</span> has the outputs <span class="math" data-tex="\(\mathcal N_1(\rho_a)\otimes\mathcal N_2(\sigma_b)\)">\(\mathcal N_1(\rho_a)\otimes\mathcal N_2(\sigma_b)\)</span>, and its mean output is the tensor product of the two mean outputs. By additivity of entropy on products, its Holevo quantity is the sum of the two Holevo quantities. Taking suprema gives the first inequality, and the product of two minimizing states gives the second. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-codes-and-capacity">4. Codes and capacity</h2>
+<p>An <span class="math" data-tex="\((n,M)\)">\((n,M)\)</span> <em>code</em> for a channel <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> consists of states <span class="math" data-tex="\(\rho_1,\dots,\rho_M\)">\(\rho_1,\dots,\rho_M\)</span> on <span class="math" data-tex="\(\mathcal H_{\mathrm{in}}^{\otimes n}\)">\(\mathcal H_{\mathrm{in}}^{\otimes n}\)</span> and a <em>measurement</em>: operators <span class="math" data-tex="\(E_1,\dots,E_M\ge0\)">\(E_1,\dots,E_M\ge0\)</span> on <span class="math" data-tex="\(\mathcal H_{\mathrm{out}}^{\otimes n}\)">\(\mathcal H_{\mathrm{out}}^{\otimes n}\)</span> with <span class="math" data-tex="\(\sum_kE_k\le I\)">\(\sum_kE_k\le I\)</span>, where <span class="math" data-tex="\(I-\sum_kE_k\)">\(I-\sum_kE_k\)</span> stands for no decision. The error probability of message <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(\varepsilon_k=1-\operatorname{Tr}\bigl(E_k\mathcal N^{\otimes n}(\rho_k)\bigr)\)">\(\varepsilon_k=1-\operatorname{Tr}\bigl(E_k\mathcal N^{\otimes n}(\rho_k)\bigr)\)</span>, the <em>average error</em> is <span class="math" data-tex="\(\bar\varepsilon=\frac1M\sum_k\varepsilon_k\)">\(\bar\varepsilon=\frac1M\sum_k\varepsilon_k\)</span>, and the <em>maximal error</em> is <span class="math" data-tex="\(\max_k\varepsilon_k\)">\(\max_k\varepsilon_k\)</span>. The states may be entangled across the <span class="math" data-tex="\(n\)">\(n\)</span> inputs, and the measurement acts on all <span class="math" data-tex="\(n\)">\(n\)</span> outputs together; there is no entanglement shared in advance and no feedback.</p>
+<p>A rate <span class="math" data-tex="\(R\ge0\)">\(R\ge0\)</span> is <em>achievable</em> if for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> there is an <span class="math" data-tex="\((n,M_n)\)">\((n,M_n)\)</span> code, with average errors <span class="math" data-tex="\(\bar\varepsilon_n\to0\)">\(\bar\varepsilon_n\to0\)</span> and <span class="math" data-tex="\(\liminf_n\frac1n\log_2M_n\ge R\)">\(\liminf_n\frac1n\log_2M_n\ge R\)</span>. The <em>classical capacity</em> <span class="math" data-tex="\(C(\mathcal N)\)">\(C(\mathcal N)\)</span> is the supremum of the achievable rates; codes with <span class="math" data-tex="\(M=1\)">\(M=1\)</span> and <span class="math" data-tex="\(E_1=I\)">\(E_1=I\)</span> show that the rate <span class="math" data-tex="\(0\)">\(0\)</span> is achievable.</p>
+<p><strong>Remark 4.1</strong> (maximal error). The maximal error gives the same capacity. A code with maximal error <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> has average error at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Conversely, in an <span class="math" data-tex="\((n,M)\)">\((n,M)\)</span> code with average error <span class="math" data-tex="\(\bar\varepsilon\)">\(\bar\varepsilon\)</span>, fewer than <span class="math" data-tex="\(M/2\)">\(M/2\)</span> messages have <span class="math" data-tex="\(\varepsilon_k&gt;2\bar\varepsilon\)">\(\varepsilon_k&gt;2\bar\varepsilon\)</span>; keeping <span class="math" data-tex="\(\lceil M/2\rceil\)">\(\lceil M/2\rceil\)</span> of the other messages, with their measurement operators, gives a code with maximal error at most <span class="math" data-tex="\(2\bar\varepsilon\)">\(2\bar\varepsilon\)</span> and <span class="math" data-tex="\(\log_2\)">\(\log_2\)</span> of its size at least <span class="math" data-tex="\(\log_2M-1\)">\(\log_2M-1\)</span>, which does not change the rate.</p>
+<p><strong>Hypothesis (CT)</strong> (the classical coding theorem). For every channel <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> between finite-dimensional spaces,
+<span class="math math-display" data-tex="\[
+C(\mathcal N)=\sup_{n\ge1}\frac1n\chi(\mathcal N^{\otimes n}).
+\]">\[
+C(\mathcal N)=\sup_{n\ge1}\frac1n\chi(\mathcal N^{\otimes n}).
+\]</span></p>
+<p>This is the theorem of Holevo and of Schumacher and Westmoreland. The inequality <span class="math" data-tex="\(\ge\)">\(\ge\)</span> is the coding theorem for a fixed finite ensemble [Holevo, Theorem], applied to the ensembles of states on blocks of <span class="math" data-tex="\(n\)">\(n\)</span> inputs, each block treated as one letter: random codes from an ensemble with Holevo quantity <span class="math" data-tex="\(\chi_0\)">\(\chi_0\)</span> for <span class="math" data-tex="\(\mathcal N^{\otimes n}\)">\(\mathcal N^{\otimes n}\)</span> achieve every rate below <span class="math" data-tex="\(\chi_0/(n\ln2)\)">\(\chi_0/(n\ln2)\)</span>. The inequality <span class="math" data-tex="\(\le\)">\(\le\)</span> follows from Holevo's entropy bound and Fano's inequality: an <span class="math" data-tex="\((n,M)\)">\((n,M)\)</span> code with average error <span class="math" data-tex="\(\bar\varepsilon\)">\(\bar\varepsilon\)</span> satisfies
+<span class="math math-display" data-tex="\[
+(1-\bar\varepsilon)\log_2M\le\chi(\mathcal N^{\otimes n})+\frac{h(\bar\varepsilon)}{\ln2} .
+\]">\[
+(1-\bar\varepsilon)\log_2M\le\chi(\mathcal N^{\otimes n})+\frac{h(\bar\varepsilon)}{\ln2} .
+\]</span>
+A complete treatment of both directions, with maximal error, is [Wilde, Theorem 20.3.1 and Sections 20.3.1–20.3.2]. Neither direction is proved in this programme. The course uses (CT) only to turn its statements about Holevo information into statements about capacity; every statement about <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and <span class="math" data-tex="\(S_{\min}\)">\(S_{\min}\)</span> is proved without it.</p>
+<p><strong>Proposition 4.2</strong> (the regularization is a limit). For every channel <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, the numbers <span class="math" data-tex="\(a_n=\chi(\mathcal N^{\otimes n})\)">\(a_n=\chi(\mathcal N^{\otimes n})\)</span> satisfy <span class="math" data-tex="\(a_{m+n}\ge a_m+a_n\)">\(a_{m+n}\ge a_m+a_n\)</span> and <span class="math" data-tex="\(0\le a_n\le n\log_2\dim\mathcal H_{\mathrm{out}}\)">\(0\le a_n\le n\log_2\dim\mathcal H_{\mathrm{out}}\)</span>. Consequently <span class="math" data-tex="\(\lim_na_n/n\)">\(\lim_na_n/n\)</span> exists and equals <span class="math" data-tex="\(\sup_na_n/n\)">\(\sup_na_n/n\)</span>.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(\mathcal N^{\otimes(m+n)}=\mathcal N^{\otimes m}\otimes\mathcal N^{\otimes n}\)">\(\mathcal N^{\otimes(m+n)}=\mathcal N^{\otimes m}\otimes\mathcal N^{\otimes n}\)</span>, Lemma 3.1(4) gives superadditivity, and the bounds hold because <span class="math" data-tex="\(0\le S\le\ln\dim\)">\(0\le S\le\ln\dim\)</span> on states. Fix <span class="math" data-tex="\(k\)">\(k\)</span>, and write <span class="math" data-tex="\(n=qk+r\)">\(n=qk+r\)</span> with <span class="math" data-tex="\(0\le r&lt;k\)">\(0\le r&lt;k\)</span>. Superadditivity and <span class="math" data-tex="\(a_r\ge0\)">\(a_r\ge0\)</span>, with <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>, give <span class="math" data-tex="\(a_n\ge qa_k\)">\(a_n\ge qa_k\)</span>, so
+<span class="math math-display" data-tex="\[
+\frac{a_n}n\ge\frac{qk}n\cdot\frac{a_k}k\longrightarrow\frac{a_k}k
+\]">\[
+\frac{a_n}n\ge\frac{qk}n\cdot\frac{a_k}k\longrightarrow\frac{a_k}k
+\]</span>
+as <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>. Hence <span class="math" data-tex="\(\liminf_na_n/n\ge a_k/k\)">\(\liminf_na_n/n\ge a_k/k\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>, so <span class="math" data-tex="\(\liminf_na_n/n\ge\sup_ka_k/k\)">\(\liminf_na_n/n\ge\sup_ka_k/k\)</span>; and <span class="math" data-tex="\(\sup_ka_k/k\ge\limsup_na_n/n\)">\(\sup_ka_k/k\ge\limsup_na_n/n\)</span> holds in any case. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>If <span class="math" data-tex="\(\chi(\mathcal N^{\otimes n})=n\chi(\mathcal N)\)">\(\chi(\mathcal N^{\otimes n})=n\chi(\mathcal N)\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, the supremum is <span class="math" data-tex="\(\chi(\mathcal N)\)">\(\chi(\mathcal N)\)</span>; under (CT), <span class="math" data-tex="\(C(\mathcal N)=\chi(\mathcal N)\)">\(C(\mathcal N)=\chi(\mathcal N)\)</span>, and the capacity is given by a single use. Holevo information is not additive for all channels [Hastings], so this needs an argument for the channel at hand.</p>
+<h2 id="5-the-generalized-amplitude-damping-channel">5. The generalized amplitude-damping channel</h2>
+<p>Let <span class="math" data-tex="\(|0\rangle\)">\(|0\rangle\)</span> and <span class="math" data-tex="\(|1\rangle\)">\(|1\rangle\)</span> be the standard basis of <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>: the ground level and the excited level. For <span class="math" data-tex="\(\gamma,\nu\in[0,1]\)">\(\gamma,\nu\in[0,1]\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k=\sqrt{1-\gamma},\qquad c=\gamma\nu,\\
+b=\gamma(1-\nu),\\
+a=1-c,\qquad d=1-b,
+\end{gathered}
+\]">\[
+\begin{gathered}
+k=\sqrt{1-\gamma},\qquad c=\gamma\nu,\\
+b=\gamma(1-\nu),\\
+a=1-c,\qquad d=1-b,
+\end{gathered}
+\]</span>
+and let <span class="math" data-tex="\(\mathcal A=\mathcal A_{\gamma,\nu}\)">\(\mathcal A=\mathcal A_{\gamma,\nu}\)</span> be the linear map on <span class="math" data-tex="\(\mathcal B(\mathbb C^2)\)">\(\mathcal B(\mathbb C^2)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal A(|0\rangle\langle0|)=\operatorname{diag}(a,c),\\
+\mathcal A(|1\rangle\langle1|)=\operatorname{diag}(b,d),\\
+\mathcal A(|0\rangle\langle1|)=k\,|0\rangle\langle1|,\\
+\mathcal A(|1\rangle\langle0|)=k\,|1\rangle\langle0| .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal A(|0\rangle\langle0|)=\operatorname{diag}(a,c),\\
+\mathcal A(|1\rangle\langle1|)=\operatorname{diag}(b,d),\\
+\mathcal A(|0\rangle\langle1|)=k\,|0\rangle\langle1|,\\
+\mathcal A(|1\rangle\langle0|)=k\,|1\rangle\langle0| .
+\end{gathered}
+\]</span>
+So <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> maps a matrix <span class="math" data-tex="\(X=(x_{ij})\)">\(X=(x_{ij})\)</span> to the matrix with diagonal entries <span class="math" data-tex="\(ax_{00}+bx_{11}\)">\(ax_{00}+bx_{11}\)</span> and <span class="math" data-tex="\(cx_{00}+dx_{11}\)">\(cx_{00}+dx_{11}\)</span> and off-diagonal entries <span class="math" data-tex="\(kx_{01}\)">\(kx_{01}\)</span> and <span class="math" data-tex="\(kx_{10}\)">\(kx_{10}\)</span>.
+On a state with excited population <span class="math" data-tex="\(q\)">\(q\)</span> and coherence <span class="math" data-tex="\(z\)">\(z\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal A\begin{pmatrix}1-q&amp;z\\ \bar z&amp;q\end{pmatrix}=\begin{pmatrix}1-t&amp;kz\\ k\bar z&amp;t\end{pmatrix},
+\]">\[
+\mathcal A\begin{pmatrix}1-q&amp;z\\ \bar z&amp;q\end{pmatrix}=\begin{pmatrix}1-t&amp;kz\\ k\bar z&amp;t\end{pmatrix},
+\]</span>
+where <span class="math" data-tex="\(t=(1-\gamma)q+\gamma\nu\)">\(t=(1-\gamma)q+\gamma\nu\)</span>. The populations move towards <span class="math" data-tex="\((1-\nu,\nu)\)">\((1-\nu,\nu)\)</span> by the fraction <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, and the coherence is multiplied by <span class="math" data-tex="\(k\)">\(k\)</span>. The state <span class="math" data-tex="\(\operatorname{diag}(1-\nu,\nu)\)">\(\operatorname{diag}(1-\nu,\nu)\)</span> is fixed: <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is the stationary excited population. For <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span> this is ordinary amplitude damping, and for <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span> the identity.</p>
+<p><strong>Lemma 5.1</strong> (Kraus operators). <span class="math" data-tex="\(a+c=b+d=1\)">\(a+c=b+d=1\)</span> and <span class="math" data-tex="\(ad-bc=k^2\)">\(ad-bc=k^2\)</span>. The operators
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_0=\sqrt{1-\nu}\,\operatorname{diag}(1,k),\\
+L_1=\sqrt b\,|0\rangle\langle1|,\\
+L_2=\sqrt\nu\,\operatorname{diag}(k,1),\\
+L_3=\sqrt c\,|1\rangle\langle0|
+\end{gathered}
+\]">\[
+\begin{gathered}
+L_0=\sqrt{1-\nu}\,\operatorname{diag}(1,k),\\
+L_1=\sqrt b\,|0\rangle\langle1|,\\
+L_2=\sqrt\nu\,\operatorname{diag}(k,1),\\
+L_3=\sqrt c\,|1\rangle\langle0|
+\end{gathered}
+\]</span>
+satisfy <span class="math" data-tex="\(\sum_iL_i^*L_i=I\)">\(\sum_iL_i^*L_i=I\)</span> and <span class="math" data-tex="\(\mathcal A(X)=\sum_iL_iXL_i^*\)">\(\mathcal A(X)=\sum_iL_iXL_i^*\)</span>. In particular <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a channel.</p>
+<p><em>Proof.</em> The first two identities are the definitions of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(d\)">\(d\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ad-bc&amp;=(1-\gamma\nu)(1-\gamma+\gamma\nu)\\
+&amp;\quad-\gamma^2\nu(1-\nu)\\
+&amp;=1-\gamma .
+\end{aligned}
+\]">\[
+\begin{aligned}
+ad-bc&amp;=(1-\gamma\nu)(1-\gamma+\gamma\nu)\\
+&amp;\quad-\gamma^2\nu(1-\nu)\\
+&amp;=1-\gamma .
+\end{aligned}
+\]</span>
+Next, <span class="math" data-tex="\(L_0^*L_0+L_2^*L_2\)">\(L_0^*L_0+L_2^*L_2\)</span> is diagonal with the entries <span class="math" data-tex="\(1-\nu+\nu k^2=1-\gamma\nu=a\)">\(1-\nu+\nu k^2=1-\gamma\nu=a\)</span> and <span class="math" data-tex="\((1-\nu)k^2+\nu=1-\gamma+\gamma\nu=d\)">\((1-\nu)k^2+\nu=1-\gamma+\gamma\nu=d\)</span>, and <span class="math" data-tex="\(L_1^*L_1+L_3^*L_3=\operatorname{diag}(c,b)\)">\(L_1^*L_1+L_3^*L_3=\operatorname{diag}(c,b)\)</span>. The sum is <span class="math" data-tex="\(\operatorname{diag}(a+c,b+d)=I\)">\(\operatorname{diag}(a+c,b+d)=I\)</span>. In <span class="math" data-tex="\(\sum_iL_iXL_i^*\)">\(\sum_iL_iXL_i^*\)</span>, the entry <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> is <span class="math" data-tex="\((1-\nu+\nu k^2)x_{00}+bx_{11}\)">\((1-\nu+\nu k^2)x_{00}+bx_{11}\)</span>, that is <span class="math" data-tex="\(ax_{00}+bx_{11}\)">\(ax_{00}+bx_{11}\)</span>; the entry <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> is <span class="math" data-tex="\(cx_{00}+((1-\nu)k^2+\nu)x_{11}\)">\(cx_{00}+((1-\nu)k^2+\nu)x_{11}\)</span>, that is <span class="math" data-tex="\(cx_{00}+dx_{11}\)">\(cx_{00}+dx_{11}\)</span>; and the entry <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> is <span class="math" data-tex="\(((1-\nu)k+\nu k)x_{01}=kx_{01}\)">\(((1-\nu)k+\nu k)x_{01}=kx_{01}\)</span>, and the entry <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> likewise <span class="math" data-tex="\(kx_{10}\)">\(kx_{10}\)</span>. Lemma 1.1 applies. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 5.2</strong> (pure inputs). Let <span class="math" data-tex="\(\phi=\sqrt{1-p}\,|0\rangle+e^{i\theta}\sqrt p\,|1\rangle\)">\(\phi=\sqrt{1-p}\,|0\rangle+e^{i\theta}\sqrt p\,|1\rangle\)</span> with <span class="math" data-tex="\(p\in[0,1]\)">\(p\in[0,1]\)</span>; up to a phase, every unit vector of <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> has this form. Put <span class="math" data-tex="\(t=t(p)=(1-\gamma)p+\gamma\nu\)">\(t=t(p)=(1-\gamma)p+\gamma\nu\)</span>. The output <span class="math" data-tex="\(\mathcal A(\phi\phi^*)\)">\(\mathcal A(\phi\phi^*)\)</span> has excited population <span class="math" data-tex="\(t\)">\(t\)</span>, determinant
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v(p)&amp;=t(1-t)-(1-\gamma)p(1-p)\\
+&amp;=\gamma\nu(1-\nu)\\
+&amp;\quad+\gamma(1-\gamma)(p-\nu)^2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+v(p)&amp;=t(1-t)-(1-\gamma)p(1-p)\\
+&amp;=\gamma\nu(1-\nu)\\
+&amp;\quad+\gamma(1-\gamma)(p-\nu)^2,
+\end{aligned}
+\]</span>
+and entropy <span class="math" data-tex="\(e(p)=g(v(p))\)">\(e(p)=g(v(p))\)</span>. In particular <span class="math" data-tex="\(0\le v(p)\le\frac14\)">\(0\le v(p)\le\frac14\)</span>, and <span class="math" data-tex="\(v(p)\ge\gamma\nu(1-\nu)\)">\(v(p)\ge\gamma\nu(1-\nu)\)</span>, with equality at <span class="math" data-tex="\(p=\nu\)">\(p=\nu\)</span>.</p>
+<p><em>Proof.</em> The input has the populations <span class="math" data-tex="\(1-p\)">\(1-p\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> and a coherence of modulus <span class="math" data-tex="\(\sqrt{p(1-p)}\)">\(\sqrt{p(1-p)}\)</span>. By the formula for <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> on states, the output has the populations <span class="math" data-tex="\(1-t\)">\(1-t\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> and a coherence of modulus <span class="math" data-tex="\(k\sqrt{p(1-p)}\)">\(k\sqrt{p(1-p)}\)</span>; this gives the first form of the determinant. Since <span class="math" data-tex="\(t-(1-\gamma)p=\gamma\nu\)">\(t-(1-\gamma)p=\gamma\nu\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;t(1-t)-(1-\gamma)p(1-p)\\
+&amp;\qquad=\gamma\nu-t^2+(1-\gamma)p^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;t(1-t)-(1-\gamma)p(1-p)\\
+&amp;\qquad=\gamma\nu-t^2+(1-\gamma)p^2 .
+\end{aligned}
+\]</span>
+Inserting <span class="math" data-tex="\(t^2=(1-\gamma)^2p^2+2\gamma\nu(1-\gamma)p+\gamma^2\nu^2\)">\(t^2=(1-\gamma)^2p^2+2\gamma\nu(1-\gamma)p+\gamma^2\nu^2\)</span> gives <span class="math" data-tex="\(\gamma\nu-\gamma^2\nu^2+\gamma(1-\gamma)(p^2-2\nu p)\)">\(\gamma\nu-\gamma^2\nu^2+\gamma(1-\gamma)(p^2-2\nu p)\)</span>. Since <span class="math" data-tex="\(p^2-2\nu p=(p-\nu)^2-\nu^2\)">\(p^2-2\nu p=(p-\nu)^2-\nu^2\)</span> and <span class="math" data-tex="\(\gamma\nu-\gamma^2\nu^2-\gamma(1-\gamma)\nu^2=\gamma\nu(1-\nu)\)">\(\gamma\nu-\gamma^2\nu^2-\gamma(1-\gamma)\nu^2=\gamma\nu(1-\nu)\)</span>, this is the second form. The output is a state on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, so its determinant lies in <span class="math" data-tex="\([0,\frac14]\)">\([0,\frac14]\)</span> and its entropy is <span class="math" data-tex="\(g(v(p))\)">\(g(v(p))\)</span> by fact 5 of Section 2. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>If <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span> and <span class="math" data-tex="\(0&lt;\nu&lt;1\)">\(0&lt;\nu&lt;1\)</span>, then <span class="math" data-tex="\(v(p)\ge\gamma\nu(1-\nu)&gt;0\)">\(v(p)\ge\gamma\nu(1-\nu)&gt;0\)</span> for all <span class="math" data-tex="\(p\)">\(p\)</span>: every pure input has an invertible output, and so does every mixed input, as a mixture of such outputs. In this range the channel has no pure output. For <span class="math" data-tex="\(\nu\in\{0,1\}\)">\(\nu\in\{0,1\}\)</span>, or <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span>, it has one: for instance <span class="math" data-tex="\(\mathcal A_{\gamma,0}(|0\rangle\langle0|)=|0\rangle\langle0|\)">\(\mathcal A_{\gamma,0}(|0\rangle\langle0|)=|0\rangle\langle0|\)</span>.</p>
+<p><strong>Theorem 5.3</strong> (the theorem of the course; [OpenAI-GAD, Theorem 1.1 and Corollary 1.2]). Let <span class="math" data-tex="\(\gamma,\nu\in[0,1]\)">\(\gamma,\nu\in[0,1]\)</span>, <span class="math" data-tex="\(\mathcal A=\mathcal A_{\gamma,\nu}\)">\(\mathcal A=\mathcal A_{\gamma,\nu}\)</span>, <span class="math" data-tex="\(t(p)\)">\(t(p)\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> as in Lemma 5.2, and, for <span class="math" data-tex="\(0\le p\le1\)">\(0\le p\le1\)</span>,
+<span class="math math-display" data-tex="\[
+f(p)=h\bigl(t(p)\bigr)-e(p).
+\]">\[
+f(p)=h\bigl(t(p)\bigr)-e(p).
+\]</span></p>
+<ol>
+<li>For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\chi(\mathcal A^{\otimes n})&amp;=n\,\chi(\mathcal A)\\
+&amp;=\frac n{\ln2}\max_{0\le p\le1}f(p).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\chi(\mathcal A^{\otimes n})&amp;=n\,\chi(\mathcal A)\\
+&amp;=\frac n{\ln2}\max_{0\le p\le1}f(p).
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(p\)">\(p\)</span> maximizes <span class="math" data-tex="\(f\)">\(f\)</span>, the <span class="math" data-tex="\(2^n\)">\(2^n\)</span> tensor products of the states <span class="math" data-tex="\(\phi_\pm=\sqrt{1-p}\,|0\rangle\pm\sqrt p\,|1\rangle\)">\(\phi_\pm=\sqrt{1-p}\,|0\rangle\pm\sqrt p\,|1\rangle\)</span>, with equal probabilities, form an ensemble that attains <span class="math" data-tex="\(\chi(\mathcal A^{\otimes n})\)">\(\chi(\mathcal A^{\otimes n})\)</span>.</li>
+<li>For every channel <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> between nonzero finite-dimensional spaces,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\chi(\mathcal A\otimes\mathcal N)&amp;=\chi(\mathcal A)+\chi(\mathcal N),\\
+S_{\min}(\mathcal A\otimes\mathcal N)&amp;=S_{\min}(\mathcal A)\\
+&amp;\quad+S_{\min}(\mathcal N),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\chi(\mathcal A\otimes\mathcal N)&amp;=\chi(\mathcal A)+\chi(\mathcal N),\\
+S_{\min}(\mathcal A\otimes\mathcal N)&amp;=S_{\min}(\mathcal A)\\
+&amp;\quad+S_{\min}(\mathcal N),
+\end{aligned}
+\]</span>
+and the regularized Holevo informations add:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sup_n\frac1n\chi\bigl((\mathcal A\otimes\mathcal N)^{\otimes n}\bigr)\\
+&amp;\qquad=\chi(\mathcal A)+\sup_n\frac1n\chi(\mathcal N^{\otimes n}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sup_n\frac1n\chi\bigl((\mathcal A\otimes\mathcal N)^{\otimes n}\bigr)\\
+&amp;\qquad=\chi(\mathcal A)+\sup_n\frac1n\chi(\mathcal N^{\otimes n}).
+\end{aligned}
+\]</span></li>
+<li>Under Hypothesis (CT), <span class="math" data-tex="\(C(\mathcal A)=\chi(\mathcal A)\)">\(C(\mathcal A)=\chi(\mathcal A)\)</span> and <span class="math" data-tex="\(C(\mathcal A\otimes\mathcal N)=C(\mathcal A)+C(\mathcal N)\)">\(C(\mathcal A\otimes\mathcal N)=C(\mathcal A)+C(\mathcal N)\)</span>.</li>
+</ol>
+<p>The upper bound in (1) concerns all input states of <span class="math" data-tex="\(n\)">\(n\)</span> uses, including states entangled across the uses, and all measurements on the outputs; independent uses of a two-state ensemble attain it. In (2) nothing is assumed of the partner <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, whose own capacity may need the regularization.</p>
+<p>The proof occupies the rest of the course. <a href="entropy-differences-and-log-determinants.html">Entropy differences and log-determinants</a> writes entropy differences as integrals of log-determinants and proves a joint convexity and a scalar concavity. <a href="block-entropy-inequalities.html">Block entropy inequalities</a> proves two entropy inequalities for block matrices. <a href="output-entropy-of-damping-blocks.html">Output entropy of damping blocks</a> turns them into a lower bound for the output entropy of <span class="math" data-tex="\(n\)">\(n\)</span> uses in terms of the input populations at each site, and proves part (1). <a href="additivity-with-an-arbitrary-partner.html">Additivity with an arbitrary partner</a> proves parts (2) and (3) and works out special cases.</p>
+<p>For ordinary amplitude damping (<span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>), the one-use maximum and the ensemble <span class="math" data-tex="\(\phi_\pm\)">\(\phi_\pm\)</span> are due to Giovannetti and Fazio [GF, Section III A], and the equality of the classical capacity with the Holevo information, with additivity against every finite-dimensional partner, was proved by Tang, Zhu, Bai and Wang [TZBW, Theorem 5.5], together with the same conclusions for every qubit channel with a pure output [TZBW, Corollary 6.2]. Their argument rests on a triangular block entropy inequality [TZBW, Theorem 4.2]; the second and third lessons prove the case of it needed here and extend it to the thermal case, where the channel has no pure output.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that the transposition <span class="math" data-tex="\(X\mapsto X^{\mathsf T}\)">\(X\mapsto X^{\mathsf T}\)</span> of <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices is positive and trace preserving, but not completely positive.</p>
+<p><strong>6.2.</strong> Show that <span class="math" data-tex="\(\mathcal A_{\gamma&#x27;,\nu}\circ\mathcal A_{\gamma,\nu}=\mathcal A_{\gamma&#x27;&#x27;,\nu}\)">\(\mathcal A_{\gamma&#x27;,\nu}\circ\mathcal A_{\gamma,\nu}=\mathcal A_{\gamma&#x27;&#x27;,\nu}\)</span> with <span class="math" data-tex="\(1-\gamma&#x27;&#x27;=(1-\gamma)(1-\gamma&#x27;)\)">\(1-\gamma&#x27;&#x27;=(1-\gamma)(1-\gamma&#x27;)\)</span>.</p>
+<p><strong>6.3.</strong> Show that for <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span> the state <span class="math" data-tex="\(\operatorname{diag}(1-\nu,\nu)\)">\(\operatorname{diag}(1-\nu,\nu)\)</span> is the only state fixed by <span class="math" data-tex="\(\mathcal A_{\gamma,\nu}\)">\(\mathcal A_{\gamma,\nu}\)</span>.</p>
+<p><strong>6.4.</strong> Show that <span class="math" data-tex="\(S_{\min}(\mathcal A_{\gamma,\nu})=g(\gamma\nu(1-\nu))\)">\(S_{\min}(\mathcal A_{\gamma,\nu})=g(\gamma\nu(1-\nu))\)</span>, and find the pure states that attain it.</p>
+<p><strong>6.5.</strong> Show that <span class="math" data-tex="\(\chi(\mathcal A_{1,\nu})=0\)">\(\chi(\mathcal A_{1,\nu})=0\)</span> and <span class="math" data-tex="\(\chi(\mathcal A_{0,\nu})=1\)">\(\chi(\mathcal A_{0,\nu})=1\)</span>.</p>
+<p><strong>6.6.</strong> Let <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> be a channel and <span class="math" data-tex="\(\{q_a,\rho_a\}\)">\(\{q_a,\rho_a\}\)</span> an ensemble. Show that <span class="math" data-tex="\(\chi_{\mathcal N}\{q_a,\rho_a\}\le H(q)\)">\(\chi_{\mathcal N}\{q_a,\rho_a\}\le H(q)\)</span> when the outputs <span class="math" data-tex="\(\mathcal N(\rho_a)\)">\(\mathcal N(\rho_a)\)</span> have mutually orthogonal supports, and that equality holds in that case.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(X^{\mathsf T}\)">\(X^{\mathsf T}\)</span> has the eigenvalues of <span class="math" data-tex="\(X\)">\(X\)</span> and the same trace. For <span class="math" data-tex="\(\Omega=e_1\otimes e_1+e_2\otimes e_2\)">\(\Omega=e_1\otimes e_1+e_2\otimes e_2\)</span>, <span class="math" data-tex="\((\mathrm{id}_2\otimes{}^{\mathsf T})(\Omega\Omega^*)=\sum_{i,j}e_ie_j^*\otimes e_je_i^*\)">\((\mathrm{id}_2\otimes{}^{\mathsf T})(\Omega\Omega^*)=\sum_{i,j}e_ie_j^*\otimes e_je_i^*\)</span> is the operator that exchanges the two factors, and it maps <span class="math" data-tex="\(e_1\otimes e_2-e_2\otimes e_1\)">\(e_1\otimes e_2-e_2\otimes e_1\)</span> to its negative, so it has the eigenvalue <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p><strong>6.2.</strong> Both maps multiply coherences by <span class="math" data-tex="\(\sqrt{1-\gamma}\sqrt{1-\gamma&#x27;}=\sqrt{1-\gamma&#x27;&#x27;}\)">\(\sqrt{1-\gamma}\sqrt{1-\gamma&#x27;}=\sqrt{1-\gamma&#x27;&#x27;}\)</span>. On populations, the composite maps <span class="math" data-tex="\(q\)">\(q\)</span> to <span class="math" data-tex="\((1-\gamma&#x27;)t+\gamma&#x27;\nu\)">\((1-\gamma&#x27;)t+\gamma&#x27;\nu\)</span> with <span class="math" data-tex="\(t=(1-\gamma)q+\gamma\nu\)">\(t=(1-\gamma)q+\gamma\nu\)</span>, which is <span class="math" data-tex="\((1-\gamma)(1-\gamma&#x27;)q+(\gamma+\gamma&#x27;-\gamma\gamma&#x27;)\nu\)">\((1-\gamma)(1-\gamma&#x27;)q+(\gamma+\gamma&#x27;-\gamma\gamma&#x27;)\nu\)</span>, and <span class="math" data-tex="\(\gamma+\gamma&#x27;-\gamma\gamma&#x27;=\gamma&#x27;&#x27;\)">\(\gamma+\gamma&#x27;-\gamma\gamma&#x27;=\gamma&#x27;&#x27;\)</span>. Two linear maps that agree on the matrix entries agree.</p>
+<p><strong>6.3.</strong> A fixed state has <span class="math" data-tex="\((1-\gamma)q+\gamma\nu=q\)">\((1-\gamma)q+\gamma\nu=q\)</span>, that is <span class="math" data-tex="\(\gamma(q-\nu)=0\)">\(\gamma(q-\nu)=0\)</span>, and <span class="math" data-tex="\(kz=z\)">\(kz=z\)</span> with <span class="math" data-tex="\(k&lt;1\)">\(k&lt;1\)</span>. So <span class="math" data-tex="\(q=\nu\)">\(q=\nu\)</span> and <span class="math" data-tex="\(z=0\)">\(z=0\)</span>.</p>
+<p><strong>6.4.</strong> By Lemma 3.1(2) and Lemma 5.2, <span class="math" data-tex="\(S_{\min}=\min_pg(v(p))\)">\(S_{\min}=\min_pg(v(p))\)</span>. Since <span class="math" data-tex="\(g\)">\(g\)</span> is nondecreasing, the minimum is <span class="math" data-tex="\(g\)">\(g\)</span> of the minimum of <span class="math" data-tex="\(v\)">\(v\)</span>, which is <span class="math" data-tex="\(\gamma\nu(1-\nu)\)">\(\gamma\nu(1-\nu)\)</span>, at <span class="math" data-tex="\(p=\nu\)">\(p=\nu\)</span>. The minimizing pure states are <span class="math" data-tex="\(\sqrt{1-\nu}\,|0\rangle+e^{i\theta}\sqrt\nu\,|1\rangle\)">\(\sqrt{1-\nu}\,|0\rangle+e^{i\theta}\sqrt\nu\,|1\rangle\)</span>, for every <span class="math" data-tex="\(\theta\)">\(\theta\)</span> (and, when <span class="math" data-tex="\(v\)">\(v\)</span> is constant, that is <span class="math" data-tex="\(\gamma\in\{0,1\}\)">\(\gamma\in\{0,1\}\)</span>, all pure states).</p>
+<p><strong>6.5.</strong> <span class="math" data-tex="\(\mathcal A_{1,\nu}\)">\(\mathcal A_{1,\nu}\)</span> maps every state to <span class="math" data-tex="\(\operatorname{diag}(1-\nu,\nu)\)">\(\operatorname{diag}(1-\nu,\nu)\)</span>, so every Holevo quantity is <span class="math" data-tex="\(0\)">\(0\)</span>. <span class="math" data-tex="\(\mathcal A_{0,\nu}\)">\(\mathcal A_{0,\nu}\)</span> is the identity. Every Holevo quantity is at most the entropy of the mean output, hence at most <span class="math" data-tex="\(\ln2\)">\(\ln2\)</span>, and the ensemble of <span class="math" data-tex="\(|0\rangle\langle0|\)">\(|0\rangle\langle0|\)</span> and <span class="math" data-tex="\(|1\rangle\langle1|\)">\(|1\rangle\langle1|\)</span> with probabilities <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> attains <span class="math" data-tex="\(\ln2\)">\(\ln2\)</span>. So <span class="math" data-tex="\(\chi(\mathcal A_{0,\nu})=1\)">\(\chi(\mathcal A_{0,\nu})=1\)</span>.</p>
+<p><strong>6.6.</strong> If the supports are orthogonal, the mean output <span class="math" data-tex="\(\sum_aq_a\mathcal N(\rho_a)\)">\(\sum_aq_a\mathcal N(\rho_a)\)</span> is a direct sum of the operators <span class="math" data-tex="\(q_a\mathcal N(\rho_a)\)">\(q_a\mathcal N(\rho_a)\)</span>, so by facts 2 and 3 of Section 2 its entropy is <span class="math" data-tex="\(\sum_a\bigl(q_aS(\mathcal N(\rho_a))-q_a\ln q_a\bigr)\)">\(\sum_a\bigl(q_aS(\mathcal N(\rho_a))-q_a\ln q_a\bigr)\)</span> (terms with <span class="math" data-tex="\(q_a=0\)">\(q_a=0\)</span> omitted). Subtracting <span class="math" data-tex="\(\sum_aq_aS(\mathcal N(\rho_a))\)">\(\sum_aq_aS(\mathcal N(\rho_a))\)</span> leaves <span class="math" data-tex="\(H(q)\)">\(H(q)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-GAD] OpenAI, <em>Classical capacity and entropy inequalities for generalized amplitude damping</em>, OpenAI Math Release preprint, 24 September 2026, Section 1. https://github.com/openai/math/tree/main/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026</li>
+<li>[Holevo] A. S. Holevo, <em>The capacity of the quantum channel with general signal states</em>, IEEE Transactions on Information Theory 44 (1998); preprint arXiv:quant-ph/9611023, the Theorem in Section 2 and its proof in Sections 3–6. https://arxiv.org/abs/quant-ph/9611023</li>
+<li>[Wilde] M. M. Wilde, <em>From Classical to Quantum Shannon Theory</em>, arXiv:1106.1445v8, Chapter 20. https://arxiv.org/abs/1106.1445</li>
+<li>[Hastings] M. B. Hastings, <em>Superadditivity of communication capacity using entangled inputs</em>, Nature Physics 5 (2009); preprint arXiv:0809.3972. https://arxiv.org/abs/0809.3972</li>
+<li>[GF] V. Giovannetti and R. Fazio, <em>Information-capacity description of spin-chain correlations</em>, Physical Review A 71 (2005); preprint arXiv:quant-ph/0405110. https://arxiv.org/abs/quant-ph/0405110</li>
+<li>[TZBW] Z. Tang, C. Zhu, G. Bai and X. Wang, <em>Classical capacity and entanglement cost of the amplitude damping channel</em>, arXiv:2609.28592 (2026). https://arxiv.org/abs/2609.28592</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

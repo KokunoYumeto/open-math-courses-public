@@ -1,0 +1,220 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Additivity with an arbitrary partner</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Classical capacity of generalized amplitude damping)</a><a href="output-entropy-of-damping-blocks.html">Previous lesson</a><a href="src/additivity-with-an-arbitrary-partner.md">Editable source</a></nav><main><article><h1 id="additivity-with-an-arbitrary-partner">Additivity with an arbitrary partner</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The one-use estimate of the previous lesson, Lemma 2.1 of <a href="output-entropy-of-damping-blocks.html">Output entropy of damping blocks</a>, holds next to an arbitrary finite-dimensional channel <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. This lesson uses it to prove that the generalized amplitude-damping channel <span class="math" data-tex="\(\mathcal A=\mathcal A_{\gamma,\nu}\)">\(\mathcal A=\mathcal A_{\gamma,\nu}\)</span> is additive with every such partner, for the Holevo information (Theorem 1.1), for the minimum output entropy (Theorem 2.1), and for the regularized Holevo information, hence, under the coding theorem, for the classical capacity (Theorem 3.1). The partner is arbitrary: its own Holevo information need not be additive. The last section computes special cases: ordinary amplitude damping, the symmetry <span class="math" data-tex="\(\nu\leftrightarrow1-\nu\)">\(\nu\leftrightarrow1-\nu\)</span>, the unital channel <span class="math" data-tex="\(\nu=\frac12\)">\(\nu=\frac12\)</span>, and the endpoints.</p>
+<ul>
+<li>Holevo information (Theorem 1.1).</li>
+<li>Minimum output entropy (Theorem 2.1).</li>
+<li>Regularized Holevo information and capacity (Theorem 3.1).</li>
+<li>Special cases (Section 4).</li>
+</ul>
+<p>The lesson follows [OpenAI-GAD, Sections 6 and 7]. Notation is that of <a href="quantum-channels-and-holevo-information.html">Quantum channels and Holevo information</a>: Holevo quantities <span class="math" data-tex="\(\chi_{\mathcal N}\{q_a,\rho_a\}\)">\(\chi_{\mathcal N}\{q_a,\rho_a\}\)</span> in nats, Holevo information <span class="math" data-tex="\(\chi\)">\(\chi\)</span> in bits, <span class="math" data-tex="\(S_{\min}\)">\(S_{\min}\)</span> in nats, <span class="math" data-tex="\(t(p)=(1-\gamma)p+\gamma\nu\)">\(t(p)=(1-\gamma)p+\gamma\nu\)</span>, <span class="math" data-tex="\(e(p)=g(v(p))\)">\(e(p)=g(v(p))\)</span> and <span class="math" data-tex="\(f(p)=h(t(p))-e(p)\)">\(f(p)=h(t(p))-e(p)\)</span>. Throughout, <span class="math" data-tex="\(\mathcal N\colon\mathcal B(\mathcal H_{\mathrm{in}})\to\mathcal B(\mathcal H_{\mathrm{out}})\)">\(\mathcal N\colon\mathcal B(\mathcal H_{\mathrm{in}})\to\mathcal B(\mathcal H_{\mathrm{out}})\)</span> is a channel between nonzero finite-dimensional spaces.</p>
+<h2 id="1-holevo-information">1. Holevo information</h2>
+<p><strong>Theorem 1.1</strong> ([OpenAI-GAD, Corollary 1.2]). <span class="math" data-tex="\(\chi(\mathcal A\otimes\mathcal N)=\chi(\mathcal A)+\chi(\mathcal N)\)">\(\chi(\mathcal A\otimes\mathcal N)=\chi(\mathcal A)+\chi(\mathcal N)\)</span>.</p>
+<p><em>Proof.</em> The inequality <span class="math" data-tex="\(\ge\)">\(\ge\)</span> is Lemma 3.1(4) of the first lesson. For <span class="math" data-tex="\(\le\)">\(\le\)</span>, by Lemma 3.1(1) there it suffices to bound the Holevo quantity of an ensemble <span class="math" data-tex="\(\{q_a,\psi_a\psi_a^*\}\)">\(\{q_a,\psi_a\psi_a^*\}\)</span> of pure states on <span class="math" data-tex="\(\mathbb C^2\otimes\mathcal H_{\mathrm{in}}\)">\(\mathbb C^2\otimes\mathcal H_{\mathrm{in}}\)</span>; the vectors <span class="math" data-tex="\(\psi_a\)">\(\psi_a\)</span> may be entangled between the two factors. Decompose each of them as in Lemma 2.1 of the previous lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\psi_a&amp;=\sqrt{1-p_a}\,|0\rangle\otimes\psi_{a,0}\\
+&amp;\quad+\sqrt{p_a}\,|1\rangle\otimes\psi_{a,1},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\psi_a&amp;=\sqrt{1-p_a}\,|0\rangle\otimes\psi_{a,0}\\
+&amp;\quad+\sqrt{p_a}\,|1\rangle\otimes\psi_{a,1},
+\end{aligned}
+\]</span>
+and put, for <span class="math" data-tex="\(i\in\{0,1\}\)">\(i\in\{0,1\}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bar p=\sum_aq_ap_a,\\
+w_{a,0}=q_a(1-p_a),\quad w_{a,1}=q_ap_a,\\
+\tau_{a,i}=\mathcal N(\psi_{a,i}\psi_{a,i}^*).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\bar p=\sum_aq_ap_a,\\
+w_{a,0}=q_a(1-p_a),\quad w_{a,1}=q_ap_a,\\
+\tau_{a,i}=\mathcal N(\psi_{a,i}\psi_{a,i}^*).
+\end{gathered}
+\]</span>
+The weights <span class="math" data-tex="\(w_{a,i}\)">\(w_{a,i}\)</span> are nonnegative with sum <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><em>The branch ensemble.</em> Let <span class="math" data-tex="\(\bar\rho=\sum_aq_a\psi_a\psi_a^*\)">\(\bar\rho=\sum_aq_a\psi_a\psi_a^*\)</span> and let <span class="math" data-tex="\(\bar\rho_2\)">\(\bar\rho_2\)</span> be its marginal on <span class="math" data-tex="\(\mathcal H_{\mathrm{in}}\)">\(\mathcal H_{\mathrm{in}}\)</span>. The cross terms vanish under the partial trace over the qubit, because <span class="math" data-tex="\(\langle1|0\rangle=0\)">\(\langle1|0\rangle=0\)</span>, whatever the overlaps of the branch vectors; so
+<span class="math math-display" data-tex="\[
+\bar\rho_2=\sum_{a,i}w_{a,i}\,\psi_{a,i}\psi_{a,i}^* ,
+\]">\[
+\bar\rho_2=\sum_{a,i}w_{a,i}\,\psi_{a,i}\psi_{a,i}^* ,
+\]</span>
+and, by Lemma 1.3 of the first lesson, since <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> preserves traces,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bar\tau:=\sum_{a,i}w_{a,i}\tau_{a,i}&amp;=\mathcal N(\bar\rho_2)\\
+&amp;=\operatorname{Tr}_1\bigl((\mathcal A\otimes\mathcal N)(\bar\rho)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\bar\tau:=\sum_{a,i}w_{a,i}\tau_{a,i}&amp;=\mathcal N(\bar\rho_2)\\
+&amp;=\operatorname{Tr}_1\bigl((\mathcal A\otimes\mathcal N)(\bar\rho)\bigr).
+\end{aligned}
+\]</span>
+So the branch ensemble <span class="math" data-tex="\(\{w_{a,i},\psi_{a,i}\psi_{a,i}^*\}\)">\(\{w_{a,i},\psi_{a,i}\psi_{a,i}^*\}\)</span> for <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> has as mean output exactly the second marginal of the mean output of the given ensemble.</p>
+<p><em>Upper bound for the mean output.</em> Let <span class="math" data-tex="\(\sigma_a=(\mathcal A\otimes\mathcal N)(\psi_a\psi_a^*)\)">\(\sigma_a=(\mathcal A\otimes\mathcal N)(\psi_a\psi_a^*)\)</span> and <span class="math" data-tex="\(\bar\sigma=\sum_aq_a\sigma_a\)">\(\bar\sigma=\sum_aq_a\sigma_a\)</span>. Since <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> preserves traces, the first marginal of <span class="math" data-tex="\(\bar\sigma\)">\(\bar\sigma\)</span> is <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> applied to the first marginal of <span class="math" data-tex="\(\bar\rho\)">\(\bar\rho\)</span>, whose excited population is <span class="math" data-tex="\(\bar p\)">\(\bar p\)</span>; so the first marginal of <span class="math" data-tex="\(\bar\sigma\)">\(\bar\sigma\)</span> has the excited population <span class="math" data-tex="\(t(\bar p)\)">\(t(\bar p)\)</span>. Corollary 2.2 of the first lesson, with the standard basis of the qubit and an eigenbasis of <span class="math" data-tex="\(\bar\tau\)">\(\bar\tau\)</span>, gives
+<span class="math math-display" data-tex="\[
+S(\bar\sigma)\le h\bigl(t(\bar p)\bigr)+S(\bar\tau).
+\]">\[
+S(\bar\sigma)\le h\bigl(t(\bar p)\bigr)+S(\bar\tau).
+\]</span></p>
+<p><em>Lower bound for the outputs.</em> Lemma 2.1 of the previous lesson and the convexity of <span class="math" data-tex="\(e\)">\(e\)</span> (Lemma 1.1 there) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_aq_aS(\sigma_a)\\
+&amp;\quad\ge\sum_aq_ae(p_a)+\sum_{a,i}w_{a,i}S(\tau_{a,i})\\
+&amp;\quad\ge e(\bar p)+\sum_{a,i}w_{a,i}S(\tau_{a,i}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_aq_aS(\sigma_a)\\
+&amp;\quad\ge\sum_aq_ae(p_a)+\sum_{a,i}w_{a,i}S(\tau_{a,i})\\
+&amp;\quad\ge e(\bar p)+\sum_{a,i}w_{a,i}S(\tau_{a,i}).
+\end{aligned}
+\]</span></p>
+<p><em>Conclusion.</em> Subtracting,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\chi_{\mathcal A\otimes\mathcal N}\{q_a,\psi_a\psi_a^*\}\\
+&amp;\quad\le f(\bar p)\\
+&amp;\qquad+\chi_{\mathcal N}\{w_{a,i},\psi_{a,i}\psi_{a,i}^*\}\\
+&amp;\quad\le(\ln2)\bigl(\chi(\mathcal A)+\chi(\mathcal N)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\chi_{\mathcal A\otimes\mathcal N}\{q_a,\psi_a\psi_a^*\}\\
+&amp;\quad\le f(\bar p)\\
+&amp;\qquad+\chi_{\mathcal N}\{w_{a,i},\psi_{a,i}\psi_{a,i}^*\}\\
+&amp;\quad\le(\ln2)\bigl(\chi(\mathcal A)+\chi(\mathcal N)\bigr),
+\end{aligned}
+\]</span>
+by Theorem 4.1 of the previous lesson for the first term and the definition of <span class="math" data-tex="\(\chi(\mathcal N)\)">\(\chi(\mathcal N)\)</span> for the second. Taking the supremum over ensembles proves <span class="math" data-tex="\(\le\)">\(\le\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-minimum-output-entropy">2. Minimum output entropy</h2>
+<p><strong>Theorem 2.1</strong> ([OpenAI-GAD, Corollary 1.2]). <span class="math" data-tex="\(S_{\min}(\mathcal A)=g\bigl(\gamma\nu(1-\nu)\bigr)\)">\(S_{\min}(\mathcal A)=g\bigl(\gamma\nu(1-\nu)\bigr)\)</span>, and
+<span class="math math-display" data-tex="\[
+S_{\min}(\mathcal A\otimes\mathcal N)=S_{\min}(\mathcal A)+S_{\min}(\mathcal N).
+\]">\[
+S_{\min}(\mathcal A\otimes\mathcal N)=S_{\min}(\mathcal A)+S_{\min}(\mathcal N).
+\]</span></p>
+<p><em>Proof.</em> By Lemma 3.1(2) of the first lesson, a pure input attains <span class="math" data-tex="\(S_{\min}(\mathcal A)\)">\(S_{\min}(\mathcal A)\)</span>, so <span class="math" data-tex="\(S_{\min}(\mathcal A)=\min_pe(p)\)">\(S_{\min}(\mathcal A)=\min_pe(p)\)</span> by Lemma 5.2 there. Since <span class="math" data-tex="\(v(p)=\gamma\nu(1-\nu)+\gamma(1-\gamma)(p-\nu)^2\)">\(v(p)=\gamma\nu(1-\nu)+\gamma(1-\gamma)(p-\nu)^2\)</span> is smallest at <span class="math" data-tex="\(p=\nu\)">\(p=\nu\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> is nondecreasing, <span class="math" data-tex="\(\min_pe(p)=g(\gamma\nu(1-\nu))\)">\(\min_pe(p)=g(\gamma\nu(1-\nu))\)</span>, attained by every pure state with population <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, also at the endpoints of the parameters.</p>
+<p>For the product, <span class="math" data-tex="\(\le\)">\(\le\)</span> is Lemma 3.1(4) of the first lesson. For <span class="math" data-tex="\(\ge\)">\(\ge\)</span>, a pure input attains <span class="math" data-tex="\(S_{\min}(\mathcal A\otimes\mathcal N)\)">\(S_{\min}(\mathcal A\otimes\mathcal N)\)</span>, and for a pure input <span class="math" data-tex="\(\psi\)">\(\psi\)</span> Lemma 2.1 of the previous lesson, with <span class="math" data-tex="\(S(\mathcal N(\psi_i\psi_i^*))\ge S_{\min}(\mathcal N)\)">\(S(\mathcal N(\psi_i\psi_i^*))\ge S_{\min}(\mathcal N)\)</span> for both branches, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S\bigl((\mathcal A\otimes\mathcal N)(\psi\psi^*)\bigr)\\
+&amp;\quad\ge e(p)+S_{\min}(\mathcal N)\\
+&amp;\quad\ge S_{\min}(\mathcal A)+S_{\min}(\mathcal N).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;S\bigl((\mathcal A\otimes\mathcal N)(\psi\psi^*)\bigr)\\
+&amp;\quad\ge e(p)+S_{\min}(\mathcal N)\\
+&amp;\quad\ge S_{\min}(\mathcal A)+S_{\min}(\mathcal N).
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-regularized-holevo-information-and-capacity">3. Regularized Holevo information and capacity</h2>
+<p><strong>Theorem 3.1</strong> ([OpenAI-GAD, Corollary 1.2]). For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\chi\bigl((\mathcal A\otimes\mathcal N)^{\otimes n}\bigr)=n\chi(\mathcal A)+\chi(\mathcal N^{\otimes n}),
+\]">\[
+\chi\bigl((\mathcal A\otimes\mathcal N)^{\otimes n}\bigr)=n\chi(\mathcal A)+\chi(\mathcal N^{\otimes n}),
+\]</span>
+hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sup_n\frac1n\chi\bigl((\mathcal A\otimes\mathcal N)^{\otimes n}\bigr)\\
+&amp;\qquad=\chi(\mathcal A)+\sup_n\frac1n\chi(\mathcal N^{\otimes n}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sup_n\frac1n\chi\bigl((\mathcal A\otimes\mathcal N)^{\otimes n}\bigr)\\
+&amp;\qquad=\chi(\mathcal A)+\sup_n\frac1n\chi(\mathcal N^{\otimes n}).
+\end{aligned}
+\]</span>
+Under Hypothesis (CT) of the first lesson, <span class="math" data-tex="\(C(\mathcal A\otimes\mathcal N)=C(\mathcal A)+C(\mathcal N)\)">\(C(\mathcal A\otimes\mathcal N)=C(\mathcal A)+C(\mathcal N)\)</span>.</p>
+<p><em>Proof.</em> Reordering the tensor factors of the inputs and of the outputs identifies <span class="math" data-tex="\((\mathcal A\otimes\mathcal N)^{\otimes n}\)">\((\mathcal A\otimes\mathcal N)^{\otimes n}\)</span> with <span class="math" data-tex="\(X\mapsto U\bigl(\mathcal A^{\otimes n}\otimes\mathcal N^{\otimes n}\bigr)(VXV^*)U^*\)">\(X\mapsto U\bigl(\mathcal A^{\otimes n}\otimes\mathcal N^{\otimes n}\bigr)(VXV^*)U^*\)</span> for permutation unitaries <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>, and such unitaries do not change the Holevo information (Lemma 3.1(3) of the first lesson). Apply Theorem 1.1 to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and the partner <span class="math" data-tex="\(\mathcal A^{\otimes(n-1)}\otimes\mathcal N^{\otimes n}\)">\(\mathcal A^{\otimes(n-1)}\otimes\mathcal N^{\otimes n}\)</span>, which is again a channel between nonzero finite-dimensional spaces, then to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and <span class="math" data-tex="\(\mathcal A^{\otimes(n-2)}\otimes\mathcal N^{\otimes n}\)">\(\mathcal A^{\otimes(n-2)}\otimes\mathcal N^{\otimes n}\)</span>, and so on:
+<span class="math math-display" data-tex="\[
+\chi\bigl(\mathcal A^{\otimes n}\otimes\mathcal N^{\otimes n}\bigr)=n\chi(\mathcal A)+\chi(\mathcal N^{\otimes n}).
+\]">\[
+\chi\bigl(\mathcal A^{\otimes n}\otimes\mathcal N^{\otimes n}\bigr)=n\chi(\mathcal A)+\chi(\mathcal N^{\otimes n}).
+\]</span>
+Dividing by <span class="math" data-tex="\(n\)">\(n\)</span> and taking suprema gives the second formula. Under (CT), its left side is <span class="math" data-tex="\(C(\mathcal A\otimes\mathcal N)\)">\(C(\mathcal A\otimes\mathcal N)\)</span> and its right side is <span class="math" data-tex="\(\chi(\mathcal A)+C(\mathcal N)\)">\(\chi(\mathcal A)+C(\mathcal N)\)</span>, and <span class="math" data-tex="\(\chi(\mathcal A)=C(\mathcal A)\)">\(\chi(\mathcal A)=C(\mathcal A)\)</span> by Corollary 4.2 of the previous lesson. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>No restriction was placed on entanglement among the inputs of the copies of <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>: the regularization of the partner remains, and only the damping channel is peeled off.</p>
+<h2 id="4-special-cases">4. Special cases</h2>
+<p><strong>Corollary 4.1</strong> (ordinary amplitude damping; [OpenAI-GAD, Corollary 7.1]). For <span class="math" data-tex="\(\gamma\in[0,1]\)">\(\gamma\in[0,1]\)</span>, let <span class="math" data-tex="\(\mathcal A_\gamma\)">\(\mathcal A_\gamma\)</span> have the Kraus operators <span class="math" data-tex="\(K_0=\operatorname{diag}(1,\sqrt{1-\gamma})\)">\(K_0=\operatorname{diag}(1,\sqrt{1-\gamma})\)</span> and <span class="math" data-tex="\(K_1=\sqrt\gamma\,|0\rangle\langle1|\)">\(K_1=\sqrt\gamma\,|0\rangle\langle1|\)</span>. For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\chi(\mathcal A_\gamma^{\otimes n})&amp;=n\chi(\mathcal A_\gamma)\\
+&amp;=\frac n{\ln2}\max_{0\le p\le1}f_0(p),\\
+f_0(p)&amp;=h\bigl((1-\gamma)p\bigr)\\
+&amp;\quad-g\bigl(\gamma(1-\gamma)p^2\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\chi(\mathcal A_\gamma^{\otimes n})&amp;=n\chi(\mathcal A_\gamma)\\
+&amp;=\frac n{\ln2}\max_{0\le p\le1}f_0(p),\\
+f_0(p)&amp;=h\bigl((1-\gamma)p\bigr)\\
+&amp;\quad-g\bigl(\gamma(1-\gamma)p^2\bigr),
+\end{aligned}
+\]</span>
+and under (CT) the capacity of <span class="math" data-tex="\(\mathcal A_\gamma\)">\(\mathcal A_\gamma\)</span> is <span class="math" data-tex="\(\chi(\mathcal A_\gamma)\)">\(\chi(\mathcal A_\gamma)\)</span>.</p>
+<p><em>Proof.</em> The channel with these Kraus operators maps <span class="math" data-tex="\(\bigl(\begin{smallmatrix}1-q&amp;z\\\bar z&amp;q\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}1-q&amp;z\\\bar z&amp;q\end{smallmatrix}\bigr)\)</span> to <span class="math" data-tex="\(\bigl(\begin{smallmatrix}1-(1-\gamma)q&amp;\sqrt{1-\gamma}z\\\sqrt{1-\gamma}\bar z&amp;(1-\gamma)q\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}1-(1-\gamma)q&amp;\sqrt{1-\gamma}z\\\sqrt{1-\gamma}\bar z&amp;(1-\gamma)q\end{smallmatrix}\bigr)\)</span>, which is <span class="math" data-tex="\(\mathcal A_{\gamma,0}\)">\(\mathcal A_{\gamma,0}\)</span>; and <span class="math" data-tex="\(v_{\gamma,0}(p)=\gamma(1-\gamma)p^2\)">\(v_{\gamma,0}(p)=\gamma(1-\gamma)p^2\)</span>. Theorem 4.1 and Corollary 4.2 of the previous lesson apply. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>This one-use maximum, with the ensemble of two states of opposite phases, agrees with Giovannetti and Fazio [GF, Section III A], whose transmissivity is <span class="math" data-tex="\(1-\gamma\)">\(1-\gamma\)</span>.</p>
+<p><strong>Lemma 4.2</strong> (the symmetry <span class="math" data-tex="\(\nu\leftrightarrow1-\nu\)">\(\nu\leftrightarrow1-\nu\)</span>). Let <span class="math" data-tex="\(\mathsf X=|0\rangle\langle1|+|1\rangle\langle0|\)">\(\mathsf X=|0\rangle\langle1|+|1\rangle\langle0|\)</span>. Then
+<span class="math math-display" data-tex="\[
+\mathcal A_{\gamma,1-\nu}(\rho)=\mathsf X\,\mathcal A_{\gamma,\nu}(\mathsf X\rho\mathsf X)\,\mathsf X ,
+\]">\[
+\mathcal A_{\gamma,1-\nu}(\rho)=\mathsf X\,\mathcal A_{\gamma,\nu}(\mathsf X\rho\mathsf X)\,\mathsf X ,
+\]</span>
+so <span class="math" data-tex="\(\mathcal A_{\gamma,1-\nu}\)">\(\mathcal A_{\gamma,1-\nu}\)</span> and <span class="math" data-tex="\(\mathcal A_{\gamma,\nu}\)">\(\mathcal A_{\gamma,\nu}\)</span> have the same Holevo information, minimum output entropy and capacity.</p>
+<p><em>Proof.</em> Conjugation by <span class="math" data-tex="\(\mathsf X\)">\(\mathsf X\)</span> exchanges the populations and conjugates the coherence. For <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with population <span class="math" data-tex="\(q\)">\(q\)</span> and coherence <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(\mathsf X\rho\mathsf X\)">\(\mathsf X\rho\mathsf X\)</span> has population <span class="math" data-tex="\(1-q\)">\(1-q\)</span> and coherence <span class="math" data-tex="\(\bar z\)">\(\bar z\)</span>; <span class="math" data-tex="\(\mathcal A_{\gamma,\nu}\)">\(\mathcal A_{\gamma,\nu}\)</span> maps it to population <span class="math" data-tex="\((1-\gamma)(1-q)+\gamma\nu\)">\((1-\gamma)(1-q)+\gamma\nu\)</span> and coherence <span class="math" data-tex="\(k\bar z\)">\(k\bar z\)</span>; conjugating back gives population <span class="math" data-tex="\(1-(1-\gamma)(1-q)-\gamma\nu\)">\(1-(1-\gamma)(1-q)-\gamma\nu\)</span>, that is <span class="math" data-tex="\((1-\gamma)q+\gamma(1-\nu)\)">\((1-\gamma)q+\gamma(1-\nu)\)</span>, and coherence <span class="math" data-tex="\(kz\)">\(kz\)</span>, which is <span class="math" data-tex="\(\mathcal A_{\gamma,1-\nu}(\rho)\)">\(\mathcal A_{\gamma,1-\nu}(\rho)\)</span>. Unitary conjugations change neither the Holevo information nor the minimum output entropy (Lemma 3.1(3) of the first lesson). Conjugating the states and the measurement operators of a code by <span class="math" data-tex="\(\mathsf X^{\otimes n}\)">\(\mathsf X^{\otimes n}\)</span> turns every code for one channel into a code for the other with the same error probabilities, so the capacities agree as well. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In particular <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span> has the capacity of ordinary amplitude damping, with the population <span class="math" data-tex="\(p\)">\(p\)</span> replaced by <span class="math" data-tex="\(1-p\)">\(1-p\)</span>.</p>
+<p><strong>Corollary 4.3</strong> (the unital channel; [OpenAI-GAD, Corollary 7.2]). For every <span class="math" data-tex="\(\gamma\in[0,1]\)">\(\gamma\in[0,1]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\chi(\mathcal A_{\gamma,1/2})&amp;=1-\frac{g(\gamma/4)}{\ln2}\\
+&amp;=1-\frac1{\ln2}h\Bigl(\frac{1+\sqrt{1-\gamma}}2\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\chi(\mathcal A_{\gamma,1/2})&amp;=1-\frac{g(\gamma/4)}{\ln2}\\
+&amp;=1-\frac1{\ln2}h\Bigl(\frac{1+\sqrt{1-\gamma}}2\Bigr),
+\end{aligned}
+\]</span>
+the states <span class="math" data-tex="\((|0\rangle\pm|1\rangle)/\sqrt2\)">\((|0\rangle\pm|1\rangle)/\sqrt2\)</span> with probabilities <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> attain it, and their tensor products attain <span class="math" data-tex="\(\chi(\mathcal A_{\gamma,1/2}^{\otimes n})\)">\(\chi(\mathcal A_{\gamma,1/2}^{\otimes n})\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. Under (CT) this is the capacity.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(\nu=\frac12\)">\(\nu=\frac12\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(p)&amp;=h\Bigl((1-\gamma)p+\frac\gamma2\Bigr)\\
+&amp;\quad-g\Bigl(\frac\gamma4+\gamma(1-\gamma)\bigl(p-\tfrac12\bigr)^2\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(p)&amp;=h\Bigl((1-\gamma)p+\frac\gamma2\Bigr)\\
+&amp;\quad-g\Bigl(\frac\gamma4+\gamma(1-\gamma)\bigl(p-\tfrac12\bigr)^2\Bigr).
+\end{aligned}
+\]</span>
+The first term is concave in <span class="math" data-tex="\(p\)">\(p\)</span>, as <span class="math" data-tex="\(h\)">\(h\)</span> composed with an affine function, and the second is the negative of the convex function <span class="math" data-tex="\(e\)">\(e\)</span> of Lemma 1.1 of the previous lesson; so <span class="math" data-tex="\(f\)">\(f\)</span> is concave. Moreover <span class="math" data-tex="\(f(1-p)=f(p)\)">\(f(1-p)=f(p)\)</span>, because <span class="math" data-tex="\((1-\gamma)(1-p)+\frac\gamma2\)">\((1-\gamma)(1-p)+\frac\gamma2\)</span> equals <span class="math" data-tex="\(1-\bigl((1-\gamma)p+\frac\gamma2\bigr)\)">\(1-\bigl((1-\gamma)p+\frac\gamma2\bigr)\)</span> and <span class="math" data-tex="\(h(1-s)=h(s)\)">\(h(1-s)=h(s)\)</span>. Hence <span class="math" data-tex="\(f(\frac12)\ge\frac12\bigl(f(p)+f(1-p)\bigr)=f(p)\)">\(f(\frac12)\ge\frac12\bigl(f(p)+f(1-p)\bigr)=f(p)\)</span> for all <span class="math" data-tex="\(p\)">\(p\)</span>, and the maximum is <span class="math" data-tex="\(f(\frac12)=\ln2-g(\gamma/4)\)">\(f(\frac12)=\ln2-g(\gamma/4)\)</span>. Finally <span class="math" data-tex="\(g(\gamma/4)=h\bigl((1+\sqrt{1-\gamma})/2\bigr)\)">\(g(\gamma/4)=h\bigl((1+\sqrt{1-\gamma})/2\bigr)\)</span> by the definition of <span class="math" data-tex="\(g\)">\(g\)</span>. Theorem 4.1 of the previous lesson gives the rest. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><em>The endpoints.</em> For <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span> the channel is the identity, <span class="math" data-tex="\(v\equiv0\)">\(v\equiv0\)</span>, and <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> bit per use. For <span class="math" data-tex="\(\gamma=1\)">\(\gamma=1\)</span> it replaces every input by <span class="math" data-tex="\(\operatorname{diag}(1-\nu,\nu)\)">\(\operatorname{diag}(1-\nu,\nu)\)</span>, so <span class="math" data-tex="\(\chi=0\)">\(\chi=0\)</span>; in the formula, both terms of <span class="math" data-tex="\(f\)">\(f\)</span> equal <span class="math" data-tex="\(h(\nu)\)">\(h(\nu)\)</span>, because <span class="math" data-tex="\(g(\nu(1-\nu))=h(\nu)\)">\(g(\nu(1-\nu))=h(\nu)\)</span>. These cases include the four corners of the parameter square.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Let <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> be the identity channel of <span class="math" data-tex="\(\mathbb C^m\)">\(\mathbb C^m\)</span>. Show directly that <span class="math" data-tex="\(\chi(\mathcal A\otimes\mathcal N)=\chi(\mathcal A)+\log_2m\)">\(\chi(\mathcal A\otimes\mathcal N)=\chi(\mathcal A)+\log_2m\)</span>.</p>
+<p><strong>5.2.</strong> Show that Theorem 2.1 implies that <span class="math" data-tex="\(S_{\min}\bigl(\mathcal A_{\gamma_1,\nu_1}\otimes\dots\otimes\mathcal A_{\gamma_n,\nu_n}\bigr)\)">\(S_{\min}\bigl(\mathcal A_{\gamma_1,\nu_1}\otimes\dots\otimes\mathcal A_{\gamma_n,\nu_n}\bigr)\)</span> equals <span class="math" data-tex="\(\sum_jg\bigl(\gamma_j\nu_j(1-\nu_j)\bigr)\)">\(\sum_jg\bigl(\gamma_j\nu_j(1-\nu_j)\bigr)\)</span>.</p>
+<p><strong>5.3.</strong> Show that <span class="math" data-tex="\(\chi(\mathcal A_{\gamma_1,\nu_1}\otimes\dots\otimes\mathcal A_{\gamma_n,\nu_n})\)">\(\chi(\mathcal A_{\gamma_1,\nu_1}\otimes\dots\otimes\mathcal A_{\gamma_n,\nu_n})\)</span> equals <span class="math" data-tex="\(\sum_j\chi(\mathcal A_{\gamma_j,\nu_j})\)">\(\sum_j\chi(\mathcal A_{\gamma_j,\nu_j})\)</span>, for damping channels with different parameters.</p>
+<p><strong>5.4.</strong> For <span class="math" data-tex="\(\gamma\in(0,1)\)">\(\gamma\in(0,1)\)</span> and <span class="math" data-tex="\(\nu\in(0,1)\)">\(\nu\in(0,1)\)</span>, show that the maximizer of <span class="math" data-tex="\(f\)">\(f\)</span> lies strictly between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>5.5.</strong> Show that the function <span class="math" data-tex="\(\gamma\mapsto\chi(\mathcal A_{\gamma,1/2})\)">\(\gamma\mapsto\chi(\mathcal A_{\gamma,1/2})\)</span> decreases from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> For the identity channel of <span class="math" data-tex="\(\mathbb C^m\)">\(\mathbb C^m\)</span>, every Holevo quantity is at most the entropy of the mean output, hence at most <span class="math" data-tex="\(\ln m\)">\(\ln m\)</span>, and an orthonormal basis with uniform probabilities attains <span class="math" data-tex="\(\ln m\)">\(\ln m\)</span>; so <span class="math" data-tex="\(\chi(\mathcal N)=\log_2m\)">\(\chi(\mathcal N)=\log_2m\)</span>. Theorem 1.1 applies.</p>
+<p><strong>5.2.</strong> Induction on <span class="math" data-tex="\(n\)">\(n\)</span>, with the partner <span class="math" data-tex="\(\mathcal A_{\gamma_2,\nu_2}\otimes\dots\otimes\mathcal A_{\gamma_n,\nu_n}\)">\(\mathcal A_{\gamma_2,\nu_2}\otimes\dots\otimes\mathcal A_{\gamma_n,\nu_n}\)</span> and Theorem 2.1 for the first factor, whose minimum output entropy is <span class="math" data-tex="\(g(\gamma_1\nu_1(1-\nu_1))\)">\(g(\gamma_1\nu_1(1-\nu_1))\)</span>.</p>
+<p><strong>5.3.</strong> Induction on <span class="math" data-tex="\(n\)">\(n\)</span> with Theorem 1.1, the partner being the product of the remaining channels.</p>
+<p><strong>5.4.</strong> By Exercise 5.2 of the previous lesson, <span class="math" data-tex="\(f(0)=f(1)=0\)">\(f(0)=f(1)=0\)</span> and <span class="math" data-tex="\(f(p)&gt;0\)">\(f(p)&gt;0\)</span> for <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span> when <span class="math" data-tex="\(\gamma&lt;1\)">\(\gamma&lt;1\)</span>; so no maximizer lies at an endpoint.</p>
+<p><strong>5.5.</strong> By Corollary 4.3 the value is <span class="math" data-tex="\(1-h\bigl((1+\sqrt{1-\gamma})/2\bigr)/\ln2\)">\(1-h\bigl((1+\sqrt{1-\gamma})/2\bigr)/\ln2\)</span>. As <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> increases from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\((1+\sqrt{1-\gamma})/2\)">\((1+\sqrt{1-\gamma})/2\)</span> decreases from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>, where <span class="math" data-tex="\(h\)">\(h\)</span> increases from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(\ln2\)">\(\ln2\)</span>; so the value decreases from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-GAD] OpenAI, <em>Classical capacity and entropy inequalities for generalized amplitude damping</em>, OpenAI Math Release preprint, 24 September 2026, Sections 6 and 7. https://github.com/openai/math/tree/main/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026</li>
+<li>[GF] V. Giovannetti and R. Fazio, <em>Information-capacity description of spin-chain correlations</em>, Physical Review A 71 (2005); preprint arXiv:quant-ph/0405110. https://arxiv.org/abs/quant-ph/0405110</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
