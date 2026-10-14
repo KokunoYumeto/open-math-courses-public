@@ -1,0 +1,206 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The finite walk</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Markov type and superreflexivity)</a><a href="two-levels-from-reduced-words.html">Previous lesson</a><a href="src/the-finite-walk.md">Editable source</a></nav><main><article><h1 id="the-finite-walk">The finite walk</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the second main statement of the course. Let <span class="math" data-tex="\(N\)">\(N\)</span> be a norm on finite sequences that does not change when zeros are inserted and does not increase when neighbouring entries are added. For every <span class="math" data-tex="\(n\)">\(n\)</span> there is a reversible stationary walk whose steps carry labels of norm <span class="math" data-tex="\(1\)">\(1\)</span>, with opposite labels for a step and its reverse, such that the sum of the first <span class="math" data-tex="\(n\)">\(n\)</span> labels has a norm of at least <span class="math" data-tex="\(n/24\)">\(n/24\)</span> with a probability of at least <span class="math" data-tex="\(\tfrac3{20}\)">\(\tfrac3{20}\)</span>. Together with the reduction of the first lesson this proves that a space with nontrivial Markov type is superreflexive.</p>
+<p>The states of the walk are charts: increasing maps from a finite set of points of the line to positions of a sequence. A step applies one of four homeomorphisms to the points and changes the chart so that the moved points keep their positions. The label of a step is a sum of differences of basis vectors at the positions of the ends of the arcs of its letter. The partial sums of the sum of all labels, read at suitable positions, are the values of the function <span class="math" data-tex="\(c_w\)">\(c_w\)</span> of the lesson on reduced words; they alternate between two levels.</p>
+<ul>
+<li>The landmarks, the chain and the labels (Section 1).</li>
+<li>Along good steps the positions of the orbit points do not change (Lemma 2.1).</li>
+<li>The partial sums of the total label (Lemma 3.1).</li>
+<li>From the two levels to the norm (Lemma 4.1).</li>
+<li>The walk with linear displacement (Theorem 5.1), and the theorem of the course (Theorem 5.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-M, Section 5]. It uses marked chains and the notions of spreading invariance and contractive merging from <a href="markov-type-and-the-reduction-to-a-finite-walk.html">Markov type and the reduction to a finite walk</a>, the chain of charts from <a href="charts-and-reversible-transport.html">Charts and reversible transport</a>, and the homeomorphisms <span class="math" data-tex="\(h_s\)">\(h_s\)</span>, the arcs <span class="math" data-tex="\(\mathcal A_s\)">\(\mathcal A_s\)</span> and the function <span class="math" data-tex="\(c_w\)">\(c_w\)</span> from <a href="two-levels-from-reduced-words.html">Two levels from reduced words</a>.</p>
+<h2 id="1-the-chain-and-the-labels">1. The chain and the labels</h2>
+<p>Throughout, <span class="math" data-tex="\(N\)">\(N\)</span> is a spreading invariant norm on <span class="math" data-tex="\(c_{00}\)">\(c_{00}\)</span> with contractive merging, and <span class="math" data-tex="\(b_i\)">\(b_i\)</span> is the sequence with <span class="math" data-tex="\(1\)">\(1\)</span> at the position <span class="math" data-tex="\(i\)">\(i\)</span>. For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> let
+<span class="math math-display" data-tex="\[
+D_k=N(1,-1,1,-1,\dots,1,-1),
+\]">\[
+D_k=N(1,-1,1,-1,\dots,1,-1),
+\]</span>
+the norm of the array with <span class="math" data-tex="\(k\)">\(k\)</span> pairs <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>.
+Then <span class="math" data-tex="\(D_k&gt;0\)">\(D_k&gt;0\)</span>, and <span class="math" data-tex="\(D_{k+l}\le D_k+D_l\)">\(D_{k+l}\le D_k+D_l\)</span>: the array with <span class="math" data-tex="\(k+l\)">\(k+l\)</span> pairs is the sum of the array with the first <span class="math" data-tex="\(k\)">\(k\)</span> pairs followed by zeros and the array with zeros followed by the last <span class="math" data-tex="\(l\)">\(l\)</span> pairs, and <span class="math" data-tex="\(N\)">\(N\)</span> does not see zeros.</p>
+<p>Fix <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and put
+<span class="math math-display" data-tex="\[
+L=8(n+1),\qquad\varepsilon=\frac1{10n}.
+\]">\[
+L=8(n+1),\qquad\varepsilon=\frac1{10n}.
+\]</span>
+Let <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, the numbers <span class="math" data-tex="\(\alpha_s&lt;\beta_s\)">\(\alpha_s&lt;\beta_s\)</span>, the arcs and the maps <span class="math" data-tex="\(h_s\)">\(h_s\)</span> be as in the lesson on reduced words.</p>
+<p><strong>The landmarks.</strong> Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be the finite set of real numbers that consists of</p>
+<ul>
+<li>the points <span class="math" data-tex="\(\alpha_s+j\)">\(\alpha_s+j\)</span> and <span class="math" data-tex="\(\beta_s+j\)">\(\beta_s+j\)</span> for the four letters <span class="math" data-tex="\(s\)">\(s\)</span> and the integers <span class="math" data-tex="\(0\le j&lt;L\)">\(0\le j&lt;L\)</span>;</li>
+<li>the points <span class="math" data-tex="\(h_w(0)+j\)">\(h_w(0)+j\)</span> for all words <span class="math" data-tex="\(w\)">\(w\)</span> of a length of at most <span class="math" data-tex="\(n\)">\(n\)</span>, the empty word included, and all integers <span class="math" data-tex="\(-2n\le j\le L+2n\)">\(-2n\le j\le L+2n\)</span>.</li>
+</ul>
+<p><strong>The chain.</strong> For every letter <span class="math" data-tex="\(s\)">\(s\)</span> let <span class="math" data-tex="\(D_s=\{a\in\Lambda:h_s(a)\in\Lambda\}\)">\(D_s=\{a\in\Lambda:h_s(a)\in\Lambda\}\)</span> and <span class="math" data-tex="\(T_s=h_s|_{D_s}\)">\(T_s=h_s|_{D_s}\)</span>. These are order-preserving bijections <span class="math" data-tex="\(D_s\to D_{s^{-1}}\)">\(D_s\to D_{s^{-1}}\)</span> with <span class="math" data-tex="\(T_{s^{-1}}=T_s^{-1}\)">\(T_{s^{-1}}=T_s^{-1}\)</span>. By the proposition on reversible transport there are a bound <span class="math" data-tex="\(B\)">\(B\)</span> and a finite stationary reversible marked chain on charts <span class="math" data-tex="\(C\colon\Lambda\to\{1,\dots,B\}\)">\(C\colon\Lambda\to\{1,\dots,B\}\)</span>, with edges <span class="math" data-tex="\((C,s,C&#x27;)\)">\((C,s,C&#x27;)\)</span>, whose letters are independent and uniform in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, and in which every edge is <em>good</em>,
+<span class="math math-display" data-tex="\[
+C&#x27;(a)=C(h_s(a))
+\]">\[
+C&#x27;(a)=C(h_s(a))
+\]</span>
+for all <span class="math" data-tex="\(a\in\Lambda\)">\(a\in\Lambda\)</span> with <span class="math" data-tex="\(h_s(a)\in\Lambda\)">\(h_s(a)\in\Lambda\)</span>, with a probability of at least <span class="math" data-tex="\(1-\varepsilon\)">\(1-\varepsilon\)</span>.</p>
+<p><strong>The labels.</strong> For an edge <span class="math" data-tex="\((C,s,C&#x27;)\)">\((C,s,C&#x27;)\)</span> with a positive letter <span class="math" data-tex="\(s\)">\(s\)</span> put
+<span class="math math-display" data-tex="\[
+g(C,s,C&#x27;)=\sum_{j=0}^{L-1}\bigl(b_{C(\alpha_s+j)}-b_{C(\beta_s+j)}\bigr),
+\]">\[
+g(C,s,C&#x27;)=\sum_{j=0}^{L-1}\bigl(b_{C(\alpha_s+j)}-b_{C(\beta_s+j)}\bigr),
+\]</span>
+and for a negative letter <span class="math" data-tex="\(s\)">\(s\)</span> put <span class="math" data-tex="\(g(C,s,C&#x27;)=-g(C&#x27;,s^{-1},C)\)">\(g(C,s,C&#x27;)=-g(C&#x27;,s^{-1},C)\)</span>. So <span class="math" data-tex="\(g\)">\(g\)</span> is an odd labeling with values in <span class="math" data-tex="\(c_{00}\)">\(c_{00}\)</span>. The label of an edge with a positive letter is read in the chart at its source; the label of an edge with a negative letter is read in the chart at its target.</p>
+<p>Since a chart is strictly increasing, the positions
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;C(\alpha_s)&lt;C(\beta_s)&lt;C(\alpha_s+1)\\
+&amp;\quad&lt;C(\beta_s+1)&lt;C(\alpha_s+2)&lt;\dots
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;C(\alpha_s)&lt;C(\beta_s)&lt;C(\alpha_s+1)\\
+&amp;\quad&lt;C(\beta_s+1)&lt;C(\alpha_s+2)&lt;\dots
+\end{aligned}
+\]</span>
+are increasing, and the label has the entries <span class="math" data-tex="\(1,-1,1,-1,\dots\)">\(1,-1,1,-1,\dots\)</span> at them. By the spreading invariance,
+<span class="math math-display" data-tex="\[
+N(g(e))=D_L\qquad\text{for every edge }e .
+\]">\[
+N(g(e))=D_L\qquad\text{for every edge }e .
+\]</span></p>
+<p>A label is a sum of differences <span class="math" data-tex="\(b_{C(\alpha)}-b_{C(\beta)}\)">\(b_{C(\alpha)}-b_{C(\beta)}\)</span>. The partial sums of such a difference are simple. For points <span class="math" data-tex="\(\alpha&lt;\beta\)">\(\alpha&lt;\beta\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and a chart <span class="math" data-tex="\(C\)">\(C\)</span>, the sum of the entries of <span class="math" data-tex="\(b_{C(\alpha)}-b_{C(\beta)}\)">\(b_{C(\alpha)}-b_{C(\beta)}\)</span> at the positions <span class="math" data-tex="\(\le C(y)\)">\(\le C(y)\)</span> is
+<span class="math math-display" data-tex="\[
+\mathbf 1[\alpha\le y]-\mathbf 1[\beta\le y]=\mathbf 1_{[\alpha,\beta)}(y).
+\]">\[
+\mathbf 1[\alpha\le y]-\mathbf 1[\beta\le y]=\mathbf 1_{[\alpha,\beta)}(y).
+\]</span>
+We refer to this formula as (1.1).</p>
+<h2 id="2-good-steps">2. Good steps</h2>
+<p>Let <span class="math" data-tex="\((C_{i-1},s_i,C_i)\)">\((C_{i-1},s_i,C_i)\)</span>, <span class="math" data-tex="\(i=1,\dots,n\)">\(i=1,\dots,n\)</span>, be successive edges of the chain, all of them good, and <span class="math" data-tex="\(w=s_1\cdots s_n\)">\(w=s_1\cdots s_n\)</span>. Suppose that the reduced form of <span class="math" data-tex="\(w\)">\(w\)</span> has the length <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>, with <span class="math" data-tex="\(n_+\)">\(n_+\)</span> positive and <span class="math" data-tex="\(n_-\)">\(n_-\)</span> negative letters. Put
+<span class="math math-display" data-tex="\[
+m=\lfloor h_w(0)\rfloor,\qquad z=h_w(0)-m .
+\]">\[
+m=\lfloor h_w(0)\rfloor,\qquad z=h_w(0)-m .
+\]</span>
+Since <span class="math" data-tex="\(h_w(0)\)">\(h_w(0)\)</span> is not an integer, <span class="math" data-tex="\(0&lt;z&lt;1\)">\(0&lt;z&lt;1\)</span>; and <span class="math" data-tex="\(|h_w(0)|&lt;2n\)">\(|h_w(0)|&lt;2n\)</span> gives <span class="math" data-tex="\(-2n\le m\le2n-1\)">\(-2n\le m\le2n-1\)</span>.</p>
+<p>We consider the starting points <span class="math" data-tex="\(y_0=j\)">\(y_0=j\)</span> and <span class="math" data-tex="\(y_0=z+j\)">\(y_0=z+j\)</span> for the integers <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(\tfrac L4\le j\le\tfrac{3L}4\)">\(\tfrac L4\le j\le\tfrac{3L}4\)</span>, and their backward orbits <span class="math" data-tex="\(y_i=h_{s_i}^{-1}(y_{i-1})\)">\(y_i=h_{s_i}^{-1}(y_{i-1})\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For each of these starting points and all <span class="math" data-tex="\(0\le i\le n\)">\(0\le i\le n\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(y_i\in\Lambda\)">\(y_i\in\Lambda\)</span>;</li>
+<li><span class="math" data-tex="\(0&lt;y_i&lt;L\)">\(0&lt;y_i&lt;L\)</span>;</li>
+<li><span class="math" data-tex="\(C_i(y_i)=C_0(y_0)\)">\(C_i(y_i)=C_0(y_0)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> 1. For <span class="math" data-tex="\(y_0=j\)">\(y_0=j\)</span>: <span class="math" data-tex="\(y_i=h_{s_i^{-1}\cdots s_1^{-1}}(0)+j\)">\(y_i=h_{s_i^{-1}\cdots s_1^{-1}}(0)+j\)</span>, a point <span class="math" data-tex="\(h_{w&#x27;}(0)+j\)">\(h_{w&#x27;}(0)+j\)</span> with a word <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span> of the length <span class="math" data-tex="\(i\le n\)">\(i\le n\)</span> and <span class="math" data-tex="\(0\le j\le L\)">\(0\le j\le L\)</span>. For <span class="math" data-tex="\(y_0=z+j=h_w(0)+j-m\)">\(y_0=z+j=h_w(0)+j-m\)</span>: <span class="math" data-tex="\(y_i=h_{s_{i+1}\cdots s_n}(0)+j-m\)">\(y_i=h_{s_{i+1}\cdots s_n}(0)+j-m\)</span>, with a word of the length <span class="math" data-tex="\(n-i\)">\(n-i\)</span> and <span class="math" data-tex="\(-2n\le j-m\le L+2n\)">\(-2n\le j-m\le L+2n\)</span>.</p>
+<ol start="2">
+<li>
+<p>Every <span class="math" data-tex="\(h_s^{-1}\)">\(h_s^{-1}\)</span> moves a point by less than <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(j\le y_0&lt;j+1\)">\(j\le y_0&lt;j+1\)</span>. So <span class="math" data-tex="\(j-2n&lt;y_i&lt;j+1+2n\)">\(j-2n&lt;y_i&lt;j+1+2n\)</span>. With <span class="math" data-tex="\(j\ge\tfrac L4=2n+2\)">\(j\ge\tfrac L4=2n+2\)</span> and <span class="math" data-tex="\(j\le\tfrac{3L}4=6n+6\)">\(j\le\tfrac{3L}4=6n+6\)</span> this gives <span class="math" data-tex="\(2&lt;y_i&lt;8n+7&lt;L\)">\(2&lt;y_i&lt;8n+7&lt;L\)</span>.</p>
+</li>
+<li>
+<p>Since <span class="math" data-tex="\(h_{s_i}(y_i)=y_{i-1}\in\Lambda\)">\(h_{s_i}(y_i)=y_{i-1}\in\Lambda\)</span> and the edge number <span class="math" data-tex="\(i\)">\(i\)</span> is good, <span class="math" data-tex="\(C_i(y_i)=C_{i-1}(h_{s_i}(y_i))\)">\(C_i(y_i)=C_{i-1}(h_{s_i}(y_i))\)</span>, which is <span class="math" data-tex="\(C_{i-1}(y_{i-1})\)">\(C_{i-1}(y_{i-1})\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+</li>
+</ol>
+<p>So the position <span class="math" data-tex="\(C_0(y_0)\)">\(C_0(y_0)\)</span> is the position of the point <span class="math" data-tex="\(y_i\)">\(y_i\)</span> in the chart <span class="math" data-tex="\(C_i\)">\(C_i\)</span>, for every <span class="math" data-tex="\(i\)">\(i\)</span>: the charts follow the backward orbit. Put
+<span class="math math-display" data-tex="\[
+r_j=C_0(j),\qquad t_j=C_0(z+j)
+\]">\[
+r_j=C_0(j),\qquad t_j=C_0(z+j)
+\]</span>
+for <span class="math" data-tex="\(\tfrac L4\le j\le\tfrac{3L}4\)">\(\tfrac L4\le j\le\tfrac{3L}4\)</span>.
+Since <span class="math" data-tex="\(j&lt;z+j&lt;j+1\)">\(j&lt;z+j&lt;j+1\)</span> and <span class="math" data-tex="\(C_0\)">\(C_0\)</span> is increasing, <span class="math" data-tex="\(r_j&lt;t_j&lt;r_{j+1}\)">\(r_j&lt;t_j&lt;r_{j+1}\)</span>.</p>
+<h2 id="3-the-partial-sums-of-the-total-label">3. The partial sums of the total label</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G=\sum_{i=1}^ng(C_{i-1},s_i,C_i)\in c_{00},\\
+F(k)=\sum_{a\le k}G_a\quad\text{for }0\le k\le B.
+\end{gathered}
+\]">\[
+\begin{gathered}
+G=\sum_{i=1}^ng(C_{i-1},s_i,C_i)\in c_{00},\\
+F(k)=\sum_{a\le k}G_a\quad\text{for }0\le k\le B.
+\end{gathered}
+\]</span>
+Every label has the sum of its entries equal to <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(F(0)=F(B)=0\)">\(F(0)=F(B)=0\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> In the situation of Section 2, for each of the starting points <span class="math" data-tex="\(y_0\)">\(y_0\)</span>,
+<span class="math math-display" data-tex="\[
+F\bigl(C_0(y_0)\bigr)=c_w(y_0).
+\]">\[
+F\bigl(C_0(y_0)\bigr)=c_w(y_0).
+\]</span>
+Consequently <span class="math" data-tex="\(F(r_j)=-n_-\)">\(F(r_j)=-n_-\)</span> and <span class="math" data-tex="\(F(t_j)=n_+\)">\(F(t_j)=n_+\)</span> for all <span class="math" data-tex="\(\tfrac L4\le j\le\tfrac{3L}4\)">\(\tfrac L4\le j\le\tfrac{3L}4\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(k=C_0(y_0)\)">\(k=C_0(y_0)\)</span>. We compute the sum of the entries at the positions <span class="math" data-tex="\(\le k\)">\(\le k\)</span> of the label number <span class="math" data-tex="\(i\)">\(i\)</span>, and show that it is <span class="math" data-tex="\(\chi_{s_i}(y_{i-1})\)">\(\chi_{s_i}(y_{i-1})\)</span>.</p>
+<p><em>A positive letter <span class="math" data-tex="\(s_i\)">\(s_i\)</span>.</em> The label is read in the chart <span class="math" data-tex="\(C_{i-1}\)">\(C_{i-1}\)</span>, and <span class="math" data-tex="\(k=C_{i-1}(y_{i-1})\)">\(k=C_{i-1}(y_{i-1})\)</span> by Lemma 2.1. By (1.1) the sum is <span class="math" data-tex="\(\sum_{j&#x27;=0}^{L-1}\mathbf 1_{[\alpha_{s_i}+j&#x27;,\beta_{s_i}+j&#x27;)}(y_{i-1})\)">\(\sum_{j&#x27;=0}^{L-1}\mathbf 1_{[\alpha_{s_i}+j&#x27;,\beta_{s_i}+j&#x27;)}(y_{i-1})\)</span>. Since <span class="math" data-tex="\(0&lt;y_{i-1}&lt;L\)">\(0&lt;y_{i-1}&lt;L\)</span>, this is <span class="math" data-tex="\(\mathbf 1_{\mathcal A_{s_i}}(y_{i-1})=\chi_{s_i}(y_{i-1})\)">\(\mathbf 1_{\mathcal A_{s_i}}(y_{i-1})=\chi_{s_i}(y_{i-1})\)</span>.</p>
+<p><em>A negative letter <span class="math" data-tex="\(s_i\)">\(s_i\)</span>.</em> The label is <span class="math" data-tex="\(-g(C_i,s_i^{-1},C_{i-1})\)">\(-g(C_i,s_i^{-1},C_{i-1})\)</span>, read in the chart <span class="math" data-tex="\(C_i\)">\(C_i\)</span>, and <span class="math" data-tex="\(k=C_i(y_i)\)">\(k=C_i(y_i)\)</span>. In the same way, with <span class="math" data-tex="\(0&lt;y_i&lt;L\)">\(0&lt;y_i&lt;L\)</span>, the sum is <span class="math" data-tex="\(-\mathbf 1_{\mathcal A_{s_i^{-1}}}(y_i)\)">\(-\mathbf 1_{\mathcal A_{s_i^{-1}}}(y_i)\)</span>. By property 2 of the lemma on the homeomorphisms, <span class="math" data-tex="\(y_i=h_{s_i}^{-1}(y_{i-1})\)">\(y_i=h_{s_i}^{-1}(y_{i-1})\)</span> lies in <span class="math" data-tex="\(\mathcal A_{s_i^{-1}}\)">\(\mathcal A_{s_i^{-1}}\)</span> if and only if <span class="math" data-tex="\(y_{i-1}\notin\mathcal A_{s_i}\)">\(y_{i-1}\notin\mathcal A_{s_i}\)</span>. So the sum is <span class="math" data-tex="\(\mathbf 1_{\mathcal A_{s_i}}(y_{i-1})-1=\chi_{s_i}(y_{i-1})\)">\(\mathbf 1_{\mathcal A_{s_i}}(y_{i-1})-1=\chi_{s_i}(y_{i-1})\)</span>.</p>
+<p>Adding over <span class="math" data-tex="\(i\)">\(i\)</span> gives <span class="math" data-tex="\(F(k)=c_w(y_0)\)">\(F(k)=c_w(y_0)\)</span>. The last statement is the lemma on the two levels, for the points <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(z+j=h_w(0)+(j-m)\)">\(z+j=h_w(0)+(j-m)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The vector <span class="math" data-tex="\(G\)">\(G\)</span> is the sum of all <span class="math" data-tex="\(n\)">\(n\)</span> labels; nothing is cancelled in it. The reduction of the word enters only through the numbers <span class="math" data-tex="\(c_w(y_0)\)">\(c_w(y_0)\)</span>, which do not change when <span class="math" data-tex="\(w\)">\(w\)</span> is reduced.</p>
+<h2 id="4-from-two-levels-to-the-norm">4. From two levels to the norm</h2>
+<p><strong>Lemma 4.1.</strong> In the situation of Section 2,
+<span class="math math-display" data-tex="\[
+N(G)\ge\frac\ell6\,D_L .
+\]">\[
+N(G)\ge\frac\ell6\,D_L .
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(V=-n_-\)">\(V=-n_-\)</span> and <span class="math" data-tex="\(U=n_+\)">\(U=n_+\)</span>, so that <span class="math" data-tex="\(U-V=\ell\)">\(U-V=\ell\)</span>, and <span class="math" data-tex="\(a=\tfrac L4\)">\(a=\tfrac L4\)</span>, <span class="math" data-tex="\(b=\tfrac{3L}4\)">\(b=\tfrac{3L}4\)</span>.</p>
+<p><em>Blocks.</em> Cut the positions <span class="math" data-tex="\(1,\dots,B\)">\(1,\dots,B\)</span> at
+<span class="math math-display" data-tex="\[
+r_a&lt;t_a&lt;r_{a+1}&lt;\dots&lt;t_{b-1}&lt;r_b .
+\]">\[
+r_a&lt;t_a&lt;r_{a+1}&lt;\dots&lt;t_{b-1}&lt;r_b .
+\]</span>
+By Lemma 3.1 the partial sums <span class="math" data-tex="\(F\)">\(F\)</span> at these cuts are <span class="math" data-tex="\(V,U,V,U,\dots,U,V\)">\(V,U,V,U,\dots,U,V\)</span>, and <span class="math" data-tex="\(F(0)=F(B)=0\)">\(F(0)=F(B)=0\)</span>. So the sums of the entries of <span class="math" data-tex="\(G\)">\(G\)</span> over the blocks between the cuts are
+<span class="math math-display" data-tex="\[
+V,\ \ \ell,\,-\ell,\ \ell,\,-\ell,\ \dots,\ \ell,\,-\ell,\ \ -V,
+\]">\[
+V,\ \ \ell,\,-\ell,\ \ell,\,-\ell,\ \dots,\ \ell,\,-\ell,\ \ -V,
+\]</span>
+with <span class="math" data-tex="\(b-a=\tfrac L2\)">\(b-a=\tfrac L2\)</span> pairs <span class="math" data-tex="\(\ell,-\ell\)">\(\ell,-\ell\)</span>. No block is empty; the last one is not, because <span class="math" data-tex="\(r_b&lt;t_b\le B\)">\(r_b&lt;t_b\le B\)</span>. By the contractive merging, <span class="math" data-tex="\(N(G)\)">\(N(G)\)</span> is at least the norm of this array. The array is <span class="math" data-tex="\(\ell\)">\(\ell\)</span> times the array with <span class="math" data-tex="\(\tfrac L2\)">\(\tfrac L2\)</span> pairs <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> between two zeros, plus the array <span class="math" data-tex="\((V,0,\dots,0,-V)\)">\((V,0,\dots,0,-V)\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N(G)&amp;\ge\ell\,D_{L/2}-|V|\,D_1\\
+&amp;\ge\ell\,(D_{L/2}-D_1),
+\end{aligned}
+\]">\[
+\begin{aligned}
+N(G)&amp;\ge\ell\,D_{L/2}-|V|\,D_1\\
+&amp;\ge\ell\,(D_{L/2}-D_1),
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(|V|=n_-\le\ell\)">\(|V|=n_-\le\ell\)</span>.</p>
+<p><em>One cut.</em> Cutting only at <span class="math" data-tex="\(r_a\)">\(r_a\)</span> gives the array <span class="math" data-tex="\((V,-V)\)">\((V,-V)\)</span>, and cutting only at <span class="math" data-tex="\(t_a\)">\(t_a\)</span> gives <span class="math" data-tex="\((U,-U)\)">\((U,-U)\)</span>. So <span class="math" data-tex="\(N(G)\ge\max\{|V|,U\}\,D_1\ge\tfrac\ell2D_1\)">\(N(G)\ge\max\{|V|,U\}\,D_1\ge\tfrac\ell2D_1\)</span>.</p>
+<p><em>Together.</em> For numbers <span class="math" data-tex="\(A,A&#x27;\ge0\)">\(A,A&#x27;\ge0\)</span> we have <span class="math" data-tex="\(\max\{A-A&#x27;,A&#x27;/2\}\ge A/3\)">\(\max\{A-A&#x27;,A&#x27;/2\}\ge A/3\)</span>: if <span class="math" data-tex="\(A&#x27;\le\tfrac23A\)">\(A&#x27;\le\tfrac23A\)</span> the first number is at least <span class="math" data-tex="\(A/3\)">\(A/3\)</span>, and otherwise the second. With <span class="math" data-tex="\(A=\ell D_{L/2}\)">\(A=\ell D_{L/2}\)</span> and <span class="math" data-tex="\(A&#x27;=\ell D_1\)">\(A&#x27;=\ell D_1\)</span> this gives <span class="math" data-tex="\(N(G)\ge\tfrac\ell3D_{L/2}\)">\(N(G)\ge\tfrac\ell3D_{L/2}\)</span>. Finally <span class="math" data-tex="\(D_L\le2D_{L/2}\)">\(D_L\le2D_{L/2}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The first estimate uses all <span class="math" data-tex="\(L\)">\(L\)</span> oscillations between the two levels; it is good when <span class="math" data-tex="\(D_{L/2}\)">\(D_{L/2}\)</span> is large compared with <span class="math" data-tex="\(D_1\)">\(D_1\)</span>. The second uses one oscillation; it covers the case that <span class="math" data-tex="\(D_{L/2}\)">\(D_{L/2}\)</span> is not larger than <span class="math" data-tex="\(D_1\)">\(D_1\)</span>. In both cases the result is measured in units of <span class="math" data-tex="\(D_L\)">\(D_L\)</span>, the norm of one label.</p>
+<h2 id="5-the-walk-and-the-theorem">5. The walk and the theorem</h2>
+<p><strong>Theorem 5.1</strong> (a walk with linear displacement; [OpenAI-M]). Let <span class="math" data-tex="\(N\)">\(N\)</span> be a spreading invariant norm on <span class="math" data-tex="\(c_{00}\)">\(c_{00}\)</span> with contractive merging. For every integer <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> there are a finite stationary reversible marked chain and an odd labeling <span class="math" data-tex="\(g\)">\(g\)</span> with values in <span class="math" data-tex="\(c_{00}\)">\(c_{00}\)</span> such that <span class="math" data-tex="\(N(g(e))=1\)">\(N(g(e))=1\)</span> for every edge <span class="math" data-tex="\(e\)">\(e\)</span> and
+<span class="math math-display" data-tex="\[
+\Pr\Bigl(N\Bigl(\sum_{i=1}^ng(E_i)\Bigr)\ge\frac n{24}\Bigr)\ge\frac3{20}.
+\]">\[
+\Pr\Bigl(N\Bigl(\sum_{i=1}^ng(E_i)\Bigr)\ge\frac n{24}\Bigr)\ge\frac3{20}.
+\]</span></p>
+<p>This is Proposition 4.2 of the first lesson.</p>
+<p><strong>Proof.</strong> Take the chain and the labels of Section 1, and let <span class="math" data-tex="\(E_i=(C_{i-1},s_i,C_i)\)">\(E_i=(C_{i-1},s_i,C_i)\)</span> be the first <span class="math" data-tex="\(n\)">\(n\)</span> edges of the chain.</p>
+<p><em>Good steps.</em> Each <span class="math" data-tex="\(E_i\)">\(E_i\)</span> fails to be good with a probability of at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. So all <span class="math" data-tex="\(n\)">\(n\)</span> are good with a probability of at least <span class="math" data-tex="\(1-n\varepsilon=\tfrac9{10}\)">\(1-n\varepsilon=\tfrac9{10}\)</span>.</p>
+<p><em>The word.</em> The letters <span class="math" data-tex="\(s_1,\dots,s_n\)">\(s_1,\dots,s_n\)</span> are independent and uniform in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. By the lemma on random words, <span class="math" data-tex="\(\ell\ge\tfrac n4\)">\(\ell\ge\tfrac n4\)</span> with a probability of at least <span class="math" data-tex="\(\tfrac14\)">\(\tfrac14\)</span>.</p>
+<p><em>Both.</em> With a probability of at least <span class="math" data-tex="\(\tfrac14-\tfrac1{10}=\tfrac3{20}\)">\(\tfrac14-\tfrac1{10}=\tfrac3{20}\)</span>, all steps are good and <span class="math" data-tex="\(\ell\ge\tfrac n4\)">\(\ell\ge\tfrac n4\)</span>; then <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>, and by Lemma 4.1
+<span class="math math-display" data-tex="\[
+N\Bigl(\sum_{i=1}^ng(E_i)\Bigr)\ge\frac\ell6\,D_L\ge\frac n{24}\,D_L .
+\]">\[
+N\Bigl(\sum_{i=1}^ng(E_i)\Bigr)\ge\frac\ell6\,D_L\ge\frac n{24}\,D_L .
+\]</span>
+Every label has the norm <span class="math" data-tex="\(D_L\)">\(D_L\)</span>. Dividing all labels by <span class="math" data-tex="\(D_L\)">\(D_L\)</span> gives the theorem. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 5.2</strong> ([OpenAI-M]). Assume the hypothesis (JE) of the first lesson. Every real Banach space that has Markov type <span class="math" data-tex="\(p\)">\(p\)</span> for some <span class="math" data-tex="\(p&gt;1\)">\(p&gt;1\)</span> is superreflexive.</p>
+<p><strong>Proof.</strong> In the first lesson the theorem was derived from the ordered norm and the walk with linear displacement. The first is Theorem 5.3 of the lesson on the spreading norm, the second is Theorem 5.1. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>The parts of the proof.</strong> A space that is not superreflexive contains, in arbitrarily good finite approximation, sequences in which the order of the terms is visible in the norm: partial sums are controlled, zeros do not matter, merging does not increase the norm. On such sequences one can write vectors whose partial sums oscillate <span class="math" data-tex="\(L\)">\(L\)</span> times between two levels. The oscillation is produced by words in a free group acting on the line, and its size is the reduced length of the word. A random word has a reduced length proportional to its length. The chain of charts makes the words into the steps of a reversible stationary walk. So the walk reaches, in <span class="math" data-tex="\(n\)">\(n\)</span> steps of length <span class="math" data-tex="\(1\)">\(1\)</span>, a distance proportional to <span class="math" data-tex="\(n\)">\(n\)</span>; a space with Markov type <span class="math" data-tex="\(p&gt;1\)">\(p&gt;1\)</span> does not allow this.</p>
+<p><strong>What is assumed.</strong> The course proves the theorem from the hypothesis (JE), the theorem of James and Enflo that a space without an equivalent uniformly convex norm has a space finitely representable in it that is not reflexive. The Hahn–Banach theorem is taken from the core course on functional analysis, and Ramsey's theorem and the minimax theorem from an earlier course of the programme. Everything else is proved in the five lessons.</p>
+<p><strong>What is not in the course.</strong> The converse, that a superreflexive space has Markov type <span class="math" data-tex="\(p\)">\(p\)</span> for some <span class="math" data-tex="\(p&gt;1\)">\(p&gt;1\)</span>, is quoted in the first lesson from [OpenAI-M] and not proved. The theorem is for real Banach spaces.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Let <span class="math" data-tex="\(N(a)=\max_j|a_1+\dots+a_j|\)">\(N(a)=\max_j|a_1+\dots+a_j|\)</span> (Exercise 5.5 of the first lesson). Compute <span class="math" data-tex="\(D_k\)">\(D_k\)</span>, and say what Lemma 4.1 gives. Which of the two estimates in its proof is the better one here?</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(N(a)=\sum_i|a_i|\)">\(N(a)=\sum_i|a_i|\)</span>. Compute <span class="math" data-tex="\(D_k\)">\(D_k\)</span> and the two estimates of the proof of Lemma 4.1.</p>
+<p><strong>6.3.</strong> Check the inequalities <span class="math" data-tex="\(2&lt;y_i&lt;8n+7\)">\(2&lt;y_i&lt;8n+7\)</span> of Lemma 2.1 for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> and the two extreme values of <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>6.4.</strong> Why is the label of an edge with a negative letter read in the chart at its target, and not at its source?</p>
+<p><strong>6.5.</strong> Let a space have Markov type <span class="math" data-tex="\(p&gt;1\)">\(p&gt;1\)</span> with the constant <span class="math" data-tex="\(K\)">\(K\)</span>. Which bound for <span class="math" data-tex="\(n\)">\(n\)</span> follows from the two theorems of this lesson, and what is it for <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(K=1\)">\(K=1\)</span>?</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> The partial sums of <span class="math" data-tex="\((1,-1,\dots)\)">\((1,-1,\dots)\)</span> are <span class="math" data-tex="\(1,0,1,0,\dots\)">\(1,0,1,0,\dots\)</span>: <span class="math" data-tex="\(D_k=1\)">\(D_k=1\)</span> for all <span class="math" data-tex="\(k\)">\(k\)</span>. Lemma 4.1 gives <span class="math" data-tex="\(N(G)\ge\ell/6\)">\(N(G)\ge\ell/6\)</span>. The first estimate gives <span class="math" data-tex="\(\ell(D_{L/2}-D_1)=0\)">\(\ell(D_{L/2}-D_1)=0\)</span>, the second <span class="math" data-tex="\(\tfrac\ell2\)">\(\tfrac\ell2\)</span>. In fact <span class="math" data-tex="\(N(G)\ge\max\{|V|,U\}\ge\tfrac\ell2\)">\(N(G)\ge\max\{|V|,U\}\ge\tfrac\ell2\)</span> directly, since <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span> are partial sums of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(D_k=2k\)">\(D_k=2k\)</span>. The first estimate gives <span class="math" data-tex="\(\ell(L-2)\)">\(\ell(L-2)\)</span>, the second <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. The lemma gives <span class="math" data-tex="\(\tfrac\ell6\cdot2L=\tfrac{\ell L}3\)">\(\tfrac\ell6\cdot2L=\tfrac{\ell L}3\)</span>, which is smaller than <span class="math" data-tex="\(\ell(L-2)\)">\(\ell(L-2)\)</span> for <span class="math" data-tex="\(L\ge3\)">\(L\ge3\)</span>.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(n=1\)">\(n=1\)</span>: <span class="math" data-tex="\(L=16\)">\(L=16\)</span>, <span class="math" data-tex="\(j\)">\(j\)</span> from <span class="math" data-tex="\(4\)">\(4\)</span> to <span class="math" data-tex="\(12\)">\(12\)</span>. The points <span class="math" data-tex="\(y_i\)">\(y_i\)</span> lie in <span class="math" data-tex="\((j-2,j+3)\)">\((j-2,j+3)\)</span>. For <span class="math" data-tex="\(j=4\)">\(j=4\)</span> this is <span class="math" data-tex="\((2,7)\)">\((2,7)\)</span>, for <span class="math" data-tex="\(j=12\)">\(j=12\)</span> it is <span class="math" data-tex="\((10,15)\)">\((10,15)\)</span>, and <span class="math" data-tex="\(15=8n+7&lt;16\)">\(15=8n+7&lt;16\)</span>.</p>
+<p><strong>6.4.</strong> The labeling must be odd: the label of <span class="math" data-tex="\((C,s,C&#x27;)\)">\((C,s,C&#x27;)\)</span> is minus the label of the reverse edge <span class="math" data-tex="\((C&#x27;,s^{-1},C)\)">\((C&#x27;,s^{-1},C)\)</span>, whose letter is positive and whose source is <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span>. In the proof this is what makes the term of a negative letter equal to <span class="math" data-tex="\(\chi_{s_i}(y_{i-1})\)">\(\chi_{s_i}(y_{i-1})\)</span>: the point <span class="math" data-tex="\(y_i\)">\(y_i\)</span> is looked at in the chart <span class="math" data-tex="\(C_i\)">\(C_i\)</span>, where it has the position <span class="math" data-tex="\(C_0(y_0)\)">\(C_0(y_0)\)</span>.</p>
+<p><strong>6.5.</strong> By the proof of the theorem in the first lesson, <span class="math" data-tex="\(\tfrac3{20}(n/24)^p\le K^pn\)">\(\tfrac3{20}(n/24)^p\le K^pn\)</span>, that is <span class="math" data-tex="\(n^{p-1}\le\tfrac{20}3(24K)^p\)">\(n^{p-1}\le\tfrac{20}3(24K)^p\)</span>. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(K=1\)">\(K=1\)</span>: <span class="math" data-tex="\(n\le\tfrac{20}3\cdot576=3840\)">\(n\le\tfrac{20}3\cdot576=3840\)</span>. So for <span class="math" data-tex="\(n&gt;3840\)">\(n&gt;3840\)</span> the walk of Theorem 5.1 cannot exist in a space with these constants; a Hilbert space has no norm <span class="math" data-tex="\(N\)">\(N\)</span> of the kind of this lesson finitely represented in it.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-M] OpenAI, <em>Nontrivial Markov Type Forces Superreflexivity</em>, OpenAI Math Release preprint, 23 September 2026, Section 5. https://github.com/openai/math/tree/main/preprints/Nontrivial-Markov-Type-Forces-Superreflexivity-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

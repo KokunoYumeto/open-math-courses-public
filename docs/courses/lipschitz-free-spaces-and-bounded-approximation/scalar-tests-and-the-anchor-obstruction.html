@@ -1,0 +1,208 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scalar tests and the anchor obstruction</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Lipschitz-free spaces and bounded approximation)</a><a href="signed-measures-and-matched-walks.html">Previous lesson</a><a href="src/scalar-tests-and-the-anchor-obstruction.md">Editable source</a></nav><main><article><h1 id="scalar-tests-and-the-anchor-obstruction">Scalar tests and the anchor obstruction</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the theorem on blocks, with the tools of the lesson on signed measures. An operator of finite rank and norm at most <span class="math" data-tex="\(p\)">\(p\)</span> that is close to the identity at all anchors gives signed measures <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> on a finite set <span class="math" data-tex="\(S\)">\(S\)</span> of states. For every oriented edge <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> of a suitable graph we build a real function <span class="math" data-tex="\(f_e\)">\(f_e\)</span> with Lipschitz constant at most <span class="math" data-tex="\(1\)">\(1\)</span> that agrees with the bump <span class="math" data-tex="\(b_x\)">\(b_x\)</span> on most of <span class="math" data-tex="\(S\)">\(S\)</span> as seen from <span class="math" data-tex="\(x\)">\(x\)</span>, and with <span class="math" data-tex="\(-b_y\)">\(-b_y\)</span> on most of <span class="math" data-tex="\(S\)">\(S\)</span> as seen from <span class="math" data-tex="\(y\)">\(y\)</span>. Integrating <span class="math" data-tex="\(f_e\)">\(f_e\)</span> against <span class="math" data-tex="\(\mu_x-\mu_y\)">\(\mu_x-\mu_y\)</span> gives a number of at least about <span class="math" data-tex="\(\tfrac32L\)">\(\tfrac32L\)</span>, minus a loss on the states that were given up. The norm of the operator bounds the same number by <span class="math" data-tex="\(2p\)">\(2p\)</span>. On average over all edges the loss is small, and <span class="math" data-tex="\(\tfrac32L=15p\)">\(\tfrac32L=15p\)</span> is larger than <span class="math" data-tex="\(2p\)">\(2p\)</span>. This is the contradiction.</p>
+<ul>
+<li>Extension of real Lipschitz functions from a finite set (Lemma 1.1).</li>
+<li>The test function of an edge (Lemma 2.1).</li>
+<li>The lower and the upper bound (Lemmas 3.1 and 3.2).</li>
+<li>The average over all incidences (Lemma 4.1).</li>
+<li>Proof of the theorem on blocks (Section 5), and an overview of the course (Section 6).</li>
+</ul>
+<p>The lesson follows [OpenAI-LF, Section 6]. It uses the setting, the facts (G1), (G2) and (N), Lemmas 2.1, 3.1, 3.2 and 6.1 and Proposition 5.1 of <a href="signed-measures-and-matched-walks.html">Signed measures and matched walks</a>, and Proposition 5.1 of <a href="colored-graphs-with-a-tree-limit.html">Colored graphs with a tree limit</a>.</p>
+<h2 id="1-extension-of-real-lipschitz-functions">1. Extension of real Lipschitz functions</h2>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\((M,d)\)">\((M,d)\)</span> be a metric space, <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>, <span class="math" data-tex="\(P\subseteq M\)">\(P\subseteq M\)</span> a finite nonempty set, and <span class="math" data-tex="\(v\)">\(v\)</span> a function from <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\([-L,L]\)">\([-L,L]\)</span> with <span class="math" data-tex="\(|v(j)-v(j&#x27;)|\le d(j,j&#x27;)\)">\(|v(j)-v(j&#x27;)|\le d(j,j&#x27;)\)</span> for all <span class="math" data-tex="\(j,j&#x27;\in P\)">\(j,j&#x27;\in P\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(z)&amp;=\min_{j\in P}\bigl(v(j)+d(z,j)\bigr),\\
+f(z)&amp;=\max\bigl\{-L,\ \min\{L,\ F(z)\}\bigr\} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+F(z)&amp;=\min_{j\in P}\bigl(v(j)+d(z,j)\bigr),\\
+f(z)&amp;=\max\bigl\{-L,\ \min\{L,\ F(z)\}\bigr\} .
+\end{aligned}
+\]</span>
+Then <span class="math" data-tex="\(f\)">\(f\)</span> maps <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\([-L,L]\)">\([-L,L]\)</span>, <span class="math" data-tex="\(|f(z)-f(z&#x27;)|\le d(z,z&#x27;)\)">\(|f(z)-f(z&#x27;)|\le d(z,z&#x27;)\)</span> for all <span class="math" data-tex="\(z,z&#x27;\)">\(z,z&#x27;\)</span>, and <span class="math" data-tex="\(f=v\)">\(f=v\)</span> on <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(z\in P\)">\(z\in P\)</span> the term <span class="math" data-tex="\(j=z\)">\(j=z\)</span> gives <span class="math" data-tex="\(F(z)\le v(z)\)">\(F(z)\le v(z)\)</span>, and every term satisfies <span class="math" data-tex="\(v(j)+d(z,j)\ge v(z)\)">\(v(j)+d(z,j)\ge v(z)\)</span> by the assumption; so <span class="math" data-tex="\(F(z)=v(z)\)">\(F(z)=v(z)\)</span>. For <span class="math" data-tex="\(z,z&#x27;\in M\)">\(z,z&#x27;\in M\)</span> and every <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(v(j)+d(z,j)\le v(j)+d(z&#x27;,j)+d(z,z&#x27;)\)">\(v(j)+d(z,j)\le v(j)+d(z&#x27;,j)+d(z,z&#x27;)\)</span>; taking the minimum over <span class="math" data-tex="\(j\)">\(j\)</span> gives <span class="math" data-tex="\(F(z)\le F(z&#x27;)+d(z,z&#x27;)\)">\(F(z)\le F(z&#x27;)+d(z,z&#x27;)\)</span>, and the same with <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(z&#x27;\)">\(z&#x27;\)</span> exchanged. Cutting off the values at <span class="math" data-tex="\(L\)">\(L\)</span> and at <span class="math" data-tex="\(-L\)">\(-L\)</span> does not increase differences and does not change values in <span class="math" data-tex="\([-L,L]\)">\([-L,L]\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-the-test-function-of-an-edge">2. The test function of an edge</h2>
+<p>We keep the setting of the lesson on signed measures: the integer <span class="math" data-tex="\(p\)">\(p\)</span>, the block <span class="math" data-tex="\(M_p\)">\(M_p\)</span>, a finite set <span class="math" data-tex="\(S\subseteq M_p\)">\(S\subseteq M_p\)</span> of states with <span class="math" data-tex="\(o\in S\)">\(o\in S\)</span>, an integer <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, and one graph <span class="math" data-tex="\(G=G_m\)">\(G=G_m\)</span> with its good and bad vertices. For an incidence <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>, the set <span class="math" data-tex="\(E_e\subseteq S\)">\(E_e\subseteq S\)</span> consists of the states at which <span class="math" data-tex="\(e\)">\(e\)</span> is exceptional for <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(E_{\bar e}\)">\(E_{\bar e}\)</span> of the states at which the reverse incidence <span class="math" data-tex="\(\bar e\colon y\to x\)">\(\bar e\colon y\to x\)</span> is exceptional for <span class="math" data-tex="\(y\)">\(y\)</span>. The bumps are <span class="math" data-tex="\(b_x\)">\(b_x\)</span> and <span class="math" data-tex="\(b_y\)">\(b_y\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (edge tests). For every incidence <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span> there is a function <span class="math" data-tex="\(f_e\)">\(f_e\)</span> from <span class="math" data-tex="\(M_p\)">\(M_p\)</span> to <span class="math" data-tex="\([-L,L]\)">\([-L,L]\)</span> with <span class="math" data-tex="\(|f_e(z)-f_e(z&#x27;)|\le d_p(z,z&#x27;)\)">\(|f_e(z)-f_e(z&#x27;)|\le d_p(z,z&#x27;)\)</span> for all <span class="math" data-tex="\(z,z&#x27;\)">\(z,z&#x27;\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_e(j)&amp;=b_x(j)&amp;&amp;\text{for }j\in S\setminus E_e,\\
+f_e(j&#x27;)&amp;=-b_y(j&#x27;)&amp;&amp;\text{for }j&#x27;\in S\setminus E_{\bar e}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+f_e(j)&amp;=b_x(j)&amp;&amp;\text{for }j\in S\setminus E_e,\\
+f_e(j&#x27;)&amp;=-b_y(j&#x27;)&amp;&amp;\text{for }j&#x27;\in S\setminus E_{\bar e}.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> We show that the required values are consistent and satisfy the Lipschitz inequality with the constant <span class="math" data-tex="\(1\)">\(1\)</span> on the set <span class="math" data-tex="\(P=(S\setminus E_e)\cup(S\setminus E_{\bar e})\)">\(P=(S\setminus E_e)\cup(S\setminus E_{\bar e})\)</span>. Then Lemma 1.1 gives <span class="math" data-tex="\(f_e\)">\(f_e\)</span>; if <span class="math" data-tex="\(P\)">\(P\)</span> is empty, take <span class="math" data-tex="\(f_e=0\)">\(f_e=0\)</span>.</p>
+<p>For two states of <span class="math" data-tex="\(S\setminus E_e\)">\(S\setminus E_e\)</span> the inequality holds because <span class="math" data-tex="\(b_x\)">\(b_x\)</span> has a Lipschitz constant of at most <span class="math" data-tex="\(1\)">\(1\)</span> (Lemma 3.1 of the lesson on signed measures); likewise for two states of <span class="math" data-tex="\(S\setminus E_{\bar e}\)">\(S\setminus E_{\bar e}\)</span> and <span class="math" data-tex="\(-b_y\)">\(-b_y\)</span>. Let <span class="math" data-tex="\(j\in S\setminus E_e\)">\(j\in S\setminus E_e\)</span> and <span class="math" data-tex="\(j&#x27;\in S\setminus E_{\bar e}\)">\(j&#x27;\in S\setminus E_{\bar e}\)</span>. The two required values, <span class="math" data-tex="\(b_x(j)\)">\(b_x(j)\)</span> and <span class="math" data-tex="\(-b_y(j&#x27;)\)">\(-b_y(j&#x27;)\)</span>, differ by <span class="math" data-tex="\(b_x(j)+b_y(j&#x27;)\)">\(b_x(j)+b_y(j&#x27;)\)</span>, which is at most <span class="math" data-tex="\(2L\)">\(2L\)</span>. If <span class="math" data-tex="\(d_p(j,j&#x27;)\ge2L\)">\(d_p(j,j&#x27;)\ge2L\)</span>, the inequality holds. Let <span class="math" data-tex="\(d_p(j,j&#x27;)&lt;2L\)">\(d_p(j,j&#x27;)&lt;2L\)</span>; we show that <span class="math" data-tex="\(b_x(j)=0\)">\(b_x(j)=0\)</span> and <span class="math" data-tex="\(b_y(j&#x27;)=0\)">\(b_y(j&#x27;)=0\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(b_x(j)&gt;0\)">\(b_x(j)&gt;0\)</span>. Then <span class="math" data-tex="\(\|h(x)-h(j)\|_\infty&lt;K\)">\(\|h(x)-h(j)\|_\infty&lt;K\)</span>, so <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are compatible. The ends <span class="math" data-tex="\(x,y\)">\(x,y\)</span> of a source edge have a distance of at most <span class="math" data-tex="\(1\)">\(1\)</span>, so by (G2)
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|h(y)-h(j&#x27;)\|_\infty&amp;\le\|h(y)-h(x)\|_\infty\\
+&amp;\quad+\|h(x)-h(j)\|_\infty\\
+&amp;\quad+\|h(j)-h(j&#x27;)\|_\infty\\
+&amp;&lt;1+K+2L .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|h(y)-h(j&#x27;)\|_\infty&amp;\le\|h(y)-h(x)\|_\infty\\
+&amp;\quad+\|h(x)-h(j)\|_\infty\\
+&amp;\quad+\|h(j)-h(j&#x27;)\|_\infty\\
+&amp;&lt;1+K+2L .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span> are compatible, and <span class="math" data-tex="\(d_p(j,j&#x27;)\le2L\)">\(d_p(j,j&#x27;)\le2L\)</span>. By Lemma 6.1 of the lesson on signed measures, <span class="math" data-tex="\(j\in E_e\)">\(j\in E_e\)</span> or <span class="math" data-tex="\(j&#x27;\in E_{\bar e}\)">\(j&#x27;\in E_{\bar e}\)</span>. This contradicts the choice of <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span>. So <span class="math" data-tex="\(b_x(j)=0\)">\(b_x(j)=0\)</span>. The same argument with the roles of the two ends exchanged gives <span class="math" data-tex="\(b_y(j&#x27;)=0\)">\(b_y(j&#x27;)=0\)</span>.</p>
+<p>So for <span class="math" data-tex="\(d_p(j,j&#x27;)&lt;2L\)">\(d_p(j,j&#x27;)&lt;2L\)</span> both required values are <span class="math" data-tex="\(0\)">\(0\)</span>, and the inequality holds. The case <span class="math" data-tex="\(j=j&#x27;\)">\(j=j&#x27;\)</span> shows that the two requirements agree at a state that lies in both sets. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The lemma is the place where the exceptional directions are used: where <span class="math" data-tex="\(b_x\)">\(b_x\)</span> and <span class="math" data-tex="\(-b_y\)">\(-b_y\)</span> would be required at nearby states with nonzero values, one of the two states has been given up.</p>
+<h2 id="3-two-bounds-for-an-edge">3. Two bounds for an edge</h2>
+<p>Now let <span class="math" data-tex="\(T\)">\(T\)</span> be a bounded linear operator on <span class="math" data-tex="\(\mathcal F(M_p)\)">\(\mathcal F(M_p)\)</span> with range in the span of the <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span>, <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span>, with <span class="math" data-tex="\(\|T\|\le2p\)">\(\|T\|\le2p\)</span> and <span class="math" data-tex="\(\|T\delta_a-\delta_a\|&lt;1\)">\(\|T\delta_a-\delta_a\|&lt;1\)</span> for all anchors <span class="math" data-tex="\(a\)">\(a\)</span>, and let <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span>, <span class="math" data-tex="\(x\in M_p\)">\(x\in M_p\)</span>, be its measures (Lemma 3.2 of the lesson on signed measures): signed measures on <span class="math" data-tex="\(S\)">\(S\)</span> of total mass <span class="math" data-tex="\(1\)">\(1\)</span> with <span class="math" data-tex="\(\|\mu_x\|_{\mathrm{TV}}\le V\)">\(\|\mu_x\|_{\mathrm{TV}}\le V\)</span> and <span class="math" data-tex="\(\int b_x\,d\mu_x\ge\tfrac34L\)">\(\int b_x\,d\mu_x\ge\tfrac34L\)</span> for source vertices.</p>
+<p><strong>Lemma 3.1</strong> (lower bound). For every incidence <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int f_e\,d(\mu_x-\mu_y)\\
+&amp;\qquad\ge\frac{3L}2-2L\,\bigl(|\mu_x|(E_e)+|\mu_y|(E_{\bar e})\bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int f_e\,d(\mu_x-\mu_y)\\
+&amp;\qquad\ge\frac{3L}2-2L\,\bigl(|\mu_x|(E_e)+|\mu_y|(E_{\bar e})\bigr) .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> The function <span class="math" data-tex="\(f_e-b_x\)">\(f_e-b_x\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\(S\setminus E_e\)">\(S\setminus E_e\)</span>, and <span class="math" data-tex="\(|f_e-b_x|\le2L\)">\(|f_e-b_x|\le2L\)</span> everywhere. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int f_e\,d\mu_x&amp;=\int b_x\,d\mu_x+\int(f_e-b_x)\,d\mu_x\\
+&amp;\ge\tfrac34L-2L\,|\mu_x|(E_e) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int f_e\,d\mu_x&amp;=\int b_x\,d\mu_x+\int(f_e-b_x)\,d\mu_x\\
+&amp;\ge\tfrac34L-2L\,|\mu_x|(E_e) .
+\end{aligned}
+\]</span>
+The function <span class="math" data-tex="\(f_e+b_y\)">\(f_e+b_y\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\(S\setminus E_{\bar e}\)">\(S\setminus E_{\bar e}\)</span> and at most <span class="math" data-tex="\(2L\)">\(2L\)</span> in absolute value. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-\int f_e\,d\mu_y&amp;=\int b_y\,d\mu_y\\
+&amp;\quad-\int(f_e+b_y)\,d\mu_y\\
+&amp;\ge\tfrac34L-2L\,|\mu_y|(E_{\bar e}) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+-\int f_e\,d\mu_y&amp;=\int b_y\,d\mu_y\\
+&amp;\quad-\int(f_e+b_y)\,d\mu_y\\
+&amp;\ge\tfrac34L-2L\,|\mu_y|(E_{\bar e}) .
+\end{aligned}
+\]</span>
+Add the two inequalities. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The signs of the measures play no role: the errors are bounded with the total variation on the sets that were given up.</p>
+<p><strong>Lemma 3.2</strong> (upper bound). For every incidence <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>,
+<span class="math math-display" data-tex="\[
+\Bigl|\int f_e\,d(\mu_x-\mu_y)\Bigr|\le2p .
+\]">\[
+\Bigl|\int f_e\,d(\mu_x-\mu_y)\Bigr|\le2p .
+\]</span></p>
+<p><strong>Proof.</strong> By property (1) of the lemma on the measures, applied to <span class="math" data-tex="\(x\)">\(x\)</span> and to <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int f_e\,d(\mu_x-\mu_y)\\
+&amp;\qquad=\bigl(T(\delta_x-\delta_y)\bigr)\bigl(f_e-f_e(o)\bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int f_e\,d(\mu_x-\mu_y)\\
+&amp;\qquad=\bigl(T(\delta_x-\delta_y)\bigr)\bigl(f_e-f_e(o)\bigr) .
+\end{aligned}
+\]</span>
+The function <span class="math" data-tex="\(f_e-f_e(o)\)">\(f_e-f_e(o)\)</span> lies in <span class="math" data-tex="\(\operatorname{Lip}_0(M_p)\)">\(\operatorname{Lip}_0(M_p)\)</span> with a norm of at most <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(\|T(\delta_x-\delta_y)\|\le2p\,d_p(x,y)\le2p\)">\(\|T(\delta_x-\delta_y)\|\le2p\,d_p(x,y)\le2p\)</span> by (G1). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-the-average-over-all-incidences">4. The average over all incidences</h2>
+<p>Let <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> be the set of all incidences of <span class="math" data-tex="\(G\)">\(G\)</span>. The graph is <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>-regular, so <span class="math" data-tex="\(|\mathcal I|=\Delta\,|G|\)">\(|\mathcal I|=\Delta\,|G|\)</span>, where <span class="math" data-tex="\(|G|\)">\(|G|\)</span> is the number of vertices. Let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be the fraction of bad vertices.</p>
+<p><strong>Lemma 4.1.</strong> With sums over all incidences <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac1{|\mathcal I|}\sum_e|\mu_x|(E_e)&amp;\le\frac V\Delta+V\beta,\\
+\frac1{|\mathcal I|}\sum_e|\mu_y|(E_{\bar e})&amp;\le\frac V\Delta+V\beta .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac1{|\mathcal I|}\sum_e|\mu_x|(E_e)&amp;\le\frac V\Delta+V\beta,\\
+\frac1{|\mathcal I|}\sum_e|\mu_y|(E_{\bar e})&amp;\le\frac V\Delta+V\beta .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Group the incidences by their initial vertex <span class="math" data-tex="\(x\)">\(x\)</span>. If <span class="math" data-tex="\(x\)">\(x\)</span> is good, every state lies in at most one of the sets <span class="math" data-tex="\(E_e\)">\(E_e\)</span>, <span class="math" data-tex="\(e\in\mathcal D(x)\)">\(e\in\mathcal D(x)\)</span>. So
+<span class="math math-display" data-tex="\[
+\sum_{e\in\mathcal D(x)}|\mu_x|(E_e)\le\|\mu_x\|_{\mathrm{TV}}\le V .
+\]">\[
+\sum_{e\in\mathcal D(x)}|\mu_x|(E_e)\le\|\mu_x\|_{\mathrm{TV}}\le V .
+\]</span>
+If <span class="math" data-tex="\(x\)">\(x\)</span> is bad, each of the <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> terms is at most <span class="math" data-tex="\(V\)">\(V\)</span>. There are at most <span class="math" data-tex="\(|G|\)">\(|G|\)</span> good and <span class="math" data-tex="\(\beta|G|\)">\(\beta|G|\)</span> bad vertices. So the first sum is at most <span class="math" data-tex="\(V|G|+\Delta V\beta|G|\)">\(V|G|+\Delta V\beta|G|\)</span>; divide by <span class="math" data-tex="\(\Delta|G|\)">\(\Delta|G|\)</span>.</p>
+<p>The map <span class="math" data-tex="\(e\mapsto\bar e\)">\(e\mapsto\bar e\)</span> is a bijection of <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>, and the term <span class="math" data-tex="\(|\mu_y|(E_{\bar e})\)">\(|\mu_y|(E_{\bar e})\)</span> for <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> is the term of the first sum for the incidence <span class="math" data-tex="\(\bar e\colon y\to x\)">\(\bar e\colon y\to x\)</span>. So the two sums are equal. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-proof-of-the-theorem-on-blocks">5. Proof of the theorem on blocks</h2>
+<p><strong>Theorem 5.1</strong> ([OpenAI-LF, Section 1]). Let <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span> be an integer and let <span class="math" data-tex="\((M_p,d_p,o)\)">\((M_p,d_p,o)\)</span> and <span class="math" data-tex="\(A_p\)">\(A_p\)</span> be the block and its set of anchors. Every bounded linear operator <span class="math" data-tex="\(T_0\)">\(T_0\)</span> of finite rank on <span class="math" data-tex="\(\mathcal F(M_p)\)">\(\mathcal F(M_p)\)</span> with <span class="math" data-tex="\(\|T_0\|\le p\)">\(\|T_0\|\le p\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\max_{a\in A_p}\|T_0\delta_a-\delta_a\|\ge\tfrac12 .
+\]">\[
+\max_{a\in A_p}\|T_0\delta_a-\delta_a\|\ge\tfrac12 .
+\]</span></p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(T_0\)">\(T_0\)</span> has finite rank, <span class="math" data-tex="\(\|T_0\|\le p\)">\(\|T_0\|\le p\)</span> and <span class="math" data-tex="\(\|T_0\delta_a-\delta_a\|&lt;\tfrac12\)">\(\|T_0\delta_a-\delta_a\|&lt;\tfrac12\)</span> for all <span class="math" data-tex="\(a\in A_p\)">\(a\in A_p\)</span>.</p>
+<p><em>Step 1.</em> By the lemma on a common finite support there are a finite set <span class="math" data-tex="\(S\ni o\)">\(S\ni o\)</span> and an operator <span class="math" data-tex="\(T\)">\(T\)</span> with range in the span of the <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span>, <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span>, with <span class="math" data-tex="\(\|T\|\le2p\)">\(\|T\|\le2p\)</span> and <span class="math" data-tex="\(\|T\delta_a-\delta_a\|&lt;1\)">\(\|T\delta_a-\delta_a\|&lt;1\)</span> for all anchors. Let <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> be its measures.</p>
+<p><em>Step 2.</em> With this set <span class="math" data-tex="\(S\)">\(S\)</span> of states, the proposition on rare matched walks gives <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> such that the fraction <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of bad vertices of <span class="math" data-tex="\(G=G_m\)">\(G=G_m\)</span> is less than <span class="math" data-tex="\(1/(20V)\)">\(1/(20V)\)</span>. Define the sets <span class="math" data-tex="\(E_e\)">\(E_e\)</span> and the functions <span class="math" data-tex="\(f_e\)">\(f_e\)</span> for this graph.</p>
+<p><em>Step 3.</em> Average the inequality of Lemma 3.1 over all incidences of <span class="math" data-tex="\(G\)">\(G\)</span>. By Lemma 4.1 and (N), each of the two averages of the losses is at most
+<span class="math math-display" data-tex="\[
+\frac V\Delta+V\beta&lt;\frac1{20}+\frac1{20}=\frac1{10} .
+\]">\[
+\frac V\Delta+V\beta&lt;\frac1{20}+\frac1{20}=\frac1{10} .
+\]</span>
+So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{|\mathcal I|}\sum_e\int f_e\,d(\mu_x-\mu_y)\\
+&amp;\qquad&gt;\frac{3L}2-2L\cdot\frac2{10}=\frac{11L}{10}=11p .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1{|\mathcal I|}\sum_e\int f_e\,d(\mu_x-\mu_y)\\
+&amp;\qquad&gt;\frac{3L}2-2L\cdot\frac2{10}=\frac{11L}{10}=11p .
+\end{aligned}
+\]</span>
+By Lemma 3.2 every term of the average is at most <span class="math" data-tex="\(2p\)">\(2p\)</span>. So <span class="math" data-tex="\(2p&gt;11p\)">\(2p&gt;11p\)</span>, which is false. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Together with the properties of the block (Proposition 5.1 of the lesson on colored graphs: countably infinite, distances at least <span class="math" data-tex="\(1\)">\(1\)</span>, diameter at most <span class="math" data-tex="\(B_p\)">\(B_p\)</span>, finitely many anchors, one of them the base point), this is the theorem on blocks stated in the first lesson.</p>
+<p><strong>The order of the choices.</strong> The integer <span class="math" data-tex="\(p\)">\(p\)</span> determines the numbers <span class="math" data-tex="\(L,R,K,D,B,V\)">\(L,R,K,D,B,V\)</span>, then <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, <span class="math" data-tex="\(Q\)">\(Q\)</span>, <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span>, then the sequence of graphs, the block and its anchors. All of this is fixed before an operator is considered. An operator <span class="math" data-tex="\(T_0\)">\(T_0\)</span> then determines the support <span class="math" data-tex="\(S\)">\(S\)</span>. Only after that the length <span class="math" data-tex="\(n\)">\(n\)</span> and the graph <span class="math" data-tex="\(G_m\)">\(G_m\)</span> are chosen, depending on <span class="math" data-tex="\(S\)">\(S\)</span>. The set <span class="math" data-tex="\(S\)">\(S\)</span> may be related to the graphs in any way; the proof needs no independence between the operator and the graphs. This is possible because the statement about the tree limit holds for every fixed property of colored balls.</p>
+<h2 id="6-overview-of-the-course">6. Overview of the course</h2>
+<p>The course proves, with no result from outside the programme:</p>
+<ul>
+<li>For every <span class="math" data-tex="\(p\)">\(p\)</span> the block <span class="math" data-tex="\(M_p\)">\(M_p\)</span> is a bounded countable metric space with distances at least <span class="math" data-tex="\(1\)">\(1\)</span> whose free space, a renorming of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>, has <span class="math" data-tex="\(2B_p\)">\(2B_p\)</span>-BAP and does not have <span class="math" data-tex="\(p\)">\(p\)</span>-BAP (Theorem 5.1 here, with the proposition on coefficients of the first lesson).</li>
+<li>The real space <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> has equivalent norms without the metric approximation property, and for every <span class="math" data-tex="\(p\)">\(p\)</span> an equivalent norm without <span class="math" data-tex="\(p\)">\(p\)</span>-BAP (the corollary on new norms in the first lesson).</li>
+<li>The wedge <span class="math" data-tex="\(M\)">\(M\)</span> of the blocks is a countable metric space with distances at least <span class="math" data-tex="\(1\)">\(1\)</span> whose free space has the approximation property and not the bounded approximation property (the lesson on the wedge).</li>
+</ul>
+<p>It derives from one named hypothesis, a theorem of Kalton on nets in approximable Banach spaces: the free space of the wedge is not approximable by equi-uniformly continuous maps with relatively compact ranges.</p>
+<p>The ingredients of the obstruction are, in the order of the proof: a bounded metric with finitely many anchors, so that an operator that is good at the anchors is controlled at every point; labels that are <span class="math" data-tex="\(1\)">\(1\)</span>-Lipschitz and bumps of small slope, which turn this control into a statement about measures; many colors, so that a state can follow only few vertices; a large degree, so that giving up one direction per state costs little; and graphs whose small balls look like a tree with independent colors, so that long followed walks are rare.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> In Lemma 1.1, show that <span class="math" data-tex="\(F(z)\ge-L\)">\(F(z)\ge-L\)</span> for all <span class="math" data-tex="\(z\)">\(z\)</span>, so that only the cut at <span class="math" data-tex="\(L\)">\(L\)</span> is needed. Show that <span class="math" data-tex="\(F&#x27;(z)=\max_{j\in P}(v(j)-d(z,j))\)">\(F&#x27;(z)=\max_{j\in P}(v(j)-d(z,j))\)</span> is another extension of <span class="math" data-tex="\(v\)">\(v\)</span> with Lipschitz constant at most <span class="math" data-tex="\(1\)">\(1\)</span>, and that <span class="math" data-tex="\(F&#x27;\le F\)">\(F&#x27;\le F\)</span>.</p>
+<p><strong>7.2.</strong> Where in the proof of Theorem 5.1 are the conditions <span class="math" data-tex="\(\Delta&gt;20V\)">\(\Delta&gt;20V\)</span> and <span class="math" data-tex="\(k&gt;2\Delta QH\)">\(k&gt;2\Delta QH\)</span> used?</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> be an incidence of <span class="math" data-tex="\(G\)">\(G\)</span>. (a) Show that every state <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(b_x(j)&gt;0\)">\(b_x(j)&gt;0\)</span> lies in <span class="math" data-tex="\(E_e\)">\(E_e\)</span> or in <span class="math" data-tex="\(E_{\bar e}\)">\(E_{\bar e}\)</span>. (b) Conclude that <span class="math" data-tex="\(|\mu_x|(E_e\cup E_{\bar e})\ge\tfrac34\)">\(|\mu_x|(E_e\cup E_{\bar e})\ge\tfrac34\)</span> for the measures of Section 3.</p>
+<p><strong>7.4.</strong> (a) Show that Theorem 5.1 holds with <span class="math" data-tex="\(1\)">\(1\)</span> in place of <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>. (b) Show more: every operator <span class="math" data-tex="\(T_0\)">\(T_0\)</span> of finite rank on <span class="math" data-tex="\(\mathcal F(M_p)\)">\(\mathcal F(M_p)\)</span> with <span class="math" data-tex="\(\|T_0\|\le p\)">\(\|T_0\|\le p\)</span> has <span class="math" data-tex="\(\|T_0\delta_a-\delta_a\|\ge150p^2+7p\)">\(\|T_0\delta_a-\delta_a\|\ge150p^2+7p\)</span> for some anchor <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><strong>7.5.</strong> Let <span class="math" data-tex="\(S_m\)">\(S_m\)</span> be the operators of finite rank from the proof of the proposition on coefficients in the first lesson, for the space <span class="math" data-tex="\(M_p\)">\(M_p\)</span>. Show that <span class="math" data-tex="\(\|S_m\|&gt;p\)">\(\|S_m\|&gt;p\)</span> for all large <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(F(z)\ge\min_jv(j)\ge-L\)">\(F(z)\ge\min_jv(j)\ge-L\)</span>. For <span class="math" data-tex="\(z\in P\)">\(z\in P\)</span>: <span class="math" data-tex="\(F&#x27;(z)\ge v(z)\)">\(F&#x27;(z)\ge v(z)\)</span> by the term <span class="math" data-tex="\(j=z\)">\(j=z\)</span>, and <span class="math" data-tex="\(v(j)-d(z,j)\le v(z)\)">\(v(j)-d(z,j)\le v(z)\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>. The Lipschitz inequality for <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> follows as for <span class="math" data-tex="\(F\)">\(F\)</span>. For all <span class="math" data-tex="\(j,j&#x27;\)">\(j,j&#x27;\)</span>: <span class="math" data-tex="\(v(j)-v(j&#x27;)\le d(j,j&#x27;)\le d(j,z)+d(z,j&#x27;)\)">\(v(j)-v(j&#x27;)\le d(j,j&#x27;)\le d(j,z)+d(z,j&#x27;)\)</span>, so <span class="math" data-tex="\(v(j)-d(z,j)\le v(j&#x27;)+d(z,j&#x27;)\)">\(v(j)-d(z,j)\le v(j&#x27;)+d(z,j&#x27;)\)</span>; hence <span class="math" data-tex="\(F&#x27;\le F\)">\(F&#x27;\le F\)</span>.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(\Delta&gt;20V\)">\(\Delta&gt;20V\)</span> gives <span class="math" data-tex="\(V/\Delta&lt;\tfrac1{20}\)">\(V/\Delta&lt;\tfrac1{20}\)</span> in Step 3: the loss from the at most one exceptional direction per state at good vertices. <span class="math" data-tex="\(k&gt;2\Delta QH\)">\(k&gt;2\Delta QH\)</span> gives <span class="math" data-tex="\(\Delta QH/k&lt;\tfrac12\)">\(\Delta QH/k&lt;\tfrac12\)</span> in the proposition on rare matched walks, which makes the fraction <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of bad vertices less than <span class="math" data-tex="\(1/(20V)\)">\(1/(20V)\)</span> in Step 2.</p>
+<p><strong>7.3.</strong> (a) If <span class="math" data-tex="\(b_x(j)&gt;0\)">\(b_x(j)&gt;0\)</span>, then <span class="math" data-tex="\(\|h(x)-h(j)\|_\infty&lt;K\)">\(\|h(x)-h(j)\|_\infty&lt;K\)</span>, so <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are compatible, and <span class="math" data-tex="\(\|h(y)-h(j)\|_\infty&lt;K+1\)">\(\|h(y)-h(j)\|_\infty&lt;K+1\)</span>, so <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are compatible. Lemma 6.1 of the lesson on signed measures with <span class="math" data-tex="\(j&#x27;=j\)">\(j&#x27;=j\)</span> gives <span class="math" data-tex="\(j\in E_e\)">\(j\in E_e\)</span> or <span class="math" data-tex="\(j\in E_{\bar e}\)">\(j\in E_{\bar e}\)</span>. (b) By (a) the function <span class="math" data-tex="\(b_x\)">\(b_x\)</span> vanishes on the states outside <span class="math" data-tex="\(E_e\cup E_{\bar e}\)">\(E_e\cup E_{\bar e}\)</span>, and <span class="math" data-tex="\(b_x\le L\)">\(b_x\le L\)</span>. So <span class="math" data-tex="\(\tfrac34L\le\int b_x\,d\mu_x\le L\,|\mu_x|(E_e\cup E_{\bar e})\)">\(\tfrac34L\le\int b_x\,d\mu_x\le L\,|\mu_x|(E_e\cup E_{\bar e})\)</span>. So the states that are given up carry a large part of the measure. The proof works because the part in <span class="math" data-tex="\(E_e\)">\(E_e\)</span> alone is small on average, and only this part is lost for <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span>.</p>
+<p><strong>7.4.</strong> (a) Let <span class="math" data-tex="\(\theta=\max_a\|T_0\delta_a-\delta_a\|&lt;1\)">\(\theta=\max_a\|T_0\delta_a-\delta_a\|&lt;1\)</span>. In the proof of the lemma on a common finite support choose <span class="math" data-tex="\(\eta&lt;\min\{p,(1-\theta)/B\}\)">\(\eta&lt;\min\{p,(1-\theta)/B\}\)</span>. Then <span class="math" data-tex="\(\|T\delta_a-\delta_a\|\le\theta+\eta B&lt;1\)">\(\|T\delta_a-\delta_a\|\le\theta+\eta B&lt;1\)</span> and <span class="math" data-tex="\(\|T\|&lt;2p\)">\(\|T\|&lt;2p\)</span>, and the rest of the proof is unchanged.</p>
+<p>(b) Let <span class="math" data-tex="\(\epsilon\ge0\)">\(\epsilon\ge0\)</span> and let <span class="math" data-tex="\(T\)">\(T\)</span> have range in the span of the <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span>, <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span>, with <span class="math" data-tex="\(\|T\|\le2p\)">\(\|T\|\le2p\)</span> and <span class="math" data-tex="\(\|T\delta_a-\delta_a\|\le\epsilon\)">\(\|T\delta_a-\delta_a\|\le\epsilon\)</span> for all anchors. The total variation bound <span class="math" data-tex="\(V\)">\(V\)</span> does not depend on <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. In the proof of property (3) of the lemma on the measures, <span class="math" data-tex="\(\|T\delta_x-\delta_{a(x)}\|\le2pR+\epsilon\)">\(\|T\delta_x-\delta_{a(x)}\|\le2pR+\epsilon\)</span>, so <span class="math" data-tex="\(\int b_x\,d\mu_x\ge L-\frac LK(2pR+\epsilon)\)">\(\int b_x\,d\mu_x\ge L-\frac LK(2pR+\epsilon)\)</span>. The average in Step 3 is then larger than
+<span class="math math-display" data-tex="\[
+2L-\frac{2L}K\,(2pR+\epsilon)-\frac{4L}{10} ,
+\]">\[
+2L-\frac{2L}K\,(2pR+\epsilon)-\frac{4L}{10} ,
+\]</span>
+and it is at most <span class="math" data-tex="\(2p=L/5\)">\(2p=L/5\)</span>. This is a contradiction as soon as <span class="math" data-tex="\(\frac2K(2pR+\epsilon)\le\frac75\)">\(\frac2K(2pR+\epsilon)\le\frac75\)</span>, that is, <span class="math" data-tex="\(60p^2+\epsilon\le\frac7{10}K=210p^2+7p\)">\(60p^2+\epsilon\le\frac7{10}K=210p^2+7p\)</span>, that is, <span class="math" data-tex="\(\epsilon\le150p^2+7p\)">\(\epsilon\le150p^2+7p\)</span>. Now let <span class="math" data-tex="\(T_0\)">\(T_0\)</span> have finite rank, <span class="math" data-tex="\(\|T_0\|\le p\)">\(\|T_0\|\le p\)</span>, and <span class="math" data-tex="\(\theta=\max_a\|T_0\delta_a-\delta_a\|&lt;150p^2+7p\)">\(\theta=\max_a\|T_0\delta_a-\delta_a\|&lt;150p^2+7p\)</span>. Choose <span class="math" data-tex="\(\eta&lt;p\)">\(\eta&lt;p\)</span> with <span class="math" data-tex="\(\theta+\eta B\le150p^2+7p\)">\(\theta+\eta B\le150p^2+7p\)</span> in the lemma on a common finite support; the operator <span class="math" data-tex="\(T\)">\(T\)</span> contradicts what was just shown.</p>
+<p><strong>7.5.</strong> Every <span class="math" data-tex="\(\delta_a\)">\(\delta_a\)</span> is an evaluation combination, so <span class="math" data-tex="\(S_m\delta_a=\delta_a\)">\(S_m\delta_a=\delta_a\)</span> for all anchors once <span class="math" data-tex="\(E_m\)">\(E_m\)</span> contains the finitely many anchors other than <span class="math" data-tex="\(o\)">\(o\)</span>. Such an <span class="math" data-tex="\(S_m\)">\(S_m\)</span> has finite rank and no error at the anchors; by Theorem 5.1 its norm is larger than <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-LF] OpenAI, <em>A uniformly discrete counterexample to bounded approximation in Lipschitz-free spaces</em>, OpenAI Math Release preprint, 26 September 2026, Section 6. https://github.com/openai/math/tree/main/preprints/Failure-of-Bounded-Approximation-in-a-Lipschitz-Free-Space-over-a-Uniformly-Discrete-Metric-Space-September-26-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -106,6 +106,30 @@ H^q(U,\Omega^p(E))\ \cong\ \frac{\ker\bigl(\bar\partial_E:\mathcal E^{p,q}(U,E)\
 
 The full vanishing \(H^q(\Delta(R),\mathcal O)=0\), and much more, is proved in the lesson on Theorems A and B, where polydiscs appear as examples of Stein manifolds.
 
+<span id="smooth-module-acyclicity-programme-proof"></span>
+
+**Exact programme proof of smooth-module acyclicity and the resolution step.** The Čech contraction in Lemma 3.1 and its Stacks reference remain above. The following direct proof supplies an additional route through existing programme results, without assuming that every fixed-cover Čech complex computes sheaf cohomology. We use the Hausdorff, second-countable smooth manifolds of this course; every open subset has the same properties. Smooth subordinate partitions, with supports closed in that open subset and lying inside members of the chosen cover, are proved in [Local tools, Theorem 3.1](course:DG-FND/local-tools-for-bundles-and-transport#3-smooth-weights-with-controlled-support).
+
+Let \(p:\mathcal B\to\mathcal C\) be a surjection of sheaves of \(\mathcal C^\infty_U\)-modules, and let \(s\in\mathcal C(U)\). Surjectivity on stalks gives an open cover \((W_i)\) and local lifts \(t_i\in\mathcal B(W_i)\) with \(p(t_i)=s|_{W_i}\): choose a preimage germ and shrink until its image agrees with \(s\). Choose a locally finite subordinate smooth partition \((\chi_i)\). A refined cover can be used, with each local lift restricted to the corresponding refinement member. On \(W_i\) the section \(\chi_i t_i\) is zero outside \(\operatorname{supp}\chi_i\). Because that support is closed in \(U\) and lies inside \(W_i\), this section glues with zero on \(U\setminus\operatorname{supp}\chi_i\), giving a section \(\widetilde{\chi_i t_i}\) on all of \(U\). The locally finite sum is a sheaf section, and
+\[
+t=\sum_i\widetilde{\chi_i t_i}\in\mathcal B(U),\qquad
+p(t)=\sum_i\chi_i s=s.
+\]
+Thus taking sections on \(U\) preserves surjections of smooth-module sheaves. It already preserves kernels, which are computed on sections, so \(\Gamma(U,-)\) is exact on this module category. This assertion does not say that an arbitrary smooth module is flasque: it lifts through a surjection of sheaves, not through restriction to an arbitrary smaller open set.
+
+The existence of injective resolutions in modules over any sheaf of rings, in particular \(\mathcal C^\infty_U\), is proved in [Injective modules, Theorem 2.3](course:derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors#2-functorial-injective-embeddings). In such a resolution of \(\mathcal F|_U\), write
+\[
+0\longrightarrow Q^{r-1}\longrightarrow I^r\longrightarrow Q^r\longrightarrow0,
+\qquad Q^{-1}=\mathcal F|_U.
+\]
+The preceding lifting proof makes every section sequence exact. Consequently \(\Gamma(U,I^\bullet)\) is exact in positive degrees, so its positive cohomology vanishes. [Independence of coefficients, Theorem 3.1](course:AG-QC/cohomology-of-sheaves-on-ringed-spaces#3-coefficients-and-higher-direct-images) identifies these groups with the cohomology of the underlying abelian sheaf. Its proof uses [injectives are flasque, Lemma 1.1](course:derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors#1-extending-maps-and-extending-sections), and does not assume that forgetting coefficients preserves injectivity. This proves all of Lemma 3.1 on every open \(U\).
+
+For Theorem 3.2 the exact acyclic-resolution input is [Bounded-below derived functors, Theorem 4.1(4)–(5)](course:derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors#4-right-derived-functors-on-bounded-below-complexes), with its full proof under [Why acyclic terms suffice](course:derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors#why-acyclic-terms-suffice-in-the-bounded-below-case). Apply it to the left exact section functor on abelian sheaves and the finite, hence bounded-below, resolution (2.2) restricted to \(U\). Each term is acyclic by the preceding argument. The differential \(\bar\partial_E\) is additive and holomorphic-function-linear; it is generally **not** smooth-function-linear. Acyclicity of its individual terms therefore comes from their smooth-module structures, whereas the complex and its cohomology comparison are taken in abelian sheaves (or equivalently in holomorphic modules by coefficient independence). These are different uses of the coefficient structures, not an assertion of smooth linearity for the differential.
+
+The comparison identifies the cohomology of \(\Gamma(U,\mathcal E^{p,\bullet}(E))\) with \(H^q(U,\Omega^p(E))\), exactly as stated in Theorem 3.2. In degree zero the term of degree \(-1\) is zero. The full bundle statement, every open \(U\), the earlier Čech contraction, and the original source citations are retained.
+
+*Smooth-module and resolution dependency integration: GPT-6 Astra (OpenAI), Ultra, 13 October 2026; author self-check, CC0. This is a scoped proof supplement, not an independent whole-course review.*
+
 ## 4. Exercises
 
 **Exercise 4.1.** On \(\mathbf C\), find a smooth solution of \(\partial u/\partial\bar z=z\bar z\), and describe all solutions on a connected open set.

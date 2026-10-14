@@ -1,0 +1,406 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Metric Markov cotype two</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Metric Markov cotype two of ℓ₁)</a><a href="cuts-the-cubic-map-and-a-quartic-potential.html">Next lesson</a><a href="src/metric-markov-cotype-two.md">Editable source</a></nav><main><article><h1 id="metric-markov-cotype-two">Metric Markov cotype two</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Attach points <span class="math" data-tex="\(x_1,\dots,x_n\)">\(x_1,\dots,x_n\)</span> of a metric space to the states of a Markov chain. Can the points be moved a little so that states that follow each other in the chain carry points that are close together? <em>Metric Markov cotype two</em> is a quantitative form of this question: the cost of moving the points, plus <span class="math" data-tex="\(t\)">\(t\)</span> times the one-step variation of the new points, is to be bounded by a constant times the variation of the old points over the times <span class="math" data-tex="\(1,\dots,t\)">\(1,\dots,t\)</span>. The notion goes back to Ball; the form used here is due to Mendel and Naor [MN, Definition 1.2]. They asked whether the sequence space <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> has this property [MN, Question 1.15]. [OpenAI-MC] proves that it does, with the constant <span class="math" data-tex="\(12\sqrt{21}\)">\(12\sqrt{21}\)</span>. This course gives the proof.</p>
+<p>This lesson gives the definition, examples, and two general facts. In a Hilbert space the averages of the points along the chain can be taken as the new points (Proposition 3.4). In every metric space the average over the times <span class="math" data-tex="\(1,\dots,t\)">\(1,\dots,t\)</span> can be replaced by an average over a geometric random time with mean <span class="math" data-tex="\(t\)">\(t\)</span> (Proposition 4.3).</p>
+<ul>
+<li>Stochastic matrices, stationary and reversible vectors, the energy of a family of points (Section 1).</li>
+<li>The definition, two examples, the statement of the theorem (Section 2).</li>
+<li>Hilbert space has metric Markov cotype two with the constant <span class="math" data-tex="\(\sqrt5\)">\(\sqrt5\)</span> (Proposition 3.4).</li>
+<li>Geometric and Cesàro averages (Proposition 4.3).</li>
+</ul>
+<p>The lesson follows [OpenAI-MC, Sections 1 and 4]. Section 3 is not taken from that text. The lesson uses finite sums, the Cauchy–Schwarz inequality and the geometric series; Section 3 uses the spectral theorem for symmetric matrices (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B40">Linear Algebra</a>).</p>
+<h2 id="1-stationary-and-reversible-matrices">1. Stationary and reversible matrices</h2>
+<p>Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\([n]=\{1,\dots,n\}\)">\([n]=\{1,\dots,n\}\)</span>. A <em>probability vector</em> is a vector <span class="math" data-tex="\(\pi=(\pi_i)_{i\in[n]}\)">\(\pi=(\pi_i)_{i\in[n]}\)</span> with <span class="math" data-tex="\(\pi_i\ge0\)">\(\pi_i\ge0\)</span> and <span class="math" data-tex="\(\sum_i\pi_i=1\)">\(\sum_i\pi_i=1\)</span>; entries equal to <span class="math" data-tex="\(0\)">\(0\)</span> are allowed. A <em>stochastic matrix</em> is a matrix <span class="math" data-tex="\(A=(a_{ij})_{i,j\in[n]}\)">\(A=(a_{ij})_{i,j\in[n]}\)</span> with <span class="math" data-tex="\(a_{ij}\ge0\)">\(a_{ij}\ge0\)</span> and <span class="math" data-tex="\(\sum_ja_{ij}=1\)">\(\sum_ja_{ij}=1\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><strong>Definition.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a stochastic matrix and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> a probability vector. The vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is <em>stationary</em> for <span class="math" data-tex="\(A\)">\(A\)</span> if
+<span class="math math-display" data-tex="\[
+\sum_i\pi_ia_{ij}=\pi_j\qquad\text{for all }j .
+\]">\[
+\sum_i\pi_ia_{ij}=\pi_j\qquad\text{for all }j .
+\]</span>
+The matrix <span class="math" data-tex="\(A\)">\(A\)</span> is <em>reversible</em> for <span class="math" data-tex="\(\pi\)">\(\pi\)</span> if
+<span class="math math-display" data-tex="\[
+\pi_ia_{ij}=\pi_ja_{ji}\qquad\text{for all }i,j .
+\]">\[
+\pi_ia_{ij}=\pi_ja_{ji}\qquad\text{for all }i,j .
+\]</span></p>
+<p>Summing the second condition over <span class="math" data-tex="\(i\)">\(i\)</span> gives the first: if <span class="math" data-tex="\(A\)">\(A\)</span> is reversible for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, then <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is stationary for <span class="math" data-tex="\(A\)">\(A\)</span>. The converse is false. For <span class="math" data-tex="\(n=3\)">\(n=3\)</span> let <span class="math" data-tex="\(A\)">\(A\)</span> send <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(2\)">\(2\)</span> to <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, each with probability <span class="math" data-tex="\(1\)">\(1\)</span>. The uniform vector is stationary, and <span class="math" data-tex="\(\pi_1a_{12}=\tfrac13\)">\(\pi_1a_{12}=\tfrac13\)</span> while <span class="math" data-tex="\(\pi_2a_{21}=0\)">\(\pi_2a_{21}=0\)</span>.</p>
+<p>For a stochastic matrix <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> put
+<span class="math math-display" data-tex="\[
+M_t=\frac1t\sum_{s=1}^tA^s ,
+\]">\[
+M_t=\frac1t\sum_{s=1}^tA^s ,
+\]</span>
+the <em>Cesàro average</em> of the powers of <span class="math" data-tex="\(A\)">\(A\)</span>. For <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span> put
+<span class="math math-display" data-tex="\[
+G=(1-q)\sum_{s=0}^\infty q^sA^s ,
+\]">\[
+G=(1-q)\sum_{s=0}^\infty q^sA^s ,
+\]</span>
+with <span class="math" data-tex="\(A^0=I\)">\(A^0=I\)</span>, the <em>geometric average</em> with the ratio <span class="math" data-tex="\(q\)">\(q\)</span>. The series converges in every entry, because the entries of <span class="math" data-tex="\(A^s\)">\(A^s\)</span> lie in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> (they are entries of a stochastic matrix, by the next lemma).</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> be stochastic matrices and let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be stationary for both.</p>
+<ol>
+<li>The product <span class="math" data-tex="\(AA&#x27;\)">\(AA&#x27;\)</span> is stochastic and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is stationary for it. The same holds for every power <span class="math" data-tex="\(A^s\)">\(A^s\)</span>, for <span class="math" data-tex="\(M_t\)">\(M_t\)</span> and for <span class="math" data-tex="\(G\)">\(G\)</span>.</li>
+<li>If <span class="math" data-tex="\(A\)">\(A\)</span> is reversible for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, then so are <span class="math" data-tex="\(A^s\)">\(A^s\)</span>, <span class="math" data-tex="\(M_t\)">\(M_t\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span>.</li>
+<li><span class="math" data-tex="\(G=(1-q)I+qAG\)">\(G=(1-q)I+qAG\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> <em>Part 1.</em> The entries of <span class="math" data-tex="\(AA&#x27;\)">\(AA&#x27;\)</span> are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>, and <span class="math" data-tex="\(\sum_j\sum_ka_{ik}a&#x27;_{kj}=\sum_ka_{ik}=1\)">\(\sum_j\sum_ka_{ik}a&#x27;_{kj}=\sum_ka_{ik}=1\)</span>. Further <span class="math" data-tex="\(\sum_i\pi_i(AA&#x27;)_{ij}=\sum_k\pi_ka&#x27;_{kj}=\pi_j\)">\(\sum_i\pi_i(AA&#x27;)_{ij}=\sum_k\pi_ka&#x27;_{kj}=\pi_j\)</span>. By induction the powers are stochastic with the stationary vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Both properties are kept by averages with nonnegative weights of sum <span class="math" data-tex="\(1\)">\(1\)</span>, finite or infinite; the weights of <span class="math" data-tex="\(G\)">\(G\)</span> are <span class="math" data-tex="\((1-q)q^s\)">\((1-q)q^s\)</span>, with the sum <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><em>Part 2.</em> Assume <span class="math" data-tex="\(\pi_i(A^s)_{ij}=\pi_j(A^s)_{ji}\)">\(\pi_i(A^s)_{ij}=\pi_j(A^s)_{ji}\)</span> for all <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pi_i(A^{s+1})_{ij}&amp;=\sum_k\pi_i(A^s)_{ik}a_{kj}\\
+&amp;=\sum_k(A^s)_{ki}\,\pi_ka_{kj}\\
+&amp;=\sum_k(A^s)_{ki}\,\pi_ja_{jk}\\
+&amp;=\pi_j(A^{s+1})_{ji} ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\pi_i(A^{s+1})_{ij}&amp;=\sum_k\pi_i(A^s)_{ik}a_{kj}\\
+&amp;=\sum_k(A^s)_{ki}\,\pi_ka_{kj}\\
+&amp;=\sum_k(A^s)_{ki}\,\pi_ja_{jk}\\
+&amp;=\pi_j(A^{s+1})_{ji} ,
+\end{aligned}
+\]</span>
+where the last step uses <span class="math" data-tex="\(A^{s+1}=A\,A^s\)">\(A^{s+1}=A\,A^s\)</span>. The condition is linear in the matrix, so it passes to <span class="math" data-tex="\(M_t\)">\(M_t\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><em>Part 3.</em> The matrix <span class="math" data-tex="\(qAG\)">\(qAG\)</span> is <span class="math" data-tex="\((1-q)\sum_{s\ge1}q^sA^s\)">\((1-q)\sum_{s\ge1}q^sA^s\)</span>, and this is <span class="math" data-tex="\(G-(1-q)I\)">\(G-(1-q)I\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>The walk.</strong> A stochastic matrix with a stationary vector describes a random walk <span class="math" data-tex="\(X_0,X_1,X_2,\dots\)">\(X_0,X_1,X_2,\dots\)</span> on <span class="math" data-tex="\([n]\)">\([n]\)</span>: the state <span class="math" data-tex="\(X_0\)">\(X_0\)</span> has the distribution <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and from <span class="math" data-tex="\(X_s=i\)">\(X_s=i\)</span> the next state is <span class="math" data-tex="\(j\)">\(j\)</span> with probability <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>. Then <span class="math" data-tex="\(X_0=i\)">\(X_0=i\)</span> and <span class="math" data-tex="\(X_s=j\)">\(X_s=j\)</span> hold together with probability <span class="math" data-tex="\(\pi_i(A^s)_{ij}\)">\(\pi_i(A^s)_{ij}\)</span>, and every <span class="math" data-tex="\(X_s\)">\(X_s\)</span> has the distribution <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The proofs of this course work with the sums; the walk is used to describe what the sums mean.</p>
+<p><strong>Definition.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be a stochastic matrix with the stationary vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and let <span class="math" data-tex="\(x=(x_1,\dots,x_n)\)">\(x=(x_1,\dots,x_n)\)</span> be points of a metric space <span class="math" data-tex="\((X,d)\)">\((X,d)\)</span>. The <em>energy</em> of <span class="math" data-tex="\(x\)">\(x\)</span> for <span class="math" data-tex="\(P\)">\(P\)</span> is
+<span class="math math-display" data-tex="\[
+\mathcal E_P(x)=\sum_{i,j}\pi_iP_{ij}\,d(x_i,x_j)^2 .
+\]">\[
+\mathcal E_P(x)=\sum_{i,j}\pi_iP_{ij}\,d(x_i,x_j)^2 .
+\]</span></p>
+<p>For <span class="math" data-tex="\(P=A^s\)">\(P=A^s\)</span> this is the mean of <span class="math" data-tex="\(d(x_{X_0},x_{X_s})^2\)">\(d(x_{X_0},x_{X_s})^2\)</span>: the mean squared distance between the points at time <span class="math" data-tex="\(0\)">\(0\)</span> and at time <span class="math" data-tex="\(s\)">\(s\)</span>. The energy is linear in <span class="math" data-tex="\(P\)">\(P\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E_{M_t}(x)&amp;=\frac1t\sum_{s=1}^t\mathcal E_{A^s}(x),\\
+\mathcal E_G(x)&amp;=(1-q)\sum_{s\ge0}q^s\,\mathcal E_{A^s}(x),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal E_{M_t}(x)&amp;=\frac1t\sum_{s=1}^t\mathcal E_{A^s}(x),\\
+\mathcal E_G(x)&amp;=(1-q)\sum_{s\ge0}q^s\,\mathcal E_{A^s}(x),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\mathcal E_I(x)=0\)">\(\mathcal E_I(x)=0\)</span>.</p>
+<h2 id="2-the-definition-and-the-theorem">2. The definition and the theorem</h2>
+<p><strong>Definition 2.1</strong> (Mendel and Naor). A metric space <span class="math" data-tex="\((X,d)\)">\((X,d)\)</span> has <em>metric Markov cotype two with the constant <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span></em> if for all <span class="math" data-tex="\(n,t\ge1\)">\(n,t\ge1\)</span>, every probability vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, every stochastic matrix <span class="math" data-tex="\(A\)">\(A\)</span> that is reversible for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and all <span class="math" data-tex="\(x_1,\dots,x_n\in X\)">\(x_1,\dots,x_n\in X\)</span> there are <span class="math" data-tex="\(y_1,\dots,y_n\in X\)">\(y_1,\dots,y_n\in X\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_i\pi_i\,d(x_i,y_i)^2+t\,\mathcal E_A(y)\\
+&amp;\qquad\le C^2\,\mathcal E_{M_t}(x) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_i\pi_i\,d(x_i,y_i)^2+t\,\mathcal E_A(y)\\
+&amp;\qquad\le C^2\,\mathcal E_{M_t}(x) .
+\end{aligned}
+\]</span>
+The infimum of these constants is <span class="math" data-tex="\(N_2(X)\)">\(N_2(X)\)</span>.</p>
+<p>The first term on the left is the cost of replacing each <span class="math" data-tex="\(x_i\)">\(x_i\)</span> by <span class="math" data-tex="\(y_i\)">\(y_i\)</span>. The second term is <span class="math" data-tex="\(t\)">\(t\)</span> times the one-step energy of the new points. The right side is the energy of the old points, averaged over the times <span class="math" data-tex="\(1,\dots,t\)">\(1,\dots,t\)</span>. The new points have to lie in <span class="math" data-tex="\(X\)">\(X\)</span>; they are otherwise free. In particular they need not be averages of the old points, and a subspace of a space with metric Markov cotype two need not have it, because the new points may leave the subspace. Mendel and Naor constructed a closed linear subspace of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> that does not have metric Markov cotype two [MN, Theorem 1.14]; that statement is not used in this course.</p>
+<p><strong>Example 2.2</strong> (one step). For <span class="math" data-tex="\(t=1\)">\(t=1\)</span> the choice <span class="math" data-tex="\(y_i=x_i\)">\(y_i=x_i\)</span> gives <span class="math" data-tex="\(0+\mathcal E_A(x)\)">\(0+\mathcal E_A(x)\)</span> on the left and <span class="math" data-tex="\(C^2\,\mathcal E_A(x)\)">\(C^2\,\mathcal E_A(x)\)</span> on the right. So for <span class="math" data-tex="\(t=1\)">\(t=1\)</span> every metric space satisfies the inequality with <span class="math" data-tex="\(C=1\)">\(C=1\)</span>.</p>
+<p><strong>Example 2.3</strong> (two states that are exchanged). Let <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(\pi=(\tfrac12,\tfrac12)\)">\(\pi=(\tfrac12,\tfrac12)\)</span>, and let <span class="math" data-tex="\(A\)">\(A\)</span> exchange the two states: <span class="math" data-tex="\(a_{12}=a_{21}=1\)">\(a_{12}=a_{21}=1\)</span>. This matrix is reversible for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Its powers are <span class="math" data-tex="\(A^s=A\)">\(A^s=A\)</span> for odd <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(A^s=I\)">\(A^s=I\)</span> for even <span class="math" data-tex="\(s\)">\(s\)</span>. So <span class="math" data-tex="\((M_t)_{12}=(M_t)_{21}=\lceil t/2\rceil/t\)">\((M_t)_{12}=(M_t)_{21}=\lceil t/2\rceil/t\)</span> and, with <span class="math" data-tex="\(D=d(x_1,x_2)\)">\(D=d(x_1,x_2)\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal E_{M_t}(x)=\frac{\lceil t/2\rceil}{t}\,D^2,\qquad
+\mathcal E_A(x)=D^2 .
+\]">\[
+\mathcal E_{M_t}(x)=\frac{\lceil t/2\rceil}{t}\,D^2,\qquad
+\mathcal E_A(x)=D^2 .
+\]</span>
+The choice <span class="math" data-tex="\(y_i=x_i\)">\(y_i=x_i\)</span> gives <span class="math" data-tex="\(t\,D^2\)">\(t\,D^2\)</span> on the left side. This is larger than the right side by the factor <span class="math" data-tex="\(t^2/(C^2\lceil t/2\rceil)\)">\(t^2/(C^2\lceil t/2\rceil)\)</span>, which is at least <span class="math" data-tex="\(t/C^2\)">\(t/C^2\)</span> for <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span>. So no constant works for all <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(y=x\)">\(y=x\)</span>. The choice <span class="math" data-tex="\(y_1=y_2=x_1\)">\(y_1=y_2=x_1\)</span> gives <span class="math" data-tex="\(\tfrac12D^2\)">\(\tfrac12D^2\)</span> on the left side, and the right side is at least <span class="math" data-tex="\(\tfrac12C^2D^2\)">\(\tfrac12C^2D^2\)</span>. So <span class="math" data-tex="\(C=1\)">\(C=1\)</span> suffices for this chain in every metric space.</p>
+<p>The two examples show the two extreme choices. If the chain barely moves in <span class="math" data-tex="\(t\)">\(t\)</span> steps, the points can stay. If the chain forgets its start within <span class="math" data-tex="\(t\)">\(t\)</span> steps, all points can be moved to one place. The definition asks for a choice that works for every chain with one constant.</p>
+<p><strong>Theorem 2.4</strong> ([OpenAI-MC, Section 1]). The real space <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> has metric Markov cotype two with the constant <span class="math" data-tex="\(12\sqrt{21}\)">\(12\sqrt{21}\)</span>:
+<span class="math math-display" data-tex="\[
+N_2(\ell_1)\le12\sqrt{21} .
+\]">\[
+N_2(\ell_1)\le12\sqrt{21} .
+\]</span>
+The square of this constant is <span class="math" data-tex="\(3024\)">\(3024\)</span>.</p>
+<p>Here <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> is the space of real sequences <span class="math" data-tex="\(x=(x(k))_{k\ge1}\)">\(x=(x(k))_{k\ge1}\)</span> with <span class="math" data-tex="\(\|x\|_1=\sum_k|x(k)|&lt;\infty\)">\(\|x\|_1=\sum_k|x(k)|&lt;\infty\)</span>, with the metric <span class="math" data-tex="\(d(x,y)=\|x-y\|_1\)">\(d(x,y)=\|x-y\|_1\)</span>. The proof is given in <a href="the-stopped-walk-and-the-cotype-inequality.html">The stopped walk and the cotype inequality</a> (Theorem 3.1 there); it uses the tools of <a href="cuts-the-cubic-map-and-a-quartic-potential.html">Cuts, the cubic map and a quartic potential</a> and Proposition 4.3 below. The proof uses only that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is stationary for <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="3-hilbert-space">3. Hilbert space</h2>
+<p>In a Hilbert space the new points can be taken as the Cesàro averages of the old points along the chain:
+<span class="math math-display" data-tex="\[
+y_i=\sum_j(M_t)_{ij}\,x_j .
+\]">\[
+y_i=\sum_j(M_t)_{ij}\,x_j .
+\]</span>
+This section proves that claim. It is an illustration of the definition; the proof for <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> does not use it, and the points <span class="math" data-tex="\(y_i\)">\(y_i\)</span> for <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> are not averages of this kind.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be a real inner product space, <span class="math" data-tex="\(P\)">\(P\)</span> a stochastic matrix with the stationary vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and <span class="math" data-tex="\(x_1,\dots,x_n\in H\)">\(x_1,\dots,x_n\in H\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E_P(x)&amp;=2\sum_i\pi_i\|x_i\|^2\\
+&amp;\quad-2\sum_{i,j}\pi_iP_{ij}\langle x_i,x_j\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal E_P(x)&amp;=2\sum_i\pi_i\|x_i\|^2\\
+&amp;\quad-2\sum_{i,j}\pi_iP_{ij}\langle x_i,x_j\rangle .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Expand <span class="math" data-tex="\(\|x_i-x_j\|^2=\|x_i\|^2+\|x_j\|^2-2\langle x_i,x_j\rangle\)">\(\|x_i-x_j\|^2=\|x_i\|^2+\|x_j\|^2-2\langle x_i,x_j\rangle\)</span>. The first term gives <span class="math" data-tex="\(\sum_i\pi_i\|x_i\|^2\)">\(\sum_i\pi_i\|x_i\|^2\)</span> because the rows of <span class="math" data-tex="\(P\)">\(P\)</span> have the sum <span class="math" data-tex="\(1\)">\(1\)</span>; the second gives <span class="math" data-tex="\(\sum_j\pi_j\|x_j\|^2\)">\(\sum_j\pi_j\|x_j\|^2\)</span> because <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is stationary. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be reversible for <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and let <span class="math" data-tex="\(\pi_i&gt;0\)">\(\pi_i&gt;0\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>. On <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> use the inner product <span class="math" data-tex="\(\langle f,g\rangle_\pi=\sum_i\pi_if_ig_i\)">\(\langle f,g\rangle_\pi=\sum_i\pi_if_ig_i\)</span>. Then <span class="math" data-tex="\(\langle Af,g\rangle_\pi=\langle f,Ag\rangle_\pi\)">\(\langle Af,g\rangle_\pi=\langle f,Ag\rangle_\pi\)</span>, and <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> has a basis <span class="math" data-tex="\(\varphi_1,\dots,\varphi_n\)">\(\varphi_1,\dots,\varphi_n\)</span> of eigenvectors of <span class="math" data-tex="\(A\)">\(A\)</span> that is orthonormal for this inner product, with real eigenvalues <span class="math" data-tex="\(\lambda_1,\dots,\lambda_n\in[-1,1]\)">\(\lambda_1,\dots,\lambda_n\in[-1,1]\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\langle Af,g\rangle_\pi=\sum_{i,j}\pi_ia_{ij}f_jg_i\)">\(\langle Af,g\rangle_\pi=\sum_{i,j}\pi_ia_{ij}f_jg_i\)</span>, and by reversibility this is <span class="math" data-tex="\(\sum_{i,j}\pi_ja_{ji}f_jg_i=\langle f,Ag\rangle_\pi\)">\(\sum_{i,j}\pi_ja_{ji}f_jg_i=\langle f,Ag\rangle_\pi\)</span>. A linear map of a finite-dimensional real inner product space that is self-adjoint has an orthonormal basis of eigenvectors with real eigenvalues (spectral theorem; in the coordinates <span class="math" data-tex="\(\sqrt{\pi_i}\,f_i\)">\(\sqrt{\pi_i}\,f_i\)</span> the map has the symmetric matrix <span class="math" data-tex="\(\sqrt{\pi_i}\,a_{ij}/\sqrt{\pi_j}\)">\(\sqrt{\pi_i}\,a_{ij}/\sqrt{\pi_j}\)</span>). If <span class="math" data-tex="\(A\varphi=\lambda\varphi\)">\(A\varphi=\lambda\varphi\)</span> with <span class="math" data-tex="\(\varphi\ne0\)">\(\varphi\ne0\)</span>, choose <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(|\varphi_i|\)">\(|\varphi_i|\)</span> largest; then <span class="math" data-tex="\(|\lambda|\,|\varphi_i|=|\sum_ja_{ij}\varphi_j|\le|\varphi_i|\)">\(|\lambda|\,|\varphi_i|=|\sum_ja_{ij}\varphi_j|\le|\varphi_i|\)</span>, so <span class="math" data-tex="\(|\lambda|\le1\)">\(|\lambda|\le1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.3.</strong> Let <span class="math" data-tex="\(-1\le\lambda\le1\)">\(-1\le\lambda\le1\)</span>, <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> and <span class="math" data-tex="\(c=\frac1t\sum_{s=1}^t\lambda^s\)">\(c=\frac1t\sum_{s=1}^t\lambda^s\)</span>. Then:</p>
+<ol>
+<li><span class="math" data-tex="\(|c|\le1\)">\(|c|\le1\)</span>, and <span class="math" data-tex="\(c\le0\)">\(c\le0\)</span> if <span class="math" data-tex="\(\lambda&lt;0\)">\(\lambda&lt;0\)</span>;</li>
+<li><span class="math" data-tex="\(t(1-\lambda)\,c=\lambda(1-\lambda^t)\)">\(t(1-\lambda)\,c=\lambda(1-\lambda^t)\)</span>;</li>
+<li><span class="math" data-tex="\((1-c)^2+2t(1-\lambda)\,c^2\le10\,(1-c)\)">\((1-c)^2+2t(1-\lambda)\,c^2\le10\,(1-c)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> <em>Part 1.</em> Each <span class="math" data-tex="\(|\lambda^s|\le1\)">\(|\lambda^s|\le1\)</span>. Let <span class="math" data-tex="\(\lambda&lt;0\)">\(\lambda&lt;0\)</span>. The terms can be grouped in pairs <span class="math" data-tex="\(\lambda^{2k-1}+\lambda^{2k}=\lambda^{2k-1}(1+\lambda)\le0\)">\(\lambda^{2k-1}+\lambda^{2k}=\lambda^{2k-1}(1+\lambda)\le0\)</span>; if <span class="math" data-tex="\(t\)">\(t\)</span> is odd, the term <span class="math" data-tex="\(\lambda^t\le0\)">\(\lambda^t\le0\)</span> remains.</p>
+<p><em>Part 2.</em> <span class="math" data-tex="\((1-\lambda)\sum_{s=1}^t\lambda^s=\lambda-\lambda^{t+1}\)">\((1-\lambda)\sum_{s=1}^t\lambda^s=\lambda-\lambda^{t+1}\)</span>.</p>
+<p><em>Part 3.</em> By part 1, <span class="math" data-tex="\(0\le1-c\le2\)">\(0\le1-c\le2\)</span>, so <span class="math" data-tex="\((1-c)^2\le2(1-c)\)">\((1-c)^2\le2(1-c)\)</span>. By part 2,
+<span class="math math-display" data-tex="\[
+t(1-\lambda)\,c^2=\lambda\,c\,(1-\lambda^t) .
+\]">\[
+t(1-\lambda)\,c^2=\lambda\,c\,(1-\lambda^t) .
+\]</span>
+<em>Case <span class="math" data-tex="\(\lambda\ge0\)">\(\lambda\ge0\)</span>.</em> Then <span class="math" data-tex="\(0\le c\le1\)">\(0\le c\le1\)</span>, so the right side is at most <span class="math" data-tex="\(1-\lambda^t\)">\(1-\lambda^t\)</span>. Put <span class="math" data-tex="\(m=\lceil t/2\rceil\)">\(m=\lceil t/2\rceil\)</span>. There are <span class="math" data-tex="\(t-m+1\ge t/2\)">\(t-m+1\ge t/2\)</span> indices <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(m\le s\le t\)">\(m\le s\le t\)</span>, and for each of them <span class="math" data-tex="\(1-\lambda^s\ge1-\lambda^m\)">\(1-\lambda^s\ge1-\lambda^m\)</span>. All terms <span class="math" data-tex="\(1-\lambda^s\)">\(1-\lambda^s\)</span> are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>, so
+<span class="math math-display" data-tex="\[
+1-c=\frac1t\sum_{s=1}^t(1-\lambda^s)\ge\frac12\,(1-\lambda^m) .
+\]">\[
+1-c=\frac1t\sum_{s=1}^t(1-\lambda^s)\ge\frac12\,(1-\lambda^m) .
+\]</span>
+Because <span class="math" data-tex="\(2m\ge t\)">\(2m\ge t\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1-\lambda^t&amp;\le1-\lambda^{2m}\\
+&amp;=(1-\lambda^m)(1+\lambda^m)\\
+&amp;\le2\,(1-\lambda^m)\le4\,(1-c) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+1-\lambda^t&amp;\le1-\lambda^{2m}\\
+&amp;=(1-\lambda^m)(1+\lambda^m)\\
+&amp;\le2\,(1-\lambda^m)\le4\,(1-c) .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(2t(1-\lambda)c^2\le8(1-c)\)">\(2t(1-\lambda)c^2\le8(1-c)\)</span>.</p>
+<p><em>Case <span class="math" data-tex="\(\lambda&lt;0\)">\(\lambda&lt;0\)</span>.</em> Then <span class="math" data-tex="\(c\le0\)">\(c\le0\)</span>, so <span class="math" data-tex="\(\lambda c=|\lambda|\,|c|\le1\)">\(\lambda c=|\lambda|\,|c|\le1\)</span>, and <span class="math" data-tex="\(0\le1-\lambda^t\le2\)">\(0\le1-\lambda^t\le2\)</span>. So <span class="math" data-tex="\(t(1-\lambda)c^2\le2\le2(1-c)\)">\(t(1-\lambda)c^2\le2\le2(1-c)\)</span>, because <span class="math" data-tex="\(1-c\ge1\)">\(1-c\ge1\)</span>. So <span class="math" data-tex="\(2t(1-\lambda)c^2\le4(1-c)\)">\(2t(1-\lambda)c^2\le4(1-c)\)</span>.</p>
+<p>In both cases the left side of part 3 is at most <span class="math" data-tex="\(2(1-c)+8(1-c)\)">\(2(1-c)+8(1-c)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 3.4.</strong> Every real Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span> has metric Markov cotype two with the constant <span class="math" data-tex="\(\sqrt5\)">\(\sqrt5\)</span>. For <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(x_1,\dots,x_n\in H\)">\(x_1,\dots,x_n\in H\)</span> as in Definition 2.1, the points <span class="math" data-tex="\(y_i=\sum_j(M_t)_{ij}x_j\)">\(y_i=\sum_j(M_t)_{ij}x_j\)</span> satisfy
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_i\pi_i\|x_i-y_i\|^2+t\,\mathcal E_A(y)\\
+&amp;\qquad\le5\,\mathcal E_{M_t}(x) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_i\pi_i\|x_i-y_i\|^2+t\,\mathcal E_A(y)\\
+&amp;\qquad\le5\,\mathcal E_{M_t}(x) .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> <em>Reduction to positive <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</em> Let <span class="math" data-tex="\(S\)">\(S\)</span> be the set of the <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(\pi_i&gt;0\)">\(\pi_i&gt;0\)</span>. For <span class="math" data-tex="\(i\in S\)">\(i\in S\)</span> and <span class="math" data-tex="\(j\notin S\)">\(j\notin S\)</span>, reversibility gives <span class="math" data-tex="\(\pi_ia_{ij}=\pi_ja_{ji}=0\)">\(\pi_ia_{ij}=\pi_ja_{ji}=0\)</span>, so <span class="math" data-tex="\(a_{ij}=0\)">\(a_{ij}=0\)</span>. So the matrix <span class="math" data-tex="\(A_S=(a_{ij})_{i,j\in S}\)">\(A_S=(a_{ij})_{i,j\in S}\)</span> is stochastic and reversible for <span class="math" data-tex="\((\pi_i)_{i\in S}\)">\((\pi_i)_{i\in S}\)</span>, and for <span class="math" data-tex="\(i\in S\)">\(i\in S\)</span> the row <span class="math" data-tex="\(i\)">\(i\)</span> of <span class="math" data-tex="\(A^s\)">\(A^s\)</span> is the row <span class="math" data-tex="\(i\)">\(i\)</span> of <span class="math" data-tex="\(A_S^s\)">\(A_S^s\)</span>, filled with zeros outside <span class="math" data-tex="\(S\)">\(S\)</span>. Every term of the three sums of the inequality has a factor <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span>. So only <span class="math" data-tex="\(i\in S\)">\(i\in S\)</span> contributes, and then only <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span>, and for <span class="math" data-tex="\(i\in S\)">\(i\in S\)</span> the point <span class="math" data-tex="\(y_i\)">\(y_i\)</span> is the average formed with <span class="math" data-tex="\(A_S\)">\(A_S\)</span>. So it suffices to prove the inequality for <span class="math" data-tex="\(A_S\)">\(A_S\)</span>. Assume from here on that all <span class="math" data-tex="\(\pi_i&gt;0\)">\(\pi_i&gt;0\)</span>.</p>
+<p><em>Reduction to real numbers.</em> Choose an orthonormal basis <span class="math" data-tex="\(\epsilon_1,\dots,\epsilon_m\)">\(\epsilon_1,\dots,\epsilon_m\)</span> of the span of <span class="math" data-tex="\(x_1,\dots,x_n\)">\(x_1,\dots,x_n\)</span> and write <span class="math" data-tex="\(x_i=\sum_lf^l_i\epsilon_l\)">\(x_i=\sum_lf^l_i\epsilon_l\)</span>. Then <span class="math" data-tex="\(y_i=\sum_l(M_tf^l)_i\,\epsilon_l\)">\(y_i=\sum_l(M_tf^l)_i\,\epsilon_l\)</span>, and each of the three sums of the inequality is the sum over <span class="math" data-tex="\(l\)">\(l\)</span> of the same sum for the real numbers <span class="math" data-tex="\(f^l_1,\dots,f^l_n\)">\(f^l_1,\dots,f^l_n\)</span> with the new numbers <span class="math" data-tex="\((M_tf^l)_i\)">\((M_tf^l)_i\)</span>. So it suffices to treat <span class="math" data-tex="\(H=\mathbb R\)">\(H=\mathbb R\)</span>.</p>
+<p><em>The case of real numbers.</em> Let <span class="math" data-tex="\(f\in\mathbb R^n\)">\(f\in\mathbb R^n\)</span> and write <span class="math" data-tex="\(f=\sum_kc_k\varphi_k\)">\(f=\sum_kc_k\varphi_k\)</span> with the basis of Lemma 3.2. For <span class="math" data-tex="\(\lambda\in[-1,1]\)">\(\lambda\in[-1,1]\)</span> let <span class="math" data-tex="\(c(\lambda)=\frac1t\sum_{s=1}^t\lambda^s\)">\(c(\lambda)=\frac1t\sum_{s=1}^t\lambda^s\)</span>. Then <span class="math" data-tex="\(M_t\varphi_k=c(\lambda_k)\varphi_k\)">\(M_t\varphi_k=c(\lambda_k)\varphi_k\)</span> and <span class="math" data-tex="\(y=M_tf=\sum_kc_k\,c(\lambda_k)\,\varphi_k\)">\(y=M_tf=\sum_kc_k\,c(\lambda_k)\,\varphi_k\)</span>. The basis is orthonormal for <span class="math" data-tex="\(\langle\cdot,\cdot\rangle_\pi\)">\(\langle\cdot,\cdot\rangle_\pi\)</span>, so
+<span class="math math-display" data-tex="\[
+\sum_i\pi_i(f_i-y_i)^2=\sum_kc_k^2\bigl(1-c(\lambda_k)\bigr)^2 .
+\]">\[
+\sum_i\pi_i(f_i-y_i)^2=\sum_kc_k^2\bigl(1-c(\lambda_k)\bigr)^2 .
+\]</span>
+By Lemma 3.1 for <span class="math" data-tex="\(P=A\)">\(P=A\)</span>, in the form <span class="math" data-tex="\(\mathcal E_A(y)=2\langle y,y\rangle_\pi-2\langle Ay,y\rangle_\pi\)">\(\mathcal E_A(y)=2\langle y,y\rangle_\pi-2\langle Ay,y\rangle_\pi\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal E_A(y)=2\sum_kc_k^2\,c(\lambda_k)^2\,(1-\lambda_k) ,
+\]">\[
+\mathcal E_A(y)=2\sum_kc_k^2\,c(\lambda_k)^2\,(1-\lambda_k) ,
+\]</span>
+and by Lemma 3.1 for <span class="math" data-tex="\(P=M_t\)">\(P=M_t\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal E_{M_t}(f)=2\sum_kc_k^2\bigl(1-c(\lambda_k)\bigr) .
+\]">\[
+\mathcal E_{M_t}(f)=2\sum_kc_k^2\bigl(1-c(\lambda_k)\bigr) .
+\]</span>
+By Lemma 3.3, part 3, for every <span class="math" data-tex="\(k\)">\(k\)</span> the number
+<span class="math math-display" data-tex="\[
+\bigl(1-c(\lambda_k)\bigr)^2+2t(1-\lambda_k)\,c(\lambda_k)^2
+\]">\[
+\bigl(1-c(\lambda_k)\bigr)^2+2t(1-\lambda_k)\,c(\lambda_k)^2
+\]</span>
+is at most <span class="math" data-tex="\(10\,(1-c(\lambda_k))\)">\(10\,(1-c(\lambda_k))\)</span>. Multiply by <span class="math" data-tex="\(c_k^2\)">\(c_k^2\)</span> and sum over <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> the situation is different. According to [OpenAI-MC, Section 1], a condition of Ball that prescribes linear averages as the new points fails in <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>; that statement is not used and not proved in this course. The points <span class="math" data-tex="\(y_i\)">\(y_i\)</span> of the proof of Theorem 2.4 are obtained from the points <span class="math" data-tex="\(x_j\)">\(x_j\)</span> by a nonlinear operation, a mean of coordinatewise medians.</p>
+<h2 id="4-two-averages-over-time">4. Two averages over time</h2>
+<p>In this section <span class="math" data-tex="\(A\)">\(A\)</span> is a stochastic matrix with a stationary vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span> (reversibility is not needed), <span class="math" data-tex="\(x_1,\dots,x_n\)">\(x_1,\dots,x_n\)</span> are points of a metric space <span class="math" data-tex="\((X,d)\)">\((X,d)\)</span>, and <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>. Put
+<span class="math math-display" data-tex="\[
+p=\frac1{t+1},\qquad q=1-p=\frac t{t+1} ,
+\]">\[
+p=\frac1{t+1},\qquad q=1-p=\frac t{t+1} ,
+\]</span>
+and let <span class="math" data-tex="\(G_t\)">\(G_t\)</span> be the geometric average with this ratio:
+<span class="math math-display" data-tex="\[
+G_t=p\sum_{s=0}^\infty q^sA^s .
+\]">\[
+G_t=p\sum_{s=0}^\infty q^sA^s .
+\]</span>
+In terms of the walk: let <span class="math" data-tex="\(S\)">\(S\)</span> be a random time, independent of the walk, with <span class="math" data-tex="\(\mathbb P(S=s)=pq^s\)">\(\mathbb P(S=s)=pq^s\)</span> for <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>. Then <span class="math" data-tex="\(\mathcal E_{G_t}(x)\)">\(\mathcal E_{G_t}(x)\)</span> is the mean of <span class="math" data-tex="\(d(x_{X_0},x_{X_S})^2\)">\(d(x_{X_0},x_{X_S})^2\)</span>. The mean of <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(t\)">\(t\)</span> (Lemma 4.2). The time <span class="math" data-tex="\(S\)">\(S\)</span> arises if after every step the walk stops with probability <span class="math" data-tex="\(p\)">\(p\)</span>; this is the form in which it is used in the proof of Theorem 2.4. The result of this section compares the stopped walk with the average over the times <span class="math" data-tex="\(1,\dots,t\)">\(1,\dots,t\)</span> of the definition.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(s)&amp;=\mathcal E_{A^s}(x),\\
+W&amp;=\mathcal E_{M_t}(x)=\frac1t\sum_{s=1}^tD(s) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(s)&amp;=\mathcal E_{A^s}(x),\\
+W&amp;=\mathcal E_{M_t}(x)=\frac1t\sum_{s=1}^tD(s) .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(D(0)=0\)">\(D(0)=0\)</span> and <span class="math" data-tex="\(\mathcal E_{G_t}(x)=\sum_{s\ge0}pq^sD(s)\)">\(\mathcal E_{G_t}(x)=\sum_{s\ge0}pq^sD(s)\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> For all <span class="math" data-tex="\(r,s\ge0\)">\(r,s\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\sqrt{D(r+s)}\le\sqrt{D(r)}+\sqrt{D(s)} .
+\]">\[
+\sqrt{D(r+s)}\le\sqrt{D(r)}+\sqrt{D(s)} .
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(i,j,k\in[n]\)">\(i,j,k\in[n]\)</span> let <span class="math" data-tex="\(\omega_{ijk}=\pi_i(A^r)_{ij}(A^s)_{jk}\)">\(\omega_{ijk}=\pi_i(A^r)_{ij}(A^s)_{jk}\)</span>. These numbers are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>. Summing <span class="math" data-tex="\(\omega_{ijk}\)">\(\omega_{ijk}\)</span> over <span class="math" data-tex="\(j\)">\(j\)</span> gives <span class="math" data-tex="\(\pi_i(A^{r+s})_{ik}\)">\(\pi_i(A^{r+s})_{ik}\)</span>; summing over <span class="math" data-tex="\(k\)">\(k\)</span> gives <span class="math" data-tex="\(\pi_i(A^r)_{ij}\)">\(\pi_i(A^r)_{ij}\)</span>; summing over <span class="math" data-tex="\(i\)">\(i\)</span> gives <span class="math" data-tex="\(\pi_j(A^s)_{jk}\)">\(\pi_j(A^s)_{jk}\)</span>, because <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is stationary for <span class="math" data-tex="\(A^r\)">\(A^r\)</span>. So with <span class="math" data-tex="\(\alpha_{ijk}=d(x_i,x_j)\)">\(\alpha_{ijk}=d(x_i,x_j)\)</span> and <span class="math" data-tex="\(\beta_{ijk}=d(x_j,x_k)\)">\(\beta_{ijk}=d(x_j,x_k)\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum\omega_{ijk}\,d(x_i,x_k)^2&amp;=D(r+s),\\
+\sum\omega_{ijk}\,\alpha_{ijk}^2&amp;=D(r),\\
+\sum\omega_{ijk}\,\beta_{ijk}^2&amp;=D(s).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum\omega_{ijk}\,d(x_i,x_k)^2&amp;=D(r+s),\\
+\sum\omega_{ijk}\,\alpha_{ijk}^2&amp;=D(r),\\
+\sum\omega_{ijk}\,\beta_{ijk}^2&amp;=D(s).
+\end{aligned}
+\]</span>
+By the triangle inequality <span class="math" data-tex="\(d(x_i,x_k)\le\alpha_{ijk}+\beta_{ijk}\)">\(d(x_i,x_k)\le\alpha_{ijk}+\beta_{ijk}\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(r+s)&amp;\le\sum\omega\,(\alpha+\beta)^2\\
+&amp;=D(r)+D(s)+2\sum\omega\,\alpha\beta ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(r+s)&amp;\le\sum\omega\,(\alpha+\beta)^2\\
+&amp;=D(r)+D(s)+2\sum\omega\,\alpha\beta ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\sum\omega\,\alpha\beta\le\sqrt{D(r)D(s)}\)">\(\sum\omega\,\alpha\beta\le\sqrt{D(r)D(s)}\)</span> by the Cauchy–Schwarz inequality. So <span class="math" data-tex="\(D(r+s)\le(\sqrt{D(r)}+\sqrt{D(s)})^2\)">\(D(r+s)\le(\sqrt{D(r)}+\sqrt{D(s)})^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 4.2.</strong> With <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> as above:</p>
+<ol>
+<li><span class="math" data-tex="\(p\sum_{s\ge0}q^s=1\)">\(p\sum_{s\ge0}q^s=1\)</span> and <span class="math" data-tex="\(p\sum_{s\ge0}s\,q^s=t\)">\(p\sum_{s\ge0}s\,q^s=t\)</span>;</li>
+<li><span class="math" data-tex="\(p\sum_{s\ge0}s^2q^s=2t^2+t\)">\(p\sum_{s\ge0}s^2q^s=2t^2+t\)</span>;</li>
+<li><span class="math" data-tex="\(q^t\le\tfrac12\)">\(q^t\le\tfrac12\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(S_0=\sum q^s=1/(1-q)=1/p\)">\(S_0=\sum q^s=1/(1-q)=1/p\)</span>, <span class="math" data-tex="\(S_1=\sum s\,q^s\)">\(S_1=\sum s\,q^s\)</span> and <span class="math" data-tex="\(S_2=\sum s^2q^s\)">\(S_2=\sum s^2q^s\)</span>; the series converge because <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span>. Subtract <span class="math" data-tex="\(q\)">\(q\)</span> times each series from the series; the coefficient of <span class="math" data-tex="\(q^s\)">\(q^s\)</span> becomes <span class="math" data-tex="\(s-(s-1)=1\)">\(s-(s-1)=1\)</span> for <span class="math" data-tex="\(S_1\)">\(S_1\)</span> and <span class="math" data-tex="\(s^2-(s-1)^2=2s-1\)">\(s^2-(s-1)^2=2s-1\)</span> for <span class="math" data-tex="\(S_2\)">\(S_2\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(1-q)S_1&amp;=\sum_{s\ge1}q^s=\frac q{1-q},\\
+(1-q)S_2&amp;=\sum_{s\ge1}(2s-1)\,q^s\\
+&amp;=2S_1-\frac q{1-q} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+(1-q)S_1&amp;=\sum_{s\ge1}q^s=\frac q{1-q},\\
+(1-q)S_2&amp;=\sum_{s\ge1}(2s-1)\,q^s\\
+&amp;=2S_1-\frac q{1-q} .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(S_1=q/p^2\)">\(S_1=q/p^2\)</span> and <span class="math" data-tex="\(S_2=(2q/p^2-q/p)/p=q(1+q)/p^3\)">\(S_2=(2q/p^2-q/p)/p=q(1+q)/p^3\)</span>. With <span class="math" data-tex="\(q/p=t\)">\(q/p=t\)</span> and <span class="math" data-tex="\((1+q)/p=2t+1\)">\((1+q)/p=2t+1\)</span> this gives <span class="math" data-tex="\(pS_1=t\)">\(pS_1=t\)</span> and <span class="math" data-tex="\(pS_2=t(2t+1)\)">\(pS_2=t(2t+1)\)</span>. For part 3, <span class="math" data-tex="\(1/q=1+1/t\)">\(1/q=1+1/t\)</span> and <span class="math" data-tex="\((1+1/t)^t\ge1+t\cdot\frac1t=2\)">\((1+1/t)^t\ge1+t\cdot\frac1t=2\)</span> by Bernoulli's inequality. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 4.3</strong> (geometric against Cesàro). For every stochastic matrix <span class="math" data-tex="\(A\)">\(A\)</span> with a stationary vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, all points <span class="math" data-tex="\(x_1,\dots,x_n\)">\(x_1,\dots,x_n\)</span> of a metric space and every <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal E_{G_t}(x)\le28\,\mathcal E_{M_t}(x) .
+\]">\[
+\mathcal E_{G_t}(x)\le28\,\mathcal E_{M_t}(x) .
+\]</span></p>
+<p><strong>Proof.</strong> <em>Step 1: <span class="math" data-tex="\(D(t)\le4W\)">\(D(t)\le4W\)</span>.</em> For <span class="math" data-tex="\(1\le r\le t\)">\(1\le r\le t\)</span>, Lemma 4.1 and <span class="math" data-tex="\((\alpha+\beta)^2\le2\alpha^2+2\beta^2\)">\((\alpha+\beta)^2\le2\alpha^2+2\beta^2\)</span> give <span class="math" data-tex="\(D(t)\le2D(r)+2D(t-r)\)">\(D(t)\le2D(r)+2D(t-r)\)</span>. Average over <span class="math" data-tex="\(r=1,\dots,t\)">\(r=1,\dots,t\)</span>:
+<span class="math math-display" data-tex="\[
+D(t)\le\frac2t\sum_{r=1}^tD(r)+\frac2t\sum_{r=0}^{t-1}D(r) .
+\]">\[
+D(t)\le\frac2t\sum_{r=1}^tD(r)+\frac2t\sum_{r=0}^{t-1}D(r) .
+\]</span>
+The first term is <span class="math" data-tex="\(2W\)">\(2W\)</span>. In the second, <span class="math" data-tex="\(D(0)=0\)">\(D(0)=0\)</span>, so the sum is <span class="math" data-tex="\(\sum_{r=1}^{t-1}D(r)\le tW\)">\(\sum_{r=1}^{t-1}D(r)\le tW\)</span>. So <span class="math" data-tex="\(D(t)\le4W\)">\(D(t)\le4W\)</span>. The same remark gives
+<span class="math math-display" data-tex="\[
+\sum_{r=0}^{t-1}D(r)\le tW .
+\]">\[
+\sum_{r=0}^{t-1}D(r)\le tW .
+\]</span></p>
+<p><em>Step 2: blocks of length <span class="math" data-tex="\(t\)">\(t\)</span>.</em> Let <span class="math" data-tex="\(s=jt+r\)">\(s=jt+r\)</span> with <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> and <span class="math" data-tex="\(0\le r&lt;t\)">\(0\le r&lt;t\)</span>. Applying Lemma 4.1 repeatedly,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(s)&amp;\le\bigl(j\sqrt{D(t)}+\sqrt{D(r)}\bigr)^2\\
+&amp;\le2j^2D(t)+2D(r) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(s)&amp;\le\bigl(j\sqrt{D(t)}+\sqrt{D(r)}\bigr)^2\\
+&amp;\le2j^2D(t)+2D(r) .
+\end{aligned}
+\]</span></p>
+<p><em>Step 3: the sum.</em> Multiply by <span class="math" data-tex="\(pq^s\)">\(pq^s\)</span> and sum over <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>. All terms are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>, so the order of summation is free. For the first part use <span class="math" data-tex="\(j=\lfloor s/t\rfloor\le s/t\)">\(j=\lfloor s/t\rfloor\le s/t\)</span> and Lemma 4.2:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{s\ge0}pq^s\,j^2&amp;\le\frac1{t^2}\,p\sum_{s\ge0}s^2q^s\\
+&amp;=2+\frac1t\le3 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{s\ge0}pq^s\,j^2&amp;\le\frac1{t^2}\,p\sum_{s\ge0}s^2q^s\\
+&amp;=2+\frac1t\le3 .
+\end{aligned}
+\]</span>
+For the second part collect the <span class="math" data-tex="\(s\)">\(s\)</span> with the same remainder <span class="math" data-tex="\(r\)">\(r\)</span>:
+<span class="math math-display" data-tex="\[
+\sum_{j\ge0}pq^{jt+r}=\frac{pq^r}{1-q^t}\le2p\le\frac2t ,
+\]">\[
+\sum_{j\ge0}pq^{jt+r}=\frac{pq^r}{1-q^t}\le2p\le\frac2t ,
+\]</span>
+because <span class="math" data-tex="\(q^t\le\tfrac12\)">\(q^t\le\tfrac12\)</span> and <span class="math" data-tex="\(q^r\le1\)">\(q^r\le1\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E_{G_t}(x)&amp;=\sum_{s\ge0}pq^sD(s)\\
+&amp;\le2\cdot3\cdot D(t)+2\cdot\frac2t\sum_{r=0}^{t-1}D(r)\\
+&amp;\le24\,W+4\,W .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal E_{G_t}(x)&amp;=\sum_{s\ge0}pq^sD(s)\\
+&amp;\le2\cdot3\cdot D(t)+2\cdot\frac2t\sum_{r=0}^{t-1}D(r)\\
+&amp;\le24\,W+4\,W .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In terms of the walk, <span class="math" data-tex="\(j\)">\(j\)</span> is the number of complete blocks of <span class="math" data-tex="\(t\)">\(t\)</span> steps before the time <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span> is the rest. The second moment of <span class="math" data-tex="\(j\)">\(j\)</span> is at most <span class="math" data-tex="\(3\)">\(3\)</span>, and the rest takes each value <span class="math" data-tex="\(0,\dots,t-1\)">\(0,\dots,t-1\)</span> with a probability of at most <span class="math" data-tex="\(2/t\)">\(2/t\)</span>.</p>
+<p>A comparison in the other direction, with the constant <span class="math" data-tex="\(2e\)">\(2e\)</span>, is Exercise 5.4. So the two averages can replace each other in the definition, at the cost of the constant.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Let <span class="math" data-tex="\((X,d)\)">\((X,d)\)</span> be a metric space with at least two points. Show that <span class="math" data-tex="\(N_2(X)\ge1/\sqrt5\)">\(N_2(X)\ge1/\sqrt5\)</span>. Use the matrix of Example 2.3 with <span class="math" data-tex="\(t=1\)">\(t=1\)</span>.</p>
+<p><strong>5.2.</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be a real Hilbert space, <span class="math" data-tex="\(\pi\)">\(\pi\)</span> a probability vector and let every row of <span class="math" data-tex="\(A\)">\(A\)</span> be equal to <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Show that <span class="math" data-tex="\(A\)">\(A\)</span> is reversible for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, that <span class="math" data-tex="\(M_t=A\)">\(M_t=A\)</span>, and that the points <span class="math" data-tex="\(y_i=m\)">\(y_i=m\)</span> with <span class="math" data-tex="\(m=\sum_j\pi_jx_j\)">\(m=\sum_j\pi_jx_j\)</span> give equality in Definition 2.1 with <span class="math" data-tex="\(C^2=\tfrac12\)">\(C^2=\tfrac12\)</span>.</p>
+<p><strong>5.3.</strong> Show that <span class="math" data-tex="\(D(2s)\le4D(s)\)">\(D(2s)\le4D(s)\)</span> for all <span class="math" data-tex="\(s\)">\(s\)</span>, and give an example in which <span class="math" data-tex="\(D(s)\)">\(D(s)\)</span> is not monotone in <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>5.4.</strong> Show that <span class="math" data-tex="\(\mathcal E_{M_t}(x)\le2e\,\mathcal E_{G_t}(x)\)">\(\mathcal E_{M_t}(x)\le2e\,\mathcal E_{G_t}(x)\)</span> in the setting of Section 4.</p>
+<p><strong>5.5.</strong> Show that the matrix <span class="math" data-tex="\(A\)">\(A\)</span> of the example after the first definition (the cyclic shift of three states) has eigenvalues that are not real. Which step of the proof of Lemma 3.2 fails?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> Let <span class="math" data-tex="\(x_1\ne x_2\)">\(x_1\ne x_2\)</span>, <span class="math" data-tex="\(D=d(x_1,x_2)\)">\(D=d(x_1,x_2)\)</span>, and take the matrix of Example 2.3 with <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. Then <span class="math" data-tex="\(M_1=A\)">\(M_1=A\)</span> and the right side is <span class="math" data-tex="\(C^2D^2\)">\(C^2D^2\)</span>. For any <span class="math" data-tex="\(y_1,y_2\)">\(y_1,y_2\)</span> put <span class="math" data-tex="\(\alpha=d(x_1,y_1)\)">\(\alpha=d(x_1,y_1)\)</span>, <span class="math" data-tex="\(\beta=d(x_2,y_2)\)">\(\beta=d(x_2,y_2)\)</span>, <span class="math" data-tex="\(\gamma=d(y_1,y_2)\)">\(\gamma=d(y_1,y_2)\)</span>. The left side is <span class="math" data-tex="\(\tfrac12\alpha^2+\tfrac12\beta^2+\gamma^2\)">\(\tfrac12\alpha^2+\tfrac12\beta^2+\gamma^2\)</span>, and <span class="math" data-tex="\(D\le\alpha+\gamma+\beta\)">\(D\le\alpha+\gamma+\beta\)</span> by the triangle inequality. By the Cauchy–Schwarz inequality for the vectors <span class="math" data-tex="\((\sqrt2,\sqrt2,1)\)">\((\sqrt2,\sqrt2,1)\)</span> and <span class="math" data-tex="\((\alpha/\sqrt2,\ \beta/\sqrt2,\ \gamma)\)">\((\alpha/\sqrt2,\ \beta/\sqrt2,\ \gamma)\)</span>,
+<span class="math math-display" data-tex="\[
+(\alpha+\beta+\gamma)^2\le5\,\Bigl(\frac{\alpha^2}2+\frac{\beta^2}2+\gamma^2\Bigr) .
+\]">\[
+(\alpha+\beta+\gamma)^2\le5\,\Bigl(\frac{\alpha^2}2+\frac{\beta^2}2+\gamma^2\Bigr) .
+\]</span>
+So the left side is at least <span class="math" data-tex="\(D^2/5\)">\(D^2/5\)</span> for every choice of <span class="math" data-tex="\(y_1,y_2\)">\(y_1,y_2\)</span>, and <span class="math" data-tex="\(C^2\ge\tfrac15\)">\(C^2\ge\tfrac15\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(\pi_ia_{ij}=\pi_i\pi_j=\pi_ja_{ji}\)">\(\pi_ia_{ij}=\pi_i\pi_j=\pi_ja_{ji}\)</span>. <span class="math" data-tex="\(A^2=A\)">\(A^2=A\)</span> because <span class="math" data-tex="\(\sum_k\pi_k\pi_j=\pi_j\)">\(\sum_k\pi_k\pi_j=\pi_j\)</span>; so all powers are <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(M_t=A\)">\(M_t=A\)</span>. By Lemma 3.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E_A(x)&amp;=2\sum_i\pi_i\|x_i\|^2-2\|m\|^2\\
+&amp;=2\sum_i\pi_i\|x_i-m\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal E_A(x)&amp;=2\sum_i\pi_i\|x_i\|^2-2\|m\|^2\\
+&amp;=2\sum_i\pi_i\|x_i-m\|^2 .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(y_i=m\)">\(y_i=m\)</span> the left side of Definition 2.1 is <span class="math" data-tex="\(\sum_i\pi_i\|x_i-m\|^2+0\)">\(\sum_i\pi_i\|x_i-m\|^2+0\)</span>, which is <span class="math" data-tex="\(\tfrac12\mathcal E_{M_t}(x)\)">\(\tfrac12\mathcal E_{M_t}(x)\)</span>.</p>
+<p><strong>5.3.</strong> Lemma 4.1 with <span class="math" data-tex="\(r=s\)">\(r=s\)</span> gives <span class="math" data-tex="\(\sqrt{D(2s)}\le2\sqrt{D(s)}\)">\(\sqrt{D(2s)}\le2\sqrt{D(s)}\)</span>. In Example 2.3 with <span class="math" data-tex="\(x_1\ne x_2\)">\(x_1\ne x_2\)</span>: <span class="math" data-tex="\(D(s)=d(x_1,x_2)^2\)">\(D(s)=d(x_1,x_2)^2\)</span> for odd <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(D(s)=0\)">\(D(s)=0\)</span> for even <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>5.4.</strong> All entries of the matrices <span class="math" data-tex="\(A^s\)">\(A^s\)</span> are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>, so entry by entry
+<span class="math math-display" data-tex="\[
+G_t\ge p\sum_{s=1}^tq^sA^s\ge p\,q^t\,t\,M_t .
+\]">\[
+G_t\ge p\sum_{s=1}^tq^sA^s\ge p\,q^t\,t\,M_t .
+\]</span>
+Here <span class="math" data-tex="\(pt=t/(t+1)\ge\tfrac12\)">\(pt=t/(t+1)\ge\tfrac12\)</span>, and <span class="math" data-tex="\(q^t=(1+1/t)^{-t}\ge e^{-1}\)">\(q^t=(1+1/t)^{-t}\ge e^{-1}\)</span> because <span class="math" data-tex="\(1+u\le e^u\)">\(1+u\le e^u\)</span>. So <span class="math" data-tex="\(G_t\ge\frac1{2e}M_t\)">\(G_t\ge\frac1{2e}M_t\)</span> entry by entry, and the energy is a sum with nonnegative coefficients of the entries.</p>
+<p><strong>5.5.</strong> <span class="math" data-tex="\(A^3=I\)">\(A^3=I\)</span> and the characteristic polynomial of <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(\lambda^3-1\)">\(\lambda^3-1\)</span>, with the roots <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-\tfrac12\pm\tfrac{\sqrt3}2\,i\)">\(-\tfrac12\pm\tfrac{\sqrt3}2\,i\)</span>. In the proof of Lemma 3.2 the first step fails: <span class="math" data-tex="\(\langle Af,g\rangle_\pi=\langle f,Ag\rangle_\pi\)">\(\langle Af,g\rangle_\pi=\langle f,Ag\rangle_\pi\)</span> needs <span class="math" data-tex="\(\pi_ia_{ij}=\pi_ja_{ji}\)">\(\pi_ia_{ij}=\pi_ja_{ji}\)</span>, which is false for this matrix.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-MC] OpenAI, <em>Metric Markov Cotype Two of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span></em>, OpenAI Math Release preprint, 5 October 2026, Sections 1 and 4. https://github.com/openai/math/tree/main/preprints/Metric-Markov-Cotype-Two-of-l1-October-5-2026</li>
+<li>[MN] M. Mendel and A. Naor, <em>Spectral calculus and Lipschitz extension for barycentric metric spaces</em>, arXiv:1301.3963, version 2, Definition 1.2, Theorem 1.14 and Question 1.15. https://arxiv.org/abs/1301.3963</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

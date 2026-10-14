@@ -1,0 +1,328 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cuts, the cubic map and a quartic potential</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Metric Markov cotype two of ℓ₁)</a><a href="metric-markov-cotype-two.html">Previous lesson</a><a href="the-stopped-walk-and-the-cotype-inequality.html">Next lesson</a><a href="src/cuts-the-cubic-map-and-a-quartic-potential.md">Editable source</a></nav><main><article><h1 id="cuts-the-cubic-map-and-a-quartic-potential">Cuts, the cubic map and a quartic potential</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson prepares the two tools of the proof that <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> has metric Markov cotype two. The first tool replaces finitely many points of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> by vertices of a cube <span class="math" data-tex="\([0,1]^{\mathcal B}\)">\([0,1]^{\mathcal B}\)</span> with weighted coordinates, in such a way that the distance in <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> becomes the <em>square</em> of a Hilbert distance, and gives a map from the whole cube back into <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> that does not increase distances. The second tool is an inequality for the map <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> of the cube that applies the cubic <span class="math" data-tex="\(\phi(r)=3r^2-2r^3\)">\(\phi(r)=3r^2-2r^3\)</span> to every coordinate. The squared change of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> between two points of the cube is bounded by the change of the fourth power of the Hilbert distance to a vertex, up to a term that is linear in the displacement. For a random displacement with mean zero the linear term disappears.</p>
+<ul>
+<li>The cut representation of finitely many points of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> (Proposition 1.2).</li>
+<li>The cube, its two norms and the cubic map (Section 2).</li>
+<li>The flat inequality with the constant <span class="math" data-tex="\(108\)">\(108\)</span> (Proposition 3.3).</li>
+<li>Displacements with mean zero (Corollary 4.1), and why the identity map would not do (Example 4.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-MC, Sections 2 and 3]. It uses only finite sums, absolutely convergent series and the Cauchy–Schwarz inequality. The definitions of <a href="metric-markov-cotype-two.html">Metric Markov cotype two</a> are not needed here.</p>
+<h2 id="1-cuts">1. Cuts</h2>
+<p>The space <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> consists of the real sequences <span class="math" data-tex="\(x=(x(k))_{k\ge1}\)">\(x=(x(k))_{k\ge1}\)</span> with <span class="math" data-tex="\(\|x\|_1=\sum_k|x(k)|&lt;\infty\)">\(\|x\|_1=\sum_k|x(k)|&lt;\infty\)</span>. Let <span class="math" data-tex="\(x_1,\dots,x_n\in\ell_1\)">\(x_1,\dots,x_n\in\ell_1\)</span> with <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. A <em>cut</em> is a subset <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\([n]=\{1,\dots,n\}\)">\([n]=\{1,\dots,n\}\)</span> that is neither empty nor all of <span class="math" data-tex="\([n]\)">\([n]\)</span>. Write <span class="math" data-tex="\(r_+=\max\{r,0\}\)">\(r_+=\max\{r,0\}\)</span>. For a cut <span class="math" data-tex="\(B\)">\(B\)</span> and a coordinate <span class="math" data-tex="\(k\)">\(k\)</span> put
+<span class="math math-display" data-tex="\[
+b_B(k)=\Bigl(\min_{i\in B}x_i(k)-\max_{i\notin B}x_i(k)\Bigr)_+ ,
+\]">\[
+b_B(k)=\Bigl(\min_{i\in B}x_i(k)-\max_{i\notin B}x_i(k)\Bigr)_+ ,
+\]</span>
+and put <span class="math" data-tex="\(v(k)=\min_ix_i(k)\)">\(v(k)=\min_ix_i(k)\)</span>. So <span class="math" data-tex="\(b_B(k)&gt;0\)">\(b_B(k)&gt;0\)</span> exactly if in the coordinate <span class="math" data-tex="\(k\)">\(k\)</span> all points with index in <span class="math" data-tex="\(B\)">\(B\)</span> lie strictly above all other points, and then <span class="math" data-tex="\(b_B(k)\)">\(b_B(k)\)</span> is the gap between the two groups.</p>
+<p>The sequences <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(b_B\)">\(b_B\)</span> lie in <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>: <span class="math" data-tex="\(|v(k)|\le\sum_i|x_i(k)|\)">\(|v(k)|\le\sum_i|x_i(k)|\)</span>, and for <span class="math" data-tex="\(i_0\in B\)">\(i_0\in B\)</span> and <span class="math" data-tex="\(j_0\notin B\)">\(j_0\notin B\)</span>,
+<span class="math math-display" data-tex="\[
+0\le b_B(k)\le|x_{i_0}(k)|+|x_{j_0}(k)| .
+\]">\[
+0\le b_B(k)\le|x_{i_0}(k)|+|x_{j_0}(k)| .
+\]</span>
+The <em>weight</em> of a cut is <span class="math" data-tex="\(w_B=\|b_B\|_1\)">\(w_B=\|b_B\|_1\)</span>. Let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be the set of the cuts with <span class="math" data-tex="\(w_B&gt;0\)">\(w_B&gt;0\)</span>. It has at most <span class="math" data-tex="\(2^n-2\)">\(2^n-2\)</span> elements.</p>
+<p><strong>Lemma 1.1</strong> (one coordinate). Fix <span class="math" data-tex="\(k\)">\(k\)</span>, and let <span class="math" data-tex="\(\alpha_1&lt;\alpha_2&lt;\dots&lt;\alpha_m\)">\(\alpha_1&lt;\alpha_2&lt;\dots&lt;\alpha_m\)</span> be the different values among <span class="math" data-tex="\(x_1(k),\dots,x_n(k)\)">\(x_1(k),\dots,x_n(k)\)</span>. For <span class="math" data-tex="\(1\le r&lt;m\)">\(1\le r&lt;m\)</span> let
+<span class="math math-display" data-tex="\[
+B_r=\{\,i:\ x_i(k)\ge\alpha_{r+1}\,\} .
+\]">\[
+B_r=\{\,i:\ x_i(k)\ge\alpha_{r+1}\,\} .
+\]</span>
+Then <span class="math" data-tex="\(B_r\)">\(B_r\)</span> is a cut with <span class="math" data-tex="\(b_{B_r}(k)=\alpha_{r+1}-\alpha_r\)">\(b_{B_r}(k)=\alpha_{r+1}-\alpha_r\)</span>, and <span class="math" data-tex="\(b_B(k)=0\)">\(b_B(k)=0\)</span> for every other cut <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> The set <span class="math" data-tex="\(B_r\)">\(B_r\)</span> contains an index with the value <span class="math" data-tex="\(\alpha_m\)">\(\alpha_m\)</span> and no index with the value <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span>, so it is a cut. The smallest value on <span class="math" data-tex="\(B_r\)">\(B_r\)</span> is <span class="math" data-tex="\(\alpha_{r+1}\)">\(\alpha_{r+1}\)</span> and the largest value outside is <span class="math" data-tex="\(\alpha_r\)">\(\alpha_r\)</span>. Conversely let <span class="math" data-tex="\(b_B(k)&gt;0\)">\(b_B(k)&gt;0\)</span>, and let <span class="math" data-tex="\(\alpha_{r+1}\)">\(\alpha_{r+1}\)</span> be the smallest value on <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(\alpha&#x27;\)">\(\alpha&#x27;\)</span> the largest value outside <span class="math" data-tex="\(B\)">\(B\)</span>; then <span class="math" data-tex="\(\alpha&#x27;&lt;\alpha_{r+1}\)">\(\alpha&#x27;&lt;\alpha_{r+1}\)</span>. Every index with a value <span class="math" data-tex="\(\ge\alpha_{r+1}\)">\(\ge\alpha_{r+1}\)</span> lies in <span class="math" data-tex="\(B\)">\(B\)</span>, because its value exceeds <span class="math" data-tex="\(\alpha&#x27;\)">\(\alpha&#x27;\)</span>; every index in <span class="math" data-tex="\(B\)">\(B\)</span> has a value <span class="math" data-tex="\(\ge\alpha_{r+1}\)">\(\ge\alpha_{r+1}\)</span>. So <span class="math" data-tex="\(B=\{i:x_i(k)\ge\alpha_{r+1}\}\)">\(B=\{i:x_i(k)\ge\alpha_{r+1}\}\)</span>, and <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> because <span class="math" data-tex="\(B\)">\(B\)</span> is not all of <span class="math" data-tex="\([n]\)">\([n]\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So in one coordinate the cuts that matter are nested: <span class="math" data-tex="\(B_1\supset B_2\supset\dots\supset B_{m-1}\)">\(B_1\supset B_2\supset\dots\supset B_{m-1}\)</span>. The index <span class="math" data-tex="\(i\)">\(i\)</span> lies in <span class="math" data-tex="\(B_r\)">\(B_r\)</span> exactly if <span class="math" data-tex="\(\alpha_{r+1}\le x_i(k)\)">\(\alpha_{r+1}\le x_i(k)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(z_i\in\{0,1\}^{\mathcal B}\)">\(z_i\in\{0,1\}^{\mathcal B}\)</span> be the vector that records which cuts contain <span class="math" data-tex="\(i\)">\(i\)</span>:
+<span class="math math-display" data-tex="\[
+z_i(B)=\begin{cases}1&amp;\text{if }i\in B,\\0&amp;\text{if }i\notin B.\end{cases}
+\]">\[
+z_i(B)=\begin{cases}1&amp;\text{if }i\in B,\\0&amp;\text{if }i\notin B.\end{cases}
+\]</span>
+Define the map <span class="math" data-tex="\(T\)">\(T\)</span> from <span class="math" data-tex="\(\mathbb R^{\mathcal B}\)">\(\mathbb R^{\mathcal B}\)</span> to <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> by
+<span class="math math-display" data-tex="\[
+T(u)=v+\sum_{B\in\mathcal B}u_B\,b_B .
+\]">\[
+T(u)=v+\sum_{B\in\mathcal B}u_B\,b_B .
+\]</span>
+It is affine, and its values lie in <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> because the sum is finite.</p>
+<p><strong>Proposition 1.2</strong> (cut representation). Let <span class="math" data-tex="\(x_1,\dots,x_n\in\ell_1\)">\(x_1,\dots,x_n\in\ell_1\)</span>. If the points are not all equal, then <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is not empty, and for all <span class="math" data-tex="\(i,j\in[n]\)">\(i,j\in[n]\)</span> and all <span class="math" data-tex="\(u,u&#x27;\in\mathbb R^{\mathcal B}\)">\(u,u&#x27;\in\mathbb R^{\mathcal B}\)</span>, with sums over <span class="math" data-tex="\(B\in\mathcal B\)">\(B\in\mathcal B\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T(z_i)=x_i,\\
+\|x_i-x_j\|_1=\sum_Bw_B\,|z_i(B)-z_j(B)|,\\
+\|T(u)-T(u&#x27;)\|_1\le\sum_Bw_B\,|u_B-u&#x27;_B| .
+\end{gathered}
+\]">\[
+\begin{gathered}
+T(z_i)=x_i,\\
+\|x_i-x_j\|_1=\sum_Bw_B\,|z_i(B)-z_j(B)|,\\
+\|T(u)-T(u&#x27;)\|_1\le\sum_Bw_B\,|u_B-u&#x27;_B| .
+\end{gathered}
+\]</span>
+The second equation also holds with <span class="math" data-tex="\((z_i(B)-z_j(B))^2\)">\((z_i(B)-z_j(B))^2\)</span> in place of the absolute value. The three statements are called parts 1, 2 and 3.</p>
+<p><strong>Proof.</strong> Cuts outside <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> have <span class="math" data-tex="\(b_B=0\)">\(b_B=0\)</span>, so in every coordinate sums over <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> of terms with a factor <span class="math" data-tex="\(b_B(k)\)">\(b_B(k)\)</span> can be taken over all cuts. Fix <span class="math" data-tex="\(k\)">\(k\)</span> and use the notation of Lemma 1.1.</p>
+<p><em>Part 1.</em> By Lemma 1.1,
+<span class="math math-display" data-tex="\[
+T(z_i)(k)=\alpha_1+\sum_{r:\ i\in B_r}(\alpha_{r+1}-\alpha_r) .
+\]">\[
+T(z_i)(k)=\alpha_1+\sum_{r:\ i\in B_r}(\alpha_{r+1}-\alpha_r) .
+\]</span>
+The index <span class="math" data-tex="\(i\)">\(i\)</span> lies in <span class="math" data-tex="\(B_r\)">\(B_r\)</span> exactly if <span class="math" data-tex="\(\alpha_{r+1}\le x_i(k)\)">\(\alpha_{r+1}\le x_i(k)\)</span>. So the sum runs over the gaps below <span class="math" data-tex="\(x_i(k)\)">\(x_i(k)\)</span>, and their total is <span class="math" data-tex="\(x_i(k)-\alpha_1\)">\(x_i(k)-\alpha_1\)</span>.</p>
+<p><em>Part 2.</em> Let <span class="math" data-tex="\(x_i(k)\ge x_j(k)\)">\(x_i(k)\ge x_j(k)\)</span>. No cut <span class="math" data-tex="\(B_r\)">\(B_r\)</span> contains <span class="math" data-tex="\(j\)">\(j\)</span> without containing <span class="math" data-tex="\(i\)">\(i\)</span>, and <span class="math" data-tex="\(B_r\)">\(B_r\)</span> contains <span class="math" data-tex="\(i\)">\(i\)</span> without <span class="math" data-tex="\(j\)">\(j\)</span> exactly if <span class="math" data-tex="\(x_j(k)&lt;\alpha_{r+1}\le x_i(k)\)">\(x_j(k)&lt;\alpha_{r+1}\le x_i(k)\)</span>. The gaps of these <span class="math" data-tex="\(r\)">\(r\)</span> add up to <span class="math" data-tex="\(x_i(k)-x_j(k)\)">\(x_i(k)-x_j(k)\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|x_i(k)-x_j(k)|\\
+&amp;\qquad=\sum_B|z_i(B)-z_j(B)|\,b_B(k) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|x_i(k)-x_j(k)|\\
+&amp;\qquad=\sum_B|z_i(B)-z_j(B)|\,b_B(k) ,
+\end{aligned}
+\]</span>
+and the same holds if <span class="math" data-tex="\(x_i(k)&lt;x_j(k)\)">\(x_i(k)&lt;x_j(k)\)</span>, by symmetry. Sum over <span class="math" data-tex="\(k\)">\(k\)</span>; the sum over the finitely many <span class="math" data-tex="\(B\)">\(B\)</span> can be exchanged with the sum over <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(\sum_kb_B(k)=w_B\)">\(\sum_kb_B(k)=w_B\)</span>. The numbers <span class="math" data-tex="\(z_i(B)-z_j(B)\)">\(z_i(B)-z_j(B)\)</span> are <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, so their absolute values are their squares.</p>
+<p>If <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> were empty, part 2 would give <span class="math" data-tex="\(\|x_i-x_j\|_1=0\)">\(\|x_i-x_j\|_1=0\)</span> for all <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. So <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is not empty if the points are not all equal.</p>
+<p><em>Part 3.</em> <span class="math" data-tex="\(T(u)-T(u&#x27;)=\sum_B(u_B-u&#x27;_B)\,b_B\)">\(T(u)-T(u&#x27;)=\sum_B(u_B-u&#x27;_B)\,b_B\)</span>, and <span class="math" data-tex="\(\|b_B\|_1=w_B\)">\(\|b_B\|_1=w_B\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Example 1.3.</strong> Let <span class="math" data-tex="\(x_1=(0,0)\)">\(x_1=(0,0)\)</span>, <span class="math" data-tex="\(x_2=(1,0)\)">\(x_2=(1,0)\)</span>, <span class="math" data-tex="\(x_3=(1,2)\)">\(x_3=(1,2)\)</span> (all further coordinates <span class="math" data-tex="\(0\)">\(0\)</span>). In the first coordinate the values are <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>, with the cut <span class="math" data-tex="\(\{2,3\}\)">\(\{2,3\}\)</span> and the gap <span class="math" data-tex="\(1\)">\(1\)</span>. In the second coordinate the values are <span class="math" data-tex="\(0&lt;2\)">\(0&lt;2\)</span>, with the cut <span class="math" data-tex="\(\{3\}\)">\(\{3\}\)</span> and the gap <span class="math" data-tex="\(2\)">\(2\)</span>. So <span class="math" data-tex="\(\mathcal B=\{\{2,3\},\{3\}\}\)">\(\mathcal B=\{\{2,3\},\{3\}\}\)</span> with the weights <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, <span class="math" data-tex="\(b_{\{2,3\}}=(1,0)\)">\(b_{\{2,3\}}=(1,0)\)</span>, <span class="math" data-tex="\(b_{\{3\}}=(0,2)\)">\(b_{\{3\}}=(0,2)\)</span>, and
+<span class="math math-display" data-tex="\[
+z_1=(0,0),\quad z_2=(1,0),\quad z_3=(1,1) .
+\]">\[
+z_1=(0,0),\quad z_2=(1,0),\quad z_3=(1,1) .
+\]</span>
+For instance <span class="math" data-tex="\(\|x_1-x_3\|_1=3=1\cdot1+2\cdot1\)">\(\|x_1-x_3\|_1=3=1\cdot1+2\cdot1\)</span>.</p>
+<p><strong>Example 1.4</strong> (the map <span class="math" data-tex="\(T\)">\(T\)</span> leaves the span of the points). Let <span class="math" data-tex="\(x_1,x_2,x_3\)">\(x_1,x_2,x_3\)</span> be the first three unit vectors of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>. In the coordinate <span class="math" data-tex="\(k\le3\)">\(k\le3\)</span> the values are <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>, with the cut <span class="math" data-tex="\(\{k\}\)">\(\{k\}\)</span> and the gap <span class="math" data-tex="\(1\)">\(1\)</span>. So <span class="math" data-tex="\(\mathcal B=\{\{1\},\{2\},\{3\}\}\)">\(\mathcal B=\{\{1\},\{2\},\{3\}\}\)</span> with weights <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, and <span class="math" data-tex="\(T(u)=(u_1,u_2,u_3,0,0,\dots)\)">\(T(u)=(u_1,u_2,u_3,0,0,\dots)\)</span>. The points <span class="math" data-tex="\(x_i\)">\(x_i\)</span> lie in the plane of the vectors with coordinate sum <span class="math" data-tex="\(1\)">\(1\)</span>, but <span class="math" data-tex="\(T\)">\(T\)</span> maps the cube onto the cube <span class="math" data-tex="\([0,1]^3\)">\([0,1]^3\)</span>. For instance <span class="math" data-tex="\(T(0)=0\)">\(T(0)=0\)</span> is the coordinatewise median of the three points. The new points of the cotype inequality will be of the form <span class="math" data-tex="\(T(u)\)">\(T(u)\)</span>, and this is where they can leave a subspace that contains the old points.</p>
+<h2 id="2-the-cube-and-the-cubic-map">2. The cube and the cubic map</h2>
+<p>From here to the end of the lesson <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is any finite nonempty set and <span class="math" data-tex="\((w_B)_{B\in\mathcal B}\)">\((w_B)_{B\in\mathcal B}\)</span> are positive numbers. On <span class="math" data-tex="\(\mathbb R^{\mathcal B}\)">\(\mathbb R^{\mathcal B}\)</span> use the norm
+<span class="math math-display" data-tex="\[
+\|u\|_{1,w}=\sum_Bw_B\,|u_B|
+\]">\[
+\|u\|_{1,w}=\sum_Bw_B\,|u_B|
+\]</span>
+and the inner product and norm
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle u,u&#x27;\rangle_H=\sum_Bw_B\,u_Bu&#x27;_B,\\
+\|u\|_H=\sqrt{\langle u,u\rangle_H} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\langle u,u&#x27;\rangle_H=\sum_Bw_B\,u_Bu&#x27;_B,\\
+\|u\|_H=\sqrt{\langle u,u\rangle_H} .
+\end{gathered}
+\]</span>
+Write <span class="math" data-tex="\(H\)">\(H\)</span> for <span class="math" data-tex="\(\mathbb R^{\mathcal B}\)">\(\mathbb R^{\mathcal B}\)</span> with this inner product. The Cauchy–Schwarz inequality gives, for <span class="math" data-tex="\(a,\delta\in\mathbb R^{\mathcal B}\)">\(a,\delta\in\mathbb R^{\mathcal B}\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_Bw_B\,|a_B|\,|\delta_B|\le\|a\|_H\,\|\delta\|_H .
+\]">\[
+\sum_Bw_B\,|a_B|\,|\delta_B|\le\|a\|_H\,\|\delta\|_H .
+\]</span>
+Let <span class="math" data-tex="\(Q=[0,1]^{\mathcal B}\)">\(Q=[0,1]^{\mathcal B}\)</span> be the cube. Its <em>vertices</em> are the vectors in <span class="math" data-tex="\(\{0,1\}^{\mathcal B}\)">\(\{0,1\}^{\mathcal B}\)</span>. For two vertices <span class="math" data-tex="\(e,e&#x27;\)">\(e,e&#x27;\)</span> the differences <span class="math" data-tex="\(e_B-e&#x27;_B\)">\(e_B-e&#x27;_B\)</span> are <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, so
+<span class="math math-display" data-tex="\[
+\|e-e&#x27;\|_{1,w}=\|e-e&#x27;\|_H^2 .
+\]">\[
+\|e-e&#x27;\|_{1,w}=\|e-e&#x27;\|_H^2 .
+\]</span>
+With the weights and vertices <span class="math" data-tex="\(z_i\)">\(z_i\)</span> of Proposition 1.2 this reads
+<span class="math math-display" data-tex="\[
+\|x_i-x_j\|_1=\|z_i-z_j\|_{1,w}=\|z_i-z_j\|_H^2 .
+\]">\[
+\|x_i-x_j\|_1=\|z_i-z_j\|_{1,w}=\|z_i-z_j\|_H^2 .
+\]</span>
+So the <em>squared</em> distances in <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>, which occur in the cotype inequality, are <em>fourth</em> powers of distances in <span class="math" data-tex="\(H\)">\(H\)</span>. Part 3 of Proposition 1.2 says that <span class="math" data-tex="\(T\)">\(T\)</span> does not increase distances from <span class="math" data-tex="\(\|\cdot\|_{1,w}\)">\(\|\cdot\|_{1,w}\)</span> to <span class="math" data-tex="\(\|\cdot\|_1\)">\(\|\cdot\|_1\)</span>.</p>
+<p><strong>Definition.</strong> Let <span class="math" data-tex="\(\phi(r)=3r^2-2r^3\)">\(\phi(r)=3r^2-2r^3\)</span> for <span class="math" data-tex="\(0\le r\le1\)">\(0\le r\le1\)</span>, and let <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> be the map of <span class="math" data-tex="\(Q\)">\(Q\)</span> that applies <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to every coordinate: <span class="math" data-tex="\(\Phi(u)_B=\phi(u_B)\)">\(\Phi(u)_B=\phi(u_B)\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> 1. <span class="math" data-tex="\(\phi&#x27;(r)=6r(1-r)\)">\(\phi&#x27;(r)=6r(1-r)\)</span>. The function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is increasing on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> with <span class="math" data-tex="\(\phi(0)=0\)">\(\phi(0)=0\)</span> and <span class="math" data-tex="\(\phi(1)=1\)">\(\phi(1)=1\)</span>. So <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> maps <span class="math" data-tex="\(Q\)">\(Q\)</span> into <span class="math" data-tex="\(Q\)">\(Q\)</span> and fixes every vertex.</p>
+<ol start="2">
+<li>
+<p>For <span class="math" data-tex="\(r\in[0,1]\)">\(r\in[0,1]\)</span> and <span class="math" data-tex="\(d\in\{0,1\}\)">\(d\in\{0,1\}\)</span>: <span class="math" data-tex="\(|\phi&#x27;(r)|\le6\,|r-d|\)">\(|\phi&#x27;(r)|\le6\,|r-d|\)</span>.</p>
+</li>
+<li>
+<p><span class="math" data-tex="\(\phi(r)=r^3+3r^2(1-r)\)">\(\phi(r)=r^3+3r^2(1-r)\)</span>, and <span class="math" data-tex="\(\phi(1-r)=1-\phi(r)\)">\(\phi(1-r)=1-\phi(r)\)</span>.</p>
+</li>
+</ol>
+<p><strong>Proof.</strong> 1 is a computation. 2: <span class="math" data-tex="\(6r(1-r)\le6r\)">\(6r(1-r)\le6r\)</span> and <span class="math" data-tex="\(6r(1-r)\le6(1-r)\)">\(6r(1-r)\le6(1-r)\)</span>. 3: <span class="math" data-tex="\(r^3+3r^2-3r^3=\phi(r)\)">\(r^3+3r^2-3r^3=\phi(r)\)</span>; and <span class="math" data-tex="\(\phi(r)+\phi(1-r)\)">\(\phi(r)+\phi(1-r)\)</span> is the sum of the four terms <span class="math" data-tex="\(r^3\)">\(r^3\)</span>, <span class="math" data-tex="\(3r^2(1-r)\)">\(3r^2(1-r)\)</span>, <span class="math" data-tex="\(3r(1-r)^2\)">\(3r(1-r)^2\)</span>, <span class="math" data-tex="\((1-r)^3\)">\((1-r)^3\)</span> of the expansion of <span class="math" data-tex="\((r+(1-r))^3=1\)">\((r+(1-r))^3=1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Part 3 has a reading in terms of chance: if three independent events have the probability <span class="math" data-tex="\(r\)">\(r\)</span> each, then <span class="math" data-tex="\(\phi(r)\)">\(\phi(r)\)</span> is the probability that at least two of them occur. Part 2 is the property that matters: the derivative of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> vanishes at both ends of the interval, to first order. The map <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is <em>flat</em> at the vertices of the cube.</p>
+<h2 id="3-the-flat-inequality">3. The flat inequality</h2>
+<p>Fix a vertex <span class="math" data-tex="\(e\)">\(e\)</span> of the cube. For <span class="math" data-tex="\(u\in Q\)">\(u\in Q\)</span> put
+<span class="math math-display" data-tex="\[
+F_e(u)=\|u-e\|_H^4 .
+\]">\[
+F_e(u)=\|u-e\|_H^4 .
+\]</span></p>
+<p><strong>Lemma 3.1</strong> (increments of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>). Let <span class="math" data-tex="\(u,u&#x27;\in Q\)">\(u,u&#x27;\in Q\)</span>, and put <span class="math" data-tex="\(a=u-e\)">\(a=u-e\)</span> and <span class="math" data-tex="\(\delta=u&#x27;-u\)">\(\delta=u&#x27;-u\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\Phi(u&#x27;)-\Phi(u)\|_{1,w}\\
+&amp;\qquad\le6\,\|a\|_H\|\delta\|_H+3\,\|\delta\|_H^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\Phi(u&#x27;)-\Phi(u)\|_{1,w}\\
+&amp;\qquad\le6\,\|a\|_H\|\delta\|_H+3\,\|\delta\|_H^2 .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(B\)">\(B\)</span>. The points <span class="math" data-tex="\(u_B+\sigma\delta_B\)">\(u_B+\sigma\delta_B\)</span>, <span class="math" data-tex="\(0\le\sigma\le1\)">\(0\le\sigma\le1\)</span>, lie in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\phi(u&#x27;_B)-\phi(u_B)\\
+&amp;\qquad=\delta_B\int_0^1\phi&#x27;(u_B+\sigma\delta_B)\,d\sigma .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\phi(u&#x27;_B)-\phi(u_B)\\
+&amp;\qquad=\delta_B\int_0^1\phi&#x27;(u_B+\sigma\delta_B)\,d\sigma .
+\end{aligned}
+\]</span>
+By Lemma 2.1 with <span class="math" data-tex="\(d=e_B\)">\(d=e_B\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\phi&#x27;(u_B+\sigma\delta_B)|&amp;\le6\,|u_B+\sigma\delta_B-e_B|\\
+&amp;\le6\,|a_B|+6\sigma\,|\delta_B| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\phi&#x27;(u_B+\sigma\delta_B)|&amp;\le6\,|u_B+\sigma\delta_B-e_B|\\
+&amp;\le6\,|a_B|+6\sigma\,|\delta_B| .
+\end{aligned}
+\]</span>
+Integrating over <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> gives
+<span class="math math-display" data-tex="\[
+|\phi(u&#x27;_B)-\phi(u_B)|\le6\,|a_B|\,|\delta_B|+3\,\delta_B^2 .
+\]">\[
+|\phi(u&#x27;_B)-\phi(u_B)|\le6\,|a_B|\,|\delta_B|+3\,\delta_B^2 .
+\]</span>
+Multiply by <span class="math" data-tex="\(w_B\)">\(w_B\)</span>, sum over <span class="math" data-tex="\(B\)">\(B\)</span>, and use the Cauchy–Schwarz inequality for the first term. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2</strong> (the remainder of the fourth power). For <span class="math" data-tex="\(a,\delta\in H\)">\(a,\delta\in H\)</span> let
+<span class="math math-display" data-tex="\[
+R=\|a+\delta\|_H^4-\|a\|_H^4-4\,\|a\|_H^2\langle a,\delta\rangle_H .
+\]">\[
+R=\|a+\delta\|_H^4-\|a\|_H^4-4\,\|a\|_H^2\langle a,\delta\rangle_H .
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+R=2\,\|a\|_H^2\|\delta\|_H^2+\bigl(2\langle a,\delta\rangle_H+\|\delta\|_H^2\bigr)^2 .
+\]">\[
+R=2\,\|a\|_H^2\|\delta\|_H^2+\bigl(2\langle a,\delta\rangle_H+\|\delta\|_H^2\bigr)^2 .
+\]</span>
+In particular <span class="math" data-tex="\(R\ge0\)">\(R\ge0\)</span>, <span class="math" data-tex="\(\|a\|_H^2\|\delta\|_H^2\le\tfrac12R\)">\(\|a\|_H^2\|\delta\|_H^2\le\tfrac12R\)</span> and <span class="math" data-tex="\(\|\delta\|_H^4\le4R\)">\(\|\delta\|_H^4\le4R\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\alpha=\|a\|_H^2\)">\(\alpha=\|a\|_H^2\)</span> and <span class="math" data-tex="\(\gamma=2\langle a,\delta\rangle_H+\|\delta\|_H^2\)">\(\gamma=2\langle a,\delta\rangle_H+\|\delta\|_H^2\)</span>, so that <span class="math" data-tex="\(\|a+\delta\|_H^2=\alpha+\gamma\)">\(\|a+\delta\|_H^2=\alpha+\gamma\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R&amp;=(\alpha+\gamma)^2-\alpha^2-4\alpha\langle a,\delta\rangle_H\\
+&amp;=2\alpha\bigl(\gamma-2\langle a,\delta\rangle_H\bigr)+\gamma^2\\
+&amp;=2\alpha\,\|\delta\|_H^2+\gamma^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+R&amp;=(\alpha+\gamma)^2-\alpha^2-4\alpha\langle a,\delta\rangle_H\\
+&amp;=2\alpha\bigl(\gamma-2\langle a,\delta\rangle_H\bigr)+\gamma^2\\
+&amp;=2\alpha\,\|\delta\|_H^2+\gamma^2 .
+\end{aligned}
+\]</span>
+Both terms are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>, which gives the first two consequences. For the third, <span class="math" data-tex="\(\|\delta\|_H^2=\gamma-2\langle a,\delta\rangle_H\)">\(\|\delta\|_H^2=\gamma-2\langle a,\delta\rangle_H\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\delta\|_H^4&amp;\le2\gamma^2+8\langle a,\delta\rangle_H^2\\
+&amp;\le2\gamma^2+8\,\alpha\,\|\delta\|_H^2\\
+&amp;\le4R .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\delta\|_H^4&amp;\le2\gamma^2+8\langle a,\delta\rangle_H^2\\
+&amp;\le2\gamma^2+8\,\alpha\,\|\delta\|_H^2\\
+&amp;\le4R .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The term <span class="math" data-tex="\(4\|a\|_H^2\langle a,\delta\rangle_H\)">\(4\|a\|_H^2\langle a,\delta\rangle_H\)</span> is the derivative of <span class="math" data-tex="\(a\mapsto\|a\|_H^4\)">\(a\mapsto\|a\|_H^4\)</span> in the direction <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. So <span class="math" data-tex="\(R\)">\(R\)</span> is the error of the linear approximation of the fourth power, and the lemma bounds it from below.</p>
+<p><strong>Proposition 3.3</strong> (the flat inequality). Let <span class="math" data-tex="\(u,u&#x27;\in Q\)">\(u,u&#x27;\in Q\)</span> and let <span class="math" data-tex="\(e\)">\(e\)</span> be a vertex of <span class="math" data-tex="\(Q\)">\(Q\)</span>. With <span class="math" data-tex="\(a=u-e\)">\(a=u-e\)</span> and <span class="math" data-tex="\(\delta=u&#x27;-u\)">\(\delta=u&#x27;-u\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\Phi(u&#x27;)-\Phi(u)\|_{1,w}^2\\
+&amp;\quad\le108\,\bigl(F_e(u&#x27;)-F_e(u)\\
+&amp;\qquad\qquad-4\,\|a\|_H^2\langle a,\delta\rangle_H\bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\Phi(u&#x27;)-\Phi(u)\|_{1,w}^2\\
+&amp;\quad\le108\,\bigl(F_e(u&#x27;)-F_e(u)\\
+&amp;\qquad\qquad-4\,\|a\|_H^2\langle a,\delta\rangle_H\bigr) .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> The expression in the bracket is the number <span class="math" data-tex="\(R\)">\(R\)</span> of Lemma 3.2, because <span class="math" data-tex="\(u&#x27;-e=a+\delta\)">\(u&#x27;-e=a+\delta\)</span>. Square the inequality of Lemma 3.1 and use <span class="math" data-tex="\((\alpha+\beta)^2\le2\alpha^2+2\beta^2\)">\((\alpha+\beta)^2\le2\alpha^2+2\beta^2\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\Phi(u&#x27;)-\Phi(u)\|_{1,w}^2\\
+&amp;\qquad\le72\,\|a\|_H^2\|\delta\|_H^2+18\,\|\delta\|_H^4\\
+&amp;\qquad\le36R+72R .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\Phi(u&#x27;)-\Phi(u)\|_{1,w}^2\\
+&amp;\qquad\le72\,\|a\|_H^2\|\delta\|_H^2+18\,\|\delta\|_H^4\\
+&amp;\qquad\le36R+72R .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-displacements-with-mean-zero">4. Displacements with mean zero</h2>
+<p><strong>Corollary 4.1.</strong> Let <span class="math" data-tex="\(u\in Q\)">\(u\in Q\)</span> and let <span class="math" data-tex="\(e\)">\(e\)</span> be a vertex of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Let <span class="math" data-tex="\(u^1,\dots,u^m\in Q\)">\(u^1,\dots,u^m\in Q\)</span> and <span class="math" data-tex="\(\rho_1,\dots,\rho_m\ge0\)">\(\rho_1,\dots,\rho_m\ge0\)</span> with <span class="math" data-tex="\(\sum_l\rho_l=1\)">\(\sum_l\rho_l=1\)</span> and
+<span class="math math-display" data-tex="\[
+\sum_l\rho_l\,u^l=u .
+\]">\[
+\sum_l\rho_l\,u^l=u .
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_l\rho_l\,\|\Phi(u^l)-\Phi(u)\|_{1,w}^2\\
+&amp;\qquad\le108\,\Bigl(\sum_l\rho_l\,F_e(u^l)-F_e(u)\Bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_l\rho_l\,\|\Phi(u^l)-\Phi(u)\|_{1,w}^2\\
+&amp;\qquad\le108\,\Bigl(\sum_l\rho_l\,F_e(u^l)-F_e(u)\Bigr) .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Apply Proposition 3.3 to <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(u^l\)">\(u^l\)</span>, with <span class="math" data-tex="\(\delta^l=u^l-u\)">\(\delta^l=u^l-u\)</span>, multiply by <span class="math" data-tex="\(\rho_l\)">\(\rho_l\)</span> and sum. The linear terms add up to <span class="math" data-tex="\(4\|a\|_H^2\langle a,\sum_l\rho_l\delta^l\rangle_H=0\)">\(4\|a\|_H^2\langle a,\sum_l\rho_l\delta^l\rangle_H=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In words: let a random point of the cube have the mean <span class="math" data-tex="\(u\)">\(u\)</span>. Then the mean squared distance, in the norm <span class="math" data-tex="\(\|\cdot\|_{1,w}\)">\(\|\cdot\|_{1,w}\)</span>, between the images under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> of the random point and of its mean is at most <span class="math" data-tex="\(108\)">\(108\)</span> times the mean increase of the potential <span class="math" data-tex="\(F_e\)">\(F_e\)</span>. The vertex <span class="math" data-tex="\(e\)">\(e\)</span> is arbitrary. In the next lesson the corollary is applied to every step of a walk, and the increases of the potential add up to a telescoping sum.</p>
+<p><strong>Example 4.2</strong> (the identity map does not satisfy such an inequality). Take one coordinate with the weight <span class="math" data-tex="\(1\)">\(1\)</span>, the vertex <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, a number <span class="math" data-tex="\(0&lt;\varepsilon\le\tfrac12\)">\(0&lt;\varepsilon\le\tfrac12\)</span>, the point <span class="math" data-tex="\(u=\varepsilon\)">\(u=\varepsilon\)</span> and the two points <span class="math" data-tex="\(u^1=0\)">\(u^1=0\)</span>, <span class="math" data-tex="\(u^2=2\varepsilon\)">\(u^2=2\varepsilon\)</span> with <span class="math" data-tex="\(\rho_1=\rho_2=\tfrac12\)">\(\rho_1=\rho_2=\tfrac12\)</span>. The potential is <span class="math" data-tex="\(F_0(u)=u^4\)">\(F_0(u)=u^4\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_l\rho_lF_0(u^l)-F_0(u)&amp;=\tfrac12(2\varepsilon)^4-\varepsilon^4\\
+&amp;=7\varepsilon^4 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_l\rho_lF_0(u^l)-F_0(u)&amp;=\tfrac12(2\varepsilon)^4-\varepsilon^4\\
+&amp;=7\varepsilon^4 .
+\end{aligned}
+\]</span>
+Without the map <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, the mean squared distance of the two points from <span class="math" data-tex="\(u\)">\(u\)</span> is <span class="math" data-tex="\(\varepsilon^2\)">\(\varepsilon^2\)</span>, which is not bounded by a constant times <span class="math" data-tex="\(\varepsilon^4\)">\(\varepsilon^4\)</span>. With the map: <span class="math" data-tex="\(\phi(\varepsilon)-\phi(0)=3\varepsilon^2-2\varepsilon^3\)">\(\phi(\varepsilon)-\phi(0)=3\varepsilon^2-2\varepsilon^3\)</span> and <span class="math" data-tex="\(\phi(2\varepsilon)-\phi(\varepsilon)=9\varepsilon^2-14\varepsilon^3\)">\(\phi(2\varepsilon)-\phi(\varepsilon)=9\varepsilon^2-14\varepsilon^3\)</span>, so the mean squared distance of the images is at most <span class="math" data-tex="\(\tfrac12(9+81)\varepsilon^4=45\varepsilon^4\)">\(\tfrac12(9+81)\varepsilon^4=45\varepsilon^4\)</span>. Near a vertex the potential is of the fourth order, and a map of the cube can obey the inequality only if its changes are of the second order there. This is the reason for the cubic: <span class="math" data-tex="\(\phi&#x27;\)">\(\phi&#x27;\)</span> vanishes at <span class="math" data-tex="\(0\)">\(0\)</span> and at <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Compute <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, the weights, <span class="math" data-tex="\(v\)">\(v\)</span> and the vectors <span class="math" data-tex="\(z_i\)">\(z_i\)</span> for <span class="math" data-tex="\(x_1=(0,3)\)">\(x_1=(0,3)\)</span>, <span class="math" data-tex="\(x_2=(2,1)\)">\(x_2=(2,1)\)</span>, <span class="math" data-tex="\(x_3=(5,1)\)">\(x_3=(5,1)\)</span>, and check part 2 of Proposition 1.2 for the three pairs.</p>
+<p><strong>5.2.</strong> In the setting of Section 1 show that <span class="math" data-tex="\(\sum_Bb_B(k)=\max_ix_i(k)-\min_ix_i(k)\)">\(\sum_Bb_B(k)=\max_ix_i(k)-\min_ix_i(k)\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>, and conclude that for <span class="math" data-tex="\(u\in Q\)">\(u\in Q\)</span> every coordinate of <span class="math" data-tex="\(T(u)\)">\(T(u)\)</span> lies between the smallest and the largest value of the points in this coordinate.</p>
+<p><strong>5.3.</strong> Let <span class="math" data-tex="\(n=3\)">\(n=3\)</span> and let <span class="math" data-tex="\(\mu\in\{0,1\}^{\mathcal B}\)">\(\mu\in\{0,1\}^{\mathcal B}\)</span> be the vertex with <span class="math" data-tex="\(\mu_B=1\)">\(\mu_B=1\)</span> exactly if <span class="math" data-tex="\(B\)">\(B\)</span> has at least two elements. Show that <span class="math" data-tex="\(T(\mu)\)">\(T(\mu)\)</span> is the coordinatewise median of <span class="math" data-tex="\(x_1,x_2,x_3\)">\(x_1,x_2,x_3\)</span>.</p>
+<p><strong>5.4.</strong> Show that <span class="math" data-tex="\(\|\Phi(u&#x27;)-\Phi(u)\|_{1,w}\le\tfrac32\,\|u&#x27;-u\|_{1,w}\)">\(\|\Phi(u&#x27;)-\Phi(u)\|_{1,w}\le\tfrac32\,\|u&#x27;-u\|_{1,w}\)</span> for <span class="math" data-tex="\(u,u&#x27;\in Q\)">\(u,u&#x27;\in Q\)</span>, and that the constant <span class="math" data-tex="\(\tfrac32\)">\(\tfrac32\)</span> cannot be replaced by a smaller one.</p>
+<p><strong>5.5.</strong> Take one coordinate with the weight <span class="math" data-tex="\(w\)">\(w\)</span>, the vertex <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, the point <span class="math" data-tex="\(u=\tfrac12\)">\(u=\tfrac12\)</span> and the two points <span class="math" data-tex="\(\tfrac12\pm\eta\)">\(\tfrac12\pm\eta\)</span> with probabilities <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, where <span class="math" data-tex="\(0&lt;\eta\le\tfrac12\)">\(0&lt;\eta\le\tfrac12\)</span>. Compute both sides of Corollary 4.1.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> First coordinate: the values are <span class="math" data-tex="\(0&lt;2&lt;5\)">\(0&lt;2&lt;5\)</span>, with the cuts <span class="math" data-tex="\(\{2,3\}\)">\(\{2,3\}\)</span> (gap <span class="math" data-tex="\(2\)">\(2\)</span>) and <span class="math" data-tex="\(\{3\}\)">\(\{3\}\)</span> (gap <span class="math" data-tex="\(3\)">\(3\)</span>). Second coordinate: the values are <span class="math" data-tex="\(1&lt;3\)">\(1&lt;3\)</span>, with the cut <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span> (gap <span class="math" data-tex="\(2\)">\(2\)</span>). So <span class="math" data-tex="\(\mathcal B=\{\{2,3\},\{3\},\{1\}\}\)">\(\mathcal B=\{\{2,3\},\{3\},\{1\}\}\)</span> with the weights <span class="math" data-tex="\(2,3,2\)">\(2,3,2\)</span>, and <span class="math" data-tex="\(v=(0,1)\)">\(v=(0,1)\)</span>. In this order of the cuts, <span class="math" data-tex="\(z_1=(0,0,1)\)">\(z_1=(0,0,1)\)</span>, <span class="math" data-tex="\(z_2=(1,0,0)\)">\(z_2=(1,0,0)\)</span>, <span class="math" data-tex="\(z_3=(1,1,0)\)">\(z_3=(1,1,0)\)</span>. Distances: <span class="math" data-tex="\(\|x_1-x_2\|_1=4=2+2\)">\(\|x_1-x_2\|_1=4=2+2\)</span>; <span class="math" data-tex="\(\|x_1-x_3\|_1=7=2+3+2\)">\(\|x_1-x_3\|_1=7=2+3+2\)</span>; <span class="math" data-tex="\(\|x_2-x_3\|_1=3\)">\(\|x_2-x_3\|_1=3\)</span>.</p>
+<p><strong>5.2.</strong> By Lemma 1.1 the sum is <span class="math" data-tex="\(\sum_{r=1}^{m-1}(\alpha_{r+1}-\alpha_r)=\alpha_m-\alpha_1\)">\(\sum_{r=1}^{m-1}(\alpha_{r+1}-\alpha_r)=\alpha_m-\alpha_1\)</span>. For <span class="math" data-tex="\(u\in Q\)">\(u\in Q\)</span>, <span class="math" data-tex="\(T(u)(k)=v(k)+\sum_Bu_Bb_B(k)\)">\(T(u)(k)=v(k)+\sum_Bu_Bb_B(k)\)</span> with <span class="math" data-tex="\(0\le u_B\le1\)">\(0\le u_B\le1\)</span> and <span class="math" data-tex="\(b_B(k)\ge0\)">\(b_B(k)\ge0\)</span>, so <span class="math" data-tex="\(\alpha_1\le T(u)(k)\le\alpha_1+(\alpha_m-\alpha_1)\)">\(\alpha_1\le T(u)(k)\le\alpha_1+(\alpha_m-\alpha_1)\)</span>.</p>
+<p><strong>5.3.</strong> Fix <span class="math" data-tex="\(k\)">\(k\)</span>. By Lemma 1.1, <span class="math" data-tex="\(T(\mu)(k)\)">\(T(\mu)(k)\)</span> is <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span> plus the gaps <span class="math" data-tex="\(\alpha_{r+1}-\alpha_r\)">\(\alpha_{r+1}-\alpha_r\)</span> of those <span class="math" data-tex="\(r\)">\(r\)</span> for which <span class="math" data-tex="\(B_r\)">\(B_r\)</span> has at least two elements, that is, for which at least two of the three points have a value <span class="math" data-tex="\(\ge\alpha_{r+1}\)">\(\ge\alpha_{r+1}\)</span> in the coordinate <span class="math" data-tex="\(k\)">\(k\)</span>. This holds exactly if the median of the three values is <span class="math" data-tex="\(\ge\alpha_{r+1}\)">\(\ge\alpha_{r+1}\)</span>. So the sum of these gaps is the median minus <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(\phi&#x27;(r)=6r(1-r)\)">\(\phi&#x27;(r)=6r(1-r)\)</span> has the largest value <span class="math" data-tex="\(\tfrac32\)">\(\tfrac32\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, at <span class="math" data-tex="\(r=\tfrac12\)">\(r=\tfrac12\)</span>. So <span class="math" data-tex="\(|\phi(r&#x27;)-\phi(r)|\le\tfrac32|r&#x27;-r|\)">\(|\phi(r&#x27;)-\phi(r)|\le\tfrac32|r&#x27;-r|\)</span> for <span class="math" data-tex="\(r,r&#x27;\in[0,1]\)">\(r,r&#x27;\in[0,1]\)</span>; multiply by <span class="math" data-tex="\(w_B\)">\(w_B\)</span> and sum. For one coordinate and <span class="math" data-tex="\(u=\tfrac12\)">\(u=\tfrac12\)</span>, <span class="math" data-tex="\(u&#x27;=\tfrac12+\eta\)">\(u&#x27;=\tfrac12+\eta\)</span>, the quotient of the two sides is <span class="math" data-tex="\(\tfrac32-2\eta^2\)">\(\tfrac32-2\eta^2\)</span> (see the next solution), which tends to <span class="math" data-tex="\(\tfrac32\)">\(\tfrac32\)</span> as <span class="math" data-tex="\(\eta\to0\)">\(\eta\to0\)</span>.</p>
+<p><strong>5.5.</strong> <span class="math" data-tex="\(\phi(\tfrac12\pm\eta)=\tfrac12\pm(\tfrac32\eta-2\eta^3)\)">\(\phi(\tfrac12\pm\eta)=\tfrac12\pm(\tfrac32\eta-2\eta^3)\)</span>, and <span class="math" data-tex="\(\|\cdot\|_{1,w}\)">\(\|\cdot\|_{1,w}\)</span> is <span class="math" data-tex="\(w\)">\(w\)</span> times the absolute value. So the left side is <span class="math" data-tex="\(w^2(\tfrac32\eta-2\eta^3)^2\)">\(w^2(\tfrac32\eta-2\eta^3)^2\)</span>. The potential is <span class="math" data-tex="\(F_0(u)=(wu^2)^2\)">\(F_0(u)=(wu^2)^2\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tfrac12\bigl(\tfrac12+\eta\bigr)^4+\tfrac12\bigl(\tfrac12-\eta\bigr)^4-\tfrac1{16}\\
+&amp;\qquad=\tfrac32\eta^2+\eta^4 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\tfrac12\bigl(\tfrac12+\eta\bigr)^4+\tfrac12\bigl(\tfrac12-\eta\bigr)^4-\tfrac1{16}\\
+&amp;\qquad=\tfrac32\eta^2+\eta^4 .
+\end{aligned}
+\]</span>
+So the right side is <span class="math" data-tex="\(108\,w^2(\tfrac32\eta^2+\eta^4)\)">\(108\,w^2(\tfrac32\eta^2+\eta^4)\)</span>. The left side is at most <span class="math" data-tex="\(\tfrac94w^2\eta^2\)">\(\tfrac94w^2\eta^2\)</span>, so in this example the inequality holds with <span class="math" data-tex="\(\tfrac32\)">\(\tfrac32\)</span> in place of <span class="math" data-tex="\(108\)">\(108\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-MC] OpenAI, <em>Metric Markov Cotype Two of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span></em>, OpenAI Math Release preprint, 5 October 2026, Sections 2 and 3. https://github.com/openai/math/tree/main/preprints/Metric-Markov-Cotype-Two-of-l1-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

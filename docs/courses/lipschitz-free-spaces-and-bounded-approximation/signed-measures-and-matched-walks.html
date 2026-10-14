@@ -1,0 +1,275 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Signed measures and matched walks</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Lipschitz-free spaces and bounded approximation)</a><a href="colored-graphs-with-a-tree-limit.html">Previous lesson</a><a href="scalar-tests-and-the-anchor-obstruction.html">Next lesson</a><a href="src/signed-measures-and-matched-walks.md">Editable source</a></nav><main><article><h1 id="signed-measures-and-matched-walks">Signed measures and matched walks</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson begins the proof of the theorem on blocks: no operator of finite rank and norm at most <span class="math" data-tex="\(p\)">\(p\)</span> on the free space of the block <span class="math" data-tex="\(M_p\)">\(M_p\)</span> is close to the identity at all anchors. Suppose there is such an operator. After a small change its range is spanned by the evaluations at finitely many points, the <em>support</em> <span class="math" data-tex="\(S\)">\(S\)</span>. Then the operator assigns to every point <span class="math" data-tex="\(x\)">\(x\)</span> of the block a signed measure <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, of total mass <span class="math" data-tex="\(1\)">\(1\)</span> and of bounded total variation. Because the operator is close to the identity at the anchors, the measure <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> of a graph vertex <span class="math" data-tex="\(x\)">\(x\)</span> is concentrated, in a weak sense, on the points of <span class="math" data-tex="\(S\)">\(S\)</span> whose labels are close to the label of <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>The second half of the lesson is about the graphs alone. It studies walks in a graph that can be followed by points of <span class="math" data-tex="\(S\)">\(S\)</span> with close labels, the <em>matched walks</em>. Long matched walks start at few vertices. At the other vertices, each point of <span class="math" data-tex="\(S\)">\(S\)</span> singles out at most one direction, and of two neighbouring vertices with nearby followers, one singles out the direction to the other. The next lesson combines the two halves.</p>
+<ul>
+<li>The setting (Section 1) and a common finite support (Lemma 2.1).</li>
+<li>Bumps and signed measures (Lemmas 3.1 and 3.2).</li>
+<li>Compatible pairs and matched walks (Section 4).</li>
+<li>Long matched walks are rare (Proposition 5.1).</li>
+<li>Records and exceptional directions (Lemma 6.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-LF, Sections 4 and 5]. It uses the free space of <a href="lipschitz-free-spaces-and-approximation-properties.html">Lipschitz-free spaces and approximation properties</a> (Lemma 1.1 there) and the block of <a href="colored-graphs-with-a-tree-limit.html">Colored graphs with a tree limit</a>: Corollary 2.5, Lemma 3.1 and Proposition 5.1 there. It uses that linear functionals on a normed space of finite dimension are bounded (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D20">Functional Analysis</a>).</p>
+<h2 id="1-the-setting">1. The setting</h2>
+<p>Fix an integer <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>. The lesson on colored graphs fixed numbers
+<span class="math math-display" data-tex="\[
+L,\ R,\ K,\ D,\ B,\ V,\ \Delta,\ Q,\ H,\ k ,
+\]">\[
+L,\ R,\ K,\ D,\ B,\ V,\ \Delta,\ Q,\ H,\ k ,
+\]</span>
+a sequence <span class="math" data-tex="\(G_1,G_2,\dots\)">\(G_1,G_2,\dots\)</span> of finite <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>-regular multigraphs with vertex colors in <span class="math" data-tex="\(\{1,\dots,k\}\)">\(\{1,\dots,k\}\)</span>, and the block <span class="math" data-tex="\((M_p,d_p,o)\)">\((M_p,d_p,o)\)</span>: its points are the vertices of the graphs <span class="math" data-tex="\(G_m\)">\(G_m\)</span> (the <em>source vertices</em>) and finitely many <em>anchors</em>, which form the set <span class="math" data-tex="\(A_p\)">\(A_p\)</span>. Every point <span class="math" data-tex="\(t\)">\(t\)</span> has a label <span class="math" data-tex="\(h(t)\in\{0,\dots,D\}^k\)">\(h(t)\in\{0,\dots,D\}^k\)</span>, and every source vertex <span class="math" data-tex="\(x\)">\(x\)</span> has an anchor <span class="math" data-tex="\(a(x)\)">\(a(x)\)</span>. We use the following facts.</p>
+<ul>
+<li>(G1) <span class="math" data-tex="\(d_p(u,u&#x27;)\ge1\)">\(d_p(u,u&#x27;)\ge1\)</span> for <span class="math" data-tex="\(u\ne u&#x27;\)">\(u\ne u&#x27;\)</span>; the diameter is at most <span class="math" data-tex="\(B\)">\(B\)</span>; the ends of a source edge have a distance of at most <span class="math" data-tex="\(1\)">\(1\)</span>.</li>
+<li>(G2) <span class="math" data-tex="\(\|h(u)-h(u&#x27;)\|_\infty\le d_p(u,u&#x27;)\)">\(\|h(u)-h(u&#x27;)\|_\infty\le d_p(u,u&#x27;)\)</span>; a source vertex of color <span class="math" data-tex="\(i\)">\(i\)</span> has <span class="math" data-tex="\(h_i(x)=0\)">\(h_i(x)=0\)</span>; <span class="math" data-tex="\(h(a(x))=h(x)\)">\(h(a(x))=h(x)\)</span>.</li>
+<li>(G3) <span class="math" data-tex="\(d_p(x,a(x))=R\)">\(d_p(x,a(x))=R\)</span> for every source vertex <span class="math" data-tex="\(x\)">\(x\)</span>.</li>
+<li>(G4) Every closed ball of radius <span class="math" data-tex="\(2L\)">\(2L\)</span> has at most <span class="math" data-tex="\(Q\)">\(Q\)</span> points; every label has at most <span class="math" data-tex="\(H\)">\(H\)</span> coordinates less than <span class="math" data-tex="\(D\)">\(D\)</span>.</li>
+<li>(N) <span class="math" data-tex="\(L=10p\)">\(L=10p\)</span>; <span class="math" data-tex="\(L\le K\)">\(L\le K\)</span>; <span class="math" data-tex="\((2pR+1)/K\le\tfrac15\)">\((2pR+1)/K\le\tfrac15\)</span>; <span class="math" data-tex="\(K+2L+1=D-4\)">\(K+2L+1=D-4\)</span>; <span class="math" data-tex="\(V=1+4pB\)">\(V=1+4pB\)</span>; <span class="math" data-tex="\(V/\Delta&lt;\tfrac1{20}\)">\(V/\Delta&lt;\tfrac1{20}\)</span>; <span class="math" data-tex="\(\Delta QH/k&lt;\tfrac12\)">\(\Delta QH/k&lt;\tfrac12\)</span>.</li>
+<li>(T) For every property of a vertex that can be read off from its colored ball of radius <span class="math" data-tex="\(n\)">\(n\)</span>, the fraction of the vertices of <span class="math" data-tex="\(G_m\)">\(G_m\)</span> with this property converges, as <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span>, to the probability that the root of the <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>-regular tree with independent uniform colors has it.</li>
+</ul>
+<p>In the free space <span class="math" data-tex="\(\mathcal F(M_p)\)">\(\mathcal F(M_p)\)</span> we use <span class="math" data-tex="\(\|\delta_x-\delta_y\|=d_p(x,y)\)">\(\|\delta_x-\delta_y\|=d_p(x,y)\)</span>, so <span class="math" data-tex="\(\|\delta_x\|\le B\)">\(\|\delta_x\|\le B\)</span>, and that the evaluation combinations are dense.</p>
+<h2 id="2-a-common-finite-support">2. A common finite support</h2>
+<p>An operator of finite rank need not have a range that is spanned by finitely many evaluations. A small change achieves this.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(T_0\)">\(T_0\)</span> be a bounded linear operator of finite rank on <span class="math" data-tex="\(\mathcal F(M_p)\)">\(\mathcal F(M_p)\)</span> with <span class="math" data-tex="\(\|T_0\|\le p\)">\(\|T_0\|\le p\)</span> and
+<span class="math math-display" data-tex="\[
+\|T_0\delta_a-\delta_a\|&lt;\tfrac12\qquad(a\in A_p) .
+\]">\[
+\|T_0\delta_a-\delta_a\|&lt;\tfrac12\qquad(a\in A_p) .
+\]</span>
+Then there are a finite set <span class="math" data-tex="\(S\subseteq M_p\)">\(S\subseteq M_p\)</span> with <span class="math" data-tex="\(o\in S\)">\(o\in S\)</span> and a bounded linear operator <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(\mathcal F(M_p)\)">\(\mathcal F(M_p)\)</span> such that:</p>
+<ol>
+<li>the range of <span class="math" data-tex="\(T\)">\(T\)</span> lies in the span of the <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span>, <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span>;</li>
+<li><span class="math" data-tex="\(\|T\|\le2p\)">\(\|T\|\le2p\)</span>;</li>
+<li><span class="math" data-tex="\(\|T\delta_a-\delta_a\|&lt;1\)">\(\|T\delta_a-\delta_a\|&lt;1\)</span> for all <span class="math" data-tex="\(a\in A_p\)">\(a\in A_p\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(T_0=0\)">\(T_0=0\)</span>, take <span class="math" data-tex="\(T=0\)">\(T=0\)</span> and <span class="math" data-tex="\(S=\{o\}\)">\(S=\{o\}\)</span>. Otherwise let <span class="math" data-tex="\(v_1,\dots,v_r\)">\(v_1,\dots,v_r\)</span> be a basis of the range of <span class="math" data-tex="\(T_0\)">\(T_0\)</span>. The coordinates of a vector of the range in this basis are linear functionals on a space of finite dimension, so they are bounded. Composing them with <span class="math" data-tex="\(T_0\)">\(T_0\)</span> gives bounded functionals <span class="math" data-tex="\(\phi_1,\dots,\phi_r\)">\(\phi_1,\dots,\phi_r\)</span> on <span class="math" data-tex="\(\mathcal F(M_p)\)">\(\mathcal F(M_p)\)</span> with
+<span class="math math-display" data-tex="\[
+T_0u=\sum_{i=1}^r\phi_i(u)\,v_i .
+\]">\[
+T_0u=\sum_{i=1}^r\phi_i(u)\,v_i .
+\]</span>
+Let <span class="math" data-tex="\(0&lt;\eta&lt;\min\{p,\ 1/(2B)\}\)">\(0&lt;\eta&lt;\min\{p,\ 1/(2B)\}\)</span>. Choose evaluation combinations <span class="math" data-tex="\(w_i\)">\(w_i\)</span> so close to <span class="math" data-tex="\(v_i\)">\(v_i\)</span> that <span class="math" data-tex="\(\sum_i\|\phi_i\|\,\|w_i-v_i\|&lt;\eta\)">\(\sum_i\|\phi_i\|\,\|w_i-v_i\|&lt;\eta\)</span>, and put <span class="math" data-tex="\(Tu=\sum_i\phi_i(u)\,w_i\)">\(Tu=\sum_i\phi_i(u)\,w_i\)</span>. Then <span class="math" data-tex="\(\|T-T_0\|&lt;\eta\)">\(\|T-T_0\|&lt;\eta\)</span>. Let <span class="math" data-tex="\(S\)">\(S\)</span> consist of <span class="math" data-tex="\(o\)">\(o\)</span> and of the finitely many points that occur in the <span class="math" data-tex="\(w_i\)">\(w_i\)</span>. Then <span class="math" data-tex="\(\|T\|&lt;p+\eta&lt;2p\)">\(\|T\|&lt;p+\eta&lt;2p\)</span>, and for an anchor <span class="math" data-tex="\(a\)">\(a\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|T\delta_a-\delta_a\|&amp;\le\|T_0\delta_a-\delta_a\|\\
+&amp;\quad+\|T-T_0\|\,\|\delta_a\|\\
+&amp;&lt;\tfrac12+\eta B&lt;1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|T\delta_a-\delta_a\|&amp;\le\|T_0\delta_a-\delta_a\|\\
+&amp;\quad+\|T-T_0\|\,\|\delta_a\|\\
+&amp;&lt;\tfrac12+\eta B&lt;1 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-bumps-and-signed-measures">3. Bumps and signed measures</h2>
+<p>For a source vertex <span class="math" data-tex="\(x\)">\(x\)</span> define a function <span class="math" data-tex="\(b_x\)">\(b_x\)</span> on <span class="math" data-tex="\(M_p\)">\(M_p\)</span> by
+<span class="math math-display" data-tex="\[
+b_x(t)=L\,\Bigl(1-\frac{\|h(x)-h(t)\|_\infty}{K}\Bigr)_+ ,
+\]">\[
+b_x(t)=L\,\Bigl(1-\frac{\|h(x)-h(t)\|_\infty}{K}\Bigr)_+ ,
+\]</span>
+where <span class="math" data-tex="\(s_+=\max\{s,0\}\)">\(s_+=\max\{s,0\}\)</span>. It depends on <span class="math" data-tex="\(x\)">\(x\)</span> only through the label of <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> The function <span class="math" data-tex="\(b_x\)">\(b_x\)</span> has values in <span class="math" data-tex="\([0,L]\)">\([0,L]\)</span>, satisfies <span class="math" data-tex="\(|b_x(t)-b_x(t&#x27;)|\le\frac LK\,d_p(t,t&#x27;)\le d_p(t,t&#x27;)\)">\(|b_x(t)-b_x(t&#x27;)|\le\frac LK\,d_p(t,t&#x27;)\le d_p(t,t&#x27;)\)</span>, and <span class="math" data-tex="\(b_x(a(x))=L\)">\(b_x(a(x))=L\)</span>. Further <span class="math" data-tex="\(b_x(t)&gt;0\)">\(b_x(t)&gt;0\)</span> exactly if <span class="math" data-tex="\(\|h(x)-h(t)\|_\infty&lt;K\)">\(\|h(x)-h(t)\|_\infty&lt;K\)</span>.</p>
+<p><strong>Proof.</strong> By (G2), <span class="math" data-tex="\(t\mapsto\|h(x)-h(t)\|_\infty\)">\(t\mapsto\|h(x)-h(t)\|_\infty\)</span> changes by at most <span class="math" data-tex="\(d_p(t,t&#x27;)\)">\(d_p(t,t&#x27;)\)</span> between <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span>; multiplying by <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, subtracting from <span class="math" data-tex="\(L\)">\(L\)</span> and taking the positive part does not increase differences. <span class="math" data-tex="\(L/K\le1\)">\(L/K\le1\)</span> by (N), and <span class="math" data-tex="\(h(a(x))=h(x)\)">\(h(a(x))=h(x)\)</span> by (G2). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>A <em>signed measure</em> <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on a finite set <span class="math" data-tex="\(S\)">\(S\)</span> is a family of real numbers <span class="math" data-tex="\(\nu(\{j\})\)">\(\nu(\{j\})\)</span>, <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span>. For a function <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span> and a set <span class="math" data-tex="\(E\subseteq S\)">\(E\subseteq S\)</span> write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int g\,d\nu=\sum_{j\in S}g(j)\,\nu(\{j\}),\\
+|\nu|(E)=\sum_{j\in E}|\nu(\{j\})|,\\
+\|\nu\|_{\mathrm{TV}}=|\nu|(S) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int g\,d\nu=\sum_{j\in S}g(j)\,\nu(\{j\}),\\
+|\nu|(E)=\sum_{j\in E}|\nu(\{j\})|,\\
+\|\nu\|_{\mathrm{TV}}=|\nu|(S) .
+\end{gathered}
+\]</span>
+The number <span class="math" data-tex="\(\sum_j\nu(\{j\})\)">\(\sum_j\nu(\{j\})\)</span> is the <em>total mass</em> and <span class="math" data-tex="\(\|\nu\|_{\mathrm{TV}}\)">\(\|\nu\|_{\mathrm{TV}}\)</span> the <em>total variation</em>. If <span class="math" data-tex="\(g=0\)">\(g=0\)</span> outside <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(|g|\le c\)">\(|g|\le c\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>, then <span class="math" data-tex="\(|\int g\,d\nu|\le c\,|\nu|(E)\)">\(|\int g\,d\nu|\le c\,|\nu|(E)\)</span>.</p>
+<p><strong>Lemma 3.2</strong> (the measures of an operator). Let <span class="math" data-tex="\(S\subseteq M_p\)">\(S\subseteq M_p\)</span> be finite with <span class="math" data-tex="\(o\in S\)">\(o\in S\)</span>, and let <span class="math" data-tex="\(T\)">\(T\)</span> be a bounded linear operator on <span class="math" data-tex="\(\mathcal F(M_p)\)">\(\mathcal F(M_p)\)</span> with the three properties of Lemma 2.1. Then there are signed measures <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, for <span class="math" data-tex="\(x\in M_p\)">\(x\in M_p\)</span>, each of total mass <span class="math" data-tex="\(1\)">\(1\)</span>, with the following three properties.</p>
+<p>(1) For every Lipschitz function <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(M_p\)">\(M_p\)</span> and all <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+\int g\,d\mu_x=(T\delta_x)\bigl(g-g(o)\bigr)+g(o) .
+\]">\[
+\int g\,d\mu_x=(T\delta_x)\bigl(g-g(o)\bigr)+g(o) .
+\]</span></p>
+<p>(2) <span class="math" data-tex="\(\|\mu_x\|_{\mathrm{TV}}\le V\)">\(\|\mu_x\|_{\mathrm{TV}}\le V\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>(3) <span class="math" data-tex="\(\int b_x\,d\mu_x\ge\frac34L\)">\(\int b_x\,d\mu_x\ge\frac34L\)</span> for every source vertex <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>In (1), <span class="math" data-tex="\(g-g(o)\)">\(g-g(o)\)</span> lies in <span class="math" data-tex="\(\operatorname{Lip}_0(M_p)\)">\(\operatorname{Lip}_0(M_p)\)</span>, so the element <span class="math" data-tex="\(T\delta_x\)">\(T\delta_x\)</span> of the free space can be applied to it.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\delta_o=0\)">\(\delta_o=0\)</span>, we can write <span class="math" data-tex="\(T\delta_x=\sum_{j\in S\setminus\{o\}}c_x(j)\,\delta_j\)">\(T\delta_x=\sum_{j\in S\setminus\{o\}}c_x(j)\,\delta_j\)</span> with real numbers <span class="math" data-tex="\(c_x(j)\)">\(c_x(j)\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mu_x(\{j\})&amp;=c_x(j)\qquad(j\in S,\ j\ne o),\\
+\mu_x(\{o\})&amp;=1-\sum_{j\ne o}c_x(j) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mu_x(\{j\})&amp;=c_x(j)\qquad(j\in S,\ j\ne o),\\
+\mu_x(\{o\})&amp;=1-\sum_{j\ne o}c_x(j) .
+\end{aligned}
+\]</span>
+The total mass is <span class="math" data-tex="\(1\)">\(1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int g\,d\mu_x&amp;=\sum_{j\ne o}c_x(j)\bigl(g(j)-g(o)\bigr)\\
+&amp;\quad+g(o) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int g\,d\mu_x&amp;=\sum_{j\ne o}c_x(j)\bigl(g(j)-g(o)\bigr)\\
+&amp;\quad+g(o) ,
+\end{aligned}
+\]</span>
+which is (1).</p>
+<p><em>Proof of (2).</em> Let <span class="math" data-tex="\(g(j)\)">\(g(j)\)</span> be <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(-1\)">\(-1\)</span> or <span class="math" data-tex="\(0\)">\(0\)</span> according to whether <span class="math" data-tex="\(\mu_x(\{j\})\)">\(\mu_x(\{j\})\)</span> is positive, negative or zero, for <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span>, and <span class="math" data-tex="\(g=0\)">\(g=0\)</span> outside <span class="math" data-tex="\(S\)">\(S\)</span>. Two values of <span class="math" data-tex="\(g\)">\(g\)</span> differ by at most <span class="math" data-tex="\(2\)">\(2\)</span>, and two different points have a distance of at least <span class="math" data-tex="\(1\)">\(1\)</span>. So <span class="math" data-tex="\(g-g(o)\)">\(g-g(o)\)</span> has a Lipschitz constant of at most <span class="math" data-tex="\(2\)">\(2\)</span>, and by (1)
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\mu_x\|_{\mathrm{TV}}=\int g\,d\mu_x&amp;\le2\,\|T\delta_x\|+1\\
+&amp;\le2\cdot2p\cdot B+1=V .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\mu_x\|_{\mathrm{TV}}=\int g\,d\mu_x&amp;\le2\,\|T\delta_x\|+1\\
+&amp;\le2\cdot2p\cdot B+1=V .
+\end{aligned}
+\]</span></p>
+<p><em>Proof of (3).</em> Let <span class="math" data-tex="\(x\)">\(x\)</span> be a source vertex and <span class="math" data-tex="\(a=a(x)\)">\(a=a(x)\)</span>. By (G3) and the properties of <span class="math" data-tex="\(T\)">\(T\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|T\delta_x-\delta_a\|&amp;\le\|T(\delta_x-\delta_a)\|\\
+&amp;\quad+\|T\delta_a-\delta_a\|\\
+&amp;\le2pR+1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|T\delta_x-\delta_a\|&amp;\le\|T(\delta_x-\delta_a)\|\\
+&amp;\quad+\|T\delta_a-\delta_a\|\\
+&amp;\le2pR+1 .
+\end{aligned}
+\]</span>
+The function <span class="math" data-tex="\(b_x-b_x(o)\)">\(b_x-b_x(o)\)</span> has a Lipschitz constant of at most <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, and <span class="math" data-tex="\(\delta_a(b_x-b_x(o))=L-b_x(o)\)">\(\delta_a(b_x-b_x(o))=L-b_x(o)\)</span>. So by (1)
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int b_x\,d\mu_x-L\\
+&amp;\quad=(T\delta_x-\delta_a)\bigl(b_x-b_x(o)\bigr)\\
+&amp;\quad\ge-\frac LK\,(2pR+1)\ \ge\ -\frac L5 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int b_x\,d\mu_x-L\\
+&amp;\quad=(T\delta_x-\delta_a)\bigl(b_x-b_x(o)\bigr)\\
+&amp;\quad\ge-\frac LK\,(2pR+1)\ \ge\ -\frac L5 ,
+\end{aligned}
+\]</span>
+by (N). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The measures <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> may have negative parts; no positivity is available. All of them have the total mass <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(\mu_x-\mu_y\)">\(\mu_x-\mu_y\)</span> gives the value <span class="math" data-tex="\(0\)">\(0\)</span> to constant functions, and (1) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int g\,d(\mu_x-\mu_y)\\
+&amp;\qquad=\bigl(T(\delta_x-\delta_y)\bigr)\bigl(g-g(o)\bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int g\,d(\mu_x-\mu_y)\\
+&amp;\qquad=\bigl(T(\delta_x-\delta_y)\bigr)\bigl(g-g(o)\bigr) .
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> are the ends of a source edge and <span class="math" data-tex="\(g\)">\(g\)</span> has a Lipschitz constant of at most <span class="math" data-tex="\(1\)">\(1\)</span>, the right side is at most <span class="math" data-tex="\(\|T\|\,d_p(x,y)\le2p\)">\(\|T\|\,d_p(x,y)\le2p\)</span> in absolute value. On the other hand <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> gives a large value to <span class="math" data-tex="\(b_x\)">\(b_x\)</span>, and <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> to <span class="math" data-tex="\(b_y\)">\(b_y\)</span>. The plan is to find, for many edges, a function <span class="math" data-tex="\(g\)">\(g\)</span> with a Lipschitz constant of at most <span class="math" data-tex="\(1\)">\(1\)</span> that is close to <span class="math" data-tex="\(b_x\)">\(b_x\)</span> where <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> lives and close to <span class="math" data-tex="\(-b_y\)">\(-b_y\)</span> where <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> lives. Then the left side is about <span class="math" data-tex="\(\frac34L+\frac34L\)">\(\frac34L+\frac34L\)</span>, which is much larger than <span class="math" data-tex="\(2p\)">\(2p\)</span>. The obstacle is that <span class="math" data-tex="\(b_x\)">\(b_x\)</span> and <span class="math" data-tex="\(-b_y\)">\(-b_y\)</span> are far apart at points of <span class="math" data-tex="\(S\)">\(S\)</span> where both are large. The rest of this lesson shows how to give up few points of <span class="math" data-tex="\(S\)">\(S\)</span> so that the remaining requirements are consistent.</p>
+<h2 id="4-compatible-pairs-and-matched-walks">4. Compatible pairs and matched walks</h2>
+<p>From here on <span class="math" data-tex="\(S\subseteq M_p\)">\(S\subseteq M_p\)</span> is a fixed finite set with <span class="math" data-tex="\(o\in S\)">\(o\in S\)</span>. Its points are called <em>states</em>. Nothing else is assumed about <span class="math" data-tex="\(S\)">\(S\)</span>: it may contain anchors and vertices of several graphs.</p>
+<p><strong>Definition.</strong> A source vertex <span class="math" data-tex="\(x\)">\(x\)</span> and a state <span class="math" data-tex="\(j\)">\(j\)</span> are <em>compatible</em> if
+<span class="math math-display" data-tex="\[
+\|h(x)-h(j)\|_\infty\le K+2L+1 .
+\]">\[
+\|h(x)-h(j)\|_\infty\le K+2L+1 .
+\]</span>
+A nonbacktracking walk <span class="math" data-tex="\(x_0,e_1,x_1,\dots,e_t,x_t\)">\(x_0,e_1,x_1,\dots,e_t,x_t\)</span> in one of the graphs <span class="math" data-tex="\(G_m\)">\(G_m\)</span> is <em>matched</em> if there are states <span class="math" data-tex="\(j_0,\dots,j_t\)">\(j_0,\dots,j_t\)</span> such that <span class="math" data-tex="\(x_s\)">\(x_s\)</span> and <span class="math" data-tex="\(j_s\)">\(j_s\)</span> are compatible for <span class="math" data-tex="\(0\le s\le t\)">\(0\le s\le t\)</span> and
+<span class="math math-display" data-tex="\[
+d_p(j_{s-1},j_s)\le2L\qquad(1\le s\le t) .
+\]">\[
+d_p(j_{s-1},j_s)\le2L\qquad(1\le s\le t) .
+\]</span>
+We then say that the walk is matched <em>with the initial state</em> <span class="math" data-tex="\(j_0\)">\(j_0\)</span>. It <em>starts at</em> <span class="math" data-tex="\(x_0\)">\(x_0\)</span> and <em>starts through</em> the incidence <span class="math" data-tex="\(e_1\)">\(e_1\)</span>.</p>
+<p>The states may repeat, and so may the vertices. A part <span class="math" data-tex="\(x_0,e_1,\dots,x_s\)">\(x_0,e_1,\dots,x_s\)</span> of a matched walk is matched, with the same initial state.</p>
+<p>The bound <span class="math" data-tex="\(K+2L+1\)">\(K+2L+1\)</span> is the sum of three numbers: a label distance below <span class="math" data-tex="\(K\)">\(K\)</span>, at which a bump is positive; one step along a source edge, which changes the label by at most <span class="math" data-tex="\(1\)">\(1\)</span>; and one step between states of distance at most <span class="math" data-tex="\(2L\)">\(2L\)</span>. By (N) it is <span class="math" data-tex="\(D-4\)">\(D-4\)</span>, less than the height <span class="math" data-tex="\(D\)">\(D\)</span> at which labels are cut off. This is used in the following way.</p>
+<p><strong>Lemma 4.1.</strong> For a state <span class="math" data-tex="\(j\)">\(j\)</span> let <span class="math" data-tex="\(C_j\)">\(C_j\)</span> be the set of the colors <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(h_i(j)&lt;D\)">\(h_i(j)&lt;D\)</span>. Then <span class="math" data-tex="\(|C_j|\le H\)">\(|C_j|\le H\)</span>, and if a source vertex <span class="math" data-tex="\(x\)">\(x\)</span> is compatible with <span class="math" data-tex="\(j\)">\(j\)</span>, then the color of <span class="math" data-tex="\(x\)">\(x\)</span> lies in <span class="math" data-tex="\(C_j\)">\(C_j\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(|C_j|\le H\)">\(|C_j|\le H\)</span> by (G4). If <span class="math" data-tex="\(x\)">\(x\)</span> has the color <span class="math" data-tex="\(i\)">\(i\)</span>, then <span class="math" data-tex="\(h_i(x)=0\)">\(h_i(x)=0\)</span> by (G2), so <span class="math" data-tex="\(h_i(j)\le K+2L+1&lt;D\)">\(h_i(j)\le K+2L+1&lt;D\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So a state admits few of the <span class="math" data-tex="\(k\)">\(k\)</span> colors for the vertices that it can follow.</p>
+<h2 id="5-long-matched-walks-are-rare">5. Long matched walks are rare</h2>
+<p><strong>Proposition 5.1.</strong> Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and let <span class="math" data-tex="\(\beta_m\)">\(\beta_m\)</span> be the fraction of the vertices of <span class="math" data-tex="\(G_m\)">\(G_m\)</span> at which a matched walk of length <span class="math" data-tex="\(n\)">\(n\)</span> starts. Then
+<span class="math math-display" data-tex="\[
+\limsup_{m\to\infty}\beta_m\le|S|\,\frac Hk\,\Bigl(\frac{\Delta QH}{k}\Bigr)^n .
+\]">\[
+\limsup_{m\to\infty}\beta_m\le|S|\,\frac Hk\,\Bigl(\frac{\Delta QH}{k}\Bigr)^n .
+\]</span>
+Consequently there are <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(\beta_m&lt;\dfrac1{20V}\)">\(\beta_m&lt;\dfrac1{20V}\)</span>.</p>
+<p><strong>Proof.</strong> <em>A weaker property.</em> Say that a vertex <span class="math" data-tex="\(x\)">\(x\)</span> of a colored <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>-regular multigraph has the property <span class="math" data-tex="\((\mathrm W)\)">\((\mathrm W)\)</span> if there are a nonbacktracking walk <span class="math" data-tex="\(x=x_0,e_1,x_1,\dots,e_n,x_n\)">\(x=x_0,e_1,x_1,\dots,e_n,x_n\)</span> and states <span class="math" data-tex="\(j_0,\dots,j_n\)">\(j_0,\dots,j_n\)</span> with <span class="math" data-tex="\(d_p(j_{s-1},j_s)\le2L\)">\(d_p(j_{s-1},j_s)\le2L\)</span> for <span class="math" data-tex="\(1\le s\le n\)">\(1\le s\le n\)</span> and with the color of <span class="math" data-tex="\(x_s\)">\(x_s\)</span> in <span class="math" data-tex="\(C_{j_s}\)">\(C_{j_s}\)</span> for <span class="math" data-tex="\(0\le s\le n\)">\(0\le s\le n\)</span>. By Lemma 4.1 every vertex of <span class="math" data-tex="\(G_m\)">\(G_m\)</span> at which a matched walk of length <span class="math" data-tex="\(n\)">\(n\)</span> starts has the property <span class="math" data-tex="\((\mathrm W)\)">\((\mathrm W)\)</span>.</p>
+<p>The property <span class="math" data-tex="\((\mathrm W)\)">\((\mathrm W)\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> can be read off from the colored ball of radius <span class="math" data-tex="\(n\)">\(n\)</span> around <span class="math" data-tex="\(x\)">\(x\)</span>: a walk of length <span class="math" data-tex="\(n\)">\(n\)</span> from <span class="math" data-tex="\(x\)">\(x\)</span> uses only vertices and edge instances of this ball, and the property mentions only their colors. The set <span class="math" data-tex="\(S\)">\(S\)</span>, the sets <span class="math" data-tex="\(C_j\)">\(C_j\)</span> and the pairs of states at a distance of at most <span class="math" data-tex="\(2L\)">\(2L\)</span> are fixed. By (T) the fraction of the vertices of <span class="math" data-tex="\(G_m\)">\(G_m\)</span> with <span class="math" data-tex="\((\mathrm W)\)">\((\mathrm W)\)</span> converges to the probability <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span> that the root of the <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>-regular tree with independent uniform colors has <span class="math" data-tex="\((\mathrm W)\)">\((\mathrm W)\)</span>. So <span class="math" data-tex="\(\limsup\beta_m\le\varrho\)">\(\limsup\beta_m\le\varrho\)</span>.</p>
+<p><em>The tree.</em> In the tree, a nonbacktracking walk from the root goes one level down at every step: after the first step it is at a child of the root, and a step that does not reverse the step before cannot go to the parent. So it visits <span class="math" data-tex="\(n+1\)">\(n+1\)</span> different vertices, and there are at most <span class="math" data-tex="\(\Delta^n\)">\(\Delta^n\)</span> such walks. A sequence of states <span class="math" data-tex="\(j_0,\dots,j_n\)">\(j_0,\dots,j_n\)</span> as in <span class="math" data-tex="\((\mathrm W)\)">\((\mathrm W)\)</span> is given by one of <span class="math" data-tex="\(|S|\)">\(|S|\)</span> states <span class="math" data-tex="\(j_0\)">\(j_0\)</span> and, at each step, one of the at most <span class="math" data-tex="\(Q\)">\(Q\)</span> states in the closed ball of radius <span class="math" data-tex="\(2L\)">\(2L\)</span> around the state before, by (G4). So there are at most <span class="math" data-tex="\(|S|\,Q^n\)">\(|S|\,Q^n\)</span> such sequences. For a fixed walk and a fixed sequence of states, the colors of the <span class="math" data-tex="\(n+1\)">\(n+1\)</span> different vertices are independent and uniform, so the probability that the color of <span class="math" data-tex="\(x_s\)">\(x_s\)</span> lies in <span class="math" data-tex="\(C_{j_s}\)">\(C_{j_s}\)</span> for all <span class="math" data-tex="\(s\)">\(s\)</span> is at most <span class="math" data-tex="\((H/k)^{n+1}\)">\((H/k)^{n+1}\)</span>. Summing over the walks and the sequences,
+<span class="math math-display" data-tex="\[
+\varrho\le\Delta^n\cdot|S|\,Q^n\cdot\Bigl(\frac Hk\Bigr)^{n+1} ,
+\]">\[
+\varrho\le\Delta^n\cdot|S|\,Q^n\cdot\Bigl(\frac Hk\Bigr)^{n+1} ,
+\]</span>
+which is the bound of the proposition.</p>
+<p><em>The choice.</em> By (N), <span class="math" data-tex="\(\Delta QH/k&lt;\tfrac12\)">\(\Delta QH/k&lt;\tfrac12\)</span>. Choose <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> so large that <span class="math" data-tex="\(|S|\,\frac Hk\,2^{-n}&lt;\frac1{40V}\)">\(|S|\,\frac Hk\,2^{-n}&lt;\frac1{40V}\)</span>. Then <span class="math" data-tex="\(\beta_m&lt;\frac1{20V}\)">\(\beta_m&lt;\frac1{20V}\)</span> for all large <span class="math" data-tex="\(m\)">\(m\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The proof replaced compatibility by the weaker condition on the colors, because the colors of different vertices of the tree are independent, while the labels are not. The set <span class="math" data-tex="\(S\)">\(S\)</span> may have been chosen with knowledge of the whole sequence of graphs. This does no harm: the graphs are fixed objects, and once <span class="math" data-tex="\(S\)">\(S\)</span> is fixed, <span class="math" data-tex="\((\mathrm W)\)">\((\mathrm W)\)</span> is one fixed property of colored balls, to which (T) applies.</p>
+<h2 id="6-records-and-exceptional-directions">6. Records and exceptional directions</h2>
+<p>Fix <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> and one of the graphs, <span class="math" data-tex="\(G=G_m\)">\(G=G_m\)</span>. Call a vertex of <span class="math" data-tex="\(G\)">\(G\)</span> <em>bad</em> if a matched walk of length <span class="math" data-tex="\(n\)">\(n\)</span> starts at it, and <em>good</em> otherwise.</p>
+<p>Let <span class="math" data-tex="\(x\)">\(x\)</span> be a good vertex, <span class="math" data-tex="\(e\in\mathcal D(x)\)">\(e\in\mathcal D(x)\)</span> an incidence that starts at <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(j\)">\(j\)</span> a state. A matched walk that starts at <span class="math" data-tex="\(x\)">\(x\)</span> has a length of at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, because its first <span class="math" data-tex="\(n\)">\(n\)</span> steps would be a matched walk of length <span class="math" data-tex="\(n\)">\(n\)</span>. The <em>record</em> <span class="math" data-tex="\(r_x(e,j)\)">\(r_x(e,j)\)</span> is the largest length of a matched walk that starts through <span class="math" data-tex="\(e\)">\(e\)</span> with the initial state <span class="math" data-tex="\(j\)">\(j\)</span>; it is <span class="math" data-tex="\(0\)">\(0\)</span> if there is no such walk of positive length. So <span class="math" data-tex="\(0\le r_x(e,j)\le n-1\)">\(0\le r_x(e,j)\le n-1\)</span>.</p>
+<p><strong>Definition.</strong> Let <span class="math" data-tex="\(x\)">\(x\)</span> be a good vertex and <span class="math" data-tex="\(j\)">\(j\)</span> a state. An incidence <span class="math" data-tex="\(e\in\mathcal D(x)\)">\(e\in\mathcal D(x)\)</span> is <em>exceptional at</em> <span class="math" data-tex="\((x,j)\)">\((x,j)\)</span> if
+<span class="math math-display" data-tex="\[
+r_x(e,j)&gt;r_x(e&#x27;,j)
+\]">\[
+r_x(e,j)&gt;r_x(e&#x27;,j)
+\]</span>
+for all <span class="math" data-tex="\(e&#x27;\in\mathcal D(x)\)">\(e&#x27;\in\mathcal D(x)\)</span> with <span class="math" data-tex="\(e&#x27;\ne e\)">\(e&#x27;\ne e\)</span>. At a bad vertex <span class="math" data-tex="\(x\)">\(x\)</span>, every incidence in <span class="math" data-tex="\(\mathcal D(x)\)">\(\mathcal D(x)\)</span> is called exceptional at <span class="math" data-tex="\((x,j)\)">\((x,j)\)</span> for every state <span class="math" data-tex="\(j\)">\(j\)</span>. For an incidence <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> let <span class="math" data-tex="\(E_e\)">\(E_e\)</span> be the set of the states <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span> for which <span class="math" data-tex="\(e\)">\(e\)</span> is exceptional at <span class="math" data-tex="\((x,j)\)">\((x,j)\)</span>.</p>
+<p>At a good vertex and for a fixed state there is at most one exceptional incidence: the one with the strictly largest record, if the largest record is not attained twice. So at a good vertex <span class="math" data-tex="\(x\)">\(x\)</span> every state lies in at most one of the <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> sets <span class="math" data-tex="\(E_e\)">\(E_e\)</span>, <span class="math" data-tex="\(e\in\mathcal D(x)\)">\(e\in\mathcal D(x)\)</span>.</p>
+<p><strong>Lemma 6.1</strong> (exceptional directions). Let <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span> be an incidence of <span class="math" data-tex="\(G\)">\(G\)</span>, and let <span class="math" data-tex="\(j,j&#x27;\)">\(j,j&#x27;\)</span> be states such that <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are compatible, <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span> are compatible, and <span class="math" data-tex="\(d_p(j,j&#x27;)\le2L\)">\(d_p(j,j&#x27;)\le2L\)</span>. Then <span class="math" data-tex="\(j\in E_e\)">\(j\in E_e\)</span> or <span class="math" data-tex="\(j&#x27;\in E_{\bar e}\)">\(j&#x27;\in E_{\bar e}\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(x\)">\(x\)</span> is bad, then <span class="math" data-tex="\(j\in E_e\)">\(j\in E_e\)</span>; if <span class="math" data-tex="\(y\)">\(y\)</span> is bad, then <span class="math" data-tex="\(j&#x27;\in E_{\bar e}\)">\(j&#x27;\in E_{\bar e}\)</span>. Let both be good, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha_x&amp;=\max_{e&#x27;\in\mathcal D(x),\ e&#x27;\ne e}r_x(e&#x27;,j),\\
+\alpha_y&amp;=\max_{f\in\mathcal D(y),\ f\ne\bar e}r_y(f,j&#x27;) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha_x&amp;=\max_{e&#x27;\in\mathcal D(x),\ e&#x27;\ne e}r_x(e&#x27;,j),\\
+\alpha_y&amp;=\max_{f\in\mathcal D(y),\ f\ne\bar e}r_y(f,j&#x27;) .
+\end{aligned}
+\]</span>
+The maxima are over <span class="math" data-tex="\(\Delta-1\ge3\)">\(\Delta-1\ge3\)</span> incidences.</p>
+<p>We claim that <span class="math" data-tex="\(r_x(e,j)\ge1+\alpha_y\)">\(r_x(e,j)\ge1+\alpha_y\)</span>. If <span class="math" data-tex="\(\alpha_y&gt;0\)">\(\alpha_y&gt;0\)</span>, there is a matched walk of length <span class="math" data-tex="\(\alpha_y\)">\(\alpha_y\)</span> that starts at <span class="math" data-tex="\(y\)">\(y\)</span> through an incidence <span class="math" data-tex="\(f\ne\bar e\)">\(f\ne\bar e\)</span> with the initial state <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span>. Put the step <span class="math" data-tex="\(e\)">\(e\)</span> in front of it, with the state <span class="math" data-tex="\(j\)">\(j\)</span> in front of its states. The result is a walk from <span class="math" data-tex="\(x\)">\(x\)</span>; it is nonbacktracking because <span class="math" data-tex="\(f\ne\bar e\)">\(f\ne\bar e\)</span>; and it is matched because <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are compatible and <span class="math" data-tex="\(d_p(j,j&#x27;)\le2L\)">\(d_p(j,j&#x27;)\le2L\)</span>. It starts through <span class="math" data-tex="\(e\)">\(e\)</span> with the initial state <span class="math" data-tex="\(j\)">\(j\)</span> and has the length <span class="math" data-tex="\(1+\alpha_y\)">\(1+\alpha_y\)</span>. If <span class="math" data-tex="\(\alpha_y=0\)">\(\alpha_y=0\)</span>, the walk <span class="math" data-tex="\(x,e,y\)">\(x,e,y\)</span> with the states <span class="math" data-tex="\(j,j&#x27;\)">\(j,j&#x27;\)</span> is matched and has the length <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>The same argument with the roles of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> exchanged, for the incidence <span class="math" data-tex="\(\bar e\colon y\to x\)">\(\bar e\colon y\to x\)</span>, gives <span class="math" data-tex="\(r_y(\bar e,j&#x27;)\ge1+\alpha_x\)">\(r_y(\bar e,j&#x27;)\ge1+\alpha_x\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(e\)">\(e\)</span> is not exceptional at <span class="math" data-tex="\((x,j)\)">\((x,j)\)</span> and <span class="math" data-tex="\(\bar e\)">\(\bar e\)</span> is not exceptional at <span class="math" data-tex="\((y,j&#x27;)\)">\((y,j&#x27;)\)</span>. Then <span class="math" data-tex="\(r_x(e,j)\le\alpha_x\)">\(r_x(e,j)\le\alpha_x\)</span> and <span class="math" data-tex="\(r_y(\bar e,j&#x27;)\le\alpha_y\)">\(r_y(\bar e,j&#x27;)\le\alpha_y\)</span>. Together with the two inequalities,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha_x\ge r_x(e,j)&amp;\ge1+\alpha_y\\
+&amp;\ge1+r_y(\bar e,j&#x27;)\ge2+\alpha_x ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha_x\ge r_x(e,j)&amp;\ge1+\alpha_y\\
+&amp;\ge1+r_y(\bar e,j&#x27;)\ge2+\alpha_x ,
+\end{aligned}
+\]</span>
+which is impossible. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The proof speaks about incidences only, so it covers loops and parallel edges; for a loop, <span class="math" data-tex="\(x=y\)">\(x=y\)</span> and <span class="math" data-tex="\(\bar e\)">\(\bar e\)</span> is the other incidence of the loop. In words: if two neighbouring good vertices have compatible states that are close to each other, then for at least one of the two the direction to the other vertex is the direction in which its state can be followed strictly longest. Each state has at most one such direction at each good vertex. The next lesson gives up, for the incidence <span class="math" data-tex="\(e\colon x\to y\)">\(e\colon x\to y\)</span>, the states in <span class="math" data-tex="\(E_e\)">\(E_e\)</span> for the measure <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> and the states in <span class="math" data-tex="\(E_{\bar e}\)">\(E_{\bar e}\)</span> for the measure <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span>. Averaged over the <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> directions this costs a fraction <span class="math" data-tex="\(1/\Delta\)">\(1/\Delta\)</span> of the total variation of the measures.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(T\)">\(T\)</span> be as in Lemma 3.2 and let <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span> with <span class="math" data-tex="\(T\delta_x=\delta_x\)">\(T\delta_x=\delta_x\)</span>. Show that one can take for <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> the measure with <span class="math" data-tex="\(\mu_x(\{x\})=1\)">\(\mu_x(\{x\})=1\)</span> and <span class="math" data-tex="\(\mu_x(\{j\})=0\)">\(\mu_x(\{j\})=0\)</span> for <span class="math" data-tex="\(j\ne x\)">\(j\ne x\)</span>.</p>
+<p><strong>7.2.</strong> Show that the numbers <span class="math" data-tex="\(c_x(j)\)">\(c_x(j)\)</span> in the proof of Lemma 3.2 are determined by <span class="math" data-tex="\(T\delta_x\)">\(T\delta_x\)</span>.</p>
+<p><strong>7.3.</strong> How many nonbacktracking walks of length <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> start at the root of the <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>-regular tree?</p>
+<p><strong>7.4.</strong> Let <span class="math" data-tex="\(x\)">\(x\)</span> be a good vertex and <span class="math" data-tex="\(j\)">\(j\)</span> a state such that no matched walk of positive length starts at <span class="math" data-tex="\(x\)">\(x\)</span> with the initial state <span class="math" data-tex="\(j\)">\(j\)</span>. Show that no incidence is exceptional at <span class="math" data-tex="\((x,j)\)">\((x,j)\)</span>.</p>
+<p><strong>7.5.</strong> Let <span class="math" data-tex="\(x\)">\(x\)</span> be a source vertex and <span class="math" data-tex="\(j\)">\(j\)</span> a state with <span class="math" data-tex="\(b_x(j)&gt;0\)">\(b_x(j)&gt;0\)</span>. Show that <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are compatible, and that every source vertex <span class="math" data-tex="\(y\)">\(y\)</span> joined to <span class="math" data-tex="\(x\)">\(x\)</span> by a source edge is compatible with every state <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span> with <span class="math" data-tex="\(d_p(j,j&#x27;)\le2L\)">\(d_p(j,j&#x27;)\le2L\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> If <span class="math" data-tex="\(x\ne o\)">\(x\ne o\)</span>, then <span class="math" data-tex="\(c_x(x)=1\)">\(c_x(x)=1\)</span> and <span class="math" data-tex="\(c_x(j)=0\)">\(c_x(j)=0\)</span> otherwise is a representation of <span class="math" data-tex="\(T\delta_x\)">\(T\delta_x\)</span>, and <span class="math" data-tex="\(\mu_x(\{o\})=1-1=0\)">\(\mu_x(\{o\})=1-1=0\)</span>. If <span class="math" data-tex="\(x=o\)">\(x=o\)</span>, then <span class="math" data-tex="\(T\delta_o=0\)">\(T\delta_o=0\)</span>, all <span class="math" data-tex="\(c_o(j)\)">\(c_o(j)\)</span> can be taken as <span class="math" data-tex="\(0\)">\(0\)</span>, and <span class="math" data-tex="\(\mu_o(\{o\})=1\)">\(\mu_o(\{o\})=1\)</span>.</p>
+<p><strong>7.2.</strong> The evaluations <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span>, <span class="math" data-tex="\(j\in S\setminus\{o\}\)">\(j\in S\setminus\{o\}\)</span>, are linearly independent: the function that is <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> at all other points of <span class="math" data-tex="\(M_p\)">\(M_p\)</span> vanishes at <span class="math" data-tex="\(o\)">\(o\)</span> and has a Lipschitz constant of at most <span class="math" data-tex="\(1\)">\(1\)</span>, because different points have distances at least <span class="math" data-tex="\(1\)">\(1\)</span>; a vanishing combination applied to it gives that the coefficient of <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> choices for the first step and <span class="math" data-tex="\(\Delta-1\)">\(\Delta-1\)</span> for each further step: <span class="math" data-tex="\(\Delta(\Delta-1)^{n-1}\)">\(\Delta(\Delta-1)^{n-1}\)</span>.</p>
+<p><strong>7.4.</strong> All records <span class="math" data-tex="\(r_x(e,j)\)">\(r_x(e,j)\)</span>, <span class="math" data-tex="\(e\in\mathcal D(x)\)">\(e\in\mathcal D(x)\)</span>, are <span class="math" data-tex="\(0\)">\(0\)</span>. No record is strictly larger than the others, since there are <span class="math" data-tex="\(\Delta\ge4\)">\(\Delta\ge4\)</span> incidences.</p>
+<p><strong>7.5.</strong> By Lemma 3.1, <span class="math" data-tex="\(\|h(x)-h(j)\|_\infty&lt;K\le K+2L+1\)">\(\|h(x)-h(j)\|_\infty&lt;K\le K+2L+1\)</span>. By (G1) and (G2), <span class="math" data-tex="\(\|h(y)-h(x)\|_\infty\le1\)">\(\|h(y)-h(x)\|_\infty\le1\)</span> and <span class="math" data-tex="\(\|h(j)-h(j&#x27;)\|_\infty\le2L\)">\(\|h(j)-h(j&#x27;)\|_\infty\le2L\)</span>. So <span class="math" data-tex="\(\|h(y)-h(j&#x27;)\|_\infty&lt;1+K+2L\)">\(\|h(y)-h(j&#x27;)\|_\infty&lt;1+K+2L\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-LF] OpenAI, <em>A uniformly discrete counterexample to bounded approximation in Lipschitz-free spaces</em>, OpenAI Math Release preprint, 26 September 2026, Sections 4 and 5. https://github.com/openai/math/tree/main/preprints/Failure-of-Bounded-Approximation-in-a-Lipschitz-Free-Space-over-a-Uniformly-Discrete-Metric-Space-September-26-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,0 +1,269 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The stopped walk and the cotype inequality</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Metric Markov cotype two of ℓ₁)</a><a href="cuts-the-cubic-map-and-a-quartic-potential.html">Previous lesson</a><a href="complex-scalars-measure-spaces-and-lipschitz-extension.html">Next lesson</a><a href="src/the-stopped-walk-and-the-cotype-inequality.md">Editable source</a></nav><main><article><h1 id="the-stopped-walk-and-the-cotype-inequality">The stopped walk and the cotype inequality</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves that <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> has metric Markov cotype two with the constant <span class="math" data-tex="\(12\sqrt{21}\)">\(12\sqrt{21}\)</span>. Given points <span class="math" data-tex="\(x_1,\dots,x_n\)">\(x_1,\dots,x_n\)</span> of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> on the states of a chain and a number <span class="math" data-tex="\(t\)">\(t\)</span>, the new points are built in three moves. The points are replaced by vertices <span class="math" data-tex="\(z_i\)">\(z_i\)</span> of a cube (the cut representation). The vertex <span class="math" data-tex="\(z_i\)">\(z_i\)</span> is replaced by the mean <span class="math" data-tex="\(h_i\)">\(h_i\)</span> of the vertices at which a walk from <span class="math" data-tex="\(i\)">\(i\)</span> arrives if it stops after every step with the probability <span class="math" data-tex="\(1/(t+1)\)">\(1/(t+1)\)</span>. Then the cubic map is applied and the result is mapped back into <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>. The same points have a second description: <span class="math" data-tex="\(y_i\)">\(y_i\)</span> is the mean of the coordinatewise median of three independent copies of the place where the walk from <span class="math" data-tex="\(i\)">\(i\)</span> stops.</p>
+<ul>
+<li>The new points and the first-step identity (Section 1).</li>
+<li>The energy inequality with the constant <span class="math" data-tex="\(108\)">\(108\)</span> (Proposition 2.1).</li>
+<li>The theorem, for reversible and for stationary matrices (Theorem 3.1).</li>
+<li>The walk that stops; the mean of medians of three (Proposition 4.2).</li>
+<li>The example of two states that are exchanged (Section 5).</li>
+</ul>
+<p>The lesson follows [OpenAI-MC, Section 5]. It uses the definitions, Lemma 1.1 and Proposition 4.3 of <a href="metric-markov-cotype-two.html">Metric Markov cotype two</a>, and Proposition 1.2, Lemma 2.1 and Corollary 4.1 of <a href="cuts-the-cubic-map-and-a-quartic-potential.html">Cuts, the cubic map and a quartic potential</a>.</p>
+<h2 id="1-the-new-points">1. The new points</h2>
+<p>Throughout Sections 1 and 2 the following are fixed: a stochastic matrix <span class="math" data-tex="\(A=(a_{ij})\)">\(A=(a_{ij})\)</span> on <span class="math" data-tex="\([n]\)">\([n]\)</span> with a stationary vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span>; an integer <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>; and points <span class="math" data-tex="\(x_1,\dots,x_n\in\ell_1\)">\(x_1,\dots,x_n\in\ell_1\)</span> that are not all equal. Reversibility of <span class="math" data-tex="\(A\)">\(A\)</span> is not assumed.</p>
+<p>The cut representation gives a finite nonempty set <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> with weights <span class="math" data-tex="\(w_B&gt;0\)">\(w_B&gt;0\)</span>, vertices <span class="math" data-tex="\(z_1,\dots,z_n\)">\(z_1,\dots,z_n\)</span> of the cube <span class="math" data-tex="\(Q=[0,1]^{\mathcal B}\)">\(Q=[0,1]^{\mathcal B}\)</span>, and an affine map <span class="math" data-tex="\(T\)">\(T\)</span> from <span class="math" data-tex="\(\mathbb R^{\mathcal B}\)">\(\mathbb R^{\mathcal B}\)</span> to <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T(z_i)&amp;=x_i,\\
+\|x_i-x_j\|_1&amp;=\|z_i-z_j\|_H^2,\\
+\|T(u)-T(u&#x27;)\|_1&amp;\le\|u-u&#x27;\|_{1,w} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+T(z_i)&amp;=x_i,\\
+\|x_i-x_j\|_1&amp;=\|z_i-z_j\|_H^2,\\
+\|T(u)-T(u&#x27;)\|_1&amp;\le\|u-u&#x27;\|_{1,w} .
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(\|\cdot\|_{1,w}\)">\(\|\cdot\|_{1,w}\)</span> and <span class="math" data-tex="\(\|\cdot\|_H\)">\(\|\cdot\|_H\)</span> are the weighted norms of the cube, and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is the map of <span class="math" data-tex="\(Q\)">\(Q\)</span> that applies <span class="math" data-tex="\(\phi(r)=3r^2-2r^3\)">\(\phi(r)=3r^2-2r^3\)</span> in every coordinate.</p>
+<p>Put <span class="math" data-tex="\(p=1/(t+1)\)">\(p=1/(t+1)\)</span> and <span class="math" data-tex="\(q=t/(t+1)\)">\(q=t/(t+1)\)</span>, and let
+<span class="math math-display" data-tex="\[
+G=p\sum_{s\ge0}q^sA^s
+\]">\[
+G=p\sum_{s\ge0}q^sA^s
+\]</span>
+be the geometric average of the powers of <span class="math" data-tex="\(A\)">\(A\)</span> with the ratio <span class="math" data-tex="\(q\)">\(q\)</span>. It is a stochastic matrix with the stationary vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p><strong>Definition.</strong> For <span class="math" data-tex="\(i\in[n]\)">\(i\in[n]\)</span> put
+<span class="math math-display" data-tex="\[
+h_i=\sum_jG_{ij}\,z_j,\qquad y_i=T\bigl(\Phi(h_i)\bigr) .
+\]">\[
+h_i=\sum_jG_{ij}\,z_j,\qquad y_i=T\bigl(\Phi(h_i)\bigr) .
+\]</span></p>
+<p>The vector <span class="math" data-tex="\(h_i\)">\(h_i\)</span> is an average of vertices with the weights <span class="math" data-tex="\(G_{ij}\ge0\)">\(G_{ij}\ge0\)</span> of sum <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(h_i\in Q\)">\(h_i\in Q\)</span>, and <span class="math" data-tex="\(\Phi(h_i)\in Q\)">\(\Phi(h_i)\in Q\)</span> is defined. The points <span class="math" data-tex="\(y_i\)">\(y_i\)</span> lie in <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>.</p>
+<p>In terms of a walk: start at <span class="math" data-tex="\(i\)">\(i\)</span>, move with the matrix <span class="math" data-tex="\(A\)">\(A\)</span>, and after every arrival (also at the start) stop with the probability <span class="math" data-tex="\(p\)">\(p\)</span>. The walk stops at <span class="math" data-tex="\(j\)">\(j\)</span> with the probability <span class="math" data-tex="\(G_{ij}\)">\(G_{ij}\)</span>, and the number of steps before it stops has the mean <span class="math" data-tex="\(t\)">\(t\)</span>. The coordinate <span class="math" data-tex="\(h_i(B)=\sum_{j\in B}G_{ij}\)">\(h_i(B)=\sum_{j\in B}G_{ij}\)</span> is the probability that the walk from <span class="math" data-tex="\(i\)">\(i\)</span> stops inside the cut <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (first-step identity). For every <span class="math" data-tex="\(i\)">\(i\)</span>,
+<span class="math math-display" data-tex="\[
+h_i=p\,z_i+q\sum_ja_{ij}\,h_j .
+\]">\[
+h_i=p\,z_i+q\sum_ja_{ij}\,h_j .
+\]</span></p>
+<p><strong>Proof.</strong> By Lemma 1.1 of the first lesson, <span class="math" data-tex="\(G=pI+qAG\)">\(G=pI+qAG\)</span>. Apply both sides to the family <span class="math" data-tex="\((z_j)\)">\((z_j)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The identity says: the walk at <span class="math" data-tex="\(i\)">\(i\)</span> stops there with the probability <span class="math" data-tex="\(p\)">\(p\)</span>, and otherwise moves to <span class="math" data-tex="\(j\)">\(j\)</span> with the probability <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span> and goes on from there.</p>
+<h2 id="2-the-energy-inequality">2. The energy inequality</h2>
+<p>Two numbers measure the new vertices <span class="math" data-tex="\(\Phi(h_i)\)">\(\Phi(h_i)\)</span>: the cost of the replacement and the one-step energy,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal U&amp;=\sum_i\pi_i\,\|z_i-\Phi(h_i)\|_{1,w}^2,\\
+\mathcal V&amp;=\sum_{i,j}\pi_ia_{ij}\,\|\Phi(h_i)-\Phi(h_j)\|_{1,w}^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal U&amp;=\sum_i\pi_i\,\|z_i-\Phi(h_i)\|_{1,w}^2,\\
+\mathcal V&amp;=\sum_{i,j}\pi_ia_{ij}\,\|\Phi(h_i)-\Phi(h_j)\|_{1,w}^2 .
+\end{aligned}
+\]</span>
+Recall the energy <span class="math" data-tex="\(\mathcal E_G(x)=\sum_{i,j}\pi_iG_{ij}\|x_i-x_j\|_1^2\)">\(\mathcal E_G(x)=\sum_{i,j}\pi_iG_{ij}\|x_i-x_j\|_1^2\)</span>.</p>
+<p><strong>Proposition 2.1.</strong> <span class="math" data-tex="\(\mathcal U+t\,\mathcal V\le108\,\mathcal E_G(x)\)">\(\mathcal U+t\,\mathcal V\le108\,\mathcal E_G(x)\)</span>.</p>
+<p><strong>Proof.</strong> <em>Step 1: the cost of one state.</em> For <span class="math" data-tex="\(i\in[n]\)">\(i\in[n]\)</span> let
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\kappa_i&amp;=p\,\|z_i-\Phi(h_i)\|_{1,w}^2\\
+&amp;\quad+q\sum_ja_{ij}\,\|\Phi(h_j)-\Phi(h_i)\|_{1,w}^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\kappa_i&amp;=p\,\|z_i-\Phi(h_i)\|_{1,w}^2\\
+&amp;\quad+q\sum_ja_{ij}\,\|\Phi(h_j)-\Phi(h_i)\|_{1,w}^2 .
+\end{aligned}
+\]</span>
+Then <span class="math" data-tex="\(\sum_i\pi_i\kappa_i=p\,\mathcal U+q\,\mathcal V\)">\(\sum_i\pi_i\kappa_i=p\,\mathcal U+q\,\mathcal V\)</span>.</p>
+<p><em>Step 2: the inequality for one state.</em> Fix an index <span class="math" data-tex="\(r\)">\(r\)</span> and let <span class="math" data-tex="\(e=z_r\)">\(e=z_r\)</span>; this is a vertex of <span class="math" data-tex="\(Q\)">\(Q\)</span>. With the potential <span class="math" data-tex="\(F_e(u)=\|u-e\|_H^4\)">\(F_e(u)=\|u-e\|_H^4\)</span> put
+<span class="math math-display" data-tex="\[
+f_i=F_e(h_i),\qquad g_i=F_e(z_i) .
+\]">\[
+f_i=F_e(h_i),\qquad g_i=F_e(z_i) .
+\]</span>
+So <span class="math" data-tex="\(g_i=\|z_i-z_r\|_H^4=\|x_i-x_r\|_1^2\)">\(g_i=\|z_i-z_r\|_H^4=\|x_i-x_r\|_1^2\)</span>. Apply Corollary 4.1 of the lesson on the cubic map to the point <span class="math" data-tex="\(u=h_i\)">\(u=h_i\)</span> and the following points with weights: the point <span class="math" data-tex="\(z_i\)">\(z_i\)</span> with the weight <span class="math" data-tex="\(p\)">\(p\)</span>, and the points <span class="math" data-tex="\(h_j\)">\(h_j\)</span> with the weights <span class="math" data-tex="\(q\,a_{ij}\)">\(q\,a_{ij}\)</span>. The weights are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span> with the sum <span class="math" data-tex="\(1\)">\(1\)</span>, and by Lemma 1.1 the weighted mean of the points is <span class="math" data-tex="\(h_i\)">\(h_i\)</span>. Since <span class="math" data-tex="\(\Phi(z_i)=z_i\)">\(\Phi(z_i)=z_i\)</span>, the corollary gives
+<span class="math math-display" data-tex="\[
+\kappa_i\le108\,\Bigl(p\,g_i+q\sum_ja_{ij}f_j-f_i\Bigr) .
+\]">\[
+\kappa_i\le108\,\Bigl(p\,g_i+q\sum_ja_{ij}f_j-f_i\Bigr) .
+\]</span>
+Write this as an inequality between vectors indexed by <span class="math" data-tex="\(i\)">\(i\)</span>: <span class="math" data-tex="\(\kappa\le108\,(p\,g+q\,Af-f)\)">\(\kappa\le108\,(p\,g+q\,Af-f)\)</span> in every entry.</p>
+<p><em>Step 3: summing along the walk.</em> Let <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>. The matrix <span class="math" data-tex="\(q^mA^m\)">\(q^mA^m\)</span> has entries <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>, so it keeps inequalities between vectors. Its row <span class="math" data-tex="\(r\)">\(r\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;q^m(A^m\kappa)_r\\
+&amp;\quad\le108\,\bigl(p\,q^m(A^mg)_r+q^{m+1}(A^{m+1}f)_r\\
+&amp;\qquad\qquad-q^m(A^mf)_r\bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;q^m(A^m\kappa)_r\\
+&amp;\quad\le108\,\bigl(p\,q^m(A^mg)_r+q^{m+1}(A^{m+1}f)_r\\
+&amp;\qquad\qquad-q^m(A^mf)_r\bigr) .
+\end{aligned}
+\]</span>
+Sum over <span class="math" data-tex="\(m=0,\dots,L-1\)">\(m=0,\dots,L-1\)</span>. The last two terms telescope:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{m&lt;L}q^m(A^m\kappa)_r\\
+&amp;\quad\le108\,\Bigl(p\sum_{m&lt;L}q^m(A^mg)_r\\
+&amp;\qquad\qquad+q^L(A^Lf)_r-f_r\Bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{m&lt;L}q^m(A^m\kappa)_r\\
+&amp;\quad\le108\,\Bigl(p\sum_{m&lt;L}q^m(A^mg)_r\\
+&amp;\qquad\qquad+q^L(A^Lf)_r-f_r\Bigr) .
+\end{aligned}
+\]</span>
+On the right, <span class="math" data-tex="\(p\sum_{m&lt;L}q^m(A^mg)_r\le(Gg)_r\)">\(p\sum_{m&lt;L}q^m(A^mg)_r\le(Gg)_r\)</span> because <span class="math" data-tex="\(g\ge0\)">\(g\ge0\)</span>; <span class="math" data-tex="\(f_r\ge0\)">\(f_r\ge0\)</span>; and <span class="math" data-tex="\(q^L(A^Lf)_r\le q^L\max_if_i\)">\(q^L(A^Lf)_r\le q^L\max_if_i\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>. The terms on the left are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{m\ge0}q^m(A^m\kappa)_r\le108\,(Gg)_r\\
+&amp;\qquad=108\sum_jG_{rj}\,\|x_j-x_r\|_1^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{m\ge0}q^m(A^m\kappa)_r\le108\,(Gg)_r\\
+&amp;\qquad=108\sum_jG_{rj}\,\|x_j-x_r\|_1^2 .
+\end{aligned}
+\]</span></p>
+<p><em>Step 4: the average over the start.</em> The numbers <span class="math" data-tex="\(\kappa_i\)">\(\kappa_i\)</span> do not depend on <span class="math" data-tex="\(r\)">\(r\)</span>; only <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> do. Multiply the last inequality by <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span> and sum over <span class="math" data-tex="\(r\)">\(r\)</span>. Because <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is stationary, <span class="math" data-tex="\(\sum_r\pi_r(A^m\kappa)_r=\sum_i\pi_i\kappa_i\)">\(\sum_r\pi_r(A^m\kappa)_r=\sum_i\pi_i\kappa_i\)</span> for every <span class="math" data-tex="\(m\)">\(m\)</span>. So the left side becomes
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{m\ge0}q^m\sum_i\pi_i\kappa_i&amp;=\frac1p\,\bigl(p\,\mathcal U+q\,\mathcal V\bigr)\\
+&amp;=\mathcal U+t\,\mathcal V ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{m\ge0}q^m\sum_i\pi_i\kappa_i&amp;=\frac1p\,\bigl(p\,\mathcal U+q\,\mathcal V\bigr)\\
+&amp;=\mathcal U+t\,\mathcal V ,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(q/p=t\)">\(q/p=t\)</span>. The right side becomes <span class="math" data-tex="\(108\,\mathcal E_G(x)\)">\(108\,\mathcal E_G(x)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Three choices in this proof deserve a comment.</p>
+<p><em>The vertex <span class="math" data-tex="\(e\)">\(e\)</span> depends on the start.</em> For the walk that starts at <span class="math" data-tex="\(r\)">\(r\)</span> the potential is centred at the vertex <span class="math" data-tex="\(z_r\)">\(z_r\)</span> of the starting point. So the potential at the place <span class="math" data-tex="\(j\)">\(j\)</span> where the walk stops is <span class="math" data-tex="\(\|z_j-z_r\|_H^4=\|x_j-x_r\|_1^2\)">\(\|z_j-z_r\|_H^4=\|x_j-x_r\|_1^2\)</span>: the squared distance in <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> between the start and the end. This is how the fourth power in <span class="math" data-tex="\(H\)">\(H\)</span> meets the square in <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>.</p>
+<p><em>The stopping probability.</em> The sum <span class="math" data-tex="\(\sum_mq^m=1/p\)">\(\sum_mq^m=1/p\)</span> counts the mean number of arrivals of the walk. Each arrival costs <span class="math" data-tex="\(p\)">\(p\)</span> times a term of <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> times a term of <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>. The quotient <span class="math" data-tex="\(q/p\)">\(q/p\)</span> is the factor in front of <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>, and <span class="math" data-tex="\(p=1/(t+1)\)">\(p=1/(t+1)\)</span> makes it equal to <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><em>What was dropped.</em> Step 3 dropped the term <span class="math" data-tex="\(-f_r=-\|h_r-z_r\|_H^4\)">\(-f_r=-\|h_r-z_r\|_H^4\)</span>. Keeping it gives the sharper inequality
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal U+t\,\mathcal V\\
+&amp;\quad\le108\,\Bigl(\mathcal E_G(x)-\sum_r\pi_r\|h_r-z_r\|_H^4\Bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal U+t\,\mathcal V\\
+&amp;\quad\le108\,\Bigl(\mathcal E_G(x)-\sum_r\pi_r\|h_r-z_r\|_H^4\Bigr) .
+\end{aligned}
+\]</span></p>
+<h2 id="3-the-theorem">3. The theorem</h2>
+<p><strong>Theorem 3.1</strong> ([OpenAI-MC, Section 1 and Section 5]). Let <span class="math" data-tex="\(A\)">\(A\)</span> be a stochastic matrix on <span class="math" data-tex="\([n]\)">\([n]\)</span> with a stationary vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, let <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> and <span class="math" data-tex="\(x_1,\dots,x_n\in\ell_1\)">\(x_1,\dots,x_n\in\ell_1\)</span>. Then there are <span class="math" data-tex="\(y_1,\dots,y_n\in\ell_1\)">\(y_1,\dots,y_n\in\ell_1\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_i\pi_i\,\|x_i-y_i\|_1^2+t\,\mathcal E_A(y)\\
+&amp;\qquad\le3024\,\mathcal E_{M_t}(x) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_i\pi_i\,\|x_i-y_i\|_1^2+t\,\mathcal E_A(y)\\
+&amp;\qquad\le3024\,\mathcal E_{M_t}(x) ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\mathcal E_A(y)=\sum_{i,j}\pi_ia_{ij}\|y_i-y_j\|_1^2\)">\(\mathcal E_A(y)=\sum_{i,j}\pi_ia_{ij}\|y_i-y_j\|_1^2\)</span> and <span class="math" data-tex="\(M_t=\frac1t\sum_{s=1}^tA^s\)">\(M_t=\frac1t\sum_{s=1}^tA^s\)</span>. If the points <span class="math" data-tex="\(x_i\)">\(x_i\)</span> are not all equal, the points <span class="math" data-tex="\(y_i=T(\Phi(h_i))\)">\(y_i=T(\Phi(h_i))\)</span> of Section 1 have this property.</p>
+<p><strong>Proof.</strong> If all <span class="math" data-tex="\(x_i\)">\(x_i\)</span> are equal, take <span class="math" data-tex="\(y_i=x_i\)">\(y_i=x_i\)</span>; the left side is <span class="math" data-tex="\(0\)">\(0\)</span>. Otherwise use the points of Section 1. Since <span class="math" data-tex="\(T(z_i)=x_i\)">\(T(z_i)=x_i\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> does not increase distances from <span class="math" data-tex="\(\|\cdot\|_{1,w}\)">\(\|\cdot\|_{1,w}\)</span> to <span class="math" data-tex="\(\|\cdot\|_1\)">\(\|\cdot\|_1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|x_i-y_i\|_1&amp;=\|T(z_i)-T(\Phi(h_i))\|_1\\
+&amp;\le\|z_i-\Phi(h_i)\|_{1,w},\\
+\|y_i-y_j\|_1&amp;\le\|\Phi(h_i)-\Phi(h_j)\|_{1,w} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|x_i-y_i\|_1&amp;=\|T(z_i)-T(\Phi(h_i))\|_1\\
+&amp;\le\|z_i-\Phi(h_i)\|_{1,w},\\
+\|y_i-y_j\|_1&amp;\le\|\Phi(h_i)-\Phi(h_j)\|_{1,w} .
+\end{aligned}
+\]</span>
+So the left side of the theorem is at most <span class="math" data-tex="\(\mathcal U+t\,\mathcal V\)">\(\mathcal U+t\,\mathcal V\)</span>. By Proposition 2.1 this is at most <span class="math" data-tex="\(108\,\mathcal E_G(x)\)">\(108\,\mathcal E_G(x)\)</span>, and by Proposition 4.3 of the first lesson <span class="math" data-tex="\(\mathcal E_G(x)\le28\,\mathcal E_{M_t}(x)\)">\(\mathcal E_G(x)\le28\,\mathcal E_{M_t}(x)\)</span>. Finally <span class="math" data-tex="\(108\cdot28=3024\)">\(108\cdot28=3024\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 3.2.</strong> The real space <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> has metric Markov cotype two with the constant <span class="math" data-tex="\(12\sqrt{21}\)">\(12\sqrt{21}\)</span>.</p>
+<p><strong>Proof.</strong> A matrix that is reversible for <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has the stationary vector <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and <span class="math" data-tex="\(3024=144\cdot21\)">\(3024=144\cdot21\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Theorem 3.1 is a little more than the definition asks: it holds for every stationary vector, without reversibility. The cyclic shift of three states is an example of a matrix that is covered by the theorem and not by the definition.</p>
+<p>The constant <span class="math" data-tex="\(3024\)">\(3024\)</span> is the product of the constant <span class="math" data-tex="\(108\)">\(108\)</span> of the flat inequality and the constant <span class="math" data-tex="\(28\)">\(28\)</span> of the comparison of the two averages. No attempt is made to find the best constant. In the examples computed for this course (random chains with up to five states, and walks on cycles) the quotient of the two sides did not exceed <span class="math" data-tex="\(1.01\)">\(1.01\)</span>.</p>
+<h2 id="4-the-walk-that-stops-and-medians-of-three">4. The walk that stops, and medians of three</h2>
+<p>The proof of Proposition 2.1 was written with sums. It has a reading in terms of chance, which explains where it comes from. Consider the walk with stopping of Section 1, started at an index <span class="math" data-tex="\(r\)">\(r\)</span>. At every time it is either <em>alive</em> at an index <span class="math" data-tex="\(i\)">\(i\)</span> or it has <em>stopped</em> at an index <span class="math" data-tex="\(i\)">\(i\)</span>. Attach to it the vector <span class="math" data-tex="\(h_i\)">\(h_i\)</span> while it is alive at <span class="math" data-tex="\(i\)">\(i\)</span>, and the vertex <span class="math" data-tex="\(z_i\)">\(z_i\)</span> once it has stopped at <span class="math" data-tex="\(i\)">\(i\)</span>. From the state <em>alive at <span class="math" data-tex="\(i\)">\(i\)</span></em> the walk goes to <em>stopped at <span class="math" data-tex="\(i\)">\(i\)</span></em> with the probability <span class="math" data-tex="\(p\)">\(p\)</span> and to <em>alive at <span class="math" data-tex="\(j\)">\(j\)</span></em> with the probability <span class="math" data-tex="\(q\,a_{ij}\)">\(q\,a_{ij}\)</span>. The first-step identity says that the mean of the attached vector after this step is the attached vector before it. The number <span class="math" data-tex="\(\kappa_i\)">\(\kappa_i\)</span> is the mean squared change of the image under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> of the attached vector in this step. The walk is alive at time <span class="math" data-tex="\(m\)">\(m\)</span> and at <span class="math" data-tex="\(i\)">\(i\)</span> with the probability <span class="math" data-tex="\(q^m(A^m)_{ri}\)">\(q^m(A^m)_{ri}\)</span>. So <span class="math" data-tex="\(\sum_mq^m(A^m\kappa)_r\)">\(\sum_mq^m(A^m\kappa)_r\)</span> is the mean of the sum of all squared changes along the walk, and Step 3 bounds it by <span class="math" data-tex="\(108\)">\(108\)</span> times the mean of the potential at the end, which is <span class="math" data-tex="\(\|x_j-x_r\|_1^2\)">\(\|x_j-x_r\|_1^2\)</span> if the walk stops at <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>The second description of the points <span class="math" data-tex="\(y_i\)">\(y_i\)</span> uses medians. For three real numbers the <em>median</em> is the middle one. For three vectors <span class="math" data-tex="\(x,x&#x27;,x&#x27;&#x27;\in\ell_1\)">\(x,x&#x27;,x&#x27;&#x27;\in\ell_1\)</span> let <span class="math" data-tex="\(\operatorname{med}(x,x&#x27;,x&#x27;&#x27;)\)">\(\operatorname{med}(x,x&#x27;,x&#x27;&#x27;)\)</span> be the vector whose coordinate <span class="math" data-tex="\(k\)">\(k\)</span> is the median of <span class="math" data-tex="\(x(k),x&#x27;(k),x&#x27;&#x27;(k)\)">\(x(k),x&#x27;(k),x&#x27;&#x27;(k)\)</span>. It lies in <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>, because the absolute value of the median is at most <span class="math" data-tex="\(|x(k)|+|x&#x27;(k)|+|x&#x27;&#x27;(k)|\)">\(|x(k)|+|x&#x27;(k)|+|x&#x27;&#x27;(k)|\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> In the setting of Section 1, for all <span class="math" data-tex="\(j_1,j_2,j_3\in[n]\)">\(j_1,j_2,j_3\in[n]\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{med}(x_{j_1},x_{j_2},x_{j_3})=T(\mu),
+\]">\[
+\operatorname{med}(x_{j_1},x_{j_2},x_{j_3})=T(\mu),
+\]</span>
+where <span class="math" data-tex="\(\mu\in\{0,1\}^{\mathcal B}\)">\(\mu\in\{0,1\}^{\mathcal B}\)</span> is the vertex with <span class="math" data-tex="\(\mu_B=1\)">\(\mu_B=1\)</span> exactly if at least two of the three indices <span class="math" data-tex="\(j_1,j_2,j_3\)">\(j_1,j_2,j_3\)</span> (counted with repetition) lie in <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> Fix a coordinate <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(\alpha_1&lt;\dots&lt;\alpha_m\)">\(\alpha_1&lt;\dots&lt;\alpha_m\)</span> be the different values of <span class="math" data-tex="\(x_1(k),\dots,x_n(k)\)">\(x_1(k),\dots,x_n(k)\)</span> and <span class="math" data-tex="\(B_r=\{i:x_i(k)\ge\alpha_{r+1}\}\)">\(B_r=\{i:x_i(k)\ge\alpha_{r+1}\}\)</span>. By Lemma 1.1 of the lesson on cuts, <span class="math" data-tex="\(T(\mu)(k)\)">\(T(\mu)(k)\)</span> is <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span> plus the sum of the gaps <span class="math" data-tex="\(\alpha_{r+1}-\alpha_r\)">\(\alpha_{r+1}-\alpha_r\)</span> over those <span class="math" data-tex="\(r\)">\(r\)</span> for which at least two of the three indices lie in <span class="math" data-tex="\(B_r\)">\(B_r\)</span>. At least two of the indices lie in <span class="math" data-tex="\(B_r\)">\(B_r\)</span> exactly if at least two of the three values <span class="math" data-tex="\(x_{j_a}(k)\)">\(x_{j_a}(k)\)</span> are <span class="math" data-tex="\(\ge\alpha_{r+1}\)">\(\ge\alpha_{r+1}\)</span>, that is, exactly if their median is <span class="math" data-tex="\(\ge\alpha_{r+1}\)">\(\ge\alpha_{r+1}\)</span>. The sum of the gaps below the median is the median minus <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 4.2</strong> (mean of medians). In the setting of Section 1, for every <span class="math" data-tex="\(i\)">\(i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y_i=\sum_{j_1,j_2,j_3}&amp;G_{ij_1}G_{ij_2}G_{ij_3}\\
+&amp;\times\operatorname{med}(x_{j_1},x_{j_2},x_{j_3}) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+y_i=\sum_{j_1,j_2,j_3}&amp;G_{ij_1}G_{ij_2}G_{ij_3}\\
+&amp;\times\operatorname{med}(x_{j_1},x_{j_2},x_{j_3}) .
+\end{aligned}
+\]</span></p>
+<p>In words: let <span class="math" data-tex="\(J_1,J_2,J_3\)">\(J_1,J_2,J_3\)</span> be three independent copies of the place where the walk from <span class="math" data-tex="\(i\)">\(i\)</span> stops. Then <span class="math" data-tex="\(y_i\)">\(y_i\)</span> is the mean of the coordinatewise median of <span class="math" data-tex="\(x_{J_1},x_{J_2},x_{J_3}\)">\(x_{J_1},x_{J_2},x_{J_3}\)</span>.</p>
+<p><strong>Proof.</strong> The map <span class="math" data-tex="\(T\)">\(T\)</span> is affine and the weights <span class="math" data-tex="\(G_{ij_1}G_{ij_2}G_{ij_3}\)">\(G_{ij_1}G_{ij_2}G_{ij_3}\)</span> are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span> with the sum <span class="math" data-tex="\(1\)">\(1\)</span>. So by Lemma 4.1 the right side is <span class="math" data-tex="\(T(\bar\mu)\)">\(T(\bar\mu)\)</span>, where <span class="math" data-tex="\(\bar\mu\)">\(\bar\mu\)</span> is the mean of the vertices <span class="math" data-tex="\(\mu\)">\(\mu\)</span> with these weights. The coordinate <span class="math" data-tex="\(\bar\mu_B\)">\(\bar\mu_B\)</span> is the total weight of the triples with at least two indices in <span class="math" data-tex="\(B\)">\(B\)</span>. The three indices are independent, and each lies in <span class="math" data-tex="\(B\)">\(B\)</span> with the probability <span class="math" data-tex="\(\sum_{j\in B}G_{ij}=h_i(B)\)">\(\sum_{j\in B}G_{ij}=h_i(B)\)</span>. By Lemma 2.1 of the lesson on the cubic map, the probability that at least two of three independent events of probability <span class="math" data-tex="\(h_i(B)\)">\(h_i(B)\)</span> occur is <span class="math" data-tex="\(\phi(h_i(B))\)">\(\phi(h_i(B))\)</span>. So <span class="math" data-tex="\(\bar\mu=\Phi(h_i)\)">\(\bar\mu=\Phi(h_i)\)</span> and the right side is <span class="math" data-tex="\(T(\Phi(h_i))=y_i\)">\(T(\Phi(h_i))=y_i\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So the points <span class="math" data-tex="\(y_i\)">\(y_i\)</span> do not depend on the cuts: they are determined by the points <span class="math" data-tex="\(x_j\)">\(x_j\)</span> and the matrix <span class="math" data-tex="\(G\)">\(G\)</span>. The description also shows the two roles of the construction. The average over the place where the walk stops smooths the points along the chain. The median of three, in place of a plain average of the vectors, is the nonlinear operation that keeps the smoothed points close to the old ones in the norm of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>.</p>
+<h2 id="5-an-example-two-states-that-are-exchanged">5. An example: two states that are exchanged</h2>
+<p>Let <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(\pi=(\tfrac12,\tfrac12)\)">\(\pi=(\tfrac12,\tfrac12)\)</span>, let <span class="math" data-tex="\(A\)">\(A\)</span> exchange the two states, and let <span class="math" data-tex="\(x_1=0\)">\(x_1=0\)</span> and <span class="math" data-tex="\(x_2=1\)">\(x_2=1\)</span> in the first coordinate of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> (all other coordinates are <span class="math" data-tex="\(0\)">\(0\)</span>). In Example 2.3 of the first lesson, <span class="math" data-tex="\(\mathcal E_{M_t}(x)=\lceil t/2\rceil/t\ge\tfrac12\)">\(\mathcal E_{M_t}(x)=\lceil t/2\rceil/t\ge\tfrac12\)</span>, and the choice <span class="math" data-tex="\(y=x\)">\(y=x\)</span> costs <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>There is one cut, <span class="math" data-tex="\(\{2\}\)">\(\{2\}\)</span>, with the weight <span class="math" data-tex="\(1\)">\(1\)</span>; <span class="math" data-tex="\(z_1=0\)">\(z_1=0\)</span>, <span class="math" data-tex="\(z_2=1\)">\(z_2=1\)</span>, and <span class="math" data-tex="\(T(u)=u\)">\(T(u)=u\)</span> in the first coordinate. The powers of <span class="math" data-tex="\(A\)">\(A\)</span> are <span class="math" data-tex="\(A\)">\(A\)</span> for odd and <span class="math" data-tex="\(I\)">\(I\)</span> for even exponents, so
+<span class="math math-display" data-tex="\[
+G_{12}=p\sum_{s\ \mathrm{odd}}q^s=\frac{pq}{1-q^2}=\frac q{1+q} .
+\]">\[
+G_{12}=p\sum_{s\ \mathrm{odd}}q^s=\frac{pq}{1-q^2}=\frac q{1+q} .
+\]</span>
+With <span class="math" data-tex="\(q=t/(t+1)\)">\(q=t/(t+1)\)</span> this gives
+<span class="math math-display" data-tex="\[
+h_1=\frac t{2t+1},\qquad h_2=\frac{t+1}{2t+1} .
+\]">\[
+h_1=\frac t{2t+1},\qquad h_2=\frac{t+1}{2t+1} .
+\]</span>
+Put <span class="math" data-tex="\(\eta=\frac1{2(2t+1)}\)">\(\eta=\frac1{2(2t+1)}\)</span>, so that <span class="math" data-tex="\(h_1=\tfrac12-\eta\)">\(h_1=\tfrac12-\eta\)</span> and <span class="math" data-tex="\(h_2=\tfrac12+\eta\)">\(h_2=\tfrac12+\eta\)</span>. Since <span class="math" data-tex="\(\phi(\tfrac12\pm\eta)=\tfrac12\pm(\tfrac32\eta-2\eta^3)\)">\(\phi(\tfrac12\pm\eta)=\tfrac12\pm(\tfrac32\eta-2\eta^3)\)</span>,
+<span class="math math-display" data-tex="\[
+y_1=\tfrac12-\bigl(\tfrac32\eta-2\eta^3\bigr),\qquad y_2=1-y_1 .
+\]">\[
+y_1=\tfrac12-\bigl(\tfrac32\eta-2\eta^3\bigr),\qquad y_2=1-y_1 .
+\]</span>
+For <span class="math" data-tex="\(t=1\)">\(t=1\)</span>: <span class="math" data-tex="\(h_1=\tfrac13\)">\(h_1=\tfrac13\)</span>, <span class="math" data-tex="\(y_1=\tfrac7{27}\)">\(y_1=\tfrac7{27}\)</span>, <span class="math" data-tex="\(y_2=\tfrac{20}{27}\)">\(y_2=\tfrac{20}{27}\)</span>. For large <span class="math" data-tex="\(t\)">\(t\)</span> both points are close to <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>. The left side of the cotype inequality is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tfrac12\,y_1^2+\tfrac12\,(1-y_2)^2+t\,(y_2-y_1)^2\\
+&amp;\qquad=y_1^2+t\,(3\eta-4\eta^3)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\tfrac12\,y_1^2+\tfrac12\,(1-y_2)^2+t\,(y_2-y_1)^2\\
+&amp;\qquad=y_1^2+t\,(3\eta-4\eta^3)^2 .
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(y_1\le\tfrac12\)">\(y_1\le\tfrac12\)</span>, and <span class="math" data-tex="\(t\,(3\eta)^2=\frac{9t}{4(2t+1)^2}\le\frac9{32}\)">\(t\,(3\eta)^2=\frac{9t}{4(2t+1)^2}\le\frac9{32}\)</span> because <span class="math" data-tex="\((2t+1)^2\ge8t\)">\((2t+1)^2\ge8t\)</span>. So the left side is at most <span class="math" data-tex="\(\tfrac14+\tfrac9{32}=\tfrac{17}{32}\)">\(\tfrac14+\tfrac9{32}=\tfrac{17}{32}\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>, while <span class="math" data-tex="\(\mathcal E_{M_t}(x)\ge\tfrac12\)">\(\mathcal E_{M_t}(x)\ge\tfrac12\)</span>. In this example the quotient of the two sides is at most <span class="math" data-tex="\(\tfrac{17}{16}\)">\(\tfrac{17}{16}\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that <span class="math" data-tex="\(\sum_i\pi_ih_i=\sum_i\pi_iz_i\)">\(\sum_i\pi_ih_i=\sum_i\pi_iz_i\)</span>.</p>
+<p><strong>6.2.</strong> Show that every coordinate of <span class="math" data-tex="\(y_i\)">\(y_i\)</span> lies between the smallest and the largest of the numbers <span class="math" data-tex="\(x_1(k),\dots,x_n(k)\)">\(x_1(k),\dots,x_n(k)\)</span>.</p>
+<p><strong>6.3.</strong> Compute the points <span class="math" data-tex="\(y_i\)">\(y_i\)</span> (a) for <span class="math" data-tex="\(A=I\)">\(A=I\)</span>; (b) if every row of <span class="math" data-tex="\(A\)">\(A\)</span> is equal to <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, in terms of <span class="math" data-tex="\(z_i\)">\(z_i\)</span> and <span class="math" data-tex="\(\bar z=\sum_j\pi_jz_j\)">\(\bar z=\sum_j\pi_jz_j\)</span>.</p>
+<p><strong>6.4.</strong> In the example of Section 5 with <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, compute the left side of the cotype inequality exactly.</p>
+<p><strong>6.5.</strong> Let all points <span class="math" data-tex="\(x_i\)">\(x_i\)</span> have only the values <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> in every coordinate. Show that <span class="math" data-tex="\(y_i(k)=\phi(g_i(k))\)">\(y_i(k)=\phi(g_i(k))\)</span>, where <span class="math" data-tex="\(g_i(k)=\sum_jG_{ij}x_j(k)\)">\(g_i(k)=\sum_jG_{ij}x_j(k)\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(\sum_i\pi_iG_{ij}=\pi_j\)">\(\sum_i\pi_iG_{ij}=\pi_j\)</span> because <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is stationary for <span class="math" data-tex="\(G\)">\(G\)</span>. So <span class="math" data-tex="\(\sum_i\pi_ih_i=\sum_j\pi_jz_j\)">\(\sum_i\pi_ih_i=\sum_j\pi_jz_j\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(y_i=T(u)\)">\(y_i=T(u)\)</span> with <span class="math" data-tex="\(u=\Phi(h_i)\in Q\)">\(u=\Phi(h_i)\in Q\)</span>. By Exercise 5.2 of the lesson on cuts, every coordinate of <span class="math" data-tex="\(T(u)\)">\(T(u)\)</span> with <span class="math" data-tex="\(u\in Q\)">\(u\in Q\)</span> lies between the smallest and the largest value of the points in this coordinate. Another proof: a median of three of the values lies between these bounds, and so does a mean of such medians (Proposition 4.2).</p>
+<p><strong>6.3.</strong> (a) <span class="math" data-tex="\(G=I\)">\(G=I\)</span>, so <span class="math" data-tex="\(h_i=z_i\)">\(h_i=z_i\)</span>, <span class="math" data-tex="\(\Phi(z_i)=z_i\)">\(\Phi(z_i)=z_i\)</span> and <span class="math" data-tex="\(y_i=T(z_i)=x_i\)">\(y_i=T(z_i)=x_i\)</span>. (b) <span class="math" data-tex="\(A^s=A\)">\(A^s=A\)</span> for <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>, so <span class="math" data-tex="\(G=pI+qA\)">\(G=pI+qA\)</span> and <span class="math" data-tex="\(h_i=p\,z_i+q\,\bar z\)">\(h_i=p\,z_i+q\,\bar z\)</span>; then <span class="math" data-tex="\(y_i=T(\Phi(p\,z_i+q\,\bar z))\)">\(y_i=T(\Phi(p\,z_i+q\,\bar z))\)</span>. For large <span class="math" data-tex="\(t\)">\(t\)</span> the number <span class="math" data-tex="\(p\)">\(p\)</span> is small and all <span class="math" data-tex="\(y_i\)">\(y_i\)</span> are close to <span class="math" data-tex="\(T(\Phi(\bar z))\)">\(T(\Phi(\bar z))\)</span>.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(y_1=\tfrac7{27}\)">\(y_1=\tfrac7{27}\)</span>, <span class="math" data-tex="\(y_2=\tfrac{20}{27}\)">\(y_2=\tfrac{20}{27}\)</span>, <span class="math" data-tex="\(y_2-y_1=\tfrac{13}{27}\)">\(y_2-y_1=\tfrac{13}{27}\)</span>. The left side is <span class="math" data-tex="\(\tfrac{49}{729}+\tfrac{169}{729}=\tfrac{218}{729}\)">\(\tfrac{49}{729}+\tfrac{169}{729}=\tfrac{218}{729}\)</span>, and <span class="math" data-tex="\(\mathcal E_{M_1}(x)=1\)">\(\mathcal E_{M_1}(x)=1\)</span>.</p>
+<p><strong>6.5.</strong> Fix <span class="math" data-tex="\(k\)">\(k\)</span>. If all <span class="math" data-tex="\(x_j(k)\)">\(x_j(k)\)</span> are equal, both sides are this common value, because <span class="math" data-tex="\(\phi(0)=0\)">\(\phi(0)=0\)</span> and <span class="math" data-tex="\(\phi(1)=1\)">\(\phi(1)=1\)</span>. Otherwise the values are <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>, and by Lemma 1.1 of the lesson on cuts the only cut with <span class="math" data-tex="\(b_B(k)&gt;0\)">\(b_B(k)&gt;0\)</span> is <span class="math" data-tex="\(B=\{j:x_j(k)=1\}\)">\(B=\{j:x_j(k)=1\}\)</span>, with <span class="math" data-tex="\(b_B(k)=1\)">\(b_B(k)=1\)</span>; also <span class="math" data-tex="\(v(k)=0\)">\(v(k)=0\)</span>. So <span class="math" data-tex="\(y_i(k)=\phi(h_i(B))\)">\(y_i(k)=\phi(h_i(B))\)</span>, and <span class="math" data-tex="\(h_i(B)=\sum_{j\in B}G_{ij}=\sum_jG_{ij}x_j(k)\)">\(h_i(B)=\sum_{j\in B}G_{ij}=\sum_jG_{ij}x_j(k)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-MC] OpenAI, <em>Metric Markov Cotype Two of <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span></em>, OpenAI Math Release preprint, 5 October 2026, Sections 1 and 5. https://github.com/openai/math/tree/main/preprints/Metric-Markov-Cotype-Two-of-l1-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

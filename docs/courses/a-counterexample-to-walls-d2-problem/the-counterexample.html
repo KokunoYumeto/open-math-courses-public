@@ -1,0 +1,224 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The counterexample</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A counterexample to Wall&#x27;s D(2) problem)</a><a href="the-finite-plus-construction.html">Previous lesson</a><a href="src/the-counterexample.md">Editable source</a></nav><main><article><h1 id="the-counterexample">The counterexample</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson gives the group and the complex that answer the finite D(2) problem in the negative. A group <span class="math" data-tex="\(P\)">\(P\)</span> with five generators and four relations has a perfect normal subgroup <span class="math" data-tex="\(K\)">\(K\)</span> that is generated, as a normal subgroup, by two elements. The plus construction for <span class="math" data-tex="\(K\)">\(K\)</span> gives a complex <span class="math" data-tex="\(X\)">\(X\)</span> of dimension three with the condition D(2). A character <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of the quotient <span class="math" data-tex="\(G=P/K\)">\(G=P/K\)</span> has the value <span class="math" data-tex="\(-1\)">\(-1\)</span> on an element of order two, and the second homology of <span class="math" data-tex="\(X\)">\(X\)</span> twisted by <span class="math" data-tex="\(\rho\)">\(\rho\)</span> vanishes. By the tower obstruction, no finite complex of dimension two has these two properties together.</p>
+<ul>
+<li>The group <span class="math" data-tex="\(P\)">\(P\)</span>, the elements <span class="math" data-tex="\(t_1,t_2\)">\(t_1,t_2\)</span>, and the proof that <span class="math" data-tex="\(K\)">\(K\)</span> is perfect (Lemma 1.1).</li>
+<li>The character <span class="math" data-tex="\(\rho\)">\(\rho\)</span> (Section 2).</li>
+<li>The matrix of Fox derivatives and <span class="math" data-tex="\(H_2(B;\rho)=0\)">\(H_2(B;\rho)=0\)</span> (Lemma 3.1).</li>
+<li>The theorem (Theorem 4.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-W, Section 4]. It uses presentation complexes and Fox derivatives from <a href="walls-d2-problem-and-twisted-homology.html">Wall's D(2) problem and twisted homology</a>, the corollary on elements of finite order from <a href="the-tower-obstruction.html">The tower obstruction</a>, and <a href="the-finite-plus-construction.html">The finite plus construction</a>.</p>
+<h2 id="1-the-group-and-a-perfect-subgroup">1. The group and a perfect subgroup</h2>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be the group with the generators <span class="math" data-tex="\(x_1,a_1,x_2,a_2,s\)">\(x_1,a_1,x_2,a_2,s\)</span> and the relations
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x_1a_1x_1^{-1}=a_1^4,\qquad x_2a_2x_2^{-1}=a_2^3,\\
+x_1=a_2^{13},\qquad sx_2s^{-1}=a_1^5 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+x_1a_1x_1^{-1}=a_1^4,\qquad x_2a_2x_2^{-1}=a_2^3,\\
+x_1=a_2^{13},\qquad sx_2s^{-1}=a_1^5 .
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(B\)">\(B\)</span> be its presentation complex: one vertex, five loops, four cells of dimension two. Put
+<span class="math math-display" data-tex="\[
+t_1=x_1^2,\qquad t_2=x_2^3,
+\]">\[
+t_1=x_1^2,\qquad t_2=x_2^3,
+\]</span>
+let <span class="math" data-tex="\(K\)">\(K\)</span> be the normal closure of <span class="math" data-tex="\(t_1,t_2\)">\(t_1,t_2\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(G=P/K\)">\(G=P/K\)</span>.</p>
+<p>The homomorphism from the free group to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> with <span class="math" data-tex="\(s\mapsto1\)">\(s\mapsto1\)</span> and <span class="math" data-tex="\(x_1,a_1,x_2,a_2\mapsto0\)">\(x_1,a_1,x_2,a_2\mapsto0\)</span> respects the four relations and is <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\(t_1,t_2\)">\(t_1,t_2\)</span>. So it defines a surjective homomorphism <span class="math" data-tex="\(G\to\mathbb Z\)">\(G\to\mathbb Z\)</span>, and <span class="math" data-tex="\(G\)">\(G\)</span> is infinite.</p>
+<p>We write <span class="math" data-tex="\([g,h]=ghg^{-1}h^{-1}\)">\([g,h]=ghg^{-1}h^{-1}\)</span>.</p>
+<p><strong>Lemma 1.1</strong> ([OpenAI-W]). The group <span class="math" data-tex="\(K\)">\(K\)</span> is perfect.</p>
+<p><strong>Proof.</strong> <em>Two identities.</em> From <span class="math" data-tex="\(xax^{-1}=a^n\)">\(xax^{-1}=a^n\)</span> follows <span class="math" data-tex="\(x^kax^{-k}=a^{n^k}\)">\(x^kax^{-k}=a^{n^k}\)</span>, by induction on <span class="math" data-tex="\(k\)">\(k\)</span>. So
+<span class="math math-display" data-tex="\[
+t_1a_1t_1^{-1}=a_1^{16},\qquad t_2a_2t_2^{-1}=a_2^{27}.
+\]">\[
+t_1a_1t_1^{-1}=a_1^{16},\qquad t_2a_2t_2^{-1}=a_2^{27}.
+\]</span>
+The square of the third relation is <span class="math" data-tex="\(t_1=a_2^{26}\)">\(t_1=a_2^{26}\)</span>, and the cube of the fourth is <span class="math" data-tex="\(st_2s^{-1}=a_1^{15}\)">\(st_2s^{-1}=a_1^{15}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_1=a_2^{26}=a_2^{27}a_2^{-1}=[t_2,a_2],\\
+st_2s^{-1}=a_1^{15}=a_1^{16}a_1^{-1}=[t_1,a_1].
+\end{gathered}
+\]">\[
+\begin{gathered}
+t_1=a_2^{26}=a_2^{27}a_2^{-1}=[t_2,a_2],\\
+st_2s^{-1}=a_1^{15}=a_1^{16}a_1^{-1}=[t_1,a_1].
+\end{gathered}
+\]</span></p>
+<p><em>The module.</em> Write <span class="math" data-tex="\(K_{\mathrm{ab}}\)">\(K_{\mathrm{ab}}\)</span> additively, and <span class="math" data-tex="\([k]\)">\([k]\)</span> for the class of <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>. The group <span class="math" data-tex="\(P\)">\(P\)</span> acts on <span class="math" data-tex="\(K_{\mathrm{ab}}\)">\(K_{\mathrm{ab}}\)</span> by <span class="math" data-tex="\(g\cdot[k]=[gkg^{-1}]\)">\(g\cdot[k]=[gkg^{-1}]\)</span>, and <span class="math" data-tex="\(K\)">\(K\)</span> acts trivially; so <span class="math" data-tex="\(K_{\mathrm{ab}}\)">\(K_{\mathrm{ab}}\)</span> is a left module over <span class="math" data-tex="\(\mathbb Z[G]\)">\(\mathbb Z[G]\)</span> (Exercise 4.2 of the lesson on the plus construction). For <span class="math" data-tex="\(t\in K\)">\(t\in K\)</span> and <span class="math" data-tex="\(a\in P\)">\(a\in P\)</span>,
+<span class="math math-display" data-tex="\[
+[\,[t,a]\,]=[t]+[at^{-1}a^{-1}]=(1-a)\cdot[t].
+\]">\[
+[\,[t,a]\,]=[t]+[at^{-1}a^{-1}]=(1-a)\cdot[t].
+\]</span>
+Let <span class="math" data-tex="\(u_1=[t_1]\)">\(u_1=[t_1]\)</span> and <span class="math" data-tex="\(u_2=[t_2]\)">\(u_2=[t_2]\)</span>. The two identities give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_1=(1-a_2)\,u_2,\\
+s\,u_2=(1-a_1)\,u_1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+u_1=(1-a_2)\,u_2,\\
+s\,u_2=(1-a_1)\,u_1 .
+\end{gathered}
+\]</span></p>
+<p><em>The first equation.</em> The element <span class="math" data-tex="\(a_2\)">\(a_2\)</span> commutes with <span class="math" data-tex="\(t_1=a_2^{26}\)">\(t_1=a_2^{26}\)</span>, so <span class="math" data-tex="\(a_2u_1=u_1\)">\(a_2u_1=u_1\)</span>. And <span class="math" data-tex="\(a_2^{26}=t_1\)">\(a_2^{26}=t_1\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span>, so it acts trivially on <span class="math" data-tex="\(K_{\mathrm{ab}}\)">\(K_{\mathrm{ab}}\)</span>. Apply <span class="math" data-tex="\(1+a_2+\dots+a_2^{25}\)">\(1+a_2+\dots+a_2^{25}\)</span> to the first equation:
+<span class="math math-display" data-tex="\[
+26\,u_1=(1-a_2^{26})\,u_2=0 .
+\]">\[
+26\,u_1=(1-a_2^{26})\,u_2=0 .
+\]</span></p>
+<p><em>The second equation.</em> The element <span class="math" data-tex="\(a_1\)">\(a_1\)</span> commutes with <span class="math" data-tex="\(st_2s^{-1}=a_1^{15}\)">\(st_2s^{-1}=a_1^{15}\)</span>, so <span class="math" data-tex="\(a_1\)">\(a_1\)</span> fixes <span class="math" data-tex="\(su_2\)">\(su_2\)</span>. And <span class="math" data-tex="\(a_1^{15}=st_2s^{-1}\)">\(a_1^{15}=st_2s^{-1}\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span> and acts trivially. Apply <span class="math" data-tex="\(1+a_1+\dots+a_1^{14}\)">\(1+a_1+\dots+a_1^{14}\)</span> to the second equation:
+<span class="math math-display" data-tex="\[
+15\,s\,u_2=(1-a_1^{15})\,u_1=0 .
+\]">\[
+15\,s\,u_2=(1-a_1^{15})\,u_1=0 .
+\]</span>
+The action of <span class="math" data-tex="\(s\)">\(s\)</span> is invertible, so <span class="math" data-tex="\(15u_2=0\)">\(15u_2=0\)</span>, and by the first equation <span class="math" data-tex="\(15u_1=0\)">\(15u_1=0\)</span>.</p>
+<p><em>The end.</em> From <span class="math" data-tex="\(26u_1=0\)">\(26u_1=0\)</span> and <span class="math" data-tex="\(15u_1=0\)">\(15u_1=0\)</span> and <span class="math" data-tex="\(26\cdot11-15\cdot19=1\)">\(26\cdot11-15\cdot19=1\)</span> we get <span class="math" data-tex="\(u_1=0\)">\(u_1=0\)</span>. Then <span class="math" data-tex="\(su_2=(1-a_1)u_1=0\)">\(su_2=(1-a_1)u_1=0\)</span>, so <span class="math" data-tex="\(u_2=0\)">\(u_2=0\)</span>. The module <span class="math" data-tex="\(K_{\mathrm{ab}}\)">\(K_{\mathrm{ab}}\)</span> is generated by <span class="math" data-tex="\(u_1\)">\(u_1\)</span> and <span class="math" data-tex="\(u_2\)">\(u_2\)</span>, because every element of <span class="math" data-tex="\(K\)">\(K\)</span> is a product of conjugates of <span class="math" data-tex="\(t_1^{\pm1}\)">\(t_1^{\pm1}\)</span> and <span class="math" data-tex="\(t_2^{\pm1}\)">\(t_2^{\pm1}\)</span>. So <span class="math" data-tex="\(K_{\mathrm{ab}}=0\)">\(K_{\mathrm{ab}}=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The exponents are chosen for this proof: <span class="math" data-tex="\(4^2-1=15=3\cdot5\)">\(4^2-1=15=3\cdot5\)</span> and <span class="math" data-tex="\(3^3-1=26=2\cdot13\)">\(3^3-1=26=2\cdot13\)</span> have no common factor. The third and fourth relation make each of <span class="math" data-tex="\(t_1\)">\(t_1\)</span>, <span class="math" data-tex="\(t_2\)">\(t_2\)</span> a commutator that involves the other one.</p>
+<h2 id="2-a-character">2. A character</h2>
+<p>Let <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> be a complex number with <span class="math" data-tex="\(\zeta^2+\zeta+1=0\)">\(\zeta^2+\zeta+1=0\)</span>, so that <span class="math" data-tex="\(\zeta^3=1\)">\(\zeta^3=1\)</span> and <span class="math" data-tex="\(\zeta\ne1\)">\(\zeta\ne1\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho(x_1)=-1,\quad\rho(a_1)=\zeta,\quad\rho(x_2)=\zeta^2,\\
+\rho(a_2)=-1,\quad\rho(s)=1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\rho(x_1)=-1,\quad\rho(a_1)=\zeta,\quad\rho(x_2)=\zeta^2,\\
+\rho(a_2)=-1,\quad\rho(s)=1 .
+\end{gathered}
+\]</span>
+The values lie in a commutative group, so the four relations hold for them if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\zeta=\zeta^4,\qquad-1=(-1)^3,\\
+-1=(-1)^{13},\qquad\zeta^2=\zeta^5 ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\zeta=\zeta^4,\qquad-1=(-1)^3,\\
+-1=(-1)^{13},\qquad\zeta^2=\zeta^5 ,
+\end{gathered}
+\]</span>
+and all four are true. So <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a character of <span class="math" data-tex="\(P\)">\(P\)</span>. Moreover <span class="math" data-tex="\(\rho(t_1)=(-1)^2=1\)">\(\rho(t_1)=(-1)^2=1\)</span> and <span class="math" data-tex="\(\rho(t_2)=\zeta^6=1\)">\(\rho(t_2)=\zeta^6=1\)</span>, so <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is trivial on <span class="math" data-tex="\(K\)">\(K\)</span> and defines a character of <span class="math" data-tex="\(G\)">\(G\)</span>, again called <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> The class of <span class="math" data-tex="\(x_1\)">\(x_1\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span> has the order two, and <span class="math" data-tex="\(\rho(x_1)=-1\)">\(\rho(x_1)=-1\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(x_1^2=t_1\in K\)">\(x_1^2=t_1\in K\)</span>, so the square of the class is trivial. The class is not trivial, because <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has the value <span class="math" data-tex="\(-1\)">\(-1\)</span> on it. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-twisted-second-homology">3. The twisted second homology</h2>
+<p>Write the relations as the words
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r_1=x_1a_1x_1^{-1}a_1^{-4},\\
+r_2=x_2a_2x_2^{-1}a_2^{-3},\\
+r_3=x_1a_2^{-13},\\
+r_4=sx_2s^{-1}a_1^{-5}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+r_1=x_1a_1x_1^{-1}a_1^{-4},\\
+r_2=x_2a_2x_2^{-1}a_2^{-3},\\
+r_3=x_1a_2^{-13},\\
+r_4=sx_2s^{-1}a_1^{-5}.
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 3.1</strong> ([OpenAI-W]). The matrix of the Fox derivatives of <span class="math" data-tex="\(r_1,\dots,r_4\)">\(r_1,\dots,r_4\)</span> by <span class="math" data-tex="\(x_1,a_1,x_2,a_2,s\)">\(x_1,a_1,x_2,a_2,s\)</span>, evaluated at <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, is the matrix <span class="math" data-tex="\(D\)">\(D\)</span> with the four rows</p>
+<ul>
+<li>for <span class="math" data-tex="\(r_1\)">\(r_1\)</span>: <span class="math" data-tex="\((1-\zeta,\ -2,\ 0,\ 0,\ 0)\)">\((1-\zeta,\ -2,\ 0,\ 0,\ 0)\)</span>,</li>
+<li>for <span class="math" data-tex="\(r_2\)">\(r_2\)</span>: <span class="math" data-tex="\((0,\ 0,\ 2,\ \zeta^2-1,\ 0)\)">\((0,\ 0,\ 2,\ \zeta^2-1,\ 0)\)</span>,</li>
+<li>for <span class="math" data-tex="\(r_3\)">\(r_3\)</span>: <span class="math" data-tex="\((1,\ 0,\ 0,\ -1,\ 0)\)">\((1,\ 0,\ 0,\ -1,\ 0)\)</span>,</li>
+<li>for <span class="math" data-tex="\(r_4\)">\(r_4\)</span>: <span class="math" data-tex="\((0,\ -(1+\zeta),\ 1,\ 0,\ 1-\zeta^2)\)">\((0,\ -(1+\zeta),\ 1,\ 0,\ 1-\zeta^2)\)</span>.</li>
+</ul>
+<p>Its rows are linearly independent. So <span class="math" data-tex="\(H_2(B;\rho)=0\)">\(H_2(B;\rho)=0\)</span>.</p>
+<p><strong>Proof.</strong> <em>Relators of the form <span class="math" data-tex="\(xax^{-1}a^{-n}\)">\(xax^{-1}a^{-n}\)</span>.</em> By Exercise 6.2 of the first lesson the derivatives by <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> are <span class="math" data-tex="\(1-xax^{-1}\)">\(1-xax^{-1}\)</span> and <span class="math" data-tex="\(x-xax^{-1}\sum_{l=1}^na^{-l}\)">\(x-xax^{-1}\sum_{l=1}^na^{-l}\)</span>. At a character they have the values
+<span class="math math-display" data-tex="\[
+1-\rho(a),\qquad\rho(x)-\sum_{l=0}^{n-1}\rho(a)^{-l}.
+\]">\[
+1-\rho(a),\qquad\rho(x)-\sum_{l=0}^{n-1}\rho(a)^{-l}.
+\]</span>
+For <span class="math" data-tex="\(r_1\)">\(r_1\)</span>: <span class="math" data-tex="\(1-\zeta\)">\(1-\zeta\)</span>, and <span class="math" data-tex="\(-1-(1+\zeta^2+\zeta+1)=-2\)">\(-1-(1+\zeta^2+\zeta+1)=-2\)</span>. For <span class="math" data-tex="\(r_2\)">\(r_2\)</span>: <span class="math" data-tex="\(1-(-1)=2\)">\(1-(-1)=2\)</span>, and <span class="math" data-tex="\(\zeta^2-(1-1+1)=\zeta^2-1\)">\(\zeta^2-(1-1+1)=\zeta^2-1\)</span>.</p>
+<p><em>The relator <span class="math" data-tex="\(r_3\)">\(r_3\)</span>.</em> The derivative by <span class="math" data-tex="\(x_1\)">\(x_1\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. The derivative by <span class="math" data-tex="\(a_2\)">\(a_2\)</span> is <span class="math" data-tex="\(-x_1\sum_{l=1}^{13}a_2^{-l}\)">\(-x_1\sum_{l=1}^{13}a_2^{-l}\)</span>, with the value <span class="math" data-tex="\(-(-1)\sum_{l=1}^{13}(-1)^l=-1\)">\(-(-1)\sum_{l=1}^{13}(-1)^l=-1\)</span>.</p>
+<p><em>The relator <span class="math" data-tex="\(r_4\)">\(r_4\)</span>.</em> The derivative by <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\(1-sx_2s^{-1}\)">\(1-sx_2s^{-1}\)</span>, with the value <span class="math" data-tex="\(1-\zeta^2\)">\(1-\zeta^2\)</span>. The derivative by <span class="math" data-tex="\(x_2\)">\(x_2\)</span> is <span class="math" data-tex="\(s\)">\(s\)</span>, with the value <span class="math" data-tex="\(1\)">\(1\)</span>. The derivative by <span class="math" data-tex="\(a_1\)">\(a_1\)</span> is <span class="math" data-tex="\(-sx_2s^{-1}\sum_{l=1}^5a_1^{-l}\)">\(-sx_2s^{-1}\sum_{l=1}^5a_1^{-l}\)</span>. Since <span class="math" data-tex="\(\zeta^{-1}=\zeta^2\)">\(\zeta^{-1}=\zeta^2\)</span>, the sum <span class="math" data-tex="\(\sum_{l=1}^5\zeta^{-l}\)">\(\sum_{l=1}^5\zeta^{-l}\)</span> is <span class="math" data-tex="\(\zeta^2+\zeta+1+\zeta^2+\zeta=-1\)">\(\zeta^2+\zeta+1+\zeta^2+\zeta=-1\)</span>, and the value is <span class="math" data-tex="\(\zeta^2=-(1+\zeta)\)">\(\zeta^2=-(1+\zeta)\)</span>.</p>
+<p><em>The rank.</em> Take the columns of <span class="math" data-tex="\(x_1,a_1,x_2,s\)">\(x_1,a_1,x_2,s\)</span>:
+<span class="math math-display" data-tex="\[
+\det\begin{pmatrix}
+1-\zeta&amp;-2&amp;0&amp;0\\
+0&amp;0&amp;2&amp;0\\
+1&amp;0&amp;0&amp;0\\
+0&amp;-(1+\zeta)&amp;1&amp;1-\zeta^2
+\end{pmatrix}.
+\]">\[
+\det\begin{pmatrix}
+1-\zeta&amp;-2&amp;0&amp;0\\
+0&amp;0&amp;2&amp;0\\
+1&amp;0&amp;0&amp;0\\
+0&amp;-(1+\zeta)&amp;1&amp;1-\zeta^2
+\end{pmatrix}.
+\]</span>
+Expanding along the third row and then along the last column gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(1-\zeta^2)\cdot\det\begin{pmatrix}-2&amp;0\\0&amp;2\end{pmatrix}\\
+&amp;\qquad=-4\,(1-\zeta^2)\ne0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(1-\zeta^2)\cdot\det\begin{pmatrix}-2&amp;0\\0&amp;2\end{pmatrix}\\
+&amp;\qquad=-4\,(1-\zeta^2)\ne0 .
+\end{aligned}
+\]</span>
+So the four rows are linearly independent, and <span class="math" data-tex="\(H_2(B;\rho)=0\)">\(H_2(B;\rho)=0\)</span> by Lemma 5.1 of the first lesson. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-the-theorem">4. The theorem</h2>
+<p><strong>Theorem 4.1</strong> ([OpenAI-W]). Assume the standard theorems TOP1 to TOP6. There is a finite connected CW complex <span class="math" data-tex="\(X\)">\(X\)</span> of dimension three, with one vertex, five edges, six cells of dimension two and two cells of dimension three, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_i(\widetilde X;\mathbb Z)=0\ \text{ for }i&gt;2,\\
+H^3(X;M)=0
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_i(\widetilde X;\mathbb Z)=0\ \text{ for }i&gt;2,\\
+H^3(X;M)=0
+\end{gathered}
+\]</span>
+for every left module <span class="math" data-tex="\(M\)">\(M\)</span> over <span class="math" data-tex="\(\mathbb Z[\pi_1(X)]\)">\(\mathbb Z[\pi_1(X)]\)</span>, and such that <span class="math" data-tex="\(X\)">\(X\)</span> is not homotopy equivalent to any finite CW complex of dimension at most two.</p>
+<p><strong>Proof.</strong> <em>The complex.</em> By Lemma 1.1 the proposition on the plus construction applies to <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(t_1,t_2\)">\(t_1,t_2\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>. It gives a complex <span class="math" data-tex="\(X\supseteq B\)">\(X\supseteq B\)</span> with two more cells of dimension two and two cells of dimension three, with <span class="math" data-tex="\(\pi_1(X)=G\)">\(\pi_1(X)=G\)</span>, with the condition D(2), and with
+<span class="math math-display" data-tex="\[
+H_2(X;\rho)\cong H_2(B;\rho)=0
+\]">\[
+H_2(X;\rho)\cong H_2(B;\rho)=0
+\]</span>
+by property 3 of that proposition and Lemma 3.1.</p>
+<p><em>No model of dimension two.</em> Suppose that <span class="math" data-tex="\(h:Y\to X\)">\(h:Y\to X\)</span> is a homotopy equivalence from a finite CW complex <span class="math" data-tex="\(Y\)">\(Y\)</span> of dimension at most two. Then <span class="math" data-tex="\(Y\)">\(Y\)</span> is connected, and <span class="math" data-tex="\(\theta=h_*:\pi_1(Y)\to G\)">\(\theta=h_*:\pi_1(Y)\to G\)</span> is an isomorphism. By TOP5,
+<span class="math math-display" data-tex="\[
+H_2(Y;\rho\theta)\cong H_2(X;\rho)=0 .
+\]">\[
+H_2(Y;\rho\theta)\cong H_2(X;\rho)=0 .
+\]</span>
+Let <span class="math" data-tex="\(g\in\pi_1(Y)\)">\(g\in\pi_1(Y)\)</span> be the element with <span class="math" data-tex="\(\theta(g)\)">\(\theta(g)\)</span> the class of <span class="math" data-tex="\(x_1\)">\(x_1\)</span>. By Lemma 2.1 it has the order two, and <span class="math" data-tex="\(\rho\theta(g)=-1\)">\(\rho\theta(g)=-1\)</span>. This contradicts Corollary 3.1 of the lesson on the tower. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>This is Theorem 1.1 of the first lesson.</p>
+<p><strong>The roles of the two complexes.</strong> The character <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has vanishing second homology on <span class="math" data-tex="\(B\)">\(B\)</span>, a complex of dimension two. This does not contradict the tower obstruction: the fundamental group of <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(P\)">\(P\)</span>, and the obstruction says that <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> on every element of finite order of <span class="math" data-tex="\(P\)">\(P\)</span>. Since <span class="math" data-tex="\(\rho(x_1)=-1\)">\(\rho(x_1)=-1\)</span>, it shows that <span class="math" data-tex="\(x_1\)">\(x_1\)</span> has infinite order in <span class="math" data-tex="\(P\)">\(P\)</span>. In <span class="math" data-tex="\(G\)">\(G\)</span> the element <span class="math" data-tex="\(x_1\)">\(x_1\)</span> has the order two. A complex of dimension two with the fundamental group <span class="math" data-tex="\(G\)">\(G\)</span> is, for example, <span class="math" data-tex="\(B\)">\(B\)</span> with the two cells for <span class="math" data-tex="\(t_1,t_2\)">\(t_1,t_2\)</span>. For it the matrix <span class="math" data-tex="\(D\)">\(D\)</span> gets two more rows, the Fox derivatives of <span class="math" data-tex="\(x_1^2\)">\(x_1^2\)</span> and <span class="math" data-tex="\(x_2^3\)">\(x_2^3\)</span> at <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. They are <span class="math" data-tex="\(1+\rho(x_1)=0\)">\(1+\rho(x_1)=0\)</span> and <span class="math" data-tex="\(1+\zeta^2+\zeta^4=0\)">\(1+\zeta^2+\zeta^4=0\)</span> in their columns and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere. So the second homology twisted by <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has the dimension two there, as the obstruction demands. The two cells of dimension three of <span class="math" data-tex="\(X\)">\(X\)</span> remove exactly these two classes. A complex of dimension two cannot do this.</p>
+<p><strong>What is proved and what is assumed.</strong> The lessons prove the obstruction, the properties of the plus construction, the perfectness of <span class="math" data-tex="\(K\)">\(K\)</span> and the computation of the matrix. They use the standard theorems TOP1 to TOP6 of the first lesson without proof. The computation of <span class="math" data-tex="\(D\)">\(D\)</span> and of its minors was repeated by a program that differentiates the four words.</p>
+<p><strong>What the theorem does not say.</strong> It concerns finite complexes; the group <span class="math" data-tex="\(G\)">\(G\)</span> is infinite. For finite fundamental groups the problem is not touched by this example. The complex <span class="math" data-tex="\(X\)">\(X\)</span> is not given by explicit attaching maps for its cells of dimension three: they come from the theorem of Hurewicz.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Check the four relations for <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and compute <span class="math" data-tex="\(\rho(a_1^{15})\)">\(\rho(a_1^{15})\)</span> and <span class="math" data-tex="\(\rho(a_2^{26})\)">\(\rho(a_2^{26})\)</span>.</p>
+<p><strong>5.2.</strong> Show that in <span class="math" data-tex="\(G\)">\(G\)</span> the classes satisfy <span class="math" data-tex="\(x_1^2=1\)">\(x_1^2=1\)</span>, <span class="math" data-tex="\(a_2^{26}=1\)">\(a_2^{26}=1\)</span>, <span class="math" data-tex="\(x_2^3=1\)">\(x_2^3=1\)</span> and <span class="math" data-tex="\(a_1^{15}=1\)">\(a_1^{15}=1\)</span>.</p>
+<p><strong>5.3.</strong> Compute the minor of <span class="math" data-tex="\(D\)">\(D\)</span> for the columns <span class="math" data-tex="\(a_1,x_2,a_2,s\)">\(a_1,x_2,a_2,s\)</span>.</p>
+<p><strong>5.4.</strong> Let <span class="math" data-tex="\(\rho&#x27;\)">\(\rho&#x27;\)</span> be the character with <span class="math" data-tex="\(\rho&#x27;(a_1)=1\)">\(\rho&#x27;(a_1)=1\)</span> and the other values as for <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Is it a character of <span class="math" data-tex="\(G\)">\(G\)</span>? Compute the first row of the matrix for <span class="math" data-tex="\(\rho&#x27;\)">\(\rho&#x27;\)</span>.</p>
+<p><strong>5.5.</strong> Compute <span class="math" data-tex="\(\chi(X)\)">\(\chi(X)\)</span>, and derive from <span class="math" data-tex="\(H_0(X;\rho)=0\)">\(H_0(X;\rho)=0\)</span>, <span class="math" data-tex="\(H_2(X;\rho)=0\)">\(H_2(X;\rho)=0\)</span> and <span class="math" data-tex="\(H_3(X;\rho)=0\)">\(H_3(X;\rho)=0\)</span> the dimension of <span class="math" data-tex="\(H_1(X;\rho)\)">\(H_1(X;\rho)\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> The relations are checked in Section 2. <span class="math" data-tex="\(\rho(a_1^{15})=\zeta^{15}=1\)">\(\rho(a_1^{15})=\zeta^{15}=1\)</span> and <span class="math" data-tex="\(\rho(a_2^{26})=(-1)^{26}=1\)">\(\rho(a_2^{26})=(-1)^{26}=1\)</span>; both elements lie in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(x_1^2=t_1\)">\(x_1^2=t_1\)</span> and <span class="math" data-tex="\(x_2^3=t_2\)">\(x_2^3=t_2\)</span> lie in <span class="math" data-tex="\(K\)">\(K\)</span>. By the proof of Lemma 1.1, <span class="math" data-tex="\(a_2^{26}=t_1\)">\(a_2^{26}=t_1\)</span> and <span class="math" data-tex="\(a_1^{15}=st_2s^{-1}\)">\(a_1^{15}=st_2s^{-1}\)</span> lie in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>5.3.</strong> The submatrix has the rows <span class="math" data-tex="\((-2,0,0,0)\)">\((-2,0,0,0)\)</span>, <span class="math" data-tex="\((0,2,\zeta^2-1,0)\)">\((0,2,\zeta^2-1,0)\)</span>, <span class="math" data-tex="\((0,0,-1,0)\)">\((0,0,-1,0)\)</span>, <span class="math" data-tex="\((-(1+\zeta),1,0,1-\zeta^2)\)">\((-(1+\zeta),1,0,1-\zeta^2)\)</span>. Expanding along the first row and then along the last column gives <span class="math" data-tex="\(-2\,(1-\zeta^2)\)">\(-2\,(1-\zeta^2)\)</span> times the determinant of the matrix with the rows <span class="math" data-tex="\((2,\zeta^2-1)\)">\((2,\zeta^2-1)\)</span> and <span class="math" data-tex="\((0,-1)\)">\((0,-1)\)</span>, which is <span class="math" data-tex="\(-2\)">\(-2\)</span>. So the minor is <span class="math" data-tex="\(4\,(1-\zeta^2)\)">\(4\,(1-\zeta^2)\)</span>. It is not zero either.</p>
+<p><strong>5.4.</strong> The relations: <span class="math" data-tex="\(1=1^4\)">\(1=1^4\)</span>, and <span class="math" data-tex="\(\rho&#x27;(x_2)=\zeta^2\)">\(\rho&#x27;(x_2)=\zeta^2\)</span> must be <span class="math" data-tex="\(\rho&#x27;(a_1)^5=1\)">\(\rho&#x27;(a_1)^5=1\)</span>, which is false. So <span class="math" data-tex="\(\rho&#x27;\)">\(\rho&#x27;\)</span> is not a character of <span class="math" data-tex="\(P\)">\(P\)</span>. (With <span class="math" data-tex="\(\rho&#x27;(x_2)=1\)">\(\rho&#x27;(x_2)=1\)</span> as well it is one; then the first row is <span class="math" data-tex="\((1-1,\ -1-4,\ 0,0,0)\)">\((1-1,\ -1-4,\ 0,0,0)\)</span>, that is <span class="math" data-tex="\((0,-5,0,0,0)\)">\((0,-5,0,0,0)\)</span>.)</p>
+<p><strong>5.5.</strong> <span class="math" data-tex="\(\chi(X)=1-5+6-2=0\)">\(\chi(X)=1-5+6-2=0\)</span>. The alternating sum of the dimensions of the twisted homology spaces is <span class="math" data-tex="\(\chi(X)\)">\(\chi(X)\)</span>, as in Lemma 4.3 of the first lesson. So <span class="math" data-tex="\(-\dim H_1(X;\rho)=0\)">\(-\dim H_1(X;\rho)=0\)</span>: the twisted homology of <span class="math" data-tex="\(X\)">\(X\)</span> vanishes in all degrees. (<span class="math" data-tex="\(H_3(X;\rho)=0\)">\(H_3(X;\rho)=0\)</span> holds because <span class="math" data-tex="\(\partial_3\)">\(\partial_3\)</span> stays injective after tensoring, by the equation <span class="math" data-tex="\(q\partial_3=\mathrm{id}\)">\(q\partial_3=\mathrm{id}\)</span> of the plus construction.)</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-W] OpenAI, <em>A Counterexample to Wall's D(2) Problem</em>, OpenAI Math Release preprint, 6 October 2026, Section 4. https://github.com/openai/math/tree/main/preprints/A-Counterexample-to-Walls-D2-Problem-October-6-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
