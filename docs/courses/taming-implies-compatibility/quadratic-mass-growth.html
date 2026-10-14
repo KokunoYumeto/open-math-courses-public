@@ -1,0 +1,249 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quadratic mass growth</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Taming implies compatibility)</a><a href="taming-compatibility-and-a-separating-current.html">Previous lesson</a><a href="regularization-and-angular-control.html">Next lesson</a><a href="src/quadratic-mass-growth.md">Editable source</a></nav><main><article><h1 id="quadratic-mass-growth">Quadratic mass growth</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be the separating current of <a href="taming-compatibility-and-a-separating-current.html">Taming, compatibility and a separating current</a> (Proposition 5.1 there), with trace measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and fiber measure <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on the bundle <span class="math" data-tex="\(\mathscr C\)">\(\mathscr C\)</span> of unit complex-line bivectors. This lesson proves that <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of a geodesic ball of radius <span class="math" data-tex="\(s\)">\(s\)</span> is at most <span class="math" data-tex="\(Cs^2\)">\(Cs^2\)</span>, uniformly in the centre: the trace measure is at most two-dimensional, as for the area measure of a surface. The proof tests <span class="math" data-tex="\(P\)">\(P\)</span> against closed invariant forms built from two radial functions, <span class="math" data-tex="\(\log\sqrt{s^2+t^2}\)">\(\log\sqrt{s^2+t^2}\)</span> and <span class="math" data-tex="\(\sqrt{s^2+t^2}\)">\(\sqrt{s^2+t^2}\)</span>, where <span class="math" data-tex="\(t\)">\(t\)</span> is the distance to the centre. The closed lift <span class="math" data-tex="\(B\)">\(B\)</span> of the first lesson makes these forms invariant, and the main work is to show that the correction <span class="math" data-tex="\(B\)">\(B\)</span> adds only errors of lower order near the centre.</p>
+<ul>
+<li>The kernel of an operator of order zero, and its action on inputs concentrated at a small scale (Lemmas 1.1 and 1.2).</li>
+<li>The test forms (Lemma 2.1).</li>
+<li>Radial functions: derivative bounds, complex-line traces, and the size of the correction (Lemmas 3.1, 3.2 and 3.3).</li>
+<li>Quadratic mass growth (Proposition 4.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-TC, Section 3]. Throughout, <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> denote positive constants that depend only on <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span> and the fixed choices below, not on centres or small scales; they may change from line to line.</p>
+<h2 id="1-operators-of-order-zero">1. Operators of order zero</h2>
+<p>We use the symbol classes and quantization of <a href="../elliptic-boundary-reduction/euclidean-symbol-calculus.html">Symbols, operators and Sobolev scales</a> (course <em>Elliptic boundary reduction</em>): <span class="math" data-tex="\(b\in S^0\)">\(b\in S^0\)</span> means <span class="math" data-tex="\(|\partial_x^\beta\partial_\xi^\alpha b(x,\xi)|\le C_{\alpha\beta}\langle\xi\rangle^{-|\alpha|}\)">\(|\partial_x^\beta\partial_\xi^\alpha b(x,\xi)|\le C_{\alpha\beta}\langle\xi\rangle^{-|\alpha|}\)</span>, and <span class="math" data-tex="\(\operatorname{Op}(b)u(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}b(x,\xi)\hat u(\xi)\,d\xi\)">\(\operatorname{Op}(b)u(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}b(x,\xi)\hat u(\xi)\,d\xi\)</span>, with kernel <span class="math" data-tex="\(K_b(x,y)=(2\pi)^{-n}\int e^{i(x-y)\cdot\xi}b(x,\xi)\,d\xi\)">\(K_b(x,y)=(2\pi)^{-n}\int e^{i(x-y)\cdot\xi}b(x,\xi)\,d\xi\)</span> in the sense of (E12) there. Matrix-valued symbols are treated componentwise.</p>
+<p><strong>Lemma 1.1</strong> (the kernel off the diagonal). Let <span class="math" data-tex="\(b\in S^0(\mathbb R^n\times\mathbb R^n)\)">\(b\in S^0(\mathbb R^n\times\mathbb R^n)\)</span>. Off the diagonal, <span class="math" data-tex="\(K_b\)">\(K_b\)</span> is a continuous function with
+<span class="math math-display" data-tex="\[
+|K_b(x,y)|\le C|x-y|^{-n}\qquad(x\ne y),
+\]">\[
+|K_b(x,y)|\le C|x-y|^{-n}\qquad(x\ne y),
+\]</span>
+where <span class="math" data-tex="\(C\)">\(C\)</span> depends on finitely many seminorms of <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\phi_0\in C^\infty_c\)">\(\phi_0\in C^\infty_c\)</span> be one for <span class="math" data-tex="\(|\xi|\le1\)">\(|\xi|\le1\)</span> and zero for <span class="math" data-tex="\(|\xi|\ge2\)">\(|\xi|\ge2\)</span>, and <span class="math" data-tex="\(\phi_k(\xi)=\phi_0(2^{-k}\xi)-\phi_0(2^{1-k}\xi)\)">\(\phi_k(\xi)=\phi_0(2^{-k}\xi)-\phi_0(2^{1-k}\xi)\)</span> for <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, so that <span class="math" data-tex="\(\sum_k\phi_k=1\)">\(\sum_k\phi_k=1\)</span> and <span class="math" data-tex="\(\phi_k\)">\(\phi_k\)</span> lives where <span class="math" data-tex="\(2^{k-1}\le|\xi|\le2^{k+1}\)">\(2^{k-1}\le|\xi|\le2^{k+1}\)</span>. Put <span class="math" data-tex="\(b_k=b\phi_k\)">\(b_k=b\phi_k\)</span> and <span class="math" data-tex="\(K_k(x,y)=(2\pi)^{-n}\int e^{i(x-y)\cdot\xi}b_k(x,\xi)\,d\xi\)">\(K_k(x,y)=(2\pi)^{-n}\int e^{i(x-y)\cdot\xi}b_k(x,\xi)\,d\xi\)</span>, an absolutely convergent integral. The symbol estimates give <span class="math" data-tex="\(|\partial_\xi^\alpha b_k|\le C_\alpha2^{-k|\alpha|}\)">\(|\partial_\xi^\alpha b_k|\le C_\alpha2^{-k|\alpha|}\)</span> on a set of volume <span class="math" data-tex="\(C2^{kn}\)">\(C2^{kn}\)</span>. Hence <span class="math" data-tex="\(|K_k|\le C2^{kn}\)">\(|K_k|\le C2^{kn}\)</span>, and, writing <span class="math" data-tex="\(w=x-y\)">\(w=x-y\)</span> and integrating by parts <span class="math" data-tex="\(N\)">\(N\)</span> times with <span class="math" data-tex="\(|w|^{2N}e^{iw\cdot\xi}=(-\Delta_\xi)^Ne^{iw\cdot\xi}\)">\(|w|^{2N}e^{iw\cdot\xi}=(-\Delta_\xi)^Ne^{iw\cdot\xi}\)</span>,
+<span class="math math-display" data-tex="\[
+|K_k(x,y)|\le C_N2^{kn}\,(2^k|w|)^{-2N} .
+\]">\[
+|K_k(x,y)|\le C_N2^{kn}\,(2^k|w|)^{-2N} .
+\]</span>
+Choose <span class="math" data-tex="\(2N&gt;n\)">\(2N&gt;n\)</span>. Summing <span class="math" data-tex="\(C2^{kn}\)">\(C2^{kn}\)</span> over <span class="math" data-tex="\(2^k\le|w|^{-1}\)">\(2^k\le|w|^{-1}\)</span> and the second bound over <span class="math" data-tex="\(2^k&gt;|w|^{-1}\)">\(2^k&gt;|w|^{-1}\)</span> gives <span class="math" data-tex="\(C|w|^{-n}\)">\(C|w|^{-n}\)</span> for both geometric sums. The series converges uniformly on <span class="math" data-tex="\(\{|x-y|\ge\delta\}\)">\(\{|x-y|\ge\delta\}\)</span> for every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. Moreover <span class="math" data-tex="\(\sum_{k\le K}b_k\to b\)">\(\sum_{k\le K}b_k\to b\)</span> in <span class="math" data-tex="\(S^\varepsilon\)">\(S^\varepsilon\)</span> for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, so the partial kernels converge to <span class="math" data-tex="\(K_b\)">\(K_b\)</span> as tempered distributions by the continuity of (E12); hence the sum is <span class="math" data-tex="\(K_b\)">\(K_b\)</span> off the diagonal. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>We fix the geometry once. By Theorem B.1 of <a href="../DG-FND/geodesics-normal-coordinates-and-curvature.html">Geodesics, normal coordinates and curvature</a> and Theorems B.3 and B.5 of <a href="../DG-FND/riemannian-connections-and-convex-neighbourhoods.html">Riemannian connections and convex neighbourhoods</a> (course <em>Bundles, curvature and holonomy</em>), applied to the smooth map <span class="math" data-tex="\((x,v)\mapsto\exp_xv\)">\((x,v)\mapsto\exp_xv\)</span>, and by compactness, there is <span class="math" data-tex="\(\rho_0&gt;0\)">\(\rho_0&gt;0\)</span> such that for every <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> the map <span class="math" data-tex="\(\exp_x\)">\(\exp_x\)</span> is a diffeomorphism from the ball of radius <span class="math" data-tex="\(4\rho_0\)">\(4\rho_0\)</span> in <span class="math" data-tex="\(T_xX\)">\(T_xX\)</span> onto the geodesic ball <span class="math" data-tex="\(B_{4\rho_0}(x)\)">\(B_{4\rho_0}(x)\)</span>, with <span class="math" data-tex="\(d(x,\exp_xv)=|v|\)">\(d(x,\exp_xv)=|v|\)</span>. Choosing an orthonormal basis of <span class="math" data-tex="\(T_xX\)">\(T_xX\)</span> gives <em>normal coordinates</em> <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>, with <span class="math" data-tex="\(t=d(x,\cdot)=|z|\)">\(t=d(x,\cdot)=|z|\)</span>. In normal coordinates the coefficients of <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span>, with their derivatives up to any fixed order, are bounded uniformly in <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(|z|\le3\rho_0\)">\(|z|\le3\rho_0\)</span>; in particular Euclidean and <span class="math" data-tex="\(g\)">\(g\)</span>-lengths of vectors are comparable, <span class="math" data-tex="\(g_{ij}(0)=\delta_{ij}\)">\(g_{ij}(0)=\delta_{ij}\)</span>, and <span class="math" data-tex="\(J_0=J(x)\)">\(J_0=J(x)\)</span> is an orthogonal matrix.</p>
+<p><strong>Lemma 1.2</strong> (order zero on concentrated inputs). Let <span class="math" data-tex="\(B\)">\(B\)</span> be an operator of order zero between bundles of forms on <span class="math" data-tex="\(X\)">\(X\)</span>. Then:</p>
+<ol>
+<li>its kernel is continuous off the diagonal and <span class="math" data-tex="\(|K_B(y,z)|\le C\,d(y,z)^{-4}\)">\(|K_B(y,z)|\le C\,d(y,z)^{-4}\)</span>;</li>
+<li>if <span class="math" data-tex="\(0&lt;a\le\rho_0\)">\(0&lt;a\le\rho_0\)</span>, <span class="math" data-tex="\(M\ge0\)">\(M\ge0\)</span>, and <span class="math" data-tex="\(f\)">\(f\)</span> is a smooth form supported in a geodesic ball <span class="math" data-tex="\(B_a(y_0)\)">\(B_a(y_0)\)</span> whose components in normal coordinates at <span class="math" data-tex="\(y_0\)">\(y_0\)</span> satisfy <span class="math" data-tex="\(|\partial^\gamma f|\le Ma^{-|\gamma|}\)">\(|\partial^\gamma f|\le Ma^{-|\gamma|}\)</span> for <span class="math" data-tex="\(|\gamma|\le6\)">\(|\gamma|\le6\)</span>, then <span class="math" data-tex="\(|Bf(y)|\le CM\)">\(|Bf(y)|\le CM\)</span> for every <span class="math" data-tex="\(y\in X\)">\(y\in X\)</span>.</li>
+</ol>
+<p><em>Proof.</em> By the definition of operators of order zero on manifolds (Sections 4, 5 and 13 of <a href="../elliptic-boundary-reduction/geometric-microlocal-calculus.html">Detecting regularity without choosing coordinates</a>), the kernel is smooth off the diagonal, and for cutoffs <span class="math" data-tex="\(\phi,\psi\)">\(\phi,\psi\)</span> supported in a chart with frames, <span class="math" data-tex="\(\phi B\psi=\operatorname{Op}(b)+S\)">\(\phi B\psi=\operatorname{Op}(b)+S\)</span> in the chart, with <span class="math" data-tex="\(b\in S^0\)">\(b\in S^0\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> with smooth kernel. Cover <span class="math" data-tex="\(X\)">\(X\)</span> by finitely many balls <span class="math" data-tex="\(B_{\rho_0}(y_i)\)">\(B_{\rho_0}(y_i)\)</span> and take <span class="math" data-tex="\(\phi_i=\psi_i\)">\(\phi_i=\psi_i\)</span> equal to one on <span class="math" data-tex="\(B_{3\rho_0}(y_i)\)">\(B_{3\rho_0}(y_i)\)</span> with support in <span class="math" data-tex="\(B_{4\rho_0}(y_i)\)">\(B_{4\rho_0}(y_i)\)</span>, which lies in one chart.</p>
+<p>(1) If <span class="math" data-tex="\(d(y,z)\ge\rho_0\)">\(d(y,z)\ge\rho_0\)</span>, the kernel is bounded on this compact set. If <span class="math" data-tex="\(d(y,z)&lt;\rho_0\)">\(d(y,z)&lt;\rho_0\)</span> and <span class="math" data-tex="\(y\in B_{\rho_0}(y_i)\)">\(y\in B_{\rho_0}(y_i)\)</span>, then <span class="math" data-tex="\(K_B(y,z)=K_{\phi_iB\psi_i}(y,z)\)">\(K_B(y,z)=K_{\phi_iB\psi_i}(y,z)\)</span>, and Lemma 1.1, the smooth remainder and the smooth comparison of chart coordinates with distance give the bound.</p>
+<p>(2) If <span class="math" data-tex="\(d(y,B_a(y_0))\ge\rho_0\)">\(d(y,B_a(y_0))\ge\rho_0\)</span>, then <span class="math" data-tex="\(|Bf(y)|\le C\|f\|_{L^1}\le CMa^4\)">\(|Bf(y)|\le C\|f\|_{L^1}\le CMa^4\)</span>. Otherwise <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(B_a(y_0)\)">\(B_a(y_0)\)</span> lie in some <span class="math" data-tex="\(B_{3\rho_0}(y_i)\)">\(B_{3\rho_0}(y_i)\)</span>, and <span class="math" data-tex="\(Bf(y)=\operatorname{Op}(b_i)\tilde f(\tilde y)+S_if(y)\)">\(Bf(y)=\operatorname{Op}(b_i)\tilde f(\tilde y)+S_if(y)\)</span>, where <span class="math" data-tex="\(\tilde f\)">\(\tilde f\)</span> is <span class="math" data-tex="\(f\)">\(f\)</span> in the chart and frame. A smooth change of coordinates and frame keeps the derivative bounds, up to constants, since <span class="math" data-tex="\(a\le1\)">\(a\le1\)</span>. Then <span class="math" data-tex="\(|S_if(y)|\le C\|f\|_{L^1}\le CM\)">\(|S_if(y)|\le C\|f\|_{L^1}\le CM\)</span>, and
+<span class="math math-display" data-tex="\[
+|\operatorname{Op}(b_i)\tilde f(\tilde y)|\le(2\pi)^{-4}\sup|b_i|\,\|\hat{\tilde f}\|_{L^1} .
+\]">\[
+|\operatorname{Op}(b_i)\tilde f(\tilde y)|\le(2\pi)^{-4}\sup|b_i|\,\|\hat{\tilde f}\|_{L^1} .
+\]</span>
+Write <span class="math" data-tex="\(\tilde f(w)=M\,h((w-w_0)/a)\)">\(\tilde f(w)=M\,h((w-w_0)/a)\)</span>, so that <span class="math" data-tex="\(h\)">\(h\)</span> is supported in a fixed ball and has bounded derivatives of order at most six. Then <span class="math" data-tex="\(\hat{\tilde f}(\xi)=Ma^4\hat h(a\xi)\)">\(\hat{\tilde f}(\xi)=Ma^4\hat h(a\xi)\)</span>, so <span class="math" data-tex="\(\|\hat{\tilde f}\|_{L^1}=M\|\hat h\|_{L^1}\)">\(\|\hat{\tilde f}\|_{L^1}=M\|\hat h\|_{L^1}\)</span>. Since <span class="math" data-tex="\((1+|\eta|^2)^3\hat h(\eta)\)">\((1+|\eta|^2)^3\hat h(\eta)\)</span> is the Fourier transform of <span class="math" data-tex="\((1-\Delta)^3h\)">\((1-\Delta)^3h\)</span>, <span class="math" data-tex="\(|\hat h(\eta)|\le C(1+|\eta|^2)^{-3}\)">\(|\hat h(\eta)|\le C(1+|\eta|^2)^{-3}\)</span>, which is integrable on <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-the-test-forms">2. The test forms</h2>
+<p>For a smooth function <span class="math" data-tex="\(u\)">\(u\)</span> put <span class="math" data-tex="\(d^c_Ju=-du\circ J\)">\(d^c_Ju=-du\circ J\)</span>, and
+<span class="math math-display" data-tex="\[
+Du=(1-BR)\,dd^c_Ju ,
+\]">\[
+Du=(1-BR)\,dd^c_Ju ,
+\]</span>
+with the closed lift <span class="math" data-tex="\(B\)">\(B\)</span> of Lemma 3.4 of the first lesson.</p>
+<p><strong>Lemma 2.1.</strong> (1) <span class="math" data-tex="\(Du\)">\(Du\)</span> is a smooth closed invariant two-form, so <span class="math" data-tex="\(P(Du)=0\)">\(P(Du)=0\)</span>. (2) In local coordinates, with <span class="math" data-tex="\(H\)">\(H\)</span> the Hessian matrix of <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> the matrix of <span class="math" data-tex="\(J\)">\(J\)</span> at a point,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+dd^c_Ju=h_u+e_u,\\
+h_u(a,b)=\langle HJa,b\rangle-\langle HJb,a\rangle ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+dd^c_Ju=h_u+e_u,\\
+h_u(a,b)=\langle HJa,b\rangle-\langle HJb,a\rangle ,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\langle\cdot,\cdot\rangle\)">\(\langle\cdot,\cdot\rangle\)</span> is the coordinate dot product and <span class="math" data-tex="\(e_u=-\sum_{i,j,k}\partial_ku\,\partial_iJ^k_j\,dz^i\wedge dz^j\)">\(e_u=-\sum_{i,j,k}\partial_ku\,\partial_iJ^k_j\,dz^i\wedge dz^j\)</span>. The form <span class="math" data-tex="\(h_u\)">\(h_u\)</span> is invariant. Consequently <span class="math" data-tex="\(R\,dd^c_Ju=Re_u\)">\(R\,dd^c_Ju=Re_u\)</span>: <span class="math" data-tex="\(R\,dd^c_J\)">\(R\,dd^c_J\)</span> is a first-order differential operator with smooth coefficients and no term of order zero. (3) If <span class="math" data-tex="\(J\)">\(J\)</span> is constant, <span class="math" data-tex="\(dd^c_Ju(v,Jv)=H(v,v)+H(Jv,Jv)\)">\(dd^c_Ju(v,Jv)=H(v,v)+H(Jv,Jv)\)</span>.</p>
+<p><em>Proof.</em> (1) <span class="math" data-tex="\(dd^c_Ju\)">\(dd^c_Ju\)</span> is exact, hence closed; <span class="math" data-tex="\(d(BR\beta)=0\)">\(d(BR\beta)=0\)</span> since <span class="math" data-tex="\(dB=0\)">\(dB=0\)</span>; and <span class="math" data-tex="\(R(1-BR)\beta=R\beta-R\beta=0\)">\(R(1-BR)\beta=R\beta-R\beta=0\)</span> since <span class="math" data-tex="\(RB=\mathrm{id}\)">\(RB=\mathrm{id}\)</span>. Proposition 5.1 of the first lesson gives <span class="math" data-tex="\(P(Du)=0\)">\(P(Du)=0\)</span>.</p>
+<p>(2) With <span class="math" data-tex="\(J\partial_j=\sum_kJ^k_j\partial_k\)">\(J\partial_j=\sum_kJ^k_j\partial_k\)</span>, <span class="math" data-tex="\(d^c_Ju=-\sum_{j,k}\partial_ku\,J^k_j\,dz^j\)">\(d^c_Ju=-\sum_{j,k}\partial_ku\,J^k_j\,dz^j\)</span>. Differentiating gives <span class="math" data-tex="\(e_u\)">\(e_u\)</span> and the form <span class="math" data-tex="\(-\sum\partial_i\partial_ku\,J^k_j\,dz^i\wedge dz^j\)">\(-\sum\partial_i\partial_ku\,J^k_j\,dz^i\wedge dz^j\)</span>, whose value on <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> is <span class="math" data-tex="\(h_u(a,b)\)">\(h_u(a,b)\)</span>. Since <span class="math" data-tex="\(J^2=-1\)">\(J^2=-1\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span> is symmetric,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h_u(Ja,Jb)&amp;=-\langle Ha,Jb\rangle+\langle Hb,Ja\rangle\\
+&amp;=\langle HJa,b\rangle-\langle HJb,a\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+h_u(Ja,Jb)&amp;=-\langle Ha,Jb\rangle+\langle Hb,Ja\rangle\\
+&amp;=\langle HJa,b\rangle-\langle HJb,a\rangle .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(Rh_u=0\)">\(Rh_u=0\)</span>.</p>
+<p>(3) With <span class="math" data-tex="\(e_u=0\)">\(e_u=0\)</span>, <span class="math" data-tex="\(h_u(v,Jv)=\langle HJv,Jv\rangle-\langle HJ^2v,v\rangle\)">\(h_u(v,Jv)=\langle HJv,Jv\rangle-\langle HJ^2v,v\rangle\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-radial-functions">3. Radial functions</h2>
+<p>Fix <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, normal coordinates <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>, and a smooth function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(t=|z|\)">\(t=|z|\)</span>, equal to one for <span class="math" data-tex="\(t\le\rho_0\)">\(t\le\rho_0\)</span> and zero for <span class="math" data-tex="\(t\ge2\rho_0\)">\(t\ge2\rho_0\)</span>. For <span class="math" data-tex="\(0&lt;s\le\rho_0\)">\(0&lt;s\le\rho_0\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_s=\chi\log\sqrt{s^2+t^2},\\
+h_s=\chi\sqrt{s^2+t^2} ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+u_s=\chi\log\sqrt{s^2+t^2},\\
+h_s=\chi\sqrt{s^2+t^2} ,
+\end{gathered}
+\]</span>
+extended by zero outside <span class="math" data-tex="\(B_{2\rho_0}(x)\)">\(B_{2\rho_0}(x)\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (derivative bounds). For every multi-index <span class="math" data-tex="\(\gamma\ne0\)">\(\gamma\ne0\)</span>, in normal coordinates,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\partial^\gamma u_s|\le C_\gamma(s+t)^{-|\gamma|},\\
+|\partial^\gamma h_s|\le C_\gamma(s+t)^{1-|\gamma|} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\partial^\gamma u_s|\le C_\gamma(s+t)^{-|\gamma|},\\
+|\partial^\gamma h_s|\le C_\gamma(s+t)^{1-|\gamma|} .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>, <span class="math" data-tex="\(\log\sqrt{s^2+t^2}=\log s+G(z/s)\)">\(\log\sqrt{s^2+t^2}=\log s+G(z/s)\)</span> with <span class="math" data-tex="\(G(w)=\frac12\log(1+|w|^2)\)">\(G(w)=\frac12\log(1+|w|^2)\)</span>, and <span class="math" data-tex="\(\sqrt{s^2+t^2}=sG_2(z/s)\)">\(\sqrt{s^2+t^2}=sG_2(z/s)\)</span> with <span class="math" data-tex="\(G_2(w)=(1+|w|^2)^{1/2}\)">\(G_2(w)=(1+|w|^2)^{1/2}\)</span>. Each derivative of <span class="math" data-tex="\(G\)">\(G\)</span> of order <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> is <span class="math" data-tex="\(O((1+|w|)^{-m})\)">\(O((1+|w|)^{-m})\)</span>, and each derivative of <span class="math" data-tex="\(G_2\)">\(G_2\)</span> of order <span class="math" data-tex="\(m\)">\(m\)</span> is <span class="math" data-tex="\(O((1+|w|)^{1-m})\)">\(O((1+|w|)^{1-m})\)</span>. The chain rule gives <span class="math" data-tex="\(s^{-m}(1+t/s)^{-m}=(s+t)^{-m}\)">\(s^{-m}(1+t/s)^{-m}=(s+t)^{-m}\)</span> and <span class="math" data-tex="\(s^{1-m}(1+t/s)^{1-m}=(s+t)^{1-m}\)">\(s^{1-m}(1+t/s)^{1-m}=(s+t)^{1-m}\)</span>. Where <span class="math" data-tex="\(\chi\ne1\)">\(\chi\ne1\)</span>, <span class="math" data-tex="\(t\ge\rho_0\)">\(t\ge\rho_0\)</span>, and all derivatives are bounded. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2</strong> (complex-line traces). Let <span class="math" data-tex="\(J_0=J(x)\)">\(J_0=J(x)\)</span>, constant in the normal coordinates, and let <span class="math" data-tex="\(v\in\mathbb R^4\)">\(v\in\mathbb R^4\)</span>. Where <span class="math" data-tex="\(t&lt;\rho_0\)">\(t&lt;\rho_0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+dd^c_{J_0}u_s(v,J_0v)\ge\frac{2s^2|v|^2}{(s^2+t^2)^2},\\
+dd^c_{J_0}h_s(v,J_0v)\ge\frac{|v|^2}{\sqrt{s^2+t^2}} ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+dd^c_{J_0}u_s(v,J_0v)\ge\frac{2s^2|v|^2}{(s^2+t^2)^2},\\
+dd^c_{J_0}h_s(v,J_0v)\ge\frac{|v|^2}{\sqrt{s^2+t^2}} ,
+\end{gathered}
+\]</span>
+with Euclidean lengths.</p>
+<p><em>Proof.</em> The Hessians are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{I}{s^2+t^2}-\frac{2zz^\top}{(s^2+t^2)^2},\\
+\frac{I}{\sqrt{s^2+t^2}}-\frac{zz^\top}{(s^2+t^2)^{3/2}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{I}{s^2+t^2}-\frac{2zz^\top}{(s^2+t^2)^2},\\
+\frac{I}{\sqrt{s^2+t^2}}-\frac{zz^\top}{(s^2+t^2)^{3/2}} .
+\end{gathered}
+\]</span>
+<span class="math" data-tex="\(J_0\)">\(J_0\)</span> is orthogonal and skew, so <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(J_0v\)">\(J_0v\)</span> are orthogonal of equal length, and <span class="math" data-tex="\((z\cdot v)^2+(z\cdot J_0v)^2\le t^2|v|^2\)">\((z\cdot v)^2+(z\cdot J_0v)^2\le t^2|v|^2\)</span>. By Lemma 2.1(3),
+<span class="math math-display" data-tex="\[
+dd^c_{J_0}u_s(v,J_0v)\ge\frac{2|v|^2}{s^2+t^2}-\frac{2t^2|v|^2}{(s^2+t^2)^2} ,
+\]">\[
+dd^c_{J_0}u_s(v,J_0v)\ge\frac{2|v|^2}{s^2+t^2}-\frac{2t^2|v|^2}{(s^2+t^2)^2} ,
+\]</span>
+which is the first bound; the second is <span class="math" data-tex="\(\ge\frac{2|v|^2}{\sqrt{s^2+t^2}}-\frac{t^2|v|^2}{(s^2+t^2)^{3/2}}\)">\(\ge\frac{2|v|^2}{\sqrt{s^2+t^2}}-\frac{t^2|v|^2}{(s^2+t^2)^{3/2}}\)</span>, and <span class="math" data-tex="\(t^2\le s^2+t^2\)">\(t^2\le s^2+t^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The first trace is positive everywhere and at least <span class="math" data-tex="\(c/s^2\)">\(c/s^2\)</span> where <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span>, for unit <span class="math" data-tex="\(v\)">\(v\)</span>. It concentrates the test on the ball <span class="math" data-tex="\(B_s(x)\)">\(B_s(x)\)</span>. The second is a weaker but everywhere positive term that absorbs errors.</p>
+<p><strong>Lemma 3.3</strong> (the correction; [OpenAI-TC, Lemma 3.2]). For <span class="math" data-tex="\(y\in X\)">\(y\in X\)</span> let <span class="math" data-tex="\(t=d(x,y)\)">\(t=d(x,y)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bigl|BR\,dd^c_Ju_s(y)\bigr|\le\frac{C}{s+t},\\
+\bigl|BR\,dd^c_Jh_s(y)\bigr|\le C\bigl(1+|\log(s+t)|\bigr) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\bigl|BR\,dd^c_Ju_s(y)\bigr|\le\frac{C}{s+t},\\
+\bigl|BR\,dd^c_Jh_s(y)\bigr|\le C\bigl(1+|\log(s+t)|\bigr) .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(f=R\,dd^c_Ju_s\)">\(f=R\,dd^c_Ju_s\)</span> and <span class="math" data-tex="\(k=R\,dd^c_Jh_s\)">\(k=R\,dd^c_Jh_s\)</span>. By Lemma 2.1(2) and Lemma 3.1, <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> vanish outside <span class="math" data-tex="\(B_{2\rho_0}(x)\)">\(B_{2\rho_0}(x)\)</span> and, in normal coordinates at <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\partial^\gamma f|\le C_\gamma(s+t)^{-1-|\gamma|},\\
+|\partial^\gamma k|\le C_\gamma(s+t)^{-|\gamma|} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\partial^\gamma f|\le C_\gamma(s+t)^{-1-|\gamma|},\\
+|\partial^\gamma k|\le C_\gamma(s+t)^{-|\gamma|} .
+\end{gathered}
+\]</span>
+Put <span class="math" data-tex="\(a=s+t(y)\)">\(a=s+t(y)\)</span>, and first suppose <span class="math" data-tex="\(a\le\rho_0/8\)">\(a\le\rho_0/8\)</span>. Split the input with a smooth partition into three parts.</p>
+<p><em>Near <span class="math" data-tex="\(y\)">\(y\)</span>.</em> On the ball of radius <span class="math" data-tex="\(a/4\)">\(a/4\)</span> about <span class="math" data-tex="\(y\)">\(y\)</span>, <span class="math" data-tex="\(s+t\)">\(s+t\)</span> lies between <span class="math" data-tex="\(\frac34a\)">\(\frac34a\)</span> and <span class="math" data-tex="\(\frac54a\)">\(\frac54a\)</span> by the triangle inequality. A cutoff equal to one on the ball of radius <span class="math" data-tex="\(a/8\)">\(a/8\)</span> about <span class="math" data-tex="\(y\)">\(y\)</span>, supported in the ball of radius <span class="math" data-tex="\(a/4\)">\(a/4\)</span>, with derivatives <span class="math" data-tex="\(O(a^{-|\gamma|})\)">\(O(a^{-|\gamma|})\)</span>, gives a piece satisfying the hypothesis of Lemma 1.2(2) with <span class="math" data-tex="\(M=C/a\)">\(M=C/a\)</span> for <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(M=C\)">\(M=C\)</span> for <span class="math" data-tex="\(k\)">\(k\)</span>. Its contribution at <span class="math" data-tex="\(y\)">\(y\)</span> is at most <span class="math" data-tex="\(C/a\)">\(C/a\)</span>, respectively <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><em>Near <span class="math" data-tex="\(x\)">\(x\)</span>.</em> On the rest of the ball <span class="math" data-tex="\(\{t\le2a\}\)">\(\{t\le2a\}\)</span>, the distance to <span class="math" data-tex="\(y\)">\(y\)</span> is at least <span class="math" data-tex="\(a/8\)">\(a/8\)</span>, so the kernel is at most <span class="math" data-tex="\(Ca^{-4}\)">\(Ca^{-4}\)</span> by Lemma 1.2(1). The input has <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm at most <span class="math" data-tex="\(C\int_0^{2a}\rho^3(s+\rho)^{-1}d\rho\le Ca^3\)">\(C\int_0^{2a}\rho^3(s+\rho)^{-1}d\rho\le Ca^3\)</span> for <span class="math" data-tex="\(f\)">\(f\)</span>, and <span class="math" data-tex="\(Ca^4\)">\(Ca^4\)</span> for <span class="math" data-tex="\(k\)">\(k\)</span>. The contributions are again <span class="math" data-tex="\(C/a\)">\(C/a\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><em>Dyadic shells.</em> On <span class="math" data-tex="\(\{2^ja\le t&lt;2^{j+1}a\}\)">\(\{2^ja\le t&lt;2^{j+1}a\}\)</span>, <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, the distance to <span class="math" data-tex="\(y\)">\(y\)</span> is at least <span class="math" data-tex="\(2^{j-1}a\)">\(2^{j-1}a\)</span>, the kernel is <span class="math" data-tex="\(O((2^ja)^{-4})\)">\(O((2^ja)^{-4})\)</span>, the input is <span class="math" data-tex="\(O((2^ja)^{-1})\)">\(O((2^ja)^{-1})\)</span> for <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> for <span class="math" data-tex="\(k\)">\(k\)</span>, and the shell has volume <span class="math" data-tex="\(O((2^ja)^4)\)">\(O((2^ja)^4)\)</span>. The shell contributes <span class="math" data-tex="\(O((2^ja)^{-1})\)">\(O((2^ja)^{-1})\)</span> for <span class="math" data-tex="\(f\)">\(f\)</span>, whose sum over <span class="math" data-tex="\(j\)">\(j\)</span> is <span class="math" data-tex="\(O(a^{-1})\)">\(O(a^{-1})\)</span>, and <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> for <span class="math" data-tex="\(k\)">\(k\)</span>, with <span class="math" data-tex="\(O(1+|\log a|)\)">\(O(1+|\log a|)\)</span> shells before <span class="math" data-tex="\(t\)">\(t\)</span> reaches <span class="math" data-tex="\(2\rho_0\)">\(2\rho_0\)</span>.</p>
+<p>If <span class="math" data-tex="\(a&gt;\rho_0/8\)">\(a&gt;\rho_0/8\)</span>, then either <span class="math" data-tex="\(s&gt;\rho_0/16\)">\(s&gt;\rho_0/16\)</span> or <span class="math" data-tex="\(t&gt;\rho_0/16\)">\(t&gt;\rho_0/16\)</span>. In both cases split the input into the part within distance <span class="math" data-tex="\(\rho_0/64\)">\(\rho_0/64\)</span> of <span class="math" data-tex="\(y\)">\(y\)</span>, where <span class="math" data-tex="\(s+t\ge\rho_0/64\)">\(s+t\ge\rho_0/64\)</span> and Lemma 1.2(2) applies with bounded <span class="math" data-tex="\(M\)">\(M\)</span>, and the rest, where the kernel is bounded and the input has bounded <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm. Both bounds then hold with a larger constant. The constants are uniform in <span class="math" data-tex="\(x\)">\(x\)</span>, by the uniform bounds in normal coordinates. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-quadratic-mass-growth">4. Quadratic mass growth</h2>
+<p><strong>Proposition 4.1</strong> ([OpenAI-TC, Proposition 3.1]). There is a constant <span class="math" data-tex="\(C\)">\(C\)</span> such that
+<span class="math math-display" data-tex="\[
+\mu(B_s(x))\le Cs^2
+\]">\[
+\mu(B_s(x))\le Cs^2
+\]</span>
+for every <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> and every <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(x\)">\(x\)</span>, normal coordinates, <span class="math" data-tex="\(0&lt;s\le\rho_0\)">\(0&lt;s\le\rho_0\)</span>, and a point <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(t=d(x,y)&lt;\rho_0\)">\(t=d(x,y)&lt;\rho_0\)</span>. Let <span class="math" data-tex="\(v\)">\(v\)</span> be a <span class="math" data-tex="\(g\)">\(g\)</span>-unit vector at <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(J=J(y)\)">\(J=J(y)\)</span>. We compare <span class="math" data-tex="\(dd^c_J\)">\(dd^c_J\)</span> at <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(dd^c_{J_0}\)">\(dd^c_{J_0}\)</span>. By Lemma 2.1(2), the Hessian parts differ on <span class="math" data-tex="\((v,Jv)\)">\((v,Jv)\)</span> and <span class="math" data-tex="\((v,J_0v)\)">\((v,J_0v)\)</span> by
+<span class="math math-display" data-tex="\[
+H(Jv,Jv)-H(J_0v,J_0v) ,
+\]">\[
+H(Jv,Jv)-H(J_0v,J_0v) ,
+\]</span>
+which is at most <span class="math" data-tex="\(C|H|\,|J-J_0|\le C|H|t\)">\(C|H|\,|J-J_0|\le C|H|t\)</span>, since <span class="math" data-tex="\(J\)">\(J\)</span> is smooth in the normal coordinates. The first-order part <span class="math" data-tex="\(e_u\)">\(e_u\)</span> is at most <span class="math" data-tex="\(C|\nabla u|\)">\(C|\nabla u|\)</span>. By Lemma 3.1, for <span class="math" data-tex="\(u_s\)">\(u_s\)</span> the two errors are <span class="math" data-tex="\(Ct(s+t)^{-2}\)">\(Ct(s+t)^{-2}\)</span> and <span class="math" data-tex="\(C(s+t)^{-1}\)">\(C(s+t)^{-1}\)</span>, and for <span class="math" data-tex="\(h_s\)">\(h_s\)</span> they are bounded. Together with Lemmas 3.2 and 3.3, and with <span class="math" data-tex="\(|v|\)">\(|v|\)</span> comparable to one in Euclidean length,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Du_s(v,Jv)&amp;\ge\frac{c}{s^2}\mathbf 1_{\{t&lt;s\}}-\frac{C}{s+t},\\
+Dh_s(v,Jv)&amp;\ge\frac{c&#x27;}{s+t}\\
+&amp;\quad-C\bigl(1+|\log(s+t)|\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+Du_s(v,Jv)&amp;\ge\frac{c}{s^2}\mathbf 1_{\{t&lt;s\}}-\frac{C}{s+t},\\
+Dh_s(v,Jv)&amp;\ge\frac{c&#x27;}{s+t}\\
+&amp;\quad-C\bigl(1+|\log(s+t)|\bigr).
+\end{aligned}
+\]</span>
+For the first line we used <span class="math" data-tex="\(2s^2/(s^2+t^2)^2\ge1/(2s^2)\)">\(2s^2/(s^2+t^2)^2\ge1/(2s^2)\)</span> when <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span>. Since <span class="math" data-tex="\((s+t)|\log(s+t)|\to0\)">\((s+t)|\log(s+t)|\to0\)</span>, there is <span class="math" data-tex="\(a_1&gt;0\)">\(a_1&gt;0\)</span> such that the second line is at least <span class="math" data-tex="\(c&#x27;/(2(s+t))\)">\(c&#x27;/(2(s+t))\)</span> when <span class="math" data-tex="\(s+t\le a_1\)">\(s+t\le a_1\)</span>. Fix <span class="math" data-tex="\(A=2C/c&#x27;\)">\(A=2C/c&#x27;\)</span>. Then, when <span class="math" data-tex="\(s+t\le a_1\)">\(s+t\le a_1\)</span>,
+<span class="math math-display" data-tex="\[
+D(u_s+Ah_s)(v,Jv)\ge\frac{c}{s^2}\mathbf 1_{B_s(x)}(y) .
+\]">\[
+D(u_s+Ah_s)(v,Jv)\ge\frac{c}{s^2}\mathbf 1_{B_s(x)}(y) .
+\]</span>
+When <span class="math" data-tex="\(s\le a_1/2\)">\(s\le a_1/2\)</span> and <span class="math" data-tex="\(s+t&gt;a_1\)">\(s+t&gt;a_1\)</span>, then <span class="math" data-tex="\(t&gt;a_1/2\)">\(t&gt;a_1/2\)</span>, so <span class="math" data-tex="\(y\notin B_s(x)\)">\(y\notin B_s(x)\)</span>, and all terms are bounded: <span class="math" data-tex="\(u_s\)">\(u_s\)</span>, <span class="math" data-tex="\(h_s\)">\(h_s\)</span> and their first and second derivatives are bounded there uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>, and the corrections are bounded by Lemma 3.3. Hence, for <span class="math" data-tex="\(s\le a_1/2\)">\(s\le a_1/2\)</span>, every <span class="math" data-tex="\(y\in X\)">\(y\in X\)</span> and every unit <span class="math" data-tex="\(v\)">\(v\)</span> at <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;D(u_s+Ah_s)(v,Jv)\\
+&amp;\quad\ge\frac{c}{s^2}\mathbf 1_{B_s(x)}(y)-C&#x27; .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;D(u_s+Ah_s)(v,Jv)\\
+&amp;\quad\ge\frac{c}{s^2}\mathbf 1_{B_s(x)}(y)-C&#x27; .
+\end{aligned}
+\]</span>
+Every <span class="math" data-tex="\(\ell\in\mathscr C_y\)">\(\ell\in\mathscr C_y\)</span> is <span class="math" data-tex="\(v\wedge Jv\)">\(v\wedge Jv\)</span> for a unit <span class="math" data-tex="\(v\)">\(v\)</span>. By Lemma 2.1(1) and the integral formula for <span class="math" data-tex="\(P\)">\(P\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;=P\bigl(D(u_s+Ah_s)\bigr)\\
+&amp;=\int_{\mathscr C}D(u_s+Ah_s)_y(\ell)\,d\lambda(y,\ell) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;=P\bigl(D(u_s+Ah_s)\bigr)\\
+&amp;=\int_{\mathscr C}D(u_s+Ah_s)_y(\ell)\,d\lambda(y,\ell) .
+\end{aligned}
+\]</span>
+The right side is at least <span class="math" data-tex="\(\frac{c}{s^2}\mu(B_s(x))-C&#x27;\)">\(\frac{c}{s^2}\mu(B_s(x))-C&#x27;\)</span>, because <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a probability measure with projection <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Thus <span class="math" data-tex="\(\mu(B_s(x))\le(C&#x27;/c)s^2\)">\(\mu(B_s(x))\le(C&#x27;/c)s^2\)</span> for <span class="math" data-tex="\(s\le a_1/2\)">\(s\le a_1/2\)</span>. For larger <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(\mu(B_s(x))\le1\le(2/a_1)^2s^2\)">\(\mu(B_s(x))\le1\le(2/a_1)^2s^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Two features of the proof matter later. The bound is uniform in the centre, and it uses only that <span class="math" data-tex="\(P\)">\(P\)</span> annihilates the closed invariant forms <span class="math" data-tex="\(Du\)">\(Du\)</span>. The next lessons use it in the form of dyadic sums: for every <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\int_X\Bigl(1+\frac{d(x,y)}{r}\Bigr)^{-6}d\mu(x)\le Cr^2 ,
+\]">\[
+\int_X\Bigl(1+\frac{d(x,y)}{r}\Bigr)^{-6}d\mu(x)\le Cr^2 ,
+\]</span>
+because the ball <span class="math" data-tex="\(B_r(y)\)">\(B_r(y)\)</span> has mass at most <span class="math" data-tex="\(Cr^2\)">\(Cr^2\)</span> and the shell where <span class="math" data-tex="\(2^jr\le d&lt;2^{j+1}r\)">\(2^jr\le d&lt;2^{j+1}r\)</span> has mass <span class="math" data-tex="\(O(4^jr^2)\)">\(O(4^jr^2)\)</span> and weight at most <span class="math" data-tex="\(2^{-6j}\)">\(2^{-6j}\)</span> (Exercise 5.4).</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Show that <span class="math" data-tex="\(\mu\)">\(\mu\)</span> has no atoms, and more generally that <span class="math" data-tex="\(\mu(E)=0\)">\(\mu(E)=0\)</span> for every Borel set <span class="math" data-tex="\(E\)">\(E\)</span> that can be covered, for each <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, by countably many balls <span class="math" data-tex="\(B_{s_k}(x_k)\)">\(B_{s_k}(x_k)\)</span> with <span class="math" data-tex="\(\sum_ks_k^2&lt;\varepsilon\)">\(\sum_ks_k^2&lt;\varepsilon\)</span>.</p>
+<p><strong>5.2.</strong> For constant <span class="math" data-tex="\(J_0\)">\(J_0\)</span> orthogonal on <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>, show that <span class="math" data-tex="\(dd^c_{J_0}(|z|^2/2)=2F_0\)">\(dd^c_{J_0}(|z|^2/2)=2F_0\)</span>, where <span class="math" data-tex="\(F_0(a,b)=\langle J_0a,b\rangle\)">\(F_0(a,b)=\langle J_0a,b\rangle\)</span>.</p>
+<p><strong>5.3.</strong> Show that for <span class="math" data-tex="\(0&lt;r\le1\)">\(0&lt;r\le1\)</span> and <span class="math" data-tex="\(2N&gt;n\)">\(2N&gt;n\)</span>, <span class="math" data-tex="\(\sum_{k\ge0}2^{kn}\min\bigl(1,(2^kr)^{-2N}\bigr)\le C_{n,N}r^{-n}\)">\(\sum_{k\ge0}2^{kn}\min\bigl(1,(2^kr)^{-2N}\bigr)\le C_{n,N}r^{-n}\)</span>.</p>
+<p><strong>5.4.</strong> Prove the dyadic bound <span class="math" data-tex="\(\int_X(1+d(x,y)/r)^{-6}\,d\mu(x)\le Cr^2\)">\(\int_X(1+d(x,y)/r)^{-6}\,d\mu(x)\le Cr^2\)</span> stated after Proposition 4.1.</p>
+<p><strong>5.5.</strong> Using only <span class="math" data-tex="\(u_s\)">\(u_s\)</span>, the proof gives <span class="math" data-tex="\(\frac{c}{s^2}\mu(B_s(x))\le C\int_X\frac{d\mu(y)}{s+d(x,y)}\)">\(\frac{c}{s^2}\mu(B_s(x))\le C\int_X\frac{d\mu(y)}{s+d(x,y)}\)</span>. Explain why this alone does not bound <span class="math" data-tex="\(\mu(B_s(x))\)">\(\mu(B_s(x))\)</span> by <span class="math" data-tex="\(Cs^2\)">\(Cs^2\)</span>, and how the term <span class="math" data-tex="\(Ah_s\)">\(Ah_s\)</span> removes the difficulty.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> If <span class="math" data-tex="\(E\subseteq\bigcup_kB_{s_k}(x_k)\)">\(E\subseteq\bigcup_kB_{s_k}(x_k)\)</span>, Proposition 4.1 gives <span class="math" data-tex="\(\mu(E)\le C\sum_ks_k^2&lt;C\varepsilon\)">\(\mu(E)\le C\sum_ks_k^2&lt;C\varepsilon\)</span>. A point is covered by one ball of any radius <span class="math" data-tex="\(s\)">\(s\)</span>, so it has measure at most <span class="math" data-tex="\(Cs^2\)">\(Cs^2\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>5.2.</strong> The Hessian of <span class="math" data-tex="\(|z|^2/2\)">\(|z|^2/2\)</span> is the identity, so by Lemma 2.1(2), <span class="math" data-tex="\(dd^c_{J_0}(|z|^2/2)(a,b)=\langle J_0a,b\rangle-\langle J_0b,a\rangle\)">\(dd^c_{J_0}(|z|^2/2)(a,b)=\langle J_0a,b\rangle-\langle J_0b,a\rangle\)</span>. Since <span class="math" data-tex="\(J_0\)">\(J_0\)</span> is orthogonal with <span class="math" data-tex="\(J_0^2=-1\)">\(J_0^2=-1\)</span>, it is skew, so this is <span class="math" data-tex="\(2\langle J_0a,b\rangle\)">\(2\langle J_0a,b\rangle\)</span>.</p>
+<p><strong>5.3.</strong> Let <span class="math" data-tex="\(2^{k_0}\le r^{-1}&lt;2^{k_0+1}\)">\(2^{k_0}\le r^{-1}&lt;2^{k_0+1}\)</span>. The terms with <span class="math" data-tex="\(k\le k_0\)">\(k\le k_0\)</span> sum to at most <span class="math" data-tex="\(2^{(k_0+1)n}\le2^nr^{-n}\)">\(2^{(k_0+1)n}\le2^nr^{-n}\)</span>. For <span class="math" data-tex="\(k&gt;k_0\)">\(k&gt;k_0\)</span> the terms are <span class="math" data-tex="\(2^{kn}(2^kr)^{-2N}=r^{-2N}2^{-k(2N-n)}\)">\(2^{kn}(2^kr)^{-2N}=r^{-2N}2^{-k(2N-n)}\)</span>, a geometric series bounded by <span class="math" data-tex="\(Cr^{-2N}2^{-k_0(2N-n)}\le Cr^{-n}\)">\(Cr^{-2N}2^{-k_0(2N-n)}\le Cr^{-n}\)</span>.</p>
+<p><strong>5.4.</strong> The ball <span class="math" data-tex="\(B_r(y)\)">\(B_r(y)\)</span> contributes at most <span class="math" data-tex="\(\mu(B_r(y))\le Cr^2\)">\(\mu(B_r(y))\le Cr^2\)</span>. The shell where <span class="math" data-tex="\(2^jr\le d(x,y)&lt;2^{j+1}r\)">\(2^jr\le d(x,y)&lt;2^{j+1}r\)</span> has mass at most <span class="math" data-tex="\(C4^{j+1}r^2\)">\(C4^{j+1}r^2\)</span>, and there the integrand is at most <span class="math" data-tex="\((1+2^j)^{-6}\le2^{-6j}\)">\((1+2^j)^{-6}\le2^{-6j}\)</span>. The sum <span class="math" data-tex="\(\sum_j4^{j+1}2^{-6j}\)">\(\sum_j4^{j+1}2^{-6j}\)</span> converges.</p>
+<p><strong>5.5.</strong> The right side <span class="math" data-tex="\(\int(s+d(x,y))^{-1}d\mu(y)\)">\(\int(s+d(x,y))^{-1}d\mu(y)\)</span> can be as large as <span class="math" data-tex="\(\mu(B_s(x))/s\)">\(\mu(B_s(x))/s\)</span> when the mass sits near <span class="math" data-tex="\(x\)">\(x\)</span>, and bounding it already requires control of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on small balls. The function <span class="math" data-tex="\(h_s\)">\(h_s\)</span> contributes <span class="math" data-tex="\(Ac&#x27;/(2(s+t))\)">\(Ac&#x27;/(2(s+t))\)</span>, which dominates the negative term <span class="math" data-tex="\(C/(s+t)\)">\(C/(s+t)\)</span> pointwise, so no integral of <span class="math" data-tex="\((s+t)^{-1}\)">\((s+t)^{-1}\)</span> against <span class="math" data-tex="\(\mu\)">\(\mu\)</span> needs to be estimated.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-TC] OpenAI, <em>Taming implies compatibility on four-manifolds</em>, OpenAI Math Release preprint, 23 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Taming-implies-compatibility-on-four-manifolds-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,0 +1,243 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Closedness of the density part and the proof</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Taming implies compatibility)</a><a href="densities-and-planar-tangent-measures.html">Previous lesson</a><a href="src/closedness-of-the-density-part-and-the-proof.md">Editable source</a></nav><main><article><h1 id="closedness-of-the-density-part-and-the-proof">Closedness of the density part and the proof</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the closedness theorem of <a href="densities-and-planar-tangent-measures.html">Densities and planar tangent measures</a> (Theorem 1.1 there) and then the main theorem of the course. The positive-density part <span class="math" data-tex="\(\mathbf 1_EP\)">\(\mathbf 1_EP\)</span> is approached by currents <span class="math" data-tex="\(b(f_r)P\)">\(b(f_r)P\)</span>, where <span class="math" data-tex="\(f_r\)">\(f_r\)</span> is a smoothed density at scale <span class="math" data-tex="\(r\)">\(r\)</span>. Closedness of <span class="math" data-tex="\(T=P+Q\)">\(T=P+Q\)</span> moves the derivative of the cutoff onto the current; against <span class="math" data-tex="\(Q\)">\(Q\)</span> its size is controlled by square integrability, and against <span class="math" data-tex="\(P\)">\(P\)</span> only its derivative along the complex line of the current matters. Closedness of <span class="math" data-tex="\(T\)">\(T\)</span> converts that tangential derivative into normal derivatives paired with mixed forms. The normal derivatives are controlled by the transverse moment, which is <span class="math" data-tex="\(o(r)\)">\(o(r)\)</span> in the mean, and the mixed forms by the angular bound, which is <span class="math" data-tex="\(O(r^2)\)">\(O(r^2)\)</span>; the product beats the normalization <span class="math" data-tex="\(r^{-3}\)">\(r^{-3}\)</span>.</p>
+<ul>
+<li>Density cutoffs; the density vanishes almost everywhere for the volume (Lemmas 1.1 and 1.2).</li>
+<li>The error from the square integrable correction (Lemma 2.1).</li>
+<li>Tangential derivatives of the cutoffs (Lemma 3.1, Proposition 3.2).</li>
+<li>Proof of the closedness theorem (Section 4).</li>
+<li>The final pairing and the proof of the main theorem (Theorem 5.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-TC, Sections 6 and 7]. The hypotheses and notation of Theorem 1.1 of the previous lesson are in force until Section 5: <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the polarization <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(Q\)">\(Q\)</span>, <span class="math" data-tex="\(T=P+Q\)">\(T=P+Q\)</span>, <span class="math" data-tex="\(\sigma=\mu+|Q|\,dV\)">\(\sigma=\mu+|Q|\,dV\)</span>, the angular integral <span class="math" data-tex="\(\mathcal I_r\le Cr^4\)">\(\mathcal I_r\le Cr^4\)</span> and the transverse moment <span class="math" data-tex="\(\mathcal N_r=o(r^2)\)">\(\mathcal N_r=o(r^2)\)</span> of Proposition 4.1 there. <span class="math" data-tex="\(M_r(x)=\mu(B_r(x))\)">\(M_r(x)=\mu(B_r(x))\)</span>.</p>
+<h2 id="1-density-cutoffs">1. Density cutoffs</h2>
+<p>Fix a smooth nonincreasing function <span class="math" data-tex="\(h\colon[0,\infty)\to[0,\infty)\)">\(h\colon[0,\infty)\to[0,\infty)\)</span>, positive at <span class="math" data-tex="\(0\)">\(0\)</span> and zero on <span class="math" data-tex="\([\frac12,\infty)\)">\([\frac12,\infty)\)</span>, and put <span class="math" data-tex="\(H(t)=h(t^2)\)">\(H(t)=h(t^2)\)</span>. For <span class="math" data-tex="\(0&lt;r&lt;\rho_0\)">\(0&lt;r&lt;\rho_0\)</span> let
+<span class="math math-display" data-tex="\[
+f_r(x)=r^{-2}\int_Xh\Bigl(\frac{d(x,y)^2}{r^2}\Bigr)d\mu(y) .
+\]">\[
+f_r(x)=r^{-2}\int_Xh\Bigl(\frac{d(x,y)^2}{r^2}\Bigr)d\mu(y) .
+\]</span></p>
+<p><strong>Lemma 1.1.</strong> (1) <span class="math" data-tex="\(f_r\)">\(f_r\)</span> is smooth and <span class="math" data-tex="\(0\le f_r\le C\)">\(0\le f_r\le C\)</span>. (2) <span class="math" data-tex="\(f_r(x)\to c_h\theta(x)\)">\(f_r(x)\to c_h\theta(x)\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, where <span class="math" data-tex="\(c_h=\int_0^1h(u)\,du&gt;0\)">\(c_h=\int_0^1h(u)\,du&gt;0\)</span>; in particular <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is Borel. (3) <span class="math" data-tex="\(|df_r(x)|\le Cr^{-3}M_r(x)\)">\(|df_r(x)|\le Cr^{-3}M_r(x)\)</span>. (4) For <span class="math" data-tex="\(x,y\)">\(x,y\)</span> with <span class="math" data-tex="\(d(x,y)&lt;4\rho_0\)">\(d(x,y)&lt;4\rho_0\)</span> and <span class="math" data-tex="\(v\in T_xX\)">\(v\in T_xX\)</span>,
+<span class="math math-display" data-tex="\[
+d_x\bigl[d(x,y)^2\bigr](v)=-2\langle z_x(y),v\rangle .
+\]">\[
+d_x\bigl[d(x,y)^2\bigr](v)=-2\langle z_x(y),v\rangle .
+\]</span></p>
+<p><em>Proof.</em> (4) The squared distance is smooth on <span class="math" data-tex="\(\{d&lt;4\rho_0\}\)">\(\{d&lt;4\rho_0\}\)</span>, and the minimizing geodesic from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span> is <span class="math" data-tex="\(t\mapsto\exp_x(tz_x(y))\)">\(t\mapsto\exp_x(tz_x(y))\)</span>, <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span>, depending smoothly on <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> (Theorems B.3 and B.5 of <a href="../DG-FND/riemannian-connections-and-convex-neighbourhoods.html">Riemannian connections and convex neighbourhoods</a>). Its energy is <span class="math" data-tex="\(\frac12d(x,y)^2\)">\(\frac12d(x,y)^2\)</span>. Moving the initial point along <span class="math" data-tex="\(v\)">\(v\)</span> with the end point fixed, the first variation formula (Theorem A.3 of <a href="../DG-FND/jacobi-fields-conjugate-points-and-the-morse-index-theorem.html">Jacobi fields, conjugate points and the Morse index theorem</a>) gives the derivative <span class="math" data-tex="\(-\langle\dot\gamma(0),v\rangle\)">\(-\langle\dot\gamma(0),v\rangle\)</span> for the energy, and <span class="math" data-tex="\(\dot\gamma(0)=z_x(y)\)">\(\dot\gamma(0)=z_x(y)\)</span>.</p>
+<p>(1) The integrand vanishes unless <span class="math" data-tex="\(d(x,y)&lt;r/\sqrt2\)">\(d(x,y)&lt;r/\sqrt2\)</span>, where it is smooth in <span class="math" data-tex="\(x\)">\(x\)</span>; <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is finite. Also <span class="math" data-tex="\(f_r\le h(0)r^{-2}M_r(x)\le C\)">\(f_r\le h(0)r^{-2}M_r(x)\le C\)</span> by quadratic growth.</p>
+<p>(2) <span class="math" data-tex="\(H\)">\(H\)</span> is nonincreasing with <span class="math" data-tex="\(H(1)=0\)">\(H(1)=0\)</span>, so <span class="math" data-tex="\(H(d/r)=\int_0^1(-H&#x27;(\tau))\mathbf 1_{\{d&lt;r\tau\}}\,d\tau\)">\(H(d/r)=\int_0^1(-H&#x27;(\tau))\mathbf 1_{\{d&lt;r\tau\}}\,d\tau\)</span>, and by Fubini's theorem
+<span class="math math-display" data-tex="\[
+f_r(x)=\int_0^1(-H&#x27;(\tau))\,r^{-2}M_{r\tau}(x)\,d\tau .
+\]">\[
+f_r(x)=\int_0^1(-H&#x27;(\tau))\,r^{-2}M_{r\tau}(x)\,d\tau .
+\]</span>
+Here <span class="math" data-tex="\(r^{-2}M_{r\tau}(x)=\tau^2(r\tau)^{-2}M_{r\tau}(x)\to\tau^2\theta(x)\)">\(r^{-2}M_{r\tau}(x)=\tau^2(r\tau)^{-2}M_{r\tau}(x)\to\tau^2\theta(x)\)</span>, dominated by <span class="math" data-tex="\(C\tau^2\)">\(C\tau^2\)</span>. The limit is <span class="math" data-tex="\(c_h\theta(x)\)">\(c_h\theta(x)\)</span>, because integration by parts gives <span class="math" data-tex="\(\int_0^1(-H&#x27;)\tau^2\,d\tau=\int_0^12\tau H(\tau)\,d\tau=c_h\)">\(\int_0^1(-H&#x27;)\tau^2\,d\tau=\int_0^12\tau H(\tau)\,d\tau=c_h\)</span>.</p>
+<p>(3) By (4), <span class="math" data-tex="\(|d_x[d(x,y)^2]|=2d(x,y)\le2r\)">\(|d_x[d(x,y)^2]|=2d(x,y)\le2r\)</span> on the support, so <span class="math" data-tex="\(|df_r(x)|\le r^{-4}\sup|h&#x27;|\,2r\,M_r(x)\)">\(|df_r(x)|\le r^{-4}\sup|h&#x27;|\,2r\,M_r(x)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 1.2</strong> ([OpenAI-TC, (6.2)]). <span class="math" data-tex="\(\theta(x)=0\)">\(\theta(x)=0\)</span> for almost every <span class="math" data-tex="\(x\)">\(x\)</span> with respect to the volume.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(E_k=\{\theta&gt;1/k\}\)">\(E_k=\{\theta&gt;1/k\}\)</span>, a Borel set. Fix a chart and a compact set <span class="math" data-tex="\(K\)">\(K\)</span> inside it, and use Lebesgue measure <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> of the chart. Every point <span class="math" data-tex="\(x\in E_k\cap K\)">\(x\in E_k\cap K\)</span> is the centre of arbitrarily small coordinate balls <span class="math" data-tex="\(B\)">\(B\)</span> of radius <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(\mu(B)\ge c\,s^2/k\)">\(\mu(B)\ge c\,s^2/k\)</span>, since <span class="math" data-tex="\(B\)">\(B\)</span> contains a geodesic ball of radius <span class="math" data-tex="\(s/C\)">\(s/C\)</span> and <span class="math" data-tex="\(\mu(B_\rho(x))\ge\rho^2/(2k)\)">\(\mu(B_\rho(x))\ge\rho^2/(2k)\)</span> for small <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Fix <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and use only such balls of radius less than <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. By Theorem 4.1 of <a href="../measurable-fields-and-direct-integrals/besicovitch-s-covering-theorem-and-the-differentiation-of-radon-measures.html">Besicovitch's covering theorem and the differentiation of Radon measures</a>, applied to <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, there are countably many disjoint such balls <span class="math" data-tex="\(B_i\)">\(B_i\)</span>, of radii <span class="math" data-tex="\(s_i\)">\(s_i\)</span>, covering <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>-almost all of <span class="math" data-tex="\(E_k\cap K\)">\(E_k\cap K\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal L^*(E_k\cap K)&amp;\le\sum_iCs_i^4\le C\delta^2\sum_is_i^2\\
+&amp;\le Ck\delta^2\sum_i\mu(B_i)\le Ck\delta^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal L^*(E_k\cap K)&amp;\le\sum_iCs_i^4\le C\delta^2\sum_is_i^2\\
+&amp;\le Ck\delta^2\sum_i\mu(B_i)\le Ck\delta^2 .
+\end{aligned}
+\]</span>
+Letting <span class="math" data-tex="\(\delta\to0\)">\(\delta\to0\)</span>, <span class="math" data-tex="\(E_k\cap K\)">\(E_k\cap K\)</span> is null. Countably many <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(K\)">\(K\)</span> and charts cover <span class="math" data-tex="\(\{\theta&gt;0\}\)">\(\{\theta&gt;0\}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-the-error-from-the-correction">2. The error from the correction</h2>
+<p><strong>Lemma 2.1</strong> ([OpenAI-TC, (6.3), (6.4)]). As <span class="math" data-tex="\(r\to0\)">\(r\to0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r^{-3}\int_X|Q|\,M_r\,dV\longrightarrow0,\\
+\int_X|Q|\,|df_r|\,dV\longrightarrow0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+r^{-3}\int_X|Q|\,M_r\,dV\longrightarrow0,\\
+\int_X|Q|\,|df_r|\,dV\longrightarrow0 .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> By Cauchy–Schwarz,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r^{-3}\int|Q|M_r&amp;\le\Bigl(\int|Q|^2r^{-2}M_r\Bigr)^{1/2}\\
+&amp;\quad\times\Bigl(\int r^{-4}M_r\Bigr)^{1/2} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+r^{-3}\int|Q|M_r&amp;\le\Bigl(\int|Q|^2r^{-2}M_r\Bigr)^{1/2}\\
+&amp;\quad\times\Bigl(\int r^{-4}M_r\Bigr)^{1/2} .
+\end{aligned}
+\]</span>
+By Fubini's theorem, <span class="math" data-tex="\(\int_XM_r\,dV=\int_X\mathrm{vol}(B_r(y))\,d\mu(y)\le Cr^4\)">\(\int_XM_r\,dV=\int_X\mathrm{vol}(B_r(y))\,d\mu(y)\le Cr^4\)</span>, so the second factor is bounded. In the first, <span class="math" data-tex="\(r^{-2}M_r\le C\)">\(r^{-2}M_r\le C\)</span>, and <span class="math" data-tex="\(r^{-2}M_r\to\theta=0\)">\(r^{-2}M_r\to\theta=0\)</span> almost everywhere by Lemma 1.2; dominated convergence with <span class="math" data-tex="\(|Q|^2\in L^1\)">\(|Q|^2\in L^1\)</span> gives zero. The second claim follows from Lemma 1.1(3). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-tangential-derivatives">3. Tangential derivatives</h2>
+<p><strong>Lemma 3.1</strong> (coordinate and transported forms). Let <span class="math" data-tex="\(z\)">\(z\)</span> be normal coordinates at <span class="math" data-tex="\(x\)">\(x\)</span> with respect to an orthonormal basis <span class="math" data-tex="\(e_1,\dots,e_4\)">\(e_1,\dots,e_4\)</span> of <span class="math" data-tex="\(T_xX\)">\(T_xX\)</span>, with dual basis <span class="math" data-tex="\(e^1,\dots,e^4\)">\(e^1,\dots,e^4\)</span>, and let <span class="math" data-tex="\(\tau_{xy}\)">\(\tau_{xy}\)</span> be parallel transport along the radial geodesic from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span>. Write <span class="math" data-tex="\(dz^{ij}=dz^i\wedge dz^j\)">\(dz^{ij}=dz^i\wedge dz^j\)</span> and <span class="math" data-tex="\(e^{ij}=e^i\wedge e^j\)">\(e^{ij}=e^i\wedge e^j\)</span>. Then at <span class="math" data-tex="\(y\)">\(y\)</span>, with <span class="math" data-tex="\(|z|=d(x,y)&lt;4\rho_0\)">\(|z|=d(x,y)&lt;4\rho_0\)</span>,
+<span class="math math-display" data-tex="\[
+dz^{ij}=\tau_{xy}e^{ij}+O(|z|^2) ,
+\]">\[
+dz^{ij}=\tau_{xy}e^{ij}+O(|z|^2) ,
+\]</span>
+uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>. Consequently, for <span class="math" data-tex="\(m\in\mathscr C_y\)">\(m\in\mathscr C_y\)</span>, <span class="math" data-tex="\(dz^{ij}(m)=\langle e^{ij},\tau_{yx}m\rangle+O(|z|^2)\)">\(dz^{ij}(m)=\langle e^{ij},\tau_{yx}m\rangle+O(|z|^2)\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\partial_{z_i}|_y=(d\exp_x)_z(e_i)=J(1)\)">\(\partial_{z_i}|_y=(d\exp_x)_z(e_i)=J(1)\)</span> for the Jacobi field <span class="math" data-tex="\(J\)">\(J\)</span> along <span class="math" data-tex="\(\gamma(t)=\exp_x(tz)\)">\(\gamma(t)=\exp_x(tz)\)</span> with <span class="math" data-tex="\(J(0)=0\)">\(J(0)=0\)</span>, <span class="math" data-tex="\(J&#x27;(0)=e_i\)">\(J&#x27;(0)=e_i\)</span> (Theorems A.1 and B.2 of the lesson on Jacobi fields). In a parallel orthonormal frame along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, <span class="math" data-tex="\(J&#x27;&#x27;=-R(J,\dot\gamma)\dot\gamma\)">\(J&#x27;&#x27;=-R(J,\dot\gamma)\dot\gamma\)</span> and <span class="math" data-tex="\(|\dot\gamma|=|z|\)">\(|\dot\gamma|=|z|\)</span>, so <span class="math" data-tex="\(u(t)=J(t)-te_i\)">\(u(t)=J(t)-te_i\)</span> satisfies <span class="math" data-tex="\(u(0)=u&#x27;(0)=0\)">\(u(0)=u&#x27;(0)=0\)</span> and <span class="math" data-tex="\(|u&#x27;&#x27;|\le C|z|^2(|u|+t)\)">\(|u&#x27;&#x27;|\le C|z|^2(|u|+t)\)</span>. For <span class="math" data-tex="\(|z|\)">\(|z|\)</span> small this gives <span class="math" data-tex="\(|u(t)|\le C|z|^2\)">\(|u(t)|\le C|z|^2\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Thus <span class="math" data-tex="\(\tau_{yx}\circ(d\exp_x)_z=\mathrm{id}+O(|z|^2)\)">\(\tau_{yx}\circ(d\exp_x)_z=\mathrm{id}+O(|z|^2)\)</span>, and inverting, the coordinate covectors are <span class="math" data-tex="\(dz^i|_y=e^i\circ\tau_{yx}+O(|z|^2)\)">\(dz^i|_y=e^i\circ\tau_{yx}+O(|z|^2)\)</span>. Products give the claim for two-forms, and transport is an isometry. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 3.2</strong> ([OpenAI-TC, (6.5)]). Write <span class="math" data-tex="\(|df_r(x)|_{L_\ell}\)">\(|df_r(x)|_{L_\ell}\)</span> for the norm of the restriction of <span class="math" data-tex="\(df_r(x)\)">\(df_r(x)\)</span> to the plane <span class="math" data-tex="\(L_\ell\)">\(L_\ell\)</span>. Then
+<span class="math math-display" data-tex="\[
+\int_{\mathscr C}|df_r(x)|_{L_\ell}\,d\lambda(x,\ell)\longrightarrow0 .
+\]">\[
+\int_{\mathscr C}|df_r(x)|_{L_\ell}\,d\lambda(x,\ell)\longrightarrow0 .
+\]</span></p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\((x,\ell)\)">\((x,\ell)\)</span>, an orthonormal basis <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> of <span class="math" data-tex="\(L_\ell\)">\(L_\ell\)</span> with <span class="math" data-tex="\(\ell=e_1\wedge e_2\)">\(\ell=e_1\wedge e_2\)</span>, and <span class="math" data-tex="\(e_3,e_4\)">\(e_3,e_4\)</span> spanning <span class="math" data-tex="\(L_\ell^\perp\)">\(L_\ell^\perp\)</span>. Let <span class="math" data-tex="\(z=z_x\)">\(z=z_x\)</span> be the corresponding normal coordinates and <span class="math" data-tex="\(h_r(z)=h(|z|^2/r^2)\)">\(h_r(z)=h(|z|^2/r^2)\)</span>, a smooth function supported in <span class="math" data-tex="\(B_r(x)\)">\(B_r(x)\)</span>. For <span class="math" data-tex="\(y\in B_r(x)\)">\(y\in B_r(x)\)</span> and <span class="math" data-tex="\(m\in\mathscr C_y\)">\(m\in\mathscr C_y\)</span> put
+<span class="math math-display" data-tex="\[
+\delta=|\ell-\tau_{yx}m|,\qquad z^\perp=\mathrm{pr}_{L_\ell^\perp}z_x(y) .
+\]">\[
+\delta=|\ell-\tau_{yx}m|,\qquad z^\perp=\mathrm{pr}_{L_\ell^\perp}z_x(y) .
+\]</span></p>
+<p><em>The tangential derivative as a current.</em> By Lemma 1.1(4), for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>,
+<span class="math math-display" data-tex="\[
+df_r(x)e_i=-r^{-2}\int\partial_{z_i}h_r\,d\mu(y) .
+\]">\[
+df_r(x)e_i=-r^{-2}\int\partial_{z_i}h_r\,d\mu(y) .
+\]</span>
+By Lemma 3.1, <span class="math" data-tex="\(dz^{12}(m)=\langle\ell,\tau_{yx}m\rangle+O(r^2)\)">\(dz^{12}(m)=\langle\ell,\tau_{yx}m\rangle+O(r^2)\)</span>, and <span class="math" data-tex="\(\langle\ell,\tau_{yx}m\rangle=1-\frac12\delta^2\)">\(\langle\ell,\tau_{yx}m\rangle=1-\frac12\delta^2\)</span>. Since <span class="math" data-tex="\(|\partial h_r|\le C/r\)">\(|\partial h_r|\le C/r\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|df_r(x)e_i+r^{-2}T\bigl(\partial_{z_i}h_r\,dz^{12}\bigr)\Bigr|\\
+&amp;\quad\le Cr^{-3}\int_{\{d(x,y)&lt;r\}}(\delta^2+r^2)\,d\lambda(y,m)\\
+&amp;\qquad+Cr^{-3}\int_{B_r(x)}|Q|\,dV .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|df_r(x)e_i+r^{-2}T\bigl(\partial_{z_i}h_r\,dz^{12}\bigr)\Bigr|\\
+&amp;\quad\le Cr^{-3}\int_{\{d(x,y)&lt;r\}}(\delta^2+r^2)\,d\lambda(y,m)\\
+&amp;\qquad+Cr^{-3}\int_{B_r(x)}|Q|\,dV .
+\end{aligned}
+\]</span>
+Integrated against <span class="math" data-tex="\(\lambda(x,\ell)\)">\(\lambda(x,\ell)\)</span>, the right side is at most <span class="math" data-tex="\(Cr^{-3}\mathcal I_r+Cr^{-1}\int M_r\,d\mu\)">\(Cr^{-3}\mathcal I_r+Cr^{-1}\int M_r\,d\mu\)</span> plus <span class="math" data-tex="\(Cr^{-3}\int|Q|M_r\,dV\)">\(Cr^{-3}\int|Q|M_r\,dV\)</span>, which tends to zero by the angular bound, quadratic growth and Lemma 2.1.</p>
+<p><em>Closure moves the derivative off the plane.</em> The one-forms <span class="math" data-tex="\(h_r\,dz^1\)">\(h_r\,dz^1\)</span> and <span class="math" data-tex="\(h_r\,dz^2\)">\(h_r\,dz^2\)</span> are smooth with compact support in the chart, and <span class="math" data-tex="\(T\)">\(T\)</span> is closed. Since <span class="math" data-tex="\(d(dz^j)=0\)">\(d(dz^j)=0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T(\partial_1h_r\,dz^{12})&amp;=-\sum_{a=3,4}T(\partial_ah_r\,dz^{a2}),\\
+T(\partial_2h_r\,dz^{12})&amp;=\sum_{a=3,4}T(\partial_ah_r\,dz^{a1}) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+T(\partial_1h_r\,dz^{12})&amp;=-\sum_{a=3,4}T(\partial_ah_r\,dz^{a2}),\\
+T(\partial_2h_r\,dz^{12})&amp;=\sum_{a=3,4}T(\partial_ah_r\,dz^{a1}) .
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(a=3,4\)">\(a=3,4\)</span>, <span class="math" data-tex="\(|\partial_ah_r|=2r^{-2}|h&#x27;|\,|z_a|\le Cr^{-1}|z^\perp|/r\)">\(|\partial_ah_r|=2r^{-2}|h&#x27;|\,|z_a|\le Cr^{-1}|z^\perp|/r\)</span>. By Lemma 3.1, and since <span class="math" data-tex="\(e^{aj}\)">\(e^{aj}\)</span> is orthogonal to <span class="math" data-tex="\(\ell\)">\(\ell\)</span> for <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|dz^{aj}(m)|&amp;\le|\langle e^{aj},\tau_{yx}m-\ell\rangle|+Cr^2\\
+&amp;\le\delta+Cr^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|dz^{aj}(m)|&amp;\le|\langle e^{aj},\tau_{yx}m-\ell\rangle|+Cr^2\\
+&amp;\le\delta+Cr^2 .
+\end{aligned}
+\]</span>
+Hence, with the outer factor <span class="math" data-tex="\(r^{-2}\)">\(r^{-2}\)</span>, the four terms are at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;Cr^{-3}\int_{\{d&lt;r\}}\delta\,\frac{|z^\perp|}r\,d\lambda(y,m)\\
+&amp;\quad+Cr^{-1}M_r(x)+Cr^{-3}\int_{B_r(x)}|Q|\,dV .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;Cr^{-3}\int_{\{d&lt;r\}}\delta\,\frac{|z^\perp|}r\,d\lambda(y,m)\\
+&amp;\quad+Cr^{-1}M_r(x)+Cr^{-3}\int_{B_r(x)}|Q|\,dV .
+\end{aligned}
+\]</span>
+After integration against <span class="math" data-tex="\(\lambda(x,\ell)\)">\(\lambda(x,\ell)\)</span>, the last two terms tend to zero by quadratic growth and Lemma 2.1. By Cauchy–Schwarz the first is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Cr^{-3}\,\mathcal I_r^{1/2}\,\mathcal N_r^{1/2}&amp;=r^{-3}\,O(r^2)\,o(r)\\
+&amp;=o(1) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+Cr^{-3}\,\mathcal I_r^{1/2}\,\mathcal N_r^{1/2}&amp;=r^{-3}\,O(r^2)\,o(r)\\
+&amp;=o(1) ,
+\end{aligned}
+\]</span>
+because the square of <span class="math" data-tex="\(|z^\perp|/r\)">\(|z^\perp|/r\)</span>, integrated over <span class="math" data-tex="\(\lambda(y,m)\)">\(\lambda(y,m)\)</span> and <span class="math" data-tex="\(\lambda(x,\ell)\)">\(\lambda(x,\ell)\)</span> on <span class="math" data-tex="\(\{d&lt;r\}\)">\(\{d&lt;r\}\)</span>, is exactly <span class="math" data-tex="\(\mathcal N_r\)">\(\mathcal N_r\)</span>: it does not depend on <span class="math" data-tex="\(m\)">\(m\)</span>. Since <span class="math" data-tex="\(|df_r(x)|_{L_\ell}\le|df_r(x)e_1|+|df_r(x)e_2|\)">\(|df_r(x)|_{L_\ell}\le|df_r(x)e_1|+|df_r(x)e_2|\)</span>, the proposition follows. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>All derivatives were taken at the fixed centre <span class="math" data-tex="\(x\)">\(x\)</span> in a fixed chart; no derivative of a frame that depends on the centre occurs.</p>
+<h2 id="4-proof-of-the-closedness-theorem">4. Proof of the closedness theorem</h2>
+<p><em>Proof of Theorem 1.1 of <a href="densities-and-planar-tangent-measures.html">Densities and planar tangent measures</a>.</em> The density exists by Proposition 2.1 there. Let <span class="math" data-tex="\(b\colon\mathbb R\to\mathbb R\)">\(b\colon\mathbb R\to\mathbb R\)</span> be smooth with <span class="math" data-tex="\(b(0)=0\)">\(b(0)=0\)</span>; on the bounded range of the <span class="math" data-tex="\(f_r\)">\(f_r\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> are bounded.</p>
+<p><em>Limits.</em> For a smooth form <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T(b(f_r)\alpha)&amp;=\int b(f_r)\langle\alpha,A\rangle\,d\mu\\
+&amp;\quad+\int b(f_r)\langle\alpha,Q\rangle\,dV .
+\end{aligned}
+\]">\[
+\begin{aligned}
+T(b(f_r)\alpha)&amp;=\int b(f_r)\langle\alpha,A\rangle\,d\mu\\
+&amp;\quad+\int b(f_r)\langle\alpha,Q\rangle\,dV .
+\end{aligned}
+\]</span>
+By Lemma 1.1(2) and dominated convergence, this tends to <span class="math" data-tex="\(\int b(c_h\theta)\langle\alpha,A\rangle\,d\mu\)">\(\int b(c_h\theta)\langle\alpha,A\rangle\,d\mu\)</span>: the second integral tends to <span class="math" data-tex="\(\int b(c_h\theta)\langle\alpha,Q\rangle\,dV\)">\(\int b(c_h\theta)\langle\alpha,Q\rangle\,dV\)</span>, which is zero because <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span> almost everywhere (Lemma 1.2) and <span class="math" data-tex="\(b(0)=0\)">\(b(0)=0\)</span>. So the currents <span class="math" data-tex="\(b(f_r)T\)">\(b(f_r)T\)</span> converge to <span class="math" data-tex="\(b(c_h\theta)P\)">\(b(c_h\theta)P\)</span>.</p>
+<p><em>Closedness.</em> For a smooth one-form <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-tex="\(d(b(f_r)\eta)=b(f_r)\,d\eta+b&#x27;(f_r)\,df_r\wedge\eta\)">\(d(b(f_r)\eta)=b(f_r)\,d\eta+b&#x27;(f_r)\,df_r\wedge\eta\)</span>, and <span class="math" data-tex="\(T\)">\(T\)</span> is closed, so
+<span class="math math-display" data-tex="\[
+T(b(f_r)\,d\eta)=-T\bigl(b&#x27;(f_r)\,df_r\wedge\eta\bigr) .
+\]">\[
+T(b(f_r)\,d\eta)=-T\bigl(b&#x27;(f_r)\,df_r\wedge\eta\bigr) .
+\]</span>
+The <span class="math" data-tex="\(Q\)">\(Q\)</span> part is at most <span class="math" data-tex="\(C\|\eta\|_\infty\int|Q||df_r|\,dV\to0\)">\(C\|\eta\|_\infty\int|Q||df_r|\,dV\to0\)</span> by Lemma 2.1. In the <span class="math" data-tex="\(P\)">\(P\)</span> part, for <span class="math" data-tex="\(\ell=e_1\wedge e_2\)">\(\ell=e_1\wedge e_2\)</span>, <span class="math" data-tex="\((df_r\wedge\eta)(\ell)\)">\((df_r\wedge\eta)(\ell)\)</span> equals <span class="math" data-tex="\(df_r(e_1)\eta(e_2)-df_r(e_2)\eta(e_1)\)">\(df_r(e_1)\eta(e_2)-df_r(e_2)\eta(e_1)\)</span>, so it is at most <span class="math" data-tex="\(C\|\eta\|_\infty\int|df_r(x)|_{L_\ell}\,d\lambda\to0\)">\(C\|\eta\|_\infty\int|df_r(x)|_{L_\ell}\,d\lambda\to0\)</span> by Proposition 3.2. Hence <span class="math" data-tex="\(b(c_h\theta)P\)">\(b(c_h\theta)P\)</span> annihilates <span class="math" data-tex="\(d\eta\)">\(d\eta\)</span>: it is closed.</p>
+<p><em>The indicator.</em> Take <span class="math" data-tex="\(b_n(s)=1-e^{-ns}\)">\(b_n(s)=1-e^{-ns}\)</span>. Since <span class="math" data-tex="\(\theta\ge0\)">\(\theta\ge0\)</span>, <span class="math" data-tex="\(0\le b_n(c_h\theta)\le1\)">\(0\le b_n(c_h\theta)\le1\)</span> and <span class="math" data-tex="\(b_n(c_h\theta)\to\mathbf 1_E\)">\(b_n(c_h\theta)\to\mathbf 1_E\)</span> pointwise. Dominated convergence gives <span class="math" data-tex="\(b_n(c_h\theta)P\to\mathbf 1_EP\)">\(b_n(c_h\theta)P\to\mathbf 1_EP\)</span> as currents, and closedness passes to the limit. The limits are taken one after the other: <span class="math" data-tex="\(r\to0\)">\(r\to0\)</span> for each fixed <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>; no bound on <span class="math" data-tex="\(b_n&#x27;\)">\(b_n&#x27;\)</span> uniform in <span class="math" data-tex="\(n\)">\(n\)</span> is needed. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-the-final-pairing">5. The final pairing</h2>
+<p><strong>Theorem 5.1</strong> (Theorem 2.1 of <a href="taming-compatibility-and-a-separating-current.html">Taming, compatibility and a separating current</a>; [OpenAI-TC, Theorem 1.1]). Assume the hypothesis (HK) of <a href="regularization-and-angular-control.html">Regularization and angular control</a>. Let <span class="math" data-tex="\(J\)">\(J\)</span> be a smooth almost complex structure on a closed connected four-manifold <span class="math" data-tex="\(X\)">\(X\)</span>. If a closed two-form tames <span class="math" data-tex="\(J\)">\(J\)</span>, then a closed two-form is compatible with <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be a closed form taming <span class="math" data-tex="\(J\)">\(J\)</span>, and suppose that no closed form is compatible with <span class="math" data-tex="\(J\)">\(J\)</span>. Proposition 5.1 of the first lesson gives <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(Q\)">\(Q\)</span>, <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. The hypotheses of Theorem 1.1 of the previous lesson hold: <span class="math" data-tex="\(Q\)">\(Q\)</span> is anti-invariant, <span class="math" data-tex="\(T\)">\(T\)</span> is closed, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> has quadratic growth by Proposition 4.1 of <a href="quadratic-mass-growth.html">Quadratic mass growth</a>, and <span class="math" data-tex="\(Q\in L^2\)">\(Q\in L^2\)</span> with <span class="math" data-tex="\(\mathcal I_r\le Cr^4\)">\(\mathcal I_r\le Cr^4\)</span> by Proposition 6.1 of the third lesson. So <span class="math" data-tex="\(P_E=\mathbf 1_EP\)">\(P_E=\mathbf 1_EP\)</span> is closed, with <span class="math" data-tex="\(E=\{\theta&gt;0\}\)">\(E=\{\theta&gt;0\}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(P&#x27;=\mathbf 1_{X\setminus E}P\)">\(P&#x27;=\mathbf 1_{X\setminus E}P\)</span>, the subcurrent of the measure <span class="math" data-tex="\(\lambda&#x27;=\mathbf 1_{\pi^{-1}(X\setminus E)}\lambda\le\lambda\)">\(\lambda&#x27;=\mathbf 1_{\pi^{-1}(X\setminus E)}\lambda\le\lambda\)</span>, with projection <span class="math" data-tex="\(\mu&#x27;=\mathbf 1_{X\setminus E}\mu\)">\(\mu&#x27;=\mathbf 1_{X\setminus E}\mu\)</span>, and
+<span class="math math-display" data-tex="\[
+T&#x27;=P&#x27;+Q=T-P_E ,
+\]">\[
+T&#x27;=P&#x27;+Q=T-P_E ,
+\]</span>
+a closed current in <span class="math" data-tex="\(H^{-4}\)">\(H^{-4}\)</span>. We pair <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> instead of with itself: the second positive factor now lives on points of zero density, and there the negative error in the pairing disappears.</p>
+<p><em>The negative error vanishes.</em> For <span class="math" data-tex="\(y\notin E\)">\(y\notin E\)</span>,
+<span class="math math-display" data-tex="\[
+r^{-2}\int_X\Bigl(1+\frac{d(x,y)}r\Bigr)^{-6}d\mu(x)\longrightarrow0 .
+\]">\[
+r^{-2}\int_X\Bigl(1+\frac{d(x,y)}r\Bigr)^{-6}d\mu(x)\longrightarrow0 .
+\]</span>
+Indeed, the ball <span class="math" data-tex="\(B_r(y)\)">\(B_r(y)\)</span> contributes at most <span class="math" data-tex="\(r^{-2}\mu(B_r(y))\to\theta(y)=0\)">\(r^{-2}\mu(B_r(y))\to\theta(y)=0\)</span>; the shell <span class="math" data-tex="\(2^jr\le d&lt;2^{j+1}r\)">\(2^jr\le d&lt;2^{j+1}r\)</span> contributes at most <span class="math" data-tex="\(4^{j+1}2^{-6j}(2^{j+1}r)^{-2}\mu(B_{2^{j+1}r}(y))\)">\(4^{j+1}2^{-6j}(2^{j+1}r)^{-2}\mu(B_{2^{j+1}r}(y))\)</span>, which tends to zero for each <span class="math" data-tex="\(j\)">\(j\)</span> and is at most <span class="math" data-tex="\(C2^{-4j}\)">\(C2^{-4j}\)</span> by quadratic growth. These bounds are uniform in <span class="math" data-tex="\(y\)">\(y\)</span>, so dominated convergence against <span class="math" data-tex="\(\mu&#x27;\)">\(\mu&#x27;\)</span>, which lives on <span class="math" data-tex="\(X\setminus E\)">\(X\setminus E\)</span>, shows that the negative term of Lemma 4.2(3) of the third lesson tends to zero. Discarding its nonnegative angular term,
+<span class="math math-display" data-tex="\[
+\liminf_{r\to0}\langle S_rP,*S_rP&#x27;\rangle\ge0 .
+\]">\[
+\liminf_{r\to0}\langle S_rP,*S_rP&#x27;\rangle\ge0 .
+\]</span></p>
+<p><em>The correction vanishes.</em> Lemma 2.1 of the third lesson, applied to the closed current <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;=\langle S_rP,*S_rP&#x27;\rangle+\langle S_rP,*S_rQ\rangle\\
+&amp;\quad+\langle S_rQ,*S_rP&#x27;\rangle+\|S_rQ\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;=\langle S_rP,*S_rP&#x27;\rangle+\langle S_rP,*S_rQ\rangle\\
+&amp;\quad+\langle S_rQ,*S_rP&#x27;\rangle+\|S_rQ\|^2 .
+\end{aligned}
+\]</span>
+The two middle terms tend to zero by Proposition 6.1 of the third lesson, applied once to <span class="math" data-tex="\(P\)">\(P\)</span> and once to <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>, since <span class="math" data-tex="\(\langle S_rQ,*S_rP&#x27;\rangle=\langle S_rP&#x27;,*S_rQ\rangle\)">\(\langle S_rQ,*S_rP&#x27;\rangle=\langle S_rP&#x27;,*S_rQ\rangle\)</span>. Also <span class="math" data-tex="\(S_rQ\to Q\)">\(S_rQ\to Q\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Therefore <span class="math" data-tex="\(\|Q\|^2=-\lim_{r\to0}\langle S_rP,*S_rP&#x27;\rangle\le0\)">\(\|Q\|^2=-\lim_{r\to0}\langle S_rP,*S_rP&#x27;\rangle\le0\)</span>, and <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>.</p>
+<p><em>Contradiction.</em> Now <span class="math" data-tex="\(T=P\)">\(T=P\)</span>, so <span class="math" data-tex="\(P\)">\(P\)</span> annihilates every closed form, in particular <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. But <span class="math" data-tex="\(\omega_x(\ell)=\omega(v,Jv)&gt;0\)">\(\omega_x(\ell)=\omega(v,Jv)&gt;0\)</span> for <span class="math" data-tex="\(\ell=v\wedge Jv\in\mathscr C_x\)">\(\ell=v\wedge Jv\in\mathscr C_x\)</span>, so <span class="math" data-tex="\(\omega\)">\(\omega\)</span> has a positive minimum <span class="math" data-tex="\(m\)">\(m\)</span> on the compact set <span class="math" data-tex="\(\mathscr C\)">\(\mathscr C\)</span>, and <span class="math" data-tex="\(P(\omega)=\int\omega_x(\ell)\,d\lambda\ge m\)">\(P(\omega)=\int\omega_x(\ell)\,d\lambda\ge m\)</span>. This contradiction shows that the positive definite invariant forms meet the closed invariant forms; a form in the intersection is closed and compatible with <span class="math" data-tex="\(J\)">\(J\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The theorem is proved in the programme from the named hypothesis (HK) on the heat kernel, which enters only through the kernel of <span class="math" data-tex="\(S_r^2\)">\(S_r^2\)</span> (Lemma 3.1 of the third lesson). The argument also proves Theorem 1.1 of the previous lesson in its general form: for a positive current with an anti-invariant square integrable correction making it closed, quadratic growth and the angular bound alone imply that its positive-density part is closed.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Check that <span class="math" data-tex="\(\int_0^1(-H&#x27;(\tau))\tau^2\,d\tau=\int_0^1h(u)\,du\)">\(\int_0^1(-H&#x27;(\tau))\tau^2\,d\tau=\int_0^1h(u)\,du\)</span> for <span class="math" data-tex="\(H(\tau)=h(\tau^2)\)">\(H(\tau)=h(\tau^2)\)</span> with <span class="math" data-tex="\(h=0\)">\(h=0\)</span> on <span class="math" data-tex="\([\frac12,\infty)\)">\([\frac12,\infty)\)</span>.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be a closed embedded surface and <span class="math" data-tex="\(P\)">\(P\)</span> the current of integration over <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>, <span class="math" data-tex="\(P(\alpha)=\int_\Sigma\alpha\)">\(P(\alpha)=\int_\Sigma\alpha\)</span>. Show that <span class="math" data-tex="\(P\)">\(P\)</span> is closed, but that <span class="math" data-tex="\(\mathbf 1_UP\)">\(\mathbf 1_UP\)</span> is not closed for an open ball <span class="math" data-tex="\(U\)">\(U\)</span> whose boundary sphere meets <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> transversally. Why does this not contradict Theorem 1.1 of the previous lesson?</p>
+<p><strong>6.3.</strong> For <span class="math" data-tex="\(\ell=e_1\wedge e_2\)">\(\ell=e_1\wedge e_2\)</span> and a unit bivector <span class="math" data-tex="\(m&#x27;\)">\(m&#x27;\)</span>, show that <span class="math" data-tex="\(|\langle e^3\wedge e^1,m&#x27;\rangle|\le|\ell-m&#x27;|\)">\(|\langle e^3\wedge e^1,m&#x27;\rangle|\le|\ell-m&#x27;|\)</span>.</p>
+<p><strong>6.4.</strong> Where in the proof of Theorem 5.1 is it used that <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is closed, and where that it tames <span class="math" data-tex="\(J\)">\(J\)</span>?</p>
+<p><strong>6.5.</strong> Show that the conclusion <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span> cannot be obtained by pairing <span class="math" data-tex="\(T\)">\(T\)</span> with itself: Lemma 4.2 of the third lesson only bounds the negative term by a constant, and that constant need not tend to zero when <span class="math" data-tex="\(\mu\)">\(\mu\)</span> has points of positive density.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> Integration by parts: <span class="math" data-tex="\(\int_0^1(-H&#x27;)\tau^2=[-H\tau^2]_0^1+\int_0^12\tau H(\tau)\,d\tau\)">\(\int_0^1(-H&#x27;)\tau^2=[-H\tau^2]_0^1+\int_0^12\tau H(\tau)\,d\tau\)</span>. The boundary term vanishes since <span class="math" data-tex="\(H(1)=0\)">\(H(1)=0\)</span>, and the substitution <span class="math" data-tex="\(u=\tau^2\)">\(u=\tau^2\)</span> gives <span class="math" data-tex="\(\int_0^1h(u)\,du\)">\(\int_0^1h(u)\,du\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(P(d\beta)=\int_\Sigma d\beta=0\)">\(P(d\beta)=\int_\Sigma d\beta=0\)</span> by Stokes' theorem, since <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> has no boundary. For the ball, <span class="math" data-tex="\(\mathbf 1_UP(d\beta)=\int_{\Sigma\cap U}d\beta=\int_{\partial(\Sigma\cap U)}\beta\)">\(\mathbf 1_UP(d\beta)=\int_{\Sigma\cap U}d\beta=\int_{\partial(\Sigma\cap U)}\beta\)</span>, and the curve <span class="math" data-tex="\(\Sigma\cap\partial U\)">\(\Sigma\cap\partial U\)</span> carries a one-form <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with nonzero integral. Theorem 1.1 restricts to the set where the density is positive, which for <span class="math" data-tex="\(P\)">\(P\)</span> is all of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>, so <span class="math" data-tex="\(\mathbf 1_EP=P\)">\(\mathbf 1_EP=P\)</span>; it says nothing about restrictions to arbitrary sets. (If <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is not <span class="math" data-tex="\(J\)">\(J\)</span>-complex, <span class="math" data-tex="\(P\)">\(P\)</span> is also not of the form <span class="math" data-tex="\(\int\alpha(\ell)\,d\lambda\)">\(\int\alpha(\ell)\,d\lambda\)</span>.)</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(e^3\wedge e^1\)">\(e^3\wedge e^1\)</span> is a unit form orthogonal to <span class="math" data-tex="\(\ell=e_1\wedge e_2\)">\(\ell=e_1\wedge e_2\)</span>, so <span class="math" data-tex="\(\langle e^3\wedge e^1,m&#x27;\rangle=\langle e^3\wedge e^1,m&#x27;-\ell\rangle\)">\(\langle e^3\wedge e^1,m&#x27;\rangle=\langle e^3\wedge e^1,m&#x27;-\ell\rangle\)</span>, which is at most <span class="math" data-tex="\(|m&#x27;-\ell|\)">\(|m&#x27;-\ell|\)</span> by Cauchy–Schwarz.</p>
+<p><strong>6.4.</strong> Closedness of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is used only at the end, in <span class="math" data-tex="\(P(\omega)=T(\omega)=0\)">\(P(\omega)=T(\omega)=0\)</span>. Taming is used for <span class="math" data-tex="\(P(\omega)&gt;0\)">\(P(\omega)&gt;0\)</span>. Without closedness, the current <span class="math" data-tex="\(P\)">\(P\)</span> could not see <span class="math" data-tex="\(\omega\)">\(\omega\)</span>; without taming, <span class="math" data-tex="\(P(\omega)\)">\(P(\omega)\)</span> could vanish.</p>
+<p><strong>6.5.</strong> With <span class="math" data-tex="\(P&#x27;=P\)">\(P&#x27;=P\)</span>, the negative term <span class="math" data-tex="\(Cr^{-2}\iint(1+d/r)^{-6}\,d\mu\,d\mu\)">\(Cr^{-2}\iint(1+d/r)^{-6}\,d\mu\,d\mu\)</span> is bounded by quadratic growth, but at a point of positive density <span class="math" data-tex="\(r^{-2}\int(1+d/r)^{-6}d\mu\)">\(r^{-2}\int(1+d/r)^{-6}d\mu\)</span> tends to a positive multiple of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. So the expansion only gives <span class="math" data-tex="\(\|Q\|^2\le C\)">\(\|Q\|^2\le C\)</span>, the bound of Proposition 6.1 of the third lesson. Removing <span class="math" data-tex="\(P_E\)">\(P_E\)</span> from the second factor, which the closedness theorem allows, makes the negative term vanish.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-TC] OpenAI, <em>Taming implies compatibility on four-manifolds</em>, OpenAI Math Release preprint, 23 September 2026, Sections 6 and 7. https://github.com/openai/math/tree/main/preprints/Taming-implies-compatibility-on-four-manifolds-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

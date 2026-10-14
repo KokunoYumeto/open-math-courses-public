@@ -1,0 +1,320 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Regularization and angular control</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Taming implies compatibility)</a><a href="quadratic-mass-growth.html">Previous lesson</a><a href="densities-and-planar-tangent-measures.html">Next lesson</a><a href="src/regularization-and-angular-control.md">Editable source</a></nav><main><article><h1 id="regularization-and-angular-control">Regularization and angular control</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(Q\)">\(Q\)</span>, <span class="math" data-tex="\(T=P+Q\)">\(T=P+Q\)</span>, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be as in Proposition 5.1 of <a href="taming-compatibility-and-a-separating-current.html">Taming, compatibility and a separating current</a>. This lesson proves that the correction <span class="math" data-tex="\(Q\)">\(Q\)</span> is square integrable, and that nearby complex lines of <span class="math" data-tex="\(P\)">\(P\)</span> are close on average: the <em>angular integral</em>
+<span class="math math-display" data-tex="\[
+\mathcal I_r=\iint_{d(x,y)&lt;r}|\ell-\tau_{yx}m|^2\,d\lambda\,d\lambda
+\]">\[
+\mathcal I_r=\iint_{d(x,y)&lt;r}|\ell-\tau_{yx}m|^2\,d\lambda\,d\lambda
+\]</span>
+is at most <span class="math" data-tex="\(Cr^4\)">\(Cr^4\)</span>; here <span class="math" data-tex="\((x,\ell)\)">\((x,\ell)\)</span> and <span class="math" data-tex="\((y,m)\)">\((y,m)\)</span> both range over <span class="math" data-tex="\(\mathscr C\)">\(\mathscr C\)</span> with the measure <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and <span class="math" data-tex="\(\tau_{yx}\)">\(\tau_{yx}\)</span> is parallel transport along the shortest geodesic from <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>. Both statements come from one identity. A closed current paired with the Hodge star of a regularization of another closed current gives zero; for <span class="math" data-tex="\(T\)">\(T\)</span> paired with itself, the positive part <span class="math" data-tex="\(P\)">\(P\)</span> contributes the angular integral with a positive weight, up to an error that quadratic mass growth controls.</p>
+<ul>
+<li>The Hodge Laplacian, its resolvent powers <span class="math" data-tex="\(S_r=(1+r^2\Delta)^{-3}\)">\(S_r=(1+r^2\Delta)^{-3}\)</span>, and their mapping properties (Lemmas 1.1 and 1.2).</li>
+<li>The zero pairing of closed currents (Lemma 2.1).</li>
+<li>A named hypothesis on the heat kernel, and the kernel of <span class="math" data-tex="\(S_r^2\)">\(S_r^2\)</span> (Lemma 3.1).</li>
+<li>The angular identity and a lower bound for the pairing (Lemmas 4.1 and 4.2).</li>
+<li>Mixing of invariant and anti-invariant parts (Lemma 5.1).</li>
+<li>Square integrability of <span class="math" data-tex="\(Q\)">\(Q\)</span>, the angular bound, and vanishing cross terms (Proposition 6.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-TC, Section 4]. Elliptic operators are those of <a href="../elliptic-boundary-reduction/global-elliptic-symbol-index.html">Symbols, finite defects, and the index on a closed manifold</a> (course <em>Elliptic boundary reduction</em>), and <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> and normal coordinates are as in <a href="quadratic-mass-growth.html">Quadratic mass growth</a>. All forms are real, <span class="math" data-tex="\(\langle\cdot,\cdot\rangle\)">\(\langle\cdot,\cdot\rangle\)</span> and <span class="math" data-tex="\(\|\cdot\|\)">\(\|\cdot\|\)</span> denote the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> product and norm unless a point is indicated, and <span class="math" data-tex="\(0&lt;r\le1\)">\(0&lt;r\le1\)</span>.</p>
+<h2 id="1-the-hodge-laplacian-and-its-resolvent-powers">1. The Hodge Laplacian and its resolvent powers</h2>
+<p>Let <span class="math" data-tex="\(\Delta=dd^*+d^*d\)">\(\Delta=dd^*+d^*d\)</span> act on forms of every degree.</p>
+<p><strong>Lemma 1.1.</strong> (1) <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is formally self-adjoint, <span class="math" data-tex="\(\langle\Delta\alpha,\alpha\rangle=\|d\alpha\|^2+\|d^*\alpha\|^2\)">\(\langle\Delta\alpha,\alpha\rangle=\|d\alpha\|^2+\|d^*\alpha\|^2\)</span>, and <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is elliptic of order two with principal symbol <span class="math" data-tex="\(|\xi|^2\)">\(|\xi|^2\)</span>. It commutes with <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(d^*\)">\(d^*\)</span>, and with <span class="math" data-tex="\(*\)">\(*\)</span> on two-forms. (2) The square integrable two-forms have an orthonormal basis of smooth eigenforms, <span class="math" data-tex="\(\Delta\varphi_j=\lambda_j\varphi_j\)">\(\Delta\varphi_j=\lambda_j\varphi_j\)</span>, with <span class="math" data-tex="\(\lambda_j\ge0\)">\(\lambda_j\ge0\)</span> and <span class="math" data-tex="\(\lambda_j\to\infty\)">\(\lambda_j\to\infty\)</span>. (3) For every integer <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>, <span class="math" data-tex="\(\|u\|_{H^{2k}}\)">\(\|u\|_{H^{2k}}\)</span> and <span class="math" data-tex="\(\|(1+\Delta)^ku\|\)">\(\|(1+\Delta)^ku\|\)</span> are equivalent norms on <span class="math" data-tex="\(H^{2k}\)">\(H^{2k}\)</span>. (4) For every real <span class="math" data-tex="\(s\)">\(s\)</span> and every <span class="math" data-tex="\(v\in H^{s+1}\)">\(v\in H^{s+1}\)</span>, <span class="math" data-tex="\(\|v\|_{H^s}^2\le C_s\|v\|_{H^{s-1}}\|v\|_{H^{s+1}}\)">\(\|v\|_{H^s}^2\le C_s\|v\|_{H^{s-1}}\|v\|_{H^{s+1}}\)</span>.</p>
+<p><em>Proof.</em> (1) The first two claims are integration by parts. The symbols of <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(d^*\)">\(d^*\)</span> are <span class="math" data-tex="\(i\xi\wedge\)">\(i\xi\wedge\)</span> and <span class="math" data-tex="\(-i\iota_\xi\)">\(-i\iota_\xi\)</span>, and <span class="math" data-tex="\(\xi\wedge\iota_\xi+\iota_\xi\,\xi\wedge=|\xi|^2\)">\(\xi\wedge\iota_\xi+\iota_\xi\,\xi\wedge=|\xi|^2\)</span>. Next, <span class="math" data-tex="\(d\Delta=dd^*d=\Delta d\)">\(d\Delta=dd^*d=\Delta d\)</span>, and likewise for <span class="math" data-tex="\(d^*\)">\(d^*\)</span>. In dimension four <span class="math" data-tex="\(d^*=-*d*\)">\(d^*=-*d*\)</span> in every degree, and a direct expansion, using <span class="math" data-tex="\(**=1\)">\(**=1\)</span> on two-forms and <span class="math" data-tex="\(**=-1\)">\(**=-1\)</span> on one- and three-forms, gives <span class="math" data-tex="\(*\Delta=\Delta*\)">\(*\Delta=\Delta*\)</span> on two-forms.</p>
+<p>(2) By (1), <span class="math" data-tex="\(1+\Delta\)">\(1+\Delta\)</span> is elliptic, and it is injective on every Sobolev space: by (I5) of the lesson cited above a solution of <span class="math" data-tex="\((1+\Delta)u=0\)">\((1+\Delta)u=0\)</span> is smooth, and then <span class="math" data-tex="\(\|u\|^2+\|du\|^2+\|d^*u\|^2=0\)">\(\|u\|^2+\|du\|^2+\|d^*u\|^2=0\)</span>. Being formally self-adjoint, it is surjective by (I7). So <span class="math" data-tex="\(K=(1+\Delta)^{-1}\)">\(K=(1+\Delta)^{-1}\)</span> maps <span class="math" data-tex="\(L^2\)">\(L^2\)</span> into <span class="math" data-tex="\(H^2\)">\(H^2\)</span>; it is compact on <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by (I2), self-adjoint, positive and injective. By Theorem 6.2 of <a href="../foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html">Hilbert spaces and compact operators</a> (course <em>Foundations of von Neumann algebras</em>), <span class="math" data-tex="\(L^2\)">\(L^2\)</span> has an orthonormal basis of eigenvectors of <span class="math" data-tex="\(K\)">\(K\)</span> with eigenvalues <span class="math" data-tex="\(\kappa_j\to0\)">\(\kappa_j\to0\)</span>, <span class="math" data-tex="\(\kappa_j&gt;0\)">\(\kappa_j&gt;0\)</span>. Then <span class="math" data-tex="\(\varphi_j\)">\(\varphi_j\)</span> is smooth by elliptic regularity, and <span class="math" data-tex="\(\lambda_j=\kappa_j^{-1}-1\ge0\)">\(\lambda_j=\kappa_j^{-1}-1\ge0\)</span>.</p>
+<p>(3) <span class="math" data-tex="\((1+\Delta)^k\)">\((1+\Delta)^k\)</span> is elliptic of order <span class="math" data-tex="\(2k\)">\(2k\)</span> and injective as in (2), hence an isomorphism <span class="math" data-tex="\(H^{2k}\to L^2\)">\(H^{2k}\to L^2\)</span> with bounded inverse.</p>
+<p>(4) On <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>, Cauchy–Schwarz gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int\langle\xi\rangle^{2s}|\hat v|^2&amp;\le\Bigl(\int\langle\xi\rangle^{2s-2}|\hat v|^2\Bigr)^{1/2}\\
+&amp;\quad\times\Bigl(\int\langle\xi\rangle^{2s+2}|\hat v|^2\Bigr)^{1/2} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int\langle\xi\rangle^{2s}|\hat v|^2&amp;\le\Bigl(\int\langle\xi\rangle^{2s-2}|\hat v|^2\Bigr)^{1/2}\\
+&amp;\quad\times\Bigl(\int\langle\xi\rangle^{2s+2}|\hat v|^2\Bigr)^{1/2} .
+\end{aligned}
+\]</span> The norm of <span class="math" data-tex="\(H^s(X)\)">\(H^s(X)\)</span> is equivalent to the square root of the sum of the squared local norms of <span class="math" data-tex="\(\chi_iv\)">\(\chi_iv\)</span> for a fixed partition (Section 1 of the lesson on the index on a closed manifold), and Cauchy–Schwarz for the finite sum gives the claim. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For a bounded Borel function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> put <span class="math" data-tex="\(f(\Delta)u=\sum_jf(\lambda_j)\langle u,\varphi_j\rangle\varphi_j\)">\(f(\Delta)u=\sum_jf(\lambda_j)\langle u,\varphi_j\rangle\varphi_j\)</span> on square integrable two-forms. In particular
+<span class="math math-display" data-tex="\[
+S_r=(1+r^2\Delta)^{-3},\qquad e^{-\varepsilon\Delta}\quad(\varepsilon&gt;0) .
+\]">\[
+S_r=(1+r^2\Delta)^{-3},\qquad e^{-\varepsilon\Delta}\quad(\varepsilon&gt;0) .
+\]</span></p>
+<p><strong>Lemma 1.2</strong> (resolvent powers). For <span class="math" data-tex="\(0&lt;r\le1\)">\(0&lt;r\le1\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(S_r\)">\(S_r\)</span> is self-adjoint on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, <span class="math" data-tex="\(\|S_r\|\le1\)">\(\|S_r\|\le1\)</span>, <span class="math" data-tex="\(S_r*=*S_r\)">\(S_r*=*S_r\)</span>, and <span class="math" data-tex="\(dS_r=S_rd\)">\(dS_r=S_rd\)</span> and <span class="math" data-tex="\(d^*S_r=S_rd^*\)">\(d^*S_r=S_rd^*\)</span> on smooth forms of all degrees.</li>
+<li><span class="math" data-tex="\(A_r=(1+r^2\Delta)^3\)">\(A_r=(1+r^2\Delta)^3\)</span> is an isomorphism <span class="math" data-tex="\(H^{s}\to H^{s-6}\)">\(H^{s}\to H^{s-6}\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>, and <span class="math" data-tex="\(S_r\)">\(S_r\)</span> is the restriction of its inverse to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. In particular <span class="math" data-tex="\(S_r\)">\(S_r\)</span> extends to a continuous map <span class="math" data-tex="\(H^{-4}\to H^2\)">\(H^{-4}\to H^2\)</span>, self-adjoint for the duality, with <span class="math" data-tex="\((S_rW)(\alpha)=W(S_r\alpha)\)">\((S_rW)(\alpha)=W(S_r\alpha)\)</span>.</li>
+<li><span class="math" data-tex="\(\|S_ru\|_{H^k}\le C_kr^{-k}\|u\|\)">\(\|S_ru\|_{H^k}\le C_kr^{-k}\|u\|\)</span> for <span class="math" data-tex="\(u\in L^2\)">\(u\in L^2\)</span> and <span class="math" data-tex="\(0\le k\le6\)">\(0\le k\le6\)</span>.</li>
+<li>For smooth <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, <span class="math" data-tex="\(S_r\alpha\to\alpha\)">\(S_r\alpha\to\alpha\)</span> in every <span class="math" data-tex="\(H^s\)">\(H^s\)</span> as <span class="math" data-tex="\(r\to0\)">\(r\to0\)</span>; for <span class="math" data-tex="\(u\in L^2\)">\(u\in L^2\)</span>, <span class="math" data-tex="\(S_ru\to u\)">\(S_ru\to u\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</li>
+<li><span class="math" data-tex="\(e^{-\varepsilon\Delta}\)">\(e^{-\varepsilon\Delta}\)</span> maps <span class="math" data-tex="\(L^2\)">\(L^2\)</span> into smooth forms, <span class="math" data-tex="\(e^{-\varepsilon\Delta}u\to u\)">\(e^{-\varepsilon\Delta}u\to u\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> as <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span>, and <span class="math" data-tex="\(\langle e^{-\varepsilon\Delta}u,d\gamma\rangle=\langle u,d\,e^{-\varepsilon\Delta}\gamma\rangle\)">\(\langle e^{-\varepsilon\Delta}u,d\gamma\rangle=\langle u,d\,e^{-\varepsilon\Delta}\gamma\rangle\)</span> for smooth one-forms <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) The operator <span class="math" data-tex="\(f(\Delta)\)">\(f(\Delta)\)</span> is self-adjoint with norm <span class="math" data-tex="\(\sup|f|\le1\)">\(\sup|f|\le1\)</span>. Since <span class="math" data-tex="\(*\)">\(*\)</span> maps eigenforms to eigenforms with the same eigenvalue, it commutes with <span class="math" data-tex="\(f(\Delta)\)">\(f(\Delta)\)</span>. For smooth <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the expansion <span class="math" data-tex="\(\sum\langle\alpha,\varphi_j\rangle\varphi_j\)">\(\sum\langle\alpha,\varphi_j\rangle\varphi_j\)</span> converges in every <span class="math" data-tex="\(H^{2k}\)">\(H^{2k}\)</span> by Lemma 1.1(3), and <span class="math" data-tex="\(d\varphi_j\)">\(d\varphi_j\)</span> is either zero or an eigenform with eigenvalue <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>; this gives <span class="math" data-tex="\(dS_r=S_rd\)">\(dS_r=S_rd\)</span>, and similarly for <span class="math" data-tex="\(d^*\)">\(d^*\)</span>.</p>
+<p>(2) <span class="math" data-tex="\(A_r\)">\(A_r\)</span> is elliptic of order six and injective, so it is an isomorphism on the Sobolev scale. On <span class="math" data-tex="\(L^2\)">\(L^2\)</span> it acts diagonally, so <span class="math" data-tex="\(A_r^{-1}=S_r\)">\(A_r^{-1}=S_r\)</span> there, and the duality statement follows from the formal self-adjointness of <span class="math" data-tex="\(A_r\)">\(A_r\)</span>.</p>
+<p>(3) For <span class="math" data-tex="\(k=2i\)">\(k=2i\)</span>, Lemma 1.1(3) and <span class="math" data-tex="\(\sup_{\lambda\ge0}\lambda^j(1+r^2\lambda)^{-3}\le r^{-2j}\)">\(\sup_{\lambda\ge0}\lambda^j(1+r^2\lambda)^{-3}\le r^{-2j}\)</span> for <span class="math" data-tex="\(j\le3\)">\(j\le3\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|S_ru\|_{H^{2i}}&amp;\le C\sum_{j\le i}\binom ij\|\Delta^jS_ru\|\\
+&amp;\le Cr^{-2i}\|u\| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|S_ru\|_{H^{2i}}&amp;\le C\sum_{j\le i}\binom ij\|\Delta^jS_ru\|\\
+&amp;\le Cr^{-2i}\|u\| .
+\end{aligned}
+\]</span>
+For odd <span class="math" data-tex="\(k=2i-1\)">\(k=2i-1\)</span>, Lemma 1.1(4) interpolates between <span class="math" data-tex="\(2i-2\)">\(2i-2\)</span> and <span class="math" data-tex="\(2i\)">\(2i\)</span>.</p>
+<p>(4) By dominated convergence in the expansion, since <span class="math" data-tex="\(\|(S_r-1)\alpha\|_{H^{2k}}\)">\(\|(S_r-1)\alpha\|_{H^{2k}}\)</span> is at most <span class="math" data-tex="\(C\|(S_r-1)(1+\Delta)^k\alpha\|\)">\(C\|(S_r-1)(1+\Delta)^k\alpha\|\)</span>.</p>
+<p>(5) <span class="math" data-tex="\(\Delta^ke^{-\varepsilon\Delta}u\in L^2\)">\(\Delta^ke^{-\varepsilon\Delta}u\in L^2\)</span> for all <span class="math" data-tex="\(k\)">\(k\)</span>, so <span class="math" data-tex="\(e^{-\varepsilon\Delta}u\)">\(e^{-\varepsilon\Delta}u\)</span> lies in every <span class="math" data-tex="\(H^{2k}\)">\(H^{2k}\)</span>, and is smooth by (I1). Convergence is dominated convergence. The last identity holds because <span class="math" data-tex="\(e^{-\varepsilon\Delta}\)">\(e^{-\varepsilon\Delta}\)</span> is self-adjoint and commutes with <span class="math" data-tex="\(d\)">\(d\)</span> on smooth forms. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The currents <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(Q\)">\(Q\)</span>, <span class="math" data-tex="\(T\)">\(T\)</span> lie in <span class="math" data-tex="\(H^{-3}\subseteq H^{-4}\)">\(H^{-3}\subseteq H^{-4}\)</span>, so <span class="math" data-tex="\(S_rP\)">\(S_rP\)</span>, <span class="math" data-tex="\(S_rQ\)">\(S_rQ\)</span>, <span class="math" data-tex="\(S_rT\)">\(S_rT\)</span> are square integrable forms. The same holds for every <em>subcurrent</em>
+<span class="math math-display" data-tex="\[
+P&#x27;(\alpha)=\int_{\mathscr C}\alpha_y(m)\,d\lambda&#x27;(y,m),
+\]">\[
+P&#x27;(\alpha)=\int_{\mathscr C}\alpha_y(m)\,d\lambda&#x27;(y,m),
+\]</span>
+where <span class="math" data-tex="\(\lambda&#x27;\le\lambda\)">\(\lambda&#x27;\le\lambda\)</span> is a Borel measure on <span class="math" data-tex="\(\mathscr C\)">\(\mathscr C\)</span>; its projection <span class="math" data-tex="\(\mu&#x27;\)">\(\mu&#x27;\)</span> satisfies <span class="math" data-tex="\(\mu&#x27;\le\mu\)">\(\mu&#x27;\le\mu\)</span>, and <span class="math" data-tex="\(|P&#x27;(\alpha)|\le\|\alpha\|_\infty\)">\(|P&#x27;(\alpha)|\le\|\alpha\|_\infty\)</span>.</p>
+<h2 id="2-the-zero-pairing">2. The zero pairing</h2>
+<p><strong>Lemma 2.1</strong> ([OpenAI-TC, Lemma 4.1]). If <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> is a closed current in <span class="math" data-tex="\(H^{-4}\)">\(H^{-4}\)</span>, then
+<span class="math math-display" data-tex="\[
+\langle S_rT,\,*S_rT&#x27;\rangle=0 .
+\]">\[
+\langle S_rT,\,*S_rT&#x27;\rangle=0 .
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(S_rT\)">\(S_rT\)</span> annihilates every smooth closed two-form <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>: <span class="math" data-tex="\(S_r\alpha\)">\(S_r\alpha\)</span> is smooth and closed by Lemma 1.2(1), and <span class="math" data-tex="\((S_rT)(\alpha)=T(S_r\alpha)=0\)">\((S_rT)(\alpha)=T(S_r\alpha)=0\)</span>. Let <span class="math" data-tex="\(w=S_rT&#x27;\in L^2\)">\(w=S_rT&#x27;\in L^2\)</span>. For a smooth one-form <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, <span class="math" data-tex="\(\langle w,d\gamma\rangle=T&#x27;(S_rd\gamma)=T&#x27;(dS_r\gamma)=0\)">\(\langle w,d\gamma\rangle=T&#x27;(S_rd\gamma)=T&#x27;(dS_r\gamma)=0\)</span>. By Lemma 1.2(5), <span class="math" data-tex="\(w_\varepsilon=e^{-\varepsilon\Delta}w\)">\(w_\varepsilon=e^{-\varepsilon\Delta}w\)</span> is smooth with <span class="math" data-tex="\(\langle w_\varepsilon,d\gamma\rangle=0\)">\(\langle w_\varepsilon,d\gamma\rangle=0\)</span> for all <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, so <span class="math" data-tex="\(d^*w_\varepsilon=0\)">\(d^*w_\varepsilon=0\)</span>. In dimension four <span class="math" data-tex="\(*d^*=d*\)">\(*d^*=d*\)</span> on two-forms, so <span class="math" data-tex="\(*w_\varepsilon\)">\(*w_\varepsilon\)</span> is a smooth closed form. Hence <span class="math" data-tex="\(\langle S_rT,*w_\varepsilon\rangle=0\)">\(\langle S_rT,*w_\varepsilon\rangle=0\)</span>, and <span class="math" data-tex="\(*w_\varepsilon\to*w\)">\(*w_\varepsilon\to*w\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-a-heat-kernel-hypothesis-and-the-kernel-of-the-squared-resolvent-power">3. A heat kernel hypothesis and the kernel of the squared resolvent power</h2>
+<p>We use one fact about the heat kernel that the programme does not prove. Let <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span> be a fixed smooth function on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, equal to one on <span class="math" data-tex="\([0,\rho_0]\)">\([0,\rho_0]\)</span> and zero on <span class="math" data-tex="\([2\rho_0,\infty)\)">\([2\rho_0,\infty)\)</span>.</p>
+<p><strong>Hypothesis (HK).</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> the operator <span class="math" data-tex="\(e^{-t\Delta}\)">\(e^{-t\Delta}\)</span> on two-forms has a kernel <span class="math" data-tex="\(k_t(x,y)\colon\Lambda^2_y\to\Lambda^2_x\)">\(k_t(x,y)\colon\Lambda^2_y\to\Lambda^2_x\)</span>, continuous in <span class="math" data-tex="\((t,x,y)\)">\((t,x,y)\)</span>. There are <span class="math" data-tex="\(t_0&gt;0\)">\(t_0&gt;0\)</span>, <span class="math" data-tex="\(c_0&gt;0\)">\(c_0&gt;0\)</span>, <span class="math" data-tex="\(C\)">\(C\)</span>, and a smooth positive function <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(\{d(x,y)&lt;2\rho_0\}\)">\(\{d(x,y)&lt;2\rho_0\}\)</span>, such that, with <span class="math" data-tex="\(\tau_{yx}\colon\Lambda^2_y\to\Lambda^2_x\)">\(\tau_{yx}\colon\Lambda^2_y\to\Lambda^2_x\)</span> the parallel transport of the Levi-Civita connection along the shortest geodesic, for <span class="math" data-tex="\(0&lt;t&lt;t_0\)">\(0&lt;t&lt;t_0\)</span> and every integer <span class="math" data-tex="\(M\ge0\)">\(M\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|k_t(x,y)-\chi_1(d)\frac{e^{-d^2/(4t)}}{(4\pi t)^2}a(x,y)\tau_{yx}\Bigr|\\
+&amp;\qquad\le Ct^{-1}e^{-c_0d^2/t}+C_Mt^M ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|k_t(x,y)-\chi_1(d)\frac{e^{-d^2/(4t)}}{(4\pi t)^2}a(x,y)\tau_{yx}\Bigr|\\
+&amp;\qquad\le Ct^{-1}e^{-c_0d^2/t}+C_Mt^M ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(d=d(x,y)\)">\(d=d(x,y)\)</span>; and <span class="math" data-tex="\(|k_t(x,y)|\le C\)">\(|k_t(x,y)|\le C\)</span> for <span class="math" data-tex="\(t\ge t_0\)">\(t\ge t_0\)</span>.</p>
+<p>This is the leading term of the short-time expansion of the heat kernel of a Laplace-type operator, with the strong remainder estimate of Ludewig [Ludewig 2019, Theorem 1.1] near the diagonal and his Gaussian upper bound [Ludewig 2019, Theorem 3.5] away from it; the leading coefficient is parallel transport times <span class="math" data-tex="\(J(x,y)^{-1/2}\)">\(J(x,y)^{-1/2}\)</span>, with <span class="math" data-tex="\(J\)">\(J\)</span> the Jacobian of the exponential map [Ludewig 2018, Section 3, (3.4)]. Ludewig's transport is that of the connection for which the operator is the connection Laplacian plus an endomorphism; for the Hodge Laplacian this is the Levi-Civita connection, by the Weitzenböck formula. Neither the expansion nor the Weitzenböck formula is proved in the programme, so (HK) is a named hypothesis of this course. The rest of the argument is proved here.</p>
+<p><strong>Lemma 3.1</strong> (the kernel of <span class="math" data-tex="\(S_r^2\)">\(S_r^2\)</span>; [OpenAI-TC, Lemma 4.2]). Assume (HK). There is <span class="math" data-tex="\(r_0\in(0,1]\)">\(r_0\in(0,1]\)</span> such that for <span class="math" data-tex="\(0&lt;r\le r_0\)">\(0&lt;r\le r_0\)</span> the operator <span class="math" data-tex="\(S_r^2\)">\(S_r^2\)</span> has a continuous kernel
+<span class="math math-display" data-tex="\[
+K_r(x,y)=p_r(x,y)\tau_{yx}+E_r(x,y) ,
+\]">\[
+K_r(x,y)=p_r(x,y)\tau_{yx}+E_r(x,y) ,
+\]</span>
+where <span class="math" data-tex="\(p_r\ge0\)">\(p_r\ge0\)</span> vanishes where <span class="math" data-tex="\(d(x,y)\ge2\rho_0\)">\(d(x,y)\ge2\rho_0\)</span> (and <span class="math" data-tex="\(p_r\tau_{yx}\)">\(p_r\tau_{yx}\)</span> is read as zero there), and for every integer <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>, with <span class="math" data-tex="\(d=d(x,y)\)">\(d=d(x,y)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_r\le C_Nr^{-4}(1+d/r)^{-N},\\
+p_r\ge cr^{-4}\quad\text{where }d&lt;r,\\
+|E_r|\le C_Nr^{-2}(1+d/r)^{-N} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+p_r\le C_Nr^{-4}(1+d/r)^{-N},\\
+p_r\ge cr^{-4}\quad\text{where }d&lt;r,\\
+|E_r|\le C_Nr^{-2}(1+d/r)^{-N} .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(\lambda\ge0\)">\(\lambda\ge0\)</span>, <span class="math" data-tex="\(\int_0^\infty s^5e^{-s(1+r^2\lambda)}\,ds=\Gamma(6)(1+r^2\lambda)^{-6}\)">\(\int_0^\infty s^5e^{-s(1+r^2\lambda)}\,ds=\Gamma(6)(1+r^2\lambda)^{-6}\)</span>. Since <span class="math" data-tex="\(\|e^{-t\Delta}\|\le1\)">\(\|e^{-t\Delta}\|\le1\)</span>, this gives
+<span class="math math-display" data-tex="\[
+S_r^2=\frac1{\Gamma(6)}\int_0^\infty e^{-s}s^5e^{-r^2s\Delta}\,ds
+\]">\[
+S_r^2=\frac1{\Gamma(6)}\int_0^\infty e^{-s}s^5e^{-r^2s\Delta}\,ds
+\]</span>
+as a norm-convergent integral of operators. The bounds of (HK) make <span class="math" data-tex="\(\int_0^\infty e^{-s}s^5k_{r^2s}(x,y)\,ds\)">\(\int_0^\infty e^{-s}s^5k_{r^2s}(x,y)\,ds\)</span> absolutely and locally uniformly convergent, and testing against smooth forms with Fubini's theorem shows that it is <span class="math" data-tex="\(\Gamma(6)K_r\)">\(\Gamma(6)K_r\)</span>.</p>
+<p>Let <span class="math" data-tex="\(r_0^2\le t_0/2\)">\(r_0^2\le t_0/2\)</span> and <span class="math" data-tex="\(r_0\le\rho_0\)">\(r_0\le\rho_0\)</span>. Define <span class="math" data-tex="\(p_r\)">\(p_r\)</span> as <span class="math" data-tex="\(\Gamma(6)^{-1}\)">\(\Gamma(6)^{-1}\)</span> times the integral of the leading term over <span class="math" data-tex="\(r^2s&lt;t_0\)">\(r^2s&lt;t_0\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_r&amp;=\frac{\chi_1(d)a}{\Gamma(6)(4\pi r^2)^2}\\
+&amp;\quad\times\int_0^{t_0/r^2}e^{-s}s^3e^{-d^2/(4r^2s)}\,ds .
+\end{aligned}
+\]">\[
+\begin{aligned}
+p_r&amp;=\frac{\chi_1(d)a}{\Gamma(6)(4\pi r^2)^2}\\
+&amp;\quad\times\int_0^{t_0/r^2}e^{-s}s^3e^{-d^2/(4r^2s)}\,ds .
+\end{aligned}
+\]</span>
+It is nonnegative. For every <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(e^{-d^2/(4r^2s)}\le C_N(1+\sqrt s)^N(1+d/r)^{-N}\)">\(e^{-d^2/(4r^2s)}\le C_N(1+\sqrt s)^N(1+d/r)^{-N}\)</span>. Indeed, if <span class="math" data-tex="\(d/r\le\sqrt s\)">\(d/r\le\sqrt s\)</span> the right side is at least <span class="math" data-tex="\(C_N\ge1\)">\(C_N\ge1\)</span>; otherwise, with <span class="math" data-tex="\(w=d/(r\sqrt s)&gt;1\)">\(w=d/(r\sqrt s)&gt;1\)</span>, <span class="math" data-tex="\((1+d/r)\le(1+\sqrt s)(1+w)\)">\((1+d/r)\le(1+\sqrt s)(1+w)\)</span> and <span class="math" data-tex="\(e^{-w^2/4}\le C_N(1+w)^{-N}\)">\(e^{-w^2/4}\le C_N(1+w)^{-N}\)</span>. Since <span class="math" data-tex="\(\int_0^\infty s^3(1+\sqrt s)^Ne^{-s}\,ds&lt;\infty\)">\(\int_0^\infty s^3(1+\sqrt s)^Ne^{-s}\,ds&lt;\infty\)</span>, the upper bound for <span class="math" data-tex="\(p_r\)">\(p_r\)</span> follows. If <span class="math" data-tex="\(d&lt;r\)">\(d&lt;r\)</span>, the part <span class="math" data-tex="\(1\le s\le2\)">\(1\le s\le2\)</span> of the integral (inside the range, as <span class="math" data-tex="\(2r^2\le t_0\)">\(2r^2\le t_0\)</span>) has <span class="math" data-tex="\(e^{-d^2/(4r^2s)}\ge e^{-1/4}\)">\(e^{-d^2/(4r^2s)}\ge e^{-1/4}\)</span> and <span class="math" data-tex="\(\chi_1(d)=1\)">\(\chi_1(d)=1\)</span>, and <span class="math" data-tex="\(a\)">\(a\)</span> is bounded below; this gives <span class="math" data-tex="\(p_r\ge cr^{-4}\)">\(p_r\ge cr^{-4}\)</span>.</p>
+<p>The rest of <span class="math" data-tex="\(K_r\)">\(K_r\)</span> is <span class="math" data-tex="\(E_r\)">\(E_r\)</span>. For <span class="math" data-tex="\(r^2s&lt;t_0\)">\(r^2s&lt;t_0\)</span>, the remainder in (HK) contributes <span class="math" data-tex="\(\Gamma(6)^{-1}\)">\(\Gamma(6)^{-1}\)</span> times the integral of <span class="math" data-tex="\(e^{-s}s^5\)">\(e^{-s}s^5\)</span> against <span class="math" data-tex="\(C(r^2s)^{-1}e^{-c_0d^2/(r^2s)}+C_M(r^2s)^M\)">\(C(r^2s)^{-1}e^{-c_0d^2/(r^2s)}+C_M(r^2s)^M\)</span>. The first term is at most <span class="math" data-tex="\(C_Nr^{-2}(1+d/r)^{-N}\)">\(C_Nr^{-2}(1+d/r)^{-N}\)</span> by the same inequality, with <span class="math" data-tex="\(c_0\)">\(c_0\)</span> in place of <span class="math" data-tex="\(\frac14\)">\(\frac14\)</span>. The second is <span class="math" data-tex="\(O(r^{2M})\)">\(O(r^{2M})\)</span>; as <span class="math" data-tex="\(d\)">\(d\)</span> is at most the diameter <span class="math" data-tex="\(D\)">\(D\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(r^{2M}\le C r^{-2}(1+d/r)^{-N}\)">\(r^{2M}\le C r^{-2}(1+d/r)^{-N}\)</span> once <span class="math" data-tex="\(2M\ge N-2\)">\(2M\ge N-2\)</span>. For <span class="math" data-tex="\(s\ge t_0/r^2\)">\(s\ge t_0/r^2\)</span>, the kernel is bounded and <span class="math" data-tex="\(\int_{t_0/r^2}^\infty e^{-s}s^5\,ds\le Ce^{-t_0/(2r^2)}\)">\(\int_{t_0/r^2}^\infty e^{-s}s^5\,ds\le Ce^{-t_0/(2r^2)}\)</span>, again <span class="math" data-tex="\(O(r^{-2}(1+d/r)^{-N})\)">\(O(r^{-2}(1+d/r)^{-N})\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-the-angular-identity-and-the-positive-pairing">4. The angular identity and the positive pairing</h2>
+<p><strong>Lemma 4.1</strong> (the angular identity; [OpenAI-TC, (4.5)]). Let <span class="math" data-tex="\(d(x,y)&lt;2\rho_0\)">\(d(x,y)&lt;2\rho_0\)</span>, <span class="math" data-tex="\(\ell\in\mathscr C_x\)">\(\ell\in\mathscr C_x\)</span> and <span class="math" data-tex="\(m\in\mathscr C_y\)">\(m\in\mathscr C_y\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle\ell,*\tau_{yx}m\rangle\\
+&amp;\quad=\tfrac12\langle F_x,\tau_{yx}F_y\rangle-\langle\ell,\tau_{yx}m\rangle\\
+&amp;\quad=\tfrac12|\ell-\tau_{yx}m|^2-\tfrac14|F_x-\tau_{yx}F_y|^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle\ell,*\tau_{yx}m\rangle\\
+&amp;\quad=\tfrac12\langle F_x,\tau_{yx}F_y\rangle-\langle\ell,\tau_{yx}m\rangle\\
+&amp;\quad=\tfrac12|\ell-\tau_{yx}m|^2-\tfrac14|F_x-\tau_{yx}F_y|^2 ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(|F_x-\tau_{yx}F_y|\le C\,d(x,y)\)">\(|F_x-\tau_{yx}F_y|\le C\,d(x,y)\)</span>.</p>
+<p><em>Proof.</em> Levi-Civita parallel transport is an orientation-preserving isometry, so on two-forms it is an isometry commuting with <span class="math" data-tex="\(*\)">\(*\)</span>. By Lemma 1.1(3) of the first lesson, <span class="math" data-tex="\(*\ell=F_x-\ell\)">\(*\ell=F_x-\ell\)</span>, and <span class="math" data-tex="\(m^+=F_y/2\)">\(m^+=F_y/2\)</span>, so <span class="math" data-tex="\(\tau_{yx}m^+=\frac12\tau_{yx}F_y\)">\(\tau_{yx}m^+=\frac12\tau_{yx}F_y\)</span> is self-dual while <span class="math" data-tex="\(\tau_{yx}m^-\)">\(\tau_{yx}m^-\)</span> is anti-self-dual. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle\ell,*\tau_{yx}m\rangle=\langle F_x-\ell,\tau_{yx}m\rangle\\
+&amp;\quad=\tfrac12\langle F_x,\tau_{yx}F_y\rangle-\langle\ell,\tau_{yx}m\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle\ell,*\tau_{yx}m\rangle=\langle F_x-\ell,\tau_{yx}m\rangle\\
+&amp;\quad=\tfrac12\langle F_x,\tau_{yx}F_y\rangle-\langle\ell,\tau_{yx}m\rangle .
+\end{aligned}
+\]</span>
+The second form follows from <span class="math" data-tex="\(|\ell|=|m|=1\)">\(|\ell|=|m|=1\)</span> and <span class="math" data-tex="\(|F|^2=2\)">\(|F|^2=2\)</span>. The map <span class="math" data-tex="\((x,y)\mapsto\tau_{yx}F_y-F_x\)">\((x,y)\mapsto\tau_{yx}F_y-F_x\)</span> is smooth on <span class="math" data-tex="\(\{d&lt;2\rho_0\}\)">\(\{d&lt;2\rho_0\}\)</span>, by smooth dependence of geodesics and of parallel transport on parameters (<a href="../DG-FND/connections-and-parallel-transport.html">Connections and parallel transport</a>; Theorem B.5 of <a href="../DG-FND/riemannian-connections-and-convex-neighbourhoods.html">Riemannian connections and convex neighbourhoods</a>), and vanishes on the diagonal. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The identity is the heart of the method. Pairing <span class="math" data-tex="\(P\)">\(P\)</span> with the Hodge star of its own regularization does not measure mass; it measures how far apart nearby complex lines are, up to the drift of <span class="math" data-tex="\(F\)">\(F\)</span> under transport, which is of second order in the distance.</p>
+<p><strong>Lemma 4.2</strong> (the positive pairing; [OpenAI-TC, Lemma 4.4]). Assume (HK) and <span class="math" data-tex="\(0&lt;r\le r_0\)">\(0&lt;r\le r_0\)</span>. Let <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span> be a subcurrent with measure <span class="math" data-tex="\(\lambda&#x27;\le\lambda\)">\(\lambda&#x27;\le\lambda\)</span> and projection <span class="math" data-tex="\(\mu&#x27;\)">\(\mu&#x27;\)</span>. (1) For every <span class="math" data-tex="\(y\in X\)">\(y\in X\)</span>, <span class="math" data-tex="\(r^{-2}\int_X(1+d(x,y)/r)^{-6}\,d\mu(x)\le C\)">\(r^{-2}\int_X(1+d(x,y)/r)^{-6}\,d\mu(x)\le C\)</span>. (2) <span class="math" data-tex="\(\|S_rP&#x27;\|\le Cr^{-1}\)">\(\|S_rP&#x27;\|\le Cr^{-1}\)</span>. (3) With <span class="math" data-tex="\(d=d(x,y)\)">\(d=d(x,y)\)</span>, and with <span class="math" data-tex="\((x,\ell)\)">\((x,\ell)\)</span> distributed by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\((y,m)\)">\((y,m)\)</span> by <span class="math" data-tex="\(\lambda&#x27;\)">\(\lambda&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle S_rP,*S_rP&#x27;\rangle\\
+&amp;\quad\ge cr^{-4}\iint_{d&lt;r}|\ell-\tau_{yx}m|^2\,d\lambda\,d\lambda&#x27;\\
+&amp;\qquad-Cr^{-2}\iint(1+d/r)^{-6}\,d\mu\,d\mu&#x27; .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle S_rP,*S_rP&#x27;\rangle\\
+&amp;\quad\ge cr^{-4}\iint_{d&lt;r}|\ell-\tau_{yx}m|^2\,d\lambda\,d\lambda&#x27;\\
+&amp;\qquad-Cr^{-2}\iint(1+d/r)^{-6}\,d\mu\,d\mu&#x27; .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> (1) is the dyadic bound after Proposition 4.1 of <a href="quadratic-mass-growth.html">Quadratic mass growth</a>.</p>
+<p>For the pairings, <span class="math" data-tex="\(S_r^2\)">\(S_r^2\)</span> maps <span class="math" data-tex="\(H^{-4}\)">\(H^{-4}\)</span> into <span class="math" data-tex="\(H^8\)">\(H^8\)</span>, which consists of continuous forms, and testing against smooth forms shows <span class="math" data-tex="\((S_r^2P&#x27;)(x)=\int K_r(x,y)m\,d\lambda&#x27;(y,m)\)">\((S_r^2P&#x27;)(x)=\int K_r(x,y)m\,d\lambda&#x27;(y,m)\)</span>, using <span class="math" data-tex="\(K_r(x,y)^*=K_r(y,x)\)">\(K_r(x,y)^*=K_r(y,x)\)</span>. Hence, since <span class="math" data-tex="\(S_r\)">\(S_r\)</span> is self-adjoint and commutes with <span class="math" data-tex="\(*\)">\(*\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle S_rP,*S_rP&#x27;\rangle=P(*S_r^2P&#x27;)\\
+&amp;\quad=\iint\langle\ell,*K_r(x,y)m\rangle\,d\lambda\,d\lambda&#x27; .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle S_rP,*S_rP&#x27;\rangle=P(*S_r^2P&#x27;)\\
+&amp;\quad=\iint\langle\ell,*K_r(x,y)m\rangle\,d\lambda\,d\lambda&#x27; .
+\end{aligned}
+\]</span>
+Insert <span class="math" data-tex="\(K_r=p_r\tau_{yx}+E_r\)">\(K_r=p_r\tau_{yx}+E_r\)</span> and Lemma 4.1. The term <span class="math" data-tex="\(\frac12p_r|\ell-\tau_{yx}m|^2\)">\(\frac12p_r|\ell-\tau_{yx}m|^2\)</span> is nonnegative; keep it only where <span class="math" data-tex="\(d&lt;r\)">\(d&lt;r\)</span>, where <span class="math" data-tex="\(p_r\ge cr^{-4}\)">\(p_r\ge cr^{-4}\)</span>. The term <span class="math" data-tex="\(-\frac14p_r|F_x-\tau_{yx}F_y|^2\)">\(-\frac14p_r|F_x-\tau_{yx}F_y|^2\)</span> is at least <span class="math" data-tex="\(-C_Nr^{-4}(1+d/r)^{-N}d^2\)">\(-C_Nr^{-4}(1+d/r)^{-N}d^2\)</span>, which for <span class="math" data-tex="\(N=8\)">\(N=8\)</span> is at least <span class="math" data-tex="\(-Cr^{-2}(1+d/r)^{-6}\)">\(-Cr^{-2}(1+d/r)^{-6}\)</span>. The error <span class="math" data-tex="\(\langle\ell,*E_rm\rangle\)">\(\langle\ell,*E_rm\rangle\)</span> is at least <span class="math" data-tex="\(-|E_r|\ge-Cr^{-2}(1+d/r)^{-6}\)">\(-|E_r|\ge-Cr^{-2}(1+d/r)^{-6}\)</span>. Integrating over the fibers, whose measures project to <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\mu&#x27;\)">\(\mu&#x27;\)</span>, gives (3).</p>
+<p>For (2), with <span class="math" data-tex="\((x,m&#x27;)\)">\((x,m&#x27;)\)</span> and <span class="math" data-tex="\((y,m)\)">\((y,m)\)</span> distributed by <span class="math" data-tex="\(\lambda&#x27;\)">\(\lambda&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|S_rP&#x27;\|^2&amp;=P&#x27;(S_r^2P&#x27;)\\
+&amp;=\iint\langle m&#x27;,K_r(x,y)m\rangle\,d\lambda&#x27;\,d\lambda&#x27; ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|S_rP&#x27;\|^2&amp;=P&#x27;(S_r^2P&#x27;)\\
+&amp;=\iint\langle m&#x27;,K_r(x,y)m\rangle\,d\lambda&#x27;\,d\lambda&#x27; ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(|K_r|\le Cr^{-4}(1+d/r)^{-6}\)">\(|K_r|\le Cr^{-4}(1+d/r)^{-6}\)</span>. With <span class="math" data-tex="\(g_r(y)=r^{-2}\int(1+d(x,y)/r)^{-6}d\mu&#x27;(x)\)">\(g_r(y)=r^{-2}\int(1+d(x,y)/r)^{-6}d\mu&#x27;(x)\)</span>, which is at most <span class="math" data-tex="\(C\)">\(C\)</span> by (1) and <span class="math" data-tex="\(\mu&#x27;\le\mu\)">\(\mu&#x27;\le\mu\)</span>,
+<span class="math math-display" data-tex="\[
+\|S_rP&#x27;\|^2\le Cr^{-2}\int g_r\,d\mu&#x27;\le Cr^{-2} .
+\]">\[
+\|S_rP&#x27;\|^2\le Cr^{-2}\int g_r\,d\mu&#x27;\le Cr^{-2} .
+\]</span> <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-mixing-of-invariant-and-anti-invariant-parts">5. Mixing of invariant and anti-invariant parts</h2>
+<p><strong>Lemma 5.1</strong> (relative projection estimate; [OpenAI-TC, Lemma 4.5]). Let <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> be a smooth field of orthogonal projections on <span class="math" data-tex="\(\Lambda^2T^*X\)">\(\Lambda^2T^*X\)</span>. If <span class="math" data-tex="\(W\in H^{-4}\)">\(W\in H^{-4}\)</span> satisfies <span class="math" data-tex="\(\Pi W=0\)">\(\Pi W=0\)</span>, then
+<span class="math math-display" data-tex="\[
+\|\Pi S_rW\|\le Cr\,\|S_rW\| ,
+\]">\[
+\|\Pi S_rW\|\le Cr\,\|S_rW\| ,
+\]</span>
+with <span class="math" data-tex="\(C\)">\(C\)</span> depending on <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> but not on <span class="math" data-tex="\(r\)">\(r\)</span> or <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(U=S_rW\in H^2\)">\(U=S_rW\in H^2\)</span>. By Lemma 1.2(2), <span class="math" data-tex="\(A_rU=W\)">\(A_rU=W\)</span> and <span class="math" data-tex="\(\Pi U=S_rA_r\Pi U\)">\(\Pi U=S_rA_r\Pi U\)</span>. Since <span class="math" data-tex="\(\Pi W=0\)">\(\Pi W=0\)</span>,
+<span class="math math-display" data-tex="\[
+A_r\Pi U=\Pi A_rU+[A_r,\Pi]U=[A_r,\Pi]U ,
+\]">\[
+A_r\Pi U=\Pi A_rU+[A_r,\Pi]U=[A_r,\Pi]U ,
+\]</span>
+so <span class="math" data-tex="\(\Pi U=S_r[A_r,\Pi]U\)">\(\Pi U=S_r[A_r,\Pi]U\)</span>. Expanding, <span class="math" data-tex="\([A_r,\Pi]=\sum_{j=1}^3\binom3jr^{2j}[\Delta^j,\Pi]\)">\([A_r,\Pi]=\sum_{j=1}^3\binom3jr^{2j}[\Delta^j,\Pi]\)</span>. The principal symbol of <span class="math" data-tex="\(\Delta^j\)">\(\Delta^j\)</span> is the scalar <span class="math" data-tex="\(|\xi|^{2j}\)">\(|\xi|^{2j}\)</span>, so <span class="math" data-tex="\([\Delta^j,\Pi]\)">\([\Delta^j,\Pi]\)</span> is a differential operator of order at most <span class="math" data-tex="\(2j-1\)">\(2j-1\)</span>, bounded <span class="math" data-tex="\(H^{2j-1}\to L^2\)">\(H^{2j-1}\to L^2\)</span>. By Lemma 1.2(3), for the operator norm on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>,
+<span class="math math-display" data-tex="\[
+\|r^{2j}[\Delta^j,\Pi]S_r\|\le Cr^{2j}r^{-(2j-1)}=Cr .
+\]">\[
+\|r^{2j}[\Delta^j,\Pi]S_r\|\le Cr^{2j}r^{-(2j-1)}=Cr .
+\]</span>
+For smooth <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(\langle S_r[A_r,\Pi]u,v\rangle=-\langle u,[A_r,\Pi]S_rv\rangle\)">\(\langle S_r[A_r,\Pi]u,v\rangle=-\langle u,[A_r,\Pi]S_rv\rangle\)</span>, because <span class="math" data-tex="\(A_r\)">\(A_r\)</span>, <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> and <span class="math" data-tex="\(S_r\)">\(S_r\)</span> are formally self-adjoint. So <span class="math" data-tex="\(S_r[A_r,\Pi]\)">\(S_r[A_r,\Pi]\)</span> extends from smooth forms to a bounded operator on <span class="math" data-tex="\(L^2\)">\(L^2\)</span> of norm at most <span class="math" data-tex="\(Cr\)">\(Cr\)</span>, and the extension agrees with its action on <span class="math" data-tex="\(U\)">\(U\)</span>, as both are continuous from <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to <span class="math" data-tex="\(H^{-6}\)">\(H^{-6}\)</span>. Hence <span class="math" data-tex="\(\|\Pi U\|\le Cr\|U\|\)">\(\|\Pi U\|\le Cr\|U\|\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Thus regularization at scale <span class="math" data-tex="\(r\)">\(r\)</span> can create only an <span class="math" data-tex="\(O(r)\)">\(O(r)\)</span> fraction of a component that the current did not have. For <span class="math" data-tex="\(\Pi=R\)">\(\Pi=R\)</span> and <span class="math" data-tex="\(W=P&#x27;\)">\(W=P&#x27;\)</span> (note <span class="math" data-tex="\(RP&#x27;=0\)">\(RP&#x27;=0\)</span>, since every <span class="math" data-tex="\(m\in\mathscr C\)">\(m\in\mathscr C\)</span> is invariant), and for <span class="math" data-tex="\(\Pi=1-R\)">\(\Pi=1-R\)</span> and an anti-invariant <span class="math" data-tex="\(W\)">\(W\)</span>, this controls the cross terms between <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<h2 id="6-the-correction-is-square-integrable">6. The correction is square integrable</h2>
+<p><strong>Proposition 6.1</strong> ([OpenAI-TC, Proposition 4.6]). Assume (HK). Then <span class="math" data-tex="\(Q\in L^2\)">\(Q\in L^2\)</span>, and
+<span class="math math-display" data-tex="\[
+\mathcal I_r\le Cr^4
+\]">\[
+\mathcal I_r\le Cr^4
+\]</span>
+for <span class="math" data-tex="\(0&lt;r\le r_0\)">\(0&lt;r\le r_0\)</span>. For every subcurrent <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\lim_{r\to0}\langle S_rP&#x27;,\,*S_rQ\rangle=0 .
+\]">\[
+\lim_{r\to0}\langle S_rP&#x27;,\,*S_rQ\rangle=0 .
+\]</span></p>
+<p><em>Proof.</em> <em>Cross terms.</em> Let <span class="math" data-tex="\(V\in H^{-4}\)">\(V\in H^{-4}\)</span> be anti-invariant, that is <span class="math" data-tex="\((1-R)V=0\)">\((1-R)V=0\)</span>. Since <span class="math" data-tex="\(R\)">\(R\)</span> is a pointwise orthogonal projection and <span class="math" data-tex="\(RP&#x27;=0\)">\(RP&#x27;=0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle S_rP&#x27;,S_rV\rangle&amp;=\langle RS_rP&#x27;,S_rV\rangle\\
+&amp;\quad+\langle S_rP&#x27;,(1-R)S_rV\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle S_rP&#x27;,S_rV\rangle&amp;=\langle RS_rP&#x27;,S_rV\rangle\\
+&amp;\quad+\langle S_rP&#x27;,(1-R)S_rV\rangle .
+\end{aligned}
+\]</span>
+Lemma 5.1, applied twice, and Lemma 4.2(2) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\langle S_rP&#x27;,S_rV\rangle|&amp;\le Cr\|S_rP&#x27;\|\,\|S_rV\|\\
+&amp;\le C\|S_rV\| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\langle S_rP&#x27;,S_rV\rangle|&amp;\le Cr\|S_rP&#x27;\|\,\|S_rV\|\\
+&amp;\le C\|S_rV\| .
+\end{aligned}
+\]</span></p>
+<p><em>Energy.</em> <span class="math" data-tex="\(Q\)">\(Q\)</span> is self-dual, so <span class="math" data-tex="\(*S_rQ=S_rQ\)">\(*S_rQ=S_rQ\)</span>, and Lemma 2.1 with <span class="math" data-tex="\(T&#x27;=T\)">\(T&#x27;=T\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;=\langle S_rP,*S_rP\rangle\\
+&amp;\quad+2\langle S_rP,S_rQ\rangle+\|S_rQ\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;=\langle S_rP,*S_rP\rangle\\
+&amp;\quad+2\langle S_rP,S_rQ\rangle+\|S_rQ\|^2 .
+\end{aligned}
+\]</span>
+By Lemma 4.2(3) and (1), the first term is at least <span class="math" data-tex="\(cr^{-4}\mathcal I_r-C\)">\(cr^{-4}\mathcal I_r-C\)</span>; by the cross-term bound the second is at least <span class="math" data-tex="\(-C\|S_rQ\|\)">\(-C\|S_rQ\|\)</span>. Hence
+<span class="math math-display" data-tex="\[
+cr^{-4}\mathcal I_r+\|S_rQ\|^2\le C+C\|S_rQ\| .
+\]">\[
+cr^{-4}\mathcal I_r+\|S_rQ\|^2\le C+C\|S_rQ\| .
+\]</span>
+So <span class="math" data-tex="\(\|S_rQ\|\)">\(\|S_rQ\|\)</span> is bounded as <span class="math" data-tex="\(r\to0\)">\(r\to0\)</span>, and <span class="math" data-tex="\(\mathcal I_r\le Cr^4\)">\(\mathcal I_r\le Cr^4\)</span>. A sequence <span class="math" data-tex="\(r_k\to0\)">\(r_k\to0\)</span> has <span class="math" data-tex="\(S_{r_k}Q\)">\(S_{r_k}Q\)</span> converging weakly in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to some <span class="math" data-tex="\(q\)">\(q\)</span>: bounded sequences in a Hilbert space have weakly convergent subsequences (Exercise 4 of <a href="../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html">Weak topologies: Tychonoff, Banach–Alaoglu, Mazur, bipolars, Krein–Milman and Eberlein–Šmulian</a>, with its solution; Hilbert spaces are reflexive by Theorem 2.3 of the lesson on Hilbert spaces cited above). For smooth <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, <span class="math" data-tex="\(\langle S_rQ,\alpha\rangle=Q(S_r\alpha)\to Q(\alpha)\)">\(\langle S_rQ,\alpha\rangle=Q(S_r\alpha)\to Q(\alpha)\)</span> by Lemma 1.2(4), so <span class="math" data-tex="\(Q(\alpha)=\langle q,\alpha\rangle\)">\(Q(\alpha)=\langle q,\alpha\rangle\)</span>: <span class="math" data-tex="\(Q=q\in L^2\)">\(Q=q\in L^2\)</span>.</p>
+<p><em>Vanishing cross terms.</em> For anti-invariant <span class="math" data-tex="\(V\in L^2\)">\(V\in L^2\)</span> the cross-term bound and <span class="math" data-tex="\(\|S_r\|\le1\)">\(\|S_r\|\le1\)</span> give <span class="math" data-tex="\(|\langle S_rP&#x27;,S_rV\rangle|\le C\|V\|\)">\(|\langle S_rP&#x27;,S_rV\rangle|\le C\|V\|\)</span>, uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>. If <span class="math" data-tex="\(V\)">\(V\)</span> is smooth and anti-invariant, then <span class="math" data-tex="\(\langle S_rP&#x27;,S_rV\rangle=P&#x27;(S_r^2V)\to P&#x27;(V)\)">\(\langle S_rP&#x27;,S_rV\rangle=P&#x27;(S_r^2V)\to P&#x27;(V)\)</span> by Lemma 1.2(4), and <span class="math" data-tex="\(P&#x27;(V)=\int\langle V_y,m\rangle\,d\lambda&#x27;=0\)">\(P&#x27;(V)=\int\langle V_y,m\rangle\,d\lambda&#x27;=0\)</span> since <span class="math" data-tex="\(V\)">\(V\)</span> is anti-invariant and <span class="math" data-tex="\(m\)">\(m\)</span> invariant. Smooth anti-invariant forms are dense among square integrable anti-invariant forms (approximate by smooth forms, then apply <span class="math" data-tex="\(R\)">\(R\)</span>). Approximating <span class="math" data-tex="\(Q\)">\(Q\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by such <span class="math" data-tex="\(V\)">\(V\)</span> gives <span class="math" data-tex="\(\langle S_rP&#x27;,S_rQ\rangle\to0\)">\(\langle S_rP&#x27;,S_rQ\rangle\to0\)</span>, and <span class="math" data-tex="\(*S_rQ=S_rQ\)">\(*S_rQ=S_rQ\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Two consequences are used in the last lesson: <span class="math" data-tex="\(S_rQ\to Q\)">\(S_rQ\to Q\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> (Lemma 1.2(4)), and the pairing of <span class="math" data-tex="\(P\)">\(P\)</span> with a subcurrent <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span> has the lower bound of Lemma 4.2(3), whose negative term will be shown to vanish when <span class="math" data-tex="\(\mu&#x27;\)">\(\mu&#x27;\)</span> lives on points of zero density.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Show that <span class="math" data-tex="\(\sup_{\lambda\ge0}\lambda^j(1+r^2\lambda)^{-3}\)">\(\sup_{\lambda\ge0}\lambda^j(1+r^2\lambda)^{-3}\)</span> equals <span class="math" data-tex="\(\bigl(\frac{j}{3-j}\bigr)^j\frac{(3-j)^3}{27}\,r^{-2j}\)">\(\bigl(\frac{j}{3-j}\bigr)^j\frac{(3-j)^3}{27}\,r^{-2j}\)</span> for <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span>, and that it is at most <span class="math" data-tex="\(r^{-2j}\)">\(r^{-2j}\)</span> for <span class="math" data-tex="\(0\le j\le3\)">\(0\le j\le3\)</span>.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> be unit complex-line bivectors at the same point with <span class="math" data-tex="\(F\)">\(F\)</span> the same. Show that <span class="math" data-tex="\(\langle\ell,*m\rangle=\frac12|\ell-m|^2\ge0\)">\(\langle\ell,*m\rangle=\frac12|\ell-m|^2\ge0\)</span>, with equality only for <span class="math" data-tex="\(\ell=m\)">\(\ell=m\)</span>.</p>
+<p><strong>7.3.</strong> On <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span> with the Euclidean metric, the heat kernel on functions is <span class="math" data-tex="\((4\pi t)^{-2}e^{-|x-y|^2/(4t)}\)">\((4\pi t)^{-2}e^{-|x-y|^2/(4t)}\)</span>. Show that the kernel of <span class="math" data-tex="\((1-r^2\Delta_0)^{-6}\)">\((1-r^2\Delta_0)^{-6}\)</span>, with <span class="math" data-tex="\(\Delta_0=\sum_i\partial_i^2\)">\(\Delta_0=\sum_i\partial_i^2\)</span>, is <span class="math" data-tex="\(r^{-4}\Phi(|x-y|/r)\)">\(r^{-4}\Phi(|x-y|/r)\)</span> for a positive function <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, and give <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> as an integral.</p>
+<p><strong>7.4.</strong> On the flat torus <span class="math" data-tex="\(\mathbb R^4/\mathbb Z^4\)">\(\mathbb R^4/\mathbb Z^4\)</span>, write two-forms in the constant frame <span class="math" data-tex="\(dx^i\wedge dx^j\)">\(dx^i\wedge dx^j\)</span>, and let <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> be a constant orthogonal projection in this frame. Show that <span class="math" data-tex="\(\Pi S_r=S_r\Pi\)">\(\Pi S_r=S_r\Pi\)</span>, so that Lemma 5.1 holds with <span class="math" data-tex="\(C=0\)">\(C=0\)</span>.</p>
+<p><strong>7.5.</strong> Show that <span class="math" data-tex="\(\langle\alpha,*\beta\rangle=\int_X\alpha\wedge\beta\)">\(\langle\alpha,*\beta\rangle=\int_X\alpha\wedge\beta\)</span> for square integrable two-forms. On the flat torus <span class="math" data-tex="\(\mathbb R^4/\mathbb Z^4\)">\(\mathbb R^4/\mathbb Z^4\)</span>, let <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> be the currents given by the constant forms <span class="math" data-tex="\(dx^1\wedge dx^2\)">\(dx^1\wedge dx^2\)</span> and <span class="math" data-tex="\(dx^3\wedge dx^4\)">\(dx^3\wedge dx^4\)</span>. Show that both are closed and that <span class="math" data-tex="\(\langle S_rT,*S_rT&#x27;\rangle=1\)">\(\langle S_rT,*S_rT&#x27;\rangle=1\)</span>. Which hypothesis of Lemma 2.1 fails?</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> For <span class="math" data-tex="\(f(\lambda)=\lambda^j(1+r^2\lambda)^{-3}\)">\(f(\lambda)=\lambda^j(1+r^2\lambda)^{-3}\)</span>, <span class="math" data-tex="\(f&#x27;=0\)">\(f&#x27;=0\)</span> when <span class="math" data-tex="\(j(1+r^2\lambda)=3r^2\lambda\)">\(j(1+r^2\lambda)=3r^2\lambda\)</span>, that is <span class="math" data-tex="\(r^2\lambda=j/(3-j)\)">\(r^2\lambda=j/(3-j)\)</span>. Then <span class="math" data-tex="\(1+r^2\lambda=3/(3-j)\)">\(1+r^2\lambda=3/(3-j)\)</span>, and <span class="math" data-tex="\(f=r^{-2j}(j/(3-j))^j((3-j)/3)^3\)">\(f=r^{-2j}(j/(3-j))^j((3-j)/3)^3\)</span>. For <span class="math" data-tex="\(j=1\)">\(j=1\)</span> this is <span class="math" data-tex="\(\frac4{27}r^{-2}\)">\(\frac4{27}r^{-2}\)</span>, for <span class="math" data-tex="\(j=2\)">\(j=2\)</span> it is <span class="math" data-tex="\(\frac4{27}r^{-4}\)">\(\frac4{27}r^{-4}\)</span>. For <span class="math" data-tex="\(j=3\)">\(j=3\)</span>, <span class="math" data-tex="\(\lambda^3(1+r^2\lambda)^{-3}&lt;r^{-6}\)">\(\lambda^3(1+r^2\lambda)^{-3}&lt;r^{-6}\)</span>, and for <span class="math" data-tex="\(j=0\)">\(j=0\)</span> the supremum is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>7.2.</strong> With <span class="math" data-tex="\(x=y\)">\(x=y\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> the identity, Lemma 4.1 gives <span class="math" data-tex="\(\langle\ell,*m\rangle=\frac12|\ell-m|^2-\frac14|F-F|^2\)">\(\langle\ell,*m\rangle=\frac12|\ell-m|^2-\frac14|F-F|^2\)</span>.</p>
+<p><strong>7.3.</strong> The integral formula of the proof of Lemma 3.1, with <span class="math" data-tex="\(e^{t\Delta_0}\)">\(e^{t\Delta_0}\)</span> in place of <span class="math" data-tex="\(e^{-t\Delta}\)">\(e^{-t\Delta}\)</span>, gives the kernel
+<span class="math math-display" data-tex="\[
+\frac1{\Gamma(6)}\int_0^\infty e^{-s}s^5\frac{e^{-|x-y|^2/(4r^2s)}}{(4\pi r^2s)^2}\,ds ,
+\]">\[
+\frac1{\Gamma(6)}\int_0^\infty e^{-s}s^5\frac{e^{-|x-y|^2/(4r^2s)}}{(4\pi r^2s)^2}\,ds ,
+\]</span>
+which is <span class="math" data-tex="\(r^{-4}\Phi(|x-y|/r)\)">\(r^{-4}\Phi(|x-y|/r)\)</span> with <span class="math" data-tex="\(\Phi(\rho)=\frac{1}{16\pi^2\Gamma(6)}\int_0^\infty e^{-s}s^3e^{-\rho^2/(4s)}\,ds&gt;0\)">\(\Phi(\rho)=\frac{1}{16\pi^2\Gamma(6)}\int_0^\infty e^{-s}s^3e^{-\rho^2/(4s)}\,ds&gt;0\)</span>.</p>
+<p><strong>7.4.</strong> On the flat torus, <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> acts componentwise as <span class="math" data-tex="\(-\sum_i\partial_i^2\)">\(-\sum_i\partial_i^2\)</span> in the constant frame, and a constant <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> commutes with it, hence with <span class="math" data-tex="\(S_r\)">\(S_r\)</span>. Then <span class="math" data-tex="\(\Pi W=0\)">\(\Pi W=0\)</span> gives <span class="math" data-tex="\(\Pi S_rW=S_r\Pi W=0\)">\(\Pi S_rW=S_r\Pi W=0\)</span>.</p>
+<p><strong>7.5.</strong> Since <span class="math" data-tex="\(\alpha\wedge*\gamma=\langle\alpha,\gamma\rangle\,dV\)">\(\alpha\wedge*\gamma=\langle\alpha,\gamma\rangle\,dV\)</span> and <span class="math" data-tex="\(**=1\)">\(**=1\)</span> on two-forms, <span class="math" data-tex="\(\langle\alpha,*\beta\rangle=\int\alpha\wedge**\beta=\int\alpha\wedge\beta\)">\(\langle\alpha,*\beta\rangle=\int\alpha\wedge**\beta=\int\alpha\wedge\beta\)</span>. Constant forms on the flat torus satisfy <span class="math" data-tex="\(d^*=0\)">\(d^*=0\)</span>, so <span class="math" data-tex="\(T(d\gamma)=\langle d^*dx^{12},\gamma\rangle=0\)">\(T(d\gamma)=\langle d^*dx^{12},\gamma\rangle=0\)</span>: both currents are closed. Constant forms are harmonic, so <span class="math" data-tex="\(S_r\)">\(S_r\)</span> fixes them, and <span class="math" data-tex="\(\langle S_rT,*S_rT&#x27;\rangle=\int dx^1\wedge dx^2\wedge dx^3\wedge dx^4\)">\(\langle S_rT,*S_rT&#x27;\rangle=\int dx^1\wedge dx^2\wedge dx^3\wedge dx^4\)</span>, which is <span class="math" data-tex="\(1\)">\(1\)</span>. Lemma 2.1 needs <span class="math" data-tex="\(T\)">\(T\)</span> to annihilate every closed form, and <span class="math" data-tex="\(T(dx^1\wedge dx^2)=1\)">\(T(dx^1\wedge dx^2)=1\)</span>. In this language the lemma says that the intersection pairing <span class="math" data-tex="\(\int S_rT\wedge S_rT&#x27;\)">\(\int S_rT\wedge S_rT&#x27;\)</span> vanishes when <span class="math" data-tex="\(T\)">\(T\)</span> annihilates all closed forms.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-TC] OpenAI, <em>Taming implies compatibility on four-manifolds</em>, OpenAI Math Release preprint, 23 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Taming-implies-compatibility-on-four-manifolds-September-23-2026</li>
+<li>[Ludewig 2019] M. Ludewig, <em>Strong short-time asymptotics and convolution approximation of the heat kernel</em>, Ann. Global Anal. Geom. 55 (2019); Theorems 1.1 and 3.5. https://arxiv.org/abs/1607.05152</li>
+<li>[Ludewig 2018] M. Ludewig, <em>Heat kernel asymptotics, path integrals and infinite-dimensional determinants</em>, J. Geom. Phys. 131 (2018); Section 3, (3.4). https://arxiv.org/abs/1607.05891</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

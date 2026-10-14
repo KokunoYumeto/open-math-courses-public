@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A bundle glued along three graphs</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Griffiths positivity on the quadric)</a><span class="unlinked">Previous lesson</span><span class="unlinked">Next lesson</span><a href="src/a-bundle-glued-along-three-graphs.md">Editable source</a></nav><main><article><h1 id="a-bundle-glued-along-three-graphs">A bundle glued along three graphs</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson constructs the rank-two bundle <span class="math" data-tex="\(G\)">\(G\)</span> of the theorem of <span class="unlinked">Hermitian metrics and Griffiths positivity</span>. It is obtained from <span class="math" data-tex="\(\mathcal O_S(24,0)\oplus\mathcal O_S(0,24)\)">\(\mathcal O_S(24,0)\oplus\mathcal O_S(0,24)\)</span> on <span class="math" data-tex="\(S=\mathbb P^1\times\mathbb P^1\)">\(S=\mathbb P^1\times\mathbb P^1\)</span> by keeping the pairs of sections that agree, along three graphs of projective transformations, under prescribed identifications. Two properties of the transformations matter. Their linear lifts and the relative lift have finite order, which makes the identifications agree where the graphs meet. Their product is hyperbolic, which will rule out a common invariant measure in <a href="an-invariant-measure-and-the-proof.html">An invariant measure and the proof</a>.</p>
+<ul>
+<li>The two matrices (Lemma 1.1).</li>
+<li>The three graphs and their six intersection points (Lemma 2.1).</li>
+<li>The gluing, the bundle <span class="math" data-tex="\(G\)">\(G\)</span>, its two quotient sequences and the two line subbundles of its dual (Proposition 3.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-GP, Section 2]. We view <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> as the set of lines in <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, with the tautological line bundle <span class="math" data-tex="\(\mathcal O_{\mathbb P^1}(-1)\)">\(\mathcal O_{\mathbb P^1}(-1)\)</span> whose fiber at a line is the line itself; a matrix <span class="math" data-tex="\(M\in\operatorname{SL}_2(\mathbb C)\)">\(M\in\operatorname{SL}_2(\mathbb C)\)</span> acts on <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, and maps the line <span class="math" data-tex="\(x\)">\(x\)</span> linearly onto the line <span class="math" data-tex="\(Mx\)">\(Mx\)</span>.</p>
+<h2 id="1-two-matrices">1. Two matrices</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+a=e^{i\pi/3},\qquad s=\frac12-\frac{i(1+2\sqrt2)}{2\sqrt3},
+\]">\[
+a=e^{i\pi/3},\qquad s=\frac12-\frac{i(1+2\sqrt2)}{2\sqrt3},
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=\begin{pmatrix}a&amp;0\\0&amp;a^{-1}\end{pmatrix},\\
+B=\begin{pmatrix}s&amp;1\\\sqrt2/3&amp;1-s\end{pmatrix}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+A=\begin{pmatrix}a&amp;0\\0&amp;a^{-1}\end{pmatrix},\\
+B=\begin{pmatrix}s&amp;1\\\sqrt2/3&amp;1-s\end{pmatrix}.
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 1.1</strong> ([OpenAI-GP, Lemma 2.1]).</p>
+<ol>
+<li><span class="math" data-tex="\(A,B\in\operatorname{SL}_2(\mathbb C)\)">\(A,B\in\operatorname{SL}_2(\mathbb C)\)</span>, <span class="math" data-tex="\(\operatorname{tr}A=\operatorname{tr}B=1\)">\(\operatorname{tr}A=\operatorname{tr}B=1\)</span>, <span class="math" data-tex="\(\operatorname{tr}(A^{-1}B)=-\sqrt2\)">\(\operatorname{tr}(A^{-1}B)=-\sqrt2\)</span> and <span class="math" data-tex="\(\operatorname{tr}(AB)=1+\sqrt2\)">\(\operatorname{tr}(AB)=1+\sqrt2\)</span>.</li>
+<li><span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> have order <span class="math" data-tex="\(6\)">\(6\)</span>, and <span class="math" data-tex="\(A^{-1}B\)">\(A^{-1}B\)</span> has order <span class="math" data-tex="\(8\)">\(8\)</span>; <span class="math" data-tex="\(A^3=B^3=-I\)">\(A^3=B^3=-I\)</span>, so <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> act on <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> with order <span class="math" data-tex="\(3\)">\(3\)</span>.</li>
+<li><span class="math" data-tex="\(AB\)">\(AB\)</span> has two positive real eigenvalues <span class="math" data-tex="\(\lambda&gt;1&gt;\lambda^{-1}\)">\(\lambda&gt;1&gt;\lambda^{-1}\)</span>.</li>
+<li><span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> have no common eigenline.</li>
+</ol>
+<p><strong>Proof.</strong> <em>Part 1.</em> <span class="math" data-tex="\(\det A=1\)">\(\det A=1\)</span>. With <span class="math" data-tex="\(\beta=\frac{1+2\sqrt2}{2\sqrt3}\)">\(\beta=\frac{1+2\sqrt2}{2\sqrt3}\)</span>, <span class="math" data-tex="\(s=\frac12-i\beta\)">\(s=\frac12-i\beta\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+s(1-s)&amp;=\tfrac14+\beta^2=\tfrac14+\tfrac{9+4\sqrt2}{12}\\
+&amp;=1+\tfrac{\sqrt2}3 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+s(1-s)&amp;=\tfrac14+\beta^2=\tfrac14+\tfrac{9+4\sqrt2}{12}\\
+&amp;=1+\tfrac{\sqrt2}3 ,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(\det B=s(1-s)-\frac{\sqrt2}3=1\)">\(\det B=s(1-s)-\frac{\sqrt2}3=1\)</span>, and <span class="math" data-tex="\(\operatorname{tr}B=1\)">\(\operatorname{tr}B=1\)</span>. Further <span class="math" data-tex="\(a^{-1}-a=-i\sqrt3\)">\(a^{-1}-a=-i\sqrt3\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{tr}(A^{-1}B)&amp;=a^{-1}s+a(1-s)\\
+&amp;=a-i\sqrt3\,s\\
+&amp;=\tfrac12-\sqrt3\beta=-\sqrt2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{tr}(A^{-1}B)&amp;=a^{-1}s+a(1-s)\\
+&amp;=a-i\sqrt3\,s\\
+&amp;=\tfrac12-\sqrt3\beta=-\sqrt2 .
+\end{aligned}
+\]</span>
+By the Cayley–Hamilton theorem, <span class="math" data-tex="\(A^2-A+I=0\)">\(A^2-A+I=0\)</span>, so <span class="math" data-tex="\(A+A^{-1}=I\)">\(A+A^{-1}=I\)</span>, and multiplying by <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(\operatorname{tr}(AB)=\operatorname{tr}B-\operatorname{tr}(A^{-1}B)=1+\sqrt2\)">\(\operatorname{tr}(AB)=\operatorname{tr}B-\operatorname{tr}(A^{-1}B)=1+\sqrt2\)</span>.</p>
+<p><em>Part 2.</em> The characteristic polynomial of <span class="math" data-tex="\(A\)">\(A\)</span> and of <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(t^2-t+1\)">\(t^2-t+1\)</span>, with the distinct roots <span class="math" data-tex="\(e^{\pm i\pi/3}\)">\(e^{\pm i\pi/3}\)</span>, primitive sixth roots of unity; that of <span class="math" data-tex="\(A^{-1}B\)">\(A^{-1}B\)</span> is <span class="math" data-tex="\(t^2+\sqrt2t+1\)">\(t^2+\sqrt2t+1\)</span>, with the roots <span class="math" data-tex="\(e^{\pm3i\pi/4}\)">\(e^{\pm3i\pi/4}\)</span>, primitive eighth roots of unity. A matrix with distinct eigenvalues is diagonalizable, so the orders are <span class="math" data-tex="\(6\)">\(6\)</span>, <span class="math" data-tex="\(6\)">\(6\)</span> and <span class="math" data-tex="\(8\)">\(8\)</span>, and <span class="math" data-tex="\(A^3=B^3=-I\)">\(A^3=B^3=-I\)</span> acts trivially on <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> while <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> do not.</p>
+<p><em>Part 3.</em> <span class="math" data-tex="\(\det(AB)=1\)">\(\det(AB)=1\)</span> and <span class="math" data-tex="\(\operatorname{tr}(AB)=1+\sqrt2&gt;2\)">\(\operatorname{tr}(AB)=1+\sqrt2&gt;2\)</span>, so the eigenvalues are the real roots of <span class="math" data-tex="\(t^2-(1+\sqrt2)t+1\)">\(t^2-(1+\sqrt2)t+1\)</span>, positive with product one and distinct.</p>
+<p><em>Part 4.</em> The eigenlines of <span class="math" data-tex="\(A\)">\(A\)</span> are the two coordinate lines, and <span class="math" data-tex="\(B\)">\(B\)</span> maps neither to itself, since both off-diagonal entries of <span class="math" data-tex="\(B\)">\(B\)</span> are nonzero. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-three-graphs">2. Three graphs</h2>
+<p>For <span class="math" data-tex="\(M\in\{I,A,B\}\)">\(M\in\{I,A,B\}\)</span> let <span class="math" data-tex="\(\Gamma_M=\{(x,Mx):x\in\mathbb P^1\}\subset S\)">\(\Gamma_M=\{(x,Mx):x\in\mathbb P^1\}\subset S\)</span>, and let <span class="math" data-tex="\(D=\Gamma_I\cup\Gamma_A\cup\Gamma_B\)">\(D=\Gamma_I\cup\Gamma_A\cup\Gamma_B\)</span> with the reduced structure. Write <span class="math" data-tex="\(\mathcal O_S(r,t)\)">\(\mathcal O_S(r,t)\)</span> as in the first lesson. For <span class="math" data-tex="\(M=\begin{pmatrix}p&amp;q\\u&amp;v\end{pmatrix}\)">\(M=\begin{pmatrix}p&amp;q\\u&amp;v\end{pmatrix}\)</span>, <span class="math" data-tex="\(\Gamma_M\)">\(\Gamma_M\)</span> is the zero set of the form <span class="math" data-tex="\(w_0(uz_0+vz_1)-w_1(pz_0+qz_1)\)">\(w_0(uz_0+vz_1)-w_1(pz_0+qz_1)\)</span> of bidegree <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>; so <span class="math" data-tex="\(\mathcal O_S(D)=\mathcal O_S(3,3)\)">\(\mathcal O_S(D)=\mathcal O_S(3,3)\)</span>.</p>
+<p><strong>Lemma 2.1</strong> ([OpenAI-GP, Lemma 2.2]). The three graphs are smooth. Two of them meet in exactly two points, transversally, and no point lies on all three. So <span class="math" data-tex="\(D\)">\(D\)</span> has exactly six singular points, each an ordinary node.</p>
+<p><strong>Proof.</strong> A graph is isomorphic to <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>. A point of <span class="math" data-tex="\(\Gamma_M\cap\Gamma_N\)">\(\Gamma_M\cap\Gamma_N\)</span> is <span class="math" data-tex="\((x,Mx)\)">\((x,Mx)\)</span> with <span class="math" data-tex="\(Mx=Nx\)">\(Mx=Nx\)</span>, that is, a fixed point <span class="math" data-tex="\(x\)">\(x\)</span> of <span class="math" data-tex="\(M^{-1}N\)">\(M^{-1}N\)</span> on <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, which is an eigenline. The relative matrices for the three pairs are <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(A^{-1}B\)">\(A^{-1}B\)</span> (up to inversion), each with two distinct eigenvalues, so each pair meets in exactly two points. In an affine coordinate the graphs of <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> near a common point are the graphs of two holomorphic functions, and they meet transversally exactly when the derivatives differ, that is, when the multiplier of <span class="math" data-tex="\(M^{-1}N\)">\(M^{-1}N\)</span> at its fixed point is not <span class="math" data-tex="\(1\)">\(1\)</span>. The multiplier at either fixed point is the ratio of the two eigenvalues in one order or the other, which is not <span class="math" data-tex="\(1\)">\(1\)</span>. A point on all three graphs would be a common fixed point of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>, excluded by Lemma 1.1. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-gluing">3. The gluing</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b=24,\\
+L_1=\mathcal O_S(b,0),\qquad L_2=\mathcal O_S(0,b) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+b=24,\\
+L_1=\mathcal O_S(b,0),\qquad L_2=\mathcal O_S(0,b) .
+\end{gathered}
+\]</span>
+The fiber of <span class="math" data-tex="\(L_1^{-1}=p_1^*\mathcal O(-b)\)">\(L_1^{-1}=p_1^*\mathcal O(-b)\)</span> at <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> is <span class="math" data-tex="\(x^{\otimes b}\)">\(x^{\otimes b}\)</span>, and that of <span class="math" data-tex="\(L_2^{-1}\)">\(L_2^{-1}\)</span> is <span class="math" data-tex="\(y^{\otimes b}\)">\(y^{\otimes b}\)</span>. On <span class="math" data-tex="\(\Gamma_M\)">\(\Gamma_M\)</span>, where <span class="math" data-tex="\(y=Mx\)">\(y=Mx\)</span>, the linear map <span class="math" data-tex="\(M\colon x\to Mx\)">\(M\colon x\to Mx\)</span> induces the isomorphism <span class="math" data-tex="\(M^{\otimes b}\colon x^{\otimes b}\to(Mx)^{\otimes b}\)">\(M^{\otimes b}\colon x^{\otimes b}\to(Mx)^{\otimes b}\)</span>, an isomorphism <span class="math" data-tex="\(\alpha_M\colon L_1^{-1}|_{\Gamma_M}\to L_2^{-1}|_{\Gamma_M}\)">\(\alpha_M\colon L_1^{-1}|_{\Gamma_M}\to L_2^{-1}|_{\Gamma_M}\)</span> of line bundles on <span class="math" data-tex="\(\Gamma_M\)">\(\Gamma_M\)</span>. The number <span class="math" data-tex="\(24\)">\(24\)</span> is the least common multiple of the orders <span class="math" data-tex="\(6\)">\(6\)</span>, <span class="math" data-tex="\(6\)">\(6\)</span>, <span class="math" data-tex="\(8\)">\(8\)</span> of Lemma 1.1.</p>
+<p><strong>Proposition 3.1</strong> ([OpenAI-GP, Proposition 2.3]). (1) The three isomorphisms <span class="math" data-tex="\(\alpha_M\)">\(\alpha_M\)</span> glue to an isomorphism of line bundles on <span class="math" data-tex="\(D\)">\(D\)</span>,
+<span class="math math-display" data-tex="\[
+\alpha\colon L_1^{-1}|_D\to L_2^{-1}|_D ,\qquad\alpha|_{\Gamma_M}=M^{\otimes b} .
+\]">\[
+\alpha\colon L_1^{-1}|_D\to L_2^{-1}|_D ,\qquad\alpha|_{\Gamma_M}=M^{\otimes b} .
+\]</span>
+(2) Let <span class="math" data-tex="\(\beta=(\alpha^\vee)^{-1}\colon L_1|_D\to L_2|_D\)">\(\beta=(\alpha^\vee)^{-1}\colon L_1|_D\to L_2|_D\)</span>. The subsheaf
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G=\bigl\{(u_1,u_2)&amp;\in L_1\oplus L_2:\\
+&amp;u_2|_D=\beta(u_1|_D)\bigr\}
+\end{aligned}
+\]">\[
+\begin{aligned}
+G=\bigl\{(u_1,u_2)&amp;\in L_1\oplus L_2:\\
+&amp;u_2|_D=\beta(u_1|_D)\bigr\}
+\end{aligned}
+\]</span>
+is a vector bundle of rank two. (3) Both projections <span class="math" data-tex="\(\rho_i\colon G\to L_i\)">\(\rho_i\colon G\to L_i\)</span> are surjective, and for <span class="math" data-tex="\(\{i,j\}=\{1,2\}\)">\(\{i,j\}=\{1,2\}\)</span> there are exact sequences
+<span class="math math-display" data-tex="\[
+0\to L_i(-D)\to G\xrightarrow{\ \rho_j\ }L_j\to0 .
+\]">\[
+0\to L_i(-D)\to G\xrightarrow{\ \rho_j\ }L_j\to0 .
+\]</span>
+(4) Let <span class="math" data-tex="\(F=G^\vee\)">\(F=G^\vee\)</span> and <span class="math" data-tex="\(\iota_i=\rho_i^\vee\colon L_i^{-1}\to F\)">\(\iota_i=\rho_i^\vee\colon L_i^{-1}\to F\)</span>. The line subbundles <span class="math" data-tex="\(\iota_1(L_1^{-1})\)">\(\iota_1(L_1^{-1})\)</span> and <span class="math" data-tex="\(\iota_2(L_2^{-1})\)">\(\iota_2(L_2^{-1})\)</span> span every fiber of <span class="math" data-tex="\(F\)">\(F\)</span> over <span class="math" data-tex="\(S\setminus D\)">\(S\setminus D\)</span>, and <span class="math" data-tex="\(\iota_2\circ\alpha=\iota_1\)">\(\iota_2\circ\alpha=\iota_1\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>Proof.</strong> <em>Agreement at the nodes.</em> At a point <span class="math" data-tex="\((x,Mx)=(x,Nx)\)">\((x,Mx)=(x,Nx)\)</span> of <span class="math" data-tex="\(\Gamma_M\cap\Gamma_N\)">\(\Gamma_M\cap\Gamma_N\)</span>, let <span class="math" data-tex="\(v\)">\(v\)</span> span the line <span class="math" data-tex="\(x\)">\(x\)</span>. Then <span class="math" data-tex="\(M^{-1}Nv=\lambda v\)">\(M^{-1}Nv=\lambda v\)</span> for an eigenvalue <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(M^{-1}N\)">\(M^{-1}N\)</span>, so <span class="math" data-tex="\(Nv=\lambda Mv\)">\(Nv=\lambda Mv\)</span>, and <span class="math" data-tex="\(\lambda^{24}=1\)">\(\lambda^{24}=1\)</span> by Lemma 1.1. Hence <span class="math" data-tex="\((Nv)^{\otimes b}=\lambda^b(Mv)^{\otimes b}=(Mv)^{\otimes b}\)">\((Nv)^{\otimes b}=\lambda^b(Mv)^{\otimes b}=(Mv)^{\otimes b}\)</span>: the two isomorphisms agree on the fiber over the node.</p>
+<p><em>Part 1.</em> Away from the nodes there is nothing to glue. Let <span class="math" data-tex="\(R\)">\(R\)</span> be the local ring of <span class="math" data-tex="\(S\)">\(S\)</span> at a node, and <span class="math" data-tex="\((d_1),(d_2)\)">\((d_1),(d_2)\)</span> the ideals of the two branches. Since the branches are transverse, <span class="math" data-tex="\(d_1,d_2\)">\(d_1,d_2\)</span> are a regular system of parameters, <span class="math" data-tex="\((d_1)\cap(d_2)=(d_1d_2)\)">\((d_1)\cap(d_2)=(d_1d_2)\)</span> in the factorial ring <span class="math" data-tex="\(R\)">\(R\)</span>, and the sequence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;0\to R/(d_1d_2)\to R/(d_1)\oplus R/(d_2)\\
+&amp;\quad\to R/(d_1,d_2)\to0 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;0\to R/(d_1d_2)\to R/(d_1)\oplus R/(d_2)\\
+&amp;\quad\to R/(d_1,d_2)\to0 ,
+\end{aligned}
+\]</span>
+whose last map is the difference of the values at the node, is exact. Tensoring with the stalk of the invertible sheaf <span class="math" data-tex="\(\mathcal Hom(L_1^{-1},L_2^{-1})\)">\(\mathcal Hom(L_1^{-1},L_2^{-1})\)</span>, a pair of sections on the two branches with the same value at the node comes from a unique section over <span class="math" data-tex="\(D\)">\(D\)</span> near the node. The glued section is a unit, since its value at the node is nonzero. This gives <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p><em>Part 2.</em> Near a point of <span class="math" data-tex="\(D\)">\(D\)</span>, choose frames of <span class="math" data-tex="\(L_1\)">\(L_1\)</span> and <span class="math" data-tex="\(L_2\)">\(L_2\)</span> and a local equation <span class="math" data-tex="\(d\)">\(d\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span>, and lift the function that represents <span class="math" data-tex="\(\beta\)">\(\beta\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span> to a function <span class="math" data-tex="\(h\)">\(h\)</span>, a unit after shrinking. A pair <span class="math" data-tex="\((u_1,u_2)\)">\((u_1,u_2)\)</span> lies in <span class="math" data-tex="\(G\)">\(G\)</span> exactly when <span class="math" data-tex="\(d\)">\(d\)</span> divides <span class="math" data-tex="\(u_2-hu_1\)">\(u_2-hu_1\)</span>. So every element is uniquely <span class="math" data-tex="\(u_1e+kf\)">\(u_1e+kf\)</span> with
+<span class="math math-display" data-tex="\[
+e=(1,h),\qquad f=(0,d),
+\]">\[
+e=(1,h),\qquad f=(0,d),
+\]</span>
+and <span class="math" data-tex="\(k=(u_2-hu_1)/d\)">\(k=(u_2-hu_1)/d\)</span>; <span class="math" data-tex="\(e,f\)">\(e,f\)</span> is a basis. Away from <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(G=L_1\oplus L_2\)">\(G=L_1\oplus L_2\)</span>. So <span class="math" data-tex="\(G\)">\(G\)</span> is locally free of rank two.</p>
+<p><em>Part 3.</em> <span class="math" data-tex="\(\rho_1(e)=1\)">\(\rho_1(e)=1\)</span> and <span class="math" data-tex="\(\rho_2(e)=h\)">\(\rho_2(e)=h\)</span>, a unit, so both projections are surjective. The kernel of <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> consists of the pairs with <span class="math" data-tex="\(u_j=0\)">\(u_j=0\)</span>; for such pairs the condition reads <span class="math" data-tex="\(\beta(u_i|_D)=0\)">\(\beta(u_i|_D)=0\)</span> or <span class="math" data-tex="\(u_i|_D=0\)">\(u_i|_D=0\)</span>, since <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is an isomorphism, so the kernel is <span class="math" data-tex="\(L_i(-D)\)">\(L_i(-D)\)</span>.</p>
+<p><em>Part 4.</em> Since <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span> is surjective, <span class="math" data-tex="\(\iota_i\)">\(\iota_i\)</span> is an injection onto a line subbundle. Off <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(G=L_1\oplus L_2\)">\(G=L_1\oplus L_2\)</span> and the two lines are the two summands of <span class="math" data-tex="\(F=L_1^{-1}\oplus L_2^{-1}\)">\(F=L_1^{-1}\oplus L_2^{-1}\)</span>. On <span class="math" data-tex="\(D\)">\(D\)</span>, for <span class="math" data-tex="\(v\in L_1^{-1}\)">\(v\in L_1^{-1}\)</span> and <span class="math" data-tex="\((u_1,u_2)\in G\)">\((u_1,u_2)\in G\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl(\iota_2(\alpha v)\bigr)(u_1,u_2)=(\alpha v)(u_2)\\
+&amp;\quad=(\alpha v)(\beta u_1)=v(\alpha^\vee\beta u_1)\\
+&amp;\quad=v(u_1)=\bigl(\iota_1(v)\bigr)(u_1,u_2) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl(\iota_2(\alpha v)\bigr)(u_1,u_2)=(\alpha v)(u_2)\\
+&amp;\quad=(\alpha v)(\beta u_1)=v(\alpha^\vee\beta u_1)\\
+&amp;\quad=v(u_1)=\bigl(\iota_1(v)\bigr)(u_1,u_2) .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So over <span class="math" data-tex="\(D\)">\(D\)</span> the two line subbundles of <span class="math" data-tex="\(F\)">\(F\)</span> coincide, and are identified with each other through <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, that is, through the lifts <span class="math" data-tex="\(M^{\otimes24}\)">\(M^{\otimes24}\)</span> of the three transformations. This identification is what the quadratic limit of the last lesson will remember.</p>
+<p>In the notation of the first lesson, <span class="math" data-tex="\(L_1(-D)=\mathcal O_S(21,-3)\)">\(L_1(-D)=\mathcal O_S(21,-3)\)</span> and <span class="math" data-tex="\(L_2(-D)=\mathcal O_S(-3,21)\)">\(L_2(-D)=\mathcal O_S(-3,21)\)</span>, and both sequences give <span class="math" data-tex="\(\det G=\mathcal O_S(21,21)\)">\(\det G=\mathcal O_S(21,21)\)</span>. The bundle <span class="math" data-tex="\(G\)">\(G\)</span> is an elementary transformation of <span class="math" data-tex="\(L_1\oplus L_2\)">\(L_1\oplus L_2\)</span> along <span class="math" data-tex="\(D\)">\(D\)</span> in the sense of Maruyama [OpenAI-GP, Section 2].</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Verify <span class="math" data-tex="\(s(1-s)=1+\frac{\sqrt2}3\)">\(s(1-s)=1+\frac{\sqrt2}3\)</span> and <span class="math" data-tex="\(\operatorname{tr}(A^{-1}B)=-\sqrt2\)">\(\operatorname{tr}(A^{-1}B)=-\sqrt2\)</span> numerically, and find the two eigenvalues of <span class="math" data-tex="\(AB\)">\(AB\)</span>.</p>
+<p><strong>4.2.</strong> Find the six nodes of <span class="math" data-tex="\(D\)">\(D\)</span> explicitly for the pair <span class="math" data-tex="\(\Gamma_I,\Gamma_A\)">\(\Gamma_I,\Gamma_A\)</span>, and show that the other four nodes lie off the coordinate points of <span class="math" data-tex="\(\mathbb P^1\times\mathbb P^1\)">\(\mathbb P^1\times\mathbb P^1\)</span>.</p>
+<p><strong>4.3.</strong> Show that the gluing of Proposition 3.1 fails for <span class="math" data-tex="\(b=12\)">\(b=12\)</span>: at some node the two isomorphisms differ by a sign.</p>
+<p><strong>4.4.</strong> Compute <span class="math" data-tex="\(c_1(G)\)">\(c_1(G)\)</span> and <span class="math" data-tex="\(c_2(G)\)">\(c_2(G)\)</span>, using that the intersection number of bidegrees <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> and <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> on <span class="math" data-tex="\(\mathbb P^1\times\mathbb P^1\)">\(\mathbb P^1\times\mathbb P^1\)</span> is <span class="math" data-tex="\(ad+bc\)">\(ad+bc\)</span>.</p>
+<p><strong>4.5.</strong> Show that <span class="math" data-tex="\(\iota_1(L_1^{-1})\)">\(\iota_1(L_1^{-1})\)</span> and <span class="math" data-tex="\(\iota_2(L_2^{-1})\)">\(\iota_2(L_2^{-1})\)</span> are different line subbundles of <span class="math" data-tex="\(F\)">\(F\)</span> at every point off <span class="math" data-tex="\(D\)">\(D\)</span> and equal at every point of <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(\beta=(1+2\sqrt2)/(2\sqrt3)\approx1.1052\)">\(\beta=(1+2\sqrt2)/(2\sqrt3)\approx1.1052\)</span>, so <span class="math" data-tex="\(s(1-s)=0.25+\beta^2\)">\(s(1-s)=0.25+\beta^2\)</span>, which equals <span class="math" data-tex="\(1+\sqrt2/3\approx1.4714\)">\(1+\sqrt2/3\approx1.4714\)</span>. The eigenvalues of <span class="math" data-tex="\(AB\)">\(AB\)</span> are <span class="math" data-tex="\(\frac{1+\sqrt2\pm\sqrt{(1+\sqrt2)^2-4}}2=\frac{1+\sqrt2\pm\sqrt{2\sqrt2-1}}2\)">\(\frac{1+\sqrt2\pm\sqrt{(1+\sqrt2)^2-4}}2=\frac{1+\sqrt2\pm\sqrt{2\sqrt2-1}}2\)</span>, approximately <span class="math" data-tex="\(1.883\)">\(1.883\)</span> and <span class="math" data-tex="\(0.531\)">\(0.531\)</span>.</p>
+<p><strong>4.2.</strong> The fixed points of <span class="math" data-tex="\(A\)">\(A\)</span> are the coordinate lines <span class="math" data-tex="\(0=[1:0]\)">\(0=[1:0]\)</span> and <span class="math" data-tex="\(\infty=[0:1]\)">\(\infty=[0:1]\)</span>, so <span class="math" data-tex="\(\Gamma_I\cap\Gamma_A=\{(0,0),(\infty,\infty)\}\)">\(\Gamma_I\cap\Gamma_A=\{(0,0),(\infty,\infty)\}\)</span>. The fixed points of <span class="math" data-tex="\(B\)">\(B\)</span> and of <span class="math" data-tex="\(A^{-1}B\)">\(A^{-1}B\)</span> are eigenlines of matrices with nonzero off-diagonal entries, hence not coordinate lines; the corresponding nodes are <span class="math" data-tex="\((x,x)\)">\((x,x)\)</span> and <span class="math" data-tex="\((x,Ax)\)">\((x,Ax)\)</span> with <span class="math" data-tex="\(x\ne0,\infty\)">\(x\ne0,\infty\)</span>.</p>
+<p><strong>4.3.</strong> The eigenvalues of <span class="math" data-tex="\(A^{-1}B\)">\(A^{-1}B\)</span> are <span class="math" data-tex="\(e^{\pm3i\pi/4}\)">\(e^{\pm3i\pi/4}\)</span>, and <span class="math" data-tex="\((e^{3i\pi/4})^{12}=e^{9i\pi}=-1\)">\((e^{3i\pi/4})^{12}=e^{9i\pi}=-1\)</span>. At a node of <span class="math" data-tex="\(\Gamma_A\cap\Gamma_B\)">\(\Gamma_A\cap\Gamma_B\)</span>, <span class="math" data-tex="\((Bv)^{\otimes12}=-(Av)^{\otimes12}\)">\((Bv)^{\otimes12}=-(Av)^{\otimes12}\)</span>.</p>
+<p><strong>4.4.</strong> From <span class="math" data-tex="\(0\to\mathcal O(21,-3)\to G\to\mathcal O(0,24)\to0\)">\(0\to\mathcal O(21,-3)\to G\to\mathcal O(0,24)\to0\)</span>: <span class="math" data-tex="\(c_1(G)=(21,21)\)">\(c_1(G)=(21,21)\)</span>, and <span class="math" data-tex="\(c_2(G)=(21,-3)\cdot(0,24)\)">\(c_2(G)=(21,-3)\cdot(0,24)\)</span>, which is <span class="math" data-tex="\(21\cdot24+(-3)\cdot0=504\)">\(21\cdot24+(-3)\cdot0=504\)</span>.</p>
+<p><strong>4.5.</strong> Off <span class="math" data-tex="\(D\)">\(D\)</span> they are the two summands <span class="math" data-tex="\(L_1^{-1}\)">\(L_1^{-1}\)</span> and <span class="math" data-tex="\(L_2^{-1}\)">\(L_2^{-1}\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span>. On <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(\iota_1(v)=\iota_2(\alpha v)\)">\(\iota_1(v)=\iota_2(\alpha v)\)</span> with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> an isomorphism, so the images coincide.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-GP] OpenAI, <em>Ample rank-two bundles on the quadric surface without Griffiths-positive metrics</em>, OpenAI Math Release preprint, 24 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/ample-rank-two-bundles-on-the-quadric-surface-without-griffiths-positive-metrics-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

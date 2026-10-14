@@ -1,0 +1,263 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A uniform estimate for cell moments</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Stability of Brenier maps)</a><a href="laguerre-cells-and-prescribed-masses.html">Previous lesson</a><a href="moving-sites-with-fixed-masses.html">Next lesson</a><a href="src/a-uniform-estimate-for-cell-moments.md">Editable source</a></nav><main><article><h1 id="a-uniform-estimate-for-cell-moments">A uniform estimate for cell moments</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the central estimate of the course. Fix distinct sites and intercepts whose Laguerre cells, as in <a href="laguerre-cells-and-prescribed-masses.html">Laguerre cells and prescribed masses</a>, all have positive mass. When the intercepts move in a direction <span class="math" data-tex="\(q\)">\(q\)</span> and the sites stay fixed, the first moments of the cells change by at most a constant multiple of the change of their masses, in the weighted quadratic norm:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{i=1}^N\frac{|DB_i[q,0]|^2}{M_i}\\
+&amp;\qquad\le162\,R^2\sum_{i=1}^N\frac{|DM_i[q,0]|^2}{M_i},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{i=1}^N\frac{|DB_i[q,0]|^2}{M_i}\\
+&amp;\qquad\le162\,R^2\sum_{i=1}^N\frac{|DM_i[q,0]|^2}{M_i},
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(K\subseteq B(0,R)\)">\(K\subseteq B(0,R)\)</span>. The constant does not depend on the number of cells, their masses, or the geometry of the faces. The proof couples the cells for two opposite perturbations of the intercepts, observes that the midpoints lie in the unperturbed cell, and bounds the density of the midpoints by Knothe's triangular rearrangement.</p>
+<ul>
+<li>A midpoint coupling of two uniform laws (Lemma 1.1).</li>
+<li>The moment estimate (Proposition 2.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-BS, Section 4]. The density bound of Lemma 1.1 also follows from McCann's displacement concavity; the direct proof below uses the conditional-quantile construction of Knothe [Knothe].</p>
+<h2 id="1-a-midpoint-coupling">1. A midpoint coupling</h2>
+<p><strong>Lemma 1.1</strong> (midpoint coupling; [OpenAI-BS, Lemma 4.2]). Let <span class="math" data-tex="\(U,V\subset\mathbb R^d\)">\(U,V\subset\mathbb R^d\)</span> be compact convex sets of positive volume. There are random vectors <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span>, defined on one probability space, with uniform laws on <span class="math" data-tex="\(U\)">\(U\)</span> and on <span class="math" data-tex="\(V\)">\(V\)</span>, such that
+<span class="math math-display" data-tex="\[
+\operatorname{Law}\Bigl(\frac{X+Z}2\Bigr)\le\frac{dx}{\sqrt{|U|\,|V|}}
+\]">\[
+\operatorname{Law}\Bigl(\frac{X+Z}2\Bigr)\le\frac{dx}{\sqrt{|U|\,|V|}}
+\]</span>
+as measures on <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>.</p>
+<p><em>Proof.</em> <em>Slice functions.</em> For <span class="math" data-tex="\(0\le k&lt;d\)">\(0\le k&lt;d\)</span> and <span class="math" data-tex="\(\xi\in\mathbb R^k\)">\(\xi\in\mathbb R^k\)</span> put
+<span class="math math-display" data-tex="\[
+p_k(\xi)=\int_{\mathbb R^{d-k}}\mathbf 1_{\operatorname{int}U}(\xi,\eta)\,d\eta ,
+\]">\[
+p_k(\xi)=\int_{\mathbb R^{d-k}}\mathbf 1_{\operatorname{int}U}(\xi,\eta)\,d\eta ,
+\]</span>
+and <span class="math" data-tex="\(p_d=\mathbf 1_{\operatorname{int}U}\)">\(p_d=\mathbf 1_{\operatorname{int}U}\)</span>. Then <span class="math" data-tex="\(p_0=|\operatorname{int}U|=|U|\)">\(p_0=|\operatorname{int}U|=|U|\)</span> by Lemma 1.1(2) of <a href="optimal-maps-of-finite-affine-maxima.html">Optimal maps of finite affine maxima</a>. Let <span class="math" data-tex="\(D_k\)">\(D_k\)</span> be the projection of <span class="math" data-tex="\(\operatorname{int}U\)">\(\operatorname{int}U\)</span> to the first <span class="math" data-tex="\(k\)">\(k\)</span> coordinates, an open convex set. On <span class="math" data-tex="\(D_k\)">\(D_k\)</span>, <span class="math" data-tex="\(p_k\)">\(p_k\)</span> is positive, since the fiber is a nonempty open set, and continuous: as <span class="math" data-tex="\(\xi\to\xi_0\in D_k\)">\(\xi\to\xi_0\in D_k\)</span>, <span class="math" data-tex="\(\mathbf 1_{\operatorname{int}U}(\xi,\eta)\to\mathbf 1_{\operatorname{int}U}(\xi_0,\eta)\)">\(\mathbf 1_{\operatorname{int}U}(\xi,\eta)\to\mathbf 1_{\operatorname{int}U}(\xi_0,\eta)\)</span> unless <span class="math" data-tex="\((\xi_0,\eta)\in\partial U\)">\((\xi_0,\eta)\in\partial U\)</span>, and the slice <span class="math" data-tex="\(\{\xi_0\}\times\mathbb R^{d-k}\)">\(\{\xi_0\}\times\mathbb R^{d-k}\)</span> meets <span class="math" data-tex="\(\operatorname{int}U\)">\(\operatorname{int}U\)</span>, so its intersection with <span class="math" data-tex="\(\partial U\)">\(\partial U\)</span> is null by Lemma 1.1(3) of that lesson; dominated convergence applies, as <span class="math" data-tex="\(U\)">\(U\)</span> is bounded. By Fubini's theorem, <span class="math" data-tex="\(\int p_k(\xi,t)\,dt=p_{k-1}(\xi)\)">\(\int p_k(\xi,t)\,dt=p_{k-1}(\xi)\)</span>.</p>
+<p><em>Conditional quantiles.</em> For <span class="math" data-tex="\(s=(s_1,\dots,s_d)\in(0,1)^d\)">\(s=(s_1,\dots,s_d)\in(0,1)^d\)</span> define <span class="math" data-tex="\(X(s)\)">\(X(s)\)</span> coordinate by coordinate. Given <span class="math" data-tex="\(\xi=(X_1,\dots,X_{k-1})\in D_{k-1}\)">\(\xi=(X_1,\dots,X_{k-1})\in D_{k-1}\)</span>, the function <span class="math" data-tex="\(t\mapsto p_k(\xi,t)/p_{k-1}(\xi)\)">\(t\mapsto p_k(\xi,t)/p_{k-1}(\xi)\)</span> is a probability density, positive and continuous on the bounded open interval <span class="math" data-tex="\(\{t:(\xi,t)\in D_k\}\)">\(\{t:(\xi,t)\in D_k\}\)</span> and zero outside. Its distribution function is continuously differentiable and strictly increasing from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> on that interval, so it has a unique quantile at level <span class="math" data-tex="\(s_k\)">\(s_k\)</span>; let <span class="math" data-tex="\(X_k\)">\(X_k\)</span> be this quantile. Then <span class="math" data-tex="\((\xi,X_k)\in D_k\)">\((\xi,X_k)\in D_k\)</span>, and
+<span class="math math-display" data-tex="\[
+\partial_{s_k}X_k=\frac{p_{k-1}(X_1,\dots,X_{k-1})}{p_k(X_1,\dots,X_k)}&gt;0 .
+\]">\[
+\partial_{s_k}X_k=\frac{p_{k-1}(X_1,\dots,X_{k-1})}{p_k(X_1,\dots,X_k)}&gt;0 .
+\]</span>
+For fixed <span class="math" data-tex="\(s_1,\dots,s_{k-1}\)">\(s_1,\dots,s_{k-1}\)</span>, <span class="math" data-tex="\(X_k\)">\(X_k\)</span> is continuously differentiable in <span class="math" data-tex="\(s_k\)">\(s_k\)</span>. The distribution functions are Borel in all their arguments, so comparing them at rational levels shows that the quantiles are Borel: <span class="math" data-tex="\(X\)">\(X\)</span> is a Borel map. If <span class="math" data-tex="\(s\)">\(s\)</span> is uniform on <span class="math" data-tex="\((0,1)^d\)">\((0,1)^d\)</span>, successive conditioning shows that <span class="math" data-tex="\(X(s)\)">\(X(s)\)</span> has the density <span class="math" data-tex="\(\prod_kp_k/p_{k-1}=p_d/p_0\)">\(\prod_kp_k/p_{k-1}=p_d/p_0\)</span>, the uniform law on <span class="math" data-tex="\(U\)">\(U\)</span>. The diagonal derivatives telescope:
+<span class="math math-display" data-tex="\[
+\prod_{k=1}^d\partial_{s_k}X_k=\frac{p_0}{p_d}=|U| .
+\]">\[
+\prod_{k=1}^d\partial_{s_k}X_k=\frac{p_0}{p_d}=|U| .
+\]</span></p>
+<p><em>The midpoint.</em> Construct <span class="math" data-tex="\(Z(s)\)">\(Z(s)\)</span> in the same way for <span class="math" data-tex="\(V\)">\(V\)</span>, with the same <span class="math" data-tex="\(s\)">\(s\)</span>, and let <span class="math" data-tex="\(H=(X+Z)/2\)">\(H=(X+Z)/2\)</span>. Each <span class="math" data-tex="\(H_k\)">\(H_k\)</span> depends only on <span class="math" data-tex="\(s_1,\dots,s_k\)">\(s_1,\dots,s_k\)</span> and increases in <span class="math" data-tex="\(s_k\)">\(s_k\)</span>, and by the inequality between the arithmetic and geometric means,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\prod_{k=1}^d\partial_{s_k}H_k&amp;\ge\prod_{k=1}^d\sqrt{\partial_{s_k}X_k\,\partial_{s_k}Z_k}\\
+&amp;=\sqrt{|U|\,|V|} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\prod_{k=1}^d\partial_{s_k}H_k&amp;\ge\prod_{k=1}^d\sqrt{\partial_{s_k}X_k\,\partial_{s_k}Z_k}\\
+&amp;=\sqrt{|U|\,|V|} .
+\end{aligned}
+\]</span></p>
+<p><em>Substitution.</em> Let <span class="math" data-tex="\(g\ge0\)">\(g\ge0\)</span> be Borel on <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. Fix <span class="math" data-tex="\(a=(s_1,\dots,s_{d-1})\)">\(a=(s_1,\dots,s_{d-1})\)</span> and write <span class="math" data-tex="\(H&#x27;(a)=(H_1(a),\dots,H_{d-1}(a))\)">\(H&#x27;(a)=(H_1(a),\dots,H_{d-1}(a))\)</span>, where <span class="math" data-tex="\(H_k(a)\)">\(H_k(a)\)</span> uses the first <span class="math" data-tex="\(k\)">\(k\)</span> entries of <span class="math" data-tex="\(a\)">\(a\)</span>. The one-dimensional substitution <span class="math" data-tex="\(z=H_d(a,t)\)">\(z=H_d(a,t)\)</span>, for the strictly increasing continuously differentiable function <span class="math" data-tex="\(t\mapsto H_d(a,t)\)">\(t\mapsto H_d(a,t)\)</span>, followed by enlarging its image interval to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^1g\bigl(H&#x27;(a),H_d(a,t)\bigr)\,\partial_tH_d(a,t)\,dt\\
+&amp;\quad\le\int_{\mathbb R}g\bigl(H&#x27;(a),z\bigr)\,dz .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^1g\bigl(H&#x27;(a),H_d(a,t)\bigr)\,\partial_tH_d(a,t)\,dt\\
+&amp;\quad\le\int_{\mathbb R}g\bigl(H&#x27;(a),z\bigr)\,dz .
+\end{aligned}
+\]</span>
+The right side is a nonnegative Borel function of <span class="math" data-tex="\(H&#x27;(a)\)">\(H&#x27;(a)\)</span>, and the remaining factors <span class="math" data-tex="\(\partial_{s_k}H_k\)">\(\partial_{s_k}H_k\)</span>, <span class="math" data-tex="\(k&lt;d\)">\(k&lt;d\)</span>, depend only on earlier parameters. By Tonelli's theorem we may multiply by them and integrate in <span class="math" data-tex="\(a\)">\(a\)</span>, and repeating the argument backwards gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{(0,1)^d}g(H(s))\prod_{k=1}^d\partial_{s_k}H_k(s)\,ds\\
+&amp;\qquad\le\int_{\mathbb R^d}g(x)\,dx .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{(0,1)^d}g(H(s))\prod_{k=1}^d\partial_{s_k}H_k(s)\,ds\\
+&amp;\qquad\le\int_{\mathbb R^d}g(x)\,dx .
+\end{aligned}
+\]</span>
+Combined with the lower bound for the product,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,g\Bigl(\frac{X+Z}2\Bigr)&amp;=\int_{(0,1)^d}g(H(s))\,ds\\
+&amp;\le\frac1{\sqrt{|U|\,|V|}}\int_{\mathbb R^d}g(x)\,dx ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,g\Bigl(\frac{X+Z}2\Bigr)&amp;=\int_{(0,1)^d}g(H(s))\,ds\\
+&amp;\le\frac1{\sqrt{|U|\,|V|}}\int_{\mathbb R^d}g(x)\,dx ,
+\end{aligned}
+\]</span>
+which is the asserted inequality of measures. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>No differentiability in the earlier parameters, and no bound on the derivatives near the boundary of the cube, was needed: only monotone continuously differentiable dependence on the last parameter at each stage.</p>
+<h2 id="2-the-moment-estimate">2. The moment estimate</h2>
+<p><strong>Proposition 2.1</strong> (stationary-site moment estimate; [OpenAI-BS, Lemma 4.1]). Let <span class="math" data-tex="\(K\subseteq B(0,R)\)">\(K\subseteq B(0,R)\)</span>, and fix distinct sites and intercepts whose cells have positive masses <span class="math" data-tex="\(M_i\)">\(M_i\)</span>. For every intercept direction <span class="math" data-tex="\(q\in\mathbb R^N\)">\(q\in\mathbb R^N\)</span>, with <span class="math" data-tex="\(C_0=162\)">\(C_0=162\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{i=1}^N\frac{|DB_i[q,0]|^2}{M_i}\\
+&amp;\qquad\le C_0R^2\sum_{i=1}^N\frac{|DM_i[q,0]|^2}{M_i} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{i=1}^N\frac{|DB_i[q,0]|^2}{M_i}\\
+&amp;\qquad\le C_0R^2\sum_{i=1}^N\frac{|DM_i[q,0]|^2}{M_i} .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <em>Opposite perturbations.</em> For small <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, let <span class="math" data-tex="\(P_i^-\)">\(P_i^-\)</span> and <span class="math" data-tex="\(P_i^+\)">\(P_i^+\)</span> be the cells at the intercepts <span class="math" data-tex="\(c-sq\)">\(c-sq\)</span> and <span class="math" data-tex="\(c+sq\)">\(c+sq\)</span>, with the sites fixed, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_i=\rho(P_i^-),\qquad\beta_i=\rho(P_i^+),\\
+\gamma_i=\sqrt{\alpha_i\beta_i} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\alpha_i=\rho(P_i^-),\qquad\beta_i=\rho(P_i^+),\\
+\gamma_i=\sqrt{\alpha_i\beta_i} .
+\end{gathered}
+\]</span>
+By continuity of the masses (Proposition 1.1 of the previous lesson) we may take <span class="math" data-tex="\(s\)">\(s\)</span> so small that <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>, <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> and <span class="math" data-tex="\(\gamma_i\)">\(\gamma_i\)</span> lie between <span class="math" data-tex="\(M_i/2\)">\(M_i/2\)</span> and <span class="math" data-tex="\(2M_i\)">\(2M_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Couple the uniform laws on <span class="math" data-tex="\(P_i^-\)">\(P_i^-\)</span> and <span class="math" data-tex="\(P_i^+\)">\(P_i^+\)</span> by Lemma 1.1, giving <span class="math" data-tex="\(X_i\in P_i^-\)">\(X_i\in P_i^-\)</span> and <span class="math" data-tex="\(Z_i\in P_i^+\)">\(Z_i\in P_i^+\)</span>, and let <span class="math" data-tex="\(D_i=\mathbb E|X_i-Z_i|^2\)">\(D_i=\mathbb E|X_i-Z_i|^2\)</span>. For each <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X_i\cdot(y_i-y_j)+c_i-c_j-s(q_i-q_j)&amp;\ge0,\\
+Z_i\cdot(y_i-y_j)+c_i-c_j+s(q_i-q_j)&amp;\ge0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+X_i\cdot(y_i-y_j)+c_i-c_j-s(q_i-q_j)&amp;\ge0,\\
+Z_i\cdot(y_i-y_j)+c_i-c_j+s(q_i-q_j)&amp;\ge0 .
+\end{aligned}
+\]</span>
+Averaging, the midpoint <span class="math" data-tex="\((X_i+Z_i)/2\)">\((X_i+Z_i)/2\)</span> satisfies the inequalities of the cell <span class="math" data-tex="\(P_i\)">\(P_i\)</span> at <span class="math" data-tex="\(c\)">\(c\)</span>, and it lies in <span class="math" data-tex="\(K\)">\(K\)</span> by convexity. Since <span class="math" data-tex="\(|P_i^-|=|K|\alpha_i\)">\(|P_i^-|=|K|\alpha_i\)</span> and <span class="math" data-tex="\(|P_i^+|=|K|\beta_i\)">\(|P_i^+|=|K|\beta_i\)</span>, Lemma 1.1 gives
+<span class="math math-display" data-tex="\[
+\gamma_i\operatorname{Law}\Bigl(\frac{X_i+Z_i}2\Bigr)\le\frac{\mathbf 1_{P_i}\,dx}{|K|}=\rho|_{P_i} .
+\]">\[
+\gamma_i\operatorname{Law}\Bigl(\frac{X_i+Z_i}2\Bigr)\le\frac{\mathbf 1_{P_i}\,dx}{|K|}=\rho|_{P_i} .
+\]</span></p>
+<p><em>Testing with a concave function.</em> Let <span class="math" data-tex="\(\Phi(x)=R^2-|x|^2\)">\(\Phi(x)=R^2-|x|^2\)</span>, nonnegative on <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(A_i^-=\mathbb E\Phi(X_i)\)">\(A_i^-=\mathbb E\Phi(X_i)\)</span>, <span class="math" data-tex="\(A_i^+=\mathbb E\Phi(Z_i)\)">\(A_i^+=\mathbb E\Phi(Z_i)\)</span>. The identity
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi\Bigl(\frac{X+Z}2\Bigr)&amp;=\frac{\Phi(X)+\Phi(Z)}2\\
+&amp;\quad+\frac{|X-Z|^2}4
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi\Bigl(\frac{X+Z}2\Bigr)&amp;=\frac{\Phi(X)+\Phi(Z)}2\\
+&amp;\quad+\frac{|X-Z|^2}4
+\end{aligned}
+\]</span>
+and the domination give, since the cells at <span class="math" data-tex="\(c\)">\(c\)</span> cover <span class="math" data-tex="\(K\)">\(K\)</span> up to a null set,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_i\gamma_i\Bigl(\frac{A_i^-+A_i^+}2+\frac{D_i}4\Bigr)\le\int_K\Phi\,d\rho\\
+&amp;\qquad=\frac12\sum_i\bigl(\alpha_iA_i^-+\beta_iA_i^+\bigr) ;
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_i\gamma_i\Bigl(\frac{A_i^-+A_i^+}2+\frac{D_i}4\Bigr)\le\int_K\Phi\,d\rho\\
+&amp;\qquad=\frac12\sum_i\bigl(\alpha_iA_i^-+\beta_iA_i^+\bigr) ;
+\end{aligned}
+\]</span>
+the last equality uses the two partitions at <span class="math" data-tex="\(c\mp sq\)">\(c\mp sq\)</span>. Put <span class="math" data-tex="\(\delta_i=\alpha_i-\beta_i\)">\(\delta_i=\alpha_i-\beta_i\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal A=\sum_i\gamma_iD_i,\qquad\mathcal B=\sum_i\frac{\delta_i^2}{\gamma_i} .
+\]">\[
+\mathcal A=\sum_i\gamma_iD_i,\qquad\mathcal B=\sum_i\frac{\delta_i^2}{\gamma_i} .
+\]</span>
+Since <span class="math" data-tex="\(\frac12(\alpha_iA_i^-+\beta_iA_i^+)\)">\(\frac12(\alpha_iA_i^-+\beta_iA_i^+)\)</span> equals <span class="math" data-tex="\(\frac{\alpha_i+\beta_i}2\cdot\frac{A_i^-+A_i^+}2+\frac{\delta_i}2\cdot\frac{A_i^--A_i^+}2\)">\(\frac{\alpha_i+\beta_i}2\cdot\frac{A_i^-+A_i^+}2+\frac{\delta_i}2\cdot\frac{A_i^--A_i^+}2\)</span>, subtraction gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\mathcal A}4\le\sum_i\Bigl[&amp;\Bigl(\frac{\alpha_i+\beta_i}2-\gamma_i\Bigr)\frac{A_i^-+A_i^+}2\\
+&amp;+\frac{\delta_i}4\bigl(A_i^--A_i^+\bigr)\Bigr] .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\mathcal A}4\le\sum_i\Bigl[&amp;\Bigl(\frac{\alpha_i+\beta_i}2-\gamma_i\Bigr)\frac{A_i^-+A_i^+}2\\
+&amp;+\frac{\delta_i}4\bigl(A_i^--A_i^+\bigr)\Bigr] .
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(0\le A_i^\pm\le R^2\)">\(0\le A_i^\pm\le R^2\)</span>;
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\alpha_i+\beta_i}2-\gamma_i&amp;=\frac{\delta_i^2}{2(\sqrt{\alpha_i}+\sqrt{\beta_i})^2}\\
+&amp;\le\frac{\delta_i^2}{8\gamma_i} ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\alpha_i+\beta_i}2-\gamma_i&amp;=\frac{\delta_i^2}{2(\sqrt{\alpha_i}+\sqrt{\beta_i})^2}\\
+&amp;\le\frac{\delta_i^2}{8\gamma_i} ,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\((\sqrt{\alpha_i}+\sqrt{\beta_i})^2\ge4\gamma_i\)">\((\sqrt{\alpha_i}+\sqrt{\beta_i})^2\ge4\gamma_i\)</span>; and since <span class="math" data-tex="\(|X_i|,|Z_i|\le R\)">\(|X_i|,|Z_i|\le R\)</span>, <span class="math" data-tex="\(|A_i^--A_i^+|\le2R\,\mathbb E|X_i-Z_i|\le2R\sqrt{D_i}\)">\(|A_i^--A_i^+|\le2R\,\mathbb E|X_i-Z_i|\le2R\sqrt{D_i}\)</span>. By Cauchy–Schwarz,
+<span class="math math-display" data-tex="\[
+\frac{\mathcal A}4\le\frac{R^2\mathcal B}8+\frac R2\sqrt{\mathcal A\mathcal B} .
+\]">\[
+\frac{\mathcal A}4\le\frac{R^2\mathcal B}8+\frac R2\sqrt{\mathcal A\mathcal B} .
+\]</span>
+With <span class="math" data-tex="\(\frac R2\sqrt{\mathcal A\mathcal B}\le\frac{\mathcal A}8+\frac{R^2\mathcal B}2\)">\(\frac R2\sqrt{\mathcal A\mathcal B}\le\frac{\mathcal A}8+\frac{R^2\mathcal B}2\)</span>, this gives
+<span class="math math-display" data-tex="\[
+\mathcal A\le5R^2\mathcal B ,
+\]">\[
+\mathcal A\le5R^2\mathcal B ,
+\]</span>
+including the cases where either side vanishes.</p>
+<p><em>Moments.</em> The difference of the cell moments is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta B_i&amp;=B_i(c-sq)-B_i(c+sq)\\
+&amp;=\alpha_i\mathbb EX_i-\beta_i\mathbb EZ_i ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta B_i&amp;=B_i(c-sq)-B_i(c+sq)\\
+&amp;=\alpha_i\mathbb EX_i-\beta_i\mathbb EZ_i ,
+\end{aligned}
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\Delta B_i|&amp;\le|\delta_i|\,|\mathbb EZ_i|+\alpha_i|\mathbb E(X_i-Z_i)|\\
+&amp;\le R|\delta_i|+\alpha_i\sqrt{D_i} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\Delta B_i|&amp;\le|\delta_i|\,|\mathbb EZ_i|+\alpha_i|\mathbb E(X_i-Z_i)|\\
+&amp;\le R|\delta_i|+\alpha_i\sqrt{D_i} .
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(\mathcal E=\sum_i\delta_i^2/M_i\)">\(\mathcal E=\sum_i\delta_i^2/M_i\)</span>. The comparisons with <span class="math" data-tex="\(M_i\)">\(M_i\)</span> give <span class="math" data-tex="\(\alpha_i^2/M_i\le4M_i\le8\gamma_i\)">\(\alpha_i^2/M_i\le4M_i\le8\gamma_i\)</span> and <span class="math" data-tex="\(\mathcal B\le2\mathcal E\)">\(\mathcal B\le2\mathcal E\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_i\frac{|\Delta B_i|^2}{M_i}&amp;\le2R^2\mathcal E+2\sum_i\frac{\alpha_i^2}{M_i}D_i\\
+&amp;\le2R^2\mathcal E+16\mathcal A\le162R^2\mathcal E .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_i\frac{|\Delta B_i|^2}{M_i}&amp;\le2R^2\mathcal E+2\sum_i\frac{\alpha_i^2}{M_i}D_i\\
+&amp;\le2R^2\mathcal E+16\mathcal A\le162R^2\mathcal E .
+\end{aligned}
+\]</span>
+Divide by <span class="math" data-tex="\((2s)^2\)">\((2s)^2\)</span> and let <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>. By Proposition 1.1 of the previous lesson, <span class="math" data-tex="\(\Delta B_i/(2s)\to-DB_i[q,0]\)">\(\Delta B_i/(2s)\to-DB_i[q,0]\)</span> and <span class="math" data-tex="\(\delta_i/(2s)\to-DM_i[q,0]\)">\(\delta_i/(2s)\to-DM_i[q,0]\)</span>, which proves the estimate. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The admissible range of <span class="math" data-tex="\(s\)">\(s\)</span> depends on the configuration, the direction and the smallest mass; only the constant <span class="math" data-tex="\(162\)">\(162\)</span> survives the limit. This is why the estimate holds uniformly as masses or faces degenerate.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(U=[0,1]\)">\(U=[0,1]\)</span> and <span class="math" data-tex="\(V=[0,2]\)">\(V=[0,2]\)</span>, compute the coupling of Lemma 1.1 and the law of <span class="math" data-tex="\((X+Z)/2\)">\((X+Z)/2\)</span>, and check the density bound <span class="math" data-tex="\(1/\sqrt2\)">\(1/\sqrt2\)</span>.</p>
+<p><strong>3.2.</strong> Show that for <span class="math" data-tex="\(U=V\)">\(U=V\)</span> the coupling of Lemma 1.1 is <span class="math" data-tex="\(X=Z\)">\(X=Z\)</span>, and that the bound is then an equality.</p>
+<p><strong>3.3.</strong> Verify the identity <span class="math" data-tex="\(\Phi\bigl(\frac{X+Z}2\bigr)=\frac{\Phi(X)+\Phi(Z)}2+\frac{|X-Z|^2}4\)">\(\Phi\bigl(\frac{X+Z}2\bigr)=\frac{\Phi(X)+\Phi(Z)}2+\frac{|X-Z|^2}4\)</span> for <span class="math" data-tex="\(\Phi(x)=R^2-|x|^2\)">\(\Phi(x)=R^2-|x|^2\)</span>.</p>
+<p><strong>3.4.</strong> Check <span class="math" data-tex="\(\frac{\alpha+\beta}2-\sqrt{\alpha\beta}=\frac{(\alpha-\beta)^2}{2(\sqrt\alpha+\sqrt\beta)^2}\)">\(\frac{\alpha+\beta}2-\sqrt{\alpha\beta}=\frac{(\alpha-\beta)^2}{2(\sqrt\alpha+\sqrt\beta)^2}\)</span> for <span class="math" data-tex="\(\alpha,\beta&gt;0\)">\(\alpha,\beta&gt;0\)</span>.</p>
+<p><strong>3.5.</strong> Show that <span class="math" data-tex="\(\frac{\mathcal A}4\le\frac{R^2\mathcal B}8+\frac R2\sqrt{\mathcal A\mathcal B}\)">\(\frac{\mathcal A}4\le\frac{R^2\mathcal B}8+\frac R2\sqrt{\mathcal A\mathcal B}\)</span> implies <span class="math" data-tex="\(\mathcal A\le5R^2\mathcal B\)">\(\mathcal A\le5R^2\mathcal B\)</span>, and find the best constant <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(\mathcal A\le cR^2\mathcal B\)">\(\mathcal A\le cR^2\mathcal B\)</span> that this inequality alone yields.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> <span class="math" data-tex="\(X=s\)">\(X=s\)</span> and <span class="math" data-tex="\(Z=2s\)">\(Z=2s\)</span> for <span class="math" data-tex="\(s\in(0,1)\)">\(s\in(0,1)\)</span>, so <span class="math" data-tex="\((X+Z)/2=\frac32s\)">\((X+Z)/2=\frac32s\)</span>, uniform on <span class="math" data-tex="\([0,\frac32]\)">\([0,\frac32]\)</span> with density <span class="math" data-tex="\(\frac23\le\frac1{\sqrt2}\approx0.707\)">\(\frac23\le\frac1{\sqrt2}\approx0.707\)</span>.</p>
+<p><strong>3.2.</strong> The construction depends only on the set, so <span class="math" data-tex="\(Z(s)=X(s)\)">\(Z(s)=X(s)\)</span>, and <span class="math" data-tex="\(H=X\)">\(H=X\)</span> has density <span class="math" data-tex="\(1/|U|=1/\sqrt{|U||U|}\)">\(1/|U|=1/\sqrt{|U||U|}\)</span>.</p>
+<p><strong>3.3.</strong> Both sides equal <span class="math" data-tex="\(R^2-\frac14(|X|^2+|Z|^2)-\frac12X\cdot Z\)">\(R^2-\frac14(|X|^2+|Z|^2)-\frac12X\cdot Z\)</span>.</p>
+<p><strong>3.4.</strong> <span class="math" data-tex="\(\frac{\alpha+\beta}2-\sqrt{\alpha\beta}=\frac12(\sqrt\alpha-\sqrt\beta)^2\)">\(\frac{\alpha+\beta}2-\sqrt{\alpha\beta}=\frac12(\sqrt\alpha-\sqrt\beta)^2\)</span>, and <span class="math" data-tex="\(\sqrt\alpha-\sqrt\beta=(\alpha-\beta)/(\sqrt\alpha+\sqrt\beta)\)">\(\sqrt\alpha-\sqrt\beta=(\alpha-\beta)/(\sqrt\alpha+\sqrt\beta)\)</span>.</p>
+<p><strong>3.5.</strong> With <span class="math" data-tex="\(x=\sqrt{\mathcal A}\)">\(x=\sqrt{\mathcal A}\)</span> and <span class="math" data-tex="\(y=R\sqrt{\mathcal B}\)">\(y=R\sqrt{\mathcal B}\)</span>, the inequality is <span class="math" data-tex="\(x^2/4\le y^2/8+xy/2\)">\(x^2/4\le y^2/8+xy/2\)</span>, that is <span class="math" data-tex="\(2x^2-4xy-y^2\le0\)">\(2x^2-4xy-y^2\le0\)</span>, so <span class="math" data-tex="\(x\le\frac{4+\sqrt{24}}4\,y\)">\(x\le\frac{4+\sqrt{24}}4\,y\)</span> and <span class="math" data-tex="\(\mathcal A\le\bigl(1+\sqrt{3/2}\bigr)^2R^2\mathcal B\approx4.95\,R^2\mathcal B\)">\(\mathcal A\le\bigl(1+\sqrt{3/2}\bigr)^2R^2\mathcal B\approx4.95\,R^2\mathcal B\)</span>. The constant <span class="math" data-tex="\(5\)">\(5\)</span> is a convenient rounding.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BS] OpenAI, <em>Sharp one-third stability of Brenier maps</em>, OpenAI Math Release preprint, 25 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Sharp-One-Third-Stability-of-Brenier-Maps-September-25-2026</li>
+<li>[Knothe] H. Knothe, <em>Contributions to the theory of convex bodies</em>, Michigan Math. J. 4 (1957), 39–52. https://doi.org/10.1307/mmj/1028990175</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

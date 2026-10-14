@@ -1,0 +1,200 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From potentials to maps</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Stability of Brenier maps)</a><a href="moving-sites-with-fixed-masses.html">Previous lesson</a><a href="src/from-potentials-to-maps.md">Editable source</a></nav><main><article><h1 id="from-potentials-to-maps">From potentials to maps</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The previous lesson, <a href="moving-sites-with-fixed-masses.html">Moving sites with fixed masses</a>, bounds the distance of the affine potentials of two finite targets linearly by their Wasserstein distance. This lesson converts that bound into a bound on the gradients, which are the optimal maps, at the cost of the exponent <span class="math" data-tex="\(\frac13\)">\(\frac13\)</span>: an elementary interpolation inequality on coordinate slices controls the gradient difference of two convex functions by <span class="math" data-tex="\(h^{-2}\)">\(h^{-2}\)</span> times their squared distance plus <span class="math" data-tex="\(h\)">\(h\)</span>. Approximation by finite targets then gives existence and uniqueness of optimal maps for all targets, and the theorem of <a href="optimal-maps-of-finite-affine-maxima.html">Optimal maps of finite affine maxima</a>.</p>
+<ul>
+<li>Partial derivatives and gradients of convex functions (Lemma 1.1).</li>
+<li>Gradient interpolation (Lemma 1.2).</li>
+<li>Stability for finite targets (Corollary 1.3).</li>
+<li>Optimal maps for all targets, and the theorem (Proposition 2.1, Theorem 2.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-BS, Section 6]. The interpolation inequality is a coordinate-slice form of an inequality of Delalande and Mérigot [DM, Proposition 4.1]. Throughout, <span class="math" data-tex="\(K\subseteq B(0,R)\)">\(K\subseteq B(0,R)\)</span> is a compact convex set with nonempty interior, <span class="math" data-tex="\(\rho\)">\(\rho\)</span> its uniform probability measure, <span class="math" data-tex="\(Y\subseteq B(0,L)\)">\(Y\subseteq B(0,L)\)</span> compact, and <span class="math" data-tex="\(C_0=162\)">\(C_0=162\)</span>.</p>
+<h2 id="1-gradient-interpolation">1. Gradient interpolation</h2>
+<p><strong>Lemma 1.1</strong> (gradients of convex functions). Let <span class="math" data-tex="\(u\)">\(u\)</span> be convex and Lipschitz on <span class="math" data-tex="\(K\)">\(K\)</span>. (1) For each <span class="math" data-tex="\(j\)">\(j\)</span>, the partial derivative <span class="math" data-tex="\(\partial_ju\)">\(\partial_ju\)</span> exists almost everywhere in <span class="math" data-tex="\(K\)">\(K\)</span>, and on almost every line parallel to <span class="math" data-tex="\(e_j\)">\(e_j\)</span> it is nondecreasing where it exists. (2) If all partial derivatives exist at an interior point <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span> is differentiable at <span class="math" data-tex="\(x\)">\(x\)</span> with gradient <span class="math" data-tex="\(p=(\partial_1u(x),\dots,\partial_du(x))\)">\(p=(\partial_1u(x),\dots,\partial_du(x))\)</span>. (3) At such a point, <span class="math" data-tex="\(p\)">\(p\)</span> is the only vector with <span class="math" data-tex="\(u(z)\ge u(x)+p\cdot(z-x)\)">\(u(z)\ge u(x)+p\cdot(z-x)\)</span> for all <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span>.</p>
+<p><em>Proof.</em> (1) On a line, a convex function has nondecreasing one-sided derivatives, which agree except at countably many points. The set where <span class="math" data-tex="\(\partial_ju\)">\(\partial_ju\)</span> fails to exist is Borel, and by Fubini's theorem it is null.</p>
+<p>(2) Let <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> be small and <span class="math" data-tex="\(q=\|v\|_1=\sum_j|v_j|\)">\(q=\|v\|_1=\sum_j|v_j|\)</span>. With <span class="math" data-tex="\(\sigma_j=\operatorname{sign}(v_j)\)">\(\sigma_j=\operatorname{sign}(v_j)\)</span>, the point <span class="math" data-tex="\(x+v\)">\(x+v\)</span> is the convex combination of the points <span class="math" data-tex="\(x+\sigma_jqe_j\)">\(x+\sigma_jqe_j\)</span> with weights <span class="math" data-tex="\(|v_j|/q\)">\(|v_j|/q\)</span>, omitting zero weights, so convexity and the partial derivatives give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u(x+v)&amp;\le\sum_j\frac{|v_j|}q\,u(x+\sigma_jqe_j)\\
+&amp;=u(x)+p\cdot v+o(q) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+u(x+v)&amp;\le\sum_j\frac{|v_j|}q\,u(x+\sigma_jqe_j)\\
+&amp;=u(x)+p\cdot v+o(q) .
+\end{aligned}
+\]</span>
+The same with <span class="math" data-tex="\(-v\)">\(-v\)</span>, and <span class="math" data-tex="\(u(x)\le\frac12(u(x+v)+u(x-v))\)">\(u(x)\le\frac12(u(x+v)+u(x-v))\)</span>, give <span class="math" data-tex="\(u(x+v)\ge u(x)+p\cdot v-o(q)\)">\(u(x+v)\ge u(x)+p\cdot v-o(q)\)</span>. Since <span class="math" data-tex="\(q\le\sqrt d\,|v|\)">\(q\le\sqrt d\,|v|\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> is differentiable at <span class="math" data-tex="\(x\)">\(x\)</span> with gradient <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>(3) A supporting vector <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> satisfies <span class="math" data-tex="\(u(x+te_j)-u(x)\ge tp&#x27;_j\)">\(u(x+te_j)-u(x)\ge tp&#x27;_j\)</span> for small <span class="math" data-tex="\(t\)">\(t\)</span> of both signs, so <span class="math" data-tex="\(p&#x27;_j\)">\(p&#x27;_j\)</span> lies between the left and right derivatives, which both equal <span class="math" data-tex="\(\partial_ju(x)\)">\(\partial_ju(x)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>By Lemma 1.1(2) and the null boundary of <span class="math" data-tex="\(K\)">\(K\)</span> (Lemma 1.1(2) of the first lesson), the gradient of a convex Lipschitz function on <span class="math" data-tex="\(K\)">\(K\)</span> exists almost everywhere and is the vector of its partial derivatives.</p>
+<p>For a unit coordinate vector <span class="math" data-tex="\(e_j\)">\(e_j\)</span> let <span class="math" data-tex="\(A_j\)">\(A_j\)</span> be the <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-dimensional volume of the projection of <span class="math" data-tex="\(K\)">\(K\)</span> on <span class="math" data-tex="\(e_j^\perp\)">\(e_j^\perp\)</span>, and <span class="math" data-tex="\(P_K=\sum_jA_j\)">\(P_K=\sum_jA_j\)</span>.</p>
+<p><strong>Lemma 1.2</strong> (gradient interpolation; [OpenAI-BS, Lemma 6.1]). Let <span class="math" data-tex="\(u_0\)">\(u_0\)</span> and <span class="math" data-tex="\(u_1\)">\(u_1\)</span> be convex and <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz on <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(f=u_0-u_1\)">\(f=u_0-u_1\)</span>. For every <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\nabla u_0-\nabla u_1\|_{L^2(\rho)}^2&amp;\le\frac{12d}{h^2}\|f\|_{L^2(\rho)}^2\\
+&amp;\quad+\frac{28L^2P_K}{|K|}\,h .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\nabla u_0-\nabla u_1\|_{L^2(\rho)}^2&amp;\le\frac{12d}{h^2}\|f\|_{L^2(\rho)}^2\\
+&amp;\quad+\frac{28L^2P_K}{|K|}\,h .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(j\)">\(j\)</span>, let <span class="math" data-tex="\(K_{j,h}=\{x\in K:x+he_j\in K\}\)">\(K_{j,h}=\{x\in K:x+he_j\in K\}\)</span>, and for <span class="math" data-tex="\(x\in K_{j,h}\)">\(x\in K_{j,h}\)</span> let
+<span class="math math-display" data-tex="\[
+D_{j,h}u(x)=\frac{u(x+he_j)-u(x)}h .
+\]">\[
+D_{j,h}u(x)=\frac{u(x+he_j)-u(x)}h .
+\]</span>
+Almost every nonempty slice of <span class="math" data-tex="\(K\)">\(K\)</span> parallel to <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is an interval <span class="math" data-tex="\([\alpha,\beta]\)">\([\alpha,\beta]\)</span> on which each <span class="math" data-tex="\(u_i\)">\(u_i\)</span> is convex, <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz, and has a nondecreasing derivative of absolute value at most <span class="math" data-tex="\(L\)">\(L\)</span> almost everywhere. For either <span class="math" data-tex="\(u=u_i\)">\(u=u_i\)</span>, put <span class="math" data-tex="\(\delta_u(x)=D_{j,h}u(x)-\partial_ju(x)\)">\(\delta_u(x)=D_{j,h}u(x)-\partial_ju(x)\)</span> at the points <span class="math" data-tex="\(x\)">\(x\)</span> where <span class="math" data-tex="\(\partial_ju\)">\(\partial_ju\)</span> exists at <span class="math" data-tex="\(x\)">\(x\)</span> and at <span class="math" data-tex="\(x+he_j\)">\(x+he_j\)</span>. Convexity gives <span class="math" data-tex="\(\delta_u\ge0\)">\(\delta_u\ge0\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\delta_u(x)&amp;\le\partial_ju(x+he_j)-\partial_ju(x)\\
+&amp;\le2L .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\delta_u(x)&amp;\le\partial_ju(x+he_j)-\partial_ju(x)\\
+&amp;\le2L .
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(\beta-\alpha\ge h\)">\(\beta-\alpha\ge h\)</span>, cancellation of translated integrals gives (suppressing the other coordinates)
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_\alpha^{\beta-h}\bigl(\partial_ju(t+h)-\partial_ju(t)\bigr)\,dt\\
+&amp;\quad=\int_{\beta-h}^\beta\partial_ju\,dt-\int_\alpha^{\alpha+h}\partial_ju\,dt\le2Lh ;
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_\alpha^{\beta-h}\bigl(\partial_ju(t+h)-\partial_ju(t)\bigr)\,dt\\
+&amp;\quad=\int_{\beta-h}^\beta\partial_ju\,dt-\int_\alpha^{\alpha+h}\partial_ju\,dt\le2Lh ;
+\end{aligned}
+\]</span>
+if <span class="math" data-tex="\(\beta-\alpha&lt;h\)">\(\beta-\alpha&lt;h\)</span>, the allowed part of the slice is empty. Integrating <span class="math" data-tex="\(\delta_u^2\le2L\delta_u\)">\(\delta_u^2\le2L\delta_u\)</span> over the slices and then over the projection,
+<span class="math math-display" data-tex="\[
+\int_{K_{j,h}}\delta_u^2\,d\rho\le\frac{4L^2hA_j}{|K|} .
+\]">\[
+\int_{K_{j,h}}\delta_u^2\,d\rho\le\frac{4L^2hA_j}{|K|} .
+\]</span>
+Each slice loses at most a length <span class="math" data-tex="\(h\)">\(h\)</span>, so <span class="math" data-tex="\(\rho(K\setminus K_{j,h})\le hA_j/|K|\)">\(\rho(K\setminus K_{j,h})\le hA_j/|K|\)</span>; there we use <span class="math" data-tex="\(|\partial_jf|\le2L\)">\(|\partial_jf|\le2L\)</span>. On <span class="math" data-tex="\(K_{j,h}\)">\(K_{j,h}\)</span>, both <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(x+he_j\)">\(x+he_j\)</span> lie in <span class="math" data-tex="\(K\)">\(K\)</span>, and translation invariance of Lebesgue measure with <span class="math" data-tex="\((a-b)^2\le2a^2+2b^2\)">\((a-b)^2\le2a^2+2b^2\)</span> gives
+<span class="math math-display" data-tex="\[
+\int_{K_{j,h}}|D_{j,h}f|^2\,d\rho\le\frac4{h^2}\|f\|_{L^2(\rho)}^2 .
+\]">\[
+\int_{K_{j,h}}|D_{j,h}f|^2\,d\rho\le\frac4{h^2}\|f\|_{L^2(\rho)}^2 .
+\]</span>
+Since <span class="math" data-tex="\(\partial_jf=D_{j,h}f-\delta_{u_0}+\delta_{u_1}\)">\(\partial_jf=D_{j,h}f-\delta_{u_0}+\delta_{u_1}\)</span>, the inequality <span class="math" data-tex="\((a+b+c)^2\le3(a^2+b^2+c^2)\)">\((a+b+c)^2\le3(a^2+b^2+c^2)\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_K|\partial_jf|^2\,d\rho&amp;\le\frac{12}{h^2}\|f\|_{L^2(\rho)}^2\\
+&amp;\quad+\frac{(24+4)L^2hA_j}{|K|} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_K|\partial_jf|^2\,d\rho&amp;\le\frac{12}{h^2}\|f\|_{L^2(\rho)}^2\\
+&amp;\quad+\frac{(24+4)L^2hA_j}{|K|} .
+\end{aligned}
+\]</span>
+Summing over <span class="math" data-tex="\(j\)">\(j\)</span>, with Lemma 1.1, proves the lemma; it holds for every <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, also when <span class="math" data-tex="\(h\)">\(h\)</span> exceeds some slice lengths. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 1.3</strong> (finite target stability; [OpenAI-BS, Corollary 6.2]). Let
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_*&amp;=\Bigl(12dR^2(1+\sqrt{C_0})^2\\
+&amp;\qquad+\frac{28L^2P_K}{|K|}\Bigr)^{1/2} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+C_*&amp;=\Bigl(12dR^2(1+\sqrt{C_0})^2\\
+&amp;\qquad+\frac{28L^2P_K}{|K|}\Bigr)^{1/2} .
+\end{aligned}
+\]</span>
+For finitely supported probability measures <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>,
+<span class="math math-display" data-tex="\[
+\|T_\mu-T_\nu\|_{L^2(\rho)}\le C_*\,W_2(\mu,\nu)^{1/3} .
+\]">\[
+\|T_\mu-T_\nu\|_{L^2(\rho)}\le C_*\,W_2(\mu,\nu)^{1/3} .
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(w=W_2(\mu,\nu)\)">\(w=W_2(\mu,\nu)\)</span>, and <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, <span class="math" data-tex="\(u_1\)">\(u_1\)</span> the potentials of Proposition 1.1 of the previous lesson, with <span class="math" data-tex="\(\|u_0-u_1\|_{L^2(\rho)}\le(1+\sqrt{C_0})Rw\)">\(\|u_0-u_1\|_{L^2(\rho)}\le(1+\sqrt{C_0})Rw\)</span>. If <span class="math" data-tex="\(w&gt;0\)">\(w&gt;0\)</span>, Lemma 1.2 with <span class="math" data-tex="\(h=w^{2/3}\)">\(h=w^{2/3}\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|T_\mu-T_\nu\|_{L^2(\rho)}^2\\
+&amp;\quad\le12d(1+\sqrt{C_0})^2R^2w^{2/3}\\
+&amp;\qquad+\frac{28L^2P_K}{|K|}w^{2/3}=C_*^2w^{2/3} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|T_\mu-T_\nu\|_{L^2(\rho)}^2\\
+&amp;\quad\le12d(1+\sqrt{C_0})^2R^2w^{2/3}\\
+&amp;\qquad+\frac{28L^2P_K}{|K|}w^{2/3}=C_*^2w^{2/3} .
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, the potentials agree in <span class="math" data-tex="\(L^2(\rho)\)">\(L^2(\rho)\)</span>, and letting <span class="math" data-tex="\(h\to0\)">\(h\to0\)</span> in Lemma 1.2 gives <span class="math" data-tex="\(T_\mu=T_\nu\)">\(T_\mu=T_\nu\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-all-targets">2. All targets</h2>
+<p><strong>Proposition 2.1</strong> (approximation and optimal maps; [OpenAI-BS, Proposition 6.3]). Every <span class="math" data-tex="\(\lambda\in\operatorname{Prob}(Y)\)">\(\lambda\in\operatorname{Prob}(Y)\)</span> has a quadratic optimal map <span class="math" data-tex="\(T_\lambda\)">\(T_\lambda\)</span> from <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, unique up to a null set, and every optimal transport plan from <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is concentrated on its graph. If <span class="math" data-tex="\(F_n\subseteq Y\)">\(F_n\subseteq Y\)</span> are finite <span class="math" data-tex="\(\varepsilon_n\)">\(\varepsilon_n\)</span>-nets with <span class="math" data-tex="\(\varepsilon_n\to0\)">\(\varepsilon_n\to0\)</span> and <span class="math" data-tex="\(Q_n\colon Y\to F_n\)">\(Q_n\colon Y\to F_n\)</span> are Borel nearest-point selections, then <span class="math" data-tex="\(T_{(Q_n)_\#\lambda}\to T_\lambda\)">\(T_{(Q_n)_\#\lambda}\to T_\lambda\)</span> in <span class="math" data-tex="\(L^2(\rho)\)">\(L^2(\rho)\)</span>.</p>
+<p><em>Proof.</em> <em>A Cauchy sequence.</em> Compactness of <span class="math" data-tex="\(Y\)">\(Y\)</span> gives the nets; enumerating each net and choosing the first nearest point gives a Borel selection with <span class="math" data-tex="\(|Q_n(y)-y|\le\varepsilon_n\)">\(|Q_n(y)-y|\le\varepsilon_n\)</span>. Let <span class="math" data-tex="\(\lambda_n=(Q_n)_\#\lambda\)">\(\lambda_n=(Q_n)_\#\lambda\)</span>, discard its sites of zero mass, and let <span class="math" data-tex="\(T_n=T_{\lambda_n}\)">\(T_n=T_{\lambda_n}\)</span>, which exists by Proposition 2.1 of <a href="laguerre-cells-and-prescribed-masses.html">Laguerre cells and prescribed masses</a> and Lemma 2.1 of the first lesson. The coupling <span class="math" data-tex="\((Q_n,Q_m)_\#\lambda\)">\((Q_n,Q_m)_\#\lambda\)</span> gives <span class="math" data-tex="\(W_2(\lambda_n,\lambda_m)\le\varepsilon_n+\varepsilon_m\)">\(W_2(\lambda_n,\lambda_m)\le\varepsilon_n+\varepsilon_m\)</span>, so by Corollary 1.3 the sequence <span class="math" data-tex="\((T_n)\)">\((T_n)\)</span> is Cauchy in <span class="math" data-tex="\(L^2(\rho)\)">\(L^2(\rho)\)</span>. Let <span class="math" data-tex="\(S\)">\(S\)</span> be its limit, and pass to a subsequence converging almost everywhere. The limit lies in the closed set <span class="math" data-tex="\(Y\)">\(Y\)</span> almost everywhere; changing <span class="math" data-tex="\(S\)">\(S\)</span> on a null set, <span class="math" data-tex="\(S\)">\(S\)</span> is a Borel map into <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p><em><span class="math" data-tex="\(S\)">\(S\)</span> transports <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</em> For continuous <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>, bounded convergence and uniform continuity give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_K\varphi(S)\,d\rho=\lim_n\int_K\varphi(T_n)\,d\rho\\
+&amp;\quad=\lim_n\int_Y\varphi(Q_n(y))\,d\lambda(y)\\
+&amp;\quad=\int_Y\varphi\,d\lambda .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_K\varphi(S)\,d\rho=\lim_n\int_K\varphi(T_n)\,d\rho\\
+&amp;\quad=\lim_n\int_Y\varphi(Q_n(y))\,d\lambda(y)\\
+&amp;\quad=\int_Y\varphi\,d\lambda .
+\end{aligned}
+\]</span></p>
+<p><em>A limit potential.</em> Let <span class="math" data-tex="\(u_n\)">\(u_n\)</span> be finite affine maxima with <span class="math" data-tex="\(\nabla u_n=T_n\)">\(\nabla u_n=T_n\)</span> almost everywhere, normalized by <span class="math" data-tex="\(u_n(x_*)=0\)">\(u_n(x_*)=0\)</span> at a fixed <span class="math" data-tex="\(x_*\in K\)">\(x_*\in K\)</span>. Their slopes lie in <span class="math" data-tex="\(Y\)">\(Y\)</span>, so they are <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz and <span class="math" data-tex="\(|u_n|\le L\operatorname{diam}K\)">\(|u_n|\le L\operatorname{diam}K\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. By the Arzelà–Ascoli theorem (<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C20">Real Analysis II</a>; <a href="https://www.jirka.org/ra/html/sec_arzelaascoli.html#thm_arzelaascoli">Lebl, Basic Analysis II, Theorem 11.6.9</a>) a further subsequence converges uniformly on <span class="math" data-tex="\(K\)">\(K\)</span> to a convex <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz function <span class="math" data-tex="\(u\)">\(u\)</span>. For each <span class="math" data-tex="\(n\)">\(n\)</span>, off a null set, <span class="math" data-tex="\(T_n(x)\)">\(T_n(x)\)</span> is a maximizing slope of <span class="math" data-tex="\(u_n\)">\(u_n\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(u_n(z)\ge u_n(x)+T_n(x)\cdot(z-x)\)">\(u_n(z)\ge u_n(x)+T_n(x)\cdot(z-x)\)</span> for all <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span>. Intersecting these countably many full-measure sets with the set where <span class="math" data-tex="\(T_n\to S\)">\(T_n\to S\)</span>, the limit gives
+<span class="math math-display" data-tex="\[
+u(z)\ge u(x)+S(x)\cdot(z-x)
+\]">\[
+u(z)\ge u(x)+S(x)\cdot(z-x)
+\]</span>
+for all <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span> and almost every <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><em>Optimality.</em> Let <span class="math" data-tex="\(u^*(y)=\max_{z\in K}(z\cdot y-u(z))\)">\(u^*(y)=\max_{z\in K}(z\cdot y-u(z))\)</span>, finite and continuous. Then <span class="math" data-tex="\(x\cdot y\le u(x)+u^*(y)\)">\(x\cdot y\le u(x)+u^*(y)\)</span> for <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span> and all <span class="math" data-tex="\(y\)">\(y\)</span>, with equality at <span class="math" data-tex="\(y=S(x)\)">\(y=S(x)\)</span> for almost every <span class="math" data-tex="\(x\)">\(x\)</span> by the supporting inequality. For a plan <span class="math" data-tex="\(\pi\)">\(\pi\)</span> from <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int x\cdot y\,d\pi&amp;\le\int u\,d\rho+\int u^*\,d\lambda\\
+&amp;=\int x\cdot S(x)\,d\rho .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int x\cdot y\,d\pi&amp;\le\int u\,d\rho+\int u^*\,d\lambda\\
+&amp;=\int x\cdot S(x)\,d\rho .
+\end{aligned}
+\]</span>
+As in the proof of Lemma 2.1 of the first lesson, the plan of <span class="math" data-tex="\(S\)">\(S\)</span> has minimal quadratic cost.</p>
+<p><em>Uniqueness.</em> If a plan <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is optimal, equality holds above, so the nonnegative gap <span class="math" data-tex="\(u(x)+u^*(y)-x\cdot y\)">\(u(x)+u^*(y)-x\cdot y\)</span> vanishes <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-almost everywhere; by the definition of <span class="math" data-tex="\(u^*\)">\(u^*\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span> is then a supporting slope of <span class="math" data-tex="\(u\)">\(u\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>. By Lemma 1.1(3), at almost every <span class="math" data-tex="\(x\)">\(x\)</span> the only supporting slope is <span class="math" data-tex="\(\nabla u(x)\)">\(\nabla u(x)\)</span>, and <span class="math" data-tex="\(S(x)\)">\(S(x)\)</span> is one, so <span class="math" data-tex="\(y=S(x)\)">\(y=S(x)\)</span>: <span class="math" data-tex="\(\pi\)">\(\pi\)</span> lives on the graph of <span class="math" data-tex="\(S\)">\(S\)</span>. In particular every optimal map equals <span class="math" data-tex="\(S\)">\(S\)</span> almost everywhere. So <span class="math" data-tex="\(S=T_\lambda\)">\(S=T_\lambda\)</span>, and since the whole sequence <span class="math" data-tex="\((T_n)\)">\((T_n)\)</span> is Cauchy, it converges to <span class="math" data-tex="\(T_\lambda\)">\(T_\lambda\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 2.2</strong> (Theorem 3.1 of the first lesson; [OpenAI-BS, Theorem 1.1]). For all <span class="math" data-tex="\(\mu,\nu\in\operatorname{Prob}(Y)\)">\(\mu,\nu\in\operatorname{Prob}(Y)\)</span>,
+<span class="math math-display" data-tex="\[
+\|T_\mu-T_\nu\|_{L^2(\rho)}\le C_*\,W_2(\mu,\nu)^{1/3} ,
+\]">\[
+\|T_\mu-T_\nu\|_{L^2(\rho)}\le C_*\,W_2(\mu,\nu)^{1/3} ,
+\]</span>
+and the exponent <span class="math" data-tex="\(\frac13\)">\(\frac13\)</span> cannot be increased.</p>
+<p><em>Proof.</em> Use the same nets and selections for <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, and let <span class="math" data-tex="\(\mu_n=(Q_n)_\#\mu\)">\(\mu_n=(Q_n)_\#\mu\)</span>, <span class="math" data-tex="\(\nu_n=(Q_n)_\#\nu\)">\(\nu_n=(Q_n)_\#\nu\)</span>. For a coupling <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, its image under <span class="math" data-tex="\((Q_n,Q_n)\)">\((Q_n,Q_n)\)</span> couples <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> and <span class="math" data-tex="\(\nu_n\)">\(\nu_n\)</span>, and <span class="math" data-tex="\(|Q_n(y)-Q_n(z)|\le|y-z|+2\varepsilon_n\)">\(|Q_n(y)-Q_n(z)|\le|y-z|+2\varepsilon_n\)</span>, so by the triangle inequality in <span class="math" data-tex="\(L^2(\pi)\)">\(L^2(\pi)\)</span>
+<span class="math math-display" data-tex="\[
+W_2(\mu_n,\nu_n)\le\Bigl(\int|y-z|^2\,d\pi\Bigr)^{1/2}+2\varepsilon_n .
+\]">\[
+W_2(\mu_n,\nu_n)\le\Bigl(\int|y-z|^2\,d\pi\Bigr)^{1/2}+2\varepsilon_n .
+\]</span>
+Taking the infimum over <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, <span class="math" data-tex="\(W_2(\mu_n,\nu_n)\le W_2(\mu,\nu)+2\varepsilon_n\)">\(W_2(\mu_n,\nu_n)\le W_2(\mu,\nu)+2\varepsilon_n\)</span>. Corollary 1.3 bounds <span class="math" data-tex="\(\|T_{\mu_n}-T_{\nu_n}\|_{L^2(\rho)}\)">\(\|T_{\mu_n}-T_{\nu_n}\|_{L^2(\rho)}\)</span> by <span class="math" data-tex="\(C_*(W_2(\mu,\nu)+2\varepsilon_n)^{1/3}\)">\(C_*(W_2(\mu,\nu)+2\varepsilon_n)^{1/3}\)</span>, and Proposition 2.1 lets <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>. Sharpness is Proposition 4.1 of the first lesson. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The constant depends only on <span class="math" data-tex="\(K\)">\(K\)</span> and the radius <span class="math" data-tex="\(L\)">\(L\)</span>. It does not see the number of atoms, their masses, their separation or any density of the targets, and <span class="math" data-tex="\(Y\)">\(Y\)</span> need not be convex: the interpolated sites of the previous lesson stay in the ball <span class="math" data-tex="\(B(0,L)\)">\(B(0,L)\)</span>, and the discretizations take values in <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> Show that the constant <span class="math" data-tex="\(28\)">\(28\)</span> in Lemma 1.2 is <span class="math" data-tex="\(3\cdot2\cdot4+4\)">\(3\cdot2\cdot4+4\)</span>, and explain where each term comes from.</p>
+<p><strong>3.2.</strong> For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(K=[0,1]\)">\(K=[0,1]\)</span>, <span class="math" data-tex="\(u_0(x)=|x-\frac12|\)">\(u_0(x)=|x-\frac12|\)</span> and <span class="math" data-tex="\(u_1=0\)">\(u_1=0\)</span>, compare both sides of Lemma 1.2 for small <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>3.3.</strong> Show that with <span class="math" data-tex="\(h=W_2^{2/3}\)">\(h=W_2^{2/3}\)</span> the two terms of Lemma 1.2 have the same order, and that no other choice of <span class="math" data-tex="\(h\)">\(h\)</span> gives a better exponent from Lemma 1.2 and the potential bound alone.</p>
+<p><strong>3.4.</strong> Show that a Borel nearest-point selection <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> exists: enumerate <span class="math" data-tex="\(F_n=\{f_1,\dots,f_k\}\)">\(F_n=\{f_1,\dots,f_k\}\)</span> and let <span class="math" data-tex="\(Q_n(y)\)">\(Q_n(y)\)</span> be the first <span class="math" data-tex="\(f_i\)">\(f_i\)</span> at minimal distance from <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><strong>3.5.</strong> In the proof of Theorem 2.2, why is it enough to know <span class="math" data-tex="\(W_2\)">\(W_2\)</span> as an infimum, without an optimal coupling of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span>?</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> On <span class="math" data-tex="\(K_{j,h}\)">\(K_{j,h}\)</span>, the term <span class="math" data-tex="\(3\bigl(\int\delta_{u_0}^2+\int\delta_{u_1}^2\bigr)\)">\(3\bigl(\int\delta_{u_0}^2+\int\delta_{u_1}^2\bigr)\)</span> is at most <span class="math" data-tex="\(3\cdot2\cdot4L^2hA_j/|K|=24L^2hA_j/|K|\)">\(3\cdot2\cdot4L^2hA_j/|K|=24L^2hA_j/|K|\)</span>; on <span class="math" data-tex="\(K\setminus K_{j,h}\)">\(K\setminus K_{j,h}\)</span>, <span class="math" data-tex="\(|\partial_jf|^2\le4L^2\)">\(|\partial_jf|^2\le4L^2\)</span> on a set of measure at most <span class="math" data-tex="\(hA_j/|K|\)">\(hA_j/|K|\)</span>, which gives the remaining <span class="math" data-tex="\(4\)">\(4\)</span>.</p>
+<p><strong>3.2.</strong> <span class="math" data-tex="\(\|\nabla u_0\|^2=1\)">\(\|\nabla u_0\|^2=1\)</span>, <span class="math" data-tex="\(\|f\|^2=\int_0^1(x-\frac12)^2dx=\frac1{12}\)">\(\|f\|^2=\int_0^1(x-\frac12)^2dx=\frac1{12}\)</span>, <span class="math" data-tex="\(P_K=1\)">\(P_K=1\)</span> (the projection of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> on the point <span class="math" data-tex="\(e_1^\perp\)">\(e_1^\perp\)</span> has measure one), <span class="math" data-tex="\(L=1\)">\(L=1\)</span>. The right side is <span class="math" data-tex="\(\frac1{h^2}+28h\)">\(\frac1{h^2}+28h\)</span>, at least <span class="math" data-tex="\(1\)">\(1\)</span>, with minimum about <span class="math" data-tex="\(3\cdot(\frac{28}2)^{2/3}\approx17.4\)">\(3\cdot(\frac{28}2)^{2/3}\approx17.4\)</span> at <span class="math" data-tex="\(h=(1/14)^{1/3}\)">\(h=(1/14)^{1/3}\)</span>.</p>
+<p><strong>3.3.</strong> With <span class="math" data-tex="\(\|f\|\le Cw\)">\(\|f\|\le Cw\)</span>, the bound is <span class="math" data-tex="\(C(w^2/h^2+h)\)">\(C(w^2/h^2+h)\)</span>; balancing <span class="math" data-tex="\(w^2/h^2=h\)">\(w^2/h^2=h\)</span> gives <span class="math" data-tex="\(h=w^{2/3}\)">\(h=w^{2/3}\)</span> and the value <span class="math" data-tex="\(Cw^{2/3}\)">\(Cw^{2/3}\)</span>, so the map bound is <span class="math" data-tex="\(Cw^{1/3}\)">\(Cw^{1/3}\)</span>. For <span class="math" data-tex="\(h=w^\gamma\)">\(h=w^\gamma\)</span> the bound is <span class="math" data-tex="\(C(w^{2-2\gamma}+w^\gamma)\)">\(C(w^{2-2\gamma}+w^\gamma)\)</span>, of order <span class="math" data-tex="\(w^{\min(2-2\gamma,\gamma)}\)">\(w^{\min(2-2\gamma,\gamma)}\)</span>, largest exponent <span class="math" data-tex="\(\frac23\)">\(\frac23\)</span> at <span class="math" data-tex="\(\gamma=\frac23\)">\(\gamma=\frac23\)</span>.</p>
+<p><strong>3.4.</strong> <span class="math" data-tex="\(\{Q_n=f_i\}\)">\(\{Q_n=f_i\}\)</span> is the set of <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(|y-f_i|&lt;|y-f_l|\)">\(|y-f_i|&lt;|y-f_l|\)</span> for <span class="math" data-tex="\(l&lt;i\)">\(l&lt;i\)</span> and <span class="math" data-tex="\(|y-f_i|\le|y-f_l|\)">\(|y-f_i|\le|y-f_l|\)</span> for <span class="math" data-tex="\(l&gt;i\)">\(l&gt;i\)</span>, an intersection of open and closed sets.</p>
+<p><strong>3.5.</strong> The estimate <span class="math" data-tex="\(W_2(\mu_n,\nu_n)\le(\int|y-z|^2d\pi)^{1/2}+2\varepsilon_n\)">\(W_2(\mu_n,\nu_n)\le(\int|y-z|^2d\pi)^{1/2}+2\varepsilon_n\)</span> holds for every coupling, so its infimum over <span class="math" data-tex="\(\pi\)">\(\pi\)</span> bounds <span class="math" data-tex="\(W_2(\mu_n,\nu_n)\)">\(W_2(\mu_n,\nu_n)\)</span> by <span class="math" data-tex="\(W_2(\mu,\nu)+2\varepsilon_n\)">\(W_2(\mu,\nu)+2\varepsilon_n\)</span> whether or not the infimum is attained.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BS] OpenAI, <em>Sharp one-third stability of Brenier maps</em>, OpenAI Math Release preprint, 25 September 2026, Section 6. https://github.com/openai/math/tree/main/preprints/Sharp-One-Third-Stability-of-Brenier-Maps-September-25-2026</li>
+<li>[DM] A. Delalande and Q. Mérigot, <em>Quantitative stability of optimal transport maps under variations of the target measure</em>, Duke Math. J. 172 (2023), Proposition 4.1. https://arxiv.org/abs/2103.05934</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

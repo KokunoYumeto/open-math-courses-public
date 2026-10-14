@@ -1,0 +1,149 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laguerre cells and prescribed masses</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Stability of Brenier maps)</a><a href="optimal-maps-of-finite-affine-maxima.html">Previous lesson</a><a href="a-uniform-estimate-for-cell-moments.html">Next lesson</a><a href="src/laguerre-cells-and-prescribed-masses.md">Editable source</a></nav><main><article><h1 id="laguerre-cells-and-prescribed-masses">Laguerre cells and prescribed masses</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The upper bound of the theorem of <a href="optimal-maps-of-finite-affine-maxima.html">Optimal maps of finite affine maxima</a> is first proved for finite targets. A finite target with sites <span class="math" data-tex="\(y_1,\dots,y_N\)">\(y_1,\dots,y_N\)</span> and masses <span class="math" data-tex="\(m_1,\dots,m_N\)">\(m_1,\dots,m_N\)</span> is the image of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> under the gradient of a finite affine maximum, and the problem is to choose intercepts whose cells have the prescribed masses. This lesson computes how the masses and first moments of the cells change when the intercepts and the sites move, and proves that intercepts realizing prescribed positive masses exist, are unique up to normalization, and depend differentiably on the sites.</p>
+<ul>
+<li>The derivatives of cell masses and moments, and the connectivity of the face graph (Proposition 1.1).</li>
+<li>Intercepts for prescribed masses (Proposition 2.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-BS, Section 3]. The face-integral formula for the mass derivative and its graph-Laplacian structure are standard in semi-discrete optimal transport [KMT, Theorem 1.3 and Section 5.3]; the calculation below includes the moments and the site variations needed later.</p>
+<h2 id="1-cell-calculus">1. Cell calculus</h2>
+<p>Throughout, <span class="math" data-tex="\(K\)">\(K\)</span> is a compact convex set with nonempty interior, <span class="math" data-tex="\(\rho=\mathbf 1_K\,dx/|K|\)">\(\rho=\mathbf 1_K\,dx/|K|\)</span>, and the sites <span class="math" data-tex="\(y_1,\dots,y_N\)">\(y_1,\dots,y_N\)</span> are distinct. For intercepts <span class="math" data-tex="\(c=(c_1,\dots,c_N)\)">\(c=(c_1,\dots,c_N)\)</span> put
+<span class="math math-display" data-tex="\[
+\ell_{ij}(x)=x\cdot(y_i-y_j)+c_i-c_j ,
+\]">\[
+\ell_{ij}(x)=x\cdot(y_i-y_j)+c_i-c_j ,
+\]</span>
+and define the cells, their masses and their first moments by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P_i=K\cap\bigcap_{j\ne i}\{\ell_{ij}\ge0\},\\
+M_i=\rho(P_i),\qquad B_i=\int_{P_i}x\,d\rho(x) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+P_i=K\cap\bigcap_{j\ne i}\{\ell_{ij}\ge0\},\\
+M_i=\rho(P_i),\qquad B_i=\int_{P_i}x\,d\rho(x) .
+\end{gathered}
+\]</span>
+These closed convex cells cover <span class="math" data-tex="\(K\)">\(K\)</span> and overlap only in the null tie set. Let <span class="math" data-tex="\(H_{ij}=\{\ell_{ij}=0\}\)">\(H_{ij}=\{\ell_{ij}=0\}\)</span> and <span class="math" data-tex="\(F_{ij}=P_i\cap P_j\)">\(F_{ij}=P_i\cap P_j\)</span>, the common face, and integrate over <span class="math" data-tex="\(F_{ij}\)">\(F_{ij}\)</span> with the surface measure <span class="math" data-tex="\(dS\)">\(dS\)</span> of the hyperplane <span class="math" data-tex="\(H_{ij}\)">\(H_{ij}\)</span>; a face of lower dimension contributes zero. The symmetric coefficients are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_{ij}=\frac{1}{|K|\,|y_i-y_j|}\int_{F_{ij}}dS,\\
+b_{ij}=\frac{1}{|K|\,|y_i-y_j|}\int_{F_{ij}}x\,dS,\\
+\Theta_{ij}=\frac{1}{|K|\,|y_i-y_j|}\int_{F_{ij}}x\,x^{\mathsf T}\,dS ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+g_{ij}=\frac{1}{|K|\,|y_i-y_j|}\int_{F_{ij}}dS,\\
+b_{ij}=\frac{1}{|K|\,|y_i-y_j|}\int_{F_{ij}}x\,dS,\\
+\Theta_{ij}=\frac{1}{|K|\,|y_i-y_j|}\int_{F_{ij}}x\,x^{\mathsf T}\,dS ,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(\Theta_{ij}\)">\(\Theta_{ij}\)</span> is a symmetric <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> matrix. We write <span class="math" data-tex="\(DM_i[r,v]\)">\(DM_i[r,v]\)</span> for the derivative of <span class="math" data-tex="\(M_i\)">\(M_i\)</span> in the direction of an intercept vector <span class="math" data-tex="\(r=(r_i)\)">\(r=(r_i)\)</span> and a site vector <span class="math" data-tex="\(v=(v_i)\)">\(v=(v_i)\)</span>, <span class="math" data-tex="\(v_i\in\mathbb R^d\)">\(v_i\in\mathbb R^d\)</span>, and likewise <span class="math" data-tex="\(DB_i[r,v]\)">\(DB_i[r,v]\)</span>.</p>
+<p><strong>Proposition 1.1</strong> (cell differentials and connectivity; [OpenAI-BS, Proposition 3.1]). On the open set of configurations <span class="math" data-tex="\((c,y)\)">\((c,y)\)</span> with distinct sites and <span class="math" data-tex="\(M_i&gt;0\)">\(M_i&gt;0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, the functions <span class="math" data-tex="\(M_i\)">\(M_i\)</span> and <span class="math" data-tex="\(B_i\)">\(B_i\)</span> are continuously differentiable in <span class="math" data-tex="\((c,y)\)">\((c,y)\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+DM_i[r,v]&amp;=\sum_{j\ne i}g_{ij}(r_i-r_j)\\
+&amp;\quad+\sum_{j\ne i}b_{ij}\cdot(v_i-v_j),\\
+DB_i[r,v]&amp;=\sum_{j\ne i}b_{ij}(r_i-r_j)\\
+&amp;\quad+\sum_{j\ne i}\Theta_{ij}(v_i-v_j) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+DM_i[r,v]&amp;=\sum_{j\ne i}g_{ij}(r_i-r_j)\\
+&amp;\quad+\sum_{j\ne i}b_{ij}\cdot(v_i-v_j),\\
+DB_i[r,v]&amp;=\sum_{j\ne i}b_{ij}(r_i-r_j)\\
+&amp;\quad+\sum_{j\ne i}\Theta_{ij}(v_i-v_j) .
+\end{aligned}
+\]</span>
+The graph on <span class="math" data-tex="\(\{1,\dots,N\}\)">\(\{1,\dots,N\}\)</span> with an edge <span class="math" data-tex="\(\{i,j\}\)">\(\{i,j\}\)</span> when <span class="math" data-tex="\(g_{ij}&gt;0\)">\(g_{ij}&gt;0\)</span> is connected. Consequently the symmetric operator
+<span class="math math-display" data-tex="\[
+(Gq)_i=DM_i[q,0]=\sum_{j\ne i}g_{ij}(q_i-q_j)
+\]">\[
+(Gq)_i=DM_i[q,0]=\sum_{j\ne i}g_{ij}(q_i-q_j)
+\]</span>
+has kernel the constant vectors and range <span class="math" data-tex="\(\{z\in\mathbb R^N:\sum_iz_i=0\}\)">\(\{z\in\mathbb R^N:\sum_iz_i=0\}\)</span>.</p>
+<p><em>Proof.</em> <em>Geometry.</em> Since <span class="math" data-tex="\(M_i&gt;0\)">\(M_i&gt;0\)</span>, the cell <span class="math" data-tex="\(P_i\)">\(P_i\)</span> contains a point of <span class="math" data-tex="\(\operatorname{int}K\)">\(\operatorname{int}K\)</span> at which <span class="math" data-tex="\(i\)">\(i\)</span> is the only maximizing index: remove from the positive-measure cell the null set <span class="math" data-tex="\(\partial K\)">\(\partial K\)</span> (Lemma 1.1 of the first lesson) and the finitely many tie hyperplanes. Call such points <em>strictly active</em> for <span class="math" data-tex="\(i\)">\(i\)</span>. At a strictly active point for <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(\ell_{ij}&gt;0\)">\(\ell_{ij}&gt;0\)</span>, and at one for <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(\ell_{ij}&lt;0\)">\(\ell_{ij}&lt;0\)</span>; the segment between them lies in <span class="math" data-tex="\(\operatorname{int}K\)">\(\operatorname{int}K\)</span>, so <span class="math" data-tex="\(H_{ij}\)">\(H_{ij}\)</span> meets <span class="math" data-tex="\(\operatorname{int}K\)">\(\operatorname{int}K\)</span>. By Lemma 1.1(3) of the first lesson, <span class="math" data-tex="\(\partial K\cap H_{ij}\)">\(\partial K\cap H_{ij}\)</span> is null in <span class="math" data-tex="\(H_{ij}\)">\(H_{ij}\)</span>.</p>
+<p>Next, <span class="math" data-tex="\(H_{ij}\ne H_{ik}\)">\(H_{ij}\ne H_{ik}\)</span> for distinct <span class="math" data-tex="\(i,j,k\)">\(i,j,k\)</span>. Otherwise the nonconstant affine functions <span class="math" data-tex="\(\ell_{ij}\)">\(\ell_{ij}\)</span> and <span class="math" data-tex="\(\ell_{ik}\)">\(\ell_{ik}\)</span> would be proportional, <span class="math" data-tex="\(\ell_{ik}=\kappa\ell_{ij}\)">\(\ell_{ik}=\kappa\ell_{ij}\)</span> with <span class="math" data-tex="\(\kappa\ne0,1\)">\(\kappa\ne0,1\)</span>, and with <span class="math" data-tex="\(f_m(x)=x\cdot y_m+c_m\)">\(f_m(x)=x\cdot y_m+c_m\)</span> this says <span class="math" data-tex="\(f_k=(1-\kappa)f_i+\kappa f_j\)">\(f_k=(1-\kappa)f_i+\kappa f_j\)</span>. If <span class="math" data-tex="\(0&lt;\kappa&lt;1\)">\(0&lt;\kappa&lt;1\)</span>, <span class="math" data-tex="\(f_k\)">\(f_k\)</span> is a strict convex combination of <span class="math" data-tex="\(f_i\)">\(f_i\)</span> and <span class="math" data-tex="\(f_j\)">\(f_j\)</span>; if <span class="math" data-tex="\(\kappa&gt;1\)">\(\kappa&gt;1\)</span>, so is <span class="math" data-tex="\(f_j\)">\(f_j\)</span> of <span class="math" data-tex="\(f_k\)">\(f_k\)</span> and <span class="math" data-tex="\(f_i\)">\(f_i\)</span>; if <span class="math" data-tex="\(\kappa&lt;0\)">\(\kappa&lt;0\)</span>, so is <span class="math" data-tex="\(f_i\)">\(f_i\)</span> of <span class="math" data-tex="\(f_k\)">\(f_k\)</span> and <span class="math" data-tex="\(f_j\)">\(f_j\)</span>. A strict convex combination of two other affine functions is never strictly maximal, which contradicts the positivity of all masses. Hence <span class="math" data-tex="\(H_{ij}\cap H_{ik}\)">\(H_{ij}\cap H_{ik}\)</span> is empty or of dimension at most <span class="math" data-tex="\(d-2\)">\(d-2\)</span>, and null in <span class="math" data-tex="\(H_{ij}\)">\(H_{ij}\)</span>.</p>
+<p><em>Derivatives.</em> For a continuous <span class="math" data-tex="\(f\)">\(f\)</span> let
+<span class="math math-display" data-tex="\[
+I_i^f=\frac1{|K|}\int_Kf(x)\prod_{j\ne i}\mathbf 1_{\{\ell_{ij}(x)\ge0\}}\,dx .
+\]">\[
+I_i^f=\frac1{|K|}\int_Kf(x)\prod_{j\ne i}\mathbf 1_{\{\ell_{ij}(x)\ge0\}}\,dx .
+\]</span>
+Replace <span class="math" data-tex="\((c,y)\)">\((c,y)\)</span> by <span class="math" data-tex="\((c+hr,y+hv)\)">\((c+hr,y+hv)\)</span> and write the change of the product of indicators as a telescoping sum, changing one factor at a time. In the term where the <span class="math" data-tex="\(j\)">\(j\)</span>-th factor changes, use coordinates <span class="math" data-tex="\(x=z+ht\,n_{ij}\)">\(x=z+ht\,n_{ij}\)</span> with <span class="math" data-tex="\(z\in H_{ij}\)">\(z\in H_{ij}\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span> and <span class="math" data-tex="\(n_{ij}=(y_i-y_j)/|y_i-y_j|\)">\(n_{ij}=(y_i-y_j)/|y_i-y_j|\)</span>, so that <span class="math" data-tex="\(dx=h\,dt\,dS(z)\)">\(dx=h\,dt\,dS(z)\)</span>. Since <span class="math" data-tex="\(\ell_{ij}(z+htn_{ij})=ht|y_i-y_j|\)">\(\ell_{ij}(z+htn_{ij})=ht|y_i-y_j|\)</span> and the perturbed function is <span class="math" data-tex="\(\ell_{ij}+h\bigl(x\cdot(v_i-v_j)+r_i-r_j\bigr)\)">\(\ell_{ij}+h\bigl(x\cdot(v_i-v_j)+r_i-r_j\bigr)\)</span>, the changed factor converges, for almost every <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span>, to
+<span class="math math-display" data-tex="\[
+\mathbf 1_{\{|y_i-y_j|t+r_i-r_j+z\cdot(v_i-v_j)\ge0\}}-\mathbf 1_{\{t\ge0\}} ,
+\]">\[
+\mathbf 1_{\{|y_i-y_j|t+r_i-r_j+z\cdot(v_i-v_j)\ge0\}}-\mathbf 1_{\{t\ge0\}} ,
+\]</span>
+whose integral in <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(w_{ij}(z)/|y_i-y_j|\)">\(w_{ij}(z)/|y_i-y_j|\)</span>, where <span class="math" data-tex="\(w_{ij}(z)=r_i-r_j+z\cdot(v_i-v_j)\)">\(w_{ij}(z)=r_i-r_j+z\cdot(v_i-v_j)\)</span>. The factor <span class="math" data-tex="\(h\)">\(h\)</span> of the volume element cancels the factor <span class="math" data-tex="\(1/h\)">\(1/h\)</span> of the difference quotient. Off the null set <span class="math" data-tex="\((\partial K\cap H_{ij})\cup\bigcup_{k\ne i,j}(H_{ik}\cap H_{ij})\)">\((\partial K\cap H_{ij})\cup\bigcup_{k\ne i,j}(H_{ik}\cap H_{ij})\)</span>, all other indicators converge to their values at <span class="math" data-tex="\(z\)">\(z\)</span>, and their product is the indicator of <span class="math" data-tex="\(F_{ij}\)">\(F_{ij}\)</span> there: if <span class="math" data-tex="\(z\in H_{ij}\cap P_i\)">\(z\in H_{ij}\cap P_i\)</span>, then <span class="math" data-tex="\(\ell_{jk}(z)=\ell_{ik}(z)-\ell_{ij}(z)=\ell_{ik}(z)\ge0\)">\(\ell_{jk}(z)=\ell_{ik}(z)-\ell_{ij}(z)=\ell_{ik}(z)\ge0\)</span>, so <span class="math" data-tex="\(z\in P_j\)">\(z\in P_j\)</span>. The integrands are bounded with <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> in bounded sets, so dominated convergence gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+DI_i^f[r,v]&amp;=\frac1{|K|}\sum_{j\ne i}\frac1{|y_i-y_j|}\\
+&amp;\quad\times\int_{F_{ij}}f(z)\,w_{ij}(z)\,dS(z) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+DI_i^f[r,v]&amp;=\frac1{|K|}\sum_{j\ne i}\frac1{|y_i-y_j|}\\
+&amp;\quad\times\int_{F_{ij}}f(z)\,w_{ij}(z)\,dS(z) ,
+\end{aligned}
+\]</span>
+for <span class="math" data-tex="\(h\downarrow0\)">\(h\downarrow0\)</span>, and the same argument with <span class="math" data-tex="\(-h\)">\(-h\)</span> gives the two-sided derivative. The functions <span class="math" data-tex="\(f=1\)">\(f=1\)</span> and <span class="math" data-tex="\(f=x_1,\dots,x_d\)">\(f=x_1,\dots,x_d\)</span> give the two formulas.</p>
+<p><em>Continuity.</em> For nearby <span class="math" data-tex="\((c,y)\)">\((c,y)\)</span>, write a perturbed hyperplane <span class="math" data-tex="\(H_{ij}\)">\(H_{ij}\)</span> as an affine graph over the fixed one in the direction <span class="math" data-tex="\(n_{ij}\)">\(n_{ij}\)</span>. The graph maps and their surface Jacobians converge uniformly on a common bounded region, the indicators of the faces converge off the same null sets, and the denominators <span class="math" data-tex="\(|y_i-y_j|\)">\(|y_i-y_j|\)</span> converge. By dominated convergence every coefficient of the derivative, including those with <span class="math" data-tex="\(z_kz_l\)">\(z_kz_l\)</span>, is continuous. So all partial derivatives exist and are continuous, and <span class="math" data-tex="\(M_i\)">\(M_i\)</span>, <span class="math" data-tex="\(B_i\)">\(B_i\)</span> are continuously differentiable. The admissible set is open, since the masses are continuous by dominated convergence.</p>
+<p><em>Connectivity.</em> Fix two cells and strictly active points <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> for them, with <span class="math" data-tex="\(p\)">\(p\)</span> off all hyperplanes <span class="math" data-tex="\(H_{kl}\)">\(H_{kl}\)</span>, and <span class="math" data-tex="\(q\)">\(q\)</span> off all <span class="math" data-tex="\(H_{kl}\)">\(H_{kl}\)</span> and off the affine spans of <span class="math" data-tex="\(p\)">\(p\)</span> with the sets where three affine functions tie. These are finitely many proper affine subsets, which cannot cover the open set of strictly active points of a cell. The segment <span class="math" data-tex="\([p,q]\)">\([p,q]\)</span> lies in <span class="math" data-tex="\(\operatorname{int}K\)">\(\operatorname{int}K\)</span> and meets no triple tie. Where the active index changes along it, exactly two affine functions are maximal and all other inequalities are strict, so a small relatively open disc in their tie hyperplane belongs to the common face, which therefore has positive area: an edge of the graph. The successive active indices give a path between the two cells.</p>
+<p><em>The operator <span class="math" data-tex="\(G\)">\(G\)</span>.</em> By symmetry of <span class="math" data-tex="\(g_{ij}\)">\(g_{ij}\)</span>, <span class="math" data-tex="\(q\cdot Gq=\sum_{i&lt;j}g_{ij}(q_i-q_j)^2\)">\(q\cdot Gq=\sum_{i&lt;j}g_{ij}(q_i-q_j)^2\)</span>. If this vanishes, <span class="math" data-tex="\(q\)">\(q\)</span> is constant along edges, hence constant by connectivity. As <span class="math" data-tex="\(G\)">\(G\)</span> is symmetric, its range is the orthogonal complement of its kernel. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-prescribed-masses">2. Prescribed masses</h2>
+<p><strong>Proposition 2.1</strong> (prescribed cell masses; [OpenAI-BS, Proposition 3.2]). Fix positive weights <span class="math" data-tex="\(m_1,\dots,m_N\)">\(m_1,\dots,m_N\)</span> with <span class="math" data-tex="\(\sum_im_i=1\)">\(\sum_im_i=1\)</span>. For every configuration of distinct sites there is exactly one vector of intercepts <span class="math" data-tex="\(c\)">\(c\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_i=m_i\quad(1\le i\le N),\\
+\sum_im_ic_i=0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+M_i=m_i\quad(1\le i\le N),\\
+\sum_im_ic_i=0 .
+\end{gathered}
+\]</span>
+With the weights fixed, this vector is a continuously differentiable function of the sites on the open set of configurations of distinct sites.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, <span class="math" data-tex="\(c_1=0\)">\(c_1=0\)</span>. Let <span class="math" data-tex="\(N\ge2\)">\(N\ge2\)</span>, and on <span class="math" data-tex="\(H_m=\{c:\sum_im_ic_i=0\}\)">\(H_m=\{c:\sum_im_ic_i=0\}\)</span> consider the convex function
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal F_y(c)&amp;=\int_K\max_i(x\cdot y_i+c_i)\,d\rho(x)\\
+&amp;\quad-\sum_im_ic_i .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal F_y(c)&amp;=\int_K\max_i(x\cdot y_i+c_i)\,d\rho(x)\\
+&amp;\quad-\sum_im_ic_i .
+\end{aligned}
+\]</span>
+<em>Existence.</em> Let <span class="math" data-tex="\(|x|\le R\)">\(|x|\le R\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(S=\max_i|y_i|\)">\(S=\max_i|y_i|\)</span>. On <span class="math" data-tex="\(H_m\)">\(H_m\)</span>, <span class="math" data-tex="\(\mathcal F_y(c)\ge\max_ic_i-RS\)">\(\mathcal F_y(c)\ge\max_ic_i-RS\)</span>. If <span class="math" data-tex="\(\max_ic_i\le A\)">\(\max_ic_i\le A\)</span> on <span class="math" data-tex="\(H_m\)">\(H_m\)</span>, then each <span class="math" data-tex="\(c_k=-\sum_{i\ne k}m_ic_i/m_k\)">\(c_k=-\sum_{i\ne k}m_ic_i/m_k\)</span> is at least <span class="math" data-tex="\(-A(1-m_k)/m_k\)">\(-A(1-m_k)/m_k\)</span>, so <span class="math" data-tex="\(c\)">\(c\)</span> is bounded; hence <span class="math" data-tex="\(\max_ic_i\to\infty\)">\(\max_ic_i\to\infty\)</span> as <span class="math" data-tex="\(|c|\to\infty\)">\(|c|\to\infty\)</span> in <span class="math" data-tex="\(H_m\)">\(H_m\)</span>. So <span class="math" data-tex="\(\mathcal F_y\)">\(\mathcal F_y\)</span> is coercive and continuous on <span class="math" data-tex="\(H_m\)">\(H_m\)</span>, and has a minimum. The difference quotients of <span class="math" data-tex="\(c\mapsto\max_i(x\cdot y_i+c_i)\)">\(c\mapsto\max_i(x\cdot y_i+c_i)\)</span> in the direction of the <span class="math" data-tex="\(i\)">\(i\)</span>-th unit vector lie in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and converge, off the tie set, to the indicator of the cell <span class="math" data-tex="\(P_i\)">\(P_i\)</span>. By dominated convergence,
+<span class="math math-display" data-tex="\[
+\nabla_c\mathcal F_y=(M_i-m_i)_{i=1}^N .
+\]">\[
+\nabla_c\mathcal F_y=(M_i-m_i)_{i=1}^N .
+\]</span>
+At a minimum on <span class="math" data-tex="\(H_m\)">\(H_m\)</span> this gradient is orthogonal to <span class="math" data-tex="\(H_m\)">\(H_m\)</span>, that is a multiple <span class="math" data-tex="\(\kappa m\)">\(\kappa m\)</span> of <span class="math" data-tex="\(m\)">\(m\)</span>. Its coordinates sum to zero, because both the masses and the weights sum to one, so <span class="math" data-tex="\(\kappa=0\)">\(\kappa=0\)</span> and <span class="math" data-tex="\(M_i=m_i\)">\(M_i=m_i\)</span>. Conversely, every normalized solution has zero gradient and is a minimizer, by convexity.</p>
+<p><em>Local structure.</em> At a solution all masses are positive, and Proposition 1.1 applies. The map <span class="math" data-tex="\(c\mapsto(M_i-m_i)_i\)">\(c\mapsto(M_i-m_i)_i\)</span> sends <span class="math" data-tex="\(H_m\)">\(H_m\)</span> into <span class="math" data-tex="\(H_0=\{z:\sum_iz_i=0\}\)">\(H_0=\{z:\sum_iz_i=0\}\)</span>, and its derivative at the solution is the restriction <span class="math" data-tex="\(G\colon H_m\to H_0\)">\(G\colon H_m\to H_0\)</span>. This is injective, since the only constant vector in <span class="math" data-tex="\(H_m\)">\(H_m\)</span> is zero, and both spaces have dimension <span class="math" data-tex="\(N-1\)">\(N-1\)</span>, so it is an isomorphism. The implicit function theorem (<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C20">Real Analysis II</a>; <a href="https://www.jirka.org/ra/html/sec_svinvfuncthm.html#thm_implicit">Lebl, Basic Analysis II, Theorem 8.5.6</a>) gives, near each solution, a unique solution for nearby sites, depending continuously differentiably on them.</p>
+<p><em>Uniqueness.</em> In particular each solution is isolated for its sites. If there were two, the segment between them would consist of minimizers of the convex function <span class="math" data-tex="\(\mathcal F_y\)">\(\mathcal F_y\)</span> on <span class="math" data-tex="\(H_m\)">\(H_m\)</span>, hence of solutions, contradicting isolation. So the solution is unique, the local branches agree on overlaps, and they define one continuously differentiable function of the sites. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Only the invertibility of <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(H_m\)">\(H_m\)</span> is used here; no quantitative bound on its inverse is needed, and none would be uniform as cells become small or faces become thin. The next lesson supplies the estimate that replaces such a bound.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> For <span class="math" data-tex="\(K=[0,1]\times[-1,1]\)">\(K=[0,1]\times[-1,1]\)</span> and three sites <span class="math" data-tex="\(y_1=(0,0)\)">\(y_1=(0,0)\)</span>, <span class="math" data-tex="\(y_2=(1,0)\)">\(y_2=(1,0)\)</span>, <span class="math" data-tex="\(y_3=(2,0)\)">\(y_3=(2,0)\)</span>, find the intercepts with <span class="math" data-tex="\(\sum_im_ic_i=0\)">\(\sum_im_ic_i=0\)</span> that give the masses <span class="math" data-tex="\(m=(\frac14,\frac12,\frac14)\)">\(m=(\frac14,\frac12,\frac14)\)</span>.</p>
+<p><strong>3.2.</strong> Show that <span class="math" data-tex="\(\sum_iDM_i[r,v]=0\)">\(\sum_iDM_i[r,v]=0\)</span> for all directions, directly from the formulas of Proposition 1.1.</p>
+<p><strong>3.3.</strong> Show that <span class="math" data-tex="\(\sum_iq_i\,DM_i[r,v]\)">\(\sum_iq_i\,DM_i[r,v]\)</span> is symmetric in <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span> when <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, and compute its site part <span class="math" data-tex="\(\sum_iq_i\sum_{j\ne i}b_{ij}\cdot(v_i-v_j)\)">\(\sum_iq_i\sum_{j\ne i}b_{ij}\cdot(v_i-v_j)\)</span> as a sum over unordered pairs.</p>
+<p><strong>3.4.</strong> Give an example with <span class="math" data-tex="\(N=3\)">\(N=3\)</span> where the face graph is a path and not a triangle.</p>
+<p><strong>3.5.</strong> Show that the normalization <span class="math" data-tex="\(\sum_im_ic_i=0\)">\(\sum_im_ic_i=0\)</span> is needed for uniqueness, and that without it the intercepts are unique up to adding a common constant.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> The cells are vertical strips. Cell 1 is <span class="math" data-tex="\(\{x_1\le c_1-c_2\}\)">\(\{x_1\le c_1-c_2\}\)</span>, cell 3 is <span class="math" data-tex="\(\{x_1\ge c_2-c_3\}\)">\(\{x_1\ge c_2-c_3\}\)</span>, and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of a strip of width <span class="math" data-tex="\(w\)">\(w\)</span> is <span class="math" data-tex="\(w\)">\(w\)</span>. So <span class="math" data-tex="\(c_1-c_2=\frac14\)">\(c_1-c_2=\frac14\)</span> and <span class="math" data-tex="\(c_2-c_3=\frac34\)">\(c_2-c_3=\frac34\)</span>. With <span class="math" data-tex="\(c_2=s\)">\(c_2=s\)</span>: <span class="math" data-tex="\(c_1=s+\frac14\)">\(c_1=s+\frac14\)</span>, <span class="math" data-tex="\(c_3=s-\frac34\)">\(c_3=s-\frac34\)</span>, and <span class="math" data-tex="\(\frac14(s+\frac14)+\frac12s+\frac14(s-\frac34)=0\)">\(\frac14(s+\frac14)+\frac12s+\frac14(s-\frac34)=0\)</span> gives <span class="math" data-tex="\(s=\frac18\)">\(s=\frac18\)</span>, so <span class="math" data-tex="\(c=(\frac38,\frac18,-\frac58)\)">\(c=(\frac38,\frac18,-\frac58)\)</span>.</p>
+<p><strong>3.2.</strong> The terms <span class="math" data-tex="\(g_{ij}(r_i-r_j)\)">\(g_{ij}(r_i-r_j)\)</span> and <span class="math" data-tex="\(g_{ji}(r_j-r_i)\)">\(g_{ji}(r_j-r_i)\)</span> cancel, and so do <span class="math" data-tex="\(b_{ij}\cdot(v_i-v_j)\)">\(b_{ij}\cdot(v_i-v_j)\)</span> and <span class="math" data-tex="\(b_{ji}\cdot(v_j-v_i)\)">\(b_{ji}\cdot(v_j-v_i)\)</span>, since <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are symmetric. This expresses <span class="math" data-tex="\(\sum_iM_i=1\)">\(\sum_iM_i=1\)</span>.</p>
+<p><strong>3.3.</strong> <span class="math" data-tex="\(\sum_iq_i\sum_{j\ne i}g_{ij}(r_i-r_j)\)">\(\sum_iq_i\sum_{j\ne i}g_{ij}(r_i-r_j)\)</span> equals <span class="math" data-tex="\(\sum_{i&lt;j}g_{ij}(q_i-q_j)(r_i-r_j)\)">\(\sum_{i&lt;j}g_{ij}(q_i-q_j)(r_i-r_j)\)</span>, which is symmetric. Likewise the site part is <span class="math" data-tex="\(\sum_{i&lt;j}(q_i-q_j)\,b_{ij}\cdot(v_i-v_j)\)">\(\sum_{i&lt;j}(q_i-q_j)\,b_{ij}\cdot(v_i-v_j)\)</span>.</p>
+<p><strong>3.4.</strong> In Exercise 3.1 the cells 1 and 3 do not touch: <span class="math" data-tex="\(g_{13}=0\)">\(g_{13}=0\)</span>, and the graph is the path <span class="math" data-tex="\(1-2-3\)">\(1-2-3\)</span>.</p>
+<p><strong>3.5.</strong> Adding a constant to all intercepts changes no cell, so without a normalization uniqueness fails; with <span class="math" data-tex="\(\sum_im_ic_i=0\)">\(\sum_im_ic_i=0\)</span> imposed, Proposition 2.1 applies, and two solutions differing by a constant <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> have <span class="math" data-tex="\(\kappa\sum_im_i=0\)">\(\kappa\sum_im_i=0\)</span>, that is <span class="math" data-tex="\(\kappa=0\)">\(\kappa=0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BS] OpenAI, <em>Sharp one-third stability of Brenier maps</em>, OpenAI Math Release preprint, 25 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Sharp-One-Third-Stability-of-Brenier-Maps-September-25-2026</li>
+<li>[KMT] J. Kitagawa, Q. Mérigot and B. Thibert, <em>Convergence of a Newton algorithm for semi-discrete optimal transport</em>, J. Eur. Math. Soc. 21 (2019), Theorem 1.3 and Section 5.3. https://arxiv.org/abs/1603.05579</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
