@@ -1,8 +1,8 @@
 # Plurisubharmonic functions and Stein manifolds
 
-**Current teaching version — 12 October 2026.** This version retains the earlier correction to Lemma 2.5 and now supplies the missing continuity hypothesis, a complete lower-bound proof, and a counterexample to the old claim. The mathematical correction and its explanation were self-checked by GPT-6 Astra (OpenAI), Ultra, and are CC0-1.0; this is not an independent review of the whole lesson. The [historical version](plurisubharmonic-functions-and-stein-manifolds.md) remains explicitly marked. The filename retains “shell-corrected” for compatibility.
+*Exhaustion definition, lower-bound proof and relative-shell calculation: GPT-6 Astra (OpenAI), Ultra, CC0-1.0; author self-check.* [Historical source version](plurisubharmonic-functions-and-stein-manifolds.md).
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0). Continuous-exhaustion lower-bound and escape arguments: GPT-6 Astra (OpenAI), Ultra, CC0-1.0. Lemma 1.4 and its application in Exercise 3.2: GPT-6.1 Sol (OpenAI), Ultra; author self-check, CC0.*
 
 The cohomology of coherent sheaves vanishes in positive degrees on a large class of complex manifolds, the Stein manifolds. In this course a Stein manifold is a complex manifold with a smooth exhaustion function whose complex Hessian is positive definite. This lesson develops the elementary theory of such functions: their invariance under holomorphic maps, the operations that preserve them, and the stock of examples needed later (polydiscs, balls, products, the complements of coordinate hyperplanes, sublevel sets, finite intersections and closed submanifolds). It also records the perturbation lemma used to deform one sublevel set into a larger one through small bumps.
 
@@ -45,13 +45,32 @@ In particular, if some \(v_j\) is strictly plurisubharmonic and \(\partial\chi/\
 3. On \(\{|z|<r\}\subset\mathbf C^n\), the function \(-\log(r^2-|z|^2)\) is plurisubharmonic: it is \(\chi(|z|^2)\) with \(\chi(t)=-\log(r^2-t)\) convex increasing on \([0,r^2)\).
 4. On \(\mathbf C^*=\mathbf C\setminus\{0\}\), the function \(|z|^{-2}=1/(z\bar z)\) has \(\partial^2/\partial z\partial\bar z\) equal to \(|z|^{-4}>0\).
 
+<span id="disc-maximum-principle"></span>
+
+**Lemma 1.4 (maximum on a complex disc).** Let \(R>0\), and let \(u\) be a real \(\mathcal C^2\) function on a neighbourhood of \(\{|t|\leq R\}\) with \(u_{t\bar t}\geq0\). Then
+
+\[
+u(t)\leq\max_{|\tau|=R}u(\tau),\qquad |t|\leq R.
+\]
+
+**Proof.** For \(\eta>0\), put \(u_\eta(t)=u(t)+\eta|t|^2\). It attains a maximum on the compact closed disc. At an interior maximum its real Hessian would be negative semidefinite, so its trace would be nonpositive. But, writing \(t=x+iy\), the complex derivative identities give
+
+\[
+\Delta u_\eta=4u_{t\bar t}+4\eta>0,
+\qquad \Delta=\partial_x^2+\partial_y^2.
+\]
+
+The maximum of \(u_\eta\) therefore occurs on the boundary, where \(|t|^2=R^2\). Consequently \(u(t)\leq\max_{|\tau|=R}u(\tau)+\eta R^2\) on the disc. Letting \(\eta\) decrease to zero proves the claim. \(\square\)
+
+The \(\mathcal C^2\) criterion behind this calculation is [Lebl SCV, Proposition 2.4.6](https://www.jirka.org/scv/).
+
 ## 2. Stein manifolds
 
 A real function \(\psi\) on a topological space \(X\) is an **exhaustion function** if every strict sublevel \(X_c=\{x:\ \psi(x)<c\}\) has compact closure in \(X\). A **continuous** exhaustion function is bounded below. Any exhaustion function in this definition, even without continuity, tends to \(+\infty\) along every sequence that leaves every compact subset.
 
 **Proof of the lower bound and escape property.** If \(X_0\) is empty, then \(\psi\geq0\). Otherwise \(K=\overline{X_0}\) is nonempty and compact. For continuous \(\psi\), the compact image \(\psi(K)\subset\mathbf R\) has a minimum \(m\). On \(K\) we have \(\psi\geq m\), while outside \(K\) we have \(\psi\geq0\). Thus \(\psi\geq\min(m,0)\) on all of \(X\). Separately, for any real \(a\), a sequence leaving every compact subset is eventually outside the compact set \(\overline{X_{a+1}}\). Its values are then at least \(a+1\), hence exceed \(a\). This proves escape to infinity without a continuity assumption. \(\square\)
 
-**Why the continuity hypothesis matters.** On the compact space \(X=[0,1]\), set \(\psi(0)=0\) and \(\psi(x)=-1/x\) for \(x>0\). Every strict sublevel has compact closure because that closure is closed in \([0,1]\). Nevertheless \(\psi(1/n)=-n\), so there is no lower bound. The earlier assertion for arbitrary real functions was false. The smooth exhaustions in Definition 2.1 and Proposition 2.2 are continuous, so the corrected lower-bound statement applies to those arguments.
+**Why the continuity hypothesis matters.** On the compact space \(X=[0,1]\), set \(\psi(0)=0\) and \(\psi(x)=-1/x\) for \(x>0\). Every strict sublevel has compact closure because that closure is closed in \([0,1]\). Nevertheless \(\psi(1/n)=-n\), so there is no lower bound. Relative compactness of strict sublevels alone therefore need not give a lower bound without continuity. The smooth exhaustions in Definition 2.1 and Proposition 2.2 are continuous, so the continuous lower-bound statement applies to those arguments.
 
 **Definition 2.1.** A complex manifold is a **Stein manifold** if it has a smooth strictly plurisubharmonic exhaustion function.
 
@@ -90,7 +109,7 @@ A real function \(\psi\) on a topological space \(X\) is an **exhaustion functio
 
 **Exercise 3.2.** Show that \(\mathbf C^2\setminus\{0\}\) has no plurisubharmonic exhaustion function of class \(\mathcal C^2\); in particular it is not Stein.
 
-*Solution.* Suppose \(\psi\) were one. For \(s\neq0\) the closed disc \(D_s=\{(s,t):\ |t|\leq1\}\) lies in \(\mathbf C^2\setminus\{0\}\), and \(t\mapsto\psi(s,t)\) is subharmonic on a neighbourhood of it by Lemma 1.1, so \(\psi(s,0)\leq\max_{|\tau|=1}\psi(s,\tau)\) by the maximum principle for subharmonic functions. As \(s\to0\), the right side tends to \(\max_{|\tau|=1}\psi(0,\tau)\), which is finite because the circle \(\{(0,\tau):|\tau|=1\}\) is compact in \(\mathbf C^2\setminus\{0\}\). The left side tends to \(+\infty\), because \((s,0)\) leaves every compact subset of \(\mathbf C^2\setminus\{0\}\). This is a contradiction. (The Čech computation in The Dolbeault complex, Exercise 4.3 shows \(H^1(\mathbf C^2\setminus\{0\},\mathcal O)\neq0\), consistent with the vanishing theorem proved later for Stein manifolds.)
+*Solution.* Suppose \(\psi\) were one. For \(s\neq0\) the closed disc \(D_s=\{(s,t):\ |t|\leq1\}\) lies in \(\mathbf C^2\setminus\{0\}\), and \(t\mapsto\psi(s,t)\) has nonnegative complex Hessian on a neighbourhood of it by Lemma 1.1, so \(\psi(s,0)\leq\max_{|\tau|=1}\psi(s,\tau)\) by [Lemma 1.4](#disc-maximum-principle). As \(s\to0\), the right side tends to \(\max_{|\tau|=1}\psi(0,\tau)\), which is finite because the circle \(\{(0,\tau):|\tau|=1\}\) is compact in \(\mathbf C^2\setminus\{0\}\). Indeed, uniform continuity of \(\psi\) on the compact cylinder \(\{|s|\leq1,\ |\tau|=1\}\) gives uniform convergence of the boundary functions as \(s\to0\). The left side tends to \(+\infty\), because \((s,0)\) leaves every compact subset of \(\mathbf C^2\setminus\{0\}\). This is a contradiction. (The Čech computation in The Dolbeault complex, Exercise 4.3 shows \(H^1(\mathbf C^2\setminus\{0\},\mathcal O)\neq0\), consistent with the vanishing theorem proved later for Stein manifolds.)
 
 **Exercise 3.3.** Show that the curve \(X=\{(z,w)\in\mathbf C^2:\ w^2=z^3-z\}\) is a Stein manifold.
 

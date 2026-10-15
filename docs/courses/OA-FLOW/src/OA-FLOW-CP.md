@@ -1,8 +1,8 @@
 # Concrete preduals from Hilbert tensors: the bounded CP-01–06 provider
 
-*Retained original programme exposition: CC0-1.0. See component terms and the exact adoption record.*
+*Programme expression: CC0-1.0. See component terms and [source information](../modular-source-lineage.json).*
 
-This is an adoptable selection of the actual CP-01–06 proof bodies, with their Hilbert, Hahn–Banach and concrete-topology prerequisites rebound to precise local CF/SF proofs. It includes no CP-07–14 body or conclusion. It is not a newly invented account of the original development history. Every later use must refer to these earlier proofs and the exact corresponding normality convention.
+This lesson develops the concrete-predual results CP-01–06. Its Hilbert-space, Hahn–Banach and concrete-topology prerequisites are the specified local CF/SF proofs. The inner-product and normality conventions below determine how these results apply in later lessons.
 
 <a id="oa-flow.cp.1"></a>
 

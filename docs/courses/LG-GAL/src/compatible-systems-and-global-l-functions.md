@@ -3710,9 +3710,413 @@ It is nonempty after algebraic closure. If \(g=0\), use the empty divisor. For \
 
 This constructs a genuine open space of nonspecial effective divisors. To obtain the Jacobian one still must identify the corresponding line-bundle subfunctor over full parameter bases, glue its translates, construct and verify the group and universal line, and prove the required properness and mapping properties. The stable curve model and the formal/analytic initial period cover remain additional geometric constructions. Neither the divisor parameter scheme nor a citation to the free Jacobian or uniformization theorem supplies those remaining proofs.
 
+### 2K. The Picard scheme and Jacobian of a pointed curve
+
+Let \(C/k\) be a smooth projective geometrically integral curve of genus \(g\), and fix \(P\in C(k)\). We construct its Jacobian, including its universal line bundle and its divisor maps on arbitrary parameter schemes. The point matters: it lets us normalize a line bundle along a section, rather than confuse a relative class with a globally chosen line bundle.
+
+The free primary comparisons are the Stacks project's [Picard scheme of a curve](https://stacks.math.columbia.edu/tag/0B9R) and Milne's author version of [*Jacobian Varieties*, §4](https://www.jmilne.org/math/xnotes/JVs.pdf). The arguments below use the actual divisor schemes DR1–DR8, curve duality SD1–SD7, finite cohomology complexes FC10–FC20, and module descent FD1–FD4 already proved in this programme. They include the family arguments needed over nilpotent bases.
+
+#### 2K.1. Sections that remain regular over a parameter base
+
+**JC1.** Let \(T\) be a \(k\)-scheme, \(\pi:C_T\to T\), and let \(s\) be a section of a line bundle \(L\). Suppose \(s\) is nonzero on every geometric fibre. Its zero scheme is a relative effective Cartier divisor, flat over \(T\); where the fibre degree of \(L\) is \(d\), that divisor is finite locally free of rank \(d\).
+
+First assume \(T\) Noetherian. At a point of \(C_T\), trivialize \(L\), and put
+\[
+ R=\mathcal O_{T,t},\qquad Q=\mathcal O_{C_T,x},\qquad
+ f=s|_{\operatorname{Spec}Q},\qquad \mathfrak m=\mathfrak m_R .
+ \tag{JC1}
+\]
+The ring \(Q\) is Noetherian, local and \(R\)-flat. On the smooth integral fibre, a nonzero section is a nonzerodivisor, so \(\bar f\) is a nonzerodivisor in \(Q/\mathfrak mQ\). For every finite \(R\)-module \(N\), flatness gives
+\[
+ \operatorname{gr}_{\mathfrak m}(Q\otimes_RN)
+ \simeq (Q/\mathfrak mQ)\otimes_{R/\mathfrak m}
+                   \operatorname{gr}_{\mathfrak m}N .
+ \tag{JC2}
+\]
+Multiplication by \(f\) is injective on each graded term. An element killed by \(f\) therefore belongs successively to every \(\mathfrak m^r(Q\otimes_RN)\). This intersection is zero by DFR3: the module is finite over the Noetherian local ring \(Q\), and \(\mathfrak mQ\) lies in its maximal ideal. Thus \(f\) is injective on \(Q\otimes_RN\). Any \(R\)-module is the filtered union of its finite submodules, and tensor products commute with that union, so the conclusion holds for every \(N\).
+
+In particular \(f\) is regular on \(Q\). To prove flatness of \(Q/fQ\), tensor an injection \(N'\hookrightarrow N\) and its quotient with \(Q\). If an element of \(Q\otimes N'\) becomes \(f v\) in \(Q\otimes N\), the image of \(v\) in \(Q\otimes(N/N')\) is killed by \(f\); it is zero by the preceding paragraph. Hence \(v\) comes from \(Q\otimes N'\). Passing to the quotients by \(f\) preserves the injection. This is precisely flatness, by T1. Consequently
+\[
+ 0\longrightarrow L^{-1}\xrightarrow{\ s\ }\mathcal O_{C_T}
+   \longrightarrow\mathcal O_{Z(s)}\longrightarrow0
+ \tag{JC3}
+\]
+is exact and stays exact after arbitrary base change. The zero scheme is proper over \(T\), and its geometric fibres have finite length \(d\), by the degree calculation DC1–DC6. Properness with finite fibres, proved in Lesson 3, makes it finite. Its finite, finitely presented flat algebra is locally free, with rank \(d\), by T4–T5.
+
+Here is the finite-equation step extending this statement, and later uses of FC10, to arbitrary \(T\). Work locally on \(T=\operatorname{Spec}A\). A line bundle on the finitely presented, quasi-compact separated scheme \(C_A\) can be described on finitely many affine principal opens by rank-one bases, unit transition functions, inverse transitions and cocycle identities. A section and a rigidification require finitely many additional elements and equations. Include the coefficients of the opens, of a finite witness that they cover, and of all these equations in a finitely generated \(k\)-subalgebra \(A_0\subset A\). This gives the same data over \(A_0\); inverse and cocycle equations ensure it is an actual line bundle. Isomorphisms and any finite list of commutative diagrams descend in the same way.
+
+The locus in \(\operatorname{Spec}A_0\) where the descended section is nonzero on the fibre is open. To see this without a reduced-base assumption, near any base point twist by a sufficiently large power of a fixed effective ample divisor on \(C\). Curve duality and FC15 make the pushforward of that twist a vector bundle with all base changes. The section, multiplied by the fixed divisor section, is a vector in that bundle. It is nonzero on a fibre exactly when at least one coordinate of that vector is nonzero there. Multiplication by the fixed section is injective on each integral curve fibre, so it detects the original section. This proves the assertion about the open locus. Euler characteristic and degree are locally constant by CE3 and DC6. The map from \(\operatorname{Spec}A\) lands in the relevant good open because the hypothesis holds on all its fibres. Pull back (JC3) and its finite flat zero scheme from that Noetherian open. This proves JC1 on all bases and also justifies applying finite-complex and open-locus arguments below after finite-equation descent. \(\square\)
+
+#### 2K.2. Rigidification and effective descent
+
+**JC2.** Define \(\mathcal P_d(T)\) to consist of isomorphism classes of pairs
+\[
+ (L,\rho),\qquad
+ \rho:P_T^*L\xrightarrow{\sim}\mathcal O_T,\qquad
+ \deg L_{\bar t}=d\quad(\bar t\to T).
+ \tag{JC4}
+\]
+Isomorphisms preserve \(\rho\). Every automorphism of a line bundle on \(C_T\) is multiplication by a global unit. FC20, with arbitrary base change, identifies these units with \(\Gamma(T,\mathcal O_T^\times)\). Preserving the rigidification forces that unit to be \(1\). Thus between two isomorphic rigidified bundles there is exactly one isomorphism.
+
+For an unrigidified line bundle put
+\[
+ L^\natural=L\otimes\pi^*(P_T^*L)^{-1}.
+ \tag{JC5}
+\]
+Its restriction to \(P_T\) has its canonical evaluation trivialization. Tensoring \(L\) by a bundle pulled back from \(T\) does not change \(L^\natural\) as a rigidified object. Conversely (JC5), applied to a rigidified bundle, recovers that bundle using \(\rho\). Therefore \(\mathcal P_d\) is the degree-\(d\) part of
+\[
+ \operatorname{Pic}(C_T)/\pi^*\operatorname{Pic}(T).
+ \tag{JC6}
+\]
+This equality is on full schemes, not just on fields.
+
+The functor is a sheaf for faithfully flat quasi-compact covers. Indeed two local representatives with equal classes have unique rigidified isomorphisms on overlaps. Uniqueness gives the cocycle identity on triple overlaps. On affine pieces the modules and their descent isomorphisms descend effectively by FD2; their rank-one projectivity descends by FD4. Restriction maps, multiplication, the rigidification and its inverse descend by FD1–FD3. Glue on affine overlaps using the same uniqueness. Fibre degrees descend after field extension. This proves both existence and uniqueness of the descended object. Tensor product and inverse make \(\mathcal P_0\) a group functor, acting on every \(\mathcal P_d\). \(\square\)
+
+#### 2K.3. The nonspecial chart, on full families
+
+**JC3.** Let \(U\subset S_g(C)\) be the open subset on which
+\[
+ H^1(C_{\bar t},\mathcal O(D_{\bar t}))=0 .
+ \tag{JC7}
+\]
+Its openness follows by cancelling unit entries in FC10–FC14; on a curve the remaining complex has terms only in degrees zero and one. Riemann–Roch makes \(h^0=1\) there. The rigidified universal divisor line
+\[
+ L_U=\mathcal O(\Delta_U)\otimes
+       \pi_U^*\bigl(P_U^*\mathcal O(\Delta_U)\bigr)^{-1}
+ \tag{JC8}
+\]
+represents the subfunctor of \(\mathcal P_g\) whose geometric fibres have \(H^1=0\).
+
+Here are the inverse and its base-change verification. For such \((L,\rho)\) on \(C_T\), FC15 gives an invertible module \(E=\pi_*L\), with formation commuting with every base change. Evaluation defines a section
+\[
+ \pi^*E\longrightarrow L,\qquad
+ s\in H^0(C_T,L\otimes\pi^*E^{-1}) .
+ \tag{JC9}
+\]
+Its restriction to every geometric fibre generates the one-dimensional space of sections, so is nonzero. JC1 produces a finite locally free Cartier divisor \(D\) of degree \(g\), and
+\[
+ \mathcal O(D)\simeq L\otimes\pi^*E^{-1},\qquad
+ \mathcal O(D)^\natural\simeq L .
+ \tag{JC10}
+\]
+The second isomorphism uses \(\rho\) and respects rigidification.
+
+Conversely, start with \(D\in U(T)\). Locally on \(T\), choose a basis of the inverse of \(P_T^*\mathcal O(D)\). The canonical divisor section then gives a section of the rigidified line (JC8). On every fibre it is a nonzero basis of \(H^0\). FC15 and the actual determinant test make it a basis of its rank-one pushforward locally on \(T\). Evaluation therefore has exactly the original zero scheme \(D\). Changing that chosen basis multiplies the section by a base unit and does not change the zero scheme. These operations are inverse and commute with arbitrary base changes by (JC3) and FC15. JC1's finite-equation argument supplies the same assertions on non-Noetherian bases.
+
+In particular, no value of the divisor section at \(P\) is divided out. A divisor can contain \(P\); the invertible module \(P_T^*\mathcal O(D)\) still exists, although that section's value vanishes. It is the module, rather than its possibly zero section, which occurs in (JC8). Finally, for any family in \(\mathcal P_g(T)\), the locus satisfying (JC7) is open by FC10–FC14 and JC1. Hence \(U\to\mathcal P_g\) is an open immersion of functors. \(\square\)
+
+#### 2K.4. Enough translates, including extension-field points
+
+**JC4.** Suppose for the moment that \(k\) is separably closed; perfection is not assumed. There are infinitely many points of \(C(k)\). Indeed a standard smooth curve chart gives an étale map from a nonempty open of \(C\) to \(\mathbf A^1_k\). Its image is open by EA1–EA18. A nonempty étale fibre over a \(k\)-point is a finite disjoint union of finite separable extensions of \(k\), hence has a \(k\)-point. There are infinitely many \(k\)-points in that open image. Different fibres give different points of \(C\).
+
+For every extension field \(F/k\) and degree-\(g\) line \(L\) on \(C_F\), there is a degree-zero line \(M\) defined over \(k\) for which \(L\otimes M_F^{-1}\) is nonspecial. Choose an ample line \(H\) on \(C\), of degree \(h>0\). For a sufficiently large integer \(m\), duality or Serre vanishing gives
+\[
+ H^1(C_F,L\otimes H_F^m)=0,\qquad
+ h^0(C_F,L\otimes H_F^m)=1+mh.
+ \tag{JC11}
+\]
+Choose a nonzero section. Its zero divisor is finite, while the distinct points of \(C(k)\) remain infinitely many distinct \(F\)-points. Choose \(Q_1\in C(k)\) where that section is nonzero. Evaluation at \(Q_1\) is surjective onto its one-dimensional fibre, and the exact sequence for subtracting \(Q_1\) reduces \(h^0\) by one while keeping \(H^1=0\). Repeat \(mh\) times, avoiding the finite zero set at each step. Thus
+\[
+ M=\mathcal O_C(Q_1+\cdots+Q_{mh})\otimes H^{-m},\qquad
+ \deg M=0,\qquad H^1(C_F,L\otimes M_F^{-1})=0.
+ \tag{JC12}
+\]
+Normalize \(M\) at \(P\) by (JC5). This changes none of these statements. This argument is needed even when \(F\) contains transcendental elements: we did not assume that \(L\) itself descends to \(k\).
+
+For each isomorphism class \(M\in\mathcal P_0(k)\), take a copy \(U_M\) of \(U\), mapping to \(\mathcal P_g\) by tensoring (JC8) with \(M\). The inverse image of \(U_M\) under any \(T\to\mathcal P_g\) is the open where \(L\otimes M^{-1}\) is nonspecial. By JC3 it is represented by that open of \(T\). Given a point of \(T\), apply (JC12) to its residue field: some \(U_M\) contains that point, hence a neighbourhood of it. Thus these open subfunctors cover.
+
+On \(U_M\), the overlap with \(U_N\) is the open where \(L_{U_M}\otimes M\otimes N^{-1}\) is nonspecial. JC3 gives its map to \(U_N\). The two universal rigidified bundles are isomorphic there, uniquely by JC2. The two directions are inverse because JC3's operations are inverse; uniqueness gives the triple-overlap identities. Gluing these schemes along those actual open isomorphisms produces a scheme \(J_g\) representing \(\mathcal P_g\). The universal rigidified lines glue as well. It is locally of finite type and smooth of dimension \(g\), since its charts are opens of the smooth \(g\)-dimensional scheme \(S_g(C)\).
+
+For completeness, the open \(U\) is nonempty over \(k\). Apply (JC12) to \(L=\mathcal O_C(gP)\) over \(F=k\); JC3 then supplies a \(k\)-point of \(U\). This also covers \(g=0\), when \(S_0(C)\) is a point. \(\square\)
+
+#### 2K.5. A closed diagonal that detects infinitesimal differences
+
+**JC5.** The diagonal of \(J_g\) is a closed immersion. It suffices to check on products of its Noetherian charts. For two rigidified degree-\(g\) lines there, put \(N=L_1\otimes L_2^{-1}\), with its induced rigidification. Equality is precisely existence of a normalized isomorphism \(\mathcal O\to N\), which is unique if it exists.
+
+Work near a point \(t\) of an affine chart product \(\operatorname{Spec}R\). A degree-zero line over a field has a section if and only if it is trivial: a nonzero section has an effective degree-zero zero divisor, hence no zeros, and trivializes the line. If \(N_{\bar t}\) is nontrivial, its \(H^0\) is zero. FC10–FC14 give \(P^0=0\) in a finite free complex near \(t\); no normalized section exists after any nonempty base change into that neighbourhood.
+
+If \(N_{\bar t}\) is trivial, the residue-field dimensions are \(h^0=1\) and \(h^1=g\). The same cancellation gives, locally,
+\[
+ P^\bullet=[R e\xrightarrow{\ d\ }R^g],\qquad
+ d(e)=(a_1,\ldots,a_g),
+ \tag{JC13}
+\]
+computing cohomology after every base change. There is an \(R\)-linear evaluation map \(P^0\to R\) along \(P\). To construct it, use the actual comparison chain map from the finite complex to the affine Čech complex in FC10. Take the degree-zero component on an affine of \(C_R\) containing \(P_R\), restrict to \(P_R\), and apply the rigidification. On cycles this is ordinary evaluation, with the same assertion after every base change. On the residue-field basis its value is nonzero, since the trivial degree-zero fibre line has a normalized constant section. Shrink and rescale \(e\) to make its evaluation \(1\).
+
+For every \(R\)-algebra \(R'\), a normalized cycle in \(P^0\otimes R'\) must now be \(e\otimes1\). It is a cycle exactly when
+\[
+ a_1=\cdots=a_g=0\text{ in }R'.
+ \tag{JC14}
+\]
+The resulting section of \(N_{R'}\) evaluates to \(1\) at \(P_{R'}\). On every geometric fibre it is therefore nonzero, and degree zero makes it nowhere zero. A map between invertible modules which is a unit at every residue field is an isomorphism on stalks, even on a nonreduced scheme. Thus (JC14) represents the normalized isomorphism functor by the closed subscheme \(\operatorname{Spec}R/(a_1,\ldots,a_g)\).
+
+These local closed subschemes glue: they represent the same subfunctor, and the rigidified isomorphism is unique. The empty locus in the other case glues in the same way. Consequently the diagonal is a closed immersion. In particular, (JC14) is an ideal of actual equations, not just a statement about which geometric points have trivial line bundle. \(\square\)
+
+#### 2K.6. Properness, the group law and the universal line
+
+**JC6.** The universal divisor defines an Abel map
+\[
+ b_g:S_g(C)\longrightarrow J_g,\qquad D\longmapsto\mathcal O(D)^\natural .
+ \tag{JC15}
+\]
+It is surjective, including after every field extension: Riemann–Roch gives \(h^0(L)\ge1\) for every degree-\(g\) line, whose nonzero section supplies its divisor. Surjectivity on arbitrary base changes follows by this assertion on geometric fibres. Since \(S_g(C)\) is quasi-compact, its surjective image \(J_g\) is quasi-compact. A locally finite-type scheme which is quasi-compact is of finite type here: choose finitely many finite-type affine chart opens covering it. It is separated by JC5.
+
+For any \(k\)-scheme \(T\) and closed subset \(Z\subset (J_g)_T\), its inverse image in \(S_g(C)_T\) is closed. Its image in \(T\) is closed by properness of \(S_g(C)\), and equals the image of \(Z\) because (JC15) is universally surjective. Thus \(J_g\to\operatorname{Spec}k\) is universally closed. Along with finite type and separatedness, this proves properness. After every algebraically closed field extension it is irreducible, as the surjective image of the geometrically integral \(S_g(C)\), and is reduced because it is smooth. Hence \(J_g\) is geometrically integral.
+
+The normalized line \(A_g=\mathcal O_C(gP)^\natural\) gives an isomorphism of functors \(\mathcal P_0\to\mathcal P_g\) by tensor product. Transporting the representation along it gives \(J=J_0\), with identity the trivial rigidified line. The tensor and inverse operations on all families, represented using Yoneda, give morphisms
+\[
+ +:J\times_kJ\longrightarrow J,\qquad
+ -:J\longrightarrow J,\qquad 0:\operatorname{Spec}k\longrightarrow J .
+ \tag{JC16}
+\]
+Associativity, commutativity, identity and inverse hold on every parameter scheme because they hold for tensor products of rigidified lines. They are therefore equalities of scheme morphisms. Thus \(J\) is a smooth proper geometrically connected group of dimension \(g\), an abelian variety; CU7 supplies its projectivity and a symmetric ample line, without making projectivity an extra hypothesis.
+
+Translating the universal line on \(J_g\) gives a line \(\mathscr L\) on \(C\times J\), trivialized along \(P\times J\), whose fibre at \(0\) is the trivial rigidified line. For every \(T\),
+\[
+ \operatorname{Hom}_k(T,J)\xrightarrow{\sim}\mathcal P_0(T),\qquad
+ u\longmapsto(\operatorname{id}_C\times u)^*\mathscr L .
+ \tag{JC17}
+\]
+The construction so far proves this over separably closed fields, including imperfect ones. We next descend the scheme and this full universal property. \(\square\)
+#### 2K.7. Descent over an arbitrary field
+
+**JC7.** Return to arbitrary \(k\), still with \(P\in C(k)\), and put \(k_s=k^{\mathrm{sep}}\). The construction over \(k_s\) gives a projective \(J_s\), its group morphisms and its rigidified universal line. These data descend to some finite separable extension \(E/k\), enlarged to be Galois.
+
+Here is why finite descent uses no assumption on characteristic. Choose projective equations for \(J_s\), finite affine covers for its finite products, and finite affine descriptions of the group maps and the line on \(C_{k_s}\times J_s\). Transition maps, their inverses, rigidity maps, identity diagrams and witnesses for the covers involve finitely many coefficients. Include all these coefficients in \(E\). Every coefficient of \(k_s\) lies in a finite separable extension, and a finite list lies in one finite separable extension. The same equations and identities then hold over \(E\), since they already hold after its faithful field extension to \(k_s\). This is the finite-equation proof used in JC1, now applied to the projective presentation and its finite auxiliary data. In particular we obtain a projective \(J_E\) and a rigidified line \(\mathscr L_E\) whose base changes are the specified \(J_s,\mathscr L_s\).
+
+They represent \(\mathcal P_0\) already over \(E\). We spell out detection after \(k_s/E\). This field extension is an affine faithfully flat universally open cover. To verify the last property, for any \(E\)-algebra \(A\) a basic open in
+\[
+ \operatorname{Spec}(A\otimes_E k_s)
+ \tag{JC18}
+\]
+is defined by an element with coefficients in a finite separable intermediate extension \(E'/E\). Its image is the same as the image of the corresponding basic open in \(\operatorname{Spec}(A\otimes_E E')\), since further field extension is faithfully flat and surjective. The latter map is finite locally free and open by FF1. Unions of basic opens prove universal openness. The extension of FD5 proved in FF1 therefore descends scheme morphisms along this cover.
+
+Given any rigidified line on \(C_T\), its pullback to \(T_{k_s}\) gives a unique morphism to \((J_E)_{k_s}=J_s\) by JC6. On the double overlap the two pullbacks agree, since the represented rigidified line agrees and (JC17) holds on all \(k_s\)-schemes. Morphism descent gives \(T\to J_E\). The line obtained by pulling back \(\mathscr L_E\) equals the original line after the cover, hence before it by JC2. Uniqueness is detected after the same cover. Thus \(J_E,\mathscr L_E\) have the claimed universal property over \(E\).
+
+Write \(\Gamma=\operatorname{Gal}(E/k)\). For \(\sigma\in\Gamma\), the conjugate of \(J_E,\mathscr L_E\) represents the same functor, because \(C,P\) are defined over \(k\). Yoneda gives a unique isomorphism between the two representing objects. Composition gives the cocycle identity by uniqueness. The universal rigidified lines also have unique compatible isomorphisms. It remains to make this descent datum effective as a scheme; no quotient by geometric points suffices.
+
+The underlying \(k\)-scheme \(J_E\) is projective: it is closed in \(\mathbf P^n_E\), and the finite map \(\mathbf P^n_E\to\mathbf P^n_k\), together with the finite-cover projectivity proof in Lesson 3, supplies projectivity over \(k\). Each finite \(\Gamma\)-orbit has an affine open neighbourhood by homogeneous avoidance QS1. One may choose closed specializations of any nonclosed orbit points first; an open containing a specialization contains its generizations. Intersect the finitely many translates of such a neighbourhood. The intersection is affine, since in a separated \(k\)-scheme the intersection of two affine opens is the closed inverse image of the diagonal in their affine product. We obtain \(\Gamma\)-stable affine opens \(V=\operatorname{Spec}B\) covering \(J_E\).
+
+On each one, the semilinear action is an algebra descent datum: the field identity \(E\otimes_kE\simeq\prod_{\sigma\in\Gamma}E\) of Lesson 1 turns its cocycle into the ordinary affine descent cocycle. FD2–FD3 give
+\[
+ D=B^\Gamma,\qquad E\otimes_kD\xrightarrow{\sim}B .
+ \tag{JC19}
+\]
+Thus \(V\to\operatorname{Spec}D\) is the base change of the finite étale cover \(\operatorname{Spec}E\to\operatorname{Spec}k\). No division by \(|\Gamma|\) is used. The images of stable overlaps are open: their complements are stable closed subsets of \(V\), whose images are closed under this finite map; the inverse images of those images are exactly the complements. Indeed \(\Gamma\) acts transitively on the points of each fibre, as follows by splitting \(E\otimes_k\kappa\) over an algebraic closure of \(\kappa\) and permuting the embeddings of \(E\). The overlap morphisms descend by FD5, and their inverse and triple identities descend too. Glue the \(\operatorname{Spec}D\)'s on these opens to obtain \(J/k\) with
+\[
+ J\times_kE\simeq J_E .
+ \tag{JC20}
+\]
+Finite presentation descends by FD4, and the closed diagonal by FD6. Smoothness is detected after the field extension by the standard smooth-chart and fibre argument SF1–SF3 and QS6. Geometric integrality follows after embedding \(E\) into an algebraic closure. For any \(T\) and closed subset of \(J_T\), pull it back to \((J_E)_T\); properness of \(J_E\) over \(k\) and surjectivity of the finite cover show that its image in \(T\) is closed. Hence \(J\) is proper. The group maps descend by FD5, and their identities do also. It is therefore an abelian variety of dimension \(g\), projective by CU7.
+
+FD2–FD4 descend the universal line on \(C\times J_E\) and its rigidification; the unique rigidified isomorphisms give its descent cocycle. The sheaf property JC2 and finite-cover morphism descent FD5 detect (JC17) after \(E/k\), so (JC17) holds over the original field for every \(T\). Tensoring with
+\[
+ A_d=\mathcal O_C(dP)^\natural
+ \tag{JC21}
+\]
+represents every \(\mathcal P_d\) by a translated copy \(J_d\) of \(J\). Degree is locally constant by CE3 and DC6, so \(\coprod_{d\in\mathbf Z}J_d\) represents the whole rigidified Picard functor. This proves representability and the universal line over arbitrary fields with the specified rational point.
+
+If the original curve has no rational point, it has one after a finite separable extension: a smooth chart over \(k_s\) gives a \(k_s\)-point as in JC4, and its finitely many coordinates lie in a finite separable extension. The pointed construction is therefore available after such an extension. We have not identified the unpointed relative Picard sheaf over \(k\) with the raw quotient (JC6) on every \(k\)-scheme without a section. \(\square\)
+
+#### 2K.8. The high-degree Abel map is a projective bundle
+
+**JC8.** Let \(d\ge\max(0,2g-1)\). Use (JC17) and (JC21) to put the universal degree-\(d\) line \(L_d\) on \(C\times J\). Duality SD1–SD7 gives, on every geometric fibre,
+\[
+ H^1(C_{\bar t},(L_d)_{\bar t})^\vee
+ =H^0(C_{\bar t},\omega_C\otimes(L_d)_{\bar t}^{-1})=0,
+ \qquad h^0=d+1-g .
+ \tag{JC22}
+\]
+The vanishing holds because \(2g-2-d<0\); a negative-degree line has no nonzero section. By FC15,
+\[
+ E_d=\pi_*L_d\quad\text{is locally free of rank }d+1-g,
+ \quad (E_d)_T\simeq(\pi_T)_*(L_d)_T
+ \tag{JC23}
+\]
+for every \(T\to J\).
+
+Let \(\mathbf P_{\mathrm{lines}}(E_d)\) parameterize rank-one subbundles \(M\hookrightarrow(E_d)_T\) whose quotients are locally free. This is a scheme: on a trivializing open for the rank-\(r\) bundle, glue the \(r\) affine spaces with coordinates \(v_j/v_i\), where the \(i\)-th coordinate of a local generator is a unit. On overlaps the ratios change by the invertible basis matrices of \(E_d\). A locally split rank-one submodule is locally represented by such a vector, and vectors differing by a unit give the same line. This verifies the representing property and gives the usual projective-space bundle with fibre \(\mathbf P^{r-1}\).
+
+Evaluation sends a line subbundle to a section of
+\[
+ (L_d)_T\otimes\pi_T^*M^{-1}.
+ \tag{JC24}
+\]
+On every fibre its vector of sections is nonzero. JC1 gives a finite locally free divisor of degree \(d\), whose rigidified line is \((L_d)_T\): tensoring by the base line \(M^{-1}\) disappears under normalization. Conversely, for a divisor \(D\) representing this degree-\(d\) class, the unique rigidified isomorphism gives
+\[
+ \mathcal O(D)\simeq(L_d)_T\otimes\pi_T^*N,\qquad
+ N=P_T^*\mathcal O(D).
+ \tag{JC25}
+\]
+The canonical divisor section gives a map \(N^{-1}\to(E_d)_T\). Its vector is nonzero in each residue field, so locally some coordinate is a unit. Elementary row operations then split this inclusion with a locally free quotient. Its image is the required line subbundle. Changing local generators does not change it.
+
+The two constructions are inverse: a section of a line has the same zero ideal under these identifications, and the associated section line is recovered from the canonical divisor section. They commute with every base change by JC1 and (JC23). Therefore, as schemes over \(J\),
+\[
+ S_d(C)\xrightarrow{\sim}\mathbf P_{\mathrm{lines}}(E_d),\qquad
+ b_d(D)=\bigl[\mathcal O(D-dP)^\natural\bigr].
+ \tag{JC26}
+\]
+In particular \(b_d\) is smooth and surjective of relative dimension \(d-g\), with Zariski local sections: on each trivializing open choose a coordinate line. This includes \(g=d=0\), with a rank-one bundle and zero-dimensional fibre. \(\square\)
+
+#### 2K.9. Tangents and the differential of the Abel map
+
+**JC9.** There is a natural identification
+\[
+ T_0J\simeq H^1(C,\mathcal O_C).
+ \tag{JC27}
+\]
+To prove it, a rigidified degree-zero line over \(k[\epsilon]/(\epsilon^2)\), with specified reduction to the identity, is trivial on each member of an affine cover of \(C\). Indeed a basis of its reduction lifts on an affine, and Nakayama with nilpotent ideal makes that lift a basis. Its transition functions have form \(1+\epsilon c_{ij}\). The cocycle and change-of-basis equations are
+\[
+ c_{ij}+c_{jk}=c_{ik},\qquad
+ c_{ij}\longmapsto c_{ij}+b_j-b_i .
+ \tag{JC28}
+\]
+Affine Čech cohomology SC1–SC12 thus identifies their classes with \(H^1(C,\mathcal O_C)\). The rigidification does not change those classes: after gluing any representative, its value along \(P\) can be normalized by multiplying by a scalar \(1+\epsilon b\); any two such choices are isomorphic by that scalar. Addition of lines adds cocycles, and replacing \(\epsilon\) by \(a\epsilon\) multiplies them by \(a\), proving the vector-space identification. Its dimension is \(g\), agreeing with the constructed smooth charts.
+
+For an effective divisor \(D\) of degree \(n\), DR5 identifies the divisor tangent space with \(H^0(D,\mathcal O_D(D))\). The differential of the Abel map at \(D\) is the connecting map
+\[
+ H^0(D,\mathcal O_D(D))\xrightarrow{\ \delta\ }H^1(C,\mathcal O_C)
+ \tag{JC29}
+\]
+in the sequence \(0\to\mathcal O_C\to\mathcal O_C(D)\to\mathcal O_D(D)\to0\). To check its sign with the Čech boundary convention, write the local equations as \(f_i\), and a deformation as \(f_i+\epsilon h_i\). The bases \(1/f_i\) of \(\mathcal O(D)\) have transition functions \(f_j/f_i\). Their deformations differ by
+\[
+ \frac{f_j+\epsilon h_j}{f_i+\epsilon h_i}
+ =\frac{f_j}{f_i}
+   \left(1+\epsilon\left(\frac{h_j}{f_j}-\frac{h_i}{f_i}\right)\right).
+ \tag{JC30}
+\]
+The ratios \(h_i/f_i\) lift the corresponding principal parts in \(\mathcal O_D(D)\), and their difference is exactly the Čech boundary in (JC29). This calculation also respects normalization at \(P\), since multiplying a line by a base line changes no class in (JC27).
+
+If \(D\in U\) has degree \(g\), then \(H^0(\mathcal O_C)\to H^0(\mathcal O_C(D))\) is an isomorphism and \(H^1(\mathcal O_C(D))=0\). The long exact sequence makes (JC29) an isomorphism, explaining the degree-\(g\) chart. For \(n\ge\max(0,2g-1)\), its kernel has dimension \(n-g\), the relative dimension of (JC26).
+
+We have constructed the Jacobian and the full divisor maps, not yet the Albanese factorization for maps from \(C\) to other abelian varieties. That factorization, and the geometric construction of the initial semistable period cover, require their own arguments. \(\square\)
+
+#### 2K.10. Graded exercise: the Jacobian on nilpotent families
+
+**Exercise 2K (100 points; ten parts of 10 points).** Use the constructions JC1–JC9, rather than a classification by geometric points.
+
+1. Compute \(J(\mathbf P^1_k)\), its degree-\(d\) components, and the Abel map for \(d\ge0\).
+2. Let \(R=\mathbf F_p[\epsilon]/(\epsilon^3)\) and consider the normalized degree-zero cohomology model
+   \[
+    [Re\xrightarrow{d}R^2],\qquad d(e)=(\epsilon,\epsilon^2),
+    \qquad \operatorname{ev}_P(e)=1.
+    \tag{JCX1}
+   \]
+   Find its kernel, its normalized trivialization locus, and its reductions to \(R/(\epsilon^2)\) and \(\mathbf F_p\). State exactly what this algebraic model does and does not prove geometrically.
+3. On \(\mathbf P^1\), let \(D=P\). Explain why (JC8) is defined even though the canonical divisor section is zero at \(P\).
+4. Over \(R=k[\epsilon]/(\epsilon^2)\), compare the sections \(x^2-\epsilon\) and \(\epsilon\) of the trivial line on \(\mathbf A^1_R\). Check regularity and flatness on arbitrary coefficient modules where applicable.
+5. Replace (JCX1) by \(d(e)=(\epsilon^2,0)\). Compute the normalized locus and the base-change map on \(H^0\) to the residue field. Explain why constancy of geometric fibre dimensions would lose information.
+6. In the translation argument take \(g=4\), \(\deg H=3\) and \(m=2\), assuming the twist has \(H^1=0\). How many points are subtracted, what are all the degrees and section dimensions, and why may they be chosen over the separably closed ground field even for a transcendental extension field?
+7. For \(g=3,d=5\), compute the Abel fibre, the bundle rank and the dimensions. Give two overlapping projective-bundle charts and a valid nilpotent section vector over \(\mathbf F_p[\epsilon]/(\epsilon^3)\). Contrast a vector whose coordinates are all nilpotent.
+8. Calculate the differential of the Abel map at a nonspecial degree-\(g\) divisor, and its kernel for high degree \(d\). Check the transition-function sign in (JC30).
+9. Let \(\operatorname{char}k\ne2\), \(E=k(\theta)\) with \(\theta^2=a\in k^\times\) nonsquare, and \(B=E[z]\). Give \(B\) the semilinear involution \(\sigma(\theta)=-\theta,\sigma(z)=-z\). Compute its invariant algebra and the descent isomorphism. Explain why this is an affine descent example, rather than a construction of a Jacobian.
+10. If \(g=1\), prove that \(Q\mapsto[\mathcal O(Q-P)^\natural]\) is an isomorphism \(C\to J\) of pointed schemes. State the corresponding identity for the degree components and their group operation.
+
+**Full solution.**
+
+1. The two-affine Čech calculation gives \(H^1(\mathbf P^1,\mathcal O)=k[x,x^{-1}]/(k[x]+k[x^{-1}])=0\). Thus \(g=0\). Every degree-zero line over a field is trivial by Riemann–Roch: it has a nonzero section and an effective degree-zero zero divisor. In the construction \(U=S_0\) is a point and there is consequently only one translating class. This proves the full family assertion \(J_0=\operatorname{Spec}k\), rather than just a statement about field points. Tensoring with \(\mathcal O(d)^\natural\) gives all degree components; in particular \(\operatorname{Pic}(\mathbf P^1_k)=\mathbf Z[\mathcal O(1)]\). Thus
+   \[
+    J_0=\operatorname{Spec}k,\qquad J_d\simeq\operatorname{Spec}k,\qquad
+    E_d=H^0(\mathbf P^1,\mathcal O(d))\simeq k^{d+1}.
+    \tag{JCX2}
+   \]
+   Tensoring with the one-dimensional normalization factor changes none of the vector-space ranks. JC8 gives \(S_d(\mathbf P^1)\simeq\mathbf P^d_k\), and its Abel map is the structure map to \(J_d\). This agrees with the homogeneous polynomial construction in Exercise 2J.
+
+2. Write \(r=r_0+r_1\epsilon+r_2\epsilon^2\). Then
+   \[
+    d(re)=(r_0\epsilon+r_1\epsilon^2,r_0\epsilon^2),\qquad
+    \ker d=(\epsilon^2)e .
+    \tag{JCX3}
+   \]
+   A normalized section has coefficient \(1\), not an arbitrary nonzero element of this kernel. It is a cycle only after the coefficients \(\epsilon,\epsilon^2\) vanish. The normalized locus is therefore
+   \[
+    \operatorname{Spec}R/(\epsilon,\epsilon^2)
+      =\operatorname{Spec}\mathbf F_p .
+    \tag{JCX4}
+   \]
+   Over \(R/(\epsilon^2)\) the differential is \((\epsilon,0)\), its kernel is \((\epsilon)e\), and its normalized locus is again the residue field. Over the residue field the differential is zero, its kernel is the whole one-dimensional space, and \(e\) is normalized. Each residue-field observation sees a trivialization, while the actual ring equations exclude one over \(R\). This is an exact finite-complex model of JC5's normalized-cycle calculation. It does not by itself assert that this particular complex is the cohomology of a specified geometric family.
+
+3. If \(x\) is a uniformizer at \(P\), \(\mathcal O(P)\) has local basis \(1/x\). Its canonical section is
+   \[
+     1=x(1/x).
+     \tag{JCX5}
+   \]
+   Its fibre value is zero, but \(P^*\mathcal O(P)\) is the one-dimensional module with basis the class of \(1/x\). Tensoring by the pullback of that module's inverse makes sense. It requires neither a nonzero value of the section nor division by \(x\) in the residue field. This is exactly why (JC8) uses a line and its inverse.
+
+4. For every \(R\)-module \(N\), multiplication by the monic polynomial \(x^2-\epsilon\) is injective on \(N[x]\): the highest nonzero coefficient of a nonzero polynomial remains its highest coefficient, shifted by degree two. Monic division also works with coefficients in \(N\), so
+   \[
+    N[x]/(x^2-\epsilon)N[x]\simeq N\oplus Nx.
+    \tag{JCX6}
+   \]
+   In particular its zero algebra is free of rank two over \(R\), with multiplication \(x^2=\epsilon\); over \(k\) its dimension is four, rather than two. Its special fibre has length two and a double point. In contrast \(\epsilon\) is killed by \(\epsilon\), and is zero on the special fibre. Its quotient algebra is \(k[x]\), which is not \(R\)-flat: tensoring \((\epsilon)\hookrightarrow R\) with \(k[x]\) gives a nonzero source mapped to zero. This second section fails the nonzero-fibre hypothesis of JC1.
+
+5. Now
+   \[
+    \ker d=(\epsilon)e,\qquad
+    \text{normalized locus}=\operatorname{Spec}R/(\epsilon^2).
+    \tag{JCX7}
+   \]
+   The module \((\epsilon)\) has length two over \(R\); its tensor with the residue field is one-dimensional, represented by \(\epsilon e\) modulo \(\epsilon^2e\). The base-change map sends that class to zero in the one-dimensional kernel of the zero residue-field differential. It is not an isomorphism. Every geometric point is nevertheless the same residue point, and sees \(h^0=1\). The equation \(\epsilon^2=0\) describes a larger infinitesimal locus than \(\epsilon=0\); geometric points cannot distinguish them.
+
+6. The twist has degree \(4+2\cdot3=10\), hence \(h^0=10+1-4=7\). Subtract six points where successive nonzero sections do not vanish. After \(j\) subtractions,
+   \[
+    \deg L_j=10-j,\qquad h^0(L_j)=7-j,\qquad H^1(L_j)=0
+       \quad(0\le j\le6).
+    \tag{JCX8}
+   \]
+   The final line has degree four and exactly one section. The translating bundle is
+   \[
+     M=\mathcal O(Q_1+\cdots+Q_6)\otimes H^{-2},
+     \qquad \deg M=6-6=0 .
+     \tag{JCX9}
+   \]
+   Infinitely many \(k\)-rational points remain distinct over the extension field. Any given nonzero section on the integral extension curve vanishes at only finitely many of them, so a suitable next point always exists over \(k\). No descent of the original extension-field line is required.
+
+7. Here \(d+1-g=3\), so the Abel fibre is \(\mathbf P^2\); \(J\) has dimension three and \(S_5(C)\) has dimension five. On a trivializing open for \(E_5\), let \(v=(v_0,v_1,v_2)\). The charts with \(v_0\) and \(v_1\) invertible have coordinates
+   \[
+     (u,w)=(v_1/v_0,v_2/v_0),\qquad
+     (u',w')=(v_0/v_1,v_2/v_1)=(u^{-1},w/u)
+     \quad(u\text{ invertible}).
+     \tag{JCX10}
+   \]
+   The vector \((1,\epsilon,\epsilon^2)\) spans a direct summand over the specified nilpotent ring; its quotient is free of rank two, and JC8 gives a divisor family. The vector \((\epsilon,\epsilon^2,0)\) reduces to zero and spans no line subbundle. Calling it nonzero as a vector over the ring does not make it an admissible projective-bundle point.
+
+8. The exact sequence gives
+   \[
+    0\to k\to H^0(C,\mathcal O(D))
+      \to H^0(D,\mathcal O_D(D))
+      \xrightarrow{\delta}H^1(C,\mathcal O_C)
+      \to H^1(C,\mathcal O(D))\to0 .
+    \tag{JCX11}
+   \]
+   At a nonspecial degree-\(g\) divisor the first nontrivial map is an isomorphism \(k\to k\) and the final term is zero; consequently \(\delta\) is an isomorphism of \(g\)-dimensional spaces. In high degree it is surjective, with
+   \[
+       \ker\delta=H^0(C,\mathcal O(D))/k,\qquad
+       \dim\ker\delta=d-g.
+       \tag{JCX12}
+   \]
+   Expanding the quotient of the equations gives \(h_j/f_j-h_i/f_i\), the boundary with convention \(a_j-a_i\); replacing it by its negative while keeping that convention would change the differential sign.
+
+9. Write a polynomial as \(\sum c_nz^n\), with \(c_n=b_n+d_n\theta\), \(b_n,d_n\in k\). Invariance requires \(c_n=(-1)^n\sigma(c_n)\). Thus \(c_n\in k\) for even \(n\) and \(c_n\in k\theta\) for odd \(n\). For \(w=\theta z\), both kinds of invariant monomials are \(k\)-multiples of powers of \(w\), since \(a\) is invertible. Therefore
+   \[
+     B^\Gamma=k[w],\qquad
+     E\otimes_k k[w]\xrightarrow{\sim}E[z],\qquad
+     w\longmapsto\theta z,\quad z\longmapsto\theta^{-1}w .
+     \tag{JCX13}
+   \]
+   The last map denotes the inverse substitution. This verifies algebra descent, including its full ring structure. The affine line in this example is not a proper variety, and no curve Picard universal property was specified for it, so it is not a Jacobian example.
+
+10. Duality gives \(\deg\omega_C=0\); for every degree-one line \(L\), the line \(\omega_C L^{-1}\) has degree \(-1\), so \(H^1(L)=0\). Hence \(U=S_1(C)=C\). JC3 identifies this entire scheme with \(J_1\), and tensoring by \(\mathcal O(-P)^\natural\) identifies \(J_1\) with \(J\). This is an isomorphism on all schemes, with \(P\) sent to the identity. Its group law is characterized by tensor product:
+    \[
+      [\mathcal O(Q-P)^\natural]+[\mathcal O(R-P)^\natural]
+        =[\mathcal O(Q+R-2P)^\natural].
+      \tag{JCX14}
+    \]
+    More generally tensor product sends \(J_d\times J_e\) to \(J_{d+e}\). These are morphisms of the represented functors, not just rules on rational points. \(\square\)
+
 **Theorem 2.4 (full local abelian compatibility; remaining geometric proof obligation).** For every abelian variety over a nonarchimedean local field of characteristic zero, its prime-to-residue-characteristic rational Tate modules have a common Galois-invariant Frobenius-semisimple Weil–Deligne class over \(\overline{\mathbf Q}\).
 
-The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. PM1–PM7 in §2E prove the entire inertia matrix, ramification normalization, finite equivariance and Frobenius-semisimple blocks for supplied integral period data; PM8 gives the stated actual examples. PC1–PC6 in §2F prove that a genuine local-field period presentation gives a nondegenerate rational period valuation pairing and every actual torsion level, transition and action. For an arbitrary abelian variety one must still construct the semiabelian integral extension and locally covering period maps after finite extension, prove their finite point-lifting and kernel properties, and supply the compatible finite model actions. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it; it does not discharge these constructions. The theorem is retained in full generality, and this draft does not claim its full proof complete. FF1–FF8 in §2G supply all-integer finite flat multiplication kernels, canonical closures of finite generic subgroups and generic-map extension for finite étale models, with the nonreduced special fibres retained. They do not construct the general semiabelian model, its finite flat quotients or its period cover. FQ1–FQ6 in §2H construct the finite flat quotient schemes, prove their smoothness and good reduction under every generic isogeny, and identify their semiabelian geometric fibres. IS1–IS8 in §2I supplies the full integral quotient sequence and transfers genuine PC2 period presentations through every isogeny. The initial integral period extension and covering for an arbitrary abelian variety, and any separately claimed dual-model pairing, still require their constructions. DR1–DR8 in §2J constructs smooth proper divisor parameter schemes with full nonreduced families,ordered covers and collision multiplicities. These supply the divisor moduli needed for the Jacobian construction;the Picard gluing and the initial semistable geometric period construction remain to be proved.
+The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, the remaining geometric work includes Albanese factorization and the required domination/reducibility, semistable curve and formal/analytic constructions producing the initial integral extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.
 
 For an elliptic curve the local classification gives every case without invoking the unproved higher-dimensional part. At good places use (6) and \(N=0\). At potentially good places use Lemma 2.3. At potentially multiplicative places use the Tate-curve proof and its quadratic descent in *Elliptic curves over local fields and their Weil–Deligne representations*, §§3–5: the common quadratic splitting character \(\eta_v\) and the common block are
 \[

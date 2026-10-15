@@ -1,0 +1,241 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Simultaneous fixed spaces</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Nonsingular systems of equations over groups)</a><a href="rational-cohomology-of-unitary-groups.html">Previous lesson</a><a href="the-planar-boundary-obstruction.html">Next lesson</a><a href="src/simultaneous-fixed-spaces.md">Editable source</a></nav><main><article><h1 id="simultaneous-fixed-spaces">Simultaneous fixed spaces</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>In the planar argument of the next lesson, the nonsingularity of a system enters through one statement about unitary matrices. Several unitary variables <span class="math" data-tex="\(X_1,\ldots,X_r\)">\(X_1,\ldots,X_r\)</span>, of sizes <span class="math" data-tex="\(k_1,\ldots,k_r\)">\(k_1,\ldots,k_r\)</span>, occur as diagonal blocks, with exponent <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, in block matrices that are then multiplied by arbitrary fixed unitaries <span class="math" data-tex="\(P_j\)">\(P_j\)</span>. If the matrix of signed block counts has full row rank over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, the variables can be chosen so that the fixed spaces of all these matrices together have dimension at least <span class="math" data-tex="\(k_1+\cdots+k_r\)">\(k_1+\cdots+k_r\)</span>. For one variable whose signs add up to <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> this is the lemma of <a href="../the-kervaire-conjecture/a-unitary-with-a-large-fixed-space.html">A unitary with a large fixed space</a>. In general the proof computes an intersection number in the rational cohomology of a product of unitary groups, and the rank condition enters as a product of nested nonzero minors [OpenAI-NS, Theorem 2].</p>
+<ul>
+<li>The theorem (Section 1).</li>
+<li>Target dimensions from nested minors (Section 2).</li>
+<li>The leading term of the incidence class (Section 3).</li>
+<li>The intersection number (Section 4).</li>
+</ul>
+<p>Notation from <a href="rational-cohomology-of-unitary-groups.html">Rational cohomology of unitary groups</a>: cohomology with rational coefficients, the primitive generators <span class="math" data-tex="\(e_{a,d}\)">\(e_{a,d}\)</span> of <span class="math" data-tex="\(H^*(\mathrm U(d))\)">\(H^*(\mathrm U(d))\)</span>, the incidence manifolds <span class="math" data-tex="\(R(d,l)\)">\(R(d,l)\)</span> with projection <span class="math" data-tex="\(p\)">\(p\)</span>, and the classes <span class="math" data-tex="\(\alpha(d,l)\in H^{l^2}(\mathrm U(d))\)">\(\alpha(d,l)\in H^{l^2}(\mathrm U(d))\)</span> dual to <span class="math" data-tex="\(p_*[R(d,l)]\)">\(p_*[R(d,l)]\)</span>.</p>
+<h2 id="1-the-theorem">1. The theorem</h2>
+<p><strong>Theorem 1.1</strong> (simultaneous fixed spaces; [OpenAI-NS, Theorem 2]). Let <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(k_1,\ldots,k_r\ge1\)">\(k_1,\ldots,k_r\ge1\)</span>. For <span class="math" data-tex="\(1\le j\le n\)">\(1\le j\le n\)</span> let <span class="math" data-tex="\(\mathcal B_j\)">\(\mathcal B_j\)</span> be a finite ordered list of pairs <span class="math" data-tex="\((i,s)\)">\((i,s)\)</span> with <span class="math" data-tex="\(1\le i\le r\)">\(1\le i\le r\)</span> and <span class="math" data-tex="\(s\in\{1,-1\}\)">\(s\in\{1,-1\}\)</span>, repetitions allowed, and put
+<span class="math math-display" data-tex="\[
+d_j=\sum_{(i,s)\in\mathcal B_j}k_i,\qquad b_{ij}=\sum_{(i,s)\in\mathcal B_j}s ,
+\]">\[
+d_j=\sum_{(i,s)\in\mathcal B_j}k_i,\qquad b_{ij}=\sum_{(i,s)\in\mathcal B_j}s ,
+\]</span>
+the second sum over the entries with first coordinate <span class="math" data-tex="\(i\)">\(i\)</span>. Suppose that the <span class="math" data-tex="\(r\times n\)">\(r\times n\)</span> matrix <span class="math" data-tex="\(B=(b_{ij})\)">\(B=(b_{ij})\)</span> has rank <span class="math" data-tex="\(r\)">\(r\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. For arbitrary <span class="math" data-tex="\(P_j\in\mathrm U(d_j)\)">\(P_j\in\mathrm U(d_j)\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D=\prod_{i=1}^r\mathrm U(k_i),\\
+F_j(X)=\operatorname{diag}_{(i,s)\in\mathcal B_j}\bigl(X_i^{\,s}\bigr)\,P_j\quad(X\in D).
+\end{gathered}
+\]">\[
+\begin{gathered}
+D=\prod_{i=1}^r\mathrm U(k_i),\\
+F_j(X)=\operatorname{diag}_{(i,s)\in\mathcal B_j}\bigl(X_i^{\,s}\bigr)\,P_j\quad(X\in D).
+\end{gathered}
+\]</span>
+Then there is <span class="math" data-tex="\(X\in D\)">\(X\in D\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{j=1}^n\dim_{\mathbb C}\ker\bigl(F_j(X)-I\bigr)\\
+&amp;\qquad\ge\sum_{i=1}^rk_i .
+\end{aligned}
+\tag{1.1}
+\]">\[
+\begin{aligned}
+&amp;\sum_{j=1}^n\dim_{\mathbb C}\ker\bigl(F_j(X)-I\bigr)\\
+&amp;\qquad\ge\sum_{i=1}^rk_i .
+\end{aligned}
+\tag{1.1}
+\]</span></p>
+<p>Here <span class="math" data-tex="\(\mathrm U(0)\)">\(\mathrm U(0)\)</span> and an empty product of groups are points, and a matrix of size zero has fixed space of dimension zero. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> there is nothing to prove.</p>
+<p><strong>Example 1.2.</strong> Let <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, <span class="math" data-tex="\(k_1=k\)">\(k_1=k\)</span>, <span class="math" data-tex="\(n=1\)">\(n=1\)</span> and <span class="math" data-tex="\(\mathcal B_1=((1,s_1),\ldots,(1,s_N))\)">\(\mathcal B_1=((1,s_1),\ldots,(1,s_N))\)</span> with <span class="math" data-tex="\(\sum_ts_t=\pm1\)">\(\sum_ts_t=\pm1\)</span>. Then <span class="math" data-tex="\(B=(\pm1)\)">\(B=(\pm1)\)</span>, and Theorem 1.1 says that <span class="math" data-tex="\(\operatorname{diag}(X^{s_1},\ldots,X^{s_N})P\)">\(\operatorname{diag}(X^{s_1},\ldots,X^{s_N})P\)</span> fixes a subspace of dimension <span class="math" data-tex="\(k\)">\(k\)</span> for some <span class="math" data-tex="\(X\in\mathrm U(k)\)">\(X\in\mathrm U(k)\)</span>: this is Lemma 5.1 of <a href="../the-kervaire-conjecture/a-unitary-with-a-large-fixed-space.html">A unitary with a large fixed space</a>. If <span class="math" data-tex="\(\sum_ts_t=0\)">\(\sum_ts_t=0\)</span>, the conclusion can fail (Exercise 5.2).</p>
+<h2 id="2-target-dimensions-from-nested-minors">2. Target dimensions from nested minors</h2>
+<p>For a matrix <span class="math" data-tex="\(B\)">\(B\)</span> and index lists, <span class="math" data-tex="\(B[1,\ldots,t\mid j_1,\ldots,j_t]\)">\(B[1,\ldots,t\mid j_1,\ldots,j_t]\)</span> denotes the square submatrix with rows <span class="math" data-tex="\(1,\ldots,t\)">\(1,\ldots,t\)</span> and columns <span class="math" data-tex="\(j_1,\ldots,j_t\)">\(j_1,\ldots,j_t\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be an <span class="math" data-tex="\(r\times n\)">\(r\times n\)</span> rational matrix of rank <span class="math" data-tex="\(r\)">\(r\)</span>. There are distinct columns <span class="math" data-tex="\(j_1,\ldots,j_r\)">\(j_1,\ldots,j_r\)</span> such that the square matrices <span class="math" data-tex="\(B_t=B[1,\ldots,t\mid j_1,\ldots,j_t]\)">\(B_t=B[1,\ldots,t\mid j_1,\ldots,j_t]\)</span>, <span class="math" data-tex="\(1\le t\le r\)">\(1\le t\le r\)</span>, satisfy
+<span class="math math-display" data-tex="\[
+\det B_t\ne0 .
+\tag{2.1}
+\]">\[
+\det B_t\ne0 .
+\tag{2.1}
+\]</span></p>
+<p><em>Proof.</em> The rows of <span class="math" data-tex="\(B\)">\(B\)</span> are linearly independent, so for each <span class="math" data-tex="\(t\)">\(t\)</span> the first <span class="math" data-tex="\(t\)">\(t\)</span> rows have rank <span class="math" data-tex="\(t\)">\(t\)</span>, and the columns of <span class="math" data-tex="\(B\)">\(B\)</span>, cut down to these rows, span <span class="math" data-tex="\(\mathbb Q^t\)">\(\mathbb Q^t\)</span>. Choose the columns one at a time. Suppose that <span class="math" data-tex="\(j_1,\ldots,j_{t-1}\)">\(j_1,\ldots,j_{t-1}\)</span> satisfy (2.1) up to <span class="math" data-tex="\(t-1\)">\(t-1\)</span>, so that these columns, cut down to rows <span class="math" data-tex="\(1,\ldots,t-1\)">\(1,\ldots,t-1\)</span>, are linearly independent (for <span class="math" data-tex="\(t=1\)">\(t=1\)</span> there is nothing to suppose). Then the same columns cut down to rows <span class="math" data-tex="\(1,\ldots,t\)">\(1,\ldots,t\)</span> are linearly independent, and since the cut-down columns span <span class="math" data-tex="\(\mathbb Q^t\)">\(\mathbb Q^t\)</span>, some column <span class="math" data-tex="\(j_t\)">\(j_t\)</span> is not in the span of these <span class="math" data-tex="\(t-1\)">\(t-1\)</span> vectors. It differs from <span class="math" data-tex="\(j_1,\ldots,j_{t-1}\)">\(j_1,\ldots,j_{t-1}\)</span>, the <span class="math" data-tex="\(t\)">\(t\)</span> cut-down columns form a basis of <span class="math" data-tex="\(\mathbb Q^t\)">\(\mathbb Q^t\)</span>, and (2.1) holds for <span class="math" data-tex="\(t\)">\(t\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Theorem 1.1, first step.</em> Let <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> and order the variables so that <span class="math" data-tex="\(k_1\ge k_2\ge\cdots\ge k_r\)">\(k_1\ge k_2\ge\cdots\ge k_r\)</span>; this permutes the rows of <span class="math" data-tex="\(B\)">\(B\)</span> and keeps its rank. Choose columns as in Lemma 2.1 and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+l_{j_t}=k_t\quad(1\le t\le r),\\
+l_j=0\ \text{ for the other }j.
+\end{gathered}
+\]">\[
+\begin{gathered}
+l_{j_t}=k_t\quad(1\le t\le r),\\
+l_j=0\ \text{ for the other }j.
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(l_j\le d_j\)">\(l_j\le d_j\)</span>: for <span class="math" data-tex="\(j=j_t\)">\(j=j_t\)</span>, the nonzero minor (2.1) has a nonzero entry <span class="math" data-tex="\(b_{i,j_t}\)">\(b_{i,j_t}\)</span> with <span class="math" data-tex="\(i\le t\)">\(i\le t\)</span>, so <span class="math" data-tex="\(\mathcal B_{j_t}\)">\(\mathcal B_{j_t}\)</span> contains a block of size <span class="math" data-tex="\(k_i\ge k_t\)">\(k_i\ge k_t\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_jl_j=\sum_ik_i,\\
+\sum_jl_j^2=\sum_ik_i^2=\dim D .
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\sum_jl_j=\sum_ik_i,\\
+\sum_jl_j^2=\sum_ik_i^2=\dim D .
+\end{gathered}
+\tag{2.2}
+\]</span>
+We shall find <span class="math" data-tex="\(X\in D\)">\(X\in D\)</span> with <span class="math" data-tex="\(\dim\ker(F_j(X)-I)\ge l_j\)">\(\dim\ker(F_j(X)-I)\ge l_j\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span> simultaneously; by (2.2) this gives (1.1).</p>
+<h2 id="3-the-leading-term-of-the-incidence-class">3. The leading term of the incidence class</h2>
+<p><strong>Lemma 3.1</strong> ([OpenAI-NS, (2.7)]). For <span class="math" data-tex="\(0\le l\le d\)">\(0\le l\le d\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha(d,l)=c_{d,l}\,e_{1,d}e_{2,d}\cdots e_{l,d}+\rho ,\\
+c_{d,l}\ne0 ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\alpha(d,l)=c_{d,l}\,e_{1,d}e_{2,d}\cdots e_{l,d}+\rho ,\\
+c_{d,l}\ne0 ,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a combination of products of fewer than <span class="math" data-tex="\(l\)">\(l\)</span> generators.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(l=0\)">\(l=0\)</span>, <span class="math" data-tex="\(\alpha(d,0)=1\)">\(\alpha(d,0)=1\)</span> and <span class="math" data-tex="\(c_{d,0}=1\)">\(c_{d,0}=1\)</span>. Let <span class="math" data-tex="\(l\ge1\)">\(l\ge1\)</span>. A product of <span class="math" data-tex="\(u\)">\(u\)</span> distinct generators has degree at least <span class="math" data-tex="\(1+3+\cdots+(2u-1)=u^2\)">\(1+3+\cdots+(2u-1)=u^2\)</span>, and <span class="math" data-tex="\(\alpha(d,l)\)">\(\alpha(d,l)\)</span> has degree <span class="math" data-tex="\(l^2\)">\(l^2\)</span>. So its terms have at most <span class="math" data-tex="\(l\)">\(l\)</span> generators, and a term with exactly <span class="math" data-tex="\(l\)">\(l\)</span> generators has degrees <span class="math" data-tex="\(1,3,\ldots,2l-1\)">\(1,3,\ldots,2l-1\)</span>: it is a multiple of <span class="math" data-tex="\(e_{1,d}\cdots e_{l,d}\)">\(e_{1,d}\cdots e_{l,d}\)</span>. Let <span class="math" data-tex="\(c_{d,l}\)">\(c_{d,l}\)</span> be the coefficient.</p>
+<p>To show <span class="math" data-tex="\(c_{d,l}\ne0\)">\(c_{d,l}\ne0\)</span>, consider
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f:\mathrm U(l)\to\mathrm U(d),\\
+f(X)=X\oplus(-I_{d-l}).
+\end{gathered}
+\]">\[
+\begin{gathered}
+f:\mathrm U(l)\to\mathrm U(d),\\
+f(X)=X\oplus(-I_{d-l}).
+\end{gathered}
+\]</span>
+A pair <span class="math" data-tex="\((X,(W,E))\)">\((X,(W,E))\)</span> with <span class="math" data-tex="\(f(X)=p(W,E)\)">\(f(X)=p(W,E)\)</span> has <span class="math" data-tex="\(W=X\oplus(-I_{d-l})\)">\(W=X\oplus(-I_{d-l})\)</span> fixing an <span class="math" data-tex="\(l\)">\(l\)</span>-dimensional subspace <span class="math" data-tex="\(E\)">\(E\)</span> pointwise; the fixed vectors of <span class="math" data-tex="\(W\)">\(W\)</span> lie in <span class="math" data-tex="\(\mathbb C^l\oplus0\)">\(\mathbb C^l\oplus0\)</span>, so <span class="math" data-tex="\(E=\mathbb C^l\oplus0\)">\(E=\mathbb C^l\oplus0\)</span> and <span class="math" data-tex="\(X=I_l\)">\(X=I_l\)</span>. So there is exactly one pair, <span class="math" data-tex="\(X=I_l\)">\(X=I_l\)</span>, <span class="math" data-tex="\(W_0=I_l\oplus(-I_{d-l})\)">\(W_0=I_l\oplus(-I_{d-l})\)</span>, <span class="math" data-tex="\(E_0=\mathbb C^l\oplus0\)">\(E_0=\mathbb C^l\oplus0\)</span>.</p>
+<p>At this pair the tangent images of <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> together span the tangent space <span class="math" data-tex="\(\mathfrak u(d)W_0\)">\(\mathfrak u(d)W_0\)</span> of <span class="math" data-tex="\(\mathrm U(d)\)">\(\mathrm U(d)\)</span> at <span class="math" data-tex="\(W_0\)">\(W_0\)</span>, where <span class="math" data-tex="\(\mathfrak u(d)\)">\(\mathfrak u(d)\)</span> is the space of skew-Hermitian matrices. Write matrices in blocks for <span class="math" data-tex="\(\mathbb C^d=E_0\oplus E_0^\perp\)">\(\mathbb C^d=E_0\oplus E_0^\perp\)</span>. The curves <span class="math" data-tex="\(f(e^{tA})=e^{tA}\oplus(-I_{d-l})\)">\(f(e^{tA})=e^{tA}\oplus(-I_{d-l})\)</span>, <span class="math" data-tex="\(A\in\mathfrak u(l)\)">\(A\in\mathfrak u(l)\)</span>, give the tangent vectors <span class="math" data-tex="\(\operatorname{diag}(A,0)\)">\(\operatorname{diag}(A,0)\)</span>. For <span class="math" data-tex="\(p\)">\(p\)</span>, use the chart of Lemma 2.1 of <a href="../the-kervaire-conjecture/a-unitary-with-a-large-fixed-space.html">A unitary with a large fixed space</a> at <span class="math" data-tex="\((W_0,E_0)\)">\((W_0,E_0)\)</span>, with <span class="math" data-tex="\(g=I\)">\(g=I\)</span> and <span class="math" data-tex="\(Y_1=-I_{d-l}\)">\(Y_1=-I_{d-l}\)</span>: with <span class="math" data-tex="\(K_Z=\begin{pmatrix}0&amp;-Z^*\\Z&amp;0\end{pmatrix}\)">\(K_Z=\begin{pmatrix}0&amp;-Z^*\\Z&amp;0\end{pmatrix}\)</span>, the curves
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;t\mapsto p\,\chi(tZ,tB)\\
+&amp;\quad=e^{tK_Z}\bigl(I_l\oplus(-e^{tB})\bigr)e^{-tK_Z}
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;t\mapsto p\,\chi(tZ,tB)\\
+&amp;\quad=e^{tK_Z}\bigl(I_l\oplus(-e^{tB})\bigr)e^{-tK_Z}
+\end{aligned}
+\]</span>
+have at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> the tangent vectors
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;K_ZW_0-W_0K_Z+\operatorname{diag}(0,-B)\\
+&amp;\quad=\begin{pmatrix}0&amp;2Z^*\\2Z&amp;-B\end{pmatrix}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;K_ZW_0-W_0K_Z+\operatorname{diag}(0,-B)\\
+&amp;\quad=\begin{pmatrix}0&amp;2Z^*\\2Z&amp;-B\end{pmatrix}.
+\end{aligned}
+\]</span>
+Multiplied on the right by <span class="math" data-tex="\(W_0^{-1}=W_0\)">\(W_0^{-1}=W_0\)</span>, the sums of these vectors are the matrices <span class="math" data-tex="\(\begin{pmatrix}A&amp;-2Z^*\\2Z&amp;B\end{pmatrix}\)">\(\begin{pmatrix}A&amp;-2Z^*\\2Z&amp;B\end{pmatrix}\)</span>, and every skew-Hermitian matrix has this form. By (INT)1, <span class="math" data-tex="\(\langle f^*\alpha(d,l),[\mathrm U(l)]\rangle=\pm1\)">\(\langle f^*\alpha(d,l),[\mathrm U(l)]\rangle=\pm1\)</span>.</p>
+<p>Joining <span class="math" data-tex="\(-I_{d-l}\)">\(-I_{d-l}\)</span> to <span class="math" data-tex="\(I_{d-l}\)">\(I_{d-l}\)</span> by a path of unitaries shows that <span class="math" data-tex="\(f\)">\(f\)</span> is homotopic to the block inclusion <span class="math" data-tex="\(\iota_{l,d}\)">\(\iota_{l,d}\)</span>, so by Lemma 2.1(3) of <a href="rational-cohomology-of-unitary-groups.html">Rational cohomology of unitary groups</a>, <span class="math" data-tex="\(f^*e_{a,d}=e_{a,l}\)">\(f^*e_{a,d}=e_{a,l}\)</span> for <span class="math" data-tex="\(a\le l\)">\(a\le l\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> for <span class="math" data-tex="\(a&gt;l\)">\(a&gt;l\)</span>. A product of fewer than <span class="math" data-tex="\(l\)">\(l\)</span> generators of <span class="math" data-tex="\(H^*(\mathrm U(l))\)">\(H^*(\mathrm U(l))\)</span> has degree less than <span class="math" data-tex="\(l^2\)">\(l^2\)</span>, so <span class="math" data-tex="\(f^*\rho\)">\(f^*\rho\)</span>, which has degree <span class="math" data-tex="\(l^2\)">\(l^2\)</span>, is <span class="math" data-tex="\(0\)">\(0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pm1&amp;=\langle f^*\alpha(d,l),[\mathrm U(l)]\rangle\\
+&amp;=c_{d,l}\,\langle e_{1,l}\cdots e_{l,l},[\mathrm U(l)]\rangle ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\pm1&amp;=\langle f^*\alpha(d,l),[\mathrm U(l)]\rangle\\
+&amp;=c_{d,l}\,\langle e_{1,l}\cdots e_{l,l},[\mathrm U(l)]\rangle ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(c_{d,l}\ne0\)">\(c_{d,l}\ne0\)</span>. For <span class="math" data-tex="\(l=d\)">\(l=d\)</span> the complementary blocks are absent and the same argument applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-intersection-number">4. The intersection number</h2>
+<p>Write <span class="math" data-tex="\(e^{(i)}_a\)">\(e^{(i)}_a\)</span> for the generator of <span class="math" data-tex="\(H^*(D)\)">\(H^*(D)\)</span> pulled back from the <span class="math" data-tex="\(i\)">\(i\)</span>-th factor. By Lemma 3.1 of <a href="rational-cohomology-of-unitary-groups.html">Rational cohomology of unitary groups</a>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F_j^*e_{a,d_j}=\sum_{i:\ k_i\ge a}b_{ij}\,e^{(i)}_a\\
+(1\le a\le d_j).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+F_j^*e_{a,d_j}=\sum_{i:\ k_i\ge a}b_{ij}\,e^{(i)}_a\\
+(1\le a\le d_j).
+\end{gathered}
+\tag{4.1}
+\]</span>
+In particular <span class="math" data-tex="\(F_j^*\)">\(F_j^*\)</span> maps a product of <span class="math" data-tex="\(u\)">\(u\)</span> generators to a combination of products of <span class="math" data-tex="\(u\)">\(u\)</span> generators.</p>
+<p><strong>Lemma 4.1.</strong> The class
+<span class="math math-display" data-tex="\[
+\Omega=\prod_{j=1}^nF_j^*\alpha(d_j,l_j)\in H^{\dim D}(D)
+\]">\[
+\Omega=\prod_{j=1}^nF_j^*\alpha(d_j,l_j)\in H^{\dim D}(D)
+\]</span>
+satisfies <span class="math" data-tex="\(\langle\Omega,[D]\rangle\ne0\)">\(\langle\Omega,[D]\rangle\ne0\)</span>.</p>
+<p><em>Proof.</em> By (2.2), <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> has degree <span class="math" data-tex="\(\sum_jl_j^2=\dim D\)">\(\sum_jl_j^2=\dim D\)</span>. A nonzero product of generators of top degree contains every one of the <span class="math" data-tex="\(\sum_ik_i\)">\(\sum_ik_i\)</span> generators of <span class="math" data-tex="\(H^*(D)\)">\(H^*(D)\)</span>. By Lemma 3.1 and (4.1), expanding the product gives terms with at most <span class="math" data-tex="\(\sum_jl_j=\sum_ik_i\)">\(\sum_jl_j=\sum_ik_i\)</span> generators, with equality only for the product of the leading terms. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Omega&amp;=\Bigl(\prod_jc_{d_j,l_j}\Bigr)\prod_j\prod_{a=1}^{l_j}F_j^*e_{a,d_j}\\
+&amp;\quad+(\text{terms that vanish}\\
+&amp;\qquad\text{in top degree}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Omega&amp;=\Bigl(\prod_jc_{d_j,l_j}\Bigr)\prod_j\prod_{a=1}^{l_j}F_j^*e_{a,d_j}\\
+&amp;\quad+(\text{terms that vanish}\\
+&amp;\qquad\text{in top degree}).
+\end{aligned}
+\]</span>
+Group the factors of degree <span class="math" data-tex="\(2a-1\)">\(2a-1\)</span>, for <span class="math" data-tex="\(1\le a\le k_1\)">\(1\le a\le k_1\)</span>; reordering factors of odd degree only changes the overall sign. Let <span class="math" data-tex="\(t_a=\#\{i:k_i\ge a\}\)">\(t_a=\#\{i:k_i\ge a\}\)</span>. Since <span class="math" data-tex="\(k_1\ge\cdots\ge k_r\)">\(k_1\ge\cdots\ge k_r\)</span>, the rows with <span class="math" data-tex="\(k_i\ge a\)">\(k_i\ge a\)</span> are <span class="math" data-tex="\(1,\ldots,t_a\)">\(1,\ldots,t_a\)</span>, and the chosen columns with <span class="math" data-tex="\(l_j\ge a\)">\(l_j\ge a\)</span> are <span class="math" data-tex="\(j_1,\ldots,j_{t_a}\)">\(j_1,\ldots,j_{t_a}\)</span>. By (4.1), the factors of degree <span class="math" data-tex="\(2a-1\)">\(2a-1\)</span> multiply to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\prod_{t=1}^{t_a}\Bigl(\sum_{i=1}^{t_a}b_{i,j_t}e^{(i)}_a\Bigr)\\
+&amp;\quad=\det B[1,\ldots,t_a\mid j_1,\ldots,j_{t_a}]\\
+&amp;\qquad\cdot e^{(1)}_a\cdots e^{(t_a)}_a ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\prod_{t=1}^{t_a}\Bigl(\sum_{i=1}^{t_a}b_{i,j_t}e^{(i)}_a\Bigr)\\
+&amp;\quad=\det B[1,\ldots,t_a\mid j_1,\ldots,j_{t_a}]\\
+&amp;\qquad\cdot e^{(1)}_a\cdots e^{(t_a)}_a ,
+\end{aligned}
+\]</span>
+because the <span class="math" data-tex="\(e^{(i)}_a\)">\(e^{(i)}_a\)</span> anticommute and square to zero, so a product of linear combinations of them is the determinant of the coefficients times their product. Every generator <span class="math" data-tex="\(e^{(i)}_a\)">\(e^{(i)}_a\)</span> of <span class="math" data-tex="\(H^*(D)\)">\(H^*(D)\)</span>, which has <span class="math" data-tex="\(a\le k_i\)">\(a\le k_i\)</span>, that is <span class="math" data-tex="\(i\le t_a\)">\(i\le t_a\)</span>, occurs exactly once. So, up to sign, the coefficient of the top class <span class="math" data-tex="\(\prod_{i,a}e^{(i)}_a\)">\(\prod_{i,a}e^{(i)}_a\)</span> in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\prod_{j=1}^nc_{d_j,l_j}\\
+&amp;\quad\cdot\prod_{a=1}^{k_1}\det B[1,\ldots,t_a\mid j_1,\ldots,j_{t_a}],
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\prod_{j=1}^nc_{d_j,l_j}\\
+&amp;\quad\cdot\prod_{a=1}^{k_1}\det B[1,\ldots,t_a\mid j_1,\ldots,j_{t_a}],
+\end{aligned}
+\]</span>
+a product of nonzero numbers by Lemma 3.1 and (2.1). The top class of the oriented manifold <span class="math" data-tex="\(D\)">\(D\)</span> evaluates nonzero on <span class="math" data-tex="\([D]\)">\([D]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Theorem 1.1, conclusion.</em> Let <span class="math" data-tex="\(N=\prod_j\mathrm U(d_j)\)">\(N=\prod_j\mathrm U(d_j)\)</span>, <span class="math" data-tex="\(R=\prod_jR(d_j,l_j)\)">\(R=\prod_jR(d_j,l_j)\)</span>, <span class="math" data-tex="\(p=\prod_jp\)">\(p=\prod_jp\)</span> and <span class="math" data-tex="\(F=(F_1,\ldots,F_n):D\to N\)">\(F=(F_1,\ldots,F_n):D\to N\)</span>. By (2.2),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\dim D+\dim R&amp;=\sum_ik_i^2+\sum_j(d_j^2-l_j^2)\\
+&amp;=\sum_jd_j^2=\dim N .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\dim D+\dim R&amp;=\sum_ik_i^2+\sum_j(d_j^2-l_j^2)\\
+&amp;=\sum_jd_j^2=\dim N .
+\end{aligned}
+\]</span> By (INT)2, the Poincaré dual of <span class="math" data-tex="\(p_*[R]\)">\(p_*[R]\)</span> is <span class="math" data-tex="\(\pm\prod_j\operatorname{pr}_j^*\alpha(d_j,l_j)\)">\(\pm\prod_j\operatorname{pr}_j^*\alpha(d_j,l_j)\)</span>, whose pullback by <span class="math" data-tex="\(F\)">\(F\)</span> is <span class="math" data-tex="\(\pm\Omega\)">\(\pm\Omega\)</span>. By Lemma 4.1 and (INT)1, <span class="math" data-tex="\(F(D)\)">\(F(D)\)</span> meets <span class="math" data-tex="\(p(R)\)">\(p(R)\)</span>: there are <span class="math" data-tex="\(X\in D\)">\(X\in D\)</span> and <span class="math" data-tex="\((W_j,E_j)\in R(d_j,l_j)\)">\((W_j,E_j)\in R(d_j,l_j)\)</span> with <span class="math" data-tex="\(F_j(X)=W_j\)">\(F_j(X)=W_j\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>. Then <span class="math" data-tex="\(F_j(X)\)">\(F_j(X)\)</span> fixes the <span class="math" data-tex="\(l_j\)">\(l_j\)</span>-dimensional space <span class="math" data-tex="\(E_j\)">\(E_j\)</span> pointwise, and (2.2) gives (1.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The minors in (2.1) may be even, so the argument needs rational rather than mod-two coefficients; this is where it differs from the single-variable case of <a href="../the-kervaire-conjecture/a-unitary-with-a-large-fixed-space.html">A unitary with a large fixed space</a>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Let <span class="math" data-tex="\(B=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}\)">\(B=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}\)</span>. Find columns as in Lemma 2.1, the target dimensions <span class="math" data-tex="\(l_j\)">\(l_j\)</span> when <span class="math" data-tex="\(k_1=k_2=1\)">\(k_1=k_2=1\)</span>, and the coefficient of the top class in Lemma 4.1 up to the constants <span class="math" data-tex="\(c_{d,l}\)">\(c_{d,l}\)</span>.</p>
+<p><strong>5.2</strong> (easy). Let <span class="math" data-tex="\(r=n=1\)">\(r=n=1\)</span>, <span class="math" data-tex="\(k_1=1\)">\(k_1=1\)</span>, <span class="math" data-tex="\(\mathcal B_1=((1,1),(1,-1))\)">\(\mathcal B_1=((1,1),(1,-1))\)</span> and <span class="math" data-tex="\(P=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)">\(P=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span>. Show that <span class="math" data-tex="\(\operatorname{diag}(X,X^{-1})P\)">\(\operatorname{diag}(X,X^{-1})P\)</span> has no fixed vector for any <span class="math" data-tex="\(X\in\mathrm U(1)\)">\(X\in\mathrm U(1)\)</span>.</p>
+<p><strong>5.3</strong> (medium). Let <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, <span class="math" data-tex="\(k_1=k_2=1\)">\(k_1=k_2=1\)</span>, <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(\mathcal B_1=((1,1),(2,1))\)">\(\mathcal B_1=((1,1),(2,1))\)</span> and <span class="math" data-tex="\(P_1=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)">\(P_1=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span>. Show that every row of <span class="math" data-tex="\(B\)">\(B\)</span> is nonzero, that <span class="math" data-tex="\(B\)">\(B\)</span> has rank <span class="math" data-tex="\(1\)">\(1\)</span>, and that no <span class="math" data-tex="\(X\in D\)">\(X\in D\)</span> satisfies (1.1). Find <span class="math" data-tex="\(X\)">\(X\)</span> for which <span class="math" data-tex="\(F_1(X)\)">\(F_1(X)\)</span> has a fixed vector.</p>
+<p><strong>5.4</strong> (medium). Let <span class="math" data-tex="\(k_1=2\)">\(k_1=2\)</span>, <span class="math" data-tex="\(k_2=1\)">\(k_2=1\)</span>, and let the matrix of signed counts be <span class="math" data-tex="\(B=\begin{pmatrix}2&amp;0\\1&amp;3\end{pmatrix}\)">\(B=\begin{pmatrix}2&amp;0\\1&amp;3\end{pmatrix}\)</span>. Find the columns of Lemma 2.1, the numbers <span class="math" data-tex="\(t_1,t_2\)">\(t_1,t_2\)</span>, and the product of minors in Lemma 4.1.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(j_1=1\)">\(j_1=1\)</span> (since <span class="math" data-tex="\(b_{11}=1\ne0\)">\(b_{11}=1\ne0\)</span>) and <span class="math" data-tex="\(j_2=2\)">\(j_2=2\)</span> (since <span class="math" data-tex="\(\det B=-2\ne0\)">\(\det B=-2\ne0\)</span>). With <span class="math" data-tex="\(k_1=k_2=1\)">\(k_1=k_2=1\)</span>, <span class="math" data-tex="\(l_1=l_2=1\)">\(l_1=l_2=1\)</span>. Here <span class="math" data-tex="\(t_1=2\)">\(t_1=2\)</span>, and the product of minors is <span class="math" data-tex="\(\det B[1,2\mid1,2]=-2\)">\(\det B[1,2\mid1,2]=-2\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(\operatorname{diag}(x,x^{-1})P=\begin{pmatrix}0&amp;-x\\x^{-1}&amp;0\end{pmatrix}\)">\(\operatorname{diag}(x,x^{-1})P=\begin{pmatrix}0&amp;-x\\x^{-1}&amp;0\end{pmatrix}\)</span> for <span class="math" data-tex="\(x\in\mathrm U(1)\)">\(x\in\mathrm U(1)\)</span>. A fixed vector <span class="math" data-tex="\((v_1,v_2)\)">\((v_1,v_2)\)</span> satisfies <span class="math" data-tex="\(-xv_2=v_1\)">\(-xv_2=v_1\)</span> and <span class="math" data-tex="\(x^{-1}v_1=v_2\)">\(x^{-1}v_1=v_2\)</span>, so <span class="math" data-tex="\(v_2=-v_2\)">\(v_2=-v_2\)</span> and <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Here <span class="math" data-tex="\(B=(0)\)">\(B=(0)\)</span> has rank <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(B=\begin{pmatrix}1\\1\end{pmatrix}\)">\(B=\begin{pmatrix}1\\1\end{pmatrix}\)</span> has nonzero rows and rank <span class="math" data-tex="\(1&lt;2\)">\(1&lt;2\)</span>, and <span class="math" data-tex="\(d_1=2\)">\(d_1=2\)</span>. For <span class="math" data-tex="\(X=(x_1,x_2)\in\mathrm U(1)^2\)">\(X=(x_1,x_2)\in\mathrm U(1)^2\)</span>, <span class="math" data-tex="\(F_1(X)=\operatorname{diag}(x_1,x_2)P_1=\begin{pmatrix}0&amp;-x_1\\x_2&amp;0\end{pmatrix}\)">\(F_1(X)=\operatorname{diag}(x_1,x_2)P_1=\begin{pmatrix}0&amp;-x_1\\x_2&amp;0\end{pmatrix}\)</span>. The bound (1.1) asks for <span class="math" data-tex="\(\dim\ker(F_1(X)-I)\ge2\)">\(\dim\ker(F_1(X)-I)\ge2\)</span>, that is <span class="math" data-tex="\(F_1(X)=I\)">\(F_1(X)=I\)</span>, which is impossible because the diagonal of <span class="math" data-tex="\(F_1(X)\)">\(F_1(X)\)</span> is zero. A fixed vector <span class="math" data-tex="\((v_1,v_2)\)">\((v_1,v_2)\)</span> satisfies <span class="math" data-tex="\(v_1=-x_1v_2\)">\(v_1=-x_1v_2\)</span> and <span class="math" data-tex="\(v_2=x_2v_1=-x_1x_2v_2\)">\(v_2=x_2v_1=-x_1x_2v_2\)</span>, so it exists exactly when <span class="math" data-tex="\(x_1x_2=-1\)">\(x_1x_2=-1\)</span>; for <span class="math" data-tex="\(x_1=1\)">\(x_1=1\)</span>, <span class="math" data-tex="\(x_2=-1\)">\(x_2=-1\)</span> the vector <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> is fixed.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(j_1=1\)">\(j_1=1\)</span> (<span class="math" data-tex="\(b_{11}=2\)">\(b_{11}=2\)</span>), and <span class="math" data-tex="\(j_2=2\)">\(j_2=2\)</span> (<span class="math" data-tex="\(\det B=6\)">\(\det B=6\)</span>). Then <span class="math" data-tex="\(l_1=k_1=2\)">\(l_1=k_1=2\)</span>, <span class="math" data-tex="\(l_2=k_2=1\)">\(l_2=k_2=1\)</span>. For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(t_1=2\)">\(t_1=2\)</span>, and for <span class="math" data-tex="\(a=2\)">\(a=2\)</span>, <span class="math" data-tex="\(t_2=1\)">\(t_2=1\)</span>. The product of minors is <span class="math" data-tex="\(\det B[1,2\mid1,2]\cdot\det B[1\mid1]\)">\(\det B[1,2\mid1,2]\cdot\det B[1\mid1]\)</span>, that is, <span class="math" data-tex="\(6\cdot2=12\)">\(6\cdot2=12\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-NS] OpenAI, <em>Nonsingular systems of equations over arbitrary groups</em>, OpenAI Math Release preprint, 5 October 2026, Section 2, Theorem 2. https://github.com/openai/math/tree/main/preprints/Nonsingular-systems-of-equations-over-arbitrary-groups-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

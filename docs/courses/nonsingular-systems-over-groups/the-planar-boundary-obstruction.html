@@ -1,0 +1,375 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The planar boundary obstruction</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Nonsingular systems of equations over groups)</a><a href="simultaneous-fixed-spaces.html">Previous lesson</a><a href="from-a-kernel-relation-to-a-solution.html">Next lesson</a><a href="src/the-planar-boundary-obstruction.md">Editable source</a></nav><main><article><h1 id="the-planar-boundary-obstruction">The planar boundary obstruction</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A relation that kills an element of <span class="math" data-tex="\(G\)">\(G\)</span> is drawn, in <a href="from-a-kernel-relation-to-a-solution.html">From a kernel relation to a solution</a>, as a planar surface: disks whose boundaries read the relators or their inverses, joined by bands along occurrences of the same unknown with opposite signs. This lesson proves the key statement about such surfaces [OpenAI-NS, Proposition 4.1]: on a connected surface, if every boundary word but one is trivial in <span class="math" data-tex="\(G\)">\(G\)</span>, so is the last one. The proof follows <a href="../the-kervaire-conjecture/the-planar-boundary-theorem.html">The planar boundary theorem</a>, which treats one relator in one unknown with exponent sum <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. A unitary operator <span class="math" data-tex="\(S\Theta\)">\(S\Theta\)</span> on <span class="math" data-tex="\(\mathbb C^{\mathcal D}\otimes\ell^2(G)\)">\(\mathbb C^{\mathcal D}\otimes\ell^2(G)\)</span>, where <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is the set of slots, follows the boundary circles. Its spectral phase is bounded above by splitting <span class="math" data-tex="\(S\Theta=(SJ)(J\Theta)\)">\(S\Theta=(SJ)(J\Theta)\)</span>, where <span class="math" data-tex="\(J\)">\(J\)</span> mixes the positive and the negative disks of each relator type by a unitary matrix <span class="math" data-tex="\(X_i\)">\(X_i\)</span>; the theorem of <a href="simultaneous-fixed-spaces.html">Simultaneous fixed spaces</a> chooses the matrices <span class="math" data-tex="\(X_i\)">\(X_i\)</span> so that <span class="math" data-tex="\(J\Theta\)">\(J\Theta\)</span> has many fixed vectors. Computed one boundary circle at a time, the phase is the same number plus the phase of the exceptional boundary word, which must therefore vanish. Nonsingularity enters twice: it balances the numbers of positive and negative disks of each type, and it is the rank condition of the fixed-space theorem.</p>
+<ul>
+<li>Word disks for a system (Section 1).</li>
+<li>Counting disks and boundary circles (Section 2).</li>
+<li>The boundary operator (Section 3).</li>
+<li>Mixing the disks of each type: an upper bound (Section 4).</li>
+<li>Proof of the planar boundary obstruction (Section 5).</li>
+</ul>
+<p>We use, from <a href="../the-kervaire-conjecture/the-regular-trace-and-spectral-phase.html">The regular trace and spectral phase</a>, with the group <span class="math" data-tex="\(G\)">\(G\)</span> in place of <span class="math" data-tex="\(A\)">\(A\)</span>: the algebra <span class="math" data-tex="\(M_b(\mathcal M)\)">\(M_b(\mathcal M)\)</span> of operators on <span class="math" data-tex="\(\mathbb C^b\otimes\ell^2(G)\)">\(\mathbb C^b\otimes\ell^2(G)\)</span> commuting with the right translations, its trace <span class="math" data-tex="\(\tau_b\)">\(\tau_b\)</span>, Lemma 2.1, and the spectral phase <span class="math" data-tex="\(\ell\)">\(\ell\)</span> with Lemmas 3.1 and 4.1. From <a href="../the-kervaire-conjecture/disks-bands-and-boundary-words.html">Disks, bands and boundary words</a> we use the statement (SURF) and Lemmas 3.1, 4.2 and 5.1; from <a href="../the-kervaire-conjecture/the-planar-boundary-theorem.html">The planar boundary theorem</a>, the identity (0.1) and Lemma 3.1; and Theorem 1.1 of <a href="simultaneous-fixed-spaces.html">Simultaneous fixed spaces</a>.</p>
+<h2 id="1-word-disks-for-a-system">1. Word disks for a system</h2>
+<p>Fix a group <span class="math" data-tex="\(G\)">\(G\)</span> and words <span class="math" data-tex="\(w_1,\ldots,w_m\in G*F_n\)">\(w_1,\ldots,w_m\in G*F_n\)</span> whose exponent-sum matrix <span class="math" data-tex="\(A=(a_{ij})\)">\(A=(a_{ij})\)</span> has rank <span class="math" data-tex="\(m\)">\(m\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Every row of <span class="math" data-tex="\(A\)">\(A\)</span> is nonzero, so every <span class="math" data-tex="\(w_i\)">\(w_i\)</span> contains an unknown. Replacing <span class="math" data-tex="\(w_i\)">\(w_i\)</span> by a conjugate changes neither the normal closure of the system nor the exponent sums, so we may write (Exercise 6.1)
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w_i=x_{\nu_{i,1}}^{s_{i,1}}g_{i,1}\,x_{\nu_{i,2}}^{s_{i,2}}g_{i,2}\cdots\\
+\cdots x_{\nu_{i,N_i}}^{s_{i,N_i}}g_{i,N_i},\\
+\nu_{i,t}\in\{1,\ldots,n\},\\
+s_{i,t}\in\{1,-1\},\quad g_{i,t}\in G,
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+w_i=x_{\nu_{i,1}}^{s_{i,1}}g_{i,1}\,x_{\nu_{i,2}}^{s_{i,2}}g_{i,2}\cdots\\
+\cdots x_{\nu_{i,N_i}}^{s_{i,N_i}}g_{i,N_i},\\
+\nu_{i,t}\in\{1,\ldots,n\},\\
+s_{i,t}\in\{1,-1\},\quad g_{i,t}\in G,
+\end{gathered}\tag{1.1}
+\]</span>
+with <span class="math" data-tex="\(N_i\ge1\)">\(N_i\ge1\)</span>, read cyclically: the position <span class="math" data-tex="\(t\)">\(t\)</span> is taken modulo <span class="math" data-tex="\(N_i\)">\(N_i\)</span>. Coefficients equal to <span class="math" data-tex="\(1\)">\(1\)</span> are allowed. Then <span class="math" data-tex="\(a_{ij}=\sum_{t:\,\nu_{i,t}=j}s_{i,t}\)">\(a_{ij}=\sum_{t:\,\nu_{i,t}=j}s_{i,t}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be an oriented sphere. A <em>word disk of type <span class="math" data-tex="\(i\)">\(i\)</span></em> is a closed disk in <span class="math" data-tex="\(S\)">\(S\)</span>, oriented by <span class="math" data-tex="\(S\)">\(S\)</span>, whose boundary circle carries <span class="math" data-tex="\(N_i\)">\(N_i\)</span> pairwise disjoint closed intervals, the <em>slots</em>, indexed by <span class="math" data-tex="\(t\in\{1,\ldots,N_i\}\)">\(t\in\{1,\ldots,N_i\}\)</span>, separated by <span class="math" data-tex="\(N_i\)">\(N_i\)</span> arcs, the <em>corners</em>, each carrying an element of <span class="math" data-tex="\(G\)">\(G\)</span>. It is <em>positive</em> if, in the boundary orientation, the slots appear in the order <span class="math" data-tex="\(1,2,\ldots,N_i\)">\(1,2,\ldots,N_i\)</span> and the corner from slot <span class="math" data-tex="\(t\)">\(t\)</span> to slot <span class="math" data-tex="\(t+1\)">\(t+1\)</span> carries <span class="math" data-tex="\(g_{i,t}\)">\(g_{i,t}\)</span>; then the boundary reads <span class="math" data-tex="\(w_i\)">\(w_i\)</span>. It is <em>negative</em> if the slots appear in the order <span class="math" data-tex="\(N_i,\ldots,2,1\)">\(N_i,\ldots,2,1\)</span> and the corner from slot <span class="math" data-tex="\(t\)">\(t\)</span> to slot <span class="math" data-tex="\(t-1\)">\(t-1\)</span> carries <span class="math" data-tex="\(g_{i,t-1}^{-1}\)">\(g_{i,t-1}^{-1}\)</span>; then the boundary reads
+<span class="math math-display" data-tex="\[
+w_i^{-1}=g_{i,N_i}^{-1}x_{\nu_{i,N_i}}^{-s_{i,N_i}}\cdots g_{i,1}^{-1}x_{\nu_{i,1}}^{-s_{i,1}} .
+\]">\[
+w_i^{-1}=g_{i,N_i}^{-1}x_{\nu_{i,N_i}}^{-s_{i,N_i}}\cdots g_{i,1}^{-1}x_{\nu_{i,1}}^{-s_{i,1}} .
+\]</span>
+Slot <span class="math" data-tex="\(t\)">\(t\)</span> has <em>variable index</em> <span class="math" data-tex="\(\nu_{i,t}\)">\(\nu_{i,t}\)</span>, and its <em>traversal sign</em> is <span class="math" data-tex="\(s_{i,t}\)">\(s_{i,t}\)</span> on a positive disk and <span class="math" data-tex="\(-s_{i,t}\)">\(-s_{i,t}\)</span> on a negative disk. In summary, for slot <span class="math" data-tex="\(t\)">\(t\)</span> of a disk of type <span class="math" data-tex="\(i\)">\(i\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c|c}
+\text{disk}&amp;\sigma&amp;\text{sign}&amp;c\\\hline
++&amp;t+1&amp;s_{i,t}&amp;g_{i,t}\\
+-&amp;t-1&amp;-s_{i,t}&amp;g_{i,t-1}^{-1}
+\end{array}\tag{1.2}
+\]">\[
+\begin{array}{c|c|c|c}
+\text{disk}&amp;\sigma&amp;\text{sign}&amp;c\\\hline
++&amp;t+1&amp;s_{i,t}&amp;g_{i,t}\\
+-&amp;t-1&amp;-s_{i,t}&amp;g_{i,t-1}^{-1}
+\end{array}\tag{1.2}
+\]</span></p>
+<p>A <em>disk-and-band surface</em> for the system consists of finitely many pairwise disjoint word disks in <span class="math" data-tex="\(S\)">\(S\)</span>, at least one, of any types and signs, together with pairwise disjoint arcs <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_E\)">\(\alpha_1,\ldots,\alpha_E\)</span> whose interiors lie outside the disks, such that every slot contains exactly one endpoint of one arc, in its interior, and the two slots at the ends of each arc have the same variable index and opposite traversal signs. By (SURF) we may take bands around the arcs, and we shrink the slots to the short arcs where the bands meet the disks; this changes no corner label. The surface <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is the union of the disks and the bands. Its <em>boundary words</em> are read along each boundary circle of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>, in its boundary orientation from <span class="math" data-tex="\(S\)">\(S\)</span>: the product of the corner labels met along the way, ignoring the band sides. Changing the starting point conjugates the word, which does not affect whether it is <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span>. For a single relator in a single unknown, these are the surfaces of <a href="../the-kervaire-conjecture/disks-bands-and-boundary-words.html">Disks, bands and boundary words</a>, Section 1.</p>
+<p><strong>Proposition 1.1</strong> (planar boundary obstruction; [OpenAI-NS, Proposition 4.1]). Let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be a connected disk-and-band surface for a system (1.1) whose exponent-sum matrix has rank <span class="math" data-tex="\(m\)">\(m\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. If every boundary word of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> except possibly one is trivial in <span class="math" data-tex="\(G\)">\(G\)</span>, then the remaining boundary word is trivial as well.</p>
+<p>For one relator in one unknown with exponent sum <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, this is Theorem 2.1 of <a href="../the-kervaire-conjecture/disks-bands-and-boundary-words.html">Disks, bands and boundary words</a>. The rank condition cannot be dropped (Exercise 6.3).</p>
+<p>Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be the set of slots of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>. Let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> be the permutation of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> that sends a slot to the next slot on the same disk, in the boundary orientation, and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> the involution, without fixed points, that exchanges the two slots at the ends of each band. For <span class="math" data-tex="\(d\in\mathcal D\)">\(d\in\mathcal D\)</span> let <span class="math" data-tex="\(c_d\in G\)">\(c_d\in G\)</span> be the label of the corner from <span class="math" data-tex="\(d\)">\(d\)</span> to <span class="math" data-tex="\(\sigma d\)">\(\sigma d\)</span>, given by (1.2).</p>
+<p><strong>Lemma 1.2.</strong></p>
+<ol>
+<li>The boundary circles of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> correspond to the cycles of <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span>. For a cycle <span class="math" data-tex="\(z=(d_1,\ldots,d_{|z|})\)">\(z=(d_1,\ldots,d_{|z|})\)</span>, with <span class="math" data-tex="\(d_{j+1}=\sigma\theta d_j\)">\(d_{j+1}=\sigma\theta d_j\)</span>, the boundary word of the corresponding circle is <span class="math" data-tex="\(r_z=c_{\theta d_1}c_{\theta d_2}\cdots c_{\theta d_{|z|}}\)">\(r_z=c_{\theta d_1}c_{\theta d_2}\cdots c_{\theta d_{|z|}}\)</span>.</li>
+<li>If <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is connected, every region of <span class="math" data-tex="\(S\setminus\Sigma\)">\(S\setminus\Sigma\)</span> has exactly one boundary circle and is the closed disk bounded by that circle on the side away from <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>.</li>
+<li>If <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is connected and <span class="math" data-tex="\((\eta_z)\)">\((\eta_z)\)</span> are real numbers indexed by the cycles of <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span> with <span class="math" data-tex="\(\sum_z\eta_z=0\)">\(\sum_z\eta_z=0\)</span>, there are real numbers <span class="math" data-tex="\(\gamma_d\)">\(\gamma_d\)</span>, <span class="math" data-tex="\(d\in\mathcal D\)">\(d\in\mathcal D\)</span>, with <span class="math" data-tex="\(\gamma_{\theta d}=-\gamma_d\)">\(\gamma_{\theta d}=-\gamma_d\)</span> and <span class="math" data-tex="\(\sum_{d\in z}\gamma_d=\eta_z\)">\(\sum_{d\in z}\gamma_d=\eta_z\)</span> for every cycle <span class="math" data-tex="\(z\)">\(z\)</span>.</li>
+</ol>
+<p><em>Proof.</em> These are Lemmas 3.1, 4.2 and 5.1 of <a href="../the-kervaire-conjecture/disks-bands-and-boundary-words.html">Disks, bands and boundary words</a>. Their proofs use the disks, slots, corners and bands, the permutations <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, the labels <span class="math" data-tex="\(c_d\)">\(c_d\)</span> and the statement (SURF), but not the word written on the disks, its number of letters or its exponents, and they apply without change to the surfaces of this lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-counting-disks-and-boundary-circles">2. Counting disks and boundary circles</h2>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be a disk-and-band surface for a system (1.1) whose exponent-sum matrix has rank <span class="math" data-tex="\(m\)">\(m\)</span>, with <span class="math" data-tex="\(p_i^+\)">\(p_i^+\)</span> positive and <span class="math" data-tex="\(p_i^-\)">\(p_i^-\)</span> negative disks of type <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(p_i^+=p_i^-\)">\(p_i^+=p_i^-\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</li>
+<li>Let <span class="math" data-tex="\(I\)">\(I\)</span> be the set of types that occur, and <span class="math" data-tex="\(k_i=p_i^+=p_i^-\ge1\)">\(k_i=p_i^+=p_i^-\ge1\)</span> for <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K=\sum_{i\in I}k_i,\\
+b=\sum_{i\in I}N_ik_i .
+\end{gathered}\tag{2.1}
+\]">\[
+\begin{gathered}
+K=\sum_{i\in I}k_i,\\
+b=\sum_{i\in I}N_ik_i .
+\end{gathered}\tag{2.1}
+\]</span>
+Then <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> has <span class="math" data-tex="\(2K\)">\(2K\)</span> disks, <span class="math" data-tex="\(2b\)">\(2b\)</span> slots and <span class="math" data-tex="\(b\)">\(b\)</span> bands.</li>
+<li>If <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is connected and has <span class="math" data-tex="\(q\)">\(q\)</span> boundary circles, then
+<span class="math math-display" data-tex="\[
+q=2-2K+b .\tag{2.2}
+\]">\[
+q=2-2K+b .\tag{2.2}
+\]</span></li>
+</ol>
+<p><em>Proof.</em> (1) Fix an unknown <span class="math" data-tex="\(x_j\)">\(x_j\)</span> and add up the traversal signs of all slots with variable index <span class="math" data-tex="\(j\)">\(j\)</span>. The bands pair these slots with each other, each pair having opposite traversal signs, so the sum is <span class="math" data-tex="\(0\)">\(0\)</span>. A positive disk of type <span class="math" data-tex="\(i\)">\(i\)</span> contributes <span class="math" data-tex="\(\sum_{t:\,\nu_{i,t}=j}s_{i,t}=a_{ij}\)">\(\sum_{t:\,\nu_{i,t}=j}s_{i,t}=a_{ij}\)</span>, and a negative disk contributes <span class="math" data-tex="\(-a_{ij}\)">\(-a_{ij}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^m(p_i^+-p_i^-)\,a_{ij}=0\qquad(1\le j\le n),
+\]">\[
+\sum_{i=1}^m(p_i^+-p_i^-)\,a_{ij}=0\qquad(1\le j\le n),
+\]</span>
+a linear relation among the rows of <span class="math" data-tex="\(A\)">\(A\)</span>. The rows are linearly independent, so <span class="math" data-tex="\(p_i^+=p_i^-\)">\(p_i^+=p_i^-\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>(2) A disk of type <span class="math" data-tex="\(i\)">\(i\)</span> has <span class="math" data-tex="\(N_i\)">\(N_i\)</span> slots, every slot carries exactly one band end, and every band has two ends.</p>
+<p>(3) By Lemma 1.2(2) and (SURF) 1 and 3, the regions of <span class="math" data-tex="\(S\setminus\Sigma\)">\(S\setminus\Sigma\)</span> are <span class="math" data-tex="\(q\)">\(q\)</span> closed disks, one for each boundary circle, each of Euler characteristic <span class="math" data-tex="\(1\)">\(1\)</span>. By (SURF) 2, with <span class="math" data-tex="\(2K\)">\(2K\)</span> disks and <span class="math" data-tex="\(b\)">\(b\)</span> bands, these Euler characteristics add up to <span class="math" data-tex="\(2-2K+b\)">\(2-2K+b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Since <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is not empty, <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span> has at least one cycle, so <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span>.</p>
+<h2 id="3-the-boundary-operator">3. The boundary operator</h2>
+<p>In the rest of the lesson <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is connected, with the notation of Lemma 2.1. Let <span class="math" data-tex="\((\gamma_d)_{d\in\mathcal D}\)">\((\gamma_d)_{d\in\mathcal D}\)</span> be real numbers with <span class="math" data-tex="\(\gamma_{\theta d}=-\gamma_d\)">\(\gamma_{\theta d}=-\gamma_d\)</span>, and put <span class="math" data-tex="\(\eta_z=\sum_{d\in z}\gamma_d\)">\(\eta_z=\sum_{d\in z}\gamma_d\)</span> for each cycle <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span>.</p>
+<p>Work in <span class="math" data-tex="\(H=\mathbb C^{\mathcal D}\otimes\ell^2(G)\)">\(H=\mathbb C^{\mathcal D}\otimes\ell^2(G)\)</span>, with matrix coordinates indexed by <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, so that <span class="math" data-tex="\(M_{2b}(\mathcal M)\)">\(M_{2b}(\mathcal M)\)</span> and its trace <span class="math" data-tex="\(\tau_{2b}\)">\(\tau_{2b}\)</span> are defined; <span class="math" data-tex="\(\tau\)">\(\tau\)</span> denotes <span class="math" data-tex="\(\tau_1\)">\(\tau_1\)</span>, the trace on <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> itself. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(e_d\otimes v)=e_{\sigma d}\otimes L(c_d^{-1})v,\\
+\Theta(e_d\otimes v)=e^{2\pi i\gamma_d}\,e_{\theta d}\otimes v .
+\end{gathered}
+\]">\[
+\begin{gathered}
+S(e_d\otimes v)=e_{\sigma d}\otimes L(c_d^{-1})v,\\
+\Theta(e_d\otimes v)=e^{2\pi i\gamma_d}\,e_{\theta d}\otimes v .
+\end{gathered}
+\]</span>
+Both are unitaries in <span class="math" data-tex="\(M_{2b}(\mathcal M)\)">\(M_{2b}(\mathcal M)\)</span>: each permutes the coordinates with unitary weights, and the weights of <span class="math" data-tex="\(S\)">\(S\)</span> are left translations, which lie in <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>. <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> is scalar, and <span class="math" data-tex="\(\Theta^2=I\)">\(\Theta^2=I\)</span> because <span class="math" data-tex="\(\gamma_{\theta d}+\gamma_d=0\)">\(\gamma_{\theta d}+\gamma_d=0\)</span>. The product follows the boundary permutation:
+<span class="math math-display" data-tex="\[
+S\Theta(e_d\otimes v)=e_{\sigma\theta d}\otimes e^{2\pi i\gamma_d}L(c_{\theta d}^{-1})v .
+\]">\[
+S\Theta(e_d\otimes v)=e_{\sigma\theta d}\otimes e^{2\pi i\gamma_d}L(c_{\theta d}^{-1})v .
+\]</span>
+For a cycle <span class="math" data-tex="\(z=(d_1,\ldots,d_a)\)">\(z=(d_1,\ldots,d_a)\)</span> of <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span>, applying <span class="math" data-tex="\(S\Theta\)">\(S\Theta\)</span> <span class="math" data-tex="\(a\)">\(a\)</span> times to <span class="math" data-tex="\(e_{d_1}\otimes v\)">\(e_{d_1}\otimes v\)</span> multiplies <span class="math" data-tex="\(v\)">\(v\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;e^{2\pi i\gamma_{d_a}}L(c_{\theta d_a}^{-1})\cdots\\
+&amp;\qquad\cdots e^{2\pi i\gamma_{d_1}}L(c_{\theta d_1}^{-1})\\
+&amp;\quad=e^{2\pi i\eta_z}L(c_{\theta d_1}\cdots c_{\theta d_a})^{-1}\\
+&amp;\quad=e^{2\pi i\eta_z}L(r_z^{-1}),
+\end{aligned}\tag{3.1}
+\]">\[
+\begin{aligned}
+&amp;e^{2\pi i\gamma_{d_a}}L(c_{\theta d_a}^{-1})\cdots\\
+&amp;\qquad\cdots e^{2\pi i\gamma_{d_1}}L(c_{\theta d_1}^{-1})\\
+&amp;\quad=e^{2\pi i\eta_z}L(c_{\theta d_1}\cdots c_{\theta d_a})^{-1}\\
+&amp;\quad=e^{2\pi i\eta_z}L(r_z^{-1}),
+\end{aligned}\tag{3.1}
+\]</span>
+by Lemma 1.2(1). The space <span class="math" data-tex="\(H\)">\(H\)</span> is the orthogonal direct sum of the subspaces <span class="math" data-tex="\(\mathbb C^z\otimes\ell^2(G)\)">\(\mathbb C^z\otimes\ell^2(G)\)</span> over the cycles <span class="math" data-tex="\(z\)">\(z\)</span>, each invariant under <span class="math" data-tex="\(S\Theta\)">\(S\Theta\)</span> and its inverse. Let <span class="math" data-tex="\(T_z\)">\(T_z\)</span> be the restriction of <span class="math" data-tex="\(S\Theta\)">\(S\Theta\)</span> to the cycle <span class="math" data-tex="\(z\)">\(z\)</span>; then <span class="math" data-tex="\(h(S\Theta)\)">\(h(S\Theta)\)</span> is the direct sum of the <span class="math" data-tex="\(h(T_z)\)">\(h(T_z)\)</span>, and
+<span class="math math-display" data-tex="\[
+\ell(S\Theta)=\sum_z\ell(T_z),\tag{3.2}
+\]">\[
+\ell(S\Theta)=\sum_z\ell(T_z),\tag{3.2}
+\]</span>
+where <span class="math" data-tex="\(\ell(T_z)\)">\(\ell(T_z)\)</span> uses the trace <span class="math" data-tex="\(\tau_{|z|}\)">\(\tau_{|z|}\)</span>, as in Section 3 of <a href="../the-kervaire-conjecture/the-planar-boundary-theorem.html">The planar boundary theorem</a>.</p>
+<p><strong>Lemma 3.1</strong> (phase of a cycle; [OpenAI-NS, Lemma 3.2]). For every cycle <span class="math" data-tex="\(z\)">\(z\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\ell(T_z)=\frac{|z|-1}2\\
++\tau\bigl(h(e^{2\pi i\eta_z}L(r_z^{-1}))\bigr).
+\end{gathered}\tag{3.3}
+\]">\[
+\begin{gathered}
+\ell(T_z)=\frac{|z|-1}2\\
++\tau\bigl(h(e^{2\pi i\eta_z}L(r_z^{-1}))\bigr).
+\end{gathered}\tag{3.3}
+\]</span></p>
+<p><em>Proof.</em> This is Lemma 3.1 of <a href="../the-kervaire-conjecture/the-planar-boundary-theorem.html">The planar boundary theorem</a>. Its proof uses only that <span class="math" data-tex="\(T_z\)">\(T_z\)</span> shifts the coordinates of the cycle <span class="math" data-tex="\(z\)">\(z\)</span> cyclically with unitary weights in <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>, and that the product of the weights around the cycle is (3.1); both hold here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-mixing-the-disks-of-each-type-an-upper-bound">4. Mixing the disks of each type: an upper bound</h2>
+<p>Number the positive disks of type <span class="math" data-tex="\(i\)">\(i\)</span> by <span class="math" data-tex="\(1,\ldots,k_i\)">\(1,\ldots,k_i\)</span>, and likewise the negative ones. For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, a position <span class="math" data-tex="\(t\in\{1,\ldots,N_i\}\)">\(t\in\{1,\ldots,N_i\}\)</span> and <span class="math" data-tex="\(u\in\mathbb C^{k_i}\)">\(u\in\mathbb C^{k_i}\)</span>, let <span class="math" data-tex="\(e^i_{+,t}(u)\in\mathbb C^{\mathcal D}\)">\(e^i_{+,t}(u)\in\mathbb C^{\mathcal D}\)</span> be the vector with coordinate <span class="math" data-tex="\(u_p\)">\(u_p\)</span> at slot <span class="math" data-tex="\(t\)">\(t\)</span> of the <span class="math" data-tex="\(p\)">\(p\)</span>-th positive disk of type <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(p=1,\ldots,k_i\)">\(p=1,\ldots,k_i\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere; define <span class="math" data-tex="\(e^i_{-,t}(u)\)">\(e^i_{-,t}(u)\)</span> with the negative disks. Given <span class="math" data-tex="\(X_i\in\mathrm U(k_i)\)">\(X_i\in\mathrm U(k_i)\)</span> for <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, define the scalar unitary <span class="math" data-tex="\(J\)">\(J\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J\,e^i_{+,t}(u)=e^i_{-,t}(X_iu),\\
+J\,e^i_{-,t}(u)=e^i_{+,t}(X_i^{-1}u) .
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+J\,e^i_{+,t}(u)=e^i_{-,t}(X_iu),\\
+J\,e^i_{-,t}(u)=e^i_{+,t}(X_i^{-1}u) .
+\end{gathered}\tag{4.1}
+\]</span>
+The same <span class="math" data-tex="\(X_i\)">\(X_i\)</span> acts at every position <span class="math" data-tex="\(t\)">\(t\)</span> of type <span class="math" data-tex="\(i\)">\(i\)</span> (Exercise 6.5). Then <span class="math" data-tex="\(J^2=I\)">\(J^2=I\)</span>, so <span class="math" data-tex="\(J=J^*=J^{-1}\)">\(J=J^*=J^{-1}\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> <span class="math" data-tex="\(JSJ=S^{-1}\)">\(JSJ=S^{-1}\)</span>. Consequently <span class="math" data-tex="\(SJ\)">\(SJ\)</span> is a self-adjoint unitary, <span class="math" data-tex="\(\tau_{2b}(SJ)=0\)">\(\tau_{2b}(SJ)=0\)</span>, and
+<span class="math math-display" data-tex="\[
+\ell(SJ)=\frac b2 .\tag{4.2}
+\]">\[
+\ell(SJ)=\frac b2 .\tag{4.2}
+\]</span></p>
+<p><em>Proof.</em> By (1.2), one coefficient acts on the slots <span class="math" data-tex="\(t\)">\(t\)</span> of all disks of one type and one sign:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(e^i_{+,t}(u)\otimes v)=e^i_{+,t+1}(u)\otimes L(g_{i,t}^{-1})v,\\
+S(e^i_{-,t}(u)\otimes v)=e^i_{-,t-1}(u)\otimes L(g_{i,t-1})v .
+\end{gathered}
+\]">\[
+\begin{gathered}
+S(e^i_{+,t}(u)\otimes v)=e^i_{+,t+1}(u)\otimes L(g_{i,t}^{-1})v,\\
+S(e^i_{-,t}(u)\otimes v)=e^i_{-,t-1}(u)\otimes L(g_{i,t-1})v .
+\end{gathered}
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S^{-1}(e^i_{+,t}(u)\otimes v)\\
+&amp;\quad=e^i_{+,t-1}(u)\otimes L(g_{i,t-1})v,\\
+&amp;S^{-1}(e^i_{-,t}(u)\otimes v)\\
+&amp;\quad=e^i_{-,t+1}(u)\otimes L(g_{i,t}^{-1})v .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;S^{-1}(e^i_{+,t}(u)\otimes v)\\
+&amp;\quad=e^i_{+,t-1}(u)\otimes L(g_{i,t-1})v,\\
+&amp;S^{-1}(e^i_{-,t}(u)\otimes v)\\
+&amp;\quad=e^i_{-,t+1}(u)\otimes L(g_{i,t}^{-1})v .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(J\)">\(J\)</span> acts only on <span class="math" data-tex="\(\mathbb C^{\mathcal D}\)">\(\mathbb C^{\mathcal D}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;JSJ(e^i_{+,t}(u)\otimes v)\\
+&amp;\quad=JS(e^i_{-,t}(X_iu)\otimes v)\\
+&amp;\quad=J(e^i_{-,t-1}(X_iu)\otimes L(g_{i,t-1})v)\\
+&amp;\quad=e^i_{+,t-1}(u)\otimes L(g_{i,t-1})v ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;JSJ(e^i_{+,t}(u)\otimes v)\\
+&amp;\quad=JS(e^i_{-,t}(X_iu)\otimes v)\\
+&amp;\quad=J(e^i_{-,t-1}(X_iu)\otimes L(g_{i,t-1})v)\\
+&amp;\quad=e^i_{+,t-1}(u)\otimes L(g_{i,t-1})v ,
+\end{aligned}
+\]</span>
+and in the same way <span class="math" data-tex="\(JSJ(e^i_{-,t}(u)\otimes v)=e^i_{-,t+1}(u)\otimes L(g_{i,t}^{-1})v\)">\(JSJ(e^i_{-,t}(u)\otimes v)=e^i_{-,t+1}(u)\otimes L(g_{i,t}^{-1})v\)</span>. These vectors span <span class="math" data-tex="\(H\)">\(H\)</span>, so <span class="math" data-tex="\(JSJ=S^{-1}\)">\(JSJ=S^{-1}\)</span>, <span class="math" data-tex="\((SJ)^2=S(JSJ)=I\)">\((SJ)^2=S(JSJ)=I\)</span>, and the unitary <span class="math" data-tex="\(SJ\)">\(SJ\)</span> equals its inverse, which is its adjoint. <span class="math" data-tex="\(S\)">\(S\)</span> preserves the sign of each disk and <span class="math" data-tex="\(J\)">\(J\)</span> exchanges the signs, so all diagonal entries of <span class="math" data-tex="\(SJ\)">\(SJ\)</span> vanish and <span class="math" data-tex="\(\tau_{2b}(SJ)=0\)">\(\tau_{2b}(SJ)=0\)</span>. The spectrum of <span class="math" data-tex="\(SJ\)">\(SJ\)</span> lies in <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>, where <span class="math" data-tex="\(h(1)=0\)">\(h(1)=0\)</span> and <span class="math" data-tex="\(h(-1)=\frac12\)">\(h(-1)=\frac12\)</span>, so <span class="math" data-tex="\(h(SJ)=\frac14(I-SJ)\)">\(h(SJ)=\frac14(I-SJ)\)</span> by Lemma 2.1 of the trace lesson, and <span class="math" data-tex="\(\ell(SJ)=\frac14\tau_{2b}(I-SJ)=\frac{2b}4\)">\(\ell(SJ)=\frac14\tau_{2b}(I-SJ)=\frac{2b}4\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Regrouping by unknowns.</strong> For <span class="math" data-tex="\(j\in\{1,\ldots,n\}\)">\(j\in\{1,\ldots,n\}\)</span> let <span class="math" data-tex="\(V_{j,+}\)">\(V_{j,+}\)</span> and <span class="math" data-tex="\(V_{j,-}\)">\(V_{j,-}\)</span> be the coordinate subspaces of <span class="math" data-tex="\(\mathbb C^{\mathcal D}\)">\(\mathbb C^{\mathcal D}\)</span> spanned by the slots with variable index <span class="math" data-tex="\(j\)">\(j\)</span> and traversal sign <span class="math" data-tex="\(1\)">\(1\)</span>, respectively <span class="math" data-tex="\(-1\)">\(-1\)</span>. Bands join slots with the same variable index and opposite traversal signs, so <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> exchanges <span class="math" data-tex="\(V_{j,+}\)">\(V_{j,+}\)</span> and <span class="math" data-tex="\(V_{j,-}\)">\(V_{j,-}\)</span>. So does <span class="math" data-tex="\(J\)">\(J\)</span>: it maps the slot <span class="math" data-tex="\(t\)">\(t\)</span> of a positive disk of type <span class="math" data-tex="\(i\)">\(i\)</span>, of traversal sign <span class="math" data-tex="\(s_{i,t}\)">\(s_{i,t}\)</span>, into the span of the slots <span class="math" data-tex="\(t\)">\(t\)</span> of the negative disks of type <span class="math" data-tex="\(i\)">\(i\)</span>, of traversal sign <span class="math" data-tex="\(-s_{i,t}\)">\(-s_{i,t}\)</span> and the same variable index <span class="math" data-tex="\(\nu_{i,t}\)">\(\nu_{i,t}\)</span>, and conversely.</p>
+<p>Order <span class="math" data-tex="\(V_{j,+}\)">\(V_{j,+}\)</span> in blocks indexed by the pairs <span class="math" data-tex="\((i,t)\)">\((i,t)\)</span> with <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span> and <span class="math" data-tex="\(\nu_{i,t}=j\)">\(\nu_{i,t}=j\)</span>, in a fixed order: block <span class="math" data-tex="\((i,t)\)">\((i,t)\)</span> consists of the slots <span class="math" data-tex="\(t\)">\(t\)</span> of the positive disks of type <span class="math" data-tex="\(i\)">\(i\)</span> if <span class="math" data-tex="\(s_{i,t}=1\)">\(s_{i,t}=1\)</span>, and of the negative disks of type <span class="math" data-tex="\(i\)">\(i\)</span> if <span class="math" data-tex="\(s_{i,t}=-1\)">\(s_{i,t}=-1\)</span>, ordered by disk number. Order <span class="math" data-tex="\(V_{j,-}\)">\(V_{j,-}\)</span> in the same blocks with the opposite signs of disks. Both spaces have dimension
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d_j=\sum_{\substack{(i,t):\ i\in I,\\ \nu_{i,t}=j}}k_i,\\
+\sum_{j=1}^nd_j=b .
+\end{gathered}\tag{4.3}
+\]">\[
+\begin{gathered}
+d_j=\sum_{\substack{(i,t):\ i\in I,\\ \nu_{i,t}=j}}k_i,\\
+\sum_{j=1}^nd_j=b .
+\end{gathered}\tag{4.3}
+\]</span>
+In these bases, <span class="math" data-tex="\(\Theta|_{V_{j,+}}:V_{j,+}\to V_{j,-}\)">\(\Theta|_{V_{j,+}}:V_{j,+}\to V_{j,-}\)</span> is a unitary matrix <span class="math" data-tex="\(P_j\in\mathrm U(d_j)\)">\(P_j\in\mathrm U(d_j)\)</span> that does not depend on the matrices <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. By (4.1), <span class="math" data-tex="\(J|_{V_{j,-}}:V_{j,-}\to V_{j,+}\)">\(J|_{V_{j,-}}:V_{j,-}\to V_{j,+}\)</span> is block diagonal with the block <span class="math" data-tex="\(X_i^{-s_{i,t}}\)">\(X_i^{-s_{i,t}}\)</span> at <span class="math" data-tex="\((i,t)\)">\((i,t)\)</span>: if <span class="math" data-tex="\(s_{i,t}=1\)">\(s_{i,t}=1\)</span>, the block of <span class="math" data-tex="\(V_{j,-}\)">\(V_{j,-}\)</span> lies on the negative disks and <span class="math" data-tex="\(J\)">\(J\)</span> acts there by <span class="math" data-tex="\(X_i^{-1}\)">\(X_i^{-1}\)</span>; if <span class="math" data-tex="\(s_{i,t}=-1\)">\(s_{i,t}=-1\)</span>, it lies on the positive disks and <span class="math" data-tex="\(J\)">\(J\)</span> acts by <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(J\Theta)|_{V_{j,+}}\\
+&amp;\quad=\operatorname{diag}_{(i,t)}\bigl(X_i^{-s_{i,t}}\bigr)\,P_j ,
+\end{aligned}\tag{4.4}
+\]">\[
+\begin{aligned}
+&amp;(J\Theta)|_{V_{j,+}}\\
+&amp;\quad=\operatorname{diag}_{(i,t)}\bigl(X_i^{-s_{i,t}}\bigr)\,P_j ,
+\end{aligned}\tag{4.4}
+\]</span>
+the blocks running over the pairs <span class="math" data-tex="\((i,t)\)">\((i,t)\)</span> with <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span> and <span class="math" data-tex="\(\nu_{i,t}=j\)">\(\nu_{i,t}=j\)</span>, in the chosen order.</p>
+<p><strong>Lemma 4.2</strong> (the upper bound). There are <span class="math" data-tex="\(X_i\in\mathrm U(k_i)\)">\(X_i\in\mathrm U(k_i)\)</span>, <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, for which <span class="math" data-tex="\(\dim\ker(J\Theta-I)\ge2K\)">\(\dim\ker(J\Theta-I)\ge2K\)</span>. For such <span class="math" data-tex="\(X_i\)">\(X_i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\ell(J\Theta)\le b-K,\\
+\ell(S\Theta)\le\frac32b-K .
+\end{gathered}\tag{4.5}
+\]">\[
+\begin{gathered}
+\ell(J\Theta)\le b-K,\\
+\ell(S\Theta)\le\frac32b-K .
+\end{gathered}\tag{4.5}
+\]</span></p>
+<p><em>Proof.</em> The matrices (4.4) have the form of Theorem 1.1 of <a href="simultaneous-fixed-spaces.html">Simultaneous fixed spaces</a>, with the variables <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, of sizes <span class="math" data-tex="\(k_i\)">\(k_i\)</span>, and for each <span class="math" data-tex="\(j\)">\(j\)</span> the list <span class="math" data-tex="\(\mathcal B_j\)">\(\mathcal B_j\)</span> of the pairs <span class="math" data-tex="\((i,-s_{i,t})\)">\((i,-s_{i,t})\)</span> over the <span class="math" data-tex="\((i,t)\)">\((i,t)\)</span> with <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span> and <span class="math" data-tex="\(\nu_{i,t}=j\)">\(\nu_{i,t}=j\)</span>. Its signed block counts are
+<span class="math math-display" data-tex="\[
+b_{ij}=\sum_{t:\ \nu_{i,t}=j}(-s_{i,t})=-a_{ij},
+\]">\[
+b_{ij}=\sum_{t:\ \nu_{i,t}=j}(-s_{i,t})=-a_{ij},
+\]</span>
+so the matrix of signed counts consists of the rows of <span class="math" data-tex="\(-A\)">\(-A\)</span> indexed by <span class="math" data-tex="\(I\)">\(I\)</span>, which are linearly independent. That theorem gives <span class="math" data-tex="\(X_i\)">\(X_i\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_j\dim\ker\bigl((J\Theta)|_{V_{j,+}}-I\bigr)\\
+&amp;\quad\ge\sum_{i\in I}k_i=K .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_j\dim\ker\bigl((J\Theta)|_{V_{j,+}}-I\bigr)\\
+&amp;\quad\ge\sum_{i\in I}k_i=K .
+\end{aligned}
+\]</span> Since <span class="math" data-tex="\(J\Theta\)">\(J\Theta\)</span> maps each <span class="math" data-tex="\(V_{j,+}\)">\(V_{j,+}\)</span> into itself, this gives a space of fixed vectors of dimension at least <span class="math" data-tex="\(K\)">\(K\)</span> in <span class="math" data-tex="\(V_+=\bigoplus_jV_{j,+}\)">\(V_+=\bigoplus_jV_{j,+}\)</span>. Since <span class="math" data-tex="\(J^2=\Theta^2=I\)">\(J^2=\Theta^2=I\)</span>, <span class="math" data-tex="\(J(J\Theta)J=\Theta J=(J\Theta)^{-1}\)">\(J(J\Theta)J=\Theta J=(J\Theta)^{-1}\)</span>; so if <span class="math" data-tex="\(x\in V_+\)">\(x\in V_+\)</span> is fixed by <span class="math" data-tex="\(J\Theta\)">\(J\Theta\)</span>, then <span class="math" data-tex="\(Jx\in V_-=\bigoplus_jV_{j,-}\)">\(Jx\in V_-=\bigoplus_jV_{j,-}\)</span> is fixed by <span class="math" data-tex="\((J\Theta)^{-1}\)">\((J\Theta)^{-1}\)</span>, hence by <span class="math" data-tex="\(J\Theta\)">\(J\Theta\)</span>. This gives <span class="math" data-tex="\(K\)">\(K\)</span> more fixed directions, in <span class="math" data-tex="\(V_-\)">\(V_-\)</span>.</p>
+<p>The scalar unitary <span class="math" data-tex="\(J\Theta\)">\(J\Theta\)</span> is conjugate to its inverse, so its eigenvalues <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_{2b}\)">\(\lambda_1,\ldots,\lambda_{2b}\)</span>, listed with multiplicity, are invariant under <span class="math" data-tex="\(\lambda\mapsto\lambda^{-1}\)">\(\lambda\mapsto\lambda^{-1}\)</span>. Since <span class="math" data-tex="\(h(\lambda)+h(\lambda^{-1})=1\)">\(h(\lambda)+h(\lambda^{-1})=1\)</span> for <span class="math" data-tex="\(\lambda\ne1\)">\(\lambda\ne1\)</span> and <span class="math" data-tex="\(h(1)=0\)">\(h(1)=0\)</span>, Lemma 3.1(4) of the trace lesson gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ell(J\Theta)=\sum_jh(\lambda_j)\\
+&amp;\quad=\frac12\sum_j\bigl(h(\lambda_j)+h(\lambda_j^{-1})\bigr)\\
+&amp;\quad=\frac{2b-\dim\ker(J\Theta-I)}2\le b-K .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ell(J\Theta)=\sum_jh(\lambda_j)\\
+&amp;\quad=\frac12\sum_j\bigl(h(\lambda_j)+h(\lambda_j^{-1})\bigr)\\
+&amp;\quad=\frac{2b-\dim\ker(J\Theta-I)}2\le b-K .
+\end{aligned}
+\]</span>
+Finally <span class="math" data-tex="\(S\Theta=(SJ)(J\Theta)\)">\(S\Theta=(SJ)(J\Theta)\)</span>, and Lemma 4.1 of the trace lesson with (4.2) gives <span class="math" data-tex="\(\ell(S\Theta)\le\frac b2+b-K\)">\(\ell(S\Theta)\le\frac b2+b-K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bound holds for every choice of the numbers <span class="math" data-tex="\(\gamma_d\)">\(\gamma_d\)</span>; the matrices <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, and with them <span class="math" data-tex="\(J\)">\(J\)</span>, may depend on that choice.</p>
+<h2 id="5-proof-of-the-planar-boundary-obstruction">5. Proof of the planar boundary obstruction</h2>
+<p><em>Proof of Proposition 1.1.</em> Let <span class="math" data-tex="\(z_0\)">\(z_0\)</span> be the boundary circle whose word may be nontrivial; all other words <span class="math" data-tex="\(r_z\)">\(r_z\)</span> are <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(0&lt;\delta&lt;1/q\)">\(0&lt;\delta&lt;1/q\)</span> put
+<span class="math math-display" data-tex="\[
+\eta_z=-\delta\quad(z\ne z_0),\qquad\eta_{z_0}=(q-1)\delta .
+\]">\[
+\eta_z=-\delta\quad(z\ne z_0),\qquad\eta_{z_0}=(q-1)\delta .
+\]</span>
+These numbers add up to <span class="math" data-tex="\(0\)">\(0\)</span>, so Lemma 1.2(3) gives numbers <span class="math" data-tex="\(\gamma_d\)">\(\gamma_d\)</span> with <span class="math" data-tex="\(\gamma_{\theta d}=-\gamma_d\)">\(\gamma_{\theta d}=-\gamma_d\)</span> and <span class="math" data-tex="\(\sum_{d\in z}\gamma_d=\eta_z\)">\(\sum_{d\in z}\gamma_d=\eta_z\)</span>. With the corresponding <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>, Lemma 4.2 gives
+<span class="math math-display" data-tex="\[
+\ell(S\Theta)\le\frac32b-K .
+\]">\[
+\ell(S\Theta)\le\frac32b-K .
+\]</span>
+On the other hand, (3.2) and Lemma 3.1 compute <span class="math" data-tex="\(\ell(S\Theta)\)">\(\ell(S\Theta)\)</span>. For <span class="math" data-tex="\(z\ne z_0\)">\(z\ne z_0\)</span>, <span class="math" data-tex="\(r_z=1\)">\(r_z=1\)</span>, and <span class="math" data-tex="\(h(e^{-2\pi i\delta}I)\)">\(h(e^{-2\pi i\delta}I)\)</span> has trace <span class="math" data-tex="\(1-\delta\)">\(1-\delta\)</span>. Since <span class="math" data-tex="\(\sum_z|z|=2b\)">\(\sum_z|z|=2b\)</span> and there are <span class="math" data-tex="\(q\)">\(q\)</span> cycles,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ell(S\Theta)&amp;=\frac{2b-q}2+(q-1)(1-\delta)\\
+&amp;\quad+\tau\bigl(f_\delta(L(r_{z_0}^{-1}))\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\ell(S\Theta)&amp;=\frac{2b-q}2+(q-1)(1-\delta)\\
+&amp;\quad+\tau\bigl(f_\delta(L(r_{z_0}^{-1}))\bigr),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(f_\delta(\lambda)=h(e^{2\pi i(q-1)\delta}\lambda)\)">\(f_\delta(\lambda)=h(e^{2\pi i(q-1)\delta}\lambda)\)</span>, by (0.1) of <a href="../the-kervaire-conjecture/the-planar-boundary-theorem.html">The planar boundary theorem</a>. As <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>, <span class="math" data-tex="\(f_\delta\to h\)">\(f_\delta\to h\)</span> pointwise on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>: the angle of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is shifted forward by <span class="math" data-tex="\((q-1)\delta\ge0\)">\((q-1)\delta\ge0\)</span>, and <span class="math" data-tex="\(h\)">\(h\)</span> is continuous from that side everywhere, including at <span class="math" data-tex="\(1\)">\(1\)</span>. The functions are bounded by <span class="math" data-tex="\(1\)">\(1\)</span>, so Lemma 2.1(2) of the trace lesson gives <span class="math" data-tex="\(\tau(f_\delta(L(r_{z_0}^{-1})))\to\tau(h(L(r_{z_0}^{-1})))\)">\(\tau(f_\delta(L(r_{z_0}^{-1})))\to\tau(h(L(r_{z_0}^{-1})))\)</span>. Using <span class="math" data-tex="\(q=2-2K+b\)">\(q=2-2K+b\)</span> from (2.2),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\lim_{\delta\downarrow0}\ell(S\Theta)\\
+&amp;\quad=\frac{2b-q}2+q-1+\tau\bigl(h(L(r_{z_0}^{-1}))\bigr)\\
+&amp;\quad=\frac32b-K+\tau\bigl(h(L(r_{z_0}^{-1}))\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\lim_{\delta\downarrow0}\ell(S\Theta)\\
+&amp;\quad=\frac{2b-q}2+q-1+\tau\bigl(h(L(r_{z_0}^{-1}))\bigr)\\
+&amp;\quad=\frac32b-K+\tau\bigl(h(L(r_{z_0}^{-1}))\bigr).
+\end{aligned}
+\]</span>
+The upper bound holds for every <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, so <span class="math" data-tex="\(\tau(h(L(r_{z_0}^{-1})))\le0\)">\(\tau(h(L(r_{z_0}^{-1})))\le0\)</span>. Since <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful, <span class="math" data-tex="\(h(L(r_{z_0}^{-1}))=0\)">\(h(L(r_{z_0}^{-1}))=0\)</span>, and <span class="math" data-tex="\(L(r_{z_0}^{-1})=e^{2\pi ih(L(r_{z_0}^{-1}))}=I\)">\(L(r_{z_0}^{-1})=e^{2\pi ih(L(r_{z_0}^{-1}))}=I\)</span> by Lemma 3.1(1) of the trace lesson. As <span class="math" data-tex="\(L(a)\delta_1=\delta_a\)">\(L(a)\delta_1=\delta_a\)</span>, this means <span class="math" data-tex="\(r_{z_0}=1\)">\(r_{z_0}=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only the upper bound is used, for each <span class="math" data-tex="\(\delta\)">\(\delta\)</span> separately; the matrices <span class="math" data-tex="\(X_i\)">\(X_i\)</span> are chosen anew for every <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and no limit of them is taken. Planarity enters through the count (2.2), connectedness through (2.2) and Lemma 1.2(3), and nonsingularity through Lemma 2.1(1) and the rank condition of the fixed-space theorem.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). Show that every element of <span class="math" data-tex="\(G*F_n\)">\(G*F_n\)</span> that contains an unknown is conjugate to a product of the form (1.1). Write <span class="math" data-tex="\(w=a\,x_1x_2\,b\,x_1^{-1}\)">\(w=a\,x_1x_2\,b\,x_1^{-1}\)</span>, with <span class="math" data-tex="\(a,b\in G\)">\(a,b\in G\)</span>, in this form and compute its exponent sums.</p>
+<p><strong>6.2</strong> (easy). Let <span class="math" data-tex="\(m=n=1\)">\(m=n=1\)</span> and <span class="math" data-tex="\(w_1=x_1g\)">\(w_1=x_1g\)</span> with <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>. Let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> consist of one positive and one negative disk joined by one band. Compute <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, the cycles of <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span> and the boundary word, and check (2.2) and Proposition 1.1.</p>
+<p><strong>6.3</strong> (medium). Let <span class="math" data-tex="\(c\in G\)">\(c\in G\)</span>, <span class="math" data-tex="\(c\ne1\)">\(c\ne1\)</span>, and consider the singular system <span class="math" data-tex="\(w_1=x_1\)">\(w_1=x_1\)</span>, <span class="math" data-tex="\(w_2=x_1c^{-1}\)">\(w_2=x_1c^{-1}\)</span>. Build a connected disk-and-band surface with one positive disk of type <span class="math" data-tex="\(1\)">\(1\)</span>, one negative disk of type <span class="math" data-tex="\(2\)">\(2\)</span> and one band, and show that its only boundary word is <span class="math" data-tex="\(c\)">\(c\)</span>. Which step of the proof of Proposition 1.1 fails?</p>
+<p><strong>6.4</strong> (medium). For the system <span class="math" data-tex="\(x_1ax_2b=1\)">\(x_1ax_2b=1\)</span>, <span class="math" data-tex="\(x_1^2cx_2^{-1}d=1\)">\(x_1^2cx_2^{-1}d=1\)</span> of Example 2.4 of <a href="systems-of-equations-over-groups.html">Systems of equations over groups</a>, write both words in the form (1.1). Suppose that a connected surface <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> has one disk of each type and each sign. Compute <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(d_1\)">\(d_1\)</span>, <span class="math" data-tex="\(d_2\)">\(d_2\)</span>, the lists <span class="math" data-tex="\(\mathcal B_1\)">\(\mathcal B_1\)</span>, <span class="math" data-tex="\(\mathcal B_2\)">\(\mathcal B_2\)</span> of (4.4) and the matrix of signed counts.</p>
+<p><strong>6.5</strong> (medium). Suppose that <span class="math" data-tex="\(J\)">\(J\)</span> were defined by (4.1) with a unitary <span class="math" data-tex="\(X_{i,t}\)">\(X_{i,t}\)</span> depending on the position <span class="math" data-tex="\(t\)">\(t\)</span>. Compute <span class="math" data-tex="\(JSJ(e^i_{+,t}(u)\otimes v)\)">\(JSJ(e^i_{+,t}(u)\otimes v)\)</span> and show that <span class="math" data-tex="\(JSJ=S^{-1}\)">\(JSJ=S^{-1}\)</span> forces <span class="math" data-tex="\(X_{i,t}=X_{i,t-1}\)">\(X_{i,t}=X_{i,t-1}\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> Write the element as a product of letters <span class="math" data-tex="\(x_j^{\pm1}\)">\(x_j^{\pm1}\)</span> and elements of <span class="math" data-tex="\(G\)">\(G\)</span>, multiply adjacent elements of <span class="math" data-tex="\(G\)">\(G\)</span>, and insert the coefficient <span class="math" data-tex="\(1\)">\(1\)</span> between two adjacent letters <span class="math" data-tex="\(x_j^{\pm1}\)">\(x_j^{\pm1}\)</span>. If the product begins with an element <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, conjugation by <span class="math" data-tex="\(g\)">\(g\)</span> moves it to the end: <span class="math" data-tex="\(g^{-1}(gu)g=ug\)">\(g^{-1}(gu)g=ug\)</span>. For the example, <span class="math" data-tex="\(a^{-1}wa=x_1\cdot1\cdot x_2\cdot b\cdot x_1^{-1}\cdot a\)">\(a^{-1}wa=x_1\cdot1\cdot x_2\cdot b\cdot x_1^{-1}\cdot a\)</span>, so <span class="math" data-tex="\(N=3\)">\(N=3\)</span>, <span class="math" data-tex="\((\nu_{1,t},s_{1,t})=(1,1),(2,1),(1,-1)\)">\((\nu_{1,t},s_{1,t})=(1,1),(2,1),(1,-1)\)</span> and <span class="math" data-tex="\((g_{1,1},g_{1,2},g_{1,3})=(1,b,a)\)">\((g_{1,1},g_{1,2},g_{1,3})=(1,b,a)\)</span>. The exponent sums are <span class="math" data-tex="\(0\)">\(0\)</span> for <span class="math" data-tex="\(x_1\)">\(x_1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(x_2\)">\(x_2\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(\mathcal D=\{d_+,d_-\}\)">\(\mathcal D=\{d_+,d_-\}\)</span>. Each disk has one slot, so <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> fixes both; <span class="math" data-tex="\(\theta\)">\(\theta\)</span> exchanges them, and <span class="math" data-tex="\(\sigma\theta=\theta\)">\(\sigma\theta=\theta\)</span> has the single cycle <span class="math" data-tex="\((d_+,d_-)\)">\((d_+,d_-)\)</span>. So <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, and with <span class="math" data-tex="\(K=1\)">\(K=1\)</span>, <span class="math" data-tex="\(b=1\)">\(b=1\)</span>, (2.2) gives <span class="math" data-tex="\(2-2+1=1\)">\(2-2+1=1\)</span>. By (1.2), <span class="math" data-tex="\(c_{d_+}=g_{1,1}=g\)">\(c_{d_+}=g_{1,1}=g\)</span> and <span class="math" data-tex="\(c_{d_-}=g_{1,0}^{-1}=g^{-1}\)">\(c_{d_-}=g_{1,0}^{-1}=g^{-1}\)</span>, so <span class="math" data-tex="\(r=c_{\theta d_+}c_{\theta d_-}=c_{d_-}c_{d_+}=g^{-1}g=1\)">\(r=c_{\theta d_+}c_{\theta d_-}=c_{d_-}c_{d_+}=g^{-1}g=1\)</span>. With one boundary circle, the hypothesis of Proposition 1.1 holds trivially, and its conclusion <span class="math" data-tex="\(r=1\)">\(r=1\)</span> is confirmed.</p>
+<p><strong>6.3.</strong> In the form (1.1), <span class="math" data-tex="\(w_1=x_1\cdot1\)">\(w_1=x_1\cdot1\)</span> and <span class="math" data-tex="\(w_2=x_1\cdot c^{-1}\)">\(w_2=x_1\cdot c^{-1}\)</span>. The slot <span class="math" data-tex="\(d_1\)">\(d_1\)</span> of the positive disk of type <span class="math" data-tex="\(1\)">\(1\)</span> has traversal sign <span class="math" data-tex="\(1\)">\(1\)</span> and next corner <span class="math" data-tex="\(g_{1,1}=1\)">\(g_{1,1}=1\)</span>; the slot <span class="math" data-tex="\(d_2\)">\(d_2\)</span> of the negative disk of type <span class="math" data-tex="\(2\)">\(2\)</span> has traversal sign <span class="math" data-tex="\(-1\)">\(-1\)</span> and next corner <span class="math" data-tex="\(g_{2,1}^{-1}=c\)">\(g_{2,1}^{-1}=c\)</span>. Both have variable index <span class="math" data-tex="\(1\)">\(1\)</span>, so one band may join them. As in Exercise 6.2, <span class="math" data-tex="\(\sigma\theta=\theta\)">\(\sigma\theta=\theta\)</span> has one cycle, and the boundary word is <span class="math" data-tex="\(c_{d_2}c_{d_1}=c\cdot1=c\ne1\)">\(c_{d_2}c_{d_1}=c\cdot1=c\ne1\)</span>. The exponent-sum matrix <span class="math" data-tex="\(\begin{pmatrix}1\\1\end{pmatrix}\)">\(\begin{pmatrix}1\\1\end{pmatrix}\)</span> has rank <span class="math" data-tex="\(1&lt;2\)">\(1&lt;2\)</span>. The proof fails at Lemma 2.1(1): <span class="math" data-tex="\(p_1^+=1\ne0=p_1^-\)">\(p_1^+=1\ne0=p_1^-\)</span>, so the disks of each type cannot be paired by matrices <span class="math" data-tex="\(X_i\)">\(X_i\)</span>.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(w_1=x_1\cdot a\cdot x_2\cdot b\)">\(w_1=x_1\cdot a\cdot x_2\cdot b\)</span>, with <span class="math" data-tex="\(N_1=2\)">\(N_1=2\)</span>, and <span class="math" data-tex="\(w_2=x_1\cdot1\cdot x_1\cdot c\cdot x_2^{-1}\cdot d\)">\(w_2=x_1\cdot1\cdot x_1\cdot c\cdot x_2^{-1}\cdot d\)</span>, with <span class="math" data-tex="\(N_2=3\)">\(N_2=3\)</span>. With <span class="math" data-tex="\(k_1=k_2=1\)">\(k_1=k_2=1\)</span>: <span class="math" data-tex="\(K=2\)">\(K=2\)</span>, <span class="math" data-tex="\(b=2+3=5\)">\(b=2+3=5\)</span>, <span class="math" data-tex="\(q=2-4+5=3\)">\(q=2-4+5=3\)</span>. The unknown <span class="math" data-tex="\(x_1\)">\(x_1\)</span> occurs at <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, <span class="math" data-tex="\((2,1)\)">\((2,1)\)</span>, <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>, so <span class="math" data-tex="\(d_1=3\)">\(d_1=3\)</span>; <span class="math" data-tex="\(x_2\)">\(x_2\)</span> occurs at <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span> and <span class="math" data-tex="\((2,3)\)">\((2,3)\)</span>, so <span class="math" data-tex="\(d_2=2\)">\(d_2=2\)</span>, and <span class="math" data-tex="\(d_1+d_2=b\)">\(d_1+d_2=b\)</span>. Then <span class="math" data-tex="\(\mathcal B_1=((1,-1),(2,-1),(2,-1))\)">\(\mathcal B_1=((1,-1),(2,-1),(2,-1))\)</span> and <span class="math" data-tex="\(\mathcal B_2=((1,-1),(2,1))\)">\(\mathcal B_2=((1,-1),(2,1))\)</span>, and the matrix of signed counts is <span class="math" data-tex="\(\begin{pmatrix}-1&amp;-1\\-2&amp;1\end{pmatrix}=-A\)">\(\begin{pmatrix}-1&amp;-1\\-2&amp;1\end{pmatrix}=-A\)</span>, of determinant <span class="math" data-tex="\(-3\)">\(-3\)</span>.</p>
+<p><strong>6.5.</strong> With the matrices <span class="math" data-tex="\(X_{i,t}\)">\(X_{i,t}\)</span> in (4.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;JSJ(e^i_{+,t}(u)\otimes v)\\
+&amp;\quad=JS(e^i_{-,t}(X_{i,t}u)\otimes v)\\
+&amp;\quad=J(e^i_{-,t-1}(X_{i,t}u)\otimes L(g_{i,t-1})v)\\
+&amp;\quad=e^i_{+,t-1}(X_{i,t-1}^{-1}X_{i,t}u)\\
+&amp;\qquad\otimes L(g_{i,t-1})v,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;JSJ(e^i_{+,t}(u)\otimes v)\\
+&amp;\quad=JS(e^i_{-,t}(X_{i,t}u)\otimes v)\\
+&amp;\quad=J(e^i_{-,t-1}(X_{i,t}u)\otimes L(g_{i,t-1})v)\\
+&amp;\quad=e^i_{+,t-1}(X_{i,t-1}^{-1}X_{i,t}u)\\
+&amp;\qquad\otimes L(g_{i,t-1})v,
+\end{aligned}
+\]</span>
+while
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S^{-1}(e^i_{+,t}(u)\otimes v)\\
+&amp;\quad=e^i_{+,t-1}(u)\otimes L(g_{i,t-1})v .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;S^{-1}(e^i_{+,t}(u)\otimes v)\\
+&amp;\quad=e^i_{+,t-1}(u)\otimes L(g_{i,t-1})v .
+\end{aligned}
+\]</span> Equality for all <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> means <span class="math" data-tex="\(X_{i,t-1}^{-1}X_{i,t}=I\)">\(X_{i,t-1}^{-1}X_{i,t}=I\)</span>. So one matrix <span class="math" data-tex="\(X_i\)">\(X_i\)</span> serves all positions of type <span class="math" data-tex="\(i\)">\(i\)</span>, and in (4.4) only the signed number of its occurrences next to each unknown matters.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-NS] OpenAI, <em>Nonsingular systems of equations over arbitrary groups</em>, OpenAI Math Release preprint, 5 October 2026, Sections 3 and 4, Lemma 3.2 and Proposition 4.1. https://github.com/openai/math/tree/main/preprints/Nonsingular-systems-of-equations-over-arbitrary-groups-October-5-2026</li>
+<li>[OpenAI-K] OpenAI, <em>The Kervaire theorem for groups</em>, OpenAI Math Release preprint, 24 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/The-Kervaire-Theorem-for-Groups-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

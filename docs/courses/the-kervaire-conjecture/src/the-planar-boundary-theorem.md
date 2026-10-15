@@ -177,7 +177,7 @@ where \(f_\delta(\lambda)=h(e^{2\pi i(q-1)\delta}\lambda)\), by (0.1). As \(\del
 \]
 The upper bound holds for every \(\delta\), so \(\tau(h(L(r_{z_0}^{-1})))\le0\). Since \(h\ge0\) and \(\tau\) is faithful, \(h(L(r_{z_0}^{-1}))=0\), and \(L(r_{z_0}^{-1})=e^{2\pi ih(L(r_{z_0}^{-1}))}=I\) by Lemma 3.1(1) of the trace lesson. As \(L(a)\delta_1=\delta_a\), this means \(r_{z_0}=1\). \(\square\)
 
-Only the uniform upper bound was used; the matrices \(X\) and \(J\) are chosen anew for every \(\delta\), and no limit of them is taken. The phases \(\eta_z\) approach the cut from below on the trivial circles, where \(h(e^{-2\pi i\delta})=1-\delta\) is close to \(1\), and from above on the exceptional circle, where the phase keeps its value \(h\ge0\). Planarity enters only through the count \(q=nk-2k+2\) (Exercise 5.2).
+Only the uniform upper bound was used; the matrices \(X\) and \(J\) are chosen anew for every \(\delta\), and no limit of them is taken. The phases \(\eta_z\) approach the cut from below on the trivial circles, where \(h(e^{-2\pi i\delta})=1-\delta\) is close to \(1\), and from above on the exceptional circle, where the phase keeps its value \(h\ge0\). Planarity enters only through the count \(q=nk-2k+2\) (Exercise 5.2). For several relators in several unknowns, the same argument with one mixing matrix for each relator is [The planar boundary obstruction](course:nonsingular-systems-over-groups/the-planar-boundary-obstruction).
 
 ## 5. Exercises
 
