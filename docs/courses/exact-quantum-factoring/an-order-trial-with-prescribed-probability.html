@@ -1,0 +1,188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>An order trial with prescribed probability</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Exact quantum factoring)</a><a href="a-transform-with-a-piecewise-linear-phase.html">Previous lesson</a><a href="a-deterministic-primality-test.html">Next lesson</a><a href="src/an-order-trial-with-prescribed-probability.md">Editable source</a></nav><main><article><h1 id="an-order-trial-with-prescribed-probability">An order trial with prescribed probability</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>In <a href="a-transform-with-a-piecewise-linear-phase.html">A transform with a piecewise-linear phase</a>, order sampling with the transform returns the bin of a fraction <span class="math" data-tex="\(j/r\)">\(j/r\)</span> with probability <span class="math" data-tex="\(\sum_tP(r,j,t)\)">\(\sum_tP(r,j,t)\)</span>, an exactly computable but inconvenient function of the bin. This lesson adds classical random choices to the experiment so that, at the true order <span class="math" data-tex="\(r\)">\(r\)</span>, every reduced numerator contributes exactly the explicit amount <span class="math" data-tex="\(\lambda(r)=2^{-\lceil\log_2r\rceil-10}\)">\(\lambda(r)=2^{-\lceil\log_2r\rceil-10}\)</span>, and it does so without knowing <span class="math" data-tex="\(r\)">\(r\)</span> [OpenAI-EQF, Section 3]. The construction sums each residue class exactly, compares the result with an integral that is a polynomial of bounded degree on a bounded number of pieces, rounds that polynomial upward so that its total over all residues is computable, and spends the remaining mass on two classical correction modes. Mosca and Zalka computed a success probability to arbitrary precision with power sums and then prepared one qubit by a rotation through a computed angle, which brings the success probability to exactly <span class="math" data-tex="\(\frac14\)">\(\frac14\)</span> [Mosca–Zalka 2004, Sections 4.1–4.2]. Here the polynomial pieces give exact dyadic sums, and no gate with a computed angle is needed.</p>
+<ul>
+<li>Estimates for the interpolated exponential (Section 1).</li>
+<li>A dyadic majorant with an exactly computable sum (Section 2).</li>
+<li>Three modes with a prescribed mass (Section 3).</li>
+</ul>
+<p>We keep the notation of the previous lesson: <span class="math" data-tex="\(n\ge128\)">\(n\ge128\)</span>, <span class="math" data-tex="\(B=2^n\)">\(B=2^n\)</span>, <span class="math" data-tex="\(Q=B^{16}\)">\(Q=B^{16}\)</span>, the function <span class="math" data-tex="\(g\)">\(g\)</span>, the bins <span class="math" data-tex="\(k(d,j)\)">\(k(d,j)\)</span> with <span class="math" data-tex="\(\eta=k(d,j)-jQ/d\)">\(\eta=k(d,j)-jQ/d\)</span>, and the quantities <span class="math" data-tex="\(P(d,j,t)\)">\(P(d,j,t)\)</span> of (5.1) there. Logarithms without a base are natural.</p>
+<h2 id="1-estimates-for-the-interpolated-exponential">1. Estimates for the interpolated exponential</h2>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(f\colon[a,b]\to\mathbb C\)">\(f\colon[a,b]\to\mathbb C\)</span> be twice continuously differentiable with <span class="math" data-tex="\(|f&#x27;&#x27;|\le M\)">\(|f&#x27;&#x27;|\le M\)</span>, and let <span class="math" data-tex="\(L\)">\(L\)</span> be the affine function with <span class="math" data-tex="\(L(a)=f(a)\)">\(L(a)=f(a)\)</span>, <span class="math" data-tex="\(L(b)=f(b)\)">\(L(b)=f(b)\)</span>. Then <span class="math" data-tex="\(|L(z)-f(z)|\le\frac M8(b-a)^2\)">\(|L(z)-f(z)|\le\frac M8(b-a)^2\)</span> on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(z\)">\(z\)</span> and put <span class="math" data-tex="\(\lambda=(b-z)/(b-a)\)">\(\lambda=(b-z)/(b-a)\)</span>. Integration by parts gives <span class="math" data-tex="\(f(a)=f(z)+f&#x27;(z)(a-z)+R_a\)">\(f(a)=f(z)+f&#x27;(z)(a-z)+R_a\)</span> with <span class="math" data-tex="\(R_a=\int_z^a(a-v)f&#x27;&#x27;(v)\,dv\)">\(R_a=\int_z^a(a-v)f&#x27;&#x27;(v)\,dv\)</span>, so <span class="math" data-tex="\(|R_a|\le\frac M2(z-a)^2\)">\(|R_a|\le\frac M2(z-a)^2\)</span>, and in the same way <span class="math" data-tex="\(f(b)=f(z)+f&#x27;(z)(b-z)+R_b\)">\(f(b)=f(z)+f&#x27;(z)(b-z)+R_b\)</span> with <span class="math" data-tex="\(|R_b|\le\frac M2(b-z)^2\)">\(|R_b|\le\frac M2(b-z)^2\)</span>. Since <span class="math" data-tex="\(\lambda(a-z)+(1-\lambda)(b-z)=0\)">\(\lambda(a-z)+(1-\lambda)(b-z)=0\)</span>,
+<span class="math math-display" data-tex="\[
+L(z)-f(z)=\lambda R_a+(1-\lambda)R_b ,
+\]">\[
+L(z)-f(z)=\lambda R_a+(1-\lambda)R_b ,
+\]</span>
+whose modulus is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\frac M2\bigl(\lambda(z-a)^2+(1-\lambda)(b-z)^2\bigr)\\&amp;\quad=\frac M2(z-a)(b-z)\\&amp;\quad\le\frac M8(b-a)^2 .\qquad\square\end{aligned}
+\]">\[
+\begin{aligned}&amp;\frac M2\bigl(\lambda(z-a)^2+(1-\lambda)(b-z)^2\bigr)\\&amp;\quad=\frac M2(z-a)(b-z)\\&amp;\quad\le\frac M8(b-a)^2 .\qquad\square\end{aligned}
+\]</span></p>
+<p><strong>Lemma 1.2.</strong> The function <span class="math" data-tex="\(g\)">\(g\)</span> satisfies <span class="math" data-tex="\(|g(z)-g(z&#x27;)|\le4\sqrt2\,|z-z&#x27;|\)">\(|g(z)-g(z&#x27;)|\le4\sqrt2\,|z-z&#x27;|\)</span> and <span class="math" data-tex="\(|g(z)-e^{-2\pi iz}|\le\pi^2/32\)">\(|g(z)-e^{-2\pi iz}|\le\pi^2/32\)</span> for all real <span class="math" data-tex="\(z,z&#x27;\)">\(z,z&#x27;\)</span>.</p>
+<p><em>Proof.</em> On each quarter interval <span class="math" data-tex="\(g\)">\(g\)</span> is affine with derivative <span class="math" data-tex="\(4\bigl((-i)^{q+1}-(-i)^q\bigr)\)">\(4\bigl((-i)^{q+1}-(-i)^q\bigr)\)</span>, of modulus <span class="math" data-tex="\(4|{-i}-1|=4\sqrt2\)">\(4|{-i}-1|=4\sqrt2\)</span>. For the second bound apply Lemma 1.1 to <span class="math" data-tex="\(f(z)=e^{-2\pi iz}\)">\(f(z)=e^{-2\pi iz}\)</span> on intervals of length <span class="math" data-tex="\(\frac14\)">\(\frac14\)</span>, with <span class="math" data-tex="\(M=4\pi^2\)">\(M=4\pi^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Fix a reduced label <span class="math" data-tex="\((d,j)\)">\((d,j)\)</span> and <span class="math" data-tex="\(0\le t&lt;d\)">\(0\le t&lt;d\)</span>, and write <span class="math" data-tex="\(k=k(d,j)\)">\(k=k(d,j)\)</span>. For <span class="math" data-tex="\(x\equiv t\pmod d\)">\(x\equiv t\pmod d\)</span> put <span class="math" data-tex="\(u=jt\bmod d\in\{0,\ldots,d-1\}\)">\(u=jt\bmod d\in\{0,\ldots,d-1\}\)</span>. Since <span class="math" data-tex="\(jx\equiv jt\pmod d\)">\(jx\equiv jt\pmod d\)</span>, periodicity gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;g(kx/Q)\\&amp;\quad=g\bigl(u/d+\eta x/Q\bigr).\end{aligned}\tag{1.1}
+\]">\[
+\begin{aligned}&amp;g(kx/Q)\\&amp;\quad=g\bigl(u/d+\eta x/Q\bigr).\end{aligned}\tag{1.1}
+\]</span>
+For <span class="math" data-tex="\(0\le u&lt;d\)">\(0\le u&lt;d\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{aligned}I(u)&amp;=\frac1d\int_0^1g(u/d+\eta v)\,dv,\\ J(u)&amp;=|I(u)|^2 .\end{aligned}
+\]">\[
+\begin{aligned}I(u)&amp;=\frac1d\int_0^1g(u/d+\eta v)\,dv,\\ J(u)&amp;=|I(u)|^2 .\end{aligned}
+\]</span></p>
+<p><strong>Lemma 1.3</strong> ([OpenAI-EQF, Lemma 3.4]). For <span class="math" data-tex="\(1\le d&lt;B\)">\(1\le d&lt;B\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(P(d,j,t)\)">\(P(d,j,t)\)</span> is a dyadic rational, computable from <span class="math" data-tex="\((d,j,t)\)">\((d,j,t)\)</span> in time polynomial in <span class="math" data-tex="\(n\)">\(n\)</span>;</li>
+<li><span class="math" data-tex="\(|P(d,j,t)-J(jt\bmod d)|\le32/Q\)">\(|P(d,j,t)-J(jt\bmod d)|\le32/Q\)</span>;</li>
+<li><span class="math" data-tex="\(\frac1{8d}\le|I(u)|\le\frac1d\)">\(\frac1{8d}\le|I(u)|\le\frac1d\)</span> for <span class="math" data-tex="\(0\le u&lt;d\)">\(0\le u&lt;d\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) As <span class="math" data-tex="\(x\)">\(x\)</span> runs through the progression <span class="math" data-tex="\(t,t+d,\ldots\)">\(t,t+d,\ldots\)</span> below <span class="math" data-tex="\(Q\)">\(Q\)</span>, the argument <span class="math" data-tex="\(u/d+\eta x/Q\)">\(u/d+\eta x/Q\)</span> in (1.1) moves monotonically over a distance less than <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>, since <span class="math" data-tex="\(|\eta|\le\frac12\)">\(|\eta|\le\frac12\)</span>. So it meets at most two quarter-integers, and comparisons of rationals with integer division split the progression into at most three runs on which <span class="math" data-tex="\(g\)">\(g\)</span> is affine. On each run the real and imaginary parts of <span class="math" data-tex="\(g\)">\(g\)</span> are affine in the index of the progression, so their sums follow from the number of terms and the sum of consecutive integers. This uses a bounded number of operations on rationals of <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span> bits. Every value <span class="math" data-tex="\(g(kx/Q)\)">\(g(kx/Q)\)</span> has real and imaginary parts in <span class="math" data-tex="\((4/Q)\mathbb Z\)">\((4/Q)\mathbb Z\)</span>, because <span class="math" data-tex="\(4kx/Q\in(4/Q)\mathbb Z\)">\(4kx/Q\in(4/Q)\mathbb Z\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> is affine with coefficients in <span class="math" data-tex="\(\mathbb Z[i]\)">\(\mathbb Z[i]\)</span> on each quarter interval in the variable <span class="math" data-tex="\(4z\)">\(4z\)</span>. Hence the sum divided by <span class="math" data-tex="\(Q\)">\(Q\)</span> has denominators dividing <span class="math" data-tex="\(Q^2\)">\(Q^2\)</span>, and <span class="math" data-tex="\(P(d,j,t)\)">\(P(d,j,t)\)</span> has a denominator dividing <span class="math" data-tex="\(Q^4\)">\(Q^4\)</span>.</p>
+<p>(2) Put <span class="math" data-tex="\(h=d/Q&lt;1\)">\(h=d/Q&lt;1\)</span> and <span class="math" data-tex="\(f(v)=g(u/d+\eta v)\)">\(f(v)=g(u/d+\eta v)\)</span>, a function with <span class="math" data-tex="\(|f|\le1\)">\(|f|\le1\)</span> and, by Lemma 1.2, Lipschitz constant at most <span class="math" data-tex="\(\frac12\cdot4\sqrt2&lt;4\)">\(\frac12\cdot4\sqrt2&lt;4\)</span>. Let <span class="math" data-tex="\(A_t=Q^{-1}\sum_{x\equiv t}g(kx/Q)\)">\(A_t=Q^{-1}\sum_{x\equiv t}g(kx/Q)\)</span>. The points <span class="math" data-tex="\(x/Q\)">\(x/Q\)</span> of the progression are the left endpoints of consecutive intervals of length <span class="math" data-tex="\(h\)">\(h\)</span>, which start at <span class="math" data-tex="\(t/Q&lt;h\)">\(t/Q&lt;h\)</span> and end at a point of <span class="math" data-tex="\([1,1+h)\)">\([1,1+h)\)</span>. On each interval the left-endpoint value differs from the average of <span class="math" data-tex="\(f\)">\(f\)</span> by at most <span class="math" data-tex="\(2h\)">\(2h\)</span>, so the Riemann sum <span class="math" data-tex="\(h\sum_xf(x/Q)\)">\(h\sum_xf(x/Q)\)</span> differs from the integral of <span class="math" data-tex="\(f\)">\(f\)</span> over the union of the intervals by at most <span class="math" data-tex="\(2h(1+h)\)">\(2h(1+h)\)</span>. That integral differs from <span class="math" data-tex="\(\int_0^1f\)">\(\int_0^1f\)</span> by at most <span class="math" data-tex="\(2h\)">\(2h\)</span>, the length of the two end pieces. Dividing by <span class="math" data-tex="\(d\)">\(d\)</span>, and using <span class="math" data-tex="\(h\sum_xf(x/Q)=dA_t\)">\(h\sum_xf(x/Q)=dA_t\)</span>,
+<span class="math math-display" data-tex="\[
+|A_t-I(u)|\le\frac{2h(1+h)+2h}d\le\frac6Q .
+\]">\[
+|A_t-I(u)|\le\frac{2h(1+h)+2h}d\le\frac6Q .
+\]</span>
+The progression has at most <span class="math" data-tex="\(Q/d+1\)">\(Q/d+1\)</span> terms, so <span class="math" data-tex="\(|A_t|\le\frac1d+\frac1Q\)">\(|A_t|\le\frac1d+\frac1Q\)</span>, and <span class="math" data-tex="\(|I(u)|\le\frac1d\)">\(|I(u)|\le\frac1d\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;|P(d,j,t)-J(u)|\\&amp;\quad\le|A_t-I(u)|\,\bigl(|A_t|+|I(u)|\bigr)\\&amp;\quad\le\frac6Q\cdot3\le\frac{32}Q .\end{aligned}
+\]">\[
+\begin{aligned}&amp;|P(d,j,t)-J(u)|\\&amp;\quad\le|A_t-I(u)|\,\bigl(|A_t|+|I(u)|\bigr)\\&amp;\quad\le\frac6Q\cdot3\le\frac{32}Q .\end{aligned}
+\]</span></p>
+<p>(3) The upper bound follows from <span class="math" data-tex="\(|g|\le1\)">\(|g|\le1\)</span>. Replacing <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(e^{-2\pi iz}\)">\(e^{-2\pi iz}\)</span> in the definition of <span class="math" data-tex="\(I(u)\)">\(I(u)\)</span> gives an integral of modulus
+<span class="math math-display" data-tex="\[
+\frac1d\Bigl|\frac{\sin(\pi\eta)}{\pi\eta}\Bigr|\ge\frac2{\pi d},
+\]">\[
+\frac1d\Bigl|\frac{\sin(\pi\eta)}{\pi\eta}\Bigr|\ge\frac2{\pi d},
+\]</span>
+since <span class="math" data-tex="\(\sin s/s\ge2/\pi\)">\(\sin s/s\ge2/\pi\)</span> for <span class="math" data-tex="\(0&lt;s\le\pi/2\)">\(0&lt;s\le\pi/2\)</span> by concavity of the sine (the quotient is one at <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>). By Lemma 1.2 the replacement changes the integrand by at most <span class="math" data-tex="\(\pi^2/32\)">\(\pi^2/32\)</span>, so <span class="math" data-tex="\(|I(u)|\ge\frac1d(2/\pi-\pi^2/32)\)">\(|I(u)|\ge\frac1d(2/\pi-\pi^2/32)\)</span>. From <span class="math" data-tex="\(\tan(\pi/6)&gt;\pi/6\)">\(\tan(\pi/6)&gt;\pi/6\)</span> we get <span class="math" data-tex="\(\pi&lt;2\sqrt3\)">\(\pi&lt;2\sqrt3\)</span>, so <span class="math" data-tex="\(2/\pi&gt;1/\sqrt3&gt;0.577\)">\(2/\pi&gt;1/\sqrt3&gt;0.577\)</span> and <span class="math" data-tex="\(\pi^2/32&lt;12/32=0.375\)">\(\pi^2/32&lt;12/32=0.375\)</span>; the parenthesis exceeds <span class="math" data-tex="\(\frac18\)">\(\frac18\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-dyadic-majorant-with-an-exactly-computable-sum">2. A dyadic majorant with an exactly computable sum</h2>
+<p><strong>Lemma 2.1</strong> (the majorant; [OpenAI-EQF, Lemma 3.4]). For every <span class="math" data-tex="\(1\le d&lt;B\)">\(1\le d&lt;B\)</span> and <span class="math" data-tex="\(0\le j&lt;d\)">\(0\le j&lt;d\)</span> with <span class="math" data-tex="\(\gcd(j,d)=1\)">\(\gcd(j,d)=1\)</span>, there are nonnegative dyadic rationals <span class="math" data-tex="\(U(d,j,u)\)">\(U(d,j,u)\)</span>, <span class="math" data-tex="\(0\le u&lt;d\)">\(0\le u&lt;d\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;U(d,j,jt\bmod d)\\&amp;\quad-P(d,j,t)\in[0,128/Q]\end{aligned}\tag{2.1}
+\]">\[
+\begin{aligned}&amp;U(d,j,jt\bmod d)\\&amp;\quad-P(d,j,t)\in[0,128/Q]\end{aligned}\tag{2.1}
+\]</span>
+for <span class="math" data-tex="\(0\le t&lt;d\)">\(0\le t&lt;d\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}S(d,j):=\frac12\sum_{u=0}^{d-1}U(d,j,u),\\ \frac1{128d}\le S(d,j)\le2 .\end{gathered}\tag{2.2}
+\]">\[
+\begin{gathered}S(d,j):=\frac12\sum_{u=0}^{d-1}U(d,j,u),\\ \frac1{128d}\le S(d,j)\le2 .\end{gathered}\tag{2.2}
+\]</span>
+Given their integer arguments, <span class="math" data-tex="\(U(d,j,u)\)">\(U(d,j,u)\)</span> and <span class="math" data-tex="\(S(d,j)\)">\(S(d,j)\)</span> are computable in time polynomial in <span class="math" data-tex="\(n\)">\(n\)</span>, as dyadic rationals of polynomial bit length; computing <span class="math" data-tex="\(S(d,j)\)">\(S(d,j)\)</span> does not enumerate its <span class="math" data-tex="\(d\)">\(d\)</span> terms.</p>
+<p><em>Proof.</em> <em>A piecewise polynomial.</em> Let <span class="math" data-tex="\(G\)">\(G\)</span> be the primitive of <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(G(0)=0\)">\(G(0)=0\)</span>; on each quarter interval its real and imaginary parts are polynomials of degree at most two with rational coefficients. If <span class="math" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+I(u)=\frac{G(u/d+\eta)-G(u/d)}{d\eta} .
+\]">\[
+I(u)=\frac{G(u/d+\eta)-G(u/d)}{d\eta} .
+\]</span>
+The two arguments lie in <span class="math" data-tex="\([-\frac12,\frac32]\)">\([-\frac12,\frac32]\)</span>, so as <span class="math" data-tex="\(u\)">\(u\)</span> runs through <span class="math" data-tex="\([0,d)\)">\([0,d)\)</span> they cross the quarter-integers at boundedly many points, namely where <span class="math" data-tex="\(u/d\)">\(u/d\)</span> or <span class="math" data-tex="\(u/d+\eta\)">\(u/d+\eta\)</span> is a quarter-integer. Between these points <span class="math" data-tex="\(I\)">\(I\)</span> is a complex polynomial in <span class="math" data-tex="\(u\)">\(u\)</span> of degree at most two, and <span class="math" data-tex="\(J=|I|^2\)">\(J=|I|^2\)</span> is a rational polynomial of degree at most four. If <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>, then <span class="math" data-tex="\(I(u)=g(u/d)/d\)">\(I(u)=g(u/d)/d\)</span> and the same holds. The boundaries and coefficients have <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span> bits: <span class="math" data-tex="\(\eta=(kd-jQ)/d\)">\(\eta=(kd-jQ)/d\)</span>, so a nonzero <span class="math" data-tex="\(\eta\)">\(\eta\)</span> has <span class="math" data-tex="\(|\eta|\ge1/d\)">\(|\eta|\ge1/d\)</span>.</p>
+<p><em>Rounding upward.</em> On each piece write <span class="math" data-tex="\(J(u)=\sum_{q=0}^4a_qu^q\)">\(J(u)=\sum_{q=0}^4a_qu^q\)</span>, put <span class="math" data-tex="\(D=QB^8\)">\(D=QB^8\)</span> and <span class="math" data-tex="\(\tilde a_q=\lceil Da_q\rceil/D\)">\(\tilde a_q=\lceil Da_q\rceil/D\)</span>, assign each boundary point to one of its two pieces, and let <span class="math" data-tex="\(\tilde J\)">\(\tilde J\)</span> be the resulting piecewise polynomial. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}U(d,j,u)=\tilde J(u)+\frac{64}Q\\ (u=0,\ldots,d-1).\end{gathered}
+\]">\[
+\begin{gathered}U(d,j,u)=\tilde J(u)+\frac{64}Q\\ (u=0,\ldots,d-1).\end{gathered}
+\]</span>
+As <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>, rounding every coefficient upward increases the value, also when a coefficient is negative, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}0&amp;\le\tilde J(u)-J(u)\\&amp;\le\frac{1+u+u^2+u^3+u^4}{QB^8}\le\frac1Q .\end{aligned}
+\]">\[
+\begin{aligned}0&amp;\le\tilde J(u)-J(u)\\&amp;\le\frac{1+u+u^2+u^3+u^4}{QB^8}\le\frac1Q .\end{aligned}
+\]</span>
+With Lemma 1.3(2), <span class="math" data-tex="\(U(d,j,jt\bmod d)-P(d,j,t)\)">\(U(d,j,jt\bmod d)-P(d,j,t)\)</span> lies between <span class="math" data-tex="\(32/Q\)">\(32/Q\)</span> and <span class="math" data-tex="\(97/Q\)">\(97/Q\)</span>, which proves (2.1); in particular <span class="math" data-tex="\(U\ge0\)">\(U\ge0\)</span>. By Lemma 1.3(3), <span class="math" data-tex="\(J\ge1/(64d^2)\)">\(J\ge1/(64d^2)\)</span>, so <span class="math" data-tex="\(S(d,j)\ge\frac12\cdot d\cdot\frac1{64d^2}\)">\(S(d,j)\ge\frac12\cdot d\cdot\frac1{64d^2}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}S(d,j)&amp;\le\frac12\Bigl(d\cdot\frac1{d^2}+\frac{65d}Q\Bigr)\\&amp;\le\frac1{2d}+\frac{65d}{2Q}\le2,\end{aligned}
+\]">\[
+\begin{aligned}S(d,j)&amp;\le\frac12\Bigl(d\cdot\frac1{d^2}+\frac{65d}Q\Bigr)\\&amp;\le\frac1{2d}+\frac{65d}{2Q}\le2,\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(d&lt;B\)">\(d&lt;B\)</span> and <span class="math" data-tex="\(Q=B^{16}\)">\(Q=B^{16}\)</span>.</p>
+<p><em>Computing the sum.</em> Intersect the boundedly many pieces with the integers <span class="math" data-tex="\(0,\ldots,d-1\)">\(0,\ldots,d-1\)</span>, using floors and ceilings, and sum each polynomial with the power sums <span class="math" data-tex="\(\sum_{u=0}^{M-1}u^q\)">\(\sum_{u=0}^{M-1}u^q\)</span>, <span class="math" data-tex="\(q\le4\)">\(q\le4\)</span>. These follow from the identities
+<span class="math math-display" data-tex="\[
+\begin{gathered}M^{q+1}=\sum_{\ell=0}^q\binom{q+1}\ell\sum_{u=0}^{M-1}u^\ell\\ (0\le q\le4),\end{gathered}
+\]">\[
+\begin{gathered}M^{q+1}=\sum_{\ell=0}^q\binom{q+1}\ell\sum_{u=0}^{M-1}u^\ell\\ (0\le q\le4),\end{gathered}
+\]</span>
+obtained by summing <span class="math" data-tex="\((u+1)^{q+1}-u^{q+1}\)">\((u+1)^{q+1}-u^{q+1}\)</span> over <span class="math" data-tex="\(u&lt;M\)">\(u&lt;M\)</span>. Since <span class="math" data-tex="\(D\)">\(D\)</span> is a power of two, <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> are dyadic with <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span>-bit representations, and all the operations are rational arithmetic, integer division and rounding. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-three-modes-with-a-prescribed-mass">3. Three modes with a prescribed mass</h2>
+<p>For <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span> put
+<span class="math math-display" data-tex="\[
+\lambda(d)=2^{-\lceil\log_2d\rceil-10},
+\]">\[
+\lambda(d)=2^{-\lceil\log_2d\rceil-10},
+\]</span>
+and write <span class="math" data-tex="\(\varphi(d)\)">\(\varphi(d)\)</span> for the number of <span class="math" data-tex="\(0\le j&lt;d\)">\(0\le j&lt;d\)</span> with <span class="math" data-tex="\(\gcd(j,d)=1\)">\(\gcd(j,d)=1\)</span>, so <span class="math" data-tex="\(\varphi(1)=1\)">\(\varphi(1)=1\)</span>.</p>
+<p><strong>Proposition 3.1</strong> (the order trial; [OpenAI-EQF, Proposition 3.1]). Let <span class="math" data-tex="\(2\le m&lt;B\)">\(2\le m&lt;B\)</span> and let <span class="math" data-tex="\(a\)">\(a\)</span> be a unit modulo <span class="math" data-tex="\(m\)">\(m\)</span> of order <span class="math" data-tex="\(r\)">\(r\)</span>. There is a uniform quantum trial over the gate set <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, of worst-case cost polynomial in <span class="math" data-tex="\(n\)">\(n\)</span>, that returns either no candidate or an integer <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(1\le d&lt;B\)">\(1\le d&lt;B\)</span> and <span class="math" data-tex="\(r\mid d\)">\(r\mid d\)</span>, and
+<span class="math math-display" data-tex="\[
+\Pr(d=r)=\varphi(r)\,\lambda(r).
+\]">\[
+\Pr(d=r)=\varphi(r)\,\lambda(r).
+\]</span>
+The trial does not use <span class="math" data-tex="\(r\)">\(r\)</span> or any factorization.</p>
+<p><em>Proof.</em> <em>Coefficients.</em> For a reduced label <span class="math" data-tex="\((d,j)\)">\((d,j)\)</span> the natural coefficient <span class="math" data-tex="\(\lambda(d)/S(d,j)\)">\(\lambda(d)/S(d,j)\)</span> need not be dyadic; round it down and keep the remainder:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c(d,j)=2^{-10n}\Bigl\lfloor2^{10n}\frac{\lambda(d)}{S(d,j)}\Bigr\rfloor,\\
+\rho(d,j)=\lambda(d)-c(d,j)\,S(d,j).
+\end{gathered}
+\]">\[
+\begin{gathered}
+c(d,j)=2^{-10n}\Bigl\lfloor2^{10n}\frac{\lambda(d)}{S(d,j)}\Bigr\rfloor,\\
+\rho(d,j)=\lambda(d)-c(d,j)\,S(d,j).
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(\lambda(d)\le2^{-10}/d\)">\(\lambda(d)\le2^{-10}/d\)</span> and <span class="math" data-tex="\(S(d,j)\ge1/(128d)\)">\(S(d,j)\ge1/(128d)\)</span>, we have <span class="math" data-tex="\(\lambda(d)/S(d,j)\le\frac18\)">\(\lambda(d)/S(d,j)\le\frac18\)</span>, and therefore
+<span class="math math-display" data-tex="\[
+\begin{gathered}0\le c(d,j)\le\frac18,\\ 0\le\rho(d,j)\le2\cdot2^{-10n},\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}0\le c(d,j)\le\frac18,\\ 0\le\rho(d,j)\le2\cdot2^{-10n},\end{gathered}\tag{3.1}
+\]</span>
+the second because <span class="math" data-tex="\(\rho=S\,(\lambda/S-c)\)">\(\rho=S\,(\lambda/S-c)\)</span> with <span class="math" data-tex="\(S\le2\)">\(S\le2\)</span> and <span class="math" data-tex="\(0\le\lambda/S-c&lt;2^{-10n}\)">\(0\le\lambda/S-c&lt;2^{-10n}\)</span>. Both are dyadic rationals of polynomial bit length, computed exactly by Lemma 2.1.</p>
+<p><em>The trial.</em> With two fair coins choose one of three modes, with probabilities <span class="math" data-tex="\(\frac12,\frac14,\frac14\)">\(\frac12,\frac14,\frac14\)</span>. In every mode, produce no candidate unless the label <span class="math" data-tex="\((d,j)\)">\((d,j)\)</span> at hand satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}1\le d&lt;B,\quad 0\le j&lt;d,\\ \gcd(j,d)=1,\quad a^d\equiv1\pmod m ,\end{gathered}
+\]">\[
+\begin{gathered}1\le d&lt;B,\quad 0\le j&lt;d,\\ \gcd(j,d)=1,\quad a^d\equiv1\pmod m ,\end{gathered}
+\]</span>
+and check these conditions before evaluating any formula involving the label.</p>
+<ol>
+<li>Run the order sampling of Section 5 of <a href="a-transform-with-a-piecewise-linear-phase.html">A transform with a piecewise-linear phase</a>. Require success of its phase register, recover the label <span class="math" data-tex="\((d,j)\)">\((d,j)\)</span> from the output <span class="math" data-tex="\(k\)">\(k\)</span> by Lemma 4.2 there, and retain the candidate <span class="math" data-tex="\(d\)">\(d\)</span> with probability <span class="math" data-tex="\(c(d,j)\)">\(c(d,j)\)</span>.</li>
+<li>Choose independent uniform <span class="math" data-tex="\(n\)">\(n\)</span>-bit integers <span class="math" data-tex="\(d,j,t\)">\(d,j,t\)</span>. Require also <span class="math" data-tex="\(t&lt;d\)">\(t&lt;d\)</span>, and retain <span class="math" data-tex="\(d\)">\(d\)</span> with probability
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;2B^3c(d,j)\,\bigl(U(d,j,jt\bmod d)\\&amp;\qquad-P(d,j,t)\bigr).\end{aligned}
+\]">\[
+\begin{aligned}&amp;2B^3c(d,j)\,\bigl(U(d,j,jt\bmod d)\\&amp;\qquad-P(d,j,t)\bigr).\end{aligned}
+\]</span></li>
+<li>Choose independent uniform <span class="math" data-tex="\(n\)">\(n\)</span>-bit integers <span class="math" data-tex="\(d,j\)">\(d,j\)</span>, and retain <span class="math" data-tex="\(d\)">\(d\)</span> with probability <span class="math" data-tex="\(4B^2\rho(d,j)\)">\(4B^2\rho(d,j)\)</span>.</li>
+</ol>
+<p>The retention probabilities are dyadic and lie in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>: they are nonnegative by (2.1) and (3.1), and the last two are at most <span class="math" data-tex="\(2B^3\cdot\frac{128}Q\le256B^{-13}\le1\)">\(2B^3\cdot\frac{128}Q\le256B^{-13}\le1\)</span> and <span class="math" data-tex="\(4B^2\cdot2\cdot2^{-10n}=8B^{-8}\le1\)">\(4B^2\cdot2\cdot2^{-10n}=8B^{-8}\le1\)</span>. Each is implemented exactly by Lemma 3.1 of <a href="exact-circuits-and-dyadic-probabilities.html">Exact circuits and dyadic probabilities</a>, and the whole trial is a polynomial-size circuit over <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> by Lemma 3.2 there.</p>
+<p><em>The mass at the true order.</em> Fix <span class="math" data-tex="\(d=r\)">\(d=r\)</span> and a numerator <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(\gcd(j,r)=1\)">\(\gcd(j,r)=1\)</span>. By Proposition 5.1 of the previous lesson, Mode 1 contributes <span class="math" data-tex="\(\frac{c(r,j)}2\sum_{t&lt;r}P(r,j,t)\)">\(\frac{c(r,j)}2\sum_{t&lt;r}P(r,j,t)\)</span>. In Mode 2 each triple has probability <span class="math" data-tex="\(B^{-3}\)">\(B^{-3}\)</span>, so it contributes
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\frac{c(r,j)}2\sum_{t=0}^{r-1}\bigl(U(r,j,jt\bmod r)\\&amp;\qquad-P(r,j,t)\bigr).\end{aligned}
+\]">\[
+\begin{aligned}&amp;\frac{c(r,j)}2\sum_{t=0}^{r-1}\bigl(U(r,j,jt\bmod r)\\&amp;\qquad-P(r,j,t)\bigr).\end{aligned}
+\]</span>
+Multiplication by <span class="math" data-tex="\(j\)">\(j\)</span> permutes the residues modulo <span class="math" data-tex="\(r\)">\(r\)</span>, so these two contributions add up to <span class="math" data-tex="\(\frac{c(r,j)}2\sum_uU(r,j,u)=c(r,j)S(r,j)\)">\(\frac{c(r,j)}2\sum_uU(r,j,u)=c(r,j)S(r,j)\)</span>. Mode 3 contributes <span class="math" data-tex="\(\frac14\cdot B^{-2}\cdot4B^2\rho(r,j)=\rho(r,j)\)">\(\frac14\cdot B^{-2}\cdot4B^2\rho(r,j)=\rho(r,j)\)</span>. The total for the label <span class="math" data-tex="\((r,j)\)">\((r,j)\)</span> is exactly <span class="math" data-tex="\(\lambda(r)\)">\(\lambda(r)\)</span>.</p>
+<p>Different labels give disjoint events: in Mode 1 because the bins of different reduced labels are different (Lemma 4.2 of the previous lesson), and in the other modes because the labels are sampled. There are <span class="math" data-tex="\(\varphi(r)\)">\(\varphi(r)\)</span> reduced numerators <span class="math" data-tex="\(j\)">\(j\)</span>, including <span class="math" data-tex="\(j=0\)">\(j=0\)</span> for <span class="math" data-tex="\(r=1\)">\(r=1\)</span>. Hence <span class="math" data-tex="\(\Pr(d=r)=\varphi(r)\lambda(r)\)">\(\Pr(d=r)=\varphi(r)\lambda(r)\)</span>. Finally, every returned candidate has <span class="math" data-tex="\(a^d\equiv1\pmod m\)">\(a^d\equiv1\pmod m\)</span>; writing <span class="math" data-tex="\(d=qr+s\)">\(d=qr+s\)</span> with <span class="math" data-tex="\(0\le s&lt;r\)">\(0\le s&lt;r\)</span> gives <span class="math" data-tex="\(a^s\equiv1\)">\(a^s\equiv1\)</span>, so <span class="math" data-tex="\(s=0\)">\(s=0\)</span> by the minimality of <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(r\mid d\)">\(r\mid d\)</span>. No identity between <span class="math" data-tex="\(P(d,j,t)\)">\(P(d,j,t)\)</span> and a probability is used at labels with <span class="math" data-tex="\(d\ne r\)">\(d\ne r\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Compute <span class="math" data-tex="\(\lambda(5)\)">\(\lambda(5)\)</span> and <span class="math" data-tex="\(\Pr(d=5)\)">\(\Pr(d=5)\)</span> when the order is <span class="math" data-tex="\(r=5\)">\(r=5\)</span>.</p>
+<p><strong>4.2.</strong> Prove that <span class="math" data-tex="\(\sin s/s\ge2/\pi\)">\(\sin s/s\ge2/\pi\)</span> for <span class="math" data-tex="\(0&lt;s\le\pi/2\)">\(0&lt;s\le\pi/2\)</span>.</p>
+<p><strong>4.3.</strong> Show that <span class="math" data-tex="\(t\mapsto jt\bmod d\)">\(t\mapsto jt\bmod d\)</span> is a bijection of <span class="math" data-tex="\(\{0,\ldots,d-1\}\)">\(\{0,\ldots,d-1\}\)</span> when <span class="math" data-tex="\(\gcd(j,d)=1\)">\(\gcd(j,d)=1\)</span>.</p>
+<p><strong>4.4.</strong> Use the identity for power sums to compute <span class="math" data-tex="\(\sum_{u=0}^{M-1}u\)">\(\sum_{u=0}^{M-1}u\)</span> and <span class="math" data-tex="\(\sum_{u=0}^{M-1}u^2\)">\(\sum_{u=0}^{M-1}u^2\)</span>.</p>
+<p><strong>4.5.</strong> Why does the trial need Mode 3 at all? Show that without it the mass of the label <span class="math" data-tex="\((r,j)\)">\((r,j)\)</span> would be <span class="math" data-tex="\(c(r,j)S(r,j)\)">\(c(r,j)S(r,j)\)</span>, which may differ from <span class="math" data-tex="\(\lambda(r)\)">\(\lambda(r)\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(\lceil\log_25\rceil=3\)">\(\lceil\log_25\rceil=3\)</span>, so <span class="math" data-tex="\(\lambda(5)=2^{-13}\)">\(\lambda(5)=2^{-13}\)</span>, and <span class="math" data-tex="\(\Pr(d=5)=\varphi(5)\lambda(5)=4\cdot2^{-13}=2^{-11}\)">\(\Pr(d=5)=\varphi(5)\lambda(5)=4\cdot2^{-13}=2^{-11}\)</span>.</p>
+<p><strong>4.2.</strong> The sine is concave on <span class="math" data-tex="\([0,\pi/2]\)">\([0,\pi/2]\)</span>, so it lies above the chord from <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> to <span class="math" data-tex="\((\pi/2,1)\)">\((\pi/2,1)\)</span>: <span class="math" data-tex="\(\sin s\ge2s/\pi\)">\(\sin s\ge2s/\pi\)</span>.</p>
+<p><strong>4.3.</strong> If <span class="math" data-tex="\(jt\equiv jt&#x27;\pmod d\)">\(jt\equiv jt&#x27;\pmod d\)</span>, then <span class="math" data-tex="\(d\mid j(t-t&#x27;)\)">\(d\mid j(t-t&#x27;)\)</span>, and as <span class="math" data-tex="\(\gcd(j,d)=1\)">\(\gcd(j,d)=1\)</span>, <span class="math" data-tex="\(d\mid t-t&#x27;\)">\(d\mid t-t&#x27;\)</span>, so <span class="math" data-tex="\(t=t&#x27;\)">\(t=t&#x27;\)</span>. An injective map of a finite set to itself is bijective.</p>
+<p><strong>4.4.</strong> With <span class="math" data-tex="\(q=1\)">\(q=1\)</span>: <span class="math" data-tex="\(M^2=\sum_u1+2\sum_uu=M+2\sum_uu\)">\(M^2=\sum_u1+2\sum_uu=M+2\sum_uu\)</span>, so <span class="math" data-tex="\(\sum_{u&lt;M}u=M(M-1)/2\)">\(\sum_{u&lt;M}u=M(M-1)/2\)</span>. With <span class="math" data-tex="\(q=2\)">\(q=2\)</span>: <span class="math" data-tex="\(M^3=M+3\sum_uu+3\sum_uu^2\)">\(M^3=M+3\sum_uu+3\sum_uu^2\)</span>, so <span class="math" data-tex="\(\sum_{u&lt;M}u^2=(M-1)M(2M-1)/6\)">\(\sum_{u&lt;M}u^2=(M-1)M(2M-1)/6\)</span>.</p>
+<p><strong>4.5.</strong> Modes 1 and 2 give <span class="math" data-tex="\(c(r,j)S(r,j)\)">\(c(r,j)S(r,j)\)</span>, and the rounding in the definition of <span class="math" data-tex="\(c\)">\(c\)</span> makes this smaller than <span class="math" data-tex="\(\lambda(r)\)">\(\lambda(r)\)</span> by <span class="math" data-tex="\(\rho(r,j)\)">\(\rho(r,j)\)</span> whenever <span class="math" data-tex="\(2^{10n}\lambda(r)/S(r,j)\)">\(2^{10n}\lambda(r)/S(r,j)\)</span> is not an integer. Mode 3 supplies exactly this remainder, by a classical guess of the label.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-EQF] OpenAI, <em>Exact quantum factoring over a fixed finite gate set</em>, OpenAI Math Release preprint, 25 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Exact-quantum-factoring-over-a-fixed-finite-gate-set-September-25-2026</li>
+<li>[Mosca–Zalka 2004] M. Mosca, C. Zalka, <em>Exact quantum Fourier transforms and discrete logarithm algorithms</em>, Int. J. Quantum Inf. 2 (2004), no. 1, 91–100. https://arxiv.org/abs/quant-ph/0301093</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

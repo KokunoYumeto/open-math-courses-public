@@ -4,7 +4,7 @@
 
 Throughout, \(G\) is an arbitrary locally compact Hausdorff group. Its left Haar measure satisfies \(\mu(Es)=\Delta(s)\mu(E)\); consequently \(\int f(ts)\,dt=\Delta(s)^{-1}\int f\) and \(\int f(t^{-1})\,dt=\int f(t)\Delta(t)^{-1}\,dt\). We use scalar products linear in the first variable. No countability, separability, finite weight, or invariant state is assumed.
 
-The actual earlier inputs are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) (norm separation and maximal principle), [CF6](OA-FLOW-CF.md#oa-flow.cf.6) and [CF8/10](OA-FLOW-CF.md#oa-flow.cf.8) (continuous calculus and complete Hilbert constructions), [CP1–6](OA-FLOW-CP.md#oa-flow.cp.1) (concrete von Neumann topology and predual duality), [BD1/4](OA-FLOW-BD.md#oa-flow.bd.1) (bicommutant density and bounded strong* approximation), [H0](OA-FLOW-TOPOLOGY.md#l138-h0) (compact cutoffs and finite partitions), [HR3/5/8/9](OA-FLOW-HR.md#hr-03) (qualified Radon-product integration and both Haar conventions), [L24 Sections 2–4](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) (exact Haar changes, continuous vector integration and Hilbert tensor), [AT1–6](OA-FLOW-AT.md#oa-flow.at.1) (joint strong* continuity on bounded sets and normal integration), and [NR1–4](OA-FLOW-NR.md#oa-flow.nr.1) (standard implementation, normal faithful regular representation, and amplification/compression independence). Every additional commutation or density assertion is proved below. Related treatments are Haagerup, [*On the dual weights for crossed products of von Neumann algebras I*](https://journals.msp.org/mscand/article/view/1879), Math. Scand. 43 (1978), §§1–2 and Theorem 2.1; Van Daele, [*A framework to study commutation problems*](https://www.numdam.org/item/BSMF_1978__106__289_0.pdf), Bull. Soc. Math. France 106 (1978), §§2–4; and Rousseau and Van Daele, [*Crossed products of commutation systems*](https://gdz.sub.uni-goettingen.de/id/PPN235181684_0239?tify=%7B%22pages%22%3A%5B13%5D%7D), Math. Ann. 239 (1979). Citations supply context; the proofs are the local arguments below.
+The earlier inputs are [NR1–4](OA-FLOW-NR.md#oa-flow.nr.1) for standard implementation and normal representation comparison, [BD1/4](OA-FLOW-BD.md#oa-flow.bd.1) for bounded operator approximation, [L24](OA-FLOW-L24.md#oa-flow.grp.haarconventions) for Haar conventions and vector integration, and [CP](OA-FLOW-CP.md#oa-flow.cp.4) for concrete normality. The standard case uses the full modular conjugation already constructed in [GDW5–6](OA-FLOW-GDW.md#gdw-5) and the [MW1 modular commutation theorem](OA-FLOW-MW.md#oa-flow.mw.1). We first prove a transfer principle through reducing projections, then establish its standard-model premise. No cyclic-vector or countability assumption is added.
 
 <a id="ccm-0"></a>
 
@@ -32,390 +32,13 @@ Both representations of the coefficient algebras are faithful and normal. In par
 
 An arbitrary point-ultraweakly continuous normal action on an arbitrary concretely represented \(M\) need not have an implementation on that particular \(H\). Its regular representation still exists by NR3. In this case CCM8 gives its commutant as an explicit compressed amplification of (CCM2) in the standard model. Thus (CCM2) does not conceal an extra spatiality assumption on the original representation. When an implementation on \(H\) is given, it holds directly on that \(H\).
 
-CCM0 is the theorem statement. Its proof is CCM1–8, not an earlier proved premise.
-
-<a id="ccm-1"></a>
-
-## CCM1. A full bounded system on every concrete von Neumann algebra
-
-For a vector \(\xi\), the projection onto \(\overline{MM'\xi}\) is central: its range reduces both \(M\) and \(M'\), so the projection belongs to \(M'\cap M\). Choose a maximal family \((\xi_i)_{i\in I}\) whose nonzero central projections \(e_i=[MM'\xi_i]\) are orthogonal. Their supremum is \(1\): a vector in a nonzero complementary central corner would add another member. All sums below are Hilbert orthogonal sums over arbitrary index sets.
-
-Define left ideals and their maps by
-
-<a id="equation-ccm3"></a>
-
-\[
- N=\{a\in M:\sum_i\|a\xi_i\|^2<\infty\},\quad
- N'=\{b\in M':\sum_i\|b\xi_i\|^2<\infty\},\quad
- \eta(a)=\sum_i a\xi_i,\quad \eta'(b)=\sum_i b\xi_i.       \tag{CCM3}
-\]
-The sums are orthogonal because \(e_i\) is central. The maps are linear, \(N,N'\) are left ideals, and
-
-<a id="equation-ccm4"></a>
-
-\[
- \eta(xa)=x\eta(a),\quad \eta'(yb)=y\eta'(b),\quad
- b\eta(a)=a\eta'(b) \quad(a\in N,b\in N').              \tag{CCM4}
-\]
-For the last equality take the finite sums first, use commutation, and pass in Hilbert norm; boundedness of \(a,b\) permits both limits. Write \(A=N\cap N^*\), \(B=N'\cap(N')^*\). These are nondegenerate algebras closed under adjoint, because \(N^*N\subseteq A\), and similarly on the right. For every finite \(J\subseteq I\), \(e_J=\sum_{i\in J}e_i\) belongs to both \(A\) and \(B\), and \(e_J\to1\) strongly*. Thus \(A''=M\), \(B''=M'\). Moreover \(B\eta(A)\) is dense in \(H\): it contains \(y x\xi_i\) for every \(x\in M,y\in M'\), by using \(xe_i,ye_i\).
-
-The following exact characterization is useful:
-
-<a id="equation-ccm5"></a>
-
-\[
- \begin{split}
- N'&=\{b\in M':\exists\zeta\in H\quad a\zeta=b\eta(a)
-                         \text{ for every }a\in A\},\\
- N&=\{a\in M:\exists\zeta\in H\quad b\zeta=a\eta'(b)
-                         \text{ for every }b\in B\}.
- \end{split}                                                     \tag{CCM5}
-\]
-Indeed testing with \(e_i\) gives \(e_i\zeta=b\xi_i\), respectively \(a\xi_i\); orthogonal summation proves membership and identifies the vector. Conversely (CCM4) proves the required equations. Applying (CCM5) to an operator and its adjoint characterizes \(B\), respectively \(A\), by two such vector equations. We call this property fullness. Injectivity of these vector maps is not required and is not asserted. For example, when \(M=B(\mathbb C^2)\), \(M'=\mathbb C1\), and a single nonzero \(\xi\) has \([MM'\xi]=1\), a nonzero projection annihilating \(\xi\) still has \(\eta(a)=a\xi=0\). Fullness in (CCM5) is the exact membership-and-vector characterization used below; it does not identify operators from their vector-map values.
-
-Put \(E=\overline{\eta(A)}\), \(F=\overline{\eta'(B)}\). These also equal the closures of \(\eta(N)\), \(\eta'(N')\), since central truncation \(ae_J\) belongs to \(A\) and \(\eta(ae_J)=e_J\eta(a)\to\eta(a)\). The projections onto \(E,F\) belong to \(M',M\), respectively, by their left-module invariance. Notice that neither range is assumed to be all of \(H\).
-
-<a id="ccm-2"></a>
-
-## CCM2. The two-system projection lemma, proved locally
-
-The paired-density statement and graph-projection method are due to Rousseau and Van Daele, [Propositions 4.4–4.5, pp.14–17](https://gdz.sub.uni-goettingen.de/id/PPN235181684_0239?tify=%7B%22pages%22%3A%5B20%5D%7D). We prove the needed version with the whole-ideal and domain details explicit.
-
-We need the preceding full-system properties for two systems \((A,B,\eta,\eta')\) and \((C,D,\gamma,\gamma')\) on the same \(H\), with \(A''=C''=M\), \(B''=D''=M'\). Their left ideals have the characterization (CCM5), their maps respect left multiplication, and each algebra has a bounded strong* approximate identity. The systems constructed in CCM1 and any unitary transport of them have all these properties.
-
-For \(k>0\), work in \(H\oplus\overline H\), where the second scalar product is reversed. The linear spans of the pairs
-
-<a id="equation-ccm6"></a>
-
-\[
- (c^*\eta(a),k a^*\gamma(c)),\qquad
- (b^*\gamma'(d),-d^*\eta'(b))                         \tag{CCM6}
-\]
-are jointly dense in
-
-<a id="equation-ccm7"></a>
-
-\[
- \overline{\eta(A)+\gamma'(D)}\ \oplus\
- \overline{\eta'(B)+\gamma(C)}.                       \tag{CCM7}
-\]
-Here and below the second displayed space is regarded as a conjugate Hilbert space. To prove the assertion, let \((\zeta_1,\zeta_2)\) be orthogonal to (CCM6). Precisely,
-
-<a id="equation-ccm8"></a>
-
-\[
- \langle\zeta_1,c^*\eta(a)\rangle
-       +k\langle a^*\gamma(c),\zeta_2\rangle=0,
- \qquad
- \langle b\zeta_1,\gamma'(d)\rangle
-       =\langle\eta'(b),d\zeta_2\rangle.              \tag{CCM8}
-\]
-In the ordinary \(H\oplus H\), let \(P\) project onto the closed linear span of \((c\zeta_1,\gamma(c))\). This space reduces the diagonal action of \(C\), so
-\(P=\begin{pmatrix}p&r\\r^*&q\end{pmatrix}\) has entries in \(M'\). Membership of its generating vectors and the first equation in (CCM8) give
-
-<a id="equation-ccm9"></a>
-
-\[
- \begin{array}{ll}
- c(1-p)\zeta_1=r\gamma(c),&c r^*\zeta_1=(1-q)\gamma(c),\\
- p\eta(a)=-k a r\zeta_2,&r^*\eta(a)=-k a q\zeta_2.
- \end{array}                                                       \tag{CCM9}
-\]
-The ideal characterization therefore gives
-
-<a id="equation-ccm10"></a>
-
-\[
- r,1-q\in D^0,\quad
- \gamma'(r)=(1-p)\zeta_1,\quad
- \gamma'(1-q)=r^*\zeta_1;
- \qquad
- p,r^*\in B^0,\quad
- \eta'(p)=-k r\zeta_2,\quad
- \eta'(r^*)=-k q\zeta_2,                              \tag{CCM10}
-\]
-where \(B^0,D^0\) denote the corresponding whole left ideals. The second equation of (CCM8) extends to these ideals: for \(b\in B^0\) replace it by \(b_j^*b\in B\), where \(b_j^*\to1\) bounded strongly*, and use \(\eta'(b_j^*b)=b_j^*\eta'(b)\). Do the same for \(d\). This is a Hilbert norm passage, not continuity of an unbounded map in operator topology.
-
-Apply the extended equation with \(b=p,d=r\). It yields
-\[
- \langle p\zeta_1,(1-p)\zeta_1\rangle
-       =-k\|r\zeta_2\|^2.
-\]
-Since \(P^2=P\), \(p(1-p)=rr^*\); both sides force
-\(r^*\zeta_1=0\), \(r\zeta_2=0\). Thus \(\gamma'(1-q)=0\), \(\eta'(p)=0\). The left-module identities and \(q(1-q)=r^*r\), \(p(1-p)=rr^*\) then give \(r\gamma(c)=0\), \(r^*\eta(a)=0\). Equation (CCM9) implies \(p\zeta_1=\zeta_1\), \(q\zeta_2=0\). It follows that \(\zeta_1\perp\eta(A)\): \(p\eta(a)=a\eta'(p)=0\). Likewise \(\zeta_2\perp\gamma(C)\): \((1-q)\gamma(c)=c\gamma'(1-q)=0\).
-
-Interchange the systems with their right partners: use \((D,C,\gamma',\gamma)\), \((B,A,\eta',\eta)\), replace \(\zeta_2\) by \(-k\zeta_2\), and \(k\) by \(k^{-1}\). Equations (CCM8) take the identical form. The already proved conclusion gives \(\zeta_1\perp\gamma'(D)\), \(\zeta_2\perp\eta'(B)\). This proves (CCM7). The pairs in (CCM6) lie in that space because their four range closures reduce the appropriate coefficient algebras.
-
-In particular, for a unitary \(u\) implementing an automorphism \(\beta\) of \(M\), transport the first system by \(u\), then undo \(u\) in the second coordinate of (CCM6). We obtain the following paired approximation, including the indicated whole target spaces:
-
-<a id="equation-ccm11"></a>
-
-\[
- \begin{split}
- &(\beta(c^*)\eta(a),k\beta^{-1}(a^*)\eta(c)),\\
- &(b^*u\eta'(d),-d^*u^*\eta'(b))
- \end{split}
- \quad\text{span densely}\quad
- \overline{E+uF}\oplus\overline{E+u^*F}.              \tag{CCM11}
-\]
-This follows by taking \(C=\beta(A),D=\operatorname{Ad}(u)(B)\), \(\gamma(\beta(a))=u\eta(a)\), \(\gamma'(\operatorname{Ad}(u)(b))=u\eta'(b)\). The change of coordinates is unitary also on the conjugate second space.
-
-<a id="ccm-3"></a>
-
-## CCM3. A bounded commutation criterion with both inclusions
-
-This criterion is Van Daele’s [Theorem 2.3 and Remark 2.4, pp.293–295](https://www.numdam.org/item/BSMF_1978__106__289_0.pdf). The argument below includes the square approximation and both polarization steps.
-
-Let \(A_1,B_1\) be commuting nondegenerate algebras closed under adjoint on \(K\), with linear maps \(v,w\) satisfying
-
-<a id="equation-ccm12"></a>
-
-\[
- b v(a)=a w(b),\quad
- \overline{B_1v(A_1)}=K,
- \quad P_{\overline{v(A_1)}}\in B_1'',
- \quad
- v((A_1)_{\rm sa})+i w((B_1)_{\rm sa})
- \text{ dense in }v(A_1)+w(B_1)\text{ over }\mathbb R. \tag{CCM12}
-\]
-Then \(A_1'=B_1''\). We prove this rather than importing a commutation theorem. Nondegeneracy first gives \(v(a_1a_2)=a_1v(a_2)\) by multiplying both sides by every \(b\in B_1\); the analogous identity holds for \(w\).
-
-The closed real span of \(v(a^*a)\) contains every \(v(a)\) with \(a=a^*\). Indeed \(a^n v(a)=v(a^{n+1})\) belongs to that span for every \(n\geq1\): even powers are squares, and odd powers at least three are differences of two squares. Real polynomials with zero constant term approximate \(t^2/(t^2+\varepsilon)\) uniformly on the spectrum of \(a\); this follows from the already proved CF continuous calculus. Passing first in operator norm and then strongly as \(\varepsilon\downarrow0\) gives the range projection of \(a\) applied to \(v(a)\). For this strong limit no measurable calculus is needed: \(q_\varepsilon(a)=a^2(a^2+\varepsilon)^{-1}\) is zero on \(\ker a\), has norm at most one, and \(\|(1-q_\varepsilon(a))a\xi\|\leq\sqrt{\varepsilon}\|\xi\|/2\). Its limit is therefore the identity on \(\overline{\operatorname{ran}a}\), by density and the common bound. That projection fixes \(v(a)\), since \(b v(a)=a w(b)\) and \(B_1\) is nondegenerate. This proves the assertion.
-
-Consequently \(V=\overline{v((A_1)_{\rm sa})}^{\mathbb R}\) and \(W=\overline{i w((B_1)_{\rm sa})}^{\mathbb R}\) are real orthogonal: for \(b=b^*\),
-\(\langle v(a^*a),w(b)\rangle=\langle v(a),b v(a)\rangle\) is real. The last condition in (CCM12) embeds the closure of \(v(A_1)+w(B_1)\) in the closed real sum \(V\oplus W\).
-
-Take \(x=x^*\in A_1'\), \(y=y^*\in B_1'\), and arbitrary \(a\in A_1,b\in B_1\). The vector \(a^*y v(a)\) belongs to \(\overline{v(A_1)}\), by the projection condition, and is real orthogonal to \(W\): for \(b_0=b_0^*\),
-\[
- \langle w(b_0),a^*y v(a)\rangle
-       =\langle b_0v(a),y v(a)\rangle\in\mathbb R.
-\]
-Thus it lies in \(V\). On the other hand \(\langle v(a_0),b^*xw(b)\rangle\) is real for \(a_0=a_0^*\), because it equals \(\langle a_0w(b),xw(b)\rangle\). By real norm closure,
-
-<a id="equation-ccm13"></a>
-
-\[
- \langle a^*y v(a),b^*x w(b)\rangle
-       =\langle y b v(a),x b v(a)\rangle\in\mathbb R.  \tag{CCM13}
-\]
-The diagonal form of \(xy-yx\) therefore vanishes on \(b v(a)\). Polarize first in \(a\), then in \(b\), to obtain its vanishing on every pair in the linear span of \(B_1v(A_1)\). Density gives \(xy=yx\). Linear decomposition into self-adjoint parts shows \(A_1'\subseteq B_1''\). The easy commutation inclusion \(B_1''\subseteq A_1'\) proves equality. This argument does not require either map to have dense range on its own.
-
-<a id="ccm-4"></a>
-
-## CCM4. Compact coefficient integrals and their exact algebra
-
-Let \(\mathcal C\) be the bounded, compactly supported strong* continuous maps \(x:G\to M\). Define the normal weak integral
-
-<a id="equation-ccm14"></a>
-
-\[
- L_x=\int_G\lambda_s\pi(x(s))\,ds.                    \tag{CCM14}
-\]
-On a compactly supported continuous vector field, the operator-valued integrand acts continuously in Hilbert norm and has compact support. Its integral is a genuine Bochner vector integral; its norm is bounded by \(\mu(\operatorname{supp}x)\sup\|x(s)\|\). Duality and vector tests give the same bounded operator as (CCM14). Thus no global measurability or countable basis is used. The change of variable \(s=tu\), justified by left invariance, gives
-
-<a id="equation-ccm15"></a>
-
-\[
- (L_x\xi)(t)=\int_G\alpha_u(x(tu))\xi(u^{-1})\,du.
-                                                               \tag{CCM15}
-\]
-Joint strong* continuity on bounded sets proves continuity of this compactly supported vector field. In particular all calculations can first be made on the dense compact tensor core.
-
-Fubini for compact continuous vector integrands, the covariance relation, and the two Haar changes above give
-
-<a id="equation-ccm16"></a>
-
-\[
- \begin{split}
- L_xL_y&=L_{x\star y},\qquad
- (x\star y)(t)=\int_G\alpha_u(x(tu))y(u^{-1})\,du,\\
- L_x^*&=L_{x^\#},\qquad
- x^\#(t)=\Delta(t)^{-1}\alpha_{t^{-1}}(x(t^{-1})^*).
- \end{split}                                                    \tag{CCM16}
-\]
-For the product, directly expand \(\lambda_s\pi(x(s))\lambda_v\pi(y(v))=\lambda_{sv}\pi(\alpha_{v^{-1}}(x(s))y(v))\), then put \(s=tu,v=u^{-1}\). For the adjoint expand \(\pi(x(s)^*)\lambda_{s^{-1}}=\lambda_{s^{-1}}\pi(\alpha_s(x(s)^*))\) and use inversion. These formulas show \(\mathcal C\) is an algebra closed under \(\#\); the product has support in \(\operatorname{supp}x\operatorname{supp}y\). Continuity of it and its adjoint follows by integrating the joint strong* continuous bounded integrand on a fixed compact set in a neighborhood of each \(t\). The required uniform convergence on each tested vector follows from a finite compact cover, so this passage also works for nets.
-
-Let \(P\subseteq\mathcal C\) consist of maps with \(x(t)\in N\) and \(\eta(x(t))\) norm-continuous. It is a left ideal in \(\mathcal C\), with
-
-<a id="equation-ccm17"></a>
-
-\[
- \eta((y\star x)(t))
-   =\int_G\alpha_u(y(tu))\eta(x(u^{-1}))\,du
-   =(L_y\eta(x))(t).                                  \tag{CCM17}
-\]
-To justify membership rather than assume closedness of \(\eta\), apply every \(b\in B\) to the Hilbert integral. Commutation and (CCM4) give \((y\star x)(t)\eta'(b)\); (CCM5) gives the exact membership and value. The vector integral is continuous with compact support, as above. Construct \(P'\), \(L'_y\), \(\pi'\) for \(M'\) and \(\alpha'_s=\operatorname{Ad}(U_s)|_{M'}\) in the same manner.
-
-For later density we have the explicit two-sided coefficients
-
-<a id="equation-ccm18"></a>
-
-\[
- x(t)=f(t)\alpha_{t^{-1}}(a^*)c\quad(a,c\in A,f\in C_c(G)),
- \quad
- \eta(x(t))=f(t)\alpha_{t^{-1}}(a^*)\eta(c),\quad
- L_x=\pi(a^*)L_f\pi(c),                               \tag{CCM18}
-\]
-where \(L_f=\int f(s)\lambda_s\,ds\). Both \(x\) and \(x^\#\) belong to \(P\), by (CCM16) and the module property; its adjoint swaps \(a,c\) and replaces \(f(t)\) by \(\Delta(t)^{-1}\overline{f(t^{-1})}\).
-
-<a id="ccm-general-covariant-integration"></a>
-
-### The integral in every normal unital covariant pair
-
-The boundedness condition in the definition of \(\mathcal C\) is automatic. Choose a faithful normal concrete representation \(\iota:M\to B(H_c)\). For each \(\zeta\in H_c\), the pullback \(\omega_\zeta(a)=\langle\iota(a)\zeta,\zeta\rangle\) is a positive normal functional, and its intrinsic seminorm satisfies \(p_{\omega_\zeta}(b)^2=\omega_\zeta(b^*b)=\|\iota(b)\zeta\|^2\). Intrinsic strong* continuity of \(x\) therefore makes \(s\mapsto\iota(x(s))\zeta\) norm continuous before any common operator norm bound has been obtained. For compact \(K\subseteq G\), its image is compact and hence bounded. Apply [the uniform boundedness theorem, with its Baire proof](../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-04) once, to the family \(\{\iota(x(s)):s\in K\}\) of bounded operators on the Banach space \(H_c\). It yields \(\sup_K\|\iota(x(s))\|<\infty\). The faithful isometry proved in [ST2](OA-FLOW-ST12.md#oa-flow.st.2) identifies this with \(\sup_K\|x(s)\|\); ST2's bounded strong* comparison is now available. The operator norm is lower semicontinuous in the concrete strong topology, since it is the supremum of the continuous functions \(\|\iota(x(s))\zeta\|\) for unit vectors \(\zeta\); hence it is Borel measurable. For compactly supported \(x\), \(\int\|x(s)\|\,ds\) is finite.
-
-Let \(\rho:M\to B(H_\rho)\) be a normal unital *-homomorphism, and let \(V:G\to\mathcal U(H_\rho)\) be strongly continuous with \(V_s\rho(a)V_s^*=\rho(\alpha_s(a))\). Faithfulness of \(\rho\) is not required. For \(\zeta\in H_\rho\), the positive normal functional \(a\mapsto\langle\rho(a)\zeta,\zeta\rangle\) gives
-
-\[
- \|\rho(b)\zeta\|^2=\langle\rho(b^*b)\zeta,\zeta\rangle.
-\]
-
-Thus \(\rho\) carries bounded intrinsic strong* convergence to strong* convergence on \(H_\rho\). Each field \(s\mapsto V_s\rho(x(s))\zeta\) is norm continuous with compact support. The continuous-vector integration proved in [L24](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) therefore defines a bounded operator
-
-\[
- \Phi_{\rho,V}(x)\zeta=\int_G V_s\rho(x(s))\zeta\,ds,
- \qquad \|\Phi_{\rho,V}(x)\|\le\int_G\|x(s)\|\,ds.
-\]
-
-First identify its generated von Neumann algebra. Write \(A=\{\rho(M),V(G)\}''\). If \(T\in A'\), it commutes with every integrand and hence with its vector integral. Thus \(\Phi_{\rho,V}(x)\in A\). Conversely, [H0's compact cutoffs](OA-FLOW-TOPOLOGY.md#l138-h0) give nonnegative \(f_W\in C_c(G)\), supported in the identity neighborhood \(W\), with \(\int f_W=1\). Indeed choose a nonzero nonnegative cutoff inside \(W\); its integral is positive because Haar measure has full support, and normalize it. Direct the neighborhoods by reverse inclusion. Strong continuity gives
-
-\[
- A_W:=\Phi_{\rho,V}(f_W1)=\int f_W(s)V_s\,ds\longrightarrow I,
- \qquad \|A_W\|\le1.
-\]
-
-For fixed \(t\), the coefficient \(s\mapsto f_W(t^{-1}s)1\) has integral \(V_tA_W\to V_t\). Also \(\Phi_{\rho,V}(f_W a)=A_W\rho(a)\to\rho(a)\). A bounded operator commuting with all coefficient integrals consequently commutes with all \(V_t\) and \(\rho(a)\). Taking commutants proves
-
-\[
- \{\Phi_{\rho,V}(x):x\in\mathcal C\}''=\{\rho(M),V(G)\}''.
-\]
-
-Unitality is used in \(\rho(1)=I\). Without it the conclusion on the whole Hilbert space fails: take \(M=\mathbb C\), \(\rho=0\) on \(\mathbb C^2\), and the representation of \(\mathbb Z/2\mathbb Z\) generated by \(\operatorname{diag}(1,-1)\). All integrals are zero, whose double commutant is \(\mathbb CI\), while the algebra generated by \(V\) is the diagonal algebra. Restriction to the invariant corner \(\rho(1)H_\rho\) gives the unital version.
-
-<a id="ccm-general-coefficient-laws"></a>
-
-### The Haar factors and the coefficient identities
-
-All integrals in the following calculations have compact carriers. Products and action maps are jointly strong* continuous on the common norm bounds by [AT4](OA-FLOW-AT.md#oa-flow.at.4). [CP6](OA-FLOW-CP.md#oa-flow.cp.6) realizes the coefficient integrals in \(M=(M_*)^*\), and the vector tests and [HR5's Radon-product Fubini theorem](OA-FLOW-HR.md#hr-05) permit the indicated iterated integrals. No assertion about an unrestricted product Borel sigma algebra is needed.
-
-Covariance gives
-
-\[
- V_s\rho(x(s))V_v\rho(y(v))
-   =V_{sv}\rho\bigl(\alpha_{v^{-1}}(x(s))y(v)\bigr).
-\]
-
-Set \(t=sv\) in the inner integral: the right-translation Jacobian is \(ds=\Delta(v)^{-1}dt\). Next put \(u=v^{-1}\): inversion gives \(dv=\Delta(u)^{-1}du\), while the preceding factor becomes \(\Delta(u)\). They cancel, leaving precisely the convolution in (CCM16). For the adjoint,
-
-\[
- \rho(x(s)^*)V_{s^{-1}}
-    =V_{s^{-1}}\rho\bigl(\alpha_s(x(s)^*)\bigr).
-\]
-
-Now \(t=s^{-1}\) contributes \(ds=\Delta(t)^{-1}dt\), with no second factor to cancel. Consequently
-
-\[
- \Phi_{\rho,V}(x)\Phi_{\rho,V}(y)=\Phi_{\rho,V}(x\star y),
- \qquad \Phi_{\rho,V}(x)^*=\Phi_{\rho,V}(x^\#).
-\]
-
-For completeness these operations form a \*-algebra on the coefficients themselves, independently of any injectivity of \(\Phi_{\rho,V}\). The support of \(x\star y\) lies in \(\operatorname{supp}x\operatorname{supp}y\). For \(t\) in a compact neighborhood the variable \(u\) lies in the fixed compact set \((\operatorname{supp}y)^{-1}\). Joint strong\* continuity of the bounded integrand, followed by a finite cover of that compact carrier for each tested vector, gives continuity of the integral and its adjoint. The same argument and continuity of \(\Delta\) prove \(x^\#\in\mathcal C\).
-
-Expanding both convolutions and then substituting \(r=vu\), a left translation with no Haar factor, gives
-
-\[
- \begin{aligned}
- ((x\star y)\star z)(t)
- &=\int_v\int_u\alpha_{vu}(x(tvu))\alpha_v(y(u^{-1}))z(v^{-1})\,du\,dv\\
- &=\int_v\int_r\alpha_r(x(tr))\alpha_v(y(r^{-1}v))z(v^{-1})\,dr\,dv\\
- &=(x\star(y\star z))(t).
- \end{aligned}
-\]
-
-The double involution is pointwise:
-
-\[
- (x^\#)^\#(t)
- =\Delta(t)^{-1}\Delta(t^{-1})^{-1}
-   \alpha_{t^{-1}}(\alpha_t(x(t)))=x(t).
-\]
-
-For reversal of order, expand the right-hand side and use \(\Delta(tv)=\Delta(t)\Delta(v)\):
-
-\[
- (y^\#\star x^\#)(t)
- =\Delta(t)^{-1}\int_v
-   \alpha_{t^{-1}}(y(v^{-1}t^{-1})^*)\alpha_v(x(v)^*)\,dv.
-\]
-
-The other side expands as
-
-\[
- (x\star y)^\#(t)
- =\Delta(t)^{-1}\int_u
-   \alpha_{t^{-1}}(y(u^{-1})^*)
-   \alpha_{t^{-1}u}(x(t^{-1}u)^*)\,du.
-\]
-
-Set \(u=tv\). Left invariance gives the same expression, so \((x\star y)^\#=y^\#\star x^\#\). Associativity, anti-involution and linearity are therefore coefficient identities even for a nonfaithful pair.
-
-The two module operations are \((a\cdot x)(t)=\alpha_{t^{-1}}(a)x(t)\) and \((x\cdot a)(t)=x(t)a\). The same bounded-product and action continuity shows that both fields belong to \(\mathcal C\), with support contained in \(\operatorname{supp}x\). Their five compatibility laws are
-
-\[
- \begin{aligned}
- (a\cdot x)\star y&=a\cdot(x\star y),&
- (x\cdot a)\star y&=x\star(a\cdot y),\\
- (x\star y)\cdot a&=x\star(y\cdot a),&
- (a\cdot x)^\#&=x^\#\cdot a^*,\\
- (x\cdot a)^\#&=a^*\cdot x^\#.
- \end{aligned}
-\]
-
-For the first law, \(\alpha_u(\alpha_{(tu)^{-1}}(a))=\alpha_{t^{-1}}(a)\), which factors out of the integral. For the middle balance law, \(\alpha_u(x(tu)a)=\alpha_u(x(tu))\alpha_u(a)\), and \((a\cdot y)(u^{-1})=\alpha_u(a)y(u^{-1})\). The third law factors the constant right multiplier out. For the fourth, the adjoint reverses \(\alpha_t(a)x(t^{-1})\), and \(\alpha_{t^{-1}}\alpha_t(a^*)=a^*\); for the fifth, it reverses \(x(t^{-1})a\), leaving \(\alpha_{t^{-1}}(a^*)\) on the left. These are direct pointwise and integral calculations. Covariance separately gives the represented module identities
-
-\[
- \Phi_{\rho,V}(a\cdot x)=\rho(a)\Phi_{\rho,V}(x),
- \qquad \Phi_{\rho,V}(x\cdot a)=\Phi_{\rho,V}(x)\rho(a).
-\]
-
-<a id="ccm-normal-regular-kernel"></a>
-
-### The regular kernel for a possibly nonfaithful normal representation
-
-Let \(\rho:M\to B(H_\rho)\) now be any normal unital representation. No implementing unitary representation on \(H_\rho\) is required. Define on \(L^2(G,H_\rho)\)
-
-\[
- (\pi_\rho(a)\xi)(t)=\rho(\alpha_{t^{-1}}(a))\xi(t),
- \qquad (\lambda_s\xi)(t)=\xi(s^{-1}t).
-\]
-
-The multiplication field is strongly continuous and bounded by \(\|a\|\). Applying it to compact scalar tensors and using the bound extends it to \(L^2(G,H_\rho)\), as in [NR3](OA-FLOW-NR.md#oa-flow.nr.3); pointwise products and adjoints on that dense core prove it is a unital *-representation. To prove full ultraweak continuity, take compact scalar tensors \(h\eta,k\zeta\). Their vector coefficient pulls back to the functional
-
-\[
- a\longmapsto\int_G h(t)\overline{k(t)}
-       (\omega_{\eta,\zeta}\circ\rho\circ\alpha_{t^{-1}})(a)\,dt.
-\]
-
-The functional \(\omega_{\eta,\zeta}\circ\rho\) belongs to \(M_*\) by normality of \(\rho\). [AT3](OA-FLOW-AT.md#oa-flow.at.3) makes its predual orbit norm continuous; L24's Banach-valued compact integral therefore lies in \(M_*\), and evaluation at \(a\) gives the displayed coefficient. Compact tensors approximate arbitrary pairs of Hilbert vectors, and the bound \(\|\omega_{v,w}-\omega_{v',w'}\|\le\|v-v'\|\|w\|+\|v'\|\|w-w'\|\), together with [CP6's norm closure](OA-FLOW-CP.md#oa-flow.cp.6), puts every pulled-back vector coefficient in \(M_*\). Finally [CP4](OA-FLOW-CP.md#oa-flow.cp.4) expresses every ultraweak functional on the target as a square-summable vector series; its pullback series converges in \(M_*\) by the Cauchy--Schwarz tail estimate. This proves normality for the full ultraweak topology, without using faithfulness or a sequential substitute for normality.
-
-Translation is unitary by left invariance and strongly continuous on the dense compact continuous vector fields by [L24](OA-FLOW-L24.md#oa-flow.grp.translations), then on their Hilbert completion. Direct substitution proves \(\lambda_s\pi_\rho(a)\lambda_s^*=\pi_\rho(\alpha_s(a))\). No invariance of \(\ker\rho\) is needed for these definitions.
-
-For \(\xi\in C_c(G,H_\rho)\), left invariance in the change \(s=tu\) yields
-
-\[
- (\Phi_{\pi_\rho,\lambda}(x)\xi)(t)
-   =\int_G\rho(\alpha_u(x(tu)))\xi(u^{-1})\,du.
-\]
-
-This integral exists for every \(t\). The integration variable is in the fixed compact set \((\operatorname{supp}\xi)^{-1}\); AT4 and normality of \(\rho\) give joint continuity of its vector integrand on the common compact norm bounds. A finite compact cover gives continuity in \(t\), and its support lies in \(\operatorname{supp}x\operatorname{supp}\xi\). Thus it is a compact continuous vector field. To identify it with the Hilbert-space integral, test against compact continuous tensor vectors and use compact-carrier Fubini; the dense tensor core separates vectors in \(L^2\). The operator bound above then extends this equality from that core to the bounded operator on all of \(L^2\); the pointwise kernel assertion is for the displayed continuous core.
-
-This construction asserts no faithful crossed-product identification for an arbitrary \(\rho\). Nor does nonfaithfulness of \(\rho\) force nonfaithfulness of \(\pi_\rho\): for \(M=\mathbb C^2\), the swapping action of \(\mathbb Z/2\mathbb Z\), and \(\rho(a,b)=a\), the regular representation of \(M\) is \(\operatorname{diag}(a,b)\), which is faithful. The original faithful regular and commutant arguments in CCM1--8 retain their stated hypotheses.
+CCM0 is the theorem statement. Its proof consists of the transport lemma, the standard-model calculation, and CCM7–8.
 
 <a id="ccm-5"></a>
 
-## CCM5. The commuting systems on the regular Hilbert space
+## CCM5. The right generators and their elementary inclusion
 
-The linear unitary
+Put \(\alpha'_s(y)=U_syU_s^*\) on \(M'\), and let \((\pi'(y)\xi)(t)=\alpha'_{t^{-1}}(y)\xi(t)\). These are the normal regular coefficients for the commutant action. The linear unitary
 
 <a id="equation-ccm19"></a>
 
@@ -432,140 +55,127 @@ is isometric by inversion, and \(Z^2=1\). Direct substitution gives
 \]
 These generators commute with \(\pi(x)\) and \(\lambda_t\). For example \(\rho_s\pi(x)\rho_s^*\xi(t)=U_s\alpha_{(ts)^{-1}}(x)U_s^*\xi(t)=\alpha_{t^{-1}}(x)\xi(t)\), and left and right translations commute. Normality of \(b\) is the constant amplification; normality of \(\pi'\) is NR3 applied to \(M'\). The factors in \(\rho\) are unitary by the right Haar identity, and \(\rho_s\rho_t=\rho_{st}\).
 
-Set
+Write \(Q=\{b(M'),\rho(G)\}''\). The preceding computations prove \(Q\subseteq R'\). Strong continuity of \(\rho\) follows from strong continuity of \(U\) and of normalized right translations on the compact tensor core, then on its completion. The reverse inclusion is established below.
 
-<a id="equation-ccm21"></a>
+<a id="ccm-transport"></a>
 
+## Transport through a reducing projection
+
+We first isolate a representation-theoretic fact. Suppose a faithful normal model \(\sigma:M\to B(H_0)\) in standard form, with strongly continuous implementation \(U^0\), has already satisfied the commutant formula
 \[
- A_1=\{L_x:x\in P, x^\#\in P\},\qquad
- B_1=Z\{L'_y:y\in P', y^\#\in P'\}Z .               \tag{CCM21}
+ R_0'=\{b(\sigma(M)'),\rho^0(G)\}'',
+ \qquad \rho_s^0\xi(t)=\Delta(s)^{1/2}U_s^0\xi(ts).
+ \tag{CCM-T1}
 \]
-They are commuting algebras closed under adjoint. Define
+We prove that the same formula holds in any faithful normal representation \(\tau:M\to B(H)\) with a given strongly continuous implementation \(U\). This is an implication with (CCM-T1) as hypothesis; the next section establishes that hypothesis in a standard model.
 
-<a id="equation-ccm22"></a>
-
+[NR4](OA-FLOW-NR.md#oa-flow.nr.4) gives an arbitrary index set \(I\), the Hilbert space \(H_a=H_0\otimes\ell^2(I)\), a projection \(e\) in
 \[
- v(L_x)=\eta(x),\qquad w(ZL'_yZ)=Z\eta'(y).            \tag{CCM22}
+ D=(\sigma(M)\otimes1)',\qquad N=\sigma(M)\otimes1,
 \]
-These definitions are well-defined. In fact for all \(x\in P,y\in P'\), (CCM15), (CCM4), and the substitution \(r=st\) give the identity
+and a unitary \(V:H\to eH_a\) intertwining \(\tau(x)\) with \(x_a|_{eH_a}\), where \(x_a=\sigma(x)\otimes1\). We regard \(V\) as an isometry into \(H_a\), so \(VV^*=e\). Write \(U_s^a=U_s^0\otimes1\).
 
-<a id="equation-ccm23"></a>
-
+On \(L^2(G,H_a)\), the amplified left algebra is \(R_a=R_0\otimes1\). Its commutant is
 \[
- L_xZ\eta'(y)=ZL'_yZ\eta(x).                          \tag{CCM23}
+ Q_a=R_a'=\{b(D),\rho^a(G)\}'',\qquad
+ \rho_s^a\xi(t)=\Delta(s)^{1/2}U_s^a\xi(ts).
+ \tag{CCM-T2}
 \]
-One can check it pointwise: the left side at \(s\) is
-\(\int\Delta(t)^{1/2}U_t x(st)\eta'(y(t))\,dt\).
-Expanding the right side by (CCM15) and inversion gives the identical integral. All vector integrands are compactly supported and continuous; (CCM4) applies to every pair of their finite-ideal values. If \(L_x=0\), (CCM23) gives \(ZL'_yZ\eta(x)=0\) for every \(y\in P'\). Their operators act nondegenerately: (CCM18) on the right, with coefficient approximate identities and Haar bumps, already generates the right coefficient algebra and its group. Hence \(\eta(x)=0\), establishing well-definedness; the symmetric argument treats \(w\). It also proves the module identity in (CCM12).
+Indeed an operator commuting with \(R_0\otimes1\) has every matrix entry in \(R_0'\). Its finite matrix compressions belong to \(R_0'\bar\otimes B(\ell^2(I))\), are uniformly bounded, and converge strongly with their adjoints as the finite subsets of \(I\) increase. The reverse inclusion follows on generators. The same matrix-entry proof gives \(D=\sigma(M)'\bar\otimes B(\ell^2(I))\). Using (CCM-T1), these two identities prove (CCM-T2). Only finite coordinate tests and their bounded limits are used; \(I\) need not be countable.
 
-For clarity, that nondegeneracy and the exact generated algebras follow without the desired commutant theorem. In (CCM18) take \(a=c=e_J\to1\) bounded strongly*, giving \(L_f\) as a strong limit of operators in \(A_1\). Haar bumps about the identity give \(L_f\to1\); bumps about \(s\) give \(\lambda_s\). Keeping arbitrary \(c\in A\) and taking only \(a=e_J\), then an identity bump, gives \(\pi(c)\); bounded strong* density of \(A\) gives \(\pi(M)\). Normality and the strong* bounded-net continuity of \(\pi\) are NR3 and CP. Therefore
-
-<a id="equation-ccm24"></a>
-
+Let \(E=b(e)\), and let \(\mathcal V\) be the constant fibre isometry induced by \(V\). The projection \(E\) commutes with \(R_a\): it commutes with every value of its left coefficient fields and with left translation. NR4 identifies \(R_H=\{\pi_\tau(M),\lambda(G)\}''\) normally with \(ER_aE\) on \(EL^2(G,H_a)\). For any represented von Neumann algebra \(A\) and \(E\in A'\),
 \[
- A_1''=R,\qquad B_1''=Q:=\{b(M'),\rho(G)\}'',\qquad Q\subseteq R'.
-                                                               \tag{CCM24}
+ (EAE)'_{E\mathcal K}=EA'E.
+ \tag{CCM-T3}
 \]
-This argument also supplied the nondegeneracy needed for (CCM23), without circular use of (CCM22).
+To prove the nontrivial inclusion, extend an operator on \(E\mathcal K\) by zero on \((1-E)\mathcal K\). Both summands reduce \(A\), so the extension commutes with \(A\) exactly when its restriction commutes with \(EAE\). Thus
+\[
+ R_H'=\mathcal V^*E Q_a E\mathcal V .
+ \tag{CCM-T4}
+\]
+The compression in this formula is a corner of the entire commutant.
 
-The map ranges have the exact closures
+We now identify its generators when \(U\) is given. Put
+\[
+ e_s=U_s^a e(U_s^a)^*,\qquad
+ T_s=V U_sV^*,\qquad w_s=T_s(U_s^a)^*.
+ \tag{CCM-T5}
+\]
+The operator \(T_s\) is unitary on \(eH_a\), extended by zero on its orthogonal complement. Covariance on that subspace gives, for every \(x\in M\),
+\[
+ T_s x_a=(\alpha_s(x))_a T_s,\qquad
+ w_s x_a=x_a w_s.
+\]
+For the second equality, move \(x_a\) through \((U_s^a)^*\) as \((\alpha_{s^{-1}}(x))_a\), then use the first equality. Hence \(w_s\in D\), and multiplication gives the exact support identities
+\[
+ w_sw_s^*=e,\qquad w_s^*w_s=e_s.
+ \tag{CCM-T6}
+\]
+No invariance of \(e\) under \(U_s^a\) has been assumed.
 
-<a id="equation-ccm25"></a>
+On \(EL^2(G,H_a)\), the transported original right unitary is
+\[
+ \widetilde\rho_s=\mathcal V\rho_s\mathcal V^*
+      =b(w_s)\rho_s^a E .
+ \tag{CCM-T7}
+\]
+Both sides send \(\xi(t)\) to \(\Delta(s)^{1/2}T_s\xi(ts)\). For \(d\in D\), use \(\rho_s^aE=b(e_s)\rho_s^a\) and (CCM-T6) to obtain
+\[
+ E\,b(d)\rho_s^a E
+   =b(edw_s^*)\,\widetilde\rho_s,\qquad edw_s^*\in eDe.
+ \tag{CCM-T8}
+\]
+The coefficient membership follows from \(ew_s=w_s=w_se_s\), so \(w_s^*=e_sw_s^*e\). Applying (CCM-T3) to \(N\) on \(H_a\) identifies \(eDe\) with \(\tau(M)'\) under \(V\).
 
-\[
- \overline{v(A_1)}=L^2(G,E),\qquad
- \overline{w(B_1)}=ZL^2(G,F).                          \tag{CCM25}
-\]
-The first inclusion follows from \(\eta(N)\subseteq E\). For the reverse, use (CCM18) with \(a=e_J\): its vector is \(f(t)\alpha_{t^{-1}}(e_J)\eta(c)\), tending in \(L^2\) to \(f(t)\eta(c)\). The convergence is uniform on each compact support because \(U_t\eta(c)\) has compact norm range and bounded strong convergence of \(e_J\) is uniform on a compact set of vectors, by a finite net of norm balls. Dense compact tensors then prove equality. The second equality is identical after \(Z\).
+It remains to pass from these words to the whole corner. Covariance of \(\rho^a\) with \(b(D)\) makes the linear span of \(b(d)\rho_s^a\) a unital *-algebra with double commutant \(Q_a\). [BD1 and BD4](OA-FLOW-BD.md#oa-flow.bd.1) approximate every member of \(Q_a\) strongly by a uniformly bounded net from that span: apply bounded density to its norm closure, then approximate the chosen elements in norm by words. Compression preserves strong convergence and the common bound. Equation (CCM-T8) therefore puts \(EQ_aE\) inside the von Neumann algebra generated by \(b(eDe)\) and \(\widetilde\rho(G)\). The reverse inclusion holds because these transported generators commute with \(ER_aE\), by CCM5. Combining this with (CCM-T4) proves the asserted transfer of the complete commutant formula.
 
-The first range projection is \(b(P_E)\in Q\), since \(P_E\in M'\). The second is \(Zb(P_F)Z=\pi(P_F)\in R\). Finally \(B_1v(A_1)\) is dense in \(K\): [BD1/4](OA-FLOW-BD.md#oa-flow.bd.1) approximates each member of \(B_1''\) strongly by members of \(B_1\), so its closure contains \(b(M')L^2(G,E)\) by (CCM24), and \(\overline{M'E}=H\) by CCM1. Thus all of (CCM12) except its real density has been verified.
+<a id="ccm-standard"></a>
 
-<a id="ccm-6"></a>
+## The standard model from its modular conjugation
 
-## CCM6. Real density through normalized inversion
+Choose a faithful normal semifinite weight by [CR9](OA-FLOW-CR.md#oa-flow.cr.9). Its normal GNS representation and standard form are supplied by [NF5](OA-FLOW-NF.md#oa-flow.nf.5), [WR](OA-FLOW-WR.md#oa-flow.wr.1), [NC](OA-FLOW-NC.md#oa-flow.nc.1), and [NR1](OA-FLOW-NR.md#oa-flow.nr.1). Write \(M_0\subset B(H_0)\) for its standard representation, \(J\) for its modular conjugation, and \(U^0\) for the canonical implementation of \(\alpha\). In particular
+\[
+ JM_0J=M_0',\qquad JU_s^0=U_s^0J .
+\]
+These are the earlier modular and standard-form theorems, with complete programme proofs.
 
-Let \(\mathcal V\) be the real linear span of \(v((A_1)_{\rm sa})+i w((B_1)_{\rm sa})\). By (CCM25), it is enough to place each field
-<a id="equation-ccm26"></a>
+[GDW5–6](OA-FLOW-GDW.md#gdw-5) construct a faithful normal semifinite weight on \(R_0\), identify its GNS space with \(L^2(G,H_0)\), and prove on that entire Hilbert space that its modular conjugation is
 \[
- \Phi(t)=f(t)\eta(a)+\Delta(t)^{-1/2}h(t^{-1})U_t^*\eta'(b),
- \qquad a\in A,\ b\in B,\ f,h\in C_c(G),                 \tag{CCM26}
+ (\widehat J\xi)(t)=\Delta(t)^{-1/2}(U_t^0)^*J\xi(t^{-1}).
+ \tag{CCM-S1}
 \]
-in \(\overline{\mathcal V}\). We use the paired approximation of CCM2, whose mathematical antecedent is Rousseau and Van Daele, [Propositions 4.4–4.5](https://gdz.sub.uni-goettingen.de/id/PPN235181684_0239?tify=%7B%22pages%22%3A%5B20%5D%7D). The passage from pairs to fields will be a bounded Hilbert-space operation.
+Those sections obtain the full closed involution and its adjoint from compact graph approximation; they do not use a crossed-product commutant theorem. Their compact coefficient input is the earlier [coefficient integration lesson](OA-FLOW-CAI.md#ccm-4). Thus [MW1](OA-FLOW-MW.md#oa-flow.mw.1), applied to the full Hilbert algebra in GDW6, gives
+\[
+ R_0'=\widehat J R_0\widehat J .
+ \tag{CCM-S2}
+\]
 
-**A contraction that joins the two coordinates.** On \(K=L^2(G,H)\), define
+We compute this algebra on its actual generators. On compact continuous fields, (CCM-S1) gives
 \[
- (J_0\xi)(t)=\Delta(t)^{-1/2}\xi(t^{-1}),\qquad
- \mathcal A(\xi,\zeta)=\tfrac12(\xi+J_0\zeta).
+ \begin{aligned}
+ (\widehat J\pi(x)\widehat J\xi)(t)
+  &=(U_t^0)^*J\alpha_t(x)U_t^0J\xi(t)
+    =JxJ\xi(t),\\
+ (\widehat J\lambda_s\widehat J\xi)(t)
+  &=\Delta(s)^{1/2}(U_t^0)^*U_{ts}^0\xi(ts)
+    =\Delta(s)^{1/2}U_s^0\xi(ts).
+ \end{aligned}
+ \tag{CCM-S3}
 \]
-Here \(J_0\) is linear. Haar inversion gives
-\[
- \|J_0\xi\|_2^2
- =\int_G\Delta(t)^{-1}\|\xi(t^{-1})\|^2\,dt
- =\|\xi\|_2^2,\qquad J_0^2=1.
-\]
-These equalities hold first on compact continuous fields and then on their completion. Thus
-\[
- \|\mathcal A(\xi,\zeta)\|_2
- \le 2^{-1/2}(\|\xi\|_2^2+\|\zeta\|_2^2)^{1/2},
- \qquad \mathcal A(\Phi,J_0\Phi)=\Phi.                  \tag{CCM-A}
-\]
-We shall approximate the compact continuous pair \(H_\Phi=(\Phi,J_0\Phi)\). The conjugate scalar structure in CCM2 is used only in obtaining the pointwise pairs; the present normed direct sum and \(\mathcal A\) may be regarded as real Hilbert spaces and a bounded real-linear map.
+In the first line the two positive scalar factors multiply to one. In the second line the inner argument is \(s^{-1}t^{-1}=(ts)^{-1}\), so those factors multiply to \(\Delta(t)^{-1/2}\Delta(ts)^{1/2}=\Delta(s)^{1/2}\). Commutation of \(J\) with the implementing unitaries and the group law give the displayed operator factors. Each operator is bounded, so the equalities extend from the dense compact core to the whole Hilbert space.
 
-**Local generators whose averages are in \(\mathcal V\).** Choose finite lists \(a_j,c_j\in A\), \(b_l,d_l\in B\), and write
-<a id="equation-ccm27"></a>
+Conjugation by an antiunitary preserves products and adjoints and sends strong limits to strong limits. It is conjugate-linear on scalars, which leaves the generated complex algebra unchanged. Equations (CCM-S2)–(CCM-S3), together with \(JM_0J=M_0'\), prove
 \[
- \begin{split}
- \Psi(t)&=\sum_j\alpha_{t^{-1}}(a_j^*)\eta(c_j)
-                  +\sum_l d_l^*U_t^*\eta'(b_l),\\
- X(t)&=\sum_j\Delta(t)\alpha_t(c_j^*)\eta(a_j)
-                  -\sum_l b_l^*U_t\eta'(d_l),\\
- q(t)&=(\Psi(t),\Delta(t)^{-1/2}X(t)).
- \end{split}                                                     \tag{CCM27}
+ R_0'=\{b(M_0'),\rho^0(G)\}'' .
+ \tag{CCM-S4}
 \]
-These fields are continuous; no global integrability is claimed before a compact cutoff is applied. For every real \(g\in C_c(G)\),
-<a id="equation-ccm28"></a>
-\[
- 2\mathcal A(gq)(t)=g(t)\Psi(t)+g(t^{-1})X(t^{-1})
- \quad\hbox{belongs to }\mathcal V.                    \tag{CCM28}
-\]
-Indeed the terms with \(a_j,c_j\) are \(v(L_x+L_x^*)\), with \(x(t)=g(t)\alpha_{t^{-1}}(a_j^*)c_j\), by (CCM18). For the terms with \(b_l,d_l\), put
-\[
- y(r)=\Delta(r)^{-1/2}g(r^{-1})\alpha'_{r^{-1}}(d_l^*)b_l.
-\]
-Both \(y,y^\#\) belong to \(P'\). Direct substitution gives
-\[
- Z\eta'(y)(t)=g(t)d_l^*U_t^*\eta'(b_l),\qquad
- Z\eta'(y^\#)(t)=g(t^{-1})b_l^*U_t^*\eta'(d_l).
-\]
-Their difference is \(w(B-B^*)\) for \(B=ZL'_yZ\). Since \(B-B^*=i[-i(B-B^*)]\) and the expression in brackets is self-adjoint, this difference is in \(i w((B_1)_{\rm sa})\). This proves (CCM28), including its sign and both modular factors.
-
-**Approximation in the direct sum.** At a fixed \(s\in G\), use (CCM11) with \(\beta=\alpha_{s^{-1}}\), \(u=U_s^*\), and \(k=\Delta(s)\). The two target spaces contain \(\Phi(s)\) and \(\Phi(s^{-1})\), respectively. Multiplying the second coordinate by the positive number \(\Delta(s)^{-1/2}\) therefore shows that values \(q(s)\) from (CCM27) approximate \(H_\Phi(s)\) in \(H\oplus H\). Complex coefficients in the conjugate-space span are absorbed into the coefficient lists: scaling one vector parameter scales the first entry by that number and the second entry by its conjugate. Real-valued partitions will suffice from this point on.
-
-Choose once and for all a relatively compact open \(V\) containing the compact support \(C\) of \(H_\Phi\). Given \(\varepsilon>0\), for each \(s\in C\) choose a field \(q_s\) as above with
-\(\|q_s(s)-H_\Phi(s)\|<\varepsilon/2\).
-Continuity gives an open neighborhood \(O_s\subseteq V\) on which this error is less than \(\varepsilon\). A finite subcover and [H0's finite compact partition](OA-FLOW-TOPOLOGY.md#l138-h0) give nonnegative \(g_j\in C_c(O_{s_j})\) with \(\sum_jg_j=1\) on \(C\) and \(0\le\sum_jg_j\le1\) everywhere. Set \(Q_\varepsilon=\sum_j g_jq_{s_j}\). Since \(H_\Phi\) vanishes outside \(C\), the identity
-\[
- Q_\varepsilon-H_\Phi
-   =\sum_jg_j(q_{s_j}-H_\Phi)
-\]
-holds everywhere, including outside \(C\). Consequently
-\[
- \|Q_\varepsilon-H_\Phi\|_{K\oplus K}
-       \le\varepsilon\mu(V)^{1/2}.
-\]
-Each \(\mathcal A(g_jq_{s_j})\) is in \(\mathcal V\) by (CCM28). Applying the contraction (CCM-A) now yields
-<a id="equation-ccm29"></a>
-\[
- \|\mathcal A(Q_\varepsilon)-\Phi\|_2
-       \le\varepsilon\sqrt{\mu(V)/2}\longrightarrow0.    \tag{CCM29}
-\]
-This proves the real density required in (CCM12). The cutoff set \(V\) need not be invariant under inversion: \(J_0\) handles inversion on the complete Hilbert space with norm one. The construction uses a finite cover of a single compact support, so it needs neither a countable cover of \(G\) nor a separability hypothesis on \(H\).
+This is the hypothesis required by the preceding transport argument. The modular-conjugation computation also appears in Haagerup, [Theorem 2.1, printed pp.111–112](https://www.mscand.dk/article/download/11768/9784/30722#page=13); all modular and representation-comparison premises used here are the earlier local proofs.
 
 <a id="ccm-7"></a>
 
 ## CCM7. The commutant, its normality and a useful twist
 
-Apply CCM3 to the systems just constructed. Equations (CCM24)–(CCM29) give
+The standard-model calculation proves (CCM-T1), and the transport lemma proves the same equality on the original spatial representation. Together with the unitary identities (CCM20), this gives
 
 <a id="equation-ccm30"></a>
 
@@ -612,7 +222,7 @@ If \(N\) is any represented algebra and \(e\in N'\), every operator on \(eK\) co
  \mathcal E\bigl(Q_0\,\overline\otimes\,B(\ell^2(I))\bigr)\mathcal E
  \,\mathcal V.                                        \tag{CCM33}
 \]
-This is an exact normal represented corner, including all its compressed finite matrix entries and their bounded strong limits. It is not a claim that individual \(\rho_s^0\) preserve \(E\), nor that compressing just individual generators is a homomorphism. NR4 proves that the compressed left representation is faithful and normally identifies the original crossed product; unitary transfer and the zero-extension argument prove the precise right commutant on its actual Hilbert space. If a spatial implementation on the original \(H\) exists, CCM1–7 directly give (CCM2) there without using this corner model. If \(H=0\), both regular spaces and algebras are zero and all assertions have their empty interpretation.
+This is an exact normal represented corner, including all its compressed finite matrix entries and their bounded strong limits. It is not a claim that individual \(\rho_s^0\) preserve \(E\), nor that compressing just individual generators is a homomorphism. NR4 proves that the compressed left representation is faithful and normally identifies the original crossed product; unitary transfer and the zero-extension argument prove the precise right commutant on its actual Hilbert space. If a spatial implementation on the original \(H\) exists, the transport lemma identifies this whole corner with the right generators in (CCM2). If \(H=0\), both regular spaces and algebras are zero and all assertions have their empty interpretation.
 
 <a id="ccm-9"></a>
 
@@ -632,60 +242,28 @@ The left invariant subspaces spanned by coordinates \((1,3)\), \((2,4)\) carry t
 
 1. Check (CCM20) directly, including the modular function. **Solution.** In \(Z\pi'(y)Z\), the factors \(\Delta(t)^{-1/2}\Delta(t^{-1})^{-1/2}\) cancel and \(U_t^*\alpha'_t(y)U_t=y\). For \(Z\lambda_sZ\), the second argument is \(s^{-1}t^{-1}=(ts)^{-1}\); its scalar factor is \(\Delta(t)^{-1/2}\Delta(ts)^{1/2}=\Delta(s)^{1/2}\), and \(U_t^*U_{ts}=U_s\). These give exactly (CCM20).
 
-2. Why does the averaging map in CCM6 include the modular half power? **Solution.** Inversion sends left Haar measure to the density \(\Delta(t)^{-1}\); therefore \(J_0\xi(t)=\Delta(t)^{-1/2}\xi(t^{-1})\) is an isometry and satisfies \(J_0^2=1\). Cauchy--Schwarz then gives \(\|\mathcal A(F,G)\|_2\le(\|F\|_2^2+\|G\|_2^2)^{1/2}/\sqrt2\), even when the compact cutoff neighborhood is not symmetric.
+2. Can one obtain the commutant by compressing its generating unitaries individually? **Solution.** Not in general: \(EAE\,EBE\) need not equal \(EABE\). In the transport proof, \(\rho_s^a\) carries \(E\) to \(b(e_s)\). The correction \(b(w_s)\), with initial projection \(b(e_s)\) and final projection \(E\), gives the actual unitary on the corner. Formula (CCM-T8) then handles every word before bounded strong limits are taken.
 
 3. In (CCM34), solve the commutant equations directly. **Solution.** Commutation with all \(\pi(a,b)\) leaves matrix entries only within equal-label coordinate classes \(\{1,4\}\), \(\{2,3\}\). Commutation with \(\lambda_1\) identifies the corresponding entries under \(1\leftrightarrow3\), \(2\leftrightarrow4\). The four independent resulting matrices are \(b(E_{11}),b(E_{22}),b(E_{11})\rho_1,b(E_{22})\rho_1\). They are precisely the right algebra in (CCM34).
 
 4. Explain why an arbitrary action does not supply a unitary \(U_s\) on an arbitrary chosen faithful representation. **Solution.** Spatiality depends on the representation. NR1 supplies a canonical implementation in standard form; NR4 transports the left crossed product to the original representation by a reducing amplification corner. Formula (CCM33), whose zero-extension proof is local, gives the commutant in that representation without assuming an unavailable \(U_s\).
 
-The proved scope is the arbitrary-LCH normal regular commutant theorem. No dual-weight existence, general group duality, spectral synthesis, induction theorem, or classification statement is asserted here.
+The proved scope is the arbitrary-LCH normal regular commutant theorem. The dual weight used in the standard case is proved earlier in GDW. No general group duality, spectral synthesis, induction theorem, or classification statement is asserted here.
 
 <a id="oa-flow.ccm.figure"></a>
 
-## Why the right generators give the whole commutant
+## How the complete commutant passes to another representation
 
-![Exact generators, a four-coordinate example, the bounded projection identity and compact inversion pairs](../assets/general-group-crossed-product-commutant/assets/crossed-product-commutant.png)
+![Left and right generators, the exact four-coordinate example, modular conjugation and compression through a partial isometry](../assets/general-group-crossed-product-commutant/assets/crossed-product-commutant.png)
 
-The upper left panel states the actual arbitrary-group theorem [CCM0](OA-FLOW-CCM.md#ccm-0), proved in [CCM1–8](OA-FLOW-CCM.md#ccm-1). The coefficient representation is \(\pi(x)\xi(t)=\alpha_{t^{-1}}(x)\xi(t)\), and the left group is \(\lambda_s\xi(t)=\xi(s^{-1}t)\). The right coefficient is constant, \(b(y)\xi(t)=y\xi(t)\) for \(y\in M'\); its group is \(\rho_s\xi(t)=\Delta(s)^{1/2}U_s\xi(ts)\). With the convention \(\mu(Es)=\Delta(s)\mu(E)\), the norm squared of \(\xi(ts)\) is \(\Delta(s)^{-1}\|\xi\|_2^2\), so the displayed positive half power gives an actual unitary. The operator equality is \(R'=\{b(M'),\rho(G)\}''\), not only containment of the individual right generators. For a nonspatial action in the original representation, the exact represented corner is (CCM33), rather than an assumed \(U_s\) on that Hilbert space.
+The upper left panel records the operators in [CCM0](OA-FLOW-CCM.md#ccm-0). Right translation is normalized by \(\Delta(s)^{1/2}\), because \(\int\|\xi(ts)\|^2dt=\Delta(s)^{-1}\|\xi\|_2^2\). The lower left panel proves the reverse inclusion in the standard representation: [GDW5–6](OA-FLOW-GDW.md#gdw-5) supply \(\widehat J\), and (CCM-S3) computes its conjugation of both generator families. The full modular theorem gives \(R_0'=\widehat J R_0\widehat J\).
 
-The upper right panel is the exact finite model [CCM9](OA-FLOW-CCM.md#ccm-9): \(G=\mathbb Z/2\mathbb Z\), counting measure, \(H=\mathbb C^2\), diagonal \(M\), and \(U_1\) exchanges the two coordinate vectors. Coordinate labels \(1,2,3,4\) mean \((0,e_1),(0,e_2),(1,e_1),(1,e_2)\), respectively. Blue vertical arrows show \(\lambda_1:1\leftrightarrow3,2\leftrightarrow4\). Red diagonal arrows show \(\rho_1:1\leftrightarrow4,2\leftrightarrow3\). The blue coefficient labels are exactly \(a,b,b,a\); the constant right labels are \(c,d,c,d\). All arrows are permutations, with \(\Delta=1\). Commutation with the blue diagonal restricts entries of a right operator to the equal-label classes \(\{1,4\}\), \(\{2,3\}\); commutation with the vertical permutation identifies the two class matrices. The four independent right operators are
+The lower right panel depicts the two different subspaces involved in [transport](OA-FLOW-CCM.md#ccm-transport). The amplified unitary sends \(eH_a\) to \(e_sH_a\). The partial isometry \(w_s\in D=N'\) sends \(e_sH_a\) back to \(eH_a\); its initial and final projections are \(e_s\) and \(e\). Their product realizes the original implementing unitary on its actual Hilbert space. Equation (CCM-T8) rewrites every compressed word as a coefficient from \(eDe\) times this transported right unitary. Uniformly bounded strong approximation then gives the entire corner \(EQ_aE\). The diagram does not assume that \(e_s=e\), nor that compression is multiplicative on \(Q_a\).
+
+The upper right panel is the exact finite example of [CCM9](OA-FLOW-CCM.md#ccm-9). Coordinates \(1,2,3,4\) mean \((0,e_1),(0,e_2),(1,e_1),(1,e_2)\). Blue vertical arrows are \(\lambda_1\); red diagonal arrows are \(\rho_1\). The coefficient labels are \((a,b,b,a)\) and \((c,d,c,d)\). The four independent operators
 \[
- b(E_{11}),\quad b(E_{22}),\quad b(E_{11})\rho_1,
- \quad b(E_{22})\rho_1.
+ b(E_{11}),\quad b(E_{22}),\quad b(E_{11})\rho_1,\quad b(E_{22})\rho_1
 \]
-They generate the full four-dimensional commutant. The left algebra acts as two equivalent full two-dimensional matrix representations on the subspaces with coordinate sets \(\{1,3\}\), \(\{2,4\}\); hence its complex dimension also is four. These are dimensions of represented operator algebras, not a claim that the two-dimensional diagonal coefficient algebra is a factor.
+span the full right algebra; both represented algebras have complex dimension four. This finite illustration is separate from the arbitrary-group proof.
 
-The lower left panel isolates [CCM2](OA-FLOW-CCM.md#ccm-2)'s bounded graph-projection mechanism. The projection onto the closed span of \((c\zeta_1,\gamma(c))\) in the ordinary \(H\oplus H\) is \(P=\begin{pmatrix}p&r\\r^*&q\end{pmatrix}\). Its entries lie in the coefficient commutant. From \(P^2=P\),
-\[
- p(1-p)=rr^*,\qquad q(1-q)=r^*r.
-\]
-The exact whole-ideal vector identities, including their proved Hilbert norm extensions, give
-\[
- \|r^*\zeta_1\|^2=-k\|r\zeta_2\|^2,
- \qquad k>0.
-\]
-Thus both norms vanish. The remaining projection equations force \(\zeta_1\) and \(\zeta_2\) to be orthogonal to each of the two respective map ranges. This proves paired density in \(H\oplus\overline H\) at exactly those range closures. It does not assume a cyclic or separating vector for \(M\).
-
-The lower right panel shows the bounded operation used in [CCM6](OA-FLOW-CCM.md#ccm-6):
-\[
- J_0\xi(t)=\Delta(t)^{-1/2}\xi(t^{-1}),\qquad
- \mathcal A(F,G)=\tfrac12(F+J_0G),\qquad
- \|\mathcal A\|\le1/\sqrt2 .
-\]
-The target pair is \(H_\Phi=(\Phi,J_0\Phi)\), so \(\mathcal A H_\Phi=\Phi\). Finite compact partitions approximate this pair by \(Q_\varepsilon\); equation (CCM28) places every averaged summand in the required real span. Equation (CCM29) then gives
-\[
- \|\mathcal A Q_\varepsilon-\Phi\|_2
- \le 2^{-1/2}\|Q_\varepsilon-H_\Phi\|_{K\oplus K}
- \le\varepsilon\sqrt{\mu(V)/2}.
-\]
-This is a norm estimate for the general group, including nonunimodular groups.
-
-The small plot gives an exact partition example on the additive real group. Here \(J_0\xi(t)=\xi(-t)\), \(C=[-1,1]\), \(V=(-2.1,2.1)\), and
-\[
- w(t)=\max(0,\min(1,2-|t|)),\qquad
- g_1(t)=\tfrac{2-t}{4}w(t),\qquad
- g_2(t)=\tfrac{2+t}{4}w(t).
-\]
-Both functions are nonnegative, supported in \([-2,2]\subset V\), and satisfy \(g_1+g_2=w\), \(0\le w\le1\), and \(w=1\) on \(C\). The identity \(g_2(t)=g_1(-t)\) is a feature of this example; the general proof permits any finite subordinate partition and does not require a symmetric \(V\).
-
-Related treatments are Van Daele, [*A framework to study commutation problems*](https://www.numdam.org/item/BSMF_1978__106__289_0.pdf) (1978), Rousseau and Van Daele, [*Crossed products of commutation systems*](https://gdz.sub.uni-goettingen.de/id/PPN235181684_0239?tify=%7B%22pages%22%3A%5B13%5D%7D) (1979), and Haagerup, [*On the dual weights for crossed products of von Neumann algebras I*](https://journals.msp.org/mscand/article/view/1879) (1978), Theorem 2.1. The diagram and exact cutoff example are original CC0-1.0 expression to the extent of rights held. Native PNG: 3400×2400; [editable SVG](../assets/general-group-crossed-product-commutant/assets/crossed-product-commutant.svg), [exact data](../assets/general-group-crossed-product-commutant/assets/crossed-product-commutant-data.json), and [reproduction source](../assets/general-group-crossed-product-commutant/render_commutant.py).
+Human mathematical context: Haagerup, [*On the dual weights for crossed products of von Neumann algebras I*, Theorem 2.1](https://journals.msp.org/mscand/article/view/1879). The complete mathematical argument and exact proof locators accompany the schematic. Original diagram expression: CC0-1.0 to the extent of rights held. Native PNG: 3400×2400; [editable SVG](../assets/general-group-crossed-product-commutant/assets/crossed-product-commutant.svg), [exact data](../assets/general-group-crossed-product-commutant/assets/crossed-product-commutant-data.json), and [reproduction source](../assets/general-group-crossed-product-commutant/render_commutant.py).

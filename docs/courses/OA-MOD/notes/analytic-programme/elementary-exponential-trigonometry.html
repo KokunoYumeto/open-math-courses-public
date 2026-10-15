@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exponentials, angles and the exact period · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+<style data-coercivity-accessibility="20261015">body{overflow-wrap:anywhere}main,article{min-width:0}.math{display:inline-block;max-width:100%;box-sizing:border-box;overflow-x:auto;overflow-y:hidden;vertical-align:middle}.math-display{display:block}img{max-width:100%;height:auto}</style></head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this note"><p>Original authorship and review status are stated below. Existing programme proof text, integrated with its dependencies.</p></aside>
+<article class="lesson">
+<h1 id="exponentials-angles-and-the-exact-period">Exponentials, angles and the exact period</h1>
+<p><em>Original programme exposition by GPT-6 Astra (OpenAI), Ultra, October 2026. CC0-1.0.</em></p>
+<p>This prerequisite proves the scalar facts about exponentials and angles used in the <a href="scalar-complex-programme.html">complex-analysis lesson</a>, its <a href="scalar-complex-boundaries.html">closed-boundary supplement</a>, and <a href="scalar-product-integration.html#pi6-polar-integration-with-its-exceptional-set">polar integration</a>. Read it before those arguments. The only analytic input is <a href="scalar-integration-programme.html">scalar integration, Sections 0 and 6</a>: completeness of the real field, interval compactness, the real mean value theorem, and the fundamental theorem and oriented substitution for continuous integrands. We do not use a complex contour theorem, a spectral theorem or polar integration to construct the angle.</p>
+<h2 id="ef1-a-series-and-its-derivative">EF1. A series and its derivative</h2>
+<p>For a complex number <span class="math" data-tex="\(z\)">\(z\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+E(z)=\sum_{n=0}^{\infty}\frac{z^n}{n!}.
+\tag{EF.1}
+\]">\[
+E(z)=\sum_{n=0}^{\infty}\frac{z^n}{n!}.
+\tag{EF.1}
+\]</span>
+<p>This converges absolutely, uniformly for <span class="math" data-tex="\(|z|\leq M\)">\(|z|\leq M\)</span>, for every finite <span class="math" data-tex="\(M\)">\(M\)</span>: once <span class="math" data-tex="\(n+1\geq2M\)">\(n+1\geq2M\)</span>, successive majorants <span class="math" data-tex="\(M^n/n!\)">\(M^n/n!\)</span> have ratio at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. A finite initial sum and a geometric tail suffice; no power-series theorem is assumed.</p>
+<p>The same reasoning permits multiplication of two such series. More explicitly, the sum of absolute values of their products is bounded by the product of the two convergent nonnegative sums. Terms omitted by a sufficiently large finite square have arbitrarily small total absolute value. We may therefore regroup by the finitely many pairs with a fixed sum of indices. The finite binomial theorem gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E(z+w)=E(z)E(w),\\
+E(0)=1,\\
+E(-z)=E(z)^{-1},\\
+E(\bar z)=\overline{E(z)}.
+\end{gathered}
+\tag{EF.2}
+\]">\[
+\begin{gathered}
+E(z+w)=E(z)E(w),\\
+E(0)=1,\\
+E(-z)=E(z)^{-1},\\
+E(\bar z)=\overline{E(z)}.
+\end{gathered}
+\tag{EF.2}
+\]</span>
+<p>We also prove differentiability directly. If <span class="math" data-tex="\(|z|,|w|\leq M\)">\(|z|,|w|\leq M\)</span> and <span class="math" data-tex="\(z\ne w\)">\(z\ne w\)</span>, factoring differences of powers twice gives, for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\left|\frac{z^n-w^n}{z-w}-nw^{n-1}\right|\\
+\leq \frac{n(n-1)}2M^{n-2}|z-w|.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\left|\frac{z^n-w^n}{z-w}-nw^{n-1}\right|\\
+\leq \frac{n(n-1)}2M^{n-2}|z-w|.
+\end{gathered}
+\]</span>
+<p>The constant term contributes zero to the difference quotient, and the linear term has zero remainder. Summing the displayed inequality after division by <span class="math" data-tex="\(n!\)">\(n!\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\left|\frac{E(z)-E(w)}{z-w}-E(w)\right|\\
+\leq \frac{|z-w|}{2}\sum_{m\geq0}\frac{M^m}{m!}.
+\end{gathered}
+\tag{EF.3}
+\]">\[
+\begin{gathered}
+\left|\frac{E(z)-E(w)}{z-w}-E(w)\right|\\
+\leq \frac{|z-w|}{2}\sum_{m\geq0}\frac{M^m}{m!}.
+\end{gathered}
+\tag{EF.3}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(E\)">\(E\)</span> is complex differentiable everywhere, with <span class="math" data-tex="\(E&#x27;=E\)">\(E&#x27;=E\)</span>. Uniform convergence on each disk proves continuity independently. These arguments also justify its derivatives along real paths by the chain rule proved in the preceding integration lesson.</p>
+<p>For real <span class="math" data-tex="\(x\)">\(x\)</span>, the series is real, and <span class="math" data-tex="\(E(x)=E(x/2)^2&gt;0\)">\(E(x)=E(x/2)^2&gt;0\)</span> by nonvanishing in (EF.2). Since its derivative is positive, the real mean value theorem makes it strictly increasing. For <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>, its nonnegative series gives <span class="math" data-tex="\(E(x)\geq1+x\)">\(E(x)\geq1+x\)</span>; thus it tends to infinity at the positive end, and (EF.2) makes it tend to zero at the negative end. It follows that <span class="math" data-tex="\(E:\mathbb R\to(0,\infty)\)">\(E:\mathbb R\to(0,\infty)\)</span> is a continuous increasing bijection. Here the intermediate-value implication follows from real completeness: take the supremum of points below a proposed intermediate value and use continuity to rule out either strict inequality at that supremum. We write <span class="math" data-tex="\(e^z=E(z)\)">\(e^z=E(z)\)</span>, and write <span class="math" data-tex="\(\log\)">\(\log\)</span> for the inverse of its real restriction. This is the same series and inverse used in QF-08.</p>
+<h2 id="ef2-sine-and-cosine-before-choosing-a-period">EF2. Sine and cosine before choosing a period</h2>
+<p>For real <span class="math" data-tex="\(t\)">\(t\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c(t)=\operatorname{Re}E(it),\\
+s(t)=\operatorname{Im}E(it).
+\end{gathered}
+\]">\[
+\begin{gathered}
+c(t)=\operatorname{Re}E(it),\\
+s(t)=\operatorname{Im}E(it).
+\end{gathered}
+\]</span>
+<p>Conjugation and multiplication in (EF.2) give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|E(it)|=1,\\
+c(t)^2+s(t)^2=1,\\
+c(-t)=c(t),\\
+s(-t)=-s(t).
+\end{gathered}
+\tag{EF.4}
+\]">\[
+\begin{gathered}
+|E(it)|=1,\\
+c(t)^2+s(t)^2=1,\\
+c(-t)=c(t),\\
+s(-t)=-s(t).
+\end{gathered}
+\tag{EF.4}
+\]</span>
+<p>Indeed, the squared modulus is <span class="math" data-tex="\(E(it)E(-it)=1\)">\(E(it)E(-it)=1\)</span>. Real differentiation using (EF.3) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c&#x27;=-s,\qquad s&#x27;=c,\\
+c(0)=1,\qquad s(0)=0.
+\end{gathered}
+\tag{EF.5}
+\]">\[
+\begin{gathered}
+c&#x27;=-s,\qquad s&#x27;=c,\\
+c(0)=1,\qquad s(0)=0.
+\end{gathered}
+\tag{EF.5}
+\]</span>
+<p>Multiplying <span class="math" data-tex="\(E(it)E(iu)\)">\(E(it)E(iu)\)</span> gives the addition identities for <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span>. In particular
+<span class="math" data-tex="\(c(2t)=c(t)^2-s(t)^2\)">\(c(2t)=c(t)^2-s(t)^2\)</span>, <span class="math" data-tex="\(s(2t)=2s(t)c(t)\)">\(s(2t)=2s(t)c(t)\)</span>, and
+<span class="math" data-tex="\(c(t)^2=(1+c(2t))/2\)">\(c(t)^2=(1+c(2t))/2\)</span>. No period has yet been assumed.</p>
+<h2 id="ef3-constructing-a-quarter-turn-by-an-integral">EF3. Constructing a quarter turn by an integral</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a(x)=\int_0^x\frac{du}{1+u^2}\\
+(x\in\mathbb R).
+\end{gathered}
+\tag{EF.6}
+\]">\[
+\begin{gathered}
+a(x)=\int_0^x\frac{du}{1+u^2}\\
+(x\in\mathbb R).
+\end{gathered}
+\tag{EF.6}
+\]</span>
+<p>The earlier fundamental theorem gives <span class="math" data-tex="\(a&#x27;(x)=1/(1+x^2)&gt;0\)">\(a&#x27;(x)=1/(1+x^2)&gt;0\)</span>. Hence <span class="math" data-tex="\(a\)">\(a\)</span> is continuous and strictly increasing; substitution <span class="math" data-tex="\(u\mapsto-u\)">\(u\mapsto-u\)</span> gives oddness. For <span class="math" data-tex="\(x\geq1\)">\(x\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0&lt;a(1)\leq a(x)\\
+\leq1+\int_1^x u^{-2}\,du\\
+=2-1/x&lt;2.
+\end{gathered}
+\]">\[
+\begin{gathered}
+0&lt;a(1)\leq a(x)\\
+\leq1+\int_1^x u^{-2}\,du\\
+=2-1/x&lt;2.
+\end{gathered}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\alpha=\sup_{x\geq0}a(x)\)">\(\alpha=\sup_{x\geq0}a(x)\)</span> exists, is positive, and is the limit as <span class="math" data-tex="\(x\to\infty\)">\(x\to\infty\)</span>. Oddness gives the negative-end limit <span class="math" data-tex="\(-\alpha\)">\(-\alpha\)</span>. Strict increase shows that neither endpoint is attained. Continuity and the supremum argument from EF1 therefore identify the range as <span class="math" data-tex="\((-\alpha,\alpha)\)">\((-\alpha,\alpha)\)</span>.</p>
+<p>For positive <span class="math" data-tex="\(x\)">\(x\)</span>, direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dx}\bigl(a(x)+a(1/x)\bigr)=0.
+\]">\[
+\frac{d}{dx}\bigl(a(x)+a(1/x)\bigr)=0.
+\]</span>
+<p>The mean value theorem makes the sum constant. Letting <span class="math" data-tex="\(x\to\infty\)">\(x\to\infty\)</span> identifies that constant as <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and setting <span class="math" data-tex="\(x=1\)">\(x=1\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha=2a(1),\\
+\pi=2\alpha=4a(1).
+\end{gathered}
+\tag{EF.7}
+\]">\[
+\begin{gathered}
+\alpha=2a(1),\\
+\pi=2\alpha=4a(1).
+\end{gathered}
+\tag{EF.7}
+\]</span>
+<p>This defines <span class="math" data-tex="\(\pi\)">\(\pi\)</span>; the circle and length interpretation will follow from the construction.</p>
+<p>To find the corresponding point on the circle, set
+<span class="math" data-tex="\(v(x)=(1+ix)/(1+x^2)^{1/2}\)">\(v(x)=(1+ix)/(1+x^2)^{1/2}\)</span>. Differentiating gives
+<span class="math" data-tex="\(v&#x27;(x)=i v(x)/(1+x^2)\)">\(v&#x27;(x)=i v(x)/(1+x^2)\)</span>. The square-root differentiation here follows directly from
+<span class="math" data-tex="\((\sqrt b-\sqrt a)/(b-a)=1/(\sqrt b+\sqrt a)\)">\((\sqrt b-\sqrt a)/(b-a)=1/(\sqrt b+\sqrt a)\)</span> for positive <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; product and quotient rules follow by subtracting the products and taking limits. Existence of the nonnegative real square root follows by taking the supremum of the nonnegative numbers whose squares are at most its argument. We use no implicit inverse-function theorem.</p>
+<p>The real derivative of <span class="math" data-tex="\(E(-ia(x))v(x)\)">\(E(-ia(x))v(x)\)</span> is consequently zero. Apply the real mean value theorem to its real and imaginary parts. Its value at zero is one, so</p>
+<span class="math math-display" data-tex="\[
+E(ia(x))=\frac{1+ix}{\sqrt{1+x^2}}.
+\tag{EF.8}
+\]">\[
+E(ia(x))=\frac{1+ix}{\sqrt{1+x^2}}.
+\tag{EF.8}
+\]</span>
+<p>Let <span class="math" data-tex="\(x\to\infty\)">\(x\to\infty\)</span>. Continuity of <span class="math" data-tex="\(E\)">\(E\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E(i\alpha)=i,\\
+E(i\pi)=-1,\\
+E(2\pi i)=1.
+\end{gathered}
+\tag{EF.9}
+\]">\[
+\begin{gathered}
+E(i\alpha)=i,\\
+E(i\pi)=-1,\\
+E(2\pi i)=1.
+\end{gathered}
+\tag{EF.9}
+\]</span>
+<p>The latter two equalities are multiplication identities, not assumptions about angles.</p>
+<h2 id="ef4-the-exact-exponential-kernel-and-the-whole-circle">EF4. The exact exponential kernel and the whole circle</h2>
+<p>Every <span class="math" data-tex="\(t\in(0,\alpha)\)">\(t\in(0,\alpha)\)</span> is <span class="math" data-tex="\(a(x)\)">\(a(x)\)</span> for a unique positive <span class="math" data-tex="\(x\)">\(x\)</span>. Formula (EF.8) shows that <span class="math" data-tex="\(E(it)\)">\(E(it)\)</span> lies in the open first quadrant. It covers that arc exactly once: if <span class="math" data-tex="\(u+iv\)">\(u+iv\)</span> has <span class="math" data-tex="\(u,v&gt;0\)">\(u,v&gt;0\)</span> and <span class="math" data-tex="\(u^2+v^2=1\)">\(u^2+v^2=1\)</span>, put <span class="math" data-tex="\(x=v/u\)">\(x=v/u\)</span> in (EF.8); then <span class="math" data-tex="\(u=1/\sqrt{1+x^2}\)">\(u=1/\sqrt{1+x^2}\)</span>, <span class="math" data-tex="\(v=x/\sqrt{1+x^2}\)">\(v=x/\sqrt{1+x^2}\)</span>.</p>
+<p>For <span class="math" data-tex="\(q=0,1,2,3\)">\(q=0,1,2,3\)</span> and <span class="math" data-tex="\(0&lt;t&lt;\alpha\)">\(0&lt;t&lt;\alpha\)</span>, (EF.2) and (EF.9) give
+<span class="math" data-tex="\(E(i(q\alpha+t))=i^q E(it)\)">\(E(i(q\alpha+t))=i^q E(it)\)</span>. The four intervals thus cover the four open quadrants, once each, and the four endpoints give <span class="math" data-tex="\(1,i,-1,-i\)">\(1,i,-1,-i\)</span>. Since <span class="math" data-tex="\(4\alpha=2\pi\)">\(4\alpha=2\pi\)</span>, the map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+{}[0,2\pi)\longrightarrow\mathbb T,\\
+t\longmapsto E(it),\\
+\mathbb T=\{z\in\mathbb C:|z|=1\}.
+\end{gathered}
+\tag{EF.10}
+\]">\[
+\begin{gathered}
+{}[0,2\pi)\longrightarrow\mathbb T,\\
+t\longmapsto E(it),\\
+\mathbb T=\{z\in\mathbb C:|z|=1\}.
+\end{gathered}
+\tag{EF.10}
+\]</span>
+<p>is a bijection. It takes the value one only at zero on this interval. Multiplication by <span class="math" data-tex="\(E(2\pi i)=1\)">\(E(2\pi i)=1\)</span> supplies the period on all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Given any real <span class="math" data-tex="\(t\)">\(t\)</span>, choose an integer <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(t-2\pi n\in[0,2\pi)\)">\(t-2\pi n\in[0,2\pi)\)</span>; the Archimedean property of the complete real field guarantees such an integer. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E(it)=1\\
+\Longleftrightarrow\quad t\in2\pi\mathbb Z.
+\end{gathered}
+\tag{EF.11}
+\]">\[
+\begin{gathered}
+E(it)=1\\
+\Longleftrightarrow\quad t\in2\pi\mathbb Z.
+\end{gathered}
+\tag{EF.11}
+\]</span>
+<p>For <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>, (EF.2) and (EF.4) give <span class="math" data-tex="\(|E(z)|=E(x)\)">\(|E(z)|=E(x)\)</span>. Strict increase of the real exponential shows that <span class="math" data-tex="\(E(z)=1\)">\(E(z)=1\)</span> forces <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Equation (EF.11) then proves the full complex assertion</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E(z)=1\\
+\Longleftrightarrow\quad z\in2\pi i\mathbb Z.
+\end{gathered}
+\tag{EF.12}
+\]">\[
+\begin{gathered}
+E(z)=1\\
+\Longleftrightarrow\quad z\in2\pi i\mathbb Z.
+\end{gathered}
+\tag{EF.12}
+\]</span>
+<p>In particular <span class="math" data-tex="\(E(z)=E(w)\)">\(E(z)=E(w)\)</span> exactly when <span class="math" data-tex="\(z-w\in2\pi i\mathbb Z\)">\(z-w\in2\pi i\mathbb Z\)</span>. This is the precise fact used in the index calculation of the complex-analysis lesson.</p>
+<h2 id="ef5-radians-the-inverse-angle-and-polar-coordinates">EF5. Radians, the inverse angle and polar coordinates</h2>
+<p>We now write <span class="math" data-tex="\(\cos t=c(t)\)">\(\cos t=c(t)\)</span>, <span class="math" data-tex="\(\sin t=s(t)\)">\(\sin t=s(t)\)</span>, and <span class="math" data-tex="\(\arctan x=a(x)\)">\(\arctan x=a(x)\)</span>. The circle path <span class="math" data-tex="\(t\mapsto E(it)\)">\(t\mapsto E(it)\)</span> has derivative <span class="math" data-tex="\(iE(it)\)">\(iE(it)\)</span> of modulus one. Its length on a parameter interval is therefore the length of that interval. Thus this parametrization measures angle in radians, and a full turn has length <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. The circle of radius <span class="math" data-tex="\(R\)">\(R\)</span> has length <span class="math" data-tex="\(2\pi R\)">\(2\pi R\)</span>.</p>
+<p>On <span class="math" data-tex="\((-\pi/2,\pi/2)=(-\alpha,\alpha)\)">\((-\pi/2,\pi/2)=(-\alpha,\alpha)\)</span>, formula (EF.8) shows that cosine is positive and sine divided by cosine runs bijectively over the real line. Thus <span class="math" data-tex="\(a\)">\(a\)</span> is the inverse tangent on that interval. At the endpoints the limiting circle values are <span class="math" data-tex="\(-i,i\)">\(-i,i\)</span>; consequently sine maps <span class="math" data-tex="\([-\pi/2,\pi/2]\)">\([-\pi/2,\pi/2]\)</span> increasingly onto <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, with nonnegative cosine. These are the endpoint and sign facts used in the disk-area substitution. Oddness and (EF.7) also give the exact square-index integral</p>
+<span class="math math-display" data-tex="\[
+\int_{-1}^1\frac{dt}{1+t^2}
+=2a(1)=\frac\pi2.
+\tag{EF.13}
+\]">\[
+\int_{-1}^1\frac{dt}{1+t^2}
+=2a(1)=\frac\pi2.
+\tag{EF.13}
+\]</span>
+<p>Squaring (EF.8) proves the half-angle identities with their actual branch:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\cos(2a(u))=\frac{1-u^2}{1+u^2},\\
+\sin(2a(u))=\frac{2u}{1+u^2},\\
+2a(u)\in(-\pi,\pi).
+\end{gathered}
+\tag{EF.14}
+\]">\[
+\begin{gathered}
+\cos(2a(u))=\frac{1-u^2}{1+u^2},\\
+\sin(2a(u))=\frac{2u}{1+u^2},\\
+2a(u)\in(-\pi,\pi).
+\end{gathered}
+\tag{EF.14}
+\]</span>
+<p>If <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> is outside the ray <span class="math" data-tex="\(\{(x,0):x\leq0\}\)">\(\{(x,0):x\leq0\}\)</span>, put
+<span class="math" data-tex="\(r=\sqrt{x^2+y^2}\)">\(r=\sqrt{x^2+y^2}\)</span>. Then <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> and <span class="math" data-tex="\(r+x&gt;0\)">\(r+x&gt;0\)</span>. Substitute <span class="math" data-tex="\(u=y/(r+x)\)">\(u=y/(r+x)\)</span> in (EF.14). The identity <span class="math" data-tex="\(x^2+y^2=r^2\)">\(x^2+y^2=r^2\)</span> gives cosine <span class="math" data-tex="\(x/r\)">\(x/r\)</span> and sine <span class="math" data-tex="\(y/r\)">\(y/r\)</span>. Uniqueness in (EF.10), using the half-open period and excluding its negative-real endpoint, makes</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(x,y)\longmapsto(r,\theta),\\
+r=\sqrt{x^2+y^2},\\
+\theta=2a\!\left(\frac{y}{r+x}\right)
+\end{gathered}
+\tag{EF.15}
+\]">\[
+\begin{gathered}
+(x,y)\longmapsto(r,\theta),\\
+r=\sqrt{x^2+y^2},\\
+\theta=2a\!\left(\frac{y}{r+x}\right)
+\end{gathered}
+\tag{EF.15}
+\]</span>
+<p>the inverse of <span class="math" data-tex="\((r,\theta)\mapsto(r\cos\theta,r\sin\theta)\)">\((r,\theta)\mapsto(r\cos\theta,r\sin\theta)\)</span> on
+<span class="math" data-tex="\((0,\infty)\times(-\pi,\pi)\)">\((0,\infty)\times(-\pi,\pi)\)</span>. Both maps are continuous by the displayed formulas. This proves the homeomorphism used in polar integration, including its excluded ray, before any assertion about planar area.</p>
+<h2 id="ef6-the-zeros-used-in-contour-kernels">EF6. The zeros used in contour kernels</h2>
+<p>For complex <span class="math" data-tex="\(z\)">\(z\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sin z=\frac{E(iz)-E(-iz)}{2i},\\
+\cos z=\frac{E(iz)+E(-iz)}2.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sin z=\frac{E(iz)-E(-iz)}{2i},\\
+\cos z=\frac{E(iz)+E(-iz)}2.
+\end{gathered}
+\]</span>
+<p>They agree with EF2 on the real line, and EF1 proves that they are holomorphic with derivatives cosine and minus sine. Nonvanishing of <span class="math" data-tex="\(E\)">\(E\)</span> and (EF.12) give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sin(\pi z)=0\\
+\Longleftrightarrow\quad z\in\mathbb Z,\\
+E(\pi z)-E(-\pi z)=0\\
+\Longleftrightarrow\quad z\in i\mathbb Z.
+\end{gathered}
+\tag{EF.16}
+\]">\[
+\begin{gathered}
+\sin(\pi z)=0\\
+\Longleftrightarrow\quad z\in\mathbb Z,\\
+E(\pi z)-E(-\pi z)=0\\
+\Longleftrightarrow\quad z\in i\mathbb Z.
+\end{gathered}
+\tag{EF.16}
+\]</span>
+<p>Indeed, the first equation is <span class="math" data-tex="\(E(2\pi iz)=1\)">\(E(2\pi iz)=1\)</span>, and the second is <span class="math" data-tex="\(E(2\pi z)=1\)">\(E(2\pi z)=1\)</span>. The derivative of the first denominator at zero is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and the derivative of the second at zero is <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, by EF1. At every other listed zero, multiplication by the corresponding nonzero exponential gives the same nonzero derivative up to a sign. Thus the zeros are simple. These facts justify exactly the pole locations and normalizations of SC5 and IK1; the contour integrals themselves are proved in those later units.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

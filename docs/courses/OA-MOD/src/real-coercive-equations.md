@@ -2,6 +2,8 @@
 
 **Original exposition and proof: OpenAI Codex (GPT-6 Astra, Ultra), October 2026. CC0-1.0.**
 
+**Current programme treatment.** A self-contained later edition supplies the Hilbert-space inequalities and the matrix square-root construction within the lesson. Its bounded-multiplier continuation, GP0–GP5 supplies the next step. The earlier treatment below is retained.
+
 A complex scalar can turn the real part of a Hilbert inner product into a nonsymmetric bilinear form. Positivity on the diagonal then gives coercivity, but does not make the form an inner product. The existence step in Rieffel and Van Daele's [Lemma 5.6, printed page 211](https://msp.org/pjm/1977/69-1/pjm-v69-n1-p17-s.pdf#page=26) can be justified by the following bounded-operator argument.
 
 Positivity, Cauchy–Schwarz and the parallelogram identity are proved in the earlier Hilbert-space foundations, Section 1. Positive matrix square roots used in the example are supplied by the bounded continuous-calculus proofs identified in BK01.
@@ -95,7 +97,7 @@ is a bounded real-linear functional on \(E\), of norm at most \(\|\xi\|\). Apply
 \]
 When \(\operatorname{Re}\lambda=1\), this is exactly the existence-and-uniqueness assertion needed at the start of Lemma 5.6. The representing real vector is \(v=P_E\xi\); no new inner product is introduced. The standard-real-subspace assumptions \(K\cap iK=\{0\}\) and \(\overline{K+iK}=H\), needed elsewhere in modular theory, are unnecessary for this equation itself.
 
-The remaining assertion of Lemma 5.6 concerns bounded multiplication when \(\xi\) also belongs to the left Hilbert algebra. Its graph-projection and spectral-cutoff argument is on. That assertion is separate from the real equation proved here. The replacement supplies the same vector identity with the same hypotheses, so it can be used at the start of that argument. No whole modular theorem follows from (RC.5) alone.
+The remaining assertion of Lemma 5.6 concerns bounded multiplication when \(\xi\) also belongs to the left Hilbert algebra. Its graph-projection and spectral-cutoff argument is on [printed pages 212–213](https://msp.org/pjm/1977/69-1/pjm-v69-n1-p17-s.pdf#page=27). That assertion is separate from the real equation proved here. The replacement supplies the same vector identity with the same hypotheses, so it can be used at the start of that argument. No whole modular theorem follows from (RC.5) alone.
 
 ## A matrix example showing why symmetry matters
 

@@ -193,8 +193,8 @@ diagnostics["weight_change"]={"map_constructions":mapdata,
  "infinite_set_measure":.5,
  "proof_warning":"The rendered finite Cantor stage is not used to estimate infinite-set membership."}
 diagnostics["artifacts"]={p.name:hashlib.sha256(p.read_bytes()).hexdigest()
-                           for p in sorted(ROOT.glob("*.svg"))}
+                           for p in (ROOT/(name+".svg") for name in ("canonical-section","weight-change","weight-coordinates"))}
 (ROOT/"diagnostics.json").write_text(json.dumps(diagnostics,indent=2)+"\n",encoding="utf-8")
-print(json.dumps({"rendered":[p.name for p in sorted(ROOT.glob("*.png"))],
+print(json.dumps({"rendered":[p.name for p in (ROOT/(name+".png") for name in ("canonical-section","weight-change","weight-coordinates"))],
                   "boundary_phase_error":diagnostics["canonical_section"]["phase_boundary_max_error"],
                   "map_count":len(mapdata)},indent=2))

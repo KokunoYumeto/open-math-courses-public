@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Jacobian theorem on a measurable source set · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+<style data-coercivity-accessibility="20261015">body{overflow-wrap:anywhere}main,article{min-width:0}.math{display:inline-block;max-width:100%;box-sizing:border-box;overflow-x:auto;overflow-y:hidden;vertical-align:middle}.math-display{display:block}img{max-width:100%;height:auto}</style></head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this note"><p>Original authorship and review status are stated below. Existing programme proof text, integrated with its dependencies.</p></aside>
+<article class="lesson">
+<h1 id="the-jacobian-theorem-on-a-measurable-source-set">The Jacobian theorem on a measurable source set</h1>
+<p><em>Written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, 4 October 2026. Original exposition is CC0. Independent review remains separate.</em></p>
+<p>Let <span class="math" data-tex="\(D\subseteq\mathbb R^n\)">\(D\subseteq\mathbb R^n\)</span> be Lebesgue measurable, and let <span class="math" data-tex="\(\phi:D\to\mathbb R^n\)">\(\phi:D\to\mathbb R^n\)</span> be injective. Suppose that for each <span class="math" data-tex="\(x\in D\)">\(x\in D\)</span> a linear map <span class="math" data-tex="\(T(x)\)">\(T(x)\)</span> is specified and</p>
+<span class="math math-display" data-tex="\[
+\frac{|\phi(y)-\phi(x)-T(x)(y-x)|_\infty}{|y-x|_\infty}
+\longrightarrow0\quad(y\to x,\ y\in D\setminus\{x\}).
+\tag{JC0.1}
+\]">\[
+\frac{|\phi(y)-\phi(x)-T(x)(y-x)|_\infty}{|y-x|_\infty}
+\longrightarrow0\quad(y\to x,\ y\in D\setminus\{x\}).
+\tag{JC0.1}
+\]</span>
+<p>At an isolated point this condition is vacuous. No extension of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to an open set and no continuity of <span class="math" data-tex="\(T\)">\(T\)</span> is assumed. We prove the determinant measure identity, the nonnegative change-of-variables formula and the equivalence of scalar integrability on the image with integrability of the Jacobian-weighted pullback. We then transfer the result to any finite-dimensional real normed space with one additive Haar measure used on both source and target.</p>
+<p>Read <a href="euclidean-volume-foundations.html">Cubes, density and changes in volume</a>, GV1–GV5, first. Its geometric arguments and the earlier scalar integration proofs are our prerequisites. Until JC7, measure means completed Lebesgue measure; this allows arbitrary changes on null sets. JC7 explains the interpretation for the Borel measures in the course contract. Put <span class="math" data-tex="\(J(x)=|\det T(x)|\)">\(J(x)=|\det T(x)|\)</span>.</p>
+<h2 id="jc1-relative-continuity-and-a-countable-matrix-cover">JC1. Relative continuity and a countable matrix cover</h2>
+<p>Condition (JC0.1) implies continuity of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span>: sufficiently near <span class="math" data-tex="\(x\)">\(x\)</span>, its increment has norm at most <span class="math" data-tex="\((\|T(x)\|+1)|y-x|_\infty\)">\((\|T(x)\|+1)|y-x|_\infty\)</span>. For the matrix norm used here,</p>
+<span class="math math-display" data-tex="\[
+\max_{i,j}|a_{ij}|\leq\|A\|\leq n\max_{i,j}|a_{ij}|.
+\tag{JC1.1}
+\]">\[
+\max_{i,j}|a_{ij}|\leq\|A\|\leq n\max_{i,j}|a_{ij}|.
+\tag{JC1.1}
+\]</span>
+<p>The first inequality follows by testing coordinate vectors; the second follows by estimating each coordinate of <span class="math" data-tex="\(Av\)">\(Av\)</span> for <span class="math" data-tex="\(|v|_\infty\leq1\)">\(|v|_\infty\leq1\)</span>. Thus rational-entry matrices are dense, and matrix space has a countable basis.</p>
+<p>Let <span class="math" data-tex="\(\zeta(A)&gt;0\)">\(\zeta(A)&gt;0\)</span> be any assigned tolerance for each matrix <span class="math" data-tex="\(A\)">\(A\)</span>. The balls <span class="math" data-tex="\(B(A,\zeta(A)/2)\)">\(B(A,\zeta(A)/2)\)</span> have a countable subfamily covering matrix space. To prove this without an additional covering theorem, use the countable basis: for each basis set contained in one of those balls, select one such ball. Every point lies in a basis neighbourhood contained in a ball of the original cover, and hence in the ball selected for that neighbourhood. Enumerate the resulting centres as <span class="math" data-tex="\(A_j\)">\(A_j\)</span>. No measurability or continuity of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is required.</p>
+<h2 id="jc2-measurable-pieces-with-a-uniform-linear-estimate">JC2. Measurable pieces with a uniform linear estimate</h2>
+<p><strong>Lemma.</strong> Under (JC0.1), for any positive tolerances <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> there is a countable measurable partition <span class="math" data-tex="\(D=\bigcup_\ell D_\ell\)">\(D=\bigcup_\ell D_\ell\)</span>, with each <span class="math" data-tex="\(D_\ell\)">\(D_\ell\)</span> bounded, and matrices <span class="math" data-tex="\(A_\ell\)">\(A_\ell\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\|T(x)-A_\ell\|&amp;\leq\zeta(A_\ell)\quad(x\in D_\ell),\\
+|\phi(y)-\phi(x)-A_\ell(y-x)|_\infty
+&amp;\leq\zeta(A_\ell)|y-x|_\infty\quad(x,y\in D_\ell).
+\end{split}
+\tag{JC2.1}
+\]">\[
+\begin{split}
+\|T(x)-A_\ell\|&amp;\leq\zeta(A_\ell)\quad(x\in D_\ell),\\
+|\phi(y)-\phi(x)-A_\ell(y-x)|_\infty
+&amp;\leq\zeta(A_\ell)|y-x|_\infty\quad(x,y\in D_\ell).
+\end{split}
+\tag{JC2.1}
+\]</span>
+<p>Measurability of <span class="math" data-tex="\(T\)">\(T\)</span> is a conclusion below, not a hypothesis of this lemma.</p>
+<p><em>Proof.</em> Choose the countable centres from JC1. For every such centre <span class="math" data-tex="\(A_j\)">\(A_j\)</span> and every closed coordinate box <span class="math" data-tex="\(Q\)">\(Q\)</span> with rational endpoints, put</p>
+<span class="math math-display" data-tex="\[
+H_{j,Q}=\left\{x\in D\cap Q:
+|\phi(y)-\phi(x)-A_j(y-x)|_\infty
+\leq\zeta(A_j)|y-x|_\infty\ \text{for all }y\in D\cap Q\right\}.
+\tag{JC2.2}
+\]">\[
+H_{j,Q}=\left\{x\in D\cap Q:
+|\phi(y)-\phi(x)-A_j(y-x)|_\infty
+\leq\zeta(A_j)|y-x|_\infty\ \text{for all }y\in D\cap Q\right\}.
+\tag{JC2.2}
+\]</span>
+<p>For each fixed <span class="math" data-tex="\(y\)">\(y\)</span>, this is a closed condition on <span class="math" data-tex="\(x\)">\(x\)</span> relative to <span class="math" data-tex="\(D\)">\(D\)</span>, by continuity of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Intersect these closed conditions and the closed box. Thus <span class="math" data-tex="\(H_{j,Q}\)">\(H_{j,Q}\)</span> is relatively closed in <span class="math" data-tex="\(D\)">\(D\)</span>, measurable, bounded and of finite measure. Define, for the moment only as a set,</p>
+<span class="math math-display" data-tex="\[
+H&#x27;_{j,Q}=\{x\in H_{j,Q}:\|T(x)-A_j\|\leq\zeta(A_j)\}.
+\tag{JC2.3}
+\]">\[
+H&#x27;_{j,Q}=\{x\in H_{j,Q}:\|T(x)-A_j\|\leq\zeta(A_j)\}.
+\tag{JC2.3}
+\]</span>
+<p>These sets cover <span class="math" data-tex="\(D\)">\(D\)</span>. Indeed, at any <span class="math" data-tex="\(x\in D\)">\(x\in D\)</span> choose <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(\|T(x)-A_j\|&lt;\zeta(A_j)/2\)">\(\|T(x)-A_j\|&lt;\zeta(A_j)/2\)</span>. The relative derivative condition gives a neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span> on which its remainder is at most
+<span class="math" data-tex="\((\zeta(A_j)-\|T(x)-A_j\|)|y-x|_\infty\)">\((\zeta(A_j)-\|T(x)-A_j\|)|y-x|_\infty\)</span>. Choose a sufficiently small rational closed box <span class="math" data-tex="\(Q\)">\(Q\)</span> containing <span class="math" data-tex="\(x\)">\(x\)</span> and contained in that neighbourhood; rational density permits this even with <span class="math" data-tex="\(x\)">\(x\)</span> in its interior. The triangle inequality gives the condition (JC2.2), and the derivative bound gives (JC2.3).</p>
+<p>We now prove measurability of <span class="math" data-tex="\(H&#x27;_{j,Q}\)">\(H&#x27;_{j,Q}\)</span>, rather than presume it from the unknown function <span class="math" data-tex="\(T\)">\(T\)</span>. Write <span class="math" data-tex="\(H=H_{j,Q}\)">\(H=H_{j,Q}\)</span>, <span class="math" data-tex="\(A=A_j\)">\(A=A_j\)</span>. At every density point <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, GV3.5 implies that for every fixed vector <span class="math" data-tex="\(v\)">\(v\)</span> there are points <span class="math" data-tex="\(y_h\in H\)">\(y_h\in H\)</span> with
+<span class="math" data-tex="\( (y_h-x)/h\to v\)">\( (y_h-x)/h\to v\)</span> as positive <span class="math" data-tex="\(h\downarrow0\)">\(h\downarrow0\)</span>. Choose points at distance from <span class="math" data-tex="\(x+hv\)">\(x+hv\)</span> no greater than its distance to <span class="math" data-tex="\(H\)">\(H\)</span> plus <span class="math" data-tex="\(h^2\)">\(h^2\)</span>; the case <span class="math" data-tex="\(v=0\)">\(v=0\)</span> is immediate. Apply (JC2.2) to <span class="math" data-tex="\(x,y_h\)">\(x,y_h\)</span>, and use (JC0.1) at <span class="math" data-tex="\(x\)">\(x\)</span>. After division by <span class="math" data-tex="\(h\)">\(h\)</span> and passage to the limit, we obtain</p>
+<span class="math math-display" data-tex="\[
+|(T(x)-A)v|_\infty\leq\zeta(A)|v|_\infty.
+\tag{JC2.4}
+\]">\[
+|(T(x)-A)v|_\infty\leq\zeta(A)|v|_\infty.
+\tag{JC2.4}
+\]</span>
+<p>This holds for every <span class="math" data-tex="\(v\)">\(v\)</span>, so <span class="math" data-tex="\(\|T(x)-A\|\leq\zeta(A)\)">\(\|T(x)-A\|\leq\zeta(A)\)</span>, and <span class="math" data-tex="\(x\in H&#x27;_{j,Q}\)">\(x\in H&#x27;_{j,Q}\)</span>. By GV3.4 almost every point of <span class="math" data-tex="\(H\)">\(H\)</span> is a density point. Therefore <span class="math" data-tex="\(H\setminus H&#x27;_{j,Q}\)">\(H\setminus H&#x27;_{j,Q}\)</span> is a subset of a null set and is measurable for the completed measure. It follows that <span class="math" data-tex="\(H&#x27;_{j,Q}\)">\(H&#x27;_{j,Q}\)</span> is measurable.</p>
+<p>Enumerate the countable covering family <span class="math" data-tex="\(H&#x27;_{j,Q}\)">\(H&#x27;_{j,Q}\)</span>, and subtract from each member the union of its predecessors. The resulting sets form the desired measurable partition. Keep the corresponding matrix centre. Both inequalities (JC2.1) are inherited by subsets, and every piece remains bounded. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="jc3-derivatives-null-sets-and-measurable-images">JC3. Derivatives, null sets and measurable images</h2>
+<p>Apply JC2 for each tolerance <span class="math" data-tex="\(\zeta(A)=2^{-k}\)">\(\zeta(A)=2^{-k}\)</span>. On each piece assign its constant matrix centre, obtaining a countably valued measurable matrix function <span class="math" data-tex="\(T_k\)">\(T_k\)</span>. Formula (JC2.1) gives <span class="math" data-tex="\(\|T_k(x)-T(x)\|\leq2^{-k}\)">\(\|T_k(x)-T(x)\|\leq2^{-k}\)</span>. Every matrix entry of <span class="math" data-tex="\(T\)">\(T\)</span> is therefore a pointwise limit of measurable functions. Hence <span class="math" data-tex="\(T\)">\(T\)</span> and its continuous polynomial <span class="math" data-tex="\(J=|\det T|\)">\(J=|\det T|\)</span> are measurable for the completed measure.</p>
+<p>The possible nonuniqueness of a relative derivative is harmless. At a density point of <span class="math" data-tex="\(D\)">\(D\)</span>, the directional approximation used in JC2 shows that any two relative derivatives agree on every vector, by subtracting their remainder estimates. Thus two choices agree almost everywhere on <span class="math" data-tex="\(D\)">\(D\)</span>. At isolated points or other null exceptional sets they may differ. For example, every linear map is a relative derivative on a singleton, but the integral over that singleton is zero.</p>
+<p>Use JC2 with <span class="math" data-tex="\(\zeta(A)=1\)">\(\zeta(A)=1\)</span>. On its <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th piece,</p>
+<span class="math math-display" data-tex="\[
+|\phi(y)-\phi(x)|_\infty\leq(1+\|A_\ell\|)|y-x|_\infty.
+\tag{JC3.1}
+\]">\[
+|\phi(y)-\phi(x)|_\infty\leq(1+\|A_\ell\|)|y-x|_\infty.
+\tag{JC3.1}
+\]</span>
+<p>Thus the domain has been partitioned into measurable pieces on which the map is Lipschitz. If <span class="math" data-tex="\(E\subseteq D\)">\(E\subseteq D\)</span> is measurable, each <span class="math" data-tex="\(E\cap D_\ell\)">\(E\cap D_\ell\)</span> is measurable and has measurable image by GV2. Their countable union is <span class="math" data-tex="\(\phi(E)\)">\(\phi(E)\)</span>, which is therefore measurable. If <span class="math" data-tex="\(E\)">\(E\)</span> is null, each of these images is null by GV2.1, so <span class="math" data-tex="\(\phi(E)\)">\(\phi(E)\)</span> is null as well. These conclusions hold even without injectivity.</p>
+<h2 id="jc4-the-determinant-measure-identity">JC4. The determinant measure identity</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is injective and satisfies (JC0.1), then for every measurable <span class="math" data-tex="\(E\subseteq D\)">\(E\subseteq D\)</span>,</p>
+<span class="math math-display" data-tex="\[
+m(\phi(E))=\int_E J(x)\,dx.
+\tag{JC4.1}
+\]">\[
+m(\phi(E))=\int_E J(x)\,dx.
+\tag{JC4.1}
+\]</span>
+<p>Either side may be infinite.</p>
+<p><em>Proof.</em> First let <span class="math" data-tex="\(D\)">\(D\)</span> be bounded. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, use JC2 with <span class="math" data-tex="\(\zeta(A)=\delta(A,\varepsilon)\)">\(\zeta(A)=\delta(A,\varepsilon)\)</span> from GV5, and put <span class="math" data-tex="\(J_\ell=|\det A_\ell|\)">\(J_\ell=|\det A_\ell|\)</span>. On the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th piece, GV5 and (JC2.1) give</p>
+<span class="math math-display" data-tex="\[
+|J(x)-J_\ell|\leq\varepsilon,\qquad
+|m(\phi(D_\ell))-J_\ell m(D_\ell)|\leq\varepsilon m(D_\ell).
+\tag{JC4.2}
+\]">\[
+|J(x)-J_\ell|\leq\varepsilon,\qquad
+|m(\phi(D_\ell))-J_\ell m(D_\ell)|\leq\varepsilon m(D_\ell).
+\tag{JC4.2}
+\]</span>
+<p>All terms for an individual piece are finite: the piece is bounded, the derivative determinant is bounded there by <span class="math" data-tex="\(J_\ell+\varepsilon\)">\(J_\ell+\varepsilon\)</span>, and its image is Lipschitz and bounded. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+m(\phi(D_\ell))&amp;\leq\int_{D_\ell}J+2\varepsilon m(D_\ell),\\
+\int_{D_\ell}J&amp;\leq m(\phi(D_\ell))+2\varepsilon m(D_\ell).
+\end{split}
+\tag{JC4.3}
+\]">\[
+\begin{split}
+m(\phi(D_\ell))&amp;\leq\int_{D_\ell}J+2\varepsilon m(D_\ell),\\
+\int_{D_\ell}J&amp;\leq m(\phi(D_\ell))+2\varepsilon m(D_\ell).
+\end{split}
+\tag{JC4.3}
+\]</span>
+<p>The images are measurable by JC3 and disjoint by injectivity. Sum the two inequalities, using countable additivity and monotone convergence:</p>
+<span class="math math-display" data-tex="\[
+m(\phi(D))\leq\int_DJ+2\varepsilon m(D),\qquad
+\int_DJ\leq m(\phi(D))+2\varepsilon m(D).
+\tag{JC4.4}
+\]">\[
+m(\phi(D))\leq\int_DJ+2\varepsilon m(D),\qquad
+\int_DJ\leq m(\phi(D))+2\varepsilon m(D).
+\tag{JC4.4}
+\]</span>
+<p>Since <span class="math" data-tex="\(m(D)&lt;\infty\)">\(m(D)&lt;\infty\)</span>, these inequalities rule out either side being infinite while the other is finite. If both are infinite they are equal; otherwise let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Thus (JC4.1) holds for bounded <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>For arbitrary <span class="math" data-tex="\(D\)">\(D\)</span>, restrict to <span class="math" data-tex="\(D\cap[-k,k]^n\)">\(D\cap[-k,k]^n\)</span>. These sets and their images increase to <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(\phi(D)\)">\(\phi(D)\)</span>. Continuity from below and monotone convergence prove (JC4.1) for <span class="math" data-tex="\(E=D\)">\(E=D\)</span>. Finally, restriction to any measurable <span class="math" data-tex="\(E\subseteq D\)">\(E\subseteq D\)</span> preserves relative differentiability with the same specified matrices, so the result applies to <span class="math" data-tex="\(\phi|_E\)">\(\phi|_E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="jc5-the-nonnegative-formula-and-measurability-of-the-weighted-pullback">JC5. The nonnegative formula and measurability of the weighted pullback</h2>
+<p>Set <span class="math" data-tex="\(D_+=\{x\in D:J(x)&gt;0\}\)">\(D_+=\{x\in D:J(x)&gt;0\}\)</span> and <span class="math" data-tex="\(D_0=\{x\in D:J(x)=0\}\)">\(D_0=\{x\in D:J(x)=0\}\)</span>. By JC4,</p>
+<span class="math math-display" data-tex="\[
+m(\phi(D_0))=0.
+\tag{JC5.1}
+\]">\[
+m(\phi(D_0))=0.
+\tag{JC5.1}
+\]</span>
+<p>For a function <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(\phi(D)\)">\(\phi(D)\)</span>, define its weighted pullback to be <span class="math" data-tex="\(J(x)g(\phi(x))\)">\(J(x)g(\phi(x))\)</span> on <span class="math" data-tex="\(D_+\)">\(D_+\)</span>, and zero on <span class="math" data-tex="\(D_0\)">\(D_0\)</span>. This convention also applies to nonnegative extended-valued <span class="math" data-tex="\(g\)">\(g\)</span>, so <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>.</p>
+<p>We first check measurability for indicator functions, including completed-measurable target sets. Let <span class="math" data-tex="\(F\subseteq\phi(D)\)">\(F\subseteq\phi(D)\)</span> be measurable. By the definition of completion there are Borel sets <span class="math" data-tex="\(B,Z\subseteq\mathbb R^n\)">\(B,Z\subseteq\mathbb R^n\)</span>, with <span class="math" data-tex="\(m(Z)=0\)">\(m(Z)=0\)</span>, such that <span class="math" data-tex="\(F\mathbin{\triangle}B\subseteq Z\)">\(F\mathbin{\triangle}B\subseteq Z\)</span>. The preimage of a Borel set is measurable, since <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is continuous relative to its measurable domain. Put <span class="math" data-tex="\(N=D_+\cap\phi^{-1}(Z)\)">\(N=D_+\cap\phi^{-1}(Z)\)</span>. It is measurable, and
+<span class="math" data-tex="\(\int_NJ=m(\phi(N))\leq m(Z)=0\)">\(\int_NJ=m(\phi(N))\leq m(Z)=0\)</span> by JC4. On <span class="math" data-tex="\(N\cap\{J\geq1/k\}\)">\(N\cap\{J\geq1/k\}\)</span> this bounds its measure by zero, so <span class="math" data-tex="\(m(N)=0\)">\(m(N)=0\)</span>. Thus
+<span class="math" data-tex="\(D_+\cap\phi^{-1}(F)\)">\(D_+\cap\phi^{-1}(F)\)</span> differs from <span class="math" data-tex="\(D_+\cap\phi^{-1}(B)\)">\(D_+\cap\phi^{-1}(B)\)</span> by a subset of a measurable null set, and is measurable. The weighted indicator is consequently measurable. It agrees almost everywhere with <span class="math" data-tex="\(J1_{\phi^{-1}(B)}\)">\(J1_{\phi^{-1}(B)}\)</span>, and JC4 gives</p>
+<span class="math math-display" data-tex="\[
+\int_D J(x)1_F(\phi(x))\,dx=m(F).
+\tag{JC5.2}
+\]">\[
+\int_D J(x)1_F(\phi(x))\,dx=m(F).
+\tag{JC5.2}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(\phi(\phi^{-1}(B))=B\cap\phi(D)\)">\(\phi(\phi^{-1}(B))=B\cap\phi(D)\)</span>, which agrees with <span class="math" data-tex="\(F\)">\(F\)</span> off <span class="math" data-tex="\(Z\)">\(Z\)</span>. This reasoning uses equality almost everywhere and does not subtract possibly infinite measures.</p>
+<p>Nonnegative simple functions now satisfy the formula by additivity. Increasing simple approximations and monotone convergence on both spaces prove, for every nonnegative measurable <span class="math" data-tex="\(g\)">\(g\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_{\phi(D)}g(y)\,dy
+=\int_D J(x)g(\phi(x))\,dx.
+\tag{JC5.3}
+\]">\[
+\int_{\phi(D)}g(y)\,dy
+=\int_D J(x)g(\phi(x))\,dx.
+\tag{JC5.3}
+\]</span>
+<p>They also prove measurability of the weighted pullback. No finiteness assumption is needed for (JC5.3).</p>
+<p>There is a converse measurability assertion. If <span class="math" data-tex="\(h=J(g\circ\phi)\)">\(h=J(g\circ\phi)\)</span> is measurable, then <span class="math" data-tex="\(h/J=g\circ\phi\)">\(h/J=g\circ\phi\)</span> is measurable on <span class="math" data-tex="\(D_+\)">\(D_+\)</span>. For every real <span class="math" data-tex="\(a\)">\(a\)</span>, the superlevel set of <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(\phi(D_+)\)">\(\phi(D_+)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\phi\{x\in D_+:h(x)/J(x)&gt;a\},
+\tag{JC5.4}
+\]">\[
+\phi\{x\in D_+:h(x)/J(x)&gt;a\},
+\tag{JC5.4}
+\]</span>
+<p>which is measurable by JC3. The rest of the superlevel set lies in the null set <span class="math" data-tex="\(\phi(D_0)\)">\(\phi(D_0)\)</span>, so is measurable by completeness. Hence <span class="math" data-tex="\(g\)">\(g\)</span> is measurable. For real or complex <span class="math" data-tex="\(h,g\)">\(h,g\)</span>, apply the same reasoning to real and imaginary parts. Forward measurability for these scalars follows by applying the indicator and simple-approximation argument to their positive and negative real components. Thus measurability on the image is equivalent to measurability of the weighted pullback, with the stated zero convention.</p>
+<h2 id="jc6-scalar-integrability-in-both-directions">JC6. Scalar integrability in both directions</h2>
+<p><strong>Theorem.</strong> For a real or complex function <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(\phi(D)\)">\(\phi(D)\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(g\)">\(g\)</span> is integrable on <span class="math" data-tex="\(\phi(D)\)">\(\phi(D)\)</span>.</li>
+<li>Its weighted pullback <span class="math" data-tex="\(h=J(g\circ\phi)\)">\(h=J(g\circ\phi)\)</span>, set to zero where <span class="math" data-tex="\(J=0\)">\(J=0\)</span>, is integrable on <span class="math" data-tex="\(D\)">\(D\)</span>.</li>
+</ol>
+<p>When these conditions hold,</p>
+<span class="math math-display" data-tex="\[
+\int_{\phi(D)}g(y)\,dy
+=\int_D J(x)g(\phi(x))\,dx,
+\qquad
+\int_{\phi(D)}|g(y)|\,dy=\int_D|h(x)|\,dx.
+\tag{JC6.1}
+\]">\[
+\int_{\phi(D)}g(y)\,dy
+=\int_D J(x)g(\phi(x))\,dx,
+\qquad
+\int_{\phi(D)}|g(y)|\,dy=\int_D|h(x)|\,dx.
+\tag{JC6.1}
+\]</span>
+<p><em>Proof.</em> JC5 gives measurability in both directions. Apply (JC5.3) to <span class="math" data-tex="\(|g|\)">\(|g|\)</span>; its weighted pullback is exactly <span class="math" data-tex="\(|h|\)">\(|h|\)</span>. Equality of the two nonnegative integrals proves finiteness in one space if and only if there is finiteness in the other. Once this holds, apply (JC5.3) separately to the positive and negative parts of the real and imaginary parts and combine by scalar linearity. This proves (JC6.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A function defined only almost everywhere on the image may be assigned arbitrary finite values on its exceptional target null set. The proof in JC5 shows that the preimage of that set inside <span class="math" data-tex="\(D_+\)">\(D_+\)</span> is null; on <span class="math" data-tex="\(D_0\)">\(D_0\)</span> the weighted pullback is already zero. Hence neither integral depends on the extension. This supplies precisely the almost-everywhere measurable formulation used by the scalar integration contract.</p>
+<h2 id="jc7-borel-measures-other-norms-and-additive-haar-measure">JC7. Borel measures, other norms and additive Haar measure</h2>
+<p>The theorem has been proved for completed Lebesgue measure, so in particular it applies to Borel source sets. Integrals for the underlying Borel measure use almost-everywhere measurable representatives and have the same values: completed-measurable real or complex functions have Borel-measurable representatives, by the simple-function replacement proof in PI3. Replacing countably many simple level sets by Borel sets changes them only on a Borel null set; taking the pointwise limit gives the representative. Nonnegative extended functions are handled in the same way. Thus the completed formulation establishes the scalar integral identities and integrability equivalence in the Borel-measure convention as well. We have not assumed a separate theorem about Borel images of Borel injections.</p>
+<p>Let now <span class="math" data-tex="\(V\)">\(V\)</span> be a real normed space of finite dimension <span class="math" data-tex="\(n\)">\(n\)</span>, with a chosen basis <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span> and coordinate map <span class="math" data-tex="\(L:\mathbb R^n\to V\)">\(L:\mathbb R^n\to V\)</span>. Its norm is equivalent to the coordinate maximum norm. The upper bound is
+<span class="math" data-tex="\(\|Lx\|\leq(\sum_i\|e_i\|)|x|_\infty\)">\(\|Lx\|\leq(\sum_i\|e_i\|)|x|_\infty\)</span>. For the lower bound, if unit vectors for <span class="math" data-tex="\(|\cdot|_\infty\)">\(|\cdot|_\infty\)</span> could have <span class="math" data-tex="\(\|Lx\|\to0\)">\(\|Lx\|\to0\)</span>, coordinate compactness from GV1 would give a subsequence converging to <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(|x|_\infty=1\)">\(|x|_\infty=1\)</span>. The upper bound gives continuity of <span class="math" data-tex="\(L\)">\(L\)</span>, so <span class="math" data-tex="\(\|Lx\|=0\)">\(\|Lx\|=0\)</span>, contradicting linear independence of the basis. This proves a positive lower bound. Relative differentiability and continuity are therefore unchanged by passing to coordinates. At <span class="math" data-tex="\(\xi\in L^{-1}(D)\)">\(\xi\in L^{-1}(D)\)</span>, the derivative of <span class="math" data-tex="\(L^{-1}\phi L\)">\(L^{-1}\phi L\)</span> is <span class="math" data-tex="\(L^{-1}T(L\xi)L\)">\(L^{-1}T(L\xi)L\)</span>. Its determinant is the determinant of <span class="math" data-tex="\(T(L\xi)\)">\(T(L\xi)\)</span>, independently of the basis, by the determinant multiplicativity proved in GV4.</p>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a nonzero additive Haar measure on <span class="math" data-tex="\(V\)">\(V\)</span>. Its coordinate measure <span class="math" data-tex="\(\nu(E)=\mu(LE)\)">\(\nu(E)=\mu(LE)\)</span> is translation invariant and finite on compact sets. We prove that <span class="math" data-tex="\(\nu=c\,m\)">\(\nu=c\,m\)</span> for some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, rather than import uniqueness of Haar measure. Put <span class="math" data-tex="\(c=\nu([0,1)^n)\)">\(c=\nu([0,1)^n)\)</span>, which is finite because its closure is compact. It is positive: if it were zero, countably many integer translates would give zero measure to all of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, contradicting nonzero <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>Partition the unit half-open cube into <span class="math" data-tex="\(q^n\)">\(q^n\)</span> translates of a half-open cube of side <span class="math" data-tex="\(1/q\)">\(1/q\)</span>. Translation invariance and finite additivity give each the measure <span class="math" data-tex="\(c/q^n\)">\(c/q^n\)</span>. Tiling a rectangle with rational side lengths by such cubes gives <span class="math" data-tex="\(c\)">\(c\)</span> times its volume; translating proves the same for rational-endpoint half-open boxes. These boxes generate the Borel sigma-algebra, and <span class="math" data-tex="\([-k,k)^n\)">\([-k,k)^n\)</span> gives a common finite-measure exhaustion. The already proved measure-uniqueness lemma PI1 gives <span class="math" data-tex="\(\nu=c\,m\)">\(\nu=c\,m\)</span> on Borel sets and hence on their completions.</p>
+<p>Multiply both sides of the Euclidean identities JC4–JC6 by <span class="math" data-tex="\(c\)">\(c\)</span>, and transport them by <span class="math" data-tex="\(L\)">\(L\)</span>. This proves the same identities, with the absolute derivative determinant, for <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>. Both the source and target use this same Haar measure. In dimension zero the only space is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>; the source is empty or that singleton, the nonempty injective map is the identity, and the empty determinant is one. Every claimed identity then follows directly from the mass of the singleton.</p>
+<h2 id="jc8-the-declared-course-interface">JC8. The declared course interface</h2>
+<p>The theorem applies to every Borel source set in the finite-dimensional real normed-space contract, with pointwise relative differentiability, injectivity, an arbitrary specified derivative, and additive Haar measure. It includes nonnegative extended integrals and the two-way scalar integrability statement. In dimension one the determinant is the scalar derivative, so its absolute value is the full-line measure factor. The earlier PI5 proves translations, reflections and dilations directly. PI6 proves the polar identity on positive radii and angles between <span class="math" data-tex="\(-\pi\)">\(-\pi\)</span> and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, with determinant <span class="math" data-tex="\(r\)">\(r\)</span>, and proves its omitted ray null. The orientation-sensitive finite substitution is separately proved in FT5.</p>
+<p>The free human reference is <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap26.pdf">D. H. Fremlin, <em>Measure Theory</em>, Chapter 26</a>, especially 262M–262P and 263C–263D. Those passages explain the measurable decomposition and relative-differentiability theorem. The written programme route here includes the needed density, volume, measurability and integration arguments, including the singular determinant and completed-measure cases. It does not import an unproved covering theorem, a source citation as a proof, or a C1 restriction in place of the declared hypothesis. Completing this scalar prerequisite alone does not certify the full modular course.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

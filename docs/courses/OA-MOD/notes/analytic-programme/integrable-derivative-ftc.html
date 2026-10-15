@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The fundamental theorem for an integrable derivative · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+<style data-coercivity-accessibility="20261015">body{overflow-wrap:anywhere}main,article{min-width:0}.math{display:inline-block;max-width:100%;box-sizing:border-box;overflow-x:auto;overflow-y:hidden;vertical-align:middle}.math-display{display:block}img{max-width:100%;height:auto}</style></head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this note"><p>Original authorship and review status are stated below. Existing programme proof text, integrated with its dependencies.</p></aside>
+<article class="lesson">
+<h1 id="the-fundamental-theorem-for-an-integrable-derivative">The fundamental theorem for an integrable derivative</h1>
+<p><em>Written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, 4 October 2026. Original exposition is CC0. Independent review remains separate.</em></p>
+<p>Suppose that <span class="math" data-tex="\(F:[a,b]\to\mathbb C\)">\(F:[a,b]\to\mathbb C\)</span> is continuous, differentiable at every point of <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, and that <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> is Lebesgue integrable. We will prove</p>
+<span class="math math-display" data-tex="\[
+F(b)-F(a)=\int_a^b F&#x27;(x)\,dx.
+\tag{FT0.1}
+\]">\[
+F(b)-F(a)=\int_a^b F&#x27;(x)\,dx.
+\tag{FT0.1}
+\]</span>
+<p>The derivative need not be continuous or bounded. Differentiability merely almost everywhere would not suffice, as the last example shows.</p>
+<p>Our measure prerequisites are the written proofs in <a href="scalar-integration-programme.html">Scalar measure and integration</a>: its Section 0 proves compact-interval compactness and extrema; Section 1 constructs Lebesgue measure from open interval covers; Section 2 constructs scalar integrals and proves monotone and dominated convergence. We prove the approximation and comparison steps needed here rather than assume a general differentiation theorem for integrals. All intervals below are finite unless stated otherwise, and integrals ignore endpoint values.</p>
+<h2 id="ft1-small-sets-and-open-supersets">FT1. Small sets and open supersets</h2>
+<p><strong>Small-set bound.</strong> If <span class="math" data-tex="\(h\)">\(h\)</span> is integrable on <span class="math" data-tex="\(I=[a,b]\)">\(I=[a,b]\)</span>, then for each <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+m(E)&lt;\delta\quad\Longrightarrow\quad
+\int_E|h|&lt;\varepsilon
+\tag{FT1.1}
+\]">\[
+m(E)&lt;\delta\quad\Longrightarrow\quad
+\int_E|h|&lt;\varepsilon
+\tag{FT1.1}
+\]</span>
+<p>for every measurable <span class="math" data-tex="\(E\subseteq I\)">\(E\subseteq I\)</span>.</p>
+<p><em>Proof.</em> By dominated convergence, <span class="math" data-tex="\(\int_I |h|1_{\{|h|&gt;M\}}\to0\)">\(\int_I |h|1_{\{|h|&gt;M\}}\to0\)</span> as <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>. Choose <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span> making this integral less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>, and choose <span class="math" data-tex="\(\delta=\varepsilon/(2M)\)">\(\delta=\varepsilon/(2M)\)</span>. Splitting <span class="math" data-tex="\(E\)">\(E\)</span> according to whether <span class="math" data-tex="\(|h|\leq M\)">\(|h|\leq M\)</span> gives
+<span class="math" data-tex="\(\int_E|h|\leq M m(E)+\int_I|h|1_{\{|h|&gt;M\}}&lt;\varepsilon\)">\(\int_E|h|\leq M m(E)+\int_I|h|1_{\{|h|&gt;M\}}&lt;\varepsilon\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently <span class="math" data-tex="\(H(x)=\int_a^x h(t)\,dt\)">\(H(x)=\int_a^x h(t)\,dt\)</span> is continuous on <span class="math" data-tex="\(I\)">\(I\)</span>, since
+<span class="math" data-tex="\( |H(y)-H(x)|\leq\int_{[x,y]}|h|\)">\( |H(y)-H(x)|\leq\int_{[x,y]}|h|\)</span> for <span class="math" data-tex="\(x\leq y\)">\(x\leq y\)</span>. This conclusion uses no assertion about the derivative of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Open approximation.</strong> If <span class="math" data-tex="\(E\subseteq I\)">\(E\subseteq I\)</span> is Lebesgue measurable and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, there is an open set <span class="math" data-tex="\(O\subseteq\mathbb R\)">\(O\subseteq\mathbb R\)</span> containing every point of <span class="math" data-tex="\(E\)">\(E\)</span> such that <span class="math" data-tex="\(m(O\setminus E)&lt;\eta\)">\(m(O\setminus E)&lt;\eta\)</span>.</p>
+<p><em>Proof.</em> The interval-cover definition of Lebesgue outer measure supplies countably many open intervals covering <span class="math" data-tex="\(E\)">\(E\)</span>, whose total length is less than <span class="math" data-tex="\(m(E)+\eta\)">\(m(E)+\eta\)</span>. Their union <span class="math" data-tex="\(O\)">\(O\)</span> is open and has measure at most that sum, by countable subadditivity and the interval-length formula. Since <span class="math" data-tex="\(E\)">\(E\)</span> is measurable and has finite measure, <span class="math" data-tex="\(m(O\setminus E)=m(O)-m(E)&lt;\eta\)">\(m(O\setminus E)=m(O)-m(E)&lt;\eta\)</span>. The same argument works for the completion of Borel measure because a Lebesgue-measurable set has its outer measure as its measure. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="ft2-a-pointwise-lower-semicontinuous-majorant">FT2. A pointwise lower-semicontinuous majorant</h2>
+<p>A function <span class="math" data-tex="\(g:I\to(-\infty,\infty]\)">\(g:I\to(-\infty,\infty]\)</span> is lower semicontinuous if <span class="math" data-tex="\(\{x:g(x)&gt;c\}\)">\(\{x:g(x)&gt;c\}\)</span> is relatively open for every real <span class="math" data-tex="\(c\)">\(c\)</span>. Such a function is measurable. Values <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> are allowed on a null set; an integrable such function means that its almost-everywhere finite representative is integrable.</p>
+<p><strong>Lemma.</strong> For every finite-valued integrable real function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(I=[a,b]\)">\(I=[a,b]\)</span>, <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>, and every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a lower-semicontinuous function <span class="math" data-tex="\(g\)">\(g\)</span>, bounded below, such that</p>
+<span class="math math-display" data-tex="\[
+g(x)\geq f(x)\quad(x\in I),\qquad
+\int_I|g|&lt;\infty,\qquad
+\int_I g&lt;\int_I f+\varepsilon.
+\tag{FT2.1}
+\]">\[
+g(x)\geq f(x)\quad(x\in I),\qquad
+\int_I|g|&lt;\infty,\qquad
+\int_I g&lt;\int_I f+\varepsilon.
+\tag{FT2.1}
+\]</span>
+<p>The first inequality is pointwise, including on every null exceptional set of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><em>Proof for <span class="math" data-tex="\(f=h\geq0\)">\(f=h\geq0\)</span>.</em> Choose <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> so small that <span class="math" data-tex="\(d(b-a)&lt;\varepsilon/2\)">\(d(b-a)&lt;\varepsilon/2\)</span>. For each integer <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+E_k=\{x\in I:h(x)&gt;kd\}.
+\tag{FT2.2}
+\]">\[
+E_k=\{x\in I:h(x)&gt;kd\}.
+\tag{FT2.2}
+\]</span>
+<p>By FT1 choose open <span class="math" data-tex="\(O_k\supseteq E_k\)">\(O_k\supseteq E_k\)</span> with
+<span class="math" data-tex="\(m(O_k\setminus E_k)&lt;\varepsilon 2^{-k-2}/d\)">\(m(O_k\setminus E_k)&lt;\varepsilon 2^{-k-2}/d\)</span>. On <span class="math" data-tex="\(I\)">\(I\)</span> put</p>
+<span class="math math-display" data-tex="\[
+q(x)=d\sum_{k=0}^{\infty}1_{E_k}(x),\qquad
+g(x)=d\sum_{k=0}^{\infty}1_{O_k}(x).
+\tag{FT2.3}
+\]">\[
+q(x)=d\sum_{k=0}^{\infty}1_{E_k}(x),\qquad
+g(x)=d\sum_{k=0}^{\infty}1_{O_k}(x).
+\tag{FT2.3}
+\]</span>
+<p>For a finite nonnegative number <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span>, counting the multiples <span class="math" data-tex="\(kd&lt;h(x)\)">\(kd&lt;h(x)\)</span> shows
+<span class="math" data-tex="\(h(x)\leq q(x)&lt;h(x)+d\)">\(h(x)\leq q(x)&lt;h(x)+d\)</span>; this also holds when <span class="math" data-tex="\(h(x)=0\)">\(h(x)=0\)</span>. Therefore <span class="math" data-tex="\(g\geq q\geq h\)">\(g\geq q\geq h\)</span> at every point. Each <span class="math" data-tex="\(1_{O_k}\)">\(1_{O_k}\)</span> is lower semicontinuous. A finite sum of such nonnegative functions is lower semicontinuous: if its value exceeds a number, finitely many strict lower bounds at that point, valid on a common neighbourhood, already make the sum exceed that number. The supremum of the increasing partial sums is lower semicontinuous because its strict superlevel set is the union of their strict superlevel sets. Thus <span class="math" data-tex="\(g\)">\(g\)</span> is lower semicontinuous.</p>
+<p>Monotone convergence and <span class="math" data-tex="\(O_k\supseteq E_k\)">\(O_k\supseteq E_k\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_I g
+&amp;=d\sum_{k=0}^{\infty}m(I\cap O_k)\\
+&amp;\leq d\sum_{k=0}^{\infty}m(E_k)
++d\sum_{k=0}^{\infty}m(O_k\setminus E_k)\\
+&amp;&lt;\int_I q+\frac{\varepsilon}{2}
+\leq\int_I h+d(b-a)+\frac{\varepsilon}{2}
+&lt;\int_I h+\varepsilon.
+\end{aligned}
+\tag{FT2.4}
+\]">\[
+\begin{aligned}
+\int_I g
+&amp;=d\sum_{k=0}^{\infty}m(I\cap O_k)\\
+&amp;\leq d\sum_{k=0}^{\infty}m(E_k)
++d\sum_{k=0}^{\infty}m(O_k\setminus E_k)\\
+&amp;&lt;\int_I q+\frac{\varepsilon}{2}
+\leq\int_I h+d(b-a)+\frac{\varepsilon}{2}
+&lt;\int_I h+\varepsilon.
+\end{aligned}
+\tag{FT2.4}
+\]</span>
+<p>In particular <span class="math" data-tex="\(g\)">\(g\)</span> is integrable and finite almost everywhere. Its possible infinite point values will be retained for the pointwise comparison.</p>
+<p><em>Reduction of a signed <span class="math" data-tex="\(f\)">\(f\)</span> to this case.</em> Put <span class="math" data-tex="\(f_N=\max(f,-N)\)">\(f_N=\max(f,-N)\)</span>. Then <span class="math" data-tex="\(0\leq f_N-f\leq |f|\)">\(0\leq f_N-f\leq |f|\)</span>, and <span class="math" data-tex="\(f_N-f\to0\)">\(f_N-f\to0\)</span> pointwise. Dominated convergence gives <span class="math" data-tex="\(\int_I(f_N-f)\to0\)">\(\int_I(f_N-f)\to0\)</span>. Choose <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span> for which this integral is less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. The function <span class="math" data-tex="\(h=f_N+N\)">\(h=f_N+N\)</span> is finite, nonnegative and integrable. Apply the nonnegative case with error <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> to obtain <span class="math" data-tex="\(g_0\)">\(g_0\)</span>. Set <span class="math" data-tex="\(g=g_0-N\)">\(g=g_0-N\)</span>. It is lower semicontinuous, bounded below by <span class="math" data-tex="\(-N\)">\(-N\)</span>, and satisfies <span class="math" data-tex="\(g\geq f_N\geq f\)">\(g\geq f_N\geq f\)</span>. It is integrable since <span class="math" data-tex="\(|g|\leq g_0+N\)">\(|g|\leq g_0+N\)</span> on the finite interval. Its integral is less than <span class="math" data-tex="\(\int_I f_N+\varepsilon/2&lt;\int_I f+\varepsilon\)">\(\int_I f_N+\varepsilon/2&lt;\int_I f+\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="ft3-comparing-an-increment-with-an-integral">FT3. Comparing an increment with an integral</h2>
+<p><strong>Lemma.</strong> Let <span class="math" data-tex="\(F:[a,b]\to\mathbb R\)">\(F:[a,b]\to\mathbb R\)</span> be continuous. Suppose its finite right derivative <span class="math" data-tex="\(D_+F(x)\)">\(D_+F(x)\)</span> exists at every <span class="math" data-tex="\(x\in(a,b)\)">\(x\in(a,b)\)</span>. If a finite-valued integrable <span class="math" data-tex="\(f\)">\(f\)</span> satisfies <span class="math" data-tex="\(D_+F(x)\leq f(x)\)">\(D_+F(x)\leq f(x)\)</span> at every such <span class="math" data-tex="\(x\)">\(x\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+F(b)-F(a)\leq\int_a^b f(x)\,dx.
+\tag{FT3.1}
+\]">\[
+F(b)-F(a)\leq\int_a^b f(x)\,dx.
+\tag{FT3.1}
+\]</span>
+<p>No derivative is required at either endpoint.</p>
+<p><em>Proof.</em> Choose the majorant <span class="math" data-tex="\(g\)">\(g\)</span> from FT2 with error <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and put <span class="math" data-tex="\(G(x)=\int_a^x g(t)\,dt\)">\(G(x)=\int_a^x g(t)\,dt\)</span>. By FT1 this is a continuous real function even if the chosen representative of <span class="math" data-tex="\(g\)">\(g\)</span> has infinite values at some points. Fix <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+H(x)=F(x)-G(x)-\tau x.
+\tag{FT3.2}
+\]">\[
+H(x)=F(x)-G(x)-\tau x.
+\tag{FT3.2}
+\]</span>
+<p>We claim <span class="math" data-tex="\(H(v)\leq H(u)\)">\(H(v)\leq H(u)\)</span> whenever <span class="math" data-tex="\(a&lt;u&lt;v&lt;b\)">\(a&lt;u&lt;v&lt;b\)</span>. If instead <span class="math" data-tex="\(H(v)&gt;H(u)\)">\(H(v)&gt;H(u)\)</span>, continuity on <span class="math" data-tex="\([u,v]\)">\([u,v]\)</span> gives a minimum at some <span class="math" data-tex="\(c\in[u,v)\)">\(c\in[u,v)\)</span>. In particular <span class="math" data-tex="\(a&lt;c&lt;b\)">\(a&lt;c&lt;b\)</span>, so the right derivative <span class="math" data-tex="\(d_c=D_+F(c)\)">\(d_c=D_+F(c)\)</span> exists. Choose <span class="math" data-tex="\(q=d_c-\tau/4\)">\(q=d_c-\tau/4\)</span>. Since <span class="math" data-tex="\(g(c)\geq f(c)\geq d_c&gt;q\)">\(g(c)\geq f(c)\geq d_c&gt;q\)</span>, lower semicontinuity gives <span class="math" data-tex="\(g(t)&gt;q\)">\(g(t)&gt;q\)</span> on a neighbourhood of <span class="math" data-tex="\(c\)">\(c\)</span>, including a sufficiently short right interval. This remains valid if <span class="math" data-tex="\(g(c)=+\infty\)">\(g(c)=+\infty\)</span>.</p>
+<p>The definition of the right derivative gives, for sufficiently small <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+F(c+h)-F(c)\leq(d_c+\tau/4)h.
+\tag{FT3.3}
+\]">\[
+F(c+h)-F(c)\leq(d_c+\tau/4)h.
+\tag{FT3.3}
+\]</span>
+<p>Choose such an <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(c+h\leq v\)">\(c+h\leq v\)</span> and with <span class="math" data-tex="\([c,c+h]\)">\([c,c+h]\)</span> in the neighbourhood just chosen. Integral monotonicity gives <span class="math" data-tex="\(G(c+h)-G(c)\geq qh\)">\(G(c+h)-G(c)\geq qh\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+H(c+h)-H(c)
+\leq(d_c+\tau/4-q-\tau)h=-\frac{\tau h}{2}&lt;0,
+\tag{FT3.4}
+\]">\[
+H(c+h)-H(c)
+\leq(d_c+\tau/4-q-\tau)h=-\frac{\tau h}{2}&lt;0,
+\tag{FT3.4}
+\]</span>
+<p>contrary to the minimum property. This proves the claim. Let <span class="math" data-tex="\(u\downarrow a\)">\(u\downarrow a\)</span>, <span class="math" data-tex="\(v\uparrow b\)">\(v\uparrow b\)</span>, using continuity, to get</p>
+<span class="math math-display" data-tex="\[
+F(b)-F(a)\leq\int_a^b g+\tau(b-a)
+&lt;\int_a^b f+\varepsilon+\tau(b-a).
+\tag{FT3.5}
+\]">\[
+F(b)-F(a)\leq\int_a^b g+\tau(b-a)
+&lt;\int_a^b f+\varepsilon+\tau(b-a).
+\tag{FT3.5}
+\]</span>
+<p>Since <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> are arbitrary positive numbers, (FT3.1) follows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The pointwise majorization in FT2 is essential to this proof: the minimizing point <span class="math" data-tex="\(c\)">\(c\)</span> cannot be chosen to avoid an unspecified null exceptional set.</p>
+<h2 id="ft4-the-real-and-complex-fundamental-theorem">FT4. The real and complex fundamental theorem</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(F:[a,b]\to\mathbb R\)">\(F:[a,b]\to\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> is continuous, differentiable at every interior point, and has integrable derivative, then</p>
+<span class="math math-display" data-tex="\[
+\int_a^b F&#x27;(x)\,dx=F(b)-F(a).
+\tag{FT4.1}
+\]">\[
+\int_a^b F&#x27;(x)\,dx=F(b)-F(a).
+\tag{FT4.1}
+\]</span>
+<p>The same statement holds for a finite right derivative at every interior point. It holds on every closed subinterval as well. In particular <span class="math" data-tex="\(F\)">\(F\)</span> is absolutely continuous: for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that any finite family of intervals with disjoint interiors and total length less than <span class="math" data-tex="\(\delta\)">\(\delta\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\sum_j|F(v_j)-F(u_j)|&lt;\varepsilon.
+\tag{FT4.2}
+\]">\[
+\sum_j|F(v_j)-F(u_j)|&lt;\varepsilon.
+\tag{FT4.2}
+\]</span>
+<p><em>Proof.</em> Assign arbitrary finite values to the derivative at the two endpoints. In the real case, FT3 applied to <span class="math" data-tex="\(F\)">\(F\)</span>, then to <span class="math" data-tex="\(-F\)">\(-F\)</span>, with their respective integrable derivatives gives both inequalities in (FT4.1). Two-sided differentiability implies the right-derivative hypothesis. For complex <span class="math" data-tex="\(F\)">\(F\)</span>, apply the real conclusion to its real and imaginary parts; both derivatives are integrable since their absolute values are bounded by <span class="math" data-tex="\(|F&#x27;|\)">\(|F&#x27;|\)</span>, and scalar integration is componentwise. When <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, both sides of (FT4.1) are zero.</p>
+<p>The assumptions restrict to every closed subinterval, so the same equality holds there. The absolute integral bound gives
+<span class="math" data-tex="\( |F(v_j)-F(u_j)|\leq\int_{u_j}^{v_j}|F&#x27;|\)">\( |F(v_j)-F(u_j)|\leq\int_{u_j}^{v_j}|F&#x27;|\)</span>.
+Add these inequalities. Overlaps can only be endpoints, whose measures are zero, so the sum of the integrals is the integral over the union. Its measure is at most the total interval length. FT1 gives (FT4.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is no hidden measurability assumption about derivatives beyond the stated integral. Indeed, the finite right derivative of a continuous function is Borel measurable on <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>. Extend <span class="math" data-tex="\(F\)">\(F\)</span> constantly to the left and right of <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, obtaining a continuous <span class="math" data-tex="\(\widetilde F\)">\(\widetilde F\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Each
+<span class="math" data-tex="\( n(\widetilde F(x+1/n)-\widetilde F(x))\)">\( n(\widetilde F(x+1/n)-\widetilde F(x))\)</span> is continuous, and their pointwise limit on <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> is the right derivative. Pointwise limits of measurable scalar functions are measurable, as proved in the preceding programme lesson. Thus assigning endpoint values gives a measurable derivative representative; integrability is still a separate hypothesis.</p>
+<h2 id="ft5-products-oriented-substitution-and-infinite-endpoints">FT5. Products, oriented substitution and infinite endpoints</h2>
+<p>Let <span class="math" data-tex="\(u,v\)">\(u,v\)</span> be continuous on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, differentiable at every interior point, and suppose the products <span class="math" data-tex="\(u&#x27;v\)">\(u&#x27;v\)</span> and <span class="math" data-tex="\(uv&#x27;\)">\(uv&#x27;\)</span> are integrable. The elementary product rule gives <span class="math" data-tex="\((uv)&#x27;=u&#x27;v+uv&#x27;\)">\((uv)&#x27;=u&#x27;v+uv&#x27;\)</span>, an integrable derivative. Applying FT4 to <span class="math" data-tex="\(uv\)">\(uv\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+\int_a^b u&#x27;v=u(b)v(b)-u(a)v(a)-\int_a^b uv&#x27;.
+\tag{FT5.1}
+\]">\[
+\int_a^b u&#x27;v=u(b)v(b)-u(a)v(a)-\int_a^b uv&#x27;.
+\tag{FT5.1}
+\]</span>
+<p>The product rule is proved directly by splitting the increment into
+<span class="math" data-tex="\( [u(x+h)-u(x)]v(x+h)+u(x)[v(x+h)-v(x)]\)">\( [u(x+h)-u(x)]v(x+h)+u(x)[v(x+h)-v(x)]\)</span>, dividing by <span class="math" data-tex="\(h\)">\(h\)</span>, and taking the limit. Thus no continuity of the derivatives is used. In particular continuously differentiable factors satisfy the finite-interval formula, because their derivatives and the factors are bounded on a compact interval and hence the products are integrable.</p>
+<p>For oriented substitution, let <span class="math" data-tex="\(\phi\in C^1([a,b])\)">\(\phi\in C^1([a,b])\)</span>, and let <span class="math" data-tex="\(h\)">\(h\)</span> be continuous on an interval containing the image of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Put <span class="math" data-tex="\(A(s)=\int_{s_0}^s h(t)\,dt\)">\(A(s)=\int_{s_0}^s h(t)\,dt\)</span>, with reversed endpoints interpreted by a minus sign. The difference quotient of <span class="math" data-tex="\(A\)">\(A\)</span> is an interval average of <span class="math" data-tex="\(h\)">\(h\)</span>; its difference from <span class="math" data-tex="\(h(s)\)">\(h(s)\)</span> is bounded by the supremum of <span class="math" data-tex="\(|h(t)-h(s)|\)">\(|h(t)-h(s)|\)</span> on the shrinking interval. Hence <span class="math" data-tex="\(A&#x27;=h\)">\(A&#x27;=h\)</span>. The chain rule, obtained by composing the first-order difference expansions, gives <span class="math" data-tex="\((A\circ\phi)&#x27;=(h\circ\phi)\phi&#x27;\)">\((A\circ\phi)&#x27;=(h\circ\phi)\phi&#x27;\)</span>. FT4, or the earlier C1 Lemma 6.1, now yields</p>
+<span class="math math-display" data-tex="\[
+\int_{\phi(a)}^{\phi(b)}h(t)\,dt
+=\int_a^b h(\phi(x))\phi&#x27;(x)\,dx.
+\tag{FT5.2}
+\]">\[
+\int_{\phi(a)}^{\phi(b)}h(t)\,dt
+=\int_a^b h(\phi(x))\phi&#x27;(x)\,dx.
+\tag{FT5.2}
+\]</span>
+<p>There is no monotonicity requirement on <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and the signed derivative is retained.</p>
+<p>If <span class="math" data-tex="\(F\)">\(F\)</span> is differentiable on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, <span class="math" data-tex="\(F&#x27;\in L^1(\mathbb R)\)">\(F&#x27;\in L^1(\mathbb R)\)</span>, and <span class="math" data-tex="\(F(t)\to L_\pm\)">\(F(t)\to L_\pm\)</span> as <span class="math" data-tex="\(t\to\pm\infty\)">\(t\to\pm\infty\)</span>, apply FT4 on <span class="math" data-tex="\([-A,B]\)">\([-A,B]\)</span>. Dominated convergence for <span class="math" data-tex="\(F&#x27;1_{[-A,B]}\)">\(F&#x27;1_{[-A,B]}\)</span>, with majorant <span class="math" data-tex="\(|F&#x27;|\)">\(|F&#x27;|\)</span>, and the assumed endpoint limits give</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}F&#x27;=L_+-L_-.
+\tag{FT5.3}
+\]">\[
+\int_{\mathbb R}F&#x27;=L_+-L_-.
+\tag{FT5.3}
+\]</span>
+<p>The endpoints may tend independently to infinity: the absolute integrals on either omitted tail tend to zero. The same argument on <span class="math" data-tex="\([a,B]\)">\([a,B]\)</span> gives the half-line formula with its finite endpoint value. Finally, if <span class="math" data-tex="\(u,v\)">\(u,v\)</span> are differentiable on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, <span class="math" data-tex="\(u&#x27;v,uv&#x27;\in L^1\)">\(u&#x27;v,uv&#x27;\in L^1\)</span>, and <span class="math" data-tex="\(u(t)v(t)\to L_\pm\)">\(u(t)v(t)\to L_\pm\)</span>, apply (FT5.3) to their product to obtain</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}u&#x27;v=L_+-L_--\int_{\mathbb R}uv&#x27;.
+\tag{FT5.4}
+\]">\[
+\int_{\mathbb R}u&#x27;v=L_+-L_--\int_{\mathbb R}uv&#x27;.
+\tag{FT5.4}
+\]</span>
+<p>Zero endpoint products therefore give the negative transposed integral. Each endpoint limit must be checked; boundedness alone does not supply it.</p>
+<h2 id="ft6-two-distinctions-in-the-hypotheses">FT6. Two distinctions in the hypotheses</h2>
+<p><strong>An integrable derivative that is not continuous.</strong> On <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, put <span class="math" data-tex="\(F(0)=0\)">\(F(0)=0\)</span> and <span class="math" data-tex="\(F(x)=x^2\sin(1/x)\)">\(F(x)=x^2\sin(1/x)\)</span> for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>. At zero, <span class="math" data-tex="\(F(x)/x=x\sin(1/x)\to0\)">\(F(x)/x=x\sin(1/x)\to0\)</span>, so <span class="math" data-tex="\(F&#x27;(0)=0\)">\(F&#x27;(0)=0\)</span>. Away from zero, direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+F&#x27;(x)=2x\sin(1/x)-\cos(1/x).
+\tag{FT6.1}
+\]">\[
+F&#x27;(x)=2x\sin(1/x)-\cos(1/x).
+\tag{FT6.1}
+\]</span>
+<p>This derivative is bounded in absolute value by three and is measurable by FT4, hence is integrable. Along <span class="math" data-tex="\(x_n=1/(2\pi n)\)">\(x_n=1/(2\pi n)\)</span> its value is <span class="math" data-tex="\(-1\)">\(-1\)</span>; along <span class="math" data-tex="\(y_n=1/((2n+1)\pi)\)">\(y_n=1/((2n+1)\pi)\)</span> it is <span class="math" data-tex="\(1\)">\(1\)</span>. Thus it is not continuous at zero. Nevertheless FT4 gives <span class="math" data-tex="\(\int_{-1}^1F&#x27;=2\sin1\)">\(\int_{-1}^1F&#x27;=2\sin1\)</span>. This case lies outside the C1 version of the theorem.</p>
+<p><strong>Almost-everywhere differentiability is insufficient.</strong> A direct construction makes the distinction explicit. Set <span class="math" data-tex="\(C_0(x)=x\)">\(C_0(x)=x\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and recursively set</p>
+<span class="math math-display" data-tex="\[
+C_{n+1}(x)=
+\begin{cases}
+\tfrac12 C_n(3x),&amp;0\leq x\leq\tfrac13,\\
+\tfrac12,&amp;\tfrac13\leq x\leq\tfrac23,\\
+\tfrac12+\tfrac12 C_n(3x-2),&amp;\tfrac23\leq x\leq1.
+\end{cases}
+\tag{FT6.2}
+\]">\[
+C_{n+1}(x)=
+\begin{cases}
+\tfrac12 C_n(3x),&amp;0\leq x\leq\tfrac13,\\
+\tfrac12,&amp;\tfrac13\leq x\leq\tfrac23,\\
+\tfrac12+\tfrac12 C_n(3x-2),&amp;\tfrac23\leq x\leq1.
+\end{cases}
+\tag{FT6.2}
+\]</span>
+<p>Induction shows each <span class="math" data-tex="\(C_n\)">\(C_n\)</span> is continuous and nondecreasing, with endpoint values zero and one; the formulas agree at the two joints. The recursion gives
+<span class="math" data-tex="\(\|C_{n+1}-C_n\|_\infty\leq\tfrac12\|C_n-C_{n-1}\|_\infty\)">\(\|C_{n+1}-C_n\|_\infty\leq\tfrac12\|C_n-C_{n-1}\|_\infty\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. The geometric-series bound makes <span class="math" data-tex="\(C_n\)">\(C_n\)</span> uniformly Cauchy. Real completeness gives a pointwise limit <span class="math" data-tex="\(C\)">\(C\)</span>, and the same uniform bound proves uniform convergence. The limit is continuous: approximate it uniformly by one <span class="math" data-tex="\(C_n\)">\(C_n\)</span>, then use continuity of that <span class="math" data-tex="\(C_n\)">\(C_n\)</span> at the point in question. It still has <span class="math" data-tex="\(C(0)=0\)">\(C(0)=0\)</span>, <span class="math" data-tex="\(C(1)=1\)">\(C(1)=1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(K_n\)">\(K_n\)</span> be the union of the <span class="math" data-tex="\(2^n\)">\(2^n\)</span> closed intervals remaining after <span class="math" data-tex="\(n\)">\(n\)</span> successive removals of open middle thirds, and let <span class="math" data-tex="\(K=\bigcap_n K_n\)">\(K=\bigcap_n K_n\)</span>. Its measure is at most <span class="math" data-tex="\(2^n3^{-n}\)">\(2^n3^{-n}\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, hence zero. Every point outside <span class="math" data-tex="\(K\)">\(K\)</span> lies in an open interval deleted at some finite stage. On a middle interval the recursion is constant; composing the two outer affine branches shows that on each later deleted interval all subsequent <span class="math" data-tex="\(C_n\)">\(C_n\)</span> have the same constant value. Therefore <span class="math" data-tex="\(C\)">\(C\)</span> is locally constant outside <span class="math" data-tex="\(K\)">\(K\)</span> and has derivative zero there.</p>
+<p>Thus <span class="math" data-tex="\(C\)">\(C\)</span> is continuous, differentiable almost everywhere, and its almost-everywhere derivative has the integrable representative zero, but <span class="math" data-tex="\(C(1)-C(0)=1\ne0=\int_0^1 0\)">\(C(1)-C(0)=1\ne0=\int_0^1 0\)</span>. This does not contradict FT4: that theorem requires the finite derivative at every interior point. The example also shows why that condition cannot be silently replaced by an almost-everywhere assertion.</p>
+<h2 id="free-source-and-proof-scope">Free source and proof scope</h2>
+<p><a href="https://www1.essex.ac.uk/maths/people/fremlin/chap22.pdf">D. H. Fremlin, <em>Measure Theory</em>, Chapter 22</a>, 225I and 225L, is a free human reference for the semicontinuous majorant and the integrable-derivative FTC. The local source comparison read pages 31–34, including 225I–225L, and inspected those page images. FT1–FT4 above give the complete compact-interval argument with its own rounding construction and minimum argument; no general Vitali covering, differentiation-of-integrals or absolute-continuity characterization is imported. FT5 supplies every remaining clause of the declared scalar FTC interface. The separate general multidimensional Jacobian prerequisite is proved in <a href="relative-jacobian.html">The Jacobian theorem on a measurable source set</a>, with its <a href="euclidean-volume-foundations.html">geometric measure foundations</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>
