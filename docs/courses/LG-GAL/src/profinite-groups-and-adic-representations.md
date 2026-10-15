@@ -1250,7 +1250,7 @@ Equivalently the affine index consists of triples \((B,\mathfrak q,\iota)\), whe
 
 One useful universal property is explicit in the proof. If a local \(A\)-algebra \(S\) is equipped with the chosen residue embedding and has the same étale residue-section property, every pointed stage has a unique compatible map into \(S\). Their colimit gives the unique local map \(R\to S\) with those residue maps. No universal property for rings lacking that stated lifting hypothesis is being imported. \(\square\)
 
-The freely accessible primary reading is the Stacks project authors' [Noetherian completion](https://stacks.math.columbia.edu/tag/0BNH), [formal étaleness](https://stacks.math.columbia.edu/tag/00UP), [normalization](https://stacks.math.columbia.edu/tag/00OX), [étale morphisms](https://stacks.math.columbia.edu/tag/03PA), [geometric stalks](https://stacks.math.columbia.edu/tag/03PN), and [strict local construction](https://stacks.math.columbia.edu/tag/0BSK). EA1–EA18 supply the arguments actually used by this lesson. In particular, (ET16) is proved before flatness, EA11 gives the arbitrary-base step, and EA15–EA17 prove the point and finite-cover hypotheses rather than treating those hypotheses as citations. These are foundations for the continuity proof; they do not by themselves prove the later curve Kummer, Brauer, duality, nilpotent-site or finite-pushforward results.
+The freely accessible primary reading is the Stacks project authors' [Noetherian completion](https://stacks.math.columbia.edu/tag/0BNH), [formal étaleness](https://stacks.math.columbia.edu/tag/00UP), [normalization](https://stacks.math.columbia.edu/tag/00OX), [étale morphisms](https://stacks.math.columbia.edu/tag/03PA), [geometric stalks](https://stacks.math.columbia.edu/tag/03PN), and [strict local construction](https://stacks.math.columbia.edu/tag/0BSK). EA1–EA18 supply the arguments actually used by this lesson. In particular, (ET16) is proved before flatness, EA11 gives the arbitrary-base step, and EA15–EA17 prove the point and finite-cover hypotheses rather than treating those hypotheses as citations. These are foundations for continuity. Section 6A now proves nilpotent-site invariance, finite pushforward, closed support and the integral universal-homeomorphism comparison. The later curve Kummer, Brauer and duality computations remain separate proofs.
 
 ### 5B.11. Graded exercise: the algebra behind a geometric stalk
 
@@ -1353,7 +1353,7 @@ This is nonzero exactly when the linear factor \(h\) does not divide \(g\), henc
 
 10. The finite fields are nested because \(n!\) divides \((n+1)!\): iterating the corresponding Frobenius identity puts each smaller field inside the next. Lemma 0F.1 supplies their sizes and degrees. Each is separable, since its elements are roots of \(T^{p^{n!}}-T\), whose derivative is \(-1\), and is étale by the primitive-element chart of EA10. Across a square-zero ideal, lift the map on every finite stage. Uniqueness makes these lifts compatible, so they define one unique lift on the union. This proves formal étaleness. It is also flat as a field extension, or as a filtered colimit of flat modules by EA1.
 
-Any finite list of elements of \(E\) belongs to one finite stage; the algebra it generates remains in that finite field. Since the stage degrees \(n!\) are unbounded, the whole union cannot be finitely generated, and hence cannot be finitely presented. Thus formal étaleness need not itself be étaleness without the finite-presentation hypothesis. The new foundations prove the geometric site and continuity inputs in Lesson 1. They do not establish the later curve Kummer/degree and higher-vanishing calculations, nilpotent-site equivalence, closed-support equivalence or exact finite pushforward. Those require their own complete programme proofs; a citation or this field example cannot replace them. \(\square\)
+Any finite list of elements of \(E\) belongs to one finite stage; the algebra it generates remains in that finite field. Since the stage degrees \(n!\) are unbounded, the whole union cannot be finitely generated, and hence cannot be finitely presented. Thus formal étaleness need not itself be étaleness without the finite-presentation hypothesis. The new foundations prove the geometric site and continuity inputs in Lesson 1. The nilpotent-site, closed-support and finite-pushforward arguments are now supplied in NP1–NP12 in Section 6A. The later curve Kummer/degree and higher-vanishing calculations still require their own complete programme proofs; a citation or this field example cannot replace them. \(\square\)
 
 ## 6. A higher-cohomological continuity foundation
 
@@ -1578,11 +1578,390 @@ The base-ring version follows directly too: if \(B=\varinjlim B_i\), \(S\to\oper
 
 The higher-continuity theorem6.6 now has its actual prerequisite proofs in this lesson:SH1–SH9 and EA1–EA18,followed by the finite-data descent in6.2. Its scope includes arbitrary abelian and noncartesian coefficient systems. Sections6.7–6.8 prove its filtered-coefficient,higher-image,strict-local and pro-étale applications. These author proofs do not certify the remaining arithmetic dependencies elsewhere in the lesson or an independent whole-lesson review.
 
-The proof of6.5 is a finite double-complex calculation. SH3–SH6 and6.4–6.6 supply existence,comparison,homotopy,exact-sequence and acyclic-resolution arguments. EA2–EA3 supplies affine gluing and finite-presentation patching;EA8–EA14 supplies full local Jacobian presentations,flatness,stability and universal open images;EA15–EA17 supplies finite covering refinements,exact site functors and conservative geometric stalks. SC11 computes the higher-image stalk before continuity,ET21 gives the inverse-image stalk formula,and EA18 constructs the strict local ring \(R\) used inHC16. The finite-data scheme-limit and covering argument is the actual6.2 proof. Later curve nilpotent,finite-pushforward,closed-support,Kummer and higher-vanishing arguments remain separate requirements.
+The proof of6.5 is a finite double-complex calculation. SH3–SH6 and6.4–6.6 supply existence,comparison,homotopy,exact-sequence and acyclic-resolution arguments. EA2–EA3 supplies affine gluing and finite-presentation patching;EA8–EA14 supplies full local Jacobian presentations,flatness,stability and universal open images;EA15–EA17 supplies finite covering refinements,exact site functors and conservative geometric stalks. SC11 computes the higher-image stalk before continuity,ET21 gives the inverse-image stalk formula,and EA18 constructs the strict local ring \(R\) used inHC16. The finite-data scheme-limit and covering argument is the actual6.2 proof. Section 6A now supplies the complete nilpotent-site, finite-pushforward and closed-support arguments and the normalization branch sequence. The curve Kummer and higher-vanishing calculations remain separate requirements.
+
+## 6A. Nilpotent invariance, finite pushforward and closed support
+
+The special-fibre argument in Lesson 8 uses three site results: invariance under the reduction immersion, exact finite pushforward with the actual geometric-fibre stalks, and the description of sheaves supported at finitely many closed points. We prove these results here, before their programme use. The invariance theorem covers integral universal homeomorphisms, including infinite integral algebras. The finite-pushforward theorem covers arbitrary finite morphisms; neither flatness nor finite presentation of the finite algebra is assumed.
+
+The prerequisites are the actual proofs SH1–SH9, EA1–EA18 and Sections 6.2–6.8 of this lesson. The finite algebra calculation retains every nilpotent layer. Its local lifting step uses a generating tuple whose reduction is a basis; it does not assume that the tuple is a free basis over the original ring.
+
+### 6A.1. Set-valued sheaves, point adjoints and degree-zero continuity
+
+**NP1.** The sheafification, point and inverse-image constructions above also work for sheaves of sets. Stalks commute with colimits and finite limits, geometric stalks detect isomorphisms, and
+\[
+ (f^{-1}F)_{\bar y}=F_{f\bar y}
+ \tag{NS1}
+\]
+holds for a set-valued sheaf as well as for an abelian sheaf.
+
+*Proof.* Construct the two plus operations of SH1 from matching families and common refinements, omitting addition. Local representation and local equality have the same proofs. They prove that sheafification preserves finite limits: finitely many representatives and equalities can be put on one common refinement. Colimits are sheafifications of presheaf colimits by the same adjunction. A stalk is the filtered neighbourhood colimit, which commutes with finite limits of sets by the finite-representative argument. Covering lifts identify the stalk before and after sheafification, as in SH7, so it also commutes with all colimits.
+
+For conservativity, replace the kernel-section argument of EA16 by a pair of sections: if their images agree, stalk injectivity makes their germs agree, and neighbourhood refinements through every ordinary point give a covering on which they agree. Stalk surjectivity gives local preimages in exactly the EA16 construction. Thus stalkwise bijectivity is an isomorphism. The finite-limit site functor of EA15 gives a left adjoint \(f^{-1}\) on sets by (SC9) and sheafification; its right adjoint is the same direct-image section rule.
+
+Here is a point-adjoint proof of (NS1). If \(\tau\) is a geometric point functor and \(E\) a set, then
+\[
+ (\tau_*E)(V)=\operatorname{Map}(\tau(V),E)
+ \tag{NS2}
+\]
+is a sheaf. A cover surjects on lifts, and lifts on its pairwise fibre products are the pairs with equal base lift, so matching functions glue uniquely. A map \(F\to\tau_*E\) is exactly a map \(F_\tau\to E\): evaluate a section at each lift and use its neighbourhood representative. These constructions are inverse. Thus the stalk is left adjoint to (NS2).
+
+For a point \(\bar y\) upstairs, fibre-product universality gives \(\tau_{\bar y}(V\times_XY)=\tau_{f\bar y}(V)\). Consequently \(f_*\tau_{\bar y,*}=\tau_{f\bar y,*}\). The corresponding left adjoints are canonically equal, proving (NS1), with its natural maps. For abelian groups use products of groups instead of function sets; the same argument applies.
+
+Every sheaf of sets has a presentation by sums of sheafified representables. Put \(P_U=(\operatorname{Hom}(-,U))^\#\). The identity section gives \(\operatorname{Hom}(P_U,F)=F(U)\). The sum over all such sections surjects onto \(F\). Cover its kernel pair by another such sum. The coequalizer of the resulting two arrows is \(F\): at each stalk this is the ordinary quotient of a surjective set map by its kernel pair, and stalks preserve these colimits and detect the comparison isomorphism. On the qcqs basis the same construction uses its basis objects, since they cover the whole site.
+
+Finally Lemma 6.3 already proves degree-zero continuity for sets by finite covering equalizers. Applied to the affine pointed neighbourhoods of \(\bar x\), it gives, for a qcqs map and a set-valued sheaf,
+\[
+ (f_*F)_{\bar x}
+   =\Gamma(Y\times_X\operatorname{Spec}R,F_R),
+ \qquad R=\mathcal O_{X,x}^{\mathrm{sh}},
+ \tag{NS3}
+\]
+where \(F_R\) is inverse image. Indeed the left side is the neighbourhood colimit of the sections of \(F\) on the corresponding inverse images; 6.3 compares exactly that colimit with the sections on their affine-transition limit. EA17–EA18 construct its index and ring, and inverse-image associativity identifies the limit coefficients with \(F_R\). For abelian sheaves this is also the \(n=0\) case of (HC16). No positive-degree assertion for sets is being used. \(\square\)
+
+### 6A.2. Lifting across a nil ideal of unbounded exponent
+
+A nil ideal means that each of its elements is nilpotent; a single common nilpotence exponent is not part of this definition. A finitely generated nil ideal is nilpotent. If generators \(a_i\) satisfy \(a_i^{e_i}=0\), then
+\[
+ (a_1,\ldots,a_r)^{\,1+\sum_i(e_i-1)}=0.
+ \tag{NS4}
+\]
+Every monomial of that total degree contains one forbidden power. This also shows that extension of a nil ideal to another algebra is nil: every one of its elements uses only finitely many nil generators.
+
+**NP2.** If \(B\) is a finitely presented étale \(A\)-algebra, \(C\) is an \(A\)-algebra, and \(J\subset C\) is nil, then
+\[
+ \operatorname{Hom}_A(B,C)\longrightarrow
+ \operatorname{Hom}_A(B,C/J)
+ \quad\text{is bijective}.
+ \tag{NS5}
+\]
+
+*Proof.* Write a finite polynomial presentation of \(B\) and lift the images of its finitely many generators arbitrarily to \(C\). The errors in its finitely many relations belong to \(J\). Their finitely generated ideal \(J_0\) is nilpotent by (NS4). The chosen images therefore give a map \(B\to C/J_0\), whose reduction is the prescribed map to \(C/J\). EA12 gives unique lifting across a square-zero ideal; iterating through the powers of the nilpotent \(J_0\) gives a lift to \(C\). If two lifts agree modulo \(J\), their differences on the finite generator list generate another nilpotent ideal \(J_1\). They agree modulo \(J_1\), so nilpotent uniqueness gives equality. This proves both assertions without an exponent for the whole \(J\). \(\square\)
+
+**NP3.** For a closed immersion \(j:X_0\hookrightarrow X\) with the same underlying space, base change is an equivalence of categories of étale schemes and an equivalence of their small étale sheaf categories.
+
+*Proof.* On an affine of \(X\), the immersion is quotient by an ideal contained in every prime, hence a nil ideal by EA2. All its base changes are the same kind of closed immersion, by (NS4). They give homeomorphisms of underlying spaces.
+
+First extend (NS5) to maps of schemes. Let \(W_0\hookrightarrow W\) be such a nil immersion over \(X\) and let \(V\to X\) be étale. A map \(W_0\to V\) lifts uniquely. Choose affine target étale charts over affine base charts and affine source charts in their inverse images. On each source chart (NS5) gives the lift. Two lifts have the same underlying point map, because \(W_0\) has every point of \(W\); around each point they can therefore be compared in one common affine target chart. Algebraic uniqueness gives equality there. It gives agreement on all source overlaps, so the local maps glue by EA2. This proves the scheme assertion, including non-quasi-compact source schemes.
+
+For object lifting, work first over affine \(X\). Cover an étale \(V_0\to X_0\) by its affine square-Jacobian charts. Lift their polynomial coefficients and their inverted elements to \(X\); the identical Jacobian presentations define étale charts \(V_i\to X\) by EA8–EA12. Each reduction is the original chart. An overlap downstairs has a unique open lift inside each \(V_i\), by the homeomorphism of spaces. Its given map into the other reduced chart lifts uniquely by the scheme assertion just proved. The inverse map and every cocycle identity also lift uniquely. The lifted maps are therefore inverse open isomorphisms and satisfy the cocycle. Glue the charts by EA2 to obtain an étale \(V\to X\) reducing to \(V_0\).
+
+For general \(X\), perform that construction over its affine opens. On base overlaps use the same unique map-lifting assertion to identify the restrictions; its uniqueness proves the cocycle, so they glue. Thus every object lifts, and the scheme map assertion proves full faithfulness. Fibre products commute with base change; covers correspond because every object's nil reduction has the same points and a covering is joint surjectivity. Matching families on these corresponding objects and covers give inverse sheaf functors.
+
+The equivalence on abelian sheaves is exact and preserves injectives by its inverse exact adjunction. Terminal objects correspond, so sections correspond. Applying this to an injective resolution gives
+\[
+ H^q(X,F)\simeq H^q(X_0,j^{-1}F)\quad(q\geq0).
+ \tag{NS6}
+\]
+Constant sheaves correspond: they are sheafifications of the same constant presheaves under the category equivalence. This proves the reduction-cohomology assertion at its full nil-ideal scope. \(\square\)
+
+This transports coefficient objects rather than identifying their structure maps. For \(X=\operatorname{Spec}k[\epsilon]/(\epsilon^2)\), the transported structure sheaf has sections \(k[\epsilon]/(\epsilon^2)\); its map to \(\mathcal O_{\operatorname{Spec}k}\) has kernel \(k\epsilon\). Likewise the units \(1+a\epsilon\) form an additive copy of \(k\). Those nilpotent function and unit layers remain in the transported coefficient sheaf even though the constant étale cohomology is invariant.
+
+### 6A.3. Finite algebras over the constructed strict local ring
+
+**NP4.** Let \(R\) be the strict local ring constructed in EA18, with maximal ideal \(\mathfrak m\) and separably closed residue field \(k\). Every finite \(R\)-algebra is a finite product of local rings, with finite purely inseparable, and still separably closed, residue fields over \(k\).
+
+*Proof.* A finite-dimensional algebra \(C\) over any field is Noetherian. Every prime quotient is a finite-dimensional domain, hence a field: multiplication by a nonzero element is injective and therefore surjective on its finite vector space. EA4 thus gives finitely many maximal ideals. Their intersection is the nilradical by EA2; its finite generators and (NS4) give a nilpotence power. Powers of distinct maximal ideals are still comaximal, because expanding a sufficiently high power of \(a+b=1\) puts every term in one of the two ideal powers. Chinese remaindering, with a common power killing the product, gives
+\[
+ C=\prod_i C_i,
+ \tag{NS7}
+\]
+where each \(C_i\) is local Artinian with its full nilpotent maximal ideal. This is also the decomposition into its maximal-ideal localizations: outside that maximal ideal the residue is nonzero and hence a unit modulo the nilpotent ideal; the other factors vanish on localization.
+
+Now let \(S\) be finite over \(R\). If \(S/\mathfrak mS=0\), Nakayama makes \(S=0\), the empty-product case. Otherwise choose generators \(g_1,\ldots,g_d\) lifting a \(k\)-basis of \(C=S/\mathfrak mS\); Nakayama makes them generate \(S\). A lift \(u\in S\) of an idempotent \(\bar u\in C\) acts on this tuple by a matrix over \(R\). The adjugate identity on that generating tuple makes its monic characteristic polynomial \(P\) annihilate \(u\). No freeness of \(S\) was used. Modulo \(\mathfrak m\) the tuple is a basis, so the matrix is the actual multiplication operator of \(\bar u\), an idempotent operator. Decomposing its vector space into kernel and image gives
+\[
+ \bar P=T^a(T-1)^b,\qquad a+b=d.
+ \tag{NS8}
+\]
+If \(a\) or \(b\) is zero the required idempotent lift is \(1\) or \(0\). Otherwise EA18 lifts this coprime monic factorization to \(P=FG\), with the indicated reductions. The factors generate the unit ideal in \(R[T]\): the coefficient map \((v,w)\mapsto vF+wG\), with degrees less than \(b,a\), is a square matrix invertible modulo \(\mathfrak m\), by the Bézout and degree test. Its determinant is a unit in the local \(R\), so its inverse expresses \(1=vF+wG\). Chinese remaindering supplies an idempotent polynomial equal to \(0\) modulo \(F\) and \(1\) modulo \(G\). Evaluate it at \(u\). Its reduction is \(\bar u\), because evaluating a polynomial at an idempotent uses exactly its values at \(0,1\). This proves existence of the lifted idempotent.
+
+For uniqueness, \(\mathfrak mS\) is contained in every maximal ideal of \(S\). A maximal quotient is a field finite and integral over the image \(R/\mathfrak p\); the inverse-integrality argument of EA5 makes that image a field. Its prime is consequently the unique maximal ideal \(\mathfrak m\). Thus \(\mathfrak mS\) is in the Jacobson radical. An idempotent in it is zero, since \(1-e\) is a unit and \(e(1-e)=0\). For two lifts \(e,e'\), both \(e(1-e')\) and \(e'(1-e)\) are idempotents in that ideal, so vanish, giving \(e=e'\).
+
+The orthogonal idempotents of (NS7) therefore lift uniquely to orthogonal idempotents summing to \(1\), giving \(S=\prod_i S_i\). Each \(S_i\) is local: every maximal ideal contracts to \(\mathfrak m\), and \(C_i\) has one maximal ideal. Its residue field \(k_i\) is finite over \(k\).
+
+Such a field is purely inseparable. In positive characteristic, write an irreducible polynomial as \(g(T^{p^e})\) with \(g'\ne0\); \(g\) is irreducible, hence separable. Since \(k\) is separably closed it has degree one. Thus a power of every element of \(k_i\) belongs to \(k\), and one exponent suffices for its finite generator list. The field \(k_i\) remains separably closed: for a separable polynomial over it, raise the coefficients to that common \(p\)-power. Its distinct roots are raised to the same powers and remain distinct, so it becomes a separable polynomial over \(k\), with every root in \(k\). Each original root is both separable and purely inseparable over \(k_i\), so belongs to \(k_i\). In characteristic zero the finite residue extension is already trivial. This proves all the field assertions. \(\square\)
+
+### 6A.4. Lifting in a finite local algebra without a free-module assumption
+
+**NP5.** Every local factor \(S_i\) of NP4 has the full étale residue-section property: an étale \(S_i\)-scheme with a prescribed point over its residue field \(k_i\) has a unique \(S_i\)-section through that point.
+
+*Proof.* Choose a square-Jacobian chart around the point. Its reduction over the local Artinian algebra \(C_i=S_i/\mathfrak mS_i\) has that point over \(k_i\). The kernel \(C_i\to k_i\) is nilpotent; NP2 gives the unique lift of its coordinates to \(C_i\). Thus the reduced polynomial system has an actual solution \(\bar x\in C_i^n\) with invertible Jacobian over \(C_i\).
+
+Choose \(g_1=1,g_2,\ldots,g_d\) in \(S_i\) lifting a \(k\)-basis of \(C_i\). They generate over \(R\) by Nakayama. Choose expressions over \(R\) for their finitely many products and for the finitely many coefficients of the system. These expressions need not be unique. They give a surjection
+\[
+ \pi:R^d\twoheadrightarrow S_i,\qquad
+ \bar\pi:k^d\xrightarrow{\sim} C_i.
+ \tag{NS9}
+\]
+Using a fixed parenthesization, expand the polynomial equations on the tuples \(x_j=\sum_l V_{jl}g_l\). This produces \(nd\) polynomial coordinate equations \(P_{jl}(V)\) over \(R\), whose image under \(\pi\) is the original system. Modulo \(\mathfrak m\) the chosen product expressions are the actual multiplication table of \(C_i\), because \(\bar\pi\) is a basis isomorphism. Hence their Jacobian at the coordinate vector of \(\bar x\) is exactly
+\[
+ J_P(\bar x):k^{nd}\simeq C_i^n
+          \xrightarrow{\,J_F(\bar x)\,}C_i^n\simeq k^{nd}.
+ \tag{NS10}
+\]
+It is invertible. The square-Jacobian chart of these coordinate equations is therefore étale over \(R\) and has the displayed \(k\)-point. EA18 gives an \(R\)-section, so the coordinate equations vanish exactly in \(R\). Their images give the required solution in \(S_i\). The inverted element is a unit because its residue at the local \(S_i\) point is nonzero. This defines the required section of the original chart and then of the scheme.
+
+If two sections have the same residue point, their pair pulls the open diagonal back to an open of \(\operatorname{Spec}S_i\) containing its closed point. Such an open is the whole local spectrum, as proved in EA18. They therefore coincide. This argument also treats non-affine étale schemes by choosing the chart around the prescribed point; the case of no polynomial variables is simply a localization by a unit. Applying the monic factor-coefficient system (ET23) over this local ring gives its Henselian factor-lifting property; with the separably closed residue field from NP4, it is strictly Henselian. Neither flatness nor a finite presentation of \(S_i\) over \(R\) was assumed. \(\square\)
+
+**NP6.** On the spectrum of one of these local factors, sections of any étale sheaf equal its closed geometric stalk. For abelian sheaves they are exact and have no positive derived cohomology.
+
+*Proof.* The residue field \(k_i\) is separably closed. Any geometric lift to an étale neighbourhood of the closed point comes from a \(k_i\)-valued point: its local finite étale field fibre has only copies of \(k_i\), by EA10. NP5 gives a section of that neighbourhood with this chosen lift. Thus every germ representative pulls back to a global section. If two global sections have the same germ, a neighbourhood witnessing equality has such a section, so pulling back gives equality globally. We have proved the canonical bijection, and group isomorphism in the abelian case,
+\[
+ \Gamma(\operatorname{Spec}S_i,F)=F_{\bar s_i}.
+ \tag{NS11}
+\]
+The stalk is exact by EA16 and SH7. Evaluating an injective resolution is therefore an exact augmented group complex, so \(H^q(\operatorname{Spec}S_i,F)=0\) for \(q>0\). This identifies global sections with the closed stalk; sheaves may still have other stalks on other points of the local spectrum. \(\square\)
+
+### 6A.5. Finite pushforward and its actual stalk formula
+
+**NP7.** Let \(f:Y\to X\) be any finite morphism and \(F\) an étale sheaf of sets or abelian groups on \(Y\). For a geometric \(\bar x\) there is a canonical isomorphism
+\[
+ (f_*F)_{\bar x}
+       =\prod_{\bar y\in|Y\times_X\bar x|}F_{\bar y}.
+ \tag{NS12}
+\]
+The index is the finite set of geometric fibre points, with their chosen common algebraically closed field. Scheme lengths are not multiplicities in this product.
+
+*Proof.* Restrict to an affine neighbourhood \(X=\operatorname{Spec}A\). The finite inverse image is affine, \(\operatorname{Spec}B\), with \(B\) a finite \(A\)-module. An affine morphism is qcqs: affine inverse images are quasi-compact, and its affine diagonal is the closed immersion from the multiplication quotient \(B\otimes_AB\to B\). Quotient spectra and their localized quotient sheaves give this closed immersion directly by EA2. Thus (NS3), and (HC16) for groups, apply.
+
+Over the strict local \(R\) of EA18, put \(S=R\otimes_AB\). It is a finite \(R\)-algebra, so NP4–NP6 give its full local decomposition. Sections over its disjoint factors are the product of their sections: their cover has empty pairwise intersections, and the sheaf equalizer is exactly that product. Each factor's sections are its closed geometric stalk.
+
+These factors are indexed precisely by the geometric fibre points. Their closed residue fields \(k_i/k\) are finite purely inseparable and embed uniquely in the chosen algebraic closure \(\Omega\). After extension to \(\Omega\), the nilpotent ideals of the local Artinian factors stay nilpotent. Each quotient \(k_i\otimes_k\Omega\) has one prime: any prime quotient of a finite-dimensional \(\Omega\)-algebra is a field and equals \(\Omega\), and the embedding of \(k_i\) into it is the unique purely inseparable embedding. Hence each factor gives one point of the geometric fibre, even if its fibre has length greater than one. Formula (NS1) identifies the closed stalk of \(F_R\) with \(F_{\bar y}\) on \(Y\). Combining these facts with (NS3) proves (NS12).
+
+All maps are the restriction-to-germ maps. In particular this is the natural stalk formula, compatible with maps of coefficient sheaves; an ordering merely orders its factors. If the fibre is empty, the algebra \(S\) is zero by Nakayama and the product is the one-element set or zero group, as required. \(\square\)
+
+**NP8.** On abelian étale sheaves, finite pushforward is exact, has zero positive higher direct images, commutes with all colimits, and gives
+\[
+ H^q(Y,F)=H^q(X,f_*F)\quad(q\geq0).
+ \tag{NS13}
+\]
+
+*Proof.* Stalks are exact, and (NS12) is a finite product of stalks. Finite products of groups preserve exact sequences: kernels are componentwise, and a preimage can be chosen in each of the finitely many components. The geometric exactness criterion EA16 therefore proves exactness of \(f_*\). Applying it to an injective resolution makes its higher cohomology sheaves zero, so \(R^qf_*=0\) for \(q>0\).
+
+The right adjoint \(f_*\) preserves injectives because its inverse-image left adjoint is exact, by SH6 and EA15. Thus if \(F\to I^\bullet\) is an injective resolution upstairs, \(f_*F\to f_*I^\bullet\) is an injective resolution downstairs. Its section complex is literally \(\Gamma(Y,I^\bullet)\). This proves (NS13), with natural maps and no spectral-sequence premise.
+
+For colimits, take the canonical comparison from the colimit of the direct images to the direct image of the colimit. At a geometric stalk (NS12) makes it the comparison of a colimit with a finite product of group stalks. Stalks commute with colimits by SH7. A finite product of groups is also their finite direct sum, and sums commute with colimits by their universal property. Thus every stalk comparison is an isomorphism and EA16 proves the assertion. For sheaves of sets the same reasoning proves commutation with filtered colimits, whose finite-product comparison is the finite-representative test. We do not use an arbitrary-colimit assertion for set-valued finite products. \(\square\)
+
+Finite pushforward also satisfies arbitrary change of base, for set and abelian sheaves. In a cartesian square with finite vertical map, the natural map from the inverse image of its direct image to the direct image of the upstairs inverse image is an isomorphism. Construct it from the inverse-image/direct-image adjunction and the equality of their two composite inverse images. At a geometric point of the new base, (NS12) and (NS1) identify its two sides with products of the same original upstairs stalks. The fibre-product universal property identifies their indices: a lift to the base-changed finite scheme is exactly a lift to the original finite scheme with the given base geometric point. The comparison is the identity on each restriction-to-germ factor. Conservativity proves the isomorphism. This includes bases with inseparable residue extensions and nilpotent structure; it does not assume the finite map is flat.
+
+### 6A.6. Closed support and the separably closed point
+
+**NP9.** For a closed immersion \(i:Z\hookrightarrow X\), direct image is an exact fully faithful functor on abelian étale sheaves. Its essential image consists exactly of sheaves with zero geometric stalks outside \(Z\), and \(i^{-1}\) is its inverse on that image.
+
+*Proof.* A quotient algebra \(A/I\) is finite over \(A\), generated by \(1\), even if \(I\) is not finitely generated. Thus NP7–NP8 apply. The geometric fibre of a closed immersion is empty outside \(Z\), and is one point with the same geometric field on \(Z\). Hence
+\[
+ (i_*G)_{\bar x}=
+ \begin{cases}
+   G_{\bar z},&x\in Z,\\
+   0,&x\notin Z.
+ \end{cases}
+ \tag{NS14}
+\]
+Together with (NS1), this identifies the counit \(i^{-1}i_*G\to G\) at each stalk with the identity. The canonical maps can also be read directly as the single-factor restriction in (NS12). Thus the counit is an isomorphism. The adjunction then proves full faithfulness.
+
+The unit \(F\to i_*i^{-1}F\) is likewise the identity at a point of \(Z\); outside \(Z\) its target is zero. It is an isomorphism exactly when those outside stalks of \(F\) vanish, by EA16. This proves the essential-image assertion and inverse. Exactness was already NP8. Applying (NS13) gives \(H^q(X,i_*G)=H^q(Z,G)\). \(\square\)
+
+If \(k\) is separably closed, its finite-presentation étale schemes are finite disjoint unions of \(\operatorname{Spec}k\), by EA10. Every étale scheme over it is a disjoint union of such points: each point has one of these open affine field charts, and a singleton field chart is an open component; these components cover the scheme. The component inclusions are a covering. Consequently a sheaf is determined by its value \(M\) on the point, with value the corresponding product of \(M\)'s on every disjoint union. Conversely that rule is a sheaf, since matching values along a jointly surjective covering are exactly values on the covered points. The categories of set and abelian sheaves are therefore respectively sets and groups. In particular
+\[
+ \Gamma(\operatorname{Spec}k,M_k)=M,\qquad
+ H^q(\operatorname{Spec}k,G)=0\quad(q>0)
+ \tag{NS15}
+\]
+for every abelian sheaf \(G\).
+
+For a finite collection of closed points \(s\) in \(X\), their disjoint union is a closed subscheme with the reduced residue fields. On any affine open, their distinct maximal ideals are pairwise comaximal and EA10 remaindering gives its quotient algebra; localization gives the same quotients on smaller opens, so these closed immersions glue. NP9 decomposes supported sheaves into the point direct images. If these fields are separably closed, their point sheaves are just the groups in (NS15). The finite sum of such direct images is sections-acyclic, and its sections are the direct sum of the point groups. This is the precise closed-support assertion needed for the branch cokernel.
+
+### 6A.7. Integral universal homeomorphisms and cohomology
+
+**NP10.** A finite universal homeomorphism gives an equivalence of small étale sheaf categories, for sets and for abelian groups.
+
+*Proof.* At every geometric point its fibre has exactly one point: base change is a homeomorphism of spaces, and a finite algebra over an algebraically closed field has that field as every residue. Formula (NS12) has exactly one factor. Together with (NS1), it identifies both the adjunction unit \(G\to f_*f^{-1}G\) and counit \(f^{-1}f_*F\to F\) on geometric stalks with the identity. In the counit this is the single-factor evaluation, and in the unit it is the pullback germ. NP1 and EA16 detect their isomorphisms. These two inverse adjunction maps prove the equivalence. \(\square\)
+
+**NP11.** The same equivalence, and étale-cohomology invariance, holds for any integral universal homeomorphism, without finite generation of the integral algebra.
+
+*Proof.* We supply the algebra and limit steps. For an injective integral ring map \(A\subset B\), every prime of \(A\) lifts to \(B\). Localize at that prime. If \(1\) belonged to \(\mathfrak pB_{\mathfrak p}\), its witnessing equation would involve finitely many integral elements. They generate a finite \(A_{\mathfrak p}\)-algebra: successive monic equations bound the necessary products of their powers. That finite algebra still contains \(A_{\mathfrak p}\) injectively, and Nakayama prevents its unit from belonging to \(\mathfrak p\) times itself. Thus the quotient of the whole \(B_{\mathfrak p}\) by \(\mathfrak p\) is nonzero, and a prime there gives the lift.
+
+It follows that an integral affine map sends each closed subset to the vanishing set of the kernel of its quotient algebra: apply the preceding lying-over proof to the quotient of the base by that kernel. Integral algebras stay integral after base change, since their monic equations persist and every element uses finitely many such integral generators. Thus integral maps are universally closed. Surjectivity is also stable under base change: over a point, a nonempty fibre stays nonempty after field extension, by the vector-space test of EA14. These statements justify the point-image assertions used next.
+
+Work first with \(X=\operatorname{Spec}A\) and \(Y=\operatorname{Spec}B\). An integral morphism is affine with integral coordinate algebra. Express \(B\) as the filtered union of its finite \(A\)-subalgebras \(B_i\), allowing the image of \(A\) if its kernel is nonzero. Each map \(\operatorname{Spec}B\to\operatorname{Spec}B_i\) is integral and universally surjective, by the just proved lying-over statement and base change. Therefore \(f_i:\operatorname{Spec}B_i\to X\) is surjective and universally injective: two distinct points after any base change would have distinct lifts to \(Y\), contradicting universal injectivity of \(f\). It is finite and universally closed, hence a universal homeomorphism. We have
+\[
+ Y=\varprojlim_iY_i,\qquad Y_i=\operatorname{Spec}B_i,
+ \quad f_i:Y_i\to X\text{ finite universal homeomorphisms}.
+ \tag{NS16}
+\]
+The transition maps are affine. Their finite generation or flatness is not required for the limit theorem.
+
+First prove that the unit \(G\to f_*f^{-1}G\) is an isomorphism. At a geometric \(\bar x\), use its strict local ring \(R\). Formula (NS3) computes the target stalk as sections on \(Y_R\). This is the affine-transition limit of the \((Y_i)_R\). Lemma 6.3, for the pulled-back set coefficients, identifies its sections with the colimit of their sections. By NP10, each finite stage's sections of \(f_{i,R}^{-1}G_R\) are \(\Gamma(\operatorname{Spec}R,G_R)\). The canonical unit maps make the stage restriction maps the identity under these identifications. NP6 for \(S=R\) and (NS1) identify this last group or set with \(G_{\bar x}\). Thus this comparison is exactly the unit stalk, and is an isomorphism. Conservativity gives the unit isomorphism, so \(f^{-1}\) is fully faithful.
+
+It is also essentially surjective. On the qcqs étale basis of \(Y\), an object \(U\) descends to some \(U_i\) over \(Y_i\), by the actual finite-data proof 6.2. Its sheafified representable satisfies
+\[
+ P_U=p_i^{-1}P_{U_i}
+     =f^{-1}\bigl(f_{i,*}P_{U_i}\bigr).
+ \tag{NS17}
+\]
+Here inverse image of a sheafified representable is the one on its base change: by the adjunction, both represent the functor \(H\mapsto H(U_i\times_{Y_i}Y)\). The second equality is NP10 and inverse-image associativity. Thus every basis generator belongs to the image of \(f^{-1}\). NP1 presents any sheaf by two coproducts of such generators. Both coproducts are in the image, and full faithfulness lifts their two relation arrows to \(X\). The left adjoint \(f^{-1}\) preserves their coequalizer, proving that the presented sheaf is also in its image. This proves the equivalence on the affine base.
+
+For general \(X\), restrict to affine opens. Direct image and inverse image on these open slices are the same section and base-change constructions, by SH5, SH6 and EA15. The affine equivalences therefore identify the global unit and counit on every such slice, or at every geometric stalk. They are globally isomorphisms. Equivalence of set sheaves preserves finite products and the defining group operations, so it also gives the abelian equivalence; both inverse functors are exact.
+
+Terminal objects correspond, and hence sections correspond. Exact equivalences preserve injectives. Applying them to an injective resolution proves the canonical comparison
+\[
+ H^q(X,F)\xrightarrow{\sim}H^q(Y,f^{-1}F)\quad(q\geq0).
+ \tag{NS18}
+\]
+Constant set sheaves are coproducts of the terminal sheaf, and the inverse image preserves these coproducts and their group operations. Thus constant abelian coefficients are preserved. This proves the full integral-homeomorphism cohomology assertion used by the reduction map. The nil immersion result NP3 is also its directly proved special case. \(\square\)
+
+### 6A.8. The normalization branch sequence with all coefficients retained
+
+**NP12.** Let \(\nu:\widetilde Y\to Y\) be finite and surjective and an isomorphism away from a finite set \(S\) of closed points with separably closed residue fields. Let \(b_s\) be the number of geometric points over \(s\). For any abelian group \(M\), there is an exact sequence
+\[
+ 0\longrightarrow M_Y\longrightarrow\nu_*M_{\widetilde Y}
+ \longrightarrow\bigoplus_{s\in S}
+      i_{s,*}\bigl(M^{b_s}/\operatorname{diag}M\bigr)
+ \longrightarrow0.
+ \tag{NS19}
+\]
+After choosing a first branch, the point quotient is \(M^{b_s-1}\).
+
+*Proof.* A constant sheaf has stalk \(M\): its constant presheaf has that neighbourhood colimit, unchanged by sheafification in SH7. NP7 identifies the middle stalk with the product of one \(M\) for each geometric branch. The first arrow is the pullback constant section, hence the diagonal. Surjectivity of \(\nu\) makes \(b_s\geq1\), and the diagonal is injective, including for an arbitrary group \(M\). Away from \(S\) it is an isomorphism. Its cokernel is therefore supported on \(S\), and NP9 identifies it with the point direct images of these stalk quotients; (NS15) identifies the point category with groups.
+
+The map
+\[
+ (a_1,\ldots,a_b)\longmapsto
+       (a_2-a_1,\ldots,a_b-a_1)
+ \tag{NS20}
+\]
+has kernel the diagonal and is surjective by taking \(a_1=0\). This proves the quotient identification. Different branch orderings give the same canonical quotient; the displayed coordinate identification records its chosen ordering. Every stalk calculation keeps the full finite fibre algebra in NP7, so a nonreduced branch contributes one factor per geometric point rather than per scheme length. This proves (NS19) as a sheaf sequence.
+
+NP8–NP9 identify its middle cohomology with that of \(\widetilde Y\) and make its point cokernel acyclic. SH4's long exact sequence consequently gives
+\[
+\begin{aligned}
+0&\longrightarrow \Gamma(Y,M_Y)
+ \longrightarrow\Gamma(\widetilde Y,M_{\widetilde Y})
+ \longrightarrow\bigoplus_{s\in S}M^{b_s-1}\\
+ &\longrightarrow H^1(Y,M_Y)
+ \longrightarrow H^1(\widetilde Y,M_{\widetilde Y})
+ \longrightarrow0,
+\end{aligned}
+ \tag{NS21}
+\]
+and canonical isomorphisms in degrees \(q\geq2\). No cohomology rank for the normalization components was assumed.
+
+For a nonempty connected scheme, sections of the constant sheaf are \(M\). Indeed a section is locally represented on an étale cover by constant values. The images of the covering maps are open by EA14. Two unequal values cannot have intersecting images: an intersection point has a geometric lift to their fibre product, where the two stalk values would have to agree. Thus the images with each value form disjoint opens covering the scheme; connectedness allows one value. This proves the component-constant interpretation of the first map in (NS21) whenever the components are connected. \(\square\)
+
+The free primary reading is the Stacks project authors' [nilpotent site invariance](https://stacks.math.columbia.edu/tag/025H), [Henselian finite algebras](https://stacks.math.columbia.edu/tag/04GE), [finite higher direct images](https://stacks.math.columbia.edu/tag/03QN), [closed support](https://stacks.math.columbia.edu/tag/04E1), and [topological invariance](https://stacks.math.columbia.edu/tag/04DY). NP1–NP12 supply the proofs used here. The coefficient-frame construction (NS9)–(NS10) supplies the nonflat finite-algebra lifting step, and (NS16)–(NS17) supply the infinite integral step. The later projective-line/genus-one Kummer, degree, Brauer and higher-vanishing calculations remain separate proofs; neither (NS19) nor topological invariance computes those ranks by itself.
+
+### 6A.9. Graded exercise: nilpotents, fibres and branch cohomology
+
+**Exercise 6A.1 (100 points).** Each part is worth 10 points. All cohomology refers to the small étale site.
+
+1. Let \(A=k[\epsilon_1,\epsilon_2,\ldots]/(\epsilon_i^{i+1})\), \(I=(\epsilon_i)\). Prove that \(I\) is nil but not nilpotent, and prove the étale and constant-cohomology comparison with \(k\).
+2. For \(A=k[\epsilon]/(\epsilon^2)\), compute its nilpotent units. Explain why \(\mu_m(A)\to\mu_m(k)\) is an isomorphism when \(m\) is invertible, and why \(\mu_p\) has extra sections in characteristic \(p\).
+3. In NP4, explain why the characteristic-polynomial idempotent lift works even when the finite algebra is not free. Prove its uniqueness when the kernel is in the Jacobson radical rather than nilpotent.
+4. Let \(k\) be algebraically closed, \(R=k[[t]]\) and \(S=R/(t^r)[\epsilon]/(\epsilon^2)\), \(r\geq1\). Use \(T^2-T-\epsilon\) to carry out the coordinate-frame lifting of NP5. Compute the coefficient Jacobian and exhibit its exact root.
+5. For \(k=\mathbb F_p(s)\), \(K=k[u]/(u^p-s)\), compute the geometric fibre of \(\operatorname{Spec}K\to\operatorname{Spec}k\). State its finite-pushforward and cohomology consequences without confusing its length with a branch count.
+6. With \(R,S\) as in part 4, let \(Y=\operatorname{Spec}(R\times S)\to\operatorname{Spec}R\). For an abelian group \(M\), compute the direct image of its constant sheaf, including the closed and generic geometric stalks.
+7. Prove the closed-support equivalence using the unit and counit, and compute the cohomology of a sheaf supported at finitely many separably closed points.
+8. Let \(A=k[t^2,t^3]\subset B=k[t]\). Prove that this finite morphism is a universal homeomorphism in every characteristic. Compute its cusp fibre and explain the invariant cohomology and the differing function rings.
+9. Let \(k\) be algebraically closed of characteristic different from \(2\), \(A=k[t^2-1,t(t^2-1)]\subset k[t]\). Compute its two-branch point quotient and the resulting degree-one exact sequence, retaining any unproved cohomology of the normalization.
+10. Let \(A=\mathbb F_p[s]\), \(B=\bigcup_n\mathbb F_p[s^{1/p^n}]\). Prove that the morphism is an integral universal homeomorphism that is not finite. Derive its cohomology comparison from the actual infinite-step proof.
+
+*Full solution.*
+
+1. Each element of \(I\) is an expression in finitely many \(\epsilon_i\). Those generators have individual finite exponents, so (NS4) makes that element nilpotent. For every \(N\), choose \(i\geq N\). Setting all other variables to zero maps \(A\) onto \(k[T]/(T^{i+1})\), where the image of \(\epsilon_i^N\) is nonzero. Thus \(I^N\ne0\); there is no uniform exponent. The quotient is \(k\). NP2 lifts maps through this nil ideal by putting their finitely many relation errors in a nilpotent subideal. NP3 lifts and glues the étale charts and identifies covers, giving its category equivalence and
+\[
+ H^q(\operatorname{Spec}A,M_A)
+     =H^q(\operatorname{Spec}k,M_k).
+ \tag{NX1}
+\]
+If \(k\) is separably closed these groups are \(M\) in degree zero and zero in positive degrees by (NS15). No such vanishing was asserted for other fields.
+
+2. The kernel on units consists of \(1+a\epsilon\). Multiplication and inverse are
+\[
+ (1+a\epsilon)(1+b\epsilon)=1+(a+b)\epsilon,
+ \qquad(1+a\epsilon)^{-1}=1-a\epsilon.
+ \tag{NX2}
+\]
+Hence it is the additive group of \(k\). If \(m\) is invertible, the polynomial \(T^m-1\) at a residue root has invertible derivative \(mT^{m-1}\); the unique nil lift NP2 gives the isomorphism on its root groups. In characteristic \(p\),
+\[
+ (1+a\epsilon)^p=1
+ \tag{NX3}
+\]
+for every \(a\), whereas a field has only \(1\) as a \(p\)-th root of \(1\). Thus the natural structure-coefficient map has a nonzero kernel. The coefficient object transported by the site equivalence is the original root sheaf, with these nil sections, rather than the root sheaf of the reduced structure ring. Constant coefficients remain the ones compared in (NX1).
+
+3. Lift a residue basis to a generating tuple, using Nakayama. Multiplication by \(u\) is a matrix on that tuple. The adjugate of \(u\,1-M\) gives its characteristic polynomial killing every generator and hence killing \(1\), so it annihilates \(u\). Reducing makes the tuple a true basis, and multiplication by the residue idempotent is an idempotent linear operator, with characteristic polynomial \(T^a(T-1)^b\). Coprime monic lifting and the coefficient Bézout inverse give the exact polynomial idempotent described in NP4. Only the residue tuple was assumed a basis.
+
+If \(e,e'\) reduce to the same idempotent, then \(e(1-e')\) and \(e'(1-e)\) are idempotents in the Jacobson-radical kernel. For such an idempotent \(v\), \(1-v\) is a unit and \(v(1-v)=0\), so \(v=0\). Thus \(e=ee'=e'\). This is valid for the kernel \(\mathfrak mS\), which need not be nilpotent; uniqueness was not inferred from a square-zero formula.
+
+4. The finite \(R\)-algebra \(S\) is not flat: multiplication by \(t^r\) is injective on \(R\) and becomes zero on nonzero \(S\). Modulo \(t\), its basis is \(1,\epsilon\). This is a generating tuple over \(R\), with relations \(t^r\) killing both generators, and not a free \(R\)-basis. Write \(T=a+b\epsilon\). The coordinate equations are
+\[
+ P_1=a^2-a,\qquad P_2=(2a-1)b-1.
+ \tag{NX4}
+\]
+Their residue solution is \(a=0,b=-1\), and
+\[
+ J_P=
+ \begin{pmatrix}
+ 2a-1&0\\
+ 2b&2a-1
+ \end{pmatrix},
+ \qquad\det J_P=(2a-1)^2.
+ \tag{NX5}
+\]
+Its value at that residue solution is \(1\). The same coefficients \(a=0,b=-1\) solve the equations exactly over \(R\), giving \(T=-\epsilon\) in \(S\). Direct substitution gives \(T^2-T-\epsilon=0\). The chart derivative \(2T-1=-1-2\epsilon\) is a unit, with inverse \(-1+2\epsilon\), including in characteristic \(2\). This is the nonflat coefficient-frame step, not a tensor-flatness argument. The strict local properties of \(R\) follow from EA7 and (ET9), with its algebraically closed residue: choose a Jacobian chart at any residue point and lift its tuple in the complete ring.
+
+5. The irreducibility and non-\(p\)-th-power argument are proved in Exercise 5B.1, part 7. After extension to an algebraic closure \(\Omega\), choose the unique root \(\alpha^p=s\). The fibre is
+\[
+ \Omega[T]/(T-\alpha)^p.
+ \tag{NX6}
+\]
+It has length \(p\) on the basis \(1,(T-\alpha),\ldots,(T-\alpha)^{p-1}\), but one geometric point. The morphism is finite, surjective and universally injective: its diagonal ideal is generated by \(u-v\) and has \(p\)-th power zero; after any base change it therefore has every point of the fibre product. Surjectivity follows from lying over, and finite universal closedness makes each bijective base change a homeomorphism. NP7 uses one factor in its stalk formula, and NP10 gives an equivalence of étale sheaves and the isomorphism of cohomology for all transported coefficients. These assertions do not replace the function field \(k\) by the different field \(K\).
+
+6. At the closed point the fibre algebra is \(k\times k[\epsilon]/(\epsilon^2)\). It has vector-space dimension \(3\), but two geometric points, so the stalk is \(M^2\). At a generic geometric point the torsion factor \(S\) becomes zero, leaving one point and stalk \(M\). The whole nil scheme \(\operatorname{Spec}S\) has reduced point \(\operatorname{Spec}k\). Its nil ideal \((t,\epsilon)\) has exponent \(r+1\), with \(t^{r-1}\epsilon\ne0\), by its polynomial basis. NP3 and the factorization through the closed point therefore identify
+\[
+ f_*M_Y=M_X\oplus i_*M,
+ \tag{NX7}
+\]
+where \(i:\operatorname{Spec}k\hookrightarrow\operatorname{Spec}R\). This also follows by checking the natural comparison at its geometric stalks. Global sections are \(M^2\), and positive cohomology vanishes by NP6 on the two local components and NP8. No factor of \(2r\) or \(3\) appears in the constant-sheaf branch count.
+
+7. For the closed immersion, (NS14) makes the counit the identity on each upstairs stalk. The unit is the identity on the closed subset and maps to zero outside it. Conservativity gives the counit isomorphism and gives a unit isomorphism exactly for sheaves whose outside stalks vanish. The adjunction then identifies this subcategory with sheaves on the closed subscheme. At finitely many separably closed points these are a finite product of groups. The direct sum of their direct images has sections the sum of the groups, and positive cohomology zero by (NS13) and (NS15). This uses reduced point coefficients to describe the supported sheaf, without identifying the finite-fibre structure rings with their residue fields.
+
+8. The element \(t\) satisfies a monic quadratic over \(A\), and \(B=A+At\), so the map is finite and surjective by lying over. In its tensor square put \(u=t\otimes1\), \(v=1\otimes t\). Their squares and cubes agree, and the integral polynomial identity
+\[
+ (u-v)^3=
+ 4(u^3-v^3)-3(u+v)(u^2-v^2)
+ \tag{NX8}
+\]
+makes the diagonal ideal nilpotent in every characteristic. To see that this gives universal injectivity, two distinct points of any base change over one base point would give a point of their fibre product, by the nonzero tensor product of their residue fields. Such a point cannot lie on the diagonal, contradicting the diagonal's full underlying space. Finite universal closedness and surjectivity now prove the universal homeomorphism assertion.
+
+At the cusp point, the full fibre ring is
+\[
+ k[t]/(t^2,t^3)=k[t]/(t^2).
+ \tag{NX9}
+\]
+It is one point of length two. Topological invariance NP10 compares all étale cohomology with transported coefficients. The function rings differ: \(t\notin k[t^2,t^3]\), since every polynomial expression has monomial exponents in the semigroup generated by \(2,3\), which omits \(1\). We did not infer any unproved vanishing on the affine line from the comparison.
+
+9. Put \(x=t^2-1\), \(y=t(t^2-1)\). The monic equation \(t^2=x+1\) makes the extension finite. On \(D(x)\), \(t=y/x\), so it is an isomorphism there. The complement on the target is the one point \(x=y=0\): modulo \(x\) the relation \(y^2=x^2(x+1)\) makes \(y\) nilpotent. Its fibre is
+\[
+ k[t]/(t^2-1)=k\times k
+ \tag{NX10}
+\]
+at \(t=1,-1\). Thus the cokernel is \(M^2/\operatorname{diag}M\simeq M\). Both source and target are nonempty connected spectra of domains, so their constant sections are \(M\), as proved in NP12. The differences of these two branch values of the same global constant are zero. Equation (NS21) gives
+\[
+ 0\longrightarrow M\longrightarrow H^1(\operatorname{Spec}A,M_A)
+ \longrightarrow H^1(\operatorname{Spec}k[t],M)\longrightarrow0.
+ \tag{NX11}
+\]
+The latter cohomology remains in the sequence until its own proof is supplied. The degree-\(q\) groups agree for \(q\geq2\). Thus the branch calculation is complete without importing a cohomology computation of the normalization.
+
+10. Write \(u_n=s^{1/p^n}\). Each algebra \(B_n=\mathbb F_p[u_n]\) is finite over \(A\), with \(s=u_n^{p^n}\), and its fibre over a geometric value \(s=a\) is the one-point algebra \(\Omega[u_n]/(u_n-a^{1/p^n})^{p^n}\). Equivalently its diagonal ideal has \(p^n\)-th power zero. The preceding finite lying-over and diagonal arguments prove that every stage is a universal homeomorphism.
+
+The union is integral, since every element belongs to a finite integral stage. Its diagonal ideal is generated by the differences \(u_n\otimes1-1\otimes u_n\), each nilpotent. Every element uses finitely many of them, so (NS4) makes the whole ideal nil. Integral lying over gives surjectivity; the diagonal argument and integral universal closedness give the universal homeomorphism. It is not finite: a finite \(A\)-module generating list would be in one stage and generate only that stage, while the next polynomial ring has \(u_{n+1}\notin\mathbb F_p[u_{n+1}^p]\) by its monomial exponents.
+
+For cohomology, use exactly NP11. Its unit is a stalk isomorphism from finite-stage invariance and degree-zero continuity, and its essential image contains every descended sheafified representable. The two-sum presentation then gives the full sheaf equivalence, preserving injectives and sections. Hence all abelian cohomology comparisons follow. Merely knowing each finite stage's constant cohomology would not prove this equivalence for arbitrary sheaves; the unit and generator steps are essential. \(\square\)
 
 ## Proof register and unresolved arithmetic dependencies
 
-The representation core has proofs in this lesson. Lemmas 0A.1–0A.2 supply DVR freeness, commensurability, composition series and additivity. Lemmas 0B.1–0B.2 and Proposition 0C.1 supply the Galois facts actually used. Lemmas 0D.1–0D.2 and Proposition 0E.1 establish lifting, finite coefficient fields and unique complete valuations. Lemma 0F.1 and Proposition 0F.2 construct unramified fields and Frobenius. Lemma 3.0 proves cyclotomic surjectivity. Theorems 1.2, 2.1, 2.2, 2.4, Proposition 3.1 and Theorem 4.1 therefore have their dependencies available before use. All four exercise solutions use these proofs. SH1–SH9 and EA1–EA18 supply the abstract and geometric étale foundations. Section6 proves higher continuity and its filtered,strict-local and pro-étale applications with actual in-lesson prerequisites. The other recorded arithmetic dependencies and independent whole-lesson review remain required.
+The representation core has proofs in this lesson. Lemmas 0A.1–0A.2 supply DVR freeness, commensurability, composition series and additivity. Lemmas 0B.1–0B.2 and Proposition 0C.1 supply the Galois facts actually used. Lemmas 0D.1–0D.2 and Proposition 0E.1 establish lifting, finite coefficient fields and unique complete valuations. Lemma 0F.1 and Proposition 0F.2 construct unramified fields and Frobenius. Lemma 3.0 proves cyclotomic surjectivity. Theorems 1.2, 2.1, 2.2, 2.4, Proposition 3.1 and Theorem 4.1 therefore have their dependencies available before use. All four exercise solutions use these proofs. SH1–SH9 and EA1–EA18 supply the abstract and geometric étale foundations. Section6 proves higher continuity and its filtered,strict-local and pro-étale applications with actual in-lesson prerequisites. NP1–NP12 additionally prove full nil-ideal invariance, arbitrary finite pushforward and base change, closed support, integral universal-homeomorphism invariance and the normalization branch sequence. The other recorded arithmetic dependencies and independent whole-lesson review remain required.
 
 Lemma 3.3 and Example 3.4 supply the torsion pairing, explicit degree-five isogeny, rational Tate-module identification and full residual inertia comparison before any use. The earlier geometric proofs used in that construction are identified at the start of §3A and were read in their current programme edition. The stated earlier geometric prerequisites remain required. The written Kronecker–Weber provider, Theorem 20.2 and Proposition 20.5 of the named class-field lesson, uses the earlier ray-field theorem and its prerequisites. The elliptic construction and class-field classification depend on those earlier results. Citations identify reading materials and actual providers; their presence alone does not close a proof obligation.
 

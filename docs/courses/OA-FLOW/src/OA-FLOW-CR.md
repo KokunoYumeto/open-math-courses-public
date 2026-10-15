@@ -4,13 +4,13 @@
 
 Let \((M,H,J,P)\) be any standard form: \(JMJ=M'\), \(JzJ=z^*\) on the center, \(J\) fixes the self-dual closed cone \(P\), and \(xJxJ\) preserves \(P\). The preceding [NC-1–5](OA-FLOW-NC.md) constructs it from an arbitrary faithful n.s.f. weight. We use no faithful-state hypothesis on \(M\). Write \(j(x)=JxJ\) and \(\omega_\xi(a)=\langle a\xi,\xi\rangle\), with the linear-first convention.
 
-Additional exact local inputs are [PC-1](OA-FLOW-PC.md#oa-flow.projection.pc1)'s polar partial isometry, the maximal principle in [CF-1](OA-FLOW-CF.md#oa-flow.cf.1), [CP](OA-FLOW-CP.md#oa-flow.cp.1) and [ST-1/2](OA-FLOW-ST12.md#oa-flow.st.1) for predual/topology/compactness, [EP-1](OA-FLOW-EP.md#oa-flow.ep.1)'s positive vector series, [WR/MW](OA-FLOW-WR.md#oa-flow.wr.4) for the full faithful-state graphs, and the exact cosh integral in [MF scalar SB-2](OA-FLOW-MF-SB.md#oa-flow.mf-sb.3). All remaining steps, including the projection commutant and center statements, are proved here.
+Additional exact local inputs are [PC-1](OA-FLOW-PC.md#oa-flow.projection.pc1)'s polar partial isometry, the maximal principle in [CF-1](OA-FLOW-CF.md#oa-flow.cf.1), [CP](OA-FLOW-CP.md#oa-flow.cp.1) and [ST-1/2](OA-FLOW-ST12.md#oa-flow.st.1) for predual/topology/compactness, [EP-1](OA-FLOW-EP.md#oa-flow.ep.1)'s positive vector series, [WR/MW](OA-FLOW-WR.md#oa-flow.wr.4) for the full faithful-state graphs, and [SF-3](OA-FLOW-SF.md#oa-flow.sf3.improper-vector-integral) for continuous vector integrals. All remaining steps, including the projection commutant and center statements, are proved here.
 
-The free human route is [Hiai, Propositions 3.7–3.10 and Lemmas 3.14–3.19, printed pp.23–31](https://arxiv.org/pdf/2004.02383v1#page=23). We supply the arbitrary-algebra corner reduction and full form/domain arguments explicitly.
+The free human route is [Hiai, Propositions 3.7–3.10 and Lemmas 3.14–3.19, printed pp.23–31](https://arxiv.org/pdf/2004.02383v1#page=23). The statements and cone setting are compared with that source. Here the order inverse is constructed from a dominated functional on the commutant; finite Dirichlet grids and cone-order minimality construct the representing vectors. The arbitrary-algebra corner reduction and full form/domain arguments are proved explicitly.
 
 <a id="oa-flow.cr.1"></a><a id="cr-1"></a>
 
-Exact additional locators: [ST-2 faithful normal transport](OA-FLOW-ST12.md#oa-flow.st.2), [HA-R7 right graph core](OA-FLOW-HA-R.md#oa-flow.ha-r.7), [EP-2 vector-functional norm bound](OA-FLOW-EP.md#oa-flow.ep.2), [MF scalar SB-2 cosh proof](OA-FLOW-MF-SB.md#oa-flow.mf-sb.3).
+Exact additional locators: [ST-2 faithful normal transport](OA-FLOW-ST12.md#oa-flow.st.2), [HA-R7 right graph core](OA-FLOW-HA-R.md#oa-flow.ha-r.7), [EP-2 vector-functional norm bound](OA-FLOW-EP.md#oa-flow.ep.2), [GNS positive-form Cauchy–Schwarz](OA-FLOW-GNS.md#gns-lemma-2-1), [CF-8 Riesz representation](OA-FLOW-CF.md#OA-FLOW.CF.8).
 
 ## CR-1. Cone geometry and vector supports
 
@@ -192,46 +192,69 @@ with equality of the full \(S,F,\Delta\) domains supplied by the faithful GNS co
 
 ## CR-5. The faithful-vector order interval
 
-Keep the hypotheses of [CR-4](OA-FLOW-CR.md#oa-flow.cr.4) and put \(D=\Delta_\Omega\). The map
-
+Keep the hypotheses of [CR-4](OA-FLOW-CR.md#oa-flow.cr.4), and write \(D=\Delta_\Omega\). The map
 <a id="equation-cr15"></a>
-
 \[
- A(x)=D^{1/4}x\Omega,\qquad x=x^*\in M,
- \tag{CR15}
+ A(x)=D^{1/4}x\Omega,\qquad x=x^*\in M,                           \tag{CR15}
 \]
 is an order isomorphism onto the \(P\)-order-bounded real vectors
-\(\{\eta:J\eta=\eta,\ -c\Omega\leq_P\eta\leq_P c\Omega\text{ for some }c\}\).
-Positivity preservation follows from [NC-5](OA-FLOW-NC.md#oa-flow.nc.5). It is reflected: if \(A(x)\in P\), then for \(y'\in M'\),
+\(\{\eta:J\eta=\eta,\ -c\Omega\leq_P\eta\leq_P c\Omega\text{ for some }c\geq0\}\). Positivity preservation follows from [NC-5](OA-FLOW-NC.md#oa-flow.nc.5). It is reflected: if \(A(x)\in P\), then for \(y'\in M'\),
 \[
  \langle xy'\Omega,y'\Omega\rangle
- =\langle D^{1/4}x\Omega,D^{-1/4}y'^*y'\Omega\rangle\geq0,
+ =\langle D^{1/4}x\Omega,D^{-1/4}y'^*y'\Omega\rangle\geq0.
 \]
-by [NC-3](OA-FLOW-NC.md#oa-flow.nc.3), since the second vector is in \(P\). Density of \(M'\Omega\) gives \(x\geq0\). The map is injective by the spectral inverse and separation of \(\Omega\).
+The second vector lies in \(P\) by [NC-3](OA-FLOW-NC.md#oa-flow.nc.3); both spectral domains follow from the left and right Tomita cores. Density of \(M'\Omega\) gives \(x\geq0\). The spectral inverse and separation of \(\Omega\) make \(A\) injective.
 
-For surjectivity it suffices to consider \(0\leq_P\eta\leq_P\Omega\). Let \(G_n\) be [NC-3](OA-FLOW-NC.md#oa-flow.nc.3)'s positive Gaussian. Then \(0\leq_P G_n\eta\leq_P\Omega\), since \(G_n\Omega=\Omega\). Set \(\zeta_n=D^{-1/4}G_n\eta\). Testing against \(C_r\) by moving the negative quarter power to its other argument and using [NC-3](OA-FLOW-NC.md#oa-flow.nc.3) shows
+We construct the inverse on \(0\leq_P\eta\leq_P\Omega\) directly. For \(y'\in M'\), define
 \[
- \zeta_n\in C_l,\qquad \Omega-\zeta_n\in C_l.
+ F_\eta(y')=\langle D^{-1/4}y'\Omega,\eta\rangle .
 \]
-On \(M'\Omega\), the rule \(T_n(y'\Omega)=y'\zeta_n\) has quadratic values between zero and \(\|y'\Omega\|^2\), by the mutual duality of \(C_l,C_r\). Polarization and Cauchy–Schwarz for this positive form imply \(\|T_n v\|\leq\|v\|\) on that dense domain. Its extension is a positive contraction \(c_n\in M\), since it commutes with all right unitaries on the initial domain. Thus \(c_n\Omega=\zeta_n\) and \(A(c_n)=G_n\eta\).
+This is defined on all of \(M'\), since \(M'\Omega\subset D(D^{-1/2})\). For \(y'\geq0\), NC-3 and the two cone inequalities give
+\[
+ 0\leq F_\eta(y')\leq
+ \langle D^{-1/4}y'\Omega,\Omega\rangle
+ =\langle y'\Omega,\Omega\rangle.
+\]
+Here \(D\Omega=\Omega\). Thus \(F_\eta\) is a positive linear functional dominated by \(\omega_\Omega\) on \(M'\).
 
-The map \(A\) is ultraweak-to-weak continuous on \(M_{\rm sa}\). Its exact bounded formula is
+The form \(F_\eta(z'^*y')\) on \(M'\Omega\) is positive and bounded by the Hilbert norm. [Positive-functional Cauchy–Schwarz](OA-FLOW-GNS.md#gns-lemma-2-1) and [Riesz representation](OA-FLOW-CF.md#OA-FLOW.CF.8) give a positive contraction \(c\) with
+\[
+ \langle c y'\Omega,z'\Omega\rangle=F_\eta(z'^*y').
+\]
+For \(a'\in M'\), the form identity gives
+\[
+ \langle ca'y'\Omega,z'\Omega\rangle
+ =F_\eta(z'^*a'y')
+ =\langle cy'\Omega,a'^*z'\Omega\rangle
+ =\langle a'cy'\Omega,z'\Omega\rangle .
+\]
+Density shows that \(c\) commutes with \(M'\), so \(c\in M\). Taking \(y'=1\), and using positivity to conjugate \(F_\eta\), yields
+\[
+ \langle c\Omega,z'\Omega\rangle
+ =F_\eta(z'^*)=\langle\eta,D^{-1/4}z'\Omega\rangle .
+\]
 
+The right Tomita core \(M'\Omega\) is a graph core for \(D^{-1/2}\), and also for \(D^{-1/4}\). Indeed spectral truncation away from zero and infinity first approximates every vector in the latter domain by vectors in the former; approximation in the half-power graph norm then implies approximation in the quarter-power graph norm, since
+\[
+ \|D^{-1/4}v\|^2\leq\|v\|^2+\|D^{-1/2}v\|^2.
+\]
+The displayed pairing therefore tests the full self-adjoint adjoint domain. It proves
+\(\eta\in D(D^{-1/4})\) and \(D^{-1/4}\eta=c\Omega\).
+The spectral inverse gives \(\eta=D^{1/4}c\Omega=A(c)\), with \(0\leq c\leq1\).
+
+The map also has the bounded formula
 <a id="equation-cr16"></a>
-
 \[
- A(x)=D^{1/4}(1+D^{1/2})^{-1}(x\Omega+Jx^*\Omega).
- \tag{CR16}
+ A(x)=D^{1/4}(1+D^{1/2})^{-1}(x\Omega+Jx^*\Omega).                \tag{CR16}
 \]
-The scalar multiplier is bounded by \(1/2\), and the two vector coefficients are ultraweakly continuous by CP. The positive contraction interval is ultraweakly compact by ST-1/CF/CP, so its image under \(A\) is weakly compact and closed. As \(G_n\eta\to\eta\), this proves \(A(c)=\eta\) for some \(0\leq c\leq1\). Translation and scaling give the asserted whole order interval, in particular
+It follows from \(D^{1/2}x\Omega=Jx^*\Omega\). The spectral multiplier has norm at most \(1/2\), so normal vector coefficients show that \(A\) is ultraweak-to-weak continuous.
 
+Translation and scaling now give the whole claimed order interval, in particular
 <a id="equation-cr17"></a>
-
 \[
  -\Omega\leq_P\eta\leq_P\Omega
  \ \Longrightarrow\ \eta=D^{1/4}x\Omega
- \text{ for some }x=x^*,\ \|x\|\leq1.
- \tag{CR17}
+ \quad(x=x^*,\ \|x\|\leq1).                                    \tag{CR17}
 \]
 
 <a id="oa-flow.cr.6"></a><a id="cr-6"></a>
@@ -268,59 +291,112 @@ It follows that \(\xi\mapsto\omega_\xi\) is injective and a homeomorphism onto a
 
 <a id="oa-flow.cr.7"></a><a id="cr-7"></a>
 
-## CR-7. Every functional below a cone functional has a cone vector
+## CR-7. Dominated functionals from a cone-order minimum
 
-First assume \(\Omega\in P\) is cyclic and separating, and \(0\leq\psi\leq\omega_\Omega\). The bounded form
-\(\psi(b^*a)\) on \(M\Omega\) gives a positive contraction \(B\in M'\) with
-\(\psi(a)=\langle a\Omega,B\Omega\rangle\). This is the direct GNS domination argument: positive-functional Cauchy–Schwarz bounds the form by the two Hilbert norms, Riesz represents it, and moving a left multiplier across the form proves commutation.
+Every \(0\leq\psi\leq\omega_\Omega\), with \(\Omega\in P\), has a representing vector \(\xi\in P\) satisfying \(0\leq_P\xi\leq_P\Omega\).
 
-Put \(D=\Delta_\Omega\). Since \(B\Omega,(1-B)\Omega\in C_r\), the vector
-\(\theta=D^{-1/4}B\Omega\) satisfies \(0\leq_P\theta\leq_P\Omega\).
-Define
+**A linear representation of a dominated functional.**
+First let \(\Omega\in P\) be cyclic and separating and \(0\leq\psi\leq\omega_\Omega\). The bounded positive form \(\psi(b^*a)\) on \(M\Omega\) gives a positive contraction \(B\in M'\) such that
+\(\psi(a)=\langle a\Omega,B\Omega\rangle\).
+Indeed positive-functional Cauchy–Schwarz bounds the form, Riesz represents it, and moving left multipliers proves commutation.
 
+Put \(D=\Delta_\Omega\). The vectors \(B\Omega,(1-B)\Omega\) lie in the right cone \(C_r\), so NC-3 gives
+\(\theta=D^{-1/4}B\Omega\) with \(0\leq_P\theta\leq_P\Omega\).
+Set
 <a id="equation-cr20"></a>
-
 \[
- \eta=2(1+D^{1/2})^{-1}B\Omega
-      =f(\log D)\theta,\qquad f(t)=\frac{2}{e^{t/4}+e^{-t/4}}.
- \tag{CR20}
+ \eta=f(\log D)\theta
+      =2(1+D^{1/2})^{-1}B\Omega.                               \tag{CR20}
 \]
-The exact positive Fourier kernel is
+Here \(f(t)=1/\cosh(t/4)\); the two expressions agree by scalar spectral calculus on \(B\Omega\in D(D^{-1/4})\). We next prove that \(f(\log D)\) preserves the cone interval, and hence \(0\leq_P\eta\leq_P\Omega\).
 
+**Positive averaging by finite Dirichlet grids.** Suppose \(U_t=e^{itL}\) is a strongly continuous unitary group preserving a closed convex cone \(P\), and \(U_t\Omega=\Omega\). We claim that
+\[
+ f(L)[0,\Omega]_P\subseteq[0,\Omega]_P,\qquad
+ f(\lambda)=\frac1{\cosh(\lambda/4)}.
+\]
+We prove this claim by a finite boundary problem.
+
+For \(\varepsilon>0\), put \(R_\varepsilon=(2+\varepsilon^2L^2)^{-1}\). The elementary integral
+\(\int_0^\infty e^{-s}\cos(as)\,ds=(1+a^2)^{-1}\), obtained by integrating \(e^{-(1-ia)s}\), gives
 <a id="equation-cr21"></a>
-
 \[
- f(t)=\int_{\mathbb R}\frac{2}{\cosh(2\pi s)}\,e^{ist}\,ds.
- \tag{CR21}
+ R_\varepsilon
+ =\frac14\int_0^\infty e^{-s}
+       (U_{\varepsilon s/\sqrt2}+U_{-\varepsilon s/\sqrt2})\,ds.
+                                                                    \tag{CR21}
 \]
-This follows by substituting \(u=2s\) in MF scalar (SB.3),
-\(\int e^{ixu}/(2\cosh(\pi u))\,du=1/(2\cosh(x/2))\).
-In particular the kernel in ([CR21](OA-FLOW-CR.md#equation-cr21)) has integral one. The vectorwise integral of \(D^{is}\) therefore preserves \(P\) and fixes \(\Omega\), so \(0\leq_P\eta\leq_P\Omega\).
+The [strong vector integrals](OA-FLOW-SF.md#oa-flow.sf3.improper-vector-integral) exist because the unitary orbits are continuous and bounded and the scalar weight is integrable. Pairing with vectors and applying [scalar interchange](OA-FLOW-FF.md#oa-flow.ff.1) to their finite spectral measures proves the displayed operator identity. Thus \(R_\varepsilon\) preserves \(P\), has norm at most \(1/2\), and maps \(\Omega\) to \(\Omega/2\).
 
-The first expression in ([CR20](OA-FLOW-CR.md#equation-cr20)) shows \(\eta\in D(D^{1/2})\). Since \(J\eta=\eta\), reciprocal transport puts it in \(D(D^{-1/2})\) too, and \(F_\Omega\eta=D^{1/2}\eta\). Thus \(B\Omega=(\eta+F_\Omega\eta)/2\). The full anti-linear adjoint identity paired with \(a\Omega\in D(S_\Omega)\) gives
+Fix \(0\leq_P\theta\leq_P\Omega\), an integer \(n\geq1\), and \(\varepsilon=1/(4n)\). On the indices \(-n,\ldots,n\), hold \(u_{-n}=u_n=\theta\) fixed and solve
+\[
+ u_j=R_\varepsilon(u_{j-1}+u_{j+1})\qquad(-n<j<n).
+\]
+Starting with zero interior vectors and repeatedly applying this rule keeps every interior vector in \([0,\Omega]_P\). The iteration converges in norm. To see this, let \(T\) be its linear part on the finite product of interior Hilbert spaces, equipped with the maximum norm. Then \(\|T\|\leq1\). A term in \(T^{2n}\) corresponds to a length-\(2n\) nearest-neighbour path that stays inside the interval, with operator factor \(R_\varepsilon^{2n}\). From any starting index at least the all-right path exits. Thus at most \(2^{2n}-1\) paths remain, giving
+\[
+ \|T^{2n}\|\leq1-2^{-2n}<1.
+\]
+Grouping the operator geometric series in blocks of length \(2n\) proves convergence to the unique solution.
 
+For a scalar spectral value \(\lambda\), set
+\[
+ a_n(\lambda)=\operatorname{arcosh}
+            \!\left(1+\frac{\lambda^2}{32n^2}\right).
+\]
+The functions \(\cosh(j a_n)/\cosh(n a_n)\) solve the scalar recurrence, have boundary value \(1\), and lie between \(0\) and \(1\). Bounded spectral calculus and uniqueness therefore identify the central vector as
+\[
+ u_0=f_n(L)\theta,\qquad
+ f_n(\lambda)=\frac1{\cosh(n a_n(\lambda))}.
+\]
+Since \(\cosh r-1\sim r^2/2\) at zero,
+\(n a_n(\lambda)\to|\lambda|/4\). Spectral dominated convergence, with \(|f_n|\leq1\), gives \(u_0\to f(L)\theta\). Closedness of the cone order interval proves the claim.
+
+**The linear equation and its support corner.**
+For \(L=\log D\), the modular group \(D^{it}\) preserves \(P\) by NC-3 and fixes \(\Omega\). The preceding averaging result therefore applies to the vector in CR20.
+
+The bounded spectral expression puts \(\eta\) in \(D(D^{1/2})\). Since \(J\eta=\eta\), reciprocal spectral transport also puts it in \(D(D^{-1/2})\), and \(F_\Omega\eta=D^{1/2}\eta\). Thus
+\(B\Omega=(\eta+F_\Omega\eta)/2\).
+Pairing with \(a\Omega\) and using the full anti-linear adjoint identity gives
 <a id="equation-cr22"></a>
-
 \[
  \psi(a)=\tfrac12\{\langle a\Omega,\eta\rangle+
-                         \langle a\eta,\Omega\rangle\},\qquad a\in M.
- \tag{CR22}
+                         \langle a\eta,\Omega\rangle\}
+ \qquad(a\in M).                                               \tag{CR22}
 \]
-For \(\Omega=0\), the dominated functional and required vector are zero. For a general nonzero \(\Omega\in P\), apply this proof in its support corner from [CR-3](OA-FLOW-CR.md#oa-flow.cr.3). If \(\psi\leq\omega_\Omega\), then \(\psi(1-p_\Omega)=0\); positive-functional Cauchy–Schwarz proves
-\(\psi(a)=\psi(p_\Omega a p_\Omega)\). Thus the corner formula ([CR22](OA-FLOW-CR.md#equation-cr22)) is the same formula for every \(a\in M\), with \(0\leq_P\eta\leq_P\Omega\).
 
-Now fix \(\psi\leq\omega_{\xi_0}\), \(\xi_0\in P\). Apply ([CR22](OA-FLOW-CR.md#equation-cr22)) to the defect \(\omega_{\xi_0}-\psi\), and divide its resulting cone vector by two. Obtain \(0\leq_P\eta_0\leq_P\xi_0/2\) such that, putting \(\xi_1=\xi_0-\eta_0\),
+For a general nonzero \(\Omega\in P\), perform this construction in its standard support corner from CR-3. Domination gives
+\(\psi(1-p_\Omega)=0\), and positive-functional Cauchy–Schwarz gives
+\(\psi(a)=\psi(p_\Omega a p_\Omega)\).
+The corner formula is therefore CR22 on every \(a\in M\), with \(0\leq_P\eta\leq_P\Omega\). If \(\Omega=0\), both \(\psi\) and \(\eta\) are zero.
 
-<a id="equation-cr23"></a>
-
+**A minimal upper vector represents the functional exactly.**
+For \(\psi\leq\omega_\Omega\), consider
 \[
- \omega_{\xi_1}-\psi=\omega_{\eta_0},\qquad
- \|\omega_{\xi_1}-\psi\|=\|\eta_0\|^2
- \leq\tfrac12\langle\eta_0,\xi_0\rangle
- =\tfrac14\|\omega_{\xi_0}-\psi\|.
- \tag{CR23}
+ \mathcal S=\{\xi\in P:\xi\leq_P\Omega,\ \psi\leq\omega_\xi\}.
 \]
-All inner products used for the inequality are between ordered cone vectors. Repeat this step. The errors tend geometrically to zero, and [CR-6](OA-FLOW-CR.md#oa-flow.cr.6)'s closed-image assertion gives a cone vector \(\xi_\psi\) with \(\omega_{\xi_\psi}=\psi\).
+This set contains \(\Omega\). Every chain in \(\mathcal S\) has a lower bound there. Order the chain downwards. For comparable \(0\leq_P\eta\leq_P\xi\), self-duality gives
+\[
+ \|\xi-\eta\|^2\leq\|\xi\|^2-\|\eta\|^2.
+\]
+For a nonempty chain, the norms decrease to their infimum, so this decreasing chain is a norm-Cauchy net: in a tail where the squared norms lie within \(\delta\) of their infimum, the squared distance between any two comparable vectors is at most \(\delta\). To obtain its limit from Hilbert completeness, choose increasing net indices in tails of diameter at most \(1/k\). The selected sequence is Cauchy and converges; for each such tail, every later net member is within its diameter of the selected point. Thus the entire net converges to the same limit. No cofinal sequence is required. The limit \(\zeta\) is in \(P\), below every chain member, and below \(\Omega\). Vector-functional norm continuity shows \(\psi\leq\omega_\zeta\). Hence \(\zeta\in\mathcal S\). The empty chain has the lower bound \(\Omega\in\mathcal S\).
+
+The [maximal principle](OA-FLOW-CF.md#OA-FLOW.CF.1) applied to the reversed order gives a minimal \(\xi\in\mathcal S\). If the positive defect \(d=\omega_\xi-\psi\) were nonzero, apply CR22 to \(d\leq\omega_\xi\) and divide its resulting vector by two. This gives a nonzero \(0\leq_P\eta\leq_P\xi/2\) with
+\[
+ d(a)=\langle a\xi,\eta\rangle+\langle a\eta,\xi\rangle.
+\]
+Expansion then yields
+<a id="equation-cr23"></a>
+\[
+ \omega_{\xi-\eta}-\psi=\omega_\eta\geq0,\qquad
+ 0\leq_P\xi-\eta<_P\xi\leq_P\Omega.                             \tag{CR23}
+\]
+Thus \(\xi-\eta\) is a strictly smaller member of \(\mathcal S\), a contradiction. The defect is zero, so \(\psi=\omega_\xi\), as required.
+
+![The direct cone-order inverse, a seven-node positive Dirichlet grid, and the scalar central filters converging to sech(lambda/4).](../assets/cone-representation/cone-order-dirichlet.svg)
+
+The first panel shows the full adjoint-domain construction of [CR-5](OA-FLOW-CR.md#oa-flow.cr.5). The second uses \(n=3\), \(\varepsilon=1/12\), fixed endpoints \(\theta\), and the proved bound \(\|T^6\|\leq63/64\). The third plots the exact scalar formulas \(f_n(\lambda)=\operatorname{sech}(2n\operatorname{arsinh}(|\lambda|/(8n)))\) for \(n=1,3,8\), alongside their limit. These curves are numerical samples; the finite-grid proof above establishes the strong spectral limit for the full operator.
+
+[Figure source](../assets/cone-representation/render_cone_representation.py) · [Scalar checks and samples](../assets/cone-representation/cone-order-numerics.json) · [PNG](../assets/cone-representation/cone-order-dirichlet.png)
 
 <a id="oa-flow.cr.8"></a><a id="cr-8"></a>
 

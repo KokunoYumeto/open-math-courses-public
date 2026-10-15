@@ -6,7 +6,7 @@ A quotient algebra identifies elements that differ by an ideal. Lifting a map ou
 
 We prove that a completely positive map with finite-dimensional completely positive approximations lifts whenever its domain is separable. We also prove that the class of all liftable completely positive maps is closed under pointwise norm limits on such a domain. The quotient algebra and its ideal need not be separable. Finite-domain compression and spectral clipping supply bounded lifts before the sequence argument is applied.
 
-Prerequisites are [Completely positive finite models](completely-positive-finite-models.md), continuous functional calculus and the quotient norm formula for C*-algebras, Hahn–Banach and Banach–Alaoglu, and Hilbert completion. The scalar GNS realization and faithful representation are constructed from the exact [unital dilation below](#unital-dilation). Lemma 2.1 constructs the approximate identity and proves the ideal-support argument in representations. Section 4 proves the nonunital cutoffs directly at every matrix size. Section 6 uses the [full unital Stinespring proof](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html#oa-fnd-cm-05); the finite-matrix criterion and the full extension proof are linked where used below.
+Prerequisites are [Completely positive finite models](completely-positive-finite-models.md), the exact retained scalar and Hilbert foundations, and the [bounded square-root construction](../normal-representations-and-finite-trace-corners.html#na-square-root). The retained foundations prove continuous functional calculus, Hahn–Banach, product compactness and Hilbert completion. The finite-model lesson proves the matrix criterion, the compactness of dual balls and the full operator-system extension theorem. Lemma 2.1 constructs the approximate identity and proves the ideal-support argument; the quotient norm is proved immediately afterward. Section 4 proves the nonunital cutoffs at every matrix size. The full [unital dilation, faithful scalar representation and multiplicative-domain arguments](#unital-dilation) are given in Section 6.
 
 Unital algebras in the unital assertions are nonzero. Inner products are linear in the second variable.
 
@@ -56,6 +56,8 @@ is a cpc lift of \(x\mapsto(\beta_0(x),\beta_1(x))\). Positivity is checked at e
 
 ## 2. An ideal can be cut off almost centrally
 
+An approximate identity in this lesson is a net of positive contractions whose left and right multiplication on each element of the ideal converge in norm to that element. The same convention applies to an approximate identity of a whole C*-algebra. Such a net need not increase in operator order.
+
 A positive contractive approximate identity \((u_i)\) of \(J\) is **quasicentral in \(B\)** if \(\|u_ib-bu_i\|\to0\) for every \(b\in B\).
 
 Convexity is useful here because a finite convex combination of positive contractions remains a positive contraction. A **convex approximate identity** is an approximate identity organized in a subset of \(J\) that is convex. For the construction below, we use convex combinations from a common late tail: if every element in that tail approximates multiplication on a finite list from \(J\) within a chosen tolerance, each such combination retains those estimates. No assertion that an arbitrary approximate identity is increasing in operator order is needed.
@@ -84,7 +86,7 @@ The weak convergence argument below applies to any positive contractive approxim
 
 We spell out the separation fact needed for the norm-closure step. If a nonempty convex set \(C\) in a real normed space has positive distance \(d\) from zero, then \(U=C+\{v:\|v\|<d/2\}\) is open and convex and omits zero. Choose \(u_0\in U\). The open convex neighbourhood \(V=U-u_0\) of zero has the finite sublinear gauge
 \(p(v)=\inf\{t>0:v\in tV\}\).
-Positive homogeneity follows by rescaling the defining infimum. If \(v\in sV\) and \(w\in tV\), convexity gives \((v+w)/(s+t)\in V\); letting \(s,t\) decrease to the two gauges proves subadditivity. The gauge is bounded above by a multiple of \(\|v\|\), since \(V\) contains a ball. Also \(p(-u_0)\ge1\), since \(-u_0\notin V\). The linear functional on the line through \(-u_0\) taking that vector to one is dominated by \(p\): for positive multiples use homogeneity and this last bound, and for negative multiples its value is nonpositive while the gauge is nonnegative. The complete real Hahn–Banach proof in [CF, Section 1](../../OA-FLOW/OA-FLOW-CF.html#oa-flow.cf.1) extends it to \(F\le p\). Bounds on \(F(v)\) and \(F(-v)\) make \(F\) continuous. Since \(p(v)<1\) on \(V\), we have \(F(u)<0\) on \(U\), and taking the supremum over its added ball gives
+Positive homogeneity follows by rescaling the defining infimum. If \(v\in sV\) and \(w\in tV\), convexity gives \((v+w)/(s+t)\in V\); letting \(s,t\) decrease to the two gauges proves subadditivity. The gauge is bounded above by a multiple of \(\|v\|\), since \(V\) contains a ball. Also \(p(-u_0)\ge1\), since \(-u_0\notin V\). The linear functional on the line through \(-u_0\) taking that vector to one is dominated by \(p\): for positive multiples use homogeneity and this last bound, and for negative multiples its value is nonpositive while the gauge is nonnegative. The complete real Hahn–Banach proof in CF, Section 1 extends it to \(F\le p\). Bounds on \(F(v)\) and \(F(-v)\) make \(F\) continuous. Since \(p(v)<1\) on \(V\), we have \(F(u)<0\) on \(U\), and taking the supremum over its added ball gives
 \[
 F(c)\le-(d/2)\|F\|<0\quad(c\in C).
 \]
@@ -133,7 +135,7 @@ therefore converge weakly to zero. Indeed, every bounded functional on the finit
 The positive approximate identity in the first paragraph of Lemma 2.1 also proves that every closed two-sided ideal \(J\) is self-adjoint. For \(j\in J\), its right multiplication approximation gives
 \(e_i j^*=(j e_i)^*\to j^*\); each left side belongs to \(J\), so closedness gives \(j^*\in J\). This argument does not assume self-adjointness to construct the approximate identity: both \(x^*x\) and \(xx^*\) already lie in a two-sided ideal containing \(x\), and the inverse in its cutoff is computed in \(B^\dagger\).
 
-The Banach quotient is complete by the explicit summable-representative argument in [CF, Section 4](../../OA-FLOW/OA-FLOW-CF.html), and its involution is isometric because \(J=J^*\). Let \((e_i)\) be the positive contractive approximate identity just constructed. The quotient of \(b(1-e_i)\) is \(q(b)\), giving
+The Banach quotient is complete by the explicit summable-representative argument in CF, Section 4, and its involution is isometric because \(J=J^*\). Let \((e_i)\) be the positive contractive approximate identity just constructed. The quotient of \(b(1-e_i)\) is \(q(b)\), giving
 \(\|q(b)\|\le\|b(1-e_i)\|\).
 For any \(j\in J\),
 \[
@@ -157,7 +159,7 @@ For the forced unitizations of Section 4, the formula
 \[
 q^\dagger(b+\lambda1)=q(b)+\lambda1
 \]
-is a surjective unital star homomorphism with kernel precisely \(J\). The multiplication, scalar character and norm are the complete construction in [CF, Section 9](../../OA-FLOW/OA-FLOW-CF.html). Hence \(B^\dagger/J\) is star isomorphic to \((B/J)^\dagger\). This isomorphism is isometric: an algebraic unital star isomorphism and its inverse are contractive by the spectral/norm proof in CF, Section 6. The argument includes \(J=B\), zero algebras and already unital \(B\); no older unit is identified with the newly adjoined one.
+is a surjective unital star homomorphism with kernel precisely \(J\). The multiplication, scalar character and norm are the complete construction in CF, Section 9. Hence \(B^\dagger/J\) is star isomorphic to \((B/J)^\dagger\). This isomorphism is isometric: an algebraic unital star isomorphism and its inverse are contractive by the spectral/norm proof in CF, Section 6. The argument includes \(J=B\), zero algebras and already unital \(B\); no older unit is identified with the newly adjoined one.
 
 **Lemma 2.2.** For a quasicentral approximate identity \((u_i)\), both \(u_i^{1/2}\) and \((1-u_i)^{1/2}\) asymptotically commute with every \(b\in B\). Moreover
 \[

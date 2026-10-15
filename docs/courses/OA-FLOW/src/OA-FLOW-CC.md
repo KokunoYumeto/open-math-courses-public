@@ -411,7 +411,7 @@ Bounded strong convergence is ultraweak convergence by [CP](OA-FLOW-CP.md#oa-flo
 
 <a id="oa-flow.cc.7"></a><a id="cc-7"></a>
 
-## CC-7. A faithful n.s.f. invariant scalar composition, with the modular boundary retained
+## CC-7. The invariant scalar weight
 
 Transport \(\varphi\) to \(F\) through \(\Pi\), and denote the result by \(\varphi_F\). Define
 
@@ -433,13 +433,13 @@ Transport \(\varphi\) to \(F\) through \(\Pi\), and denote the result by \(\varp
 \]
 Since \(xu_i\to x\) strongly and \(N_E\) is weakly dense, GW's finite-ideal criterion proves semifiniteness. The extension's faithfulness on the entire extended cone gives faithfulness of \(\omega\). Reindexing the sum gives \(\omega\circ\beta=\omega\).
 
-This construction and invariance do not by themselves identify \(\sigma^\omega\), prove a crossed-product modular-generator formula, or descend every invariant weight. Those are distinct conclusions.
+For the modular group of this weight, continue to [CD-3](OA-FLOW-CD.md#oa-flow.cd.3). Its proof uses modular restriction and the centralizer calculation; [CD-4](OA-FLOW-CD.md#oa-flow.cd.4) then gives the affiliated clock and the normalized trace.
 
 <a id="cc-clock"></a>
 
 <a id="oa-flow.cc.8"></a><a id="cc-8"></a>
 
-## CC-8. The spectral clock and exact sign, without a modular-group inference
+## CC-8. The spectral clock and its dual scaling
 
 The orthogonal Fourier projections define the nonsingular positive selfadjoint operator
 
@@ -469,7 +469,7 @@ If an application writes \(L=-\log\lambda>0\) and \(P=2\pi/L\), then \(\kappa=L\
 \beta(\ell(t))=e^{-iLt}\ell(t),\qquad \beta(H_0)=\lambda H_0.
 \tag{CC37}
 \]
-These are the constructed compact-action signs. We have not proved \(\sigma_t^\omega=\operatorname{Ad}(H_0^{it})\), or centralizer affiliation with respect to \(\omega\); neither follows merely from the algebraic clock or from weight invariance. Therefore no trace-conversion application is asserted yet.
+The clock acts on the regular representation. [CD-3](OA-FLOW-CD.md#oa-flow.cd.3) relates it to the canonical GNS modular operator, and [CD-4](OA-FLOW-CD.md#oa-flow.cd.4) proves centralizer affiliation and trace conversion. Those proofs use the weight as well as the algebraic clock.
 
 For the simplest exact example, take \(M=\mathbb C\), \(\varphi(a)=a\) for \(a\geq0\), and the trivial action with any \(P>0\). In Fourier coordinates \(B=\ell^\infty(\mathbb Z)\), \(F=\mathbb C I\), and
 
@@ -484,7 +484,7 @@ To justify \(B=\ell^\infty\), its generators are diagonal by ([CC8](OA-FLOW-CC.m
 
 The accompanying original illustration displays the negative dual shift, the bounded values of individual and finite collections of Fourier projections, and the fixed-algebra Fourier-block mechanism. All finite windows are explicitly samples of the complete integer-indexed statements.
 
-This chapter closes the constructed counting-average theorem at its exact earlier inputs. It assumes the given modular period and supplies no type classification, compact factoriality, compact double-duality identification, arbitrary-cocycle realization, invariant-weight descent, natural-cone realization or diameter theorem.
+The construction applies to every given modular period \(P\); the scalar example shows why such a period need not be a minimal period or determine a type parameter.
 
 ### Fourier projections, counting values and the actual fixed algebra
 
@@ -516,6 +516,6 @@ D(H_0)=\left\{\xi:\sum_n2^{-2n}\|e_n\xi\|^2<\infty\right\}.
 \]
 Finite Fourier sums form a graph core. For nonzero \(H_\varphi\), both \(H_0\) and its inverse are unbounded. Spectral transport gives \(H_0^{it}=\ell(t)\) and \(\beta(H_0)=\tfrac12H_0\), with its entire transported domain equal to \(D(H_0)\). These are exact operator statements proved in [CC-8, CC35–CC37](OA-FLOW-CC.md#cc-clock). The example \(M=\mathbb C\) with trivial action permits any such given \(P\), and gives \((\beta b)_n=b_{n+1}\), \(E(b)=(\sum_n b_n)I\), as proved in [CC38](OA-FLOW-CC.md#equation-cc38). It makes no assertion about a minimal modular period or a type classification.
 
-The scalar composition \(\omega=\widehat{\varphi_F}\circ E\) is faithful normal semifinite and invariant under \(\beta\), by [CC-7](OA-FLOW-CC.md#cc-counting-composition). This package does not identify its modular group or prove that \(H_0\) belongs to that weight's centralizer. Those are separate proofs, as are invariant-weight descent, compact double duality and classification.
+The scalar composition \(\omega=\widehat{\varphi_F}\circ E\) is faithful normal semifinite and invariant under \(\beta\), by [CC-7](OA-FLOW-CC.md#cc-counting-composition). The continuation [CD-3–4](OA-FLOW-CD.md#oa-flow.cd.3) proves its modular formula, the clock's centralizer affiliation, and the exact trace normalization.
 
 The free author context used for the regular representation and ordinary dual-action convention is [Echterhoff, Remark 3.2, p.8](https://arxiv.org/pdf/1006.4975v4#page=8) and [§6.2, p.31](https://arxiv.org/pdf/1006.4975v4#page=31). The extended-positive/OVW context is [Hiai, §§8.1–8.2, pp.68–71](https://arxiv.org/pdf/2004.02383v1#page=68); the complete earlier local EP proof is bound separately. The figure itself is independently constructed from CC's proved formulas.

@@ -87,7 +87,12 @@ Locally these germs are the germs of a single affine map. Indeed take a convex n
 
 **Proof.** Extend a local affine isomorphism and its inverse separately by A.3. Their two compositions are affine: apply (A.3) successively, or substitute the chain rule in (A.2). On the original open sets those compositions are the identity. A.1 on each connected manifold makes them the identity everywhere. Hence the extensions are inverse diffeomorphisms.
 
-For the metric statements, [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1) gives the Levi-Civita coefficients from the metric and its first derivatives by matrix inversion. They are analytic by [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1). Hopf–Rinow B.2 identifies Riemannian completeness with geodesic completeness, so A.3 extends the given affine map. Put \(B=f^*g_N-g_M\). The metric-compatibility and tensor-derivative rules in [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1), applied with \(\nabla df=0\), give \(\nabla B=0\). It is zero initially. Along every piecewise smooth path its components in a parallel frame are constant, by [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2) and C.1; therefore it is zero everywhere on connected \(M\). Such paths exist by the coordinate-ball path argument in [Curvature and holonomy C.4](curvature-and-holonomy-groups.md#lemma-c-4). Thus \(df\) is an isometric injection at every point, proving immersion. In equal dimensions the inverse function theorem makes it a local isometry. A local isometry is affine by [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3); applying the first part to it and its inverse proves the final assertion. □
+For the metric statements, [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1) gives the Levi-Civita coefficients from the metric and its first derivatives by matrix inversion. They are analytic by [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1). Hopf–Rinow B.2 identifies Riemannian completeness with geodesic completeness, so A.3 extends the given affine map. Put \(B=f^*g_N-g_M\). The metric-compatibility and tensor-derivative rules in [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1), applied with \(\nabla df=0\), give \(\nabla B=0\). It is zero initially. Along every piecewise smooth path its components in a parallel frame are constant, by [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2) and C.1; therefore it is zero everywhere on connected \(M\). Such paths exist by the coordinate-ball path argument in [Curvature and holonomy C.4](curvature-and-holonomy-groups.md#lemma-c-4). Thus \(df\) is an isometric injection at every point, proving immersion. In equal dimensions the inverse function theorem makes it a local isometry. A local isometry is affine by [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3); applying the first part to it and its inverse proves the final assertion.
+
+For clarity, the geometric condition on an isometric immersion is exactly that it be totally geodesic. Here is the proof without assuming a submanifold formula. If \(f\) is an isometric immersion, orthogonal projection of the pullback connection onto \(df(TM)\) defines a connection \(\widetilde\nabla\) on \(TM\). The projection is smooth: in a local source frame its matrix is obtained from the inverse of the positive Gram matrix of the columns of \(df\). Differentiating their inner products proves metric compatibility of \(\widetilde\nabla\). In target coordinates the second derivatives of \(f\) cancel in
+\(\nabla'_Ydf(Z)-\nabla'_Zdf(Y)-df([Y,Z])\); the remaining target Christoffel difference vanishes because target torsion is zero. Its tangent projection proves that \(\widetilde\nabla\) has zero torsion. Uniqueness in [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1) therefore gives \(\widetilde\nabla=\nabla\).
+
+Consequently the affine defect \(\mathrm{II}(Y,Z)=(\nabla df)(Y,Z)\) is normal to \(df(TM)\) and symmetric in \(Y,Z\). For a source geodesic \(c\), its image acceleration is \(\mathrm{II}(\dot c,\dot c)\), by (A.3) with the defect retained. Thus \(f\) is affine precisely when \(\mathrm{II}=0\), and this is equivalent to sending all source geodesics to target geodesics with the same affine parameter. The converse uses geodesics with every initial velocity and polarization of the symmetric bilinear tensor \(\mathrm{II}\). This is the totally geodesic condition. In equal dimensions the normal space is zero, recovering the affine property of every local isometry. □
 
 ## B. The connection in a radial parallel frame
 
@@ -199,7 +204,9 @@ For sufficiency use the paired normal coordinates and frames of B.2. Fix \(z\) i
 
 A tensor's derivative in a parallel frame is its covariant derivative in the curve direction, by [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1). The radial velocity is itself parallel. Repeating that identity shows that the \(m\)-th derivative at zero of any radial tensor component is the corresponding component of \(\nabla^m T\) or \(\nabla^m R\), with \(u_0z\) in all \(m\) derivative slots. Condition (B.9) makes these derivatives equal for every \(m\), in the paired frames. The convergent Taylor series make their difference zero near \(t=0\), and A.2 on the interval makes it zero at \(t=1\). This argument is applied separately to each \(z\); it does not assume one convergence radius for infinitely many derivatives or rays.
 
-Thus the radial components agree throughout the common normal domain. B.2 supplies (B.7) as an affine local diffeomorphism with the required one-jet. A.1 gives uniqueness of the germ, and A.4 proves the stated global extension. □
+Thus the radial components agree throughout the common normal domain. B.2 supplies (B.7) as an affine local diffeomorphism with the required one-jet. A.1 gives uniqueness of the germ, and A.4 proves the stated global extension.
+
+For Levi-Civita connections, an orthogonal \(F\) matching all curvature jets gives a local isometry. Torsion and all its derivatives are zero, so the theorem first gives the affine local diffeomorphism. Its metric defect \(f^*g_N-g_M\) is parallel by the tensor product rule, and vanishes at the initial point because \(F\) is orthogonal. Transport along paths in a connected normal neighbourhood makes it zero throughout that neighbourhood, exactly as in A.4. Thus matching the metric and all curvature derivatives at one point suffices in the analytic case. Example D.2 below shows why smooth jets alone do not suffice. □
 
 ## C. Parallel torsion and curvature produce analytic coordinates
 
@@ -217,7 +224,18 @@ This is a linear system with coefficients polynomial in the parameter \(z\) and 
 
 This proves analyticity in each normal chart separately. To check their compatibility, take a transition between two overlapping normal charts. It is a smooth affine local diffeomorphism between the two coordinate connections, since both describe the same connection on the original manifold. Each coordinate connection is analytic by the preceding paragraph, so A.1 makes the transition analytic at every point of its domain. Thus these charts really define an analytic atlas compatible with the original smooth structure.
 
-For two connections as in the statement, the assumed isomorphism makes \(\mathsf T_0,\mathsf R_0\) equal in paired initial frames. They remain constant along all radii, so B.2 constructs the local affine isomorphism. A.1 gives uniqueness. The newly proved analytic atlases allow A.4 to be applied under the global completeness and simple-connectedness hypotheses. No analyticity assumption on the original smooth data was used. □
+For two connections as in the statement, the assumed isomorphism makes \(\mathsf T_0,\mathsf R_0\) equal in paired initial frames. They remain constant along all radii, so B.2 constructs the local affine isomorphism. A.1 gives uniqueness. The newly proved analytic atlases allow A.4 to be applied under the global completeness and simple-connectedness hypotheses. No analyticity assumption on the original smooth data was used.
+
+These assertions also characterize local invariance under every parallel transport. If \(\nabla T=\nabla R=0\), transport \(P:T_pM\to T_qM\) along any path carries the two tensors to their endpoint values, by [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1); the theorem gives a local affine map with differential \(P\). Conversely, suppose every such transport is the differential of a local affine map between its endpoints. Naturality in B.2 implies that all these transports preserve \(T,R\). In a parallel frame along any curve their components are therefore constant. Differentiating at its initial point in any initial direction gives \(\nabla T=\nabla R=0\). On a connected complete simply connected manifold, the local maps extend globally by A.4; a path between any two points then gives an affine transformation carrying one to the other. The affine transformation group is consequently transitive, including when torsion is nonzero.
+
+For a Levi-Civita connection with \(\nabla R=0\), an orthogonal tensor-preserving initial map gives an isometry by the parallel-metric argument of B.3. In particular \(-I:T_pM\to T_pM\) preserves \(R_p\): acting on its three inputs and on its output gives the same minus sign. It also preserves the zero torsion. The resulting local map is
+\(s_p(\exp_pv)=\exp_p(-v)\); its square has identity first jet, hence is the identity by A.1. On a complete simply connected manifold it extends to a global involutive isometry by A.4. If torsion is nonzero, \(-I\) reverses its output while its two input signs cancel, so this conclusion is not available from parallel torsion alone.
+
+Finally, connected complete simply connected Riemannian manifolds of the same constant sectional curvature are isometric. [Sectional curvature A.1](sectional-curvature-and-space-forms.md#theorem-a-1) gives
+\[
+R(u,v)w=c\bigl(g(v,w)u-g(u,w)v\bigr).
+\]
+Metric compatibility and constant \(c\) make this tensor parallel. Any orthogonal initial map preserves it, so the theorem and the preceding parallel-metric argument give a global isometry. □
 
 ## D. Examples that distinguish the hypotheses
 
@@ -238,7 +256,16 @@ x(t)=\phi^{-1}\bigl(\phi(x_0)+(1+3x_0^2)v_0t\bigr),
 \qquad t\in\mathbb R.
 \tag{D.2}
 \]
-Differentiating \(\phi(x(t))\) twice gives the geodesic equation; its value and derivative at zero are the required data. [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1) proves uniqueness, and the formula proves completeness. Torsion and curvature are alternating in their first two inputs, by their definitions and [Geodesics C.1](geodesics-normal-coordinates-and-curvature.md#theorem-c-1). In one dimension any two inputs are dependent, so both tensors vanish. Nonzero coordinate coefficients consequently do not certify nonzero curvature. □
+Differentiating \(\phi(x(t))\) twice gives the geodesic equation; its value and derivative at zero are the required data. [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1) proves uniqueness, and the formula proves completeness. Torsion and curvature are alternating in their first two inputs, by their definitions and [Geodesics C.1](geodesics-normal-coordinates-and-curvature.md#theorem-c-1). In one dimension any two inputs are dependent, so both tensors vanish. Nonzero coordinate coefficients consequently do not certify nonzero curvature.
+
+Zero curvature does not imply completeness either. On the same underlying line take instead \(\Gamma(x)=x^2\), and set
+\[
+\psi(x)=\int_0^x e^{s^3/3}\,ds,\qquad
+a=-\int_{-\infty}^{0}e^{s^3/3}\,ds.
+\]
+The improper integral is finite: for \(s\leq-1\), \(s^3\leq s\), and the tail is bounded by the integral of \(e^{s/3}\); on \([-1,0]\) it is continuous. Its positive integrand makes \(a<0\). Also \(\psi'=e^{x^3/3}>0\), \(\psi''=x^2\psi'\), and \(\psi(x)\to+\infty\) as \(x\to+\infty\), since the integrand is at least one for \(x\geq0\). Monotonicity, the intermediate value theorem and local inversion therefore make \(\psi\) a diffeomorphism from \(\mathbb R\) onto \((a,\infty)\). It and its inverse are analytic: integrate the locally absolutely convergent series term by term, using [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1), and apply its analytic inverse result.
+
+Equation (A.2) says exactly that \(\psi\) is affine into the flat line. The flat geodesic \(y(t)=\psi(x_0)-t\) approaches \(a\) at the finite time \(\psi(x_0)-a\). Its inverse image tends to \(-\infty\), and cannot extend through that time as a curve in the source line. Hence this analytic flat connection is incomplete. The local inverse of \(\psi\) cannot extend to an affine map from all of the flat line into it: composing such an extension with \(\psi\) would give a flat affine map equal to the identity on an interval, hence equal to the identity everywhere by A.1, whereas its image would lie in \((a,\infty)\). This also distinguishes a globally defined affine map from an onto affine isomorphism. □
 
 **Example D.2 (Missing hypotheses and an unequal-dimensional extension).** Target completeness, source simple connectedness and analyticity cannot be discarded from A.3 in general. By contrast, completeness of the source, equal dimensions and injectivity of the differential are unnecessary.
 
@@ -289,7 +316,48 @@ Finally let \(M=(-1,1)\times\mathbb R\), with ordinary differentiation, and let 
 f(x,y)=(x,0,0)
 \tag{D.5}
 \]
-has rank one and satisfies (A.2) because all its second derivatives and all connection coefficients vanish. The strip is convex, hence connected and simply connected by straight-line contraction, but incomplete: the horizontal unit-speed geodesic starting at zero leaves it at time one. The target is complete. The restriction to any nonempty connected open subset extends by (D.5) to the whole strip, uniquely by A.1. This gives an explicit instance of A.3 with unequal dimensions, noninjective differential and incomplete source. □
+has rank one and satisfies (A.2) because all its second derivatives and all connection coefficients vanish. The strip is convex, hence connected and simply connected by straight-line contraction, but incomplete: the horizontal unit-speed geodesic starting at zero leaves it at time one. The target is complete. The restriction to any nonempty connected open subset extends by (D.5) to the whole strip, uniquely by A.1. This gives an explicit instance of A.3 with unequal dimensions, noninjective differential and incomplete source.
+
+There is a one-dimensional monodromy example as well. The flat circle is \(\mathbb R/\mathbb Z\), with its quotient connection and complete lifted straight geodesics, as in [Geodesics F.2](geodesics-normal-coordinates-and-curvature.md#example-f-2). A local germ \([x]\mapsto[ax+b]\) can extend to a global affine map only if \(a\in\mathbb Z\). Indeed the derivative of a global affine map is constant in the parallel frame; lifting the image of the unit loop makes its endpoint displacement \(a\), which must be integral. Conversely integer \(a\) makes the displayed formula well defined. A global affine automorphism requires \(a=\pm1\): its inverse has slope \(a^{-1}\), also integral. Thus slope two extends to a covering but not an automorphism, and slope one-half does not extend even to a global map.
+
+Smooth curvature jets can match to every order without giving any local equivalence. To see this explicitly, use the flat function of [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) to define
+\[
+\begin{gathered}
+b(s)=\begin{cases}e^{-1/(1-s^2)},&|s|<1,\\0,&|s|\geq1,\end{cases}\\
+f(x)=\epsilon b(x-3),\\
+g_1=e^{2f(x)}(dx^2+dy^2).
+\end{gathered}
+\]
+The flat-function proof and composition show smoothness, with every derivative of \(f\) zero at \(x=2\). Hence at \(p=(2,0)\) the metric jets, connection jets, and all covariant curvature jets agree with those of the flat plane. The metric is complete, since \(0\leq f\leq\epsilon/e\) gives the same two-sided distance comparison used above. Substituting its Christoffel coefficients in the curvature formula, as in (D.4), gives
+\[
+\begin{gathered}
+K_{g_1}=-e^{-2f}f'',\\
+b''(s)=\frac{2b(s)(3s^4-1)}{(1-s^2)^4}\quad(|s|<1).
+\end{gathered}
+\]
+In particular \(K_{g_1}(3,y)=2\epsilon e^{-1-2\epsilon/e}>0\), while \(b''\ne0\) just to the right of \(s=-1\). Every neighbourhood of \(p\) therefore contains a point of nonzero curvature. No flat neighbourhood can be locally isometric onto a neighbourhood of \(p\): its open image would have zero curvature everywhere by curvature naturality. This disproves the smooth analogue of B.3 even when both metrics are complete and simply connected. The identity on the flat strip \((-1,1)\times\mathbb R\) also cannot extend to a global local isometry onto this target, by the complete-local-isometry argument already given.
+
+An analytic isometric immersion can fail to extend even differentiably. On \(U=(-1,1)\subset\mathbb R\), put
+\[
+\begin{gathered}
+\theta(t)=(1-t)^{-1},\\
+\gamma(t)=\int_0^t(\cos\theta(s),\sin\theta(s))\,ds.
+\end{gathered}
+\]
+The elementary trigonometric functions and their identities are proved in [Riemannian connections D.1](riemannian-connections-and-convex-neighbourhoods.md#lemma-d-1); analytic composition and termwise primitives follow from [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1). Thus \(\gamma\) is analytic and \(|\gamma'|=1\), so it is isometric for the standard line and plane metrics. Both ambient manifolds are complete and simply connected. But at
+\[
+\begin{gathered}
+t_k=1-(2\pi k)^{-1},\\
+s_k=1-(2\pi k+\pi)^{-1},\quad k\geq1,
+\end{gathered}
+\]
+its derivatives are respectively \((1,0)\) and \((-1,0)\). Both sequences tend to one; no continuous derivative at one is possible. The curve therefore has no \(C^1\) extension to the source line. The affine hypothesis in A.4 cannot be replaced by the isometric-immersion hypothesis.
+
+For a curved target and deficient rank, the earlier hyperboloid model gives another explicit example. On the unit disk \(s^2+t^2<1\) with the flat connection set
+\[
+F(s,t)=(\cosh(2s),\sinh(2s),0,0)\in\mathbb H^3.
+\]
+[Sectional curvature C.1–C.2](sectional-curvature-and-space-forms.md#theorem-c-1) proves the induced connection, completeness, analyticity and the geodesic \(u\mapsto(\cosh u,\sinh u,0,0)\). Its derivative has constant norm one and its ambient second derivative is the normal position vector, so its intrinsic acceleration is zero. The two differential columns of \(F\) are twice this geodesic velocity and zero. Differentiating them covariantly gives zero in both source directions, proving \(\nabla dF=0\). Its rank is one; the disk is convex and simply connected but its radial geodesics exit in finite time. Thus this is also an instance of A.3 with a curved complete target, unequal dimensions and incomplete source. □
 
 **Exercise D.3 (Extending a spherical local isometry from its one-jet).** Let \(n\geq1\), \(r>0\), and let \(f:U\to S^n_r\) be a local isometry on a connected nonempty open subset of the round sphere. Extend it explicitly to a global isometry using its value and differential at any \(p\in U\). Include \(n=1\).
 
@@ -357,7 +425,32 @@ The coordinate formula for a Lie derivative on a covariant tensor is its directi
 One can check the cancellation slot by slot: on a scalar it is
 \(X^i\partial_i(Y^j\partial_j f)-Y^i\partial_i(X^j\partial_j f)
  =[X,Y]^j\partial_jf\); on a coordinate one-form \(dx^k\), use
-\(\mathcal L_Xdx^k=dX^k\) and the same scalar identity. The product rule gives the identity on tensor products of these one-forms, hence on \(g\). If both Lie derivatives of \(g\) vanish, so does \(\mathcal L_{[X,Y]}g\). Equation (E.3) proves bracket closure. □
+\(\mathcal L_Xdx^k=dX^k\) and the same scalar identity. The product rule gives the identity on tensor products of these one-forms, hence on \(g\). If both Lie derivatives of \(g\) vanish, so does \(\mathcal L_{[X,Y]}g\). Equation (E.3) proves bracket closure.
+
+The affine-field equations have a torsionful version that will also be useful. Temporarily let \(\nabla\) be any linear connection and define
+\[
+\widehat A_X(Y)=[X,Y]-\nabla_XY
+               =-\nabla_YX-T(X,Y).
+\]
+The cancellation of derivatives of a scalar multiplying \(Y\) proves that \(\widehat A_X\) is an endomorphism. A field is infinitesimally affine when its local flow preserves \(\nabla\). Its necessary and sufficient equation is
+\[
+\nabla_Y\widehat A_X=R(X,Y).
+\]
+Indeed the pulled-back connection derivative is (E.4), with the same coordinate pullback calculation regardless of torsion. As operators on vector fields, \(\mathcal L_X=\nabla_X+\widehat A_X\). Thus
+\[
+\begin{aligned}
+(\mathcal L_X\nabla)(Y,Z)
+&=[\mathcal L_X,\nabla_Y]Z-\nabla_{[X,Y]}Z\\
+&=R(X,Y)Z-(\nabla_Y\widehat A_X)Z.
+\end{aligned}
+\]
+Here \([\widehat A_X,\nabla_Y]Z=-(\nabla_Y\widehat A_X)Z\), by the tensor derivative rule. This proves necessity. Conversely this expression zero makes the derivative of the pulled-back connection zero at every time, by the flow law, so the flow preserves it.
+
+For infinitesimally affine \(X,Y\), expansion of \([\mathcal L_X,\mathcal L_Y]=\mathcal L_{[X,Y]}\) gives
+\[
+\widehat A_{[X,Y]}=[\widehat A_X,\widehat A_Y]-R(X,Y).
+\]
+In fact the extra terms are \(R(X,Y)+\nabla_X\widehat A_Y-\nabla_Y\widehat A_X=-R(X,Y)\). The commutator identity for Lie derivatives follows from the same coordinate calculation used above, or directly by viewing vector fields as derivations on smooth functions. Their bracket is the operator commutator; expanding its three double commutators cancels every term in opposite pairs, proving the Jacobi identity. The chain-rule bracket naturality is proved in [Curvature and holonomy A.3](curvature-and-holonomy-groups.md#lemma-a-3). Bracket closure follows directly from operator commutators: if both fields are affine, then \([\mathcal L_X,\nabla_Z]=\nabla_{[X,Z]}\) and the analogous identity for \(Y\). The commutator Jacobi identity gives \([[\mathcal L_X,\mathcal L_Y],\nabla_Z]=\nabla_{[X,[Y,Z]]-[Y,[X,Z]]}=\nabla_{[[X,Y],Z]}\), the affine criterion for their bracket. When torsion is zero, \(\widehat A_X=-\nabla X\), agreeing with (E.1). □
 
 Let
 \[
@@ -455,9 +548,20 @@ A vector killed by that Lie algebra is fixed by its connected holonomy group. In
 
 Apply this to \((\mathcal E,D)\). Analytic orthonormal frames exist by the Gram–Schmidt formula of [Riemannian connections F.2](riemannian-connections-and-convex-neighbourhoods.md#theorem-f-2): its positive square roots are analytic by analytic inversion in [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1). In these frames (E.5) has analytic coefficients. Thus (E.8) is exactly the annihilator just considered, and E.2 identifies its parallel sections with Killing fields. This proves (E.9).
 
-If a Killing field is given on an open subset, its \(D\)-parallel pair is annihilated there by \(R^D\). Differentiating this identity repeatedly, using \(Ds=0\), shows that every full derivative in (E.8) annihilates its value. This can be checked at any point in the subset, so (E.9) extends the pair globally. Parallel uniqueness gives agreement on the whole connected subset and uniqueness on \(M\). Finally, in any analytic coordinate ball, a parallel section is obtained by transport along coordinate radial segments from their centre. The transport is a linear analytic ODE with analytic parameters; [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1) makes its endpoint analytic. The section, and hence its vector component, is analytic locally everywhere. No step used geodesic completeness. □
+If a Killing field is given on an open subset, its \(D\)-parallel pair is annihilated there by \(R^D\). Differentiating this identity repeatedly, using \(Ds=0\), shows that every full derivative in (E.8) annihilates its value. This can be checked at any point in the subset, so (E.9) extends the pair globally. Parallel uniqueness gives agreement on the whole connected subset and uniqueness on \(M\). Finally, in any analytic coordinate ball, a parallel section is obtained by transport along coordinate radial segments from their centre. The transport is a linear analytic ODE with analytic parameters; [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1) makes its endpoint analytic. The section, and hence its vector component, is analytic locally everywhere. No step used geodesic completeness.
 
-**Proposition E.4 (Flow derivatives, parallel transport and holonomy).** Let \(X\) be a globally defined Killing field on a connected Riemannian manifold, not assumed complete. Along its orbit \(\gamma(t)=\phi_t(p)\), let \(P_t:T_pM\to T_{\gamma(t)}M\) be parallel transport. On the orbit interval,
+At a fixed point a finite selection of the tests in (E.8) already defines \(\mathcal K_p\). Begin with \(\mathcal E_p\). If the intersection of finitely many selected kernels is still larger than \(\mathcal K_p\), choose a vector in their difference; some further component test does not annihilate it and strictly lowers the dimension. This happens at most \(\operatorname{rank}\mathcal E\) times. The maximum derivative order among those finitely many tests is sufficient at this point. There is no claim of a uniform order over points or that the first unchanged order terminates the test.
+
+The same argument extends local affine fields for an arbitrary analytic connection on a connected simply connected manifold. On \(TM\oplus\operatorname{End}(TM)\) put
+\[
+\widehat D_Y(v,A)=\begin{pmatrix}
+\nabla_Yv+AY+T(v,Y)\\
+\nabla_YA-R(v,Y)
+\end{pmatrix}.
+\]
+The product rule makes this an analytic vector-bundle connection. Its first parallel equation says \(A=\widehat A_v\), and the second is exactly the torsionful affine equation proved in E.1. Thus its parallel sections correspond precisely to infinitesimally affine fields. A local parallel section is annihilated by every full derivative of its curvature, by differentiating the curvature identity repeatedly. The analytic holonomy and fixed-vector proof already given for a general \((V,D)\) supplies the unique global parallel extension, agreeing on the connected initial open set by parallel uniqueness. No completeness is required. Global fields need not have global flows: a constant translation field on an open Euclidean ball is affine but its trajectories can leave the ball at finite time. □
+
+**Proposition E.4 (Flow derivatives, parallel transport and holonomy).** Let \(X\) be a globally defined infinitesimally affine field for any linear connection on a connected manifold, not assumed complete. In this paragraph write \(A_X=\widehat A_X\) as defined in E.1; for a Killing field this is (E.1). Along its orbit \(\gamma(t)=\phi_t(p)\), let \(P_t:T_pM\to T_{\gamma(t)}M\) be parallel transport. On the orbit interval,
 \[
 P_t^{-1}(d\phi_t)_p=\exp(-t(A_X)_p).
 \tag{E.11}
@@ -469,16 +573,18 @@ For every real \(t\), \(\exp(t(A_X)_p)\) normalizes both full and restricted hol
 \]
 This is a normalizer assertion; membership in \(\mathfrak h_p\) needs a further hypothesis.
 
-**Proof.** Equation (E.2) gives \(\nabla_X A_X=R(X,X)=0\), so
+**Proof.** The torsionful affine equation in E.1 gives \(\nabla_X A_X=R(X,X)=0\), so
 \(P_t^{-1}(A_X)_{\gamma(t)}P_t=(A_X)_p\).
-For \(v\in T_pM\), the variation \(\phi_t(c(s))\), where \(c'(0)=v\), has commuting parameter fields. Zero torsion gives
+For \(v\in T_pM\), the variation \(\phi_t(c(s))\), where \(c'(0)=v\), has commuting parameter fields. Put \(V(t)=(d\phi_t)_pv\). The torsion identity and the definition of \(\widehat A_X\) give
 \[
-D_t((d\phi_t)_pv)=\nabla_{(d\phi_t)_pv}X
-=-(A_X)_{\gamma(t)}(d\phi_t)_pv.
+\begin{aligned}
+D_tV&=\nabla_VX+T(X,V)\\
+&=-(A_X)_{\gamma(t)}V.
+\end{aligned}
 \]
 In the parallel frame this is \(C'_t=-(A_X)_p C_t\), \(C_0=I\). The linear ODE solution is (E.11).
 
-Care is needed because the flow may not exist for a common time on the whole manifold. Fix one piecewise smooth based loop \(c\). Its compact image has a neighbourhood on which the flow is defined for all sufficiently small positive and negative times, by the open flow domain of [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) and a finite subcover. Naturality of transport under a local isometry, [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3), gives
+Care is needed because the flow may not exist for a common time on the whole manifold. Fix one piecewise smooth based loop \(c\). Its compact image has a neighbourhood on which the flow is defined for all sufficiently small positive and negative times, by the open flow domain of [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) and a finite subcover. Naturality of affine transport, A.1 (for local isometries see also [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3)), gives
 \[
 P_t^{-1}P_{\phi_t\circ c}P_t
  =C_tP_cC_t^{-1}
@@ -487,16 +593,16 @@ P_t^{-1}P_{\phi_t\circ c}P_t
 \]
 The left side is transport along a loop formed by the orbit from \(p\), the moved loop, and the reverse orbit. Sweeping \(c\) through the flow is a based homotopy after inserting these orbit segments; hence this new loop is homotopic to \(c\). Consequently, for this fixed \(c\) and all sufficiently small \(|t|\), the right side is in the same full-holonomy coset of restricted holonomy as \(P_c\).
 
-Write \(H=\operatorname{Hol}_p\) and \(H^0=\operatorname{Hol}^0_p\). To prove (E.12), transport the restricted holonomy algebras to form a parallel subbundle \(\mathfrak h\subseteq\mathfrak{so}(TM,g)\). This is well defined: concatenating a path and its reverse identifies the two restricted holonomy groups by conjugation, and full holonomy normalizes restricted holonomy, by [Curvature and holonomy C.5](curvature-and-holonomy-groups.md#theorem-c-5). A radial parallel frame makes this family a smooth constant-rank subbundle; transport preserves it by construction, so its covariant derivatives stay in it by [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1). Curvature takes values in this bundle by [Curvature and holonomy G.3](curvature-and-holonomy-groups.md#theorem-g-3).
+Write \(H=\operatorname{Hol}_p\) and \(H^0=\operatorname{Hol}^0_p\). To prove (E.12), transport the restricted holonomy algebras to form a parallel subbundle \(\mathfrak h\subseteq\operatorname{End}(TM)\). This is well defined: concatenating a path and its reverse identifies the two restricted holonomy groups by conjugation, and full holonomy normalizes restricted holonomy, by [Curvature and holonomy C.5](curvature-and-holonomy-groups.md#theorem-c-5). A radial parallel frame makes this family a smooth constant-rank subbundle; transport preserves it by construction, so its covariant derivatives stay in it by [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1). Curvature takes values in this bundle by [Curvature and holonomy G.3](curvature-and-holonomy-groups.md#theorem-g-3).
 
-Equation (E.2) says \(\nabla A_X\) takes values in \(\mathfrak h\). Its next derivatives do too. The curvature action on an endomorphism, [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1), consequently gives
+The affine equation in E.1 says \(\nabla A_X\) takes values in \(\mathfrak h\). Its next derivatives do too. The curvature action on an endomorphism, [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1), consequently gives
 \[
 [R(Y,Z),A_X]
 =\nabla_Y\nabla_ZA_X-\nabla_Z\nabla_YA_X-\nabla_{[Y,Z]}A_X
 \in\mathfrak h.
 \tag{E.14}
 \]
-For any path from \(p\) to \(q\), integration of (E.2) in a parallel frame also gives
+For any path from \(p\) to \(q\), integration of the same affine equation in a parallel frame also gives
 \[
 P^{-1}(A_X)_qP-(A_X)_p\in\mathfrak h_p:
 \]
@@ -506,7 +612,11 @@ Now fix any \(h=P_c\in H\). Formula (E.13) says, for a possibly \(h\)-dependent 
 \[
 e^{-tA}he^{tA}\in hH^0,\qquad A=(A_X)_p.
 \]
-Since conjugation by \(e^{tA}\) already preserves \(H^0\) for every \(t\), this condition is a homomorphism stabilizer condition for the coset \(hH^0\) under the additive group \(\mathbb R\). Its stabilizer contains an interval about zero, and therefore all of \(\mathbb R\), by writing any real number as a finite sum of numbers in that interval. Hence the same inclusion holds for every \(t\). This proves \(e^{-tA}He^{tA}\subseteq H\), and the opposite sign gives equality. □
+Since conjugation by \(e^{tA}\) already preserves \(H^0\) for every \(t\), this condition is a homomorphism stabilizer condition for the coset \(hH^0\) under the additive group \(\mathbb R\). Its stabilizer contains an interval about zero, and therefore all of \(\mathbb R\), by writing any real number as a finite sum of numbers in that interval. Hence the same inclusion holds for every \(t\). This proves \(e^{-tA}He^{tA}\subseteq H\), and the opposite sign gives equality.
+
+Full and restricted normalizers can differ. Consider the Euclidean quotient by the powers of
+\(\sigma(x,y,z)=(-x,-y,z+1)\). Nonzero powers have nonzero integer vertical displacement, so the action is free; only finitely many powers can move one fixed compact set to meet another, so it is proper. [Sectional curvature D.3](sectional-curvature-and-space-forms.md#theorem-d-3) gives its flat quotient metric and transport as inverse deck differential. Restricted holonomy is trivial, whereas full holonomy is
+\(\{I,Q\}\), \(Q=\operatorname{diag}(-1,-1,1)\). Every invertible map normalizes the former. The map fixing \(e_1,e_2\) and sending \(e_3\) to \(e_3+e_1\) does not normalize the latter: its conjugate of \(Q\) sends \(e_3\) to \(e_3+2e_1\), and so is neither \(I\) nor \(Q\). The full-holonomy conclusion requires the coset argument above. □
 
 ## F. Integration and compact holonomy
 
@@ -684,7 +794,12 @@ d(f_i g_i x,fgx)&\leq d(g_i x,gx)+d(f_i gx,fgx),\\
 d(f_i^{-1}y,f^{-1}y)&=d(y,f_i f^{-1}y).
 \end{split}
 \]
-Suprema on compact \(M\) prove the claim. Consequently the connected component of the identity lies in the open-and-closed subgroup \(K\). Conversely each finite product of flow maps is joined to the identity by varying its finitely many time parameters along straight segments, a continuous path in \(G\). Thus \(K=G^0\). When \(d=0\), translations make every group point open; compactness then makes this discrete group finite, since its open cover by singletons has a finite subcover. □
+Suprema on compact \(M\) prove the claim. Consequently the connected component of the identity lies in the open-and-closed subgroup \(K\). Conversely each finite product of flow maps is joined to the identity by varying its finitely many time parameters along straight segments, a continuous path in \(G\). Thus \(K=G^0\). When \(d=0\), translations make every group point open; compactness then makes this discrete group finite, since its open cover by singletons has a finite subcover.
+
+The same construction proves the finite-dimensional Lie-group statement if it is needed. Near the identity, the inverse of (G.6) identifies \(J(G)\) exactly with the slice \(s=0\), since every nearby isometry is \(\Phi_a\) and every \(\Phi_a\) is an isometry. Thus \(J(G)\) is locally an embedded smooth manifold of dimension \(d\). Left translation by a fixed isometry is its smooth action on frames; this transports the charts to every point. Their transitions are restrictions of smooth frame maps. The topology is the previously proved subspace topology in the compact frame bundle, hence Hausdorff and second countable.
+
+The finite-chain formulas give a jointly smooth evaluation \((f,x)\mapsto f(x)\) in these charts. They also give joint smoothness of its differential in \(x\). Therefore
+\(J(fg)=df_{g(p)}\,dg_pu\) proves smooth multiplication. To check inversion, solve \(f(x)=y\) near any fixed \((f_0,x_0)\); its \(x\)-derivative is invertible, so the parameter inverse theorem [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) makes \(f^{-1}(y)\) smooth jointly in \((f,y)\). Its differential is \((df_{f^{-1}(y)})^{-1}\), which is smooth by matrix inversion. Evaluating at \(p\) proves smooth inversion on frames and hence on \(G\). This makes \(G\) a compact Lie group with a smooth action. The tangent space at the identity consists exactly of the initial jets of Killing fields described above; the resulting fundamental fields are precisely the Killing fields. □
 
 **Theorem G.2 (Parallel tensors and compact isotropy).** On a compact connected Riemannian manifold, every isometry in \(G^0\) preserves every globally defined parallel tensor. If \(f\in G^0\) fixes \(p\), then
 \[
@@ -753,7 +868,25 @@ On a compact manifold F.1 applied to \(\operatorname{grad}(|X|^2/2)\) gives
 =\int_M\operatorname{Ric}(X,X)\,d\mu_g.
 \tag{H.5}
 \]
-If Ricci is nonpositive, the left side is nonnegative and the right side nonpositive; equality makes both zero. The positive-integral assertion of F.1 makes \(\nabla X=0\) everywhere. Conversely every parallel field satisfies the Killing equation (E.3). [Reduction and the holonomy theorem A.3](reduction-and-the-holonomy-theorem.md#theorem-a-3) identifies all parallel vector fields with the vectors fixed by full tangent holonomy, giving (H.2). At a point where Ricci is negative definite, (H.1) for a parallel field gives \(0=-\operatorname{Ric}(X,X)\), so \(X\) vanishes there. Parallel transport then makes it zero on connected \(M\). Lemma G.1 proves finiteness of the isometry group; this conclusion does not rely on an external Lie-group theorem. □
+If Ricci is nonpositive, the left side is nonnegative and the right side nonpositive; equality makes both zero. The positive-integral assertion of F.1 makes \(\nabla X=0\) everywhere. Conversely every parallel field satisfies the Killing equation (E.3). [Reduction and the holonomy theorem A.3](reduction-and-the-holonomy-theorem.md#theorem-a-3) identifies all parallel vector fields with the vectors fixed by full tangent holonomy, giving (H.2). At a point where Ricci is negative definite, (H.1) for a parallel field gives \(0=-\operatorname{Ric}(X,X)\), so \(X\) vanishes there. Parallel transport then makes it zero on connected \(M\). Lemma G.1 proves finiteness of the isometry group; this conclusion does not rely on an external Lie-group theorem.
+
+There is a useful local form of the argument. If \(|X|^2\) has a local maximum at \(p\) and \(\operatorname{Ric}_p\) is negative definite, its Hessian is nonpositive there: restrict to each coordinate line and use the one-variable second-derivative test from [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Its metric trace is consequently nonpositive. The right side of (H.1) at \(p\) is nonnegative and can vanish only if \(X_p=0\) and \((\nabla X)_p=0\). E.2 gives \(X=0\) on the connected manifold. Compactness is unnecessary for this maximum test.
+
+The gradient and a bilinear divergence identity are also explicit. For Killing fields \(X,Y\), skewness and (E.2) give
+\[
+\begin{aligned}
+\operatorname{grad}(|X|^2/2)&=A_XX=-\nabla_XX,\\
+\operatorname{div}(A_XY)
+ &=-\operatorname{Ric}(X,Y)-\operatorname{tr}(A_XA_Y).
+\end{aligned}
+\]
+For the second equality differentiate \(A_XY\) in direction \(v\), obtaining \(R(X,v)Y-A_XA_Yv\), and trace in an orthonormal basis. The curvature trace is \(-\operatorname{Ric}(X,Y)\) by its definition. The same identity holds for any two infinitesimally affine fields of the Levi-Civita connection, since skewness is unnecessary for that trace calculation and E.1 proves their derivative equation. At a critical point of \(|X|^2\), the first equality gives \(\nabla_XX=0\). The Killing flow preserves both its field and the connection, so it carries this zero acceleration along the whole orbit. That orbit with its flow parameter is a geodesic, including a constant orbit at a zero of \(X\).
+
+If a compact connected Riemannian manifold with \(\operatorname{Ric}\leq0\) is homogeneous, it is a flat torus. We include why Killing values span its tangent spaces. G.1 makes its transitive isometry group a compact Lie group with smooth action. The orbit map \(G\to M\), \(f\mapsto f(p)\), has the same differential rank at every group point, since right translation in \(G\) and its isometric action on \(M\) identify these ranks. If that rank were smaller than \(n\), the constant-rank theorem [Local tools 1.4](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) would put each small chart image inside a positive-codimension coordinate plane. Cover compact \(G\) by finitely many smaller charts whose closures stay in these rank charts. Their images are compact, closed in \(M\), and have empty interior. A finite union of closed sets with empty interior cannot cover a nonempty open set: successively intersect their dense open complements inside that open set. This contradicts transitivity. Thus the orbit differential is onto, and G.1 identifies its values with Killing-field values.
+
+H.1 makes all these fields parallel. Choose \(n\) whose values form a basis at one point. Their Gram matrix is constant under transport, so they form a global parallel basis. Curvature kills this basis and is zero. Compactness implies completeness by Hopf–Rinow B.2; the complete flat classification [Sectional curvature D.2–D.3](sectional-curvature-and-space-forms.md#theorem-d-2) identifies the universal cover with Euclidean space. Lift the parallel basis to it. The lifted fields are constant and invariant under every deck map, so every deck differential fixes a basis and is the identity. The deck maps are translations. [Sectional curvature G.3](sectional-curvature-and-space-forms.md#theorem-g-3) then makes their discrete subgroup a lattice, and compactness forces it to span the whole Euclidean space. The quotient is a flat torus. Conversely translations make every flat torus homogeneous, and its Ricci tensor is zero.
+
+Finally, the Einstein consequences use the already proved contraction, rather than an external reference. [Sectional curvature A.2](sectional-curvature-and-space-forms.md#theorem-a-2) gives \(\operatorname{div}\operatorname{Ric}=\tfrac12d\operatorname{Scal}\). If \(\operatorname{Ric}=\lambda g\) in dimension \(n\), it says \(d\lambda=(n/2)d\lambda\), so \(\lambda\) is constant on connected \(M\) when \(n\geq3\). In dimension two every surface has \(\operatorname{Ric}=Kg\), and the metric in D.2 supplies a varying \(K\). In dimension three, for any orthonormal triple the three Ricci entries are \(K_{12}+K_{13}\), \(K_{12}+K_{23}\), and \(K_{13}+K_{23}\); subtracting the third from the first two gives \(2K_{12}=\lambda\). Every plane occurs this way, so sectional curvature is \(\lambda/2\). These contractions are also proved in [Sectional curvature A.4](sectional-curvature-and-space-forms.md#exercise-a-4). In dimension four, the product of two unit two-spheres has \(\operatorname{Ric}=g\), but factor planes have curvature one and mixed planes curvature zero. Indeed the Levi-Civita formula in [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1), applied to a block product metric, has zero mixed Christoffel symbols and the coefficients of each factor in its own block. Substitution in the curvature definition gives its block product curvature with zero mixed terms. The sphere formula is proved in [Sectional curvature C.1](sectional-curvature-and-space-forms.md#theorem-c-1); tracing the product tensor gives the stated Ricci tensor. Thus the three-dimensional conclusion does not extend to all higher dimensions. □
 
 **Exercise H.2 (Hyperbolic surfaces, tori and the Klein bottle).** Apply the preceding results to a compact connected surface of constant curvature \(-1\), allowing it to be nonorientable. Determine the Killing algebras of a flat torus and of the flat Klein bottle generated on \(\mathbb R^2\) by
 \[

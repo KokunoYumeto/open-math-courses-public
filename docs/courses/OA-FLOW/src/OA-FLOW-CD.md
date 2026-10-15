@@ -273,7 +273,7 @@ Conjugation by \(v\) preserves the finite positive cone and its weight. That con
 
 ## CD-3. The modular generator on all of the actual crossed product
 
-Apply OT's complete modular restriction theorem to the actual unital inclusion \(F\subset B\), the faithful normal semifinite \(E\) proved in CC, and the faithful normal semifinite \(\varphi_F\). All its hypotheses hold, including the weakly dense **bounded-value** OVW ideal. OT covers the whole scalar finite ideals by its spectral cutoff argument, rather than only the intersection with that bounded-value ideal. Combining its conclusion with [CD12](OA-FLOW-CD.md#equation-cd12) and CC covariance gives
+Apply OT's complete modular restriction theorem to the actual unital inclusion \(F\subset B\), the faithful normal semifinite \(E\) proved in CC, and the faithful normal semifinite \(\varphi_F\). All its hypotheses hold, including the weakly dense **bounded-value** OVW ideal. [OT-4](OA-FLOW-OT.md#oa-flow.ot.4)'s resolvent approximation covers the whole scalar finite ideals and retains the spectral cutoff criterion. Combining its conclusion with [CD12](OA-FLOW-CD.md#equation-cd12) and CC covariance gives
 
 <a id="equation-cd24"></a>
 
@@ -327,7 +327,7 @@ The second factor is the actual commutant right multiplier. The spatial clock in
 
 ## CD-4. Entire clock affiliation and exact trace normalization
 
-[CC8](OA-FLOW-CC.md#equation-cc8) constructed on the complete regular Fourier sum
+[CC-8](OA-FLOW-CC.md#equation-cc35) constructed on the complete regular Fourier sum
 
 <a id="equation-cd28"></a>
 

@@ -199,48 +199,102 @@ An explicit smooth-partition detection statement is also available. For any open
 ## AL-4. The complete algebra product-support rule
 
 For closed \(E,F\subseteq\mathbb R\),
-
 <a id="equation-al16"></a>
-
 \[
  M(\alpha,E)M(\alpha,F)
- \subseteq M(\alpha,\overline{E+F}).
- \tag{AL16}
+ \subseteq M(\alpha,\overline{E+F}).                              \tag{AL16}
 \]
-First let \(E,F\) be compact and \(x,y\) belong to the two spectral subspaces. If either set is empty the corresponding element is zero, so suppose both are nonempty. To test ([AL7](OA-FLOW-AL.md#equation-al7)), take \(\rho\in C_c^\infty\) supported outside \(E+F\), and put \(h=k_\rho\). The compact disjoint sets have positive distance. Choose smooth \(\phi,\psi\), equal to one near \(E,F\), with compact supports in sufficiently small neighborhoods that
-\(\operatorname{supp}\rho\cap(\operatorname{supp}\phi+\operatorname{supp}\psi)=\varnothing\).
-Put \(f=k_\phi\), \(g=k_\psi\). By ([AL12](OA-FLOW-AL.md#equation-al12)), \(x=T_fx\), \(y=T_gy\).
+We first prove the assertion for intervals by constructing entire orbit extensions and moving a scalar integral off the real line. Finite frequency partitions then handle arbitrary compact sets.
 
-For every normal \(\omega\), the two reproducing integrals and then the \(h\) filter yield
-
+**Entire extensions of a bounded-frequency orbit.**
+Suppose \(\phi\in C_c^\infty(\mathbb R)\), \(\operatorname{supp}\phi\subseteq[a,b]\), and \(\widehat f=\phi\), where \(f=k_\phi\). For \(z\in\mathbb C\) set \(f_z(s)=f(s-z)\), using the compact inverse integral to define the entire function \(f\). Put
+\[
+ C_\phi=\pi^{-1}\bigl(\|\phi\|_1+2\|\phi'\|_1+\|\phi''\|_1\bigr).
+\]
+For \(z=t+iv\), the kernel \(f_z\) is the real translate by \(t\) of the inverse transform of \(\phi_v(r)=e^{-vr}\phi(r)\). The two integration-by-parts bounds in [RF-1](OA-FLOW-RF.md#oa-flow.rf.1), integrated separately over \(|s|\leq1\) and \(|s|>1\), give
+\[
+ \|f_z\|_1\leq\pi^{-1}(\|\phi_v\|_1+\|\phi_v''\|_1).
+\]
+Since \(\phi_v''=e^{-vr}(\phi''-2v\phi'+v^2\phi)\), this proves
 <a id="equation-al17"></a>
-
 \[
- \omega(T_h(xy))
- =\iiint h(t)f(s)g(u)
-   \omega\bigl(\alpha_{t+s}(x)\alpha_{t+u}(y)\bigr)\,dt\,ds\,du.
- \tag{AL17}
+ \|f_{t+iv}\|_1\leq C_\phi(1+|v|)^2
+ \begin{cases}
+ e^{-av},&v\geq0,\\
+ e^{-bv},&v\leq0 .
+ \end{cases}                                                   \tag{AL17}
 \]
-Multiplication by a fixed bounded element is normal, so each successive weak-star integral is legitimate. Its full absolute scalar bound is
-\(\|\omega\|\|x\|\|y\|\|h\|_1\|f\|_1\|g\|_1\).
-The integrand is jointly measurable, indeed its operator coefficient is continuous by ([AL3](OA-FLOW-AL.md#equation-al3)) and bounded strong-star multiplication. Thus the proved scalar interchange applies.
+The estimate is independent of \(t\).
 
-Set \(v=t+s\), \(w=u-s\). This change can be performed as successive one-dimensional translations under the absolute integrals; no higher-dimensional change-of-variables theorem is imported. Equation ([AL17](OA-FLOW-AL.md#equation-al17)) becomes
+The map \(z\mapsto f_z\) is entire in \(L^1\). Here are the needed norm details. On a compact set of \(z\)'s, differentiating the compact inverse integral in \(z\) inserts a factor \(ir\); its first two \(z\)-derivatives, followed by two integrations by parts in \(r\), are bounded by a common constant times \((1+s^2)^{-1}\). The scalar difference quotient therefore converges in \(L^1\), by dominated convergence. Its derivative is the kernel \(-f'(s-z)\).
 
+If \(x=T_fx\), the bounded map \(g\mapsto T_gx\) from \(L^1\) to \(M\) consequently gives the norm-entire function
+\[
+ X(z)=T_{f_z}x,\qquad X(t)=\alpha_t(x)\quad(t\in\mathbb R).
+\]
+The real identity is [AL2](OA-FLOW-AL.md#equation-al2). Its horizontal norm bound is (AL17) multiplied by \(\|x\|\). In particular any element whose spectrum lies in a compact interval has such an extension: choose \(\phi=1\) near that interval and apply [AL12](OA-FLOW-AL.md#equation-al12).
+
+**Products of interval-localized elements.**
+Let \(x\in M(\alpha,[a,b])\), \(y\in M(\alpha,[c,d])\). We show that their product has spectrum in \([a+c,b+d]\). Take a smooth compact test function \(\rho\) supported below \(a+c\), and put \(r_+=\sup\operatorname{supp}\rho<a+c\); the zero test requires no argument. Choose \(\varepsilon>0\) so that \(r_+<a+c-2\varepsilon\). Construct the reproducing cutoffs for \(x,y\) with supports in \([a-\varepsilon,b+\varepsilon]\) and \([c-\varepsilon,d+\varepsilon]\). Let \(X,Y\) be the resulting entire extensions, and \(h=k_\rho\).
+
+For any normal functional \(\omega\), the scalar function
+\(G(z)=\omega(X(z)Y(z))\) is entire. For \(v\geq0\), (AL17) bounds it uniformly in the real part by
+\[
+ |G(t+iv)|\leq C(1+v)^4e^{-(a+c-2\varepsilon)v}.
+\]
+Here and below \(C\) is finite and independent of \(t,v\). Applying the same inverse-integral estimate to \(h(t+iv)=k_{e^{vr}\rho(r)}(t)\) gives
+\[
+ \|h(\,\cdot+iv)\|_1
+ \leq C_\rho(1+v)^2e^{r_+v}.
+\]
+
+The [scalar rectangle Cauchy theorem](OA-FLOW-SF.md#oa-flow.sf4.rectangle-cauchy) applied to \(h(z)G(z)\) yields
 <a id="equation-al18"></a>
-
 \[
- \iint K(v,w)\omega\bigl(\alpha_v(x)\alpha_{v+w}(y)\bigr)\,dv\,dw,
- \quad
- K(v,w)=\int h(t)f(v-t)g(v+w-t)dt.
- \tag{AL18}
+ \int_{\mathbb R}h(t)G(t)\,dt
+   =\int_{\mathbb R}h(t+iv)G(t+iv)\,dt.                         \tag{AL18}
 \]
-[RF-4](OA-FLOW-RF.md#oa-flow.rf.4) proves that this \(K\) vanishes almost everywhere: for each \(w\), the Fourier transform of \(f(v)g(v+w)\) is supported in \(\operatorname{supp}\phi+\operatorname{supp}\psi\), disjoint from \(\operatorname{supp}\widehat h\), and the complete integrability/uniqueness passage is proved there. Hence \(T_h(xy)=0\). Since every such \(\rho\) was allowed, ([AL7](OA-FLOW-AL.md#equation-al7)) proves the compact case.
+To justify the passage from a rectangle to these whole-line integrals, first fix its height \(v\). On both vertical sides at real parts \(\pm R\), the twice integrated compact inverse formula gives
+\(h(\pm R+is)=O_v(R^{-2})\), uniformly for \(0\leq s\leq v\). The bounds for \(X,Y\) are uniform in the real part on this fixed strip. Thus the vertical integrals tend to zero as \(R\to\infty\). Both horizontal integrals converge absolutely by their displayed \(L^1\) and uniform bounds.
 
-For arbitrary closed \(E,F\), put \(x_\varepsilon=T_{k_\varepsilon}x\), \(y_\varepsilon=T_{k_\varepsilon}y\) using the positive filters of [RF6](OA-FLOW-RF.md#equation-rf6). Their supports lie in the compact sets
-\(E\cap\operatorname{supp}\widehat{k_\varepsilon}\) and \(F\cap\operatorname{supp}\widehat{k_\varepsilon}\), by ([AL9](OA-FLOW-AL.md#equation-al9)). The compact case puts each product in \(M(\alpha,\overline{E+F})\). Equation ([AL4](OA-FLOW-AL.md#equation-al4)) gives uniform norm bounds and strong-star convergence; expanding the product difference gives \(x_\varepsilon y_\varepsilon\to xy\) strongly-star. Bounded concrete strong convergence implies ultraweak convergence by SF-2. The spectral subspace is ultraweakly closed by ([AL7](OA-FLOW-AL.md#equation-al7)), proving ([AL16](OA-FLOW-AL.md#equation-al16)) in full.
+The right side of (AL18) has modulus at most
+\[
+ C(1+v)^6e^{-(a+c-2\varepsilon-r_+)v},
+\]
+which tends to zero as \(v\to\infty\). Indeed, for the positive gap \(\gamma=a+c-2\varepsilon-r_+\), the exponential series gives \(e^{\gamma v}\geq(\gamma v)^7/7!\), and this bound dominates the polynomial of degree six. On the real line \(G(t)=\omega(\alpha_t(xy))\), so the left side is \(\omega(T_h(xy))\). Normal functionals separate \(M\); hence \(T_h(xy)=0\).
 
-The closure in ([AL16](OA-FLOW-AL.md#equation-al16)) is retained for arbitrary unbounded closed sets. This argument uses neighborhood reproduction and compact cutoff approximation, not synthesis on \(E\) or \(F\).
+For a test function supported above \(b+d\), put
+\(r_-=\inf\operatorname{supp}\rho>b+d\) and choose
+\(2\varepsilon<r_- -b-d\). Move the contour to \(t-iv\), \(v\geq0\). The bounds are now
+\[
+ |G(t-iv)|\leq C(1+v)^4e^{(b+d+2\varepsilon)v},\qquad
+ \|h(\,\cdot-iv)\|_1\leq C_\rho(1+v)^2e^{-r_-v}.
+\]
+Their product again tends to zero. A general compact smooth test outside \([a+c,b+d]\) is the sum of two tests supported in these lower and upper rays, by [RF-1](OA-FLOW-RF.md#oa-flow.rf.1). Thus [AL7](OA-FLOW-AL.md#equation-al7) proves the interval case.
+
+**Finite partitions preserve gaps in a compact spectral sum.**
+Now let \(E,F\) be arbitrary compact sets, \(x\in M(\alpha,E)\), \(y\in M(\alpha,F)\). Empty sets give zero elements by AL-2. Fix a nonzero smooth compact test \(\rho\) outside \(E+F\), and let
+\(\delta=d(\operatorname{supp}\rho,E+F)>0\).
+Cover \(E\) and \(F\) by finitely many open intervals of radius less than \(\delta/8\), centered respectively in \(E\) and \(F\). Their closures are denoted by \(I_j,J_k\). Each \(I_j+J_k\) stays within distance \(\delta/4\) of \(E+F\), and is therefore disjoint from \(\operatorname{supp}\rho\).
+
+RF-1 gives a smooth cutoff equal to one near \(E\), supported inside its interval cover, and a finite subordinate decomposition \(\sum_j\phi_j\) of that cutoff; similarly obtain \(\sum_k\psi_k\) near \(F\). By AL12 and AL9,
+\[
+ x=\sum_jx_j,\quad x_j=T_{k_{\phi_j}}x\in M(\alpha,I_j),
+ \qquad
+ y=\sum_ky_k,\quad y_k=T_{k_{\psi_k}}y\in M(\alpha,J_k).
+\]
+The interval case puts every \(x_jy_k\) in \(M(\alpha,I_j+J_k)\). AL7 kills its \(\rho\)-filter. Summing the finitely many products gives \(T_{k_\rho}(xy)=0\). This proves the compact-set case while retaining every gap in \(E+F\).
+
+For arbitrary closed \(E,F\), put \(x_\varepsilon=T_{k_\varepsilon}x\) and \(y_\varepsilon=T_{k_\varepsilon}y\), using the positive filters of [RF6](OA-FLOW-RF.md#equation-rf6). By AL9 their spectra lie in the compact sets
+\(E\cap\operatorname{supp}\widehat{k_\varepsilon}\) and
+\(F\cap\operatorname{supp}\widehat{k_\varepsilon}\). The compact case puts each product in \(M(\alpha,\overline{E+F})\). AL4 gives uniform norm bounds and strong-star convergence of the two factors. Expanding the product difference gives \(x_\varepsilon y_\varepsilon\to xy\) strongly-star, hence ultraweakly by SF-2. The subspace is ultraweakly closed by AL7, proving (AL16). The closure is retained for arbitrary unbounded closed sets.
+
+
+![Two separated interval sums, opposite vertical contour shifts, and the decay bounds for a test supported in the gap.](../assets/arveson-contour/arveson-contour.svg)
+
+The example uses \(E=[-4,-3]\cup[3,4]\), \(F=[0,1/2]\) and a smooth test supported in \([-1,1]\). Its gap separates that test from both components of \(E+F=[-4,-5/2]\cup[3,9/2]\). With reproducing-window enlargement \(\varepsilon=1/10\), the positive component permits an upward shift with gap \(9/5\), while the negative component permits a downward shift with gap \(13/10\). The contours are schematic comparison paths. The curves plot \((1+v)^6e^{-\gamma v}\), with the fixed multiplicative constant divided out; the preceding proof establishes the limit.
+
+[Figure source](../assets/arveson-contour/render_arveson_contour.py) · [Exact intervals and sampled bounds](../assets/arveson-contour/contour-bounds.json) · [PNG](../assets/arveson-contour/arveson-contour.png)
 
 <a id="oa-flow.al.5"></a><a id="al-5"></a>
 
