@@ -94,6 +94,8 @@ The first group is zero when \(n-i\ge1\), which for \(i=1,2\) means \(n\ge3\). T
 
 It is not stated in [OpenAI-S], and it is not proved in this programme: like the theorem in dimension four it depends on the reductions of Section 3, and these have not been examined here in other dimensions beyond the count above. For \(n=2\) the count fails, as it must: \(H^2(\Gamma;k\Gamma)\cong H_0(\{1\};k)=k\) is not zero.
 
+The Singer conjecture is also studied for special families of groups. Avramidi, Okun and Schreve consider right-angled Coxeter groups \(W_L\) of flag complexes \(L\) and their \(L^2\)-Betti numbers over the field with two elements. Contracting an edge \(e\) of \(L\) gives a branched double cover of the associated cube complexes, and with it an inequality between these numbers for \(W_L\) and \(W_{L/e}\) [AOS, Theorem 1.1]. This gives a new proof of the Singer conjecture for the groups \(W_L\) of flag triangulations \(L\) of the 2-sphere, whose cube complexes are closed aspherical manifolds of dimension three, and reduces the version over the field with two elements for right-angled Coxeter groups to minimal flag triangulations of even-dimensional spheres [AOS, Section 1].
+
 ## 5. Exercises
 
 **5.1.** Let \(\Gamma=\langle s,t\mid\ \rangle\) be the free group on two generators. By Exercise 5.3 of the lesson on finite-energy functions, \(\mathcal D_0\ne\mathcal D\). Which hypothesis of Theorem 1.1 fails?
@@ -119,3 +121,4 @@ It is not stated in [OpenAI-S], and it is not proved in this programme: like the
 - [OpenAI-S] OpenAI, *The Singer conjecture in dimension four*, OpenAI Math Release preprint, 25 September 2026, Sections 1, 2 and 10. https://github.com/openai/math/tree/main/preprints/The-Singer-conjecture-in-dimension-four-September-25-2026
 - [Bowditch 2] B. H. Bowditch, *Connectedness properties of limit sets*, Transactions of the American Mathematical Society 351 (1999). Author's version: http://homepages.warwick.ac.uk/~masgak/papers/bhb-connected.pdf
 - [Sand] u/Apprehensive_Sand951, comment in the thread *AI in mathematics, October 10, 2026*, r/math, Reddit, October 2026. https://www.reddit.com/r/math/comments/1x2iy00/comment/pf4k77i/
+- [AOS] G. Avramidi, B. Okun and K. Schreve, *Reflections on branched covers*, arXiv:2610.02723 (October 2026). https://arxiv.org/abs/2610.02723

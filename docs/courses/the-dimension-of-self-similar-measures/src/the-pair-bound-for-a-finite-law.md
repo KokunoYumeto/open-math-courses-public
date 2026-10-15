@@ -16,7 +16,7 @@ where \(kF\) is the set of the sums of \(k\) points of \(F\), the \(c_\ell(\nu)\
 - One refinement after the sum is observed (Lemma 4.1).
 - The average over the cuts and the passage to pairs (Lemmas 5.1 and 5.2, Proposition 5.3).
 
-The lesson follows [OpenAI-S, Section 3], which names a decomposition of P. Varjú into fair pairs at one scale as a predecessor of the method. It uses the pair capacities of [The gain from a pair of points](the-gain-from-a-pair-of-points.md), the rules of [Entropy of finite random variables](entropy-of-finite-random-variables.md), and the entropy \(H^0_\rho\) of the grid with the shift \(0\) from [Entropy at a scale](entropy-at-a-scale.md).
+The lesson follows [OpenAI-S, Section 3], which names a decomposition of P. Varjú into fair pairs at one scale as a predecessor of the method. Kittle and Kogler, in an independent proof of the dimension formula, proved an inequality of the same kind for sums of independent finitely supported random variables, \(\sum_{i=1}^mH(X_i)-H\bigl(\sum_{i=1}^mX_i\bigr)\le30m\sum_{i=1}^m\mathcal E(X_i)\), where the variance energy \(\mathcal E\) averages normalized local variances over all scales; they state that it implies a strengthening of the pair bound of [OpenAI-S] with a constant quadratic in the number of summands [KK, Theorem 1.3 and Section 1]. It uses the pair capacities of [The gain from a pair of points](the-gain-from-a-pair-of-points.md), the rules of [Entropy of finite random variables](entropy-of-finite-random-variables.md), and the entropy \(H^0_\rho\) of the grid with the shift \(0\) from [Entropy at a scale](entropy-at-a-scale.md).
 
 ## 1. The statement
 
@@ -269,3 +269,4 @@ In [OpenAI-S, Section 4] the theorem is applied to finite laws with \(\log|kF|\l
 ## References
 
 - [OpenAI-S] OpenAI, *The entropy-rate dimension formula for self-similar measures on the line*, OpenAI Math Release preprint, 24 September 2026, Sections 3 and 4. https://github.com/openai/math/tree/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026
+- [KK] S. Kittle and C. Kogler, *The exact overlaps conjecture for self-similar measures on the real line*, arXiv:2610.10511 (October 2026). https://arxiv.org/abs/2610.10511

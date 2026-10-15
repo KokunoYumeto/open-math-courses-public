@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-Let \(K\) and \(L\) be convex bodies in \(\mathbb R^n\) that are symmetric about the origin. In every direction \(u\) take the geometric mean \(h_K(u)^{1-\lambda}h_L(u)^\lambda\) of their support numbers, and intersect the half-spaces \(\langle x,u\rangle\le h_K(u)^{1-\lambda}h_L(u)^\lambda\). The *logarithmic Brunn-Minkowski inequality* says that the volume of this intersection is at least \(|K|^{1-\lambda}|L|^\lambda\). According to [OpenAI-L] it was conjectured by Böröczky, Lutwak, Yang and Zhang in 2012 and proved by them in the plane. [OpenAI-L] gives a proof in every dimension.
+Let \(K\) and \(L\) be convex bodies in \(\mathbb R^n\) that are symmetric about the origin. In every direction \(u\) take the geometric mean \(h_K(u)^{1-\lambda}h_L(u)^\lambda\) of their support numbers, and intersect the half-spaces \(\langle x,u\rangle\le h_K(u)^{1-\lambda}h_L(u)^\lambda\). The *logarithmic Brunn-Minkowski inequality* says that the volume of this intersection is at least \(|K|^{1-\lambda}|L|^\lambda\). According to [OpenAI-L] it was conjectured by Böröczky, Lutwak, Yang and Zhang in 2012 and proved by them in the plane. [OpenAI-L] gives a proof in every dimension. Liu, Sun and Xiong extended it to convex bodies whose centroid is the origin, with the cases of equality [LSX]; Section 5 of [The variance bound and the inequality](the-variance-bound-and-the-inequality.md) states their results.
 
 This lesson states the inequality, proves the facts about support functions that it needs, and reduces it to an inequality between a variance and a mean for explicit smooth probability densities, the *variance bound*.
 
@@ -236,3 +236,4 @@ by the inequality between the weighted arithmetic and geometric means of \(h_{K_
 ## References
 
 - [OpenAI-L] OpenAI, *The logarithmic Brunn-Minkowski conjecture*, OpenAI Math Release preprint, 23 September 2026, Sections 1, 2 and 8.1. https://github.com/openai/math/tree/main/preprints/The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026
+- [LSX] Y. Liu, Q. Sun and G. Xiong, *The centered logarithmic Brunn–Minkowski inequality*, arXiv:2610.10152 (October 2026). https://arxiv.org/abs/2610.10152

@@ -173,6 +173,8 @@ The following statements are quoted from [OpenAI-QT, Sections 1 and 7] and the l
 - By a theorem of Haagerup, every normalized \(2\)-quasitrace on a unital *exact* C\*-algebra is a tracial state. So the algebra \(A\) is not exact.
 - The theorem gives two unital simple stably finite C\*-algebras whose minimal tensor product is properly infinite, one of them the reduced C\*-algebra of the free group on two generators; an explicit separable algebra \(B\) with a quasitrace whose tensor product with that reduced group algebra is properly infinite and has none; and a separable unital stably finite C\*-algebra without a tracial state.
 
+Two later papers bear on these statements. Arulseelan developed a model theory for \(AW^*\)-algebras with a faithful normalized quasitrace, and proved that Kaplansky's question whether every \(AW^*\)-factor of type \(\mathrm{II}_1\) is a von Neumann algebra, and the finite case of the monotone completeness conjecture, are each equivalent in ZFC to a \(\Pi^0_2\) sentence of arithmetic, so that their answers are the same in every \(\omega\)-model of ZFC [Aru, abstract]; he notes that the counterexample of [OpenAI-QT] bears on the first question [Aru, Section 1]. Several theorems on simple C\*-algebras assume that all quasitraces are traces, which by Haagerup's theorem holds for exact algebras and which Theorem 3.1 shows to be a genuine assumption in general; for example, Evington, Hua, Schafhauser, Seth, Tikuisis and White prove that a unital simple pure C\*-algebra whose quasitraces are traces is K-stable [EHSSTW, Theorem C].
+
 ## 7. Exercises
 
 **7.1.** Let \(s_1,s_2\) be isometries in a unital C\*-algebra whose range projections \(s_1s_1^*\) and \(s_2s_2^*\) are orthogonal. Show that \(s_1^*s_2=0\).
@@ -201,3 +203,5 @@ The following statements are quoted from [OpenAI-QT, Sections 1 and 7] and the l
 
 - [OpenAI-QT] OpenAI, *A counterexample to Kaplansky's quasitrace conjecture*, OpenAI Math Release preprint, 23 September 2026, Sections 1, 2, 5 and 7. https://github.com/openai/math/tree/main/preprints/A-counterexample-to-Kaplanskys-quasitrace-conjecture-September-23-2026
 - [MR] H. O. Milhøj and M. Rørdam, *Around traces and quasitraces*, arXiv:2309.17412, version 2, Section 2 and Theorem 2.3. https://arxiv.org/abs/2309.17412
+- [Aru] J. Arulseelan, *Model theory of quasitracial AW\*-algebras and the absoluteness of monotone completeness*, arXiv:2610.17435 (October 2026). https://arxiv.org/abs/2610.17435
+- [EHSSTW] S. Evington, S. Hua, C. Schafhauser, A. Seth, A. Tikuisis and S. White, *Regular simple nuclear C\*-algebras*, arXiv:2610.09390 (October 2026), Theorem C. https://arxiv.org/abs/2610.09390

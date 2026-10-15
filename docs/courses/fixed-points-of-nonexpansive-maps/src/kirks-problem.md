@@ -99,6 +99,8 @@ and \(|f_{v_k}(z_i-z_j)|\le e_{v_k}\), which tends to \(0\) because the budgets 
 
 (3) Bruck's theorem on commuting families [Bru, Theorem 1] then shows that, for a reflexive space, the common fixed points of any commuting family of nonexpansive self-maps of \(C\) form a nonempty nonexpansive retract of \(C\) [OpenAI-K, Corollary 1.2]. Bruck's theorem is not proved in this course.
 
+(4) The converse of Theorem 4.1 fails: P. K. Lin constructed an equivalent norm on \(\ell^1\) for which every nonexpansive self-map of a nonempty closed bounded convex set has a fixed point (see [DBJL, Section 1]). Domínguez Benavides, Japón and Lin proved that every uniformly convex space embeds isometrically into a nonreflexive space with this fixed point property, and that a variable Lebesgue space \(L^{p(\cdot)}(\Omega)\) has it exactly when it contains no isometric copy of \(\ell^1\) [DBJL, Corollary 5.6 and Section 6]. For unbounded sets the question is different. In a Hilbert space a nonempty closed convex set on which every nonexpansive self-map has a fixed point must be bounded, by a theorem of Ray; Japón and Laguna-Ricart constructed an equivalent norm on \(\mathbb R\oplus\ell^2\) and an unbounded closed convex set on which every nonexpansive self-map has a fixed point, which answers a question of Kirk [JLR, Theorem 1.1].
+
 ## 6. Exercises
 
 **Exercise 6.1** (easy). Show that the fixed point set of a nonexpansive map \(F:C\to C\) is closed, and convex when \(X\) is strictly convex (\(\|a+b\|<\|a\|+\|b\|\) unless \(a,b\) are nonnegative multiples of one vector).
@@ -123,4 +125,6 @@ and \(|f_{v_k}(z_i-z_j)|\le e_{v_k}\), which tends to \(0\) because the budgets 
 
 - [Al] D. E. Alspach, *A fixed point free nonexpansive map*, Proc. Amer. Math. Soc. 82 (1981), 423–424.
 - [Bru] R. E. Bruck, *A common fixed point theorem for a commuting family of nonexpansive mappings*, Pacific J. Math. 53 (1974), 59–71. https://doi.org/10.2140/pjm.1974.53.59
+- [DBJL] T. Domínguez Benavides, M. Japón and P. K. Lin, *Projection schemes and the fixed point property in nonreflexive Banach spaces*, arXiv:2610.10928 (October 2026). https://arxiv.org/abs/2610.10928
+- [JLR] M. Japón and J. Laguna-Ricart, *An unbounded convex set with the fixed point property for nonexpansive mappings*, arXiv:2610.14868 (October 2026). https://arxiv.org/abs/2610.14868
 - [OpenAI-K] OpenAI, *Fixed points of nonexpansive maps in reflexive Banach spaces*, OpenAI Math Release preprint, 24 September 2026, Sections 1 and 5. https://github.com/openai/math/blob/main/preprints/Fixed-Points-of-Nonexpansive-Maps-in-Reflexive-Banach-Spaces-September-24-2026

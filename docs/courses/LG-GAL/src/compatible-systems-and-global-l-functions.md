@@ -95,16 +95,16 @@ We next prove the comparison at potentially good primes in arbitrary dimension. 
 
 **Lemma 2.2 (endomorphisms have one characteristic polynomial).** Let \(B/k\) be an abelian variety of dimension \(g\), over any field, and \(u\in\operatorname{End}(B)\). There is a monic \(P_u(T)\in\mathbf Q[T]\) of degree \(2g\) whose image in every \(\mathbf Q_\ell[T]\), \(\ell\ne\operatorname{char}k\), is \(\det(T-u\mid V_\ell B)\). The same conclusion holds for quasi-endomorphisms, with rational coefficients.
 
-**Proof.** We use the actual earlier geometric proofs in *Abelian varieties*: the normalized cube, Proposition 4.4; the multivariable Euler polynomial, Lemma 5.2; Euler homogeneity, Proposition 5.5; finite-flat Euler comparison, Corollary 5.6; and isogeny kernels and prime-to-characteristic Tate torsion, §§6–7. Here are the remaining steps, including the coefficient comparison that a citation alone would not supply.
+**Proof.** We use the normalized cube, Proposition 4.4, Euler homogeneity, Proposition 5.5, and kernel/Tate torsion §§6–7 of the earlier programme lesson *Abelian varieties*, at their recorded proof scopes. The actual multivariable Euler polynomial, proper-image degree bound and finite-flat Euler comparison are now CE1–CE7 in §2B below. The remaining earlier field-geometric inputs and their transitive free-origin certification retain the obligations recorded in §7. Here are the characteristic-polynomial comparison steps.
 
 Extend the ground field to its algebraic closure. Choose a symmetric ample bundle \(H\). Define \(\delta(f)=\deg(f)\) for isogenies, and zero for other endomorphisms. Then
 \[
 \delta(f)=\frac{\chi(B,f^*H)}{\chi(B,H)}.
 \tag{6B}
 \]
-For an isogeny this is Corollary 5.6. Otherwise factor \(f\) through its image, an abelian subvariety of dimension less than \(g\). Proper pushforward and the Euler-polynomial degree bound show that \(\chi(B,(f^*H)^a)\) has degree less than \(g\) in \(a\). Euler homogeneity says it is \(a^g\chi(B,f^*H)\), so its coefficient is zero. The denominator in (6B) is positive by Proposition 5.5.
+For an isogeny this is the full finite commutative torsor proof CE6, applied in CE7. Otherwise factor \(f\) through its image, an abelian subvariety of dimension less than \(g\). The proved higher-image Euler formula and proper-image degree bound CE4 show that \(\chi(B,(f^*H)^a)\) has degree less than \(g\) in \(a\). Euler homogeneity says it is \(a^g\chi(B,f^*H)\), so its coefficient is zero. The denominator in (6B) is positive by Proposition 5.5.
 
-For fixed \(f,h\), pull the cube back along \((nf+h,f,f)\). It says that the classes of \((nf+h)^*H\) have constant second difference; they are quadratic polynomials in \(n\) with values in the rational Picard group. The multivariable Euler polynomial has total degree at most \(g\). Formula (6B) therefore makes \(\delta(nf+h)\) a rational polynomial of degree at most \(2g\). Moreover \(\delta(nf)=n^{2g}\delta(f)\), by the degree of multiplication.
+For fixed \(f,h\), pull the cube back along \((nf+h,f,f)\). It says that the classes of \((nf+h)^*H\) have constant second difference; they are quadratic polynomials in \(n\) with values in the rational Picard group. The full multivariable Euler polynomial CE2 has total degree at most \(g\). Formula (6B) therefore makes \(\delta(nf+h)\) a rational polynomial of degree at most \(2g\). Moreover \(\delta(nf)=n^{2g}\delta(f)\), by the degree of multiplication.
 
 These assertions extend \(\delta\) to \(\operatorname{End}(B)\otimes\mathbf Q\) by \(\delta(f/n)=n^{-2g}\delta(f)\), independently of the denominator. They make it a homogeneous polynomial function of degree \(2g\) on every finite-dimensional subspace. To check the last assertion, choose coordinates on such a subspace and interpolate in each coordinate at \(2g+1\) distinct rational values. The line-degree bound produces a polynomial in all coordinates. Substituting arbitrary rational affine lines forces its total degree to be at most \(2g\); homogeneity forces its nonzero terms to have degree \(2g\). Multiplicativity \(\delta(fh)=\delta(f)\delta(h)\) holds: degrees multiply for isogenies, and a composition containing a map with smaller-dimensional image again has smaller-dimensional image. Polynomial interpolation extends this identity after any extension of the rational coefficient field.
 
@@ -350,6 +350,317 @@ The element \(u\) is nonunit, since \(u^2=\pi\), so its determinant is not a uni
 The two composites are identities by addition and subtraction. Equivalently the integer inverse matrix is \(\begin{pmatrix}2&-1\\-1&1\end{pmatrix}\). Thus this is an automorphism of the entire good two-dimensional model, and GQ2 identifies it with the unique extension of its generic map. On torsion its block entries are the same integer multiplications, so (GQX4) and addition prove compatibility with reduction and with every transition.
 
 GQ1–GQ5 assume a good abelian model after a finite extension. In general the reduction may have a torus, and its rational Tate module may have nonzero monodromy. The theorem still needs actual semistable models, their toric and abelian graded pieces, the nondegenerate monodromy pairing and finite descent equivariance. The good-model extension argument does not supply those data. Hence Theorem 2.4 retains its full general statement and its stated remaining proof obligation.
+
+### 2B. Coherent Euler polynomials and finite commutative torsors
+
+The Euler inputs in Lemma 2.2 need their own proofs. We give them on proper schemes, including nonreduced schemes and inseparable isogenies. We also prove the reduced-base see-saw statement that will be needed in a cube argument. This section does not assume the cube, a multiplication-degree formula, an intersection-theoretic Riemann–Roch theorem or semisimplicity of finite-group representations.
+
+The actual earlier inputs are the affine sheaf/cohomology proofs SC0–SC15 and proper coherent finiteness CG13–CG14 in Lesson 3; its finite projective family complex FC1–FC20 and finite faithfully flat module descent FD1–FD4; and the field-dimension argument GQ1 above. All sums of cohomology dimensions below are finite: CG13 gives finite-dimensional groups, and the finite affine Čech complex bounds their nonzero degrees.
+
+#### 2B.1. Tensoring by a line lowers the support filtration
+
+Let \(G_0(X)\) be the abelian group on coherent sheaves, with relation
+\[
+ [\mathcal F]=[\mathcal F']+[\mathcal F'']
+ \quad\text{for }0\to\mathcal F'\to\mathcal F\to\mathcal F''\to0 .
+ \tag{CE1}
+\]
+Its subgroup \(F_dG_0(X)\) is generated by sheaves with support dimension at most \(d\); put \(F_{-1}=0\). Tensoring by a line \(\mathcal L\) is exact, so gives an automorphism \(T_{\mathcal L}\) of this group and preserves each subgroup. The long exact cohomology sequence, with alternating cancellation of its finite-dimensional images, makes \([\mathcal F]\mapsto\chi(X,\mathcal F)\) an additive map to \(\mathbf Z\).
+
+**CE1.** For a line on a Noetherian finite-type scheme over a field,
+\[
+ (T_{\mathcal L}-1)F_dG_0(X)\subset F_{d-1}G_0(X).
+ \tag{CE2}
+\]
+
+*Proof.* Fix \(\mathcal F\), and choose a line frame near the generic point of each irreducible component of its support. Remove the other support components from each chosen open, and include the complement of the support. Their union is an open \(U\) containing every support generic point. On its overlaps the sheaf is zero unless the same chosen component is present. Thus those frames give an isomorphism
+\(\theta:\mathcal F|_U\simeq(\mathcal F\otimes\mathcal L)|_U\).
+
+With \(j:U\hookrightarrow X\), take the kernel of
+\((a,b)\mapsto\theta(a)-b\) from
+\(\mathcal F\oplus(\mathcal F\otimes\mathcal L)\) to
+\(j_*((\mathcal F\otimes\mathcal L)|_U)\). This kernel \(\mathcal G\) is coherent. Indeed this open is quasi-compact, and the finite affine-cover localization argument SC14 in degree zero makes its pushed sheaf quasi-coherent; a quasi-coherent submodule of a coherent module over a Noetherian scheme is coherent. It is the graph of \(\theta\) on \(U\).
+
+Let \(K_i,C_i\) be the kernels and cokernels of its two projections. They are coherent and vanish on \(U\); outside the original support they vanish as well. Every remaining support component is a proper closed subset of an original component. The strict transcendence-degree drop proved in GQ1 bounds its dimension by \(d-1\). The two projection sequences give
+\[
+ [\mathcal F\otimes\mathcal L]-[\mathcal F]
+       =[K_1]-[K_2]+[C_2]-[C_1].
+ \tag{CE3}
+\]
+This proves (CE2), including \(d=0\), when all four remaining supports are empty. Embedded points and nilpotents have not been removed from the sheaves. \(\square\)
+
+#### 2B.2. The full multivariable polynomial, including negative powers
+
+**CE2.** For a proper scheme \(X/k\), a coherent \(\mathcal F\) and lines \(\mathcal L_1,\ldots,\mathcal L_r\), the function
+\[
+ P(\mathbf n)=\chi\left(X,\mathcal F\otimes
+               \bigotimes_i\mathcal L_i^{\,n_i}\right),
+ \qquad\mathbf n\in\mathbf Z^r ,
+ \tag{CE4}
+\]
+is an integer-valued rational polynomial of total degree at most
+\(d=\dim\operatorname{Supp}\mathcal F\).
+
+*Proof.* The zero sheaf gives the zero polynomial, so assume its support is nonempty. Put \(D_i=T_{\mathcal L_i}-1\). These operators commute, and CE1 makes every product of \(d+1\) of them zero on \(F_dG_0(X)\). On that subgroup the binomial identity therefore gives
+\[
+ P(\mathbf n)=
+ \sum_{|\boldsymbol\alpha|\le d}
+  \left(\prod_i {n_i\choose\alpha_i}\right)
+  \chi\left(X,D_1^{\alpha_1}\cdots D_r^{\alpha_r}[\mathcal F]\right).
+ \tag{CE5}
+\]
+The last Euler expression means its additive value on the displayed virtual sheaf class. It is an integer.
+
+For completeness the identity works for every negative integer too. In the commutative operator ring modulo products of degree greater than \(d\), \(1+D_i\) is a unit with inverse \(1-D_i+D_i^2-\cdots+(-D_i)^d\). The polynomials
+\({n\choose a}=n(n-1)\cdots(n-a+1)/a!\) satisfy Pascal's recurrence for every integer \(n\). Starting at \(n=0\), that recurrence proves the truncated binomial expansion forward and backward, using this inverse. It is therefore the actual power \((1+D_i)^{n_i}\), not just a formula on nonnegative arguments.
+
+Each summand in (CE5) has degree \(|\boldsymbol\alpha|\le d\). The binomial factors are integral on all integers: for \(n<0\),
+\({n\choose a}=(-1)^a{a-n-1\choose a}\). This proves the assertion. The polynomial is unique: a polynomial zero on the integer grid is zero, by induction in the number of variables and the fact that a one-variable polynomial has only finitely many roots unless it vanishes. \(\square\)
+
+A useful consequence is
+\[
+ \chi(X,\mathcal F\otimes\mathcal T)=\chi(X,\mathcal F)
+       \quad\text{if }\mathcal T^{\,m}\simeq\mathcal O_X
+       \text{ for some }m>0.
+ \tag{CE6}
+\]
+Indeed its polynomial in the exponent of \(\mathcal T\) is periodic. A nonconstant rational polynomial cannot be periodic: subtracting its translate by \(m\) leaves a nonzero polynomial of degree one smaller. Euler characteristics take values in \(\mathbf Z\), so this argument is valid also in positive characteristic.
+
+#### 2B.3. Families and the precise see-saw assertion
+
+**CE3.** Euler characteristic is locally constant in every proper flat coherent family over a Noetherian base. Suppose \(X/k\) is proper and geometrically integral, \(S\) is reduced and Noetherian, and a line \(\mathcal M\) on \(X\times_kS\) is trivial on every geometric fibre over \(S\). Then
+\[
+ p_*\mathcal M\text{ is a line},\qquad
+ p^*p_*\mathcal M\xrightarrow{\ \sim\ }\mathcal M.
+ \tag{CE7}
+\]
+These assertions commute with arbitrary base change. If \(x_0\in X(k)\), the line on the base is canonically \(x_0^*\mathcal M\).
+
+*Proof.* On an affine base the actual finite projective complex FC10 computes every fibre of a proper flat coherent family. The alternating sum of its term ranks equals the alternating sum of the dimensions of its cohomology, by cancellation of boundary spaces. These ranks are locally constant; so is their alternating sum. This proves the Euler assertion, without any hypothesis that the base is reduced or that individual cohomology dimensions are constant.
+
+For the line assertion apply FC10 to \(\mathcal M\). At any base point, the geometric fibre has \(H^0\) of dimension one, by the proper-geometrically-integral constants proof FC20. Field base change gives dimension one over its actual residue field. The unit-entry cancellation FC13–FC14, after shrinking around that point, leaves a complex in nonnegative degrees whose degree-zero term is free of rank one. At every point of this neighbourhood its degree-zero differential has zero residue matrix, since its kernel has dimension one. Its entries belong to every prime ideal. Reducedness makes them zero. Thus the degree-zero cohomology is that free line, after every module or ring base change, regardless of the higher differentials.
+
+The natural evaluation in (CE7) is now a map of lines. On every geometric fibre a basis section is a nonzero constant in a trivial line, so is nowhere zero. In a local frame its coefficient is consequently in no maximal ideal, and is a unit. Evaluation is therefore an isomorphism everywhere. Pulling it back along \(x_0\) gives the stated canonical identification. All the section comparisons used are FC10's natural comparisons, so they remain valid after arbitrary, even nonreduced, base change. A rigidification at \(x_0\) also fixes the isomorphism: by FC20 an automorphism of a pulled-back line is a unit from the base, which its value at \(x_0\) determines. \(\square\)
+
+Reducedness in this see-saw assertion matters. On a genus-one curve choose a nonzero Čech class \(c_{ij}\) in \(H^1(X,\mathcal O_X)\), using the written curve computation of Lesson 3. Over \(k[\epsilon]/(\epsilon^2)\) the units
+\[
+ g_{ij}=1+\epsilon c_{ij}
+ \tag{CE8}
+\]
+give a line bundle with trivial geometric fibre. They satisfy the cocycle identity because \(\epsilon^2=0\). If this line were trivial, its trivializing units could first be divided by their common nonzero constant reduction, since \(H^0(X,\mathcal O_X)=k\). They would then have the form \(1+\epsilon a_i\), forcing \(c_{ij}\) to be a Čech boundary. This contradicts the choice of its class. A line pulled back from this local base is trivial, so (CE7) would fail here. The Euler assertion still holds.
+
+#### 2B.4. Proper pushforward and the image-dimension bound
+
+**CE4.** For a proper map \(f:X\to Y\) of proper schemes over \(k\), and coherent \(\mathcal F\),
+\[
+ \chi(X,\mathcal F)
+   =\sum_q(-1)^q\chi(Y,R^qf_*\mathcal F).
+ \tag{CE9}
+\]
+For lines \(\mathcal L_i\) on \(Y\), the polynomial
+\(\chi(X,\mathcal F\otimes f^*\bigotimes_i\mathcal L_i^{\,n_i})\)
+has total degree at most \(\dim f(\operatorname{Supp}\mathcal F)\).
+
+*Proof.* We supply the cohomological passage, since the vanishing-image result SC15 alone would not prove (CE9). For a module sheaf \(H\) on a space define
+\(C(H)(U)=\prod_{x\in U}H_x\). This is a flasque sheaf, its restrictions being projections, and \(H\to C(H)\) is injective. The functor \(C\), including its sections over every fixed open, is exact: stalk sequences are exact and products of surjections are surjective by choosing one preimage in each factor. The quotient functor \(Q(H)=C(H)/H\) is exact by the kernel/cokernel diagram for these injections. Iterating gives a functorial flasque resolution with terms \(C(Q^pH)\). The section functors of its individual terms are exact too.
+
+For a complex \(K^\bullet\) bounded below, take the signed total complex of the sections of these resolutions applied to every term. Each diagonal is finite. Its cohomology is unchanged by a quasi-isomorphism: on an acyclic input complex, each row is exact by the exact section functors, and the finite-diagonal elimination SH9 gives an acyclic total complex. Mapping cones, with the shifted component multiplied in resolution degree \(p\) by \((-1)^p\), identify the comparison with the cone comparison. Short exact sequences of input complexes remain short exact after these exact section functors and totalization, and so give the ordinary long exact cohomology sequence. If the input terms are flasque, the other elimination direction, using their vanishing higher cohomology proved in SC7, identifies this total cohomology with that of \(\Gamma(K^\bullet)\).
+
+If the cohomology sheaves of \(K^\bullet\) are coherent and vanish above some \(q_0\), its good truncation at \(q_0\) is a quasi-isomorphism to it. Successive good truncations differ by a complex quasi-isomorphic to \(\mathcal H^q(K)[-q]\). Explicitly the quotient has the two terms \(B^q(K)\hookrightarrow Z^q(K)\) in degrees \(q-1,q\), with cokernel \(\mathcal H^q(K)\). The long exact sequences just constructed, and alternating cancellation, therefore make its total Euler characteristic
+\(\sum_q(-1)^q\chi(Y,\mathcal H^q(K))\).
+All these groups are finite-dimensional and bounded: this follows inductively from coherent cohomology finiteness and the finite affine cover of \(Y\).
+
+Apply this construction to \(K^\bullet=f_*I^\bullet\), where \(I^\bullet\) is an injective resolution of \(\mathcal F\). Its terms are flasque, and remain flasque under pushforward, because restrictions are restrictions on inverse images of opens. Its sections are exactly \(\Gamma(X,I^\bullet)\). Its cohomology sheaves are \(R^qf_*\mathcal F\), coherent by CG14 and zero in large degree by SC14 on a finite affine cover of \(Y\). This proves (CE9) with its full nonvanishing higher-image scope.
+
+For an invertible \(\mathcal L\), local frames and the natural cohomology comparison SC13 give
+\[
+ R^qf_*(\mathcal F\otimes f^*\mathcal L)
+      \simeq R^qf_*\mathcal F\otimes\mathcal L .
+ \tag{CE10}
+\]
+On overlaps the frame changes give the same tensor maps, so these local identities glue. All these coherent higher images are supported on the closed set \(f(\operatorname{Supp}\mathcal F)\): on its open complement the original sheaf is zero. Apply CE2 on \(Y\) to each term of (CE9), using (CE10). Each support has dimension at most that image dimension. Their finite signed sum proves the asserted bound. \(\square\)
+
+#### 2B.5. Finite commutative group representations without semisimplicity
+
+**CE5.** Over an algebraically closed field, every finite-dimensional representation of a finite commutative group scheme has a filtration with one-dimensional character quotients. Each such character has finite order.
+
+*Proof.* Write \(H\) for its finite-dimensional coordinate Hopf algebra. A representation is an \(H\)-comodule. By choosing a basis and its dual, the coaction is equivalently a module structure over the finite algebra \(D=\operatorname{Hom}_k(H,k)\), with multiplication
+\((ab)(h)=(a\otimes b)(\Delta h)\).
+Coassociativity is precisely module associativity, and the counit supplies its unit. This establishes the equivalence directly. Commutativity of the group makes \(\Delta\) cocommutative, so \(D\) is commutative.
+
+A simple finite \(D\)-module is the residue field at a maximal ideal: any nonzero vector generates it, and its annihilator is maximal. That field is finite-dimensional over the algebraically closed \(k\), hence equals \(k\). Choosing a maximal proper submodule and inducting on vector-space dimension gives the claimed filtration, with one-dimensional quotients. No complement or semisimplicity is required.
+
+A one-dimensional coaction is multiplication by an element \(h\in H\) with
+\(\Delta h=h\otimes h\) and counit one. The antipode makes it a unit. Distinct such elements are linearly independent. Indeed if a first dependence expressed \(h_m=\sum_{i<m}a_i h_i\) in an independent list, apply \(\Delta\) and compare the independent tensors \(h_i\otimes h_j\). The off-diagonal equations give \(a_i a_j=0\) for \(i\ne j\), and the diagonal equations give \(a_i^2=a_i\). Exactly one coefficient would be one, making \(h_m\) equal an earlier element, a contradiction.
+
+The powers of \(h\) are also of this kind. Finite dimension therefore forces two to coincide, and invertibility gives \(h^m=1\) for some \(m>0\). This is precisely finite order of the character as a group-scheme morphism, not just its values on geometric points. \(\square\)
+
+#### 2B.6. Torsor Euler comparison, including inseparable isogenies
+
+**CE6.** Let \(f:P\to Y\) be a finite faithfully flat torsor of rank \(N\) under a finite commutative \(k\)-group scheme, with \(Y\) proper. For every coherent \(\mathcal F\) on \(Y\),
+\[
+ \chi(P,f^*\mathcal F)=N\,\chi(Y,\mathcal F).
+ \tag{CE11}
+\]
+In particular this holds for every isogeny of abelian varieties, including inseparable isogenies.
+
+*Proof.* Field base change commutes with coherent cohomology here: tensor the finite affine Čech complex with the field and use exactness of vector-space tensor products. Dimensions over the new field are the old dimensions. Ranks and the torsor square also persist. We may therefore work over an algebraic closure.
+
+Put \(\mathcal E=f_*\mathcal O_P\). The actual torsor identity identifies its pullback to \(P\) with \(\mathcal O_P\otimes_k H\), where \(H\) is the coordinate algebra of the group. Changing a torsor frame translates the \(H\)-factor, so its descent datum is the regular representation. Apply CE5 to that \(N\)-dimensional representation. Each step is an invariant subspace, and the finite faithfully flat descent construction FD1–FD4 descends its tensor with \(\mathcal O_P\) to a subbundle of \(\mathcal E\). Exactness is tested after that faithful flat cover, where the quotient is a free line. This gives
+\[
+ 0=\mathcal E_0\subset\mathcal E_1\subset\cdots
+       \subset\mathcal E_N=\mathcal E,\qquad
+ \mathcal E_i/\mathcal E_{i-1}=\mathcal T_i,\qquad
+ \mathcal T_i^{\,m_i}\simeq\mathcal O_Y .
+ \tag{CE12}
+\]
+The last assertion follows because tensoring associated lines multiplies their characters, and CE5 gives finite character order.
+
+Tensor this filtration with \(\mathcal F\). It remains exact because the line quotients are flat, by the elementary tensor lemma 0.D.1(a). Thus (CE6) and additivity give
+\(\chi(Y,\mathcal E\otimes\mathcal F)=N\chi(Y,\mathcal F)\).
+On affine charts a finite map has exact module pushforward and no positive quasi-coherent higher images. Its tensor identity gives
+\(f_*f^*\mathcal F=\mathcal E\otimes\mathcal F\).
+The proved collapse SC15, or (CE9), now proves (CE11).
+
+We verify the isogeny assertion without importing finite flatness. An isogeny is a finite surjective homomorphism \(f:A\to B\) of abelian varieties. Over the algebraic closure, its finite coordinate module is free of its generic rank on some nonempty open \(U\) of \(B\): choose a fraction-field basis, clear its denominators, and kill the finitely generated kernel and cokernel of the resulting basis map by another nonzero denominator. For any \(b\in B(k)\), choose \(a\in A(k)\) above it. Translation identifies the map over \(U+b\) with that over \(U\), preserving the free rank. These translates cover: fix a closed point of \(U\); translating it reaches every closed point of \(B\), and a nonempty closed complement would have a closed point by EA2. Thus \(f\) is finite locally free. Flatness descends from the algebraic closure, since injections after tensoring can be tested after a faithfully flat field extension. This proves finite flatness over the original field too.
+
+Its kernel \(G\) is a finite commutative group scheme of that rank. The group operations give mutually inverse scheme maps
+\[
+ A\times G\longrightarrow A\times_B A,\quad
+ (a,g)\longmapsto(a,a+g),\qquad
+ (a,a')\longmapsto(a,a'-a).
+ \tag{CE13}
+\]
+They are inverse on every scheme's points by the kernel square, and the formulas are morphisms. Hence \(f\) is exactly the required torsor. No separability or reduced-kernel condition has occurred. \(\square\)
+
+#### 2B.7. Application and the retained geometric inputs
+
+**CE7.** For an isogeny \(f:A\to A\) of degree \(N\), and any line \(\mathcal H\),
+\[
+ \chi(A,f^*\mathcal H)=N\chi(A,\mathcal H).
+ \tag{CE14}
+\]
+For any proper map through a scheme of dimension \(h\),
+\[
+ \deg_n\chi\bigl(X,\mathcal F\otimes f^*\mathcal L^{\,n}\bigr)\le h .
+ \tag{CE15}
+\]
+The degree in (CE15) is polynomial degree, and the zero polynomial satisfies the bound.
+
+*Proof.* The rank of a finite locally free isogeny is its degree, by its fraction-field basis and the constant rank proved in CE6. Apply (CE11) to \(\mathcal H\) to obtain (CE14). Apply CE4, since its support image is contained in that \(h\)-dimensional scheme, to obtain (CE15). The full multivariable version is CE2 and CE4. \(\square\)
+
+These give the Euler comparison and the lower-image bound in Lemma 2.2 directly in this lesson. To form its displayed ratio one still needs the positive nonzero Euler characteristic of the chosen symmetric ample line. The normalized cube, multiplication-degree formula, Euler homogeneity and the kernel/Tate-rank facts retain their actual earlier-proof and free-origin obligations. CE1–CE7 has not proved those statements by renaming an Euler polynomial as a homogeneous one. Theorem 2.4's full semistable, toric, monodromy-pairing and descent requirements also remain separate.
+
+Free primary comparisons are the Stacks project authors' [Euler characteristics](https://stacks.math.columbia.edu/tag/0BEI) and [numerical polynomial statement](https://stacks.math.columbia.edu/tag/0BEL). The support-graph, all-integer binomial, full higher-image Euler, and finite-group-scheme torsor arguments used here are written above; citations do not replace them.
+
+#### Exercise 2B — support differences, families and torsors (100 points)
+
+Each part is worth 10 points.
+
+1. Derive the four-term identity (CE3) from the two graph projections. Compute the Euler polynomial of \(\operatorname{Spec}k[\epsilon]/(\epsilon^r)\) for \(r>0\), and explain the role of its nilpotents.
+2. Find all Newton coefficients at the origin of
+\(P(n,m)={n\choose2}+3nm-2m+5\). Evaluate it at \((-2,3)\) using (CE5), and prove that all differences of total order three vanish.
+3. Compute \(\chi(\mathbf P^1\times\mathbf P^1,\mathcal O(n,m))\) for every pair of integers, using the coordinate covers. Explain why the mixed second difference is nonzero and every third difference is zero.
+4. Prove torsion-line Euler invariance. Show by a finite flat degree-two map of projective lines that Euler scaling does not hold for an arbitrary finite flat map.
+5. For \(f:\mathbf P^1\times E\to\mathbf P^1\), with \(E\) a genus-one curve, compare \(\mathcal O(n)\boxtimes\mathcal O_E\) with \(\mathcal O(n)\boxtimes L\), where \(L\) has degree one. Compute the higher images and their Euler sums.
+6. In the see-saw proof, identify the exact step using reducedness. Prove that the dual-number gluing (CE8) gives the stated counterexample whenever its Čech class is nonzero.
+7. In characteristic \(p\), construct a nonsplit two-dimensional representation of \(\alpha_p\). For \(\mu_p\), find its \(p\) distinct group-scheme characters and compare them with its geometric points.
+8. On a proper scheme, given a torsion line \(T\) with a fixed \(T^n\simeq\mathcal O_Y\) for a positive exponent, construct its \(\mu_n\)-torsor and prove (CE11) directly. Include \(n=p\) in characteristic \(p\).
+9. Apply CE6 to \([p]:E\to E\) in characteristic \(p\) and a degree-one line. Use the actually proved elliptic multiplication degree from Lesson 3, not a new arbitrary-dimensional degree assertion.
+10. Suppose a nonzero rational polynomial \(P\) has degree exactly \(g\), and \(P(m^2t)=D_mP(t)\) for one integer \(m\ge2\). Prove the degree and homogeneity conclusion. Show why a degree bound alone is insufficient, and list the additional geometric inputs needed to apply it to an abelian variety.
+
+*Full solution.*
+
+1. For projection \(i\), its kernel and cokernel give
+\([\mathcal F_i]=[\mathcal G]-[K_i]+[C_i]\).
+Subtract the formula for the first projection from that for the second. This is exactly (CE3), with signs \(+K_1,-K_2,+C_2,-C_1\). For the proposed finite scheme, affine cohomology vanishes above zero and its coordinate algebra has basis \(1,\epsilon,\ldots,\epsilon^{r-1}\). Every line over its local ring is free of rank one: lift a residue basis and use Nakayama and projectivity. Hence its Euler polynomial is the constant \(r\). Its support has dimension zero but its length is \(r\); replacing it by its reduction would incorrectly give one.
+
+2. The nonzero Newton coefficients are
+\[
+ c_{00}=5,\quad c_{01}=-2,\quad c_{20}=1,\quad c_{11}=3.
+ \tag{CEX1}
+\]
+The first \(n\)-difference at the origin is zero, as is the pure second \(m\)-difference. Thus
+\(P(-2,3)=5-2\cdot3+{ -2\choose2}+3(-2)\cdot3=-16\).
+Pascal's identity lowers the index of a binomial factor under a forward difference. Every displayed term has total degree at most two, so any three differences kill it, including repeated and mixed differences. This proves the claim on all integer arguments, not just nonnegative ones.
+
+3. The two-affine cover of \(\mathbf P^1\) gives
+\(h^0(\mathcal O(n))=\max(n+1,0)\) and
+\(h^1(\mathcal O(n))=\max(-n-1,0)\).
+Indeed its sections are the allowed polynomial monomials in the two frames; its degree-one quotient consists exactly of the Laurent monomials missing from both frames. Thus its Euler characteristic is \(n+1\) for every integer \(n\).
+
+The product cover has the tensor product of these two Čech complexes, with the signed total differential. Over a field split each complex into its cohomology and its contractible boundary pairs by choosing vector-space complements. A contractible pair remains contractible after tensoring, using its homotopy with the usual degree sign. This proves the needed product cohomology computation directly. Consequently
+\[
+ \chi(\mathcal O(n,m))=(n+1)(m+1),\qquad
+ \Delta_n\Delta_m\chi=1,\quad
+ \Delta_n^2\chi=\Delta_m^2\chi=0 .
+ \tag{CEX2}
+\]
+Every third difference is zero. At \((-2,-3)\), only degree-two cohomology survives, of dimension \(1\cdot2=2\), agreeing with this polynomial.
+
+4. For \(T^a\simeq\mathcal O\), the integer-valued rational polynomial \(\chi(\mathcal F\otimes T^n)\) is periodic with period \(a\). Its leading term would give a nonzero leading term in the difference of its translate unless it were constant. It is therefore constant, giving (CE6).
+
+By contrast the morphism
+\([X:Y]\mapsto[X^2:Y^2]\) of projective lines is finite flat of rank two: on each target coordinate chart its algebra is \(k[t]\) over \(k[t^2]\), with basis \(1,t\). Yet both source and target have \(\chi(\mathcal O)=1\), so
+\[
+ \chi(\mathbf P^1,\mathcal O)\ne
+       2\chi(\mathbf P^1,\mathcal O).
+ \tag{CEX3}
+\]
+This is not a torsor: above zero its geometric fibre is a double point, while above a nonzero point in characteristic different from two it has two distinct points. In any fixed finite group-scheme torsor the geometric fibres are all isomorphic to that group after choosing a point, so this difference excludes a torsor. The numerical failure itself holds in every characteristic.
+
+5. The written genus-one cohomology gives \(H^0(E,\mathcal O_E)=k\) and \(H^1(E,\mathcal O_E)=k\). Over an affine base chart the Čech complex of \(E\) tensors with that chart's coordinate algebra. SC13–SC14 therefore identify the higher-image sheaves as
+\[
+ R^0f_*(\mathcal O(n)\boxtimes\mathcal O_E)
+   =R^1f_*(\mathcal O(n)\boxtimes\mathcal O_E)=\mathcal O(n).
+ \tag{CEX4}
+\]
+All higher images vanish. Their signed Euler sum is zero, while retaining only the zeroth image would give \(n+1\). This shows why SC15's vanishing hypothesis could not simply be omitted.
+
+For a degree-one \(L\), the proved genus-one Riemann–Roch gives \(h^0(L)=1,h^1(L)=0\). The same coordinate computation gives zeroth image \(\mathcal O(n)\), all positive images zero, and Euler polynomial \(n+1\). Its degree is one, equal to the image dimension, although the total source has dimension two.
+
+6. After unit cancellation the degree-zero term has rank one. Constant fibre \(h^0=1\) makes the entries of its outgoing differential belong to every prime. They vanish because the base is reduced. Over a nonreduced base they may be nonzero nilpotents, and this is the exact unsupported step if reducedness were removed.
+
+For (CE8), the cocycle equation is
+\((1+\epsilon c_{ij})(1+\epsilon c_{jk})=1+\epsilon(c_{ij}+c_{jk})=1+\epsilon c_{ik}\).
+Each factor is a unit, with inverse \(1-\epsilon c_{ij}\), so these data glue a line. Its geometric fibre is trivial. If it had trivializing units, their reductions would glue to a global unit on the proper geometrically integral curve, hence a common constant. Divide by it. Writing the units as \(1+\epsilon a_i\) would now express \(c_{ij}\) as a boundary, contrary to its nonzero class. A line from the local dual-number base is trivial, so this also disproves the pulled-back-line conclusion there.
+
+7. Write \(H=k[t]/(t^p)\) with primitive comultiplication
+\(\Delta t=t\otimes1+1\otimes t\). On a basis \(e_1,e_2\) set
+\[
+ \rho(e_1)=e_1\otimes1,\qquad
+ \rho(e_2)=e_2\otimes1+e_1\otimes t .
+ \tag{CEX5}
+\]
+The primitive identity is exactly coassociativity, and the counit is immediate. The line \(ke_1\) and the quotient are trivial representations. Any complementary line would be generated by \(e_2+a e_1\), whose coaction still has the nonzero extra term \(e_1\otimes t\); it is not a trivial subrepresentation. Thus this extension does not split.
+
+For \(\mu_p\), the elements \(1,z,\ldots,z^{p-1}\) in \(k[z]/(z^p-1)\) form a basis and satisfy \(\Delta z^i=z^i\otimes z^i\). They give \(p\) distinct characters. Nevertheless its geometric point set has one point, because \(z^p-1=(z-1)^p\). Characters in CE5 are scheme morphisms; geometric-point functions would lose these distinctions.
+
+8. Form the finite algebra
+\(\mathcal A=\bigoplus_{i=0}^{n-1}T^i\), using the fixed trivialization for multiplication when exponents reach \(n\), and put \(P=\operatorname{Spec}_Y\mathcal A\). Locally it is \(R[z]/(z^n-u)\) for a unit \(u\); it is free of rank \(n\), hence finite faithfully flat. The coaction multiplies \(z\) by the \(\mu_n\) coordinate. On the double overlap, \(z_1\) is a unit and
+\[
+ z_2=z_1w,\qquad w^n=1
+ \tag{CEX6}
+\]
+identifies its algebra with that of \(P\times\mu_n\); the inverse uses \(w=z_2/z_1\). This proves the torsor identity even when \(n=p\) and the derivative vanishes.
+
+Here \(f_*\mathcal O_P=\bigoplus T^i\) explicitly. Each summand is torsion, so CE6's line-invariance argument gives
+\(\chi(P,f^*\mathcal F)=\sum_i\chi(Y,\mathcal F\otimes T^i)=n\chi(Y,\mathcal F)\).
+Thus a nonétale torsor is included, while the general finite flat cover of part 4 remains excluded.
+
+9. The actual elliptic multiplication proof MP1–MP6 in Lesson 3 gives degree \(p^2\), including the inseparable case. CE6 therefore gives
+\(\chi(E,[p]^*L)=p^2\chi(E,L)=p^2\).
+The same earlier degree/pullback calculation makes the pulled-back line have degree \(p^2\). Genus-one Riemann–Roch gives \(h^0=p^2,h^1=0\), confirming the Euler result without counting geometric kernel points. Such a point count could be smaller than the scheme rank at this prime; CE6 used the full finite kernel scheme.
+
+10. Write \(P(t)=a_gt^g+\cdots+a_0\), with \(a_g\ne0\). Comparing the top coefficient gives \(D_m=m^{2g}\). For \(j<g\), comparison gives
+\((m^{2j}-m^{2g})a_j=0\), so \(a_j=0\). Hence
+\[
+ P(t)=t^gP(1),\qquad D_m=m^{2g}.
+ \tag{CEX7}
+\]
+The polynomial \(t^2+t\) has degree two and positive leading coefficient but is not \(t^2P(1)\); for example its value at two is six instead of eight. A degree bound alone does not give homogeneity.
+
+For the geometric application one must still prove the cube relation \([m]^*H\simeq H^{m^2}\) for the symmetric ample line, finiteness of multiplication, and a nonzero leading coefficient of degree exactly \(g\). CE6 then supplies the Euler functional equation, and the argument above gives the conclusions. The general kernel/Tate-rank and semistable monodromy inputs retain their own proof obligations. None follows merely from this formal polynomial exercise.
 
 **Lemma 2.3 (potentially good compatibility, in every dimension).** If an abelian variety \(B/F\), over a characteristic-zero nonarchimedean local field, acquires good reduction over a finite extension, then all its \(V_\ell B\), \(\ell\ne p(F)\), have one Galois-invariant Frobenius-semisimple Weil–Deligne class over \(\overline{\mathbf Q}\); its monodromy is zero.
 
@@ -843,7 +1154,7 @@ There is a useful distinction in Deligne's §9: its global field is a function f
 
 The local elliptic classification, the Tate-curve and dual factors, and the conductor calculations are imported from *Elliptic curves over local fields and their Weil–Deligne representations*, Theorems 3.1, 4.1 and 5.1. The good-reduction torsion comparison, determinant–degree identity and Hasse bound are imported from *The ℓ-adic Tate module of an elliptic curve*, Theorems 3.1, 2.2 and 4.1 respectively. Their combination proving common good-prime polynomials is Theorem 2.1 here.
 
-Lemma 2.2 proves the common characteristic polynomial for every abelian-variety endomorphism; its exact geometric prerequisites are the written cube and Euler-characteristic proofs in *Abelian varieties*, Proposition 4.4, Lemma 5.2, Proposition 5.5 and Corollary 5.6, and the finite kernels and Tate modules in §§6–7. Lemma 2.3 proves strict local compatibility for potentially good abelian varieties of every dimension, using the good-model extension, finite étale lifting and semilinear proofs GQ1–GQ5 in §2A. For elliptic curves, potentially multiplicative descent and the proved Tate curve complete the local comparison. The full arbitrary-abelian-variety theorem, Theorem 2.4, still needs the semistable monodromy filtration, its toric pairing and equivariant descent comparison. Semistable reduction alone does not prove that representation theorem. No assertion at \(\ell=p(v)\) is part of strict compatibility here.
+Lemma 2.2 gives the common characteristic-polynomial argument for every abelian-variety endomorphism. CE1–CE7 in §2B now proves the full coherent Euler polynomial, proper pushforward and image bound, reduced-base see-saw, and finite commutative torsor Euler comparison used there. Its remaining recorded earlier field-geometric prerequisites are the cube and Euler-homogeneity proofs in *Abelian varieties*, Propositions 4.4 and 5.5, and the kernel/Tate-module proofs in §§6–7; their complete free-origin and earlier-edition audit remains required. Lemma 2.3 proves strict local compatibility for potentially good abelian varieties of every dimension, using the good-model extension, finite étale lifting and semilinear proofs GQ1–GQ5 in §2A. For elliptic curves, potentially multiplicative descent and the proved Tate curve complete the local comparison. The full arbitrary-abelian-variety theorem, Theorem 2.4, still needs the semistable monodromy filtration, its toric pairing and equivariant descent comparison. Semistable reduction alone does not prove that representation theorem. No assertion at \(\ell=p(v)\) is part of strict compatibility here.
 
 Proposition 3.1 proves all ramified Euler induction and convergence. The conductor lesson's Theorems 2.6 and 4.1 prove integrality and induction, yielding (9A). Lemma 3.2 gives the rank-one analytic proof with the actual earlier adelic Poisson and Tate proofs: NT-ADL-03, Theorem 3.3; NT-ADL-05, Theorems 5.4–5.5; NT-ADL-07, Theorems 7.2–7.3; NT-ADL-08, Theorem 8.1 and Propositions 8.2–8.4; NT-ADL-09, Theorem 9.2; and NT-ADL-10, Theorem 10.1. Theorem 3.3 then proves the full Artin meromorphic functional equation through the actually written integer induction theorem RT-FIN-11, Theorem 5.1. General Artin holomorphy remains a conjecture; meromorphic quotients in (12H) do not prove it. Proposition 6.1 proves algebraic Hecke realizations using NT-CFT-17, Proposition 17.3.
 

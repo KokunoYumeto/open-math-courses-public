@@ -8,6 +8,8 @@ The sheaf-operation inputs are the actual derived proper-support fibre compariso
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0). Source and dependency reconciliation by GPT-6 Astra (OpenAI), Ultra, October 2026; coordinator checked, not independently reviewed.*
 
+*Compact-chart proof and dependency reconciliation by GPT-6.1 Sol (OpenAI), Ultra, 15 October 2026; owner checked.*
+
 ## Perfection and ordinary inverse image
 
 Let \(k\) be commutative of finite global dimension. Manifolds and maps are real analytic, finite dimensional with uniform dimension bounds, Hausdorff and countable at infinity. All complexes are globally bounded. A coefficient complex is **perfect** when it is quasi-isomorphic to a bounded complex of finitely generated projective \(k\)-modules.
@@ -118,6 +120,45 @@ R\Gamma(\mathbb R^N;G)
 
 This proves (7). Perfection of each intermediate direct image was obtained from its one-dimensional fibres; the general perfect-push theorem has not been assumed.
 
+## Compact support in finitely many coordinate charts
+
+The Euclidean result also calculates compactly supported coefficients on an arbitrary manifold in our analytic range. A finite closed cover makes the reduction without a global analytic embedding.
+
+**Compact-chart lemma.** If \(G\in D^b_{\mathbb R\text{-}c}(k_M)\) has compact closed support \(S\), then \(R\Gamma(M;G)\) is perfect.
+
+**Proof.** If \(S=\varnothing\), the stalk criterion gives \(G=0\). Otherwise, choose finitely many closed coordinate balls \(C_1,\ldots,C_m\) whose interiors cover \(S\), each compact inside an analytic chart \(c_i:U_i\to V_i\subset\mathbb R^{n_i}\). Such balls exist around every point by shrinking a Euclidean chart ball; compactness selects finitely many. Each \(C_i\) is a closed subanalytic subset of \(M\): its chart description is a closed ball, and every point outside that compact ball has a neighborhood missing it. Put \(C_I=\bigcap_{i\in I}C_i\) for nonempty index sets \(I\), and write \(a_I:C_I\hookrightarrow M\).
+
+Closed-support localization from (1a), with the identity map on \(M\), identifies \(G\) with the exact closed direct image of its restriction to \(S\). Choose a bounded complex representing that restriction and push it forward; we may therefore represent \(G\) by a bounded complex which vanishes termwise off \(S\). Closed inverse restriction and closed direct image are exact. There is an augmented finite complex of complexes
+
+\[
+\begin{aligned}
+G&\longrightarrow C^0(G)\longrightarrow\cdots\longrightarrow C^{m-1}(G),\\
+C^p(G)&=\bigoplus_{i_0<\cdots<i_p}a_{I*}a_I^{-1}G,\\
+I&=\{i_0,\ldots,i_p\}.\\
+&\text{(CC1)}
+\end{aligned}
+\]
+
+Its arrows are the alternating ordinary restriction maps, including restriction to closed intersections. At a point \(x\), let \(J_x=\{i:x\in C_i\}\). If \(J_x\) is empty, the entire augmented stalk complex is zero, because \(S\) is covered. Otherwise it is the augmented cochain complex of the full simplex on \(J_x\), with coefficient complex \(G_x\) and identity restriction maps. Fix \(j\in J_x\), regard cochains as alternating functions of their indices, and insert \(j\) as the first index. This gives a contraction \((sc)_{i_0\ldots i_{p-1}}=c_{j i_0\ldots i_{p-1}}\), with repeated indices interpreted as zero and with \(s(c)=c_j\) in degree zero. In the alternating coboundary, the terms containing \(j\) cancel in pairs and leave \(ds+sd=1\), including the augmentation. It commutes with the internal differential. Thus (CC1) has a quasi-isomorphic finite totalization, with the usual total-complex signs.
+
+For each nonempty \(C_I\), choose \(i\in I\). The chart sends it to a compact, hence closed, subanalytic subset \(D_I=c_i(C_I)\) of \(\mathbb R^{n_i}\). Local subanalyticity on the chart is preserved by its analytic coordinate changes; at points outside \(V_i\), compact containment gives a neighborhood disjoint from \(D_I\). Let \(H_I\) be the exact closed extension to \(\mathbb R^{n_i}\) of the transported restriction \(G|_{C_I}\).
+
+This extension is constructible, including at its boundary. For each of the finitely many cohomology sheaves of \(G\), take its defining locally finite cover by locally closed subanalytic sets. Only finitely many members meet the compact \(C_I\). Intersect those members with \(C_I\), transport them through \(c_i\), and add \(\mathbb R^{n_i}\setminus D_I\). These form a finite cover by locally closed subanalytic sets. Compact containment makes their closures miss the outside of the chart, so local closedness and subanalyticity hold in the whole Euclidean space. On the inside pieces the cohomology restrictions remain locally constant by ordinary restriction; on the outside piece they are zero. This is exactly the weak cover criterion, without a new triangulation. The stalks of \(H_I\) are original stalk complexes of \(G\), or zero, hence perfect, and the same global cohomological bounds remain valid. Its support is compact. Equation (7) applies and gives
+
+\[
+\begin{aligned}
+R\Gamma(M;a_{I*}a_I^{-1}G)
+&\simeq R\Gamma(C_I;G|_{C_I})\\
+&\simeq R\Gamma(\mathbb R^{n_i};H_I).\\
+&\text{(CC2)}
+\end{aligned}
+\]
+
+The section objects in (CC2) are therefore perfect. The comparisons come from the actual closed embeddings and the chart homeomorphism. Closed direct image preserves injectives, being right adjoint to exact inverse restriction, so these are also the derived section comparisons. Empty intersections contribute zero. Applying derived sections to the finite totalization (CC1) gives a finite filtration whose quotients are finite sums of (CC2), shifted by \([-p]\). Derived sections preserve these finite cones. Hence \(R\Gamma(M;G)\) is perfect. No infinite-cover totalization, finite-generation criterion or perfect-push theorem has been used. \(\square\)
+
+The balls only cover the coefficient support, not necessarily the manifold. Their intersections may be singular and need not be balls. What matters is compactness, subanalyticity and containment in one analytic chart. The argument also covers dimension zero and disconnected manifolds; the finite cover can use charts of different dimensions within the given uniform bound.
+
+
 ## Finite descent on a compact triangulation
 
 Here is a second compact-cohomology proof which also treats compact singular subanalytic subsets directly.
@@ -127,7 +168,7 @@ Here is a second compact-cohomology proof which also treats compact singular sub
 **Proof.** Refine a common locally finite subanalytic cover for the finitely many cohomology sheaves, with membership in \(K\) and its complement. Choose a compatible locally finite triangulation
 \(i:|S|\simeq X\). The set \(K\) is a union of open simplex images. It is closed, so it contains the faces of every simplex it contains; its inverse image is the realization of a subcomplex \(S_K\).
 
-The exact input here is the common triangulation lemma, (3). Use its partition-refinement proof with the finitely many cohomology sheaves and the two additional membership conditions for the compact set and its complement. That proof accepts a locally finite subanalytic partition and arbitrary stalk modules. It therefore supplies the simultaneous triangulation used here without a Noetherian coefficient assumption. This step uses neither the finite-stalk abelian-category equivalence nor the toric-orbit theorem.
+The exact input here is the common triangulation lemma, (3). Use its partition-refinement proof with the finitely many cohomology sheaves and the two additional membership conditions for the compact set and its complement. That proof accepts a locally finite subanalytic partition and arbitrary stalk modules. It therefore supplies the simultaneous triangulation used here without a Noetherian coefficient assumption. This step uses neither the finite-stalk abelian-category equivalence nor the toric-orbit theorem. The geometric construction can be taken directly from TC3–TC5, with globalization in TC4. TC4 applies to an arbitrary locally finite family of locally subanalytic subsets, including the membership refinement just used. Its proper subanalytic embedding and analytic recovery on each open simplex do not require a global analytic embedding. Its finite preparation, cell and coordinate proof inputs remain as stated there.
 
 This subcomplex is finite. The open simplices form a locally finite family: near a point in a simplex, only its finitely many cofaces can occur. A finite neighborhood cover of the compact inverse image of \(K\) then meets only finitely many simplices. The restricted complex \(F|_K\) has simplex-constructible cohomology and perfect stalks on this finite complex.
 
@@ -204,9 +245,9 @@ Y\xrightarrow{\gamma_f}X\times Y\xrightarrow{p}X,
 
 The graph is closed analytic. Its direct image is exact, is weakly constructible by the closed-embedding operation, and has stalks either \(G_y\) on the graph or zero off it. Thus \(\gamma_{f*}G\) is \(\mathbb R\)-constructible. The projection is proper on that object's support precisely by the original support properness. Its fibre over \(x\) is the smooth manifold \(\{x\}\times Y\), and ordinary restriction to that fibre preserves constructibility and perfection by (1). Its coefficient support is compact.
 
-To finish this coordinate route, use the additional geometric prerequisite that a finite-dimensional countable-at-infinity real analytic manifold has a closed analytic embedding into some \(\mathbb R^N\). Closed direct image again preserves weak constructibility and perfect stalks by its exact stalk description, and carries this compact support to a compact support. Equation (7) then proves perfect fibre cohomology. Proper base change and composition in (16) give the stalk in (13). This supplies the full graph, manifold-fibre, Euclidean-coordinate and compact-line chain. The separate proof (14)–(15) uses compatible triangulation to calculate a compact singular fibre directly. The deep triangulation and embedding statements remain geometric prerequisites in their respective routes.
+To finish the coordinate route, apply [the compact-chart lemma](#compact-support-in-finitely-many-coordinate-charts) to this manifold fibre and its compactly supported coefficient. Each closed chart intersection is calculated by (7), which in turn uses coordinate induction and the compact-line calculation (2)–(5). The finite closed-cover restriction maps in (CC1) assemble those Euclidean complexes. Proper base change and composition in (16) therefore give the perfect stalk in (13). This completes the graph, manifold-fibre, coordinate-chart, Euclidean-coordinate and compact-line chain without a global analytic embedding. The separate proof (14)–(15) calculates a compact singular fibre by compatible triangulation.
 
-The two geometric inputs have different roles. The supplied common-triangulation proof supplies the triangulation in the finite-descent route. Its homeomorphism is analytic on open simplex images, not asserted analytic on the entire simplicial space; it does not supply the closed analytic embedding required by this alternative graph route. The graph argument is retained with that separate dependency explicit.
+**Conditional global-embedding variant.** If a closed real analytic embedding of the manifold fibre into some \(\mathbb R^N\) is separately supplied, its exact closed direct image has the original perfect stalks on the image and zero stalks off it. Closed-embedding weak constructibility and (7) then give the same compact cohomology, followed by base change and (16). This retains the earlier embedding reduction as a conditional variant. No analytic embedding theorem is asserted here. The proper smooth embedding theorem does not establish that analytic premise. The supplied triangulation is analytic on open simplex images; it is not a global analytic embedding either. Neither completed proof above needs this additional hypothesis.
 
 ## Examples and exercises with solutions
 
@@ -271,10 +312,10 @@ It is perfect by finite direct-sum and shift closure. This uses finite-projectiv
 
 ## References
 
-Kashiwara and Schapira, *Microlocal study of sheaves*, Astérisque 128 (1985), [Remark 8.2.8, printed p. 148](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=151), states perfection of cohomology on a compact subanalytic set. [Proposition 8.3.1, printed pp. 148–149](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=151), proves proper constructible direct image using that remark. Ordinary inverse image is included in [Proposition 8.3.3, printed p. 149](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=152). The compact calculation here is separately proved by localization on a line, coordinate induction and finite star descent; its compatible triangulation and closed analytic embedding inputs remain explicit geometric prerequisites.
+Kashiwara and Schapira, *Microlocal study of sheaves*, Astérisque 128 (1985), [Remark 8.2.8, printed p. 148](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=151), states perfection of cohomology on a compact subanalytic set. [Proposition 8.3.1, printed pp. 148–149](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=151), proves proper constructible direct image using that remark. Ordinary inverse image is included in [Proposition 8.3.3, printed p. 149](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=152). The compact calculation here is separately proved by localization on a line, coordinate induction and finite star descent; the compatible-triangulation route retains its exact geometric proof inputs, while the compact-chart route completes the manifold reduction without a global analytic embedding.
 
 ## Readable source and dependency account
 
-A finite list of perfect stalks is not by itself a perfect global section object. The proof retains the restriction maps in finite localization triangles and in star descent; finite sums and cones of perfect complexes then give the required fibre object. Proper-support base change identifies that complex with the image stalk. The graph route retains its geometric embedding hypothesis instead of treating it as formal. The no-Noetherian claim is established by perfect-complex operations, not by replacing perfectness with finite cohomology modules.
+A finite list of perfect stalks is not by itself a perfect global section object. The proof retains the restriction maps in finite localization triangles and in star descent; finite sums and cones of perfect complexes then give the required fibre object. Proper-support base change identifies that complex with the image stalk. The graph route uses the finite closed-chart resolution (CC1), with its actual restriction maps and stalk contraction. The earlier analytic-embedding reduction is retained only as an explicitly conditional variant. The no-Noetherian claim is established by perfect-complex operations, not by replacing perfectness with finite cohomology modules.
 
 For the classical operation statements, see Pierre Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*, 1 August 2026, Theorem 6.2.7, p. 128](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=128). That section states the results without proof and uses the Noetherian coefficient convention on p. 127. The argument above establishes its perfect-complex conclusion without that convention. Schapira’s [*A short review on microlocal sheaf theory*, 19 January 2016, p. 7](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf#page=7), identifies the closed support through the zero covectors of microsupport; [Theorem 2.9, pp. 10–11](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf#page=10), gives the proper-image microsupport estimate and its closed-embedding equality. These supply the stated classical context for the geometric part. Original programme exposition remains CC0; the human works retain their own rights.

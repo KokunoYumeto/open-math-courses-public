@@ -131,6 +131,14 @@ What the course proves and what it assumes: the reduction to the variance bound,
 
 [OpenAI-L, Section 8.2] also deduces the same inequality for every even log-concave measure in place of the volume, and the statement that \(t\mapsto\mu(e^tK)\) is log-concave for such a measure \(\mu\) and a symmetric convex body \(K\). This uses a theorem of C. Saroglou and a theorem of C. Borell and is not part of the course.
 
+**Centered bodies and the cases of equality.** Liu, Sun and Xiong extended the inequality to convex bodies whose centroid is the origin [LSX, Theorem 1.1]. For such bodies \(K,L\subset\mathbb R^n\), \(n\ge2\), and \(0<t<1\), \(\bigl|\mathcal W[h_K^{1-t}h_L^t]\bigr|\ge|K|^{1-t}|L|^t\), with equality exactly when \(\mathbb R^n=E_1\oplus\cdots\oplus E_r\) for nonzero subspaces \(E_i\), not necessarily orthogonal, with \(K=K_1\oplus\cdots\oplus K_r\) and \(L=a_1K_1\oplus\cdots\oplus a_rK_r\) for convex bodies \(K_i\subset E_i\) with centroid \(0\) and numbers \(a_i>0\); these are the cases of equality that Böröczky had conjectured (see [LSX, Section 1]). They also prove the logarithmic Minkowski inequality for such bodies with the same cases of equality, deduce that two convex bodies with centroid \(0\) have the same normalized cone-volume measure exactly in these cases, and prove the \(L_p\) Brunn–Minkowski and \(L_p\) Minkowski inequalities for these bodies and \(0<p<\infty\), with equality only for dilates [LSX, Theorems 1.2–1.5]. Their starting point is the moment-coordinate argument of [OpenAI-L]: they carry out the adjoint identities and the tensor calculation of the second and third lessons without symmetry, and replace the even test functions of the fourth lesson by the orthogonal complement of all affine functions [LSX, Section 1].
+
+**A Gaussian form of the inequality.** Kalantzopoulos recorded, from Saroglou's reformulation and the second variation computed by Cordero-Erausquin and Rotem, that the logarithmic Brunn–Minkowski inequality for all convex bodies symmetric about the origin is equivalent to the following inequality on the cube \(B_\infty^n=[-1,1]^n\): for every positive definite symmetric matrix \(\Sigma\) and every diagonal matrix \(A\),
+\[
+\operatorname{Var}_{\nu}\bigl(\langle A\Sigma^{-1}y,y\rangle\bigr)\le\int\bigl\langle(A^2\Sigma^{-1}+A\Sigma^{-1}A)y,y\bigr\rangle\,d\nu(y),
+\]
+where \(\nu\) is the centered Gaussian measure with covariance \(\Sigma\), restricted to the cube and normalized to a probability measure [Kalantzopoulos 2026, Proposition 3]. With this equivalence, which the course does not prove, the theorem of this course gives the inequality on the cube. On rotated boxes it can fail: for \(\Sigma\) positive definite and \(A\) diagonal, it holds on every box symmetric about the origin with edges along some orthonormal basis exactly when \(A\) and \(\Sigma\) commute [Kalantzopoulos 2026, Theorem 1].
+
 ## 6. The exponent 2
 
 For \(q=2\) the measure \(\mu\) is Gaussian, and the variance bound can be proved directly.
@@ -170,3 +178,5 @@ is positive semidefinite. Multiply the formula for \(\Sigma^{-1}\) from both sid
 ## References
 
 - [OpenAI-L] OpenAI, *The logarithmic Brunn-Minkowski conjecture*, OpenAI Math Release preprint, 23 September 2026, Sections 7 and 8. https://github.com/openai/math/tree/main/preprints/The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026
+- [LSX] Y. Liu, Q. Sun and G. Xiong, *The centered logarithmic Brunn–Minkowski inequality*, arXiv:2610.10152 (October 2026). https://arxiv.org/abs/2610.10152
+- [Kalantzopoulos 2026] P. Kalantzopoulos, *Commutativity in a Poincaré-type inequality*, arXiv:2610.07248 (October 2026), Proposition 3 and Theorem 1. https://arxiv.org/abs/2610.07248

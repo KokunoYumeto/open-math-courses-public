@@ -65,6 +65,8 @@ The order of the quantifiers matters. The circuit and its resources depend on \(
 
 The theorem is proved in the last lesson, [Compilation into one Boolean oracle](compilation-into-one-boolean-oracle.md), Theorem 4.2.
 
+**Related results.** Other recent work on the problem changes the resources. Write \(N=2^n\). Nehoran, Slote and Yuen gave one fixed algorithm with three queries to a diagonal phase oracle on \(O(N\log\log(N/\epsilon))\) qubits which, for a suitable oracle, implements a given \(U\in U(N)\) up to operator-norm error \(\epsilon\); its circuits use exponentially many qubits, and as a consequence every \(n\)-qubit unitary has an exact circuit of one- and two-qubit gates of depth \(O(n)\) with \(2^{O(n)}\) ancillas [NSY, Theorems 1.1 and 1.2]. In the other direction, Lombardi, Ma and Wright proved that one query does not suffice for oracles on \(o(N)\) bits [LMW], and Dong and Lombardi extended this lower bound to algorithms that make one query to the unitary-dependent function and polynomially many queries to a random oracle [DL]. Huang, Ramkumar and Wright replace the unitary-dependent oracle by a uniformly random Boolean function coupled with a Haar random unitary, and prove a superpolynomial lower bound on the number of queries of every algorithm that synthesizes the unitary from the function in this sense [HRW, Definition 1.1 and Section 4]. Kretschmer and Tang require circuits whose size is polynomial in \(n\) and in \(\log(1/\epsilon)\) for every error \(\epsilon>0\); in this formulation they prove that if quantum commitments exist, then either polynomial-time unitary synthesis is impossible or \(\mathrm{BPP}\ne\mathrm{NEXP}\) [KT, Theorem 1.1 and Section 7]. Theorem 2.1 reaches the constant error \(1/2\) only.
+
 ## 3. Hermitian matrices and the trace norm
 
 **Lemma 3.1** (spectral theorem). Every Hermitian matrix \(A\) on \(\mathbb C^d\) has an orthonormal basis of eigenvectors, with real eigenvalues.
@@ -174,3 +176,8 @@ The construction replaces the synthesis of a unitary of order \(d\) by the synth
 
 - [OpenAI-US] OpenAI, *Polynomial-Time Unitary Synthesis from a Boolean Oracle*, OpenAI Math Release preprint, 5 October 2026. https://github.com/openai/math/tree/main/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026
 - [AK] S. Aaronson and G. Kuperberg, *Quantum versus classical proofs and advice*, Theory of Computing 3 (2007), 129–157; arXiv:quant-ph/0604056, Section 7, Problem (4). https://arxiv.org/abs/quant-ph/0604056
+- [NSY] B. Nehoran, J. Slote and H. Yuen, *All unitaries have constant depth quantum circuits*, arXiv:2609.40351 (September 2026). https://arxiv.org/abs/2609.40351
+- [LMW] A. Lombardi, F. Ma and J. Wright, *A one-query lower bound for unitary synthesis and breaking quantum cryptography*, Proceedings of STOC 2024, 979–990; arXiv:2310.08870. https://arxiv.org/abs/2310.08870
+- [DL] F. Dong and A. Lombardi, *Lower bounds for preprocessing attacks on quantum cryptography*, arXiv:2610.02101 (October 2026), result (2) of the abstract. https://arxiv.org/abs/2610.02101
+- [HRW] A. Huang, A. Ramkumar and J. Wright, *Random-oracle unitary synthesis is impossible*, arXiv:2610.06700 (October 2026). https://arxiv.org/abs/2610.06700
+- [KT] W. Kretschmer and E. Tang, *Unitary complexity in polynomial space*, arXiv:2610.03705 (October 2026). https://arxiv.org/abs/2610.03705

@@ -58,6 +58,8 @@ For a letter \(t\) and a side \(Y\in\{A,B\}\) put \(Y_t=\{x\in Y:t\in S_x\}\).
 
 So whatever the edges of the graphs turn out to be, the condition of Proposition 3.2 of [Group algebras and zero divisors](group-algebras-and-zero-divisors.md) holds, provided every vertex has exactly its type as set of outgoing letters. The random choice in [Random matchings with large girth](random-matchings-with-large-girth.md) is used only to control the geometry of the graphs.
 
+The same design idea works modulo an odd prime \(p\) [Ivanov 2026, Lemma 3.4]: with \(q=p^3\) and \(p\) extra letters, let every type be a line, possibly together with all \(p\) extra letters. Two lines share \(1\) or \(q+1\) points, both congruent to \(1\) modulo \(p\), and two types share \(0\) or \(p\) extra letters, so every cross-intersection is congruent to \(1\) modulo \(p\). This is the hypothesis of the signed cancellation of Exercise 5.6 of [Group algebras and zero divisors](group-algebras-and-zero-divisors.md), with \(d=1\).
+
 ## 3. Turn weights
 
 A *turn* is a pair of consecutive letters \(t,u\) of a path; it is *cancelling* if \(u=\bar t\). At the vertex between the two edges, the outgoing letters include \(\bar t\), the first edge read backwards, and \(u\). For a non-cancelling turn \(t,u\) let \(w(t,u)\) be the proportion of vertices of \(B\) containing \(u\) among those containing \(\bar t\):
@@ -155,3 +157,4 @@ The point of squaring is that the weights \(P(W)\) of the words of length \(h\) 
 ## References
 
 - [OpenAI-KZ] OpenAI, *A Torsion-Free Group Algebra with Zero Divisors*, OpenAI Math Release preprint, 23 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Group-Algebra-with-Zero-Divisors-September-23-2026
+- [Ivanov 2026] S. V. Ivanov, *Zero divisors in group algebras of torsion-free groups in odd characteristic*, arXiv:2610.17662, 13 October 2026. https://arxiv.org/abs/2610.17662

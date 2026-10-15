@@ -93,6 +93,8 @@ The second step uses (SW) for \(\pi^{-1}\). It does not use an inverse of the fu
 
 According to [Slaman, Theorem 4.28], it was known before that every automorphism fixes all degrees above the degree \(\mathbf 0''\) of the second jump of the empty set. According to [Slaman, Theorem 5.9], the rigidity of the degrees is equivalent to a statement on definability, the bi-interpretability of the partial order of the degrees with second order arithmetic, which Slaman and Woodin had conjectured. [OpenAI-R] states this consequence as a corollary. The equivalence is not proved in this course.
 
+**Truth-table degrees.** Kjos-Hanssen adapted the argument to truth-table reducibility [KH]. If an automorphism \(\pi\) of the truth-table degrees is induced on some comeager set of sets of natural numbers by a continuous function, then \(\pi\) is the identity [KH, Theorem 1.1]; in particular this holds when \(\pi\) is induced by a Baire measurable function [KH, Corollary 1.2], and the same statements hold for the weak truth-table degrees [KH, Theorem 1.5]. For a function continuous on all of Cantor space his proof uses only the Baire category theorem [KH, Theorem 1.3]. No analogue of (SW) is known for these degrees: the rigidity of the truth-table degrees is equivalent to the statement that every automorphism is induced on some comeager set by a continuous function [KH, Question 1.6]. Under the axiom of determinacy every automorphism has this property, so every automorphism of the truth-table degrees is the identity [KH, Section 5 and Theorem 1.4]; in ZFC the question is open.
+
 ## 4. Exercises
 
 **4.1.** Show that the identity automorphism is represented by the identity function, and by the function \(A\mapsto\{2n:n\in A\}\). Which of the two is one-to-one on each degree?
@@ -121,3 +123,4 @@ According to [Slaman, Theorem 4.28], it was known before that every automorphism
 
 - [OpenAI-R] OpenAI, *Rigidity of the Turing degrees*, OpenAI Math Release preprint, 24 September 2026, Sections 3 and 5. https://github.com/openai/math/tree/main/preprints/Rigidity-of-the-Turing-degrees-September-24-2026
 - [Slaman] T. A. Slaman, *Global properties of the Turing degrees and the Turing jump*, author's version. https://math.berkeley.edu/~slaman/papers/IMS_slaman.pdf
+- [KH] B. Kjos-Hanssen, *Baire measurable functions and automorphisms of the truth-table degrees*, arXiv:2610.16059 (October 2026). https://arxiv.org/abs/2610.16059

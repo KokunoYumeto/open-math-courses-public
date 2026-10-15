@@ -158,6 +158,8 @@ Since it is NP-hard to decide whether a formula \(\varphi\) of this kind is sati
 
 **What the course proves.** The theorem is proved here from three statements that are named and not proved in the course: the hypothesis (PCP), a theorem on probabilistically checkable proofs with perfect completeness; the hypothesis (PR), parallel repetition for projection games; and the hypothesis (GE), on the expansion of Grassmann graphs. According to [OpenAI-G] all three are theorems in the literature. Every other step, from the construction of the game to the choice of the parameters, is proved in the lessons of the course. The parameters are constants for a fixed \(\delta\); the course gives no bound for them, and the degree of the polynomial that bounds the size of the game grows with them.
 
+**4-to-1 games.** Fei, Minzer and Wang proved, by a different construction, Khot's conjecture for 4-to-1 games with perfect completeness: for every \(\varepsilon>0\) there is an integer \(r\) such that it is NP-hard to tell 4-to-1 games with answer sets of size at most \(r\) and value \(1\) from those of value at most \(\varepsilon\) [FMW, Theorem 1.6]. In their definition every constraint of a \(d\)-to-1 game is a union of products \(\Sigma_{L,i}\times\{b_i\}\) over a partition of the left answer set into blocks of size exactly \(d\) [FMW, Definitions 1.1 and 1.3]. Their construction has three steps: an outer test built from quadratic equations, which gives perfect completeness, a middle test with low-rank checks, and an inner test that combines the Grassmann encoding with a low-rank variant of it [FMW, Section 1.3]. With known reductions they deduce hardness results for colorings of 3-colorable graphs [FMW, Corollaries 1.7 and 1.9]; the course [Large independent sets in three-colorable graphs](course:large-independent-sets-in-three-colorable-graphs/label-cover-and-the-graph-of-the-reduction) compares them with its Theorem 1.1.
+
 ## 7. Exercises
 
 **7.1.** Let \(\delta=\tfrac3{10}\). Compute \(\varepsilon\), the smallest \(d\) with (P1), and \(c,\kappa,\eta\).
@@ -185,3 +187,4 @@ Since it is NP-hard to decide whether a formula \(\varphi\) of this kind is sati
 ## References
 
 - [OpenAI-G] OpenAI, *Perfect completeness for 2-to-1 games*, OpenAI Math Release preprint, 23 September 2026, Section 8. https://github.com/openai/math/tree/main/preprints/Perfect-completeness-for-2-to-1-games-September-23-2026
+- [FMW] Y. Fei, D. Minzer and S. Wang, *On the hardness of 4-to-1 games with perfect completeness*, arXiv:2610.12378 (October 2026). https://arxiv.org/abs/2610.12378

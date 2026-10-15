@@ -136,6 +136,8 @@ a contradiction. \(\square\)
 
 (3) The proof uses the ultrapower only to make the defect attained, and Darbo's theorem only to find a fixed direction of the return map; everything else is support and convexity geometry in the plane spanned by two vectors.
 
+(4) Kudaybergenov, Ibragimov and Arziev studied surjective isometries between the unit spheres of strongly facially symmetric spaces through their facial structure. Such isometries preserve symmetric faces, orthogonality and geometric tripotents, and with this the authors obtain the linear extension for finite-dimensional real neutral strongly facially symmetric spaces with the joint Peirce property, and for a wider class of such spaces approximated by finite-dimensional Peirce subspaces [KIA]. Corollary 5.2 contains these extension statements.
+
 ## 6. Exercises
 
 **Exercise 6.1** (easy). Show that the sets \(\{A\le\epsilon\}\) and \(\{B\le\epsilon\}\) in Lemma 3.3 are exchanged by passing to the inverse configuration, and that the inverse of the inverse configuration is the original one.
@@ -159,3 +161,4 @@ a contradiction. \(\square\)
 ## References
 
 - [OpenAI-T] OpenAI, *A positive solution to Tingley's problem*, OpenAI Math Release preprint, 23 September 2026, Sections 5 and 6. https://github.com/openai/math/blob/main/preprints/A-positive-solution-to-Tingleys-problem-September-23-2026
+- [KIA] K. Kudaybergenov, M. Ibragimov and A. Arziev, *Isometries of unit spheres of SFS-spaces and a geometric approach to Tingley's problem*, arXiv:2610.19626 (October 2026). https://arxiv.org/abs/2610.19626

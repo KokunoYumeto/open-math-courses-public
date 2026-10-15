@@ -235,6 +235,8 @@ This holds in particular for three maps \(\lambda x\), \(\lambda x+1\), \(\lambd
 
 [OpenAI-S, Section 6] also deduces that the attractor of maps without exact overlaps has the Hausdorff dimension \(\min\{1,s_*\}\), where \(\sum_i|r_i|^{s_*}=1\). This statement about sets needs the Hausdorff dimension and is not part of the course.
 
+**Earlier results and an independent proof.** Before [OpenAI-S] the formula was known in special cases. Hochman proved it under an exponential separation condition, which holds in particular when all the parameters are algebraic [Hochman 2014]; Varjú proved it for Bernoulli convolutions with a transcendental parameter [Varjú 2019]; Rapaport for systems with algebraic contraction ratios and arbitrary translations [Rapaport 2022]; and Rapaport and Varjú in further cases of the three maps \(\lambda x\), \(\lambda x+1\), \(\lambda x+\tau\) [Rapaport–Varjú 2024]. The introduction of [KK] surveys these and other results. Kittle and Kogler proved the dimension formula independently, for every probability measure supported on finitely many contracting similarities of the line, together with the formula \(\dim K=\min\{1,s_*\}\) for the attractor \(K\) of maps without exact overlaps [KK, Theorem 1.1 and Corollary 1.2]. Their proof combines an inequality for the entropy lost under addition of independent random variables [KK, Theorem 1.3] (see the lesson [The pair bound for a finite law](the-pair-bound-for-a-finite-law.md)) with an inverse theorem of Hochman and a method of summing variances over scales.
+
 ## 7. Exercises
 
 **7.1.** In the proof of Proposition 3.1 the ratio \(R_j\) may be negative. Check that the family of pairs \(\{R_jx,R_jy\}\) with the weights \(w_e\) is feasible for \(\mathsf D_{R_j}\nu\), and say where the proof of Proposition 3.1 uses the absolute value \(|R_j|\) and where the sign is kept.
@@ -258,3 +260,8 @@ This holds in particular for three maps \(\lambda x\), \(\lambda x+1\), \(\lambd
 ## References
 
 - [OpenAI-S] OpenAI, *The entropy-rate dimension formula for self-similar measures on the line*, OpenAI Math Release preprint, 24 September 2026, Sections 5 and 6. https://github.com/openai/math/tree/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026
+- [KK] S. Kittle and C. Kogler, *The exact overlaps conjecture for self-similar measures on the real line*, arXiv:2610.10511 (October 2026). https://arxiv.org/abs/2610.10511
+- [Hochman 2014] M. Hochman, *On self-similar sets with overlaps and inverse theorems for entropy*, arXiv:1212.1873. https://arxiv.org/abs/1212.1873
+- [Varjú 2019] P. P. Varjú, *On the dimension of Bernoulli convolutions for all transcendental parameters*, arXiv:1810.08905. https://arxiv.org/abs/1810.08905
+- [Rapaport 2022] A. Rapaport, *Proof of the exact overlaps conjecture for systems with algebraic contractions*, arXiv:2001.01332. https://arxiv.org/abs/2001.01332
+- [Rapaport–Varjú 2024] A. Rapaport and P. P. Varjú, *Self-similar measures associated to a homogeneous system of three maps*, arXiv:2010.01022. https://arxiv.org/abs/2010.01022

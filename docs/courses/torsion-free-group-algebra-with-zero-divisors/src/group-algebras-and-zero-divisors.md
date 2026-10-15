@@ -43,7 +43,7 @@ The conjecture was formulated by Higman in his thesis of 1940 and was posed by K
 
 *Proof.* Let \(a,b\ne0\) and put \(P=\operatorname{supp}a\), \(Q=\operatorname{supp}b\). If \(g=pq\) is a unique product, then \((ab)(g)=a(p)\,b(q)\ne0\). \(\square\)
 
-A group with the unique-product property is torsion-free, by Lemma 1.2 and Proposition 2.2. The converse fails: Rips and Segev constructed torsion-free groups without the unique-product property, and Steenbock gave a treatment of their construction by graphical small cancellation [Steenbock 2015]. A failure of unique products does not by itself give a zero divisor: over \(\mathbb F_2\) every product coefficient must vanish, which requires *even* numbers of expressions, not merely more than one. The construction of this course arranges these parities by a counting argument.
+A group with the unique-product property is torsion-free, by Lemma 1.2 and Proposition 2.2. The converse fails: Rips and Segev constructed torsion-free groups without the unique-product property, and Steenbock gave a treatment of their construction by graphical small cancellation [Steenbock 2015]. Gardam announced that a torsion-free lattice of type \(\widetilde A_2\) with two generators fails the unique-product property; Mian and Siddique proved this with an explicit pair of subsets of \(32\) and \(28\) elements, checked by the Lean proof assistant, taking torsion-freeness from Gardam [Mian–Siddique 2026]. A failure of unique products does not by itself give a zero divisor: over \(\mathbb F_2\) every product coefficient must vanish, which requires *even* numbers of expressions, not merely more than one. The construction of this course arranges these parities by a counting argument.
 
 ## 3. The cancellation mechanism
 
@@ -85,6 +85,8 @@ The proposition needs no assertion about whether two vertices other than the roo
 
 **Theorem 4.1** (OpenAI [OpenAI-KZ, Theorem 1.1]). There are a finitely presented torsion-free group \(G\) and nonzero elements \(\alpha,\beta\in\mathbb F_2[G]\) with \(\alpha\beta=0\). Moreover, \(G\) has a finite two-dimensional classifying space.
 
+Ivanov extended the theorem to every odd prime \(p\) [Ivanov 2026, Theorem 1.1 and Corollary 1.2]: there is a finitely presented torsion-free group \(G_p\) with a finite two-dimensional classifying space and nonzero \(\alpha,\beta\in\mathbb F_p[G_p]\) with \(\alpha\beta=0\). So the zero-divisor conjecture fails over every field of positive characteristic; over fields of characteristic zero it remains open. His proof replaces the parity cancellation of Proposition 3.2 by a signed cancellation, Exercise 5.6 below, uses the projective plane over \(\mathbb F_{p^3}\) with \(p\) extra letters in place of the alphabet of [Projective planes and prescribed types](projective-planes-and-prescribed-types.md), and keeps the geometric part of the argument of this course [Ivanov 2026, Sections 1.3, 1.4 and 6]. His appendix records a line-by-line check of that part, with six points that deserve a clarifying sentence; the lessons treat each of them explicitly.
+
 The group is built from two labelled graphs \(\Gamma_A,\Gamma_B\) over a signed alphabet \(T\). Let \(F\) be the *rose* over \(T\): one vertex and one loop for each pair \(\{t,\bar t\}\), the loop read in one direction carrying \(t\) and in the other \(\bar t\). An immersed labelled graph maps to \(F\) by sending every vertex to the vertex and every edge to the loop with its letters. Attach to \(F\), along this map, a cone on each component of \(\Gamma_A\) and of \(\Gamma_B\), and let \(G\) be the fundamental group of the resulting two-dimensional complex \(X\). In \(G\), the label of every closed path in the graphs is trivial, since the path is null-homotopic in its cone. Proposition 3.2 then needs two safeguards:
 
 1. *Root separation:* every path from \(x_A\) or \(x_B\) to a different vertex of its graph has a nontrivial label in \(G\).
@@ -112,6 +114,8 @@ Both follow from the absence of certain planar configurations of paths in the gr
 
 **5.5.** Show that over \(\mathbb F_2\), if \(G\) is torsion-free and \(\alpha\beta=0\) with \(\alpha,\beta\ne0\), then \(\operatorname{supp}\alpha\) and \(\operatorname{supp}\beta\) each have at least two elements.
 
+**5.6** (signed cancellation; [Ivanov 2026, Lemma 2.2]). In the situation of Proposition 3.2, drop the parity assumption and let \(p\) be a prime. Suppose that \(\Gamma_A\) is bipartite, with a sign \(\epsilon\colon A'\to\{\pm1\}\) that changes along every edge, and that \(\#(S_x\cap S_y)\equiv d\pmod p\) for all \(x\in A'\), \(y\in B'\), with \(p\nmid d\). Show that \(\alpha=\sum_{x\in A'}\epsilon(x)g_x\) and \(\beta=\sum_{y\in B'}h_y^{-1}\) satisfy \(\alpha\beta=0\) in \(\mathbb F_p[G]\).
+
 ## 6. Solutions
 
 **5.1.** Let \(a,b\ne0\) with largest exponents \(m\) and \(m'\) in their supports. The coefficient of \(z^{m+m'}\) in \(ab\) comes only from \(z^m\cdot z^{m'}\), so it is \(1\).
@@ -124,9 +128,13 @@ Both follow from the absence of certain planar configurations of paths in the gr
 
 **5.5.** If \(\operatorname{supp}\alpha=\{g\}\), then \(\alpha=g\) is a unit, with inverse \(g^{-1}\), and \(\alpha\beta=0\) gives \(\beta=g^{-1}\alpha\beta=0\). The same argument applies to \(\beta\).
 
+**5.6.** As in the proof of Proposition 3.2, \(\alpha\beta=\sum_{(x,y)}\epsilon(x)g_xh_y^{-1}\), and \(g_xh_y^{-1}\) is constant on every component \(C\) of \(\Theta\); so it suffices that \(\sum_{(x,y)\in C}\epsilon(x)\equiv0\pmod p\). An edge of \(\Theta\) joins \((x,y)\) to \((x',y')\) with \(x,x'\) adjacent in \(\Gamma_A\), so \(\epsilon(x')=-\epsilon(x)\), and \(\Theta\) has no loops. Summing \(\epsilon\) over the two ends of every edge gives \(\sum_{(x,y)\in C}\epsilon(x)\deg(x,y)=0\). Since \(\deg(x,y)=\#(S_x\cap S_y)\equiv d\), this gives \(d\sum_{(x,y)\in C}\epsilon(x)\equiv0\), and \(p\nmid d\).
+
 ## References
 
 - [OpenAI-KZ] OpenAI, *A Torsion-Free Group Algebra with Zero Divisors*, OpenAI Math Release preprint, 23 September 2026. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Group-Algebra-with-Zero-Divisors-September-23-2026
 - [OpenAI-KZ-Lean] OpenAI, Lean formalization of the counterexample to Kaplansky's zero-divisor conjecture, OpenAI Math Release, scope note `lean/docs/196.md`. https://github.com/openai/math/blob/main/lean/docs/196.md
 - [Gardam 2021] G. Gardam, *A counterexample to the unit conjecture for group rings*, Ann. of Math. 194 (2021), 967–979. https://arxiv.org/abs/2102.11818
 - [Steenbock 2015] M. Steenbock, *Rips–Segev torsion-free groups without the unique product property*, J. Algebra 438 (2015), 337–378. https://arxiv.org/abs/1307.0981
+- [Ivanov 2026] S. V. Ivanov, *Zero divisors in group algebras of torsion-free groups in odd characteristic*, arXiv:2610.17662, 13 October 2026. https://arxiv.org/abs/2610.17662
+- [Mian–Siddique 2026] I. Mian and S. Siddique, *A machine-checked proof that Gardam's \(\widetilde A_2\) lattice does not have unique products*, arXiv:2609.22380, September 2026. https://arxiv.org/abs/2609.22380

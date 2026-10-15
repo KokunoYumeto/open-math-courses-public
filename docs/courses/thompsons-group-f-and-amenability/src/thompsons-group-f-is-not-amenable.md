@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-Ross Geoghegan asked in 1979 whether Thompson's group \(F\) is amenable; the survey [Gu, Section 1] records the question and the work on it. OpenAI answered it in September 2026 [OpenAI-F]; the same release contains a Lean formalization of the theorem [OpenAI-Lean].
+Ross Geoghegan asked in 1979 whether Thompson's group \(F\) is amenable; the survey [Gu, Section 1] records the question and the work on it. OpenAI answered it in September 2026 [OpenAI-F]; the same release contains a Lean formalization of the theorem [OpenAI-Lean]. Kim and Lodha wrote a short exposition of the argument with an invariant mean in place of Følner sets [KL]; Remark (5) in Section 5 describes it.
 
 **Theorem 5.1** (OpenAI). Thompson's group \(F\) is not amenable.
 
@@ -164,6 +164,8 @@ Solving for \(\eta\) gives (4.1). The right side of (4.1) is positive by (2.2) a
 
 (4) Theorem 5.1 combines with two companion theorems of OpenAI about nonamenable groups. The first [OpenAI-U, Theorem 1.1] says that a discrete group is amenable if and only if every uniformly bounded representation of it on a complex Hilbert space is similar to a unitary representation, which answers Dixmier's unitarizability question for discrete groups. Applied to \(F\), it gives for every \(\varepsilon>0\) a separable complex Hilbert space and a representation \(\pi\) of \(F\) on it by bounded invertible operators with \(\sup_{g\in F}\|\pi(g)\|\le1+\varepsilon\) such that no bounded invertible \(T\) makes every \(T\pi(g)T^{-1}\) unitary. The second [OpenAI-P, Corollary 1.2] concerns Cayley graphs of nonamenable finitely generated groups. Applied to \(F\), which is finitely generated, it says that for every finite symmetric generating set, Bernoulli bond percolation on the corresponding Cayley graph has \(p_c<p_u\), and for each fixed \(p\) strictly between them there are almost surely infinitely many infinite clusters. The first companion theorem is proved in the course [Amenability and unitarizability](course:amenability-and-unitarizability/unitarizability-implies-amenability#4-all-discrete-groups), whose Corollary 5.1 is the statement for \(F\); the proof of the second is not part of the programme's courses.
 
+(5) Kim and Lodha gave a short exposition of the argument [KL]. It works with the dyadic rationals \(\mathcal D\) in \([0,1]\) instead of dyadic partitions, and with an invariant mean instead of Følner sets. If \(F\) were amenable, its action on \(\mathcal D\) would be extensively amenable, by a theorem of Juschenko, Matte Bon, Monod and de la Salle [KL, Lemma 1.2]: there would be an \(F\)-invariant finitely additive probability measure \(\mu\) on the finite subsets of \(\mathcal D\) such that, for every finite \(M\subseteq\mathcal D\), the finite sets containing \(M\) have measure one. Finite sets \(P\) are colored recursively by points of the Hilbert ball, the color of \(P\) being \(f\) applied to the average of the colors of the two rescaled pieces of \(P\) in two fixed separated dyadic intervals. Here \(f\) is a Lipschitz self-map of the ball with Lipschitz constant below \(\sqrt2\) and displacement bounded below by a positive constant (Exercise 6.6 produces one from Theorem 5.1 of [A Lipschitz map of the Hilbert ball that moves every point](a-lipschitz-map-of-the-hilbert-ball-that-moves-every-point.md)). Elements of \(F\) moving one separated pair of dyadic intervals onto another (Lemma 4.1 of the lesson on dyadic partitions) and the invariance of \(\mu\) make the mean squared distances between the colors of the rescaled pieces all equal; Apollonius's identity \(\|x-\frac{a+b}2\|^2=\frac12(\|x-a\|^2+\|x-b\|^2-\frac12\|a-b\|^2)\) and the bound \(L^2<2\) then force these distances to vanish, so that the colors are fixed by \(f\) on average, which the displacement bound excludes [KL, Section 2]. Their Theorem 2.7 states the argument for a group of permutations of an abstract set \(X\) with two disjoint subsets in bijection with \(X\).
+
 ## 6. Exercises
 
 **Exercise 6.1** (easy). Prove that \(p(T^{(n)})=f^{\lfloor n/r\rfloor}(0)\) for every \(n\ge0\), where \(f^k\) is the \(k\)-fold composite and \(f^0\) the identity.
@@ -175,6 +177,8 @@ Solving for \(\eta\) gives (4.1). The right side of (4.1) is positive by (2.2) a
 **Exercise 6.4** (medium). Let \(\Gamma\) be a countable group and \(\Lambda\subseteq\Gamma\) a subgroup. Show that if \(\Gamma\) is amenable, then so is \(\Lambda\). Conclude that every countable group containing a subgroup isomorphic to \(F\) is not amenable.
 
 **Exercise 6.5** (medium). In the proof of Proposition 4.1, suppose that the colors \(X_I(g)\), \(I\in\mathcal I\), were all equal to one vector \(x_g\in B\) for each \(g\in A\). Show directly from (2.1) and Lemma 3.2 that this is impossible, and compare with Step 3: which terms of the variance bound does this special case make vanish?
+
+**Exercise 6.6** (easy). Let \(f_0:B\to B\) be the map of Theorem 5.1 of the lesson on the Lipschitz map, with Lipschitz constant \(L_0\), and put \(f_t=(1-t)\,\mathrm{id}+tf_0\) for \(0<t\le1\). Show that \(f_t\) maps \(B\) into \(B\), that \(\|f_t(x)-x\|\ge\frac t2\) for all \(x\in B\), and that \(f_t\) has Lipschitz constant less than \(\sqrt2\) whenever \(t(L_0-1)<\sqrt2-1\).
 
 ## 7. Solutions
 
@@ -188,6 +192,8 @@ Solving for \(\eta\) gives (4.1). The right side of (4.1) is positive by (2.2) a
 
 **6.5.** If \(X_I(g)=x_g\) for all \(I\in\mathcal I\), then \(z_i(g)=x_g\), and Lemma 3.2 gives \(x_g=X_{I_i}(g)=f(z_i(g))=f(x_g)\), contradicting \(\|f(x_g)-x_g\|\ge\delta\). In this special case \(z_i=m=x_g\), so \(\|z_i-m\|^2=0\): all the terms in Step 3, including the parent–descendant terms, vanish. In general nothing forces the parent–descendant correlations to match the others, and Step 3 pays \(\frac4D\) for them.
 
+**6.6.** For \(x\in B\), \(f_t(x)\) is a convex combination of \(x\) and \(f_0(x)\), both in the convex set \(B\). Next, \(f_t(x)-x=t(f_0(x)-x)\) has norm at least \(\frac t2\). Finally \(\|f_t(x)-f_t(y)\|\le(1-t)\|x-y\|+tL_0\|x-y\|=(1+t(L_0-1))\|x-y\|\), and \(1+t(L_0-1)<\sqrt2\) under the stated condition. (By Exercise 7.2 of the lesson on the Lipschitz map, \(L_0>1\), so the condition is a genuine upper bound on \(t\).)
+
 ## References
 
 - [Gu] V. Guba, *Amenability problem for Thompson's group F: state of the art*, arXiv:2305.07113. https://arxiv.org/abs/2305.07113. Section 1.
@@ -196,3 +202,4 @@ Solving for \(\eta\) gives (4.1). The right side of (4.1) is positive by (2.2) a
 - [OpenAI-P] OpenAI, *Nonuniqueness of percolation on nonamenable quasi-transitive graphs*, OpenAI Math Release preprint, 24 September 2026, Corollary 1.2. https://github.com/openai/math/blob/main/preprints/Nonuniqueness-of-percolation-on-nonamenable-quasi-transitive-graphs-September-24-2026
 - [OpenAI-U] OpenAI, *Unitarizability implies amenability for countable groups*, OpenAI Math Release preprint, 23 September 2026, Theorem 1.1. https://github.com/openai/math/blob/main/preprints/Unitarizability-Implies-Amenability-for-Countable-Groups-September-23-2026
 - [Fø] E. Følner, *On groups with full Banach mean value*, Math. Scand. 3 (1955), 243–254. https://doi.org/10.7146/math.scand.a-10442
+- [KL] S.-h. Kim and Y. Lodha, *A note on the proof of nonamenability of F*, arXiv:2610.18360 (October 2026). https://arxiv.org/abs/2610.18360

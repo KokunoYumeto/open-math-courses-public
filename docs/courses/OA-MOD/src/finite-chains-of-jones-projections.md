@@ -2,7 +2,9 @@
 
 How long can projections satisfying the Jones relations persist at a parameter between the permitted infinite-sequence values? The obstruction already occurs in a finite chain. We prove a length bound using positivity and joint kernels; no trace or finite-dimensional representation is assumed.
 
-The algebraic recursion is also proved in Positivity restricts the index, Lemma 7.1, and The range of the index of an expectation, §3. Why the discrete projection algebra is unique, Proposition 13.6, already proves the infinite-sequence restriction without a trace. Here we give the finite-window argument, the intermediate stabilization identities and the polynomial conventions explicitly. A source comparison is Takesaki, *Theory of Operator Algebras III*, §XIX.2, Lemmas 2.18–2.21, pp. 428–432.
+The finite bound, polynomial identities, stabilization conclusions and source-index corrections already have complete programme proofs in Polynomials locate the finite projection gaps, Proposition 42.1, Corollary 42.2, Lemmas 42.3–42.5 and Theorem 42.6. That lesson proves the bound by compressing to a tail with orthogonal distant projections. The present lesson gives an alternative proof through spanning windows and cancellation, and retains a direct derivation of the intermediate formulas.
+
+The earlier algebraic recursion is in Positivity restricts the index, Lemma 7.1, and The range of the index of an expectation, §3. Why the discrete projection algebra is unique, Proposition 13.6, proves the infinite-sequence restriction without a trace. The source statements compared in both finite-chain lessons are Takesaki, *Theory of Operator Algebras III*, §XIX.2, Lemmas 2.18–2.21, pp. 428–432.
 
 ## Relations, support and the parameter
 
@@ -372,7 +374,7 @@ For a parameter between \(b_{\ell+1}\) and \(b_\ell\), the sign change is \(P_{\
 
 A finite-sequence obstruction requires \(t>1/4\) and a nonzero chain. The endpoint construction (FJC22) and the identically zero sequence explain both qualifications to Lemma XIX.2.21. The finite bound (FJC20) is proved at the generality of projections on an arbitrary Hilbert space.
 
-The argument does not assign a Markov trace to an arbitrary projection representation, and it does not classify the generated algebra. Those are different statements. At \(t\le1/4\), Proposition 13.5 of the earlier programme lesson gives nondegenerate rank-one sequences whose generated compact-operator algebra has no tracial state. The infinite-sequence parameter restriction already had a programme proof; the finite-window bound and the intermediate formulas above supply the precise finite statements used here.
+The argument does not assign a Markov trace to an arbitrary projection representation, and it does not classify the generated algebra. Those are different statements. At \(t\le1/4\), Proposition 13.5 of the earlier programme lesson gives nondegenerate rank-one sequences whose generated compact-operator algebra has no tracial state. The finite bound and these source corrections are already proved in lesson 42, cited at the start. The spanning-window cancellation in §5 provides a second proof of that bound; it does not identify previously unwritten source results.
 
 ## Exercises with solutions
 

@@ -33,6 +33,8 @@ The course proves Theorem 1.1 in its last lesson, [The coefficient test and the 
 
 An algorithm that tells, in polynomial time, the graphs with a proper coloring by \(k\) colors from the graphs without a proper coloring by \(c\) colors would therefore decide in polynomial time whether a formula is satisfiable. The same holds for the two kinds of graphs of Theorem 1.1. This is the meaning of "NP-hard" in this course. Theorem 1.1 says more than Corollary 1.2 (Exercise 6.3).
 
+Fei, Minzer and Wang obtained Corollary 1.2 for \(k=3\) independently, as a consequence of their theorem on 4-to-1 games with perfect completeness; before, it was known for \(c=5\) [FMW, Corollary 1.7 and the remark after it]. They also prove that it is NP-hard to tell graphs with a proper coloring by eight colors from graphs without an independent set of \(\delta|V|\) vertices [FMW, Corollary 1.9]; Theorem 1.1 contains this statement, since a graph with a proper coloring by three colors has one by eight. On the algorithmic side, the best polynomial-time algorithms known color a graph with a proper coloring by three colors with a number of colors that is a small power of the number \(n\) of vertices: \(O(n^{0.17506+\varepsilon})\) for every \(\varepsilon>0\) by Narang and Tang [NT], and \(O(n^{4/23})\), where \(4/23\approx0.1739\), by Anand [An]; both algorithms are randomized and round a semidefinite relaxation.
+
 ## 2. Label Cover
 
 **Definition.** A *Label Cover instance* \(\mathcal C\) consists of
@@ -290,3 +292,6 @@ Only the rotations \(\widehat\theta_{3,\ell}\) with \(\ell\) in the image of \(\
 ## References
 
 - [OpenAI-I] OpenAI, *Hardness of finding large independent sets in three-colorable graphs*, OpenAI Math Release preprint, 24 September 2026, Sections 1 to 3. https://github.com/openai/math/tree/main/preprints/Hardness-of-finding-large-independent-sets-in-three-colorable-graphs-September-24-2026
+- [FMW] Y. Fei, D. Minzer and S. Wang, *On the hardness of 4-to-1 games with perfect completeness*, arXiv:2610.12378 (October 2026). https://arxiv.org/abs/2610.12378
+- [NT] I. Narang and Y. Tang, *Improved SDP coloring of 3-colorable graphs from recursive Gaussian certificates*, arXiv:2609.33684 (September 2026). https://arxiv.org/abs/2609.33684
+- [An] E. Anand, *Coloring 3-colorable graphs with \(O(n^{4/23})\) colors via a Gaussian-cover recursion*, arXiv:2610.01071 (October 2026). https://arxiv.org/abs/2610.01071
