@@ -1,0 +1,319 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Returning passages and the main theorem</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A three-manifold without conjugate points)</a><a href="neck-passages-and-the-index-form.html">Previous lesson</a><a href="src/returning-passages-and-the-main-theorem.md">Editable source</a></nav><main><article><h1 id="returning-passages-and-the-main-theorem">Returning passages and the main theorem</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The last lesson reduced the absence of conjugate points to the returning passages: geodesics that enter the neck through a boundary torus, turn, and leave through the same torus. For these, Lemma 5.2 of <a href="neck-passages-and-the-index-form.html">Neck passages and the index form</a> bounds the normal index form below by the coordinate energy, plus a boundary term controlling one component of the change <span class="math" data-tex="\(X\)">\(X\)</span> of the torus part of the field, minus a tangential term <span class="math" data-tex="\((p^{\mathsf T}X)^2/L\)">\((p^{\mathsf T}X)^2/L\)</span>. This lesson shows that the first two terms dominate the third, uniformly over all returning passages, once the parameter <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is small. The tool is the Cauchy–Schwarz inequality in a Hilbert space adapted to the coordinate energy, combined with a quadratic minimization; a timing estimate for passages that leave the end portion supplies the margin. The lesson then assembles the estimates and proves the main theorem.</p>
+<ul>
+<li>The duration of a returning passage (Section 1).</li>
+<li>Duality (Section 2).</li>
+<li>Bounds on the dual form (Section 3).</li>
+<li>The returning estimate (Section 4).</li>
+<li>All passages and the proof of the main theorem (Section 5).</li>
+</ul>
+<p>Throughout, we use the coordinates of the boundary torus through which the passage enters, with inward coordinate <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, written <span class="math" data-tex="\(t\)">\(t\)</span> below; so <span class="math" data-tex="\(P(0)=\operatorname{diag}(1,b)\)">\(P(0)=\operatorname{diag}(1,b)\)</span>, <span class="math" data-tex="\(P&#x27;(0)=\kappa ee^{\mathsf T}\)">\(P&#x27;(0)=\kappa ee^{\mathsf T}\)</span>, <span class="math" data-tex="\(e=(1,0)^{\mathsf T}\)">\(e=(1,0)^{\mathsf T}\)</span>, <span class="math" data-tex="\(\kappa=\delta a(0)\)">\(\kappa=\delta a(0)\)</span>. The returning passage occupies <span class="math" data-tex="\([0,L]\)">\([0,L]\)</span> with the data (4.1) of <a href="neck-passages-and-the-index-form.html">Neck passages and the index form</a>: <span class="math" data-tex="\(t(0)=t(L)=0\)">\(t(0)=t(L)=0\)</span>, turn at <span class="math" data-tex="\(L/2\)">\(L/2\)</span> with <span class="math" data-tex="\(t_*=t(L/2)\in(0,1)\)">\(t_*=t(L/2)\in(0,1)\)</span>, <span class="math" data-tex="\(v=\dot t\)">\(v=\dot t\)</span>, <span class="math" data-tex="\(v(0)=-v(L)=v_0&gt;0\)">\(v(0)=-v(L)=v_0&gt;0\)</span>, <span class="math" data-tex="\(p=Q\dot x\)">\(p=Q\dot x\)</span> constant, <span class="math" data-tex="\(F=p^{\mathsf T}Pp\)">\(F=p^{\mathsf T}Pp\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;0&lt;F&#x27;\le\kappa p_1^2\ \text{ on }[0,t_*],\\
+&amp;v_0^2=F(t_*)-F(0)\le\kappa p_1^2 .
+\end{aligned} \tag{0.1}
+\]">\[
+\begin{aligned}
+&amp;0&lt;F&#x27;\le\kappa p_1^2\ \text{ on }[0,t_*],\\
+&amp;v_0^2=F(t_*)-F(0)\le\kappa p_1^2 .
+\end{aligned} \tag{0.1}
+\]</span>
+Let <span class="math" data-tex="\(C_0\)">\(C_0\)</span> be the constant of Lemma 2.1 of <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a>; in these coordinates <span class="math" data-tex="\(\|P\|\le C_0\)">\(\|P\|\le C_0\)</span>, <span class="math" data-tex="\(\|P&#x27;\|\le C_0\delta\)">\(\|P&#x27;\|\le C_0\delta\)</span> and <span class="math" data-tex="\(|P&#x27;p|^2\le C_0\delta\,(-F&#x27;&#x27;)\)">\(|P&#x27;p|^2\le C_0\delta\,(-F&#x27;&#x27;)\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<h2 id="1-the-duration-of-a-returning-passage">1. The duration of a returning passage</h2>
+<p><strong>Lemma 1.1</strong> ([OpenAI-NC, Lemma 5.2]). For every returning passage,
+<span class="math math-display" data-tex="\[
+\int_0^Lv(s)^2\,ds\le\frac{Lv_0^2}3 . \tag{1.1}
+\]">\[
+\int_0^Lv(s)^2\,ds\le\frac{Lv_0^2}3 . \tag{1.1}
+\]</span>
+If <span class="math" data-tex="\(t_*&gt;\frac14\)">\(t_*&gt;\frac14\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;4v_0\le\beta\,\kappa p_1^2L,\\
+&amp;\beta=\frac{1+e^{-9/26}}2&lt;1 .
+\end{aligned} \tag{1.2}
+\]">\[
+\begin{aligned}
+&amp;4v_0\le\beta\,\kappa p_1^2L,\\
+&amp;\beta=\frac{1+e^{-9/26}}2&lt;1 .
+\end{aligned} \tag{1.2}
+\]</span></p>
+<p><em>Proof.</em> On <span class="math" data-tex="\([0,\frac L2]\)">\([0,\frac L2]\)</span>, <span class="math" data-tex="\(v\ge0\)">\(v\ge0\)</span> and <span class="math" data-tex="\(\ddot v=-\frac12F&#x27;&#x27;(t)\,v\ge0\)">\(\ddot v=-\frac12F&#x27;&#x27;(t)\,v\ge0\)</span>, so <span class="math" data-tex="\(v\)">\(v\)</span> is convex and lies below the chord from <span class="math" data-tex="\(v_0\)">\(v_0\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>: <span class="math" data-tex="\(0\le v(s)\le v_0(1-2s/L)\)">\(0\le v(s)\le v_0(1-2s/L)\)</span>. Squaring and integrating gives <span class="math" data-tex="\(\int_0^{L/2}v^2\le Lv_0^2/6\)">\(\int_0^{L/2}v^2\le Lv_0^2/6\)</span>, and <span class="math" data-tex="\(v(L-s)=-v(s)\)">\(v(L-s)=-v(s)\)</span> gives (1.1).</p>
+<p>On the same half, <span class="math" data-tex="\(\ddot t=-\frac12F&#x27;(t)&lt;0\)">\(\ddot t=-\frac12F&#x27;(t)&lt;0\)</span>, so <span class="math" data-tex="\(t\)">\(t\)</span> is concave and <span class="math" data-tex="\(t(s)\ge2st_*/L\)">\(t(s)\ge2st_*/L\)</span>. If <span class="math" data-tex="\(t_*&gt;\frac14\)">\(t_*&gt;\frac14\)</span>, then <span class="math" data-tex="\(t\ge\frac18\)">\(t\ge\frac18\)</span> on <span class="math" data-tex="\([\frac L4,\frac L2]\)">\([\frac L4,\frac L2]\)</span>, and by symmetry on <span class="math" data-tex="\([\frac L4,\frac{3L}4]\)">\([\frac L4,\frac{3L}4]\)</span>. By (0.1) of the previous lesson, <span class="math" data-tex="\(F&#x27;(\frac18)=\delta a(\frac18)p_1^2\)">\(F&#x27;(\frac18)=\delta a(\frac18)p_1^2\)</span>, and <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> is nonincreasing because <span class="math" data-tex="\(F\)">\(F\)</span> is concave; so <span class="math" data-tex="\(F&#x27;(t(s))\le\delta a(\frac18)p_1^2\)">\(F&#x27;(t(s))\le\delta a(\frac18)p_1^2\)</span> for <span class="math" data-tex="\(\frac L4\le s\le\frac{3L}4\)">\(\frac L4\le s\le\frac{3L}4\)</span>, and <span class="math" data-tex="\(F&#x27;(t(s))\le F&#x27;(0)=\kappa p_1^2\)">\(F&#x27;(t(s))\le F&#x27;(0)=\kappa p_1^2\)</span> for all <span class="math" data-tex="\(s\)">\(s\)</span>. Since <span class="math" data-tex="\(\dot v=-\frac12F&#x27;(t)\)">\(\dot v=-\frac12F&#x27;(t)\)</span> and <span class="math" data-tex="\(v(L)-v(0)=-2v_0\)">\(v(L)-v(0)=-2v_0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+4v_0&amp;=\int_0^LF&#x27;(t(s))\,ds\\
+&amp;\le\frac{\delta Lp_1^2}2\bigl(a(0)+a(\tfrac18)\bigr)\\
+&amp;=\frac{\kappa p_1^2L}2\bigl(1+e^{-9/26}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+4v_0&amp;=\int_0^LF&#x27;(t(s))\,ds\\
+&amp;\le\frac{\delta Lp_1^2}2\bigl(a(0)+a(\tfrac18)\bigr)\\
+&amp;=\frac{\kappa p_1^2L}2\bigl(1+e^{-9/26}\bigr),
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(a(\frac18)/a(0)=e^{-9/26}\)">\(a(\frac18)/a(0)=e^{-9/26}\)</span> (Exercise 5.1 of <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a>). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-duality">2. Duality</h2>
+<p>Apply the gauge of Lemma 5.2 of <a href="neck-passages-and-the-index-form.html">Neck passages and the index form</a> and write the resulting field as <span class="math" data-tex="\(V=(w,z)\)">\(V=(w,z)\)</span>, so <span class="math" data-tex="\(w(0)=w(L)=0\)">\(w(0)=w(L)=0\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X&amp;=z(L)-z(0),\qquad\mu=\frac{\kappa v_0}4&gt;0,\\
+\xi&amp;=\dot z-P&#x27;(t)p\,w .
+\end{aligned}
+\]">\[
+\begin{aligned}
+X&amp;=z(L)-z(0),\qquad\mu=\frac{\kappa v_0}4&gt;0,\\
+\xi&amp;=\dot z-P&#x27;(t)p\,w .
+\end{aligned}
+\]</span>
+The coordinate energy and the bound (5.1) of that lesson read
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;E=\int_0^L\Bigl(|\xi|_Q^2+\dot w^2\\
+&amp;\qquad-\tfrac12F&#x27;&#x27;(t)w^2\Bigr)ds,\\
+&amp;I^\perp(V)\ge E+\mu\,(e^{\mathsf T}X)^2\\
+&amp;\qquad-\frac{(p^{\mathsf T}X)^2}L ,
+\end{aligned} \tag{2.1}
+\]">\[
+\begin{aligned}
+&amp;E=\int_0^L\Bigl(|\xi|_Q^2+\dot w^2\\
+&amp;\qquad-\tfrac12F&#x27;&#x27;(t)w^2\Bigr)ds,\\
+&amp;I^\perp(V)\ge E+\mu\,(e^{\mathsf T}X)^2\\
+&amp;\qquad-\frac{(p^{\mathsf T}X)^2}L ,
+\end{aligned} \tag{2.1}
+\]</span>
+so it suffices to show
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(p^{\mathsf T}X)^2\\
+&amp;\quad\le L\bigl(E+\mu\,(e^{\mathsf T}X)^2\bigr).
+\end{aligned} \tag{2.2}
+\]">\[
+\begin{aligned}
+&amp;(p^{\mathsf T}X)^2\\
+&amp;\quad\le L\bigl(E+\mu\,(e^{\mathsf T}X)^2\bigr).
+\end{aligned} \tag{2.2}
+\]</span>
+The boundary term controls only one component of <span class="math" data-tex="\(X\)">\(X\)</span>, so the size of <span class="math" data-tex="\(p_1\)">\(p_1\)</span> matters.</p>
+<p>For a constant covector <span class="math" data-tex="\(q\in\mathbb R^2\)">\(q\in\mathbb R^2\)</span>, integrating <span class="math" data-tex="\(\dot z=\xi+P&#x27;(t)p\,w\)">\(\dot z=\xi+P&#x27;(t)p\,w\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;q^{\mathsf T}X\\
+&amp;\quad=\int_0^Lq^{\mathsf T}\xi\,ds+\Phi_q(w),\\
+&amp;\Phi_q(w)\\
+&amp;\quad=\int_0^Lq^{\mathsf T}P&#x27;(t)p\,w\,ds .
+\end{aligned} \tag{2.3}
+\]">\[
+\begin{aligned}
+&amp;q^{\mathsf T}X\\
+&amp;\quad=\int_0^Lq^{\mathsf T}\xi\,ds+\Phi_q(w),\\
+&amp;\Phi_q(w)\\
+&amp;\quad=\int_0^Lq^{\mathsf T}P&#x27;(t)p\,w\,ds .
+\end{aligned} \tag{2.3}
+\]</span>
+Let <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> be <span class="math" data-tex="\(L^2([0,L];\mathbb R^2)\)">\(L^2([0,L];\mathbb R^2)\)</span> with the inner product <span class="math" data-tex="\(\langle\xi_1,\xi_2\rangle_Q=\int_0^L\xi_1^{\mathsf T}Q(t(s))\xi_2\,ds\)">\(\langle\xi_1,\xi_2\rangle_Q=\int_0^L\xi_1^{\mathsf T}Q(t(s))\xi_2\,ds\)</span>, and <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> the space of absolutely continuous <span class="math" data-tex="\(w\)">\(w\)</span> on <span class="math" data-tex="\([0,L]\)">\([0,L]\)</span> with <span class="math" data-tex="\(w(0)=w(L)=0\)">\(w(0)=w(L)=0\)</span> and <span class="math" data-tex="\(\dot w\in L^2\)">\(\dot w\in L^2\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(w_1,w_2)_{\mathcal D}\\
+&amp;\quad=\int_0^L\Bigl(\dot w_1\dot w_2-\tfrac12F&#x27;&#x27;(t)\,w_1w_2\Bigr)ds .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(w_1,w_2)_{\mathcal D}\\
+&amp;\quad=\int_0^L\Bigl(\dot w_1\dot w_2-\tfrac12F&#x27;&#x27;(t)\,w_1w_2\Bigr)ds .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(0\le-F&#x27;&#x27;\)">\(0\le-F&#x27;&#x27;\)</span> is bounded on the passage, and <span class="math" data-tex="\(\int w^2\le L^2\int\dot w^2\)">\(\int w^2\le L^2\int\dot w^2\)</span> for such <span class="math" data-tex="\(w\)">\(w\)</span>, this inner product is equivalent to <span class="math" data-tex="\(\int\dot w_1\dot w_2\)">\(\int\dot w_1\dot w_2\)</span>; so <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is a Hilbert space and <span class="math" data-tex="\(\Phi_q\)">\(\Phi_q\)</span> is a bounded linear functional on it. No constant uniform in <span class="math" data-tex="\(L\)">\(L\)</span> is claimed or needed. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S(q,r)\\
+&amp;\quad=\int_0^Lq^{\mathsf T}P(t(s))\,r\,ds\\
+&amp;\qquad+(\Phi_q,\Phi_r)_{\mathcal D^*},
+\end{aligned} \tag{2.4}
+\]">\[
+\begin{aligned}
+&amp;S(q,r)\\
+&amp;\quad=\int_0^Lq^{\mathsf T}P(t(s))\,r\,ds\\
+&amp;\qquad+(\Phi_q,\Phi_r)_{\mathcal D^*},
+\end{aligned} \tag{2.4}
+\]</span>
+where <span class="math" data-tex="\((\cdot,\cdot)_{\mathcal D^*}\)">\((\cdot,\cdot)_{\mathcal D^*}\)</span> is the inner product of the dual space, that of the Riesz representatives. <span class="math" data-tex="\(S\)">\(S\)</span> is a symmetric bilinear form on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, positive definite because its first term is.</p>
+<p><strong>Lemma 2.1</strong> ([OpenAI-NC, Lemma 5.3]). For every constant covector <span class="math" data-tex="\(q\)">\(q\)</span> and every gauged field,
+<span class="math math-display" data-tex="\[
+(q^{\mathsf T}X)^2\le S(q,q)\,E . \tag{2.5}
+\]">\[
+(q^{\mathsf T}X)^2\le S(q,q)\,E . \tag{2.5}
+\]</span>
+For every real <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, with <span class="math" data-tex="\(p_\alpha=p-\alpha e\)">\(p_\alpha=p-\alpha e\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(p^{\mathsf T}X)^2\\
+&amp;\quad\le\Bigl(S(p_\alpha,p_\alpha)+\frac{\alpha^2}\mu\Bigr)\\
+&amp;\qquad\cdot\Bigl(E+\mu\,(e^{\mathsf T}X)^2\Bigr),
+\end{aligned} \tag{2.6}
+\]">\[
+\begin{aligned}
+&amp;(p^{\mathsf T}X)^2\\
+&amp;\quad\le\Bigl(S(p_\alpha,p_\alpha)+\frac{\alpha^2}\mu\Bigr)\\
+&amp;\qquad\cdot\Bigl(E+\mu\,(e^{\mathsf T}X)^2\Bigr),
+\end{aligned} \tag{2.6}
+\]</span>
+and the smallest value of the first factor over <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is
+<span class="math math-display" data-tex="\[
+S(p,p)-\frac{S(p,e)^2}{S(e,e)+\mu^{-1}} . \tag{2.7}
+\]">\[
+S(p,p)-\frac{S(p,e)^2}{S(e,e)+\mu^{-1}} . \tag{2.7}
+\]</span></p>
+<p><em>Proof.</em> The pair <span class="math" data-tex="\((\xi,w)\)">\((\xi,w)\)</span> lies in <span class="math" data-tex="\(\mathcal H\oplus\mathcal D\)">\(\mathcal H\oplus\mathcal D\)</span>, and its squared norm is <span class="math" data-tex="\(E\)">\(E\)</span>. By (2.3), <span class="math" data-tex="\(q^{\mathsf T}X\)">\(q^{\mathsf T}X\)</span> is the value at <span class="math" data-tex="\((\xi,w)\)">\((\xi,w)\)</span> of the functional <span class="math" data-tex="\((\xi,w)\mapsto\int q^{\mathsf T}\xi+\Phi_q(w)\)">\((\xi,w)\mapsto\int q^{\mathsf T}\xi+\Phi_q(w)\)</span>. Since <span class="math" data-tex="\(\int q^{\mathsf T}\xi=\langle Pq,\xi\rangle_Q\)">\(\int q^{\mathsf T}\xi=\langle Pq,\xi\rangle_Q\)</span>, the squared norm of this functional is <span class="math" data-tex="\(\int q^{\mathsf T}PQPq+\|\Phi_q\|_{\mathcal D^*}^2=S(q,q)\)">\(\int q^{\mathsf T}PQPq+\|\Phi_q\|_{\mathcal D^*}^2=S(q,q)\)</span>, and the Cauchy–Schwarz inequality gives (2.5). For (2.6), write <span class="math" data-tex="\(p^{\mathsf T}X=p_\alpha^{\mathsf T}X+\alpha\,e^{\mathsf T}X\)">\(p^{\mathsf T}X=p_\alpha^{\mathsf T}X+\alpha\,e^{\mathsf T}X\)</span>, bound the first term by (2.5), and apply the Cauchy–Schwarz inequality in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> to the vectors <span class="math" data-tex="\(\bigl(\sqrt{S(p_\alpha,p_\alpha)},\,|\alpha|/\sqrt\mu\bigr)\)">\(\bigl(\sqrt{S(p_\alpha,p_\alpha)},\,|\alpha|/\sqrt\mu\bigr)\)</span> and <span class="math" data-tex="\(\bigl(\sqrt E,\,\sqrt\mu\,|e^{\mathsf T}X|\bigr)\)">\(\bigl(\sqrt E,\,\sqrt\mu\,|e^{\mathsf T}X|\bigr)\)</span>. The first factor of (2.6) is the quadratic <span class="math" data-tex="\(S(p,p)-2\alpha S(p,e)+\alpha^2\bigl(S(e,e)+\mu^{-1}\bigr)\)">\(S(p,p)-2\alpha S(p,e)+\alpha^2\bigl(S(e,e)+\mu^{-1}\bigr)\)</span>, whose minimum, at <span class="math" data-tex="\(\alpha=S(p,e)/(S(e,e)+\mu^{-1})\)">\(\alpha=S(p,e)/(S(e,e)+\mu^{-1})\)</span>, is (2.7). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So (2.2) follows once (2.7) is at most <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<h2 id="3-bounds-on-the-dual-form">3. Bounds on the dual form</h2>
+<p>The next lemma allows an excess <span class="math" data-tex="\(Lv_0^2\)">\(Lv_0^2\)</span> in <span class="math" data-tex="\(S(p,p)\)">\(S(p,p)\)</span>; the subtracted term in (2.7) will recover at least that much. For this, <span class="math" data-tex="\(S(e,e)\)">\(S(e,e)\)</span> needs only a bound proportional to <span class="math" data-tex="\(L\)">\(L\)</span>, but <span class="math" data-tex="\(S(p,e)\)">\(S(p,e)\)</span> must be close to <span class="math" data-tex="\(Lp_1\)">\(Lp_1\)</span> with an error proportional to <span class="math" data-tex="\(|p_1|\)">\(|p_1|\)</span>: an error proportional to <span class="math" data-tex="\(|p|\)">\(|p|\)</span> would not suffice when <span class="math" data-tex="\(p_1\)">\(p_1\)</span> is small.</p>
+<p><strong>Lemma 3.1</strong> ([OpenAI-NC, Lemma 5.4]). Let <span class="math" data-tex="\(C_e=3C_0\)">\(C_e=3C_0\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_m&amp;=a(0)+\sqrt{2C_0a(0)}\\
+&amp;\quad+2\sqrt{2C_0a(0)/3} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+C_m&amp;=a(0)+\sqrt{2C_0a(0)}\\
+&amp;\quad+2\sqrt{2C_0a(0)/3} .
+\end{aligned}
+\]</span>
+Every returning passage satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S(p,p)\le L(1+v_0^2),\\
+&amp;S(e,e)\le C_eL,\\
+&amp;|S(p,e)-Lp_1|\\
+&amp;\quad\le C_m\,\delta L|p_1| .
+\end{aligned} \tag{3.1}
+\]">\[
+\begin{aligned}
+&amp;S(p,p)\le L(1+v_0^2),\\
+&amp;S(e,e)\le C_eL,\\
+&amp;|S(p,e)-Lp_1|\\
+&amp;\quad\le C_m\,\delta L|p_1| .
+\end{aligned} \tag{3.1}
+\]</span></p>
+<p><em>Proof.</em> <em><span class="math" data-tex="\(S(p,p)\)">\(S(p,p)\)</span>.</em> For <span class="math" data-tex="\(w\in\mathcal D\)">\(w\in\mathcal D\)</span>, <span class="math" data-tex="\(p^{\mathsf T}P&#x27;p=F&#x27;(t)=-2\dot v\)">\(p^{\mathsf T}P&#x27;p=F&#x27;(t)=-2\dot v\)</span>, and integration by parts gives <span class="math" data-tex="\(\Phi_p(w)=-2\int\dot vw=2\int v\dot w\)">\(\Phi_p(w)=-2\int\dot vw=2\int v\dot w\)</span>. Hence <span class="math" data-tex="\(|\Phi_p(w)|\le2\|v\|_{L^2}\|\dot w\|_{L^2}\le2\|v\|_{L^2}\|w\|_{\mathcal D}\)">\(|\Phi_p(w)|\le2\|v\|_{L^2}\|\dot w\|_{L^2}\le2\|v\|_{L^2}\|w\|_{\mathcal D}\)</span>, and <span class="math" data-tex="\(\|\Phi_p\|_{\mathcal D^*}^2\le4\int v^2\)">\(\|\Phi_p\|_{\mathcal D^*}^2\le4\int v^2\)</span>. Since <span class="math" data-tex="\(p^{\mathsf T}Pp=F=1-v^2\)">\(p^{\mathsf T}Pp=F=1-v^2\)</span>, (1.1) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S(p,p)&amp;\le\int_0^L(1-v^2)+4\int_0^Lv^2\\
+&amp;=L+3\int_0^Lv^2\le L(1+v_0^2).
+\end{aligned}
+\]">\[
+\begin{aligned}
+S(p,p)&amp;\le\int_0^L(1-v^2)+4\int_0^Lv^2\\
+&amp;=L+3\int_0^Lv^2\le L(1+v_0^2).
+\end{aligned}
+\]</span></p>
+<p><em><span class="math" data-tex="\(S(e,e)\)">\(S(e,e)\)</span>.</em> By <span class="math" data-tex="\(|P&#x27;p|\le\sqrt{C_0\delta(-F&#x27;&#x27;)}\)">\(|P&#x27;p|\le\sqrt{C_0\delta(-F&#x27;&#x27;)}\)</span> and the Cauchy–Schwarz inequality in <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\Phi_e(w)|&amp;\le\sqrt{C_0\delta}\int_0^L\sqrt{-F&#x27;&#x27;}\,|w|\,ds\\
+&amp;\le\sqrt{C_0\delta L}\Bigl(\int_0^L(-F&#x27;&#x27;)w^2\Bigr)^{1/2}\\
+&amp;\le\sqrt{2C_0\delta L}\,\|w\|_{\mathcal D};
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\Phi_e(w)|&amp;\le\sqrt{C_0\delta}\int_0^L\sqrt{-F&#x27;&#x27;}\,|w|\,ds\\
+&amp;\le\sqrt{C_0\delta L}\Bigl(\int_0^L(-F&#x27;&#x27;)w^2\Bigr)^{1/2}\\
+&amp;\le\sqrt{2C_0\delta L}\,\|w\|_{\mathcal D};
+\end{aligned}
+\]</span>
+this does not divide by <span class="math" data-tex="\(-F&#x27;&#x27;\)">\(-F&#x27;&#x27;\)</span> and holds where it vanishes. So <span class="math" data-tex="\(\|\Phi_e\|_{\mathcal D^*}^2\le2C_0\delta L\)">\(\|\Phi_e\|_{\mathcal D^*}^2\le2C_0\delta L\)</span>, and with <span class="math" data-tex="\(\|P\|\le C_0\)">\(\|P\|\le C_0\)</span> and <span class="math" data-tex="\(\delta\le1\)">\(\delta\le1\)</span>, <span class="math" data-tex="\(S(e,e)\le C_0L+2C_0\delta L\le3C_0L\)">\(S(e,e)\le C_0L+2C_0\delta L\le3C_0L\)</span>.</p>
+<p><em><span class="math" data-tex="\(S(p,e)\)">\(S(p,e)\)</span>.</em> The dual term satisfies, by the two bounds just proved and (0.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|(\Phi_p,\Phi_e)_{\mathcal D^*}|\\
+&amp;\quad\le2\sqrt{Lv_0^2/3}\,\sqrt{2C_0\delta L}\\
+&amp;\quad\le2\sqrt{2C_0a(0)/3}\;\delta L|p_1| ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|(\Phi_p,\Phi_e)_{\mathcal D^*}|\\
+&amp;\quad\le2\sqrt{Lv_0^2/3}\,\sqrt{2C_0\delta L}\\
+&amp;\quad\le2\sqrt{2C_0a(0)/3}\;\delta L|p_1| ,
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(v_0^2\le\kappa p_1^2=\delta a(0)p_1^2\)">\(v_0^2\le\kappa p_1^2=\delta a(0)p_1^2\)</span>. For the other term, fix <span class="math" data-tex="\(t\in[0,t_*]\)">\(t\in[0,t_*]\)</span> and put <span class="math" data-tex="\(D(t)=P&#x27;(0)-P&#x27;(t)\)">\(D(t)=P&#x27;(0)-P&#x27;(t)\)</span>. Concavity of <span class="math" data-tex="\(P\)">\(P\)</span> gives <span class="math" data-tex="\(D(t)\succeq0\)">\(D(t)\succeq0\)</span>, and <span class="math" data-tex="\(\|D(t)\|\le2C_0\delta\)">\(\|D(t)\|\le2C_0\delta\)</span>; by (0.1), <span class="math" data-tex="\(0\le p^{\mathsf T}D(t)p=\kappa p_1^2-F&#x27;(t)\le\kappa p_1^2\)">\(0\le p^{\mathsf T}D(t)p=\kappa p_1^2-F&#x27;(t)\le\kappa p_1^2\)</span>. The Cauchy–Schwarz inequality for the positive semidefinite form <span class="math" data-tex="\(D(t)\)">\(D(t)\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|e^{\mathsf T}D(t)p|^2&amp;\le(e^{\mathsf T}D(t)e)(p^{\mathsf T}D(t)p)\\
+&amp;\le2C_0a(0)\,\delta^2p_1^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+|e^{\mathsf T}D(t)p|^2&amp;\le(e^{\mathsf T}D(t)e)(p^{\mathsf T}D(t)p)\\
+&amp;\le2C_0a(0)\,\delta^2p_1^2 ,
+\end{aligned}
+\]</span>
+also when <span class="math" data-tex="\(D(t)\)">\(D(t)\)</span> is singular. Since <span class="math" data-tex="\(e^{\mathsf T}P&#x27;(0)p=\kappa p_1\)">\(e^{\mathsf T}P&#x27;(0)p=\kappa p_1\)</span>, <span class="math" data-tex="\(|e^{\mathsf T}P&#x27;(t)p|\le(a(0)+\sqrt{2C_0a(0)})\delta|p_1|\)">\(|e^{\mathsf T}P&#x27;(t)p|\le(a(0)+\sqrt{2C_0a(0)})\delta|p_1|\)</span>. Integrating from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(t\le t_*&lt;1\)">\(t\le t_*&lt;1\)</span>, and using <span class="math" data-tex="\(e^{\mathsf T}P(0)p=(P(0)e)^{\mathsf T}p=p_1\)">\(e^{\mathsf T}P(0)p=(P(0)e)^{\mathsf T}p=p_1\)</span>, gives the same bound for <span class="math" data-tex="\(|e^{\mathsf T}P(t)p-p_1|\)">\(|e^{\mathsf T}P(t)p-p_1|\)</span>. Integrating over <span class="math" data-tex="\(s\in[0,L]\)">\(s\in[0,L]\)</span> and adding the dual term proves the third bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All constants depend only on the fixed cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>; they do not depend on <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(L\)">\(L\)</span>, <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, <span class="math" data-tex="\(t_*\)">\(t_*\)</span> or on the boundary torus.</p>
+<h2 id="4-the-returning-estimate">4. The returning estimate</h2>
+<p>Fix <span class="math" data-tex="\(\delta\)">\(\delta\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;0&lt;\delta\le\delta_0,\qquad\delta\le\frac1{2C_m},\\
+&amp;\delta\le\frac{1-\beta}{2C_m+C_ea(0)},
+\end{aligned} \tag{4.1}
+\]">\[
+\begin{aligned}
+&amp;0&lt;\delta\le\delta_0,\qquad\delta\le\frac1{2C_m},\\
+&amp;\delta\le\frac{1-\beta}{2C_m+C_ea(0)},
+\end{aligned} \tag{4.1}
+\]</span>
+where <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> is the constant of Lemma 2.1 of <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a>.</p>
+<p><strong>Proposition 4.1</strong> ([OpenAI-NC, Proposition 5.1]). With <span class="math" data-tex="\(\delta\)">\(\delta\)</span> as in (4.1), every returning passage of the neck satisfies <span class="math" data-tex="\(I^\perp_{[0,L]}(V)\ge0\)">\(I^\perp_{[0,L]}(V)\ge0\)</span> for every smooth field <span class="math" data-tex="\(V\)">\(V\)</span> along its closure, with no condition on the values of <span class="math" data-tex="\(V\)">\(V\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span>. The same <span class="math" data-tex="\(\delta\)">\(\delta\)</span> serves both boundary tori and all unit-speed returning geodesics.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(t_*\le\frac14\)">\(t_*\le\frac14\)</span>, this is Lemma 5.1 of <a href="neck-passages-and-the-index-form.html">Neck passages and the index form</a>. Let <span class="math" data-tex="\(t_*&gt;\frac14\)">\(t_*&gt;\frac14\)</span> and apply the gauge; by Lemma 2.1 and (2.1) it suffices to show that (2.7) is at most <span class="math" data-tex="\(L\)">\(L\)</span>, and by the first bound of (3.1) it suffices that the subtracted term in (2.7) is at least <span class="math" data-tex="\(Lv_0^2\)">\(Lv_0^2\)</span>.</p>
+<p>Put <span class="math" data-tex="\(r=v_0^2/p_1^2&gt;0\)">\(r=v_0^2/p_1^2&gt;0\)</span>. By (0.1), <span class="math" data-tex="\(r\le\kappa=a(0)\delta\)">\(r\le\kappa=a(0)\delta\)</span>. By (1.2) and <span class="math" data-tex="\(\mu=\kappa v_0/4\)">\(\mu=\kappa v_0/4\)</span>, <span class="math" data-tex="\(L\mu=\frac{\kappa Lv_0}4\ge\frac{v_0^2}{\beta p_1^2}=\frac r\beta\)">\(L\mu=\frac{\kappa Lv_0}4\ge\frac{v_0^2}{\beta p_1^2}=\frac r\beta\)</span>. Since <span class="math" data-tex="\(C_m\delta\le\frac12\)">\(C_m\delta\le\frac12\)</span>, the third bound of (3.1) gives <span class="math" data-tex="\(|S(p,e)|\ge L|p_1|(1-C_m\delta)\ge0\)">\(|S(p,e)|\ge L|p_1|(1-C_m\delta)\ge0\)</span>. Using the second bound and the fact that <span class="math" data-tex="\(x\mapsto x/(1+C_ex)\)">\(x\mapsto x/(1+C_ex)\)</span> is increasing for <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{S(p,e)^2}{S(e,e)+\mu^{-1}}\\
+&amp;\quad\ge Lp_1^2(1-C_m\delta)^2\,\frac{L\mu}{1+C_eL\mu}\\
+&amp;\quad\ge Lp_1^2(1-C_m\delta)^2\,\frac{r/\beta}{1+C_er/\beta}\\
+&amp;\quad=Lv_0^2\,\frac{(1-C_m\delta)^2}{\beta+C_er}\\
+&amp;\quad\ge Lv_0^2\,\frac{(1-C_m\delta)^2}{\beta+C_ea(0)\delta}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{S(p,e)^2}{S(e,e)+\mu^{-1}}\\
+&amp;\quad\ge Lp_1^2(1-C_m\delta)^2\,\frac{L\mu}{1+C_eL\mu}\\
+&amp;\quad\ge Lp_1^2(1-C_m\delta)^2\,\frac{r/\beta}{1+C_er/\beta}\\
+&amp;\quad=Lv_0^2\,\frac{(1-C_m\delta)^2}{\beta+C_er}\\
+&amp;\quad\ge Lv_0^2\,\frac{(1-C_m\delta)^2}{\beta+C_ea(0)\delta}.
+\end{aligned}
+\]</span>
+By (4.1), <span class="math" data-tex="\((1-C_m\delta)^2\ge1-2C_m\delta\ge\beta+C_ea(0)\delta\)">\((1-C_m\delta)^2\ge1-2C_m\delta\ge\beta+C_ea(0)\delta\)</span>, so the last expression is at least <span class="math" data-tex="\(Lv_0^2\)">\(Lv_0^2\)</span>. Hence (2.7) is at most <span class="math" data-tex="\(L(1+v_0^2)-Lv_0^2=L\)">\(L(1+v_0^2)-Lv_0^2=L\)</span>, (2.6) gives (2.2), and (2.1) gives <span class="math" data-tex="\(I^\perp(V)\ge0\)">\(I^\perp(V)\ge0\)</span> for the gauged field, hence for the original field by tangential invariance. All denominators are positive on an actual returning passage (<span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>, <span class="math" data-tex="\(v_0&gt;0\)">\(v_0&gt;0\)</span>, <span class="math" data-tex="\(p_1\ne0\)">\(p_1\ne0\)</span>), and (4.1) involves none of these quantities. So the estimate holds for arbitrarily shallow and arbitrarily long excursions, with no limiting argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-all-passages-and-the-proof-of-the-main-theorem">5. All passages and the proof of the main theorem</h2>
+<p><strong>Proposition 5.1</strong> ([OpenAI-NC, Proposition 5.5]). Fix <span class="math" data-tex="\(\delta\)">\(\delta\)</span> as in (4.1) and periods as in Section 4 of <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a>. Let <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> be a unit-speed geodesic of the resulting closed manifold <span class="math" data-tex="\(M\)">\(M\)</span>. For every neck passage <span class="math" data-tex="\(J\)">\(J\)</span> of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and every smooth field <span class="math" data-tex="\(V\)">\(V\)</span> along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> vanishing outside a compact set,
+<span class="math math-display" data-tex="\[
+I_J^\perp(V)\ge0,\qquad I_J(V)\ge0 .
+\]">\[
+I_J^\perp(V)\ge0,\qquad I_J(V)\ge0 .
+\]</span></p>
+<p><em>Proof.</em> Lemma 4.1 of <a href="neck-passages-and-the-index-form.html">Neck passages and the index form</a> lists every possible passage. Lemma 5.1 there handles the passage <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, the passages on which <span class="math" data-tex="\(v\)">\(v\)</span> never vanishes, and the returning passages with <span class="math" data-tex="\(t_*\le\frac14\)">\(t_*\le\frac14\)</span>; Proposition 4.1 handles the remaining returning passages. These results apply to the restriction of <span class="math" data-tex="\(V\)">\(V\)</span>, with arbitrary values at finite end points and zero values far out at infinite ends, and they use the same <span class="math" data-tex="\(\delta\)">\(\delta\)</span> in both end frames. Finally <span class="math" data-tex="\(I_J(V)=I_J^\perp(V)+\int_J\dot q_V^2\,ds\ge0\)">\(I_J(V)=I_J^\perp(V)+\int_J\dot q_V^2\,ds\ge0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2</strong> ([OpenAI-NC, Theorem 1.1]; Theorem 3.1 of <a href="conjugate-points-and-index-forms.html">Conjugate points and index forms</a>). There is a closed connected orientable smooth three-manifold <span class="math" data-tex="\(M\)">\(M\)</span> with a <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> Riemannian metric without conjugate points, such that <span class="math" data-tex="\(M\)">\(M\)</span> admits no <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> Riemannian metric whose sectional curvature is everywhere at most zero.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(M\)">\(M\)</span> be the manifold of <a href="the-manifold-and-its-fundamental-group.html">The manifold and its fundamental group</a>, built with the cores of <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a> for <span class="math" data-tex="\(\delta\)">\(\delta\)</span> as in (4.1), some <span class="math" data-tex="\(B_2\in(0,1]\)">\(B_2\in(0,1]\)</span> and <span class="math" data-tex="\(B_1=\delta^2B_2\)">\(B_1=\delta^2B_2\)</span>; it is closed, connected and orientable. By Proposition 4.1 of the latter lesson it carries a smooth metric, complete because <span class="math" data-tex="\(M\)">\(M\)</span> is compact, whose sectional curvatures are nonpositive at every point outside the open neck <span class="math" data-tex="\(U\)">\(U\)</span>. By Proposition 5.1, every visit of every unit-speed geodesic to <span class="math" data-tex="\(U\)">\(U\)</span> satisfies the hypothesis (2.3) of Proposition 2.3 of <a href="conjugate-points-and-index-forms.html">Conjugate points and index forms</a>, which therefore shows that the metric has no conjugate points. By Corollary 4.2 of <a href="axes-shifts-and-the-two-piece-obstruction.html">Axes, shifts and the two-piece obstruction</a>, <span class="math" data-tex="\(M\)">\(M\)</span> admits no metric of nonpositive sectional curvature. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The metric of Theorem 5.2 must have a positive sectional curvature somewhere, since otherwise it would be a metric of nonpositive curvature on <span class="math" data-tex="\(M\)">\(M\)</span>; by Proposition 4.1 of <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a>, every such point lies in the middle part <span class="math" data-tex="\(\frac14&lt;t&lt;\frac34\)">\(\frac14&lt;t&lt;\frac34\)</span> of the neck. There the absence of conjugate points comes from the concavity of the cometric, through the coordinate second variation and the boundary terms, and not from a sign of the curvature.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that <span class="math" data-tex="\(\int_0^{L/2}v_0^2(1-2s/L)^2\,ds=Lv_0^2/6\)">\(\int_0^{L/2}v_0^2(1-2s/L)^2\,ds=Lv_0^2/6\)</span>.</p>
+<p><strong>6.2.</strong> Show that <span class="math" data-tex="\(\int_0^Lw^2\le L^2\int_0^L\dot w^2\)">\(\int_0^Lw^2\le L^2\int_0^L\dot w^2\)</span> for absolutely continuous <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(w(0)=0\)">\(w(0)=0\)</span> and <span class="math" data-tex="\(\dot w\in L^2\)">\(\dot w\in L^2\)</span>, and deduce that <span class="math" data-tex="\((\cdot,\cdot)_{\mathcal D}\)">\((\cdot,\cdot)_{\mathcal D}\)</span> is an inner product equivalent to <span class="math" data-tex="\(\int\dot w_1\dot w_2\)">\(\int\dot w_1\dot w_2\)</span>.</p>
+<p><strong>6.3.</strong> Show that <span class="math" data-tex="\(x\mapsto x/(1+C_ex)\)">\(x\mapsto x/(1+C_ex)\)</span> is increasing on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> for <span class="math" data-tex="\(C_e&gt;0\)">\(C_e&gt;0\)</span>, and that <span class="math" data-tex="\(1-2C_m\delta\ge\beta+C_ea(0)\delta\)">\(1-2C_m\delta\ge\beta+C_ea(0)\delta\)</span> is equivalent to <span class="math" data-tex="\(\delta\le(1-\beta)/(2C_m+C_ea(0))\)">\(\delta\le(1-\beta)/(2C_m+C_ea(0))\)</span>.</p>
+<p><strong>6.4.</strong> Show that, without the boundary term (<span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>), Lemma 2.1 would only give <span class="math" data-tex="\((p^{\mathsf T}X)^2\le S(p,p)E\le L(1+v_0^2)E\)">\((p^{\mathsf T}X)^2\le S(p,p)E\le L(1+v_0^2)E\)</span>, which does not imply (2.2). Which feature of the boundary term makes up the difference?</p>
+<p><strong>6.5.</strong> Check Proposition 4.1 in a returning passage for which the field is <span class="math" data-tex="\(V=(0,z)\)">\(V=(0,z)\)</span> with <span class="math" data-tex="\(z\)">\(z\)</span> constant: compute <span class="math" data-tex="\(E\)">\(E\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(I^\perp(V)\)">\(I^\perp(V)\)</span> directly.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> With <span class="math" data-tex="\(u=1-2s/L\)">\(u=1-2s/L\)</span>, <span class="math" data-tex="\(ds=-\frac L2du\)">\(ds=-\frac L2du\)</span>, the integral is <span class="math" data-tex="\(v_0^2\frac L2\int_0^1u^2\,du=\frac{Lv_0^2}6\)">\(v_0^2\frac L2\int_0^1u^2\,du=\frac{Lv_0^2}6\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(w(s)=\int_0^s\dot w\)">\(w(s)=\int_0^s\dot w\)</span>, so <span class="math" data-tex="\(w(s)^2\le s\int_0^L\dot w^2\le L\int_0^L\dot w^2\)">\(w(s)^2\le s\int_0^L\dot w^2\le L\int_0^L\dot w^2\)</span>; integrate over <span class="math" data-tex="\([0,L]\)">\([0,L]\)</span>. Then <span class="math" data-tex="\(\int\dot w^2\le(w,w)_{\mathcal D}\)">\(\int\dot w^2\le(w,w)_{\mathcal D}\)</span>, and <span class="math" data-tex="\((w,w)_{\mathcal D}\le(1+\frac12L^2\sup|F&#x27;&#x27;|)\int\dot w^2\)">\((w,w)_{\mathcal D}\le(1+\frac12L^2\sup|F&#x27;&#x27;|)\int\dot w^2\)</span>.</p>
+<p><strong>6.3.</strong> The derivative is <span class="math" data-tex="\(1/(1+C_ex)^2&gt;0\)">\(1/(1+C_ex)^2&gt;0\)</span>. The second claim is a rearrangement.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(S(p,p)\)">\(S(p,p)\)</span> may exceed <span class="math" data-tex="\(L\)">\(L\)</span> by <span class="math" data-tex="\(Lv_0^2\)">\(Lv_0^2\)</span>; the bound (2.2) needs the factor <span class="math" data-tex="\(L\)">\(L\)</span> itself. The boundary term <span class="math" data-tex="\(\mu(e^{\mathsf T}X)^2\)">\(\mu(e^{\mathsf T}X)^2\)</span> with <span class="math" data-tex="\(\mu=\kappa v_0/4\)">\(\mu=\kappa v_0/4\)</span> and the timing margin <span class="math" data-tex="\(\beta&lt;1\)">\(\beta&lt;1\)</span> recover the excess, because the component of <span class="math" data-tex="\(p\)">\(p\)</span> along <span class="math" data-tex="\(e\)">\(e\)</span> dominates <span class="math" data-tex="\(S(p,e)\)">\(S(p,e)\)</span> up to an error <span class="math" data-tex="\(C_m\delta L|p_1|\)">\(C_m\delta L|p_1|\)</span>.</p>
+<p><strong>6.5.</strong> For <span class="math" data-tex="\(V=(0,z)\)">\(V=(0,z)\)</span> with <span class="math" data-tex="\(z\)">\(z\)</span> constant, <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, <span class="math" data-tex="\(X=0\)">\(X=0\)</span>; the gauge leaves <span class="math" data-tex="\(V\)">\(V\)</span> unchanged except for a tangential term, <span class="math" data-tex="\(\langle V,T\rangle=p^{\mathsf T}z\)">\(\langle V,T\rangle=p^{\mathsf T}z\)</span> is constant, and the identity in (5.1) of <a href="neck-passages-and-the-index-form.html">Neck passages and the index form</a> gives <span class="math" data-tex="\(I^\perp(V)=\frac{\kappa v_0}2\cdot2z_1^2=\kappa v_0z_1^2\ge0\)">\(I^\perp(V)=\frac{\kappa v_0}2\cdot2z_1^2=\kappa v_0z_1^2\ge0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-NC] OpenAI, <em>A Three-Manifold Without Conjugate Points and Without a Nonpositively Curved Metric</em>, OpenAI Math Release preprint, 24 September 2026, Section 5 (Proposition 5.1, Lemmas 5.2–5.4, Proposition 5.5) and Section 6 (proof of Theorem 1.1). https://github.com/openai/math/tree/main/preprints/A-Three-Manifold-Without-Conjugate-Points-and-Without-a-Nonpositively-Curved-Metric-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

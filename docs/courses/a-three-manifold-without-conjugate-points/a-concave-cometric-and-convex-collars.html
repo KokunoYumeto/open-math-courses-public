@@ -1,0 +1,304 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A concave cometric and convex collars</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A three-manifold without conjugate points)</a><a href="axes-shifts-and-the-two-piece-obstruction.html">Previous lesson</a><a href="neck-passages-and-the-index-form.html">Next lesson</a><a href="src/a-concave-cometric-and-convex-collars.md">Editable source</a></nav><main><article><h1 id="a-concave-cometric-and-convex-collars">A concave cometric and convex collars</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson constructs the metric on the manifold <span class="math" data-tex="\(M\)">\(M\)</span> of <a href="the-manifold-and-its-fundamental-group.html">The manifold and its fundamental group</a>. On the neck <span class="math" data-tex="\([0,1]\times T\)">\([0,1]\times T\)</span> it is
+<span class="math math-display" data-tex="\[
+g=dt^2+dx^{\mathsf T}P(t)^{-1}dx,
+\]">\[
+g=dt^2+dx^{\mathsf T}P(t)^{-1}dx,
+\]</span>
+where <span class="math" data-tex="\(P(t)\)">\(P(t)\)</span> is a smooth path of positive definite <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices, the <em>cometric</em>, chosen concave and nearly constant, with a small shear in the middle that realizes the twisted gluing. Near each boundary torus the metric is a product of a flat circle and a convex warped surface, which continues into a flat torus with a hole. Outside the open neck every sectional curvature is nonpositive; on the neck the curvature is not controlled, and the next two lessons show that the concavity of <span class="math" data-tex="\(P\)">\(P\)</span> is enough to exclude conjugate points.</p>
+<ul>
+<li>The cutoff and the matrix path (Section 1).</li>
+<li>Bounds on the cometric (Section 2).</li>
+<li>Warped products and the ends of the neck (Section 3).</li>
+<li>Convex collars, flat cores and the metric on <span class="math" data-tex="\(M\)">\(M\)</span> (Section 4).</li>
+</ul>
+<p>Matrix norms are Euclidean operator norms, <span class="math" data-tex="\({}^{\mathsf T}\)">\({}^{\mathsf T}\)</span> denotes transpose, and for symmetric matrices <span class="math" data-tex="\(R\preceq S\)">\(R\preceq S\)</span> means that <span class="math" data-tex="\(S-R\)">\(S-R\)</span> is positive semidefinite.</p>
+<h2 id="1-the-cutoff-and-the-matrix-path">1. The cutoff and the matrix path</h2>
+<p>Define <span class="math" data-tex="\(a\colon\mathbb R\to[0,1)\)">\(a\colon\mathbb R\to[0,1)\)</span> by <span class="math" data-tex="\(a(u)=\exp\bigl(-1/(\tfrac23-u)\bigr)\)">\(a(u)=\exp\bigl(-1/(\tfrac23-u)\bigr)\)</span> for <span class="math" data-tex="\(u&lt;\tfrac23\)">\(u&lt;\tfrac23\)</span> and <span class="math" data-tex="\(a(u)=0\)">\(a(u)=0\)</span> for <span class="math" data-tex="\(u\ge\tfrac23\)">\(u\ge\tfrac23\)</span>, and its primitive <span class="math" data-tex="\(A\)">\(A\)</span> by
+<span class="math math-display" data-tex="\[
+A(u)=\int_0^ua(y)\,dy . \tag{1.1}
+\]">\[
+A(u)=\int_0^ua(y)\,dy . \tag{1.1}
+\]</span>
+The function <span class="math" data-tex="\(a\)">\(a\)</span> is smooth: every derivative of <span class="math" data-tex="\(\exp(-1/w)\)">\(\exp(-1/w)\)</span> is a polynomial in <span class="math" data-tex="\(1/w\)">\(1/w\)</span> times <span class="math" data-tex="\(\exp(-1/w)\)">\(\exp(-1/w)\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(w\to0^+\)">\(w\to0^+\)</span>. For <span class="math" data-tex="\(u&lt;\frac23\)">\(u&lt;\frac23\)</span>,
+<span class="math math-display" data-tex="\[
+a&#x27;(u)=-\frac{a(u)}{(\frac23-u)^2}&lt;0 . \tag{1.2}
+\]">\[
+a&#x27;(u)=-\frac{a(u)}{(\frac23-u)^2}&lt;0 . \tag{1.2}
+\]</span>
+So <span class="math" data-tex="\(a\)">\(a\)</span> is nonincreasing, <span class="math" data-tex="\(A\)">\(A\)</span> is concave, and <span class="math" data-tex="\(A\)">\(A\)</span> is constant on <span class="math" data-tex="\([\frac23,\infty)\)">\([\frac23,\infty)\)</span>. Fix once and for all a smooth nondecreasing function <span class="math" data-tex="\(\chi\colon\mathbb R\to[0,1]\)">\(\chi\colon\mathbb R\to[0,1]\)</span> equal to <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\((-\infty,\frac5{12}]\)">\((-\infty,\frac5{12}]\)</span> and to <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\([\frac7{12},\infty)\)">\([\frac7{12},\infty)\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;\delta\le\frac12\)">\(0&lt;\delta\le\frac12\)</span> put <span class="math" data-tex="\(\epsilon=\delta^2\)">\(\epsilon=\delta^2\)</span> and, for <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H(t)&amp;=e_2+\epsilon\chi(t)e_1,\\
+d_1(t)&amp;=1+\delta A(t),\\
+d_2(t)&amp;=1+\delta A(1-t),\\
+P(t)&amp;=d_1(t)\,e_1e_1^{\mathsf T}\\
+&amp;\quad+d_2(t)\,H(t)H(t)^{\mathsf T} .
+\end{aligned} \tag{1.3}
+\]">\[
+\begin{aligned}
+H(t)&amp;=e_2+\epsilon\chi(t)e_1,\\
+d_1(t)&amp;=1+\delta A(t),\\
+d_2(t)&amp;=1+\delta A(1-t),\\
+P(t)&amp;=d_1(t)\,e_1e_1^{\mathsf T}\\
+&amp;\quad+d_2(t)\,H(t)H(t)^{\mathsf T} .
+\end{aligned} \tag{1.3}
+\]</span>
+Put <span class="math" data-tex="\(Q=P^{-1}\)">\(Q=P^{-1}\)</span>, the matrix of the torus metric, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\kappa&amp;=\delta a(0)=\delta e^{-3/2}&gt;0,\\
+b&amp;=1+\delta A(1) .
+\end{aligned} \tag{1.4}
+\]">\[
+\begin{aligned}
+\kappa&amp;=\delta a(0)=\delta e^{-3/2}&gt;0,\\
+b&amp;=1+\delta A(1) .
+\end{aligned} \tag{1.4}
+\]</span>
+Since <span class="math" data-tex="\(A(1)=A(\frac23)\le\frac23e^{-3/2}&lt;\frac16\)">\(A(1)=A(\frac23)\le\frac23e^{-3/2}&lt;\frac16\)</span>, we have <span class="math" data-tex="\(1\le d_i\le\frac{13}{12}\)">\(1\le d_i\le\frac{13}{12}\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<p>The two <em>end frames</em> are the matrices with columns
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_1&amp;=(e_1,\ e_2),\\
+T_2&amp;=(e_2+\epsilon e_1,\ e_1),
+\end{aligned} \tag{1.5}
+\]">\[
+\begin{aligned}
+T_1&amp;=(e_1,\ e_2),\\
+T_2&amp;=(e_2+\epsilon e_1,\ e_1),
+\end{aligned} \tag{1.5}
+\]</span>
+those of (1.1) in <a href="the-manifold-and-its-fundamental-group.html">The manifold and its fundamental group</a> with <span class="math" data-tex="\(\epsilon=B_1/B_2\)">\(\epsilon=B_1/B_2\)</span>. A linear change of coordinates <span class="math" data-tex="\(x=T_iy\)">\(x=T_iy\)</span> changes the cometric to <span class="math" data-tex="\(T_i^{-1}PT_i^{-\mathsf T}\)">\(T_i^{-1}PT_i^{-\mathsf T}\)</span>. The <em>inward coordinate</em> is <span class="math" data-tex="\(\tau=t\)">\(\tau=t\)</span> at the first end and <span class="math" data-tex="\(\tau=1-t\)">\(\tau=1-t\)</span> at the second.</p>
+<p><strong>Lemma 1.1</strong> (the ends of the path). For <span class="math" data-tex="\(0\le\tau\le\frac14\)">\(0\le\tau\le\frac14\)</span>, the cometric in the end frame <span class="math" data-tex="\(T_i\)">\(T_i\)</span> and inward coordinate <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is
+<span class="math math-display" data-tex="\[
+P_i(\tau)=\begin{pmatrix}1+\delta A(\tau)&amp;0\\0&amp;b\end{pmatrix} . \tag{1.6}
+\]">\[
+P_i(\tau)=\begin{pmatrix}1+\delta A(\tau)&amp;0\\0&amp;b\end{pmatrix} . \tag{1.6}
+\]</span>
+In particular <span class="math" data-tex="\(P_i(0)e_1=e_1\)">\(P_i(0)e_1=e_1\)</span> and <span class="math" data-tex="\(P_i&#x27;(0)=\kappa\,e_1e_1^{\mathsf T}\)">\(P_i&#x27;(0)=\kappa\,e_1e_1^{\mathsf T}\)</span>, primes denoting derivatives in <span class="math" data-tex="\(\tau\)">\(\tau\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(t\in[0,\frac14]\)">\(t\in[0,\frac14]\)</span>, <span class="math" data-tex="\(\chi(t)=0\)">\(\chi(t)=0\)</span>, so <span class="math" data-tex="\(H=e_2\)">\(H=e_2\)</span>; and <span class="math" data-tex="\(1-t\ge\frac23\)">\(1-t\ge\frac23\)</span>, so <span class="math" data-tex="\(d_2=b\)">\(d_2=b\)</span>. Thus <span class="math" data-tex="\(P=\operatorname{diag}(1+\delta A(t),b)\)">\(P=\operatorname{diag}(1+\delta A(t),b)\)</span>, and <span class="math" data-tex="\(T_1\)">\(T_1\)</span> is the identity. For <span class="math" data-tex="\(t\in[\frac34,1]\)">\(t\in[\frac34,1]\)</span>, <span class="math" data-tex="\(\chi(t)=1\)">\(\chi(t)=1\)</span>, so <span class="math" data-tex="\(H=e_2+\epsilon e_1\)">\(H=e_2+\epsilon e_1\)</span> is the first column of <span class="math" data-tex="\(T_2\)">\(T_2\)</span>; <span class="math" data-tex="\(t\ge\frac23\)">\(t\ge\frac23\)</span> gives <span class="math" data-tex="\(d_1=b\)">\(d_1=b\)</span>, and <span class="math" data-tex="\(d_2=1+\delta A(\tau)\)">\(d_2=1+\delta A(\tau)\)</span>. Hence <span class="math" data-tex="\(P=T_2\operatorname{diag}(1+\delta A(\tau),b)T_2^{\mathsf T}\)">\(P=T_2\operatorname{diag}(1+\delta A(\tau),b)T_2^{\mathsf T}\)</span>, which is (1.6) after the change of frame. Finally <span class="math" data-tex="\(A(0)=0\)">\(A(0)=0\)</span> and <span class="math" data-tex="\(A&#x27;=a\)">\(A&#x27;=a\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-bounds-on-the-cometric">2. Bounds on the cometric</h2>
+<p><strong>Lemma 2.1</strong> ([OpenAI-NC, Lemma 3.1]). There are <span class="math" data-tex="\(\delta_0\in(0,\frac12]\)">\(\delta_0\in(0,\frac12]\)</span> and <span class="math" data-tex="\(C_0\ge18\)">\(C_0\ge18\)</span>, depending only on <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, such that for <span class="math" data-tex="\(0&lt;\delta\le\delta_0\)">\(0&lt;\delta\le\delta_0\)</span> the following hold on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, in the original coordinates and in either end frame with its inward coordinate:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tfrac19\operatorname{Id}\preceq P\preceq18\operatorname{Id},\\
+&amp;\tfrac1{18}\operatorname{Id}\preceq Q\preceq9\operatorname{Id},\\
+&amp;\|P&#x27;\|\le C_0\delta,
+\end{aligned} \tag{2.1}
+\]">\[
+\begin{aligned}
+&amp;\tfrac19\operatorname{Id}\preceq P\preceq18\operatorname{Id},\\
+&amp;\tfrac1{18}\operatorname{Id}\preceq Q\preceq9\operatorname{Id},\\
+&amp;\|P&#x27;\|\le C_0\delta,
+\end{aligned} \tag{2.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-P&#x27;&#x27;\succeq0,\\
+&amp;|P&#x27;p|^2\le C_0\delta\,p^{\mathsf T}(-P&#x27;&#x27;)p
+\end{aligned} \tag{2.2}
+\]">\[
+\begin{aligned}
+&amp;-P&#x27;&#x27;\succeq0,\\
+&amp;|P&#x27;p|^2\le C_0\delta\,p^{\mathsf T}(-P&#x27;&#x27;)p
+\end{aligned} \tag{2.2}
+\]</span>
+for every <span class="math" data-tex="\(p\in\mathbb R^2\)">\(p\in\mathbb R^2\)</span>.</p>
+<p><em>Proof.</em> <em>Size.</em> Let <span class="math" data-tex="\(R=(e_1,H)\)">\(R=(e_1,H)\)</span> be the matrix with columns <span class="math" data-tex="\(e_1\)">\(e_1\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span>. Then <span class="math" data-tex="\(P=R\operatorname{diag}(d_1,d_2)R^{\mathsf T}\)">\(P=R\operatorname{diag}(d_1,d_2)R^{\mathsf T}\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(R^{-1}=(e_1,\ e_2-\epsilon\chi e_1)\)">\(R^{-1}=(e_1,\ e_2-\epsilon\chi e_1)\)</span> have squared norms at most their squared Frobenius norms <span class="math" data-tex="\(2+\epsilon^2\chi^2\le3\)">\(2+\epsilon^2\chi^2\le3\)</span>. With <span class="math" data-tex="\(1\le d_i\le2\)">\(1\le d_i\le2\)</span> this gives <span class="math" data-tex="\(\frac13\operatorname{Id}\preceq P\preceq6\operatorname{Id}\)">\(\frac13\operatorname{Id}\preceq P\preceq6\operatorname{Id}\)</span>. The frames <span class="math" data-tex="\(T_i\)">\(T_i\)</span> and their inverses also have squared norms at most <span class="math" data-tex="\(3\)">\(3\)</span>, which gives the bounds (2.1) for <span class="math" data-tex="\(P\)">\(P\)</span> in the end frames, and those for <span class="math" data-tex="\(Q=P^{-1}\)">\(Q=P^{-1}\)</span> follow.</p>
+<p><em>Two estimates for <span class="math" data-tex="\(a\)">\(a\)</span>.</em> On <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, with <span class="math" data-tex="\(w=\frac23-u\in(0,\frac23]\)">\(w=\frac23-u\in(0,\frac23]\)</span> where <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, (1.2) gives <span class="math" data-tex="\(-a&#x27;=e^{-1/w}/w^2\)">\(-a&#x27;=e^{-1/w}/w^2\)</span>. Since <span class="math" data-tex="\(w^{-2}\ge\frac94\ge e^{-1/w}\)">\(w^{-2}\ge\frac94\ge e^{-1/w}\)</span>, we get <span class="math" data-tex="\(a^2=e^{-1/w}\cdot e^{-1/w}\le e^{-1/w}w^{-2}=-a&#x27;\)">\(a^2=e^{-1/w}\cdot e^{-1/w}\le e^{-1/w}w^{-2}=-a&#x27;\)</span>; and <span class="math" data-tex="\(x^2e^{-x}\le4e^{-2}&lt;1\)">\(x^2e^{-x}\le4e^{-2}&lt;1\)</span> for <span class="math" data-tex="\(x=1/w\)">\(x=1/w\)</span> gives <span class="math" data-tex="\(|a&#x27;|\le1\)">\(|a&#x27;|\le1\)</span>. So on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>
+<span class="math math-display" data-tex="\[
+a^2\le-a&#x27;,\qquad|a&#x27;|\le1 . \tag{2.3}
+\]">\[
+a^2\le-a&#x27;,\qquad|a&#x27;|\le1 . \tag{2.3}
+\]</span></p>
+<p><em>Outside <span class="math" data-tex="\(I_0=[\frac5{12},\frac7{12}]\)">\(I_0=[\frac5{12},\frac7{12}]\)</span>.</em> There <span class="math" data-tex="\(\chi&#x27;=0\)">\(\chi&#x27;=0\)</span>, so <span class="math" data-tex="\(H\)">\(H\)</span> is constant and, with <span class="math" data-tex="\(q=R^{\mathsf T}p\)">\(q=R^{\mathsf T}p\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;P&#x27;=\delta a(t)\,e_1e_1^{\mathsf T}-\delta a(1-t)\,HH^{\mathsf T},\\
+&amp;p^{\mathsf T}(-P&#x27;&#x27;)p\\
+&amp;\quad=\delta\bigl(-a&#x27;(t)q_1^2-a&#x27;(1-t)q_2^2\bigr)\ge0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;P&#x27;=\delta a(t)\,e_1e_1^{\mathsf T}-\delta a(1-t)\,HH^{\mathsf T},\\
+&amp;p^{\mathsf T}(-P&#x27;&#x27;)p\\
+&amp;\quad=\delta\bigl(-a&#x27;(t)q_1^2-a&#x27;(1-t)q_2^2\bigr)\ge0 .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(|H|^2\le\frac{17}{16}\)">\(|H|^2\le\frac{17}{16}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|P&#x27;p|^2&amp;\le2\delta^2\bigl(a(t)^2q_1^2+\tfrac{17}{16}a(1-t)^2q_2^2\bigr)\\
+&amp;\le3\delta\,p^{\mathsf T}(-P&#x27;&#x27;)p
+\end{aligned}
+\]">\[
+\begin{aligned}
+|P&#x27;p|^2&amp;\le2\delta^2\bigl(a(t)^2q_1^2+\tfrac{17}{16}a(1-t)^2q_2^2\bigr)\\
+&amp;\le3\delta\,p^{\mathsf T}(-P&#x27;&#x27;)p
+\end{aligned}
+\]</span>
+by (2.3), and <span class="math" data-tex="\(\|P&#x27;\|\le3\delta\)">\(\|P&#x27;\|\le3\delta\)</span>.</p>
+<p><em>On <span class="math" data-tex="\(I_0\)">\(I_0\)</span>.</em> There <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(1-t\)">\(1-t\)</span> lie in <span class="math" data-tex="\([\frac5{12},\frac7{12}]\)">\([\frac5{12},\frac7{12}]\)</span>, so <span class="math" data-tex="\(w\in[\frac1{12},\frac14]\)">\(w\in[\frac1{12},\frac14]\)</span>, where <span class="math" data-tex="\(e^{-1/w}/w^2\)">\(e^{-1/w}/w^2\)</span> is increasing; hence <span class="math" data-tex="\(-a&#x27;(t),-a&#x27;(1-t)\ge m:=144e^{-12}\)">\(-a&#x27;(t),-a&#x27;(1-t)\ge m:=144e^{-12}\)</span>. Compare <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(P_0=\operatorname{diag}(d_1,d_2)\)">\(P_0=\operatorname{diag}(d_1,d_2)\)</span>: the difference
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E=P-P_0&amp;=d_2\bigl(\epsilon\chi\,(e_1e_2^{\mathsf T}+e_2e_1^{\mathsf T})\\
+&amp;\qquad+\epsilon^2\chi^2e_1e_1^{\mathsf T}\bigr)
+\end{aligned}
+\]">\[
+\begin{aligned}
+E=P-P_0&amp;=d_2\bigl(\epsilon\chi\,(e_1e_2^{\mathsf T}+e_2e_1^{\mathsf T})\\
+&amp;\qquad+\epsilon^2\chi^2e_1e_1^{\mathsf T}\bigr)
+\end{aligned}
+\]</span>
+and its first two derivatives are sums of terms each containing a factor <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> or <span class="math" data-tex="\(\epsilon^2\)">\(\epsilon^2\)</span>, a factor <span class="math" data-tex="\(d_2\)">\(d_2\)</span>, <span class="math" data-tex="\(d_2&#x27;=-\delta a(1-t)\)">\(d_2&#x27;=-\delta a(1-t)\)</span> or <span class="math" data-tex="\(d_2&#x27;&#x27;=\delta a&#x27;(1-t)\)">\(d_2&#x27;&#x27;=\delta a&#x27;(1-t)\)</span> (all bounded by <span class="math" data-tex="\(2\)">\(2\)</span>), and factors <span class="math" data-tex="\(\chi,\chi&#x27;,\chi&#x27;&#x27;\)">\(\chi,\chi&#x27;,\chi&#x27;&#x27;\)</span>. So <span class="math" data-tex="\(\|E&#x27;\|\le C_1\epsilon\)">\(\|E&#x27;\|\le C_1\epsilon\)</span> and <span class="math" data-tex="\(\|E&#x27;&#x27;\|\le C_2\epsilon\)">\(\|E&#x27;&#x27;\|\le C_2\epsilon\)</span> with <span class="math" data-tex="\(C_1,C_2\)">\(C_1,C_2\)</span> depending only on <span class="math" data-tex="\(\sup|\chi&#x27;|\)">\(\sup|\chi&#x27;|\)</span> and <span class="math" data-tex="\(\sup|\chi&#x27;&#x27;|\)">\(\sup|\chi&#x27;&#x27;|\)</span>. Now <span class="math" data-tex="\(-P_0&#x27;&#x27;\succeq m\delta\operatorname{Id}\)">\(-P_0&#x27;&#x27;\succeq m\delta\operatorname{Id}\)</span>, because <span class="math" data-tex="\(-P_0&#x27;&#x27;=\delta\operatorname{diag}(-a&#x27;(t),-a&#x27;(1-t))\)">\(-P_0&#x27;&#x27;=\delta\operatorname{diag}(-a&#x27;(t),-a&#x27;(1-t))\)</span>, and <span class="math" data-tex="\(\epsilon=\delta^2\)">\(\epsilon=\delta^2\)</span>; for <span class="math" data-tex="\(\delta\le m/(2C_2)\)">\(\delta\le m/(2C_2)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-P&#x27;&#x27;=-P_0&#x27;&#x27;-E&#x27;&#x27;\\
+&amp;\quad\succeq\bigl(m\delta-C_2\delta^2\bigr)\operatorname{Id}\succeq\tfrac12m\delta\operatorname{Id},\\
+&amp;\|P&#x27;\|\le\delta+C_1\delta^2\le(1+C_1)\delta,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;-P&#x27;&#x27;=-P_0&#x27;&#x27;-E&#x27;&#x27;\\
+&amp;\quad\succeq\bigl(m\delta-C_2\delta^2\bigr)\operatorname{Id}\succeq\tfrac12m\delta\operatorname{Id},\\
+&amp;\|P&#x27;\|\le\delta+C_1\delta^2\le(1+C_1)\delta,
+\end{aligned}
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|P&#x27;p|^2&amp;\le(1+C_1)^2\delta^2|p|^2\\
+&amp;\le\frac{2(1+C_1)^2}m\,\delta\,p^{\mathsf T}(-P&#x27;&#x27;)p .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|P&#x27;p|^2&amp;\le(1+C_1)^2\delta^2|p|^2\\
+&amp;\le\frac{2(1+C_1)^2}m\,\delta\,p^{\mathsf T}(-P&#x27;&#x27;)p .
+\end{aligned}
+\]</span></p>
+<p><em>End frames.</em> For <span class="math" data-tex="\(\widetilde P=T_i^{-1}PT_i^{-\mathsf T}\)">\(\widetilde P=T_i^{-1}PT_i^{-\mathsf T}\)</span> and <span class="math" data-tex="\(q=T_i^{-\mathsf T}p\)">\(q=T_i^{-\mathsf T}p\)</span>, <span class="math" data-tex="\(\widetilde P&#x27;&#x27;=T_i^{-1}P&#x27;&#x27;T_i^{-\mathsf T}\)">\(\widetilde P&#x27;&#x27;=T_i^{-1}P&#x27;&#x27;T_i^{-\mathsf T}\)</span>, so <span class="math" data-tex="\(p^{\mathsf T}(-\widetilde P&#x27;&#x27;)p=q^{\mathsf T}(-P&#x27;&#x27;)q\ge0\)">\(p^{\mathsf T}(-\widetilde P&#x27;&#x27;)p=q^{\mathsf T}(-P&#x27;&#x27;)q\ge0\)</span>, and <span class="math" data-tex="\(|\widetilde P&#x27;p|^2\le3|P&#x27;q|^2\le3C\delta\,p^{\mathsf T}(-\widetilde P&#x27;&#x27;)p\)">\(|\widetilde P&#x27;p|^2\le3|P&#x27;q|^2\le3C\delta\,p^{\mathsf T}(-\widetilde P&#x27;&#x27;)p\)</span> with <span class="math" data-tex="\(C\)">\(C\)</span> the constant found above; also <span class="math" data-tex="\(\|\widetilde P&#x27;\|\le3\|P&#x27;\|\)">\(\|\widetilde P&#x27;\|\le3\|P&#x27;\|\)</span>. Replacing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(1-t\)">\(1-t\)</span> changes the sign of the first derivative and leaves the second unchanged. Take <span class="math" data-tex="\(\delta_0=\min\{\frac12,\,m/(2C_2)\}\)">\(\delta_0=\min\{\frac12,\,m/(2C_2)\}\)</span>, and let <span class="math" data-tex="\(C_0\)">\(C_0\)</span> be the largest of the numbers <span class="math" data-tex="\(18\)">\(18\)</span>, <span class="math" data-tex="\(9\)">\(9\)</span>, <span class="math" data-tex="\(3(1+C_1)\)">\(3(1+C_1)\)</span> and <span class="math" data-tex="\(6(1+C_1)^2/m\)">\(6(1+C_1)^2/m\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The middle of the path carries the shear: <span class="math" data-tex="\(H\)">\(H\)</span> turns from <span class="math" data-tex="\(e_2\)">\(e_2\)</span> to <span class="math" data-tex="\(e_2+\epsilon e_1\)">\(e_2+\epsilon e_1\)</span> while both diagonal coefficients are strictly concave, and since the shear has size <span class="math" data-tex="\(\epsilon=\delta^2\)">\(\epsilon=\delta^2\)</span>, it does not destroy the concavity of size <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The periods <span class="math" data-tex="\(B_1=\epsilon B_2\)">\(B_1=\epsilon B_2\)</span> turn this small shear into the fixed integral gluing <span class="math" data-tex="\(h_2=h_1+f_1\)">\(h_2=h_1+f_1\)</span>, <span class="math" data-tex="\(f_2=h_1\)">\(f_2=h_1\)</span>.</p>
+<h2 id="3-warped-products-and-the-ends-of-the-neck">3. Warped products and the ends of the neck</h2>
+<p><strong>Lemma 3.1</strong> (warped surfaces and products with a circle). Let <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span> be smooth on an interval <span class="math" data-tex="\(J\)">\(J\)</span>. The metric <span class="math" data-tex="\(d\tau^2+\ell(\tau)^2dy^2\)">\(d\tau^2+\ell(\tau)^2dy^2\)</span> on <span class="math" data-tex="\(J\times\mathbb R/B\mathbb Z\)">\(J\times\mathbb R/B\mathbb Z\)</span> has Gaussian curvature <span class="math" data-tex="\(-\ell&#x27;&#x27;/\ell\)">\(-\ell&#x27;&#x27;/\ell\)</span>. If a surface has Gaussian curvature <span class="math" data-tex="\(K\le0\)">\(K\le0\)</span>, every sectional curvature of its Riemannian product with a circle lies in <span class="math" data-tex="\([K,0]\)">\([K,0]\)</span> at each point.</p>
+<p><em>Proof.</em> In the coordinates <span class="math" data-tex="\((\tau,y)\)">\((\tau,y)\)</span>, the only nonzero Christoffel symbols are <span class="math" data-tex="\(\Gamma^\tau_{yy}=-\ell\ell&#x27;\)">\(\Gamma^\tau_{yy}=-\ell\ell&#x27;\)</span> and <span class="math" data-tex="\(\Gamma^y_{\tau y}=\Gamma^y_{y\tau}=\ell&#x27;/\ell\)">\(\Gamma^y_{\tau y}=\Gamma^y_{y\tau}=\ell&#x27;/\ell\)</span>. Hence <span class="math" data-tex="\(\nabla_{\partial_\tau}\partial_\tau=0\)">\(\nabla_{\partial_\tau}\partial_\tau=0\)</span> and <span class="math" data-tex="\(\nabla_{\partial_\tau}\partial_y=\nabla_{\partial_y}\partial_\tau=(\ell&#x27;/\ell)\partial_y\)">\(\nabla_{\partial_\tau}\partial_y=\nabla_{\partial_y}\partial_\tau=(\ell&#x27;/\ell)\partial_y\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;R(\partial_y,\partial_\tau)\partial_\tau\\
+&amp;\quad=\nabla_{\partial_y}\nabla_{\partial_\tau}\partial_\tau-\nabla_{\partial_\tau}\nabla_{\partial_y}\partial_\tau\\
+&amp;\quad=-\Bigl(\bigl(\tfrac{\ell&#x27;}\ell\bigr)&#x27;+\bigl(\tfrac{\ell&#x27;}\ell\bigr)^2\Bigr)\partial_y\\
+&amp;\quad=-\frac{\ell&#x27;&#x27;}\ell\,\partial_y .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;R(\partial_y,\partial_\tau)\partial_\tau\\
+&amp;\quad=\nabla_{\partial_y}\nabla_{\partial_\tau}\partial_\tau-\nabla_{\partial_\tau}\nabla_{\partial_y}\partial_\tau\\
+&amp;\quad=-\Bigl(\bigl(\tfrac{\ell&#x27;}\ell\bigr)&#x27;+\bigl(\tfrac{\ell&#x27;}\ell\bigr)^2\Bigr)\partial_y\\
+&amp;\quad=-\frac{\ell&#x27;&#x27;}\ell\,\partial_y .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(K=\langle R(\partial_y,\partial_\tau)\partial_\tau,\partial_y\rangle/|\partial_y|^2=-\ell&#x27;&#x27;/\ell\)">\(K=\langle R(\partial_y,\partial_\tau)\partial_\tau,\partial_y\rangle/|\partial_y|^2=-\ell&#x27;&#x27;/\ell\)</span>. For the product, the curvature tensor is that of the surface on surface vectors and vanishes as soon as one argument is tangent to the flat circle. For orthonormal <span class="math" data-tex="\(X=X_1+X_2\)">\(X=X_1+X_2\)</span>, <span class="math" data-tex="\(Y=Y_1+Y_2\)">\(Y=Y_1+Y_2\)</span>, split into surface and circle components, the sectional curvature is <span class="math" data-tex="\(K\bigl(|X_1|^2|Y_1|^2-\langle X_1,Y_1\rangle^2\bigr)\)">\(K\bigl(|X_1|^2|Y_1|^2-\langle X_1,Y_1\rangle^2\bigr)\)</span>, and the bracket lies in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In the end frame <span class="math" data-tex="\(T_i\)">\(T_i\)</span> with inward coordinate <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, the neck metric for <span class="math" data-tex="\(0\le\tau\le\frac14\)">\(0\le\tau\le\frac14\)</span> is, by Lemma 1.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g&amp;=d\tau^2+\ell_0(\tau)^2dy_1^2\\
+&amp;\quad+b^{-1}dy_2^2,\\
+\ell_0(\tau)&amp;=(1+\delta A(\tau))^{-1/2},
+\end{aligned} \tag{3.1}
+\]">\[
+\begin{aligned}
+g&amp;=d\tau^2+\ell_0(\tau)^2dy_1^2\\
+&amp;\quad+b^{-1}dy_2^2,\\
+\ell_0(\tau)&amp;=(1+\delta A(\tau))^{-1/2},
+\end{aligned} \tag{3.1}
+\]</span>
+the product of a warped surface and a flat circle. The function <span class="math" data-tex="\(\ell_0\)">\(\ell_0\)</span> is defined for <span class="math" data-tex="\(\tau\ge-1\)">\(\tau\ge-1\)</span>, where <span class="math" data-tex="\(A(\tau)\ge-1\)">\(A(\tau)\ge-1\)</span> and <span class="math" data-tex="\(1+\delta A\ge\frac12\)">\(1+\delta A\ge\frac12\)</span>. Writing <span class="math" data-tex="\(w=1+\delta A\)">\(w=1+\delta A\)</span>, <span class="math" data-tex="\(w&#x27;=\delta a\)">\(w&#x27;=\delta a\)</span>, <span class="math" data-tex="\(w&#x27;&#x27;=\delta a&#x27;\)">\(w&#x27;&#x27;=\delta a&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{\ell_0&#x27;&#x27;}{\ell_0}=\frac{3\delta^2a^2}{4(1+\delta A)^2}\\
+&amp;\qquad-\frac{\delta a&#x27;}{2(1+\delta A)}\ge0
+\end{aligned} \tag{3.2}
+\]">\[
+\begin{aligned}
+&amp;\frac{\ell_0&#x27;&#x27;}{\ell_0}=\frac{3\delta^2a^2}{4(1+\delta A)^2}\\
+&amp;\qquad-\frac{\delta a&#x27;}{2(1+\delta A)}\ge0
+\end{aligned} \tag{3.2}
+\]</span>
+on <span class="math" data-tex="\([-1,\frac14]\)">\([-1,\frac14]\)</span>, because <span class="math" data-tex="\(a&#x27;\le0\)">\(a&#x27;\le0\)</span> there. By Lemma 3.1, <strong>the neck has nonpositive sectional curvature for <span class="math" data-tex="\(0\le t\le\frac14\)">\(0\le t\le\frac14\)</span> and for <span class="math" data-tex="\(\frac34\le t\le1\)">\(\frac34\le t\le1\)</span>.</strong> Also <span class="math" data-tex="\(\ell_0&#x27;(\tau)=-\delta a(\tau)/(2w^{3/2})&lt;0\)">\(\ell_0&#x27;(\tau)=-\delta a(\tau)/(2w^{3/2})&lt;0\)</span>, with <span class="math" data-tex="\(\ell_0(0)=1\)">\(\ell_0(0)=1\)</span> and <span class="math" data-tex="\(\ell_0&#x27;(0)=-\kappa/2\)">\(\ell_0&#x27;(0)=-\kappa/2\)</span>.</p>
+<h2 id="4-convex-collars-flat-cores-and-the-metric-on-m">4. Convex collars, flat cores and the metric on <span class="math" data-tex="\(M\)">\(M\)</span></h2>
+<p>Fix <span class="math" data-tex="\(\delta\in(0,\delta_0]\)">\(\delta\in(0,\delta_0]\)</span> and a period <span class="math" data-tex="\(B\in(0,1]\)">\(B\in(0,1]\)</span>. We build a holed torus <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> with a collar of period <span class="math" data-tex="\(B\)">\(B\)</span> whose metric has curvature at most <span class="math" data-tex="\(0\)">\(0\)</span> and is given near its boundary by <span class="math" data-tex="\(d\tau^2+\ell_0(\tau)^2dy_1^2\)">\(d\tau^2+\ell_0(\tau)^2dy_1^2\)</span>.</p>
+<p><strong>The warping function.</strong> Fix a smooth <span class="math" data-tex="\(\tilde\chi\colon\mathbb R\to[0,1]\)">\(\tilde\chi\colon\mathbb R\to[0,1]\)</span> equal to <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\((-\infty,-1]\)">\((-\infty,-1]\)</span> and to <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\([-\frac12,\infty)\)">\([-\frac12,\infty)\)</span>. Since <span class="math" data-tex="\(\ell_0&#x27;&#x27;\ge0\)">\(\ell_0&#x27;&#x27;\ge0\)</span> on <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span>, <span class="math" data-tex="\(0\le\int_{-1}^0\tilde\chi\ell_0&#x27;&#x27;\le\ell_0&#x27;(0)-\ell_0&#x27;(-1)\)">\(0\le\int_{-1}^0\tilde\chi\ell_0&#x27;&#x27;\le\ell_0&#x27;(0)-\ell_0&#x27;(-1)\)</span>, which is at most <span class="math" data-tex="\(|\ell_0&#x27;(-1)|&lt;1\)">\(|\ell_0&#x27;(-1)|&lt;1\)</span>, and <span class="math" data-tex="\(\kappa/2&lt;1\)">\(\kappa/2&lt;1\)</span>. As <span class="math" data-tex="\(2\pi/B\ge2\pi\)">\(2\pi/B\ge2\pi\)</span>, we may choose a smooth function <span class="math" data-tex="\(\beta\ge0\)">\(\beta\ge0\)</span> supported in <span class="math" data-tex="\((-2,-1)\)">\((-2,-1)\)</span> with
+<span class="math math-display" data-tex="\[
+\int\beta=\frac{2\pi}B-\frac\kappa2-\int_{-1}^0\tilde\chi\,\ell_0&#x27;&#x27;&gt;0 .
+\]">\[
+\int\beta=\frac{2\pi}B-\frac\kappa2-\int_{-1}^0\tilde\chi\,\ell_0&#x27;&#x27;&gt;0 .
+\]</span>
+Put <span class="math" data-tex="\(g_\ell=\tilde\chi\ell_0&#x27;&#x27;+\beta\ge0\)">\(g_\ell=\tilde\chi\ell_0&#x27;&#x27;+\beta\ge0\)</span> on <span class="math" data-tex="\([-3,0]\)">\([-3,0]\)</span>, and let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be the solution of <span class="math" data-tex="\(\ell&#x27;&#x27;=g_\ell\)">\(\ell&#x27;&#x27;=g_\ell\)</span> with <span class="math" data-tex="\(\ell(0)=1\)">\(\ell(0)=1\)</span>, <span class="math" data-tex="\(\ell&#x27;(0)=-\kappa/2\)">\(\ell&#x27;(0)=-\kappa/2\)</span>. Then:</p>
+<ol>
+<li><span class="math" data-tex="\(\ell=\ell_0\)">\(\ell=\ell_0\)</span> on <span class="math" data-tex="\([-\frac12,0]\)">\([-\frac12,0]\)</span>, since both solve the same second-order equation there with the same data at <span class="math" data-tex="\(0\)">\(0\)</span>; so <span class="math" data-tex="\(\ell\)">\(\ell\)</span> continues smoothly by <span class="math" data-tex="\(\ell_0\)">\(\ell_0\)</span> on <span class="math" data-tex="\([0,\frac14]\)">\([0,\frac14]\)</span>.</li>
+<li><span class="math" data-tex="\(\ell&#x27;(\tau)=-\frac\kappa2-\int_\tau^0g_\ell&lt;0\)">\(\ell&#x27;(\tau)=-\frac\kappa2-\int_\tau^0g_\ell&lt;0\)</span>, so <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is decreasing and <span class="math" data-tex="\(\ell\ge1\)">\(\ell\ge1\)</span> on <span class="math" data-tex="\([-3,0]\)">\([-3,0]\)</span>; and <span class="math" data-tex="\(\ell&#x27;&#x27;\ge0\)">\(\ell&#x27;&#x27;\ge0\)</span>.</li>
+<li>For <span class="math" data-tex="\(\tau\le-2\)">\(\tau\le-2\)</span>, <span class="math" data-tex="\(\ell&#x27;(\tau)=-2\pi/B\)">\(\ell&#x27;(\tau)=-2\pi/B\)</span>, so <span class="math" data-tex="\(\ell(\tau)=\frac{2\pi}B\,(r_1-2-\tau)\)">\(\ell(\tau)=\frac{2\pi}B\,(r_1-2-\tau)\)</span> on <span class="math" data-tex="\([-3,-2]\)">\([-3,-2]\)</span>, where <span class="math" data-tex="\(r_1=\ell(-2)B/(2\pi)\)">\(r_1=\ell(-2)B/(2\pi)\)</span>.</li>
+</ol>
+<p><strong>The collar.</strong> Let <span class="math" data-tex="\(C=[-3,0]\times\mathbb R/B\mathbb Z\)">\(C=[-3,0]\times\mathbb R/B\mathbb Z\)</span> with the metric <span class="math" data-tex="\(d\tau^2+\ell(\tau)^2dy_1^2\)">\(d\tau^2+\ell(\tau)^2dy_1^2\)</span>. By Lemma 3.1 its curvature is <span class="math" data-tex="\(-\ell&#x27;&#x27;/\ell\le0\)">\(-\ell&#x27;&#x27;/\ell\le0\)</span>. On <span class="math" data-tex="\([-3,-2]\times\mathbb R/B\mathbb Z\)">\([-3,-2]\times\mathbb R/B\mathbb Z\)</span>, the substitution <span class="math" data-tex="\(r=r_1-2-\tau\)">\(r=r_1-2-\tau\)</span>, <span class="math" data-tex="\(\theta=2\pi y_1/B\)">\(\theta=2\pi y_1/B\)</span> turns the metric into <span class="math" data-tex="\(dr^2+r^2d\theta^2\)">\(dr^2+r^2d\theta^2\)</span>, the Euclidean metric in polar coordinates, on the annulus <span class="math" data-tex="\(r_1\le r\le r_1+1\)">\(r_1\le r\le r_1+1\)</span>.</p>
+<p><strong>The flat part.</strong> Choose <span class="math" data-tex="\(c&gt;2(r_1+1)\)">\(c&gt;2(r_1+1)\)</span> and let <span class="math" data-tex="\(F_c\)">\(F_c\)</span>, <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and <span class="math" data-tex="\(D_\rho\)">\(D_\rho\)</span> be as in Section 1 of <a href="the-manifold-and-its-fundamental-group.html">The manifold and its fundamental group</a>. The closed annulus <span class="math" data-tex="\(r_1\le|x|\le r_1+1\)">\(r_1\le|x|\le r_1+1\)</span> about the origin embeds isometrically in <span class="math" data-tex="\(F_c\)">\(F_c\)</span> under <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and the substitution above identifies it with <span class="math" data-tex="\([-3,-2]\times\mathbb R/B\mathbb Z\subseteq C\)">\([-3,-2]\times\mathbb R/B\mathbb Z\subseteq C\)</span>. Let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be the union of <span class="math" data-tex="\(F_c\setminus\pi(D_{r_1})\)">\(F_c\setminus\pi(D_{r_1})\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span> glued along this isometry. Each point of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> has a neighbourhood contained in one of the two pieces: points with <span class="math" data-tex="\(r=r_1+1\)">\(r=r_1+1\)</span> lie in the interior of the flat piece and points with <span class="math" data-tex="\(\tau=-2\)">\(\tau=-2\)</span> in the interior of <span class="math" data-tex="\(C\)">\(C\)</span>. So <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is a smooth compact surface with boundary <span class="math" data-tex="\(\{\tau=0\}\)">\(\{\tau=0\}\)</span> and a smooth metric, flat on the first piece and of curvature <span class="math" data-tex="\(-\ell&#x27;&#x27;/\ell\le0\)">\(-\ell&#x27;&#x27;/\ell\le0\)</span> on the second. Every sectional curvature of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is nonpositive.</p>
+<p><span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is a holed torus with a collar of period <span class="math" data-tex="\(B\)">\(B\)</span>: the collar is <span class="math" data-tex="\((-1,0]\times\mathbb R/B\mathbb Z\subseteq C\)">\((-1,0]\times\mathbb R/B\mathbb Z\subseteq C\)</span>, and a diffeomorphism of <span class="math" data-tex="\([-3,0]\)">\([-3,0]\)</span> onto <span class="math" data-tex="\([\frac{r_1}2,r_1+1]\)">\([\frac{r_1}2,r_1+1]\)</span> that is decreasing and equals <span class="math" data-tex="\(r_1-2-\tau\)">\(r_1-2-\tau\)</span> near <span class="math" data-tex="\([-3,-2]\)">\([-3,-2]\)</span> defines, together with <span class="math" data-tex="\(\theta=2\pi y_1/B\)">\(\theta=2\pi y_1/B\)</span>, a diffeomorphism of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> onto <span class="math" data-tex="\(F_c\setminus\pi(D_{r_1/2})\)">\(F_c\setminus\pi(D_{r_1/2})\)</span>.</p>
+<p><strong>The metric on <span class="math" data-tex="\(M\)">\(M\)</span>.</strong> Fix <span class="math" data-tex="\(\delta\in(0,\delta_0]\)">\(\delta\in(0,\delta_0]\)</span> and <span class="math" data-tex="\(B_2\in(0,1]\)">\(B_2\in(0,1]\)</span>, and put <span class="math" data-tex="\(B_1=\delta^2B_2\)">\(B_1=\delta^2B_2\)</span>, so that <span class="math" data-tex="\(B_1/B_2=\epsilon\)">\(B_1/B_2=\epsilon\)</span>. Build <span class="math" data-tex="\(\Sigma_1\)">\(\Sigma_1\)</span> with period <span class="math" data-tex="\(B_1\)">\(B_1\)</span> and <span class="math" data-tex="\(\Sigma_2\)">\(\Sigma_2\)</span> with period <span class="math" data-tex="\(B_2\)">\(B_2\)</span> as above, and form <span class="math" data-tex="\(M\)">\(M\)</span> as in Section 1 of <a href="the-manifold-and-its-fundamental-group.html">The manifold and its fundamental group</a>. Give the neck the metric <span class="math" data-tex="\(dt^2+dx^{\mathsf T}Q(t)dx\)">\(dt^2+dx^{\mathsf T}Q(t)dx\)</span>, which is well defined on <span class="math" data-tex="\([0,1]\times T\)">\([0,1]\times T\)</span> because it does not depend on <span class="math" data-tex="\(x\)">\(x\)</span>, and give <span class="math" data-tex="\(N_i=\Sigma_i\times\mathbb R/B_{3-i}\mathbb Z\)">\(N_i=\Sigma_i\times\mathbb R/B_{3-i}\mathbb Z\)</span> the product of the metric of <span class="math" data-tex="\(\Sigma_i\)">\(\Sigma_i\)</span> with <span class="math" data-tex="\(b^{-1}dy_2^2\)">\(b^{-1}dy_2^2\)</span>.</p>
+<p><strong>Proposition 4.1</strong> (the metric). These metrics fit together to a smooth Riemannian metric on the closed manifold <span class="math" data-tex="\(M\)">\(M\)</span>. Every sectional curvature at every point outside the open neck <span class="math" data-tex="\(U=(0,1)\times T\)">\(U=(0,1)\times T\)</span> is nonpositive, and so is every sectional curvature at points of the neck with <span class="math" data-tex="\(t\le\frac14\)">\(t\le\frac14\)</span> or <span class="math" data-tex="\(t\ge\frac34\)">\(t\ge\frac34\)</span>.</p>
+<p><em>Proof.</em> Near the first boundary torus, in the chart <span class="math" data-tex="\((\tau,y)\mapsto(t,x)=(\tau,T_1y)\)">\((\tau,y)\mapsto(t,x)=(\tau,T_1y)\)</span>, the metric of <span class="math" data-tex="\(N_1\)">\(N_1\)</span> for <span class="math" data-tex="\(-\frac12&lt;\tau\le0\)">\(-\frac12&lt;\tau\le0\)</span> is <span class="math" data-tex="\(d\tau^2+\ell_0(\tau)^2dy_1^2+b^{-1}dy_2^2\)">\(d\tau^2+\ell_0(\tau)^2dy_1^2+b^{-1}dy_2^2\)</span>, and by (3.1) the neck metric for <span class="math" data-tex="\(0\le\tau\le\frac14\)">\(0\le\tau\le\frac14\)</span> is given by the same formula. So on <span class="math" data-tex="\((-\frac12,\frac14)\times T\)">\((-\frac12,\frac14)\times T\)</span> the metric is given by one smooth formula. The second boundary torus is the same with <span class="math" data-tex="\(T_2\)">\(T_2\)</span> and <span class="math" data-tex="\(\tau=1-t\)">\(\tau=1-t\)</span>. The curvature statement on <span class="math" data-tex="\(N_i\)">\(N_i\)</span> is Lemma 3.1 applied to <span class="math" data-tex="\(\Sigma_i\)">\(\Sigma_i\)</span>, and on the end portions of the neck it is (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The neck metric, lifted to <span class="math" data-tex="\([0,1]\times\mathbb R^2\)">\([0,1]\times\mathbb R^2\)</span>, depends only on <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and the fixed function <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, not on <span class="math" data-tex="\(B_1\)">\(B_1\)</span>, <span class="math" data-tex="\(B_2\)">\(B_2\)</span>, <span class="math" data-tex="\(\tilde\chi\)">\(\tilde\chi\)</span>, <span class="math" data-tex="\(\beta\)">\(\beta\)</span> or <span class="math" data-tex="\(c\)">\(c\)</span>. All estimates of the following lessons concern this lifted neck metric; <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is fixed by them, and the periods may be chosen afterwards. In [OpenAI-NC, Section 3 and Appendix A] the cores are hyperbolic punctured tori truncated along a horocycle, whose cusp has the warped form <span class="math" data-tex="\(dr^2+c^2e^{-2r}d\theta^2\)">\(dr^2+c^2e^{-2r}d\theta^2\)</span>; a convex collar joins that cusp to (3.1) in the same way, and any compact nonpositively curved holed torus whose boundary germ matches (3.1) would serve.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Show that <span class="math" data-tex="\(a(\frac18)/a(0)=e^{-9/26}\)">\(a(\frac18)/a(0)=e^{-9/26}\)</span>.</p>
+<p><strong>5.2.</strong> Show that <span class="math" data-tex="\(T_2\operatorname{diag}(\alpha,\beta)T_2^{\mathsf T}=\alpha HH^{\mathsf T}+\beta e_1e_1^{\mathsf T}\)">\(T_2\operatorname{diag}(\alpha,\beta)T_2^{\mathsf T}=\alpha HH^{\mathsf T}+\beta e_1e_1^{\mathsf T}\)</span> for <span class="math" data-tex="\(H=e_2+\epsilon e_1\)">\(H=e_2+\epsilon e_1\)</span>, and deduce Lemma 1.1 at the second end directly.</p>
+<p><strong>5.3.</strong> Compute the curvature of <span class="math" data-tex="\(d\tau^2+e^{-2\tau}dy^2\)">\(d\tau^2+e^{-2\tau}dy^2\)</span> and of <span class="math" data-tex="\(d\tau^2+(T-\tau)^2dy^2\)">\(d\tau^2+(T-\tau)^2dy^2\)</span> with Lemma 3.1, and identify the two surfaces.</p>
+<p><strong>5.4.</strong> Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be smooth and positive with <span class="math" data-tex="\(\ell&#x27;&#x27;(\tau_0)&lt;0\)">\(\ell&#x27;&#x27;(\tau_0)&lt;0\)</span> at some point. Show that the warped surface has positive curvature near <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span>; explain why the construction of Section 4 needs <span class="math" data-tex="\(g_\ell\ge0\)">\(g_\ell\ge0\)</span>.</p>
+<p><strong>5.5.</strong> Show that <span class="math" data-tex="\(H(t)H(t)^{\mathsf T}-e_2e_2^{\mathsf T}\)">\(H(t)H(t)^{\mathsf T}-e_2e_2^{\mathsf T}\)</span> equals <span class="math" data-tex="\(\epsilon\chi(e_1e_2^{\mathsf T}+e_2e_1^{\mathsf T})+\epsilon^2\chi^2e_1e_1^{\mathsf T}\)">\(\epsilon\chi(e_1e_2^{\mathsf T}+e_2e_1^{\mathsf T})+\epsilon^2\chi^2e_1e_1^{\mathsf T}\)</span>, and that its norm is at most <span class="math" data-tex="\(3\epsilon\)">\(3\epsilon\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> By the definition of <span class="math" data-tex="\(a\)">\(a\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\log a(\tfrac18)-\log a(0)\\
+&amp;\quad=-\frac1{2/3-1/8}+\frac1{2/3}=-\frac{24}{13}+\frac32\\
+&amp;\quad=-\frac9{26}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\log a(\tfrac18)-\log a(0)\\
+&amp;\quad=-\frac1{2/3-1/8}+\frac1{2/3}=-\frac{24}{13}+\frac32\\
+&amp;\quad=-\frac9{26}.
+\end{aligned}
+\]</span></p>
+<p><strong>5.2.</strong> Writing <span class="math" data-tex="\(\operatorname{diag}(\alpha,\beta)=\alpha\,e_1e_1^{\mathsf T}+\beta\,e_2e_2^{\mathsf T}\)">\(\operatorname{diag}(\alpha,\beta)=\alpha\,e_1e_1^{\mathsf T}+\beta\,e_2e_2^{\mathsf T}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;T_2\operatorname{diag}(\alpha,\beta)T_2^{\mathsf T}\\
+&amp;\quad=\alpha\,T_2e_1(T_2e_1)^{\mathsf T}+\beta\,T_2e_2(T_2e_2)^{\mathsf T}
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;T_2\operatorname{diag}(\alpha,\beta)T_2^{\mathsf T}\\
+&amp;\quad=\alpha\,T_2e_1(T_2e_1)^{\mathsf T}+\beta\,T_2e_2(T_2e_2)^{\mathsf T}
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(T_2e_1=H\)">\(T_2e_1=H\)</span>, <span class="math" data-tex="\(T_2e_2=e_1\)">\(T_2e_2=e_1\)</span>. For <span class="math" data-tex="\(t\ge\frac34\)">\(t\ge\frac34\)</span> and <span class="math" data-tex="\(\tau=1-t\)">\(\tau=1-t\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P&amp;=b\,e_1e_1^{\mathsf T}+(1+\delta A(\tau))HH^{\mathsf T}\\
+&amp;=T_2\operatorname{diag}(1+\delta A(\tau),b)T_2^{\mathsf T},
+\end{aligned}
+\]">\[
+\begin{aligned}
+P&amp;=b\,e_1e_1^{\mathsf T}+(1+\delta A(\tau))HH^{\mathsf T}\\
+&amp;=T_2\operatorname{diag}(1+\delta A(\tau),b)T_2^{\mathsf T},
+\end{aligned}
+\]</span>
+which is (1.6) in the frame <span class="math" data-tex="\(T_2\)">\(T_2\)</span>.</p>
+<p><strong>5.3.</strong> For <span class="math" data-tex="\(\ell=e^{-\tau}\)">\(\ell=e^{-\tau}\)</span>, <span class="math" data-tex="\(-\ell&#x27;&#x27;/\ell=-1\)">\(-\ell&#x27;&#x27;/\ell=-1\)</span>: a hyperbolic cusp. For <span class="math" data-tex="\(\ell=T-\tau\)">\(\ell=T-\tau\)</span>, <span class="math" data-tex="\(\ell&#x27;&#x27;=0\)">\(\ell&#x27;&#x27;=0\)</span>: the flat metric in polar coordinates with <span class="math" data-tex="\(r=T-\tau\)">\(r=T-\tau\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(K=-\ell&#x27;&#x27;/\ell&gt;0\)">\(K=-\ell&#x27;&#x27;/\ell&gt;0\)</span> where <span class="math" data-tex="\(\ell&#x27;&#x27;&lt;0\)">\(\ell&#x27;&#x27;&lt;0\)</span>, by continuity near <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span>. If <span class="math" data-tex="\(g_\ell\)">\(g_\ell\)</span> were negative somewhere, the collar would have positive curvature there, and Proposition 4.1 would fail.</p>
+<p><strong>5.5.</strong> Expand <span class="math" data-tex="\((e_2+\epsilon\chi e_1)(e_2+\epsilon\chi e_1)^{\mathsf T}\)">\((e_2+\epsilon\chi e_1)(e_2+\epsilon\chi e_1)^{\mathsf T}\)</span>. The norm of <span class="math" data-tex="\(e_1e_2^{\mathsf T}+e_2e_1^{\mathsf T}\)">\(e_1e_2^{\mathsf T}+e_2e_1^{\mathsf T}\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> and that of <span class="math" data-tex="\(e_1e_1^{\mathsf T}\)">\(e_1e_1^{\mathsf T}\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, so the norm is at most <span class="math" data-tex="\(\epsilon+\epsilon^2\le3\epsilon\)">\(\epsilon+\epsilon^2\le3\epsilon\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-NC] OpenAI, <em>A Three-Manifold Without Conjugate Points and Without a Nonpositively Curved Metric</em>, OpenAI Math Release preprint, 24 September 2026, Section 3 (Lemma 3.1) and Appendix A. https://github.com/openai/math/tree/main/preprints/A-Three-Manifold-Without-Conjugate-Points-and-Without-a-Nonpositively-Curved-Metric-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

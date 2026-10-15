@@ -1,0 +1,280 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Neck passages and the index form</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A three-manifold without conjugate points)</a><a href="a-concave-cometric-and-convex-collars.html">Previous lesson</a><a href="returning-passages-and-the-main-theorem.html">Next lesson</a><a href="src/neck-passages-and-the-index-form.md">Editable source</a></nav><main><article><h1 id="neck-passages-and-the-index-form">Neck passages and the index form</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>By Proposition 2.3 of <a href="conjugate-points-and-index-forms.html">Conjugate points and index forms</a>, the metric of <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a> has no conjugate points as soon as the index form of every compactly supported field is nonnegative on every visit of a geodesic to the open neck. This lesson studies such visits. Concavity of the cometric makes the second variation of a variation that is linear in the neck coordinates nonnegative; it differs from the intrinsic index form by endpoint terms, which are nonnegative when the field is tangent to the boundary tori. Removing tangential components handles every visit except those that enter the neck, turn and return to the torus they came from; for these the lesson reduces the problem to an inequality between the coordinate energy, a boundary term and the change of the torus component of the field, proved in <a href="returning-passages-and-the-main-theorem.html">Returning passages and the main theorem</a>.</p>
+<ul>
+<li>Normal index forms (Section 1).</li>
+<li>Geodesics in the neck (Section 2).</li>
+<li>The coordinate second variation (Section 3).</li>
+<li>The possible passages (Section 4).</li>
+<li>Passages without a turning estimate, and the gauge on a returning passage (Section 5).</li>
+</ul>
+<p>Throughout, <span class="math" data-tex="\(\delta\in(0,\delta_0]\)">\(\delta\in(0,\delta_0]\)</span> is fixed, <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(Q=P^{-1}\)">\(Q=P^{-1}\)</span>, <span class="math" data-tex="\(\kappa=\delta a(0)\)">\(\kappa=\delta a(0)\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are as in <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a>, and we work in the neck with coordinates <span class="math" data-tex="\((t,x)\)">\((t,x)\)</span>, <span class="math" data-tex="\(x\in\mathbb R^2\)">\(x\in\mathbb R^2\)</span> lifted from the torus. Near either boundary torus we may instead use the inward coordinate <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and the end frame, in which, for <span class="math" data-tex="\(-\frac12&lt;\tau\le\frac14\)">\(-\frac12&lt;\tau\le\frac14\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;P(\tau)\\
+&amp;\quad=\operatorname{diag}(1+\delta A(\tau),\,b),\\
+&amp;P&#x27;(0)=\kappa e_1e_1^{\mathsf T} .
+\end{aligned} \tag{0.1}
+\]">\[
+\begin{aligned}
+&amp;P(\tau)\\
+&amp;\quad=\operatorname{diag}(1+\delta A(\tau),\,b),\\
+&amp;P&#x27;(0)=\kappa e_1e_1^{\mathsf T} .
+\end{aligned} \tag{0.1}
+\]</span>
+For <span class="math" data-tex="\(\tau\le0\)">\(\tau\le0\)</span> this is the metric of the collar of the core (Proposition 4.1 there), so the coordinates and (0.1) extend a little beyond each boundary torus. Changing between the coordinates of the two ends is a constant linear change of <span class="math" data-tex="\(x\)">\(x\)</span> together with <span class="math" data-tex="\(\tau=1-t\)">\(\tau=1-t\)</span>.</p>
+<h2 id="1-normal-index-forms">1. Normal index forms</h2>
+<p>Let <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> be a unit-speed geodesic of <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(T=\dot\gamma\)">\(T=\dot\gamma\)</span>. For a smooth field <span class="math" data-tex="\(V\)">\(V\)</span> along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and an interval <span class="math" data-tex="\(J\)">\(J\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;q_V=\langle V,T\rangle,\\
+&amp;I_J^\perp(V)\\
+&amp;\quad=I_J(V)-\int_J|\dot q_V|^2\,ds,
+\end{aligned} \tag{1.1}
+\]">\[
+\begin{aligned}
+&amp;q_V=\langle V,T\rangle,\\
+&amp;I_J^\perp(V)\\
+&amp;\quad=I_J(V)-\int_J|\dot q_V|^2\,ds,
+\end{aligned} \tag{1.1}
+\]</span>
+with <span class="math" data-tex="\(I_J\)">\(I_J\)</span> the index form of (2.1) in <a href="conjugate-points-and-index-forms.html">Conjugate points and index forms</a>. When <span class="math" data-tex="\(J\)">\(J\)</span> is unbounded we use only fields vanishing for large <span class="math" data-tex="\(|s|\)">\(|s|\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (tangential invariance; [OpenAI-NC, Lemma 4.1]). The integrand of <span class="math" data-tex="\(I_J^\perp(V)\)">\(I_J^\perp(V)\)</span> is the index integrand of <span class="math" data-tex="\(V^\perp=V-q_VT\)">\(V^\perp=V-q_VT\)</span>. Consequently <span class="math" data-tex="\(I_J^\perp(V+hT)=I_J^\perp(V)\)">\(I_J^\perp(V+hT)=I_J^\perp(V)\)</span> for every smooth function <span class="math" data-tex="\(h\)">\(h\)</span>, whenever both sides are defined, with no condition on <span class="math" data-tex="\(h\)">\(h\)</span> at finite end points of <span class="math" data-tex="\(J\)">\(J\)</span>. If every sectional curvature is nonpositive along <span class="math" data-tex="\(\gamma(J)\)">\(\gamma(J)\)</span>, the integrand of <span class="math" data-tex="\(I_J^\perp\)">\(I_J^\perp\)</span> is nonnegative.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(D_sT=0\)">\(D_sT=0\)</span> and <span class="math" data-tex="\(\langle V^\perp,T\rangle=0\)">\(\langle V^\perp,T\rangle=0\)</span>, also <span class="math" data-tex="\(\langle D_sV^\perp,T\rangle=0\)">\(\langle D_sV^\perp,T\rangle=0\)</span>, so <span class="math" data-tex="\(D_sV=D_sV^\perp+\dot q_VT\)">\(D_sV=D_sV^\perp+\dot q_VT\)</span> and <span class="math" data-tex="\(|D_sV|^2=|D_sV^\perp|^2+\dot q_V^2\)">\(|D_sV|^2=|D_sV^\perp|^2+\dot q_V^2\)</span>. The curvature symmetries give <span class="math" data-tex="\(\langle R(V,T)T,V\rangle=\langle R(V^\perp,T)T,V^\perp\rangle\)">\(\langle R(V,T)T,V\rangle=\langle R(V^\perp,T)T,V^\perp\rangle\)</span>. Adding <span class="math" data-tex="\(hT\)">\(hT\)</span> does not change <span class="math" data-tex="\(V^\perp\)">\(V^\perp\)</span>. The last assertion is (1.1) of that lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-geodesics-in-the-neck">2. Geodesics in the neck</h2>
+<p>On an interval of time during which <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> stays in a coordinate region of the neck, write <span class="math" data-tex="\(\gamma=(t,x)\)">\(\gamma=(t,x)\)</span>. A dot denotes the derivative in the arc length <span class="math" data-tex="\(s\)">\(s\)</span> and a prime the derivative in <span class="math" data-tex="\(t\)">\(t\)</span> (or <span class="math" data-tex="\(\tau\)">\(\tau\)</span>).</p>
+<p><strong>Lemma 2.1</strong> (the neck geodesic equations). Along such a unit-speed geodesic,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;p=Q(t)\dot x\ \text{is constant},\\
+&amp;v:=\dot t,\qquad v^2=1-F(t),\\
+&amp;\dot v=-\tfrac12F&#x27;(t),
+\end{aligned} \tag{2.1}
+\]">\[
+\begin{aligned}
+&amp;p=Q(t)\dot x\ \text{is constant},\\
+&amp;v:=\dot t,\qquad v^2=1-F(t),\\
+&amp;\dot v=-\tfrac12F&#x27;(t),
+\end{aligned} \tag{2.1}
+\]</span>
+where <span class="math" data-tex="\(F(t)=p^{\mathsf T}P(t)p\)">\(F(t)=p^{\mathsf T}P(t)p\)</span>. The function <span class="math" data-tex="\(F\)">\(F\)</span> is concave.</p>
+<p><em>Proof.</em> The geodesics are the critical curves of the energy <span class="math" data-tex="\(\frac12\int(\dot t^2+\dot x^{\mathsf T}Q(t)\dot x)\,ds\)">\(\frac12\int(\dot t^2+\dot x^{\mathsf T}Q(t)\dot x)\,ds\)</span>. The coordinates <span class="math" data-tex="\(x\)">\(x\)</span> do not appear in the integrand, so the Euler–Lagrange equation for <span class="math" data-tex="\(x\)">\(x\)</span> says that <span class="math" data-tex="\(Q\dot x\)">\(Q\dot x\)</span> is constant. The equation for <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(\ddot t=\frac12\dot x^{\mathsf T}Q&#x27;\dot x\)">\(\ddot t=\frac12\dot x^{\mathsf T}Q&#x27;\dot x\)</span>; since <span class="math" data-tex="\(Q&#x27;=-QP&#x27;Q\)">\(Q&#x27;=-QP&#x27;Q\)</span> and <span class="math" data-tex="\(\dot x=Pp\)">\(\dot x=Pp\)</span>, this is <span class="math" data-tex="\(-\frac12p^{\mathsf T}P&#x27;p=-\frac12F&#x27;\)">\(-\frac12p^{\mathsf T}P&#x27;p=-\frac12F&#x27;\)</span>. Unit speed gives <span class="math" data-tex="\(\dot t^2+\dot x^{\mathsf T}Q\dot x=v^2+p^{\mathsf T}Pp=1\)">\(\dot t^2+\dot x^{\mathsf T}Q\dot x=v^2+p^{\mathsf T}Pp=1\)</span>. <span class="math" data-tex="\(F&#x27;&#x27;=p^{\mathsf T}P&#x27;&#x27;p\le0\)">\(F&#x27;&#x27;=p^{\mathsf T}P&#x27;&#x27;p\le0\)</span> by Lemma 2.1 of <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The covector <span class="math" data-tex="\(p\)">\(p\)</span> transforms under <span class="math" data-tex="\(x=Ty\)">\(x=Ty\)</span> as <span class="math" data-tex="\(p\mapsto T^{\mathsf T}p\)">\(p\mapsto T^{\mathsf T}p\)</span>, and <span class="math" data-tex="\(F\)">\(F\)</span> does not change. In the end coordinates near a boundary torus, (0.1) gives <span class="math" data-tex="\(F(\tau)=(1+\delta A(\tau))p_1^2+bp_2^2\)">\(F(\tau)=(1+\delta A(\tau))p_1^2+bp_2^2\)</span> and <span class="math" data-tex="\(F&#x27;(\tau)=\delta a(\tau)p_1^2\)">\(F&#x27;(\tau)=\delta a(\tau)p_1^2\)</span> for <span class="math" data-tex="\(-\frac12&lt;\tau\le\frac14\)">\(-\frac12&lt;\tau\le\frac14\)</span>; in particular <span class="math" data-tex="\(F&#x27;(0)=\kappa p_1^2\)">\(F&#x27;(0)=\kappa p_1^2\)</span>.</p>
+<h2 id="3-the-coordinate-second-variation">3. The coordinate second variation</h2>
+<p>For a field <span class="math" data-tex="\(V\)">\(V\)</span> along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> in the neck, write <span class="math" data-tex="\(V=(w,z)\)">\(V=(w,z)\)</span>: <span class="math" data-tex="\(w\)">\(w\)</span> is its <span class="math" data-tex="\(t\)">\(t\)</span>-component and <span class="math" data-tex="\(z\in\mathbb R^2\)">\(z\in\mathbb R^2\)</span> its torus components. Put <span class="math" data-tex="\(|\xi|_Q^2=\xi^{\mathsf T}Q\xi\)">\(|\xi|_Q^2=\xi^{\mathsf T}Q\xi\)</span>. On a compact interval <span class="math" data-tex="\([a,c]\)">\([a,c]\)</span> of times in a coordinate region, the <em>coordinate energy</em> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;E_{[a,c]}(V)=\int_a^c\Bigl(\dot w^2\\
+&amp;\quad+|\dot z-P&#x27;(t)p\,w|_Q^2\\
+&amp;\quad-\tfrac12F&#x27;&#x27;(t)\,w^2\Bigr)ds .
+\end{aligned} \tag{3.1}
+\]">\[
+\begin{aligned}
+&amp;E_{[a,c]}(V)=\int_a^c\Bigl(\dot w^2\\
+&amp;\quad+|\dot z-P&#x27;(t)p\,w|_Q^2\\
+&amp;\quad-\tfrac12F&#x27;&#x27;(t)\,w^2\Bigr)ds .
+\end{aligned} \tag{3.1}
+\]</span>
+Every term is nonnegative, since <span class="math" data-tex="\(F&#x27;&#x27;\le0\)">\(F&#x27;&#x27;\le0\)</span>. On an unbounded interval we use the same integral for fields vanishing for large <span class="math" data-tex="\(|s|\)">\(|s|\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (endpoint correction; [OpenAI-NC, Lemma 4.2]). For a smooth field <span class="math" data-tex="\(V=(w,z)\)">\(V=(w,z)\)</span> on <span class="math" data-tex="\([a,c]\)">\([a,c]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;I_{[a,c]}(V)=E_{[a,c]}(V)\\
+&amp;\quad-\bigl[\langle T,\Gamma(V,V)\rangle\bigr]_a^c,
+\end{aligned} \tag{3.2}
+\]">\[
+\begin{aligned}
+&amp;I_{[a,c]}(V)=E_{[a,c]}(V)\\
+&amp;\quad-\bigl[\langle T,\Gamma(V,V)\rangle\bigr]_a^c,
+\end{aligned} \tag{3.2}
+\]</span>
+where <span class="math" data-tex="\(\Gamma(V,V)\)">\(\Gamma(V,V)\)</span> is the vector with components <span class="math" data-tex="\(\Gamma^k_{ij}V^iV^j\)">\(\Gamma^k_{ij}V^iV^j\)</span>, the Christoffel symbols being those of the coordinates used, and the bracket means value at <span class="math" data-tex="\(c\)">\(c\)</span> minus value at <span class="math" data-tex="\(a\)">\(a\)</span>. In the end coordinates of a boundary torus, at a time when <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span> and <span class="math" data-tex="\(w=0\)">\(w=0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Gamma(V,V)&amp;=\tfrac\kappa2\,z_1^2\,\partial_\tau,\\
+\langle T,\Gamma(V,V)\rangle&amp;=\tfrac\kappa2\,z_1^2\,\dot\tau .
+\end{aligned} \tag{3.3}
+\]">\[
+\begin{aligned}
+\Gamma(V,V)&amp;=\tfrac\kappa2\,z_1^2\,\partial_\tau,\\
+\langle T,\Gamma(V,V)\rangle&amp;=\tfrac\kappa2\,z_1^2\,\dot\tau .
+\end{aligned} \tag{3.3}
+\]</span>
+Hence the endpoint contribution in (3.2) is nonnegative at a time when <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> enters or leaves the open neck through a boundary torus, provided <span class="math" data-tex="\(w=0\)">\(w=0\)</span> there.</p>
+<p><em>Proof.</em> Consider the variation <span class="math" data-tex="\(\alpha(r,s)=(t(s)+rw(s),\,x(s)+rz(s))\)">\(\alpha(r,s)=(t(s)+rw(s),\,x(s)+rz(s))\)</span>, defined for small <span class="math" data-tex="\(r\)">\(r\)</span>. Its energy is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac12\int_a^c\bigl((\dot t+r\dot w)^2\\
+&amp;\qquad+(\dot x+r\dot z)^{\mathsf T}Q(t+rw)(\dot x+r\dot z)\bigr)ds,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac12\int_a^c\bigl((\dot t+r\dot w)^2\\
+&amp;\qquad+(\dot x+r\dot z)^{\mathsf T}Q(t+rw)(\dot x+r\dot z)\bigr)ds,
+\end{aligned}
+\]</span>
+and its second derivative at <span class="math" data-tex="\(r=0\)">\(r=0\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_a^c\Bigl(\dot w^2+\dot z^{\mathsf T}Q\dot z+2w\,\dot z^{\mathsf T}Q&#x27;\dot x\\
+&amp;\qquad+\tfrac12w^2\,\dot x^{\mathsf T}Q&#x27;&#x27;\dot x\Bigr)ds .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_a^c\Bigl(\dot w^2+\dot z^{\mathsf T}Q\dot z+2w\,\dot z^{\mathsf T}Q&#x27;\dot x\\
+&amp;\qquad+\tfrac12w^2\,\dot x^{\mathsf T}Q&#x27;&#x27;\dot x\Bigr)ds .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(Q&#x27;=-QP&#x27;Q\)">\(Q&#x27;=-QP&#x27;Q\)</span>, <span class="math" data-tex="\(Q&#x27;&#x27;=2QP&#x27;QP&#x27;Q-QP&#x27;&#x27;Q\)">\(Q&#x27;&#x27;=2QP&#x27;QP&#x27;Q-QP&#x27;&#x27;Q\)</span> and <span class="math" data-tex="\(\dot x=Pp\)">\(\dot x=Pp\)</span>, we get <span class="math" data-tex="\(\dot z^{\mathsf T}Q&#x27;\dot x=-\dot z^{\mathsf T}QP&#x27;p\)">\(\dot z^{\mathsf T}Q&#x27;\dot x=-\dot z^{\mathsf T}QP&#x27;p\)</span> and <span class="math" data-tex="\(\dot x^{\mathsf T}Q&#x27;&#x27;\dot x=2(P&#x27;p)^{\mathsf T}Q(P&#x27;p)-F&#x27;&#x27;\)">\(\dot x^{\mathsf T}Q&#x27;&#x27;\dot x=2(P&#x27;p)^{\mathsf T}Q(P&#x27;p)-F&#x27;&#x27;\)</span>; completing the square gives <span class="math" data-tex="\(E_{[a,c]}(V)\)">\(E_{[a,c]}(V)\)</span>. On the other hand, by the second variation formula (<a href="../DG-FND/jacobi-fields-conjugate-points-and-the-morse-index-theorem.html">Jacobi fields, conjugate points and the Morse index theorem</a>, Theorem A.4) the second derivative of the energy is <span class="math" data-tex="\(I_{[a,c]}(V)+[\langle A,T\rangle]_a^c\)">\(I_{[a,c]}(V)+[\langle A,T\rangle]_a^c\)</span>, where <span class="math" data-tex="\(A=D_r\partial_r\alpha|_{r=0}\)">\(A=D_r\partial_r\alpha|_{r=0}\)</span>. For each <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(r\mapsto\alpha(r,s)\)">\(r\mapsto\alpha(r,s)\)</span> has coordinate acceleration <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(A=\Gamma(V,V)\)">\(A=\Gamma(V,V)\)</span>. This proves (3.2).</p>
+<p>For <span class="math" data-tex="\(g=dt^2+dx^{\mathsf T}Q(t)dx\)">\(g=dt^2+dx^{\mathsf T}Q(t)dx\)</span>, the nonzero Christoffel symbols are, with torus indices <span class="math" data-tex="\(i,j\)">\(i,j\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Gamma^t_{ij}&amp;=-\tfrac12Q&#x27;_{ij},\\
+\Gamma^i_{tj}&amp;=\Gamma^i_{jt}=\tfrac12(PQ&#x27;)^i{}_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Gamma^t_{ij}&amp;=-\tfrac12Q&#x27;_{ij},\\
+\Gamma^i_{tj}&amp;=\Gamma^i_{jt}=\tfrac12(PQ&#x27;)^i{}_j .
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, only <span class="math" data-tex="\(\Gamma^t_{ij}z^iz^j=-\frac12z^{\mathsf T}Q&#x27;z\)">\(\Gamma^t_{ij}z^iz^j=-\frac12z^{\mathsf T}Q&#x27;z\)</span> remains. At <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span> in end coordinates, (0.1) gives <span class="math" data-tex="\(Q(0)e_1=e_1\)">\(Q(0)e_1=e_1\)</span> and <span class="math" data-tex="\(Q&#x27;(0)=-Q(0)P&#x27;(0)Q(0)=-\kappa e_1e_1^{\mathsf T}\)">\(Q&#x27;(0)=-Q(0)P&#x27;(0)Q(0)=-\kappa e_1e_1^{\mathsf T}\)</span>, so <span class="math" data-tex="\(\Gamma(V,V)=\frac\kappa2z_1^2\partial_\tau\)">\(\Gamma(V,V)=\frac\kappa2z_1^2\partial_\tau\)</span>; and <span class="math" data-tex="\(\langle T,\partial_\tau\rangle=\dot\tau\)">\(\langle T,\partial_\tau\rangle=\dot\tau\)</span>. The variation <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is linear in both coordinate systems, because they differ by an affine change, so <span class="math" data-tex="\(\Gamma(V,V)\)">\(\Gamma(V,V)\)</span> may be computed in either. At an entry time <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(\dot\tau&gt;0\)">\(\dot\tau&gt;0\)</span> and the term <span class="math" data-tex="\(+\frac\kappa2z_1(a)^2\dot\tau(a)\)">\(+\frac\kappa2z_1(a)^2\dot\tau(a)\)</span> appears in (3.2); at an exit time <span class="math" data-tex="\(c\)">\(c\)</span>, <span class="math" data-tex="\(\dot\tau&lt;0\)">\(\dot\tau&lt;0\)</span> and <span class="math" data-tex="\(-\frac\kappa2z_1(c)^2\dot\tau(c)\)">\(-\frac\kappa2z_1(c)^2\dot\tau(c)\)</span> appears. Both are nonnegative. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-possible-passages">4. The possible passages</h2>
+<p>A <em>neck passage</em> of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is a connected component <span class="math" data-tex="\(J\)">\(J\)</span> of <span class="math" data-tex="\(\{s\in\mathbb R:\gamma(s)\in U\}\)">\(\{s\in\mathbb R:\gamma(s)\in U\}\)</span>, where <span class="math" data-tex="\(U=(0,1)\times T\)">\(U=(0,1)\times T\)</span> is the open neck. A field along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> vanishing outside a compact set may have arbitrary values at the finite end points of <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p><strong>Lemma 4.1</strong> (passage classification; [OpenAI-NC, Lemma 4.3]). At every finite end point of a neck passage, <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is transverse to the boundary torus: <span class="math" data-tex="\(\dot\tau\ne0\)">\(\dot\tau\ne0\)</span> in the inward coordinate. Exactly one of the following holds.</p>
+<ol>
+<li>The passage is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> is constant.</li>
+<li><span class="math" data-tex="\(v=\dot t\)">\(v=\dot t\)</span> never vanishes on the passage. The passage is either a bounded interval joining the two boundary tori, or a half-line on which <span class="math" data-tex="\(t\)">\(t\)</span> tends monotonically to a height <span class="math" data-tex="\(t_\infty\in(0,1)\)">\(t_\infty\in(0,1)\)</span> with <span class="math" data-tex="\(F(t_\infty)=1\)">\(F(t_\infty)=1\)</span> and <span class="math" data-tex="\(F&#x27;(t_\infty)=0\)">\(F&#x27;(t_\infty)=0\)</span>.</li>
+<li>In the coordinates of one boundary torus, and after a translation of the parameter, the passage is <span class="math" data-tex="\((0,L)\)">\((0,L)\)</span> with <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>; it begins and ends at that torus and has a unique turn at <span class="math" data-tex="\(s=L/2\)">\(s=L/2\)</span>.</li>
+</ol>
+<p>We call passages of the third kind <em>returning passages</em>. For a returning passage, with <span class="math" data-tex="\(\tau_*=\tau(L/2)\)">\(\tau_*=\tau(L/2)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tau(0)=\tau(L)=0,\\
+&amp;v(0)=-v(L)=v_0&gt;0,\\
+&amp;\tau(L-s)=\tau(s),\\
+&amp;v(L-s)=-v(s),\\
+&amp;\tau_*\in(0,1),\quad p_1\ne0,\\
+&amp;0&lt;F&#x27;\le\kappa p_1^2\ \text{ on }[0,\tau_*],\\
+&amp;v_0^2=F(\tau_*)-F(0)\le\kappa p_1^2 .
+\end{aligned} \tag{4.1}
+\]">\[
+\begin{aligned}
+&amp;\tau(0)=\tau(L)=0,\\
+&amp;v(0)=-v(L)=v_0&gt;0,\\
+&amp;\tau(L-s)=\tau(s),\\
+&amp;v(L-s)=-v(s),\\
+&amp;\tau_*\in(0,1),\quad p_1\ne0,\\
+&amp;0&lt;F&#x27;\le\kappa p_1^2\ \text{ on }[0,\tau_*],\\
+&amp;v_0^2=F(\tau_*)-F(0)\le\kappa p_1^2 .
+\end{aligned} \tag{4.1}
+\]</span>
+A geodesic tangent to a boundary torus at some time does not enter the open neck at that time.</p>
+<p><em>Proof.</em> <em>Transversality.</em> Use end coordinates at a finite end point <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, so <span class="math" data-tex="\(\tau(s_0)=0\)">\(\tau(s_0)=0\)</span>, and suppose <span class="math" data-tex="\(\dot\tau(s_0)=0\)">\(\dot\tau(s_0)=0\)</span>. By (2.1) and <span class="math" data-tex="\(F&#x27;(0)=\kappa p_1^2\)">\(F&#x27;(0)=\kappa p_1^2\)</span>, <span class="math" data-tex="\(\ddot\tau(s_0)=-\frac\kappa2p_1^2\)">\(\ddot\tau(s_0)=-\frac\kappa2p_1^2\)</span>. If <span class="math" data-tex="\(p_1\ne0\)">\(p_1\ne0\)</span>, <span class="math" data-tex="\(s_0\)">\(s_0\)</span> is a strict local maximum of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, so <span class="math" data-tex="\(\tau&lt;0\)">\(\tau&lt;0\)</span> at nearby times on both sides, and <span class="math" data-tex="\(s_0\)">\(s_0\)</span> is not an end point of a passage. If <span class="math" data-tex="\(p_1=0\)">\(p_1=0\)</span>, then <span class="math" data-tex="\(F\)">\(F\)</span> is constant near <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span> by (0.1), and the solution of <span class="math" data-tex="\(\ddot\tau=-\frac12F&#x27;(\tau)\)">\(\ddot\tau=-\frac12F&#x27;(\tau)\)</span> with <span class="math" data-tex="\(\tau(s_0)=\dot\tau(s_0)=0\)">\(\tau(s_0)=\dot\tau(s_0)=0\)</span> is <span class="math" data-tex="\(\tau\equiv0\)">\(\tau\equiv0\)</span> near <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, by uniqueness for the geodesic equations; again <span class="math" data-tex="\(s_0\)">\(s_0\)</span> is not an end point. The same argument shows the last assertion.</p>
+<p><em>An interior zero of <span class="math" data-tex="\(v\)">\(v\)</span>.</em> Let <span class="math" data-tex="\(v(s_*)=0\)">\(v(s_*)=0\)</span> inside a passage. If also <span class="math" data-tex="\(F&#x27;(t(s_*))=0\)">\(F&#x27;(t(s_*))=0\)</span>, the constant height <span class="math" data-tex="\(t(s_*)\)">\(t(s_*)\)</span> solves the equations with the same data, so <span class="math" data-tex="\(t\)">\(t\)</span> is constant for all time and the passage is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Otherwise <span class="math" data-tex="\(s_*\)">\(s_*\)</span> is a strict local extremum of <span class="math" data-tex="\(t\)">\(t\)</span>. Using the coordinates of the torus on the appropriate side, we may assume it is a maximum <span class="math" data-tex="\(\tau_*\)">\(\tau_*\)</span> of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, with <span class="math" data-tex="\(c:=F&#x27;(\tau_*)&gt;0\)">\(c:=F&#x27;(\tau_*)&gt;0\)</span>. Since <span class="math" data-tex="\(F\)">\(F\)</span> is concave, <span class="math" data-tex="\(F&#x27;\ge c\)">\(F&#x27;\ge c\)</span> on <span class="math" data-tex="\([0,\tau_*]\)">\([0,\tau_*]\)</span>, so <span class="math" data-tex="\(\dot v=-\frac12F&#x27;\le-\frac c2\)">\(\dot v=-\frac12F&#x27;\le-\frac c2\)</span> while <span class="math" data-tex="\(0\le\tau\le\tau_*\)">\(0\le\tau\le\tau_*\)</span>. After the turn <span class="math" data-tex="\(v\)">\(v\)</span> is negative and decreasing, so <span class="math" data-tex="\(\tau\)">\(\tau\)</span> cannot turn again, and <span class="math" data-tex="\(\tau(s)\le\tau_*-\frac c4(s-s_*)^2\)">\(\tau(s)\le\tau_*-\frac c4(s-s_*)^2\)</span> as long as <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> stays in the neck; hence <span class="math" data-tex="\(\tau\)">\(\tau\)</span> reaches <span class="math" data-tex="\(0\)">\(0\)</span> in finite time. Reversing time maps geodesics to geodesics with the same <span class="math" data-tex="\(p\)">\(p\)</span> up to sign, and <span class="math" data-tex="\(F\)">\(F\)</span> is even in <span class="math" data-tex="\(p\)">\(p\)</span>; by uniqueness <span class="math" data-tex="\(\tau(s_*-r)=\tau(s_*+r)\)">\(\tau(s_*-r)=\tau(s_*+r)\)</span>. Translating the parameter gives the first four lines of (4.1), except <span class="math" data-tex="\(v_0&gt;0\)">\(v_0&gt;0\)</span>, which is shown at the end. Concavity gives <span class="math" data-tex="\(F&#x27;(\tau)\le F&#x27;(0)=\kappa p_1^2\)">\(F&#x27;(\tau)\le F&#x27;(0)=\kappa p_1^2\)</span> for <span class="math" data-tex="\(\tau\ge0\)">\(\tau\ge0\)</span>, so <span class="math" data-tex="\(p_1\ne0\)">\(p_1\ne0\)</span> because <span class="math" data-tex="\(F&#x27;(\tau_*)&gt;0\)">\(F&#x27;(\tau_*)&gt;0\)</span>. Finally <span class="math" data-tex="\(v^2=1-F\)">\(v^2=1-F\)</span> vanishes at the turn, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_0^2&amp;=F(\tau_*)-F(0)=\int_0^{\tau_*}F&#x27;(u)\,du\\
+&amp;\le\kappa p_1^2\tau_*\le\kappa p_1^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+v_0^2&amp;=F(\tau_*)-F(0)=\int_0^{\tau_*}F&#x27;(u)\,du\\
+&amp;\le\kappa p_1^2\tau_*\le\kappa p_1^2 ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(v_0&gt;0\)">\(v_0&gt;0\)</span> by transversality.</p>
+<p><em>No zero of <span class="math" data-tex="\(v\)">\(v\)</span>.</em> Then <span class="math" data-tex="\(t\)">\(t\)</span> is strictly monotone on the passage. If both end points are finite, they lie on boundary tori, and monotonicity forces the two different tori. At an infinite end, <span class="math" data-tex="\(t\)">\(t\)</span> has a limit <span class="math" data-tex="\(t_\infty\)">\(t_\infty\)</span> by monotonicity; <span class="math" data-tex="\(v^2=1-F(t)\)">\(v^2=1-F(t)\)</span> shows that <span class="math" data-tex="\(|v|\)">\(|v|\)</span> has a limit, which is <span class="math" data-tex="\(0\)">\(0\)</span> because <span class="math" data-tex="\(t\)">\(t\)</span> is bounded; so <span class="math" data-tex="\(F(t_\infty)=1\)">\(F(t_\infty)=1\)</span>. Since <span class="math" data-tex="\(\dot v\to-\frac12F&#x27;(t_\infty)\)">\(\dot v\to-\frac12F&#x27;(t_\infty)\)</span> and <span class="math" data-tex="\(v\to0\)">\(v\to0\)</span>, also <span class="math" data-tex="\(F&#x27;(t_\infty)=0\)">\(F&#x27;(t_\infty)=0\)</span>. If <span class="math" data-tex="\(t_\infty\)">\(t_\infty\)</span> were <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>, then in end coordinates <span class="math" data-tex="\(F&#x27;(0)=\kappa p_1^2=0\)">\(F&#x27;(0)=\kappa p_1^2=0\)</span>, so <span class="math" data-tex="\(F\)">\(F\)</span> would be constant on the end portion <span class="math" data-tex="\(0\le\tau\le\frac14\)">\(0\le\tau\le\frac14\)</span>, equal to <span class="math" data-tex="\(F(t_\infty)=1\)">\(F(t_\infty)=1\)</span>, and <span class="math" data-tex="\(v\)">\(v\)</span> would vanish there, which is impossible on this passage. So <span class="math" data-tex="\(t_\infty\in(0,1)\)">\(t_\infty\in(0,1)\)</span>. Two infinite ends are impossible: the two limiting heights would be different, with <span class="math" data-tex="\(F=1\)">\(F=1\)</span> at both, so <span class="math" data-tex="\(F\ge1\)">\(F\ge1\)</span> between them by concavity, whereas <span class="math" data-tex="\(F=1-v^2&lt;1\)">\(F=1-v^2&lt;1\)</span> at every height the passage traverses. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-passages-without-a-turning-estimate-and-the-gauge-on-a-returning-passage">5. Passages without a turning estimate, and the gauge on a returning passage</h2>
+<p><strong>Lemma 5.1</strong> ([OpenAI-NC, Lemma 4.4]). Let <span class="math" data-tex="\(V\)">\(V\)</span> be the restriction to a neck passage <span class="math" data-tex="\(J\)">\(J\)</span> of a smooth field along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> that vanishes outside a compact set. If <span class="math" data-tex="\(J=\mathbb R\)">\(J=\mathbb R\)</span>, or <span class="math" data-tex="\(v\)">\(v\)</span> never vanishes on <span class="math" data-tex="\(J\)">\(J\)</span>, or <span class="math" data-tex="\(J\)">\(J\)</span> is a returning passage with <span class="math" data-tex="\(\tau_*\le\frac14\)">\(\tau_*\le\frac14\)</span>, then <span class="math" data-tex="\(I_J^\perp(V)\ge0\)">\(I_J^\perp(V)\ge0\)</span>.</p>
+<p><em>Proof.</em> <em><span class="math" data-tex="\(J=\mathbb R\)">\(J=\mathbb R\)</span>.</em> Replace <span class="math" data-tex="\(V\)">\(V\)</span> by <span class="math" data-tex="\(V^\perp\)">\(V^\perp\)</span>, which vanishes outside a compact set and has <span class="math" data-tex="\(q_{V^\perp}=0\)">\(q_{V^\perp}=0\)</span>. Apply (3.2) on an interval whose end points lie outside the support: there are no endpoint terms, and <span class="math" data-tex="\(I_J^\perp(V)=I_J(V^\perp)=E_J(V^\perp)\ge0\)">\(I_J^\perp(V)=I_J(V^\perp)=E_J(V^\perp)\ge0\)</span> by Lemma 1.1.</p>
+<p><em><span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> on <span class="math" data-tex="\(J\)">\(J\)</span>.</em> On <span class="math" data-tex="\(J\)">\(J\)</span> put <span class="math" data-tex="\(\widetilde V=V-\frac wvT\)">\(\widetilde V=V-\frac wvT\)</span>, whose <span class="math" data-tex="\(t\)">\(t\)</span>-component is <span class="math" data-tex="\(0\)">\(0\)</span>. It is smooth up to the finite end points of <span class="math" data-tex="\(J\)">\(J\)</span>, where <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> by transversality, and it vanishes where <span class="math" data-tex="\(V\)">\(V\)</span> does, in particular for large <span class="math" data-tex="\(|s|\)">\(|s|\)</span> at an infinite end; no bound on <span class="math" data-tex="\(1/|v|\)">\(1/|v|\)</span> is used. Write <span class="math" data-tex="\(\widetilde V=(0,\tilde z)\)">\(\widetilde V=(0,\tilde z)\)</span>; then <span class="math" data-tex="\(q_{\widetilde V}=\tilde z^{\mathsf T}Q\dot x=p^{\mathsf T}\tilde z\)">\(q_{\widetilde V}=\tilde z^{\mathsf T}Q\dot x=p^{\mathsf T}\tilde z\)</span>. By Lemma 1.1 and by (3.2), whose endpoint terms are nonnegative at entries and exits and vanish beyond the support,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;I_J^\perp(V)=I_J^\perp(\widetilde V)\\
+&amp;\quad\ge\int_J\bigl(|\dot{\tilde z}|_Q^2-(p^{\mathsf T}\dot{\tilde z})^2\bigr)ds\\
+&amp;\quad\ge\int_J\bigl(1-F(t)\bigr)|\dot{\tilde z}|_Q^2\,ds\ge0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;I_J^\perp(V)=I_J^\perp(\widetilde V)\\
+&amp;\quad\ge\int_J\bigl(|\dot{\tilde z}|_Q^2-(p^{\mathsf T}\dot{\tilde z})^2\bigr)ds\\
+&amp;\quad\ge\int_J\bigl(1-F(t)\bigr)|\dot{\tilde z}|_Q^2\,ds\ge0 .
+\end{aligned}
+\]</span>
+The second inequality is the Cauchy–Schwarz inequality <span class="math" data-tex="\((p^{\mathsf T}\xi)^2\le(p^{\mathsf T}Pp)(\xi^{\mathsf T}Q\xi)\)">\((p^{\mathsf T}\xi)^2\le(p^{\mathsf T}Pp)(\xi^{\mathsf T}Q\xi)\)</span> for the positive definite <span class="math" data-tex="\(Q=P^{-1}\)">\(Q=P^{-1}\)</span>, and <span class="math" data-tex="\(1-F=v^2\ge0\)">\(1-F=v^2\ge0\)</span>.</p>
+<p><em><span class="math" data-tex="\(\tau_*\le\frac14\)">\(\tau_*\le\frac14\)</span>.</em> The passage stays in the end portion, where every sectional curvature is nonpositive (Proposition 4.1 of <a href="a-concave-cometric-and-convex-collars.html">A concave cometric and convex collars</a>), and Lemma 1.1 makes the integrand of <span class="math" data-tex="\(I_J^\perp\)">\(I_J^\perp\)</span> nonnegative. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only returning passages with <span class="math" data-tex="\(\tau_*&gt;\frac14\)">\(\tau_*&gt;\frac14\)</span> remain. On them we normalize the field without imposing anything on its values at the ends.</p>
+<p><strong>Lemma 5.2</strong> (the gauge on a returning passage; [OpenAI-NC, Lemma 4.5]). Consider a returning passage with the data (4.1). For every smooth field <span class="math" data-tex="\(V\)">\(V\)</span> on <span class="math" data-tex="\([0,L]\)">\([0,L]\)</span> there is a smooth function <span class="math" data-tex="\(h\)">\(h\)</span> such that <span class="math" data-tex="\(\widetilde V=V+hT=(w,z)\)">\(\widetilde V=V+hT=(w,z)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;w(0)=w(L)=0,\\
+&amp;\langle\widetilde V,T\rangle\ \text{is affine in }s .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;w(0)=w(L)=0,\\
+&amp;\langle\widetilde V,T\rangle\ \text{is affine in }s .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(\Delta z=z(L)-z(0)\)">\(\Delta z=z(L)-z(0)\)</span>, <span class="math" data-tex="\(e=(1,0)^{\mathsf T}\)">\(e=(1,0)^{\mathsf T}\)</span> and <span class="math" data-tex="\(\mu=\kappa v_0/4&gt;0\)">\(\mu=\kappa v_0/4&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;I_{[0,L]}^\perp(V)=E_{[0,L]}(\widetilde V)\\
+&amp;\quad+\tfrac{\kappa v_0}2\bigl(z_1(0)^2+z_1(L)^2\bigr)\\
+&amp;\quad-\frac{(p^{\mathsf T}\Delta z)^2}L\\
+&amp;\ge E_{[0,L]}(\widetilde V)+\mu\,(e^{\mathsf T}\Delta z)^2\\
+&amp;\quad-\frac{(p^{\mathsf T}\Delta z)^2}L .
+\end{aligned} \tag{5.1}
+\]">\[
+\begin{aligned}
+&amp;I_{[0,L]}^\perp(V)=E_{[0,L]}(\widetilde V)\\
+&amp;\quad+\tfrac{\kappa v_0}2\bigl(z_1(0)^2+z_1(L)^2\bigr)\\
+&amp;\quad-\frac{(p^{\mathsf T}\Delta z)^2}L\\
+&amp;\ge E_{[0,L]}(\widetilde V)+\mu\,(e^{\mathsf T}\Delta z)^2\\
+&amp;\quad-\frac{(p^{\mathsf T}\Delta z)^2}L .
+\end{aligned} \tag{5.1}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(q=\langle V,T\rangle\)">\(q=\langle V,T\rangle\)</span> and <span class="math" data-tex="\(V=(w_0,z_0)\)">\(V=(w_0,z_0)\)</span> in coordinates. Put <span class="math" data-tex="\(h_0=-w_0(0)/v_0\)">\(h_0=-w_0(0)/v_0\)</span> and <span class="math" data-tex="\(h_L=w_0(L)/v_0\)">\(h_L=w_0(L)/v_0\)</span>, let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be the affine function with <span class="math" data-tex="\(\ell(0)=q(0)+h_0\)">\(\ell(0)=q(0)+h_0\)</span> and <span class="math" data-tex="\(\ell(L)=q(L)+h_L\)">\(\ell(L)=q(L)+h_L\)</span>, and take <span class="math" data-tex="\(h=\ell-q\)">\(h=\ell-q\)</span>. Then <span class="math" data-tex="\(\langle\widetilde V,T\rangle=q+h=\ell\)">\(\langle\widetilde V,T\rangle=q+h=\ell\)</span>, and the <span class="math" data-tex="\(t\)">\(t\)</span>-component of <span class="math" data-tex="\(\widetilde V\)">\(\widetilde V\)</span> is <span class="math" data-tex="\(w_0+hv\)">\(w_0+hv\)</span>, which vanishes at <span class="math" data-tex="\(0\)">\(0\)</span> because <span class="math" data-tex="\(v(0)=v_0\)">\(v(0)=v_0\)</span> and at <span class="math" data-tex="\(L\)">\(L\)</span> because <span class="math" data-tex="\(v(L)=-v_0\)">\(v(L)=-v_0\)</span>. If <span class="math" data-tex="\(V\)">\(V\)</span> is given along the whole geodesic, multiplying <span class="math" data-tex="\(h\)">\(h\)</span> by a smooth cutoff equal to <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\([0,L]\)">\([0,L]\)</span> gives a change vanishing outside a compact set; nothing on <span class="math" data-tex="\([0,L]\)">\([0,L]\)</span> changes.</p>
+<p>At <span class="math" data-tex="\(s=0\)">\(s=0\)</span> and <span class="math" data-tex="\(s=L\)">\(s=L\)</span> the field <span class="math" data-tex="\(\widetilde V\)">\(\widetilde V\)</span> has <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, so <span class="math" data-tex="\(\langle\widetilde V,T\rangle=z^{\mathsf T}Q\dot x=p^{\mathsf T}z\)">\(\langle\widetilde V,T\rangle=z^{\mathsf T}Q\dot x=p^{\mathsf T}z\)</span> there, and the slope of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is <span class="math" data-tex="\(p^{\mathsf T}\Delta z/L\)">\(p^{\mathsf T}\Delta z/L\)</span>; hence <span class="math" data-tex="\(\int_0^L\dot\ell^2=(p^{\mathsf T}\Delta z)^2/L\)">\(\int_0^L\dot\ell^2=(p^{\mathsf T}\Delta z)^2/L\)</span>. By (3.3), with <span class="math" data-tex="\(\dot\tau(0)=v_0\)">\(\dot\tau(0)=v_0\)</span> and <span class="math" data-tex="\(\dot\tau(L)=-v_0\)">\(\dot\tau(L)=-v_0\)</span>, the endpoint terms of (3.2) are <span class="math" data-tex="\(\frac\kappa2v_0z_1(0)^2\)">\(\frac\kappa2v_0z_1(0)^2\)</span> and <span class="math" data-tex="\(\frac\kappa2v_0z_1(L)^2\)">\(\frac\kappa2v_0z_1(L)^2\)</span>. Inserting into (1.1) and using Lemma 1.1 gives the identity in (5.1). The inequality follows from <span class="math" data-tex="\(x^2+y^2\ge\frac12(y-x)^2\)">\(x^2+y^2\ge\frac12(y-x)^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The gauges are chosen separately on each passage, and they need not match at the ends of different passages. Every inequality concerns the normal index form of the original field, which is unchanged by the gauge; only these integrals are added in Proposition 2.3 of <a href="conjugate-points-and-index-forms.html">Conjugate points and index forms</a>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that <span class="math" data-tex="\(Q&#x27;=-QP&#x27;Q\)">\(Q&#x27;=-QP&#x27;Q\)</span> and <span class="math" data-tex="\(Q&#x27;&#x27;=2QP&#x27;QP&#x27;Q-QP&#x27;&#x27;Q\)">\(Q&#x27;&#x27;=2QP&#x27;QP&#x27;Q-QP&#x27;&#x27;Q\)</span>.</p>
+<p><strong>6.2.</strong> Show that a geodesic with <span class="math" data-tex="\(p=0\)">\(p=0\)</span> in the neck is a straight line in the <span class="math" data-tex="\(t\)">\(t\)</span>-direction, and that it crosses the neck in time <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>6.3.</strong> Let the cometric be constant, <span class="math" data-tex="\(P(t)=P_0\)">\(P(t)=P_0\)</span>. Show that <span class="math" data-tex="\(E_{[a,c]}(V)=\int(\dot w^2+|\dot z|_Q^2)\)">\(E_{[a,c]}(V)=\int(\dot w^2+|\dot z|_Q^2)\)</span> and that (3.2) has no endpoint terms. Deduce directly that the flat metric has no conjugate points.</p>
+<p><strong>6.4.</strong> In the situation of Lemma 4.1(3), show that <span class="math" data-tex="\(L\ge4v_0/(\kappa p_1^2)\)">\(L\ge4v_0/(\kappa p_1^2)\)</span>, using <span class="math" data-tex="\(\dot v=-\frac12F&#x27;\)">\(\dot v=-\frac12F&#x27;\)</span> and <span class="math" data-tex="\(F&#x27;\le\kappa p_1^2\)">\(F&#x27;\le\kappa p_1^2\)</span>.</p>
+<p><strong>6.5.</strong> Show that a unit-speed geodesic stays at a constant height <span class="math" data-tex="\(t_0\in(0,1)\)">\(t_0\in(0,1)\)</span> exactly when <span class="math" data-tex="\(F(t_0)=1\)">\(F(t_0)=1\)</span> and <span class="math" data-tex="\(F&#x27;(t_0)=0\)">\(F&#x27;(t_0)=0\)</span>. Show that in an end portion <span class="math" data-tex="\(0&lt;\tau\le\frac14\)">\(0&lt;\tau\le\frac14\)</span> these are the geodesics with <span class="math" data-tex="\(p_1=0\)">\(p_1=0\)</span>, which run along the circle factor, and check Lemma 5.1 for them.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> Differentiate <span class="math" data-tex="\(QP=\operatorname{Id}\)">\(QP=\operatorname{Id}\)</span>: <span class="math" data-tex="\(Q&#x27;P+QP&#x27;=0\)">\(Q&#x27;P+QP&#x27;=0\)</span>, so <span class="math" data-tex="\(Q&#x27;=-QP&#x27;Q\)">\(Q&#x27;=-QP&#x27;Q\)</span>. Differentiating again,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q&#x27;&#x27;&amp;=-Q&#x27;P&#x27;Q-QP&#x27;&#x27;Q-QP&#x27;Q&#x27;\\
+&amp;=2QP&#x27;QP&#x27;Q-QP&#x27;&#x27;Q .
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q&#x27;&#x27;&amp;=-Q&#x27;P&#x27;Q-QP&#x27;&#x27;Q-QP&#x27;Q&#x27;\\
+&amp;=2QP&#x27;QP&#x27;Q-QP&#x27;&#x27;Q .
+\end{aligned}
+\]</span></p>
+<p><strong>6.2.</strong> With <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, <span class="math" data-tex="\(\dot x=Pp=0\)">\(\dot x=Pp=0\)</span>, <span class="math" data-tex="\(F=0\)">\(F=0\)</span> and <span class="math" data-tex="\(v^2=1\)">\(v^2=1\)</span>, so <span class="math" data-tex="\(t\)">\(t\)</span> changes at unit speed.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(P&#x27;=0\)">\(P&#x27;=0\)</span> and <span class="math" data-tex="\(F&#x27;&#x27;=0\)">\(F&#x27;&#x27;=0\)</span> remove the extra terms in (3.1), and <span class="math" data-tex="\(Q&#x27;=0\)">\(Q&#x27;=0\)</span> makes all Christoffel symbols vanish. Then <span class="math" data-tex="\(I=E\ge0\)">\(I=E\ge0\)</span> for compactly supported fields, and Lemma 2.2 of the first lesson applies.</p>
+<p><strong>6.4.</strong> Integrating <span class="math" data-tex="\(\dot v=-\frac12F&#x27;\)">\(\dot v=-\frac12F&#x27;\)</span> and using <span class="math" data-tex="\(F&#x27;\le\kappa p_1^2\)">\(F&#x27;\le\kappa p_1^2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;v(L)-v(0)=-2v_0\\
+&amp;\quad=-\frac12\int_0^LF&#x27;(\tau(s))\,ds\ge-\frac12L\kappa p_1^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;v(L)-v(0)=-2v_0\\
+&amp;\quad=-\frac12\int_0^LF&#x27;(\tau(s))\,ds\ge-\frac12L\kappa p_1^2 ,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(L\ge4v_0/(\kappa p_1^2)\)">\(L\ge4v_0/(\kappa p_1^2)\)</span>.</p>
+<p><strong>6.5.</strong> At constant height <span class="math" data-tex="\(v\equiv0\)">\(v\equiv0\)</span>, so <span class="math" data-tex="\(F(t_0)=1\)">\(F(t_0)=1\)</span> by <span class="math" data-tex="\(v^2=1-F\)">\(v^2=1-F\)</span> and <span class="math" data-tex="\(F&#x27;(t_0)=0\)">\(F&#x27;(t_0)=0\)</span> by <span class="math" data-tex="\(\dot v=-\frac12F&#x27;\)">\(\dot v=-\frac12F&#x27;\)</span>. Conversely, if <span class="math" data-tex="\(F(t_0)=1\)">\(F(t_0)=1\)</span> and <span class="math" data-tex="\(F&#x27;(t_0)=0\)">\(F&#x27;(t_0)=0\)</span>, then <span class="math" data-tex="\(t\equiv t_0\)">\(t\equiv t_0\)</span>, <span class="math" data-tex="\(x(s)=x_0+sP(t_0)p\)">\(x(s)=x_0+sP(t_0)p\)</span> solves (2.1) and the geodesic equations, and by uniqueness it is the geodesic with these data. In an end portion <span class="math" data-tex="\(F&#x27;(\tau)=\delta a(\tau)p_1^2\)">\(F&#x27;(\tau)=\delta a(\tau)p_1^2\)</span> with <span class="math" data-tex="\(a(\tau)&gt;0\)">\(a(\tau)&gt;0\)</span>, so <span class="math" data-tex="\(F&#x27;=0\)">\(F&#x27;=0\)</span> exactly when <span class="math" data-tex="\(p_1=0\)">\(p_1=0\)</span>; then <span class="math" data-tex="\(F=bp_2^2=1\)">\(F=bp_2^2=1\)</span> and <span class="math" data-tex="\(\dot x=Pp\)">\(\dot x=Pp\)</span> is a multiple of <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, the direction of the circle factor. The passage is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and <span class="math" data-tex="\(I^\perp(V)=E(V^\perp)\ge0\)">\(I^\perp(V)=E(V^\perp)\ge0\)</span> as in the proof of Lemma 5.1; here the curvature is also nonpositive.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-NC] OpenAI, <em>A Three-Manifold Without Conjugate Points and Without a Nonpositively Curved Metric</em>, OpenAI Math Release preprint, 24 September 2026, Section 4 (Lemmas 4.1–4.5). https://github.com/openai/math/tree/main/preprints/A-Three-Manifold-Without-Conjugate-Points-and-Without-a-Nonpositively-Curved-Metric-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
