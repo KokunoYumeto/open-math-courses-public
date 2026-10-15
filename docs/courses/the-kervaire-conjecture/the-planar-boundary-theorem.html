@@ -1,0 +1,278 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The planar boundary theorem</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Kervaire conjecture)</a><a href="disks-bands-and-boundary-words.html">Previous lesson</a><a href="from-a-relation-to-a-planar-surface.html">Next lesson</a><a href="src/the-planar-boundary-theorem.md">Editable source</a></nav><main><article><h1 id="the-planar-boundary-theorem">The planar boundary theorem</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves Theorem 2.1 of <a href="disks-bands-and-boundary-words.html">Disks, bands and boundary words</a>: on a connected disk-and-band surface for a unimodular word, one boundary word cannot be the only nontrivial one [OpenAI-K, Section 4]. Travel along the boundary circles is encoded by an operator <span class="math" data-tex="\(S\Theta\)">\(S\Theta\)</span> on <span class="math" data-tex="\(\mathbb C^D\otimes\ell^2(A)\)">\(\mathbb C^D\otimes\ell^2(A)\)</span>, where <span class="math" data-tex="\(D\)">\(D\)</span> is the set of slots: <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> crosses the bands and <span class="math" data-tex="\(S\)">\(S\)</span> follows the corners, multiplying by the inverse corner labels in the left regular representation. Its spectral phase <span class="math" data-tex="\(\ell(S\Theta)\)">\(\ell(S\Theta)\)</span>, from <a href="the-regular-trace-and-spectral-phase.html">The regular trace and spectral phase</a>, is computed in two ways. Splitting <span class="math" data-tex="\(S\Theta=(SJ)(J\Theta)\)">\(S\Theta=(SJ)(J\Theta)\)</span> with an involution <span class="math" data-tex="\(J\)">\(J\)</span> that mixes the positive and the negative disks gives an upper bound, by subadditivity and the fixed-space lemma. Computing the phase one boundary circle at a time gives the same number plus the phase of the exceptional boundary word, which must therefore vanish.</p>
+<ul>
+<li>The boundary operator (Section 1).</li>
+<li>Mixing the disks: an upper bound (Section 2).</li>
+<li>The phase around one boundary circle (Section 3).</li>
+<li>Proof of the planar boundary theorem (Section 4).</li>
+</ul>
+<p>We use, from <a href="the-regular-trace-and-spectral-phase.html">The regular trace and spectral phase</a>, the algebra <span class="math" data-tex="\(M_b(\mathcal M)\)">\(M_b(\mathcal M)\)</span>, its trace <span class="math" data-tex="\(\tau_b\)">\(\tau_b\)</span>, Lemmas 1.3 and 2.1, and the phase <span class="math" data-tex="\(\ell\)">\(\ell\)</span> with Lemmas 3.1 and 4.1; from <a href="a-unitary-with-a-large-fixed-space.html">A unitary with a large fixed space</a>, Lemma 5.1; from <a href="disks-bands-and-boundary-words.html">Disks, bands and boundary words</a>, the notation of Sections 1 and 3 and Lemmas 3.1, 4.1 and 5.1.</p>
+<p><strong>Composition with maps of the circle.</strong> For a unitary <span class="math" data-tex="\(U\)">\(U\)</span> and a continuous map <span class="math" data-tex="\(\phi:\mathbb T\to\mathbb T\)">\(\phi:\mathbb T\to\mathbb T\)</span>, <span class="math" data-tex="\(\phi(U)\)">\(\phi(U)\)</span> is unitary and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(\phi(U))=(f\circ\phi)(U)\\
+(f\in B_b(\mathbb T)) .
+\end{gathered}\tag{0.1}
+\]">\[
+\begin{gathered}
+f(\phi(U))=(f\circ\phi)(U)\\
+(f\in B_b(\mathbb T)) .
+\end{gathered}\tag{0.1}
+\]</span>
+Indeed, <span class="math" data-tex="\(g\mapsto(g\circ\phi)(U)\)">\(g\mapsto(g\circ\phi)(U)\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism on the continuous functions on the spectrum of <span class="math" data-tex="\(\phi(U)\)">\(\phi(U)\)</span>, sending <span class="math" data-tex="\(\iota\)">\(\iota\)</span> to <span class="math" data-tex="\(\phi(U)\)">\(\phi(U)\)</span>, so it is the continuous calculus of <span class="math" data-tex="\(\phi(U)\)">\(\phi(U)\)</span>, and the measures of <span class="math" data-tex="\(\phi(U)\)">\(\phi(U)\)</span> are the images of those of <span class="math" data-tex="\(U\)">\(U\)</span> under <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, exactly as in Lemma 2.1(3) and (5) of the trace lesson. We use <span class="math" data-tex="\(\phi(z)=cz\)">\(\phi(z)=cz\)</span> for a constant <span class="math" data-tex="\(c\in\mathbb T\)">\(c\in\mathbb T\)</span>, and <span class="math" data-tex="\(\phi(z)=z^m\)">\(\phi(z)=z^m\)</span>.</p>
+<h2 id="1-the-boundary-operator">1. The boundary operator</h2>
+<p>Let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be a connected disk-and-band surface for a word
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w=t^{s_1}a_1\cdots t^{s_n}a_n,\\
+\sum_is_i=\varepsilon\in\{1,-1\} ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+w=t^{s_1}a_1\cdots t^{s_n}a_n,\\
+\sum_is_i=\varepsilon\in\{1,-1\} ,
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(k\)">\(k\)</span> positive and <span class="math" data-tex="\(k\)">\(k\)</span> negative disks (Lemma 4.1 of the disk lesson), slot set <span class="math" data-tex="\(D\)">\(D\)</span> of size <span class="math" data-tex="\(2nk\)">\(2nk\)</span>, permutations <span class="math" data-tex="\(\sigma,\theta\)">\(\sigma,\theta\)</span>, corner labels <span class="math" data-tex="\(c_d\)">\(c_d\)</span>, and <span class="math" data-tex="\(q=nk-2k+2\)">\(q=nk-2k+2\)</span> boundary circles, the cycles <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span>, with words <span class="math" data-tex="\(r_z\)">\(r_z\)</span>. Let <span class="math" data-tex="\((\gamma_d)\)">\((\gamma_d)\)</span> be real numbers with <span class="math" data-tex="\(\gamma_{\theta d}=-\gamma_d\)">\(\gamma_{\theta d}=-\gamma_d\)</span>, and put <span class="math" data-tex="\(\eta_z=\sum_{d\in z}\gamma_d\)">\(\eta_z=\sum_{d\in z}\gamma_d\)</span>.</p>
+<p>Work in <span class="math" data-tex="\(H=\mathbb C^D\otimes\ell^2(A)\)">\(H=\mathbb C^D\otimes\ell^2(A)\)</span>, with matrix coordinates indexed by <span class="math" data-tex="\(D\)">\(D\)</span>, so that <span class="math" data-tex="\(M_{2nk}(\mathcal M)\)">\(M_{2nk}(\mathcal M)\)</span> and <span class="math" data-tex="\(\tau=\tau_{2nk}\)">\(\tau=\tau_{2nk}\)</span> are defined. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(e_d\otimes v)=e_{\sigma d}\otimes L(c_d^{-1})v,\\
+\Theta(e_d\otimes v)=e^{2\pi i\gamma_d}\,e_{\theta d}\otimes v .
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+S(e_d\otimes v)=e_{\sigma d}\otimes L(c_d^{-1})v,\\
+\Theta(e_d\otimes v)=e^{2\pi i\gamma_d}\,e_{\theta d}\otimes v .
+\end{gathered}\tag{1.1}
+\]</span>
+Both are unitaries in <span class="math" data-tex="\(M_{2nk}(\mathcal M)\)">\(M_{2nk}(\mathcal M)\)</span>: each permutes the coordinates with unitary weights, and the weights of <span class="math" data-tex="\(S\)">\(S\)</span> are left translations, which lie in <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>. <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> is scalar, and <span class="math" data-tex="\(\Theta^2=I\)">\(\Theta^2=I\)</span> because <span class="math" data-tex="\(\gamma_{\theta d}+\gamma_d=0\)">\(\gamma_{\theta d}+\gamma_d=0\)</span>. The product follows the boundary permutation:
+<span class="math math-display" data-tex="\[
+S\Theta(e_d\otimes v)=e_{\sigma\theta d}\otimes e^{2\pi i\gamma_d}L(c_{\theta d}^{-1})v .
+\]">\[
+S\Theta(e_d\otimes v)=e_{\sigma\theta d}\otimes e^{2\pi i\gamma_d}L(c_{\theta d}^{-1})v .
+\]</span>
+For a cycle <span class="math" data-tex="\(z=(d_1,\ldots,d_m)\)">\(z=(d_1,\ldots,d_m)\)</span> of <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span>, with <span class="math" data-tex="\(d_{j+1}=\sigma\theta d_j\)">\(d_{j+1}=\sigma\theta d_j\)</span>, applying <span class="math" data-tex="\(S\Theta\)">\(S\Theta\)</span> <span class="math" data-tex="\(m\)">\(m\)</span> times to <span class="math" data-tex="\(e_{d_1}\otimes v\)">\(e_{d_1}\otimes v\)</span> multiplies <span class="math" data-tex="\(v\)">\(v\)</span> by the <em>circuit weight</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;e^{2\pi i\gamma_{d_m}}L(c_{\theta d_m}^{-1})\cdots\\
+&amp;\qquad\cdots e^{2\pi i\gamma_{d_1}}L(c_{\theta d_1}^{-1})\\
+&amp;=e^{2\pi i\eta_z}L\bigl((c_{\theta d_1}\cdots c_{\theta d_m})^{-1}\bigr)\\
+&amp;=e^{2\pi i\eta_z}L(r_z^{-1}) ,
+\end{aligned}\tag{1.2}
+\]">\[
+\begin{aligned}
+&amp;e^{2\pi i\gamma_{d_m}}L(c_{\theta d_m}^{-1})\cdots\\
+&amp;\qquad\cdots e^{2\pi i\gamma_{d_1}}L(c_{\theta d_1}^{-1})\\
+&amp;=e^{2\pi i\eta_z}L\bigl((c_{\theta d_1}\cdots c_{\theta d_m})^{-1}\bigr)\\
+&amp;=e^{2\pi i\eta_z}L(r_z^{-1}) ,
+\end{aligned}\tag{1.2}
+\]</span>
+by Lemma 3.1 of the disk lesson. The weights act on the left, so a full circuit multiplies the inverse corner labels in reverse order and produces the inverse boundary word.</p>
+<h2 id="2-mixing-the-disks-an-upper-bound">2. Mixing the disks: an upper bound</h2>
+<p>Number the disks of each kind <span class="math" data-tex="\(1,\ldots,k\)">\(1,\ldots,k\)</span>. For a slot index <span class="math" data-tex="\(i\in\{1,\ldots,n\}\)">\(i\in\{1,\ldots,n\}\)</span> and <span class="math" data-tex="\(u\in\mathbb C^k\)">\(u\in\mathbb C^k\)</span>, let <span class="math" data-tex="\(e_{+,i}(u)\in\mathbb C^D\)">\(e_{+,i}(u)\in\mathbb C^D\)</span> be the vector with coordinate <span class="math" data-tex="\(u_p\)">\(u_p\)</span> at slot <span class="math" data-tex="\(i\)">\(i\)</span> of the <span class="math" data-tex="\(p\)">\(p\)</span>-th positive disk, <span class="math" data-tex="\(p=1,\ldots,k\)">\(p=1,\ldots,k\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere; define <span class="math" data-tex="\(e_{-,i}(u)\)">\(e_{-,i}(u)\)</span> with the negative disks. Given <span class="math" data-tex="\(X\in\mathrm U(k)\)">\(X\in\mathrm U(k)\)</span>, define the scalar unitary <span class="math" data-tex="\(J\)">\(J\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J\,e_{+,i}(u)=e_{-,i}(Xu),\\
+J\,e_{-,i}(u)=e_{+,i}(X^{-1}u) .
+\end{gathered}\tag{2.1}
+\]">\[
+\begin{gathered}
+J\,e_{+,i}(u)=e_{-,i}(Xu),\\
+J\,e_{-,i}(u)=e_{+,i}(X^{-1}u) .
+\end{gathered}\tag{2.1}
+\]</span>
+Then <span class="math" data-tex="\(J^2=I\)">\(J^2=I\)</span>, so <span class="math" data-tex="\(J=J^*=J^{-1}\)">\(J=J^*=J^{-1}\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> <span class="math" data-tex="\(JSJ=S^{-1}\)">\(JSJ=S^{-1}\)</span>. Consequently <span class="math" data-tex="\(SJ\)">\(SJ\)</span> is a self-adjoint unitary, <span class="math" data-tex="\(\tau(SJ)=0\)">\(\tau(SJ)=0\)</span>, and
+<span class="math math-display" data-tex="\[
+\ell(SJ)=\frac{nk}2 .\tag{2.2}
+\]">\[
+\ell(SJ)=\frac{nk}2 .\tag{2.2}
+\]</span></p>
+<p><em>Proof.</em> By (3.1) of the disk lesson, the same coefficient acts on the slots <span class="math" data-tex="\(i\)">\(i\)</span> of all disks of one kind:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(e_{+,i}(u)\otimes v)=e_{+,i+1}(u)\otimes L(a_i^{-1})v,\\
+S(e_{-,i}(u)\otimes v)=e_{-,i-1}(u)\otimes L(a_{i-1})v .
+\end{gathered}
+\]">\[
+\begin{gathered}
+S(e_{+,i}(u)\otimes v)=e_{+,i+1}(u)\otimes L(a_i^{-1})v,\\
+S(e_{-,i}(u)\otimes v)=e_{-,i-1}(u)\otimes L(a_{i-1})v .
+\end{gathered}
+\]</span>
+Hence <span class="math" data-tex="\(S^{-1}(e_{+,i}(u)\otimes v)=e_{+,i-1}(u)\otimes L(a_{i-1})v\)">\(S^{-1}(e_{+,i}(u)\otimes v)=e_{+,i-1}(u)\otimes L(a_{i-1})v\)</span> and <span class="math" data-tex="\(S^{-1}(e_{-,i}(u)\otimes v)=e_{-,i+1}(u)\otimes L(a_i^{-1})v\)">\(S^{-1}(e_{-,i}(u)\otimes v)=e_{-,i+1}(u)\otimes L(a_i^{-1})v\)</span>. Since <span class="math" data-tex="\(J\)">\(J\)</span> acts only on <span class="math" data-tex="\(\mathbb C^D\)">\(\mathbb C^D\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;JSJ(e_{+,i}(u)\otimes v)\\
+&amp;\quad=JS(e_{-,i}(Xu)\otimes v)\\
+&amp;\quad=J(e_{-,i-1}(Xu)\otimes L(a_{i-1})v)\\
+&amp;\quad=e_{+,i-1}(u)\otimes L(a_{i-1})v ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;JSJ(e_{+,i}(u)\otimes v)\\
+&amp;\quad=JS(e_{-,i}(Xu)\otimes v)\\
+&amp;\quad=J(e_{-,i-1}(Xu)\otimes L(a_{i-1})v)\\
+&amp;\quad=e_{+,i-1}(u)\otimes L(a_{i-1})v ,
+\end{aligned}
+\]</span>
+and similarly <span class="math" data-tex="\(JSJ(e_{-,i}(u)\otimes v)=e_{-,i+1}(u)\otimes L(a_i^{-1})v\)">\(JSJ(e_{-,i}(u)\otimes v)=e_{-,i+1}(u)\otimes L(a_i^{-1})v\)</span>. So <span class="math" data-tex="\(JSJ=S^{-1}\)">\(JSJ=S^{-1}\)</span>, <span class="math" data-tex="\((SJ)^2=S(JSJ)=I\)">\((SJ)^2=S(JSJ)=I\)</span>, and the unitary <span class="math" data-tex="\(SJ\)">\(SJ\)</span> equals its inverse, which is its adjoint. <span class="math" data-tex="\(S\)">\(S\)</span> preserves the two kinds of disks and <span class="math" data-tex="\(J\)">\(J\)</span> exchanges them, so all diagonal entries of <span class="math" data-tex="\(SJ\)">\(SJ\)</span> vanish and <span class="math" data-tex="\(\tau(SJ)=0\)">\(\tau(SJ)=0\)</span>. The spectrum of <span class="math" data-tex="\(SJ\)">\(SJ\)</span> lies in <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>, where <span class="math" data-tex="\(h(1)=0\)">\(h(1)=0\)</span> and <span class="math" data-tex="\(h(-1)=\frac12\)">\(h(-1)=\frac12\)</span>; so <span class="math" data-tex="\(h(SJ)=\frac12\cdot\frac{I-SJ}2\)">\(h(SJ)=\frac12\cdot\frac{I-SJ}2\)</span>, and <span class="math" data-tex="\(\ell(SJ)=\frac14\tau(I-SJ)=\frac{2nk}4\)">\(\ell(SJ)=\frac14\tau(I-SJ)=\frac{2nk}4\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(V_+\)">\(V_+\)</span> and <span class="math" data-tex="\(V_-\)">\(V_-\)</span> be the coordinate subspaces of <span class="math" data-tex="\(\mathbb C^D\)">\(\mathbb C^D\)</span> spanned by the slots of traversal sign <span class="math" data-tex="\(+1\)">\(+1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>. Each has dimension <span class="math" data-tex="\(nk\)">\(nk\)</span>, because the bands pair the signs. Both <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> exchange <span class="math" data-tex="\(V_+\)">\(V_+\)</span> and <span class="math" data-tex="\(V_-\)">\(V_-\)</span>: <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> because bands join opposite traversal signs, and <span class="math" data-tex="\(J\)">\(J\)</span> because slot <span class="math" data-tex="\(i\)">\(i\)</span> has traversal sign <span class="math" data-tex="\(s_i\)">\(s_i\)</span> on positive disks and <span class="math" data-tex="\(-s_i\)">\(-s_i\)</span> on negative disks. Order <span class="math" data-tex="\(V_+\)">\(V_+\)</span> in <span class="math" data-tex="\(n\)">\(n\)</span> blocks of size <span class="math" data-tex="\(k\)">\(k\)</span>: block <span class="math" data-tex="\(i\)">\(i\)</span> consists of the slots <span class="math" data-tex="\(i\)">\(i\)</span> of the positive disks if <span class="math" data-tex="\(s_i=1\)">\(s_i=1\)</span> and of the negative disks if <span class="math" data-tex="\(s_i=-1\)">\(s_i=-1\)</span>, ordered by disk number; order <span class="math" data-tex="\(V_-\)">\(V_-\)</span> in the same way with the opposite kinds. In these bases <span class="math" data-tex="\(\Theta|_{V_+}:V_+\to V_-\)">\(\Theta|_{V_+}:V_+\to V_-\)</span> is a unitary matrix <span class="math" data-tex="\(P\in\mathrm U(nk)\)">\(P\in\mathrm U(nk)\)</span> that does not depend on <span class="math" data-tex="\(X\)">\(X\)</span>, and by (2.1), <span class="math" data-tex="\(J|_{V_-}:V_-\to V_+\)">\(J|_{V_-}:V_-\to V_+\)</span> is <span class="math" data-tex="\(\operatorname{diag}(X^{-s_1},\ldots,X^{-s_n})\)">\(\operatorname{diag}(X^{-s_1},\ldots,X^{-s_n})\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(J\Theta)|_{V_+}=\\
+&amp;\operatorname{diag}(X^{-s_1},\ldots,X^{-s_n})\,P .
+\end{aligned}\tag{2.3}
+\]">\[
+\begin{aligned}
+&amp;(J\Theta)|_{V_+}=\\
+&amp;\operatorname{diag}(X^{-s_1},\ldots,X^{-s_n})\,P .
+\end{aligned}\tag{2.3}
+\]</span></p>
+<p><strong>Lemma 2.2</strong> (the upper bound). There is <span class="math" data-tex="\(X\in\mathrm U(k)\)">\(X\in\mathrm U(k)\)</span> for which <span class="math" data-tex="\(\dim\ker(J\Theta-I)\ge2k\)">\(\dim\ker(J\Theta-I)\ge2k\)</span>. For such <span class="math" data-tex="\(X\)">\(X\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\ell(J\Theta)\le nk-k,\\
+\ell(S\Theta)\le\frac32nk-k .
+\end{gathered}\tag{2.4}
+\]">\[
+\begin{gathered}
+\ell(J\Theta)\le nk-k,\\
+\ell(S\Theta)\le\frac32nk-k .
+\end{gathered}\tag{2.4}
+\]</span></p>
+<p><em>Proof.</em> The signs <span class="math" data-tex="\(-s_1,\ldots,-s_n\)">\(-s_1,\ldots,-s_n\)</span> add up to <span class="math" data-tex="\(-\varepsilon=\pm1\)">\(-\varepsilon=\pm1\)</span>, so Lemma 5.1 of the fixed-space lesson gives <span class="math" data-tex="\(X\)">\(X\)</span> for which (2.3) fixes a subspace of <span class="math" data-tex="\(V_+\)">\(V_+\)</span> of dimension at least <span class="math" data-tex="\(k\)">\(k\)</span>. Since <span class="math" data-tex="\(J^2=\Theta^2=I\)">\(J^2=\Theta^2=I\)</span>, <span class="math" data-tex="\(J(J\Theta)J=\Theta J=(J\Theta)^{-1}\)">\(J(J\Theta)J=\Theta J=(J\Theta)^{-1}\)</span>; so if <span class="math" data-tex="\(x\in V_+\)">\(x\in V_+\)</span> is fixed by <span class="math" data-tex="\(J\Theta\)">\(J\Theta\)</span>, then <span class="math" data-tex="\(Jx\in V_-\)">\(Jx\in V_-\)</span> is fixed by <span class="math" data-tex="\((J\Theta)^{-1}\)">\((J\Theta)^{-1}\)</span>, hence by <span class="math" data-tex="\(J\Theta\)">\(J\Theta\)</span>. This gives <span class="math" data-tex="\(k\)">\(k\)</span> more fixed directions, in <span class="math" data-tex="\(V_-\)">\(V_-\)</span>.</p>
+<p>The scalar unitary <span class="math" data-tex="\(J\Theta\)">\(J\Theta\)</span> is conjugate to its inverse, so its eigenvalues <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_{2nk}\)">\(\lambda_1,\ldots,\lambda_{2nk}\)</span>, with multiplicity, are invariant under <span class="math" data-tex="\(\lambda\mapsto\lambda^{-1}\)">\(\lambda\mapsto\lambda^{-1}\)</span>. For <span class="math" data-tex="\(\lambda=e^{2\pi ix}\)">\(\lambda=e^{2\pi ix}\)</span> with <span class="math" data-tex="\(0&lt;x&lt;1\)">\(0&lt;x&lt;1\)</span>, <span class="math" data-tex="\(\lambda^{-1}=e^{2\pi i(1-x)}\)">\(\lambda^{-1}=e^{2\pi i(1-x)}\)</span>, so <span class="math" data-tex="\(h(\lambda)+h(\lambda^{-1})=1\)">\(h(\lambda)+h(\lambda^{-1})=1\)</span> for <span class="math" data-tex="\(\lambda\ne1\)">\(\lambda\ne1\)</span>, while <span class="math" data-tex="\(h(1)=0\)">\(h(1)=0\)</span>. By Lemma 3.1(4) there,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ell(J\Theta)&amp;=\sum_jh(\lambda_j)\\
+&amp;=\frac12\sum_j\bigl(h(\lambda_j)+h(\lambda_j^{-1})\bigr)\\
+&amp;=\frac{2nk-\dim\ker(J\Theta-I)}2\\
+&amp;\le nk-k .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\ell(J\Theta)&amp;=\sum_jh(\lambda_j)\\
+&amp;=\frac12\sum_j\bigl(h(\lambda_j)+h(\lambda_j^{-1})\bigr)\\
+&amp;=\frac{2nk-\dim\ker(J\Theta-I)}2\\
+&amp;\le nk-k .
+\end{aligned}
+\]</span>
+Finally <span class="math" data-tex="\(S\Theta=(SJ)(J\Theta)\)">\(S\Theta=(SJ)(J\Theta)\)</span>, and Lemma 4.1 of the trace lesson with (2.2) gives <span class="math" data-tex="\(\ell(S\Theta)\le\frac{nk}2+nk-k\)">\(\ell(S\Theta)\le\frac{nk}2+nk-k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bound holds for every choice of the numbers <span class="math" data-tex="\(\gamma_d\)">\(\gamma_d\)</span>; the matrix <span class="math" data-tex="\(X\)">\(X\)</span>, and with it <span class="math" data-tex="\(J\)">\(J\)</span>, may depend on them.</p>
+<h2 id="3-the-phase-around-one-boundary-circle">3. The phase around one boundary circle</h2>
+<p>The space <span class="math" data-tex="\(H\)">\(H\)</span> is the orthogonal direct sum of the subspaces <span class="math" data-tex="\(\mathbb C^z\otimes\ell^2(A)\)">\(\mathbb C^z\otimes\ell^2(A)\)</span> over the cycles <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span>, each invariant under <span class="math" data-tex="\(S\Theta\)">\(S\Theta\)</span> and its inverse. Let <span class="math" data-tex="\(T_z\)">\(T_z\)</span> be the restriction of <span class="math" data-tex="\(S\Theta\)">\(S\Theta\)</span> to the cycle <span class="math" data-tex="\(z\)">\(z\)</span>; then <span class="math" data-tex="\(h(S\Theta)\)">\(h(S\Theta)\)</span> is the direct sum of the <span class="math" data-tex="\(h(T_z)\)">\(h(T_z)\)</span>, and <span class="math" data-tex="\(\ell(S\Theta)=\sum_z\ell(T_z)\)">\(\ell(S\Theta)=\sum_z\ell(T_z)\)</span>, where <span class="math" data-tex="\(\ell(T_z)\)">\(\ell(T_z)\)</span> uses the trace <span class="math" data-tex="\(\tau_{|z|}\)">\(\tau_{|z|}\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (phase of a cycle). For every cycle <span class="math" data-tex="\(z\)">\(z\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ell(T_z)=\frac{|z|-1}2\\
+&amp;\quad+\tau\bigl(h(e^{2\pi i\eta_z}L(r_z^{-1}))\bigr).
+\end{aligned}\tag{3.1}
+\]">\[
+\begin{aligned}
+&amp;\ell(T_z)=\frac{|z|-1}2\\
+&amp;\quad+\tau\bigl(h(e^{2\pi i\eta_z}L(r_z^{-1}))\bigr).
+\end{aligned}\tag{3.1}
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(m=|z|\)">\(m=|z|\)</span>, number the cycle <span class="math" data-tex="\(d_0,\ldots,d_{m-1}\)">\(d_0,\ldots,d_{m-1}\)</span> with <span class="math" data-tex="\(d_{j+1}=\sigma\theta d_j\)">\(d_{j+1}=\sigma\theta d_j\)</span> (indices modulo <span class="math" data-tex="\(m\)">\(m\)</span>), so that <span class="math" data-tex="\(T(e_{d_j}\otimes v)=e_{d_{j+1}}\otimes W_jv\)">\(T(e_{d_j}\otimes v)=e_{d_{j+1}}\otimes W_jv\)</span> with unitaries <span class="math" data-tex="\(W_j\in\mathcal M\)">\(W_j\in\mathcal M\)</span>. Let <span class="math" data-tex="\(\zeta=e^{2\pi i/m}\)">\(\zeta=e^{2\pi i/m}\)</span> and let <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> be the scalar unitary <span class="math" data-tex="\(e_{d_j}\mapsto\zeta^je_{d_j}\)">\(e_{d_j}\mapsto\zeta^je_{d_j}\)</span>. Then <span class="math" data-tex="\(\Delta^{-1}T\Delta=\zeta^{-1}T\)">\(\Delta^{-1}T\Delta=\zeta^{-1}T\)</span>, so every <span class="math" data-tex="\(\zeta^jT\)">\(\zeta^jT\)</span> is conjugate to <span class="math" data-tex="\(T\)">\(T\)</span> by a power of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, and <span class="math" data-tex="\(\tau_m(h(\zeta^jT))=\ell(T)\)">\(\tau_m(h(\zeta^jT))=\ell(T)\)</span> by Lemma 3.1(3) of the trace lesson.</p>
+<p>For <span class="math" data-tex="\(\lambda=e^{2\pi ix}\)">\(\lambda=e^{2\pi ix}\)</span>, the numbers <span class="math" data-tex="\(h(\zeta^j\lambda)\)">\(h(\zeta^j\lambda)\)</span>, <span class="math" data-tex="\(j=0,\ldots,m-1\)">\(j=0,\ldots,m-1\)</span>, are the fractional parts of <span class="math" data-tex="\(x+j/m\)">\(x+j/m\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{j=0}^{m-1}h(\zeta^j\lambda)\\
+&amp;\quad=\frac{m-1}2+h(\lambda^m) .
+\end{aligned}\tag{3.2}
+\]">\[
+\begin{aligned}
+&amp;\sum_{j=0}^{m-1}h(\zeta^j\lambda)\\
+&amp;\quad=\frac{m-1}2+h(\lambda^m) .
+\end{aligned}\tag{3.2}
+\]</span>
+To see this, let <span class="math" data-tex="\(y\in[0,1/m)\)">\(y\in[0,1/m)\)</span> and <span class="math" data-tex="\(l\in\{0,\ldots,m-1\}\)">\(l\in\{0,\ldots,m-1\}\)</span> with <span class="math" data-tex="\(x-\lfloor x\rfloor=y+l/m\)">\(x-\lfloor x\rfloor=y+l/m\)</span>; the fractional parts of <span class="math" data-tex="\(x+j/m\)">\(x+j/m\)</span> are <span class="math" data-tex="\(y+p/m\)">\(y+p/m\)</span> for <span class="math" data-tex="\(p=0,\ldots,m-1\)">\(p=0,\ldots,m-1\)</span> in some order, with sum <span class="math" data-tex="\(my+\frac{m-1}2\)">\(my+\frac{m-1}2\)</span>, and <span class="math" data-tex="\(h(\lambda^m)=my\)">\(h(\lambda^m)=my\)</span>. Apply the calculus of <span class="math" data-tex="\(T\)">\(T\)</span> to (3.2), using (0.1) with <span class="math" data-tex="\(\phi(z)=\zeta^jz\)">\(\phi(z)=\zeta^jz\)</span> and <span class="math" data-tex="\(\phi(z)=z^m\)">\(\phi(z)=z^m\)</span>:
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^{m-1}h(\zeta^jT)=\frac{m-1}2I+h(T^m).
+\]">\[
+\sum_{j=0}^{m-1}h(\zeta^jT)=\frac{m-1}2I+h(T^m).
+\]</span>
+The operator <span class="math" data-tex="\(T^m\)">\(T^m\)</span> is diagonal, with entries the circuit weights starting at <span class="math" data-tex="\(d_0,\ldots,d_{m-1}\)">\(d_0,\ldots,d_{m-1}\)</span>. The weight starting at <span class="math" data-tex="\(d_{j+1}\)">\(d_{j+1}\)</span> is <span class="math" data-tex="\(W_j\)">\(W_j\)</span> times the weight starting at <span class="math" data-tex="\(d_j\)">\(d_j\)</span> times <span class="math" data-tex="\(W_j^{-1}\)">\(W_j^{-1}\)</span>, so all are conjugate in <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> to the weight (1.2), and <span class="math" data-tex="\(\tau_m(h(T^m))=m\,\tau(h(e^{2\pi i\eta_z}L(r_z^{-1})))\)">\(\tau_m(h(T^m))=m\,\tau(h(e^{2\pi i\eta_z}L(r_z^{-1})))\)</span>. Taking <span class="math" data-tex="\(\tau_m\)">\(\tau_m\)</span> of both sides gives <span class="math" data-tex="\(m\,\ell(T)=\frac{m(m-1)}2+m\,\tau(h(e^{2\pi i\eta_z}L(r_z^{-1})))\)">\(m\,\ell(T)=\frac{m(m-1)}2+m\,\tau(h(e^{2\pi i\eta_z}L(r_z^{-1})))\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-proof-of-the-planar-boundary-theorem">4. Proof of the planar boundary theorem</h2>
+<p><em>Proof of Theorem 2.1 of the disk lesson.</em> Let <span class="math" data-tex="\(z_0\)">\(z_0\)</span> be the boundary circle whose word may be nontrivial; all other words <span class="math" data-tex="\(r_z\)">\(r_z\)</span> are <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(0&lt;\delta&lt;1/q\)">\(0&lt;\delta&lt;1/q\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta_z=-\delta\quad(z\ne z_0),\\
+\eta_{z_0}=(q-1)\delta .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\eta_z=-\delta\quad(z\ne z_0),\\
+\eta_{z_0}=(q-1)\delta .
+\end{gathered}
+\]</span>
+These numbers add up to <span class="math" data-tex="\(0\)">\(0\)</span>, so Lemma 5.1 of the disk lesson gives <span class="math" data-tex="\(\gamma_d\)">\(\gamma_d\)</span> with <span class="math" data-tex="\(\gamma_{\theta d}=-\gamma_d\)">\(\gamma_{\theta d}=-\gamma_d\)</span> and <span class="math" data-tex="\(\sum_{d\in z}\gamma_d=\eta_z\)">\(\sum_{d\in z}\gamma_d=\eta_z\)</span>. With the corresponding <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>, Lemma 2.2 gives
+<span class="math math-display" data-tex="\[
+\ell(S\Theta)\le\frac32nk-k .
+\]">\[
+\ell(S\Theta)\le\frac32nk-k .
+\]</span>
+On the other hand, Lemma 3.1 computes <span class="math" data-tex="\(\ell(S\Theta)=\sum_z\ell(T_z)\)">\(\ell(S\Theta)=\sum_z\ell(T_z)\)</span>. Since <span class="math" data-tex="\(\sum_z|z|=2nk\)">\(\sum_z|z|=2nk\)</span> and there are <span class="math" data-tex="\(q\)">\(q\)</span> cycles,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ell(S\Theta)&amp;=\frac{2nk-q}2+\sum_{z\ne z_0}h(e^{-2\pi i\delta})\\
+&amp;\quad+\tau\bigl(h(e^{2\pi i(q-1)\delta}L(r_{z_0}^{-1}))\bigr)\\
+&amp;=\frac{2nk-q}2+(q-1)(1-\delta)\\
+&amp;\quad+\tau\bigl(f_\delta(L(r_{z_0}^{-1}))\bigr) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\ell(S\Theta)&amp;=\frac{2nk-q}2+\sum_{z\ne z_0}h(e^{-2\pi i\delta})\\
+&amp;\quad+\tau\bigl(h(e^{2\pi i(q-1)\delta}L(r_{z_0}^{-1}))\bigr)\\
+&amp;=\frac{2nk-q}2+(q-1)(1-\delta)\\
+&amp;\quad+\tau\bigl(f_\delta(L(r_{z_0}^{-1}))\bigr) ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(f_\delta(\lambda)=h(e^{2\pi i(q-1)\delta}\lambda)\)">\(f_\delta(\lambda)=h(e^{2\pi i(q-1)\delta}\lambda)\)</span>, by (0.1). As <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>, <span class="math" data-tex="\(f_\delta\to h\)">\(f_\delta\to h\)</span> pointwise on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>: the angle of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is shifted forward by <span class="math" data-tex="\((q-1)\delta\ge0\)">\((q-1)\delta\ge0\)</span>, and <span class="math" data-tex="\(h\)">\(h\)</span> is continuous from that side everywhere, including at <span class="math" data-tex="\(1\)">\(1\)</span>. The functions are bounded by <span class="math" data-tex="\(1\)">\(1\)</span>, so Lemma 2.1(2) of the trace lesson gives <span class="math" data-tex="\(\tau(f_\delta(L(r_{z_0}^{-1})))\to\tau(h(L(r_{z_0}^{-1})))\)">\(\tau(f_\delta(L(r_{z_0}^{-1})))\to\tau(h(L(r_{z_0}^{-1})))\)</span>. Using <span class="math" data-tex="\(q=nk-2k+2\)">\(q=nk-2k+2\)</span> (Lemma 4.1 of the disk lesson),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\lim_{\delta\downarrow0}\ell(S\Theta)\\
+&amp;\quad=\frac{2nk-q}2+q-1+\tau\bigl(h(L(r_{z_0}^{-1}))\bigr)\\
+&amp;\quad=\frac32nk-k+\tau\bigl(h(L(r_{z_0}^{-1}))\bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\lim_{\delta\downarrow0}\ell(S\Theta)\\
+&amp;\quad=\frac{2nk-q}2+q-1+\tau\bigl(h(L(r_{z_0}^{-1}))\bigr)\\
+&amp;\quad=\frac32nk-k+\tau\bigl(h(L(r_{z_0}^{-1}))\bigr) .
+\end{aligned}
+\]</span>
+The upper bound holds for every <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, so <span class="math" data-tex="\(\tau(h(L(r_{z_0}^{-1})))\le0\)">\(\tau(h(L(r_{z_0}^{-1})))\le0\)</span>. Since <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful, <span class="math" data-tex="\(h(L(r_{z_0}^{-1}))=0\)">\(h(L(r_{z_0}^{-1}))=0\)</span>, and <span class="math" data-tex="\(L(r_{z_0}^{-1})=e^{2\pi ih(L(r_{z_0}^{-1}))}=I\)">\(L(r_{z_0}^{-1})=e^{2\pi ih(L(r_{z_0}^{-1}))}=I\)</span> by Lemma 3.1(1) of the trace lesson. As <span class="math" data-tex="\(L(a)\delta_1=\delta_a\)">\(L(a)\delta_1=\delta_a\)</span>, this means <span class="math" data-tex="\(r_{z_0}=1\)">\(r_{z_0}=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only the uniform upper bound was used; the matrices <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> are chosen anew for every <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and no limit of them is taken. The phases <span class="math" data-tex="\(\eta_z\)">\(\eta_z\)</span> approach the cut from below on the trivial circles, where <span class="math" data-tex="\(h(e^{-2\pi i\delta})=1-\delta\)">\(h(e^{-2\pi i\delta})=1-\delta\)</span> is close to <span class="math" data-tex="\(1\)">\(1\)</span>, and from above on the exceptional circle, where the phase keeps its value <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span>. Planarity enters only through the count <span class="math" data-tex="\(q=nk-2k+2\)">\(q=nk-2k+2\)</span> (Exercise 5.2).</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Let <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(w=ta\)">\(w=ta\)</span>, and let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be the surface of Exercise 6.2 of the disk lesson. Write <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> as <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices over <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>, and check <span class="math" data-tex="\(\ell(SJ)=\frac12\)">\(\ell(SJ)=\frac12\)</span> and <span class="math" data-tex="\(\ell(S\Theta)\le\frac12\)">\(\ell(S\Theta)\le\frac12\)</span> directly.</p>
+<p><strong>5.2</strong> (medium). Suppose that a connected oriented surface of genus <span class="math" data-tex="\(g\)">\(g\)</span> were built from <span class="math" data-tex="\(k\)">\(k\)</span> positive and <span class="math" data-tex="\(k\)">\(k\)</span> negative word disks and <span class="math" data-tex="\(nk\)">\(nk\)</span> bands, so that its number of boundary circles is <span class="math" data-tex="\(q=nk-2k+2-2g\)">\(q=nk-2k+2-2g\)</span>. Show that the argument of Section 4 then gives only <span class="math" data-tex="\(\tau(h(L(r_{z_0}^{-1})))\le g\)">\(\tau(h(L(r_{z_0}^{-1})))\le g\)</span>.</p>
+<p><strong>5.3</strong> (easy). Check (3.2) for <span class="math" data-tex="\(m=2\)">\(m=2\)</span>.</p>
+<p><strong>5.4</strong> (medium). Show that the upper bound <span class="math" data-tex="\(\ell(J\Theta)\le nk-k\)">\(\ell(J\Theta)\le nk-k\)</span> is the only place where the fixed-space lemma is used, and that without it one would only get <span class="math" data-tex="\(\ell(J\Theta)\le nk\)">\(\ell(J\Theta)\le nk\)</span>, which gives no conclusion.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> Here <span class="math" data-tex="\(k=1\)">\(k=1\)</span> and <span class="math" data-tex="\(D=\{d_+,d_-\}\)">\(D=\{d_+,d_-\}\)</span>, with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> the identity, corners <span class="math" data-tex="\(c_{d_+}=a\)">\(c_{d_+}=a\)</span> and <span class="math" data-tex="\(c_{d_-}=a^{-1}\)">\(c_{d_-}=a^{-1}\)</span>, and <span class="math" data-tex="\(\gamma_{d_\pm}=\pm\gamma\)">\(\gamma_{d_\pm}=\pm\gamma\)</span> with <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> arbitrary (<span class="math" data-tex="\(q=1\)">\(q=1\)</span>, so <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span> forces nothing). In the basis <span class="math" data-tex="\((d_+,d_-)\)">\((d_+,d_-)\)</span>, <span class="math" data-tex="\(S=\operatorname{diag}(L(a^{-1}),L(a))\)">\(S=\operatorname{diag}(L(a^{-1}),L(a))\)</span>, <span class="math" data-tex="\(\Theta=\begin{pmatrix}0&amp;e^{-2\pi i\gamma}\\e^{2\pi i\gamma}&amp;0\end{pmatrix}\)">\(\Theta=\begin{pmatrix}0&amp;e^{-2\pi i\gamma}\\e^{2\pi i\gamma}&amp;0\end{pmatrix}\)</span>, and with <span class="math" data-tex="\(X=x\in\mathrm U(1)\)">\(X=x\in\mathrm U(1)\)</span>, <span class="math" data-tex="\(J=\begin{pmatrix}0&amp;\bar x\\x&amp;0\end{pmatrix}\)">\(J=\begin{pmatrix}0&amp;\bar x\\x&amp;0\end{pmatrix}\)</span>. Then <span class="math" data-tex="\(SJ=\begin{pmatrix}0&amp;\bar xL(a^{-1})\\xL(a)&amp;0\end{pmatrix}\)">\(SJ=\begin{pmatrix}0&amp;\bar xL(a^{-1})\\xL(a)&amp;0\end{pmatrix}\)</span> squares to <span class="math" data-tex="\(I\)">\(I\)</span> and has trace <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(\ell(SJ)=\frac12\cdot\frac{2}{2}=\frac12\)">\(\ell(SJ)=\frac12\cdot\frac{2}{2}=\frac12\)</span>. By Lemma 3.1 with one cycle of length <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, <span class="math" data-tex="\(\ell(S\Theta)=\frac12+h(e^{0})=\frac12\)">\(\ell(S\Theta)=\frac12+h(e^{0})=\frac12\)</span>.</p>
+<p><strong>5.2.</strong> The upper bound of Lemma 2.2 does not use planarity. The lower computation gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{2nk-q}2+q-1+\tau(\cdot)\\
+&amp;\quad=nk+\frac q2-1+\tau(\cdot)\\
+&amp;\quad=\frac32nk-k-g+\tau(\cdot).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{2nk-q}2+q-1+\tau(\cdot)\\
+&amp;\quad=nk+\frac q2-1+\tau(\cdot)\\
+&amp;\quad=\frac32nk-k-g+\tau(\cdot).
+\end{aligned}
+\]</span>
+Comparing, <span class="math" data-tex="\(\tau(h(L(r_{z_0}^{-1})))\le g\)">\(\tau(h(L(r_{z_0}^{-1})))\le g\)</span>, which says nothing once <span class="math" data-tex="\(g\ge1\)">\(g\ge1\)</span>, since <span class="math" data-tex="\(0\le\tau(h(\cdot))\le1\)">\(0\le\tau(h(\cdot))\le1\)</span>.</p>
+<p><strong>5.3.</strong> For <span class="math" data-tex="\(\lambda=e^{2\pi ix}\)">\(\lambda=e^{2\pi ix}\)</span>, <span class="math" data-tex="\(x\in[0,1)\)">\(x\in[0,1)\)</span>: if <span class="math" data-tex="\(x&lt;\frac12\)">\(x&lt;\frac12\)</span>, the left side is <span class="math" data-tex="\(x+(x+\frac12)=2x+\frac12\)">\(x+(x+\frac12)=2x+\frac12\)</span> and <span class="math" data-tex="\(h(\lambda^2)=2x\)">\(h(\lambda^2)=2x\)</span>; if <span class="math" data-tex="\(x\ge\frac12\)">\(x\ge\frac12\)</span>, it is <span class="math" data-tex="\(x+(x-\frac12)=2x-\frac12\)">\(x+(x-\frac12)=2x-\frac12\)</span> and <span class="math" data-tex="\(h(\lambda^2)=2x-1\)">\(h(\lambda^2)=2x-1\)</span>. In both cases the difference is <span class="math" data-tex="\(\frac12=\frac{m-1}2\)">\(\frac12=\frac{m-1}2\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> are scalar, and <span class="math" data-tex="\(\ell(J\Theta)=\frac{2nk-\dim\ker(J\Theta-I)}2\)">\(\ell(J\Theta)=\frac{2nk-\dim\ker(J\Theta-I)}2\)</span> by the computation in Lemma 2.2, which is at most <span class="math" data-tex="\(nk\)">\(nk\)</span> with no information on the kernel. The lower computation gives <span class="math" data-tex="\(\frac32nk-k+\tau(\cdot)\)">\(\frac32nk-k+\tau(\cdot)\)</span>; against <span class="math" data-tex="\(\frac{nk}2+nk\)">\(\frac{nk}2+nk\)</span> this yields only <span class="math" data-tex="\(\tau(h(L(r_{z_0}^{-1})))\le k\)">\(\tau(h(L(r_{z_0}^{-1})))\le k\)</span>, which is empty because <span class="math" data-tex="\(\tau(h(\cdot))\le1\le k\)">\(\tau(h(\cdot))\le1\le k\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-K] OpenAI, <em>The Kervaire theorem for groups</em>, OpenAI Math Release preprint, 24 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/The-Kervaire-Theorem-for-Groups-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

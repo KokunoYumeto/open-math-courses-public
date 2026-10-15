@@ -53,13 +53,19 @@ Each minimal occurrence is assigned to its own direction, so the support of \(b(
 
 *Proof.* By Lemma 2.2, the poset of the longer of the two traces is that of the shorter one with one maximal occurrence \(m\) adjoined, the order on the old occurrences being the induced one. For an old occurrence \(p\), the set of occurrences \(\preceq p\) is the same in both posets, since \(m\) is maximal and different from \(p\); so the minimal occurrences below \(p\), and the direction assigned to \(p\), are the same. Hence, if \(c\) is the vector of counts of the shorter trace, that of the longer one is \(c+e_v\), with \(v\) the direction assigned to \(m\). Since \(\|c/n\|_1=1\) and \(\|e_v\|_1=1\),
 \[
-\Bigl\|\frac{c+e_v}{n+1}-\frac cn\Bigr\|_1=\frac{\|e_v-c/n\|_1}{n+1}\le\frac2{n+1}.
+\begin{aligned}
+\Bigl\|\frac{c+e_v}{n+1}-\frac cn\Bigr\|_1&=\frac{\|e_v-c/n\|_1}{n+1}\\
+&\le\frac2{n+1}.
+\end{aligned}
 \]
 For the common simplex: adjoining a maximal occurrence keeps all old minimal occurrences minimal. If \(m\) is not minimal, the two sets of minimal directions coincide. If \(m\) is minimal, it is incomparable to every old occurrence, hence independent of all of them, and its direction is adjacent to all the old minimal directions. In both cases the union of the two sets of minimal directions is a clique, the vertex set of a simplex of \(L\) containing both supports. \(\square\)
 
 **Example 3.2** (commuting powers). Let \(\{q,r\}\) be an edge of \(L\) and \(0\le j\le N\), \(N\ge1\). The word \(a_q^{-(N-j)}a_r^{-j}\) is reduced: it contains no mutually inverse letters. Its poset consists of two chains, \(N-j\) occurrences of direction \(q\) and \(j\) of direction \(r\), and occurrences of different chains are independent. The minimal occurrences are the first occurrence of each nonempty chain, and every occurrence is assigned to its own direction. So
 \[
-b\bigl(a_q^{-(N-j)}a_r^{-j}\bigr)=\Bigl(1-\frac jN\Bigr)e_q+\frac jNe_r .\tag{3.3}
+\begin{aligned}
+&b\bigl(a_q^{-(N-j)}a_r^{-j}\bigr)\\
+&\quad=\Bigl(1-\frac jN\Bigr)e_q+\frac jNe_r .
+\end{aligned}\tag{3.3}
 \]
 
 ## 4. Exercises

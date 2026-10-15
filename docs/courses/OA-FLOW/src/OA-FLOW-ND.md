@@ -6,7 +6,7 @@ The proof applies to every locally compact Hausdorff abelian group and every von
 
 For the source theorem and its coordinate calculation, see Takesaki, *Theory of Operator Algebras II*, X.2, Proposition 2.2 and Theorem 2.3(iii)–(iv), printed pp.257–263. The full proof below keeps its own negative-character convention.
 
-*Newly written and restored original expression and illustration code in this chapter are dedicated to CC0-1.0. Source publications and programme dependencies retain their own terms.*
+*Original exposition and illustration code in this chapter are dedicated to CC0-1.0 to the extent of rights held. Source publications and programme dependencies retain their own terms.*
 
 <a id="nd-inputs"></a>
 

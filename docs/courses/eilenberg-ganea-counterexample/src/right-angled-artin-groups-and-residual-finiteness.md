@@ -15,7 +15,10 @@ We use semidirect products of groups and the definition of residual finiteness f
 
 A *commutation graph* \(\Theta\) is a finite simple graph with vertex set \(V\). Its *right-angled Artin group* is
 \[
-A_\Theta=\bigl\langle a_q\ (q\in V)\bigm|a_qa_r=a_ra_q\text{ whenever }\{q,r\}\text{ is an edge of }\Theta\bigr\rangle .
+\begin{aligned}
+&A_\Theta=\bigl\langle a_q\ (q\in V)\bigm|a_qa_r=a_ra_q\\
+&\qquad\text{whenever }\{q,r\}\text{ is an edge of }\Theta\bigr\rangle .
+\end{aligned}
 \]
 For a finite flag complex \(L\), \(A_L\) is the group of its \(1\)-skeleton, as in [Cohomological and geometric dimension](cohomological-and-geometric-dimension.md), Section 4. If \(\Theta\) has no edges, \(A_\Theta\) is the free group on \(V\); if \(\Theta\) is complete, it is \(\mathbb Z^V\). Every relation has exponent sum \(0\) in each generator, so there is a homomorphism \(A_\Theta\to\mathbb Z^V\), \(a_q\mapsto\) the \(q\)-th basis vector, the *abelianization map*.
 
@@ -39,7 +42,11 @@ Let \(P'/C\) be the set of left cosets \(gC\), \(g\in P'\), and \(F(P'/C)\) the 
 
 *\(\psi\) is a homomorphism.* The element \(gtg^{-1}\) depends only on the coset \(gC\): for \(c\in C\), \(gc\,t\,c^{-1}g^{-1}=gtg^{-1}\), since \(t\) commutes with the generators of \(C\). Let \(\psi_F\colon F(P'/C)\to A_\Theta\) be the homomorphism with \(\psi_F(b_{gC})=gtg^{-1}\); then \(\psi_F(g\cdot w)=g\,\psi_F(w)\,g^{-1}\) for \(g\in P'\), since both sides are homomorphisms in \(w\) that agree on the symbols. Put \(\psi(w,g)=\psi_F(w)g\). Then
 \[
-\psi\bigl((w,g)(w',g')\bigr)=\psi_F(w)\,g\,\psi_F(w')\,g^{-1}gg'=\psi(w,g)\,\psi(w',g').
+\begin{aligned}
+&\psi\bigl((w,g)(w',g')\bigr)\\
+&\quad=\psi_F(w)\,g\,\psi_F(w')\,g^{-1}gg'\\
+&\quad=\psi(w,g)\,\psi(w',g').
+\end{aligned}
 \]
 
 *They are inverse.* \(\psi\varphi\) fixes the generators \(a_r\) and \(t\). The element \(\varphi\psi(b_{gC},1)=\varphi(g)\varphi(t)\varphi(g)^{-1}=(1,g)(b_C,1)(1,g^{-1})=(b_{gC},1)\), and \(\varphi\psi(1,g)=\varphi(g)=(1,g)\), since \(\varphi\) restricted to \(P'\) is \(g\mapsto(1,g)\). These elements generate the semidirect product. \(\square\)

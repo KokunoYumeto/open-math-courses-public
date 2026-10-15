@@ -59,7 +59,10 @@ At a vertex there are finitely many cubes, one for each clique \(\sigma\) and ea
 
 By Lemmas 2.1 and 2.2 and (CUBE 1), the singular homology of \(E\) is the homology of its cellular chain complex. The group \(P\) acts on the chains on the left, freely on the cells, so each \(C_k(E)\) is a free left module over \(\Lambda=\mathbb ZP\) with basis the cells \(e_\sigma=\chi_{1,\sigma}\), \(\sigma\in K_k\); the cell \(\chi_{g,\sigma}\) is \(ge_\sigma\). For \(\sigma=\{q_1<\cdots<q_k\}\), (CUBE 1) and Lemma 2.1 give
 \[
-\partial e_\sigma=\sum_{i=1}^k(-1)^{i+1}(a_{q_i}-1)\,e_{\sigma\setminus q_i}.\tag{3.1}
+\begin{aligned}
+&\partial e_\sigma=\\
+&\sum_{i=1}^k(-1)^{i+1}(a_{q_i}-1)\,e_{\sigma\setminus q_i}.
+\end{aligned}\tag{3.1}
 \]
 Write \(\mathcal C(\Theta)\) for the complex of free \(\mathbb ZA_\Theta\)-modules \(\mathcal C_k(\Theta)=(\mathbb ZA_\Theta)^{(K_k)}\) with the boundary (3.1), augmented by \(\varepsilon\colon\mathcal C_0(\Theta)=\mathbb ZA_\Theta\to\mathbb Z\), the sum of the coefficients. So \(E\) is acyclic exactly when the augmented complex \(\mathcal C(\Theta)\to\mathbb Z\) is exact.
 
@@ -83,13 +86,19 @@ Write \(\mathcal C(\Theta)\) for the complex of free \(\mathbb ZA_\Theta\)-modul
 \]
 with the same formula (3.1). In the quotient \(\mathcal B=\mathcal C(\Theta)/\mathcal A\), spanned by the images of the \(e_{\sigma\cup q}\), the last term of (3.1), \(\pm(t-1)e_\sigma\), vanishes, since \(q\) is the largest element of \(\sigma\cup q\); so
 \[
-\mathcal B_k\cong\bigl(\Lambda\otimes_{\mathbb ZC}\mathcal C(N(q))\bigr)_{k-1},\qquad e_{\sigma\cup q}\mapsto1\otimes e_\sigma ,
+\begin{gathered}
+\mathcal B_k\cong\bigl(\Lambda\otimes_{\mathbb ZC}\mathcal C(N(q))\bigr)_{k-1},\\
+e_{\sigma\cup q}\mapsto1\otimes e_\sigma ,
+\end{gathered}
 \]
 again with the formula (3.1). The ring \(\Lambda\) is a free right module over \(\mathbb ZP'\) and over \(\mathbb ZC\), with bases sets of coset representatives, so tensoring preserves exactness. By the induction hypothesis, \(\mathcal A\) has homology \(\Lambda\otimes_{\mathbb ZP'}\mathbb Z=\mathbb Z[P/P']\) in degree \(0\) and none elsewhere, and \(\mathcal B\) has homology \(\Lambda\otimes_{\mathbb ZC}\mathbb Z=\mathbb Z[P/C]\) in degree \(1\) and none elsewhere.
 
 *The long exact sequence.* The short exact sequence \(0\to\mathcal A\to\mathcal C(\Theta)\to\mathcal B\to0\) gives \(H_k(\mathcal C(\Theta))=0\) for \(k\ge2\), and the exact sequence
 \[
-0\to H_1(\mathcal C(\Theta))\to\mathbb Z[P/C]\xrightarrow{\ \delta\ }\mathbb Z[P/P']\to H_0(\mathcal C(\Theta))\to0 .
+\begin{aligned}
+0&\to H_1(\mathcal C(\Theta))\to\mathbb Z[P/C]\\
+&\xrightarrow{\ \delta\ }\mathbb Z[P/P']\to H_0(\mathcal C(\Theta))\to0 .
+\end{aligned}
 \]
 The connecting map sends \(gC\), the class of \(ge_{\{q\}}\), to the class of \(\partial(ge_{\{q\}})=g(t-1)e_\varnothing\), that is,
 \[

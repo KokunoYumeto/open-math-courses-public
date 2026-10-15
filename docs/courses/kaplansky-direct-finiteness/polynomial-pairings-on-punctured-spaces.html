@@ -1,0 +1,126 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Polynomial pairings on punctured spaces</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Kaplansky&#x27;s direct-finiteness conjecture)</a><a href="packing-and-the-reverse-defect.html">Previous lesson</a><a href="direction-spaces-and-compatible-holes.html">Next lesson</a><a href="src/polynomial-pairings-on-punctured-spaces.md">Editable source</a></nav><main><article><h1 id="polynomial-pairings-on-punctured-spaces">Polynomial pairings on punctured spaces</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The incidence criterion of <a href="the-glued-group-and-planar-balance.html">The glued group and planar balance</a> asks for vectors <span class="math" data-tex="\(x_v\in K^m\)">\(x_v\in K^m\)</span> on the points of an incidence system with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{v\in f}x_vx_v^{\mathsf T}=0\ \text{ on every line }f,\\
+\sum_{v\in V}x_vx_v^{\mathsf T}=-I_m ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{v\in f}x_vx_v^{\mathsf T}=0\ \text{ on every line }f,\\
+\sum_{v\in V}x_vx_v^{\mathsf T}=-I_m ,
+\end{gathered}
+\]</span>
+and with <span class="math" data-tex="\(m&lt;|V|\)">\(m&lt;|V|\)</span>. This lesson constructs such vectors from low-degree polynomials on an affine space <span class="math" data-tex="\(Q^n\)">\(Q^n\)</span> over a field of characteristic two. Products of two polynomials of degree at most <span class="math" data-tex="\((q-2)/2\)">\((q-2)/2\)</span> have degree at most <span class="math" data-tex="\(q-2\)">\(q-2\)</span>, and such polynomials sum to zero over every full affine line and over the whole space. The interpolation polynomials of a set <span class="math" data-tex="\(O\)">\(O\)</span> of removed points, the <em>holes</em>, have unit vectors as values at the holes, so removing the holes leaves the total <span class="math" data-tex="\(-I_m\)">\(-I_m\)</span>. The lines themselves only have to avoid the holes; their arrangement is the subject of the next three lessons.</p>
+<ul>
+<li>Interpolation on an index simplex (Section 1).</li>
+<li>Sums over affine lines (Section 2).</li>
+<li>The pairing supplied by holes (Section 3).</li>
+</ul>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be a finite field with <span class="math" data-tex="\(q\)">\(q\)</span> elements. Its multiplicative group is cyclic (<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C40">Abstract Algebra II</a>: Judson, <em>Abstract Algebra: Theory and Applications</em>, Corollary 22.11). Polynomials in <span class="math" data-tex="\(n\)">\(n\)</span> variables are formal polynomials with coefficients in <span class="math" data-tex="\(Q\)">\(Q\)</span>; the <em>total degree</em> of a monomial <span class="math" data-tex="\(X_1^{k_1}\cdots X_n^{k_n}\)">\(X_1^{k_1}\cdots X_n^{k_n}\)</span> is <span class="math" data-tex="\(k_1+\cdots+k_n\)">\(k_1+\cdots+k_n\)</span>.</p>
+<h2 id="1-interpolation-on-an-index-simplex">1. Interpolation on an index simplex</h2>
+<p>Enumerate <span class="math" data-tex="\(Q\)">\(Q\)</span> as <span class="math" data-tex="\(a_0,a_1,\ldots,a_{q-1}\)">\(a_0,a_1,\ldots,a_{q-1}\)</span>. For <span class="math" data-tex="\(0\le d&lt;q\)">\(0\le d&lt;q\)</span> and <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S_d=\Bigl\{&amp;(a_{k_1},\ldots,a_{k_n}):\\
+&amp;k_i\ge0,\ \sum_ik_i\le d\Bigr\}\subseteq Q^n .
+\end{aligned}
+\]">\[
+\begin{aligned}
+S_d=\Bigl\{&amp;(a_{k_1},\ldots,a_{k_n}):\\
+&amp;k_i\ge0,\ \sum_ik_i\le d\Bigr\}\subseteq Q^n .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(d&lt;q\)">\(d&lt;q\)</span>, every index <span class="math" data-tex="\(k_i\le d\)">\(k_i\le d\)</span> is a valid index, distinct index tuples give distinct points, and <span class="math" data-tex="\(|S_d|=\binom{d+n}{n}\)">\(|S_d|=\binom{d+n}{n}\)</span>, which is also the number of monomials of total degree at most <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (interpolation; [OpenAI-DF2, Lemma 2.1]). Evaluation on <span class="math" data-tex="\(S_d\)">\(S_d\)</span> is a linear isomorphism from the space of polynomials of total degree at most <span class="math" data-tex="\(d\)">\(d\)</span> to the space <span class="math" data-tex="\(Q^{S_d}\)">\(Q^{S_d}\)</span> of functions on <span class="math" data-tex="\(S_d\)">\(S_d\)</span>.</p>
+<p><em>Proof.</em> For an index tuple <span class="math" data-tex="\(k=(k_1,\ldots,k_n)\)">\(k=(k_1,\ldots,k_n)\)</span> with <span class="math" data-tex="\(\sum_ik_i\le d\)">\(\sum_ik_i\le d\)</span> let
+<span class="math math-display" data-tex="\[
+N_k=\prod_{i=1}^n\prod_{0\le u&lt;k_i}(X_i-a_u),
+\]">\[
+N_k=\prod_{i=1}^n\prod_{0\le u&lt;k_i}(X_i-a_u),
+\]</span>
+a polynomial of total degree <span class="math" data-tex="\(\sum_ik_i\le d\)">\(\sum_ik_i\le d\)</span>. At the point with index tuple <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(N_k\)">\(N_k\)</span> vanishes if <span class="math" data-tex="\(j_i&lt;k_i\)">\(j_i&lt;k_i\)</span> for some <span class="math" data-tex="\(i\)">\(i\)</span>, because the factor with <span class="math" data-tex="\(u=j_i\)">\(u=j_i\)</span> is zero. Order the tuples lexicographically. If <span class="math" data-tex="\(N_k\)">\(N_k\)</span> is nonzero at the point <span class="math" data-tex="\(j\)">\(j\)</span>, then <span class="math" data-tex="\(j_i\ge k_i\)">\(j_i\ge k_i\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>, so <span class="math" data-tex="\(j\)">\(j\)</span> comes after or equals <span class="math" data-tex="\(k\)">\(k\)</span>. The square matrix of values <span class="math" data-tex="\(N_k(\text{point }j)\)">\(N_k(\text{point }j)\)</span> is therefore triangular, with diagonal entries
+<span class="math math-display" data-tex="\[
+N_k(\text{point }k)=\prod_{i=1}^n\prod_{0\le u&lt;k_i}(a_{k_i}-a_u)\ne0 .
+\]">\[
+N_k(\text{point }k)=\prod_{i=1}^n\prod_{0\le u&lt;k_i}(a_{k_i}-a_u)\ne0 .
+\]</span>
+So the <span class="math" data-tex="\(\binom{d+n}{n}\)">\(\binom{d+n}{n}\)</span> polynomials <span class="math" data-tex="\(N_k\)">\(N_k\)</span> have linearly independent evaluations on <span class="math" data-tex="\(S_d\)">\(S_d\)</span>. They lie in the polynomial space, which has the same dimension, so they form a basis of it, and evaluation is an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, for each point <span class="math" data-tex="\(o\in S_d\)">\(o\in S_d\)</span> there is a unique polynomial <span class="math" data-tex="\(f_o\)">\(f_o\)</span> of total degree at most <span class="math" data-tex="\(d\)">\(d\)</span> that equals <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(o\)">\(o\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> at the other points of <span class="math" data-tex="\(S_d\)">\(S_d\)</span>.</p>
+<h2 id="2-sums-over-affine-lines">2. Sums over affine lines</h2>
+<p>An <em>affine line</em> in <span class="math" data-tex="\(Q^n\)">\(Q^n\)</span> is a translate <span class="math" data-tex="\(p+Qw\)">\(p+Qw\)</span>, <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span>, of a one-dimensional subspace; it has <span class="math" data-tex="\(q\)">\(q\)</span> points, parametrized by <span class="math" data-tex="\(z\mapsto p+zw\)">\(z\mapsto p+zw\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (line sums; [OpenAI-DF2, Lemma 2.2]). Let <span class="math" data-tex="\(g\)">\(g\)</span> be a polynomial on <span class="math" data-tex="\(Q^n\)">\(Q^n\)</span> of total degree at most <span class="math" data-tex="\(q-2\)">\(q-2\)</span>. Then the sum of the values of <span class="math" data-tex="\(g\)">\(g\)</span> over every affine line is zero, and so is the sum over <span class="math" data-tex="\(Q^n\)">\(Q^n\)</span>.</p>
+<p><em>Proof.</em> Restricted to a line <span class="math" data-tex="\(z\mapsto p+zw\)">\(z\mapsto p+zw\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span> becomes a polynomial in <span class="math" data-tex="\(z\)">\(z\)</span> of degree at most <span class="math" data-tex="\(q-2\)">\(q-2\)</span>. It suffices to show <span class="math" data-tex="\(\sum_{z\in Q}z^k=0\)">\(\sum_{z\in Q}z^k=0\)</span> for <span class="math" data-tex="\(0\le k\le q-2\)">\(0\le k\le q-2\)</span>, with <span class="math" data-tex="\(z^0=1\)">\(z^0=1\)</span>. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> the sum is <span class="math" data-tex="\(q\cdot1=0\)">\(q\cdot1=0\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>. For <span class="math" data-tex="\(1\le k\le q-2\)">\(1\le k\le q-2\)</span>, choose <span class="math" data-tex="\(c\in Q^\times\)">\(c\in Q^\times\)</span> with <span class="math" data-tex="\(c^k\ne1\)">\(c^k\ne1\)</span>; it exists because <span class="math" data-tex="\(Q^\times\)">\(Q^\times\)</span> is cyclic of order <span class="math" data-tex="\(q-1&gt;k\)">\(q-1&gt;k\)</span>. Multiplication by <span class="math" data-tex="\(c\)">\(c\)</span> permutes <span class="math" data-tex="\(Q\)">\(Q\)</span>, so <span class="math" data-tex="\(\sum_zz^k=\sum_z(cz)^k=c^k\sum_zz^k\)">\(\sum_zz^k=\sum_z(cz)^k=c^k\sum_zz^k\)</span>, and <span class="math" data-tex="\((1-c^k)\sum_zz^k=0\)">\((1-c^k)\sum_zz^k=0\)</span> forces the sum to vanish. Finally, <span class="math" data-tex="\(Q^n\)">\(Q^n\)</span> is a disjoint union of parallel lines. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bound <span class="math" data-tex="\(q-2\)">\(q-2\)</span> is sharp: <span class="math" data-tex="\(\sum_{z\in Q}z^{q-1}=q-1=-1\)">\(\sum_{z\in Q}z^{q-1}=q-1=-1\)</span> (Exercise 4.2).</p>
+<h2 id="3-the-pairing-supplied-by-holes">3. The pairing supplied by holes</h2>
+<p><strong>Proposition 3.1</strong> (the pairing supplied by holes; [OpenAI-DF2, Proposition 2.3]). Let <span class="math" data-tex="\(q\ge4\)">\(q\ge4\)</span> be a power of two, <span class="math" data-tex="\(Q\)">\(Q\)</span> a field with <span class="math" data-tex="\(q\)">\(q\)</span> elements, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(d_0=(q-2)/2\)">\(d_0=(q-2)/2\)</span>, <span class="math" data-tex="\(S=S_{d_0}\subseteq\mathcal A=Q^n\)">\(S=S_{d_0}\subseteq\mathcal A=Q^n\)</span> and <span class="math" data-tex="\(N_{\rm pt}=q^n\)">\(N_{\rm pt}=q^n\)</span>. Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be an odd prime and <span class="math" data-tex="\(D=\ell+1\)">\(D=\ell+1\)</span>. Let <span class="math" data-tex="\(O\subseteq S\)">\(O\subseteq S\)</span> be a set of <em>holes</em> with
+<span class="math math-display" data-tex="\[
+\frac{2N_{\rm pt}}{D^2}\le|O|\le\frac{7N_{\rm pt}}{D^2},
+\]">\[
+\frac{2N_{\rm pt}}{D^2}\le|O|\le\frac{7N_{\rm pt}}{D^2},
+\]</span>
+and <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> a family of affine lines contained in <span class="math" data-tex="\(V=\mathcal A\setminus O\)">\(V=\mathcal A\setminus O\)</span>. Let <span class="math" data-tex="\(K\)">\(K\)</span> be a finite field containing <span class="math" data-tex="\(Q\)">\(Q\)</span>. Put <span class="math" data-tex="\(m=|O|\)">\(m=|O|\)</span>, <span class="math" data-tex="\(t=|V|\)">\(t=|V|\)</span>, and for <span class="math" data-tex="\(v\in\mathcal A\)">\(v\in\mathcal A\)</span>
+<span class="math math-display" data-tex="\[
+x_v=\bigl(f_o(v)\bigr)_{o\in O}\in Q^m\subseteq K^m ,
+\]">\[
+x_v=\bigl(f_o(v)\bigr)_{o\in O}\in Q^m\subseteq K^m ,
+\]</span>
+with the interpolation polynomials <span class="math" data-tex="\(f_o\)">\(f_o\)</span> of total degree at most <span class="math" data-tex="\(d_0\)">\(d_0\)</span> of Section 1. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0&lt;m&lt;t\le m\ell^2,\\
+\sum_{v\in V}x_vx_v^{\mathsf T}=-I_m,\\
+\sum_{v\in f}x_vx_v^{\mathsf T}=0\quad(f\in\mathcal F).
+\end{gathered}
+\]">\[
+\begin{gathered}
+0&lt;m&lt;t\le m\ell^2,\\
+\sum_{v\in V}x_vx_v^{\mathsf T}=-I_m,\\
+\sum_{v\in f}x_vx_v^{\mathsf T}=0\quad(f\in\mathcal F).
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> The entry <span class="math" data-tex="\((o,o&#x27;)\)">\((o,o&#x27;)\)</span> of <span class="math" data-tex="\(W_v=x_vx_v^{\mathsf T}\)">\(W_v=x_vx_v^{\mathsf T}\)</span> is <span class="math" data-tex="\(f_o(v)f_{o&#x27;}(v)\)">\(f_o(v)f_{o&#x27;}(v)\)</span>, the value at <span class="math" data-tex="\(v\)">\(v\)</span> of a polynomial of total degree at most <span class="math" data-tex="\(2d_0=q-2\)">\(2d_0=q-2\)</span>. By Lemma 2.1,
+<span class="math math-display" data-tex="\[
+\sum_{v\in f}W_v=0\quad(f\in\mathcal F),\qquad\sum_{v\in\mathcal A}W_v=0 .
+\]">\[
+\sum_{v\in f}W_v=0\quad(f\in\mathcal F),\qquad\sum_{v\in\mathcal A}W_v=0 .
+\]</span>
+For a hole <span class="math" data-tex="\(o\)">\(o\)</span>, the vector <span class="math" data-tex="\(x_o\)">\(x_o\)</span> is the unit vector of the coordinate <span class="math" data-tex="\(o\)">\(o\)</span>, because <span class="math" data-tex="\(f_{o&#x27;}(o)=1\)">\(f_{o&#x27;}(o)=1\)</span> exactly when <span class="math" data-tex="\(o&#x27;=o\)">\(o&#x27;=o\)</span> (both lie in <span class="math" data-tex="\(S\)">\(S\)</span>). Hence <span class="math" data-tex="\(\sum_{o\in O}W_o=I_m\)">\(\sum_{o\in O}W_o=I_m\)</span>, and
+<span class="math math-display" data-tex="\[
+\sum_{v\in V}W_v=\sum_{v\in\mathcal A}W_v-\sum_{o\in O}W_o=-I_m .
+\]">\[
+\sum_{v\in V}W_v=\sum_{v\in\mathcal A}W_v-\sum_{o\in O}W_o=-I_m .
+\]</span>
+The lines lie in <span class="math" data-tex="\(V\)">\(V\)</span>, so their sums are not affected by the removal.</p>
+<p>For the sizes: <span class="math" data-tex="\(m\ge2N_{\rm pt}/D^2&gt;0\)">\(m\ge2N_{\rm pt}/D^2&gt;0\)</span>. Since <span class="math" data-tex="\(\ell\ge3\)">\(\ell\ge3\)</span>, <span class="math" data-tex="\(D\ge4\)">\(D\ge4\)</span>, and <span class="math" data-tex="\(m\le7N_{\rm pt}/16&lt;N_{\rm pt}/2\)">\(m\le7N_{\rm pt}/16&lt;N_{\rm pt}/2\)</span>, so <span class="math" data-tex="\(t=N_{\rm pt}-m&gt;m\)">\(t=N_{\rm pt}-m&gt;m\)</span>. Finally
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac tm=\frac{N_{\rm pt}}m-1&amp;\le\frac{D^2}2-1\\
+&amp;\le(D-1)^2=\ell^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac tm=\frac{N_{\rm pt}}m-1&amp;\le\frac{D^2}2-1\\
+&amp;\le(D-1)^2=\ell^2 ,
+\end{aligned}
+\]</span>
+where the last inequality is equivalent to <span class="math" data-tex="\((D-2)^2\ge0\)">\((D-2)^2\ge0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 3.2.</strong> The identities are consistent with a regular line system only in suitable characteristic. If every point of <span class="math" data-tex="\(V\)">\(V\)</span> lies on exactly <span class="math" data-tex="\(D\)">\(D\)</span> lines of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, summing the line identities gives <span class="math" data-tex="\(D\sum_{v\in V}W_v=0\)">\(D\sum_{v\in V}W_v=0\)</span>, that is <span class="math" data-tex="\(-D\,I_m=0\)">\(-D\,I_m=0\)</span>, so the characteristic of <span class="math" data-tex="\(K\)">\(K\)</span> must divide <span class="math" data-tex="\(D=\ell+1\)">\(D=\ell+1\)</span> (Exercise 4.4). This is where the characteristic enters the construction: characteristic two divides <span class="math" data-tex="\(\ell+1\)">\(\ell+1\)</span> for every odd prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p>The vectors <span class="math" data-tex="\(x_v\)">\(x_v\)</span> are computed by finite-field linear algebra: <span class="math" data-tex="\(f_o\)">\(f_o\)</span> is obtained by inverting the triangular matrix of Lemma 1.1.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Let <span class="math" data-tex="\(q=4\)">\(q=4\)</span>, <span class="math" data-tex="\(Q=\{0,1,\omega,\omega^2\}\)">\(Q=\{0,1,\omega,\omega^2\}\)</span> with <span class="math" data-tex="\(\omega^2=\omega+1\)">\(\omega^2=\omega+1\)</span>, <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, and enumerate <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>, <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span>. Find <span class="math" data-tex="\(S_1\)">\(S_1\)</span> and the interpolation polynomials <span class="math" data-tex="\(f_0\)">\(f_0\)</span>, <span class="math" data-tex="\(f_1\)">\(f_1\)</span> of degree at most <span class="math" data-tex="\(1\)">\(1\)</span>, and check <span class="math" data-tex="\(\sum_{z\in Q}f_0(z)f_1(z)=0\)">\(\sum_{z\in Q}f_0(z)f_1(z)=0\)</span>.</p>
+<p><strong>4.2</strong> (easy). Show that <span class="math" data-tex="\(\sum_{z\in Q}z^{q-1}=-1\)">\(\sum_{z\in Q}z^{q-1}=-1\)</span>, so Lemma 2.1 fails for degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>.</p>
+<p><strong>4.3</strong> (medium). Show that the number of affine lines through a point of <span class="math" data-tex="\(Q^n\)">\(Q^n\)</span> is <span class="math" data-tex="\((q^n-1)/(q-1)\)">\((q^n-1)/(q-1)\)</span>, and that two distinct affine lines meet in at most one point.</p>
+<p><strong>4.4</strong> (medium). Let <span class="math" data-tex="\(K\)">\(K\)</span> be any field, <span class="math" data-tex="\((V,\mathcal F)\)">\((V,\mathcal F)\)</span> an incidence system in which every point lies on exactly <span class="math" data-tex="\(D\)">\(D\)</span> lines, and <span class="math" data-tex="\(W_v\in\operatorname{Mat}_m(K)\)">\(W_v\in\operatorname{Mat}_m(K)\)</span> with <span class="math" data-tex="\(\sum_{v\in f}W_v=0\)">\(\sum_{v\in f}W_v=0\)</span> for all lines and <span class="math" data-tex="\(\sum_vW_v=-I_m\)">\(\sum_vW_v=-I_m\)</span>, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>. Show that the characteristic of <span class="math" data-tex="\(K\)">\(K\)</span> divides <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(S_1=\{a_0,a_1\}=\{0,1\}\)">\(S_1=\{a_0,a_1\}=\{0,1\}\)</span>. The polynomials of degree at most one with the prescribed values are <span class="math" data-tex="\(f_0(z)=1+z\)">\(f_0(z)=1+z\)</span> and <span class="math" data-tex="\(f_1(z)=z\)">\(f_1(z)=z\)</span> (in characteristic two <span class="math" data-tex="\(-1=1\)">\(-1=1\)</span>). Then <span class="math" data-tex="\(f_0f_1=z+z^2\)">\(f_0f_1=z+z^2\)</span>, and <span class="math" data-tex="\(\sum_zz=0+1+\omega+\omega^2=0\)">\(\sum_zz=0+1+\omega+\omega^2=0\)</span>, <span class="math" data-tex="\(\sum_zz^2=\sum_zz=0\)">\(\sum_zz^2=\sum_zz=0\)</span>, since squaring permutes <span class="math" data-tex="\(Q\)">\(Q\)</span>. The degree of <span class="math" data-tex="\(f_0f_1\)">\(f_0f_1\)</span> is <span class="math" data-tex="\(2=q-2\)">\(2=q-2\)</span>, as Lemma 2.1 requires.</p>
+<p><strong>4.2.</strong> For <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, <span class="math" data-tex="\(z^{q-1}=1\)">\(z^{q-1}=1\)</span> because <span class="math" data-tex="\(Q^\times\)">\(Q^\times\)</span> has order <span class="math" data-tex="\(q-1\)">\(q-1\)</span>, and <span class="math" data-tex="\(0^{q-1}=0\)">\(0^{q-1}=0\)</span>. So the sum is <span class="math" data-tex="\((q-1)\cdot1=-1\)">\((q-1)\cdot1=-1\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>4.3.</strong> A line through <span class="math" data-tex="\(p\)">\(p\)</span> is <span class="math" data-tex="\(p+Qw\)">\(p+Qw\)</span>; two nonzero vectors give the same line exactly when they are proportional, so the lines through <span class="math" data-tex="\(p\)">\(p\)</span> correspond to the <span class="math" data-tex="\((q^n-1)/(q-1)\)">\((q^n-1)/(q-1)\)</span> one-dimensional subspaces. If two lines share two points <span class="math" data-tex="\(p\ne p&#x27;\)">\(p\ne p&#x27;\)</span>, both are <span class="math" data-tex="\(p+Q(p&#x27;-p)\)">\(p+Q(p&#x27;-p)\)</span>.</p>
+<p><strong>4.4.</strong> Each point lies on <span class="math" data-tex="\(D\)">\(D\)</span> lines, so <span class="math" data-tex="\(\sum_f\sum_{v\in f}W_v=D\sum_vW_v=-D\,I_m\)">\(\sum_f\sum_{v\in f}W_v=D\sum_vW_v=-D\,I_m\)</span>. The left side is zero, so <span class="math" data-tex="\(D\cdot1=0\)">\(D\cdot1=0\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-DF2] OpenAI, <em>A Counterexample to Kaplansky's Direct-Finiteness Conjecture in Characteristic Two</em>, OpenAI Math Release preprint, 23 September 2026, Section 2 (Lemmas 2.1, 2.2, Proposition 2.3, Remark 2.4). https://github.com/openai/math/tree/main/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Characteristic-Two-September-23-2026</li>
+<li>[Dyn–Floater] N. Dyn and M. S. Floater, <em>Multivariate polynomial interpolation on lower sets</em>, Journal of Approximation Theory 177 (2014), 34–42, on the lower-set interpolation used in Lemma 1.1; free in the publisher's open archive. https://doi.org/10.1016/j.jat.2013.09.008</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

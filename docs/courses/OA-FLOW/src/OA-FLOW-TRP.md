@@ -429,7 +429,7 @@ The symmetry z sends (a,b) to (β_z(a),−β_z(b)). It cannot be inner: an imple
 
 The general construction starts with a supplied faithful normal trace on a finite factor and a normal trace-preserving action. Section 8 constructs both hypotheses and proves the required outerness for every countable group. Sections 1–4 supply the bounded completion, trace and Fourier arguments, so no theorem about general unbounded Hilbert algebras or weights is needed.
 
-The elementary Hilbert and operator tools, and the earlier versions of the algebraic conventions, are available at these proof locators:
+The elementary Hilbert and operator tools, together with the algebraic conventions, are proved at these locations:
 
 | Prerequisite | Proof locator and use here |
 |---|---|

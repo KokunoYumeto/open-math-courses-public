@@ -139,7 +139,7 @@ For completeness the determinant derivative follows directly from multilinearity
 \frac d{dt}\det B(t)\bigg|_{t=0}
 =\det B(0)\operatorname{tr}\bigl(B(0)^{-1}B'(0)\bigr).
 \]
-Apply this to each real partial derivative and combine into \(\partial\). Here the real logarithm on positive numbers can be defined by \(\log t=\int_1^t ds/s\); the fundamental theorem and chain rule in [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) give its derivative \(1/t\). This gives the first formula of (B.1). Apply \(\bar\partial\) and use [Complex manifolds B.3](complex-manifolds-and-kahler-metrics.md#theorem-b-3) to obtain the second. Trace invariance and A.2 show that \(\eta_E\) is global and real. Locally \(\operatorname{tr}F=d\operatorname{tr}A\), so \(d\eta_E=0\).
+Apply this to each real partial derivative and combine into \(\partial\). Here the real logarithm on positive numbers can be defined by \(\log t=\int_1^t ds/s\); the fundamental theorem and chain rule in [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) give its derivative \(1/t\). This gives the first formula of (B.1). Apply \(\bar\partial\) and use [Complex manifolds B.3](complex-manifolds-and-kahler-metrics.md#theorem-b-3) to obtain the second. Trace invariance and A.2 show that \(\eta_E\) is global and real. Locally \(\operatorname{tr}F=d\operatorname{tr}A\), so \(d\eta_E=0\). The product and inverse identities for this real logarithm are proved in [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations).
 
 For two arbitrary complex connections, their difference \(T=D'-D\) is a global endomorphism-valued one-form by [Linear and affine connections A.3](linear-and-affine-connections.md#theorem-a-3). Subtract the local trace curvature formulas just proved:
 \[
@@ -950,7 +950,7 @@ Thus curvature decreases on holomorphic subbundles and increases on holomorphic 
 
 Project the Chern derivative onto \(S\) and \(S^\perp\). These are metric connections, by differentiating pairings and orthogonality. Since \(S\) is holomorphic, \(\bar\partial_E\) preserves its smooth sections. The projected \(S\)-connection has \((0,1)\) part \(\bar\partial_S\). On the quotient, if a section is represented by its orthogonal lift \(\tilde q\), the class of \(\bar\partial_E\tilde q\) is exactly \(\bar\partial_Qq\): replacing the lift by a section of \(S\) changes its derivative only by a section of \(S\) in this type. Thus the projected quotient connection has the required \((0,1)\) part as well. Uniqueness in A.1 identifies both projected connections with their Chern connections.
 
-Choose smooth unitary frames of the two summands by finite Gram–Schmidt. Smoothness of the inverse and positive square root used in this construction is established in [Local tools 0.4](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) and 0.0. The lower-left block of the ambient connection is \(\beta\). It has no \((0,1)\) component because that derivative preserves \(S\). On real tangent vectors the ambient connection matrix in a unitary frame is skew-adjoint, by metric compatibility in A.1, so the upper-right block is \(-\beta^*\). This proves (G.8).
+Choose smooth unitary frames of the two summands by finite Gram–Schmidt. Smooth matrix inversion is proved in [Local tools 0.4](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Positive square roots exist by Lemma 0.0. Their smoothness on positive inputs follows from [Local tools 1.3](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), applied to the squaring map at its positive root: its derivative is twice that root and is nonzero. The resulting smooth local section remains positive after restriction and is the unique positive root. The lower-left block of the ambient connection is \(\beta\). It has no \((0,1)\) component because that derivative preserves \(S\). On real tangent vectors the ambient connection matrix in a unitary frame is skew-adjoint, by metric compatibility in A.1, so the upper-right block is \(-\beta^*\). This proves (G.8).
 
 The general frame curvature formula \(F=dA+A\wedge A\), derived in A.2, is valid also in these smooth frames. Its diagonal blocks are
 \[
@@ -1077,7 +1077,7 @@ Fix \(\varepsilon\in\{1,-1\}\). Suppose a positive Hermitian holomorphic line bu
 \[
 iF_L=2\varepsilon\omega.                                    \tag{I.2}
 \]
-Such a line bundle always exists locally. Indeed [Complex manifolds E.3](complex-manifolds-and-kahler-metrics.md#theorem-e-3) proves the existence of a smooth real potential
+The positive real exponential and logarithm, with their inverse and differentiation identities, are proved in [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Such a line bundle always exists locally. Indeed [Complex manifolds E.3](complex-manifolds-and-kahler-metrics.md#theorem-e-3) proves the existence of a smooth real potential
 \(\omega=(i/2)\partial\bar\partial\phi\); on the trivial line take
 \[
 b=\exp(-\varepsilon\phi),\qquad
@@ -1182,7 +1182,7 @@ Its differential at zero is the identity, so [Complex manifolds A.3](complex-man
 \]
 Thus the new coefficients \(\Gamma'\) vanish there. The metric formula in [Complex manifolds D.3](complex-manifolds-and-kahler-metrics.md#proposition-d-3) forces every holomorphic first derivative of \(G'\) to vanish; Hermitian symmetry then forces its antiholomorphic first derivatives to vanish. The differential of the coordinate change was the identity, so \(G'(0)=I\). Rename these coordinates \(z\).
 
-For an initial line frame put \(u=\log b\). A new frame \(s'=s\exp f\), with \(f\) holomorphic, replaces \(u\) by \(u+f+\bar f\). Choose the polynomial
+The complex exponential, its nonvanishing and its derivative are proved in [Complex manifolds M.1](complex-manifolds-and-kahler-metrics.md#lemma-m-1). Composing it with a holomorphic polynomial gives zero antiholomorphic derivative by the chain rule, so [Complex manifolds A.2](complex-manifolds-and-kahler-metrics.md#theorem-a-2) makes the frame factor below holomorphic. For an initial line frame put \(u=\log b\). A new frame \(s'=s\exp f\), with \(f\) holomorphic, replaces \(u\) by \(u+f+\bar f\). Choose the polynomial
 \[
 f(z)=-\tfrac12u(0)-\sum_i u_i(0)z^i
                  -\tfrac12\sum_{i,j}u_{ij}(0)z^i z^j .

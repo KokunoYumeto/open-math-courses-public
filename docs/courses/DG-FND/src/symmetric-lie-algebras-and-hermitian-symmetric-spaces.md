@@ -3967,7 +3967,7 @@ d(\det)_A(H)=\det A\,\operatorname{tr}(A^{-1}H),
 d(\log\det)_A(H)=\operatorname{tr}(A^{-1}H)
 \tag{AL.3}
 \]
-on the positive Hermitian cone. The second equality uses the ordinary real derivative of the logarithm of the positive determinant. The identity \(AA^{-1}=I\), differentiated, also proves
+on the positive Hermitian cone. The real logarithm, its derivative \(d\log x/dx=1/x\) for \(x>0\), and its identity \(\log(xy)=\log x+\log y\) are proved in [Local tools 0.5](local-tools-for-bundles-and-transport.md#lemma-0-5). Apply that derivative to the positive determinant for the second equality. The identity \(AA^{-1}=I\), differentiated, also proves
 \[
 d(A^{-1})_A(H)=-A^{-1}HA^{-1}.
 \tag{AL.4}

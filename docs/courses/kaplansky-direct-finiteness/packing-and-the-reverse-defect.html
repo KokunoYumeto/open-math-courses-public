@@ -1,0 +1,201 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Packing and the reverse defect</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Kaplansky&#x27;s direct-finiteness conjecture)</a><a href="subgroup-averages-and-character-twists.html">Previous lesson</a><a href="polynomial-pairings-on-punctured-spaces.html">Next lesson</a><a href="src/packing-and-the-reverse-defect.md">Editable source</a></nav><main><article><h1 id="packing-and-the-reverse-defect">Packing and the reverse defect</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the incidence criterion, Theorem 1.1 of <a href="the-glued-group-and-planar-balance.html">The glued group and planar balance</a>, from the identities of the two preceding lessons. The rectangular identity <span class="math" data-tex="\(UT=I_m\)">\(UT=I_m\)</span> of <a href="subgroup-averages-and-character-twists.html">Subgroup averages and character twists</a> is turned into square <span class="math" data-tex="\(m\times m\)">\(m\times m\)</span> matrices <span class="math" data-tex="\(a_{\rm mat}\)">\(a_{\rm mat}\)</span>, <span class="math" data-tex="\(b_{\rm mat}\)">\(b_{\rm mat}\)</span> with <span class="math" data-tex="\(a_{\rm mat}b_{\rm mat}=I_m\)">\(a_{\rm mat}b_{\rm mat}=I_m\)</span>, by packing the <span class="math" data-tex="\(t\)">\(t\)</span> intermediate coordinates into <span class="math" data-tex="\(m\)">\(m\)</span> slots with orthogonal character idempotents. The reverse product <span class="math" data-tex="\(b_{\rm mat}a_{\rm mat}\)">\(b_{\rm mat}a_{\rm mat}\)</span> is shown to differ from <span class="math" data-tex="\(I_m\)">\(I_m\)</span> by a certificate: multiplied on both sides by the packing matrices, the defect becomes a matrix over the subgroup algebra <span class="math" data-tex="\(K[H]\)">\(K[H]\)</span>, and a character of <span class="math" data-tex="\(H\)">\(H\)</span> sends it to <span class="math" data-tex="\(X^{\mathsf T}X-I_t\)">\(X^{\mathsf T}X-I_t\)</span> up to a scalar factor, where <span class="math" data-tex="\(X\)">\(X\)</span> is the <span class="math" data-tex="\(m\times t\)">\(m\times t\)</span> matrix of the vectors <span class="math" data-tex="\(x_v\)">\(x_v\)</span>. Since <span class="math" data-tex="\(t&gt;m\)">\(t&gt;m\)</span>, this is not zero. Finally a finite group supplies matrix units, which encode the two matrices as two elements of one group algebra.</p>
+<ul>
+<li>Packing into slots (Section 1).</li>
+<li>Square matrices with a one-sided inverse (Section 2).</li>
+<li>The reverse defect (Section 3).</li>
+<li>From matrices to two elements (Section 4).</li>
+<li>Finite presentation and the proof of the criterion (Section 5).</li>
+</ul>
+<p>Notation is that of <a href="subgroup-averages-and-character-twists.html">Subgroup averages and character twists</a>: the glued group <span class="math" data-tex="\(N\)">\(N\)</span>, the averages <span class="math" data-tex="\(P_v\)">\(P_v\)</span>, the matrices <span class="math" data-tex="\(U\)">\(U\)</span>, <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(P=\operatorname{diag}(P_v)\)">\(P=\operatorname{diag}(P_v)\)</span> with <span class="math" data-tex="\(UP=U\)">\(UP=U\)</span>, <span class="math" data-tex="\(PT=T\)">\(PT=T\)</span>, <span class="math" data-tex="\(UT=I_m\)">\(UT=I_m\)</span> (Proposition 2.1 there), the groups <span class="math" data-tex="\(H=N\times\langle z\rangle\le L\)">\(H=N\times\langle z\rangle\le L\)</span> (Lemma 3.3), the central idempotent <span class="math" data-tex="\(e\)">\(e\)</span> (Lemma 4.1), the slots <span class="math" data-tex="\(s(v)\)">\(s(v)\)</span> and forms <span class="math" data-tex="\(\alpha_v\)">\(\alpha_v\)</span>, and the twisted averages <span class="math" data-tex="\(\tau_veP_v\tau_v^{-1}=eQ_{\alpha_v}\)">\(\tau_veP_v\tau_v^{-1}=eQ_{\alpha_v}\)</span> (Lemma 4.3).</p>
+<h2 id="1-packing-into-slots">1. Packing into slots</h2>
+<p>Define <span class="math" data-tex="\(C\in\operatorname{Mat}_{m\times t}(K[L])\)">\(C\in\operatorname{Mat}_{m\times t}(K[L])\)</span> and <span class="math" data-tex="\(J_0\in\operatorname{Mat}_{t\times m}(K[L])\)">\(J_0\in\operatorname{Mat}_{t\times m}(K[L])\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_{s,v}=\begin{cases}\tau_veP_v,&amp;s=s(v),\\0,&amp;s\ne s(v),\end{cases}\\
+(J_0)_{v,s}=\begin{cases}eP_v\tau_v^{-1},&amp;s=s(v),\\0,&amp;s\ne s(v).\end{cases}
+\end{gathered}
+\]">\[
+\begin{gathered}
+C_{s,v}=\begin{cases}\tau_veP_v,&amp;s=s(v),\\0,&amp;s\ne s(v),\end{cases}\\
+(J_0)_{v,s}=\begin{cases}eP_v\tau_v^{-1},&amp;s=s(v),\\0,&amp;s\ne s(v).\end{cases}
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 1.1.</strong> <span class="math" data-tex="\(J_0C=eP\)">\(J_0C=eP\)</span>.</p>
+<p><em>Proof.</em> The entry <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> of <span class="math" data-tex="\(J_0C\)">\(J_0C\)</span> is <span class="math" data-tex="\(eP_v\tau_v^{-1}\tau_weP_w\)">\(eP_v\tau_v^{-1}\tau_weP_w\)</span> if <span class="math" data-tex="\(s(v)=s(w)\)">\(s(v)=s(w)\)</span> and zero otherwise. For <span class="math" data-tex="\(v=w\)">\(v=w\)</span> it is <span class="math" data-tex="\(e^2P_v^2=eP_v\)">\(e^2P_v^2=eP_v\)</span>, since <span class="math" data-tex="\(e\)">\(e\)</span> is a central idempotent. For <span class="math" data-tex="\(v\ne w\)">\(v\ne w\)</span> in the same slot, Lemma 4.3 of the previous lesson gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+eP_v\tau_v^{-1}\tau_weP_w&amp;=\tau_v^{-1}\bigl(eQ_{\alpha_v}\bigr)\bigl(eQ_{\alpha_w}\bigr)\tau_w\\
+&amp;=0 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+eP_v\tau_v^{-1}\tau_weP_w&amp;=\tau_v^{-1}\bigl(eQ_{\alpha_v}\bigr)\bigl(eQ_{\alpha_w}\bigr)\tau_w\\
+&amp;=0 ,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\alpha_v\ne\alpha_w\)">\(\alpha_v\ne\alpha_w\)</span> and <span class="math" data-tex="\(Q_{\alpha_v}Q_{\alpha_w}=0\)">\(Q_{\alpha_v}Q_{\alpha_w}=0\)</span> (Lemma 4.2 there). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-square-matrices-with-a-one-sided-inverse">2. Square matrices with a one-sided inverse</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_{\rm mat}&amp;=UJ_0+(1-e)I_m,\\
+b_{\rm mat}&amp;=CT+(1-e)I_m ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+a_{\rm mat}&amp;=UJ_0+(1-e)I_m,\\
+b_{\rm mat}&amp;=CT+(1-e)I_m ,
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(m\times m\)">\(m\times m\)</span> matrices over <span class="math" data-tex="\(K[L]\)">\(K[L]\)</span>. Every entry of <span class="math" data-tex="\(C\)">\(C\)</span> and of <span class="math" data-tex="\(J_0\)">\(J_0\)</span> contains the central idempotent <span class="math" data-tex="\(e\)">\(e\)</span> as a factor, so
+<span class="math math-display" data-tex="\[
+(1-e)C=0,\qquad J_0(1-e)=0 ,
+\]">\[
+(1-e)C=0,\qquad J_0(1-e)=0 ,
+\]</span>
+and the same holds with <span class="math" data-tex="\(1-e\)">\(1-e\)</span> on the other side, because it is central.</p>
+<p><strong>Proposition 2.1.</strong> <span class="math" data-tex="\(a_{\rm mat}b_{\rm mat}=I_m\)">\(a_{\rm mat}b_{\rm mat}=I_m\)</span>.</p>
+<p><em>Proof.</em> The cross terms vanish: <span class="math" data-tex="\(UJ_0(1-e)=0\)">\(UJ_0(1-e)=0\)</span> and <span class="math" data-tex="\((1-e)CT=0\)">\((1-e)CT=0\)</span>. By Lemma 1.1 and <span class="math" data-tex="\(PT=T\)">\(PT=T\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_{\rm mat}b_{\rm mat}&amp;=U(J_0C)T+(1-e)^2I_m\\
+&amp;=eUPT+(1-e)I_m\\
+&amp;=eUT+(1-e)I_m ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+a_{\rm mat}b_{\rm mat}&amp;=U(J_0C)T+(1-e)^2I_m\\
+&amp;=eUPT+(1-e)I_m\\
+&amp;=eUT+(1-e)I_m ,
+\end{aligned}
+\]</span>
+which is <span class="math" data-tex="\(eI_m+(1-e)I_m=I_m\)">\(eI_m+(1-e)I_m=I_m\)</span> by <span class="math" data-tex="\(UT=I_m\)">\(UT=I_m\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-reverse-defect">3. The reverse defect</h2>
+<p>Put <span class="math" data-tex="\(\Delta=b_{\rm mat}a_{\rm mat}-I_m\)">\(\Delta=b_{\rm mat}a_{\rm mat}-I_m\)</span>. The same vanishing of cross terms gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta&amp;=CTUJ_0+(1-e)I_m-I_m\\
+&amp;=CTUJ_0-eI_m .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta&amp;=CTUJ_0+(1-e)I_m-I_m\\
+&amp;=CTUJ_0-eI_m .
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 3.1</strong> (the sandwich). <span class="math" data-tex="\(J_0\Delta C=e(TU-P)\)">\(J_0\Delta C=e(TU-P)\)</span>, a <span class="math" data-tex="\(t\times t\)">\(t\times t\)</span> matrix with entries in <span class="math" data-tex="\(K[H]\)">\(K[H]\)</span>.</p>
+<p><em>Proof.</em> By Lemma 1.1, <span class="math" data-tex="\(J_0\Delta C=(J_0C)TU(J_0C)-eJ_0C=(eP)TU(eP)-e^2P\)">\(J_0\Delta C=(J_0C)TU(J_0C)-eJ_0C=(eP)TU(eP)-e^2P\)</span>. Since <span class="math" data-tex="\(e\)">\(e\)</span> is central, this is <span class="math" data-tex="\(e(PT)(UP)-eP=e(TU-P)\)">\(e(PT)(UP)-eP=e(TU-P)\)</span>. The entries of <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> lie in <span class="math" data-tex="\(K[N]\)">\(K[N]\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> lies in <span class="math" data-tex="\(K[\langle z\rangle]\)">\(K[\langle z\rangle]\)</span>, so all entries lie in <span class="math" data-tex="\(K[H]\)">\(K[H]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The order of the factors matters here: <span class="math" data-tex="\(P\)">\(P\)</span> is absorbed into <span class="math" data-tex="\(T\)">\(T\)</span> on the left and into <span class="math" data-tex="\(U\)">\(U\)</span> on the right.</p>
+<p>Since <span class="math" data-tex="\(H=N\times\langle z\rangle\)">\(H=N\times\langle z\rangle\)</span>, there is a homomorphism of groups <span class="math" data-tex="\(H\to K^\times\)">\(H\to K^\times\)</span>, <span class="math" data-tex="\(nz^r\mapsto\zeta^r\)">\(nz^r\mapsto\zeta^r\)</span> for <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>, and it extends linearly to a homomorphism of <span class="math" data-tex="\(K\)">\(K\)</span>-algebras
+<span class="math math-display" data-tex="\[
+\varepsilon:K[H]\to K,\qquad\varepsilon(nz^r)=\zeta^r .
+\]">\[
+\varepsilon:K[H]\to K,\qquad\varepsilon(nz^r)=\zeta^r .
+\]</span>
+It is applied only to <span class="math" data-tex="\(K[H]\)">\(K[H]\)</span>; no extension to <span class="math" data-tex="\(K[L]\)">\(K[L]\)</span> is claimed or needed.</p>
+<p><strong>Proposition 3.2.</strong> <span class="math" data-tex="\(\Delta\ne0\)">\(\Delta\ne0\)</span>.</p>
+<p><em>Proof.</em> We compute <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> on the entries of Lemma 3.1. First <span class="math" data-tex="\(\varepsilon(e)=\ell^{-1}\sum_r\zeta^{-r}\zeta^r=1\)">\(\varepsilon(e)=\ell^{-1}\sum_r\zeta^{-r}\zeta^r=1\)</span> and <span class="math" data-tex="\(\varepsilon(P_v)=\kappa^{-1}\kappa=1\)">\(\varepsilon(P_v)=\kappa^{-1}\kappa=1\)</span>. Let <span class="math" data-tex="\(X\in\operatorname{Mat}_{m\times t}(K)\)">\(X\in\operatorname{Mat}_{m\times t}(K)\)</span> be the matrix with columns <span class="math" data-tex="\(x_v\)">\(x_v\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varepsilon(U)=-\kappa X,\quad\varepsilon(T)=X^{\mathsf T},\\
+\varepsilon(P)=I_t ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\varepsilon(U)=-\kappa X,\quad\varepsilon(T)=X^{\mathsf T},\\
+\varepsilon(P)=I_t ,
+\end{gathered}
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+\varepsilon\bigl(e(TU-P)\bigr)=-\kappa X^{\mathsf T}X-I_t .
+\]">\[
+\varepsilon\bigl(e(TU-P)\bigr)=-\kappa X^{\mathsf T}X-I_t .
+\]</span>
+Since <span class="math" data-tex="\(X\)">\(X\)</span> has <span class="math" data-tex="\(m&lt;t\)">\(m&lt;t\)</span> rows, there is <span class="math" data-tex="\(y\in K^t\)">\(y\in K^t\)</span>, <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, with <span class="math" data-tex="\(Xy=0\)">\(Xy=0\)</span>, and then <span class="math" data-tex="\(\bigl(-\kappa X^{\mathsf T}X-I_t\bigr)y=-y\ne0\)">\(\bigl(-\kappa X^{\mathsf T}X-I_t\bigr)y=-y\ne0\)</span>. So <span class="math" data-tex="\(e(TU-P)\)">\(e(TU-P)\)</span> is a nonzero matrix over <span class="math" data-tex="\(K[H]\)">\(K[H]\)</span>, hence over <span class="math" data-tex="\(K[L]\)">\(K[L]\)</span> by Lemma 3.3 of the previous lesson. By Lemma 3.1, <span class="math" data-tex="\(J_0\Delta C\ne0\)">\(J_0\Delta C\ne0\)</span>, so <span class="math" data-tex="\(\Delta\ne0\)">\(\Delta\ne0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So <span class="math" data-tex="\(a_{\rm mat}\)">\(a_{\rm mat}\)</span> and <span class="math" data-tex="\(b_{\rm mat}\)">\(b_{\rm mat}\)</span> show that <span class="math" data-tex="\(K[L]\)">\(K[L]\)</span> is not stably finite. The certificate uses only finite-field linear algebra on the vectors <span class="math" data-tex="\(x_v\)">\(x_v\)</span>; in characteristic two, where <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span> and <span class="math" data-tex="\(XX^{\mathsf T}=I_m\)">\(XX^{\mathsf T}=I_m\)</span>, a nonzero column of <span class="math" data-tex="\(I_t-X^{\mathsf T}X\)">\(I_t-X^{\mathsf T}X\)</span> is an explicit choice of <span class="math" data-tex="\(y\)">\(y\)</span> (Exercise 6.2).</p>
+<h2 id="4-from-matrices-to-two-elements">4. From matrices to two elements</h2>
+<p>A counterexample to stable finiteness becomes a counterexample to direct finiteness after a product with a suitable finite group: this is the reduction of Dykema, Heister and Juschenko [Dykema–Heister–Juschenko, abstract]. Here it is carried out explicitly.</p>
+<p>Let <span class="math" data-tex="\(B=(\mathbb Z/\ell)^m\)">\(B=(\mathbb Z/\ell)^m\)</span> and <span class="math" data-tex="\(F=B\rtimes S_m\)">\(F=B\rtimes S_m\)</span>, where the symmetric group <span class="math" data-tex="\(S_m\)">\(S_m\)</span> permutes the coordinates: <span class="math" data-tex="\(\sigma w\sigma^{-1}=\sigma\cdot w\)">\(\sigma w\sigma^{-1}=\sigma\cdot w\)</span> with <span class="math" data-tex="\((\sigma\cdot w)_{\sigma(k)}=w_k\)">\((\sigma\cdot w)_{\sigma(k)}=w_k\)</span>. For <span class="math" data-tex="\(1\le i\le m\)">\(1\le i\le m\)</span> put
+<span class="math math-display" data-tex="\[
+p_i=|B|^{-1}\sum_{w\in B}\zeta^{-w_i}w\in K[F] ,
+\]">\[
+p_i=|B|^{-1}\sum_{w\in B}\zeta^{-w_i}w\in K[F] ,
+\]</span>
+where <span class="math" data-tex="\(|B|=\ell^m\)">\(|B|=\ell^m\)</span> is odd, hence invertible in <span class="math" data-tex="\(K\)">\(K\)</span>. No inverse of <span class="math" data-tex="\(|S_m|\)">\(|S_m|\)</span> is needed.</p>
+<p><strong>Lemma 4.1.</strong> The <span class="math" data-tex="\(p_i\)">\(p_i\)</span> are nonzero, pairwise orthogonal idempotents, and <span class="math" data-tex="\(\sigma p_i\sigma^{-1}=p_{\sigma(i)}\)">\(\sigma p_i\sigma^{-1}=p_{\sigma(i)}\)</span> for <span class="math" data-tex="\(\sigma\in S_m\)">\(\sigma\in S_m\)</span>.</p>
+<p><em>Proof.</em> The coefficient of <span class="math" data-tex="\(w\)">\(w\)</span> in <span class="math" data-tex="\(p_ip_j\)">\(p_ip_j\)</span> is <span class="math" data-tex="\(|B|^{-2}\zeta^{-w_j}\sum_{u\in B}\zeta^{u_j-u_i}\)">\(|B|^{-2}\zeta^{-w_j}\sum_{u\in B}\zeta^{u_j-u_i}\)</span>. If <span class="math" data-tex="\(i=j\)">\(i=j\)</span>, the sum is <span class="math" data-tex="\(|B|\)">\(|B|\)</span>, giving the coefficient of <span class="math" data-tex="\(w\)">\(w\)</span> in <span class="math" data-tex="\(p_i\)">\(p_i\)</span>. If <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, the map <span class="math" data-tex="\(u\mapsto\zeta^{u_j-u_i}\)">\(u\mapsto\zeta^{u_j-u_i}\)</span> is a nontrivial character of <span class="math" data-tex="\(B\)">\(B\)</span>, and translating <span class="math" data-tex="\(u\)">\(u\)</span> by a vector <span class="math" data-tex="\(u_0\)">\(u_0\)</span> with <span class="math" data-tex="\(\zeta^{u_{0,j}-u_{0,i}}\ne1\)">\(\zeta^{u_{0,j}-u_{0,i}}\ne1\)</span> shows that the sum is zero. The identity coefficient of <span class="math" data-tex="\(p_i\)">\(p_i\)</span> is <span class="math" data-tex="\(|B|^{-1}\ne0\)">\(|B|^{-1}\ne0\)</span>. Finally <span class="math" data-tex="\(\sigma p_i\sigma^{-1}=|B|^{-1}\sum_w\zeta^{-w_i}\,\sigma\cdot w\)">\(\sigma p_i\sigma^{-1}=|B|^{-1}\sum_w\zeta^{-w_i}\,\sigma\cdot w\)</span>, and substituting <span class="math" data-tex="\(w&#x27;=\sigma\cdot w\)">\(w&#x27;=\sigma\cdot w\)</span>, with <span class="math" data-tex="\(w&#x27;_{\sigma(i)}=w_i\)">\(w&#x27;_{\sigma(i)}=w_i\)</span>, gives <span class="math" data-tex="\(p_{\sigma(i)}\)">\(p_{\sigma(i)}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(\sigma_i\in S_m\)">\(\sigma_i\in S_m\)</span> exchange the coordinates <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(i\)">\(i\)</span>, with <span class="math" data-tex="\(\sigma_1=1\)">\(\sigma_1=1\)</span>, and put
+<span class="math math-display" data-tex="\[
+p_{ij}=\sigma_ip_1\sigma_j^{-1}\qquad(1\le i,j\le m).
+\]">\[
+p_{ij}=\sigma_ip_1\sigma_j^{-1}\qquad(1\le i,j\le m).
+\]</span></p>
+<p><strong>Lemma 4.2</strong> (matrix units). <span class="math" data-tex="\(p_{ii}=p_i\)">\(p_{ii}=p_i\)</span>, <span class="math" data-tex="\(p_{ij}p_{kr}=\delta_{jk}\,p_{ir}\)">\(p_{ij}p_{kr}=\delta_{jk}\,p_{ir}\)</span>, and the <span class="math" data-tex="\(m^2\)">\(m^2\)</span> elements <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span> are linearly independent over <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(p_{ii}=\sigma_ip_1\sigma_i^{-1}=p_i\)">\(p_{ii}=\sigma_ip_1\sigma_i^{-1}=p_i\)</span> by Lemma 4.1. Also <span class="math" data-tex="\(p_ip_{ij}p_j=\sigma_ip_1^3\sigma_j^{-1}=p_{ij}\)">\(p_ip_{ij}p_j=\sigma_ip_1^3\sigma_j^{-1}=p_{ij}\)</span>. If <span class="math" data-tex="\(j\ne k\)">\(j\ne k\)</span>, then <span class="math" data-tex="\(p_{ij}p_{kr}=p_{ij}p_jp_kp_{kr}=0\)">\(p_{ij}p_{kr}=p_{ij}p_jp_kp_{kr}=0\)</span>. If <span class="math" data-tex="\(j=k\)">\(j=k\)</span>, then <span class="math" data-tex="\(p_{ij}p_{jr}=\sigma_ip_1^2\sigma_r^{-1}=p_{ir}\)">\(p_{ij}p_{jr}=\sigma_ip_1^2\sigma_r^{-1}=p_{ir}\)</span>. Each <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span> is nonzero, being a translate of <span class="math" data-tex="\(p_1\)">\(p_1\)</span> on both sides. If <span class="math" data-tex="\(\sum c_{ij}p_{ij}=0\)">\(\sum c_{ij}p_{ij}=0\)</span>, multiplying by <span class="math" data-tex="\(p_k\)">\(p_k\)</span> on the left and <span class="math" data-tex="\(p_l\)">\(p_l\)</span> on the right leaves <span class="math" data-tex="\(c_{kl}p_{kl}=0\)">\(c_{kl}p_{kl}=0\)</span>, so <span class="math" data-tex="\(c_{kl}=0\)">\(c_{kl}=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(G=L\times F\)">\(G=L\times F\)</span>. Then <span class="math" data-tex="\(K[L]\)">\(K[L]\)</span> and <span class="math" data-tex="\(K[F]\)">\(K[F]\)</span> are commuting subalgebras of <span class="math" data-tex="\(K[G]\)">\(K[G]\)</span>, and the basis <span class="math" data-tex="\(G=\{(g,h)\}\)">\(G=\{(g,h)\}\)</span> identifies <span class="math" data-tex="\(K[G]\)">\(K[G]\)</span> with <span class="math" data-tex="\(K[L]\otimes_KK[F]\)">\(K[L]\otimes_KK[F]\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_{\rm blk}=\sum_{i=1}^mp_{ii},\\
+\Phi:\operatorname{Mat}_m(K[L])\to K[G],\\
+\Phi(Z)=\sum_{i,j}Z_{ij}\,p_{ij} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+f_{\rm blk}=\sum_{i=1}^mp_{ii},\\
+\Phi:\operatorname{Mat}_m(K[L])\to K[G],\\
+\Phi(Z)=\sum_{i,j}Z_{ij}\,p_{ij} .
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 4.3.</strong> <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is additive, multiplicative and injective, <span class="math" data-tex="\(\Phi(I_m)=f_{\rm blk}\)">\(\Phi(I_m)=f_{\rm blk}\)</span>, and <span class="math" data-tex="\(f_{\rm blk}\Phi(Z)=\Phi(Z)=\Phi(Z)f_{\rm blk}\)">\(f_{\rm blk}\Phi(Z)=\Phi(Z)=\Phi(Z)f_{\rm blk}\)</span>.</p>
+<p><em>Proof.</em> Since the entries commute with the <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span>, Lemma 4.2 gives <span class="math" data-tex="\(\Phi(Z)\Phi(Z&#x27;)=\sum Z_{ij}Z&#x27;_{kr}p_{ij}p_{kr}=\sum_{i,j,r}Z_{ij}Z&#x27;_{jr}p_{ir}=\Phi(ZZ&#x27;)\)">\(\Phi(Z)\Phi(Z&#x27;)=\sum Z_{ij}Z&#x27;_{kr}p_{ij}p_{kr}=\sum_{i,j,r}Z_{ij}Z&#x27;_{jr}p_{ir}=\Phi(ZZ&#x27;)\)</span>. Then <span class="math" data-tex="\(\Phi(I_m)=f_{\rm blk}\)">\(\Phi(I_m)=f_{\rm blk}\)</span>, and the last identities are <span class="math" data-tex="\(\Phi(I_m)\Phi(Z)=\Phi(Z)=\Phi(Z)\Phi(I_m)\)">\(\Phi(I_m)\Phi(Z)=\Phi(Z)=\Phi(Z)\Phi(I_m)\)</span>. If <span class="math" data-tex="\(\Phi(Z)=0\)">\(\Phi(Z)=0\)</span>, write <span class="math" data-tex="\(Z_{ij}=\sum_{g\in L}c_{ij,g}\,g\)">\(Z_{ij}=\sum_{g\in L}c_{ij,g}\,g\)</span>; collecting the terms with first coordinate <span class="math" data-tex="\(g\)">\(g\)</span> gives <span class="math" data-tex="\(\sum_{i,j}c_{ij,g}\,p_{ij}=0\)">\(\sum_{i,j}c_{ij,g}\,p_{ij}=0\)</span> for each <span class="math" data-tex="\(g\)">\(g\)</span>, so all <span class="math" data-tex="\(c_{ij,g}=0\)">\(c_{ij,g}=0\)</span> by Lemma 4.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Now put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a&amp;=1-f_{\rm blk}+\Phi(a_{\rm mat}),\\
+b&amp;=1-f_{\rm blk}+\Phi(b_{\rm mat}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+a&amp;=1-f_{\rm blk}+\Phi(a_{\rm mat}),\\
+b&amp;=1-f_{\rm blk}+\Phi(b_{\rm mat}).
+\end{aligned}
+\]</span></p>
+<p><strong>Proposition 4.4.</strong> <span class="math" data-tex="\(ab=1\)">\(ab=1\)</span> and <span class="math" data-tex="\(ba\ne1\)">\(ba\ne1\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(f_{\rm blk}\)">\(f_{\rm blk}\)</span> is an idempotent, and <span class="math" data-tex="\(1-f_{\rm blk}\)">\(1-f_{\rm blk}\)</span> annihilates every <span class="math" data-tex="\(\Phi(Z)\)">\(\Phi(Z)\)</span> on both sides by Lemma 4.3. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ab&amp;=(1-f_{\rm blk})+\Phi(a_{\rm mat}b_{\rm mat})\\
+&amp;=1-f_{\rm blk}+\Phi(I_m)=1 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+ab&amp;=(1-f_{\rm blk})+\Phi(a_{\rm mat}b_{\rm mat})\\
+&amp;=1-f_{\rm blk}+\Phi(I_m)=1 ,
+\end{aligned}
+\]</span>
+by Proposition 2.1, and in the same way <span class="math" data-tex="\(ba-1=\Phi(b_{\rm mat}a_{\rm mat})-f_{\rm blk}=\Phi(\Delta)\)">\(ba-1=\Phi(b_{\rm mat}a_{\rm mat})-f_{\rm blk}=\Phi(\Delta)\)</span>, which is nonzero by Proposition 3.2 and injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The elements <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are finite sums: <span class="math" data-tex="\(a_{\rm mat}\)">\(a_{\rm mat}\)</span> and <span class="math" data-tex="\(b_{\rm mat}\)">\(b_{\rm mat}\)</span> have finitely many entries, each a finite sum, and <span class="math" data-tex="\(f_{\rm blk}\)">\(f_{\rm blk}\)</span> and the <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span> lie in the finite-dimensional algebra <span class="math" data-tex="\(K[F]\)">\(K[F]\)</span>.</p>
+<h2 id="5-finite-presentation-and-the-proof-of-the-criterion">5. Finite presentation and the proof of the criterion</h2>
+<p><strong>Lemma 5.1.</strong> The group <span class="math" data-tex="\(G=L\times F\)">\(G=L\times F\)</span> is finitely presented and contains an element of order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(N\)">\(N\)</span> has a finite presentation by Lemma 2.2 of <a href="the-glued-group-and-planar-balance.html">The glued group and planar balance</a>. Adding the generator <span class="math" data-tex="\(z\)">\(z\)</span> with the relators <span class="math" data-tex="\(z^\ell\)">\(z^\ell\)</span> and <span class="math" data-tex="\([z,s]=zsz^{-1}s^{-1}\)">\([z,s]=zsz^{-1}s^{-1}\)</span> for each generator <span class="math" data-tex="\(s\)">\(s\)</span> of <span class="math" data-tex="\(N\)">\(N\)</span> presents <span class="math" data-tex="\(H=N\times\langle z\rangle\)">\(H=N\times\langle z\rangle\)</span>. Every element of <span class="math" data-tex="\(K_v\)">\(K_v\)</span> and <span class="math" data-tex="\(K_*\)">\(K_*\)</span> is a generator <span class="math" data-tex="\(s_{f,c}\)">\(s_{f,c}\)</span> or the identity, so Definition 3.1 of the previous lesson adds <span class="math" data-tex="\(|V|\)">\(|V|\)</span> generators <span class="math" data-tex="\(\tau_v\)">\(\tau_v\)</span> and at most <span class="math" data-tex="\(|V|\ell^3\)">\(|V|\ell^3\)</span> relators, one for each <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(u\in K_v\)">\(u\in K_v\)</span> and <span class="math" data-tex="\(r\in\mathbb Z/\ell\)">\(r\in\mathbb Z/\ell\)</span>; so <span class="math" data-tex="\(L\)">\(L\)</span> is finitely presented. The finite group <span class="math" data-tex="\(F\)">\(F\)</span> is presented by its multiplication table. A presentation of <span class="math" data-tex="\(L\times F\)">\(L\times F\)</span> consists of the presentations of the two factors on disjoint generators together with the commutators of each generator of <span class="math" data-tex="\(L\)">\(L\)</span> with each generator of <span class="math" data-tex="\(F\)">\(F\)</span>. Finally, <span class="math" data-tex="\(K_v\le N\le H\le L\le G\)">\(K_v\le N\le H\le L\le G\)</span> by Lemma 4.1 of <a href="the-glued-group-and-planar-balance.html">The glued group and planar balance</a> and Lemma 3.3 of the previous lesson, and the nonidentity elements of <span class="math" data-tex="\(K_v\cong\mathbb F_\ell^2\)">\(K_v\cong\mathbb F_\ell^2\)</span> have order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Theorem 1.1 of <a href="the-glued-group-and-planar-balance.html">The glued group and planar balance</a>.</em> Lemma 4.1 there embeds the local groups, the previous lesson and Sections 1 to 4 here construct <span class="math" data-tex="\(a,b\in K[G]\)">\(a,b\in K[G]\)</span> with <span class="math" data-tex="\(ab=1\)">\(ab=1\)</span> and <span class="math" data-tex="\(ba\ne1\)">\(ba\ne1\)</span>, and Lemma 5.1 shows that <span class="math" data-tex="\(G\)">\(G\)</span> is finitely presented with an element of order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof shows failure of direct finiteness by exhibiting the two elements; it does not deduce it from the failure of stable finiteness in an arbitrary ring. The ingredients that remain are the finite data: the incidence system and the vectors <span class="math" data-tex="\(x_v\)">\(x_v\)</span>, supplied in <a href="polynomial-pairings-on-punctured-spaces.html">Polynomial pairings on punctured spaces</a> and the following lessons.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). Check <span class="math" data-tex="\(\Delta=CTUJ_0-eI_m\)">\(\Delta=CTUJ_0-eI_m\)</span> in detail, writing out all four products in <span class="math" data-tex="\(b_{\rm mat}a_{\rm mat}\)">\(b_{\rm mat}a_{\rm mat}\)</span>.</p>
+<p><strong>6.2</strong> (medium). Suppose <span class="math" data-tex="\(K\)">\(K\)</span> has characteristic two and <span class="math" data-tex="\(XX^{\mathsf T}=I_m\)">\(XX^{\mathsf T}=I_m\)</span> with <span class="math" data-tex="\(X\in\operatorname{Mat}_{m\times t}(K)\)">\(X\in\operatorname{Mat}_{m\times t}(K)\)</span>, <span class="math" data-tex="\(m&lt;t\)">\(m&lt;t\)</span>. Show that <span class="math" data-tex="\(X(I_t-X^{\mathsf T}X)=0\)">\(X(I_t-X^{\mathsf T}X)=0\)</span> and <span class="math" data-tex="\(I_t-X^{\mathsf T}X\ne0\)">\(I_t-X^{\mathsf T}X\ne0\)</span>, so a nonzero column of <span class="math" data-tex="\(I_t-X^{\mathsf T}X\)">\(I_t-X^{\mathsf T}X\)</span> lies in the kernel of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>6.3</strong> (easy). Let <span class="math" data-tex="\(R\)">\(R\)</span> be a ring, <span class="math" data-tex="\(f\in R\)">\(f\in R\)</span> an idempotent and <span class="math" data-tex="\(x,y\in fRf\)">\(x,y\in fRf\)</span> with <span class="math" data-tex="\(xy=f\)">\(xy=f\)</span> and <span class="math" data-tex="\(yx\ne f\)">\(yx\ne f\)</span>. Show that <span class="math" data-tex="\(a=1-f+x\)">\(a=1-f+x\)</span> and <span class="math" data-tex="\(b=1-f+y\)">\(b=1-f+y\)</span> satisfy <span class="math" data-tex="\(ab=1\)">\(ab=1\)</span> and <span class="math" data-tex="\(ba\ne1\)">\(ba\ne1\)</span>.</p>
+<p><strong>6.4</strong> (medium). Show that the <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span> span a subalgebra of <span class="math" data-tex="\(K[F]\)">\(K[F]\)</span> isomorphic to <span class="math" data-tex="\(\operatorname{Mat}_m(K)\)">\(\operatorname{Mat}_m(K)\)</span>, with identity <span class="math" data-tex="\(f_{\rm blk}\)">\(f_{\rm blk}\)</span>, and that <span class="math" data-tex="\(f_{\rm blk}\ne1\)">\(f_{\rm blk}\ne1\)</span> when <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(b_{\rm mat}a_{\rm mat}=CTUJ_0+CT(1-e)+(1-e)UJ_0+(1-e)^2I_m\)">\(b_{\rm mat}a_{\rm mat}=CTUJ_0+CT(1-e)+(1-e)UJ_0+(1-e)^2I_m\)</span>. The second term is <span class="math" data-tex="\(C(1-e)T=0\)">\(C(1-e)T=0\)</span> and the third is <span class="math" data-tex="\(U(1-e)J_0=0\)">\(U(1-e)J_0=0\)</span>, since <span class="math" data-tex="\(1-e\)">\(1-e\)</span> is central and kills the entries of <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(J_0\)">\(J_0\)</span>. The last is <span class="math" data-tex="\((1-e)I_m\)">\((1-e)I_m\)</span>. Subtracting <span class="math" data-tex="\(I_m\)">\(I_m\)</span> leaves <span class="math" data-tex="\(CTUJ_0-eI_m\)">\(CTUJ_0-eI_m\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(X(I_t-X^{\mathsf T}X)=X-(XX^{\mathsf T})X=X-X=0\)">\(X(I_t-X^{\mathsf T}X)=X-(XX^{\mathsf T})X=X-X=0\)</span>. The matrix <span class="math" data-tex="\(X^{\mathsf T}X\)">\(X^{\mathsf T}X\)</span> has rank at most <span class="math" data-tex="\(m&lt;t\)">\(m&lt;t\)</span>, so it is not <span class="math" data-tex="\(I_t\)">\(I_t\)</span>. A nonzero column <span class="math" data-tex="\(y\)">\(y\)</span> of <span class="math" data-tex="\(I_t-X^{\mathsf T}X\)">\(I_t-X^{\mathsf T}X\)</span> then satisfies <span class="math" data-tex="\(Xy=0\)">\(Xy=0\)</span>.</p>
+<p><strong>6.3.</strong> As in Exercise 8.4 of <a href="directly-finite-group-algebras.html">Directly finite group algebras</a>, <span class="math" data-tex="\((1-f)x=x(1-f)=0\)">\((1-f)x=x(1-f)=0\)</span> and the same for <span class="math" data-tex="\(y\)">\(y\)</span>, so <span class="math" data-tex="\(ab=(1-f)+xy=1\)">\(ab=(1-f)+xy=1\)</span> and <span class="math" data-tex="\(ba=(1-f)+yx\ne(1-f)+f=1\)">\(ba=(1-f)+yx\ne(1-f)+f=1\)</span>.</p>
+<p><strong>6.4.</strong> By Lemma 4.2 the linear map <span class="math" data-tex="\(\operatorname{Mat}_m(K)\to K[F]\)">\(\operatorname{Mat}_m(K)\to K[F]\)</span> sending the matrix unit <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> to <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span> is multiplicative and injective, so its image, the span of the <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span>, is a subalgebra isomorphic to <span class="math" data-tex="\(\operatorname{Mat}_m(K)\)">\(\operatorname{Mat}_m(K)\)</span>, with identity <span class="math" data-tex="\(\sum_ip_{ii}=f_{\rm blk}\)">\(\sum_ip_{ii}=f_{\rm blk}\)</span>. For each <span class="math" data-tex="\(c\in B\)">\(c\in B\)</span> put <span class="math" data-tex="\(e_c=|B|^{-1}\sum_{w\in B}\zeta^{-c\cdot w}w\)">\(e_c=|B|^{-1}\sum_{w\in B}\zeta^{-c\cdot w}w\)</span>, with <span class="math" data-tex="\(c\cdot w=\sum_kc_kw_k\)">\(c\cdot w=\sum_kc_kw_k\)</span>. The computation of Lemma 4.1 shows that these <span class="math" data-tex="\(\ell^m\)">\(\ell^m\)</span> elements are nonzero, pairwise orthogonal idempotents, hence linearly independent (multiply a relation by one of them), and the computation of Exercise 5.2 of the previous lesson shows <span class="math" data-tex="\(\sum_ce_c=1\)">\(\sum_ce_c=1\)</span>. Here <span class="math" data-tex="\(p_i=e_c\)">\(p_i=e_c\)</span> for the unit vector <span class="math" data-tex="\(c\)">\(c\)</span> in coordinate <span class="math" data-tex="\(i\)">\(i\)</span>. If <span class="math" data-tex="\(f_{\rm blk}=1\)">\(f_{\rm blk}=1\)</span>, the remaining <span class="math" data-tex="\(\ell^m-m\ge1\)">\(\ell^m-m\ge1\)</span> idempotents <span class="math" data-tex="\(e_c\)">\(e_c\)</span> would add up to zero, contradicting linear independence. So <span class="math" data-tex="\(f_{\rm blk}\ne1\)">\(f_{\rm blk}\ne1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-DF2] OpenAI, <em>A Counterexample to Kaplansky's Direct-Finiteness Conjecture in Characteristic Two</em>, OpenAI Math Release preprint, 23 September 2026, Sections 4.3 to 4.6. https://github.com/openai/math/tree/main/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Characteristic-Two-September-23-2026</li>
+<li>[Dykema–Heister–Juschenko] K. Dykema, T. Heister and K. Juschenko, <em>Finitely presented groups related to Kaplansky's Direct Finiteness Conjecture</em>, arXiv:1112.1790. https://arxiv.org/abs/1112.1790</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

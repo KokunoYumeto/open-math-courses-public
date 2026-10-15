@@ -262,7 +262,7 @@ This is the normalized faithful matrix trace on a noncommutative algebra. Faithf
 
 The mathematical target is Takesaki, [*Theory of Operator Algebras II*, Exercise XI.1.6, printed page 331](https://doi.org/10.1007/978-3-662-10451-4), read on native page 352 in the exact approved edition. That page states the exercise without its proof. The retained local proof develops the normal preadjoint, full-support faithfulness and opposite-fiber trace calculation, followed by an explicitly bounded approximation net. The matrix example and solved calculation are local additions. The earlier free-source foundations remain actual programme proofs; the book citation replaces none of them.
 
-This restored chapter explicitly excludes the zero algebra from its normalized-state conclusion. It assumes neither faithfulness of the action nor sigma-finiteness of the algebra, and it uses a net rather than a sequence. Owner and independent mathematical review, exact dependency bindings and illustration review are complete at the declared inputs. This chapter is placed after the lessons that prove the results it uses.
+The normalized-state conclusion requires a nonzero algebra. It assumes neither faithfulness of the action nor sigma-finiteness of the algebra, and its approximation uses a net.
 
 <a id="oa-flow.et.figure"></a>
 

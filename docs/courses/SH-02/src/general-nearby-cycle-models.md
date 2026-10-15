@@ -40,7 +40,7 @@ If \(h\) is identically zero on a connected component, the covering source there
 
 ## HN1. The general geometric refinement used in the proof
 
-[Relative conormals at the zero fibre](../relative-conormal-zero-fibres.html) supplies the needed general Thom \(a_h\) ingredient for every original off-zero stratum, at the complete analytic/normalization floor. Its RC0 closure is Q minus the inverse image of the excluded analytic sets, selected by SGC8. Its proper projective images use the general proper-image proof, including positive-dimensional fibres.
+[Relative conormals at the zero fibre](../relative-conormal-zero-fibres.html) supplies the needed general Thom \(a_h\) ingredient for every original off-zero stratum, at the complete analytic/normalization floor. Its RC0 closure is Q minus the inverse image of the excluded analytic sets, selected by SGC8. Its proper projective images use the [general proper-image proof](../finite-map-analytic-geometry.html#proper-images-and-closure-across-smaller-analytic-sets), including positive-dimensional fibres.
 
 There are only finitely many original labels near a chosen point. Their \(h\)-critical loci have analytic closures by the same Jacobian-minor and SGC8 selection. On each selected critical component \(dh\) kills its regular tangent, so \(h\) is constant; that constant extends over its closure by the analytic identity principle. Every component through the chosen zero-fibre point has value zero. Local finite components let us shrink away the other values. Thus \(h\) is submersive on every original off-zero stratum in this local representative.
 

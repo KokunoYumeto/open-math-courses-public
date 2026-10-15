@@ -14,15 +14,15 @@ is the projection counit, while \(\beta_F=p^{-1}u_F\) uses evaluation \(u_F\) at
 
 For parameter-conic inputs, the actual equivariant-map proofs retain \(f^{-1},f^!,Rf_*,Rf_!\), derived tensor and internal Hom. Exceptional inverse image uses the original finite cohomological-dimension bound on \(f_!\) for all abelian sheaves. Ordinary direct-image transport uses the product-interval cylinder comparison, rather than unrestricted nonproper ordinary base change. The exceptional Hom comparison keeps the first factor bounded. The examples here test the stronger induced predicate at those same original coefficient and boundedness cuts.
 
-| Conic-sheaf statements compared in [Transport along a scaling action](../../sheaf-proof-readings/SH02-conic-descent.html) | Induced-orbit conclusion |
+| Operations considered in [Transport along a scaling action](../../sheaf-proof-readings/SH02-conic-descent.html) | Induced-orbit conclusion |
 |---|---|
-| Definition 3.7.1 and the tests of Proposition 3.7.2 | Induced and parameter predicates differ on recurrent dense orbits. |
-| Equivariant inverse image, Proposition 3.7.4(i) | Ordinary inverse image preserves \(I\); exceptional inverse image can fail even with finite map dimension. |
-| Direct images, Proposition 3.7.4(ii) | Both ordinary and proper-support image can fail to preserve \(I\). |
-| Tensor and internal Hom, Proposition 3.7.4(iii) | Both unrestricted induced conclusions fail; the internal-Hom first input below is degree zero. |
-| External product assertion preceding Proposition 3.7.4 | The unrestricted induced-biconic conclusion fails with bounded inputs. |
+| Orbit definitions and canonical transport tests | Induced and parameter predicates differ on recurrent dense orbits. |
+| Equivariant ordinary and exceptional inverse image | Ordinary inverse image preserves \(I\); exceptional inverse image can fail even with finite map dimension. |
+| Ordinary and proper-support direct image | Both ordinary and proper-support image can fail to preserve \(I\). |
+| Derived tensor and internal Hom | Both unrestricted induced conclusions fail; the internal-Hom first input below is degree zero. |
+| External derived product | The unrestricted induced-biconic conclusion fails with bounded inputs. |
 
-These are precise comparisons for the literal induced-orbit predicate, not an assertion of a newly verified printed erratum. The corrected action-parameter restriction condition in Corollary 3.7.3 is a separate issue handled in the conic-descent lesson.
+The table records statements proved or disproved below for the explicit induced-orbit predicate. The parameter-operation theorem in the conic-descent lesson uses the parameter predicate. Its restriction theorem tests the actual action parameter and retains periodic winding.
 
 The image proofs use the actual proper-support fibre formula and the all-abelian one-dimensional cohomology bound proved in Manifold duality. The exceptional example uses the actual exceptional adjunction of [Exceptional operations](../../sheaf-proof-readings/SH02-exceptional-operations.html), positive interval trace, and proper base change. The zero-dimensional transverse acyclicity is proved directly below. No finite rank or finite generation is imposed on the sheaves.
 
@@ -141,9 +141,8 @@ the action-parameter restriction theorem in [conic descent](../../sheaf-proof-re
 equivariant \(j:\mathbb R\to X\), and set \(G=j_*\mathbb Z_{\mathbb R}\).
 The input \(\mathbb Z_{\mathbb R}\) is induced-conic because its sole orbit
 is all of \(\mathbb R\).
-The source's finite-cohomological-dimension premise still holds because
-\(j_!\) has dimension zero, as checked above. Even if this premise is read
-as a bound on \(j_*\), that bound holds too: for every ambient open \(V\),
+The proper-support dimension bound holds because
+\(j_!\) has dimension zero, as checked above. There is also a finite bound on \(j_*\): for every ambient open \(V\),
 \(j^{-1}V\) is an open one-manifold, so its ordinary sheaf cohomology
 vanishes above degree one by the manifold dimension theorem.
 Thus \(R^qj_*=0\) for \(q>1\).
@@ -171,8 +170,7 @@ fails as well. This argument leaves the parameter-conic \(Rj_*\) theorem of [con
 
 ## IOR2. Internal Hom on the adding-machine suspension
 
-For internal Hom there is an ambient example at the exact unrestricted
-coefficient cut of Proposition 3.7.4(iii). Let
+For internal Hom, take arbitrary coefficient modules and a degree-zero first input. Let
 
 \[
 K=\mathbb Z_2=\varprojlim_m\mathbb Z/2^m\mathbb Z
@@ -212,8 +210,7 @@ F_1=\left(\bigoplus_{n\ge1}\mathbb Z\right)_X,
 
 Both are degree-zero constant sheaves. Pullback of a constant sheaf
 to any orbit, with either its induced or parameter topology, is
-constant. Thus \(F_1,F_2\) satisfy the printed induced-conicity
-hypothesis; \(F_1\) is also bounded above. The constant-sheaf functor
+constant. Thus \(F_1,F_2\) satisfy the induced-orbit condition; \(F_1\) is also bounded above. The constant-sheaf functor
 preserves coproducts, and internal Hom sends a coproduct in its first
 argument to a product. Consequently
 
@@ -282,15 +279,13 @@ every \(n\). Tree spacing is schematic, not a metric embedding of
 
 ## IOR3. Exceptional inverse image at finite map dimension
 
-The same compact suspension also tests the literal induced-orbit
-exceptional-inverse assertion of Proposition 3.7.4(i). Let
+The same compact suspension also tests exceptional inverse image for the induced-orbit condition. Let
 \(f:X\to\mathrm{pt}\) be its equivariant map to the point with the
 trivial action, now with coefficient field \(k=\mathbb Q\). The input
 \(k_{\mathrm{pt}}\) is induced-conic. Put
 \(D_X=f^!k_{\mathrm{pt}}\).
 
-First, \(f_!\) has finite cohomological dimension, as the source
-requires. The suspension projection \(\pi:X\to S^1\) is proper with
+First, \(f_!\) has finite cohomological dimension. This checks the all-sheaf map-dimension hypothesis used by exceptional adjunction. The suspension projection \(\pi:X\to S^1\) is proper with
 fibre \(K\). On a compact zero-dimensional Hausdorff space, global
 sections of any sheaf are exact: local lifts of a section can be
 chosen on a finite disjoint clopen refinement and glued. Thus
@@ -501,7 +496,7 @@ For external product, take the second space to be a point with trivial
 action and coefficient sheaf \(\kappa\). Under \(X\times\mathrm{pt}\simeq X\),
 the object \(F\boxtimes_A^L\kappa\) is the same tensor, and the induced
 product orbit \(b\times\mathrm{pt}\) is \(b\). Its cohomology is therefore
-not induced-biconic. This refutes both unrestricted source conclusions.
+not induced-biconic. Thus induced-orbit conicity is preserved by neither unrestricted derived tensor nor unrestricted external derived product.
 It does not contradict the degree-zero, field, flat-cohomology or finite-type positive cases: \(A\) is not a field,
 \(\kappa\) is not flat over \(A\), and the fibers in (8.6) are not finitely
 generated. The parameter-action conclusions and embedded-ray
@@ -534,4 +529,4 @@ For scalar multiplication on a finite-rank real vector bundle, every nonzero orb
 
 The stronger tensor conclusions over a field, with one flat-cohomology factor, or with Noetherian finite-type cohomology are additional positive cases. They do not cover the unrestricted ring and infinite-rank inputs in IOR4. In particular finite stalk dimension is not the original hypothesis being tested. The first two follow from the sheaf Künneth comparison: over a field, or when one factor has flat cohomology, the Tor terms of positive degree vanish, and each cohomology sheaf is a finite direct sum in each degree of tensors of input cohomology sheaves. Exact restriction to an orbit preserves this comparison. For a Noetherian ring and finitely generated input cohomology, the finite-global-dimension Tor spectral sequence has locally constant finitely generated terms on the orbit. To see that its differentials and extensions stay locally constant, choose finite presentations near one point: lift finitely many generators and impose finitely many relations on a common neighborhood. For an extension, lift the quotient generators to the middle sheaf and express their relations in the finite kernel generators. This presents the middle sheaf by one fixed finite module; the same finite-presentation argument identifies kernels and cokernels of the resulting morphisms. Thus the finite spectral sequence and its finite filtration remain locally constant. The uniform lower bounds make the relevant degree ranges finite. None of these arguments applies to the infinite-rank nonflat inputs of IOR4.
 
-The scholarly source comparison is developed in [Transport along a scaling action](../../sheaf-proof-readings/SH02-conic-descent.html), with the conic-sheaf results of M. Kashiwara and P. Schapira. The constructions, section and germ computations, and diagrams here are independently expressed. The proper-support, exceptional-adjunction and interval/manifold prerequisites retain their stated scopes.
+The classical vector-bundle setting is described by M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*, Astérisque 128 (1985), §2.1.1, printed pp. 39–41](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=42), and by Pierre Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*, 1 August 2026, Definition 5.4.4, p. 114](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=114). Those passages define conicity on vector-bundle rays; they do not state a stability theorem for induced dense orbits of arbitrary continuous actions. The definitions, proofs and counterexamples here treat that additional topology question directly. [Transport along a scaling action](../../sheaf-proof-readings/SH02-conic-descent.html) gives the normalized parameter comparisons and their exact free-source account. The constructions, section and germ computations, and diagrams here are independently expressed. The proper-support, exceptional-adjunction, Koszul and interval/manifold prerequisites retain their stated scopes. The cited human works retain their own rights.

@@ -1,10 +1,10 @@
 # The whole dual-action average and its finite domains
 
-There are three different questions: which operators are fixed, what the positive orbit integral means when it is infinite, and which scalar weights come from the coefficient algebra. We answer the first two completely and identify the average with the already constructed general-group Schur weight. We then derive its scalar compositions and keep the extra realization premise of faithful invariant-weight recognition explicit.
+There are three different questions: which operators are fixed, what the positive orbit integral means when it is infinite, and which scalar weights come from the coefficient algebra. We identify the whole average with the general-group Schur weight, derive its scalar compositions, and formulate the cocycle reduction used in faithful invariant-weight recognition.
 
-The compact-square and paired formulas, arbitrary-group models, signs and solved exercises below preserve the sound mathematics of the earlier course lesson. A new Fourier-density comparison identifies the entire extended-positive map before modular comparison is discussed.
+Compact-square and paired formulas give concrete access to the average and its finite domains. A Fourier-density comparison identifies the entire extended-positive map, after which balanced weights determine its modular generators.
 
-*New expression is dedicated under CC0 to the extent of rights held; inherited terms remain.*
+*Original exposition is dedicated under CC0-1.0 to the extent of rights held; component terms remain in force.*
 
 <a id="da-setting"></a>
 
@@ -62,9 +62,9 @@ $$\{L_s,Q_\chi:s\in G,\chi\in\widehat G\}''=B(L^2(G)),
 
 where $L_s\xi(r)=\xi(r-s)$ and $Q_\chi\xi(r)=\overline{\chi(r)}\xi(r)$. No recognition theorem for an arbitrary Weyl pair is used. The normal fixed-algebra proof below is also compatible with [NCF1–3](OA-FLOW-NCF.md#ncf-1), but retains its direct scalar-test proof.
 
-[EP1–6](OA-FLOW-EP.md#ep-1) and [FF5](OA-FLOW-FF.md#oa-flow.ff.6) provide the whole extended cone, positive normal extensions, spectral transport, finite-output ideals and full scalar composition. [OT1–5](OA-FLOW-OT.md#ot-1) prove modular restriction and preservation of the normalized cocycle for these compositions. [GDA7–9](OA-FLOW-GDA.md#gda-7) give the finite-sandwich uniqueness theorem, full identification with GDW, and comparison of two actual dual weights. Its fixed-reference uniqueness is proved by MA4 and BC; its central-density step is proved by CZ/RF, not by an arbitrary-cocycle converse.
+[EP1–6](OA-FLOW-EP.md#ep-1) and [FF5](OA-FLOW-FF.md#oa-flow.ff.6) provide the whole extended cone, positive normal extensions, spectral transport, finite-output ideals and full scalar composition. [OT1–5](OA-FLOW-OT.md#ot-1) prove modular restriction and preservation of the normalized cocycle for these compositions. [GDA7–9](OA-FLOW-GDA.md#gda-7) give the dense-GNS uniqueness criterion, full identification with GDW, and comparison of two actual dual weights. Its fixed-reference uniqueness is proved by MA4 and BC; its central-density step is proved by CZ/RF, not by an arbitrary-cocycle converse.
 
-The new [AM1–3 Fourier-minorant bridge](OA-FLOW-AM.md#am-1) proves equality of the entire orbit average and the GDA weight. The only additional general-cocycle statement below is expressly labeled conditional, with its unresolved realization premise stated in full.
+The [AM1–3 Fourier-minorant bridge](OA-FLOW-AM.md#am-1) proves equality of the entire orbit average and the GDA weight. The final conditional reduction isolates the cocycle-realization step in faithful recognition. The next two lessons, [UR](OA-FLOW-UR.md#ur-5) and [FR](OA-FLOW-FR.md#fr-2), prove that realization theorem and the resulting unconditional recognition theorem.
 
 ## Spectral values and normal inclusions
 
@@ -299,14 +299,14 @@ Using Plancherel with the entire regular Hilbert space as target avoids intercha
 
 **Proof.** AM1 identifies GDA's strict scalar normal minorants exactly with the Fourier densities $k\in L^1(\widehat G)_+$ satisfying $k\leq c<1$. AM2 identifies their bounded normal Schur maps with the maps $y\mapsto\int k(\chi)\theta_\chi(y)\,d\chi$. Equality on generators is used only at this bounded-normal stage. AM3 compares the two whole suprema: every such density is at most one, and every $(1-\varepsilon)1_K$ belongs to the family. Thus, on each $y\in N_+$ and each normal positive functional, their supremum is exactly (A18). EP1–4 faithfully identify the full coefficient-valued elements. This proves $A=T_\alpha$ without assuming uniqueness from compact-square data or equality of modular groups. $\square$
 
-The old scalar comparison remains valid as a separate route to the scalar composition. Formula (A23) and the GDA6 compact-square theorem give
+A scalar comparison also identifies the full composition. Formula (A23) and the GDA6 compact-square theorem give
 
 <a id="equation-a31"></a>
 
 $$\Phi(F(f)^*F(f))=\widetilde\varphi(F(f)^*F(f)).
 \tag{A31}$$
 
-Here $\Phi=\widehat{\varphi_P}\circ A$. For every $f\in\mathfrak b_\varphi=\mathscr B_\varphi$ the values are finite by GDW1/6. The finite-ideal property makes $F(f)^*F(z)F(f)$ an equality test after polarization; the two resulting finite sandwich functionals are bounded and normal. Their equality extends to every middle operator by bounded density. Equations (A28) and (A30), proved below, are the exact two modular-generator hypotheses of GDA7. Its complete central-density/spectral-cut argument then yields $\Phi=\widetilde\varphi$ on all $N_+$, including infinite values. Thus the scalar route is retained at its actual finite-domain theorem; it is not used as an unproved uniqueness theorem for operator-valued weights.
+Here $\Phi=\widehat{\varphi_P}\circ A$. For every $f\in\mathfrak b_\varphi=\mathscr B_\varphi$ the values are finite by GDW1/6. On the linear space $F(\mathscr D_\varphi)$, (A31) gives the quadratic equality required by [GDA7](OA-FLOW-GDA.md#gda-7). GDW6 identifies its GNS vectors with $\eta_\varphi(\mathscr D_\varphi)$, which GDW2 proves dense in the entire regular weight Hilbert space. Equations (A28) and (A30), proved below, give equality of the modular groups on both generator families, hence everywhere by normality. GDA7's closed-positive-operator argument yields $\Phi=\widetilde\varphi$ on all $N_+$, including infinite values.
 
 <a id="da-pairs"></a>
 
@@ -568,11 +568,11 @@ $a\ge n^{-1}1_{[1/n,\infty)}(a)$ and normality on the increasing spectral suppor
 
 Derive (A30) from (A29), rewrite it with coefficient on the left of $\lambda_s$, and identify what is still needed to compare full weights.
 
-**Solution.** The inner rule gives the derivative as $\lambda_s^*\sigma_t^\Phi(\lambda_s)$, and composition gives it as $\pi_\alpha(c_t(s))$, with $c_t(s)=[D(\varphi\circ\alpha_s):D\varphi]_t$. Multiplying on the left by $\lambda_s$ yields $\lambda_s\pi_\alpha(c_t(s))$. Covariance rewrites this as $\pi_\alpha(\alpha_s(c_t(s)))\lambda_s$. Equality of the modular automorphisms would still allow a central density change between scalar weights. GDA7's finite quadratic and normal-sandwich argument removes that ambiguity for the scalar weights. AM1–3 independently identifies the operator-valued maps on their entire positive domains.
+**Solution.** The inner rule gives the derivative as $\lambda_s^*\sigma_t^\Phi(\lambda_s)$, and composition gives it as $\pi_\alpha(c_t(s))$, with $c_t(s)=[D(\varphi\circ\alpha_s):D\varphi]_t$. Multiplying on the left by $\lambda_s$ yields $\lambda_s\pi_\alpha(c_t(s))$. Covariance rewrites this as $\pi_\alpha(\alpha_s(c_t(s)))\lambda_s$. Equality of the modular automorphisms would still allow a central density change between scalar weights. GDA7's finite quadratic data and closed-positive-operator argument remove that ambiguity for the scalar weights. AM1–3 independently identifies the operator-valued maps on their entire positive domains.
 
 <a id="da-conditional"></a>
 
-## The precise remaining faithful-recognition premise
+## Faithful recognition as a cocycle-reconstruction problem
 
 **Conditional faithful-weight recognition.** In this paragraph assume the following additional realization theorem UR: for every faithful n.s.f. $\varphi$ on $M$, every strongly* continuous unitary family $v_t\in M$ with $v_{t+r}=v_t\sigma_t^\varphi(v_r)$ is $[D\psi:D\varphi]_t$ for a faithful n.s.f. $\psi$. Under UR, an n.s.f. weight $\Omega$ on $N$ is dual-invariant exactly when it is the constructed dual $\widetilde\psi$ of a unique n.s.f. weight $\psi$ on $M$.
 
@@ -591,15 +591,15 @@ $$[D\widetilde\psi:D\widetilde\varphi]_t
  =\pi_\alpha([D\psi:D\varphi]_t)
  =[D\Omega:D\widetilde\varphi]_t.$$
 
-The actual fixed-reference normalized-derivative uniqueness proved in GDA7 identifies $\Omega=\widetilde\psi$ on the whole positive cone. Faithfulness of $\pi_\alpha$ and the same uniqueness on $M$ prove uniqueness of $\psi$. This proves the faithful-weight characterization conditional on UR, and proves injectivity of the already constructed dual-weight map without UR. The unconditional reduction for any invariant $\Omega$ is the displayed cocycle $v_t$ in $M$; its realization is the remaining step. Current BC/OT/GDA construct and compare cocycles of actual weights and expressly do not prove UR. Neither a conventions contract nor the approved source's citation supplies its missing programme proof. Nonfaithful recognition and recognition of arbitrary covariant systems remain separate.
+The actual fixed-reference normalized-derivative uniqueness proved in GDA7 identifies $\Omega=\widetilde\psi$ on the whole positive cone. Faithfulness of $\pi_\alpha$ and the same uniqueness on $M$ prove uniqueness of $\psi$. This proves the faithful-weight characterization conditional on UR, and proves injectivity of the already constructed dual-weight map without UR. The unconditional reduction for any invariant $\Omega$ is the displayed cocycle $v_t$ in $M$, under the faithful semifinite hypotheses. Its realization is proved in the next lesson, [UR0–5](OA-FLOW-UR.md#ur-0). [FR1–2](OA-FLOW-FR.md#fr-1) supplies a reference weight for every algebra and applies that theorem to obtain faithful recognition without an additional assumption. BC/OT/GDA supply the comparison of actual weights; UR supplies the converse reconstruction.
 
 ## Sources and remaining scope
 
 The antecedents are Haagerup, [*On the dual weights for crossed products of von Neumann algebras I*](https://journals.msp.org/mscand/article/view/1879), Lemma 3.6 and Theorem 3.7, and [*On the dual weights for crossed products of von Neumann algebras II*](https://journals.msp.org/mscand/article/view/1878), Theorem 1.1, both in Math. Scand. 43 (1978). The first paper's invariant-weight converse explicitly imports a cocycle-realization theorem; it is not an omitted elementary consequence of averaging.
 
-The exact approved edition of Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), supplies context in X.2.3(i)–(ii) and the compact-set integral (29) in the proof of X.2.6. Its general cocycle converse is stated as VIII.3.8 in this edition; the reference to VIII.3.7 in the X.2 proof does not change that actual locator. No book citation substitutes for its still separate programme proof. The current GDA/GDW proofs and the new AM bridge retain the useful freely accessible source route and independent local constructions.
+Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), treats these questions in X.2.3(i)–(ii) and gives the compact-set integral (29) in the proof of X.2.6. The cocycle converse is VIII.3.8 in this edition; VIII.3.7 is the chain rule. The complete programme reconstruction is [UR0–5](OA-FLOW-UR.md#ur-0), and its application to invariant weights is [FR1–2](OA-FLOW-FR.md#fr-1). GDA/GDW and AM provide the general dual weights and full averaging map used here.
 
-This chapter establishes the full dual fixed algebra, the whole-positive-cone normal faithful semifinite average, its bounded-output and scalar finite domains, compact-square and paired formulas, exact Haar normalization, invariance for all normal input weights, and injectivity for faithful n.s.f. input weights. The stated faithful-recognition converse has precisely the extra UR premise. Nonfaithful invariant-weight recognition, second-dual weight comparison, arbitrary dual-system recognition and nonabelian averaging are not inferred. If $M=0$, all algebras and values are zero, giving the vacuous endpoint.
+This chapter establishes the full dual fixed algebra, the whole-positive-cone normal faithful semifinite average, its bounded-output and scalar finite domains, compact-square and paired formulas, exact Haar normalization, invariance for all normal input weights, and injectivity for faithful n.s.f. input weights. The conditional reduction here is completed by the realization proof in [UR](OA-FLOW-UR.md#ur-5) and the faithful recognition proof in [FR](OA-FLOW-FR.md#fr-2). [NWR](OA-FLOW-NWR.md) treats nonfaithful invariant weights and their infinite part, and [L29](OA-FLOW-L29.md) treats recognition of covariant systems. Those conclusions use their own subsequent proofs. Second-dual weight comparison and nonabelian averaging are not consequences of this chapter alone. If $M=0$, all algebras and values are zero, giving the vacuous endpoint.
 
 <a id="da-figure"></a>
 
@@ -644,7 +644,7 @@ Those unequal coordinates show why an individual Schur minorant need not take va
        =(8/3,8/3,8/3),\qquad
  H_k(1)=\frac14,\quad T(1)=\frac12.
 \]
-Here the probability conditional expectation is \(2T\). The canonical operator-valued weight uses the paired Haar measure, so it is not automatically unital. This is the normalization checked for matrix coefficients in the restored lesson's first model and first solved problem.
+Here the probability conditional expectation is \(2T\). The canonical operator-valued weight uses the paired Haar measure, so it is not automatically unital. The first model and first solved problem compute this normalization on matrix coefficients.
 
 For the arbitrary-group assertion, define \(\mathcal D=\{k\in L^1(\widehat G)_+:k\leq c\text{ for some }c<1\}\). AM1 identifies exactly these densities with GDA's strict normal minorants, and AM2 identifies their maps. For \(X\geq0\), every normal positive functional \(\omega\), every compact \(K\subseteq\widehat G\), and \(0<\varepsilon<1\), AM3 gives
 \[

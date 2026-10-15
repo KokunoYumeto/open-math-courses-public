@@ -27,7 +27,10 @@ is an isomorphism of left \(\Lambda\)-modules. For each \(r\) only finitely many
 
 **Lemma 1.1** (the ordinary relators on a quotient). Let \(F\) be a finite quotient of \(\Gamma\), with quotient map \(\pi\). Then
 \[
-\Phi_F\colon(\mathbb ZF)^{(\mathcal R)}\to(\mathbb ZF)^{(\mathcal T)},\qquad e_r\mapsto\sum_t\pi(c_{r,t})e_t,
+\begin{gathered}
+\Phi_F\colon(\mathbb ZF)^{(\mathcal R)}\to(\mathbb ZF)^{(\mathcal T)},\\
+e_r\mapsto\sum_t\pi(c_{r,t})e_t,
+\end{gathered}
 \]
 is an isomorphism, where \(\pi\) also denotes the ring homomorphism \(\mathbb Z\Gamma\to\mathbb ZF\). In particular the vectors \(f\,\Phi_F(e_r)\), \((f,r)\in F\times\mathcal R\), are linearly independent over \(\mathbb Q\) in the rational vector space with basis \(F\times\mathcal T\).
 
@@ -43,7 +46,10 @@ On the generator graph over \(F\) the edges of the letters of \(\mathcal T\) are
 
 **Lemma 2.1** (finite systems; [OpenAI-EG, Lemma 3.5]). Let \(F\) be a finite quotient of \(\Gamma\), prescribe labels \(\ell(f,s)\) of the \(S\)-edges of the generator graph over \(F\) with \(|\ell(f,s)-1|<\eta\), and let \(\mathcal B\subseteq\mathcal R\) be a finite set containing \(\mathcal A\). Then there are labels of the \(\mathcal T\)-edges such that
 \[
-L(r,v)=1\quad(r\in\mathcal B,\ v\in F),\qquad\max_{z\in\mathcal D,\ v\in F}|L(\rho_z,v)-1|<\delta ,
+\begin{gathered}
+L(r,v)=1\quad(r\in\mathcal B,\ v\in F),\\
+\max_{z\in\mathcal D,\ v\in F}|L(\rho_z,v)-1|<\delta ,
+\end{gathered}
 \]
 the maximum being \(0\) if \(\mathcal D\) is empty.
 
@@ -51,13 +57,19 @@ the maximum being \(0\) if \(\mathcal D\) is empty.
 
 *Moving the coefficients.* Each prescribed label is \(\ell(f,s)=\exp(w_{f,s})\) with \(w_{f,s}\in\operatorname{Im}\mathbb H\), \(|w_{f,s}|<\pi\), since \(\ell(f,s)\ne-1\). For \(\tau\in[0,1]\) put \(\ell_\tau(f,s)=\exp(\tau w_{f,s})\). Since \(|\exp(w)-1|=2\sin(|w|/2)\) for \(|w|<\pi\), we have \(|\ell_\tau(f,s)-1|\le|\ell(f,s)-1|<\eta\) for all \(\tau\) (Exercise 5.3). Let \(f_\tau\colon H^m\to H^m\) send the selected unknowns \(x\in H^m\) to the \(m\) products \(L(r,v)\), \((v,r)\in F\times\mathcal B\), computed with the \(S\)-labels \(\ell_\tau\), the selected \(\mathcal T\)-labels \(x\) and all other \(\mathcal T\)-labels \(1\). It depends continuously on \((\tau,x)\) and is smooth in \(x\). Let
 \[
-h(\tau,x)=\max_{z\in\mathcal D,\ v\in F}|L(\rho_z,v)-1|,\qquad\mathcal O_\tau=\{x\in H^m:h(\tau,x)<\delta\},
+\begin{gathered}
+h(\tau,x)=\max_{z\in\mathcal D,\ v\in F}|L(\rho_z,v)-1|,\\
+\mathcal O_\tau=\{x\in H^m:h(\tau,x)<\delta\},
+\end{gathered}
 \]
 computed with the same labels. Finitely many products occur, so \(h\) is continuous.
 
 *Roots avoid the value \(\delta\).* If \(f_\tau(x)=\mathbf 1\), all equations \(L(r,v)=1\) with \(r\in\mathcal B\supseteq\mathcal A\) hold, and all \(S\)-labels are within \(\epsilon<\eta\) of \(1\), where \(\epsilon\) is the largest of the finitely many distances. By Corollary 4.1 of the lesson on exact counts,
 \[
-f_\tau(x)=\mathbf 1\ \Longrightarrow\ h(\tau,x)\ne\delta .\tag{2.1}
+\begin{aligned}
+&f_\tau(x)=\mathbf 1\\
+&\quad\Longrightarrow\ h(\tau,x)\ne\delta .
+\end{aligned}\tag{2.1}
 \]
 
 *The case \(m=0\).* Then \(\mathcal B\) is empty, there are no unknowns, all \(\mathcal T\)-labels are \(1\), and \(h(\tau)\) is a continuous function of \(\tau\) alone, never equal to \(\delta\) by (2.1). At \(\tau=0\) all labels are \(1\) and \(h(0)=0\). By the intermediate value theorem \(h(1)<\delta\), which is the assertion. From now on \(m\ge1\).
@@ -85,8 +97,10 @@ The unit quaternions \(H\) form a closed and bounded subset of \(\mathbb R^4\), 
 *Proof of Theorem 4.1.* Let \(\eta\) be the number fixed in (4.1) of the lesson on exact counts, and let \(a\) be a labelling as in the theorem. Consider the compact space \(\mathscr P=H^{\Gamma\times\mathcal T}\) of all labellings of the \(\mathcal T\)-edges of the generator graph over \(\Gamma\); together with \(a\) on the \(S\)-edges, every point of \(\mathscr P\) is a labelling of the generator graph of \(A=S\amalg\mathcal T\). Consider the conditions
 \[
 \begin{aligned}
-L(r,g)&=1&&(r\in\mathcal R,\ g\in\Gamma),\\
-|L(\rho_z,g)-1|&\le\delta&&(z\in\mathcal D,\ g\in\Gamma).
+&L(r,g)=1\\
+&\qquad(r\in\mathcal R,\ g\in\Gamma),\\
+&|L(\rho_z,g)-1|\le\delta\\
+&\qquad(z\in\mathcal D,\ g\in\Gamma).
 \end{aligned}\tag{4.1}
 \]
 Each condition involves the labels of the finitely many edges traversed by one path, and the product along the path is a continuous function of these labels, so each condition defines a closed subset of \(\mathscr P\).
@@ -95,7 +109,10 @@ Each condition involves the labels of the finitely many edges traversed by one p
 
 By Section 3 there is a point of \(\mathscr P\) satisfying all conditions (4.1). With it, the labelling of the graph over \(\Gamma\) satisfies the hypotheses of Lemma 3.1 of the lesson on exact counts, with \(F=\Gamma\) and \(\epsilon=\eta\), and its \(h\) satisfies \(h\le\delta\). By hypothesis \(L(z,g)=1\) for every \(z\in\mathcal D\) and \(g\in\Gamma\). The first inequality of (3.1) there gives \(|1-L(\rho_z,g)|\le C(h+\eta)h\), and taking the supremum,
 \[
-h\le C(h+\eta)h\le C(\delta+\eta)h<\tfrac12h\quad\text{if }h>0 .
+\begin{aligned}
+h&\le C(h+\eta)h\le C(\delta+\eta)h\\
+&<\tfrac12h\quad\text{if }h>0 .
+\end{aligned}
 \]
 So \(h=0\): the products along all relators, distinguished and ordinary, are \(1\) from every vertex.
 

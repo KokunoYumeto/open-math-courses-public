@@ -23,7 +23,11 @@ A *quotient* of \(\Gamma\) is either \(\Gamma\) itself or a finite group \(F=\Ga
 
 A *labelling* is a map \(\ell\) from the edges to \(H\). For a word \(w\) and a vertex \(v\in F\), the *product along \(w\) from \(v\)*, \(L(w,v)\in H\), is defined by induction on the length: \(L(\varnothing,v)=1\), and for a letter \(a\) and a word \(w'\),
 \[
-L(aw',v)=\ell(v,a)\,L\bigl(w',v\pi(\bar a)\bigr),\qquad L(a^{-1}w',v)=\ell\bigl(v\pi(\bar a)^{-1},a\bigr)^{-1}L\bigl(w',v\pi(\bar a)^{-1}\bigr).
+\begin{aligned}
+L(aw',v)&=\ell(v,a)\,L\bigl(w',v\pi(\bar a)\bigr),\\
+L(a^{-1}w',v)&=\ell\bigl(v\pi(\bar a)^{-1},a\bigr)^{-1}\\
+&\qquad\cdot L\bigl(w',v\pi(\bar a)^{-1}\bigr).
+\end{aligned}
 \]
 So \(L(w,v)\) is the product, in the order of traversal, of the labels along the path that reads \(w\) from \(v\), an edge traversed backwards contributing the inverse of its label. Which edges the path traverses depends only on the values of the letters, not on the labels.
 
@@ -39,7 +43,11 @@ So \(L(w,v)\) is the product, in the order of traversal, of the labels along the
 
 (2) By induction on the length of \(u\). For a letter, \(L(a^{-1},v)=\ell(v\pi(\bar a)^{-1},a)^{-1}=L(a,v\pi(\bar a)^{-1})^{-1}\). If \(u=u'a\), then by (1), the case of a letter and the induction hypothesis,
 \[
-L(u^{-1},v)=L(a^{-1},v)\,L\bigl(u'^{-1},v\pi(\bar a)^{-1}\bigr)=L\bigl(a,v\pi(\bar a)^{-1}\bigr)^{-1}L\bigl(u',v\pi(\bar u)^{-1}\bigr)^{-1},
+\begin{aligned}
+&L(u^{-1},v)\\
+&\quad=L(a^{-1},v)\,L\bigl(u'^{-1},v\pi(\bar a)^{-1}\bigr)\\
+&\quad=L\bigl(a,v\pi(\bar a)^{-1}\bigr)^{-1}L\bigl(u',v\pi(\bar u)^{-1}\bigr)^{-1},
+\end{aligned}
 \]
 and this is the inverse of \(L(u',x)L(a,x\pi(\bar u'))=L(u,x)\) for \(x=v\pi(\bar u)^{-1}\), since \(x\pi(\bar u')=v\pi(\bar a)^{-1}\). If \(u=u'a^{-1}\), the same computation applies with \(a^{-1}\) in place of \(a\).
 
@@ -63,7 +71,10 @@ be the relator boundary map; by the basis property it is injective.
 
 **Lemma 2.1** (exact counts; [OpenAI-EG, Lemma 3.3]). For every \(z\in\mathcal D\),
 \[
-\sum_{j=1}^{n_z}\sigma_{z,j}\,\bar u_{z,j}\,e_{r_{z,j}}=e_{\rho_z}\qquad\text{in }\Lambda^{(\mathcal D\amalg\mathcal R)}.\tag{2.2}
+\begin{gathered}
+\sum_{j=1}^{n_z}\sigma_{z,j}\,\bar u_{z,j}\,e_{r_{z,j}}=e_{\rho_z}\\
+\text{in }\Lambda^{(\mathcal D\amalg\mathcal R)}.
+\end{gathered}\tag{2.2}
 \]
 
 *Proof.* Write \(c_j=u_{z,j}r_{z,j}^{\sigma_{z,j}}u_{z,j}^{-1}\). By Lemma 1.1 (3) of the lesson on aligned presentations, \([z]\) is the chain of the product \(c_1\cdots c_{n_z}\). Each \(c_j\) has value \(1\), so by Lemma 1.1 (1) there the chain of the product is \(\sum_j[c_j]\), and by Lemma 1.1 (2) there \([c_j]=\sigma_{z,j}\bar u_{z,j}[r_{z,j}]\). Hence \(\partial_2\) maps the left side of (2.2) to \([z]\). It maps the right side to \([\rho_z]=[z]\). Since \(\partial_2\) is injective, the two sides agree. \(\square\)
@@ -72,7 +83,10 @@ The word \(z\) uses only letters of \(S\); its chain in the generator graph of \
 
 **Corollary 2.2** (counts on quotients). Let \(F\) be a quotient of \(\Gamma\), \(z\in\mathcal D\), \(r\in\mathcal D\amalg\mathcal R\) and \(f\in F\). Then
 \[
-\sum_{\substack{1\le j\le n_z\\ r_{z,j}=r,\ \pi(\bar u_{z,j})=f}}\sigma_{z,j}=\begin{cases}1&\text{if }r=\rho_z\text{ and }f=1,\\0&\text{otherwise.}\end{cases}
+\begin{aligned}
+&\sum_{\substack{1\le j\le n_z\\ r_{z,j}=r,\ \pi(\bar u_{z,j})=f}}\sigma_{z,j}\\
+&\qquad=\begin{cases}1&\text{if }r=\rho_z\text{ and }f=1,\\0&\text{otherwise.}\end{cases}
+\end{aligned}
 \]
 
 *Proof.* The coefficient of \(e_r\) on the left of (2.2) is \(\sum_{j:\,r_{z,j}=r}\sigma_{z,j}\bar u_{z,j}\in\mathbb Z\Gamma\), and on the right it is \(1\) if \(r=\rho_z\) and \(0\) otherwise. Apply the ring homomorphism \(\mathbb Z\Gamma\to\mathbb ZF\) induced by \(\pi\) and read off the coefficient of \(f\). \(\square\)
@@ -93,19 +107,30 @@ of the same kind. Let \(\mathcal A\subseteq\mathcal R\) be the finite set of the
 Let \(h=\sup_{z\in\mathcal D,\ f\in F}|L(\rho_z,f)-1|\), with \(h=0\) if \(\mathcal D\) is empty. Then for every \(z\in\mathcal D\) and every \(v\in F\),
 \[
 \begin{aligned}
-|L(z,v)-L(\rho_z,v)|&\le C(h+\epsilon)h,\\
-|L(z,v)-1|&\le C\epsilon.
+&|L(z,v)-L(\rho_z,v)|\\
+&\qquad\le C(h+\epsilon)h,\\
+&|L(z,v)-1|\le C\epsilon.
 \end{aligned}\tag{3.1}
 \]
 
 *Proof.* If \(\mathcal D\) is empty there is nothing to prove. We use the estimates of Lemma 1.1 of the lesson on word maps: for unit quaternions,
 \[
-\Bigl|\prod_{j=1}^na_j-\prod_{j=1}^nb_j\Bigr|\le\sum_{j=1}^n|a_j-b_j|,\qquad|ab-ba|\le2|a-1|\,|b-1|,\qquad|a^{-1}-1|=|a-1|=|gag^{-1}-1|.\tag{3.2}
+\begin{aligned}
+&\Bigl|\prod_{j=1}^na_j-\prod_{j=1}^nb_j\Bigr|\\
+&\quad\le\sum_{j=1}^n|a_j-b_j|,\\
+&|ab-ba|\\
+&\quad\le2|a-1|\,|b-1|,\\
+&|a^{-1}-1|=|a-1|,\\
+&|gag^{-1}-1|=|a-1|.
+\end{aligned}\tag{3.2}
 \]
 
 *Step 1: the loop labels.* Let \(t\in\mathcal T_0\) and \(x\in F\). The edge \((x,t)\) is a loop, so \(\ell(x,t)=L(t,x)\), and by Lemma 1.1 (3), (5) and (4), applied to (2.3),
 \[
-\ell(x,t)=\prod_{k=1}^{m_t}L(u'_{t,k},x)\,L\bigl(r'_{t,k},x\pi(\bar u'_{t,k})\bigr)^{\sigma'_{t,k}}\,L(u'_{t,k},x)^{-1}.
+\begin{aligned}
+&\ell(x,t)=\prod_{k=1}^{m_t}\Bigl(L(u'_{t,k},x)\\
+&\qquad\cdot L\bigl(r'_{t,k},x\pi(\bar u'_{t,k})\bigr)^{\sigma'_{t,k}}\,L(u'_{t,k},x)^{-1}\Bigr).
+\end{aligned}
 \]
 A factor whose relator is ordinary is \(1\) by (b). A factor whose relator is distinguished is a conjugate of an element at distance at most \(h\) from \(1\), or of its inverse, and so has distance at most \(h\) from \(1\) by (3.2). By the first estimate of (3.2), \(|\ell(x,t)-1|\le Mh\), where \(M\) is the largest number \(m_t\), \(t\in\mathcal T_0\) (or \(M=0\) if \(\mathcal T_0\) is empty).
 
@@ -117,17 +142,28 @@ where \(K\) is \(\max(1,M)\) times the largest length of the words \(u_{z,j}\).
 
 *Step 3: removing the conjugations.* Fix \(z\in\mathcal D\) and \(v\in F\), and write \(u_j=u_{z,j}\), \(r_j=r_{z,j}\), \(\sigma_j=\sigma_{z,j}\) and \(n=n_z\). By Lemma 1.1 (3), (5) and (4), applied to (2.1),
 \[
-L(z,v)=\prod_{j=1}^na_jb_ja_j^{-1},\qquad a_j=L(u_j,v),\quad b_j=L\bigl(r_j,v\pi(\bar u_j)\bigr)^{\sigma_j}.
+\begin{gathered}
+L(z,v)=\prod_{j=1}^na_jb_ja_j^{-1},\\
+a_j=L(u_j,v),\quad b_j=L\bigl(r_j,v\pi(\bar u_j)\bigr)^{\sigma_j}.
+\end{gathered}
 \]
 If \(r_j\) is ordinary, then \(r_j\in\mathcal A\) and \(b_j=1\) by (b), so the factor is \(1\). Let \(J\) be the set of the indices \(j\) with \(r_j\) distinguished; for them \(|b_j-1|\le h\), and by (3.2) and Step 2,
 \[
-|a_jb_ja_j^{-1}-b_j|=|a_jb_j-b_ja_j|\le2|a_j-1|\,|b_j-1|\le2K(\epsilon+h)h .
+\begin{aligned}
+|a_jb_ja_j^{-1}-b_j|&=|a_jb_j-b_ja_j|\\
+&\le2|a_j-1|\,|b_j-1|\\
+&\le2K(\epsilon+h)h .
+\end{aligned}
 \]
 By the first estimate of (3.2), \(\bigl|L(z,v)-\prod_{j\in J}b_j\bigr|\le2nK(\epsilon+h)h\), the product taken in increasing order of \(j\).
 
 *Step 4: sorting.* Call \(\bigl(r_j,\pi(\bar u_j)\bigr)\) the *type* of the index \(j\in J\). Reorder the product \(\prod_{j\in J}b_j\) by interchanges of adjacent factors until the factors of each type are adjacent; at most \(n(n-1)/2\) interchanges are needed. By bi-invariance and (3.2), interchanging two adjacent factors \(x,y\) changes the product by \(|xy-yx|\le2|x-1|\,|y-1|\le2h^2\). After sorting, the factors of the type \((\rho,f)\) all equal \(L(\rho,v f)^{\pm1}\), with the signs \(\sigma_j\), so they multiply to \(L(\rho,vf)^{c}\), where \(c\) is the sum of the \(\sigma_j\) over the indices of that type. By Corollary 2.2, \(c=1\) for the type \((\rho_z,1)\) and \(c=0\) for every other type. So the sorted product is \(L(\rho_z,v)\), and
 \[
-|L(z,v)-L(\rho_z,v)|\le2nK(\epsilon+h)h+n(n-1)h^2\le\bigl(2nK+n(n-1)\bigr)(h+\epsilon)h .
+\begin{aligned}
+&|L(z,v)-L(\rho_z,v)|\\
+&\quad\le2nK(\epsilon+h)h+n(n-1)h^2\\
+&\quad\le\bigl(2nK+n(n-1)\bigr)(h+\epsilon)h .
+\end{aligned}
 \]
 
 *Step 5: the second inequality.* The word \(z\) uses letters of \(S\) only, so by (a) and (3.2), \(|L(z,v)-1|\le|z|\epsilon\), where \(|z|\) is the length of \(z\).
@@ -140,7 +176,10 @@ The constant does not depend on the quotient \(F\), on the labelling or on \(\ep
 
 Fix, for the rest of the course, numbers \(0<\delta<1\) and \(0<\eta<1\) with
 \[
-C(\delta+\eta)<\tfrac12,\qquad C\eta<\tfrac\delta2,\tag{4.1}
+\begin{gathered}
+C(\delta+\eta)<\tfrac12,\\
+C\eta<\tfrac\delta2,
+\end{gathered}\tag{4.1}
 \]
 for the constant \(C\) of Lemma 3.1; for example \(\delta=1/(4C)\) and \(\eta=1/(16C^2)\) (Exercise 5.3).
 
@@ -148,7 +187,11 @@ for the constant \(C\) of Lemma 3.1; for example \(\delta=1/(4C)\) and \(\eta=1/
 
 *Proof.* For every \(z\in\mathcal D\) and \(v\in F\), the two inequalities (3.1) give
 \[
-|L(\rho_z,v)-1|\le|L(\rho_z,v)-L(z,v)|+|L(z,v)-1|\le C(h+\epsilon)h+C\epsilon .
+\begin{aligned}
+|L(\rho_z,v)-1|&\le|L(\rho_z,v)-L(z,v)|\\
+&\quad+|L(z,v)-1|\\
+&\le C(h+\epsilon)h+C\epsilon .
+\end{aligned}
 \]
 Taking the supremum over \(z\) and \(v\), \(h\le C(h+\epsilon)h+C\epsilon\). If \(h=\delta\), this gives \(\delta\le C(\delta+\eta)\delta+C\eta<\frac\delta2+\frac\delta2=\delta\), which is impossible. If \(h<\delta\), then \(C(h+\epsilon)\le C(\delta+\eta)<\frac12\), so \(h\le\frac h2+C\epsilon\), that is, \(h\le2C\epsilon\). \(\square\)
 

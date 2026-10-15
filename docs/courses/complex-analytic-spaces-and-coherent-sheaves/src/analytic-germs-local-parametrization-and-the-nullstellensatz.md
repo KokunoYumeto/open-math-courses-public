@@ -1,6 +1,6 @@
 # Analytic germs, local parametrization and the Nullstellensatz
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0). The substitution proof in Exercise 6.4 is by GPT-6.1 Sol (OpenAI), Ultra; author self-check, CC0.*
 
 The zero set of finitely many holomorphic functions can be singular, but near any point it has a very concrete shape. After a generic linear change of coordinates, an irreducible germ of such a set is a branched covering of a polydisc: away from the zero set of one holomorphic function, the discriminant, it is a smooth manifold that covers the polydisc with a fixed finite number of sheets. This lesson proves this local parametrization theorem and its algebraic counterpart, the analytic Nullstellensatz: a germ vanishing on the zero set of an ideal has a power in the ideal. It also defines the dimension of a germ and identifies it with the Krull dimension of its local ring.
 
@@ -181,7 +181,9 @@ A point \(x\) of an analytic set \(A\) is **regular** if \(A\) is a complex subm
 
 **Exercise 6.4.** Show that the real analogue of Lemma 4.2 fails: for the prime ideal \(J=(x^2+y^2)\) of the ring of real convergent power series in \(x,y\), the vanishing ideal of its real zero set is strictly larger than \(J\).
 
-*Solution.* The real zero set of \(x^2+y^2\) is the origin, whose vanishing ideal is \((x,y)\), and \(x\notin(x^2+y^2)\) by comparing orders. (\(J\) is prime because \(x^2+y^2\) is irreducible over the real power series ring: a factorization would give a factorization of its quadratic part into real linear forms.) The proofs above use complex roots at every step.
+*Solution.* The real zero set of \(x^2+y^2\) is the origin, whose vanishing ideal is \((x,y)\), and \(x\notin(x^2+y^2)\) by comparing orders.
+
+For primality, regard a real convergent series \(h(x,y)\) as a complex holomorphic germ. Divide by the Weierstrass polynomial \(y^2+x^2\), using Theorem 2.1 of *The local ring of holomorphic germs*, to obtain uniquely \(h=(y^2+x^2)q+a(x)+yb(x)\), with convergent \(q,a,b\). Conjugating every coefficient gives another such division of the same real series by the same real polynomial. Uniqueness makes \(q,a,b\) real convergent series. The substitution homomorphism \(\rho:\mathbf R\{x,y\}\to\mathbf C\{t\}\), \(h\mapsto h(t,it)\), annihilates \(x^2+y^2\). If \(\rho(h)=0\), the remainder satisfies \(a(t)+itb(t)=0\). Its real and imaginary coefficient parts are respectively \(a(t)\) and \(tb(t)\), so both vanish and \(a=b=0\). Thus \(\ker\rho=(x^2+y^2)=J\). The quotient embeds in the domain \(\mathbf C\{t\}\), proving that \(J\) is prime. Its real vanishing ideal is nevertheless strictly larger. The complex-root argument of Lemma 4.2 cannot give the real vanishing ideal.
 
 ## References
 

@@ -71,7 +71,10 @@ is exact. Exactness at \(\Lambda^{(R)}\) and at \(\Lambda^{(A)}\) is the basis p
 
 Let \(S\) be a finite generating alphabet of \(\Gamma\) and \(\mathcal D\) a finite indexed list of words on \(S\), each of value \(1\), such that
 \[
-\Lambda^{(\mathcal D)}\to\ker\partial_1,\qquad e_z\mapsto[z],\tag{4.1}
+\begin{gathered}
+\Lambda^{(\mathcal D)}\to\ker\partial_1,\\
+e_z\mapsto[z],
+\end{gathered}\tag{4.1}
 \]
 is an isomorphism onto the cycle module of the generator graph of \(S\).
 
@@ -97,7 +100,10 @@ The sets \(\mathcal T\) and \(\mathcal R\) may be infinite; \(\rho_z\) are the *
 
 *Step 2.* Adjoin letters \(u_i\), \(i\in I\), of value \(1\), each with the one-letter relator \(u_i\), by Lemma 2.1(1). The \(U\)-edges are loops, the cycle module becomes \(\Lambda^{(I)}\oplus\Lambda^{(I)}\), the second summand spanned by the \(U\)-edges, and the relator boundary map becomes
 \[
-D_0=\begin{pmatrix}\mathsf A&0\\0&1\end{pmatrix}\colon\Lambda^{(R)}\oplus\Lambda^{(I)}\to\Lambda^{(I)}\oplus\Lambda^{(I)} .
+\begin{aligned}
+D_0=\begin{pmatrix}\mathsf A&0\\0&1\end{pmatrix}\colon{}&\Lambda^{(R)}\oplus\Lambda^{(I)}\\
+&\to\Lambda^{(I)}\oplus\Lambda^{(I)} .
+\end{aligned}
 \]
 
 *Step 3.* On the relator index module put
@@ -115,7 +121,10 @@ Replacing the boundary map \(D\) by \(DP\) adds to the boundary of each relator 
 
 *Reading off.* By (4.3), the relator of the second family indexed by \(i\in I\) has chain \((e_i,0)\): for \(i=z\in\mathcal D\) this is \([z]\), and we call this relator \(\rho_z\); for \(i=t\in T\) it is \(e_t\). The relator of the first family indexed by \(r\in R\) has chain \((0,-\mathsf Ae_r)\), supported on the \(U\)-edges. Put \(\mathcal T=T\amalg U\) and let the ordinary relators be the second-family relators indexed by \(T\) together with the first family, \(\mathcal R=T\amalg R\). Projected to the \(\mathcal T\)-coordinates, their chains are given by
 \[
-\begin{pmatrix}1_T&0\\0&-\mathsf A\end{pmatrix}\colon\Lambda^{(T)}\oplus\Lambda^{(R)}\to\Lambda^{(T)}\oplus\Lambda^{(I)}=\Lambda^{(\mathcal T)},
+\begin{aligned}
+\begin{pmatrix}1_T&0\\0&-\mathsf A\end{pmatrix}\colon{}&\Lambda^{(T)}\oplus\Lambda^{(R)}\\
+&\to\Lambda^{(T)}\oplus\Lambda^{(I)}=\Lambda^{(\mathcal T)},
+\end{aligned}
 \]
 an isomorphism. All letters of \(\mathcal T\) have value \(1\). \(\square\)
 

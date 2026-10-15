@@ -4,7 +4,10 @@
 
 The group of the counterexample is built from a finite flag complex \(L\) with two properties that pull in opposite directions: \(L\) is acyclic, so that the level complex of [The level complex and its acyclicity](the-level-complex-and-its-acyclicity.md) is acyclic and the group has cohomological dimension two, and the fundamental group of \(L\) has a nontrivial homomorphism into the unit quaternions, which the last lesson turns into a labelling of the level complex with small labels and nontrivial holonomy [OpenAI-EG, Lemma 4.1]. This lesson constructs \(L\) as a flag triangulation of the presentation complex of
 \[
-\langle x,y\mid x^2=y^5,\ x^2=(xy^{-1})^3\rangle .\tag{0.1}
+\begin{aligned}
+\langle x,y\mid{}&x^2=y^5,\\
+&x^2=(xy^{-1})^3\rangle .
+\end{aligned}\tag{0.1}
 \]
 
 - The presentation complex and its homology (Section 1).
@@ -32,7 +35,11 @@ By (PI1), \(\pi_1(K)\) is the group (0.1). With \(a=y\) and \(b=y^{-1}x\) it is 
 
 For imaginary quaternions \(u,v\) write \(u\cdot v\) for the Euclidean inner product in \(\operatorname{Im}\mathbb H=\mathbb R^3\) and \(u\times v\) for the cross product, so that \(uv=-u\cdot v+u\times v\). An imaginary unit quaternion \(v\) satisfies \(v^2=-1\), and therefore, as for complex numbers,
 \[
-(\cos\theta+v\sin\theta)^n=\cos n\theta+v\sin n\theta\qquad(n\in\mathbb Z).\tag{2.1}
+\begin{aligned}
+&(\cos\theta+v\sin\theta)^n\\
+&\quad=\cos n\theta+v\sin n\theta\\
+&\qquad(n\in\mathbb Z).
+\end{aligned}\tag{2.1}
 \]
 
 **Lemma 2.1** (the seed representation; [OpenAI-EG, Lemma 4.1]). Let \(\theta=\pi/5\), and let \(u,v\) be imaginary unit quaternions with
@@ -43,7 +50,10 @@ they exist, since \(\sin(\pi/5)>\sin(\pi/6)=\frac12\). Then \(x\mapsto u\), \(y\
 
 *Proof.* By (2.1), \(\alpha(y)^5=\cos\pi+v\sin\pi=-1\), and \(u^2=-1\); so \(\alpha(x)^2=\alpha(y)^5\). Next, \(\alpha(xy^{-1})=u(\cos\theta-v\sin\theta)=w\), a unit quaternion with real part
 \[
-\operatorname{Re}w=-\sin\theta\,\operatorname{Re}(uv)=\sin\theta\,(u\cdot v)=\tfrac12 .
+\begin{aligned}
+\operatorname{Re}w&=-\sin\theta\,\operatorname{Re}(uv)\\
+&=\sin\theta\,(u\cdot v)=\tfrac12 .
+\end{aligned}
 \]
 So \(w=\cos(\pi/3)+n\sin(\pi/3)\) for an imaginary unit quaternion \(n\), and \(w^3=\cos\pi+n\sin\pi=-1\) by (2.1). Hence \(\alpha(x)^2=-1=w^3\), and both relations of (0.1) hold. Finally \(\alpha(x)=u\ne1\). \(\square\)
 

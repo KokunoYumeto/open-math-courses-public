@@ -10493,9 +10493,2834 @@ a clipped shuffle on an inadmissible full product word.
 
 Proposition C.52.1.1 proves the reversible even height grading. Theorems C.52.2.1–C.52.3.1 construct the actual indexed projections and product modules. Theorems C.52.4.1–C.52.5.1 identify the full-face shuffle domains and central homotopy extensions. Proposition C.52.6.1 gives the exact resolved-square sign. Exercises C.52.7.1–C.52.7.2 retain zero-input parameter data and compute a nonzero boundary from clipped shuffle terms. Editable SVG source.
 
+### C.53. Native module coherence with the whole parameter family
+
+The product comparison uses maps and homotopies in the full dg category of
+represented cofree modules. A change of module model changes the coherent
+cells as well as their edge maps. This section records their homogeneous
+signs, the triangle correction and a construction transporting the entire
+resolved parameter family while retaining its chosen edge representatives.
+The raw native product squares are on the actual indexed product models of
+C52. A module-valued coherent family and a whole nested-path coordinate are
+different objects; all several-transition and product/grafting restrictions
+must still be retained when using these constructions for tensor descent.
+
+#### C.53.1. Signed full represented evaluation
+
+Use the normalized full natural-transformation and graph-module models of
+C.33.2. The target category is a dg category \(B\); the source may
+have all its normalized unital higher operations. A full homogeneous
+natural-transformation component has its total degree in that bar model,
+including its dependence on the source bar word. It is not merely its
+object component. Keep finite additive represented objects throughout.
+
+**Lemma C.53.1.1.** Represented evaluation
+is a dg functor from the opposite of the full natural-transformation
+category to the dg category of the represented cofree modules. On a bare
+homogeneous target map its degree-\(r\) action is
+\[
+ m\longmapsto(-1)^{r|m|}m\beta.
+\]
+On a full source bar word use the same formula on its homogeneous full
+transformation component, with the tensor evaluation signs, and reconstruct
+by the outside coactions. It retains all source actions and is compatible
+with parameter faces. After one total cochain shift, a degree-\(r\)
+map has the additional factor \((-1)^r\).
+
+**Proof.** First take ordinary homogeneous target maps. For the displayed
+operator \(R_\beta\), the ordinary Hom differential gives
+\[
+ \begin{aligned}
+ \partial R_\beta(m)
+ &=(-1)^{r|m|}\bigl(dm\,\beta+(-1)^{|m|}m\,d\beta\bigr)\\
+ &\quad-(-1)^r(-1)^{r(|m|+1)}dm\,\beta\\
+ &=(-1)^{(r+1)|m|}m\,d\beta
+   =R_{d\beta}(m).
+ \end{aligned}
+\]
+The two terms containing \(dm\) cancel. For \(|\gamma|=s\),
+two successive evaluations have coefficient
+\((-1)^{r|m|+s(|m|+r)}\). Hence
+\(R_\gamma R_\beta=(-1)^{rs}R_{\beta\gamma}\), exactly the
+graded opposite composition sign. Identity evaluation is the identity.
+Thus this is an actual dg functor on represented mappings, with its
+correct contravariant direction.
+
+For the full source action, apply that evaluation to each consecutive
+source block in the C.33.2 bar formula. Terms differentiating or merging
+the source inputs give exactly the same terms in the full transformation
+differential. Terms composing two adjacent source-image blocks are exactly
+the two twisted endpoint actions of that differential. Target unary terms
+are the calculation just given, with the degree of the entire homogeneous
+bar component. The remaining target-composition terms cancel by the dg
+Leibniz and associativity identities. These are all terms in the full
+module Hom differential, because a represented graph word crosses only
+once. Consequently evaluation commutes with the full differential.
+
+For composition, cutting the source word into the two transformation
+blocks gives the same two consecutive evaluations. Moving their homogeneous
+component maps past the preceding suspended inputs gives exactly the
+tensor evaluation signs on both sides. The graded opposite sign already
+calculated is the only additional interchange. The outside coaction
+formula reconstructs the remaining components uniquely, proving both
+coaction equations and the full composition identity. This is the complete
+transformation part of C.33.2 with the homogeneous signs displayed.
+
+On a cochain shift \([1]\) the source and target differentials are
+negated. The dg shift functor sends a degree-\(r\) map to
+\((-1)^r\) times its underlying map: substitution into the Hom
+differential gives the required degree-\(r+1\) shift sign. This also
+retains composition. It is the precise additional sign when restoring
+C41's one total cross suspension. Every formula uses only the original
+source word and its cuts, so restricts to every parameter face. \(\square\)
+
+#### C.53.2. Transport the triangle and its three boundaries
+
+Let \(\mathcal E\) be a dg category of actual full cofree module
+complexes over fixed cores. If needed, transport the target cores back
+through the already fixed \(g\), so that these are identity-core
+module maps. Suppose
+\[
+ a:X_0\to X_1,\quad b:X_1\to X_2,\quad c:X_0\to X_2
+\]
+are closed degree-zero maps and \(H:X_0\to X_2\) has degree minus
+one with \(\partial H=ba-c\). At each vertex retain chain maps
+\(i_j:\widehat X_j\to X_j\), \(p_j:X_j\to\widehat X_j\)
+and an actual module homotopy \(\partial h_j=1-i_jp_j\).
+
+**Lemma C.53.2.1.** The transported
+edges are
+\[
+ \widehat a=p_1ai_0,\qquad
+ \widehat b=p_2bi_1,\qquad
+ \widehat c=p_2ci_0.
+\]
+Their actual two-simplex is
+\[
+ \widehat H=p_2Hi_0-p_2b h_1a i_0,
+ \qquad
+ \partial\widehat H=\widehat b\widehat a-\widehat c.
+\]
+If the desired three closed edges instead satisfy
+\(a'=\widehat a+\partial A\),
+\(b'=\widehat b+\partial B\),
+\(c'=\widehat c+\partial C\), for specified degree-minus-one
+homotopies, the corrected simplex is
+\[
+ H'=\widehat H+B\widehat a+b'A-C,
+ \qquad \partial H'=b'a'-c'.
+\]
+These formulas retain every supplied compatible face restriction.
+
+**Proof.** The full Hom differential is a derivation and every displayed
+edge or inclusion/projection has degree zero. Thus
+\[
+ \begin{aligned}
+ \partial\widehat H
+ &=p_2(ba-c)i_0-p_2b(1-i_1p_1)a i_0\\
+ &=p_2b i_1p_1a i_0-p_2c i_0\\
+ &=\widehat b\widehat a-\widehat c.
+ \end{aligned}
+\]
+For the replacement formula, its differential is
+\[
+ \begin{aligned}
+ &\widehat b\widehat a-\widehat c
+ +(b'-\widehat b)\widehat a\\
+ &\quad+b'(a'-\widehat a)-(c'-\widehat c)
+ =b'a'-c'.
+ \end{aligned}
+\]
+This retains the cross term already contained in \(b'A\); replacing
+it by \(\widehat b A\) would in general omit
+\((\partial B)A\). Each expression is a composite of actual module
+maps and homotopies, so the equality is in the complete module Hom
+complex, not only on bare central terms. By C.52.6 it is exactly the
+image of the free two-arrow generator in the resolved simplex. Restriction
+commutes with all these composites, proving the compatibility assertion.
+\(\square\)
+
+In particular a change of module model does not preserve only the three
+edges: its middle-vertex homotopy contributes the explicit second term
+of \(\widehat H\). This is the two-simplex instance of the whole
+consecutive-word action transfer used in C50.
+
+#### C.53.3. Chosen raw native product-square homotopies
+
+Work over the extension field \(E\) of C.48.1 and retain its **given
+entire** calibrated enhanced strong monoidal comparison. Its pure core
+map is \(g\), and every pure state uses its specified power. Take
+one finite actual ordered list of native block functors with the C52
+indexed models. Use its actual product-shuffle source domain; on a full
+execution face retain the rectangle subdomain of C.52.4.
+
+Write \(Z,Z'\) for the two raw common-cobar block modules and
+\(W,W'\) for their actual once-suspended product modules. C.52.3 and
+C45 give fixed projections and normalized chain sections
+\[
+ \phi:Z\to W,\quad i_\phi:W\to Z,\qquad
+ \phi':Z'\to W',\quad i'_{\phi}:W'\to Z',
+ \quad \phi i_\phi=1,\quad\phi'i'_{\phi}=1.
+\]
+All four maps are over the identity respective cores. Let \(u:W\to W'\)
+be the shifted product of the individual full comparison maps, over the
+exact powers of \(g\). Let \(\tau:W\to W'\) be the original
+native block comparison interpreted on these product modules by the
+actual represented-module equivalences.
+
+**Theorem C.53.3.1.**
+The original full monoidal comparison supplies an actual degree-minus-one
+module homotopy
+\[
+ R_0:W\to W',\qquad \partial R_0=\tau-u.
+\]
+For the chosen raw lift
+\[
+ t=i'_{\phi}\tau\phi:Z\to Z',
+\]
+an actual raw square homotopy is
+\[
+ R=R_0\phi,\qquad \partial R=\phi't-u\phi.
+\]
+The product-normalized choice
+\(t^{\rm prod}=i'_{\phi}u\phi\) satisfies the square exactly,
+and its homotopy from \(t\) is
+\[
+ K=-i'_{\phi}R_0\phi,\qquad
+ \partial K=t^{\rm prod}-t.
+\]
+The construction retains the full factor faces of this actual supplied
+native product cell and has its calibrated leading cohomology map.
+
+**Proof.** Before changing models, the full monoidality datum compares
+the native block comparison with the external product of its individual
+comparisons. This is the specified coherence cell of the actual enhanced
+strong monoidal comparison of C.48.1. Its full source-bar components
+are part of that datum; equality of the three cohomology maps is not
+substituted for them. Use the original mixed-input recording of C.48.2
+on this cell, with the dg category of full represented modules as target.
+C.33.2's transformation construction and Section C.53.1 give all its module
+components, differential and composition, with the graded opposite and
+one-cross shift signs retained. The unital recording C.43.2 works for
+this dg target without assuming it has an augmentation.
+
+Transport the actual block functors into the common-cobar models by
+C.52.3's represented-module equivalences. The projection \(\phi\)
+is precisely the represented target-mapping map induced by the canonical
+product projection, whose square with the source functor was proved
+strict in C.52.3. Its chosen chain section and homotopy are therefore
+actual model-equivalence data. For the product modules choose the tensor
+of the individual data with C41's single total suspension. Their
+degree-zero comparison transports as the product of the individual
+comparisons, so its edge is exactly \(u\). The other edge is the
+interpreted native comparison \(\tau\).
+
+Section C.53.2's formula transports the complete resolved coherence cell,
+including the middle-vertex homotopy term. If boundary representatives
+were changed to these chosen projections or product representatives,
+its boundary-replacement formula uses exactly their supplied
+model-equivalence unit/counit homotopies. Thus it is a recorded
+two-simplex in the **actual full module** dg category, with the native
+edge \(\tau\) and product edge \(u\). Its third edge can be the
+identity on \(W\); equivalently use its degenerate first edge and
+these two parallel edges. Proposition C.52.6.1 identifies minus its
+two-arrow generator image as \(R_0\), proving
+\(\partial R_0=\tau-u\).
+
+All these comparisons are over the same outside core powers. Indeed
+C.48.1 fixes those powers before recording the cells; the canonical
+\(\rho\) and product projections commute strictly with them by
+C.52.2 and C.41.1. Pulling the full represented equations to the common
+cores therefore leaves identity outside coactions after transport through
+\(g\). The resulting degree-minus-one component is an actual
+bicomodule homotopy over those powers. No homotopy correcting a pure
+state map has been silently omitted.
+
+Now the remaining assertions are direct full-module identities:
+\(\phi't=\tau\phi\), so
+\[
+ \partial(R_0\phi)=(\tau-u)\phi=\phi't-u\phi.
+\]
+Also \(\phi't^{\rm prod}=u\phi\), and
+\[
+ \partial(-i'_{\phi}R_0\phi)
+       =i'_{\phi}(u-\tau)\phi=t^{\rm prod}-t.
+\]
+The chosen lifts represent the original comparison because the sections
+and projections are actual module homotopy equivalences. The kernel
+SDRs and the original calibrated comparison induce the identity on the
+fixed mapping cohomology frames, proving the leading-map assertion.
+
+The original cell and all its retained full factor faces are one
+supplied family. The recording uses their same original words, and
+C52/C45 give compatible projection data on those faces. Every
+transport and evaluation term consequently restricts to the same face
+term, including the two-simplex term. This proves the stated face
+claim. Restriction to a compatible execution face is the actual rectangle
+restriction, never the deletion of unsafe shuffle terms. \(\square\)
+
+#### C.53.4. The explicit path-projection kernel contraction
+
+Let \(\mathcal E\) be any dg category over the coefficient field;
+in the application its morphisms are full bicomodule maps with the full
+Hom differential. For a closed homotopy equivalence \(u:X\to Y\)
+use the path object of C.50.3. A degree-\(r\) map from \(u_i\)
+to \(u_j\) has components
+\[
+ \begin{aligned}
+ f&:X_i\to X_j,\quad |f|=r,\\
+ g&:Y_i\to Y_j,\quad |g|=r,\\
+ a&:X_i\to Y_j,\quad |a|=r-1.
+ \end{aligned}
+\]
+Its differential and composition are
+\[
+ \begin{aligned}
+ D(f,g,a)&=(\partial f,\partial g,
+                 -\partial a+u_jf-gu_i),\\
+ (f_2,g_2,a_2)(f_1,g_1,a_1)
+   &=(f_2f_1,g_2g_1,
+               a_2f_1+(-1)^{|f_2|}g_2a_1).
+ \end{aligned}
+\]
+The full dg identities were proved in C.50.3, with their essential last
+composition sign. Projection \(\pi_0\) keeps \(f\).
+
+**Lemma C.53.4.1.** Suppose
+\(u_i=p_i:X_i\to Y_i\) has a chain section \(i_i\), with
+\(p_i i_i=1\), and a normalized homotopy
+\[
+ \partial h_i=1-i_i p_i,\qquad
+ h_i^2=p_i h_i=h_i i_i=0.
+\]
+Then the kernel of \(\pi_0\) on the mapping complex from \(u_i\)
+to any \(u_j\) is contractible. On a homogeneous pair \((g,a)\)
+of total degree \(r\), its differential and contraction are
+\[
+ \begin{aligned}
+ d_K(g,a)&=(\partial g,-\partial a-gp_i),\\
+ k(g,a)&=(-a i_i,(-1)^r a h_i).
+ \end{aligned}
+\]
+They satisfy \(d_Kk+kd_K=1\), \(k^2=0\), including their full
+cofree module actions. These formulas retain every face on which the
+original retract data have compatible restrictions.
+
+**Proof.** Put \(C=\operatorname{Hom}_{\mathcal E}(Y_i,Y_j)\),
+\(B=\operatorname{Hom}_{\mathcal E}(X_i,Y_j)\). The chain map
+\(f:C\to B\) is \(g\mapsto gp_i\), with retraction
+\(r:B\to C\), \(a\mapsto a i_i\). In degree \(s\), put
+\(H_B(a)=(-1)^s a h_i\). The Hom derivation identity gives
+\[
+ \partial H_B(a)+H_B(\partial a)=a(1-i_i p_i).
+\]
+Indeed the two terms containing \((\partial a)h_i\) have opposite
+signs, and the remaining term is \(a\partial h_i\).
+Thus \(\partial H_B+H_B\partial=1-fr\). Also
+\(rH_B=H_B f=H_B^2=0\), by the three normalized identities for
+\(h_i\). These are actual mapping-complex equations; postcomposition
+and precomposition retain the full coactions with their homogeneous signs.
+
+The mapping kernel is the pair complex
+\(C^r\oplus B^{r-1}\), with the displayed differential. On it
+define \(k(g,a)=(-r a,-H_Ba)\). Direct substitution gives first
+component
+\(-r\partial a+r\partial a+rf g=g\). Its second component is
+\(\partial H_Ba+H_B\partial a+fr a+H_B f g=a\).
+Finally \(k^2=0\) since
+\(rH_B=H_B^2=0\). This proves the normalized contraction with its
+displayed homogeneous sign. Restriction commutes with every composite.
+\(\square\)
+
+#### C.53.5. Transport the entire coherent module family
+
+Let \(I\) be a finite directed parameter category. An actual coherent
+family of module objects has its full unital resolved recording
+\[
+ F:\Omega B(kI)\longrightarrow\mathcal E.
+\]
+This is the supplied entire family, not a diagram inferred from closed
+edge maps. Its free generators are nonempty composable strings of
+nonidentity arrows of \(I\). A string of length \(q\) has generator
+degree \(1-q\). Its differential merges adjacent arrows or splits
+into products of two shorter strings, with the original C.39.15 signs.
+
+At each parameter object let \((i_i,p_i,h_i)\) be a normalized
+module retract from \(X_i=F(i)\) to a chosen \(Y_i\), as in
+Section C.53.4. For an original arrow \(\alpha:i\to j\), prescribe
+\[
+ \begin{aligned}
+ G(\alpha)&=p_j F(\alpha)i_i,\\
+ A(\alpha)&=p_jF(\alpha)h_i.
+ \end{aligned}
+\]
+
+**Theorem C.53.5.1.**
+There is a unital dg functor
+\[
+ \mathscr H:\Omega B(kI)\longrightarrow\operatorname{Path}(\mathcal E)
+\]
+with object path \(p_i:X_i\to Y_i\), first projection exactly
+\(F\), and the displayed prescribed second and third components on
+every one-arrow generator. Its second projection \(G\) records an
+actual entire coherent family on the chosen module models. It includes
+all higher comparison components and an actual coherent equivalence to
+the original family. A previously assigned full face family can be
+retained whenever its path lifts agree on their actual free-generator
+intersections and have these same object/edge values. The construction
+is finite on each original generator and extends along compatible
+increasing finite corners without changing earlier values.
+
+**Proof.** For an original degree-zero arrow put
+\(f=F(\alpha)\), \(g=p_j f i_i\), and
+\(a=p_j f h_i\). The first two are closed. The third satisfies
+\[
+ \partial a=p_j f(1-i_i p_i)=p_jf-gp_i.
+\]
+Thus \((f,g,a)\) is a closed path morphism with exactly the stated
+endpoints. Assign the coefficient identity to the path identity
+\((1,1,0)\). This defines the lift on all length-one free generators
+and their free products. It does not yet claim the higher coherence
+relations, which belong to the higher free generators.
+
+Induct on the original string length \(q\ge2\). All terms in the
+generator differential \(dx\) involve shorter generators or products
+of them, so their lifted values are already assigned. Choose any graded
+preimage \(v\) of \(F(x)\) under \(\pi_0\) on the fixed
+mapping block; for example \((F(x),0,0)\) is a graded preimage.
+Set its degree-one defect
+\[
+ o=Dv-\mathscr H(dx).
+\]
+It lies in the kernel because \(\pi_0\mathscr H=F\) on shorter
+generators and \(F\) is a dg functor. It is closed: apply \(D\),
+use the already assigned chain equation on every shorter product and
+\(d^2x=0\). The explicit mapping-kernel contraction \(k\) of
+Section C.53.4 gives the corrected value
+\[
+ \mathscr H(x)=v-k o.
+\]
+Its projection remains \(F(x)\), and
+\(D\mathscr H(x)=\mathscr H(dx)\), since \(Dko=o\) for a
+closed kernel element. Extend multiplicatively. The dg Leibniz rule
+proves the chain equation on every product of the newly assigned
+generators. This completes the induction with every original sign.
+
+There are finitely many strict-arrow strings in a finite directed
+category, bounded by its height range. No infinite series or limiting
+primitive is used. Full parameter faces are generated by the original
+strings whose vertices lie in that face. Merging removes vertices and
+splitting retains subsets, so the union of prescribed face generator
+complexes is differential-stable. Their agreeing path lifts give one
+assignment on that free subcategory. Perform the correction only on
+the remaining generators. This retains the full assigned faces exactly,
+rather than separately rechoosing a simplex on each face.
+
+The same induction works in the actual dg category of full cofree
+modules: all homotopies and kernel corrections are actual module maps,
+and their full mapping differential is the one used throughout. Each
+new finite IC corner or finite family of parameter cells retains the
+already assigned generators and extends only the new ones. Every
+fixed original word receives its value at a finite stage.
+
+Finally \(\pi_1\mathscr H\) is a dg functor because \(\pi_1\)
+is one by C.50.3. Its parameter edges have the prescribed compressed
+values, and every higher generator has the assigned coherent value.
+The whole path family supplies the equivalence to \(F\), with object
+components \(p_i\), all of which are homotopy equivalences. This is
+an actual resolved comparison including its higher homotopies, not an
+objectwise identification alone. \(\square\)
+
+#### C.53.6. Solved examples
+
+**Exercise C.53.6.1 (intermediate).** Let \(X\) have basis \(e,x\)
+in degree zero and \(y\) in degree one, with \(dx=y\). Let
+\(Y=ke\), let \(i:Y\to X\) be inclusion, \(p:X\to Y\)
+the projection, and \(h(y)=x\), all other values zero. Start with
+the strict triangle whose three vertex complexes are \(X\), whose
+three edges are identities, and whose two-simplex component is zero.
+Replace its middle vertex by \(Y\). Determine the transported triangle
+and explain why its two-simplex component is necessary.
+
+**Solution.** The retraction satisfies
+\(pi=1\), \(dh+hd=1-ip\), and \(h^2=ph=hi=0\), by evaluation
+on the three displayed basis vectors. The outside vertex models have
+identity inclusions/projections and zero homotopies. Lemma C.53.2.1 gives
+\[
+ \widehat a=p,\qquad\widehat b=i,\qquad\widehat c=1_X,
+ \qquad\widehat H=-h.
+\]
+Its differential is
+\(\partial\widehat H=ip-1_X=\widehat b\widehat a-\widehat c\).
+On \(x,y\) this is minus the identity and hence is nonzero. Keeping
+the three compressed edge maps but omitting the middle-vertex term would
+leave precisely this nonzero triangle defect. The transferred coherent
+triangle includes \(-h\) even though the original two-simplex was zero.
+
+**Exercise C.53.6.2 (intermediate).** Keep \(X,Y,i,p,h\) from the
+previous exercise and use the path object \(u=p:X\to Y\). In the
+kernel of its first mapping projection, let \(x^*,y^*:X\to Y\)
+send \(x,y\), respectively, to \(e\) and kill the other basis
+vectors. Check the contraction of Lemma C.53.4.1 on
+\((g,a)=(0,x^*)\), of total degree one, and on \((1_Y,0)\), of
+total degree zero. What happens if the factor \((-1)^r\) is omitted?
+
+**Solution.** The degrees of \(x^*,y^*\) are zero and minus one,
+and \(\partial x^*=0\), \(\partial y^*=x^*\). The corrected
+kernel homotopy has
+\[
+ k(0,x^*)=(0,-y^*).
+\]
+Its differential is \((0,x^*)\), while \(d_K(0,x^*)=0\).
+Thus \((d_Kk+kd_K)(0,x^*)=(0,x^*)\). On the degree-zero element,
+\(k(1_Y,0)=0\) and \(d_K(1_Y,0)=(0,-p)\). Applying \(k\)
+to the latter gives \((pi,ph)=(1_Y,0)\), which proves its
+contraction equation too. The square-zero identities follow here from
+\(x^*i=0\), \(y^*h=0\), \(h^2=ph=hi=0\).
+
+Omitting the sign in the degree-one case gives \(k(0,x^*)=(0,y^*)\),
+whose differential is \((0,-x^*)\), the opposite of the required
+answer. This sign is needed in the full Hom complex before any higher
+parameter generator is corrected.
+
+![The middle-vertex homotopy corrects a transported triangle;the path-projection kernel contraction carries the homogeneous sign;all higher parameter generators are corrected in the full module complex](assets/native-module-coherence.png)
+
+Lemmas C.53.1.1–C.53.2.1 prove the represented evaluation signs and triangle transport. Theorem C.53.3.1 gives the chosen raw native product-square homotopies. Lemma C.53.4.1 contracts the path-projection kernel,and Theorem C.53.5.1 transports the entire coherent parameter family. Exercises C.53.6.1–C.53.6.2 calculate the middle-vertex term and the nontrivial Hom sign. Editable SVG source.
+
+### C.54. Relative pure actions and coherent product normalization
+
+A comparison with prescribed tensor core powers must retain the entire
+pure-state action. We recover the whole comparison relative to that action,
+then compute its homotopy to the chosen product lift. The last two results
+replace product edges within their entire coherent parameter family. Work
+with the actual cofree module and path models of C49–C53 over the fixed
+characteristic-zero coefficient field. The simultaneous product-shuffle
+prescriptions and all higher grafting equations retain their full domains.
+
+#### C.54.1. Recovery relative to the full pure actions
+
+Let \(A\) be a directed dg graph category, with pure state subcategories
+\(A_i\) and all its original several-transition products. There are
+no backwards cross arrows. Let \(B\) be the corresponding target
+category, and fix the actual strict pure functors
+\(q_i:A_i\to B_i\subset B\). Let \(M\) be the whole
+\((B,A)\)-bimodule of the given comparison prism.
+
+For its restriction \(M_i\) in the source pure state put
+\[
+ R_i(y,x)=B(q_i x,y).
+\]
+Suppose an actual quasi-isomorphism between \(R_i\) and \(M_i\)
+is specified in the dg category of full \((B,A_i)\)-bimodules.
+This includes every pure-source bar component. An objectwise equivalence
+of left \(B\)-modules alone is not this hypothesis. All cofree
+modules and homotopies retain both outside pure actions and their full
+normalized bar components.
+
+**Theorem C.54.1.1.** Under these
+hypotheses the recovered full enhanced functor \(F:A\to B\) can
+be chosen with restriction **exactly** \(q_i\) on every pure state.
+Its action equivalence to \(M\) retains the specified full pure
+bimodule equivalences. Its cross components are obtained by transferring
+the entire mixed action, with all several-transition components included.
+When a native coherent cell is interpreted using these same module
+equivalences and contractions, its restriction agrees with the restriction
+of this recovery; it is not an independently chosen comparison.
+
+**Proof.** Work first in the dg category of full \((B,A_i)\)-bimodules,
+separately for each state. Invert a stipulated quasi-isomorphism there
+using C.50.1's mapping-cylinder construction and the full cofree kernel
+perturbation of C.45.2. For clarity one can arrange a strict normalized
+retraction to the exact prescribed model \(R_i\) after a harmless
+module cylinder enlargement. If \(p_i:M_i\to R_i\) is the resulting
+full quasi-isomorphism, use
+\[
+ L_i=M_i\oplus\operatorname{Cone}(1_{R_i})[-1],
+ \qquad p_i'(m,a,b)=p_i(m)+b.
+\]
+This is the cofree mapping cylinder; when \(p_i\) has higher
+components, its projection has those same full components. Its central
+projection is surjective and its kernel is acyclic. The fixed-projection
+kernel argument gives actual full bimodule maps and homotopy
+\[
+ I_i:R_i\to L_i,\quad P_i:L_i\to R_i,\quad H_i,
+ \qquad P_iI_i=1,\quad\partial H_i=1-I_iP_i,
+\]
+with \(H_i^2=P_iH_i=H_iI_i=0\). Every correction consumes outside
+bar letters, so the series is finite on each word. This is the full
+bimodule kernel proof, not a splitting only of the underlying vector
+spaces. The projection \(L_i\to M_i\) and its cylinder inclusion
+also have their actual normalized pure-bimodule contraction.
+
+Extend the entire mixed \(A\)-action from \(M\) to \(L\)
+through that cylinder inclusion and projection. On every action involving
+a cross input, insert the projection on its incoming module end and the
+inclusion on its outgoing end. Their projection-inclusion composite is
+the identity on \(M_i\). Thus two adjacent mixed actions have exactly
+the original composite. The cylinder's own pure actions remain unchanged.
+The full mixed identities follow term by term from the original action
+identities and the fact that these are maps of both pure actions.
+
+Now transfer only the mixed action along \((I_i,P_i,H_i)\). Absorb
+all pure actions and their unary differential in the underlying full
+\((B,A_i)\)-module structures. For a mixed source word partition its
+cross positions into nonempty consecutive blocks. Apply its original
+whole mixed-action component on each block, insert \(H\) between
+two successive block outputs, and apply \(I\) and \(P\) on the
+two ends. The outside pure bar inputs are included in these full
+bimodule maps, with their cofree tensor evaluation signs.
+
+The proof of the complete action transfer in C.50.1 applies with these
+full pure-module complexes as its coefficient mapping complexes. Moving
+the differential past an inserted \(H\) gives \(1-IP\). Its
+identity terms cancel the adjacent original source-action terms, and its
+\(IP\) terms are the two transferred target-action blocks. The
+remaining terms are the original whole mixed-action identity. This checks
+every consecutive block and hence the complete action equation. The
+finite directed height bounds the number of cross positions; the cofree
+pure corrections were already finite wordwise. All sums are therefore
+finite on each original input.
+
+On a pure word there is no mixed action to transfer. Its action is the
+already assigned \((B,A_i)\)-action on \(R_i\), which is exactly
+the represented action of \(q_i\). This is why no later independent
+pure-state replacement, with potentially different higher homotopies,
+is needed. Source coefficient identities act by the original true
+module identities; normalization retains them.
+
+Recover the target \(B\) by the full represented Yoneda evaluation
+of C.50.1, with its opposite direction as stated there. Its section is
+strict Yoneda composition, and its normalized homotopy annihilates that
+section. On a pure word all the input maps are precisely the Yoneda
+images of \(q_i\). The first evaluation returns \(q_i\);
+every higher transfer tree contains a homotopy on a composed section
+value and is zero. Thus the recovered target is the original dg \(B\)
+and the pure functor is exactly \(q_i\), including all its prescribed
+normalized components. Mixed words retain their full transferred values.
+
+Finally, restriction of these formulas to a chosen native cell uses the
+same original action components, the same module maps and the same
+contractions. Its consecutive partitions and their signs are the same
+ones. The full natural-transformation evaluation of C.53.1 is this
+restricted action formula. Therefore interpreting that cell through
+these stipulated data gives the actual restriction of the whole
+recovery. The entire action equivalence is the one produced by the same
+transfer, and its pure part is the retained bimodule equivalence.
+This proves the assertion without inferring relative pure compatibility
+from equality on objects or on cohomology. \(\square\)
+
+#### C.54.2. The native exact-core comparison
+
+Use the calibrated comparison prism of C48–C50. Its desired strict pure
+state functors are
+\[
+ q_i=\Omega B\bigl((\Omega g)^{\otimes n_i}\otimes1_{kI}\bigr).
+\]
+The single \(g\) and these literal powers are fixed before recovery.
+All target graph levels, actual parameter tags and several-transition
+strings are retained in \(B\).
+
+**Proposition C.54.2.1.** The full pure
+bimodule equivalences in Section C.54.1 are supplied by this prism, so its
+whole endpoint recovery can be made relative to these exact \(q_i\)'s.
+Its canonical common-core comparison therefore has the exact powers
+\(g^{\otimes n_i}\otimes1_{D_I}\). A comparison of a chosen
+native block module, interpreted with this same recovery data, is the
+actual one-cross restriction of this full comparison, before any
+independent product projection normalization.
+
+**Proof.** At a source object \(x\) the actual comparison parameter
+arrow gives the representing map of C.50.2. Its pure-source higher
+components are the original coherent state comparison, not a chosen
+objectwise extension. Record all those components by the full represented
+evaluation of C.33.2 and C.53.1. Its pure-source naturality equation is
+exactly the right \(A_i\)-module equation, including all source-word
+components. Its left \(B\)-module equation is the actual represented
+composition equation. Thus it is a genuine \((B,A_i)\)-bimodule map
+between \(R_i\) and the restriction of the entire prism module.
+
+Its central map is the composition with the actual parameter arrow.
+Under the canonical counits it is precomposition by the given state
+equivalence, whose coherent inverse gives the two mapping-complex
+homotopies. C.50.2 proves the resulting central quasi-isomorphisms on
+every allowed target string. The cofree kernel argument then gives the
+full pure-bimodule equivalence, retaining all its action components.
+The stated hypothesis of Section C.54.1 is therefore fulfilled by actual
+prism data, not by an assumed contractible transformation space.
+
+Apply the relative recovery. It retains the displayed strict pure
+functors, so C.43.1's strict naturality of the canonical common-input
+maps gives exactly the displayed common-core powers. Pull back the
+whole bar comparison by C.40.1's consecutive-cut construction; its
+chain defect vanishes at the central projection and on the pure parts,
+so coderivation uniqueness proves the full chain equation as in
+C.50.3. Every several-transition component is still included.
+
+To interpret a native block, restrict the original full prism action
+and use the same pure-bimodule cylinder maps, contractions and Yoneda
+evaluation. The first theorem's restriction assertion makes this the
+literal one-cross restriction of the constructed full comparison.
+No unrelated core or input-corner equivalence has been introduced.
+This proves the claim. \(\square\)
+
+#### C.54.3. The explicit homotopy to the product lift
+
+Let \(T:Z\to Z'\) now be an actual one-cross restriction of the
+whole recovered comparison. Let
+\(\phi:Z\to W\), \(\phi':Z'\to W'\) be the C52 product
+projections, with sections \(i,i'\) and normalized homotopies
+\[
+ \partial h=1-i\phi,\qquad
+ \partial h'=1-i'\phi'.
+\]
+All these equations are in the full bicomodule Hom complexes. Set
+\(\tau=\phi'Ti\). Interpret the original native product coherence
+cell using these same recovery data, and let
+\(\partial R_0=\tau-u\) be its actual homotopy of C53, where
+\(u\) is the shifted product of the individual comparisons.
+
+**Theorem C.54.3.1.** The map
+\(T^{\rm prod}=i'u\phi\) has the exact product projection square.
+There is an actual full homotopy
+\[
+ \begin{aligned}
+ K={}&-h'T-i'\phi'Th-i'R_0\phi,\\
+ \partial K={}&T^{\rm prod}-T.
+ \end{aligned}
+\]
+The unnormalized whole restriction itself has raw square homotopy
+\[
+ R=\phi'Th+R_0\phi,\qquad
+ \partial R=\phi'T-u\phi.
+\]
+These formulas retain all compatible full faces. After the actual
+one-cross minimal transfers, they give the homotopy required by the
+whole-graph gauge theorem C.51.3.1.
+
+**Proof.** Every displayed map other than a homotopy is closed and of
+degree zero. Thus
+\[
+ \begin{aligned}
+ \partial R
+ &=\phi'T(1-i\phi)+(\tau-u)\phi\\
+ &=\phi'T-u\phi,
+ \end{aligned}
+\]
+using \(\tau=\phi'Ti\). Similarly
+\[
+ \begin{aligned}
+ \partial K
+ &=-(1-i'\phi')T-i'\phi'T(1-i\phi)
+                       -i'(\tau-u)\phi\\
+ &=i'u\phi-T.
+ \end{aligned}
+\]
+The three intermediate \(i'\phi'T\) and \(i'\tau\phi\)
+terms cancel exactly. These are complete module equations, so all pure
+inputs and higher action components have been retained. Also
+\(\phi'T^{\rm prod}=u\phi\), since \(\phi'i'=1\).
+
+Compose \(K\) with the chosen chain inclusion and projection of the
+minimal one-cross models on its two ends. Its Hom differential is the
+corresponding difference of their two transferred comparison maps. Their
+bare leading cohomology maps are the calibrated identity; their finite
+cofree inverses therefore exist. The hypotheses of C.51.3.1 for this
+prescribed one-cross change are exactly met. That theorem extends its
+correction through every several-transition component of the minimal
+whole graph. It requires compatible supplied values on every simultaneous
+prescribed sector; this calculation does not remove that requirement.
+
+Full face restriction commutes with every composite and with the same
+fixed-projection SDRs. Consequently \(K,R\), their transfers and the
+resulting individual-sector gauge have the claimed restrictions.
+\(\square\)
+
+#### C.54.4. Replace edges in the whole coherent parameter family
+
+Let \(F:\Omega B(kI)\to\mathcal E\) record the given entire
+coherent module family, for a finite directed parameter category \(I\).
+The objects \(X_i=F(i)\) and their full module differentials are fixed.
+For every original nonidentity arrow \(\alpha:i\to j\), suppose
+\(f_\alpha=F(\alpha)\) is to be replaced by a closed map
+\(g_\alpha:X_i\to X_j\), with a specified full degree-minus-one
+module homotopy
+\[
+ \partial K_\alpha=g_\alpha-f_\alpha.
+\]
+On unchanged arrows put \(K_\alpha=0\). The assignments include the
+actual arrow labels, including parallel arrows. On full parameter faces
+they are restrictions of the same assignments.
+
+**Theorem C.54.4.1.** There is an entire
+unital dg functor \(G:\Omega B(kI)\to\mathcal E\), with the same
+objects and the prescribed \(g_\alpha\) on every original arrow.
+It comes with an actual resolved path equivalence from \(F\), whose
+object components are the identities. Every higher parameter generator
+is retained. The construction is canonical from the stated data and the
+fixed bar convention, is finite on each word, and commutes with full
+parameter-face restriction. It retains an entire previously assigned
+subfamily on which every \(K_\alpha\) is zero by taking the constant
+path lift on that subfamily.
+
+**Proof.** Use the object paths \(1_{X_i}\) in
+\(\operatorname{Path}(\mathcal E)\). Their mapping projection kernel
+has differential and normalized contraction
+\[
+ d_K(g,a)=(\partial g,-\partial a-g),\qquad
+ k(g,a)=(-a,0).
+\]
+These are Lemma C.53.4.1 with \(i=p=1\), \(h=0\), and one can
+also verify them directly: the first component of \(d_Kk+kd_K\)
+is \(-\partial a+\partial a+g=g\), the second is \(a\),
+and \(k^2=0\).
+
+On the one-arrow generator set its path value to
+\[
+ \mathscr H(\alpha)=(f_\alpha,g_\alpha,-K_\alpha).
+\]
+It is closed because the third differential is
+\(\partial K_\alpha+f_\alpha-g_\alpha=0\). The object
+identity maps to \((1,1,0)\). Induct on the original length of a
+higher generator \(x\). The entire value of \(\mathscr H(dx)\)
+has already been assigned, since each merge and proper split uses shorter
+strings. Put
+\[
+ v=(F(x),0,0),\quad
+ o=Dv-\mathscr H(dx),\quad
+ \mathscr H(x)=v-ko.
+\]
+Exactly as in Theorem C.53.5.1, the defect is closed and belongs to
+the kernel of the first projection. Thus its corrected differential
+is \(\mathscr H(dx)\), and its first projection is still \(F(x)\).
+Free multiplicative extension gives the dg functor on every original
+word. Projection to the second component is the asserted entire \(G\).
+No new primitive is chosen in this formula: the kernel contraction is
+the fixed \((-a,0)\). Its third component on every generator of
+length at least two is zero, although its third components on products
+are the full signed path products and need not be zero.
+
+Every formula uses the original labels and shorter subwords. Restricting
+to a full face therefore performs exactly the same recursion. More
+generally an assigned differential-stable union of face generators is
+retained by using those values and correcting only the other generators.
+If all its edge homotopies are zero, take its whole constant lift
+\((F,F,0)\). On its higher generators the displayed recursion gives
+that same value: its already assigned differential has third component
+zero, while \(Dv\)'s third component is \(F(x)\), so
+\(v-ko=(F(x),F(x),0)\). Thus the constant subfamily is retained.
+
+The finite directed height bounds every original strict-arrow string.
+Along an increasing compatible family of finite corners the same
+formulas retain every earlier value. The path object components are
+identities, so the resulting entire path family is an enhanced equivalence.
+This proves the result in the actual full module Hom complexes, without
+any assertion that arbitrary transformation spaces are contractible.
+\(\square\)
+
+For a triangle \(0<1<2\), write its original edges as \(a,b,c\)
+and its degree-minus-one generator image as \(H\), with
+\(\partial H=ba-c\). The formula gives exactly
+\[
+ H'=H+K_ba+b'K_a-K_c,
+ \qquad \partial H'=b'a'-c'.
+\]
+This is Lemma C.53.2.1's full boundary replacement, including the term
+\((\partial K_b)K_a\) inside \(b'K_a\). Thus the higher-word
+recursion extends the actual triangle formula, with its original signs.
+
+#### C.54.5. Normalize the chosen raw product squares coherently
+
+Take the chosen raw native product models and the full supplied coherence
+family of C53. For a selected product-comparison edge write its current
+map as
+\(t=i'_{\phi}\tau\phi\) and its desired product map as
+\(t^{\rm prod}=i'_{\phi}u\phi\). Here \(u\) is the actual
+once-suspended tensor of the individual comparisons. Theorem C.53.3.1
+constructs the actual degree-minus-one homotopy
+\[
+ K=-i'_{\phi}R_0\phi,\qquad
+ \partial K=t^{\rm prod}-t.
+\]
+
+**Corollary C.54.5.1.**
+For any finite compatible collection of these edges within the actual
+module-valued parameter family, the original coherent family admits a
+replacement whose selected edges are exactly their product maps and
+whose objects and outside core powers are unchanged. All its higher
+parameter cells are included, with the same full-face restrictions.
+Untouched full subfamilies may be kept exactly. The normalized product
+square \(\phi't^{\rm prod}=u\phi\) is an exact full module
+equation on every selected product domain.
+
+**Proof.** Express the module category over the fixed outside cores by
+transporting through the one previously fixed \(g\), as in C53. The
+displayed \(K\)'s are actual module homotopies in that dg category.
+Their compatible face values are the ones provided by the same original
+native cell and its C52 fixed-projection data. Apply Section C.54.4 with these
+\(K\)'s on the selected edges and zero on unchanged edges. Its
+entire path construction keeps the objects and all outside core maps,
+changes the edge to \(t+\partial K=t^{\rm prod}\), and assigns
+all the higher parameter generators. Its relative statement keeps every
+stipulated untouched full subfamily. The exact square follows from
+\(\phi'i'_{\phi}=1\), giving
+\(\phi't^{\rm prod}=\phi'i'_{\phi}u\phi=u\phi\).
+These are complete module equations, including all consumed-core
+components. No several-transition operation of a nested path graph has
+been projected away or inferred from this parameter-family statement.
+\(\square\)
+
+#### C.54.6. Solved examples
+
+**Exercise C.54.6.1 (intermediate).** Let \(X\) have basis \(e,x\)
+in degree zero and \(y\) in degree one, with \(dx=y\). Put
+\(h(y)=x\), all other values zero, and let \(E=dh+hd\).
+Start with the identity-valued strict triangle on three copies of \(X\).
+Replace its first two edges by \(a'=b'=1+E\), keep its direct edge
+\(c'=1\), and use edge homotopies \(K_a=K_b=h\), \(K_c=0\).
+Compute the new two-simplex and its differential. Identify the term lost
+by using the old edge \(b\) in place of \(b'\) in its formula.
+
+**Solution.** The operator \(E\) is the identity on \(x,y\) and
+zero on \(e\). Hence \(E^2=E\), \(Eh=h\), and \(E\)
+is closed. The new edges are chain isomorphisms: they act by one on
+\(e\) and by two on \(x,y\). Each edge difference is
+\(\partial h=E\). Theorem C.54.4.1 gives
+\[
+ H'=h+(1+E)h=3h.
+\]
+Its differential is \(3E\), which is exactly
+\[
+ b'a'-c'=(1+E)^2-1=3E.
+\]
+Using the old \(b=1\) would give \(2h\), with differential
+\(2E\), leaving defect \(-E\ne0\). The missing term is
+\((\partial K_b)K_a=Eh=h\). Thus both edge changes must be
+retained when computing the coherent triangle.
+
+**Exercise C.54.6.2 (advanced).** Use the algebraic example
+\(R=k[t]/(t^2)\), with \(|t|=0\). Let
+\[
+ N=Re\oplus Rf\oplus Rx\oplus Ry,
+ \quad |e|=|y|=0,\quad |f|=|x|=-1,\quad dx=y,
+\]
+with all other differentials zero, and put \(V=Re\oplus Rf\)
+with zero differential. Make three \(R\)-linear retracts from \(N\)
+to \(V\) as follows. The middle one has its ordinary inclusion and
+projection and homotopy \(h_1(y)=x\). For the first take
+\(I_0(e)=e+ty\), \(I_0(f)=f\), the ordinary projection \(P_0\),
+and \(h_0(y)=x\), \(h_0(e)=-tx\). For the last take the ordinary
+inclusion \(I_2\), the projection \(P_2(x)=-f\),
+\(P_2(e)=e\), \(P_2(f)=f\), \(P_2(y)=0\), and
+\(h_2(y)=x+f\). Unspecified homotopy values are zero. Check these
+retracts and transport the identity triangle on \(N\). What is its
+higher component, and what happens to the pure \(R\)-action?
+
+**Solution.** The compositions \(P_iI_i\) are the identity on
+\(e,f\). On the first model, \((1-I_0P_0)(e)=-ty\) and
+\((dh_0+h_0d)(e)=-ty\); on \(x,y\) both sides are the identity
+and on \(f\) both are zero. On the last model,
+\((1-I_2P_2)(x)=x+f=h_2(dx)\), while both sides send \(y\)
+to \(y\) and kill \(e,f\). The middle identities are the ordinary
+acyclic-pair contraction. These computations also give
+\(h_i^2=P_ih_i=h_iI_i=0\) on each basis vector.
+
+All three maps and homotopies are \(R\)-linear. Thus for every pure
+word length \(r\ge0\),
+\[
+ P_i t^r I_i=t^r,\qquad h_i t^r I_i=0.
+\]
+The entire pure action is retained exactly, and the transfer terms with
+an internal homotopy on a pure input are zero. All three compressed
+triangle edges are the identity on \(V\). Its higher component is
+\(H'=-P_2h_1I_0\). Directly,
+\[
+ H'(e)=-P_2h_1(e+ty)=-P_2(tx)=tf,
+ \qquad H'(f)=0.
+\]
+It is a nonzero degree-minus-one closed map, as required by the zero
+triangle defect on \(V\). Its pure \(t\)-linearity is also exact.
+This finite algebraic module example illustrates relative recovery; it
+is not an identification of \(R\) with a geometric IC endomorphism
+algebra. Fixing the pure actions does not discard mixed higher components.
+
+![The full pure-state action is fixed during recovery;the whole one-cross restriction has an explicit three-term homotopy to its product lift;identity object paths normalize selected product edges with all higher parameter cells](assets/relative-pure-products.png)
+
+Theorems C.54.1.1–C.54.3.1 prove relative recovery,the native exact-core application and the full product homotopy. Theorem C.54.4.1 and Corollary C.54.5.1 replace edges throughout the coherent parameter family. Exercises C.54.6.1–C.54.6.2 compute the triangle cross term and a nonzero higher action with the pure algebra action retained. Editable SVG source.
+
+### C.55. Central shuffle retractions and simultaneous linear prescriptions
+
+An extension of a central Taylor map need not be a reverse coalgebra map.
+We construct an ordered chain retraction of the actual relative parameter
+shuffle,prove its exact regrouping and interchange laws,and use it before
+the central projection in a cofree module. This gives an explicit way to
+verify all linear relations in a sum of product-shuffle domains when their
+prescribed values have the stated retraction form.
+
+The shuffle and Alexander–Whitney setting is discussed in [Boris Shoikhet,
+*A bialgebra axiom and the Dold–Kan correspondence*,arXiv:1109.5441v2,
+Sections2.1–2.2](https://arxiv.org/abs/1109.5441v2). The relative bars here
+omit outer endpoint faces;the proofs below establish their formulas and
+all signs directly. This gives a sufficient compatibility criterion for the native gauge
+application. The relative extension in Section C.56 permits homotopy
+primitives to be adjusted without imposing this original retraction form.
+
+#### C.55.1. An ordered chain retraction on the relative bars
+
+For finite directed categories \(I_1,\ldots,I_m\), set
+\(D_i=B_{S_i}(kI_i)\), \(D=B_S(k\prod_iI_i)\). A reduced
+ordinary arrow in the product has a nonempty support: the coordinates
+where its actual arrow is nonidentity. Its bar suspension is odd of
+degree minus one. Every arrow and its actual parallel-arrow label is
+retained. Write words in target-to-source order as before.
+
+Define a graded map \(r_m:D\to\bigotimes_iD_i\) as follows.
+It kills a word containing an arrow supported in two or more coordinates.
+It also kills a word whose single-coordinate labels are not weakly
+increasing in target-to-source order. On a remaining word, group its
+original letters in coordinate order and return the tuple of its factor
+bar words, with coefficient one. Empty factor words retain their actual
+vertex identities. An entirely empty word maps to the tuple of those
+identities. There is no arbitrary deletion of a parameter vertex in this
+definition: each retained factor word is its actual coordinate projection.
+
+**Theorem C.55.1.1.** The map \(r_m\)
+is an endpoint-preserving chain map and is a left inverse to the actual
+shuffle \(j_m:\bigotimes_iD_i\to D\). Its iterated projections
+regroup strictly for every ordered partition of the factors. For an
+ordered partition \(\pi\) into consecutive blocks, write \(j_\pi\)
+for the shuffle of their product-category bars. Then
+\[
+ r_m j_\pi=\bigotimes_{B\in\pi}r_B,
+\]
+with the literal ordered regrouping on the right. These are linear chain
+maps; \(r_m\) is generally not a coalgebra map.
+
+**Proof.** There is no internal unary differential on the ordinary index
+arrows. The bar differential only merges adjacent actual arrows, with its
+original suspended sign. Nonidentity arrows form an augmentation ideal in
+each directed category: a nonzero composable product is again nonidentity.
+Thus a word with a mixed-support arrow remains mixed under every merge
+involving it, or gives zero. Every other merge leaves that arrow present.
+Its image under \(r_m\) and the image of its differential are both zero.
+
+Next take a word containing an inversion of its coordinate labels. A
+same-coordinate merge leaves an inversion unless its product is zero;
+a distinct-coordinate merge makes a mixed-support arrow. Thus this
+kernel type is also preserved by the differential. Finally, on a word
+whose coordinate labels are ordered, merges within a factor block have
+exactly that factor's bar differential sign, multiplied by the parity of
+the preceding factor word lengths. Those are precisely the tensor
+differential signs on \(\bigotimes_iD_i\). Merging at a block
+boundary creates a mixed-support arrow and is killed. This proves the
+full chain equation, including every type of adjacent merge.
+
+In a shuffle of factor words, exactly one interleaving is in increasing
+coordinate order. It is the original concatenation of the ordered factor
+words, so its Koszul sign is plus one. Every other interleaving contains
+an inversion and is killed. Its retained factor projections are the
+original factor words. Hence \(r_mj_m=1\), including all empty-word
+and actual object cases.
+
+For an iterated ordered projection to be nonzero, its arrows must each
+lie in one final factor and its labels must be ordered between blocks
+and within each block. This is exactly the single global increasing-label
+condition. The surviving factor words and signs are identical. This
+proves strict regrouping. For \(r_mj_\pi\), if a block input fails
+its own ordered projection, every shuffle output fails the global one.
+Otherwise only the interleaving keeping the consecutive blocks in their
+original order survives, with sign one. This gives the stated formula.
+
+For the coalgebra limitation, take two nonempty one-letter factor words
+\(a,b\). The canonical concatenated product bar word has image
+\(a\otimes b\). The coproduct of this tensor contains both middle
+cuts, including the one with the second-factor letter on the left and
+the first-factor letter on the right, with their odd interchange sign.
+The original concatenated word has only its one original middle cut.
+Its projected coproduct therefore lacks the other nonzero tensor term.
+The two terms have different factor/endpoint labels, so cannot cancel.
+This proves that \(r_m\) need not preserve the coproduct. \(\square\)
+
+#### C.55.2. The exact signed four-factor interchange
+
+For four ordered index factors use the coordinate permutation
+\((I,J,K,L)\mapsto(I,K,J,L)\). There are two linear chain maps
+from \(D_{I\times J}\otimes D_{K\times L}\) to
+\(D_{I\times K}\otimes D_{J\times L}\): first shuffle,
+permute coordinates and apply the two-block retraction; or first apply
+the two input retractions, interchange the middle two factors with their
+Koszul sign, and shuffle within the resulting two output groups.
+
+**Theorem C.55.2.1.** These two maps
+are equal, with every actual arrow label and suspended sign retained.
+
+**Proof.** If an input word contains an arrow changing both of its
+coordinates, the first composite always has a mixed-support arrow between
+its two final output groups and is killed. The second composite is killed
+by the corresponding input retraction. If an input word has its two
+coordinate labels in the wrong order, any shuffle preserves that original
+order. The offending second-group letter still precedes the first-group
+letter, so the final retraction kills it. The other composite is again
+zero. These cases exhaust input words killed by either input retraction.
+
+It remains to consider ordered input words with lengths \(a,b\) in
+their \(I,J\) blocks and \(c,d\) in their \(K,L\) blocks.
+A shuffled word survives the final retraction precisely when all its
+\(I,K\) letters precede all its \(J,L\) letters. Its choices are
+exactly an \((a,c)\)-shuffle in the first output group and an
+\((b,d)\)-shuffle in the second. This is a bijection of terms with
+the two separate shuffles in the other composite, preserving each actual
+arrow and its endpoints.
+
+The global shuffle sign has the signs of those two shuffles, together
+with the sign for moving every \(K\)-letter across every \(J\)-letter.
+All these letters are odd, so the latter is \((-1)^{bc}\). This
+is exactly the tensor Koszul sign interchanging the two middle bar words
+in the second composite. Thus the coefficients of each matching term
+agree. Empty blocks give the same argument with the relevant exponent
+zero. This proves the identity on every input basis word and hence
+linearly. It is an identity for the actual relative bars, proved without
+using outer simplicial faces. \(\square\)
+
+The retraction preserves full **factor** faces, since its retained
+factor words use only the original coordinate vertices. For an arbitrary
+full subcategory of the product, its output need not belong to the safe
+rectangle domain of C.52.4. In the square, a three-vertex face can contain
+the canonical two-step word while omitting the other corner. Its
+retraction is the two-letter factor tensor, whose full shuffle visits
+that omitted corner as well. Thus a reverse map of entire full-face
+coalgebras has not been constructed.
+
+#### C.55.3. A central extension respecting the whole sum of product domains
+
+Use an actual once-suspended product one-cross module of C41/C52. Its
+bare central mapping block is the prescribed tensor of its individual
+mapping blocks; its outside IC cores already retain their ordered factor
+decomposition. Suppose the outside index cores are global product bars.
+On the underlying graded cofree module apply the ordered retraction to
+each outside index run, keep the central tensor identification, and
+perform the C41 Koszul regrouping. Call the resulting graded linear map
+\(\mathcal R\). The actual module shuffle embedding \(\mathcal J\)
+has \(\mathcal R\mathcal J=1\). No assertion that
+\(\mathcal R\) commutes with the full module action differential or
+its coactions is needed or made.
+
+**Proposition C.55.3.1.**
+For a homogeneous central Taylor map \(c\), retaining endpoint and
+string labels, on the finest factor
+product model, \(\widetilde c=c\mathcal R\) is a homogeneous
+linear extension of its central values to the global indexed model.
+Its full cofree extension is a bicomodule map, restricts to the prescribed
+map on the actual product-shuffle submodel, and preserves every full
+parameter face through its central endpoints. For an ordered partition
+\(\pi\), if the prescribed coarser central values are precisely
+\[
+ c_\pi=c\Bigl(\bigotimes_{B\in\pi}\mathcal R_B\Bigr),
+\]
+then this single extension satisfies all those prescriptions at once.
+In particular they define a well-defined linear map on their actual sum,
+including any relations not detected by pairwise intersections.
+
+**Proof.** The retraction identity in Section C.55.1 applied to the two outside
+runs, followed by the inverse fixed regrouping, proves
+\(\mathcal R\mathcal J=1\). Hence the central restriction of
+\(c\mathcal R\) is exactly \(c\). Reconstruct the full
+homogeneous bicomodule map by equation(C.39.5), including its degree
+evaluation sign. Both it and the original product map followed by the
+shuffle embedding have the same outside core maps and central Taylor
+values. The cofree uniqueness proof C.39.2 makes their restrictions equal
+on the entire product submodel, not only on bare central inputs.
+
+On a full parameter face, every outside cut remains in that face and
+the central output has the endpoints of the consumed original input.
+Those endpoints lie in the face, whose bare central block is the full
+block at those endpoints. C.52.5 therefore proves that the reconstructed
+map preserves that face, even when \(\mathcal R\) itself does not
+take it into a safe rectangle. The retraction was used only before the
+central projection; no forbidden outside word is reconstructed.
+
+For each ordered partition, Section C.55.1's exact identity
+\(r_mj_\pi=\bigotimes r_B\), on both outside runs, gives
+the corresponding identity for \(\mathcal R\) and that partition's
+module shuffle. Consequently \(\widetilde c\) restricts to exactly
+the stated \(c_\pi\). As all these values are restrictions of one
+linear map, every relation in the sum of the prescribed input subspaces
+is automatically respected. This supplies the asserted actual-sum
+certificate. Section C.55.2 gives its additional exact interchange identity
+when two ordered groups of factor cores are exchanged and shuffled.
+\(\square\)
+
+#### C.55.4. Solved examples
+
+**Exercise C.55.4.1 (intermediate).** In the product of two copies of
+\([1]\),let \(A_{\rm top}:01\to11\),
+\(A_{\rm bottom}:00\to10\), \(B_{\rm left}:00\to01\),
+\(B_{\rm right}:10\to11\). Put
+\(w=sA_{\rm top}|sB_{\rm left}\). Compute its ordered retraction
+and the defect of its coproduct equation. Let \(J\) be the full face
+on \(00,01,11\). Does the retracted tensor have a full shuffle in
+\(D_J\)?
+
+**Solution.** Let \(a,b\) be the one-letter factor bars. Both have
+degree minus one,and the word has its factor labels in the prescribed
+order. Thus \(r_2(w)=a\otimes b\). In addition to its two outer
+cuts,the tensor coproduct has middle terms
+\[
+ \begin{aligned}
+ &(a\otimes1_1)\otimes(1_0\otimes b)\\
+ &\quad-(1_1\otimes b)\otimes(a\otimes1_0).
+ \end{aligned}
+\]
+The original word has only its middle cut
+\(sA_{\rm top}\otimes sB_{\rm left}\),whose retracted image is
+the first displayed term. Consequently
+\[
+ \begin{aligned}
+ \Delta r_2(w)&-(r_2\otimes r_2)\Delta w\\
+ & =-(1_1\otimes b)\otimes(a\otimes1_0)\ne0.
+ \end{aligned}
+\]
+The tensor endpoints identify its factors with the missing cut
+\(-sB_{\rm right}\otimes sA_{\rm bottom}\). The minus sign is
+the interchange of the two odd bar letters. Hence the ordered retraction
+is not a coalgebra map.
+
+The shuffle of \(a\otimes b\) is
+\(sA_{\rm top}|sB_{\rm left}-sB_{\rm right}|sA_{\rm bottom}\).
+Its second word visits \(10\),which is absent from \(J\). Thus
+\(w\in D_J\) does not imply that its retracted tensor belongs to
+the safe rectangle domain of Theorem C.52.4.1. This is why the retraction
+is used at the central Taylor map before the outside coactions are
+reconstructed.
+
+**Exercise C.55.4.2 (intermediate).** Take three one-letter odd factor
+bars \(a,b,c\) from three copies of \([1]\),and use target-to-source
+word order. Let a homogeneous central coordinate have value \(\lambda\)
+on \(a\otimes b\otimes c\). Extend it by the ordered retraction.
+Compute its values on the six interleavings. Check that the two ordered
+regroupings \((ab)|c\) and \(a|(bc)\) give the same value on the
+full three-factor shuffle.
+
+**Solution.** Write \(ABC\) for the word in that coordinate order,
+with the actual coordinate arrows at the uniquely determined intermediate
+vertices;use the analogous notation for its other interleavings. Only
+\(ABC\) survives \(r_3\). Thus the extended central map has value
+\(\lambda\) there and zero on the other five words. The full signed
+shuffle is
+\[
+ \begin{aligned}
+ &ABC-ACB-BAC\\
+ &\quad+BCA+CAB-CBA.
+ \end{aligned}
+\]
+Its value is therefore \(\lambda\). To check the actual regrouping
+relation,let \(AB,BA\) be the two words in the first product bar.
+Their shuffles with \(C\) are
+\[
+ \begin{aligned}
+ (AB)\mathbin{\mathrm{sh}}C&=ABC-ACB+CAB,\\
+ (BA)\mathbin{\mathrm{sh}}C&=BAC-BCA+CBA.
+ \end{aligned}
+\]
+Their difference is the displayed full shuffle,and their central values
+are \(\lambda,0\). For the other grouping,
+\[
+ \begin{aligned}
+ A\mathbin{\mathrm{sh}}(BC)&=ABC-BAC+BCA,\\
+ A\mathbin{\mathrm{sh}}(CB)&=ACB-CAB+CBA.
+ \end{aligned}
+\]
+Again their difference is the same full shuffle,and their values are
+\(\lambda,0\). Thus the two product-domain expressions satisfy the
+same actual signed linear relation after extension. Each sign is the
+parity of the permutation of the original three odd letters. This is a
+concrete instance of the whole-sum certificate in Proposition C.55.3.1.
+
+![The ordered retraction retains one factor-ordered word,the square supplies a nonzero missing coproduct cut,and central cofree extension respects the actual signed product-domain relations](assets/central-shuffle-retraction.png)
+
+Theorems C.55.1.1–C.55.2.1 prove the ordered retraction,regrouping and full signed interchange. Proposition C.55.3.1 extends compatible central prescriptions on their actual sum. Exercises C.55.4.1–C.55.4.2 compute the missing coproduct cut and the common three-factor shuffle relation. The retraction is used before the central projection;it is not a reverse coalgebra map. Editable SVG source.
+
+### C.56. Commuting shuffle cuts and full relative extension
+
+Ordered product domains admit simultaneous linear extension because their
+actual cut projections commute. Their common decomposition also supplies
+an acyclic relative quotient. Passing to the full cofree module requires
+its complete action differential; a finite perturbation contracts that
+relative Taylor kernel. The resulting extension theorem permits actual
+homotopy primitives to be adjusted and glued on product intersections.
+Its native application requires the specified chain submodels and
+compatible closed product maps.
+
+#### C.56.1. The ordered cut projections commute
+
+Let \(D=D_{I_1\times\cdots\times I_m}\), with the same finite
+directed index categories as C55. For a cut \(c\in\{1,\ldots,m-1\}\)
+write
+\[
+ P_c=j_c r_c:D\to D,
+\]
+where the two blocks are the factors before and after that cut, and the
+shuffle and ordered retraction are the actual C55 chain maps. For a set
+of cuts \(T\), let \(\pi_T\) be its ordered interval partition
+and put \(P_T=j_{\pi_T}r_{\pi_T}\), with \(P_\varnothing=1\).
+
+**Theorem C.56.1.1 (the exact cut-projection algebra).** These are chain
+idempotents and satisfy
+\[
+ P_TP_U=P_{T\cup U}=P_UP_T.
+\]
+Consequently their images have the common decomposition
+\[
+ \begin{aligned}
+ D&=\bigoplus_{E\subseteq\{1,\ldots,m-1\}}D_E,\\
+ D_E&=\operatorname{im}\left(
+      \prod_{c\in E}P_c\prod_{c\notin E}(1-P_c)\right),\\
+ \operatorname{im}P_T&=\bigoplus_{E\supseteq T}D_E.
+ \end{aligned}
+\]
+Their finite sums and intersections therefore form a distributive lattice
+of subcomplexes. In particular a sum of product-shuffle domains contains
+no additional unresolved linear relation once its maps agree on all
+their pairwise intersections.
+
+**Proof.** Each \(r_cj_c=1\) by C.55.1, so \(P_c^2=P_c\).
+Take two cuts \(c<d\), and combine the factors into the three
+consecutive blocks \(A,B,C\). C.55.2 with the fourth factor the
+coefficient unit gives the exact identity
+\[
+ r_{A,BC}j_{AB,C}
+  =(1_A\otimes j_{B,C})(r_{A,B}\otimes1_C).
+\]
+Both sides keep all original endpoints; the unit bar contributes only
+its degree-zero coaugmentation. Multiply on the left by \(j_{A,BC}\)
+and on the right by \(r_{AB,C}\). Strict shuffle associativity and
+ordered retraction regrouping then give
+\[
+ P_cP_d=j_{A,B,C}r_{A,B,C}.
+\]
+Using the other unit placement in C.55.2 gives
+\(P_dP_c=j_{A,B,C}r_{A,B,C}\) as well. This proves commutativity
+and the formula for two cuts, including their full suspended signs.
+
+Insert the remaining cuts one at a time. The same identity splits the
+one current block containing the new cut; associativity and regrouping
+leave the other blocks unchanged. Induction gives
+\(P_T=\prod_{c\in T}P_c\) and hence the asserted multiplication
+law. These are chain maps because all the original factors are.
+
+For commuting idempotents the displayed products selecting an eigenvalue
+zero or one at every cut are themselves idempotents. Two different
+choices have a factor \(P_c(1-P_c)=0\), so their images are
+disjoint. Expanding \(\prod_c(P_c+(1-P_c))=1\) gives their sum
+as the identity. This proves the direct-sum decomposition in the actual
+chain complexes. Each \(P_T\) acts by one exactly on the indicated
+summands. Sums and intersections are therefore unions and intersections
+of these common summand sets, proving distributivity.
+
+On a common summand belonging to two prescribed images, agreement on
+their pairwise intersection makes their linear values identical. Assign
+that value on each summand included in the sum, and extend linearly.
+This proves the stated gluing assertion for any finite family. It is a
+consequence of the proved common decomposition, not an assumption about
+arbitrary arrangements of subspaces. \(\square\)
+
+#### C.56.2. One contraction can retain every ordered product domain
+
+Let \(C_0=\{1,\ldots,m-1\}\) be the full cut set. The finest
+product shuffle is \(j_{C_0}:\bigotimes_iD_{I_i}\to D\).
+It is a quasi-isomorphism by the actual finite-height shuffle proof
+C.42.1, or C.39.3 after the even height regrading of C.52.1.
+
+**Theorem C.56.2.1 (a common normalized index-bar contraction).** There is a
+normalized contraction
+\[
+ \left(j_{C_0},r_{C_0},H\right):
+ D\rightleftarrows\bigotimes_iD_{I_i},
+\]
+with
+\[
+ dH+Hd=1-P_{C_0},\quad
+ H^2=r_{C_0}H=Hj_{C_0}=0,
+ \qquad HP_T=P_TH
+\]
+for every ordered cut set \(T\). The choices can retain a finite
+family of full **factor** faces and an increasing compatible system of
+finite factor corners. They are made blockwise at fixed endpoints and
+height jump. No preservation of an arbitrary nonrectangular full product
+face is asserted for this outside-bar homotopy.
+
+**Proof.** Every cut shuffle is a quasi-isomorphism and has its chain
+left inverse, so each \(P_c\) induces the identity on \(H^\bullet D\).
+For a summand \(D_E\) with \(E\ne C_0\), choose a cut not
+in \(E\). Its summand projector contains \(1-P_c\), which
+induces zero on cohomology. A chain idempotent splits the complex and
+its cohomology; hence this summand's cohomology is zero. It is split
+contractible over the field by C.30.1. Choose a normalized contraction
+on each of those acyclic summands and take their direct sum. Put zero
+on \(D_{C_0}=\operatorname{im}P_{C_0}\). This gives precisely
+\(dH+Hd=1-P_{C_0}\) and \(H^2=0\).
+
+It commutes with every cut projector since each projector is scalar
+zero or one on each summand. Its range lies in the kernel of
+\(P_{C_0}\), giving \(r_{C_0}H=0\), and it vanishes on the
+finest image, giving \(Hj_{C_0}=0\). All summands retain the
+original endpoint and height blocks; choose their splittings there.
+
+A full factor face is preserved by every shuffle and ordered retraction.
+Thus each of its summand parts is the image of the same summand projector
+on that face. These parts have distributive original-word support sums
+and intersections: the projector preserves each face, so its image on
+an intersection is the intersection of its images. Every finite
+intersection is a common factor face. The preceding acyclicity proof
+applies to each nonfinest summand on that face as well. The acyclic
+face-union and quotient-splitting construction of C.50.2 therefore
+extends the chosen contraction to each next face without changing its
+previous values. Do this separately in each summand and then take their
+sum. It retains commutation with the cut projectors. The same relative
+construction retains all earlier blocks in an increasing finite system.
+This proves the asserted face and corner statement. \(\square\)
+
+#### C.56.3. The whole sum of product domains and its relative Hom kernel
+
+Take a nonempty finite collection \(\mathcal T\) of cut sets and put
+\(U=\sum_{T\in\mathcal T}\operatorname{im}P_T\). Define
+\[
+ Q_U=1-\prod_{T\in\mathcal T}(1-P_T).
+\]
+
+**Theorem C.56.3.1 (acyclic product union and linear homotopy extension).** The
+operator \(Q_U\) is a chain projector with image exactly \(U\),
+and \(U\hookrightarrow D\) is a quasi-isomorphism. Its quotient
+is split contractible, using the contraction in Theorem C.56.2.1. For any target
+complex \(V\), the kernel of restriction
+\(\operatorname{Hom}(D,V)\to\operatorname{Hom}(U,V)\) is
+contractible. Pairwise compatible chain maps on the product domains
+extend to a chain map on \(D\). If a closed global map \(L\)
+of degree zero has a specified degree-minus-one primitive \(K_U\)
+on \(U\), then \(K_U\) extends to a global primitive of \(L\).
+
+**Proof.** On the common summand \(D_E\), the operator \(Q_U\)
+is one if any selected \(T\) is contained in \(E\), and zero
+otherwise. Thus it is exactly the projector onto the sum described
+in Theorem C.56.1.1. Every \(P_T\) induces the identity on cohomology;
+each factor \(1-P_T\) induces zero. Since the collection is nonempty,
+\(Q_U\) induces the identity. Its split image inclusion is therefore
+a quasi-isomorphism. The finest summand is contained in \(U\).
+The common contraction \(H\) preserves every selected image and
+therefore \(U\), and induces a normalized contraction of \(D/U\).
+
+Write that quotient contraction as \(h_Q\). On a homogeneous degree-\(r\)
+map \(f:D/U\to V\), set
+\(\mathsf h(f)=(-1)^r f h_Q\). The Hom derivation calculation
+of C.53.4 gives \(\partial\mathsf h+\mathsf h\partial=1\)
+and \(\mathsf h^2=0\). This is exactly the restriction kernel,
+because its maps factor through \(D/U\). Thus it is contractible.
+
+The gluing statement of Theorem C.56.1.1 gives one well-defined chain map
+\(f_U:U\to V\) from the pairwise compatible chain maps; its
+extension is simply \(f_UQ_U\). For the primitive statement put
+\(K_0=K_UQ_U\), so the closed defect
+\(e=L-\partial K_0\) vanishes on \(U\). It defines a closed
+degree-zero quotient map, whose primitive is \(e h_Q\). Pull
+that map back along the quotient and add it to \(K_0\). The result
+has differential \(L\) and restricts to \(K_U\). This proves
+the full relative extension assertion in the ordinary Hom complexes.
+\(\square\)
+
+The ordinary Hom complex in Theorem C.56.3.1 is the leading coefficient complex
+for the later cofree module Taylor problem. Extending these conclusions
+to the full module differential requires retaining its source and target
+action terms; that extension is not replaced by the chain property of
+the ordered index retraction alone.
+
+#### C.56.4. The precise full Taylor restriction problem
+
+Use one cofree one-cross module \(Z=L\otimes sN\otimes A\)
+over common pure IC tensor cores with finite directed index bars. Fix
+an ordered list of \(m\) root factors. Its outside IC cores are the
+literal ordered tensor powers of the same minimal \(C\). Its index
+cores are bars of the corresponding product parameter categories.
+At each actual endpoint/central-label block the graded central space
+has the fixed root tensor identification. A cut projector acts on both
+outside index runs and is the identity on the central block and IC
+factor words. Thus its image is the graded product-shuffle submodel
+for that cut. Empty outside words retain their scalar object identities.
+
+Assume each selected cut submodel is an **actual chain subbicomodule**
+along its outside shuffle maps, with the stated product differential.
+The full source differential preserves every such submodel. All their
+finite intersections have the corresponding refined product model.
+Let \(U\) be their nonempty finite sum. These are model hypotheses,
+not conclusions inferred solely from the index-bar calculation.
+
+Let \(Z'\) be the full target cofree module, and fix its outside
+core comparison maps \(g_L,g_R\). They are the prescribed normalized
+common tensor powers, tensored with the index identities. In particular
+they commute with each actual product shuffle. A full homogeneous
+bicomodule map along those core maps is determined by its central
+Taylor map through the cofree formula, with the degree evaluation sign.
+Its differential is the complete Hom differential
+\(\partial F=d'F-(-1)^{|F|}F d\).
+
+**Theorem C.56.4.1 (contractible full Taylor restriction kernel).** Under these
+hypotheses, the kernel of restriction of full Taylor maps from \(Z\)
+to \(U\) is contractible. Its contraction is finite on each original
+input word and retains the fixed endpoints,root labels and core maps.
+This includes all source and target module-action terms in the full
+Hom differential. It does not require the ordered index projections
+to be full module chain maps.
+
+**Proof.** Work first with the differential \(\partial_0\) which
+retains the source and target central unary differentials and the internal
+index-bar differentials. The minimal IC core unary differentials are
+zero. All remaining pure IC and module-action terms will be retained
+as a perturbation below.
+
+On the pair of outside index runs the graded cut projectors are the
+tensor products of their two cut projectors. They commute and multiply
+by union of cut sets, by the commuting-cut theorem. Their maps on
+cohomology are the identity, since each outside shuffle is a
+quasi-isomorphism and tensoring preserves it over the field. They
+commute with the central unary differential and are the identity on
+the IC factor words. The common-summand proof therefore gives a
+normalized contraction of the leading quotient by \(U\). Choose
+it at fixed outside endpoints,height jumps and IC word counts,and
+tensor it with the central coefficient complexes with their actual
+Koszul signs. Every nonretained summand is acyclic by that same
+identity-on-cohomology argument. Call the resulting quotient
+contraction \(h_Q\).
+
+A Taylor map in the restriction kernel is a linear map out of this
+quotient with values in the target central block. On degree-\(r\)
+maps set
+\(\mathsf H_0(f)=(-1)^r f h_Q\). The explicit Hom calculation
+of C.53.4 gives
+\[
+ \partial_0\mathsf H_0+\mathsf H_0\partial_0=1,
+ \qquad\mathsf H_0^2=0.
+\]
+This is a contraction of the actual leading Taylor restriction kernel.
+It preserves the original IC word count and outside index height.
+
+Now write \(\partial=\partial_0+\delta\). The kernel is stable
+under \(\partial\): a full cofree map with zero central restriction
+vanishes on each source product submodel by its coactions;its differential
+vanishes there because that submodel is an actual chain submodule.
+The same holds for \(\partial_0\),so \(\delta\) also preserves
+the kernel.
+
+For an original input define
+\[
+ R=\#\{\text{original outside IC bar letters}\}
+      +\sum_{\text{outside index runs}}\Delta h.
+\]
+It is a nonnegative integer. The leading contraction keeps it fixed.
+Every term of \(\delta f\),evaluated at this input,uses a value of
+\(f\) at smaller \(R\). An internal minimal IC operation merges
+at least two original letters and decreases their count. A source
+module operation consumes a nonempty outside piece. If it contains an
+IC letter its count decreases;if it contains only index arrows its
+positive height is consumed. For a target module operation,expand the
+cofree comparison formula:the central Taylor map is evaluated on the
+middle input left after those outside pieces were removed. The same
+strict decrease holds. Normalized core maps cannot turn a nonempty
+outside input into a scalar identity,and retain the actual index
+endpoints. These are every term omitted from \(\partial_0\).
+
+Consequently \((\delta\mathsf H_0)^j f\) is zero on a fixed
+rank-\(R\) input for \(j>R\). The full perturbation formula is
+therefore the actual finite-on-each-word contraction
+\[
+ \mathsf H=\mathsf H_0(1+\delta\mathsf H_0)^{-1}.
+\]
+The complete algebraic perturbation proof C.35.1 gives
+\(\partial\mathsf H+\mathsf H\partial=1\) and
+\(\mathsf H^2=0\),with no convergence assumption. It acts inside
+the Taylor restriction kernel and retains every specified label. This
+proves the theorem with all module terms present. \(\square\)
+
+#### C.56.5. Closed comparisons and their actual homotopies extend
+
+Use the same hypotheses. The graded cut projectors need not be full
+module chain maps,but they do give a common direct-sum decomposition
+of the **graded input spaces**. This suffices for graded extension.
+
+**Theorem C.56.5.1 (full relative comparison and homotopy extension).** A set of
+pairwise compatible closed full Taylor maps on the selected product
+submodels extends to a closed full bicomodule map on \(Z\). If a
+closed global map \(L\) of degree zero has compatible specified
+degree-minus-one primitives on those submodels,there is a global
+primitive retaining them. If the prescribed leading central term is
+the calibrated identity,the closed comparison has that exact leading
+term and its usual finite cofree inverse.
+
+**Proof.** Graded distributivity of the cut images glues the prescriptions
+to a well-defined map on their sum. Extend its central Taylor map
+linearly on the remaining common graded summands,and reconstruct the
+full cofree map. This gives a graded extension \(F_0\) of the
+closed prescribed comparisons. Its defect \(e=\partial F_0\)
+is a closed degree-\(r+1\) element of the restriction kernel,where \(r\) is the common degree of the prescribed maps. The first
+theorem corrects it by
+\[
+ F=F_0-\mathsf H e.
+\]
+It is closed and has the same prescribed restrictions. The construction
+retains the fixed outside core maps because the entire kernel complex
+was the one for those maps.
+
+For the primitive problem extend the prescribed Taylor homotopy to
+\(K_0\). The closed degree-zero defect
+\(e=L-\partial K_0\) vanishes on \(U\). Then
+\(K=K_0+\mathsf H e\) has \(\partial K=L\) and the required
+restrictions. Every product submodel contains the bare central block,
+so the correction kernel has zero bare central value. A prescribed
+identity leading map is thus unchanged. The cofree recursion of
+C.39.2 gives its inverse,finite on original surrounding words over
+the already invertible core powers (invertibility of these powers is required for this last assertion). Its inverse is a chain map by
+the original chain equation. \(\square\)
+
+#### C.56.6. The primitive choices themselves can be made compatible
+
+Suppose the desired closed comparisons already agree on the cut
+intersections. On each selected product submodel suppose an actual
+homotopy to the original global comparison is given,as in C54. These
+homotopies need not initially agree with one another.
+
+**Proposition C.56.6.1 (glue the homotopies without changing their differentials).**
+They can be changed by closed full module maps so that they agree on
+all their intersections,and then extended to one global homotopy.
+The construction retains every previously chosen product submodel.
+Its hypotheses do not require an Alexander–Whitney form for the
+original native homotopies.
+
+**Proof.** Order the finite list of submodels. Keep the first homotopy.
+For the next submodel \(S\),its intersection with the preceding sum
+is the sum of the refined product domains,by the common graded cut
+decomposition. Inside \(S\),the refined cut projectors still commute;
+their leading shuffles are quasi-isomorphisms,and the same full action
+terms lower the rank used in Theorem C.56.4.1. Thus its relative Taylor
+restriction kernel has the contraction just proved.
+
+The difference between the retained homotopy and the new given homotopy
+on that intersection is closed:their differentials are restrictions of
+the same difference of the two closed comparison maps. Extend this
+closed degree-minus-one map from the intersection to \(S\) by
+Theorem C.56.5.1's closed-map extension. Adding it to the new homotopy leaves
+its differential unchanged and makes its restriction equal to the
+previous choices. Continue through the finite list. The resulting
+homotopies agree pairwise and hence on their entire sum. Theorem C.56.5.1's
+primitive extension now gives the asserted global homotopy.
+All corrections were made only on the new submodel,so the earlier
+prescriptions remain fixed. \(\square\)
+
+For native use one must verify the stated common-root central
+identifications,actual chain submodel embeddings and the compatibility
+of the **desired closed product comparisons** on the refined domains.
+The proposition removes the extra requirement that independently given
+homotopy primitives already have the ordered retraction form. Full
+grafting covariance and the marked point still require their own
+verified native domains and equations.
+
+#### C.56.7. Two solved extension examples
+
+**Exercise C.56.7.1 (three binary factors; intermediate).** Let
+\(I_1=I_2=I_3=[1]\). In the relative index bar,fix the endpoints
+\(000\) and \(111\). Let \(S_1,S_2\) be the two ordered
+two-block shuffle domains and \(U=S_1+S_2\). Compute the dimensions
+of \(D,U,D/U\) in degrees minus one,minus two and minus three.
+Explain directly why \(U\to D\) is a quasi-isomorphism.
+
+**Solution.** A length-\(q\) path is an ordered partition of the
+three changing coordinates into \(q\) nonempty steps. There is one
+one-step path,six two-step paths and six three-step paths. Each
+two-block domain has one length-two generator and two length-three
+generators. Theorem C.56.1.1 identifies their intersection with the
+finest three-factor shuffle,which has only one generator here,in
+degree minus three. Thus
+
+| Cohomological degree | \(\dim D\) | \(\dim U\) | \(\dim(D/U)\) |
+| --- | --- | --- | --- |
+| \(-1\) | 1 | 0 | 1 |
+| \(-2\) | 6 | 2 | 4 |
+| \(-3\) | 6 | 3 | 3 |
+
+The degree-minus-two differential in \(D\) has rank one:every
+two-step path merges to the single one-step path with coefficient
+\(1\) or \(-1\). The six degree-minus-three words form the
+edges of a hexagon whose vertices are the six two-step words;internal
+merging is its signed incidence differential. Each two-step word has
+exactly two refinements,and the hexagon is connected. Its incidence
+matrix has rank five:successive edge differences span the five
+differences from a chosen vertex,and every column has total signed
+sum zero after the bar orientation is applied. The remaining top cycle
+is the signed three-factor shuffle of Exercise C.55.4.2.
+
+On each \(S_i\),the top differential has rank one,as it is the
+two-path differential of its two-coordinate factor tensored with the
+remaining arrow. Their degree-minus-two images are independent:one
+uses the step changing coordinates \(2,3\),the other the step
+changing coordinates \(1,2\). Hence \(d:U^{-3}\to U^{-2}\)
+has rank two. Its sole cohomology class is again the common finest
+shuffle in degree minus three. The inclusion identifies these classes
+and both complexes have zero cohomology elsewhere. The quotient is
+therefore acyclic,also as asserted by Theorem C.56.3.1. In particular,
+one must use the actual sum of the two shuffle domains;counting them
+as disjoint would give the incorrect top dimension four.
+
+**Exercise C.56.7.2 (a necessary perturbation; intermediate).** Consider
+the acyclic complex with \(a,c\) of degree minus one and \(b,e\)
+of degree zero. Put \(d_0a=b,d_0c=e\),and let
+\(h_0b=a,h_0e=c\),with all other values zero. Assign rank zero
+to \(a,b\) and rank one to \(c,e\). Add the rank-decreasing
+perturbation \(\delta c=b\),zero on the other basis vectors.
+Compute the full normalized contraction and its signed Hom contraction.
+
+**Solution.** We have \(d^2=(d_0+\delta)^2=0\),since both
+summands land in degree zero,where the differential vanishes. The
+leading contraction preserves rank,but it is not a contraction for
+\(d\):indeed \(dh_0(e)=e+b\). Here
+\((\delta h_0)^2=0\),so the full finite perturbation is
+\[
+ h=h_0(1+\delta h_0)^{-1}=h_0-h_0\delta h_0,
+ \qquad h(b)=a,\quad h(e)=c-a.
+\]
+It vanishes on \(a,c\),so \(h^2=0\). On \(b,e\),
+\(dh\) is the identity;on \(a,c\),\(hd\) is the identity,
+since \(d(c)=e+b\). Thus \(dh+hd=1\) on every basis vector.
+
+For a target complex \(V\) and a degree-\(r\) linear map
+\(f\),the signed Hom contraction is
+\(\mathsf H(f)=(-1)^r f h\). Writing
+\(\partial f=d_Vf-(-1)^rfd\),direct substitution gives
+\[
+ \begin{aligned}
+ \partial\mathsf H(f)&=(-1)^r d_Vfh+fhd,\\
+ \mathsf H(\partial f)&=(-1)^{r+1}d_Vfh+fdh.
+ \end{aligned}
+\]
+Their sum is \(f\),and \(\mathsf H^2=0\). For example,
+take \(V=k\) in degree zero and \(f\) of degree one with
+\(f(a)=1,f(c)=0\). Then \(\mathsf H(f)(b)=-1\) and
+\(\mathsf H(f)(e)=1\);its Hom differential is exactly \(f\).
+This example isolates the action perturbation and the Hom sign. It is
+an algebraic quotient example;identifying a native geometric module
+still requires the hypotheses of Theorem C.56.4.1.
+
+![The commuting cut decomposition identifies the actual product sum and its finest overlap; a finite perturbation changes the leading contraction to retain the complete differential](assets/commuting-shuffle-extension.png)
+
+Theorems C.56.1.1–C.56.3.1 identify the commuting cut algebra and its acyclic quotient. Theorems C.56.4.1–C.56.5.1 and Proposition C.56.6.1 give full relative Taylor extension and primitive gluing. Exercises C.56.7.1–C.56.7.2 compute the dimensions and the necessary homotopy correction shown here. Editable SVG source.
+
+### C.57. Product module actions and the native root tensor
+
+Compatible actions on the actual product domains extend to a full module
+differential. The construction kills each remaining curvature term in
+increasing outside rank,retaining the prescribed pure actions. Ordered
+output-root induction then gives product-compatible one-cross models.
+An actual comparison on the finest domain extends to the whole module
+and transports the entire path differential. The native partial forest
+also has the required graded central root tensor,including unit outputs
+and identity strands. The finest native comparison and all higher
+external grafting equations remain additional requirements.
+
+#### C.57.1. Relative extension of the entire module action
+
+Let \(Z=L\otimes sN\otimes A\) be one of C56's graded cofree
+one-cross modules. The pure cores are the prescribed minimal IC tensor
+cores and finite-height index bars. Their full differentials are fixed.
+Fix the central unary differential too. Let \(d_b\) be the resulting
+baseline differential on \(Z\),with no action consuming an outside
+piece. It squares to zero,by the tensor differential calculation.
+
+Use the C56 graded cut images \(S_T\). They have their complete
+central space \(sN\) and are the cofree pullbacks along the actual
+outside shuffle coalgebra embeddings. Select a nonempty finite collection
+and put \(U=\sum S_T\). Each is stable for \(d_b\).
+At every central input put
+\[
+ \begin{aligned}
+ R&=\#\{\text{original outside IC letters}\}\\
+  &\quad+\sum_{\text{outside index runs}}\Delta h.
+ \end{aligned}
+\]
+The leading part \(d_{b,0}\) includes the index-bar and central
+unary differentials. It preserves \(R\). Every other pure minimal
+operation decreases \(R\) by at least one. All operations are
+normalized;none sends a nonempty outside core word to a scalar identity.
+
+**Theorem C.57.1.1 (relative module-structure extension).** Suppose compatible
+degree-one full bicomodule maps \(\mu_T\) are prescribed on the
+selected cut domains. Suppose they have zero bare central value and
+\((d_b+\mu_T)^2=0\) there. Then there is a global full module
+differential \(D=d_b+\mu\) with those exact restrictions. It keeps
+the pure core differentials and central unary differential fixed. Its
+construction uses finitely many corrections on every original input.
+
+**Proof.** A homogeneous bicomodule endomorphism over identity pure
+cores is determined by its central Taylor map. Let \(E\) be their
+graded associative algebra under ordinary composition,and let
+\(\partial_b f=d_bf-(-1)^{|f|}fd_b\). The bicomodule equations
+for \(d_b\) make this a differential on \(E\). In detail,the
+pure-core coderivation terms on the two sides cancel when differentiating
+the equation for a bicomodule map. Thus \(\partial_b f\) again
+satisfies that equation. The ordinary composition calculation gives
+\(\partial_b(fg)=(\partial_b f)g+(-1)^{|f|}f\partial_b g\)
+and \(\partial_b^2=0\).
+
+Every \(f\in E\) preserves each graded \(S_T\). To see this,
+expand its full cofree formula on the pullback along the cut shuffle.
+The two outer coactions of an element of \(S_T\) remain in the
+image of those coalgebra embeddings. Its middle Taylor value can be
+any element of the full central block \(sN\),so the reconstructed
+output is again in \(S_T\). Consequently restriction to \(U\)
+is an algebra homomorphism,and its kernel \(K\) is a two-sided
+graded ideal. It is \(\partial_b\)-stable,since \(d_bU\subset U\).
+
+Let \(F^rE\) consist of endomorphisms whose central Taylor values
+are zero on every input of rank less than \(r\). Equivalently their
+full cofree formulas consume rank at least \(r\). A term of \(fg\)
+first consumes the piece used by \(g\),then the piece used by \(f\)
+in the remaining outside words. The ranks of these removed pieces add:
+IC letter counts add under cuts,and heights telescope along their actual
+endpoints. Therefore
+\[
+ F^rE\,F^sE\subset F^{r+s}E.
+\]
+This argument uses the entire signed cofree composition;its evaluation
+sign does not alter which outside pieces are consumed. In particular
+the graded commutator has the same filtration bound.
+
+On Taylor maps \(\partial_{b,0}\) preserves rank,and
+\(\partial_b-\partial_{b,0}\) raises filtration by at least one.
+Indeed a remaining source pure operation reduces original IC count
+before Taylor evaluation. A target pure operation cannot contribute to
+the central projection from a nonempty outside output,because it is
+normalized. These account for all nonleading baseline terms.
+
+The leading restriction kernel has the normalized contraction
+\(H_0\) proved in C.56.4.1. That proof uses the common cut
+decomposition of the two outside index runs,the acyclic nonretained
+summands,and the signed Hom contraction on the quotient. It applies
+here with the same central complex on source and target. It preserves
+rank and \(K\);hence on every homogeneous rank component of \(K\)
+we have
+\[
+ \partial_{b,0}H_0+H_0\partial_{b,0}=1.
+\]
+
+The cut decomposition glues the prescribed central action values.
+Extend them on the remaining graded summands and reconstruct a full
+bicomodule map \(\mu^{(0)}\). Choose its bare central value zero.
+Thus \(\mu^{(0)}\in F^1E^1\),and its restrictions are exactly
+the prescribed maps. For any such extension set
+\[
+ F(\mu)=\partial_b\mu+\mu^2.
+\]
+Its restriction to \(U\) vanishes by the prescribed square-zero
+equations. Thus its curvature belongs to \(K^2\cap F^1E\).
+
+Here is the full obstruction correction. Direct use of the graded
+Leibniz rule gives the Bianchi identity
+\[
+ \partial_b F(\mu)+\mu F(\mu)-F(\mu)\mu=0.
+\]
+In fact \(\partial_b(\mu^2)=(\partial_b\mu)\mu-
+\mu\partial_b\mu\);the two displayed commutator terms cancel
+these,and the two cubic terms cancel each other. No division or
+unproved deformation principle is used.
+
+Suppose the current curvature has filtration at least \(r\ge1\).
+Write \(F_r\) for its exact rank-\(r\) Taylor component,
+extended by zero at other ranks and then by the cofree formula. Rank
+preservation of the cut projectors shows \(F_r\in K\). The
+commutator in the Bianchi identity has filtration at least \(r+1\),
+as does the nonleading part of \(\partial_bF\). Hence
+\(\partial_{b,0}F_r=0\). Put
+\[
+ \nu_r=-H_0F_r,\qquad \mu_{\rm new}=\mu+\nu_r.
+\]
+Then \(\nu_r\in K^1\cap F^rE\) and
+\(\partial_{b,0}\nu_r=-F_r\). Expanding the new curvature gives
+\[
+ \begin{aligned}
+ F(\mu+\nu_r)&=F(\mu)+\partial_b\nu_r\\
+             &\quad+\mu\nu_r+\nu_r\mu+\nu_r^2.
+ \end{aligned}
+\]
+The last three terms have filtration at least \(r+1\),as does
+\((\partial_b-\partial_{b,0})\nu_r\). Its exact rank-\(r\)
+part is therefore zero. The new curvature has filtration at least
+\(r+1\),and the prescribed action values are unchanged because
+\(\nu_r\) vanishes on \(U\).
+
+Start with \(r=1\) and repeat. On a fixed original rank-\(R\)
+input no correction with \(r>R\) contributes. The cofree
+reconstruction at that input has finitely many outside cuts,so it too
+stabilizes. These stabilized values define a genuine global bicomodule
+map \(\mu\). Its curvature is zero on every original input,since
+the corresponding finite stage has already killed all ranks up to that
+input. Hence \((d_b+\mu)^2=0\). All corrections were in \(K\)
+and had positive consumption. The selected product actions,pure core
+differentials and bare central unary differential are therefore retained
+exactly. This proves the theorem. \(\square\)
+
+#### C.57.2. Ordered root products can be constructed simultaneously
+
+Fix a finite ordered list of root factors. Root \(i\) has input
+arity \(n_i\ge0\),one output core,and a finite directed parameter
+category \(I_i\). Its given one-cross module has the fixed pure
+cores and central space \(N_i\). For a nonempty consecutive block
+\(B\),use the literal tensor IC cores,the parameter category
+\(I_B=\prod_{i\in B}I_i\),and the central graded tensor
+\(N_B=\bigotimes_{i\in B}N_i\),with its tensor unary differential.
+The one-cross suspension is applied once after forming this ordinary
+tensor,as in C.41.2.1. Prescribe the singleton modules.
+
+**Theorem C.57.2.1 (ordered output-root induction on product domains).** There
+exist full one-cross module structures for all nonempty consecutive
+blocks with these bare central and pure-core data,whose restriction to
+every ordered cut shuffle is exactly the ordered product of the
+corresponding block structures. This construction includes genuine
+zero-input root factors. It asserts product compatibility on the
+specified product parameter categories;it does not identify a general
+native grafting category with such a product.
+
+**Proof.** Induct on the number of roots in a block. A singleton uses
+its prescribed structure. Suppose all shorter blocks have been done.
+For each proper cut of the current block,prescribe the product of its
+two shorter modules. Remove their individual cross shifts,tensor with
+the ordinary graded tensor rule,and restore one total cross shift.
+C.41.2.1 and C.52.3.1 prove that this gives a full cofree module along
+the actual outside shuffle coalgebra embeddings. Its differential
+squares to zero because the graded tensor differential does;the
+baseline restriction is the stated pure and central unary differential.
+
+On the intersection of two cut images,the commuting-cut theorem gives
+the refined product domain. Restricting either prescribed two-block
+structure there invokes only previously constructed structures on
+shorter blocks. By the induction hypothesis they restrict to the same
+flat product on the refined blocks. This equality includes the full
+module actions:ordinary graded tensor regrouping has the same sign
+for either parenthesization,its pure cores regroup literally,and the
+one total cross shift is performed after that regrouping. Iterating
+the same argument proves compatibility on every finite refined cut.
+
+Apply Theorem C.57.1.1 to these compatible positive-consumption action maps.
+It supplies the structure on the entire current block with all of its
+two-block restrictions fixed. Any finer cut factors through one of
+those cuts;the already imposed shorter-block restrictions identify it
+with the prescribed flat product too. This proves the inductive step
+and hence the assertion for all blocks in the finite list.
+
+The source arity never enters the obstruction contraction or its
+rank decrease. A root with \(n_i=0\) has source IC tensor power
+\(C^{\otimes0}\),but still retains its index bar,output core
+and actual central mapping factor \(N_i\). It is not removed
+from the ordered list. This is exactly the zero-input convention of
+C.52.3.1. A genuinely empty output list is separate coefficient-unit
+data,not a missing zero-input root. \(\square\)
+
+#### C.57.3. What comparison retains the native whole graph
+
+**Theorem C.57.3.1 (relative comparison and whole-path transport).** Suppose
+an old full module structure on the same \(Z\) has the same pure
+cores and bare central differential as a newly constructed structure.
+Suppose on the finest product-shuffle domain there is an actual closed
+full comparison from the old restricted module to the new restricted
+module,with identity leading central term and identity pure cores.
+Then it extends to a global bicomodule chain isomorphism. For a whole
+directed path coalgebra,such isomorphisms on its one-cross sectors
+give a graded whole-path coalgebra isomorphism. Conjugating the whole
+differential retains every several-cross operation and its enhanced
+interpretation. This alone does not assert strict external grafting
+covariance in the new coordinates.
+
+**Proof.** First every old module differential restricts to the graded
+finest shuffle pullback. Its pure coderivations retain that subcoalgebra;
+its nonunary module part is a bicomodule map over identity cores and
+preserves the pullback by Theorem C.57.1.1's cofree argument. The same is true
+of the new differential. Thus the given comparison has an actual chain
+domain and target.
+
+Extend its central Taylor values graded-linearly and reconstruct a full
+map \(F_0\). The full comparison differential has the signed
+form \(\partial F=d_{\rm new}F-(-1)^{|F|}F d_{\rm old}\).
+Its restriction kernel is contracted exactly as in C.56.4.1:the
+leading quotient by the finest shuffle is acyclic at fixed outside
+rank;every omitted source or target module action consumes positive
+outside rank. That proof does not use equality of the old restricted
+nonunary action with a flat product action;it uses the chain property
+of that restriction and the strict rank decrease. Both were just
+checked. The corresponding full contraction \(H\) therefore
+corrects the closed degree-one defect by
+\(F=F_0-H\partial F_0\). This is a global chain comparison with
+the prescribed finest restriction.
+
+The bare central block lies in the finest domain,so the correction has
+zero bare value. Consequently the leading central term remains the
+identity. Every other term of \(F-1\) consumes positive outside
+rank. The usual geometric inverse \(\sum_{j\ge0}(-1)^j(F-1)^j\)
+is finite on each original input and is a bicomodule inverse by the
+full cofree composition formula. The chain equation makes the inverse
+a chain map too.
+
+For a path of several cross sectors,take the cotensor of these graded
+bicomodule isomorphisms over the common pure cores. Its inverse is the
+cotensor of their inverses. A path cut is either an outside core
+coaction or a cut between cross sectors. Bicomodule compatibility
+retains the former,and the literal cotensor factors retain the latter.
+Thus these maps,over the identity on pure sectors,form a graded
+whole-path coalgebra isomorphism \(G\),including all several-cross
+path sectors. Define \(D_{\rm new}=G D_{\rm old}G^{-1}\).
+Its square is zero and its coderivation identity follows by applying
+the coalgebra equations for \(G,G^{-1}\) to that for \(D_{\rm old}\).
+On a one-cross sector it is the prescribed new differential by the
+chain equation for \(F\);on a pure sector it is unchanged. No
+several-cross Taylor component has been discarded:all are transported
+by the displayed conjugation. The original interpretation transports
+through this actual coalgebra isomorphism.
+
+External marks must also be transported on their actual domains. Their
+transported higher components need not be the strict external product
+formula even when their one-cross restrictions are products. Hence
+the full higher grafting equations still require proof before the
+marked-point descent can be applied. \(\square\)
+
+
+#### C.57.4. Root components,including unit outputs
+
+Fix an actual joint arrow \(f=(K,J')\) of C.47.2.1,with original
+source state \((t,J)\). Put \(I=\pi_K^{-1}(J')\). Write
+\(n=m_J\) for its source frontier length and \(m=m_I\) for
+its target frontier length before the canonical contraction relabelling.
+Retain the selected contraction labels throughout. At each root output
+of the actual partial forest \(F^t_{I,J}\),take its component
+between the two frontiers. Include a surviving old frontier edge as
+an identity component. Denote the ordered components by
+\(F_1,\ldots,F_m\),and their source block lengths by
+\(n_1,\ldots,n_m\).
+
+**Theorem C.57.4.1 (native rootwise central tensor).** Each source frontier
+variable occurs in exactly one component,with its original order. Thus
+\(n_i\ge0\),\(\sum_i n_i=n\),and the blocks are consecutive,
+allowing empty blocks. After the canonical frontier relabelling,the
+actual native functor is the ordered external product of these root
+functors. For selected IC tuples \(x,y\),its represented mapping
+cohomology consequently has the actual identification
+\[
+ \begin{aligned}
+ N_f(y,x)
+ &:=H^\bullet\operatorname{RHom}
+       (F^t_{I,J}x,y)\\
+ &\cong\bigotimes_{i=1}^m
+       H^\bullet\operatorname{RHom}
+       (F_i x_{B_i},y_i).
+ \end{aligned}
+\]
+It is nonnegative,even and degreewise finite on the finite forward
+corners. These are the same central graded tensor spaces used by the
+output-root induction. A zero-input component retains its full output
+mapping space;an identity component retains its full mapping space too.
+
+**Proof.** Traverse the original planar tree,stopping at the frontier
+of \(I\). Below one such stopped output,traverse only until the
+frontier of \(J\). Since \(J\subseteq I\) are descendant-closed
+ideals,all operations between those frontiers belong to that one
+component. A frontier edge of \(J\) has exactly one first ancestor
+in the stopped \(I\)-frontier,or is itself the surviving stopped
+edge. It therefore belongs to exactly one component. Planar traversal
+makes each such set consecutive in the source list and preserves the
+order of the components. A newly executed nullary subtree can have no
+old frontier input;it still has its stopped output. This proves all
+the block assertions,including empty blocks and identity strands.
+
+The native partial functor of C.44.3.1 is defined by evaluating these
+components independently and taking their ordered external product.
+Its enhanced geometric interpretation is the common expanded-chain
+construction in that proof,with the actual unit object at a nullary
+input and the actual identity correspondence at an identity strand.
+C.47.2.1 supplies the canonical output frontier bijection for the
+selected contraction \(K\). This bijection retains all tuple factors
+and their order. Composing with it gives the stated product functor
+for \(f\). This retains the original contraction label even if a
+different label gives an isomorphic underlying forest. No parallel
+arrows have been identified.
+
+Choose the external-product strict enhancement of this fixed forest
+functor. Its target tensor category has by definition the ordinary
+graded tensor of its mapping complexes. If a root image is a finite
+additive IC sum,use its actual finite multiplicity matrix. Distributing
+those finite sums identifies the full represented complex with
+\[
+ \bigotimes_i\operatorname{RHom}(F_i x_{B_i},y_i).
+\]
+The original enhanced forest comparison transports this represented
+complex to that of \(f\),rather than asserting equality merely from
+matching dimensions.
+
+For completeness,the tensor cohomology identification is the split
+complex calculation used in C.33.1.1. Split each factor over the field
+as its cohomology representatives plus a contractible complex. The
+finite tensor expands into the all-cohomology summand and summands
+with at least one contractible factor. Contract the first such factor
+with the ordinary tensor degree sign;the differentials on later
+factors cancel in the contraction identity. Each of those summands
+is contractible. Inclusion of the representatives therefore gives
+precisely the displayed Künneth isomorphism. The isomorphism on
+cohomology is the tensor of the actual represented comparison,so it
+has the required geometric provenance.
+
+Every \(F_i x_{B_i}\) is a finite additive IC sum by C.47.2.1's
+forward-corner construction. C.33.1.1 proves nonnegative,even and
+degreewise finite mapping cohomology for those generators. Finite
+sums and finite tensors preserve those assertions;in a fixed degree
+only finitely many tuples of nonnegative factor degrees contribute.
+
+If \(n_i=0\),the input is the coefficient object,but its output
+is the actual nullary forest value,canonically identified with
+\(IC_0\) by C.44.3.1. The corresponding factor is
+\(H^\bullet\operatorname{RHom}(IC_0,y_i)\),which need not be
+the coefficient field. If the component is an identity strand,the
+factor is \(H^\bullet\operatorname{RHom}(x_i,y_i)\),also
+retained in full. Hence neither case permits deletion of an output
+mapping factor. Finally the source pure core regroups as
+\(C^{\otimes n}=\bigotimes_iC^{\otimes n_i}\),and the target
+as \(C^{\otimes m}=\bigotimes_iC\). The ordinary central tensor
+therefore has exactly the graded root data required by the preceding
+output-root induction. \(\square\)
+
+If the output frontier is empty,no operation has an executed output.
+Thus both ideals are empty and both frontier lengths are zero. The
+underlying partial functor is the coefficient identity,with empty
+central tensor equal to the coefficient field;its contraction-arrow
+label is still retained.
+
+
+#### C.57.5. Two solved root/action examples
+
+**Exercise C.57.5.1 (nonlinear curvature; advanced).**
+Let \(V\) have basis \(x\) in degree minus one,\(y,u\) in
+degree zero,and \(v\) in degree one. Put \(d_0x=y,d_0u=v\).
+The normalized contraction is \(h_0y=x,h_0v=u\),zero otherwise.
+In the formal filtration \(t^r\operatorname{End}(V)[[t]]\),
+fix \(kv\) with its zero differential. Let
+\[
+ \begin{aligned}
+ \delta_1(x)&=u,&\delta_1(y)&=-v,\\
+ \delta_1(u)&=v,&\delta_1(v)&=0.
+ \end{aligned}
+\]
+Verify that the initial action is closed,compute its curvature,and
+apply the relative obstruction correction to determine the full formal
+differential. Use the normalized endomorphism contraction specified below.
+
+**Solution.** This degree-one map is \(\partial_0\)-closed,but
+\(\delta_1^2(x)=v\ne0\). Thus its linear chain equation is
+insufficient for a module differential. On maps vanishing on \(v\),
+postcomposition \(H_0(f)=h_0f\) is a normalized contraction of
+the endomorphism differential. Indeed the two source-composition terms
+in \(\partial_0H_0+H_0\partial_0\) cancel,and the remainder
+is \((d_0h_0+h_0d_0)f=f\). It preserves that relative kernel.
+
+Start with \(\mu=t\delta_1\). Its curvature is the nonzero
+term \(t^2(x\mapsto v)\). The first correction is
+\(-t^2(x\mapsto u)\). At the next order the curvature is
+\(-t^3(x\mapsto v)\),so the next correction is
+\(+t^3(x\mapsto u)\). Inductively at every order
+\(r\ge2\) the correction on \(x\) is \((-1)^{r-1}t^ru\),
+zero on the other basis vectors. Therefore the resulting formal
+differential has the exact formula
+\[
+ \begin{aligned}
+ Dx&=y+\frac{t}{1+t}u,&Dy&=-tv,\\
+ Du&=(1+t)v,&Dv&=0.
+ \end{aligned}
+\]
+Its square on \(x\) is
+\(-tv+\frac{t}{1+t}(1+t)v=0\);its square is zero on the
+other basis vectors too. Each finite \(t\)-adic window uses only
+finitely many of the displayed corrections. This is a formal filtered
+algebra diagnostic of the nonlinear induction,not a claim that the
+finite complex is a native IC module or an original-word rank window.
+
+**Exercise C.57.5.2 (unit,convolution and identity roots; intermediate).**
+Take an unexecuted ternary parent with three ordered branches:a nullary
+operation \(u\),a binary operation \(b\) with external inputs
+\(x_1,x_2\),and an external input \(x_3\). Execute \(u,b\) and leave the parent unexecuted. Determine
+the two frontiers,the ordered root input lengths,the represented central
+cohomology and the one-cross degree. Explain which mapping factors remain.
+
+**Solution.** The initial frontier is
+\((x_1,x_2,x_3)\),and the new frontier is
+\((IC_0,x_1*x_2,x_3)\). Its ordered root input lengths are
+\((0,2,1)\). On a target tuple \((y_1,y_2,y_3)\),the central
+cohomology is
+\[
+ \begin{aligned}
+ &H^\bullet\operatorname{RHom}(IC_0,y_1)\\
+ &\quad\otimes H^\bullet\operatorname{RHom}(x_1*x_2,y_2)\\
+ &\quad\otimes H^\bullet\operatorname{RHom}(x_3,y_3).
+ \end{aligned}
+\]
+The first and third factors remain present. For homogeneous central
+degrees \(d_1,d_2,d_3\),the corresponding one-cross degree is
+\(d_1+d_2+d_3-1\). Indeed C.41.2.1 removes the three individual
+cross shifts before tensoring and then restores one shift. Tensoring
+three suspended central letters directly would incorrectly give
+\(d_1+d_2+d_3-3\).
+
+For a genuinely rootwise product parameter family,the same calculation
+applies at every original endpoint tuple,with all parallel arrow labels
+retained. It supplies the graded central identifications there. It does
+not prove that an independently transferred differential restricts to
+the desired product differential. The actual closed comparison on the
+finest shuffle domain and compatibility across complete native grafting
+domains remain the next required checks.
+
+![The native frontier retains its unit,convolution and identity output factors; the first nonzero curvature is removed by the actual degree-one correction](assets/filtered-product-module-actions.png)
+
+Theorems C.57.1.1–C.57.3.1 construct relative module actions,ordered products and conditional whole-path transport. Theorem C.57.4.1 identifies the actual native graded central tensor. Exercises C.57.5.1–C.57.5.2 compute the curvature correction and the zero-input/identity root factors. Editable SVG source.
+
+### C.58. The actual finest product comparison
+
+The whole native product family and its independent root models project
+to one common dg target. The projection square with the finest shuffle
+commutes on the actual cobar generators. Full represented evaluation of
+the supplied native comparison,combined with the fixed projection
+contractions,gives a module comparison with its precise leading
+calibration. Both actions and all higher source components remain in
+the construction. The product domains here retain their stated scope;
+compatibility across general native overlaps and higher grafting
+equations remains to be established.
+
+#### C.58.1. The strict common projection square
+
+Put \(U=\Omega C\). For root factors \(i=1,\ldots,m\),let
+\(n_i\ge0\),\(I=\prod_iI_i\),and \(n=\sum_i n_i\).
+Write
+\[
+ \begin{aligned}
+ A_i&=C^{\otimes n_i}\otimes D_{I_i},\\
+ B_i&=C\otimes D_{I_i},\\
+ A_\otimes&=\bigotimes_iA_i,\\
+ B_\otimes&=\bigotimes_iB_i,\\
+ A_I&=C^{\otimes n}\otimes D_I,\\
+ B_I&=C^{\otimes m}\otimes D_I.
+ \end{aligned}
+\]
+The actual coalgebra embeddings
+\(j_A:A_\otimes\to A_I\),\(j_B:B_\otimes\to B_I\)
+first regroup the IC and index factors with the Koszul sign,then
+shuffle the index bars. Let \(\kappa_A,\kappa_B\) be the C41
+cobar projections onto the tensor of the factor cobars. The C52 maps
+\(\rho_{r,J}\) have target \(U^{\otimes r}\otimes kJ\).
+Use the canonical ordered identification
+\(\bigotimes_i(U\otimes kI_i)=U^{\otimes m}\otimes kI\).
+
+**Lemma C.58.1.1 (exact projection and shuffle compatibility).** We have
+the literal dg functor identities
+\[
+ \begin{aligned}
+ &\rho_{n,I}\Omega j_A\\
+ &\quad=\left(\bigotimes_i\rho_{n_i,I_i}\right)\kappa_A,\\
+ &\rho_{m,I}\Omega j_B\\
+ &\quad=\left(\bigotimes_i\rho_{1,I_i}\right)\kappa_B.
+ \end{aligned}
+\]
+All objects and parallel index arrows are retained. Each side is a
+graded-surjective mapping quasi-isomorphism. The identities also
+commute with the prescribed common core powers of \(g\).
+
+**Proof.** The cobars are free on their reduced coalgebra generators,
+so it suffices to compare their actual generator images. Recall the
+C52 formula \(\rho=\epsilon\Omega\operatorname{sh}
+(\bigotimes\eta_C\otimes1)\). Its twisting projection has a
+nonzero value only in the following two cases. One IC factor is reduced
+and every other factor,including the index bar,is coaugmented;its
+value is the same generator of that \(\Omega C\) factor. Or
+all IC factors are coaugmented and the index bar is one actual arrow;
+its value is that arrow with the scalar IC identities. An index word
+of length at least two has zero value. A generator with both an IC
+input and a nonempty index input has zero value,as does one with two
+reduced IC factors:the shuffled target bar then has at least two
+letters,which the counit twisting projection kills. These statements
+include a reduced IC coalgebra element of any primitive length;its
+one-letter bar-unit component is the corresponding cobar generator.
+
+On the right,\(\kappa\) kills a generator with two noncoaugmented
+root factors. On a generator supported in one root factor it retains
+exactly that factor and then applies its \(\rho\). On the left,
+two reduced IC factors are killed as just described. A reduced IC
+factor together with any nonempty index factor is killed too. If only
+index factors are nonempty,their shuffle has total index length equal
+to the sum of those lengths;two or more such letters are killed. If
+just one root factor is noncoaugmented,the only surviving possibilities
+are precisely that factor's single IC generator or its single actual
+index arrow. Both sides have the same value there. The factor
+regrouping sign is one on these surviving single-factor inputs;all
+other signed terms map to zero. This proves both exact identities.
+
+The coaugmentations give the same object identities on both sides.
+The one-arrow case retains its actual parallel-arrow label and embeds
+it with identities in the other index coordinates. At \(n_i=0\)
+there is simply no reduced IC generator in that source factor;its
+index-arrow case remains unchanged. Thus the proof includes zero-input
+roots and all empty outside words.
+
+C.52.2.1 proves that each \(\rho\) is graded-surjective and a
+mapping quasi-isomorphism. C.52.3.1 proves the same for \(\kappa\).
+Finite tensors over the field preserve surjectivity and quasi-isomorphism,
+by the split tensor calculation. Their displayed composites therefore
+have the asserted property. In particular,\(\Omega j\) is itself
+a mapping quasi-isomorphism by two out of three,since the global
+\(\rho\) is one too. All these object maps are the same tuple maps.
+
+For a normalized common core map \(g\),C.52.2.1 gives strict
+naturality of \(\rho\),C.41.1.1 gives strict naturality of
+\(\kappa\),and the index shuffle is the identity on IC factors.
+The resulting two composites on each generator coincide. Hence the
+identities commute with the literal prescribed powers of \(g\),
+not with independently chosen maps at different arities. \(\square\)
+
+#### C.58.2. An actual full represented comparison on the finest domain
+
+Fix a native **rootwise product family** from C44/C47 on these independent
+parameter categories,with its actual enhanced external-product
+comparison on all parameter cells. Take the strict native representatives
+of C.52.3.1,including their comparison through the canonical common-cobar
+units and target projections:
+\[
+ \begin{aligned}
+ F&:\Omega A_I\to\operatorname{Add}(\Omega B_I),\\
+ F_i&:\Omega A_i\to\operatorname{Add}(\Omega B_i).
+ \end{aligned}
+\]
+Here \(F\) represents that entire native product family,not an
+unrelated functor with the same cohomology. Retain these representing
+comparisons as part of the data supplied by the lift. Set
+\[
+ \begin{aligned}
+ T&=\bigotimes_i(U\otimes kI_i),\\
+ P&=(\bigotimes_iF_i)\kappa_A,\\
+ p_B&=(\bigotimes_i\rho_{1,I_i})\kappa_B,\\
+ f_0&=\rho_{m,I}F\Omega j_A,\\
+ f_1&=(\bigotimes_i\rho_{1,I_i})P.
+ \end{aligned}
+\]
+The two functors \(f_0,f_1\) have the same strict source
+\(\Omega A_\otimes\) and target \(\operatorname{Add}(T)\).
+
+**Theorem C.58.2.1 (native finest comparison with its actual source and target).**
+The supplied whole native external-product comparison gives a closed
+full bicomodule comparison between the old minimal module restricted
+along \(j_A,j_B\) and the finest product of the singleton minimal
+modules. Under C.57.4.1's actual rootwise cohomology identification,
+its bare central component is the identity. It is over identity pure
+cores and has its finite bicomodule inverse. Thus it supplies C.57.3.1's
+finest-domain hypothesis for this specified native product family.
+
+**Proof.** We first specify the actual full natural transformation
+used in the construction. The original native family has the enhanced
+external-product comparison of C.44.3.1/C.47.2.1. The chosen native
+lifts come with their representing comparisons through the canonical
+bar-cobar units and counits,as in C.52.3.1. Transport that original
+comparison through these particular equivalences. Orient it as
+\(\beta:f_1\Rightarrow f_0\). More explicitly,if \(c_i\)
+denotes the representing equivalence from the interpretation of \(f_i\)
+to its native family,and \(\alpha\) is the original comparison
+from the product family to the whole family,then its full enhanced
+expression is
+\(c_0^{-1}\alpha c_1\). The inverses and their coherent unit
+maps are those of the actual representing equivalences;the canonical
+bar-cobar equivalences and their homotopies were proved in C39 and
+retained by C52. This defines all its higher components,not only an
+objectwise isomorphism.
+
+Apply the normalized source bar construction of C.33.2.1 to that
+whole diagram. On every source bar word it records the corresponding
+full component of \(c_0^{-1}\alpha c_1\),with its consecutive-block
+composition. Its differential is zero by the full transformation
+identity. Thus \(\beta\) is an actual closed full transformation
+in the common-source model;no assumption that natural-transformation
+spaces are contractible is being used. Its inverse and its two
+composition homotopies are recorded from the same supplied native
+diagram. All parameter components of the original comparison remain
+present in this construction.
+
+Use three full represented raw modules over the identical outside
+cores \(B_\otimes,A_\otimes\). Their central complexes are
+\[
+ \begin{aligned}
+ &M_0(y,x)\\
+ &\quad=\operatorname{Hom}_{\Omega B_I}(F\Omega j_Ax,\Omega j_By),\\
+ &M_\Pi(y,x)\\
+ &\quad=\operatorname{Hom}_{\otimes_i\Omega B_i}(Px,\kappa_By),\\
+ &Q_a(y,x)\\
+ &\quad=\operatorname{Hom}_{T}(f_ax,p_By),\quad a=0,1.
+ \end{aligned}
+\]
+Write \(Y_0,Y_\Pi,Y_{Q_0},Y_{Q_1}\) for their common-core
+one-cross modules,with one total cross suspension. Naturality of the
+canonical coalgebra unit identifies \(Y_0\) with the actual
+\((j_B,j_A)\)-pullback of the original raw global module. It is
+not a separately selected module on the same graded ranks.
+
+Postcomposition by \(\rho_{m,I}\) and by
+\(\bigotimes_i\rho_{1,I_i}\) gives respectively
+\[
+ \phi_0:Y_0\to Y_{Q_0},\qquad
+ \phi_\Pi:Y_\Pi\to Y_{Q_1}.
+\]
+These are full chain bicomodule maps over identity cores. For the
+left action the exact square is
+\(\rho_{m,I}\Omega j_B=p_B\),proved in Lemma C.58.1.1;for the
+right action it is precisely the displayed definitions of \(f_0,f_1\).
+Multiplicativity of the target dg projections then proves both full
+represented action equations. The cofree formulas retain their higher
+terms. Their central maps are graded-surjective quasi-isomorphisms by
+Lemma C.58.1.1 and C52;finite additive images cause only finite mapping matrices.
+
+C.45.2.1 therefore gives a full fixed-projection chain section
+\(\sigma_\Pi:Y_{Q_1}\to Y_\Pi\),including its complete
+normalized kernel homotopy. C.53.1.1 evaluates the full degree-zero
+\(\beta:f_1\Rightarrow f_0\) in the contravariant direction:
+\[
+ R_\beta:Y_{Q_0}\longrightarrow Y_{Q_1}.
+\]
+At bare central level it is \(m\mapsto m\beta\). On each
+source word it uses the full transformation component and reconstructs
+the outside coactions. That lemma proves its complete chain and
+bicomodule identities. Degree zero introduces neither an opposite
+composition sign nor a cross-shift sign. In particular,this map is
+not obtained by ignoring the source or target action differential.
+
+Let \(I_0\) be the old minimal module's actual inclusion into
+\(Y_0\). It is obtained by restricting the chosen global minimal
+contraction along \(j_A,j_B\). This restriction retains the full
+contraction identities:the maps are bicomodule maps over identity
+cores,and the finest pullback contains their full central spaces,so
+their cofree formulas preserve it,as proved in C.57.1.1. Let
+\(P_\Pi:Y_\Pi\to Z_\Pi\) be the tensor product of the
+actual singleton minimal projections,with the C41 regrouping and one
+total cross suspension. It is a full chain bicomodule map by C.41.2.1.
+
+The required comparison is the now fully typed composite
+\[
+ F_{\rm fine}=P_\Pi\sigma_\Pi R_\beta\phi_0 I_0.
+\]
+Every arrow is a full chain bicomodule map over the same identity
+cores,so this composite is one too. On cohomology,\(I_0,P_\Pi\)
+are the chosen identity-calibrated minimal maps,\(\phi_0\) is
+the actual common target projection,and \(\sigma_\Pi\) induces
+the inverse of \(\phi_\Pi\). The remaining map is the original
+rootwise represented comparison \(R_\beta\). These are precisely
+the represented comparison and tensor Künneth maps used in C.57.4.1's
+native central identification. Hence the bare central component of
+\(F_{\rm fine}\),between those minimal cohomology spaces,is
+the identity,not merely an unspecified isomorphism of equal dimensions.
+
+Its remaining cofree Taylor terms consume positive outside rank,so
+the triangular inverse is finite on each original input by the indexed
+finite inverse proof in C.57.3.1.
+It is a chain inverse by the original chain equation. This constructs
+the actual finest-domain comparison required by C.57.3.1 for the
+specified product family. That theorem extends it to a global module
+isomorphism and transports the whole path differential. It still does
+not impose strict higher external grafting equations,identify an unsafe
+clipped product domain,or supply the full marked descent point.
+\(\square\)
+
+
+#### C.58.3. Two solved comparison examples
+
+**Exercise C.58.3.1 (mixed generator and retained arrow; intermediate).**
+Take \(I_1=I_2=[1]\) and no IC inputs. Let \(a,b\) be their
+actual index arrows. In \(\Omega(D_{I_1}\otimes D_{I_2})\),
+consider the mixed generator \(t(sa\otimes sb)\). Compute both
+routes of Lemma C.58.1.1 on it. Then compute the images of the two
+composable single-factor cobar words around the square. Explain why
+killing the mixed generator does not discard the mixed index arrow.
+
+**Solution.** All suspended index arrows are odd. In target-to-source
+order the shuffle is
+\[
+ \begin{aligned}
+ j(sa\otimes sb)&=sA_{\rm top}\mid sB_{\rm left}\\
+               &\quad-sB_{\rm right}\mid sA_{\rm bottom}.
+ \end{aligned}
+\]
+Both terms have bar length two,so the global counit twisting projection
+kills their cobar generators. The other route first applies \(\kappa\),
+which kills a generator supported in two noncoaugmented factors. Both
+routes therefore give zero. Its degree is minus one,as each suspension
+has degree minus one and the cobar generator raises degree by one.
+
+The individual cobar generators \(t(sA),t(sB)\) have degree zero.
+Both composable words
+\[
+ \begin{gathered}
+ t(sA_{\rm top})t(sB_{\rm left}),\\
+ t(sB_{\rm right})t(sA_{\rm bottom})
+ \end{gathered}
+\]
+map to the same actual arrow \(00\to11\),whose tensor-coordinate
+value is \(a\otimes b\). The two coordinate compositions agree
+in the ordinary product category,with no extra sign since these cobar
+generators have degree zero. Thus the negative-degree mixed generator
+has zero projection while the genuine mixed endpoint arrow remains
+the nonzero product of the two retained single-factor arrows.
+
+**Exercise C.58.3.2 (full bimodule comparison; advanced).**
+Work with the ordinary unsuspended cofree module,restoring the single
+cross shift afterwards as in C41. Let the left algebra be
+\(k[z]/z^2\),acting on its own coefficient factor,and the right
+algebra \(k[\epsilon]/\epsilon^2\). Let the remaining central
+complex have \(e,y\) in degree zero and \(f\) in degree minus
+one,with \(df=y\). In the old module the right \(\epsilon\)
+action is zero;in the new one it is \(T(e)=y,T(f)=T(y)=0\).
+Put \(K(e)=f,K(f)=K(y)=0\). Then
+\(T=dK+Kd\),\(T^2=K^2=TK=KT=0\),and every map is linear
+over the left coefficient algebra.
+
+Denote a basis word by \((p,r,v,q)\),where \(p\) is its
+left \(sz\)-word length,\(r=0,1\) is its central coefficient
+power of \(z\),\(v=e,f,y\),and \(q\) is its right
+\(s\epsilon\)-word length. The full differential has the central
+term \((-1)^p(p,r,dv,q)\),the left action term
+\((-1)^p(p-1,r+1,v,q)\) when \(p>0,r=0\),and the new right
+term \((-1)^{p+|v|}(p,r,Tv,q-1)\) when \(q>0\).
+Terms with zero displayed central value are omitted. The pure bar
+differentials vanish since \(z^2=\epsilon^2=0\).
+
+Verify the square-zero equations and construct an invertible full
+comparison over the identity outside cores. Check both actions and
+coactions,and show explicitly where its higher Taylor component is
+necessary. This algebraic example is separate from the positive IC
+cores in the native theorem.
+
+**Solution.** These differentials square to zero. The central and left terms cancel
+in pairs because the left action commutes with \(d\) and reducing
+\(p\) reverses the central differential sign. The central and right
+terms cancel because \(T\) is a chain map and \(d\) changes
+\(|v|\) by one. The left and right terms cancel by their respective
+coefficients \((-1)^{|v|-1}\) and \((-1)^{|v|}\),since
+\(zT=Tz\). The repeated left and repeated right terms vanish by
+\(z^2=T^2=0\). These exhaust the terms of the square.
+
+The degree-zero full comparison is
+\[
+ \begin{aligned}
+ F(p,r,v,q)&=(p,r,v,q)\\
+     &\quad+(-1)^{|v|+1}(p,r,Kv,q-1)
+ \end{aligned}
+\]
+when \(q>0\),with only its first term when \(q=0\).
+The extra term is a genuine Taylor component. In its chain equation,
+the one-letter coefficient is
+\((-1)^{p+|v|}(T-dK-Kd)v=0\);the two-letter coefficient is
+zero by \(TK=0\). Its left action equation holds because
+\(K\) commutes with that action. The inverse changes the sign of
+the extra term,since \(K^2=0\). The two outside coactions cut the
+left and right words. On the right,a term consuming one letter can
+be followed by exactly the cuts leaving that letter in the module
+piece;on the left all cuts remain available. Thus its full coaction
+equations hold too.
+
+For instance,\(F(e\mid s\epsilon)=e\mid s\epsilon-f\),
+and the new differential of this word is \(y-df=0\),matching
+the old differential before applying \(F\). The bare identity
+alone would instead give \(y\ne0\).
+
+![The actual native finest comparison retains its full five-map represented construction and its essential higher Taylor term](assets/native-finest-product-comparison.png)
+
+Lemma C.58.1.1 proves the exact common projection square. Theorem C.58.2.1 constructs the actual finest comparison on the stated native rootwise product families. Exercises C.58.3.1–C.58.3.2 retain the genuine mixed endpoint arrow and the nonzero higher full module comparison. Editable SVG source.
+
+### C.59. Full projection homotopies and simultaneous cut normalization
+
+The comparison through represented projections has four homotopy terms.
+The source and target projection squares and the original monoidal cell
+each contribute,and the fixed kernel homotopy contributes as well.
+After the actual minimal contractions,the resulting finest primitive
+extends to compatible comparisons on all ordered cuts. The formulas
+retain every action term and prescribed pure core map. Their global
+native use requires the displayed full cells on their complete domains.
+
+#### C.59.1. The four-term homotopy between represented projection roofs
+
+Use full chain bicomodule maps of degree zero with these types:
+\[
+ \begin{aligned}
+ a&:Z\to Q_0,&a'&:Z'\to Q_0',\\
+ b&:W\to Q_1,&b'&:W'\to Q_1',\\
+ s&:Q_1\to W,&s'&:Q_1'\to W',\\
+ B&:Q_0\to Q_1,&B'&:Q_0'\to Q_1',\\
+ t&:Z\to Z',&u&:W\to W',\\
+ t_0&:Q_0\to Q_0',&t_1&:Q_1\to Q_1'.
+ \end{aligned}
+\]
+Here \(b s=1,b's'=1\),and the actual fixed-projection target
+homotopy satisfies \(\partial H'=1-s'b'\). Assume the actual
+specified degree-minus-one homotopies have the types and equations
+\[
+ \begin{aligned}
+ A_0 &:Z\to Q_0',&\partial A_0&=a't-t_0a,\\
+ A_1 &:W\to Q_1',&\partial A_1&=b'u-t_1b,\\
+ C &:Q_0\to Q_1',&\partial C&=B't_0-t_1B.
+ \end{aligned}
+\]
+All composites use the same prescribed source-to-target core powers;
+the projections,sections and homotopies within a side are over identity
+cores. Set \(\phi=sBa\) and \(\phi'=s'B'a'\).
+
+**Theorem C.59.1.1 (the complete projection-roof square homotopy).** An actual
+full homotopy \(\partial R=\phi't-u\phi\) is
+\[
+ \begin{aligned}
+ R&=s'Ca+s'B'A_0\\
+  &\quad-H'u sBa-s'A_1sBa.
+ \end{aligned}
+\]
+It retains all stated face restrictions. In general none of its four
+terms can be omitted,even if every leading cohomology map is the identity.
+
+**Proof.** The Hom differential is a graded derivation,and all factors
+other than \(C,A_0,H',A_1\) are closed of degree zero. In particular
+\[
+ \begin{aligned}
+ \partial(H'us)&=(1-s'b')us\\
+ &=us-s't_1-s'(\partial A_1)s,
+ \end{aligned}
+\]
+using \(b'u=t_1b+\partial A_1\) and \(bs=1\).
+Consequently
+\(us-s't_1=\partial(H'us+s'A_1s)\). Also
+\[
+ \begin{aligned}
+ \phi't
+ &=s'B't_0a+\partial(s'B'A_0),\\
+ s'(B't_0-t_1B)a&=\partial(s'Ca).
+ \end{aligned}
+\]
+Subtract \(u\phi=usBa\) from the first equality,insert the
+second equality,and replace \(us-s't_1\) by the primitive just
+computed. This gives exactly the displayed four-term formula,including
+the minus sign on its \(A_1\) term. It is an equation in the full
+mapping complex,so every composed map retains both bicomodule coaction
+equations and all its source and target actions.
+
+Restriction to any parameter face commutes with these same composites.
+Thus compatible specified input data give that identical restricted
+homotopy. No homotopy inverse has been substituted without its kernel
+homotopy. The example below has four independent nonzero boundaries,
+proving the non-omission assertion. \(\square\)
+
+#### C.59.2. The primitive on the normalized finest models
+
+Use the actual full contractions
+\[
+ \begin{aligned}
+ (i,p,h)&:Z\rightleftarrows N,\\
+ (i',p',h')&:Z'\rightleftarrows N',\\
+ (j,q,k)&:W\rightleftarrows P,\\
+ (j',q',k')&:W'\rightleftarrows P'.
+ \end{aligned}
+\]
+Put \(T=p'ti,U=q'uj,J=q\phi i,J'=q'\phi'i'\),and assume
+\(J,J'\) are closed and invertible. In the native application these
+are the actual identity-leading isomorphisms of C58.
+The normalized global comparison restricted to the finest domain is
+\(T_*=J'TJ^{-1}:P\to P'\).
+
+**Corollary C.59.2.1 (a finest primitive with every contraction term).** For
+the actual roof homotopy \(R\) of Theorem C.59.1.1,set
+\[
+ \begin{aligned}
+ L&=q'Ri-q'\phi'h'ti\\
+  &\quad+q'uk\phi i,\\
+ K_*&=-LJ^{-1}.
+ \end{aligned}
+\]
+Then \(\partial K_*=U-T_*\). In particular a fully recorded raw
+monoidal square gives the finest primitive needed for simultaneous
+ordered-cut normalization,without discarding any projection or minimal
+contraction term.
+
+**Proof.** C.51.1.1's full calculation gives
+\(\partial L=J'T-UJ\). Its hypotheses are precisely the four
+contractions above and \(\partial R=\phi't-u\phi\),proved
+in Theorem C.59.1.1. Since \(J^{-1}\) is a closed degree-zero full map,
+\[
+ \begin{aligned}
+ \partial(-LJ^{-1})&=-(J'T-UJ)J^{-1}\\
+                 &=U-J'TJ^{-1}.
+ \end{aligned}
+\]
+This is the stated sign and type. The inverse is the actual indexed
+cofree inverse of C.57.3.1/C.58.2.1. Its restriction to a face is the
+inverse of the restricted map by the two inverse identities,so every
+compatible face in the given data is retained. \(\square\)
+
+#### C.59.3. One finest primitive suffices for all ordered cuts
+
+Let \(Z,Z'\) be the product-normalized common-core module models of
+C57,with minimal nonnegative even central spaces. Let \(T:Z\to Z'\)
+be an actual full chain isomorphism over the prescribed invertible core
+powers. On a nonempty finite family of ordered cut domains \(S_c\),
+prescribe closed full comparisons \(F_c\),with the same bare identity
+and core powers. Suppose these agree on all refined intersections.
+Their common restriction to the finest product domain is \(F_*\).
+Let an actual full homotopy \(K_*\) be given there with
+\(\partial K_*=F_*-T|_*\). This is exactly the primitive produced
+by Corollary C.59.2.1 when its raw diagrams are the supplied native ones.
+
+**Theorem C.59.3.1 (simultaneous normalization from the finest domain).** There
+is an actual full degree-minus-one bicomodule map \(K:Z\to Z'\)
+such that \(T^{\rm new}=T+\partial K\) restricts to every
+\(F_c\). It is an identity-leading chain isomorphism over the same
+pure core powers. One can retain the specified \(K_*\) while gluing.
+For compatible complete whole-graph sector data,C.51.3.1 implements this
+change in the whole graph without dropping several-cross components.
+
+**Proof.** Within one \(S_c\),the closed difference
+\(L_c=F_c-T|_{S_c}\) has primitive \(K_*\) on its finest
+shuffle domain. The relative full Taylor-kernel contraction of
+C.56.4.1 applies inside \(S_c\),with its refined factor bars.
+The original cut embedding and its finest refinement are actual chain
+submodels of the product-normalized module;the omitted action terms
+consume positive outside rank. Thus C.56.5.1 extends \(K_*\)
+to a full primitive \(K_c\) of \(L_c\) on \(S_c\).
+
+The prescribed differences \(L_c\) agree on their intersections,
+since all \(F_c\) do. C.56.6.1 therefore adjusts the \(K_c\)
+by closed full maps to make them agree on the whole finite cut union.
+Here the specified finest primitive can also be kept. Indeed,when the
+next domain meets the previously assigned union,the closed difference
+of its two homotopies vanishes on the finest domain:both were equal
+to \(K_*\) there. Closed-map extension from that intersection
+retains its zero finest value,because the finest domain is already
+contained in the prescribed intersection. Thus adding this correction
+does not alter \(K_*\). Induction glues all the homotopies while
+keeping the earlier domains and that finest value fixed.
+
+Their common central Taylor map on the actual sum extends graded-linearly
+to \(Z\),using the common cut decomposition of C.56.1.1. Apply
+the full cofree formula along the prescribed outside core powers to
+obtain \(K\). It retains every assigned \(K_c\). No equation
+\(\partial K=L\) outside the union is required:define
+\(T^{\rm new}=T+\partial K\). It is closed because
+\(\partial T=0\) and \(\partial^2=0\),and on each cut its
+restriction is \(T|_{S_c}+L_c=F_c\). This construction uses the
+full differential and the actual sum,not a termwise extension across
+independently selected shuffle words.
+
+The bare central value is the prescribed identity,as every cut contains
+that block. The usual cofree inverse is finite on each original input.
+Furthermore \(K\)'s bare central value is zero by even central parity:
+a degree-minus-one map cannot take a bare even unsuspended mapping
+degree to another such degree. Therefore the genuine whole-graph
+gauge theorem C.51.3.1 applies whenever these sector homotopies are
+compatible on the complete assigned face/string overlaps. It retains
+all higher-cross terms. Compatibility across additional native
+overlaps and external grafting marks is still a separate obligation,
+not a conclusion from this single module statement. \(\square\)
+
+When \(F_c\) are products of already normalized smaller-root
+comparisons,their refined-intersection compatibility follows from that
+ordered root induction and the single final cross-shift rule of C41.
+The new theorem reduces all coarse-cut primitive choices to the one
+actual finest primitive. Applying it to the full native diagram still
+requires recording \(A_0,A_1,C\) from its entire projection and
+monoidal cells,with the fixed core powers and complete domains. These
+data must not be replaced by equality of first cohomology maps.
+
+
+#### C.59.4. Two solved homotopy examples
+
+**Exercise C.59.4.1 (four necessary terms; advanced).**
+Let \(V\) have the cycle \(e\) in degree zero and three acyclic
+pairs \(f_i\) in degree minus one,\(y_i\) in degree zero,
+with \(df_i=y_i\). Take \(Z=Z'=Q_0=Q_0'=Q_1=Q_1'=V\).
+Let \(W=W'=V\oplus K\),where \(K=(kg\to kz)\),
+\(|g|=-1,|z|=0,dg=z\). Let \(a,a',B,B'\) be identities,
+\(b,b'\) the projection onto \(V\),and \(s,s'\) its
+standard inclusion. Set \(H'(z)=g\),zero on all other basis
+vectors.
+
+Define \(C(e)=f_1,A_0(e)=f_2\),zero elsewhere,and let
+\(A_1:W\to V\) send \(e\) to \(f_3\),zero elsewhere.
+Put \(t_1=1,t_0=1+\partial C,t=t_0+\partial A_0\).
+Let \(u\) act as the identity except that
+\(u(e)=e+y_3+z\). Check all three projection-square homotopy equations and compute
+the four terms of the full roof homotopy. Show that omitting any one
+gives an incorrect homotopy,even though all cohomology comparisons are
+identities. Retain the full two-sided module interpretation.
+
+**Solution.** The first and third homotopy equations follow from the definitions
+of \(t\) and \(t_0\). For the second,both sides send \(e\)
+to \(y_3\) and vanish on all other basis vectors. These are degree-zero chain maps,with the
+stated projection homotopy equations;for example
+\((b'u-t_1b)(e)=y_3=(\partial A_1)(e)\). All induced
+cohomology maps are the identity.
+
+The four terms of Theorem C.59.1.1,on \(e\),are respectively
+\[
+ f_1,\qquad f_2,\qquad -g,\qquad -f_3.
+\]
+Their differential is \(y_1+y_2-z-y_3\),which is exactly
+\((\phi't-u\phi)(e)\). These four target boundaries are
+linearly independent. Omitting any one term gives a nonzero defect.
+Tensor everything with \(k[r]/r^2\),using regular left and
+right multiplication on the coefficient factor. All maps and
+homotopies are bimodule-linear,so the construction extends to their
+full cofree two-sided bar modules with both nonzero coefficient
+actions. The same equations hold there by the cofree formula. This
+is an algebraic diagnostic of the homotopy terms,not an identification
+with the native IC mapping complexes.
+
+**Exercise C.59.4.2 (inverse placement and sign; intermediate).**
+Work at the level of ordinary complexes. Let \(V=ke\oplus kf\oplus ky\),
+where \(|e|=|y|=0,|f|=-1,df=y\). Put \(h(y)=f\),zero on
+the other basis vectors,and \(S=dh+hd\). In Corollary C.59.2.1's
+contraction diagram take all four complexes to be \(V\),with identity
+contractions. Let \(t=u=\phi'=1\) and \(\phi=J=1+S\),so
+\(J'=1\). Determine \(R,L,K_*\) and verify the finest homotopy
+equation. Explain the errors produced by omitting \(J^{-1}\) or
+reversing the sign.
+
+**Solution.** The map \(S\) is zero on \(e\) and the identity
+on the acyclic pair \(f,y\). It is a closed projector. Thus
+\(J\) is identity on \(e\) and multiplication by two on that
+pair;its inverse is \(1-\tfrac12S\). Both maps induce identity
+on cohomology. The raw square has defect
+\(\phi't-u\phi=-S\),so take \(R=-h\). The identity
+contractions have zero homotopies,hence \(L=R=-h\) and
+\[
+ K_*=-LJ^{-1}=h(1-\tfrac12S)=\tfrac12h.
+\]
+Its differential is \(\tfrac12S\). On the other hand
+\[
+ U-T_*=1-J^{-1}=\tfrac12S,
+\]
+so the stated equation holds on all three basis vectors. Omitting
+the inverse would give \(h\),whose differential is \(S\),twice
+the required value on both \(f\) and \(y\). Reversing the
+minus sign in \(-LJ^{-1}\) gives differential
+\(-\tfrac12S\). The example checks the algebraic homotopy formula;
+it does not identify this nonminimal complex with the minimal native
+central spaces. The full cofree version uses the actual identity-leading
+maps and contractions stipulated in the preceding theorems.
+
+![The four independent roof correction terms and the extension from one actual finest primitive to all compatible ordered cuts](assets/native-comparison-roof-homotopies.png)
+
+Theorem C.59.1.1 retains all four terms of the full projection homotopy. Corollary C.59.2.1 gives the correctly typed finest primitive;Theorem C.59.3.1 extends its normalization to the prescribed ordered cuts. Exercises C.59.4.1–C.59.4.2 compute the necessary terms,inverse and sign. Editable SVG source.
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. C.30 proves split semisimple normalization, finite relative bar coordinate groups and descent of a verified exhaustive multi-operation presentation. C.31 constructs the finite ordered-tree contraction index, its bounded projective relative diagram resolution and the combined positive-degree profile bound with both output suspensions. C.32 proves genuine directed positive-weight coalgebra windows, coordinate and inverse preservation, the coderivation bound and compatible directed relative descent. C.33 proves actual rational Betti coefficient comparison, constructs enhanced functor graphs and the actual ordered-tree convolution graph system, and descends that whole directed graph system over the rationals. Its remaining common-input tensor-power and cross-arity substitution equations are explicit: independently formalized input corners do not constitute a strong monoidal comparison. C.34 constructs a strict positive model retaining the whole IC coderivation, actual tensor bar shuffles and transferred common-input maps. C.35 retains the exact perturbed homotopy, its two-summand transfer square formula and the full graded contraction-cube faces. C.36 proves the actual homotopy coproduct and packages it in a finite dg interval coalgebra and tensor cubes; the transferred square is an original coalgebra-cylinder span through its uncontracted comparison. These nonlinear common-input data have proved invariant finite windows. C.37 retains the actual cross module and both coactions over their shared core cylinders. C.38 constructs the actual nested convolution graph, retains its two-cross grafting and higher module transfer, and descends the complete nested-string graph through common arity/output corners. C.39 constructs actual common-input convolution modules over powers of one core bar, proves their common-core finite coordinate group and the shuffle quasi-isomorphism, and recovers the original convolution by its triangular bar-cobar comparison. C.40–C.49 supply the native whole tagged prism family,corrected compatible common-core contractions and finite marked domains. C.50 recovers the actual whole endpoint comparison,keeps the prescribed core powers exactly and produces a genuine full path/face/differential coordinate. C.51 proves the explicit transferred square and signed tensor homotopies,and extends compatible actual one-cross changes to a full graph chain gauge. C.52 now constructs the actual indexed common-cobar product projections,the full shuffle intersection domains and the precise resolved-square homotopy component. The native fixed-core product coherence two-simplices and simultaneous product prescriptions on the sums of their actual domains must still be constructed and checked,with all higher tensor/grafting equations,before the marked E-point and rational strong monoidal descent are proved. The quantum/rotation, renormalized, singular-support and Ran/factorization scopes remain active. Descent of the full tensor equivalence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
+Sections 2–7 establish the unit self-Ext formula,the invariant-polynomial classifying-space ring,the torus tensor model over characteristic-zero fields,the Koszul endomorphism and generated-category calculations,and the distinction between compact and bounded objects. The examples and exercises retain the specified shifts,coefficient fields and support conditions.
+
+Appendix A develops stabilizer cohomology,equivariant Ext purity,minimal-model transfer,Frobenius formality and spherical generator envelopes. Appendix B treats the polynomial Kostant slice,the universal centralizer,equivariant coherent restriction and composition on free dual polynomial generators. Appendix C.1–C.29 develops the geometric generator mapping comparison,finite-jet and constant-group comparisons,the graded tensor cohomology functor,determinant and primitive cup operators,geometric Kostant modules,and the arithmetic enhanced symmetric monoidal finite-envelope equivalence. Its Betti and trait comparisons retain the full action nerves,trace normalizations and ordered convolution data.
+
+Appendix C.30–C.59 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts.
+
+A full strong monoidal descent to arbitrary characteristic-zero coefficients additionally requires compatible native choices over all overlaps and finite corners,product normalization of the global comparison,and every higher product and grafting covariance equation on its complete domain. The quantum/loop-rotation,renormalized,singular-support and Ran/factorization equivalences of Section 8 require arguments beyond the results established here.
 
 Free further reading:
 

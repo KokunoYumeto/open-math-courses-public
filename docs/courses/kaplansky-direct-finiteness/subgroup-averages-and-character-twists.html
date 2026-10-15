@@ -1,0 +1,188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Subgroup averages and character twists</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Kaplansky&#x27;s direct-finiteness conjecture)</a><a href="the-glued-group-and-planar-balance.html">Previous lesson</a><a href="packing-and-the-reverse-defect.html">Next lesson</a><a href="src/subgroup-averages-and-character-twists.md">Editable source</a></nav><main><article><h1 id="subgroup-averages-and-character-twists">Subgroup averages and character twists</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The embedded subgroups <span class="math" data-tex="\(K_v\cong\mathbb F_\ell^2\)">\(K_v\cong\mathbb F_\ell^2\)</span> of the glued group have averages <span class="math" data-tex="\(P_v\)">\(P_v\)</span>, idempotents in the group algebra. Weighted by the matrices <span class="math" data-tex="\(x_vx_v^{\mathsf T}\)">\(x_vx_v^{\mathsf T}\)</span>, these averages produce a rectangular matrix identity <span class="math" data-tex="\(UT=I_m\)">\(UT=I_m\)</span>: an <span class="math" data-tex="\(m\times t\)">\(m\times t\)</span> matrix with a right inverse, with <span class="math" data-tex="\(t&gt;m\)">\(t&gt;m\)</span>. A rectangular one-sided inverse is not yet a counterexample; to make the matrices square, the <span class="math" data-tex="\(t\)">\(t\)</span> intermediate coordinates are packed into <span class="math" data-tex="\(m\)">\(m\)</span> slots, using idempotents attached to different characters of a cyclic group. This lesson builds the group in which these characters can be changed by conjugation, and proves the identities that the packing in <a href="packing-and-the-reverse-defect.html">Packing and the reverse defect</a> uses.</p>
+<ul>
+<li>Averages over the local groups (Section 1).</li>
+<li>The rectangular identity (Section 2).</li>
+<li>A twisted extension (Section 3).</li>
+<li>Character idempotents (Section 4).</li>
+</ul>
+<p>Throughout, <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, <span class="math" data-tex="\(\kappa=\ell^2\)">\(\kappa=\ell^2\)</span>, <span class="math" data-tex="\((V,\mathcal F)\)">\((V,\mathcal F)\)</span>, <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(m\)">\(m\)</span> and the vectors <span class="math" data-tex="\(x_v\)">\(x_v\)</span> are as in Theorem 1.1 of <a href="the-glued-group-and-planar-balance.html">The glued group and planar balance</a>, and <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(K_v\)">\(K_v\)</span>, <span class="math" data-tex="\(L_f\)">\(L_f\)</span> are the glued group and its subgroups from Section 4 there. The integers <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> are odd, so they are invertible in <span class="math" data-tex="\(K\)">\(K\)</span>; in characteristic two they are even equal to <span class="math" data-tex="\(1\)">\(1\)</span>, but we keep them visible.</p>
+<h2 id="1-averages-over-the-local-groups">1. Averages over the local groups</h2>
+<p>For <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span> put
+<span class="math math-display" data-tex="\[
+P_v=\kappa^{-1}\sum_{u\in K_v}u\in K[N] .
+\]">\[
+P_v=\kappa^{-1}\sum_{u\in K_v}u\in K[N] .
+\]</span></p>
+<p><strong>Lemma 1.1.</strong> <span class="math" data-tex="\(P_v^2=P_v\)">\(P_v^2=P_v\)</span>, and <span class="math" data-tex="\(uP_v=P_vu=P_v\)">\(uP_v=P_vu=P_v\)</span> for <span class="math" data-tex="\(u\in K_v\)">\(u\in K_v\)</span>.</p>
+<p><em>Proof.</em> Multiplication by <span class="math" data-tex="\(u\in K_v\)">\(u\in K_v\)</span> permutes <span class="math" data-tex="\(K_v\)">\(K_v\)</span>, so <span class="math" data-tex="\(u\sum_{w\in K_v}w=\sum_{w\in K_v}w\)">\(u\sum_{w\in K_v}w=\sum_{w\in K_v}w\)</span>, and the same on the right. Hence <span class="math" data-tex="\(P_v^2=\kappa^{-1}\sum_{u\in K_v}uP_v=\kappa^{-1}\kappa P_v=P_v\)">\(P_v^2=\kappa^{-1}\sum_{u\in K_v}uP_v=\kappa^{-1}\kappa P_v=P_v\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a line <span class="math" data-tex="\(f\)">\(f\)</span> write <span class="math" data-tex="\(\sigma_f=\sum_{u\in L_f}u\in K[N]\)">\(\sigma_f=\sum_{u\in L_f}u\in K[N]\)</span>. This element is the same for every point <span class="math" data-tex="\(v\in f\)">\(v\in f\)</span>, because <span class="math" data-tex="\(L_f\)">\(L_f\)</span> is one subgroup of <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Lemma 1.2.</strong> For every point <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{u\in K_v}u=1+\sum_{f\ni v}\bigl(\sigma_f-1\bigr) .
+\]">\[
+\sum_{u\in K_v}u=1+\sum_{f\ni v}\bigl(\sigma_f-1\bigr) .
+\]</span></p>
+<p><em>Proof.</em> The <span class="math" data-tex="\(\ell+1\)">\(\ell+1\)</span> subgroups <span class="math" data-tex="\(L_f\)">\(L_f\)</span>, <span class="math" data-tex="\(f\ni v\)">\(f\ni v\)</span>, cover <span class="math" data-tex="\(K_v\)">\(K_v\)</span> and meet pairwise only in <span class="math" data-tex="\(1\)">\(1\)</span>. So every <span class="math" data-tex="\(u\ne1\)">\(u\ne1\)</span> of <span class="math" data-tex="\(K_v\)">\(K_v\)</span> occurs in exactly one <span class="math" data-tex="\(\sigma_f-1\)">\(\sigma_f-1\)</span>, and <span class="math" data-tex="\(1\)">\(1\)</span> occurs only in the first term. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The identity takes place inside <span class="math" data-tex="\(K_v\)">\(K_v\)</span>; nothing about intersections of different <span class="math" data-tex="\(K_v\)">\(K_v\)</span> is used.</p>
+<h2 id="2-the-rectangular-identity">2. The rectangular identity</h2>
+<p>Write <span class="math" data-tex="\(W_v=x_vx_v^{\mathsf T}\)">\(W_v=x_vx_v^{\mathsf T}\)</span>, an <span class="math" data-tex="\(m\times m\)">\(m\times m\)</span> matrix over <span class="math" data-tex="\(K\)">\(K\)</span>, and fix an ordering of <span class="math" data-tex="\(V\)">\(V\)</span>. Define matrices over <span class="math" data-tex="\(K[N]\)">\(K[N]\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U\in\operatorname{Mat}_{m\times t}(K[N]),\\
+\text{column }v\text{ of }U=-\kappa\,x_vP_v,\\
+T\in\operatorname{Mat}_{t\times m}(K[N]),\\
+\text{row }v\text{ of }T=P_v\,x_v^{\mathsf T},
+\end{gathered}
+\]">\[
+\begin{gathered}
+U\in\operatorname{Mat}_{m\times t}(K[N]),\\
+\text{column }v\text{ of }U=-\kappa\,x_vP_v,\\
+T\in\operatorname{Mat}_{t\times m}(K[N]),\\
+\text{row }v\text{ of }T=P_v\,x_v^{\mathsf T},
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(P=\operatorname{diag}_{v\in V}(P_v)\in\operatorname{Mat}_t(K[N])\)">\(P=\operatorname{diag}_{v\in V}(P_v)\in\operatorname{Mat}_t(K[N])\)</span>. The entries of <span class="math" data-tex="\(x_v\)">\(x_v\)</span> are scalars and commute with every element of <span class="math" data-tex="\(K[N]\)">\(K[N]\)</span>.</p>
+<p><strong>Proposition 2.1.</strong>
+<span class="math math-display" data-tex="\[
+UP=U,\qquad PT=T,\qquad UT=I_m .
+\]">\[
+UP=U,\qquad PT=T,\qquad UT=I_m .
+\]</span></p>
+<p><em>Proof.</em> The first two identities follow from <span class="math" data-tex="\(P_v^2=P_v\)">\(P_v^2=P_v\)</span>. For the third,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+UT&amp;=\sum_{v\in V}(-\kappa\,x_vP_v)(P_vx_v^{\mathsf T})\\
+&amp;=-\kappa\sum_vW_vP_v=-\sum_vW_v\sum_{u\in K_v}u .
+\end{aligned}
+\]">\[
+\begin{aligned}
+UT&amp;=\sum_{v\in V}(-\kappa\,x_vP_v)(P_vx_v^{\mathsf T})\\
+&amp;=-\kappa\sum_vW_vP_v=-\sum_vW_v\sum_{u\in K_v}u .
+\end{aligned}
+\]</span>
+By Lemma 1.2 this equals
+<span class="math math-display" data-tex="\[
+-\sum_vW_v-\sum_v\sum_{f\ni v}W_v(\sigma_f-1) .
+\]">\[
+-\sum_vW_v-\sum_v\sum_{f\ni v}W_v(\sigma_f-1) .
+\]</span>
+In the double sum each pair <span class="math" data-tex="\(v\in f\)">\(v\in f\)</span> occurs once, and <span class="math" data-tex="\(\sigma_f-1\)">\(\sigma_f-1\)</span> does not depend on <span class="math" data-tex="\(v\)">\(v\)</span>, so it equals <span class="math" data-tex="\(\sum_f\bigl(\sum_{v\in f}W_v\bigr)(\sigma_f-1)\)">\(\sum_f\bigl(\sum_{v\in f}W_v\bigr)(\sigma_f-1)\)</span>, which is zero by the line identities <span class="math" data-tex="\(\sum_{v\in f}W_v=0\)">\(\sum_{v\in f}W_v=0\)</span>. The total identity <span class="math" data-tex="\(\sum_vW_v=-I_m\)">\(\sum_vW_v=-I_m\)</span> gives <span class="math" data-tex="\(UT=I_m\)">\(UT=I_m\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So the <span class="math" data-tex="\(m\times t\)">\(m\times t\)</span> matrix <span class="math" data-tex="\(U\)">\(U\)</span> has a right inverse. Over a field, such a matrix with <span class="math" data-tex="\(t&gt;m\)">\(t&gt;m\)</span> has no left inverse, and the corresponding defect <span class="math" data-tex="\(TU-P\)">\(TU-P\)</span> is what the counterexample is made of. The regrouping of the double sum is where the glued group matters: the same element <span class="math" data-tex="\(\sigma_f\)">\(\sigma_f\)</span> appears at every point of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<h2 id="3-a-twisted-extension">3. A twisted extension</h2>
+<p>Let <span class="math" data-tex="\(z\)">\(z\)</span> generate a cyclic group of order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and put <span class="math" data-tex="\(H=N\times\langle z\rangle\)">\(H=N\times\langle z\rangle\)</span>; the element <span class="math" data-tex="\(z\)">\(z\)</span> is central in <span class="math" data-tex="\(H\)">\(H\)</span>. Choose a point <span class="math" data-tex="\(v_*\in V\)">\(v_*\in V\)</span> and write <span class="math" data-tex="\(K_*=K_{v_*}\)">\(K_*=K_{v_*}\)</span>. Each <span class="math" data-tex="\(K_v\)">\(K_v\)</span> carries the coordinates of <span class="math" data-tex="\(\mathbb F_\ell^2\)">\(\mathbb F_\ell^2\)</span> transported by <span class="math" data-tex="\(\theta_v\)">\(\theta_v\)</span>, and <span class="math" data-tex="\(\varphi_v:K_v\to K_*\)">\(\varphi_v:K_v\to K_*\)</span> denotes the isomorphism that keeps the coordinates. A <em>linear form</em> <span class="math" data-tex="\(\alpha:K_*\to\mathbb F_\ell\)">\(\alpha:K_*\to\mathbb F_\ell\)</span> is a homomorphism to the additive group of <span class="math" data-tex="\(\mathbb F_\ell\)">\(\mathbb F_\ell\)</span>; there are exactly <span class="math" data-tex="\(\kappa=\ell^2\)">\(\kappa=\ell^2\)</span> of them. Exponents in <span class="math" data-tex="\(\mathbb F_\ell\)">\(\mathbb F_\ell\)</span> are read in <span class="math" data-tex="\(\mathbb Z/\ell\)">\(\mathbb Z/\ell\)</span>.</p>
+<p>Since <span class="math" data-tex="\(t\le m\kappa\)">\(t\le m\kappa\)</span>, we can assign to each point <span class="math" data-tex="\(v\)">\(v\)</span> a <em>slot</em> <span class="math" data-tex="\(s(v)\in\{1,\ldots,m\}\)">\(s(v)\in\{1,\ldots,m\}\)</span> and a linear form <span class="math" data-tex="\(\alpha_v\)">\(\alpha_v\)</span> so that the pairs <span class="math" data-tex="\((s(v),\alpha_v)\)">\((s(v),\alpha_v)\)</span> are distinct. Points in the same slot then have distinct forms.</p>
+<p><strong>Definition 3.1.</strong> <span class="math" data-tex="\(L\)">\(L\)</span> is the group generated by <span class="math" data-tex="\(H\)">\(H\)</span> and new elements <span class="math" data-tex="\(\tau_v\)">\(\tau_v\)</span>, <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>, subject to the relations of <span class="math" data-tex="\(H\)">\(H\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau_v\,(uz^r)\,\tau_v^{-1}=\varphi_v(u)\,z^{r+\alpha_v(\varphi_v(u))}\\
+(u\in K_v,\ r\in\mathbb Z/\ell).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\tau_v\,(uz^r)\,\tau_v^{-1}=\varphi_v(u)\,z^{r+\alpha_v(\varphi_v(u))}\\
+(u\in K_v,\ r\in\mathbb Z/\ell).
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 3.2.</strong> For each <span class="math" data-tex="\(v\)">\(v\)</span>, the map <span class="math" data-tex="\(\psi_v:K_v\times\langle z\rangle\to K_*\times\langle z\rangle\)">\(\psi_v:K_v\times\langle z\rangle\to K_*\times\langle z\rangle\)</span>, <span class="math" data-tex="\(uz^r\mapsto\varphi_v(u)z^{r+\alpha_v(\varphi_v(u))}\)">\(uz^r\mapsto\varphi_v(u)z^{r+\alpha_v(\varphi_v(u))}\)</span>, is a group isomorphism.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(z\)">\(z\)</span> is central, <span class="math" data-tex="\(\varphi_v\)">\(\varphi_v\)</span> is a homomorphism and <span class="math" data-tex="\(\alpha_v\circ\varphi_v\)">\(\alpha_v\circ\varphi_v\)</span> is additive,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\psi_v(uz^r)\psi_v(u&#x27;z^{r&#x27;})\\
+&amp;\quad=\varphi_v(uu&#x27;)\,z^{r+r&#x27;+\alpha_v(\varphi_v(uu&#x27;))}\\
+&amp;\quad=\psi_v(uu&#x27;z^{r+r&#x27;}) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\psi_v(uz^r)\psi_v(u&#x27;z^{r&#x27;})\\
+&amp;\quad=\varphi_v(uu&#x27;)\,z^{r+r&#x27;+\alpha_v(\varphi_v(uu&#x27;))}\\
+&amp;\quad=\psi_v(uu&#x27;z^{r+r&#x27;}) .
+\end{aligned}
+\]</span>
+The map <span class="math" data-tex="\(wz^r\mapsto\varphi_v^{-1}(w)z^{r-\alpha_v(w)}\)">\(wz^r\mapsto\varphi_v^{-1}(w)z^{r-\alpha_v(w)}\)</span> is inverse to it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.3</strong> ([OpenAI-DF2, Section 4.2]). The natural map <span class="math" data-tex="\(H\to L\)">\(H\to L\)</span> is injective. Consequently <span class="math" data-tex="\(K[H]\)">\(K[H]\)</span> is a subalgebra of <span class="math" data-tex="\(K[L]\)">\(K[L]\)</span>.</p>
+<p><em>Proof.</em> We build an action of <span class="math" data-tex="\(L\)">\(L\)</span> on the set <span class="math" data-tex="\(H\)">\(H\)</span> that extends the action of <span class="math" data-tex="\(H\)">\(H\)</span> on itself by left multiplication, <span class="math" data-tex="\(\lambda(h)x=hx\)">\(\lambda(h)x=hx\)</span>. Write <span class="math" data-tex="\(A_v=K_v\times\langle z\rangle\)">\(A_v=K_v\times\langle z\rangle\)</span> and <span class="math" data-tex="\(A_*=K_*\times\langle z\rangle\)">\(A_*=K_*\times\langle z\rangle\)</span>, subgroups of order <span class="math" data-tex="\(\ell^3\)">\(\ell^3\)</span>. Under left multiplication by <span class="math" data-tex="\(A_v\)">\(A_v\)</span>, the set <span class="math" data-tex="\(H\)">\(H\)</span> splits into the right cosets <span class="math" data-tex="\(A_vh\)">\(A_vh\)</span>, each a copy of <span class="math" data-tex="\(A_v\)">\(A_v\)</span> with its regular action; the same holds for <span class="math" data-tex="\(A_*\)">\(A_*\)</span>. The two sets of cosets have the same cardinality: both have <span class="math" data-tex="\(|H|/\ell^3\)">\(|H|/\ell^3\)</span> elements if <span class="math" data-tex="\(H\)">\(H\)</span> is finite, and both are countably infinite otherwise, because <span class="math" data-tex="\(H\)">\(H\)</span> is finitely generated, hence countable, and the subgroups are finite. Choose a bijection between them, that is, representatives <span class="math" data-tex="\(h_i\)">\(h_i\)</span> and <span class="math" data-tex="\(k_i\)">\(k_i\)</span> with cosets <span class="math" data-tex="\(A_vh_i\)">\(A_vh_i\)</span> paired with <span class="math" data-tex="\(A_*k_i\)">\(A_*k_i\)</span>, and define <span class="math" data-tex="\(F_v:H\to H\)">\(F_v:H\to H\)</span> by
+<span class="math math-display" data-tex="\[
+F_v(ah_i)=\psi_v(a)\,k_i\qquad(a\in A_v).
+\]">\[
+F_v(ah_i)=\psi_v(a)\,k_i\qquad(a\in A_v).
+\]</span>
+This is a bijection, and for <span class="math" data-tex="\(b\in A_v\)">\(b\in A_v\)</span>, <span class="math" data-tex="\(F_v(bah_i)=\psi_v(b)\psi_v(a)k_i\)">\(F_v(bah_i)=\psi_v(b)\psi_v(a)k_i\)</span>, that is,
+<span class="math math-display" data-tex="\[
+F_v\,\lambda(b)=\lambda(\psi_v(b))\,F_v .
+\]">\[
+F_v\,\lambda(b)=\lambda(\psi_v(b))\,F_v .
+\]</span>
+Send each element of <span class="math" data-tex="\(H\)">\(H\)</span> to its left multiplication and each <span class="math" data-tex="\(\tau_v\)">\(\tau_v\)</span> to <span class="math" data-tex="\(F_v\)">\(F_v\)</span>. The relations of <span class="math" data-tex="\(H\)">\(H\)</span> hold because <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a homomorphism, and the relations of Definition 3.1 hold by the display. Different stable letters occur in different relations, so the bijections <span class="math" data-tex="\(F_v\)">\(F_v\)</span> can be chosen independently. This defines a homomorphism from <span class="math" data-tex="\(L\)">\(L\)</span> to the permutations of <span class="math" data-tex="\(H\)">\(H\)</span> whose restriction to <span class="math" data-tex="\(H\)">\(H\)</span> is <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, which is injective. So <span class="math" data-tex="\(H\to L\)">\(H\to L\)</span> is injective, and so is <span class="math" data-tex="\(K[H]\to K[L]\)">\(K[H]\to K[L]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Definition 3.1 adds <span class="math" data-tex="\(|V|\)">\(|V|\)</span> generators and finitely many relations to a presentation of <span class="math" data-tex="\(H\)">\(H\)</span>. The extension is a multiple HNN extension; Lemma 3.3 proves directly the embedding property that is usually derived from the normal form for such extensions.</p>
+<h2 id="4-character-idempotents">4. Character idempotents</h2>
+<p>Taking <span class="math" data-tex="\(u=1\)">\(u=1\)</span> and <span class="math" data-tex="\(r=1\)">\(r=1\)</span> in Definition 3.1 gives <span class="math" data-tex="\(\tau_vz\tau_v^{-1}=z\)">\(\tau_vz\tau_v^{-1}=z\)</span>. So <span class="math" data-tex="\(z\)">\(z\)</span> is central in <span class="math" data-tex="\(L\)">\(L\)</span>, and so is
+<span class="math math-display" data-tex="\[
+e=\ell^{-1}\sum_{r=0}^{\ell-1}\zeta^{-r}z^r\in K[L] .
+\]">\[
+e=\ell^{-1}\sum_{r=0}^{\ell-1}\zeta^{-r}z^r\in K[L] .
+\]</span></p>
+<p><strong>Lemma 4.1.</strong> <span class="math" data-tex="\(e\)">\(e\)</span> is a nonzero central idempotent and <span class="math" data-tex="\(ez=\zeta e\)">\(ez=\zeta e\)</span>.</p>
+<p><em>Proof.</em> The coefficient of <span class="math" data-tex="\(z^a\)">\(z^a\)</span> in <span class="math" data-tex="\(e^2\)">\(e^2\)</span> is <span class="math" data-tex="\(\ell^{-2}\sum_{r+r&#x27;=a}\zeta^{-r}\zeta^{-r&#x27;}=\ell^{-2}\cdot\ell\,\zeta^{-a}\)">\(\ell^{-2}\sum_{r+r&#x27;=a}\zeta^{-r}\zeta^{-r&#x27;}=\ell^{-2}\cdot\ell\,\zeta^{-a}\)</span>, the coefficient of <span class="math" data-tex="\(z^a\)">\(z^a\)</span> in <span class="math" data-tex="\(e\)">\(e\)</span>. Reindexing <span class="math" data-tex="\(ez=\ell^{-1}\sum_r\zeta^{-r}z^{r+1}\)">\(ez=\ell^{-1}\sum_r\zeta^{-r}z^{r+1}\)</span> gives <span class="math" data-tex="\(\zeta e\)">\(\zeta e\)</span>. The coefficient of the identity in <span class="math" data-tex="\(e\)">\(e\)</span> is <span class="math" data-tex="\(\ell^{-1}\ne0\)">\(\ell^{-1}\ne0\)</span>, and the elements <span class="math" data-tex="\(z^r\)">\(z^r\)</span> are distinct in <span class="math" data-tex="\(L\)">\(L\)</span> by Lemma 3.3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a linear form <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on <span class="math" data-tex="\(K_*\)">\(K_*\)</span> put
+<span class="math math-display" data-tex="\[
+Q_\alpha=\kappa^{-1}\sum_{u\in K_*}\zeta^{\alpha(u)}u\in K[L] .
+\]">\[
+Q_\alpha=\kappa^{-1}\sum_{u\in K_*}\zeta^{\alpha(u)}u\in K[L] .
+\]</span></p>
+<p><strong>Lemma 4.2.</strong> <span class="math" data-tex="\(Q_\alpha Q_\beta=Q_\alpha\)">\(Q_\alpha Q_\beta=Q_\alpha\)</span> if <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>, and <span class="math" data-tex="\(Q_\alpha Q_\beta=0\)">\(Q_\alpha Q_\beta=0\)</span> otherwise.</p>
+<p><em>Proof.</em> Write the group <span class="math" data-tex="\(K_*\)">\(K_*\)</span> additively in its coordinates. The coefficient of <span class="math" data-tex="\(w\)">\(w\)</span> in <span class="math" data-tex="\(Q_\alpha Q_\beta\)">\(Q_\alpha Q_\beta\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\kappa^{-2}\sum_{u\in K_*}\zeta^{\alpha(u)+\beta(w-u)}\\
+&amp;\quad=\kappa^{-2}\zeta^{\beta(w)}\sum_{u}\zeta^{(\alpha-\beta)(u)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\kappa^{-2}\sum_{u\in K_*}\zeta^{\alpha(u)+\beta(w-u)}\\
+&amp;\quad=\kappa^{-2}\zeta^{\beta(w)}\sum_{u}\zeta^{(\alpha-\beta)(u)} .
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>, the last sum is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, and the coefficient is that of <span class="math" data-tex="\(w\)">\(w\)</span> in <span class="math" data-tex="\(Q_\alpha\)">\(Q_\alpha\)</span>. Otherwise choose <span class="math" data-tex="\(u_0\)">\(u_0\)</span> with <span class="math" data-tex="\(\zeta^{(\alpha-\beta)(u_0)}\ne1\)">\(\zeta^{(\alpha-\beta)(u_0)}\ne1\)</span>; replacing <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(u+u_0\)">\(u+u_0\)</span> multiplies the sum by this number without changing it, so the sum is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.3</strong> (twisted averages). For every point <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+\tau_v\,eP_v\,\tau_v^{-1}=e\,Q_{\alpha_v} .
+\]">\[
+\tau_v\,eP_v\,\tau_v^{-1}=e\,Q_{\alpha_v} .
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(e\)">\(e\)</span> is central, and conjugation by <span class="math" data-tex="\(\tau_v\)">\(\tau_v\)</span> maps <span class="math" data-tex="\(u\in K_v\)">\(u\in K_v\)</span> to <span class="math" data-tex="\(\varphi_v(u)z^{\alpha_v(\varphi_v(u))}\)">\(\varphi_v(u)z^{\alpha_v(\varphi_v(u))}\)</span>. So, with <span class="math" data-tex="\(w=\varphi_v(u)\)">\(w=\varphi_v(u)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau_veP_v\tau_v^{-1}&amp;=\kappa^{-1}\sum_{w\in K_*}e\,z^{\alpha_v(w)}w\\
+&amp;=\kappa^{-1}\sum_{w\in K_*}\zeta^{\alpha_v(w)}e\,w=eQ_{\alpha_v},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau_veP_v\tau_v^{-1}&amp;=\kappa^{-1}\sum_{w\in K_*}e\,z^{\alpha_v(w)}w\\
+&amp;=\kappa^{-1}\sum_{w\in K_*}\zeta^{\alpha_v(w)}e\,w=eQ_{\alpha_v},
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(ez^r=\zeta^re\)">\(ez^r=\zeta^re\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So conjugation by <span class="math" data-tex="\(\tau_v\)">\(\tau_v\)</span> carries the average <span class="math" data-tex="\(eP_v\)">\(eP_v\)</span> over <span class="math" data-tex="\(K_v\)">\(K_v\)</span> to the character idempotent <span class="math" data-tex="\(eQ_{\alpha_v}\)">\(eQ_{\alpha_v}\)</span> over the single group <span class="math" data-tex="\(K_*\)">\(K_*\)</span>. Two points in the same slot have distinct forms, so their twisted averages are orthogonal by Lemma 4.2. This is what lets them share a slot in <a href="packing-and-the-reverse-defect.html">Packing and the reverse defect</a>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Show that in characteristic two <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span> and <span class="math" data-tex="\(\ell=1\)">\(\ell=1\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>, so that <span class="math" data-tex="\(P_v=\sum_{u\in K_v}u\)">\(P_v=\sum_{u\in K_v}u\)</span> and <span class="math" data-tex="\(e=\sum_r\zeta^{-r}z^r\)">\(e=\sum_r\zeta^{-r}z^r\)</span>.</p>
+<p><strong>5.2</strong> (easy). Show that <span class="math" data-tex="\(\sum_\alpha Q_\alpha=1\)">\(\sum_\alpha Q_\alpha=1\)</span>, the sum over all <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> linear forms on <span class="math" data-tex="\(K_*\)">\(K_*\)</span>.</p>
+<p><strong>5.3</strong> (medium). Show that a slot assignment with distinct pairs <span class="math" data-tex="\((s(v),\alpha_v)\)">\((s(v),\alpha_v)\)</span> exists exactly when <span class="math" data-tex="\(t\le m\kappa\)">\(t\le m\kappa\)</span>, and that if two points <span class="math" data-tex="\(v\ne w\)">\(v\ne w\)</span> in the same slot had the same form, then <span class="math" data-tex="\(eQ_{\alpha_v}\cdot eQ_{\alpha_w}=eQ_{\alpha_v}\ne0\)">\(eQ_{\alpha_v}\cdot eQ_{\alpha_w}=eQ_{\alpha_v}\ne0\)</span>.</p>
+<p><strong>5.4</strong> (medium). Let <span class="math" data-tex="\(\ell=3\)">\(\ell=3\)</span> and <span class="math" data-tex="\(K=\mathbb F_4\)">\(K=\mathbb F_4\)</span>, with <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> a root of <span class="math" data-tex="\(\zeta^2+\zeta+1\)">\(\zeta^2+\zeta+1\)</span>. Write out <span class="math" data-tex="\(e\)">\(e\)</span> and check <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span> and <span class="math" data-tex="\(ez=\zeta e\)">\(ez=\zeta e\)</span> directly in <span class="math" data-tex="\(K[\langle z\rangle]\)">\(K[\langle z\rangle]\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> In characteristic two, an odd integer is <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(\kappa=\ell^2\)">\(\kappa=\ell^2\)</span> and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> are odd.</p>
+<p><strong>5.2.</strong> The coefficient of <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(\sum_\alpha Q_\alpha\)">\(\sum_\alpha Q_\alpha\)</span> is <span class="math" data-tex="\(\kappa^{-1}\sum_\alpha\zeta^{\alpha(u)}\)">\(\kappa^{-1}\sum_\alpha\zeta^{\alpha(u)}\)</span>. For <span class="math" data-tex="\(u=1\)">\(u=1\)</span> (the zero vector) every term is <span class="math" data-tex="\(1\)">\(1\)</span>, giving <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(u\ne1\)">\(u\ne1\)</span> there is a form <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with <span class="math" data-tex="\(\beta(u)\ne0\)">\(\beta(u)\ne0\)</span>; replacing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by <span class="math" data-tex="\(\alpha+\beta\)">\(\alpha+\beta\)</span> multiplies the sum by <span class="math" data-tex="\(\zeta^{\beta(u)}\ne1\)">\(\zeta^{\beta(u)}\ne1\)</span> without changing it, so the sum is zero.</p>
+<p><strong>5.3.</strong> There are <span class="math" data-tex="\(m\kappa\)">\(m\kappa\)</span> pairs, so <span class="math" data-tex="\(t\)">\(t\)</span> distinct pairs exist exactly when <span class="math" data-tex="\(t\le m\kappa\)">\(t\le m\kappa\)</span>. If <span class="math" data-tex="\(\alpha_v=\alpha_w\)">\(\alpha_v=\alpha_w\)</span>, then <span class="math" data-tex="\(eQ_{\alpha_v}eQ_{\alpha_w}=eQ_{\alpha_v}^2=eQ_{\alpha_v}\)">\(eQ_{\alpha_v}eQ_{\alpha_w}=eQ_{\alpha_v}^2=eQ_{\alpha_v}\)</span>, using that <span class="math" data-tex="\(e\)">\(e\)</span> is a central idempotent, and <span class="math" data-tex="\(eQ_{\alpha_v}\ne0\)">\(eQ_{\alpha_v}\ne0\)</span> because its coefficient at the identity is <span class="math" data-tex="\(\ell^{-1}\kappa^{-1}\ne0\)">\(\ell^{-1}\kappa^{-1}\ne0\)</span> (the elements <span class="math" data-tex="\(z^ru\)">\(z^ru\)</span> are distinct in <span class="math" data-tex="\(H\)">\(H\)</span>). The cross term would then not vanish.</p>
+<p><strong>5.4.</strong> Here <span class="math" data-tex="\(\ell^{-1}=1\)">\(\ell^{-1}=1\)</span> and <span class="math" data-tex="\(\zeta^{-1}=\zeta^2=\zeta+1\)">\(\zeta^{-1}=\zeta^2=\zeta+1\)</span>, so <span class="math" data-tex="\(e=1+\zeta^2z+\zeta z^2\)">\(e=1+\zeta^2z+\zeta z^2\)</span>. Then
+<span class="math math-display" data-tex="\[
+e^2=1+\zeta^4z^2+\zeta^2z^4=1+\zeta z^2+\zeta^2z ,
+\]">\[
+e^2=1+\zeta^4z^2+\zeta^2z^4=1+\zeta z^2+\zeta^2z ,
+\]</span>
+since squaring is additive in characteristic two, <span class="math" data-tex="\(\zeta^3=1\)">\(\zeta^3=1\)</span> and <span class="math" data-tex="\(z^3=1\)">\(z^3=1\)</span>; this is <span class="math" data-tex="\(e\)">\(e\)</span>. Also <span class="math" data-tex="\(ez=z+\zeta^2z^2+\zeta\)">\(ez=z+\zeta^2z^2+\zeta\)</span> and <span class="math" data-tex="\(\zeta e=\zeta+z+\zeta^2z^2\)">\(\zeta e=\zeta+z+\zeta^2z^2\)</span>, which agree.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-DF2] OpenAI, <em>A Counterexample to Kaplansky's Direct-Finiteness Conjecture in Characteristic Two</em>, OpenAI Math Release preprint, 23 September 2026, Sections 4.1 and 4.2. https://github.com/openai/math/tree/main/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Characteristic-Two-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

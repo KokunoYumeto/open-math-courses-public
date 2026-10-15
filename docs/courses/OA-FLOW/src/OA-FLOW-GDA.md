@@ -4,7 +4,7 @@
 
 Let \(G\) be an arbitrary locally compact Hausdorff group with left Haar measure \(dt\) and \(\mu(Es)=\delta(s)\mu(E)\). Let \(\alpha\) be a point-ultraweak continuous normal automorphism action on an arbitrary von Neumann algebra \(M\). Scalar products are linear in the first entry. There is no countability, separability, unimodularity, invariant-weight or finite-state hypothesis. The zero algebra has the unique zero map; assume \(M\ne0\) below.
 
-Use the actual [AT](OA-FLOW-AT.md#oa-flow.at.1), [NR](OA-FLOW-NR.md#oa-flow.nr.1), [CCM](OA-FLOW-CAI.md#ccm-4), [Haar](OA-FLOW-HR.md#hr-03), [L24](OA-FLOW-L24.md#oa-flow.grp.haarconventions), [extended-positive EP](OA-FLOW-EP.md#ep-2), [normal-weight EW](OA-FLOW-EW.md#ew-5), [full completion WH04](OA-FLOW-WH04.md#oa-flow.wh04.2), [WF](OA-FLOW-WF.md#oa-flow.wf.1), [BC](OA-FLOW-BC.md#bc-2), [OT](OA-FLOW-OT.md#ot-1), [MA](OA-FLOW-MA.md#oa-flow.ma.4), [CZ](OA-FLOW-CZ.md#cz-6), [RF5](OA-FLOW-RF.md#rf-5) and [GDW1–7](OA-FLOW-GDW.md#gdw-1) proofs. The elementary GNS, positive calculus, weak compactness and scalar convergence inputs are the earlier CF/GNS/CP/CV/SF/SC bodies. Every application below specifies its domain. The primary mathematical route is Haagerup, [*On the dual weights for crossed products of von Neumann algebras II*](https://journals.msp.org/mscand/article/view/1878), Math. Scand. 43 (1978), especially Theorem 3.1. We supply the directedness, scalar finite-domain, positive-kernel and whole-cone passages used by that route. The equal-modular-group uniqueness argument repairs the independently written original course lesson20 by binding its actual MA/CZ/RF inputs; it does not assume a new cocycle-realization theorem.
+Use the actual [AT](OA-FLOW-AT.md#oa-flow.at.1), [NR](OA-FLOW-NR.md#oa-flow.nr.1), [CCM](OA-FLOW-CAI.md#ccm-4), [Haar](OA-FLOW-HR.md#hr-03), [L24](OA-FLOW-L24.md#oa-flow.grp.haarconventions), [extended-positive EP](OA-FLOW-EP.md#ep-2), [normal-weight EW](OA-FLOW-EW.md#ew-5), [full completion WH04](OA-FLOW-WH04.md#oa-flow.wh04.2), [WF](OA-FLOW-WF.md#oa-flow.wf.1), [BC](OA-FLOW-BC.md#bc-2), [OT](OA-FLOW-OT.md#ot-1), [MA](OA-FLOW-MA.md#oa-flow.ma.4), [CZ](OA-FLOW-CZ.md#cz-6), [RF5](OA-FLOW-RF.md#rf-5) and [GDW1–7](OA-FLOW-GDW.md#gdw-1) proofs. The elementary GNS, positive calculus, weak compactness and scalar convergence inputs are the earlier CF/GNS/CP/CV/SF/SC bodies. Every application below specifies its domain. The primary mathematical route is Haagerup, [*On the dual weights for crossed products of von Neumann algebras II*](https://journals.msp.org/mscand/article/view/1878), Math. Scand. 43 (1978), especially Theorem 3.1. We supply the directedness, scalar finite-domain, positive-kernel and whole-cone passages used by that route. A dense GNS quadratic test determines the weight once its modular group is fixed; the proof uses the closed positive density operator and the earlier MA/CZ/RF results.
 
 <a id="gda-0"></a>
 
@@ -371,49 +371,67 @@ This is an equality in the entire extended cone, tested on every normal positive
 
 <a id="gda-7"></a>
 
-## GDA7. A fully bound uniqueness lemma for the constructed weights
+## GDA7. A dense GNS test determines the weight
 
-The central-density and finite-sandwich uniqueness route in this section has its antecedent in Takesaki, [*Theory of Operator Algebras II*, Chapter X, Lemma 1.18, printed p.250](https://doi.org/10.1007/978-3-662-10451-4). The full argument below supplies its exact earlier programme proofs and both spectral-cut cases.
+The following Hilbert-space observation is the mechanism. Let \(B\) be a closed positive self-adjoint operator on a Hilbert space \(H\), and let \(\mathcal E\subset D(B)\) be a dense linear subspace on which \(\|B\xi\|=\|\xi\|\). Then \(B=1\). Indeed, for any \(\xi\in H\), choose \(\xi_n\in\mathcal E\) tending to \(\xi\). Linearity gives
+\[
+ \|B\xi_n-B\xi_m\|=\|\xi_n-\xi_m\|,
+\]
+so \(B\xi_n\) converges. Closedness puts \(\xi\) in \(D(B)\) and identifies that limit with \(B\xi\). Thus \(D(B)=H\) and \(B\) is an isometry. Polarization gives \(B^*B=1\); since \(B=B^*\geq0\), uniqueness of the positive square root of \(1\), proved in [CF9](OA-FLOW-CF.md#oa-flow.cf.9), gives \(B=1\). The approximating sequence is chosen separately for each vector; the Hilbert space need not be separable.
 
-We spell out the modular uniqueness needed to identify a composition. This retains the original course's useful finite-sandwich argument and replaces its unspecified injectivity premise by the actual MA4 proof.
+**GNS uniqueness criterion.** Let \(\Phi,\Psi\) be faithful normal semifinite weights on a von Neumann algebra \(N\), with the same modular automorphism group. Suppose a linear subspace \(\mathcal C\subset\mathfrak n_\Phi\) satisfies
+\[
+ \overline{\Lambda_\Phi(\mathcal C)}=H_\Phi,\qquad
+ \Psi(a^*a)=\Phi(a^*a)\quad(a\in\mathcal C).
+\]
+Then \(\Psi=\Phi\) on the entire positive cone. No algebra or multiplication-invariance condition on \(\mathcal C\) is required.
 
-First, if faithful n.s.f. weights \(\rho,\nu\) have identical balanced cocycle \((D\rho:D\nu)_r=1\), they are equal on the whole cone. Indeed BC4 gives the constant off-diagonal orbit \(\beta_r^{\rho,\nu}(1)=1\). It is norm-entire, with its \(-i\) and \(-i/2\) values also one. MA4, equation MA11 with \(k=1\), gives \(\rho(h)\leq\nu(h)\) and \(\nu(h)\leq\rho(h)\) for every \(h\geq0\), including infinite values. The BC chain rule proves fixed-reference injectivity as well.
+**Central density.** We first derive the density needed for the criterion from the earlier local proofs. If faithful n.s.f. weights \(\rho,\nu\) have \((D\rho:D\nu)_r=1\), [BC4](OA-FLOW-BC.md#bc-4) gives the constant off-diagonal orbit \(\beta_r^{\rho,\nu}(1)=1\). Its norm-entire extension has values one at \(-i\) and \(-i/2\). [MA4](OA-FLOW-MA.md#oa-flow.ma.4), equation MA11 with \(k=1\), gives both inequalities \(\rho(h)\leq\nu(h)\) and \(\nu(h)\leq\rho(h)\), for every \(h\geq0\), including infinite values. The BC chain rule also proves injectivity for cocycles with a fixed reference weight.
 
-If two faithful n.s.f. weights \(\Psi,\Phi\) have the same modular group, BC4 makes \(u_r=(D\Psi:D\Phi)_r\) central. The modular group fixes the center: on the finite-star GNS graph a central selfadjoint element commutes with \(S,F\), hence with their positive product and imaginary powers, as proved in NC4/MW. Thus the cocycle rule becomes \(u_{r+s}=u_ru_s\). RF5's arbitrary-Hilbert unitary-group spectral construction gives \(u_r=e^{irA}\). Its resolvents and spectral projections commute with every unitary commuting with the center, so \(A\) is affiliated with the center. Put \(h=e^A\); SF supplies its whole domains and it is positive nonsingular. CZ1–6 construct the actual faithful n.s.f. weight \(\Phi_h\), with
-
+Equality of the modular groups makes \(u_r=(D\Psi:D\Phi)_r\) central, by BC4. The group fixes the center: a central self-adjoint multiplier commutes with the full finite-star involution and its adjoint, hence with their positive product and imaginary powers, by [NC4](OA-FLOW-NC.md#oa-flow.nc.4). The cocycle law is consequently \(u_{r+s}=u_ru_s\). [RF5](OA-FLOW-RF.md#rf-5) gives the self-adjoint generator \(A\), with \(u_r=e^{irA}\). Its resolvents and spectral projections commute with every operator commuting with the center, so \(A\) is affiliated with the center. The full Borel calculus of [SF](OA-FLOW-SF.md#oa-flow.sf.sb3) gives the positive nonsingular central operator \(h=e^A\). The density construction [CZ1–6](OA-FLOW-CZ.md#cz-1) supplies a faithful n.s.f. weight \(\Phi_h\) with cocycle \(h^{ir}=u_r\). Fixed-reference injectivity therefore gives
 <a id="equation-gda31"></a>
-
 \[
-(D\Phi_h:D\Phi)_r=h^{ir}=u_r,
-\qquad
-\Psi(X)=\Phi_h(X)=\sup_n\Phi(h_n^{1/2}Xh_n^{1/2}),
-\quad h_n=\min(h,n).
-\tag{GDA31}
+ \Psi(X)=\Phi_h(X)
+ =\sup_n\Phi(h_n^{1/2}Xh_n^{1/2}),\qquad
+ h_n=\min(h,n),\quad X\in N_+.
+ \tag{GDA31}
 \]
-The first equality and the preceding fixed-reference injectivity prove the second on every positive element. For completeness, CZ uses resolvent regularizations \(h_\varepsilon=h(1+\varepsilon h)^{-1}\). The central spectral inequalities \(h_\varepsilon\leq h_n\) for \(n\geq\varepsilon^{-1}\), and \(h_n\leq(1+\varepsilon n)h_\varepsilon\), show equality of the two suprema, including infinite values. This is not an arbitrary-cocycle realization argument.
+To compare these cutoffs with CZ's resolvent regularizations, use
+\(h(1+\varepsilon h)^{-1}\leq h_n\) when \(n\geq\varepsilon^{-1}\), and
+\(h_n\leq(1+\varepsilon n)h(1+\varepsilon h)^{-1}\).
+Centrality makes these positive-operator inequalities valid inside the weight evaluations. Letting \(n\) and \(\varepsilon^{-1}\) increase proves equality of the two suprema, including their infinite values.
 
-Now let \(\Phi\) be GDW's dual of a faithful n.s.f. \(\varphi\). Suppose \(\Psi\) is faithful n.s.f., has its two modular generator formulas, and has the same finite quadratic values for every \(L_x\), \(x\in\mathscr B_\varphi\). Polarization gives equality on \(L_y^*L_x\). For \(z\in\mathscr K\), the left-ideal identity \(z*x\in\mathscr B_\varphi\) gives equality on \(L_x^*L_zL_x\). The two maps
-
+**Proof of the criterion.** Represent \(N\) faithfully on \(H_\Phi\), as in [NF5](OA-FLOW-NF.md#oa-flow.nf.5), and transport the spectral projections of \(h\) by this normal representation. Let \(B=\pi_\Phi(h)^{1/2}\) be the resulting closed positive operator, with its full domain from [SB3–4](OA-FLOW-SF.md#oa-flow.sf.sb3). For \(a\in\mathfrak n_\Phi\), centrality and the bounded GNS identity give
 <a id="equation-gda32"></a>
-
 \[
-Y\longmapsto\Psi(L_x^*YL_x),\qquad
-Y\longmapsto\Phi(L_x^*YL_x)
-\tag{GDA32}
+ \begin{aligned}
+ \Psi(a^*a)
+ &=\sup_n\Phi(a^*h_n a)\\
+ &=\sup_n\|\pi_\Phi(h_n)^{1/2}\Lambda_\Phi(a)\|^2
+ =\|B\Lambda_\Phi(a)\|^2 .
+ \end{aligned}
+ \tag{GDA32}
 \]
-are bounded normal positive functionals on all of \(R\), by GW3/NF5. They agree on the dense integrated star algebra and on one, so they agree for every \(Y\in R\). The modular groups agree on both generator families, hence on \(R\).
+The last expression is interpreted as infinity off \(D(B)\); its equality with the supremum is precisely the positive spectral-domain criterion. On \(\mathcal E=\Lambda_\Phi(\mathcal C)\) the hypothesis makes it finite and gives \(\|B\xi\|=\|\xi\|\). The dense-space observation proves \(B=1\). Faithfulness of \(\pi_\Phi\), applied to the spectral projections, then gives \(h=1\). Equation (GDA31) proves \(\Psi=\Phi\) on all \(N_+\). Only the closed operator is extended from a dense set; no continuity of an unbounded weight on a dense positive subset is assumed. \(\square\)
 
-Use (GDA31). For \(\varepsilon>0\), the central projection \(p_+=1_{[1+\varepsilon,\infty)}(h)\) gives finite equal values at \(Z=L_x^*p_+L_x\), and the central cutoffs imply
-\(\Psi(Z)\geq(1+\varepsilon)\Phi(Z)\).
-Thus \(\Phi(Z)=0\), and faithfulness implies \(p_+L_x=0\). Likewise \(p_-=1_{[0,1-\varepsilon]}(h)\), \(0<\varepsilon<1\), gives \(\Psi(Z)\leq(1-\varepsilon)\Phi(Z)\) and \(p_-L_x=0\). The algebra \(L(\mathscr D_\varphi)\subset L(\mathscr B_\varphi)\) is strongly dense, so both projections vanish. Countably many \(\varepsilon=1/n\) exclude every spectral value away from one; nonsingularity excludes the kernel. Hence \(h=1\) and
-
+**Application to the dual weight.** Take \(\Phi=\widehat\varphi\), the weight constructed by GDW. Suppose a faithful n.s.f. weight \(\Psi\) has its two modular generator formulas and the same quadratic values at every \(L_x\), \(x\in\mathscr B_\varphi\). Normality and the two generating families give equality of the modular groups on \(R\). Use the linear space
+\(\mathcal C=L(\mathscr D_\varphi)\subset L(\mathscr B_\varphi)\).
+[GDW6](OA-FLOW-GDW.md#gdw-6) identifies
+\(\Lambda_\Phi(L_x)=\eta_\varphi(x)\), and [GDW2](OA-FLOW-GDW.md#gdw-2) proves that \(\eta_\varphi(\mathscr D_\varphi)\) is dense in the whole \(L^2(G,H_\varphi)\). The GNS criterion therefore applies and yields
 <a id="equation-gda33"></a>
-
 \[
-\Psi=\Phi\quad\hbox{on the entire positive cone}.
-\tag{GDA33}
+ \Psi=\widehat\varphi\quad\hbox{on the entire positive cone}.
+ \tag{GDA33}
 \]
-Only bounded normal sandwich functionals were extended by density; no unbounded weight was assumed continuous on a dense positive set.
+The group, algebra and Hilbert space retain their full arbitrary scope. The classical dual-weight characterization appears in Takesaki, [*Theory of Operator Algebras II*, Chapter X, Lemma 1.18, printed p.250](https://doi.org/10.1007/978-3-662-10451-4); the criterion above uses the closed positive density operator on the GNS Hilbert space.
+
+### The closed-graph mechanism
+
+![Central density, the GNS quadratic identity, closed-graph extension and positivity](../assets/gns-weight-uniqueness/gns-weight-uniqueness.png)
+
+The four boxes display the actual proof maps and domains. The density \(h\) is central and nonsingular; \(B=\pi_\Phi(h)^{1/2}\) acts on \(H_\Phi\), and \(\mathcal E=\Lambda_\Phi(\mathcal C)\) is a linear dense subspace of its domain. Equality (GDA32) makes \(B|_{\mathcal E}\) isometric. For every \(\xi\in H_\Phi\), the two coordinates of \((\xi_n,B\xi_n)\) converge, so the closed graph puts their limit in the graph of \(B\). This proves the full domain assertion before positivity forces \(B=1\). A general isometry need not be the identity; positivity is the essential final hypothesis. The diagram is a logical schematic of this arbitrary-dimensional argument, not a numerical or finite-dimensional approximation.
+
+The local proofs used for the central density are MA4, BC4, NC4, RF5 and CZ1–6, as specified above. [Editable SVG](../assets/gns-weight-uniqueness/gns-weight-uniqueness.svg), [exact diagram labels](../assets/gns-weight-uniqueness/data.json), and [reproduction source](../assets/gns-weight-uniqueness/render.py) accompany the figure. The diagram and caption are CC0-1.0 to the extent of rights held; DejaVu font terms remain applicable.
 
 <a id="gda-8"></a>
 

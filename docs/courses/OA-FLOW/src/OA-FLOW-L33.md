@@ -2,7 +2,7 @@
 
 *Original exposition and illustration sources: CC0-1.0; font components retain their accompanying terms.*
 
-Crossing an abelian action twice gives a tensor algebra. To determine its weight, one must also fix the scale. The modular automorphisms alone leave a central density undetermined. We determine that density by following finite GNS vectors through Fourier transformation, placing their adjoints in the complete relative square-root domain, and comparing bounded normal functionals. The resulting equality applies to every positive element, including elements of infinite weight.
+Crossing an abelian action twice gives a tensor algebra. To determine its weight, one must also fix the scale. The modular automorphisms alone leave a central density undetermined. We determine that density by following finite GNS vectors through Fourier transformation, placing their adjoints in the complete relative square-root domain, and applying a uniqueness criterion on the resulting dense GNS subspace. The resulting equality applies to every positive element, including elements of infinite weight.
 
 <a id="l33-setting"></a>
 ## Setting and conventions
@@ -620,7 +620,7 @@ Thus $X-B_k$ and then $X$ belong to the ideal. The same inequality now identifie
 \]
 The difference identity (L33.5.m), rather than lower semicontinuity alone, supplied equality.
 
-For $a\in\mathcal D$ the maps
+The same finite data also determine all finite sandwich functionals. For $a\in\mathcal D$ the maps
 \[
  x\longmapsto\dot\Psi(a^*xa),\qquad
  x\longmapsto\dot W(a^*xa)
@@ -640,22 +640,35 @@ The preceding modular calculation gave $\Psi=W_h$ for a positive nonsingular ope
  \qquad h_n=\min(h,n),\qquad z\in A_+.
  \tag{L33.5.r}
 \]
-Fix $\varepsilon>0$ and let $p_+=1_{[1+\varepsilon,\infty)}(h)$. For $a\in\mathcal D$, the positive element $z=a^*p_+a\le a^*a$ has finite values under both weights and is supported on the central projection $p_+$. For $n\ge1+\varepsilon$, centrality gives
-$h_n^{1/2}zh_n^{1/2}\ge(1+\varepsilon)z$.
-Thus
-\[
- W(z)=\Psi(z)\ge(1+\varepsilon)W(z),
-\]
-where the equality uses (L33.5.q). Finiteness forces $W(z)=0$, and faithfulness gives $p_+a=0$. Since $\mathcal D$ is ultraweakly dense and multiplication by $p_+$ is normal, $p_+=0$.
+The [dense GNS uniqueness criterion](OA-FLOW-GDA.md#gda-7) applies with reference weight \(W\) and test space \(\mathcal D\). Its three hypotheses are already available: the two modular groups coincide by (L33.2.g); \(\mathcal D\) is linear and \(\Lambda_W(\mathcal D)\) is dense in the actual \(H_W\) by Section 3; and (L33.5.o) gives equal quadratic values on every element of that linear space. In particular, this density is a Hilbert-space assertion about the actual GNS vectors, not merely ultraweak density of operators.
 
-For $0<\varepsilon<1$, put $p_-=1_{[0,1-\varepsilon]}(h)$ and again $z=a^*p_-a$. Every $h_n$ satisfies
-$h_n^{1/2}zh_n^{1/2}\le(1-\varepsilon)z$.
-Equation (L33.5.r) now gives $W(z)=\Psi(z)\le(1-\varepsilon)W(z)$, and the same finite-value and density argument yields $p_-=0$. Taking $\varepsilon=1/n$ for the upper cuts and $n\ge2$ for the lower cuts removes every spectral value away from one. Hence
+Here is the mechanism in the kernel coordinates of this lesson. Transport the spectral projections of \(h\) by the faithful normal representation \(\Pi\) from (L33.3.f), and put
+\[
+ T_h=\Pi(h)^{1/2},\qquad
+ \mathcal E=\{z_X=Z\Lambda_W(X):X\in\mathcal D\}\subset\mathscr K.
+\]
+The operator \(T_h\) is positive self-adjoint and closed. Since \(h_n\) is central, (L33.5.r), the GNS module identity (L33.3.h), and the spectral-domain identity in [GDA32](OA-FLOW-GDA.md#equation-gda32) give
+\[
+ \begin{aligned}
+ \Psi(X^*X)
+   &=\sup_n W(X^*h_nX)
+     =\sup_n\|\Pi(h_n)^{1/2}z_X\|^2\\
+   &=\|T_hz_X\|^2
+     =\|z_X\|^2\qquad(X\in\mathcal D).
+ \end{aligned}
+\]
+The spectral supremum first proves \(z_X\in D(T_h)\); the last equality uses (L33.5.o). Thus \(T_h\) preserves norms on the dense linear space \(\mathcal E\).
+
+For any \(\xi\in\mathscr K\), choose \(\xi_n\in\mathcal E\) with \(\xi_n\to\xi\). Linearity of \(\mathcal E\) gives
+\(\|T_h\xi_n-T_h\xi_m\|=\|\xi_n-\xi_m\|\), so the images converge. Closedness of \(T_h\) puts \(\xi\) in its domain and identifies its image with that limit. Consequently \(D(T_h)=\mathscr K\), and \(T_h\) is an isometry everywhere. Polarization gives \(T_h^*T_h=1\); positivity and self-adjointness then give \(T_h=1\), by uniqueness of the positive square root. These are the closed-graph and positivity steps proved in GDA7.
+
+Faithfulness of \(\Pi\) now forces the spectral projections of \(h\) to be those of \(1\). Hence
 \[
  h=1,\qquad \Psi=W\quad\text{on every }z\in A_+,
  \tag{L33.5.s}
 \]
-including every infinite value. The whole-cone equality follows from (L33.5.r) after the central density has been determined; it was not inferred from equality on a dense algebra.
+including every infinite value, by (L33.5.r). The approximation above concerns one Hilbert vector at a time and imposes no separability condition. The left-module property of \(\mathcal D\) supplied the cutoff comparisons and the finite sandwich consequences, while its GNS density supplies this final uniqueness step.
+
 
 <a id="l33-6"></a>
 ## 6. The normalized second-dual weight and its complete domains
@@ -1025,7 +1038,7 @@ Alternatively apply the completed theorem with the rescaled compatible pair. Aft
  W(q)=\sup_m W(q_m)=\sup_m m=\infty.
  \tag{L33.8.h}
 \]
-Here the increasing positive approximation justifies passage to the infinite value. In the general proof, the finite GNS tests were not themselves an increasing exhaustion of the whole positive cone. Their left-module property first gave equality of bounded normal sandwich functionals. [Section 5](OA-FLOW-L33.md#l33-5) then applied those functionals to the spectral projections of the residual central density, forcing that density to equal one. Its whole-cone formula supplied equality at infinite values as well. That is the justification used before evaluating this example.
+Here the increasing positive approximation justifies passage to the infinite value. In the general proof, the finite GNS tests were not themselves an increasing exhaustion of the whole positive cone. Instead, [Section 5](OA-FLOW-L33.md#l33-5) proved norm equality for a closed positive density operator on a dense **linear** subspace of the actual GNS Hilbert space. Linearity controls differences of approximating vectors, closedness gives the full domain, and positivity forces that operator to be the identity. Faithfulness then gives \(h=1\), whose whole-cone formula supplies equality at infinite values as well. Isolated tests would not provide the difference identity needed for this argument; all linear combinations in \(\mathcal D\) have been tested. That is the justification used before evaluating this example.
 
 The [named surviving action](OA-FLOW-ND.md#nd-construction) is
 \[
@@ -1069,4 +1082,4 @@ This pairwise check does not fix the absolute scale of either individual weight.
 <a id="l33-reading"></a>
 ## Further reading
 
-Masamichi Takesaki, *Theory of Operator Algebras II*, Chapter X, §2, Theorem 2.3(v), formula (16), printed p. 260, gives the second-dual weight formula with the usual trace. The discussion on printed p. 263 leaves this clause to the reader and points to the finite-domain uniqueness criterion VIII.3.15. The finite GNS comparison and central-density argument above prove the normalization on the whole positive cone. The tensor-weight construction is treated in Chapter VIII, §4; its complete usual-trace specialization is proved in [Tensoring a weight with the usual trace](OA-FLOW-TW.md#tw-2).
+Masamichi Takesaki, *Theory of Operator Algebras II*, Chapter X, §2, Theorem 2.3(v), formula (16), printed p. 260, gives the second-dual weight formula with the usual trace. The discussion on printed p. 263 leaves this clause to the reader and points to the finite-domain uniqueness criterion VIII.3.15. The finite GNS comparison and closed positive density argument above prove the normalization on the whole positive cone. The tensor-weight construction is treated in Chapter VIII, §4; its complete usual-trace specialization is proved in [Tensoring a weight with the usual trace](OA-FLOW-TW.md#tw-2).

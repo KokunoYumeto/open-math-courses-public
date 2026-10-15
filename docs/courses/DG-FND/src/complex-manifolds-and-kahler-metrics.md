@@ -405,7 +405,7 @@ which after multiplication by two is the last formula of (D.7). The matrix is in
 
 **Example D.4 (closedness alone does not suffice).** There is a smooth almost Hermitian structure on \(\mathbb R^4\) whose fundamental form is closed but whose Nijenhuis tensor is nowhere zero. On a Riemann surface, by contrast, every Hermitian metric is Kähler.
 
-**Proof.** With coordinates \(x,y,u,v\), use the global frame
+**Proof.** The real exponential, its positivity, its derivative and its addition law are proved in [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). With coordinates \(x,y,u,v\), use the global frame
 \[
 e_1=\partial_x,\quad e_2=\partial_y,\quad
 e_3=e^x\partial_u,\quad e_4=e^{-x}\partial_v.
@@ -1087,7 +1087,7 @@ F+i\partial_J\bar\partial_J\Phi_\varepsilon&\geq\omega
 \tag{J.8}
 \]
 
-**Proof.** Positivity means \(\omega(X,JX)>0\) for nonzero real \(X\). In the ordinary coordinates let
+**Proof.** The real logarithm and exponential, their derivatives and their inverse and product identities are the integral constructions proved in [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Positivity means \(\omega(X,JX)>0\) for nonzero real \(X\). In the ordinary coordinates let
 \(\omega_0=i\sum_j dz^j\wedge d\bar z^j\);
 its real metric is twice the Euclidean metric. The graph description (J.2) expresses the two type projections as smooth matrix functions of \(A,\bar A\), equal to the ordinary projections when \(A=0\). J.1 and matrix inversion therefore give projection errors of order \(r^3\), with first and second derivatives of orders \(r^2,r\), where \(r=|z|\). As \(d\psi\) has coefficients of order \(r\),
 \[
@@ -1476,7 +1476,7 @@ There are canonical isomorphisms
 \tag{L.2}
 \]
 
-**Proof.** Work first with \(n>0\). In a local nonzero section \(\tau\) of \(K\), there is a unique \((0,1)\)-form \(b\) such that
+**Proof.** The real logarithm and exponential and their differentiation rules used for the positive line metric are proved in [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Work first with \(n>0\). In a local nonzero section \(\tau\) of \(K\), there is a unique \((0,1)\)-form \(b\) such that
 \(\bar\partial_J\tau=b\wedge\tau\).
 Exterior multiplication by \(\tau\) is an isomorphism from \((0,q)\) covectors onto \((n,q)\) covectors: this follows directly by expanding in the exterior basis of any coframe from B.1. Define
 \[

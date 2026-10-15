@@ -18,7 +18,7 @@ The C\*-representation statements use arbitrary nonunital C\*-algebras, arbitrar
 
 The exact earlier proofs are [GNS5.1](OA-FLOW-GNS.md#gns-theorem-5-1), [GNS7.1](OA-FLOW-GNS.md#gns-lemma-7-1), [GNS7.3](OA-FLOW-GNS.md#gns-theorem-7-3), the concrete predual [CP4–6](OA-FLOW-CP.md#oa-flow.cp.4), bounded bicommutant density [BD4–5](OA-FLOW-BD.md#oa-flow.bd.4), and finite normal tensor transport [NCF1](OA-FLOW-NCF.md#ncf-1). [PC1](OA-FLOW-PC.md#oa-flow.projection.pc1) supplies arbitrary projection joins; [CF6–9](OA-FLOW-CF.md#oa-flow.cf.6) supplies the C\*, Hilbert norm and forced-unitization facts. Complete integration and action-continuity alternatives in AT and the free-source GNS development remain available. No abstract bidual W* construction is used.
 
-The current general spectral framework has negative labels: an eigenphase \(e^{-it\lambda}\) has label \(\lambda\), by [SS3](OA-FLOW-SS.md#ss-3). The historical displays M1–M23 are retained, except that M21 now states the proved concrete summand \(zP\) rather than an unproved abstract-bidual identification.
+The general spectral framework has negative labels: an eigenphase \(e^{-it\lambda}\) has label \(\lambda\), by [SS3](OA-FLOW-SS.md#ss-3). Equations M1–M23 use this convention; M21 identifies the concrete summand \(zP\).
 
 <a id="oa-flow.l112.predual"></a>
 

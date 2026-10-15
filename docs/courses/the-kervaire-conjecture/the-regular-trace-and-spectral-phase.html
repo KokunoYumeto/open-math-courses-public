@@ -1,0 +1,281 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The regular trace and spectral phase</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Kervaire conjecture)</a><a href="equations-over-groups-and-the-kervaire-conjecture.html">Previous lesson</a><a href="a-unitary-with-a-large-fixed-space.html">Next lesson</a><a href="src/the-regular-trace-and-spectral-phase.md">Editable source</a></nav><main><article><h1 id="the-regular-trace-and-spectral-phase">The regular trace and spectral phase</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The proof of the Kervaire conjecture in this course measures words in a group <span class="math" data-tex="\(A\)">\(A\)</span> by operators on the Hilbert space <span class="math" data-tex="\(\ell^2(A)\)">\(\ell^2(A)\)</span>. Every group, finite or not, countable or not, acts on <span class="math" data-tex="\(\ell^2(A)\)">\(\ell^2(A)\)</span> by left translations, and the operators commuting with the right translations carry a trace that vanishes on no nonzero positive operator. This lesson constructs that trace on matrices over the right-translation commutant, and with it a number <span class="math" data-tex="\(\ell(U)\)">\(\ell(U)\)</span> attached to every unitary matrix <span class="math" data-tex="\(U\)">\(U\)</span>: the trace of its spectral phase, with every spectral angle measured in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> turns. The main result is that <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is subadditive, <span class="math" data-tex="\(\ell(UV)\le\ell(U)+\ell(V)\)">\(\ell(UV)\le\ell(U)+\ell(V)\)</span>, and vanishes only at the identity [OpenAI-K, Section 2]. The next lessons use it twice: an upper bound for <span class="math" data-tex="\(\ell\)">\(\ell\)</span> of a product comes from subadditivity, and a lower bound from a direct calculation, and the gap between them is the trace of the phase of a single group element.</p>
+<ul>
+<li>The right-translation commutant and its trace (Section 1).</li>
+<li>Functional calculus inside the commutant (Section 2).</li>
+<li>Spectral phase (Section 3).</li>
+<li>Subadditivity (Section 4).</li>
+</ul>
+<p>We use the Borel functional calculus of normal operators, Theorems 3.1 and 8.1 and Remark 4.5 of <a href="../foundations-of-von-neumann-algebras/the-spectral-theorem-for-bounded-self-adjoint-operators.html">The spectral theorem for bounded self-adjoint operators</a>, and the continuous functional calculus, Theorem 5.1 of <a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">C*-algebras, the continuous functional calculus, automatic continuity and positive cones</a>.</p>
+<h2 id="1-the-right-translation-commutant-and-its-trace">1. The right-translation commutant and its trace</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a group with identity <span class="math" data-tex="\(1\)">\(1\)</span>. The Hilbert space <span class="math" data-tex="\(\ell^2(A)\)">\(\ell^2(A)\)</span> has the orthonormal basis <span class="math" data-tex="\((\delta_x)_{x\in A}\)">\((\delta_x)_{x\in A}\)</span>. For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> define unitary operators by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L(a)\delta_x=\delta_{ax},\\
+R(a)\delta_x=\delta_{xa^{-1}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+L(a)\delta_x=\delta_{ax},\\
+R(a)\delta_x=\delta_{xa^{-1}} .
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(L(ab)=L(a)L(b)\)">\(L(ab)=L(a)L(b)\)</span>, <span class="math" data-tex="\(R(ab)=R(a)R(b)\)">\(R(ab)=R(a)R(b)\)</span>, <span class="math" data-tex="\(L(a)^*=L(a^{-1})\)">\(L(a)^*=L(a^{-1})\)</span>, <span class="math" data-tex="\(R(a)^*=R(a^{-1})\)">\(R(a)^*=R(a^{-1})\)</span>, and every <span class="math" data-tex="\(L(a)\)">\(L(a)\)</span> commutes with every <span class="math" data-tex="\(R(b)\)">\(R(b)\)</span>. Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal M=\{T\in B(\ell^2(A)):\\
+TR(a)=R(a)T\text{ for all }a\in A\}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal M=\{T\in B(\ell^2(A)):\\
+TR(a)=R(a)T\text{ for all }a\in A\}
+\end{gathered}
+\]</span>
+be the commutant of the right translations. It is a unital algebra containing every <span class="math" data-tex="\(L(a)\)">\(L(a)\)</span>, and it is closed under adjoints, since <span class="math" data-tex="\(TR(a)=R(a)T\)">\(TR(a)=R(a)T\)</span> for all <span class="math" data-tex="\(a\)">\(a\)</span> gives <span class="math" data-tex="\(R(a)^*T^*=T^*R(a)^*\)">\(R(a)^*T^*=T^*R(a)^*\)</span>, that is <span class="math" data-tex="\(R(a^{-1})T^*=T^*R(a^{-1})\)">\(R(a^{-1})T^*=T^*R(a^{-1})\)</span>, for all <span class="math" data-tex="\(a\)">\(a\)</span>. It is the group von Neumann algebra of <span class="math" data-tex="\(A\)">\(A\)</span>, described through the right translations [Jones, Sections 3.3 and 3.4]; this lesson uses only the definition. For <span class="math" data-tex="\(T\in\mathcal M\)">\(T\in\mathcal M\)</span> put
+<span class="math math-display" data-tex="\[
+\tau(T)=\langle T\delta_1,\delta_1\rangle .
+\]">\[
+\tau(T)=\langle T\delta_1,\delta_1\rangle .
+\]</span></p>
+<p><strong>Lemma 1.1</strong> (matrix coefficients). Let <span class="math" data-tex="\(T\in\mathcal M\)">\(T\in\mathcal M\)</span> and <span class="math" data-tex="\(t_x=\langle T\delta_1,\delta_x\rangle\)">\(t_x=\langle T\delta_1,\delta_x\rangle\)</span>. Then <span class="math" data-tex="\(\langle T\delta_y,\delta_x\rangle=t_{xy^{-1}}\)">\(\langle T\delta_y,\delta_x\rangle=t_{xy^{-1}}\)</span> for all <span class="math" data-tex="\(x,y\in A\)">\(x,y\in A\)</span>, and <span class="math" data-tex="\(\sum_x|t_x|^2=\|T\delta_1\|^2&lt;\infty\)">\(\sum_x|t_x|^2=\|T\delta_1\|^2&lt;\infty\)</span>.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(R(y^{-1})\delta_1=\delta_y\)">\(R(y^{-1})\delta_1=\delta_y\)</span>, we have <span class="math" data-tex="\(T\delta_y=TR(y^{-1})\delta_1=R(y^{-1})T\delta_1\)">\(T\delta_y=TR(y^{-1})\delta_1=R(y^{-1})T\delta_1\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle T\delta_y,\delta_x\rangle&amp;=\langle T\delta_1,R(y^{-1})^*\delta_x\rangle\\
+&amp;=\langle T\delta_1,R(y)\delta_x\rangle\\
+&amp;=\langle T\delta_1,\delta_{xy^{-1}}\rangle\\
+&amp;=t_{xy^{-1}} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle T\delta_y,\delta_x\rangle&amp;=\langle T\delta_1,R(y^{-1})^*\delta_x\rangle\\
+&amp;=\langle T\delta_1,R(y)\delta_x\rangle\\
+&amp;=\langle T\delta_1,\delta_{xy^{-1}}\rangle\\
+&amp;=t_{xy^{-1}} .
+\end{aligned}
+\]</span>
+The second statement is Parseval's identity for the vector <span class="math" data-tex="\(T\delta_1\)">\(T\delta_1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A square-summable family has at most countably many nonzero terms, so the sums below are ordinary absolutely convergent series even when <span class="math" data-tex="\(A\)">\(A\)</span> is uncountable.</p>
+<p><strong>Lemma 1.2</strong> (the trace). For <span class="math" data-tex="\(S,T\in\mathcal M\)">\(S,T\in\mathcal M\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(\tau(ST)=\tau(TS)\)">\(\tau(ST)=\tau(TS)\)</span>;</li>
+<li>if <span class="math" data-tex="\(T\ge0\)">\(T\ge0\)</span>, then <span class="math" data-tex="\(\tau(T)\ge0\)">\(\tau(T)\ge0\)</span>, and <span class="math" data-tex="\(\tau(T)=0\)">\(\tau(T)=0\)</span> only for <span class="math" data-tex="\(T=0\)">\(T=0\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) Write <span class="math" data-tex="\(s_x=\langle S\delta_1,\delta_x\rangle\)">\(s_x=\langle S\delta_1,\delta_x\rangle\)</span> and <span class="math" data-tex="\(t_x=\langle T\delta_1,\delta_x\rangle\)">\(t_x=\langle T\delta_1,\delta_x\rangle\)</span>. Expanding <span class="math" data-tex="\(T\delta_1\)">\(T\delta_1\)</span> in the basis,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau(ST)&amp;=\sum_x t_x\langle S\delta_x,\delta_1\rangle\\
+&amp;=\sum_xt_xs_{x^{-1}} ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau(ST)&amp;=\sum_x t_x\langle S\delta_x,\delta_1\rangle\\
+&amp;=\sum_xt_xs_{x^{-1}} ,
+\end{aligned}
+\]</span>
+by Lemma 1.1 with <span class="math" data-tex="\(y=x\)">\(y=x\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> in place of <span class="math" data-tex="\(x\)">\(x\)</span>. The series converges absolutely by the Cauchy–Schwarz inequality, because <span class="math" data-tex="\((t_x)\)">\((t_x)\)</span> and <span class="math" data-tex="\((s_{x^{-1}})\)">\((s_{x^{-1}})\)</span> are square-summable. Exchanging the roles of <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> and substituting <span class="math" data-tex="\(x\mapsto x^{-1}\)">\(x\mapsto x^{-1}\)</span> gives the same sum for <span class="math" data-tex="\(\tau(TS)\)">\(\tau(TS)\)</span>.</p>
+<p>(2) For <span class="math" data-tex="\(T\ge0\)">\(T\ge0\)</span>, the positive square root <span class="math" data-tex="\(T^{1/2}\)">\(T^{1/2}\)</span> commutes with every operator commuting with <span class="math" data-tex="\(T\)">\(T\)</span> (Theorem 3.1(5) of the spectral theorem lesson), so <span class="math" data-tex="\(T^{1/2}\in\mathcal M\)">\(T^{1/2}\in\mathcal M\)</span>. Now <span class="math" data-tex="\(\tau(T)=\|T^{1/2}\delta_1\|^2\ge0\)">\(\tau(T)=\|T^{1/2}\delta_1\|^2\ge0\)</span>. If <span class="math" data-tex="\(\tau(T)=0\)">\(\tau(T)=0\)</span>, then <span class="math" data-tex="\(T^{1/2}\delta_1=0\)">\(T^{1/2}\delta_1=0\)</span>, and <span class="math" data-tex="\(T^{1/2}\delta_y=T^{1/2}R(y^{-1})\delta_1\)">\(T^{1/2}\delta_y=T^{1/2}R(y^{-1})\delta_1\)</span>, which is <span class="math" data-tex="\(R(y^{-1})T^{1/2}\delta_1=0\)">\(R(y^{-1})T^{1/2}\delta_1=0\)</span>, for every <span class="math" data-tex="\(y\)">\(y\)</span>; so <span class="math" data-tex="\(T^{1/2}=0\)">\(T^{1/2}=0\)</span> and <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Matrices.</strong> Fix <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span> and let <span class="math" data-tex="\(H_b=\mathbb C^b\otimes\ell^2(A)\)">\(H_b=\mathbb C^b\otimes\ell^2(A)\)</span>, the direct sum of <span class="math" data-tex="\(b\)">\(b\)</span> copies of <span class="math" data-tex="\(\ell^2(A)\)">\(\ell^2(A)\)</span>, with basis vectors <span class="math" data-tex="\(e_j\otimes\delta_x\)">\(e_j\otimes\delta_x\)</span>. An operator on <span class="math" data-tex="\(H_b\)">\(H_b\)</span> is a <span class="math" data-tex="\(b\times b\)">\(b\times b\)</span> matrix <span class="math" data-tex="\((T_{jl})\)">\((T_{jl})\)</span> of operators on <span class="math" data-tex="\(\ell^2(A)\)">\(\ell^2(A)\)</span>. It commutes with every <span class="math" data-tex="\(I\otimes R(a)\)">\(I\otimes R(a)\)</span> exactly when every entry commutes with every <span class="math" data-tex="\(R(a)\)">\(R(a)\)</span>, so the algebra <span class="math" data-tex="\(M_b(\mathcal M)\)">\(M_b(\mathcal M)\)</span> of matrices with entries in <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> is the commutant of the operators <span class="math" data-tex="\(I\otimes R(a)\)">\(I\otimes R(a)\)</span>. For <span class="math" data-tex="\(T=(T_{jl})\in M_b(\mathcal M)\)">\(T=(T_{jl})\in M_b(\mathcal M)\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau_b(T)&amp;=\sum_{j=1}^b\tau(T_{jj})\\
+&amp;=\sum_{j=1}^b\langle T(e_j\otimes\delta_1),e_j\otimes\delta_1\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau_b(T)&amp;=\sum_{j=1}^b\tau(T_{jj})\\
+&amp;=\sum_{j=1}^b\langle T(e_j\otimes\delta_1),e_j\otimes\delta_1\rangle .
+\end{aligned}
+\]</span>
+The trace is unnormalized: <span class="math" data-tex="\(\tau_b(I)=b\)">\(\tau_b(I)=b\)</span>. A scalar matrix <span class="math" data-tex="\(Q\in M_b(\mathbb C)\)">\(Q\in M_b(\mathbb C)\)</span> acts on <span class="math" data-tex="\(H_b\)">\(H_b\)</span> as <span class="math" data-tex="\(Q\otimes I\)">\(Q\otimes I\)</span>, which lies in <span class="math" data-tex="\(M_b(\mathcal M)\)">\(M_b(\mathcal M)\)</span>, and <span class="math" data-tex="\(\tau_b(Q\otimes I)=\operatorname{Tr}Q\)">\(\tau_b(Q\otimes I)=\operatorname{Tr}Q\)</span> because <span class="math" data-tex="\(\tau(I)=1\)">\(\tau(I)=1\)</span>. We write <span class="math" data-tex="\(Q\)">\(Q\)</span> for <span class="math" data-tex="\(Q\otimes I\)">\(Q\otimes I\)</span>.</p>
+<p><strong>Lemma 1.3.</strong> For <span class="math" data-tex="\(S,T\in M_b(\mathcal M)\)">\(S,T\in M_b(\mathcal M)\)</span>: <span class="math" data-tex="\(\tau_b(ST)=\tau_b(TS)\)">\(\tau_b(ST)=\tau_b(TS)\)</span>; <span class="math" data-tex="\(|\tau_b(T)|\le b\|T\|\)">\(|\tau_b(T)|\le b\|T\|\)</span> and <span class="math" data-tex="\(\tau_b(T^*)=\overline{\tau_b(T)}\)">\(\tau_b(T^*)=\overline{\tau_b(T)}\)</span>; if <span class="math" data-tex="\(T\ge0\)">\(T\ge0\)</span>, then <span class="math" data-tex="\(\tau_b(T)\ge0\)">\(\tau_b(T)\ge0\)</span>, with equality only for <span class="math" data-tex="\(T=0\)">\(T=0\)</span>.</p>
+<p><em>Proof.</em> By Lemma 1.2(1), <span class="math" data-tex="\(\tau_b(ST)=\sum_{j,l}\tau(S_{jl}T_{lj})\)">\(\tau_b(ST)=\sum_{j,l}\tau(S_{jl}T_{lj})\)</span> equals <span class="math" data-tex="\(\sum_{j,l}\tau(T_{lj}S_{jl})=\tau_b(TS)\)">\(\sum_{j,l}\tau(T_{lj}S_{jl})=\tau_b(TS)\)</span>. The bound and the adjoint formula hold for each of the <span class="math" data-tex="\(b\)">\(b\)</span> vector functionals in the definition. If <span class="math" data-tex="\(T\ge0\)">\(T\ge0\)</span>, each term <span class="math" data-tex="\(\langle T(e_j\otimes\delta_1),e_j\otimes\delta_1\rangle=\|T^{1/2}(e_j\otimes\delta_1)\|^2\)">\(\langle T(e_j\otimes\delta_1),e_j\otimes\delta_1\rangle=\|T^{1/2}(e_j\otimes\delta_1)\|^2\)</span> is nonnegative; if they all vanish, then <span class="math" data-tex="\(T^{1/2}\)">\(T^{1/2}\)</span>, which lies in <span class="math" data-tex="\(M_b(\mathcal M)\)">\(M_b(\mathcal M)\)</span> as in Lemma 1.2, kills every <span class="math" data-tex="\(e_j\otimes\delta_1\)">\(e_j\otimes\delta_1\)</span> and hence every <span class="math" data-tex="\(e_j\otimes\delta_y=(I\otimes R(y^{-1}))(e_j\otimes\delta_1)\)">\(e_j\otimes\delta_y=(I\otimes R(y^{-1}))(e_j\otimes\delta_1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, conjugation by a unitary <span class="math" data-tex="\(V\in M_b(\mathcal M)\)">\(V\in M_b(\mathcal M)\)</span> does not change the trace: <span class="math" data-tex="\(\tau_b(VTV^*)=\tau_b(TV^*V)=\tau_b(T)\)">\(\tau_b(VTV^*)=\tau_b(TV^*V)=\tau_b(T)\)</span>.</p>
+<p>The same trace proves Kaplansky's theorem that the matrix rings over <span class="math" data-tex="\(\mathbb C[A]\)">\(\mathbb C[A]\)</span> are directly finite: if <span class="math" data-tex="\(XY=I\)">\(XY=I\)</span>, the idempotent <span class="math" data-tex="\(YX\)">\(YX\)</span> and its range projection both have trace <span class="math" data-tex="\(b\)">\(b\)</span>, which forces <span class="math" data-tex="\(YX=I\)">\(YX=I\)</span> (<a href="../kaplansky-direct-finiteness/directly-finite-group-algebras.html">Directly finite group algebras</a>, Theorem 3.1).</p>
+<h2 id="2-functional-calculus-inside-the-commutant">2. Functional calculus inside the commutant</h2>
+<p>Let <span class="math" data-tex="\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)">\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)</span> and let <span class="math" data-tex="\(B_b(\mathbb T)\)">\(B_b(\mathbb T)\)</span> be the bounded Borel functions on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. A unitary operator <span class="math" data-tex="\(U\)">\(U\)</span> is normal with spectrum in <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. For <span class="math" data-tex="\(f\in B_b(\mathbb T)\)">\(f\in B_b(\mathbb T)\)</span> let <span class="math" data-tex="\(f(U)\)">\(f(U)\)</span> be the Borel functional calculus of <span class="math" data-tex="\(U\)">\(U\)</span> applied to the restriction of <span class="math" data-tex="\(f\)">\(f\)</span> to the spectrum (Theorems 3.1 and 8.1 of the spectral theorem lesson). We use its properties: <span class="math" data-tex="\(f\mapsto f(U)\)">\(f\mapsto f(U)\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism, agrees with the continuous calculus on continuous functions, satisfies <span class="math" data-tex="\(\|f(U)\|\le\sup|f|\)">\(\|f(U)\|\le\sup|f|\)</span>, maps nonnegative functions to positive operators and real functions to self-adjoint ones; if <span class="math" data-tex="\(f_r\to f\)">\(f_r\to f\)</span> pointwise with <span class="math" data-tex="\(\sup_r\sup|f_r|&lt;\infty\)">\(\sup_r\sup|f_r|&lt;\infty\)</span>, then <span class="math" data-tex="\(f_r(U)\xi\to f(U)\xi\)">\(f_r(U)\xi\to f(U)\xi\)</span> for every vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>; and <span class="math" data-tex="\(f(U)\)">\(f(U)\)</span> commutes with every operator that commutes with <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(U^*\)">\(U^*\)</span>. We also use that <span class="math" data-tex="\(\langle f(U)\xi,\xi\rangle=\int f\,d\mu_\xi\)">\(\langle f(U)\xi,\xi\rangle=\int f\,d\mu_\xi\)</span> for a finite measure <span class="math" data-tex="\(\mu_\xi\)">\(\mu_\xi\)</span> on the spectrum, which is determined by the integrals of continuous functions.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(U\in M_b(\mathcal M)\)">\(U\in M_b(\mathcal M)\)</span> be unitary and <span class="math" data-tex="\(f\in B_b(\mathbb T)\)">\(f\in B_b(\mathbb T)\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(f(U)\in M_b(\mathcal M)\)">\(f(U)\in M_b(\mathcal M)\)</span>.</li>
+<li>If <span class="math" data-tex="\(f_r\to f\)">\(f_r\to f\)</span> pointwise on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> with <span class="math" data-tex="\(\sup_r\sup|f_r|&lt;\infty\)">\(\sup_r\sup|f_r|&lt;\infty\)</span>, then <span class="math" data-tex="\(\tau_b(f_r(U))\to\tau_b(f(U))\)">\(\tau_b(f_r(U))\to\tau_b(f(U))\)</span>.</li>
+<li>If <span class="math" data-tex="\(V\)">\(V\)</span> is a unitary operator on <span class="math" data-tex="\(H_b\)">\(H_b\)</span>, then <span class="math" data-tex="\(f(VUV^*)=Vf(U)V^*\)">\(f(VUV^*)=Vf(U)V^*\)</span>. If moreover <span class="math" data-tex="\(V\in M_b(\mathcal M)\)">\(V\in M_b(\mathcal M)\)</span>, then <span class="math" data-tex="\(\tau_b(f(VUV^*))=\tau_b(f(U))\)">\(\tau_b(f(VUV^*))=\tau_b(f(U))\)</span>.</li>
+<li>If <span class="math" data-tex="\(f\)">\(f\)</span> is real, then <span class="math" data-tex="\(e^{2\pi if(U)}=(e^{2\pi if})(U)\)">\(e^{2\pi if(U)}=(e^{2\pi if})(U)\)</span>, where the left side is the exponential of the self-adjoint operator <span class="math" data-tex="\(f(U)\)">\(f(U)\)</span>.</li>
+<li>With <span class="math" data-tex="\(c(z)=\bar z\)">\(c(z)=\bar z\)</span>, <span class="math" data-tex="\(f(U^*)=(f\circ c)(U)\)">\(f(U^*)=(f\circ c)(U)\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(U^*\)">\(U^*\)</span> lie in <span class="math" data-tex="\(M_b(\mathcal M)\)">\(M_b(\mathcal M)\)</span>, so they commute with every <span class="math" data-tex="\(I\otimes R(a)\)">\(I\otimes R(a)\)</span>; hence so does <span class="math" data-tex="\(f(U)\)">\(f(U)\)</span>.</p>
+<p>(2) The operators <span class="math" data-tex="\(f_r(U)\)">\(f_r(U)\)</span> converge to <span class="math" data-tex="\(f(U)\)">\(f(U)\)</span> on each of the <span class="math" data-tex="\(b\)">\(b\)</span> vectors <span class="math" data-tex="\(e_j\otimes\delta_1\)">\(e_j\otimes\delta_1\)</span>, and <span class="math" data-tex="\(\tau_b\)">\(\tau_b\)</span> is the sum of the corresponding vector functionals.</p>
+<p>(3) The unitary <span class="math" data-tex="\(VUV^*\)">\(VUV^*\)</span> has the same spectrum <span class="math" data-tex="\(S\)">\(S\)</span> as <span class="math" data-tex="\(U\)">\(U\)</span>. The map <span class="math" data-tex="\(g\mapsto Vg(U)V^*\)">\(g\mapsto Vg(U)V^*\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism from <span class="math" data-tex="\(C(S)\)">\(C(S)\)</span> to <span class="math" data-tex="\(B(H_b)\)">\(B(H_b)\)</span> sending <span class="math" data-tex="\(\iota(z)=z\)">\(\iota(z)=z\)</span> to <span class="math" data-tex="\(VUV^*\)">\(VUV^*\)</span>; by the uniqueness in Theorem 5.1(1) of the C*-algebra lesson it is the continuous calculus of <span class="math" data-tex="\(VUV^*\)">\(VUV^*\)</span>. Thus for each vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> the measures of <span class="math" data-tex="\(VUV^*\)">\(VUV^*\)</span> at <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and of <span class="math" data-tex="\(U\)">\(U\)</span> at <span class="math" data-tex="\(V^*\xi\)">\(V^*\xi\)</span> have the same integrals of continuous functions, so they are equal, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle f(VUV^*)\xi,\xi\rangle&amp;=\langle f(U)V^*\xi,V^*\xi\rangle\\
+&amp;=\langle Vf(U)V^*\xi,\xi\rangle
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle f(VUV^*)\xi,\xi\rangle&amp;=\langle f(U)V^*\xi,V^*\xi\rangle\\
+&amp;=\langle Vf(U)V^*\xi,\xi\rangle
+\end{aligned}
+\]</span>
+for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. An operator is determined by these numbers, so <span class="math" data-tex="\(f(VUV^*)=Vf(U)V^*\)">\(f(VUV^*)=Vf(U)V^*\)</span>. The trace statement follows from Lemma 1.3.</p>
+<p>(4) By Remark 4.5 of the spectral theorem lesson, <span class="math" data-tex="\(e^{2\pi if(U)}=\sum_{n\ge0}(2\pi i)^nf(U)^n/n!\)">\(e^{2\pi if(U)}=\sum_{n\ge0}(2\pi i)^nf(U)^n/n!\)</span> in norm. Since the calculus is a homomorphism, <span class="math" data-tex="\(f(U)^n=(f^n)(U)\)">\(f(U)^n=(f^n)(U)\)</span>, so the partial sums equal <span class="math" data-tex="\(s_N(U)\)">\(s_N(U)\)</span> for the partial sums <span class="math" data-tex="\(s_N=\sum_{n\le N}(2\pi i)^nf^n/n!\)">\(s_N=\sum_{n\le N}(2\pi i)^nf^n/n!\)</span>. These converge to <span class="math" data-tex="\(e^{2\pi if}\)">\(e^{2\pi if}\)</span> uniformly on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, because <span class="math" data-tex="\(f\)">\(f\)</span> is bounded, and <span class="math" data-tex="\(\|s_N(U)-(e^{2\pi if})(U)\|\le\sup|s_N-e^{2\pi if}|\)">\(\|s_N(U)-(e^{2\pi if})(U)\|\le\sup|s_N-e^{2\pi if}|\)</span>.</p>
+<p>(5) <span class="math" data-tex="\(U^*\)">\(U^*\)</span> is a unitary with spectrum <span class="math" data-tex="\(c(S)\)">\(c(S)\)</span>. The map <span class="math" data-tex="\(g\mapsto(g\circ c)(U)\)">\(g\mapsto(g\circ c)(U)\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism from <span class="math" data-tex="\(C(c(S))\)">\(C(c(S))\)</span> to <span class="math" data-tex="\(B(H_b)\)">\(B(H_b)\)</span> sending <span class="math" data-tex="\(\iota\)">\(\iota\)</span> to <span class="math" data-tex="\(\bar\iota(U)=U^*\)">\(\bar\iota(U)=U^*\)</span>, so it is the continuous calculus of <span class="math" data-tex="\(U^*\)">\(U^*\)</span>, by the same uniqueness. As in (3), the measure of <span class="math" data-tex="\(U^*\)">\(U^*\)</span> at <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is the image under <span class="math" data-tex="\(c\)">\(c\)</span> of the measure of <span class="math" data-tex="\(U\)">\(U\)</span> at <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and <span class="math" data-tex="\(\langle f(U^*)\xi,\xi\rangle=\langle(f\circ c)(U)\xi,\xi\rangle\)">\(\langle f(U^*)\xi,\xi\rangle=\langle(f\circ c)(U)\xi,\xi\rangle\)</span> for all <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-spectral-phase">3. Spectral phase</h2>
+<p>Define the Borel function <span class="math" data-tex="\(h:\mathbb T\to[0,1)\)">\(h:\mathbb T\to[0,1)\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h(e^{2\pi ix})=x-\lfloor x\rfloor\\
+(x\in\mathbb R) ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+h(e^{2\pi ix})=x-\lfloor x\rfloor\\
+(x\in\mathbb R) ,
+\end{gathered}
+\]</span>
+so <span class="math" data-tex="\(h(1)=0\)">\(h(1)=0\)</span>, and <span class="math" data-tex="\(h(z)\)">\(h(z)\)</span> is the angle of <span class="math" data-tex="\(z\)">\(z\)</span> in turns, taken in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. It is continuous except at <span class="math" data-tex="\(1\)">\(1\)</span>, where it jumps from values near <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>. For a unitary <span class="math" data-tex="\(U\in M_b(\mathcal M)\)">\(U\in M_b(\mathcal M)\)</span> put
+<span class="math math-display" data-tex="\[
+\ell(U)=\tau_b(h(U)) ,
+\]">\[
+\ell(U)=\tau_b(h(U)) ,
+\]</span>
+the <em>spectral phase</em> of <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(U\in M_b(\mathcal M)\)">\(U\in M_b(\mathcal M)\)</span> be unitary.</p>
+<ol>
+<li><span class="math" data-tex="\(0\le h(U)\le I\)">\(0\le h(U)\le I\)</span> and <span class="math" data-tex="\(e^{2\pi ih(U)}=U\)">\(e^{2\pi ih(U)}=U\)</span>.</li>
+<li><span class="math" data-tex="\(0\le\ell(U)\le b\)">\(0\le\ell(U)\le b\)</span>, and <span class="math" data-tex="\(\ell(U)=0\)">\(\ell(U)=0\)</span> exactly when <span class="math" data-tex="\(U=I\)">\(U=I\)</span>.</li>
+<li>If <span class="math" data-tex="\(V\in M_b(\mathcal M)\)">\(V\in M_b(\mathcal M)\)</span> is unitary, then <span class="math" data-tex="\(\ell(VUV^*)=\ell(U)\)">\(\ell(VUV^*)=\ell(U)\)</span>.</li>
+<li>If <span class="math" data-tex="\(U=Q\)">\(U=Q\)</span> is a scalar unitary matrix with eigenvalues <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_b\)">\(\lambda_1,\ldots,\lambda_b\)</span>, listed with multiplicity, then <span class="math" data-tex="\(\ell(Q)=\sum_jh(\lambda_j)\)">\(\ell(Q)=\sum_jh(\lambda_j)\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) <span class="math" data-tex="\(0\le h\le1\)">\(0\le h\le1\)</span> gives <span class="math" data-tex="\(0\le h(U)\le I\)">\(0\le h(U)\le I\)</span>. Since <span class="math" data-tex="\(e^{2\pi ih(z)}=z\)">\(e^{2\pi ih(z)}=z\)</span> for all <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span>, Lemma 2.1(4) gives <span class="math" data-tex="\(e^{2\pi ih(U)}=\iota(U)=U\)">\(e^{2\pi ih(U)}=\iota(U)=U\)</span>, where <span class="math" data-tex="\(\iota(z)=z\)">\(\iota(z)=z\)</span>.</p>
+<p>(2) The bounds follow from (1) and Lemma 1.3. If <span class="math" data-tex="\(\ell(U)=0\)">\(\ell(U)=0\)</span>, then <span class="math" data-tex="\(h(U)=0\)">\(h(U)=0\)</span> by faithfulness, and <span class="math" data-tex="\(U=e^{0}=I\)">\(U=e^{0}=I\)</span> by (1). Conversely <span class="math" data-tex="\(h(I)=h(1)I=0\)">\(h(I)=h(1)I=0\)</span>.</p>
+<p>(3) is Lemma 2.1(3).</p>
+<p>(4) Diagonalize <span class="math" data-tex="\(Q=VDV^*\)">\(Q=VDV^*\)</span> with a scalar unitary <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(D=\operatorname{diag}(\lambda_j)\)">\(D=\operatorname{diag}(\lambda_j)\)</span>. For a vector <span class="math" data-tex="\(\xi=\sum_je_j\otimes\xi_j\)">\(\xi=\sum_je_j\otimes\xi_j\)</span>, the measure of <span class="math" data-tex="\(D\)">\(D\)</span> at <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is <span class="math" data-tex="\(\sum_j\|\xi_j\|^2\delta_{\lambda_j}\)">\(\sum_j\|\xi_j\|^2\delta_{\lambda_j}\)</span>, so <span class="math" data-tex="\(h(D)=\operatorname{diag}(h(\lambda_j))\)">\(h(D)=\operatorname{diag}(h(\lambda_j))\)</span>. Then <span class="math" data-tex="\(h(Q)=Vh(D)V^*\)">\(h(Q)=Vh(D)V^*\)</span> by Lemma 2.1(3), and <span class="math" data-tex="\(\ell(Q)=\operatorname{Tr}h(Q)=\sum_jh(\lambda_j)\)">\(\ell(Q)=\operatorname{Tr}h(Q)=\sum_jh(\lambda_j)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The value <span class="math" data-tex="\(h(1)=0\)">\(h(1)=0\)</span> at the cut makes <span class="math" data-tex="\(\ell\)">\(\ell\)</span> faithful. It also makes <span class="math" data-tex="\(\ell\)">\(\ell\)</span> discontinuous: the scalar unitary <span class="math" data-tex="\(e^{-2\pi i\epsilon}\)">\(e^{-2\pi i\epsilon}\)</span> has phase <span class="math" data-tex="\(1-\epsilon\)">\(1-\epsilon\)</span>, close to <span class="math" data-tex="\(1\)">\(1\)</span>, while its limit <span class="math" data-tex="\(1\)">\(1\)</span> has phase <span class="math" data-tex="\(0\)">\(0\)</span>. The next lessons use this deliberately, approaching the cut from below on some boundary words and from above on another.</p>
+<h2 id="4-subadditivity">4. Subadditivity</h2>
+<p><strong>Lemma 4.1</strong> (subadditivity of spectral phase; [OpenAI-K, Lemma 2.1]). For all unitaries <span class="math" data-tex="\(U,V\in M_b(\mathcal M)\)">\(U,V\in M_b(\mathcal M)\)</span>,
+<span class="math math-display" data-tex="\[
+\ell(UV)\le\ell(U)+\ell(V).
+\]">\[
+\ell(UV)\le\ell(U)+\ell(V).
+\]</span></p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(B=h(V)\)">\(B=h(V)\)</span>, so <span class="math" data-tex="\(0\le B\le I\)">\(0\le B\le I\)</span> and <span class="math" data-tex="\(e^{2\pi iB}=V\)">\(e^{2\pi iB}=V\)</span> by Lemma 3.1, and put
+<span class="math math-display" data-tex="\[
+W_u=Ue^{2\pi iuB}\qquad(0\le u\le1).
+\]">\[
+W_u=Ue^{2\pi iuB}\qquad(0\le u\le1).
+\]</span>
+Each <span class="math" data-tex="\(W_u\)">\(W_u\)</span> is a unitary in <span class="math" data-tex="\(M_b(\mathcal M)\)">\(M_b(\mathcal M)\)</span>, <span class="math" data-tex="\(W_0=U\)">\(W_0=U\)</span>, <span class="math" data-tex="\(W_1=UV\)">\(W_1=UV\)</span>, and <span class="math" data-tex="\(u\mapsto W_u\)">\(u\mapsto W_u\)</span> is differentiable in norm with <span class="math" data-tex="\(\frac{d}{du}W_u=2\pi iW_uB\)">\(\frac{d}{du}W_u=2\pi iW_uB\)</span>, from the exponential series. For a function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> write <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> for its derivative in turns: <span class="math" data-tex="\(f&#x27;(e^{2\pi ix})=\frac{d}{dx}f(e^{2\pi ix})\)">\(f&#x27;(e^{2\pi ix})=\frac{d}{dx}f(e^{2\pi ix})\)</span>.</p>
+<p><em>Step 1: a derivative formula.</em> For <span class="math" data-tex="\(f(z)=z^r\)">\(f(z)=z^r\)</span> with an integer <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, the product rule and Lemma 1.3 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{d}{du}\tau_b(W_u^r)&amp;=2\pi i\sum_{j=0}^{r-1}\tau_b\bigl(W_u^{j+1}BW_u^{r-1-j}\bigr)\\
+&amp;=2\pi ir\,\tau_b(W_u^rB)\\
+&amp;=\tau_b\bigl(f&#x27;(W_u)B\bigr) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{d}{du}\tau_b(W_u^r)&amp;=2\pi i\sum_{j=0}^{r-1}\tau_b\bigl(W_u^{j+1}BW_u^{r-1-j}\bigr)\\
+&amp;=2\pi ir\,\tau_b(W_u^rB)\\
+&amp;=\tau_b\bigl(f&#x27;(W_u)B\bigr) ,
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(\tau_b(W_u^{j+1}BW_u^{r-1-j})=\tau_b(W_u^{r-1-j}W_u^{j+1}B)\)">\(\tau_b(W_u^{j+1}BW_u^{r-1-j})=\tau_b(W_u^{r-1-j}W_u^{j+1}B)\)</span> and <span class="math" data-tex="\(f&#x27;(z)=2\pi irz^r\)">\(f&#x27;(z)=2\pi irz^r\)</span>. For <span class="math" data-tex="\(r\le-1\)">\(r\le-1\)</span> the same calculation with <span class="math" data-tex="\(\frac{d}{du}W_u^{-1}=-2\pi iBW_u^{-1}\)">\(\frac{d}{du}W_u^{-1}=-2\pi iBW_u^{-1}\)</span> gives the same formula, and for <span class="math" data-tex="\(r=0\)">\(r=0\)</span> both sides vanish. Now let <span class="math" data-tex="\(f\)">\(f\)</span> be a smooth function on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> with Fourier series <span class="math" data-tex="\(f(e^{2\pi ix})=\sum_ra_re^{2\pi irx}\)">\(f(e^{2\pi ix})=\sum_ra_re^{2\pi irx}\)</span>. Integrating by parts three times gives <span class="math" data-tex="\(|a_r|\le C/|r|^3\)">\(|a_r|\le C/|r|^3\)</span> for <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>, so <span class="math" data-tex="\(\sum_r(1+|r|)|a_r|&lt;\infty\)">\(\sum_r(1+|r|)|a_r|&lt;\infty\)</span>. Hence <span class="math" data-tex="\(f(W)=\sum_ra_rW^r\)">\(f(W)=\sum_ra_rW^r\)</span> and <span class="math" data-tex="\(f&#x27;(W)=\sum_r2\pi ira_rW^r\)">\(f&#x27;(W)=\sum_r2\pi ira_rW^r\)</span>, with norm-convergent series, for every unitary <span class="math" data-tex="\(W\)">\(W\)</span>, and the derivatives <span class="math" data-tex="\(2\pi ira_r\tau_b(W_u^rB)\)">\(2\pi ira_r\tau_b(W_u^rB)\)</span> of the terms of <span class="math" data-tex="\(\tau_b(f(W_u))\)">\(\tau_b(f(W_u))\)</span> are bounded by <span class="math" data-tex="\(2\pi b|r||a_r|\)">\(2\pi b|r||a_r|\)</span>, uniformly in <span class="math" data-tex="\(u\)">\(u\)</span>. So the series may be differentiated term by term:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{d}{du}\tau_b\bigl(f(W_u)\bigr)\\
+&amp;\qquad=\tau_b\bigl(f&#x27;(W_u)B\bigr).
+\end{aligned}\tag{4.1}
+\]">\[
+\begin{aligned}
+&amp;\frac{d}{du}\tau_b\bigl(f(W_u)\bigr)\\
+&amp;\qquad=\tau_b\bigl(f&#x27;(W_u)B\bigr).
+\end{aligned}\tag{4.1}
+\]</span></p>
+<p><em>Step 2: smooth functions with slope at most one.</em> Let <span class="math" data-tex="\(f\)">\(f\)</span> be smooth and real with <span class="math" data-tex="\(f&#x27;\le1\)">\(f&#x27;\le1\)</span>. Then <span class="math" data-tex="\(f&#x27;(W_u)\)">\(f&#x27;(W_u)\)</span> is self-adjoint with <span class="math" data-tex="\(f&#x27;(W_u)\le I\)">\(f&#x27;(W_u)\le I\)</span>, and <span class="math" data-tex="\(B^{1/2}\in M_b(\mathcal M)\)">\(B^{1/2}\in M_b(\mathcal M)\)</span>. By Lemma 1.3,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau_b\bigl(f&#x27;(W_u)B\bigr)&amp;=\tau_b\bigl(B^{1/2}f&#x27;(W_u)B^{1/2}\bigr)\\
+&amp;\le\tau_b(B^{1/2}B^{1/2})\\
+&amp;=\tau_b(B) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau_b\bigl(f&#x27;(W_u)B\bigr)&amp;=\tau_b\bigl(B^{1/2}f&#x27;(W_u)B^{1/2}\bigr)\\
+&amp;\le\tau_b(B^{1/2}B^{1/2})\\
+&amp;=\tau_b(B) ,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(B^{1/2}(I-f&#x27;(W_u))B^{1/2}\ge0\)">\(B^{1/2}(I-f&#x27;(W_u))B^{1/2}\ge0\)</span>. The right side of (4.1) is continuous in <span class="math" data-tex="\(u\)">\(u\)</span>, so integrating from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tau_b\bigl(f(UV)\bigr)\\
+&amp;\qquad\le\tau_b\bigl(f(U)\bigr)+\tau_b\bigl(h(V)\bigr).
+\end{aligned}\tag{4.2}
+\]">\[
+\begin{aligned}
+&amp;\tau_b\bigl(f(UV)\bigr)\\
+&amp;\qquad\le\tau_b\bigl(f(U)\bigr)+\tau_b\bigl(h(V)\bigr).
+\end{aligned}\tag{4.2}
+\]</span></p>
+<p><em>Step 3: passing to <span class="math" data-tex="\(h\)">\(h\)</span>.</em> Let <span class="math" data-tex="\(g(x)=x-\lfloor x\rfloor\)">\(g(x)=x-\lfloor x\rfloor\)</span>. For <span class="math" data-tex="\(0&lt;\epsilon&lt;1\)">\(0&lt;\epsilon&lt;1\)</span> choose a smooth function <span class="math" data-tex="\(\rho_\epsilon\ge0\)">\(\rho_\epsilon\ge0\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, supported in <span class="math" data-tex="\((0,\epsilon)\)">\((0,\epsilon)\)</span>, with integral <span class="math" data-tex="\(1\)">\(1\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_\epsilon(e^{2\pi ix})&amp;=\int_0^\epsilon\rho_\epsilon(s)\,g(x+s)\,ds\\
+&amp;=\int_{\mathbb R}\rho_\epsilon(y-x)\,g(y)\,dy .
+\end{aligned}
+\]">\[
+\begin{aligned}
+f_\epsilon(e^{2\pi ix})&amp;=\int_0^\epsilon\rho_\epsilon(s)\,g(x+s)\,ds\\
+&amp;=\int_{\mathbb R}\rho_\epsilon(y-x)\,g(y)\,dy .
+\end{aligned}
+\]</span>
+The second form shows that <span class="math" data-tex="\(f_\epsilon\)">\(f_\epsilon\)</span> is smooth, and it is periodic because <span class="math" data-tex="\(g\)">\(g\)</span> is. Its values lie in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. For <span class="math" data-tex="\(\delta\ge0\)">\(\delta\ge0\)</span>, <span class="math" data-tex="\(g(x+\delta)-g(x)=\delta-(\lfloor x+\delta\rfloor-\lfloor x\rfloor)\le\delta\)">\(g(x+\delta)-g(x)=\delta-(\lfloor x+\delta\rfloor-\lfloor x\rfloor)\le\delta\)</span>, and averaging gives <span class="math" data-tex="\(f_\epsilon(x+\delta)-f_\epsilon(x)\le\delta\)">\(f_\epsilon(x+\delta)-f_\epsilon(x)\le\delta\)</span>; so <span class="math" data-tex="\(f_\epsilon&#x27;\le1\)">\(f_\epsilon&#x27;\le1\)</span>. Finally, <span class="math" data-tex="\(g\)">\(g\)</span> is continuous from the right at every point, including the integers, where <span class="math" data-tex="\(g(n+s)=s\to0=g(n)\)">\(g(n+s)=s\to0=g(n)\)</span>; so <span class="math" data-tex="\(\sup_{0&lt;s&lt;\epsilon}|g(x+s)-g(x)|\to0\)">\(\sup_{0&lt;s&lt;\epsilon}|g(x+s)-g(x)|\to0\)</span> as <span class="math" data-tex="\(\epsilon\to0\)">\(\epsilon\to0\)</span>, and <span class="math" data-tex="\(f_\epsilon\to h\)">\(f_\epsilon\to h\)</span> pointwise on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, including <span class="math" data-tex="\(f_\epsilon(1)\to0=h(1)\)">\(f_\epsilon(1)\to0=h(1)\)</span>. Apply (4.2) to <span class="math" data-tex="\(f_\epsilon\)">\(f_\epsilon\)</span> and let <span class="math" data-tex="\(\epsilon\to0\)">\(\epsilon\to0\)</span>, using Lemma 2.1(2) for the fixed unitaries <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(UV\)">\(UV\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The smoothing approaches every angle from the right, so that the limit takes the value <span class="math" data-tex="\(0\)">\(0\)</span>, not <span class="math" data-tex="\(1\)">\(1\)</span>, at the cut. With the left-continuous choice <span class="math" data-tex="\(h(1)=1\)">\(h(1)=1\)</span>, the trace of the phase would not detect the identity.</p>
+<p>For finite matrices, that is, for the trivial group <span class="math" data-tex="\(A\)">\(A\)</span>, Lemma 4.1 also follows from a theorem of R. C. Thompson: for Hermitian matrices <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> there are unitaries <span class="math" data-tex="\(V_1,V_2\)">\(V_1,V_2\)</span> with <span class="math" data-tex="\(e^{iX}e^{iY}=e^{i(V_1XV_1^*+V_2YV_2^*)}\)">\(e^{iX}e^{iY}=e^{i(V_1XV_1^*+V_2YV_2^*)}\)</span>; see [ALV, Section 2] for this formula and its extensions. Applied to <span class="math" data-tex="\(X=2\pi h(U)\)">\(X=2\pi h(U)\)</span> and <span class="math" data-tex="\(Y=2\pi h(V)\)">\(Y=2\pi h(V)\)</span>, it writes <span class="math" data-tex="\(UV=e^{2\pi iC}\)">\(UV=e^{2\pi iC}\)</span> with <span class="math" data-tex="\(C\ge0\)">\(C\ge0\)</span> and <span class="math" data-tex="\(\operatorname{Tr}C=\ell(U)+\ell(V)\)">\(\operatorname{Tr}C=\ell(U)+\ell(V)\)</span>, and <span class="math" data-tex="\(h(e^{2\pi iC})\le C\)">\(h(e^{2\pi iC})\le C\)</span> gives the inequality. The proof above needs no approximation of <span class="math" data-tex="\(A\)">\(A\)</span> by matrices, and this is what makes it work for every group.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite. Show that <span class="math" data-tex="\(\tau(T)=\frac1{|A|}\operatorname{Tr}(T)\)">\(\tau(T)=\frac1{|A|}\operatorname{Tr}(T)\)</span> for <span class="math" data-tex="\(T\in\mathcal M\)">\(T\in\mathcal M\)</span>, where <span class="math" data-tex="\(\operatorname{Tr}\)">\(\operatorname{Tr}\)</span> is the trace of operators on the finite-dimensional space <span class="math" data-tex="\(\ell^2(A)\)">\(\ell^2(A)\)</span>.</p>
+<p><strong>5.2</strong> (easy). Show that <span class="math" data-tex="\(\tau(L(a))=0\)">\(\tau(L(a))=0\)</span> for <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span>, and that <span class="math" data-tex="\(\tau_b\)">\(\tau_b\)</span> of a matrix whose diagonal entries are left translations by elements other than <span class="math" data-tex="\(1\)">\(1\)</span> is zero.</p>
+<p><strong>5.3</strong> (medium). Let <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. Show that <span class="math" data-tex="\(\ell(L(a))=\frac{m-1}{2m}\)">\(\ell(L(a))=\frac{m-1}{2m}\)</span> if <span class="math" data-tex="\(a\)">\(a\)</span> has finite order <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(\ell(L(a))=\frac12\)">\(\ell(L(a))=\frac12\)</span> if <span class="math" data-tex="\(a\)">\(a\)</span> has infinite order. (Compute <span class="math" data-tex="\(\langle L(a)^n\delta_1,\delta_1\rangle\)">\(\langle L(a)^n\delta_1,\delta_1\rangle\)</span> and identify the measure <span class="math" data-tex="\(\mu_{\delta_1}\)">\(\mu_{\delta_1}\)</span> of <span class="math" data-tex="\(L(a)\)">\(L(a)\)</span>.)</p>
+<p><strong>5.4</strong> (easy). Let <span class="math" data-tex="\(P\)">\(P\)</span> be the spectral projection <span class="math" data-tex="\(1_{\{1\}}(U)\)">\(1_{\{1\}}(U)\)</span> of a unitary <span class="math" data-tex="\(U\in M_b(\mathcal M)\)">\(U\in M_b(\mathcal M)\)</span>. Show that <span class="math" data-tex="\(h(\bar z)=1-h(z)\)">\(h(\bar z)=1-h(z)\)</span> for <span class="math" data-tex="\(z\ne1\)">\(z\ne1\)</span>, and deduce <span class="math" data-tex="\(\ell(U^*)=\tau_b(I-P)-\ell(U)\)">\(\ell(U^*)=\tau_b(I-P)-\ell(U)\)</span>.</p>
+<p><strong>5.5</strong> (easy). Find scalar <span class="math" data-tex="\(1\times1\)">\(1\times1\)</span> unitaries <span class="math" data-tex="\(U,V\)">\(U,V\)</span> with <span class="math" data-tex="\(\ell(UV)=\ell(U)+\ell(V)\)">\(\ell(UV)=\ell(U)+\ell(V)\)</span>, and others with <span class="math" data-tex="\(\ell(UV)&lt;\ell(U)+\ell(V)\)">\(\ell(UV)&lt;\ell(U)+\ell(V)\)</span>.</p>
+<p><strong>5.6</strong> (medium). Show that <span class="math" data-tex="\(\ell(U)+\ell(V)\le b+\ell(VU)\)">\(\ell(U)+\ell(V)\le b+\ell(VU)\)</span> for all unitaries <span class="math" data-tex="\(U,V\in M_b(\mathcal M)\)">\(U,V\in M_b(\mathcal M)\)</span>. (Write <span class="math" data-tex="\(V=(VU)U^*\)">\(V=(VU)U^*\)</span> and use Lemma 4.1 and Exercise 5.4.)</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> By Lemma 1.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Tr}T&amp;=\sum_x\langle T\delta_x,\delta_x\rangle=\sum_xt_{xx^{-1}}\\
+&amp;=|A|\,t_1=|A|\,\tau(T).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Tr}T&amp;=\sum_x\langle T\delta_x,\delta_x\rangle=\sum_xt_{xx^{-1}}\\
+&amp;=|A|\,t_1=|A|\,\tau(T).
+\end{aligned}
+\]</span></p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(\tau(L(a))=\langle\delta_a,\delta_1\rangle=0\)">\(\tau(L(a))=\langle\delta_a,\delta_1\rangle=0\)</span> for <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span>. The trace <span class="math" data-tex="\(\tau_b\)">\(\tau_b\)</span> only sees the diagonal entries.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(\langle L(a)^n\delta_1,\delta_1\rangle=\langle\delta_{a^n},\delta_1\rangle\)">\(\langle L(a)^n\delta_1,\delta_1\rangle=\langle\delta_{a^n},\delta_1\rangle\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(a^n=1\)">\(a^n=1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. These are the integrals of <span class="math" data-tex="\(z^n\)">\(z^n\)</span> against <span class="math" data-tex="\(\mu=\mu_{\delta_1}\)">\(\mu=\mu_{\delta_1}\)</span>. If <span class="math" data-tex="\(a\)">\(a\)</span> has infinite order, <span class="math" data-tex="\(\int z^n\,d\mu=0\)">\(\int z^n\,d\mu=0\)</span> for <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, the same as for the normalized arc length, and since trigonometric polynomials are dense in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the normalized arc length; then <span class="math" data-tex="\(\ell(L(a))=\int h\,d\mu=\int_0^1x\,dx=\frac12\)">\(\ell(L(a))=\int h\,d\mu=\int_0^1x\,dx=\frac12\)</span>. If <span class="math" data-tex="\(a\)">\(a\)</span> has order <span class="math" data-tex="\(m\)">\(m\)</span>, the moments are those of the uniform measure on the <span class="math" data-tex="\(m\)">\(m\)</span>-th roots of unity, so <span class="math" data-tex="\(\ell(L(a))=\frac1m\sum_{j=0}^{m-1}\frac jm=\frac{m-1}{2m}\)">\(\ell(L(a))=\frac1m\sum_{j=0}^{m-1}\frac jm=\frac{m-1}{2m}\)</span>.</p>
+<p><strong>5.4.</strong> For <span class="math" data-tex="\(z=e^{2\pi ix}\)">\(z=e^{2\pi ix}\)</span> with <span class="math" data-tex="\(x\in(0,1)\)">\(x\in(0,1)\)</span>, <span class="math" data-tex="\(\bar z=e^{2\pi i(1-x)}\)">\(\bar z=e^{2\pi i(1-x)}\)</span> and <span class="math" data-tex="\(h(\bar z)=1-x\)">\(h(\bar z)=1-x\)</span>; and <span class="math" data-tex="\(h(\bar1)=0\)">\(h(\bar1)=0\)</span>. So <span class="math" data-tex="\(h\circ c=1_{\{z\ne1\}}-h\)">\(h\circ c=1_{\{z\ne1\}}-h\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. By Lemma 2.1(5), <span class="math" data-tex="\(h(U^*)=(h\circ c)(U)=(I-P)-h(U)\)">\(h(U^*)=(h\circ c)(U)=(I-P)-h(U)\)</span>. Take traces.</p>
+<p><strong>5.5.</strong> <span class="math" data-tex="\(U=V=e^{2\pi i\cdot0.3}\)">\(U=V=e^{2\pi i\cdot0.3}\)</span>: <span class="math" data-tex="\(\ell(UV)=0.6=0.3+0.3\)">\(\ell(UV)=0.6=0.3+0.3\)</span>. <span class="math" data-tex="\(U=V=e^{2\pi i\cdot0.6}\)">\(U=V=e^{2\pi i\cdot0.6}\)</span>: <span class="math" data-tex="\(UV=e^{2\pi i\cdot0.2}\)">\(UV=e^{2\pi i\cdot0.2}\)</span>, so <span class="math" data-tex="\(\ell(UV)=0.2&lt;1.2\)">\(\ell(UV)=0.2&lt;1.2\)</span>.</p>
+<p><strong>5.6.</strong> By Lemma 4.1 and Exercise 5.4, with <span class="math" data-tex="\(P=1_{\{1\}}(U)\)">\(P=1_{\{1\}}(U)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ell(V)&amp;=\ell((VU)U^*)\le\ell(VU)+\ell(U^*)\\
+&amp;=\ell(VU)+\tau_b(I-P)-\ell(U)\\
+&amp;\le\ell(VU)+b-\ell(U).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\ell(V)&amp;=\ell((VU)U^*)\le\ell(VU)+\ell(U^*)\\
+&amp;=\ell(VU)+\tau_b(I-P)-\ell(U)\\
+&amp;\le\ell(VU)+b-\ell(U).
+\end{aligned}
+\]</span> For scalars the inequality is <span class="math" data-tex="\(x+y\le1+(x+y-\lfloor x+y\rfloor)\)">\(x+y\le1+(x+y-\lfloor x+y\rfloor)\)</span> for <span class="math" data-tex="\(x,y\in[0,1)\)">\(x,y\in[0,1)\)</span>, with equality when <span class="math" data-tex="\(x+y\ge1\)">\(x+y\ge1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-K] OpenAI, <em>The Kervaire theorem for groups</em>, OpenAI Math Release preprint, 24 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/The-Kervaire-Theorem-for-Groups-September-24-2026</li>
+<li>[ALV] J. Antezana, G. Larotonda and A. Varela, <em>Thompson-type formulae</em>, Journal of Functional Analysis 262 (2012), 1515–1528; arXiv:1107.0348, Section 2. https://arxiv.org/abs/1107.0348</li>
+<li>[Jones] V. F. R. Jones, <em>Von Neumann algebras</em>, lecture notes, 1 October 2009, Sections 3.3 and 3.4, on the author's page. https://math.berkeley.edu/~vfr/VonNeumann2009.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

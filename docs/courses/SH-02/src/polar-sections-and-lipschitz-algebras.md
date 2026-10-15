@@ -4,7 +4,7 @@
 
 Generic projective sections give polar varieties as actual proper images of dense regular conormal sections. \(A\) separate cone construction converts a metric bound into an integral equation with the exact ideal-power coefficients. Applying that equivalence to every pair of normalized branches proves stability under parameter differentiation, a generic-to-total equation principle, and the actual generic reduced fibre-algebra identification.
 
-Use analytic conormal and finite-map geometry for coherent components, the analytic fibre jump theorem, general proper images, finite simultaneous normalization and actual branch coverage. The selected parameter locus and all coordinate conventions below are part of the statements. The [general-section and Whitney-stratum multiplicity proofs](../polar-multiplicity-in-sections.html) establish the corresponding multiplicity statements.
+Use [analytic conormal and finite-map geometry](../finite-map-analytic-geometry.html) for coherent components, the analytic fibre jump theorem, general proper images, finite simultaneous normalization and actual branch coverage. The selected parameter locus and all coordinate conventions below are part of the statements. The [general-section and Whitney-stratum multiplicity proofs](../polar-multiplicity-in-sections.html) establish the corresponding multiplicity statements.
 
 <a id="PS0"></a>
 
@@ -121,7 +121,7 @@ For a general \(L\) with PS1b and PS3a, a point of \(R_L\) over 0 is a limit of 
 
 ## PS5. Scope and antecedents
 
-The proof uses the full original AC/FAG projective conormal construction and actual component selection; SGC8–SGC9 compact-fibre finiteness; EHF one-equation purity/lower bounds; full source FJ jump analyticity; complete general RMP proper images; and FMR3 compact affine analytic finiteness. The one-dimensional conormal-section proof supplies the earlier flag case; PS0–PS4 retain all indices and the whole central projective fibre.
+The proof uses the full original AC/FAG projective conormal construction and actual component selection; SGC8–SGC9 compact-fibre finiteness; EHF one-equation purity/lower bounds; full source FJ jump analyticity; complete general RMP proper images; and FMR3 compact affine analytic finiteness. [The one-dimensional conormal-section proof](../finite-map-analytic-geometry.html) supplies the earlier flag case; PS0–PS4 retain all indices and the whole central projective fibre.
 
 The human antecedent is [Teissier, *Variétés polaires II*](https://webusers.imj-prg.fr/~bernard.teissier/documents/VarPol2.pdf), IV.4.1.1 and IV.6.1.1(a), pp.432–433 and 451. The proof above is independent and uses the exact previously retained analytic body floor. It supplies the all-index density, actual-image and fibre-threshold assertion. BI0–BI4 and MS0–LS4 below supply the separate integral-equation and generic relative-algebra results. [Polar multiplicity in linear sections and Whitney strata](../polar-multiplicity-in-sections.html) gives those additional proofs.
 

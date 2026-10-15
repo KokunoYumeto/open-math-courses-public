@@ -23,7 +23,30 @@ For finite-dimensional smooth bundles \(E\to X\), \(F\to Y\), an FIO of order \(
  \Omega_{X\times Y}^{1/2}\otimes\operatorname{Hom}(F,E)\bigr).
  \tag{1.2}
 \]
+Here \(I^m\) is the global class of the positive-ideal lesson, including
+\[
+ \operatorname{WF}(K_A)\subset (J')_{\mathbb R}.
+ \tag{1.2a}
+\]
+When the class is specified only on an open conic set \(\Gamma\), this inclusion and the phase representations are both restricted to \(\Gamma\). The global composition and continuity assertions below use the full kernel condition (1.2a), together with their stated proper-support hypotheses. By (1.1) this excludes wavefront directions on either cotangent axis, as required by the kernel mapping theorem.
+
 It takes compactly supported smooth sections of \(\Omega_Y^{1/2}\otimes F\) to distribution sections of \(\Omega_X^{1/2}\otimes E\). In coordinates the kernel half-density is \(|dx\,dy|^{1/2}\). Multiplying it by \(u(y)|dy|^{1/2}\) produces \(|dx|^{1/2}|dy|\), which can be integrated in \(y\). This explains the density type without an arbitrary choice of volume form. Smooth positive Hermitian metrics give the local \(L^2\) norms used below; changing such a metric on a compact patch gives equivalent norms.
+
+For a direct test of the global condition, take scalar bundles on \(\mathbb R\) and the identity canonical ideal, whose real zero set is \(x=y,\ \xi=\eta\ne0\). The kernel \(K_{\mathrm{bad}}(x,y)=\delta(x-1)\delta(y-2)\), with its coordinate half-density, vanishes near this diagonal. It has zero phase germs there of every order, but its operator is
+\[
+ A_{\mathrm{bad}}f=f(2)\delta_1.
+ \tag{1.2b}
+\]
+It violates (1.2a). Indeed, for a cutoff equal to one near \((1,2)\), its Fourier transform is \(e^{-i(\xi+2\eta)}\), which has no decay in any nonzero direction over \((1,2)\). This kernel is compactly supported, so proper support alone does not remedy the defect. It also fails local \(L^2\) boundedness: choose a smooth compactly supported \(f\) with \(f(2)\ne0\). The distribution \(\delta_1\) cannot equal an \(L^2\) function \(g\), because a smooth test function \(\varphi_\epsilon(x)=\varphi((x-1)/\epsilon)\), with compact support and \(\varphi(0)=1\), would give
+\[
+ \begin{aligned}
+ 1&=|\langle\delta_1,\varphi_\epsilon\rangle|\\
+  &\le \|g\|_2\,\epsilon^{1/2}\|\varphi\|_2
+   \longrightarrow0.
+ \end{aligned}
+ \tag{1.2c}
+\]
+The contradiction proves the claim and explains why representations only at the real zero set cannot define the global kernel class.
 
 Write \(n=n_X+n_Y\). In local trivializations an oscillatory representative is
 \[

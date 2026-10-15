@@ -17,8 +17,10 @@ The quaternions \(\mathbb H\) form the real algebra with basis \(1,i,j,k\) and \
 **Lemma 1.1** (estimates). For unit quaternions,
 \[
 \begin{aligned}
-\Bigl|\prod_{j=1}^na_j-\prod_{j=1}^nb_j\Bigr|&\le\sum_{j=1}^n|a_j-b_j|,\\
-|ab-ba|&\le2|a-1|\,|b-1|,
+&\Bigl|\prod_{j=1}^na_j-\prod_{j=1}^nb_j\Bigr|\\
+&\quad\le\sum_{j=1}^n|a_j-b_j|,\\
+&|ab-ba|\\
+&\quad\le2|a-1|\,|b-1|,
 \end{aligned}\tag{1.1}
 \]
 and \(|a^{-1}-1|=|a-1|=|gag^{-1}-1|\). In particular \(|a_1\cdots a_n-1|\le\sum_j|a_j-1|\).
@@ -75,13 +77,19 @@ Fix an odd prime \(p\), put \(\zeta=e^{2\pi i/p}\in J\), and let \(c\colon H^m\t
 
 *Regularizing the torus roots.* No root lies on \(\partial\mathcal O\), so each torus root has a coordinate neighbourhood, invariant under \(C_p\), lying in \(\mathcal O\) or outside \(\overline{\mathcal O}\); choose these neighbourhoods pairwise disjoint. In the neighbourhood of \(x\) add to \(F\) the map \((u,v)\mapsto s\chi(u,v)(0,v)\), where \(\chi\) is a smooth function of \(|u|^2+|v|^2\), equal to \(1\) near \(0\) and supported in the neighbourhood, and \(s\) is a small real number with \(\det_{\mathbb C}(N+sI)\ne0\); only finitely many values of \(s\) are excluded. The change is equivariant, vanishes on \(\{v=0\}\), and leaves the block \(B\) unchanged. The new derivative at \(x\) is invertible, and the sign of its determinant is
 \[
-\operatorname{sign}(\det B)\cdot\operatorname{sign}\det\nolimits_{\mathbb R}(N+sI)=\operatorname{sign}(\det B),
+\begin{aligned}
+&\operatorname{sign}(\det B)\cdot\operatorname{sign}\det\nolimits_{\mathbb R}(N+sI)\\
+&\qquad=\operatorname{sign}(\det B),
+\end{aligned}
 \]
 since the real determinant of a complex linear map is the square of the absolute value of its complex determinant. By the inverse function theorem, \(x\) is now the only root in the closure of a smaller invariant neighbourhood \(W_x\).
 
 *Regularizing the other roots.* Keep the map unchanged near the closures of the \(W_x\). The set \(Z\) of roots outside their union is closed, hence compact, and disjoint from \(J^m\): on \(J^m\) the map is still the torus homomorphism, whose roots are the torus roots. By compactness \(Z\) has positive distance from \(J^m\), and \(C_p\) acts freely near \(Z\). Cover \(Z\) by finitely many open sets \(W_1,\ldots,W_r\), each with closure in an open set \(W_l'\) whose \(p\) translates under \(C_p\) are pairwise disjoint and disjoint from \(J^m\) and the \(W_x\), and on which \(f\) takes values in a small ball around \(\mathbf 1\). For a parameter \(\lambda=(\lambda_1,\ldots,\lambda_r)\), \(\lambda_l\in(\operatorname{Im}\mathbb H)^m\), put
 \[
-f_\lambda(y)=\exp\Bigl(\log f(y)+\sum_{l=1}^r\sum_{q=0}^{p-1}\beta_l(c^{-q}y)\,\zeta^q\lambda_l\zeta^{-q}\Bigr)
+\begin{aligned}
+&f_\lambda(y)=\exp\Bigl(\log f(y)\\
+&\qquad+\sum_{l=1}^r\sum_{q=0}^{p-1}\beta_l(c^{-q}y)\,\zeta^q\lambda_l\zeta^{-q}\Bigr)
+\end{aligned}
 \]
 near the translates of the \(W_l'\), and \(f_\lambda=f\) elsewhere, where \(\beta_l\ge0\) is smooth, supported in \(W_l'\) and positive on \(\overline{W_l}\). For small \(\lambda\) the exponent stays in the ball of radius \(\pi\). The map \(f_\lambda\) is equivariant, since \(\log\) and \(\exp\) commute with conjugation, and it equals \(f\) on \(J^m\) and near the \(W_x\). At a root \(y\) of \(f_\lambda\) in a translate \(c^q(\overline{W_l})\), the derivative with respect to \(\lambda_l\) is the derivative of \(\exp\) composed with the invertible map \(\lambda_l\mapsto\beta_l(c^{-q}y)\zeta^q\lambda_l\zeta^{-q}\), hence surjective. For \(\lambda\) small enough, all roots of \(f_\lambda\) outside the \(W_x\) lie in the union of these translates, by compactness, since \(f\) has no roots in the compact complement of the \(W_x\) and of the translates of the \(W_l\). By Lemma 3.1 there are arbitrarily small \(\lambda\) for which \(\mathbf 1\) is a regular value of \(f_\lambda\) outside the \(W_x\); inside the \(W_x\) the only roots are the torus roots, which are regular. The homotopy \(\tau\mapsto f_{\tau\lambda}\) creates no roots on \(\partial\mathcal O\) when \(\lambda\) is small.
 

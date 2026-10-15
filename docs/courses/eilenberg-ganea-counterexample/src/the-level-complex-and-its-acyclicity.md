@@ -19,14 +19,22 @@ We use: from [The cube complex and its universal cover](the-cube-complex-and-its
 3. The barycentric subdivision of a finite simplicial complex, the order complex of its poset of nonempty simplices, is homeomorphic to it.
 4. Convex polytopes glued along common faces, such that every face of a polytope is a polytope of the family and two polytopes meet in a common face, form a CW complex with the same underlying space. If such a complex is the union of two subcomplexes \(A\) and \(B\) with \(A\cap B\ne\varnothing\), there is an exact Mayer–Vietoris sequence
 \[
-\cdots\to\widetilde H_k(A\cap B)\to\widetilde H_k(A)\oplus\widetilde H_k(B)\to\widetilde H_k(A\cup B)\to\widetilde H_{k-1}(A\cap B)\to\cdots .
+\begin{aligned}
+\cdots&\to\widetilde H_k(A\cap B)\\
+&\to\widetilde H_k(A)\oplus\widetilde H_k(B)\\
+&\to\widetilde H_k(A\cup B)\\
+&\to\widetilde H_{k-1}(A\cap B)\to\cdots .
+\end{aligned}
 \]
 
 ## 1. The chain triangulation and heights
 
 On the cube \(\chi_{g,\sigma}\), with coordinates \(x\in[0,1]^\sigma\), put
 \[
-\lambda\bigl(\chi_{g,\sigma}(x)\bigr)=\lambda(g)+\sum_{q\in\sigma}x_q .\tag{1.1}
+\begin{aligned}
+&\lambda\bigl(\chi_{g,\sigma}(x)\bigr)\\
+&\quad=\lambda(g)+\sum_{q\in\sigma}x_q .
+\end{aligned}\tag{1.1}
 \]
 On the face \(\{x_q=1\}\), which is \(\chi_{ga_q,\sigma\setminus q}\), the formula for that cube gives \(\lambda(g)+1+\sum_{r\ne q}x_r\), the same value; on \(\{x_q=0\}\) it is clear. So (1.1) defines a continuous map \(\lambda\colon E\to\mathbb R\) extending the height on the vertices, and \(\lambda(hx)=\lambda(h)+\lambda(x)\) for \(h\in P\). In particular \(G\) preserves every level \(\lambda^{-1}(c)\).
 
@@ -42,7 +50,12 @@ x=(1-c_1)\mathbf 1_\varnothing+\sum_{j=1}^m(c_j-c_{j+1})\mathbf 1_{\tau_j}
 
 **Lemma 1.2** (the triangulation of \(E\)). Transporting the chain triangulations by the maps \(\chi_{g,\sigma}\) makes \(E\) a locally finite simplicial complex \(T\) with vertex set \(P\). Its simplices are the sets
 \[
-\Bigl\{v,\ v\prod_{q\in\tau_1}a_q,\ \ldots,\ v\prod_{q\in\tau_m}a_q\Bigr\},\qquad\varnothing\ne\tau_1\subsetneq\cdots\subsetneq\tau_m\ \text{a chain of cliques},\tag{1.2}
+\begin{aligned}
+&\Bigl\{v,\ v\prod_{q\in\tau_1}a_q,\ \ldots,\\
+&\qquad v\prod_{q\in\tau_m}a_q\Bigr\},\\
+&\varnothing\ne\tau_1\subsetneq\cdots\subsetneq\tau_m\\
+&\qquad\text{a chain of cliques},
+\end{aligned}\tag{1.2}
 \]
 and the heights of the vertices of a simplex are pairwise distinct: they are \(\lambda(v)<\lambda(v)+|\tau_1|<\cdots<\lambda(v)+|\tau_m|\).
 
@@ -66,7 +79,10 @@ From now on \(L\) is acyclic and nonempty. For \(n\ge0\) let \(K_n\) be the full
 
 *Proof.* A simplex of \(K_{n+1}\) not in \(K_n\) contains a vertex \(p\) of height \(-n-1\), and only one, since the heights in a simplex are distinct (Lemma 1.2); its other vertices have greater heights, so the simplex is the join of \(p\) with a simplex of \(\operatorname{Asc}(p)\) or with \(\varnothing\). Hence the relative simplicial chain complex is a direct sum over the vertices \(p\) of height \(-n-1\),
 \[
-C_*(K_{n+1},K_n)\cong\bigoplus_pC_*\bigl(p*\operatorname{Asc}(p),\operatorname{Asc}(p)\bigr),
+\begin{aligned}
+&C_*(K_{n+1},K_n)\\
+&\quad\cong\bigoplus_pC_*\bigl(p*\operatorname{Asc}(p),\operatorname{Asc}(p)\bigr),
+\end{aligned}
 \]
 where \(p*\operatorname{Asc}(p)\) is the cone. The cone is contractible, so the exact sequence of the pair gives \(H_k(p*\operatorname{Asc}(p),\operatorname{Asc}(p))\cong\widetilde H_{k-1}(\operatorname{Asc}(p))=0\) by Lemma 2.1. So \(H_*(K_{n+1},K_n)=0\), and the exact sequence of the pair \((K_{n+1},K_n)\) gives the claim, by (SIMP 1). There may be infinitely many vertices of height \(-n-1\); the direct sum takes care of them. \(\square\)
 
@@ -94,7 +110,10 @@ are subcomplexes.
 
 *Proof.* \(X\) contains the vertex \(1\). By (SIMP 4), the Mayer–Vietoris sequence of \(E=E_+\cup E_-\) gives exact sequences
 \[
-\widetilde H_{k+1}(E)\to\widetilde H_k(X)\to\widetilde H_k(E_+)\oplus\widetilde H_k(E_-),
+\begin{aligned}
+\widetilde H_{k+1}(E)&\to\widetilde H_k(X)\\
+&\to\widetilde H_k(E_+)\oplus\widetilde H_k(E_-),
+\end{aligned}
 \]
 whose outer terms vanish by Theorem 4.2 of the lesson on the cube complex and by Lemma 3.3. So \(\widetilde H_k(X)=0\) for all \(k\), and \(\widetilde H_0(X)=0\) says that \(X\) is connected. \(\square\)
 
@@ -110,7 +129,10 @@ The level is not claimed to be simply connected, and for the complex \(L\) of th
 
 Order the vertex set \(V\) of \(L\). For every edge \(\{q,r\}\) of \(L\) with \(q<r\) introduce a letter \(s_{qr}\) with value \(a_q^{-1}a_r\in G\), and let \(S\) be the set of these letters. For every triangle \(\{q,r,s\}\) of \(L\) with \(q<r<s\), introduce the two words
 \[
-z_{qrs}=s_{qr}\,s_{rs}\,s_{qs}^{-1},\qquad z'_{qrs}=s_{rs}\,s_{qr}\,s_{qs}^{-1},\tag{5.1}
+\begin{aligned}
+z_{qrs}&=s_{qr}\,s_{rs}\,s_{qs}^{-1},\\
+z'_{qrs}&=s_{rs}\,s_{qr}\,s_{qs}^{-1},
+\end{aligned}\tag{5.1}
 \]
 and let \(\mathcal D\) be the list of these words. Dicks and Leary gave presentations of \(G\) whose generators are the directed edges of \(L\), the edge from \(q\) to \(r\) standing for \(a_qa_r^{-1}\), and in which every triangle of \(L\) contributes two relators of length three; they remark that the group defined by these relators and the relators \(e\bar e\) of length two arises in the work of Bestvina and Brady as the fundamental group of a level set [Dicks–Leary, Theorem 1, Proposition 2 and the remark after Corollary 3]. Since \(a_q\) and \(a_r\) commute, the value of \(s_{qr}\) is that of the edge from \(r\) to \(q\).
 
@@ -120,7 +142,11 @@ and let \(\mathcal D\) be the list of these words. Dicks and Leary gave presenta
 2. \(G\) acts freely on \(X\), with finitely many orbits of cells and one orbit of vertices;
 3. the words of \(\mathcal D\) have value \(1\) in \(G\), and for \(\Lambda=\mathbb ZG\) the sequence
 \[
-0\to\Lambda^{(\mathcal D)}\xrightarrow{\ \partial_2\ }\Lambda^{(S)}\xrightarrow{\ \partial_1\ }\Lambda\to\mathbb Z\to0,\qquad\partial_1(e_s)=\bar s-1,\quad\partial_2(e_z)=[z],
+\begin{aligned}
+&0\to\Lambda^{(\mathcal D)}\xrightarrow{\ \partial_2\ }\Lambda^{(S)}\\
+&\qquad\xrightarrow{\ \partial_1\ }\Lambda\to\mathbb Z\to0,\\
+&\partial_1(e_s)=\bar s-1,\quad\partial_2(e_z)=[z],
+\end{aligned}
 \]
 is exact. In particular the chains \([z]\), \(z\in\mathcal D\), form a \(\Lambda\)-basis of the cycle module of the generator graph of \(S\).
 

@@ -39,7 +39,7 @@ The complete algebra disintegration is [DC7](../../OA-MOD/OA-MOD-DC.html#existen
 \]
 The all-positive MW formula at \(1\) proves \(0<r<\infty\) almost everywhere and \(\int r\,d\widetilde\mu=1\). Its compatible GNS transport has fibre norm factor \(r^{-1/2}\), compensated by the change of measure. It is a unitary of integrals; the coordinate maps are not incorrectly treated as fibre unitaries. The base identification at L41 lines 189–210 is a proved Borel isomorphism on conull sets. L41 (A16), lines 211–224, proves the Hilbert, whole-algebra, GNS and modular identities, including all closed-operator domains.
 
-The entire missing cone clause is already proved at L41 lines 233–287. There the [GFR7](../../OA-MOD/OA-MOD-GFR.html#a-common-countable-strong-dense-contraction-family) contractions \(q_i(x)\) give positive sections \(a_j=kq_i^*q_i\), and
+The cone identity is proved in [L41's cone construction](OA-FLOW-L41.md#oa-flow.cstd.cone), lines 233–287. There the [GFR7](../../OA-MOD/OA-MOD-GFR.html#a-common-countable-strong-dense-contraction-family) contractions \(q_i(x)\) give positive sections \(a_j=kq_i^*q_i\), and
 \[
  v_j(x)=\Delta_x^{1/4}a_j(x)\Omega_x,
  \qquad \Omega_x=\Lambda_{\varphi_x}(1).
