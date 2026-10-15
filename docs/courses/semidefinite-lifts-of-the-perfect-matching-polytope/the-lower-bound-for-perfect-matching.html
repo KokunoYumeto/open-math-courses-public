@@ -1,0 +1,192 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The lower bound for perfect matching</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Semidefinite lifts of the perfect matching polytope)</a><a href="an-expanding-parity-system.html">Previous lesson</a><a href="uniform-smoothing-of-matching-averages.html">Next lesson</a><a href="src/the-lower-bound-for-perfect-matching.md">Editable source</a></nav><main><article><h1 id="the-lower-bound-for-perfect-matching">The lower bound for perfect matching</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves Theorem 4.3 and Corollary 4.4 of <a href="psd-factorizations-and-semidefinite-lifts.html">PSD factorizations and semidefinite lifts</a>: the shifted matching matrices <span class="math" data-tex="\(A_n(\rho)\)">\(A_n(\rho)\)</span>, <span class="math" data-tex="\(0&lt;\rho&lt;1\)">\(0&lt;\rho&lt;1\)</span>, have PSD rank <span class="math" data-tex="\(2^{\Omega(n)}\)">\(2^{\Omega(n)}\)</span>, and every semidefinite lift of the perfect matching polytope has size <span class="math" data-tex="\(2^{\Omega(n)}\)">\(2^{\Omega(n)}\)</span> [OpenAI-PSD, Section 6]. The three ingredients are the local averaging theorem of <a href="averaging-within-a-cell.html">Averaging within a cell</a>, the Fourier smoothing theorem of <a href="fourier-smoothing-of-matrix-squares.html">Fourier smoothing of matrix squares</a>, and the separating functional of <a href="an-expanding-parity-system.html">An expanding parity system</a>. The vertices of the expanding graph become cells of vertices of <span class="math" data-tex="\(K_n\)">\(K_n\)</span>, and averaging a row factor within the cells realizes the parity disagreement function exactly.</p>
+<ul>
+<li>The constants (Section 1).</li>
+<li>Realizing the parity system by odd cuts and matchings (Section 2).</li>
+<li>Proof of the main theorem (Section 3).</li>
+<li>Semidefinite lifts (Section 4).</li>
+</ul>
+<h2 id="1-the-constants">1. The constants</h2>
+<p>Use the constants <span class="math" data-tex="\(d=100\)">\(d=100\)</span>, <span class="math" data-tex="\(\beta=1/100\)">\(\beta=1/100\)</span> and <span class="math" data-tex="\(\tau=1/1000\)">\(\tau=1/1000\)</span> of <a href="an-expanding-parity-system.html">An expanding parity system</a>, put <span class="math" data-tex="\(L=2^{d-1}\)">\(L=2^{d-1}\)</span>, and let <span class="math" data-tex="\(C_L=2^{L-1}\)">\(C_L=2^{L-1}\)</span> be the constant of the splitting lemma. Choose <span class="math" data-tex="\(\lambda&gt;1\)">\(\lambda&gt;1\)</span> with
+<span class="math math-display" data-tex="\[
+\lambda^\tau\ge64L^4 .
+\tag{1.1}
+\]">\[
+\lambda^\tau\ge64L^4 .
+\tag{1.1}
+\]</span>
+Let <span class="math" data-tex="\(\theta_d(k)\)">\(\theta_d(k)\)</span> be as in Theorem 5.1 of <a href="averaging-within-a-cell.html">Averaging within a cell</a>. Since <span class="math" data-tex="\(\theta_d(k)\to0\)">\(\theta_d(k)\to0\)</span>, we can fix an even integer <span class="math" data-tex="\(k\)">\(k\)</span>, satisfying the size condition of that theorem, with
+<span class="math math-display" data-tex="\[
+L\lambda^2C_L\,\theta_d(k)\le1 .
+\tag{1.2}
+\]">\[
+L\lambda^2C_L\,\theta_d(k)\le1 .
+\tag{1.2}
+\]</span>
+These constants are absolute: they do not depend on <span class="math" data-tex="\(n\)">\(n\)</span> or on <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. They are very large, and the rate <span class="math" data-tex="\(c=1/(2k)\)">\(c=1/(2k)\)</span> obtained below is correspondingly small.</p>
+<h2 id="2-realizing-the-parity-system-by-odd-cuts-and-matchings">2. Realizing the parity system by odd cuts and matchings</h2>
+<p>Let <span class="math" data-tex="\(n\)">\(n\)</span> be even and large, and let <span class="math" data-tex="\(t\)">\(t\)</span> be the largest even integer with <span class="math" data-tex="\(kt\le n\)">\(kt\le n\)</span>, so that
+<span class="math math-display" data-tex="\[
+kt\le n&lt;k(t+2).
+\tag{2.1}
+\]">\[
+kt\le n&lt;k(t+2).
+\tag{2.1}
+\]</span>
+Assume <span class="math" data-tex="\(t\ge1000\)">\(t\ge1000\)</span>. Let <span class="math" data-tex="\(H\)">\(H\)</span> be a bipartite <span class="math" data-tex="\(d\)">\(d\)</span>-regular multigraph on <span class="math" data-tex="\([t]\)">\([t]\)</span> as in Lemma 1.2 of <a href="an-expanding-parity-system.html">An expanding parity system</a>, with ordered incidences, and with bits <span class="math" data-tex="\(b_i\in\{0,1\}\)">\(b_i\in\{0,1\}\)</span> of which exactly one equals one. For <span class="math" data-tex="\(e=uv\in E(H)\)">\(e=uv\in E(H)\)</span>, let <span class="math" data-tex="\(j_u(e)\)">\(j_u(e)\)</span> and <span class="math" data-tex="\(j_v(e)\)">\(j_v(e)\)</span> be its positions at <span class="math" data-tex="\(u\)">\(u\)</span> and at <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><em>Cells and cuts.</em> Choose disjoint subsets <span class="math" data-tex="\(C_1,\ldots,C_t\)">\(C_1,\ldots,C_t\)</span> of <span class="math" data-tex="\([n]\)">\([n]\)</span> with <span class="math" data-tex="\(k\)">\(k\)</span> elements each, the <em>cells</em>. The remaining <span class="math" data-tex="\(n-kt\)">\(n-kt\)</span> vertices are even in number; pair them by a fixed perfect matching <span class="math" data-tex="\(M_{\mathrm{rest}}\)">\(M_{\mathrm{rest}}\)</span>. In cell <span class="math" data-tex="\(i\)">\(i\)</span>, let <span class="math" data-tex="\(w_i\in\{k/2,k/2+1\}\)">\(w_i\in\{k/2,k/2+1\}\)</span> have the parity of <span class="math" data-tex="\(b_i\)">\(b_i\)</span>, and let <span class="math" data-tex="\(X_i\)">\(X_i\)</span> be the set of subsets of <span class="math" data-tex="\(C_i\)">\(C_i\)</span> with <span class="math" data-tex="\(w_i\)">\(w_i\)</span> elements. For <span class="math" data-tex="\(a=(a_1,\ldots,a_t)\in\prod_iX_i\)">\(a=(a_1,\ldots,a_t)\in\prod_iX_i\)</span> put
+<span class="math math-display" data-tex="\[
+U(a)=a_1\cup\cdots\cup a_t .
+\]">\[
+U(a)=a_1\cup\cdots\cup a_t .
+\]</span>
+Since <span class="math" data-tex="\(|U(a)|=\sum_iw_i\equiv\sum_ib_i=1\pmod2\)">\(|U(a)|=\sum_iw_i\equiv\sum_ib_i=1\pmod2\)</span>, the set <span class="math" data-tex="\(U(a)\)">\(U(a)\)</span> is odd.</p>
+<p><em>Matchings.</em> Identify each cell with <span class="math" data-tex="\([k]\)">\([k]\)</span>, and let <span class="math" data-tex="\(\mathcal M_i\)">\(\mathcal M_i\)</span> be the set of local column data of Section 1 of <a href="averaging-within-a-cell.html">Averaging within a cell</a> for the cell <span class="math" data-tex="\(C_i\)">\(C_i\)</span>: terminals <span class="math" data-tex="\(v^i_1,\ldots,v^i_d\in C_i\)">\(v^i_1,\ldots,v^i_d\in C_i\)</span> and a perfect matching of the other vertices of <span class="math" data-tex="\(C_i\)">\(C_i\)</span>. For <span class="math" data-tex="\(m=(m_1,\ldots,m_t)\in\prod_i\mathcal M_i\)">\(m=(m_1,\ldots,m_t)\in\prod_i\mathcal M_i\)</span>, let <span class="math" data-tex="\(M(m)\)">\(M(m)\)</span> consist of</p>
+<ul>
+<li>for each edge <span class="math" data-tex="\(e=uv\)">\(e=uv\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span>, the edge of <span class="math" data-tex="\(K_n\)">\(K_n\)</span> joining the terminals <span class="math" data-tex="\(v^u_{j_u(e)}\)">\(v^u_{j_u(e)}\)</span> and <span class="math" data-tex="\(v^v_{j_v(e)}\)">\(v^v_{j_v(e)}\)</span>;</li>
+<li>the internal pairs of every <span class="math" data-tex="\(m_i\)">\(m_i\)</span>;</li>
+<li>the edges of <span class="math" data-tex="\(M_{\mathrm{rest}}\)">\(M_{\mathrm{rest}}\)</span>.</li>
+</ul>
+<p>The <span class="math" data-tex="\(d\)">\(d\)</span> terminals of cell <span class="math" data-tex="\(i\)">\(i\)</span> correspond to the <span class="math" data-tex="\(d\)">\(d\)</span> incidences at the vertex <span class="math" data-tex="\(i\)">\(i\)</span>, and every incidence belongs to exactly one edge of <span class="math" data-tex="\(H\)">\(H\)</span>; so every vertex of <span class="math" data-tex="\(K_n\)">\(K_n\)</span> lies in exactly one edge of <span class="math" data-tex="\(M(m)\)">\(M(m)\)</span>, and <span class="math" data-tex="\(M(m)\)">\(M(m)\)</span> is a perfect matching. Parallel edges of <span class="math" data-tex="\(H\)">\(H\)</span> use different positions, hence different terminals. Different local data may give the same matching; this does no harm.</p>
+<p><em>Restrictions.</em> Let <span class="math" data-tex="\(Y_i\subseteq\{0,1\}^d\)">\(Y_i\subseteq\{0,1\}^d\)</span> be the assignments of parity <span class="math" data-tex="\(b_i\)">\(b_i\)</span>, as in (2.1) of <a href="an-expanding-parity-system.html">An expanding parity system</a>; it is the set <span class="math" data-tex="\(Y_{b_i}\)">\(Y_{b_i}\)</span> of <a href="averaging-within-a-cell.html">Averaging within a cell</a>. For <span class="math" data-tex="\(y=(y_1,\ldots,y_t)\in\prod_iY_i\)">\(y=(y_1,\ldots,y_t)\in\prod_iY_i\)</span> and <span class="math" data-tex="\(m\in\prod_i\mathcal M_i\)">\(m\in\prod_i\mathcal M_i\)</span>, let <span class="math" data-tex="\(\pi^{m_i}_{y_i}\)">\(\pi^{m_i}_{y_i}\)</span> be the probability measure of that lesson on <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, and put <span class="math" data-tex="\(f=f_\varepsilon\)">\(f=f_\varepsilon\)</span> with <span class="math" data-tex="\(\varepsilon=1-\rho\)">\(\varepsilon=1-\rho\)</span>, as in (2.2) of the parity lesson.</p>
+<p><strong>Lemma 2.1</strong> (realization). If every <span class="math" data-tex="\(a_i\)">\(a_i\)</span> lies in the support of <span class="math" data-tex="\(\pi^{m_i}_{y_i}\)">\(\pi^{m_i}_{y_i}\)</span>, then
+<span class="math math-display" data-tex="\[
+|M(m)\cap\delta(U(a))|-1+\rho=f(y).
+\]">\[
+|M(m)\cap\delta(U(a))|-1+\rho=f(y).
+\]</span></p>
+<p><em>Proof.</em> An internal pair of <span class="math" data-tex="\(m_i\)">\(m_i\)</span> has equal values of <span class="math" data-tex="\(\mathbf 1_{a_i}\)">\(\mathbf 1_{a_i}\)</span>, so its two vertices are both in <span class="math" data-tex="\(U(a)\)">\(U(a)\)</span> or both outside, and the pair does not cross <span class="math" data-tex="\(\delta(U(a))\)">\(\delta(U(a))\)</span>. The vertices outside the cells are not in <span class="math" data-tex="\(U(a)\)">\(U(a)\)</span>, so <span class="math" data-tex="\(M_{\mathrm{rest}}\)">\(M_{\mathrm{rest}}\)</span> does not cross either. The edge for <span class="math" data-tex="\(e=uv\)">\(e=uv\)</span> has the endpoint <span class="math" data-tex="\(v^u_{j_u(e)}\in C_u\)">\(v^u_{j_u(e)}\in C_u\)</span>, which lies in <span class="math" data-tex="\(U(a)\)">\(U(a)\)</span> exactly when <span class="math" data-tex="\(y_{u,j_u(e)}=y_{u,e}=1\)">\(y_{u,j_u(e)}=y_{u,e}=1\)</span>, and likewise at <span class="math" data-tex="\(v\)">\(v\)</span>. So it crosses exactly when <span class="math" data-tex="\(y_{u,e}\ne y_{v,e}\)">\(y_{u,e}\ne y_{v,e}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;|M(m)\cap\delta(U(a))|-1+\rho\\&amp;\quad=\sum_{e=uv}\mathbf 1_{\{y_{u,e}\ne y_{v,e}\}}-(1-\rho)\\&amp;\quad=f(y). \qquad\square\end{aligned}
+\]">\[
+\begin{aligned}&amp;|M(m)\cap\delta(U(a))|-1+\rho\\&amp;\quad=\sum_{e=uv}\mathbf 1_{\{y_{u,e}\ne y_{v,e}\}}-(1-\rho)\\&amp;\quad=f(y). \qquad\square\end{aligned}
+\]</span></p>
+<h2 id="3-proof-of-the-main-theorem">3. Proof of the main theorem</h2>
+<p><em>Proof of Theorem 4.3 of <a href="psd-factorizations-and-semidefinite-lifts.html">PSD factorizations and semidefinite lifts</a>.</em> Fix <span class="math" data-tex="\(0&lt;\rho&lt;1\)">\(0&lt;\rho&lt;1\)</span>, put <span class="math" data-tex="\(\varepsilon=1-\rho\)">\(\varepsilon=1-\rho\)</span>, and let <span class="math" data-tex="\(n\)">\(n\)</span> be even and so large that the <span class="math" data-tex="\(t\)">\(t\)</span> of (2.1) satisfies <span class="math" data-tex="\(t\ge1000\)">\(t\ge1000\)</span>. Suppose that <span class="math" data-tex="\(A_n(\rho)\)">\(A_n(\rho)\)</span> has a PSD factorization of size at most <span class="math" data-tex="\(2^t\)">\(2^t\)</span>. We derive a contradiction when <span class="math" data-tex="\(n\)">\(n\)</span> is large enough in terms of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+<p><em>A normalized factorization.</em> The entries of <span class="math" data-tex="\(A_n(\rho)\)">\(A_n(\rho)\)</span> are positive and at most <span class="math" data-tex="\(n/2\le n\)">\(n/2\le n\)</span>. Lemma 2.3 of <a href="psd-factorizations-and-semidefinite-lifts.html">PSD factorizations and semidefinite lifts</a> gives a factorization of some size <span class="math" data-tex="\(r\le2^t\)">\(r\le2^t\)</span> with
+<span class="math math-display" data-tex="\[
+\operatorname{tr}F_U\le n,\qquad\operatorname{tr}G_M\le r .
+\]">\[
+\operatorname{tr}F_U\le n,\qquad\operatorname{tr}G_M\le r .
+\]</span>
+Put <span class="math" data-tex="\(F(a)=F_{U(a)}\)">\(F(a)=F_{U(a)}\)</span> for <span class="math" data-tex="\(a\in\prod_iX_i\)">\(a\in\prod_iX_i\)</span>, and for <span class="math" data-tex="\(m\in\prod_i\mathcal M_i\)">\(m\in\prod_i\mathcal M_i\)</span>
+<span class="math math-display" data-tex="\[
+\overline F_m(y)=\sum_a\Bigl(\prod_{i=1}^t\pi^{m_i}_{y_i}(a_i)\Bigr)F(a).
+\]">\[
+\overline F_m(y)=\sum_a\Bigl(\prod_{i=1}^t\pi^{m_i}_{y_i}(a_i)\Bigr)F(a).
+\]</span>
+Each <span class="math" data-tex="\(a\)">\(a\)</span> with a nonzero coefficient satisfies Lemma 2.1, and the coefficients are probabilities, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}\operatorname{tr}\bigl(\overline F_m(y)\,G_{M(m)}\bigr)=f(y)\\ \bigl(y\in\textstyle\prod_iY_i\bigr).\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}\operatorname{tr}\bigl(\overline F_m(y)\,G_{M(m)}\bigr)=f(y)\\ \bigl(y\in\textstyle\prod_iY_i\bigr).\end{gathered}\tag{3.1}
+\]</span></p>
+<p><em>Fourier smoothing.</em> Identify each <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> with <span class="math" data-tex="\(\mathbb F_2^{d-1}\)">\(\mathbb F_2^{d-1}\)</span> through its first <span class="math" data-tex="\(d-1\)">\(d-1\)</span> bits; the characters of <a href="fourier-smoothing-of-matrix-squares.html">Fourier smoothing of matrix squares</a>, with <span class="math" data-tex="\(a=d-1\)">\(a=d-1\)</span>, are then the characters <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> of the parity lesson. Theorem 5.1 of <a href="averaging-within-a-cell.html">Averaging within a cell</a> gives the hypotheses (2.1) and (2.2) of Theorem 2.1 of the smoothing lesson with <span class="math" data-tex="\(\theta=\theta_d(k)\)">\(\theta=\theta_d(k)\)</span>, since <span class="math" data-tex="\(\mathbb E|B-\mathbb E B|^2\le\mathbb E B^2\)">\(\mathbb E|B-\mathbb E B|^2\le\mathbb E B^2\)</span>; and (1.2) is its condition (2.3). That theorem, with <span class="math" data-tex="\(B=n\)">\(B=n\)</span>, gives some <span class="math" data-tex="\(m\)">\(m\)</span> and functions <span class="math" data-tex="\(H_q\colon\prod_iY_i\to\mathbb R^{R\times r}\)">\(H_q\colon\prod_iY_i\to\mathbb R^{R\times r}\)</span>, <span class="math" data-tex="\(q\in\Lambda^t\)">\(q\in\Lambda^t\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\overline F_m(y)\\&amp;\quad=\sum_qH_q(y)^{\mathsf T}H_q(y),\end{aligned}\tag{3.2}
+\]">\[
+\begin{aligned}&amp;\overline F_m(y)\\&amp;\quad=\sum_qH_q(y)^{\mathsf T}H_q(y),\end{aligned}\tag{3.2}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\sum_{q,p}\lambda^{\operatorname{dist}(q,p)}\|\widehat H_{q,p}\|_{\mathrm F}^2\\&amp;\quad\le L^t\sqrt r\,n\,2^{t/2}.\end{aligned}\tag{3.3}
+\]">\[
+\begin{aligned}&amp;\sum_{q,p}\lambda^{\operatorname{dist}(q,p)}\|\widehat H_{q,p}\|_{\mathrm F}^2\\&amp;\quad\le L^t\sqrt r\,n\,2^{t/2}.\end{aligned}\tag{3.3}
+\]</span>
+Fix these data and put <span class="math" data-tex="\(G=G_{M(m)}\)">\(G=G_{M(m)}\)</span>. Since <span class="math" data-tex="\(\operatorname{tr}(H^{\mathsf T}HG)=\operatorname{tr}(G^{1/2}H^{\mathsf T}HG^{1/2})\)">\(\operatorname{tr}(H^{\mathsf T}HG)=\operatorname{tr}(G^{1/2}H^{\mathsf T}HG^{1/2})\)</span>, (3.1) and (3.2) give
+<span class="math math-display" data-tex="\[
+f(y)=\sum_q\bigl\|H_q(y)G^{1/2}\bigr\|_{\mathrm F}^2 .
+\tag{3.4}
+\]">\[
+f(y)=\sum_q\bigl\|H_q(y)G^{1/2}\bigr\|_{\mathrm F}^2 .
+\tag{3.4}
+\]</span></p>
+<p><em>Truncation.</em> Let <span class="math" data-tex="\(D=\lfloor\tau t\rfloor\)">\(D=\lfloor\tau t\rfloor\)</span>. In each branch keep the frequencies within distance <span class="math" data-tex="\(D\)">\(D\)</span> of the center:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_q(y)=\sum_{p:\,\operatorname{dist}(q,p)\le D}\widehat H_{q,p}\,\chi_p(y),\\
+f_*(y)=\sum_q\bigl\|K_q(y)G^{1/2}\bigr\|_{\mathrm F}^2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+K_q(y)=\sum_{p:\,\operatorname{dist}(q,p)\le D}\widehat H_{q,p}\,\chi_p(y),\\
+f_*(y)=\sum_q\bigl\|K_q(y)G^{1/2}\bigr\|_{\mathrm F}^2 .
+\end{gathered}
+\]</span>
+The discarded part satisfies, for every <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}E(y)^2&amp;:=\sum_q\bigl\|(H_q(y)-K_q(y))G^{1/2}\bigr\|_{\mathrm F}^2\\&amp;\le L^t\sum_{q,\ p:\,\operatorname{dist}(q,p)&gt;D}\bigl\|\widehat H_{q,p}G^{1/2}\bigr\|_{\mathrm F}^2\\&amp;\le L^t\,r\,\lambda^{-\tau t}\,L^t\sqrt r\,n\,2^{t/2}\\&amp;\le n\Bigl(\frac{4L^2}{\lambda^\tau}\Bigr)^t\le n\,(4L)^{-2t}.\end{aligned}
+\]">\[
+\begin{aligned}E(y)^2&amp;:=\sum_q\bigl\|(H_q(y)-K_q(y))G^{1/2}\bigr\|_{\mathrm F}^2\\&amp;\le L^t\sum_{q,\ p:\,\operatorname{dist}(q,p)&gt;D}\bigl\|\widehat H_{q,p}G^{1/2}\bigr\|_{\mathrm F}^2\\&amp;\le L^t\,r\,\lambda^{-\tau t}\,L^t\sqrt r\,n\,2^{t/2}\\&amp;\le n\Bigl(\frac{4L^2}{\lambda^\tau}\Bigr)^t\le n\,(4L)^{-2t}.\end{aligned}
+\]</span>
+The first inequality is the triangle inequality, <span class="math" data-tex="\(|\chi_p|=1\)">\(|\chi_p|=1\)</span>, and the Cauchy–Schwarz inequality over the at most <span class="math" data-tex="\(L^t\)">\(L^t\)</span> frequencies of each branch. In the second, <span class="math" data-tex="\(\|\widehat HG^{1/2}\|_{\mathrm F}^2=\operatorname{tr}(\widehat HG\widehat H^{\mathsf T})\)">\(\|\widehat HG^{1/2}\|_{\mathrm F}^2=\operatorname{tr}(\widehat HG\widehat H^{\mathsf T})\)</span>, which is at most <span class="math" data-tex="\(\|G\|_{\mathrm{op}}\|\widehat H\|_{\mathrm F}^2\le r\|\widehat H\|_{\mathrm F}^2\)">\(\|G\|_{\mathrm{op}}\|\widehat H\|_{\mathrm F}^2\le r\|\widehat H\|_{\mathrm F}^2\)</span>, by Lemma 1.1(3) of <a href="psd-factorizations-and-semidefinite-lifts.html">PSD factorizations and semidefinite lifts</a>; an integer distance larger than <span class="math" data-tex="\(D\)">\(D\)</span> is larger than <span class="math" data-tex="\(\tau t\)">\(\tau t\)</span>, so <span class="math" data-tex="\(1\le\lambda^{\operatorname{dist}(q,p)-\tau t}\)">\(1\le\lambda^{\operatorname{dist}(q,p)-\tau t}\)</span>; and (3.3) applies. The last line uses <span class="math" data-tex="\(r\le2^t\)">\(r\le2^t\)</span>, so <span class="math" data-tex="\(r^{3/2}2^{t/2}\le4^t\)">\(r^{3/2}2^{t/2}\le4^t\)</span>, and (1.1).</p>
+<p><em>The uniform error.</em> For fixed <span class="math" data-tex="\(y\)">\(y\)</span>, let <span class="math" data-tex="\(\mathbf S\)">\(\mathbf S\)</span> be the stack of the matrices <span class="math" data-tex="\(H_q(y)G^{1/2}\)">\(H_q(y)G^{1/2}\)</span> and <span class="math" data-tex="\(\mathbf S_*\)">\(\mathbf S_*\)</span> that of the <span class="math" data-tex="\(K_q(y)G^{1/2}\)">\(K_q(y)G^{1/2}\)</span>. Then <span class="math" data-tex="\(f(y)=\|\mathbf S\|_{\mathrm F}^2\le n\)">\(f(y)=\|\mathbf S\|_{\mathrm F}^2\le n\)</span>, <span class="math" data-tex="\(f_*(y)=\|\mathbf S_*\|_{\mathrm F}^2\)">\(f_*(y)=\|\mathbf S_*\|_{\mathrm F}^2\)</span> and <span class="math" data-tex="\(\|\mathbf S-\mathbf S_*\|_{\mathrm F}=E(y)\)">\(\|\mathbf S-\mathbf S_*\|_{\mathrm F}=E(y)\)</span>. Since
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\bigl|\|\mathbf S\|^2-\|\mathbf S_*\|^2\bigr|\\&amp;\quad\le\|\mathbf S-\mathbf S_*\|\,(2\|\mathbf S\|+\|\mathbf S-\mathbf S_*\|),\end{aligned}
+\]">\[
+\begin{aligned}&amp;\bigl|\|\mathbf S\|^2-\|\mathbf S_*\|^2\bigr|\\&amp;\quad\le\|\mathbf S-\mathbf S_*\|\,(2\|\mathbf S\|+\|\mathbf S-\mathbf S_*\|),\end{aligned}
+\]</span>
+the bound for <span class="math" data-tex="\(E(y)^2\)">\(E(y)^2\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}\|f-f_*\|_\infty\\ \le2n(4L)^{-t}+n(4L)^{-2t}.\end{gathered}\tag{3.6}
+\]">\[
+\begin{gathered}\|f-f_*\|_\infty\\ \le2n(4L)^{-t}+n(4L)^{-2t}.\end{gathered}\tag{3.6}
+\]</span></p>
+<p><em>The separating functional.</em> For each <span class="math" data-tex="\(q\)">\(q\)</span>, the coefficients of <span class="math" data-tex="\(K_qG^{1/2}\)">\(K_qG^{1/2}\)</span> vanish at the frequencies <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(\operatorname{dist}(q,p)&gt;D\)">\(\operatorname{dist}(q,p)&gt;D\)</span>. By Lemma 1.2 of <a href="fourier-smoothing-of-matrix-squares.html">Fourier smoothing of matrix squares</a>, every entry of <span class="math" data-tex="\(\chi_qK_qG^{1/2}\)">\(\chi_qK_qG^{1/2}\)</span> has block degree at most <span class="math" data-tex="\(D\)">\(D\)</span>, and <span class="math" data-tex="\(\|\chi_qK_qG^{1/2}\|_{\mathrm F}^2=\|K_qG^{1/2}\|_{\mathrm F}^2\)">\(\|\chi_qK_qG^{1/2}\|_{\mathrm F}^2=\|K_qG^{1/2}\|_{\mathrm F}^2\)</span>. So <span class="math" data-tex="\(f_*\)">\(f_*\)</span> is a finite sum of squares of real functions of block degree at most <span class="math" data-tex="\(D\)">\(D\)</span>. Proposition 3.1 of <a href="an-expanding-parity-system.html">An expanding parity system</a> gives a functional <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> with
+<span class="math math-display" data-tex="\[
+\mathcal D(f_*)\ge0,\qquad\mathcal D(f)=-\varepsilon,
+\]">\[
+\mathcal D(f_*)\ge0,\qquad\mathcal D(f)=-\varepsilon,
+\]</span>
+and, by its norm bound and (3.6),
+<span class="math math-display" data-tex="\[
+\begin{aligned}|\mathcal D(f-f_*)|&amp;\le L^t\|f-f_*\|_\infty\\&amp;\le2n\,4^{-t}+n\,(16L)^{-t}.\end{aligned}
+\]">\[
+\begin{aligned}|\mathcal D(f-f_*)|&amp;\le L^t\|f-f_*\|_\infty\\&amp;\le2n\,4^{-t}+n\,(16L)^{-t}.\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(-\varepsilon=\mathcal D(f_*)+\mathcal D(f-f_*)\)">\(-\varepsilon=\mathcal D(f_*)+\mathcal D(f-f_*)\)</span>, and this is at least <span class="math" data-tex="\(-(2n4^{-t}+n(16L)^{-t})\)">\(-(2n4^{-t}+n(16L)^{-t})\)</span>. By (2.1), <span class="math" data-tex="\(t&gt;n/k-2\)">\(t&gt;n/k-2\)</span> with <span class="math" data-tex="\(k\)">\(k\)</span> fixed, so <span class="math" data-tex="\(2n4^{-t}+n(16L)^{-t}\le3n\,4^{2-n/k}\)">\(2n4^{-t}+n(16L)^{-t}\le3n\,4^{2-n/k}\)</span>, which is smaller than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> for all large <span class="math" data-tex="\(n\)">\(n\)</span>. This contradiction shows that, for every even <span class="math" data-tex="\(n\)">\(n\)</span> beyond a threshold <span class="math" data-tex="\(n_0(\rho)\)">\(n_0(\rho)\)</span>, there is no factorization of size at most <span class="math" data-tex="\(2^t\)">\(2^t\)</span>.</p>
+<p><em>Conclusion.</em> For <span class="math" data-tex="\(n\ge4k\)">\(n\ge4k\)</span>, (2.1) gives <span class="math" data-tex="\(t\ge n/k-2\ge n/(2k)\)">\(t\ge n/k-2\ge n/(2k)\)</span>. So for every even <span class="math" data-tex="\(n\ge n_0(\rho)\)">\(n\ge n_0(\rho)\)</span>, enlarged if necessary,
+<span class="math math-display" data-tex="\[
+\operatorname{rank}_{\mathrm{psd}}A_n(\rho)&gt;2^t\ge2^{n/(2k)},
+\]">\[
+\operatorname{rank}_{\mathrm{psd}}A_n(\rho)&gt;2^t\ge2^{n/(2k)},
+\]</span>
+which is Theorem 4.3 with <span class="math" data-tex="\(c=1/(2k)\)">\(c=1/(2k)\)</span>. The constant <span class="math" data-tex="\(c\)">\(c\)</span> does not depend on <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; only the final comparison with <span class="math" data-tex="\(\varepsilon=1-\rho\)">\(\varepsilon=1-\rho\)</span> makes the threshold depend on <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-semidefinite-lifts">4. Semidefinite lifts</h2>
+<p><em>Proof of Corollary 4.4 of <a href="psd-factorizations-and-semidefinite-lifts.html">PSD factorizations and semidefinite lifts</a>.</em> Since <span class="math" data-tex="\(A_n(\rho)=A_n(0)+\rho\mathbf 1\)">\(A_n(\rho)=A_n(0)+\rho\mathbf 1\)</span>, Lemma 2.2(3) there gives <span class="math" data-tex="\(\operatorname{rank}_{\mathrm{psd}}A_n(\rho)\le\operatorname{rank}_{\mathrm{psd}}A_n(0)+1\)">\(\operatorname{rank}_{\mathrm{psd}}A_n(\rho)\le\operatorname{rank}_{\mathrm{psd}}A_n(0)+1\)</span>. Take <span class="math" data-tex="\(\rho=\frac12\)">\(\rho=\frac12\)</span>. For even <span class="math" data-tex="\(n\ge n_0(\frac12)\)">\(n\ge n_0(\frac12)\)</span>, Theorem 4.3 gives
+<span class="math math-display" data-tex="\[
+\operatorname{rank}_{\mathrm{psd}}A_n(0)\ge2^{cn}-1 ,
+\]">\[
+\operatorname{rank}_{\mathrm{psd}}A_n(0)\ge2^{cn}-1 ,
+\]</span>
+and <span class="math" data-tex="\(T_n(0)\)">\(T_n(0)\)</span>, which contains the rows of <span class="math" data-tex="\(A_n(0)\)">\(A_n(0)\)</span>, has at least this PSD rank by Lemma 2.2(1). Now let <span class="math" data-tex="\(P_n\)">\(P_n\)</span> have a semidefinite lift of size <span class="math" data-tex="\(r\)">\(r\)</span>; for <span class="math" data-tex="\(n\ge4\)">\(n\ge4\)</span> it has at least two points. The affine functions <span class="math" data-tex="\(\ell_U\)">\(\ell_U\)</span>, <span class="math" data-tex="\(U\in\mathcal O_n\)">\(U\in\mathcal O_n\)</span>, of Section 4 of that lesson are nonnegative on <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, and <span class="math" data-tex="\(\ell_U(\mathbf 1_M)=A_n(0)_{U,M}\)">\(\ell_U(\mathbf 1_M)=A_n(0)_{U,M}\)</span>. Proposition 3.4 there gives
+<span class="math math-display" data-tex="\[
+2^{cn}-1\le\operatorname{rank}_{\mathrm{psd}}A_n(0)\le r+1 .
+\]">\[
+2^{cn}-1\le\operatorname{rank}_{\mathrm{psd}}A_n(0)\le r+1 .
+\]</span>
+So <span class="math" data-tex="\(r\ge2^{cn}-2\)">\(r\ge2^{cn}-2\)</span>. For large <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(2^{cn}-2\ge2^{cn/2}\)">\(2^{cn}-2\ge2^{cn/2}\)</span> and <span class="math" data-tex="\(2^{cn}-1\ge2^{cn/2}\)">\(2^{cn}-1\ge2^{cn/2}\)</span>, so <span class="math" data-tex="\(c_0=c/2\)">\(c_0=c/2\)</span> works. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument uses no symmetry of the lift: the factors of a small factorization may be arbitrary. Symmetry enters only through the averaging operators, whose analysis in <a href="averaging-within-a-cell.html">Averaging within a cell</a> uses permutations of the vertices of a cell.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Show that every vertex of <span class="math" data-tex="\(K_n\)">\(K_n\)</span> lies in exactly one edge of <span class="math" data-tex="\(M(m)\)">\(M(m)\)</span>.</p>
+<p><strong>5.2.</strong> Show that <span class="math" data-tex="\(\|\widehat HG^{1/2}\|_{\mathrm F}^2\le\|G\|_{\mathrm{op}}\,\|\widehat H\|_{\mathrm F}^2\)">\(\|\widehat HG^{1/2}\|_{\mathrm F}^2\le\|G\|_{\mathrm{op}}\,\|\widehat H\|_{\mathrm F}^2\)</span> for a real matrix <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span> with <span class="math" data-tex="\(r\)">\(r\)</span> columns and <span class="math" data-tex="\(G\in\mathbb S^r_+\)">\(G\in\mathbb S^r_+\)</span>.</p>
+<p><strong>5.3.</strong> Prove
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\bigl|\|\mathbf S\|^2-\|\mathbf S_*\|^2\bigr|\\&amp;\quad\le\|\mathbf S-\mathbf S_*\|\,(2\|\mathbf S\|+\|\mathbf S-\mathbf S_*\|)\end{aligned}
+\]">\[
+\begin{aligned}&amp;\bigl|\|\mathbf S\|^2-\|\mathbf S_*\|^2\bigr|\\&amp;\quad\le\|\mathbf S-\mathbf S_*\|\,(2\|\mathbf S\|+\|\mathbf S-\mathbf S_*\|)\end{aligned}
+\]</span>
+for vectors in a Euclidean space.</p>
+<p><strong>5.4.</strong> Show that <span class="math" data-tex="\(2n4^{-t}+n(16L)^{-t}\le3n\,4^{2-n/k}\)">\(2n4^{-t}+n(16L)^{-t}\le3n\,4^{2-n/k}\)</span> when <span class="math" data-tex="\(t&gt;n/k-2\)">\(t&gt;n/k-2\)</span>.</p>
+<p><strong>5.5.</strong> Where does the proof use that exactly one bit <span class="math" data-tex="\(b_i\)">\(b_i\)</span> equals one, and where would it fail for the endpoint <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span>?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> A vertex outside the cells lies in exactly one edge of <span class="math" data-tex="\(M_{\mathrm{rest}}\)">\(M_{\mathrm{rest}}\)</span>. A non-terminal vertex of a cell lies in exactly one internal pair. The terminal <span class="math" data-tex="\(v^i_j\)">\(v^i_j\)</span> corresponds to the incidence <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>, which belongs to exactly one edge <span class="math" data-tex="\(e\)">\(e\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(v^i_j\)">\(v^i_j\)</span> lies in the edge of <span class="math" data-tex="\(K_n\)">\(K_n\)</span> built from <span class="math" data-tex="\(e\)">\(e\)</span> and in no other.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(\|\widehat HG^{1/2}\|_{\mathrm F}^2=\operatorname{tr}(\widehat HG\widehat H^{\mathsf T})=\sum_hhGh^{\mathsf T}\)">\(\|\widehat HG^{1/2}\|_{\mathrm F}^2=\operatorname{tr}(\widehat HG\widehat H^{\mathsf T})=\sum_hhGh^{\mathsf T}\)</span>, summed over the rows <span class="math" data-tex="\(h\)">\(h\)</span> of <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span>, and <span class="math" data-tex="\(hGh^{\mathsf T}\le\|G\|_{\mathrm{op}}\|h\|^2\)">\(hGh^{\mathsf T}\le\|G\|_{\mathrm{op}}\|h\|^2\)</span>.</p>
+<p><strong>5.3.</strong> The number <span class="math" data-tex="\(\bigl|\|\mathbf S\|^2-\|\mathbf S_*\|^2\bigr|\)">\(\bigl|\|\mathbf S\|^2-\|\mathbf S_*\|^2\bigr|\)</span> equals <span class="math" data-tex="\(\bigl|\|\mathbf S\|-\|\mathbf S_*\|\bigr|\,(\|\mathbf S\|+\|\mathbf S_*\|)\)">\(\bigl|\|\mathbf S\|-\|\mathbf S_*\|\bigr|\,(\|\mathbf S\|+\|\mathbf S_*\|)\)</span>, and <span class="math" data-tex="\(\bigl|\|\mathbf S\|-\|\mathbf S_*\|\bigr|\le\|\mathbf S-\mathbf S_*\|\)">\(\bigl|\|\mathbf S\|-\|\mathbf S_*\|\bigr|\le\|\mathbf S-\mathbf S_*\|\)</span> and <span class="math" data-tex="\(\|\mathbf S_*\|\le\|\mathbf S\|+\|\mathbf S-\mathbf S_*\|\)">\(\|\mathbf S_*\|\le\|\mathbf S\|+\|\mathbf S-\mathbf S_*\|\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\((16L)^{-t}\le4^{-t}\)">\((16L)^{-t}\le4^{-t}\)</span>, so the left side is at most <span class="math" data-tex="\(3n4^{-t}\)">\(3n4^{-t}\)</span>, and <span class="math" data-tex="\(4^{-t}&lt;4^{2-n/k}\)">\(4^{-t}&lt;4^{2-n/k}\)</span>.</p>
+<p><strong>5.5.</strong> Oddness of <span class="math" data-tex="\(\sum_ib_i\)">\(\sum_ib_i\)</span> makes each <span class="math" data-tex="\(U(a)\)">\(U(a)\)</span> an odd set, so that its row exists in <span class="math" data-tex="\(A_n(\rho)\)">\(A_n(\rho)\)</span>, and makes the disagreement count odd (Lemma 2.1 of the parity lesson). At <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span> the function <span class="math" data-tex="\(f=f_0\)">\(f=f_0\)</span> is the disagreement count itself, and <span class="math" data-tex="\(\mathcal D(f)=0\)">\(\mathcal D(f)=0\)</span> gives no contradiction; indeed <span class="math" data-tex="\(\operatorname{rank}_{\mathrm{psd}}A_n(1)\le\binom n2\)">\(\operatorname{rank}_{\mathrm{psd}}A_n(1)\le\binom n2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-PSD] OpenAI, <em>Exponential PSD rank of positively shifted matching matrices</em>, OpenAI Math Release preprint, 5 October 2026, Sections 1 and 6. https://github.com/openai/math/tree/main/preprints/Exponential-PSD-rank-of-positively-shifted-matching-matrices-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

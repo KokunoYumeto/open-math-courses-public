@@ -1,0 +1,260 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fourier smoothing of matrix squares</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Semidefinite lifts of the perfect matching polytope)</a><a href="splitting-positive-semidefinite-matrices.html">Previous lesson</a><a href="an-expanding-parity-system.html">Next lesson</a><a href="src/fourier-smoothing-of-matrix-squares.md">Editable source</a></nav><main><article><h1 id="fourier-smoothing-of-matrix-squares">Fourier smoothing of matrix squares</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let a positive semidefinite matrix-valued function be averaged, coordinate by coordinate, through random channels whose averages have small variance, as in <a href="averaging-within-a-cell.html">Averaging within a cell</a>. This lesson shows that the average can be written as a sum of squares <span class="math" data-tex="\(\sum_qH_q^{\mathsf T}H_q\)">\(\sum_qH_q^{\mathsf T}H_q\)</span> in which the Fourier coefficients of each <span class="math" data-tex="\(H_q\)">\(H_q\)</span> concentrate near their own frequency <span class="math" data-tex="\(q\)">\(q\)</span>: frequencies that differ from <span class="math" data-tex="\(q\)">\(q\)</span> in many coordinate blocks carry exponentially little weight [OpenAI-PSD, Section 4]. The proof processes the coordinates one at a time. Each new average is realized by stacking matrices, and the splitting lemma of <a href="splitting-positive-semidefinite-matrices.html">Splitting positive semidefinite matrices</a> separates the new frequencies into branches. A fourth-order quantity, the squared Frobenius norm of a weighted Gram matrix, at most doubles at each step.</p>
+<ul>
+<li>Characters of Boolean blocks (Section 1).</li>
+<li>The theorem (Section 2).</li>
+<li>The proof (Section 3).</li>
+</ul>
+<h2 id="1-characters-of-boolean-blocks">1. Characters of Boolean blocks</h2>
+<p>Fix an integer <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span> and put <span class="math" data-tex="\(L=2^a\)">\(L=2^a\)</span>. Let <span class="math" data-tex="\(Y_1,\ldots,Y_t\)">\(Y_1,\ldots,Y_t\)</span> be copies of the group <span class="math" data-tex="\(\mathbb F_2^a\)">\(\mathbb F_2^a\)</span>, and let <span class="math" data-tex="\(\Lambda=\mathbb F_2^a\)">\(\Lambda=\mathbb F_2^a\)</span> be a further copy, used to index characters. For <span class="math" data-tex="\(p=(p_1,\ldots,p_t)\in\Lambda^t\)">\(p=(p_1,\ldots,p_t)\in\Lambda^t\)</span> and <span class="math" data-tex="\(y=(y_1,\ldots,y_t)\in\prod_iY_i\)">\(y=(y_1,\ldots,y_t)\in\prod_iY_i\)</span> put
+<span class="math math-display" data-tex="\[
+\chi_p(y)=(-1)^{\sum_{i=1}^tp_i\cdot y_i},
+\]">\[
+\chi_p(y)=(-1)^{\sum_{i=1}^tp_i\cdot y_i},
+\]</span>
+where <span class="math" data-tex="\(p_i\cdot y_i\)">\(p_i\cdot y_i\)</span> is the dot product modulo two. The functions on <span class="math" data-tex="\(\prod_iY_i\)">\(\prod_iY_i\)</span> carry the uniform probability measure, and <span class="math" data-tex="\(\mathbb E_y\)">\(\mathbb E_y\)</span> denotes the average.</p>
+<p><strong>Lemma 1.1.</strong> The characters <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span>, <span class="math" data-tex="\(p\in\Lambda^t\)">\(p\in\Lambda^t\)</span>, form an orthonormal basis of the real functions on <span class="math" data-tex="\(\prod_iY_i\)">\(\prod_iY_i\)</span>. Hence every function <span class="math" data-tex="\(H\)">\(H\)</span> with values in real matrices of a fixed size satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}H(y)=\sum_{p\in\Lambda^t}\widehat H_p\,\chi_p(y),\\ \widehat H_p=\mathbb E_y\bigl[\chi_p(y)H(y)\bigr],\end{gathered}
+\]">\[
+\begin{gathered}H(y)=\sum_{p\in\Lambda^t}\widehat H_p\,\chi_p(y),\\ \widehat H_p=\mathbb E_y\bigl[\chi_p(y)H(y)\bigr],\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(\mathbb E_y\|H(y)\|_{\mathrm F}^2=\sum_p\|\widehat H_p\|_{\mathrm F}^2\)">\(\mathbb E_y\|H(y)\|_{\mathrm F}^2=\sum_p\|\widehat H_p\|_{\mathrm F}^2\)</span>.</p>
+<p><em>Proof.</em> We have <span class="math" data-tex="\(\chi_p\chi_{p&#x27;}=\chi_{p+p&#x27;}\)">\(\chi_p\chi_{p&#x27;}=\chi_{p+p&#x27;}\)</span> and <span class="math" data-tex="\(\chi_p^2=1\)">\(\chi_p^2=1\)</span>. If <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span>, say <span class="math" data-tex="\(p_i\)">\(p_i\)</span> has a nonzero coordinate <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, then changing the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th bit of <span class="math" data-tex="\(y_i\)">\(y_i\)</span> is a bijection of <span class="math" data-tex="\(\prod_iY_i\)">\(\prod_iY_i\)</span> that reverses the sign of <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span>, so <span class="math" data-tex="\(\mathbb E_y\chi_p=0\)">\(\mathbb E_y\chi_p=0\)</span>. Thus <span class="math" data-tex="\(\mathbb E_y\chi_p\chi_{p&#x27;}=1\)">\(\mathbb E_y\chi_p\chi_{p&#x27;}=1\)</span> if <span class="math" data-tex="\(p=p&#x27;\)">\(p=p&#x27;\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. There are <span class="math" data-tex="\(L^t\)">\(L^t\)</span> characters, the dimension of the space, so they form an orthonormal basis. The expansion holds entrywise, and the last identity is Parseval's identity for each entry. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <em>block degree</em> of <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> is <span class="math" data-tex="\(|p|_{\mathrm{blk}}=|\{i:p_i\ne0\}|\)">\(|p|_{\mathrm{blk}}=|\{i:p_i\ne0\}|\)</span>. A function has <em>block degree at most <span class="math" data-tex="\(D\)">\(D\)</span></em> if its Fourier coefficients vanish at every <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(|p|_{\mathrm{blk}}&gt;D\)">\(|p|_{\mathrm{blk}}&gt;D\)</span>; the zero function qualifies. Put
+<span class="math math-display" data-tex="\[
+\operatorname{dist}(p,q)=|\{i:p_i\ne q_i\}|=|p+q|_{\mathrm{blk}} .
+\]">\[
+\operatorname{dist}(p,q)=|\{i:p_i\ne q_i\}|=|p+q|_{\mathrm{blk}} .
+\]</span></p>
+<p><strong>Lemma 1.2</strong> (translation by a character). Let <span class="math" data-tex="\(q\in\Lambda^t\)">\(q\in\Lambda^t\)</span> and let <span class="math" data-tex="\(H\)">\(H\)</span> be a matrix-valued function whose coefficients <span class="math" data-tex="\(\widehat H_p\)">\(\widehat H_p\)</span> vanish whenever <span class="math" data-tex="\(\operatorname{dist}(p,q)&gt;D\)">\(\operatorname{dist}(p,q)&gt;D\)</span>. Then every entry of <span class="math" data-tex="\(\chi_qH\)">\(\chi_qH\)</span> has block degree at most <span class="math" data-tex="\(D\)">\(D\)</span>, and <span class="math" data-tex="\((\chi_qH)^{\mathsf T}(\chi_qH)=H^{\mathsf T}H\)">\((\chi_qH)^{\mathsf T}(\chi_qH)=H^{\mathsf T}H\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\chi_qH=\sum_p\widehat H_p\chi_{p+q}\)">\(\chi_qH=\sum_p\widehat H_p\chi_{p+q}\)</span>, so the coefficient of <span class="math" data-tex="\(\chi_qH\)">\(\chi_qH\)</span> at <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> is <span class="math" data-tex="\(\widehat H_{p&#x27;+q}\)">\(\widehat H_{p&#x27;+q}\)</span>, which vanishes unless <span class="math" data-tex="\(|p&#x27;|_{\mathrm{blk}}=\operatorname{dist}(p&#x27;+q,q)\le D\)">\(|p&#x27;|_{\mathrm{blk}}=\operatorname{dist}(p&#x27;+q,q)\le D\)</span>. The second statement holds because <span class="math" data-tex="\(\chi_q^2=1\)">\(\chi_q^2=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same translation of Fourier supports, which keeps squares unchanged, appears in the construction of sparse sums of squares on finite abelian groups by Fawzi, Saunderson and Parrilo [FSP 2016].</p>
+<h2 id="2-the-theorem">2. The theorem</h2>
+<p>For <span class="math" data-tex="\(1\le i\le t\)">\(1\le i\le t\)</span>, let <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and <span class="math" data-tex="\(\mathcal M_i\)">\(\mathcal M_i\)</span> be nonempty finite sets with the uniform probability measures, and let <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> be a copy of <span class="math" data-tex="\(\mathbb F_2^a\)">\(\mathbb F_2^a\)</span> as above. For <span class="math" data-tex="\(m\in\mathcal M_i\)">\(m\in\mathcal M_i\)</span> and <span class="math" data-tex="\(y\in Y_i\)">\(y\in Y_i\)</span>, let <span class="math" data-tex="\(\pi^m_{i,y}\)">\(\pi^m_{i,y}\)</span> be a probability measure on <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, and for a function <span class="math" data-tex="\(Z\)">\(Z\)</span> on <span class="math" data-tex="\(X_i\)">\(X_i\)</span> put
+<span class="math math-display" data-tex="\[
+(T_{i,y}Z)(m)=\sum_{x\in X_i}\pi^m_{i,y}(x)Z(x).
+\]">\[
+(T_{i,y}Z)(m)=\sum_{x\in X_i}\pi^m_{i,y}(x)Z(x).
+\]</span>
+Suppose that for some <span class="math" data-tex="\(\theta\ge0\)">\(\theta\ge0\)</span>, for every <span class="math" data-tex="\(i\)">\(i\)</span>, every <span class="math" data-tex="\(y\in Y_i\)">\(y\in Y_i\)</span> and every real function <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, with <span class="math" data-tex="\(m\)">\(m\)</span> uniform in <span class="math" data-tex="\(\mathcal M_i\)">\(\mathcal M_i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}\mathbb E_m\pi^m_{i,y}(x)=\frac1{|X_i|}\\ (x\in X_i),\end{gathered}\tag{2.1}
+\]">\[
+\begin{gathered}\mathbb E_m\pi^m_{i,y}(x)=\frac1{|X_i|}\\ (x\in X_i),\end{gathered}\tag{2.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\mathbb E_m\Bigl((T_{i,y}g)(m)-\mathbb E_xg\Bigr)^2\\&amp;\quad\le\theta\,\mathbb E_xg(x)^2 .\end{aligned}\tag{2.2}
+\]">\[
+\begin{aligned}&amp;\mathbb E_m\Bigl((T_{i,y}g)(m)-\mathbb E_xg\Bigr)^2\\&amp;\quad\le\theta\,\mathbb E_xg(x)^2 .\end{aligned}\tag{2.2}
+\]</span>
+Let <span class="math" data-tex="\(C_L=2^{L-1}\)">\(C_L=2^{L-1}\)</span> be the constant of Theorem 2.1 of <a href="splitting-positive-semidefinite-matrices.html">Splitting positive semidefinite matrices</a>.</p>
+<p><strong>Theorem 2.1</strong> (Fourier smoothing of matrix squares; [OpenAI-PSD, Theorem 4.1]). Let <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> and <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, and let <span class="math" data-tex="\(F\colon\prod_iX_i\to\mathbb S^r_+\)">\(F\colon\prod_iX_i\to\mathbb S^r_+\)</span> satisfy <span class="math" data-tex="\(\operatorname{tr}F(x)\le B\)">\(\operatorname{tr}F(x)\le B\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>. Let <span class="math" data-tex="\(\lambda&gt;1\)">\(\lambda&gt;1\)</span> satisfy
+<span class="math math-display" data-tex="\[
+L\lambda^2C_L\theta\le1 .
+\tag{2.3}
+\]">\[
+L\lambda^2C_L\theta\le1 .
+\tag{2.3}
+\]</span>
+For <span class="math" data-tex="\(m=(m_1,\ldots,m_t)\in\prod_i\mathcal M_i\)">\(m=(m_1,\ldots,m_t)\in\prod_i\mathcal M_i\)</span> and <span class="math" data-tex="\(y\in\prod_iY_i\)">\(y\in\prod_iY_i\)</span> put
+<span class="math math-display" data-tex="\[
+\overline F_m(y)=\sum_{x\in\prod_iX_i}\Bigl(\prod_{i=1}^t\pi^{m_i}_{i,y_i}(x_i)\Bigr)F(x).
+\]">\[
+\overline F_m(y)=\sum_{x\in\prod_iX_i}\Bigl(\prod_{i=1}^t\pi^{m_i}_{i,y_i}(x_i)\Bigr)F(x).
+\]</span>
+There are an integer <span class="math" data-tex="\(R\)">\(R\)</span> and functions <span class="math" data-tex="\(H^m_q\colon\prod_iY_i\to\mathbb R^{R\times r}\)">\(H^m_q\colon\prod_iY_i\to\mathbb R^{R\times r}\)</span>, for <span class="math" data-tex="\(m\in\prod_i\mathcal M_i\)">\(m\in\prod_i\mathcal M_i\)</span> and <span class="math" data-tex="\(q\in\Lambda^t\)">\(q\in\Lambda^t\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\overline F_m(y)\\&amp;\quad=\sum_{q\in\Lambda^t}H^m_q(y)^{\mathsf T}H^m_q(y),\end{aligned}\tag{2.4}
+\]">\[
+\begin{aligned}&amp;\overline F_m(y)\\&amp;\quad=\sum_{q\in\Lambda^t}H^m_q(y)^{\mathsf T}H^m_q(y),\end{aligned}\tag{2.4}
+\]</span>
+and such that the matrices
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U^m_q=\Bigl[\lambda^{\operatorname{dist}(q,p)/2}\,\widehat H^m_{q,p}\Bigr]_{p\in\Lambda^t},\\
+C^m_q=U^m_q(U^m_q)^{\mathsf T},
+\end{gathered}
+\]">\[
+\begin{gathered}
+U^m_q=\Bigl[\lambda^{\operatorname{dist}(q,p)/2}\,\widehat H^m_{q,p}\Bigr]_{p\in\Lambda^t},\\
+C^m_q=U^m_q(U^m_q)^{\mathsf T},
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\widehat H^m_{q,p}\)">\(\widehat H^m_{q,p}\)</span> is the Fourier coefficient of <span class="math" data-tex="\(H^m_q\)">\(H^m_q\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span> and the brackets denote the horizontal concatenation over <span class="math" data-tex="\(p\)">\(p\)</span>, satisfy, for independent uniform <span class="math" data-tex="\(m_i\)">\(m_i\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E_m\sum_{q\in\Lambda^t}\|C^m_q\|_{\mathrm F}^2\le2^tB^2 .
+\tag{2.5}
+\]">\[
+\mathbb E_m\sum_{q\in\Lambda^t}\|C^m_q\|_{\mathrm F}^2\le2^tB^2 .
+\tag{2.5}
+\]</span>
+Consequently, some <span class="math" data-tex="\(m\)">\(m\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\sum_{q,p\in\Lambda^t}\lambda^{\operatorname{dist}(q,p)}\,\|\widehat H^m_{q,p}\|_{\mathrm F}^2\\&amp;\quad\le L^t\sqrt r\,B\,2^{t/2}.\end{aligned}\tag{2.6}
+\]">\[
+\begin{aligned}&amp;\sum_{q,p\in\Lambda^t}\lambda^{\operatorname{dist}(q,p)}\,\|\widehat H^m_{q,p}\|_{\mathrm F}^2\\&amp;\quad\le L^t\sqrt r\,B\,2^{t/2}.\end{aligned}\tag{2.6}
+\]</span></p>
+<p>The weights in (2.6) penalize the frequencies of the branch <span class="math" data-tex="\(H^m_q\)">\(H^m_q\)</span> that are far from its center <span class="math" data-tex="\(q\)">\(q\)</span>. To see what (2.5) controls, fix <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span>, suppress them, and put <span class="math" data-tex="\(w_p=\lambda^{\operatorname{dist}(q,p)}\)">\(w_p=\lambda^{\operatorname{dist}(q,p)}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}\operatorname{tr}C=\sum_pw_p\|\widehat H_p\|_{\mathrm F}^2,\\ \|C\|_{\mathrm F}^2=\|U^{\mathsf T}U\|_{\mathrm F}^2\\=\sum_{p,p&#x27;}w_pw_{p&#x27;}\|\widehat H_p^{\mathsf T}\widehat H_{p&#x27;}\|_{\mathrm F}^2 .\end{gathered}
+\]">\[
+\begin{gathered}\operatorname{tr}C=\sum_pw_p\|\widehat H_p\|_{\mathrm F}^2,\\ \|C\|_{\mathrm F}^2=\|U^{\mathsf T}U\|_{\mathrm F}^2\\=\sum_{p,p&#x27;}w_pw_{p&#x27;}\|\widehat H_p^{\mathsf T}\widehat H_{p&#x27;}\|_{\mathrm F}^2 .\end{gathered}
+\]</span>
+The trace is the weighted Fourier mass to be bounded; the squared Frobenius norm measures the overlaps of the coefficient matrices, and it is this fourth-order quantity that the variance condition (2.2) controls.</p>
+<h2 id="3-the-proof">3. The proof</h2>
+<p><strong>Lemma 3.1.</strong> Under (2.2), every function <span class="math" data-tex="\(Z\)">\(Z\)</span> on <span class="math" data-tex="\(X_i\)">\(X_i\)</span> with values in real matrices of any fixed size satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\mathbb E_m\bigl\|(T_{i,y}Z)(m)-\mathbb E_xZ\bigr\|_{\mathrm F}^2\\&amp;\quad\le\theta\,\mathbb E_x\|Z(x)\|_{\mathrm F}^2 .\end{aligned}
+\]">\[
+\begin{aligned}&amp;\mathbb E_m\bigl\|(T_{i,y}Z)(m)-\mathbb E_xZ\bigr\|_{\mathrm F}^2\\&amp;\quad\le\theta\,\mathbb E_x\|Z(x)\|_{\mathrm F}^2 .\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Apply (2.2) to each entry and sum over the entries. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Partial averages and the potential.</em> For <span class="math" data-tex="\(0\le i\le t\)">\(0\le i\le t\)</span> write <span class="math" data-tex="\(m_{\le i}=(m_1,\ldots,m_i)\)">\(m_{\le i}=(m_1,\ldots,m_i)\)</span>, <span class="math" data-tex="\(y_{\le i}=(y_1,\ldots,y_i)\)">\(y_{\le i}=(y_1,\ldots,y_i)\)</span> and <span class="math" data-tex="\(x_{&gt;i}=(x_{i+1},\ldots,x_t)\)">\(x_{&gt;i}=(x_{i+1},\ldots,x_t)\)</span>. At stage <span class="math" data-tex="\(i\)">\(i\)</span> we construct, for every <span class="math" data-tex="\(m_{\le i}\)">\(m_{\le i}\)</span> and every <span class="math" data-tex="\(q\in\Lambda^i\)">\(q\in\Lambda^i\)</span>, functions
+<span class="math math-display" data-tex="\[
+H^{(i)}_q(y_{\le i};x_{&gt;i})\in\mathbb R^{R_i\times r}
+\]">\[
+H^{(i)}_q(y_{\le i};x_{&gt;i})\in\mathbb R^{R_i\times r}
+\]</span>
+with a common number <span class="math" data-tex="\(R_i\)">\(R_i\)</span> of rows, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}\sum_{q\in\Lambda^i}\bigl(H^{(i)}_q\bigr)^{\mathsf T}H^{(i)}_q\\=\sum_{x_{\le i}}\Bigl(\prod_{j=1}^i\pi^{m_j}_{j,y_j}(x_j)\Bigr)F(x).\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}\sum_{q\in\Lambda^i}\bigl(H^{(i)}_q\bigr)^{\mathsf T}H^{(i)}_q\\=\sum_{x_{\le i}}\Bigl(\prod_{j=1}^i\pi^{m_j}_{j,y_j}(x_j)\Bigr)F(x).\end{gathered}\tag{3.1}
+\]</span>
+Their Fourier coefficients <span class="math" data-tex="\(\widehat H^{(i)}_{q,p}(x_{&gt;i})\)">\(\widehat H^{(i)}_{q,p}(x_{&gt;i})\)</span>, <span class="math" data-tex="\(p\in\Lambda^i\)">\(p\in\Lambda^i\)</span>, are taken in the variables <span class="math" data-tex="\(y_{\le i}\)">\(y_{\le i}\)</span> only. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U^{(i)}_q=\Bigl[\lambda^{\operatorname{dist}(q,p)/2}\,\widehat H^{(i)}_{q,p}\Bigr]_{p\in\Lambda^i},\\
+C^{(i)}_q=U^{(i)}_q\bigl(U^{(i)}_q\bigr)^{\mathsf T},
+\end{gathered}
+\]">\[
+\begin{gathered}
+U^{(i)}_q=\Bigl[\lambda^{\operatorname{dist}(q,p)/2}\,\widehat H^{(i)}_{q,p}\Bigr]_{p\in\Lambda^i},\\
+C^{(i)}_q=U^{(i)}_q\bigl(U^{(i)}_q\bigr)^{\mathsf T},
+\end{gathered}
+\]</span>
+functions of <span class="math" data-tex="\(x_{&gt;i}\)">\(x_{&gt;i}\)</span> (and of <span class="math" data-tex="\(m_{\le i}\)">\(m_{\le i}\)</span>); <span class="math" data-tex="\(U^{(i)}_q\)">\(U^{(i)}_q\)</span> has <span class="math" data-tex="\(rL^i\)">\(rL^i\)</span> columns. The potential is
+<span class="math math-display" data-tex="\[
+\Phi_i=\mathbb E_{m_{\le i}}\mathbb E_{x_{&gt;i}}\sum_{q\in\Lambda^i}\bigl\|C^{(i)}_q(x_{&gt;i})\bigr\|_{\mathrm F}^2 ,
+\]">\[
+\Phi_i=\mathbb E_{m_{\le i}}\mathbb E_{x_{&gt;i}}\sum_{q\in\Lambda^i}\bigl\|C^{(i)}_q(x_{&gt;i})\bigr\|_{\mathrm F}^2 ,
+\]</span>
+with all listed variables independent and uniform. At stage zero, <span class="math" data-tex="\(\Lambda^0\)">\(\Lambda^0\)</span> has one element <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>; take <span class="math" data-tex="\(R_0=r\)">\(R_0=r\)</span> and <span class="math" data-tex="\(H^{(0)}_\varnothing(x)=F(x)^{1/2}\)">\(H^{(0)}_\varnothing(x)=F(x)^{1/2}\)</span>. Then (3.1) holds, <span class="math" data-tex="\(C^{(0)}_\varnothing=F\)">\(C^{(0)}_\varnothing=F\)</span>, and by Lemma 1.1(3) of <a href="psd-factorizations-and-semidefinite-lifts.html">PSD factorizations and semidefinite lifts</a>,
+<span class="math math-display" data-tex="\[
+\Phi_0=\mathbb E_x\|F(x)\|_{\mathrm F}^2\le\mathbb E_x(\operatorname{tr}F(x))^2\le B^2 .
+\]">\[
+\Phi_0=\mathbb E_x\|F(x)\|_{\mathrm F}^2\le\mathbb E_x(\operatorname{tr}F(x))^2\le B^2 .
+\]</span>
+We show how to pass from stage <span class="math" data-tex="\(i\)">\(i\)</span> to stage <span class="math" data-tex="\(i+1\)">\(i+1\)</span> preserving (3.1) with <span class="math" data-tex="\(\Phi_{i+1}\le2\Phi_i\)">\(\Phi_{i+1}\le2\Phi_i\)</span>.</p>
+<p><em>The tagged stack.</em> Fix <span class="math" data-tex="\(m_{\le i}\)">\(m_{\le i}\)</span>, a branch <span class="math" data-tex="\(q\in\Lambda^i\)">\(q\in\Lambda^i\)</span>, and <span class="math" data-tex="\(x_{&gt;i+1}\)">\(x_{&gt;i+1}\)</span>. Abbreviate <span class="math" data-tex="\(X=X_{i+1}\)">\(X=X_{i+1}\)</span>, <span class="math" data-tex="\(Y=Y_{i+1}\)">\(Y=Y_{i+1}\)</span>, <span class="math" data-tex="\(T_y=T_{i+1,y}\)">\(T_y=T_{i+1,y}\)</span>, write <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> for the new input and <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span> for the new character variable, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}U(x)=U^{(i)}_q(x,x_{&gt;i+1}),\\ Z(x)=U(x)^{\mathsf T}U(x).\end{gathered}
+\]">\[
+\begin{gathered}U(x)=U^{(i)}_q(x,x_{&gt;i+1}),\\ Z(x)=U(x)^{\mathsf T}U(x).\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(Z(x)\)">\(Z(x)\)</span> has size <span class="math" data-tex="\(rL^i\)">\(rL^i\)</span>, and <span class="math" data-tex="\(\|Z(x)\|_{\mathrm F}=\|C^{(i)}_q(x,x_{&gt;i+1})\|_{\mathrm F}\)">\(\|Z(x)\|_{\mathrm F}=\|C^{(i)}_q(x,x_{&gt;i+1})\|_{\mathrm F}\)</span>, since <span class="math" data-tex="\(\|U^{\mathsf T}U\|_{\mathrm F}=\|UU^{\mathsf T}\|_{\mathrm F}\)">\(\|U^{\mathsf T}U\|_{\mathrm F}=\|UU^{\mathsf T}\|_{\mathrm F}\)</span>. The fixed data determine the whole function <span class="math" data-tex="\(x\mapsto Z(x)\)">\(x\mapsto Z(x)\)</span> before <span class="math" data-tex="\(m_{i+1}\)">\(m_{i+1}\)</span> is chosen.</p>
+<p>Write <span class="math" data-tex="\(H_x(y_{\le i})=H^{(i)}_q(y_{\le i};x,x_{&gt;i+1})\)">\(H_x(y_{\le i})=H^{(i)}_q(y_{\le i};x,x_{&gt;i+1})\)</span> for <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>. For <span class="math" data-tex="\(m\in\mathcal M_{i+1}\)">\(m\in\mathcal M_{i+1}\)</span>, define <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> with <span class="math" data-tex="\(R_{i+1}=L|X|R_i\)">\(R_{i+1}=L|X|R_i\)</span> rows, divided into blocks indexed by <span class="math" data-tex="\((y&#x27;,x)\in Y\times X\)">\((y&#x27;,x)\in Y\times X\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;H&#x27;(y_{\le i},y)_{(y&#x27;,x)}\\&amp;\quad=\mathbf 1_{\{y&#x27;=y\}}\sqrt{\pi^m_y(x)}\\&amp;\qquad\cdot H_x(y_{\le i}).\end{aligned}\tag{3.2}
+\]">\[
+\begin{aligned}&amp;H&#x27;(y_{\le i},y)_{(y&#x27;,x)}\\&amp;\quad=\mathbf 1_{\{y&#x27;=y\}}\sqrt{\pi^m_y(x)}\\&amp;\qquad\cdot H_x(y_{\le i}).\end{aligned}\tag{3.2}
+\]</span>
+Different values of <span class="math" data-tex="\(y\)">\(y\)</span> occupy disjoint blocks, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;H&#x27;^{\mathsf T}H&#x27;=\sum_{x\in X}\pi^m_y(x)\\&amp;\qquad\cdot H_x(y_{\le i})^{\mathsf T}H_x(y_{\le i}).\end{aligned}\tag{3.3}
+\]">\[
+\begin{aligned}&amp;H&#x27;^{\mathsf T}H&#x27;=\sum_{x\in X}\pi^m_y(x)\\&amp;\qquad\cdot H_x(y_{\le i})^{\mathsf T}H_x(y_{\le i}).\end{aligned}\tag{3.3}
+\]</span>
+For <span class="math" data-tex="\(z\in\Lambda\)">\(z\in\Lambda\)</span>, concatenate the Fourier coefficients of <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> at the frequencies <span class="math" data-tex="\((p,z)\)">\((p,z)\)</span>, with the old weights:
+<span class="math math-display" data-tex="\[
+\begin{gathered}V_z=\Bigl[\lambda^{\operatorname{dist}(q,p)/2}\,\widehat{H&#x27;}_{p,z}\Bigr]_{p\in\Lambda^i},\\ A_z=V_zV_z^{\mathsf T}.\end{gathered}
+\]">\[
+\begin{gathered}V_z=\Bigl[\lambda^{\operatorname{dist}(q,p)/2}\,\widehat{H&#x27;}_{p,z}\Bigr]_{p\in\Lambda^i},\\ A_z=V_zV_z^{\mathsf T}.\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(\mathbb E_y[\chi_z(y)\mathbf 1_{\{y&#x27;=y\}}]=L^{-1}\chi_z(y&#x27;)\)">\(\mathbb E_y[\chi_z(y)\mathbf 1_{\{y&#x27;=y\}}]=L^{-1}\chi_z(y&#x27;)\)</span>, the <span class="math" data-tex="\((y&#x27;,x)\)">\((y&#x27;,x)\)</span> block of <span class="math" data-tex="\(V_z\)">\(V_z\)</span> is <span class="math" data-tex="\(L^{-1}\chi_z(y&#x27;)\sqrt{\pi^m_{y&#x27;}(x)}\,U(x)\)">\(L^{-1}\chi_z(y&#x27;)\sqrt{\pi^m_{y&#x27;}(x)}\,U(x)\)</span>. Multiplying blocks,
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;V_z^{\mathsf T}V_{z&#x27;}\\&amp;\quad=\frac1{L^2}\sum_{y\in Y}\chi_z(y)\chi_{z&#x27;}(y)\\&amp;\qquad\cdot(T_yZ)(m),\end{aligned}\tag{3.4}
+\]">\[
+\begin{aligned}&amp;V_z^{\mathsf T}V_{z&#x27;}\\&amp;\quad=\frac1{L^2}\sum_{y\in Y}\chi_z(y)\chi_{z&#x27;}(y)\\&amp;\qquad\cdot(T_yZ)(m),\end{aligned}\tag{3.4}
+\]</span>
+and <span class="math" data-tex="\(\langle A_z,A_{z&#x27;}\rangle=\operatorname{tr}(V_zV_z^{\mathsf T}V_{z&#x27;}V_{z&#x27;}^{\mathsf T})=\|V_z^{\mathsf T}V_{z&#x27;}\|_{\mathrm F}^2\)">\(\langle A_z,A_{z&#x27;}\rangle=\operatorname{tr}(V_zV_z^{\mathsf T}V_{z&#x27;}V_{z&#x27;}^{\mathsf T})=\|V_z^{\mathsf T}V_{z&#x27;}\|_{\mathrm F}^2\)</span>.</p>
+<p><strong>Lemma 3.2</strong> (overlaps). With <span class="math" data-tex="\(m=m_{i+1}\)">\(m=m_{i+1}\)</span> uniform,
+<span class="math math-display" data-tex="\[
+\begin{aligned}\mathbb E_m\langle A_z,A_{z&#x27;}\rangle&amp;\le\frac1{L^2}\,\mathbb E_x\|Z(x)\|_{\mathrm F}^2\\&amp;\quad\cdot\begin{cases}1,&amp;z=z&#x27;,\\ \theta,&amp;z\ne z&#x27;.\end{cases}\end{aligned}
+\]">\[
+\begin{aligned}\mathbb E_m\langle A_z,A_{z&#x27;}\rangle&amp;\le\frac1{L^2}\,\mathbb E_x\|Z(x)\|_{\mathrm F}^2\\&amp;\quad\cdot\begin{cases}1,&amp;z=z&#x27;,\\ \theta,&amp;z\ne z&#x27;.\end{cases}\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(z=z&#x27;\)">\(z=z&#x27;\)</span>, (3.4) gives <span class="math" data-tex="\(V_z^{\mathsf T}V_z=L^{-1}\mathbb E_y(T_yZ)(m)\)">\(V_z^{\mathsf T}V_z=L^{-1}\mathbb E_y(T_yZ)(m)\)</span>. The convexity of <span class="math" data-tex="\(\|\cdot\|_{\mathrm F}^2\)">\(\|\cdot\|_{\mathrm F}^2\)</span>, first over <span class="math" data-tex="\(y\)">\(y\)</span> and then over the probability measure <span class="math" data-tex="\(\pi^m_y\)">\(\pi^m_y\)</span>, gives
+<span class="math math-display" data-tex="\[
+\|V_z^{\mathsf T}V_z\|_{\mathrm F}^2\le\frac1{L^2}\,\mathbb E_y\sum_x\pi^m_y(x)\|Z(x)\|_{\mathrm F}^2 ,
+\]">\[
+\|V_z^{\mathsf T}V_z\|_{\mathrm F}^2\le\frac1{L^2}\,\mathbb E_y\sum_x\pi^m_y(x)\|Z(x)\|_{\mathrm F}^2 ,
+\]</span>
+and (2.1) turns the average over <span class="math" data-tex="\(m\)">\(m\)</span> of the right side into <span class="math" data-tex="\(L^{-2}\mathbb E_x\|Z(x)\|_{\mathrm F}^2\)">\(L^{-2}\mathbb E_x\|Z(x)\|_{\mathrm F}^2\)</span>. For <span class="math" data-tex="\(z\ne z&#x27;\)">\(z\ne z&#x27;\)</span>, the character <span class="math" data-tex="\(\chi_z\chi_{z&#x27;}=\chi_{z+z&#x27;}\)">\(\chi_z\chi_{z&#x27;}=\chi_{z+z&#x27;}\)</span> is nontrivial, so <span class="math" data-tex="\(\sum_y\chi_z(y)\chi_{z&#x27;}(y)=0\)">\(\sum_y\chi_z(y)\chi_{z&#x27;}(y)=0\)</span>, and <span class="math" data-tex="\(\mu=\mathbb E_xZ(x)\)">\(\mu=\mathbb E_xZ(x)\)</span> may be subtracted from every summand in (3.4). Convexity and Lemma 3.1 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\mathbb E_m\|V_z^{\mathsf T}V_{z&#x27;}\|_{\mathrm F}^2\\&amp;\quad\le\frac1{L^2}\,\mathbb E_y\mathbb E_m\|(T_yZ)(m)-\mu\|_{\mathrm F}^2\\&amp;\quad\le\frac\theta{L^2}\,\mathbb E_x\|Z(x)\|_{\mathrm F}^2 .\end{aligned}
+\]">\[
+\begin{aligned}&amp;\mathbb E_m\|V_z^{\mathsf T}V_{z&#x27;}\|_{\mathrm F}^2\\&amp;\quad\le\frac1{L^2}\,\mathbb E_y\mathbb E_m\|(T_yZ)(m)-\mu\|_{\mathrm F}^2\\&amp;\quad\le\frac\theta{L^2}\,\mathbb E_x\|Z(x)\|_{\mathrm F}^2 .\end{aligned}
+\]</span>
+Here Lemma 3.1 applies because <span class="math" data-tex="\(Z\)">\(Z\)</span> was fixed before <span class="math" data-tex="\(m\)">\(m\)</span> was chosen. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Splitting the stack.</em> For each <span class="math" data-tex="\(m\)">\(m\)</span>, apply Theorem 2.1 of <a href="splitting-positive-semidefinite-matrices.html">Splitting positive semidefinite matrices</a> to the <span class="math" data-tex="\(L\)">\(L\)</span> operators <span class="math" data-tex="\(A_z\)">\(A_z\)</span>, <span class="math" data-tex="\(z\in\Lambda\)">\(z\in\Lambda\)</span>, on <span class="math" data-tex="\(\mathbb R^{R_{i+1}}\)">\(\mathbb R^{R_{i+1}}\)</span>. It gives mutually orthogonal projections <span class="math" data-tex="\(P_s\)">\(P_s\)</span>, <span class="math" data-tex="\(s\in\Lambda\)">\(s\in\Lambda\)</span>, with <span class="math" data-tex="\(\sum_sP_s=I\)">\(\sum_sP_s=I\)</span>. Define the branches of stage <span class="math" data-tex="\(i+1\)">\(i+1\)</span> by
+<span class="math math-display" data-tex="\[
+H^{(i+1)}_{(q,s)}=P_sH&#x27;\qquad(s\in\Lambda),
+\]">\[
+H^{(i+1)}_{(q,s)}=P_sH&#x27;\qquad(s\in\Lambda),
+\]</span>
+where <span class="math" data-tex="\((q,s)\in\Lambda^{i+1}\)">\((q,s)\in\Lambda^{i+1}\)</span>. Since <span class="math" data-tex="\(P_s^{\mathsf T}P_s=P_s\)">\(P_s^{\mathsf T}P_s=P_s\)</span> and <span class="math" data-tex="\(\sum_sP_s=I\)">\(\sum_sP_s=I\)</span>, we get <span class="math" data-tex="\(\sum_s(P_sH&#x27;)^{\mathsf T}P_sH&#x27;=H&#x27;^{\mathsf T}H&#x27;\)">\(\sum_s(P_sH&#x27;)^{\mathsf T}P_sH&#x27;=H&#x27;^{\mathsf T}H&#x27;\)</span>. By (3.3) and (3.1) at stage <span class="math" data-tex="\(i\)">\(i\)</span>, summing over <span class="math" data-tex="\(q\)">\(q\)</span> gives (3.1) at stage <span class="math" data-tex="\(i+1\)">\(i+1\)</span>.</p>
+<p>The projections depend on <span class="math" data-tex="\(m_{\le i+1}\)">\(m_{\le i+1}\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(x_{&gt;i+1}\)">\(x_{&gt;i+1}\)</span>, but not on <span class="math" data-tex="\(y_{\le i+1}\)">\(y_{\le i+1}\)</span>. So they commute with taking Fourier coefficients: the coefficient of <span class="math" data-tex="\(P_sH&#x27;\)">\(P_sH&#x27;\)</span> at <span class="math" data-tex="\((p,z)\)">\((p,z)\)</span> is <span class="math" data-tex="\(P_s\widehat{H&#x27;}_{p,z}\)">\(P_s\widehat{H&#x27;}_{p,z}\)</span>. All <span class="math" data-tex="\(R_{i+1}\)">\(R_{i+1}\)</span> rows are kept, whatever the ranks of the projections, so all branches use the same number of rows. As all sets are finite, a choice of projections can be made for every value of the fixed data.</p>
+<p><strong>Lemma 3.3</strong> (one step). <span class="math" data-tex="\(\Phi_{i+1}\le2\Phi_i\)">\(\Phi_{i+1}\le2\Phi_i\)</span>.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(\operatorname{dist}((q,s),(p,z))=\operatorname{dist}(q,p)+\mathbf 1_{\{s\ne z\}}\)">\(\operatorname{dist}((q,s),(p,z))=\operatorname{dist}(q,p)+\mathbf 1_{\{s\ne z\}}\)</span>, the matrix <span class="math" data-tex="\(U^{(i+1)}_{(q,s)}\)">\(U^{(i+1)}_{(q,s)}\)</span> is the concatenation over <span class="math" data-tex="\(z\)">\(z\)</span> of the blocks <span class="math" data-tex="\(\lambda^{\mathbf 1_{\{s\ne z\}}/2}P_sV_z\)">\(\lambda^{\mathbf 1_{\{s\ne z\}}/2}P_sV_z\)</span>, and
+<span class="math math-display" data-tex="\[
+C^{(i+1)}_{(q,s)}=\sum_{z\in\Lambda}\lambda^{\mathbf 1_{\{s\ne z\}}}P_sA_zP_s .
+\]">\[
+C^{(i+1)}_{(q,s)}=\sum_{z\in\Lambda}\lambda^{\mathbf 1_{\{s\ne z\}}}P_sA_zP_s .
+\]</span>
+By the Cauchy–Schwarz inequality for this sum of <span class="math" data-tex="\(L\)">\(L\)</span> terms, then <span class="math" data-tex="\(\|P_zA_zP_z\|_{\mathrm F}\le\|A_z\|_{\mathrm F}\)">\(\|P_zA_zP_z\|_{\mathrm F}\le\|A_z\|_{\mathrm F}\)</span> and the inequality of Theorem 2.1 of <a href="splitting-positive-semidefinite-matrices.html">Splitting positive semidefinite matrices</a>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\sum_s\bigl\|C^{(i+1)}_{(q,s)}\bigr\|_{\mathrm F}^2\\&amp;\quad\le L\sum_s\sum_z\lambda^{2\cdot\mathbf 1_{\{s\ne z\}}}\|P_sA_zP_s\|_{\mathrm F}^2\\&amp;\quad\le L\Bigl(\sum_z\|A_z\|_{\mathrm F}^2\\&amp;\qquad+\lambda^2C_L\sum_{z\ne z&#x27;}\langle A_z,A_{z&#x27;}\rangle\Bigr).\end{aligned}
+\]">\[
+\begin{aligned}&amp;\sum_s\bigl\|C^{(i+1)}_{(q,s)}\bigr\|_{\mathrm F}^2\\&amp;\quad\le L\sum_s\sum_z\lambda^{2\cdot\mathbf 1_{\{s\ne z\}}}\|P_sA_zP_s\|_{\mathrm F}^2\\&amp;\quad\le L\Bigl(\sum_z\|A_z\|_{\mathrm F}^2\\&amp;\qquad+\lambda^2C_L\sum_{z\ne z&#x27;}\langle A_z,A_{z&#x27;}\rangle\Bigr).\end{aligned}
+\]</span>
+There are <span class="math" data-tex="\(L\)">\(L\)</span> diagonal and <span class="math" data-tex="\(L(L-1)\)">\(L(L-1)\)</span> ordered off-diagonal pairs, so Lemma 3.2 and (2.3) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\mathbb E_{m_{i+1}}\sum_s\bigl\|C^{(i+1)}_{(q,s)}\bigr\|_{\mathrm F}^2\\&amp;\quad\le\bigl(1+(L-1)\lambda^2C_L\theta\bigr)\,\mathbb E_x\|Z(x)\|_{\mathrm F}^2\\&amp;\quad\le2\,\mathbb E_{x_{i+1}}\bigl\|C^{(i)}_q(x_{i+1},x_{&gt;i+1})\bigr\|_{\mathrm F}^2 .\end{aligned}
+\]">\[
+\begin{aligned}&amp;\mathbb E_{m_{i+1}}\sum_s\bigl\|C^{(i+1)}_{(q,s)}\bigr\|_{\mathrm F}^2\\&amp;\quad\le\bigl(1+(L-1)\lambda^2C_L\theta\bigr)\,\mathbb E_x\|Z(x)\|_{\mathrm F}^2\\&amp;\quad\le2\,\mathbb E_{x_{i+1}}\bigl\|C^{(i)}_q(x_{i+1},x_{&gt;i+1})\bigr\|_{\mathrm F}^2 .\end{aligned}
+\]</span>
+This holds for every <span class="math" data-tex="\(m_{\le i}\)">\(m_{\le i}\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(x_{&gt;i+1}\)">\(x_{&gt;i+1}\)</span>. Under the product measure, <span class="math" data-tex="\(m_{i+1}\)">\(m_{i+1}\)</span> and <span class="math" data-tex="\(x_{i+1}\)">\(x_{i+1}\)</span> are uniform and independent of these data. Summing over <span class="math" data-tex="\(q\)">\(q\)</span> and averaging over <span class="math" data-tex="\(m_{\le i}\)">\(m_{\le i}\)</span> and <span class="math" data-tex="\(x_{&gt;i+1}\)">\(x_{&gt;i+1}\)</span> gives <span class="math" data-tex="\(\Phi_{i+1}\le2\Phi_i\)">\(\Phi_{i+1}\le2\Phi_i\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Theorem 2.1.</em> Starting from stage zero and applying the step <span class="math" data-tex="\(t\)">\(t\)</span> times gives, at stage <span class="math" data-tex="\(t\)">\(t\)</span>, functions <span class="math" data-tex="\(H^m_q=H^{(t)}_q\)">\(H^m_q=H^{(t)}_q\)</span> of <span class="math" data-tex="\(y\)">\(y\)</span> alone (no inputs <span class="math" data-tex="\(x_{&gt;t}\)">\(x_{&gt;t}\)</span> remain) with <span class="math" data-tex="\(R=R_t\)">\(R=R_t\)</span> rows, for which (3.1) is (2.4) and <span class="math" data-tex="\(\Phi_t\le2^t\Phi_0\le2^tB^2\)">\(\Phi_t\le2^t\Phi_0\le2^tB^2\)</span> is (2.5). Choose <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(\sum_q\|C^m_q\|_{\mathrm F}^2\le2^tB^2\)">\(\sum_q\|C^m_q\|_{\mathrm F}^2\le2^tB^2\)</span>. Each <span class="math" data-tex="\(U^m_q\)">\(U^m_q\)</span> has <span class="math" data-tex="\(rL^t\)">\(rL^t\)</span> columns, so <span class="math" data-tex="\(\operatorname{rank}C^m_q\le rL^t\)">\(\operatorname{rank}C^m_q\le rL^t\)</span> whatever its number of rows. By Lemma 1.1(3) of <a href="psd-factorizations-and-semidefinite-lifts.html">PSD factorizations and semidefinite lifts</a> and the Cauchy–Schwarz inequality over the <span class="math" data-tex="\(L^t\)">\(L^t\)</span> branches,
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\sum_{q,p}\lambda^{\operatorname{dist}(q,p)}\|\widehat H^m_{q,p}\|_{\mathrm F}^2=\sum_q\operatorname{tr}C^m_q\\&amp;\quad\le\sqrt{rL^t}\sum_q\|C^m_q\|_{\mathrm F}\\&amp;\quad\le\sqrt{rL^t}\,\sqrt{L^t}\Bigl(\sum_q\|C^m_q\|_{\mathrm F}^2\Bigr)^{1/2}\\&amp;\quad\le L^t\sqrt r\,B\,2^{t/2}. \qquad\square\end{aligned}
+\]">\[
+\begin{aligned}&amp;\sum_{q,p}\lambda^{\operatorname{dist}(q,p)}\|\widehat H^m_{q,p}\|_{\mathrm F}^2=\sum_q\operatorname{tr}C^m_q\\&amp;\quad\le\sqrt{rL^t}\sum_q\|C^m_q\|_{\mathrm F}\\&amp;\quad\le\sqrt{rL^t}\,\sqrt{L^t}\Bigl(\sum_q\|C^m_q\|_{\mathrm F}^2\Bigr)^{1/2}\\&amp;\quad\le L^t\sqrt r\,B\,2^{t/2}. \qquad\square\end{aligned}
+\]</span></p>
+<p>The bound (2.6) has the factor <span class="math" data-tex="\(L^t\)">\(L^t\)</span> from the number of branches and <span class="math" data-tex="\(2^{t/2}\)">\(2^{t/2}\)</span> from the potential. In <a href="the-lower-bound-for-perfect-matching.html">The lower bound for perfect matching</a> these are absorbed by the weight <span class="math" data-tex="\(\lambda^{\operatorname{dist}(q,p)}\)">\(\lambda^{\operatorname{dist}(q,p)}\)</span>, with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> a large constant, at all frequencies far from the center.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Show that <span class="math" data-tex="\(\|C\|_{\mathrm F}^2=\sum_{p,p&#x27;}w_pw_{p&#x27;}\|\widehat H_p^{\mathsf T}\widehat H_{p&#x27;}\|_{\mathrm F}^2\)">\(\|C\|_{\mathrm F}^2=\sum_{p,p&#x27;}w_pw_{p&#x27;}\|\widehat H_p^{\mathsf T}\widehat H_{p&#x27;}\|_{\mathrm F}^2\)</span> and <span class="math" data-tex="\(\operatorname{tr}C=\sum_pw_p\|\widehat H_p\|_{\mathrm F}^2\)">\(\operatorname{tr}C=\sum_pw_p\|\widehat H_p\|_{\mathrm F}^2\)</span> for <span class="math" data-tex="\(C=UU^{\mathsf T}\)">\(C=UU^{\mathsf T}\)</span> and <span class="math" data-tex="\(U=[w_p^{1/2}\widehat H_p]_p\)">\(U=[w_p^{1/2}\widehat H_p]_p\)</span>.</p>
+<p><strong>4.2.</strong> Show that a positive semidefinite <span class="math" data-tex="\(F\)">\(F\)</span> satisfies <span class="math" data-tex="\(\|F\|_{\mathrm F}\le\operatorname{tr}F\)">\(\|F\|_{\mathrm F}\le\operatorname{tr}F\)</span>, and that <span class="math" data-tex="\(F=I_r\)">\(F=I_r\)</span> has <span class="math" data-tex="\(\|F\|_{\mathrm{op}}=1\)">\(\|F\|_{\mathrm{op}}=1\)</span> and <span class="math" data-tex="\(\|F\|_{\mathrm F}=\sqrt r\)">\(\|F\|_{\mathrm F}=\sqrt r\)</span>. Why does the proof of Theorem 2.1 use a bound on the trace rather than on the operator norm?</p>
+<p><strong>4.3.</strong> Let <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, and suppose that <span class="math" data-tex="\(\pi^m_{1,y}\)">\(\pi^m_{1,y}\)</span> does not depend on <span class="math" data-tex="\(m\)">\(m\)</span>. Show that (2.1) forces <span class="math" data-tex="\(\pi^m_{1,y}\)">\(\pi^m_{1,y}\)</span> to be uniform, that (2.2) then holds with <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span>, and that <span class="math" data-tex="\(\overline F_m(y)=\mathbb E_xF(x)\)">\(\overline F_m(y)=\mathbb E_xF(x)\)</span> for every <span class="math" data-tex="\(y\)">\(y\)</span>. Find a representation (2.4) with <span class="math" data-tex="\(\widehat H^m_{q,p}=0\)">\(\widehat H^m_{q,p}=0\)</span> for <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>.</p>
+<p><strong>4.4.</strong> Verify (3.4) from the description of the blocks of <span class="math" data-tex="\(V_z\)">\(V_z\)</span>.</p>
+<p><strong>4.5.</strong> Show that the number of rows <span class="math" data-tex="\(R_t\)">\(R_t\)</span> in the proof equals <span class="math" data-tex="\(r\,L^t\prod_i|X_i|\)">\(r\,L^t\prod_i|X_i|\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(\operatorname{tr}C=\|U\|_{\mathrm F}^2\)">\(\operatorname{tr}C=\|U\|_{\mathrm F}^2\)</span> is the sum of the squared norms of the blocks <span class="math" data-tex="\(w_p^{1/2}\widehat H_p\)">\(w_p^{1/2}\widehat H_p\)</span>. Also <span class="math" data-tex="\(\|UU^{\mathsf T}\|_{\mathrm F}^2=\operatorname{tr}(UU^{\mathsf T}UU^{\mathsf T})=\|U^{\mathsf T}U\|_{\mathrm F}^2\)">\(\|UU^{\mathsf T}\|_{\mathrm F}^2=\operatorname{tr}(UU^{\mathsf T}UU^{\mathsf T})=\|U^{\mathsf T}U\|_{\mathrm F}^2\)</span>, and <span class="math" data-tex="\(U^{\mathsf T}U\)">\(U^{\mathsf T}U\)</span> has the blocks <span class="math" data-tex="\((w_pw_{p&#x27;})^{1/2}\widehat H_p^{\mathsf T}\widehat H_{p&#x27;}\)">\((w_pw_{p&#x27;})^{1/2}\widehat H_p^{\mathsf T}\widehat H_{p&#x27;}\)</span>.</p>
+<p><strong>4.2.</strong> By Lemma 1.1(3) of <a href="psd-factorizations-and-semidefinite-lifts.html">PSD factorizations and semidefinite lifts</a>, <span class="math" data-tex="\(\|F\|_{\mathrm F}\le\operatorname{tr}F\)">\(\|F\|_{\mathrm F}\le\operatorname{tr}F\)</span>. For <span class="math" data-tex="\(F=I_r\)">\(F=I_r\)</span> the eigenvalues are all one. The potential <span class="math" data-tex="\(\Phi_0=\mathbb E_x\|F(x)\|_{\mathrm F}^2\)">\(\Phi_0=\mathbb E_x\|F(x)\|_{\mathrm F}^2\)</span> must be bounded independently of <span class="math" data-tex="\(r\)">\(r\)</span>; a bound on the operator norm would only give <span class="math" data-tex="\(\Phi_0\le rB^2\)">\(\Phi_0\le rB^2\)</span>, and the factor <span class="math" data-tex="\(r\)">\(r\)</span> would enter (2.6).</p>
+<p><strong>4.3.</strong> If <span class="math" data-tex="\(\pi^m_{1,y}=\pi_y\)">\(\pi^m_{1,y}=\pi_y\)</span> does not depend on <span class="math" data-tex="\(m\)">\(m\)</span>, then (2.1) says <span class="math" data-tex="\(\pi_y(x)=1/|X_1|\)">\(\pi_y(x)=1/|X_1|\)</span>. Then <span class="math" data-tex="\(T_{1,y}g=\mathbb E_xg\)">\(T_{1,y}g=\mathbb E_xg\)</span> for every <span class="math" data-tex="\(m\)">\(m\)</span>, the left side of (2.2) vanishes, and <span class="math" data-tex="\(\overline F_m(y)=\mathbb E_xF(x)\)">\(\overline F_m(y)=\mathbb E_xF(x)\)</span> for every <span class="math" data-tex="\(y\)">\(y\)</span>. Then <span class="math" data-tex="\(H_0=(\mathbb E_xF)^{1/2}\)">\(H_0=(\mathbb E_xF)^{1/2}\)</span>, constant in <span class="math" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-tex="\(H_q=0\)">\(H_q=0\)</span> for <span class="math" data-tex="\(q\ne0\)">\(q\ne0\)</span> give (2.4); the only nonzero coefficient is <span class="math" data-tex="\(\widehat H_{0,0}\)">\(\widehat H_{0,0}\)</span>.</p>
+<p><strong>4.4.</strong> The <span class="math" data-tex="\((y&#x27;,x)\)">\((y&#x27;,x)\)</span> block of <span class="math" data-tex="\(V_z\)">\(V_z\)</span> is <span class="math" data-tex="\(L^{-1}\chi_z(y&#x27;)\sqrt{\pi^m_{y&#x27;}(x)}\,U(x)\)">\(L^{-1}\chi_z(y&#x27;)\sqrt{\pi^m_{y&#x27;}(x)}\,U(x)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}V_z^{\mathsf T}V_{z&#x27;}&amp;=\frac1{L^2}\sum_{y&#x27;,x}\chi_z(y&#x27;)\chi_{z&#x27;}(y&#x27;)\\&amp;\quad\cdot\pi^m_{y&#x27;}(x)\,U(x)^{\mathsf T}U(x),\end{aligned}
+\]">\[
+\begin{aligned}V_z^{\mathsf T}V_{z&#x27;}&amp;=\frac1{L^2}\sum_{y&#x27;,x}\chi_z(y&#x27;)\chi_{z&#x27;}(y&#x27;)\\&amp;\quad\cdot\pi^m_{y&#x27;}(x)\,U(x)^{\mathsf T}U(x),\end{aligned}
+\]</span>
+and summing over <span class="math" data-tex="\(x\)">\(x\)</span> first gives <span class="math" data-tex="\((T_{y&#x27;}Z)(m)\)">\((T_{y&#x27;}Z)(m)\)</span>.</p>
+<p><strong>4.5.</strong> <span class="math" data-tex="\(R_0=r\)">\(R_0=r\)</span> and <span class="math" data-tex="\(R_{i+1}=L|X_{i+1}|R_i\)">\(R_{i+1}=L|X_{i+1}|R_i\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-PSD] OpenAI, <em>Exponential PSD rank of positively shifted matching matrices</em>, OpenAI Math Release preprint, 5 October 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Exponential-PSD-rank-of-positively-shifted-matching-matrices-October-5-2026</li>
+<li>[FSP 2016] H. Fawzi, J. Saunderson, P. A. Parrilo, <em>Sparse sums of squares on finite abelian groups and improved semidefinite lifts</em>, Math. Program. 160 (2016); preprint title <em>Sparse sum-of-squares certificates on finite abelian groups</em>. https://arxiv.org/abs/1503.01207</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
