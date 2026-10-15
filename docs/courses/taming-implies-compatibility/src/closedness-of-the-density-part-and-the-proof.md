@@ -213,4 +213,4 @@ The theorem is proved in the programme from the named hypothesis (HK) on the hea
 
 ## References
 
-- [OpenAI-TC] OpenAI, *Taming implies compatibility on four-manifolds*, OpenAI Math Release preprint, 23 September 2026, Sections 6 and 7. https://github.com/openai/math/tree/main/preprints/Taming-implies-compatibility-on-four-manifolds-September-23-2026
+- [OpenAI-TC] OpenAI, *Taming implies compatibility on four-manifolds*, OpenAI Math Release preprint, 6 October 2026, Sections 6 and 7. https://github.com/openai/math/tree/main/preprints/Taming-implies-compatibility-on-four-manifolds-October-6-2026

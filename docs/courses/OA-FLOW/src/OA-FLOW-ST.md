@@ -39,8 +39,8 @@ MF-06's general full-Hilbert-algebra proof can therefore be applied with CI/HA-R
 
 <a id="oa-flow.st.4"></a>
 
-## ST-4. Exact remaining distinctions
+## ST-4. From states to arbitrary weights
 
-This route uses the actual free-developed CP-01–06 construction at newly specified Hilbert/Hahn–Banach inputs, not its support or arbitrary-weight descendants.
+For a faithful normal state, the cyclic vector supplies the normality and faithfulness tests in ST-3. The preceding concrete predual construction supplies the topology of the representation.
 
-The arbitrary given-weight finite ideals, GNS construction, cutoffs, density and normal faithful representation now have the earlier GW/NF proof bodies. Its finite-star involution closability and full/reverse/opposite-weight correspondence now have the earlier [WR-3](OA-FLOW-WR.md#wr-3)–[WR-6](OA-FLOW-WR.md#wr-6) faithful n.s.f. proofs. WF proves the full forward algebra-to-weight construction and its GNS/involution-domain transport. The earlier [extended-valued normality theorem](OA-FLOW-EW.md#ew-5) covers every weight, and [MW](OA-FLOW-MW.md#mw-4) supplies the faithful modular opposite formula. Broader nonfaithful statements retain their precise scopes.
+For a faithful normal semifinite weight, [GW-1–5](OA-FLOW-GW.md#oa-flow.gw.1) and [NF-5](OA-FLOW-NF.md#oa-flow.nf.5) instead use finite ideals, GNS vectors and finite-domain cutoffs. [WR-3](OA-FLOW-WR.md#wr-3) proves closability of the finite-star involution, [WR-4](OA-FLOW-WR.md#wr-4) proves fullness, [WR-5](OA-FLOW-WR.md#wr-5) recovers the weight, and [WR-6](OA-FLOW-WR.md#wr-6) constructs its opposite weight. [WF](OA-FLOW-WF.md#oa-flow.wf.4) proves the forward construction with its full GNS and involution domains. The [normality theorem for extended-valued weights](OA-FLOW-EW.md#ew-5) applies without faithfulness or semifiniteness; [MW-4](OA-FLOW-MW.md#mw-4) identifies the faithful modular action. Each construction retains its stated hypotheses.

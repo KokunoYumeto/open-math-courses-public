@@ -10,7 +10,7 @@ K^\alpha_{a,b}(t+i)=\varphi_0(b\alpha_t(a)).
 \]
 We prove \(\alpha_t=\sigma_t^\varphi\) for every real \(t\). For a faithful normal state, invariance follows from (KU1), as proved in [KU-4](OA-FLOW-KU.md#ku-4); it need not be separately assumed in that case.
 
-Actual inputs are [GW-1–5](OA-FLOW-GW.md#oa-flow.gw.1), [WR-1–4](OA-FLOW-WR.md#wr-3), [MW-4](OA-FLOW-MW.md#mw-4), [EW-2–3](OA-FLOW-EW.md#ew-2) with [the required normality hypothesis](OA-FLOW-EW.md#ew-2), [CP01–06](OA-FLOW-CP.md#oa-flow.cp.1), [SF-3–4](OA-FLOW-SF.md#oa-flow.sf.sf0), [FF-1](OA-FLOW-FF.md#oa-flow.ff.2), and the complete local [KT-1–4](OA-FLOW-KT.md#kt-1). The free author context is [Hiai, §2.2, printed pp.17–19, and §7.1(C), p.64](https://arxiv.org/pdf/2004.02383v1). The periodic scalar-pairing idea is used here with all arbitrary-weight GNS, integral and finite-domain steps proved; no Stone theorem, three-lines theorem, Schwarz reflection theorem or unproved uniqueness theorem is imported.
+Actual inputs are [GW-1–5](OA-FLOW-GW.md#oa-flow.gw.1), [WR-1–4](OA-FLOW-WR.md#wr-3), [MW-4](OA-FLOW-MW.md#mw-4), [EW-2–3](OA-FLOW-EW.md#ew-2) with [the required normality hypothesis](OA-FLOW-EW.md#ew-2), [CP01–06](OA-FLOW-CP.md#oa-flow.cp.1), [SF-3–4](OA-FLOW-SF.md#oa-flow.sf.sf0), [FF-1](OA-FLOW-FF.md#oa-flow.ff.2), and the complete local [KT-1–4](OA-FLOW-KT.md#kt-1). The free author context is [Hiai, §2.2, printed pp.17–19, and §7.1(C), p.64](https://arxiv.org/pdf/2004.02383v1). The generator is constructed from a Laplace integral of the GNS action. The KMS boundary condition then identifies its exponential form with the full closed GNS involution, determining the modular group.
 
 Actual earlier proof ranges: [OA-FLOW.GW.1](OA-FLOW-GW.md#oa-flow.gw.1), [OA-FLOW.GW.2](OA-FLOW-GW.md#oa-flow.gw.2), [OA-FLOW.GW.3](OA-FLOW-GW.md#oa-flow.gw.3), [OA-FLOW.GW.4](OA-FLOW-GW.md#oa-flow.gw.4), [OA-FLOW.GW.5](OA-FLOW-GW.md#oa-flow.gw.5), [OA-FLOW.WR.1](OA-FLOW-WR.md#oa-flow.wr.1), [OA-FLOW.WR.2](OA-FLOW-WR.md#oa-flow.wr.2), [OA-FLOW.WR.3](OA-FLOW-WR.md#oa-flow.wr.3), [OA-FLOW.WR.4](OA-FLOW-WR.md#oa-flow.wr.4), [OA-FLOW.WR.5](OA-FLOW-WR.md#oa-flow.wr.5), [OA-FLOW.MW.4](OA-FLOW-MW.md#oa-flow.mw.4), [OA-FLOW.NF.5](OA-FLOW-NF.md#oa-flow.nf.5), [OA-FLOW.EW.2](OA-FLOW-EW.md#oa-flow.ew.2), [OA-FLOW.EW.3](OA-FLOW-EW.md#oa-flow.ew.3), [OA-FLOW.EW.5](OA-FLOW-EW.md#oa-flow.ew.5), [OA-FLOW.CP.1](OA-FLOW-CP.md#oa-flow.cp.1), [OA-FLOW.CP.2](OA-FLOW-CP.md#oa-flow.cp.2), [OA-FLOW.CP.3](OA-FLOW-CP.md#oa-flow.cp.3), [OA-FLOW.CP.4](OA-FLOW-CP.md#oa-flow.cp.4), [OA-FLOW.CP.5](OA-FLOW-CP.md#oa-flow.cp.5), [OA-FLOW.CP.6](OA-FLOW-CP.md#oa-flow.cp.6), [OA-FLOW.SF.SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [OA-FLOW.SF.SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [OA-FLOW.SF.SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [OA-FLOW.SF.SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [OA-FLOW.SF.SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [OA-FLOW.SF.SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [OA-FLOW.SF.SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [OA-FLOW.SF.SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [OA-FLOW.SF.SF3](OA-FLOW-SF.md#oa-flow.sf.sf3), [OA-FLOW.SF.SF4](OA-FLOW-SF.md#oa-flow.sf.sf4), [OA-FLOW.FF.1](OA-FLOW-FF.md#oa-flow.ff.1), [OA-FLOW.FF.2](OA-FLOW-FF.md#oa-flow.ff.2), [OA-FLOW.CF.1](OA-FLOW-CF.md#oa-flow.cf.1), [OA-FLOW.CF.6](OA-FLOW-CF.md#oa-flow.cf.6), [OA-FLOW.CF.7](OA-FLOW-CF.md#oa-flow.cf.7), [OA-FLOW.CF.8](OA-FLOW-CF.md#oa-flow.cf.8), [OA-FLOW.SC.4](OA-FLOW-SC.md#sc-04), [OA-FLOW.SC.5](OA-FLOW-SC.md#sc-05), [OA-FLOW.SC.8](OA-FLOW-SC.md#sc-08), [OA-FLOW.SC.9](OA-FLOW-SC.md#sc-09), [OA-FLOW.KT.1](OA-FLOW-KT.md#kt-1), [OA-FLOW.KT.2](OA-FLOW-KT.md#kt-2), [OA-FLOW.KT.3](OA-FLOW-KT.md#kt-3), [OA-FLOW.KT.4](OA-FLOW-KT.md#kt-4). The spectral domains, continuous-vector integrals, Gaussian scalar interchange and rectangle/circle complex-analysis arguments are complete in those earlier readers.
 
@@ -95,65 +95,109 @@ For \(a=a_{n,x}(0)\), use \(\alpha_z(a)=a_{n,x}(z)\) for its entire orbit. This 
 
 <a id="oa-flow.ku.3"></a><a id="ku-3"></a>
 
-## KU-3. A bounded periodic entire pairing identifies the two groups
+## KU-3. The implementing generator is determined by the GNS form
 
-Choose \(a\) of the Gaussian type from [KU-2](OA-FLOW-KU.md#ku-2) and \(b\) of the Gaussian type for \(\sigma\) from [KT-3](OA-FLOW-KT.md#kt-3). Define
+We first construct a self-adjoint generator of the strongly continuous group \(V_t\) from [KU-1](OA-FLOW-KU.md#ku-1). We then use the KMS boundary condition to identify its positive exponential with the closed GNS form. This determines the group on the whole Hilbert space.
+
+**A resolvent constructed from the real orbit.** Define
 \[
-f(z)=\varphi_0(\alpha_z(a)\sigma_z(b))
-=\langle\Lambda(\sigma_z(b)),\Lambda(\alpha_z(a)^*)\rangle.
+R\xi=\int_0^\infty e^{-s}V_s\xi\,ds,\qquad
+C=I-2R .
 \tag{KU9}
 \]
-The product belongs to the finite algebra for every \(z\), because each factor lies in \(A\). The first GNS vector is entire, and the second is anti-entire, by the exact adjoint rules. With the linear-first convention, their inner product is entire. This follows directly from their norm difference quotients and the bounded bilinear estimate.
-
-We record the analytic shift identity with all domains checked. For fixed \(c\in A\), the function
-\(h(z)=\varphi_0(\alpha_z(a)c)\)
-is entire by the same GNS pairing. On the real edge it agrees with \(K^\alpha_{a,c}\). [KT-1](OA-FLOW-KT.md#kt-1)'s local zero-edge uniqueness identifies the two on the upper strip; equivalently reflect the variable in its lower-strip statement. Consequently
+The integral is the continuous-vector integral of [SF-3](OA-FLOW-SF.md#oa-flow.sf.sf3); its tails have norm at most \(e^{-T}\|\xi\|\). Thus \(R\) is bounded with \(\|R\|\leq1\), and its adjoint is the same integral with \(V_{-s}\). All the \(V_s\) commute, so \(R\), \(R^*\), and every \(V_t\) commute. Splitting the positive quadrant into \(t\geq s\) and \(s\geq t\) gives
 \[
-\varphi_0(\alpha_{t+i}(a)c)=\varphi_0(c\alpha_t(a))
-\qquad(t\in\mathbb R).
+R^*R=\int_0^\infty\!\!\int_0^\infty
+ e^{-s-t}V_{t-s}\,dt\,ds
+ =\frac12\int_{\mathbb R}e^{-|u|}V_u\,du
+ =\frac12(R+R^*).
 \]
-Both sides have entire continuations in \(t\); the identity theorem yields
+These equalities may be tested against two Hilbert vectors: on compact rectangles they follow from Riemann sums and scalar change of variables, and the remaining tails are bounded by the scalar integral of \(e^{-s-t}\|\xi\|\|\eta\|\). Hence \(C^*C=CC^*=I\).
+
+For real \(t\), substitution in the integral gives
 \[
-\varphi_0(\alpha_z(a)c)=\varphi_0(c\alpha_{z-i}(a))
-\qquad(z\in\mathbb C,\ c\in A).
+V_tR\xi=e^t\int_t^\infty e^{-u}V_u\xi\,du,\qquad
+\frac{d}{dt}V_tR\xi=V_t(R-I)\xi .
+\]
+The derivative exists in Hilbert norm by SF-3's fundamental theorem. If \(R\xi=0\), the left side is identically zero and its derivative at zero gives \(\xi=0\). Normality of \(R\) implies \(\ker R^*=\ker R=0\), so \(\operatorname{Ran}R\) is dense.
+
+Define the linear operator
+\[
+D(B)=\operatorname{Ran}R,\qquad B=i(R^{-1}-I).
 \tag{KU10}
 \]
-The same argument, using KT's already proved KMS condition, gives
+It is closed, since the inverse of the bounded injective operator \(R\) has a closed graph. The identity \(R+R^*=2R^*R\), tested on \(\xi,\eta\), gives
+\(\langle BR\xi,R\eta\rangle=\langle R\xi,BR\eta\rangle\);
+thus \(B\) is symmetric. Moreover
 \[
-\varphi_0(\sigma_z(b)d)=\varphi_0(d\sigma_{z-i}(b))
-\qquad(z\in\mathbb C,\ d\in A).
+(B+i)R=iI,\qquad (B-i)R=iC .
+\]
+Both \(B+i\) and \(B-i\) are onto. This also proves self-adjointness directly: if \(y\in D(B^*)\), choose \(x\in D(B)\) with
+\((B+i)x=(B^*+i)y\). Then \(y-x\) belongs to
+\(\ker(B^*+i)=\operatorname{Ran}(B-i)^\perp=\{0\}\).
+Consequently \(D(B^*)=D(B)\).
+
+The spectral theorem with full domains in [SB-4](OA-FLOW-SF.md#oa-flow.sf.sb4) now applies to this self-adjoint operator. The commutation \(V_tR=RV_t\) preserves \(D(B)\) and commutes with \(B\) there, while the derivative above becomes
+\[
+\frac{d}{dt}V_t\xi=iBV_t\xi\qquad(\xi\in D(B)).
+\]
+For such \(\xi\), spectral dominated convergence gives the norm derivative of \(e^{-itB}\xi\), using
+\(\left|(e^{ihq}-1)/h\right|\leq |q|\).
+The product rule therefore gives
+\(\frac{d}{dt}(e^{-itB}V_t\xi)=0\).
+The vector fundamental theorem, followed by density of \(D(B)\), proves
+\[
+V_t=e^{itB}\qquad(t\in\mathbb R).
 \tag{KU11}
 \]
-In (KU10) put \(c=\sigma_t(b)\), then in (KU11) put \(d=\alpha_{t-i}(a)\). Both belong to \(A\). For real \(t\),
-\[
-f(t)=\varphi_0(\sigma_t(b)\alpha_{t-i}(a))
-=\varphi_0(\alpha_{t-i}(a)\sigma_{t-i}(b))
-=f(t-i).
-\]
-The identity theorem makes \(f(z)=f(z-i)\) on the entire plane.
 
-This periodic entire function is bounded. Indeed write \(z=t+is\), \(0\leq s\leq1\). Real invariance of both weights and the real-translation rules give
+**The KMS condition identifies the positive form.** Let \(\mathcal C\) be the linear span of the vectors
+\(\Lambda(a_{n,x}(0))\), where \(x\in A\) and \(n\geq1\) as in KU-2. Every corresponding element \(a\) has an entire orbit in both the algebra and the GNS space. With the spectral calculus of \(B\), the Gaussian integral in KU7 gives
 \[
-|f(t+is)|
-\leq
-\|\Lambda(\sigma_{is}(b))\|
-\|\Lambda(\alpha_{-is}(a^*))\|.
+\Lambda(a_{n,x}(z))
+ =\left[q\longmapsto e^{-q^2/(4n)}e^{izq}\right](B)\Lambda(x).
+\]
+To justify the formula, first apply \(1_{[-k,k]}(B)\), use the scalar Gaussian transform from [FF-1](OA-FLOW-FF.md#oa-flow.ff.2) on that compact spectral interval, and then let \(k\to\infty\). The displayed multiplier is bounded on the whole real line. The same argument after multiplication by \(e^{rq}\), for any real \(r\), proves all the required exponential domains. In particular, for every such \(a\), including finite sums,
+\[
+\Lambda(\alpha_{-i}(a))=e^B\Lambda(a).
+\]
+
+The entire scalar function
+\(h(z)=\varphi_0(a^*\alpha_z(a))
+ =\langle\Lambda(\alpha_z(a)),\Lambda(a)\rangle\)
+agrees on the real edge with \(K^\alpha_{a,a^*}(z+i)\).
+The zero-edge uniqueness proved in [KT-1](OA-FLOW-KT.md#kt-1) identifies these two functions on the closed lower strip. At its other edge,
+\[
+\|e^{B/2}\Lambda(a)\|^2
+ =\langle e^B\Lambda(a),\Lambda(a)\rangle
+ =h(-i)
+ =\varphi_0(aa^*)
+ =\|S\Lambda(a)\|^2 .
 \tag{KU12}
 \]
-The right side is continuous and finite on the compact interval of \(s\), by [KT-3](OA-FLOW-KT.md#kt-3) and [KU-2](OA-FLOW-KU.md#ku-2), independently of \(t\). Periodicity therefore bounds the function on every horizontal strip, with one common bound. [SF-4](OA-FLOW-SF.md#oa-flow.sf.sf4)'s circle Cauchy coefficient estimate proves Liouville's conclusion directly: at any center the derivative has modulus at most this bound divided by any radius \(R\); letting \(R\to\infty\) makes it zero. Hence \(f\) is constant.
+All products are in the finite algebra: \(a\) and every \(\alpha_z(a)\) belong to \(A\). The first equality uses the actual spectral domains just proved.
 
-For real \(t\), constancy and (KU9) say
+Put \(P=e^{B/2}\), a positive self-adjoint operator. The subspace \(\mathcal C\) is a graph core for both \(S\) and \(P\). For \(S\), KU-2 approximates each \(\Lambda(x)\), \(x\in A\), together with \(\Lambda(x^*)\), and [WR-3](OA-FLOW-WR.md#wr-3) identifies the closure of this initial involution with \(S\). For \(P\), put \(g_n(q)=e^{-q^2/(4n)}\). If \(\xi\in D(P)\), spectral dominated convergence gives
+\(g_n(B)\xi\to\xi\) in the \(P\)-graph norm. For fixed \(n\), approximate \(\xi\) in Hilbert norm by \(\Lambda(x_j)\), \(x_j\in A\). Both \(g_n(B)\) and \(Pg_n(B)\) are bounded, so
+\(g_n(B)\Lambda(x_j)=\Lambda(a_{n,x_j}(0))\)
+approximates \(g_n(B)\xi\) in that graph norm.
+
+Equation KU12 makes the two graph norms identical on \(\mathcal C\). Completing this same core in these norms and using closedness of \(S\) and \(P\) gives
 \[
-\langle U_t\Lambda(b),V_t\Lambda(a^*)\rangle
-=\langle\Lambda(b),\Lambda(a^*)\rangle.
+D(P)=D(S),\qquad
+\langle P\xi,P\eta\rangle=\langle S\eta,S\xi\rangle
+\quad(\xi,\eta\in D(S)).
 \tag{KU13}
 \]
-The two vector families are independently dense by [KT-3](OA-FLOW-KT.md#kt-3) and [KU-2](OA-FLOW-KU.md#ku-2). Boundedness extends the identity to all pairs of Hilbert vectors, so \(V_t^*U_t=I\), or \(V_t=U_t\). Formula (KU3), MW's implementation formula, and faithfulness of \(\pi\) now give
+The second equality follows by polarization, with the reversed order on the conjugate-linear side. This identifies the associated operators including their domains: \(\xi\in D(P)\) lies in \(D(P^2)\) exactly when the form \(\eta\mapsto\langle P\xi,P\eta\rangle\) is represented by \(\langle v,\eta\rangle\) for some \(v\in H_\varphi\). By the adjoint definition and KU13, this is exactly the condition \(\xi\in D(S^*S)\), with the same vector \(v\). Therefore \(e^B=P^2=S^*S=\Delta\).
+
+Finally the spectral measure of \(e^B\) is the pushforward of that of \(B\) under \(q\mapsto e^q\). This map is one-to-one from \(\mathbb R\) onto \((0,\infty)\); SB-4's uniqueness and full Borel domain rules give \(\log(e^B)=B\). Thus \(B=\log\Delta\). Combining KU11, KU3, the modular implementation in [MW-4](OA-FLOW-MW.md#oa-flow.mw.4), and faithfulness of the GNS representation yields
 \[
+V_t=\Delta^{it},\qquad
 \alpha_t=\sigma_t^\varphi\qquad(t\in\mathbb R).
 \tag{KU14}
 \]
-This proves uniqueness for the stated arbitrary faithful normal semifinite weight, without a countability reduction.
+The argument uses neither a cyclic finite-weight identity vector nor any separability assumption.
 
 <a id="oa-flow.ku.4"></a><a id="ku-4"></a>
 
@@ -163,7 +207,7 @@ Let \(\omega\) be a faithful normal state satisfying (KU1) for a pointwise ultra
 
 Translate this closed-strip function vertically by integer multiples of \(i\), identifying its equal values on the seams. This defines a continuous bounded function \(H\) on \(\mathbb C\), holomorphic away from the horizontal integer lines. It is holomorphic across each seam as well: for a small rectangle crossing just one seam, cut at distance \(\varepsilon\) on either side. The two rectangle integrals vanish by [SF-4](OA-FLOW-SF.md#oa-flow.sf.sf4)'s Cauchy theorem; the intervening parallel-edge integrals cancel in the limit by continuity, and the short joining edges tend to zero. Thus the full rectangle integral is zero. The local rectangular Morera criterion makes \(H\) holomorphic across the seam.
 
-The same elementary Liouville argument as [KU-3](OA-FLOW-KU.md#ku-3) makes \(H\) constant. In particular
+[SF-4](OA-FLOW-SF.md#oa-flow.sf.sf4)'s circle Cauchy estimate bounds the derivative at each center by the global bound divided by any radius. Letting the radius tend to infinity makes \(H\) constant. In particular
 \(\omega(\alpha_t(a))=\omega(a)\) for every \(a\in M\). [KU-1](OA-FLOW-KU.md#ku-1)–3 then apply and give \(\alpha_t=\sigma_t^\omega\). The argument also works for a nonzero faithful finite normal positive functional after rescaling.
 
 The arbitrary-weight theorem above includes weight invariance among its hypotheses, exactly as stated at the start. Nothing in this proof drops faithfulness, identifies a natural cone, or asserts an operator-valued weight theorem. Those are separate obligations.
@@ -174,7 +218,7 @@ The arbitrary-weight theorem above includes weight invariance among its hypothes
 
 ![The modulus and unwrapped phase of one exact KMS strip, and its clockwise circular images at three heights](../assets/kms-reconstruction/assets/kms-strip.png)
 
-This image illustrates [KT-1, equations KT1–KT4](OA-FLOW-KT.md#kt-1) and [KT-2, equations KT5–KT7](OA-FLOW-KT.md#kt-2). The uniqueness argument uses the separately proved periodic pairing [KU-3, equations KU9–KU14](OA-FLOW-KU.md#ku-3); the image itself does not prove uniqueness. The [reproducible plotting source](../assets/kms-reconstruction/render_kms_strip.py) and [exact numerical parameters](../assets/kms-reconstruction/kms-figure-numerics.json) accompany it.
+This image illustrates [KT-1, equations KT1–KT4](OA-FLOW-KT.md#kt-1) and [KT-2, equations KT5–KT7](OA-FLOW-KT.md#kt-2). The uniqueness argument uses the generator and common closed-form domain identified in [KU-3, equations KU9–KU14](OA-FLOW-KU.md#ku-3); the image itself does not prove uniqueness. The [reproducible plotting source](../assets/kms-reconstruction/render_kms_strip.py) and [exact numerical parameters](../assets/kms-reconstruction/kms-figure-numerics.json) accompany it.
 
 Let \(M=M_2(\mathbb C)\), \(d=\operatorname{diag}(1,4)/5\), and \(\varphi(x)=\operatorname{Tr}(dx)\). Its GNS space can be represented as \(M_2(\mathbb C)\) with inner product \(\langle X,Y\rangle=\operatorname{Tr}(Y^*X)\), left multiplication representation, and \(\Lambda(x)=xd^{1/2}\). The full involution and its polar factors are
 \[

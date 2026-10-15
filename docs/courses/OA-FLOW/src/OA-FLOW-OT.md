@@ -24,7 +24,7 @@ The cocycles on each side are the balanced-matrix cocycles constructed in BC. Th
 
 Exact earlier written proofs are [EP2](OA-FLOW-EP.md#oa-flow.ep.2), [EP3](OA-FLOW-EP.md#oa-flow.ep.3), [EP4](OA-FLOW-EP.md#oa-flow.ep.4), [EP5](OA-FLOW-EP.md#oa-flow.ep.5), [EP6](OA-FLOW-EP.md#oa-flow.ep.6); [BC1](OA-FLOW-BC.md#oa-flow.bc.1), [BC2](OA-FLOW-BC.md#oa-flow.bc.2), [BC3](OA-FLOW-BC.md#oa-flow.bc.3), [BC4](OA-FLOW-BC.md#oa-flow.bc.4); [GW1](OA-FLOW-GW.md#oa-flow.gw.1), [GW2](OA-FLOW-GW.md#oa-flow.gw.2); [SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [SB6](OA-FLOW-SF.md#oa-flow.sf.sb6); [MA1](OA-FLOW-MA.md#oa-flow.ma.1), [MA2](OA-FLOW-MA.md#oa-flow.ma.2), [MA3](OA-FLOW-MA.md#oa-flow.ma.3), [MA4](OA-FLOW-MA.md#oa-flow.ma.4); [AS1](OA-FLOW-AS.md#oa-flow.as.1), [AS2](OA-FLOW-AS.md#oa-flow.as.2), [AS3](OA-FLOW-AS.md#oa-flow.as.3), [AS4](OA-FLOW-AS.md#oa-flow.as.4); and [CP1](OA-FLOW-CP.md#oa-flow.cp.1), [CP2](OA-FLOW-CP.md#oa-flow.cp.2), [CP3](OA-FLOW-CP.md#oa-flow.cp.3), [CP4](OA-FLOW-CP.md#oa-flow.cp.4), [CP5](OA-FLOW-CP.md#oa-flow.cp.5), [CP6](OA-FLOW-CP.md#oa-flow.cp.6). EP binds positive-functional Cauchy–Schwarz to [GNS Lemma2.1](OA-FLOW-GNS.md#gns-lemma-2-1) and [Lemma2.2](OA-FLOW-GNS.md#gns-lemma-2-2), the norm identity to [GNS Theorem4.1](OA-FLOW-GNS.md#gns-theorem-4-1), and the Hilbert-sum construction to [GNS Lemma7.1](OA-FLOW-GNS.md#gns-lemma-7-1). The finite algebra \(m_T=\operatorname{span}N_T^*N_T\) and its \(N\)-valued bimodule linear extension \(T_0:m_T\to N\) on this finite algebra are precisely [EP6](OA-FLOW-EP.md#oa-flow.ep.6). No uniform norm bound is asserted.
 
-The free development source is [F. Hiai's author manuscript, Theorem 8.7 and Lemmas 8.13–8.16, printed pp.71–80](https://arxiv.org/pdf/2004.02383v1#page=71). The proof here replaces the analytic-generator and Carlson imports by AS and MA, and uses EP's independently reconstructed extension by normal minorants. It never assumes a decomposition of a general normal weight as a sum of bounded normal functionals.
+The free development source is [F. Hiai's author manuscript, Theorem 8.7 and Lemmas 8.13–8.16, printed pp.71–80](https://arxiv.org/pdf/2004.02383v1#page=71). The proof below obtains matrix positivity and mixed finite products directly from square-root columns. Resolvent contractions then approximate the whole GNS finite domains. The closed-operator strip construction in MA and the upper-half-plane comparison in AS identify the two groups. EP supplies the extension by normal minorants.
 
 <a id="oa-flow.ot.1"></a><a id="ot-1"></a>
 
@@ -51,28 +51,35 @@ We claim
 \[
  X\in M_k(m_T),\quad X\geq0\quad\Longrightarrow\quad R(X)\geq0.    \tag{OT3}
 \]
-Fix \(f\in N_*^+\). [EP5](OA-FLOW-EP.md#oa-flow.ep.5)–[EP6](OA-FLOW-EP.md#oa-flow.ep.6) give the normal scalar weight \(\nu_f=\widehat f\circ T\) on \(M\), with no faithfulness or semifiniteness required. On \(M_k(M)_+\) define
+Take the positive square root \(Y=X^{1/2}=[y_{\ell j}]\) in \(M_k(M)\), using [SB1–SB6](OA-FLOW-SF.md#oa-flow.sf.sb1). Its columns satisfy
 \[
- \Psi_f(X)=\sum_{j=1}^k\nu_f(x_{jj}),\qquad
- \theta_f(Y)=\sum_{j=1}^k f(y_{jj})\quad(Y\in M_k(N)).
+ x_{jj}=\sum_{\ell=1}^k y_{\ell j}^*y_{\ell j}.
 \]
-The first is a weight simply by the diagonal formula. If \(X\in M_k(m_T)_+\), then each \(x_{jj}\) is positive in \(m_T\), hence in the finite bounded-value cone of \(T\) by [EP6](OA-FLOW-EP.md#oa-flow.ep.6). Thus \(\Psi_f(X)<\infty\). Since these positive matrices span \(M_k(m_T)\), its elements all belong to \(m_{\Psi_f}\). Uniqueness of the scalar finite extension, or polarization, gives
+Each \(x_{jj}\) belongs to the positive part of \(m_T\), whose \(T\)-value is bounded by [EP6](OA-FLOW-EP.md#oa-flow.ep.6). Since
+\(0\leq y_{\ell j}^*y_{\ell j}\leq x_{jj}\), heredity of that bounded-value cone gives \(y_{\ell j}\in N_T\).
+
+For a column \(c=(c_j)_{j=1}^k\in N^k\), put
+\(w_\ell=\sum_j y_{\ell j}c_j\).
+The right \(N\)-module property and linearity of \(N_T\), both proved in EP6, give \(w_\ell\in N_T\). Expanding the finite sums and using bimodularity of \(T_0\) yields
 
 <a id="equation-ot4"></a>
 
 \[
- (\Psi_f)_0(X)=\theta_f(R(X))\qquad(X\in M_k(m_T)).                \tag{OT4}
+ c^*R(X)c
+ =\sum_{i,j,\ell}c_i^*T_0(y_{\ell i}^*y_{\ell j})c_j
+ =\sum_{\ell=1}^k T(w_\ell^*w_\ell)\geq0.                        \tag{OT4}
 \]
-For positive such \(X\) and any \(C\in M_k(N)\), equations ([OT2](OA-FLOW-OT.md#equation-ot2))–([OT4](OA-FLOW-OT.md#equation-ot4)) imply
+All terms are bounded elements of \(N\). Thus positivity has been tested on every coefficient column, without composing \(T\) with an auxiliary scalar weight.
+
+For completeness these column tests imply matrix positivity. The matrix \(H=R(X)\) is self-adjoint because \(T_0\) preserves adjoints. If \(H\) were not positive, its spectral calculus would give a nonzero projection
+\(P=1_{(-\infty,-\varepsilon]}(H)\) for some \(\varepsilon>0\). Let \(\iota_j\) be the \(j\)-th coordinate column with entry \(1_N\), and take \(c=P\iota_j\). Since \(PHP\leq-\varepsilon P\), OT4 gives
 
 <a id="equation-ot5"></a>
 
 \[
- \theta_f(C^*R(X)C)=\Psi_f(C^*XC)\geq0.                           \tag{OT5}
+ 0\leq c^*Hc\leq-\varepsilon c^*c.                              \tag{OT5}
 \]
-Here \(C^*XC\) is still positive in \(M_k(m_T)\), so its finite value has already been justified.
-
-The matrix \(R(X)\) is self-adjoint because \(T_0\) preserves adjoints. If it were not positive, a nonzero spectral projection \(P=1_{(-\infty,-\varepsilon]}(R(X))\) would exist for some \(\varepsilon>0\). Take \(C=P\). Then \(P R(X)P\leq-\varepsilon P\). At least one positive diagonal entry of \(P\) is nonzero: if they were all zero, \(\|P\iota_j\xi\|^2=\langle P\iota_j\xi,\iota_j\xi\rangle=0\) for every coordinate vector, giving \(P=0\). A vector functional on a nonzero diagonal entry supplies \(f\in N_*^+\) with \(\theta_f(P)>0\). This contradicts ([OT5](OA-FLOW-OT.md#equation-ot5)), proving ([OT3](OA-FLOW-OT.md#equation-ot3)). No operator-valued amplification theorem is being assumed.
+Hence \(c^*c=0\), so \(P\iota_j=0\), for every \(j\). All columns of \(P\) vanish, contradicting \(P\ne0\). This proves OT3 for every matrix size.
 
 <a id="oa-flow.ot.2"></a><a id="ot-2"></a>
 
@@ -95,12 +102,21 @@ Indeed the Gram matrix
    =\begin{pmatrix}y&z\\0&0\end{pmatrix}^*
      \begin{pmatrix}y&z\\0&0\end{pmatrix}
 \]
-is positive in \(M_2(m_T)\). [OT1](OA-FLOW-OT.md#oa-flow.ot.1) makes \(R(X)\) positive in \(M_2(N)\), and its value under the balanced weight \(\Theta(\varphi,\psi)\) is
+is positive in \(M_2(m_T)\). [OT1](OA-FLOW-OT.md#oa-flow.ot.1) makes \(R(X)\) positive in \(M_2(N)\). Write its positive square root by columns:
 \[
- \varphi(T(y^*y))+\psi(T(z^*z))
- =\widetilde\varphi(y^*y)+\widetilde\psi(z^*z)<\infty.
+ R(X)^{1/2}=
+ \begin{pmatrix}r_1&s_1\\r_2&s_2\end{pmatrix}.
 \]
-Thus \(R(X)\in m_\Theta\). [BC3](OA-FLOW-BC.md#oa-flow.bc.3)'s exact entry description says that its \((1,2)\) entry belongs to \(Z_{\varphi,\psi}\), proving ([OT6](OA-FLOW-OT.md#equation-ot6)).
+Multiplication gives
+\[
+ T(y^*y)=\sum_{\ell=1}^2r_\ell^*r_\ell,\qquad
+ T(z^*z)=\sum_{\ell=1}^2s_\ell^*s_\ell,\qquad
+ T_0(y^*z)=\sum_{\ell=1}^2r_\ell^*s_\ell.
+\]
+The first two sums have finite \(\varphi\)- and \(\psi\)-values respectively:
+their values are \(\widetilde\varphi(y^*y)\) and
+\(\widetilde\psi(z^*z)\). Positivity bounds each summand by its sum, so
+\(r_\ell\in N_\varphi\) and \(s_\ell\in N_\psi\). The last displayed equality is therefore an explicit expression of \(T_0(y^*z)\) in \(Z_{\varphi,\psi}\), proving OT6.
 
 We will also use the exact compatibility of finite extensions. If
 \(v,w\in N_{\widetilde\omega}\cap N_T\), where \(\widetilde\omega=\widehat\omega T\), then
@@ -178,59 +194,71 @@ This equality is between finite values of actual elements of the respective fini
 
 <a id="oa-flow.ot.4"></a><a id="ot-4"></a>
 
-## OT4. Spectral cutoffs cover the whole mixed finite domain
+## OT4. Resolvent cutoffs cover the whole mixed finite domain
 
-Let \(y\in N_{\widetilde\varphi}\), and put \(m=T(y^*y)\in\widehat N_+\). Then \(\widehat\varphi(m)<\infty\). In [EP2](OA-FLOW-EP.md#oa-flow.ep.2)'s representation of \(m\), its infinite-value projection \(p\) must vanish. Indeed \(m\geq n p\) for all positive integers \(n\), so
+Let \(y\in N_{\widetilde\varphi}\), and put \(m=T(y^*y)\in\widehat N_+\). Then \(\widehat\varphi(m)<\infty\). In [EP2](OA-FLOW-EP.md#oa-flow.ep.2)'s representation of \(m\), its infinite-value projection \(p\) must vanish: \(m\geq n p\) for every positive integer \(n\), whereas \(\widehat\varphi(m)<\infty\). Faithfulness of \(\varphi\) therefore forces \(p=0\). Thus \(m\) is represented by a densely defined positive self-adjoint operator \(A_m\) affiliated with \(N\).
+
+For each positive integer \(n\), define the bounded resolvent contraction
 \[
- \widehat\varphi(m)\geq n\varphi(p).
+ c_n=(1+A_m/n)^{-1}\in N.
 \]
-Faithfulness gives \(\varphi(p)>0\) when \(p\neq0\), possibly infinite, contradicting finiteness. Thus \(m\) is represented by a densely defined positive self-adjoint operator \(A_m\) affiliated with \(N\), with no infinite-value part.
-
-For \(s>0\) put \(e_s=1_{[0,s]}(A_m)\in N\). These projections increase strongly to \(1\); write, as extended positive elements,
+The Borel spectral calculus in [SB4–SB6](OA-FLOW-SF.md#oa-flow.sf.sb4) gives \(0\leq c_n\uparrow1\) strongly. Introduce the following extended positive elements, all defined by nonnegative scalar functions of \(A_m\):
 
 <a id="equation-ot13"></a>
 
 \[
- m_s=e_sme_s,\qquad r_s=(1-e_s)m(1-e_s),\qquad m=m_s+r_s.         \tag{OT13}
+ \begin{gathered}
+ m_n=c_nmc_n,\qquad s_n=(1-c_n^2)m,\qquad
+ r_n=(1-c_n)m(1-c_n),\\
+ m=m_n+s_n,\qquad 0\leq r_n\leq s_n.                            \tag{OT13}
+ \end{gathered}
 \]
-The identity follows by the orthogonal spectral decomposition, equivalently by testing every positive normal vector series as in [EP3](OA-FLOW-EP.md#oa-flow.ep.3). The element \(m_s\) is bounded by \(s1\), and \(m_s\uparrow m\) pointwise on \(N_*^+\). Therefore
+Here \(s_n\) denotes spectral multiplication by
+\(\lambda[1-(1+\lambda/n)^{-2}]\); no difference of unbounded operators is being defined. The equalities and inequality follow from scalar identities, including
+\((1-c)^2\leq1-c^2\) for \(0\leq c\leq1\), by testing every normal positive functional as in [EP3](OA-FLOW-EP.md#oa-flow.ep.3).
+
+The function \(\lambda(1+\lambda/n)^{-2}\) is bounded by \(n/4\): after setting \(u=\lambda/n\), the estimate is \(u/(1+u)^2\leq1/4\), equivalent to \((u-1)^2\geq0\). These functions increase pointwise to \(\lambda\). Consequently \(m_n\in N_+\), \(m_n\uparrow m\) in the extended cone, and [EP5](OA-FLOW-EP.md#oa-flow.ep.5)'s normality and additivity give
 
 <a id="equation-ot14"></a>
 
 \[
- \widehat\varphi(m_s)\uparrow\widehat\varphi(m)<\infty,\qquad
- \widehat\varphi(r_s)=\widehat\varphi(m)-\widehat\varphi(m_s)
-          \longrightarrow0.                                   \tag{OT14}
+ \widehat\varphi(m_n)\uparrow\widehat\varphi(m)<\infty,\qquad
+ 0\leq\widehat\varphi(r_n)\leq\widehat\varphi(s_n)
+ =\widehat\varphi(m)-\widehat\varphi(m_n)\longrightarrow0.        \tag{OT14}
 \]
-The subtraction in the second formula is subtraction of two finite real numbers, justified by [EP5](OA-FLOW-EP.md#oa-flow.ep.5) additivity and ([OT13](OA-FLOW-OT.md#equation-ot13)); it is not subtraction of unbounded operators or of infinite weight values.
+The difference here is between finite real numbers, justified by \(m=m_n+s_n\).
 
-Bimodularity now gives
+Bimodularity of \(T\) now gives
 
 <a id="equation-ot15"></a>
 
 \[
  \begin{gathered}
- T((ye_s)^*(ye_s))=m_s,\qquad
- ye_s\in N_T\cap N_{\widetilde\varphi},\\
- \|\Lambda_{\widetilde\varphi}(y-ye_s)\|^2
- =\widehat\varphi(r_s)\longrightarrow0.                          \tag{OT15}
+ T((yc_n)^*(yc_n))=m_n,\qquad
+ yc_n\in N_T\cap N_{\widetilde\varphi},\\
+ \|\Lambda_{\widetilde\varphi}(y-yc_n)\|^2
+ =\widehat\varphi(r_n)\longrightarrow0.                          \tag{OT15}
  \end{gathered}
 \]
-The second line applies \(T\) directly to \((1-e_s)y^*y(1-e_s)\); no extension of \(T_0\) to an undefined difference is used. Similarly, for \(z\in N_{\widetilde\psi}\) there are spectral projections \(f_s\uparrow1\) with \(zf_s\in N_T\cap N_{\widetilde\psi}\) and
-\(\Lambda_{\widetilde\psi}(zf_s)\to\Lambda_{\widetilde\psi}(z)\).
+The second line applies \(T\) to the positive element
+\((1-c_n)y^*y(1-c_n)\).
+For \(z\in N_{\widetilde\psi}\), the same construction from \(T(z^*z)\) produces positive contractions \(d_n\in N\) with
+\(zd_n\in N_T\cap N_{\widetilde\psi}\) and
+\(\Lambda_{\widetilde\psi}(zd_n)\to\Lambda_{\widetilde\psi}(z)\).
 
-Apply ([OT12](OA-FLOW-OT.md#equation-ot12)) to \(x_s=(ye_s)^*(zf_s)\). Equations ([OT11](OA-FLOW-OT.md#equation-ot11)) and ([OT15](OA-FLOW-OT.md#equation-ot15)) give convergence of all four GNS vectors in
+Apply [OT12](OA-FLOW-OT.md#equation-ot12) to
+\(x_n=(yc_n)^*(zd_n)\). The bounded right-multiplier estimates in [OT11](OA-FLOW-OT.md#equation-ot11), together with OT15, give convergence of all four vectors in
 \[
  \begin{split}
- \widetilde\psi_0(a x_s)
- &=\langle\Lambda_{\widetilde\psi}(zf_s),
-             \Lambda_{\widetilde\psi}(ye_s a^*)\rangle,\\
- \widetilde\varphi_0(x_s b)
- &=\langle\Lambda_{\widetilde\varphi}(zf_s b),
-             \Lambda_{\widetilde\varphi}(ye_s)\rangle.
+ \widetilde\psi_0(a x_n)
+ &=\langle\Lambda_{\widetilde\psi}(zd_n),
+             \Lambda_{\widetilde\psi}(yc_n a^*)\rangle,\\
+ \widetilde\varphi_0(x_n b)
+ &=\langle\Lambda_{\widetilde\varphi}(zd_n b),
+             \Lambda_{\widetilde\varphi}(yc_n)\rangle .
  \end{split}
 \]
-Taking their limits proves
+Taking the limits proves
 
 <a id="equation-ot16"></a>
 
@@ -238,8 +266,15 @@ Taking their limits proves
  \widetilde\psi_0(a y^*z)=\widetilde\varphi_0(y^*zb)
  \quad(y\in N_{\widetilde\varphi},\ z\in N_{\widetilde\psi}).       \tag{OT16}
 \]
-Linearity proves the same equality on the entire space
+Both products belong to their asserted finite algebras by OT10; these are actual finite values. Linearity extends the equality to the entire space
 \(\operatorname{span}(N_{\widetilde\varphi}^*N_{\widetilde\psi})\).
+
+The sharp cutoffs used in the illustration also converge in this norm. Indeed, for \(e_s=1_{[0,s]}(A_m)\), the spectral decomposition gives \(m=e_sme_s+(1-e_s)m(1-e_s)\), with \(e_sme_s\leq s1\) increasing to \(m\). Normality and additivity of \(\widehat\varphi\) therefore give
+\[
+ \|\Lambda_{\widetilde\varphi}(y-ye_s)\|^2
+ =\widehat\varphi(m)-\widehat\varphi(e_sme_s)\longrightarrow0.
+\]
+This is a second approximation of the same whole finite domain; the preceding proof of OT16 uses the resolvent contractions.
 
 <a id="oa-flow.ot.5"></a><a id="ot-5"></a>
 
@@ -346,7 +381,15 @@ Take \(y=I\). Then \(m=T(y^*y)\) is the unbounded sequence \(m_n=2n\), so \(y\no
 \]
 The finite sum identity
 \(\sum_{n=1}^k n2^{-n}=2-(k+2)2^{-k}\)
-follows by induction, starting at \(k=0\); letting \(k\to\infty\) proves the preceding total and the tail identity below. [OT4](OA-FLOW-OT.md#oa-flow.ot.4)'s spectral cutoff is exactly
+follows by induction, starting at \(k=0\); letting \(k\to\infty\) proves the preceding total and the tail identity below. The resolvent contraction in [OT4](OA-FLOW-OT.md#oa-flow.ot.4), with parameter \(q\), is
+\[
+ c_q(n)=\frac{q}{q+2n},\qquad
+ \|\Lambda_{\widetilde\varphi}(y-yc_q)\|^2
+ =\sum_{n\geq1}2n\,2^{-n}\left(\frac{2n}{q+2n}\right)^2.
+\]
+This tends to zero: on a fixed finite set every summand tends to zero, and the remaining sum is bounded by the summable tail of \(2n2^{-n}\), independently of \(q\).
+
+For a second explicit approximation, use the coordinate projection \(e_{2k}=1_{[0,2k]}(A_m)\). Its error has the closed formula
 
 <a id="equation-of5"></a>
 
@@ -372,6 +415,6 @@ has zeros \(a_n=(2n-1)/(2n+1)\). Dividing by a finite set of its Blaschke factor
  \leq\prod_{n=1}^N\frac{2n-1}{2n+1}
  =\frac1{2N+1}\longrightarrow0.                                \tag{OF6}
 \]
-The product telescopes exactly. Panel D plots this upper bound for \(N=1,\ldots,60\); it does not plot values of an assumed nonzero \(g\), whose existence the bound rules out. In the general [AS1](OA-FLOW-AS.md#oa-flow.as.1) proof the point \(iy\) is chosen wherever \(g(iy)\neq0\); the divergence of \(\sum_n2y/(n+y)\) replaces the special telescoping identity. [AS4](OA-FLOW-AS.md#oa-flow.as.4) applies this obstruction to the difference of two entire orbit functions after their horizontal exponential bounds have been established.
+The product telescopes exactly. Panel D plots this upper bound for \(N=1,\ldots,60\); it does not plot values of an assumed nonzero \(g\), whose existence the bound rules out. In the general [AS1](OA-FLOW-AS.md#oa-flow.as.1) proof the point \(iy\) is chosen wherever \(g(iy)\neq0\); the divergence of \(\sum_n2y/(n+y)\) replaces the special telescoping identity. [AS4](OA-FLOW-AS.md#oa-flow.as.4) applies this obstruction to the bounded, exponentially damped difference between the upper-half-plane strip construction and the entire base orbit.
 
 [Editable original SVG](../assets/ovw-modular/assets/ovw-modular.svg), [figure data](../assets/ovw-modular/ovw-modular-numerics.json), and [reproduction source](../assets/ovw-modular/render_ovw_modular.py).

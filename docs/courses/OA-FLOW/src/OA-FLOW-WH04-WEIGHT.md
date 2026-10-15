@@ -1,6 +1,6 @@
 # Weight/GNS transport after the forward construction
 
-This is the original FLOW-WH04-05 scope, placed after the complete earlier WF construction. The arbitrary faithful n.s.f. given-weight closability, full/reverse correspondence and canonical opposite finite cone now have the earlier WR proofs, after GW/NF and EW. The constructed-weight direction uses the earlier WF proof.
+The finite-star GNS algebra of a faithful normal semifinite weight carries a closable involution. Conversely, the weight constructed from a full left Hilbert algebra recovers that algebra's closed involution in its GNS representation. The identifications below preserve the entire domains.
 
 <a id="oa-flow.wh04.5"></a>
 
@@ -24,5 +24,5 @@ On the whole initial finite-star domain the transported weight involution is con
 
 $$I S_\Phi I^*=S,$$
 
-including equality of domains. This is an equality of closed operators, not merely agreement on the original algebra. It proves the domain transport required by the Haagerup construction at the actual earlier WF forward-construction inputs. The first paragraph, beginning from an arbitrary faithful n.s.f. given weight, now uses the complete earlier [closability](OA-FLOW-WR.md#wr-3), [fullness](OA-FLOW-WR.md#wr-4) and [recovery](OA-FLOW-WR.md#wr-5) proofs; [the canonical opposite finite cone](OA-FLOW-WR.md#wr-6) retains its exact faithful scope.
+Consequently the reconstructed weight and the full left Hilbert algebra have the same closed involution under the canonical GNS unitary, including equality of domains. The given-weight direction is supplied by [WR-3](OA-FLOW-WR.md#wr-3), [WR-4](OA-FLOW-WR.md#wr-4), and [WR-5](OA-FLOW-WR.md#wr-5); [WR-6](OA-FLOW-WR.md#wr-6) establishes the canonical opposite finite cone for faithful weights.
 

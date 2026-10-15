@@ -275,6 +275,6 @@ which is \(r^{-4}\Phi(|x-y|/r)\) with \(\Phi(\rho)=\frac{1}{16\pi^2\Gamma(6)}\in
 
 ## References
 
-- [OpenAI-TC] OpenAI, *Taming implies compatibility on four-manifolds*, OpenAI Math Release preprint, 23 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Taming-implies-compatibility-on-four-manifolds-September-23-2026
+- [OpenAI-TC] OpenAI, *Taming implies compatibility on four-manifolds*, OpenAI Math Release preprint, 6 October 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Taming-implies-compatibility-on-four-manifolds-October-6-2026
 - [Ludewig 2019] M. Ludewig, *Strong short-time asymptotics and convolution approximation of the heat kernel*, Ann. Global Anal. Geom. 55 (2019); Theorems 1.1 and 3.5. https://arxiv.org/abs/1607.05152
 - [Ludewig 2018] M. Ludewig, *Heat kernel asymptotics, path integrals and infinite-dimensional determinants*, J. Geom. Phys. 131 (2018); Section 3, (3.4). https://arxiv.org/abs/1607.05891

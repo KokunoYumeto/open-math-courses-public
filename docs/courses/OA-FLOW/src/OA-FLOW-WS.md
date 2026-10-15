@@ -18,7 +18,7 @@ Sections [WS1](OA-FLOW-WS.md#oa-flow.weight-sum.ws1)–4 prove the reductions an
 
 The exact earlier finite-domain and recovery proofs are [NO1](OA-FLOW-NO.md#oa-flow.no.1), [NO2](OA-FLOW-NO.md#oa-flow.no.2), [NO3](OA-FLOW-NO.md#oa-flow.no.3), [NO4](OA-FLOW-NO.md#oa-flow.no.4), [NO5](OA-FLOW-NO.md#oa-flow.no.5), [NO6](OA-FLOW-NO.md#oa-flow.no.6), [GW1](OA-FLOW-GW.md#oa-flow.gw.1), [GW2](OA-FLOW-GW.md#oa-flow.gw.2), [GW3](OA-FLOW-GW.md#oa-flow.gw.3), [GW4](OA-FLOW-GW.md#oa-flow.gw.4), [GW5](OA-FLOW-GW.md#oa-flow.gw.5), [NF5](OA-FLOW-NF.md#oa-flow.nf.5), [EW3](OA-FLOW-EW.md#oa-flow.ew.3), [EW5](OA-FLOW-EW.md#oa-flow.ew.5), [EW6](OA-FLOW-EW.md#oa-flow.ew.6), [GNS Lemma2.1](OA-FLOW-GNS.md#gns-lemma-2-1), [GNS Lemma2.2](OA-FLOW-GNS.md#gns-lemma-2-2), [GNS Theorem4.1](OA-FLOW-GNS.md#gns-theorem-4-1), [GNS Lemma7.1](OA-FLOW-GNS.md#gns-lemma-7-1), [CP1](OA-FLOW-CP.md#oa-flow.cp.1), [CP2](OA-FLOW-CP.md#oa-flow.cp.2), [CP3](OA-FLOW-CP.md#oa-flow.cp.3), [CP4](OA-FLOW-CP.md#oa-flow.cp.4), [CP5](OA-FLOW-CP.md#oa-flow.cp.5), [CP6](OA-FLOW-CP.md#oa-flow.cp.6), [CF1](OA-FLOW-CF.md#oa-flow.cf.1), [CF4](OA-FLOW-CF.md#oa-flow.cf.4), [CF6](OA-FLOW-CF.md#oa-flow.cf.6), [CF7](OA-FLOW-CF.md#oa-flow.cf.7), [CF8](OA-FLOW-CF.md#oa-flow.cf.8), [CF10](OA-FLOW-CF.md#oa-flow.cf.10), [CV3](OA-FLOW-CV.md#oa-flow.cv.3). The Gaussian frame additionally uses [WR4](OA-FLOW-WR.md#oa-flow.wr.4), [MW4](OA-FLOW-MW.md#oa-flow.mw.4), [KT3](OA-FLOW-KT.md#oa-flow.kt.3), [KT4](OA-FLOW-KT.md#oa-flow.kt.4), [CI1](OA-FLOW-CI.md#oa-flow.ci.1), [CI2](OA-FLOW-CI.md#oa-flow.ci.2), [CI3](OA-FLOW-CI.md#oa-flow.ci.3), [SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [SF4](OA-FLOW-SF.md#oa-flow.sf.sf4), [SC4](OA-FLOW-SC.md#sc-04), [SC5](OA-FLOW-SC.md#sc-05), [SC8](OA-FLOW-SC.md#sc-08), [SC9](OA-FLOW-SC.md#sc-09), [FF1](OA-FLOW-FF.md#oa-flow.ff.2). These are actual written programme proofs; in particular, the only modular weight to which faithfulness is required is [NO4](OA-FLOW-NO.md#oa-flow.no.4)'s commutant weight. The original normal input weight is unrestricted.
 
-Free source context: [Hiai, Theorem7.2(v), printed pp.63–64](https://arxiv.org/pdf/2004.02383v1#page=63) gives the target statement. The modular-fixed projection partition comes from Pedersen and Takesaki, [*The Radon-Nikodym theorem for von Neumann algebras*](https://projecteuclid.org/euclid.acta/1485889766), Acta Math. 130 (1973), Proposition 7.1. Their Theorem 7.2 uses invariant-weight comparison. Here the complete local Gaussian graph bound replaces that comparison; the desired sum conclusion is proved below.
+Free source context: [Hiai, Theorem7.2(v), printed pp.63–64](https://arxiv.org/pdf/2004.02383v1#page=63) gives the target statement. Pedersen and Takesaki, [*The Radon-Nikodym theorem for von Neumann algebras*](https://projecteuclid.org/euclid.acta/1485889766), Acta Math. 130 (1973), Proposition 7.1 and Theorem 7.2, state the modular-fixed partition and sum theorem. Here the support of a continuous Gaussian average constructs each invariant block; one common Gaussian then supplies the graph bound needed for the full-cone column argument.
 
 <a id="oa-flow.weight-sum.ws1"></a><a id="oa-flow.ws.1"></a><a id="ws-1"></a>
 
@@ -306,23 +306,49 @@ No hypothesis that \(\rho(p)\) be finite is required.
 
 We construct pairwise orthogonal modular-fixed projections \(p_j\), \(j\in J\), whose strong sum is \(1\), each supplied with positive contractions \(u_{j,n}\) of finite \(\rho\)-weight such that \(u_{j,n}\uparrow p_j\).
 
-First let \(0\neq a\in Q_+\) with \(\rho(a)<\infty\). Enumerate the rational numbers as \(t_1,t_2,\ldots\), and define the norm-convergent positive series
+First let \(0\neq a\in Q_+\) with \(\rho(a)<\infty\). Average its whole real orbit:
 
 <a id="equation-gf5"></a>
 
 \[
- h=\sum_{n\geq1}2^{-n}\sigma_{t_n}(a).                            \tag{GF5}
+ h=\frac1{\sqrt\pi}\int_{\mathbb R}e^{-t^2}\sigma_t(a)\,dt.        \tag{GF5}
 \]
-The partial sums increase, are bounded by \(\|a\|1\), and have weights at most \(\rho(a)\), by [MW4](OA-FLOW-MW.md#oa-flow.mw.4)'s invariance. Normality gives \(\rho(h)=\rho(a)<\infty\). A vector is killed by \(h\) exactly when it is killed by every positive summand: test its quadratic form, a sum of nonnegative numbers. Thus the support projection \(p=s(h)\) is the join of the supports of all \(\sigma_{t_n}(a)\).
+This is the weak-star integral of [KT3](OA-FLOW-KT.md#oa-flow.kt.3) and [CP6](OA-FLOW-CP.md#oa-flow.cp.6). The positive kernel and the Gaussian normalization in [FF-1](OA-FLOW-FF.md#oa-flow.ff.2) give \(0\leq h\leq\|a\|1\).
 
-For rational \(r\), translation permutes this set of supports, so \(\sigma_r(p)=p\). A normal automorphism preserves projection joins: it and its inverse preserve order and hence the least-upper-bound property. For real \(r\), choose rational \(r_m\to r\). [MW4](OA-FLOW-MW.md#oa-flow.mw.4) gives pointwise strong* continuity of \(\sigma_t(p)\), so \(\sigma_{r_m}(p)=p\) implies \(\sigma_r(p)=p\). Finally put
+The average has finite weight. On a bounded interval choose a partition into intervals \(I_\ell\), with tags \(t_\ell\in I_\ell\), and form
+\[
+ h_{\mathcal P}
+ =\sum_\ell\left(\frac1{\sqrt\pi}\int_{I_\ell}e^{-t^2}\,dt\right)
+                  \sigma_{t_\ell}(a).
+\]
+By [MW4](OA-FLOW-MW.md#oa-flow.mw.4), each positive sum has weight at most \(\rho(a)\) and norm at most \(\|a\|\). For every normal functional, continuity of its scalar orbit makes these sums converge to the integral on a fixed compact interval as the mesh tends to zero. The omitted tails are bounded by \(\|f\|\|a\|\) times the Gaussian tail mass. Thus, as the intervals exhaust the line, the sums converge ultraweakly to \(h\). The lower semicontinuity proved in [EW3](OA-FLOW-EW.md#oa-flow.ew.3) gives
+\[
+ \rho(h)\leq\rho(a)<\infty.
+\]
+The same argument applies to every finite positive \(a\), including \(a=0\). It uses only finite sums and lower semicontinuity, without interchanging a weight and an integral.
+
+**The support sees the whole orbit.** Work in the faithful normal GNS representation from GF1. For each vector \(\xi\), the function
+\(t\mapsto\langle\sigma_t(a)\xi,\xi\rangle\)
+is continuous and nonnegative. Because the Gaussian is strictly positive everywhere, its integral is zero exactly when this function vanishes for every real \(t\): a positive value would persist on an interval and give a positive integral. Positivity of each operator therefore gives
+\[
+ \ker h=\bigcap_{t\in\mathbb R}\ker\sigma_t(a),\qquad
+ p:=s(h)=\bigvee_{t\in\mathbb R}s(\sigma_t(a)).
+\]
+In particular \(p\neq0\), since the join includes \(s(a)\). For any real \(r\), the normal automorphism \(\sigma_r\) carries support projections to support projections and preserves joins, by the least-upper-bound property. Translation permutes the whole real orbit, so
+\[
+ \sigma_r(p)
+ =\bigvee_{t\in\mathbb R}s(\sigma_{r+t}(a))=p.
+\]
+This proves modular invariance directly for every real parameter.
+
+Finally put
 
 <a id="equation-gf6"></a>
 
 \[
  u_n=h(h+n^{-1}1)^{-1},\qquad n\geq1,\qquad u_0=0.               \tag{GF6}
 \]
-The spectral calculus gives \(0\leq u_n\leq p\), \(u_n\uparrow p\) strongly, and \(u_n\leq nh\), so \(\rho(u_n)<\infty\). This supplies the promised sequence for \(p\), without requiring that \(p\) itself have finite weight.
+The spectral calculus gives \(0\leq u_n\leq p\), \(u_n\uparrow p\) strongly, and \(u_n\leq nh\), so \(\rho(u_n)<\infty\). This supplies a finite increasing sequence for \(p\), even when \(\rho(p)=\infty\). If the original \(a\) is supported on a modular-fixed projection \(r\), every orbit element, its average, and \(p\) are supported on \(r\).
 
 Now choose by Zorn a maximal family of nonzero mutually orthogonal modular-fixed projections, each having such a finite increasing sequence. The collection is a set of subsets of the projection set of \(Q\); a chain has the union as an upper bound, so the stated choice argument applies. Let \(p\) be their join and \(r=1-p\). Normality of the automorphisms makes \(r\) modular fixed. If \(r\neq0\), [GW4](OA-FLOW-GW.md#oa-flow.gw.4) gives finite positive contractions \(w_\alpha\uparrow1\). Consequently \(r w_\alpha r\to r\) strongly, so at least one such compression \(a=r w_\alpha r\) is nonzero. It has finite weight by ([GF4](OA-FLOW-WS.md#equation-gf4)). All its modular translates are supported on \(r\). The construction ([GF5](OA-FLOW-WS.md#equation-gf5))–([GF6](OA-FLOW-WS.md#equation-gf6)) produces a nonzero modular-fixed projection \(p'\leq r\) with the required sequence, contradicting maximality. Therefore
 
@@ -380,12 +406,7 @@ For positive \(x\) of finite \(\rho\)-weight, \(\Gamma(x)\) also has finite weig
 \[
  \rho(\Gamma(x))\leq\rho(x).                                    \tag{GF12}
 \]
-Here are details at the level of actual weights. On a compact interval partition into short intervals \(I_l\), choose \(t_l\in I_l\), and form
-\[
- v=\sum_l \left(\pi^{-1/2}\int_{I_l}e^{-t^2}\,dt\right)
-             \sigma_{t_l}(x).
-\]
-It is positive, has norm at most \(\|x\|\), and has weight at most \(\rho(x)\) by modular invariance. Refine partitions and let the compact intervals exhaust the line. For each normal functional, real orbit continuity gives convergence of the compact part by uniform continuity, and the Gaussian tail is uniformly bounded by its mass times \(\|f\|\|x\|\). Thus these positive sums converge ultraweakly to \(\Gamma(x)\). [EW3](OA-FLOW-EW.md#oa-flow.ew.3)'s whole-positive-cone ultraweak lower semicontinuity proves ([GF12](OA-FLOW-WS.md#equation-gf12)). No interchange of a weight with a scalar integral is assumed.
+This is the finite-weight estimate proved for the Gaussian average in [GF2](OA-FLOW-WS.md#oa-flow.weight-sum.gf2). Its proof applies to every finite positive input and uses bounded positive sums followed by ultraweak lower semicontinuity.
 
 For the increasing net in ([GF9](OA-FLOW-WS.md#equation-gf9)), we have
 
@@ -448,13 +469,13 @@ For every \(b\in I\), ([GF16](OA-FLOW-WS.md#equation-gf16)) and the norm equalit
 \]
 This is the sufficient [WS14a](OA-FLOW-WS.md#equation-ws14a). The passage to [WS14](OA-FLOW-WS.md#equation-ws14) can also be checked directly: \(b s_F\to b\) strongly; any weak cluster subnet of the bounded vector net has limit \(\theta(b)\) by [NO2](OA-FLOW-NO.md#oa-flow.no.2)'s exact weak graph closedness. [CV3 weak compactness](OA-FLOW-CV.md#oa-flow.cv.3) and the closed complement of a weak neighborhood then force the entire net to converge weakly to \(\theta(b)\). No boundedness of an arbitrary weakly convergent net is inferred.
 
-Thus [WS-FR](OA-FLOW-WS.md#oa-flow.weight-sum.gf4) holds. [WS4](OA-FLOW-WS.md#oa-flow.weight-sum.ws4)'s already complete column/adjoint and [EW](OA-FLOW-EW.md#oa-flow.ew.5) recovery proof applies: with \(\eta_{j,n}=\theta(a_{j,n})\), the normal positive functionals
+The two graph-frame conditions [WS13](OA-FLOW-WS.md#equation-ws13) and [WS14](OA-FLOW-WS.md#equation-ws14) now hold. [WS4](OA-FLOW-WS.md#oa-flow.weight-sum.ws4)'s already complete column/adjoint and [EW](OA-FLOW-EW.md#oa-flow.ew.5) recovery proof applies: with \(\eta_{j,n}=\theta(a_{j,n})\), the normal positive functionals
 \[
  \omega_{j,n}(x)=\langle\pi_\varphi(x)\eta_{j,n},\eta_{j,n}\rangle
 \]
 sum to \(\varphi\) on every positive element, including those of infinite weight. This last assertion uses [WS4](OA-FLOW-WS.md#oa-flow.weight-sum.ws4)'s full-cone recovery, not only equality on the finite ideal. If \(H=0\), the empty frame and the zero semifinite weight case of [WS4](OA-FLOW-WS.md#oa-flow.weight-sum.ws4) apply.
 
-For an arbitrary normal \(\varphi\), use [WS2](OA-FLOW-WS.md#oa-flow.weight-sum.ws2)'s finite-domain projection \(e\). The preceding construction applies to the normal semifinite restriction on \(eMe\), without assuming its faithfulness. Extend its summand functionals by compression to \(eMe\), and adjoin [WS2](OA-FLOW-WS.md#oa-flow.weight-sum.ws2)'s repeated positive vector detectors on \((1-e)K\). Their sum is zero on the finite-domain corner and infinite on every positive element outside it. [WS4](OA-FLOW-WS.md#oa-flow.weight-sum.ws4)'s equality inside the corner therefore proves the claimed decomposition on all of \(M_+\), with arbitrary index sets and the zero-weight case included.
+For an arbitrary normal \(\varphi\), use [WS2](OA-FLOW-WS.md#oa-flow.weight-sum.ws2)'s finite-domain projection \(e\). The preceding construction applies to the normal semifinite restriction on \(eMe\), without assuming its faithfulness. Extend its summand functionals to \(M\) by \(a\mapsto eae\), and adjoin [WS2](OA-FLOW-WS.md#oa-flow.weight-sum.ws2)'s repeated positive vector detectors on \((1-e)K\). Their sum is zero on the finite-domain corner and infinite on every positive element outside it. [WS4](OA-FLOW-WS.md#oa-flow.weight-sum.ws4)'s equality inside the corner therefore proves the claimed decomposition on all of \(M_+\), with arbitrary index sets and the zero-weight case included.
 
 The graph-frame construction and the full-cone recovery therefore give the claimed decomposition for every normal weight.
 
@@ -462,7 +483,7 @@ The graph-frame construction and the full-cone recovery therefore give the claim
 
 ![Gaussian smoothing of a noncommuting positive partition, and the general graph-frame construction](../assets/normal-weight-sum/graph-frame/assets/gaussian-graph-frame.png)
 
-This is an exact matrix example for [GF1](OA-FLOW-WS.md#oa-flow.weight-sum.gf1) and [GF3](OA-FLOW-WS.md#oa-flow.weight-sum.gf3), equations [GF2](OA-FLOW-WS.md#equation-gf2) and [GF16](OA-FLOW-WS.md#equation-gf16). The adjacent diagram records the complete general construction in [GF2](OA-FLOW-WS.md#oa-flow.weight-sum.gf2)–[GF4](OA-FLOW-WS.md#oa-flow.weight-sum.gf4), rather than a numerical claim about arbitrary weights. The projection partition comes from Pedersen and Takesaki, [*The Radon-Nikodym theorem for von Neumann algebras*](https://projecteuclid.org/euclid.acta/1485889766), Acta Math. 130 (1973), Proposition 7.1. The Gaussian frame and this example are local constructions.
+This is an exact matrix example for [GF1](OA-FLOW-WS.md#oa-flow.weight-sum.gf1) and [GF3](OA-FLOW-WS.md#oa-flow.weight-sum.gf3), equations [GF2](OA-FLOW-WS.md#equation-gf2) and [GF16](OA-FLOW-WS.md#equation-gf16). The adjacent diagram records the complete general construction in [GF2](OA-FLOW-WS.md#oa-flow.weight-sum.gf2)–[GF4](OA-FLOW-WS.md#oa-flow.weight-sum.gf4), rather than a numerical claim about arbitrary weights. The partition statement is Proposition 7.1 of Pedersen and Takesaki, [*The Radon-Nikodym theorem for von Neumann algebras*](https://projecteuclid.org/euclid.acta/1485889766), Acta Math. 130 (1973). GF2 proves it through the support of a continuous Gaussian average. The graph-frame recovery and this matrix example are proved here.
 
 On \(M_2(\mathbb C)\), let \(d_s=\operatorname{diag}(1,e^s)\), \(s\geq0\), and \(\rho_s(x)=\operatorname{Tr}(d_sx)\). Put
 \[
@@ -507,7 +528,7 @@ For an arbitrary normal input, [WS2](OA-FLOW-WS.md#oa-flow.weight-sum.ws2) restr
 
 <a id="oa-flow.weight-sum.ws6"></a><a id="oa-flow.ws.6"></a><a id="ws-6"></a>
 
-## WS-6. Exact two-dimensional warning and the repaired infinite part
+## WS-6. Infinite values beyond the finite GNS domain
 
 Let \(M=M_2(\mathbb C)\) on \(K=\mathbb C^2\), with \(e=e_{11}, q=e_{22}\), and define on positive matrices
 
@@ -536,16 +557,8 @@ If \(a_{22}=0\) the sum is zero after \(g\); otherwise repetitions give infinity
 
 ![The finite GNS multiplier and the actual functional sum have different scopes](../assets/normal-weight-sum/finite-domain/assets/normal-weight-sum-domain.png)
 
-The figure displays the actual matrix projections, GNS map and values in ([WS19](OA-FLOW-WS.md#equation-ws19))–([WS20](OA-FLOW-WS.md#equation-ws20)). It is a proved finite-dimensional example, not evidence for [WS-FR](OA-FLOW-WS.md#oa-flow.weight-sum.gf4) or the general sum theorem. Its Python source and exact data are retained.
+The figure displays the projections, GNS map and values proved in WS19–WS20.
 
-### Exact finite-domain illustration
-
-The native PNG displays the complete complex-matrix example proved in [WS-6](OA-FLOW-WS.md#oa-flow.weight-sum.ws6), equations [WS19](OA-FLOW-WS.md#equation-ws19)–[WS20](OA-FLOW-WS.md#equation-ws20). It contains no restriction to real positive matrices in the theorem: the four table entries are specific positive sample matrices.
-
-The projections are e=e11 and q=e22 in M2(C). The finite ideal is Me, the GNS map is x↦xδ1, the GNS Hilbert space is C², and the represented algebra acts by its identity representation. The normal positive functional g(a)=a11 has multiplier I although its value on e22 is zero and the weight value is infinite. Each repeated normal functional h_n(a)=a22 has zero multiplier on the finite GNS forms; their actual sum recovers the outside infinite part.
-
-The last table row is vv*, v=δ1+δ2, namely the mixed-corner positive matrix with every entry 1. This verifies that the illustration includes a positive element with nonzero off-diagonal entries. Infinity is the exact supremum of repeated positive summands, not a plotted finite truncation.
-
-Reproduce with python render_normal_weight_sum.py from this directory or the course root. The code chooses its own output directory from its saved file path. Figure/data/source are CC0-1.0 to the extent of rights held. The human source locators for the broader target are the free Hiai and Pedersen–Takesaki links in the proof; this particular matrix argument was independently calculated from [WS19](OA-FLOW-WS.md#equation-ws19).
+The four table entries are \(e_{11}\), \(e_{22}\), \(1_M\), and \(vv^*\), where \(v=\delta_1+\delta_2\). The last is the positive matrix with all four entries equal to \(1\), so the example includes nonzero mixed corners. Their values follow directly from WS19–WS20. Infinity is the supremum of the repeated positive summands, rather than a finite truncation. The theorem and its proof apply to complex positive matrices.
 
 [Editable finite-domain SVG](../assets/normal-weight-sum/finite-domain/assets/normal-weight-sum-domain.svg), [exact figure data](../assets/normal-weight-sum/finite-domain/figure-data.json), and [reproduction source](../assets/normal-weight-sum/finite-domain/render_normal_weight_sum.py).

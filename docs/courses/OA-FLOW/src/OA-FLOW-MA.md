@@ -6,7 +6,7 @@ Let \(\varphi\) be a faithful normal semifinite weight on an arbitrary von Neuma
 
 The exact earlier written proofs are [GW1](OA-FLOW-GW.md#oa-flow.gw.1), [GW2](OA-FLOW-GW.md#oa-flow.gw.2), [GW3](OA-FLOW-GW.md#oa-flow.gw.3), [GW4](OA-FLOW-GW.md#oa-flow.gw.4), [GW5](OA-FLOW-GW.md#oa-flow.gw.5) for the finite algebra and the increasing finite contraction net; [WR3](OA-FLOW-WR.md#oa-flow.wr.3), [WR4](OA-FLOW-WR.md#oa-flow.wr.4) for the complete closed involution and left-bounded vectors; [MW3](OA-FLOW-MW.md#oa-flow.mw.3), [MW4](OA-FLOW-MW.md#oa-flow.mw.4) for covariance and the recovered modular group; [KT3](OA-FLOW-KT.md#oa-flow.kt.3), [KT4](OA-FLOW-KT.md#oa-flow.kt.4) for the analytic algebra and every spectral graph core; [CI1](OA-FLOW-CI.md#oa-flow.ci.1), [CI2](OA-FLOW-CI.md#oa-flow.ci.2), [CI3](OA-FLOW-CI.md#oa-flow.ci.3) for the polar and adjoint domains; [ST2 ultraweak image and inverse](OA-FLOW-ST12.md#oa-flow.st.2) and [NF5 arbitrary normal-weight GNS continuity](OA-FLOW-NF.md#oa-flow.nf.5); [BC1](OA-FLOW-BC.md#oa-flow.bc.1), [BC2](OA-FLOW-BC.md#oa-flow.bc.2), [BC3](OA-FLOW-BC.md#oa-flow.bc.3), [BC4](OA-FLOW-BC.md#oa-flow.bc.4) for every balanced-matrix domain and finite identity; [AS1](OA-FLOW-AS.md#oa-flow.as.1), [AS2](OA-FLOW-AS.md#oa-flow.as.2) for bounded strips and weak-star analytic reconstruction; [CP1](OA-FLOW-CP.md#oa-flow.cp.1), [CP2](OA-FLOW-CP.md#oa-flow.cp.2), [CP3](OA-FLOW-CP.md#oa-flow.cp.3), [CP4](OA-FLOW-CP.md#oa-flow.cp.4), [CP5](OA-FLOW-CP.md#oa-flow.cp.5), [CP6](OA-FLOW-CP.md#oa-flow.cp.6) for concrete vector series; [CF8 Hilbert–Riesz](OA-FLOW-CF.md#oa-flow.cf.8); and [SF0](OA-FLOW-SF.md#oa-flow.sf.sf0), [SB0](OA-FLOW-SF.md#oa-flow.sf.sb0), [SB1](OA-FLOW-SF.md#oa-flow.sf.sb1), [SB2](OA-FLOW-SF.md#oa-flow.sf.sb2), [SB3](OA-FLOW-SF.md#oa-flow.sf.sb3), [SB4](OA-FLOW-SF.md#oa-flow.sf.sb4), [SB5](OA-FLOW-SF.md#oa-flow.sf.sb5), [SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [SF4](OA-FLOW-SF.md#oa-flow.sf.sf4) for the full spectral calculus and scalar holomorphy. ST2 applies to arbitrary faithful normal representations; no faithful-state or separability restriction is imposed here.
 
-The free development source is [Hiai's author manuscript, Theorem 8.10 and Lemma 8.12, printed pp.72–75](https://arxiv.org/pdf/2004.02383v1#page=72). We prove the part needed for entire elements directly, with the full domains. We do not import the manuscript's general analytic-generator results.
+The finite-domain criterion is discussed in [Hiai's author manuscript, Theorem 8.10 and Lemma 8.12, printed pp.72–75](https://arxiv.org/pdf/2004.02383v1#page=72). The converse below first proves a closed intertwining relation, regularizes both endpoints, and uses an explicit rectangle estimate to construct the limiting strip.
 
 <a id="oa-flow.ma.1"></a><a id="ma-1"></a>
 
@@ -111,73 +111,113 @@ All products in this calculation belong to \(m\): \(ay^*x=(ya^*)^*x\) and \(y^*x
 
 ## MA3. A converse strip from the finite-domain identity
 
-Conversely, suppose \(a,b\in M\) satisfy ([MA7](OA-FLOW-MA.md#equation-ma7)). We construct a bounded weak-star continuous strip function \(B\), holomorphic inside, with
+Suppose \(a,b\in M\) satisfy ([MA7](OA-FLOW-MA.md#equation-ma7)). We construct a bounded weak-star continuous strip function \(B\), holomorphic inside, with
 
 <a id="equation-ma8"></a>
 
 \[
  B(t)=\sigma_t^\varphi(a),\qquad
  B(t-i)=\sigma_t^\varphi(b),\qquad
- \|B(z)\|\leq\max(\|a\|,\|b\|).                                  \tag{MA8}
+ \|B(z)\|\leq C:=\max(\|a\|,\|b\|).                              \tag{MA8}
 \]
-No prior analytic property of \(a\) or \(b\) is assumed in this direction.
 
-Take \(\xi,\eta\in\mathcal H_0\), and choose \(x,y\in\mathcal T\) with
+No analytic property of \(a\) or \(b\) is assumed. First we turn the finite identity into a relation between closed operators. We then regularize that relation, obtaining uniformly bounded entire strip functions whose boundary values converge.
+
+**The finite identity determines a closed intertwining relation.** On \(\Lambda(A)\) define the two linear maps
 \[
- \Lambda(x)=S\xi,\quad \Lambda(y)=F\eta.
+ Q_a\Lambda(x)=\Lambda(xa^*),\qquad
+ Q_b\Lambda(x)=\Lambda(xb).
 \]
-[MA1](OA-FLOW-MA.md#oa-flow.ma.1) gives
+They are well defined by faithfulness and the two finite-ideal hypotheses. Both \(xa^*\) and \(xb\) lie in \(A\): their membership in \(N\) is assumed, and their adjoints are in \(N\) by its left-ideal property. For \(x,y\in A\), the finite identity gives
 \[
- \Delta\xi=F\Lambda(x),\quad \xi=S\Lambda(x),\qquad
- \Delta^{-1}\eta=S\Lambda(y),\quad \eta=F\Lambda(y).
+ \langle\Lambda(x),Q_a\Lambda(y)\rangle
+ =\varphi_0(ay^*x)
+ =\varphi_0(y^*xb)
+ =\langle Q_b\Lambda(x),\Lambda(y)\rangle .
 \]
-The elements \(ya^*\) and \(xb\) belong to \(A\). Indeed, membership in \(N\) is a hypothesis, while their adjoints \(ay^*\) and \(b^*x^*\) are in the left ideal \(N\). The conjugate-linear adjoint convention is
-\(\langle Su,v\rangle=\langle Fv,u\rangle\). Applying it twice, using \(S^2=F^2=1\) on their domains and ([MA7](OA-FLOW-MA.md#equation-ma7)), gives
+This relation does not assume that either \(Q_a\) or \(Q_b\) is bounded.
+
+Let \(\xi,\zeta\in\mathcal H_0\), the common core in [MA1](OA-FLOW-MA.md#oa-flow.ma.1). The vectors \(S\xi,S\zeta\) belong to \(\Lambda(A)\). Also \(\pi(a)\zeta,\pi(b^*)\xi\in\Lambda(A)\), by the same finite-ideal tests, and
+\[
+ Q_aS\zeta=S\pi(a)\zeta,\qquad
+ Q_bS\xi=S\pi(b^*)\xi .
+\]
+Applying the preceding adjoint relation at \(S\xi,S\zeta\) gives
+\[
+ \langle S\xi,S\pi(a)\zeta\rangle
+ =\langle S\pi(b^*)\xi,S\zeta\rangle .
+\]
+Since \(\xi,\zeta\in D(\Delta)=D(S^*S)\), the adjoint definition, with the order reversed for \(S\), rewrites this equality as
+\[
+ \langle\pi(a)\zeta,\Delta\xi\rangle
+ =\langle\pi(b)\Delta\zeta,\xi\rangle .
+\]
+The core \(\mathcal H_0\) is a graph core for \(\Delta\). Extending in the test vector \(\xi\) to \(D(\Delta)\), the definition of \(\Delta^*=\Delta\) shows that \(\pi(a)\zeta\in D(\Delta)\) and that its image is \(\pi(b)\Delta\zeta\). Finally approximate any \(\zeta\in D(\Delta)\) in graph norm by \(\mathcal H_0\). Boundedness of \(\pi(a),\pi(b)\) and closedness of \(\Delta\) give the full-domain relation
 
 <a id="equation-ma9"></a>
 
 \[
- \begin{split}
- \langle\pi(a)\Delta^{-1}\eta,\Delta\xi\rangle
- &=\langle S\Lambda(ya^*),F\Lambda(x)\rangle\\
- &=\langle\Lambda(x),\Lambda(ya^*)\rangle
- =\varphi_0(ay^*x)\\
- &=\varphi_0(y^*xb)
- =\langle\Lambda(xb),\Lambda(y)\rangle\\
- &=\langle F\Lambda(y),S\Lambda(xb)\rangle\\
- &=\langle F\Lambda(y),\pi(b^*)S\Lambda(x)\rangle
- =\langle\pi(b)\eta,\xi\rangle.                                  \tag{MA9}
- \end{split}
+ \pi(a)D(\Delta)\subseteq D(\Delta),\qquad
+ \Delta\pi(a)\zeta=\pi(b)\Delta\zeta
+ \quad(\zeta\in D(\Delta)).                                    \tag{MA9}
 \]
-Every application of \(S\) or \(F\) is justified above or in [MA1](OA-FLOW-MA.md#oa-flow.ma.1).
 
-Define, on the closed lower unit strip,
+**Regularization preserves both endpoints.** Write \(p_n(t)=\sqrt{n/\pi}\,e^{-nt^2}\), and set
+\[
+ a_n=\int_{\mathbb R}p_n(t)\sigma_t^\varphi(a)\,dt,\qquad
+ b_n=\int_{\mathbb R}p_n(t)\sigma_t^\varphi(b)\,dt .
+\]
+These are the ultraweak integrals of [KT-3](OA-FLOW-KT.md#oa-flow.kt.3); \(a_n\) is norm entire, \(\|a_n\|\leq\|a\|\), and \(\|b_n\|\leq\|b\|\). Covariance and the commutation of \(U_t\) with \(\Delta\) transport MA9 to
+\[
+ \Delta\pi(\sigma_t^\varphi(a))\zeta
+ =\pi(\sigma_t^\varphi(b))\Delta\zeta
+ \quad(\zeta\in D(\Delta)).
+\]
+Integrate this equality in the graph of \(\Delta\). More explicitly, compact-interval Riemann sums approximate both Hilbert-valued integrands, and their tails are bounded by
+\(\|a\|\|\zeta\|\int p_n\) and \(\|b\|\|\Delta\zeta\|\int p_n\) over the omitted region. The real orbits are strongly continuous by MW. The vector integrals in [SF-3](OA-FLOW-SF.md#oa-flow.sf.sf3), followed by closedness of \(\Delta\), therefore give
+\[
+ \Delta\pi(a_n)\zeta=\pi(b_n)\Delta\zeta
+ \quad(\zeta\in D(\Delta)).
+\]
+On the other hand, [MA2](OA-FLOW-MA.md#oa-flow.ma.2)'s compact-spectral argument for [equation MA3](OA-FLOW-MA.md#equation-ma3) at \(r=1\), followed by the same graph approximation, gives
+\(\Delta\pi(a_n)\zeta=\pi(\sigma_{-i}^\varphi(a_n))\Delta\zeta\)
+on \(D(\Delta)\). The range of the injective self-adjoint operator \(\Delta\) is dense. Comparing the bounded operators on that range, then using faithfulness of \(\pi\), yields
 
 <a id="equation-ma10"></a>
 
 \[
- G_{\xi,\eta}(z)
- =\langle\pi(a)\Delta^{-iz}\eta,\Delta^{-i\bar z}\xi\rangle.        \tag{MA10}
+ \sigma_{-i}^\varphi(a_n)=b_n,\qquad
+ B_n(z):=\sigma_z^\varphi(a_n).                                \tag{MA10}
 \]
-This is holomorphic: the first vector is entire, the second is anti-entire, and the inner product is linear first. It is bounded on the entire strip for these fixed core vectors, since
-\[
- |G_{\xi,\eta}(t+iv)|
- \leq\|a\|\,\|\Delta^v\eta\|\,\|\Delta^{-v}\xi\|,
- \qquad -1\leq v\leq0.
-\]
-The right side has a finite maximum independent of \(t\). On the upper boundary, covariance gives
-\[
- G_{\xi,\eta}(t)=\langle\pi(\sigma_t^\varphi(a))\eta,\xi\rangle.
-\]
-On the lower boundary, apply ([MA9](OA-FLOW-MA.md#equation-ma9)) to \(U_{-t}\xi,U_{-t}\eta\in\mathcal H_0\); it gives
-\[
- G_{\xi,\eta}(t-i)=\langle\pi(\sigma_t^\varphi(b))\eta,\xi\rangle.
-\]
-[AS1](OA-FLOW-AS.md#oa-flow.as.1) therefore bounds ([MA10](OA-FLOW-MA.md#equation-ma10)) by \(\max(\|a\|,\|b\|)\|\xi\|\|\eta\|\). Bounded sesquilinear representation by the Hilbert Riesz theorem produces an operator \(D(z)\in B(H)\) with these coefficients and the same norm bound.
 
-Approximate arbitrary vectors by \(\mathcal H_0\). The uniform operator bound makes their coefficients uniform limits on the entire strip of the core coefficients. They are continuous on the closed strip and holomorphic inside by the scalar Cauchy formula. Any concrete ultraweak functional is a summable vector series by [CP](OA-FLOW-CP.md#oa-flow.cp.6); Cauchy–Schwarz and the uniform norm bound make the series tails uniform in \(z\). Hence \(D\) is ultraweakly continuous on the closed strip and ultraweakly holomorphic inside.
+The real translation rule gives
+\(B_n(t)=\sigma_t^\varphi(a_n)\) and
+\(B_n(t-i)=\sigma_t^\varphi(b_n)\).
+For each fixed \(n\), norm analyticity and real isometry give a finite bound on the entire closed strip. [AS1](OA-FLOW-AS.md#oa-flow.as.1), applied to every normal functional, then gives the uniform bound
+\[
+ \|B_n(z)\|\leq C\qquad(-1\leq\operatorname{Im}z\leq0).
+\]
 
-For \(d'\in\pi(M)'\), every coefficient of \(D(z)d'-d'D(z)\) is such a continuous strip function and vanishes on its real edge. [SF4](OA-FLOW-SF.md#oa-flow.sf.sf4) zero-edge uniqueness makes it zero throughout the strip. Thus \(D(z)\in\pi(M)''=\pi(M)\); the last equality is the actual weakly closed image assertion of [ST-2](OA-FLOW-ST12.md#oa-flow.st.2). That same theorem makes \(\pi^{-1}\) ultraweakly continuous. Set \(B(z)=\pi^{-1}(D(z))\). It has exactly ([MA8](OA-FLOW-MA.md#equation-ma8)), the claimed topology, and the required analyticity.
+**Convergence reaches both boundary lines.** Fix \(f\in M_*\), and put \(h_n(z)=f(B_n(z))\). On each bounded real interval the upper-edge values converge uniformly to \(f(\sigma_t^\varphi(a))\), and the lower-edge values converge uniformly to \(f(\sigma_t^\varphi(b))\). Indeed both are Gaussian averages of a bounded continuous scalar orbit; uniform continuity on a slightly larger compact interval and the Gaussian tail estimate prove these assertions.
+
+Here is an explicit estimate that propagates this convergence across the closed strip. If \(h\) is continuous on the rectangle \([-T,T]\times[-1,0]\), holomorphic inside, has \(|h|\leq M_0\) everywhere, and has \(|h|\leq\varepsilon\) on the two horizontal edges, then for \(z=t+iv\),
+\[
+ |h(t+iv)|
+ \leq\varepsilon+
+ \frac{M_0\cosh t\,\cos(v+1/2)}{\cosh T\,\cos(1/2)} .
+\]
+To prove it, apply the scalar maximum principle to the real part of
+\[
+ e^{i\theta}h(z)-\varepsilon
+ -\frac{M_0\cosh(z+i/2)}{\cosh T\,\cos(1/2)}
+\]
+for each real \(\theta\). Its real part is nonpositive on the horizontal sides. On the vertical sides the last term has real part at least \(M_0\), because \(\cos(v+1/2)\geq\cos(1/2)>0\). The maximum principle for real parts follows from [SF4](OA-FLOW-SF.md#oa-flow.sf.sf4)'s maximum-modulus theorem by exponentiation. Choosing \(\theta\) at the point under consideration gives the estimate.
+
+Apply this to \(h_n-h_m\), with \(M_0=2C\|f\|\). For a fixed \(L\), first take \(T>L\) large enough that
+\(M_0\cosh L/(\cosh T\cos(1/2))\) is small, then take \(n,m\) large enough for both boundary differences on \([-T,T]\) to be small. Thus \(h_n\) is uniformly Cauchy on \([-L,L]\times[-1,0]\). Its limit \(h_f\) is continuous there and holomorphic inside, by the scalar Cauchy formula.
+
+For each \(z\), the map \(f\mapsto h_f(z)\) is linear and bounded by \(C\|f\|\). The proved duality \(M=(M_*)^*\) in [CP6](OA-FLOW-CP.md#oa-flow.cp.6) therefore defines a unique \(B(z)\in M\). Every scalar pairing is the continuous, holomorphic limit just constructed. Consequently \(B\) is weak-star continuous on the closed strip, weak-star holomorphic inside, and bounded by \(C\). Its two edges are the asserted limits, proving MA8. This construction takes its values directly in \(M\); it requires neither an extension of the finite weight to undefined products nor a prior analytic orbit for \(a\).
+
 
 <a id="oa-flow.ma.4"></a><a id="ma-4"></a>
 

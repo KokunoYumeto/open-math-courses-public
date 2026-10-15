@@ -1,0 +1,196 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Čech complexes, refinements and acyclic covers</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="čech-complexes-refinements-and-acyclic-covers">Čech complexes, refinements and acyclic covers</h1>
+<p>Sections on a cover satisfy an overlap equation. Higher Čech cochains continue that equation through multiple intersections. To use them for sheaf cohomology, one must account for the higher cohomology already present on those intersections. A double complex makes that distinction precise and also explains which covers really compute the answer.</p>
+<p>Let <span class="math" data-tex="\((X,\mathcal O)\)">\((X,\mathcal O)\)</span> be a topological space with a sheaf of unital rings, possibly noncommutative, and let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be a left module sheaf. Fix universes and use choice. Let <span class="math" data-tex="\(\mathcal U=(U_i)_{i\in I}\)">\(\mathcal U=(U_i)_{i\in I}\)</span> be any set-indexed open cover of <span class="math" data-tex="\(X\)">\(X\)</span>. Repetitions and empty members are allowed. Products below are products of modules, and sections on the empty open are zero. All cohomology groups are ordinary right-derived section groups.</p>
+<p>We use <a href="godement-resolutions-and-flabby-sheaf-cohomology.html">Godement resolutions and flabby sheaf cohomology</a>, Sections 1–6, for enough injectives, exact open extension by zero, restriction of injectives and their flabbiness; <a href="injective-replacements-and-right-derived-functors.html">Injective replacements and right derived functors</a>, Sections 2–5, for comparison homotopies and long exact sequences; and <a href="filtered-complexes-and-cartan-eilenberg-resolutions.html">Filtered complexes and Cartan–Eilenberg resolutions</a>, Sections 1–3, for the proved spectral pages, signs, finite convergence and total-complex comparison. The exercises also use the sheaf–diagram equivalence of <a href="finite-poset-sheaves-and-canonical-homological-resolutions.html">Finite-poset sheaves and canonical homological resolutions</a>, Sections 1–3 and 6.</p>
+<h2 id="1-cochains-on-all-ordered-intersections">1. Cochains on all ordered intersections</h2>
+<p>For a tuple <span class="math" data-tex="\(\mathbf i=(i_0,\ldots,i_p)\)">\(\mathbf i=(i_0,\ldots,i_p)\)</span>, put <span class="math" data-tex="\(U_{\mathbf i}=\bigcap_{a=0}^p U_{i_a}\)">\(U_{\mathbf i}=\bigcap_{a=0}^p U_{i_a}\)</span>. Use all ordered tuples, including repeated indices, and set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+ C^p(\mathcal U,\mathcal F)=\prod_{\mathbf i\in I^{p+1}}\mathcal F(U_{\mathbf i}),\qquad
+ (\delta c)_{i_0\ldots i_{p+1}}
+ =\sum_{a=0}^{p+1}(-1)^a c_{i_0\ldots\widehat{i_a}\ldots i_{p+1}}|_{U_{i_0\ldots i_{p+1}}}.
+ \tag{1.1}
+\]">\[
+C^p(\mathcal U,\mathcal F)=\prod_{\mathbf i\in I^{p+1}}\mathcal F(U_{\mathbf i}),\qquad
+(\delta c)_{i_0\ldots i_{p+1}}
+=\sum_{a=0}^{p+1}(-1)^a c_{i_0\ldots\widehat{i_a}\ldots i_{p+1}}|_{U_{i_0\ldots i_{p+1}}}.
+\tag{1.1}
+\]</span>
+<p>Each sum is finite even for an infinite cover. Deleting positions <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span> in either order gives the same restriction; the corresponding coefficients have opposite signs because the second deletion shifts its position by one. Pairing these terms proves <span class="math" data-tex="\(\delta^2=0\)">\(\delta^2=0\)</span>. The augmentation sends a section on <span class="math" data-tex="\(X\)">\(X\)</span> to its restrictions on the <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. Its composite with <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is zero, and it identifies <span class="math" data-tex="\(\mathcal F(X)\)">\(\mathcal F(X)\)</span> with <span class="math" data-tex="\(\ker\delta^0\)">\(\ker\delta^0\)</span>: a degree-zero cocycle is exactly a compatible family, so the sheaf gluing axiom applies. This also holds for an empty cover of the empty space.</p>
+<p>Write <span class="math" data-tex="\(\check H^p(\mathcal U,\mathcal F)=H^p(C^\bullet(\mathcal U,\mathcal F))\)">\(\check H^p(\mathcal U,\mathcal F)=H^p(C^\bullet(\mathcal U,\mathcal F))\)</span>. A module sheaf map induces cochain maps by applying it to every section. The same formula defines <span class="math" data-tex="\(C^\bullet(\mathcal U,P)\)">\(C^\bullet(\mathcal U,P)\)</span> for a presheaf <span class="math" data-tex="\(P\)">\(P\)</span>; its degree-zero kernel need not be <span class="math" data-tex="\(P(X)\)">\(P(X)\)</span> unless the relevant gluing holds.</p>
+<h2 id="2-refinements-and-the-prism-homotopy">2. Refinements and the prism homotopy</h2>
+<p>A refinement consists of a cover <span class="math" data-tex="\(\mathcal V=(V_j)_{j\in J}\)">\(\mathcal V=(V_j)_{j\in J}\)</span> and a function <span class="math" data-tex="\(r:J\to I\)">\(r:J\to I\)</span> with <span class="math" data-tex="\(V_j\subseteq U_{r(j)}\)">\(V_j\subseteq U_{r(j)}\)</span>. It defines</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+ (r^*c)_{j_0\ldots j_p}
+ =c_{r(j_0)\ldots r(j_p)}|_{V_{j_0\ldots j_p}}.
+ \tag{2.1}
+\]">\[
+(r^*c)_{j_0\ldots j_p}
+=c_{r(j_0)\ldots r(j_p)}|_{V_{j_0\ldots j_p}}.
+\tag{2.1}
+\]</span>
+<p>Restrictions commute with deletion, so <span class="math" data-tex="\(r^*\delta=\delta r^*\)">\(r^*\delta=\delta r^*\)</span>. Identity refinements give identity maps, and successive refinement functions compose exactly in (2.1). No order on either index set is needed.</p>
+<p>If <span class="math" data-tex="\(r,s:J\to I\)">\(r,s:J\to I\)</span> are two refinement functions for the same covers, define <span class="math" data-tex="\(H^0=0\)">\(H^0=0\)</span> and, for <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+ (H^p c)_{j_0\ldots j_{p-1}}
+ =\sum_{a=0}^{p-1}(-1)^a
+ c_{r(j_0)\ldots r(j_a)\,s(j_a)\ldots s(j_{p-1})}
+ |_{V_{j_0\ldots j_{p-1}}}.
+ \tag{2.2}
+\]">\[
+(H^p c)_{j_0\ldots j_{p-1}}
+=\sum_{a=0}^{p-1}(-1)^a
+c_{r(j_0)\ldots r(j_a)\,s(j_a)\ldots s(j_{p-1})}
+|_{V_{j_0\ldots j_{p-1}}}.
+\tag{2.2}
+\]</span>
+<p>Every restriction is defined: the smaller intersection lies in both chosen opens for each of its indices. These maps satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+ \delta H+H\delta=s^*-r^*.
+ \tag{2.3}
+\]">\[
+\delta H+H\delta=s^*-r^*.
+\tag{2.3}
+\]</span>
+<p>Here is the cancellation proving the signs. On a formal tuple <span class="math" data-tex="\([j_0,\ldots,j_n]\)">\([j_0,\ldots,j_n]\)</span>, form the sum of <span class="math" data-tex="\([rj_0,\ldots,rj_a,sj_a,\ldots,sj_n]\)">\([rj_0,\ldots,rj_a,sj_a,\ldots,sj_n]\)</span> with coefficient <span class="math" data-tex="\((-1)^a\)">\((-1)^a\)</span>. In its boundary, deleting an entry strictly before the switch pairs with the corresponding summand of the prism applied to the boundary tuple; the same holds strictly after the switch. The coefficients are opposite after moving that deletion past the switch. Deleting one of the two entries at the switch pairs with the adjacent switch, leaving just the all-<span class="math" data-tex="\(s\)">\(s\)</span> tuple minus the all-<span class="math" data-tex="\(r\)">\(r\)</span> tuple. This proves <span class="math" data-tex="\(\partial P+P\partial=s_*-r_*\)">\(\partial P+P\partial=s_*-r_*\)</span>. Evaluate cochains on these chains and restrict to the common intersection to obtain (2.3). In degree zero it reads <span class="math" data-tex="\((H^1\delta c)_j=c_{s(j)}|_{V_j}-c_{r(j)}|_{V_j}\)">\((H^1\delta c)_j=c_{s(j)}|_{V_j}-c_{r(j)}|_{V_j}\)</span>, so it includes the bottom degree. Thus refinement maps on Čech cohomology are independent of the chosen refinement function, and respect composition.</p>
+<h2 id="3-a-free-open-extension-chain-resolution">3. A free open-extension chain resolution</h2>
+<p>For an open <span class="math" data-tex="\(W\)">\(W\)</span>, write <span class="math" data-tex="\(j_W:W\hookrightarrow X\)">\(j_W:W\hookrightarrow X\)</span>. The first prerequisite proves exactness of <span class="math" data-tex="\(j_{W!}\)">\(j_{W!}\)</span> and the adjunction identifying <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal O}(j_{W!}\mathcal O|_W,\mathcal G)\)">\(\operatorname{Hom}_{\mathcal O}(j_{W!}\mathcal O|_W,\mathcal G)\)</span> with <span class="math" data-tex="\(\mathcal G(W)\)">\(\mathcal G(W)\)</span>, by evaluation at one. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+ P_p=\bigoplus_{\mathbf i\in I^{p+1}}j_{U_{\mathbf i}!}\mathcal O|_{U_{\mathbf i}}
+ \quad(p\ge0),\qquad P_{-1}=\mathcal O.
+ \tag{3.1}
+\]">\[
+P_p=\bigoplus_{\mathbf i\in I^{p+1}}j_{U_{\mathbf i}!}\mathcal O|_{U_{\mathbf i}}
+\quad(p\ge0),\qquad P_{-1}=\mathcal O.
+\tag{3.1}
+\]</span>
+<p>If <span class="math" data-tex="\(W\subseteq V\)">\(W\subseteq V\)</span>, extension of the unit section gives a canonical map <span class="math" data-tex="\(j_{W!}\mathcal O|_W\to j_{V!}\mathcal O|_V\)">\(j_{W!}\mathcal O|_W\to j_{V!}\mathcal O|_V\)</span>; it is the identity on stalks in <span class="math" data-tex="\(W\)">\(W\)</span> and zero on all other source stalks. These maps compose under inclusions. On each tuple summand define <span class="math" data-tex="\(\partial_p:P_p\to P_{p-1}\)">\(\partial_p:P_p\to P_{p-1}\)</span> as the sum of the deletion maps with coefficients <span class="math" data-tex="\((-1)^a\)">\((-1)^a\)</span>. For <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, use the canonical inclusions into <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. The same deletion pairing as in Section 1 proves <span class="math" data-tex="\(\partial^2=0\)">\(\partial^2=0\)</span>.</p>
+<p>This augmented chain complex is exact. Indeed its stalk at <span class="math" data-tex="\(x\)">\(x\)</span> is the free <span class="math" data-tex="\(\mathcal O_x\)">\(\mathcal O_x\)</span>-module on tuples of the nonempty set <span class="math" data-tex="\(I_x=\{i:x\in U_i\}\)">\(I_x=\{i:x\in U_i\}\)</span>, augmented to <span class="math" data-tex="\(\mathcal O_x\)">\(\mathcal O_x\)</span>. Stalks commute with the direct sum, since a germ of a section of the sheafified sum is represented locally by finitely many summands. Choose <span class="math" data-tex="\(a\in I_x\)">\(a\in I_x\)</span>. Define <span class="math" data-tex="\(s_{-1}(b)=b[a]\)">\(s_{-1}(b)=b[a]\)</span> and <span class="math" data-tex="\(s_p(b[i_0,\ldots,i_p])=b[a,i_0,\ldots,i_p]\)">\(s_p(b[i_0,\ldots,i_p])=b[a,i_0,\ldots,i_p]\)</span>. Deleting the initial <span class="math" data-tex="\(a\)">\(a\)</span> gives the original tuple; the other deletions have the negative of the signs in <span class="math" data-tex="\(s\partial\)">\(s\partial\)</span>. Consequently <span class="math" data-tex="\(\partial s+s\partial=1\)">\(\partial s+s\partial=1\)</span> in every augmented degree. Exactness on stalks proves exactness of the sheaf complex. The chosen insertion may depend on <span class="math" data-tex="\(x\)">\(x\)</span>; a global sheaf contraction is not asserted. If <span class="math" data-tex="\(X\)">\(X\)</span> is empty, the sheaf complex is zero and the conclusion still holds.</p>
+<h2 id="4-why-injectives-have-no-positive-čech-cohomology">4. Why injectives have no positive Čech cohomology</h2>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> be an injective module sheaf. The direct-sum universal property and the open adjunction give actual identifications</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+ \operatorname{Hom}_{\mathcal O}(P_p,J)
+ \simeq\prod_{\mathbf i}J(U_{\mathbf i})=C^p(\mathcal U,J).
+ \tag{4.1}
+\]">\[
+\operatorname{Hom}_{\mathcal O}(P_p,J)
+\simeq\prod_{\mathbf i}J(U_{\mathbf i})=C^p(\mathcal U,J).
+\tag{4.1}
+\]</span>
+<p>The forward map restricts a morphism to each summand and evaluates at one. Its inverse takes each section to its multiplication map on that open, extends by the adjunction, and assembles the maps on the direct sum. Both composites are identities. Precomposition with <span class="math" data-tex="\(\partial\)">\(\partial\)</span> becomes precisely (1.1), including its signs and restriction maps.</p>
+<p>For completeness, exactness after applying this Hom functor can be checked directly. A cocycle <span class="math" data-tex="\(f:P_p\to J\)">\(f:P_p\to J\)</span> vanishes on <span class="math" data-tex="\(\operatorname{im}\partial_{p+1}=\ker\partial_p\)">\(\operatorname{im}\partial_{p+1}=\ker\partial_p\)</span>. It therefore factors through <span class="math" data-tex="\(\operatorname{im}\partial_p\subseteq P_{p-1}\)">\(\operatorname{im}\partial_p\subseteq P_{p-1}\)</span>. For <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, injectivity extends that factor to <span class="math" data-tex="\(P_{p-1}\to J\)">\(P_{p-1}\to J\)</span>, making <span class="math" data-tex="\(f\)">\(f\)</span> a coboundary. For <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, the same factor is a map <span class="math" data-tex="\(\mathcal O\to J\)">\(\mathcal O\to J\)</span>, since the augmentation is onto. Hence the augmented Čech complex of <span class="math" data-tex="\(J\)">\(J\)</span> is exact, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+ \check H^0(\mathcal U,J)=J(X),\qquad
+ \check H^p(\mathcal U,J)=0\quad(p&gt;0).
+ \tag{4.2}
+\]">\[
+\check H^0(\mathcal U,J)=J(X),\qquad
+\check H^p(\mathcal U,J)=0\quad(p&gt;0).
+\tag{4.2}
+\]</span>
+<p>The sheaves <span class="math" data-tex="\(P_p\)">\(P_p\)</span> need not be projective. Injectivity of the target is the extension property used in this proof.</p>
+<h2 id="5-the-signed-double-complex-and-its-augmentation">5. The signed double complex and its augmentation</h2>
+<p>Choose an ordinary injective resolution <span class="math" data-tex="\(\mathcal F\to I^\bullet\)">\(\mathcal F\to I^\bullet\)</span>, starting in degree zero. Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+ B^{p,q}=C^p(\mathcal U,I^q),\quad
+ \operatorname{Tot}^n B=\bigoplus_{p+q=n}B^{p,q},\quad
+ D|_{B^{p,q}}=\delta+(-1)^p d_I.
+ \tag{5.1}
+\]">\[
+B^{p,q}=C^p(\mathcal U,I^q),\quad
+\operatorname{Tot}^n B=\bigoplus_{p+q=n}B^{p,q},\quad
+D|_{B^{p,q}}=\delta+(-1)^p d_I.
+\tag{5.1}
+\]</span>
+<p>The two unsigned differentials commute, since the resolution maps commute with restrictions. The mixed terms in <span class="math" data-tex="\(D^2\)">\(D^2\)</span> cancel: the horizontal map raises <span class="math" data-tex="\(p\)">\(p\)</span> by one, reversing the vertical sign. The pure terms vanish. There are only <span class="math" data-tex="\(n+1\)">\(n+1\)</span> summands in total degree <span class="math" data-tex="\(n\)">\(n\)</span>, regardless of the size of the cover.</p>
+<p>Restriction defines a chain map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+ a:\Gamma(X,I^\bullet)\longrightarrow\operatorname{Tot}B
+ \tag{5.2}
+\]">\[
+a:\Gamma(X,I^\bullet)\longrightarrow\operatorname{Tot}B
+\tag{5.2}
+\]</span>
+<p>into column zero. The horizontal differential of a restricted section is zero, and the vertical sign there is positive. Section 4 says that, for each <span class="math" data-tex="\(q\)">\(q\)</span>, the unaugmented horizontal row has cohomology <span class="math" data-tex="\(I^q(X)\)">\(I^q(X)\)</span> in horizontal degree zero and zero elsewhere. Regarding the source of (5.2) as a double complex supported in column zero, <span class="math" data-tex="\(a\)">\(a\)</span> is thus a quasi-isomorphism on every row. The row comparison of the third prerequisite applies: both complexes are first quadrant, and the row filtration has finite length in each total degree. It proves that <span class="math" data-tex="\(a\)">\(a\)</span> is a quasi-isomorphism. Its abutment is therefore <span class="math" data-tex="\(H^n(X,\mathcal F)\)">\(H^n(X,\mathcal F)\)</span>.</p>
+<p>There is also an actual chain map <span class="math" data-tex="\(b:C^\bullet(\mathcal U,\mathcal F)\to\operatorname{Tot}B\)">\(b:C^\bullet(\mathcal U,\mathcal F)\to\operatorname{Tot}B\)</span>, from <span class="math" data-tex="\(\mathcal F\to I^0\)">\(\mathcal F\to I^0\)</span> in row zero. Its image has zero vertical differential. Define the Čech comparison map by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+ \sigma^n_{\mathcal U}=H^n(a)^{-1}H^n(b):
+ \check H^n(\mathcal U,\mathcal F)\longrightarrow H^n(X,\mathcal F).
+ \tag{5.3}
+\]">\[
+\sigma^n_{\mathcal U}=H^n(a)^{-1}H^n(b):
+\check H^n(\mathcal U,\mathcal F)\longrightarrow H^n(X,\mathcal F).
+\tag{5.3}
+\]</span>
+<p>In degree zero it is the sheaf gluing identification. In higher degrees it need not be an isomorphism.</p>
+<h2 id="6-the-comparison-spectral-sequence-and-its-exact-hypotheses">6. The comparison spectral sequence and its exact hypotheses</h2>
+<p>Use the column filtration <span class="math" data-tex="\(F^r\operatorname{Tot}^nB=\bigoplus_{p\ge r,\ p+q=n}B^{p,q}\)">\(F^r\operatorname{Tot}^nB=\bigoplus_{p\ge r,\ p+q=n}B^{p,q}\)</span>. It is the whole degree for <span class="math" data-tex="\(r\le0\)">\(r\le0\)</span> and zero for <span class="math" data-tex="\(r&gt;n\)">\(r&gt;n\)</span>. The filtered-complex theorem therefore applies with its proved finite convergence. Restricting an injective resolution to any <span class="math" data-tex="\(U_{\mathbf i}\)">\(U_{\mathbf i}\)</span> remains an injective resolution. Products of module sequences are exact by coordinatewise lifting, so vertical kernels, images and their quotient give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+ E_1^{p,q}=\prod_{\mathbf i\in I^{p+1}}H^q(U_{\mathbf i},\mathcal F),\qquad
+ d_1=\delta,\qquad
+ E_2^{p,q}=\check H^p(\mathcal U,\mathcal H^q_{\mathcal F}),
+ \tag{6.1}
+\]">\[
+E_1^{p,q}=\prod_{\mathbf i\in I^{p+1}}H^q(U_{\mathbf i},\mathcal F),\qquad
+d_1=\delta,\qquad
+E_2^{p,q}=\check H^p(\mathcal U,\mathcal H^q_{\mathcal F}),
+\tag{6.1}
+\]</span>
+<p>where <span class="math" data-tex="\(\mathcal H^q_{\mathcal F}(W)=H^q(W,\mathcal F)\)">\(\mathcal H^q_{\mathcal F}(W)=H^q(W,\mathcal F)\)</span> with the usual open restriction maps. This is a presheaf; no sheafification is used. The signed vertical complex has the same cycles and boundaries as the unsigned one, which fixes the direct identification in (6.1) and gives the stated sign of <span class="math" data-tex="\(d_1\)">\(d_1\)</span>.</p>
+<p>All higher differentials and the abutment filtration are those of the third prerequisite: <span class="math" data-tex="\(d_r\)">\(d_r\)</span> has bidegree <span class="math" data-tex="\((r,1-r)\)">\((r,1-r)\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+ E_\infty^{p,n-p}\simeq F^pH^n(X,\mathcal F)/F^{p+1}H^n(X,\mathcal F),\qquad
+ F^0H^n=H^n,\quad F^{n+1}H^n=0.
+ \tag{6.2}
+\]">\[
+E_\infty^{p,n-p}\simeq F^pH^n(X,\mathcal F)/F^{p+1}H^n(X,\mathcal F),\qquad
+F^0H^n=H^n,\quad F^{n+1}H^n=0.
+\tag{6.2}
+\]</span>
+<p>The filtration is transported along <span class="math" data-tex="\(H(a)\)">\(H(a)\)</span>. Every position stabilizes after finitely many pages by the degreewise finite theorem. Thus (6.1) converges even for an infinite cover. It specifies associated pieces, not a chosen splitting of the resulting extensions.</p>
+<p><strong>Theorem 6.1 (acyclic-cover comparison).</strong> Suppose <span class="math" data-tex="\(H^q(U_{i_0\ldots i_p},\mathcal F)=0\)">\(H^q(U_{i_0\ldots i_p},\mathcal F)=0\)</span> for every finite nonempty tuple and every <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>. Then (5.3) is an isomorphism for every <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>.</p>
+<p><strong>Proof.</strong> Regard <span class="math" data-tex="\(C^\bullet(\mathcal U,\mathcal F)\)">\(C^\bullet(\mathcal U,\mathcal F)\)</span> as a double complex in row zero. In each column the map <span class="math" data-tex="\(b\)">\(b\)</span> is a quasi-isomorphism: degree-zero cohomology of the target is the product of the section kernels, hence <span class="math" data-tex="\(C^p(\mathcal U,\mathcal F)\)">\(C^p(\mathcal U,\mathcal F)\)</span>, and all its positive cohomology vanishes by the assumed intersection groups and exact products. Column comparison with the same finite filtrations proves that <span class="math" data-tex="\(b\)">\(b\)</span> is a quasi-isomorphism on totals. Since <span class="math" data-tex="\(a\)">\(a\)</span> is already one, (5.3) is an isomorphism. This proof identifies the actual comparison rather than only an abstract group isomorphism. Empty intersections have zero section complex and cause no exception. No finite-cover or separation hypothesis was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-naturality-choices-and-restriction-to-an-open">7. Naturality, choices and restriction to an open</h2>
+<p>A sheaf map lifts to a map of injective resolutions, unique up to the comparison homotopy proved in the second prerequisite. If <span class="math" data-tex="\(h:I^q\to I&#x27;^{q-1}\)">\(h:I^q\to I&#x27;^{q-1}\)</span> is a homotopy, the corresponding total homotopy on <span class="math" data-tex="\(B^{p,q}\)">\(B^{p,q}\)</span> is <span class="math" data-tex="\((-1)^p C^p(\mathcal U,h)\)">\((-1)^p C^p(\mathcal U,h)\)</span>. Its horizontal terms cancel, and its vertical terms give <span class="math" data-tex="\(d&#x27;h+hd\)">\(d&#x27;h+hd\)</span>. It preserves the column filtration, so homotopic comparisons induce the same maps on <span class="math" data-tex="\(E_1\)">\(E_1\)</span>, all later pages and the filtered abutment. Identity and composition comparisons follow by that same uniqueness. This proves independence of the injective resolution, naturality in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, and all composition compatibilities for (5.3) and (6.1).</p>
+<p>A refinement induces a double-complex map by (2.1) in each resolution degree, commuting with <span class="math" data-tex="\(a\)">\(a\)</span> on its source and with <span class="math" data-tex="\(b\)">\(b\)</span>. Its map on the abutment, identified with <span class="math" data-tex="\(H^*(X,\mathcal F)\)">\(H^*(X,\mathcal F)\)</span>, is the identity. For two refinement functions the prism (2.2), applied in every vertical degree, is a total homotopy without an extra sign: its vertical mixed terms have coefficients <span class="math" data-tex="\((-1)^{p-1}\)">\((-1)^{p-1}\)</span> and <span class="math" data-tex="\((-1)^p\)">\((-1)^p\)</span> and cancel. On vertical cohomology it gives a homotopy of the horizontal <span class="math" data-tex="\(E_1\)">\(E_1\)</span> complexes. Consequently the two maps agree on <span class="math" data-tex="\(E_2\)">\(E_2\)</span> and all later pages, and on the abutment. They need not agree as maps of <span class="math" data-tex="\(E_1\)">\(E_1\)</span> groups before taking horizontal cohomology. The cochain formulas still compose exactly when refinement functions are specified.</p>
+<p>For an open <span class="math" data-tex="\(W\subseteq X\)">\(W\subseteq X\)</span>, use the cover <span class="math" data-tex="\((U_i\cap W)_i\)">\((U_i\cap W)_i\)</span> of <span class="math" data-tex="\(W\)">\(W\)</span>. Restricting cochains gives the map on all tuple intersections. Restriction of <span class="math" data-tex="\(I^\bullet\)">\(I^\bullet\)</span> is an injective resolution on <span class="math" data-tex="\(W\)">\(W\)</span> by the first prerequisite, so these maps commute with (5.2), (5.3), every page and the usual <span class="math" data-tex="\(H^*(X,\mathcal F)\to H^*(W,\mathcal F|_W)\)">\(H^*(X,\mathcal F)\to H^*(W,\mathcal F|_W)\)</span>. Thus all comparisons are compatible with actual open restrictions. These conclusions require no assertion that arbitrary covers satisfy Theorem 6.1.</p>
+<h2 id="8-four-exercises-with-full-solutions">8. Four exercises with full solutions</h2>
+<h3 id="8-1-infinitely-many-copies-of-one-open">8.1 Infinitely many copies of one open</h3>
+<p><strong>Exercise 1 (basic).</strong> On a one-point space with ring <span class="math" data-tex="\(A\)">\(A\)</span>, let a module <span class="math" data-tex="\(M\)">\(M\)</span> be covered by copies of that point indexed by any nonempty set <span class="math" data-tex="\(I\)">\(I\)</span>. Compute the augmented Čech complex and its cohomology, including infinite <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><strong>Solution.</strong> In degree <span class="math" data-tex="\(p\)">\(p\)</span> the group is <span class="math" data-tex="\(\prod_{I^{p+1}}M\)">\(\prod_{I^{p+1}}M\)</span>, and every restriction in (1.1) is an identity. Choose <span class="math" data-tex="\(a\in I\)">\(a\in I\)</span>. Define <span class="math" data-tex="\(h^0(c)=c_a\in M\)">\(h^0(c)=c_a\in M\)</span> and <span class="math" data-tex="\((h^pc)_{i_0\ldots i_{p-1}}=c_{a,i_0,\ldots,i_{p-1}}\)">\((h^pc)_{i_0\ldots i_{p-1}}=c_{a,i_0,\ldots,i_{p-1}}\)</span> for <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>. With the augmentation as degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, the formula <span class="math" data-tex="\(h^{p+1}\delta+\delta h^p=1\)">\(h^{p+1}\delta+\delta h^p=1\)</span> follows by deleting the initial <span class="math" data-tex="\(a\)">\(a\)</span> and pairing all the other deletions with opposite signs. Also <span class="math" data-tex="\(h^0\eta=1_M\)">\(h^0\eta=1_M\)</span>. These are maps on full products: they select coordinates and take finite sums, and never require finite support. Hence <span class="math" data-tex="\(\check H^0=M\)">\(\check H^0=M\)</span>, <span class="math" data-tex="\(\check H^p=0\)">\(\check H^p=0\)</span> for <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>. This agrees with sheaf cohomology, since sections on a point are the exact identity functor, even if <span class="math" data-tex="\(M\)">\(M\)</span> is not injective as an <span class="math" data-tex="\(A\)">\(A\)</span>-module.</p>
+<h3 id="8-2-the-full-mayer-vietoris-boundary">8.2 The full Mayer–Vietoris boundary</h3>
+<p><strong>Exercise 2 (intermediate).</strong> For <span class="math" data-tex="\(X=U\cup V\)">\(X=U\cup V\)</span>, derive the Mayer–Vietoris long exact sequence for any module sheaf. Specify its difference map and connecting homomorphism without assuming any of <span class="math" data-tex="\(U,V,U\cap V\)">\(U,V,U\cap V\)</span> acyclic.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(\mathcal F\to I^\bullet\)">\(\mathcal F\to I^\bullet\)</span>. Injectives are flabby, so in every degree there is a short exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+ 0\to I^q(X)\longrightarrow I^q(U)\oplus I^q(V)
+ \xrightarrow{\ (u,v)\mapsto v|_{U\cap V}-u|_{U\cap V}\ }I^q(U\cap V)\to0.
+ \tag{8.1}
+\]">\[
+0\to I^q(X)\longrightarrow I^q(U)\oplus I^q(V)
+\xrightarrow{\ (u,v)\mapsto v|_{U\cap V}-u|_{U\cap V}\ }I^q(U\cap V)\to0.
+\tag{8.1}
+\]</span>
+<p>The first map is restriction. Its kernel and image assertions are exactly uniqueness and existence of gluing. For surjectivity, extend a section on <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span> to <span class="math" data-tex="\(V\)">\(V\)</span> by flabbiness and use zero on <span class="math" data-tex="\(U\)">\(U\)</span>. These maps commute with the resolution differential, so the long exact sequence of complexes from the prerequisites gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+ \cdots\to H^q(X,\mathcal F)\to H^q(U,\mathcal F)\oplus H^q(V,\mathcal F)
+ \xrightarrow{\ v|-u|\ }H^q(U\cap V,\mathcal F)
+ \xrightarrow{\Delta}H^{q+1}(X,\mathcal F)\to\cdots.
+ \tag{8.2}
+\]">\[
+\cdots\to H^q(X,\mathcal F)\to H^q(U,\mathcal F)\oplus H^q(V,\mathcal F)
+\xrightarrow{\ v|-u|\ }H^q(U\cap V,\mathcal F)
+\xrightarrow{\Delta}H^{q+1}(X,\mathcal F)\to\cdots.
+\tag{8.2}
+\]</span>
+<p>For a cocycle <span class="math" data-tex="\(c\in I^q(U\cap V)\)">\(c\in I^q(U\cap V)\)</span>, choose <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> mapping to it in (8.1). Then <span class="math" data-tex="\(dv-du=dc=0\)">\(dv-du=dc=0\)</span> on the overlap, so <span class="math" data-tex="\(du\)">\(du\)</span> and <span class="math" data-tex="\(dv\)">\(dv\)</span> glue to a cocycle <span class="math" data-tex="\(z\in I^{q+1}(X)\)">\(z\in I^{q+1}(X)\)</span>. The boundary is <span class="math" data-tex="\(\Delta[c]=[z]\)">\(\Delta[c]=[z]\)</span>, with this positive sign. Changing the chosen lift adds a restricted global cochain <span class="math" data-tex="\(w\)">\(w\)</span>, so changes <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(dw\)">\(dw\)</span>. Replacing <span class="math" data-tex="\(c\)">\(c\)</span> by <span class="math" data-tex="\(c+d\gamma\)">\(c+d\gamma\)</span>, lift <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> one degree earlier and add its differential to <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>; this leaves <span class="math" data-tex="\(z\)">\(z\)</span> unchanged. Thus the formula is well-defined. The short-exact-complex proof supplies exactness and naturality of every arrow. Restriction preserves injectives, so all the displayed groups are the indicated sheaf cohomology groups on the smaller opens. No acyclicity assumption occurred.</p>
+<h3 id="8-3-a-four-point-circle">8.3 A four-point circle</h3>
+<p><strong>Exercise 3 (advanced).</strong> Give <span class="math" data-tex="\(X=\{u,v,a,b\}\)">\(X=\{u,v,a,b\}\)</span> the upper-set topology for the relations <span class="math" data-tex="\(u&lt;a,u&lt;b,v&lt;a,v&lt;b\)">\(u&lt;a,u&lt;b,v&lt;a,v&lt;b\)</span>, and no others except reflexivity. For the constant diagram <span class="math" data-tex="\(k\)">\(k\)</span> with identity structure maps, use <span class="math" data-tex="\(U=\{u,a,b\}\)">\(U=\{u,a,b\}\)</span> and <span class="math" data-tex="\(V=\{v,a,b\}\)">\(V=\{v,a,b\}\)</span> to compute sheaf cohomology and exhibit an actual Čech generator.</p>
+<p><strong>Solution.</strong> The sheaf–diagram equivalence makes global sections compatible tuples. Their four entries must agree, so <span class="math" data-tex="\(\mathcal F(X)=k\)">\(\mathcal F(X)=k\)</span>. On <span class="math" data-tex="\(U\)">\(U\)</span>, sections are evaluation at the least vertex <span class="math" data-tex="\(u\)">\(u\)</span>; this functor is exact on all diagrams. Thus <span class="math" data-tex="\(H^0(U,\mathcal F)=k\)">\(H^0(U,\mathcal F)=k\)</span> and its positive groups vanish. The same holds on <span class="math" data-tex="\(V\)">\(V\)</span>. The intersection <span class="math" data-tex="\(\{a,b\}\)">\(\{a,b\}\)</span> is discrete; its section functor is the product of two evaluations, so its degree-zero group is <span class="math" data-tex="\(k^2\)">\(k^2\)</span> and its positive groups vanish. Every finite tuple intersection of this two-member cover is <span class="math" data-tex="\(U,V\)">\(U,V\)</span>, or <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span>, so Theorem 6.1 applies.</p>
+<p>In (8.2) the degree-zero difference map is <span class="math" data-tex="\(k^2\to k^2\)">\(k^2\to k^2\)</span>, <span class="math" data-tex="\((r,s)\mapsto(s-r,s-r)\)">\((r,s)\mapsto(s-r,s-r)\)</span>. Its kernel is the diagonal <span class="math" data-tex="\(k\)">\(k\)</span> and its cokernel is <span class="math" data-tex="\(k\)">\(k\)</span>, identified by <span class="math" data-tex="\((x,y)\mapsto y-x\)">\((x,y)\mapsto y-x\)</span>. Consequently <span class="math" data-tex="\(H^0(X,\mathcal F)=k\)">\(H^0(X,\mathcal F)=k\)</span>, <span class="math" data-tex="\(H^1(X,\mathcal F)=k\)">\(H^1(X,\mathcal F)=k\)</span>, and all groups in degrees at least two vanish. An actual Čech cocycle has <span class="math" data-tex="\(c_{UU}=c_{VV}=0\)">\(c_{UU}=c_{VV}=0\)</span>, <span class="math" data-tex="\(c_{UV}=(0,1)\)">\(c_{UV}=(0,1)\)</span>, and <span class="math" data-tex="\(c_{VU}=(0,-1)\)">\(c_{VU}=(0,-1)\)</span>. Every triple has only two possible labels, and substitution in <span class="math" data-tex="\(c_{jk}-c_{ik}+c_{ij}\)">\(c_{jk}-c_{ik}+c_{ij}\)</span> gives zero. A Čech coboundary on <span class="math" data-tex="\(UV\)">\(UV\)</span> has the form <span class="math" data-tex="\((s-r,s-r)\)">\((s-r,s-r)\)</span>, so this cocycle is not a boundary and represents the displayed generator. With the conventions (5.1) and (8.2), its image under (5.3) is <span class="math" data-tex="\(-\Delta[(0,1)]\)">\(-\Delta[(0,1)]\)</span>. Indeed choose the local pair lifting <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> as in Exercise 2, and let <span class="math" data-tex="\(z\)">\(z\)</span> be its glued differential. In the total complex its differential is <span class="math" data-tex="\(b(c)+a(z)\)">\(b(c)+a(z)\)</span>. Hence <span class="math" data-tex="\([b(c)]=-[a(z)]\)">\([b(c)]=-[a(z)]\)</span>, proving the claimed sign. Both classes are generators; the explicit convention determines which one is obtained.</p>
+<h3 id="8-4-a-cover-that-loses-the-first-cohomology">8.4 A cover that loses the first cohomology</h3>
+<p><strong>Exercise 4 (advanced).</strong> Use the same space and sheaf as Exercise 3, but take the singleton cover <span class="math" data-tex="\((X)\)">\((X)\)</span>. Compute its Čech cohomology and comparison spectral sequence. Compare with the refinement <span class="math" data-tex="\((U,V)\to(X)\)">\((U,V)\to(X)\)</span>.</p>
+<p><strong>Solution.</strong> Every tuple intersection is <span class="math" data-tex="\(X\)">\(X\)</span>, so every cochain module is <span class="math" data-tex="\(k\)">\(k\)</span>. The differential is the sum of <span class="math" data-tex="\(p+2\)">\(p+2\)</span> alternating identities: it is zero for even <span class="math" data-tex="\(p\)">\(p\)</span> and identity for odd <span class="math" data-tex="\(p\)">\(p\)</span>. Its Čech cohomology is therefore <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero and zero in every positive degree. In particular it misses <span class="math" data-tex="\(H^1(X,\mathcal F)=k\)">\(H^1(X,\mathcal F)=k\)</span>. The singleton intersection fails the positive-cohomology hypothesis of Theorem 6.1.</p>
+<p>For the spectral sequence, <span class="math" data-tex="\(E_1^{p,0}=k\)">\(E_1^{p,0}=k\)</span> and <span class="math" data-tex="\(E_1^{p,1}=k\)">\(E_1^{p,1}=k\)</span> for every <span class="math" data-tex="\(p\ge0\)">\(p\ge0\)</span>, with zero other rows, by Exercise 3. Each horizontal differential again alternates between zero and identity. Hence <span class="math" data-tex="\(E_2^{0,0}=E_2^{0,1}=k\)">\(E_2^{0,0}=E_2^{0,1}=k\)</span>, with all other positions zero. Higher differentials vanish, giving the correct two abutment groups. The first group in total degree one comes from <span class="math" data-tex="\((p,q)=(0,1)\)">\((p,q)=(0,1)\)</span>, not from the bottom Čech row.</p>
+<p>There is only one refinement function to the singleton index set. Formula (2.1) restricts a global section into every smaller tuple intersection. On first Čech cohomology it is the zero map <span class="math" data-tex="\(0\to k\)">\(0\to k\)</span>, whereas on the spectral-sequence abutment it is the identity of <span class="math" data-tex="\(H^1(X,\mathcal F)\)">\(H^1(X,\mathcal F)\)</span>. This is consistent with (5.3) and Section 7. Independence of the refinement function does not say that arbitrary refinement maps on Čech cohomology are isomorphisms.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>The Stacks Project gives freely readable statements and proofs of <a href="https://stacks.math.columbia.edu/tag/01EP">injective Čech acyclicity</a> and the <a href="https://stacks.math.columbia.edu/tag/01ES">Čech-to-cohomology spectral sequence</a>.</p>
+</main></body></html>

@@ -260,5 +260,5 @@ Polarizing the identity of Lemma 3.2 in \(\xi=\sum_i\xi_ie^i\) gives \(R\bigl(e^
 
 ## References
 
-- [OpenAI-TC] OpenAI, *Taming implies compatibility on four-manifolds*, OpenAI Math Release preprint, 23 September 2026, Sections 1 and 2. https://github.com/openai/math/tree/main/preprints/Taming-implies-compatibility-on-four-manifolds-September-23-2026
+- [OpenAI-TC] OpenAI, *Taming implies compatibility on four-manifolds*, OpenAI Math Release preprint, 6 October 2026, Sections 1 and 2. https://github.com/openai/math/tree/main/preprints/Taming-implies-compatibility-on-four-manifolds-October-6-2026
 - [Donaldson] S. K. Donaldson, *Two-forms on four-manifolds and elliptic equations*, in: Inspired by S. S. Chern, World Scientific, 2006, Section 5.2. https://arxiv.org/abs/math/0607083

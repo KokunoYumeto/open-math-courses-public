@@ -4,9 +4,9 @@
 
 This proof supplies only the analytic comparison needed for operator-valued weight transport. All dual spaces below have a specified predual. A group of isometries means a group of complex-linear surjective isometries whose individual maps are weak-star continuous and whose real orbits are weak-star continuous. No algebra or positivity property of that group is assumed.
 
-The exact earlier written proofs are [SF4 scalar Cauchy, maximum, Morera, identity and zero-edge proofs](OA-FLOW-SF.md#oa-flow.sf.sf4); [FF2 scalar Fourier transform and Plancherel](OA-FLOW-FF.md#oa-flow.ff.3); [CP1](OA-FLOW-CP.md#oa-flow.cp.1), [CP2](OA-FLOW-CP.md#oa-flow.cp.2), [CP3](OA-FLOW-CP.md#oa-flow.cp.3), [CP4](OA-FLOW-CP.md#oa-flow.cp.4), [CP5](OA-FLOW-CP.md#oa-flow.cp.5), [CP6](OA-FLOW-CP.md#oa-flow.cp.6) for the concrete predual and its dual; [scalar interchange](OA-FLOW-FF.md#oa-flow.ff.1), [SC4 monotone convergence](OA-FLOW-SC.md#sc-04) and [SC5 dominated convergence](OA-FLOW-SC.md#sc-05) for the scalar integrals. The transform convention is \(\widehat p(s)=(2\pi)^{-1/2}\int p(x)e^{-isx}\,dx\), as fixed in [FF2](OA-FLOW-FF.md#oa-flow.ff.3). The proofs below do not import three-lines, Carlson, Paley–Wiener, Stone, or a theorem about closed analytic generators.
+The exact earlier written proofs are [SF4 scalar Cauchy, maximum, Morera, identity and zero-edge proofs](OA-FLOW-SF.md#oa-flow.sf.sf4); [FF-1 Gaussian normalization and transform](OA-FLOW-FF.md#oa-flow.ff.2); [CP1](OA-FLOW-CP.md#oa-flow.cp.1), [CP2](OA-FLOW-CP.md#oa-flow.cp.2), [CP3](OA-FLOW-CP.md#oa-flow.cp.3), [CP4](OA-FLOW-CP.md#oa-flow.cp.4), [CP5](OA-FLOW-CP.md#oa-flow.cp.5), [CP6](OA-FLOW-CP.md#oa-flow.cp.6) for the concrete predual and its dual; [scalar interchange](OA-FLOW-FF.md#oa-flow.ff.1), [SC4 monotone convergence](OA-FLOW-SC.md#sc-04) and [SC5 dominated convergence](OA-FLOW-SC.md#sc-05) for the scalar integrals. The proofs below do not import three-lines, Carlson, Paley–Wiener, Stone, or a theorem about closed analytic generators.
 
-The development source for the exponential kernel and the comparison question is F. Hiai, [free author manuscript, arXiv:2004.02383v1](https://arxiv.org/pdf/2004.02383v1), printed pp. 75–77. The bounded-half-plane zero argument below replaces its printed Carlson footnote; only the stronger horizontal-band bound proved here is used.
+The comparison theorem is discussed in F. Hiai's [free author manuscript, printed pp.75–77](https://arxiv.org/pdf/2004.02383v1#page=75). Here a fourth-power sine kernel is normalized by direct Gaussian integration, and comparison is confined to the upper half-plane, where an elementary zero theorem applies.
 
 <a id="oa-flow.as.1"></a><a id="as-1"></a>
 
@@ -84,107 +84,144 @@ For bounded scalar functions, two adjacent closed-strip holomorphic functions th
 
 <a id="oa-flow.as.3"></a><a id="as-3"></a>
 
-## AS3. A dense class with a horizontal exponential bound
+## AS3. Contractive approximation by directly integrated entire kernels
 
-Let \((\alpha_t)_{t\in\mathbb R}\) be a group of isometries of \(X=E^*\) in the opening sense. An element \(a\) is called exponential here if its orbit is the restriction of a norm-entire map \(A:\mathbb C\to X\) satisfying
+Let \((\alpha_t)_{t\in\mathbb R}\) be a group of isometries of \(X=E^*\) in the opening sense. We construct a bounded approximate identity whose entire translates have an exponential bound in the imaginary direction. An element \(a\) is called exponential if its real orbit has a norm-entire extension \(A\) with
 
 <a id="equation-as4"></a>
 
 \[
  A(t)=\alpha_t(a),\qquad
- \|A(z)\|\leq K e^{c|\operatorname{Im}z|}                           \tag{AS4}
+ \|A(z)\|\leq K e^{c|\operatorname{Im}z|}
+ \quad(z\in\mathbb C)                                           \tag{AS4}
 \]
-for finite \(K,c\geq0\). Such an extension is unique by scalar identity. It satisfies \(A(z+t)=\alpha_t(A(z))\) for real \(t\): both sides are weak-star holomorphic and agree when \(z\) is real. In particular \(A(z_0)\) is exponential, with extension \(z\mapsto A(z+z_0)\).
+for finite \(K,c\geq0\). Scalar identity gives uniqueness and
+\(A(z+t)=\alpha_t(A(z))\) for real \(t\). Consequently \(A(z_0)\) is again exponential, with extension \(z\mapsto A(z+z_0)\).
 
-For \(R>0\) put
+**A positive kernel with an elementary normalization.** Put
+\[
+ k(t)=\frac3{2\pi}\left(\frac{\sin t}{t}\right)^4,\qquad
+ k_R(z)=Rk(Rz)\quad(R>0),
+\]
+using the removable value \(k(0)=3/(2\pi)\). We first prove \(\int_{\mathbb R}k(t)\,dt=1\).
+
+For real \(a\), set \(J(a)=\int_{\mathbb R}(1-\cos(at))/t^2\,dt\). The integral is finite by the quadratic bound near zero and the \(t^{-2}\) bound at infinity. Since \(t^{-2}=\int_0^\infty e^{-ut^2}\,du\) for \(t\ne0\), nonnegative scalar interchange and the Gaussian transform from [FF-1](OA-FLOW-FF.md#oa-flow.ff.2) give
+\[
+ J(a)=\sqrt\pi\int_0^\infty u^{-1/2}
+           (1-e^{-a^2/(4u)})\,du.
+\]
+For \(a\ne0\), substitute \(v=|a|/(2\sqrt u)\). Integration by parts, with both boundary terms zero, gives
+\[
+ J(a)=\sqrt\pi\,|a|\int_0^\infty\frac{1-e^{-v^2}}{v^2}\,dv
+ =2\sqrt\pi\,|a|\int_0^\infty e^{-v^2}\,dv
+ =\pi|a|.
+\]
+For \(a=0\) the equality is immediate. Now let \(f(t)=\sin^4t\). Since
+\(f''(t)=2\cos(2t)-2\cos(4t)\), two integrations by parts on intervals avoiding zero yield
 
 <a id="equation-as5"></a>
 
 \[
- p_R(x)=R^{-1/2}1_{[-R/2,R/2]}(x),\qquad
- q_R(z)=\widehat p_R(z)^2
-       =\frac{1-\cos(Rz)}{\pi Rz^2},\quad q_R(0)=\frac R{2\pi}.     \tag{AS5}
+ \int_{\mathbb R}\frac{\sin^4t}{t^4}\,dt
+ =\frac16\int_{\mathbb R}\frac{f''(t)}{t^2}\,dt
+ =\frac{J(4)-J(2)}3=\frac{2\pi}3.                               \tag{AS5}
 \]
-The apparent singularity is removable by the scalar power series. Direct integration of \(p_R\) gives
-\[
- \widehat p_R(z)=\sqrt{\frac2{\pi R}}\,\frac{\sin(Rz/2)}z.
-\]
-Since \(p_R\in L^1\cap L^2\), [FF2](OA-FLOW-FF.md#oa-flow.ff.3) gives
+The boundary terms vanish at infinity by boundedness of \(f,f'\), and at zero by \(f(t)=O(t^4)\), \(f'(t)=O(t^3)\). Thus \(k\) is a nonnegative probability density. Also \(k(t)\leq3/(2\pi t^4)\) for \(t\ne0\). Scaling gives
 
 <a id="equation-as6"></a>
 
 \[
- q_R(s)\geq0,\quad \int_{\mathbb R}q_R(s)\,ds=1,\quad
- \int_{|s|>\delta}q_R(s)\,ds\leq\frac4{\pi R\delta}\quad(\delta>0).
+ k_R(s)\geq0,\qquad \int_{\mathbb R}k_R(s)\,ds=1,\qquad
+ \int_{|s|>\delta}k_R(s)\,ds\leq\frac1{\pi R^3\delta^3}.
                                                                     \tag{AS6}
 \]
-The last bound uses \(1-\cos(Rs)\leq2\). For every real \(v\), apply [FF2](OA-FLOW-FF.md#oa-flow.ff.3) to the compactly supported function \(p_R(x)e^{vx}\); its Fourier transform is the same directly evaluated integral \(\widehat p_R(s+iv)\). Therefore
+
+**Entire translates and their integrable bounds.** The exponential formula for sine gives
+\(|\sin(t+iv)|\leq e^{|v|}\). The identity
+\(\sin z=z\int_0^1\cos(uz)\,du\) also gives
+\(|\sin z/z|\leq e^{|\operatorname{Im}z|}\).
+Combining these estimates and using \(|t+iv|\geq|t|\) yields
+\[
+ |k(t+iv)|\leq\frac3{2\pi}e^{4|v|}
+                   \min(1,|t|^{-4}).
+\]
+The right side is integrable in \(t\). Its integral, followed by scaling, proves
 
 <a id="equation-as7"></a>
 
 \[
- \begin{split}
- \int_{\mathbb R}|q_R(s+iv)|\,ds
- &=\int_{\mathbb R}|\widehat p_R(s+iv)|^2\,ds\\
- &=\frac1R\int_{-R/2}^{R/2}e^{2vx}\,dx
- =\frac{\sinh(Rv)}{Rv}\leq e^{R|v|},                              \tag{AS7}
- \end{split}
+ \int_{\mathbb R}|k_R(s+iv)|\,ds
+ \leq\frac4\pi e^{4R|v|}.                                      \tag{AS7}
 \]
-where the ratio is \(1\) at \(v=0\).
+On every compact set of complex shifts, the kernels \(k_R(s-z)\) have a common integrable bound of the form \(C/(1+|s|^4)\). Cauchy estimates on a slightly larger compact set give such bounds for their derivatives and Taylor remainders. The map \(z\mapsto k_R(\,\cdot-z)\) is therefore holomorphic in \(L^1(\mathbb R)\).
 
-For \(a\in X\), define the weak-star integral
+**Approximation of the orbit.** Define the weak-star integral from AS2 by
 
 <a id="equation-as8"></a>
 
 \[
- A_R(z)=\int_{\mathbb R}q_R(s-z)\alpha_s(a)\,ds,\qquad a_R=A_R(0).
+ A_R(z)=\int_{\mathbb R}k_R(s-z)\alpha_s(a)\,ds,\qquad a_R=A_R(0).
                                                                     \tag{AS8}
 \]
-On each compact set of \(z\)'s the kernel is bounded by \(C/(1+s^2)\): for large \(|s|\) this follows from ([AS5](OA-FLOW-AS.md#equation-as5)), and on the remaining compact set it follows from removal of the singularity. Cauchy estimates on slightly larger compact sets give the same integrable domination for each local Taylor coefficient and its remainder. Thus \(z\mapsto q_R(\,\cdot-z)\) is holomorphic in \(L^1\), and ([AS8](OA-FLOW-AS.md#equation-as8)) is norm entire. Change of variable and weak-star continuity of \(\alpha_t\) give
+The integral map from \(L^1(\mathbb R)\) into \(X\) has norm at most \(\|a\|\), so \(A_R\) is norm entire. Real substitution and weak-star continuity of each \(\alpha_t\) give
 
 <a id="equation-as9"></a>
 
 \[
  A_R(t)=\alpha_t(a_R),\qquad
- \|A_R(z)\|\leq\|a\|e^{R|\operatorname{Im}z|}.                    \tag{AS9}
+ \|A_R(z)\|\leq\frac4\pi\|a\|e^{4R|\operatorname{Im}z|},\qquad
+ \|a_R\|\leq\|a\|.                                             \tag{AS9}
 \]
-Finally ([AS6](OA-FLOW-AS.md#equation-as6)), continuity at zero of \(s\mapsto\langle\alpha_s(a),e\rangle\), and its uniform bound prove \(\langle a_R,e\rangle\to\langle a,e\rangle\) for every \(e\in E\). Hence the exponential elements are weak-star dense. Also \(\|a_R\|\leq\|a\|\); no unbounded approximation is being used.
+For \(e\in E\), split
+\(\langle a_R-a,e\rangle=\int k_R(s)\langle\alpha_s(a)-a,e\rangle\,ds\)
+at \(|s|=\delta\). Continuity of the scalar orbit makes the first part small when \(\delta\) is small; the explicit tail in AS6 makes the second part tend to zero as \(R\to\infty\). Thus \(a_R\to a\) weak-star. The exponential elements are weak-star dense, with contractive approximation and no separability hypothesis.
 
 <a id="oa-flow.as.4"></a><a id="as-4"></a>
 
 ## AS4. Comparison from one-strip continuations
 
-Let \(Y\subset X\) be a weak-star closed subspace, with its inherited predual topology. Let \(\alpha_t\) on \(X\) and \(\gamma_t\) on \(Y\) be groups as above. Suppose that for every norm-entire \(\gamma\)-orbit \(A(z)=\gamma_z(a)\) there is an \(X\)-valued function \(B_a\) on the closed lower unit strip that is weak-star continuous, holomorphic inside, bounded on the whole strip, and satisfies
+Let \(Y\subset X\) be a weak-star closed subspace with its inherited predual topology. Let \(\alpha_t\) on \(X\) and \(\gamma_t\) on \(Y\) be groups as above. Suppose that for every norm-entire \(\gamma\)-orbit \(A(z)=\gamma_z(a)\) there is an \(X\)-valued function \(B_a\), weak-star continuous on the closed lower unit strip, holomorphic inside, bounded on the whole strip, with
 
 <a id="equation-as10"></a>
 
 \[
  B_a(t)=\alpha_t(a),\qquad
- B_a(t-i)=\alpha_t(\gamma_{-i}(a))\quad(t\in\mathbb R).             \tag{AS10}
+ B_a(t-i)=\alpha_t(\gamma_{-i}(a))
+ \quad(t\in\mathbb R).                                         \tag{AS10}
 \]
+
 Then
 
 <a id="equation-as11"></a>
 
 \[
- \alpha_t(y)=\gamma_t(y)\qquad(y\in Y,\ t\in\mathbb R).             \tag{AS11}
+ \alpha_t(y)=\gamma_t(y)\qquad(y\in Y,\ t\in\mathbb R).            \tag{AS11}
 \]
 
-Fix an exponential \(y\in Y\), and write its entire extension as \(A(z)\), with bound ([AS4](OA-FLOW-AS.md#equation-as4)). For every integer \(k\), apply ([AS10](OA-FLOW-AS.md#equation-as10)) to \(a_k=A(ik)\), whose entire orbit is \(A(z+ik)\). Put
+It suffices, by AS3 and weak-star continuity, to prove this for an exponential \(y\in Y\). Write \(A\) for its entire \(\gamma\)-orbit, with \(\|A(z)\|\leq K e^{c|\operatorname{Im}z|}\), and put \(a_k=A(ik)\) for \(k\geq0\). These are exponential elements and \(\gamma_{-i}(a_k)=a_{k-1}\) for \(k\geq1\).
+
+We construct only an upper-half-plane comparison. On \(k-1\leq\operatorname{Im}z\leq k\), for \(k=1,2,\ldots\), put
 
 <a id="equation-as12"></a>
 
 \[
- F(z)=B_{a_k}(z-ik)
- \quad\text{on }k-1\leq\operatorname{Im}z\leq k.                 \tag{AS12}
+ F(z)=B_{a_k}(z-ik).                                           \tag{AS12}
 \]
-At the shared line of adjacent strips both definitions equal \(\alpha_t(a_k)\), so [AS2](OA-FLOW-AS.md#oa-flow.as.2) glues them. For \(e\in E\), [AS1](OA-FLOW-AS.md#oa-flow.as.1) bounds its scalar values on the strip by
+At each seam \(z=t+ik\), the two definitions are both \(\alpha_t(a_k)\), by AS10. AS2's local rectangle argument glues their scalar pairings holomorphically. Consequently \(F\) is weak-star continuous on the closed upper half-plane, holomorphic in its interior, and \(F(t)=\alpha_t(y)\).
+
+Apply AS1 to each scalar pairing on the \(k\)-th strip. Its two boundary norms are at most \(\|a_k\|\) and \(\|a_{k-1}\|\), because the real action is isometric. Duality gives
 \[
- |\langle F(z),e\rangle|
- \leq \max(\|a_k\|,\|a_{k-1}\|)\,\|e\|.
+ \|F(t+iv)\|\leq K e^{ck}\leq K e^{c(v+1)}
+ \qquad(k-1\leq v\leq k).
 \]
-Duality therefore gives \(\|F(z)\|\leq K e^{c(|\operatorname{Im}z|+1)}\). The function \(F\) is norm entire by [AS2](OA-FLOW-AS.md#oa-flow.as.2), satisfies \(F(t)=\alpha_t(y)\), and \(F(ik)=A(ik)\) for all integers \(k\).
+Also \(F(in)=a_n=A(in)\) for every positive integer \(n\).
 
-For every \(e\), the scalar function \(\langle F(z)-A(z),e\rangle\) satisfies ([AS3](OA-FLOW-AS.md#equation-as3)), with possibly a larger constant \(K\). [AS1](OA-FLOW-AS.md#oa-flow.as.1)'s half-plane zero proof shows that it is zero. Thus \(F=A\), proving ([AS11](OA-FLOW-AS.md#equation-as11)) on all exponential elements. By [AS3](OA-FLOW-AS.md#oa-flow.as.3) those elements are weak-star dense in \(Y\), and the individual maps \(\alpha_t,\gamma_t\) are weak-star continuous. This proves ([AS11](OA-FLOW-AS.md#equation-as11)) for every \(y\).
+Fix \(e\in E\). The scalar function
+\[
+ g_e(z)=e^{icz}\langle F(z)-A(z),e\rangle
+ \qquad(\operatorname{Im}z>0)
+\]
+is holomorphic and bounded by \(K(e^c+1)\|e\|\). It vanishes at every \(in\), \(n\geq1\). AS1's bounded-half-plane zero theorem therefore makes \(g_e=0\). Continuity to the real boundary gives
+\(\langle\alpha_t(y)-\gamma_t(y),e\rangle=0\) for every \(e\), proving AS11 on exponential elements. The contractive weak-star approximation in AS3 and continuity of the two real maps extend it to all \(Y\).
 
-The theorem uses a bounded continuation separately for each entire element and each of its imaginary translates. It does not assume, or claim to prove, a general closed analytic-generator calculus. That narrower statement is sufficient for the modular and cocycle applications.
+Only the continuations of the positive imaginary translates \(A(ik)\) were used. No negative-half-plane construction, global entire extension of the competing orbit, or closed analytic-generator calculus is required.

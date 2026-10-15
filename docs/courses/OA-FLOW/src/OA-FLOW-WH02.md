@@ -1,6 +1,6 @@
 # Faithful normal GNS representations and their topologies
 
-Original OA-FLOW proof candidate, written for the authorized course publisher. This file proves the exact representation result below at explicitly named earlier programme inputs. Its P514 selection status is recorded separately; a source citation does not discharge an input.
+Faithful normal representations preserve the von Neumann algebra structure and its intrinsic operator topologies. For the GNS representation of a faithful normal semifinite weight, finite-domain cutoffs establish faithfulness even when the identity has infinite weight.
 
 All Hilbert spaces and directed sets are arbitrary. Inner products are linear in the first variable. The zero algebra and zero Hilbert space are allowed. No faithful state, cyclic vector, separability or sigma-finiteness assumption is used.
 
@@ -14,10 +14,10 @@ We use the following results, at precisely these scopes.
 2. **[NF-6](OA-FLOW-NF.md#oa-flow.nf.6):** a positive complex-linear map between arbitrary concrete von Neumann algebras preserves bounded increasing positive suprema exactly when it is ultraweakly continuous. This is the complete earlier finite-functional/positive-map proof; it does not import an extended-valued weight characterization. Ultraweak continuity of the inverse is also supplied by the earlier ST-2 compact-ball linear criterion.
 3. **[WF-2, (WF5)](OA-FLOW-WF.md#oa-flow.wf.2) and [BD, (BD7)](OA-FLOW-BD.md#oa-flow.bd.5):** bounded increasing positive nets have strong suprema and converge ultraweakly to them. Bounded strong convergence implies ultraweak convergence. Both actual earlier proofs allow arbitrary Hilbert spaces and nets.
 4. **[BD-4–5](OA-FLOW-BD.md#oa-flow.bd.4):** the unit ball of a concrete C\*-algebra is strongly dense in the unit ball of its generated von Neumann algebra, on an arbitrary Hilbert space. For the possibly nonunital representation below, apply this on the identity corner. The separate bounded-net-algebra theorem 7.2 in that source section is not an input.
-5. **[ST-1](OA-FLOW-ST12.md#oa-flow.st.1):** the norm ball of a Banach dual is weak-star compact. This replaces the external label OA-MOD-OPEN-CONVEX-ALAOGLU by an actual earlier programme proof. The earlier [CF Section 4](OA-FLOW-CF.md#OA-FLOW.CF.4) proves product compactness using ultrafilters; the exact source ranges and hashes are in the manifest. The proof is for arbitrary normed spaces, and its separable metrizability corollary is not used.
+5. **[ST-1](OA-FLOW-ST12.md#oa-flow.st.1):** the norm ball of a Banach dual is weak-star compact. [CF Section 4](OA-FLOW-CF.md#OA-FLOW.CF.4) supplies the product compactness argument using ultrafilters. These proofs allow arbitrary normed spaces.
 6. **[CF Sections 6–7](OA-FLOW-CF.md#OA-FLOW.CF.6) and [GNS Section 3](OA-FLOW-GNS.md#gns-local-units):** bounded continuous functional calculus, the C\*-identity, contractivity of \*-homomorphisms, positivity and the calculus in a possibly nonunital corner. [GW-4](OA-FLOW-GW.md#oa-flow.gw.4) proves inverse order directly, and [SB-1–SB-6](OA-FLOW-SF.md#OA-FLOW.SF.SB1) proves the support cutoffs. These are the bounded calculus results used below, including preservation of continuous functional calculus by a \*-homomorphism.
 
-These inputs do not include the faithful-normal-image theorem being proved here. In particular, no use is made of normality of the inverse before its domain has been shown to be a von Neumann algebra. The image-closure step uses the actual earlier compact-ball and contraction-density proofs; NF-6 supplies the full positive-map normality equivalence from the complete finite-functional argument, without an extended-valued NW premise.
+The image-closure argument below uses compact balls and bounded contraction density. After the image has been identified as a von Neumann algebra, the ST-2 compact-ball criterion supplies the inverse topology.
 
 <a id="oa-flow.wh02.2"></a>
 
@@ -80,12 +80,12 @@ If $\pi_\varphi(x)=0$, then
 $$0=\|\pi_\varphi(x)\Lambda_\varphi(e_b)\|^2
 =\varphi((xe_b)^*(xe_b)).$$
 
-Faithfulness of the weight gives $xe_b=0$ for all $b$, and strong convergence of the cutoffs gives $x=0$. Therefore $\pi_\varphi$ is faithful and unital, and FLOW-WH02-02 applies with $p=I$. This is the arbitrary-weight conclusion used by the Haagerup lessons. $\square$
+Faithfulness of the weight gives $xe_b=0$ for all $b$, and strong convergence of the cutoffs gives $x=0$. Therefore $\pi_\varphi$ is faithful and unital, and [FLOW-WH02-02](#oa-flow.wh02.2) applies with $p=I$. This proves the representation and topology assertions for arbitrary faithful normal semifinite weights. $\square$
 
 <a id="oa-flow.wh02.4"></a>
 
-## FLOW-WH02-04 — Scope and publication status
+## FLOW-WH02-04 — Further reading and scope
 
-This proof contains the image-closure and topology-transport arguments, rather than replacing them by a reference to a free exposition. Edward Boey's freely readable thesis [*On the Modular Theory of von Neumann Algebras*](https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/245c2a41-48ee-4c8d-ad38-95a8353dc3d1/content), Proposition 3.6, printed p.19 (PDF p.25), is comparison evidence for the GNS scope; its Theorem 3.5 on that page is stated without proof and is not a proof dependency of this note.
+Edward Boey's freely readable thesis [*On the Modular Theory of von Neumann Algebras*](https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/245c2a41-48ee-4c8d-ad38-95a8353dc3d1/content), Proposition 3.6, printed p.19 (PDF p.25), discusses normality and faithfulness of weight GNS representations. The image-closure and topology-transport arguments are proved in FLOW-WH02-02 above.
 
-The compactness, density, bounded calculus and topology branches use the exact earlier CP-01–06, CF, BD and ST-1–2 proofs. The general positive-map order-to-topology equivalence now has the complete earlier NF-6 proof, and the arbitrary-weight finite ideals/GNS, cutoffs, faithfulness and normal representation use GW-1–5 and NF-5. The earlier [extended-valued normality equivalence](OA-FLOW-EW.md#ew-5) covers every weight. The earlier [finite-star closability](OA-FLOW-WR.md#wr-3), [fullness](OA-FLOW-WR.md#wr-4), [reverse correspondence](OA-FLOW-WR.md#wr-5) and [canonical opposite finite-cone](OA-FLOW-WR.md#wr-6) proofs cover faithful n.s.f. weights; none is a premise of the representation theorem proved here.
+The finite ideals, GNS construction and cutoff arguments use [GW-1–5](OA-FLOW-GW.md#oa-flow.gw.1), while [NF-5](OA-FLOW-NF.md#oa-flow.nf.5) proves normality of the representation. The [extended-valued normality equivalence](OA-FLOW-EW.md#ew-5) applies to every weight. For faithful normal semifinite weights, [WR-3](OA-FLOW-WR.md#wr-3) proves finite-star closability, [WR-4](OA-FLOW-WR.md#wr-4) proves fullness, [WR-5](OA-FLOW-WR.md#wr-5) proves the reverse correspondence, and [WR-6](OA-FLOW-WR.md#wr-6) constructs the canonical opposite finite cone.

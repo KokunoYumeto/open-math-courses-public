@@ -205,7 +205,7 @@ H_0=\overline{\theta(I)}=\overline{\mathcal B}\subseteq EH.
 \]
 The subspace \(H_0\) reduces \(Q\) by the module identity, and the unitary identifies its GNS representation with the restriction of \(Q\) to \(H_0\). This restriction is faithful: if \(b\in Q\) vanishes on \(H_0\), then \(\theta(ba)=b\theta(a)=0\) for every \(a\in I\), so \(ba=0\); taking the positive contractions of [NO-3](OA-FLOW-NO.md#no-3) gives \(b=0\). It is normal because restriction to a reducing subspace pulls back each concrete vector-series functional. [ST-2](OA-FLOW-ST12.md#oa-flow.st.2) therefore applies to this representation if its image topology is needed.
 
-If the original weight is faithful and semifinite, then \(e=1\), [WR](OA-FLOW-WR.md#oa-flow.wr.4) identifies the whole right-bounded space with the present \(\mathcal B\), and [HA-R](OA-FLOW-HA-R.md#oa-flow.ha-r.5) proves its density. In that case \(H_0=H\) and (NO8) is exactly [WR](OA-FLOW-WR.md#oa-flow.wr.4)'s canonical opposite weight, so [MW](OA-FLOW-MW.md#oa-flow.mw.2)'s modular-\(J\) formula applies. For a merely normal weight, neither \(H_0=H\) nor a finite-star involution on the whole original GNS space is inferred.
+If the original weight is faithful and semifinite, then \(e=1\), [WR](OA-FLOW-WR.md#oa-flow.wr.4) identifies the whole right-bounded space with the present \(\mathcal B\), and [HA-R](OA-FLOW-HA-R.md#oa-flow.ha-r.5) proves its density. In that case \(H_0=H\) and (NO8) is exactly [WR-6](OA-FLOW-WR.md#oa-flow.wr.6)'s canonical opposite weight, so [MW](OA-FLOW-MW.md#oa-flow.mw.2)'s modular-\(J\) formula applies. For a merely normal weight, neither \(H_0=H\) nor a finite-star involution on the whole original GNS space is inferred.
 
 <a id="oa-flow.no.7"></a><a id="no-7"></a>
 
