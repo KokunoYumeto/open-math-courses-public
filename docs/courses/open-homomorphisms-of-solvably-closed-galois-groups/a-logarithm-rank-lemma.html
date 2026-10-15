@@ -1,0 +1,213 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A logarithm rank lemma</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Open homomorphisms of solvably closed Galois groups)</a><a href="counting-irreducible-components.html">Previous lesson</a><a href="additive-characters-and-frobenius-detection.html">Next lesson</a><a href="src/a-logarithm-rank-lemma.md">Editable source</a></nav><main><article><h1 id="a-logarithm-rank-lemma">A logarithm rank lemma</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The next lesson shows that an additive <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic character of the absolute Galois group of a number field is determined by its values at Frobenius elements of infinitely many primes of degree one. Through class field theory, this comes down to one statement about <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic logarithms of algebraic numbers: logarithms of enough points of a torus whose coordinates are multiplicatively independent span the whole space. This lesson proves that statement with an interpolation determinant: a determinant of values of exponential functions that is an algebraic integer, very small <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adically, and not too large at the archimedean places, which the product formula forbids. The zero estimate that makes the determinant nonzero is the component bound of <a href="counting-irreducible-components.html">Counting irreducible components</a>. The statement is a special case of the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic rank theorem of Waldschmidt and Masser, treated in [Dasgupta 2023, Section 5]; the determinant method is Laurent's [Laurent 1991].</p>
+<ul>
+<li><span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic logarithms and exponentials (Section 1).</li>
+<li>The statement (Section 2).</li>
+<li>Zariski density of cyclic subgroups (Section 3).</li>
+<li>The zero estimate (Section 4).</li>
+<li>The interpolation determinant (Section 5).</li>
+</ul>
+<h2 id="1-ell--adic-logarithms-and-exponentials">1. <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic logarithms and exponentials</h2>
+<p>Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be a prime and <span class="math" data-tex="\(K\)">\(K\)</span> a finite extension of <span class="math" data-tex="\(\mathbb Q_\ell\)">\(\mathbb Q_\ell\)</span>, with ring of integers <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, maximal ideal <span class="math" data-tex="\(\mathfrak m_K\)">\(\mathfrak m_K\)</span>, and absolute value normalized by <span class="math" data-tex="\(|\ell|=\ell^{-1}\)">\(|\ell|=\ell^{-1}\)</span>. The logarithm series <span class="math" data-tex="\(\log(1+x)\)">\(\log(1+x)\)</span> converges on the principal units <span class="math" data-tex="\(U^1=1+\mathfrak m_K\)">\(U^1=1+\mathfrak m_K\)</span>, and the exponential series converges for <span class="math" data-tex="\(|z|&lt;\ell^{-1/(\ell-1)}\)">\(|z|&lt;\ell^{-1/(\ell-1)}\)</span>; on a sufficiently deep subgroup <span class="math" data-tex="\(U^{r_0}=1+\mathfrak m_K^{r_0}\)">\(U^{r_0}=1+\mathfrak m_K^{r_0}\)</span> and the corresponding ideal <span class="math" data-tex="\(\mathfrak m_K^{r_0}\)">\(\mathfrak m_K^{r_0}\)</span> they are inverse isomorphisms of topological groups (Proposition 2.1 of <a href="../NT-LOC/NT-LOC-11.html">The multiplicative group of a local field</a>). Every unit is a root of unity of order prime to <span class="math" data-tex="\(\ell\)">\(\ell\)</span> times a principal unit, and we define
+<span class="math math-display" data-tex="\[
+\log\colon\mathcal O_K^\times\longrightarrow K
+\]">\[
+\log\colon\mathcal O_K^\times\longrightarrow K
+\]</span>
+as the logarithm of the principal-unit factor; this is the restriction of the homomorphism <span class="math" data-tex="\(\operatorname{Log}_K\)">\(\operatorname{Log}_K\)</span> of Proposition 5.1 of that lesson. It is a continuous homomorphism, and its kernel is the group of roots of unity in <span class="math" data-tex="\(K\)">\(K\)</span>: if <span class="math" data-tex="\(\log u=0\)">\(\log u=0\)</span>, then <span class="math" data-tex="\(u^{N}\in U^{r_0}\)">\(u^{N}\in U^{r_0}\)</span> for a suitable <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, since <span class="math" data-tex="\(\mathcal O_K^\times/U^{r_0}\)">\(\mathcal O_K^\times/U^{r_0}\)</span> is finite, and <span class="math" data-tex="\(\log u^N=0\)">\(\log u^N=0\)</span> forces <span class="math" data-tex="\(u^N=1\)">\(u^N=1\)</span> by injectivity on <span class="math" data-tex="\(U^{r_0}\)">\(U^{r_0}\)</span>. Logarithms of points of <span class="math" data-tex="\((\mathcal O_K^\times)^n\)">\((\mathcal O_K^\times)^n\)</span> are taken coordinatewise.</p>
+<p><strong>Lemma 1.1.</strong> For integers <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>, <span class="math" data-tex="\(|k!|^{-1}\le\ell^{k/(\ell-1)}\)">\(|k!|^{-1}\le\ell^{k/(\ell-1)}\)</span>.</p>
+<p><em>Proof.</em> Legendre's formula gives <span class="math" data-tex="\(v_\ell(k!)=\sum_{i\ge1}\lfloor k/\ell^i\rfloor\)">\(v_\ell(k!)=\sum_{i\ge1}\lfloor k/\ell^i\rfloor\)</span>, and <span class="math" data-tex="\(\sum_{i\ge1}\lfloor k/\ell^i\rfloor\le\sum_{i\ge1}k/\ell^i=k/(\ell-1)\)">\(\sum_{i\ge1}\lfloor k/\ell^i\rfloor\le\sum_{i\ge1}k/\ell^i=k/(\ell-1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-statement">2. The statement</h2>
+<p>Numbers <span class="math" data-tex="\(c_1,\ldots,c_n\)">\(c_1,\ldots,c_n\)</span> in a field are <em>multiplicatively independent modulo roots of unity</em> if <span class="math" data-tex="\(\prod_jc_j^{\gamma_j}\)">\(\prod_jc_j^{\gamma_j}\)</span> is a root of unity only for <span class="math" data-tex="\(\gamma=0\in\mathbb Z^n\)">\(\gamma=0\in\mathbb Z^n\)</span>. For points <span class="math" data-tex="\(u_1,\ldots,u_m\in(E^\times)^n\)">\(u_1,\ldots,u_m\in(E^\times)^n\)</span> and <span class="math" data-tex="\(a\in\mathbb Z^m\)">\(a\in\mathbb Z^m\)</span> write <span class="math" data-tex="\(u^a=\prod_iu_i^{a_i}\)">\(u^a=\prod_iu_i^{a_i}\)</span>, coordinatewise.</p>
+<p><strong>Theorem 2.1</strong> (logarithm rank; [OpenAI-UC, Lemma 3.1]). Let <span class="math" data-tex="\(n,m\ge1\)">\(n,m\ge1\)</span>, let <span class="math" data-tex="\(E\)">\(E\)</span> be a number field contained in a finite extension <span class="math" data-tex="\(K/\mathbb Q_\ell\)">\(K/\mathbb Q_\ell\)</span>, and let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_i=(u_{i1},\ldots,u_{in})\in(E^\times)^n,\\
+1\le i\le m,
+\end{gathered}
+\]">\[
+\begin{gathered}
+u_i=(u_{i1},\ldots,u_{in})\in(E^\times)^n,\\
+1\le i\le m,
+\end{gathered}
+\]</span>
+have coordinates that are algebraic integers and units of <span class="math" data-tex="\(K\)">\(K\)</span>. Suppose that for every <span class="math" data-tex="\(a\in\mathbb Z^m\setminus\{0\}\)">\(a\in\mathbb Z^m\setminus\{0\}\)</span> the coordinates of <span class="math" data-tex="\(u^a\)">\(u^a\)</span> are multiplicatively independent modulo roots of unity. If <span class="math" data-tex="\(m&gt;n(n-1)\)">\(m&gt;n(n-1)\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{span}_K\{\log u_1,\ldots,\log u_m\}=K^n .
+\]">\[
+\operatorname{span}_K\{\log u_1,\ldots,\log u_m\}=K^n .
+\]</span></p>
+<p>The hypothesis concerns every nonzero <span class="math" data-tex="\(a\)">\(a\)</span>, not only the points <span class="math" data-tex="\(u_i\)">\(u_i\)</span> themselves; for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> it says that <span class="math" data-tex="\(u_{11},\ldots,u_{m1}\)">\(u_{11},\ldots,u_{m1}\)</span> are multiplicatively independent modulo roots of unity (Exercise 7.2). For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> and <span class="math" data-tex="\(m=3\)">\(m=3\)</span> the theorem is an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic form of the six exponentials theorem.</p>
+<h2 id="3-zariski-density-of-cyclic-subgroups">3. Zariski density of cyclic subgroups</h2>
+<p>Let <span class="math" data-tex="\(\overline E\)">\(\overline E\)</span> be an algebraic closure of <span class="math" data-tex="\(E\)">\(E\)</span>. We use the Zariski topology of the torus <span class="math" data-tex="\(\mathbb G_m^n(\overline E)\)">\(\mathbb G_m^n(\overline E)\)</span> as in Section 1 of <a href="counting-irreducible-components.html">Counting irreducible components</a>.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(c\in(\overline E^\times)^n\)">\(c\in(\overline E^\times)^n\)</span> have coordinates multiplicatively independent modulo roots of unity. Then <span class="math" data-tex="\(\{c^t:t\ge0\}\)">\(\{c^t:t\ge0\}\)</span> is Zariski dense in <span class="math" data-tex="\(\mathbb G_m^n(\overline E)\)">\(\mathbb G_m^n(\overline E)\)</span>. Consequently, if <span class="math" data-tex="\(V\subseteq\mathbb G_m^n(\overline E)\)">\(V\subseteq\mathbb G_m^n(\overline E)\)</span> is closed, nonempty and satisfies <span class="math" data-tex="\(cV\subseteq V\)">\(cV\subseteq V\)</span>, then <span class="math" data-tex="\(V=\mathbb G_m^n(\overline E)\)">\(V=\mathbb G_m^n(\overline E)\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(Q=\sum_{\alpha\in\mathcal A}q_\alpha x^\alpha\)">\(Q=\sum_{\alpha\in\mathcal A}q_\alpha x^\alpha\)</span> be a polynomial, with <span class="math" data-tex="\(\mathcal A\subset\mathbb Z_{\ge0}^n\)">\(\mathcal A\subset\mathbb Z_{\ge0}^n\)</span> finite, vanishing at all <span class="math" data-tex="\(c^t\)">\(c^t\)</span>. The numbers <span class="math" data-tex="\(\lambda_\alpha=c^\alpha\)">\(\lambda_\alpha=c^\alpha\)</span> are pairwise distinct: <span class="math" data-tex="\(c^\alpha=c^\beta\)">\(c^\alpha=c^\beta\)</span> means <span class="math" data-tex="\(c^{\alpha-\beta}=1\)">\(c^{\alpha-\beta}=1\)</span>, so <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>. The equations <span class="math" data-tex="\(\sum_\alpha q_\alpha\lambda_\alpha^t=0\)">\(\sum_\alpha q_\alpha\lambda_\alpha^t=0\)</span> for <span class="math" data-tex="\(0\le t&lt;|\mathcal A|\)">\(0\le t&lt;|\mathcal A|\)</span> have an invertible Vandermonde matrix, so <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>. A closed set containing all <span class="math" data-tex="\(c^t\)">\(c^t\)</span> is cut out by polynomials vanishing at all <span class="math" data-tex="\(c^t\)">\(c^t\)</span>, hence by <span class="math" data-tex="\(0\)">\(0\)</span>. For the second claim, take <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span>. Then <span class="math" data-tex="\(c^tx\in V\)">\(c^tx\in V\)</span> for all <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, and multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> is a homeomorphism of the torus, so <span class="math" data-tex="\(V\)">\(V\)</span> contains the closure <span class="math" data-tex="\(x\cdot\mathbb G_m^n=\mathbb G_m^n\)">\(x\cdot\mathbb G_m^n=\mathbb G_m^n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-zero-estimate">4. The zero estimate</h2>
+<p>Fix <span class="math" data-tex="\(n,m,E,K\)">\(n,m,E,K\)</span> and <span class="math" data-tex="\(u_1,\ldots,u_m\)">\(u_1,\ldots,u_m\)</span> as in Theorem 2.1. For integers <span class="math" data-tex="\(D,S\ge1\)">\(D,S\ge1\)</span> let <span class="math" data-tex="\(\mathcal M_{D,S}\)">\(\mathcal M_{D,S}\)</span> be the matrix with rows indexed by <span class="math" data-tex="\(\alpha\in\{0,\ldots,D\}^n\)">\(\alpha\in\{0,\ldots,D\}^n\)</span>, columns indexed by <span class="math" data-tex="\(a\in\{0,\ldots,nS\}^m\)">\(a\in\{0,\ldots,nS\}^m\)</span>, and entries
+<span class="math math-display" data-tex="\[
+(u^a)^\alpha=\prod_{j=1}^n\Bigl(\prod_{i=1}^mu_{ij}^{a_i}\Bigr)^{\alpha_j}\in E .
+\]">\[
+(u^a)^\alpha=\prod_{j=1}^n\Bigl(\prod_{i=1}^mu_{ij}^{a_i}\Bigr)^{\alpha_j}\in E .
+\]</span></p>
+<p><strong>Proposition 4.1.</strong> If <span class="math" data-tex="\((S+1)^m&gt;(nD)^n\)">\((S+1)^m&gt;(nD)^n\)</span>, then <span class="math" data-tex="\(\mathcal M_{D,S}\)">\(\mathcal M_{D,S}\)</span> has rank <span class="math" data-tex="\((D+1)^n\)">\((D+1)^n\)</span>, the number of its rows.</p>
+<p><em>Proof.</em> Otherwise the rows are linearly dependent over <span class="math" data-tex="\(E\)">\(E\)</span>: there is a nonzero polynomial <span class="math" data-tex="\(P=\sum_\alpha p_\alpha x^\alpha\)">\(P=\sum_\alpha p_\alpha x^\alpha\)</span> of degree at most <span class="math" data-tex="\(D\)">\(D\)</span> in each variable with <span class="math" data-tex="\(P(u^a)=0\)">\(P(u^a)=0\)</span> for all <span class="math" data-tex="\(a\in\{0,\ldots,nS\}^m\)">\(a\in\{0,\ldots,nS\}^m\)</span>. For <span class="math" data-tex="\(0\le j\le n\)">\(0\le j\le n\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z_j=\{&amp;x\in\mathbb G_m^n(\overline E):P(u^ax)=0\\
+&amp;\text{for all }a\in\{0,\ldots,jS\}^m\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+Z_j=\{&amp;x\in\mathbb G_m^n(\overline E):P(u^ax)=0\\
+&amp;\text{for all }a\in\{0,\ldots,jS\}^m\}.
+\end{aligned}
+\]</span>
+Each <span class="math" data-tex="\(x\mapsto P(u^ax)\)">\(x\mapsto P(u^ax)\)</span> is a polynomial of total degree at most <span class="math" data-tex="\(nD\)">\(nD\)</span>, so <span class="math" data-tex="\(Z_j\)">\(Z_j\)</span> is closed, and <span class="math" data-tex="\(Z_0\supseteq Z_1\supseteq\cdots\supseteq Z_n\ni1\)">\(Z_0\supseteq Z_1\supseteq\cdots\supseteq Z_n\ni1\)</span>. Since <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> and the torus is irreducible of dimension <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(\dim Z_0\le n-1\)">\(\dim Z_0\le n-1\)</span>. The <span class="math" data-tex="\(n+1\)">\(n+1\)</span> dimensions <span class="math" data-tex="\(\dim Z_0\ge\cdots\ge\dim Z_n\)">\(\dim Z_0\ge\cdots\ge\dim Z_n\)</span> lie in <span class="math" data-tex="\(\{0,\ldots,n-1\}\)">\(\{0,\ldots,n-1\}\)</span>, so <span class="math" data-tex="\(\dim Z_j=\dim Z_{j+1}=:d\)">\(\dim Z_j=\dim Z_{j+1}=:d\)</span> for some <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span>.</p>
+<p>Let <span class="math" data-tex="\(V\)">\(V\)</span> be an irreducible component of <span class="math" data-tex="\(Z_{j+1}\)">\(Z_{j+1}\)</span> of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and let <span class="math" data-tex="\(b\in\{0,\ldots,S\}^m\)">\(b\in\{0,\ldots,S\}^m\)</span>. For <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span> and <span class="math" data-tex="\(a\in\{0,\ldots,jS\}^m\)">\(a\in\{0,\ldots,jS\}^m\)</span>, we have <span class="math" data-tex="\(a+b\in\{0,\ldots,(j+1)S\}^m\)">\(a+b\in\{0,\ldots,(j+1)S\}^m\)</span>, so <span class="math" data-tex="\(P(u^au^bx)=P(u^{a+b}x)=0\)">\(P(u^au^bx)=P(u^{a+b}x)=0\)</span>. Thus <span class="math" data-tex="\(u^bV\subseteq Z_j\)">\(u^bV\subseteq Z_j\)</span>. Translation by <span class="math" data-tex="\(u^b\)">\(u^b\)</span> is a homeomorphism of the torus, so <span class="math" data-tex="\(u^bV\)">\(u^bV\)</span> is irreducible, closed and of dimension <span class="math" data-tex="\(d\)">\(d\)</span>. It lies in a component <span class="math" data-tex="\(C\)">\(C\)</span> of <span class="math" data-tex="\(Z_j\)">\(Z_j\)</span>, of dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>; a proper closed subset of <span class="math" data-tex="\(C\)">\(C\)</span> would have smaller dimension, so <span class="math" data-tex="\(u^bV=C\)">\(u^bV=C\)</span> is a component of <span class="math" data-tex="\(Z_j\)">\(Z_j\)</span>.</p>
+<p>These <span class="math" data-tex="\((S+1)^m\)">\((S+1)^m\)</span> translates are distinct. If <span class="math" data-tex="\(u^bV=u^{b&#x27;}V\)">\(u^bV=u^{b&#x27;}V\)</span> with <span class="math" data-tex="\(b\ne b&#x27;\)">\(b\ne b&#x27;\)</span>, then <span class="math" data-tex="\(c=u^{b-b&#x27;}\)">\(c=u^{b-b&#x27;}\)</span> satisfies <span class="math" data-tex="\(cV=V\)">\(cV=V\)</span>, and the coordinates of <span class="math" data-tex="\(c\)">\(c\)</span> are multiplicatively independent modulo roots of unity by hypothesis. Lemma 3.1 would give <span class="math" data-tex="\(V=\mathbb G_m^n\)">\(V=\mathbb G_m^n\)</span>, contrary to <span class="math" data-tex="\(V\subseteq Z_0\)">\(V\subseteq Z_0\)</span>. So <span class="math" data-tex="\(Z_j\)">\(Z_j\)</span> has at least <span class="math" data-tex="\((S+1)^m&gt;(nD)^n\)">\((S+1)^m&gt;(nD)^n\)</span> irreducible components, while Theorem 5.2 of the counting lesson, applied over <span class="math" data-tex="\(\overline E\)">\(\overline E\)</span> with <span class="math" data-tex="\(\delta=nD\)">\(\delta=nD\)</span>, allows at most <span class="math" data-tex="\((nD)^n\)">\((nD)^n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-interpolation-determinant">5. The interpolation determinant</h2>
+<p><em>Proof of Theorem 2.1.</em> Suppose that the logarithms span a subspace of dimension <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(r=0\)">\(r=0\)</span>.</em> Then <span class="math" data-tex="\(\log u_{1j}=0\)">\(\log u_{1j}=0\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>, so every coordinate of <span class="math" data-tex="\(u_1=u^{e_1}\)">\(u_1=u^{e_1}\)</span> is a root of unity, contrary to the hypothesis with <span class="math" data-tex="\(a=e_1\)">\(a=e_1\)</span>. Hence <span class="math" data-tex="\(1\le r&lt;n\)">\(1\le r&lt;n\)</span>.</p>
+<p><em>Normalization.</em> Replacing every <span class="math" data-tex="\(u_i\)">\(u_i\)</span> by <span class="math" data-tex="\(u_i^N\)">\(u_i^N\)</span> for a common integer <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> preserves the hypotheses, since <span class="math" data-tex="\((u^N)^a=u^{Na}\)">\((u^N)^a=u^{Na}\)</span> and <span class="math" data-tex="\(Na\ne0\)">\(Na\ne0\)</span>, and does not change the span of the logarithms. Choose <span class="math" data-tex="\(N\)">\(N\)</span> so that every coordinate lies in <span class="math" data-tex="\(U^{r_0}\)">\(U^{r_0}\)</span>, where exponential and logarithm are inverse. The <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>-module generated by <span class="math" data-tex="\(\log u_1,\ldots,\log u_m\)">\(\log u_1,\ldots,\log u_m\)</span> is finitely generated and torsion-free over the principal ideal domain <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, hence free, of rank <span class="math" data-tex="\(r\)">\(r\)</span> since it spans an <span class="math" data-tex="\(r\)">\(r\)</span>-dimensional space; choose a basis <span class="math" data-tex="\(b_1,\ldots,b_r\in K^n\)">\(b_1,\ldots,b_r\in K^n\)</span>. A further common power <span class="math" data-tex="\(\ell^s\)">\(\ell^s\)</span> multiplies the logarithms and the basis by <span class="math" data-tex="\(\ell^s\)">\(\ell^s\)</span>, so we may assume that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho=\max_{t,j}|b_{t,j}|\quad\text{satisfies}\\
+\eta=\rho\,\ell^{1/(\ell-1)}&lt;1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\rho=\max_{t,j}|b_{t,j}|\quad\text{satisfies}\\
+\eta=\rho\,\ell^{1/(\ell-1)}&lt;1 .
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(\log u_i=\sum_{t=1}^rz_{i,t}b_t\)">\(\log u_i=\sum_{t=1}^rz_{i,t}b_t\)</span> with <span class="math" data-tex="\(z_i=(z_{i,1},\ldots,z_{i,r})\in\mathcal O_K^r\)">\(z_i=(z_{i,1},\ldots,z_{i,r})\in\mathcal O_K^r\)</span>. From now on the points, <span class="math" data-tex="\(E\)">\(E\)</span>, <span class="math" data-tex="\(K\)">\(K\)</span>, the basis and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> are fixed.</p>
+<p><em>Exponential functions.</em> For <span class="math" data-tex="\(\alpha\in\mathbb Z_{\ge0}^n\)">\(\alpha\in\mathbb Z_{\ge0}^n\)</span> and <span class="math" data-tex="\(z\in\mathcal O_K^r\)">\(z\in\mathcal O_K^r\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_\alpha(z)=\exp\Bigl(\sum_{t=1}^r\beta_{\alpha,t}z_t\Bigr),\\
+\beta_{\alpha,t}=\sum_{j=1}^n\alpha_jb_{t,j}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+f_\alpha(z)=\exp\Bigl(\sum_{t=1}^r\beta_{\alpha,t}z_t\Bigr),\\
+\beta_{\alpha,t}=\sum_{j=1}^n\alpha_jb_{t,j}.
+\end{gathered}
+\]</span>
+The argument has absolute value at most <span class="math" data-tex="\(\rho&lt;\ell^{-1/(\ell-1)}\)">\(\rho&lt;\ell^{-1/(\ell-1)}\)</span>, so the series converges. Expanding, <span class="math" data-tex="\(f_\alpha(z)=\sum_{\nu\in\mathbb Z_{\ge0}^r}c_{\alpha,\nu}z^\nu\)">\(f_\alpha(z)=\sum_{\nu\in\mathbb Z_{\ge0}^r}c_{\alpha,\nu}z^\nu\)</span> with <span class="math" data-tex="\(c_{\alpha,\nu}=\beta_\alpha^\nu/\nu!\)">\(c_{\alpha,\nu}=\beta_\alpha^\nu/\nu!\)</span>, and Lemma 1.1 gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|c_{\alpha,\nu}|\le\eta^{|\nu|},\\
+|\nu|=\nu_1+\cdots+\nu_r,
+\end{gathered}\tag{5.1}
+\]">\[
+\begin{gathered}
+|c_{\alpha,\nu}|\le\eta^{|\nu|},\\
+|\nu|=\nu_1+\cdots+\nu_r,
+\end{gathered}\tag{5.1}
+\]</span>
+uniformly in <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, since integers have absolute value at most <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(a\in\mathbb Z_{\ge0}^m\)">\(a\in\mathbb Z_{\ge0}^m\)</span> put <span class="math" data-tex="\(z(a)=\sum_ia_iz_i\in\mathcal O_K^r\)">\(z(a)=\sum_ia_iz_i\in\mathcal O_K^r\)</span>. Then <span class="math" data-tex="\(\sum_t\beta_{\alpha,t}z(a)_t=\sum_j\alpha_j\log\bigl((u^a)_j\bigr)\)">\(\sum_t\beta_{\alpha,t}z(a)_t=\sum_j\alpha_j\log\bigl((u^a)_j\bigr)\)</span>, which lies in <span class="math" data-tex="\(\mathfrak m_K^{r_0}\)">\(\mathfrak m_K^{r_0}\)</span>, and since <span class="math" data-tex="\(\exp\)">\(\exp\)</span> is a homomorphism inverse to <span class="math" data-tex="\(\log\)">\(\log\)</span> there,
+<span class="math math-display" data-tex="\[
+f_\alpha(z(a))=(u^a)^\alpha .
+\]">\[
+f_\alpha(z(a))=(u^a)^\alpha .
+\]</span></p>
+<p><em>The determinant.</em> Let <span class="math" data-tex="\(D\ge1\)">\(D\ge1\)</span>, <span class="math" data-tex="\(A=(D+1)^n\)">\(A=(D+1)^n\)</span>, and <span class="math" data-tex="\(S=\lceil(nD)^{n/m}\rceil\)">\(S=\lceil(nD)^{n/m}\rceil\)</span>, so that <span class="math" data-tex="\((S+1)^m&gt;(nD)^n\)">\((S+1)^m&gt;(nD)^n\)</span> and <span class="math" data-tex="\(S\le(nD)^{n/m}+1\)">\(S\le(nD)^{n/m}+1\)</span>. By Proposition 4.1 choose distinct columns <span class="math" data-tex="\(a^{(1)},\ldots,a^{(A)}\)">\(a^{(1)},\ldots,a^{(A)}\)</span> of <span class="math" data-tex="\(\mathcal M_{D,S}\)">\(\mathcal M_{D,S}\)</span> with
+<span class="math math-display" data-tex="\[
+\Delta_D=\det\bigl((u^{a^{(k)}})^\alpha\bigr)_{\alpha,k}\ne0 .
+\]">\[
+\Delta_D=\det\bigl((u^{a^{(k)}})^\alpha\bigr)_{\alpha,k}\ne0 .
+\]</span>
+It is an algebraic integer of <span class="math" data-tex="\(E\)">\(E\)</span>, since its entries are.</p>
+<p><em><span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic smallness.</em> Write the rows as <span class="math" data-tex="\(f_\alpha(z(a^{(k)}))\)">\(f_\alpha(z(a^{(k)}))\)</span>. Truncate each series at <span class="math" data-tex="\(|\nu|\le T\)">\(|\nu|\le T\)</span>. By multilinearity, the truncated determinant is a finite sum over families <span class="math" data-tex="\((\nu_\alpha)_\alpha\)">\((\nu_\alpha)_\alpha\)</span> of terms <span class="math" data-tex="\(\prod_\alpha c_{\alpha,\nu_\alpha}\cdot\det\bigl(z(a^{(k)})^{\nu_\alpha}\bigr)_{\alpha,k}\)">\(\prod_\alpha c_{\alpha,\nu_\alpha}\cdot\det\bigl(z(a^{(k)})^{\nu_\alpha}\bigr)_{\alpha,k}\)</span>. A family with <span class="math" data-tex="\(\nu_\alpha=\nu_{\alpha&#x27;}\)">\(\nu_\alpha=\nu_{\alpha&#x27;}\)</span> for some <span class="math" data-tex="\(\alpha\ne\alpha&#x27;\)">\(\alpha\ne\alpha&#x27;\)</span> gives a determinant with two equal rows. For a family of <span class="math" data-tex="\(A\)">\(A\)</span> distinct multi-indices, the second factor has absolute value at most <span class="math" data-tex="\(1\)">\(1\)</span>, and by (5.1) the first is at most <span class="math" data-tex="\(\eta^{\sum_\alpha|\nu_\alpha|}\)">\(\eta^{\sum_\alpha|\nu_\alpha|}\)</span>. At most <span class="math" data-tex="\(\binom{T&#x27;+r}r\le(T&#x27;+1)^r\)">\(\binom{T&#x27;+r}r\le(T&#x27;+1)^r\)</span> multi-indices have <span class="math" data-tex="\(|\nu|\le T&#x27;\)">\(|\nu|\le T&#x27;\)</span>. With <span class="math" data-tex="\(T&#x27;+1=\lfloor(A/2)^{1/r}\rfloor\)">\(T&#x27;+1=\lfloor(A/2)^{1/r}\rfloor\)</span>, at least <span class="math" data-tex="\(A/2\)">\(A/2\)</span> of the <span class="math" data-tex="\(\nu_\alpha\)">\(\nu_\alpha\)</span> have <span class="math" data-tex="\(|\nu_\alpha|\ge\lfloor(A/2)^{1/r}\rfloor\)">\(|\nu_\alpha|\ge\lfloor(A/2)^{1/r}\rfloor\)</span>, so for <span class="math" data-tex="\(A\)">\(A\)</span> large
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_\alpha|\nu_\alpha|&amp;\ge\tfrac A2\bigl((A/2)^{1/r}-1\bigr)\\
+&amp;\ge c_rA^{1+1/r},\qquad c_r=2^{-2-1/r}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_\alpha|\nu_\alpha|&amp;\ge\tfrac A2\bigl((A/2)^{1/r}-1\bigr)\\
+&amp;\ge c_rA^{1+1/r},\qquad c_r=2^{-2-1/r}.
+\end{aligned}
+\]</span>
+By the ultrametric inequality the truncated determinant has absolute value at most <span class="math" data-tex="\(\eta^{c_rA^{1+1/r}}\)">\(\eta^{c_rA^{1+1/r}}\)</span>. As <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span> the truncated series converge to the entries, and the determinant is continuous, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\log|\Delta_D|\le-c\,A^{1+1/r},\\
+c=c_r\log(1/\eta)&gt;0,
+\end{gathered}\tag{5.2}
+\]">\[
+\begin{gathered}
+\log|\Delta_D|\le-c\,A^{1+1/r},\\
+c=c_r\log(1/\eta)&gt;0,
+\end{gathered}\tag{5.2}
+\]</span>
+for all large <span class="math" data-tex="\(D\)">\(D\)</span>. Here <span class="math" data-tex="\(\log|\cdot|\)">\(\log|\cdot|\)</span> is the real logarithm of the absolute value of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><em>Archimedean size.</em> Let <span class="math" data-tex="\(H\ge1\)">\(H\ge1\)</span> bound <span class="math" data-tex="\(|\tau(u_{ij})|\)">\(|\tau(u_{ij})|\)</span> for all embeddings <span class="math" data-tex="\(\tau\colon E\to\mathbb C\)">\(\tau\colon E\to\mathbb C\)</span> and all <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. An entry <span class="math" data-tex="\((u^a)^\alpha\)">\((u^a)^\alpha\)</span> is a product of at most <span class="math" data-tex="\(\sum_ia_i\sum_j\alpha_j\le m\,nS\cdot nD\)">\(\sum_ia_i\sum_j\alpha_j\le m\,nS\cdot nD\)</span> coordinates, so <span class="math" data-tex="\(|\tau((u^a)^\alpha)|\le H^{mn^2DS}\)">\(|\tau((u^a)^\alpha)|\le H^{mn^2DS}\)</span>. Expanding the determinant into <span class="math" data-tex="\(A!\le A^A\)">\(A!\le A^A\)</span> products,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log|\tau(\Delta_D)|&amp;\le C&#x27;ADS\\
+&amp;\quad+A\log A,\\
+C&#x27;&amp;=mn^2\log H,
+\end{aligned}\tag{5.3}
+\]">\[
+\begin{aligned}
+\log|\tau(\Delta_D)|&amp;\le C&#x27;ADS\\
+&amp;\quad+A\log A,\\
+C&#x27;&amp;=mn^2\log H,
+\end{aligned}\tag{5.3}
+\]</span>
+with <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> independent of <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><em>The product formula.</em> Let <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> be the place of <span class="math" data-tex="\(E\)">\(E\)</span> induced by <span class="math" data-tex="\(E\subset K\)">\(E\subset K\)</span>. By the product formula (Theorem 5.2 of <a href="../NT-LOC/NT-LOC-05.html">Places of number fields in extensions and the product formula</a>), written with the absolute values extending the usual ones on <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and with each complex place counted through its two embeddings,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0={}&amp;\sum_{\tau\colon E\to\mathbb C}\log|\tau(\Delta_D)|\\
+&amp;+\sum_{v\ \mathrm{finite}}[E_v:\mathbb Q_{p_v}]\log|\Delta_D|_v,
+\end{aligned}
+\]">\[
+\begin{aligned}
+0={}&amp;\sum_{\tau\colon E\to\mathbb C}\log|\tau(\Delta_D)|\\
+&amp;+\sum_{v\ \mathrm{finite}}[E_v:\mathbb Q_{p_v}]\log|\Delta_D|_v,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(p_v\)">\(p_v\)</span> is the rational prime below <span class="math" data-tex="\(v\)">\(v\)</span>. Every finite term is at most <span class="math" data-tex="\(0\)">\(0\)</span> because <span class="math" data-tex="\(\Delta_D\)">\(\Delta_D\)</span> is an algebraic integer, and the term at <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is <span class="math" data-tex="\([E_\lambda:\mathbb Q_\ell]\log|\Delta_D|\)">\([E_\lambda:\mathbb Q_\ell]\log|\Delta_D|\)</span>. With (5.2) and (5.3),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c\,[E_\lambda:\mathbb Q_\ell]\,A^{1+1/r}\\
+\le[E:\mathbb Q]\bigl(C&#x27;ADS+A\log A\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+c\,[E_\lambda:\mathbb Q_\ell]\,A^{1+1/r}\\
+\le[E:\mathbb Q]\bigl(C&#x27;ADS+A\log A\bigr).
+\end{gathered}
+\]</span>
+As <span class="math" data-tex="\(D\to\infty\)">\(D\to\infty\)</span>, the left side has order <span class="math" data-tex="\(D^{n+n/r}\)">\(D^{n+n/r}\)</span> and the right side is <span class="math" data-tex="\(O(D^{n+1+n/m}+D^n\log D)\)">\(O(D^{n+1+n/m}+D^n\log D)\)</span>. Since <span class="math" data-tex="\(r\le n-1\)">\(r\le n-1\)</span> and <span class="math" data-tex="\(m&gt;n(n-1)\)">\(m&gt;n(n-1)\)</span>,
+<span class="math math-display" data-tex="\[
+\frac nr\ge\frac n{n-1}=1+\frac1{n-1}&gt;1+\frac nm ,
+\]">\[
+\frac nr\ge\frac n{n-1}=1+\frac1{n-1}&gt;1+\frac nm ,
+\]</span>
+so the inequality fails for large <span class="math" data-tex="\(D\)">\(D\)</span>. This contradiction proves <span class="math" data-tex="\(r=n\)">\(r=n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-remarks">6. Remarks</h2>
+<p>The proof uses the hypothesis on <span class="math" data-tex="\(u^a\)">\(u^a\)</span> only through Lemma 3.1 in the zero estimate, and in the case <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. The exponent <span class="math" data-tex="\(n\)">\(n\)</span> in the component bound <span class="math" data-tex="\((nD)^n\)">\((nD)^n\)</span> produces the threshold <span class="math" data-tex="\(m&gt;n(n-1)\)">\(m&gt;n(n-1)\)</span>: the zero estimate needs <span class="math" data-tex="\(S\)">\(S\)</span> of order <span class="math" data-tex="\(D^{n/m}\)">\(D^{n/m}\)</span>, and the comparison of <span class="math" data-tex="\(D^{n+n/r}\)">\(D^{n+n/r}\)</span> with <span class="math" data-tex="\(D^{n+1+n/m}\)">\(D^{n+1+n/m}\)</span> is decided by <span class="math" data-tex="\(n/(n-1)\)">\(n/(n-1)\)</span> against <span class="math" data-tex="\(1+n/m\)">\(1+n/m\)</span>. Theorem 2.1 is a special case of the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic rank theorem of Waldschmidt and Masser for matrices of logarithms of algebraic numbers ([Dasgupta 2023, Section 5]); the threshold <span class="math" data-tex="\(m&gt;n(n-1)\)">\(m&gt;n(n-1)\)</span> is exactly the condition that its rank bound <span class="math" data-tex="\(mn/(m+n)\)">\(mn/(m+n)\)</span> exceed <span class="math" data-tex="\(n-1\)">\(n-1\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(n=2\)">\(n=2\)</span> and <span class="math" data-tex="\(u_i=(x_i,x_i)\)">\(u_i=(x_i,x_i)\)</span> with <span class="math" data-tex="\(x_i\in E\)">\(x_i\in E\)</span> units of <span class="math" data-tex="\(K\)">\(K\)</span> that are not roots of unity. Show that the logarithms span a line, and identify the hypothesis of Theorem 2.1 that fails.</p>
+<p><strong>7.2.</strong> Prove Theorem 2.1 for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> directly.</p>
+<p><strong>7.3.</strong> Show that the minimum of <span class="math" data-tex="\(\sum_{k=1}^A|\nu_k|\)">\(\sum_{k=1}^A|\nu_k|\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span> distinct <span class="math" data-tex="\(\nu_k\in\mathbb Z_{\ge0}\)">\(\nu_k\in\mathbb Z_{\ge0}\)</span> is <span class="math" data-tex="\(A(A-1)/2\)">\(A(A-1)/2\)</span>, and compare with the bound <span class="math" data-tex="\(c_1A^2\)">\(c_1A^2\)</span> of Section 5.</p>
+<p><strong>7.4.</strong> Let <span class="math" data-tex="\(m=3\)">\(m=3\)</span>, <span class="math" data-tex="\(n=2\)">\(n=2\)</span>. Show that <span class="math" data-tex="\(m&gt;n(n-1)\)">\(m&gt;n(n-1)\)</span>, and state the conclusion of Theorem 2.1 as a statement about the rank of a <span class="math" data-tex="\(3\times2\)">\(3\times2\)</span> matrix of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic logarithms.</p>
+<p><strong>7.5.</strong> Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be odd, <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, and <span class="math" data-tex="\(u\in1+\ell^k\mathbb Z_\ell\)">\(u\in1+\ell^k\mathbb Z_\ell\)</span> with <span class="math" data-tex="\(u\notin1+\ell^{k+1}\mathbb Z_\ell\)">\(u\notin1+\ell^{k+1}\mathbb Z_\ell\)</span>. Show that <span class="math" data-tex="\(v_\ell(\log u)=k\)">\(v_\ell(\log u)=k\)</span>, and deduce that replacing <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(u^{\ell^s}\)">\(u^{\ell^s}\)</span> multiplies <span class="math" data-tex="\(|\log u|\)">\(|\log u|\)</span> by <span class="math" data-tex="\(\ell^{-s}\)">\(\ell^{-s}\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(\log u_i=(\log x_i,\log x_i)\)">\(\log u_i=(\log x_i,\log x_i)\)</span> lies on the diagonal line. The coordinates of <span class="math" data-tex="\(u^a\)">\(u^a\)</span> are equal, so they are not multiplicatively independent: <span class="math" data-tex="\(c_1c_2^{-1}=1\)">\(c_1c_2^{-1}=1\)</span>.</p>
+<p><strong>7.2.</strong> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the condition <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> always holds. The span is <span class="math" data-tex="\(K\)">\(K\)</span> unless every <span class="math" data-tex="\(\log u_{i1}=0\)">\(\log u_{i1}=0\)</span>, that is, unless every <span class="math" data-tex="\(u_{i1}\)">\(u_{i1}\)</span> is a root of unity; the hypothesis with <span class="math" data-tex="\(a=e_1\)">\(a=e_1\)</span> excludes this for <span class="math" data-tex="\(u_{11}\)">\(u_{11}\)</span>.</p>
+<p><strong>7.3.</strong> The smallest possible values are <span class="math" data-tex="\(0,1,\ldots,A-1\)">\(0,1,\ldots,A-1\)</span>, with sum <span class="math" data-tex="\(A(A-1)/2\)">\(A(A-1)/2\)</span>. The bound of Section 5 with <span class="math" data-tex="\(r=1\)">\(r=1\)</span> is <span class="math" data-tex="\(c_1A^2=A^2/8\)">\(c_1A^2=A^2/8\)</span>, smaller by a constant factor, as it must be since it is derived from a cruder count.</p>
+<p><strong>7.4.</strong> <span class="math" data-tex="\(3&gt;2\)">\(3&gt;2\)</span>. The <span class="math" data-tex="\(3\times2\)">\(3\times2\)</span> matrix with rows <span class="math" data-tex="\(\log u_1,\log u_2,\log u_3\)">\(\log u_1,\log u_2,\log u_3\)</span> has rank <span class="math" data-tex="\(2\)">\(2\)</span>: its rows span <span class="math" data-tex="\(K^2\)">\(K^2\)</span>.</p>
+<p><strong>7.5.</strong> Write <span class="math" data-tex="\(u=1+x\)">\(u=1+x\)</span> with <span class="math" data-tex="\(v_\ell(x)=k\)">\(v_\ell(x)=k\)</span>. For <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>, <span class="math" data-tex="\(v_\ell(x^j/j)=jk-v_\ell(j)\)">\(v_\ell(x^j/j)=jk-v_\ell(j)\)</span>, and <span class="math" data-tex="\(v_\ell(j)\le\log_3j&lt;j-1\le(j-1)k\)">\(v_\ell(j)\le\log_3j&lt;j-1\le(j-1)k\)</span>, so <span class="math" data-tex="\(v_\ell(x^j/j)&gt;k\)">\(v_\ell(x^j/j)&gt;k\)</span>. The first term of <span class="math" data-tex="\(\log(1+x)=x-x^2/2+\cdots\)">\(\log(1+x)=x-x^2/2+\cdots\)</span> therefore determines the valuation: <span class="math" data-tex="\(v_\ell(\log u)=k\)">\(v_\ell(\log u)=k\)</span>. Since <span class="math" data-tex="\(\log\)">\(\log\)</span> is a homomorphism, <span class="math" data-tex="\(\log u^{\ell^s}=\ell^s\log u\)">\(\log u^{\ell^s}=\ell^s\log u\)</span>, whose absolute value is <span class="math" data-tex="\(\ell^{-s}|\log u|\)">\(\ell^{-s}|\log u|\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-UC] OpenAI, <em>Open Homomorphisms of Global Solvably Closed Galois Groups</em>, OpenAI Math Release preprint, 5 October 2026, Section 3.1 (Lemma 3.1). https://github.com/openai/math/tree/main/preprints/Open-Homomorphisms-of-Global-Solvably-Closed-Galois-Groups-October-5-2026</li>
+<li>[Laurent 1991] M. Laurent, <em>Sur quelques résultats récents de transcendance</em>, Astérisque 198–200 (1991), 209–230. http://www.numdam.org/item/AST_1991__198-199-200__209_0/</li>
+<li>[Dasgupta 2023] S. Dasgupta, <em>Ranks of matrices of logarithms of algebraic numbers I: the theorems of Baker and Waldschmidt–Masser</em>, Essential Number Theory 2 (2023), 93–138, Section 5. https://arxiv.org/abs/2303.02037</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
