@@ -192,7 +192,7 @@ The two \(1/2\) factors cancel inside each normalized derivative. The recovered 
 
 ## FR5. Two exercises with solutions
 
-**Exercise 1. Changing the reference.** Replace \(\varphi\) by \(c\varphi\), where \(c>0\), while keeping the target \(\Omega=\widetilde\psi\) and Haar measure fixed. Find the pulled-back cocycle, and explain why the recovered input remains \(\psi\).
+**Exercise 1. Changing the reference.** Keep the target \(\Omega=\widetilde\psi\) and Haar measure fixed. First replace \(\varphi\) by \(c\varphi\), where \(c>0\). Then compare arbitrary faithful normal semifinite references \(\varphi_0,\varphi_1\). Determine the pulled-back cocycles, their multiplication order, and why both recover the same \(\psi\).
 
 **Solution.** Positive homogeneity gives \(\widetilde{c\varphi}=c\widetilde\varphi\). BC4's chain law and BC5's scalar formula give
 
@@ -206,6 +206,58 @@ The two \(1/2\) factors cancel inside each normalized derivative. The recovered 
 \tag{FR14}
 \]
 Scalar factors commute with the displayed operators. Pullback by \(\pi^{-1}\) therefore gives precisely the second cocycle. UR uniqueness for the new reference recovers the same \(\psi\). The reference changes; the input determined by the target and Haar measure does not.
+
+**General reference change.** Let \(\varphi_0,\varphi_1\) be arbitrary faithful normal semifinite reference weights, with the target \(\Omega\) and the Haar measure fixed. Write
+\[
+ z_{j,t}=(D\Omega:D\widetilde\varphi_j)_t,\qquad
+ v_{j,t}=\pi^{-1}(z_{j,t}),\qquad
+ w_t=(D\varphi_0:D\varphi_1)_t.
+\tag{FR15}
+\]
+FR2 puts each \(z_{j,t}\) in \(\pi(M)\) and proves the required continuity. The ordered chain law [BC4](OA-FLOW-BC.md#bc-4), followed by [GDA9](OA-FLOW-GDA.md#gda-9)'s normalized comparison, gives
+\[
+ \begin{aligned}
+ z_{1,t}
+ &=z_{0,t}(D\widetilde\varphi_0:D\widetilde\varphi_1)_t
+   =z_{0,t}\pi(w_t),\\
+ v_{1,t}&=v_{0,t}w_t,\qquad
+ \sigma_t^{\varphi_0}(a)=w_t\sigma_t^{\varphi_1}(a)w_t^* .
+ \end{aligned}
+\tag{FR16}
+\]
+Thus the comparison factor multiplies on the right. Both factors are unitary and strongly* continuous, so their product is strongly* continuous by the bounded multiplication estimate in ST2. To check its cocycle law directly, use the two old cocycle laws and the last identity in (FR16):
+\[
+ \begin{aligned}
+ v_{1,t+s}
+ &=v_{0,t}\sigma_t^{\varphi_0}(v_{0,s})\,
+       w_t\sigma_t^{\varphi_1}(w_s)\\
+ &=v_{0,t}w_t\sigma_t^{\varphi_1}(v_{0,s}w_s)
+   =v_{1,t}\sigma_t^{\varphi_1}(v_{1,s}).
+ \end{aligned}
+\tag{FR17}
+\]
+If UR realizes \(v_{0,t}\) as \((D\psi:D\varphi_0)_t\), the same chain law gives
+\((D\psi:D\varphi_1)_t=v_{0,t}w_t=v_{1,t}\).
+UR's fixed-reference uniqueness therefore recovers exactly the same \(\psi\) from the second reference, with its values on the entire positive cone. This calculation applies to unbounded weights and makes no commutation, finite-state or original-action invariance assumption. For \(\varphi_1=c\varphi_0\), BC5 gives \(w_t=c^{-it}1\), recovering (FR14).
+
+The order is visible in the two-point matrix model of FR4. Keep its target \(\psi(a)=\operatorname{Tr}(Ra)\), where \(R=\begin{pmatrix}5&4\\4&5\end{pmatrix}\), and take \(\varphi_0=\operatorname{Tr}\), \(\varphi_1(a)=\operatorname{Tr}(Sa)\) with \(S=\operatorname{diag}(1,9)\). BC6 gives
+\(v_{0,t}=R^{it}\), \(w_t=S^{-it}\), and \(v_{1,t}=R^{it}S^{-it}\).
+At \(t_0=\pi/\log9\), FR4's eigenvectors of \(R\) give
+\(R^{it_0}=\begin{pmatrix}0&-1\\-1&0\end{pmatrix}\), while
+\(S^{-it_0}=\operatorname{diag}(1,-1)\). Therefore
+\[
+ v_{1,t_0}=v_{0,t_0}w_{t_0}
+       =\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+ \qquad
+ w_{t_0}v_{0,t_0}
+       =\begin{pmatrix}0&-1\\1&0\end{pmatrix}.
+\tag{FR18}
+\]
+The two orders give different matrices. In the crossed product the density of each dual reference has the same factor \(1/2\) from counting Haar measure; it cancels in the relative derivative, as in FR4. The recovered target remains \(\psi\) for both references.
+
+![Changing a reference weight multiplies the recovered cocycle on the right](../assets/dual-weight-reference-change/assets/reference-change.png)
+
+The diagram follows (FR15)–(FR18): the target \(\Omega=\widetilde\psi\) stays fixed, the reference changes from \(\varphi_0\) to \(\varphi_1\), and the cocycle becomes \(v_{0,t}w_t\). The first two panels apply to every algebra and group in FR2; the last panel is the exact \(M_2\) calculation at \(t_0=\pi/\log9\). Its matrices illustrate multiplication order, not an approximation to the general proof. [Reproduction source](../assets/dual-weight-reference-change/render_reference.py), [editable SVG](../assets/dual-weight-reference-change/assets/reference-change.svg), and [exact data](../assets/dual-weight-reference-change/assets/reference-change-data.json) are included.
 
 **Exercise 2. Why a faithful state is insufficient as a general starting point.** Let \(I\) be uncountable and \(M=\ell^\infty(I)\) act diagonally on \(\ell^2(I)\). Prove that \(\varphi(a)=\sum_{i\in I}a_i\) on the positive cone is faithful normal semifinite, but that \(M\) has no faithful state.
 

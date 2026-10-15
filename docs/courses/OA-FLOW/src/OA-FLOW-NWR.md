@@ -268,7 +268,7 @@ including an infinite value. Equal dual weights therefore have equal values at e
 
 <a id="oa-flow.nwr.7"></a>
 
-## NWR7. Three exact finite-dimensional cases
+## NWR7. Finite-dimensional cases and a sum that loses semifiniteness
 
 Take \(G=\mathbb Z/2\mathbb Z\) with counting Haar measure and trivial action on \(M_2\). FR4's normal identification gives \(N=M_2\oplus M_2\), \(\pi(a)=(a,a)\), dual action interchanging the summands, and
 
@@ -299,9 +299,93 @@ where \(\infty\,0=0\). Each infinite term is defined as in (NWR15); it is not a 
 \]
 and \(D\varphi_i(A,B)=\infty(A_{22}+B_{22})\). These are interchange-invariant. The three input support/finite-domain pairs \((p,q)\) are, respectively, \((e,1),(1,e),(d,e)\); on \(N\) the corresponding projections are their diagonal images under \(\pi\). Indeed a positive matrix with zero \((2,2)\) entry has zero mixed entries, so finite elements of the latter two weights are exactly those supported on \(e\). For \(\varphi_s\), all elements have finite value while its zero support complement is \(d\). This verifies directly that \(p\) and \(q\) cannot be conflated. A faithful completion of the first case is \(\psi(a)=3a_{11}+a_{22}\), while the last two need the independent infinite-part construction.
 
+### A faithful infinite-dimensional sum that is not semifinite
+
+The difficulty with an arbitrary sum already occurs on a type I algebra. Let \(H=\ell^2(\mathbb N_{\ge1})\), with orthonormal basis \((e_n)\), and put
+\[
+ \mathcal D=\left\{\xi\in H:\sum_{n\ge1}4^n|\xi_n|^2<\infty\right\},
+ \qquad v=\sqrt3\sum_{n\ge1}2^{-n}e_n,\qquad
+ r\xi=\langle\xi,v\rangle v,\quad q=1-r,\quad U=1-2r.
+\tag{NWR24}
+\]
+The inner product is linear in its first variable. The geometric series gives \(\|v\|^2=3\sum_{n\ge1}4^{-n}=1\). The subspace \(\mathcal D\) contains every finite sequence and is dense in \(H\), but \(v\notin\mathcal D\), since \(4^n|v_n|^2=3\) for every \(n\). Also \(U=U^*=U^{-1}\), \(Uv=-v\), and \(U\xi=\xi\) for \(\xi\perp v\).
+
+For \(a\in B(H)_+\), define
+\[
+ \varphi(a)=\sum_{n\ge1}4^n\langle ae_n,e_n\rangle,
+ \qquad \psi(a)=\varphi(UaU),\qquad \omega=\varphi+\psi.
+\tag{NWR25}
+\]
+These are actual sums of normal positive vector functionals, so [WS1](OA-FLOW-WS.md#oa-flow.weight-sum.ws1) proves all weight axioms and normality, including infinite values. If \(\varphi(a)=0\), then \(a^{1/2}e_n=0\) for every \(n\); hence \(a=0\). Unitary conjugation gives faithfulness of \(\psi\), and therefore of \(\omega\). The finite-rank projections \(P_m\) onto \(\operatorname{span}(e_1,\ldots,e_m)\) satisfy
+\[
+ P_m\uparrow1,\qquad \varphi(P_m)=\sum_{n=1}^m4^n<\infty,
+ \qquad UP_mU\uparrow1,\qquad \psi(UP_mU)=\varphi(P_m).
+\tag{NWR26}
+\]
+Thus GW4 proves semifiniteness of each summand.
+
+We now determine the finite-domain projection of the sum, rather than merely failing to find finite approximants. If \(\varphi(a)<\infty\), Cauchy–Schwarz gives, for every \(\xi\in H\),
+\[
+ \sum_{n\ge1}4^n|\langle a^{1/2}\xi,e_n\rangle|^2
+ \le \|\xi\|^2\sum_{n\ge1}4^n\|a^{1/2}e_n\|^2
+ =\|\xi\|^2\varphi(a)<\infty.
+\tag{NWR27}
+\]
+Consequently \(a^{1/2}H\subseteq\mathcal D\). Applying the same argument to \(UaU\), whose positive square root is \(Ua^{1/2}U\), shows that \(\psi(a)<\infty\) implies \(Ua^{1/2}H\subseteq\mathcal D\). The two conditions force
+\[
+ a^{1/2}H\subseteq\mathcal D\cap U\mathcal D
+       =\mathcal D\cap v^\perp
+ \qquad\text{whenever }\omega(a)<\infty.
+\tag{NWR28}
+\]
+For the equality, if \(w,Uw\in\mathcal D\), then
+\(w-Uw=2\langle w,v\rangle v\in\mathcal D\). Since \(v\notin\mathcal D\), linearity forces \(\langle w,v\rangle=0\). Conversely a vector in \(\mathcal D\cap v^\perp\) is fixed by \(U\). Formula (NWR28) implies \(ra^{1/2}=a^{1/2}r=0\), so every finite-value positive element of \(\omega\) satisfies \(a=qaq\). The normal vector functional \(a\mapsto\langle av,v\rangle\) therefore vanishes on the linear span of the entire finite positive cone, but takes value one at \(1\). This span is not ultraweakly dense. Hence \(\omega\) is not semifinite.
+
+The projection is exactly \(q\), not just at most \(q\). For \(x\perp v\), let \(y_m=P_mx\) and
+\[
+ w_m=y_m-\frac{\langle y_m,v\rangle}{\langle e_1,v\rangle}e_1.
+\tag{NWR29}
+\]
+The denominator is \(\sqrt3/2\ne0\). Each \(w_m\) is a finite sequence orthogonal to \(v\), and \(w_m\to x\), since \(y_m\to x\) and \(\langle y_m,v\rangle\to0\). For any nonzero finite sequence \(w\perp v\), its rank-one orthogonal projection \(P_w\) has
+\[
+ \varphi(P_w)=\frac{\sum_n4^n|w_n|^2}{\|w\|^2}<\infty,
+ \qquad \psi(P_w)=\varphi(P_w),
+\tag{NWR30}
+\]
+because \(Uw=w\). Their ranges span a dense subspace of \(v^\perp\), so their join is \(q\). Together with (NWR28), this proves that the join of all finite-weight projections is \(q=1-r<1\). NO1 now gives semifiniteness of the restriction to \(qB(H)q\); it does not say that every positive element of that corner has finite value. In fact \(\omega(q)=2\sum_{n\ge1}(4^n-3)=\infty\).
+
+This example also gives the full decomposition, including values outside the finite corner:
+\[
+ \omega(a)=2\varphi(qaq)+
+ \begin{cases}
+ 0,&\langle av,v\rangle=0,\\
+ \infty,&\langle av,v\rangle>0.
+ \end{cases}
+ \qquad(a\in B(H)_+).
+\tag{NWR31}
+\]
+Indeed, \(\langle av,v\rangle=\|a^{1/2}v\|^2=0\) is equivalent to \(a=qaq\). In that case \(UaU=a\), so both summands agree. Otherwise (NWR28) rules out a finite value of \(\omega(a)\). This proves (NWR31) without subtracting infinities. The zero-weight support of \(\omega\) is \(1\), while its finite-domain projection is \(q\): faithfulness has survived the sum, and semifiniteness has not.
+
+The same failure occurs for the invariant targets in NWR3. Take the trivial action of \(\mathbb Z/2\mathbb Z\) on \(B(H)\), with counting Haar measure. On \(H\oplus H\), the unitary
+\[
+ 2^{-1/2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}
+\tag{NWR32}
+\]
+diagonalizes the regular flip and leaves the diagonal coefficient representation fixed. Thus the crossed product is normally \(B(H)\oplus B(H)\), the dual action interchanges its entries, and the whole average is \(\pi((A+B)/2)\). The block entries give the normal inverse as in FR4; no finite-dimensional assumption on \(H\) is involved. Therefore
+\[
+ D\varphi(A,B)=\tfrac12\bigl(\varphi(A)+\varphi(B)\bigr),\qquad
+ D\psi(A,B)=\tfrac12\bigl(\psi(A)+\psi(B)\bigr).
+\tag{NWR33}
+\]
+FR2, or the finite projections in the two summands, proves that these are faithful normal semifinite dual-invariant weights. Their sum is \(D\omega\). Its finite positive elements are supported on \((q,q)\), and the pairs \((P_w,0)\), \((0,P_w)\) from (NWR30) show that its finite-domain projection is exactly \((q,q)<(1,1)\). Hence this sum is not semifinite either. This is a counterexample inside the precise invariant-weight setting of the lesson.
+
+![Two dense weight domains whose intersection has a proper closure](../assets/semifinite-weight-sum/assets/semifinite-weight-sum.png)
+
+The diagram is an algebraic schematic of (NWR24)–(NWR33), not a finite-dimensional picture of dense subspaces. Each individual weighted vector domain is dense in \(H\); their common domain has closure \(v^\perp\). The range test (NWR27) transfers that loss of density to the finite positive cone, whose exact corner is \(qB(H)q\). The last row records the same obstruction after the two-point dual construction. All constants and projection identities are proved above. [Reproduction source](../assets/semifinite-weight-sum/render_sum.py), [editable SVG](../assets/semifinite-weight-sum/assets/semifinite-weight-sum.svg), and [exact data](../assets/semifinite-weight-sum/assets/semifinite-weight-sum-data.json) are included.
+
 **Exercise 1.** Could NWR3 replace its orthogonal completion by \(\Omega+\Phi\) for an arbitrary faithful semifinite reference \(\Phi\)?
 
-**Solution.** The existing premises do not say that an arbitrary sum of two semifinite weights is semifinite. Its finite left ideal is the intersection of their finite ideals, whose density has not been proved. NWR3 instead proves semifiniteness from two nets confined to complementary corners, or equivalently EP6's block conditional-expectation composition. That is the actual justification used by FR2.
+**Solution.** No. The pair \(D\varphi,D\psi\) in (NWR33) consists of faithful normal semifinite dual-invariant weights, but its sum has the proper finite-domain projection \((q,q)\). Thus even faithfulness and dual invariance do not justify the proposed replacement. NWR3 instead puts its two finite contraction nets in complementary corners; their sums increase to the identity and have finite value. That proved density, equivalently EP6's block conditional-expectation composition, is the justification for applying FR2.
 
 **Exercise 2.** Why does (NWR16) require the full extended cone rather than just a formula on bounded coefficient elements?
 

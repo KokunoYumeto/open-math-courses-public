@@ -2364,9 +2364,1355 @@ A generator is the cocycle with values \(c_1=0\), \(c_S=(1,0)\), \(c_{S^2}=(1,1)
 \]
 This is the coboundary of \(-T\), as in PC7. The group measures possible descent obstructions. Exactness says that an actual point has zero obstruction precisely when it has a fixed lift. It does not say that every cocycle class arises from such a point; that would require additional geometric information.
 
+### 2G. Integral multiplication and finite subgroup kernels
+
+The period-cover construction must accommodate isogenies whose degree is divisible by the residue characteristic. Finite étale torsion alone does not provide their integral kernels. We prove the finite flat statements, including the special fibres as schemes.
+
+Let \(R\) be a discrete valuation ring with fraction field \(K\) of characteristic zero and residue field \(k\). Suppose that an integral semiabelian extension is given:
+\[
+ 0\longrightarrow\mathcal T\longrightarrow\mathcal G
+       \longrightarrow\mathcal B\longrightarrow0,\qquad
+ \mathcal T=\mathbf G_{m,R}^{\,t},\qquad
+ \dim(\mathcal B/R)=a.
+ \tag{FF1}
+\]
+Here \(\mathcal B\) is an abelian scheme, \(\mathcal G\) is smooth, separated and of finite type, and \(\mathcal G\to\mathcal B\) is a torsor under the displayed split torus. No restriction on a positive multiplication integer will be imposed.
+
+#### 2G.1. Rank, openness and the descent needed below
+
+**FF1.** The following three elementary facts will be used.
+
+First, let \(D\) be a Noetherian domain and \(M\) a finite \(D\)-module of generic dimension \(r\). If \(\dim_{\kappa(x)}(M\otimes\kappa(x))=r\), then \(M_x\) is free of rank \(r\). Indeed lift a basis of this fibre to \(M_x\). Nakayama gives a surjection \(D_x^r\to M_x\). Its kernel becomes zero over the fraction field, since source and target have the same generic dimension. A submodule of the torsion-free module \(D_x^r\) cannot be nonzero and vanish in that field. The surjection is therefore an isomorphism. The argument does not apply to a nonreduced base in place of \(D\).
+
+Second, a finite locally free morphism of positive rank is surjective and universally open. Work on an affine base where its algebra \(C/D\) is free of rank \(r>0\). For \(c\in C\), write the characteristic polynomial of multiplication by \(c\) as
+\[
+ P_c(T)=T^r+b_1T^{r-1}+\cdots+b_r.
+ \qquad
+ \operatorname{image}(D(c)\subset\operatorname{Spec}C)
+       =\bigcup_{i=1}^rD(b_i)\subset\operatorname{Spec}D.
+ \tag{FF2}
+\]
+To prove this, a fibre meets \(D(c)\) exactly when \(c\) is not nilpotent in its finite-dimensional fibre algebra. Multiplication by a nilpotent element is a nilpotent operator and has characteristic polynomial \(T^r\): a basis adapted to its kernel filtration makes it triangular with zero diagonal. Conversely that polynomial makes the operator nilpotent by Cayley–Hamilton, and applying it to the identity makes \(c\) nilpotent. The adjugate proof of Cayley–Hamilton works over any commutative ring: compare coefficients in \((TI-A)\operatorname{adj}(TI-A)=\det(TI-A)I\), express the adjugate coefficients recursively as polynomials in \(A\), and substitute \(T=A\). Thus the condition is precisely the nonvanishing of some \(b_i\), proving (FF2). Principal opens form a basis. The proof survives every base change. Surjectivity follows since each fibre algebra has positive dimension and hence a prime ideal. Flatness and surjectivity make this a faithfully flat cover.
+
+Third, affine faithfully flat universally open covers suffice to descend finite locally free morphisms, without assuming the cover finite. Here are the scheme details. The module, algebra and finite-local-freeness descent FD1–FD4 apply to every faithfully flat ring map; none of their proofs assumes finiteness of that map. For descent of an invariant morphism, the inverse image of an affine target open is a saturated open of the covering scheme. Saturation follows by taking a common point in the fibre product of any two points above the same base point: their residue-field tensor product is nonzero and has a prime. The image of this saturated open is open because the cover is open, and its inverse image is the original open. On affine opens of that image, coordinates descend by the equalizer FD1. The resulting maps agree on overlaps, with equality detected by the same equalizer. This proves morphism descent for these covers and their base changes.
+
+Now if \(X\to S\) becomes finite locally free after such a cover, work with \(S\) affine. Its covered affine algebra descends by FD2–FD4 to a finite locally free algebra \(C\) on \(S\). The two inverse isomorphisms with \(\operatorname{Spec}C\) descend by the preceding morphism argument; their composites are identities after a faithful cover and hence before it. Thus the original morphism is finite locally free with the same rank. We will use covers built only from finite locally free maps and finite unions of affine open immersions, which are affine over an affine target and universally open. \(\square\)
+
+#### 2G.2. Every multiplication integer on an abelian scheme
+
+**FF2.** For every \(n\ge1\), multiplication on \(\mathcal B\) is finite locally free and surjective, of rank \(n^{2a}\). Its kernel is finite locally free of that rank over \(R\).
+
+*Proof.* The map is proper: its graph is closed in the fibre product because the target is separated over \(R\), and projection of this graph is proper because \(\mathcal B/R\) is proper. For every target geometric point, the map on the corresponding geometric abelian fibre is multiplication by \(n\). CU8 proves in all characteristics that this map is finite, flat and surjective of degree \(n^{2a}\). A preimage of the chosen point exists, and its translation identifies the full scheme-theoretic fibre with the zero fibre. Consequently every geometric fibre of our proper map is finite and has length \(n^{2a}\), including when \(n\) is divisible by \(\operatorname{char}k\). The proper finite-fibre theorem of Lesson 3, §0.F.1 makes the integral map finite.
+
+The target \(\mathcal B\) is integral. To check this directly, its generic fibre is geometrically integral. On every nonempty affine open of \(\mathcal B\), flatness over \(R\) embeds its coordinate ring into its localization over \(K\). This localization is nonzero, since multiplication by a uniformizer is injective, and it is the ring of a nonempty open of the integral generic fibre. It is a domain. The affine ring is therefore a domain, and the generic fibre is dense in every such open; these opens show that the whole scheme is integral.
+
+On a target affine open, the finite source algebra is a finite module of generic rank \(n^{2a}\). At each target point its fibre has that same dimension, by the geometric-fibre computation and faithful scalar extension to an algebraic closure of the residue field. The first assertion of FF1 makes this module free at that point. It is therefore locally free everywhere, of the asserted rank. Positive rank gives surjectivity, or it follows directly from the fibres. Pulling back along the identity section proves the kernel assertion. No relative ample line or omitted miracle-flatness theorem was used. \(\square\)
+
+#### 2G.3. Finite flat multiplication on the semiabelian extension
+
+**FF3.** In (FF1), for every \(n\ge1\) there is an exact sequence of fppf sheaves represented by finite locally free group schemes
+\[
+ 0\longrightarrow\mathcal T[n]\longrightarrow\mathcal G[n]
+       \longrightarrow\mathcal B[n]\longrightarrow0.
+ \tag{FF3}
+\]
+Their ranks over \(R\) are \(n^t,n^{2a+t},n^{2a}\), respectively. Multiplication by \(n\) on \(\mathcal G\) itself is finite locally free, surjective and of rank \(n^{2a+t}\).
+
+*Proof.* The torus kernel has coordinate algebra
+\[
+ R[z_1^{\pm1},\ldots,z_t^{\pm1}]/(z_1^n-1,\ldots,z_t^n-1),
+ \tag{FF4}
+\]
+free on monomials whose exponents lie between zero and \(n-1\). Division by each monic polynomial gives spanning and uniqueness; negative exponents can be removed using \(z_i^n=1\). Thus this calculation retains the full kernel even in residue characteristic dividing \(n\).
+
+A section of \(\mathcal B[n]\) lifts locally for the faithfully flat topology to \(\mathcal G\), by the torsor in (FF1). Its \(n\)-multiple lies in the torus, and adjoining \(n\)-th roots of its inverse coordinates corrects the lift into \(\mathcal G[n]\). Each root algebra is finite free of positive rank, so provides a faithfully flat cover by FF1. Two corrected lifts differ by \(\mathcal T[n]\), which proves exactness and the torsor assertion over \(\mathcal B[n]\).
+
+There is an explicit finite flat local description. The frame-torsor argument in PM1, proved using FD1–FD4, identifies a torsor under a split torus with the product of frame torsors of invertible modules; hence it has sections on a Zariski open cover of its base. On an affine open of \(\mathcal B[n]\), choose a lift \(g\) and write the torus coordinates of \(ng\) as units \(c_i\). Corrected lifts then have algebra
+\[
+ A[z_1^{\pm1},\ldots,z_t^{\pm1}]
+       /(z_1^n-c_1^{-1},\ldots,z_t^n-c_t^{-1}).
+ \tag{FF5}
+\]
+It is free of rank \(n^t\) on the same monomial basis; here \(z_i^{-1}=c_i z_i^{n-1}\). These are target-local descriptions, so the map to \(\mathcal B[n]\) is finite locally free. FF2 gives the total rank \(n^{2a+t}\) over \(R\). The Jacobian is not being inverted when \(n\) is not a unit.
+
+To prove the assertion about multiplication on all of \(\mathcal G\), take an affine target open \(S\). Pull back the finite locally free cover \([n]:\mathcal B\to\mathcal B\) along the image of its universal point; this gives an affine finite locally free cover \(S_1\to S\) on which its image in \(\mathcal B\) has a division. On a finite affine open cover of \(S_1\), lift that division to the torus torsor, and correct its torus error by the finite free root covers (FF5). The resulting finite disjoint union is affine and faithfully flat over \(S\), and universally open by FF1 and openness of open immersions. It supplies an actual division in \(\mathcal G\).
+
+After this cover, multiplication becomes the projection of the trivial torsor under \(\mathcal G[n]\): a chosen division identifies a fibre by adding a kernel point. Thus it is finite locally free of the stated rank after the cover. The descent proof in FF1 proves that property before the cover. It also proves surjectivity. \(\square\)
+
+#### 2G.4. Transitions and the integral finite-part division tower
+
+**FF4.** For positive \(m,n\), the multiplication transition is finite locally free and gives an fppf exact sequence
+\[
+ 0\longrightarrow\mathcal G[n]\longrightarrow\mathcal G[mn]
+       \xrightarrow{[n]}\mathcal G[m]\longrightarrow0.
+ \tag{FF6}
+\]
+If \(m,n\) are coprime and \(an+bm=1\), the maps
+\[
+ \mathcal G[mn]\xrightarrow{\ \sim\ }\mathcal G[m]\times\mathcal G[n],
+ \quad x\longmapsto(nx,mx),\qquad
+ (u,v)\longmapsto au+bv
+ \tag{FF7}
+\]
+are mutually inverse over \(R\), as group schemes, not just on geometric points.
+
+*Proof.* For a section \(y\) killed by \(m\), FF3 gives locally a section \(x\) with \(nx=y\). Then \(mnx=0\), so this is a lift in \(\mathcal G[mn]\). The kernel is exactly \(\mathcal G[n]\), and translation makes the transition a torsor under that finite locally free group. The same descent argument as in FF3 proves finite local freeness of rank \(n^{2a+t}\) over \(\mathcal G[m]\), even though that target can have nilpotents. The identities in (FF7) follow from \(an+bm=1\) and \(mu=nv=0\), on every test scheme. Yoneda therefore gives the scheme isomorphism.
+
+If the residue characteristic is \(p>0\), these kernels and transitions construct a \(p\)-divisible group of height \(2a+t\):
+\[
+ \operatorname{rank}_R\mathcal G[p^r]=p^{r(2a+t)},\qquad
+ 0\longrightarrow\mathcal G[p]\longrightarrow\mathcal G[p^{r+1}]
+       \xrightarrow{[p]}\mathcal G[p^r]\longrightarrow0.
+ \tag{FF8}
+\]
+Here the term means precisely this compatible system of finite locally free groups, with the inclusions as successive multiplication kernels and the exact transitions just proved. The toric and abelian heights are \(t\) and \(2a\), by (FF3). If \(n\) is a unit of \(R\), the square-zero tangent correction of GQ3, applied to the smooth group \(\mathcal G\), proves that multiplication by \(n\) is étale: its tangent correction is multiplication by the invertible scalar \(n\). If the special fibre has positive dimension and \(p\mid n\), that scalar is zero on its nonzero Lie algebra; the tangent space of its kernel at the identity is therefore nonzero, so the finite kernel is not étale.
+
+This constructs the integral finite part attached to the supplied semiabelian extension. For a degenerating proper abelian variety, its additional period directions have not been made into an integral finite flat model by this calculation. No residue-characteristic comparison theorem or general period cover is asserted. \(\square\)
+
+#### 2G.5. Why every finite group in characteristic zero is étale
+
+**FF5.** A finite group scheme over a characteristic-zero field is finite étale. In particular every finite subgroup of \(G_K\) is killed by its rank as a finite scheme.
+
+*Proof.* We first prove an algebraic fact. In a finite-dimensional Hopf algebra over a characteristic-zero field, a primitive element must be zero. A primitive element \(D\) satisfies \(\Delta(D)=D\otimes1+1\otimes D\). Its powers satisfy a monic relation of least degree \(q\), since the algebra is finite-dimensional. If \(q=1\), then \(D\) is a scalar, and the primitive equality forces that scalar to be zero. If \(q>1\), the elements \(1,D,\ldots,D^{q-1}\) are independent. Apply the algebra homomorphism \(\Delta\) to the relation. In the tensor product of this basis with itself, the coefficient of \(D^{q-1}\otimes D\) is \(q\ne0\): it comes from the binomial expansion of \((D\otimes1+1\otimes D)^q\). Lower-degree terms cannot contribute, and reduction of the two outer terms \(D^q\otimes1\), \(1\otimes D^q\) cannot contribute to this mixed tensor. This is a contradiction. The proof does not require the Hopf algebra to be commutative.
+
+Now extend the finite group to an algebraic closure, and let \(A\) be its finite coordinate Hopf algebra, with augmentation ideal \(I\). A nonzero functional on \(I/I^2\) defines a nonzero functional \(D\) on \(A\) by applying it to \(a-\epsilon(a)\). It satisfies
+\[
+ D(ab)=D(a)\epsilon(b)+\epsilon(a)D(b).
+ \tag{FF9}
+\]
+The finite-dimensional dual \(A^*=\operatorname{Hom}(A,k)\) is a Hopf algebra: its product is dual to the comultiplication of \(A\), and its comultiplication is dual to multiplication of \(A\). The unit is \(\epsilon\). Thus (FF9) says exactly that \(D\) is primitive in \(A^*\), which is impossible. Consequently \(I/I^2=0\).
+
+For the finite-algebra decomposition used here, there are only finitely many maximal ideals: any collection of distinct ones gives a surjection onto their residue-field product by the Chinese remainder equations, so their number is bounded by the algebra's vector-space dimension. Powers of their intersection eventually stabilize by that same dimension bound; Nakayama makes that stabilized power zero, since the intersection is the Jacobson radical. The pairwise comaximal powers and the Chinese remainder equations therefore decompose the algebra into local Artinian factors.
+
+At the identity, the maximal ideal in its local Artinian coordinate algebra equals its square. Nakayama makes that ideal zero, so this component is the residue field. Every component has an algebraic point over the algebraically closed field, and translation by that point identifies it with the identity component. Hence every component is reduced and is a single field point. The coordinate algebra is a product of copies of the field, proving geometric étaleness. The original algebra is reduced because it injects into this scalar extension. Its same local Artinian decomposition is consequently a product of finite field extensions; those fields are separable in characteristic zero. Thus the original group is finite étale as well.
+
+For a finite subgroup of the commutative \(G_K\), its geometric point group has cardinality equal to its scheme rank \(N\). Every element is killed by \(N\): its cyclic subgroup partitions that finite group into equal-size cosets, so its order divides \(N\). On the finite étale scheme, equality of morphisms is detected on geometric points. Thus \([N]\) is the zero map on this subgroup, and it is contained in \(G_K[N]\). This rank-annihilation conclusion has been proved here in characteristic zero; no corresponding blanket claim in positive characteristic is being imported. \(\square\)
+
+#### 2G.6. Saturated finite flat closure in the integral group
+
+**FF6.** Every finite subgroup \(H_K\subset G_K\) has a canonical finite locally free schematic closure \(\mathcal H\subset\mathcal G\), of the same rank. It commutes with extension of discrete valuation rings. It is independent of the positive integer used to contain it in a multiplication kernel. Actual maps of integral semiabelian extensions carry such closures functorially to one another.
+
+*Proof.* By FF5 choose \(N\) with \(H_K\subset G_K[N]\). The finite locally free group \(\mathcal G[N]\) is affine over \(R\); write its finite free Hopf algebra as \(A\), and let \(J_K\subset A_K\) define \(H_K\). Set
+\[
+ J=A\cap J_K\subset A_K,\qquad C=A/J.
+ \tag{FF10}
+\]
+The quotient embeds in \(A_K/J_K\), so is torsion-free over \(R\). It is finite over \(R\), and therefore free by the DVR module proof of Lesson 1, §0A: put its finitely many generators in a lattice of its generic vector space by clearing denominators and apply the submodule induction. Its rank is \(\dim_K(A_K/J_K)\).
+
+The Hopf maps descend. For example, the image of \(\Delta(J)\) in \(C\otimes_R C\) becomes zero over \(K\). This tensor product is free over \(R\), so the image was already zero. The counit and antipode have the same property, with targets \(R\) and \(C\). Thus \(C\) is a Hopf quotient, and \(\mathcal H=\operatorname{Spec}C\) is a finite locally free closed subgroup.
+
+It is the schematic closure: a function on this affine multiplication kernel vanishes on the generic subgroup exactly when it lies in \(A\cap J_K\). It is also the unique finite flat closed model there with that generic fibre. Indeed if \(A/J'\) is flat and \(J'_K=J_K\), then \(J'\) is saturated: an element whose nonzero scalar multiple lies in \(J'\) already lies there. Clearing a denominator in the equality of generic ideals consequently gives \(J'=A\cap J_K\).
+
+For an extension \(R\to R'\) of discrete valuation rings with fraction extension \(K\to K'\), the quotient \(C\otimes_R R'\) remains free and has generic fibre \(H_K\otimes_K K'\). Inside \(\mathcal G[N]_{R'}\), uniqueness identifies it with the closure computed over \(R'\). If two annihilating integers are used, embed both kernels in the kernel for a common multiple. Both closures there are finite flat with the same generic fibre, so uniqueness identifies them. The resulting closed subgroup of \(\mathcal G\) is independent of that integer.
+
+Finally let an actual integral group map carry \(H_K\) into \(H'_K\). Pull back the defining ideal of \(\mathcal H'\) to \(\mathcal H\). Every such function is zero generically, and is zero already because the coordinate functions of the finite flat \(\mathcal H\) are torsion-free over \(R\). The restriction therefore factors through \(\mathcal H'\). Composition and equality are preserved, giving functoriality. This assumes the integral ambient map; it does not construct such a lift for an arbitrary generic morphism. \(\square\)
+
+#### 2G.7. Generic equality does not identify integral models
+
+**FF7.** Let \(p\) be prime, \(K=\mathbf Q_p(\zeta_p)\), \(R=\mathcal O_K\), and \(\pi=\zeta_p-1\). The generic groups \(\mu_{p,K}\) and \((\mathbf Z/p\mathbf Z)_K\) are isomorphic, but their finite flat \(R\)-models are not. The natural evaluation map on coordinate algebras has determinant valuation
+\[
+ R[z]/(z^p-1)\longrightarrow R^p,\qquad
+ f\longmapsto\bigl(f(1),f(\zeta_p),\ldots,f(\zeta_p^{p-1})\bigr),
+ \qquad
+ v_\pi(\det)=\frac{p(p-1)}2.
+ \tag{FF11}
+\]
+
+*Proof.* The polynomial \(\Phi_p(1+X)=((1+X)^p-1)/X\) is monic, all its nonleading coefficients are divisible by \(p\), and its constant is \(p\), not divisible by \(p^2\). It is irreducible over \(\mathbf Q_p\): monic factors would have integral coefficients, since their roots are integral and \(\mathbf Z_p\) is integrally closed. Modulo \(p\) both nonconstant factors would be powers of \(X\), so both constants would be divisible by \(p\), a contradiction. This is the Eisenstein argument, including the degree-one case \(p=2\).
+
+Thus \([K:\mathbf Q_p]=p-1\). The root \(\zeta_p\) is a unit and reduces to one, since over the residue field its \(p\)-th power is one and \(X^p-1=(X-1)^p\). The polynomial equation for \(\pi\) gives \(\pi^{p-1}\) equal to \(p\) times a unit. The valuation-extension result of Lesson 1, §0E then gives \(e(K/\mathbf Q_p)=p-1\) and \(v_K(\pi)=1\): the ramification index is at least \(p-1\), at most the degree, and the displayed equation forces equality. This also proves that the residue field is \(\mathbf F_p\).
+
+In the monomial basis the evaluation matrix is \((\zeta_p^{ij})_{0\le i,j<p}\). Subtracting columns successively, or regarding its determinant as an alternating polynomial in the \(p\) distinct roots, gives the Vandermonde product of their pairwise differences. Each difference is \(\zeta_p^i\pi(1+\cdots+\zeta_p^{j-i-1})\), whose last factor reduces to the nonzero residue \(j-i\). Each difference therefore has valuation one. There are \(p(p-1)/2\) differences, proving (FF11). In particular this generic algebra isomorphism is not an integral isomorphism. Its cokernel has that length: over a DVR an entry of smallest valuation divides every entry of a finite matrix; clear its row and column, continue inductively, and sum the valuations of the nonzero diagonal entries. Each quotient \(R/\pi^bR\) has length \(b\) by its successive residue-field quotients. The sum is the determinant valuation.
+
+The special fibre of \(\mu_p\) is
+\[
+ k[z]/(z^p-1)\simeq k[u]/u^p,
+ \tag{FF12}
+\]
+of length \(p\) and with one geometric point. The constant group's special fibre is the reduced disjoint union of \(p\) points. The evaluation morphism sends all these points to the identity, so cannot be an isomorphism. The closure in the fixed ambient \(\mathbf G_{m,R}\) of the generic subgroup is \(\mu_p\), by FF6. The constant model illustrates the failure of uniqueness of an abstract integral model without that fixed closed embedding. \(\square\)
+
+#### 2G.8. Prime-to-residue morphisms and finite actions
+
+**FF8.** If \(R\) is complete and \(H,H'\) are finite étale \(R\)-schemes, every \(K\)-morphism \(H_K\to H'_K\) extends uniquely over \(R\). For group schemes the extension is a group homomorphism when its generic restriction is. Compatible finite semilinear actions on such generic groups extend, with their identities and cocycles.
+
+*Proof.* Choose a finite Galois separable extension \(k'/k\) splitting the finite étale special fibres. Choose a primitive element of this extension and lift its monic minimal polynomial to \(f\in R[T]\). The primitive-element proof of Lesson 1, §0E applies when the base field is infinite; for a finite field its multiplicative-group construction in §0F supplies a generator. Put \(R'=R[T]/f\). It is finite free and complete over \(R\), with special fibre \(k'\). Every maximal ideal lies over the maximal ideal of \(R\), by the integral-extension argument of §0E, so it is local. Its maximal ideal is generated by a uniformizer of \(R\); division by that uniformizer terminates on any nonzero element because the finite free module is separated. Every remaining factor is a unit, by the geometric-series unit lift. This makes \(R'\) a complete discrete valuation ring, and the invertible derivative of \(f\) modulo the maximal ideal makes it finite étale. Its fraction field is a finite unramified extension of \(K\). This construction works for arbitrary residue fields.
+
+After this base change the finite étale special algebras of \(H,H'\) are products of \(k'\). Their idempotents lift by Hensel's lemma, as in GQ4. Each factor has rank one and its unit is a basis, by Nakayama and finite freeness; thus each factor is \(R'\). Both schemes have therefore split into finite disjoint unions of copies of \(\operatorname{Spec}R'\). A map of their generic schemes is a function between these finite component sets and extends by that same function. It is unique, since the two functions must agree generically.
+
+For a map originally over \(K\), the two pullbacks of this extension to \(R'\otimes_R R'\) agree: that tensor product is finite étale and hence flat over \(R\), and their component functions agree on the generic fibre. Equivalently, coordinate equality is detected by injection of the finite free coordinate algebra into its generic algebra. FD5 descends the map through the finite faithfully flat cover \(R'/R\). Uniqueness descends with it. All homomorphism diagrams can be checked generically, because the finite étale sources and their products have torsion-free coordinate algebras. Thus they hold integrally.
+
+A ring automorphism of \(R\) can be handled by viewing a semilinear map as an ordinary map to the corresponding twist. The twist is still finite étale. Extend each generic map as above; uniqueness makes all action and cocycle identities hold. In particular FF6 applied to a subgroup killed by an integer invertible in \(R\) produces a finite étale closure. Here is a direct verification over the complete ring, without an additional descent theorem. The special algebra of the finite étale \(\mathcal G[n]\) is a product of finite separable residue fields. Lift its idempotents by Hensel's lemma in the complete finite free ambient algebra. Each factor is local with maximal ideal generated by the base uniformizer, and is separated and torsion-free over \(R\). The division-by-uniformizer argument used above makes each such factor a DVR. A quotient by an ideal of one factor is torsion-free over \(R\) only when that ideal is zero or the unit ideal. The finite flat closure therefore picks a subproduct of these finite étale factors, and is finite étale. These groups are covered by the extension assertion.
+
+This finite-level assertion does not extend to arbitrary \(p\)-power models: FF7 gives a generic isomorphism whose inverse does not extend. Nor does it construct the semiabelian ambient models or their period cover for an arbitrary abelian variety. The uniformization construction still must produce those objects, compatible ambient actions and the required local covering map. Finite flat quotient representability, where needed in transferring that construction through isogenies, must also be proved. The results here supply the all-integer kernels and their canonical closures, with their nilpotents retained. \(\square\)
+
+Free background for these integral group-scheme objects is [Brinon and Conrad, *CMI Summer School Notes on p-adic Hodge Theory*, §7.1](https://math.stanford.edu/~conrad/papers/notes.pdf), and the author notes [*Finite flat group schemes*](https://web.stanford.edu/~dkim04/sags-2510/2025-10-08/). The flatness, covering descent, characteristic-zero primitive-element argument, saturated closure and integral model computations used here are proved in this section. No crystalline, semistable or residue-characteristic comparison theorem is being invoked.
+
+#### 2G.9. Graded exercise: finite flat kernels and their integral models
+
+This exercise is worth **100 points**, with **10 points for each part**. All kernels and special fibres are scheme-theoretic unless a point count is explicitly requested.
+
+**(a) The rank test.** Over \(R=\mathbf Z_p\), compute the generic dimension and special-fibre dimension of \(M=R\oplus R/p^2R\). Explain why FF1 does not declare this module free. Over \(D=k[\epsilon]/\epsilon^2\), the module \(D/(\epsilon)\) has fibre dimension one at its only point. Explain precisely why the integral-domain hypothesis of the rank test cannot be discarded.
+
+**(b) Openness with a nilpotent fibre.** In \(C=\mathbf Z_p[z]/(z^p-1)\), put \(u=z-1\). Compute the characteristic polynomial of multiplication by \(u\), and use (FF2) to determine the image of \(D(u)\) in \(\operatorname{Spec}\mathbf Z_p\). Compare the generic and special fibres. Does universal openness assert that every nonempty open of the source surjects onto the target?
+
+**(c) All-integer semiabelian ranks.** In (FF1) take residue characteristic five, \(a=2,t=3,n=5\). Compute the ranks of the toric, abelian and semiabelian kernels, and the rank of multiplication on \(\mathcal G\). Compute the dimension of the tangent space of its special kernel at the identity. If this data occurs in a genuine period presentation of a proper abelian variety, compare its generic \(5\)-torsion order with the rank of the integral finite part. Explain what has not been constructed for the period directions.
+
+**(d) A root cover over a nonreduced base.** For \(A=\mathbf F_p[\epsilon]/\epsilon^2\), consider
+\[
+ C=A[z^{\pm1}]/(z^p-(1+\epsilon)^{-1}).
+ \tag{FFX1}
+\]
+Give its free \(A\)-basis. With \(u=z-1\), identify it as an \(\mathbf F_p\)-algebra with a truncated polynomial algebra, retaining its full nilpotent length. Is this root cover finite flat? Is it étale?
+
+**(e) Primitive elements in characteristic \(p\).** In the dual Hopf algebra of \(\alpha_p=\operatorname{Spec}\mathbf F_p[x]/x^p\), let \(D\) be the derivative-at-zero functional. Prove that \(D\) is primitive, that \(D^p=0\), and that its lower powers span the dual. For \(\mu_p\), use the basis \(z^i\), \(0\le i<p\), and the functional \(D(z^i)=i\) to compute \(D^p\). Identify the exact step in FF5 that fails in these two examples.
+
+**(f) A nonsaturated subgroup model.** In \(\mu_{p,\mathbf Z_p}\), let \(\mathcal H\) be the closed subscheme with coordinate algebra
+\[
+ B=\mathbf Z_p[z]/(z^p-1,\ p(z-1)).
+ \tag{FFX2}
+\]
+Prove that it is a subgroup scheme, compute its generic and special fibres and its underlying \(\mathbf Z_p\)-module, and find the saturated finite flat closure of its generic subgroup. Why is this not a counterexample to uniqueness in FF6?
+
+**(g) The cyclotomic model map.** Compute the determinant valuations in (FF11) for \(p=2,3,5\). Explain why the abstract generic groups are isomorphic and the special models are not. Check directly for \(p=2\) that the generic inverse evaluation map requires a nonunit denominator.
+
+**(h) Full transitions.** Take \(p=3,a=1,t=2\). Compute the ranks of the kernels at levels \(3,9,27\), the degree of the transition at each step, and the rank of its toric part at level nine. How many geometric special points does that toric part have? Prove the Chinese remainder maps (FF7) for \(m=4,n=9\) by finding suitable integers \(a,b\); the argument must work on every test scheme.
+
+**(i) Extending morphisms.** Compare the two evaluation maps from the constant group of order two to \(\mu_2\) over \(\mathbf Z_3\) and over \(\mathbf Z_2\). Determine which is an isomorphism, including its inverse on coordinate algebras. Explain how the finite étale hypothesis in FF8 gives uniqueness and coherence for generic semilinear group actions, and why it does not give the analogous claim for all finite flat \(p\)-power models.
+
+**(j) The geometric application.** State exactly which all-integer multiplication, subgroup-closure and finite-level action inputs have been proved in this section. Explain why they do not construct a general semistable period cover or a full integral \(p\)-divisible model of a degenerating proper abelian variety. Identify the quotient representability and ambient-model questions still required when transferring a period construction through isogenies.
+
+**Complete solution.**
+
+**(a)** Tensoring with \(\mathbf Q_p\) kills the torsion summand, giving dimension one. Tensoring with \(\mathbf F_p\) gives two copies of that field, so gives dimension two. The equal-dimension hypothesis of FF1 fails. The module is not free, since it has nonzero elements killed by \(p^2\).
+
+For the dual numbers there is no fraction field to which the domain argument could be applied. The fibre module has dimension one, but the module itself has \(k\)-dimension one, while a free rank-one \(D\)-module has \(k\)-dimension two. The kernel of the surjection \(D\to D/(\epsilon)\) is nonzero, and the proof's assertion that a submodule of a free module cannot vanish generically is unavailable on this nonreduced base. Fibre dimension alone does not prove flatness there.
+
+**(b)** The monomial basis in \(u\) identifies multiplication by \(u\) with the companion operator of its monic defining polynomial. Its characteristic polynomial is
+\[
+ P_u(T)=(1+T)^p-1
+       =T^p+\binom p{p-1}T^{p-1}+\cdots+pT.
+ \tag{FFX3}
+\]
+The ideal of its nonleading coefficients is \((p)\): every one is divisible by \(p\), and the coefficient of \(T\) is \(p\). Formula (FF2) therefore gives image \(D(p)=\operatorname{Spec}\mathbf Q_p\). The generic fibre contains nonidentity roots on which \(u\ne0\), while the special fibre has \(u^p=0\), so its whole underlying point set has \(u=0\). This is an open image and agrees with universal openness. That property says that images of opens are open, not that every such image is the whole base.
+
+**(c)** The respective ranks are
+\[
+ 5^3=125,\qquad 5^4=625,\qquad
+ 5^7=78125,\qquad \deg[5]_{\mathcal G}=78125.
+ \tag{FFX4}
+\]
+The special semiabelian group has dimension \(a+t=5\). Its derivative under multiplication by five is zero, so the tangent kernel at the identity has dimension five; in particular the finite kernel is not étale. For a genuine period presentation PC5 gives a proper abelian variety of dimension five and generic \(5\)-torsion order \(5^{10}=9765625\). The factor \(5^3\) from its three period directions accounts for the difference in generic orders. FF3–FF4 constructs the integral finite part of rank \(5^7\); it has not extended those generally nonintegral periods into an additional finite flat kernel model over \(R\).
+
+**(d)** The elements \(1,z,\ldots,z^{p-1}\) are an \(A\)-basis: the defining equation is monic, its constant is a unit and \(z^{-1}=(1+\epsilon)z^{p-1}\). In this characteristic \((1+\epsilon)^{-1}=1-\epsilon\), and \(u=z-1\) satisfies \(u^p=-\epsilon\). Thus
+\[
+ C\simeq\mathbf F_p[\epsilon,u]/(\epsilon^2,u^p+\epsilon)
+     \simeq\mathbf F_p[u]/u^{2p},\qquad
+ \dim_{\mathbf F_p}C=2p.
+ \tag{FFX5}
+\]
+It is free of rank \(p\) over the length-two base and therefore finite flat, with faithful positive rank. Its relative derivative is \(pz^{p-1}=0\); the relative differential \(dz\) has no additional relation, so its module of relative differentials is nonzero. It is not étale. Replacing this algebra by its one geometric point would lose length \(2p\).
+
+**(e)** For the additive group law \(\Delta(x)=x\otimes1+1\otimes x\), the convolution powers satisfy
+\[
+ D^r(x^j)=
+ \begin{cases}r!&j=r,\\0&j\ne r,\end{cases}
+ \quad(0\le r,j<p),\qquad D^p=0.
+ \tag{FFX6}
+\]
+This follows by expanding the iterated sum of \(r\) tensor coordinates and applying the derivative functional to each. A monomial contributes only when its degree is \(r\) and every coordinate has degree one. These lower factorials are nonzero in \(\mathbf F_p\), so the \(p\) powers are a basis of the dual. The derivative product rule makes \(D\) primitive there. Hence this dual is the Hopf algebra \(\mathbf F_p[D]/D^p\).
+
+For the multiplicative coordinate, \(\Delta(z^i)=z^i\otimes z^i\), so
+\[
+ D^r(z^i)=i^r,\qquad D^p=D.
+ \tag{FFX7}
+\]
+The product rule at the identity follows from \(i+j\) reduced modulo \(p\), so again \(D\) is primitive. The functions of \(i\in\mathbf F_p\) given by \(1,i,\ldots,i^{p-1}\) are a basis: the Vandermonde determinant on these distinct field elements is nonzero. Thus this dual is \(\mathbf F_p[D]/(D^p-D)\). In both examples the degree-\(p\) relation is compatible with primitiveness because the mixed binomial coefficient \(p\) is zero. The nonzero characteristic-zero coefficient used in FF5 is exactly what has failed.
+
+**(f)** Put \(u=z-1\). The relation \(pu=0\) kills all nonleading intermediate terms in \((1+u)^p-1\), giving
+\[
+ B\simeq\mathbf Z_p[u]/(pu,u^p)
+   \simeq\mathbf Z_p\oplus
+     \bigoplus_{j=1}^{p-1}(\mathbf Z_p/p\mathbf Z_p)u^j.
+ \tag{FFX8}
+\]
+The ideal generated by \(pu\) in the coordinate Hopf algebra of \(\mu_p\) is a Hopf ideal: since \(\Delta(u)=u\otimes z+1\otimes u\), its comultiplication is \(pu\otimes z+1\otimes pu\); its counit is zero, and the antipode sends \(pu\) to \(-z^{-1}pu\). This proves the subgroup assertion scheme-theoretically.
+
+Generically \(u=0\), so the subgroup is the identity. Specially its algebra is \(\mathbf F_p[u]/u^p\), of length \(p\). The displayed nonzero \(p\)-torsion shows that this model is not flat. Saturation replaces the ideal \((pu)\) by \((u)\), giving the identity section \(\operatorname{Spec}\mathbf Z_p\) as the unique finite flat closure. FF6 asserts uniqueness among flat closed models in the fixed ambient scheme; the nonsaturated model fails that hypothesis.
+
+**(g)** The valuations and corresponding cokernel lengths are
+\[
+ p=2:\ 1,\qquad p=3:\ 3,\qquad p=5:\ 10.
+ \tag{FFX9}
+\]
+Over \(K\) the \(p\) distinct roots give the evaluation algebra isomorphism and identify the abstract groups. Modulo the uniformizer all roots reduce to one, while the constant group still has \(p\) distinct points. For \(p=2\), its matrix and inverse over the fraction field are
+\[
+ E=\begin{pmatrix}1&1\\1&-1\end{pmatrix},\qquad
+ E^{-1}=\tfrac12\begin{pmatrix}1&1\\1&-1\end{pmatrix}.
+ \tag{FFX10}
+\]
+Here \(K=\mathbf Q_2\), and \(1/2\) is not integral. Thus the inverse has no integral extension. This agrees with the nonreduced special fibre of \(\mu_2\).
+
+**(h)** The height is \(2a+t=4\). The levels and transition ranks are
+\[
+ 3^4=81,\qquad 3^8=6561,\qquad
+ 3^{12}=531441,\qquad \deg[3]=81.
+ \tag{FFX11}
+\]
+At level nine its toric part is \(\mu_9^2\), of rank \(9^2=81\) and with one geometric special point: in characteristic three each coordinate has algebra \(k[u]/u^9\). Its scheme length, rather than that point count, is the relevant rank.
+
+For \(m=4,n=9\), use \(a=1,b=-2\), since \(9-8=1\). The maps are \(x\mapsto(9x,4x)\) and \((u,v)\mapsto u-2v\). If \(4u=0\) and \(9v=0\), their composites give
+\[
+ 9(u-2v)=u,\qquad4(u-2v)=v,\qquad
+ 9x-2(4x)=x.
+ \tag{FFX12}
+\]
+The equalities use only the group laws and integer relations on the sections of every test scheme. Yoneda therefore proves the isomorphism of finite flat group schemes, including all nilpotents.
+
+**(i)** Both maps have the matrix \(E\) in (FFX10). Over \(\mathbf Z_3\) its determinant \(-2\) is a unit and the displayed inverse is integral. This is an isomorphism of the two finite étale models. Over \(\mathbf Z_2\) the determinant is a nonunit and the inverse does not extend; the target has the nonreduced special fibre computed above.
+
+For finite étale models over the complete DVR, a common finite unramified cover splits the schemes into components. The generic component function extends uniquely, and finite faithfully flat descent gives the integral map. A generic identity between any two composites then gives an integral identity, since the finite free source coordinates inject into their generic algebra. This proves the coherence of extended group actions. The \(2\)-adic example violates finite étaleness and shows why that proof cannot be applied indiscriminately to finite flat \(p\)-power models.
+
+**(j)** FF2–FF4 construct multiplication and every kernel for every positive integer, their full finite flat ranks, transitions and integral finite-part division towers. FF5 supplies the characteristic-zero finiteness/étaleness and annihilating integer, and FF6 constructs the saturated closure of each finite generic subgroup in the supplied integral group, with its base-change and map functoriality. FF8 gives actual generic-morphism and finite-action extension for finite étale models over the complete DVR.
+
+The input integral semiabelian group itself is still supplied. These statements do not construct it from an arbitrary abelian variety, make the period injection or local uniformizing map, prove the needed quotient scheme exists for every finite flat subgroup, or show the quotient remains in the required smooth semiabelian/good-reduction class. Those quotient and ambient-model constructions are required in an isogeny-transfer argument. Nor has the extra generic period part of the proper abelian torsion been extended to a full integral \(p\)-divisible group. The general period-cover construction, compatible ambient actions and any claimed dual-model pairing identification remain to be proved.
+
+### 2H. Finite flat quotients and preservation of good reduction
+
+A multiplication map supplies the affine charts needed for the quotient. This is useful even when no relatively ample line on the integral model has been constructed. Throughout this section \(R\) is a discrete valuation ring as in §2G, or a field. The supplied commutative group \(\mathcal G/R\) is either an abelian scheme of relative dimension \(a\), or the semiabelian extension in (FF1), with torus rank \(t\). Put \(t=0\) in the abelian case. Fix
+\[
+ \mathcal H\hookrightarrow\mathcal G[N],\qquad
+ N\ge1,\qquad \operatorname{rank}_R\mathcal H=h.
+ \tag{FQ1}
+\]
+The subgroup is finite locally free. It need not be étale, and \(N\) need not be a unit. FF2–FF3 prove that \([N]_{\mathcal G}\) is finite faithfully flat of rank \(N^{2a+t}\). Over a field the same root-cover proof, with CU8 for the abelian part, proves this assertion.
+
+The earlier affine quotient proof is Lesson 3, §0.F.4.17, QS2–QS5. Its algebra uses a Noetherian base, a finite locally free group acting on an affine scheme, and a closed free action relation. It does not use the dimension or properness of an elliptic curve. We spell out its application below. Free comparisons are the Stacks project's [affine finite flat quotient](https://stacks.math.columbia.edu/tag/03BM) and [flat smooth-fibre criterion](https://stacks.math.columbia.edu/tag/00TF). The proofs used here are the actual programme proofs and the arguments in this section.
+
+#### 2H.1. Invariant charts and the scheme quotient
+
+**FQ1.** The fppf quotient \(\mathcal Q=\mathcal G/\mathcal H\) is represented by a separated finite-type commutative group scheme. Its quotient map and relation satisfy
+\[
+ q:\mathcal G\longrightarrow\mathcal Q
+ \text{ finite faithfully flat of rank }h,\qquad
+ \mathcal H\times_R\mathcal G
+       \xrightarrow{\sim}\mathcal G\times_{\mathcal Q}\mathcal G,
+ \quad (z,x)\longmapsto(x,x+z).
+ \tag{FQ2}
+\]
+These are full scheme identities. The quotient and its invariant-map universal property commute with every base change.
+
+*Proof.* For every affine open \(V\subset\mathcal G\), the open \(U=[N]^{-1}V\) is affine because multiplication is finite. It is invariant under \(\mathcal H\), as the equality
+\([N](x+z)=[N]x\) holds on every test scheme when \([N]z=0\). These opens cover \(\mathcal G\). The action relation on \(U\) is closed in \(U^2\): its inverse image under the difference map \((x,y)\mapsto y-x\) is exactly \(\mathcal H\), and the inverse identification is \((x,y)\mapsto(y-x,x)\). Here and below the squares are over \(R\).
+
+Write \(U=\operatorname{Spec}A\), \(\mathcal H=\operatorname{Spec}C\), and let \(\rho:A\to A\otimes_R C\) be the coaction. Its two maps are \(s(a)=a\otimes1\) and \(u(a)=\rho(a)\). Put
+\[
+ D=\{a\in A:\rho(a)=a\otimes1\},\qquad
+ A\otimes_D A\longrightarrow A\otimes_R C,\quad
+ a\otimes b\longmapsto(a\otimes1)\rho(b).
+ \tag{FQ3}
+\]
+The map is surjective by the closed relation. The characteristic polynomial of multiplication by \(\rho(a)\), on the rank-\(h\) algebra over \(s(A)\), has invariant coefficients: translation of the orbit conjugates this multiplication after pullback along the relation. Its identity-section specialization gives a monic equation for \(a\) over \(D\). Hence \(A/D\) is integral and finite, using bounded powers of finitely many algebra generators. QS2 proves that \(D\) is Noetherian and of finite type over \(R\): collect the finite multiplication-table coefficients in a finite-type subring \(D_0\), make \(A\) finite over \(D_0\), and use that its submodule \(D\) is finite.
+
+The common-basis argument QS3–QS4 proves more than integrality. At each localization of \(D\), extend faithfully flat to a local ring with infinite residue field. The finitely many maximal ideals of the resulting finite algebra \(A\) admit one choice of \(x_1,\ldots,x_h\) for which the \(\rho(x_i)\) are a basis over \(s(A)\): avoid the finitely many nonzero determinant polynomials over that infinite field. If
+\(\rho(a)=\sum_i(c_i\otimes1)\rho(x_i)\), coassociativity compares the two expansions after a second coaction and gives \(\rho(c_i)=c_i\otimes1\). The identity section then gives \(a=\sum_i c_ix_i\), and independence follows by applying \(\rho\) again. Thus \(A\) is free of rank \(h\) over \(D\) on that faithfully flat local extension, and (FQ3) is an isomorphism there. FD1 and FD4 descend both assertions. Consequently \(A/D\) is finite locally free of positive rank \(h\), hence faithfully flat, and (FQ3) is an isomorphism before extension. This is exactly the already proved QS3–QS4 argument; no division by \(h\) occurs.
+
+For completeness, the gluing does not assume that the intersection of two charts is affine. If \(W\subset U\) is invariant and open, its complement has closed image under the finite map \(U\to\operatorname{Spec}D\). The complement of that image is an open with inverse image \(W\). Indeed a geometric fibre is a single orbit by (FQ3), including its scheme relation; invariance decides whether the whole fibre lies in \(W\). On that open, FD5 gives the invariant-map quotient property. Apply this to each pairwise intersection of invariant charts. The resulting identifications of quotient opens are unique, so satisfy the triple cocycle and glue. Finiteness and the rank assertion are local on these target opens. FD5 also descends addition under the product cover, inversion and the origin. Their identities are detected on finite faithfully flat product covers. This proves (FQ2) and the group assertions.
+
+The preimage of the diagonal of \(\mathcal Q\) under \(q^2\) is the closed action relation. FD6 descends the closed immersion, proving separatedness. Finite type follows from the finite-type rings \(D\) and a finite choice of charts. Finally, after any \(R\to R'\), the finite faithfully flat map and the relation isomorphism (FQ2) persist. FD1 applied to that cover gives
+\[
+ (A\otimes_R R')^{\mathcal H_{R'}}=D\otimes_R R'.
+ \tag{FQ4}
+\]
+This conclusion uses the proved torsor, and does not assume that an arbitrary kernel commutes with nonflat tensor. A point of the quotient sheaf lifts after this finite cover; two lifts differ by a unique section of \(\mathcal H\). This proves its fppf sheaf representation and the base-change assertion, even for non-Noetherian or nonreduced \(R'\). \(\square\)
+
+#### 2H.2. The complementary finite flat map
+
+**FQ2.** There is a unique homomorphism \(d:\mathcal Q\to\mathcal G\) with
+\[
+ d q=[N]_{\mathcal G},\qquad qd=[N]_{\mathcal Q}.
+ \tag{FQ5}
+\]
+It is finite faithfully flat of rank \(N^{2a+t}/h\). In particular this quotient is an integer. Moreover
+\[
+ \ker d\simeq\mathcal G[N]/\mathcal H
+ \quad\text{as fppf sheaves and finite locally free group schemes}.
+ \tag{FQ6}
+\]
+
+*Proof.* Multiplication by \(N\) is invariant under \(\mathcal H\). FD5 descends it along \(q\), giving \(d\), and descends its group identity. After composition with \(q\), the second identity of (FQ5) is the first identity followed by \(q\); faithful descent cancels \(q\) and proves it.
+
+On the chart \(V=\operatorname{Spec}B\) used in FQ1, let \(U=\operatorname{Spec}A=[N]^{-1}V\) and \(U/\mathcal H=\operatorname{Spec}D\). The ring maps for the factorization are
+\[
+ B\longrightarrow D\longrightarrow A,\qquad
+ A/B\text{ finite locally free of rank }N^{2a+t},
+ \quad A/D\text{ finite locally free of rank }h.
+ \tag{FQ7}
+\]
+The invariant ring \(D\subset A\) is a finite \(B\)-module, because \(B\) is Noetherian and \(A\) is finite over it. For an injection of \(B\)-modules, tensor first with \(D\), then with \(A\). The composite tensor is injective by flatness of \(A/B\). Faithful flatness of \(A/D\) detects injectivity already after \(D\). Thus \(D/B\) is flat; it is finite and finitely presented, so is finite locally free by Lesson 3, T4–T5. Multiplication is surjective and factors through \(d\), so \(d\) is surjective. Its local rank \(r\) satisfies \(hr=N^{2a+t}\): take a residue field of \(B\), decompose the finite algebra \(D\) into its local factors, and use that the locally free \(D\)-module \(A\) has rank \(h\). Equivalently its vector-space dimension over that residue field is \(h\) times the dimension of \(D\). This proves the rank.
+
+Pulling the \(q\)-torsor back over \(\ker d\) gives its inverse image \(\mathcal G[N]\), by (FQ5). The same quotient property therefore proves (FQ6). Its rank is \(N^{2a+t}/h\). All these identities survive arbitrary base change by FQ1. \(\square\)
+
+#### 2H.3. Smoothness of the quotient
+
+**FQ3.** The group \(\mathcal Q/R\) is smooth, with geometrically integral fibres of dimension \(a+t\). If \(\mathcal G/R\) is an abelian scheme, so is \(\mathcal Q/R\).
+
+*Proof.* First \(\mathcal Q/R\) is flat. On the charts \(R\to D\to A\), the last ring is flat over \(R\) because it is an open of the smooth \(\mathcal G\); the same tensor-injection argument as in FQ2 descends this flatness through the faithfully flat \(D\to A\).
+
+Let \(k\) be an algebraically closed residue extension. The fibre \(\mathcal G_k\) is integral. In the semiabelian case it is connected: its map to the connected abelian variety is a surjective smooth torsor with connected torus fibres. If the total space were disconnected, a partition into its finitely many open-and-closed components would partition the base into disjoint open images, since a connected fibre meets only one part. This contradicts connectedness of the base. Its smooth local rings are regular domains by the polynomial-chart regularity argument NM1 in Lesson 8; distinct irreducible components are therefore disjoint, so connectedness makes the fibre irreducible and reduced. The abelian case has these same properties by its definition and the field results above.
+
+On every nonempty quotient affine, (FQ4) embeds \(D_k\) in the domain \(A_k\). Thus the quotient fibre is reduced, and it is irreducible as the surjective image of \(\mathcal G_k\). Its dimension is \(a+t\): integral finite maps preserve dimension by lying over, going up and incomparability, proved in Lesson 3, §0.A. We now prove the smoothness assertion for this integral algebraic group, rather than inferring it from a possibly nonétale quotient map.
+
+Here is the needed generic smoothness fact over a perfect field \(k\). Every finitely generated field \(K/k\) of transcendence degree \(r\) has a separating transcendence basis. In characteristic zero, choose any transcendence basis; the remaining finite algebraic extension is separable because an irreducible polynomial has nonzero derivative. In characteristic \(p\), the degree calculation (EH3) gives \([K:K^p]=p^r\). Starting from \(K^p\), successively adjoin an element not yet in the subfield. Each step has degree \(p\), since its \(p\)-th power is already in \(K^p\). This produces \(u_1,\ldots,u_r\) whose \(p\)-restricted monomials form a basis over \(K^p\). Differentiating those unique expansions defines derivations \(\partial_i\) with \(\partial_i u_j=\delta_{ij}\); the relations \(u_i^p\in K^p\) verify the product rule. Every \(k\)-derivation of \(K\) is determined by its values on the \(u_i\), because it kills \(K^p\).
+
+The \(u_i\) are algebraically independent over \(k\). Otherwise choose a nonzero polynomial relation of smallest total degree. Applying each \(\partial_i\) makes each nonzero partial derivative a relation of smaller degree. Hence all polynomial partial derivatives must vanish. Perfectness makes the polynomial a \(p\)-th power of a polynomial of smaller degree, giving the same contradiction. Put \(F=k(u_1,\ldots,u_r)\). The finite extension \(K/F\) has no nonzero \(F\)-derivation. This implies separability, as follows. Let \(E\) be the subfield of elements of \(K\) separable over \(F\). It is a finite separable extension, and \(K/E\) is purely inseparable: some \(p\)-power of each element is separable, by writing its irreducible polynomial as a separable polynomial in \(T^{p^s}\). If \(K\ne E\), then \(K\ne E K^p\). Indeed equality could be iterated to \(K=E K^{p^s}\), whereas a sufficiently large power lies in \(E\). A \(p\)-restricted basis obtained by adjoining elements over \(E K^p\) then defines a nonzero \(E\)-derivation exactly as above. It is an \(F\)-derivation, a contradiction. Thus \(K=E\).
+
+This field statement produces a nonempty smooth open in any integral finite-type \(k\)-scheme. Write its function field as \(k(u_1,\ldots,u_r)(\theta)\), using the finite separable primitive-element proof of Lesson 1, §0E. Clear denominators in the monic minimal polynomial \(f(T)\) of \(\theta\), and invert \(f'(\theta)\ne0\). The resulting algebra
+\[
+ k[u_1,\ldots,u_r,s^{-1},T,f'(T)^{-1}]/(f(T))
+ \tag{FQ8}
+\]
+is a standard smooth algebra of relative dimension \(r\), by Lesson 3, SF3. It is a domain with the desired fraction field. It and any chosen affine coordinate domain with that fraction field have isomorphic nonempty principal opens: put the finitely many generators of the second algebra in a localization of the first by clearing their denominators, and then clear the generators of the first and that denominator in the second. Localizing these two inclusions at the product of the finitely many additional nonzero denominators makes them inverse. This proves the claimed nonempty smooth open. When the function field already equals the rational field, one may omit \(T\), or use \(f(T)=T\).
+
+Apply this to the integral group \(\mathcal Q_k\). Its nonempty smooth open contains a closed \(k\)-point by the finite-type closed-point lemma of Lesson 3, B1. Translation takes this point to any other closed point and is a scheme isomorphism. Thus every closed point has a smooth chart. The complement of their open union, if nonempty, would again have a closed point by B1. Hence the whole geometric fibre is smooth.
+
+Smoothness descends from this algebraic closure to the residue field itself by the relation-gradient argument in QS6: in any finite polynomial presentation, the split injection of the relation module and finite projectivity of the differential module are detected and descended by FD1 and FD4; SF1–SF2 then give the smooth charts. Finally QS6's proof of the flat smooth-fibre criterion applies in every dimension. In its notation \(P/I=D\), flatness gives the exact fibre presentation. Lift generators of the smooth fibre ideal with an invertible gradient minor. Nakayama applied to the finite module \(I/(f_1,\ldots,f_c)\) at the chosen point shows these lifts generate the whole local ideal; invert the lifted minor. SF3 gives an actual smooth chart over \(R\). This retains every nilpotent layer in the base.
+
+If \(\mathcal G\) is proper, then so is \(\mathcal Q\). For every base change, a closed subset of \(\mathcal Q\) and its closed inverse image in \(\mathcal G\) have exactly the same image in the base. That image is closed by properness of \(\mathcal G\). Thus \(\mathcal Q\) is universally closed, and already separated and of finite type. Its geometric fibres are connected, so the proper smooth group with its descended origin is an abelian scheme. Relative projectivity was not an input to this argument. \(\square\)
+
+#### 2H.4. Good reduction transfers through every isogeny
+
+**FQ4.** Let \(R\) be a discrete valuation ring with characteristic-zero fraction field \(K\), and let \(\mathcal B/R\) be an abelian scheme. If \(f:\mathcal B_K\to A\) is an isogeny of abelian varieties, then \(A\) has a good abelian model over \(R\). Every generic isogeny between two good abelian models extends uniquely to a finite faithfully flat isogeny of those models. Its kernel is the canonical finite flat closure in FF6, including when its degree is divisible by the residue characteristic.
+
+*Proof.* The generic kernel \(H_K\) is finite étale by FF5. Put \(n=\operatorname{rank}_K H_K\). The finite group coset proof in FF5 gives \([n]H_K=0\) as a scheme identity. FF6 therefore constructs its finite flat closure \(\mathcal H\subset\mathcal B[n]\), of rank \(n\). FQ1–FQ3 construct the abelian scheme \(\mathcal C=\mathcal B/\mathcal H\).
+
+The generic isogeny \(f\) is the quotient by \(H_K\). One can use the finite flat isogeny proof CE6; here is also a characteristic-zero verification. Proper finite fibres make \(f\) finite. The finite étale kernel has zero tangent space, so the differential at the origin is an isomorphism between tangent spaces of the same dimension. Translation and SF1–SF3 make the whole map étale. It is surjective by the isogeny hypothesis, hence finite faithfully flat. The difference map identifies its relation with \(H_K\times\mathcal B_K\). FD5 gives the scheme-valued quotient property. Uniqueness of that property identifies \(\mathcal C_K\) with \(A\), compatibly with \(f\).
+
+If \(A\) already has a good model \(\mathcal B'\), GQ2 extends this generic isomorphism and its inverse between \(\mathcal C\) and \(\mathcal B'\). Uniqueness in GQ2 makes their composites identities. Thus the extended \(f\) is \(q\) followed by an isomorphism; its kernel and finite flat rank are exactly \(\mathcal H\) and \(n\). Uniqueness also identifies it with the generic-map extension originally given by GQ2.
+
+For any supplied positive annihilator \(N\), FQ2 gives the complementary integral homomorphism \(d:\mathcal B'\to\mathcal B\), with
+\[
+ df=[N]_{\mathcal B},\qquad fd=[N]_{\mathcal B'},\qquad
+ \deg f=n,\qquad \deg d=N^{2a}/n.
+ \tag{FQ9}
+\]
+In particular \(N=n\) is allowed. All assertions commute with extensions of discrete valuation rings, by FF6 and FQ1. No prime-to-residue restriction was introduced. \(\square\)
+
+#### 2H.5. Maps, finite actions and torsion
+
+**FQ5.** Suppose \(v:\mathcal G\to\mathcal G'\) is an actual integral homomorphism and \(v(\mathcal H)\subset\mathcal H'\). There is a unique homomorphism
+\[
+ \bar v:\mathcal G/\mathcal H\longrightarrow
+             \mathcal G'/\mathcal H',\qquad
+ \bar v q=q'v.
+ \tag{FQ10}
+\]
+This construction respects identities, composition and arbitrary base change. Stable finite semilinear actions on the supplied ambient models and subgroups descend to their quotients.
+
+*Proof.* The right side of (FQ10) is invariant under \(\mathcal H\) as a full scheme map. FD5 descends it uniquely. The group law is detected after the product cover, and identities and composites are detected after \(q\). For a semilinear map use the corresponding base twist. Apply the same uniqueness to each group element and to each pairwise composite; their cocycles therefore hold on the quotient. This constructs actions from supplied actions, and does not create an unspecified integral ambient action.
+
+For a generic isogeny of good models, every prime-to-residue Tate-module map is the actual generic map, since FQ4 extends that map itself. CU10 gives
+\[
+ [T_\ell\mathcal B'_K:fT_\ell\mathcal B_K]
+       =\ell^{v_\ell(n)},\qquad
+ V_\ell\mathcal B_K\xrightarrow{\sim}V_\ell\mathcal B'_K.
+ \tag{FQ11}
+\]
+GQ4 gives the unramified actions from both good models; the maps commute with them because the morphisms do. These conclusions concern the actual modules and their transitions. They do not identify a general \(p\)-adic comparison functor or a full integral period model. \(\square\)
+
+#### 2H.6. The geometric fibres in the semiabelian case
+
+**FQ6.** In the supplied semiabelian case, each geometric fibre of \(\mathcal Q\) is semiabelian of torus rank \(t\), and its abelian quotient is isogenous to the corresponding fibre of \(\mathcal B\).
+
+*Proof.* Work over an algebraically closed residue field \(k\), and write \(G,T,B,H,Q\) for the fibres. The group \(K_0=H\cap T\) is finite over \(k\), hence finite locally free. First \(T/K_0\) is a torus of rank \(t\), with a direct coordinate proof. Write the character lattice of \(T\) as \(M=\mathbf Z^t\). The images in \(k[K_0]\) of its Laurent monomials are group-like elements, and span that algebra since \(K_0\) is closed. Distinct group-like elements in any coalgebra over a field are linearly independent. To prove this, take a dependence with a minimal number of distinct terms, express the last as a linear combination of the others, and apply comultiplication. Independence of those others in the first tensor factor forces every element with a nonzero coefficient to equal the last, a contradiction. Their counits are one, so none is zero.
+
+The images therefore form a finite group \(M/L\), and the quotient Hopf algebra is precisely \(k[M/L]\); there are no further linear relations. The invariant subalgebra of \(k[M]\) is \(k[L]\), by comparing those independent group-like coefficients. Since \(M/L\) is finite, PC0 gives \(L\simeq\mathbf Z^t\). Coset representatives give
+\[
+ k[M]=\bigoplus_{\gamma\in M/L}k[L]\chi^\gamma,\qquad
+ T/K_0=\operatorname{Spec}k[L]\simeq\mathbf G_m^t.
+ \tag{FQ12}
+\]
+The coordinate tensor identity, or FQ1's affine proof, shows that this is the full finite flat \(K_0\)-torsor quotient, including nonreduced \(K_0\).
+
+Next the scheme-theoretic image \(J\) of \(H\to B\) is a finite closed subgroup, killed by \(N\). Indeed the map is finite, by its proper finite fibres, and its image is the finite algebra obtained as the image of the target coordinates in the finite \(k\)-algebra of \(H\); these local descriptions glue. Quotient \(H\) by \(K_0\) using the affine proof QS2–QS4: \(H\) itself is an affine finite scheme, its translation action is free and closed, so that proof applies without smoothness. The induced map \(H/K_0\to B\) is a monomorphism. Its kernel is trivial as a sheaf, since a section lifts fppf locally to \(H\) and an element mapping to zero belongs to \(K_0\). A homomorphism with trivial kernel is a monomorphism by subtraction.
+
+This finite monomorphism is a closed immersion. To check the hypothesis of the already proved proper criterion CIE1, its geometric fibres have at most one point and no nonzero tangent vector: any such vector would contradict the monomorphism on dual-number points. A nonempty finite local algebra over an algebraically closed field with zero cotangent space is that field, by Nakayama on its maximal ideal. Hence each geometric fibre is empty or the full reduced point, and CIE1 applies. Its image is \(J\), because the preceding quotient is faithfully flat. Thus \(H\to J\) is finite faithfully flat, with kernel \(K_0\).
+
+FQ1–FQ3 over \(k\) make \(B/J\) an abelian variety. The map \(G\to B/J\) descends to \(Q\). It is fppf surjective. Its kernel is exactly \(T/K_0\): a section of the kernel lifts locally to \(G\); its image in \(B\) lies in \(J\), so lift that image locally to \(H\) and subtract. The result belongs to \(T\). Two such torus lifts differ exactly by \(K_0\). We obtain the full fppf exact sequence
+\[
+ 0\longrightarrow T/K_0\longrightarrow Q
+       \longrightarrow B/J\longrightarrow0.
+ \tag{FQ13}
+\]
+The kernel is the torus (FQ12). The surjective map is its torsor by subtraction, so this is a semiabelian variety of the stated torus rank. \(\square\)
+
+FQ1–FQ6 give a smooth separated integral-model quotient, its semiabelian geometric fibres, and good abelian quotients with full generic isogeny transfer. In applying them to uniformization one must still construct the initial semiabelian integral extension and its period cover. If that argument needs a particular integral torus-by-abelian sequence for the quotient, that sequence and its compatible maps must be constructed as well; a fibrewise sequence (FQ13) alone is not that construction. No quotient of the period lattice, local covering property, general ambient lift or independently constructed dual-model pairing is supplied by these finite quotient arguments.
+
+#### 2H.7. Graded exercise: quotient algebras and good models
+
+**Exercise 2H (100 points; ten parts of 10 points each).** Use FQ1–FQ6 and the indicated earlier proofs. Include the full scheme kernels, rather than only their geometric point sets.
+
+**(a) A quotient with nonreduced special kernel.** Over \(R=\mathbf Z_p\), let \(\mu_p\) act on \(\mathbf G_m=\operatorname{Spec}R[x,x^{-1}]\) by multiplication. Compute the invariant algebra, a free module basis, the torsor tensor identity, and the complementary map for \(N=p\). Decide whether the quotient, the quotient map and its special fibre map are smooth.
+
+**(b) A two-dimensional torus.** For any integer \(m\), embed \(\mu_p\) in \(\mathbf G_m^2\) by \(z\mapsto(z,z^m)\). Construct the full quotient map in coordinates, its invariant character lattice and its complementary map for \(N=p\). Compute both degrees, the special differential rank and the special kernel length.
+
+**(c) Why an integral inclusion is insufficient.** Let \(D=k[t^2,t^3]\subset A=k[t]\). Prove that \(A/D\) is finite and has generic rank one, but is not flat at the cusp. Identify the additional algebra assertions in FQ1 that this example does not provide.
+
+**(d) Invariant affine charts.** For \(\mathcal H\subset\mathcal G[N]\), prove directly on test schemes that \([N]^{-1}V\) is invariant for every affine \(V\subset\mathcal G\). Explain why these charts do not require a relatively ample line, and why the group law on their quotient is a full scheme map.
+
+**(e) Complementary degrees.** Let \(\mathcal G/R\) have abelian dimension two and torus rank one. Suppose \(\mathcal H\subset\mathcal G[6]\) is finite flat of rank twelve. Compute the degrees of \([6]\), \(q\), \(d\), and the rank of \(\ker d\). Does the existence of such a subgroup follow from those four numbers alone?
+
+**(f) Good reduction and a residue-divisible isogeny.** A good abelian surface over a characteristic-zero local field admits an isogeny of degree twenty-five to an abelian variety \(A\). Prove that \(A\) has good reduction even when the residue characteristic is five. Use \(N=25\) to compute the complementary degree. Compute the integral Tate-module indices at \(\ell=2,3,5,7\), distinguishing the good-model unramified conclusion from what is available at five.
+
+**(g) A separating basis in positive characteristic.** Over a perfect field \(k\) of characteristic \(p\), put \(K=k(s,t)\). Prove that \(u=s^p+t,\ v=t^p\) are algebraically independent and that \(K/k(u,v)\) is finite purely inseparable of degree \(p^2\). Compute \([K:K^p]\), and give instead a separating transcendence basis. Explain why an arbitrary transcendence basis cannot replace the argument in FQ3.
+
+**(h) Quotients and nonflat base change.** In part (b), reduce first modulo \(p\) and then base change to \(k[\epsilon]/(\epsilon^2)\), with \(k=\mathbf F_p\). Compute the invariant algebra after this change and the finite free rank. Explain why this calculation follows from the torsor, even though taking invariants of a general action need not commute with a nonflat base change.
+
+**(i) A descended finite action.** Let \(\mathbf G_m^2\) have the coordinate-interchange involution and let \(\mathcal H=\{(z,z):z^n=1\}\), over any DVR and with \(n\ge1\). Use quotient coordinates \(U=x^n,\ V=y/x\). Compute the induced involution on \(U,V\), verify its square and check equivariance of the quotient map and the complementary map for \(N=n\). Include the case where the residue characteristic divides \(n\).
+
+**(j) The geometric scope.** State the quotient and isogeny inputs now proved for good abelian models and for supplied semiabelian models. Identify which data still must be constructed for the full general period presentation in Theorem 2.4. Explain why neither an fppf quotient sheaf by itself nor the exact sequence of each geometric fibre substitutes for the required integral and analytic constructions.
+
+**Full solution.**
+
+**(a)** The coaction is \(x\mapsto x\otimes z\), where \(z^p=1\). The monomials \(1,z,\ldots,z^{p-1}\) are a basis over \(R\), including after reduction modulo \(p\). Comparing their coefficients shows that precisely the powers \(x^{pj}\) are invariant. Thus
+\[
+ D=R[u,u^{-1}],\quad u=x^p,\qquad
+ A=\bigoplus_{i=0}^{p-1}Dx^i,\qquad
+ A\otimes_D A\simeq A[z]/(z^p-1).
+ \tag{FQX1}
+\]
+In the last map the second copy of \(x\) is \(xz\); conversely \(z=x_2/x_1\). The quotient is the torus with coordinate \(u\), and \(q(x)=x^p\). The complementary \(d\) sends \(u\) to that same unit as a coordinate on the original torus, so is a degree-one isomorphism. Both compositions are multiplication by \(p\) on their respective tori.
+
+The quotient torus is smooth over \(R\). The map \(q\) has differential \(p x^{p-1}\), which vanishes on the special fibre. There its kernel is
+\(k[z]/(z^p-1)=k[w]/(w^p)\), of length \(p\), rather than a smooth zero-dimensional scheme. Consequently \(q\) is not smooth, and its special map is finite purely inseparable of degree \(p\). Smoothness of the quotient does not assert smoothness of \(q\).
+
+**(b)** A character \(x^a y^b\) restricts to \(z^{a+mb}\), so its invariant lattice is
+\[
+ L=\{(a,b)\in\mathbf Z^2:a+mb\equiv0\pmod p\}
+   =\mathbf Z(p,0)+\mathbf Z(-m,1).
+ \tag{FQX2}
+\]
+The equality follows by writing \(a+mb=pc\). Hence the quotient torus has coordinates \(U=x^p,\ V=y/x^m\), and
+\[
+ q(x,y)=(x^p,y/x^m),\qquad
+ d(U,V)=(U,U^mV^p),\qquad
+ \deg q=\deg d=p.
+ \tag{FQX3}
+\]
+The degree of \(q\) is also certified by the free basis \(1,x,\ldots,x^{p-1}\) over \(R[U^{\pm1},V^{\pm1}]\), since \(y=Vx^m\). Its kernel is exactly \(x^p=1,\ y=x^m\), the given \(\mu_p\) with its full algebra. Direct substitution in both orders gives \((x^p,y^p)\) and \((U^p,V^p)\), proving the complementary identities. On logarithmic differentials the matrix of \(q\) is
+\[
+ \begin{pmatrix}p&0\\-m&1\end{pmatrix},
+ \tag{FQX4}
+\]
+whose rank modulo \(p\) is one for every \(m\). The special kernel has one geometric point and length \(p\). These statements include negative \(m\), since all coordinates are units.
+
+**(c)** The element \(t\) is integral over \(D\), satisfying \(X^2-t^2=0\), and \(1,t\) span \(A\) over \(D\). Their fraction fields are the same, since \(t=t^3/t^2\), so the generic rank is one. At the cusp maximal ideal \(\mathfrak m=(t^2,t^3)\),
+\[
+ A/\mathfrak mA=k[t]/(t^2)
+ \quad\text{has dimension }2,\qquad
+ A\otimes_D\operatorname{Frac}D=\operatorname{Frac}D.
+ \tag{FQX5}
+\]
+If the finite module were flat at that point, finite presentation and T4–T5 would make it free there. Its generic rank would force rank one and therefore a one-dimensional residue fibre, a contradiction. Thus integrality and a finite module generating set do not establish flatness. This example has no proved finite flat free action relation, no common basis with coassociativity, and no torsor identity as in (FQ3). FQ1 supplies exactly those additional assertions.
+
+**(d)** A test-scheme point of the action consists of \(x\in\mathcal G(T)\), \(z\in\mathcal H(T)\). The equation \([N]z=0\) gives \([N](x+z)=[N]x\). Therefore a point over \(V\) remains over \(V\) after translation, and the inverse translation gives equality of the invariant open subfunctors. Since \([N]\) is finite, its preimage of \(V\) is affine. These are actual inverse images under a finite map, requiring no projective embedding.
+
+Addition followed by \(q\) is invariant under the product action of \(\mathcal H^2\) on \(\mathcal G^2\): adding translated inputs changes their sum by an element of \(\mathcal H\). The finite faithfully flat product cover and FD5 descend it uniquely to \(\mathcal Q^2\to\mathcal Q\). Triple product covers detect associativity, and the inverse and origin identities are detected similarly. This proves the group law as a scheme morphism, including nilpotent test bases.
+
+**(e)** Here \(2a+t=5\), so
+\[
+ \deg[6]=6^5=7776,\qquad
+ \deg q=12,\qquad
+ \deg d=\operatorname{rank}\ker d=648.
+ \tag{FQX6}
+\]
+The equality is \(12\cdot648=7776\). These are consequences of a supplied subgroup, rather than a construction of one. Divisibility of the rank alone does not specify a closed subgroup, its Hopf algebra, embedding, flatness or compatible integral fibres.
+
+**(f)** The generic kernel is finite étale in characteristic zero, has rank twenty-five, and is killed by twenty-five by FF5. Its FF6 closure is finite flat inside the all-integer kernel \(\mathcal B[25]\). FQ1–FQ4 give the good abelian quotient model of \(A\), even in residue characteristic five. With \(a=2\),
+\[
+ \deg d=25^4/25=25^3=15625,\qquad
+ [T_\ell A:fT_\ell B]=\ell^{v_\ell(25)}
+   =\begin{cases}25&\ell=5,\\1&\ell=2,3,7.\end{cases}
+ \tag{FQX7}
+\]
+The index formula is CU10 over the characteristic-zero generic field, so also holds at five. GQ4's good-model unramified statement applies only when \(\ell\) differs from the residue characteristic. In residue characteristic five it proves unramifiedness at two, three and seven; it makes no such assertion at five. The integral finite flat model at five does not replace a \(p\)-adic comparison proof.
+
+**(g)** The field \(K\) is algebraic over \(F=k(u,v)\), since
+\[
+ t^p=v,\qquad s^p=u-t,\qquad s^{p^2}=u^p-v.
+ \tag{FQX8}
+\]
+It therefore has transcendence degree two over \(k\), forcing \(u,v\) to be algebraically independent: if they were dependent, their field would have transcendence degree at most one, and algebraic extension would not change that degree. This last dimension statement is the field normalization/transcendence calculation GQ1.
+
+Over the rational field \(k(u,v)\), \(v\) has no \(p\)-th root: its exponent valuation at the irreducible polynomial \(v\) is one, whereas every \(p\)-th power has valuation divisible by \(p\). Thus adjoining \(t\) has degree \(p\). The resulting field is \(k(u,t)\). In that rational field \(u-t\) has valuation one at its irreducible linear polynomial, so adjoining \(s\) again has degree \(p\). Both extensions are purely inseparable, giving \([K:F]=p^2\). On the other hand \([K:K^p]=p^2\) by the monomial basis \(s^i t^j\), \(0\le i,j<p\). The pair \(s,t\) itself is a separating transcendence basis, since the remaining field extension is the identity. The arbitrary basis \(u,v\) gives a purely inseparable remaining extension and does not yield the nonvanishing derivative chart (FQ8).
+
+**(h)** Put \(R'=k[\epsilon]/(\epsilon^2)\). The invariant algebra is
+\[
+ R'[U,U^{-1},V,V^{-1}],\qquad
+ A'=R'[x^{\pm1},y^{\pm1}]
+    =\bigoplus_{i=0}^{p-1}R'[U^{\pm1},V^{\pm1}]x^i.
+ \tag{FQX9}
+\]
+The torus relation is still \(U=x^p,\ y=Vx^m\). The quotient kernel is the full rank-\(p\) algebra \(R'[w]/(w^p)\), with \(w=z-1\). The basis proves the rank over the ring retaining \(\epsilon\); its length over \(k\) is \(2p\), not \(p\). The tensor identity of part (a), with the extra invariant \(V\), survives this base change. FD1 applied to that faithfully flat cover gives its invariant algebra, which is exactly FQ4. It is not an argument that all equalizer kernels survive a nonflat tensor operation.
+
+**(i)** The quotient map is \(q(x,y)=(x^n,y/x)\); its free rank is \(n\) as in part (b) with \(p\) replaced by \(n\) and \(m=1\). The interchange sends
+\[
+ \sigma(U,V)=(UV^n,V^{-1}),\qquad
+ d(U,V)=(U,UV^n).
+ \tag{FQX10}
+\]
+Substitution gives
+\(\sigma^2(U,V)=(UV^n(V^{-1})^n,V)=(U,V)\), and
+\(q(y,x)=(y^n,x/y)=\sigma(q(x,y))\). Also
+\(d(\sigma(U,V))=(UV^n,U)\), the interchange of \(d(U,V)\). The complementary identities follow by the same substitution as (FQX3). All formulas are Laurent polynomial scheme identities over the original DVR; they still hold when \(n\) is zero in the residue field. In that case the kernel can be nonreduced, but the action and cocycle do not disappear.
+
+**(j)** FQ1 constructs the scheme quotient by each supplied finite locally free subgroup in a multiplication kernel, including all nilpotents and arbitrary base changes. FQ2 gives the complementary finite flat map and its exact degree and kernel. FQ3 proves smoothness of the quotient model and good abelian reduction in the proper case. FQ4 transfers good reduction through every characteristic-zero generic isogeny, and extends isogenies between good models as finite flat maps. FQ5 descends supplied compatible integral maps and finite semilinear actions. FQ6 identifies the semiabelian geometric fibres and their torus rank.
+
+For an arbitrary abelian variety, one still must construct the initial integral semiabelian extension, the actual lattice and equivariant period injection, and the locally covering map to the analytification with its kernel and finite-extension point-lifting properties. A required particular integral torus-by-abelian sequence on a quotient, its compatible maps, and any claimed independent dual-model pairing also need their own construction. A sheaf quotient without representability supplies no scheme charts or model. A collection of geometric-fibre exact sequences supplies neither the required integral morphisms nor an analytic covering. Once a genuine period presentation is constructed, PC1–PC6 prove its period rank, valuation nondegeneracy, all torsion levels and transition-compatible Galois action. The full general theorem remains the requested scope.
+
+### 2I. Integral semiabelian sequences and isogeny transfer of periods
+
+We now construct the integral sequence that was left separate from the fibre sequence (FQ13). This also permits transfer of the precise local-field period presentations used in PC2. The initial period presentation is still an input; the transfer will apply to every isogeny from a variety for which that input has been constructed.
+
+For the integral statements, \(R\) is a complete discrete valuation ring with fraction field \(K\) of characteristic zero, uniformizer \(\pi\) and arbitrary residue field \(k\). The supplied extension and subgroup are
+\[
+ 0\longrightarrow\mathcal T\longrightarrow\mathcal G
+   \xrightarrow{b}\mathcal B\longrightarrow0,\qquad
+ \mathcal T=\mathbf G_{m,R}^{\,t},\qquad
+ \mathcal H\subset\mathcal G[N]\text{ finite locally free}.
+ \tag{IS1}
+\]
+Write \(h=\operatorname{rank}\mathcal H\). All intersections below are scheme-theoretic. The finite flat quotient, arbitrary base change and good abelian quotient proofs are FQ1–FQ5. The required elementary rigidity and subgroup lifting are proved first. For free comparisons, see Conrad's author version of [*Reductive group schemes*, Appendix B, Corollary B.2.7 and Theorem B.3.2](https://math.stanford.edu/~conrad/papers/luminysga3smf.pdf), and the Stacks project's [lifting over henselian pairs](https://stacks.math.columbia.edu/tag/0D49). Only the finite, commutative arguments given here are needed.
+
+#### 2I.1. Finite Cartier duals and torus subgroups
+
+**IS1.** If \(A\) is a finite free commutative and cocommutative Hopf algebra over \(R\), then \(A^\vee=\operatorname{Hom}_R(A,R)\) is again such a Hopf algebra, and its double dual is canonically \(A\). For a finite abelian group \(C\), put
+\[
+ D_R(C)=\operatorname{Spec}R[C],\qquad
+ \Delta[e_c]=[e_c]\otimes[e_c],\quad
+ \epsilon[e_c]=1,\quad S[e_c]=[e_{-c}].
+ \tag{IS2}
+\]
+Here \(R[C]\) has basis \([e_c]\) with \([e_c][e_d]=[e_{c+d}]\). The Cartier dual of \(D_R(C)\) is the constant group \(C_R\).
+
+*Proof.* A finite basis gives the isomorphism
+\((A\otimes_R A)^\vee=A^\vee\otimes_R A^\vee\), independent of the basis because both sides act by the same evaluation pairing on pure tensors. Dualize comultiplication to define multiplication, and multiplication to define comultiplication; dualize counit, unit and antipode for the other three maps. Each Hopf identity is an identity between maps of finite tensor powers, so dualizing it proves the corresponding identity for the dual maps. Commutativity and cocommutativity interchange. Evaluation identifies the double dual with the original algebra and all its structure maps. These constructions commute with every base change, since a finite free basis and its dual remain bases.
+
+In the basis \(\delta_c\) dual to \([e_c]\), multiplication on \(R[C]^\vee\) satisfies
+\[
+ \delta_c\delta_d=
+ \begin{cases}\delta_c&c=d,\\0&c\ne d,\end{cases}
+ \qquad
+ \Delta\delta_c=\sum_{a+b=c}\delta_a\otimes\delta_b .
+ \tag{IS3}
+\]
+Thus it is the coordinate algebra \(R^C\) of the constant group, with its actual addition law.
+
+We also record the torus-subgroup calculation over any field \(E\). If \(M=\mathbf Z^t\) and a finite closed subgroup of \(\operatorname{Spec}E[M]\) has coordinate algebra \(C_0\), the images of the Laurent monomials are group-like and span \(C_0\). Distinct group-like elements are linearly independent by the minimal-dependence and comultiplication argument of FQ6; that proof works over any field. Their images consequently form a finite group \(M/L\), and
+\[
+ C_0=E[M/L],\qquad
+ \ker(E[M]\to C_0)=(\chi^\lambda-1:\lambda\in L).
+ \tag{IS4}
+\]
+Indeed monomials in the same coset have the same image, and images of distinct cosets are independent. The group \(M/L\) is finite because those independent images lie in a finite-dimensional space.
+
+In particular the canonical flat closure of such a generic subgroup in \(\mathcal T\) is \(D_R(M/L)\). Its displayed equations define a finite free quotient \(R[M/L]\), and its generic fibre is the given subgroup, so the saturation uniqueness of FF6 identifies it with the closure. The torus quotient is
+\[
+ \mathcal T/D_R(M/L)=\operatorname{Spec}R[L],\qquad
+ R[M]=\bigoplus_{\gamma\in M/L}R[L]\chi^\gamma .
+ \tag{IS5}
+\]
+PC0 makes \(L\) free of rank \(t\). Comparing the independent basis monomials proves the invariant-ring assertion and the torsor tensor identity, or one may apply the affine proof QS2–QS4. Thus (IS5) is a split torus quotient of finite flat degree \(|M/L|\), not just a quotient of points. \(\square\)
+
+#### 2I.2. Rigidity on reduction
+
+**IS2.** Let \(C\) be finite abelian and \(\mathcal P/R\) a smooth separated commutative group scheme. Reduction is injective on homomorphisms
+\[
+ \operatorname{Hom}_{R\text{-gp}}(D_R(C),\mathcal P)
+    \longrightarrow
+ \operatorname{Hom}_{k\text{-gp}}(D_k(C),\mathcal P_k).
+ \tag{IS6}
+\]
+
+*Proof.* Subtract two homomorphisms, so it suffices to prove that a homomorphism \(u\) reducing to zero is zero. The algebra of a diagonalizable group has no primitive element, over any coefficient ring \(V\). If \(w=\sum_c a_c[e_c]\) satisfies
+\(\Delta w=w\otimes1+1\otimes w\), compare the coefficient of \([e_c]\otimes[e_c]\) for \(c\ne0\). It is \(a_c\) on the left and zero on the right, so \(a_c=0\). The coefficient at \(0,0\) then says \(a_0=2a_0\), hence \(a_0=0\), including in characteristic two. The same proof works with coefficients in any module.
+
+Suppose by induction that \(u\) is zero modulo \(\pi^r\), with \(r\ge1\). The ideal \(I=(\pi^r)/(\pi^{r+1})\) is square-zero. The difference of a map to a smooth scheme and its zero-section map, when they agree modulo \(I\), is a derivation along that section. This is the coordinate calculation SF1: differences of products are
+\(\delta(fg)=f(e)\delta(g)+g(e)\delta(f)\), since the product of two differences is zero. It is therefore an element of
+\[
+ \operatorname{Lie}(\mathcal P_k)\otimes_k
+       I\otimes_k k[C].
+ \tag{IS7}
+\]
+The tangent map of addition at \((e,e)\) is \((v,w)\mapsto v+w\): its restrictions to either factor are identity by the two unit laws. The homomorphism identity for \(u\) consequently says that every coordinate of (IS7) is primitive in \(k[C]\), with coefficients in \(I\). The preceding comparison makes it zero. This proves the induction step and hence equality to zero modulo every \(\pi^r\).
+
+Finally this formal equality is an actual equality. Choose an affine open of \(\mathcal P\) containing the special identity. Its complement has closed inverse image in the finite \(R\)-scheme \(D_R(C)\). If that closed subset were nonempty, its image under the finite map to \(\operatorname{Spec}R\) would be a nonempty closed subset and would meet the closed point; this contradicts zero reduction. Thus \(u\) and the zero map land in the same affine open. Their coordinate differences lie in every \(\pi^rR[C]\), whose intersection is zero in the finite free module \(R[C]\). They are equal. This proves (IS6). \(\square\)
+
+#### 2I.3. Lifting a multiplicative subgroup of the special fibre
+
+**IS3.** Let \(\mathcal A/R\) be finite locally free and commutative. Every specified closed embedding \(D_k(C)\hookrightarrow\mathcal A_k\) lifts uniquely to a closed embedding \(D_R(C)\hookrightarrow\mathcal A\).
+
+*Proof.* Let \(A\) be the Hopf algebra of \(\mathcal A\), and \(A^\vee\) its dual from IS1. The given embedding is a surjection of finite-dimensional Hopf algebras \(A_k\to k[C]\). Its dual is an injection
+\[
+ k^C\hookrightarrow A^\vee/\pi A^\vee .
+ \tag{IS8}
+\]
+Let \(\bar e_c\) be the images of its coordinate idempotents. Lift each to an idempotent \(e_c\in A^\vee\). Here is the precise lifting argument. Over a square-zero ideal, if \(x^2-x\) lies in that ideal, \(2x-1\) is a unit since its square is \(1+4(x^2-x)\), and
+\[
+ x'=x-(2x-1)^{-1}(x^2-x)
+ \tag{IS9}
+\]
+is idempotent. Two lifts differ by a square-zero element \(d\); their idempotent equations give \((2x-1)d=0\), hence equality. Apply this successively modulo \(\pi^r\), and use completeness of the finite free module \(A^\vee\) to obtain unique lifts. Products of distinct lifts and their sum are idempotents lifting zero and one, so the lifts are orthogonal and sum to one. This is also the HS1 lifting argument in Lesson 3, with the complete limit now taken explicitly.
+
+They define an algebra map \(R^C\to A^\vee\). It is a Hopf map. For example, in the complete algebra \(A^\vee\otimes_R A^\vee\), the two elements
+\[
+ \Delta(e_c),\qquad\sum_{a+b=c}e_a\otimes e_b
+ \tag{IS10}
+\]
+are idempotents lifting the same special idempotent. Uniqueness makes them equal. Counit and antipode compatibility follow in the same way, using the complete rings \(R\) and \(A^\vee\). Thus this map lifts (IS8) as a Hopf map.
+
+We must check the dual map is surjective over \(R\), not just on the generic fibre. Each summand \(e_cA^\vee\) is a direct summand of a finite free \(R\)-module and is free by Lesson 1, §0A. Its unit \(e_c\) has nonzero reduction, by injectivity of (IS8). A vector in a finite free module over the local DVR with nonzero residue has a unit coordinate; projecting to that coordinate and dividing by its value gives an \(R\)-linear functional sending \(e_c\) to one. On these summands the functionals give an \(R\)-linear retraction of \(R^C\to A^\vee\). Dualizing therefore gives a surjection
+\[
+ A\longrightarrow (R^C)^\vee=R[C].
+ \tag{IS11}
+\]
+It is a Hopf map by IS1, so defines the required closed subgroup. Its special map is the specified one by double-dual evaluation. Any other lift would dualize to another lift of the same orthogonal idempotents, so would be equal. This proves uniqueness as well. \(\square\)
+
+#### 2I.4. The toric intersection is finite flat
+
+**IS4.** In (IS1) the intersection \(\mathcal K=\mathcal H\cap\mathcal T\) is finite locally free and diagonalizable. The image \(\mathcal J\) of \(\mathcal H\to\mathcal B\) is a closed finite locally free subgroup, and
+\[
+ 0\longrightarrow\mathcal K\longrightarrow\mathcal H
+       \longrightarrow\mathcal J\longrightarrow0
+ \tag{IS12}
+\]
+is fppf exact, with all three finite locally free group schemes. In particular \(h=h_T h_B\), where \(h_T=\operatorname{rank}\mathcal K\) and \(h_B=\operatorname{rank}\mathcal J\).
+
+*Proof.* Begin with \(K_K=H_K\cap T_K\). By IS1 its flat closure \(\mathcal K_0\subset\mathcal T\) is diagonalizable. It is also a closed subgroup of \(\mathcal H\): pull back the ideal of \(\mathcal H\) to \(\mathcal K_0\); it vanishes generically and therefore vanishes because the latter is \(R\)-flat. This identifies the two canonical closures in the fixed ambient \(\mathcal G[N]\).
+
+Form \(\mathcal G_1=\mathcal G/\mathcal K_0\) by FQ1. The map to \(\mathcal B\) descends. Its kernel is the split torus
+\(\mathcal T_1=\mathcal T/\mathcal K_0\) of (IS5), and it is fppf surjective. Indeed a section in the kernel lifts locally to \(\mathcal G\), where its image in \(\mathcal B\) is zero, so the lift is in \(\mathcal T\); two such lifts differ exactly by \(\mathcal K_0\). Thus this is already an actual integral extension of \(\mathcal B\) by \(\mathcal T_1\).
+
+The quotient \(\mathcal H_1=\mathcal H/\mathcal K_0\) is finite locally free by the affine proof QS2–QS4 applied to translation on the affine finite scheme \(\mathcal H\). It embeds as a closed subgroup of \(\mathcal G_1\). To see this without a reduced-point argument, the fppf preimage of this subgroup under \(\mathcal G\to\mathcal G_1\) is exactly \(\mathcal H\), by the quotient relations. That preimage is a closed immersion. FD6 descends that closed immersion along the finite faithfully flat quotient cover. Its generic intersection with \(T_{1,K}\) is trivial by the definition of \(K_K\).
+
+Consider the finite special intersection
+\(M=\mathcal H_{1,k}\cap\mathcal T_{1,k}\). As a closed subgroup of a split torus it is \(D_k(C)\) for some finite \(C\), by IS1. IS3 lifts it to a closed subgroup \(D_R(C)\hookrightarrow\mathcal H_1\). Its composite into \(\mathcal B\) is zero on the special fibre. IS2, with \(\mathcal P=\mathcal B\), makes this composite zero over \(R\). Therefore its generic fibre lies in the trivial intersection \(H_{1,K}\cap T_{1,K}\). The closed embedding then forces \(|C|=1\), since \(D_R(C)\) has rank \(|C|\). Thus the special intersection is trivial as a scheme, not merely as a set of points.
+
+The whole finite intersection \(\mathcal H_1\cap\mathcal T_1\) is now trivial. Its finite coordinate module has generic dimension one and special dimension one. FF1's local rank lemma over the domain \(R\) makes it free of rank one; its unit is a basis by Nakayama, so its algebra is \(R\). Hence \(\mathcal H_1\to\mathcal B\) has trivial kernel as a sheaf and is a monomorphism by subtraction. It is finite: the source is finite over \(R\), the target is separated over \(R\), so the graph and proper projection make it proper with finite fibres; the proper finite-fibres theorem of Lesson 3 applies.
+
+This finite monomorphism is a closed immersion by CIE1. Its geometric fibres are empty or a single reduced point: a monomorphism gives at most one point and kills all dual-number tangent vectors, and a finite local algebra with zero cotangent space is its residue field by Nakayama. Let its image be \(\mathcal J\). It is finite locally free, since it is isomorphic to \(\mathcal H_1\). Thus \(\mathcal H\to\mathcal J\) is the already proved finite flat quotient with kernel \(\mathcal K_0\). Its kernel is also the original intersection \(\mathcal H\cap\mathcal T\), as the map to \(\mathcal B\) has that kernel. This proves \(\mathcal K=\mathcal K_0\), (IS12), and the rank product by the finite flat torsor. \(\square\)
+
+#### 2I.5. The full integral quotient sequence
+
+**IS5.** The quotient \(\mathcal Q=\mathcal G/\mathcal H\) has the fppf exact integral sequence and compatible quotient maps
+\[
+ \begin{array}{ccccccccc}
+ 0&\longrightarrow&\mathcal T&\longrightarrow&\mathcal G&
+   \longrightarrow&\mathcal B&\longrightarrow&0\\
+ &&\downarrow q_T&&\downarrow q&&\downarrow q_B\\
+ 0&\longrightarrow&\mathcal T'&\longrightarrow&\mathcal Q&
+   \longrightarrow&\mathcal B'&\longrightarrow&0,
+ \end{array}
+ \quad
+ \mathcal T'=\mathcal T/\mathcal K,\quad
+ \mathcal B'=\mathcal B/\mathcal J.
+ \tag{IS13}
+\]
+Here \(\mathcal T'\) is split of rank \(t\), \(\mathcal B'\) is an abelian scheme of dimension \(a\), and the three vertical maps have finite flat degrees \(h_T,h,h_B\). In particular the lower row is a torus torsor over the good abelian quotient.
+
+*Proof.* IS1 constructs the torus quotient and FQ3 constructs the abelian quotient. The map \(\mathcal G\to\mathcal B'\) is invariant under \(\mathcal H\), so FQ1 descends it to \(\mathcal Q\). It is fppf surjective. In the intermediate extension of IS4, the subgroup \(\mathcal H_1\) maps isomorphically onto \(\mathcal J\) and has trivial intersection with \(\mathcal T_1\). A section of the kernel of \(\mathcal Q\to\mathcal B'\) lifts locally to \(\mathcal G_1\); subtract the unique section of \(\mathcal H_1\) over its image in \(\mathcal J\). The result belongs to \(\mathcal T_1\), and no two such torus sections differ by a nonzero element of \(\mathcal H_1\). This gives an isomorphism of the kernel sheaf with \(\mathcal T_1=\mathcal T'\), and hence of the representing schemes. The quotient by the intermediate groups equals \(\mathcal G/\mathcal H\) by the same lift-and-difference argument. This proves (IS13) on all test schemes, with nilpotents retained. The subtraction map then gives the torus-torsor identity. The rank statements are IS4 and the displayed torus and abelian quotients.
+
+In character coordinates, if \(\mathcal T=\operatorname{Spec}R[M]\) and \(\mathcal K=D_R(M/L)\), the pullback on character lattices is the inclusion \(L\hookrightarrow M\) of index \(h_T\). Inverting the rational character matrix shows that the complementary map of FQ2 preserves both rows and has toric and abelian degrees
+\[
+ \deg d_T=N^t/h_T,\qquad
+ \deg d_B=N^{2a}/h_B,\qquad
+ \deg d=(N^t/h_T)(N^{2a}/h_B).
+ \tag{IS14}
+\]
+More directly, \([N]\) descends separately through \(q_T,q_B\), giving \(d_T,d_B\); their composites with the maps in (IS13) equal the corresponding composites of \(d\) after \(q\). Faithful descent cancels \(q\). The torus basis (IS5), the abelian FQ2 rank and \(h=h_T h_B\) prove (IS14). All these equations, torsors and degree assertions survive any subsequent base change. \(\square\)
+
+#### 2I.6. Functoriality, actions and valuations
+
+**IS6.** Supplied integral homomorphisms respecting the original torus-by-abelian sequences and subgroups induce homomorphisms of (IS13). Stable finite semilinear actions induce such actions on the entire lower sequence. Over a local field \(K\), the actual quotient maps satisfy
+\[
+ \nu_{\mathcal Q}(qg)=q_X\,\nu_{\mathcal G}(g),\qquad
+ [X_*(T'):q_X X_*(T)]=h_T .
+ \tag{IS15}
+\]
+The valuations use the same base-field normalization on both sides.
+
+*Proof.* A supplied map carries the toric intersection into the target toric intersection, and therefore carries its image \(\mathcal J\) into the target \(\mathcal J'\). Use the invariant-map uniqueness of FQ5 for all three quotients. It proves the commuting squares, identities and composition. A base automorphism is handled by twisting; the same uniqueness proves each finite-action cocycle. No unspecified ambient map is created.
+
+PM2 constructs the valuation quotient for each actual integral torus torsor over an abelian scheme. Its functoriality, proved by evaluation of characters, gives the first equation in (IS15). For the second, PC0 diagonalizes the integral character inclusion \(L\hookrightarrow M\) with invariant factors \(d_i\). Its index is \(\prod_i d_i=h_T\). The dual cocharacter matrix has the same diagonal invariant factors in dual bases, hence the same index. This proves the integral assertion, including residue-divisible degrees. \(\square\)
+
+#### 2I.7. Local-field inverse charts for generic isogenies
+
+**IS7.** A finite étale morphism between smooth varieties over a characteristic-zero local field induces a local homeomorphism on rational points at each rational point. Every point in the target of a surjective finite morphism lifts over some finite field extension.
+
+*Proof.* We give the analytic input for the first assertion. Give a finite-dimensional local-field vector space its maximum norm in a basis. For a convergent power-series map with invertible derivative at a point, translate the point to zero and use that derivative to make its expansion \(f(x)=x+g(x)\), with \(g(0)=0\) and \(dg(0)=0\). On a sufficiently small closed ball, the power-series difference identity for each monomial shows
+\[
+ \|g(x)-g(y)\|\le c\|x-y\|,\qquad c<1.
+ \tag{IS16}
+\]
+Indeed all terms of degree at least two acquire a ball-radius factor after taking a difference; convergence bounds the remaining coefficients, and shrinking the radius makes their supremum less than one. The same applies to convergent rational functions after shrinking to keep their denominators units.
+
+For each \(z\) in that ball, \(x\mapsto z-g(x)\) preserves the ball and is a contraction. Its iterates are Cauchy since successive differences are bounded by successive powers of \(c\); completeness gives a fixed point. Two fixed points coincide by the same bound. The ultrametric inequality gives \(\|f(x)-f(y)\|=\|x-y\|\) on the ball, so this inverse is continuous. Thus \(f\) is a homeomorphism there.
+
+The polynomial smooth charts SF2–SF3 convert this into the stated scheme assertion. At a rational point choose the defining relations with an invertible Jacobian minor. The map consisting of the free coordinates and those relations has invertible full derivative, so the preceding inverse gives local analytic coordinates on their zero set. For an étale morphism the derivative on these coordinates is invertible, by the zero-relative-dimension version of the same Jacobian criterion. Apply the inverse argument again. In particular a generic finite flat group quotient in characteristic zero is covered: FF5 makes its finite kernel étale; translation gives zero tangent kernel and invertible differential between the equal-dimensional smooth groups, as in FQ4.
+
+For the lifting assertion, a nonempty finite fibre over a rational point has a maximal ideal in its finite-dimensional coordinate algebra. Its residue field is finite over the original field, by its finite vector-space dimension. That field gives a point in the fibre. In characteristic zero take a finite Galois closure as well if desired. This does not assert surjectivity on the original rational points. \(\square\)
+
+#### 2I.8. Transfer of a genuine period presentation through an isogeny
+
+**IS8.** Let \(A/K\) have a local-field period presentation in the precise sense of PC2: the supplied integral extension (IS1), a free lattice \(Y\subset G(K)\), and compatible homomorphisms \(j_E:G(E)\to A(E)\) for every finite \(E/K\), with kernel \(Y\), the stated local homeomorphism at the identity and finite-extension point-lifting property. Let \(f:A\to A'\) be any isogeny, of degree \(n\). After a finite extension of \(K\), there is such a period presentation of \(A'\), with an actual integral semiabelian extension of the same torus and abelian dimensions. The quotient maps and period injections are compatible. Supplied finite semilinear actions for which \(f\) is equivariant are preserved. The degree decomposes as
+\[
+ n=|Z|\,[Y_{\mathrm{new}}:qY],
+ \tag{IS17}
+\]
+where \(Z\subset G[n]\) is the finite generic torus-and-abelian covering kernel defined below. It need not be the whole kernel of \(f\).
+
+*Proof.* PC2–PC3 already show that the original lattice is finitely generated, free of rank \(t\), and that every original point map is surjective. Work first in a fixed algebraic closure, using the compatible union of the maps \(j_E\). The finite-extension lifting property also directly makes \(j:G(\bar K)\to A(\bar K)\) surjective. Put
+\[
+ H=\ker f,\qquad
+ \widetilde Y=j^{-1}(H(\bar K)),\qquad
+ Z=\operatorname{Tor}(\widetilde Y).
+ \tag{IS18}
+\]
+Since \(H\) is finite étale of rank \(n\) in characteristic zero, this gives an exact sequence of abelian groups
+\[
+ 0\longrightarrow Y\longrightarrow\widetilde Y
+     \xrightarrow{j}H(\bar K)\longrightarrow0,\qquad
+ Z=\widetilde Y\cap G[n](\bar K).
+ \tag{IS19}
+\]
+For the last equality, \(n\widetilde Y\subset Y\), because \(H\) is killed by \(n\). If \(z\) is torsion, \(nz\in Y\) is torsion and hence zero. Conversely an element in the displayed intersection is torsion. The finite group \(Z\) injects into \(H(\bar K)\), since the torsion-free \(Y\) meets it trivially. The group \(\widetilde Y\) is finitely generated: lift the finitely many elements of \(H(\bar K)\) and add a finite basis of \(Y\). PC0 and Smith reduction therefore show
+\[
+ \widetilde Y/Z\text{ is free of rank }\operatorname{rank}Y,\qquad
+ [\widetilde Y/Z:Y]=n/|Z|.
+ \tag{IS20}
+\]
+The rank follows equally by tensoring (IS19) with \(\mathbf Q\). No assertion that \(\widetilde Y\) was torsion-free has been made.
+
+The subgroup \(Z\) is a finite closed subgroup scheme of \(G_K[n]\). Its geometric point subset is Galois stable by (IS18). After a finite Galois splitting field the ambient finite étale scheme is a disjoint union of rational points, and the subset is a closed subscheme. Descent of its ideal by FD3, or the finite Galois algebra decomposition of Lesson 1, constructs it over \(K\). Its group identities hold on that finite étale scheme because they hold on the points.
+
+Take its FF6 flat closure \(\mathcal Z\subset\mathcal G[n]\) and apply IS5 to construct
+\[
+ q:\mathcal G\longrightarrow\mathcal G_{\mathrm{new}}
+       =\mathcal G/\mathcal Z,\qquad
+ 0\longrightarrow\mathcal T_{\mathrm{new}}
+   \longrightarrow\mathcal G_{\mathrm{new}}
+   \longrightarrow\mathcal B_{\mathrm{new}}\longrightarrow0.
+ \tag{IS21}
+\]
+This is an actual split torus torsor over a good abelian scheme, of the same dimensions as the input. Put \(Y_{\mathrm{new}}=q(\widetilde Y)\). The kernel of \(q\) on geometric points is \(Z\), so (IS20) identifies this with an embedded free lattice. Choose a finite extension \(K_1/K\) containing the coordinates of the finitely many chosen generators of \(\widetilde Y\), enlarging to a Galois extension when finite actions are being retained. The new lattice then lies in \(G_{\mathrm{new}}(K_1)\). The index in (IS20) proves (IS17).
+
+Here is the map on every finite \(E/K_1\); its existence does not assume surjectivity of \(q:G(E)\to G_{\mathrm{new}}(E)\). Given \(x\in G_{\mathrm{new}}(E)\), lift it to \(g\in G(E')\) for a finite Galois extension \(E'/E\), using IS7. Define
+\[
+ j^{\mathrm{new}}_E(x)=f(j_{E'}(g)).
+ \tag{IS22}
+\]
+For \(\sigma\in\operatorname{Gal}(E'/E)\), the difference \(\sigma g-g\) is in \(Z(E')\), and \(j(Z)\subset H\). Thus the right side is Galois fixed and is an \(E\)-point of \(A'\), by finite Galois descent for scheme points. Any two lifts differ by \(Z\) after a common finite extension, proving independence. Taking lifts of two points proves additivity. The same argument proves compatibility with every extension and field embedding, and
+\[
+ j^{\mathrm{new}}_E(qg)=f(j_Eg)
+ \quad\text{whenever }g\in G(E).
+ \tag{IS23}
+\]
+Its kernel is exactly \(Y_{\mathrm{new}}\): lift a kernel element as above; its image under \(j\) lies in \(H\), so the lift belongs to \(\widetilde Y\). Conversely every such lift maps to zero. All those new period points already lie in \(G_{\mathrm{new}}(K_1)\).
+
+Near the identity over \(E\), both generic isogenies \(q\) and \(f\) have inverse local charts by IS7. On that neighbourhood the new map is the composition \(f\circ j_E\circ q^{-1}\) by (IS22), so it is continuous and a local homeomorphism. Translation gives continuity everywhere. To lift any \(a'\in A'(E)\), first lift along \(f\) after a finite field extension by IS7, then use the given finite-extension lifting property for \(j\), and apply \(q\). This proves the required finite-extension lifting property for the new maps. They therefore satisfy every hypothesis of PC2. Its proved finite-Galois cocycle argument then gives surjectivity on every \(G_{\mathrm{new}}(E)\to A'(E)\), since the new kernel is a constant torsion-free lattice. PC1–PC6 give its closed discrete kernel, full period rank, nondegenerate valuation and all actual torsion levels and transitions.
+
+Finally any supplied compatible finite semilinear action stabilizes \(H,\widetilde Y,Z\). FF6 and IS6 descend the integral action through (IS21), and uniqueness of (IS22) proves equivariance of the new point maps. A finite Galois extension containing the chosen generators keeps the lattice action finite. This proves the claimed compatibility.
+
+The construction proves transfer of the exact local-field presentations used in PC2, with local analytic inverse charts when the input has them. It has not assumed a global rigid-analytic descent theorem to replace this point-map construction, nor constructed the initial presentation for an arbitrary abelian variety. Those initial semistable geometric and covering constructions, and any separately claimed dual-model pairing, remain part of the full theorem. \(\square\)
+
+#### 2I.9. Graded exercise: integral intersections and transferred periods
+
+**Exercise 2I (100 points; ten parts of 10 points each).** Use IS1–IS8 and the actual earlier proofs indicated. Retain the scheme algebras and all nilpotents.
+
+**(a) Finite Cartier duality.** For \(C=\mathbf Z/4\mathbf Z\oplus\mathbf Z/2\mathbf Z\), write the Hopf algebra of \(D_R(C)\), its dual idempotents and their coproducts. Verify the double-dual evaluation on bases. What are the ranks, and in residue characteristic two how many geometric points does \(D_k(C)\) have?
+
+**(b) Primitive coordinates and the dual distinction.** Prove directly in characteristic \(p\) that \(k[\mathbf Z/p\mathbf Z]\) has no nonzero primitive element. Compare it with the primitive coordinate of \(\alpha_p\) and the primitive generator in the Cartier dual algebra of \(\mu_p\) calculated in Exercise 2G. Explain why neither is a counterexample.
+
+**(c) An idempotent lift without division by two.** Suppose \(I^2=0\) and \(x^2-x\in I\) in a commutative ring. Prove (IS9), its uniqueness and the invertibility needed in that formula. Apply the formula over \(\mathbf Z/4\mathbf Z\) to \(x=2\) and \(x=3\). Explain how complete finite free algebras allow all the successive lifts to be taken.
+
+**(d) Why the multiplicative hypothesis matters.** Over \(R=\mathbf Z_p[\zeta_p]\), consider \((\mathbf Z/p\mathbf Z)_R\to\mu_{p,R}\), \(i\mapsto\zeta_p^i\). Prove that it is nonzero generically but zero on the special fibre as a scheme map. Why does it not contradict IS2? Include \(p=2\).
+
+**(e) A full integral quotient diagram.** Let \(\mathcal B/R\) be a good elliptic scheme and \(\mathcal G=\mathbf G_m^2\times\mathcal B\). Embed
+\(\mathcal K=\mu_6\) in the torus by \(z\mapsto(z,z^2)\), and put
+\(\mathcal H=\mathcal K\times\mathcal B[3]\).
+Use \(N=12\). Give both rows of (IS13) and all three quotient degrees. Compute all three complementary degrees, and explicit complementary torus coordinates. The residue characteristic may be two or three.
+
+**(f) Excluding an extra special intersection.** Suppose \(\mathcal H_1\) is a finite flat subgroup of an actual integral extension by a split torus, and its generic intersection with that torus is trivial. Reproduce the argument showing that its special intersection is the trivial scheme. Explain precisely where completeness, finite freeness, smoothness and the full subgroup scheme enter.
+
+**(g) A generic inverse despite bad special reduction.** Prove that squaring gives a homeomorphism
+\(1+4\mathbf Z_2\to1+8\mathbf Z_2\).
+Relate this to the finite map \([2]:\mathbf G_{m,\mathbf Z_2}\to\mathbf G_{m,\mathbf Z_2}\). Why can the generic local-field inverse exist when that integral map is not étale?
+
+**(h) Two different contributions to the degree.** Use the actual Tate curve \(A=E_{p^6}\) over a finite extension of \(\mathbf Q_p\), with its proved Tate presentation. First quotient by the subgroup represented by \(\mu_3\); then, separately, quotient by the subgroup represented by \(p^{2\mathbf Z}/p^{6\mathbf Z}\). For each algebraic elliptic quotient, compute \(n,Z,\widetilde Y\), the new torus quotient, the new period lattice and (IS17). These are quotient constructions; no unexplained identification of two elliptic curves from point-set bijections is permitted.
+
+**(i) Both contributions at once.** Enlarge the field to contain \(\mu_4\), and let \(H\subset E_{p^6}\) be generated by the images of \(\mu_4\) and \(p^2\). Construct the algebraic quotient \(A'=E_{p^6}/H\) using Lesson 3. Determine the degree, the torsion subgroup \(Z\), the new cover, the period index and the normalized valuation relation. Explain which point maps to \(A'\) are actually constructed by IS8.
+
+**(j) Rational lifts, actions and the remaining theorem.** In (IS22), explain why a finite Galois extension may be needed to lift a rational point, why the output nevertheless belongs to the original field, and why its kernel is a constant torsion-free lattice after one fixed finite extension. State the precise condition needed to preserve a supplied finite semilinear action. Identify the initial geometric construction still required for Theorem 2.4.
+
+**Full solution.**
+
+**(a)** With coordinates \(u,v\) for the two generators, the algebra and full free basis are
+\[
+ R[C]=R[u,v]/(u^4-1,v^2-1),\qquad
+ \{u^iv^j:0\le i<4,\ 0\le j<2\}.
+ \tag{ISX1}
+\]
+The coordinates are automatically units. Each basis element is group-like; its counit is one and its antipode is \(u^{-i}v^{-j}\). The dual basis \(\delta_{i,j}\) consists of eight pairwise orthogonal idempotents summing to one, and
+\[
+ \Delta\delta_{i,j}=
+   \sum_{\substack{a+b=i\ (4)\\c+d=j\ (2)}}
+      \delta_{a,c}\otimes\delta_{b,d}.
+ \tag{ISX2}
+\]
+Evaluation sends \(u^iv^j\) to the functional on the dual basis taking value one at \(\delta_{i,j}\) and zero at the others. This is the inverse of the double-dual basis identification; (ISX2) and the pointwise dual products verify both Hopf operations. All ranks are eight. In characteristic two, \(u^4-1=(u-1)^4\), \(v^2-1=(v-1)^2\), so there is one geometric point and an algebra of length eight. The dual is the constant eight-point scheme; its rank is the same, although its number of points differs.
+
+**(b)** Write \(w=\sum_{i=0}^{p-1}a_i z^i\), with \(z^p=1\). In the basis \(z^i\otimes z^j\), a primitive equality has coefficient \(a_i\) at \((i,i)\) on the left and zero on the right for \(i\ne0\). Hence those coefficients vanish. At \((0,0)\) it gives \(a_0=2a_0\), so \(a_0=0\), even for \(p=2\).
+
+By contrast the algebra of \(\alpha_p\) has \(\Delta u=u\otimes1+1\otimes u\), so \(u\) is a nonzero primitive element. Its relation \(u^p=0\) and its coproduct differ from the group-like monomial basis of \(\mu_p\). The primitive \(D\) of the dual of \(\mu_p\) has \(D^p=D\), as proved in Exercise 2G; it lies in the dual algebra \(k^{\mathbf Z/p\mathbf Z}\), rather than the original group algebra. These are distinct Hopf algebras in characteristic \(p\).
+
+**(c)** Put \(a=x^2-x\in I\). The identity
+\((2x-1)^2=1+4a\) makes \(2x-1\) invertible, because \(a^2=0\) gives \((1+4a)^{-1}=1-4a\). Let \(d=-(2x-1)^{-1}a\). Then \(d^2=0\), and
+\[
+ (x+d)^2-(x+d)
+   =a+(2x-1)d+d^2=0.
+ \tag{ISX3}
+\]
+If two idempotents lifting the same residue differ by \(d\in I\), their equations give \((2e-1)d+d^2=0\). For the idempotent \(e\), \((2e-1)^2=1\), so \(d=0\).
+
+In \(\mathbf Z/4\mathbf Z\), \(x=2\) has \(a=2\), \(2x-1=3\), and the lift is \(2-3\cdot2=0\). For \(x=3\), \(a=2\), \(2x-1=1\), and the lift is \(3-2=1\). No division by two occurs. Applying the formula between successive \(\pi\)-power quotients gives unique compatible idempotents; completeness of a finite free algebra identifies it with the inverse limit of those quotients. Multiplication and the Hopf maps are continuous module maps, so the identities pass to that limit.
+
+**(d)** On algebras the map sends \(z\) to the tuple \((\zeta_p^i)_{i\in\mathbf Z/p\mathbf Z}\) in \(R^p\). Generically these are all distinct roots and the evaluation map is an isomorphism by the Vandermonde calculation FF7. In the residue field every \(\zeta_p^i\) is one, so the entire algebra map is
+\[
+ k[z]/(z^p-1)\longrightarrow k^p,\qquad
+ z\longmapsto(1,\ldots,1).
+ \tag{ISX4}
+\]
+It factors through evaluation at the identity, proving zero reduction as a scheme map, including the nilpotent coordinate \(z-1\). The source group of the original morphism is the constant group, whose special fibre has \(p\) reduced points. It is not \(D_R(\mathbf Z/p\mathbf Z)\), whose special fibre is nonreduced with one point. Thus the diagonalizable-source hypothesis of IS2 fails. For \(p=2\), \(\zeta_2=-1\), the two values \(1,-1\) are distinct generically and coincide modulo two, giving exactly the same example.
+
+**(e)** On torus coordinates set \(U=x^6,\ V=y/x^2\). The invariant character lattice is generated by \((6,0),(-2,1)\), so the lower torus is again \(\mathbf G_m^2\). The abelian quotient by \(\mathcal B[3]\) is \(\mathcal B\), with quotient map \([3]\), by FF2 and its kernel-torsor identity. Consequently one can write
+\[
+ q(x,y,b)=(x^6,y/x^2,[3]b),\qquad
+ h_T=6,\quad h_B=9,\quad h=54.
+ \tag{ISX5}
+\]
+The lower row is the product extension \(\mathbf G_m^2\times\mathcal B\), with its displayed maps. For \(N=12\), the complementary torus map is
+\[
+ d_T(U,V)=(U^2,U^4V^{12}),\qquad d_B=[4].
+ \tag{ISX6}
+\]
+Substitution with \(q_T\) in either order gives multiplication by twelve. Its exponent matrix has determinant \(24\), so its degree is \(24\); \(d_B\) has degree \(16\) by CU8 or FF2. Thus
+\[
+ \deg[12]_{\mathcal G}=12^4=20736,\qquad
+ \deg d_T=24,\quad\deg d_B=16,\quad\deg d=384,
+ \quad54\cdot384=20736.
+ \tag{ISX7}
+\]
+These ranks and coordinate algebras remain valid in residue characteristics two and three. The kernels can be nonétale; no inverse of six or three was used.
+
+**(f)** The special intersection is a finite closed subgroup of a split torus, so IS1 identifies it with \(D_k(C)\), with its full algebra rather than only its points. IS3 lifts the embedding into \(\mathcal H_1\) to \(D_R(C)\). Completeness and finite freeness enter when lifting all the dual idempotents and their tensor identities; the split module retraction makes the lifted dual map an actual closed immersion. Its composite into the good abelian quotient has zero reduction. IS2 uses the smooth identity tangent module, primitive-coordinate vanishing, and the complete separated finite source algebra to make that composite zero over \(R\). Thus its generic fibre lies in the trivial generic intersection. A closed immersion of a rank-\(|C|\) finite flat group into the trivial generic group forces \(|C|=1\). Hence the special intersection is the trivial scheme. Comparing only geometric points would miss, for example, a possible \(\mu_p\) special kernel, which has one point but rank \(p\).
+
+**(g)** Write \(x=1+4u\). Then
+\[
+ x^2=1+8(u+2u^2).
+ \tag{ISX8}
+\]
+For \(w\in\mathbf Z_2\), the equation \(u+2u^2=w\) is the fixed-point equation \(u=w-2u^2\). This map preserves \(\mathbf Z_2\), and
+\[
+ |2u^2-2v^2|_2
+   =|2(u-v)(u+v)|_2\le\tfrac12|u-v|_2.
+ \tag{ISX9}
+\]
+Its iterates converge to a unique solution; the same estimate shows that \(u\mapsto u+2u^2\) is an isometry and its inverse continuous. This proves the claimed homeomorphism. The integral map has special kernel \(\mu_{2,\mathbf F_2}\), hence is not étale over \(\mathbf Z_2\). On the generic field its derivative \(2x\) is nonzero and therefore invertible as a field scalar. IS7 permits shrinking both neighbourhoods to account for that scalar; an integral unit derivative is unnecessary for this generic inverse.
+
+**(h)** Let \(Y=p^{6\mathbf Z}\) inside \(\bar K^\times\). The Tate presentation identifies its quotient with the actual points of \(A\), over all finite extensions. The image of \(\mu_3\) is a finite subgroup of order three: a root of unity cannot be a nonidentity period, by valuation. Its finite étale subgroup scheme is defined after a finite splitting extension if necessary, and Lesson 3, QS1–QS8 constructs the algebraic elliptic quotient \(A_1\). For its isogeny \(f_1\),
+\[
+ n=3,\quad
+ \widetilde Y=\mu_3\,p^{6\mathbf Z},\quad
+ Z=\mu_3,\quad
+ q_T(x)=x^3,\quad
+ Y_{\mathrm{new}}=p^{18\mathbf Z},\quad
+ [Y_{\mathrm{new}}:q_TY]=1.
+ \tag{ISX10}
+\]
+The equality for the preimage follows because two lifts of the same \(A\)-point differ by an old period. The factorization (IS17) is \(3=3\cdot1\).
+
+For the second subgroup, the class of \(p^2\) has order three, since its cube is \(p^6\) and its smaller positive powers are not periods. It gives another finite subgroup and algebraic elliptic quotient \(A_2\), with
+\[
+ n=3,\quad
+ \widetilde Y=p^{2\mathbf Z},\quad
+ Z=0,\quad
+ q_T=\mathrm{id},\quad
+ Y_{\mathrm{new}}=p^{2\mathbf Z},\quad
+ [Y_{\mathrm{new}}:Y]=3.
+ \tag{ISX11}
+\]
+There is no torsion in this preimage because valuation is injective on \(p^{2\mathbf Z}\). Now (IS17) is \(3=1\cdot3\). In both cases IS8 constructs actual compatible maps from the new torus points to the indicated algebraic quotient. An algebraic identification of those quotients with other named Tate curves is not needed or inferred from a point-set bijection.
+
+**(i)** The root-of-unity subgroup injects with order four, and the class of \(p^2\) has order three. Their intersections in \(A\) are trivial: a relation \(\zeta p^{2r}\in p^{6\mathbf Z}\) first gives \(r\equiv0\pmod3\) by valuation and then \(\zeta=1\). Thus the subgroup has order twelve, is finite étale in characteristic zero, and gives the actual algebraic quotient by QS1–QS8. Its data are
+\[
+ n=12,\quad
+ \widetilde Y=\mu_4\,p^{2\mathbf Z},\quad
+ Z=\mu_4,\quad
+ q_T(x)=x^4,\quad
+ Y_{\mathrm{new}}=p^{8\mathbf Z},\quad
+ q_TY=p^{24\mathbf Z}.
+ \tag{ISX12}
+\]
+The period index is three and \(12=4\cdot3\). If \(v\) is the valuation of the common finite base field, then
+\(v(q_Tx)=4v(x)\); in particular the old generator of valuation \(6v(p)\) maps to valuation \(24v(p)\), which is three times the new period generator's valuation \(8v(p)\). The cocharacter index is four, agreeing with IS15.
+
+For every finite extension of the fixed field, IS22 defines a map to the algebraic \(A'\) by lifting through the fourth-power quotient after a finite Galois extension and then applying the quotient isogeny to the original Tate point. The independence and descent proof makes this an actual point of \(A'\) over the original field. The new torus cover and its period subgroup have therefore been constructed for that algebraic quotient, with no asserted global rigid descent or unexplained algebraic curve identification.
+
+**(j)** A finite étale fibre over a rational point can be a finite separable field extension rather than a product with an original-field factor; for instance a unit need not have the required root in the original field. IS7 gives a lift over a finite extension and one may take a finite Galois closure. Differences of its conjugates belong to \(Z\); applying \(j\) puts those differences in \(H=\ker f\). Hence \(f(j(g))\) is fixed by the finite Galois group and descends as a scheme point. A common further extension compares any two choices.
+
+The group \(\widetilde Y\) has finitely many cosets over the original finite-rank \(Y\), so finitely many algebraic generators. One fixed finite extension contains their coordinates. Its torsion is exactly \(Z\), killed by \(n\), and PC0 makes \(\widetilde Y/Z\) free. The quotient map embeds it as the new period lattice over that fixed field. Thus it is constant for every later finite extension. The maps retain a supplied finite semilinear action precisely when the input period maps are equivariant and the isogeny \(f\) is equivariant for the specified actions on its source and target. Under that condition \(H,\widetilde Y,Z\) are stable, and the unique quotient maps and (IS22) are equivariant.
+
+The initial integral semiabelian extension and actual period presentation after finite extension for an arbitrary abelian variety remain to be constructed. IS4–IS5 supplies the full integral quotient sequence, and IS8 supplies transfer of an already genuine presentation through every isogeny; neither asserts that an initial presentation has appeared without that geometric construction. Any separately claimed dual-model pairing and the other global arithmetic and full-course proof and review obligations also remain separate.
+
+### 2J. Divisor parameter schemes for the geometric construction
+
+The Jacobian construction requires a parameter scheme for divisors, including divisors with repeated points. We construct it here without assuming a Hilbert scheme or a Picard scheme exists. Let \(C/k\) be a smooth projective geometrically integral curve over any field, and let \(n\ge0\). On a \(k\)-scheme \(T\), consider closed subschemes
+\[
+ D\hookrightarrow C_T=C\times_kT,\qquad
+ D\longrightarrow T\text{ finite locally free of rank }n.
+ \tag{DR1}
+\]
+Isomorphisms here preserve the closed embedding, so the objects are ideals, rather than arbitrary finite schemes. We will represent this functor by a smooth proper geometrically integral scheme \(S_n(C)\) of dimension \(n\). Every universal family is a relative effective Cartier divisor, with arbitrary base changes retained.
+
+The free primary comparisons are Milne's author version of [*Jacobian Varieties*, §3](https://www.jmilne.org/math/xnotes/JVs.pdf), and the Stacks project's [Hilbert schemes of points](https://stacks.math.columbia.edu/tag/0B94) and [divisors on smooth curves](https://stacks.math.columbia.edu/tag/0B9C). The matrix charts, completion arguments, collisions and nonreduced families used below have their proofs here. The Picard scheme and the initial period cover are not being admitted as prerequisites.
+
+#### 2J.1. The completion facts used by the construction
+
+**DR1.** For a Noetherian ring \(A\), an ideal \(I\) and a finite \(A\)-module \(M\), completion is exact on short exact sequences of finite modules, and
+\[
+ \widehat M^{\,I}=\widehat A^{\,I}\otimes_A M.
+ \tag{DR2}
+\]
+The completed ring is flat over \(A\). For a local \(A\) and \(I\) contained in its maximal ideal, this map is faithfully flat.
+
+*Proof.* For \(N\subset M\), the actual Artin–Rees proof CS2 of Lesson 3, §0.C.4.2 gives
+\[
+ I^rM\cap N=I^{r-c}(I^cM\cap N)\quad(r\ge c).
+ \tag{DR3}
+\]
+Thus the induced filtration on \(N\) and its own ideal-power filtration are cofinal. The exact sequences
+\[
+ 0\to N/(N\cap I^rM)\to M/I^rM
+       \to (M/N)/I^r(M/N)\to0
+ \tag{DR4}
+\]
+have surjective transition maps on their left terms. Their inverse limit is exact: for a compatible element on the right, lift at the first level, lift at the next level, and correct the difference with a lift from the left term; surjectivity permits that correction at each step. This inductively produces a compatible lift. Left exactness follows directly by testing every coordinate. Cofinality identifies the left inverse limit with \(\widehat N^{\,I}\), proving exactness.
+
+Complete a finite presentation \(A^a\to A^b\to M\to0\). Exactness just proved identifies its completed cokernel with the cokernel after tensoring with \(\widehat A^{\,I}\), giving (DR2). If \(N\subset A^b\) is any finite submodule, completion exactness and (DR2) show that tensoring with \(\widehat A^{\,I}\) preserves this inclusion. These tests give flatness: a relation in a tensor product uses finitely many coefficients and relations, hence occurs in a presentation by a finite free module and its finite kernel; preservation of these inclusions is the finite-relations tensor criterion proved in Lesson 3, T1. Noetherianity supplies that finite kernel.
+
+In the local case, apply (DR2) to the residue field to obtain
+\(\widehat A^{\,I}/\mathfrak m\widehat A^{\,I}=A/\mathfrak m\).
+For any nonzero module, choose a nonzero cyclic submodule \(A/J\). Its extension remains nonzero because \(J\subset\mathfrak m\) and the quotient still maps onto that residue field. Flatness preserves its inclusion in the original module. This proves faithful flatness. In particular completion detects equality and vanishing of finite modules; DFR3 also gives the explicit injectivity into completion in the local ideal-adic situation. \(\square\)
+
+#### 2J.2. The ordered-root algebra, over every coefficient ring
+
+**DR2.** For any ring \(R\), the elementary-symmetric map makes \(R[x_1,\ldots,x_n]\) finite free of rank \(n!\) over \(R[e_1,\ldots,e_n]\), with basis
+\[
+ x_1^{a_1}\cdots x_n^{a_n},
+ \qquad 0\le a_i<n-i+1.
+ \tag{DR5}
+\]
+In particular the elementary symmetric functions are algebraically independent over \(R\), and the full algebra
+\[
+ R[x_1,\ldots,x_n]/(e_1,\ldots,e_n)
+ \tag{DR6}
+\]
+is free of rank \(n!\) over \(R\), including in residue characteristics dividing \(n!\).
+
+*Proof.* Start with the independent coefficient ring \(B_0=R[E_1,\ldots,E_n]\) and the monic polynomial
+\[
+ P_0(T)=T^n-E_1T^{n-1}+\cdots+(-1)^nE_n.
+ \tag{DR7}
+\]
+Adjoin a root \(x_1\), taking \(B_1=B_0[x_1]/(P_0(x_1))\). Monic division proves it is free of rank \(n\), with the first-variable powers in (DR5). In this ring divide \(P_0(T)\) by \(T-x_1\). Its remainder is zero, so the quotient \(P_1(T)\) is monic of degree \(n-1\). Adjoin \(x_2\) as a root of \(P_1\), and continue. The successive ranks are \(n,n-1,\ldots,1\), giving the displayed basis.
+
+The final ring satisfies \(P_0(T)=\prod_i(T-x_i)\), so every \(E_i\) is the corresponding elementary symmetric function of the roots. It is therefore generated by the \(x_i\) over \(R\). Conversely substituting those elementary symmetric functions into the coefficients and using the same ordered roots satisfies every monic root relation, giving a map back to \(R[x_1,\ldots,x_n]\). The two maps fix the roots and all coefficients, so are inverse. This proves the freeness assertion. The coefficient-ring map is injective because its final free extension has positive rank and contains its coefficient unit as a basis element. Base change \(E_i\mapsto0\) proves (DR6). The case \(n=0\) has the empty basis monomial and rank \(0!=1\). \(\square\)
+
+#### 2J.3. Explicit affine charts for finite quotients
+
+**DR3.** If \(V=\operatorname{Spec}A\) is affine of finite type over \(k\), its rank-\(n\) closed finite locally free quotient functor is represented by a finite-type scheme \(H_n(V)\). Its charts are explicit polynomial matrix schemes and work over every parameter ring.
+
+*Proof.* Present \(A=k[z_1,\ldots,z_s]/(f_1,\ldots,f_r)\), using Noetherianity for the finite relation list. Let \(B\) be a set of \(n\) monomials, containing \(1\), closed under taking divisors. Use these as names for a basis of a rank-\(n\) module, with basis vectors \(v_b\). For \(n>0\), introduce \(s\) square matrices \(M_i\) of size \(n\) and impose the finite polynomial equations
+\[
+ M_iM_j=M_jM_i,\qquad
+ f_\alpha(M_1,\ldots,M_s)=0,\qquad
+ b(M_1,\ldots,M_s)v_1=v_b\quad(b\in B).
+ \tag{DR8}
+\]
+They define an affine scheme over \(k\).
+
+Over any ring \(R\), these equations make \(R^n\) a cyclic \(A_R\)-module generated by \(v_1\). The map \(A_R\to R^n\), \(a\mapsto a(M)v_1\), is surjective by the last equations. Its kernel is an ideal: if \(a(M)v_1=0\), then for every \(b\), commutation gives \(a(M)b(M)v_1=b(M)a(M)v_1=0\), and those vectors span. Multiplication of two vectors may therefore be defined by multiplying their polynomial representatives; this is independent of the representatives, associative, commutative and has unit \(v_1\). It gives a finite free quotient algebra of \(A_R\). Conversely such a quotient with the named monomial basis gives its unique multiplication matrices and satisfies (DR8). These constructions are inverse and commute with base change.
+
+There are enough such charts, with only finitely many \(B\) required for fixed \(s,n\). In a finite-dimensional residue quotient, order monomials by degree and then lexicographically, and retain a monomial precisely when it adds a vector to the span of earlier ones. The retained monomials form a basis. They are closed under divisors: if a divisor were an earlier dependent monomial, multiply its relation by the complementary monomial. Multiplicativity of the order would make the original monomial dependent as well. Every monomial in this basis has degree at most \(n-1\), since all monomials on a chain of its divisors are retained. Thus only finitely many choices occur. In a family, the locus where any named list is a basis is open, by the determinant of its map to the finite locally free quotient. These opens cover.
+
+On an overlap with another basis \(B'\), let \(S\) have columns \(b'(M)v_1\). Invert \(\det S\) and replace
+\[
+ M_i\longmapsto S^{-1}M_iS.
+ \tag{DR9}
+\]
+The first column preserves the unit, since both lists start with \(1\). Formula (DR9) gives inverse change-of-basis morphisms. Their cocycles are matrix multiplication. The charts therefore glue and represent the affine functor. No choice of a module trivialization remains: the basis consists of the specified images of the monomials. For \(n=0\), the empty quotient is represented by \(\operatorname{Spec}k\). \(\square\)
+
+#### 2J.4. Global gluing, separatedness and the full Cartier ideal
+
+**DR4.** The functor (DR1) is represented by a separated finite-type scheme \(S_n(C)\). Its universal closed subscheme is a relative effective Cartier divisor. These assertions, including representation on nonreduced parameter schemes, commute with every field extension and every later change of the parameter base.
+
+*Proof.* First choose finitely many affine opens of \(C\) such that every geometric subset of at most \(n\) points lies in one of them. Embed \(C\) in projective space. Construct \(n+1\) positive-degree hypersurface divisors on it with pairwise disjoint supports: at each step choose a homogeneous polynomial avoiding the finite support of all previous divisors. The finite homogeneous-prime avoidance proof QS1 works over finite fields as well. The polynomial is nonzero on the integral curve, and its vanishing is a finite effective divisor. Its projective standard-open complement is affine. A set of at most \(n\) geometric points cannot meet all \(n+1\) disjoint supports, giving the required cover.
+
+In a family \(D/T\), the condition that \(D\) lies in a selected affine \(V\) is open in \(T\): the intersection with \(C_T\setminus V_T\) is closed in the finite \(D\), hence has closed image in \(T\). On the complementary open the family is exactly an object of DR3. The quotients over \(V\cap W\) give the common open subfunctor of the two affine constructions. The intersection is affine since \(C\) is separated; its affine construction is DR3 again. The open identifications are unique on ideals and satisfy the cocycle. They glue to \(S_n(C)\) with its universal family. The finite cover of \(C\) just constructed and DR3's finite chart lists show finite type. This gluing represents the functor over all parameter schemes, since basis choices and containment in affine opens are local statements and ideals glue.
+
+We verify separatedness with equations on an arbitrary parameter base. Given two families \(D_1,D_2\), the condition \(D_1\subset D_2\) is closed: locally choose an affine open of \(C\) containing both fibre supports, possible using the same construction with \(2n\) in place of \(n\), and shrink the parameter base so both families remain inside it. On affine basis charts the ideal of \(D_2\) is generated by a finite list: the universal chart rings are Noetherian, and their ideal lists pull back to every parameter ring. Evaluate these generators in the finite free algebra of \(D_1\). The finitely many coefficients are zero exactly on a closed subscheme of the parameter base. This represents containment, after arbitrary further base change. Containment gives a surjection of two finite locally free algebras of equal rank \(n\), hence an isomorphism: locally its square matrix has invertible residue determinant, and therefore invertible determinant. Thus containment is equality. The same construction represents the diagonal by closed immersions. This proves separatedness without replacing equality by equality of geometric fibres.
+
+Now work over the Noetherian universal parameter scheme. Locally on a parameter base and the curve, let \(P\) be the curve algebra and \(Q=P/J\) the finite flat quotient. Both \(P\) and \(Q\) are flat over that base, and their kernel \(J\) is flat as well: tensoring a short exact sequence with any module and using flatness of the first two terms proves the tensor injection for this kernel. On a geometric fibre the ideal of a finite subscheme in a smooth curve is generated by a nonzero divisor, since the curve local ring is a DVR by SF5–SF6.
+
+Lift that generator to \(f\in J\) at a selected point. Flatness of \(Q\) identifies the fibre of \(J\) with the actual fibre ideal, by tensoring \(0\to J\to P\to Q\to0\). Nakayama therefore gives \(J=fP\) locally. The finite kernel of \(P\to J\), \(a\mapsto fa\), remains injective on the fibre because \(J\) is flat over the base. There it is zero, since \(f\) is a nonzero divisor. Nakayama kills that kernel. Thus \(J\) is an invertible ideal generated by a nonzero divisor. These local conclusions spread to neighbourhoods by finite kernel and cokernel witnesses. They prove the universal family is Cartier. For a non-Noetherian parameter change, tensoring the universal sequence preserves its injection because its quotient is flat; the ideal remains invertible. This proves the full arbitrary-base assertion. \(\square\)
+
+#### 2J.5. Smoothness and the actual deformation space
+
+**DR5.** The scheme \(S_n(C)\) is smooth of dimension \(n\) over \(k\). At a geometric divisor \(D\) its tangent space is
+\[
+ T_D S_n(C)=
+    \operatorname{Hom}_{\mathcal O_C}(\mathcal I_D,\mathcal O_D)
+    =H^0(D,\mathcal O_D(D)),
+ \qquad \dim T_D S_n(C)=n .
+ \tag{DR10}
+\]
+
+*Proof.* We may first extend to an algebraically closed field, since the chart equations and universal property in DR3–DR4 commute with that change. Consider a divisor over a local Artinian algebra \(B\), and a surjection \(B'\to B\) of local Artinian algebras with the same residue field. The support of the divisor is finite. On a suitable affine open \(V\) of the curve containing that support, its Cartier ideal has one generator. To justify the choice, choose a generator in each of the finitely many residue fibres of that invertible ideal and lift them simultaneously by Chinese remaindering. The resulting section generates near all support points. A principal open containing that finite support and inside the generation locus exists by finite prime avoidance, as in QS1. Replace \(V\) by it.
+
+Write the generator as \(f\in\mathcal O(V)\otimes_kB\), and lift it arbitrarily to \(f'\in\mathcal O(V)\otimes_kB'\). Its special reduction is a nonzero divisor on the integral affine curve. For every \(B'\)-module \(N\), the finite filtration by powers of its maximal ideal has associated graded terms that are vector spaces over the residue field. On each associated graded term of
+\((\mathcal O(V)\otimes_kB')\otimes_{B'}N\), multiplication by \(f'\) is multiplication by that same nonzero special function. It is injective. Induction on this finite filtration makes multiplication by \(f'\) injective on the whole module. The sequence defined by this multiplication consequently proves that its quotient is flat over \(B'\), using the tensor criterion.
+
+That quotient is finite over \(B'\). Its residue quotient has finite dimension \(n\). Lift a residue basis. Those lifts span modulo the maximal ideal; successively substituting this spanning assertion and using nilpotence of the maximal ideal shows they span the whole module, without applying finite Nakayama to an unproved finite module. A finite flat module over the local Artinian ring is free by T4–T5, of rank \(n\). The resulting closed subscheme of \(V_{B'}\) is also closed in \(C_{B'}\): its finite map to the base and the separated curve make its image closed by the graph and proper projection argument. Equivalently glue its ideal with the unit ideal off that closed support. This gives the required lifted divisor.
+
+For the tangent assertion take \(B'=k[\epsilon]/(\epsilon^2)\). A local generator lifts to \(f+\epsilon g\); changing its unit frame changes \(g\) by a multiple of \(f\). These classes glue with precisely the transition factors of \(\mathcal I_D^\vee|_D\), giving (DR10), and every such section gives the corresponding first-order ideal. The line on the length-\(n\) scheme has \(n\) independent coefficients over the field, proving its dimension.
+
+Here is the passage from these Artinian lifts to an actual smooth chart. At a geometric point choose a polynomial presentation of a DR3 chart, and eliminate independent linear relations by SF3's formal implicit calculation. Its completed local ring has the form
+\[
+ k[[t_1,\ldots,t_n]]/J,\qquad J\subset(t_1,\ldots,t_n)^2,
+ \tag{DR11}
+\]
+because (DR10) gives tangent dimension \(n\). Completion of the quotient is justified by DR1. If \(J\ne0\), let \(d\ge2\) be the least order of a nonzero element. In
+\(B'=k[[t]]/(t)^{d+1}\), its degree-\(d\) image ideal \(J_d\) is nonzero and square-zero. The natural point over \(B=B'/J_d\) would lift to \(B'\) by the divisor lifting just proved. Each coordinate would then lift as \(t_i+\delta_i\), with \(\delta_i\in J_d\). Substitution cannot change the degree-\(d\) initial term of a relation of order \(d\), since every correction has order at least \(2d-1\ge d+1\). That initial term remains nonzero in \(B'\), a contradiction. Thus \(J=0\).
+
+In the algebraic presentation, retain the relations used to eliminate the independent linear terms. They define a standard smooth chart of dimension \(n\), surjecting onto the given local ring. Its remaining finite ideal has zero completion by (DR11), hence is zero by DR1. Finite witnesses spread the equality to a neighbourhood. This gives an actual smooth chart, not merely a tangent count. These charts cover after algebraic closure by closed-point detection B1. Smoothness descends to \(k\) by the split relation-gradient and projective-differential argument SF1–SF3 and FD1–FD4, already used in QS6 and FQ3. \(\square\)
+
+#### 2J.6. Formal coordinates at colliding divisors
+
+**DR6.** At a geometric divisor \(D=\sum_i n_iP_i\), with distinct \(P_i\), choose a formal parameter \(u_i\) at each point. Its completed parameter ring is
+\[
+ \widehat{\mathcal O}_{S_n(C),D}
+    \simeq k[[c_{i,j}:1\le j\le n_i]],\qquad
+ P_i(U)=U^{n_i}+c_{i,1}U^{n_i-1}+\cdots+c_{i,n_i}.
+ \tag{DR12}
+\]
+For an ordered list of points specializing to these supports, the pullback of the \(c_{i,j}\) is \((-1)^j e_j(u_{i,1},\ldots,u_{i,n_i})\).
+
+*Proof.* In an Artinian deformation the finite divisor algebra splits into factors at the distinct support points: its special orthogonal idempotents lift uniquely by HS1. In the \(i\)-th factor, the powers \(1,u_i,\ldots,u_i^{n_i-1}\) form a basis. They do on the special fibre \(k[u_i]/(u_i^{n_i})\), and Nakayama and the determinant criterion preserve the basis over the local Artinian base. Its multiplication by \(u_i\) gives a unique monic relation \(P_i\) of degree \(n_i\). All the lower coefficients lie in the base maximal ideal. Monic division proves that the divisor algebra is exactly the polynomial quotient by \(P_i\), since both free modules have that basis.
+
+This calculation also works in the completed curve ring. Its parameter gives \(k[[u_i]]\) by the smooth one-coordinate formal chart. The companion matrix of \(u_i\) in the quotient is nilpotent: it is nilpotent modulo the base maximal ideal, and that ideal is nilpotent. Therefore every power series evaluates by a finite sum. Polynomial division and that nilpotence identify the quotient of the completed ring with the same polynomial quotient. Conversely any lower coefficients in the Artinian maximal ideal define this finite free quotient of the completed curve ring. Its nilpotence makes the curve-coordinate map factor through an algebraic finite infinitesimal neighbourhood of \(P_i\), so it defines an actual closed divisor on the curve, glued with the unit ideal off the support. These constructions are inverse and natural.
+
+Thus deformations over every local Artinian algebra are exactly the lists of these coefficients. This identifies the complete local ring with (DR12): homomorphisms of complete Noetherian local rings to all their Artinian quotients determine the maps and their inverse limits, so the natural coefficient maps are inverse on completions. For a sum of ordered graphs, the local equation is \(\prod_j(U-u_{i,j})\); comparing its coefficients gives the last assertion, including nilpotent parameters and all signs. \(\square\)
+
+#### 2J.7. The ordered cover and proper symmetric power
+
+**DR7.** The sum of graphs gives a finite faithfully flat map
+\[
+ \sigma_n:C^n\longrightarrow S_n(C),\qquad
+ (P_1,\ldots,P_n)\longmapsto P_1+\cdots+P_n,
+ \qquad \operatorname{rank}\sigma_n=n!.
+ \tag{DR13}
+\]
+The target is proper and geometrically integral, and is the symmetric power of the curve. The rank retains all collision multiplicities.
+
+*Proof.* On \(C\times C^n\), each section graph is Cartier: the smooth curve diagonal has a one-parameter ideal in its smooth local charts, and its pullback under the flat product projection retains that ideal. Multiply these invertible ideals. The resulting sum is Cartier and has every geometric fibre of length \(n\). It is proper over \(C^n\) and has finite fibres, so is finite by the proved proper finite-fibres theorem of Lesson 3. The target \(C^n\) is integral. Its finite coordinate module has generic rank \(n\) and every fibre dimension \(n\), so FF1's local domain rank lemma makes it finite locally free of rank \(n\). This constructs the universal family defining \(\sigma_n\), with all later base changes.
+
+Over an algebraically closed field every finite subscheme of a smooth curve is a unique effective divisor \(\sum_i n_iP_i\), by its DVR ideals. It therefore has ordered preimages, and only the finitely many orders of that multiset. Thus \(\sigma_n\) is surjective with finite geometric fibres. Its source is proper and its target is separated by DR4, so the graph and proper projection make it proper. The same proper finite-fibres theorem makes it finite.
+
+We compute its scheme length at a fibre. In the completed source at one ordering, DR6 identifies the coefficient map with the elementary symmetric functions in each block of \(n_i\) local parameters. Consequently the local fibre algebra has dimension \(\prod_i n_i!\), by (DR6) and DR2's free basis, now completed at the unique zero point. Completion does not change a finite local Artinian algebra. There are \(n!/\prod_i n_i!\) orderings, so the total fibre length is exactly \(n!\). This calculation applies over every algebraically closed field extension, including one over a generic residue field.
+
+The smooth target is geometrically reduced by DR5. It is geometrically irreducible as the surjective image of the geometrically integral \(C^n\), so its local rings are domains. The finite module of \(\sigma_n\) has generic rank \(n!\) and fibre dimension \(n!\) at every point. FF1 again makes it finite locally free, and positive rank makes it faithful. This proves (DR13).
+
+Properness of \(S_n(C)\) follows without a separate valuative criterion. After any base change, a closed subset of \(S_n(C)\) and its closed inverse image in the proper \(C^n\) have exactly the same image in the base. That image is closed. Thus the target is universally closed; it is already separated and of finite type. Its dimension is \(n\) by DR5.
+
+To verify the symmetric quotient assertion as schemes, take an affine open \(V\subset C\) and the open \(Q=S_n(V)\) classifying divisors supported there. Its finite faithfully flat cover is \(X=V^n\), an affine scheme. We supply the needed affine-target argument; having an affine source alone is not an application of FD6.
+
+Write \(X=\operatorname{Spec}A\). The relation \(X\times_QX=\operatorname{Spec}B\) is affine and finite locally free of rank \(r=n!\) over either copy of \(X\). It is closed in \(X\times_kX\), because \(Q\) is separated. Write its two algebra maps as \(s,t:A\to B\), and put \(D=\{a:s(a)=t(a)\}\). FD5, applied to maps to the affine line, identifies \(D\) with \(\Gamma(Q,\mathcal O_Q)\). Multiplication by \(a\in A\) is an endomorphism of the rank-\(r\) bundle \(q_*\mathcal O_X\) on \(Q\). Its characteristic coefficients are global functions on \(Q\), hence lie in \(D\), and Cayley–Hamilton makes \(a\) integral over \(D\). Thus \(A/D\) is finite, and the multiplication-table argument QS2 makes \(D\) a finite-type Noetherian \(k\)-algebra.
+
+The closed relation gives a surjection \(A\otimes_DA\to B\). The common-basis argument QS3 applies: after faithfully flat local extensions of \(D\) with infinite residue fields, choose \(x_1,\ldots,x_r\in A\) such that the \(t(x_i)\) are a basis of \(B\) over \(s(A)\). Expand \(t(a)=\sum_i s(c_i)t(x_i)\). On the triple relation \(X\times_QX\times_QX\), compare its expansions using the first and the second copy of \(X\). Their third-copy basis is the scalar extension of the same basis along the second-coordinate map. Its independence forces \(s(c_i)=t(c_i)\), so \(c_i\in D\). The diagonal section gives \(a=\sum_i c_ix_i\); applying \(t\) proves independence. Thus \(A\) is free of rank \(r\) over \(D\) after these local extensions, and \(A\otimes_DA\simeq B\) there. FD1 and FD4 descend the isomorphism and finite local freeness. Hence \(X\to\operatorname{Spec}D\) is a finite faithfully flat cover with exactly the same relation as \(X\to Q\). FD5 descends the identity of \(X\) to maps between these two targets in both directions, and detects that the composites are identities. Therefore \(Q=\operatorname{Spec}D\).
+
+The symmetric group acts on \(A=\mathcal O(V)^{\otimes n}\), and \(D\subset A^{\mathfrak S_n}\). This is equality. It can be checked after algebraic closure and after completing at each target closed point, by DR1 and faithful field extension. The completed finite algebra splits into the factors for the ordered preimages, by the finite Artinian decomposition and lifted idempotents of HS1–HS2. In each factor the source maximal-ideal powers and the target maximal-ideal powers are cofinal: the finite special algebra is Artinian, so some power of its maximal ideal is zero, giving the needed reverse power inclusion. Thus these are exactly the completed source local rings. The group permutes the factors transitively, and the stabilizer of one ordering permutes its blocks of equal support points. Its invariant completed ring is the power-series ring in their elementary symmetric functions, exactly (DR12). For the power-series invariant assertion, decompose into homogeneous terms and apply the polynomial symmetric-function elimination: cancel the lexicographically largest monomial by the corresponding product of elementary functions and continue by degree. Each finite degree needs finitely many steps, so the resulting formal series converges by degree. The elementary-function weights lie between one and \(n\), making weighted and ordinary adic degrees cofinal. This proof uses no averaging or inverse of \(n!\). The same leading-monomial argument proves uniqueness and algebraic independence, also supplied by DR2. Completion commutes with the invariant kernel because all the modules here are finite over the Noetherian \(D\) and DR1 is exact. Faithful detection proves
+\[
+ \mathcal O(S_n(V))=
+       \bigl(\mathcal O(V)^{\otimes_k n}\bigr)^{\mathfrak S_n}.
+ \tag{DR14}
+\]
+The finite-cover opens and these invariant rings glue with the invariant-map universal property: an invariant map into a scheme has invariant preimages of affine opens; the complements have closed images under the finite map, so these are quotient opens, and on their affine subopens (DR14) gives the coordinate factorization. Uniqueness makes the factorizations glue. This proves the symmetric-power assertion. \(\square\)
+
+#### 2J.8. Addition, full families and the Picard construction ahead
+
+**DR8.** Multiplying the two invertible universal ideals gives a morphism
+\[
+ a_{r,s}:S_r(C)\times S_s(C)\longrightarrow S_{r+s}(C),
+ \quad(D,E)\longmapsto D+E,
+ \qquad \deg a_{r,s}=\binom{r+s}{r}.
+ \tag{DR15}
+\]
+It is finite faithfully flat, including at coincident divisors and in characteristics dividing the displayed degree. All its universal-family and rank assertions commute with arbitrary base change.
+
+*Proof.* Pull back the two universal ideals to the curve over the product base and multiply them. Their product is an invertible ideal generated by a nonzero divisor: this follows by pulling back the finite faithfully flat ordered covers of DR7, where it is the actual sum of section graphs, and faithfully detecting the injection. Its quotient there is the rank-\((r+s)\) ordered universal family; FD4–FD6 descend its finite local freeness. DR4 therefore supplies the displayed morphism.
+
+It is proper because its source is proper and the target separated. On geometric points a fibre amounts to choosing integers between zero and the given point multiplicities with sum \(r\); there are finitely many choices. The proper finite-fibres theorem makes it finite. On affine target charts its algebra factorization is
+\[
+ B\longrightarrow D\longrightarrow A,
+ \quad A/D\text{ finite faithfully flat of rank }r!s!,
+ \quad A/B\text{ finite locally free of rank }(r+s)!.
+ \tag{DR16}
+\]
+Here the last composite is the ordered cover for all \(r+s\) points, and the first cover groups them into the two ordered blocks. The intermediate map is flat by the tensor-injection argument FQ2: test an injection over \(B\), tensor with \(D\), then with the faithfully flat \(A/D\). The composite is injective by flatness of \(A/B\), so it was injective after \(D\). A finite flat module over the Noetherian target is finite locally free by T4–T5. Comparing ranks in (DR16) gives (DR15), and surjectivity follows from the surjective ordered composite. Base change preserves the proved covers, ideals and ranks.
+
+Thus \(S_n(C)\) represents actual relative effective divisors, rather than unordered geometric support alone, and its complete local parameters include every infinitesimal collision direction. The next Picard construction must still glue line-bundle classes and prove its group, properness and universal properties. No Jacobian representability, stable reduction, initial semiabelian period cover or general analytic comparison theorem follows merely from these divisor parameter schemes. \(\square\)
+
+#### 2J.9. Graded exercise: collisions, matrix charts and full families
+
+**Exercise 2J (100 points; ten parts of 10 points each).** Use DR1–DR8 and the indicated earlier proofs. A support count alone is not a length calculation.
+
+**(a) The six ordered roots.** For \(n=3\), write the successive monic root polynomials from DR2 and its six-element basis. Set all symmetric coefficients to zero. Compute the resulting algebra's graded dimensions and a nonzero element in its highest degree. Include characteristics two and three.
+
+**(b) Two points collide.** In local coordinates for \(C^2\to S_2(C)\), compute the coefficient map, its differential determinant and the full fibre at the double divisor \(2P\). Compare it with a divisor \(P+Q\) with distinct points. Why is the target smooth at the collision?
+
+**(c) Two unequal multiplicities.** For \(D=2P+3Q\), compute the number of ordered preimages, each local fibre length, the total rank of the ordered cover and the tangent dimension of \(S_5(C)\). For \(a_{2,3}\), list the possible subdivisors of degree two and their local fibre lengths. Verify the total degree.
+
+**(d) Degrees zero and one.** Identify \(S_0(C)\) and \(S_1(C)\) as schemes by their functors, over arbitrary parameter bases. Explain why rank-one finite locally free algebras have their unit as a basis.
+
+**(e) A matrix chart with a curve relation.** For quotients of \(k[x,y]\) of rank two, use the basis \(1,x\). Write the multiplication matrices, solve their commutation equations and identify this chart. Then impose the curve equation \(y=x^2\). Over \(R=k[\epsilon]/(\epsilon^2)\), specialize to the divisor with quotient \(R[x]/(x^2-\epsilon)\); give both matrices and the full \(k\)-dimension.
+
+**(f) Equality of families is more than equality on fibres.** On \(\mathbf A^1_R\), with the same \(R\), compare \(D_1=(x^2)\) and \(D_2=(x^2-\epsilon)\). They have the same geometric fibres. Compute the scheme in \(\operatorname{Spec}R\) on which they become equal, and relate this to the separated diagonal in DR4.
+
+**(g) A nonreduced Artinian lift.** Let \(B=\mathbf F_p[\epsilon]/(\epsilon^2)\), \(B'=\mathbf F_p[\epsilon]/(\epsilon^3)\), and
+\(P(T)=T^3+aT^2+bT+c\), with \(a,b,c\in(\epsilon)\subset B\).
+Count its monic coefficient lifts to \(B'\). Prove that each gives a finite flat divisor, compute its rank and its total \(\mathbf F_p\)-dimension, and explain its three independent infinitesimal directions. Do not invert three.
+
+**(h) Completion keeps the infinitesimal layer.** For \(A=k[t]_{(t)}\), \(I=(t)\), \(M=A\) and \(N=t^3A\), compute \(I^rM\cap N\) and \(I^rN\), and give an Artin–Rees index. Compute the completed inclusion. For \(Q=A/(t^2)\), compare its completion with its reduction modulo \(t\).
+
+**(i) Divisors on the projective line.** Construct \(S_n(\mathbf P^1)\simeq\mathbf P^n\) from the universal homogeneous polynomial of degree \(n\), including multiple roots and arbitrary characteristic. Justify that the resulting map is an actual scheme isomorphism; a bijection on geometric points does not suffice.
+
+**(j) The first Jacobian chart.** Let \(C\) have genus \(g\). Prove that
+\[
+ U=\{D\in S_g(C):H^1(C,\mathcal O_C(D))=0\}
+ \tag{DRX1}
+\]
+is a nonempty geometrically open subscheme, and that every geometric divisor in it has \(h^0=1\). Explain what further line-bundle gluing and universal properties are still needed to construct the Jacobian and the general period cover.
+
+**Full solution.**
+
+**(a)** The first root satisfies
+\(P_0(T)=T^3-E_1T^2+E_2T-E_3\). Division by \(T-x_1\) gives
+\[
+ P_1(T)=T^2+(x_1-E_1)T+(x_1^2-E_1x_1+E_2).
+ \tag{DRX2}
+\]
+Adjoin \(x_2\) as a root, and the last root is \(x_3=E_1-x_1-x_2\). The full basis is
+\[
+ 1,\ x_1,\ x_1^2,\ x_2,\ x_1x_2,\ x_1^2x_2.
+ \tag{DRX3}
+\]
+At \(E_1=E_2=E_3=0\), the algebra is
+\[
+ k[x_1,x_2]/(x_1^3,\ x_2^2+x_1x_2+x_1^2).
+ \tag{DRX4}
+\]
+Its displayed monic basis remains a basis, so the dimensions in degrees zero through three are \(1,2,2,1\), with no higher-degree part. The class \(x_1^2x_2\) is nonzero. In particular \(x_2^3=0\), by substituting the second relation twice, and every degree-four monomial is zero. The full length is six even when there is just one underlying point. All equations and the free-basis proof work in characteristics two and three; no averaging occurs.
+
+**(b)** Use coefficient coordinates \(c_1=-(x+y),\ c_2=xy\), so the divisor polynomial is \(T^2+c_1T+c_2\). Its differential matrix and determinant are
+\[
+ \begin{pmatrix}-1&-1\\y&x\end{pmatrix},
+ \qquad \det=y-x.
+ \tag{DRX5}
+\]
+At the double point the fibre is
+\(k[x,y]/(x+y,xy)\simeq k[x]/(x^2)\), of length two and with one geometric point, including in characteristic two. At distinct points there are two ordered preimages, each a reduced length-one point, since the two linearized coordinates have invertible determinant. In both cases the rank is two. DR6 makes the target completed ring \(k[[c_1,c_2]]\), and DR5 proves the corresponding algebraic smooth chart. Ramification of the cover does not make that target singular.
+
+**(c)** The ordered multiset has \(5!/(2!3!)=10\) distinct orderings. Each local fibre length is \(2!3!=12\), so the total is \(120\), while the tangent dimension is five. The degree-two subdivisors are
+\[
+ 2Q,\qquad P+Q,\qquad 2P.
+ \tag{DRX6}
+\]
+Their local lengths under \(a_{2,3}\) are respectively
+\[
+ \binom20\binom32=3,\qquad
+ \binom21\binom31=6,\qquad
+ \binom22\binom30=1.
+ \tag{DRX7}
+\]
+Here is the length argument. Near a support point of multiplicity \(m\), splitting it into degrees \(a,m-a\) means factoring a monic polynomial into those two monic factors. Its coefficient ring embeds in the ordered-root ring; the latter is free of rank \(a!(m-a)!\) over the factor-coefficient ring, and free of rank \(m!\) over the full coefficient ring, by DR2 on the two blocks and on the whole list. The intermediate ring is finite because it is a submodule of the finite ordered-root ring over the Noetherian full coefficient ring. The tensor-injection proof FQ2 therefore gives finite flat rank \(\binom ma\) for the factor map. Complete at the single repeated-root point to obtain its local fibre length. Independent support points give the product of these lengths, proving (DRX7). Their sum is ten, agreeing with \(\binom52\). Counting the three support allocations would miss seven units of fibre length.
+
+**(d)** A rank-zero quotient is the empty subscheme, uniquely, so \(S_0(C)=\operatorname{Spec}k\). If \(D/T\) is finite locally free of rank one, its unit has nonzero residue at every point: a nonzero one-dimensional algebra over a field has a nonzero identity. In a local free frame that unit is therefore a unit multiple of the frame. It is a basis, and the unit map \(\mathcal O_T\to\mathcal O_D\) is an algebra isomorphism. A closed embedding \(D\hookrightarrow C_T\) is consequently precisely the graph of a section \(T\to C\). Thus \(S_1(C)=C\) as functors and schemes. The ordered maps in degrees zero and one are identities and have rank one.
+
+**(e)** Multiplication by \(x\) and \(y\) initially has the form
+\[
+ X=\begin{pmatrix}0&a\\1&b\end{pmatrix},\qquad
+ Y=\begin{pmatrix}c&d\\e&f\end{pmatrix}.
+ \tag{DRX8}
+\]
+The equations \(XY=YX\) give \(d=ae\), \(f=c+be\); the remaining two entries then agree. Hence \(Y=cI+eX\), and the chart is the affine four-space with coordinates \(a,b,c,e\), with universal quotient
+\[
+ k[x,y]/(x^2-bx-a,\ y-c-ex).
+ \tag{DRX9}
+\]
+For the parabola, \(X^2=aI+bX\). The relation \(Y=X^2\) is therefore exactly \(c=a,e=b\), leaving affine two-space with coordinates \(a,b\). In the specified family \(a=\epsilon,b=0\),
+\[
+ X=\begin{pmatrix}0&\epsilon\\1&0\end{pmatrix},\qquad
+ Y=\epsilon I .
+ \tag{DRX10}
+\]
+The algebra is free of rank two over \(R\), with basis \(1,x\), and has dimension four over \(k\). It retains the equation \(x^2=\epsilon\); replacing the family by its double-point special support would erase that equation.
+
+**(f)** Both quotients have basis \(1,x\) over \(R\). Evaluate the generator \(x^2-\epsilon\) of the second ideal in the first quotient: it is \(-\epsilon\). Its coordinates vanish after a parameter change exactly when the image of \(\epsilon\) is zero. On that closed subscheme both ideals are \((x^2)\), while elsewhere as a functor condition they are unequal. Thus the equality locus is
+\[
+ \operatorname{Spec}(R/(\epsilon))
+       \hookrightarrow\operatorname{Spec}R.
+ \tag{DRX11}
+\]
+All geometric fibres factor through this locus, but the identity map of the nonreduced base does not. This is the actual closed diagonal condition in DR4. Equality of geometric fibres would incorrectly give the entire base.
+
+**(g)** Each coefficient has \(p\) possible lifts, differing by a scalar multiple of \(\epsilon^2\), so there are \(p^3\) monic lifts. Each quotient by its monic cubic is free with basis \(1,T,T^2\), of rank three over \(B'\), and total dimension nine over \(\mathbf F_p\). It is a Cartier divisor on the affine line because multiplication by a monic polynomial in \(B'[T]\) is injective, by its highest nonzero coefficient. The three differences in its coefficients give the three independent tangent directions at the special divisor \(3[0]\), exactly DR10. These are coefficient directions, not three independently moving reduced points. The argument holds for \(p=2\) and \(p=3\) without any inverse of the factorial.
+
+**(h)** The two filtrations are
+\[
+ I^rM\cap N=t^{\max(r,3)}A,\qquad
+ I^rN=t^{r+3}A.
+ \tag{DRX12}
+\]
+They differ, but for \(r\ge3\) the first is \(I^{r-3}(I^3M\cap N)\). Thus \(c=3\) is an Artin–Rees index. Completion gives the injection
+\(t^3k[[t]]\hookrightarrow k[[t]]\), with its full quotient \(k[[t]]/(t^3)\). For \(Q\), (DR2) gives \(k[[t]]/(t^2)\), of length two; reduction gives only \(k\), of length one. Completion retains the nilpotent class of \(t\), while reduction kills it. Cofinality of filtrations does not assert equality with the same exponent at every level.
+
+**(i)** On \(\mathbf P^1\times\mathbf P^n\), take the zero scheme of
+\[
+ F(X,Y)=a_0X^n+a_1X^{n-1}Y+\cdots+a_nY^n.
+ \tag{DRX13}
+\]
+Every geometric coefficient point has a nonzero polynomial and therefore a divisor of degree \(n\), including its multiplicities. The zero scheme is proper with finite fibres over the integral \(\mathbf P^n\), hence finite by the proper finite-fibres theorem. The rank test FF1, with generic rank and every fibre length equal to \(n\), makes it finite locally free. It therefore defines a morphism \(m:\mathbf P^n\to S_n(\mathbf P^1)\), and its universal family survives all parameter changes.
+
+Over an algebraically closed field every divisor gives exactly one homogeneous polynomial up to scalar, so \(m\) is bijective on geometric points. To check the scheme structure, choose a projective coordinate whose point at infinity avoids the finite support. In the corresponding coefficient chart the polynomial is monic. At a multiple support point, its local coefficient deformation is exactly the monic polynomial in DR12. At several distinct support points, coprime monic factor lifting is unique by the Hensel factor proof of Lesson 1, §0D, applied successively over Artinian thickenings. Thus the global monic coefficients and the lists of local coefficients give isomorphic complete local deformation rings. In particular the differential of \(m\) is an isomorphism at every geometric point. Both schemes are smooth of dimension \(n\), so SF1–SF3 make \(m\) étale. It is proper by the graph argument and finite by its finite fibres. Each geometric fibre is now one reduced point, so it is finite locally free of rank one. Its unit is a basis by part (d), proving it is an isomorphism. This also handles arbitrary characteristic; \(n=0\) gives the two one-point schemes.
+
+**(j)** Apply FC10 to the universal line \(\mathcal O(D)\) on \(C\times S_g(C)\). Its finite complex makes the condition \(h^1=0\) open: after removing higher zero terms by local splitting, vanishing of the cokernel of its final matrix is an open rank condition. The curve has no higher coherent cohomology by the earlier curve proof. Riemann–Roch SD1–SD7 gives \(\chi(\mathcal O(D))=g+1-g=1\), so \(h^0=1\) on that open.
+
+It is nonempty after algebraic closure. If \(g=0\), use the empty divisor. For \(g>0\), begin with the \(g\)-dimensional space \(H^0(C,\omega_C)\). As long as its subspace vanishing at already chosen points is nonzero, choose a nonzero differential in that subspace and a new point where it does not vanish. Its zero set is finite, whereas the algebraically closed smooth curve has infinitely many points by the finite-type closed-point and nonconstant-parameter argument of Lesson 3. Evaluation at the chosen point reduces that subspace's dimension by one. After \(g\) choices, the effective divisor \(D\) has \(H^0(C,\omega_C(-D))=0\). Curve duality identifies this with the dual of \(H^1(C,\mathcal O(D))\), so \(D\in U\). The construction of \(S_g\) and its universal line commutes with every field extension, proving the geometric openness and nonemptiness asserted.
+
+This constructs a genuine open space of nonspecial effective divisors. To obtain the Jacobian one still must identify the corresponding line-bundle subfunctor over full parameter bases, glue its translates, construct and verify the group and universal line, and prove the required properness and mapping properties. The stable curve model and the formal/analytic initial period cover remain additional geometric constructions. Neither the divisor parameter scheme nor a citation to the free Jacobian or uniformization theorem supplies those remaining proofs.
+
 **Theorem 2.4 (full local abelian compatibility; remaining geometric proof obligation).** For every abelian variety over a nonarchimedean local field of characteristic zero, its prime-to-residue-characteristic rational Tate modules have a common Galois-invariant Frobenius-semisimple Weil–Deligne class over \(\overline{\mathbf Q}\).
 
-The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. PM1–PM7 in §2E prove the entire inertia matrix, ramification normalization, finite equivariance and Frobenius-semisimple blocks for supplied integral period data; PM8 gives the stated actual examples. PC1–PC6 in §2F prove that a genuine local-field period presentation gives a nondegenerate rational period valuation pairing and every actual torsion level, transition and action. For an arbitrary abelian variety one must still construct the semiabelian integral extension and locally covering period maps after finite extension, prove their finite point-lifting and kernel properties, and supply the compatible finite model actions. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it; it does not discharge these constructions. The theorem is retained in full generality, and this draft does not claim its full proof complete.
+The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. PM1–PM7 in §2E prove the entire inertia matrix, ramification normalization, finite equivariance and Frobenius-semisimple blocks for supplied integral period data; PM8 gives the stated actual examples. PC1–PC6 in §2F prove that a genuine local-field period presentation gives a nondegenerate rational period valuation pairing and every actual torsion level, transition and action. For an arbitrary abelian variety one must still construct the semiabelian integral extension and locally covering period maps after finite extension, prove their finite point-lifting and kernel properties, and supply the compatible finite model actions. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it; it does not discharge these constructions. The theorem is retained in full generality, and this draft does not claim its full proof complete. FF1–FF8 in §2G supply all-integer finite flat multiplication kernels, canonical closures of finite generic subgroups and generic-map extension for finite étale models, with the nonreduced special fibres retained. They do not construct the general semiabelian model, its finite flat quotients or its period cover. FQ1–FQ6 in §2H construct the finite flat quotient schemes, prove their smoothness and good reduction under every generic isogeny, and identify their semiabelian geometric fibres. IS1–IS8 in §2I supplies the full integral quotient sequence and transfers genuine PC2 period presentations through every isogeny. The initial integral period extension and covering for an arbitrary abelian variety, and any separately claimed dual-model pairing, still require their constructions. DR1–DR8 in §2J constructs smooth proper divisor parameter schemes with full nonreduced families,ordered covers and collision multiplicities. These supply the divisor moduli needed for the Jacobian construction;the Picard gluing and the initial semistable geometric period construction remain to be proved.
 
 For an elliptic curve the local classification gives every case without invoking the unproved higher-dimensional part. At good places use (6) and \(N=0\). At potentially good places use Lemma 2.3. At potentially multiplicative places use the Tate-curve proof and its quadratic descent in *Elliptic curves over local fields and their Weil–Deligne representations*, §§3–5: the common quadratic splitting character \(\eta_v\) and the common block are
 \[

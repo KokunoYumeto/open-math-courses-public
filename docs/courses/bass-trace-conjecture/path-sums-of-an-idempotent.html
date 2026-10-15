@@ -1,0 +1,215 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Path sums of an idempotent</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Bass trace conjecture for group rings)</a><a href="traces-of-projective-modules.html">Previous lesson</a><a href="exterior-chains-and-sparse-cycles.html">Next lesson</a><a href="src/path-sums-of-an-idempotent.md">Editable source</a></nav><main><article><h1 id="path-sums-of-an-idempotent">Path sums of an idempotent</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Fix a finitely generated group <span class="math" data-tex="\(G\)">\(G\)</span>, an idempotent matrix <span class="math" data-tex="\(e\)">\(e\)</span> over <span class="math" data-tex="\(\mathbb CG\)">\(\mathbb CG\)</span> and an element <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> of infinite order. This lesson attaches to <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> a finite weighted sum <span class="math" data-tex="\(v_k\)">\(v_k\)</span> over lists of <span class="math" data-tex="\(k\)">\(k\)</span> group elements, for every <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>. The weight of a list is the trace of a product of coefficient matrices of <span class="math" data-tex="\(e\)">\(e\)</span> along the list, closed up by <span class="math" data-tex="\(g\)">\(g\)</span>. Three identities hold: a cyclic shift of the lists that multiplies one entry by <span class="math" data-tex="\(g\)">\(g\)</span> preserves <span class="math" data-tex="\(v_k\)">\(v_k\)</span>; deleting one entry of the lists turns <span class="math" data-tex="\(v_k\)">\(v_k\)</span> into <span class="math" data-tex="\(v_{k-1}\)">\(v_{k-1}\)</span>; and the total weight of every <span class="math" data-tex="\(v_k\)">\(v_k\)</span> is the coefficient <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of the trace of <span class="math" data-tex="\(e\)">\(e\)</span> at <span class="math" data-tex="\([g]\)">\([g]\)</span>. These identities and the finiteness of the sums are all that the later lessons use about <span class="math" data-tex="\(e\)">\(e\)</span>. The construction follows [OpenAI-BT, Section 7].</p>
+<ul>
+<li>The kernel of an idempotent (Section 1).</li>
+<li>The centralizer and the coset graph (Section 2).</li>
+<li>Path weights (Section 3).</li>
+<li>The twisted shift and the deletion identities (Section 4).</li>
+</ul>
+<p>Notation from <a href="traces-of-projective-modules.html">Traces of projective modules</a>: right modules, matrices acting on columns, and <span class="math" data-tex="\(\operatorname{HS}_G(x)(C)\)">\(\operatorname{HS}_G(x)(C)\)</span> for the coefficient of the Hattori–Stallings trace at a conjugacy class <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<h2 id="1-the-kernel-of-an-idempotent">1. The kernel of an idempotent</h2>
+<p>Let <span class="math" data-tex="\(e\in\operatorname{Mat}_r(\mathbb CG)\)">\(e\in\operatorname{Mat}_r(\mathbb CG)\)</span> be idempotent and write
+<span class="math math-display" data-tex="\[
+e=\sum_{s\in G}A_s\,s,\qquad A_s\in\operatorname{Mat}_r(\mathbb C),
+\]">\[
+e=\sum_{s\in G}A_s\,s,\qquad A_s\in\operatorname{Mat}_r(\mathbb C),
+\]</span>
+with finite support <span class="math" data-tex="\(S_0=\{s:A_s\ne0\}\)">\(S_0=\{s:A_s\ne0\}\)</span>. The coefficient of <span class="math" data-tex="\(t\)">\(t\)</span> in <span class="math" data-tex="\(e^2\)">\(e^2\)</span> is <span class="math" data-tex="\(\sum_{uv=t}A_uA_v\)">\(\sum_{uv=t}A_uA_v\)</span>, so idempotence says that for every <span class="math" data-tex="\(t\in G\)">\(t\in G\)</span>
+<span class="math math-display" data-tex="\[
+\sum_{uv=t}A_uA_v=A_t .
+\tag{1.1}
+\]">\[
+\sum_{uv=t}A_uA_v=A_t .
+\tag{1.1}
+\]</span>
+Define the matrix-valued <em>kernel</em> on <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span> by
+<span class="math math-display" data-tex="\[
+a(h,h&#x27;)=A_{h^{-1}h&#x27;} .
+\]">\[
+a(h,h&#x27;)=A_{h^{-1}h&#x27;} .
+\]</span>
+It is invariant under simultaneous left translation, <span class="math" data-tex="\(a(ch,ch&#x27;)=a(h,h&#x27;)\)">\(a(ch,ch&#x27;)=a(h,h&#x27;)\)</span> for all <span class="math" data-tex="\(c\in G\)">\(c\in G\)</span>, and for fixed <span class="math" data-tex="\(h\)">\(h\)</span> it is nonzero only for <span class="math" data-tex="\(h&#x27;\in hS_0\)">\(h&#x27;\in hS_0\)</span>; for fixed <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> only for <span class="math" data-tex="\(h\in h&#x27;S_0^{-1}\)">\(h\in h&#x27;S_0^{-1}\)</span>. Substituting <span class="math" data-tex="\(u=h^{-1}k\)">\(u=h^{-1}k\)</span> and <span class="math" data-tex="\(v=k^{-1}h&#x27;\)">\(v=k^{-1}h&#x27;\)</span> in (1.1) gives the kernel identity
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{k\in G}a(h,k)\,a(k,h&#x27;)\\
+&amp;\quad=a(h,h&#x27;) ,
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+&amp;\sum_{k\in G}a(h,k)\,a(k,h&#x27;)\\
+&amp;\quad=a(h,h&#x27;) ,
+\end{aligned}
+\tag{1.2}
+\]</span>
+a finite sum. In products <span class="math" data-tex="\(a(h_0,h_1)a(h_1,h_2)\cdots\)">\(a(h_0,h_1)a(h_1,h_2)\cdots\)</span> the matrices multiply in the order in which the coefficients of <span class="math" data-tex="\(e\)">\(e\)</span> multiply in the powers of <span class="math" data-tex="\(e\)">\(e\)</span>, which is the order of composition of maps on columns.</p>
+<p>By formula (3.1) of <a href="traces-of-projective-modules.html">Traces of projective modules</a>, the coefficient of the trace of <span class="math" data-tex="\(e\)">\(e\)</span> at <span class="math" data-tex="\([g]\)">\([g]\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\lambda&amp;=\operatorname{HS}_G\bigl([e(\mathbb CG)^r]\bigr)([g])\\
+&amp;=\sum_{s\in[g]}\operatorname{tr}A_s .
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+\lambda&amp;=\operatorname{HS}_G\bigl([e(\mathbb CG)^r]\bigr)([g])\\
+&amp;=\sum_{s\in[g]}\operatorname{tr}A_s .
+\end{aligned}
+\tag{1.3}
+\]</span></p>
+<h2 id="2-the-centralizer-and-the-coset-graph">2. The centralizer and the coset graph</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J=C_G(g),\qquad H=J/\langle g\rangle,\\
+Y=\langle g\rangle\backslash G ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+J=C_G(g),\qquad H=J/\langle g\rangle,\\
+Y=\langle g\rangle\backslash G ,
+\end{gathered}
+\]</span>
+and write <span class="math" data-tex="\(\bar h=\langle g\rangle h\)">\(\bar h=\langle g\rangle h\)</span> for the coset of <span class="math" data-tex="\(h\)">\(h\)</span>. The cyclic group <span class="math" data-tex="\(\langle g\rangle\)">\(\langle g\rangle\)</span> is central in <span class="math" data-tex="\(J\)">\(J\)</span>, so <span class="math" data-tex="\(H\)">\(H\)</span> is a group. Choose a finite symmetric generating set <span class="math" data-tex="\(S\)">\(S\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span> with <span class="math" data-tex="\(1\notin S\)">\(1\notin S\)</span> and <span class="math" data-tex="\(S_0\setminus\{1\}\subseteq S\)">\(S_0\setminus\{1\}\subseteq S\)</span>; this is possible since <span class="math" data-tex="\(G\)">\(G\)</span> is finitely generated. Join <span class="math" data-tex="\(\bar h\)">\(\bar h\)</span> to <span class="math" data-tex="\(\overline{hs}\)">\(\overline{hs}\)</span> by an edge for every <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span> with <span class="math" data-tex="\(\overline{hs}\ne\bar h\)">\(\overline{hs}\ne\bar h\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> (a) The edges are well defined and make <span class="math" data-tex="\(Y\)">\(Y\)</span> a connected simple graph in which every vertex has at most <span class="math" data-tex="\(|S|\)">\(|S|\)</span> neighbours. Put <span class="math" data-tex="\(D=\max\{2,|S|\}\)">\(D=\max\{2,|S|\}\)</span>.
+(b) The rule <span class="math" data-tex="\(\bar c\cdot\bar h=\overline{ch}\)">\(\bar c\cdot\bar h=\overline{ch}\)</span> for <span class="math" data-tex="\(c\in J\)">\(c\in J\)</span> defines an action of <span class="math" data-tex="\(H\)">\(H\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> by graph automorphisms, free on vertices.
+(c) <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> are countable.</p>
+<p><em>Proof.</em> (a) If <span class="math" data-tex="\(\bar h=\bar h&#x27;\)">\(\bar h=\bar h&#x27;\)</span>, then <span class="math" data-tex="\(h&#x27;=g^jh\)">\(h&#x27;=g^jh\)</span> and <span class="math" data-tex="\(\overline{h&#x27;s}=\overline{g^jhs}=\overline{hs}\)">\(\overline{h&#x27;s}=\overline{g^jhs}=\overline{hs}\)</span>, so the neighbours of a vertex do not depend on the representative. The relation is symmetric because <span class="math" data-tex="\(S=S^{-1}\)">\(S=S^{-1}\)</span>: <span class="math" data-tex="\(\overline{hs}\)">\(\overline{hs}\)</span> is joined to <span class="math" data-tex="\(\overline{hss^{-1}}=\bar h\)">\(\overline{hss^{-1}}=\bar h\)</span>. Each vertex has at most <span class="math" data-tex="\(|S|\)">\(|S|\)</span> neighbours. For <span class="math" data-tex="\(h=s_1\cdots s_m\)">\(h=s_1\cdots s_m\)</span> with <span class="math" data-tex="\(s_i\in S\)">\(s_i\in S\)</span>, the vertices <span class="math" data-tex="\(\bar1,\overline{s_1},\overline{s_1s_2},\ldots,\bar h\)">\(\bar1,\overline{s_1},\overline{s_1s_2},\ldots,\bar h\)</span> are consecutively equal or adjacent, so the graph is connected.</p>
+<p>(b) For <span class="math" data-tex="\(c\in J\)">\(c\in J\)</span> and <span class="math" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>, <span class="math" data-tex="\(\overline{c\,g^jh}=\overline{g^jch}=\overline{ch}\)">\(\overline{c\,g^jh}=\overline{g^jch}=\overline{ch}\)</span> since <span class="math" data-tex="\(c\)">\(c\)</span> commutes with <span class="math" data-tex="\(g\)">\(g\)</span>; and <span class="math" data-tex="\(\overline{g^ic\,h}=\overline{ch}\)">\(\overline{g^ic\,h}=\overline{ch}\)</span>. So <span class="math" data-tex="\(\overline{ch}\)">\(\overline{ch}\)</span> depends only on <span class="math" data-tex="\(\bar c\in H\)">\(\bar c\in H\)</span> and <span class="math" data-tex="\(\bar h\in Y\)">\(\bar h\in Y\)</span>. The map <span class="math" data-tex="\(\bar h\mapsto\overline{ch}\)">\(\bar h\mapsto\overline{ch}\)</span> sends the edge from <span class="math" data-tex="\(\bar h\)">\(\bar h\)</span> to <span class="math" data-tex="\(\overline{hs}\)">\(\overline{hs}\)</span> to the edge from <span class="math" data-tex="\(\overline{ch}\)">\(\overline{ch}\)</span> to <span class="math" data-tex="\(\overline{chs}\)">\(\overline{chs}\)</span>, so it is a graph automorphism. If <span class="math" data-tex="\(\overline{ch}=\bar h\)">\(\overline{ch}=\bar h\)</span>, then <span class="math" data-tex="\(ch=g^jh\)">\(ch=g^jh\)</span> for some <span class="math" data-tex="\(j\)">\(j\)</span>, so <span class="math" data-tex="\(c=g^j\)">\(c=g^j\)</span> and <span class="math" data-tex="\(\bar c=1\)">\(\bar c=1\)</span>: the action is free on vertices.</p>
+<p>(c) A finitely generated group is countable, and so are its quotients and coset spaces. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The graph <span class="math" data-tex="\(Y\)">\(Y\)</span>, the group <span class="math" data-tex="\(H\)">\(H\)</span> and the bound <span class="math" data-tex="\(D\)">\(D\)</span> are fixed once and for all by <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span>. Later lessons build simplicial cycles of every even dimension on the vertex set <span class="math" data-tex="\(Y\)">\(Y\)</span>; the degree bound <span class="math" data-tex="\(D\)">\(D\)</span> does not depend on the dimension.</p>
+<h2 id="3-path-weights">3. Path weights</h2>
+<p>For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> let <span class="math" data-tex="\(J\)">\(J\)</span> act on <span class="math" data-tex="\(G^k\)">\(G^k\)</span> by simultaneous left multiplication, <span class="math" data-tex="\(c\cdot(h_0,\ldots,h_{k-1})=(ch_0,\ldots,ch_{k-1})\)">\(c\cdot(h_0,\ldots,h_{k-1})=(ch_0,\ldots,ch_{k-1})\)</span>, and let <span class="math" data-tex="\(Q_k=J\backslash G^k\)">\(Q_k=J\backslash G^k\)</span> be the set of orbits. This action is free, since left multiplication on <span class="math" data-tex="\(G\)">\(G\)</span> is free. Define the <em>weight</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;w_k(h_0,\ldots,h_{k-1})\\
+&amp;\ =\operatorname{tr}\bigl(a(h_0,h_1)\cdots a(h_{k-2},h_{k-1})\\
+&amp;\qquad\quad a(h_{k-1},gh_0)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;w_k(h_0,\ldots,h_{k-1})\\
+&amp;\ =\operatorname{tr}\bigl(a(h_0,h_1)\cdots a(h_{k-2},h_{k-1})\\
+&amp;\qquad\quad a(h_{k-1},gh_0)\bigr),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(w_1(h_0)=\operatorname{tr}a(h_0,gh_0)\)">\(w_1(h_0)=\operatorname{tr}a(h_0,gh_0)\)</span>. For <span class="math" data-tex="\(c\in J\)">\(c\in J\)</span> we have <span class="math" data-tex="\(cgh_0=gch_0\)">\(cgh_0=gch_0\)</span>, and the kernel is left invariant, so <span class="math" data-tex="\(w_k\)">\(w_k\)</span> is constant on <span class="math" data-tex="\(J\)">\(J\)</span>-orbits.</p>
+<p>The <em>increments</em> of a tuple are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s_i=h_i^{-1}h_{i+1}\quad(0\le i&lt;k-1),\\
+s_{k-1}=h_{k-1}^{-1}gh_0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+s_i=h_i^{-1}h_{i+1}\quad(0\le i&lt;k-1),\\
+s_{k-1}=h_{k-1}^{-1}gh_0 .
+\end{gathered}
+\]</span>
+The weight is <span class="math" data-tex="\(\operatorname{tr}(A_{s_0}A_{s_1}\cdots A_{s_{k-1}})\)">\(\operatorname{tr}(A_{s_0}A_{s_1}\cdots A_{s_{k-1}})\)</span>, so it vanishes unless every increment lies in <span class="math" data-tex="\(S_0\)">\(S_0\)</span>. The product of the increments telescopes:
+<span class="math math-display" data-tex="\[
+s_0s_1\cdots s_{k-1}=h_0^{-1}gh_0 .
+\tag{3.1}
+\]">\[
+s_0s_1\cdots s_{k-1}=h_0^{-1}gh_0 .
+\tag{3.1}
+\]</span></p>
+<p><strong>Lemma 3.1.</strong> Two tuples with the same increments lie in the same <span class="math" data-tex="\(J\)">\(J\)</span>-orbit. Consequently at most <span class="math" data-tex="\(|S_0|^k\)">\(|S_0|^k\)</span> orbits in <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span> have nonzero weight.</p>
+<p><em>Proof.</em> The increments determine the tuple from its first entry: <span class="math" data-tex="\(h_{i+1}=h_is_i\)">\(h_{i+1}=h_is_i\)</span>. If two tuples with first entries <span class="math" data-tex="\(h_0\)">\(h_0\)</span>, <span class="math" data-tex="\(h_0&#x27;\)">\(h_0&#x27;\)</span> have the same increments, (3.1) gives <span class="math" data-tex="\(h_0^{-1}gh_0=h_0&#x27;^{-1}gh_0&#x27;\)">\(h_0^{-1}gh_0=h_0&#x27;^{-1}gh_0&#x27;\)</span>, so <span class="math" data-tex="\(c=h_0&#x27;h_0^{-1}\)">\(c=h_0&#x27;h_0^{-1}\)</span> commutes with <span class="math" data-tex="\(g\)">\(g\)</span>, and the second tuple is <span class="math" data-tex="\(c\)">\(c\)</span> times the first. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So
+<span class="math math-display" data-tex="\[
+v_k=\sum_{q\in Q_k}w_k(q)\,q
+\]">\[
+v_k=\sum_{q\in Q_k}w_k(q)\,q
+\]</span>
+is a finite linear combination of elements of <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span>; we call it the <em>path sum</em> of length <span class="math" data-tex="\(k\)">\(k\)</span>. For a function <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(G^k\)">\(G^k\)</span> that is constant on <span class="math" data-tex="\(J\)">\(J\)</span>-orbits write
+<span class="math math-display" data-tex="\[
+v_k(p)=\sum_{q\in Q_k}w_k(q)\,p(q),
+\]">\[
+v_k(p)=\sum_{q\in Q_k}w_k(q)\,p(q),
+\]</span>
+a finite sum. The weights are complex numbers; they need not be real or positive.</p>
+<h2 id="4-the-twisted-shift-and-the-deletion-identities">4. The twisted shift and the deletion identities</h2>
+<p>The <em>twisted shift</em> is the map
+<span class="math math-display" data-tex="\[
+T(h_0,\ldots,h_{k-1})=(h_1,\ldots,h_{k-1},gh_0)
+\]">\[
+T(h_0,\ldots,h_{k-1})=(h_1,\ldots,h_{k-1},gh_0)
+\]</span>
+of <span class="math" data-tex="\(G^k\)">\(G^k\)</span>. For <span class="math" data-tex="\(c\in J\)">\(c\in J\)</span>, <span class="math" data-tex="\(T(ch)=cT(h)\)">\(T(ch)=cT(h)\)</span> because <span class="math" data-tex="\(cg=gc\)">\(cg=gc\)</span>, so <span class="math" data-tex="\(T\)">\(T\)</span> induces a map of <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span>, again written <span class="math" data-tex="\(T\)">\(T\)</span>. For <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> and <span class="math" data-tex="\(0\le i&lt;k\)">\(0\le i&lt;k\)</span>, deleting the entry in position <span class="math" data-tex="\(i\)">\(i\)</span> gives a map <span class="math" data-tex="\(d_i:G^k\to G^{k-1}\)">\(d_i:G^k\to G^{k-1}\)</span> which commutes with the action of <span class="math" data-tex="\(J\)">\(J\)</span> and induces <span class="math" data-tex="\(d_i:Q_k\to Q_{k-1}\)">\(d_i:Q_k\to Q_{k-1}\)</span>. For a finite combination <span class="math" data-tex="\(v=\sum_qv(q)q\)">\(v=\sum_qv(q)q\)</span> put <span class="math" data-tex="\(T_*v=\sum_qv(q)\,Tq\)">\(T_*v=\sum_qv(q)\,Tq\)</span> and <span class="math" data-tex="\((d_i)_*v=\sum_qv(q)\,d_iq\)">\((d_i)_*v=\sum_qv(q)\,d_iq\)</span>.</p>
+<p><strong>Lemma 4.1</strong> (path identities [OpenAI-BT, Lemma 7.2]). Let <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> is a bijection of <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span>, and <span class="math" data-tex="\(w_k(Tq)=w_k(q)\)">\(w_k(Tq)=w_k(q)\)</span> for all <span class="math" data-tex="\(q\)">\(q\)</span>. Hence <span class="math" data-tex="\(T_*v_k=v_k\)">\(T_*v_k=v_k\)</span>.</li>
+<li>For <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> and <span class="math" data-tex="\(0\le i&lt;k\)">\(0\le i&lt;k\)</span>, <span class="math" data-tex="\((d_i)_*v_k=v_{k-1}\)">\((d_i)_*v_k=v_{k-1}\)</span>.</li>
+<li>Every <span class="math" data-tex="\(v_k\)">\(v_k\)</span> has total weight <span class="math" data-tex="\(v_k(1)=\lambda\)">\(v_k(1)=\lambda\)</span>, the coefficient (1.3).</li>
+</ol>
+<p><em>Proof.</em> (1) The map sending <span class="math" data-tex="\((h_0,\ldots,h_{k-1})\)">\((h_0,\ldots,h_{k-1})\)</span> to <span class="math" data-tex="\((g^{-1}h_{k-1},h_0,\ldots,h_{k-2})\)">\((g^{-1}h_{k-1},h_0,\ldots,h_{k-2})\)</span> is inverse to <span class="math" data-tex="\(T\)">\(T\)</span> and also commutes with <span class="math" data-tex="\(J\)">\(J\)</span>. For <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, <span class="math" data-tex="\(T(h_0)=gh_0\)">\(T(h_0)=gh_0\)</span> lies in the orbit of <span class="math" data-tex="\(h_0\)">\(h_0\)</span> since <span class="math" data-tex="\(g\in J\)">\(g\in J\)</span>, so <span class="math" data-tex="\(T\)">\(T\)</span> is the identity of <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span>. For <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;w_k(Th)\\
+&amp;\ =\operatorname{tr}\bigl(a(h_1,h_2)\cdots a(h_{k-1},gh_0)\\
+&amp;\qquad\quad a(gh_0,gh_1)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;w_k(Th)\\
+&amp;\ =\operatorname{tr}\bigl(a(h_1,h_2)\cdots a(h_{k-1},gh_0)\\
+&amp;\qquad\quad a(gh_0,gh_1)\bigr),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(a(gh_0,gh_1)=a(h_0,h_1)\)">\(a(gh_0,gh_1)=a(h_0,h_1)\)</span>. The product is a cyclic rotation of the product defining <span class="math" data-tex="\(w_k(h)\)">\(w_k(h)\)</span>, and the trace of a product of matrices is invariant under cyclic rotation. So <span class="math" data-tex="\(w_k\circ T=w_k\)">\(w_k\circ T=w_k\)</span>, and <span class="math" data-tex="\(T_*v_k=\sum_qw_k(q)\,Tq\)">\(T_*v_k=\sum_qw_k(q)\,Tq\)</span> equals <span class="math" data-tex="\(\sum_{q&#x27;}w_k(T^{-1}q&#x27;)\,q&#x27;=v_k\)">\(\sum_{q&#x27;}w_k(T^{-1}q&#x27;)\,q&#x27;=v_k\)</span>.</p>
+<p>(2) Fix an orbit <span class="math" data-tex="\(q&#x27;\in Q_{k-1}\)">\(q&#x27;\in Q_{k-1}\)</span> and a representative <span class="math" data-tex="\((h&#x27;_0,\ldots,h&#x27;_{k-2})\)">\((h&#x27;_0,\ldots,h&#x27;_{k-2})\)</span>. An orbit <span class="math" data-tex="\(q\in Q_k\)">\(q\in Q_k\)</span> with <span class="math" data-tex="\(d_iq=q&#x27;\)">\(d_iq=q&#x27;\)</span> contains exactly one tuple whose entries outside position <span class="math" data-tex="\(i\)">\(i\)</span> are <span class="math" data-tex="\(h&#x27;_0,\ldots,h&#x27;_{k-2}\)">\(h&#x27;_0,\ldots,h&#x27;_{k-2}\)</span>, in order: some tuple in <span class="math" data-tex="\(q\)">\(q\)</span> has this property after left multiplication by an element of <span class="math" data-tex="\(J\)">\(J\)</span>, and that element is unique because <span class="math" data-tex="\(J\)">\(J\)</span> acts freely on <span class="math" data-tex="\(G^{k-1}\)">\(G^{k-1}\)</span>. So the orbits over <span class="math" data-tex="\(q&#x27;\)">\(q&#x27;\)</span> correspond to the elements <span class="math" data-tex="\(u\in G\)">\(u\in G\)</span> inserted at position <span class="math" data-tex="\(i\)">\(i\)</span>, and
+<span class="math math-display" data-tex="\[
+\bigl((d_i)_*v_k\bigr)(q&#x27;)=\sum_{u\in G}w_k(\ldots,u,\ldots),
+\]">\[
+\bigl((d_i)_*v_k\bigr)(q&#x27;)=\sum_{u\in G}w_k(\ldots,u,\ldots),
+\]</span>
+a finite sum since the kernel has finite rows and columns. Write <span class="math" data-tex="\(h=(h_0,\ldots,h_{k-1})\)">\(h=(h_0,\ldots,h_{k-1})\)</span> for the tuple with <span class="math" data-tex="\(h_i=u\)">\(h_i=u\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;i&lt;k-1\)">\(0&lt;i&lt;k-1\)</span>, the factors of <span class="math" data-tex="\(w_k\)">\(w_k\)</span> involving <span class="math" data-tex="\(u\)">\(u\)</span> are <span class="math" data-tex="\(a(h_{i-1},u)a(u,h_{i+1})\)">\(a(h_{i-1},u)a(u,h_{i+1})\)</span>, and (1.2) gives <span class="math" data-tex="\(\sum_ua(h_{i-1},u)a(u,h_{i+1})=a(h_{i-1},h_{i+1})\)">\(\sum_ua(h_{i-1},u)a(u,h_{i+1})=a(h_{i-1},h_{i+1})\)</span>. For <span class="math" data-tex="\(i=k-1\)">\(i=k-1\)</span>, the factors are <span class="math" data-tex="\(a(h_{k-2},u)a(u,gh_0)\)">\(a(h_{k-2},u)a(u,gh_0)\)</span>, and (1.2) gives <span class="math" data-tex="\(a(h_{k-2},gh_0)\)">\(a(h_{k-2},gh_0)\)</span>. In both cases the result is <span class="math" data-tex="\(w_{k-1}(h&#x27;)\)">\(w_{k-1}(h&#x27;)\)</span>.</p>
+<p>For <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, put <span class="math" data-tex="\(B=a(h_1,h_2)\cdots a(h_{k-2},h_{k-1})\)">\(B=a(h_1,h_2)\cdots a(h_{k-2},h_{k-1})\)</span>, with <span class="math" data-tex="\(B\)">\(B\)</span> the identity matrix if <span class="math" data-tex="\(k=2\)">\(k=2\)</span>. By cyclicity of the trace, then left invariance under <span class="math" data-tex="\(g\)">\(g\)</span>, then (1.2) with the substitution <span class="math" data-tex="\(u&#x27;=gu\)">\(u&#x27;=gu\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_u\operatorname{tr}\bigl(a(u,h_1)\,B\,a(h_{k-1},gu)\bigr)\\
+&amp;\ =\sum_u\operatorname{tr}\bigl(B\,a(h_{k-1},gu)\,a(gu,gh_1)\bigr)\\
+&amp;\ =\operatorname{tr}\bigl(B\,a(h_{k-1},gh_1)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_u\operatorname{tr}\bigl(a(u,h_1)\,B\,a(h_{k-1},gu)\bigr)\\
+&amp;\ =\sum_u\operatorname{tr}\bigl(B\,a(h_{k-1},gu)\,a(gu,gh_1)\bigr)\\
+&amp;\ =\operatorname{tr}\bigl(B\,a(h_{k-1},gh_1)\bigr),
+\end{aligned}
+\]</span>
+which is <span class="math" data-tex="\(w_{k-1}(h_1,\ldots,h_{k-1})\)">\(w_{k-1}(h_1,\ldots,h_{k-1})\)</span>.</p>
+<p>(3) Deletion preserves total weight, so by (2) all <span class="math" data-tex="\(v_k(1)\)">\(v_k(1)\)</span> equal <span class="math" data-tex="\(v_1(1)=\sum_{Jh\in Q_1}\operatorname{tr}A_{h^{-1}gh}\)">\(v_1(1)=\sum_{Jh\in Q_1}\operatorname{tr}A_{h^{-1}gh}\)</span>. The map <span class="math" data-tex="\(Jh\mapsto h^{-1}gh\)">\(Jh\mapsto h^{-1}gh\)</span> from <span class="math" data-tex="\(J\backslash G\)">\(J\backslash G\)</span> to the class <span class="math" data-tex="\([g]\)">\([g]\)</span> is well defined and surjective, and it is injective: <span class="math" data-tex="\(h^{-1}gh=h&#x27;^{-1}gh&#x27;\)">\(h^{-1}gh=h&#x27;^{-1}gh&#x27;\)</span> means that <span class="math" data-tex="\(h&#x27;h^{-1}\)">\(h&#x27;h^{-1}\)</span> commutes with <span class="math" data-tex="\(g\)">\(g\)</span>. So <span class="math" data-tex="\(v_1(1)=\sum_{s\in[g]}\operatorname{tr}A_s=\lambda\)">\(v_1(1)=\sum_{s\in[g]}\operatorname{tr}A_s=\lambda\)</span> by (1.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof of (2) uses idempotence of <span class="math" data-tex="\(e\)">\(e\)</span> only through (1.2), and (1) uses only the cyclicity of the trace. Both use the invariance of the kernel under left multiplication by elements of <span class="math" data-tex="\(J\)">\(J\)</span>; invariance under all of <span class="math" data-tex="\(G\)">\(G\)</span> is not needed. The lessons <a href="exterior-chains-and-sparse-cycles.html">Exterior chains and sparse cycles</a> and <a href="a-pfaffian-cocycle.html">A Pfaffian cocycle</a> use only Lemmas 2.1, 3.1 and 4.1.</p>
+<p><strong>Example 4.2.</strong> Let <span class="math" data-tex="\(G=\langle t,s\mid s^2=1,\ sts^{-1}=t^{-1}\rangle\)">\(G=\langle t,s\mid s^2=1,\ sts^{-1}=t^{-1}\rangle\)</span> be the infinite dihedral group, <span class="math" data-tex="\(f=\tfrac12(1+s)\)">\(f=\tfrac12(1+s)\)</span> and <span class="math" data-tex="\(e=f-f\,t\,(1-f)\)">\(e=f-f\,t\,(1-f)\)</span>. Then <span class="math" data-tex="\(e\)">\(e\)</span> is idempotent (Exercise 5.1), and since <span class="math" data-tex="\((1+s)t(1-s)=t-ts+st-t^{-1}\)">\((1+s)t(1-s)=t-ts+st-t^{-1}\)</span>,
+<span class="math math-display" data-tex="\[
+e=\tfrac12+\tfrac12s-\tfrac14t+\tfrac14ts-\tfrac14st+\tfrac14t^{-1}.
+\]">\[
+e=\tfrac12+\tfrac12s-\tfrac14t+\tfrac14ts-\tfrac14st+\tfrac14t^{-1}.
+\]</span>
+For <span class="math" data-tex="\(g=t\)">\(g=t\)</span>, the class <span class="math" data-tex="\([t]\)">\([t]\)</span> is <span class="math" data-tex="\(\{t,t^{-1}\}\)">\(\{t,t^{-1}\}\)</span> and <span class="math" data-tex="\(\lambda=-\tfrac14+\tfrac14=0\)">\(\lambda=-\tfrac14+\tfrac14=0\)</span>. Here <span class="math" data-tex="\(J=\langle t\rangle\)">\(J=\langle t\rangle\)</span>, <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span> has the two elements <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(Js\)">\(Js\)</span>, and <span class="math" data-tex="\(v_1=-\tfrac14J+\tfrac14Js\)">\(v_1=-\tfrac14J+\tfrac14Js\)</span>, since <span class="math" data-tex="\(s^{-1}ts=t^{-1}\)">\(s^{-1}ts=t^{-1}\)</span>. The weights are nonzero, and their total is <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Show that <span class="math" data-tex="\(e=f-fa(1-f)\)">\(e=f-fa(1-f)\)</span> is idempotent for every idempotent <span class="math" data-tex="\(f\)">\(f\)</span> and every <span class="math" data-tex="\(a\)">\(a\)</span> in a ring, and that <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> have the same trace in <span class="math" data-tex="\(\operatorname{HH}_0\)">\(\operatorname{HH}_0\)</span>.</p>
+<p><strong>5.2</strong> (easy). Show that <span class="math" data-tex="\(T^k\)">\(T^k\)</span> is the identity map of <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span>.</p>
+<p><strong>5.3</strong> (easy). Let <span class="math" data-tex="\(F\le G\)">\(F\le G\)</span> be a finite subgroup and <span class="math" data-tex="\(e=|F|^{-1}\sum_{f\in F}f\)">\(e=|F|^{-1}\sum_{f\in F}f\)</span>. Show that <span class="math" data-tex="\(v_k=0\)">\(v_k=0\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span> and every <span class="math" data-tex="\(g\)">\(g\)</span> of infinite order.</p>
+<p><strong>5.4</strong> (medium). Suppose that <span class="math" data-tex="\(e\in\operatorname{Mat}_r(\mathbb CG)\)">\(e\in\operatorname{Mat}_r(\mathbb CG)\)</span> satisfies <span class="math" data-tex="\(e^2=\mu e\)">\(e^2=\mu e\)</span> for a complex number <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and define <span class="math" data-tex="\(w_k\)">\(w_k\)</span> and <span class="math" data-tex="\(v_k\)">\(v_k\)</span> by the same formulas. Show that <span class="math" data-tex="\((d_i)_*v_k=\mu\,v_{k-1}\)">\((d_i)_*v_k=\mu\,v_{k-1}\)</span> and <span class="math" data-tex="\(T_*v_k=v_k\)">\(T_*v_k=v_k\)</span>.</p>
+<p><strong>5.5</strong> (medium). Compute <span class="math" data-tex="\(v_2\)">\(v_2\)</span> in Example 4.2: list the orbits in <span class="math" data-tex="\(Q_2\)">\(Q_2\)</span> with nonzero weight by their increments, give the weights, and check <span class="math" data-tex="\((d_0)_*v_2=(d_1)_*v_2=v_1\)">\((d_0)_*v_2=(d_1)_*v_2=v_1\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> Put <span class="math" data-tex="\(n=fa(1-f)\)">\(n=fa(1-f)\)</span>. Then <span class="math" data-tex="\(fn=n\)">\(fn=n\)</span>, <span class="math" data-tex="\(nf=0\)">\(nf=0\)</span> and <span class="math" data-tex="\(n^2=0\)">\(n^2=0\)</span>, so <span class="math" data-tex="\(e^2=(f-n)^2=f-fn-nf+n^2\)">\(e^2=(f-n)^2=f-fn-nf+n^2\)</span>, which is <span class="math" data-tex="\(f-n=e\)">\(f-n=e\)</span>. The trace of <span class="math" data-tex="\(n\)">\(n\)</span> is <span class="math" data-tex="\(\operatorname{tr}(fa(1-f))\equiv\operatorname{tr}(a(1-f)f)=0\)">\(\operatorname{tr}(fa(1-f))\equiv\operatorname{tr}(a(1-f)f)=0\)</span> modulo commutators (Lemma 2.1 of <a href="traces-of-projective-modules.html">Traces of projective modules</a>).</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(T^k(h_0,\ldots,h_{k-1})=(gh_0,\ldots,gh_{k-1})\)">\(T^k(h_0,\ldots,h_{k-1})=(gh_0,\ldots,gh_{k-1})\)</span>, which is <span class="math" data-tex="\(g\)">\(g\)</span> times the original tuple, and <span class="math" data-tex="\(g\in J\)">\(g\in J\)</span>.</p>
+<p><strong>5.3.</strong> All increments of a tuple of nonzero weight lie in <span class="math" data-tex="\(S_0\subseteq F\)">\(S_0\subseteq F\)</span>, so their product lies in <span class="math" data-tex="\(F\)">\(F\)</span>. By (3.1) it is conjugate to <span class="math" data-tex="\(g\)">\(g\)</span>, which has infinite order, while elements of <span class="math" data-tex="\(F\)">\(F\)</span> have finite order. So no tuple has nonzero weight.</p>
+<p><strong>5.4.</strong> The coefficient form of <span class="math" data-tex="\(e^2=\mu e\)">\(e^2=\mu e\)</span> is <span class="math" data-tex="\(\sum_{uv=t}A_uA_v=\mu A_t\)">\(\sum_{uv=t}A_uA_v=\mu A_t\)</span>, so (1.2) becomes <span class="math" data-tex="\(\sum_ka(h,k)a(k,h&#x27;)=\mu\,a(h,h&#x27;)\)">\(\sum_ka(h,k)a(k,h&#x27;)=\mu\,a(h,h&#x27;)\)</span>, and each deletion in the proof of Lemma 4.1(2) produces a factor <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. The shift identity uses only the cyclicity of the trace.</p>
+<p><strong>5.5.</strong> The support is <span class="math" data-tex="\(S_0=\{1,s,t,ts,st,t^{-1}\}\)">\(S_0=\{1,s,t,ts,st,t^{-1}\}\)</span> with coefficients <span class="math" data-tex="\(\tfrac12,\tfrac12,-\tfrac14,\tfrac14,-\tfrac14,\tfrac14\)">\(\tfrac12,\tfrac12,-\tfrac14,\tfrac14,-\tfrac14,\tfrac14\)</span>. An orbit in <span class="math" data-tex="\(Q_2\)">\(Q_2\)</span> with nonzero weight is given by its increments <span class="math" data-tex="\((s_0,s_1)\in S_0^2\)">\((s_0,s_1)\in S_0^2\)</span>, with <span class="math" data-tex="\(s_0s_1\in\{t,t^{-1}\}\)">\(s_0s_1\in\{t,t^{-1}\}\)</span> by (3.1), and its weight is <span class="math" data-tex="\(A_{s_0}A_{s_1}\)">\(A_{s_0}A_{s_1}\)</span>. Using <span class="math" data-tex="\(ts=st^{-1}\)">\(ts=st^{-1}\)</span> and <span class="math" data-tex="\(st=t^{-1}s\)">\(st=t^{-1}s\)</span>, exactly eight pairs qualify:</p>
+<ul>
+<li>product <span class="math" data-tex="\(t\)">\(t\)</span>: <span class="math" data-tex="\((1,t)\)">\((1,t)\)</span>, <span class="math" data-tex="\((t,1)\)">\((t,1)\)</span>, <span class="math" data-tex="\((s,st)\)">\((s,st)\)</span>, <span class="math" data-tex="\((ts,s)\)">\((ts,s)\)</span>, with weights <span class="math" data-tex="\(-\tfrac18,-\tfrac18,-\tfrac18,\tfrac18\)">\(-\tfrac18,-\tfrac18,-\tfrac18,\tfrac18\)</span>;</li>
+<li>product <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span>: <span class="math" data-tex="\((1,t^{-1})\)">\((1,t^{-1})\)</span>, <span class="math" data-tex="\((t^{-1},1)\)">\((t^{-1},1)\)</span>, <span class="math" data-tex="\((s,ts)\)">\((s,ts)\)</span>, <span class="math" data-tex="\((st,s)\)">\((st,s)\)</span>, with weights <span class="math" data-tex="\(\tfrac18,\tfrac18,\tfrac18,-\tfrac18\)">\(\tfrac18,\tfrac18,\tfrac18,-\tfrac18\)</span>.</li>
+</ul>
+<p>Deleting <span class="math" data-tex="\(h_1\)">\(h_1\)</span> keeps <span class="math" data-tex="\(h_0\)">\(h_0\)</span>, and <span class="math" data-tex="\(h_0\in J\)">\(h_0\in J\)</span> exactly when <span class="math" data-tex="\(s_0s_1=h_0^{-1}th_0=t\)">\(s_0s_1=h_0^{-1}th_0=t\)</span>. So <span class="math" data-tex="\((d_1)_*v_2=-\tfrac14J+\tfrac14Js=v_1\)">\((d_1)_*v_2=-\tfrac14J+\tfrac14Js=v_1\)</span>. Deleting <span class="math" data-tex="\(h_0\)">\(h_0\)</span> keeps <span class="math" data-tex="\(h_1\)">\(h_1\)</span>, and <span class="math" data-tex="\(h_1^{-1}th_1=s_1s_0\)">\(h_1^{-1}th_1=s_1s_0\)</span>. The reversed products are <span class="math" data-tex="\(t\)">\(t\)</span> for <span class="math" data-tex="\((1,t)\)">\((1,t)\)</span>, <span class="math" data-tex="\((t,1)\)">\((t,1)\)</span>, <span class="math" data-tex="\((s,ts)\)">\((s,ts)\)</span>, <span class="math" data-tex="\((st,s)\)">\((st,s)\)</span>, with total weight <span class="math" data-tex="\(-\tfrac14\)">\(-\tfrac14\)</span>, and <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> for the other four, with total weight <span class="math" data-tex="\(\tfrac14\)">\(\tfrac14\)</span>. So <span class="math" data-tex="\((d_0)_*v_2=v_1\)">\((d_0)_*v_2=v_1\)</span> as well.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BT] OpenAI, <em>The Bass trace conjecture for complex group rings</em>, OpenAI Math Release preprint, 24 September 2026, Section 7. https://github.com/openai/math/tree/main/preprints/The-Bass-trace-conjecture-for-complex-group-rings-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

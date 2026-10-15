@@ -42,6 +42,22 @@ Condition (1) also applies to a global compact distribution whose singular suppo
 \]
 Indeed the commutator is supported where derivatives of \(\chi\) occur, and \(v\) is smooth there. Also the singular support of \(P^tv\) is contained in \(S\), where \(\chi=1\). Apply (1) to \(\chi v\). This extension of the definition lets us translate singular sets without requiring the translated full support to stay inside \(X\).
 
+### Smoothness from an empty image singular support
+
+**Lemma 1.1.** Assume (1). If a global compact distribution \(v\) has \(\operatorname{singsupp}v\subset X\) and \(P^tv\) is smooth on \(\mathbb R^n\), then \(v\) is smooth. In particular, a distribution in \(\mathcal E'(X)\) whose image is smooth on \(X\) is smooth on \(X\).
+
+*Lemma 1.1 and its proof: GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026; AI self-check, CC0.*
+
+**Proof.** Condition (1) with \(K=\varnothing\) supplies one compact bound \(B\subset X\). Suppose \(S=\operatorname{singsupp}v\) is nonempty. Then \(X\) is nonempty and \(n\ge1\): on the one-point space \(\mathbb R^0\), every distribution is a smooth scalar function. Fix a nonzero real vector \(e\). Define translation by \((\tau_{te}v)(\phi)=v(\phi(\,·+te))\). Its singular support is \(S+te\), and constant coefficients give \(P^t\tau_{te}v=\tau_{te}P^tv\), so its image remains smooth.
+
+Let \(t_0\) be the infimum of the nonnegative times \(t\) for which \(S+te\not\subset X\), taking \(t_0=\infty\) if there are none. Compactness of \(S\) inside the open set \(X\) gives \(t_0>0\). For every \(0\le t<t_0\), the cutoff extension (3) applies to \(\tau_{te}v\), even if its full support has left \(X\). Since the image has no singularities, the same bound gives \(S+te\subset B\) for every such \(t\).
+
+If \(t_0<\infty\), choose times \(t_j\to t_0\) with \(t_j\ge t_0\) and points \(s_j\in S\) such that \(s_j+t_je\notin X\). A subsequence converges to \(s_*\in S\). The complement of \(X\) is closed, hence \(s_*+t_0e\notin X\). But \(s_*+re\in B\) for every \(0\le r<t_0\); letting \(r\uparrow t_0\) puts this same point in the closed set \(B\subset X\), a contradiction. If \(t_0=\infty\), fix \(s_*\in S\). The entire ray \(s_*+te\), \(t\ge0\), lies in the compact set \(B\), although its norm tends to infinity. This is also impossible. Thus \(S=\varnothing\).
+
+For the last assertion, extend the compactly supported distribution in \(X\) by zero. Its support is compactly contained in \(X\), so the extension and its differential image vanish near the complement of \(X\). An image smooth on \(X\) is consequently smooth globally, and the first assertion applies. \(\square\)
+
+This argument uses only (1), the cutoff identity (3), and translation. It supplies the empty bounds used in Lemma 4.1 without the full hull identity (2). The latter remains the stronger result used in the boundary-distance and convex-domain assertions.
+
 ## Boundary distance and stable domains
 
 Put \(d_X(x)=\operatorname{dist}(x,\mathbb R^n\setminus X)\), with value infinity if the complement is empty. For a compact set \(S\), put \(d_X(S)=\inf_{x\in S}d_X(x)\), with \(d_X(\varnothing)=\infty\).
@@ -201,7 +217,7 @@ K_j\subset\operatorname{int}K_j',
 \qquad K_j'\subset\operatorname{int}K_{j+1},
 \tag{18}
 \]
-and \(K_j'\) bounds singularities when the image singular support is in \(K_j\). Enlarge the sets at each step to include a fixed ordinary exhaustion. Put \(K_{-1}=K_0=K_{-1}'=K_0'=\varnothing\); the bound for empty image singular support is valid by (2).
+and \(K_j'\) bounds singularities when the image singular support is in \(K_j\). Enlarge the sets at each step to include a fixed ordinary exhaustion. Put \(K_{-1}=K_0=K_{-1}'=K_0'=\varnothing\); the bound for empty image singular support follows from [Lemma 1.1](#smoothness-from-an-empty-image-singular-support) under (1).
 
 For \(j\ge0\), let \(V_j\) consist of continuous global functions supported in \(K_{j+1}'\) for which \(P^tv\) is smooth on \(X\setminus K_{j-1}\). Give it the supremum norm of \(v\), together with all compact derivative seminorms of \(P^tv\) on that open set.
 

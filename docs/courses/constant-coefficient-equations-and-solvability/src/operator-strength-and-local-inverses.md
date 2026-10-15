@@ -204,20 +204,20 @@ satisfies \((P(D)+R(x,D))T_Rf=f\). This gives a right inverse for a sufficiently
 
 **Exercise 3 (intermediate).** Let \(X\) be any bounded open set, \(P\ne0\), and \(Q_1,\ldots,Q_N\prec P\). Show that for every \(f\in L^2(X)\), one can solve \(P(D)u=f\) so that every \(Q_\nu(D)u\) belongs to \(L^2(X)\). Does the theorem give a uniqueness statement?
 
-**Solution.** Set \(u=Tf\). Equation (9) solves the equation, and (11) gives every requested derivative with its quantitative bound. Uniqueness is not claimed: one may add any \(L^2\) homogeneous solution having the indicated derivatives. For the transport equation on a rectangle, constants in the transport direction give elementary examples when its zero-order coefficient vanishes. Boundary or normalization conditions would be needed to select a unique solution.
+**Solution.** Set \(u=Tf\). Equation (9) solves the equation, and (11) gives every requested derivative with its quantitative bound. Uniqueness is not claimed: one may add any \(L^2\) homogeneous solution having the indicated derivatives. For the transport equation on a rectangle, constants in the transport direction give elementary examples when its zero-order coefficient vanishes. In these transport examples, boundary or normalization conditions would be needed to select a unique solution.
 
 **Exercise 4 (advanced).** For \(P(D)=D_1^2+iD_2\) on a bounded open \(X\subset\mathbb R^2\), consider
 \[
 A=P(D)+b_1(x)D_1^2+b_2(x)D_2+b_3(x)D_1+b_4(x).
 \]
-Give an explicit sufficient condition, in terms of (11), for an \(L^2\) right inverse. Explain why the same argument does not admit an arbitrary term \(b_5(x)D_2^2\).
+Give an explicit sufficient condition, in terms of (11), for an \(L^2\) right inverse. If the domain is nonempty, explain why the same argument does not admit an arbitrary term \(b_5(x)D_2^2\).
 
 **Solution.** Put \(Q_1=\xi_1^2\), \(Q_2=\xi_2\), \(Q_3=\xi_1\), \(Q_4=1\), and
 \(M_\nu=\sup|Q_\nu|/S_P<\infty\). A sufficient condition is
 \[
 C_X\sum_{\nu=1}^4M_\nu\|b_\nu\|_\infty<1.
 \]
-Then (12) gives a convergent Neumann series and the right inverse \(T(I+RT)^{-1}\). The polynomial \(\xi_2^2\) is not weaker than \(P\); along \((0,t)\), its ratio to \(S_P\) tends to infinity. Theorem 3.1 shows that one cannot obtain the required derivative for every compact \(L^2\) datum under this equation. In particular, making \(b_5\) small does not supply the missing bounded multiplier estimate for \(D_2^2T\).
+Then (12) gives a convergent Neumann series and the right inverse \(T(I+RT)^{-1}\). The polynomial \(\xi_2^2\) is not weaker than \(P\); along \((0,t)\), its ratio to \(S_P\) tends to infinity. On a nonempty domain, Theorem 3.1 shows that one cannot obtain the required derivative for every compact \(L^2\) datum under this equation. On such a domain, making \(b_5\) small does not supply the missing bounded multiplier estimate for \(D_2^2T\). For the empty domain, all the relevant function spaces are zero, and the sufficient condition above still applies.
 
 ## References
 

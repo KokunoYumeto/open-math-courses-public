@@ -522,6 +522,34 @@ First suppose $f\ge0$. The bounded function $h=\sqrt f$ satisfies
 \]
 Consequently $J(h)\in\mathfrak n_{E_\beta}$ and $J(f)=J(h)^*J(h)\in\mathfrak m_{E_\beta}$. The finite extension agrees there with the positive weight, proving (L31.7.a). For complex $f$, each positive or negative part of its real or imaginary part is bounded and integrable, because it is at most $|f|$. Decompose $f$ into these four positive functions and use the linearity of $J$ and $\dot E_\beta$. This proves membership as well as the integral formula, with no difference of infinite values.
 
+The spectral part of the quadratic domain has the exact description
+\[
+ J(f)\in\mathfrak n_{E_\beta}
+ \quad\Longleftrightarrow\quad f\in L^2(H)
+ \qquad(f\in L^\infty(H)),
+ \qquad
+ E_\beta(J(f)^*J(f))=\left(\int_H|f|^2\,d\chi\right)1_M .
+ \tag{L31.7.b1}
+\]
+Indeed, \(J\) is a star homomorphism, so \(J(f)^*J(f)=J(|f|^2)\). Apply (L31.6.a) to the bounded positive function \(|f|^2\). Its output is bounded precisely when the scalar integral is finite, since \(M\ne0\). This proves both directions, on the entire spectral algebra.
+
+For bounded \(f,g\in L^2(H)\), the inequality \(2|\overline f g|\le |f|^2+|g|^2\) shows that \(\overline f g\in L^1(H)\cap L^\infty(H)\). Equation (L31.7.a) therefore gives the finite pairing
+\[
+ \dot E_\beta(J(f)^*J(g))
+       =\left(\int_H\overline f\,g\,d\chi\right)1_M .
+ \tag{L31.7.b2}
+\]
+The product belongs to the full finite linear domain by its definition in (L31.4.g), as well as by the integrability argument. All these conclusions hold without a countable Haar exhaustion.
+
+**Finite square, infinite average.** Suppose \(H=\mathbb R\) with Haar measure \(dp/(2\pi)\), and put \(f(p)=(1+|p|)^{-1}\). This is a bounded positive function. By the [scalar fundamental theorem](OA-FLOW-SC.md#sc-08), applied on each half of the interval,
+\[
+ \int_{-R}^{R}f(p)^2\,\frac{dp}{2\pi}
+     =\frac1\pi\left(1-\frac1{1+R}\right)
+     \quad(R>0).
+ \tag{L31.7.b3}
+\]
+For example, the primitive on the positive half-line is \(-(1+p)^{-1}\). Increasing the compact intervals and using [the compact-test identity](#l31-1) gives \(\|f\|_2^2=1/\pi\). On each interval \([2^n,2^{n+1})\), \(n\ge0\), the integral of \(f\) with respect to \(dp\) is at least \(2^n/(1+2^{n+1})\ge1/3\). Finite unions of these disjoint intervals have arbitrarily large integrals, so \(\int_H f\,d\chi=\infty\). Consequently \(J(f)\in\mathfrak n_{E_\beta}\), with \(E_\beta(J(f)^*J(f))=\pi^{-1}1_M\), whereas \(E_\beta(J(f))=\infty1_M\). Since \(J(f)\) is positive, (L31.4.i) also gives \(J(f)\notin\mathfrak m_{E_\beta}\). A finite quadratic value thus need not give a finite average of the positive operator itself.
+
 Taking $f=1$ in (L31.6.a) gives
 \[
  E_\beta(1)=|H|1_M,\qquad |H|:=\int_H1\,d\chi.

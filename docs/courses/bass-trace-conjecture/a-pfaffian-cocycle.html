@@ -1,0 +1,241 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A Pfaffian cocycle</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Bass trace conjecture for group rings)</a><a href="exterior-chains-and-sparse-cycles.html">Previous lesson</a><a href="a-transport-metric-with-small-balls.html">Next lesson</a><a href="src/a-pfaffian-cocycle.md">Editable source</a></nav><main><article><h1 id="a-pfaffian-cocycle">A Pfaffian cocycle</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Keep the data of <a href="path-sums-of-an-idempotent.html">Path sums of an idempotent</a> and <a href="exterior-chains-and-sparse-cycles.html">Exterior chains and sparse cycles</a>: a finitely generated group <span class="math" data-tex="\(G\)">\(G\)</span>, an idempotent <span class="math" data-tex="\(e\)">\(e\)</span>, an element <span class="math" data-tex="\(g\)">\(g\)</span> of infinite order, <span class="math" data-tex="\(J=C_G(g)\)">\(J=C_G(g)\)</span>, <span class="math" data-tex="\(H=J/\langle g\rangle\)">\(H=J/\langle g\rangle\)</span> acting freely on the graph <span class="math" data-tex="\(Y=\langle g\rangle\backslash G\)">\(Y=\langle g\rangle\backslash G\)</span>, the path sums <span class="math" data-tex="\(v_k\)">\(v_k\)</span> with total weight <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and the cycles <span class="math" data-tex="\(z_{2m}\in(E_{2m})_H\)">\(z_{2m}\in(E_{2m})_H\)</span>. This lesson constructs, for every <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, an invariant cocycle <span class="math" data-tex="\(\psi_m\)">\(\psi_m\)</span> on <span class="math" data-tex="\(E_{2m}\)">\(E_{2m}\)</span> with
+<span class="math math-display" data-tex="\[
+\psi_m(z_{2m})=2^{-m}\lambda .
+\]">\[
+\psi_m(z_{2m})=2^{-m}\lambda .
+\]</span>
+The construction records how many powers of <span class="math" data-tex="\(g\)">\(g\)</span> separate two group elements, takes Pfaffians of the resulting antisymmetric matrices, and sums over deletions. With the sparse-chain vanishing theorem it proves the trace theorem [OpenAI-BT, Sections 8 and 9]. The pairing of cyclic cocycles with projective modules, introduced by Connes [Connes, Part II, Section 2], is the conceptual background; the proofs below are direct and finite.</p>
+<ul>
+<li>Relative exponents (Section 1).</li>
+<li>Pfaffians (Section 2).</li>
+<li>A recurrence for weighted Pfaffians (Section 3).</li>
+<li>Descent to a cocycle (Section 4).</li>
+<li>Proof of the trace theorem (Section 5).</li>
+</ul>
+<h2 id="1-relative-exponents">1. Relative exponents</h2>
+<p><strong>Lemma 1.1</strong> ([OpenAI-BT, Lemma 8.1]). There is a function <span class="math" data-tex="\(\beta:G\times G\to\mathbb R\)">\(\beta:G\times G\to\mathbb R\)</span> such that for all <span class="math" data-tex="\(h,h&#x27;\in G\)">\(h,h&#x27;\in G\)</span>, <span class="math" data-tex="\(c\in J\)">\(c\in J\)</span> and <span class="math" data-tex="\(r,s\in\mathbb Z\)">\(r,s\in\mathbb Z\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\beta(h&#x27;,h)&amp;=-\beta(h,h&#x27;),\\
+\beta(ch,ch&#x27;)&amp;=\beta(h,h&#x27;),\\
+\beta(g^rh,\,g^sh&#x27;)&amp;=\beta(h,h&#x27;)\\
+&amp;\quad+s-r .
+\end{aligned}
+\tag{1.1}
+\]">\[
+\begin{aligned}
+\beta(h&#x27;,h)&amp;=-\beta(h,h&#x27;),\\
+\beta(ch,ch&#x27;)&amp;=\beta(h,h&#x27;),\\
+\beta(g^rh,\,g^sh&#x27;)&amp;=\beta(h,h&#x27;)\\
+&amp;\quad+s-r .
+\end{aligned}
+\tag{1.1}
+\]</span></p>
+<p><em>Proof.</em> The group <span class="math" data-tex="\(H\)">\(H\)</span> acts on <span class="math" data-tex="\(Y\times Y\)">\(Y\times Y\)</span> diagonally, and the action is free because it is free on the first coordinate; this includes the pairs <span class="math" data-tex="\((y,y)\)">\((y,y)\)</span>. For each orbit choose a representative pair <span class="math" data-tex="\((y_o,y&#x27;_o)\)">\((y_o,y&#x27;_o)\)</span> and elements <span class="math" data-tex="\(l_o,l&#x27;_o\in G\)">\(l_o,l&#x27;_o\in G\)</span> with <span class="math" data-tex="\(\bar l_o=y_o\)">\(\bar l_o=y_o\)</span>, <span class="math" data-tex="\(\bar l&#x27;_o=y&#x27;_o\)">\(\bar l&#x27;_o=y&#x27;_o\)</span>. Given <span class="math" data-tex="\((h,h&#x27;)\in G^2\)">\((h,h&#x27;)\in G^2\)</span>, let <span class="math" data-tex="\(o\)">\(o\)</span> be the orbit of <span class="math" data-tex="\((\bar h,\bar h&#x27;)\)">\((\bar h,\bar h&#x27;)\)</span> and <span class="math" data-tex="\(\bar c\in H\)">\(\bar c\in H\)</span> the unique element carrying <span class="math" data-tex="\((y_o,y&#x27;_o)\)">\((y_o,y&#x27;_o)\)</span> to <span class="math" data-tex="\((\bar h,\bar h&#x27;)\)">\((\bar h,\bar h&#x27;)\)</span>. For a lift <span class="math" data-tex="\(c\in J\)">\(c\in J\)</span> of <span class="math" data-tex="\(\bar c\)">\(\bar c\)</span>, the elements <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(cl_o\)">\(cl_o\)</span> have the same coset, and so do <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> and <span class="math" data-tex="\(cl&#x27;_o\)">\(cl&#x27;_o\)</span>:
+<span class="math math-display" data-tex="\[
+h=g^rcl_o,\qquad h&#x27;=g^scl&#x27;_o
+\]">\[
+h=g^rcl_o,\qquad h&#x27;=g^scl&#x27;_o
+\]</span>
+for integers <span class="math" data-tex="\(r\)">\(r\)</span>, <span class="math" data-tex="\(s\)">\(s\)</span>, which are unique because <span class="math" data-tex="\(g\)">\(g\)</span> has infinite order. Replacing <span class="math" data-tex="\(c\)">\(c\)</span> by another lift <span class="math" data-tex="\(g^tc\)">\(g^tc\)</span> replaces <span class="math" data-tex="\((r,s)\)">\((r,s)\)</span> by <span class="math" data-tex="\((r-t,s-t)\)">\((r-t,s-t)\)</span>. So
+<span class="math math-display" data-tex="\[
+B(h,h&#x27;)=s-r
+\]">\[
+B(h,h&#x27;)=s-r
+\]</span>
+depends only on <span class="math" data-tex="\((h,h&#x27;)\)">\((h,h&#x27;)\)</span>. For <span class="math" data-tex="\(c&#x27;\in J\)">\(c&#x27;\in J\)</span>, the pair <span class="math" data-tex="\((c&#x27;h,c&#x27;h&#x27;)\)">\((c&#x27;h,c&#x27;h&#x27;)\)</span> has the same orbit, carried by <span class="math" data-tex="\(\bar c&#x27;\bar c\)">\(\bar c&#x27;\bar c\)</span>, and <span class="math" data-tex="\(c&#x27;h=g^r(c&#x27;c)l_o\)">\(c&#x27;h=g^r(c&#x27;c)l_o\)</span> since <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span> commutes with <span class="math" data-tex="\(g\)">\(g\)</span>; so <span class="math" data-tex="\(B(c&#x27;h,c&#x27;h&#x27;)=B(h,h&#x27;)\)">\(B(c&#x27;h,c&#x27;h&#x27;)=B(h,h&#x27;)\)</span>. Changing <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> to <span class="math" data-tex="\(g^ah\)">\(g^ah\)</span>, <span class="math" data-tex="\(g^bh&#x27;\)">\(g^bh&#x27;\)</span> changes <span class="math" data-tex="\(r\)">\(r\)</span>, <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(r+a\)">\(r+a\)</span>, <span class="math" data-tex="\(s+b\)">\(s+b\)</span>, so <span class="math" data-tex="\(B(g^ah,g^bh&#x27;)=B(h,h&#x27;)+b-a\)">\(B(g^ah,g^bh&#x27;)=B(h,h&#x27;)+b-a\)</span>. The function
+<span class="math math-display" data-tex="\[
+\beta(h,h&#x27;)=\tfrac12\bigl(B(h,h&#x27;)-B(h&#x27;,h)\bigr)
+\]">\[
+\beta(h,h&#x27;)=\tfrac12\bigl(B(h,h&#x27;)-B(h&#x27;,h)\bigr)
+\]</span>
+is antisymmetric, <span class="math" data-tex="\(J\)">\(J\)</span>-invariant, and satisfies <span class="math" data-tex="\(\beta(g^ah,g^bh&#x27;)=\beta(h,h&#x27;)+b-a\)">\(\beta(g^ah,g^bh&#x27;)=\beta(h,h&#x27;)+b-a\)</span>: the difference <span class="math" data-tex="\(B(g^ah,g^bh&#x27;)-B(g^bh&#x27;,g^ah)\)">\(B(g^ah,g^bh&#x27;)-B(g^bh&#x27;,g^ah)\)</span> exceeds <span class="math" data-tex="\(B(h,h&#x27;)-B(h&#x27;,h)\)">\(B(h,h&#x27;)-B(h&#x27;,h)\)</span> by <span class="math" data-tex="\((b-a)-(a-b)\)">\((b-a)-(a-b)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The function <span class="math" data-tex="\(\beta\)">\(\beta\)</span> does not descend to <span class="math" data-tex="\(Y\times Y\)">\(Y\times Y\)</span>: by (1.1), <span class="math" data-tex="\(\beta(h,g^kh)=k\)">\(\beta(h,g^kh)=k\)</span>, although <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(g^kh\)">\(g^kh\)</span> have the same coset. Its values need not be integers. For <span class="math" data-tex="\(G=\langle t\rangle\)">\(G=\langle t\rangle\)</span> infinite cyclic and <span class="math" data-tex="\(g=t^2\)">\(g=t^2\)</span>, the three conditions force <span class="math" data-tex="\(\beta(t^a,t^b)=(b-a)/2\)">\(\beta(t^a,t^b)=(b-a)/2\)</span> (Exercise 6.3); here <span class="math" data-tex="\(\bar t\in H\)">\(\bar t\in H\)</span> exchanges the two vertices of <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<h2 id="2-pfaffians">2. Pfaffians</h2>
+<p>Let <span class="math" data-tex="\(N=2m\)">\(N=2m\)</span> and let <span class="math" data-tex="\(M\)">\(M\)</span> be an antisymmetric <span class="math" data-tex="\(N\times N\)">\(N\times N\)</span> matrix over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, with rows and columns indexed by <span class="math" data-tex="\(\{0,\ldots,N-1\}\)">\(\{0,\ldots,N-1\}\)</span>. In the exterior algebra <span class="math" data-tex="\(\Lambda(\{0,\ldots,N-1\})\)">\(\Lambda(\{0,\ldots,N-1\})\)</span> of <a href="exterior-chains-and-sparse-cycles.html">Exterior chains and sparse cycles</a>, Section 1, put
+<span class="math math-display" data-tex="\[
+b_M=\sum_{i&lt;j}M_{ij}\,\varepsilon_i\wedge\varepsilon_j .
+\]">\[
+b_M=\sum_{i&lt;j}M_{ij}\,\varepsilon_i\wedge\varepsilon_j .
+\]</span>
+The <em>Pfaffian</em> <span class="math" data-tex="\(\operatorname{Pf}(M)\)">\(\operatorname{Pf}(M)\)</span> is the coefficient of <span class="math" data-tex="\(\varepsilon_{\{0,\ldots,N-1\}}\)">\(\varepsilon_{\{0,\ldots,N-1\}}\)</span> in <span class="math" data-tex="\(b_M^m/m!\)">\(b_M^m/m!\)</span>. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span> put <span class="math" data-tex="\(\operatorname{Pf}=1\)">\(\operatorname{Pf}=1\)</span>. For <span class="math" data-tex="\(N=2\)">\(N=2\)</span>, <span class="math" data-tex="\(\operatorname{Pf}(M)=M_{01}\)">\(\operatorname{Pf}(M)=M_{01}\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> (a) <span class="math" data-tex="\(\operatorname{Pf}(M)=\sum_\mu\operatorname{sgn}(\mu)\prod_{k=1}^mM_{i_kj_k}\)">\(\operatorname{Pf}(M)=\sum_\mu\operatorname{sgn}(\mu)\prod_{k=1}^mM_{i_kj_k}\)</span>, the sum over the partitions <span class="math" data-tex="\(\mu=\{\{i_1,j_1\},\ldots,\{i_m,j_m\}\}\)">\(\mu=\{\{i_1,j_1\},\ldots,\{i_m,j_m\}\}\)</span> of <span class="math" data-tex="\(\{0,\ldots,N-1\}\)">\(\{0,\ldots,N-1\}\)</span> into pairs with <span class="math" data-tex="\(i_k&lt;j_k\)">\(i_k&lt;j_k\)</span>, where <span class="math" data-tex="\(\operatorname{sgn}(\mu)\)">\(\operatorname{sgn}(\mu)\)</span> is the sign of the permutation <span class="math" data-tex="\(i_1,j_1,\ldots,i_m,j_m\)">\(i_1,j_1,\ldots,i_m,j_m\)</span>. More generally, for <span class="math" data-tex="\(S\subseteq\{0,\ldots,N-1\}\)">\(S\subseteq\{0,\ldots,N-1\}\)</span> with <span class="math" data-tex="\(|S|=2l\)">\(|S|=2l\)</span>, the coefficient of <span class="math" data-tex="\(\varepsilon_S\)">\(\varepsilon_S\)</span> in <span class="math" data-tex="\(b_M^l/l!\)">\(b_M^l/l!\)</span> is the Pfaffian of the submatrix <span class="math" data-tex="\(M_S\)">\(M_S\)</span> with rows and columns in <span class="math" data-tex="\(S\)">\(S\)</span>, in increasing order.
+(b) For a permutation <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(\{0,\ldots,N-1\}\)">\(\{0,\ldots,N-1\}\)</span>, the matrix <span class="math" data-tex="\(M^\sigma_{ij}=M_{\sigma(i)\sigma(j)}\)">\(M^\sigma_{ij}=M_{\sigma(i)\sigma(j)}\)</span> satisfies <span class="math" data-tex="\(\operatorname{Pf}(M^\sigma)=\operatorname{sgn}(\sigma)\operatorname{Pf}(M)\)">\(\operatorname{Pf}(M^\sigma)=\operatorname{sgn}(\sigma)\operatorname{Pf}(M)\)</span>.
+(c) For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Pf}(M)=\sum_{i=0}^{N-2}&amp;(-1)^iM_{i,N-1}\\
+&amp;\cdot\operatorname{Pf}\bigl(M_{\{0,\ldots,N-2\}\setminus\{i\}}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Pf}(M)=\sum_{i=0}^{N-2}&amp;(-1)^iM_{i,N-1}\\
+&amp;\cdot\operatorname{Pf}\bigl(M_{\{0,\ldots,N-2\}\setminus\{i\}}\bigr).
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> (a) The two-forms <span class="math" data-tex="\(\varepsilon_i\wedge\varepsilon_j\)">\(\varepsilon_i\wedge\varepsilon_j\)</span> commute, and a product of two-forms vanishes when two of them share an index. So <span class="math" data-tex="\(b_M^l\)">\(b_M^l\)</span> is the sum over ordered <span class="math" data-tex="\(l\)">\(l\)</span>-tuples of disjoint pairs, and each set of <span class="math" data-tex="\(l\)">\(l\)</span> disjoint pairs occurs <span class="math" data-tex="\(l!\)">\(l!\)</span> times. The product <span class="math" data-tex="\(\varepsilon_{i_1}\wedge\varepsilon_{j_1}\wedge\cdots\)">\(\varepsilon_{i_1}\wedge\varepsilon_{j_1}\wedge\cdots\)</span> of a partition of <span class="math" data-tex="\(S\)">\(S\)</span> equals <span class="math" data-tex="\(\operatorname{sgn}\cdot\varepsilon_S\)">\(\operatorname{sgn}\cdot\varepsilon_S\)</span> by Lemma 1.2(c) of that lesson, applied to the order of <span class="math" data-tex="\(S\)">\(S\)</span>.
+(b) Let <span class="math" data-tex="\(L\)">\(L\)</span> be the linear map <span class="math" data-tex="\(\varepsilon_i\mapsto\varepsilon_{\sigma^{-1}(i)}\)">\(\varepsilon_i\mapsto\varepsilon_{\sigma^{-1}(i)}\)</span> and <span class="math" data-tex="\(\Lambda(L)\)">\(\Lambda(L)\)</span> the multiplicative map of Lemma 1.2(b) there. Using antisymmetry to reorder the pairs, <span class="math" data-tex="\(\Lambda(L)b_M=b_{M^\sigma}\)">\(\Lambda(L)b_M=b_{M^\sigma}\)</span>, hence <span class="math" data-tex="\(\Lambda(L)(b_M^m/m!)=b_{M^\sigma}^m/m!\)">\(\Lambda(L)(b_M^m/m!)=b_{M^\sigma}^m/m!\)</span>. On the top vector, <span class="math" data-tex="\(\Lambda(L)\)">\(\Lambda(L)\)</span> multiplies by <span class="math" data-tex="\(\operatorname{sgn}(\sigma^{-1})=\operatorname{sgn}(\sigma)\)">\(\operatorname{sgn}(\sigma^{-1})=\operatorname{sgn}(\sigma)\)</span> by Lemma 1.2(c) there. Comparing top coefficients gives <span class="math" data-tex="\(\operatorname{sgn}(\sigma)\operatorname{Pf}(M)=\operatorname{Pf}(M^\sigma)\)">\(\operatorname{sgn}(\sigma)\operatorname{Pf}(M)=\operatorname{Pf}(M^\sigma)\)</span>.
+(c) Write <span class="math" data-tex="\(b_M=b&#x27;+w\wedge\varepsilon_{N-1}\)">\(b_M=b&#x27;+w\wedge\varepsilon_{N-1}\)</span> with <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> the part not involving <span class="math" data-tex="\(\varepsilon_{N-1}\)">\(\varepsilon_{N-1}\)</span> and <span class="math" data-tex="\(w=\sum_{i&lt;N-1}M_{i,N-1}\varepsilon_i\)">\(w=\sum_{i&lt;N-1}M_{i,N-1}\varepsilon_i\)</span>. Since <span class="math" data-tex="\((w\wedge\varepsilon_{N-1})^2=0\)">\((w\wedge\varepsilon_{N-1})^2=0\)</span> and two-forms commute,
+<span class="math math-display" data-tex="\[
+\frac{b_M^m}{m!}=\frac{b&#x27;^m}{m!}+\frac{b&#x27;^{m-1}}{(m-1)!}\wedge w\wedge\varepsilon_{N-1}.
+\]">\[
+\frac{b_M^m}{m!}=\frac{b&#x27;^m}{m!}+\frac{b&#x27;^{m-1}}{(m-1)!}\wedge w\wedge\varepsilon_{N-1}.
+\]</span>
+The first term has no top component. By (a), <span class="math" data-tex="\(b&#x27;^{m-1}/(m-1)!=\sum_T\operatorname{Pf}(M_T)\varepsilon_T\)">\(b&#x27;^{m-1}/(m-1)!=\sum_T\operatorname{Pf}(M_T)\varepsilon_T\)</span> over <span class="math" data-tex="\((N-2)\)">\((N-2)\)</span>-subsets <span class="math" data-tex="\(T\subseteq\{0,\ldots,N-2\}\)">\(T\subseteq\{0,\ldots,N-2\}\)</span>, and <span class="math" data-tex="\(\varepsilon_T\wedge\varepsilon_i\wedge\varepsilon_{N-1}\)">\(\varepsilon_T\wedge\varepsilon_i\wedge\varepsilon_{N-1}\)</span> is nonzero only for <span class="math" data-tex="\(T=\{0,\ldots,N-2\}\setminus\{i\}\)">\(T=\{0,\ldots,N-2\}\setminus\{i\}\)</span>. Then <span class="math" data-tex="\(\varepsilon_T\wedge\varepsilon_i\)">\(\varepsilon_T\wedge\varepsilon_i\)</span> has sign <span class="math" data-tex="\((-1)^{\#\{t\in T:t&gt;i\}}=(-1)^{N-2-i}=(-1)^i\)">\((-1)^{\#\{t\in T:t&gt;i\}}=(-1)^{N-2-i}=(-1)^i\)</span>, and appending <span class="math" data-tex="\(\varepsilon_{N-1}\)">\(\varepsilon_{N-1}\)</span> adds no sign. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, when <span class="math" data-tex="\(N=4\)">\(N=4\)</span>, <span class="math" data-tex="\(\operatorname{Pf}(M)\)">\(\operatorname{Pf}(M)\)</span> is <span class="math" data-tex="\(M_{01}M_{23}-M_{02}M_{13}+M_{03}M_{12}\)">\(M_{01}M_{23}-M_{02}M_{13}+M_{03}M_{12}\)</span>.</p>
+<h2 id="3-a-recurrence-for-weighted-pfaffians">3. A recurrence for weighted Pfaffians</h2>
+<p>For a list <span class="math" data-tex="\(\mathbf h=(h_0,\ldots,h_{2m-1})\)">\(\mathbf h=(h_0,\ldots,h_{2m-1})\)</span> of elements of <span class="math" data-tex="\(G\)">\(G\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_m(\mathbf h)=\operatorname{Pf}\bigl(\beta(h_i,h_j)\bigr)_{0\le i,j&lt;2m},\\
+p_0=1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+p_m(\mathbf h)=\operatorname{Pf}\bigl(\beta(h_i,h_j)\bigr)_{0\le i,j&lt;2m},\\
+p_0=1 .
+\end{gathered}
+\]</span>
+By (1.1) the matrix is antisymmetric, and <span class="math" data-tex="\(p_m\)">\(p_m\)</span> is constant on <span class="math" data-tex="\(J\)">\(J\)</span>-orbits of lists. By Lemma 2.1(b), permuting the list multiplies <span class="math" data-tex="\(p_m\)">\(p_m\)</span> by the sign of the permutation. Define the finite sums
+<span class="math math-display" data-tex="\[
+q_m=v_{2m}(p_m)\quad(m\ge1),\qquad q_0=\lambda .
+\]">\[
+q_m=v_{2m}(p_m)\quad(m\ge1),\qquad q_0=\lambda .
+\]</span></p>
+<p><strong>Lemma 3.1</strong> ([OpenAI-BT, Lemma 8.2]). For every <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, <span class="math" data-tex="\(q_m=\tfrac12q_{m-1}\)">\(q_m=\tfrac12q_{m-1}\)</span>. Hence <span class="math" data-tex="\(q_m=2^{-m}\lambda\)">\(q_m=2^{-m}\lambda\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\mathbf h&#x27;=(h_1,\ldots,h_{2m-1},h_0)\)">\(\mathbf h&#x27;=(h_1,\ldots,h_{2m-1},h_0)\)</span> be the cyclic rotation of <span class="math" data-tex="\(\mathbf h\)">\(\mathbf h\)</span>. A cyclic permutation of <span class="math" data-tex="\(2m\)">\(2m\)</span> entries has sign <span class="math" data-tex="\((-1)^{2m-1}=-1\)">\((-1)^{2m-1}=-1\)</span>, so <span class="math" data-tex="\(p_m(\mathbf h&#x27;)=-p_m(\mathbf h)\)">\(p_m(\mathbf h&#x27;)=-p_m(\mathbf h)\)</span>. The twisted shift <span class="math" data-tex="\(T\mathbf h=(h_1,\ldots,h_{2m-1},gh_0)\)">\(T\mathbf h=(h_1,\ldots,h_{2m-1},gh_0)\)</span> differs from <span class="math" data-tex="\(\mathbf h&#x27;\)">\(\mathbf h&#x27;\)</span> only in the last entry. By (1.1), <span class="math" data-tex="\(\beta(h_i,gh_0)=\beta(h_i,h_0)+1\)">\(\beta(h_i,gh_0)=\beta(h_i,h_0)+1\)</span>, so the matrix of <span class="math" data-tex="\(T\mathbf h\)">\(T\mathbf h\)</span> is that of <span class="math" data-tex="\(\mathbf h&#x27;\)">\(\mathbf h&#x27;\)</span> with <span class="math" data-tex="\(1\)">\(1\)</span> added to every entry of the last column above the diagonal, and <span class="math" data-tex="\(1\)">\(1\)</span> subtracted below. By Lemma 2.1(c), the Pfaffian is linear in these entries, and the minor omitting the position <span class="math" data-tex="\(i\)">\(i\)</span> and the last position is the matrix of the list <span class="math" data-tex="\(h_1,\ldots,\widehat{h_{i+1}},\ldots,h_{2m-1}\)">\(h_1,\ldots,\widehat{h_{i+1}},\ldots,h_{2m-1}\)</span>. Writing <span class="math" data-tex="\(j=i+1\)">\(j=i+1\)</span> and <span class="math" data-tex="\(\mathbf h^{(j)}\)">\(\mathbf h^{(j)}\)</span> for the list <span class="math" data-tex="\(h_1,\ldots,\widehat{h_j},\ldots,h_{2m-1}\)">\(h_1,\ldots,\widehat{h_j},\ldots,h_{2m-1}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;p_m(T\mathbf h)\\
+&amp;\ =-p_m(\mathbf h)\\
+&amp;\ \ \ +\sum_{j=1}^{2m-1}(-1)^{j+1}\\
+&amp;\qquad\cdot p_{m-1}\bigl(\mathbf h^{(j)}\bigr).
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+&amp;p_m(T\mathbf h)\\
+&amp;\ =-p_m(\mathbf h)\\
+&amp;\ \ \ +\sum_{j=1}^{2m-1}(-1)^{j+1}\\
+&amp;\qquad\cdot p_{m-1}\bigl(\mathbf h^{(j)}\bigr).
+\end{aligned}
+\tag{3.1}
+\]</span>
+Take weighted sums. Since <span class="math" data-tex="\(T\)">\(T\)</span> is a bijection of <span class="math" data-tex="\(Q_{2m}\)">\(Q_{2m}\)</span> preserving the weights (Lemma 4.1 of <a href="path-sums-of-an-idempotent.html">Path sums of an idempotent</a>), <span class="math" data-tex="\(v_{2m}(p_m\circ T)=v_{2m}(p_m)=q_m\)">\(v_{2m}(p_m\circ T)=v_{2m}(p_m)=q_m\)</span>. The <span class="math" data-tex="\(j\)">\(j\)</span>-th function on the right of (3.1) depends only on the list with the entries <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> deleted; deleting position <span class="math" data-tex="\(0\)">\(0\)</span> and then position <span class="math" data-tex="\(j-1\)">\(j-1\)</span> of the shortened list, the deletion identities give the weighted sum <span class="math" data-tex="\(v_{2m-2}(p_{m-1})=q_{m-1}\)">\(v_{2m-2}(p_{m-1})=q_{m-1}\)</span> for <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span> the function is the constant <span class="math" data-tex="\(p_0=1\)">\(p_0=1\)</span>, whose weighted sum is the total weight <span class="math" data-tex="\(v_2(1)=\lambda=q_0\)">\(v_2(1)=\lambda=q_0\)</span>. As <span class="math" data-tex="\(\sum_{j=1}^{2m-1}(-1)^{j+1}=1\)">\(\sum_{j=1}^{2m-1}(-1)^{j+1}=1\)</span>, (3.1) gives <span class="math" data-tex="\(q_m=-q_m+q_{m-1}\)">\(q_m=-q_m+q_{m-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-descent-to-a-cocycle">4. Descent to a cocycle</h2>
+<p><strong>Proposition 4.1</strong> ([OpenAI-BT, Proposition 8.3]). Let <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>. For vertices <span class="math" data-tex="\(y_0,\ldots,y_{2m}\)">\(y_0,\ldots,y_{2m}\)</span> of <span class="math" data-tex="\(Y\)">\(Y\)</span>, choose <span class="math" data-tex="\(h_i\in G\)">\(h_i\in G\)</span> with <span class="math" data-tex="\(\bar h_i=y_i\)">\(\bar h_i=y_i\)</span>, write <span class="math" data-tex="\(\hat{\mathbf h}_i\)">\(\hat{\mathbf h}_i\)</span> for the list <span class="math" data-tex="\(h_0,\ldots,\widehat{h_i},\ldots,h_{2m}\)">\(h_0,\ldots,\widehat{h_i},\ldots,h_{2m}\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\psi_m(y_0,\ldots,y_{2m})\\
+&amp;\quad=\sum_{i=0}^{2m}(-1)^i\,p_m\bigl(\hat{\mathbf h}_i\bigr).
+\end{aligned}
+\tag{4.1}
+\]">\[
+\begin{aligned}
+&amp;\psi_m(y_0,\ldots,y_{2m})\\
+&amp;\quad=\sum_{i=0}^{2m}(-1)^i\,p_m\bigl(\hat{\mathbf h}_i\bigr).
+\end{aligned}
+\tag{4.1}
+\]</span>
+This does not depend on the choice of the <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, and it defines an invariant linear functional <span class="math" data-tex="\(\psi_m:E_{2m}\to\mathbb C\)">\(\psi_m:E_{2m}\to\mathbb C\)</span> with <span class="math" data-tex="\(\psi_m([y_0,\ldots,y_{2m}])=\psi_m(y_0,\ldots,y_{2m})\)">\(\psi_m([y_0,\ldots,y_{2m}])=\psi_m(y_0,\ldots,y_{2m})\)</span>, such that
+<span class="math math-display" data-tex="\[
+\psi_m\circ\partial=0,\qquad \psi_m(z_{2m})=2^{-m}\lambda .
+\]">\[
+\psi_m\circ\partial=0,\qquad \psi_m(z_{2m})=2^{-m}\lambda .
+\]</span></p>
+<p><em>Proof.</em> Work in the exterior algebra of the positions <span class="math" data-tex="\(\{0,\ldots,2m\}\)">\(\{0,\ldots,2m\}\)</span> and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u=\sum_{i=0}^{2m}\varepsilon_i,\\
+b=\sum_{0\le i&lt;j\le2m}\beta(h_i,h_j)\,\varepsilon_i\wedge\varepsilon_j .
+\end{gathered}
+\]">\[
+\begin{gathered}
+u=\sum_{i=0}^{2m}\varepsilon_i,\\
+b=\sum_{0\le i&lt;j\le2m}\beta(h_i,h_j)\,\varepsilon_i\wedge\varepsilon_j .
+\end{gathered}
+\]</span>
+By Lemma 2.1(a), <span class="math" data-tex="\(b^m/m!=\sum_S p_m(\mathbf h_S)\varepsilon_S\)">\(b^m/m!=\sum_S p_m(\mathbf h_S)\varepsilon_S\)</span> over the <span class="math" data-tex="\(2m\)">\(2m\)</span>-subsets <span class="math" data-tex="\(S\)">\(S\)</span>, where <span class="math" data-tex="\(\mathbf h_S\)">\(\mathbf h_S\)</span> is the sublist on <span class="math" data-tex="\(S\)">\(S\)</span>. For <span class="math" data-tex="\(S=\{0,\ldots,2m\}\setminus\{i\}\)">\(S=\{0,\ldots,2m\}\setminus\{i\}\)</span>, <span class="math" data-tex="\(\varepsilon_i\wedge\varepsilon_S=(-1)^i\varepsilon_{\{0,\ldots,2m\}}\)">\(\varepsilon_i\wedge\varepsilon_S=(-1)^i\varepsilon_{\{0,\ldots,2m\}}\)</span>, since <span class="math" data-tex="\(i\)">\(i\)</span> elements of <span class="math" data-tex="\(S\)">\(S\)</span> are smaller than <span class="math" data-tex="\(i\)">\(i\)</span>. So the right side of (4.1) is the top coefficient of <span class="math" data-tex="\(u\wedge b^m/m!\)">\(u\wedge b^m/m!\)</span>.</p>
+<p><em>Independence of the lifts.</em> Replacing <span class="math" data-tex="\(h_i\)">\(h_i\)</span> by <span class="math" data-tex="\(g^{r_i}h_i\)">\(g^{r_i}h_i\)</span> replaces <span class="math" data-tex="\(\beta(h_i,h_j)\)">\(\beta(h_i,h_j)\)</span> by <span class="math" data-tex="\(\beta(h_i,h_j)+r_j-r_i\)">\(\beta(h_i,h_j)+r_j-r_i\)</span>, so it replaces <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(b+u\wedge v\)">\(b+u\wedge v\)</span> with <span class="math" data-tex="\(v=\sum_ir_i\varepsilon_i\)">\(v=\sum_ir_i\varepsilon_i\)</span>; indeed <span class="math" data-tex="\(u\wedge v=\sum_{i,j}r_j\varepsilon_i\wedge\varepsilon_j\)">\(u\wedge v=\sum_{i,j}r_j\varepsilon_i\wedge\varepsilon_j\)</span>, which is <span class="math" data-tex="\(\sum_{i&lt;j}(r_j-r_i)\varepsilon_i\wedge\varepsilon_j\)">\(\sum_{i&lt;j}(r_j-r_i)\varepsilon_i\wedge\varepsilon_j\)</span>. Since two-forms commute, <span class="math" data-tex="\((b+u\wedge v)^m\)">\((b+u\wedge v)^m\)</span> is <span class="math" data-tex="\(b^m\)">\(b^m\)</span> plus terms divisible by <span class="math" data-tex="\(u\wedge v\)">\(u\wedge v\)</span>, and <span class="math" data-tex="\(u\wedge u=0\)">\(u\wedge u=0\)</span>. So <span class="math" data-tex="\(u\wedge(b+u\wedge v)^m=u\wedge b^m\)">\(u\wedge(b+u\wedge v)^m=u\wedge b^m\)</span>.</p>
+<p><em>Alternation.</em> A permutation of the positions fixes <span class="math" data-tex="\(u\)">\(u\)</span> and transforms <span class="math" data-tex="\(b\)">\(b\)</span> into the form of the permuted list; as in Lemma 2.1(b), the top coefficient of <span class="math" data-tex="\(u\wedge b^m/m!\)">\(u\wedge b^m/m!\)</span> changes by the sign of the permutation. So the value is alternating in the list of lifts, and by independence of the lifts it is alternating in <span class="math" data-tex="\(y_0,\ldots,y_{2m}\)">\(y_0,\ldots,y_{2m}\)</span>. If <span class="math" data-tex="\(y_a=y_b\)">\(y_a=y_b\)</span> with <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>, choose <span class="math" data-tex="\(h_a=h_b\)">\(h_a=h_b\)</span>: exchanging the positions <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> leaves the list unchanged and changes the sign, so the value is <span class="math" data-tex="\(0\)">\(0\)</span>. Extending multilinearly from vertices to <span class="math" data-tex="\(\Lambda^1(Y)\)">\(\Lambda^1(Y)\)</span>, Lemma 1.2(a) of <a href="exterior-chains-and-sparse-cycles.html">Exterior chains and sparse cycles</a> gives the linear functional <span class="math" data-tex="\(\psi_m\)">\(\psi_m\)</span> on <span class="math" data-tex="\(E_{2m}=\Lambda^{2m+1}(Y)\)">\(E_{2m}=\Lambda^{2m+1}(Y)\)</span>.</p>
+<p><em>Invariance.</em> For <span class="math" data-tex="\(\bar c\in H\)">\(\bar c\in H\)</span> with lift <span class="math" data-tex="\(c\in J\)">\(c\in J\)</span>, the elements <span class="math" data-tex="\(ch_i\)">\(ch_i\)</span> are lifts of <span class="math" data-tex="\(\bar cy_i\)">\(\bar cy_i\)</span>, and <span class="math" data-tex="\(\beta(ch_i,ch_j)=\beta(h_i,h_j)\)">\(\beta(ch_i,ch_j)=\beta(h_i,h_j)\)</span>.</p>
+<p><em>Cocycle identity.</em> Given <span class="math" data-tex="\(2m+2\)">\(2m+2\)</span> vertices, choose lifts of all of them once. Then <span class="math" data-tex="\(\psi_m(\partial[y_0,\ldots,y_{2m+1}])\)">\(\psi_m(\partial[y_0,\ldots,y_{2m+1}])\)</span> is the alternating sum, over two successive deletions, of the values of <span class="math" data-tex="\(p_m\)">\(p_m\)</span> on the remaining lists. Each list with the positions <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span> removed occurs twice, with the signs <span class="math" data-tex="\((-1)^a(-1)^{b-1}\)">\((-1)^a(-1)^{b-1}\)</span> and <span class="math" data-tex="\((-1)^b(-1)^a\)">\((-1)^b(-1)^a\)</span>, which cancel.</p>
+<p><em>The value on <span class="math" data-tex="\(z_{2m}\)">\(z_{2m}\)</span>.</em> The cycle <span class="math" data-tex="\(z_{2m}\)">\(z_{2m}\)</span> is the class of <span class="math" data-tex="\(\sum_qw_{2m+1}(q)[\bar h_0,\ldots,\bar h_{2m}]\)">\(\sum_qw_{2m+1}(q)[\bar h_0,\ldots,\bar h_{2m}]\)</span>, one term for each orbit <span class="math" data-tex="\(q\)">\(q\)</span> with a representative <span class="math" data-tex="\((h_0,\ldots,h_{2m})\)">\((h_0,\ldots,h_{2m})\)</span>; terms with repeated vertices are <span class="math" data-tex="\(0\)">\(0\)</span> on both sides. Computing <span class="math" data-tex="\(\psi_m\)">\(\psi_m\)</span> with the lifts <span class="math" data-tex="\(h_i\)">\(h_i\)</span> themselves,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\psi_m(z_{2m})&amp;=\sum_{i=0}^{2m}(-1)^i\,v_{2m+1}(p_m\circ d_i)\\
+&amp;=\sum_{i=0}^{2m}(-1)^i\,v_{2m}(p_m)=q_m ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\psi_m(z_{2m})&amp;=\sum_{i=0}^{2m}(-1)^i\,v_{2m+1}(p_m\circ d_i)\\
+&amp;=\sum_{i=0}^{2m}(-1)^i\,v_{2m}(p_m)=q_m ,
+\end{aligned}
+\]</span>
+by the deletion identities and <span class="math" data-tex="\(\sum_{i=0}^{2m}(-1)^i=1\)">\(\sum_{i=0}^{2m}(-1)^i=1\)</span>. Lemma 3.1 gives <span class="math" data-tex="\(q_m=2^{-m}\lambda\)">\(q_m=2^{-m}\lambda\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.2.</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be the Heisenberg group of triples <span class="math" data-tex="\((a,b,c)\in\mathbb Z^3\)">\((a,b,c)\in\mathbb Z^3\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(a,b,c)(a&#x27;,b&#x27;,c&#x27;)\\
+&amp;\quad=(a+a&#x27;,\,b+b&#x27;,\,c+c&#x27;+ab&#x27;),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(a,b,c)(a&#x27;,b&#x27;,c&#x27;)\\
+&amp;\quad=(a+a&#x27;,\,b+b&#x27;,\,c+c&#x27;+ab&#x27;),
+\end{aligned}
+\]</span>
+and let <span class="math" data-tex="\(g=(0,0,1)\)">\(g=(0,0,1)\)</span>, which is central. Then <span class="math" data-tex="\(J=G\)">\(J=G\)</span>, <span class="math" data-tex="\(H=G/\langle g\rangle\cong\mathbb Z^2\)">\(H=G/\langle g\rangle\cong\mathbb Z^2\)</span>, and <span class="math" data-tex="\(Y\)">\(Y\)</span> is identified with <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> by <span class="math" data-tex="\(\overline{(a,b,c)}=(a,b)\)">\(\overline{(a,b,c)}=(a,b)\)</span>, with <span class="math" data-tex="\(H\)">\(H\)</span> acting by translations. Choosing the representative pairs <span class="math" data-tex="\(((0,0),(p,q))\)">\(((0,0),(p,q))\)</span> and the lifts <span class="math" data-tex="\((0,0,0)\)">\((0,0,0)\)</span>, <span class="math" data-tex="\((p,q,0)\)">\((p,q,0)\)</span> in the proof of Lemma 1.1 gives <span class="math" data-tex="\(B(h,h&#x27;)=c&#x27;-c-a(b&#x27;-b)\)">\(B(h,h&#x27;)=c&#x27;-c-a(b&#x27;-b)\)</span>, hence
+<span class="math math-display" data-tex="\[
+\beta(h,h&#x27;)=(c&#x27;-c)-\tfrac12(a+a&#x27;)(b&#x27;-b)
+\]">\[
+\beta(h,h&#x27;)=(c&#x27;-c)-\tfrac12(a+a&#x27;)(b&#x27;-b)
+\]</span>
+for <span class="math" data-tex="\(h=(a,b,c)\)">\(h=(a,b,c)\)</span>, <span class="math" data-tex="\(h&#x27;=(a&#x27;,b&#x27;,c&#x27;)\)">\(h&#x27;=(a&#x27;,b&#x27;,c&#x27;)\)</span>. In the sum <span class="math" data-tex="\(\beta(h_1,h_2)-\beta(h_0,h_2)+\beta(h_0,h_1)\)">\(\beta(h_1,h_2)-\beta(h_0,h_2)+\beta(h_0,h_1)\)</span> that defines <span class="math" data-tex="\(\psi_1(y_0,y_1,y_2)\)">\(\psi_1(y_0,y_1,y_2)\)</span>, the third coordinates cancel, and the remaining terms add up to <span class="math" data-tex="\(-\tfrac12\det(y_1-y_0,y_2-y_0)\)">\(-\tfrac12\det(y_1-y_0,y_2-y_0)\)</span>: <span class="math" data-tex="\(\psi_1\)">\(\psi_1\)</span> is minus the signed area of Example 5.2 of <a href="exterior-chains-and-sparse-cycles.html">Exterior chains and sparse cycles</a>. Its value on the cycle of that example is <span class="math" data-tex="\(-1\)">\(-1\)</span>. So the Pfaffian cocycles can take nonzero values on sparse cycles of low dimension; what Theorem 5.1 of that lesson excludes is a nonzero value in high dimension.</p>
+<h2 id="5-proof-of-the-trace-theorem">5. Proof of the trace theorem</h2>
+<p><em>Proof of Theorem 4.1 of <a href="traces-of-projective-modules.html">Traces of projective modules</a>.</em> First let <span class="math" data-tex="\(G\)">\(G\)</span> be finitely generated, <span class="math" data-tex="\(e\in\operatorname{Mat}_q(\mathbb CG)\)">\(e\in\operatorname{Mat}_q(\mathbb CG)\)</span> idempotent and <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> of infinite order, and let <span class="math" data-tex="\(\lambda=\operatorname{HS}_G([e(\mathbb CG)^q])([g])\)">\(\lambda=\operatorname{HS}_G([e(\mathbb CG)^q])([g])\)</span>. Construct <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> as in Lemma 2.1 of <a href="path-sums-of-an-idempotent.html">Path sums of an idempotent</a>; they are fixed before any dimension is chosen. Choose <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> with <span class="math" data-tex="\(2m\ge n_0(D)\)">\(2m\ge n_0(D)\)</span>, where <span class="math" data-tex="\(n_0(D)\)">\(n_0(D)\)</span> is the bound of the sparse-chain vanishing theorem (Theorem 5.1 of <a href="exterior-chains-and-sparse-cycles.html">Exterior chains and sparse cycles</a>). By Proposition 4.1 above, <span class="math" data-tex="\(\psi_m\)">\(\psi_m\)</span> is an invariant cocycle with <span class="math" data-tex="\(\psi_m(z_{2m})=2^{-m}\lambda\)">\(\psi_m(z_{2m})=2^{-m}\lambda\)</span>. By Proposition 4.1 of that lesson, either <span class="math" data-tex="\(z_{2m}=0\)">\(z_{2m}=0\)</span>, and then <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>; or <span class="math" data-tex="\(z_{2m}\)">\(z_{2m}\)</span> is the image of a cycle of <span class="math" data-tex="\(C_{2m}(K)_H\)">\(C_{2m}(K)_H\)</span> for a complex <span class="math" data-tex="\(K\)">\(K\)</span> satisfying the hypotheses of Theorem 5.1, which then gives <span class="math" data-tex="\(\psi_m(z_{2m})=0\)">\(\psi_m(z_{2m})=0\)</span>, so again <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>.</p>
+<p>Every finitely generated projective module over <span class="math" data-tex="\(\mathbb CG\)">\(\mathbb CG\)</span> is isomorphic to some <span class="math" data-tex="\(e(\mathbb CG)^q\)">\(e(\mathbb CG)^q\)</span>, and every element of <span class="math" data-tex="\(K_0(\mathbb CG)\)">\(K_0(\mathbb CG)\)</span> is a difference of two such classes; the trace is additive. So <span class="math" data-tex="\(\operatorname{HS}_G(x)([g])=0\)">\(\operatorname{HS}_G(x)([g])=0\)</span> for all <span class="math" data-tex="\(x\in K_0(\mathbb CG)\)">\(x\in K_0(\mathbb CG)\)</span> when <span class="math" data-tex="\(G\)">\(G\)</span> is finitely generated. Corollary 5.2 of <a href="traces-of-projective-modules.html">Traces of projective modules</a> extends this to all groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The sparse-chain vanishing theorem used here is proved in the next four lessons, beginning with <a href="a-transport-metric-with-small-balls.html">A transport metric with small balls</a>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). Compute <span class="math" data-tex="\(\operatorname{Pf}(M)\)">\(\operatorname{Pf}(M)\)</span> for <span class="math" data-tex="\(N=4\)">\(N=4\)</span> from Lemma 2.1(c), and check it against the sum over the three partitions into pairs.</p>
+<p><strong>6.2</strong> (easy). Let <span class="math" data-tex="\(M\)">\(M\)</span> be block diagonal with blocks <span class="math" data-tex="\(\begin{pmatrix}0&amp;t_k\\-t_k&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;t_k\\-t_k&amp;0\end{pmatrix}\)</span>, <span class="math" data-tex="\(k=1,\ldots,m\)">\(k=1,\ldots,m\)</span>. Show <span class="math" data-tex="\(\operatorname{Pf}(M)=t_1\cdots t_m\)">\(\operatorname{Pf}(M)=t_1\cdots t_m\)</span>.</p>
+<p><strong>6.3</strong> (medium). Let <span class="math" data-tex="\(G=\langle t\rangle\)">\(G=\langle t\rangle\)</span> be infinite cyclic and <span class="math" data-tex="\(g=t^2\)">\(g=t^2\)</span>. Show that the conditions (1.1) determine <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, and that <span class="math" data-tex="\(\beta(t^a,t^b)=(b-a)/2\)">\(\beta(t^a,t^b)=(b-a)/2\)</span>.</p>
+<p><strong>6.4</strong> (medium). Show directly from (4.1) and (1.1) that <span class="math" data-tex="\(\psi_1\)">\(\psi_1\)</span> does not depend on the lifts.</p>
+<p><strong>6.5</strong> (medium). In Example 4.2, verify that <span class="math" data-tex="\(\beta\)">\(\beta\)</span> satisfies (1.1), and that <span class="math" data-tex="\(\psi_1(y_0,y_1,y_2)\)">\(\psi_1(y_0,y_1,y_2)\)</span> equals <span class="math" data-tex="\(-\tfrac12\det(y_1-y_0,y_2-y_0)\)">\(-\tfrac12\det(y_1-y_0,y_2-y_0)\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> By Lemma 2.1(c) with <span class="math" data-tex="\(N=4\)">\(N=4\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Pf}(M)={}&amp;M_{03}\operatorname{Pf}(M_{\{1,2\}})\\
+&amp;-M_{13}\operatorname{Pf}(M_{\{0,2\}})\\
+&amp;+M_{23}\operatorname{Pf}(M_{\{0,1\}})\\
+={}&amp;M_{03}M_{12}-M_{13}M_{02}\\
+&amp;+M_{23}M_{01}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Pf}(M)={}&amp;M_{03}\operatorname{Pf}(M_{\{1,2\}})\\
+&amp;-M_{13}\operatorname{Pf}(M_{\{0,2\}})\\
+&amp;+M_{23}\operatorname{Pf}(M_{\{0,1\}})\\
+={}&amp;M_{03}M_{12}-M_{13}M_{02}\\
+&amp;+M_{23}M_{01}.
+\end{aligned}
+\]</span> The partitions <span class="math" data-tex="\(\{01,23\}\)">\(\{01,23\}\)</span>, <span class="math" data-tex="\(\{02,13\}\)">\(\{02,13\}\)</span>, <span class="math" data-tex="\(\{03,12\}\)">\(\{03,12\}\)</span> give the permutations <span class="math" data-tex="\(0123\)">\(0123\)</span>, <span class="math" data-tex="\(0213\)">\(0213\)</span>, <span class="math" data-tex="\(0312\)">\(0312\)</span>, of signs <span class="math" data-tex="\(+1\)">\(+1\)</span>, <span class="math" data-tex="\(-1\)">\(-1\)</span>, <span class="math" data-tex="\(+1\)">\(+1\)</span>.</p>
+<p><strong>6.2.</strong> In Lemma 2.1(a) only pairs with <span class="math" data-tex="\(M_{ij}\ne0\)">\(M_{ij}\ne0\)</span> contribute, and the only partition into such pairs is <span class="math" data-tex="\(\{0,1\},\{2,3\},\ldots\)">\(\{0,1\},\{2,3\},\ldots\)</span>, whose permutation is the identity.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(J\)">\(J\)</span>-invariance with <span class="math" data-tex="\(J=G\)">\(J=G\)</span> gives <span class="math" data-tex="\(\beta(t^a,t^b)=\varphi(b-a)\)">\(\beta(t^a,t^b)=\varphi(b-a)\)</span> for a function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The rule <span class="math" data-tex="\(\beta(g^rh,g^sh&#x27;)=\beta(h,h&#x27;)+s-r\)">\(\beta(g^rh,g^sh&#x27;)=\beta(h,h&#x27;)+s-r\)</span> gives <span class="math" data-tex="\(\varphi(d+2)=\varphi(d)+1\)">\(\varphi(d+2)=\varphi(d)+1\)</span>, and antisymmetry gives <span class="math" data-tex="\(\varphi(-d)=-\varphi(d)\)">\(\varphi(-d)=-\varphi(d)\)</span>. So <span class="math" data-tex="\(\varphi(0)=0\)">\(\varphi(0)=0\)</span> and <span class="math" data-tex="\(\varphi(1)=-\varphi(-1)=-(\varphi(1)-1)\)">\(\varphi(1)=-\varphi(-1)=-(\varphi(1)-1)\)</span>, hence <span class="math" data-tex="\(\varphi(1)=\tfrac12\)">\(\varphi(1)=\tfrac12\)</span>, and by the first rule <span class="math" data-tex="\(\varphi(d)=d/2\)">\(\varphi(d)=d/2\)</span> for all <span class="math" data-tex="\(d\)">\(d\)</span>. This function satisfies the three conditions.</p>
+<p><strong>6.4.</strong> Replacing <span class="math" data-tex="\(h_i\)">\(h_i\)</span> by <span class="math" data-tex="\(g^{r_i}h_i\)">\(g^{r_i}h_i\)</span> adds <span class="math" data-tex="\((r_2-r_1)-(r_2-r_0)+(r_1-r_0)=0\)">\((r_2-r_1)-(r_2-r_0)+(r_1-r_0)=0\)</span> to <span class="math" data-tex="\(\beta(h_1,h_2)-\beta(h_0,h_2)+\beta(h_0,h_1)\)">\(\beta(h_1,h_2)-\beta(h_0,h_2)+\beta(h_0,h_1)\)</span>.</p>
+<p><strong>6.5.</strong> Antisymmetry is clear. Left multiplication by <span class="math" data-tex="\((x,y,w)\)">\((x,y,w)\)</span> changes <span class="math" data-tex="\(c\)">\(c\)</span> to <span class="math" data-tex="\(c+w+xb\)">\(c+w+xb\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(a+x\)">\(a+x\)</span>, so <span class="math" data-tex="\(\beta\)">\(\beta\)</span> changes by <span class="math" data-tex="\(x(b&#x27;-b)-\tfrac12\cdot2x(b&#x27;-b)=0\)">\(x(b&#x27;-b)-\tfrac12\cdot2x(b&#x27;-b)=0\)</span>. Multiplying <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(g^r\)">\(g^r\)</span> adds <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(c\)">\(c\)</span>, which gives the third rule. For <span class="math" data-tex="\(\psi_1\)">\(\psi_1\)</span>, the third coordinates cancel, and with <span class="math" data-tex="\(y_i=(a_i,b_i)\)">\(y_i=(a_i,b_i)\)</span>,
+<span class="math math-display" data-tex="\[
+-2\psi_1=\sum(a_i+a_j)(b_j-b_i),
+\]">\[
+-2\psi_1=\sum(a_i+a_j)(b_j-b_i),
+\]</span>
+the sum over <span class="math" data-tex="\((i,j)\in\{(1,2),(2,0),(0,1)\}\)">\((i,j)\in\{(1,2),(2,0),(0,1)\}\)</span>. Expanding, the terms <span class="math" data-tex="\(a_jb_j-a_ib_i\)">\(a_jb_j-a_ib_i\)</span> cancel around the cycle, and the remaining <span class="math" data-tex="\(\sum(a_ib_j-a_jb_i)\)">\(\sum(a_ib_j-a_jb_i)\)</span> is <span class="math" data-tex="\(\det(y_1-y_0,y_2-y_0)\)">\(\det(y_1-y_0,y_2-y_0)\)</span>, as in Exercise 6.3 of <a href="exterior-chains-and-sparse-cycles.html">Exterior chains and sparse cycles</a>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BT] OpenAI, <em>The Bass trace conjecture for complex group rings</em>, OpenAI Math Release preprint, 24 September 2026, Lemma 8.1, Lemma 8.2, Proposition 8.3 and Section 9. https://github.com/openai/math/tree/main/preprints/The-Bass-trace-conjecture-for-complex-group-rings-September-24-2026</li>
+<li>[Connes] A. Connes, <em>Non-commutative differential geometry</em>, Publications Mathématiques de l'IHÉS 62 (1985), 41–144, Part II, Section 2; free at Numdam. https://www.numdam.org/item/PMIHES_1985__62__41_0/</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -78,7 +78,7 @@ The trace is unnormalized: \(\tau_b(I)=b\). A scalar matrix \(Q\in M_b(\mathbb C
 
 In particular, conjugation by a unitary \(V\in M_b(\mathcal M)\) does not change the trace: \(\tau_b(VTV^*)=\tau_b(TV^*V)=\tau_b(T)\).
 
-The same trace proves Kaplansky's theorem that the matrix rings over \(\mathbb C[A]\) are directly finite: if \(XY=I\), the idempotent \(YX\) and its range projection both have trace \(b\), which forces \(YX=I\) ([Directly finite group algebras](course:kaplansky-direct-finiteness/directly-finite-group-algebras), Theorem 3.1).
+The same trace, together with the integrality of the trace of an idempotent proved in [Idempotents and integral traces](course:bass-trace-conjecture/idempotents-and-integral-traces), shows that the group ring of a torsion-free group over a field of characteristic zero has no idempotents other than \(0\) and \(1\) (Theorem 2.1 there). The same trace proves Kaplansky's theorem that the matrix rings over \(\mathbb C[A]\) are directly finite: if \(XY=I\), the idempotent \(YX\) and its range projection both have trace \(b\), which forces \(YX=I\) ([Directly finite group algebras](course:kaplansky-direct-finiteness/directly-finite-group-algebras), Theorem 3.1).
 
 ## 2. Functional calculus inside the commutant
 

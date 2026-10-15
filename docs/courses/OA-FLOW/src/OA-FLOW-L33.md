@@ -740,6 +740,32 @@ If $\varphi\circ\alpha_r=\varphi$ for every $r$, the normalized coefficient cocy
  W=\varphi\otimes\operatorname{Tr}.
  \tag{L33.6.g}
 \]
+**A scalar tensor weight forces invariance.** In fact,
+\[
+ \bigl(\exists c>0:\ W=c(\varphi\otimes\operatorname{Tr})\bigr)
+ \quad\Longleftrightarrow\quad
+ \varphi\circ\alpha_s=\varphi\ \text{for every }s\in G,
+ \tag{L33.6.g1}
+\]
+and in that case the scalar is necessarily \(c=1\).
+
+To prove the converse, the [invariance of every dual weight under its dual action](OA-FLOW-DA.md#da-invariant), applied to the second crossing, and the [transported bidual action](OA-FLOW-ND.md#equation-d5) give
+\(W\circ\gamma_s=W\), where
+\(\gamma_s=\alpha_s\otimes\operatorname{Ad}R_s\).
+Choose any rank-one projection \(p\) on \(L^2(G)\).
+The [basis-independent positive-cone formula for the tensor weight](OA-FLOW-TW.md#tw-3) gives
+\(\Omega(a\otimes p)=\varphi(a)\) for every \(a\in M_+\), including infinite values. The projection \(R_spR_s^*\) also has rank one. If \(W=c\Omega\), therefore,
+\[
+ \begin{aligned}
+ c\,\varphi(\alpha_s(a))
+   &=W\bigl(\alpha_s(a)\otimes R_spR_s^*\bigr)\\
+   &=W\bigl(\gamma_s(a\otimes p)\bigr)
+    =W(a\otimes p)=c\,\varphi(a).
+ \end{aligned}
+ \tag{L33.6.g2}
+\]
+Since \(0<c<\infty\), this proves \(\varphi\circ\alpha_s=\varphi\) on the whole positive cone. For an invariant \(\varphi\), (L33.6.g) gives \(W=\Omega\). Finally, [semifiniteness and faithfulness](OA-FLOW-GW.md#oa-flow.gw.4) give a nonzero \(a\in M_+\) with \(0<\varphi(a)<\infty\). Evaluating \(c\Omega=\Omega\) on \(a\otimes p\) forces \(c=1\). Thus a noninvariant starting weight cannot be made into the second dual weight by changing only the scalar normalization of the tensor reference. \(\square\)
+
 This absolute equality includes the usual trace normalization: a rank-one projection in the group Hilbert space has trace one. If the reference trace alone is replaced by $k\operatorname{Tr}$, $k>0$, the scalar law in [Balanced matrix weights, exact corner domains and cocycle identities](OA-FLOW-BC.md#bc-5), followed by its [ordered chain law](OA-FLOW-BC.md#bc-4), gives
 \[
  [DW:D(k\Omega)]_t=k^{-it}C_t.

@@ -1,0 +1,305 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Near-minimal separators</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Bass trace conjecture for group rings)</a><a href="separating-filtrations.html">Previous lesson</a><a href="from-filtrations-to-chains.html">Next lesson</a><a href="src/near-minimal-separators.md">Editable source</a></nav><main><article><h1 id="near-minimal-separators">Near-minimal separators</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Keep the setting of <a href="a-transport-metric-with-small-balls.html">A transport metric with small balls</a> and <a href="separating-filtrations.html">Separating filtrations</a>: the complex <span class="math" data-tex="\(K\)">\(K\)</span> of dimension <span class="math" data-tex="\(n\ge n_0(D)\)">\(n\ge n_0(D)\)</span>, the radii <span class="math" data-tex="\(r&lt;R\)">\(r&lt;R\)</span>, the parameter space <span class="math" data-tex="\((X,\mu)\)">\((X,\mu)\)</span>, and admissible filtrations <span class="math" data-tex="\((T_j,Z_j)_{j=0}^n\)">\((T_j,Z_j)_{j=0}^n\)</span>. This lesson chooses the filtration so that its last stratum <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span> has very few points on average over <span class="math" data-tex="\(X\)">\(X\)</span>. At each stage the separator is chosen with area within <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> of the least possible. Cutting a ball open and inserting a level set is an admissible competitor, which bounds the area of each separator inside a ball by the area of a slice of the preceding stratum. Slicing relates these areas across dimensions, and after <span class="math" data-tex="\(n\)">\(n\)</span> steps the strict volume margin of the first lesson of this part forces the expected number of points of <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span> in a ball to be of order <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. The method is Papasoglu's comparison of a near-minimal separating set with a cut through a ball [Papasoglu, Section 2, Lemma 2.5], in the iterated and equivariant form of Alpert [Alpert, Lemmas 6, 7, 11, 12]; the lesson follows [OpenAI-BT, Section 5].</p>
+<ul>
+<li>Area functionals and near minimizers (Section 1).</li>
+<li>Disjoint replacements (Section 2).</li>
+<li>Slicing (Section 3).</li>
+<li>The number of zero strata (Section 4).</li>
+</ul>
+<h2 id="1-area-functionals-and-near-minimizers">1. Area functionals and near minimizers</h2>
+<p><strong>Proposition 1.1</strong> ([OpenAI-BT, Proposition 5.1]). For every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> there is an admissible filtration <span class="math" data-tex="\((T_j,Z_j)_{j=0}^n\)">\((T_j,Z_j)_{j=0}^n\)</span> such that for every top simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_X\#\bigl(Z_0(x)\cap\sigma\bigr)\,d\mu(x)\\
+&amp;\quad\le C_\sigma\,\epsilon ,
+\end{aligned}
+\tag{1.1}
+\]">\[
+\begin{aligned}
+&amp;\int_X\#\bigl(Z_0(x)\cap\sigma\bigr)\,d\mu(x)\\
+&amp;\quad\le C_\sigma\,\epsilon ,
+\end{aligned}
+\tag{1.1}
+\]</span>
+where <span class="math" data-tex="\(C_\sigma\)">\(C_\sigma\)</span> depends on <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, but not on <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> and not on the triangulations.</p>
+<p>By Lemma 5.3 of <a href="separating-filtrations.html">Separating filtrations</a>, every point of <span class="math" data-tex="\(Z_0(x)\)">\(Z_0(x)\)</span> lies in the relative interior of a top simplex, so <span class="math" data-tex="\(\#(Z_0(x)\cap\sigma)\)">\(\#(Z_0(x)\cap\sigma)\)</span> is finite and locally constant in <span class="math" data-tex="\(x\)">\(x\)</span>, and the integral is defined.</p>
+<p>For a locally constant equivariant family <span class="math" data-tex="\(Z\)">\(Z\)</span> of subcomplexes of dimension at most <span class="math" data-tex="\(j\)">\(j\)</span>, write <span class="math" data-tex="\(\mathcal A_j^\sigma(Z,x)=a_j^\sigma\bigl(Z(x)\cap\sigma^\circ\bigr)\)">\(\mathcal A_j^\sigma(Z,x)=a_j^\sigma\bigl(Z(x)\cap\sigma^\circ\bigr)\)</span> and define
+<span class="math math-display" data-tex="\[
+\mathcal I_j(Z)=\sum_{\sigma}\frac1{|H_\sigma|}\int_X\mathcal A_j^\sigma(Z,x)\,d\mu(x),
+\]">\[
+\mathcal I_j(Z)=\sum_{\sigma}\frac1{|H_\sigma|}\int_X\mathcal A_j^\sigma(Z,x)\,d\mu(x),
+\]</span>
+the sum over a set of representatives <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of the finitely many <span class="math" data-tex="\(H\)">\(H\)</span>-orbits of top simplices, with <span class="math" data-tex="\(H_\sigma\)">\(H_\sigma\)</span> the finite stabilizer of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> (Lemma 3.2(d) of <a href="a-transport-metric-with-small-balls.html">A transport metric with small balls</a>) and <span class="math" data-tex="\(a_j^\sigma\)">\(a_j^\sigma\)</span> the averaged tree area of that lesson. The integrand is locally constant, and by (4.1) of that lesson and the invariance of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, a different choice of representatives gives the same value. Each integrand takes finitely many finite values, so <span class="math" data-tex="\(\mathcal I_j(Z)&lt;\infty\)">\(\mathcal I_j(Z)&lt;\infty\)</span>.</p>
+<p><em>Construction.</em> Fix <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>. Start with <span class="math" data-tex="\((T_n,Z_n)=(K,|K|)\)">\((T_n,Z_n)=(K,|K|)\)</span>. For <span class="math" data-tex="\(d=n,n-1,\ldots,1\)">\(d=n,n-1,\ldots,1\)</span>, keep the choices made so far fixed and choose an admissible choice <span class="math" data-tex="\((T_{d-1},Z_{d-1})\)">\((T_{d-1},Z_{d-1})\)</span> at stage <span class="math" data-tex="\(d\)">\(d\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal I_{d-1}(Z_{d-1})\\
+&amp;\quad\le\inf\mathcal I_{d-1}(Z&#x27;)+\epsilon ,
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+&amp;\mathcal I_{d-1}(Z_{d-1})\\
+&amp;\quad\le\inf\mathcal I_{d-1}(Z&#x27;)+\epsilon ,
+\end{aligned}
+\tag{1.3}
+\]</span>
+the infimum over all admissible choices <span class="math" data-tex="\((T&#x27;,Z&#x27;)\)">\((T&#x27;,Z&#x27;)\)</span> at stage <span class="math" data-tex="\(d\)">\(d\)</span>. Admissible choices exist by Lemma 5.1 of <a href="separating-filtrations.html">Separating filtrations</a>, and the infimum is a finite nonnegative number, so such a choice exists. No minimum and no limit of filtrations is used. Inequality (1.3) holds for every admissible competitor at stage <span class="math" data-tex="\(d\)">\(d\)</span>, with the data down to stage <span class="math" data-tex="\(d\)">\(d\)</span> fixed; it says nothing about later stages.</p>
+<h2 id="2-disjoint-replacements">2. Disjoint replacements</h2>
+<p>Fix the filtration of Section 1 and a center <span class="math" data-tex="\(c\in|K|\)">\(c\in|K|\)</span>. By Lemma 3.2(e) of <a href="a-transport-metric-with-small-balls.html">A transport metric with small balls</a>, the set
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal F_c=\{&amp;h\in H\setminus\{1\}:\\
+&amp;L_R(hc)\cap L_R(c)\ne\varnothing\}
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal F_c=\{&amp;h\in H\setminus\{1\}:\\
+&amp;L_R(hc)\cap L_R(c)\ne\varnothing\}
+\end{aligned}
+\]</span>
+is finite. By Lemma 1.2 of <a href="separating-filtrations.html">Separating filtrations</a> there is a finite partition <span class="math" data-tex="\(\mathcal A_c\)">\(\mathcal A_c\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span> into clopen sets <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(A\cap hA=\varnothing\)">\(A\cap hA=\varnothing\)</span> for all <span class="math" data-tex="\(h\in\mathcal F_c\)">\(h\in\mathcal F_c\)</span>. It depends on <span class="math" data-tex="\(c\)">\(c\)</span> but not on <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For <span class="math" data-tex="\(A\in\mathcal A_c\)">\(A\in\mathcal A_c\)</span>, the sets <span class="math" data-tex="\(hA\times L_R(hc)\)">\(hA\times L_R(hc)\)</span>, <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, are pairwise disjoint.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(hA\cap h&#x27;A\ne\varnothing\)">\(hA\cap h&#x27;A\ne\varnothing\)</span> and <span class="math" data-tex="\(L_R(hc)\cap L_R(h&#x27;c)\ne\varnothing\)">\(L_R(hc)\cap L_R(h&#x27;c)\ne\varnothing\)</span> for <span class="math" data-tex="\(h\ne h&#x27;\)">\(h\ne h&#x27;\)</span>, then <span class="math" data-tex="\(k=h^{-1}h&#x27;\ne1\)">\(k=h^{-1}h&#x27;\ne1\)</span> satisfies <span class="math" data-tex="\(A\cap kA\ne\varnothing\)">\(A\cap kA\ne\varnothing\)</span> and <span class="math" data-tex="\(L_R(c)\cap L_R(kc)\ne\varnothing\)">\(L_R(c)\cap L_R(kc)\ne\varnothing\)</span>, so <span class="math" data-tex="\(k\in\mathcal F_c\)">\(k\in\mathcal F_c\)</span>, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Fix <span class="math" data-tex="\(A\in\mathcal A_c\)">\(A\in\mathcal A_c\)</span> and a clopen set <span class="math" data-tex="\(B\subseteq A\)">\(B\subseteq A\)</span>. For <span class="math" data-tex="\(r\le s\le R\)">\(r\le s\le R\)</span>, <span class="math" data-tex="\(0\le j\le n\)">\(0\le j\le n\)</span> and <span class="math" data-tex="\(t\in(r,R)\)">\(t\in(r,R)\)</span> let <span class="math" data-tex="\(m_j(x,s)\)">\(m_j(x,s)\)</span> be the sum of <span class="math" data-tex="\(a_j^\sigma\bigl(Z_j(x)\cap\sigma^\circ\cap L_s(c)\bigr)\)">\(a_j^\sigma\bigl(Z_j(x)\cap\sigma^\circ\cap L_s(c)\bigr)\)</span>, and <span class="math" data-tex="\(n_j(x,t)\)">\(n_j(x,t)\)</span> the sum of <span class="math" data-tex="\(a_j^\sigma\bigl(Z_{j+1}(x)\cap\sigma^\circ\cap S_t(c)\bigr)\)">\(a_j^\sigma\bigl(Z_{j+1}(x)\cap\sigma^\circ\cap S_t(c)\bigr)\)</span>, over the top simplices <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M_j(s)&amp;=\int_B m_j(x,s)\,d\mu(x),\\
+N_j(t)&amp;=\int_B n_j(x,t)\,d\mu(x),
+\end{aligned}
+\]">\[
+\begin{aligned}
+M_j(s)&amp;=\int_B m_j(x,s)\,d\mu(x),\\
+N_j(t)&amp;=\int_B n_j(x,t)\,d\mu(x),
+\end{aligned}
+\]</span>
+where the sums run over all top simplices, without stabilizer weights; only finitely many meet <span class="math" data-tex="\(L_R(c)\)">\(L_R(c)\)</span>. The second quantity is defined when <span class="math" data-tex="\(Z_{j+1}(x)\cap S_t(c)\)">\(Z_{j+1}(x)\cap S_t(c)\)</span> has dimension at most <span class="math" data-tex="\(j\)">\(j\)</span>, which holds for <span class="math" data-tex="\(t\)">\(t\)</span> outside a countable set by the genericity in Lemma 4.1 of <a href="separating-filtrations.html">Separating filtrations</a>. The function <span class="math" data-tex="\(s\mapsto M_j(s)\)">\(s\mapsto M_j(s)\)</span> is nondecreasing.</p>
+<p><strong>Lemma 2.2</strong> (local comparison). For every <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(1\le d\le n\)">\(1\le d\le n\)</span> and all <span class="math" data-tex="\(t\in(r,R)\)">\(t\in(r,R)\)</span> outside a countable set,
+<span class="math math-display" data-tex="\[
+M_{d-1}(t)\le N_{d-1}(t)+\epsilon .
+\tag{2.1}
+\]">\[
+M_{d-1}(t)\le N_{d-1}(t)+\epsilon .
+\tag{2.1}
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(P=Z_d\)">\(P=Z_d\)</span> and <span class="math" data-tex="\(Z=Z_{d-1}\)">\(Z=Z_{d-1}\)</span>. For each <span class="math" data-tex="\(x\)">\(x\)</span> make the replacement
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z&#x27;(x)={}&amp;\Bigl(Z(x)\setminus\bigcup_{h:\,x\in hB}U_t(hc)\Bigr)\\
+&amp;\cup\Bigl(P(x)\cap\bigcup_{h:\,x\in hB}S_t(hc)\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+Z&#x27;(x)={}&amp;\Bigl(Z(x)\setminus\bigcup_{h:\,x\in hB}U_t(hc)\Bigr)\\
+&amp;\cup\Bigl(P(x)\cap\bigcup_{h:\,x\in hB}S_t(hc)\Bigr).
+\end{aligned}
+\]</span>
+For fixed <span class="math" data-tex="\(x\)">\(x\)</span>, the active closed balls <span class="math" data-tex="\(L_R(hc)\)">\(L_R(hc)\)</span> with <span class="math" data-tex="\(x\in hB\subseteq hA\)">\(x\in hB\subseteq hA\)</span> are pairwise disjoint by Lemma 2.1. The family of pairs <span class="math" data-tex="\((hc,hB)\)">\((hc,hB)\)</span> is invariant, and only finitely many balls <span class="math" data-tex="\(L_R(hc)\)">\(L_R(hc)\)</span> meet a given original simplex. Lemma 4.1 of <a href="separating-filtrations.html">Separating filtrations</a>, with <span class="math" data-tex="\(T=T_d\)">\(T=T_d\)</span>, <span class="math" data-tex="\(S=T_{d-1}\)">\(S=T_{d-1}\)</span>, <span class="math" data-tex="\(P=Z_d\)">\(P=Z_d\)</span>, <span class="math" data-tex="\(Z=Z_{d-1}\)">\(Z=Z_{d-1}\)</span>, gives for <span class="math" data-tex="\(t\)">\(t\)</span> outside a countable set a locally constant equivariant refinement in which <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span> is a subcomplex. It satisfies condition 2 of admissibility relative to <span class="math" data-tex="\(T_d\)">\(T_d\)</span>, and its complement in <span class="math" data-tex="\(P(x)\)">\(P(x)\)</span> has components of diameter at most <span class="math" data-tex="\(2R\)">\(2R\)</span>. So <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span> is an admissible competitor at stage <span class="math" data-tex="\(d\)">\(d\)</span>, and (1.3) gives <span class="math" data-tex="\(\mathcal I_{d-1}(Z)\le\mathcal I_{d-1}(Z&#x27;)+\epsilon\)">\(\mathcal I_{d-1}(Z)\le\mathcal I_{d-1}(Z&#x27;)+\epsilon\)</span>.</p>
+<p>The same lemma, applied with <span class="math" data-tex="\(S=T_{d-1}\)">\(S=T_{d-1}\)</span>, shows that <span class="math" data-tex="\(Z(x)\)">\(Z(x)\)</span> meets every inserted level set in dimension at most <span class="math" data-tex="\(d-2\)">\(d-2\)</span>, and the empty set if <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. Hence the <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-area of <span class="math" data-tex="\(Z(x)\)">\(Z(x)\)</span> inside an open active ball equals that inside the closed ball, and the inserted slice overlaps the retained part of <span class="math" data-tex="\(Z(x)\)">\(Z(x)\)</span> in zero <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-area. With the disjointness of the active balls,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;a^\sigma_{d-1}\bigl(Z&#x27;(x)\cap\sigma^\circ\bigr)-a^\sigma_{d-1}\bigl(Z(x)\cap\sigma^\circ\bigr)\\
+&amp;\quad=\sum_{h:\,x\in hB}a^\sigma_{d-1}\bigl(P(x)\cap\sigma^\circ\cap S_t(hc)\bigr)\\
+&amp;\qquad-\sum_{h:\,x\in hB}a^\sigma_{d-1}\bigl(Z(x)\cap\sigma^\circ\cap L_t(hc)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;a^\sigma_{d-1}\bigl(Z&#x27;(x)\cap\sigma^\circ\bigr)-a^\sigma_{d-1}\bigl(Z(x)\cap\sigma^\circ\bigr)\\
+&amp;\quad=\sum_{h:\,x\in hB}a^\sigma_{d-1}\bigl(P(x)\cap\sigma^\circ\cap S_t(hc)\bigr)\\
+&amp;\qquad-\sum_{h:\,x\in hB}a^\sigma_{d-1}\bigl(Z(x)\cap\sigma^\circ\cap L_t(hc)\bigr).
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be one of the equivariant families <span class="math" data-tex="\(P\cap S_t(\cdot)\)">\(P\cap S_t(\cdot)\)</span> or <span class="math" data-tex="\(Z\cap L_t(\cdot)\)">\(Z\cap L_t(\cdot)\)</span>, written <span class="math" data-tex="\(Q(x,hc)\)">\(Q(x,hc)\)</span>, and put <span class="math" data-tex="\(\alpha(\sigma,x,c&#x27;)=a_{d-1}^\sigma\bigl(Q(x,c&#x27;)\cap\sigma^\circ\bigr)\)">\(\alpha(\sigma,x,c&#x27;)=a_{d-1}^\sigma\bigl(Q(x,c&#x27;)\cap\sigma^\circ\bigr)\)</span>. Using the substitution <span class="math" data-tex="\(x=hy\)">\(x=hy\)</span>, the invariance of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the equivariance <span class="math" data-tex="\(Q(hy,hc)=hQ(y,c)\)">\(Q(hy,hc)=hQ(y,c)\)</span> and (4.1) of <a href="a-transport-metric-with-small-balls.html">A transport metric with small balls</a>, which give <span class="math" data-tex="\(\alpha(\sigma,hy,hc)=\alpha(h^{-1}\sigma,y,c)\)">\(\alpha(\sigma,hy,hc)=\alpha(h^{-1}\sigma,y,c)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\sigma}\frac1{|H_\sigma|}\sum_{h\in H}\int_{hB}\alpha(\sigma,x,hc)\,d\mu(x)\\
+&amp;\ =\sum_{\sigma}\frac1{|H_\sigma|}\sum_{h\in H}\int_B\alpha(h^{-1}\sigma,y,c)\,d\mu(y)\\
+&amp;\ =\int_B\sum_{\tau\ \mathrm{top}}\alpha(\tau,y,c)\,d\mu(y),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\sigma}\frac1{|H_\sigma|}\sum_{h\in H}\int_{hB}\alpha(\sigma,x,hc)\,d\mu(x)\\
+&amp;\ =\sum_{\sigma}\frac1{|H_\sigma|}\sum_{h\in H}\int_B\alpha(h^{-1}\sigma,y,c)\,d\mu(y)\\
+&amp;\ =\int_B\sum_{\tau\ \mathrm{top}}\alpha(\tau,y,c)\,d\mu(y),
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(h\mapsto h^{-1}\sigma\)">\(h\mapsto h^{-1}\sigma\)</span> takes every value in the orbit of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> exactly <span class="math" data-tex="\(|H_\sigma|\)">\(|H_\sigma|\)</span> times. All terms are nonnegative, and for a fixed representative only finitely many <span class="math" data-tex="\(h\)">\(h\)</span> contribute, so the rearrangements are finite. Applied to both families this gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal I_{d-1}(Z&#x27;)-\mathcal I_{d-1}(Z)\\
+&amp;\quad=N_{d-1}(t)-M_{d-1}(t),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal I_{d-1}(Z&#x27;)-\mathcal I_{d-1}(Z)\\
+&amp;\quad=N_{d-1}(t)-M_{d-1}(t),
+\end{aligned}
+\]</span>
+and with (1.3) the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-slicing">3. Slicing</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be a convex polytope of dimension <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span> in a Euclidean space and <span class="math" data-tex="\(f\)">\(f\)</span> an affine function on its affine span whose gradient there has norm <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>. For <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_a^b\operatorname{vol}_{d-1}\bigl(Q\cap\{f=t\}\bigr)\,dt\\
+&amp;\quad=\alpha\,\operatorname{vol}_d\bigl(Q\cap\{a&lt;f&lt;b\}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_a^b\operatorname{vol}_{d-1}\bigl(Q\cap\{f=t\}\bigr)\,dt\\
+&amp;\quad=\alpha\,\operatorname{vol}_d\bigl(Q\cap\{a&lt;f&lt;b\}\bigr).
+\end{aligned}
+\]</span>
+The integrand is bounded and continuous except at finitely many points.</p>
+<p><em>Proof.</em> Choose orthonormal coordinates <span class="math" data-tex="\((x_1,\ldots,x_d)\)">\((x_1,\ldots,x_d)\)</span> on the span of <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(f=\alpha x_1+\text{const}\)">\(f=\alpha x_1+\text{const}\)</span>. The set <span class="math" data-tex="\(Q\cap\{a&lt;f&lt;b\}\)">\(Q\cap\{a&lt;f&lt;b\}\)</span> is a polytope, Jordan measurable since its boundary lies in finitely many hyperplanes. By Fubini's theorem (<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C20">Real Analysis II</a>: Lebl, <em>Basic Analysis II</em>, Theorem 10.2.3 with Propositions 10.5.1 and 10.5.5), its volume is the integral over <span class="math" data-tex="\(x_1\)">\(x_1\)</span> of the <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-volumes of the slices <span class="math" data-tex="\(\{x_1=\text{const}\}\)">\(\{x_1=\text{const}\}\)</span>. Substituting <span class="math" data-tex="\(t=\alpha x_1+\text{const}\)">\(t=\alpha x_1+\text{const}\)</span> gives the factor <span class="math" data-tex="\(1/\alpha\)">\(1/\alpha\)</span>. The slice volume is a piecewise polynomial function of <span class="math" data-tex="\(t\)">\(t\)</span>, continuous where the combinatorial type of the slice does not change. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2</strong> (slicing). There is a Riemann integrable function <span class="math" data-tex="\(\tilde N_{d-1}\)">\(\tilde N_{d-1}\)</span> on <span class="math" data-tex="\((r,R)\)">\((r,R)\)</span>, equal to <span class="math" data-tex="\(N_{d-1}\)">\(N_{d-1}\)</span> outside a countable set, such that for <span class="math" data-tex="\(r\le b\le R\)">\(r\le b\le R\)</span>
+<span class="math math-display" data-tex="\[
+\int_r^b\tilde N_{d-1}(t)\,dt\le M_d(b).
+\tag{3.1}
+\]">\[
+\int_r^b\tilde N_{d-1}(t)\,dt\le M_d(b).
+\tag{3.1}
+\]</span></p>
+<p><em>Proof.</em> Fix a top simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, a tree Euclidean structure on it, and a point <span class="math" data-tex="\(x\)">\(x\)</span>. The set <span class="math" data-tex="\(Z_d(x)\cap\sigma^\circ\)">\(Z_d(x)\cap\sigma^\circ\)</span> is a finite disjoint union of relatively open convex polytopes; refining by the sign conditions between the finitely many branches of <span class="math" data-tex="\(f_c\)">\(f_c\)</span> on <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, we may assume that on each piece <span class="math" data-tex="\(Q\)">\(Q\)</span> the function <span class="math" data-tex="\(f_c\)">\(f_c\)</span> equals one branch, an affine function. Let <span class="math" data-tex="\(\tilde N_{d-1}(t)\)">\(\tilde N_{d-1}(t)\)</span> be defined like <span class="math" data-tex="\(N_{d-1}(t)\)">\(N_{d-1}(t)\)</span>, but counting only the <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-volumes of the slices <span class="math" data-tex="\(Q\cap\{f_c=t\}\)">\(Q\cap\{f_c=t\}\)</span> of the <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional pieces <span class="math" data-tex="\(Q\)">\(Q\)</span> on which <span class="math" data-tex="\(f_c\)">\(f_c\)</span> has nonzero gradient. Outside a countable set of <span class="math" data-tex="\(t\)">\(t\)</span> it equals <span class="math" data-tex="\(N_{d-1}(t)\)">\(N_{d-1}(t)\)</span>: a piece of dimension less than <span class="math" data-tex="\(d\)">\(d\)</span>, or a <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional piece on which <span class="math" data-tex="\(f_c\)">\(f_c\)</span> is constant, meets <span class="math" data-tex="\(\{f_c=t\}\)">\(\{f_c=t\}\)</span> in zero <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-area except for at most one value of <span class="math" data-tex="\(t\)">\(t\)</span>; there are finitely many pieces for each of the finitely many configurations of <span class="math" data-tex="\(x\)">\(x\)</span> and of top simplices meeting <span class="math" data-tex="\(L_R(c)\)">\(L_R(c)\)</span>. By Lemma 3.1 and Lemma 4.1 of <a href="a-transport-metric-with-small-balls.html">A transport metric with small balls</a>, which gives <span class="math" data-tex="\(\alpha\le1\)">\(\alpha\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_r^b\operatorname{vol}_{d-1}\bigl(Q\cap\{f_c=t\}\bigr)\,dt\\
+&amp;\quad\le\operatorname{vol}_d\bigl(Q\cap L_b(c)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_r^b\operatorname{vol}_{d-1}\bigl(Q\cap\{f_c=t\}\bigr)\,dt\\
+&amp;\quad\le\operatorname{vol}_d\bigl(Q\cap L_b(c)\bigr).
+\end{aligned}
+\]</span>
+Averaging over the tree structures, summing over pieces and over top simplices, and integrating over <span class="math" data-tex="\(B\)">\(B\)</span>, a finite combination, gives (3.1). The function <span class="math" data-tex="\(\tilde N_{d-1}\)">\(\tilde N_{d-1}\)</span> is a finite combination of the integrands of Lemma 3.1, hence Riemann integrable. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The comparison takes place inside one top simplex with one Euclidean structure at a time; no compatibility of the structures across faces is used. By Lemma 5.2 of <a href="separating-filtrations.html">Separating filtrations</a>, <span class="math" data-tex="\(Z_d\)">\(Z_d\)</span> meets a proper face of an original simplex in dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>, so such faces carry no <span class="math" data-tex="\(d\)">\(d\)</span>-area.</p>
+<p><strong>Lemma 3.3.</strong> Let <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(v\)">\(v\)</span> be Riemann integrable on <span class="math" data-tex="\([r,b]\)">\([r,b]\)</span> with <span class="math" data-tex="\(u\le v\)">\(u\le v\)</span> outside a countable set. Then <span class="math" data-tex="\(\int_r^bu\le\int_r^bv\)">\(\int_r^bu\le\int_r^bv\)</span>.</p>
+<p><em>Proof.</em> Every subinterval of positive length contains points outside a countable set. Choosing such tags, every Riemann sum of <span class="math" data-tex="\(v-u\)">\(v-u\)</span> is nonnegative, and these sums converge to <span class="math" data-tex="\(\int_r^b(v-u)\)">\(\int_r^b(v-u)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-number-of-zero-strata">4. The number of zero strata</h2>
+<p><strong>Lemma 4.1.</strong> For <span class="math" data-tex="\(0\le d\le n\)">\(0\le d\le n\)</span> and <span class="math" data-tex="\(r\le b\le R\)">\(r\le b\le R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;M_d(b)\\
+&amp;\ \ge\frac{(b-r)^d}{d!}M_0(r)\\
+&amp;\quad-\epsilon\sum_{i=1}^d\frac{(b-r)^i}{i!} .
+\end{aligned}
+\tag{4.1}
+\]">\[
+\begin{aligned}
+&amp;M_d(b)\\
+&amp;\ \ge\frac{(b-r)^d}{d!}M_0(r)\\
+&amp;\quad-\epsilon\sum_{i=1}^d\frac{(b-r)^i}{i!} .
+\end{aligned}
+\tag{4.1}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(d=0\)">\(d=0\)</span> this is the monotonicity of <span class="math" data-tex="\(M_0\)">\(M_0\)</span>. For <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, (3.1), Lemma 2.2, Lemma 3.3 and the induction hypothesis give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M_d(b)&amp;\ge\int_r^b\tilde N_{d-1}(t)\,dt\\
+&amp;\ge\int_r^b\bigl(M_{d-1}(t)-\epsilon\bigr)\,dt\\
+&amp;\ge\frac{(b-r)^d}{d!}M_0(r)\\
+&amp;\quad-\epsilon\sum_{i=1}^{d-1}\frac{(b-r)^{i+1}}{(i+1)!}-\epsilon(b-r),
+\end{aligned}
+\]">\[
+\begin{aligned}
+M_d(b)&amp;\ge\int_r^b\tilde N_{d-1}(t)\,dt\\
+&amp;\ge\int_r^b\bigl(M_{d-1}(t)-\epsilon\bigr)\,dt\\
+&amp;\ge\frac{(b-r)^d}{d!}M_0(r)\\
+&amp;\quad-\epsilon\sum_{i=1}^{d-1}\frac{(b-r)^{i+1}}{(i+1)!}-\epsilon(b-r),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(M_{d-1}\)">\(M_{d-1}\)</span> is Riemann integrable because it is monotone. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Proposition 1.1.</em> Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L=R-r,\qquad A_n=\frac{L^n}{n!},\\
+\mathcal E_n=\sum_{i=1}^n\frac{L^i}{i!}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+L=R-r,\qquad A_n=\frac{L^n}{n!},\\
+\mathcal E_n=\sum_{i=1}^n\frac{L^i}{i!}.
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(Z_n(x)=|K|\)">\(Z_n(x)=|K|\)</span>, the volume bound of Proposition 5.2 of <a href="a-transport-metric-with-small-balls.html">A transport metric with small balls</a> gives <span class="math" data-tex="\(M_n(R)\le V_R\,\mu(B)\)">\(M_n(R)\le V_R\,\mu(B)\)</span>. With (4.1) for <span class="math" data-tex="\(d=n\)">\(d=n\)</span> and <span class="math" data-tex="\(b=R\)">\(b=R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;A_n\,M_0(r)\\
+&amp;\quad\le V_R\,\mu(B)+\epsilon\,\mathcal E_n .
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+&amp;A_n\,M_0(r)\\
+&amp;\quad\le V_R\,\mu(B)+\epsilon\,\mathcal E_n .
+\end{aligned}
+\tag{4.2}
+\]</span>
+Choose
+<span class="math math-display" data-tex="\[
+B=A\cap\{x\in X:\ Z_0(x)\cap L_r(c)\ne\varnothing\}.
+\]">\[
+B=A\cap\{x\in X:\ Z_0(x)\cap L_r(c)\ne\varnothing\}.
+\]</span>
+This set is clopen: finitely many original simplices meet <span class="math" data-tex="\(L_r(c)\)">\(L_r(c)\)</span>, and the filtration data on them are constant on the pieces of a finite clopen partition. Choosing <span class="math" data-tex="\(B\)">\(B\)</span> after the filtration is legitimate, because every comparison (1.3) holds for every admissible competitor, whatever clopen set it is built from. Each <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span> has at least one point of <span class="math" data-tex="\(Z_0(x)\)">\(Z_0(x)\)</span> in <span class="math" data-tex="\(L_r(c)\)">\(L_r(c)\)</span>, lying in the relative interior of a top simplex and counted by <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, so <span class="math" data-tex="\(\mu(B)\le M_0(r)\)">\(\mu(B)\le M_0(r)\)</span>. The margin (5.2) of that lesson says <span class="math" data-tex="\(V_R&lt;A_n\)">\(V_R&lt;A_n\)</span>, and (4.2) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_A\#(Z_0(x)\cap L_r(c))\,d\mu\\
+&amp;\quad=M_0(r)\le\frac{\mathcal E_n}{A_n-V_R}\,\epsilon ;
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+&amp;\int_A\#(Z_0(x)\cap L_r(c))\,d\mu\\
+&amp;\quad=M_0(r)\le\frac{\mathcal E_n}{A_n-V_R}\,\epsilon ;
+\end{aligned}
+\tag{4.3}
+\]</span>
+the integral over <span class="math" data-tex="\(A\)">\(A\)</span> equals <span class="math" data-tex="\(M_0(r)\)">\(M_0(r)\)</span> because the count vanishes on <span class="math" data-tex="\(A\setminus B\)">\(A\setminus B\)</span>.</p>
+<p>Finally, a top simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is compact, so it is covered by finitely many open balls <span class="math" data-tex="\(U_r(c_1),\ldots,U_r(c_q)\)">\(U_r(c_1),\ldots,U_r(c_q)\)</span>. For each <span class="math" data-tex="\(c_i\)">\(c_i\)</span>, let <span class="math" data-tex="\(p_i\)">\(p_i\)</span> be the number of sets in the partition <span class="math" data-tex="\(\mathcal A_{c_i}\)">\(\mathcal A_{c_i}\)</span>. Summing (4.3) over these sets and over <span class="math" data-tex="\(i\)">\(i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_X\#\bigl(Z_0(x)\cap\sigma\bigr)\,d\mu\\
+&amp;\ \le\sum_{i=1}^q\int_X\#\bigl(Z_0(x)\cap L_r(c_i)\bigr)\,d\mu\\
+&amp;\ \le\frac{\mathcal E_n}{A_n-V_R}\Bigl(\sum_{i=1}^qp_i\Bigr)\epsilon .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_X\#\bigl(Z_0(x)\cap\sigma\bigr)\,d\mu\\
+&amp;\ \le\sum_{i=1}^q\int_X\#\bigl(Z_0(x)\cap L_r(c_i)\bigr)\,d\mu\\
+&amp;\ \le\frac{\mathcal E_n}{A_n-V_R}\Bigl(\sum_{i=1}^qp_i\Bigr)\epsilon .
+\end{aligned}
+\]</span>
+The centers, the partitions and the constants were fixed before <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No bound on the number of simplices of the triangulations, or on the number of points of an individual <span class="math" data-tex="\(Z_0(x)\)">\(Z_0(x)\)</span>, is used.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Show that <span class="math" data-tex="\(\mathcal I_j(Z)\)">\(\mathcal I_j(Z)\)</span> does not depend on the choice of the orbit representatives.</p>
+<p><strong>5.2</strong> (easy). Verify (4.1) for <span class="math" data-tex="\(d=1\)">\(d=1\)</span> directly from Lemmas 2.2 and 3.2.</p>
+<p><strong>5.3</strong> (medium). Let <span class="math" data-tex="\(Q\subseteq\mathbb R^2\)">\(Q\subseteq\mathbb R^2\)</span> be the unit square and <span class="math" data-tex="\(f(x_1,x_2)=(x_1+x_2)/\sqrt2\)">\(f(x_1,x_2)=(x_1+x_2)/\sqrt2\)</span>. Compute <span class="math" data-tex="\(\operatorname{length}(Q\cap\{f=t\})\)">\(\operatorname{length}(Q\cap\{f=t\})\)</span> and check Lemma 3.1 with <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, <span class="math" data-tex="\(b=\sqrt2\)">\(b=\sqrt2\)</span>.</p>
+<p><strong>5.4</strong> (medium). In (4.3), why is it necessary that <span class="math" data-tex="\(V_R&lt;A_n\)">\(V_R&lt;A_n\)</span> strictly? What does (4.2) give if <span class="math" data-tex="\(V_R\ge A_n\)">\(V_R\ge A_n\)</span>?</p>
+<p><strong>5.5</strong> (medium). Show that the function <span class="math" data-tex="\(x\mapsto\#(Z_0(x)\cap L_r(c))\)">\(x\mapsto\#(Z_0(x)\cap L_r(c))\)</span> is locally constant on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> Replacing <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> by <span class="math" data-tex="\(h\sigma\)">\(h\sigma\)</span> replaces the integrand <span class="math" data-tex="\(\mathcal A_j^\sigma(Z,x)=a_j^\sigma(Z(x)\cap\sigma^\circ)\)">\(\mathcal A_j^\sigma(Z,x)=a_j^\sigma(Z(x)\cap\sigma^\circ)\)</span> by <span class="math" data-tex="\(a_j^{h\sigma}(Z(x)\cap h\sigma^\circ)=a_j^\sigma(Z(h^{-1}x)\cap\sigma^\circ)\)">\(a_j^{h\sigma}(Z(x)\cap h\sigma^\circ)=a_j^\sigma(Z(h^{-1}x)\cap\sigma^\circ)\)</span>, by equivariance of <span class="math" data-tex="\(Z\)">\(Z\)</span> and (4.1) of <a href="a-transport-metric-with-small-balls.html">A transport metric with small balls</a>. Invariance of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> gives the same integral, and <span class="math" data-tex="\(|H_{h\sigma}|=|H_\sigma|\)">\(|H_{h\sigma}|=|H_\sigma|\)</span> since the stabilizers are conjugate.</p>
+<p><strong>5.2.</strong> Using that <span class="math" data-tex="\(M_0\)">\(M_0\)</span> is nondecreasing,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M_1(b)&amp;\ge\int_r^b\tilde N_0\ge\int_r^b(M_0(t)-\epsilon)\,dt\\
+&amp;\ge(b-r)M_0(r)-\epsilon(b-r).
+\end{aligned}
+\]">\[
+\begin{aligned}
+M_1(b)&amp;\ge\int_r^b\tilde N_0\ge\int_r^b(M_0(t)-\epsilon)\,dt\\
+&amp;\ge(b-r)M_0(r)-\epsilon(b-r).
+\end{aligned}
+\]</span></p>
+<p><strong>5.3.</strong> The gradient of <span class="math" data-tex="\(f\)">\(f\)</span> has norm <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>. For <span class="math" data-tex="\(0\le t\le\sqrt2\)">\(0\le t\le\sqrt2\)</span> the line <span class="math" data-tex="\(x_1+x_2=\sqrt2\,t\)">\(x_1+x_2=\sqrt2\,t\)</span> meets the square in a segment of length <span class="math" data-tex="\(\sqrt2\cdot\min(\sqrt2t,\,2-\sqrt2t)\)">\(\sqrt2\cdot\min(\sqrt2t,\,2-\sqrt2t)\)</span>. As a function of <span class="math" data-tex="\(t\)">\(t\)</span>, this length rises linearly from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> at <span class="math" data-tex="\(t=\sqrt2/2\)">\(t=\sqrt2/2\)</span> and falls back to <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(t=\sqrt2\)">\(t=\sqrt2\)</span>: its graph bounds a triangle of base <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> and height <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, so the integral is <span class="math" data-tex="\(1=\alpha\operatorname{vol}_2(Q)\)">\(1=\alpha\operatorname{vol}_2(Q)\)</span>.</p>
+<p><strong>5.4.</strong> The bound (4.3) divides by <span class="math" data-tex="\(A_n-V_R\)">\(A_n-V_R\)</span>. If <span class="math" data-tex="\(V_R\ge A_n\)">\(V_R\ge A_n\)</span>, (4.2) together with <span class="math" data-tex="\(\mu(B)\le M_0(r)\)">\(\mu(B)\le M_0(r)\)</span> only gives <span class="math" data-tex="\((A_n-V_R)M_0(r)\le\epsilon\mathcal E_n\)">\((A_n-V_R)M_0(r)\le\epsilon\mathcal E_n\)</span>, which bounds nothing when the left coefficient is not positive. The margin (5.2) is the only place where the dimension enters.</p>
+<p><strong>5.5.</strong> The ball <span class="math" data-tex="\(L_r(c)\)">\(L_r(c)\)</span> meets finitely many original simplices (Lemma 3.2(a) of <a href="a-transport-metric-with-small-balls.html">A transport metric with small balls</a>). On each of them, <span class="math" data-tex="\(Z_0(x)\)">\(Z_0(x)\)</span> is constant on the pieces of a finite clopen partition, and a common refinement of these partitions makes the whole configuration inside <span class="math" data-tex="\(L_r(c)\)">\(L_r(c)\)</span>, hence the count, constant on each piece.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BT] OpenAI, <em>The Bass trace conjecture for complex group rings</em>, OpenAI Math Release preprint, 24 September 2026, Section 5, Proposition 5.1. https://github.com/openai/math/tree/main/preprints/The-Bass-trace-conjecture-for-complex-group-rings-September-24-2026</li>
+<li>[Papasoglu] P. Papasoglu, <em>Uryson width and volume</em>, Geometric and Functional Analysis 30 (2020), 574–587; arXiv:1909.03738, Section 2. https://arxiv.org/abs/1909.03738</li>
+<li>[Alpert] H. Alpert, <em>Simplicial volume and 0-strata of separating filtrations</em>, arXiv:2211.06362v3, Lemmas 6, 7, 11 and 12. https://arxiv.org/abs/2211.06362</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

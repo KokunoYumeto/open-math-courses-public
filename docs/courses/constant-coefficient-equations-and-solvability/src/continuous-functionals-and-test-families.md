@@ -143,7 +143,7 @@ For [the distributional solvability lesson](singular-supports-and-distribution-d
 
 ## Exercises with complete solutions
 
-**Exercise 1 (basic).** Let \(E=\mathcal D(X)\oplus\ell^1\), \(p(w,a)=q(w)+\|a\|_1\), and suppose \(f\) on the range of a linear \(T\) has \(|f(Tv)|\le Cp(Tv)\). Show that the extension bound survives a nontrivial kernel of both \(T\) and \(p\), and identify the \(\ell^1\) term.
+**Exercise 1 (basic).** Let \(E=\mathcal D(X)\oplus\ell^1\), \(p(w,a)=q(w)+\|a\|_1\), and suppose a linear functional \(f\) on the range of a linear \(T\) has \(|f(Tv)|\le Cp(Tv)\). Show that the extension bound survives a nontrivial kernel of both \(T\) and \(p\), and identify the \(\ell^1\) term.
 
 **Solution 1.** If \(Tv=Tv'\), the estimate for their difference gives \(f(T(v-v'))=0\); the range functional is well defined. If a range vector belongs to \(\ker p\), its value is zero. It therefore descends to the image of the range in \(E/\ker p\), with norm at most \(C\). Normed Hahn–Banach and pullback give \(|F(w,a)|\le C(q(w)+\|a\|_1)\). The coefficients \(c_j=F(0,e_j)\) satisfy \(|c_j|\le C\); finite sums and their \(\ell^1\) limits give \(F(0,a)=\sum_jc_ja_j\). This is a complex-linear sum with every scalar coefficient retained.
 
