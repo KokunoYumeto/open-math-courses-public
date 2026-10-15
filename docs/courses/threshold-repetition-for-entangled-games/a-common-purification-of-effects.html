@@ -1,0 +1,195 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A common purification of effects</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Threshold repetition for entangled games)</a><a href="from-conditioning-to-a-threshold-bound.html">Previous lesson</a><a href="conditioning-on-a-tested-set.html">Next lesson</a><a href="src/a-common-purification-of-effects.md">Editable source</a></nav><main><article><h1 id="a-common-purification-of-effects">A common purification of effects</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Conditioning a repeated strategy on observed answers replaces the shared state by local positive operators applied to it. To compare such conditioned states without communication, the players need a representation of each positive operator <span class="math" data-tex="\(T\)">\(T\)</span> by a map <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(F^*F=T\)">\(F^*F=T\)</span> whose values lie in one common space, in such a way that averaging <span class="math" data-tex="\(T\)">\(T\)</span> over a random question moves <span class="math" data-tex="\(F\)">\(F\)</span> by an amount controlled by an entropy gap. This lesson constructs such a representation, the resolvent purification, proves its entropy estimate, and shows how answer measurements are transported to the represented vectors with exactly the same answer probabilities.</p>
+<ul>
+<li>The resolvent purification and its entropy estimate (Section 1).</li>
+<li>Transporting answer measurements (Section 2).</li>
+</ul>
+<p>Hilbert spaces are complex and finite-dimensional unless stated otherwise. An <em>effect</em> on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> is a self-adjoint operator with <span class="math" data-tex="\(0\preceq T\preceq I\)">\(0\preceq T\preceq I\)</span>. Put <span class="math" data-tex="\(f(t)=t\log t\)">\(f(t)=t\log t\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>; for an effect, <span class="math" data-tex="\(f(T)\)">\(f(T)\)</span> is defined by the spectral theorem, and <span class="math" data-tex="\(f(T)\preceq0\)">\(f(T)\preceq0\)</span>.</p>
+<h2 id="1-the-resolvent-purification-and-its-entropy-estimate">1. The resolvent purification and its entropy estimate</h2>
+<p>For an effect <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal F_T\colon\mathcal H\to L^2\bigl((0,\infty),ds;\mathcal H\bigr),\\
+&amp;(\mathcal F_Th)(s)=T(T+sI)^{-1}h .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal F_T\colon\mathcal H\to L^2\bigl((0,\infty),ds;\mathcal H\bigr),\\
+&amp;(\mathcal F_Th)(s)=T(T+sI)^{-1}h .
+\end{aligned}
+\]</span>
+The inverse exists for every <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, also when <span class="math" data-tex="\(T\)">\(T\)</span> has a kernel. For effects <span class="math" data-tex="\(S,T\)">\(S,T\)</span>, the operator <span class="math" data-tex="\(\mathcal F_S^*\mathcal F_T\)">\(\mathcal F_S^*\mathcal F_T\)</span> on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> is defined by <span class="math" data-tex="\(\langle h,\mathcal F_S^*\mathcal F_Th&#x27;\rangle=\langle\mathcal F_Sh,\mathcal F_Th&#x27;\rangle_{L^2}\)">\(\langle h,\mathcal F_S^*\mathcal F_Th&#x27;\rangle=\langle\mathcal F_Sh,\mathcal F_Th&#x27;\rangle_{L^2}\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (resolvent purification; [OpenAI-TR, Lemma 3.1]).</p>
+<p>(1) <span class="math" data-tex="\(\mathcal F_T^*\mathcal F_T=T\)">\(\mathcal F_T^*\mathcal F_T=T\)</span> for every effect <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>(2) Let <span class="math" data-tex="\(A_1,\dots,A_N\)">\(A_1,\dots,A_N\)</span> be effects, <span class="math" data-tex="\(q_1,\dots,q_N&gt;0\)">\(q_1,\dots,q_N&gt;0\)</span> with <span class="math" data-tex="\(\sum_jq_j=1\)">\(\sum_jq_j=1\)</span>, <span class="math" data-tex="\(B=\sum_jq_jA_j\)">\(B=\sum_jq_jA_j\)</span>, and let <span class="math" data-tex="\(\Delta=\sum_jq_jf(A_j)-f(B)\)">\(\Delta=\sum_jq_jf(A_j)-f(B)\)</span> be their <em>entropy gap</em>. Then for every <span class="math" data-tex="\(h\in\mathcal H\)">\(h\in\mathcal H\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_jq_j\|(\mathcal F_{A_j}-\mathcal F_B)h\|^2\\
+&amp;\quad\le\langle h,\Delta h\rangle .
+\end{aligned} \tag{1.1}
+\]">\[
+\begin{aligned}
+&amp;\sum_jq_j\|(\mathcal F_{A_j}-\mathcal F_B)h\|^2\\
+&amp;\quad\le\langle h,\Delta h\rangle .
+\end{aligned} \tag{1.1}
+\]</span></p>
+<p>(3) For a finite set <span class="math" data-tex="\(\mathscr T\)">\(\mathscr T\)</span> of effects, the maps <span class="math" data-tex="\(\mathcal F_T\)">\(\mathcal F_T\)</span>, <span class="math" data-tex="\(T\in\mathscr T\)">\(T\in\mathscr T\)</span>, take values in a common finite-dimensional subspace <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> of <span class="math" data-tex="\(L^2((0,\infty),ds;\mathcal H)\)">\(L^2((0,\infty),ds;\mathcal H)\)</span>; regarded as maps into <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, they have the same products <span class="math" data-tex="\(\mathcal F_S^*\mathcal F_T\)">\(\mathcal F_S^*\mathcal F_T\)</span>.</p>
+<p><em>Proof.</em> (1) Write <span class="math" data-tex="\(T=\sum_k\lambda_kP_k\)">\(T=\sum_k\lambda_kP_k\)</span> with spectral projections <span class="math" data-tex="\(P_k\)">\(P_k\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\mathcal F_Th\|^2\\
+&amp;\quad=\sum_k\|P_kh\|^2\int_0^\infty\frac{\lambda_k^2}{(\lambda_k+s)^2}\,ds\\
+&amp;\quad=\sum_k\lambda_k\|P_kh\|^2=\langle h,Th\rangle,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\mathcal F_Th\|^2\\
+&amp;\quad=\sum_k\|P_kh\|^2\int_0^\infty\frac{\lambda_k^2}{(\lambda_k+s)^2}\,ds\\
+&amp;\quad=\sum_k\lambda_k\|P_kh\|^2=\langle h,Th\rangle,
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(\int_0^\infty t^2(t+s)^{-2}\,ds=t\)">\(\int_0^\infty t^2(t+s)^{-2}\,ds=t\)</span> for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>; polarization gives <span class="math" data-tex="\(\mathcal F_T^*\mathcal F_T=T\)">\(\mathcal F_T^*\mathcal F_T=T\)</span>.</p>
+<p>(2) <em>Reduction.</em> If <span class="math" data-tex="\(Bh=0\)">\(Bh=0\)</span>, then <span class="math" data-tex="\(\sum_jq_j\langle h,A_jh\rangle=0\)">\(\sum_jq_j\langle h,A_jh\rangle=0\)</span>, so <span class="math" data-tex="\(\langle h,A_jh\rangle=0\)">\(\langle h,A_jh\rangle=0\)</span> and <span class="math" data-tex="\(A_jh=0\)">\(A_jh=0\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>. So <span class="math" data-tex="\(\ker B\)">\(\ker B\)</span> is contained in every <span class="math" data-tex="\(\ker A_j\)">\(\ker A_j\)</span>; all the operators in (1.1) vanish on <span class="math" data-tex="\(\ker B\)">\(\ker B\)</span> and map its orthogonal complement into itself. Both sides of (1.1) split accordingly, and on <span class="math" data-tex="\(\ker B\)">\(\ker B\)</span> they vanish. We may therefore assume <span class="math" data-tex="\(B\)">\(B\)</span> positive definite, with smallest eigenvalue <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>.</p>
+<p><em>Two resolvent identities.</em> Write <span class="math" data-tex="\(R_A=(A+sI)^{-1}\)">\(R_A=(A+sI)^{-1}\)</span>, <span class="math" data-tex="\(D_j=A_j-B\)">\(D_j=A_j-B\)</span> and, for effects <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, <span class="math" data-tex="\(D=A-B\)">\(D=A-B\)</span>. Since <span class="math" data-tex="\(R_A^{-1}-R_B^{-1}=D\)">\(R_A^{-1}-R_B^{-1}=D\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;R_B-R_A=R_ADR_B,\\
+&amp;AR_A-BR_B\\
+&amp;\quad=s(R_B-R_A)\\
+&amp;\quad=sR_ADR_B .
+\end{aligned} \tag{1.2}
+\]">\[
+\begin{aligned}
+&amp;R_B-R_A=R_ADR_B,\\
+&amp;AR_A-BR_B\\
+&amp;\quad=s(R_B-R_A)\\
+&amp;\quad=sR_ADR_B .
+\end{aligned} \tag{1.2}
+\]</span>
+Substituting the first identity into itself, in the form <span class="math" data-tex="\(R_A=R_B-R_ADR_B\)">\(R_A=R_B-R_ADR_B\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_A&amp;=R_B-R_BDR_B\\
+&amp;\quad+R_BDR_ADR_B .
+\end{aligned} \tag{1.3}
+\]">\[
+\begin{aligned}
+R_A&amp;=R_B-R_BDR_B\\
+&amp;\quad+R_BDR_ADR_B .
+\end{aligned} \tag{1.3}
+\]</span></p>
+<p><em>The entropy gap.</em> For <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+f(t)=\int_0^\infty\Bigl(\frac t{1+s}-\frac t{t+s}\Bigr)ds,
+\]">\[
+f(t)=\int_0^\infty\Bigl(\frac t{1+s}-\frac t{t+s}\Bigr)ds,
+\]</span>
+because <span class="math" data-tex="\(\int_0^S(\frac t{1+s}-\frac t{t+s})\,ds=t\log t+t\log\frac{1+S}{t+S}\)">\(\int_0^S(\frac t{1+s}-\frac t{t+s})\,ds=t\log t+t\log\frac{1+S}{t+S}\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. By the spectral theorem <span class="math" data-tex="\(f(A)=\int_0^\infty(\frac A{1+s}-AR_A)\,ds\)">\(f(A)=\int_0^\infty(\frac A{1+s}-AR_A)\,ds\)</span> for every effect <span class="math" data-tex="\(A\)">\(A\)</span>, the integral converging in norm. Since <span class="math" data-tex="\(\sum_jq_jA_j=B\)">\(\sum_jq_jA_j=B\)</span>, the terms <span class="math" data-tex="\(A_j/(1+s)\)">\(A_j/(1+s)\)</span> cancel in the average, and <span class="math" data-tex="\(AR_A=I-sR_A\)">\(AR_A=I-sR_A\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta&amp;=\int_0^\infty s\sum_jq_j(R_{A_j}-R_B)\,ds\\
+&amp;=\int_0^\infty s\sum_jq_jR_BD_jR_{A_j}D_jR_B\,ds,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta&amp;=\int_0^\infty s\sum_jq_j(R_{A_j}-R_B)\,ds\\
+&amp;=\int_0^\infty s\sum_jq_jR_BD_jR_{A_j}D_jR_B\,ds,
+\end{aligned}
+\]</span>
+where the second equality averages (1.3) and uses <span class="math" data-tex="\(\sum_jq_jD_j=0\)">\(\sum_jq_jD_j=0\)</span>. The last integrand is bounded near <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, because <span class="math" data-tex="\(\|R_B\|\le1/b\)">\(\|R_B\|\le1/b\)</span> and <span class="math" data-tex="\(sR_{A_j}\preceq I\)">\(sR_{A_j}\preceq I\)</span>, and it is <span class="math" data-tex="\(O(s^{-2})\)">\(O(s^{-2})\)</span> as <span class="math" data-tex="\(s\to\infty\)">\(s\to\infty\)</span>.</p>
+<p><em>The estimate.</em> By (1.2), <span class="math" data-tex="\(((\mathcal F_{A_j}-\mathcal F_B)h)(s)=sR_{A_j}D_jR_Bh\)">\(((\mathcal F_{A_j}-\mathcal F_B)h)(s)=sR_{A_j}D_jR_Bh\)</span>. Since <span class="math" data-tex="\(sR_A^2\preceq R_A\)">\(sR_A^2\preceq R_A\)</span> (the function <span class="math" data-tex="\(s/(a+s)^2\)">\(s/(a+s)^2\)</span> is at most <span class="math" data-tex="\(1/(a+s)\)">\(1/(a+s)\)</span> for <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|sR_{A_j}D_jR_Bh\|^2\\
+&amp;\quad=s^2\langle D_jR_Bh,R_{A_j}^2D_jR_Bh\rangle\\
+&amp;\quad\le s\langle D_jR_Bh,R_{A_j}D_jR_Bh\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|sR_{A_j}D_jR_Bh\|^2\\
+&amp;\quad=s^2\langle D_jR_Bh,R_{A_j}^2D_jR_Bh\rangle\\
+&amp;\quad\le s\langle D_jR_Bh,R_{A_j}D_jR_Bh\rangle .
+\end{aligned}
+\]</span>
+Averaging over <span class="math" data-tex="\(j\)">\(j\)</span> with weights <span class="math" data-tex="\(q_j\)">\(q_j\)</span> and integrating over <span class="math" data-tex="\(s\)">\(s\)</span> gives (1.1), by the formula for the entropy gap.</p>
+<p>(3) The span <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> of all vectors <span class="math" data-tex="\(\mathcal F_Th\)">\(\mathcal F_Th\)</span>, <span class="math" data-tex="\(T\in\mathscr T\)">\(T\in\mathscr T\)</span>, <span class="math" data-tex="\(h\in\mathcal H\)">\(h\in\mathcal H\)</span>, has dimension at most <span class="math" data-tex="\(|\mathscr T|\dim\mathcal H\)">\(|\mathscr T|\dim\mathcal H\)</span>. Regarding each <span class="math" data-tex="\(\mathcal F_T\)">\(\mathcal F_T\)</span> as a map into <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> preserves all inner products of their values. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The common codomain matters: compressing different maps into different spaces would not preserve the distances <span class="math" data-tex="\(\|(\mathcal F_{A_j}-\mathcal F_B)h\|\)">\(\|(\mathcal F_{A_j}-\mathcal F_B)h\|\)</span> in (1.1). In what follows each <span class="math" data-tex="\(\mathcal F_T\)">\(\mathcal F_T\)</span> is regarded as a map into a fixed finite-dimensional space <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, chosen for the finitely many effects at hand. The construction and its entropy estimate are those of Chapter 6 of [OpenAI-TA] (Definition 4.2 and Lemma 4.3 there). In particular the entropy gap <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is positive semidefinite.</p>
+<h2 id="2-transporting-answer-measurements">2. Transporting answer measurements</h2>
+<p><strong>Lemma 2.1</strong> (transporting measurements; [OpenAI-TR, Lemma 3.2]). Let <span class="math" data-tex="\(T\)">\(T\)</span> be an effect on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, let <span class="math" data-tex="\(F\colon\mathcal H\to\mathcal K\)">\(F\colon\mathcal H\to\mathcal K\)</span> satisfy <span class="math" data-tex="\(F^*F=T\)">\(F^*F=T\)</span>, and let <span class="math" data-tex="\((G_a)_{a\in\mathcal A}\)">\((G_a)_{a\in\mathcal A}\)</span> be positive operators on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, indexed by a nonempty finite set, with <span class="math" data-tex="\(\sum_aG_a=T\)">\(\sum_aG_a=T\)</span>. There is a POVM <span class="math" data-tex="\((\widetilde G_a)_{a\in\mathcal A}\)">\((\widetilde G_a)_{a\in\mathcal A}\)</span> on <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, depending only on <span class="math" data-tex="\(F\)">\(F\)</span> and the <span class="math" data-tex="\(G_a\)">\(G_a\)</span>, with
+<span class="math math-display" data-tex="\[
+F^*\widetilde G_aF=G_a\quad(a\in\mathcal A). \tag{2.1}
+\]">\[
+F^*\widetilde G_aF=G_a\quad(a\in\mathcal A). \tag{2.1}
+\]</span></p>
+<p><em>Proof.</em> Inverses and square roots below act on the support of <span class="math" data-tex="\(T\)">\(T\)</span>, the orthogonal complement of its kernel, and vanish on the kernel; <span class="math" data-tex="\(\Pi_T\)">\(\Pi_T\)</span> is the orthogonal projection onto the support. Since <span class="math" data-tex="\(0\preceq G_a\preceq T\)">\(0\preceq G_a\preceq T\)</span>, each <span class="math" data-tex="\(G_a\)">\(G_a\)</span> vanishes on <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span> and <span class="math" data-tex="\(G_a=\Pi_TG_a\Pi_T\)">\(G_a=\Pi_TG_a\Pi_T\)</span>. Since <span class="math" data-tex="\(\|Fh\|^2=\langle h,Th\rangle\)">\(\|Fh\|^2=\langle h,Th\rangle\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> vanishes on <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span>. Put <span class="math" data-tex="\(V=FT^{-1/2}\)">\(V=FT^{-1/2}\)</span>. Then <span class="math" data-tex="\(V^*V=T^{-1/2}TT^{-1/2}=\Pi_T\)">\(V^*V=T^{-1/2}TT^{-1/2}=\Pi_T\)</span>, so <span class="math" data-tex="\(V\)">\(V\)</span> is a partial isometry, <span class="math" data-tex="\(VV^*\)">\(VV^*\)</span> is an orthogonal projection on <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, and <span class="math" data-tex="\(VT^{1/2}=F\Pi_T=F\)">\(VT^{1/2}=F\Pi_T=F\)</span>. Fix <span class="math" data-tex="\(a_*\in\mathcal A\)">\(a_*\in\mathcal A\)</span> and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widetilde G_a&amp;=VT^{-1/2}G_aT^{-1/2}V^*\\
+&amp;\quad+\mathbf 1_{\{a=a_*\}}(I_{\mathcal K}-VV^*).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\widetilde G_a&amp;=VT^{-1/2}G_aT^{-1/2}V^*\\
+&amp;\quad+\mathbf 1_{\{a=a_*\}}(I_{\mathcal K}-VV^*).
+\end{aligned}
+\]</span>
+These are positive, and <span class="math" data-tex="\(\sum_a\widetilde G_a=V\Pi_TV^*+I_{\mathcal K}-VV^*=I_{\mathcal K}\)">\(\sum_a\widetilde G_a=V\Pi_TV^*+I_{\mathcal K}-VV^*=I_{\mathcal K}\)</span>. Finally, because <span class="math" data-tex="\(V^*(I-VV^*)V=0\)">\(V^*(I-VV^*)V=0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F^*\widetilde G_aF&amp;=T^{1/2}V^*V\,T^{-1/2}G_aT^{-1/2}\\
+&amp;\qquad\cdot V^*VT^{1/2}+0\\
+&amp;=\Pi_TG_a\Pi_T=G_a .
+\end{aligned}
+\]">\[
+\begin{aligned}
+F^*\widetilde G_aF&amp;=T^{1/2}V^*V\,T^{-1/2}G_aT^{-1/2}\\
+&amp;\qquad\cdot V^*VT^{1/2}+0\\
+&amp;=\Pi_TG_a\Pi_T=G_a .
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, every <span class="math" data-tex="\(G_a\)">\(G_a\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> vanish and the POVM always gives <span class="math" data-tex="\(a_*\)">\(a_*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2.</strong> Let <span class="math" data-tex="\(T,S\)">\(T,S\)</span> be effects on <span class="math" data-tex="\(\mathcal H_A,\mathcal H_B\)">\(\mathcal H_A,\mathcal H_B\)</span>, with maps <span class="math" data-tex="\(F_T\colon\mathcal H_A\to\mathcal K_A\)">\(F_T\colon\mathcal H_A\to\mathcal K_A\)</span> and <span class="math" data-tex="\(F_S\colon\mathcal H_B\to\mathcal K_B\)">\(F_S\colon\mathcal H_B\to\mathcal K_B\)</span> satisfying <span class="math" data-tex="\(F_T^*F_T=T\)">\(F_T^*F_T=T\)</span> and <span class="math" data-tex="\(F_S^*F_S=S\)">\(F_S^*F_S=S\)</span>. Let <span class="math" data-tex="\(\sum_aG_a=T\)">\(\sum_aG_a=T\)</span> and <span class="math" data-tex="\(\sum_bH_b=S\)">\(\sum_bH_b=S\)</span> with positive <span class="math" data-tex="\(G_a,H_b\)">\(G_a,H_b\)</span>, and let <span class="math" data-tex="\(\widetilde G_a,\widetilde H_b\)">\(\widetilde G_a,\widetilde H_b\)</span> be the POVMs of Lemma 2.1. For a unit vector <span class="math" data-tex="\(\psi\in\mathcal H_A\otimes\mathcal H_B\)">\(\psi\in\mathcal H_A\otimes\mathcal H_B\)</span> and <span class="math" data-tex="\(\Psi=(F_T\otimes F_S)\psi\)">\(\Psi=(F_T\otimes F_S)\psi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\Psi\|^2=\langle\psi,(T\otimes S)\psi\rangle,\\
+&amp;\langle\Psi,(\widetilde G_a\otimes\widetilde H_b)\Psi\rangle=\langle\psi,(G_a\otimes H_b)\psi\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\Psi\|^2=\langle\psi,(T\otimes S)\psi\rangle,\\
+&amp;\langle\Psi,(\widetilde G_a\otimes\widetilde H_b)\Psi\rangle=\langle\psi,(G_a\otimes H_b)\psi\rangle .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> For operators <span class="math" data-tex="\(X\)">\(X\)</span> on <span class="math" data-tex="\(\mathcal K_A\)">\(\mathcal K_A\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> on <span class="math" data-tex="\(\mathcal K_B\)">\(\mathcal K_B\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(F_T\otimes F_S)^*(X\otimes Y)(F_T\otimes F_S)\\
+&amp;\quad=F_T^*XF_T\otimes F_S^*YF_S ;
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(F_T\otimes F_S)^*(X\otimes Y)(F_T\otimes F_S)\\
+&amp;\quad=F_T^*XF_T\otimes F_S^*YF_S ;
+\end{aligned}
+\]</span>
+take <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> equal to identities, or to <span class="math" data-tex="\(\widetilde G_a,\widetilde H_b\)">\(\widetilde G_a,\widetilde H_b\)</span>, and use (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So the purified vector carries the exact answer probabilities, not only the norm of the conditioned vector. The transport of answer effects follows the construction of the ideal conditioned state in Chapter 6 of [OpenAI-TA] (Lemma 3.2 there).</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> Prove <span class="math" data-tex="\(\int_0^\infty t^2(t+s)^{-2}\,ds=t\)">\(\int_0^\infty t^2(t+s)^{-2}\,ds=t\)</span> for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>.</p>
+<p><strong>3.2.</strong> Let <span class="math" data-tex="\(A_1=1\)">\(A_1=1\)</span>, <span class="math" data-tex="\(A_2=0\)">\(A_2=0\)</span> on <span class="math" data-tex="\(\mathcal H=\mathbb C\)">\(\mathcal H=\mathbb C\)</span> and <span class="math" data-tex="\(q_1=q_2=\frac12\)">\(q_1=q_2=\frac12\)</span>, so <span class="math" data-tex="\(B=\frac12\)">\(B=\frac12\)</span>. Compute both sides of (1.1) for <span class="math" data-tex="\(h=1\)">\(h=1\)</span>.</p>
+<p><strong>3.3.</strong> Show that the right side of (1.1) is nonnegative directly from the concavity of <span class="math" data-tex="\(-t\log t\)">\(-t\log t\)</span> when all <span class="math" data-tex="\(A_j\)">\(A_j\)</span> commute.</p>
+<p><strong>3.4.</strong> In Lemma 2.1, show that the pullbacks <span class="math" data-tex="\(F^*\widetilde G_aF\)">\(F^*\widetilde G_aF\)</span> do not depend on the choice of <span class="math" data-tex="\(a_*\)">\(a_*\)</span>, although the POVM does.</p>
+<p><strong>3.5.</strong> Show that <span class="math" data-tex="\(T^{1/2}\colon\mathcal H\to\mathcal H\)">\(T^{1/2}\colon\mathcal H\to\mathcal H\)</span> also satisfies <span class="math" data-tex="\((T^{1/2})^*T^{1/2}=T\)">\((T^{1/2})^*T^{1/2}=T\)</span>, and compute <span class="math" data-tex="\(\|T^{1/2}h-S^{1/2}h\|^2\)">\(\|T^{1/2}h-S^{1/2}h\|^2\)</span> and <span class="math" data-tex="\(\|(\mathcal F_T-\mathcal F_S)h\|^2\)">\(\|(\mathcal F_T-\mathcal F_S)h\|^2\)</span> for <span class="math" data-tex="\(\mathcal H=\mathbb C\)">\(\mathcal H=\mathbb C\)</span>, <span class="math" data-tex="\(T=1\)">\(T=1\)</span>, <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, <span class="math" data-tex="\(h=1\)">\(h=1\)</span>.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(\int_0^\infty(t+s)^{-2}\,ds=1/t\)">\(\int_0^\infty(t+s)^{-2}\,ds=1/t\)</span>; for <span class="math" data-tex="\(t=0\)">\(t=0\)</span> both sides vanish.</p>
+<p><strong>3.2.</strong> <span class="math" data-tex="\(\mathcal F_1(s)=1/(1+s)\)">\(\mathcal F_1(s)=1/(1+s)\)</span>, <span class="math" data-tex="\(\mathcal F_0=0\)">\(\mathcal F_0=0\)</span>, <span class="math" data-tex="\(\mathcal F_{1/2}(s)=1/(1+2s)\)">\(\mathcal F_{1/2}(s)=1/(1+2s)\)</span>. The left side is <span class="math" data-tex="\(\frac12\int_0^\infty\bigl(\frac1{1+s}-\frac1{1+2s}\bigr)^2ds+\frac12\int_0^\infty\frac{ds}{(1+2s)^2}\)">\(\frac12\int_0^\infty\bigl(\frac1{1+s}-\frac1{1+2s}\bigr)^2ds+\frac12\int_0^\infty\frac{ds}{(1+2s)^2}\)</span>. The second integral is <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>; the first equals <span class="math" data-tex="\(\int_0^\infty\frac{s^2}{(1+s)^2(1+2s)^2}\,ds=\frac32-2\log2\)">\(\int_0^\infty\frac{s^2}{(1+s)^2(1+2s)^2}\,ds=\frac32-2\log2\)</span> (partial fractions). So the left side is <span class="math" data-tex="\(\frac12(\frac32-2\log2)+\frac14=1-\log2\approx0.307\)">\(\frac12(\frac32-2\log2)+\frac14=1-\log2\approx0.307\)</span>. The right side is <span class="math" data-tex="\(\frac12(0+0)-\frac12\log\frac12=\frac12\log2\approx0.347\)">\(\frac12(0+0)-\frac12\log\frac12=\frac12\log2\approx0.347\)</span>.</p>
+<p><strong>3.3.</strong> In a common eigenbasis the inequality reads <span class="math" data-tex="\(\sum_jq_jf(a_j)\ge f(\sum_jq_ja_j)\)">\(\sum_jq_jf(a_j)\ge f(\sum_jq_ja_j)\)</span> for each eigenvalue, which is convexity of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>3.4.</strong> <span class="math" data-tex="\(F^*(I-VV^*)F\)">\(F^*(I-VV^*)F\)</span> equals <span class="math" data-tex="\(T^{1/2}V^*(I-VV^*)VT^{1/2}=0\)">\(T^{1/2}V^*(I-VV^*)VT^{1/2}=0\)</span>, so the extra term never contributes to the pullback.</p>
+<p><strong>3.5.</strong> <span class="math" data-tex="\((T^{1/2})^*T^{1/2}=T\)">\((T^{1/2})^*T^{1/2}=T\)</span>. With <span class="math" data-tex="\(T=1\)">\(T=1\)</span>, <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, <span class="math" data-tex="\(h=1\)">\(h=1\)</span>: <span class="math" data-tex="\(\|T^{1/2}h-S^{1/2}h\|^2=1\)">\(\|T^{1/2}h-S^{1/2}h\|^2=1\)</span>, and <span class="math" data-tex="\(\|(\mathcal F_1-\mathcal F_0)h\|^2=\int_0^\infty(1+s)^{-2}ds=1\)">\(\|(\mathcal F_1-\mathcal F_0)h\|^2=\int_0^\infty(1+s)^{-2}ds=1\)</span>. Both equal <span class="math" data-tex="\(\langle h,(T-S)h\rangle\)">\(\langle h,(T-S)h\rangle\)</span> here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-TR] OpenAI, <em>Threshold parallel repetition for finite-dimensional entangled games</em>, OpenAI Math Release preprint, 25 September 2026, Lemmas 3.1 and 3.2. https://github.com/openai/math/tree/main/preprints/Threshold-parallel-repetition-for-finite-dimensional-entangled-games-September-25-2026</li>
+<li>[OpenAI-TA] OpenAI, <em>Ten Advances in Mathematics and Theoretical Computer Science</em>, report, updated 6 August 2026, Chapter 6, Lemma 3.2, Definition 4.2, Lemma 4.3. https://cdn.openai.com/pdf/ten-proofs-oai.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

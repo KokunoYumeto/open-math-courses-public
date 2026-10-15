@@ -1,0 +1,227 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A Fourier coefficient of binary rank two</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Cotype, K-convexity and the approximation property)</a><a href="walsh-norms-and-moment-lifts.html">Previous lesson</a><a href="growth-from-a-slow-decrease.html">Next lesson</a><a href="src/a-fourier-coefficient-of-binary-rank-two.md">Editable source</a></nav><main><article><h1 id="a-fourier-coefficient-of-binary-rank-two">A Fourier coefficient of binary rank two</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Functions on the cube of <span class="math" data-tex="\(m\times m\)">\(m\times m\)</span> sign matrices have Fourier expansions indexed by binary <span class="math" data-tex="\(m\times m\)">\(m\times m\)</span> matrices. In the decay theorem, a Fourier coefficient indexed by a binary matrix of rank <span class="math" data-tex="\(k\)">\(k\)</span> over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> turns into a Walsh pairing with <span class="math" data-tex="\(k\)">\(k\)</span> independent factors; the decisive case is <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. This lesson proves a purely scalar statement (Lemma 2.1): an odd bounded function of a sign matrix whose row and column averages reproduce two odd bounded functions with large first-order coefficients must have a coefficient of rank at least two, of a size bounded below in terms of the parameters only.</p>
+<ul>
+<li>Fourier analysis on sign cubes; binary rank (Section 1).</li>
+<li>Chebyshev polynomials (Lemma 1.1).</li>
+<li>The coefficient lemma (Lemma 2.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-CC, Section 3]. All ranks are over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>.</p>
+<h2 id="1-fourier-analysis-on-sign-cubes">1. Fourier analysis on sign cubes</h2>
+<p>For a finite index set <span class="math" data-tex="\(I\)">\(I\)</span>, the functions <span class="math" data-tex="\(z\mapsto z^P=\prod_{i\in I}z_i^{P_i}\)">\(z\mapsto z^P=\prod_{i\in I}z_i^{P_i}\)</span>, <span class="math" data-tex="\(P\in\{0,1\}^I\)">\(P\in\{0,1\}^I\)</span>, on <span class="math" data-tex="\(\{-1,1\}^I\)">\(\{-1,1\}^I\)</span> are orthonormal for the uniform probability measure: <span class="math" data-tex="\(\mathbb E_zz^Pz^Q=\mathbb E_zz^{P+Q}\)">\(\mathbb E_zz^Pz^Q=\mathbb E_zz^{P+Q}\)</span>, with <span class="math" data-tex="\(P+Q\)">\(P+Q\)</span> computed modulo <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(\mathbb Ez_i=0\)">\(\mathbb Ez_i=0\)</span>. There are <span class="math" data-tex="\(2^{|I|}\)">\(2^{|I|}\)</span> of them, so they form a basis. Every <span class="math" data-tex="\(h\colon\{-1,1\}^I\to\mathbb R\)">\(h\colon\{-1,1\}^I\to\mathbb R\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h(z)=\sum_P\widehat h(P)z^P,\\
+\widehat h(P)=\mathbb E_zh(z)z^P,
+\end{gathered}
+\]">\[
+\begin{gathered}
+h(z)=\sum_P\widehat h(P)z^P,\\
+\widehat h(P)=\mathbb E_zh(z)z^P,
+\end{gathered}
+\]</span>
+and Parseval's identity <span class="math" data-tex="\(\sum_P\widehat h(P)^2=\mathbb Eh^2\)">\(\sum_P\widehat h(P)^2=\mathbb Eh^2\)</span> holds. We use <span class="math" data-tex="\(I=\{1,\dots,m\}\)">\(I=\{1,\dots,m\}\)</span>, with indices <span class="math" data-tex="\(p\in\{0,1\}^m\)">\(p\in\{0,1\}^m\)</span>, <span class="math" data-tex="\(|p|\)">\(|p|\)</span> the number of ones and <span class="math" data-tex="\(e_i\)">\(e_i\)</span> the unit vectors, and <span class="math" data-tex="\(I=\{1,\dots,m\}^2\)">\(I=\{1,\dots,m\}^2\)</span>, with indices binary matrices <span class="math" data-tex="\(P\)">\(P\)</span> and sign matrices <span class="math" data-tex="\(S\)">\(S\)</span>, so that <span class="math" data-tex="\(S^P=\prod_{i,j}S_{ij}^{P_{ij}}\)">\(S^P=\prod_{i,j}S_{ij}^{P_{ij}}\)</span>.</p>
+<p>The <em>odd part</em> of <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\(\mathcal Oh(z)=\frac12(h(z)-h(-z))\)">\(\mathcal Oh(z)=\frac12(h(z)-h(-z))\)</span>, and <span class="math" data-tex="\(h\)">\(h\)</span> is <em>odd</em> if <span class="math" data-tex="\(\mathcal Oh=h\)">\(\mathcal Oh=h\)</span>. Since <span class="math" data-tex="\((-z)^P=(-1)^{|P|}z^P\)">\((-z)^P=(-1)^{|P|}z^P\)</span>, <span class="math" data-tex="\(\mathcal Oh\)">\(\mathcal Oh\)</span> keeps exactly the coefficients with <span class="math" data-tex="\(|P|\)">\(|P|\)</span> odd.</p>
+<p>For a sign vector <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, <span class="math" data-tex="\(\sigma S\)">\(\sigma S\)</span> multiplies row <span class="math" data-tex="\(i\)">\(i\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span> by <span class="math" data-tex="\(\sigma_i\)">\(\sigma_i\)</span>, and <span class="math" data-tex="\(S\tau\)">\(S\tau\)</span> multiplies column <span class="math" data-tex="\(j\)">\(j\)</span> by <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span>. Row <span class="math" data-tex="\(i\)">\(i\)</span> and column <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span> are <span class="math" data-tex="\(S_{i,:}\)">\(S_{i,:}\)</span> and <span class="math" data-tex="\(S_{:,j}\)">\(S_{:,j}\)</span>.</p>
+<p>The <em>binary rank</em> of a binary matrix is its rank over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>. A binary matrix of rank one is <span class="math" data-tex="\(ph^{\mathrm t}\)">\(ph^{\mathrm t}\)</span> with nonzero <span class="math" data-tex="\(p,h\in\{0,1\}^m\)">\(p,h\in\{0,1\}^m\)</span>, uniquely: <span class="math" data-tex="\(p\)">\(p\)</span> marks the nonzero rows and <span class="math" data-tex="\(h\)">\(h\)</span> is the common nonzero row. If <span class="math" data-tex="\(u_i,v_j\in\mathbb F_2^n\)">\(u_i,v_j\in\mathbb F_2^n\)</span> and <span class="math" data-tex="\(S_{ij}=\chi(u_i,v_j)\)">\(S_{ij}=\chi(u_i,v_j)\)</span>, then
+<span class="math math-display" data-tex="\[
+S^P=(-1)^{\sum_{i,j}P_{ij}\,u_i\cdot v_j}.
+\]">\[
+S^P=(-1)^{\sum_{i,j}P_{ij}\,u_i\cdot v_j}.
+\]</span>
+For example, the all-ones <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span> matrix <span class="math" data-tex="\(P_1\)">\(P_1\)</span> has rank one and <span class="math" data-tex="\(S^{P_1}=\chi(u_1+u_2+u_3,v_1+v_2+v_3)\)">\(S^{P_1}=\chi(u_1+u_2+u_3,v_1+v_2+v_3)\)</span>, a single Walsh factor, while
+<span class="math math-display" data-tex="\[
+P_2=\begin{pmatrix}1&amp;1&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;0\end{pmatrix}
+\]">\[
+P_2=\begin{pmatrix}1&amp;1&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;0\end{pmatrix}
+\]</span>
+has rank two and <span class="math" data-tex="\(S^{P_2}=\chi(u_1,v_1+v_2)\,\chi(u_2,v_2)\)">\(S^{P_2}=\chi(u_1,v_1+v_2)\,\chi(u_2,v_2)\)</span>, two factors in which <span class="math" data-tex="\(v_1+v_2\)">\(v_1+v_2\)</span> and <span class="math" data-tex="\(v_2\)">\(v_2\)</span> vary independently.</p>
+<p><strong>Lemma 1.1</strong> (Chebyshev polynomials). There are real polynomials <span class="math" data-tex="\(T_j\)">\(T_j\)</span> of degree <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(T_j(\cos\theta)=\cos(j\theta)\)">\(T_j(\cos\theta)=\cos(j\theta)\)</span>. Every real polynomial <span class="math" data-tex="\(Q\)">\(Q\)</span> of degree at most <span class="math" data-tex="\(d\)">\(d\)</span> is <span class="math" data-tex="\(Q=\sum_{j=0}^dc_jT_j\)">\(Q=\sum_{j=0}^dc_jT_j\)</span> with <span class="math" data-tex="\(|c_j|\le2\|Q\|_\infty\)">\(|c_j|\le2\|Q\|_\infty\)</span>, where <span class="math" data-tex="\(\|\cdot\|_\infty\)">\(\|\cdot\|_\infty\)</span> is the supremum on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Moreover <span class="math" data-tex="\(|T_j|\le1\)">\(|T_j|\le1\)</span> on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, <span class="math" data-tex="\(|T_j&#x27;(0)|\le j\)">\(|T_j&#x27;(0)|\le j\)</span>, and
+<span class="math math-display" data-tex="\[
+|Q&#x27;(0)|\le d(d+1)\|Q\|_\infty . \tag{1.1}
+\]">\[
+|Q&#x27;(0)|\le d(d+1)\|Q\|_\infty . \tag{1.1}
+\]</span></p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(T_0=1\)">\(T_0=1\)</span>, <span class="math" data-tex="\(T_1(x)=x\)">\(T_1(x)=x\)</span> and <span class="math" data-tex="\(T_{j+1}=2xT_j-T_{j-1}\)">\(T_{j+1}=2xT_j-T_{j-1}\)</span>; the identity
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\cos((j+1)\theta)&amp;+\cos((j-1)\theta)\\
+&amp;=2\cos\theta\cos(j\theta)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\cos((j+1)\theta)&amp;+\cos((j-1)\theta)\\
+&amp;=2\cos\theta\cos(j\theta)
+\end{aligned}
+\]</span>
+gives <span class="math" data-tex="\(T_j(\cos\theta)=\cos(j\theta)\)">\(T_j(\cos\theta)=\cos(j\theta)\)</span> by induction, and <span class="math" data-tex="\(T_j\)">\(T_j\)</span> has degree <span class="math" data-tex="\(j\)">\(j\)</span> with leading coefficient <span class="math" data-tex="\(2^{j-1}\)">\(2^{j-1}\)</span> (<span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>). So <span class="math" data-tex="\(T_0,\dots,T_d\)">\(T_0,\dots,T_d\)</span> are a basis of the polynomials of degree at most <span class="math" data-tex="\(d\)">\(d\)</span>. The relations <span class="math" data-tex="\(\int_0^\pi\cos(j\theta)\cos(k\theta)\,d\theta=0\)">\(\int_0^\pi\cos(j\theta)\cos(k\theta)\,d\theta=0\)</span> for <span class="math" data-tex="\(j\ne k\)">\(j\ne k\)</span> give
+for <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+c_j=\frac{2}{\pi}\int_0^\pi Q(\cos\theta)\cos(j\theta)\,d\theta,
+\]">\[
+c_j=\frac{2}{\pi}\int_0^\pi Q(\cos\theta)\cos(j\theta)\,d\theta,
+\]</span>
+and <span class="math" data-tex="\(c_0\)">\(c_0\)</span> is the mean of <span class="math" data-tex="\(Q(\cos\theta)\)">\(Q(\cos\theta)\)</span>; so <span class="math" data-tex="\(|c_j|\le2\|Q\|_\infty\)">\(|c_j|\le2\|Q\|_\infty\)</span>. Clearly <span class="math" data-tex="\(|T_j|\le1\)">\(|T_j|\le1\)</span>. Differentiating <span class="math" data-tex="\(T_j(\cos\theta)=\cos(j\theta)\)">\(T_j(\cos\theta)=\cos(j\theta)\)</span> at <span class="math" data-tex="\(\theta=\pi/2\)">\(\theta=\pi/2\)</span> gives <span class="math" data-tex="\(T_j&#x27;(0)=j\sin(j\pi/2)\)">\(T_j&#x27;(0)=j\sin(j\pi/2)\)</span>. Finally <span class="math" data-tex="\(|Q&#x27;(0)|\le\sum_{j\le d}2\|Q\|_\infty\,j\)">\(|Q&#x27;(0)|\le\sum_{j\le d}2\|Q\|_\infty\,j\)</span>, which is <span class="math" data-tex="\(d(d+1)\|Q\|_\infty\)">\(d(d+1)\|Q\|_\infty\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-the-coefficient-lemma">2. The coefficient lemma</h2>
+<p><strong>Lemma 2.1</strong> ([OpenAI-CC, Lemma 3.1]). Let <span class="math" data-tex="\(M_0=4\)">\(M_0=4\)</span>, let <span class="math" data-tex="\(m\)">\(m\)</span> be an integer with
+<span class="math math-display" data-tex="\[
+4\le d=\lceil2\log_2m\rceil&lt;m,
+\]">\[
+4\le d=\lceil2\log_2m\rceil&lt;m,
+\]</span>
+let <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span>, and put <span class="math" data-tex="\(A=ma\)">\(A=ma\)</span> and <span class="math" data-tex="\(B=mb\)">\(B=mb\)</span>. Assume
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\min(A,B)\\
+&amp;\quad\ge20M_0d(d+1)^2 .
+\end{aligned} \tag{2.1}
+\]">\[
+\begin{aligned}
+&amp;\min(A,B)\\
+&amp;\quad\ge20M_0d(d+1)^2 .
+\end{aligned} \tag{2.1}
+\]</span>
+There is <span class="math" data-tex="\(c_*&gt;0\)">\(c_*&gt;0\)</span>, depending only on <span class="math" data-tex="\(m,a,b\)">\(m,a,b\)</span>, with the following property. Let <span class="math" data-tex="\(\Psi\colon\{-1,1\}^{m\times m}\to\mathbb R\)">\(\Psi\colon\{-1,1\}^{m\times m}\to\mathbb R\)</span> and <span class="math" data-tex="\(f,g\colon\{-1,1\}^m\to\mathbb R\)">\(f,g\colon\{-1,1\}^m\to\mathbb R\)</span> be odd, with sup norms at most <span class="math" data-tex="\(M_0\)">\(M_0\)</span>, such that <span class="math" data-tex="\(\widehat f(e_i)=a\)">\(\widehat f(e_i)=a\)</span> and <span class="math" data-tex="\(\widehat g(e_j)=b\)">\(\widehat g(e_j)=b\)</span> for all <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E_\sigma\sigma_i\Psi(\sigma S)=a\,g(S_{i,:}),\\
+\mathbb E_\tau\tau_j\Psi(S\tau)=b\,f(S_{:,j})
+\end{gathered} \tag{2.2}
+\]">\[
+\begin{gathered}
+\mathbb E_\sigma\sigma_i\Psi(\sigma S)=a\,g(S_{i,:}),\\
+\mathbb E_\tau\tau_j\Psi(S\tau)=b\,f(S_{:,j})
+\end{gathered} \tag{2.2}
+\]</span>
+for all <span class="math" data-tex="\(i,j\)">\(i,j\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span>. Then <span class="math" data-tex="\(|\widehat\Psi(P)|\ge c_*\)">\(|\widehat\Psi(P)|\ge c_*\)</span> for some binary matrix <span class="math" data-tex="\(P\)">\(P\)</span> of rank at least two.</p>
+<p><em>Proof.</em> <em>Reduction to nonvanishing.</em> The admissible triples <span class="math" data-tex="\((\Psi,f,g)\)">\((\Psi,f,g)\)</span> form a compact set in a finite-dimensional space: the conditions are closed (oddness and the identities are linear equations, and the sup norm bounds are closed). The function <span class="math" data-tex="\((\Psi,f,g)\mapsto\max_{\operatorname{rank}P\ge2}|\widehat\Psi(P)|\)">\((\Psi,f,g)\mapsto\max_{\operatorname{rank}P\ge2}|\widehat\Psi(P)|\)</span> is continuous. If it never vanishes on the admissible set, its minimum there is a positive <span class="math" data-tex="\(c_*\)">\(c_*\)</span>; if the set is empty, any <span class="math" data-tex="\(c_*\)">\(c_*\)</span> works. So suppose, to reach a contradiction, that <span class="math" data-tex="\(\widehat\Psi(P)=0\)">\(\widehat\Psi(P)=0\)</span> for every <span class="math" data-tex="\(P\)">\(P\)</span> of rank at least two.</p>
+<p><em>Rectangles.</em> As <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is odd, only indices with <span class="math" data-tex="\(|P|\)">\(|P|\)</span> odd occur; in particular <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span>. So every index in the support of <span class="math" data-tex="\(\widehat\Psi\)">\(\widehat\Psi\)</span> is <span class="math" data-tex="\(ph^{\mathrm t}\)">\(ph^{\mathrm t}\)</span> with <span class="math" data-tex="\(k=|p|\)">\(k=|p|\)</span> and <span class="math" data-tex="\(l=|h|\)">\(l=|h|\)</span> odd. Put
+<span class="math math-display" data-tex="\[
+C_{kl}=\sum_{|p|=k,\ |h|=l}\widehat\Psi(ph^{\mathrm t}).
+\]">\[
+C_{kl}=\sum_{|p|=k,\ |h|=l}\widehat\Psi(ph^{\mathrm t}).
+\]</span>
+By the Cauchy–Schwarz inequality and Parseval's identity,
+<span class="math math-display" data-tex="\[
+|C_{kl}|\le M_0\sqrt{\tbinom mk\tbinom ml}. \tag{2.3}
+\]">\[
+|C_{kl}|\le M_0\sqrt{\tbinom mk\tbinom ml}. \tag{2.3}
+\]</span></p>
+<p><em>A damped polynomial.</em> Let
+<span class="math math-display" data-tex="\[
+H(s,u)=\sum_{\substack{1\le k,l\le m\\k,l\text{ odd}}}C_{kl}\,s^ku^l\,2^{-kl}.
+\]">\[
+H(s,u)=\sum_{\substack{1\le k,l\le m\\k,l\text{ odd}}}C_{kl}\,s^ku^l\,2^{-kl}.
+\]</span>
+For <span class="math" data-tex="\(s,u\in[-1,1]\)">\(s,u\in[-1,1]\)</span>, take independent signs <span class="math" data-tex="\(D_i,E_j,R_{ij}\)">\(D_i,E_j,R_{ij}\)</span> with means <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and put <span class="math" data-tex="\(S_{ij}=D_iE_jR_{ij}\)">\(S_{ij}=D_iE_jR_{ij}\)</span>. For an index <span class="math" data-tex="\(ph^{\mathrm t}\)">\(ph^{\mathrm t}\)</span> with <span class="math" data-tex="\(k,l\)">\(k,l\)</span> odd, <span class="math" data-tex="\(S^{ph^{\mathrm t}}=\prod_{i\in p}D_i^l\prod_{j\in h}E_j^k\prod R_{ij}\)">\(S^{ph^{\mathrm t}}=\prod_{i\in p}D_i^l\prod_{j\in h}E_j^k\prod R_{ij}\)</span>, so <span class="math" data-tex="\(\mathbb ES^{ph^{\mathrm t}}=s^ku^l2^{-kl}\)">\(\mathbb ES^{ph^{\mathrm t}}=s^ku^l2^{-kl}\)</span>. Hence <span class="math" data-tex="\(H(s,u)=\mathbb E\Psi(S)\)">\(H(s,u)=\mathbb E\Psi(S)\)</span>, and <span class="math" data-tex="\(\|H\|_\infty\le M_0\)">\(\|H\|_\infty\le M_0\)</span> on <span class="math" data-tex="\([-1,1]^2\)">\([-1,1]^2\)</span>.</p>
+<p><em>Deleting the large rectangles.</em> Let <span class="math" data-tex="\(H_0\)">\(H_0\)</span> be <span class="math" data-tex="\(H\)">\(H\)</span> without the terms with both <span class="math" data-tex="\(k&gt;d\)">\(k&gt;d\)</span> and <span class="math" data-tex="\(l&gt;d\)">\(l&gt;d\)</span>. For such <span class="math" data-tex="\(k,l\)">\(k,l\)</span>, <span class="math" data-tex="\(\log_2m\le d/2&lt;\min(k,l)/2\)">\(\log_2m\le d/2&lt;\min(k,l)/2\)</span>, so <span class="math" data-tex="\((k+l)\log_2m&lt;kl\)">\((k+l)\log_2m&lt;kl\)</span>; and <span class="math" data-tex="\(k,l\ge5\)">\(k,l\ge5\)</span> gives <span class="math" data-tex="\(kl/2\ge k+l\)">\(kl/2\ge k+l\)</span>. With (2.3) and <span class="math" data-tex="\(\binom mk\le m^k\)">\(\binom mk\le m^k\)</span>, the deleted part has sup norm at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;M_0\sum_{k,l&gt;d}m^{(k+l)/2}2^{-kl}\\
+&amp;\quad\le M_0\sum_{k,l&gt;d}2^{-kl/2}\\
+&amp;\quad\le M_0\sum_{k,l\ge5}2^{-k-l}\le M_0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;M_0\sum_{k,l&gt;d}m^{(k+l)/2}2^{-kl}\\
+&amp;\quad\le M_0\sum_{k,l&gt;d}2^{-kl/2}\\
+&amp;\quad\le M_0\sum_{k,l\ge5}2^{-k-l}\le M_0 .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(\|H_0\|_\infty\le2M_0\)">\(\|H_0\|_\infty\le2M_0\)</span>.</p>
+<p><em>The prescribed derivatives.</em> Substituting the Fourier expansion in (2.2): <span class="math" data-tex="\(\Psi(\sigma S)=\sum_P\widehat\Psi(P)\sigma^{r(P)}S^P\)">\(\Psi(\sigma S)=\sum_P\widehat\Psi(P)\sigma^{r(P)}S^P\)</span>, where <span class="math" data-tex="\(r(P)\)">\(r(P)\)</span> is the vector of row parities, so <span class="math" data-tex="\(\mathbb E_\sigma\sigma_i\Psi(\sigma S)\)">\(\mathbb E_\sigma\sigma_i\Psi(\sigma S)\)</span> keeps the indices with <span class="math" data-tex="\(r(P)=e_i\)">\(r(P)=e_i\)</span>. For <span class="math" data-tex="\(P=ph^{\mathrm t}\)">\(P=ph^{\mathrm t}\)</span> with <span class="math" data-tex="\(l\)">\(l\)</span> odd, <span class="math" data-tex="\(r(P)=p\)">\(r(P)=p\)</span>. Comparing coefficients of <span class="math" data-tex="\(S^{e_ih^{\mathrm t}}=S_{i,:}^h\)">\(S^{e_ih^{\mathrm t}}=S_{i,:}^h\)</span> gives <span class="math" data-tex="\(\widehat\Psi(e_ih^{\mathrm t})=a\,\widehat g(h)\)">\(\widehat\Psi(e_ih^{\mathrm t})=a\,\widehat g(h)\)</span>, and in the same way <span class="math" data-tex="\(\widehat\Psi(pe_j^{\mathrm t})=b\,\widehat f(p)\)">\(\widehat\Psi(pe_j^{\mathrm t})=b\,\widehat f(p)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_{1l}=ma\sum_{|h|=l}\widehat g(h),\\
+C_{k1}=mb\sum_{|p|=k}\widehat f(p).
+\end{gathered}
+\]">\[
+\begin{gathered}
+C_{1l}=ma\sum_{|h|=l}\widehat g(h),\\
+C_{k1}=mb\sum_{|p|=k}\widehat f(p).
+\end{gathered}
+\]</span>
+The deletion did not touch the terms with <span class="math" data-tex="\(k=1\)">\(k=1\)</span> or <span class="math" data-tex="\(l=1\)">\(l=1\)</span>. Put <span class="math" data-tex="\(\Gamma(u)=\sum_h\widehat g(h)(u/2)^{|h|}\)">\(\Gamma(u)=\sum_h\widehat g(h)(u/2)^{|h|}\)</span> and <span class="math" data-tex="\(\Theta(s)=\sum_p\widehat f(p)(s/2)^{|p|}\)">\(\Theta(s)=\sum_p\widehat f(p)(s/2)^{|p|}\)</span>. Since <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> are odd,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial_sH_0(0,u)=A\,\Gamma(u),\\
+\partial_uH_0(s,0)=B\,\Theta(s),\\
+\partial_s\partial_uH_0(0,0)=\tfrac12AB,
+\end{gathered} \tag{2.4}
+\]">\[
+\begin{gathered}
+\partial_sH_0(0,u)=A\,\Gamma(u),\\
+\partial_uH_0(s,0)=B\,\Theta(s),\\
+\partial_s\partial_uH_0(0,0)=\tfrac12AB,
+\end{gathered} \tag{2.4}
+\]</span>
+the last because the coefficient of <span class="math" data-tex="\(su\)">\(su\)</span> is <span class="math" data-tex="\(\frac12C_{11}\)">\(\frac12C_{11}\)</span> and <span class="math" data-tex="\(C_{11}=mb\sum_i\widehat f(e_i)=AB\)">\(C_{11}=mb\sum_i\widehat f(e_i)=AB\)</span>. Here <span class="math" data-tex="\(\Gamma(u)=\mathbb Eg(\xi)\)">\(\Gamma(u)=\mathbb Eg(\xi)\)</span> for independent signs <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span> of mean <span class="math" data-tex="\(u/2\)">\(u/2\)</span>, so <span class="math" data-tex="\(\|\partial_sH_0(0,\cdot)\|_\infty\le AM_0\)">\(\|\partial_sH_0(0,\cdot)\|_\infty\le AM_0\)</span>; likewise <span class="math" data-tex="\(\|\partial_uH_0(\cdot,0)\|_\infty\le BM_0\)">\(\|\partial_uH_0(\cdot,0)\|_\infty\le BM_0\)</span>.</p>
+<p><em>Splitting by degree.</em> Expand <span class="math" data-tex="\(H_0(s,u)=\sum_jT_j(s)h_j(u)\)">\(H_0(s,u)=\sum_jT_j(s)h_j(u)\)</span> in Chebyshev polynomials in <span class="math" data-tex="\(s\)">\(s\)</span>, with polynomial coefficients <span class="math" data-tex="\(h_j\)">\(h_j\)</span>. Let <span class="math" data-tex="\(H_1\)">\(H_1\)</span> keep the terms with <span class="math" data-tex="\(j\le d\)">\(j\le d\)</span>, and <span class="math" data-tex="\(H_2=H_0-H_1\)">\(H_2=H_0-H_1\)</span>. Then <span class="math" data-tex="\(\deg_sH_1\le d\)">\(\deg_sH_1\le d\)</span>, and <span class="math" data-tex="\(\deg_uH_2\le d\)">\(\deg_uH_2\le d\)</span>: the monomials of <span class="math" data-tex="\(H_0\)">\(H_0\)</span> with <span class="math" data-tex="\(s\)">\(s\)</span>-degree at most <span class="math" data-tex="\(d\)">\(d\)</span> contribute nothing to <span class="math" data-tex="\(H_2\)">\(H_2\)</span>, and the others have <span class="math" data-tex="\(u\)">\(u\)</span>-degree at most <span class="math" data-tex="\(d\)">\(d\)</span>. By Lemma 1.1, applied for each fixed <span class="math" data-tex="\(u\)">\(u\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|H_1\|_\infty\le4M_0(d+1),\\
+\|H_2\|_\infty\le6M_0(d+1).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|H_1\|_\infty\le4M_0(d+1),\\
+\|H_2\|_\infty\le6M_0(d+1).
+\end{gathered}
+\]</span>
+By (1.1) in <span class="math" data-tex="\(s\)">\(s\)</span> for <span class="math" data-tex="\(H_1\)">\(H_1\)</span> and in <span class="math" data-tex="\(u\)">\(u\)</span> for <span class="math" data-tex="\(H_2\)">\(H_2\)</span>, and by (2.4),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\partial_sH_2(0,\cdot)\|_\infty&amp;\le AM_0+4M_0d(d+1)^2,\\
+\|\partial_uH_1(\cdot,0)\|_\infty&amp;\le BM_0+6M_0d(d+1)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\partial_sH_2(0,\cdot)\|_\infty&amp;\le AM_0+4M_0d(d+1)^2,\\
+\|\partial_uH_1(\cdot,0)\|_\infty&amp;\le BM_0+6M_0d(d+1)^2 .
+\end{aligned}
+\]</span>
+These are polynomials of degree at most <span class="math" data-tex="\(d\)">\(d\)</span> in <span class="math" data-tex="\(u\)">\(u\)</span> and in <span class="math" data-tex="\(s\)">\(s\)</span>, respectively. Applying (1.1) once more and adding,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\partial_s\partial_uH_0(0,0)|\\
+&amp;\quad\le M_0d(d+1)\bigl(A+B\\
+&amp;\qquad+10d(d+1)^2\bigr).
+\end{aligned} \tag{2.5}
+\]">\[
+\begin{aligned}
+&amp;|\partial_s\partial_uH_0(0,0)|\\
+&amp;\quad\le M_0d(d+1)\bigl(A+B\\
+&amp;\qquad+10d(d+1)^2\bigr).
+\end{aligned} \tag{2.5}
+\]</span></p>
+<p><em>The contradiction.</em> By (2.1), <span class="math" data-tex="\(\frac12AB\ge10M_0d(d+1)^2\max(A,B)\)">\(\frac12AB\ge10M_0d(d+1)^2\max(A,B)\)</span>, which is at least <span class="math" data-tex="\(5M_0d(d+1)^2(A+B)\)">\(5M_0d(d+1)^2(A+B)\)</span>, and <span class="math" data-tex="\(10d(d+1)^2\le(A+B)/(4M_0)\)">\(10d(d+1)^2\le(A+B)/(4M_0)\)</span>. So (2.4) and (2.5) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;5M_0d(d+1)^2(A+B)\\
+&amp;\quad\le M_0d(d+1)(A+B)\bigl(1+\tfrac1{4M_0}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;5M_0d(d+1)^2(A+B)\\
+&amp;\quad\le M_0d(d+1)(A+B)\bigl(1+\tfrac1{4M_0}\bigr),
+\end{aligned}
+\]</span>
+that is <span class="math" data-tex="\(5(d+1)\le1+1/(4M_0)\)">\(5(d+1)\le1+1/(4M_0)\)</span>, which is false. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The constant <span class="math" data-tex="\(c_*\)">\(c_*\)</span> comes from compactness and is not explicit.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> Show that a binary matrix of rank one is <span class="math" data-tex="\(ph^{\mathrm t}\)">\(ph^{\mathrm t}\)</span> for unique nonzero <span class="math" data-tex="\(p,h\)">\(p,h\)</span>.</p>
+<p><strong>3.2.</strong> Check the identity <span class="math" data-tex="\(S^{P_2}=\chi(u_1,v_1+v_2)\chi(u_2,v_2)\)">\(S^{P_2}=\chi(u_1,v_1+v_2)\chi(u_2,v_2)\)</span> of Section 1.</p>
+<p><strong>3.3.</strong> Show that <span class="math" data-tex="\(T_2(x)=2x^2-1\)">\(T_2(x)=2x^2-1\)</span>, <span class="math" data-tex="\(T_3(x)=4x^3-3x\)">\(T_3(x)=4x^3-3x\)</span>, and verify (1.1) for <span class="math" data-tex="\(Q=T_3\)">\(Q=T_3\)</span>.</p>
+<p><strong>3.4.</strong> Show that the smallest <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(4\le\lceil2\log_2m\rceil&lt;m\)">\(4\le\lceil2\log_2m\rceil&lt;m\)</span> is <span class="math" data-tex="\(m=7\)">\(m=7\)</span>.</p>
+<p><strong>3.5.</strong> Why is the compactness argument needed? What would the proof give without it?</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> The rows of a rank-one binary matrix are <span class="math" data-tex="\(0\)">\(0\)</span> or a fixed nonzero row <span class="math" data-tex="\(h\)">\(h\)</span>; <span class="math" data-tex="\(p\)">\(p\)</span> records which rows are nonzero. Both are determined by the matrix.</p>
+<p><strong>3.2.</strong> <span class="math" data-tex="\(P_2\)">\(P_2\)</span> has ones at <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span> and <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>, so the exponent is <span class="math" data-tex="\(u_1\cdot v_1+u_1\cdot v_2+u_2\cdot v_2\)">\(u_1\cdot v_1+u_1\cdot v_2+u_2\cdot v_2\)</span>, which equals <span class="math" data-tex="\(u_1\cdot(v_1+v_2)+u_2\cdot v_2\)">\(u_1\cdot(v_1+v_2)+u_2\cdot v_2\)</span>.</p>
+<p><strong>3.3.</strong> <span class="math" data-tex="\(T_2=2x\cdot x-1\)">\(T_2=2x\cdot x-1\)</span> and <span class="math" data-tex="\(T_3=2x(2x^2-1)-x\)">\(T_3=2x(2x^2-1)-x\)</span>. <span class="math" data-tex="\(T_3&#x27;(0)=-3\)">\(T_3&#x27;(0)=-3\)</span> and <span class="math" data-tex="\(\|T_3\|_\infty=1\)">\(\|T_3\|_\infty=1\)</span>, while <span class="math" data-tex="\(d(d+1)=12\)">\(d(d+1)=12\)</span>.</p>
+<p><strong>3.4.</strong> <span class="math" data-tex="\(\lceil2\log_2m\rceil\)">\(\lceil2\log_2m\rceil\)</span> is <span class="math" data-tex="\(4,4,5,6,6\)">\(4,4,5,6,6\)</span> for <span class="math" data-tex="\(m=3,4,5,6,7\)">\(m=3,4,5,6,7\)</span>; only <span class="math" data-tex="\(m=7\)">\(m=7\)</span> satisfies <span class="math" data-tex="\(d&lt;m\)">\(d&lt;m\)</span> among these, and <span class="math" data-tex="\(d\ge4\)">\(d\ge4\)</span> fails for <span class="math" data-tex="\(m\le2\)">\(m\le2\)</span>.</p>
+<p><strong>3.5.</strong> The argument by contradiction shows only that some coefficient of rank at least two is nonzero. A uniform lower bound, needed to iterate in the next lessons, comes from the minimum of a positive continuous function on a compact set.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-CC] OpenAI, <em>The cotype–cotype conjecture under the approximation property</em>, OpenAI Math Release preprint, 23 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/The-cotype-cotype-conjecture-under-the-approximation-property-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

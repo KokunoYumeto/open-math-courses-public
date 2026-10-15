@@ -1,0 +1,181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The absence of interior critical points</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strict hot spots on simply connected planar domains)</a><a href="reciprocal-kernels-and-conditional-negativity.html">Previous lesson</a><a href="src/the-absence-of-interior-critical-points.md">Editable source</a></nav><main><article><h1 id="the-absence-of-interior-critical-points">The absence of interior critical points</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the hot-spots theorem stated in <a href="neumann-eigenfunctions-and-the-hot-spots-problem.html">Neumann eigenfunctions and the hot-spots problem</a> (Theorem 5.1 there): no eigenfunction of the first positive Neumann eigenvalue of a bounded simply connected planar domain with smooth boundary has an interior critical point. The conditionally negative kernel of <a href="reciprocal-kernels-and-conditional-negativity.html">Reciprocal kernels and conditional negativity</a> is a squared distance in a Hilbert space; its coordinates are scalar multipliers to which the multiplier identity of <a href="boundary-kernels-and-the-multiplier-identity.html">Boundary kernels and the multiplier identity</a> applies. At a critical point the multiplied boundary gradients are all gradients of eigenfunctions, and this contradicts either the multiplicity bound or unique continuation.</p>
+<ul>
+<li>Squared distances in a Hilbert space (Section 1).</li>
+<li>The proof of the theorem (Section 2).</li>
+<li>Later developments (Section 3).</li>
+</ul>
+<p>Notation is that of the earlier lessons: <span class="math" data-tex="\(\Phi\colon\mathbb D\to\Omega\)">\(\Phi\colon\mathbb D\to\Omega\)</span> is the conformal map of <a href="conformal-coordinates-hopfs-lemma-and-boundary-signs.html">Conformal coordinates, Hopf's lemma and boundary signs</a>, <span class="math" data-tex="\(q=\mu|\Phi&#x27;|^2dx\)">\(q=\mu|\Phi&#x27;|^2dx\)</span> is the conformal potential, <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(N\)">\(N\)</span> are its kernels, <span class="math" data-tex="\(E\)">\(E\)</span> is the boundary energy, and <span class="math" data-tex="\(D_p(s,t)=K(p,s)K(p,t)/N(s,t)\)">\(D_p(s,t)=K(p,s)K(p,t)/N(s,t)\)</span>.</p>
+<h2 id="1-squared-distances-in-a-hilbert-space">1. Squared distances in a Hilbert space</h2>
+<p><strong>Lemma 1.1</strong> ([OpenAI-HS, Lemma 6.1]). For every <span class="math" data-tex="\(p\in\mathbb D\)">\(p\in\mathbb D\)</span> there are a separable real Hilbert space <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> and an injective Lipschitz map <span class="math" data-tex="\(b\colon\mathbb S^1\to\mathcal H\)">\(b\colon\mathbb S^1\to\mathcal H\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|b(s)-b(t)\|^2=D_p(s,t)\\
+(s,t\in\mathbb S^1).
+\end{gathered} \tag{1.1}
+\]">\[
+\begin{gathered}
+\|b(s)-b(t)\|^2=D_p(s,t)\\
+(s,t\in\mathbb S^1).
+\end{gathered} \tag{1.1}
+\]</span></p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(s_0\in\mathbb S^1\)">\(s_0\in\mathbb S^1\)</span> and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Gamma(s,t)&amp;=\tfrac12\bigl(D_p(s,s_0)+D_p(t,s_0)\\
+&amp;\qquad-D_p(s,t)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Gamma(s,t)&amp;=\tfrac12\bigl(D_p(s,s_0)+D_p(t,s_0)\\
+&amp;\qquad-D_p(s,t)\bigr).
+\end{aligned}
+\]</span>
+This kernel is positive semidefinite: given points <span class="math" data-tex="\(s_1,\dots,s_n\)">\(s_1,\dots,s_n\)</span> and real <span class="math" data-tex="\(c_1,\dots,c_n\)">\(c_1,\dots,c_n\)</span>, adjoin <span class="math" data-tex="\(s_0\)">\(s_0\)</span> with <span class="math" data-tex="\(c_0=-\sum_ic_i\)">\(c_0=-\sum_ic_i\)</span>; Theorem 2.1 of the previous lesson gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\ge\sum_{i,j\ge0}c_ic_jD_p(s_i,s_j)\\
+&amp;=\sum_{i,j\ge1}c_ic_jD_p(s_i,s_j)\\
+&amp;\quad-2\Bigl(\sum_jc_j\Bigr)\sum_ic_iD_p(s_i,s_0),
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;\ge\sum_{i,j\ge0}c_ic_jD_p(s_i,s_j)\\
+&amp;=\sum_{i,j\ge1}c_ic_jD_p(s_i,s_j)\\
+&amp;\quad-2\Bigl(\sum_jc_j\Bigr)\sum_ic_iD_p(s_i,s_0),
+\end{aligned}
+\]</span>
+and the right side is <span class="math" data-tex="\(-2\sum_{i,j\ge1}c_ic_j\Gamma(s_i,s_j)\)">\(-2\sum_{i,j\ge1}c_ic_j\Gamma(s_i,s_j)\)</span>. On the space of finitely supported real functions on <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span>, <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> defines a positive semidefinite bilinear form; dividing by its null space and completing gives a real Hilbert space in which the class <span class="math" data-tex="\(b(s)\)">\(b(s)\)</span> of the indicator of <span class="math" data-tex="\(\{s\}\)">\(\{s\}\)</span> satisfies <span class="math" data-tex="\(\langle b(s),b(t)\rangle=\Gamma(s,t)\)">\(\langle b(s),b(t)\rangle=\Gamma(s,t)\)</span>. Since <span class="math" data-tex="\(D_p(s,s)=0\)">\(D_p(s,s)=0\)</span>, <span class="math" data-tex="\(\Gamma(s,s)=D_p(s,s_0)\)">\(\Gamma(s,s)=D_p(s,s_0)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|b(s)-b(t)\|^2\\
+&amp;\quad=\Gamma(s,s)+\Gamma(t,t)-2\Gamma(s,t)\\
+&amp;\quad=D_p(s,t).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|b(s)-b(t)\|^2\\
+&amp;\quad=\Gamma(s,s)+\Gamma(t,t)-2\Gamma(s,t)\\
+&amp;\quad=D_p(s,t).
+\end{aligned}
+\]</span></p>
+<p>For <span class="math" data-tex="\(s\ne t\)">\(s\ne t\)</span>, <span class="math" data-tex="\(K(p,s)K(p,t)&gt;0\)">\(K(p,s)K(p,t)&gt;0\)</span> and <span class="math" data-tex="\(N(s,t)&lt;\infty\)">\(N(s,t)&lt;\infty\)</span> (Lemma 4.1 of <a href="boundary-kernels-and-the-multiplier-identity.html">Boundary kernels and the multiplier identity</a>), so <span class="math" data-tex="\(D_p(s,t)&gt;0\)">\(D_p(s,t)&gt;0\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> is injective. Since <span class="math" data-tex="\(N\ge N_0\)">\(N\ge N_0\)</span>,
+<span class="math math-display" data-tex="\[
+\|b(s)-b(t)\|^2\le\pi\,\|K(p,\cdot)\|_\infty^2\,|s-t|^2,
+\]">\[
+\|b(s)-b(t)\|^2\le\pi\,\|K(p,\cdot)\|_\infty^2\,|s-t|^2,
+\]</span>
+so <span class="math" data-tex="\(b\)">\(b\)</span> is Lipschitz. Replace <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> by the closed span of <span class="math" data-tex="\(b(\mathbb S^1)\)">\(b(\mathbb S^1)\)</span>; it is separable, being spanned by the images of a countable dense subset of the circle. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Kernels of the form <span class="math" data-tex="\(\|b(s)-b(t)\|^2\)">\(\|b(s)-b(t)\|^2\)</span> are always conditionally negative semidefinite, as in Remark 2.2 of the previous lesson; the construction above shows the converse.</p>
+<h2 id="2-the-proof-of-the-theorem">2. The proof of the theorem</h2>
+<p><em>Proof of Theorem 5.1 of the first lesson.</em> Let <span class="math" data-tex="\(0\ne u\in V\)">\(0\ne u\in V\)</span>, and let <span class="math" data-tex="\(g(s)=(\nabla u)(\Phi(s))\)">\(g(s)=(\nabla u)(\Phi(s))\)</span> be its boundary gradient on the circle, as in (6.1) of <a href="boundary-kernels-and-the-multiplier-identity.html">Boundary kernels and the multiplier identity</a>. Suppose that <span class="math" data-tex="\(\nabla u\)">\(\nabla u\)</span> vanishes at the point <span class="math" data-tex="\(\Phi(p)\)">\(\Phi(p)\)</span>, <span class="math" data-tex="\(p\in\mathbb D\)">\(p\in\mathbb D\)</span>.</p>
+<p><em>Step 1: the multipliers produce eigenfunctions.</em> Let <span class="math" data-tex="\(b\)">\(b\)</span> be as in Lemma 1.1 for this <span class="math" data-tex="\(p\)">\(p\)</span>, let <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span> be a finite or countable orthonormal basis of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, and let <span class="math" data-tex="\(b_j(s)=\langle b(s),e_j\rangle\)">\(b_j(s)=\langle b(s),e_j\rangle\)</span>. Each <span class="math" data-tex="\(b_j\)">\(b_j\)</span> is a real Lipschitz function, so Proposition 6.2 of <a href="boundary-kernels-and-the-multiplier-identity.html">Boundary kernels and the multiplier identity</a> applies:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E(b_jg)&amp;=\frac12\iint N(s,t)(b_j(s)-b_j(t))^2\\
+&amp;\qquad\cdot g(s)\cdot g(t)\,ds\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+E(b_jg)&amp;=\frac12\iint N(s,t)(b_j(s)-b_j(t))^2\\
+&amp;\qquad\cdot g(s)\cdot g(t)\,ds\,dt .
+\end{aligned}
+\]</span>
+By Parseval's identity, <span class="math" data-tex="\(\sum_j(b_j(s)-b_j(t))^2=D_p(s,t)\)">\(\sum_j(b_j(s)-b_j(t))^2=D_p(s,t)\)</span>, so for every partial sum the absolute value of the integrand is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;N(s,t)D_p(s,t)|g(s)||g(t)|\\
+&amp;\quad=K(p,s)K(p,t)|g(s)||g(t)|,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;N(s,t)D_p(s,t)|g(s)||g(t)|\\
+&amp;\quad=K(p,s)K(p,t)|g(s)||g(t)|,
+\end{aligned}
+\]</span>
+which is bounded. By dominated convergence and (4.2) of that lesson, applied componentwise,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_jE(b_jg)\\
+&amp;\quad=\frac12\iint K(p,s)K(p,t)\\
+&amp;\qquad\cdot g(s)\cdot g(t)\,ds\,dt\\
+&amp;\quad=\frac12\Bigl|\int_{\mathbb S^1}K(p,s)g(s)\,ds\Bigr|^2\\
+&amp;\quad=\frac12|W_g(p)|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_jE(b_jg)\\
+&amp;\quad=\frac12\iint K(p,s)K(p,t)\\
+&amp;\qquad\cdot g(s)\cdot g(t)\,ds\,dt\\
+&amp;\quad=\frac12\Bigl|\int_{\mathbb S^1}K(p,s)g(s)\,ds\Bigr|^2\\
+&amp;\quad=\frac12|W_g(p)|^2 .
+\end{aligned}
+\]</span>
+By Lemma 6.1 there, <span class="math" data-tex="\(W_g(p)=\nabla u(\Phi(p))=0\)">\(W_g(p)=\nabla u(\Phi(p))=0\)</span>. Every summand is nonnegative by (5.1) there, so <span class="math" data-tex="\(E(b_jg)=0\)">\(E(b_jg)=0\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, and by (5.1) again there is <span class="math" data-tex="\(v_j\in V\)">\(v_j\in V\)</span> with <span class="math" data-tex="\(X_{b_jg}=\nabla v_j\)">\(X_{b_jg}=\nabla v_j\)</span>. The function <span class="math" data-tex="\((\nabla v_j)\circ\Phi\)">\((\nabla v_j)\circ\Phi\)</span> lies in <span class="math" data-tex="\(C^\infty(\overline{\mathbb D})\)">\(C^\infty(\overline{\mathbb D})\)</span>, and its trace equals the trace <span class="math" data-tex="\(b_jg\)">\(b_jg\)</span> of <span class="math" data-tex="\(W_{b_jg}\)">\(W_{b_jg}\)</span>; both are continuous, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\nabla v_j)(\Phi(s))=b_j(s)g(s)\\
+(s\in\mathbb S^1).
+\end{gathered} \tag{2.1}
+\]">\[
+\begin{gathered}
+(\nabla v_j)(\Phi(s))=b_j(s)g(s)\\
+(s\in\mathbb S^1).
+\end{gathered} \tag{2.1}
+\]</span></p>
+<p><em>Step 2: <span class="math" data-tex="\(g\)">\(g\)</span> does not vanish identically.</em> Let <span class="math" data-tex="\(S_g=\{s\in\mathbb S^1:g(s)\ne0\}\)">\(S_g=\{s\in\mathbb S^1:g(s)\ne0\}\)</span>, an open set. If it were empty, each <span class="math" data-tex="\(w=\partial_iu\in C^\infty(\overline\Omega)\)">\(w=\partial_iu\in C^\infty(\overline\Omega)\)</span> would vanish on <span class="math" data-tex="\(\partial\Omega\)">\(\partial\Omega\)</span> and satisfy <span class="math" data-tex="\(\Delta w+\mu w=0\)">\(\Delta w+\mu w=0\)</span>; then <span class="math" data-tex="\(w\in H^1_0(\Omega)\)">\(w\in H^1_0(\Omega)\)</span> and <span class="math" data-tex="\(\int|\nabla w|^2=\mu\int w^2\)">\(\int|\nabla w|^2=\mu\int w^2\)</span>, which forces <span class="math" data-tex="\(w=0\)">\(w=0\)</span> because <span class="math" data-tex="\(\mu&lt;\lambda_D\)">\(\mu&lt;\lambda_D\)</span>. So <span class="math" data-tex="\(u\)">\(u\)</span> would be constant, and <span class="math" data-tex="\(\mu u=-\Delta u=0\)">\(\mu u=-\Delta u=0\)</span> would give <span class="math" data-tex="\(u=0\)">\(u=0\)</span>.</p>
+<p><em>Step 3: the case where <span class="math" data-tex="\(S_g\)">\(S_g\)</span> is dense.</em> The set <span class="math" data-tex="\(b(S_g)\)">\(b(S_g)\)</span> is not contained in an affine line of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. Otherwise, by continuity and density, <span class="math" data-tex="\(b(\mathbb S^1)\)">\(b(\mathbb S^1)\)</span> would lie in that line, and <span class="math" data-tex="\(b\)">\(b\)</span> would be a continuous injection of the circle into a copy of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Its image would be a compact interval <span class="math" data-tex="\([\alpha,\beta]\)">\([\alpha,\beta]\)</span> with <span class="math" data-tex="\(\alpha&lt;\beta\)">\(\alpha&lt;\beta\)</span>, and <span class="math" data-tex="\(b\)">\(b\)</span> would be a homeomorphism onto it; but removing an interior point disconnects the interval, while the circle with one point removed is connected.</p>
+<p>Choose distinct <span class="math" data-tex="\(s_1,s_2\in S_g\)">\(s_1,s_2\in S_g\)</span>, and then <span class="math" data-tex="\(s_3\in S_g\)">\(s_3\in S_g\)</span> with <span class="math" data-tex="\(b(s_3)\)">\(b(s_3)\)</span> off the line through <span class="math" data-tex="\(b(s_1)\)">\(b(s_1)\)</span> and <span class="math" data-tex="\(b(s_2)\)">\(b(s_2)\)</span>. The vectors <span class="math" data-tex="\(y_1=b(s_2)-b(s_1)\)">\(y_1=b(s_2)-b(s_1)\)</span> and <span class="math" data-tex="\(y_2=b(s_3)-b(s_1)\)">\(y_2=b(s_3)-b(s_1)\)</span> are linearly independent. Some coordinates <span class="math" data-tex="\(j,k\)">\(j,k\)</span> have <span class="math" data-tex="\(\langle y_1,e_j\rangle\langle y_2,e_k\rangle-\langle y_1,e_k\rangle\langle y_2,e_j\rangle\ne0\)">\(\langle y_1,e_j\rangle\langle y_2,e_k\rangle-\langle y_1,e_k\rangle\langle y_2,e_j\rangle\ne0\)</span>: if all these <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> minors vanished, a nonzero coordinate <span class="math" data-tex="\(\langle y_1,e_j\rangle\)">\(\langle y_1,e_j\rangle\)</span> would make every coordinate of <span class="math" data-tex="\(y_2\)">\(y_2\)</span> proportional to that of <span class="math" data-tex="\(y_1\)">\(y_1\)</span>. Subtracting the first row from the others shows
+<span class="math math-display" data-tex="\[
+\det\begin{pmatrix}1&amp;b_j(s_1)&amp;b_k(s_1)\\1&amp;b_j(s_2)&amp;b_k(s_2)\\1&amp;b_j(s_3)&amp;b_k(s_3)\end{pmatrix}\ne0 .
+\]">\[
+\det\begin{pmatrix}1&amp;b_j(s_1)&amp;b_k(s_1)\\1&amp;b_j(s_2)&amp;b_k(s_2)\\1&amp;b_j(s_3)&amp;b_k(s_3)\end{pmatrix}\ne0 .
+\]</span>
+So <span class="math" data-tex="\(1,b_j,b_k\)">\(1,b_j,b_k\)</span> are linearly independent on <span class="math" data-tex="\(\{s_1,s_2,s_3\}\)">\(\{s_1,s_2,s_3\}\)</span>. Since <span class="math" data-tex="\(g(s_i)\ne0\)">\(g(s_i)\ne0\)</span>, the functions <span class="math" data-tex="\(g,b_jg,b_kg\)">\(g,b_jg,b_kg\)</span> are linearly independent. By (2.1) they are the boundary gradients of <span class="math" data-tex="\(u,v_j,v_k\in V\)">\(u,v_j,v_k\in V\)</span>, which are therefore linearly independent. This contradicts <span class="math" data-tex="\(\dim V\le2\)">\(\dim V\le2\)</span> (Proposition 5.2 of <a href="conformal-coordinates-hopfs-lemma-and-boundary-signs.html">Conformal coordinates, Hopf's lemma and boundary signs</a>).</p>
+<p><em>Step 4: the case where <span class="math" data-tex="\(S_g\)">\(S_g\)</span> is not dense.</em> Then <span class="math" data-tex="\(g=0\)">\(g=0\)</span> on a nonempty open arc <span class="math" data-tex="\(I\)">\(I\)</span>. Since <span class="math" data-tex="\(S_g\)">\(S_g\)</span> is nonempty and open, it has at least two points; <span class="math" data-tex="\(b\)">\(b\)</span> is injective, so by Parseval's identity some <span class="math" data-tex="\(b_j\)">\(b_j\)</span> is not constant on <span class="math" data-tex="\(S_g\)">\(S_g\)</span>. Then <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(b_jg\)">\(b_jg\)</span> are linearly independent: if <span class="math" data-tex="\(\alpha g+\beta b_jg=0\)">\(\alpha g+\beta b_jg=0\)</span>, then <span class="math" data-tex="\(\alpha+\beta b_j=0\)">\(\alpha+\beta b_j=0\)</span> on <span class="math" data-tex="\(S_g\)">\(S_g\)</span>, so <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span> and <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. Hence <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v_j\)">\(v_j\)</span> are linearly independent. Their gradients vanish on the boundary arc <span class="math" data-tex="\(\Phi(I)\)">\(\Phi(I)\)</span>, so each is constant on it. Choose <span class="math" data-tex="\((\alpha,\beta)\ne(0,0)\)">\((\alpha,\beta)\ne(0,0)\)</span> such that <span class="math" data-tex="\(w=\alpha u+\beta v_j\)">\(w=\alpha u+\beta v_j\)</span> vanishes on <span class="math" data-tex="\(\Phi(I)\)">\(\Phi(I)\)</span>. Then <span class="math" data-tex="\(w\in V\)">\(w\in V\)</span>, <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span>, and <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, <span class="math" data-tex="\(\partial_\nu w=0\)">\(\partial_\nu w=0\)</span> on <span class="math" data-tex="\(\Phi(I)\)">\(\Phi(I)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(x_0\in\Phi(I)\)">\(x_0\in\Phi(I)\)</span>, and take a boundary chart at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> whose rectangle <span class="math" data-tex="\(U\)">\(U\)</span> satisfies <span class="math" data-tex="\(\partial\Omega\cap U\subseteq\Phi(I)\)">\(\partial\Omega\cap U\subseteq\Phi(I)\)</span>. Extend <span class="math" data-tex="\(w\)">\(w\)</span> by zero: <span class="math" data-tex="\(\tilde w=w\)">\(\tilde w=w\)</span> on <span class="math" data-tex="\(\Omega\cap U\)">\(\Omega\cap U\)</span> and <span class="math" data-tex="\(\tilde w=0\)">\(\tilde w=0\)</span> on <span class="math" data-tex="\(U\setminus\Omega\)">\(U\setminus\Omega\)</span>. For <span class="math" data-tex="\(\phi\in C^\infty_c(U)\)">\(\phi\in C^\infty_c(U)\)</span>, Green's formula (2.2) of the first lesson, applied twice, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_U\tilde w(\Delta\phi+\mu\phi)=\int_\Omega(\Delta w+\mu w)\phi\\
+&amp;\quad+\int_{\partial\Omega}(w\,\partial_\nu\phi-\phi\,\partial_\nu w)\,ds=0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_U\tilde w(\Delta\phi+\mu\phi)=\int_\Omega(\Delta w+\mu w)\phi\\
+&amp;\quad+\int_{\partial\Omega}(w\,\partial_\nu\phi-\phi\,\partial_\nu w)\,ds=0,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\Delta w+\mu w=0\)">\(\Delta w+\mu w=0\)</span> and both <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(\partial_\nu w\)">\(\partial_\nu w\)</span> vanish on <span class="math" data-tex="\(\partial\Omega\cap U\)">\(\partial\Omega\cap U\)</span>. So <span class="math" data-tex="\((\Delta+\mu)\tilde w=0\)">\((\Delta+\mu)\tilde w=0\)</span> in the sense of distributions on <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(\tilde w\)">\(\tilde w\)</span> is real analytic in <span class="math" data-tex="\(U\)">\(U\)</span> (<a href="../constant-coefficient-equations-and-solvability/AN02-L031.html">Anisotropic derivative classes and analyticity</a>, Theorem 3.1). It vanishes on the nonempty open set <span class="math" data-tex="\(U\setminus\overline\Omega\)">\(U\setminus\overline\Omega\)</span>, and <span class="math" data-tex="\(U\)">\(U\)</span> is connected, so <span class="math" data-tex="\(\tilde w=0\)">\(\tilde w=0\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. Thus <span class="math" data-tex="\(w\)">\(w\)</span> vanishes on the nonempty open set <span class="math" data-tex="\(\Omega\cap U\)">\(\Omega\cap U\)</span>, and <span class="math" data-tex="\(w=0\)">\(w=0\)</span> by Proposition 3.1(4) of the first lesson, a contradiction.</p>
+<p>Both cases are impossible, so <span class="math" data-tex="\(\nabla u\)">\(\nabla u\)</span> does not vanish in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The zero extension in Step 4 is a local form of a lemma of Filonov [Fil04, Lemma, p. 173]. No analyticity of the boundary is needed: only the vanishing of both Cauchy data on the arc.</p>
+<h2 id="3-later-developments">3. Later developments</h2>
+<p>Burdzy, and independently Bañuelos, reduced a non-strict hot-spots statement on general simply connected planar domains to the smooth theorem proved in this course [Bur26]. Let <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> be a bounded simply connected planar domain, with no boundary regularity, such that the inclusion <span class="math" data-tex="\(H^1(\Omega)\to L^2(\Omega)\)">\(H^1(\Omega)\to L^2(\Omega)\)</span> is compact and the first positive Neumann eigenvalue is simple. Assuming the smooth theorem, every nonzero eigenfunction <span class="math" data-tex="\(u\)">\(u\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\sup_\Omega u=\lim_{\varepsilon\to0}\ \sup_{\operatorname{dist}(x,\partial\Omega)&lt;\varepsilon}u(x),
+\]">\[
+\sup_\Omega u=\lim_{\varepsilon\to0}\ \sup_{\operatorname{dist}(x,\partial\Omega)&lt;\varepsilon}u(x),
+\]</span>
+and likewise for the infimum [Bur26, Theorem 2.1]; if <span class="math" data-tex="\(u\)">\(u\)</span> extends continuously to <span class="math" data-tex="\(\overline\Omega\)">\(\overline\Omega\)</span>, its maximum and minimum over <span class="math" data-tex="\(\overline\Omega\)">\(\overline\Omega\)</span> are attained on <span class="math" data-tex="\(\partial\Omega\)">\(\partial\Omega\)</span> [Bur26, Corollary 2.2]. The argument approximates <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> by the images of concentric discs under a conformal map and proves convergence of the eigenvalues and eigenfunctions. That preprint reports that it was written with ChatGPT and that its author has not checked every detail; its argument is not reproduced or checked here.</p>
+<p>Neither the strict conclusion nor the multiple-eigenvalue case is covered by that reduction. In higher dimensions the convex form of the conjecture fails in all sufficiently large dimensions [dDP24], and in the plane the simple connectivity assumption cannot be dropped [Bur05, Theorem 1.1].</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> For <span class="math" data-tex="\(q=0\)">\(q=0\)</span> and <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, find an explicit map <span class="math" data-tex="\(b\)">\(b\)</span> in Lemma 1.1 with values in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>.</p>
+<p><strong>4.2.</strong> Show that the kernel <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> in the proof of Lemma 1.1 satisfies <span class="math" data-tex="\(\Gamma(s,s_0)=0\)">\(\Gamma(s,s_0)=0\)</span>, so <span class="math" data-tex="\(b(s_0)=0\)">\(b(s_0)=0\)</span>.</p>
+<p><strong>4.3.</strong> In Step 4, suppose only <span class="math" data-tex="\(w=0\)">\(w=0\)</span> on the arc, not <span class="math" data-tex="\(\partial_\nu w=0\)">\(\partial_\nu w=0\)</span>. Compute the distribution <span class="math" data-tex="\((\Delta+\mu)\tilde w\)">\((\Delta+\mu)\tilde w\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>4.4.</strong> Show that the theorem gives, for <span class="math" data-tex="\(0\ne u\in V\)">\(0\ne u\in V\)</span>, that every level set <span class="math" data-tex="\(\{u=c\}\)">\(\{u=c\}\)</span> with <span class="math" data-tex="\(\min_{\partial\Omega}u&lt;c&lt;\max_{\partial\Omega}u\)">\(\min_{\partial\Omega}u&lt;c&lt;\max_{\partial\Omega}u\)</span> is, inside <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, a one-dimensional smooth submanifold.</p>
+<p><strong>4.5.</strong> Show that a nonnegative Dirichlet eigenfunction for <span class="math" data-tex="\(\lambda_D\)">\(\lambda_D\)</span> has an interior critical point. Which steps of the proof of the theorem use the Neumann condition?</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> Here <span class="math" data-tex="\(D_0(s,t)=\frac1{4\pi}|s-t|^2\)">\(D_0(s,t)=\frac1{4\pi}|s-t|^2\)</span> by Remark 2.2 of the previous lesson, so <span class="math" data-tex="\(b(s)=s/(2\sqrt\pi)\in\mathbb R^2\)">\(b(s)=s/(2\sqrt\pi)\in\mathbb R^2\)</span> works (the construction of the proof gives <span class="math" data-tex="\(b(s)-b(s_0)\)">\(b(s)-b(s_0)\)</span> up to an isometry).</p>
+<p><strong>4.2.</strong> Since <span class="math" data-tex="\(D_p(s_0,s_0)=0\)">\(D_p(s_0,s_0)=0\)</span>, the definition gives <span class="math" data-tex="\(\Gamma(s,s_0)=\frac12(D_p(s,s_0)-D_p(s,s_0))=0\)">\(\Gamma(s,s_0)=\frac12(D_p(s,s_0)-D_p(s,s_0))=0\)</span>, so <span class="math" data-tex="\(\|b(s_0)\|^2=\Gamma(s_0,s_0)=0\)">\(\|b(s_0)\|^2=\Gamma(s_0,s_0)=0\)</span>.</p>
+<p><strong>4.3.</strong> The computation in Step 4 gives <span class="math" data-tex="\(\int_U\tilde w(\Delta\phi+\mu\phi)=-\int_{\partial\Omega\cap U}\phi\,\partial_\nu w\,ds\)">\(\int_U\tilde w(\Delta\phi+\mu\phi)=-\int_{\partial\Omega\cap U}\phi\,\partial_\nu w\,ds\)</span>, so <span class="math" data-tex="\((\Delta+\mu)\tilde w\)">\((\Delta+\mu)\tilde w\)</span> is the measure <span class="math" data-tex="\(-\partial_\nu w\,ds\)">\(-\partial_\nu w\,ds\)</span> on the arc, which is not zero when <span class="math" data-tex="\(\partial_\nu w\ne0\)">\(\partial_\nu w\ne0\)</span> there.</p>
+<p><strong>4.4.</strong> By the theorem <span class="math" data-tex="\(\nabla u\ne0\)">\(\nabla u\ne0\)</span> in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, so the implicit function theorem shows that <span class="math" data-tex="\(\{u=c\}\cap\Omega\)">\(\{u=c\}\cap\Omega\)</span> is a smooth curve near each of its points.</p>
+<p><strong>4.5.</strong> Such a function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is continuous on <span class="math" data-tex="\(\overline\Omega\)">\(\overline\Omega\)</span>, vanishes on <span class="math" data-tex="\(\partial\Omega\)">\(\partial\Omega\)</span> and is positive somewhere, so it attains its maximum in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, where <span class="math" data-tex="\(\nabla\phi=0\)">\(\nabla\phi=0\)</span>. The Neumann condition makes the boundary gradient <span class="math" data-tex="\(g\)">\(g\)</span> tangent, which is needed to define <span class="math" data-tex="\(E(bg)\)">\(E(bg)\)</span> through tangent fields; and it gives <span class="math" data-tex="\(E(g)=0\)">\(E(g)=0\)</span> through the equality case of Rohleder's principle, which is the starting point of the multiplier identity.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-HS] OpenAI, <em>Strict hot spots and absence of interior critical points on smooth simply connected planar domains</em>, OpenAI Math Release preprint, 24 September 2026, Lemma 6.1 and Section 6. https://github.com/openai/math/tree/main/preprints/Strict-hot-spots-and-absence-of-interior-critical-points-on-smooth-simply-connected-planar-domains-September-24-2026</li>
+<li>[Fil04] N. Filonov, <em>An inequality for eigenvalues of the Dirichlet and Neumann problems for the Laplace operator</em>, Algebra i Analiz 16 (2004), no. 2, 172–176 (in Russian; English translation in St. Petersburg Math. J. 16 (2005), 413–416). https://www.mathnet.ru/eng/aa604</li>
+<li>[Bur26] K. Burdzy, <em>Removing boundary smoothness from the hot-spots conclusion in the simple-eigenvalue case</em>, arXiv:2610.12622 (8 October 2026), Theorem 2.1, Corollary 2.2. https://arxiv.org/abs/2610.12622</li>
+<li>[Bur05] K. Burdzy, <em>The &quot;hot spots&quot; problem in planar domains with one hole</em>, arXiv:math/0405472, Theorem 1.1. https://arxiv.org/abs/math/0405472</li>
+<li>[dDP24] J. de Dios Pont, <em>Convex sets can have interior hot spots</em>, arXiv:2412.06344. https://arxiv.org/abs/2412.06344</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

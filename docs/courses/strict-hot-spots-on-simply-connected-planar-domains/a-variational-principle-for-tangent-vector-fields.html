@@ -1,0 +1,209 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A variational principle for tangent vector fields</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strict hot spots on simply connected planar domains)</a><a href="conformal-coordinates-hopfs-lemma-and-boundary-signs.html">Previous lesson</a><a href="boundary-kernels-and-the-multiplier-identity.html">Next lesson</a><a href="src/a-variational-principle-for-tangent-vector-fields.md">Editable source</a></nav><main><article><h1 id="a-variational-principle-for-tangent-vector-fields">A variational principle for tangent vector fields</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The gradient of a Neumann eigenfunction is a vector field tangent to the boundary. Rohleder discovered that these gradients are exactly the minimizers of a variational problem for tangent vector fields, with the same minimum value <span class="math" data-tex="\(\mu\)">\(\mu\)</span> [Roh21, Theorem 1.1]. This lesson proves that principle on our class of domains, with its equality case, and an identity that rewrites the divergence–curl energy as a Dirichlet energy plus a boundary curvature term. The next lesson transfers this energy to the boundary circle.</p>
+<ul>
+<li>The vector variational principle (Section 1).</li>
+<li>The curvature identity (Section 2).</li>
+</ul>
+<p>Notation is that of <a href="neumann-eigenfunctions-and-the-hot-spots-problem.html">Neumann eigenfunctions and the hot-spots problem</a>. In particular <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is simply connected, <span class="math" data-tex="\(\mu&lt;\lambda_D\)">\(\mu&lt;\lambda_D\)</span> (Proposition 4.1 there), and Green's formulas (2.1)–(2.2) and the Poincaré inequalities of Lemma 2.3 there are available.</p>
+<h2 id="1-the-vector-variational-principle">1. The vector variational principle</h2>
+<p>A vector field <span class="math" data-tex="\(X\in H^1(\Omega;\mathbb R^2)\)">\(X\in H^1(\Omega;\mathbb R^2)\)</span> is <em>tangent</em> if <span class="math" data-tex="\(\operatorname{tr}X\cdot\nu=0\)">\(\operatorname{tr}X\cdot\nu=0\)</span> almost everywhere on <span class="math" data-tex="\(\partial\Omega\)">\(\partial\Omega\)</span>. For such fields put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal Q(X)=\int_\Omega\bigl(|\operatorname{div}X|^2+|\operatorname{curl}X|^2\bigr),\\
+\operatorname{curl}X=\partial_1X_2-\partial_2X_1,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal Q(X)=\int_\Omega\bigl(|\operatorname{div}X|^2+|\operatorname{curl}X|^2\bigr),\\
+\operatorname{curl}X=\partial_1X_2-\partial_2X_1,
+\end{gathered}
+\]</span>
+and write <span class="math" data-tex="\(\nabla^\perp j=(-\partial_2j,\partial_1j)\)">\(\nabla^\perp j=(-\partial_2j,\partial_1j)\)</span> for a scalar <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Proposition 1.1</strong> (Rohleder's principle; [OpenAI-HS, Proposition 3.1]). For every tangent <span class="math" data-tex="\(X\in H^1(\Omega;\mathbb R^2)\)">\(X\in H^1(\Omega;\mathbb R^2)\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal Q(X)\ge\mu\int_\Omega|X|^2, \tag{1.1}
+\]">\[
+\mathcal Q(X)\ge\mu\int_\Omega|X|^2, \tag{1.1}
+\]</span>
+with equality if and only if <span class="math" data-tex="\(X=\nabla v\)">\(X=\nabla v\)</span> for some <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>.</p>
+<p><em>Proof.</em> <em>Step 1: a Neumann potential.</em> By Lemma 2.3(2) of the first lesson, <span class="math" data-tex="\(\int\nabla v\cdot\nabla\phi\)">\(\int\nabla v\cdot\nabla\phi\)</span> is an inner product on the mean-zero subspace of <span class="math" data-tex="\(H^1(\Omega)\)">\(H^1(\Omega)\)</span>, equivalent to the <span class="math" data-tex="\(H^1\)">\(H^1\)</span> inner product. The Riesz–Fréchet theorem gives a mean-zero <span class="math" data-tex="\(v\in H^1(\Omega)\)">\(v\in H^1(\Omega)\)</span> with <span class="math" data-tex="\(\int\nabla v\cdot\nabla\phi=-\int(\operatorname{div}X)\phi\)">\(\int\nabla v\cdot\nabla\phi=-\int(\operatorname{div}X)\phi\)</span> for mean-zero <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. For <span class="math" data-tex="\(\phi=1\)">\(\phi=1\)</span> both sides vanish, the right side because Green's formula (2.1) of the first lesson and the tangent condition give <span class="math" data-tex="\(\int\operatorname{div}X=\int_{\partial\Omega}\operatorname{tr}X\cdot\nu\,ds=0\)">\(\int\operatorname{div}X=\int_{\partial\Omega}\operatorname{tr}X\cdot\nu\,ds=0\)</span>. So the identity holds for all <span class="math" data-tex="\(\phi\in H^1(\Omega)\)">\(\phi\in H^1(\Omega)\)</span>. By (ER N) with <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, <span class="math" data-tex="\(v\in H^2(\Omega)\)">\(v\in H^2(\Omega)\)</span>, and as in the proof of Proposition 3.1(3) of the first lesson, <span class="math" data-tex="\(\Delta v=\operatorname{div}X\)">\(\Delta v=\operatorname{div}X\)</span> almost everywhere and <span class="math" data-tex="\(\partial_\nu v=0\)">\(\partial_\nu v=0\)</span>.</p>
+<p><em>Step 2: a Dirichlet potential.</em> By (B10) and (B29) of <a href="../elliptic-operators-and-boundary-problems/second-order-boundary.html">Boundary energy, local inverses, and harmonic data</a>, there is <span class="math" data-tex="\(j\in H^1_0(\Omega)\cap H^2(\Omega)\)">\(j\in H^1_0(\Omega)\cap H^2(\Omega)\)</span> with <span class="math" data-tex="\(\Delta j=\operatorname{curl}X\)">\(\Delta j=\operatorname{curl}X\)</span> almost everywhere.</p>
+<p><em>Step 3: <span class="math" data-tex="\(\nabla^\perp j\)">\(\nabla^\perp j\)</span> is tangent.</em> For <span class="math" data-tex="\(F\in C^2(\overline\Omega)\)">\(F\in C^2(\overline\Omega)\)</span>, <span class="math" data-tex="\(\nabla^\perp F\cdot\nu=-\nabla F\cdot\tau=-\partial_\tau F\)">\(\nabla^\perp F\cdot\nu=-\nabla F\cdot\tau=-\partial_\tau F\)</span>, and (SOB 1) applied to the divergence-free field <span class="math" data-tex="\(\nabla^\perp F\)">\(\nabla^\perp F\)</span> gives <span class="math" data-tex="\(\int_{\partial\Omega}\partial_\tau F\,ds=0\)">\(\int_{\partial\Omega}\partial_\tau F\,ds=0\)</span>. Let <span class="math" data-tex="\(j_n\in C^\infty(\overline\Omega)\)">\(j_n\in C^\infty(\overline\Omega)\)</span> converge to <span class="math" data-tex="\(j\)">\(j\)</span> in <span class="math" data-tex="\(H^2(\Omega)\)">\(H^2(\Omega)\)</span> (SOB 2), and let <span class="math" data-tex="\(\psi\in C^\infty(\overline\Omega)\)">\(\psi\in C^\infty(\overline\Omega)\)</span>. Applying this to <span class="math" data-tex="\(F=j_n\psi\)">\(F=j_n\psi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{\partial\Omega}(\nabla^\perp j_n\cdot\nu)\psi\,ds\\
+&amp;\quad=-\int_{\partial\Omega}(\partial_\tau j_n)\psi\,ds\\
+&amp;\quad=\int_{\partial\Omega}j_n\,\partial_\tau\psi\,ds .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{\partial\Omega}(\nabla^\perp j_n\cdot\nu)\psi\,ds\\
+&amp;\quad=-\int_{\partial\Omega}(\partial_\tau j_n)\psi\,ds\\
+&amp;\quad=\int_{\partial\Omega}j_n\,\partial_\tau\psi\,ds .
+\end{aligned}
+\]</span>
+As <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>, the traces converge in <span class="math" data-tex="\(L^2(\partial\Omega)\)">\(L^2(\partial\Omega)\)</span>, and the right side tends to <span class="math" data-tex="\(\int\operatorname{tr}j\,\partial_\tau\psi\,ds=0\)">\(\int\operatorname{tr}j\,\partial_\tau\psi\,ds=0\)</span>. Since such <span class="math" data-tex="\(\psi\)">\(\psi\)</span> have dense traces, <span class="math" data-tex="\(\operatorname{tr}(\nabla^\perp j)\cdot\nu=0\)">\(\operatorname{tr}(\nabla^\perp j)\cdot\nu=0\)</span>.</p>
+<p><em>Step 4: the remainder is a gradient.</em> Put <span class="math" data-tex="\(Z=X-\nabla v-\nabla^\perp j\in H^1(\Omega;\mathbb R^2)\)">\(Z=X-\nabla v-\nabla^\perp j\in H^1(\Omega;\mathbb R^2)\)</span>. It is tangent, and since <span class="math" data-tex="\(\operatorname{div}\nabla^\perp j=0\)">\(\operatorname{div}\nabla^\perp j=0\)</span>, <span class="math" data-tex="\(\operatorname{curl}\nabla v=0\)">\(\operatorname{curl}\nabla v=0\)</span> and <span class="math" data-tex="\(\operatorname{curl}\nabla^\perp j=\Delta j\)">\(\operatorname{curl}\nabla^\perp j=\Delta j\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{div}Z=0,\qquad\operatorname{curl}Z=0 .
+\]">\[
+\operatorname{div}Z=0,\qquad\operatorname{curl}Z=0 .
+\]</span>
+In the sense of distributions <span class="math" data-tex="\(\Delta Z_1=\partial_1\operatorname{div}Z-\partial_2\operatorname{curl}Z=0\)">\(\Delta Z_1=\partial_1\operatorname{div}Z-\partial_2\operatorname{curl}Z=0\)</span> and <span class="math" data-tex="\(\Delta Z_2=\partial_2\operatorname{div}Z+\partial_1\operatorname{curl}Z=0\)">\(\Delta Z_2=\partial_2\operatorname{div}Z+\partial_1\operatorname{curl}Z=0\)</span>, so <span class="math" data-tex="\(Z_1,Z_2\)">\(Z_1,Z_2\)</span> are real analytic in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> (<a href="../constant-coefficient-equations-and-solvability/AN02-L031.html">Anisotropic derivative classes and analyticity</a>, Theorem 3.1). The Cauchy–Riemann equations for <span class="math" data-tex="\(Z_1-iZ_2\)">\(Z_1-iZ_2\)</span> are exactly <span class="math" data-tex="\(\operatorname{div}Z=0\)">\(\operatorname{div}Z=0\)</span> and <span class="math" data-tex="\(\operatorname{curl}Z=0\)">\(\operatorname{curl}Z=0\)</span>, so <span class="math" data-tex="\(Z_1-iZ_2\)">\(Z_1-iZ_2\)</span> is holomorphic, and it has a primitive <span class="math" data-tex="\(G\)">\(G\)</span> on the simply connected domain <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> (Lemma A.2 of <a href="../NT-ZETA/NT-ZETA-01.html">Dirichlet series and Euler products</a>). The function <span class="math" data-tex="\(r=\operatorname{Re}G\)">\(r=\operatorname{Re}G\)</span> satisfies <span class="math" data-tex="\(\nabla r=(\operatorname{Re}G&#x27;,-\operatorname{Im}G&#x27;)=Z\)">\(\nabla r=(\operatorname{Re}G&#x27;,-\operatorname{Im}G&#x27;)=Z\)</span> in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p>We show <span class="math" data-tex="\(r\in H^1(\Omega)\)">\(r\in H^1(\Omega)\)</span>. For <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span> let <span class="math" data-tex="\(r_M=\max(-M,\min(r,M))\)">\(r_M=\max(-M,\min(r,M))\)</span>. Approximating the truncation by smooth functions with derivative in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, as in Lemma 3.2 of the first lesson, shows that <span class="math" data-tex="\(r_M\)">\(r_M\)</span> has weak gradient <span class="math" data-tex="\(\mathbf 1_{\{|r|&lt;M\}}Z\)">\(\mathbf 1_{\{|r|&lt;M\}}Z\)</span>; hence <span class="math" data-tex="\(r_M\in H^1(\Omega)\)">\(r_M\in H^1(\Omega)\)</span> with <span class="math" data-tex="\(|\nabla r_M|\le|Z|\)">\(|\nabla r_M|\le|Z|\)</span>. Fix a disc <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(\overline B\subseteq\Omega\)">\(\overline B\subseteq\Omega\)</span>. By Lemma 2.3(2) of the first lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|r_M\|&amp;\le C_B\bigl(\|\nabla r_M\|+|(r_M)_B|\bigr)\\
+&amp;\le C_B\Bigl(\|Z\|+\max_{\overline B}|r|\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|r_M\|&amp;\le C_B\bigl(\|\nabla r_M\|+|(r_M)_B|\bigr)\\
+&amp;\le C_B\Bigl(\|Z\|+\max_{\overline B}|r|\Bigr).
+\end{aligned}
+\]</span>
+Letting <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>, Fatou's lemma gives <span class="math" data-tex="\(r\in L^2(\Omega)\)">\(r\in L^2(\Omega)\)</span>. Then <span class="math" data-tex="\(r_M\to r\)">\(r_M\to r\)</span> and <span class="math" data-tex="\(\nabla r_M\to Z\)">\(\nabla r_M\to Z\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by dominated convergence, so <span class="math" data-tex="\(r\in H^1(\Omega)\)">\(r\in H^1(\Omega)\)</span> with <span class="math" data-tex="\(\nabla r=Z\)">\(\nabla r=Z\)</span>. Green's formula (2.1) of the first lesson, with the tangent condition and <span class="math" data-tex="\(\operatorname{div}Z=0\)">\(\operatorname{div}Z=0\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_\Omega|Z|^2&amp;=\int_\Omega Z\cdot\nabla r=-\int_\Omega(\operatorname{div}Z)r\\
+&amp;\quad+\int_{\partial\Omega}(\operatorname{tr}Z\cdot\nu)\operatorname{tr}r\,ds=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_\Omega|Z|^2&amp;=\int_\Omega Z\cdot\nabla r=-\int_\Omega(\operatorname{div}Z)r\\
+&amp;\quad+\int_{\partial\Omega}(\operatorname{tr}Z\cdot\nu)\operatorname{tr}r\,ds=0 .
+\end{aligned}
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+X=\nabla v+\nabla^\perp j . \tag{1.2}
+\]">\[
+X=\nabla v+\nabla^\perp j . \tag{1.2}
+\]</span></p>
+<p><em>Step 5: the energy.</em> By (2.1) of the first lesson with the tangent field <span class="math" data-tex="\(\nabla^\perp j\)">\(\nabla^\perp j\)</span>, <span class="math" data-tex="\(\int\nabla v\cdot\nabla^\perp j=-\int v\operatorname{div}\nabla^\perp j=0\)">\(\int\nabla v\cdot\nabla^\perp j=-\int v\operatorname{div}\nabla^\perp j=0\)</span>. So the two summands in (1.2) are orthogonal in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and <span class="math" data-tex="\(\|X\|^2=\|\nabla v\|^2+\|\nabla j\|^2\)">\(\|X\|^2=\|\nabla v\|^2+\|\nabla j\|^2\)</span>. Also <span class="math" data-tex="\(\operatorname{div}X=\Delta v\)">\(\operatorname{div}X=\Delta v\)</span> and <span class="math" data-tex="\(\operatorname{curl}X=\Delta j\)">\(\operatorname{curl}X=\Delta j\)</span>, so
+<span class="math math-display" data-tex="\[
+\mathcal Q(X)=\|\Delta v\|^2+\|\Delta j\|^2 .
+\]">\[
+\mathcal Q(X)=\|\Delta v\|^2+\|\Delta j\|^2 .
+\]</span>
+Green's formula (2.2) with <span class="math" data-tex="\(\partial_\nu v=0\)">\(\partial_\nu v=0\)</span>, the Cauchy–Schwarz inequality and the definition of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> (<span class="math" data-tex="\(v\)">\(v\)</span> has mean zero) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\nabla v\|^2=-\int v\Delta v\\
+&amp;\quad\le\|v\|\|\Delta v\|\\
+&amp;\quad\le\mu^{-1/2}\|\nabla v\|\|\Delta v\|,
+\end{aligned} \tag{1.3}
+\]">\[
+\begin{aligned}
+&amp;\|\nabla v\|^2=-\int v\Delta v\\
+&amp;\quad\le\|v\|\|\Delta v\|\\
+&amp;\quad\le\mu^{-1/2}\|\nabla v\|\|\Delta v\|,
+\end{aligned} \tag{1.3}
+\]</span>
+so <span class="math" data-tex="\(\|\Delta v\|^2\ge\mu\|\nabla v\|^2\)">\(\|\Delta v\|^2\ge\mu\|\nabla v\|^2\)</span>. Since <span class="math" data-tex="\(\operatorname{tr}j=0\)">\(\operatorname{tr}j=0\)</span>, the same argument with <span class="math" data-tex="\(\lambda_D\)">\(\lambda_D\)</span> gives <span class="math" data-tex="\(\|\Delta j\|^2\ge\lambda_D\|\nabla j\|^2\)">\(\|\Delta j\|^2\ge\lambda_D\|\nabla j\|^2\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal Q(X)&amp;\ge\mu\|\nabla v\|^2+\lambda_D\|\nabla j\|^2\\
+&amp;=\mu\|X\|^2+(\lambda_D-\mu)\|\nabla j\|^2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal Q(X)&amp;\ge\mu\|\nabla v\|^2+\lambda_D\|\nabla j\|^2\\
+&amp;=\mu\|X\|^2+(\lambda_D-\mu)\|\nabla j\|^2,
+\end{aligned}
+\]</span>
+and (1.1) follows from <span class="math" data-tex="\(\mu&lt;\lambda_D\)">\(\mu&lt;\lambda_D\)</span>.</p>
+<p><em>Step 6: equality.</em> If equality holds, then <span class="math" data-tex="\(\nabla j=0\)">\(\nabla j=0\)</span>, so <span class="math" data-tex="\(j=0\)">\(j=0\)</span> by Lemma 2.3(1) of the first lesson, and <span class="math" data-tex="\(\|\Delta v\|^2=\mu\|\nabla v\|^2\)">\(\|\Delta v\|^2=\mu\|\nabla v\|^2\)</span>. If <span class="math" data-tex="\(\Delta v=0\)">\(\Delta v=0\)</span>, then (1.3) gives <span class="math" data-tex="\(\nabla v=0\)">\(\nabla v=0\)</span> and <span class="math" data-tex="\(X=0=\nabla0\)">\(X=0=\nabla0\)</span>. Otherwise the inequalities in (1.3) are equalities, so <span class="math" data-tex="\(\|\nabla v\|^2=\mu\|v\|^2\)">\(\|\nabla v\|^2=\mu\|v\|^2\)</span>, and <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span> by Proposition 3.1(2) of the first lesson. Conversely, for <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span> the field <span class="math" data-tex="\(\nabla v\)">\(\nabla v\)</span> is tangent, <span class="math" data-tex="\(\operatorname{div}\nabla v=-\mu v\)">\(\operatorname{div}\nabla v=-\mu v\)</span> and <span class="math" data-tex="\(\operatorname{curl}\nabla v=0\)">\(\operatorname{curl}\nabla v=0\)</span>, so <span class="math" data-tex="\(\mathcal Q(\nabla v)=\mu^2\|v\|^2=\mu\|\nabla v\|^2\)">\(\mathcal Q(\nabla v)=\mu^2\|v\|^2=\mu\|\nabla v\|^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For tangent <span class="math" data-tex="\(X,Y\in H^1(\Omega;\mathbb R^2)\)">\(X,Y\in H^1(\Omega;\mathbb R^2)\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal E(X,Y)=\int_\Omega\operatorname{div}X\operatorname{div}Y\\
+&amp;\quad+\int_\Omega\operatorname{curl}X\operatorname{curl}Y-\mu\int_\Omega X\cdot Y,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal E(X,Y)=\int_\Omega\operatorname{div}X\operatorname{div}Y\\
+&amp;\quad+\int_\Omega\operatorname{curl}X\operatorname{curl}Y-\mu\int_\Omega X\cdot Y,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\mathcal E(X)=\mathcal E(X,X)\)">\(\mathcal E(X)=\mathcal E(X,X)\)</span>.</p>
+<p><strong>Corollary 1.2.</strong> <span class="math" data-tex="\(\mathcal E(X)\ge0\)">\(\mathcal E(X)\ge0\)</span> for every tangent <span class="math" data-tex="\(X\in H^1(\Omega;\mathbb R^2)\)">\(X\in H^1(\Omega;\mathbb R^2)\)</span>. If <span class="math" data-tex="\(\mathcal E(X)=0\)">\(\mathcal E(X)=0\)</span>, then <span class="math" data-tex="\(X=\nabla v\)">\(X=\nabla v\)</span> for some <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>, and <span class="math" data-tex="\(\mathcal E(X,Y)=0\)">\(\mathcal E(X,Y)=0\)</span> for every tangent <span class="math" data-tex="\(Y\in H^1(\Omega;\mathbb R^2)\)">\(Y\in H^1(\Omega;\mathbb R^2)\)</span>.</p>
+<p><em>Proof.</em> The first two assertions are Proposition 1.1. For the third, <span class="math" data-tex="\(0\le\mathcal E(X+tY)=2t\,\mathcal E(X,Y)+t^2\mathcal E(Y)\)">\(0\le\mathcal E(X+tY)=2t\,\mathcal E(X,Y)+t^2\mathcal E(Y)\)</span> for all real <span class="math" data-tex="\(t\)">\(t\)</span>, which forces <span class="math" data-tex="\(\mathcal E(X,Y)=0\)">\(\mathcal E(X,Y)=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Rohleder proved the principle for bounded simply connected Lipschitz domains with piecewise smooth boundary and convex corners, in the form of a minimum over tangent fields of the Dirichlet energy plus a curvature term [Roh21, Theorem 1.1]; the identity of Section 2 connects the two forms. His curvature is negative where the domain is convex; the curvature <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> below is positive there.</p>
+<h2 id="2-the-curvature-identity">2. The curvature identity</h2>
+<p>Let <span class="math" data-tex="\(\kappa=\det(\tau,\partial_\tau\tau)\)">\(\kappa=\det(\tau,\partial_\tau\tau)\)</span> on <span class="math" data-tex="\(\partial\Omega\)">\(\partial\Omega\)</span>, where <span class="math" data-tex="\(\partial_\tau\)">\(\partial_\tau\)</span> is differentiation with respect to arclength in the direction <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. On the unit circle, <span class="math" data-tex="\(\tau=(-\sin\theta,\cos\theta)\)">\(\tau=(-\sin\theta,\cos\theta)\)</span>, <span class="math" data-tex="\(\partial_\tau\tau=(-\cos\theta,-\sin\theta)\)">\(\partial_\tau\tau=(-\cos\theta,-\sin\theta)\)</span> and <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>.</p>
+<p><strong>Lemma 2.1</strong> ([OpenAI-HS, Lemma 3.2]). For every tangent <span class="math" data-tex="\(X\in C^2(\overline\Omega;\mathbb R^2)\)">\(X\in C^2(\overline\Omega;\mathbb R^2)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal Q(X)&amp;=\int_\Omega|\nabla X|^2\\
+&amp;\quad+\int_{\partial\Omega}\kappa|X|^2\,ds,
+\end{aligned} \tag{2.1}
+\]">\[
+\begin{aligned}
+\mathcal Q(X)&amp;=\int_\Omega|\nabla X|^2\\
+&amp;\quad+\int_{\partial\Omega}\kappa|X|^2\,ds,
+\end{aligned} \tag{2.1}
+\]</span>
+where <span class="math" data-tex="\(|\nabla X|^2=\sum_{i,k}(\partial_kX_i)^2\)">\(|\nabla X|^2=\sum_{i,k}(\partial_kX_i)^2\)</span>.</p>
+<p><em>Proof.</em> Expanding the squares,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\operatorname{div}X|^2+|\operatorname{curl}X|^2\\
+&amp;\quad=|\nabla X|^2+2\det\nabla X,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|\operatorname{div}X|^2+|\operatorname{curl}X|^2\\
+&amp;\quad=|\nabla X|^2+2\det\nabla X,
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(\det\nabla X=\partial_1X_1\partial_2X_2-\partial_2X_1\partial_1X_2\)">\(\det\nabla X=\partial_1X_1\partial_2X_2-\partial_2X_1\partial_1X_2\)</span>. Since <span class="math" data-tex="\(\operatorname{div}\nabla^\perp F=0\)">\(\operatorname{div}\nabla^\perp F=0\)</span>, one has <span class="math" data-tex="\(\operatorname{div}(X_1\nabla^\perp X_2)=\nabla X_1\cdot\nabla^\perp X_2\)">\(\operatorname{div}(X_1\nabla^\perp X_2)=\nabla X_1\cdot\nabla^\perp X_2\)</span>, which is <span class="math" data-tex="\(-\det\nabla X\)">\(-\det\nabla X\)</span>, and <span class="math" data-tex="\(\operatorname{div}(X_2\nabla^\perp X_1)=\det\nabla X\)">\(\operatorname{div}(X_2\nabla^\perp X_1)=\det\nabla X\)</span>. By (SOB 1) and <span class="math" data-tex="\(\nabla^\perp F\cdot\nu=-\partial_\tau F\)">\(\nabla^\perp F\cdot\nu=-\partial_\tau F\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;2\int_\Omega\det\nabla X\\
+&amp;\quad=\int_{\partial\Omega}(X_2\nabla^\perp X_1-X_1\nabla^\perp X_2)\cdot\nu\,ds\\
+&amp;\quad=\int_{\partial\Omega}(X_1\partial_\tau X_2-X_2\partial_\tau X_1)\,ds .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;2\int_\Omega\det\nabla X\\
+&amp;\quad=\int_{\partial\Omega}(X_2\nabla^\perp X_1-X_1\nabla^\perp X_2)\cdot\nu\,ds\\
+&amp;\quad=\int_{\partial\Omega}(X_1\partial_\tau X_2-X_2\partial_\tau X_1)\,ds .
+\end{aligned}
+\]</span>
+On <span class="math" data-tex="\(\partial\Omega\)">\(\partial\Omega\)</span> write <span class="math" data-tex="\(X=a\tau\)">\(X=a\tau\)</span> with <span class="math" data-tex="\(a=X\cdot\tau\in C^1(\partial\Omega)\)">\(a=X\cdot\tau\in C^1(\partial\Omega)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;X_1\partial_\tau X_2-X_2\partial_\tau X_1\\
+&amp;\quad=a^2(\tau_1\partial_\tau\tau_2-\tau_2\partial_\tau\tau_1)\\
+&amp;\qquad+a\,\partial_\tau a\,(\tau_1\tau_2-\tau_2\tau_1)\\
+&amp;\quad=\kappa a^2=\kappa|X|^2 .\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;X_1\partial_\tau X_2-X_2\partial_\tau X_1\\
+&amp;\quad=a^2(\tau_1\partial_\tau\tau_2-\tau_2\partial_\tau\tau_1)\\
+&amp;\qquad+a\,\partial_\tau a\,(\tau_1\tau_2-\tau_2\tau_1)\\
+&amp;\quad=\kappa a^2=\kappa|X|^2 .\qquad\square
+\end{aligned}
+\]</span></p>
+<p>The next lesson uses (2.1) for fields that are smooth up to the boundary, and passes to Lipschitz boundary data by an approximation argument.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> On the unit disc let <span class="math" data-tex="\(X=(-x_2,x_1)\)">\(X=(-x_2,x_1)\)</span>. Show that <span class="math" data-tex="\(X\)">\(X\)</span> is tangent, and check (2.1) by computing both sides.</p>
+<p><strong>3.2.</strong> For the field of Exercise 3.1, find <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> in (1.2), and show <span class="math" data-tex="\(\mathcal E(X)&gt;0\)">\(\mathcal E(X)&gt;0\)</span>.</p>
+<p><strong>3.3.</strong> On the unit disc let <span class="math" data-tex="\(X=(1,0)\)">\(X=(1,0)\)</span>. Show <span class="math" data-tex="\(\mathcal Q(X)=0&lt;\mu\int|X|^2\)">\(\mathcal Q(X)=0&lt;\mu\int|X|^2\)</span>, and explain why this does not contradict Proposition 1.1.</p>
+<p><strong>3.4.</strong> In a boundary chart at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> (Section 1 of the first lesson), show that <span class="math" data-tex="\(\kappa(x_0)=\gamma&#x27;&#x27;(0)\)">\(\kappa(x_0)=\gamma&#x27;&#x27;(0)\)</span>. Deduce that <span class="math" data-tex="\(\kappa\ge0\)">\(\kappa\ge0\)</span> when <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is convex.</p>
+<p><strong>3.5.</strong> Show that the tangent condition is used in Step 1 of the proof of Proposition 1.1, and give an example of a nontangent field <span class="math" data-tex="\(X\)">\(X\)</span> on the unit disc for which no <span class="math" data-tex="\(v\in H^1\)">\(v\in H^1\)</span> satisfies <span class="math" data-tex="\(\Delta v=\operatorname{div}X\)">\(\Delta v=\operatorname{div}X\)</span>, <span class="math" data-tex="\(\partial_\nu v=0\)">\(\partial_\nu v=0\)</span>.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> On the circle <span class="math" data-tex="\(X=\tau\)">\(X=\tau\)</span>, so <span class="math" data-tex="\(X\cdot\nu=0\)">\(X\cdot\nu=0\)</span>. Here <span class="math" data-tex="\(\operatorname{div}X=0\)">\(\operatorname{div}X=0\)</span> and <span class="math" data-tex="\(\operatorname{curl}X=2\)">\(\operatorname{curl}X=2\)</span>, so <span class="math" data-tex="\(\mathcal Q(X)=4\pi\)">\(\mathcal Q(X)=4\pi\)</span>. The derivatives are <span class="math" data-tex="\(\partial_2X_1=-1\)">\(\partial_2X_1=-1\)</span>, <span class="math" data-tex="\(\partial_1X_2=1\)">\(\partial_1X_2=1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise, so <span class="math" data-tex="\(\int|\nabla X|^2=2\pi\)">\(\int|\nabla X|^2=2\pi\)</span>; with <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span> and <span class="math" data-tex="\(|X|=1\)">\(|X|=1\)</span> on the circle, the boundary term is <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>.</p>
+<p><strong>3.2.</strong> <span class="math" data-tex="\(\operatorname{div}X=0\)">\(\operatorname{div}X=0\)</span> gives <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. The function <span class="math" data-tex="\(j=(|x|^2-1)/2\)">\(j=(|x|^2-1)/2\)</span> vanishes on the circle and <span class="math" data-tex="\(\nabla^\perp j=(-x_2,x_1)=X\)">\(\nabla^\perp j=(-x_2,x_1)=X\)</span>, so <span class="math" data-tex="\(X=\nabla^\perp j\)">\(X=\nabla^\perp j\)</span>. Step 5 of the proof gives <span class="math" data-tex="\(\mathcal E(X)\ge(\lambda_D-\mu)\|\nabla j\|^2&gt;0\)">\(\mathcal E(X)\ge(\lambda_D-\mu)\|\nabla j\|^2&gt;0\)</span>, because <span class="math" data-tex="\(\nabla j=x\ne0\)">\(\nabla j=x\ne0\)</span>.</p>
+<p><strong>3.3.</strong> <span class="math" data-tex="\(\operatorname{div}X=\operatorname{curl}X=0\)">\(\operatorname{div}X=\operatorname{curl}X=0\)</span>, while <span class="math" data-tex="\(\int|X|^2=\pi\)">\(\int|X|^2=\pi\)</span>. On the circle <span class="math" data-tex="\(X\cdot\nu=x_1\)">\(X\cdot\nu=x_1\)</span>, which is not zero, so <span class="math" data-tex="\(X\)">\(X\)</span> is not tangent.</p>
+<p><strong>3.4.</strong> With <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> above the graph, <span class="math" data-tex="\(\nu=(\gamma&#x27;,-1)/\sqrt{1+\gamma&#x27;^2}\)">\(\nu=(\gamma&#x27;,-1)/\sqrt{1+\gamma&#x27;^2}\)</span> and <span class="math" data-tex="\(\tau=i\nu=(1,\gamma&#x27;)/\sqrt{1+\gamma&#x27;^2}\)">\(\tau=i\nu=(1,\gamma&#x27;)/\sqrt{1+\gamma&#x27;^2}\)</span>. At <span class="math" data-tex="\(x_1=0\)">\(x_1=0\)</span>, <span class="math" data-tex="\(\gamma&#x27;=0\)">\(\gamma&#x27;=0\)</span>, <span class="math" data-tex="\(ds=dx_1\)">\(ds=dx_1\)</span>, <span class="math" data-tex="\(\tau=(1,0)\)">\(\tau=(1,0)\)</span> and <span class="math" data-tex="\(\partial_\tau\tau=(0,\gamma&#x27;&#x27;(0))\)">\(\partial_\tau\tau=(0,\gamma&#x27;&#x27;(0))\)</span>, so <span class="math" data-tex="\(\kappa=\gamma&#x27;&#x27;(0)\)">\(\kappa=\gamma&#x27;&#x27;(0)\)</span>. If <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is convex, its intersection with the chart rectangle lies above every tangent line of the graph near <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is convex near <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(\gamma&#x27;&#x27;(0)\ge0\)">\(\gamma&#x27;&#x27;(0)\ge0\)</span>.</p>
+<p><strong>3.5.</strong> The compatibility <span class="math" data-tex="\(\int\operatorname{div}X=0\)">\(\int\operatorname{div}X=0\)</span> is needed for <span class="math" data-tex="\(\phi=1\)">\(\phi=1\)</span> in Step 1. For <span class="math" data-tex="\(X=(x_1,x_2)\)">\(X=(x_1,x_2)\)</span> on the unit disc, <span class="math" data-tex="\(\operatorname{div}X=2\)">\(\operatorname{div}X=2\)</span>; a solution would satisfy <span class="math" data-tex="\(\int\Delta v=\int_{\partial\mathbb D}\partial_\nu v\,ds=0\)">\(\int\Delta v=\int_{\partial\mathbb D}\partial_\nu v\,ds=0\)</span>, but <span class="math" data-tex="\(\int\operatorname{div}X=2\pi\)">\(\int\operatorname{div}X=2\pi\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-HS] OpenAI, <em>Strict hot spots and absence of interior critical points on smooth simply connected planar domains</em>, OpenAI Math Release preprint, 24 September 2026, Proposition 3.1, Lemma 3.2. https://github.com/openai/math/tree/main/preprints/Strict-hot-spots-and-absence-of-interior-critical-points-on-smooth-simply-connected-planar-domains-September-24-2026</li>
+<li>[Roh21] J. Rohleder, <em>A new approach to the hot spots conjecture</em>, arXiv:2106.05224, Theorem 1.1. https://arxiv.org/abs/2106.05224</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

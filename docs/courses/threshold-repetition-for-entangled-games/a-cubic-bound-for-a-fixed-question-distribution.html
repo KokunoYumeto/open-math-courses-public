@@ -1,0 +1,287 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A cubic bound for a fixed question distribution</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Threshold repetition for entangled games)</a><a href="conditioning-on-a-tested-set.html">Previous lesson</a><a href="src/a-cubic-bound-for-a-fixed-question-distribution.md">Editable source</a></nav><main><article><h1 id="a-cubic-bound-for-a-fixed-question-distribution">A cubic bound for a fixed question distribution</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves Theorem 2.2 of <a href="entangled-games-and-threshold-repetition.html">Entangled games and threshold repetition</a> without any external input: for a fixed question distribution <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the probability of winning a fraction <span class="math" data-tex="\(v+\delta\)">\(v+\delta\)</span> of the repetitions decays at a rate proportional to <span class="math" data-tex="\(\delta^3\)">\(\delta^3\)</span>. The vectors of <a href="conditioning-on-a-tested-set.html">Conditioning on a tested set</a> depend on both players' questions. Within each connected component of the support of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, adjacent question pairs share a one-question approximation, so each vector can be replaced by the vector of one fixed <em>root</em> pair, at a cost controlled along paths in the support. The root vectors define legal one-game strategies, which yields a conditioning estimate with square-root error, and the transfer of <a href="from-conditioning-to-a-threshold-bound.html">From conditioning to a threshold bound</a> turns it into the cubic rate.</p>
+<ul>
+<li>Support components and component games (Section 1).</li>
+<li>A conditioning estimate through the components (Section 2).</li>
+<li>The cubic threshold bound (Section 3).</li>
+</ul>
+<p>Notation is that of the earlier lessons.</p>
+<h2 id="1-support-components-and-component-games">1. Support components and component games</h2>
+<p>Let <span class="math" data-tex="\(H=\{(x,y):\mu(x,y)&gt;0\}\)">\(H=\{(x,y):\mu(x,y)&gt;0\}\)</span>, joined into a graph by an edge between two pairs that share a question. For the connected components <span class="math" data-tex="\(H_j\)">\(H_j\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\lambda_j=\mu(H_j),\qquad\mu_j=\mu(\,\cdot\mid H_j),\\
+&amp;\mu_{j,\min}=\min_{z\in H_j}\mu_j(z),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\lambda_j=\mu(H_j),\qquad\mu_j=\mu(\,\cdot\mid H_j),\\
+&amp;\mu_{j,\min}=\min_{z\in H_j}\mu_j(z),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\kappa_\mu=8\max_j(|H_j|-1)/\mu_{j,\min}\)">\(\kappa_\mu=8\max_j(|H_j|-1)/\mu_{j,\min}\)</span>. This constant depends on the masses of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, not only on its support; it is <span class="math" data-tex="\(0\)">\(0\)</span> when every component is a single pair.</p>
+<p><strong>Lemma 1.1.</strong> If <span class="math" data-tex="\(\mu_X(x)&gt;0\)">\(\mu_X(x)&gt;0\)</span>, all pairs of <span class="math" data-tex="\(H\)">\(H\)</span> with first entry <span class="math" data-tex="\(x\)">\(x\)</span> lie in one component; likewise for second entries.</p>
+<p><em>Proof.</em> Any two such pairs share the question <span class="math" data-tex="\(x\)">\(x\)</span>, so they are adjacent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So each player can determine the component from the local question alone. Let <span class="math" data-tex="\(G_j\)">\(G_j\)</span> be the game with question distribution <span class="math" data-tex="\(\mu_j\)">\(\mu_j\)</span> and the predicate of <span class="math" data-tex="\(G\)">\(G\)</span>, and <span class="math" data-tex="\(v_j=\omega^*(G_j)\)">\(v_j=\omega^*(G_j)\)</span>.</p>
+<p><strong>Lemma 1.2.</strong> <span class="math" data-tex="\(\sum_j\lambda_jv_j\le\omega^*(G)\)">\(\sum_j\lambda_jv_j\le\omega^*(G)\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and choose finite-dimensional strategies <span class="math" data-tex="\(\mathcal S_j\)">\(\mathcal S_j\)</span> for the finitely many games <span class="math" data-tex="\(G_j\)">\(G_j\)</span> with success at least <span class="math" data-tex="\(v_j-\varepsilon\)">\(v_j-\varepsilon\)</span>. Let the players share the tensor product of the states of all <span class="math" data-tex="\(\mathcal S_j\)">\(\mathcal S_j\)</span>. On question <span class="math" data-tex="\(x\)">\(x\)</span>, Alice determines the component <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> by Lemma 1.1 and applies her measurement of <span class="math" data-tex="\(\mathcal S_j\)">\(\mathcal S_j\)</span> on the <span class="math" data-tex="\(j\)">\(j\)</span>-th factor; Bob does the same. On a pair of <span class="math" data-tex="\(H_j\)">\(H_j\)</span> both use <span class="math" data-tex="\(\mathcal S_j\)">\(\mathcal S_j\)</span>, so this strategy for <span class="math" data-tex="\(G\)">\(G\)</span> succeeds with probability <span class="math" data-tex="\(\sum_j\lambda_j(\text{success of }\mathcal S_j)\ge\sum_j\lambda_jv_j-\varepsilon\)">\(\sum_j\lambda_j(\text{success of }\mathcal S_j)\ge\sum_j\lambda_jv_j-\varepsilon\)</span>. No supremum needs to be attained. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-conditioning-estimate-through-the-components">2. A conditioning estimate through the components</h2>
+<p><strong>Proposition 2.1</strong> ([OpenAI-TR, Proposition 5.1]). For every finite-dimensional strategy for the <span class="math" data-tex="\(k\)">\(k\)</span>-fold repetition and every proper set <span class="math" data-tex="\(C\)">\(C\)</span> of coordinates with <span class="math" data-tex="\(p=\Pr(E_C)&gt;0\)">\(p=\Pr(E_C)&gt;0\)</span>, with <span class="math" data-tex="\(m=k-|C|\)">\(m=k-|C|\)</span>, <span class="math" data-tex="\(\tau=\tau(C)\)">\(\tau=\tau(C)\)</span> and the average conditional win rate <span class="math" data-tex="\(\bar s(C)\)">\(\bar s(C)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bar s(C)&amp;\le v+\sqrt{\frac{\log(1/p)}{2m}}\\
+&amp;\quad+4\sqrt{\kappa_\mu\tau}+2\kappa_\mu\tau .
+\end{aligned} \tag{2.1}
+\]">\[
+\begin{aligned}
+\bar s(C)&amp;\le v+\sqrt{\frac{\log(1/p)}{2m}}\\
+&amp;\quad+4\sqrt{\kappa_\mu\tau}+2\kappa_\mu\tau .
+\end{aligned} \tag{2.1}
+\]</span>
+The bound does not depend on the dimension of the strategy or on <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><em>Proof.</em> <em>The inputs.</em> Use the construction of <a href="conditioning-on-a-tested-set.html">Conditioning on a tested set</a> for <span class="math" data-tex="\(C\)">\(C\)</span>, with the mode <span class="math" data-tex="\(i\)">\(i\)</span> restored in the notation. For a transcript <span class="math" data-tex="\(r\)">\(r\)</span> of mode <span class="math" data-tex="\(i\)">\(i\)</span> put <span class="math" data-tex="\(w_{i,r}=w_i(r)/m\)">\(w_{i,r}=w_i(r)/m\)</span>, and for a fresh pair <span class="math" data-tex="\(z=(x,y)\)">\(z=(x,y)\)</span> write <span class="math" data-tex="\(\Psi_{i,z}^r=\Psi_{xy}^r\)">\(\Psi_{i,z}^r=\Psi_{xy}^r\)</span>, with the local vectors <span class="math" data-tex="\(\Psi_{i,x}^r,\Psi_{i,y}^r\)">\(\Psi_{i,x}^r,\Psi_{i,y}^r\)</span> and the acceptance operators <span class="math" data-tex="\(W_{i,r,z}\)">\(W_{i,r,z}\)</span> of that lesson, <span class="math" data-tex="\(0\preceq W_{i,r,z}\preceq I\)">\(0\preceq W_{i,r,z}\preceq I\)</span>. Let
+<span class="math math-display" data-tex="\[
+c_{i,r,z}=\|\Psi_{i,z}^r-\Psi_{i,x}^r\|^2+\|\Psi_{i,z}^r-\Psi_{i,y}^r\|^2 .
+\]">\[
+c_{i,r,z}=\|\Psi_{i,z}^r-\Psi_{i,x}^r\|^2+\|\Psi_{i,z}^r-\Psi_{i,y}^r\|^2 .
+\]</span>
+Averaging (2.2) and (2.3) and Lemma 3.1 of that lesson over the modes gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{i,r,z}w_{i,r}\mu(z)\|\Psi_{i,z}^r\|^2=p,\\
+&amp;\sum_{i,r,z}w_{i,r}\mu(z)\,c_{i,r,z}\le2p\tau,\\
+&amp;\sum_{i,r,z}w_{i,r}\mu(z)\\
+&amp;\quad\cdot\langle\Psi_{i,z}^r,W_{i,r,z}\Psi_{i,z}^r\rangle=p\bar s,
+\end{aligned} \tag{2.2}
+\]">\[
+\begin{aligned}
+&amp;\sum_{i,r,z}w_{i,r}\mu(z)\|\Psi_{i,z}^r\|^2=p,\\
+&amp;\sum_{i,r,z}w_{i,r}\mu(z)\,c_{i,r,z}\le2p\tau,\\
+&amp;\sum_{i,r,z}w_{i,r}\mu(z)\\
+&amp;\quad\cdot\langle\Psi_{i,z}^r,W_{i,r,z}\Psi_{i,z}^r\rangle=p\bar s,
+\end{aligned} \tag{2.2}
+\]</span>
+where <span class="math" data-tex="\(\bar s=\bar s(C)\)">\(\bar s=\bar s(C)\)</span>.</p>
+<p><em>Replacement by a root.</em> Choose a root <span class="math" data-tex="\(\rho_j\in H_j\)">\(\rho_j\in H_j\)</span> in each component. Fix <span class="math" data-tex="\(i,r\)">\(i,r\)</span> and abbreviate <span class="math" data-tex="\(\Psi_z=\Psi_{i,z}^r\)">\(\Psi_z=\Psi_{i,z}^r\)</span> and <span class="math" data-tex="\(c_z=c_{i,r,z}\)">\(c_z=c_{i,r,z}\)</span>. If <span class="math" data-tex="\(z,z&#x27;\in H_j\)">\(z,z&#x27;\in H_j\)</span> share the question <span class="math" data-tex="\(y\)">\(y\)</span>, the common local vector <span class="math" data-tex="\(\Psi_y\)">\(\Psi_y\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\Psi_z-\Psi_{z&#x27;}\|^2\\
+&amp;\quad\le2\|\Psi_z-\Psi_y\|^2+2\|\Psi_y-\Psi_{z&#x27;}\|^2\\
+&amp;\quad\le2(c_z+c_{z&#x27;}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\Psi_z-\Psi_{z&#x27;}\|^2\\
+&amp;\quad\le2\|\Psi_z-\Psi_y\|^2+2\|\Psi_y-\Psi_{z&#x27;}\|^2\\
+&amp;\quad\le2(c_z+c_{z&#x27;}),
+\end{aligned}
+\]</span>
+and likewise with <span class="math" data-tex="\(\Psi_x\)">\(\Psi_x\)</span> if they share <span class="math" data-tex="\(x\)">\(x\)</span>. A simple path from <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> in <span class="math" data-tex="\(H_j\)">\(H_j\)</span> has at most <span class="math" data-tex="\(|H_j|-1\)">\(|H_j|-1\)</span> edges, and each vertex lies on at most two of them. The Cauchy–Schwarz inequality along the path gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\Psi_z-\Psi_{\rho_j}\|^2\le4(|H_j|-1)\sum_{a\in H_j}c_a\\
+&amp;\quad\le\frac{4(|H_j|-1)}{\mu_{j,\min}}\sum_{a\in H_j}\mu_j(a)c_a .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\Psi_z-\Psi_{\rho_j}\|^2\le4(|H_j|-1)\sum_{a\in H_j}c_a\\
+&amp;\quad\le\frac{4(|H_j|-1)}{\mu_{j,\min}}\sum_{a\in H_j}\mu_j(a)c_a .
+\end{aligned}
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;E_j=\sum_{i,r}\sum_{z\in H_j}w_{i,r}\mu_j(z)\|\Psi_{i,z}^r-\Psi_{i,\rho_j}^r\|^2,\\
+&amp;E=\sum_j\lambda_jE_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;E_j=\sum_{i,r}\sum_{z\in H_j}w_{i,r}\mu_j(z)\|\Psi_{i,z}^r-\Psi_{i,\rho_j}^r\|^2,\\
+&amp;E=\sum_j\lambda_jE_j .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(\sum_z\mu_j(z)=1\)">\(\sum_z\mu_j(z)=1\)</span>, <span class="math" data-tex="\(\lambda_j\mu_j(a)=\mu(a)\)">\(\lambda_j\mu_j(a)=\mu(a)\)</span> and <span class="math" data-tex="\(4(|H_j|-1)/\mu_{j,\min}\le\kappa_\mu/2\)">\(4(|H_j|-1)/\mu_{j,\min}\le\kappa_\mu/2\)</span>, the path estimate and (2.2) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E&amp;\le\frac{\kappa_\mu}2\sum_{i,r,a}w_{i,r}\mu(a)c_{i,r,a}\\
+&amp;\le\kappa_\mu p\tau .
+\end{aligned} \tag{2.3}
+\]">\[
+\begin{aligned}
+E&amp;\le\frac{\kappa_\mu}2\sum_{i,r,a}w_{i,r}\mu(a)c_{i,r,a}\\
+&amp;\le\kappa_\mu p\tau .
+\end{aligned} \tag{2.3}
+\]</span></p>
+<p><em>Legal component strategies.</em> Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_j&amp;=\sum_{i,r}\sum_{z\in H_j}w_{i,r}\mu_j(z)\|\Psi_{i,z}^r\|^2,\\
+\widehat P_j&amp;=\sum_{i,r}w_{i,r}\|\Psi_{i,\rho_j}^r\|^2,\\
+T_j&amp;=\sum_{i,r}\sum_{z\in H_j}w_{i,r}\mu_j(z)\\
+&amp;\qquad\cdot\langle\Psi_{i,z}^r,W_{i,r,z}\Psi_{i,z}^r\rangle,\\
+\widehat T_j&amp;=\sum_{i,r}\sum_{z\in H_j}w_{i,r}\mu_j(z)\\
+&amp;\qquad\cdot\langle\Psi_{i,\rho_j}^r,W_{i,r,z}\Psi_{i,\rho_j}^r\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+P_j&amp;=\sum_{i,r}\sum_{z\in H_j}w_{i,r}\mu_j(z)\|\Psi_{i,z}^r\|^2,\\
+\widehat P_j&amp;=\sum_{i,r}w_{i,r}\|\Psi_{i,\rho_j}^r\|^2,\\
+T_j&amp;=\sum_{i,r}\sum_{z\in H_j}w_{i,r}\mu_j(z)\\
+&amp;\qquad\cdot\langle\Psi_{i,z}^r,W_{i,r,z}\Psi_{i,z}^r\rangle,\\
+\widehat T_j&amp;=\sum_{i,r}\sum_{z\in H_j}w_{i,r}\mu_j(z)\\
+&amp;\qquad\cdot\langle\Psi_{i,\rho_j}^r,W_{i,r,z}\Psi_{i,\rho_j}^r\rangle .
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(\widehat P_j&gt;0\)">\(\widehat P_j&gt;0\)</span>, the vector
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Xi_j&amp;=\widehat P_j^{-1/2}\sum_{i,r}\sqrt{w_{i,r}}\\
+&amp;\qquad\cdot|i,r\rangle_A\otimes|i,r\rangle_B\otimes\Psi_{i,\rho_j}^r
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Xi_j&amp;=\widehat P_j^{-1/2}\sum_{i,r}\sqrt{w_{i,r}}\\
+&amp;\qquad\cdot|i,r\rangle_A\otimes|i,r\rangle_B\otimes\Psi_{i,\rho_j}^r
+\end{aligned}
+\]</span>
+is a unit vector in a finite-dimensional space, with flag registers <span class="math" data-tex="\(|i,r\rangle\)">\(|i,r\rangle\)</span> held by both players. On question <span class="math" data-tex="\(x\)">\(x\)</span>, Alice reads her register <span class="math" data-tex="\((i,r)\)">\((i,r)\)</span> and applies the POVM <span class="math" data-tex="\((\widetilde M_{r,x}^a)_a\)">\((\widetilde M_{r,x}^a)_a\)</span> of mode <span class="math" data-tex="\(i\)">\(i\)</span> to her factor <span class="math" data-tex="\(\mathcal K_A\)">\(\mathcal K_A\)</span>; Bob does the same with <span class="math" data-tex="\((\widetilde N_{r,y}^b)_b\)">\((\widetilde N_{r,y}^b)_b\)</span>. The state and the register distribution do not depend on the fresh questions, because the vectors are taken at the fixed root <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> and the weights do not involve the fresh pair; each measurement depends only on its own player's question. So this is a legal strategy for <span class="math" data-tex="\(G_j\)">\(G_j\)</span>. The registers are perfectly correlated, so its success probability is <span class="math" data-tex="\(\widehat T_j/\widehat P_j\)">\(\widehat T_j/\widehat P_j\)</span>. Hence, also when <span class="math" data-tex="\(\widehat P_j=0\)">\(\widehat P_j=0\)</span> (then <span class="math" data-tex="\(\widehat T_j=0\)">\(\widehat T_j=0\)</span>),
+<span class="math math-display" data-tex="\[
+\widehat T_j\le v_j\widehat P_j . \tag{2.4}
+\]">\[
+\widehat T_j\le v_j\widehat P_j . \tag{2.4}
+\]</span></p>
+<p><em>Comparison.</em> For vectors <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and <span class="math" data-tex="\(0\preceq W\preceq I\)">\(0\preceq W\preceq I\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle a,Wa\rangle-\langle b,Wb\rangle\\
+&amp;\quad=\langle a-b,Wa\rangle+\langle b,W(a-b)\rangle,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle a,Wa\rangle-\langle b,Wb\rangle\\
+&amp;\quad=\langle a-b,Wa\rangle+\langle b,W(a-b)\rangle,
+\end{aligned}
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\langle a,Wa\rangle-\langle b,Wb\rangle|\\
+&amp;\quad\le(\|a\|+\|b\|)\|a-b\| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|\langle a,Wa\rangle-\langle b,Wb\rangle|\\
+&amp;\quad\le(\|a\|+\|b\|)\|a-b\| .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(W=I\)">\(W=I\)</span> or <span class="math" data-tex="\(W=W_{i,r,z}\)">\(W=W_{i,r,z}\)</span>, the weighted Cauchy–Schwarz inequality gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|P_j-\widehat P_j|,\ |T_j-\widehat T_j|\le e_j,\\
+&amp;e_j:=\bigl(\sqrt{P_j}+\sqrt{\widehat P_j}\bigr)\sqrt{E_j} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|P_j-\widehat P_j|,\ |T_j-\widehat T_j|\le e_j,\\
+&amp;e_j:=\bigl(\sqrt{P_j}+\sqrt{\widehat P_j}\bigr)\sqrt{E_j} .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(\sum_j\lambda_jP_j=p\)">\(\sum_j\lambda_jP_j=p\)</span> by (2.2), the triangle inequality in the weighted direct sum of the spaces gives <span class="math" data-tex="\(\sqrt{\widehat P}\le\sqrt p+\sqrt E\)">\(\sqrt{\widehat P}\le\sqrt p+\sqrt E\)</span> for <span class="math" data-tex="\(\widehat P=\sum_j\lambda_j\widehat P_j\)">\(\widehat P=\sum_j\lambda_j\widehat P_j\)</span>, and another Cauchy–Schwarz inequality gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_j\lambda_je_j&amp;\le\bigl(\sqrt p+\sqrt{\widehat P}\bigr)\sqrt E\\
+&amp;\le2\sqrt{pE}+E .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_j\lambda_je_j&amp;\le\bigl(\sqrt p+\sqrt{\widehat P}\bigr)\sqrt E\\
+&amp;\le2\sqrt{pE}+E .
+\end{aligned}
+\]</span>
+By (2.4) and <span class="math" data-tex="\(v_j\le1\)">\(v_j\le1\)</span>, <span class="math" data-tex="\(T_j\le\widehat T_j+e_j\le v_j\widehat P_j+e_j\le v_jP_j+2e_j\)">\(T_j\le\widehat T_j+e_j\le v_j\widehat P_j+e_j\le v_jP_j+2e_j\)</span>. Since <span class="math" data-tex="\(\sum_j\lambda_jT_j=p\bar s\)">\(\sum_j\lambda_jT_j=p\bar s\)</span> by (2.2),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bar s&amp;\le\sum_j\widetilde\lambda_jv_j+4\sqrt{E/p}\\
+&amp;\quad+2E/p,
+\end{aligned} \tag{2.5}
+\]">\[
+\begin{aligned}
+\bar s&amp;\le\sum_j\widetilde\lambda_jv_j+4\sqrt{E/p}\\
+&amp;\quad+2E/p,
+\end{aligned} \tag{2.5}
+\]</span>
+where <span class="math" data-tex="\(\widetilde\lambda_j=\lambda_jP_j/p\)">\(\widetilde\lambda_j=\lambda_jP_j/p\)</span>.</p>
+<p><em>The component weights.</em> Let <span class="math" data-tex="\(J_i\)">\(J_i\)</span> be the component of the fresh pair at mode <span class="math" data-tex="\(i\)">\(i\)</span>. By (2.2) of the previous lesson, <span class="math" data-tex="\(\lambda_jP_j=\frac1m\sum_i\Pr(E_C,\ J_i=j)\)">\(\lambda_jP_j=\frac1m\sum_i\Pr(E_C,\ J_i=j)\)</span>, so <span class="math" data-tex="\(\widetilde\lambda\)">\(\widetilde\lambda\)</span> is the average over <span class="math" data-tex="\(i\)">\(i\)</span> of the law of <span class="math" data-tex="\(J_i\)">\(J_i\)</span> given <span class="math" data-tex="\(E_C\)">\(E_C\)</span>. The <span class="math" data-tex="\(J_i\)">\(J_i\)</span> are independent with law <span class="math" data-tex="\(\lambda=(\lambda_j)\)">\(\lambda=(\lambda_j)\)</span>, so Lemma 4.1 of the previous lesson and convexity of total variation give <span class="math" data-tex="\(\operatorname{TV}(\widetilde\lambda,\lambda)\le\sqrt{\log(1/p)/(2m)}\)">\(\operatorname{TV}(\widetilde\lambda,\lambda)\le\sqrt{\log(1/p)/(2m)}\)</span>. Since <span class="math" data-tex="\(0\le v_j\le1\)">\(0\le v_j\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_j\widetilde\lambda_jv_j&amp;\le\sum_j\lambda_jv_j+\operatorname{TV}(\widetilde\lambda,\lambda)\\
+&amp;\le v+\sqrt{\frac{\log(1/p)}{2m}},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_j\widetilde\lambda_jv_j&amp;\le\sum_j\lambda_jv_j+\operatorname{TV}(\widetilde\lambda,\lambda)\\
+&amp;\le v+\sqrt{\frac{\log(1/p)}{2m}},
+\end{aligned}
+\]</span>
+by Lemma 1.2. Substituting this and (2.3) into (2.5) proves (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For fixed <span class="math" data-tex="\(\mu\)">\(\mu\)</span> the error in (2.1) is <span class="math" data-tex="\(O(\sqrt\tau+\tau)\)">\(O(\sqrt\tau+\tau)\)</span>, while (S) has error of order <span class="math" data-tex="\(\tau^{1/4}\)">\(\tau^{1/4}\)</span> with a universal constant. Where both apply, the smaller one may be used.</p>
+<h2 id="3-the-cubic-threshold-bound">3. The cubic threshold bound</h2>
+<p><em>Proof of Theorem 2.2 of <a href="entangled-games-and-threshold-repetition.html">Entangled games and threshold repetition</a>.</em> Since <span class="math" data-tex="\(\log(1/p)\le m\tau\)">\(\log(1/p)\le m\tau\)</span>, Proposition 2.1 bounds the average conditional win rate by
+<span class="math math-display" data-tex="\[
+v+\sqrt{\tau/2}+4\sqrt{\kappa_\mu\tau}+2\kappa_\mu\tau .
+\]">\[
+v+\sqrt{\tau/2}+4\sqrt{\kappa_\mu\tau}+2\kappa_\mu\tau .
+\]</span>
+Let <span class="math" data-tex="\(0&lt;\delta&lt;1-v\)">\(0&lt;\delta&lt;1-v\)</span> and <span class="math" data-tex="\(T=\delta^2/(1024(1+\kappa_\mu))\)">\(T=\delta^2/(1024(1+\kappa_\mu))\)</span>. If <span class="math" data-tex="\(\tau(C)\le T\)">\(\tau(C)\le T\)</span>, the excess is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac\delta{\sqrt{2048}}+\frac{4\delta}{32}+\frac{2\delta^2}{1024}\\
+&amp;\quad\le\frac\delta{32}+\frac\delta8+\frac\delta{512}=\frac{81\delta}{512}&lt;\frac\delta4,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac\delta{\sqrt{2048}}+\frac{4\delta}{32}+\frac{2\delta^2}{1024}\\
+&amp;\quad\le\frac\delta{32}+\frac\delta8+\frac\delta{512}=\frac{81\delta}{512}&lt;\frac\delta4,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(\kappa_\mu/(1+\kappa_\mu)\le1\)">\(\kappa_\mu/(1+\kappa_\mu)\le1\)</span> and <span class="math" data-tex="\(\delta&lt;1\)">\(\delta&lt;1\)</span>. Also <span class="math" data-tex="\(T\le\delta/4\)">\(T\le\delta/4\)</span>. So the hypothesis (2.1) of Proposition 2.1 of <a href="from-conditioning-to-a-threshold-bound.html">From conditioning to a threshold bound</a> holds, and that proposition gives the rate
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{\delta T}{16(1+\log d)}=\frac{\delta^3}{c_\mu},\\
+&amp;c_\mu=16384(1+\kappa_\mu)(1+\log d) .\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{\delta T}{16(1+\log d)}=\frac{\delta^3}{c_\mu},\\
+&amp;c_\mu=16384(1+\kappa_\mu)(1+\log d) .\qquad\square
+\end{aligned}
+\]</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> For the game of Exercise 5.2 of the first lesson, compute the rate of Theorem 2.2.</p>
+<p><strong>4.2.</strong> Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be uniform on the pairs <span class="math" data-tex="\((x,\sigma(x))\)">\((x,\sigma(x))\)</span> for a bijection <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Show that <span class="math" data-tex="\(\kappa_\mu=0\)">\(\kappa_\mu=0\)</span> and that (2.1) reads <span class="math" data-tex="\(\bar s\le v+\sqrt{\log(1/p)/(2m)}\)">\(\bar s\le v+\sqrt{\log(1/p)/(2m)}\)</span>.</p>
+<p><strong>4.3.</strong> Prove that a simple path in a graph with <span class="math" data-tex="\(n\)">\(n\)</span> vertices has at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span> edges and that each of its vertices lies on at most two of its edges. Deduce the factor <span class="math" data-tex="\(4(|H_j|-1)\)">\(4(|H_j|-1)\)</span> in the path estimate.</p>
+<p><strong>4.4.</strong> Show that <span class="math" data-tex="\(\operatorname{TV}(\widetilde\lambda,\lambda)\le\frac1m\sum_i\operatorname{TV}(P_i,\lambda)\)">\(\operatorname{TV}(\widetilde\lambda,\lambda)\le\frac1m\sum_i\operatorname{TV}(P_i,\lambda)\)</span> when <span class="math" data-tex="\(\widetilde\lambda=\frac1m\sum_iP_i\)">\(\widetilde\lambda=\frac1m\sum_iP_i\)</span>.</p>
+<p><strong>4.5.</strong> In the strategy built from <span class="math" data-tex="\(\Xi_j\)">\(\Xi_j\)</span>, explain why it matters that the weights <span class="math" data-tex="\(w_{i,r}\)">\(w_{i,r}\)</span> do not depend on the fresh pair.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(d=4\)">\(d=4\)</span> and <span class="math" data-tex="\(\kappa_\mu=96\)">\(\kappa_\mu=96\)</span>, so the rate is <span class="math" data-tex="\(\delta^3/(16384\cdot97\cdot(1+\log4))\)">\(\delta^3/(16384\cdot97\cdot(1+\log4))\)</span>, about <span class="math" data-tex="\(\delta^3/(3.8\cdot10^6)\)">\(\delta^3/(3.8\cdot10^6)\)</span>.</p>
+<p><strong>4.2.</strong> Two different pairs <span class="math" data-tex="\((x,\sigma(x))\)">\((x,\sigma(x))\)</span> share no question, so every component is a single pair and <span class="math" data-tex="\(\kappa_\mu=0\)">\(\kappa_\mu=0\)</span>; the terms with <span class="math" data-tex="\(\kappa_\mu\)">\(\kappa_\mu\)</span> vanish.</p>
+<p><strong>4.3.</strong> The <span class="math" data-tex="\(n&#x27;\le n\)">\(n&#x27;\le n\)</span> vertices of a simple path are distinct and consecutive vertices are joined, giving <span class="math" data-tex="\(n&#x27;-1\)">\(n&#x27;-1\)</span> edges; an inner vertex lies on its two neighbouring edges and an end vertex on one. Along a path <span class="math" data-tex="\(z_0,\dots,z_\ell\)">\(z_0,\dots,z_\ell\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\Psi_{z_0}-\Psi_{z_\ell}\|^2\le\ell\sum_t\|\Psi_{z_t}-\Psi_{z_{t+1}}\|^2\\
+&amp;\quad\le\ell\sum_t2(c_{z_t}+c_{z_{t+1}})\le4\ell\sum_ac_a .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\Psi_{z_0}-\Psi_{z_\ell}\|^2\le\ell\sum_t\|\Psi_{z_t}-\Psi_{z_{t+1}}\|^2\\
+&amp;\quad\le\ell\sum_t2(c_{z_t}+c_{z_{t+1}})\le4\ell\sum_ac_a .
+\end{aligned}
+\]</span></p>
+<p><strong>4.4.</strong> <span class="math" data-tex="\(\operatorname{TV}\)">\(\operatorname{TV}\)</span> is a norm distance, <span class="math" data-tex="\(\frac12\|\cdot\|_1\)">\(\frac12\|\cdot\|_1\)</span>, so <span class="math" data-tex="\(\|\frac1m\sum_i(P_i-\lambda)\|_1\le\frac1m\sum_i\|P_i-\lambda\|_1\)">\(\|\frac1m\sum_i(P_i-\lambda)\|_1\le\frac1m\sum_i\|P_i-\lambda\|_1\)</span>.</p>
+<p><strong>4.5.</strong> A strategy for one game must prepare its shared state before the questions are asked. If the weights depended on the fresh pair, <span class="math" data-tex="\(\Xi_j\)">\(\Xi_j\)</span> would depend on the questions, and the players could not prepare it.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-TR] OpenAI, <em>Threshold parallel repetition for finite-dimensional entangled games</em>, OpenAI Math Release preprint, 25 September 2026, Proposition 5.1, Corollary 5.2. https://github.com/openai/math/tree/main/preprints/Threshold-parallel-repetition-for-finite-dimensional-entangled-games-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

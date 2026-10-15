@@ -1,0 +1,387 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Boundary kernels and the multiplier identity</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strict hot spots on simply connected planar domains)</a><a href="a-variational-principle-for-tangent-vector-fields.html">Previous lesson</a><a href="reciprocal-kernels-and-conditional-negativity.html">Next lesson</a><a href="src/boundary-kernels-and-the-multiplier-identity.md">Editable source</a></nav><main><article><h1 id="boundary-kernels-and-the-multiplier-identity">Boundary kernels and the multiplier identity</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Through the conformal map <span class="math" data-tex="\(\Phi\colon\mathbb D\to\Omega\)">\(\Phi\colon\mathbb D\to\Omega\)</span>, the nonnegative energy of <a href="a-variational-principle-for-tangent-vector-fields.html">A variational principle for tangent vector fields</a> becomes a quadratic form <span class="math" data-tex="\(E\)">\(E\)</span> on vector data on the circle. This lesson writes <span class="math" data-tex="\(E\)">\(E\)</span> with two boundary kernels, built from the Green function of the disc and a nonnegative potential, and proves the multiplier identity: if <span class="math" data-tex="\(g\)">\(g\)</span> is the boundary gradient of a Neumann eigenfunction, then for every real Lipschitz function <span class="math" data-tex="\(b\)">\(b\)</span> on the circle
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E(bg)&amp;=\frac12\iint N(s,t)(b(s)-b(t))^2\\
+&amp;\qquad\cdot g(s)\cdot g(t)\,ds\,dt
+\end{aligned}
+\]">\[
+\begin{aligned}
+E(bg)&amp;=\frac12\iint N(s,t)(b(s)-b(t))^2\\
+&amp;\qquad\cdot g(s)\cdot g(t)\,ds\,dt
+\end{aligned}
+\]</span>
+with a positive kernel <span class="math" data-tex="\(N\)">\(N\)</span>. The kernel constructions in Sections 2–4 need only a bounded nonnegative potential satisfying a subcritical Dirichlet inequality.</p>
+<ul>
+<li>The Green function and Poisson kernel of the disc (Section 1).</li>
+<li>A subcritical potential and its Green operator (Section 2).</li>
+<li>The Dirichlet problem with the potential (Section 3).</li>
+<li>The kernels <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(N\)">\(N\)</span> and their estimates (Section 4).</li>
+<li>The boundary energy (Section 5).</li>
+<li>The multiplier identity (Section 6).</li>
+</ul>
+<p>Notation is that of the earlier lessons: <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is the conformal map of Proposition 2.1 of <a href="conformal-coordinates-hopfs-lemma-and-boundary-signs.html">Conformal coordinates, Hopf's lemma and boundary signs</a>, and (SOB), (ER) apply to the disc as well as to <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. The circle <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span> carries arclength <span class="math" data-tex="\(ds\)">\(ds\)</span>.</p>
+<h2 id="1-the-green-function-and-poisson-kernel-of-the-disc">1. The Green function and Poisson kernel of the disc</h2>
+<p>For <span class="math" data-tex="\(x,y\in\mathbb D\)">\(x,y\in\mathbb D\)</span>, <span class="math" data-tex="\(x\ne y\)">\(x\ne y\)</span>, and <span class="math" data-tex="\(s\in\mathbb S^1\)">\(s\in\mathbb S^1\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G(x,y)=\frac1{2\pi}\log\Bigl|\frac{1-x\bar y}{x-y}\Bigr|\\
+=\frac1{4\pi}\log\Bigl(1+\frac{(1-|x|^2)(1-|y|^2)}{|x-y|^2}\Bigr),\\
+P_s(x)=\frac{1-|x|^2}{2\pi|s-x|^2},
+\end{gathered}
+\]">\[
+\begin{gathered}
+G(x,y)=\frac1{2\pi}\log\Bigl|\frac{1-x\bar y}{x-y}\Bigr|\\
+=\frac1{4\pi}\log\Bigl(1+\frac{(1-|x|^2)(1-|y|^2)}{|x-y|^2}\Bigr),\\
+P_s(x)=\frac{1-|x|^2}{2\pi|s-x|^2},
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(G(x,x)=+\infty\)">\(G(x,x)=+\infty\)</span>. The two expressions for <span class="math" data-tex="\(G\)">\(G\)</span> agree because <span class="math" data-tex="\(|1-x\bar y|^2\)">\(|1-x\bar y|^2\)</span> equals <span class="math" data-tex="\(|x-y|^2+(1-|x|^2)(1-|y|^2)\)">\(|x-y|^2+(1-|x|^2)(1-|y|^2)\)</span>. So <span class="math" data-tex="\(G\)">\(G\)</span> is symmetric and positive. Since <span class="math" data-tex="\(|1-x\bar y|\le2\)">\(|1-x\bar y|\le2\)</span> and <span class="math" data-tex="\(1-|x|^2\le2|s-x|\)">\(1-|x|^2\le2|s-x|\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0&lt;G(x,y)\le\tfrac1{2\pi}\log\tfrac2{|x-y|},\\
+0&lt;P_s(x)\le\tfrac1{\pi|s-x|}.
+\end{gathered} \tag{1.1}
+\]">\[
+\begin{gathered}
+0&lt;G(x,y)\le\tfrac1{2\pi}\log\tfrac2{|x-y|},\\
+0&lt;P_s(x)\le\tfrac1{\pi|s-x|}.
+\end{gathered} \tag{1.1}
+\]</span></p>
+<p><strong>Lemma 1.1</strong> (Poisson extension). For <span class="math" data-tex="\(s=e^{i\varphi}\)">\(s=e^{i\varphi}\)</span> and <span class="math" data-tex="\(x=re^{i\theta}\in\mathbb D\)">\(x=re^{i\theta}\in\mathbb D\)</span>,
+<span class="math math-display" data-tex="\[
+P_s(x)=\frac1{2\pi}\sum_{n\in\mathbb Z}r^{|n|}e^{in(\theta-\varphi)} .
+\]">\[
+P_s(x)=\frac1{2\pi}\sum_{n\in\mathbb Z}r^{|n|}e^{in(\theta-\varphi)} .
+\]</span>
+Hence <span class="math" data-tex="\(P_s\)">\(P_s\)</span> is harmonic and <span class="math" data-tex="\(\int_{\mathbb S^1}P_s(x)\,ds=1\)">\(\int_{\mathbb S^1}P_s(x)\,ds=1\)</span>. For a Lipschitz function <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span> with Fourier coefficients <span class="math" data-tex="\(\hat h_n\)">\(\hat h_n\)</span>, the Poisson extension
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Ah(x)&amp;=\int_{\mathbb S^1}P_s(x)h(s)\,ds\\
+&amp;=\sum_n\hat h_nr^{|n|}e^{in\theta}
+\end{aligned}
+\]">\[
+\begin{aligned}
+Ah(x)&amp;=\int_{\mathbb S^1}P_s(x)h(s)\,ds\\
+&amp;=\sum_n\hat h_nr^{|n|}e^{in\theta}
+\end{aligned}
+\]</span>
+is harmonic, continuous on <span class="math" data-tex="\(\overline{\mathbb D}\)">\(\overline{\mathbb D}\)</span> with boundary values <span class="math" data-tex="\(h\)">\(h\)</span>, bounded by <span class="math" data-tex="\(\max|h|\)">\(\max|h|\)</span>, and lies in <span class="math" data-tex="\(H^1(\mathbb D)\)">\(H^1(\mathbb D)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{\mathbb D}|\nabla Ah|^2\\
+&amp;\quad=2\pi\sum_n|n||\hat h_n|^2 .
+\end{aligned} \tag{1.2}
+\]">\[
+\begin{aligned}
+&amp;\int_{\mathbb D}|\nabla Ah|^2\\
+&amp;\quad=2\pi\sum_n|n||\hat h_n|^2 .
+\end{aligned} \tag{1.2}
+\]</span>
+If <span class="math" data-tex="\(h\in C^\infty(\mathbb S^1)\)">\(h\in C^\infty(\mathbb S^1)\)</span>, then <span class="math" data-tex="\(Ah\in C^\infty(\overline{\mathbb D})\)">\(Ah\in C^\infty(\overline{\mathbb D})\)</span>.</p>
+<p><em>Proof.</em> With <span class="math" data-tex="\(w=re^{i(\theta-\varphi)}\)">\(w=re^{i(\theta-\varphi)}\)</span>, the series equals <span class="math" data-tex="\(\frac1{2\pi}\operatorname{Re}\frac{1+w}{1-w}=\frac{1-r^2}{2\pi|1-w|^2}\)">\(\frac1{2\pi}\operatorname{Re}\frac{1+w}{1-w}=\frac{1-r^2}{2\pi|1-w|^2}\)</span>, and <span class="math" data-tex="\(|1-w|=|s-x|\)">\(|1-w|=|s-x|\)</span>. Each term is harmonic, and the series converges with all derivatives uniformly on compact subsets of <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>; integrating over <span class="math" data-tex="\(s\)">\(s\)</span> keeps only the term <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. Since <span class="math" data-tex="\(h\)">\(h\)</span> is Lipschitz, <span class="math" data-tex="\(\sum n^2|\hat h_n|^2&lt;\infty\)">\(\sum n^2|\hat h_n|^2&lt;\infty\)</span>, so <span class="math" data-tex="\(\sum|\hat h_n|&lt;\infty\)">\(\sum|\hat h_n|&lt;\infty\)</span> and the series for <span class="math" data-tex="\(Ah\)">\(Ah\)</span> converges uniformly on <span class="math" data-tex="\(\overline{\mathbb D}\)">\(\overline{\mathbb D}\)</span> to a continuous function with boundary values <span class="math" data-tex="\(h\)">\(h\)</span>. The bound follows from <span class="math" data-tex="\(P_s&gt;0\)">\(P_s&gt;0\)</span> and <span class="math" data-tex="\(\int P_s\,ds=1\)">\(\int P_s\,ds=1\)</span>. For <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, <span class="math" data-tex="\(\int_{\mathbb D}|\nabla(r^{|n|}e^{in\theta})|^2=2n^2\int_{\mathbb D}r^{2|n|-2}\)">\(\int_{\mathbb D}|\nabla(r^{|n|}e^{in\theta})|^2=2n^2\int_{\mathbb D}r^{2|n|-2}\)</span>, which is <span class="math" data-tex="\(2\pi|n|\)">\(2\pi|n|\)</span>, and distinct <span class="math" data-tex="\(n\)">\(n\)</span> are orthogonal for the Dirichlet inner product by the angular integration; this gives (1.2) and convergence of the partial sums in <span class="math" data-tex="\(H^1(\mathbb D)\)">\(H^1(\mathbb D)\)</span>. For smooth <span class="math" data-tex="\(h\)">\(h\)</span> the coefficients decrease faster than every power of <span class="math" data-tex="\(|n|\)">\(|n|\)</span>, so every derivative of the series converges uniformly on <span class="math" data-tex="\(\overline{\mathbb D}\)">\(\overline{\mathbb D}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2</strong> (Green representation).</p>
+<ol>
+<li>For <span class="math" data-tex="\(\phi\in C^\infty_c(\mathbb D)\)">\(\phi\in C^\infty_c(\mathbb D)\)</span> and <span class="math" data-tex="\(x\in\mathbb D\)">\(x\in\mathbb D\)</span>, <span class="math" data-tex="\(\phi(x)=\int_{\mathbb D}G(x,y)(-\Delta\phi)(y)\,dy\)">\(\phi(x)=\int_{\mathbb D}G(x,y)(-\Delta\phi)(y)\,dy\)</span>.</li>
+<li>For <span class="math" data-tex="\(f\in L^2(\mathbb D)\)">\(f\in L^2(\mathbb D)\)</span>, the function <span class="math" data-tex="\(\mathcal Gf(x)=\int_{\mathbb D}G(x,y)f(y)\,dy\)">\(\mathcal Gf(x)=\int_{\mathbb D}G(x,y)f(y)\,dy\)</span> is defined and continuous at every <span class="math" data-tex="\(x\in\mathbb D\)">\(x\in\mathbb D\)</span>, and it is the unique <span class="math" data-tex="\(\psi\in H^1_0(\mathbb D)\)">\(\psi\in H^1_0(\mathbb D)\)</span> with <span class="math" data-tex="\(\int\nabla\psi\cdot\nabla\phi=\int f\phi\)">\(\int\nabla\psi\cdot\nabla\phi=\int f\phi\)</span> for all <span class="math" data-tex="\(\phi\in H^1_0(\mathbb D)\)">\(\phi\in H^1_0(\mathbb D)\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) For fixed <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(y\mapsto G(x,y)\)">\(y\mapsto G(x,y)\)</span> is <span class="math" data-tex="\(-\frac1{2\pi}\log|x-y|\)">\(-\frac1{2\pi}\log|x-y|\)</span> plus <span class="math" data-tex="\(\frac1{2\pi}\log|1-\bar xy|\)">\(\frac1{2\pi}\log|1-\bar xy|\)</span>, the real part of a holomorphic function of <span class="math" data-tex="\(y\)">\(y\)</span> on a neighbourhood of <span class="math" data-tex="\(\overline{\mathbb D}\)">\(\overline{\mathbb D}\)</span>; so it is harmonic and smooth on <span class="math" data-tex="\(\overline{\mathbb D}\setminus\{x\}\)">\(\overline{\mathbb D}\setminus\{x\}\)</span>. Apply Green's second identity, from (SOB 1), on <span class="math" data-tex="\(\mathbb D\setminus\overline{B(x,\varepsilon)}\)">\(\mathbb D\setminus\overline{B(x,\varepsilon)}\)</span>. Only the small circle contributes, since <span class="math" data-tex="\(\phi\)">\(\phi\)</span> vanishes near <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span>. On it the normal <span class="math" data-tex="\(\nu\)">\(\nu\)</span> points towards <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(G=-\frac1{2\pi}\log\varepsilon+O(1)\)">\(G=-\frac1{2\pi}\log\varepsilon+O(1)\)</span> and <span class="math" data-tex="\(\partial_\nu G=\frac1{2\pi\varepsilon}+O(1)\)">\(\partial_\nu G=\frac1{2\pi\varepsilon}+O(1)\)</span>. Hence <span class="math" data-tex="\(\int_{\mathbb D}G\Delta\phi\)">\(\int_{\mathbb D}G\Delta\phi\)</span> equals <span class="math" data-tex="\(\lim_{\varepsilon\to0}\int(G\partial_\nu\phi-\phi\partial_\nu G)\,ds\)">\(\lim_{\varepsilon\to0}\int(G\partial_\nu\phi-\phi\partial_\nu G)\,ds\)</span>, which is <span class="math" data-tex="\(-\phi(x)\)">\(-\phi(x)\)</span>.</p>
+<p>(2) By (1.1), <span class="math" data-tex="\(G(x,\cdot)\in L^2(\mathbb D)\)">\(G(x,\cdot)\in L^2(\mathbb D)\)</span>, and <span class="math" data-tex="\(x\mapsto G(x,\cdot)\)">\(x\mapsto G(x,\cdot)\)</span> is continuous into <span class="math" data-tex="\(L^2(\mathbb D)\)">\(L^2(\mathbb D)\)</span> by dominated convergence; so <span class="math" data-tex="\(\mathcal Gf\)">\(\mathcal Gf\)</span> is defined and continuous, and <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is bounded on <span class="math" data-tex="\(L^2(\mathbb D)\)">\(L^2(\mathbb D)\)</span> because <span class="math" data-tex="\(\iint G^2&lt;\infty\)">\(\iint G^2&lt;\infty\)</span>. For <span class="math" data-tex="\(f\in C^\infty_c(\mathbb D)\)">\(f\in C^\infty_c(\mathbb D)\)</span>, <span class="math" data-tex="\(\mathcal Gf\)">\(\mathcal Gf\)</span> is the convolution of <span class="math" data-tex="\(-\frac1{2\pi}\log|\cdot|\)">\(-\frac1{2\pi}\log|\cdot|\)</span> with <span class="math" data-tex="\(f\)">\(f\)</span> plus a function smooth on a neighbourhood of <span class="math" data-tex="\(\overline{\mathbb D}\)">\(\overline{\mathbb D}\)</span>, so <span class="math" data-tex="\(\mathcal Gf\in C^\infty(\overline{\mathbb D})\)">\(\mathcal Gf\in C^\infty(\overline{\mathbb D})\)</span>; it vanishes on <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span>, where <span class="math" data-tex="\(|1-x\bar y|=|x-y|\)">\(|1-x\bar y|=|x-y|\)</span>. Hence <span class="math" data-tex="\(\mathcal Gf\in H^1_0(\mathbb D)\)">\(\mathcal Gf\in H^1_0(\mathbb D)\)</span>, and by Fubini, symmetry and (1), for <span class="math" data-tex="\(\phi\in C^\infty_c(\mathbb D)\)">\(\phi\in C^\infty_c(\mathbb D)\)</span>,
+<span class="math math-display" data-tex="\[
+\int\nabla\mathcal Gf\cdot\nabla\phi=\int\mathcal Gf\,(-\Delta\phi)=\int f\phi .
+\]">\[
+\int\nabla\mathcal Gf\cdot\nabla\phi=\int\mathcal Gf\,(-\Delta\phi)=\int f\phi .
+\]</span>
+By density this holds for <span class="math" data-tex="\(\phi\in H^1_0(\mathbb D)\)">\(\phi\in H^1_0(\mathbb D)\)</span>. The solution is unique by (B10) of <a href="../elliptic-operators-and-boundary-problems/second-order-boundary.html">Boundary energy, local inverses, and harmonic data</a>, and the solution map is bounded from <span class="math" data-tex="\(L^2\)">\(L^2\)</span> into <span class="math" data-tex="\(H^1_0\)">\(H^1_0\)</span>. Two bounded maps that agree on the dense subspace <span class="math" data-tex="\(C^\infty_c(\mathbb D)\)">\(C^\infty_c(\mathbb D)\)</span> agree on <span class="math" data-tex="\(L^2(\mathbb D)\)">\(L^2(\mathbb D)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-subcritical-potential-and-its-green-operator">2. A subcritical potential and its Green operator</h2>
+<p>Let <span class="math" data-tex="\(dq=a\,dx\)">\(dq=a\,dx\)</span> on <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span> with <span class="math" data-tex="\(a\in L^\infty(\mathbb D)\)">\(a\in L^\infty(\mathbb D)\)</span>, <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, and suppose that for some <span class="math" data-tex="\(0&lt;d&lt;1\)">\(0&lt;d&lt;1\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{\mathbb D}|\psi|^2\,dq\le d\int_{\mathbb D}|\nabla\psi|^2\\
+(\psi\in H^1_0(\mathbb D)).
+\end{gathered} \tag{2.1}
+\]">\[
+\begin{gathered}
+\int_{\mathbb D}|\psi|^2\,dq\le d\int_{\mathbb D}|\nabla\psi|^2\\
+(\psi\in H^1_0(\mathbb D)).
+\end{gathered} \tag{2.1}
+\]</span>
+A subscript <span class="math" data-tex="\(q\)">\(q\)</span> on an inner product or norm refers to <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span>. The zero measure satisfies (2.1) with any <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (the conformal potential). The measure <span class="math" data-tex="\(dq=\mu|\Phi&#x27;|^2dx\)">\(dq=\mu|\Phi&#x27;|^2dx\)</span> satisfies (2.1) with <span class="math" data-tex="\(d=\mu/\lambda_D&lt;1\)">\(d=\mu/\lambda_D&lt;1\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(\psi\in C^\infty_c(\mathbb D)\)">\(\psi\in C^\infty_c(\mathbb D)\)</span>, <span class="math" data-tex="\(\psi\circ\Phi^{-1}\in C^\infty_c(\Omega)\)">\(\psi\circ\Phi^{-1}\in C^\infty_c(\Omega)\)</span>. The Jacobian of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is <span class="math" data-tex="\(|\Phi&#x27;|^2\)">\(|\Phi&#x27;|^2\)</span>, and <span class="math" data-tex="\(\nabla(f\circ\Phi)\cdot\nabla(k\circ\Phi)\)">\(\nabla(f\circ\Phi)\cdot\nabla(k\circ\Phi)\)</span> equals <span class="math" data-tex="\(|\Phi&#x27;|^2(\nabla f\cdot\nabla k)\circ\Phi\)">\(|\Phi&#x27;|^2(\nabla f\cdot\nabla k)\circ\Phi\)</span> because <span class="math" data-tex="\(D\Phi\)">\(D\Phi\)</span> is <span class="math" data-tex="\(|\Phi&#x27;|\)">\(|\Phi&#x27;|\)</span> times a rotation. So <span class="math" data-tex="\(\int_\Omega|\nabla(\psi\circ\Phi^{-1})|^2=\int_{\mathbb D}|\nabla\psi|^2\)">\(\int_\Omega|\nabla(\psi\circ\Phi^{-1})|^2=\int_{\mathbb D}|\nabla\psi|^2\)</span> and <span class="math" data-tex="\(\int_\Omega|\psi\circ\Phi^{-1}|^2=\int_{\mathbb D}|\psi|^2|\Phi&#x27;|^2\)">\(\int_\Omega|\psi\circ\Phi^{-1}|^2=\int_{\mathbb D}|\psi|^2|\Phi&#x27;|^2\)</span>. The definition of <span class="math" data-tex="\(\lambda_D\)">\(\lambda_D\)</span> gives <span class="math" data-tex="\(\int|\psi|^2dq\le(\mu/\lambda_D)\int|\nabla\psi|^2\)">\(\int|\psi|^2dq\le(\mu/\lambda_D)\int|\nabla\psi|^2\)</span>, and density extends this to <span class="math" data-tex="\(H^1_0(\mathbb D)\)">\(H^1_0(\mathbb D)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2</strong> (the Green operator; [OpenAI-HS, Lemma 4.1]). The operator
+<span class="math math-display" data-tex="\[
+Tf(x)=\int_{\mathbb D}G(x,y)f(y)\,dq(y)
+\]">\[
+Tf(x)=\int_{\mathbb D}G(x,y)f(y)\,dq(y)
+\]</span>
+is defined at every <span class="math" data-tex="\(x\in\mathbb D\)">\(x\in\mathbb D\)</span> for <span class="math" data-tex="\(f\in L^2(q)\)">\(f\in L^2(q)\)</span>; <span class="math" data-tex="\(Tf\)">\(Tf\)</span> is the solution in <span class="math" data-tex="\(H^1_0(\mathbb D)\)">\(H^1_0(\mathbb D)\)</span> of <span class="math" data-tex="\(-\Delta\psi=af\)">\(-\Delta\psi=af\)</span>, with <span class="math" data-tex="\(\int|\nabla Tf|^2=\langle Tf,f\rangle_q\)">\(\int|\nabla Tf|^2=\langle Tf,f\rangle_q\)</span>, and <span class="math" data-tex="\(T\)">\(T\)</span> is a bounded self-adjoint operator on <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span> with <span class="math" data-tex="\(\|T\|\le d\)">\(\|T\|\le d\)</span>. The same holds with <span class="math" data-tex="\(q\)">\(q\)</span> replaced by any measure <span class="math" data-tex="\(0\le\rho\le q\)">\(0\le\rho\le q\)</span>.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(\int|af|^2\le\|a\|_\infty\|f\|_q^2\)">\(\int|af|^2\le\|a\|_\infty\|f\|_q^2\)</span>, Lemma 1.2 applies to <span class="math" data-tex="\(af\)">\(af\)</span>, and <span class="math" data-tex="\(\psi=Tf=\mathcal G(af)\)">\(\psi=Tf=\mathcal G(af)\)</span> satisfies <span class="math" data-tex="\(\int\nabla\psi\cdot\nabla\phi=\langle f,\phi\rangle_q\)">\(\int\nabla\psi\cdot\nabla\phi=\langle f,\phi\rangle_q\)</span> for <span class="math" data-tex="\(\phi\in H^1_0(\mathbb D)\)">\(\phi\in H^1_0(\mathbb D)\)</span>. With <span class="math" data-tex="\(\phi=\psi\)">\(\phi=\psi\)</span> and (2.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\psi\|_q^2&amp;\le d\int|\nabla\psi|^2=d\langle f,\psi\rangle_q\\
+&amp;\le d\|f\|_q\|\psi\|_q,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\psi\|_q^2&amp;\le d\int|\nabla\psi|^2=d\langle f,\psi\rangle_q\\
+&amp;\le d\|f\|_q\|\psi\|_q,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(\|Tf\|_q\le d\|f\|_q\)">\(\|Tf\|_q\le d\|f\|_q\)</span>. Symmetry of <span class="math" data-tex="\(G\)">\(G\)</span> and Fubini give <span class="math" data-tex="\(\langle Tf,g\rangle_q=\langle f,Tg\rangle_q\)">\(\langle Tf,g\rangle_q=\langle f,Tg\rangle_q\)</span>. A measure <span class="math" data-tex="\(\rho\le q\)">\(\rho\le q\)</span> has a density <span class="math" data-tex="\(0\le a_\rho\le a\)">\(0\le a_\rho\le a\)</span> and satisfies (2.1) with the same <span class="math" data-tex="\(d\)">\(d\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-dirichlet-problem-with-the-potential">3. The Dirichlet problem with the potential</h2>
+<p><strong>Lemma 3.1.</strong> For a Lipschitz function <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span>, the function
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W_h&amp;=Ah\\
+&amp;\quad+T(I-T)^{-1}Ah
+\end{aligned} \tag{3.1}
+\]">\[
+\begin{aligned}
+W_h&amp;=Ah\\
+&amp;\quad+T(I-T)^{-1}Ah
+\end{aligned} \tag{3.1}
+\]</span>
+belongs to <span class="math" data-tex="\(H^1(\mathbb D)\)">\(H^1(\mathbb D)\)</span>, has trace <span class="math" data-tex="\(h\)">\(h\)</span>, and satisfies <span class="math" data-tex="\(\int\nabla W_h\cdot\nabla\phi=\langle W_h,\phi\rangle_q\)">\(\int\nabla W_h\cdot\nabla\phi=\langle W_h,\phi\rangle_q\)</span> for all <span class="math" data-tex="\(\phi\in H^1_0(\mathbb D)\)">\(\phi\in H^1_0(\mathbb D)\)</span>; it is the only function with these properties. In <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span>, <span class="math" data-tex="\(W_h=(I-T)^{-1}Ah\)">\(W_h=(I-T)^{-1}Ah\)</span>. If <span class="math" data-tex="\(q\)">\(q\)</span> has a density in <span class="math" data-tex="\(C^\infty(\overline{\mathbb D})\)">\(C^\infty(\overline{\mathbb D})\)</span> and <span class="math" data-tex="\(h\in C^\infty(\mathbb S^1)\)">\(h\in C^\infty(\mathbb S^1)\)</span>, then <span class="math" data-tex="\(W_h\in C^\infty(\overline{\mathbb D})\)">\(W_h\in C^\infty(\overline{\mathbb D})\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(Ah\)">\(Ah\)</span> is bounded, hence in <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span>, and <span class="math" data-tex="\((I-T)^{-1}=\sum_{n\ge0}T^n\)">\((I-T)^{-1}=\sum_{n\ge0}T^n\)</span> converges in operator norm. Put <span class="math" data-tex="\(F=(I-T)^{-1}Ah\)">\(F=(I-T)^{-1}Ah\)</span> and <span class="math" data-tex="\(\psi=TF\in H^1_0(\mathbb D)\)">\(\psi=TF\in H^1_0(\mathbb D)\)</span>. Then <span class="math" data-tex="\(F=Ah+TF=W_h\)">\(F=Ah+TF=W_h\)</span> in <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span>. Since <span class="math" data-tex="\(Ah\)">\(Ah\)</span> is harmonic and in <span class="math" data-tex="\(H^1(\mathbb D)\)">\(H^1(\mathbb D)\)</span>, <span class="math" data-tex="\(\int\nabla Ah\cdot\nabla\phi=0\)">\(\int\nabla Ah\cdot\nabla\phi=0\)</span> for <span class="math" data-tex="\(\phi\in H^1_0(\mathbb D)\)">\(\phi\in H^1_0(\mathbb D)\)</span>, and so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int\nabla W_h\cdot\nabla\phi&amp;=\int\nabla\psi\cdot\nabla\phi\\
+&amp;=\langle F,\phi\rangle_q=\langle W_h,\phi\rangle_q .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int\nabla W_h\cdot\nabla\phi&amp;=\int\nabla\psi\cdot\nabla\phi\\
+&amp;=\langle F,\phi\rangle_q=\langle W_h,\phi\rangle_q .
+\end{aligned}
+\]</span>
+The difference <span class="math" data-tex="\(\delta\)">\(\delta\)</span> of two solutions lies in <span class="math" data-tex="\(H^1_0(\mathbb D)\)">\(H^1_0(\mathbb D)\)</span> and satisfies <span class="math" data-tex="\(\int|\nabla\delta|^2=\|\delta\|_q^2\le d\int|\nabla\delta|^2\)">\(\int|\nabla\delta|^2=\|\delta\|_q^2\le d\int|\nabla\delta|^2\)</span>, so <span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span>. For smooth data, <span class="math" data-tex="\(\psi=W_h-Ah\in H^1_0(\mathbb D)\)">\(\psi=W_h-Ah\in H^1_0(\mathbb D)\)</span> satisfies <span class="math" data-tex="\(\int\nabla\psi\cdot\nabla\phi=\int a(Ah+\psi)\phi\)">\(\int\nabla\psi\cdot\nabla\phi=\int a(Ah+\psi)\phi\)</span>, with <span class="math" data-tex="\(a(Ah+\psi)\in H^1(\mathbb D)\)">\(a(Ah+\psi)\in H^1(\mathbb D)\)</span>; (ER D) on the disc, applied repeatedly with (SOB 4), gives <span class="math" data-tex="\(\psi\in C^\infty(\overline{\mathbb D})\)">\(\psi\in C^\infty(\overline{\mathbb D})\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For vector data <span class="math" data-tex="\(h\colon\mathbb S^1\to\mathbb R^2\)">\(h\colon\mathbb S^1\to\mathbb R^2\)</span>, <span class="math" data-tex="\(Ah\)">\(Ah\)</span> and <span class="math" data-tex="\(W_h\)">\(W_h\)</span> are defined componentwise.</p>
+<h2 id="4-the-kernels-and-their-estimates">4. The kernels and their estimates</h2>
+<p>For a nonnegative function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span> and <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(T^nf\)">\(T^nf\)</span> denotes the iterated integral <span class="math" data-tex="\(T(T^{n-1}f)\)">\(T(T^{n-1}f)\)</span> with values in <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span>, and <span class="math" data-tex="\(T^0f=f\)">\(T^0f=f\)</span>. For <span class="math" data-tex="\(p\in\mathbb D\)">\(p\in\mathbb D\)</span> and distinct <span class="math" data-tex="\(s,t\in\mathbb S^1\)">\(s,t\in\mathbb S^1\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K(p,s)=\sum_{n\ge0}(T^nP_s)(p),\\
+R(s,t)=\sum_{n\ge0}\int_{\mathbb D}P_s\,T^nP_t\,dq,\\
+N(s,t)=N_0(s,t)+R(s,t),\\
+N_0(s,t)=\frac1{\pi|s-t|^2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+K(p,s)=\sum_{n\ge0}(T^nP_s)(p),\\
+R(s,t)=\sum_{n\ge0}\int_{\mathbb D}P_s\,T^nP_t\,dq,\\
+N(s,t)=N_0(s,t)+R(s,t),\\
+N_0(s,t)=\frac1{\pi|s-t|^2}.
+\end{gathered}
+\]</span>
+These are sums of nonnegative iterated integrals; the section <span class="math" data-tex="\(P_s\)">\(P_s\)</span> need not belong to <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span>, and no operator is applied to it before the first smoothing.</p>
+<p><strong>Lemma 4.1</strong> ([OpenAI-HS, Lemma 4.2]).</p>
+<ol>
+<li><span class="math" data-tex="\(\sup_{s}\sup_{x\in\mathbb D}TP_s(x)&lt;\infty\)">\(\sup_{s}\sup_{x\in\mathbb D}TP_s(x)&lt;\infty\)</span>, and <span class="math" data-tex="\((T^nP_s)(p)\le Cd^{n-2}\)">\((T^nP_s)(p)\le Cd^{n-2}\)</span> for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, with <span class="math" data-tex="\(C\)">\(C\)</span> independent of <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span>.</li>
+<li>For fixed <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(K(p,\cdot)\)">\(K(p,\cdot)\)</span> is positive and bounded on <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span>.</li>
+<li><span class="math" data-tex="\(R\)">\(R\)</span> is symmetric, nonnegative and finite off the diagonal, and its integral satisfies (4.1) below.</li>
+<li>For Lipschitz data <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span> and <span class="math" data-tex="\(p\in\mathbb D\)">\(p\in\mathbb D\)</span>, the representations (4.2) below hold, with <span class="math" data-tex="\(R=R(s,t)\)">\(R=R(s,t)\)</span> in the double integral.</li>
+</ol>
+<span class="math math-display" data-tex="\[
+\iint R(s,t)\,ds\,dt\le\frac{q(\mathbb D)}{1-d}, \tag{4.1}
+\]">\[
+\iint R(s,t)\,ds\,dt\le\frac{q(\mathbb D)}{1-d}, \tag{4.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;W_h(p)\\
+&amp;\ \ =\int_{\mathbb S^1}K(p,s)h(s)\,ds,\\
+&amp;\langle Ah,(I-T)^{-1}Ak\rangle_q\\
+&amp;\ \ =\iint R\,h(s)\cdot k(t)\,ds\,dt.
+\end{aligned} \tag{4.2}
+\]">\[
+\begin{aligned}
+&amp;W_h(p)\\
+&amp;\ \ =\int_{\mathbb S^1}K(p,s)h(s)\,ds,\\
+&amp;\langle Ah,(I-T)^{-1}Ak\rangle_q\\
+&amp;\ \ =\iint R\,h(s)\cdot k(t)\,ds\,dt.
+\end{aligned} \tag{4.2}
+\]</span>
+<p>The same statements hold with <span class="math" data-tex="\(q\)">\(q\)</span> replaced by a measure <span class="math" data-tex="\(0\le\rho\le q\)">\(0\le\rho\le q\)</span>, for the kernels <span class="math" data-tex="\(K^\rho\)">\(K^\rho\)</span>, <span class="math" data-tex="\(R^\rho\)">\(R^\rho\)</span>, <span class="math" data-tex="\(N^\rho\)">\(N^\rho\)</span> built from <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+<p><em>Proof.</em> (1) By (1.1), <span class="math" data-tex="\(\int_{\mathbb D}P_s^{3/2}\le\pi^{-3/2}\int_{|y-s|&lt;2}|y-s|^{-3/2}dy\)">\(\int_{\mathbb D}P_s^{3/2}\le\pi^{-3/2}\int_{|y-s|&lt;2}|y-s|^{-3/2}dy\)</span> and <span class="math" data-tex="\(\int_{\mathbb D}G(x,\cdot)^3\)">\(\int_{\mathbb D}G(x,\cdot)^3\)</span>, which is at most <span class="math" data-tex="\((2\pi)^{-3}\int_{|y-x|&lt;2}\log^3\frac2{|x-y|}\,dy\)">\((2\pi)^{-3}\int_{|y-x|&lt;2}\log^3\frac2{|x-y|}\,dy\)</span>, are bounded independently of <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span>. Hölder's inequality with exponents <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(3/2\)">\(3/2\)</span> gives <span class="math" data-tex="\(TP_s(x)\le\|a\|_\infty\|G(x,\cdot)\|_{L^3}\|P_s\|_{L^{3/2}}\le C\)">\(TP_s(x)\le\|a\|_\infty\|G(x,\cdot)\|_{L^3}\|P_s\|_{L^{3/2}}\le C\)</span>. So <span class="math" data-tex="\(F_s=TP_s\)">\(F_s=TP_s\)</span> is bounded, <span class="math" data-tex="\(F_s\in L^2(q)\)">\(F_s\in L^2(q)\)</span>, and for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(T^nP_s)(p)&amp;=\langle G(p,\cdot),T^{n-2}F_s\rangle_q\\
+&amp;\le\|G(p,\cdot)\|_q\,d^{n-2}\|F_s\|_q\\
+&amp;\le Cd^{n-2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+(T^nP_s)(p)&amp;=\langle G(p,\cdot),T^{n-2}F_s\rangle_q\\
+&amp;\le\|G(p,\cdot)\|_q\,d^{n-2}\|F_s\|_q\\
+&amp;\le Cd^{n-2},
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(\|G(p,\cdot)\|_q^2\le\|a\|_\infty\int G(p,\cdot)^2\)">\(\|G(p,\cdot)\|_q^2\le\|a\|_\infty\int G(p,\cdot)^2\)</span> is bounded uniformly in <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>(2) Positivity comes from the term <span class="math" data-tex="\(P_s(p)&gt;0\)">\(P_s(p)&gt;0\)</span>; boundedness from (1) and <span class="math" data-tex="\(P_s(p)\le(1+|p|)/(2\pi(1-|p|))\)">\(P_s(p)\le(1+|p|)/(2\pi(1-|p|))\)</span>.</p>
+<p>(3) For <span class="math" data-tex="\(s\ne t\)">\(s\ne t\)</span>, <span class="math" data-tex="\(\int P_sP_t\,dq&lt;\infty\)">\(\int P_sP_t\,dq&lt;\infty\)</span>: near each pole the other factor is bounded and <span class="math" data-tex="\(|y-s|^{-1}\)">\(|y-s|^{-1}\)</span> is integrable in two dimensions. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(\int P_sT^nP_t\,dq\le\sup T^nP_t\cdot\|a\|_\infty\int P_s\,dy\)">\(\int P_sT^nP_t\,dq\le\sup T^nP_t\cdot\|a\|_\infty\int P_s\,dy\)</span>, which is summable by (1). Reversing the chain of nonnegative integrals and using the symmetry of <span class="math" data-tex="\(G\)">\(G\)</span> shows <span class="math" data-tex="\(R(s,t)=R(t,s)\)">\(R(s,t)=R(t,s)\)</span>. By Tonelli and <span class="math" data-tex="\(\int P_s\,ds=1\)">\(\int P_s\,ds=1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\iint R\,ds\,dt&amp;=\sum_{n\ge0}\langle\mathbf 1,T^n\mathbf 1\rangle_q\\
+&amp;\le\sum_{n\ge0}d^n\|\mathbf 1\|_q^2=\frac{q(\mathbb D)}{1-d}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\iint R\,ds\,dt&amp;=\sum_{n\ge0}\langle\mathbf 1,T^n\mathbf 1\rangle_q\\
+&amp;\le\sum_{n\ge0}d^n\|\mathbf 1\|_q^2=\frac{q(\mathbb D)}{1-d}.
+\end{aligned}
+\]</span></p>
+<p>(4) In <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span>, <span class="math" data-tex="\(T(I-T)^{-1}Ah=\sum_{n\ge1}T^nAh\)">\(T(I-T)^{-1}Ah=\sum_{n\ge1}T^nAh\)</span>, and evaluation at <span class="math" data-tex="\(p\)">\(p\)</span> of <span class="math" data-tex="\(Tg=\langle G(p,\cdot),g\rangle_q\)">\(Tg=\langle G(p,\cdot),g\rangle_q\)</span> is continuous on <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span>; so <span class="math" data-tex="\(W_h(p)=\sum_{n\ge0}(T^nAh)(p)\)">\(W_h(p)=\sum_{n\ge0}(T^nAh)(p)\)</span>. By Fubini, <span class="math" data-tex="\((T^nAh)(p)=\int(T^nP_s)(p)h(s)\,ds\)">\((T^nAh)(p)=\int(T^nP_s)(p)h(s)\,ds\)</span>, and the sum over <span class="math" data-tex="\(n\)">\(n\)</span> is dominated by <span class="math" data-tex="\(\max|h|\sum_n(T^n\mathbf 1)(p)&lt;\infty\)">\(\max|h|\sum_n(T^n\mathbf 1)(p)&lt;\infty\)</span>. The second formula follows in the same way from <span class="math" data-tex="\(\langle Ah,(I-T)^{-1}Ak\rangle_q=\sum_n\langle Ah,T^nAk\rangle_q\)">\(\langle Ah,(I-T)^{-1}Ak\rangle_q=\sum_n\langle Ah,T^nAk\rangle_q\)</span>, with domination by <span class="math" data-tex="\(\max|h|\max|k|\iint R\)">\(\max|h|\max|k|\iint R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-boundary-energy">5. The boundary energy</h2>
+<p>From now on <span class="math" data-tex="\(q\)">\(q\)</span> is the conformal potential of Lemma 2.1. A vector function <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span> is <em>tangent</em> if <span class="math" data-tex="\(h(s)\)">\(h(s)\)</span> is parallel to <span class="math" data-tex="\(\tau(\Phi(s))\)">\(\tau(\Phi(s))\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>. For tangent Lipschitz <span class="math" data-tex="\(h\)">\(h\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_h=W_h\circ\Phi^{-1},\\
+E(h,k)=\mathcal E(X_h,X_k),\\
+E(h)=E(h,h),
+\end{gathered}
+\]">\[
+\begin{gathered}
+X_h=W_h\circ\Phi^{-1},\\
+E(h,k)=\mathcal E(X_h,X_k),\\
+E(h)=E(h,h),
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> is the form of Corollary 1.2 of <a href="a-variational-principle-for-tangent-vector-fields.html">A variational principle for tangent vector fields</a>. The field <span class="math" data-tex="\(X_h\in H^1(\Omega;\mathbb R^2)\)">\(X_h\in H^1(\Omega;\mathbb R^2)\)</span> is tangent, with trace <span class="math" data-tex="\(h\circ\Phi^{-1}\)">\(h\circ\Phi^{-1}\)</span>. By that corollary, with <span class="math" data-tex="\(\nabla V=\{\nabla v:v\in V\}\)">\(\nabla V=\{\nabla v:v\in V\}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E(h)\ge0,\\
+E(h)=0\iff X_h\in\nabla V.
+\end{gathered} \tag{5.1}
+\]">\[
+\begin{gathered}
+E(h)\ge0,\\
+E(h)=0\iff X_h\in\nabla V.
+\end{gathered} \tag{5.1}
+\]</span></p>
+<p><strong>Lemma 5.1</strong> (Douglas's identity). For Lipschitz <span class="math" data-tex="\(h,k\colon\mathbb S^1\to\mathbb R^m\)">\(h,k\colon\mathbb S^1\to\mathbb R^m\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{\mathbb D}\nabla Ah:\nabla Ak\\
+&amp;\quad=\frac12\iint N_0(s,t)\,(h(s)-h(t))\\
+&amp;\qquad\cdot(k(s)-k(t))\,ds\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{\mathbb D}\nabla Ah:\nabla Ak\\
+&amp;\quad=\frac12\iint N_0(s,t)\,(h(s)-h(t))\\
+&amp;\qquad\cdot(k(s)-k(t))\,ds\,dt .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> By polarization and componentwise application it suffices to take <span class="math" data-tex="\(h=k\)">\(h=k\)</span> scalar. Both sides are Hermitian forms on the coefficient sequences that are diagonal in the Fourier modes: the left side by (1.2), the right side because <span class="math" data-tex="\(N_0(s,t)\)">\(N_0(s,t)\)</span> depends only on <span class="math" data-tex="\(s\bar t\)">\(s\bar t\)</span>. For <span class="math" data-tex="\(h=s^n\)">\(h=s^n\)</span>, the left side is <span class="math" data-tex="\(2\pi|n|\)">\(2\pi|n|\)</span>, and with <span class="math" data-tex="\(w=t/s\)">\(w=t/s\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\iint\frac{|s^n-t^n|^2}{|s-t|^2}\,ds\,dt\\
+&amp;\quad=2\pi\int_{\mathbb S^1}\Bigl|\sum_{j=0}^{|n|-1}w^j\Bigr|^2dw=(2\pi)^2|n|,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\iint\frac{|s^n-t^n|^2}{|s-t|^2}\,ds\,dt\\
+&amp;\quad=2\pi\int_{\mathbb S^1}\Bigl|\sum_{j=0}^{|n|-1}w^j\Bigr|^2dw=(2\pi)^2|n|,
+\end{aligned}
+\]</span>
+so the right side is also <span class="math" data-tex="\(2\pi|n|\)">\(2\pi|n|\)</span>. This proves the identity for trigonometric polynomials. For a Lipschitz <span class="math" data-tex="\(h\)">\(h\)</span>, the Fejér means <span class="math" data-tex="\(h_N\)">\(h_N\)</span> are trigonometric polynomials with coefficients <span class="math" data-tex="\(\hat h_n(1-|n|/(N+1))\)">\(\hat h_n(1-|n|/(N+1))\)</span> for <span class="math" data-tex="\(|n|\le N\)">\(|n|\le N\)</span>; they converge uniformly to <span class="math" data-tex="\(h\)">\(h\)</span>, and <span class="math" data-tex="\(\operatorname{Lip}(h_N)\le\operatorname{Lip}(h)\)">\(\operatorname{Lip}(h_N)\le\operatorname{Lip}(h)\)</span> because the Fejér kernel is a positive kernel of total mass one. The left side for <span class="math" data-tex="\(h_N\)">\(h_N\)</span> converges to that for <span class="math" data-tex="\(h\)">\(h\)</span> by (1.2) and monotone convergence, and the right side by dominated convergence, since <span class="math" data-tex="\(N_0(s,t)|h_N(s)-h_N(t)|^2\le\operatorname{Lip}(h)^2/\pi\)">\(N_0(s,t)|h_N(s)-h_N(t)|^2\le\operatorname{Lip}(h)^2/\pi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.2</strong> (the boundary energy; [OpenAI-HS, Lemma 4.3]). For tangent Lipschitz <span class="math" data-tex="\(h,k\)">\(h,k\)</span>, with <span class="math" data-tex="\(\Delta h=h(s)-h(t)\)">\(\Delta h=h(s)-h(t)\)</span>, <span class="math" data-tex="\(\Delta k=k(s)-k(t)\)">\(\Delta k=k(s)-k(t)\)</span>, <span class="math" data-tex="\(N_0=N_0(s,t)\)">\(N_0=N_0(s,t)\)</span> and <span class="math" data-tex="\(R=R(s,t)\)">\(R=R(s,t)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;E(h,k)\\
+&amp;\ =\tfrac12\iint N_0\,\Delta h\cdot\Delta k\,ds\,dt\\
+&amp;\ \ -\iint R\,h(s)\cdot k(t)\,ds\,dt\\
+&amp;\ \ +\int_{\mathbb S^1}|\Phi&#x27;|(\kappa\circ\Phi)\,h\cdot k\,ds.
+\end{aligned} \tag{5.2}
+\]">\[
+\begin{aligned}
+&amp;E(h,k)\\
+&amp;\ =\tfrac12\iint N_0\,\Delta h\cdot\Delta k\,ds\,dt\\
+&amp;\ \ -\iint R\,h(s)\cdot k(t)\,ds\,dt\\
+&amp;\ \ +\int_{\mathbb S^1}|\Phi&#x27;|(\kappa\circ\Phi)\,h\cdot k\,ds.
+\end{aligned} \tag{5.2}
+\]</span></p>
+<p><em>Proof.</em> <em>Smooth data.</em> Let <span class="math" data-tex="\(h,k\)">\(h,k\)</span> be tangent and smooth. By Lemma 3.1, <span class="math" data-tex="\(W_h,W_k\in C^\infty(\overline{\mathbb D})\)">\(W_h,W_k\in C^\infty(\overline{\mathbb D})\)</span>, so <span class="math" data-tex="\(X_h,X_k\in C^\infty(\overline\Omega)\)">\(X_h,X_k\in C^\infty(\overline\Omega)\)</span>, and Lemma 2.1 of the previous lesson, polarized, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E(h,k)&amp;=\int_\Omega\nabla X_h:\nabla X_k\\
+&amp;\quad+\int_{\partial\Omega}\kappa X_h\cdot X_k\,ds\\
+&amp;\quad-\mu\int_\Omega X_h\cdot X_k .
+\end{aligned}
+\]">\[
+\begin{aligned}
+E(h,k)&amp;=\int_\Omega\nabla X_h:\nabla X_k\\
+&amp;\quad+\int_{\partial\Omega}\kappa X_h\cdot X_k\,ds\\
+&amp;\quad-\mu\int_\Omega X_h\cdot X_k .
+\end{aligned}
+\]</span>
+By the conformal change of variables in the proof of Lemma 2.1, applied to each component, the first term is <span class="math" data-tex="\(\int_{\mathbb D}\nabla W_h:\nabla W_k\)">\(\int_{\mathbb D}\nabla W_h:\nabla W_k\)</span> and the last is <span class="math" data-tex="\(\langle W_h,W_k\rangle_q\)">\(\langle W_h,W_k\rangle_q\)</span>; the boundary term is the last term of (5.2), since arclength on <span class="math" data-tex="\(\partial\Omega\)">\(\partial\Omega\)</span> is <span class="math" data-tex="\(|\Phi&#x27;|\,ds\)">\(|\Phi&#x27;|\,ds\)</span>. Since <span class="math" data-tex="\(W_h-Ah\in H^1_0(\mathbb D)\)">\(W_h-Ah\in H^1_0(\mathbb D)\)</span>, the equation for <span class="math" data-tex="\(W_k\)">\(W_k\)</span> lets us replace <span class="math" data-tex="\(W_h\)">\(W_h\)</span> by <span class="math" data-tex="\(Ah\)">\(Ah\)</span> in <span class="math" data-tex="\(\int\nabla W_h:\nabla W_k-\langle W_h,W_k\rangle_q\)">\(\int\nabla W_h:\nabla W_k-\langle W_h,W_k\rangle_q\)</span>; then, <span class="math" data-tex="\(Ah\)">\(Ah\)</span> being harmonic, <span class="math" data-tex="\(W_k\)">\(W_k\)</span> may be replaced by <span class="math" data-tex="\(Ak\)">\(Ak\)</span> in the gradient term. Using <span class="math" data-tex="\(W_k=(I-T)^{-1}Ak\)">\(W_k=(I-T)^{-1}Ak\)</span> in <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span>, we get
+<span class="math math-display" data-tex="\[
+\int\nabla Ah:\nabla Ak-\langle Ah,(I-T)^{-1}Ak\rangle_q,
+\]">\[
+\int\nabla Ah:\nabla Ak-\langle Ah,(I-T)^{-1}Ak\rangle_q,
+\]</span>
+and Lemma 5.1 and (4.2) give the first two terms of (5.2).</p>
+<p><em>Lipschitz data.</em> Write <span class="math" data-tex="\(h=c\,(\tau\circ\Phi)\)">\(h=c\,(\tau\circ\Phi)\)</span> with a scalar Lipschitz function <span class="math" data-tex="\(c\)">\(c\)</span>, and let <span class="math" data-tex="\(h_n=c_n(\tau\circ\Phi)\)">\(h_n=c_n(\tau\circ\Phi)\)</span>, where <span class="math" data-tex="\(c_n\)">\(c_n\)</span> are smooth convolutions of <span class="math" data-tex="\(c\)">\(c\)</span> along the circle. Then <span class="math" data-tex="\(h_n\to h\)">\(h_n\to h\)</span> uniformly, with uniformly bounded Lipschitz constants, so <span class="math" data-tex="\(\int|\nabla A(h_n-h)|^2\to0\)">\(\int|\nabla A(h_n-h)|^2\to0\)</span> by Lemma 5.1 and dominated convergence. Also <span class="math" data-tex="\(A(h_n-h)\to0\)">\(A(h_n-h)\to0\)</span> uniformly, hence in <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span>. Since <span class="math" data-tex="\(\int|\nabla TF|^2=\langle TF,F\rangle_q\le d\|F\|_q^2\)">\(\int|\nabla TF|^2=\langle TF,F\rangle_q\le d\|F\|_q^2\)</span>, (3.1) gives <span class="math" data-tex="\(W_{h_n}\to W_h\)">\(W_{h_n}\to W_h\)</span> in <span class="math" data-tex="\(H^1(\mathbb D)\)">\(H^1(\mathbb D)\)</span>, so <span class="math" data-tex="\(X_{h_n}\to X_h\)">\(X_{h_n}\to X_h\)</span> in <span class="math" data-tex="\(H^1(\Omega)\)">\(H^1(\Omega)\)</span> and <span class="math" data-tex="\(E(h_n,k_n)\to E(h,k)\)">\(E(h_n,k_n)\to E(h,k)\)</span> for the corresponding approximations of <span class="math" data-tex="\(k\)">\(k\)</span>. The right side of (5.2) converges by dominated convergence, using <span class="math" data-tex="\(|h_n(s)-h_n(t)|\le C|s-t|\)">\(|h_n(s)-h_n(t)|\le C|s-t|\)</span> and the integrability of <span class="math" data-tex="\(R\)">\(R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-multiplier-identity">6. The multiplier identity</h2>
+<p>Fix <span class="math" data-tex="\(0\ne u\in V\)">\(0\ne u\in V\)</span> and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g(s)=(\nabla u)(\Phi(s))\\
+(s\in\mathbb S^1).
+\end{gathered} \tag{6.1}
+\]">\[
+\begin{gathered}
+g(s)=(\nabla u)(\Phi(s))\\
+(s\in\mathbb S^1).
+\end{gathered} \tag{6.1}
+\]</span>
+It is smooth and, by the Neumann condition, tangent.</p>
+<p><strong>Lemma 6.1.</strong> <span class="math" data-tex="\(W_g=(\nabla u)\circ\Phi\)">\(W_g=(\nabla u)\circ\Phi\)</span>, and <span class="math" data-tex="\(E(g)=0\)">\(E(g)=0\)</span>.</p>
+<p><em>Proof.</em> Each <span class="math" data-tex="\(\partial_iu\in C^\infty(\overline\Omega)\)">\(\partial_iu\in C^\infty(\overline\Omega)\)</span> satisfies <span class="math" data-tex="\(\Delta\partial_iu+\mu\partial_iu=0\)">\(\Delta\partial_iu+\mu\partial_iu=0\)</span>. Since <span class="math" data-tex="\(\Delta(f\circ\Phi)=|\Phi&#x27;|^2(\Delta f)\circ\Phi\)">\(\Delta(f\circ\Phi)=|\Phi&#x27;|^2(\Delta f)\circ\Phi\)</span> for holomorphic <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, the function <span class="math" data-tex="\(w=(\partial_iu)\circ\Phi\in C^\infty(\overline{\mathbb D})\)">\(w=(\partial_iu)\circ\Phi\in C^\infty(\overline{\mathbb D})\)</span> satisfies <span class="math" data-tex="\(-\Delta w=\mu|\Phi&#x27;|^2w=aw\)">\(-\Delta w=\mu|\Phi&#x27;|^2w=aw\)</span>, and its trace is <span class="math" data-tex="\(g_i\)">\(g_i\)</span>. By the uniqueness in Lemma 3.1, <span class="math" data-tex="\(w=W_{g_i}\)">\(w=W_{g_i}\)</span>. So <span class="math" data-tex="\(X_g=\nabla u\)">\(X_g=\nabla u\)</span>, and <span class="math" data-tex="\(E(g)=0\)">\(E(g)=0\)</span> by Proposition 1.1 of the previous lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.2</strong> (the multiplier identity; [OpenAI-HS, Proposition 4.4]). For every real Lipschitz function <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span>, with <span class="math" data-tex="\(\Delta b=b(s)-b(t)\)">\(\Delta b=b(s)-b(t)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;E(bg)=\frac12\iint N(s,t)\\
+&amp;\quad\cdot(\Delta b)^2\,g(s)\cdot g(t)\,ds\,dt .
+\end{aligned} \tag{6.2}
+\]">\[
+\begin{aligned}
+&amp;E(bg)=\frac12\iint N(s,t)\\
+&amp;\quad\cdot(\Delta b)^2\,g(s)\cdot g(t)\,ds\,dt .
+\end{aligned} \tag{6.2}
+\]</span></p>
+<p><em>Proof.</em> By Lemma 6.1 and Corollary 1.2 of the previous lesson, <span class="math" data-tex="\(E(g,b^2g)=0\)">\(E(g,b^2g)=0\)</span>. Subtract (5.2) for the pair <span class="math" data-tex="\((g,b^2g)\)">\((g,b^2g)\)</span> from (5.2) for <span class="math" data-tex="\((bg,bg)\)">\((bg,bg)\)</span>. The curvature terms cancel. In the first term, with <span class="math" data-tex="\(b_s=b(s)\)">\(b_s=b(s)\)</span> and <span class="math" data-tex="\(g_s=g(s)\)">\(g_s=g(s)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|b_sg_s-b_tg_t|^2\\
+&amp;\quad-(g_s-g_t)\cdot(b_s^2g_s-b_t^2g_t)\\
+&amp;\quad=(b_s-b_t)^2\,g_s\cdot g_t .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|b_sg_s-b_tg_t|^2\\
+&amp;\quad-(g_s-g_t)\cdot(b_s^2g_s-b_t^2g_t)\\
+&amp;\quad=(b_s-b_t)^2\,g_s\cdot g_t .
+\end{aligned}
+\]</span>
+In the second term the integrand is <span class="math" data-tex="\(-R(s,t)(b_sb_t-b_t^2)g_s\cdot g_t\)">\(-R(s,t)(b_sb_t-b_t^2)g_s\cdot g_t\)</span>; symmetrizing in <span class="math" data-tex="\(s,t\)">\(s,t\)</span> with <span class="math" data-tex="\(R(s,t)=R(t,s)\)">\(R(s,t)=R(t,s)\)</span> replaces <span class="math" data-tex="\(b_t^2\)">\(b_t^2\)</span> by <span class="math" data-tex="\(\frac12(b_s^2+b_t^2)\)">\(\frac12(b_s^2+b_t^2)\)</span>, which gives <span class="math" data-tex="\(\frac12R(s,t)(b_s-b_t)^2g_s\cdot g_t\)">\(\frac12R(s,t)(b_s-b_t)^2g_s\cdot g_t\)</span>. Adding the two terms gives (6.2). All integrals converge absolutely: <span class="math" data-tex="\(N_0(s,t)(b_s-b_t)^2\le\operatorname{Lip}(b)^2/\pi\)">\(N_0(s,t)(b_s-b_t)^2\le\operatorname{Lip}(b)^2/\pi\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> is integrable. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Prove that <span class="math" data-tex="\(|1-x\bar y|^2\)">\(|1-x\bar y|^2\)</span> equals <span class="math" data-tex="\(|x-y|^2+(1-|x|^2)(1-|y|^2)\)">\(|x-y|^2+(1-|x|^2)(1-|y|^2)\)</span>, and deduce that <span class="math" data-tex="\(G(x,y)=0\)">\(G(x,y)=0\)</span> when <span class="math" data-tex="\(|x|=1\)">\(|x|=1\)</span>.</p>
+<p><strong>7.2.</strong> For <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, identify <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(W_h\)">\(W_h\)</span>.</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(b(e^{i\theta})=\cos\theta\)">\(b(e^{i\theta})=\cos\theta\)</span>. Show <span class="math" data-tex="\(\iint N_0(s,t)(b(s)-b(t))^2\,ds\,dt=2\pi\)">\(\iint N_0(s,t)(b(s)-b(t))^2\,ds\,dt=2\pi\)</span>, with Lemma 5.1 and directly.</p>
+<p><strong>7.4.</strong> Show that <span class="math" data-tex="\(K(p,s)\ge P_s(p)\)">\(K(p,s)\ge P_s(p)\)</span> and <span class="math" data-tex="\(N(s,t)\ge N_0(s,t)\)">\(N(s,t)\ge N_0(s,t)\)</span>, and that for <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, <span class="math" data-tex="\(K(0,s)\ge1/(2\pi)\)">\(K(0,s)\ge1/(2\pi)\)</span>.</p>
+<p><strong>7.5.</strong> Let <span class="math" data-tex="\(q\)">\(q\)</span> satisfy (2.1). Show that <span class="math" data-tex="\(\iint R(s,t)\,ds\,dt\ge q(\mathbb D)\)">\(\iint R(s,t)\,ds\,dt\ge q(\mathbb D)\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> Expand: <span class="math" data-tex="\(|1-x\bar y|^2=1-2\operatorname{Re}(x\bar y)+|x|^2|y|^2\)">\(|1-x\bar y|^2=1-2\operatorname{Re}(x\bar y)+|x|^2|y|^2\)</span>, while <span class="math" data-tex="\(|x-y|^2=|x|^2+|y|^2-2\operatorname{Re}(x\bar y)\)">\(|x-y|^2=|x|^2+|y|^2-2\operatorname{Re}(x\bar y)\)</span> and <span class="math" data-tex="\((1-|x|^2)(1-|y|^2)\)">\((1-|x|^2)(1-|y|^2)\)</span> equals <span class="math" data-tex="\(1-|x|^2-|y|^2+|x|^2|y|^2\)">\(1-|x|^2-|y|^2+|x|^2|y|^2\)</span>; add the last two. If <span class="math" data-tex="\(|x|=1\)">\(|x|=1\)</span>, the second form of <span class="math" data-tex="\(G\)">\(G\)</span> has <span class="math" data-tex="\(1-|x|^2=0\)">\(1-|x|^2=0\)</span>.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, <span class="math" data-tex="\(K(p,s)=P_s(p)\)">\(K(p,s)=P_s(p)\)</span>, <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, <span class="math" data-tex="\(N=N_0\)">\(N=N_0\)</span> and <span class="math" data-tex="\(W_h=Ah\)">\(W_h=Ah\)</span>.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(\hat b_{\pm1}=\frac12\)">\(\hat b_{\pm1}=\frac12\)</span> and the other coefficients vanish, so (1.2) gives <span class="math" data-tex="\(\int|\nabla Ab|^2=2\pi(\frac14+\frac14)=\pi\)">\(\int|\nabla Ab|^2=2\pi(\frac14+\frac14)=\pi\)</span>; indeed <span class="math" data-tex="\(Ab=x_1\)">\(Ab=x_1\)</span>. By Lemma 5.1 the double integral is <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Directly, for <span class="math" data-tex="\(s=e^{i\theta}\)">\(s=e^{i\theta}\)</span>, <span class="math" data-tex="\(t=e^{i\varphi}\)">\(t=e^{i\varphi}\)</span>: <span class="math" data-tex="\(|s-t|^2=4\sin^2\frac{\theta-\varphi}2\)">\(|s-t|^2=4\sin^2\frac{\theta-\varphi}2\)</span> and <span class="math" data-tex="\(\cos\theta-\cos\varphi=-2\sin\frac{\theta+\varphi}2\sin\frac{\theta-\varphi}2\)">\(\cos\theta-\cos\varphi=-2\sin\frac{\theta+\varphi}2\sin\frac{\theta-\varphi}2\)</span>, so the integrand is <span class="math" data-tex="\(\frac1\pi\sin^2\frac{\theta+\varphi}2\)">\(\frac1\pi\sin^2\frac{\theta+\varphi}2\)</span>, whose integral over <span class="math" data-tex="\([0,2\pi]^2\)">\([0,2\pi]^2\)</span> is <span class="math" data-tex="\(\frac1\pi\cdot2\pi^2=2\pi\)">\(\frac1\pi\cdot2\pi^2=2\pi\)</span>.</p>
+<p><strong>7.4.</strong> All terms of the series defining <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> are nonnegative; the term <span class="math" data-tex="\(n=0\)">\(n=0\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> is <span class="math" data-tex="\(P_s(p)\)">\(P_s(p)\)</span>, and <span class="math" data-tex="\(P_s(0)=1/(2\pi)\)">\(P_s(0)=1/(2\pi)\)</span>.</p>
+<p><strong>7.5.</strong> The term <span class="math" data-tex="\(n=0\)">\(n=0\)</span> contributes <span class="math" data-tex="\(\iint\int P_sP_t\,dq\,ds\,dt\)">\(\iint\int P_sP_t\,dq\,ds\,dt\)</span>, which equals <span class="math" data-tex="\(\int(\int P_s\,ds)(\int P_t\,dt)\,dq=q(\mathbb D)\)">\(\int(\int P_s\,ds)(\int P_t\,dt)\,dq=q(\mathbb D)\)</span>, and the other terms are nonnegative.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-HS] OpenAI, <em>Strict hot spots and absence of interior critical points on smooth simply connected planar domains</em>, OpenAI Math Release preprint, 24 September 2026, Section 4 (Lemmas 4.1–4.3, Proposition 4.4). https://github.com/openai/math/tree/main/preprints/Strict-hot-spots-and-absence-of-interior-critical-points-on-smooth-simply-connected-planar-domains-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

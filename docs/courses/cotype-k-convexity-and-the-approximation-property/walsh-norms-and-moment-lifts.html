@@ -1,0 +1,188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Walsh norms and moment lifts</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Cotype, K-convexity and the approximation property)</a><a href="type-cotype-and-k-convexity.html">Previous lesson</a><a href="a-fourier-coefficient-of-binary-rank-two.html">Next lesson</a><a href="src/walsh-norms-and-moment-lifts.md">Editable source</a></nav><main><article><h1 id="walsh-norms-and-moment-lifts">Walsh norms and moment lifts</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson collects the tools for the decay theorem of <a href="type-cotype-and-k-convexity.html">Type, cotype and K-convexity</a> (Theorem 2.3 there). Walsh norms of an operator are nonincreasing in the dimension, invariant under amplification, and decay like <span class="math" data-tex="\(2^{-n/2}\)">\(2^{-n/2}\)</span> for each fixed finite-rank operator (Lemma 1.1). Cotype of a fixed length passes to finite <span class="math" data-tex="\(L_2\)">\(L_2\)</span> sums (Section 2). Kahane's inequality, in the form <span class="math" data-tex="\(\|S\|_{L_2}\le24\|S\|_{L_1}\)">\(\|S\|_{L_2}\le24\|S\|_{L_1}\)</span> for Rademacher sums, is proved with a stopping time (Lemma 2.1). Together with a quotient-duality principle it gives <em>moment lifts</em>: bounded families indexed by signs whose first moments are prescribed vectors (Lemma 3.2).</p>
+<ul>
+<li>Walsh norms (Lemma 1.1).</li>
+<li>Fixed-length cotype and Kahane's inequality (Section 2, Lemma 2.1).</li>
+<li>Quotient duality and moment lifts (Lemmas 3.1 and 3.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-CC, Section 2]. Banach spaces are real, <span class="math" data-tex="\(B_Y\)">\(B_Y\)</span> is the closed unit ball of <span class="math" data-tex="\(Y\)">\(Y\)</span>, averages over finite sets are uniform, and different averaging variables are independent. For a finite probability space <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, <span class="math" data-tex="\(L_p(\Omega;Y)\)">\(L_p(\Omega;Y)\)</span> has the probability-normalized norm, while <span class="math" data-tex="\(\ell_2^m(Y)\)">\(\ell_2^m(Y)\)</span> is <span class="math" data-tex="\(Y^m\)">\(Y^m\)</span> with the norm <span class="math" data-tex="\((\sum_{i=1}^m\|y_i\|^2)^{1/2}\)">\((\sum_{i=1}^m\|y_i\|^2)^{1/2}\)</span>. With the expectation pairing, for finite <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_2(\Omega;Y)^*=L_2(\Omega;Y^*),\\
+L_1(\Omega;Y)^*=L_\infty(\Omega;Y^*),\\
+L_\infty(\Omega;Y)^*=L_1(\Omega;Y^*),
+\end{gathered}
+\]">\[
+\begin{gathered}
+L_2(\Omega;Y)^*=L_2(\Omega;Y^*),\\
+L_1(\Omega;Y)^*=L_\infty(\Omega;Y^*),\\
+L_\infty(\Omega;Y)^*=L_1(\Omega;Y^*),
+\end{gathered}
+\]</span>
+isometrically, and <span class="math" data-tex="\(\ell_2^m(Y)^*=\ell_2^m(Y^*)\)">\(\ell_2^m(Y)^*=\ell_2^m(Y^*)\)</span> with the pairing <span class="math" data-tex="\(\sum_i\langle y_i,y_i^*\rangle\)">\(\sum_i\langle y_i,y_i^*\rangle\)</span>; the proofs are those of Lemma 3.1 of the previous lesson.</p>
+<h2 id="1-walsh-norms">1. Walsh norms</h2>
+<p>Recall from the previous lesson that <span class="math" data-tex="\(V_n=\mathbb F_2^n\)">\(V_n=\mathbb F_2^n\)</span>, <span class="math" data-tex="\(\chi(u,v)=(-1)^{u\cdot v}\)">\(\chi(u,v)=(-1)^{u\cdot v}\)</span>, and for <span class="math" data-tex="\(T\colon G\to F\)">\(T\colon G\to F\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(W^T_nx)(v)=\mathbb E_{u\in V_n}\chi(u,v)\,Tx(u),\\
+w_n(T)=\|W^T_n\|,
+\end{gathered}
+\]">\[
+\begin{gathered}
+(W^T_nx)(v)=\mathbb E_{u\in V_n}\chi(u,v)\,Tx(u),\\
+w_n(T)=\|W^T_n\|,
+\end{gathered}
+\]</span>
+the norm from <span class="math" data-tex="\(L_2(V_n;G)\)">\(L_2(V_n;G)\)</span> to <span class="math" data-tex="\(L_2(V_n;F)\)">\(L_2(V_n;F)\)</span>. By duality,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;w_n(T)=\sup\Bigl|\mathbb E_{u,v\in V_n}\\
+&amp;\qquad\chi(u,v)\,y_v(Tx_u)\Bigr| ,
+\end{aligned} \tag{1.1}
+\]">\[
+\begin{aligned}
+&amp;w_n(T)=\sup\Bigl|\mathbb E_{u,v\in V_n}\\
+&amp;\qquad\chi(u,v)\,y_v(Tx_u)\Bigr| ,
+\end{aligned} \tag{1.1}
+\]</span>
+the supremum over <span class="math" data-tex="\(x_u\in G\)">\(x_u\in G\)</span> and <span class="math" data-tex="\(y_v\in F^*\)">\(y_v\in F^*\)</span> with <span class="math" data-tex="\(\mathbb E_u\|x_u\|^2\le1\)">\(\mathbb E_u\|x_u\|^2\le1\)</span> and <span class="math" data-tex="\(\mathbb E_v\|y_v\|^2\le1\)">\(\mathbb E_v\|y_v\|^2\le1\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (Walsh norms; [OpenAI-CC, Lemma 2.1]). Let <span class="math" data-tex="\(T,A,B\colon G\to F\)">\(T,A,B\colon G\to F\)</span> be bounded.</p>
+<ol>
+<li><span class="math" data-tex="\(2^{-n/2}\|T\|\le w_n(T)\le\|T\|\)">\(2^{-n/2}\|T\|\le w_n(T)\le\|T\|\)</span>, and <span class="math" data-tex="\(w_n(T)\)">\(w_n(T)\)</span> is nonincreasing in <span class="math" data-tex="\(n\)">\(n\)</span>.</li>
+<li>If <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is finite and <span class="math" data-tex="\(T_\Omega\colon L_2(\Omega;G)\to L_2(\Omega;F)\)">\(T_\Omega\colon L_2(\Omega;G)\to L_2(\Omega;F)\)</span> applies <span class="math" data-tex="\(T\)">\(T\)</span> pointwise, then <span class="math" data-tex="\(w_n(T_\Omega)=w_n(T)\)">\(w_n(T_\Omega)=w_n(T)\)</span>.</li>
+<li>If <span class="math" data-tex="\(T\)">\(T\)</span> has finite rank, there is <span class="math" data-tex="\(D_T&lt;\infty\)">\(D_T&lt;\infty\)</span> with <span class="math" data-tex="\(w_n(T)\le D_T2^{-n/2}\)">\(w_n(T)\le D_T2^{-n/2}\)</span> for all <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>.</li>
+<li><span class="math" data-tex="\(|w_n(A)-w_n(B)|\le\|A-B\|\)">\(|w_n(A)-w_n(B)|\le\|A-B\|\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) For every <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(\|(W^T_nx)(v)\|\le\mathbb E_u\|Tx(u)\|\le\|T\|\,\|x\|_{L_2}\)">\(\|(W^T_nx)(v)\|\le\mathbb E_u\|Tx(u)\|\le\|T\|\,\|x\|_{L_2}\)</span>, by the Cauchy–Schwarz inequality; so <span class="math" data-tex="\(w_n(T)\le\|T\|\)">\(w_n(T)\le\|T\|\)</span>. For the lower bound take <span class="math" data-tex="\(x\)">\(x\)</span> supported at one point <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, with <span class="math" data-tex="\(x(u_0)=2^{n/2}g\)">\(x(u_0)=2^{n/2}g\)</span>; then <span class="math" data-tex="\(\|x\|_{L_2}=\|g\|\)">\(\|x\|_{L_2}=\|g\|\)</span> and <span class="math" data-tex="\((W^T_nx)(v)=2^{-n/2}\chi(u_0,v)Tg\)">\((W^T_nx)(v)=2^{-n/2}\chi(u_0,v)Tg\)</span>, so <span class="math" data-tex="\(\|W^T_nx\|_{L_2}=2^{-n/2}\|Tg\|\)">\(\|W^T_nx\|_{L_2}=2^{-n/2}\|Tg\|\)</span>. For monotonicity write <span class="math" data-tex="\(V_{n+j}=V_n\oplus V_j\)">\(V_{n+j}=V_n\oplus V_j\)</span>. The transform <span class="math" data-tex="\(W^T_{n+j}\)">\(W^T_{n+j}\)</span> is the transform <span class="math" data-tex="\(W^T_n\)">\(W^T_n\)</span> in the first coordinate followed by the normalized Walsh transform with the identity of <span class="math" data-tex="\(F\)">\(F\)</span> in the second coordinate; the latter has norm at most <span class="math" data-tex="\(1\)">\(1\)</span> by the upper bound just proved. Averaging the squared estimates over the unused coordinate gives <span class="math" data-tex="\(w_{n+j}(T)\le w_n(T)\)">\(w_{n+j}(T)\le w_n(T)\)</span>.</p>
+<p>(2) A function in <span class="math" data-tex="\(L_2(V_n;L_2(\Omega;G))\)">\(L_2(V_n;L_2(\Omega;G))\)</span> is a function on <span class="math" data-tex="\(V_n\times\Omega\)">\(V_n\times\Omega\)</span>; for each fixed <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, <span class="math" data-tex="\(W^{T_\Omega}_n\)">\(W^{T_\Omega}_n\)</span> acts as <span class="math" data-tex="\(W^T_n\)">\(W^T_n\)</span> on the slice. Averaging the squared estimates over <span class="math" data-tex="\(\omega\)">\(\omega\)</span> gives <span class="math" data-tex="\(w_n(T_\Omega)\le w_n(T)\)">\(w_n(T_\Omega)\le w_n(T)\)</span>; inputs constant in <span class="math" data-tex="\(\omega\)">\(\omega\)</span> give the reverse inequality.</p>
+<p>(3) The range <span class="math" data-tex="\(T(G)\)">\(T(G)\)</span> is finite-dimensional; give it a Hilbert space norm <span class="math" data-tex="\(\|\cdot\|_H\)">\(\|\cdot\|_H\)</span>. All norms on a finite-dimensional space are equivalent, so <span class="math" data-tex="\(T=BA\)">\(T=BA\)</span> with <span class="math" data-tex="\(A=T\colon G\to H=(T(G),\|\cdot\|_H)\)">\(A=T\colon G\to H=(T(G),\|\cdot\|_H)\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> the identity <span class="math" data-tex="\(H\to F\)">\(H\to F\)</span>, both bounded. The matrix <span class="math" data-tex="\((2^{-n}\chi(u,v))_{u,v}\)">\((2^{-n}\chi(u,v))_{u,v}\)</span> is <span class="math" data-tex="\(2^{-n/2}\)">\(2^{-n/2}\)</span> times an orthogonal matrix, so <span class="math" data-tex="\(\|W^{\mathrm{Id}_H}_n\|=2^{-n/2}\)">\(\|W^{\mathrm{Id}_H}_n\|=2^{-n/2}\)</span>, and <span class="math" data-tex="\(W^T_n=BW^{\mathrm{Id}_H}_nA\)">\(W^T_n=BW^{\mathrm{Id}_H}_nA\)</span> pointwise. Take <span class="math" data-tex="\(D_T=\|A\|\|B\|\)">\(D_T=\|A\|\|B\|\)</span>.</p>
+<p>(4) <span class="math" data-tex="\(W^A_n-W^B_n=W^{A-B}_n\)">\(W^A_n-W^B_n=W^{A-B}_n\)</span>; use the upper bound in (1) and the triangle inequality. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The constant <span class="math" data-tex="\(D_T\)">\(D_T\)</span> depends on <span class="math" data-tex="\(T\)">\(T\)</span>; the point of the course is a decay bound that does not.</p>
+<h2 id="2-fixed-length-cotype-and-kahane-s-inequality">2. Fixed-length cotype and Kahane's inequality</h2>
+<p>For an integer <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, let <span class="math" data-tex="\(c_m(Y)\)">\(c_m(Y)\)</span> be the least constant with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(\sum_{i=1}^m\|y_i\|^2\Bigr)^{1/2}\le c_m(Y)\\
+&amp;\quad\cdot\Bigl(\mathbb E_\varepsilon\Bigl\|\sum_{i=1}^m\varepsilon_iy_i\Bigr\|^2\Bigr)^{1/2}.
+\end{aligned} \tag{2.1}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(\sum_{i=1}^m\|y_i\|^2\Bigr)^{1/2}\le c_m(Y)\\
+&amp;\quad\cdot\Bigl(\mathbb E_\varepsilon\Bigl\|\sum_{i=1}^m\varepsilon_iy_i\Bigr\|^2\Bigr)^{1/2}.
+\end{aligned} \tag{2.1}
+\]</span>
+If <span class="math" data-tex="\(C_q(Y)&lt;\infty\)">\(C_q(Y)&lt;\infty\)</span>, Hölder's inequality <span class="math" data-tex="\(\sum_i\|y_i\|^2\le m^{1-2/q}(\sum_i\|y_i\|^q)^{2/q}\)">\(\sum_i\|y_i\|^2\le m^{1-2/q}(\sum_i\|y_i\|^q)^{2/q}\)</span> gives
+<span class="math math-display" data-tex="\[
+c_m(Y)\le C_q(Y)\,m^{1/2-1/q}. \tag{2.2}
+\]">\[
+c_m(Y)\le C_q(Y)\,m^{1/2-1/q}. \tag{2.2}
+\]</span>
+Squaring (2.1) and averaging over <span class="math" data-tex="\(\omega\)">\(\omega\)</span> gives <span class="math" data-tex="\(c_m(L_2(\Omega;Y))\le c_m(Y)\)">\(c_m(L_2(\Omega;Y))\le c_m(Y)\)</span> for finite <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (Kahane's inequality; [OpenAI-CC, Lemma 2.2]). For every finite Rademacher sum <span class="math" data-tex="\(S=\sum_{i=1}^m\varepsilon_iz_i\)">\(S=\sum_{i=1}^m\varepsilon_iz_i\)</span> in a Banach space,
+<span class="math math-display" data-tex="\[
+(\mathbb E\|S\|^2)^{1/2}\le24\,\mathbb E\|S\| .
+\]">\[
+(\mathbb E\|S\|^2)^{1/2}\le24\,\mathbb E\|S\| .
+\]</span></p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(M=\mathbb E\|S\|\)">\(M=\mathbb E\|S\|\)</span> and <span class="math" data-tex="\(b=\max_i\|z_i\|\)">\(b=\max_i\|z_i\|\)</span>. Since <span class="math" data-tex="\(z_i=\mathbb E(\varepsilon_iS)\)">\(z_i=\mathbb E(\varepsilon_iS)\)</span>, <span class="math" data-tex="\(b\le M\)">\(b\le M\)</span>. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, then <span class="math" data-tex="\(S=0\)">\(S=0\)</span>. Let <span class="math" data-tex="\(S_j=\sum_{i\le j}\varepsilon_iz_i\)">\(S_j=\sum_{i\le j}\varepsilon_iz_i\)</span> and <span class="math" data-tex="\(R_j=S-S_j\)">\(R_j=S-S_j\)</span>.</p>
+<p><em>Two reflection estimates.</em> Fix <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>, and let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be the first <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(\|S_j\|&gt;u\)">\(\|S_j\|&gt;u\)</span> (if any). On the event <span class="math" data-tex="\(\{\tau=j\}\)">\(\{\tau=j\}\)</span>, which depends only on <span class="math" data-tex="\(\varepsilon_1,\dots,\varepsilon_j\)">\(\varepsilon_1,\dots,\varepsilon_j\)</span>, at least one of <span class="math" data-tex="\(\|S_j+R_j\|\)">\(\|S_j+R_j\|\)</span> and <span class="math" data-tex="\(\|S_j-R_j\|\)">\(\|S_j-R_j\|\)</span> exceeds <span class="math" data-tex="\(u\)">\(u\)</span>, because their average is at least <span class="math" data-tex="\(\|S_j\|\)">\(\|S_j\|\)</span>. The remaining sum <span class="math" data-tex="\(R_j\)">\(R_j\)</span> is independent of <span class="math" data-tex="\(\varepsilon_1,\dots,\varepsilon_j\)">\(\varepsilon_1,\dots,\varepsilon_j\)</span> and has the same distribution as <span class="math" data-tex="\(-R_j\)">\(-R_j\)</span>. So <span class="math" data-tex="\(\mathbb P(\tau=j,\ \|S\|&gt;u)\ge\frac12\mathbb P(\tau=j)\)">\(\mathbb P(\tau=j,\ \|S\|&gt;u)\ge\frac12\mathbb P(\tau=j)\)</span>, and summing over <span class="math" data-tex="\(j\)">\(j\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb P(\tau\text{ exists})\le2\,\mathbb P(\|S\|&gt;u).
+\]">\[
+\mathbb P(\tau\text{ exists})\le2\,\mathbb P(\|S\|&gt;u).
+\]</span>
+In the same way, since <span class="math" data-tex="\(S_j\)">\(S_j\)</span> is independent of <span class="math" data-tex="\(R_j\)">\(R_j\)</span> and symmetric, <span class="math" data-tex="\(\mathbb P(\|R_j\|&gt;v)\le2\,\mathbb P(\|S\|&gt;v)\)">\(\mathbb P(\|R_j\|&gt;v)\le2\,\mathbb P(\|S\|&gt;v)\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>.</p>
+<p><em>A product estimate.</em> If <span class="math" data-tex="\(\|S\|&gt;u+b+v\)">\(\|S\|&gt;u+b+v\)</span>, then <span class="math" data-tex="\(\tau\)">\(\tau\)</span> exists, <span class="math" data-tex="\(\|S_\tau\|\le u+b\)">\(\|S_\tau\|\le u+b\)</span> (as <span class="math" data-tex="\(\|S_{\tau-1}\|\le u\)">\(\|S_{\tau-1}\|\le u\)</span>), and <span class="math" data-tex="\(\|R_\tau\|&gt;v\)">\(\|R_\tau\|&gt;v\)</span>. Using the independence of <span class="math" data-tex="\(\{\tau=j\}\)">\(\{\tau=j\}\)</span> and <span class="math" data-tex="\(R_j\)">\(R_j\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb P(\|S\|&gt;u+b+v)\\
+&amp;\quad\le\sum_j\mathbb P(\tau=j)\,\mathbb P(\|R_j\|&gt;v)\\
+&amp;\quad\le4\,\mathbb P(\|S\|&gt;u)\,\mathbb P(\|S\|&gt;v).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb P(\|S\|&gt;u+b+v)\\
+&amp;\quad\le\sum_j\mathbb P(\tau=j)\,\mathbb P(\|R_j\|&gt;v)\\
+&amp;\quad\le4\,\mathbb P(\|S\|&gt;u)\,\mathbb P(\|S\|&gt;v).
+\end{aligned}
+\]</span></p>
+<p><em>Tails.</em> Take <span class="math" data-tex="\(u=8M\)">\(u=8M\)</span>. By Markov's inequality <span class="math" data-tex="\(\mathbb P(\|S\|&gt;8M)\le1/8\)">\(\mathbb P(\|S\|&gt;8M)\le1/8\)</span>, and with <span class="math" data-tex="\(b\le M\)">\(b\le M\)</span>,
+for <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb P(\|S\|&gt;9M+v)\le\tfrac12\,\mathbb P(\|S\|&gt;v).
+\]">\[
+\mathbb P(\|S\|&gt;9M+v)\le\tfrac12\,\mathbb P(\|S\|&gt;v).
+\]</span>
+By induction <span class="math" data-tex="\(\mathbb P(\|S\|&gt;9jM)\le2^{-j}\)">\(\mathbb P(\|S\|&gt;9jM)\le2^{-j}\)</span> for <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\|S\|^2&amp;=\int_0^\infty2t\,\mathbb P(\|S\|&gt;t)\,dt\\
+&amp;\le\sum_{j\ge0}2^{-j}\int_{9jM}^{9(j+1)M}2t\,dt\\
+&amp;=81M^2\sum_{j\ge0}(2j+1)2^{-j}\\
+&amp;=486M^2&lt;24^2M^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\|S\|^2&amp;=\int_0^\infty2t\,\mathbb P(\|S\|&gt;t)\,dt\\
+&amp;\le\sum_{j\ge0}2^{-j}\int_{9jM}^{9(j+1)M}2t\,dt\\
+&amp;=81M^2\sum_{j\ge0}(2j+1)2^{-j}\\
+&amp;=486M^2&lt;24^2M^2 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The inequality is the <span class="math" data-tex="\(L_1\)">\(L_1\)</span>-to-<span class="math" data-tex="\(L_2\)">\(L_2\)</span> case of Kahane's inequality ([Pis11, Theorem 8.1] gives the general form); the explicit constant <span class="math" data-tex="\(24\)">\(24\)</span> is all that is needed below.</p>
+<h2 id="3-quotient-duality-and-moment-lifts">3. Quotient duality and moment lifts</h2>
+<p><strong>Lemma 3.1</strong> (quotient lifts). Let <span class="math" data-tex="\(U\colon A\to B\)">\(U\colon A\to B\)</span> be a bounded linear surjection between Banach spaces with a bounded right inverse, and suppose <span class="math" data-tex="\(\|U^*b^*\|\ge D^{-1}\|b^*\|\)">\(\|U^*b^*\|\ge D^{-1}\|b^*\|\)</span> for all <span class="math" data-tex="\(b^*\in B^*\)">\(b^*\in B^*\)</span>. Then every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> and every <span class="math" data-tex="\(\theta&gt;1\)">\(\theta&gt;1\)</span> admit <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> with <span class="math" data-tex="\(Ua=b\)">\(Ua=b\)</span> and <span class="math" data-tex="\(\|a\|\le\theta D\|b\|\)">\(\|a\|\le\theta D\|b\|\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(Q\colon A\to A/\ker U\)">\(Q\colon A\to A/\ker U\)</span> be the quotient map and <span class="math" data-tex="\(\hat U\colon A/\ker U\to B\)">\(\hat U\colon A/\ker U\to B\)</span> the induced bijection, <span class="math" data-tex="\(\hat UQ=U\)">\(\hat UQ=U\)</span>; its inverse is bounded, being <span class="math" data-tex="\(Q\)">\(Q\)</span> composed with the right inverse. By the Hahn–Banach theorem (<a href="../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html">Hahn–Banach, Baire and the basic theorems on Banach spaces</a>, Corollary 2.3), the quotient norm of <span class="math" data-tex="\(\hat U^{-1}b\)">\(\hat U^{-1}b\)</span> is the supremum of <span class="math" data-tex="\(|\phi(\hat U^{-1}b)|\)">\(|\phi(\hat U^{-1}b)|\)</span> over functionals <span class="math" data-tex="\(\phi\)">\(\phi\)</span> of norm at most <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(A/\ker U\)">\(A/\ker U\)</span>. For such <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, put <span class="math" data-tex="\(b^*=\phi\circ\hat U^{-1}\in B^*\)">\(b^*=\phi\circ\hat U^{-1}\in B^*\)</span>. Then <span class="math" data-tex="\(U^*b^*=\phi\circ Q\)">\(U^*b^*=\phi\circ Q\)</span> has norm <span class="math" data-tex="\(\|\phi\|\le1\)">\(\|\phi\|\le1\)</span>, since <span class="math" data-tex="\(Q\)">\(Q\)</span> maps the open unit ball of <span class="math" data-tex="\(A\)">\(A\)</span> onto that of the quotient; so <span class="math" data-tex="\(\|b^*\|\le D\)">\(\|b^*\|\le D\)</span> and <span class="math" data-tex="\(|\phi(\hat U^{-1}b)|=|b^*(b)|\le D\|b\|\)">\(|\phi(\hat U^{-1}b)|=|b^*(b)|\le D\|b\|\)</span>. The coset <span class="math" data-tex="\(\hat U^{-1}b\)">\(\hat U^{-1}b\)</span> therefore has a representative <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(\|a\|\le\theta D\|b\|\)">\(\|a\|\le\theta D\|b\|\)</span>, and <span class="math" data-tex="\(Ua=b\)">\(Ua=b\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2</strong> (moment lifts; [OpenAI-CC, Lemma 2.3]). Suppose <span class="math" data-tex="\(c_m(G^*)\le D_g\)">\(c_m(G^*)\le D_g\)</span> and <span class="math" data-tex="\(c_m(F)\le D_f\)">\(c_m(F)\le D_f\)</span>, with <span class="math" data-tex="\(D_g,D_f\ge1\)">\(D_g,D_f\ge1\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a=\frac1{48D_g\sqrt m},\\
+b=\frac1{48D_f\sqrt m}.
+\end{gathered} \tag{3.1}
+\]">\[
+\begin{gathered}
+a=\frac1{48D_g\sqrt m},\\
+b=\frac1{48D_f\sqrt m}.
+\end{gathered} \tag{3.1}
+\]</span></p>
+<ol>
+<li>For <span class="math" data-tex="\(x_1,\dots,x_m\in B_G\)">\(x_1,\dots,x_m\in B_G\)</span> there are <span class="math" data-tex="\(P_\varepsilon\in B_G\)">\(P_\varepsilon\in B_G\)</span>, <span class="math" data-tex="\(\varepsilon\in\{-1,1\}^m\)">\(\varepsilon\in\{-1,1\}^m\)</span>, with <span class="math" data-tex="\(\mathbb E_\varepsilon\varepsilon_iP_\varepsilon=ax_i\)">\(\mathbb E_\varepsilon\varepsilon_iP_\varepsilon=ax_i\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>.</li>
+<li>For <span class="math" data-tex="\(y_1,\dots,y_m\in B_{F^*}\)">\(y_1,\dots,y_m\in B_{F^*}\)</span> there are <span class="math" data-tex="\(Z_\delta\in B_{F^*}\)">\(Z_\delta\in B_{F^*}\)</span>, <span class="math" data-tex="\(\delta\in\{-1,1\}^m\)">\(\delta\in\{-1,1\}^m\)</span>, with <span class="math" data-tex="\(\mathbb E_\delta\delta_jZ_\delta=by_j\)">\(\mathbb E_\delta\delta_jZ_\delta=by_j\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>.</li>
+</ol>
+<p>The same holds, with the same <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>, for <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> replaced by finite <span class="math" data-tex="\(L_2\)">\(L_2\)</span> sums <span class="math" data-tex="\(L_2(\Omega;G)\)">\(L_2(\Omega;G)\)</span> and <span class="math" data-tex="\(L_2(\Omega;F)\)">\(L_2(\Omega;F)\)</span>.</p>
+<p><em>Proof.</em> (1) The moment map <span class="math" data-tex="\(U\colon L_\infty(\{-1,1\}^m;G)\to\ell_2^m(G)\)">\(U\colon L_\infty(\{-1,1\}^m;G)\to\ell_2^m(G)\)</span>, <span class="math" data-tex="\(UP=(\mathbb E_\varepsilon\varepsilon_iP_\varepsilon)_i\)">\(UP=(\mathbb E_\varepsilon\varepsilon_iP_\varepsilon)_i\)</span>, has the right inverse <span class="math" data-tex="\((x_i)\mapsto\sum_i\varepsilon_ix_i\)">\((x_i)\mapsto\sum_i\varepsilon_ix_i\)</span>. Its adjoint sends <span class="math" data-tex="\((z_i^*)\in\ell_2^m(G^*)\)">\((z_i^*)\in\ell_2^m(G^*)\)</span> to the function <span class="math" data-tex="\(\varepsilon\mapsto\sum_i\varepsilon_iz_i^*\)">\(\varepsilon\mapsto\sum_i\varepsilon_iz_i^*\)</span> in <span class="math" data-tex="\(L_1(\{-1,1\}^m;G^*)\)">\(L_1(\{-1,1\}^m;G^*)\)</span>. By Lemma 2.1 and (2.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Bigl\|\sum_i\varepsilon_iz_i^*\Bigr\|_{L_1(G^*)}&amp;\ge\frac1{24D_g}\\
+&amp;\quad\cdot\Bigl(\sum_i\|z_i^*\|^2\Bigr)^{1/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Bigl\|\sum_i\varepsilon_iz_i^*\Bigr\|_{L_1(G^*)}&amp;\ge\frac1{24D_g}\\
+&amp;\quad\cdot\Bigl(\sum_i\|z_i^*\|^2\Bigr)^{1/2}.
+\end{aligned}
+\]</span>
+By Lemma 3.1 with <span class="math" data-tex="\(D=24D_g\)">\(D=24D_g\)</span> and <span class="math" data-tex="\(\theta=2\)">\(\theta=2\)</span>, the tuple <span class="math" data-tex="\((ax_i)\)">\((ax_i)\)</span>, of norm at most <span class="math" data-tex="\(a\sqrt m\)">\(a\sqrt m\)</span>, has a lift <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(\|P\|_{L_\infty}\le48D_ga\sqrt m=1\)">\(\|P\|_{L_\infty}\le48D_ga\sqrt m=1\)</span>.</p>
+<p>(2) The map <span class="math" data-tex="\(V\colon\ell_2^m(F)\to L_1(\{-1,1\}^m;F)\)">\(V\colon\ell_2^m(F)\to L_1(\{-1,1\}^m;F)\)</span>, <span class="math" data-tex="\(V(w_j)=\sum_j\delta_jw_j\)">\(V(w_j)=\sum_j\delta_jw_j\)</span>, satisfies <span class="math" data-tex="\(\|Vw\|_{L_1}\ge(24D_f)^{-1}\|w\|_{\ell_2^m(F)}\)">\(\|Vw\|_{L_1}\ge(24D_f)^{-1}\|w\|_{\ell_2^m(F)}\)</span>, by Lemma 2.1 and (2.1). The functional <span class="math" data-tex="\(Vw\mapsto b\sum_jy_j(w_j)\)">\(Vw\mapsto b\sum_jy_j(w_j)\)</span> on the range of <span class="math" data-tex="\(V\)">\(V\)</span> is well defined and has norm at most <span class="math" data-tex="\(b\sqrt m\cdot24D_f=1/2\)">\(b\sqrt m\cdot24D_f=1/2\)</span>. Extend it by the Hahn–Banach theorem to <span class="math" data-tex="\(L_1(\{-1,1\}^m;F)\)">\(L_1(\{-1,1\}^m;F)\)</span> with the same norm, and represent the extension by <span class="math" data-tex="\(Z\in L_\infty(\{-1,1\}^m;F^*)\)">\(Z\in L_\infty(\{-1,1\}^m;F^*)\)</span>, <span class="math" data-tex="\(\|Z\|_{L_\infty}\le1/2\)">\(\|Z\|_{L_\infty}\le1/2\)</span>. Testing on <span class="math" data-tex="\(Vw\)">\(Vw\)</span> with a single nonzero <span class="math" data-tex="\(w_j\)">\(w_j\)</span> gives <span class="math" data-tex="\(\mathbb E_\delta\delta_jZ_\delta=by_j\)">\(\mathbb E_\delta\delta_jZ_\delta=by_j\)</span>.</p>
+<p>For finite <span class="math" data-tex="\(L_2\)">\(L_2\)</span> sums, <span class="math" data-tex="\(c_m(L_2(\Omega;F))\le c_m(F)\)">\(c_m(L_2(\Omega;F))\le c_m(F)\)</span> by Section 2, and <span class="math" data-tex="\(L_2(\Omega;G)^*=L_2(\Omega;G^*)\)">\(L_2(\Omega;G)^*=L_2(\Omega;G^*)\)</span> with <span class="math" data-tex="\(c_m(L_2(\Omega;G^*))\le c_m(G^*)\)">\(c_m(L_2(\Omega;G^*))\le c_m(G^*)\)</span>; the same proofs apply. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Only the positivity of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>, and the growth of <span class="math" data-tex="\(ma\)">\(ma\)</span> and <span class="math" data-tex="\(mb\)">\(mb\)</span> with <span class="math" data-tex="\(m\)">\(m\)</span> under cotype hypotheses, matter later.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Show that <span class="math" data-tex="\(w_1(\mathrm{Id}_{\ell_\infty^2})=1\)">\(w_1(\mathrm{Id}_{\ell_\infty^2})=1\)</span>, so that the upper bound of Lemma 1.1(1) is attained.</p>
+<p><strong>4.2.</strong> Show that <span class="math" data-tex="\(c_m(\mathbb R)=1\)">\(c_m(\mathbb R)=1\)</span> and <span class="math" data-tex="\(c_m(\ell_\infty^m)\ge\sqrt m\)">\(c_m(\ell_\infty^m)\ge\sqrt m\)</span>.</p>
+<p><strong>4.3.</strong> Check the identity <span class="math" data-tex="\(\sum_{j\ge0}(2j+1)2^{-j}=6\)">\(\sum_{j\ge0}(2j+1)2^{-j}=6\)</span>.</p>
+<p><strong>4.4.</strong> In Lemma 3.2(1), why is the lift taken in <span class="math" data-tex="\(L_\infty\)">\(L_\infty\)</span>, not in <span class="math" data-tex="\(L_2\)">\(L_2\)</span>?</p>
+<p><strong>4.5.</strong> Show that the moment lift of Lemma 3.2(1) cannot exist for every <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(a\)">\(a\)</span> independent of <span class="math" data-tex="\(m\)">\(m\)</span> when <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span>: compute <span class="math" data-tex="\(\sum_i(\mathbb E_\varepsilon\varepsilon_iP_\varepsilon)^2\)">\(\sum_i(\mathbb E_\varepsilon\varepsilon_iP_\varepsilon)^2\)</span> for <span class="math" data-tex="\(|P_\varepsilon|\le1\)">\(|P_\varepsilon|\le1\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> On <span class="math" data-tex="\(V_1=\{0,1\}\)">\(V_1=\{0,1\}\)</span>, take <span class="math" data-tex="\(x_0=(1,1)\)">\(x_0=(1,1)\)</span>, <span class="math" data-tex="\(x_1=(1,-1)\)">\(x_1=(1,-1)\)</span> in <span class="math" data-tex="\(\ell_\infty^2\)">\(\ell_\infty^2\)</span>. Then <span class="math" data-tex="\((Wx)(0)=\frac12(x_0+x_1)=(1,0)\)">\((Wx)(0)=\frac12(x_0+x_1)=(1,0)\)</span> and <span class="math" data-tex="\((Wx)(1)=\frac12(x_0-x_1)=(0,1)\)">\((Wx)(1)=\frac12(x_0-x_1)=(0,1)\)</span>, so <span class="math" data-tex="\(\|Wx\|_{L_2}=1=\|x\|_{L_2}\)">\(\|Wx\|_{L_2}=1=\|x\|_{L_2}\)</span>.</p>
+<p><strong>4.2.</strong> For real numbers, <span class="math" data-tex="\(\mathbb E(\sum_i\varepsilon_iy_i)^2=\sum_iy_i^2\)">\(\mathbb E(\sum_i\varepsilon_iy_i)^2=\sum_iy_i^2\)</span>. In <span class="math" data-tex="\(\ell_\infty^m\)">\(\ell_\infty^m\)</span>, the unit vectors <span class="math" data-tex="\(e_i\)">\(e_i\)</span> have <span class="math" data-tex="\(\|\sum_i\varepsilon_ie_i\|=1\)">\(\|\sum_i\varepsilon_ie_i\|=1\)</span> for every choice of signs, while <span class="math" data-tex="\((\sum_i\|e_i\|^2)^{1/2}=\sqrt m\)">\((\sum_i\|e_i\|^2)^{1/2}=\sqrt m\)</span>.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(\sum_jj2^{-j}=2\)">\(\sum_jj2^{-j}=2\)</span> and <span class="math" data-tex="\(\sum_j2^{-j}=2\)">\(\sum_j2^{-j}=2\)</span>, so the sum is <span class="math" data-tex="\(4+2=6\)">\(4+2=6\)</span>.</p>
+<p><strong>4.4.</strong> The lifts are used as vectors of the unit ball, pointwise in <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>: the dual estimate is in <span class="math" data-tex="\(L_1\)">\(L_1\)</span>, whose dual is <span class="math" data-tex="\(L_\infty\)">\(L_\infty\)</span>.</p>
+<p><strong>4.5.</strong> By Bessel's inequality for the orthonormal functions <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span> in <span class="math" data-tex="\(L_2(\{-1,1\}^m)\)">\(L_2(\{-1,1\}^m)\)</span>, <span class="math" data-tex="\(\sum_i(\mathbb E\varepsilon_iP_\varepsilon)^2\le\mathbb EP^2\le1\)">\(\sum_i(\mathbb E\varepsilon_iP_\varepsilon)^2\le\mathbb EP^2\le1\)</span>. With <span class="math" data-tex="\(x_i=1\)">\(x_i=1\)</span> this forces <span class="math" data-tex="\(ma^2\le1\)">\(ma^2\le1\)</span>, so <span class="math" data-tex="\(a\le m^{-1/2}\)">\(a\le m^{-1/2}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-CC] OpenAI, <em>The cotype–cotype conjecture under the approximation property</em>, OpenAI Math Release preprint, 23 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/The-cotype-cotype-conjecture-under-the-approximation-property-September-23-2026</li>
+<li>[Pis11] G. Pisier, <em>Martingales in Banach spaces (in connection with type and cotype)</em>, IHP course notes, version of 9 February 2011, Theorem 8.1. https://webusers.imj-prg.fr/~gilles.pisier/ihp-pisier.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

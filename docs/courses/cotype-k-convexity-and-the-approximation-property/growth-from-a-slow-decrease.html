@@ -1,0 +1,283 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Growth from a slow decrease</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Cotype, K-convexity and the approximation property)</a><a href="a-fourier-coefficient-of-binary-rank-two.html">Previous lesson</a><a href="uniform-decay-and-the-characterization.html">Next lesson</a><a href="src/growth-from-a-slow-decrease.md">Editable source</a></nav><main><article><h1 id="growth-from-a-slow-decrease">Growth from a slow decrease</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the key step of the decay theorem (Lemma 2.1): if the Walsh norms of an operator decrease slowly between the indices <span class="math" data-tex="\(n-2m\)">\(n-2m\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span>, then the Walsh norm at index <span class="math" data-tex="\(2(n-2m)\)">\(2(n-2m)\)</span>, almost twice as large, is still comparable to the one at <span class="math" data-tex="\(n\)">\(n\)</span>. The proof turns a Walsh test into three bounded scalar functions to which the coefficient lemma of <a href="a-fourier-coefficient-of-binary-rank-two.html">A Fourier coefficient of binary rank two</a> applies; a coefficient of binary rank <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> then produces a Walsh test with <span class="math" data-tex="\(k\)">\(k\)</span> independent factors. To make the scalar functions depend only on sign matrices, the vectors of the Walsh test are replaced by <em>frames</em>, linearly independent tuples, on which the general linear group over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> acts transitively with prescribed pairings (Lemma 1.1).</p>
+<ul>
+<li>Pairs of frames (Lemma 1.1).</li>
+<li>Growth from a slow decrease (Lemma 2.1), in five steps.</li>
+</ul>
+<p>The lesson follows [OpenAI-CC, Section 4.1]. Notation is that of <a href="walsh-norms-and-moment-lifts.html">Walsh norms and moment lifts</a>: <span class="math" data-tex="\(V_n=\mathbb F_2^n\)">\(V_n=\mathbb F_2^n\)</span>, <span class="math" data-tex="\(\chi(u,v)=(-1)^{u\cdot v}\)">\(\chi(u,v)=(-1)^{u\cdot v}\)</span>, Walsh norms <span class="math" data-tex="\(w_n\)">\(w_n\)</span>, fixed-length cotype constants <span class="math" data-tex="\(c_m\)">\(c_m\)</span>, and the lift parameters <span class="math" data-tex="\(a,b\)">\(a,b\)</span> of (3.1) there. For a function <span class="math" data-tex="\(h\)">\(h\)</span> on a sign cube, <span class="math" data-tex="\(\mathcal Oh\)">\(\mathcal Oh\)</span> is its odd part.</p>
+<h2 id="1-pairs-of-frames">1. Pairs of frames</h2>
+<p>A <em>frame</em> in <span class="math" data-tex="\(V_n\)">\(V_n\)</span> is an ordered linearly independent tuple. Vectors and covectors are identified through the dot product; the group <span class="math" data-tex="\(\mathrm{GL}(n,\mathbb F_2)\)">\(\mathrm{GL}(n,\mathbb F_2)\)</span> acts on primal frames by <span class="math" data-tex="\(U\mapsto HU=(Hu_i)\)">\(U\mapsto HU=(Hu_i)\)</span> and on covector frames by <span class="math" data-tex="\(V\mapsto H^{-\mathrm t}V\)">\(V\mapsto H^{-\mathrm t}V\)</span>. The pairing matrix of a primal frame <span class="math" data-tex="\(U\)">\(U\)</span> of length <span class="math" data-tex="\(r\)">\(r\)</span> and a covector frame <span class="math" data-tex="\(V\)">\(V\)</span> of length <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\((u_i\cdot v_j)\)">\((u_i\cdot v_j)\)</span>, an <span class="math" data-tex="\(r\times s\)">\(r\times s\)</span> binary matrix; it is unchanged by <span class="math" data-tex="\((U,V)\mapsto(HU,H^{-\mathrm t}V)\)">\((U,V)\mapsto(HU,H^{-\mathrm t}V)\)</span>, since <span class="math" data-tex="\(Hu\cdot H^{-\mathrm t}v=u\cdot v\)">\(Hu\cdot H^{-\mathrm t}v=u\cdot v\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (pairs of frames; [OpenAI-CC, Lemma 4.1]). The action <span class="math" data-tex="\((U,V)\mapsto(HU,H^{-\mathrm t}V)\)">\((U,V)\mapsto(HU,H^{-\mathrm t}V)\)</span> of <span class="math" data-tex="\(\mathrm{GL}(n,\mathbb F_2)\)">\(\mathrm{GL}(n,\mathbb F_2)\)</span> is transitive on pairs of frames of fixed lengths <span class="math" data-tex="\(r,s\)">\(r,s\)</span> with a prescribed pairing matrix. If <span class="math" data-tex="\(n\ge r+s\)">\(n\ge r+s\)</span>, every binary <span class="math" data-tex="\(r\times s\)">\(r\times s\)</span> matrix is a pairing matrix.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\((U,V)\)">\((U,V)\)</span> and <span class="math" data-tex="\((U&#x27;,V&#x27;)\)">\((U&#x27;,V&#x27;)\)</span> have the same pairing matrix. The maps <span class="math" data-tex="\(\pi(x)=(x\cdot v_j)_j\)">\(\pi(x)=(x\cdot v_j)_j\)</span> and <span class="math" data-tex="\(\pi&#x27;(x)=(x\cdot v_j&#x27;)_j\)">\(\pi&#x27;(x)=(x\cdot v_j&#x27;)_j\)</span> from <span class="math" data-tex="\(V_n\)">\(V_n\)</span> to <span class="math" data-tex="\(\mathbb F_2^s\)">\(\mathbb F_2^s\)</span> are surjective, since the <span class="math" data-tex="\(v_j\)">\(v_j\)</span> and the <span class="math" data-tex="\(v_j&#x27;\)">\(v_j&#x27;\)</span> are independent. The isomorphism <span class="math" data-tex="\(\phi_0\colon\operatorname{span}U\to\operatorname{span}U&#x27;\)">\(\phi_0\colon\operatorname{span}U\to\operatorname{span}U&#x27;\)</span>, <span class="math" data-tex="\(u_i\mapsto u_i&#x27;\)">\(u_i\mapsto u_i&#x27;\)</span>, satisfies <span class="math" data-tex="\(\pi&#x27;\phi_0=\pi\)">\(\pi&#x27;\phi_0=\pi\)</span> on <span class="math" data-tex="\(\operatorname{span}U\)">\(\operatorname{span}U\)</span>, because the pairing matrices agree; so it maps <span class="math" data-tex="\(\operatorname{span}U\cap\ker\pi\)">\(\operatorname{span}U\cap\ker\pi\)</span> onto <span class="math" data-tex="\(\operatorname{span}U&#x27;\cap\ker\pi&#x27;\)">\(\operatorname{span}U&#x27;\cap\ker\pi&#x27;\)</span>. The kernels have the same dimension <span class="math" data-tex="\(n-s\)">\(n-s\)</span>; extend the restriction of <span class="math" data-tex="\(\phi_0\)">\(\phi_0\)</span> to an isomorphism <span class="math" data-tex="\(\kappa\colon\ker\pi\to\ker\pi&#x27;\)">\(\kappa\colon\ker\pi\to\ker\pi&#x27;\)</span>. Together, <span class="math" data-tex="\(\phi_0\)">\(\phi_0\)</span> and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> define an isomorphism <span class="math" data-tex="\(\operatorname{span}U+\ker\pi\to\operatorname{span}U&#x27;+\ker\pi&#x27;\)">\(\operatorname{span}U+\ker\pi\to\operatorname{span}U&#x27;+\ker\pi&#x27;\)</span> with <span class="math" data-tex="\(\pi&#x27;H=\pi\)">\(\pi&#x27;H=\pi\)</span>. Choose a basis <span class="math" data-tex="\(c_1,\dots,c_t\)">\(c_1,\dots,c_t\)</span> of a complement of <span class="math" data-tex="\(\operatorname{span}U+\ker\pi\)">\(\operatorname{span}U+\ker\pi\)</span>; the vectors <span class="math" data-tex="\(\pi(c_l)\)">\(\pi(c_l)\)</span> are independent modulo <span class="math" data-tex="\(\pi(\operatorname{span}U)=\pi&#x27;(\operatorname{span}U&#x27;)\)">\(\pi(\operatorname{span}U)=\pi&#x27;(\operatorname{span}U&#x27;)\)</span>. Choose <span class="math" data-tex="\(c_l&#x27;\)">\(c_l&#x27;\)</span> with <span class="math" data-tex="\(\pi&#x27;(c_l&#x27;)=\pi(c_l)\)">\(\pi&#x27;(c_l&#x27;)=\pi(c_l)\)</span> and put <span class="math" data-tex="\(Hc_l=c_l&#x27;\)">\(Hc_l=c_l&#x27;\)</span>. Then <span class="math" data-tex="\(H\)">\(H\)</span> is invertible, <span class="math" data-tex="\(HU=U&#x27;\)">\(HU=U&#x27;\)</span>, and <span class="math" data-tex="\(\pi&#x27;H=\pi\)">\(\pi&#x27;H=\pi\)</span>, which says <span class="math" data-tex="\((Hx)\cdot v_j&#x27;=x\cdot v_j\)">\((Hx)\cdot v_j&#x27;=x\cdot v_j\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>, that is <span class="math" data-tex="\(H^{-\mathrm t}V=V&#x27;\)">\(H^{-\mathrm t}V=V&#x27;\)</span>.</p>
+<p>For the second assertion, given a binary <span class="math" data-tex="\(r\times s\)">\(r\times s\)</span> matrix <span class="math" data-tex="\(D\)">\(D\)</span>, take <span class="math" data-tex="\(u_i=(e_i,0)\)">\(u_i=(e_i,0)\)</span> and <span class="math" data-tex="\(v_j=(D_{:,j},e_j)\)">\(v_j=(D_{:,j},e_j)\)</span> in <span class="math" data-tex="\(\mathbb F_2^r\oplus\mathbb F_2^s\subseteq V_n\)">\(\mathbb F_2^r\oplus\mathbb F_2^s\subseteq V_n\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-growth-from-a-slow-decrease">2. Growth from a slow decrease</h2>
+<p><strong>Lemma 2.1</strong> (growth; [OpenAI-CC, Lemma 4.2]). Let <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(D_g,D_f\ge1\)">\(D_g,D_f\ge1\)</span>, and suppose that <span class="math" data-tex="\(m\)">\(m\)</span> and the parameters <span class="math" data-tex="\(a,b\)">\(a,b\)</span> of (3.1) of the previous lesson satisfy the hypotheses of Lemma 2.1 of <a href="a-fourier-coefficient-of-binary-rank-two.html">A Fourier coefficient of binary rank two</a>, with its constant <span class="math" data-tex="\(c_*\)">\(c_*\)</span>. Put <span class="math" data-tex="\(c_1=\min(1/2,c_*/2)\)">\(c_1=\min(1/2,c_*/2)\)</span>. If
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_m(G^*)\le D_g,\qquad c_m(F)\le D_f,\\
+0\ne T\colon G\to F,
+\end{gathered}
+\]">\[
+\begin{gathered}
+c_m(G^*)\le D_g,\qquad c_m(F)\le D_f,\\
+0\ne T\colon G\to F,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(n&gt;4m\)">\(n&gt;4m\)</span> satisfies
+<span class="math math-display" data-tex="\[
+w_{n-2m}(T)\le2w_n(T), \tag{2.1}
+\]">\[
+w_{n-2m}(T)\le2w_n(T), \tag{2.1}
+\]</span>
+then
+<span class="math math-display" data-tex="\[
+w_{2(n-2m)}(T)\ge c_1w_n(T). \tag{2.2}
+\]">\[
+w_{2(n-2m)}(T)\ge c_1w_n(T). \tag{2.2}
+\]</span>
+<span class="math" data-tex="\(T\)">\(T\)</span> need not have finite rank.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(n&#x27;=n-2m\)">\(n&#x27;=n-2m\)</span>.</p>
+<p><em>Step 1: exact Walsh signs.</em> By (1.1) of the previous lesson there are <span class="math" data-tex="\(p_u\in G\)">\(p_u\in G\)</span> and <span class="math" data-tex="\(q_v\in F^*\)">\(q_v\in F^*\)</span>, <span class="math" data-tex="\(u,v\in V_n\)">\(u,v\in V_n\)</span>, with <span class="math" data-tex="\(\mathbb E_u\|p_u\|^2\le1\)">\(\mathbb E_u\|p_u\|^2\le1\)</span>, <span class="math" data-tex="\(\mathbb E_v\|q_v\|^2\le1\)">\(\mathbb E_v\|q_v\|^2\le1\)</span> and
+<span class="math math-display" data-tex="\[
+\gamma=\mathbb E_{u,v}\chi(u,v)\,q_v(Tp_u)\ge\tfrac12w_n(T)&gt;0 .
+\]">\[
+\gamma=\mathbb E_{u,v}\chi(u,v)\,q_v(Tp_u)\ge\tfrac12w_n(T)&gt;0 .
+\]</span>
+Let <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> be <span class="math" data-tex="\(T\)">\(T\)</span> applied pointwise on <span class="math" data-tex="\(L_2(V_n\times V_n;G)\)">\(L_2(V_n\times V_n;G)\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x_u&#x27;(\alpha,\beta)=(-1)^{u\cdot\beta+\alpha\cdot\beta}p_{u+\alpha},\\
+y_v&#x27;(\alpha,\beta)=(-1)^{\alpha\cdot v}q_{v+\beta}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+x_u&#x27;(\alpha,\beta)=(-1)^{u\cdot\beta+\alpha\cdot\beta}p_{u+\alpha},\\
+y_v&#x27;(\alpha,\beta)=(-1)^{\alpha\cdot v}q_{v+\beta}.
+\end{gathered}
+\]</span>
+By translation invariance of the uniform measure, <span class="math" data-tex="\(\|x_u&#x27;\|\le1\)">\(\|x_u&#x27;\|\le1\)</span> and <span class="math" data-tex="\(\|y_v&#x27;\|\le1\)">\(\|y_v&#x27;\|\le1\)</span>. Modulo <span class="math" data-tex="\(2\)">\(2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u\cdot\beta+\alpha\cdot\beta&amp;+\alpha\cdot v\\
+&amp;=(u+\alpha)\cdot(v+\beta)+u\cdot v,
+\end{aligned}
+\]">\[
+\begin{aligned}
+u\cdot\beta+\alpha\cdot\beta&amp;+\alpha\cdot v\\
+&amp;=(u+\alpha)\cdot(v+\beta)+u\cdot v,
+\end{aligned}
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y_v&#x27;(T&#x27;x_u&#x27;)&amp;=\chi(u,v)\,\mathbb E_{\alpha,\beta}\chi(u+\alpha,v+\beta)\\
+&amp;\qquad\cdot q_{v+\beta}(Tp_{u+\alpha})\\
+&amp;=\gamma\,\chi(u,v).
+\end{aligned}
+\]">\[
+\begin{aligned}
+y_v&#x27;(T&#x27;x_u&#x27;)&amp;=\chi(u,v)\,\mathbb E_{\alpha,\beta}\chi(u+\alpha,v+\beta)\\
+&amp;\qquad\cdot q_{v+\beta}(Tp_{u+\alpha})\\
+&amp;=\gamma\,\chi(u,v).
+\end{aligned}
+\]</span>
+Amplify once more over <span class="math" data-tex="\(\mathscr G=\mathrm{GL}(n,\mathbb F_2)\)">\(\mathscr G=\mathrm{GL}(n,\mathbb F_2)\)</span>: let <span class="math" data-tex="\(\widetilde T\colon\widetilde G\to\widetilde F\)">\(\widetilde T\colon\widetilde G\to\widetilde F\)</span> be <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> applied pointwise on functions on <span class="math" data-tex="\(\mathscr G\)">\(\mathscr G\)</span>, and put <span class="math" data-tex="\(x_u(R)=x_{Ru}&#x27;\)">\(x_u(R)=x_{Ru}&#x27;\)</span>, <span class="math" data-tex="\(y_v(R)=y_{R^{-\mathrm t}v}&#x27;\)">\(y_v(R)=y_{R^{-\mathrm t}v}&#x27;\)</span>. For the bilinear form <span class="math" data-tex="\(\mathcal B(x,y)=y(\widetilde Tx)\)">\(\mathcal B(x,y)=y(\widetilde Tx)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x_u\in B_{\widetilde G},\qquad y_v\in B_{\widetilde F^*},\\
+\mathcal B(x_u,y_v)=\gamma\,\chi(u,v),
+\end{gathered} \tag{2.3}
+\]">\[
+\begin{gathered}
+x_u\in B_{\widetilde G},\qquad y_v\in B_{\widetilde F^*},\\
+\mathcal B(x_u,y_v)=\gamma\,\chi(u,v),
+\end{gathered} \tag{2.3}
+\]</span>
+since <span class="math" data-tex="\(Ru\cdot R^{-\mathrm t}v=u\cdot v\)">\(Ru\cdot R^{-\mathrm t}v=u\cdot v\)</span>. The right translations <span class="math" data-tex="\(\Lambda(H)z(R)=z(RH)\)">\(\Lambda(H)z(R)=z(RH)\)</span>, on <span class="math" data-tex="\(\widetilde G\)">\(\widetilde G\)</span> and on <span class="math" data-tex="\(\widetilde F^*\)">\(\widetilde F^*\)</span>, are isometries, satisfy <span class="math" data-tex="\(\Lambda(H_1)\Lambda(H_2)=\Lambda(H_1H_2)\)">\(\Lambda(H_1)\Lambda(H_2)=\Lambda(H_1H_2)\)</span>, preserve <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> when applied to both arguments, and
+<span class="math math-display" data-tex="\[
+\Lambda(H)x_u=x_{Hu},\qquad\Lambda(H)y_v=y_{H^{-\mathrm t}v},
+\]">\[
+\Lambda(H)x_u=x_{Hu},\qquad\Lambda(H)y_v=y_{H^{-\mathrm t}v},
+\]</span>
+because <span class="math" data-tex="\((RH)^{-\mathrm t}=R^{-\mathrm t}H^{-\mathrm t}\)">\((RH)^{-\mathrm t}=R^{-\mathrm t}H^{-\mathrm t}\)</span>. By Lemma 1.1(2) of the previous lesson, <span class="math" data-tex="\(w_j(\widetilde T)=w_j(T)\)">\(w_j(\widetilde T)=w_j(T)\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>. By Section 2 there, <span class="math" data-tex="\(c_m(\widetilde F)\le D_f\)">\(c_m(\widetilde F)\le D_f\)</span> and <span class="math" data-tex="\(c_m(\widetilde G^*)\le D_g\)">\(c_m(\widetilde G^*)\le D_g\)</span>, so the moment lifts of Lemma 3.2 there are available with the same <span class="math" data-tex="\(a,b\)">\(a,b\)</span>.</p>
+<p><em>Step 2: equivariant lifts of frames.</em> For a primal <span class="math" data-tex="\(m\)">\(m\)</span>-frame <span class="math" data-tex="\(U\)">\(U\)</span> we want <span class="math" data-tex="\(P_{U,\varepsilon}\in B_{\widetilde G}\)">\(P_{U,\varepsilon}\in B_{\widetilde G}\)</span>, <span class="math" data-tex="\(\varepsilon\in\{-1,1\}^m\)">\(\varepsilon\in\{-1,1\}^m\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E_\varepsilon\varepsilon_iP_{U,\varepsilon}=a\,x_{u_i}\quad(1\le i\le m),\\
+\Lambda(H)P_{U,\varepsilon}=P_{HU,\varepsilon}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E_\varepsilon\varepsilon_iP_{U,\varepsilon}=a\,x_{u_i}\quad(1\le i\le m),\\
+\Lambda(H)P_{U,\varepsilon}=P_{HU,\varepsilon}.
+\end{gathered}
+\]</span>
+Fix a frame <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and lifts <span class="math" data-tex="\(P_{U_0,\varepsilon}\)">\(P_{U_0,\varepsilon}\)</span> from Lemma 3.2 of the previous lesson, and replace them by their averages over the stabilizer <span class="math" data-tex="\(\{K:KU_0=U_0\}\)">\(\{K:KU_0=U_0\}\)</span> under <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. The averages keep the moments, since <span class="math" data-tex="\(\Lambda(K)x_{u_i}=x_{Ku_i}=x_{u_i}\)">\(\Lambda(K)x_{u_i}=x_{Ku_i}=x_{u_i}\)</span>, lie in the unit ball, and are invariant under the stabilizer. For <span class="math" data-tex="\(U=HU_0\)">\(U=HU_0\)</span> put <span class="math" data-tex="\(P_{U,\varepsilon}=\Lambda(H)P_{U_0,\varepsilon}\)">\(P_{U,\varepsilon}=\Lambda(H)P_{U_0,\varepsilon}\)</span>. This is well defined, because two choices of <span class="math" data-tex="\(H\)">\(H\)</span> differ on the right by a stabilizer element, and it is equivariant and has the required moments. The action on <span class="math" data-tex="\(m\)">\(m\)</span>-frames is transitive by Lemma 1.1. In the same way, with the action <span class="math" data-tex="\(H^{-\mathrm t}\)">\(H^{-\mathrm t}\)</span>, there are <span class="math" data-tex="\(Z_{V,\delta}\in B_{\widetilde F^*}\)">\(Z_{V,\delta}\in B_{\widetilde F^*}\)</span> for covector <span class="math" data-tex="\(m\)">\(m\)</span>-frames <span class="math" data-tex="\(V\)">\(V\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E_\delta\delta_jZ_{V,\delta}=b\,y_{v_j},\\
+\Lambda(H)Z_{V,\delta}=Z_{H^{-\mathrm t}V,\delta}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E_\delta\delta_jZ_{V,\delta}=b\,y_{v_j},\\
+\Lambda(H)Z_{V,\delta}=Z_{H^{-\mathrm t}V,\delta}.
+\end{gathered}
+\]</span>
+By equivariance, the invariance of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> and Lemma 1.1, the following numbers depend only on the displayed sign patterns and on <span class="math" data-tex="\(\varepsilon,\delta\)">\(\varepsilon,\delta\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi(S,\varepsilon,\delta)&amp;=\mathcal B(P_{U,\varepsilon},Z_{V,\delta}),\\
+\phi(s,\varepsilon)&amp;=\mathcal B(P_{U,\varepsilon},y_v),\\
+\psi(t,\delta)&amp;=\mathcal B(x_u,Z_{V,\delta}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi(S,\varepsilon,\delta)&amp;=\mathcal B(P_{U,\varepsilon},Z_{V,\delta}),\\
+\phi(s,\varepsilon)&amp;=\mathcal B(P_{U,\varepsilon},y_v),\\
+\psi(t,\delta)&amp;=\mathcal B(x_u,Z_{V,\delta}),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(S_{ij}=\chi(u_i,v_j)\)">\(S_{ij}=\chi(u_i,v_j)\)</span>, <span class="math" data-tex="\(s_i=\chi(u_i,v)\)">\(s_i=\chi(u_i,v)\)</span> with <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, and <span class="math" data-tex="\(t_j=\chi(u,v_j)\)">\(t_j=\chi(u,v_j)\)</span> with <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>.
+Every pattern occurs, since <span class="math" data-tex="\(n&gt;4m\ge2m\)">\(n&gt;4m\ge2m\)</span>. The moment identities and (2.3) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_\varepsilon\varepsilon_i\Phi(S,\varepsilon,\delta)\\
+&amp;\quad=a\,\psi(S_{i,:},\delta),\\
+&amp;\mathbb E_\delta\delta_j\Phi(S,\varepsilon,\delta)\\
+&amp;\quad=b\,\phi(S_{:,j},\varepsilon),\\
+&amp;\mathbb E_\varepsilon\varepsilon_i\phi(s,\varepsilon)=a\gamma\,s_i,\\
+&amp;\mathbb E_\delta\delta_j\psi(t,\delta)=b\gamma\,t_j .
+\end{aligned} \tag{2.4}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_\varepsilon\varepsilon_i\Phi(S,\varepsilon,\delta)\\
+&amp;\quad=a\,\psi(S_{i,:},\delta),\\
+&amp;\mathbb E_\delta\delta_j\Phi(S,\varepsilon,\delta)\\
+&amp;\quad=b\,\phi(S_{:,j},\varepsilon),\\
+&amp;\mathbb E_\varepsilon\varepsilon_i\phi(s,\varepsilon)=a\gamma\,s_i,\\
+&amp;\mathbb E_\delta\delta_j\psi(t,\delta)=b\gamma\,t_j .
+\end{aligned} \tag{2.4}
+\]</span></p>
+<p><em>Step 3: odd parts on a smaller cube.</em> For all <span class="math" data-tex="\(\varepsilon,\delta\)">\(\varepsilon,\delta\)</span>, the three numbers
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\mathcal O\Phi(\cdot,\varepsilon,\delta)\|_\infty,\\
+\|\mathcal O\phi(\cdot,\varepsilon)\|_\infty,\\
+\|\mathcal O\psi(\cdot,\delta)\|_\infty
+\end{gathered} \tag{2.5}
+\]">\[
+\begin{gathered}
+\|\mathcal O\Phi(\cdot,\varepsilon,\delta)\|_\infty,\\
+\|\mathcal O\phi(\cdot,\varepsilon)\|_\infty,\\
+\|\mathcal O\psi(\cdot,\delta)\|_\infty
+\end{gathered} \tag{2.5}
+\]</span>
+are at most <span class="math" data-tex="\(w_{n&#x27;}(T)\)">\(w_{n&#x27;}(T)\)</span>.
+Write <span class="math" data-tex="\(V_n=V_{n&#x27;}\oplus\mathbb F_2^m\oplus\mathbb F_2^m\)">\(V_n=V_{n&#x27;}\oplus\mathbb F_2^m\oplus\mathbb F_2^m\)</span> and fix <span class="math" data-tex="\(S_0=((-1)^{D_{ij}})\)">\(S_0=((-1)^{D_{ij}})\)</span>. For <span class="math" data-tex="\(u,v\in V_{n&#x27;}\)">\(u,v\in V_{n&#x27;}\)</span> take the primal frame <span class="math" data-tex="\(U(u)_i=(u,e_i,0)\)">\(U(u)_i=(u,e_i,0)\)</span> and the covector frames <span class="math" data-tex="\(V^\pm(v)_j\)">\(V^\pm(v)_j\)</span>, with <span class="math" data-tex="\(V^+(v)_j=(v,D_{:,j},e_j)\)">\(V^+(v)_j=(v,D_{:,j},e_j)\)</span> and <span class="math" data-tex="\(V^-(v)_j=(v,D_{:,j}+\mathbf1,e_j)\)">\(V^-(v)_j=(v,D_{:,j}+\mathbf1,e_j)\)</span>, where <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span> is the all-ones vector; the tags <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, <span class="math" data-tex="\(e_j\)">\(e_j\)</span> make them frames for every <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. Their sign matrices are <span class="math" data-tex="\(\chi(u,v)S_0\)">\(\chi(u,v)S_0\)</span> and <span class="math" data-tex="\(-\chi(u,v)S_0\)">\(-\chi(u,v)S_0\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal B\Bigl(P_{U(u),\varepsilon},\tfrac12\bigl(Z_{V^+(v),\delta}-Z_{V^-(v),\delta}\bigr)\Bigr)\\
+&amp;\quad=\chi(u,v)\,\mathcal O\Phi(S_0,\varepsilon,\delta).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal B\Bigl(P_{U(u),\varepsilon},\tfrac12\bigl(Z_{V^+(v),\delta}-Z_{V^-(v),\delta}\bigr)\Bigr)\\
+&amp;\quad=\chi(u,v)\,\mathcal O\Phi(S_0,\varepsilon,\delta).
+\end{aligned}
+\]</span>
+The two families lie in the unit balls and depend only on <span class="math" data-tex="\(u\)">\(u\)</span> and on <span class="math" data-tex="\(v\)">\(v\)</span>, respectively. Testing (1.1) of the previous lesson at <span class="math" data-tex="\(n&#x27;\)">\(n&#x27;\)</span> and using <span class="math" data-tex="\(w_{n&#x27;}(\widetilde T)=w_{n&#x27;}(T)\)">\(w_{n&#x27;}(\widetilde T)=w_{n&#x27;}(T)\)</span> gives the first bound. For <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, keep <span class="math" data-tex="\(U(u)\)">\(U(u)\)</span> and use the nonzero covectors <span class="math" data-tex="\((v,h,e_1)\)">\((v,h,e_1)\)</span> and <span class="math" data-tex="\((v,h+\mathbf1,e_1)\)">\((v,h+\mathbf1,e_1)\)</span>, where <span class="math" data-tex="\(s_i=(-1)^{h_i}\)">\(s_i=(-1)^{h_i}\)</span>, and half the difference of the corresponding <span class="math" data-tex="\(y\)">\(y\)</span>'s. For <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, use the covector frame <span class="math" data-tex="\((v,0,e_j)_j\)">\((v,0,e_j)_j\)</span> and half the difference of <span class="math" data-tex="\(x\)">\(x\)</span>'s at the nonzero vectors <span class="math" data-tex="\((u,e_1,h)\)">\((u,e_1,h)\)</span> and <span class="math" data-tex="\((u,e_1,h+\mathbf1)\)">\((u,e_1,h+\mathbf1)\)</span>, whose pairings with <span class="math" data-tex="\((v,0,e_j)\)">\((v,0,e_j)\)</span> are <span class="math" data-tex="\(\chi(u,v)(-1)^{h_j}\)">\(\chi(u,v)(-1)^{h_j}\)</span> and its negative.</p>
+<p><em>Step 4: a coefficient of rank at least two.</em> Define the odd functions
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(s)&amp;=\gamma^{-1}\,\mathcal O_s\,\mathbb E_\varepsilon\phi(\varepsilon s,\varepsilon),\\
+g(t)&amp;=\gamma^{-1}\,\mathcal O_t\,\mathbb E_\delta\psi(\delta t,\delta),\\
+\Psi(S)&amp;=\gamma^{-1}\,\mathcal O_S\,\mathbb E_{\varepsilon,\delta}\Phi(\varepsilon S\delta,\varepsilon,\delta),
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(s)&amp;=\gamma^{-1}\,\mathcal O_s\,\mathbb E_\varepsilon\phi(\varepsilon s,\varepsilon),\\
+g(t)&amp;=\gamma^{-1}\,\mathcal O_t\,\mathbb E_\delta\psi(\delta t,\delta),\\
+\Psi(S)&amp;=\gamma^{-1}\,\mathcal O_S\,\mathbb E_{\varepsilon,\delta}\Phi(\varepsilon S\delta,\varepsilon,\delta),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\varepsilon s\)">\(\varepsilon s\)</span> and <span class="math" data-tex="\(\delta t\)">\(\delta t\)</span> are entrywise products. Taking odd parts commutes with the averages, so by (2.5), (2.1) and <span class="math" data-tex="\(\gamma\ge w_n(T)/2\)">\(\gamma\ge w_n(T)/2\)</span>, all three sup norms are at most <span class="math" data-tex="\(w_{n&#x27;}(T)/\gamma\le4=M_0\)">\(w_{n&#x27;}(T)/\gamma\le4=M_0\)</span>. The substitution <span class="math" data-tex="\(s&#x27;=\varepsilon s\)">\(s&#x27;=\varepsilon s\)</span> and (2.4) give
+<span class="math math-display" data-tex="\[
+\widehat f(e_i)=\gamma^{-1}\mathbb E_{s&#x27;,\varepsilon}s_i&#x27;\varepsilon_i\,\phi(s&#x27;,\varepsilon)=a,
+\]">\[
+\widehat f(e_i)=\gamma^{-1}\mathbb E_{s&#x27;,\varepsilon}s_i&#x27;\varepsilon_i\,\phi(s&#x27;,\varepsilon)=a,
+\]</span>
+and likewise <span class="math" data-tex="\(\widehat g(e_j)=b\)">\(\widehat g(e_j)=b\)</span>. For the row identity, note that <span class="math" data-tex="\(\mathbb E_\sigma\sigma_ih(\sigma S)\)">\(\mathbb E_\sigma\sigma_ih(\sigma S)\)</span> does not change when <span class="math" data-tex="\(h\)">\(h\)</span> is replaced by its odd part, because <span class="math" data-tex="\(\mathbb E_\sigma\sigma_ih(-\sigma S)=-\mathbb E_\sigma\sigma_ih(\sigma S)\)">\(\mathbb E_\sigma\sigma_ih(-\sigma S)=-\mathbb E_\sigma\sigma_ih(\sigma S)\)</span>. Substituting <span class="math" data-tex="\(\xi=\varepsilon\sigma\)">\(\xi=\varepsilon\sigma\)</span>, and using (2.4) and that row <span class="math" data-tex="\(i\)">\(i\)</span> of <span class="math" data-tex="\(\xi S\delta\)">\(\xi S\delta\)</span> is <span class="math" data-tex="\(\xi_i\,\delta S_{i,:}\)">\(\xi_i\,\delta S_{i,:}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\gamma\,\mathbb E_\sigma\sigma_i\Psi(\sigma S)\\
+&amp;=\mathbb E_{\xi,\varepsilon,\delta}\xi_i\varepsilon_i\,\Phi(\xi S\delta,\varepsilon,\delta)\\
+&amp;=a\,\mathbb E_{\xi,\delta}\xi_i\,\psi(\xi_i\,\delta S_{i,:},\delta)\\
+&amp;=a\,\mathbb E_\delta\tfrac12\bigl(\psi(\delta S_{i,:},\delta)-\psi(-\delta S_{i,:},\delta)\bigr)\\
+&amp;=a\gamma\,g(S_{i,:}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\gamma\,\mathbb E_\sigma\sigma_i\Psi(\sigma S)\\
+&amp;=\mathbb E_{\xi,\varepsilon,\delta}\xi_i\varepsilon_i\,\Phi(\xi S\delta,\varepsilon,\delta)\\
+&amp;=a\,\mathbb E_{\xi,\delta}\xi_i\,\psi(\xi_i\,\delta S_{i,:},\delta)\\
+&amp;=a\,\mathbb E_\delta\tfrac12\bigl(\psi(\delta S_{i,:},\delta)-\psi(-\delta S_{i,:},\delta)\bigr)\\
+&amp;=a\gamma\,g(S_{i,:}).
+\end{aligned}
+\]</span>
+Exchanging rows and columns gives <span class="math" data-tex="\(\mathbb E_\tau\tau_j\Psi(S\tau)=b\,f(S_{:,j})\)">\(\mathbb E_\tau\tau_j\Psi(S\tau)=b\,f(S_{:,j})\)</span>. So the coefficient lemma applies: there is a binary matrix <span class="math" data-tex="\(P\)">\(P\)</span> of rank <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> with <span class="math" data-tex="\(|\widehat\Psi(P)|\ge c_*\)">\(|\widehat\Psi(P)|\ge c_*\)</span>. Since <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is odd, <span class="math" data-tex="\(|P|\)">\(|P|\)</span> is odd, and the coefficient is unchanged when the odd part is removed. With <span class="math" data-tex="\(\Phi_{\varepsilon,\delta}(S)=\Phi(S,\varepsilon,\delta)\)">\(\Phi_{\varepsilon,\delta}(S)=\Phi(S,\varepsilon,\delta)\)</span>, the substitution <span class="math" data-tex="\(S&#x27;=\varepsilon S\delta\)">\(S&#x27;=\varepsilon S\delta\)</span> gives
+<span class="math math-display" data-tex="\[
+\gamma\,\widehat\Psi(P)=\mathbb E_{\varepsilon,\delta}\Bigl[\prod_{i,j}(\varepsilon_i\delta_j)^{P_{ij}}\,\widehat{\Phi_{\varepsilon,\delta}}(P)\Bigr].
+\]">\[
+\gamma\,\widehat\Psi(P)=\mathbb E_{\varepsilon,\delta}\Bigl[\prod_{i,j}(\varepsilon_i\delta_j)^{P_{ij}}\,\widehat{\Phi_{\varepsilon,\delta}}(P)\Bigr].
+\]</span>
+So for some fixed <span class="math" data-tex="\(\varepsilon,\delta\)">\(\varepsilon,\delta\)</span> the function <span class="math" data-tex="\(h=\Phi_{\varepsilon,\delta}\)">\(h=\Phi_{\varepsilon,\delta}\)</span> has <span class="math" data-tex="\(|\widehat h(P)|\ge c_*\gamma\)">\(|\widehat h(P)|\ge c_*\gamma\)</span>.</p>
+<p><em>Step 5: independent Walsh factors.</em> Keep <span class="math" data-tex="\(P,\varepsilon,\delta\)">\(P,\varepsilon,\delta\)</span>. For tuples <span class="math" data-tex="\((u_i&#x27;)_{i\le m}\)">\((u_i&#x27;)_{i\le m}\)</span> and <span class="math" data-tex="\((v_j&#x27;)_{j\le m}\)">\((v_j&#x27;)_{j\le m}\)</span> in <span class="math" data-tex="\(V_{n&#x27;}\)">\(V_{n&#x27;}\)</span> put <span class="math" data-tex="\(U_i=(u_i&#x27;,e_i,0)\)">\(U_i=(u_i&#x27;,e_i,0)\)</span> and <span class="math" data-tex="\(V(D)_j=(v_j&#x27;,D_{:,j},e_j)\)">\(V(D)_j=(v_j&#x27;,D_{:,j},e_j)\)</span> for binary <span class="math" data-tex="\(m\times m\)">\(m\times m\)</span> matrices <span class="math" data-tex="\(D\)">\(D\)</span>; these are frames, even if the tuples have repetitions or zeros. Their sign matrix has entries <span class="math" data-tex="\((-1)^{u_i&#x27;\cdot v_j&#x27;+D_{ij}}\)">\((-1)^{u_i&#x27;\cdot v_j&#x27;+D_{ij}}\)</span>. Translating the uniform matrix <span class="math" data-tex="\(D\)">\(D\)</span> by <span class="math" data-tex="\((u_i&#x27;\cdot v_j&#x27;)_{ij}\)">\((u_i&#x27;\cdot v_j&#x27;)_{ij}\)</span> in the Fourier average gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal B\Bigl(P_{U,\varepsilon},\mathbb E_D(-1)^{\langle P,D\rangle}Z_{V(D),\delta}\Bigr)\\
+&amp;\quad=\widehat h(P)\,(-1)^{\sum_{i,j}P_{ij}\,u_i&#x27;\cdot v_j&#x27;},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal B\Bigl(P_{U,\varepsilon},\mathbb E_D(-1)^{\langle P,D\rangle}Z_{V(D),\delta}\Bigr)\\
+&amp;\quad=\widehat h(P)\,(-1)^{\sum_{i,j}P_{ij}\,u_i&#x27;\cdot v_j&#x27;},
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(\langle P,D\rangle=\sum_{i,j}P_{ij}D_{ij}\)">\(\langle P,D\rangle=\sum_{i,j}P_{ij}D_{ij}\)</span> modulo <span class="math" data-tex="\(2\)">\(2\)</span>. Both arguments lie in the unit balls; the first depends only on <span class="math" data-tex="\((u_i&#x27;)\)">\((u_i&#x27;)\)</span>, the second only on <span class="math" data-tex="\((v_j&#x27;)\)">\((v_j&#x27;)\)</span>. As <span class="math" data-tex="\(P\)">\(P\)</span> has rank <span class="math" data-tex="\(k\)">\(k\)</span>, there are binary <span class="math" data-tex="\(m\times k\)">\(m\times k\)</span> matrices <span class="math" data-tex="\(I,J\)">\(I,J\)</span> with <span class="math" data-tex="\(I^{\mathrm t}PJ=\mathrm{Id}_k\)">\(I^{\mathrm t}PJ=\mathrm{Id}_k\)</span>. For <span class="math" data-tex="\(\zeta,\eta\in(V_{n&#x27;})^k\)">\(\zeta,\eta\in(V_{n&#x27;})^k\)</span> substitute
+<span class="math math-display" data-tex="\[
+u_i&#x27;=\sum_{l=1}^kI_{il}\zeta_l,\qquad v_j&#x27;=\sum_{l=1}^kJ_{jl}\eta_l .
+\]">\[
+u_i&#x27;=\sum_{l=1}^kI_{il}\zeta_l,\qquad v_j&#x27;=\sum_{l=1}^kJ_{jl}\eta_l .
+\]</span>
+The exponent becomes <span class="math" data-tex="\(\sum_l\zeta_l\cdot\eta_l\)">\(\sum_l\zeta_l\cdot\eta_l\)</span>, the dot product of <span class="math" data-tex="\(V_{kn&#x27;}=(V_{n&#x27;})^k\)">\(V_{kn&#x27;}=(V_{n&#x27;})^k\)</span>. This is a Walsh test on <span class="math" data-tex="\(V_{kn&#x27;}\)">\(V_{kn&#x27;}\)</span> with amplitude <span class="math" data-tex="\(\widehat h(P)\)">\(\widehat h(P)\)</span> and unit-ball families on both sides, so, by (1.1) and Lemma 1.1 of the previous lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+w_{2n&#x27;}(T)&amp;\ge w_{kn&#x27;}(T)=w_{kn&#x27;}(\widetilde T)\\
+&amp;\ge|\widehat h(P)|\ge\tfrac{c_*}2\,w_n(T).
+\end{aligned}
+\]">\[
+\begin{aligned}
+w_{2n&#x27;}(T)&amp;\ge w_{kn&#x27;}(T)=w_{kn&#x27;}(\widetilde T)\\
+&amp;\ge|\widehat h(P)|\ge\tfrac{c_*}2\,w_n(T).
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> Show that for <span class="math" data-tex="\(r=s=1\)">\(r=s=1\)</span> Lemma 1.1 says: <span class="math" data-tex="\(\mathrm{GL}(n,\mathbb F_2)\)">\(\mathrm{GL}(n,\mathbb F_2)\)</span> acts transitively on pairs <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> of nonzero vectors with <span class="math" data-tex="\(u\cdot v\)">\(u\cdot v\)</span> prescribed.</p>
+<p><strong>3.2.</strong> Verify the identity of Step 1: <span class="math" data-tex="\(u\cdot\beta+\alpha\cdot\beta+\alpha\cdot v\)">\(u\cdot\beta+\alpha\cdot\beta+\alpha\cdot v\)</span> equals <span class="math" data-tex="\((u+\alpha)\cdot(v+\beta)+u\cdot v\)">\((u+\alpha)\cdot(v+\beta)+u\cdot v\)</span> modulo <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>3.3.</strong> Why are the stabilizer averages in Step 2 needed? What goes wrong if the lifts are chosen independently for each frame?</p>
+<p><strong>3.4.</strong> Find binary <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices <span class="math" data-tex="\(I,J\)">\(I,J\)</span> with <span class="math" data-tex="\(I^{\mathrm t}PJ=\mathrm{Id}_2\)">\(I^{\mathrm t}PJ=\mathrm{Id}_2\)</span> for <span class="math" data-tex="\(P=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)">\(P=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span>.</p>
+<p><strong>3.5.</strong> In Step 3, why does the vector <span class="math" data-tex="\((u,e_1,h)\)">\((u,e_1,h)\)</span> need the tag <span class="math" data-tex="\(e_1\)">\(e_1\)</span>?</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> Primal and covector frames of length one are nonzero vectors, and the pairing matrix is the number <span class="math" data-tex="\(u\cdot v\)">\(u\cdot v\)</span>.</p>
+<p><strong>3.2.</strong> <span class="math" data-tex="\((u+\alpha)\cdot(v+\beta)\)">\((u+\alpha)\cdot(v+\beta)\)</span> expands to <span class="math" data-tex="\(u\cdot v+u\cdot\beta+\alpha\cdot v+\alpha\cdot\beta\)">\(u\cdot v+u\cdot\beta+\alpha\cdot v+\alpha\cdot\beta\)</span>; add <span class="math" data-tex="\(u\cdot v\)">\(u\cdot v\)</span> and reduce modulo <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>3.3.</strong> Without equivariance, <span class="math" data-tex="\(\mathcal B(P_{U,\varepsilon},Z_{V,\delta})\)">\(\mathcal B(P_{U,\varepsilon},Z_{V,\delta})\)</span> could depend on the pair of frames and not only on its sign matrix, and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> would not be a function of <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>3.4.</strong> <span class="math" data-tex="\(P\)">\(P\)</span> is invertible over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> with <span class="math" data-tex="\(P^{-1}=P\)">\(P^{-1}=P\)</span>. Take <span class="math" data-tex="\(I=\mathrm{Id}_2\)">\(I=\mathrm{Id}_2\)</span> and <span class="math" data-tex="\(J=P\)">\(J=P\)</span>: then <span class="math" data-tex="\(PJ=P^2=\mathrm{Id}_2\)">\(PJ=P^2=\mathrm{Id}_2\)</span>.</p>
+<p><strong>3.5.</strong> If <span class="math" data-tex="\(u=0\)">\(u=0\)</span> and <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, the vector <span class="math" data-tex="\((u,0,h)\)">\((u,0,h)\)</span> is zero, and <span class="math" data-tex="\(x_0\)">\(x_0\)</span> is not covered by the definition of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, which needs a nonzero vector.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-CC] OpenAI, <em>The cotype–cotype conjecture under the approximation property</em>, OpenAI Math Release preprint, 23 September 2026, Section 4.1. https://github.com/openai/math/tree/main/preprints/The-cotype-cotype-conjecture-under-the-approximation-property-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,0 +1,249 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From conditioning to a threshold bound</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Threshold repetition for entangled games)</a><a href="entangled-games-and-threshold-repetition.html">Previous lesson</a><a href="a-common-purification-of-effects.html">Next lesson</a><a href="src/from-conditioning-to-a-threshold-bound.md">Editable source</a></nav><main><article><h1 id="from-conditioning-to-a-threshold-bound">From conditioning to a threshold bound</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the probabilistic half of threshold repetition. If the upper tail of the number of wins is not exponentially small, a few randomly sampled coordinates form a tested set <span class="math" data-tex="\(C\)">\(C\)</span> that is won with not too small probability, and given that <span class="math" data-tex="\(C\)">\(C\)</span> is won the other coordinates are won at a high average rate. A conditioning estimate, which bounds that rate in terms of the conditioning cost of <span class="math" data-tex="\(C\)">\(C\)</span>, rules this out. The argument uses only the joint law of the win indicators, and turns any conditioning estimate into an exponential rate. With Song's estimate (S) it proves Theorem 2.1 of <a href="entangled-games-and-threshold-repetition.html">Entangled games and threshold repetition</a>; a last section derives two-sided error amplification.</p>
+<ul>
+<li>Selecting the tested coordinates (Section 1).</li>
+<li>The transfer from conditioning to threshold bounds (Section 2).</li>
+<li>The universal threshold bound (Section 3).</li>
+<li>Two-sided error amplification (Section 4).</li>
+</ul>
+<p>Notation is that of the first lesson: <span class="math" data-tex="\(G\)">\(G\)</span> is a finite game with entangled value <span class="math" data-tex="\(v&lt;1\)">\(v&lt;1\)</span>, <span class="math" data-tex="\(d=|\mathcal A||\mathcal B|\ge1\)">\(d=|\mathcal A||\mathcal B|\ge1\)</span>, <span class="math" data-tex="\(I_i\)">\(I_i\)</span> are the win indicators of a strategy for the <span class="math" data-tex="\(k\)">\(k\)</span>-fold repetition, <span class="math" data-tex="\(W=\sum_iI_i\)">\(W=\sum_iI_i\)</span>, <span class="math" data-tex="\(E_C\)">\(E_C\)</span> is the event that every coordinate of <span class="math" data-tex="\(C\)">\(C\)</span> is won, <span class="math" data-tex="\(p_C=\Pr(E_C)\)">\(p_C=\Pr(E_C)\)</span>, and <span class="math" data-tex="\(\tau(C)\)">\(\tau(C)\)</span> is the conditioning cost.</p>
+<h2 id="1-selecting-the-tested-coordinates">1. Selecting the tested coordinates</h2>
+<p><strong>Lemma 1.1</strong> (sampling the upper tail; [OpenAI-TR, Lemma 2.2]). Let <span class="math" data-tex="\(I_1,\dots,I_k\)">\(I_1,\dots,I_k\)</span> be arbitrary jointly distributed <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>-valued random variables, <span class="math" data-tex="\(W=\sum_iI_i\)">\(W=\sum_iI_i\)</span>. Let <span class="math" data-tex="\(0&lt;q_0&lt;q&lt;1\)">\(0&lt;q_0&lt;q&lt;1\)</span>, <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>, and suppose <span class="math" data-tex="\(p_H=\Pr(W\ge\lceil qk\rceil)&gt;0\)">\(p_H=\Pr(W\ge\lceil qk\rceil)&gt;0\)</span>. Put
+<span class="math math-display" data-tex="\[
+\ell=\Bigl\lceil\frac{\log(4/(\varepsilon p_H))}{\log(q/q_0)}\Bigr\rceil .
+\]">\[
+\ell=\Bigl\lceil\frac{\log(4/(\varepsilon p_H))}{\log(q/q_0)}\Bigr\rceil .
+\]</span>
+There is a set <span class="math" data-tex="\(C\subseteq\{1,\dots,k\}\)">\(C\subseteq\{1,\dots,k\}\)</span> with <span class="math" data-tex="\(|C|\le\ell\)">\(|C|\le\ell\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;p_C\ge\tfrac12p_Hq^\ell,\\
+&amp;\Pr(W&lt;q_0k\mid E_C)\le\varepsilon .
+\end{aligned} \tag{1.1}
+\]">\[
+\begin{aligned}
+&amp;p_C\ge\tfrac12p_Hq^\ell,\\
+&amp;\Pr(W&lt;q_0k\mid E_C)\le\varepsilon .
+\end{aligned} \tag{1.1}
+\]</span></p>
+<p><em>Proof.</em> Draw <span class="math" data-tex="\(\ell\)">\(\ell\)</span> indices independently and uniformly from <span class="math" data-tex="\(\{1,\dots,k\}\)">\(\{1,\dots,k\}\)</span>, independently of the indicators, and let <span class="math" data-tex="\(C\)">\(C\)</span> be the set of drawn indices. For each outcome of the draw put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;a_C=\Pr(E_C),\\
+&amp;b_C=\Pr(E_C,\ W&lt;q_0k),\\
+&amp;A=p_Hq^\ell .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;a_C=\Pr(E_C),\\
+&amp;b_C=\Pr(E_C,\ W&lt;q_0k),\\
+&amp;A=p_Hq^\ell .
+\end{aligned}
+\]</span>
+Given the indicators, each draw hits a won coordinate with probability <span class="math" data-tex="\(W/k\)">\(W/k\)</span>, so the average over the draw is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E_Ca_C&amp;=\mathbb E\bigl[(W/k)^\ell\bigr]\\
+&amp;\ge\Pr(W\ge\lceil qk\rceil)\,q^\ell=A,\\
+\mathbb E_Cb_C&amp;=\mathbb E\bigl[(W/k)^\ell\mathbf 1_{\{W&lt;q_0k\}}\bigr]\\
+&amp;\le q_0^\ell .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E_Ca_C&amp;=\mathbb E\bigl[(W/k)^\ell\bigr]\\
+&amp;\ge\Pr(W\ge\lceil qk\rceil)\,q^\ell=A,\\
+\mathbb E_Cb_C&amp;=\mathbb E\bigl[(W/k)^\ell\mathbf 1_{\{W&lt;q_0k\}}\bigr]\\
+&amp;\le q_0^\ell .
+\end{aligned}
+\]</span>
+By the choice of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, <span class="math" data-tex="\((q/q_0)^\ell\ge4/(\varepsilon p_H)\)">\((q/q_0)^\ell\ge4/(\varepsilon p_H)\)</span>, that is, <span class="math" data-tex="\(q_0^\ell\le\varepsilon A/4\)">\(q_0^\ell\le\varepsilon A/4\)</span>. The outcomes with <span class="math" data-tex="\(a_C&lt;A/2\)">\(a_C&lt;A/2\)</span> contribute less than <span class="math" data-tex="\(A/2\)">\(A/2\)</span> to <span class="math" data-tex="\(\mathbb E_Ca_C\)">\(\mathbb E_Ca_C\)</span>, and those with <span class="math" data-tex="\(b_C&gt;\varepsilon a_C\)">\(b_C&gt;\varepsilon a_C\)</span> contribute at most <span class="math" data-tex="\(\varepsilon^{-1}\mathbb E_Cb_C\le A/4\)">\(\varepsilon^{-1}\mathbb E_Cb_C\le A/4\)</span>. So some outcome has <span class="math" data-tex="\(a_C\ge A/2\)">\(a_C\ge A/2\)</span> and <span class="math" data-tex="\(b_C\le\varepsilon a_C\)">\(b_C\le\varepsilon a_C\)</span>; its set <span class="math" data-tex="\(C\)">\(C\)</span> satisfies (1.1), since <span class="math" data-tex="\(\Pr(W&lt;q_0k\mid E_C)=b_C/a_C\)">\(\Pr(W&lt;q_0k\mid E_C)=b_C/a_C\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-transfer-from-conditioning-to-threshold-bounds">2. The transfer from conditioning to threshold bounds</h2>
+<p><strong>Proposition 2.1</strong> ([OpenAI-TR, Proposition 2.3]). Fix <span class="math" data-tex="\(0&lt;\delta&lt;1-v\)">\(0&lt;\delta&lt;1-v\)</span> and <span class="math" data-tex="\(0&lt;T\le\delta/4\)">\(0&lt;T\le\delta/4\)</span>. Suppose that for every <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, every finite-dimensional strategy for the <span class="math" data-tex="\(k\)">\(k\)</span>-fold repetition, and every proper subset <span class="math" data-tex="\(C\)">\(C\)</span> of the coordinates with <span class="math" data-tex="\(p_C&gt;0\)">\(p_C&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tau(C)\le T\\
+&amp;\quad\Longrightarrow\ \bar s(C)\le v+\frac\delta4 .
+\end{aligned} \tag{2.1}
+\]">\[
+\begin{aligned}
+&amp;\tau(C)\le T\\
+&amp;\quad\Longrightarrow\ \bar s(C)\le v+\frac\delta4 .
+\end{aligned} \tag{2.1}
+\]</span>
+Then for every <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> and every finite-dimensional strategy,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Pr\bigl(W\ge\lceil(v+\delta)k\rceil\bigr)\\
+&amp;\quad\le e^{-ck},
+\end{aligned} \tag{2.2}
+\]">\[
+\begin{aligned}
+&amp;\Pr\bigl(W\ge\lceil(v+\delta)k\rceil\bigr)\\
+&amp;\quad\le e^{-ck},
+\end{aligned} \tag{2.2}
+\]</span>
+where <span class="math" data-tex="\(c=\delta T/(16(1+\log d))\)">\(c=\delta T/(16(1+\log d))\)</span>.
+The same bound holds for the supremum over all strategies.</p>
+<p><em>Proof.</em> Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q=v+\delta,\quad q_0=v+\frac\delta2,\quad\eta=\frac\delta{16},\\
+r=\log\frac q{q_0},\quad R=\log\frac dq ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+q=v+\delta,\quad q_0=v+\frac\delta2,\quad\eta=\frac\delta{16},\\
+r=\log\frac q{q_0},\quad R=\log\frac dq ,
+\end{gathered}
+\]</span>
+and let <span class="math" data-tex="\(c\)">\(c\)</span> be as in (2.2). Then <span class="math" data-tex="\(0&lt;q_0&lt;q&lt;1\)">\(0&lt;q_0&lt;q&lt;1\)</span>, <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> and <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>. Since <span class="math" data-tex="\(r=-\log(1-\delta/(2q))\ge\delta/(2q)\)">\(r=-\log(1-\delta/(2q))\ge\delta/(2q)\)</span> and <span class="math" data-tex="\(q\le1\)">\(q\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac cr&amp;\le\frac{2qT}{16(1+\log d)}\\
+&amp;\le\frac T8\le\frac\eta2 .
+\end{aligned} \tag{2.3}
+\]">\[
+\begin{aligned}
+\frac cr&amp;\le\frac{2qT}{16(1+\log d)}\\
+&amp;\le\frac T8\le\frac\eta2 .
+\end{aligned} \tag{2.3}
+\]</span>
+Since <span class="math" data-tex="\(q\log(1/q)\le1/e&lt;1\)">\(q\log(1/q)\le1/e&lt;1\)</span> and <span class="math" data-tex="\(\delta&lt;1\)">\(\delta&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\delta\Bigl(1+\frac Rr\Bigr)&amp;\le\delta+2q\log d+2q\log\frac1q\\
+&amp;\le3(1+\log d),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\delta\Bigl(1+\frac Rr\Bigr)&amp;\le\delta+2q\log d+2q\log\frac1q\\
+&amp;\le3(1+\log d),
+\end{aligned}
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+c\Bigl(1+\frac Rr\Bigr)\le\frac{3T}{16} . \tag{2.4}
+\]">\[
+c\Bigl(1+\frac Rr\Bigr)\le\frac{3T}{16} . \tag{2.4}
+\]</span></p>
+<p><em>Large repetition lengths.</em> Put <span class="math" data-tex="\(t=1+\log(4/\eta)/r\)">\(t=1+\log(4/\eta)/r\)</span> and <span class="math" data-tex="\(B=\log2+Rt\)">\(B=\log2+Rt\)</span>, and choose <span class="math" data-tex="\(k_0\)">\(k_0\)</span> with <span class="math" data-tex="\(t/k_0\le\eta/2\)">\(t/k_0\le\eta/2\)</span> and <span class="math" data-tex="\(B/k_0\le T/16\)">\(B/k_0\le T/16\)</span>. We show (2.2) for <span class="math" data-tex="\(k\ge k_0\)">\(k\ge k_0\)</span>. Suppose instead that <span class="math" data-tex="\(p_H=\Pr(W\ge\lceil qk\rceil)&gt;e^{-ck}\)">\(p_H=\Pr(W\ge\lceil qk\rceil)&gt;e^{-ck}\)</span>, and apply Lemma 1.1 with <span class="math" data-tex="\(\varepsilon=\eta\)">\(\varepsilon=\eta\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ell&amp;\le\frac{\log(4/\eta)+\log(1/p_H)}r+1\\
+&amp;\le\frac{ck}r+t\le\eta k,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\ell&amp;\le\frac{\log(4/\eta)+\log(1/p_H)}r+1\\
+&amp;\le\frac{ck}r+t\le\eta k,
+\end{aligned}
+\]</span>
+by (2.3) and the choice of <span class="math" data-tex="\(k_0\)">\(k_0\)</span>; in particular <span class="math" data-tex="\(C\)">\(C\)</span> is a proper subset. On <span class="math" data-tex="\(E_C\)">\(E_C\)</span> the <span class="math" data-tex="\(|C|\)">\(|C|\)</span> tested coordinates are won, so <span class="math" data-tex="\(W-|C|=\sum_{i\notin C}I_i\ge0\)">\(W-|C|=\sum_{i\notin C}I_i\ge0\)</span>, and on <span class="math" data-tex="\(\{W\ge q_0k\}\)">\(\{W\ge q_0k\}\)</span> also <span class="math" data-tex="\(W-|C|\ge q_0k-|C|\ge0\)">\(W-|C|\ge q_0k-|C|\ge0\)</span>, because <span class="math" data-tex="\(|C|\le\eta k&lt;q_0k\)">\(|C|\le\eta k&lt;q_0k\)</span>. By (1.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{\mathbb E[W-|C|\mid E_C]}{k-|C|}\ge(1-\eta)\frac{q_0-u}{1-u}\\
+&amp;\quad\ge(1-\eta)\frac{q_0-\eta}{1-\eta}=v+\frac{7\delta}{16},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{\mathbb E[W-|C|\mid E_C]}{k-|C|}\ge(1-\eta)\frac{q_0-u}{1-u}\\
+&amp;\quad\ge(1-\eta)\frac{q_0-\eta}{1-\eta}=v+\frac{7\delta}{16},
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(u=|C|/k\le\eta\)">\(u=|C|/k\le\eta\)</span> and <span class="math" data-tex="\(u\mapsto(q_0-u)/(1-u)\)">\(u\mapsto(q_0-u)/(1-u)\)</span> is decreasing on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. The left side is <span class="math" data-tex="\(\bar s(C)\)">\(\bar s(C)\)</span>.</p>
+<p>On the other hand, <span class="math" data-tex="\(p_C\ge\frac12p_Hq^\ell\)">\(p_C\ge\frac12p_Hq^\ell\)</span> and <span class="math" data-tex="\(|C|\le\ell\)">\(|C|\le\ell\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\log\frac1{p_C}+|C|\log d\\
+&amp;\quad\le\log\frac1{p_H}+\log2+\ell\log\frac1q+\ell\log d\\
+&amp;\quad\le ck+\log2+\ell R .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\log\frac1{p_C}+|C|\log d\\
+&amp;\quad\le\log\frac1{p_H}+\log2+\ell\log\frac1q+\ell\log d\\
+&amp;\quad\le ck+\log2+\ell R .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(\ell\le ck/r+t\)">\(\ell\le ck/r+t\)</span>, the right side is at most <span class="math" data-tex="\(ck(1+R/r)+B\)">\(ck(1+R/r)+B\)</span>, so by (2.4) and <span class="math" data-tex="\(k-|C|\ge(1-\eta)k\)">\(k-|C|\ge(1-\eta)k\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau(C)&amp;\le\frac{c(1+R/r)+B/k}{1-\eta}\\
+&amp;\le\frac{3T/16+T/16}{1-\eta}\\
+&amp;=\frac T{4(1-\eta)}&lt;T .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau(C)&amp;\le\frac{c(1+R/r)+B/k}{1-\eta}\\
+&amp;\le\frac{3T/16+T/16}{1-\eta}\\
+&amp;=\frac T{4(1-\eta)}&lt;T .
+\end{aligned}
+\]</span>
+Now (2.1) bounds the average conditional win rate by <span class="math" data-tex="\(v+\delta/4&lt;v+7\delta/16\)">\(v+\delta/4&lt;v+7\delta/16\)</span>, a contradiction. So (2.2) holds for <span class="math" data-tex="\(k\ge k_0\)">\(k\ge k_0\)</span>; the bound <span class="math" data-tex="\(k_0\)">\(k_0\)</span> depends only on <span class="math" data-tex="\(\delta,T,v,d\)">\(\delta,T,v,d\)</span>, not on the strategy.</p>
+<p><em>All repetition lengths.</em> Fix any strategy for <span class="math" data-tex="\(k\)">\(k\)</span> coordinates and take <span class="math" data-tex="\(N\)">\(N\)</span> independent tensor copies of it, a strategy for <span class="math" data-tex="\(Nk\)">\(Nk\)</span> coordinates in which the blocks of <span class="math" data-tex="\(k\)">\(k\)</span> coordinates are independent (Exercise 5.5 of the first lesson). If every block has at least <span class="math" data-tex="\(\lceil qk\rceil\)">\(\lceil qk\rceil\)</span> wins, the total is at least <span class="math" data-tex="\(N\lceil qk\rceil\ge\lceil qNk\rceil\)">\(N\lceil qk\rceil\ge\lceil qNk\rceil\)</span>. Choosing <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(Nk\ge k_0\)">\(Nk\ge k_0\)</span>, the first part gives <span class="math" data-tex="\(p_H^N\le e^{-cNk}\)">\(p_H^N\le e^{-cNk}\)</span>, so <span class="math" data-tex="\(p_H\le e^{-ck}\)">\(p_H\le e^{-ck}\)</span>. The constants do not depend on the strategy or its dimension, so the bound passes to the supremum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proposition separates the probabilistic step from the analytic one: whatever budget <span class="math" data-tex="\(T\)">\(T\)</span> a conditioning estimate permits for the excess <span class="math" data-tex="\(\delta/4\)">\(\delta/4\)</span>, the threshold rate is proportional to <span class="math" data-tex="\(\delta T\)">\(\delta T\)</span>. The selection of the tested set uses only the joint law of the win indicators.</p>
+<h2 id="3-the-universal-threshold-bound">3. The universal threshold bound</h2>
+<p><em>Proof of Theorem 2.1 of <a href="entangled-games-and-threshold-repetition.html">Entangled games and threshold repetition</a>.</em> Let <span class="math" data-tex="\(B_4\ge1\)">\(B_4\ge1\)</span> be the constant of (S), and for <span class="math" data-tex="\(0&lt;\delta&lt;1-v\)">\(0&lt;\delta&lt;1-v\)</span> put
+<span class="math math-display" data-tex="\[
+T=\Bigl(\frac\delta{4B_4}\Bigr)^4 .
+\]">\[
+T=\Bigl(\frac\delta{4B_4}\Bigr)^4 .
+\]</span>
+Since <span class="math" data-tex="\(B_4\ge1\)">\(B_4\ge1\)</span> and <span class="math" data-tex="\(0&lt;\delta&lt;1\)">\(0&lt;\delta&lt;1\)</span>, <span class="math" data-tex="\(T\le\delta^4/256\le\delta/4&lt;1\)">\(T\le\delta^4/256\le\delta/4&lt;1\)</span>. If <span class="math" data-tex="\(\tau(C)\le T\)">\(\tau(C)\le T\)</span>, then <span class="math" data-tex="\(\tau(C)\le1\)">\(\tau(C)\le1\)</span> and (S) bounds the average conditional win rate by <span class="math" data-tex="\(v+B_4T^{1/4}=v+\delta/4\)">\(v+B_4T^{1/4}=v+\delta/4\)</span>. So (2.1) holds, and Proposition 2.1 gives (2.2) with
+<span class="math math-display" data-tex="\[
+\frac{\delta T}{16(1+\log d)}=\frac{\delta^5}{16(4B_4)^4(1+\log d)} .
+\]">\[
+\frac{\delta T}{16(1+\log d)}=\frac{\delta^5}{16(4B_4)^4(1+\log d)} .
+\]</span>
+This is (2.1) of the first lesson with <span class="math" data-tex="\(\kappa_0=1/(16(4B_4)^4)\)">\(\kappa_0=1/(16(4B_4)^4)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-two-sided-error-amplification">4. Two-sided error amplification</h2>
+<p>A threshold between two success levels amplifies both guarantees at once: tensor copies of a good one-game strategy win many coordinates, while every joint strategy for a game of low value wins few.</p>
+<p><strong>Corollary 4.1</strong> ([OpenAI-TR, Corollary 6.1]). Assume (S). Let <span class="math" data-tex="\(G\)">\(G\)</span> be a finite game and <span class="math" data-tex="\(0\le s&lt;c\le1\)">\(0\le s&lt;c\le1\)</span>; put <span class="math" data-tex="\(\Delta=c-s\)">\(\Delta=c-s\)</span>, <span class="math" data-tex="\(t=(c+s)/2\)">\(t=(c+s)/2\)</span> and <span class="math" data-tex="\(d=|\mathcal A||\mathcal B|\)">\(d=|\mathcal A||\mathcal B|\)</span>. For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> let <span class="math" data-tex="\(G_k\)">\(G_k\)</span> be the game that samples <span class="math" data-tex="\(k\)">\(k\)</span> independent question pairs of <span class="math" data-tex="\(G\)">\(G\)</span>, sends each player the string of its questions, and accepts exactly when <span class="math" data-tex="\(W_k\ge\lceil tk\rceil\)">\(W_k\ge\lceil tk\rceil\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\omega^*(G)\ge c\ \Longrightarrow\ \omega^*(G_k)\ge1-e^{-\Delta^2k/8},\\
+&amp;\omega^*(G)\le s\ \Longrightarrow\\
+&amp;\qquad\omega^*(G_k)\le\exp\Bigl(-\frac{\kappa_0(\Delta/2)^5}{1+\log d}\,k\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\omega^*(G)\ge c\ \Longrightarrow\ \omega^*(G_k)\ge1-e^{-\Delta^2k/8},\\
+&amp;\omega^*(G)\le s\ \Longrightarrow\\
+&amp;\qquad\omega^*(G_k)\le\exp\Bigl(-\frac{\kappa_0(\Delta/2)^5}{1+\log d}\,k\Bigr).
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <em>Completeness.</em> By the definition of the value there is a finite-dimensional strategy for <span class="math" data-tex="\(G\)">\(G\)</span> with success <span class="math" data-tex="\(s_1&gt;c-\Delta/4=t+\Delta/4\)">\(s_1&gt;c-\Delta/4=t+\Delta/4\)</span>. Its <span class="math" data-tex="\(k\)">\(k\)</span> tensor copies have independent win indicators with mean <span class="math" data-tex="\(s_1\)">\(s_1\)</span> (Exercise 5.5 of the first lesson). Since <span class="math" data-tex="\(W_k\)">\(W_k\)</span> is an integer, <span class="math" data-tex="\(\{W_k&lt;\lceil tk\rceil\}=\{W_k&lt;tk\}\)">\(\{W_k&lt;\lceil tk\rceil\}=\{W_k&lt;tk\}\)</span>, and Hoeffding's inequality (<a href="../the-gaussian-moat-problem/concentration-and-the-discrete-cube.html">Concentration and the discrete cube</a>, Theorem 2.2, applied to the variables <span class="math" data-tex="\(-I_i\)">\(-I_i\)</span>) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Pr(W_k&lt;tk)\\
+&amp;\quad\le\Pr\bigl(W_k-s_1k\le-(s_1-t)k\bigr)\\
+&amp;\quad\le e^{-2(s_1-t)^2k}\le e^{-\Delta^2k/8} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Pr(W_k&lt;tk)\\
+&amp;\quad\le\Pr\bigl(W_k-s_1k\le-(s_1-t)k\bigr)\\
+&amp;\quad\le e^{-2(s_1-t)^2k}\le e^{-\Delta^2k/8} .
+\end{aligned}
+\]</span>
+<em>Soundness.</em> Let <span class="math" data-tex="\(v=\omega^*(G)\le s\)">\(v=\omega^*(G)\le s\)</span> and <span class="math" data-tex="\(\delta=t-v\)">\(\delta=t-v\)</span>. Then <span class="math" data-tex="\(\delta\ge\Delta/2&gt;0\)">\(\delta\ge\Delta/2&gt;0\)</span>, and <span class="math" data-tex="\(\delta&lt;1-v\)">\(\delta&lt;1-v\)</span> because <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>. For every finite-dimensional strategy for <span class="math" data-tex="\(G_k\)">\(G_k\)</span>, Theorem 2.1 of the first lesson at the threshold <span class="math" data-tex="\(\lceil(v+\delta)k\rceil=\lceil tk\rceil\)">\(\lceil(v+\delta)k\rceil=\lceil tk\rceil\)</span> bounds the success probability by <span class="math" data-tex="\(\exp(-\kappa_0\delta^5k/(1+\log d))\)">\(\exp(-\kappa_0\delta^5k/(1+\log d))\)</span>, which is at most <span class="math" data-tex="\(\exp(-\kappa_0(\Delta/2)^5k/(1+\log d))\)">\(\exp(-\kappa_0(\Delta/2)^5k/(1+\log d))\)</span>; take the supremum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The rate in the soundness bound may be replaced by the rate of Theorem 2.2 of the first lesson with <span class="math" data-tex="\(\delta=\Delta/2\)">\(\delta=\Delta/2\)</span>; that version does not use (S). For verifier families with inverse-polynomial gap <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> and polynomial answer length, polynomially many repetitions make both errors exponentially small, keeping two players, one round and classical messages.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> In Lemma 1.1 let <span class="math" data-tex="\(I_1=\dots=I_k\)">\(I_1=\dots=I_k\)</span> be a single fair coin and <span class="math" data-tex="\(q=3/4\)">\(q=3/4\)</span>, <span class="math" data-tex="\(q_0=1/2\)">\(q_0=1/2\)</span>. Compute <span class="math" data-tex="\(p_H\)">\(p_H\)</span> and show that every nonempty <span class="math" data-tex="\(C\)">\(C\)</span> satisfies (1.1) with <span class="math" data-tex="\(\Pr(W&lt;q_0k\mid E_C)=0\)">\(\Pr(W&lt;q_0k\mid E_C)=0\)</span>.</p>
+<p><strong>5.2.</strong> Prove <span class="math" data-tex="\(-\log(1-x)\ge x\)">\(-\log(1-x)\ge x\)</span> for <span class="math" data-tex="\(0\le x&lt;1\)">\(0\le x&lt;1\)</span> and <span class="math" data-tex="\(q\log(1/q)\le1/e\)">\(q\log(1/q)\le1/e\)</span> for <span class="math" data-tex="\(0&lt;q\le1\)">\(0&lt;q\le1\)</span>.</p>
+<p><strong>5.3.</strong> Show that <span class="math" data-tex="\(u\mapsto(q_0-u)/(1-u)\)">\(u\mapsto(q_0-u)/(1-u)\)</span> is decreasing on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> when <span class="math" data-tex="\(q_0&lt;1\)">\(q_0&lt;1\)</span>.</p>
+<p><strong>5.4.</strong> Explain why the proof of Proposition 2.1 cannot apply Lemma 1.1 with <span class="math" data-tex="\(C\)">\(C\)</span> equal to all coordinates, and where <span class="math" data-tex="\(\ell\le\eta k\)">\(\ell\le\eta k\)</span> is used.</p>
+<p><strong>5.5.</strong> Show that <span class="math" data-tex="\(N\lceil qk\rceil\ge\lceil qNk\rceil\)">\(N\lceil qk\rceil\ge\lceil qNk\rceil\)</span> for integers <span class="math" data-tex="\(N,k\ge1\)">\(N,k\ge1\)</span> and real <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(W\in\{0,k\}\)">\(W\in\{0,k\}\)</span>, each with probability <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so <span class="math" data-tex="\(p_H=1/2\)">\(p_H=1/2\)</span>. For nonempty <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\(E_C=\{W=k\}\)">\(E_C=\{W=k\}\)</span>, on which <span class="math" data-tex="\(W\ge q_0k\)">\(W\ge q_0k\)</span>; so the conditional probability is <span class="math" data-tex="\(0\)">\(0\)</span>, and <span class="math" data-tex="\(p_C=1/2\ge\frac12p_Hq^\ell\)">\(p_C=1/2\ge\frac12p_Hq^\ell\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(-\log(1-x)=\sum_{n\ge1}x^n/n\ge x\)">\(-\log(1-x)=\sum_{n\ge1}x^n/n\ge x\)</span>. The function <span class="math" data-tex="\(q\log(1/q)\)">\(q\log(1/q)\)</span> has derivative <span class="math" data-tex="\(\log(1/q)-1\)">\(\log(1/q)-1\)</span>, vanishing at <span class="math" data-tex="\(q=1/e\)">\(q=1/e\)</span>, where its value <span class="math" data-tex="\(1/e\)">\(1/e\)</span> is the maximum.</p>
+<p><strong>5.3.</strong> The derivative is <span class="math" data-tex="\((q_0-1)/(1-u)^2&lt;0\)">\((q_0-1)/(1-u)^2&lt;0\)</span>.</p>
+<p><strong>5.4.</strong> If <span class="math" data-tex="\(C\)">\(C\)</span> were all coordinates, the average over <span class="math" data-tex="\(i\notin C\)">\(i\notin C\)</span> would be empty and <span class="math" data-tex="\(\tau(C)\)">\(\tau(C)\)</span> undefined. The bound <span class="math" data-tex="\(\ell\le\eta k&lt;k\)">\(\ell\le\eta k&lt;k\)</span> makes <span class="math" data-tex="\(C\)">\(C\)</span> proper, gives <span class="math" data-tex="\(k-|C|\ge(1-\eta)k\)">\(k-|C|\ge(1-\eta)k\)</span>, and gives <span class="math" data-tex="\(|C|&lt;q_0k\)">\(|C|&lt;q_0k\)</span> in the lower bound for the conditional win rate.</p>
+<p><strong>5.5.</strong> <span class="math" data-tex="\(N\lceil qk\rceil\)">\(N\lceil qk\rceil\)</span> is an integer at least <span class="math" data-tex="\(Nqk\)">\(Nqk\)</span>, hence at least <span class="math" data-tex="\(\lceil qNk\rceil\)">\(\lceil qNk\rceil\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-TR] OpenAI, <em>Threshold parallel repetition for finite-dimensional entangled games</em>, OpenAI Math Release preprint, 25 September 2026, Lemma 2.2, Propositions 2.3 and 2.4, Corollary 6.1. https://github.com/openai/math/tree/main/preprints/Threshold-parallel-repetition-for-finite-dimensional-entangled-games-September-25-2026</li>
+<li>[Son26] Z. Song, <em>Parallel Repetition for Entangled Games with Gap Exponent Three</em>, Electronic Colloquium on Computational Complexity, TR26-199 (2026), Lemma 4.4. https://eccc.weizmann.ac.il/report/2026/199/</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

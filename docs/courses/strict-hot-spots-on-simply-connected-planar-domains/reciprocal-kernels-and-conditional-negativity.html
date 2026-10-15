@@ -1,0 +1,332 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reciprocal kernels and conditional negativity</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strict hot spots on simply connected planar domains)</a><a href="boundary-kernels-and-the-multiplier-identity.html">Previous lesson</a><a href="the-absence-of-interior-critical-points.html">Next lesson</a><a href="src/reciprocal-kernels-and-conditional-negativity.md">Editable source</a></nav><main><article><h1 id="reciprocal-kernels-and-conditional-negativity">Reciprocal kernels and conditional negativity</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the kernel theorem behind the hot-spots theorem: for every interior point <span class="math" data-tex="\(p\)">\(p\)</span> of the disc, the kernel <span class="math" data-tex="\(K(p,s)K(p,t)/N(s,t)\)">\(K(p,s)K(p,t)/N(s,t)\)</span> on the circle is conditionally negative semidefinite. The kernels <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> are those of <a href="boundary-kernels-and-the-multiplier-identity.html">Boundary kernels and the multiplier identity</a>, built from any bounded nonnegative potential satisfying the subcritical inequality (2.1) there. The proof works with matrices that have at most one positive eigenvalue: it regularizes the Green function of the disc, adds integration nodes one at a time by rank-one updates, and passes to the singular kernel and then to the boundary by monotone limits.</p>
+<ul>
+<li>Matrices with at most one positive eigenvalue (Section 1).</li>
+<li>The theorem (Section 2).</li>
+<li>A bounded regularization of the Green function (Section 3).</li>
+<li>A rank-one update (Section 4).</li>
+<li>The interior resolvent kernel (Section 5).</li>
+<li>The boundary limit and the proof of the theorem (Section 6).</li>
+</ul>
+<p>All matrices in this lesson are real and symmetric, and the <em>reciprocal</em> of a matrix with nonzero entries is always taken entrywise, never as a matrix inverse.</p>
+<h2 id="1-matrices-with-at-most-one-positive-eigenvalue">1. Matrices with at most one positive eigenvalue</h2>
+<p>A real symmetric matrix has <em>property (P)</em> if it has at most one positive eigenvalue, counted with multiplicity. A subspace <span class="math" data-tex="\(W\)">\(W\)</span> is <em>positive</em> for <span class="math" data-tex="\(M\)">\(M\)</span> if <span class="math" data-tex="\(x^TMx&gt;0\)">\(x^TMx&gt;0\)</span> for all <span class="math" data-tex="\(0\ne x\in W\)">\(0\ne x\in W\)</span>.</p>
+<p><strong>Lemma 1.1.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(M\)">\(M\)</span> has (P) if and only if no two-dimensional subspace is positive for <span class="math" data-tex="\(M\)">\(M\)</span>.</li>
+<li>Property (P) is preserved by congruence <span class="math" data-tex="\(M\mapsto S^TMS\)">\(M\mapsto S^TMS\)</span> with <span class="math" data-tex="\(S\)">\(S\)</span> invertible (in particular by positive diagonal congruence), by subtracting a positive semidefinite matrix, by passing to a principal submatrix, and by limits of matrices of a fixed size.</li>
+<li>If <span class="math" data-tex="\(v\)">\(v\)</span> is a vector and <span class="math" data-tex="\(U\)">\(U\)</span> is positive semidefinite, then <span class="math" data-tex="\(vv^T-U\)">\(vv^T-U\)</span> has (P).</li>
+</ol>
+<p><em>Proof.</em> (1) Two orthonormal eigenvectors for positive eigenvalues span a positive plane. Conversely, if <span class="math" data-tex="\(M\)">\(M\)</span> has at most one positive eigenvalue and <span class="math" data-tex="\(W\)">\(W\)</span> is a positive plane, then <span class="math" data-tex="\(W\)">\(W\)</span> meets the orthogonal complement of the eigenvector of that eigenvalue (or the whole space, if there is none) in a nonzero vector <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(x^TMx\le0\)">\(x^TMx\le0\)</span> because <span class="math" data-tex="\(x\)">\(x\)</span> is a combination of eigenvectors with eigenvalues <span class="math" data-tex="\(\le0\)">\(\le0\)</span>.</p>
+<p>(2) <span class="math" data-tex="\(W\)">\(W\)</span> is positive for <span class="math" data-tex="\(S^TMS\)">\(S^TMS\)</span> if and only if <span class="math" data-tex="\(SW\)">\(SW\)</span> is positive for <span class="math" data-tex="\(M\)">\(M\)</span>. A plane positive for <span class="math" data-tex="\(M-U\)">\(M-U\)</span> is positive for <span class="math" data-tex="\(M\)">\(M\)</span>. A plane positive for a principal submatrix, extended by zeros, is positive for <span class="math" data-tex="\(M\)">\(M\)</span>. If <span class="math" data-tex="\(W\)">\(W\)</span> is a positive plane for <span class="math" data-tex="\(M\)">\(M\)</span>, then <span class="math" data-tex="\(x^TMx\ge c&gt;0\)">\(x^TMx\ge c&gt;0\)</span> on the unit circle of <span class="math" data-tex="\(W\)">\(W\)</span>, so <span class="math" data-tex="\(W\)">\(W\)</span> is positive for every matrix close to <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>(3) Every plane contains <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> with <span class="math" data-tex="\(v^Tx=0\)">\(v^Tx=0\)</span>, and <span class="math" data-tex="\(x^T(vv^T-U)x=-x^TUx\le0\)">\(x^T(vv^T-U)x=-x^TUx\le0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2</strong> (Schur products). If <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> are positive semidefinite (real symmetric, or complex Hermitian), so is the entrywise product <span class="math" data-tex="\(A\circ B\)">\(A\circ B\)</span>. Hence entrywise powers <span class="math" data-tex="\(A^{\circ n}\)">\(A^{\circ n}\)</span> and convergent series <span class="math" data-tex="\(\sum_nc_nA^{\circ n}\)">\(\sum_nc_nA^{\circ n}\)</span> with <span class="math" data-tex="\(c_n\ge0\)">\(c_n\ge0\)</span> are positive semidefinite, and a real symmetric matrix that is positive semidefinite as a Hermitian matrix is positive semidefinite.</p>
+<p><em>Proof.</em> By the spectral theorem <span class="math" data-tex="\(A_{ij}=\langle a_i,a_j\rangle\)">\(A_{ij}=\langle a_i,a_j\rangle\)</span> and <span class="math" data-tex="\(B_{ij}=\langle b_i,b_j\rangle\)">\(B_{ij}=\langle b_i,b_j\rangle\)</span> for vectors <span class="math" data-tex="\(a_i,b_i\)">\(a_i,b_i\)</span>. Then <span class="math" data-tex="\((A\circ B)_{ij}=\langle a_i\otimes b_i,a_j\otimes b_j\rangle\)">\((A\circ B)_{ij}=\langle a_i\otimes b_i,a_j\otimes b_j\rangle\)</span> is a Gram matrix. The last statement holds because <span class="math" data-tex="\(x^TAx=x^*Ax\)">\(x^TAx=x^*Ax\)</span> for real <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-theorem">2. The theorem</h2>
+<p>A real symmetric kernel <span class="math" data-tex="\(D\)">\(D\)</span> on a set, with zero diagonal, is <em>conditionally negative semidefinite</em> if
+<span class="math math-display" data-tex="\[
+\sum_{i,j}a_ia_jD(s_i,s_j)\le0
+\]">\[
+\sum_{i,j}a_ia_jD(s_i,s_j)\le0
+\]</span>
+for every finite family of points <span class="math" data-tex="\(s_i\)">\(s_i\)</span> and real <span class="math" data-tex="\(a_i\)">\(a_i\)</span> with <span class="math" data-tex="\(\sum_ia_i=0\)">\(\sum_ia_i=0\)</span>.</p>
+<p><strong>Theorem 2.1</strong> ([OpenAI-HS, Theorem 5.1]). Let <span class="math" data-tex="\(dq=a\,dx\)">\(dq=a\,dx\)</span> on <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span> with <span class="math" data-tex="\(a\in L^\infty(\mathbb D)\)">\(a\in L^\infty(\mathbb D)\)</span>, <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, and suppose that for some <span class="math" data-tex="\(0&lt;d&lt;1\)">\(0&lt;d&lt;1\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{\mathbb D}|\psi|^2\,dq\le d\int_{\mathbb D}|\nabla\psi|^2\\
+(\psi\in H^1_0(\mathbb D)).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int_{\mathbb D}|\psi|^2\,dq\le d\int_{\mathbb D}|\nabla\psi|^2\\
+(\psi\in H^1_0(\mathbb D)).
+\end{gathered}
+\]</span>
+For the associated kernels <span class="math" data-tex="\(K,N\)">\(K,N\)</span> and every <span class="math" data-tex="\(p\in\mathbb D\)">\(p\in\mathbb D\)</span>, the kernel
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_p(s,t)=\frac{K(p,s)K(p,t)}{N(s,t)}\quad(s\ne t),\\
+D_p(s,s)=0,
+\end{gathered}
+\]">\[
+\begin{gathered}
+D_p(s,t)=\frac{K(p,s)K(p,t)}{N(s,t)}\quad(s\ne t),\\
+D_p(s,s)=0,
+\end{gathered}
+\]</span>
+is conditionally negative semidefinite on <span class="math" data-tex="\(\mathbb S^1\)">\(\mathbb S^1\)</span>.</p>
+<p><strong>Remark 2.2</strong> ([OpenAI-HS, Remark 5.2]). For <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, <span class="math" data-tex="\(K(p,s)=P_s(p)\)">\(K(p,s)=P_s(p)\)</span> and <span class="math" data-tex="\(N=N_0\)">\(N=N_0\)</span>. With the disc automorphism <span class="math" data-tex="\(\varphi_p(z)=(z-p)/(1-\bar pz)\)">\(\varphi_p(z)=(z-p)/(1-\bar pz)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varphi_p(s)-\varphi_p(t)=\frac{(s-t)(1-|p|^2)}{(1-\bar ps)(1-\bar pt)},\\
+|1-\bar ps|=|s-p|\quad(s\in\mathbb S^1),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\varphi_p(s)-\varphi_p(t)=\frac{(s-t)(1-|p|^2)}{(1-\bar ps)(1-\bar pt)},\\
+|1-\bar ps|=|s-p|\quad(s\in\mathbb S^1),
+\end{gathered}
+\]</span>
+so <span class="math" data-tex="\(D_p(s,t)=\pi P_s(p)P_t(p)|s-t|^2\)">\(D_p(s,t)=\pi P_s(p)P_t(p)|s-t|^2\)</span>, which equals <span class="math" data-tex="\(\frac1{4\pi}|\varphi_p(s)-\varphi_p(t)|^2\)">\(\frac1{4\pi}|\varphi_p(s)-\varphi_p(t)|^2\)</span>, a multiple of a squared Euclidean distance. Such kernels are conditionally negative semidefinite: if <span class="math" data-tex="\(\sum a_i=0\)">\(\sum a_i=0\)</span>, then <span class="math" data-tex="\(\sum_{i,j}a_ia_j|x_i-x_j|^2=-2|\sum_ia_ix_i|^2\)">\(\sum_{i,j}a_ia_j|x_i-x_j|^2=-2|\sum_ia_ix_i|^2\)</span>. Theorem 2.1 says that a squared-distance description survives the addition of a subcritical potential; the last lesson realizes <span class="math" data-tex="\(D_p\)">\(D_p\)</span> as a squared distance in a Hilbert space.</p>
+<p>The matrix condition behind the proof has a classical meaning. For a positive definite kernel <span class="math" data-tex="\(k\)">\(k\)</span> whose values never vanish, the condition that every finite matrix <span class="math" data-tex="\((1/k(x_i,x_j))\)">\((1/k(x_i,x_j))\)</span> has exactly one positive eigenvalue characterizes the complete Nevanlinna–Pick property; this is the McCullough–Quiggin theorem [AM00, Corollary 1.12]. The arguments below are self-contained.</p>
+<p>The fixed point <span class="math" data-tex="\(p\)">\(p\)</span> links (P) to conditional negativity. Adjoining <span class="math" data-tex="\(p\)">\(p\)</span> to boundary points gives a bordered reciprocal matrix with zero diagonal, boundary block <span class="math" data-tex="\(1/N(s_i,s_j)\)">\(1/N(s_i,s_j)\)</span> and border <span class="math" data-tex="\(1/K(p,s_i)\)">\(1/K(p,s_i)\)</span> (Lemma 6.1); property (P) of that matrix is exactly what the theorem needs. The bordered matrix is reached through four limits: refinement of a quadrature for a regularized kernel with a compactly supported potential <span class="math" data-tex="\(\rho\le q\)">\(\rho\le q\)</span>; removal of the regularization; radial passage of evaluation points to the circle; and increase of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<h2 id="3-a-bounded-regularization-of-the-green-function">3. A bounded regularization of the Green function</h2>
+<p>For <span class="math" data-tex="\(x,y\in\mathbb D\)">\(x,y\in\mathbb D\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h(x,y)=\frac{|x-y|^2}{(1-|x|^2)(1-|y|^2)},\\
+L(h)=\frac1{\log(1+1/h)}\ (h&gt;0),\\
+L(0)=0,
+\end{gathered}
+\]">\[
+\begin{gathered}
+h(x,y)=\frac{|x-y|^2}{(1-|x|^2)(1-|y|^2)},\\
+L(h)=\frac1{\log(1+1/h)}\ (h&gt;0),\\
+L(0)=0,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(f(h)=h+\frac12-L(h)\)">\(f(h)=h+\frac12-L(h)\)</span>. By the second formula for <span class="math" data-tex="\(G\)">\(G\)</span> in Section 1 of the previous lesson, <span class="math" data-tex="\(G=\frac1{4\pi}\log(1+1/h)\)">\(G=\frac1{4\pi}\log(1+1/h)\)</span>, so <span class="math" data-tex="\(1/G(x,y)=4\pi L(h(x,y))\)">\(1/G(x,y)=4\pi L(h(x,y))\)</span>, with value <span class="math" data-tex="\(0\)">\(0\)</span> on the diagonal.</p>
+<p><strong>Lemma 3.1</strong> ([OpenAI-HS, Lemma 5.3]). There are bounded continuous strictly positive kernels <span class="math" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span> on <span class="math" data-tex="\(\mathbb D\times\mathbb D\)">\(\mathbb D\times\mathbb D\)</span>, <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>, such that <span class="math" data-tex="\(C_\varepsilon\le G\)">\(C_\varepsilon\le G\)</span>, <span class="math" data-tex="\(C_\varepsilon\uparrow G\)">\(C_\varepsilon\uparrow G\)</span> as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> (also on the diagonal), and every finite matrix <span class="math" data-tex="\((1/C_\varepsilon(x_i,x_j))\)">\((1/C_\varepsilon(x_i,x_j))\)</span> has (P).</p>
+<p><em>Proof.</em> <em>The kernel <span class="math" data-tex="\(h+\frac12\)">\(h+\frac12\)</span> has (P).</em> Multiplying the <span class="math" data-tex="\(x\)">\(x\)</span>- and <span class="math" data-tex="\(y\)">\(y\)</span>-entries by <span class="math" data-tex="\(1-|x|^2\)">\(1-|x|^2\)</span> and <span class="math" data-tex="\(1-|y|^2\)">\(1-|y|^2\)</span> turns <span class="math" data-tex="\(h+\frac12\)">\(h+\frac12\)</span> into
+<span class="math math-display" data-tex="\[
+\tfrac12(1+|x|^2)(1+|y|^2)-2\,x\cdot y,
+\]">\[
+\tfrac12(1+|x|^2)(1+|y|^2)-2\,x\cdot y,
+\]</span>
+a rank-one positive kernel minus a Gram kernel; Lemma 1.1(3) and (2) apply.</p>
+<p><em>A formula for <span class="math" data-tex="\(f\)">\(f\)</span>.</em> For <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^1h^{1-\alpha}(h+1)^\alpha\,d\alpha\\
+&amp;\quad=h\Bigl[\frac{(1+1/h)^\alpha}{\log(1+1/h)}\Bigr]_0^1=L(h).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^1h^{1-\alpha}(h+1)^\alpha\,d\alpha\\
+&amp;\quad=h\Bigl[\frac{(1+1/h)^\alpha}{\log(1+1/h)}\Bigr]_0^1=L(h).
+\end{aligned}
+\]</span> For <span class="math" data-tex="\(0&lt;\alpha&lt;1\)">\(0&lt;\alpha&lt;1\)</span> let <span class="math" data-tex="\(\mathbb E_\alpha\)">\(\mathbb E_\alpha\)</span> be the expectation for the probability measure <span class="math" data-tex="\(c_\alpha v^{\alpha-1}(1+v)^{-1}\,dv\)">\(c_\alpha v^{\alpha-1}(1+v)^{-1}\,dv\)</span> on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, and put <span class="math" data-tex="\(r=1/(1+v)\in(0,1)\)">\(r=1/(1+v)\in(0,1)\)</span>. Integration by parts gives
+<span class="math math-display" data-tex="\[
+\mathbb E_\alpha(1-r)=c_\alpha\int_0^\infty\frac{v^\alpha}{(1+v)^2}\,dv=\alpha .
+\]">\[
+\mathbb E_\alpha(1-r)=c_\alpha\int_0^\infty\frac{v^\alpha}{(1+v)^2}\,dv=\alpha .
+\]</span>
+The substitution <span class="math" data-tex="\(v=\frac{h+1}hw\)">\(v=\frac{h+1}hw\)</span> gives <span class="math" data-tex="\(c_\alpha\int_0^\infty\frac{h(h+1)v^{\alpha-1}}{(h+1)+vh}\,dv=h^{1-\alpha}(h+1)^\alpha\)">\(c_\alpha\int_0^\infty\frac{h(h+1)v^{\alpha-1}}{(h+1)+vh}\,dv=h^{1-\alpha}(h+1)^\alpha\)</span>. Since <span class="math" data-tex="\((h+1)+vh=(h+r)/r\)">\((h+1)+vh=(h+r)/r\)</span> and <span class="math" data-tex="\(c_\alpha v^{\alpha-1}dv=(1+v)\cdot c_\alpha v^{\alpha-1}(1+v)^{-1}dv\)">\(c_\alpha v^{\alpha-1}dv=(1+v)\cdot c_\alpha v^{\alpha-1}(1+v)^{-1}dv\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;h^{1-\alpha}(h+1)^\alpha=\mathbb E_\alpha\frac{h(h+1)}{h+r}\\
+&amp;\quad=\mathbb E_\alpha\Bigl[h+(1-r)-\frac{r(1-r)}{h+r}\Bigr],
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;h^{1-\alpha}(h+1)^\alpha=\mathbb E_\alpha\frac{h(h+1)}{h+r}\\
+&amp;\quad=\mathbb E_\alpha\Bigl[h+(1-r)-\frac{r(1-r)}{h+r}\Bigr],
+\end{aligned}
+\]</span>
+and this also holds at <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, where both sides vanish. Integrating over <span class="math" data-tex="\(\alpha\in(0,1)\)">\(\alpha\in(0,1)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(h)=\int_0^1\mathbb E_\alpha\tfrac{r(1-r)}{h+r}\,d\alpha,\\
+0\le f(h)\le f(0)=\tfrac12,
+\end{gathered} \tag{3.1}
+\]">\[
+\begin{gathered}
+f(h)=\int_0^1\mathbb E_\alpha\tfrac{r(1-r)}{h+r}\,d\alpha,\\
+0\le f(h)\le f(0)=\tfrac12,
+\end{gathered} \tag{3.1}
+\]</span>
+because <span class="math" data-tex="\(r(1-r)/(h+r)\le1-r\)">\(r(1-r)/(h+r)\le1-r\)</span>.</p>
+<p><em>The kernel <span class="math" data-tex="\(f(h)\)">\(f(h)\)</span> is positive semidefinite.</em> The kernel
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+k(x,y)&amp;=\frac1{1+h(x,y)}\\
+&amp;=\frac{(1-|x|^2)(1-|y|^2)}{|1-x\bar y|^2}
+\end{aligned}
+\]">\[
+\begin{aligned}
+k(x,y)&amp;=\frac1{1+h(x,y)}\\
+&amp;=\frac{(1-|x|^2)(1-|y|^2)}{|1-x\bar y|^2}
+\end{aligned}
+\]</span>
+is positive semidefinite: <span class="math" data-tex="\((1-x\bar y)^{-1}=\sum_n x^n\bar y^n\)">\((1-x\bar y)^{-1}=\sum_n x^n\bar y^n\)</span> is a Gram kernel, and so is its product with its complex conjugate (Lemma 1.2), and with the factors <span class="math" data-tex="\((1-|x|^2)(1-|y|^2)\)">\((1-|x|^2)(1-|y|^2)\)</span>. For fixed <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\frac1{h+r}=\sum_{n\ge0}(1-r)^nk^{n+1}
+\]">\[
+\frac1{h+r}=\sum_{n\ge0}(1-r)^nk^{n+1}
+\]</span>
+with entrywise powers, because <span class="math" data-tex="\(\sum_n(1-r)^nk^{n+1}=k/(1-(1-r)k)\)">\(\sum_n(1-r)^nk^{n+1}=k/(1-(1-r)k)\)</span> and <span class="math" data-tex="\(0&lt;k\le1\)">\(0&lt;k\le1\)</span>. By Lemma 1.2 this is positive semidefinite, and so is the positive mixture (3.1).</p>
+<p><em>The kernels <span class="math" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span>.</em> Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac1{C_\varepsilon}&amp;=4\pi\Bigl[h+\frac12-(1-\varepsilon)f(h)\Bigr]\\
+&amp;=4\pi\bigl[L(h)+\varepsilon f(h)\bigr].
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac1{C_\varepsilon}&amp;=4\pi\Bigl[h+\frac12-(1-\varepsilon)f(h)\Bigr]\\
+&amp;=4\pi\bigl[L(h)+\varepsilon f(h)\bigr].
+\end{aligned}
+\]</span>
+Its finite matrices are a matrix with (P) minus a positive semidefinite one, so they have (P). Since <span class="math" data-tex="\(L+\varepsilon f=\varepsilon(h+\frac12)+(1-\varepsilon)L\ge\varepsilon/2\)">\(L+\varepsilon f=\varepsilon(h+\frac12)+(1-\varepsilon)L\ge\varepsilon/2\)</span>, the kernel <span class="math" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span> is bounded by <span class="math" data-tex="\(1/(2\pi\varepsilon)\)">\(1/(2\pi\varepsilon)\)</span>; it is continuous and positive. As <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, <span class="math" data-tex="\(1/C_\varepsilon\)">\(1/C_\varepsilon\)</span> decreases to <span class="math" data-tex="\(4\pi L(h)=1/G\)">\(4\pi L(h)=1/G\)</span>, so <span class="math" data-tex="\(C_\varepsilon\le G\)">\(C_\varepsilon\le G\)</span> and <span class="math" data-tex="\(C_\varepsilon\uparrow G\)">\(C_\varepsilon\uparrow G\)</span>; on the diagonal <span class="math" data-tex="\(C_\varepsilon(x,x)=1/(2\pi\varepsilon)\uparrow\infty\)">\(C_\varepsilon(x,x)=1/(2\pi\varepsilon)\uparrow\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-a-rank-one-update">4. A rank-one update</h2>
+<p><strong>Lemma 4.1</strong> ([OpenAI-HS, Lemma 5.4]). Let <span class="math" data-tex="\(M\)">\(M\)</span> be a symmetric matrix with strictly positive entries whose reciprocal has (P). For every index <span class="math" data-tex="\(z\)">\(z\)</span> and every <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span>, the matrix
+<span class="math math-display" data-tex="\[
+\widetilde M_{ij}=M_{ij}+c\,M_{iz}M_{zj}
+\]">\[
+\widetilde M_{ij}=M_{ij}+c\,M_{iz}M_{zj}
+\]</span>
+also has a reciprocal with (P).</p>
+<p><em>Proof.</em> Congruence by the positive diagonal matrix <span class="math" data-tex="\(\operatorname{diag}(M_{iz})\)">\(\operatorname{diag}(M_{iz})\)</span> turns the reciprocal of <span class="math" data-tex="\(M\)">\(M\)</span> into <span class="math" data-tex="\(H_{ij}=M_{iz}M_{zj}/M_{ij}\)">\(H_{ij}=M_{iz}M_{zj}/M_{ij}\)</span>, which has (P). Its <span class="math" data-tex="\(z\)">\(z\)</span>-th row and column are constant, equal to <span class="math" data-tex="\(a=M_{zz}&gt;0\)">\(a=M_{zz}&gt;0\)</span>. Order <span class="math" data-tex="\(z\)">\(z\)</span> last and let <span class="math" data-tex="\(H_0\)">\(H_0\)</span> be the remaining principal block. Subtracting the last row from the other rows, and the last column from the other columns, is a congruence:
+<span class="math math-display" data-tex="\[
+H\ \sim\ \begin{pmatrix}H_0-a\mathbf 1\mathbf 1^T&amp;0\\0&amp;a\end{pmatrix}.
+\]">\[
+H\ \sim\ \begin{pmatrix}H_0-a\mathbf 1\mathbf 1^T&amp;0\\0&amp;a\end{pmatrix}.
+\]</span>
+Since <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span> has (P), the block <span class="math" data-tex="\(H_0-a\mathbf 1\mathbf 1^T\)">\(H_0-a\mathbf 1\mathbf 1^T\)</span> has no positive eigenvalue. So <span class="math" data-tex="\(U=a\mathbf 1\mathbf 1^T-H\)">\(U=a\mathbf 1\mathbf 1^T-H\)</span>, whose <span class="math" data-tex="\(z\)">\(z\)</span>-th row and column vanish, is positive semidefinite. Since <span class="math" data-tex="\(H_{ii}&gt;0\)">\(H_{ii}&gt;0\)</span>, <span class="math" data-tex="\(0\le U_{ii}&lt;a\)">\(0\le U_{ii}&lt;a\)</span>, and the Cauchy–Schwarz inequality for <span class="math" data-tex="\(U\)">\(U\)</span> gives <span class="math" data-tex="\(|U_{ij}|&lt;a\)">\(|U_{ij}|&lt;a\)</span>.</p>
+<p>The same congruence turns the reciprocal of <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> into the matrix with entries <span class="math" data-tex="\(H_{ij}/(1+cH_{ij})\)">\(H_{ij}/(1+cH_{ij})\)</span>. With <span class="math" data-tex="\(H_{ij}=a-U_{ij}\)">\(H_{ij}=a-U_{ij}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac a{1+ca}-\frac{H_{ij}}{1+cH_{ij}}\\
+&amp;\quad=\frac{U_{ij}}{(1+ca)(1+ca-cU_{ij})}\\
+&amp;\quad=\sum_{n\ge0}\frac{c^nU_{ij}^{n+1}}{(1+ca)^{n+2}},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac a{1+ca}-\frac{H_{ij}}{1+cH_{ij}}\\
+&amp;\quad=\frac{U_{ij}}{(1+ca)(1+ca-cU_{ij})}\\
+&amp;\quad=\sum_{n\ge0}\frac{c^nU_{ij}^{n+1}}{(1+ca)^{n+2}},
+\end{aligned}
+\]</span>
+the series converging because <span class="math" data-tex="\(|cU_{ij}|&lt;1+ca\)">\(|cU_{ij}|&lt;1+ca\)</span>. By Lemma 1.2 the right side is a positive semidefinite matrix, so the transformed reciprocal of <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> is <span class="math" data-tex="\(\frac a{1+ca}\mathbf 1\mathbf 1^T\)">\(\frac a{1+ca}\mathbf 1\mathbf 1^T\)</span> minus a positive semidefinite matrix, and it has (P) by Lemma 1.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-interior-resolvent-kernel">5. The interior resolvent kernel</h2>
+<p>Let <span class="math" data-tex="\(0\le\rho\le q\)">\(0\le\rho\le q\)</span> be a measure supported in a compact subset of <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>, let <span class="math" data-tex="\(T_\rho\)">\(T_\rho\)</span> be its Green operator on <span class="math" data-tex="\(L^2(\rho)\)">\(L^2(\rho)\)</span>, with <span class="math" data-tex="\(\|T_\rho\|\le d\)">\(\|T_\rho\|\le d\)</span> (Lemma 2.2 of the previous lesson), put <span class="math" data-tex="\(S_\rho=(I-T_\rho)^{-1}\)">\(S_\rho=(I-T_\rho)^{-1}\)</span>, and define for <span class="math" data-tex="\(x\ne y\)">\(x\ne y\)</span> in <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;M^\rho(x,y)=G(x,y)\\
+&amp;\quad+\bigl\langle G(x,\cdot),S_\rho G(y,\cdot)\bigr\rangle_\rho,
+\end{aligned} \tag{5.1}
+\]">\[
+\begin{aligned}
+&amp;M^\rho(x,y)=G(x,y)\\
+&amp;\quad+\bigl\langle G(x,\cdot),S_\rho G(y,\cdot)\bigr\rangle_\rho,
+\end{aligned} \tag{5.1}
+\]</span>
+and <span class="math" data-tex="\(M^\rho(x,x)=+\infty\)">\(M^\rho(x,x)=+\infty\)</span>. Expanding the Neumann series, <span class="math" data-tex="\(M^\rho(x,y)\)">\(M^\rho(x,y)\)</span> is the sum over <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> of the nonnegative chain integrals
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int\!\cdots\!\int G(x,z_1)G(z_1,z_2)\cdots G(z_n,y)\\
+&amp;\qquad d\rho(z_1)\cdots d\rho(z_n),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int\!\cdots\!\int G(x,z_1)G(z_1,z_2)\cdots G(z_n,y)\\
+&amp;\qquad d\rho(z_1)\cdots d\rho(z_n),
+\end{aligned}
+\]</span>
+and it is finite for <span class="math" data-tex="\(x\ne y\)">\(x\ne y\)</span>: the correction is at most <span class="math" data-tex="\(\|G(x,\cdot)\|_\rho\|G(y,\cdot)\|_\rho/(1-d)\)">\(\|G(x,\cdot)\|_\rho\|G(y,\cdot)\|_\rho/(1-d)\)</span>.</p>
+<p><strong>Proposition 5.1</strong> ([OpenAI-HS, Proposition 5.5]). For distinct points <span class="math" data-tex="\(x_1,\dots,x_m\in\mathbb D\)">\(x_1,\dots,x_m\in\mathbb D\)</span>, the matrix <span class="math" data-tex="\((1/M^\rho(x_i,x_j))\)">\((1/M^\rho(x_i,x_j))\)</span>, with zero diagonal, has (P).</p>
+<p><em>Proof.</em> <em>Step 1: regularization.</em> Fix <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and write <span class="math" data-tex="\(C=C_\varepsilon\)">\(C=C_\varepsilon\)</span>. Let <span class="math" data-tex="\(M_C\)">\(M_C\)</span> be defined by (5.1) with <span class="math" data-tex="\(G\)">\(G\)</span> replaced by <span class="math" data-tex="\(C\)">\(C\)</span> throughout, including in the operator: <span class="math" data-tex="\(T_Cf(x)=\int C(x,z)f(z)\,d\rho(z)\)">\(T_Cf(x)=\int C(x,z)f(z)\,d\rho(z)\)</span>. Since <span class="math" data-tex="\(0&lt;C\le G\)">\(0&lt;C\le G\)</span>, <span class="math" data-tex="\(|T_Cf|\le T_\rho|f|\)">\(|T_Cf|\le T_\rho|f|\)</span> pointwise, so <span class="math" data-tex="\(\|T_C\|\le d\)">\(\|T_C\|\le d\)</span>, and <span class="math" data-tex="\(M_C(x,y)\)">\(M_C(x,y)\)</span> is the sum of the chain integrals of <span class="math" data-tex="\(C\)">\(C\)</span>, finite for all <span class="math" data-tex="\(x,y\)">\(x,y\)</span>.</p>
+<p><em>Step 2: quadrature.</em> Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be the support of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Partition it into finitely many Borel cells of diameter less than <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and positive <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-mass (cells of mass zero are discarded); choose a node <span class="math" data-tex="\(z_\beta\)">\(z_\beta\)</span> in each cell <span class="math" data-tex="\(Q_\beta\)">\(Q_\beta\)</span>, put <span class="math" data-tex="\(w_\beta=\rho(Q_\beta)\)">\(w_\beta=\rho(Q_\beta)\)</span>, and let <span class="math" data-tex="\(\pi(y)=z_\beta\)">\(\pi(y)=z_\beta\)</span> for <span class="math" data-tex="\(y\in Q_\beta\)">\(y\in Q_\beta\)</span>. By uniform continuity of <span class="math" data-tex="\(C\)">\(C\)</span> on <span class="math" data-tex="\(Q\times Q\)">\(Q\times Q\)</span>, as <span class="math" data-tex="\(\eta\to0\)">\(\eta\to0\)</span> the operators <span class="math" data-tex="\(T_\pi\)">\(T_\pi\)</span> with kernel <span class="math" data-tex="\(C(\pi(\cdot),\pi(\cdot))\)">\(C(\pi(\cdot),\pi(\cdot))\)</span> converge to <span class="math" data-tex="\(T_C\)">\(T_C\)</span> in norm (the norm difference is at most <span class="math" data-tex="\(\rho(\mathbb D)\sup|C(\pi(y),\pi(z))-C(y,z)|\)">\(\rho(\mathbb D)\sup|C(\pi(y),\pi(z))-C(y,z)|\)</span>), and <span class="math" data-tex="\(C(x,\pi(\cdot))\to C(x,\cdot)\)">\(C(x,\pi(\cdot))\to C(x,\cdot)\)</span> in <span class="math" data-tex="\(L^2(\rho)\)">\(L^2(\rho)\)</span> for each <span class="math" data-tex="\(x\)">\(x\)</span>. For fine partitions <span class="math" data-tex="\(\|T_\pi\|&lt;1\)">\(\|T_\pi\|&lt;1\)</span>; with <span class="math" data-tex="\(S_\pi=(I-T_\pi)^{-1}\)">\(S_\pi=(I-T_\pi)^{-1}\)</span> and <span class="math" data-tex="\(c_x=C(x,\pi(\cdot))\in L^2(\rho)\)">\(c_x=C(x,\pi(\cdot))\in L^2(\rho)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;M_\pi(x,y)\\
+&amp;\quad=C(x,y)+\langle c_x,S_\pi c_y\rangle_\rho\\
+&amp;\quad\longrightarrow M_C(x,y).
+\end{aligned} \tag{5.2}
+\]">\[
+\begin{aligned}
+&amp;M_\pi(x,y)\\
+&amp;\quad=C(x,y)+\langle c_x,S_\pi c_y\rangle_\rho\\
+&amp;\quad\longrightarrow M_C(x,y).
+\end{aligned} \tag{5.2}
+\]</span>
+The functions <span class="math" data-tex="\(e_\beta=\mathbf 1_{Q_\beta}/\sqrt{w_\beta}\)">\(e_\beta=\mathbf 1_{Q_\beta}/\sqrt{w_\beta}\)</span> are orthonormal, <span class="math" data-tex="\(T_\pi\)">\(T_\pi\)</span> maps <span class="math" data-tex="\(L^2(\rho)\)">\(L^2(\rho)\)</span> into their span and vanishes on its orthogonal complement, and its matrix there is <span class="math" data-tex="\(\mathsf T_{\beta\gamma}=\sqrt{w_\beta}\,C(z_\beta,z_\gamma)\sqrt{w_\gamma}\)">\(\mathsf T_{\beta\gamma}=\sqrt{w_\beta}\,C(z_\beta,z_\gamma)\sqrt{w_\gamma}\)</span>. With <span class="math" data-tex="\((\xi_x)_\beta=\sqrt{w_\beta}\,C(x,z_\beta)\)">\((\xi_x)_\beta=\sqrt{w_\beta}\,C(x,z_\beta)\)</span>, the correction in (5.2) equals <span class="math" data-tex="\(\xi_x^T(I-\mathsf T)^{-1}\xi_y\)">\(\xi_x^T(I-\mathsf T)^{-1}\xi_y\)</span>, and <span class="math" data-tex="\(\|\mathsf T\|&lt;1\)">\(\|\mathsf T\|&lt;1\)</span>.</p>
+<p><em>Step 3: adding nodes one at a time.</em> Let <span class="math" data-tex="\(S\)">\(S\)</span> be the finite set consisting of the points <span class="math" data-tex="\(x_i\)">\(x_i\)</span> and the nodes <span class="math" data-tex="\(z_\beta\)">\(z_\beta\)</span>. For a set <span class="math" data-tex="\(A\)">\(A\)</span> of nodes let <span class="math" data-tex="\(M^A\)">\(M^A\)</span> be the matrix on <span class="math" data-tex="\(S\times S\)">\(S\times S\)</span> whose <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> entry is the sum over all chains <span class="math" data-tex="\(x,z_{\beta_1},\dots,z_{\beta_n},y\)">\(x,z_{\beta_1},\dots,z_{\beta_n},y\)</span> (<span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>) with internal nodes in <span class="math" data-tex="\(A\)">\(A\)</span> of
+<span class="math math-display" data-tex="\[
+C(x,z_{\beta_1})w_{\beta_1}C(z_{\beta_1},z_{\beta_2})\cdots w_{\beta_n}C(z_{\beta_n},y).
+\]">\[
+C(x,z_{\beta_1})w_{\beta_1}C(z_{\beta_1},z_{\beta_2})\cdots w_{\beta_n}C(z_{\beta_n},y).
+\]</span>
+For <span class="math" data-tex="\(A\)">\(A\)</span> the set of all nodes this is <span class="math" data-tex="\(C(x,y)+\sum_{n\ge0}\xi_x^T\mathsf T^n\xi_y=M_\pi(x,y)\)">\(C(x,y)+\sum_{n\ge0}\xi_x^T\mathsf T^n\xi_y=M_\pi(x,y)\)</span>, which is finite; for smaller <span class="math" data-tex="\(A\)">\(A\)</span> the sum is a subseries, hence finite. For <span class="math" data-tex="\(A=\emptyset\)">\(A=\emptyset\)</span>, <span class="math" data-tex="\(M^A\)">\(M^A\)</span> is the restriction of <span class="math" data-tex="\(C\)">\(C\)</span> to <span class="math" data-tex="\(S\)">\(S\)</span>, whose reciprocal has (P) by Lemma 3.1. Add a node <span class="math" data-tex="\(z\notin A\)">\(z\notin A\)</span> of weight <span class="math" data-tex="\(w\)">\(w\)</span>. The chains with exactly <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> internal occurrences of <span class="math" data-tex="\(z\)">\(z\)</span> contribute <span class="math" data-tex="\(w^kM^A_{xz}(M^A_{zz})^{k-1}M^A_{zy}\)">\(w^kM^A_{xz}(M^A_{zz})^{k-1}M^A_{zy}\)</span>; all factors are positive, and finiteness forces <span class="math" data-tex="\(wM^A_{zz}&lt;1\)">\(wM^A_{zz}&lt;1\)</span>. Summing over <span class="math" data-tex="\(k\)">\(k\)</span>,
+<span class="math math-display" data-tex="\[
+M^{A\cup\{z\}}_{xy}=M^A_{xy}+\frac w{1-wM^A_{zz}}\,M^A_{xz}M^A_{zy},
+\]">\[
+M^{A\cup\{z\}}_{xy}=M^A_{xy}+\frac w{1-wM^A_{zz}}\,M^A_{xz}M^A_{zy},
+\]</span>
+so Lemma 4.1 propagates (P) of the reciprocal from <span class="math" data-tex="\(M^A\)">\(M^A\)</span> to <span class="math" data-tex="\(M^{A\cup\{z\}}\)">\(M^{A\cup\{z\}}\)</span>. After all nodes are added, the reciprocal of <span class="math" data-tex="\(M_\pi\)">\(M_\pi\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span> has (P), and so does its principal submatrix on the points <span class="math" data-tex="\(x_i\)">\(x_i\)</span>.</p>
+<p><em>Step 4: the quadrature limit.</em> By (5.2) and Lemma 1.1(2), the reciprocal matrix of <span class="math" data-tex="\(M_C\)">\(M_C\)</span> at the points <span class="math" data-tex="\(x_i\)">\(x_i\)</span> has (P).</p>
+<p><em>Step 5: removing the regularization.</em> As <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, each chain integral of <span class="math" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span> increases to the corresponding chain integral of <span class="math" data-tex="\(G\)">\(G\)</span> by monotone convergence, and so do their sums. Off the diagonal the limit is <span class="math" data-tex="\(M^\rho(x_i,x_j)&lt;\infty\)">\(M^\rho(x_i,x_j)&lt;\infty\)</span>. On the diagonal <span class="math" data-tex="\(M_{C_\varepsilon}(x_i,x_i)\ge C_\varepsilon(x_i,x_i)\)">\(M_{C_\varepsilon}(x_i,x_i)\ge C_\varepsilon(x_i,x_i)\)</span>, which is <span class="math" data-tex="\(1/(2\pi\varepsilon)\to\infty\)">\(1/(2\pi\varepsilon)\to\infty\)</span>, so its reciprocal tends to <span class="math" data-tex="\(0\)">\(0\)</span>. Lemma 1.1(2) gives the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-boundary-limit-and-the-proof-of-the-theorem">6. The boundary limit and the proof of the theorem</h2>
+<p>For a compactly supported <span class="math" data-tex="\(0\le\rho\le q\)">\(0\le\rho\le q\)</span>, let <span class="math" data-tex="\(K^\rho\)">\(K^\rho\)</span>, <span class="math" data-tex="\(R^\rho\)">\(R^\rho\)</span>, <span class="math" data-tex="\(N^\rho=N_0+R^\rho\)">\(N^\rho=N_0+R^\rho\)</span> be the kernels of Section 4 of the previous lesson built from <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+<p><strong>Lemma 6.1</strong> ([OpenAI-HS, Lemma 5.6]). For distinct <span class="math" data-tex="\(s_1,\dots,s_m\in\mathbb S^1\)">\(s_1,\dots,s_m\in\mathbb S^1\)</span> and <span class="math" data-tex="\(p\in\mathbb D\)">\(p\in\mathbb D\)</span>, the bordered matrix
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{pmatrix}B&amp;\ell\\\ell^T&amp;0\end{pmatrix},\qquad\ell_i=\frac1{K(p,s_i)},\\
+B_{ij}=\begin{cases}1/N(s_i,s_j),&amp;i\ne j,\\0,&amp;i=j,\end{cases}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{pmatrix}B&amp;\ell\\\ell^T&amp;0\end{pmatrix},\qquad\ell_i=\frac1{K(p,s_i)},\\
+B_{ij}=\begin{cases}1/N(s_i,s_j),&amp;i\ne j,\\0,&amp;i=j,\end{cases}
+\end{gathered}
+\]</span>
+has (P).</p>
+<p><em>Proof.</em> Fix a compactly supported <span class="math" data-tex="\(0\le\rho\le q\)">\(0\le\rho\le q\)</span>. For <span class="math" data-tex="\(|p|&lt;r&lt;1\)">\(|p|&lt;r&lt;1\)</span>, apply Proposition 5.1 to the distinct points <span class="math" data-tex="\(rs_1,\dots,rs_m,p\)">\(rs_1,\dots,rs_m,p\)</span>. From the second formula for <span class="math" data-tex="\(G\)">\(G\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{G(rs,x)}{1-r}\longrightarrow P_s(x),\\
+\frac{G(rs,rt)}{(1-r)^2}\longrightarrow N_0(s,t)\quad(s\ne t),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{G(rs,x)}{1-r}\longrightarrow P_s(x),\\
+\frac{G(rs,rt)}{(1-r)^2}\longrightarrow N_0(s,t)\quad(s\ne t),
+\end{gathered}
+\]</span>
+as <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span>, the first uniformly for <span class="math" data-tex="\(x\)">\(x\)</span> in compact subsets of <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>; for the second use <span class="math" data-tex="\(G(rs,rt)=\frac1{4\pi}\log\bigl(1+\frac{(1-r^2)^2}{r^2|s-t|^2}\bigr)\)">\(G(rs,rt)=\frac1{4\pi}\log\bigl(1+\frac{(1-r^2)^2}{r^2|s-t|^2}\bigr)\)</span>. On the support of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> these convergences are uniform and <span class="math" data-tex="\(P_s\)">\(P_s\)</span> is bounded. Expanding <span class="math" data-tex="\((I-T_\rho)^{-1}\)">\((I-T_\rho)^{-1}\)</span> in (5.1), and using <span class="math" data-tex="\(R^\rho(s,t)=\sum_n\langle P_s,T_\rho^nP_t\rangle_\rho\)">\(R^\rho(s,t)=\sum_n\langle P_s,T_\rho^nP_t\rangle_\rho\)</span> and <span class="math" data-tex="\(\langle G(p,\cdot),T_\rho^nP_s\rangle_\rho=(T_\rho^{n+1}P_s)(p)\)">\(\langle G(p,\cdot),T_\rho^nP_s\rangle_\rho=(T_\rho^{n+1}P_s)(p)\)</span>, we get
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{M^\rho(rs_i,rs_j)}{(1-r)^2}\to N^\rho(s_i,s_j)\quad(i\ne j),\\
+\frac{M^\rho(p,rs_i)}{1-r}\to K^\rho(p,s_i).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{M^\rho(rs_i,rs_j)}{(1-r)^2}\to N^\rho(s_i,s_j)\quad(i\ne j),\\
+\frac{M^\rho(p,rs_i)}{1-r}\to K^\rho(p,s_i).
+\end{gathered}
+\]</span>
+Congruence by the diagonal matrix with entries <span class="math" data-tex="\(1-r\)">\(1-r\)</span> at the moving points and <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span> turns the reciprocal matrix of Proposition 5.1 into a matrix converging to the bordered matrix built from <span class="math" data-tex="\(K^\rho\)">\(K^\rho\)</span>, <span class="math" data-tex="\(N^\rho\)">\(N^\rho\)</span>; the zero diagonal stays zero. By Lemma 1.1(2), that bordered matrix has (P).</p>
+<p>Now let <span class="math" data-tex="\(\rho_n=\mathbf 1_{\{|x|\le r_n\}}q\)">\(\rho_n=\mathbf 1_{\{|x|\le r_n\}}q\)</span> with <span class="math" data-tex="\(r_n\uparrow1\)">\(r_n\uparrow1\)</span>. Every term of <span class="math" data-tex="\(K^{\rho_n}\)">\(K^{\rho_n}\)</span> and <span class="math" data-tex="\(R^{\rho_n}\)">\(R^{\rho_n}\)</span> is a chain integral of nonnegative functions, so by monotone convergence <span class="math" data-tex="\(K^{\rho_n}(p,s)\uparrow K(p,s)\)">\(K^{\rho_n}(p,s)\uparrow K(p,s)\)</span> and <span class="math" data-tex="\(N^{\rho_n}(s,t)\uparrow N(s,t)\)">\(N^{\rho_n}(s,t)\uparrow N(s,t)\)</span> for <span class="math" data-tex="\(s\ne t\)">\(s\ne t\)</span>. The limits are finite (Lemma 4.1 of the previous lesson), so the bordered matrices converge, and Lemma 1.1(2) concludes. No boundary value of a Poisson kernel in <span class="math" data-tex="\(L^2(q)\)">\(L^2(q)\)</span> has been used: the boundary passage is made for the compactly supported <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Theorem 2.1.</em> Let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be the bordered matrix of Lemma 6.1. First, <span class="math" data-tex="\(x^TBx\le0\)">\(x^TBx\le0\)</span> whenever <span class="math" data-tex="\(\ell^Tx=0\)">\(\ell^Tx=0\)</span>. Otherwise, choose <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(\ell^Ty\ne0\)">\(\ell^Ty\ne0\)</span> (possible since <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span>) and replace it by <span class="math" data-tex="\(y-\frac{x^TBy}{x^TBx}x\)">\(y-\frac{x^TBy}{x^TBx}x\)</span>; then <span class="math" data-tex="\(x^TBy=0\)">\(x^TBy=0\)</span> and still <span class="math" data-tex="\(\ell^Ty\ne0\)">\(\ell^Ty\ne0\)</span>. The vectors <span class="math" data-tex="\((x,0)\)">\((x,0)\)</span> and <span class="math" data-tex="\((y,c)\)">\((y,c)\)</span> are <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>-orthogonal, and for a suitable <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>
+<span class="math math-display" data-tex="\[
+(y,c)\,\mathcal B\,(y,c)^T=y^TBy+2c\,\ell^Ty&gt;0 .
+\]">\[
+(y,c)\,\mathcal B\,(y,c)^T=y^TBy+2c\,\ell^Ty&gt;0 .
+\]</span>
+They span a positive plane for <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, contradicting (P).</p>
+<p>Now let <span class="math" data-tex="\(a_1,\dots,a_m\)">\(a_1,\dots,a_m\)</span> be real with <span class="math" data-tex="\(\sum a_i=0\)">\(\sum a_i=0\)</span>, for distinct <span class="math" data-tex="\(s_i\)">\(s_i\)</span>, and put <span class="math" data-tex="\(x_i=K(p,s_i)a_i\)">\(x_i=K(p,s_i)a_i\)</span>. Then <span class="math" data-tex="\(\ell^Tx=\sum_ia_i=0\)">\(\ell^Tx=\sum_ia_i=0\)</span>, and
+<span class="math math-display" data-tex="\[
+\sum_{i,j}a_ia_jD_p(s_i,s_j)=x^TBx\le0 .
+\]">\[
+\sum_{i,j}a_ia_jD_p(s_i,s_j)=x^TBx\le0 .
+\]</span>
+If some points coincide, combine their coefficients. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Show that <span class="math" data-tex="\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span> has (P) and the identity matrix of size two does not. Show that a sum of two matrices with (P) need not have (P).</p>
+<p><strong>7.2.</strong> Check numerically or by hand that <span class="math" data-tex="\(L(1)=1/\log2\)">\(L(1)=1/\log2\)</span> agrees with <span class="math" data-tex="\(\int_0^12^\alpha\,d\alpha\)">\(\int_0^12^\alpha\,d\alpha\)</span>.</p>
+<p><strong>7.3.</strong> Verify the formula for <span class="math" data-tex="\(\varphi_p(s)-\varphi_p(t)\)">\(\varphi_p(s)-\varphi_p(t)\)</span> in Remark 2.2.</p>
+<p><strong>7.4.</strong> Let <span class="math" data-tex="\(M=\begin{pmatrix}1&amp;1/2\\1/2&amp;1\end{pmatrix}\)">\(M=\begin{pmatrix}1&amp;1/2\\1/2&amp;1\end{pmatrix}\)</span>. Check that its reciprocal has (P), compute <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> of Lemma 4.1 for <span class="math" data-tex="\(z=2\)">\(z=2\)</span> and <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, and check that its reciprocal has (P).</p>
+<p><strong>7.5.</strong> Show that a kernel <span class="math" data-tex="\(D\)">\(D\)</span> with zero diagonal on a set with at least two points, all of whose finite matrices are positive semidefinite, is identically zero; so conditional negativity is a genuinely weaker condition than negative semidefiniteness of <span class="math" data-tex="\(-D\)">\(-D\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> The eigenvalues of <span class="math" data-tex="\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span> are <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>; the identity has two eigenvalues <span class="math" data-tex="\(1\)">\(1\)</span>. The identity is the sum of <span class="math" data-tex="\(\operatorname{diag}(1,0)\)">\(\operatorname{diag}(1,0)\)</span> and <span class="math" data-tex="\(\operatorname{diag}(0,1)\)">\(\operatorname{diag}(0,1)\)</span>, each with (P).</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(\int_0^12^\alpha\,d\alpha=1/\log2\)">\(\int_0^12^\alpha\,d\alpha=1/\log2\)</span>, and <span class="math" data-tex="\(L(1)=1/\log(1+1)\)">\(L(1)=1/\log(1+1)\)</span>.</p>
+<p><strong>7.3.</strong> The difference <span class="math" data-tex="\((s-p)(1-\bar pt)-(t-p)(1-\bar ps)\)">\((s-p)(1-\bar pt)-(t-p)(1-\bar ps)\)</span> equals <span class="math" data-tex="\((s-t)(1-|p|^2)\)">\((s-t)(1-|p|^2)\)</span> after cancellation of <span class="math" data-tex="\(-\bar pst+\bar pst\)">\(-\bar pst+\bar pst\)</span>. For <span class="math" data-tex="\(|s|=1\)">\(|s|=1\)</span>, <span class="math" data-tex="\(|1-\bar ps|=|\bar s-\bar p|=|s-p|\)">\(|1-\bar ps|=|\bar s-\bar p|=|s-p|\)</span>.</p>
+<p><strong>7.4.</strong> The reciprocal <span class="math" data-tex="\(\begin{pmatrix}1&amp;2\\2&amp;1\end{pmatrix}\)">\(\begin{pmatrix}1&amp;2\\2&amp;1\end{pmatrix}\)</span> has eigenvalues <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>. <span class="math" data-tex="\(\widetilde M=\begin{pmatrix}5/4&amp;1\\1&amp;2\end{pmatrix}\)">\(\widetilde M=\begin{pmatrix}5/4&amp;1\\1&amp;2\end{pmatrix}\)</span>, with reciprocal <span class="math" data-tex="\(\begin{pmatrix}4/5&amp;1\\1&amp;1/2\end{pmatrix}\)">\(\begin{pmatrix}4/5&amp;1\\1&amp;1/2\end{pmatrix}\)</span>, whose determinant <span class="math" data-tex="\(2/5-1&lt;0\)">\(2/5-1&lt;0\)</span> shows one positive and one negative eigenvalue.</p>
+<p><strong>7.5.</strong> For two points <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, positive semidefiniteness of <span class="math" data-tex="\(\begin{pmatrix}0&amp;D(s,t)\\D(s,t)&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;D(s,t)\\D(s,t)&amp;0\end{pmatrix}\)</span> forces <span class="math" data-tex="\(D(s,t)=0\)">\(D(s,t)=0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-HS] OpenAI, <em>Strict hot spots and absence of interior critical points on smooth simply connected planar domains</em>, OpenAI Math Release preprint, 24 September 2026, Section 5 (Theorem 5.1, Remark 5.2, Lemmas 5.3, 5.4, 5.6, Proposition 5.5). https://github.com/openai/math/tree/main/preprints/Strict-hot-spots-and-absence-of-interior-critical-points-on-smooth-simply-connected-planar-domains-September-24-2026</li>
+<li>[AM00] J. Agler, J. E. McCarthy, <em>Complete Nevanlinna–Pick kernels</em>, J. Funct. Anal. 175 (2000), 111–124; arXiv:1610.01997, Corollary 1.12. https://arxiv.org/abs/1610.01997</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

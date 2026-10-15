@@ -1,0 +1,216 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Uniform decay and the characterization</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Cotype, K-convexity and the approximation property)</a><a href="growth-from-a-slow-decrease.html">Previous lesson</a><a href="src/uniform-decay-and-the-characterization.md">Editable source</a></nav><main><article><h1 id="uniform-decay-and-the-characterization">Uniform decay and the characterization</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the decay theorem of <a href="type-cotype-and-k-convexity.html">Type, cotype and K-convexity</a> (Theorem 2.3 there). Iterating the growth lemma of <a href="growth-from-a-slow-decrease.html">Growth from a slow decrease</a> against the fixed bound <span class="math" data-tex="\(D_T2^{-n/2}\)">\(D_T2^{-n/2}\)</span> of a finite-rank operator shows that slow decrease is impossible beyond an index that depends only on the cotype data; so Walsh norms of finite-rank operators, and of their norm limits, decay uniformly (Theorem 1.1). The approximation property then transfers this decay to the identity of the space, through a compact map whose domain keeps a controlled cotype estimate on its dual (Lemma 2.1). A last section derives a consequence for tensor norms from two further results of the literature.</p>
+<ul>
+<li>Uniform decay for finite-rank operators (Theorem 1.1).</li>
+<li>A compact domain with controlled dual moments (Lemma 2.1).</li>
+<li>Proof of the decay theorem (Section 3).</li>
+<li>Grothendieck pairs (Section 4).</li>
+</ul>
+<p>The lesson follows [OpenAI-CC, Sections 4.2, 5 and 6]. Notation is that of <a href="walsh-norms-and-moment-lifts.html">Walsh norms and moment lifts</a>.</p>
+<h2 id="1-uniform-decay-for-finite-rank-operators">1. Uniform decay for finite-rank operators</h2>
+<p><strong>Theorem 1.1</strong> (uniform decay; [OpenAI-CC, Theorem 4.3]). Fix <span class="math" data-tex="\(m,D_g,D_f\)">\(m,D_g,D_f\)</span> as in Lemma 2.1 of the previous lesson, with its constant <span class="math" data-tex="\(c_1\)">\(c_1\)</span>. There is an integer <span class="math" data-tex="\(n_0\)">\(n_0\)</span>, depending only on <span class="math" data-tex="\(m,D_g,D_f\)">\(m,D_g,D_f\)</span>, such that every finite-rank <span class="math" data-tex="\(T\colon G\to F\)">\(T\colon G\to F\)</span> with <span class="math" data-tex="\(c_m(G^*)\le D_g\)">\(c_m(G^*)\le D_g\)</span> and <span class="math" data-tex="\(c_m(F)\le D_f\)">\(c_m(F)\le D_f\)</span> satisfies
+for <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>,
+<span class="math math-display" data-tex="\[
+w_n(T)\le\tfrac12w_{n-2m}(T). \tag{1.1}
+\]">\[
+w_n(T)\le\tfrac12w_{n-2m}(T). \tag{1.1}
+\]</span>
+Consequently there are numbers <span class="math" data-tex="\(\rho_N\to0\)">\(\rho_N\to0\)</span>, independent of <span class="math" data-tex="\(G,F,T\)">\(G,F,T\)</span>, with
+<span class="math math-display" data-tex="\[
+w_N(T)\le\rho_N\|T\| . \tag{1.2}
+\]">\[
+w_N(T)\le\rho_N\|T\| . \tag{1.2}
+\]</span>
+Both bounds hold for every <span class="math" data-tex="\(T\colon G\to F\)">\(T\colon G\to F\)</span> that is an operator-norm limit of finite-rank maps, under the same hypotheses on <span class="math" data-tex="\(G^*\)">\(G^*\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><em>Proof.</em> Choose an integer <span class="math" data-tex="\(K&gt;\log_2(1/c_1)\)">\(K&gt;\log_2(1/c_1)\)</span> and put <span class="math" data-tex="\(n_0=4m(K+2)+2\)">\(n_0=4m(K+2)+2\)</span>. Let <span class="math" data-tex="\(T\ne0\)">\(T\ne0\)</span> have finite rank, and suppose that <span class="math" data-tex="\(w_{n-2m}(T)\le2w_n(T)\)">\(w_{n-2m}(T)\le2w_n(T)\)</span> for some <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>. By the growth lemma, <span class="math" data-tex="\(w_{2n-4m}(T)\ge c_1w_n(T)\)">\(w_{2n-4m}(T)\ge c_1w_n(T)\)</span>, and by monotonicity this lower bound holds on the whole interval <span class="math" data-tex="\([n,2n-4m]\)">\([n,2n-4m]\)</span>. Let <span class="math" data-tex="\(a_n=\lceil3n/2\rceil\)">\(a_n=\lceil3n/2\rceil\)</span>. The <span class="math" data-tex="\(K\)">\(K\)</span> consecutive blocks
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+[a_n+2m(j-1),\,a_n+2mj],\\
+1\le j\le K,
+\end{gathered}
+\]">\[
+\begin{gathered}
+[a_n+2m(j-1),\,a_n+2mj],\\
+1\le j\le K,
+\end{gathered}
+\]</span>
+lie in this interval, because <span class="math" data-tex="\(2n-a_n=\lfloor n/2\rfloor\ge2mK+4m+1\)">\(2n-a_n=\lfloor n/2\rfloor\ge2mK+4m+1\)</span>. The ratios of Walsh norms at the endpoints of the blocks multiply to
+<span class="math math-display" data-tex="\[
+\frac{w_{a_n}(T)}{w_{a_n+2mK}(T)}\le\frac1{c_1}&lt;2^K,
+\]">\[
+\frac{w_{a_n}(T)}{w_{a_n+2mK}(T)}\le\frac1{c_1}&lt;2^K,
+\]</span>
+so for one right endpoint <span class="math" data-tex="\(t\)">\(t\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w_{t-2m}(T)\le2w_t(T),\qquad t\ge\tfrac32n,\\
+w_t(T)\ge c_1w_n(T).
+\end{gathered}
+\]">\[
+\begin{gathered}
+w_{t-2m}(T)\le2w_t(T),\qquad t\ge\tfrac32n,\\
+w_t(T)\ge c_1w_n(T).
+\end{gathered}
+\]</span>
+Repeat the argument at <span class="math" data-tex="\(t\ge n_0\)">\(t\ge n_0\)</span>. Each application of the growth lemma is a statement about the same <span class="math" data-tex="\(T\)">\(T\)</span>. This gives indices <span class="math" data-tex="\(n_j\ge(3/2)^jn\)">\(n_j\ge(3/2)^jn\)</span> with <span class="math" data-tex="\(w_{n_j}(T)\ge c_1^jw_n(T)&gt;0\)">\(w_{n_j}(T)\ge c_1^jw_n(T)&gt;0\)</span>. By Lemma 1.1(3) of <a href="walsh-norms-and-moment-lifts.html">Walsh norms and moment lifts</a>, for this fixed operator,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&lt;w_n(T)&amp;\le D_Tc_1^{-j}2^{-n_j/2}\\
+&amp;\le D_Tc_1^{-j}2^{-(3/2)^jn/2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&lt;w_n(T)&amp;\le D_Tc_1^{-j}2^{-n_j/2}\\
+&amp;\le D_Tc_1^{-j}2^{-(3/2)^jn/2},
+\end{aligned}
+\]</span>
+which tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>: a contradiction. So (1.1) holds, even strictly, for nonzero finite-rank <span class="math" data-tex="\(T\)">\(T\)</span>, and trivially for <span class="math" data-tex="\(T=0\)">\(T=0\)</span>.</p>
+<p>Iterating (1.1) from <span class="math" data-tex="\(N\)">\(N\)</span> downwards gives (1.2) with <span class="math" data-tex="\(\rho_N=1\)">\(\rho_N=1\)</span> for <span class="math" data-tex="\(N&lt;n_0\)">\(N&lt;n_0\)</span> and <span class="math" data-tex="\(\rho_N=2^{-\lfloor(N-n_0)/(2m)\rfloor}\)">\(\rho_N=2^{-\lfloor(N-n_0)/(2m)\rfloor}\)</span> for <span class="math" data-tex="\(N\ge n_0\)">\(N\ge n_0\)</span>. If finite-rank <span class="math" data-tex="\(T_j\)">\(T_j\)</span> converge to <span class="math" data-tex="\(T\)">\(T\)</span> in operator norm, then <span class="math" data-tex="\(w_s(T_j)\to w_s(T)\)">\(w_s(T_j)\to w_s(T)\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span> by Lemma 1.1(4) there, and <span class="math" data-tex="\(\|T_j\|\to\|T\|\)">\(\|T_j\|\to\|T\|\)</span>; both estimates pass to the limit. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The constant <span class="math" data-tex="\(D_T\)">\(D_T\)</span> depends on the rank of <span class="math" data-tex="\(T\)">\(T\)</span>, but it is used only to exclude an infinite sequence of slow decreases for one fixed operator; <span class="math" data-tex="\(n_0\)">\(n_0\)</span> and <span class="math" data-tex="\(\rho_N\)">\(\rho_N\)</span> depend only on <span class="math" data-tex="\(m,D_g,D_f\)">\(m,D_g,D_f\)</span>.</p>
+<h2 id="2-a-compact-domain-with-controlled-dual-moments">2. A compact domain with controlled dual moments</h2>
+<p><strong>Lemma 2.1</strong> ([OpenAI-CC, Lemma 5.1]). Let <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, <span class="math" data-tex="\(\Delta\ge1\)">\(\Delta\ge1\)</span>, and let <span class="math" data-tex="\(X\)">\(X\)</span> be a Banach space with <span class="math" data-tex="\(c_m(X^*)\le\Delta\)">\(c_m(X^*)\le\Delta\)</span>. For every nonzero finite-dimensional subspace <span class="math" data-tex="\(E\subseteq X\)">\(E\subseteq X\)</span> there are a Banach space <span class="math" data-tex="\(G\)">\(G\)</span>, an injective compact operator <span class="math" data-tex="\(J\colon G\to X\)">\(J\colon G\to X\)</span> and a contraction <span class="math" data-tex="\(\iota\colon E\to G\)">\(\iota\colon E\to G\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J\iota x=x\ (x\in E),\\
+\|J\|\le2,\\
+c_m(G^*)\le12\Delta .
+\end{gathered} \tag{2.1}
+\]">\[
+\begin{gathered}
+J\iota x=x\ (x\in E),\\
+\|J\|\le2,\\
+c_m(G^*)\le12\Delta .
+\end{gathered} \tag{2.1}
+\]</span></p>
+<p><em>Proof.</em> <em>Finite-dimensional enlargements.</em> We construct finite-dimensional subspaces <span class="math" data-tex="\(E=E_0\subseteq E_1\subseteq\cdots\subseteq X\)">\(E=E_0\subseteq E_1\subseteq\cdots\subseteq X\)</span> such that every <span class="math" data-tex="\(z=(z_i)_{i=1}^m\in\ell_2^m(E_l)\)">\(z=(z_i)_{i=1}^m\in\ell_2^m(E_l)\)</span> has a lift <span class="math" data-tex="\(H\colon\{-1,1\}^m\to E_{l+1}\)">\(H\colon\{-1,1\}^m\to E_{l+1}\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E_\varepsilon\varepsilon_iH(\varepsilon)=z_i,\\
+\|H\|_{L_2(E_{l+1})}\le3\Delta\|z\|_{\ell_2^m(E_l)} .
+\end{gathered} \tag{2.2}
+\]">\[
+\begin{gathered}
+\mathbb E_\varepsilon\varepsilon_iH(\varepsilon)=z_i,\\
+\|H\|_{L_2(E_{l+1})}\le3\Delta\|z\|_{\ell_2^m(E_l)} .
+\end{gathered} \tag{2.2}
+\]</span>
+First, in <span class="math" data-tex="\(X\)">\(X\)</span>: the moment map <span class="math" data-tex="\(U\colon L_2(\{-1,1\}^m;X)\to\ell_2^m(X)\)">\(U\colon L_2(\{-1,1\}^m;X)\to\ell_2^m(X)\)</span>, <span class="math" data-tex="\(UH=(\mathbb E_\varepsilon\varepsilon_iH(\varepsilon))_i\)">\(UH=(\mathbb E_\varepsilon\varepsilon_iH(\varepsilon))_i\)</span>, has the bounded right inverse <span class="math" data-tex="\((z_i)\mapsto\sum_i\varepsilon_iz_i\)">\((z_i)\mapsto\sum_i\varepsilon_iz_i\)</span>, and its adjoint satisfies <span class="math" data-tex="\(\|U^*(\theta_i)\|_{L_2(X^*)}=(\mathbb E\|\sum_i\varepsilon_i\theta_i\|^2)^{1/2}\)">\(\|U^*(\theta_i)\|_{L_2(X^*)}=(\mathbb E\|\sum_i\varepsilon_i\theta_i\|^2)^{1/2}\)</span>, which is at least <span class="math" data-tex="\(\Delta^{-1}\|(\theta_i)\|\)">\(\Delta^{-1}\|(\theta_i)\|\)</span>. By Lemma 3.1 of <a href="walsh-norms-and-moment-lifts.html">Walsh norms and moment lifts</a>, every unit tuple has a lift of norm at most <span class="math" data-tex="\(2\Delta\)">\(2\Delta\)</span>. Given <span class="math" data-tex="\(E_l\)">\(E_l\)</span>, take a finite <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-net of the unit sphere of <span class="math" data-tex="\(\ell_2^m(E_l)\)">\(\ell_2^m(E_l)\)</span>, with <span class="math" data-tex="\(0&lt;\eta\le\min(1/2,\Delta/\sqrt m)\)">\(0&lt;\eta\le\min(1/2,\Delta/\sqrt m)\)</span> (the sphere is compact), choose such a lift for each net point, and let <span class="math" data-tex="\(E_{l+1}\)">\(E_{l+1}\)</span> be spanned by <span class="math" data-tex="\(E_l\)">\(E_l\)</span> and the finitely many values of these lifts. For a unit tuple <span class="math" data-tex="\(z\)">\(z\)</span>, choose a net point <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\|z-v\|\le\eta\)">\(\|z-v\|\le\eta\)</span> and add <span class="math" data-tex="\(\sum_i\varepsilon_i(z_i-v_i)\)">\(\sum_i\varepsilon_i(z_i-v_i)\)</span> to its lift. This corrects the moments exactly, keeps the values in <span class="math" data-tex="\(E_{l+1}\)">\(E_{l+1}\)</span>, and adds at most <span class="math" data-tex="\(\sqrt m\,\|z-v\|\le\Delta\)">\(\sqrt m\,\|z-v\|\le\Delta\)</span> to the norm. Scaling, and the zero lift, give (2.2).</p>
+<p><em>The compact map.</em> Let <span class="math" data-tex="\(\mathcal H=(\bigoplus_{l\ge0}E_l)_{\ell_2}\)">\(\mathcal H=(\bigoplus_{l\ge0}E_l)_{\ell_2}\)</span> and <span class="math" data-tex="\(j(z)=\sum_{l\ge0}2^{-l}z_l\)">\(j(z)=\sum_{l\ge0}2^{-l}z_l\)</span>. By the Cauchy–Schwarz inequality the series converges absolutely and <span class="math" data-tex="\(\|j\|\le(\sum_l4^{-l})^{1/2}&lt;2\)">\(\|j\|\le(\sum_l4^{-l})^{1/2}&lt;2\)</span>; the same estimate on the tails shows that the finite-rank truncations converge to <span class="math" data-tex="\(j\)">\(j\)</span> in operator norm, so <span class="math" data-tex="\(j\)">\(j\)</span> is compact (the image of the unit ball is within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of a bounded subset of a finite-dimensional space, for every <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>). Let <span class="math" data-tex="\(G=\mathcal H/\ker j\)">\(G=\mathcal H/\ker j\)</span>, with quotient map <span class="math" data-tex="\(Q\)">\(Q\)</span>, and <span class="math" data-tex="\(JQ=j\)">\(JQ=j\)</span>. Then <span class="math" data-tex="\(G\)">\(G\)</span> is a Banach space, <span class="math" data-tex="\(J\)">\(J\)</span> is injective, and <span class="math" data-tex="\(\|J\|\le\|j\|&lt;2\)">\(\|J\|\le\|j\|&lt;2\)</span>. Every element of the unit ball of <span class="math" data-tex="\(G\)">\(G\)</span> has a representative of norm less than <span class="math" data-tex="\(2\)">\(2\)</span>, so <span class="math" data-tex="\(J(B_G)\subseteq j(2B_{\mathcal H})\)">\(J(B_G)\subseteq j(2B_{\mathcal H})\)</span> is relatively compact, and <span class="math" data-tex="\(J\)">\(J\)</span> is compact. Put <span class="math" data-tex="\(\iota(x)=Q(x,0,0,\dots)\)">\(\iota(x)=Q(x,0,0,\dots)\)</span>; it is a contraction with <span class="math" data-tex="\(J\iota x=x\)">\(J\iota x=x\)</span>.</p>
+<p><em>Dual moments from a weighted shift.</em> Since the <span class="math" data-tex="\(E_l\)">\(E_l\)</span> are nested, <span class="math" data-tex="\(R(z_0,z_1,\dots)=(0,2z_0,2z_1,\dots)\)">\(R(z_0,z_1,\dots)=(0,2z_0,2z_1,\dots)\)</span> is a bounded map of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, and <span class="math" data-tex="\(jR=j\)">\(jR=j\)</span>; hence <span class="math" data-tex="\(QR=Q\)">\(QR=Q\)</span>. For <span class="math" data-tex="\(g_1,\dots,g_m\in G\)">\(g_1,\dots,g_m\in G\)</span> choose representatives <span class="math" data-tex="\(z^i\)">\(z^i\)</span> with <span class="math" data-tex="\(Qz^i=g_i\)">\(Qz^i=g_i\)</span> and <span class="math" data-tex="\(\|z^i\|\le2\|g_i\|\)">\(\|z^i\|\le2\|g_i\|\)</span> (<span class="math" data-tex="\(z^i=0\)">\(z^i=0\)</span> if <span class="math" data-tex="\(g_i=0\)">\(g_i=0\)</span>). Apply (2.2) at each level <span class="math" data-tex="\(l\)">\(l\)</span> to the tuple <span class="math" data-tex="\((z^i_l)_i\)">\((z^i_l)_i\)</span>, obtaining <span class="math" data-tex="\(H_l\)">\(H_l\)</span>, and put
+<span class="math math-display" data-tex="\[
+\widetilde H(\varepsilon)=(0,2H_0(\varepsilon),2H_1(\varepsilon),\dots).
+\]">\[
+\widetilde H(\varepsilon)=(0,2H_0(\varepsilon),2H_1(\varepsilon),\dots).
+\]</span>
+Summing the squared estimates,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\widetilde H\|_{L_2(\mathcal H)}&amp;\le6\Delta\Bigl(\sum_i\|z^i\|^2\Bigr)^{1/2}\\
+&amp;\le12\Delta\Bigl(\sum_i\|g_i\|^2\Bigr)^{1/2};
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\widetilde H\|_{L_2(\mathcal H)}&amp;\le6\Delta\Bigl(\sum_i\|z^i\|^2\Bigr)^{1/2}\\
+&amp;\le12\Delta\Bigl(\sum_i\|g_i\|^2\Bigr)^{1/2};
+\end{aligned}
+\]</span>
+as every point of the cube has positive mass, <span class="math" data-tex="\(\widetilde H(\varepsilon)\in\mathcal H\)">\(\widetilde H(\varepsilon)\in\mathcal H\)</span> for every <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Its <span class="math" data-tex="\(i\)">\(i\)</span>-th moment is <span class="math" data-tex="\(Rz^i\)">\(Rz^i\)</span>, so <span class="math" data-tex="\(\mathbb E_\varepsilon\varepsilon_iQ\widetilde H(\varepsilon)=QRz^i=g_i\)">\(\mathbb E_\varepsilon\varepsilon_iQ\widetilde H(\varepsilon)=QRz^i=g_i\)</span>. For <span class="math" data-tex="\(\theta_1,\dots,\theta_m\in G^*\)">\(\theta_1,\dots,\theta_m\in G^*\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_i\theta_i(g_i)\Bigr|\\
+&amp;\quad=\Bigl|\mathbb E_\varepsilon\Bigl\langle Q\widetilde H(\varepsilon),\sum_i\varepsilon_i\theta_i\Bigr\rangle\Bigr|\\
+&amp;\quad\le12\Delta\Bigl(\sum_i\|g_i\|^2\Bigr)^{1/2}\\
+&amp;\qquad\cdot\Bigl\|\sum_i\varepsilon_i\theta_i\Bigr\|_{L_2(G^*)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_i\theta_i(g_i)\Bigr|\\
+&amp;\quad=\Bigl|\mathbb E_\varepsilon\Bigl\langle Q\widetilde H(\varepsilon),\sum_i\varepsilon_i\theta_i\Bigr\rangle\Bigr|\\
+&amp;\quad\le12\Delta\Bigl(\sum_i\|g_i\|^2\Bigr)^{1/2}\\
+&amp;\qquad\cdot\Bigl\|\sum_i\varepsilon_i\theta_i\Bigr\|_{L_2(G^*)} .
+\end{aligned}
+\]</span>
+The supremum over <span class="math" data-tex="\(\sum_i\|g_i\|^2\le1\)">\(\sum_i\|g_i\|^2\le1\)</span> is <span class="math" data-tex="\((\sum_i\|\theta_i\|^2)^{1/2}\)">\((\sum_i\|\theta_i\|^2)^{1/2}\)</span>, so <span class="math" data-tex="\(c_m(G^*)\le12\Delta\)">\(c_m(G^*)\le12\Delta\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The quotient <span class="math" data-tex="\(E^*\)">\(E^*\)</span> of <span class="math" data-tex="\(X^*\)">\(X^*\)</span> need not inherit the cotype estimate of <span class="math" data-tex="\(X^*\)">\(X^*\)</span>; this is why <span class="math" data-tex="\(E\)">\(E\)</span> is enlarged before the compact map is built.</p>
+<h2 id="3-proof-of-the-decay-theorem">3. Proof of the decay theorem</h2>
+<p><em>Proof of Theorem 2.3 of <a href="type-cotype-and-k-convexity.html">Type, cotype and K-convexity</a>.</em> Let <span class="math" data-tex="\(X\)">\(X\)</span> have the approximation property, <span class="math" data-tex="\(C_q(X)\le C_F\)">\(C_q(X)\le C_F\)</span> and <span class="math" data-tex="\(C_r(X^*)\le C_Y\)">\(C_r(X^*)\le C_Y\)</span>, with <span class="math" data-tex="\(q,r\in[2,\infty)\)">\(q,r\in[2,\infty)\)</span> and <span class="math" data-tex="\(C_F,C_Y\ge1\)">\(C_F,C_Y\ge1\)</span>. For an integer <span class="math" data-tex="\(m\)">\(m\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_f=C_Fm^{1/2-1/q},\\
+\Delta=C_Ym^{1/2-1/r},\qquad D_g=12\Delta .
+\end{gathered}
+\]">\[
+\begin{gathered}
+D_f=C_Fm^{1/2-1/q},\\
+\Delta=C_Ym^{1/2-1/r},\qquad D_g=12\Delta .
+\end{gathered}
+\]</span>
+By (2.2) of <a href="walsh-norms-and-moment-lifts.html">Walsh norms and moment lifts</a>, <span class="math" data-tex="\(c_m(X)\le D_f\)">\(c_m(X)\le D_f\)</span> and <span class="math" data-tex="\(c_m(X^*)\le\Delta\)">\(c_m(X^*)\le\Delta\)</span>. The lift parameters (3.1) there satisfy
+<span class="math math-display" data-tex="\[
+ma=\frac{m^{1/r}}{576\,C_Y},\qquad mb=\frac{m^{1/q}}{48\,C_F}.
+\]">\[
+ma=\frac{m^{1/r}}{576\,C_Y},\qquad mb=\frac{m^{1/q}}{48\,C_F}.
+\]</span>
+These positive powers of <span class="math" data-tex="\(m\)">\(m\)</span> eventually exceed every fixed multiple of <span class="math" data-tex="\((\log m)^3\)">\((\log m)^3\)</span>, so for one fixed large <span class="math" data-tex="\(m\)">\(m\)</span> the hypotheses of the coefficient lemma hold: <span class="math" data-tex="\(4\le d=\lceil2\log_2m\rceil&lt;m\)">\(4\le d=\lceil2\log_2m\rceil&lt;m\)</span> and <span class="math" data-tex="\(\min(ma,mb)\ge80d(d+1)^2\)">\(\min(ma,mb)\ge80d(d+1)^2\)</span>. Let <span class="math" data-tex="\(\rho_N\)">\(\rho_N\)</span> be given by Theorem 1.1 for <span class="math" data-tex="\(m,D_g,D_f\)">\(m,D_g,D_f\)</span>. These choices do not depend on any subspace or approximating operator below.</p>
+<p><em>Decay for the identity.</em> We show <span class="math" data-tex="\(w_N(\mathrm{Id}_X)\le2\rho_N\)">\(w_N(\mathrm{Id}_X)\le2\rho_N\)</span>. Let <span class="math" data-tex="\(x=(x_u)_{u\in V_N}\in L_2(V_N;X)\)">\(x=(x_u)_{u\in V_N}\in L_2(V_N;X)\)</span> be nonzero, and <span class="math" data-tex="\(E=\operatorname{span}\{x_u\}\)">\(E=\operatorname{span}\{x_u\}\)</span>. Lemma 2.1 gives <span class="math" data-tex="\(J\colon G\to X\)">\(J\colon G\to X\)</span> and <span class="math" data-tex="\(\iota\colon E\to G\)">\(\iota\colon E\to G\)</span>. The set <span class="math" data-tex="\(M=\overline{J(B_G)}\)">\(M=\overline{J(B_G)}\)</span> is compact, and the approximation property gives finite-rank <span class="math" data-tex="\(S_j\colon X\to X\)">\(S_j\colon X\to X\)</span> with <span class="math" data-tex="\(\sup_{y\in M}\|S_jy-y\|&lt;1/j\)">\(\sup_{y\in M}\|S_jy-y\|&lt;1/j\)</span>; then <span class="math" data-tex="\(\|S_jJ-J\|\le1/j\)">\(\|S_jJ-J\|\le1/j\)</span>. So <span class="math" data-tex="\(J\)">\(J\)</span> is an operator-norm limit of finite-rank maps; no bound on <span class="math" data-tex="\(\|S_j\|\)">\(\|S_j\|\)</span> is needed. Since <span class="math" data-tex="\(c_m(G^*)\le D_g\)">\(c_m(G^*)\le D_g\)</span> and <span class="math" data-tex="\(c_m(X)\le D_f\)">\(c_m(X)\le D_f\)</span>, Theorem 1.1 gives <span class="math" data-tex="\(w_N(J)\le\rho_N\|J\|\le2\rho_N\)">\(w_N(J)\le\rho_N\|J\|\le2\rho_N\)</span>. The family <span class="math" data-tex="\(z_u=\iota(x_u)\)">\(z_u=\iota(x_u)\)</span> has <span class="math" data-tex="\(\|z\|_{L_2(G)}\le\|x\|_{L_2(X)}\)">\(\|z\|_{L_2(G)}\le\|x\|_{L_2(X)}\)</span> and <span class="math" data-tex="\(Jz_u=x_u\)">\(Jz_u=x_u\)</span>, so
+<span class="math math-display" data-tex="\[
+\|W^{\mathrm{Id}_X}_Nx\|=\|W^J_Nz\|\le2\rho_N\|x\| .
+\]">\[
+\|W^{\mathrm{Id}_X}_Nx\|=\|W^J_Nz\|\le2\rho_N\|x\| .
+\]</span></p>
+<p>Since <span class="math" data-tex="\(\rho_N\to0\)">\(\rho_N\to0\)</span>, <span class="math" data-tex="\(w_N(\mathrm{Id}_X)\to0\)">\(w_N(\mathrm{Id}_X)\to0\)</span>, and Lemma 4.1 of <a href="type-cotype-and-k-convexity.html">Type, cotype and K-convexity</a> shows that <span class="math" data-tex="\(X\)">\(X\)</span> does not contain the spaces <span class="math" data-tex="\(\ell_1^n\)">\(\ell_1^n\)</span> uniformly. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>With Hypothesis (P) of the first lesson, this proves the converse implication of Theorem 2.1 there, and Corollary 2.2.</p>
+<h2 id="4-grothendieck-pairs">4. Grothendieck pairs</h2>
+<p>For normed spaces <span class="math" data-tex="\(E,F\)">\(E,F\)</span> and a tensor <span class="math" data-tex="\(t\in E\otimes F\)">\(t\in E\otimes F\)</span>, the injective and projective norms are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|t\|_\varepsilon&amp;=\sup|(x^*\otimes y^*)(t)|,\\
+\|t\|_\pi&amp;=\inf\Bigl\{\sum_i\|x_i\|\|y_i\|:\\
+&amp;\qquad t=\sum_ix_i\otimes y_i\Bigr\},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|t\|_\varepsilon&amp;=\sup|(x^*\otimes y^*)(t)|,\\
+\|t\|_\pi&amp;=\inf\Bigl\{\sum_i\|x_i\|\|y_i\|:\\
+&amp;\qquad t=\sum_ix_i\otimes y_i\Bigr\},
+\end{aligned}
+\]</span>
+the supremum over <span class="math" data-tex="\(x^*\in B_{E^*}\)">\(x^*\in B_{E^*}\)</span> and <span class="math" data-tex="\(y^*\in B_{F^*}\)">\(y^*\in B_{F^*}\)</span>, with completions <span class="math" data-tex="\(E\widehat\otimes_\varepsilon F\)">\(E\widehat\otimes_\varepsilon F\)</span> and <span class="math" data-tex="\(E\widehat\otimes_\pi F\)">\(E\widehat\otimes_\pi F\)</span>. Both have the <em>metric mapping property</em>: <span class="math" data-tex="\(\|(S\otimes T)t\|\le\|S\|\|T\|\|t\|\)">\(\|(S\otimes T)t\|\le\|S\|\|T\|\|t\|\)</span> for bounded <span class="math" data-tex="\(S,T\)">\(S,T\)</span> (<a href="../tensor-products-of-operator-algebras/tensor-products-of-banach-and-hilbert-spaces-jordan-homomorphisms-and-isometries-of-c-star.html">Tensor products of Banach and Hilbert spaces, Jordan homomorphisms and isometries of C*-algebras</a>, Proposition 2.4).</p>
+<p>Let <span class="math" data-tex="\(\mathcal E=(E_n)_{n\ge1}\)">\(\mathcal E=(E_n)_{n\ge1}\)</span> be real Banach spaces with <span class="math" data-tex="\(\dim E_n=n\)">\(\dim E_n=n\)</span>. Following [GMR, Definition 1.2], <span class="math" data-tex="\((\mathcal E,F)\)">\((\mathcal E,F)\)</span> is a <em>Grothendieck pair</em> if there is <span class="math" data-tex="\(C&lt;\infty\)">\(C&lt;\infty\)</span> such that, for all <span class="math" data-tex="\(m,n\)">\(m,n\)</span> and all <span class="math" data-tex="\(A\colon E_m\to E_n^*\)">\(A\colon E_m\to E_n^*\)</span>, the map <span class="math" data-tex="\(A\otimes\mathrm{Id}_F\)">\(A\otimes\mathrm{Id}_F\)</span> extends to an operator <span class="math" data-tex="\(E_m\widehat\otimes_\varepsilon F\to E_n^*\widehat\otimes_\pi F\)">\(E_m\widehat\otimes_\varepsilon F\to E_n^*\widehat\otimes_\pi F\)</span> of norm at most <span class="math" data-tex="\(C\|A\|\)">\(C\|A\|\)</span>.</p>
+<p><strong>Hypothesis (GMR)</strong> (Gupta–Misra–Ray, [GMR, Theorem 1.3]). If <span class="math" data-tex="\((\mathcal E,F)\)">\((\mathcal E,F)\)</span> is a Grothendieck pair, then <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(F^*\)">\(F^*\)</span> have finite cotype.</p>
+<p><strong>Hypothesis (FTJ)</strong> (Figiel–Tomczak-Jaegermann, in the form of [Pis84, Theorem 4]). For an infinite-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>-convex space <span class="math" data-tex="\(F\)">\(F\)</span> there is <span class="math" data-tex="\(D&lt;\infty\)">\(D&lt;\infty\)</span> such that for every <span class="math" data-tex="\(d\)">\(d\)</span> there are <span class="math" data-tex="\(U_d\colon\ell_2^d\to F\)">\(U_d\colon\ell_2^d\to F\)</span> and <span class="math" data-tex="\(V_d\colon F\to\ell_2^d\)">\(V_d\colon F\to\ell_2^d\)</span> with <span class="math" data-tex="\(V_dU_d=\mathrm{Id}\)">\(V_dU_d=\mathrm{Id}\)</span> and <span class="math" data-tex="\(\|U_d\|\|V_d\|\le D\)">\(\|U_d\|\|V_d\|\le D\)</span>.</p>
+<p><strong>Corollary 4.1</strong> ([OpenAI-CC, Corollary 6.1]). Assume (P), (GMR) and (FTJ). If <span class="math" data-tex="\((\mathcal E,F)\)">\((\mathcal E,F)\)</span> is a Grothendieck pair and <span class="math" data-tex="\(F\)">\(F\)</span> is infinite-dimensional with the approximation property, then <span class="math" data-tex="\((\mathcal E,\ell_2)\)">\((\mathcal E,\ell_2)\)</span> is a Grothendieck pair.</p>
+<p><em>Proof.</em> By (GMR), <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(F^*\)">\(F^*\)</span> have finite cotype; by Theorem 2.1 of the first lesson (which uses (P)), <span class="math" data-tex="\(F\)">\(F\)</span> is <span class="math" data-tex="\(K\)">\(K\)</span>-convex. Take <span class="math" data-tex="\(U_d,V_d\)">\(U_d,V_d\)</span> from (FTJ). By the metric mapping property and the factorization
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A\otimes\mathrm{Id}_{\ell_2^d}=(\mathrm{Id}_{E_n^*}\otimes V_d)&amp;(A\otimes\mathrm{Id}_F)\\
+&amp;(\mathrm{Id}_{E_m}\otimes U_d),
+\end{aligned}
+\]">\[
+\begin{aligned}
+A\otimes\mathrm{Id}_{\ell_2^d}=(\mathrm{Id}_{E_n^*}\otimes V_d)&amp;(A\otimes\mathrm{Id}_F)\\
+&amp;(\mathrm{Id}_{E_m}\otimes U_d),
+\end{aligned}
+\]</span>
+the corresponding map with <span class="math" data-tex="\(\ell_2^d\)">\(\ell_2^d\)</span> in place of <span class="math" data-tex="\(F\)">\(F\)</span> has norm at most <span class="math" data-tex="\(CD\|A\|\)">\(CD\|A\|\)</span>, uniformly in <span class="math" data-tex="\(d,m,n,A\)">\(d,m,n,A\)</span>. Every tensor in <span class="math" data-tex="\(E_m\otimes\ell_2\)">\(E_m\otimes\ell_2\)</span> has its second coordinates in a finite-dimensional subspace <span class="math" data-tex="\(H\subseteq\ell_2\)">\(H\subseteq\ell_2\)</span>; the inclusion of <span class="math" data-tex="\(H\)">\(H\)</span> and the orthogonal projection onto <span class="math" data-tex="\(H\)">\(H\)</span> have norm one, so by the metric mapping property both tensor norms of tensors in <span class="math" data-tex="\(E_m\otimes H\)">\(E_m\otimes H\)</span> agree with those computed in <span class="math" data-tex="\(E_m\otimes\ell_2\)">\(E_m\otimes\ell_2\)</span>. The estimate for <span class="math" data-tex="\(\ell_2^d\)">\(\ell_2^d\)</span> therefore holds on <span class="math" data-tex="\(E_m\otimes\ell_2\)">\(E_m\otimes\ell_2\)</span> and extends to the completion. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The corollary gives Pisier's conjecture [GMR, Conjecture 1.4] with the approximation property in place of the bounded approximation property.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> In the proof of Theorem 1.1, check that <span class="math" data-tex="\(2n-\lceil3n/2\rceil=\lfloor n/2\rfloor\)">\(2n-\lceil3n/2\rceil=\lfloor n/2\rfloor\)</span> and that <span class="math" data-tex="\(\lfloor n/2\rfloor\ge2mK+4m+1\)">\(\lfloor n/2\rfloor\ge2mK+4m+1\)</span> for <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>.</p>
+<p><strong>5.2.</strong> Show that a norm limit of finite-rank operators between Banach spaces is compact.</p>
+<p><strong>5.3.</strong> Show that <span class="math" data-tex="\(jR=j\)">\(jR=j\)</span> in Lemma 2.1.</p>
+<p><strong>5.4.</strong> Why does the proof of the decay theorem not need a bound on <span class="math" data-tex="\(\|S_j\|\)">\(\|S_j\|\)</span>?</p>
+<p><strong>5.5.</strong> Show that for <span class="math" data-tex="\(t=x\otimes y\)">\(t=x\otimes y\)</span>, <span class="math" data-tex="\(\|t\|_\varepsilon=\|t\|_\pi=\|x\|\|y\|\)">\(\|t\|_\varepsilon=\|t\|_\pi=\|x\|\|y\|\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(\lceil3n/2\rceil+\lfloor n/2\rfloor=2n\)">\(\lceil3n/2\rceil+\lfloor n/2\rfloor=2n\)</span>. For <span class="math" data-tex="\(n\ge4m(K+2)+2\)">\(n\ge4m(K+2)+2\)</span>, <span class="math" data-tex="\(\lfloor n/2\rfloor\ge2m(K+2)+1\)">\(\lfloor n/2\rfloor\ge2m(K+2)+1\)</span>.</p>
+<p><strong>5.2.</strong> If <span class="math" data-tex="\(\|T-T_j\|&lt;\varepsilon\)">\(\|T-T_j\|&lt;\varepsilon\)</span> with <span class="math" data-tex="\(T_j\)">\(T_j\)</span> of finite rank, the image of the unit ball under <span class="math" data-tex="\(T\)">\(T\)</span> lies within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of the bounded set <span class="math" data-tex="\(T_j(B)\)">\(T_j(B)\)</span> in a finite-dimensional space, which is covered by finitely many <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-balls; so <span class="math" data-tex="\(T(B)\)">\(T(B)\)</span> is totally bounded.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(jR(z)=\sum_{l\ge1}2^{-l}\cdot2z_{l-1}\)">\(jR(z)=\sum_{l\ge1}2^{-l}\cdot2z_{l-1}\)</span>, which is <span class="math" data-tex="\(\sum_{l\ge0}2^{-l}z_l=j(z)\)">\(\sum_{l\ge0}2^{-l}z_l=j(z)\)</span>.</p>
+<p><strong>5.4.</strong> Only the composites <span class="math" data-tex="\(S_jJ\)">\(S_jJ\)</span> must converge in operator norm; this follows from uniform convergence of <span class="math" data-tex="\(S_j\)">\(S_j\)</span> on the compact set <span class="math" data-tex="\(\overline{J(B_G)}\)">\(\overline{J(B_G)}\)</span>.</p>
+<p><strong>5.5.</strong> <span class="math" data-tex="\(\|t\|_\pi\le\|x\|\|y\|\)">\(\|t\|_\pi\le\|x\|\|y\|\)</span> from the representation <span class="math" data-tex="\(t=x\otimes y\)">\(t=x\otimes y\)</span>; <span class="math" data-tex="\(\|t\|_\varepsilon\ge\|x\|\|y\|\)">\(\|t\|_\varepsilon\ge\|x\|\|y\|\)</span> from norming functionals (Hahn–Banach); and <span class="math" data-tex="\(\|t\|_\varepsilon\le\|t\|_\pi\)">\(\|t\|_\varepsilon\le\|t\|_\pi\)</span> for every tensor.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-CC] OpenAI, <em>The cotype–cotype conjecture under the approximation property</em>, OpenAI Math Release preprint, 23 September 2026, Sections 4.2, 5 and 6. https://github.com/openai/math/tree/main/preprints/The-cotype-cotype-conjecture-under-the-approximation-property-September-23-2026</li>
+<li>[GMR] R. Gupta, G. Misra and S. K. Ray, <em>On variants of the Grothendieck inequality and estimates on tensor product norms</em>, arXiv:2305.13270v2, Definition 1.2, Theorem 1.3, Conjecture 1.4. https://arxiv.org/abs/2305.13270</li>
+<li>[Pis84] G. Pisier, <em>Finite rank projections on Banach spaces and a conjecture of Grothendieck</em>, Proceedings of the International Congress of Mathematicians (Warsaw, 1983), Vol. 2, 1027–1039, Theorem 4. https://www.imj-prg.fr/wp-content/uploads/2020/prix/pisier1983.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
