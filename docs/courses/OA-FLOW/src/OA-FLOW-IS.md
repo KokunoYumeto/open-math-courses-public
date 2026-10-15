@@ -263,27 +263,132 @@ IS2 identifies multiplication by \(F\circ q\), \(q(s)=sH\), with multiplication 
 is a faithful normal unital embedding: in those coordinates it is the usual scalar tensor amplification, whose normality follows by the vector-series test. Right translation fixes \(F\circ q\), so it belongs to \(M\); it is central already in \(B\). Left translation sends it to \(F(g^{-1}sH)\). This proves the forward central-quotient assertion, without making any converse or uniqueness assertion. The coordinate fact used in this paragraph is proved in IS2; no conclusion of IS3 is an input to that proof.
 
 <a id="is-4"></a>
-## IS4. The regular transformation calculation
+## IS4. Rank-one kernels in the regular transformation algebra
 
-On \(L^2(G_s\times G_t)\), the faithful regular representation of \(L^\infty(G)\rtimes G\) has
-
+Use the faithful normal regular model of the scalar transformation algebra \(Q=L^\infty(G)\rtimes G\) on \(\mathcal H=L^2(G_s\times G_t)\):
 <a id="equation-is21"></a>
 
 \[
- (\Pi(f)\zeta)(s,t)=f(ts)\zeta(s,t),\qquad
- (\Lambda_g\zeta)(s,t)=\zeta(s,g^{-1}t).
- \tag{IS21}
+(\Pi(f)\zeta)(s,t)=f(ts)\zeta(s,t),\qquad
+ (\Lambda_g\zeta)(s,t)=\zeta(s,g^{-1}t).\tag{IS21}
 \]
+We construct its full operator factor from integrated rank-one kernels.
 
-Define
+For \(u,v\in C_c(G)\), define
+<a id="equation-is40"></a>
 
+\[
+E_{u,v}=\int_G\Pi(u)\Lambda_g\Pi(\Delta_G\overline v)\,dg.\tag{IS40}
+\]
+This is a bounded strong operator integral in \(Q\). Indeed, covariance rewrites its integrand as
+\(\Pi(u\,\lambda_g(\Delta_G\overline v))\Lambda_g\).
+It vanishes unless \(g\in(\operatorname{supp}u)(\operatorname{supp}v)^{-1}\), a compact set. The original three-factor expression is strongly continuous in \(g\), is uniformly bounded and has the same properties after taking adjoints. The earlier [Hilbert integration construction](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) therefore defines the integral on every vector, with a uniform operator bound. Every element of \(Q'\) commutes with the integrand and hence its integral, proving membership in \(Q\).
+
+The inversion and left-Haar formulas proved in [HR3](OA-FLOW-HR.md#hr-03) and [L24](OA-FLOW-L24.md#oa-flow.grp.haarconventions) give the exact kernel. In the integral at \((s,t)\), substitute \(r=g^{-1}ts\); equivalently \(g=tsr^{-1}\), with \(dg=\Delta_G(r)^{-1}dr\). The factor \(\Delta_G(r)\) in the coefficient cancels it:
+<a id="equation-is41"></a>
+
+\[
+(E_{u,v}\zeta)(s,t)
+ =u(ts)\int_G\overline{v(r)}\zeta(s,rs^{-1})\,dr.                 \tag{IS41}
+\]
+First apply this calculation to compact continuous vectors, where all scalar integrals are absolutely integrable. For fixed \(s\), write \(r=ts\). Right-Haar substitution gives
+<a id="equation-is42"></a>
+
+\[
+\|\zeta\|_{\mathcal H}^2
+ =\int_G\Delta_G(s)^{-1}\int_G|\zeta(s,rs^{-1})|^2\,dr\,ds.\tag{IS42}
+\]
+Cauchy–Schwarz in the inner integral proves
+\(\|E_{u,v}\|\leq\|u\|_2\|v\|_2\), so (IS41) extends to the whole Hilbert space.
+
+This same formula proves, with inner products linear in the first variable,
+<a id="equation-is43"></a>
+
+\[
+E_{u,v}^*=E_{v,u},\qquad
+ E_{u,v}E_{w,z}=\langle w,v\rangle E_{u,z}.                      \tag{IS43}
+\]
+For the adjoint, substitute \(r=ts\) in the two scalar inner products; the remaining measure is \(\Delta_G(s)^{-1}ds\), independent of \(r\). For multiplication, insert (IS41) twice and integrate
+\(\overline v(r)w(r)\). Compact continuous vectors justify the integrations, and the bounds extend both identities. The estimate also extends \(E_{u,v}\) continuously to all \(u,v\in L^2(G)\).
+
+These matrix units have full support. Let \(F\) range over finite-dimensional subspaces of \(C_c(G)\), ordered by inclusion, and let \(u_1,\ldots,u_m\) be an orthonormal basis of \(F\). Then
+<a id="equation-is44"></a>
+
+\[
+P_F=\sum_{j=1}^mE_{u_j,u_j}\tag{IS44}
+\]
+is a projection by (IS43), independent of the chosen basis. For a vector of the form
+\(\zeta(s,t)=a(s)b(ts)\), with \(a,b\in C_c(G)\), formula (IS41) shows \(P_F\zeta=\zeta\) whenever \(b\in F\). The span of these vectors is dense: the homeomorphism \((s,t)\mapsto(s,ts)\) changes the squared norm to the product measure
+\(\Delta_G(s)^{-1}ds\,dr\), and the earlier scalar-product tensor-density proof applies. Both measures are Radon and sigma-finite; the positive continuous density \(\Delta_G^{-1}\) leaves compact continuous functions dense. Since \(\|P_F\|\leq1\), fixing this dense span eventually proves \(P_F\to I\) strongly, without a dominated-convergence assertion for arbitrary nets.
+
+Choose \(e\in C_c(G)\) with \(\|e\|_2=1\), and put \(\mathcal H_e=E_{e,e}\mathcal H\). This Hilbert space is nonzero: for nonzero \(a\in C_c(G)\), the vector \(a(s)e(ts)\) is a nonzero vector in its range. On elementary tensors define
+<a id="equation-is45"></a>
+
+\[
+U(\eta\otimes\xi)=E_{\eta,e}\xi,\qquad
+ \eta\in L^2(G),\quad \xi\in\mathcal H_e .\tag{IS45}
+\]
+The identities (IS43) give
+\[
+ \langle E_{\eta,e}\xi,E_{\theta,e}\nu\rangle
+ =\langle\eta,\theta\rangle\langle\xi,\nu\rangle.
+\]
+Thus \(U\) extends isometrically from the Hilbert tensor product. Its range contains the ranges of all \(E_{u,v}\), because
+\(E_{u,v}=E_{u,e}E_{e,v}\); the strong convergence of \(P_F\) makes that range dense. Hence \(U\) is a unitary onto \(\mathcal H\), and
+\[
+ U^*E_{u,v}U=|u\rangle\langle v|\otimes I_{\mathcal H_e}.
+\]
+Finite coordinate compressions now show that the von Neumann algebra generated by the \(E_{u,v}\)'s is
+\(U(B(L^2G)\bar\otimes\mathbb CI_{\mathcal H_e})U^*\).
+
+It is all of \(Q\). The kernel formula gives
+\[
+ \Pi(f)E_{u,v}=E_{fu,v},\qquad
+ \Lambda_gE_{u,v}=E_{L_gu,v}.
+\]
+Here \(fu\in L^2(G)\), so no continuity assumption on the bounded coefficient \(f\) is needed. Consequently \(\Pi(f)P_F\) and \(\Lambda_gP_F\) belong to the matrix-unit algebra; bounded strong convergence puts both generators in it. The reverse containment follows from the defining integrals. We have therefore constructed a faithful normal isomorphism
+<a id="equation-is46"></a>
+
+\[
+\Phi:Q\longrightarrow B(L^2G),\qquad
+ \Phi(E_{u,v})=|u\rangle\langle v|,\quad
+ \Phi(\Pi(f))=M_f,\quad \Phi(\Lambda_g)=L_g.\tag{IS46}
+\]
+Normality and the normal inverse follow from the explicit tensor amplification and a fixed-unit-vector slice, as in [NCF1](OA-FLOW-NCF.md#ncf-1).
+
+We also need its exact right-subgroup covariance. Let \(C_h=R_G(h)\otimes I\) on the original regular space. Applying (IS41) to \(C_hE_{u,v}C_h^*\), then substituting \(r=qh\), gives
+<a id="equation-is47"></a>
+
+\[
+C_hE_{u,v}C_h^*
+ =E_{R_G(h)u,R_G(h)v}.\tag{IS47}
+\]
+The Jacobian is \(dr=\Delta_G(h)dq\); it is exactly the product of the two right-regular square roots. Hence
+\[
+ \Phi\circ\operatorname{Ad}C_h
+ =\operatorname{Ad}R_G(h)\circ\Phi
+\]
+on the matrix units and, by normality, on all of \(Q\). This proves the action transport needed in IS5.
+
+![Exact images of integrated rank-one kernels, their product and right-translation covariance, followed by the full-support normal representation.](../assets/is-rank-one/is-rank-one.svg)
+
+The matrices show the images under \(\Phi\) for \(G=\mathbb Z/3\mathbb Z\) with counting Haar measure. Choose \(u=(1,0,0)\), \(v=(3/5,4/5,0)\), \(w=(4/5,0,3/5)\), and \(z=(0,1,0)\). The three-term inner product is \(\langle w,v\rangle=12/25\), so (IS43) gives the upper product exactly. The right shift is \((R\xi)_j=\xi_{j+1}\), with indices modulo three; shifting both vectors gives the equal lower matrices by (IS47). The regular operators themselves retain the identity factor on \(\mathcal H_e\). The bottom formulas describe the general full-support construction proved above, without a finite-dimensional assumption on \(N\).
+
+[Figure source](../assets/is-rank-one/render_is_rank_one.py) · [Exact rational data](../assets/is-rank-one/rank-one-data.json) · [PNG](../assets/is-rank-one/is-rank-one.png)
+
+For readers wanting a single coordinate realization of \(\Phi\), the full-domain unitary
 <a id="equation-is22"></a>
 
 \[
- (W\zeta)(s,t)=\Delta_G(t)^{-1/2}\zeta(t,st^{-1}),\qquad
- (W^*\zeta)(s,t)=\Delta_G(s)^{1/2}\zeta(ts,s).
- \tag{IS22}
+(W\zeta)(s,t)=\Delta_G(t)^{-1/2}\zeta(t,st^{-1}),\qquad
+ (W^*\zeta)(s,t)=\Delta_G(s)^{1/2}\zeta(ts,s)\tag{IS22}
 \]
+implements \(\Phi\) with a spectator identity factor:
+\(W aW^*=\Phi(a)\otimes I\).
+Its inverse and norm follow from right-Haar substitution. Formula (IS41) gives
+\(WE_{u,v}W^*=|u\rangle\langle v|\otimes I\); the full-support matrix units extend the identity to every \(a\in Q\). Direct substitution also gives
+\(W C_h W^*=R_G(h)\otimes R_G(h)\).
+These formulas supply the same concrete generator maps; the matrix-unit construction above proves the whole normal algebra identification.
 
 These are inverse Borel changes of variables. For fixed \(t\), set \(r=st^{-1}\), so \(s=rt\) and \(ds=\Delta_G(t)\,dr\). Scalar product integration gives
 
@@ -308,7 +413,8 @@ Thus \(W\) is unitary on all \(L^2\), with the stated inverse. Tensoring with \(
 
 The last operator is \(\zeta(s,t)\mapsto\Delta_G(h)\zeta(sh,th)\); both right regular square roots are present. In the first two formulas the \(W,W^*\) factors cancel, leaving \(s\) and \(g^{-1}s\) respectively. Boundedness extends the identities from compact continuous tests to all vectors.
 
-Here is the full scalar generation argument. Haar measure on \(G\) is sigma-finite by its countable compact cover. Partition \(G\) into countably many Borel sets \(E_n\) of finite measure. If \(A\in B(L^2G)\) commutes with every multiplication operator, it preserves \(L^2(E_n)\). Put \(k_n=A1_{E_n}\). For bounded \(f\) supported on \(E_n\), \(Af=fk_n\). Testing indicators of \(\{|k_n|>\|A\|+\epsilon\}\cap E_n\) gives \(|k_n|\le\|A\|\) almost everywhere. Simple functions, truncation and the countable partition show \(A=M_k\), where \(k\) has restrictions \(k_n\). Null partition members cause no issue.
+
+**Scalar invariant multipliers.** Here is the full scalar generation argument. Haar measure on \(G\) is sigma-finite by its countable compact cover. Partition \(G\) into countably many Borel sets \(E_n\) of finite measure. If \(A\in B(L^2G)\) commutes with every multiplication operator, it preserves \(L^2(E_n)\). Put \(k_n=A1_{E_n}\). For bounded \(f\) supported on \(E_n\), \(Af=fk_n\). Testing indicators of \(\{|k_n|>\|A\|+\epsilon\}\cap E_n\) gives \(|k_n|\le\|A\|\) almost everywhere. Simple functions, truncation and the countable partition show \(A=M_k\), where \(k\) has restrictions \(k_n\). Null partition members cause no issue.
 
 If \(M_k\) also commutes with all \(L_g\), then \(k(g^{-1}s)=k(s)\) almost everywhere for each fixed \(g\). Choose a bounded Borel representative and \(a\in C_c(G)_+\) with \(\int a=1\). Scalar product integration gives
 
@@ -328,7 +434,7 @@ This uses sigma-finite Fubini with the finite compact support of \(a\), not a co
  \tag{IS26}
 \]
 
-The last norm tends to zero by L24, so \(F\) is continuous. For each fixed \(u\), its almost-everywhere equality with \(k\) gives \(F(us)=F(s)\) almost everywhere. Both sides are continuous and every nonempty open set has positive Haar measure by HR7. Therefore equality holds everywhere. This holds for each \(u\); taking \(u=s^{-1}\) makes \(F\) constant. The common commutant is \(\mathbb C1\). BD1's bicommutant theorem yields
+The last norm tends to zero by L24, so \(F\) is continuous. For each fixed \(u\), its almost-everywhere equality with \(k\) gives \(F(us)=F(s)\) almost everywhere. Both sides are continuous and every nonempty open set has positive Haar measure by HR7. Therefore equality holds everywhere. This holds for each \(u\); taking \(u=s^{-1}\) makes \(F\) constant. The common commutant is \(\mathbb C1\). This scalar argument also agrees with the operator algebra already identified by the matrix units:
 
 <a id="equation-is27"></a>
 
@@ -354,29 +460,25 @@ Its generator map includes the regular coefficient operators and fixes the group
 
 Represent \(B\rtimes G\) on \(K\otimes L^2(G_s)\otimes L^2(G_t)\). Its elementary coefficient generator is \(x\otimes\Pi(f)\); its group generator is \(1_K\otimes\Lambda_g\). Normality of the coefficient map is NR3. The generated algebra is \(N\bar\otimes(L^\infty G\rtimes G)\): it contains \(N\otimes1\) and the scalar transformation generators, and BD4/5 extends from elementary tensors by bounded strong-star approximation. The extended \(\Theta_h\) is implemented on this regular space by \(V_h\otimes R_h\otimes1\). It sends \(x\otimes\Pi(f)\) to \(\beta_h(x)\otimes\Pi(f(\,\cdot\,h))\) and fixes \(\Lambda_g\). This identifies the action on the entire generated algebra.
 
-Conjugating by \(1_K\otimes W\), (IS24) and (IS27) give
-
-<a id="equation-is29"></a>
-
-\[
- (1_K\otimes W)(B\rtimes G)(1_K\otimes W)^*
- =N\bar\otimes B(L^2G)\otimes1_{L^2G},
- \tag{IS29}
-\]
-
-and the right unitary becomes \(V_h\otimes R_h\otimes R_h\). Its fixed algebra is therefore \(\mathcal A_G\otimes1\), where
-
+Apply the normal isomorphism \({\rm id}_N\bar\otimes\Phi\) constructed from the full-support matrix units in IS4. Its normal inverse is the tensor amplification proved there and in NCF1. Equation (IS47) transports the extended \(\Theta_h\) to \(\operatorname{Ad}(V_h\otimes R_G(h))\). Thus its fixed algebra is identified normally with
 <a id="equation-is30"></a>
 
 \[
  \mathcal A_G=(N\bar\otimes B(L^2G))\cap
- \{V_h\otimes R_G(h):h\in H\}'.
- \tag{IS30}
+ \{V_h\otimes R_G(h):h\in H\}'.                                  \tag{IS30}
 \]
 
-Removing the spectator identity factor is a faithful normal isomorphism: vector coefficients of \(a\otimes1\) are sums of those of \(a\), and a single unit vector in the spectator factor gives a normal inverse slice. This is not asserted to be a unitary identification of unamplified Hilbert spaces.
+The concrete coordinate realization of this already constructed normal map is \(1_K\otimes W\). Equations (IS22)–(IS24) give
+<a id="equation-is29"></a>
 
-For general \(m\in M\), its coefficient image after \(W\) is \(m\otimes1\). This holds first on elementary tensors of \(B\), then on the whole \(B\) by the normal coefficient map and BD's bounded ultraweak approximation. The group image is \(1_K\otimes L_g\otimes1\). This proves the first generator map in IS0 without pointwise field evaluation.
+\[
+ (1_K\otimes W)(B\rtimes G)(1_K\otimes W)^*
+ =N\bar\otimes B(L^2G)\otimes1_{L^2G}.                           \tag{IS29}
+\]
+
+The right unitary in these coordinates is \(V_h\otimes R_h\otimes R_h\). On the displayed algebra the last factor acts on an identity, so its fixed algebra is \(\mathcal A_G\otimes1\). The tensor amplification and its inverse normal slice identify this with \(\mathcal A_G\); they do not assert a unitary between unamplified Hilbert spaces.
+
+The generator maps are exact. For elementary coefficient tensors, \(\Phi(\Pi(f))=M_f\) sends \(x\otimes\Pi(f)\) to \(x\otimes M_f\), and \(\Phi(\Lambda_g)=L_g\) sends the group generator to \(1_K\otimes L_g\). Normality of the coefficient maps and BD's bounded ultraweak approximation extend the first identity to every \(m\in M\subset B\). Hence its image is that same operator \(m\), as stated in IS0. No pointwise evaluation of a general operator field is used.
 
 <a id="is-6"></a>
 ## IS6. The tensor factor and the full normal isomorphism
@@ -563,7 +665,7 @@ For every \(c>0\), substitution gives
 \]
 The scalar \(c^{-1/2}\) of \(R_G\) is canceled by the density ratio \(c^{1/2}\). The subgroup is unimodular, so its own right action has no amplitude. This calculation proves the labels in B without a unimodularity assumption on \(G\).
 
-**C. The normal isomorphisms.** The ladder is the general theorem at its stated lcsc scope, rather than a dimension count for the plotted example. Let \(N\) be arbitrary, let \(V_h\) be its canonical standard implementation, and let \(M\) be the actual induced fixed algebra of [IS3](OA-FLOW-IS.md#is-3). [NCF4](OA-FLOW-NCF.md#ncf-4) passes its commuting right action through the regular crossing. The full unitary \(W\), its Haar scalar and the spectator slice are proved in [IS4–5](OA-FLOW-IS.md#is-4). They identify the crossing with
+**C. The normal isomorphisms.** The ladder is the general theorem at its stated lcsc scope, rather than a dimension count for the plotted example. Let \(N\) be arbitrary, let \(V_h\) be its canonical standard implementation, and let \(M\) be the actual induced fixed algebra of [IS3](OA-FLOW-IS.md#is-3). [NCF4](OA-FLOW-NCF.md#ncf-4) passes its commuting right action through the regular crossing. The integrated rank-one kernels, their full-support normal isomorphism, and its coordinate realization \(W\) are proved in [IS4–5](OA-FLOW-IS.md#is-4). They identify the crossing with
 
 <a id="equation-isf6"></a>
 

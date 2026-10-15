@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite chains of Jones projections · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/finite-chains-of-jones-projections.md">Editable Markdown</a></nav><article class="lesson"><h1 id="finite-chains-of-jones-projections">Finite chains of Jones projections</h1>
+<p>How long can projections satisfying the Jones relations persist at a parameter between the permitted infinite-sequence values? The obstruction already occurs in a finite chain. We prove a length bound using positivity and joint kernels; no trace or finite-dimensional representation is assumed.</p>
+<p>The algebraic recursion is also proved in <a href="../OA-SUBFACTORS/html/positivity-and-index-rigidity.html">Positivity restricts the index</a>, Lemma 7.1, and <a href="OA-MOD-EIR.html">The range of the index of an expectation</a>, §3. <a href="../OA-SUBFACTORS/html/discrete-projection-algebras.html">Why the discrete projection algebra is unique</a>, Proposition 13.6, already proves the infinite-sequence restriction without a trace. Here we give the finite-window argument, the intermediate stabilization identities and the polynomial conventions explicitly. A source comparison is Takesaki, <em>Theory of Operator Algebras III</em>, §XIX.2, Lemmas 2.18–2.21, pp. 428–432.</p>
+<h2 id="relations-support-and-the-parameter"><span id="OA-MOD-FJC-01"></span><span id="oa-mod-fjc-01"></span>Relations, support and the parameter</h2>
+<p>Let <span class="math" data-tex="\(q_1,\ldots,q_L\)">\(q_1,\ldots,q_L\)</span> be orthogonal projections on a Hilbert space, with at least one nonzero projection, satisfying</p>
+<span class="math math-display" data-tex="\[
+q_iq_j=q_jq_i\quad(|i-j|\ge2),\qquad
+q_iq_{i+1}q_i=tq_i,\qquad q_{i+1}q_iq_{i+1}=tq_{i+1},
+\tag{FJC1}
+\]">\[
+q_iq_j=q_jq_i\quad(|i-j|\ge2),\qquad
+q_iq_{i+1}q_i=tq_i,\qquad q_{i+1}q_iq_{i+1}=tq_{i+1},
+\tag{FJC1}
+\]</span>
+<p>where <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Assume <span class="math" data-tex="\(L\ge2\)">\(L\ge2\)</span>. Every projection is nonzero: a zero projection forces its neighbors to vanish, and induction reaches both endpoints. Since <span class="math" data-tex="\(q_iq_{i+1}q_i\le q_i\)">\(q_iq_{i+1}q_i\le q_i\)</span>, a nonzero vector in the range of <span class="math" data-tex="\(q_i\)">\(q_i\)</span> gives <span class="math" data-tex="\(t\le1\)">\(t\le1\)</span>.</p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\delta=t^{-1/2},\qquad U_i=\delta q_i.
+\]">\[
+\delta=t^{-1/2},\qquad U_i=\delta q_i.
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+U_i^*=U_i,\quad U_i^2=\delta U_i,\quad
+U_iU_{i+1}U_i=U_i,\quad U_{i+1}U_iU_{i+1}=U_{i+1}.
+\tag{FJC2}
+\]">\[
+U_i^*=U_i,\quad U_i^2=\delta U_i,\quad
+U_iU_{i+1}U_i=U_i,\quad U_{i+1}U_iU_{i+1}=U_{i+1}.
+\tag{FJC2}
+\]</span>
+<p>The distant generators commute. These identities follow by substituting <span class="math" data-tex="\(t=\delta^{-2}\)">\(t=\delta^{-2}\)</span> in (FJC1).</p>
+<p>We may restrict the Hilbert space to</p>
+<span class="math math-display" data-tex="\[
+K=\overline{\operatorname{span}}\{\operatorname{ran}q_i:1\le i\le L\}.
+\]">\[
+K=\overline{\operatorname{span}}\{\operatorname{ran}q_i:1\le i\le L\}.
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(K^\perp=\bigcap_i\ker q_i\)">\(K^\perp=\bigcap_i\ker q_i\)</span>; each projection vanishes there and preserves <span class="math" data-tex="\(K\)">\(K\)</span>. Restriction preserves (FJC1) and nonzero projections. On <span class="math" data-tex="\(K\)">\(K\)</span>, a bounded operator that annihilates every <span class="math" data-tex="\(\operatorname{ran}q_i\)">\(\operatorname{ran}q_i\)</span> vanishes by continuity. We use this nondegenerate representation below. The identically zero chain is excluded throughout.</p>
+<h2 id="the-polynomials-and-their-first-sign-change"><span id="OA-MOD-FJC-02"></span><span id="oa-mod-fjc-02"></span>The polynomials and their first sign change</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_0=0,\quad a_1=1,\quad a_{n+1}=\delta a_n-a_{n-1},\\
+P_0=P_1=1,\quad P_{n+1}(t)=P_n(t)-tP_{n-1}(t).
+\end{gathered}
+\tag{FJC3}
+\]">\[
+\begin{gathered}
+a_0=0,\quad a_1=1,\quad a_{n+1}=\delta a_n-a_{n-1},\\
+P_0=P_1=1,\quad P_{n+1}(t)=P_n(t)-tP_{n-1}(t).
+\end{gathered}
+\tag{FJC3}
+\]</span>
+<p>Induction gives</p>
+<span class="math math-display" data-tex="\[
+P_n(t)=\delta^{-n}a_{n+1}.
+\tag{FJC4}
+\]">\[
+P_n(t)=\delta^{-n}a_{n+1}.
+\tag{FJC4}
+\]</span>
+<p>If <span class="math" data-tex="\(\alpha+\beta=1\)">\(\alpha+\beta=1\)</span> and <span class="math" data-tex="\(\alpha\beta=t\)">\(\alpha\beta=t\)</span>, the polynomial
+<span class="math" data-tex="\(\sum_{j=0}^n\alpha^{n-j}\beta^j\)">\(\sum_{j=0}^n\alpha^{n-j}\beta^j\)</span> has the same initial values and recurrence as <span class="math" data-tex="\(P_n\)">\(P_n\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+P_n(t)=
+\begin{cases}
+(\alpha^{n+1}-\beta^{n+1})/(\alpha-\beta),&amp;\alpha\ne\beta,\\
+(n+1)2^{-n},&amp;\alpha=\beta=1/2.
+\end{cases}
+\tag{FJC5}
+\]">\[
+P_n(t)=
+\begin{cases}
+(\alpha^{n+1}-\beta^{n+1})/(\alpha-\beta),&amp;\alpha\ne\beta,\\
+(n+1)2^{-n},&amp;\alpha=\beta=1/2.
+\end{cases}
+\tag{FJC5}
+\]</span>
+<p>The first formula follows by multiplying the finite sum by <span class="math" data-tex="\(\alpha-\beta\)">\(\alpha-\beta\)</span> and canceling consecutive terms. The second is that same finite sum at the repeated root.</p>
+<p>For <span class="math" data-tex="\(0&lt;\theta&lt;\pi/2\)">\(0&lt;\theta&lt;\pi/2\)</span>, taking
+<span class="math" data-tex="\(\alpha=e^{i\theta}/(2\cos\theta)\)">\(\alpha=e^{i\theta}/(2\cos\theta)\)</span> and
+<span class="math" data-tex="\(\beta=e^{-i\theta}/(2\cos\theta)\)">\(\beta=e^{-i\theta}/(2\cos\theta)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+t=\frac1{4\cos^2\theta},\qquad
+a_n=\frac{\sin(n\theta)}{\sin\theta},\qquad
+P_n(t)=\frac{\sin((n+1)\theta)}
+{(2\cos\theta)^n\sin\theta}.
+\tag{FJC6}
+\]">\[
+t=\frac1{4\cos^2\theta},\qquad
+a_n=\frac{\sin(n\theta)}{\sin\theta},\qquad
+P_n(t)=\frac{\sin((n+1)\theta)}
+{(2\cos\theta)^n\sin\theta}.
+\tag{FJC6}
+\]</span>
+<p>These identities can equally be checked from the sine addition formula and (FJC3).</p>
+<p>The full coefficient formula is</p>
+<span class="math math-display" data-tex="\[
+P_n(t)=\sum_{j=0}^{\lfloor n/2\rfloor}
+(-1)^j\binom{n-j}{j}t^j.
+\tag{FJC7}
+\]">\[
+P_n(t)=\sum_{j=0}^{\lfloor n/2\rfloor}
+(-1)^j\binom{n-j}{j}t^j.
+\tag{FJC7}
+\]</span>
+<p>For <span class="math" data-tex="\(n=0,1\)">\(n=0,1\)</span> it gives 1. Substitution into the recurrence gives the formula at <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, since the coefficient of <span class="math" data-tex="\((-t)^j\)">\((-t)^j\)</span> becomes
+<span class="math" data-tex="\(\binom{n-j}{j}+\binom{n-j}{j-1}=\binom{n+1-j}{j}\)">\(\binom{n-j}{j}+\binom{n-j}{j-1}=\binom{n+1-j}{j}\)</span>.
+The binomial identity follows by separating <span class="math" data-tex="\(j\)">\(j\)</span>-element subsets according to whether they contain a distinguished element. In particular the last coefficient is nonzero, so <span class="math" data-tex="\(\deg P_n=\lfloor n/2\rfloor\)">\(\deg P_n=\lfloor n/2\rfloor\)</span>.</p>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, all roots are simple and are exactly</p>
+<span class="math math-display" data-tex="\[
+\frac1{4\cos^2(k\pi/(n+1))},
+\qquad 1\le k\le\lfloor n/2\rfloor .
+\tag{FJC8}
+\]">\[
+\frac1{4\cos^2(k\pi/(n+1))},
+\qquad 1\le k\le\lfloor n/2\rfloor .
+\tag{FJC8}
+\]</span>
+<p>They are distinct positive roots by (FJC6), and their number equals the degree. Thus the smallest root is</p>
+<span class="math math-display" data-tex="\[
+b_{n+1},\qquad b_r=\frac1{4\cos^2(\pi/r)}\quad(r\ge3).
+\]">\[
+b_{n+1},\qquad b_r=\frac1{4\cos^2(\pi/r)}\quad(r\ge3).
+\]</span>
+<p>There are no roots for <span class="math" data-tex="\(n=0,1\)">\(n=0,1\)</span>. As <span class="math" data-tex="\(P_n(0)=1\)">\(P_n(0)=1\)</span>, continuity gives <span class="math" data-tex="\(P_n(t)&gt;0\)">\(P_n(t)&gt;0\)</span> for <span class="math" data-tex="\(0\le t&lt;b_{n+1}\)">\(0\le t&lt;b_{n+1}\)</span>. Also <span class="math" data-tex="\(P_{n+1}(t)&lt;0\)">\(P_{n+1}(t)&lt;0\)</span> for <span class="math" data-tex="\(b_{n+2}&lt;t&lt;b_{n+1}\)">\(b_{n+2}&lt;t&lt;b_{n+1}\)</span>, since (FJC6) then has <span class="math" data-tex="\(\pi&lt;(n+2)\theta&lt;2\pi\)">\(\pi&lt;(n+2)\theta&lt;2\pi\)</span>.</p>
+<p>Fix a gap parameter</p>
+<span class="math math-display" data-tex="\[
+b_{\ell+1}&lt;t&lt;b_\ell,\qquad \ell\ge3.
+\tag{FJC9}
+\]">\[
+b_{\ell+1}&lt;t&lt;b_\ell,\qquad \ell\ge3.
+\tag{FJC9}
+\]</span>
+<p>Then <span class="math" data-tex="\(\pi/(\ell+1)&lt;\theta&lt;\pi/\ell\)">\(\pi/(\ell+1)&lt;\theta&lt;\pi/\ell\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+a_1,\ldots,a_\ell&gt;0,\quad a_{\ell+1}&lt;0,
+\qquad P_0,\ldots,P_{\ell-1}&gt;0,\quad P_\ell&lt;0.
+\tag{FJC10}
+\]">\[
+a_1,\ldots,a_\ell&gt;0,\quad a_{\ell+1}&lt;0,
+\qquad P_0,\ldots,P_{\ell-1}&gt;0,\quad P_\ell&lt;0.
+\tag{FJC10}
+\]</span>
+<p>Only these finite lists of signs are needed. Later polynomials can vanish.</p>
+<h2 id="joint-kernels-from-the-algebraic-recursion"><span id="OA-MOD-FJC-03"></span><span id="oa-mod-fjc-03"></span>Joint kernels from the algebraic recursion</h2>
+<p>Let <span class="math" data-tex="\(F_1=1_K\)">\(F_1=1_K\)</span>. Whenever the denominators through <span class="math" data-tex="\(a_{n+1}\)">\(a_{n+1}\)</span> are nonzero, define</p>
+<span class="math math-display" data-tex="\[
+F_{n+1}=F_n-\frac{a_n}{a_{n+1}}F_nU_nF_n.
+\tag{FJC11}
+\]">\[
+F_{n+1}=F_n-\frac{a_n}{a_{n+1}}F_nU_nF_n.
+\tag{FJC11}
+\]</span>
+<p>This is the orthogonal projection onto
+<span class="math" data-tex="\(\bigcap_{i=1}^n\ker q_i\)">\(\bigcap_{i=1}^n\ker q_i\)</span>. The assertion holds even when a coefficient is negative, provided it is defined.</p>
+<p>Here is the algebraic verification, including the sandwich identity we need. At <span class="math" data-tex="\(n=1\)">\(n=1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+U_1F_1U_1=\delta U_1=\frac{a_2}{a_1}U_1,\qquad
+F_2=1-q_1.
+\]">\[
+U_1F_1U_1=\delta U_1=\frac{a_2}{a_1}U_1,\qquad
+F_2=1-q_1.
+\]</span>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, <span class="math" data-tex="\(U_n\)">\(U_n\)</span> commutes with <span class="math" data-tex="\(F_{n-1}\)">\(F_{n-1}\)</span>, because that projection is a polynomial in <span class="math" data-tex="\(U_1,\ldots,U_{n-2}\)">\(U_1,\ldots,U_{n-2}\)</span>. Expanding (FJC11) at the preceding step and using <span class="math" data-tex="\(U_nU_{n-1}U_n=U_n\)">\(U_nU_{n-1}U_n=U_n\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U_nF_nU_n
+&amp;=\delta F_{n-1}U_n-\frac{a_{n-1}}{a_n}F_{n-1}U_n\\
+&amp;=\frac{a_{n+1}}{a_n}F_{n-1}U_n.
+\end{aligned}
+\tag{FJC12}
+\]">\[
+\begin{aligned}
+U_nF_nU_n
+&amp;=\delta F_{n-1}U_n-\frac{a_{n-1}}{a_n}F_{n-1}U_n\\
+&amp;=\frac{a_{n+1}}{a_n}F_{n-1}U_n.
+\end{aligned}
+\tag{FJC12}
+\]</span>
+<p>In this expansion the two copies of <span class="math" data-tex="\(F_{n-1}\)">\(F_{n-1}\)</span> slide past <span class="math" data-tex="\(U_n\)">\(U_n\)</span>, leaving
+<span class="math" data-tex="\(F_{n-1}(U_nU_{n-1}U_n)F_{n-1}=F_{n-1}U_n\)">\(F_{n-1}(U_nU_{n-1}U_n)F_{n-1}=F_{n-1}U_n\)</span>.</p>
+<p>Put <span class="math" data-tex="\(Q=F_nU_nF_n\)">\(Q=F_nU_nF_n\)</span> and <span class="math" data-tex="\(c=a_{n+1}/a_n\)">\(c=a_{n+1}/a_n\)</span>. Since <span class="math" data-tex="\(F_n\le F_{n-1}\)">\(F_n\le F_{n-1}\)</span>, (FJC12) yields</p>
+<span class="math math-display" data-tex="\[
+Q^2=cQ,\qquad U_nF_nU_nF_n=cU_nF_n.
+\]">\[
+Q^2=cQ,\qquad U_nF_nU_nF_n=cU_nF_n.
+\]</span>
+<p>Thus <span class="math" data-tex="\(F_n-c^{-1}Q\)">\(F_n-c^{-1}Q\)</span> is selfadjoint and idempotent, lies below <span class="math" data-tex="\(F_n\)">\(F_n\)</span>, and is annihilated on the left by <span class="math" data-tex="\(U_n\)">\(U_n\)</span>. It is annihilated by the earlier generators as well. Conversely, any vector annihilated by the first <span class="math" data-tex="\(n\)">\(n\)</span> generators is fixed by <span class="math" data-tex="\(F_n\)">\(F_n\)</span>, and the subtracted term annihilates it. This proves that (FJC11) is precisely the joint-kernel projection, completing the induction.</p>
+<p>In the zero-based notation <span class="math" data-tex="\(e_k=q_{k+1}\)">\(e_k=q_{k+1}\)</span>, set <span class="math" data-tex="\(f_k=F_{k+2}\)">\(f_k=F_{k+2}\)</span>. Then the consistent polynomial version is</p>
+<span class="math math-display" data-tex="\[
+f_0=1-e_0,\qquad
+f_{k+1}=f_k-\frac{P_{k+1}(t)}{P_{k+2}(t)}
+f_ke_{k+1}f_k,\qquad
+f_k=1-\bigvee_{j=0}^k e_j.
+\tag{FJC13}
+\]">\[
+f_0=1-e_0,\qquad
+f_{k+1}=f_k-\frac{P_{k+1}(t)}{P_{k+2}(t)}
+f_ke_{k+1}f_k,\qquad
+f_k=1-\bigvee_{j=0}^k e_j.
+\tag{FJC13}
+\]</span>
+<p>For example, the first nontrivial coefficient is <span class="math" data-tex="\(P_1/P_2=1/(1-t)\)">\(P_1/P_2=1/(1-t)\)</span>. This fixes both the coefficient shift and the projection-index shift in the displayed recursion of the cited source.</p>
+<h2 id="what-the-first-stabilization-forces"><span id="OA-MOD-FJC-04"></span><span id="oa-mod-fjc-04"></span>What the first stabilization forces</h2>
+<p>Assume (FJC9) and <span class="math" data-tex="\(L\ge\ell\)">\(L\ge\ell\)</span>. Equation (FJC12) at <span class="math" data-tex="\(n=\ell\)">\(n=\ell\)</span> reads</p>
+<span class="math math-display" data-tex="\[
+U_\ell F_\ell U_\ell
+=\frac{a_{\ell+1}}{a_\ell}F_{\ell-1}U_\ell.
+\tag{FJC14}
+\]">\[
+U_\ell F_\ell U_\ell
+=\frac{a_{\ell+1}}{a_\ell}F_{\ell-1}U_\ell.
+\tag{FJC14}
+\]</span>
+<p>The left side is positive. The product on the right is positive because its factors commute and <span class="math" data-tex="\(U_\ell=\delta q_\ell\)">\(U_\ell=\delta q_\ell\)</span>; its coefficient is negative. Taking quadratic forms shows that both sides vanish. Hence</p>
+<span class="math math-display" data-tex="\[
+F_\ell U_\ell=0,\qquad F_{\ell-1}U_\ell=0,\qquad
+F_{\ell+1}=F_\ell.
+\tag{FJC15}
+\]">\[
+F_\ell U_\ell=0,\qquad F_{\ell-1}U_\ell=0,\qquad
+F_{\ell+1}=F_\ell.
+\tag{FJC15}
+\]</span>
+<p>Here <span class="math" data-tex="\(U_\ell F_\ell U_\ell=(F_\ell U_\ell)^*(F_\ell U_\ell)\)">\(U_\ell F_\ell U_\ell=(F_\ell U_\ell)^*(F_\ell U_\ell)\)</span>, so a zero sandwich gives the zero product.</p>
+<p>Let <span class="math" data-tex="\(s\)">\(s\)</span> be the first index with <span class="math" data-tex="\(F_s=F_{s+1}\)">\(F_s=F_{s+1}\)</span>; then <span class="math" data-tex="\(s\le\ell\)">\(s\le\ell\)</span>. All denominators used through this point are nonzero. The recursion gives <span class="math" data-tex="\(F_sU_sF_s=0\)">\(F_sU_sF_s=0\)</span>. Since this is <span class="math" data-tex="\(\delta(q_sF_s)^*(q_sF_s)\)">\(\delta(q_sF_s)^*(q_sF_s)\)</span>, we obtain <span class="math" data-tex="\(F_sU_s=0\)">\(F_sU_s=0\)</span>. Equation (FJC12) then gives <span class="math" data-tex="\(F_{s-1}U_s=0\)">\(F_{s-1}U_s=0\)</span>, since <span class="math" data-tex="\(a_{s+1}/a_s\ne0\)">\(a_{s+1}/a_s\ne0\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+q_s\le1-F_{s-1}=\bigvee_{i=1}^{s-2}q_i.
+\tag{FJC16}
+\]">\[
+q_s\le1-F_{s-1}=\bigvee_{i=1}^{s-2}q_i.
+\tag{FJC16}
+\]</span>
+<p>We have <span class="math" data-tex="\(s\ge3\)">\(s\ge3\)</span>: <span class="math" data-tex="\(s=1\)">\(s=1\)</span> would give <span class="math" data-tex="\(q_1=0\)">\(q_1=0\)</span>, whereas <span class="math" data-tex="\(s=2\)">\(s=2\)</span> would give <span class="math" data-tex="\(q_2\le0\)">\(q_2\le0\)</span>.</p>
+<p>The projection <span class="math" data-tex="\(F_{s-1}\)">\(F_{s-1}\)</span>, a polynomial in <span class="math" data-tex="\(q_1,\ldots,q_{s-2}\)">\(q_1,\ldots,q_{s-2}\)</span>, commutes with every <span class="math" data-tex="\(q_j\)">\(q_j\)</span> for <span class="math" data-tex="\(j\ge s\)">\(j\ge s\)</span>. Its zero product with <span class="math" data-tex="\(q_s\)">\(q_s\)</span> propagates:</p>
+<span class="math math-display" data-tex="\[
+tF_{s-1}q_{j+1}
+=q_{j+1}F_{s-1}q_jq_{j+1}=0.
+\tag{FJC17}
+\]">\[
+tF_{s-1}q_{j+1}
+=q_{j+1}F_{s-1}q_jq_{j+1}=0.
+\tag{FJC17}
+\]</span>
+<p>Thus it annihilates every <span class="math" data-tex="\(q_j\)">\(q_j\)</span> for <span class="math" data-tex="\(j\ge s\)">\(j\ge s\)</span>. Since <span class="math" data-tex="\(F_s\le F_{s-1}\)">\(F_s\le F_{s-1}\)</span>, the projection <span class="math" data-tex="\(F_s\)">\(F_s\)</span> annihilates those later generators too; its joint kernel does not shrink at any subsequent available step.</p>
+<p>Put <span class="math" data-tex="\(h=F_{s-2}\)">\(h=F_{s-2}\)</span>. It commutes with every <span class="math" data-tex="\(q_j\)">\(q_j\)</span> for <span class="math" data-tex="\(j\ge s-1\)">\(j\ge s-1\)</span>. The minimality of <span class="math" data-tex="\(s\)">\(s\)</span> gives <span class="math" data-tex="\(F_{s-1}\ne F_s\)">\(F_{s-1}\ne F_s\)</span>, so (FJC11) implies <span class="math" data-tex="\(q_{s-1}F_{s-1}\ne0\)">\(q_{s-1}F_{s-1}\ne0\)</span>. Since <span class="math" data-tex="\(F_{s-1}\le h\)">\(F_{s-1}\le h\)</span>, this gives <span class="math" data-tex="\(q_{s-1}h\ne0\)">\(q_{s-1}h\ne0\)</span>. The adjacent relations for the commuting compressions <span class="math" data-tex="\(q_jh\)">\(q_jh\)</span> now show</p>
+<span class="math math-display" data-tex="\[
+q_jh\ne0\qquad(j\ge s-1).
+\tag{FJC18}
+\]">\[
+q_jh\ne0\qquad(j\ge s-1).
+\tag{FJC18}
+\]</span>
+<p>Indeed, a zero compression would force its neighbors to be zero and eventually force <span class="math" data-tex="\(q_{s-1}h=0\)">\(q_{s-1}h=0\)</span>.</p>
+<p>These compressed projections are orthogonal at distance at least two:</p>
+<span class="math math-display" data-tex="\[
+q_iq_jh=0\qquad(i,j\ge s-1,\ |i-j|\ge2).
+\tag{FJC19}
+\]">\[
+q_iq_jh=0\qquad(i,j\ge s-1,\ |i-j|\ge2).
+\tag{FJC19}
+\]</span>
+<p>To prove the first case, suppose <span class="math" data-tex="\(q_{s+1}\)">\(q_{s+1}\)</span> exists. By (FJC17),
+<span class="math" data-tex="\(q_{s+1}F_{s-1}=0\)">\(q_{s+1}F_{s-1}=0\)</span>, whereas</p>
+<span class="math math-display" data-tex="\[
+h-F_{s-1}
+=\delta\frac{a_{s-2}}{a_{s-1}}h q_{s-2}h.
+\]">\[
+h-F_{s-1}
+=\delta\frac{a_{s-2}}{a_{s-1}}h q_{s-2}h.
+\]</span>
+<p>Multiply this identity by <span class="math" data-tex="\(q_{s-1}q_{s+1}\)">\(q_{s-1}q_{s+1}\)</span> on the left and by <span class="math" data-tex="\(q_{s-1}\)">\(q_{s-1}\)</span> on the right. The distant commutations and
+<span class="math" data-tex="\(q_{s-1}q_{s-2}q_{s-1}=tq_{s-1}\)">\(q_{s-1}q_{s-2}q_{s-1}=tq_{s-1}\)</span> give</p>
+<span class="math math-display" data-tex="\[
+q_{s-1}q_{s+1}h
+=\frac{a_{s-2}}{\delta a_{s-1}}q_{s-1}q_{s+1}h.
+\]">\[
+q_{s-1}q_{s+1}h
+=\frac{a_{s-2}}{\delta a_{s-1}}q_{s-1}q_{s+1}h.
+\]</span>
+<p>The coefficient is not 1, since <span class="math" data-tex="\(\delta a_{s-1}-a_{s-2}=a_s&gt;0\)">\(\delta a_{s-1}-a_{s-2}=a_s&gt;0\)</span>. This proves the first zero product. If <span class="math" data-tex="\(q_iq_jh=0\)">\(q_iq_jh=0\)</span> with <span class="math" data-tex="\(j\ge i+2\)">\(j\ge i+2\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+tq_iq_{j+1}h=q_{j+1}q_iq_jh q_{j+1}=0.
+\]">\[
+tq_iq_{j+1}h=q_{j+1}q_iq_jh q_{j+1}=0.
+\]</span>
+<p>After these zeros have propagated to the right, the identity</p>
+<span class="math math-display" data-tex="\[
+tq_{i+1}q_jh=q_{i+1}(q_iq_jh)q_{i+1}
+\quad(j\ge i+3)
+\]">\[
+tq_{i+1}q_jh=q_{i+1}(q_iq_jh)q_{i+1}
+\quad(j\ge i+3)
+\]</span>
+<p>propagates them to the next left index. Induction proves (FJC19); if <span class="math" data-tex="\(q_{s+1}\)">\(q_{s+1}\)</span> does not exist, there are no such distant pairs.</p>
+<p>Equations (FJC16), (FJC18) and (FJC19) are the first-stabilization conclusions with consistent indices. They require only the finite denominators through <span class="math" data-tex="\(a_{\ell+1}\)">\(a_{\ell+1}\)</span>. Later joint kernels are defined geometrically, even if a later polynomial is zero.</p>
+<h2 id="a-finite-length-bound-from-two-windows"><span id="OA-MOD-FJC-05"></span><span id="oa-mod-fjc-05"></span>A finite length bound from two windows</h2>
+<p><strong>Theorem.</strong> If a nonzero chain satisfies (FJC1) at a parameter (FJC9), then</p>
+<span class="math math-display" data-tex="\[
+L\le2\ell-3.
+\tag{FJC20}
+\]">\[
+L\le2\ell-3.
+\tag{FJC20}
+\]</span>
+<p>In particular this implies the source's weaker bound <span class="math" data-tex="\(L\le2\ell\)">\(L\le2\ell\)</span>, with the endpoint and nonzero hypotheses corrected.</p>
+<p>If <span class="math" data-tex="\(L&lt;\ell\)">\(L&lt;\ell\)</span>, the claim is immediate. Otherwise we first show that <strong>every consecutive window of <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span> projections spans <span class="math" data-tex="\(K\)">\(K\)</span></strong>.</p>
+<p>For such a window, apply the joint-kernel recursion in its own order, obtaining a projection <span class="math" data-tex="\(F\)">\(F\)</span>. If a neighboring generator exists to its right, the negative sandwich (FJC14) shows that <span class="math" data-tex="\(F\)">\(F\)</span> annihilates it. Reversing the order of the window gives the same projection, since its range is the same intersection of kernels. Thus a neighboring generator on the left is also annihilated when it exists. The projection <span class="math" data-tex="\(F\)">\(F\)</span> already annihilates the whole window. Every other generator is distant from the window and therefore commutes with its polynomial <span class="math" data-tex="\(F\)">\(F\)</span>. Consequently <span class="math" data-tex="\(F\)">\(F\)</span> commutes with the entire chain, and the adjacent relations propagate its zero products to both ends. Nondegeneracy gives <span class="math" data-tex="\(F=0\)">\(F=0\)</span>. This proves the window assertion.</p>
+<p>We also need a cancellation fact. Let <span class="math" data-tex="\(x\)">\(x\)</span> belong to the unital algebra generated by <span class="math" data-tex="\(q_1,\ldots,q_{n-2}\)">\(q_1,\ldots,q_{n-2}\)</span>, and suppose <span class="math" data-tex="\(xq_n=0\)">\(xq_n=0\)</span>. It commutes with every <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, <span class="math" data-tex="\(j\ge n\)">\(j\ge n\)</span>. The adjacent relation gives</p>
+<span class="math math-display" data-tex="\[
+txq_{j+1}=q_{j+1}(xq_j)q_{j+1}.
+\]">\[
+txq_{j+1}=q_{j+1}(xq_j)q_{j+1}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(xq_j=0\)">\(xq_j=0\)</span> for every <span class="math" data-tex="\(j\ge n\)">\(j\ge n\)</span>. If the suffix contains a window of <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span> generators, that window spans <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. This uses boundedness and density; no trace, simplicity or finite-dimensionality of the generated algebra is needed.</p>
+<p>Suppose now that <span class="math" data-tex="\(L\ge2\ell-2\)">\(L\ge2\ell-2\)</span>. Equation (FJC15) gives <span class="math" data-tex="\(F_{\ell-1}q_\ell=0\)">\(F_{\ell-1}q_\ell=0\)</span>. Since <span class="math" data-tex="\(F_{\ell-1}\)">\(F_{\ell-1}\)</span> uses only the generators through <span class="math" data-tex="\(q_{\ell-2}\)">\(q_{\ell-2}\)</span>, cancellation with the window</p>
+<span class="math math-display" data-tex="\[
+q_\ell,\ldots,q_{2\ell-2}
+\]">\[
+q_\ell,\ldots,q_{2\ell-2}
+\]</span>
+<p>gives <span class="math" data-tex="\(F_{\ell-1}=0\)">\(F_{\ell-1}=0\)</span>. For <span class="math" data-tex="\(2\le n&lt;\ell\)">\(2\le n&lt;\ell\)</span>, if <span class="math" data-tex="\(F_n=0\)">\(F_n=0\)</span>, equation (FJC12), whose coefficient is positive, gives <span class="math" data-tex="\(F_{n-1}q_n=0\)">\(F_{n-1}q_n=0\)</span>. The suffix starting at <span class="math" data-tex="\(q_n\)">\(q_n\)</span> still contains <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span> generators, so cancellation gives <span class="math" data-tex="\(F_{n-1}=0\)">\(F_{n-1}=0\)</span>. Descending reaches <span class="math" data-tex="\(F_1=1_K=0\)">\(F_1=1_K=0\)</span>, contradicting the nonzero chain. This proves (FJC20).</p>
+<p><img src="assets/finite-jones-windows.svg" alt="Two finite windows force a joint-kernel projection to vanish." /></p>
+<p><em>Figure 1.</em> At the forbidden length <span class="math" data-tex="\(2\ell-2\)">\(2\ell-2\)</span>, the negative sandwich annihilates <span class="math" data-tex="\(F_{\ell-1}q_\ell\)">\(F_{\ell-1}q_\ell\)</span>. The projection <span class="math" data-tex="\(F_{\ell-1}\)">\(F_{\ell-1}\)</span> uses only <span class="math" data-tex="\(q_1,\ldots,q_{\ell-2}\)">\(q_1,\ldots,q_{\ell-2}\)</span>, and therefore commutes with the entire suffix. The suffix window spans <span class="math" data-tex="\(K\)">\(K\)</span>, so cancellation forces <span class="math" data-tex="\(F_{\ell-1}=0\)">\(F_{\ell-1}=0\)</span>; the same argument descends to <span class="math" data-tex="\(F_1=0\)">\(F_1=0\)</span>. The drawing groups arbitrary index intervals rather than representing a particular Hilbert space.</p>
+<p>An infinite nonzero sequence therefore has</p>
+<span class="math math-display" data-tex="\[
+t\in(0,1/4]\ \cup\
+\{\,1/(4\cos^2(\pi/r)):r=3,4,\ldots\,\}.
+\tag{FJC21}
+\]">\[
+t\in(0,1/4]\ \cup\
+\{\,1/(4\cos^2(\pi/r)):r=3,4,\ldots\,\}.
+\tag{FJC21}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(t\le1\)">\(t\le1\)</span>, and if <span class="math" data-tex="\(1/4&lt;t\le1\)">\(1/4&lt;t\le1\)</span> is not one of the displayed discrete values, its angle <span class="math" data-tex="\(\theta\in(0,\pi/3]\)">\(\theta\in(0,\pi/3]\)</span> lies in one of the gaps (FJC9). A finite initial segment of length <span class="math" data-tex="\(2\ell-2\)">\(2\ell-2\)</span> would contradict the theorem. This recovers the earlier programme result by a finite-chain proof.</p>
+<h2 id="endpoints-later-zeros-and-a-sharp-short-chain"><span id="OA-MOD-FJC-06"></span><span id="oa-mod-fjc-06"></span>Endpoints, later zeros and a sharp short chain</h2>
+<p>The endpoint <span class="math" data-tex="\(t=1/4\)">\(t=1/4\)</span> really supports an infinite sequence. On finite sequences of complex numbers define the Gram form of symbols <span class="math" data-tex="\(v_i\)">\(v_i\)</span>, <span class="math" data-tex="\(i\ge1\)">\(i\ge1\)</span>, by</p>
+<span class="math math-display" data-tex="\[
+\langle v_i,v_j\rangle=
+\begin{cases}
+1,&amp;i=j,\\
+1/2,&amp;|i-j|=1,\\
+0,&amp;|i-j|\ge2.
+\end{cases}
+\]">\[
+\langle v_i,v_j\rangle=
+\begin{cases}
+1,&amp;i=j,\\
+1/2,&amp;|i-j|=1,\\
+0,&amp;|i-j|\ge2.
+\end{cases}
+\]</span>
+<p>For a sequence supported in <span class="math" data-tex="\(1,\ldots,m\)">\(1,\ldots,m\)</span>, its quadratic form is</p>
+<span class="math math-display" data-tex="\[
+\frac12\left(|x_1|^2+
+\sum_{i=1}^{m-1}|x_i+x_{i+1}|^2+|x_m|^2\right).
+\tag{FJC22}
+\]">\[
+\frac12\left(|x_1|^2+
+\sum_{i=1}^{m-1}|x_i+x_{i+1}|^2+|x_m|^2\right).
+\tag{FJC22}
+\]</span>
+<p>It is positive definite: if it vanishes, <span class="math" data-tex="\(x_1=0\)">\(x_1=0\)</span> and each succeeding coordinate is its predecessor's negative, hence every coordinate is zero. Complete this inner-product space. Projection <span class="math" data-tex="\(q_i\)">\(q_i\)</span> onto the unit vector <span class="math" data-tex="\(v_i\)">\(v_i\)</span> satisfies (FJC1) with <span class="math" data-tex="\(t=1/4\)">\(t=1/4\)</span>, since sandwiching two rank-one projections gives their squared inner product times the first projection. Distant ranges are orthogonal. Every finite set of the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> is linearly independent, so this is a nonzero infinite chain. This also follows from Proposition 13.5 of the earlier programme lesson.</p>
+<p>The gap condition does not exclude later zeros. Take <span class="math" data-tex="\(\theta=2\pi/7\)">\(\theta=2\pi/7\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\frac12&lt;t=\frac1{4\cos^2(2\pi/7)}&lt;1,\qquad P_6(t)=0.
+\tag{FJC23}
+\]">\[
+\frac12&lt;t=\frac1{4\cos^2(2\pi/7)}&lt;1,\qquad P_6(t)=0.
+\tag{FJC23}
+\]</span>
+<p>The inequalities follow from <span class="math" data-tex="\(\pi/4&lt;2\pi/7&lt;\pi/3\)">\(\pi/4&lt;2\pi/7&lt;\pi/3\)</span>, and the zero follows from <span class="math" data-tex="\(\sin(7\theta)=0\)">\(\sin(7\theta)=0\)</span>. Thus the first gap has a later vanishing polynomial. The proof above never divides by it.</p>
+<p>For the first gap, <span class="math" data-tex="\(\ell=3\)">\(\ell=3\)</span>, the bound <span class="math" data-tex="\(L\le3\)">\(L\le3\)</span> is attained. At <span class="math" data-tex="\(t=3/5\)">\(t=3/5\)</span> set</p>
+<span class="math math-display" data-tex="\[
+q_1=q_3=
+\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},
+\qquad
+q_2=\frac15
+\begin{pmatrix}3&amp;\sqrt6\\\sqrt6&amp;2\end{pmatrix}.
+\tag{FJC24}
+\]">\[
+q_1=q_3=
+\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},
+\qquad
+q_2=\frac15
+\begin{pmatrix}3&amp;\sqrt6\\\sqrt6&amp;2\end{pmatrix}.
+\tag{FJC24}
+\]</span>
+<p>The second matrix is projection onto the unit vector
+<span class="math" data-tex="\((\sqrt{3/5},\sqrt{2/5})\)">\((\sqrt{3/5},\sqrt{2/5})\)</span>; its squared inner product with <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> is <span class="math" data-tex="\(3/5\)">\(3/5\)</span>. Hence both adjacent sandwich identities hold, and <span class="math" data-tex="\(q_1,q_3\)">\(q_1,q_3\)</span> commute because they are equal. This is a three-projection chain. The theorem forbids adding a fourth projection satisfying all the same relations. No assertion of sharpness for every gap is needed.</p>
+<h2 id="source-conventions-and-the-scope-of-the-conclusion"><span id="OA-MOD-FJC-07"></span><span id="oa-mod-fjc-07"></span>Source conventions and the scope of the conclusion</h2>
+<p>The polynomial identities in Lemma XIX.2.19 hold with the repeated-root value (FJC5), and with the first-root assertion restricted to <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Formula (FJC13) makes the zero-based kernel recursion consistent with <span class="math" data-tex="\(f_0=1-e_0\)">\(f_0=1-e_0\)</span>. Its first coefficient is <span class="math" data-tex="\(1/(1-t)\)">\(1/(1-t)\)</span>, not 1.</p>
+<p>For a parameter between <span class="math" data-tex="\(b_{\ell+1}\)">\(b_{\ell+1}\)</span> and <span class="math" data-tex="\(b_\ell\)">\(b_\ell\)</span>, the sign change is <span class="math" data-tex="\(P_{\ell-1}&gt;0&gt;P_\ell\)">\(P_{\ell-1}&gt;0&gt;P_\ell\)</span>. Equations (FJC14)–(FJC19) replace the use of a globally defined rational recursion in Lemma XIX.2.20. They prove the stabilization, support containment, nonzero compressed projections and distant orthogonality using only denominators before the first sign change.</p>
+<p>A finite-sequence obstruction requires <span class="math" data-tex="\(t&gt;1/4\)">\(t&gt;1/4\)</span> and a nonzero chain. The endpoint construction (FJC22) and the identically zero sequence explain both qualifications to Lemma XIX.2.21. The finite bound (FJC20) is proved at the generality of projections on an arbitrary Hilbert space.</p>
+<p>The argument does not assign a Markov trace to an arbitrary projection representation, and it does not classify the generated algebra. Those are different statements. At <span class="math" data-tex="\(t\le1/4\)">\(t\le1/4\)</span>, Proposition 13.5 of the earlier programme lesson gives nondegenerate rank-one sequences whose generated compact-operator algebra has no tracial state. The infinite-sequence parameter restriction already had a programme proof; the finite-window bound and the intermediate formulas above supply the precise finite statements used here.</p>
+<h2 id="exercises-with-solutions"><span id="OA-MOD-FJC-08"></span><span id="oa-mod-fjc-08"></span>Exercises with solutions</h2>
+<p><strong>Exercise 1.</strong> Find the first four polynomials after <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, and check the first coefficient in (FJC13).</p>
+<p><strong>Solution.</strong> The recurrence gives</p>
+<span class="math math-display" data-tex="\[
+P_1=1,\quad P_2=1-t,\quad P_3=1-2t,\quad P_4=1-3t+t^2.
+\]">\[
+P_1=1,\quad P_2=1-t,\quad P_3=1-2t,\quad P_4=1-3t+t^2.
+\]</span>
+<p>For <span class="math" data-tex="\(f_0=1-e_0\)">\(f_0=1-e_0\)</span>, put <span class="math" data-tex="\(Q=f_0e_1f_0\)">\(Q=f_0e_1f_0\)</span>. Expanding with <span class="math" data-tex="\(e_1e_0e_1=te_1\)">\(e_1e_0e_1=te_1\)</span> gives <span class="math" data-tex="\(Q^2=(1-t)Q\)">\(Q^2=(1-t)Q\)</span>. Thus <span class="math" data-tex="\(f_0-(1-t)^{-1}Q\)">\(f_0-(1-t)^{-1}Q\)</span> is a projection annihilating both <span class="math" data-tex="\(e_0,e_1\)">\(e_0,e_1\)</span>; a vector in their common kernel is fixed by it. This recovers the first step of (FJC13).</p>
+<p><strong>Exercise 2.</strong> Explain why adjoining an orthogonal common-kernel summand does not change the length bound.</p>
+<p><strong>Solution.</strong> Restriction to <span class="math" data-tex="\(K\)">\(K\)</span> removes precisely that summand and preserves all nonzero generators and the parameter. The contradiction on <span class="math" data-tex="\(K\)">\(K\)</span> therefore remains valid in the original representation. Nondegeneracy is a reduction in the proof, not an additional hypothesis in the theorem.</p>
+<p><strong>Exercise 3.</strong> What changes if <span class="math" data-tex="\(t=1\)">\(t=1\)</span>?</p>
+<p><strong>Solution.</strong> The identity <span class="math" data-tex="\(q_iq_{i+1}q_i=q_i\)">\(q_iq_{i+1}q_i=q_i\)</span> gives
+<span class="math" data-tex="\(\|(1-q_{i+1})q_i\xi\|^2=0\)">\(\|(1-q_{i+1})q_i\xi\|^2=0\)</span>, hence <span class="math" data-tex="\(q_i\le q_{i+1}\)">\(q_i\le q_{i+1}\)</span>. The reverse identity gives equality. Every generator is the same nonzero projection, and chains of arbitrary length exist. This is the discrete value <span class="math" data-tex="\(b_3=1\)">\(b_3=1\)</span>, which is excluded by the strict gap inequalities.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

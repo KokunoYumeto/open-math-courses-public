@@ -167,7 +167,7 @@ B(A,A)=-\|\operatorname{ad}A\|_{\mathrm{HS}}^2
 \tag{C.2}
 \]
 where the norm is taken for an invariant positive form on \(\mathfrak g\). In particular \(B|_{\mathfrak h}\) is negative definite if
-\(\mathfrak h\cap Z(\mathfrak g)=0\), and hence if the pair is effective.
+\(\mathfrak h\cap Z(\mathfrak g)=0\), and hence if the pair is effective. Quotienting by the isotropy kernel gives an effective orthogonal symmetric algebra with the same odd tangent space and canonical curvature.
 
 **Proof.** Let \(\mathfrak k\) be the kernel in question. For \(A\in\mathfrak k\), \(D\in\mathfrak h\), \(X\in\mathfrak m\), Jacobi gives
 \([[D,A],X]=[D,[A,X]]-[A,[D,X]]=0\).
@@ -176,7 +176,9 @@ Thus \([\mathfrak h,\mathfrak k]\subseteq\mathfrak k\), and by definition
 
 Every automorphism preserves the Killing form, since it conjugates adjoint operators. Applying \(\theta\) to one even and one odd argument reverses their pairing, proving the first equality of (C.2). In an orthonormal basis a skew matrix \(T\) satisfies
 \(\operatorname{tr}T^2=-\operatorname{tr}(T^TT)=-\sum_{i,j}T_{ij}^2\).
-Take \(T=\operatorname{ad}A\). Equality to zero means that \(A\) is central. The stated intersection condition therefore gives negative definiteness. In an effective pair any central even line is an ideal in \(\mathfrak h\), so that intersection is zero. □
+Take \(T=\operatorname{ad}A\). Equality to zero means that \(A\) is central. The stated intersection condition therefore gives negative definiteness. In an effective pair any central even line is an ideal in \(\mathfrak h\), so that intersection is zero.
+
+For this last assertion, the ideal \(\mathfrak k\) is even, so \(\theta\) descends to \(\mathfrak g/\mathfrak k\), with eigenspaces \(\mathfrak h/\mathfrak k\) and the unchanged \(\mathfrak m\). Its even action is faithful: an even class annihilating every odd vector has a representative in \(\mathfrak k\), by its definition, and is therefore zero. The preceding kernel characterization proves effectiveness. An invariant positive form descends as the quotient inner product: identify the quotient with the orthogonal complement of \(\mathfrak k\), which is stable under every even skew-adjoint operator because \(\mathfrak k\) is invariant. These induced operators are still skew-adjoint. Finally the quotient map is the identity on the odd space and preserves brackets; its even kernel acts trivially there. Thus the expression \(-[[X,Y],Z]\) in (0.1) is unchanged for all odd \(X,Y,Z\). This proves the tangent and curvature assertions without assuming a global group quotient. □
 
 **Theorem C.2 (Decomposition by the Killing operator).** An effective orthogonal symmetric Lie algebra is a direct sum of symmetric ideals
 \[
@@ -378,7 +380,7 @@ q(A,B)=-\operatorname{tr}_{\mathfrak m}
 \]
 Cyclicity of trace makes this form invariant under the even adjoint action. Its orthogonal sum with the given odd metric therefore makes the pair orthogonal in the sense of Part C.
 
-By A.2 the complex structure is parallel and every point symmetry is holomorphic. In C.2 the Euclidean ideal of a semisimple algebra must vanish: its abelian odd ideal is zero by semisimplicity, and faithfulness then kills its even part. Thus \(\mathfrak m\) generates \(\mathfrak g\). For \(X\in\mathfrak m\), the action of \(\exp(tX)\) is the transvection along \(\gamma(t)=\exp(tX)H\): [Symmetric spaces A.2](symmetric-spaces.md#theorem-a-2) and B.2 give the same value and parallel-transport differential, and [Affine transformations A.1](affine-transformations-and-the-isometry-group.md#lemma-a-1) gives equality of the global affine maps. That transvection is a product of two point symmetries, hence preserves \(J\). The infinitesimal action of \(\mathfrak m\) therefore preserves \(J\); so do its brackets, by expanding commutators of Lie derivatives. Since these generate \(\mathfrak g\), all its infinitesimal actions preserve \(J\). Their flows, and hence connected \(G\), preserve \(J\), by exponential generation in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1). This proves the asserted invariance.
+By A.2 the complex structure is parallel and every point symmetry is holomorphic. In C.2 the Euclidean ideal of a semisimple algebra must vanish: its abelian odd ideal is zero by semisimplicity, and faithfulness then kills its even part. Thus \(\mathfrak m\) generates \(\mathfrak g\). For \(X\in\mathfrak m\), the action of \(\exp(tX)\) is the transvection along \(\gamma(t)=\exp(tX)H\): [Symmetric spaces A.2](symmetric-spaces.md#theorem-a-2) and [Symmetric spaces B.2](symmetric-spaces.md#theorem-b-2) give the same value and parallel-transport differential, and [Affine transformations A.1](affine-transformations-and-the-isometry-group.md#lemma-a-1) gives equality of the global affine maps. That transvection is a product of two point symmetries, hence preserves \(J\). The infinitesimal action of \(\mathfrak m\) therefore preserves \(J\); so do its brackets, by expanding commutators of Lie derivatives. Since these generate \(\mathfrak g\), all its infinitesimal actions preserve \(J\). Their flows, and hence connected \(G\), preserve \(J\), by exponential generation in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1). This proves the asserted invariance.
 
 The commutator defining curvature, applied to the parallel tensor \(J\), gives
 \([R(X,Y),I]=0\) at the origin. The Riemannian curvature symmetries, proved in [Sectional curvature A.1](sectional-curvature-and-space-forms.md#theorem-a-1), and orthogonality of \(I\) imply

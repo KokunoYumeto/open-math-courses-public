@@ -37,7 +37,27 @@ x\longmapsto \exp_{f(p)}\!\left(df_p\,\exp_p^{-1}x\right).
 \]
 The exponential and its local inverse are smooth by [Geodesics B.1](geodesics-normal-coordinates-and-curvature.md#theorem-b-1). The right side is smooth after restricting the neighbourhood, and proves the assertion at every \(p\).
 
-For the \(C^1\) transport formulation, take a source geodesic \(\gamma\). Its velocity is parallel, so the velocity \(df(\dot\gamma)\) of the \(C^1\) image curve is parallel there. In coordinates, a parallel vector along a \(C^1\) path solves a linear equation with continuous coefficients, and is \(C^1\), by [Curvature and holonomy C.2](curvature-and-holonomy-groups.md#lemma-c-2) and [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2). Thus the image curve is \(C^2\); its velocity has zero covariant derivative and it solves the geodesic equation. [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1) gives the same exponential identity. The preceding normal-coordinate formula therefore makes \(f\) smooth. Along any curve now expand a vector as \(V(t)=P_{0t}c(t)\) in a parallel frame. Transport preservation gives \(dfV=P'_{0t}df_p c(t)\). Differentiating the coefficient column yields \(D_t(dfV)=dfD_tV\), by [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2). At each initial point and in every tangent direction this says \(\nabla df=0\). The converse was already proved by transport naturality. No rank assumption or torsion-free condition is used. □
+For the \(C^1\) transport formulation, take a source geodesic \(\gamma\). Its velocity is parallel, so the velocity \(df(\dot\gamma)\) of the \(C^1\) image curve is parallel there. In coordinates, a parallel vector along a \(C^1\) path solves a linear equation with continuous coefficients, and is \(C^1\), by [Curvature and holonomy C.2](curvature-and-holonomy-groups.md#lemma-c-2) and [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2). Thus the image curve is \(C^2\); its velocity has zero covariant derivative and it solves the geodesic equation. [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1) gives the same exponential identity. The preceding normal-coordinate formula therefore makes \(f\) smooth. Along any curve now expand a vector as \(V(t)=P_{0t}c(t)\) in a parallel frame. Transport preservation gives \(dfV=P'_{0t}df_p c(t)\). Differentiating the coefficient column yields \(D_t(dfV)=dfD_tV\), by [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2). At each initial point and in every tangent direction this says \(\nabla df=0\). The converse was already proved by transport naturality. No rank assumption or torsion-free condition is used.
+
+An affine map of arbitrary rank also carries torsion and curvature, in the precise sense
+\[
+\begin{aligned}
+df\,T(Y,Z)&=T'(dfY,dfZ),\\
+df\bigl(R(Y,Z)W\bigr)&=R'(dfY,dfZ)dfW.
+\end{aligned}
+\]
+For torsion, antisymmetrize (A.1) in \(i,j\). The mixed second derivatives cancel; the two remaining Christoffel differences are exactly the source and target torsion coefficients. For curvature, regard \(df\) as a parallel section of \(\operatorname{Hom}(TM,f^*TN)\). The tensor-connection product rule of [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1), expanded in the curvature commutator, gives
+\[
+\begin{aligned}
+0&=R^{\operatorname{Hom}}(Y,Z)df\\
+ &=R^{f^*TN}(Y,Z)\circ df\\
+ &\quad-df\circ R(Y,Z).
+\end{aligned}
+\]
+Pullback curvature is \(R^{f^*TN}(Y,Z)=R'(dfY,dfZ)\). This is the pullback calculation in [Curvature and holonomy A.7](curvature-and-holonomy-groups.md#theorem-a-7): in a target frame pull back its matrix one-form, differentiate, and the mixed second derivatives of \(f\) cancel, leaving the pulled-back curvature matrix. Thus neither identity requires image vectors to extend to independent target vector fields, or an inverse of \(df\).
+
+Preserving affinely parametrized geodesics alone does not detect torsion. Indeed connections differing by a skew bilinear tensor \(S\) have the same geodesic equation because \(S(v,v)=0\), whereas their torsions differ by \(2S\). For an explicit example on \(\mathbb R^2\), start with ordinary differentiation and prescribe
+\(S(\partial_x,\partial_y)=\partial_x\), \(S(\partial_y,\partial_x)=-\partial_x\), with the other basis values zero. Both connections have all straight lines as parametrized geodesics, but their torsions differ. The identity between them is consequently geodesic preserving and is not affine. □
 
 Define the endomorphism
 \[
@@ -185,7 +205,16 @@ df_pue_i=\epsilon^{-1}\log_{f(p)}f(p_i).
 \]
 The uniform small normal radius about \(f_0(p)\), supplied by the endpoint inverse of [Riemannian connections B.5](riemannian-connections-and-convex-neighbourhoods.md#theorem-b-5), justifies the formula: the vector on the right is the unique small logarithm, and the isometric vector \(\epsilon df_pue_i\) has that prescribed small norm. The right side is continuous in the finitely many values. This proves continuity of \(J\) in the compact-open topology.
 
-Finally, the topology of uniform convergence on compact sets agrees here with the compact-open topology. In one direction, a compact image inside an open set has a positive distance from the complement after covering it by finitely many metric balls. In the other, cover a compact source set by finitely many small balls and impose closeness at their centres; the common 1-Lipschitz bound for isometries and the triangle inequality give uniform closeness on the source set. These observations also show directly that the preceding sequential convergence assertions describe the stated topology, since the frame bundle has countable coordinate neighbourhood bases. □
+Finally, the topology of uniform convergence on compact sets agrees here with the compact-open topology. In one direction, a compact image inside an open set has a positive distance from the complement after covering it by finitely many metric balls. In the other, cover a compact source set by finitely many small balls and impose closeness at their centres; the common 1-Lipschitz bound for isometries and the triangle inequality give uniform closeness on the source set. These observations also show directly that the preceding sequential convergence assertions describe the stated topology, since the frame bundle has countable coordinate neighbourhood bases.
+
+One may also metrize this topology explicitly. [Local tools 3.A](local-tools-for-bundles-and-transport.md#3-smooth-weights-with-controlled-support) supplies compact sets \(K_j\) with \(K_j\subset K_{j+1}^{\circ}\) and union \(M\). Put
+\[
+\begin{gathered}
+a_j(f,h)=\min\!\left(1,\sup_{x\in K_j}d(f(x),h(x))\right),\\
+\delta(f,h)=\sum_{j=1}^{\infty}2^{-j}a_j(f,h).
+\end{gathered}
+\]
+The series converges uniformly by its geometric tail. The triangle inequality follows from that for distance and \(\min(1,a+b)\leq\min(1,a)+\min(1,b)\); zero distance means agreement on every \(K_j\), hence everywhere. Every compact subset is contained in some \(K_j\), since the interiors form an increasing open cover. Uniform convergence on compact subsets therefore implies convergence for \(\delta\), by first making the tail small and then its finitely many terms small. Conversely, if \(\delta(f_l,f)\to0\), any one summand tends to zero, so the corresponding supremum tends to zero. This proves the claimed metrizability without requiring metric completeness of \(M\). □
 
 ## C. Turning the closed orbit into a Lie group
 
@@ -328,7 +357,24 @@ Substitute in (D.3) to obtain the second identity. Equivariance and preservation
 =\widehat X(\eta(Z_b))-\eta([\widehat X,Z_b])
 =-\eta([\widehat X,Z_b]).
 \]
-The left side vanishes for an affine field. Invertibility of \(\eta\) proves the commutation assertion. This Lie-derivative formula is the degree-one identity in [Curvature and holonomy A.2](curvature-and-holonomy-groups.md#lemma-a-2). □
+The left side vanishes for an affine field. Invertibility of \(\eta\) proves the commutation assertion. This Lie-derivative formula is the degree-one identity in [Curvature and holonomy A.2](curvature-and-holonomy-groups.md#lemma-a-2).
+
+Natural lifts preserve the usual vector-field bracket. In frame coordinates write a frame as a matrix \(U=(u_i^a)\). The lifted field has coefficients \((X(x),DX(x)U)\), by differentiating the natural lifted flow. Expanding the coordinate bracket gives base component \(DY\,X-DX\,Y=[X,Y]\) and vertical component
+\[
+\begin{aligned}
+&\bigl(D^2Y(X,\cdot)-D^2X(Y,\cdot)\\
+&\qquad+DY\,DX-DX\,DY\bigr)U\\
+&\quad=D[X,Y]U.
+\end{aligned}
+\]
+Mixed partials commute by [Principal bundles C.3](principal-bundles-and-associated-bundles.md#lemma-c-3). Thus \([\widehat X,\widehat Y]=\widehat{[X,Y]}\), with no reversed sign for this lifting operation.
+
+For a Levi-Civita connection the restriction to the orthonormal frame bundle is also a coframe:
+\[
+(\theta,\omega):T_u\operatorname O(M)
+      \longrightarrow\mathbb R^n\oplus\mathfrak{so}(n).
+\]
+Indeed the horizontal part identifies with the base tangent space, and the vertical part with the skew fundamental matrices, by [Riemannian connections F.2](riemannian-connections-and-convex-neighbourhoods.md#theorem-f-2). A natural lift preserves orthonormal frames exactly when its base map is an isometry, by the definition of metric pullback. Its generator is tangent to this subbundle exactly when \(\nabla X\) is skew: differentiating the Gram matrix of the lifted frame columns gives \(g(\nabla_vX,w)+g(v,\nabla_wX)\). By A.3 this is exactly the Killing condition. Isometries preserve both restricted forms by the finite result already proved. □
 
 **Lemma D.2 (Automorphisms of a coframe).** Let \(N\) be connected and let \(\eta:TN\to\mathbb R^m\) be a smooth coframe. A diffeomorphism preserving \(\eta\) is determined by its value at any fixed \(v\in N\). Its values on compact subsets depend smoothly on that one value, restricted to the values that occur. The automorphisms form a Lie group of dimension at most \(m\), and evaluation at \(v\) is a smooth embedding onto a closed subset of \(N\). Its Lie algebra consists, with the left-action sign convention of C.2, of complete fields \(Z\) satisfying \(\mathcal L_Z\eta=0\).
 
@@ -349,7 +395,13 @@ Evaluation is a homeomorphism onto its image and that image is closed. In fact p
 dF_v=\eta_{F(v)}^{-1}\eta_v.
 \tag{D.5}
 \]
-If \(F_j(v)\to w\), their \(h\)-orthonormal frame values consequently converge by (D.5). B.3 supplies a global limiting isometry, which still preserves the coframe; it is the required limiting automorphism. Conversely convergence in the group topology gives convergence of values. The same formulas, or their countable local bases, prove the homeomorphism assertion. A smooth injective immersion that is a homeomorphism onto its image is an embedding: in a constant-rank chart it is the coordinate inclusion, and the homeomorphism lets one restrict the ambient neighbourhood to exclude the rest of the image near the point. Thus evaluation has the stated embedding property. □
+If \(F_j(v)\to w\), their \(h\)-orthonormal frame values consequently converge by (D.5). B.3 supplies a global limiting isometry, which still preserves the coframe; it is the required limiting automorphism. Conversely convergence in the group topology gives convergence of values. The same formulas, or their countable local bases, prove the homeomorphism assertion. A smooth injective immersion that is a homeomorphism onto its image is an embedding: in a constant-rank chart it is the coordinate inclusion, and the homeomorphism lets one restrict the ambient neighbourhood to exclude the rest of the image near the point. Thus evaluation has the stated embedding property.
+
+There is a single-field version of the propagation formula as well. For constant \(b\in\mathbb R^m\), let \(Z_b=\eta^{-1}(b)\), and for sufficiently small \(b\) define \(\mathcal E_v(b)=\phi^{Z_b}_1(v)\). Smooth parameter dependence in [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) makes this smooth. Differentiating its equation at \(b=0\) gives \((d\mathcal E_v)_0=\eta_v^{-1}\), so it is a local coordinate map by the inverse theorem. A coframe-preserving \(F\) carries \(Z_b\) into itself. Flow uniqueness consequently gives
+\[
+F\bigl(\mathcal E_v(b)\bigr)=\mathcal E_{F(v)}(b)
+\]
+where both sides are defined. This yields the same smooth dependence as the finite-word coordinates (D.4). □
 
 **Theorem D.3 (The affine transformation group).** The affine transformation group of a connected smooth \(n\)-manifold with a connection is a Lie group of dimension at most \(n+n^2\). It acts smoothly on \(M\). Its Lie algebra is the space of complete infinitesimally affine fields, with the sign convention in C.2. The topology is smooth convergence on compact subsets, equivalently the topology of one frame value \(f\mapsto df_pu\). The connection need not be complete.
 
@@ -367,7 +419,13 @@ Give each coset the translated smooth structure of \(A_0\). This is a Hausdorff 
 
 The same finite chain of exponential formulas used at the start of Part C applies to affine maps by A.1, without any metric: near a fixed actual affine map, all the finitely many needed geodesic segments still exist for nearby initial frames. It expresses their values and derivatives smoothly in \(J_A(f)\). Consequently the formulas for \(J_A(fg)\) and \(J_A(f^{-1})\) used in C.2 prove smooth multiplication and inversion on every pair of cosets. As there, local embedded charts on each coset justify smoothness into the group. The action on \(M\) is smooth by those propagation formulas (also directly by the local-section formula for \(H\)). The same formulas show that frame convergence gives smooth convergence on compact sets; the reverse follows by evaluating first derivatives at \(p\).
 
-Finally a smooth one-parameter subgroup acts by the global flow of its fundamental field, which is infinitesimally affine by differentiation. Conversely a complete infinitesimally affine field has affine flow maps for all real times, by A.2 on successive local intervals. Their natural lifts preserve \(P_0\), since each frame trajectory begins there. They depend smoothly on time by [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters), so give a smooth one-parameter subgroup of \(A_0\), by its frame embedding. This proves the Lie-algebra assertion and the sign is precisely the left-action sign already proved in C.2. □
+Finally a smooth one-parameter subgroup acts by the global flow of its fundamental field, which is infinitesimally affine by differentiation. Conversely a complete infinitesimally affine field has affine flow maps for all real times, by A.2 on successive local intervals. Their natural lifts preserve \(P_0\), since each frame trajectory begins there. They depend smoothly on time by [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters), so give a smooth one-parameter subgroup of \(A_0\), by its frame embedding. This proves the Lie-algebra assertion and the sign is precisely the left-action sign already proved in C.2.
+
+In fact the full frame bundle has at most two connected components, and the subgroup \(A_0\) just constructed has index at most two. We give the elementary matrix detail. Gram–Schmidt, proved in [Riemannian connections F.2](riemannian-connections-and-convex-neighbourhoods.md#theorem-f-2), writes an invertible matrix as \(QR\), with \(Q\) orthogonal and \(R\) upper triangular with positive diagonal. The path \((1-t)R+tI\) stays invertible. An orthogonal determinant-one matrix can be reduced to the identity by plane rotations: rotate successive coordinate pairs to send its first column to \(e_1\), and repeat in the perpendicular block; the last scalar is one by the determinant. Each such rotation is joined to the identity by varying its angle, using the trigonometric functions of [Riemannian connections D.1](riemannian-connections-and-convex-neighbourhoods.md#lemma-d-1). Hence \(GL^+(n,\mathbb R)\) is path connected; a fixed reflection identifies the negative-determinant part with it. The same plane-rotation argument gives the two path components of \(O(n)\), also for \(n=1\).
+
+Horizontal lifting joins base points, and within one fibre these two matrix components exhaust the possibilities. Thus \(P\) has at most two components. The same argument with orthogonal transport gives at most two for \(\operatorname O(M)\). Since affine lifts act on these components and their image of \(P_0\) determines their coset, \([A:A_0]\leq2\).
+
+Moreover the full affine frame orbit \(J_A(A)\) is closed and embedded in \(P\). On \(P_0\), it is the evaluation image of the closed subgroup \(H\) of D.2's coframe automorphism group. That evaluation is a closed embedding by D.2; restricting it to a closed embedded subgroup retains both properties. A fixed affine lift carries this conclusion to each occurring component. Components are open and closed, and there are at most two, so the union is a closed embedded orbit in the full frame bundle. This also identifies the affine group topology with compact-open convergence of its natural lifts: D.2 proves the equivalence on \(P_0\), and equivariance with one fixed right multiplication handles the other possible component. Conversely convergence of lifts at the fixed frame implies convergence in \(J_A\). □
 
 **Theorem D.4 (Geodesic completeness makes affine fields complete).** If the connection is geodesically complete, every infinitesimally affine field is complete. In particular every Killing field on a complete Riemannian manifold is complete.
 
@@ -380,7 +438,9 @@ t\longmapsto W(\phi_t^{\widehat X}(u))
 \]
 exists on that same interval and is an integral curve of \(\widehat X\) starting at \(v\). Indeed vanishing brackets imply that each constituent flow preserves \(\widehat X\), by the derivative calculation in D.2. Two choices of \(W\) give the same curve by the uniqueness theorem of [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). Thus the maximal flow is defined for all starting frames in this component for the common interval \((-\epsilon,\epsilon)\). It is smooth there by that local flow theorem; existence on the common interval is the new assertion furnished by (D.6).
 
-Iterating intervals of length less than \(\epsilon\) extends every trajectory for all positive and negative time, the pieces agreeing by uniqueness. The projection of this complete lifted trajectory is the integral curve of \(X\), by (D.2). Since \(P_0\) projects onto \(M\), all such base curves are complete. For a complete Riemannian metric, Hopf–Rinow B.2 gives geodesic completeness of its Levi-Civita connection, and A.3 makes every Killing field affine. The preceding argument then applies. □
+Iterating intervals of length less than \(\epsilon\) extends every trajectory for all positive and negative time, the pieces agreeing by uniqueness. The projection of this complete lifted trajectory is the integral curve of \(X\), by (D.2). Since \(P_0\) projects onto \(M\), all such base curves are complete. For a complete Riemannian metric, Hopf–Rinow B.2 gives geodesic completeness of its Levi-Civita connection, and A.3 makes every Killing field affine. The preceding argument then applies.
+
+On a compact base every smooth vector field is complete, even when no geodesic-completeness assumption on its connection is made. If a maximal integral curve had a finite endpoint time, compactness would place a sequence of its values in one of finitely many coordinate neighbourhoods having a common positive local existence time for that vector field. Restarting at a sufficiently late sequence point extends the curve beyond its proposed endpoint, and uniqueness joins the extension. This is the compact continuation argument of [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters); apply it in both time directions. It applies to all smooth fields, and therefore also to affine and Killing fields. □
 
 ## E. Passing to quotients and computing examples
 
@@ -503,7 +563,13 @@ At zero, \(dE_0=I\), so \(h_0=g_q\). Smoothness implies
 \[
 \|h_{c^kO^kv}-g_q\|\,|V|\,|W|,
 \]
-because \(O^k\) is orthogonal. It tends to zero. Thus \(E^*g=g_q\) everywhere. Its differential is invertible everywhere, so the inverse theorem makes the bijection \(E\) a global diffeomorphism and isometry. This is the contraction argument of [De Rham decomposition G.2](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-g-2) with an orthogonal factor allowed in the contraction. It also covers the zero-dimensional point. □
+because \(O^k\) is orthogonal. It tends to zero. Thus \(E^*g=g_q\) everywhere. Its differential is invertible everywhere, so the inverse theorem makes the bijection \(E\) a global diffeomorphism and isometry. This is the contraction argument of [De Rham decomposition G.2](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-g-2) with an orthogonal factor allowed in the contraction. It also covers the zero-dimensional point.
+
+For any homothety, sectional curvature rescales according to
+\[
+K_{f(p)}(df_p\sigma)=c^{-2}K_p(\sigma).
+\]
+Indeed the constant rescaling \(c^2g\) has the same torsion-free metric connection by uniqueness in [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1), and naturality in A.1 intertwines its curvature endomorphisms. In the sectional numerator \(g(R(u,v)v,u)\), applying \(df\) multiplies the inner product by \(c^2\); the Gram determinant in the denominator acquires \(c^4\). Their quotient gives the formula, with the curvature definition of [Sectional curvature A.1](sectional-curvature-and-space-forms.md#theorem-a-1). The argument above proves more directly that a complete manifold with a strict homothety has a globally Euclidean exponential chart. □
 
 **Theorem F.2 (Irreducible factors and identity components).** Let \(M\) be connected and complete, with irreducible full real holonomy representation and positive dimension. Every affine transformation is an isometry, except when \(M\) is the Euclidean line.
 
@@ -532,14 +598,25 @@ An arbitrary affine transformation preserves the Euclidean distribution and perm
 
 By transport naturality (A.2), \(df_p\) conjugates full holonomy at \(p\) to full holonomy at \(f(p)\). It consequently carries the fixed subspace to the fixed subspace and the nontrivial irreducible subspaces to a permutation of their counterparts. Parallel transport makes that permutation independent of the point. The image distributions vary continuously with \(f\), so the permutation is constant on the identity component and equals the identity there.
 
-Suppose first that every distribution is preserved. In product coordinates the derivative of each output component vanishes on all the other input distributions. A connected manifold is joined by piecewise coordinate paths ([Local tools 0.2](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations)), so that output depends only on its own input. Thus
+Suppose first that every distribution is preserved. In product coordinates the derivative of each output component vanishes on all the other input distributions. The piecewise coordinate paths of [Curvature and holonomy C.4](curvature-and-holonomy-groups.md#lemma-c-4) show that this output depends only on its own input; the tangent splitting uses the finite-dimensional linear algebra of [Local tools 0.2](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Thus
 \[
 f(x,y_1,\ldots,y_k)
 =(f_0(x),f_1(y_1),\ldots,f_k(y_k)).
 \]
 The inverse has the same splitting, proving each factor map is a diffeomorphism. The product connection equation, proved in [De Rham decomposition E.3](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-e-3), makes each \(f_i\) affine on its factor. The first part of the present proof makes \(f_i\) an isometry for \(i\geq1\). The Euclidean factor is unrestricted within its affine group. For a permutation of distributions the same argument applies after reordering output factors; maps between different factors are only asserted to be affine.
 
-All these product identifications and their inverses are smooth: values and first derivatives of the factor maps are obtained by restricting the product first jet, and C.2 and D.3 give the jet embeddings. A finite product of connected Lie groups is connected; conversely the projection of a connected set to any factor is connected. Therefore the identity component of a finite product is the product of identity components. Applying this to the subgroup with no factor permutation proves the affine formula in (F.4). For an isometry, its Euclidean factor must also be an isometry, and the same argument gives the second formula. Zero-dimensional Euclidean factors and empty products mean the trivial group. □
+All these product identifications and their inverses are smooth: values and first derivatives of the factor maps are obtained by restricting the product first jet, and C.2 and D.3 give the jet embeddings. A finite product of connected Lie groups is connected; conversely the projection of a connected set to any factor is connected. Therefore the identity component of a finite product is the product of identity components. Applying this to the subgroup with no factor permutation proves the affine formula in (F.4). For an isometry, its Euclidean factor must also be an isometry, and the same argument gives the second formula. Zero-dimensional Euclidean factors and empty products mean the trivial group.
+
+Outside the identity component the factor maps need not be isometries between the assigned factors. For example let \(a,b>0\), \(a\ne b\), and \(m\geq2\). On \(S_a^m\times S_b^m\) define
+\[
+F(x,y)=\bigl((a/b)y,(b/a)x\bigr).
+\]
+Radial scaling \(S_a^m\to S_b^m\) pulls the round metric back to \((b/a)^2g_a\); that constant multiple has the same Levi-Civita connection by [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1). Naturality in [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3) therefore makes each radial map affine. The product connection is componentwise by [De Rham decomposition E.3](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-e-3), so \(F\) is affine and \(F^2=\operatorname{id}\). But
+\[
+F^*(g_a\oplus g_b)
+ =(b/a)^2g_a\oplus(a/b)^2g_b,
+\]
+which differs from the original metric. It exchanges the two nontrivial parallel factor distributions and therefore lies outside the identity component in (F.4). This gives an explicit reason for retaining that hypothesis. □
 
 **Corollary F.3 (Bounded affine fields).** On a connected complete Riemannian manifold, every bounded infinitesimal affine field is Killing. If its universal cover has no Euclidean de Rham factor, then
 \(\operatorname{Aff}(M)^0=\operatorname{Isom}(M)^0\).
@@ -683,7 +760,10 @@ In each lattice's own basis its full affine group is
 \[
 (\mathbb R^2/\mathbb Z^2)\rtimes GL(2,\mathbb Z).
 \]
-Indeed the linear identification between the bases induces an affine diffeomorphism of the tori and conjugates the affine groups. In the original rectangular Euclidean coordinates its linear factors are \(VAV^{-1}\), \(A\in GL(2,\mathbb Z)\), \(V=\operatorname{diag}(1,\sqrt2)\), usually not orthogonal. Every infinitesimal affine or Killing field on either torus is a constant translation; both field spaces have dimension two. □
+Indeed the linear identification between the bases induces an affine diffeomorphism of the tori and conjugates the affine groups. In the original rectangular Euclidean coordinates its linear factors are \(VAV^{-1}\), \(A\in GL(2,\mathbb Z)\), \(V=\operatorname{diag}(1,\sqrt2)\), usually not orthogonal. Every infinitesimal affine or Killing field on either torus is a constant translation; both field spaces have dimension two.
+
+The square linear group is the dihedral group \(D_4\) of order eight: the quarter-turn and reflection matrices generate exactly the eight signed permutation matrices. The rectangular one is \((\mathbb Z/2\mathbb Z)^2\), its two independent axis reflections. Since the translation torus is connected, their full isometry groups have respectively eight and four connected components. The Killing algebras are both abelian, as brackets of constant vector fields vanish. An explicit affine map outside either metric group is the lattice-basis shear
+\(v_1\mapsto v_1\), \(v_2\mapsto v_1+v_2\). Its integral matrix has determinant one and so descends by E.3. For the square lattice the squared length of \(v_2\) changes from one to two; for the rectangular lattice it changes from two to three. Thus it is not an isometry in either case. □
 
 **Exercise H.3 (The open Euclidean ball).** On the open unit ball \(B^n\subset\mathbb R^n\), \(n\geq2\), determine the Killing fields, the global isometries and the complete Killing fields. Give a bounded affine field which is not Killing.
 

@@ -138,9 +138,222 @@ Continuity, and then clearing a common denominator, give the same equality for \
 \]
 and the analogous identity for \(Q(T)=\prod_i(T-b_i)\). Hence \(|P_u(z)|_\ell=|Q(z)|_\ell\). Approach a root \(a\) by algebraic \(z=a+\ell^j c\) avoiding the finitely many roots. For large \(j\), all distances to roots unequal to \(a\) are constant. The valuation of \(P_u(z)\) has slope equal to the multiplicity of \(a\), and that of \(Q(z)\) has slope equal to its multiplicity there. Equality forces those multiplicities to agree. Applying this to every root proves \(P_u=Q\). Finally clear a denominator to obtain the quasi-endomorphism assertion. ∎
 
+### 2A. Good models: extension and torsion comparison in every dimension
+
+We supply the model-theoretic inputs used by Lemma 2.3. Let \(R\) be a Noetherian DVR, with fraction field \(K\), residue field \(k\) and uniformizer \(\pi\). An abelian scheme here is a proper smooth commutative group scheme whose geometric fibres are abelian varieties. Its relative dimension is constant over this connected base: in smooth coordinates the rank of the relative cotangent bundle is locally constant, and the generic fibre and flatness make the total scheme integral. More explicitly, smoothness over the regular DVR makes all local rings regular by the flat regular-fibre test following NM2 of Lesson 8. Those rings are domains by NM1; flatness makes the integral generic fibre schematically dense. The whole scheme is consequently integral and normal by NM2.
+
+The earlier proofs used below are Lesson 1, EA1–EA18 and NP1–NP4, for finite presentation, flatness, formal étale lifting and Henselian finite algebras; Lesson 3, PF1–PF9, for properness and products, Theorem 0.F.1 for proper maps with finite geometric fibres, and SF1–SF3 for square-zero derivations; and Lesson 8, NM1–NM2, for regular-local normality. We do not assume a Néron mapping property, a general semistable-reduction theorem or projectivity of a good model.
+
+#### 2A.1. The dimension bound and the components of a group
+
+**GQ1 (dimension and component lemmas).** A finite-type integral \(R\)-scheme with generic function field of transcendence degree \(g\) has no special-fibre component of dimension greater than \(g\). Over an algebraically closed field, the irreducible components of a finite-type group scheme are disjoint translates of the unique component containing its identity. These statements include nonreduced special fibres.
+
+*Proof.* We first give the field dimension fact used here. A finite-type field algebra domain \(C\) is finite over a polynomial subring on an algebraically independent list. To prove this, write \(C=\kappa[x_1,\ldots,x_m]\). If that list is dependent, choose a nonzero relation \(F\). In
+\[
+ x_i=y_i+x_m^{N_i}\quad(i<m)
+ \tag{GQ1}
+\]
+choose the positive integers \(N_i\) as successive powers of an integer larger than every exponent appearing in \(F\). Include weight one for the last variable. The weights of its distinct monomials are then distinct. After substitution the unique highest power of \(x_m\) has nonzero constant coefficient in \(\kappa\). Dividing by that coefficient makes a monic equation for \(x_m\) over \(\kappa[y_1,\ldots,y_{m-1}]\). Each \(x_i\) is integral over that smaller algebra as well. Monic power reduction makes the extension finite. Induct on the number of generators. When there is no relation, the list is algebraically independent. This proves the asserted normalization over every field, including finite fields.
+
+For completeness, transcendence degree strictly drops under a nonzero prime quotient of a finite-type domain. Normalize that domain as just proved. Incomparability makes the contraction of the nonzero prime to the polynomial subring nonzero, since the zero prime has contraction zero. The quotient polynomial subring therefore has a relation between its \(d\) generators, so its transcendence degree is at most \(d-1\); the integral quotient has the same transcendence degree. Applying this at each step bounds every prime chain by \(d\). The coordinate prime chain in a polynomial ring gives the reverse bound there, and going up lifts that chain to its finite integral extension. Thus the actual going-up and incomparability proofs of Lesson 1 and the affine algebra of Lesson 3 give
+\[
+ \dim C=\operatorname{trdeg}_{\kappa}\operatorname{Frac}C .
+ \tag{GQ2}
+\]
+They also show that dimension is unchanged by extending the field. Indeed the finite integral inclusion of the polynomial subring remains an inclusion after tensoring with a field and remains finite integral. For a general finite-type algebra, apply this to its finitely many minimal-prime quotients. Their closed subsets still cover after base change: a product of their ideals is nilpotent. Nilpotents do not change prime chains.
+
+Take an affine neighbourhood of a generic point of a special-fibre component of our integral \(R\)-scheme, with coordinate domain \(D\), and let \(\mathfrak p\) be that component's prime. Normalization of \(D/\mathfrak p\) supplies algebraically independent elements \(\bar t_1,\ldots,\bar t_d\). Lift them to \(D\). If they satisfied a polynomial relation over \(K\), scale its finitely many coefficients by a power of \(\pi\) so they lie in \(R\) and at least one is a unit. Reduction modulo \(\mathfrak p\) would be a nonzero polynomial relation over \(k\), a contradiction. Thus \(d\le g\). Formula (GQ2), and its just-proved field-extension assertion, give the bound also on geometric components.
+
+Here are the component details for a group scheme \(H\) over an algebraically closed field \(\kappa\). Products of integral finite-type \(\kappa\)-schemes are integral. On affine charts this follows directly from the field-point lemma EA2. If nonzero \(f,g\in C\otimes_\kappa D\) had zero product, express each using a finite linearly independent list of coefficients in \(C\). Choose one nonzero coefficient in \(D\) from each expression. Their product is nonzero in the domain \(D\). A \(\kappa\)-point of its nonvanishing locus exists by EA2; evaluation would give two nonzero elements with zero product in \(C\). This is impossible. Nonempty affine products cover with nonempty overlaps, proving the scheme assertion.
+
+If two irreducible components \(C,D\) of \(H\) contain the identity, the closure of the multiplication image of \(C_{\mathrm{red}}\times D_{\mathrm{red}}\) is irreducible and contains both \(C\) and \(D\). Maximality makes them equal. Thus there is only one such component. Every component contains a closed \(\kappa\)-point, by EA2. Translation by its inverse carries it to the identity component, so all components are translates. If two met, their intersection would contain a closed point and translation by its inverse would contradict uniqueness at the identity. They are therefore disjoint, and being a finite list of closed subsets they are open as well. This concerns the underlying components; no smoothness or reducedness of \(H\) was assumed. \(\square\)
+
+#### 2A.2. Extending every homomorphism between good models
+
+**GQ2 (full faithfulness of good models).** If \(\mathcal A,\mathcal B\) are abelian schemes over \(R\), every \(K\)-homomorphism \(f:\mathcal A_K\to\mathcal B_K\) extends uniquely to an \(R\)-homomorphism. In particular a generic isomorphism extends uniquely as an isomorphism, in every dimension.
+
+*Proof.* Let \(\Gamma\) be the scheme-theoretic closure of its graph in \(\mathcal A\times_R\mathcal B\). On affine charts its ideal is the contraction of the generic graph ideal, equivalently the \(\pi\)-saturation of an ideal obtained by clearing the finitely many denominators. Noetherianity makes it coherent. This closure is integral and \(\pi\) is a nonzero divisor on it: its chart algebras inject into the coordinate algebras of the integral generic graph. A torsion-free module over a DVR is flat. Indeed its finite submodules are free by the elementary DVR module theorem; it is their filtered union, and tensor products and finite equations commute with that union. Thus \(\Gamma\) is flat over \(R\).
+
+The closure is a group scheme. On the flat \(\Gamma\times_R\Gamma\), multiplication in the ambient product lands in \(\Gamma\) generically. Each pulled-back defining equation is zero after inverting \(\pi\), so flatness makes it zero everywhere. This restricts multiplication. The same argument restricts inversion and the identity section. Its generic fibre is the graph group.
+
+Write \(p:\Gamma\to\mathcal A\) for projection, and \(g=\dim\mathcal A_K\). Projection is proper, since \(\mathcal B\) is proper and the graph closure is closed. Its closed image contains the dense generic fibre of \(\mathcal A\), so \(p\) is surjective. The generic fibre of \(\Gamma/R\) has dimension \(g\); GQ1 bounds the dimensions of all its geometric special components by \(g\).
+
+Work over \(\bar k\). The proper images of the finitely many components of \(\Gamma_{\bar k}\) cover the irreducible \(\mathcal A_{\bar k}\). At least one dominates it. GQ1 says that all source components are translates of that one; their images are translates too, so every component dominates. Their dimensions are at most \(g\), while the target has dimension \(g\). Hence all have dimension \(g\) and their function fields are algebraic over the target function field.
+
+The geometric generic fibre of \(p_k\) is therefore zero-dimensional. Here is the algebra behind this step. On dominant affine charts, localize the target domain at all its nonzero elements. The resulting finite-type algebra has, on every reduced component, a fraction field algebraic over that target field. The field normalization proved in GQ1 makes each such algebra finite-dimensional; the finite nilpotent filtration gives the same conclusion before reduction. Scalar extension preserves finite-dimensionality.
+
+Choose a geometric generic point \(a\) of \(\mathcal A_{\bar k}\) and a point \(\gamma\) above it; it exists by proper surjectivity. Translation gives an isomorphism of the entire fibre, including its nilpotents, with the kernel:
+\[
+ (\ker p_k)_{\overline{\kappa(a)}}\longrightarrow
+       p_k^{-1}(a)_{\overline{\kappa(a)}},
+ \qquad h\longmapsto\gamma+h .
+ \tag{GQ3}
+\]
+Its inverse subtracts \(\gamma\). Thus the special kernel is zero-dimensional. Every other geometric special fibre is likewise a translate of that kernel. The generic projection is an isomorphism, so all geometric fibres of \(p\) have finitely many points. The actual proper finite-fibre theorem, Lesson 3, Theorem 0.F.1, makes \(p\) finite.
+
+It is also birational. On an affine open \(\operatorname{Spec}C\) of the normal integral \(\mathcal A\), its finite inverse image has an integral coordinate algebra \(D\) in the same fraction field. Finiteness makes its elements integral over \(C\). Normality gives \(D=C\), so
+\[
+ p:\Gamma\xrightarrow{\ \sim\ }\mathcal A .
+ \tag{GQ4}
+\]
+Normality here follows from the actual regular-local proof NM2, not from a claimed normality of the possibly singular graph closure. Composing its inverse with the other projection gives the extension of \(f\).
+
+Two extensions agree: the pullback of the closed diagonal of \(\mathcal B\) has defining equations vanishing after inverting \(\pi\), and flatness of \(\mathcal A\) makes them zero. The homomorphism identities follow by the same uniqueness on the flat product. If \(f\) is an isomorphism, extend its inverse too; their composites are identities by uniqueness. This proves the full assertion. \(\square\)
+
+#### 2A.3. Invertible multiplication is actually finite étale
+
+**GQ3.** If \(n\) is invertible in \(R\), multiplication \([n]:\mathcal A\to\mathcal A\) and its kernel \(\mathcal A[n]\to\operatorname{Spec}R\) are finite étale. The kernel square and these assertions commute with arbitrary base change.
+
+*Proof.* We prove formal étaleness, with the infinitesimal calculation included. Let \(T_0\hookrightarrow T\) have square-zero ideal \(I\). In a lifting problem for \([n]\), smoothness first supplies a local lift \(a\) of the given point \(a_0\). The discrepancy from the prescribed target point \(b\) reduces to the identity. The square-zero derivation calculation SF1–SF3 identifies this kernel with the additive module
+\[
+ \ker\bigl(\mathcal A(T)\to\mathcal A(T_0)\bigr)
+      =\operatorname{Hom}_{\mathcal O_T}
+        (e^*\Omega_{\mathcal A/R}\otimes_R\mathcal O_T,I).
+ \tag{GQ5}
+\]
+To see the group law in this identification, a map reducing to the identity changes its coordinate functions by a derivation into \(I\). On a product, multiplication has first derivative the sum, since either factor restricted to the identity is the identity map; all products of two corrections lie in \(I^2=0\). Thus \([n]\) acts on this module by multiplication by \(n\). There is exactly one correction,
+\[
+ a\longmapsto a-n^{-1}([n]a-b),
+ \tag{GQ6}
+\]
+which solves the lifting problem. The formula is in that square-zero kernel, translated from \(a\); it is not division of arbitrary group points. Uniqueness glues the local solutions. This proves formal étaleness. The maps are finitely presented over the Noetherian base, so the actual formal-lifting/Jacobian equivalence EA1–EA18 makes \([n]\) étale.
+
+It is proper: its graph is closed in the product because the target is separated, and the projection of that product is a base change of the proper structure map. Étale fibres are zero-dimensional and discrete; properness makes each finite. Theorem 0.F.1 consequently makes \([n]\) finite, preserving its étaleness. Pull it back along the origin to obtain its finite étale kernel. Its finite flat coordinate module is locally free, by the Nakayama-and-flatness argument in Corollary 0.F.2, so its generic and special ranks agree.
+
+Finally the group multiplication maps and origin commute with scalar extension, and a kernel is their actual fibre product. Finite modules, their local free bases and the unique square-zero lifts remain such after tensoring. These observations prove the arbitrary-base-change assertion. No numerical multiplication-degree theorem is needed for this comparison. \(\square\)
+
+#### 2A.4. Every torsion level and every transition map
+
+**GQ4.** Suppose \(R\) is Henselian. For every \(n\) invertible in \(R\), reduction gives a natural isomorphism
+\[
+ \mathcal A_K[n](K^{\mathrm{sep}})
+     \xrightarrow{\ \sim\ }\mathcal A_{\bar k}[n](\bar k).
+ \tag{GQ7}
+\]
+It is equivariant for the residue action, so inertia is trivial. For \(n=\ell^r\), these isomorphisms respect addition, all multiplication transitions and homomorphisms of good models. Consequently they give an isomorphism of the full Tate modules.
+
+*Proof.* Pass to the strict Henselization \(R^{\mathrm{sh}}\), with separably closed residue field \(k^{\mathrm{sep}}\). A finite étale algebra over it is a product of copies of \(R^{\mathrm{sh}}\). Indeed its residue algebra is a product of copies of \(k^{\mathrm{sep}}\). The Henselian finite-algebra proof NP4 lifts its orthogonal idempotents. Each resulting factor is finite free of rank one, since its residue dimension is one. Nakayama makes its unit a basis, so that factor is the base ring itself. This proves the splitting assertion, rather than assuming a torsion-lifting theorem.
+
+Apply it to GQ3's kernel. Every generic geometric torsion point is already rational over the fraction field of \(R^{\mathrm{sh}}\), and is the unique section of one of these rank-one factors. Reduction gives one point for each same factor. A finite étale scheme has the same points over \(k^{\mathrm{sep}}\) and \(\bar k\), since its residue extensions are separable. This proves (GQ7).
+
+The strict Henselization and its fraction field are the union of the finite unramified local extensions constructed in Lesson 1. Thus inertia fixes all these sections. Uniqueness of their lifts makes reduction equivariant for every residue automorphism and compatible with all scheme maps, including semilinear coefficient maps. In particular the squares
+\[
+ \begin{array}{ccc}
+ \mathcal A_K[\ell^{r+1}](K^{\mathrm{sep}})
+   &\xrightarrow{[\ell]}&\mathcal A_K[\ell^r](K^{\mathrm{sep}})\\
+ \downarrow &&\downarrow\\
+ \mathcal A_{\bar k}[\ell^{r+1}](\bar k)
+   &\xrightarrow{[\ell]}&\mathcal A_{\bar k}[\ell^r](\bar k)
+ \end{array}
+ \tag{GQ8}
+\]
+commute, as do the addition and homomorphism squares. Their vertical maps are bijections. Applying them coordinate by coordinate, and doing the same with their inverses, gives the inverse-limit isomorphism
+\[
+ T_\ell\mathcal A_K\simeq T_\ell\mathcal A_{\bar k}.
+ \tag{GQ9}
+\]
+No interchange of a derived functor or unproved inverse-limit surjectivity is involved. \(\square\)
+
+#### 2A.5. The semilinear action needed in Lemma 2.3
+
+**GQ5.** Let \(L/F\) be a finite Galois extension of local fields and let an abelian variety \(B/F\) have a good abelian model \(\mathcal B/\mathcal O_L\). The generic descent isomorphisms extend uniquely to a semilinear action on this model. Its reduction and the comparisons (GQ7)–(GQ9) are equivariant, in every dimension.
+
+*Proof.* A Galois automorphism preserves the unique extended valuation, by Lesson 1, Proposition 0E.1, so it acts on \(\mathcal O_L\). Its conjugate model \({}^\sigma\mathcal B\) is again a good abelian scheme over that ring. GQ2 extends the generic descent isomorphism to an isomorphism
+\[
+ d_\sigma:{}^\sigma\mathcal B\xrightarrow{\ \sim\ }\mathcal B .
+ \tag{GQ10}
+\]
+Both sides of the cocycle relation are maps between good models with the same generic restriction. Uniqueness gives
+\[
+ d_\sigma\circ{}^\sigma d_\tau=d_{\sigma\tau}.
+ \tag{GQ11}
+\]
+Thus these are the required semilinear group actions. When a Galois element fixes the residue field, its special map is an origin-preserving automorphism over that field. GQ4 makes every torsion reduction square commute with these actions and their multiplication transitions.
+
+In particular, over this good-reduction field the whole inertia subgroup acts trivially on the rational Tate module for every coefficient prime different from the residue prime. The actual monodromy theorem in Lesson 7 then makes its nilpotent operator zero. The common good-reduction field and its finite residue action are available simultaneously for all those coefficient primes. These are exactly the model and specialization inputs in Lemma 2.3. Its endomorphism-character argument remains the one written in Lemma 2.2.
+
+Relation (GQ11) is a semilinear action. For a ramified extension it is not, by itself, faithfully flat descent data on \(\mathcal O_L\otimes_{\mathcal O_F}\mathcal O_L\), and we have not claimed that a potentially good model is already good over \(F\). This distinction retains the full ramified scope of the lemma. \(\square\)
+
+Milne's freely available [*Abelian Varieties*](https://www.jmilne.org/math/CourseNotes/AV.pdf), Chapter IV, §3, gives the good-reduction setting. The graph closure, special-fibre dimension bound, finite étale lifting and semilinear compatibility needed here have their proofs in GQ1–GQ5 above.
+
+#### Exercise 2A — good models and their descent (100 points)
+
+Each part is worth 10 points.
+
+1. In \(C=\kappa[x,y,z]/(xy-z^2-1)\), put \(u=x-z^3\), \(v=y-z^9\). Find the monic equation for \(z\) over \(\kappa[u,v]\), and prove that this is a finite normalization by a polynomial subring.
+2. Prove the special-fibre dimension bound by the primitive-relation argument. Explain why the polynomial after reduction is nonzero even when the residue field is finite.
+3. Prove uniqueness of the irreducible component through the identity of a finite-type group over an algebraically closed field. Apply the statement to \(\mu_p\) in characteristic \(p\).
+4. Over a DVR, compute the graph closure of \(f:\mathbf G_{a,K}\to\mathbf G_{a,K}\), \(x\mapsto x/\pi\). Explain exactly why it does not contradict GQ2.
+5. Explain the use of normality at the last step of GQ2. Give a finite birational morphism for which that step fails without normality.
+6. Carry out the square-zero correction for a commutative smooth group in \(g\) tangent coordinates. Identify the failure when the characteristic divides \(n\).
+7. Prove the splitting of a rank-\(r\) finite étale algebra over a strictly Henselian local ring. Compare it with \(\mu_p\) over a mixed-characteristic DVR of residue characteristic \(p\).
+8. Prove that levelwise reduction gives an isomorphism of the entire torsion inverse system, including its group law and transition maps; do not appeal to exactness of inverse limits.
+9. For \(B=R[u]/(u^2-\pi)\) in characteristic zero, with \(\tau(u)=-u\), compute the determinant of the map \(B\otimes_RB\to B\times B\) given by the two Galois embeddings. Explain its relevance to ramified descent.
+10. On the good abelian scheme \(\mathcal E^2\), extend the homomorphism with integer matrix \(\begin{pmatrix}1&1\\1&2\end{pmatrix}\), find its inverse, and verify compatibility with torsion reduction. Explain why GQ1–GQ5 still leave Theorem 2.4's general semistable case unfinished.
+
+*Full solution.*
+
+1. Substitute \(x=u+z^3\), \(y=v+z^9\) in the defining relation:
+\[
+ z^{12}+u z^9+v z^3+uv-z^2-1=0 .
+ \tag{GQX1}
+\]
+It is monic in every characteristic. Thus \(z\), and then \(x,y\), are integral over the subalgebra generated by \(u,v\). Powers below twelve span the resulting algebra as a module. The original ring is a domain with fraction field \(\kappa(y,z)\). Here is a direct kernel check: substitute \(x=(z^2+1)/y\) in the localization inverting \(y\); division by the resulting monic linear relation makes the kernel there its defining ideal. This ideal is already saturated by \(y\). Indeed if \(yP=(xy-z^2-1)H\), reducing modulo \(y\) gives \((z^2+1)\bar H=0\) in the domain \(\kappa[x,z]\), so \(H=yH_1\); cancellation gives \(P=(xy-z^2-1)H_1\). Iterate to clear every power of \(y\). This proves the claimed injection into \(\kappa(y,z)\). Also the ideal has zero intersection with \(\kappa[y,z]\), by its positive degree in \(x\), so \(y,z\) are algebraically independent. Consequently its transcendence degree is two. A finite integral extension has algebraic fraction-field extension; if \(u,v\) were dependent their field would have transcendence degree at most one. Thus they are independent, and this is indeed a finite extension of the polynomial subring \(\kappa[u,v]\). The powers \(3,9\) separate the weights of the original relation's monomials \(xy,z^2,1\), namely \(12,2,0\).
+
+2. Choose independent special-fibre parameters \(\bar t_1,\ldots,\bar t_d\) and lift them to the chart domain. A nonzero relation with fraction-field coefficients can be multiplied by a power of \(\pi\) so that its minimum coefficient valuation is zero. Its reduced polynomial has at least one nonzero coefficient. This is a nonzero element of the polynomial ring over the residue field, irrespective of how many values a finite field has: algebraic independence concerns polynomial identities, not polynomial functions on its finite set of points. Reduction would contradict the chosen independence. Thus the lifts are independent over \(K\) and \(d\le g\).
+
+3. For two components \(C,D\) through the identity, the multiplication image of their reduced product has irreducible closure. It contains \(C\) by multiplying by the identity in \(D\), and \(D\) by multiplying by the identity in \(C\). Both are maximal irreducible closed subsets, so they coincide. Translate each other component by the inverse of one of its closed points to obtain this unique component. Two distinct translates cannot intersect, since translating an intersection point to the identity would contradict uniqueness. For
+\[
+ \mu_p=\operatorname{Spec}\kappa[t]/(t^p-1)
+      =\operatorname{Spec}\kappa[t]/((t-1)^p)
+ \tag{GQX2}
+\]
+there is one underlying component and one geometric point, but a nonreduced coordinate algebra of length \(p\). The component argument makes no assertion that the scheme is smooth or reduced.
+
+4. The graph equation is \(\pi y=x\). Its closure is already
+\(\operatorname{Spec}R[y]\), with first projection \(x=\pi y\). It is flat and is a group scheme. Its generic projection is an isomorphism, while its special projection has image just zero and has a whole affine line as kernel. The target's generic fibre is dense, so this image is not closed: it contains the generic fibre but misses every nonzero geometric special point. Thus this projection is not proper. In GQ2 properness forced surjectivity on the special fibre; that decisive step is unavailable for the additive group.
+
+5. A finite birational map to the normal integral target gives, on affine charts, a finite integral algebra inside the same fraction field. Integral closedness makes that algebra equal to the target algebra. For the cusp the inclusion
+\[
+ \kappa[t^2,t^3]\subset\kappa[t]
+ \tag{GQX3}
+\]
+is finite and birational but not equality. Its fraction field contains \(t=t^3/t^2\); its larger ring is spanned as a module by \(1,t\). The element \(t\) satisfies the monic equation \(T^2-t^2=0\) over the smaller ring but is not in it, since its monomials have exponents zero or at least two. Hence this target is not normal. Merely knowing that the graph projection is finite and generically an isomorphism would therefore be insufficient.
+
+6. In tangent coordinates the square-zero kernel is \(I^g\), and its group law is vector addition: the quadratic terms vanish in \(I^2\). If the discrepancy is \(e\in I^g\), changing a lift by \(c\) changes its multiplied value by \(nc\). The unique solution is \(c=-n^{-1}e\). When \(n=0\) in the residue characteristic, multiplication on a nonzero square-zero residue module is zero. It has no solution for a nonzero discrepancy and has many solutions for zero discrepancy. This proves the precise failure of formal étaleness, rather than a claim based only on a torsion-point count.
+
+7. The residue algebra is a product of \(r\) copies of the separably closed residue field. Henselian lifting gives its orthogonal idempotents, splitting the original finite étale algebra into \(r\) factors. Each is finite locally free of rank one, determined by its residue dimension. Its unit generates by Nakayama and is a basis; multiplication then identifies it with the base ring. The reductions of these factors give all \(r\) points and their unique lifts.
+
+For \(\mu_p\) in mixed characteristic the generic fibre has \(p\) distinct geometric roots, since the derivative of \(t^p-1\) is nonzero at them. The special algebra is (GQX2), with only one geometric point and length \(p\). All its roots therefore reduce to the identity, so it does not satisfy the comparison of geometric points. It is finite free, but its derivative is not a unit and it is not étale. This shows why finite flatness alone and the case \(n=p\) cannot be substituted in GQ3–GQ4.
+
+8. Let \(r_m\) denote the reduction bijection at level \(\ell^m\). Naturality for the scheme map \([\ell]\) gives
+\[
+ r_m([\ell]x)=[\ell]r_{m+1}(x).
+ \tag{GQX4}
+\]
+Thus a compatible tuple maps to a compatible tuple. The inverses satisfy the same relation because the \(r_m\) are bijections; applying them coordinate by coordinate gives an inverse map of the limits. Naturality for the addition map makes it a group homomorphism, and compatibility with multiplication by integers makes it \(\mathbf Z_\ell\)-linear. The same argument for a model homomorphism proves its functoriality. These are explicit inverse maps, so no general exactness claim about inverse limits is required.
+
+9. Use the left-\(B\) basis \(1\otimes1,1\otimes u\) of \(B\otimes_RB\). The map has matrix
+\[
+ \begin{pmatrix}1&u\\1&-u\end{pmatrix},
+ \qquad\det=-2u .
+ \tag{GQX5}
+\]
+The element \(u\) is nonunit, since \(u^2=\pi\), so its determinant is not a unit. The map becomes an isomorphism on the characteristic-zero generic fibre but is not an isomorphism over \(B\). Consequently the integral double overlap is not the disjoint union of the two Galois graphs. A semilinear action satisfying a Galois cocycle therefore does not automatically give the full faithfully flat descent datum for a ramified extension. In GQ5 it supplies an action on the good model over \(B\); it does not assert good reduction over \(R\).
+
+10. Define the map directly using the group scheme operations:
+\[
+ (P,Q)\longmapsto(P+Q,P+[2]Q),\qquad
+ (U,V)\longmapsto([2]U-V,V-U).
+ \tag{GQX6}
+\]
+The two composites are identities by addition and subtraction. Equivalently the integer inverse matrix is \(\begin{pmatrix}2&-1\\-1&1\end{pmatrix}\). Thus this is an automorphism of the entire good two-dimensional model, and GQ2 identifies it with the unique extension of its generic map. On torsion its block entries are the same integer multiplications, so (GQX4) and addition prove compatibility with reduction and with every transition.
+
+GQ1–GQ5 assume a good abelian model after a finite extension. In general the reduction may have a torus, and its rational Tate module may have nonzero monodromy. The theorem still needs actual semistable models, their toric and abelian graded pieces, the nondegenerate monodromy pairing and finite descent equivariance. The good-model extension argument does not supply those data. Hence Theorem 2.4 retains its full general statement and its stated remaining proof obligation.
+
 **Lemma 2.3 (potentially good compatibility, in every dimension).** If an abelian variety \(B/F\), over a characteristic-zero nonarchimedean local field, acquires good reduction over a finite extension, then all its \(V_\ell B\), \(\ell\ne p(F)\), have one Galois-invariant Frobenius-semisimple Weil–Deligne class over \(\overline{\mathbf Q}\); its monodromy is zero.
 
-**Proof.** Choose a finite Galois extension \(F'/F\) of good reduction. Functoriality and uniqueness of the Néron model extend the descent action to its abelian scheme over \(\mathcal O_{F'}\). Reduction of invertible torsion is equivariant and identifies its Tate module with that of the special abelian variety \(B_0\). This is the written *Néron models*, Lemma 7.1, applied after strict henselization; properness identifies every generic torsion point with a model section. The common subgroup \(I_{F'}\) consequently acts trivially, so \(N_\ell=0\).
+**Proof.** Choose a finite Galois extension \(F'/F\) of good reduction. The full graph-closure extension proof GQ1–GQ2 in §2A extends the descent action to its abelian scheme over \(\mathcal O_{F'}\). Reduction of invertible torsion is equivariant and identifies its Tate module with that of the special abelian variety \(B_0\). The finite étale lifting proof GQ3–GQ4 supplies this reduction, with every level and transition; GQ5 proves compatibility with the semilinear action. The common subgroup \(I_{F'}\) consequently acts trivially, so \(N_\ell=0\).
 
 An element \(w\in W_F\) of nonnegative residue exponent acts on the special torsion through an algebraic endomorphism: compose the relative residue Frobenius with the descent isomorphism from the Frobenius-twisted special fibre back to \(B_0\). On geometric points this is precisely the semilinear descent action of \(w\). Relative Frobenius is an isogeny, and the descent map is an isomorphism. A negative exponent is handled by the inverse quasi-isogeny. Lemma 2.2 therefore makes the trace, and indeed the characteristic polynomial, of every \(w\) rational and independent of \(\ell\). This compares \(w\) with its inertia component present; it is more information than the trace of an unramified Frobenius power.
 
@@ -150,7 +363,7 @@ Equal traces on every group element force equal simple multiplicities. One can s
 
 **Theorem 2.4 (full local abelian compatibility; remaining geometric proof obligation).** For every abelian variety over a nonarchimedean local field of characteristic zero, its prime-to-residue-characteristic rational Tate modules have a common Galois-invariant Frobenius-semisimple Weil–Deligne class over \(\overline{\mathbf Q}\).
 
-The potentially good case has the full proof in Lemma 2.3. General semistable reduction is actually proved in *Néron models*, Theorem 8.19, with identity-component base change in Theorem 8.20. Those results alone do not identify the monodromy filtration. The remaining proof must identify its toric graded pieces and their monodromy pairing and compare the abelian graded piece, equivariantly for the finite descent group. No actual earlier proof of that general monodromy assertion has yet been bound here. Deligne's freely accessible Example 8.10, printed p.571, states the full theorem but supplies no proof of it; it does not discharge this obligation. The theorem is retained in full generality, and this edition does not claim its full proof complete.
+The potentially good comparison is given by Lemma 2.3, with its good-model and torsion inputs now proved in GQ1–GQ5. The general case still requires actual semistable models and their behavior under extensions of DVRs. Such model results alone do not identify the monodromy filtration. The remaining proof must identify its toric graded pieces and their monodromy pairing and compare the abelian graded piece, equivariantly for the finite descent group. No actual earlier proof of that general monodromy assertion has yet been bound here. Deligne's freely accessible Example 8.10, printed p.571, states the full theorem but supplies no proof of it; it does not discharge this obligation. The theorem is retained in full generality, and this edition does not claim its full proof complete.
 
 For an elliptic curve the local classification gives every case without invoking the unproved higher-dimensional part. At good places use (6) and \(N=0\). At potentially good places use Lemma 2.3. At potentially multiplicative places use the Tate-curve proof and its quadratic descent in *Elliptic curves over local fields and their Weil–Deligne representations*, §§3–5: the common quadratic splitting character \(\eta_v\) and the common block are
 \[
@@ -630,7 +843,7 @@ There is a useful distinction in Deligne's §9: its global field is a function f
 
 The local elliptic classification, the Tate-curve and dual factors, and the conductor calculations are imported from *Elliptic curves over local fields and their Weil–Deligne representations*, Theorems 3.1, 4.1 and 5.1. The good-reduction torsion comparison, determinant–degree identity and Hasse bound are imported from *The ℓ-adic Tate module of an elliptic curve*, Theorems 3.1, 2.2 and 4.1 respectively. Their combination proving common good-prime polynomials is Theorem 2.1 here.
 
-Lemma 2.2 proves the common characteristic polynomial for every abelian-variety endomorphism; its exact geometric prerequisites are the written cube and Euler-characteristic proofs in *Abelian varieties*, Proposition 4.4, Lemma 5.2, Proposition 5.5 and Corollary 5.6, and the finite kernels and Tate modules in §§6–7. Lemma 2.3 proves strict local compatibility for potentially good abelian varieties of every dimension, using the actual torsion-specialization proof in *Néron models*, Lemma 7.1. For elliptic curves, potentially multiplicative descent and the proved Tate curve complete the local comparison. The full arbitrary-abelian-variety theorem, Theorem 2.4, still needs the semistable monodromy filtration, its toric pairing and equivariant descent comparison. Semistable reduction alone does not prove that representation theorem. No assertion at \(\ell=p(v)\) is part of strict compatibility here.
+Lemma 2.2 proves the common characteristic polynomial for every abelian-variety endomorphism; its exact geometric prerequisites are the written cube and Euler-characteristic proofs in *Abelian varieties*, Proposition 4.4, Lemma 5.2, Proposition 5.5 and Corollary 5.6, and the finite kernels and Tate modules in §§6–7. Lemma 2.3 proves strict local compatibility for potentially good abelian varieties of every dimension, using the good-model extension, finite étale lifting and semilinear proofs GQ1–GQ5 in §2A. For elliptic curves, potentially multiplicative descent and the proved Tate curve complete the local comparison. The full arbitrary-abelian-variety theorem, Theorem 2.4, still needs the semistable monodromy filtration, its toric pairing and equivariant descent comparison. Semistable reduction alone does not prove that representation theorem. No assertion at \(\ell=p(v)\) is part of strict compatibility here.
 
 Proposition 3.1 proves all ramified Euler induction and convergence. The conductor lesson's Theorems 2.6 and 4.1 prove integrality and induction, yielding (9A). Lemma 3.2 gives the rank-one analytic proof with the actual earlier adelic Poisson and Tate proofs: NT-ADL-03, Theorem 3.3; NT-ADL-05, Theorems 5.4–5.5; NT-ADL-07, Theorems 7.2–7.3; NT-ADL-08, Theorem 8.1 and Propositions 8.2–8.4; NT-ADL-09, Theorem 9.2; and NT-ADL-10, Theorem 10.1. Theorem 3.3 then proves the full Artin meromorphic functional equation through the actually written integer induction theorem RT-FIN-11, Theorem 5.1. General Artin holomorphy remains a conjecture; meromorphic quotients in (12H) do not prove it. Proposition 6.1 proves algebraic Hecke realizations using NT-CFT-17, Proposition 17.3.
 

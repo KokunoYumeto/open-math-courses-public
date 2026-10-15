@@ -35,11 +35,11 @@ The pullback connection satisfies
 \[
 D_Xdf(Y)-D_Ydf(X)=df([X,Y]).
 \]
-In coordinate tangent fields this is the equality of the mixed derivatives of the coordinate functions of \(f\), together with symmetry of the ambient Christoffel symbols; bilinearity then proves it for all fields. Its normal part makes \(\alpha\) symmetric and its tangent part makes \(\nabla\) torsion-free. Differentiating \(g(Y,Z)=\bar g(df(Y),df(Z))\) shows that \(\nabla\) preserves \(g\). Levi–Civita uniqueness, [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3), identifies it. The same differentiation for normal sections proves metric compatibility of \(\nabla^\perp\).
+In coordinate tangent fields this is the equality of the mixed derivatives of the coordinate functions of \(f\), together with symmetry of the ambient Christoffel symbols; bilinearity then proves it for all fields. Its normal part makes \(\alpha\) symmetric and its tangent part makes \(\nabla\) torsion-free. Differentiating \(g(Y,Z)=\bar g(df(Y),df(Z))\) shows that \(\nabla\) preserves \(g\). Levi–Civita uniqueness, [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1), identifies it. Its naturality under local isometries is [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3). The same differentiation for normal sections proves metric compatibility of \(\nabla^\perp\).
 
 Finally differentiate \(\bar g(\xi,df(Y))=0\). The result is
 \(-g(A_\xi X,Y)+\bar g(\xi,\alpha(X,Y))=0\).
-It proves the last formula, self-adjointness, tensoriality and linearity in \(\xi\). The pullback and tensor-connection rules used throughout are [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1). □
+It proves the last formula, self-adjointness, tensoriality and linearity in \(\xi\). The pullback rule used throughout is [Linear connections B.2](linear-and-affine-connections.md#theorem-b-2); the tensor-connection rules are [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1). □
 
 Define
 \[
@@ -105,11 +105,21 @@ Pairing the last two terms with \(\eta\) gives
 -g(A_\eta X,A_\xi Y)+g(A_\eta Y,A_\xi X)
 =-g([A_\xi,A_\eta]X,Y).
 \]
-The curvature of a pulled-back connection is the pullback of its curvature, as proved in [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1). Thus (A.5)–(A.7) equal the corresponding components of \(\bar R(dfX,dfY)\), giving (A.4). This calculation also proves the displayed signs without any convention about a chosen unit normal.
+The tensor-connection rules are [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1). The pullback derivative itself is [Linear connections B.2](linear-and-affine-connections.md#theorem-b-2), and its curvature is the pullback curvature by [Curvature and holonomy A.7](curvature-and-holonomy-groups.md#theorem-a-7), applied to the ambient frame bundle. This last identity does not require extending fields along the immersion to ambient vector fields. Thus (A.5)–(A.7) equal the corresponding components of \(\bar R(dfX,dfY)\), giving (A.4). This calculation also proves the displayed signs without any convention about a chosen unit normal.
 
 For constant curvature, [Sectional curvature A.1](sectional-curvature-and-space-forms.md#theorem-a-1) gives
 \(\bar R(u,v)w=c(\bar g(v,w)u-\bar g(u,w)v)\).
-It is tangent when all three vectors are tangent, and vanishes when \(w\) is normal and the first two are tangent. These facts give the final assertions. □
+It is tangent when all three vectors are tangent, and vanishes when \(w\) is normal and the first two are tangent. These facts give the final assertions.
+
+For an orthonormal tangent pair, substituting \(Z=Y,W=X\) gives the sectional formula
+\[
+\begin{aligned}
+K_M(X,Y)={}&K_{\overline M}(dfX,dfY)\\
+&+\langle\alpha(X,X),\alpha(Y,Y)\rangle\\
+&-|\alpha(X,Y)|^2.
+\end{aligned}
+\]
+In constant ambient curvature the normal curvature term in Codazzi is zero, so \((\nabla_X\alpha)(Y,Z)\) is symmetric in \(X,Y\). Differentiating the symmetry of \(\alpha(Y,Z)\) shows symmetry also in \(Y,Z\): the two input-connection corrections are interchanged. The two adjacent transpositions generate all permutations of three inputs. Thus \(\nabla\alpha\) is symmetric in all three tangent arguments. □
 
 **Proposition A.3 (Coordinates, principal curvatures and intrinsic Gaussian curvature).** For a Euclidean hypersurface of positive dimension parametrized by \(f(x^1,\ldots,x^n)\), choose a unit normal \(\nu\) locally and write
 \[
@@ -158,7 +168,40 @@ For a surface, Gauss in A.2 makes the numerator in the last expression of (A.11)
 \right).
 \tag{A.12}
 \]
-Indeed expand the definition of \(R\) in the commuting coordinate fields, as in [Linear connections B.3](linear-and-affine-connections.md#theorem-b-3). Formula (A.9) expresses all these coefficients through \(g\) and its derivatives. The denominator is positive because \(g\) is positive definite. Naturality of Levi–Civita curvature under a local isometry, [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3), proves invariance. Reversing the normal negates \(b\) but leaves its two-dimensional determinant unchanged. □
+Indeed expand the definition of \(R\) in the commuting coordinate fields, as in [Linear connections B.3](linear-and-affine-connections.md#theorem-b-3). Formula (A.9) expresses all these coefficients through \(g\) and its derivatives. The denominator is positive because \(g\) is positive definite. Naturality of Levi–Civita curvature under a local isometry, [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3), proves invariance. Reversing the normal negates \(b\) but leaves its two-dimensional determinant unchanged.
+
+The same trace also defines the mean curvature vector in every codimension, for \(n>0\):
+\[
+\mathbf H=\frac1n\sum_i\alpha(e_i,e_i),\qquad
+\langle\mathbf H,\xi\rangle=\frac1n\operatorname{tr}A_\xi.
+\]
+It is independent of the orthonormal frame. Indeed, substituting \(e'_i=\sum_j q_{ji}e_j\) and summing uses \(\sum_iq_{ji}q_{ki}=\delta_{jk}\); this leaves precisely the original trace. The second identity follows by tracing (A.1). For a hypersurface this vector is \(H\nu\), unchanged when both factors change sign. An immersion is called minimal when \(\mathbf H=0\). Define the Euclidean componentwise Laplacian of its position by the metric trace
+\[
+\Delta f=\sum_i\left(D_{e_i}df(e_i)-df(\nabla_{e_i}e_i)\right).
+\]
+The expression in parentheses is \(\alpha(e_i,e_i)\) by (A.1), hence \(\Delta f=n\mathbf H\). This trace definition needs no special frame with zero connection coefficients.
+
+There is no compact positive-dimensional minimal Euclidean immersion without boundary. At a maximum of \(h=|f-z|^2/2\), differentiation gives
+\[
+\operatorname{Hess}h(X,Y)
+=g(X,Y)+\langle f-z,\alpha(X,Y)\rangle.
+\]
+To check the formula, differentiate \(Yh=\langle f-z,df(Y)\rangle\) in direction \(X\) and subtract \((\nabla_XY)h\); (A.1) cancels the tangent-connection term. The Hessian is negative semidefinite at a maximum by the second derivative test in coordinates (Local tools 0.3). Tracing yields \(n+n\langle f-z,\mathbf H\rangle\leq0\), incompatible with \(n>0\) and \(\mathbf H=0\). This argument assumes no orientation.
+
+For a hypersurface the full Gauss curvature operator is intrinsic as well. Give \(\Lambda^2 TM\) its metric
+\[
+\begin{aligned}
+\langle X\wedge Y,W\wedge Z\rangle
+={}&g(X,W)g(Y,Z)\\
+&-g(X,Z)g(Y,W),
+\end{aligned}
+\]
+and define \(\mathcal R\) by \(\langle\mathcal R(X\wedge Y),W\wedge Z\rangle=g(R(X,Y)Z,W)\). In an orthonormal basis its wedges \(e_i\wedge e_j\), \(i<j\), are an orthonormal basis, which makes this definition unique. Gauss gives \(\mathcal R=\Lambda^2 A\) directly by substitution. In a principal frame its eigenvalues are \(\lambda_i\lambda_j\). The scalar curvature, the trace of Ricci, is therefore
+\[
+\operatorname{Scal}=2\sum_{i<j}\lambda_i\lambda_j
+=(\operatorname{tr}A)^2-\operatorname{tr}(A^2).
+\]
+Each unordered pair appears twice in \(\sum_{i,j}g(R(e_i,e_j)e_j,e_i)\); expanding the square of \(\sum_i\lambda_i\) proves the second equality. Thus symmetric functions of these pairwise products depend only on the intrinsic metric. Normal reversal multiplies \(\det A\) by \((-1)^n\), explaining the even and odd dimensional distinction. □
 
 **Proposition A.4 (The Gauss map and the projected connections).** For a Euclidean immersion \(f:M^n\to\mathbb R^{n+p}\), let
 \[
@@ -196,7 +239,34 @@ In the graph chart a tangent map \(L_X\) gives
 (dP)_X=
 \begin{pmatrix}0&L_X^*\\ L_X&0\end{pmatrix}.
 \]
-This follows by differentiating the projection at the zero graph, or by differentiating its symmetry and its action on vectors \(v+tL_Xv\). Hence the two curvature blocks are \(L_X^*L_Y-L_Y^*L_X\) and \(L_XL_Y^*-L_YL_X^*\). With \(L_XY=\alpha(X,Y)\), these are precisely the Euclidean Gauss and Ricci formulas of A.2. This also identifies both pulled-back connections and their signs. Finally (A.14) is A.3 followed by taking inner products. The inverse theorem, [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), proves the local-diffeomorphism assertion. □
+This follows by differentiating the projection at the zero graph, or by differentiating its symmetry and its action on vectors \(v+tL_Xv\). Hence the two curvature blocks are \(L_X^*L_Y-L_Y^*L_X\) and \(L_XL_Y^*-L_YL_X^*\). With \(L_XY=\alpha(X,Y)\), these are precisely the Euclidean Gauss and Ricci formulas of A.2. This also identifies both pulled-back connections and their signs. Finally (A.14) is A.3 followed by taking inner products. The inverse theorem, [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), proves the local-diffeomorphism assertion.
+
+The bundle correspondence also has a description in principal frames. An adapted orthonormal frame along \(f\) is a pair of orthonormal bases of \(df(TM)\) and \(N_fM\). Local such bases exist by [Riemannian connections F.2](riemannian-connections-and-convex-neighbourhoods.md#theorem-f-2). Their changes are exactly \(O(n)\times O(p)\), so the local charts construct the fibre product of their two orthonormal frame bundles, as in [Principal bundles C.1](principal-bundles-and-associated-bundles.md#theorem-c-1). Dividing out the normal factor leaves the tangent frame bundle, and dividing out the tangent factor leaves the normal frame bundle; the local product charts prove these identifications smoothly.
+
+Write an adapted frame as the orthogonal matrix of its ambient columns, \(Q\). Its pulled-back ordinary derivative has matrix
+\[
+Q^{-1}dQ=
+\begin{pmatrix}\omega&-\beta^{\mathsf T}\\
+\beta&\omega^\perp\end{pmatrix},\qquad
+\beta(X)Y=\alpha(X,Y)
+\]
+in the chosen frame coordinates. Differentiating \(Q^{\mathsf T}Q=I\) makes the matrix skew, while (A.1) identifies every block. Under \(Q\mapsto Qh\), \(h=\operatorname{diag}(a,b)\), its matrix changes to \(h^{-1}(Q^{-1}dQ)h+h^{-1}dh\). Its diagonal blocks therefore obey exactly the connection change laws for \(a,b\); on a vertical block diagonal generator they return that generator. Thus the diagonal projection is a principal connection, inducing the two projected vector-bundle connections. The normal solder component is zero because \(df(X)\) is tangent; the tangent component is the usual solder form.
+
+The homogeneous models are
+\[
+\begin{aligned}
+\operatorname{Gr}_n(\mathbb R^{n+p})
+&=O(n+p)/(O(n)\times O(p)),\\
+\operatorname{St}_n(\mathbb R^{n+p})&=O(n+p)/O(p).
+\end{aligned}
+\]
+Here the Stiefel manifold consists of orthonormal ordered \(n\)-frames. Any such frame extends to an orthonormal ambient basis by Gram–Schmidt, proving transitivity; equality of the first \(n\) columns leaves exactly the displayed \(O(p)\) stabilizer. Likewise equality of their spanned plane leaves exactly \(O(n)\times O(p)\). These are closed matrix subgroups, since their defining orthogonality and zero-block equations are closed. Their smooth quotients exist by Invariant connections A.1 and Invariant connections B.1. To identify the first quotient with the graph charts constructed above, orthonormalize the graph columns \((e_i,Le_i)\), and then the projections of a fixed complementary basis onto their orthogonal complement. Near the zero graph all required denominators stay positive. This gives a smooth orthogonal completion and a local section, inverse to the quotient map in these charts. Translating these sections covers the Grassmannian. Over such a chart an orthonormal \(n\)-frame is this chosen frame times a unique element of \(O(n)\), with smooth coordinates obtained by inner products of columns. These are the corresponding smooth Stiefel charts. Consequently the Stiefel bundle over the Grassmannian is precisely the orthonormal frame bundle of the tautological bundle; \(O(n+p)/O(n)\) frames the complementary bundle. The diagonal projection of \(Q^{-1}dQ\) on their joint bundle \(O(n+p)\) gives the same projected connections by the column calculation just made. Sending an adapted frame along \(f\) to its columns pulls them back to the immersion's connections.
+
+There is a further connection correspondence for a hypersurface which does not require invertibility of \(A\). At every point
+\[
+df_x(T_xM)=\nu(x)^\perp=T_{\nu(x)}S^n.
+\]
+Thus \(df\), viewed as a fibre isometry \(TM\to\nu^*TS^n\), identifies the two connections: the sphere's derivative of any field along \(\nu\) is its ordinary ambient derivative projected onto \(\nu^\perp\), by A.1 applied to the sphere and the pullback rule of Linear connections B.2. For the field \(df(Y)\) this projection is \(df(\nabla_XY)\) by (A.1). The corresponding transports agree by uniqueness of the parallel ODE, even where \(d\nu=-df\circ A\) is singular. The identifying map is \(df\). Without a global coorientation the normal line still gives a smooth Gauss map into \(\mathbb {RP}^n\): local unit normals differ by a sign and define the same line. Charts where a fixed component is nonzero use the other components divided by it, so this line map is smooth and independent of that sign. □
 
 ## B. Constructing the immersion
 
@@ -597,7 +667,7 @@ Gauss instead gives \(\lambda\mu=\rho<0\), a contradiction. This excludes negati
 
 Under these conditions \(f\) is an embedding. Every tangent hyperplane supports the whole image and meets the image at exactly its point of tangency.
 
-**Proof.** First any compact immersed hypersurface has an elliptic point. Fix \(z\in\mathbb R^{n+1}\) and maximize \(h=\frac12|f-z|^2\) on \(M\). At a maximum \(x\), the vector \(r=f(x)-z\) is normal and
+**Proof.** First any compact immersed hypersurface has an elliptic point. Fix \(z\in\mathbb R^{n+1}\) and maximize \(h=\frac12|f-z|^2\) on \(M\). At a maximum \(x\), \(dh(X)=\langle f(x)-z,df(X)\rangle=0\), so \(r=f(x)-z\) is normal. Differentiating once more and subtracting \(dh(\nabla_XY)\), as proved in A.3, gives
 \[
 \operatorname{Hess}h(X,X)
 =|X|^2+\langle\alpha(X,X),r\rangle\leq0.
@@ -804,7 +874,7 @@ In a frame whose first vectors span \(df(TM)\), differentiation of those vectors
 \]
 The top-left block is the tangent connection and the bottom-right block induces the quotient connection. The component formula for a tensor derivative is the derivative of its evaluation minus one term for each differentiated argument, with the output connection added; see [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1). Since each tangent input remains tangent under differentiation, this formula and (G.3) prove the restriction assertion for the first covariant derivative, and induction proves it for every further derivative. The same argument applies to any ambient tensor whose restriction has the required tangent-valued outputs.
 
-In the Riemannian torsion-free case, G.1 gives autoparallelism from total geodesy. The tangent restriction is metric and torsion-free, hence is the Levi-Civita connection by [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3). Orthogonality and metric compatibility show that the normal bundle is parallel as well: for a normal section \(\xi\) and tangent \(Y\),
+In the Riemannian torsion-free case, G.1 gives autoparallelism from total geodesy. The tangent restriction is metric and torsion-free, hence is the Levi-Civita connection by [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1). The local-isometry naturality of that connection is [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3). Orthogonality and metric compatibility show that the normal bundle is parallel as well: for a normal section \(\xi\) and tangent \(Y\),
 \(\langle\overline\nabla_X\xi,df(Y)\rangle
 =-\langle\xi,\overline\nabla_Xdf(Y)\rangle=0\).
 Thus an orthonormal adapted frame has block diagonal connection. Tangent parallel transport is intrinsic parallel transport; along a loop it is the tangent restriction of ambient transport along the image loop. In particular parallel ambient curvature restricts to parallel intrinsic curvature. □
