@@ -2,7 +2,7 @@
 
 Curvature derivatives, nearby loops and global transport contain different information. We construct infinitesimal and local holonomy, prove when constant dimension or analyticity makes them agree with restricted holonomy, and compute three smooth circle-bundle tests. For flat connections we then prove the covering-space prerequisites and classify bundles by representations of the fundamental group, including disconnected structure groups. Worked circle and torus examples keep the representation distinct from its inverse transport multiplier.
 
-Use the complete earlier programme proofs in [Curvature and holonomy groups](curvature-and-holonomy-groups.md), [Reduction and the holonomy theorem](../../../../../DG-FND/src/reduction-and-the-holonomy-theorem.md), [Connections and parallel transport](../../../../../DG-FND/src/connections-and-parallel-transport.md), [Principal bundles and associated bundles](../../../../../DG-FND/src/principal-bundles-and-associated-bundles.md), and Local tools for bundles and transport. Each named locator identifies a complete programme proof. Human construction sources are the exact free versions credited in the chapter.
+Use the complete earlier programme proofs in [Curvature and holonomy groups](curvature-and-holonomy-groups.md), [Reduction and the holonomy theorem](reduction-and-the-holonomy-theorem.md), [Connections and parallel transport](connections-and-parallel-transport.md), [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), and Local tools for bundles and transport. Each named locator identifies a complete programme proof. Human construction sources are the exact free versions credited in the chapter.
 
 ## A. What the curvature derivatives generate
 
@@ -253,7 +253,30 @@ Suppose equality holds at \(p\), and put \(d=\dim J(p)=\dim H^{\mathrm{loc}}_p\)
 \]
 All dimensions therefore equal \(d\). Shrink to a connected coordinate ball on which the basis argument (B.3)–(B.6) applies. It makes \(J(q)=J(p)\) at every horizontal endpoint reachable within that ball. B.1 identifies these infinitesimal groups with the local groups, and A.1 identifies connected groups with the same algebra. This proves (B.12).
 
-The set on which an integer-valued dimension function is locally constant is open, so its complement is closed. To see density for \(\dim J\), take any nonempty open base set. The finitely many possible values lie between zero and \(\dim\mathfrak g\); choose a point attaining the largest value occurring in this set. Lower semicontinuity gives a smaller open neighbourhood inside the set on which the value is at least that largest value, and therefore equals it. For \(\dim H^{\mathrm{loc}}\), choose instead a point attaining the smallest value, and use upper semicontinuity from A.4. In either case every nonempty open set contains a smaller open set of local constancy, proving that the singular set has empty interior. Finally, if \(\dim J\) is constant on a neighbourhood, B.1 makes the two dimension functions equal there; thus the local-holonomy dimension is also locally constant. Taking the contrapositive gives the asserted containment of singular sets. \(\square\)
+The set on which an integer-valued dimension function is locally constant is open, so its complement is closed. To see density for \(\dim J\), take any nonempty open base set. The finitely many possible values lie between zero and \(\dim\mathfrak g\); choose a point attaining the largest value occurring in this set. Lower semicontinuity gives a smaller open neighbourhood inside the set on which the value is at least that largest value, and therefore equals it. For \(\dim H^{\mathrm{loc}}\), choose instead a point attaining the smallest value, and use upper semicontinuity from A.4. In either case every nonempty open set contains a smaller open set of local constancy, proving that the singular set has empty interior. Finally, if \(\dim J\) is constant on a neighbourhood, B.1 makes the two dimension functions equal there; thus the local-holonomy dimension is also locally constant. Taking the contrapositive gives the asserted containment of singular sets. 
+
+There is a separate conclusion requiring only constant *local* holonomy
+dimension: if \(\dim H^{\mathrm{loc}}\) is constant on the connected base,
+then \(H^{\mathrm{loc}}_p=H^0_p\) at every frame.
+To prove it, choose a stabilizing coordinate ball \(U\) at a frame \(p\)
+as in A.4. For a horizontal endpoint \(q\) reached within \(U\),
+the smooth inclusion \(H^{\mathrm{loc}}_q\subseteq H^{\mathrm{loc}}_p\)
+has injective differential and equal dimension. Its two Lie algebras
+are therefore equal, and A.1 identifies the connected groups.
+This argument applies to every frame over the centre of \(U\), by
+the adjoint frame-change formula. It consequently applies to any
+horizontal path segment contained in \(U\), even if that segment
+starts away from the centre: lift a path from its starting base point
+to the centre, use the resulting centre frame, and reverse that lift
+before following the segment. Both endpoints are now reached from
+this centre frame within \(U\), so their local groups agree.
+The stabilizing balls cover the base. Curvature C.3 subdivides the
+compact projection of any horizontal path into finitely many pieces
+contained in these balls. The preceding equality propagates through
+the pieces. All local groups at frames reachable from \(p\) thus
+equal \(H^{\mathrm{loc}}_p\). By A.5 they generate \(H^0_p\), proving
+the conclusion. This argument does not assume constant infinitesimal
+dimension. \(\square\)
 
 The human source is Ozeki's [freely accessible full paper](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D679899223A1E8A85B5F7D4802C0C866/S002776300000012Xa.pdf/infinitesimal-holonomy-groups-of-bundle-connections.pdf), Section 5 and Proposition 2 in Section 4. The coefficient ODE, analytic continuation and all prerequisites used above have their complete proofs here or at the exact programme locators stated above. New exposition and proof details: GPT-6 Astra (OpenAI), October 2026, CC0 1.0.
 
@@ -302,7 +325,30 @@ Show that the infinitesimal holonomy at the origin is trivial, while its local a
 
 **Solution.** Local tools 0.5 proves that \(\eta(t)=e^{-1/t^2}\) for \(t>0\), extended by zero for \(t\leq0\), is smooth with every derivative zero at zero. We have \(\psi(x)=\eta(x)+\eta(-x)\). The chain rule therefore proves smoothness and the vanishing of every derivative of \(\psi\) at zero. The fundamental theorem of calculus, Local tools 0.3, gives \(f'=\psi\) and smoothness of \(f\). Formula (C.4) makes \(J(0,0,1)=0\), so its connected group is the identity group.
 
-In every coordinate ball about the origin choose a point \((a,0)\) with \(a\ne0\). Its curvature coefficient \(i\psi(a)\) is nonzero. It is reachable from the initial frame by the horizontal lift of the axis segment, which stays inside the ball; along that segment the group coordinate is constant because \(dy=0\). Curvature G.3 applied on the ball says that its restricted holonomy algebra contains \(i\psi(a)\), hence is all of \(i\mathbb R\). The connected group is \(U(1)\) by A.1 and Connections E.1. Every such ball has this same group, so A.4 gives \(H^{\mathrm{loc}}=U(1)\). A.5 gives restricted holonomy \(U(1)\) as well. Thus equality in the analytic theorem B.2 fails for this smooth connection. In particular the connection is not analytic at the origin: if \(\psi\) were analytic there, its zero Taylor series would make it vanish near zero, contradicting \(\psi(a)>0\) for \(a\ne0\). \(\square\)
+In every coordinate ball about the origin choose a point \((a,0)\) with \(a\ne0\). Its curvature coefficient \(i\psi(a)\) is nonzero. It is reachable from the initial frame by the horizontal lift of the axis segment, which stays inside the ball; along that segment the group coordinate is constant because \(dy=0\). Curvature G.3 applied on the ball says that its restricted holonomy algebra contains \(i\psi(a)\), hence is all of \(i\mathbb R\). The connected group is \(U(1)\) by A.1 and Connections E.1. Every such ball has this same group, so A.4 gives \(H^{\mathrm{loc}}=U(1)\). A.5 gives restricted holonomy \(U(1)\) as well. Thus equality in the analytic theorem B.2 fails for this smooth connection. In particular the connection is not analytic at the origin: if \(\psi\) were analytic there, its zero Taylor series would make it vanish near zero, contradicting \(\psi(a)>0\) for \(a\ne0\). 
+
+The same phenomenon occurs for the one-sided potential
+\(A=i\eta(x)\,dy\) itself, without first integrating a flat factor.
+Local tools 0.5 proves that every derivative of \(\eta\) at zero
+vanishes, so C.1 makes all curvature jets there zero. For \(a>0\),
+the chain rule gives \(\eta'(a)=2a^{-3}e^{-1/a^2}>0\).
+There is also a direct loop proof of its local holonomy, avoiding any
+limit of loops. In a given ball about the origin choose \(a>0\) and
+\(B>0\) so that the rectangles with vertices
+\((0,0),(a,0),(a,b),(0,b)\), for \(|b|<B\), lie in the ball.
+Formula (C.3) gives the multiplier \(e^{-ib\eta(a)}\).
+For any real phase \(\theta\), choose a positive integer
+\(N>|\theta|/(B\eta(a))\), and set \(b=-\theta/(N\eta(a))\).
+Such integers exist: if the positive integers had a real upper bound,
+their supremum \(s\) would have an integer greater than \(s-1\);
+adding one would contradict the bound. The concatenation of \(N\)
+copies of this rectangle has multiplier \(e^{i\theta}\), by the
+transport composition law in Connections E.1. Each copy, and their
+concatenation, contracts in the ball by its linear contraction.
+Thus every ball has full restricted holonomy \(U(1)\), while
+infinitesimal holonomy at the origin is trivial. In contrast the zero
+potential has these same zero jets and has identity transport along
+every path, directly by (C.1). \(\square\)
 
 **Exercise C.3 (equality at a point does not determine distant holonomy).** Using the same \(\eta\), put
 \[
@@ -325,7 +371,33 @@ The equality of infinitesimal and local holonomy does persist throughout a neigh
 | \(i\psi(x)\), from C.2 | \(\{1\}\), every jet is zero | \(U(1)\) | \(U(1)\) |
 | \(i\chi(x)\), from C.3 | \(\{1\}\) | \(\{1\}\) | \(U(1)\) |
 
-The table refers to all curvature derivatives in C.2 and C.3, rather than a finite numerical approximation. \(\square\)
+The table refers to all curvature derivatives in C.2 and C.3, rather than a finite numerical approximation. 
+
+One can also require the *potential coefficient*, rather than only
+the curvature coefficient, to have compact support away from the
+origin. For example set
+\[
+ \begin{gathered}
+ \zeta(x)=\eta(x-5/4)\eta(7/4-x),\\
+ A=i\zeta(x)\,dy.
+ \end{gathered}
+\]
+This is smooth by Local tools 0.5 and the product rule, vanishes
+outside \([5/4,7/4]\subset(1,2)\), and is positive in that interval's
+interior. There
+\[
+ \zeta'(x)=2\zeta(x)
+       \bigl((x-5/4)^{-3}-(7/4-x)^{-3}\bigr).
+\]
+It is positive at \(x=11/8\), since the two positive denominators
+are \(1/8\) and \(3/8\). Thus the curvature is nonzero somewhere,
+although the potential and every curvature jet vanish near the
+origin. The local and infinitesimal groups at the origin are
+trivial by (C.1). Taking rectangles with \(a=0,h=3/2\) in (C.3)
+gives \(e^{-ib\zeta(3/2)}\), which ranges over \(U(1)\);
+all these loops contract in the plane. The full and restricted
+groups are therefore \(U(1)\). This supplies the same separation
+with a compactly supported smooth potential. \(\square\)
 
 These calculations use the complete abelian-transport proof in Connections E.1, the smooth flat factor in Local tools 0.5, and the programme's curvature-generation theorem, with the exact locators given in each solution. New exposition and examples: GPT-6 Astra (OpenAI), October 2026, CC0 1.0.
 
@@ -381,7 +453,30 @@ Let the base point of \(M_K\) be \(r(z_0)\). A loop \(\alpha\) in \(M\) lifts fr
 
 For completeness let \(p_C:C\to M\) be any connected smooth covering and choose \(c_0\) over \(x\). Define \(\Phi([\lambda])\) to be the endpoint of the lift of \(\lambda\) from \(c_0\). D.1 makes this independent of the representative. On a sheet over a convex ball it is the inverse branch of \(p_C\) through the endpoint already assigned, composed with \(q\). Hence \(\Phi\) is smooth and a local diffeomorphism. The coordinate-ball path argument proves that \(C\) is path connected. Projecting a path from \(c_0\) to any specified point of \(C\) proves that \(\Phi\) is onto.
 
-Put \(K=(p_C)_*\pi_1(C,c_0)\). If \(\Phi([\lambda])=\Phi([\mu])\), the lift of \(\lambda*\mu^{-1}\) is a loop at \(c_0\), so \([\lambda*\mu^{-1}]\in K\). Conversely membership in \(K\) makes that lift a loop, and reversal and uniqueness force the two endpoints to coincide. Thus the fibres of \(\Phi\) are exactly the \(K\)-orbits in \(\widetilde M\), by (D.3). The induced map \(M_K\to C\) is a bijective local diffeomorphism, whose local smooth inverses form its global inverse. It is the desired based covering isomorphism. Equality of image subgroups is necessary for any based isomorphism and sufficient by this construction. \(\square\)
+Put \(K=(p_C)_*\pi_1(C,c_0)\). If \(\Phi([\lambda])=\Phi([\mu])\), the lift of \(\lambda*\mu^{-1}\) is a loop at \(c_0\), so \([\lambda*\mu^{-1}]\in K\). Conversely membership in \(K\) makes that lift a loop, and reversal and uniqueness force the two endpoints to coincide. Thus the fibres of \(\Phi\) are exactly the \(K\)-orbits in \(\widetilde M\), by (D.3). The induced map \(M_K\to C\) is a bijective local diffeomorphism, whose local smooth inverses form its global inverse. It is the desired based covering isomorphism. Equality of image subgroups is necessary for any based isomorphism and sufficient by this construction. 
+
+When \(K\) is normal, the deck group of \(p_K\) is exactly
+\(\Gamma/K\). Write \(r(z)=Kz\). For \(a\in\Gamma\) define
+\[
+ \overline D_{aK}(Kz)=K D_a z.
+\]
+Changing \(z\) to \(D_kz\), with \(k\in K\), does not change the
+answer, since \(D_aD_k=D_{aka^{-1}}D_a\) and \(aka^{-1}\in K\).
+Changing \(a\) within its coset also leaves the answer unchanged.
+These maps act in covering charts by the same base coordinates;
+they are smooth deck transformations with inverses indexed by
+\(a^{-1}K\), and their composition is indexed by the product of
+cosets. If \(\overline D_{aK}\) fixes \(r(z_0)\), then
+\(D_a z_0=D_k z_0\) for some \(k\in K\). Freeness in D.2 gives
+\(a=k\), so the action of \(\Gamma/K\) is faithful.
+It is transitive on each fibre because the action of \(\Gamma\)
+on the universal cover is transitive there. Every deck
+transformation of \(M_K\) is determined by its value at \(r(z_0)\):
+apply path-lift uniqueness in D.1 to paths from that point, using
+path connectedness of \(M_K\). Transitivity therefore supplies
+every deck transformation, proving the asserted group isomorphism.
+No quotient-group description by \(\Gamma/K\) is asserted when
+\(K\) is not normal. \(\square\)
 
 **Free construction source.** Allen Hatcher's author-hosted, freely downloadable electronic *Algebraic Topology*, [Chapter 1](https://pi.math.cornell.edu/~hatcher/AT/ATch1.pdf), printed pages 29–31 and Section 1.3, supplies the covering-space construction and lifting method. The author's [electronic-edition page](https://pi.math.cornell.edu/~hatcher/AT/ATpage.html) identifies this free edition. The proofs above include the smooth, separation and countability details required here. Every lifting and covering claim used here is proved above.
 
@@ -492,7 +587,34 @@ is well-defined, because \(b^{-1}\rho(a)=\rho'(a)b^{-1}\). Its inverse uses left
 \]
 Here \(f_*[c]=[f\circ c]\) is well-defined because composition with \(f\) carries an endpoint-fixed homotopy to one of the same kind, and it preserves concatenation. E.1 gives full holonomy \(\rho(f_*\pi_1(B,b))\).
 
-For the universal cover \(q:\widetilde M\to M\), D.2 proves \(\pi_1(\widetilde M,z_0)=\{e\}\). Thus the pullback has trivial full holonomy and, by E.1, has a global horizontal section and the product connection. For the prescribed subgroup put \(K=\rho^{-1}(N)\). It is a subgroup because \(\rho\) preserves multiplication and inverses. The covering \(p_K:M_K\to M\) of D.3 has fundamental-group image exactly \(K\). Its pullback holonomy is \(\rho(K)=N\): inclusion in \(N\) is the definition of \(K\), and for each \(n\in N\subset\rho(\Gamma)\) any preimage under \(\rho\) lies in \(K\). This uses neither normality nor ambient closedness. The equality describes the actual holonomy subgroup, with its discrete intrinsic topology from E.1. \(\square\)
+For the universal cover \(q:\widetilde M\to M\), D.2 proves \(\pi_1(\widetilde M,z_0)=\{e\}\). Thus the pullback has trivial full holonomy and, by E.1, has a global horizontal section and the product connection. For the prescribed subgroup put \(K=\rho^{-1}(N)\). It is a subgroup because \(\rho\) preserves multiplication and inverses. The covering \(p_K:M_K\to M\) of D.3 has fundamental-group image exactly \(K\). Its pullback holonomy is \(\rho(K)=N\): inclusion in \(N\) is the definition of \(K\), and for each \(n\in N\subset\rho(\Gamma)\) any preimage under \(\rho\) lies in \(K\). This uses neither normality nor ambient closedness. The equality describes the actual holonomy subgroup, with its discrete intrinsic topology from E.1. 
+
+In particular the cover for \(K=\ker\rho\) trivializes the
+connection, even when this cover is not simply connected. Its
+representation is trivial by (F.1). For the trivial representation
+on any connected base \(B\), the model of E.2 has quotient
+\[
+ \begin{gathered}
+ \pi_1(B)\backslash(\widetilde B\times G)
+       \longrightarrow B\times G,\\
+ [z,g]\longmapsto(q(z),g).
+ \end{gathered}
+\]
+The action changes only \(z\); transitivity on each cover fibre
+makes this map bijective. In a sheet chart it is the identity
+product map, so it is a smooth bundle isomorphism preserving the
+product connection. E.2 identifies the pullback to the kernel cover
+with this model and hence gives a global horizontal section.
+
+If \(N\) is normal in \(H=\rho(\Gamma)\), then
+\(K=\rho^{-1}(N)\) is normal in \(\Gamma\): conjugating an element
+of \(K\) sends its image to a conjugate in \(N\).
+D.3 now gives the deck group \(\Gamma/K\).
+The map \(aK\mapsto\rho(a)N\) is a well-defined homomorphism
+onto \(H/N\). Two values agree exactly when
+\(\rho(b^{-1}a)\in N\), equivalently \(b^{-1}a\in K\);
+thus it is injective as well. Consequently this covering has
+deck group \(H/N\), in addition to pullback holonomy \(N\). \(\square\)
 
 **Exercise F.2 (all circle monodromies and a disconnected example).** Classify flat principal \(G\)-bundles with connection over a circle. For \(G=\{1,-1\}\), identify the bundle associated with nontrivial monodromy and its associated real line bundle.
 
@@ -526,7 +648,40 @@ For the sign representation of this group on \(\mathbb R\), the associated-bundl
  \qquad n\cdot(t,v)=(t+n,(-1)^n v).
  \tag{F.5}
 \]
-To verify this description directly, send the associated class represented by \(([t,\varepsilon],v)\) to \([t,\varepsilon v]\). Both the principal-group identification and the integer identification preserve this value, and choosing \(\varepsilon=1\) gives the inverse. The local product charts show smoothness and linearity on fibres. Formula (F.5) is the Möbius real line bundle. A continuous section, pulled back to the line, is a continuous function \(f\) with \(f(t+1)=-f(t)\). If \(f(0)=0\), it already vanishes; otherwise its values at zero and one have opposite signs, so Local 0.0 forces a zero between them. Thus this bundle has no nowhere-zero continuous section. A product real line bundle has the constant section of value one, and a bundle isomorphism preserves its nonvanishing. This proves nontriviality without using a classification theorem for line bundles. \(\square\)
+To verify this description directly, send the associated class represented by \(([t,\varepsilon],v)\) to \([t,\varepsilon v]\). Both the principal-group identification and the integer identification preserve this value, and choosing \(\varepsilon=1\) gives the inverse. The local product charts show smoothness and linearity on fibres. Formula (F.5) is the Möbius real line bundle. A continuous section, pulled back to the line, is a continuous function \(f\) with \(f(t+1)=-f(t)\). If \(f(0)=0\), it already vanishes; otherwise its values at zero and one have opposite signs, so Local 0.0 forces a zero between them. Thus this bundle has no nowhere-zero continuous section. A product real line bundle has the constant section of value one, and a bundle isomorphism preserves its nonvanishing. This proves nontriviality without using a classification theorem for line bundles. 
+
+For \(G=U(1)\) the classification also has explicit product-bundle
+potentials. Let \(\vartheta\) be the form on the circle whose
+pullback by (F.2) is \(dt\). Define it in short-arc inverse branches;
+branches differ locally by integer translations, so their
+differentials agree. In those charts it is closed.
+For \(\alpha\in\mathbb R\) take
+\[
+ A_\alpha=2\pi i\alpha\,\vartheta .
+\]
+Connections A.3 reconstructs the connection, and Curvature A.7
+gives zero curvature. For a loop lifting from zero to \(n\),
+Local tools 0.3 gives \(\int\vartheta=n\); hence Connections E.1
+gives transport \(e^{-2\pi i\alpha n}\) and representation
+\(n\mapsto e^{2\pi i\alpha n}\). Every circle phase has a real
+argument, so every flat principal \(U(1)\)-bundle with connection
+over the circle is isomorphic to one of these product-bundle
+connections by E.2. Two parameters give isomorphic connections
+exactly when they differ by an integer, because their generator
+phases must agree and that equality is also sufficient by E.2.
+
+Locally the section change \(g(t)=e^{-2\pi i\alpha t}\)
+has \(g^{-1}dg=-A_\alpha\), so it makes the potential zero.
+This function descends to the whole circle exactly when
+\(e^{-2\pi i\alpha}=1\), equivalently \(\alpha\in\mathbb Z\).
+For an integer \(k\), the global section change
+\(e^{2\pi i k t}\) adds \(2\pi i k\vartheta\), explicitly realizing
+the integer parameter identifications. A global horizontal section
+exists exactly for these integral \(\alpha\): sufficiency is the
+zero-potential gauge just constructed; necessity follows because
+transport must return the section's initial value around the
+positive generator. Thus a trivial underlying bundle may carry
+inequivalent flat connections. \(\square\)
 
 **Exercise F.3 (the torus and all circle-group classes).** Classify flat principal \(G\)-bundles with connection over the two-torus. For \(G=U(1)\), give product-bundle connection forms representing every class and determine their exact parameter identifications and transport multipliers.
 

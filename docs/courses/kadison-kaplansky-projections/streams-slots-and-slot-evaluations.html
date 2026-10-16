@@ -1,0 +1,239 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Streams, slots and slot evaluations</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to the Kadison–Kaplansky conjecture)</a><a href="separated-bands-and-equivariant-traces.html">Previous lesson</a><a href="gated-permutations-and-the-two-towers.html">Next lesson</a><a href="src/streams-slots-and-slot-evaluations.md">Editable source</a></nav><main><article><h1 id="streams-slots-and-slot-evaluations">Streams, slots and slot evaluations</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The operator <span class="math" data-tex="\(T\)">\(T\)</span> of the course lives on a layered graph, the <em>tower</em>, with two sets of vertices <span class="math" data-tex="\(A_i\)">\(A_i\)</span> and <span class="math" data-tex="\(B_i\)">\(B_i\)</span> in every layer <span class="math" data-tex="\(i\in\mathbb Z\)">\(i\in\mathbb Z\)</span> and edges only between neighbouring layers. Its vertices are pairs of bit strings, and its edges are defined by linear equations over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, so that a long path can be reconstructed from the labels of its edges, while the incidence operators between neighbouring layers are uniform expanders. This lesson fixes the parameters, the vertex sets, the <em>slots</em> at which edges attach, and the linear <em>slot evaluations</em>; it proves the counting identities and the choice of coefficients on which the expansion of the next lessons rests [OpenAI-KK, Section 3 and Section 4.1 to Lemma 4.1].</p>
+<ul>
+<li>Parameters (Section 1).</li>
+<li>Streams and vertex sets (Section 2).</li>
+<li>Slots, degrees and families (Section 3).</li>
+<li>Slot evaluations (Section 4).</li>
+<li>Concentration for sampling with and without replacement (Section 5).</li>
+<li>The choice of coefficients and spills (Section 6).</li>
+</ul>
+<h2 id="1-parameters">1. Parameters</h2>
+<p>Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be a positive integer, which is taken large at the end of the course, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d=2^{4\ell},\quad D=d^2,\quad s=10\ell,\quad r=7\ell,\\
+n_0=1000,\\
+H_i=(2n_0+1)s+1+|i|\quad(i\in\mathbb Z).
+\end{gathered}
+\]">\[
+\begin{gathered}
+d=2^{4\ell},\quad D=d^2,\quad s=10\ell,\quad r=7\ell,\\
+n_0=1000,\\
+H_i=(2n_0+1)s+1+|i|\quad(i\in\mathbb Z).
+\end{gathered}
+\]</span>
+So <span class="math" data-tex="\(\log_2d=4\ell=2r-s\)">\(\log_2d=4\ell=2r-s\)</span>, and <span class="math" data-tex="\(H_0=20010\ell+1\le h_*\log_2d\)">\(H_0=20010\ell+1\le h_*\log_2d\)</span> with <span class="math" data-tex="\(h_*=5003\)">\(h_*=5003\)</span>. Put
+<span class="math math-display" data-tex="\[
+L_i=\frac{100H_i}{\log_2d},\qquad g_i=\frac{H_i}{100\log_2d} .
+\]">\[
+L_i=\frac{100H_i}{\log_2d},\qquad g_i=\frac{H_i}{100\log_2d} .
+\]</span>
+Since <span class="math" data-tex="\(|H_j-H_i|\le|j-i|\)">\(|H_j-H_i|\le|j-i|\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|j-i|\le\frac{CH_i}{\log_2d}\\
+\Longrightarrow\ \Bigl|\frac{H_j}{H_i}-1\Bigr|\le\frac C{\log_2d},
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+|j-i|\le\frac{CH_i}{\log_2d}\\
+\Longrightarrow\ \Bigl|\frac{H_j}{H_i}-1\Bigr|\le\frac C{\log_2d},
+\end{gathered}\tag{1.1}
+\]</span>
+for every constant <span class="math" data-tex="\(C\)">\(C\)</span>; the bound is uniform in <span class="math" data-tex="\(i\)">\(i\)</span>. Throughout, <em>fixed</em> constants may depend on earlier fixed constants but not on <span class="math" data-tex="\(\ell\)">\(\ell\)</span> or on a layer index, and <em>for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span></em> means for all <span class="math" data-tex="\(\ell\)">\(\ell\)</span> beyond a threshold that depends only on fixed constants.</p>
+<h2 id="2-streams-and-vertex-sets">2. Streams and vertex sets</h2>
+<p>A <em>stream</em> of length <span class="math" data-tex="\(l\)">\(l\)</span> is a vector in <span class="math" data-tex="\(\mathbb F_2^l\)">\(\mathbb F_2^l\)</span>. We pad streams by zeros: a stream of length <span class="math" data-tex="\(l\)">\(l\)</span> is identified with the sequence in <span class="math" data-tex="\(\mathbb F_2^{\mathbb N_0}\)">\(\mathbb F_2^{\mathbb N_0}\)</span> whose coordinates from <span class="math" data-tex="\(l\)">\(l\)</span> on vanish, its <em>active</em> coordinates being <span class="math" data-tex="\(0,\ldots,l-1\)">\(0,\ldots,l-1\)</span>. The <em>prefix</em> of length <span class="math" data-tex="\(a\)">\(a\)</span> consists of coordinates <span class="math" data-tex="\(0,\ldots,a-1\)">\(0,\ldots,a-1\)</span>.</p>
+<p>For <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> write <span class="math" data-tex="\(h=2sq+t\)">\(h=2sq+t\)</span> with <span class="math" data-tex="\(q\ge0\)">\(q\ge0\)</span>, <span class="math" data-tex="\(0\le t&lt;2s\)">\(0\le t&lt;2s\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+l_A(h)&amp;=r+n_0s+qs+\max(t-s,0),\\
+l_B(h)&amp;=n_0s+qs+\min(t,s),
+\end{aligned}
+\]">\[
+\begin{aligned}
+l_A(h)&amp;=r+n_0s+qs+\max(t-s,0),\\
+l_B(h)&amp;=n_0s+qs+\min(t,s),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(l_A(i)=l_A(|i|)\)">\(l_A(i)=l_A(|i|)\)</span>, <span class="math" data-tex="\(l_B(i)=l_B(|i|)\)">\(l_B(i)=l_B(|i|)\)</span> for <span class="math" data-tex="\(i\in\mathbb Z\)">\(i\in\mathbb Z\)</span>. Then <span class="math" data-tex="\(l_A(h)+l_B(h)=r+2n_0s+h\)">\(l_A(h)+l_B(h)=r+2n_0s+h\)</span>, and increasing <span class="math" data-tex="\(h\)">\(h\)</span> by one increases exactly one of the two lengths by one: the <span class="math" data-tex="\(B\)">\(B\)</span>-length during <span class="math" data-tex="\(s\)">\(s\)</span> consecutive steps, then the <span class="math" data-tex="\(A\)">\(A\)</span>-length during the next <span class="math" data-tex="\(s\)">\(s\)</span> steps. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_i&amp;=\mathbb F_2^{l_A(i)}\times\mathbb F_2^{r+1+l_B(i)},\\
+B_i&amp;=\mathbb F_2^{l_B(i)}\times\mathbb F_2^{s-r+1+l_A(i)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+A_i&amp;=\mathbb F_2^{l_A(i)}\times\mathbb F_2^{r+1+l_B(i)},\\
+B_i&amp;=\mathbb F_2^{l_B(i)}\times\mathbb F_2^{s-r+1+l_A(i)} .
+\end{aligned}
+\]</span>
+The two coordinates of a vertex are written <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>; <span class="math" data-tex="\(u\)">\(u\)</span> is its <em>input stream</em>.</p>
+<p><strong>Lemma 2.1</strong> (cardinalities). <span class="math" data-tex="\(|A_i|=d\,2^{H_i}\)">\(|A_i|=d\,2^{H_i}\)</span> and <span class="math" data-tex="\(|B_i|=2^{H_i}\)">\(|B_i|=2^{H_i}\)</span>. All four stream lengths at layer <span class="math" data-tex="\(i\)">\(i\)</span> are at most <span class="math" data-tex="\(H_i\)">\(H_i\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\log_2|B_i|=l_B(i)+s-r+1+l_A(i)\)">\(\log_2|B_i|=l_B(i)+s-r+1+l_A(i)\)</span>, which is <span class="math" data-tex="\(s+2n_0s+1+|i|=H_i\)">\(s+2n_0s+1+|i|=H_i\)</span>, and <span class="math" data-tex="\(\log_2|A_i|=l_A(i)+r+1+l_B(i)\)">\(\log_2|A_i|=l_A(i)+r+1+l_B(i)\)</span>, which is <span class="math" data-tex="\(2r-s+H_i\)">\(2r-s+H_i\)</span>, with <span class="math" data-tex="\(2r-s=\log_2d\)">\(2r-s=\log_2d\)</span>. For the last statement, <span class="math" data-tex="\(l_A(i)\le r+n_0s+|i|&lt;H_i\)">\(l_A(i)\le r+n_0s+|i|&lt;H_i\)</span>, and the other three lengths are bounded in the same way. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Blocks.</strong> An <span class="math" data-tex="\(A\)">\(A\)</span>-stream is divided into <em>block</em> <span class="math" data-tex="\(0\)">\(0\)</span> of length <span class="math" data-tex="\(r\)">\(r\)</span>, followed by blocks <span class="math" data-tex="\(1,2,\ldots\)">\(1,2,\ldots\)</span> of length <span class="math" data-tex="\(s\)">\(s\)</span>; a <span class="math" data-tex="\(B\)">\(B\)</span>-stream into blocks <span class="math" data-tex="\(1,2,\ldots\)">\(1,2,\ldots\)</span> of length <span class="math" data-tex="\(s\)">\(s\)</span>. The blocks of the two sides are ordered as
+<span class="math math-display" data-tex="\[
+A0;\,B1;\,A1;\,B2;\,A2;\,\ldots ,\tag{2.1}
+\]">\[
+A0;\,B1;\,A1;\,B2;\,A2;\,\ldots ,\tag{2.1}
+\]</span>
+the <em>interleaved order</em>.</p>
+<p><strong>Lemma 2.2</strong> (cutoffs). Let <span class="math" data-tex="\(|i-k|\le1\)">\(|i-k|\le1\)</span>. The active coordinates of the <span class="math" data-tex="\(A\)">\(A\)</span>-stream at <span class="math" data-tex="\(A_i\)">\(A_i\)</span> and of the <span class="math" data-tex="\(B\)">\(B\)</span>-stream at <span class="math" data-tex="\(B_k\)">\(B_k\)</span> form an initial segment of the interleaved order, possibly ending in a proper initial part of a block. The cutoff has exactly one of the two forms
+<span class="math math-display" data-tex="\[
+\begin{array}{ll}
+\text{(B)}&amp;l_A(i)=r+ns,\\
+&amp;l_B(k)=ns+t,\\
+\text{(A)}&amp;l_B(k)=(n+1)s,\\
+&amp;l_A(i)=r+ns+t,
+\end{array}
+\]">\[
+\begin{array}{ll}
+\text{(B)}&amp;l_A(i)=r+ns,\\
+&amp;l_B(k)=ns+t,\\
+\text{(A)}&amp;l_B(k)=(n+1)s,\\
+&amp;l_A(i)=r+ns+t,
+\end{array}
+\]</span>
+with <span class="math" data-tex="\(1\le t\le s\)">\(1\le t\le s\)</span>, in which the last active block is <span class="math" data-tex="\(B(n+1)\)">\(B(n+1)\)</span>, respectively <span class="math" data-tex="\(A(n+1)\)">\(A(n+1)\)</span>, with <span class="math" data-tex="\(t\)">\(t\)</span> active coordinates; and <span class="math" data-tex="\(n\ge n_0-1\)">\(n\ge n_0-1\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(|k|=|i|=h=2sq+t&#x27;\)">\(|k|=|i|=h=2sq+t&#x27;\)</span>: if <span class="math" data-tex="\(1\le t&#x27;\le s\)">\(1\le t&#x27;\le s\)</span>, then <span class="math" data-tex="\(l_A=r+(n_0+q)s\)">\(l_A=r+(n_0+q)s\)</span> and <span class="math" data-tex="\(l_B=(n_0+q)s+t&#x27;\)">\(l_B=(n_0+q)s+t&#x27;\)</span>, form (B) with <span class="math" data-tex="\(n=n_0+q\)">\(n=n_0+q\)</span>; if <span class="math" data-tex="\(s&lt;t&#x27;&lt;2s\)">\(s&lt;t&#x27;&lt;2s\)</span>, then <span class="math" data-tex="\(l_B=(n_0+q+1)s\)">\(l_B=(n_0+q+1)s\)</span> and <span class="math" data-tex="\(l_A=r+(n_0+q)s+(t&#x27;-s)\)">\(l_A=r+(n_0+q)s+(t&#x27;-s)\)</span>, form (A); if <span class="math" data-tex="\(t&#x27;=0\)">\(t&#x27;=0\)</span>, then <span class="math" data-tex="\(l_A=r+(n_0+q)s\)">\(l_A=r+(n_0+q)s\)</span> and <span class="math" data-tex="\(l_B=(n_0+q)s\)">\(l_B=(n_0+q)s\)</span>, which is form (A) with <span class="math" data-tex="\(n=n_0+q-1\)">\(n=n_0+q-1\)</span> and <span class="math" data-tex="\(t=s\)">\(t=s\)</span>. If <span class="math" data-tex="\(|k|=|i|\pm1\)">\(|k|=|i|\pm1\)</span>, exactly one of the two lengths changes between <span class="math" data-tex="\(|i|\)">\(|i|\)</span> and <span class="math" data-tex="\(|k|\)">\(|k|\)</span>. If it is the <span class="math" data-tex="\(B\)">\(B\)</span>-length, then <span class="math" data-tex="\(l_A(i)=l_A(k)\)">\(l_A(i)=l_A(k)\)</span> and <span class="math" data-tex="\((l_A(i),l_B(k))=(l_A(k),l_B(k))\)">\((l_A(i),l_B(k))=(l_A(k),l_B(k))\)</span>; if it is the <span class="math" data-tex="\(A\)">\(A\)</span>-length, then <span class="math" data-tex="\(l_B(k)=l_B(i)\)">\(l_B(k)=l_B(i)\)</span> and <span class="math" data-tex="\((l_A(i),l_B(k))=(l_A(i),l_B(i))\)">\((l_A(i),l_B(k))=(l_A(i),l_B(i))\)</span>. In both cases the pair of lengths is that of a single index, and the first case applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In both forms the four blocks immediately before the last active block are full blocks of length <span class="math" data-tex="\(s\)">\(s\)</span>, because <span class="math" data-tex="\(n\ge n_0-1\ge3\)">\(n\ge n_0-1\ge3\)</span>.</p>
+<h2 id="3-slots-degrees-and-families">3. Slots, degrees and families</h2>
+<p>Fix a pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> with <span class="math" data-tex="\(|i-k|\le1\)">\(|i-k|\le1\)</span>, called an <em>adjacent pair</em>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha&amp;=1+l_B(i)-l_B(k),\\
+\beta&amp;=1+l_A(k)-l_A(i),\\
+p&amp;=r+\alpha,\qquad p&#x27;=s-r+\beta .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha&amp;=1+l_B(i)-l_B(k),\\
+\beta&amp;=1+l_A(k)-l_A(i),\\
+p&amp;=r+\alpha,\qquad p&#x27;=s-r+\beta .
+\end{aligned}
+\]</span>
+Since adjacent absolute indices change each length by at most one, <span class="math" data-tex="\(\alpha,\beta\in\{0,1,2\}\)">\(\alpha,\beta\in\{0,1,2\}\)</span>, and <span class="math" data-tex="\(p&gt;p&#x27;&gt;0\)">\(p&gt;p&#x27;&gt;0\)</span> for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p>At every vertex of <span class="math" data-tex="\(A_i\)">\(A_i\)</span> there are <span class="math" data-tex="\(d\)">\(d\)</span> <em>slots</em> for the pair, indexed by <span class="math" data-tex="\(a=(k-i,j)\)">\(a=(k-i,j)\)</span>, <span class="math" data-tex="\(1\le j\le d\)">\(1\le j\le d\)</span>. At every vertex of <span class="math" data-tex="\(B_k\)">\(B_k\)</span> the slots for the pair are indexed by <span class="math" data-tex="\(c=(i-k,j,b)\)">\(c=(i-k,j,b)\)</span> with <span class="math" data-tex="\(1\le j\le d\)">\(1\le j\le d\)</span> and <span class="math" data-tex="\(b\in\mathbb F_2^{p-p&#x27;}\)">\(b\in\mathbb F_2^{p-p&#x27;}\)</span>, the <em>bucket</em>. Each slot will carry exactly one edge.</p>
+<p><strong>Lemma 3.1</strong> (degrees). The number of slots for the pair at a vertex of <span class="math" data-tex="\(B_k\)">\(B_k\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_{ik}=d\,2^{p-p&#x27;}=D\,2^{|i|-|k|},\\
+\tfrac D2\le D_{ik}\le2D ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+D_{ik}=d\,2^{p-p&#x27;}=D\,2^{|i|-|k|},\\
+\tfrac D2\le D_{ik}\le2D ,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(d|A_i|=D_{ik}|B_k|\)">\(d|A_i|=D_{ik}|B_k|\)</span>. Over the three pairs <span class="math" data-tex="\((i,i-1),(i,i),(i,i+1)\)">\((i,i-1),(i,i),(i,i+1)\)</span>, a vertex of <span class="math" data-tex="\(A_i\)">\(A_i\)</span> has <span class="math" data-tex="\(3d\)">\(3d\)</span> slots, and a vertex of <span class="math" data-tex="\(B_k\)">\(B_k\)</span> has at most <span class="math" data-tex="\(6D\)">\(6D\)</span> slots.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(p-p&#x27;=2r-s+\alpha-\beta\)">\(p-p&#x27;=2r-s+\alpha-\beta\)</span>, and <span class="math" data-tex="\(\alpha-\beta=|i|-|k|\)">\(\alpha-\beta=|i|-|k|\)</span>, the difference of <span class="math" data-tex="\(l_A(i)+l_B(i)\)">\(l_A(i)+l_B(i)\)</span> and <span class="math" data-tex="\(l_A(k)+l_B(k)\)">\(l_A(k)+l_B(k)\)</span>, so <span class="math" data-tex="\(p-p&#x27;=\log_2d+|i|-|k|\)">\(p-p&#x27;=\log_2d+|i|-|k|\)</span>. Then <span class="math" data-tex="\(D_{ik}|B_k|=D\,2^{|i|-|k|}2^{H_k}=D\,2^{H_i}=d|A_i|\)">\(D_{ik}|B_k|=D\,2^{|i|-|k|}2^{H_k}=D\,2^{H_i}=d|A_i|\)</span> by Lemma 2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Families.</strong> Put <span class="math" data-tex="\(K=32s\)">\(K=32s\)</span>. The <em>family</em> of an adjacent pair is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bigl(k-i,\ \operatorname{sgn}i,\ \operatorname{sgn}k,\\
+|i|\bmod K,\ |k|\bmod K\bigr),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\bigl(k-i,\ \operatorname{sgn}i,\ \operatorname{sgn}k,\\
+|i|\bmod K,\ |k|\bmod K\bigr),
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(\operatorname{sgn}0=0\)">\(\operatorname{sgn}0=0\)</span>. There are at most <span class="math" data-tex="\(27K^2\)">\(27K^2\)</span> families. Since <span class="math" data-tex="\(K\)">\(K\)</span> is a multiple of <span class="math" data-tex="\(2s\)">\(2s\)</span>, the family determines <span class="math" data-tex="\(\alpha,\beta,p,p&#x27;\)">\(\alpha,\beta,p,p&#x27;\)</span>, the form of the cutoff and the value of <span class="math" data-tex="\(t\)">\(t\)</span> in Lemma 2.2. A family that contains more than one pair has both indices of the same nonzero sign, and its pairs are <span class="math" data-tex="\((i+mK\operatorname{sgn}i,\,k+mK\operatorname{sgn}i)\)">\((i+mK\operatorname{sgn}i,\,k+mK\operatorname{sgn}i)\)</span>, <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>; passing from one to the next adds <span class="math" data-tex="\(K/2=16s\)">\(K/2=16s\)</span> to both stream lengths, so the last active blocks of different pairs of one family are at least <span class="math" data-tex="\(32\)">\(32\)</span> positions apart in the interleaved order. Families of pairs containing the index <span class="math" data-tex="\(0\)">\(0\)</span> consist of one pair.</p>
+<h2 id="4-slot-evaluations">4. Slot evaluations</h2>
+<p>On each side and for each slot there is a linear map <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> from padded input streams to padded streams, and the <em>evaluation</em> of a vertex <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> at the slot is
+<span class="math math-display" data-tex="\[
+Q=v+\mathcal Ku .\tag{4.1}
+\]">\[
+Q=v+\mathcal Ku .\tag{4.1}
+\]</span>
+The map <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> acts blockwise: on an input block of length <span class="math" data-tex="\(h\in\{r,s\}\)">\(h\in\{r,s\}\)</span> it is multiplication by a <em>diagonal coefficient</em> in the field <span class="math" data-tex="\(\mathbb F_{2^h}\)">\(\mathbb F_{2^h}\)</span>, after a fixed linear identification <span class="math" data-tex="\(\mathbb F_{2^h}\cong\mathbb F_2^h\)">\(\mathbb F_{2^h}\cong\mathbb F_2^h\)</span>, with output in the same coordinates; in addition it may send a linear image of the block, its <em>spill</em>, into the first <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> coordinates of the following block on side <span class="math" data-tex="\(A\)">\(A\)</span>, or the first <span class="math" data-tex="\(\beta\)">\(\beta\)</span> coordinates of the following block on side <span class="math" data-tex="\(B\)">\(B\)</span>. There are no other terms. The diagonal coefficient of a slot is the same for all its blocks of length <span class="math" data-tex="\(s\)">\(s\)</span>; the spill matrix may depend on the family and the slot, and is the same at all blocks of length <span class="math" data-tex="\(s\)">\(s\)</span>. The spill of <span class="math" data-tex="\(A\)">\(A\)</span>-block <span class="math" data-tex="\(0\)">\(0\)</span> is zero.</p>
+<p>The fields exist: the roots of <span class="math" data-tex="\(z^{2^h}-z\)">\(z^{2^h}-z\)</span> in a splitting field over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> form a subfield, and they are <span class="math" data-tex="\(2^h\)">\(2^h\)</span> distinct roots, since the derivative of <span class="math" data-tex="\(z^{2^h}-z\)">\(z^{2^h}-z\)</span> is <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p><strong>Recovering a block.</strong> If two slots <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span> at the same vertex have diagonal coefficients <span class="math" data-tex="\(\lambda_a\ne\lambda_b\)">\(\lambda_a\ne\lambda_b\)</span>, their evaluations on block <span class="math" data-tex="\(h\)">\(h\)</span> are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q^a_h=v_h+\lambda_au_h+S_au_{h-1},\\
+Q^b_h=v_h+\lambda_bu_h+S_bu_{h-1},
+\end{gathered}
+\]">\[
+\begin{gathered}
+Q^a_h=v_h+\lambda_au_h+S_au_{h-1},\\
+Q^b_h=v_h+\lambda_bu_h+S_bu_{h-1},
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(S_a,S_b\)">\(S_a,S_b\)</span> are the spills from the preceding block, extended by zero. If <span class="math" data-tex="\(Q^a_h\)">\(Q^a_h\)</span>, <span class="math" data-tex="\(Q^b_h\)">\(Q^b_h\)</span> and <span class="math" data-tex="\(u_{h-1}\)">\(u_{h-1}\)</span> are known, then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\lambda_a-\lambda_b)u_h=Q^a_h-Q^b_h\\
+-(S_a-S_b)u_{h-1}
+\end{gathered}\tag{4.2}
+\]">\[
+\begin{gathered}
+(\lambda_a-\lambda_b)u_h=Q^a_h-Q^b_h\\
+-(S_a-S_b)u_{h-1}
+\end{gathered}\tag{4.2}
+\]</span>
+determines <span class="math" data-tex="\(u_h\)">\(u_h\)</span>, and then <span class="math" data-tex="\(v_h\)">\(v_h\)</span>. This is how long paths will be reconstructed from their labels.</p>
+<p><strong>Coefficient pools.</strong> On side <span class="math" data-tex="\(A\)">\(A\)</span>, slots are named by <span class="math" data-tex="\((\delta,j)\)">\((\delta,j)\)</span>, <span class="math" data-tex="\(\delta\in\{-1,0,1\}\)">\(\delta\in\{-1,0,1\}\)</span>, <span class="math" data-tex="\(1\le j\le d\)">\(1\le j\le d\)</span>: <span class="math" data-tex="\(3d\)">\(3d\)</span> names. On side <span class="math" data-tex="\(B\)">\(B\)</span>, a slot name is <span class="math" data-tex="\((\delta,j,w,b)\)">\((\delta,j,w,b)\)</span> with the offset <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, the serial number <span class="math" data-tex="\(j\)">\(j\)</span>, the bucket width <span class="math" data-tex="\(w\in\{\log_2d-1,\log_2d,\log_2d+1\}\)">\(w\in\{\log_2d-1,\log_2d,\log_2d+1\}\)</span> and the bucket <span class="math" data-tex="\(b\in\mathbb F_2^w\)">\(b\in\mathbb F_2^w\)</span>: at most <span class="math" data-tex="\(3d(\frac d2+d+2d)=\frac{21}2D\)">\(3d(\frac d2+d+2d)=\frac{21}2D\)</span> names. Choose injections of the <span class="math" data-tex="\(A\)">\(A\)</span>-names into <span class="math" data-tex="\(\mathbb F_{2^s}\)">\(\mathbb F_{2^s}\)</span> and into <span class="math" data-tex="\(\mathbb F_{2^r}\)">\(\mathbb F_{2^r}\)</span>, and of the <span class="math" data-tex="\(B\)">\(B\)</span>-names into <span class="math" data-tex="\(\mathbb F_{2^s}\)">\(\mathbb F_{2^s}\)</span>; they exist for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span> because <span class="math" data-tex="\(3d=3\cdot2^{4\ell}&lt;2^r\)">\(3d=3\cdot2^{4\ell}&lt;2^r\)</span> and <span class="math" data-tex="\(\frac{21}2D&lt;2^s\)">\(\frac{21}2D&lt;2^s\)</span>. The diagonal coefficients of a slot are the images of its name, independently of the layer and the family. So two different slots at the same vertex always have different diagonal coefficients, in every block size.</p>
+<h2 id="5-concentration-for-sampling-with-and-without-replacement">5. Concentration for sampling with and without replacement</h2>
+<p><strong>Lemma 5.1</strong> (exponential moments). Let <span class="math" data-tex="\(y_1,\ldots,y_n\in\{0,1\}\)">\(y_1,\ldots,y_n\in\{0,1\}\)</span>, let <span class="math" data-tex="\(S\)">\(S\)</span> be the sum of <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span> entries drawn either independently and uniformly from the list, or uniformly without replacement, and <span class="math" data-tex="\(h\in\mathbb R\)">\(h\in\mathbb R\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E\,e^{h(S-\mathbb ES)}\le e^{mh^2/8},\\
+\mathbb P\{S-\mathbb ES\ge\epsilon m\}\le e^{-2\epsilon^2m},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E\,e^{h(S-\mathbb ES)}\le e^{mh^2/8},\\
+\mathbb P\{S-\mathbb ES\ge\epsilon m\}\le e^{-2\epsilon^2m},
+\end{gathered}
+\]</span>
+and the same tail bound holds for <span class="math" data-tex="\(\mathbb ES-S\)">\(\mathbb ES-S\)</span>.</p>
+<p><em>Proof.</em> For one draw <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(\mathbb EX=\mu\)">\(\mathbb EX=\mu\)</span>, the function <span class="math" data-tex="\(\psi(h)=\log\mathbb Ee^{h(X-\mu)}\)">\(\psi(h)=\log\mathbb Ee^{h(X-\mu)}\)</span> has <span class="math" data-tex="\(\psi(0)=\psi&#x27;(0)=0\)">\(\psi(0)=\psi&#x27;(0)=0\)</span>, and <span class="math" data-tex="\(\psi&#x27;&#x27;(h)\)">\(\psi&#x27;&#x27;(h)\)</span> is the variance of <span class="math" data-tex="\(X\)">\(X\)</span> under the probability proportional to <span class="math" data-tex="\(e^{hX}\)">\(e^{hX}\)</span>, at most <span class="math" data-tex="\(\frac14\)">\(\frac14\)</span> for a <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>-valued variable. So <span class="math" data-tex="\(\psi(h)\le h^2/8\)">\(\psi(h)\le h^2/8\)</span>, and for independent draws the exponential moments multiply.</p>
+<p>Without replacement, put <span class="math" data-tex="\(x_k=e^{hy_k}&gt;0\)">\(x_k=e^{hy_k}&gt;0\)</span>. The expectation of the product of the <span class="math" data-tex="\(m\)">\(m\)</span> sampled <span class="math" data-tex="\(x_k\)">\(x_k\)</span> is <span class="math" data-tex="\(e_m(x)/\binom nm\)">\(e_m(x)/\binom nm\)</span>, with <span class="math" data-tex="\(e_m\)">\(e_m\)</span> the elementary symmetric polynomial. Replacing two entries <span class="math" data-tex="\(x_1\ne x_2\)">\(x_1\ne x_2\)</span> by their average does not decrease <span class="math" data-tex="\(e_m\)">\(e_m\)</span>: with <span class="math" data-tex="\(x&#x27;=(x_3,\ldots,x_n)\)">\(x&#x27;=(x_3,\ldots,x_n)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e_m(x)&amp;=x_1x_2e_{m-2}(x&#x27;)\\
+&amp;\quad+(x_1+x_2)e_{m-1}(x&#x27;)+e_m(x&#x27;),
+\end{aligned}
+\]">\[
+\begin{aligned}
+e_m(x)&amp;=x_1x_2e_{m-2}(x&#x27;)\\
+&amp;\quad+(x_1+x_2)e_{m-1}(x&#x27;)+e_m(x&#x27;),
+\end{aligned}
+\]</span>
+in which only <span class="math" data-tex="\(x_1x_2\)">\(x_1x_2\)</span> changes, and it increases. Replace repeatedly the largest and the smallest entry by their average; each step lowers <span class="math" data-tex="\(\sum_k(x_k-\bar x)^2\)">\(\sum_k(x_k-\bar x)^2\)</span> by <span class="math" data-tex="\(\frac12(\max-\min)^2\)">\(\frac12(\max-\min)^2\)</span>, which is at least <span class="math" data-tex="\(\frac1{2n}\)">\(\frac1{2n}\)</span> times that sum, so all entries converge to the mean <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>. By continuity, <span class="math" data-tex="\(e_m(x)/\binom nm\le\bar x^m\)">\(e_m(x)/\binom nm\le\bar x^m\)</span>, the corresponding product moment for independent draws. Both ways of sampling have the same mean, so the bound for independent draws applies. The tail bound follows from Markov's inequality applied to <span class="math" data-tex="\(e^{h(S-\mathbb ES)}\)">\(e^{h(S-\mathbb ES)}\)</span> with <span class="math" data-tex="\(h=4\epsilon\)">\(h=4\epsilon\)</span>, and the lower tail from <span class="math" data-tex="\(-y_k\)">\(-y_k\)</span> in place of <span class="math" data-tex="\(y_k\)">\(y_k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-choice-of-coefficients-and-spills">6. The choice of coefficients and spills</h2>
+<p>Fix a family and one of its pairs <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>, and a side. Let <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> be the set of slots of that side for the pair, <span class="math" data-tex="\(n_{\mathrm{sl}}=|\mathcal I|\)">\(n_{\mathrm{sl}}=|\mathcal I|\)</span>, so <span class="math" data-tex="\(n_{\mathrm{sl}}=d\)">\(n_{\mathrm{sl}}=d\)</span> on side <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(n_{\mathrm{sl}}=D_{ik}\)">\(n_{\mathrm{sl}}=D_{ik}\)</span> on side <span class="math" data-tex="\(B\)">\(B\)</span>. For a slot <span class="math" data-tex="\(a\in\mathcal I\)">\(a\in\mathcal I\)</span> let
+<span class="math math-display" data-tex="\[
+M_a:\mathbb F_2^s\to\mathbb F_2^{s+\alpha}\quad\text{or}\quad M_a:\mathbb F_2^s\to\mathbb F_2^{s+\beta}
+\]">\[
+M_a:\mathbb F_2^s\to\mathbb F_2^{s+\alpha}\quad\text{or}\quad M_a:\mathbb F_2^s\to\mathbb F_2^{s+\beta}
+\]</span>
+be multiplication by its diagonal coefficient followed by its spill, the map from one input block of length <span class="math" data-tex="\(s\)">\(s\)</span> to the corresponding output block and the spilled coordinates.</p>
+<p><strong>Lemma 6.1</strong> (coefficients and spills; [OpenAI-KK, Lemma 4.1]). For large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, the injections and spills can be chosen so that for every family, each side and every nonzero linear functional <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> on the output space of the <span class="math" data-tex="\(M_a\)">\(M_a\)</span>:</p>
+<ol>
+<li>for every nonempty initial segment of the <span class="math" data-tex="\(s\)">\(s\)</span> input coordinates, every value of the restricted functional <span class="math" data-tex="\(\zeta M_a\)">\(\zeta M_a\)</span> occurs for at most <span class="math" data-tex="\(0.55\,n_{\mathrm{sl}}\)">\(0.55\,n_{\mathrm{sl}}\)</span> slots <span class="math" data-tex="\(a\)">\(a\)</span>;</li>
+<li>every value of the full functional <span class="math" data-tex="\(\zeta M_a\)">\(\zeta M_a\)</span> occurs for at most <span class="math" data-tex="\(10^{-3}n_{\mathrm{sl}}\)">\(10^{-3}n_{\mathrm{sl}}\)</span> slots.</li>
+</ol>
+<p><em>Proof.</em> Choose each injection uniformly at random, and for every family and slot an independent uniform binary matrix with two rows and <span class="math" data-tex="\(s\)">\(s\)</span> columns, of which the spill uses the first <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> or <span class="math" data-tex="\(\beta\)">\(\beta\)</span> rows. Fix a test: a family, a side, <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, and either a value of the first-coordinate restriction or a value of the full functional.</p>
+<p>If the spill component of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is nonzero, then, conditionally on all diagonal coefficients, the functionals <span class="math" data-tex="\(\zeta M_a\)">\(\zeta M_a\)</span>, <span class="math" data-tex="\(a\in\mathcal I\)">\(a\in\mathcal I\)</span>, are independent and uniform among the <span class="math" data-tex="\(2^s\)">\(2^s\)</span> functionals on <span class="math" data-tex="\(\mathbb F_2^s\)">\(\mathbb F_2^s\)</span>, because a nonzero combination of independent uniform rows is uniform. In particular their values on the first input coordinate are independent fair bits. If the spill component of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> vanishes, its diagonal component <span class="math" data-tex="\(\zeta_0\)">\(\zeta_0\)</span> is nonzero, and <span class="math" data-tex="\(\lambda\mapsto(u\mapsto\zeta_0(\lambda u))\)">\(\lambda\mapsto(u\mapsto\zeta_0(\lambda u))\)</span> is a bijection from the field onto the <span class="math" data-tex="\(2^s\)">\(2^s\)</span> functionals: distinct <span class="math" data-tex="\(\lambda,\lambda&#x27;\)">\(\lambda,\lambda&#x27;\)</span> give distinct functionals because <span class="math" data-tex="\((\lambda-\lambda&#x27;)u\)">\((\lambda-\lambda&#x27;)u\)</span> runs through all of <span class="math" data-tex="\(\mathbb F_2^s\)">\(\mathbb F_2^s\)</span>. The coefficients of distinct slots are distinct uniform field elements, so the functionals <span class="math" data-tex="\(\zeta M_a\)">\(\zeta M_a\)</span> are drawn uniformly without replacement, and their first-coordinate values without replacement from a population that is half zeros and half ones.</p>
+<p>By Lemma 5.1 with <span class="math" data-tex="\(m=n_{\mathrm{sl}}\ge d\)">\(m=n_{\mathrm{sl}}\ge d\)</span>, a first-coordinate value occurs more than <span class="math" data-tex="\(0.55m\)">\(0.55m\)</span> times with probability at most <span class="math" data-tex="\(e^{-2(0.05)^2m}\)">\(e^{-2(0.05)^2m}\)</span>. A full value has expected frequency <span class="math" data-tex="\(2^{-s}m&lt;\frac12\cdot10^{-3}m\)">\(2^{-s}m&lt;\frac12\cdot10^{-3}m\)</span> for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, so it occurs more than <span class="math" data-tex="\(10^{-3}m\)">\(10^{-3}m\)</span> times with probability at most <span class="math" data-tex="\(e^{-2(5\cdot10^{-4})^2m}\)">\(e^{-2(5\cdot10^{-4})^2m}\)</span>; without replacement it occurs at most once. The number of tests is at most <span class="math" data-tex="\(27K^2\cdot2\cdot2^{s+2}(2+2^s)=2^{O(\ell)}\)">\(27K^2\cdot2\cdot2^{s+2}(2+2^s)=2^{O(\ell)}\)</span>, each failing with probability at most <span class="math" data-tex="\(e^{-cd}\)">\(e^{-cd}\)</span> for an absolute <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, and <span class="math" data-tex="\(d=2^{4\ell}\)">\(d=2^{4\ell}\)</span>. So for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span> some choice passes all tests. A value of the functional restricted to a longer initial segment determines its value on the first coordinate, so the bound for the first coordinate implies statement 1 for every nonempty initial segment. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The coefficients and spills are fixed from now on.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1</strong> (easy). Compute <span class="math" data-tex="\(l_A(h)\)">\(l_A(h)\)</span> and <span class="math" data-tex="\(l_B(h)\)">\(l_B(h)\)</span> for <span class="math" data-tex="\(h=0,1,s,s+1,2s\)">\(h=0,1,s,s+1,2s\)</span>, and check <span class="math" data-tex="\(l_A(h)+l_B(h)=r+2n_0s+h\)">\(l_A(h)+l_B(h)=r+2n_0s+h\)</span>.</p>
+<p><strong>7.2</strong> (easy). Check that <span class="math" data-tex="\(|A_i|=d\,|B_i|\)">\(|A_i|=d\,|B_i|\)</span> and that the number of edges of the pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>, counted at <span class="math" data-tex="\(A_i\)">\(A_i\)</span>, is <span class="math" data-tex="\(D\,2^{H_i}\)">\(D\,2^{H_i}\)</span>.</p>
+<p><strong>7.3</strong> (medium). Let <span class="math" data-tex="\(\lambda_a=1\)">\(\lambda_a=1\)</span>, <span class="math" data-tex="\(\lambda_b=x\)">\(\lambda_b=x\)</span> in <span class="math" data-tex="\(\mathbb F_4=\mathbb F_2[x]/(x^2+x+1)\)">\(\mathbb F_4=\mathbb F_2[x]/(x^2+x+1)\)</span>, and suppose there are no spills. Given <span class="math" data-tex="\(Q^a=v+u\)">\(Q^a=v+u\)</span> and <span class="math" data-tex="\(Q^b=v+xu\)">\(Q^b=v+xu\)</span> for <span class="math" data-tex="\(u,v\in\mathbb F_4\)">\(u,v\in\mathbb F_4\)</span>, recover <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>7.4</strong> (medium). Show that for independent fair bits <span class="math" data-tex="\(X_1,\ldots,X_m\)">\(X_1,\ldots,X_m\)</span>, <span class="math" data-tex="\(\mathbb P\{X_1+\cdots+X_m\ge0.55m\}\le e^{-m/200}\)">\(\mathbb P\{X_1+\cdots+X_m\ge0.55m\}\le e^{-m/200}\)</span>, and compare with the exact probability for <span class="math" data-tex="\(m=100\)">\(m=100\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(h=0\)">\(h=0\)</span>: <span class="math" data-tex="\(q=t=0\)">\(q=t=0\)</span>, <span class="math" data-tex="\(l_A=r+n_0s\)">\(l_A=r+n_0s\)</span>, <span class="math" data-tex="\(l_B=n_0s\)">\(l_B=n_0s\)</span>. <span class="math" data-tex="\(h=1\)">\(h=1\)</span>: <span class="math" data-tex="\(l_B\)">\(l_B\)</span> grows to <span class="math" data-tex="\(n_0s+1\)">\(n_0s+1\)</span>. <span class="math" data-tex="\(h=s\)">\(h=s\)</span>: <span class="math" data-tex="\(l_B=n_0s+s\)">\(l_B=n_0s+s\)</span>, <span class="math" data-tex="\(l_A=r+n_0s\)">\(l_A=r+n_0s\)</span>. <span class="math" data-tex="\(h=s+1\)">\(h=s+1\)</span>: <span class="math" data-tex="\(l_A=r+n_0s+1\)">\(l_A=r+n_0s+1\)</span>. <span class="math" data-tex="\(h=2s\)">\(h=2s\)</span>: <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, <span class="math" data-tex="\(l_A=r+n_0s+s\)">\(l_A=r+n_0s+s\)</span>, <span class="math" data-tex="\(l_B=n_0s+s\)">\(l_B=n_0s+s\)</span>. In each case the sum is <span class="math" data-tex="\(r+2n_0s+h\)">\(r+2n_0s+h\)</span>.</p>
+<p><strong>7.2.</strong> By Lemma 2.1, <span class="math" data-tex="\(|A_i|/|B_i|=d\)">\(|A_i|/|B_i|=d\)</span>. Each vertex of <span class="math" data-tex="\(A_i\)">\(A_i\)</span> has <span class="math" data-tex="\(d\)">\(d\)</span> slots for the pair and each slot one edge: <span class="math" data-tex="\(d\cdot d\,2^{H_i}=D\,2^{H_i}\)">\(d\cdot d\,2^{H_i}=D\,2^{H_i}\)</span> edges.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(Q^a-Q^b=(1-x)u=(1+x)u\)">\(Q^a-Q^b=(1-x)u=(1+x)u\)</span>, and <span class="math" data-tex="\(1+x=x^2\)">\(1+x=x^2\)</span> is invertible with inverse <span class="math" data-tex="\(x\)">\(x\)</span>, since <span class="math" data-tex="\(x^3=1\)">\(x^3=1\)</span>. So <span class="math" data-tex="\(u=x(Q^a+Q^b)\)">\(u=x(Q^a+Q^b)\)</span> and <span class="math" data-tex="\(v=Q^a+u\)">\(v=Q^a+u\)</span>.</p>
+<p><strong>7.4.</strong> Lemma 5.1 with <span class="math" data-tex="\(\epsilon=0.05\)">\(\epsilon=0.05\)</span> gives <span class="math" data-tex="\(e^{-2\cdot0.0025\,m}=e^{-m/200}\)">\(e^{-2\cdot0.0025\,m}=e^{-m/200}\)</span>. For <span class="math" data-tex="\(m=100\)">\(m=100\)</span>, the bound is <span class="math" data-tex="\(e^{-1/2}\approx0.61\)">\(e^{-1/2}\approx0.61\)</span>, while the exact probability of at least <span class="math" data-tex="\(55\)">\(55\)</span> heads in <span class="math" data-tex="\(100\)">\(100\)</span> tosses is about <span class="math" data-tex="\(0.18\)">\(0.18\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-KK] OpenAI, <em>A torsion-free counterexample to the Kadison–Kaplansky projection conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Section 3, Section 4.1, Section 4.2 and Lemma 4.1. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-the-Kadison-Kaplansky-Projection-Conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

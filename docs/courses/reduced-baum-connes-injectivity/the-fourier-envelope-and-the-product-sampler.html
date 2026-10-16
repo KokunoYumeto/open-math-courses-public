@@ -1,0 +1,291 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Fourier envelope and the product sampler</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to reduced Baum–Connes injectivity)</a><a href="compact-bott-projections-and-spreading.html">Previous lesson</a><a href="polynomial-avoidance-norm-tests-and-moments.html">Next lesson</a><a href="src/the-fourier-envelope-and-the-product-sampler.md">Editable source</a></nav><main><article><h1 id="the-fourier-envelope-and-the-product-sampler">The Fourier envelope and the product sampler</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Each edge of the tower will carry a random Heisenberg voltage <span class="math" data-tex="\(v\)">\(v\)</span> and a bounded matrix weight <span class="math" data-tex="\(W\)">\(W\)</span>, drawn so that the mean <span class="math" data-tex="\(\mathbb E[W\lambda(v)]\)">\(\mathbb E[W\lambda(v)]\)</span> is a prescribed spread symbol <span class="math" data-tex="\(T_ifT_k^*\)">\(T_ifT_k^*\)</span> of <a href="compact-bott-projections-and-spreading.html">Compact Bott projections and spreading</a>. Two features of the law matter later. Its horizontal coordinates <span class="math" data-tex="\(n,l\)">\(n,l\)</span> (the exponents of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>) must be independent, with small atoms, so that a fixed short word in the voltages is rarely trivial. And the weights must be bounded independently of the height. Both come from one estimate: the coefficients of <span class="math" data-tex="\(T_ifT_k^*\)">\(T_ifT_k^*\)</span> in the normal form <span class="math" data-tex="\(x^ny^lz^c\)">\(x^ny^lz^c\)</span> are dominated by a product of a function of <span class="math" data-tex="\(n\)">\(n\)</span> and a constant in <span class="math" data-tex="\(l\)">\(l\)</span>, whose total mass stays bounded although there are about <span class="math" data-tex="\(J_i\)">\(J_i\)</span> values of <span class="math" data-tex="\(l\)">\(l\)</span>. The decisive input is the residual phase <span class="math" data-tex="\(e(-nj\alpha)\)">\(e(-nj\alpha)\)</span>, summed by parts with the golden separation [OpenAI-BCI, Sections 5.4-5.5, Lemmas 5.3-5.4].</p>
+<ul>
+<li>Coefficients in the normal form (Section 1).</li>
+<li>A rescaled Fourier estimate (Section 2).</li>
+<li>The Fourier envelope (Section 3).</li>
+<li>The product sampler (Section 4).</li>
+</ul>
+<p>The notation of the previous lesson is in force: <span class="math" data-tex="\(\alpha=(\sqrt5-1)/2\)">\(\alpha=(\sqrt5-1)/2\)</span>, <span class="math" data-tex="\(N_i=2^{200H_i}\)">\(N_i=2^{200H_i}\)</span>, <span class="math" data-tex="\(Z_i=2^{500H_i}\)">\(Z_i=2^{500H_i}\)</span>, <span class="math" data-tex="\(J_i=2^{50H_i}\)">\(J_i=2^{50H_i}\)</span>, the profiles (3.2), the spreading operators <span class="math" data-tex="\(T_i\)">\(T_i\)</span> of (5.1) with coefficients <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>, and the torus coordinates of Lemma 1.1 there. We write <span class="math" data-tex="\(e(t)=e^{2\pi it}\)">\(e(t)=e^{2\pi it}\)</span> and <span class="math" data-tex="\(\hat g(w)=\int_{\mathbb R}g(t)e(-wt)\,dt\)">\(\hat g(w)=\int_{\mathbb R}g(t)e(-wt)\,dt\)</span>.</p>
+<h2 id="1-coefficients-in-the-normal-form">1. Coefficients in the normal form</h2>
+<p>Every element of <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span> is uniquely <span class="math" data-tex="\(x^ny^lz^c\)">\(x^ny^lz^c\)</span> (Lemma 1.1 of <a href="the-heisenberg-group-and-its-laws.html">The Heisenberg group and its laws</a>). For a finite or absolutely summable matrix series put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=\sum_{n,l,c}A_{n,l,c}\,\lambda(x^ny^lz^c),\\
+\|A\|_1=\sum_{n,l,c}\|A_{n,l,c}\| .
+\end{gathered}
+\]">\[
+\begin{gathered}
+A=\sum_{n,l,c}A_{n,l,c}\,\lambda(x^ny^lz^c),\\
+\|A\|_1=\sum_{n,l,c}\|A_{n,l,c}\| .
+\end{gathered}
+\]</span>
+The triangle inequality gives <span class="math" data-tex="\(\|A\|\le\|A\|_1\)">\(\|A\|\le\|A\|_1\)</span> for the operator norm on <span class="math" data-tex="\(\ell^2(\mathsf H)\otimes\mathbb C^\ell\)">\(\ell^2(\mathsf H)\otimes\mathbb C^\ell\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (coefficients of a spread symbol). Let <span class="math" data-tex="\(f\)">\(f\)</span> be a matrix function on <span class="math" data-tex="\(\mathbb T^2\)">\(\mathbb T^2\)</span> and write <span class="math" data-tex="\(f(\vartheta,\xi)=\sum_nf_n(\vartheta)e(n\xi)\)">\(f(\vartheta,\xi)=\sum_nf_n(\vartheta)e(n\xi)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_ifT_k^*=\sum_{n,l}g_{n,l}(\lambda(z))\\
+\times\lambda(x)^n\lambda(y)^l,\\
+g_{n,l}(\vartheta)=f_n(\vartheta)\,S_{n,l}(\vartheta),\\
+S_{n,l}(\vartheta)=\sum_jb_{j,l}\,e(-nj\vartheta),\\
+b_{j,l}=a_{ij}a_{k,j-l},
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+T_ifT_k^*=\sum_{n,l}g_{n,l}(\lambda(z))\\
+\times\lambda(x)^n\lambda(y)^l,\\
+g_{n,l}(\vartheta)=f_n(\vartheta)\,S_{n,l}(\vartheta),\\
+S_{n,l}(\vartheta)=\sum_jb_{j,l}\,e(-nj\vartheta),\\
+b_{j,l}=a_{ij}a_{k,j-l},
+\end{gathered}\tag{1.1}
+\]</span>
+and the coefficient <span class="math" data-tex="\(A_{n,l,c}\)">\(A_{n,l,c}\)</span> of <span class="math" data-tex="\(\lambda(x^ny^lz^c)\)">\(\lambda(x^ny^lz^c)\)</span> is the <span class="math" data-tex="\(c\)">\(c\)</span>-th Fourier coefficient of <span class="math" data-tex="\(g_{n,l}\)">\(g_{n,l}\)</span>.</p>
+<p><em>Proof.</em> By Lemma 1.1(4) of the previous lesson, <span class="math" data-tex="\(\lambda(y)^jf=f_{(j)}\lambda(y)^j\)">\(\lambda(y)^jf=f_{(j)}\lambda(y)^j\)</span> with <span class="math" data-tex="\(f_{(j)}(\vartheta,\xi)=f(\vartheta,\xi-j\vartheta)\)">\(f_{(j)}(\vartheta,\xi)=f(\vartheta,\xi-j\vartheta)\)</span>, which is <span class="math" data-tex="\(\sum_nf_n(\vartheta)e(-nj\vartheta)e(n\xi)\)">\(\sum_nf_n(\vartheta)e(-nj\vartheta)e(n\xi)\)</span>. So
+<span class="math math-display" data-tex="\[
+T_ifT_k^*=\sum_{j,j&#x27;}a_{ij}a_{kj&#x27;}f_{(j)}\lambda(y)^{j-j&#x27;} ,
+\]">\[
+T_ifT_k^*=\sum_{j,j&#x27;}a_{ij}a_{kj&#x27;}f_{(j)}\lambda(y)^{j-j&#x27;} ,
+\]</span>
+and collecting <span class="math" data-tex="\(l=j-j&#x27;\)">\(l=j-j&#x27;\)</span> gives (1.1). Finally <span class="math" data-tex="\(\lambda(z)^c\lambda(x)^n\lambda(y)^l=\lambda(x^ny^lz^c)\)">\(\lambda(z)^c\lambda(x)^n\lambda(y)^l=\lambda(x^ny^lz^c)\)</span>, since <span class="math" data-tex="\(z\)">\(z\)</span> is central. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-rescaled-fourier-estimate">2. A rescaled Fourier estimate</h2>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(g\in C_c^\infty(\mathbb R;M_\ell(\mathbb C))\)">\(g\in C_c^\infty(\mathbb R;M_\ell(\mathbb C))\)</span> and <span class="math" data-tex="\(Z\ge1\)">\(Z\ge1\)</span>, and let <span class="math" data-tex="\(c_k\)">\(c_k\)</span> be the Fourier coefficients of the function <span class="math" data-tex="\(\vartheta\mapsto g(Z(\vartheta-\alpha))\)">\(\vartheta\mapsto g(Z(\vartheta-\alpha))\)</span> on <span class="math" data-tex="\(\mathbb R/\mathbb Z\)">\(\mathbb R/\mathbb Z\)</span>, assumed supported in one period. Then <span class="math" data-tex="\(c_k=Z^{-1}e(-k\alpha)\hat g(k/Z)\)">\(c_k=Z^{-1}e(-k\alpha)\hat g(k/Z)\)</span>, and for every integer <span class="math" data-tex="\(A\ge0\)">\(A\ge0\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_k\Bigl(1+\frac{|k|}Z\Bigr)^A\|c_k\|\\
+&amp;\quad\le C_A\sum_{j=0}^{A+2}\|g^{(j)}\|_{L^1(\mathbb R)} .
+\end{aligned}\tag{2.1}
+\]">\[
+\begin{aligned}
+&amp;\sum_k\Bigl(1+\frac{|k|}Z\Bigr)^A\|c_k\|\\
+&amp;\quad\le C_A\sum_{j=0}^{A+2}\|g^{(j)}\|_{L^1(\mathbb R)} .
+\end{aligned}\tag{2.1}
+\]</span></p>
+<p><em>Proof.</em> The substitution <span class="math" data-tex="\(\vartheta=\alpha+t/Z\)">\(\vartheta=\alpha+t/Z\)</span> gives the formula for <span class="math" data-tex="\(c_k\)">\(c_k\)</span>. Integrating by parts <span class="math" data-tex="\(m\)">\(m\)</span> times, <span class="math" data-tex="\(\|\hat g(w)\|\le(2\pi|w|)^{-m}\|g^{(m)}\|_{L^1}\)">\(\|\hat g(w)\|\le(2\pi|w|)^{-m}\|g^{(m)}\|_{L^1}\)</span>; with <span class="math" data-tex="\(m=0\)">\(m=0\)</span> and <span class="math" data-tex="\(m=A+2\)">\(m=A+2\)</span>, <span class="math" data-tex="\(\|\hat g(w)\|\)">\(\|\hat g(w)\|\)</span> is at most <span class="math" data-tex="\(C(1+|w|)^{-A-2}\sum_{j\le A+2}\|g^{(j)}\|_{L^1}\)">\(C(1+|w|)^{-A-2}\sum_{j\le A+2}\|g^{(j)}\|_{L^1}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_k\Bigl(1+\frac{|k|}Z\Bigr)^AZ^{-1}\Bigl(1+\frac{|k|}Z\Bigr)^{-A-2}\\
+&amp;\quad=\frac1Z\sum_k\Bigl(1+\frac{|k|}Z\Bigr)^{-2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_k\Bigl(1+\frac{|k|}Z\Bigr)^AZ^{-1}\Bigl(1+\frac{|k|}Z\Bigr)^{-A-2}\\
+&amp;\quad=\frac1Z\sum_k\Bigl(1+\frac{|k|}Z\Bigr)^{-2},
+\end{aligned}
+\]</span>
+which is bounded uniformly in <span class="math" data-tex="\(Z\ge1\)">\(Z\ge1\)</span>, by comparison with <span class="math" data-tex="\(\int(1+|w|)^{-2}dw\)">\(\int(1+|w|)^{-2}dw\)</span>. Operator norms are used throughout, so the matrix size plays no role. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-fourier-envelope">3. The Fourier envelope</h2>
+<p><strong>Lemma 3.1</strong> (Fourier envelope; [OpenAI-BCI, Lemma 5.3]). Let <span class="math" data-tex="\(|i-k|\le1\)">\(|i-k|\le1\)</span>, let <span class="math" data-tex="\(f\)">\(f\)</span> be in the profile family, written at reference height <span class="math" data-tex="\(i\)">\(i\)</span>, and put <span class="math" data-tex="\(N=N_i\)">\(N=N_i\)</span>, <span class="math" data-tex="\(Z=Z_i\)">\(Z=Z_i\)</span>, <span class="math" data-tex="\(J=J_i\)">\(J=J_i\)</span>. For all integers <span class="math" data-tex="\(A\ge0\)">\(A\ge0\)</span> and <span class="math" data-tex="\(P\ge3\)">\(P\ge3\)</span>, the coefficients of <span class="math" data-tex="\(T_ifT_k^*\)">\(T_ifT_k^*\)</span> satisfy
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_c\Bigl(1+\frac{|c|}Z\Bigr)^A\|A_{n,l,c}\|\\
+&amp;\quad\le C_{A,P}\,N^{-1}\\
+&amp;\qquad\times\Bigl(1+\frac{|n|}N\Bigr)^{-P}\\
+&amp;\qquad\times\bigl(1+J\|n\alpha\|\bigr)^{-3}
+\end{aligned}\tag{3.1}
+\]">\[
+\begin{aligned}
+&amp;\sum_c\Bigl(1+\frac{|c|}Z\Bigr)^A\|A_{n,l,c}\|\\
+&amp;\quad\le C_{A,P}\,N^{-1}\\
+&amp;\qquad\times\Bigl(1+\frac{|n|}N\Bigr)^{-P}\\
+&amp;\qquad\times\bigl(1+J\|n\alpha\|\bigr)^{-3}
+\end{aligned}\tag{3.1}
+\]</span>
+for <span class="math" data-tex="\(|l|\le C_bJ\)">\(|l|\le C_bJ\)</span>, and <span class="math" data-tex="\(A_{n,l,c}=0\)">\(A_{n,l,c}=0\)</span> for larger <span class="math" data-tex="\(|l|\)">\(|l|\)</span>. The constants are uniform in the height and the profile family. In particular <span class="math" data-tex="\(\|T_ifT_k^*\|_1\)">\(\|T_ifT_k^*\|_1\)</span> is bounded uniformly, and for every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> there is <span class="math" data-tex="\(L_\eta\)">\(L_\eta\)</span>, independent of the height, such that truncating to
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|n|\le L_\eta N,\quad|l|\le C_bJ,\\
+|c|\le L_\eta Z
+\end{gathered}\tag{3.2}
+\]">\[
+\begin{gathered}
+|n|\le L_\eta N,\quad|l|\le C_bJ,\\
+|c|\le L_\eta Z
+\end{gathered}\tag{3.2}
+\]</span>
+changes the series by at most <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in <span class="math" data-tex="\(\|\cdot\|_1\)">\(\|\cdot\|_1\)</span>.</p>
+<p><em>Proof.</em> <em>The <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-coefficients.</em> With <span class="math" data-tex="\(t=Z(\vartheta-\alpha)\)">\(t=Z(\vartheta-\alpha)\)</span> and the substitution <span class="math" data-tex="\(u=N\xi\)">\(u=N\xi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_n(\alpha+t/Z)=N^{-1}\Phi(t,n/N),\\
+\Phi(t,w)=\int_{\mathbb R}F(t,u)e(-wu)\,du ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+f_n(\alpha+t/Z)=N^{-1}\Phi(t,n/N),\\
+\Phi(t,w)=\int_{\mathbb R}F(t,u)e(-wu)\,du ,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(f(\vartheta,\xi)=F(Z(\vartheta-\alpha),N\xi)\)">\(f(\vartheta,\xi)=F(Z(\vartheta-\alpha),N\xi)\)</span>. The function <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is supported in a fixed compact <span class="math" data-tex="\(t\)">\(t\)</span>-interval and is rapidly decreasing in <span class="math" data-tex="\(w\)">\(w\)</span>, uniformly with its <span class="math" data-tex="\(t\)">\(t\)</span>-derivatives over the profile family: integration by parts in <span class="math" data-tex="\(u\)">\(u\)</span> gives <span class="math" data-tex="\(\|\partial_t^a\Phi(t,w)\|\le C_{a,m}(1+|w|)^{-m}\)">\(\|\partial_t^a\Phi(t,w)\|\le C_{a,m}(1+|w|)^{-m}\)</span> for all <span class="math" data-tex="\(a,m\)">\(a,m\)</span>.</p>
+<p><em>The weights <span class="math" data-tex="\(b_{j,l}\)">\(b_{j,l}\)</span>.</em> By (5.1) of the previous lesson, <span class="math" data-tex="\(b_{j,l}\)">\(b_{j,l}\)</span> vanishes unless <span class="math" data-tex="\(|j|&lt;J_i\)">\(|j|&lt;J_i\)</span> and <span class="math" data-tex="\(|j-l|&lt;J_k\)">\(|j-l|&lt;J_k\)</span>, so unless <span class="math" data-tex="\(|l|&lt;C_bJ\)">\(|l|&lt;C_bJ\)</span>, since <span class="math" data-tex="\(J_k/J_i=2^{\pm50b}\)">\(J_k/J_i=2^{\pm50b}\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>. It has <span class="math" data-tex="\(O_b(J)\)">\(O_b(J)\)</span> nonzero values in <span class="math" data-tex="\(j\)">\(j\)</span>, each <span class="math" data-tex="\(O(J^{-1})\)">\(O(J^{-1})\)</span>, and since <span class="math" data-tex="\(a\)">\(a\)</span> is smooth, repeated differences <span class="math" data-tex="\(\Delta b_{j,l}=b_{j+1,l}-b_{j,l}\)">\(\Delta b_{j,l}=b_{j+1,l}-b_{j,l}\)</span> in <span class="math" data-tex="\(j\)">\(j\)</span> satisfy
+<span class="math math-display" data-tex="\[
+\sum_j|\Delta^rb_{j,l}|\le C_rJ^{-r} .
+\]">\[
+\sum_j|\Delta^rb_{j,l}|\le C_rJ^{-r} .
+\]</span>
+Also <span class="math" data-tex="\(\sum_j|b_{j,l}|\le1\)">\(\sum_j|b_{j,l}|\le1\)</span> by the Cauchy–Schwarz inequality and <span class="math" data-tex="\(\sum_ja_{ij}^2=1\)">\(\sum_ja_{ij}^2=1\)</span>.</p>
+<p><em>The residual phase.</em> Write <span class="math" data-tex="\(S_{n,l}(\alpha+t/Z)=\sum_j\beta_j(t)\,\omega^j\)">\(S_{n,l}(\alpha+t/Z)=\sum_j\beta_j(t)\,\omega^j\)</span> with <span class="math" data-tex="\(\omega=e(-n\alpha)\)">\(\omega=e(-n\alpha)\)</span> and <span class="math" data-tex="\(\beta_j(t)=b_{j,l}e(-njt/Z)\)">\(\beta_j(t)=b_{j,l}e(-njt/Z)\)</span>. It is essential to keep the factor <span class="math" data-tex="\(e(-njt/Z)\)">\(e(-njt/Z)\)</span> in the amplitude. Since <span class="math" data-tex="\(|j|\le C_bJ\)">\(|j|\le C_bJ\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> is bounded, the discrete product rule gives, for all <span class="math" data-tex="\(r,a\ge0\)">\(r,a\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_j\bigl|\Delta^r\partial_t^a\beta_j(t)\bigr|\\
+&amp;\quad\le C_{r,a}J^{-r}\Bigl(1+\frac{|n|J}Z\Bigr)^{r+a} ;
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_j\bigl|\Delta^r\partial_t^a\beta_j(t)\bigr|\\
+&amp;\quad\le C_{r,a}J^{-r}\Bigl(1+\frac{|n|J}Z\Bigr)^{r+a} ;
+\end{aligned}
+\]</span>
+each difference or derivative of the phase costs a factor <span class="math" data-tex="\(O(|n|/Z)\)">\(O(|n|/Z)\)</span>, respectively <span class="math" data-tex="\(O(|n|J/Z)\)">\(O(|n|J/Z)\)</span>. Summation by parts <span class="math" data-tex="\(r\)">\(r\)</span> times, <span class="math" data-tex="\(\sum_j\beta_j\omega^j=(1-\omega)^{-r}\sum_j(\Delta^r\beta)_j\,\omega^{j+r}\)">\(\sum_j\beta_j\omega^j=(1-\omega)^{-r}\sum_j(\Delta^r\beta)_j\,\omega^{j+r}\)</span> for finitely supported sequences, and <span class="math" data-tex="\(|1-\omega|=2|\sin\pi n\alpha|\ge4\|n\alpha\|\)">\(|1-\omega|=2|\sin\pi n\alpha|\ge4\|n\alpha\|\)</span>, give, together with the trivial bound,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl|\partial_t^aS_{n,l}(\alpha+t/Z)\bigr|\\
+&amp;\quad\le C_{r,a}\Bigl(1+\frac{|n|J}Z\Bigr)^{r+a}\\
+&amp;\qquad\times\bigl(1+J\|n\alpha\|\bigr)^{-r} .
+\end{aligned}\tag{3.3}
+\]">\[
+\begin{aligned}
+&amp;\bigl|\partial_t^aS_{n,l}(\alpha+t/Z)\bigr|\\
+&amp;\quad\le C_{r,a}\Bigl(1+\frac{|n|J}Z\Bigr)^{r+a}\\
+&amp;\qquad\times\bigl(1+J\|n\alpha\|\bigr)^{-r} .
+\end{aligned}\tag{3.3}
+\]</span></p>
+<p><em>The central coefficients.</em> By Lemma 1.1, <span class="math" data-tex="\(A_{n,l,c}\)">\(A_{n,l,c}\)</span> is the <span class="math" data-tex="\(c\)">\(c\)</span>-th Fourier coefficient of <span class="math" data-tex="\(g_{n,l}(\vartheta)=G(Z(\vartheta-\alpha))\)">\(g_{n,l}(\vartheta)=G(Z(\vartheta-\alpha))\)</span> with
+<span class="math math-display" data-tex="\[
+G(t)=N^{-1}\Phi(t,n/N)\,S_{n,l}(\alpha+t/Z).
+\]">\[
+G(t)=N^{-1}\Phi(t,n/N)\,S_{n,l}(\alpha+t/Z).
+\]</span>
+Apply Lemma 2.1 to <span class="math" data-tex="\(G\)">\(G\)</span>, and (3.3) with <span class="math" data-tex="\(r=3\)">\(r=3\)</span> and <span class="math" data-tex="\(a\le A+2\)">\(a\le A+2\)</span>. Since
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{NJ}Z=2^{-250H_i}\le1,\\
+1+\frac{|n|J}Z\le1+\frac{|n|}N ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{NJ}Z=2^{-250H_i}\le1,\\
+1+\frac{|n|J}Z\le1+\frac{|n|}N ,
+\end{gathered}
+\]</span>
+the polynomial factors from (3.3) are absorbed by taking the decay exponent of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> in <span class="math" data-tex="\(w=n/N\)">\(w=n/N\)</span> larger. This proves (3.1), for all <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><em>Summing over <span class="math" data-tex="\(n\)">\(n\)</span>.</em> On an interval <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> consecutive integers, two points <span class="math" data-tex="\(n\ne n&#x27;\)">\(n\ne n&#x27;\)</span> satisfy <span class="math" data-tex="\(\|(n-n&#x27;)\alpha\|\ge1/(3M)\)">\(\|(n-n&#x27;)\alpha\|\ge1/(3M)\)</span> by Lemma 4.1 of the previous lesson, so at most <span class="math" data-tex="\(1+6Mu\)">\(1+6Mu\)</span> of the points <span class="math" data-tex="\(n\alpha\bmod1\)">\(n\alpha\bmod1\)</span> lie within distance <span class="math" data-tex="\(u\)">\(u\)</span> of any point. Writing <span class="math" data-tex="\((1+Jv)^{-3}=\int_v^\infty3J(1+Ju)^{-4}du\)">\((1+Jv)^{-3}=\int_v^\infty3J(1+Ju)^{-4}du\)</span> and exchanging sum and integral,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{n\in I}\bigl(1+J\|n\alpha\|\bigr)^{-3}\\
+\le\int_0^\infty\frac{3J(1+6Mu)}{(1+Ju)^4}\,du\\
+=1+\frac{3M}J .
+\end{gathered}\tag{3.4}
+\]">\[
+\begin{gathered}
+\sum_{n\in I}\bigl(1+J\|n\alpha\|\bigr)^{-3}\\
+\le\int_0^\infty\frac{3J(1+6Mu)}{(1+Ju)^4}\,du\\
+=1+\frac{3M}J .
+\end{gathered}\tag{3.4}
+\]</span>
+Split the integers into <span class="math" data-tex="\(|n|\le N\)">\(|n|\le N\)</span> and the dyadic annuli <span class="math" data-tex="\(2^{v-1}N&lt;|n|\le2^vN\)">\(2^{v-1}N&lt;|n|\le2^vN\)</span>. Since <span class="math" data-tex="\(N\ge J\)">\(N\ge J\)</span>, (3.4) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_nN^{-1}\Bigl(1+\frac{|n|}N\Bigr)^{-3}\\
+&amp;\qquad\times\bigl(1+J\|n\alpha\|\bigr)^{-3}\\
+&amp;\quad\le\frac CJ .
+\end{aligned}\tag{3.5}
+\]">\[
+\begin{aligned}
+&amp;\sum_nN^{-1}\Bigl(1+\frac{|n|}N\Bigr)^{-3}\\
+&amp;\qquad\times\bigl(1+J\|n\alpha\|\bigr)^{-3}\\
+&amp;\quad\le\frac CJ .
+\end{aligned}\tag{3.5}
+\]</span>
+Summing (3.1) with <span class="math" data-tex="\(A=0\)">\(A=0\)</span> over the <span class="math" data-tex="\(O_b(J)\)">\(O_b(J)\)</span> values of <span class="math" data-tex="\(l\)">\(l\)</span> bounds <span class="math" data-tex="\(\|T_ifT_k^*\|_1\)">\(\|T_ifT_k^*\|_1\)</span>. Using a larger <span class="math" data-tex="\(P\)">\(P\)</span>, the part with <span class="math" data-tex="\(|n|&gt;LN\)">\(|n|&gt;LN\)</span> is at most <span class="math" data-tex="\(CL^{-(P-3)}\)">\(CL^{-(P-3)}\)</span>, and using a larger <span class="math" data-tex="\(A\)">\(A\)</span>, the part with <span class="math" data-tex="\(|c|&gt;LZ\)">\(|c|&gt;LZ\)</span> is at most <span class="math" data-tex="\(C(1+L)^{-A}\)">\(C(1+L)^{-A}\)</span>; this gives (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-product-sampler">4. The product sampler</h2>
+<p><strong>Lemma 4.1</strong> (finite product sampler; [OpenAI-BCI, Lemma 5.4]). For every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, each symbol <span class="math" data-tex="\(T_ifT_k^*\)">\(T_ifT_k^*\)</span> of Lemma 3.1 has a finite probability distribution of pairs <span class="math" data-tex="\((W,v)\)">\((W,v)\)</span>, with <span class="math" data-tex="\(W\in M_\ell(\mathbb C)\)">\(W\in M_\ell(\mathbb C)\)</span> and <span class="math" data-tex="\(v=x^ny^lz^c\in\mathsf H\)">\(v=x^ny^lz^c\in\mathsf H\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|W\|\le M_\eta,\\
+\bigl\|\mathbb E[W\lambda(v)]-T_ifT_k^*\bigr\|_1\le\eta .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|W\|\le M_\eta,\\
+\bigl\|\mathbb E[W\lambda(v)]-T_ifT_k^*\bigr\|_1\le\eta .
+\end{gathered}
+\]</span>
+The coordinates <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(l\)">\(l\)</span> are independent, with atoms
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_n\mathbb P(n)=O_b(J_i/N_i),\\
+\sup_l\mathbb P(l)=O_b(J_i^{-1}) .
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+\sup_n\mathbb P(n)=O_b(J_i/N_i),\\
+\sup_l\mathbb P(l)=O_b(J_i^{-1}) .
+\end{gathered}\tag{4.1}
+\]</span>
+All possible coordinates of <span class="math" data-tex="\(v\)">\(v\)</span> and of <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span> are bounded by <span class="math" data-tex="\(2^{a_0H_i}\)">\(2^{a_0H_i}\)</span> with a fixed exponent, for example <span class="math" data-tex="\(a_0=502\)">\(a_0=502\)</span>, after the initial height is raised. The weights can be restricted to a finite set, containing <span class="math" data-tex="\(0\)">\(0\)</span> and closed under adjoints, at the cost of any further error in <span class="math" data-tex="\(\|\cdot\|_1\)">\(\|\cdot\|_1\)</span>. All constants and the finite set are independent of the height.</p>
+<p><em>Proof.</em> Truncate the series to the box (3.2) with error at most <span class="math" data-tex="\(\eta/2\)">\(\eta/2\)</span>, and call the remaining coefficients <span class="math" data-tex="\(A_{n,l,c}\)">\(A_{n,l,c}\)</span>. Put
+<span class="math math-display" data-tex="\[
+w_n=N^{-1}\Bigl(1+\frac{|n|}N\Bigr)^{-3}\bigl(1+J\|n\alpha\|\bigr)^{-3} .
+\]">\[
+w_n=N^{-1}\Bigl(1+\frac{|n|}N\Bigr)^{-3}\bigl(1+J\|n\alpha\|\bigr)^{-3} .
+\]</span>
+By Lemma 3.1, <span class="math" data-tex="\(R_{n,l}:=\sum_c\|A_{n,l,c}\|\le C_1w_n\)">\(R_{n,l}:=\sum_c\|A_{n,l,c}\|\le C_1w_n\)</span>, and <span class="math" data-tex="\(\sum_nw_n\le C_0/J\)">\(\sum_nw_n\le C_0/J\)</span> by (3.5). Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the probability on the allowed <span class="math" data-tex="\(n\)">\(n\)</span>-interval with masses <span class="math" data-tex="\(Jw_n/(2C_0)\)">\(Jw_n/(2C_0)\)</span>, of total at most <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>, plus the remaining mass spread uniformly over <span class="math" data-tex="\(\{-N,\ldots,N\}\)">\(\{-N,\ldots,N\}\)</span>; let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be uniform on the interval <span class="math" data-tex="\(|l|\le C_bJ\)">\(|l|\le C_bJ\)</span>. Then (4.1) holds, since <span class="math" data-tex="\(w_n\le N^{-1}\)">\(w_n\le N^{-1}\)</span>, and <span class="math" data-tex="\(\mu(n)\nu(l)\ge Jw_n/(2C_0)\cdot1/(3C_bJ)\)">\(\mu(n)\nu(l)\ge Jw_n/(2C_0)\cdot1/(3C_bJ)\)</span>, so
+<span class="math math-display" data-tex="\[
+R_{n,l}\le M_\eta\,\mu(n)\nu(l)
+\]">\[
+R_{n,l}\le M_\eta\,\mu(n)\nu(l)
+\]</span>
+with a constant <span class="math" data-tex="\(M_\eta\)">\(M_\eta\)</span> independent of the height.</p>
+<p>Draw <span class="math" data-tex="\(n\sim\mu\)">\(n\sim\mu\)</span> and <span class="math" data-tex="\(l\sim\nu\)">\(l\sim\nu\)</span> independently. If <span class="math" data-tex="\(R_{n,l}&gt;0\)">\(R_{n,l}&gt;0\)</span>, draw <span class="math" data-tex="\(c\)">\(c\)</span> with probability <span class="math" data-tex="\(\|A_{n,l,c}\|/R_{n,l}\)">\(\|A_{n,l,c}\|/R_{n,l}\)</span> among the nonzero coefficients and put
+<span class="math math-display" data-tex="\[
+W=\frac{R_{n,l}}{\mu(n)\nu(l)}\cdot\frac{A_{n,l,c}}{\|A_{n,l,c}\|} ;
+\]">\[
+W=\frac{R_{n,l}}{\mu(n)\nu(l)}\cdot\frac{A_{n,l,c}}{\|A_{n,l,c}\|} ;
+\]</span>
+if <span class="math" data-tex="\(R_{n,l}=0\)">\(R_{n,l}=0\)</span>, put <span class="math" data-tex="\(W=0\)">\(W=0\)</span> and <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. The horizontal law is the same whether the weight is zero or not. Then <span class="math" data-tex="\(\|W\|\le M_\eta\)">\(\|W\|\le M_\eta\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E[W\lambda(v)]\\
+&amp;\quad=\sum_{n,l}\mu(n)\nu(l)\sum_c\frac{\|A_{n,l,c}\|}{R_{n,l}}\,\frac{R_{n,l}}{\mu(n)\nu(l)}\\
+&amp;\qquad\times\frac{A_{n,l,c}}{\|A_{n,l,c}\|}\,\lambda(x^ny^lz^c),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E[W\lambda(v)]\\
+&amp;\quad=\sum_{n,l}\mu(n)\nu(l)\sum_c\frac{\|A_{n,l,c}\|}{R_{n,l}}\,\frac{R_{n,l}}{\mu(n)\nu(l)}\\
+&amp;\qquad\times\frac{A_{n,l,c}}{\|A_{n,l,c}\|}\,\lambda(x^ny^lz^c),
+\end{aligned}
+\]</span>
+which is the truncated series. Choose a finite subset of the ball of radius <span class="math" data-tex="\(M_\eta\)">\(M_\eta\)</span> in <span class="math" data-tex="\(M_\ell(\mathbb C)\)">\(M_\ell(\mathbb C)\)</span>, containing <span class="math" data-tex="\(0\)">\(0\)</span>, closed under adjoints and <span class="math" data-tex="\(\eta/2\)">\(\eta/2\)</span>-dense, and round <span class="math" data-tex="\(W\)">\(W\)</span> to a nearest element, keeping <span class="math" data-tex="\(0\)">\(0\)</span> fixed; the expectation moves by at most <span class="math" data-tex="\(\mathbb E\|W-W&#x27;\|\le\eta/2\)">\(\mathbb E\|W-W&#x27;\|\le\eta/2\)</span> in <span class="math" data-tex="\(\|\cdot\|_1\)">\(\|\cdot\|_1\)</span>. The set depends on <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, not on the height. A reversed edge uses the adjoint weight and the inverse voltage, not a new draw.</p>
+<p>For the coordinates, (1.2) of the lesson on the Heisenberg group gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(n,l,c)(n&#x27;,l&#x27;,c&#x27;)\\
+=(n+n&#x27;,l+l&#x27;,c+c&#x27;-ln&#x27;),\\
+(n,l,c)^{-1}=(-n,-l,-c-ln).
+\end{gathered}
+\]">\[
+\begin{gathered}
+(n,l,c)(n&#x27;,l&#x27;,c&#x27;)\\
+=(n+n&#x27;,l+l&#x27;,c+c&#x27;-ln&#x27;),\\
+(n,l,c)^{-1}=(-n,-l,-c-ln).
+\end{gathered}
+\]</span>
+In the box, <span class="math" data-tex="\(|n|\le L_\eta2^{200H_i}\)">\(|n|\le L_\eta2^{200H_i}\)</span>, <span class="math" data-tex="\(|l|\le C_b2^{50H_i}\)">\(|l|\le C_b2^{50H_i}\)</span>, <span class="math" data-tex="\(|c|\le L_\eta2^{500H_i}\)">\(|c|\le L_\eta2^{500H_i}\)</span> and <span class="math" data-tex="\(|ln|\le C2^{250H_i}\)">\(|ln|\le C2^{250H_i}\)</span>; after raising the initial height, all coordinates of <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span> are at most <span class="math" data-tex="\(2^{502H_i}\)">\(2^{502H_i}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The zero symbol is allowed: a type may have mean zero at any prescribed set of heights, through the weight <span class="math" data-tex="\(0\)">\(0\)</span> of the finite set, with no new labels; the voltage of the edge is still drawn from the same diffuse horizontal law.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>Exercise 5.1.</strong> Show that <span class="math" data-tex="\(|1-e(t)|\ge4\|t\|\)">\(|1-e(t)|\ge4\|t\|\)</span> for real <span class="math" data-tex="\(t\)">\(t\)</span>, and prove the summation by parts formula used for (3.3) for <span class="math" data-tex="\(r=1\)">\(r=1\)</span>.</p>
+<p><strong>Exercise 5.2.</strong> Explain why the trivial estimate <span class="math" data-tex="\(\sum_j|b_{j,l}|\le1\)">\(\sum_j|b_{j,l}|\le1\)</span> alone would only give <span class="math" data-tex="\(\|T_ifT_k^*\|_1=O(J)\)">\(\|T_ifT_k^*\|_1=O(J)\)</span>, and how the factor <span class="math" data-tex="\((1+J\|n\alpha\|)^{-3}\)">\((1+J\|n\alpha\|)^{-3}\)</span> recovers a bounded one-norm.</p>
+<p><strong>Exercise 5.3.</strong> Compute <span class="math" data-tex="\(\int_0^\infty3J(1+6Mu)(1+Ju)^{-4}du\)">\(\int_0^\infty3J(1+6Mu)(1+Ju)^{-4}du\)</span>.</p>
+<p><strong>Exercise 5.4.</strong> In Lemma 4.1, why must the horizontal law be used even when the drawn weight is zero?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(|1-e(t)|=2|\sin\pi t|\)">\(|1-e(t)|=2|\sin\pi t|\)</span>, and <span class="math" data-tex="\(|\sin\pi t|\ge2\|t\|\)">\(|\sin\pi t|\ge2\|t\|\)</span> by concavity of <span class="math" data-tex="\(\sin\)">\(\sin\)</span> on <span class="math" data-tex="\([0,\pi/2]\)">\([0,\pi/2]\)</span>. For <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, <span class="math" data-tex="\((1-\omega)\sum_j\beta_j\omega^j=\sum_j(\beta_j-\beta_{j-1})\omega^j\)">\((1-\omega)\sum_j\beta_j\omega^j=\sum_j(\beta_j-\beta_{j-1})\omega^j\)</span> for finitely supported <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, which is <span class="math" data-tex="\(\sum_j(\Delta\beta)_{j-1}\omega^j\)">\(\sum_j(\Delta\beta)_{j-1}\omega^j\)</span>.</p>
+<p><strong>5.2.</strong> Summing <span class="math" data-tex="\(N^{-1}(1+|n|/N)^{-3}\)">\(N^{-1}(1+|n|/N)^{-3}\)</span> over <span class="math" data-tex="\(n\)">\(n\)</span> gives <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>, and there are <span class="math" data-tex="\(O(J)\)">\(O(J)\)</span> values of <span class="math" data-tex="\(l\)">\(l\)</span>. The factor <span class="math" data-tex="\((1+J\|n\alpha\|)^{-3}\)">\((1+J\|n\alpha\|)^{-3}\)</span> is small unless <span class="math" data-tex="\(n\alpha\)">\(n\alpha\)</span> is within about <span class="math" data-tex="\(1/J\)">\(1/J\)</span> of an integer, which by (3.4) happens for only about <span class="math" data-tex="\(N/J\)">\(N/J\)</span> of the <span class="math" data-tex="\(N\)">\(N\)</span> values <span class="math" data-tex="\(|n|\le N\)">\(|n|\le N\)</span>; this gains the factor <span class="math" data-tex="\(1/J\)">\(1/J\)</span>.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(\int_0^\infty3J(1+Ju)^{-4}du=1\)">\(\int_0^\infty3J(1+Ju)^{-4}du=1\)</span> and <span class="math" data-tex="\(\int_0^\infty3J\cdot6Mu(1+Ju)^{-4}du\)">\(\int_0^\infty3J\cdot6Mu(1+Ju)^{-4}du\)</span> equals <span class="math" data-tex="\(\frac{18M}J\int_0^\infty v(1+v)^{-4}dv=\frac{18M}J\cdot\frac16=\frac{3M}J\)">\(\frac{18M}J\int_0^\infty v(1+v)^{-4}dv=\frac{18M}J\cdot\frac16=\frac{3M}J\)</span>.</p>
+<p><strong>5.4.</strong> The voltage of an edge must have the diffuse horizontal law in every case, because the girth argument of the next lesson bounds the probability that a word in the voltages is trivial using only the atoms (4.1), whatever the weights are. Edges of weight zero still belong to the covering graph.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BCI] OpenAI, <em>A torsion-free counterexample to reduced Baum–Connes injectivity</em>, OpenAI Math Release preprint, 23 September 2026, Sections 5.4-5.5, Lemmas 5.3 and 5.4. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

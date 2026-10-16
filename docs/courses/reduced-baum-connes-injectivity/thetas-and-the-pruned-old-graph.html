@@ -1,0 +1,171 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thetas and the pruned old graph</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to reduced Baum–Connes injectivity)</a><a href="terminal-compatibility-key-separation-and-base-girth.html">Previous lesson</a><a href="compact-bott-projections-and-spreading.html">Next lesson</a><a href="src/thetas-and-the-pruned-old-graph.md">Editable source</a></nav><main><article><h1 id="thetas-and-the-pruned-old-graph">Thetas and the pruned old graph</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The second deletion removes all short bicycles. In the graph <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span>, which has no short cycles, a short bicycle must be a <em>theta</em>: two branch vertices joined by three paths. For a theta, the terminal tests alone give about <span class="math" data-tex="\(se/2\)">\(se/2\)</span> bits of constraints against about <span class="math" data-tex="\(se\)">\(se\)</span> bits of labels, which is not enough. The extra saving comes from the third incident evaluation at each branch vertex, which must be compatible with the other two at every full block: one relation of <span class="math" data-tex="\(s\)">\(s\)</span> bits per block. Arranged so that these tests use other source updates than the terminal ones, and so that the two branch vertices do not share tables, they give about <span class="math" data-tex="\(0.64H\)">\(0.64H\)</span> more bits. Together with the theorem that <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>-laws use a bicycle four times, the pruned graph then has no short closed paths that are laws [OpenAI-BCI, Sections 4.6-4.8, Lemmas 4.10-4.12, Proposition 4.14].</p>
+<ul>
+<li>Short bicycles are thetas (Section 1).</li>
+<li>Keys in a surviving theta (Section 2).</li>
+<li>The branch relations (Section 3).</li>
+<li>The count of thetas (Section 4).</li>
+<li>The pruned old graph (Section 5).</li>
+</ul>
+<p>The notation of <a href="coherent-returns-reconstruction-and-accumulated-rank.html">Coherent returns, reconstruction and accumulated rank</a> and <a href="terminal-compatibility-key-separation-and-base-girth.html">Terminal compatibility, key separation and base girth</a> is in force, with <span class="math" data-tex="\(a=b/\log q\le10^{-6}\)">\(a=b/\log q\le10^{-6}\)</span>, <span class="math" data-tex="\(m_i=H_i/\log q\)">\(m_i=H_i/\log q\)</span>, and <span class="math" data-tex="\(s/b\)">\(s/b\)</span>, <span class="math" data-tex="\(H_0/s\)">\(H_0/s\)</span> large.</p>
+<h2 id="1-short-bicycles-are-thetas">1. Short bicycles are thetas</h2>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be a bicycle in <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span> with <span class="math" data-tex="\(e&lt;1.52m_i\)">\(e&lt;1.52m_i\)</span> edges and a vertex of height <span class="math" data-tex="\(i\)">\(i\)</span>. Then <span class="math" data-tex="\(B\)">\(B\)</span> is a theta, <span class="math" data-tex="\(e&gt;0.9m_i\)">\(e&gt;0.9m_i\)</span>, its shortest branch has fewer than <span class="math" data-tex="\(0.51m_i\)">\(0.51m_i\)</span> edges, and any two of its vertices are joined in <span class="math" data-tex="\(B\)">\(B\)</span> by a path of fewer than <span class="math" data-tex="\(0.76m_i\)">\(0.76m_i\)</span> edges.</p>
+<p><em>Proof.</em> Scales vary by at most <span class="math" data-tex="\(b\)">\(b\)</span> per edge, so every vertex <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span> has <span class="math" data-tex="\(m(v)\ge m_i-ae\ge(1-1.52a)m_i\)">\(m(v)\ge m_i-ae\ge(1-1.52a)m_i\)</span>. By Lemma 3.1 of <a href="the-heisenberg-group-and-its-laws.html">The Heisenberg group and its laws</a>, a figure-eight or a barbell contains two edge-disjoint cycles; each is a cyclically reduced closed path, of length greater than <span class="math" data-tex="\(0.93m(v)\)">\(0.93m(v)\)</span> at its vertices by Lemma 4.2 of the previous lesson. Their total length would exceed <span class="math" data-tex="\(1.86(1-1.52a)m_i&gt;1.52m_i\)">\(1.86(1-1.52a)m_i&gt;1.52m_i\)</span>, which is impossible; so <span class="math" data-tex="\(B\)">\(B\)</span> is a theta. Two of its branches form a cycle, so <span class="math" data-tex="\(e&gt;0.93(1-1.52a)m_i&gt;0.9m_i\)">\(e&gt;0.93(1-1.52a)m_i&gt;0.9m_i\)</span>. Its shortest branch has at most <span class="math" data-tex="\(e/3&lt;0.51m_i\)">\(e/3&lt;0.51m_i\)</span> edges. A theta is <span class="math" data-tex="\(2\)">\(2\)</span>-edge-connected, so two vertices are joined by two edge-disjoint paths in <span class="math" data-tex="\(B\)">\(B\)</span>, of total length at most <span class="math" data-tex="\(e\)">\(e\)</span>; the shorter has at most <span class="math" data-tex="\(e/2&lt;0.76m_i\)">\(e/2&lt;0.76m_i\)</span> edges. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-keys-in-a-surviving-theta">2. Keys in a surviving theta</h2>
+<p><strong>Lemma 2.1</strong> (terminal keys in a surviving theta; [OpenAI-BCI, Lemma 4.10]). Let a theta in <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span> have <span class="math" data-tex="\(e&lt;1.52m_i\)">\(e&lt;1.52m_i\)</span> edges and a vertex of height <span class="math" data-tex="\(i\)">\(i\)</span>, and put <span class="math" data-tex="\(H=H_i\)">\(H=H_i\)</span>. At every source update the terminal keys used at its distinct vertices are distinct. If its two branch vertices lie on the same side, they cannot share a key at an update of aligned depth beyond <span class="math" data-tex="\(0.65H\)">\(0.65H\)</span>, apart from a fixed number of initial and final blocks, which are omitted below.</p>
+<p><em>Proof.</em> A repeated terminal key at two receivers gives, by Lemma 2.1 of the previous lesson, agreement of the receivers to an available depth of at least <span class="math" data-tex="\(H-be-8s\)">\(H-be-8s\)</span>, and the receivers lie on one side. Join them by a shortest path in the theta; by Lemma 1.1 it has fewer than <span class="math" data-tex="\(0.76m_i\)">\(0.76m_i\)</span> edges and lies in an interior band. Its coherent threshold is at most
+<span class="math math-display" data-tex="\[
+\Bigl(\frac{0.76}{2\cdot0.50005}+0.05\Bigr)H&lt;0.81H ,
+\]">\[
+\Bigl(\frac{0.76}{2\cdot0.50005}+0.05\Bigr)H&lt;0.81H ,
+\]</span>
+far below the available agreement depth once <span class="math" data-tex="\(b/s\)">\(b/s\)</span> is small and <span class="math" data-tex="\(H_0/s\)">\(H_0/s\)</span> large. So the path is a coherent return in <span class="math" data-tex="\(X^{(1)}\subseteq X^{\rm good}\)">\(X^{(1)}\subseteq X^{\rm good}\)</span>; it contains a minimal one, whose vertices were deleted, a contradiction.</p>
+<p>For a key shared by the two branch triples at an update of aligned depth at least <span class="math" data-tex="\(0.65H\)">\(0.65H\)</span>, the last assertion of Lemma 2.1 of the previous lesson identifies the preceding complete prefixes of the two branch vertices, to depth at least <span class="math" data-tex="\(0.65H-4s\)">\(0.65H-4s\)</span>. Their shortest branch has fewer than <span class="math" data-tex="\(0.51m_i\)">\(0.51m_i\)</span> edges, with coherent threshold below <span class="math" data-tex="\((0.51/1.0001+0.05)H&lt;0.56H\)">\((0.51/1.0001+0.05)H&lt;0.56H\)</span>. The same contradiction follows. Equality of the unordered triples would in particular give a shared key. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-branch-relations">3. The branch relations</h2>
+<p>At a branch vertex, with three incident slots of coefficients <span class="math" data-tex="\(c_1,c_2,c_3\)">\(c_1,c_2,c_3\)</span> (pairwise distinct), the three corrected evaluations of a full ordinary block, with their known offsets moved to the right sides, are <span class="math" data-tex="\(E_k=v+c_ku\)">\(E_k=v+c_ku\)</span> for the same <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>. They satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(c_2-c_3)E_1+(c_3-c_1)E_2\\
++(c_1-c_2)E_3=0 .
+\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}
+(c_2-c_3)E_1+(c_3-c_1)E_2\\
++(c_1-c_2)E_3=0 .
+\end{gathered}\tag{3.1}
+\]</span>
+Indeed the coefficients of <span class="math" data-tex="\(v\)">\(v\)</span> sum to zero and those of <span class="math" data-tex="\(u\)">\(u\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_1c_2-c_1c_3+c_2c_3\\
+{}-c_2c_1+c_3c_1-c_3c_2=0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+c_1c_2-c_1c_3+c_2c_3\\
+{}-c_2c_1+c_3c_1-c_3c_2=0 .
+\end{gathered}
+\]</span>
+Conversely, three values satisfying (3.1) arise from a unique <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>, determined by <span class="math" data-tex="\(E_1,E_2\)">\(E_1,E_2\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (ranks at the branch vertices; [OpenAI-BCI, Lemma 4.11]). In an ordinary full block with three open gates, one branch relation (3.1) has <span class="math" data-tex="\(\mathbb P_{\rm prod}\)">\(\mathbb P_{\rm prod}\)</span>-probability <span class="math" data-tex="\(2^{-s}\)">\(2^{-s}\)</span>. If two branch vertices on one side have different unordered triples of keys at the same update, their two relations have joint probability <span class="math" data-tex="\(2^{-2s}\)">\(2^{-2s}\)</span>. If the triples coincide, one relation may always be charged.</p>
+<p><em>Proof.</em> The three slots of one branch vertex have different labels, hence different keys, so the three new table values at their known arguments are independent and uniform on <span class="math" data-tex="\(\mathbb F_{2^s}\)">\(\mathbb F_{2^s}\)</span>. Solving (3.1) for one of them, with its nonzero coefficient, shows that the relation holds with probability <span class="math" data-tex="\(2^{-s}\)">\(2^{-s}\)</span>. Two distinct three-element sets of keys each contain a key not in the other. Condition on all other whole tables, leaving these two <em>exclusive</em> tables unexposed. Each is used at one known argument in its own relation, with a nonzero coefficient, and does not occur in the other relation; so the joint probability is <span class="math" data-tex="\(2^{-2s}\)">\(2^{-2s}\)</span>. Other formal queries to the same tables are not prescribed and are integrated out. With equal triples, one of the two (equivalent) relations is kept. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Separating branch tests from terminal tests.</strong> All terminal updates of a fixed theta lie in the source-index interval
+<span class="math math-display" data-tex="\[
+\Bigl[\Bigl\lfloor\frac{H-be}s\Bigr\rfloor-4,\ \Bigl\lceil\frac{H+be}s\Bigr\rceil+2\Bigr],
+\]">\[
+\Bigl[\Bigl\lfloor\frac{H-be}s\Bigr\rfloor-4,\ \Bigl\lceil\frac{H+be}s\Bigr\rceil+2\Bigr],
+\]</span>
+since the common incidence scales lie between <span class="math" data-tex="\(H-be-b\)">\(H-be-b\)</span> and <span class="math" data-tex="\(H+be\)">\(H+be\)</span>, and a terminal test of an incidence with common scale <span class="math" data-tex="\(\kappa s+t\)">\(\kappa s+t\)</span> is at index <span class="math" data-tex="\(\kappa-1\)">\(\kappa-1\)</span> or <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> (proof of Lemma 2.1 of the previous lesson). This interval has at most <span class="math" data-tex="\(9+2be/s\)">\(9+2be/s\)</span> indices. Enlarge it by ten indices at each end and charge no branch relation there. Also omit the first ten source indices, and every marked block and every block of a deterministic identity zone after a mark, at a slot of a branch vertex. These omissions are fixed by the pattern and the mark positions. So a terminal test and a branch test never use the same source update.</p>
+<p>The marks are <span class="math" data-tex="\(K=2\cdot10^6b\)">\(K=2\cdot10^6b\)</span> indices apart, so over the six slot sequences of the two branch vertices, separately for each parity, the omitted deterministic blocks cost less than <span class="math" data-tex="\(0.001H+O(s+be)\)">\(0.001H+O(s+be)\)</span> bits. A vertex survives the gate deletions only if, in each slot sequence and each parity, fewer than a fraction <span class="math" data-tex="\(0.005\)">\(0.005\)</span> of the blocks are unavailable (Lemma 2.1 of <a href="auxiliary-incidences-deletions-and-recovery.html">Auxiliary incidences, deletions and recovery</a>); so closed gates at the three slots of each branch vertex cost at most <span class="math" data-tex="\(0.015H+O(s+be)\)">\(0.015H+O(s+be)\)</span> bits. The normalization by parity matters: a bound on all interleaved indices together would allow twice this loss.</p>
+<p><strong>The charging rule.</strong> Before aligned depth <span class="math" data-tex="\(0.65H\)">\(0.65H\)</span>, charge only one branch vertex: if the branch vertices lie on opposite sides, the first chosen one; if they lie on one side with equal triples, either; with different triples, one or both. After depth <span class="math" data-tex="\(0.65H\)">\(0.65H\)</span>, charge both branch vertices at every update with open gates, rejecting predictably any pattern that would share a key there; by Lemma 2.1 no actual theta is rejected. All choices are determined by <span class="math" data-tex="\(\mathcal F_{&lt;t}\)">\(\mathcal F_{&lt;t}\)</span>. A branch vertex has <span class="math" data-tex="\(H/(2s)+O(1+be/s)\)">\(H/(2s)+O(1+be/s)\)</span> full updates before the terminal band, so one vertex before <span class="math" data-tex="\(0.65H\)">\(0.65H\)</span> and two afterwards give at least <span class="math" data-tex="\(0.675H-O(s+be)\)">\(0.675H-O(s+be)\)</span> bits, since <span class="math" data-tex="\((0.65/2+0.35)H=0.675H\)">\((0.65/2+0.35)H=0.675H\)</span>. With Lemmas 2.1 and 3.1 and the two omission budgets,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_{\rm branch}\ge0.675H\\
+{}-0.015H-0.001H\\
+{}-10^4(s+be)&gt;0.64H .
+\end{gathered}\tag{3.2}
+\]">\[
+\begin{gathered}
+R_{\rm branch}\ge0.675H\\
+{}-0.015H-0.001H\\
+{}-10^4(s+be)&gt;0.64H .
+\end{gathered}\tag{3.2}
+\]</span></p>
+<p><strong>Terminal tests.</strong> Choose two slots at every vertex of the theta. By Lemma 2.1 their keys are distinct, and the gate conditions of the surviving slots make the required gates open. Pair adjacent internal vertices on each branch by (1.1) of the previous lesson; at most six vertices (the two branch vertices and one leftover on each branch) are unpaired. The theta has <span class="math" data-tex="\(e-1\)">\(e-1\)</span> vertices, so Lemma 1.1 of the previous lesson gives
+<span class="math math-display" data-tex="\[
+R_{\rm term}\ge\frac{se}2-100(s+be).\tag{3.3}
+\]">\[
+R_{\rm term}\ge\frac{se}2-100(s+be).\tag{3.3}
+\]</span>
+Terminal updates are excluded from branch charges, so the two contributions add up in time under Lemma 4.1 of <a href="coherent-returns-reconstruction-and-accumulated-rank.html">Coherent returns, reconstruction and accumulated rank</a>. Exclusivity of key triples was used only within one update.</p>
+<h2 id="4-the-count-of-thetas">4. The count of thetas</h2>
+<p><strong>Lemma 4.1</strong> (expected number of thetas; [OpenAI-BCI, Lemma 4.12]). For large <span class="math" data-tex="\(s/b\)">\(s/b\)</span> and then large <span class="math" data-tex="\(H_0/s\)">\(H_0/s\)</span>, the expected number of rooted bicycles in <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span> with fewer than <span class="math" data-tex="\(1.52m_i\)">\(1.52m_i\)</span> edges and root on either side at height <span class="math" data-tex="\(i\)">\(i\)</span> is at most
+<span class="math math-display" data-tex="\[
+2^{0.89H_i} .
+\]">\[
+2^{0.89H_i} .
+\]</span></p>
+<p><em>Proof.</em> By Lemma 1.1 only thetas with <span class="math" data-tex="\(0.9m_i&lt;e&lt;1.52m_i\)">\(0.9m_i&lt;e&lt;1.52m_i\)</span> occur. For fixed <span class="math" data-tex="\(e\)">\(e\)</span>, choose the three ordered branch lengths (fewer than <span class="math" data-tex="\((e+1)^2\)">\((e+1)^2\)</span> choices), the oriented position of the root (at most <span class="math" data-tex="\(2e\)">\(2e\)</span>), the side (two) and which branch comes first (finitely many): at most <span class="math" data-tex="\(100(e+1)^4\)">\(100(e+1)^4\)</span> choices. Orient the edges for enumeration and choose at most <span class="math" data-tex="\(L_s^e\)">\(L_s^e\)</span> label and height patterns; assigning heights along a spanning tree determines the others, and an inconsistent edge rejects the pattern. By Lemma 3.1 of the lesson on coherent returns, a theta pattern has at most one realization and no free bits. Every actual theta in <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span> passes the predictable key and gate rejections and has the accumulated ranks (3.2) and (3.3). The tables charged number at most <span class="math" data-tex="\(2(e-1)\)">\(2(e-1)\)</span> for terminal tests and six per branch update, <span class="math" data-tex="\(O(H_i/s)=O(e)\)">\(O(H_i/s)=O(e)\)</span> since <span class="math" data-tex="\(e&gt;0.9m_i\)">\(e&gt;0.9m_i\)</span>; <span class="math" data-tex="\(20e\)">\(20e\)</span> suffices after the omitted initial updates. Lemma 4.1 of the lesson on coherent returns bounds the probability by
+<span class="math math-display" data-tex="\[
+e^{20\varepsilon_se}\,2^{-se/2-0.64H_i+100(s+be)} .
+\]">\[
+e^{20\varepsilon_se}\,2^{-se/2-0.64H_i+100(s+be)} .
+\]</span>
+Summing over the patterns, the exponent is at most
+<span class="math math-display" data-tex="\[
+(1.001-0.5)se-0.64H_i+10^5(s+be).
+\]">\[
+(1.001-0.5)se-0.64H_i+10^5(s+be).
+\]</span>
+For <span class="math" data-tex="\(e&lt;1.52H_i/(0.50005s)\)">\(e&lt;1.52H_i/(0.50005s)\)</span> the coefficient of <span class="math" data-tex="\(H_i\)">\(H_i\)</span> is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{0.501\cdot1.52}{0.50005}-0.64&amp;=0.88288\ldots\\
+&amp;&lt;0.883 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{0.501\cdot1.52}{0.50005}-0.64&amp;=0.88288\ldots\\
+&amp;&lt;0.883 ,
+\end{aligned}
+\]</span>
+and the error terms and the sum over <span class="math" data-tex="\(e\)">\(e\)</span> fit below <span class="math" data-tex="\(0.007H_i\)">\(0.007H_i\)</span>. Embeddedness and survival in <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span> are conditions on the final reconstruction, not on any current table law. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Delete from <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span> every vertex of every bicycle with fewer than <span class="math" data-tex="\(1.52m_i\)">\(1.52m_i\)</span> edges for one of its vertices of height <span class="math" data-tex="\(i\)">\(i\)</span>, and call the induced graph <span class="math" data-tex="\(X_{\rm old}\)">\(X_{\rm old}\)</span>.</p>
+<h2 id="5-the-pruned-old-graph">5. The pruned old graph</h2>
+<p><strong>Proposition 5.1</strong> (pruned old graph; [OpenAI-BCI, Proposition 4.14]). Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the parameters and the tables can be chosen so that the two deletions of the pruning lessons remove less than a fraction <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of every <span class="math" data-tex="\(\mathscr A_i\)">\(\mathscr A_i\)</span> and every <span class="math" data-tex="\(\mathscr B_i\)">\(\mathscr B_i\)</span>, and in the induced graph <span class="math" data-tex="\(X_{\rm old}\)">\(X_{\rm old}\)</span>:</p>
+<ol>
+<li>the folded labelling, the padded-prefix recovery and the global uniqueness of long words (Lemma 3.1 and Proposition 5.1 of <a href="auxiliary-incidences-deletions-and-recovery.html">Auxiliary incidences, deletions and recovery</a>) remain valid;</li>
+<li>every nonempty cyclically reduced closed path based at height <span class="math" data-tex="\(i\)">\(i\)</span> has more than <span class="math" data-tex="\(0.93m_i\)">\(0.93m_i\)</span> edges;</li>
+<li>every bicycle containing a vertex of height <span class="math" data-tex="\(i\)">\(i\)</span> has at least <span class="math" data-tex="\(1.52m_i\)">\(1.52m_i\)</span> edges;</li>
+<li>every nonempty cyclically reduced closed path based at height <span class="math" data-tex="\(i\)">\(i\)</span> with at most <span class="math" data-tex="\(6.04m_i\)">\(6.04m_i\)</span> edges is not a law in independent edge variables in <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>.</li>
+</ol>
+<p>The expansion of the undeleted auxiliary incidences (Proposition 6.1 of <a href="expansion-and-the-sequential-law.html">Expansion and the sequential law</a>) holds at the same time, and the degrees do not depend on the height.</p>
+<p><em>Proof.</em> For a realization of the tables, let <span class="math" data-tex="\(Z^A_i,Z^B_i\)">\(Z^A_i,Z^B_i\)</span> be the fractions of <span class="math" data-tex="\(\mathscr A_i,\mathscr B_i\)">\(\mathscr A_i,\mathscr B_i\)</span> removed by the two deletions. A counted object of length <span class="math" data-tex="\(\ell\)">\(\ell\)</span> rooted at height <span class="math" data-tex="\(j\)">\(j\)</span> meets layer <span class="math" data-tex="\(i\)">\(i\)</span> only if <span class="math" data-tex="\(|i-j|\le\ell\)">\(|i-j|\le\ell\)</span>, and <span class="math" data-tex="\(\ell\le4H_j/s\)">\(\ell\le4H_j/s\)</span> (coherent returns have <span class="math" data-tex="\(p\le2H_j/s\)">\(p\le2H_j/s\)</span>, thetas <span class="math" data-tex="\(e&lt;1.52H_j/(0.50005s)\)">\(e&lt;1.52H_j/(0.50005s)\)</span>). Since <span class="math" data-tex="\(H_j=H_i+b(j-i)\)">\(H_j=H_i+b(j-i)\)</span> and <span class="math" data-tex="\(s\ge20b\)">\(s\ge20b\)</span>, this gives <span class="math" data-tex="\(|i-j|\le5H_i/s\)">\(|i-j|\le5H_i/s\)</span> and <span class="math" data-tex="\(|H_j-H_i|\le5bH_i/s\)">\(|H_j-H_i|\le5bH_i/s\)</span>, and the object has at most <span class="math" data-tex="\(5H_i/s+1\)">\(5H_i/s+1\)</span> vertices. Lemma 4.1 of the previous lesson and Lemma 4.1 above, summed over at most <span class="math" data-tex="\(10H_i/s+1\)">\(10H_i/s+1\)</span> root layers and the lengths, and divided by <span class="math" data-tex="\(|\mathscr B_i|=2^{H_i}\)">\(|\mathscr B_i|=2^{H_i}\)</span> or <span class="math" data-tex="\(|\mathscr A_i|\ge2^{H_i}\)">\(|\mathscr A_i|\ge2^{H_i}\)</span>, give
+<span class="math math-display" data-tex="\[
+\mathbb E(Z^A_i+Z^B_i)\le2^{-0.01H_i} :
+\]">\[
+\mathbb E(Z^A_i+Z^B_i)\le2^{-0.01H_i} :
+\]</span>
+the larger bound contributes <span class="math" data-tex="\(2^{-0.025H_i+0.975\cdot5bH_i/s}\)">\(2^{-0.025H_i+0.975\cdot5bH_i/s}\)</span> times a polynomial in <span class="math" data-tex="\(H_i\)">\(H_i\)</span>, and for small <span class="math" data-tex="\(b/s\)">\(b/s\)</span> and large <span class="math" data-tex="\(H_0\)">\(H_0\)</span> this is at most <span class="math" data-tex="\(2^{-0.01H_i}\)">\(2^{-0.01H_i}\)</span>. As <span class="math" data-tex="\(H_i=H_0+bi\)">\(H_i=H_0+bi\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{i\ge0}\mathbb E(Z^A_i+Z^B_i)\le\frac{2^{-0.01H_0}}{1-2^{-0.01b}} ,
+\]">\[
+\sum_{i\ge0}\mathbb E(Z^A_i+Z^B_i)\le\frac{2^{-0.01H_0}}{1-2^{-0.01b}} ,
+\]</span>
+which is less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> for large <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. By Markov's inequality, with positive probability <span class="math" data-tex="\(\sum_i(Z^A_i+Z^B_i)&lt;\varepsilon\)">\(\sum_i(Z^A_i+Z^B_i)&lt;\varepsilon\)</span>, and then each fraction is below <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Every realization in the support of the sequential law has the expansion property, so choose one in this event; the gate and separation deletions are separately small by Proposition 5.1 of the lesson on auxiliary incidences.</p>
+<p>(1) Passing to an induced subgraph keeps foldedness, and a word that occurred at most once still occurs at most once; recovery along paths of the subgraph is recovery along paths of <span class="math" data-tex="\(X^{\rm good}\)">\(X^{\rm good}\)</span>. (2) is Lemma 4.2 of the previous lesson, since <span class="math" data-tex="\(X_{\rm old}\subseteq X^{(1)}\)">\(X_{\rm old}\subseteq X^{(1)}\)</span>. (3) is the definition of the second deletion: a bicycle of <span class="math" data-tex="\(X_{\rm old}\)">\(X_{\rm old}\)</span> is a bicycle of <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span>, and if it had fewer than <span class="math" data-tex="\(1.52m_i\)">\(1.52m_i\)</span> edges for a vertex of height <span class="math" data-tex="\(i\)">\(i\)</span>, its vertices would have been deleted.</p>
+<p>(4) Let <span class="math" data-tex="\(W\)">\(W\)</span> be a nonempty cyclically reduced closed path of length <span class="math" data-tex="\(L\le6.04m_i\)">\(L\le6.04m_i\)</span> based at height <span class="math" data-tex="\(i\)">\(i\)</span>. Every vertex <span class="math" data-tex="\(v\)">\(v\)</span> of its support has <span class="math" data-tex="\(m(v)\ge m_i-aL\ge(1-6.04a)m_i\)">\(m(v)\ge m_i-aL\ge(1-6.04a)m_i\)</span>. If <span class="math" data-tex="\(W\)">\(W\)</span> were an <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>-law, Theorem 4.1 of <a href="the-heisenberg-group-and-its-laws.html">The Heisenberg group and its laws</a> would give a bicycle <span class="math" data-tex="\(B\)">\(B\)</span> in its support with <span class="math" data-tex="\(L\ge4|E(B)|\)">\(L\ge4|E(B)|\)</span>. By (3) at a vertex of <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(|E(B)|\ge1.52(1-6.04a)m_i\)">\(|E(B)|\ge1.52(1-6.04a)m_i\)</span>, hence
+<span class="math math-display" data-tex="\[
+L\ge6.08(1-6.04a)m_i&gt;6.04m_i ,
+\]">\[
+L\ge6.08(1-6.04a)m_i&gt;6.04m_i ,
+\]</span>
+since <span class="math" data-tex="\(a\le10^{-6}\)">\(a\le10^{-6}\)</span>; a contradiction. The edge variables are independent for different underlying edges, and a reverse traversal uses the inverse of the same variable, as in that theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 6.1.</strong> Verify the identity (3.1) and show that, for pairwise distinct <span class="math" data-tex="\(c_1,c_2,c_3\)">\(c_1,c_2,c_3\)</span>, three values <span class="math" data-tex="\(E_1,E_2,E_3\)">\(E_1,E_2,E_3\)</span> satisfy (3.1) if and only if they are evaluations <span class="math" data-tex="\(v+c_ku\)">\(v+c_ku\)</span> of one pair <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>.</p>
+<p><strong>Exercise 6.2.</strong> Compute the coefficient <span class="math" data-tex="\(0.501\cdot1.52/0.50005-0.64\)">\(0.501\cdot1.52/0.50005-0.64\)</span>, and find the largest bicycle bound <span class="math" data-tex="\(\beta\)">\(\beta\)</span> (in place of <span class="math" data-tex="\(1.52\)">\(1.52\)</span>) for which the same estimate stays below <span class="math" data-tex="\(0.95\)">\(0.95\)</span>.</p>
+<p><strong>Exercise 6.3.</strong> Why can the branch relations at the two branch vertices not simply be charged at every update, from the start of the streams?</p>
+<p><strong>Exercise 6.4.</strong> Show that the conclusion of Proposition 5.1(4) holds with <span class="math" data-tex="\(6.04\)">\(6.04\)</span> replaced by any <span class="math" data-tex="\(\gamma&lt;6.08\)">\(\gamma&lt;6.08\)</span>, for <span class="math" data-tex="\(a\)">\(a\)</span> small enough depending on <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> The coefficients of <span class="math" data-tex="\(v\)">\(v\)</span> are <span class="math" data-tex="\((c_2-c_3)+(c_3-c_1)+(c_1-c_2)=0\)">\((c_2-c_3)+(c_3-c_1)+(c_1-c_2)=0\)</span>; those of <span class="math" data-tex="\(u\)">\(u\)</span> are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(c_2-c_3)c_1+(c_3-c_1)c_2\\
+{}+(c_1-c_2)c_3=0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+(c_2-c_3)c_1+(c_3-c_1)c_2\\
+{}+(c_1-c_2)c_3=0 .
+\end{gathered}
+\]</span>
+Conversely, given <span class="math" data-tex="\(E_1,E_2\)">\(E_1,E_2\)</span>, the pair <span class="math" data-tex="\(u=(c_1-c_2)^{-1}(E_1-E_2)\)">\(u=(c_1-c_2)^{-1}(E_1-E_2)\)</span>, <span class="math" data-tex="\(v=E_1-c_1u\)">\(v=E_1-c_1u\)</span> is the unique solution of the first two equations, and (3.1) then says <span class="math" data-tex="\((c_1-c_2)(E_3-v-c_3u)=0\)">\((c_1-c_2)(E_3-v-c_3u)=0\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(0.501\cdot1.52=0.76152\)">\(0.501\cdot1.52=0.76152\)</span>, divided by <span class="math" data-tex="\(0.50005\)">\(0.50005\)</span> gives <span class="math" data-tex="\(1.52289\ldots\)">\(1.52289\ldots\)</span>, minus <span class="math" data-tex="\(0.64\)">\(0.64\)</span> gives <span class="math" data-tex="\(0.88289\ldots\)">\(0.88289\ldots\)</span>. The condition <span class="math" data-tex="\(0.501\beta/0.50005-0.64&lt;0.95\)">\(0.501\beta/0.50005-0.64&lt;0.95\)</span> gives <span class="math" data-tex="\(\beta&lt;1.5869\ldots\)">\(\beta&lt;1.5869\ldots\)</span>.</p>
+<p><strong>6.3.</strong> At early updates the two branch vertices may share a key: a shared key identifies their prefixes only to the depth of that update, too small to produce a coherent return between them. Then the two relations may involve the same table, and their joint probability need not be <span class="math" data-tex="\(2^{-2s}\)">\(2^{-2s}\)</span>. Beyond depth <span class="math" data-tex="\(0.65H\)">\(0.65H\)</span> Lemma 2.1 excludes shared keys.</p>
+<p><strong>6.4.</strong> The argument gives <span class="math" data-tex="\(L\ge6.08(1-\gamma a)m_i\)">\(L\ge6.08(1-\gamma a)m_i\)</span>, which exceeds <span class="math" data-tex="\(\gamma m_i\)">\(\gamma m_i\)</span> as soon as <span class="math" data-tex="\(a&lt;(6.08-\gamma)/(6.08\gamma)\)">\(a&lt;(6.08-\gamma)/(6.08\gamma)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BCI] OpenAI, <em>A torsion-free counterexample to reduced Baum–Connes injectivity</em>, OpenAI Math Release preprint, 23 September 2026, Sections 4.6-4.8, Lemmas 4.10-4.13, Proposition 4.14. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,0 +1,354 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Expansion and the sequential law</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to reduced Baum–Connes injectivity)</a><a href="auxiliary-incidences-deletions-and-recovery.html">Previous lesson</a><a href="coherent-returns-reconstruction-and-accumulated-rank.html">Next lesson</a><a href="src/expansion-and-the-sequential-law.md">Editable source</a></nav><main><article><h1 id="expansion-and-the-sequential-law">Expansion and the sequential law</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The permutation tables of the tower are now chosen. Two things are needed from one probability law on all tables. Every auxiliary incidence must <em>expand</em>: its normalized incidence operator, restricted to functions of mean zero, must have norm at most a fixed <span class="math" data-tex="\(\rho&lt;1\)">\(\rho&lt;1\)</span>, for all heights at once. And the law must stay close to independent uniform tables at each step: conditioning on the expansion of the current incidence may raise the probability of a joint test of <span class="math" data-tex="\(k\)">\(k\)</span> current tables by at most <span class="math" data-tex="\(e^{\varepsilon_sk}\)">\(e^{\varepsilon_sk}\)</span> with <span class="math" data-tex="\(\varepsilon_s\to0\)">\(\varepsilon_s\to0\)</span>. The pruning lessons need the second property. Both come from a Fourier bound on the mean incidence, a concentration bound for each cut, and the local lemma with its conditional form [OpenAI-BCI, Section 3].</p>
+<ul>
+<li>The current matching variables (Section 1).</li>
+<li>The mean incidence (Section 2).</li>
+<li>Cuts (Section 3).</li>
+<li>The local lemma and a conditioning bound (Section 4).</li>
+<li>From cuts to a gap (Section 5).</li>
+<li>The sequential law (Section 6).</li>
+</ul>
+<p>The notation of <a href="streams-coefficient-pools-and-universal-corrections.html">Streams, coefficient pools and universal corrections</a> and <a href="auxiliary-incidences-deletions-and-recovery.html">Auxiliary incidences, deletions and recovery</a> is in force. We use two results of the course <a href="../kadison-kaplansky-projections/the-conjecture-and-scalar-compression.html">A torsion-free counterexample to the Kadison–Kaplansky conjecture</a>: the exponential moment bound for sampling with or without replacement, Lemma 5.1 of <a href="../kadison-kaplansky-projections/streams-slots-and-slot-evaluations.html#5-concentration-for-sampling-with-and-without-replacement">Streams, slots and slot evaluations</a>, and the conditional Fourier estimate, Lemma 2.1 of <a href="../kadison-kaplansky-projections/the-mean-incidence-and-its-gap.html#2-a-conditional-fourier-estimate">The mean incidence and its gap</a>.</p>
+<h2 id="0-the-choice-of-b">0. The choice of b</h2>
+<p>Put <span class="math" data-tex="\(\theta=2^{1-b}\)">\(\theta=2^{1-b}\)</span>, and fix the integer <span class="math" data-tex="\(b\)">\(b\)</span> once and for all so large that
+<span class="math math-display" data-tex="\[
+\eta:=\sqrt{5\theta}&lt;\tfrac35 .\tag{0.1}
+\]">\[
+\eta:=\sqrt{5\theta}&lt;\tfrac35 .\tag{0.1}
+\]</span>
+For example <span class="math" data-tex="\(b=5\)">\(b=5\)</span> gives <span class="math" data-tex="\(\theta=1/16\)">\(\theta=1/16\)</span> and <span class="math" data-tex="\(\eta=\sqrt5/4&lt;0.56\)">\(\eta=\sqrt5/4&lt;0.56\)</span>.</p>
+<p>Throughout Sections 1 to 5 fix a family occurrence at a marked cutoff, all tables at earlier source indices, and one extra slice. Only the tables of the current marked index are random, and the <em>reference law</em> makes them independent uniform permutations. Write <span class="math" data-tex="\(A,B\)">\(A,B\)</span> for the two endpoint spaces of the slice, at the common cutoff, and for functions on them define, with sums over slots (parallel edges counted separately),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(Nf)(a)=\frac1d\sum_{e:\,e^-=a}f(e^+),\\
+(N^*g)(b&#x27;)=\frac1D\sum_{e:\,e^+=b&#x27;}g(e^-).
+\end{gathered}
+\]">\[
+\begin{gathered}
+(Nf)(a)=\frac1d\sum_{e:\,e^-=a}f(e^+),\\
+(N^*g)(b&#x27;)=\frac1D\sum_{e:\,e^+=b&#x27;}g(e^-).
+\end{gathered}
+\]</span>
+Averages on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> are probability averages. Since <span class="math" data-tex="\(d|A|=D|B|\)">\(d|A|=D|B|\)</span>, these are adjoint contractions that fix constants. Let <span class="math" data-tex="\(\mathsf M=\mathbb EN\)">\(\mathsf M=\mathbb EN\)</span>, the expectation over the current tables; <span class="math" data-tex="\(\mathsf M\)">\(\mathsf M\)</span> has the same properties.</p>
+<h2 id="1-the-current-matching-variables">1. The current matching variables</h2>
+<p><strong>Lemma 1.1</strong> (fresh matching coordinates; [OpenAI-BCI, Lemma 3.1]). Under the reference law, the auxiliary incidence of the fixed occurrence and slice is given by independent uniform perfect matchings between pairs of <em>clusters</em> of <span class="math" data-tex="\(2^t\)">\(2^t\)</span> slot incidences, one pair of clusters for each key of a current table. Every edge between two matched clusters is possible, different keys have disjoint clusters, and no table of a later index affects the incidence.</p>
+<p><em>Proof.</em> Suppose the marked block is a <span class="math" data-tex="\(B\)">\(B\)</span>-block; the other case exchanges the sides. Fix the serial number, the label head and all raw input blocks before the marked index; with the slot names this fixes the key of the current table. By Lemma 1.1 of the previous lesson, the remaining coordinates of a <span class="math" data-tex="\(B\)">\(B\)</span>-endpoint are the <span class="math" data-tex="\(t\)">\(t\)</span> raw bits of its last input block (the known correction only translates them), and those of an <span class="math" data-tex="\(A\)">\(A\)</span>-endpoint are the corresponding <span class="math" data-tex="\(t\)">\(t\)</span> bits of its evaluation; all other coordinates are determined. The current table, forced on by the auxiliary prescription, is an arbitrary bijection of <span class="math" data-tex="\(\mathbb F_2^t\)">\(\mathbb F_2^t\)</span> between these two sets of <span class="math" data-tex="\(2^t\)">\(2^t\)</span> slot incidences, and under the reference law it is uniform. Distinct keys give disjoint sets. Later tables act beyond the common support and are identities there (Lemma 1.1 of the previous lesson). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-mean-incidence">2. The mean incidence</h2>
+<p>Let <span class="math" data-tex="\(P^A_h\)">\(P^A_h\)</span> be the conditional expectation (on the probability space <span class="math" data-tex="\(A\)">\(A\)</span>) onto functions of the first <span class="math" data-tex="\(r+hs\)">\(r+hs\)</span> bits of both raw <span class="math" data-tex="\(A\)">\(A\)</span>-streams, and <span class="math" data-tex="\(P^B_j\)">\(P^B_j\)</span> the conditional expectation onto functions of the first <span class="math" data-tex="\(js\)">\(js\)</span> bits of both raw <span class="math" data-tex="\(B\)">\(B\)</span>-streams. Padded coordinates are constant zero, so both filtrations end at the identity, and <span class="math" data-tex="\(P^B_0=C_B\)">\(P^B_0=C_B\)</span> is the projection onto constants; write <span class="math" data-tex="\(C_A\)">\(C_A\)</span> for the projection onto constants on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Prefix data.</strong> For a fixed <span class="math" data-tex="\(A\)">\(A\)</span>-slot, a function in the range of <span class="math" data-tex="\(P^B_j\)">\(P^B_j\)</span> evaluated at the neighbor depends only on
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_A[0,r+(j-1)s)\\
+\text{and}\quad Q_A[0,r+js),
+\end{gathered}\tag{2.1}
+\]">\[
+\begin{gathered}
+u_A[0,r+(j-1)s)\\
+\text{and}\quad Q_A[0,r+js),
+\end{gathered}\tag{2.1}
+\]</span>
+where <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span> is the corrected evaluation. Indeed, the first <span class="math" data-tex="\(r\)">\(r\)</span> bits of <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span> give the label head; inverting the triangular transformations block by block gives <span class="math" data-tex="\(u_B\)">\(u_B\)</span> through <span class="math" data-tex="\(B_j\)">\(B_j\)</span>, using <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span> through position <span class="math" data-tex="\(r+js\)">\(r+js\)</span> and keys made of earlier raw blocks; and the second edge equation gives <span class="math" data-tex="\(v_B\)">\(v_B\)</span> through <span class="math" data-tex="\(js\)">\(js\)</span>, using <span class="math" data-tex="\(u_A\)">\(u_A\)</span> only through <span class="math" data-tex="\(A_{j-1}\)">\(A_{j-1}\)</span>. In the same way, for a fixed <span class="math" data-tex="\(B\)">\(B\)</span>-slot a function in the range of <span class="math" data-tex="\(P^A_h\)">\(P^A_h\)</span> evaluated at the neighbor depends only on
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_B[0,hs)\\
+\text{and}\quad Q_B[0,(h+1)s),
+\end{gathered}\tag{2.2}
+\]">\[
+\begin{gathered}
+u_B[0,hs)\\
+\text{and}\quad Q_B[0,(h+1)s),
+\end{gathered}\tag{2.2}
+\]</span>
+the bucket being part of the slot. These statements hold for the corrected coordinates as well: the extra bits are fixed in the slice, every gate of a correction ends before both coupled blocks, the current gate is forced open, and beyond the cutoff the identity rules apply. Since every evaluation block depends on its input block only through the block-diagonal term, (2.1) and (2.2) give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{ran}(\mathsf MP^B_j)\subseteq\operatorname{ran}P^A_j,\\
+\operatorname{ran}(\mathsf M^*P^A_h)\subseteq\operatorname{ran}P^B_{h+1},
+\end{gathered}\tag{2.3}
+\]">\[
+\begin{gathered}
+\operatorname{ran}(\mathsf MP^B_j)\subseteq\operatorname{ran}P^A_j,\\
+\operatorname{ran}(\mathsf M^*P^A_h)\subseteq\operatorname{ran}P^B_{h+1},
+\end{gathered}\tag{2.3}
+\]</span>
+for every realization of the tables and hence for <span class="math" data-tex="\(\mathsf M\)">\(\mathsf M\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (one new block). If the blocks involved are full,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|(1-P^A_{j-1})\mathsf MP^B_j\|^2\le\theta,\\
+\|(1-P^B_h)\mathsf M^*P^A_h\|^2\le\theta .
+\end{gathered}\tag{2.4}
+\]">\[
+\begin{gathered}
+\|(1-P^A_{j-1})\mathsf MP^B_j\|^2\le\theta,\\
+\|(1-P^B_h)\mathsf M^*P^A_h\|^2\le\theta .
+\end{gathered}\tag{2.4}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(g\)">\(g\)</span> be in the range of <span class="math" data-tex="\(P^B_j\)">\(P^B_j\)</span>. By (2.1), for an <span class="math" data-tex="\(A\)">\(A\)</span>-state with prefix data <span class="math" data-tex="\(C\)">\(C\)</span> (both raw <span class="math" data-tex="\(A\)">\(A\)</span>-streams through <span class="math" data-tex="\(r+(j-1)s\)">\(r+(j-1)s\)</span>), the value <span class="math" data-tex="\((\mathsf Mg)(a)\)">\((\mathsf Mg)(a)\)</span> has the form
+<span class="math math-display" data-tex="\[
+\frac1d\sum_{\nu}f_\nu(C,\,V+K_\nu U+o_\nu),
+\]">\[
+\frac1d\sum_{\nu}f_\nu(C,\,V+K_\nu U+o_\nu),
+\]</span>
+the sum over the <span class="math" data-tex="\(d\)">\(d\)</span> slot names <span class="math" data-tex="\(\nu\)">\(\nu\)</span> of the slice, where <span class="math" data-tex="\(U\)">\(U\)</span> is the raw input block <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span> the raw evaluation block of index <span class="math" data-tex="\(2j\)">\(2j\)</span>, <span class="math" data-tex="\(o_\nu\)">\(o_\nu\)</span> the known offset, and <span class="math" data-tex="\(f_\nu\)">\(f_\nu\)</span> contains the average over the current tables. The direct dependence of the neighbor's data on <span class="math" data-tex="\(u_A\)">\(u_A\)</span> stops before <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, and the coefficient of an <span class="math" data-tex="\(A\)">\(A\)</span>-name does not depend on the bucket. For a uniform <span class="math" data-tex="\(A\)">\(A\)</span>-state, <span class="math" data-tex="\(C,U,V\)">\(C,U,V\)</span> are independent and <span class="math" data-tex="\(U,V\)">\(U,V\)</span> uniform. By Lemma 3.1 of <a href="streams-coefficient-pools-and-universal-corrections.html">Streams, coefficient pools and universal corrections</a>, every value of <span class="math" data-tex="\(\zeta\circ K_\nu\)">\(\zeta\circ K_\nu\)</span>, for a nonzero functional <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, is taken by at most <span class="math" data-tex="\(\theta d\)">\(\theta d\)</span> names. The conditional Fourier estimate (Lemma 2.1 of <a href="../kadison-kaplansky-projections/the-mean-incidence-and-its-gap.html#2-a-conditional-fourier-estimate">The mean incidence and its gap</a>) gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|(1-P^A_{j-1})\mathsf Mg\|^2\\
+\le\theta\,\mathbb E\Bigl[\frac1d\sum_\nu2^{-s}\sum_z|f_\nu(C,z)|^2\Bigr] .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|(1-P^A_{j-1})\mathsf Mg\|^2\\
+\le\theta\,\mathbb E\Bigl[\frac1d\sum_\nu2^{-s}\sum_z|f_\nu(C,z)|^2\Bigr] .
+\end{gathered}
+\]</span>
+The right side is at most <span class="math" data-tex="\(\theta\|g\|^2\)">\(\theta\|g\|^2\)</span>: a uniform <span class="math" data-tex="\(A\)">\(A\)</span>-state with a uniform slot has a uniform <span class="math" data-tex="\(B\)">\(B\)</span>-neighbor, since the incidence is biregular, so the slot average of <span class="math" data-tex="\(|g|^2\)">\(|g|^2\)</span> at the neighbor is <span class="math" data-tex="\(\|g\|^2\)">\(\|g\|^2\)</span>; averaging over the current tables inside <span class="math" data-tex="\(f_\nu\)">\(f_\nu\)</span> only decreases it, by Jensen's inequality; and <span class="math" data-tex="\(V\)">\(V\)</span> makes the evaluation argument uniform given everything else. The second bound is proved in the same way with the next <span class="math" data-tex="\(B\)">\(B\)</span>-input and evaluation blocks; the slot fixes the bucket, and the coefficient of a <span class="math" data-tex="\(B\)">\(B\)</span>-name involves no unknown part of the head. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2</strong> (the conditional mean; [OpenAI-BCI, Lemma 3.3]). For every history of earlier tables, every marked cutoff and every extra slice,
+<span class="math math-display" data-tex="\[
+\|\mathsf M:\mathbf1_B^\perp\to\mathbf1_A^\perp\|\le\eta=\sqrt{5\theta}&lt;\tfrac35 .
+\]">\[
+\|\mathsf M:\mathbf1_B^\perp\to\mathbf1_A^\perp\|\le\eta=\sqrt{5\theta}&lt;\tfrac35 .
+\]</span>
+The same bound holds for the complete adjacent-height incidence, with all extra values.</p>
+<p><em>Proof.</em> <em>Full blocks.</em> Put <span class="math" data-tex="\(E^A_0=P^A_0-C_A\)">\(E^A_0=P^A_0-C_A\)</span>, <span class="math" data-tex="\(E^A_h=P^A_h-P^A_{h-1}\)">\(E^A_h=P^A_h-P^A_{h-1}\)</span> for <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>, and <span class="math" data-tex="\(E^B_j=P^B_j-P^B_{j-1}\)">\(E^B_j=P^B_j-P^B_{j-1}\)</span> for <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>. By (2.3), <span class="math" data-tex="\(E^A_h\mathsf ME^B_j=0\)">\(E^A_h\mathsf ME^B_j=0\)</span> unless <span class="math" data-tex="\(h\le j\le h+1\)">\(h\le j\le h+1\)</span>. The <em>band</em> <span class="math" data-tex="\(j=h\)">\(j=h\)</span> is bounded by the first estimate of (2.4), and the band <span class="math" data-tex="\(j=h+1\)">\(j=h+1\)</span> by the adjoint of the second. Within one band the input spaces are mutually orthogonal, and so are the output spaces, so each band has norm at most <span class="math" data-tex="\(\sqrt\theta\)">\(\sqrt\theta\)</span>, and their sum at most <span class="math" data-tex="\(2\sqrt\theta\)">\(2\sqrt\theta\)</span>.</p>
+<p><em>The terminal block.</em> Suppose the last active input block is a <span class="math" data-tex="\(B\)">\(B\)</span>-block; in the notation of Lemma 1.1 of the lesson on streams, <span class="math" data-tex="\(\ell_A=r+ns\)">\(\ell_A=r+ns\)</span>, <span class="math" data-tex="\(\ell_B=ns+t\)">\(\ell_B=ns+t\)</span>, <span class="math" data-tex="\(|v_A|=r+ns+t\)">\(|v_A|=r+ns+t\)</span> and <span class="math" data-tex="\(|v_B|=(n+1)s\)">\(|v_B|=(n+1)s\)</span>. For the differences <span class="math" data-tex="\(E^B_j\)">\(E^B_j\)</span> with <span class="math" data-tex="\(1\le j\le n\)">\(1\le j\le n\)</span>, all blocks used in both bands are full, so
+<span class="math math-display" data-tex="\[
+\|\mathsf M(P^B_n-C_B)\|\le2\sqrt\theta .\tag{2.5}
+\]">\[
+\|\mathsf M(P^B_n-C_B)\|\le2\sqrt\theta .\tag{2.5}
+\]</span>
+Now fix a <span class="math" data-tex="\(B\)">\(B\)</span>-slot. Inversion through the preceding blocks determines all of <span class="math" data-tex="\(u_A\)">\(u_A\)</span> and all but the last <span class="math" data-tex="\(t\)">\(t\)</span> bits of <span class="math" data-tex="\(v_A\)">\(v_A\)</span> from <span class="math" data-tex="\(u_B[0,ns)\)">\(u_B[0,ns)\)</span> and <span class="math" data-tex="\(Q_B[0,(n+1)s)\)">\(Q_B[0,(n+1)s)\)</span>. The last <span class="math" data-tex="\(t\)">\(t\)</span> bits of <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span> are the output of the current prefix table, whose key consists of the label and earlier raw blocks; averaged over that uniform table they are uniform, whatever its argument is. The term <span class="math" data-tex="\(K_\nu u_A\)">\(K_\nu u_A\)</span> ends at position <span class="math" data-tex="\(r+ns\)">\(r+ns\)</span>, so these are exactly the remaining <span class="math" data-tex="\(t\)">\(t\)</span> bits of <span class="math" data-tex="\(v_A\)">\(v_A\)</span>, up to a known correction. After this average, <span class="math" data-tex="\((\mathsf M^*f)(b&#x27;)\)">\((\mathsf M^*f)(b&#x27;)\)</span> does not depend separately on the last <span class="math" data-tex="\(t\)">\(t\)</span> raw bits of <span class="math" data-tex="\(u_B\)">\(u_B\)</span>: given <span class="math" data-tex="\(P^B_n\)">\(P^B_n\)</span>, it is a function of <span class="math" data-tex="\(V+K_\nu U+o_\nu\)">\(V+K_\nu U+o_\nu\)</span> with <span class="math" data-tex="\(U\in\mathbb F_2^t\)">\(U\in\mathbb F_2^t\)</span> these bits and <span class="math" data-tex="\(V\in\mathbb F_2^s\)">\(V\in\mathbb F_2^s\)</span> the last evaluation block. The Fourier estimate, with the multiplicity bound for prefixes of length <span class="math" data-tex="\(t\ge b\)">\(t\ge b\)</span>, gives
+<span class="math math-display" data-tex="\[
+\|(1-P^B_n)\mathsf M^*\|^2\le\theta .
+\]">\[
+\|(1-P^B_n)\mathsf M^*\|^2\le\theta .
+\]</span>
+For <span class="math" data-tex="\(f\)">\(f\)</span> orthogonal to the constants on <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(C_B\mathsf M^*f=0\)">\(C_B\mathsf M^*f=0\)</span>, so <span class="math" data-tex="\(P^B_n\mathsf M^*f=(P^B_n-C_B)\mathsf M^*f\)">\(P^B_n\mathsf M^*f=(P^B_n-C_B)\mathsf M^*f\)</span>, whose norm is at most <span class="math" data-tex="\(2\sqrt\theta\|f\|\)">\(2\sqrt\theta\|f\|\)</span> by the adjoint of (2.5). The two components are orthogonal, so <span class="math" data-tex="\(\|\mathsf M^*f\|^2\le(4\theta+\theta)\|f\|^2=5\theta\|f\|^2\)">\(\|\mathsf M^*f\|^2\le(4\theta+\theta)\|f\|^2=5\theta\|f\|^2\)</span>.</p>
+<p>If the last active input block is an <span class="math" data-tex="\(A\)">\(A\)</span>-block, then <span class="math" data-tex="\(\ell_B=(n+1)s\)">\(\ell_B=(n+1)s\)</span>, <span class="math" data-tex="\(\ell_A=r+ns+t\)">\(\ell_A=r+ns+t\)</span>, <span class="math" data-tex="\(|v_A|=r+(n+1)s\)">\(|v_A|=r+(n+1)s\)</span> and <span class="math" data-tex="\(|v_B|=(n+1)s+t\)">\(|v_B|=(n+1)s+t\)</span>. The band argument gives <span class="math" data-tex="\(\|\mathsf M^*(P^A_n-C_A)\|\le2\sqrt\theta\)">\(\|\mathsf M^*(P^A_n-C_A)\|\le2\sqrt\theta\)</span>; the current table averages the last <span class="math" data-tex="\(t\)">\(t\)</span> bits of <span class="math" data-tex="\(Q_B\)">\(Q_B\)</span>, where <span class="math" data-tex="\(K_\nu u_B\)">\(K_\nu u_B\)</span> vanishes; and the same argument gives <span class="math" data-tex="\(\|(1-P^A_n)\mathsf M\|^2\le\theta\)">\(\|(1-P^A_n)\mathsf M\|^2\le\theta\)</span> and the bound. Both cases include <span class="math" data-tex="\(t=s\)">\(t=s\)</span>, and the initial block <span class="math" data-tex="\(A_0\)">\(A_0\)</span> is never terminal because the tower starts after many complete blocks.</p>
+<p><em>All extra slices.</em> If the larger endpoint is on side <span class="math" data-tex="\(A\)">\(A\)</span>, its space is the slice space times <span class="math" data-tex="\(\mathbb F_2^b\)">\(\mathbb F_2^b\)</span>, and the complete operator has components <span class="math" data-tex="\(\mathsf M_e\)">\(\mathsf M_e\)</span>, one for each extra value; for <span class="math" data-tex="\(f\)">\(f\)</span> orthogonal to the constants on <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(\|\mathsf Mf\|^2=\mathbb E_e\|\mathsf M_ef\|^2\le\eta^2\|f\|^2\)">\(\|\mathsf Mf\|^2=\mathbb E_e\|\mathsf M_ef\|^2\le\eta^2\|f\|^2\)</span>. If the larger endpoint is on side <span class="math" data-tex="\(B\)">\(B\)</span>, write an input as <span class="math" data-tex="\(f_e=c_e+f^0_e\)">\(f_e=c_e+f^0_e\)</span> with constants <span class="math" data-tex="\(c_e\)">\(c_e\)</span> and <span class="math" data-tex="\(f_e^0\)">\(f_e^0\)</span> of mean zero; mean zero of <span class="math" data-tex="\(f\)">\(f\)</span> gives <span class="math" data-tex="\(\mathbb E_ec_e=0\)">\(\mathbb E_ec_e=0\)</span>, so <span class="math" data-tex="\(\mathsf Mf=\mathbb E_e\mathsf M_ef^0_e\)">\(\mathsf Mf=\mathbb E_e\mathsf M_ef^0_e\)</span>, and Jensen's inequality gives <span class="math" data-tex="\(\|\mathsf Mf\|^2\le\mathbb E_e\eta^2\|f_e^0\|^2\le\eta^2\|f\|^2\)">\(\|\mathsf Mf\|^2\le\mathbb E_e\eta^2\|f_e^0\|^2\le\eta^2\|f\|^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-cuts">3. Cuts</h2>
+<p>Return to one slice. Give every vertex its degree, <span class="math" data-tex="\(\deg=d\)">\(\deg=d\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\deg=D\)">\(\deg=D\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>, put <span class="math" data-tex="\(\operatorname{vol}(S)=\sum_{v\in S}\deg(v)\)">\(\operatorname{vol}(S)=\sum_{v\in S}\deg(v)\)</span> for a set <span class="math" data-tex="\(S\)">\(S\)</span> of vertices of <span class="math" data-tex="\(A\sqcup B\)">\(A\sqcup B\)</span>, let <span class="math" data-tex="\(V_0=2d|A|\)">\(V_0=2d|A|\)</span> be the total volume, and let <span class="math" data-tex="\(c(S)\)">\(c(S)\)</span> be the number of edges between <span class="math" data-tex="\(S\)">\(S\)</span> and its complement, with multiplicity.</p>
+<p><strong>Lemma 3.1</strong> (mean cut). If <span class="math" data-tex="\(\operatorname{vol}(S)\le V_0/2\)">\(\operatorname{vol}(S)\le V_0/2\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\,c(S)\\
+&amp;\quad\ge(1-\eta)\operatorname{vol}(S)\Bigl(1-\frac{\operatorname{vol}(S)}{V_0}\Bigr)\\
+&amp;\quad\ge\tfrac15\operatorname{vol}(S).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\,c(S)\\
+&amp;\quad\ge(1-\eta)\operatorname{vol}(S)\Bigl(1-\frac{\operatorname{vol}(S)}{V_0}\Bigr)\\
+&amp;\quad\ge\tfrac15\operatorname{vol}(S).
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(P\)">\(P\)</span> be the random walk operator on <span class="math" data-tex="\(A\sqcup B\)">\(A\sqcup B\)</span>, equal to <span class="math" data-tex="\(N\)">\(N\)</span> on functions on <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(N^*\)">\(N^*\)</span> on functions on <span class="math" data-tex="\(A\)">\(A\)</span>, and let <span class="math" data-tex="\(\langle f,g\rangle=\sum_v\deg(v)f(v)\overline{g(v)}\)">\(\langle f,g\rangle=\sum_v\deg(v)f(v)\overline{g(v)}\)</span>. Then <span class="math" data-tex="\(\langle\mathbf1_S,P\mathbf1_S\rangle\)">\(\langle\mathbf1_S,P\mathbf1_S\rangle\)</span> counts edges with both ends in <span class="math" data-tex="\(S\)">\(S\)</span> twice, so <span class="math" data-tex="\(c(S)=\operatorname{vol}(S)-\langle\mathbf1_S,P\mathbf1_S\rangle\)">\(c(S)=\operatorname{vol}(S)-\langle\mathbf1_S,P\mathbf1_S\rangle\)</span>. With respect to <span class="math" data-tex="\(\langle\cdot,\cdot\rangle\)">\(\langle\cdot,\cdot\rangle\)</span>, <span class="math" data-tex="\(\mathbb EP\)">\(\mathbb EP\)</span> is self-adjoint, fixes <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span>, and on the orthogonal complement of <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span> its quadratic form is at most <span class="math" data-tex="\(\eta\)">\(\eta\)</span> times the norm squared: on functions of mean zero on each side it acts by the off-diagonal blocks <span class="math" data-tex="\(\mathsf M,\mathsf M^*\)">\(\mathsf M,\mathsf M^*\)</span> of norm at most <span class="math" data-tex="\(\eta\)">\(\eta\)</span> (Lemma 2.2), and on the function equal to <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>, which is orthogonal to those, it is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Write <span class="math" data-tex="\(\mathbf1_S=\frac{\operatorname{vol}(S)}{V_0}\mathbf1+g\)">\(\mathbf1_S=\frac{\operatorname{vol}(S)}{V_0}\mathbf1+g\)</span> with <span class="math" data-tex="\(g\perp\mathbf1\)">\(g\perp\mathbf1\)</span>; then <span class="math" data-tex="\(\|g\|^2=\operatorname{vol}(S)-\operatorname{vol}(S)^2/V_0\)">\(\|g\|^2=\operatorname{vol}(S)-\operatorname{vol}(S)^2/V_0\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E\,c(S)\ge\operatorname{vol}(S)-\frac{\operatorname{vol}(S)^2}{V_0}-\eta\|g\|^2\\
+=(1-\eta)\|g\|^2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E\,c(S)\ge\operatorname{vol}(S)-\frac{\operatorname{vol}(S)^2}{V_0}-\eta\|g\|^2\\
+=(1-\eta)\|g\|^2 .
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(\operatorname{vol}(S)\le V_0/2\)">\(\operatorname{vol}(S)\le V_0/2\)</span> and <span class="math" data-tex="\(\eta&lt;3/5\)">\(\eta&lt;3/5\)</span> this is at least <span class="math" data-tex="\(\frac25\cdot\frac12\operatorname{vol}(S)\)">\(\frac25\cdot\frac12\operatorname{vol}(S)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2</strong> (tail of a cut). If <span class="math" data-tex="\(\operatorname{vol}(S)\le V_0/2\)">\(\operatorname{vol}(S)\le V_0/2\)</span>, then, with <span class="math" data-tex="\(d_{\min}=\min\{d,D\}=d\)">\(d_{\min}=\min\{d,D\}=d\)</span> and <span class="math" data-tex="\(c_0=10^{-3}\)">\(c_0=10^{-3}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb P\{c(S)&lt;0.05\operatorname{vol}(S)\}\\
+\le e^{-0.01125\operatorname{vol}(S)}\le e^{-c_0d_{\min}|S|} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb P\{c(S)&lt;0.05\operatorname{vol}(S)\}\\
+\le e^{-0.01125\operatorname{vol}(S)}\le e^{-c_0d_{\min}|S|} .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> For a current table <span class="math" data-tex="\(a\)">\(a\)</span>, with clusters of size <span class="math" data-tex="\(n_a=2^t\)">\(n_a=2^t\)</span>, let <span class="math" data-tex="\(u_a\)">\(u_a\)</span> and <span class="math" data-tex="\(v_a\)">\(v_a\)</span> be the numbers of its <span class="math" data-tex="\(A\)">\(A\)</span>-slot and <span class="math" data-tex="\(B\)">\(B\)</span>-slot incidences belonging to vertices of <span class="math" data-tex="\(S\)">\(S\)</span>, and <span class="math" data-tex="\(Z_a\)">\(Z_a\)</span> the number of its matched pairs with both ends in <span class="math" data-tex="\(S\)">\(S\)</span>. By Lemma 1.1 the images of the <span class="math" data-tex="\(u_a\)">\(u_a\)</span> incidences form a uniform <span class="math" data-tex="\(u_a\)">\(u_a\)</span>-subset of the cluster on the other side, so <span class="math" data-tex="\(Z_a\)">\(Z_a\)</span> is the number of ones in <span class="math" data-tex="\(u_a\)">\(u_a\)</span> draws without replacement from a list with <span class="math" data-tex="\(v_a\)">\(v_a\)</span> ones and <span class="math" data-tex="\(n_a-v_a\)">\(n_a-v_a\)</span> zeros; by Lemma 5.1 of <a href="../kadison-kaplansky-projections/streams-slots-and-slot-evaluations.html#5-concentration-for-sampling-with-and-without-replacement">Streams, slots and slot evaluations</a>, <span class="math" data-tex="\(\mathbb Ee^{\lambda(Z_a-\mathbb EZ_a)}\le e^{\lambda^2u_a/8}\)">\(\mathbb Ee^{\lambda(Z_a-\mathbb EZ_a)}\le e^{\lambda^2u_a/8}\)</span>. The <span class="math" data-tex="\(Z_a\)">\(Z_a\)</span> are independent, <span class="math" data-tex="\(\sum_au_a\le\operatorname{vol}(S)\)">\(\sum_au_a\le\operatorname{vol}(S)\)</span>, and <span class="math" data-tex="\(c(S)=\operatorname{vol}(S)-2\sum_aZ_a\)">\(c(S)=\operatorname{vol}(S)-2\sum_aZ_a\)</span>. If <span class="math" data-tex="\(c(S)&lt;0.05\operatorname{vol}(S)\)">\(c(S)&lt;0.05\operatorname{vol}(S)\)</span>, then by Lemma 3.1
+[
+\begin{gathered}
+\textstyle\sum_aZ_a-\mathbb E\sum_aZ_a\</p>
+<blockquote>
+<p>0.475\operatorname{vol}(S)-0.4\operatorname{vol}(S)=0.075\operatorname{vol}(S).
+\end{gathered}
+]
+The exponential Markov inequality with <span class="math" data-tex="\(\lambda=0.3\)">\(\lambda=0.3\)</span> bounds the probability by <span class="math" data-tex="\(e^{(-0.0225+0.01125)\operatorname{vol}(S)}\)">\(e^{(-0.0225+0.01125)\operatorname{vol}(S)}\)</span>. Finally <span class="math" data-tex="\(\operatorname{vol}(S)\ge d|S|\)">\(\operatorname{vol}(S)\ge d|S|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</blockquote>
+<h2 id="4-the-local-lemma-and-a-conditioning-bound">4. The local lemma and a conditioning bound</h2>
+<p>Join two vertices of <span class="math" data-tex="\(A\sqcup B\)">\(A\sqcup B\)</span> when some choice of a current table could join them by an edge; this is the <em>possible graph</em>. A cluster has at most <span class="math" data-tex="\(2^s\)">\(2^s\)</span> incidences and a vertex at most <span class="math" data-tex="\(T2^bD\)">\(T2^bD\)</span> slots, so its maximum degree <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> satisfies <span class="math" data-tex="\(\Delta\le2^{Cs}\)">\(\Delta\le2^{Cs}\)</span>, with <span class="math" data-tex="\(C\)">\(C\)</span> depending only on <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>; each current table meets at most <span class="math" data-tex="\(2^{Cs}\)">\(2^{Cs}\)</span> vertices, and each vertex meets at most <span class="math" data-tex="\(2^{Cs}\)">\(2^{Cs}\)</span> tables. For every nonempty set <span class="math" data-tex="\(S\)">\(S\)</span>, connected in the possible graph, with <span class="math" data-tex="\(\operatorname{vol}(S)\le V_0/2\)">\(\operatorname{vol}(S)\le V_0/2\)</span>, let <span class="math" data-tex="\(\mathcal A_S\)">\(\mathcal A_S\)</span> be the <em>cut failure</em> <span class="math" data-tex="\(c(S)&lt;0.05\operatorname{vol}(S)\)">\(c(S)&lt;0.05\operatorname{vol}(S)\)</span>. Avoiding these events suffices: a set of volume at most <span class="math" data-tex="\(V_0/2\)">\(V_0/2\)</span> is the disjoint union of its components in the possible graph, no edge joins two components, and both volume and <span class="math" data-tex="\(c\)">\(c\)</span> are additive over them.</p>
+<p><strong>Lemma 4.1</strong> (local lemma with conditioning). Let <span class="math" data-tex="\(\mathcal A_1,\ldots,\mathcal A_n\)">\(\mathcal A_1,\ldots,\mathcal A_n\)</span> be events, and let a graph on <span class="math" data-tex="\(\{1,\ldots,n\}\)">\(\{1,\ldots,n\}\)</span> be such that each <span class="math" data-tex="\(\mathcal A_i\)">\(\mathcal A_i\)</span> is independent of the family of all <span class="math" data-tex="\(\mathcal A_j\)">\(\mathcal A_j\)</span> with <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span> not adjacent to <span class="math" data-tex="\(i\)">\(i\)</span>. Suppose <span class="math" data-tex="\(0\le x_i&lt;1\)">\(0\le x_i&lt;1\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb P(\mathcal A_i)\le x_i\prod_{j\sim i}(1-x_j)\\
+\text{for all }i.
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+\mathbb P(\mathcal A_i)\le x_i\prod_{j\sim i}(1-x_j)\\
+\text{for all }i.
+\end{gathered}\tag{4.1}
+\]</span>
+Then for every set <span class="math" data-tex="\(J\)">\(J\)</span> of indices with <span class="math" data-tex="\(i\notin J\)">\(i\notin J\)</span>, <span class="math" data-tex="\(\mathbb P(\bigcap_J\mathcal A_j^c)&gt;0\)">\(\mathbb P(\bigcap_J\mathcal A_j^c)&gt;0\)</span> and <span class="math" data-tex="\(\mathbb P(\mathcal A_i\mid\bigcap_J\mathcal A_j^c)\le x_i\)">\(\mathbb P(\mathcal A_i\mid\bigcap_J\mathcal A_j^c)\le x_i\)</span>. If <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is an event independent of the family of all <span class="math" data-tex="\(\mathcal A_j\)">\(\mathcal A_j\)</span> with <span class="math" data-tex="\(j\notin J_1\)">\(j\notin J_1\)</span>, then
+<span class="math math-display" data-tex="\[
+\mathbb P\Bigl(\mathcal B\Bigm|\bigcap_{j}\mathcal A_j^c\Bigr)\le\mathbb P(\mathcal B)\prod_{j\in J_1}(1-x_j)^{-1} .
+\]">\[
+\mathbb P\Bigl(\mathcal B\Bigm|\bigcap_{j}\mathcal A_j^c\Bigr)\le\mathbb P(\mathcal B)\prod_{j\in J_1}(1-x_j)^{-1} .
+\]</span></p>
+<p><em>Proof.</em> The first two assertions are proved together by induction on <span class="math" data-tex="\(|J|\)">\(|J|\)</span>; for <span class="math" data-tex="\(J=\emptyset\)">\(J=\emptyset\)</span> they hold by (4.1). Split <span class="math" data-tex="\(J\)">\(J\)</span> into the neighbors <span class="math" data-tex="\(J_1&#x27;\)">\(J_1&#x27;\)</span> of <span class="math" data-tex="\(i\)">\(i\)</span> and the rest <span class="math" data-tex="\(J_2&#x27;\)">\(J_2&#x27;\)</span>. If <span class="math" data-tex="\(J_1&#x27;\)">\(J_1&#x27;\)</span> is empty, independence gives <span class="math" data-tex="\(\mathbb P(\mathcal A_i\mid\bigcap_J\mathcal A^c)=\mathbb P(\mathcal A_i)\le x_i\)">\(\mathbb P(\mathcal A_i\mid\bigcap_J\mathcal A^c)=\mathbb P(\mathcal A_i)\le x_i\)</span>. Otherwise
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb P\Bigl(\mathcal A_i\Bigm|\bigcap_J\mathcal A^c\Bigr)\le\frac{\mathbb P(\mathcal A_i\mid\bigcap_{J_2&#x27;}\mathcal A^c)}{\mathbb P(\bigcap_{J_1&#x27;}\mathcal A^c\mid\bigcap_{J_2&#x27;}\mathcal A^c)}\\
+=\frac{\mathbb P(\mathcal A_i)}{\mathbb P(\bigcap_{J_1&#x27;}\mathcal A^c\mid\bigcap_{J_2&#x27;}\mathcal A^c)} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb P\Bigl(\mathcal A_i\Bigm|\bigcap_J\mathcal A^c\Bigr)\le\frac{\mathbb P(\mathcal A_i\mid\bigcap_{J_2&#x27;}\mathcal A^c)}{\mathbb P(\bigcap_{J_1&#x27;}\mathcal A^c\mid\bigcap_{J_2&#x27;}\mathcal A^c)}\\
+=\frac{\mathbb P(\mathcal A_i)}{\mathbb P(\bigcap_{J_1&#x27;}\mathcal A^c\mid\bigcap_{J_2&#x27;}\mathcal A^c)} .
+\end{gathered}
+\]</span>
+Writing <span class="math" data-tex="\(J_1&#x27;=\{j_1,\ldots,j_m\}\)">\(J_1&#x27;=\{j_1,\ldots,j_m\}\)</span>, the denominator is <span class="math" data-tex="\(\prod_l\bigl(1-\mathbb P(\mathcal A_{j_l}\mid\bigcap_{J_2&#x27;}\mathcal A^c\cap\bigcap_{l&#x27;&lt;l}\mathcal A_{j_{l&#x27;}}^c)\bigr)\)">\(\prod_l\bigl(1-\mathbb P(\mathcal A_{j_l}\mid\bigcap_{J_2&#x27;}\mathcal A^c\cap\bigcap_{l&#x27;&lt;l}\mathcal A_{j_{l&#x27;}}^c)\bigr)\)</span>, each conditioning on fewer than <span class="math" data-tex="\(|J|\)">\(|J|\)</span> events, so by induction it is at least <span class="math" data-tex="\(\prod_{j\sim i}(1-x_j)&gt;0\)">\(\prod_{j\sim i}(1-x_j)&gt;0\)</span>, and (4.1) gives the bound <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. The same product, step by step, shows <span class="math" data-tex="\(\mathbb P(\bigcap_J\mathcal A^c)\ge\prod_J(1-x_j)&gt;0\)">\(\mathbb P(\bigcap_J\mathcal A^c)\ge\prod_J(1-x_j)&gt;0\)</span>.</p>
+<p>For <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, let <span class="math" data-tex="\(J_2\)">\(J_2\)</span> be the complement of <span class="math" data-tex="\(J_1\)">\(J_1\)</span>. By independence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb P\Bigl(\mathcal B\Bigm|\bigcap\mathcal A^c\Bigr)\le\frac{\mathbb P(\mathcal B\mid\bigcap_{J_2}\mathcal A^c)}{\mathbb P(\bigcap_{J_1}\mathcal A^c\mid\bigcap_{J_2}\mathcal A^c)}\\
+=\frac{\mathbb P(\mathcal B)}{\mathbb P(\bigcap_{J_1}\mathcal A^c\mid\bigcap_{J_2}\mathcal A^c)},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb P\Bigl(\mathcal B\Bigm|\bigcap\mathcal A^c\Bigr)\le\frac{\mathbb P(\mathcal B\mid\bigcap_{J_2}\mathcal A^c)}{\mathbb P(\bigcap_{J_1}\mathcal A^c\mid\bigcap_{J_2}\mathcal A^c)}\\
+=\frac{\mathbb P(\mathcal B)}{\mathbb P(\bigcap_{J_1}\mathcal A^c\mid\bigcap_{J_2}\mathcal A^c)},
+\end{gathered}
+\]</span>
+and the product rule with the first part bounds the denominator below by <span class="math" data-tex="\(\prod_{J_1}(1-x_j)\)">\(\prod_{J_1}(1-x_j)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The asymmetric local lemma is due to Erdős and Lovász [EL]; the conditional bound for an additional event is the estimate of Haeupler, Saha and Srinivasan [HSS, Theorem 2.1], proved above in the form needed here.</p>
+<p><strong>Proposition 4.2</strong> (expanding tables with a conditioning bound). For large <span class="math" data-tex="\(s\)">\(s\)</span>, uniformly in the height and in the earlier tables, the cut failures of the fixed occurrence and slice can all be avoided simultaneously with positive probability under the reference law. Moreover there is <span class="math" data-tex="\(\varepsilon_s\to0\)">\(\varepsilon_s\to0\)</span>, independent of the height and of the earlier history, such that for every event <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> determined by <span class="math" data-tex="\(k\)">\(k\)</span> specified current tables, and every nonnegative function <span class="math" data-tex="\(F\)">\(F\)</span> of <span class="math" data-tex="\(k\)">\(k\)</span> specified current tables,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb P(\mathcal B\mid\text{no cut failure})\\
+&amp;\qquad\le e^{\varepsilon_sk}\,\mathbb P(\mathcal B),\\
+&amp;\mathbb E(F\mid\text{no cut failure})\\
+&amp;\qquad\le e^{\varepsilon_sk}\,\mathbb E F .
+\end{aligned}\tag{4.2}
+\]">\[
+\begin{aligned}
+&amp;\mathbb P(\mathcal B\mid\text{no cut failure})\\
+&amp;\qquad\le e^{\varepsilon_sk}\,\mathbb P(\mathcal B),\\
+&amp;\mathbb E(F\mid\text{no cut failure})\\
+&amp;\qquad\le e^{\varepsilon_sk}\,\mathbb E F .
+\end{aligned}\tag{4.2}
+\]</span></p>
+<p><em>Proof.</em> An event <span class="math" data-tex="\(\mathcal A_S\)">\(\mathcal A_S\)</span> depends only on the tables meeting <span class="math" data-tex="\(S\)">\(S\)</span>. Join two events when their sets of tables meet; events with disjoint tables are independent, jointly with any family of events using other tables. If the table sets of <span class="math" data-tex="\(\mathcal A_S\)">\(\mathcal A_S\)</span> and <span class="math" data-tex="\(\mathcal A_{S&#x27;}\)">\(\mathcal A_{S&#x27;}\)</span> meet, some vertex of <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> is within distance two of <span class="math" data-tex="\(S\)">\(S\)</span> in the possible graph. A connected <span class="math" data-tex="\(j\)">\(j\)</span>-set containing a given vertex is determined by a walk of length <span class="math" data-tex="\(2(j-1)\)">\(2(j-1)\)</span> along a depth-first traversal of a spanning tree chosen by fixed orders, so there are at most <span class="math" data-tex="\(\Delta^{2(j-1)}\)">\(\Delta^{2(j-1)}\)</span> of them. Hence the number of neighbors of <span class="math" data-tex="\(\mathcal A_S\)">\(\mathcal A_S\)</span> indexed by <span class="math" data-tex="\(j\)">\(j\)</span>-sets is at most <span class="math" data-tex="\(|S|\Delta^{2j+C_1}\)">\(|S|\Delta^{2j+C_1}\)</span> for an absolute <span class="math" data-tex="\(C_1\)">\(C_1\)</span>.</p>
+<p>Put <span class="math" data-tex="\(x_S=\exp(-c_0d|S|/2)\)">\(x_S=\exp(-c_0d|S|/2)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{S&#x27;\sim S}x_{S&#x27;}\le|S|\sum_{j\ge1}\Delta^{2j+C_1}e^{-c_0dj/2}\\
+=|S|\,\delta_s,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{S&#x27;\sim S}x_{S&#x27;}\le|S|\sum_{j\ge1}\Delta^{2j+C_1}e^{-c_0dj/2}\\
+=|S|\,\delta_s,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(\delta_s\to0\)">\(\delta_s\to0\)</span> because <span class="math" data-tex="\(\log\Delta=O(s)\)">\(\log\Delta=O(s)\)</span> while <span class="math" data-tex="\(d=2^{.40005s}\)">\(d=2^{.40005s}\)</span>. For large <span class="math" data-tex="\(s\)">\(s\)</span>, all <span class="math" data-tex="\(x_S\le\frac12\)">\(x_S\le\frac12\)</span> and <span class="math" data-tex="\(2\delta_s\le c_0d/2\)">\(2\delta_s\le c_0d/2\)</span>; since <span class="math" data-tex="\(\log(1-x)\ge-2x\)">\(\log(1-x)\ge-2x\)</span> for <span class="math" data-tex="\(0\le x\le\frac12\)">\(0\le x\le\frac12\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x_S\prod_{S&#x27;\sim S}(1-x_{S&#x27;})\ge e^{-c_0d|S|/2-2\delta_s|S|}\\
+\ge e^{-c_0d|S|}\ge\mathbb P(\mathcal A_S)
+\end{gathered}
+\]">\[
+\begin{gathered}
+x_S\prod_{S&#x27;\sim S}(1-x_{S&#x27;})\ge e^{-c_0d|S|/2-2\delta_s|S|}\\
+\ge e^{-c_0d|S|}\ge\mathbb P(\mathcal A_S)
+\end{gathered}
+\]</span>
+by Lemma 3.2. There are finitely many events, and Lemma 4.1 gives positive probability of avoiding all of them.</p>
+<p>For <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> determined by <span class="math" data-tex="\(k\)">\(k\)</span> tables, let <span class="math" data-tex="\(J_1\)">\(J_1\)</span> be the cut failures that share one of these tables; <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is independent of the family of the others. Each table meets at most <span class="math" data-tex="\(2^{Cs}\)">\(2^{Cs}\)</span> vertices, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{S\in J_1}x_S&amp;\le k\,2^{Cs}\sum_{j\ge1}\Delta^{2j+C_1}e^{-c_0dj/2}\\
+&amp;=:k\,\varepsilon_s/2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{S\in J_1}x_S&amp;\le k\,2^{Cs}\sum_{j\ge1}\Delta^{2j+C_1}e^{-c_0dj/2}\\
+&amp;=:k\,\varepsilon_s/2,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\varepsilon_s\to0\)">\(\varepsilon_s\to0\)</span>. Lemma 4.1 and <span class="math" data-tex="\(\prod(1-x)^{-1}\le e^{2\sum x}\)">\(\prod(1-x)^{-1}\le e^{2\sum x}\)</span> give (4.2) for <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, and for <span class="math" data-tex="\(F\)">\(F\)</span> by integrating over its level sets. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bound (4.2) concerns a joint test of current tables. It does not bound the conditional law of one table entry after other entries of the same table have been prescribed.</p>
+<h2 id="5-from-cuts-to-a-gap">5. From cuts to a gap</h2>
+<p><strong>Lemma 5.1</strong> (Cheeger bound). Let a finite bipartite multigraph on <span class="math" data-tex="\(A\sqcup B\)">\(A\sqcup B\)</span> be biregular with degrees <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>, so that <span class="math" data-tex="\(d|A|=D|B|\)">\(d|A|=D|B|\)</span>, and suppose that <span class="math" data-tex="\(c(S)\ge0.05\operatorname{vol}(S)\)">\(c(S)\ge0.05\operatorname{vol}(S)\)</span> for every set <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(\operatorname{vol}(S)\le V_0/2\)">\(\operatorname{vol}(S)\le V_0/2\)</span>. Then its normalized incidence operator <span class="math" data-tex="\(N\)">\(N\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|N:\mathbf1_B^\perp\to\mathbf1_A^\perp\|\le\rho,\\
+\rho:=1-\frac{0.05^2}2\\
+=1-\frac1{800} .
+\end{gathered}\tag{5.1}
+\]">\[
+\begin{gathered}
+\|N:\mathbf1_B^\perp\to\mathbf1_A^\perp\|\le\rho,\\
+\rho:=1-\frac{0.05^2}2\\
+=1-\frac1{800} .
+\end{gathered}\tag{5.1}
+\]</span></p>
+<p><em>Proof.</em> For a function <span class="math" data-tex="\(w\ge0\)">\(w\ge0\)</span> whose support has volume at most <span class="math" data-tex="\(V_0/2\)">\(V_0/2\)</span>, every level set <span class="math" data-tex="\(\{w^2&gt;\tau\}\)">\(\{w^2&gt;\tau\}\)</span> has volume at most <span class="math" data-tex="\(V_0/2\)">\(V_0/2\)</span>, and an edge <span class="math" data-tex="\(xy\)">\(xy\)</span> crosses it exactly for <span class="math" data-tex="\(\tau\)">\(\tau\)</span> between <span class="math" data-tex="\(w(x)^2\)">\(w(x)^2\)</span> and <span class="math" data-tex="\(w(y)^2\)">\(w(y)^2\)</span>. Integrating the cut bound over <span class="math" data-tex="\(\tau\)">\(\tau\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\text{edges }xy}|w(x)^2-w(y)^2|\\
+&amp;\qquad=\int_0^\infty c(\{w^2&gt;\tau\})\,d\tau\\
+&amp;\qquad\ge0.05\sum_v\deg(v)w(v)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\text{edges }xy}|w(x)^2-w(y)^2|\\
+&amp;\qquad=\int_0^\infty c(\{w^2&gt;\tau\})\,d\tau\\
+&amp;\qquad\ge0.05\sum_v\deg(v)w(v)^2 .
+\end{aligned}
+\]</span>
+By the Cauchy–Schwarz inequality and the bound of <span class="math" data-tex="\(\sum_{xy}(w(x)+w(y))^2\)">\(\sum_{xy}(w(x)+w(y))^2\)</span> by <span class="math" data-tex="\(2\sum_v\deg(v)w(v)^2\)">\(2\sum_v\deg(v)w(v)^2\)</span>, the left side is at most <span class="math" data-tex="\(\bigl(\mathcal E(w)\cdot2\sum_v\deg(v)w(v)^2\bigr)^{1/2}\)">\(\bigl(\mathcal E(w)\cdot2\sum_v\deg(v)w(v)^2\bigr)^{1/2}\)</span>, where <span class="math" data-tex="\(\mathcal E(w)=\sum_{xy}(w(x)-w(y))^2\)">\(\mathcal E(w)=\sum_{xy}(w(x)-w(y))^2\)</span>. So <span class="math" data-tex="\(\mathcal E(w)\ge\frac{0.05^2}2\sum_v\deg(v)w(v)^2\)">\(\mathcal E(w)\ge\frac{0.05^2}2\sum_v\deg(v)w(v)^2\)</span>.</p>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be real with <span class="math" data-tex="\(\sum_v\deg(v)f(v)=0\)">\(\sum_v\deg(v)f(v)=0\)</span>, and let <span class="math" data-tex="\(m\)">\(m\)</span> be a weighted median, so that <span class="math" data-tex="\(\{f&gt;m\}\)">\(\{f&gt;m\}\)</span> and <span class="math" data-tex="\(\{f&lt;m\}\)">\(\{f&lt;m\}\)</span> have volume at most <span class="math" data-tex="\(V_0/2\)">\(V_0/2\)</span>. Applied to <span class="math" data-tex="\(w_\pm=(\pm(f-m))_+\)">\(w_\pm=(\pm(f-m))_+\)</span>, and since on every edge the energies of <span class="math" data-tex="\(w_+\)">\(w_+\)</span> and <span class="math" data-tex="\(w_-\)">\(w_-\)</span> add up to at most that of <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal E(f)\ge\tfrac{0.05^2}2\sum_v\deg(v)(f(v)-m)^2\\
+\ge\tfrac{0.05^2}2\sum_v\deg(v)f(v)^2 ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal E(f)\ge\tfrac{0.05^2}2\sum_v\deg(v)(f(v)-m)^2\\
+\ge\tfrac{0.05^2}2\sum_v\deg(v)f(v)^2 ,
+\end{gathered}
+\]</span>
+the last step because <span class="math" data-tex="\(f\)">\(f\)</span> has weighted mean zero. Apply this to real and imaginary parts. In the degree inner product, <span class="math" data-tex="\(\mathcal E(f)=\langle f,f\rangle-\langle f,Pf\rangle\)">\(\mathcal E(f)=\langle f,f\rangle-\langle f,Pf\rangle\)</span> for the walk operator <span class="math" data-tex="\(P\)">\(P\)</span> of Lemma 3.1, so <span class="math" data-tex="\(\langle f,Pf\rangle\le\rho\langle f,f\rangle\)">\(\langle f,Pf\rangle\le\rho\langle f,f\rangle\)</span> for <span class="math" data-tex="\(f\perp\mathbf1\)">\(f\perp\mathbf1\)</span>. The operator <span class="math" data-tex="\(P\)">\(P\)</span> is self-adjoint with off-diagonal blocks <span class="math" data-tex="\(N,N^*\)">\(N,N^*\)</span>; conjugation by <span class="math" data-tex="\(\operatorname{diag}(1,-1)\)">\(\operatorname{diag}(1,-1)\)</span> changes its sign, so its spectrum on functions of mean zero on each side is symmetric, and its largest value there is <span class="math" data-tex="\(\|N:\mathbf1_B^\perp\to\mathbf1_A^\perp\|\)">\(\|N:\mathbf1_B^\perp\to\mathbf1_A^\perp\|\)</span>. Functions of mean zero on each side are orthogonal to <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span>, which gives (5.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-sequential-law">6. The sequential law</h2>
+<p><strong>Proposition 6.1</strong> (sequential selection; [OpenAI-BCI, Proposition 3.4]). There is a probability law on all permutation tables such that every auxiliary incidence, at every height and in every extra slice, and also with all extra values together, has norm at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span> from <span class="math" data-tex="\(\mathbf1_B^\perp\)">\(\mathbf1_B^\perp\)</span> to <span class="math" data-tex="\(\mathbf1_A^\perp\)">\(\mathbf1_A^\perp\)</span>. At each source index, conditionally on all earlier tables, every joint test of <span class="math" data-tex="\(k\)">\(k\)</span> specified current tables has probability at most <span class="math" data-tex="\(e^{\varepsilon_sk}\)">\(e^{\varepsilon_sk}\)</span> times its probability under independent uniform current tables, with <span class="math" data-tex="\(\varepsilon_s\to0\)">\(\varepsilon_s\to0\)</span> uniformly in the history and the height. When a test whose tables and arguments are determined by earlier tables is evaluated, its probability is governed by this current kernel alone.</p>
+<p><em>Proof.</em> In each family order the source indices increasingly, and interleave the finitely many families by source index and a fixed order of families. At an unmarked index choose the active tables independently and uniformly. At a marked index choose them from the reference law conditioned on avoiding all cut failures of that occurrence, separately in each extra slice; Proposition 4.2 shows that this conditional law exists for every earlier history and satisfies (4.2). Different families use different tables, and at one source index a family has at most one marked occurrence (marks are <span class="math" data-tex="\(K\)">\(K\)</span> indices apart), so grouping the families at one index multiplies the bounds, with <span class="math" data-tex="\(k\)">\(k\)</span> the total number of tested tables. Indices with prescribed identities have no random variables.</p>
+<p>Each step has finitely many outcomes, so one can realize the steps successively by independent uniform numbers in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, choosing outcomes by consecutive intervals of their conditional probabilities; this defines the law on the infinite sequence of steps. A later step never changes an earlier incidence: tables of later indices act as identities on the padded streams of earlier occurrences (Lemma 1.1 of the previous lesson). So the expansion of every incidence persists, and Lemma 5.1, together with the passage from slices to all extra values in the proof of Lemma 2.2, gives the bound <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. A test whose tables and arguments are determined by earlier steps is evaluated at its own step, where only the current kernel acts, and all later conditional laws integrate to one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1.</strong> Check that <span class="math" data-tex="\(b=5\)">\(b=5\)</span> satisfies (0.1), and find the least <span class="math" data-tex="\(b\)">\(b\)</span> that does.</p>
+<p><strong>Exercise 7.2.</strong> Show that <span class="math" data-tex="\(\mathbb EZ_a=u_av_a/n_a\)">\(\mathbb EZ_a=u_av_a/n_a\)</span> in the proof of Lemma 3.2, and that <span class="math" data-tex="\(\sum_a\mathbb EZ_a=\frac12(\operatorname{vol}(S)-\mathbb Ec(S))\)">\(\sum_a\mathbb EZ_a=\frac12(\operatorname{vol}(S)-\mathbb Ec(S))\)</span>.</p>
+<p><strong>Exercise 7.3.</strong> Suppose <span class="math" data-tex="\(Nf\)">\(Nf\)</span> is the constant average of <span class="math" data-tex="\(f\)">\(f\)</span> over <span class="math" data-tex="\(B\)">\(B\)</span> for every <span class="math" data-tex="\(f\)">\(f\)</span>, as for a biregular multigraph in which every vertex of <span class="math" data-tex="\(A\)">\(A\)</span> has the same number of edges to every vertex of <span class="math" data-tex="\(B\)">\(B\)</span>. Let <span class="math" data-tex="\(S\)">\(S\)</span> contain fractions <span class="math" data-tex="\(\alpha_A\)">\(\alpha_A\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\alpha_B\)">\(\alpha_B\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>. Compute <span class="math" data-tex="\(c(S)\)">\(c(S)\)</span>, and compare it with the bound of Lemma 3.1 for <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>.</p>
+<p><strong>Exercise 7.4.</strong> Explain why (4.2) cannot be applied to &quot;the last unknown entry of a table, given its other entries&quot;.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(b=5\)">\(b=5\)</span>: <span class="math" data-tex="\(\theta=1/16\)">\(\theta=1/16\)</span>, <span class="math" data-tex="\(5\theta=5/16\)">\(5\theta=5/16\)</span>, <span class="math" data-tex="\(\eta=0.559\ldots&lt;0.6\)">\(\eta=0.559\ldots&lt;0.6\)</span>. For <span class="math" data-tex="\(b=4\)">\(b=4\)</span>: <span class="math" data-tex="\(\theta=1/8\)">\(\theta=1/8\)</span>, <span class="math" data-tex="\(5\theta=0.625\)">\(5\theta=0.625\)</span>, <span class="math" data-tex="\(\eta=0.79\ldots\)">\(\eta=0.79\ldots\)</span>. So <span class="math" data-tex="\(b=5\)">\(b=5\)</span> is the least.</p>
+<p><strong>7.2.</strong> Each of the <span class="math" data-tex="\(u_a\)">\(u_a\)</span> incidences is matched to a uniform element of the other cluster, which lies in <span class="math" data-tex="\(S\)">\(S\)</span> with probability <span class="math" data-tex="\(v_a/n_a\)">\(v_a/n_a\)</span>. Every edge with both ends in <span class="math" data-tex="\(S\)">\(S\)</span> is a matched pair of exactly one table, so <span class="math" data-tex="\(2\sum_aZ_a=\operatorname{vol}(S)-c(S)\)">\(2\sum_aZ_a=\operatorname{vol}(S)-c(S)\)</span>; take expectations.</p>
+<p><strong>7.3.</strong> Here <span class="math" data-tex="\(N\)">\(N\)</span> vanishes on functions of mean zero, so <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>. The edges with both ends in <span class="math" data-tex="\(S\)">\(S\)</span> number <span class="math" data-tex="\(d|S\cap A|\alpha_B=\frac{V_0}2\alpha_A\alpha_B\)">\(d|S\cap A|\alpha_B=\frac{V_0}2\alpha_A\alpha_B\)</span>, and <span class="math" data-tex="\(\operatorname{vol}(S)=\frac{V_0}2(\alpha_A+\alpha_B)\)">\(\operatorname{vol}(S)=\frac{V_0}2(\alpha_A+\alpha_B)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+c(S)=\tfrac{V_0}2(\alpha_A+\alpha_B)-V_0\alpha_A\alpha_B .
+\]">\[
+c(S)=\tfrac{V_0}2(\alpha_A+\alpha_B)-V_0\alpha_A\alpha_B .
+\]</span>
+The bound of Lemma 3.1 is <span class="math" data-tex="\(\operatorname{vol}(S)(1-\operatorname{vol}(S)/V_0)\)">\(\operatorname{vol}(S)(1-\operatorname{vol}(S)/V_0)\)</span>, which equals <span class="math" data-tex="\(\frac{V_0}2(\alpha_A+\alpha_B)(1-\frac{\alpha_A+\alpha_B}2)\)">\(\frac{V_0}2(\alpha_A+\alpha_B)(1-\frac{\alpha_A+\alpha_B}2)\)</span>, and the difference is <span class="math" data-tex="\(\frac{V_0}4(\alpha_A-\alpha_B)^2\ge0\)">\(\frac{V_0}4(\alpha_A-\alpha_B)^2\ge0\)</span>. So the bound is attained exactly when <span class="math" data-tex="\(\alpha_A=\alpha_B\)">\(\alpha_A=\alpha_B\)</span>.</p>
+<p><strong>7.4.</strong> Once the other <span class="math" data-tex="\(2^t-1\)">\(2^t-1\)</span> entries of a permutation are prescribed, the last entry is determined, so its conditional law is a point mass, not close to uniform. Proposition 4.2 compares the law of whole tables with the uniform law, through events of the form &quot;the tables lie in a set&quot;; prescribing entries one at a time changes the reference probabilities themselves.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BCI] OpenAI, <em>A torsion-free counterexample to reduced Baum–Connes injectivity</em>, OpenAI Math Release preprint, 23 September 2026, Section 3, Lemmas 3.1-3.3, Proposition 3.4. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026</li>
+<li>[EL] P. Erdős and L. Lovász, <em>Problems and results on 3-chromatic hypergraphs and some related questions</em>, in Infinite and Finite Sets, Colloq. Math. Soc. János Bolyai 10 (1975), 609-627, Section 2. https://users.renyi.hu/~p_erdos/1975-34.pdf</li>
+<li>[HSS] B. Haeupler, B. Saha and A. Srinivasan, <em>New constructive aspects of the Lovász local lemma</em>, J. ACM 58 (2011), Theorem 2.1; arXiv:1001.1231. https://arxiv.org/abs/1001.1231</li>
+<li>[MT] R. A. Moser and G. Tardos, <em>A constructive proof of the general Lovász local lemma</em>, J. ACM 57 (2010), Theorem 1.1; arXiv:0903.0544. https://arxiv.org/abs/0903.0544</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

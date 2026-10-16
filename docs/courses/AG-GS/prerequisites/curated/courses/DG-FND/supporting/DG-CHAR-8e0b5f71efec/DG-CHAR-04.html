@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Schubert cells and universal Grassmannian cohomology</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+</head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. Explicit Schubert disks</a></li><li><a href="#part-b">B. From cells to singular homology</a></li><li><a href="#part-c">C. Paracompactness of the countable limits</a></li><li><a href="#part-d">D. The symmetric-polynomial calculation</a></li><li><a href="#further-reading">Further reading</a></li></ul></nav><article class="lesson"><h1 id="schubert-cells-and-universal-grassmannian-cohomology">Schubert cells and universal Grassmannian cohomology</h1>
+<p><em>Written and self-checked by GPT-6 Astra (OpenAI), at Ultra, October 2026. New exposition: CC0 1.0.</em></p>
+<p>We construct real and complex Grassmannians from explicit cells, then derive their additive homology and the corresponding cohomology bounds. We also prove the separation and paracompactness facts needed when these spaces are used as bundle bases. All infinite spaces below carry the final topology of their finite-dimensional stages.</p>
+<p>Read <a href="DG-CHAR-03.html#proposition-a-1">DG-CHAR-03 A.1</a> for the projection model of a Grassmannian, <a href="DG-CHAR-03.html#lemma-b-1">DG-CHAR-03 B.1</a> for products of compact exhaustions, <a href="DG-CHAR-03.html#lemma-e-1">DG-CHAR-03 E.1</a> for compact subsets of CW complexes, and <a href="DG-CHAR-03.html#lemma-e-2">DG-CHAR-03 E.2</a> for quotient maps times an interval. The chain proofs used below are <a href="DG-CHAR-06.html#lemma-k-1">DG-CHAR-06 K.1</a>, <a href="DG-CHAR-06.html#lemma-e-1">DG-CHAR-06 E.1</a>, <a href="DG-CHAR-06.html#theorem-e-2">DG-CHAR-06 E.2</a> and <a href="DG-CHAR-06.html#lemma-e-5">DG-CHAR-06 E.5</a>: homotopy, exact sequences, excision and sphere groups. The coefficient theorem is <a href="DG-CHAR-06.html#theorem-u-3">DG-CHAR-06 U.3</a>.</p>
+<h2 id="part-a">A. Explicit Schubert disks</h2>
+<p>Write <span class="math" data-tex="\(\mathbb F=\mathbb R\)">\(\mathbb F=\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and put <span class="math" data-tex="\(c=\dim_{\mathbb R}\mathbb F\)">\(c=\dim_{\mathbb R}\mathbb F\)</span>, so <span class="math" data-tex="\(c=1\)">\(c=1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>. In <span class="math" data-tex="\(\mathbb F^m\)">\(\mathbb F^m\)</span> let <span class="math" data-tex="\(F_k=\operatorname{span}(e_1,\ldots,e_k)\)">\(F_k=\operatorname{span}(e_1,\ldots,e_k)\)</span>. For a rank-<span class="math" data-tex="\(r\)">\(r\)</span> plane <span class="math" data-tex="\(V\)">\(V\)</span>, the integer <span class="math" data-tex="\(\dim(V\cap F_k)\)">\(\dim(V\cap F_k)\)</span> increases by zero or one at each step. Indeed, the <span class="math" data-tex="\(k\)">\(k\)</span>-th coordinate induces an injection of <span class="math" data-tex="\((V\cap F_k)/(V\cap F_{k-1})\)">\((V\cap F_k)/(V\cap F_{k-1})\)</span> into <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>. Its <span class="math" data-tex="\(r\)">\(r\)</span> increases occur at a unique symbol
+<span class="math math-display" data-tex="\[
+ \sigma=(\sigma_1&lt;\cdots&lt;\sigma_r),\qquad
+ 1\leq\sigma_1,\quad \sigma_r\leq m.
+\tag{A1}
+\]">\[
+ \sigma=(\sigma_1&lt;\cdots&lt;\sigma_r),\qquad
+ 1\leq\sigma_1,\quad \sigma_r\leq m.
+\tag{A1}
+\]</span>
+Let <span class="math" data-tex="\(e(\sigma)\)">\(e(\sigma)\)</span> be the set of planes with that symbol, and put <span class="math" data-tex="\(d(\sigma)=\sum_{j=1}^r(\sigma_j-j)\)">\(d(\sigma)=\sum_{j=1}^r(\sigma_j-j)\)</span>. When <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, the empty symbol describes the single point <span class="math" data-tex="\(G_0(\mathbb F^m)\)">\(G_0(\mathbb F^m)\)</span>.</p>
+<p id="lemma-a-1"><strong>Lemma A.1 (a continuous rotation).</strong> If <span class="math" data-tex="\(e,u\)">\(e,u\)</span> are unit vectors and <span class="math" data-tex="\(e^*u=u^*e=s\in[0,1]\)">\(e^*u=u^*e=s\in[0,1]\)</span>, set
+<span class="math math-display" data-tex="\[
+ K=ue^*-eu^*,\qquad
+ R_e(u)=I+K+\frac{K^2}{1+s}.
+\tag{A2}
+\]">\[
+ K=ue^*-eu^*,\qquad
+ R_e(u)=I+K+\frac{K^2}{1+s}.
+\tag{A2}
+\]</span>
+This is orthogonal over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, unitary over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, maps <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(u\)">\(u\)</span>, and fixes the orthogonal complement of their span. It depends continuously on <span class="math" data-tex="\(u\)">\(u\)</span>, including at <span class="math" data-tex="\(u=e\)">\(u=e\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(q=(1-s^2)^{1/2}&gt;0\)">\(q=(1-s^2)^{1/2}&gt;0\)</span>, put <span class="math" data-tex="\(w=(u-se)/q\)">\(w=(u-se)/q\)</span>. The vectors <span class="math" data-tex="\(e,w\)">\(e,w\)</span> are orthonormal. On their span, in this order, direct application to the two basis vectors gives
+<span class="math math-display" data-tex="\[
+ K=\begin{pmatrix}0&amp;-q\\q&amp;0\end{pmatrix},
+ \qquad
+ R_e(u)=\begin{pmatrix}s&amp;-q\\q&amp;s\end{pmatrix}.
+\tag{A3}
+\]">\[
+ K=\begin{pmatrix}0&amp;-q\\q&amp;0\end{pmatrix},
+ \qquad
+ R_e(u)=\begin{pmatrix}s&amp;-q\\q&amp;s\end{pmatrix}.
+\tag{A3}
+\]</span>
+Here <span class="math" data-tex="\(1-q^2/(1+s)=s\)">\(1-q^2/(1+s)=s\)</span>. The columns of the second matrix are orthonormal and its first column represents <span class="math" data-tex="\(se+qw=u\)">\(se+qw=u\)</span>. The entries are real, so the same computation is valid with conjugate transpose in the complex case. On the orthogonal complement <span class="math" data-tex="\(K\)">\(K\)</span> is zero and <span class="math" data-tex="\(R_e(u)\)">\(R_e(u)\)</span> is the identity.</p>
+<p>If <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, then <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, and <span class="math" data-tex="\(\|u-e\|^2=2-2s=0\)">\(\|u-e\|^2=2-2s=0\)</span>, so <span class="math" data-tex="\(u=e\)">\(u=e\)</span> and (A2) is the identity. Formula (A2), whose denominator is at least one, proves continuity without choosing <span class="math" data-tex="\(w\)">\(w\)</span> near this case. Square roots are continuous on the nonnegative reals: for <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span>, the identity for their difference gives <span class="math" data-tex="\(|\sqrt a-\sqrt b|\leq\sqrt{|a-b|}\)">\(|\sqrt a-\sqrt b|\leq\sqrt{|a-b|}\)</span>, and the latter tends to zero with <span class="math" data-tex="\(|a-b|\)">\(|a-b|\)</span>. Existence and elementary norm properties are <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.0</a>. □</p>
+<p id="proposition-a-2"><strong>Proposition A.2 (characteristic maps).</strong> There is a continuous map from a closed disk of real dimension <span class="math" data-tex="\(c\,d(\sigma)\)">\(c\,d(\sigma)\)</span> into <span class="math" data-tex="\(G_r(\mathbb F^m)\)">\(G_r(\mathbb F^m)\)</span> whose interior maps homeomorphically onto <span class="math" data-tex="\(e(\sigma)\)">\(e(\sigma)\)</span>. Its boundary maps into cells <span class="math" data-tex="\(e(\tau)\)">\(e(\tau)\)</span> with <span class="math" data-tex="\(\tau_j\leq\sigma_j\)">\(\tau_j\leq\sigma_j\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(d(\tau)&lt;d(\sigma)\)">\(d(\tau)&lt;d(\sigma)\)</span>. These maps are compatible with increasing <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Proof.</strong> Define
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ W_j&amp;=F_{\sigma_j}\cap
+   \operatorname{span}(e_{\sigma_1},\ldots,e_{\sigma_{j-1}})^\perp,\\
+ D_j&amp;=\{z\in W_j\cap e_{\sigma_j}^{\perp}:\|z\|\leq1\},\\
+ u_j(z)&amp;=z+\sqrt{1-\|z\|^2}\,e_{\sigma_j}.
+ \end{aligned}
+\tag{A4}
+\]">\[
+ \begin{aligned}
+ W_j&amp;=F_{\sigma_j}\cap
+   \operatorname{span}(e_{\sigma_1},\ldots,e_{\sigma_{j-1}})^\perp,\\
+ D_j&amp;=\{z\in W_j\cap e_{\sigma_j}^{\perp}:\|z\|\leq1\},\\
+ u_j(z)&amp;=z+\sqrt{1-\|z\|^2}\,e_{\sigma_j}.
+ \end{aligned}
+\tag{A4}
+\]</span>
+The space <span class="math" data-tex="\(W_j\)">\(W_j\)</span> has <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>-dimension <span class="math" data-tex="\(\sigma_j-j+1\)">\(\sigma_j-j+1\)</span>, so <span class="math" data-tex="\(D_j\)">\(D_j\)</span> is a real disk of dimension <span class="math" data-tex="\(c(\sigma_j-j)\)">\(c(\sigma_j-j)\)</span>. Its map <span class="math" data-tex="\(u_j\)">\(u_j\)</span> parametrizes the unit vectors in <span class="math" data-tex="\(W_j\)">\(W_j\)</span> whose <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span>-th coordinate is real and nonnegative. The inverse forgets that last coordinate.</p>
+<p>On the product <span class="math" data-tex="\(D_\sigma=\prod_{j=1}^rD_j\)">\(D_\sigma=\prod_{j=1}^rD_j\)</span> set
+<span class="math math-display" data-tex="\[
+ O_0=I,\qquad
+ O_j=O_{j-1}R_{e_{\sigma_j}}(u_j),\qquad
+ v_j=O_{j-1}u_j.
+\tag{A5}
+\]">\[
+ O_0=I,\qquad
+ O_j=O_{j-1}R_{e_{\sigma_j}}(u_j),\qquad
+ v_j=O_{j-1}u_j.
+\tag{A5}
+\]</span>
+The new rotation fixes the earlier coordinate vectors <span class="math" data-tex="\(e_{\sigma_l}\)">\(e_{\sigma_l}\)</span>, <span class="math" data-tex="\(l&lt;j\)">\(l&lt;j\)</span>, because both <span class="math" data-tex="\(u_j\)">\(u_j\)</span> and <span class="math" data-tex="\(e_{\sigma_j}\)">\(e_{\sigma_j}\)</span> are orthogonal to them. It also fixes everything orthogonal to <span class="math" data-tex="\(F_{\sigma_j}\)">\(F_{\sigma_j}\)</span>. Induction gives <span class="math" data-tex="\(O_je_{\sigma_l}=v_l\)">\(O_je_{\sigma_l}=v_l\)</span> for <span class="math" data-tex="\(l\leq j\)">\(l\leq j\)</span>, with these vectors orthonormal, and <span class="math" data-tex="\(v_j\in F_{\sigma_j}\)">\(v_j\in F_{\sigma_j}\)</span>. The earlier rotations act inside smaller flag spaces, so they fix <span class="math" data-tex="\(e_{\sigma_j}\)">\(e_{\sigma_j}\)</span> and preserve its coordinate. Consequently the <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span>-th coordinate of <span class="math" data-tex="\(v_j\)">\(v_j\)</span> is <span class="math" data-tex="\(\sqrt{1-\|z_j\|^2}\)">\(\sqrt{1-\|z_j\|^2}\)</span>.</p>
+<p>Define <span class="math" data-tex="\(\Phi_\sigma\)">\(\Phi_\sigma\)</span> to be their span. It is continuous in the projection topology, because its projection matrix is
+<span class="math math-display" data-tex="\[
+ P_\sigma=\sum_{j=1}^r v_jv_j^*.
+\tag{A6}
+\]">\[
+ P_\sigma=\sum_{j=1}^r v_jv_j^*.
+\tag{A6}
+\]</span>
+The projection model and its topology are <a href="DG-CHAR-03.html#proposition-a-1">DG-CHAR-03 A.1</a>. All formulas remain valid on the closed product.</p>
+<p>On the product of disk interiors, each pivot coordinate is positive. The plane then has symbol exactly <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. To check this rather than only an inequality, take a nonzero linear combination of the <span class="math" data-tex="\(v_j\)">\(v_j\)</span> and its largest index with nonzero coefficient. Its coordinate at that index's pivot is nonzero, because earlier vectors lie in smaller flag spaces. It cannot lie below that pivot. This identifies all its flag intersection dimensions.</p>
+<p>Conversely a plane in <span class="math" data-tex="\(e(\sigma)\)">\(e(\sigma)\)</span> has a unique orthonormal basis <span class="math" data-tex="\(v_1,\ldots,v_r\)">\(v_1,\ldots,v_r\)</span> with <span class="math" data-tex="\(v_j\in V\cap F_{\sigma_j}\)">\(v_j\in V\cap F_{\sigma_j}\)</span> and positive real pivot coordinate. Inductively the orthogonal complement of the earlier <span class="math" data-tex="\(j-1\)">\(j-1\)</span> vectors in the <span class="math" data-tex="\(j\)">\(j\)</span>-dimensional intersection is a line. Its pivot coordinate is nonzero, since a zero coordinate would put it in <span class="math" data-tex="\(V\cap F_{\sigma_j-1}\)">\(V\cap F_{\sigma_j-1}\)</span>, which already has dimension <span class="math" data-tex="\(j-1\)">\(j-1\)</span>. Dividing a nonzero vector on that line by its norm and choosing its sign or complex phase makes the coordinate positive, uniquely. Orthogonal complements and normalization in finite dimensions are established in <a href="DG-CHAR-03.html#proposition-a-1">DG-CHAR-03 A.1</a>.</p>
+<p>Recover the disk parameters in order. Given the previous <span class="math" data-tex="\(O_{j-1}\)">\(O_{j-1}\)</span>, put <span class="math" data-tex="\(u_j=O_{j-1}^{-1}v_j\)">\(u_j=O_{j-1}^{-1}v_j\)</span>. The earlier rotations preserve <span class="math" data-tex="\(F_{\sigma_j}\)">\(F_{\sigma_j}\)</span>, fix the later pivot coordinate, and send earlier pivot vectors to the preceding <span class="math" data-tex="\(v_l\)">\(v_l\)</span>. Thus <span class="math" data-tex="\(u_j\in W_j\)">\(u_j\in W_j\)</span>, is a unit vector with positive pivot coordinate, and has the form (A4) for exactly one <span class="math" data-tex="\(z_j\)">\(z_j\)</span> with norm less than one. This proves bijectivity of the interior map.</p>
+<p>The boundary lies outside <span class="math" data-tex="\(e(\sigma)\)">\(e(\sigma)\)</span>. If <span class="math" data-tex="\(\|z_j\|=1\)">\(\|z_j\|=1\)</span>, the vectors <span class="math" data-tex="\(v_1,\ldots,v_j\)">\(v_1,\ldots,v_j\)</span> all lie in <span class="math" data-tex="\(F_{\sigma_j-1}\)">\(F_{\sigma_j-1}\)</span>. Every image plane, including every boundary image, has at least <span class="math" data-tex="\(j\)">\(j\)</span> independent vectors in <span class="math" data-tex="\(F_{\sigma_j}\)">\(F_{\sigma_j}\)</span>, so its actual symbol satisfies <span class="math" data-tex="\(\tau_j\leq\sigma_j\)">\(\tau_j\leq\sigma_j\)</span>. The preceding boundary condition makes at least one inequality strict. Hence <span class="math" data-tex="\(d(\tau)&lt;d(\sigma)\)">\(d(\tau)&lt;d(\sigma)\)</span>.</p>
+<p>This also proves inverse continuity on the interior. If <span class="math" data-tex="\(A\)">\(A\)</span> is closed in the parameter interior, its closure <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span> in <span class="math" data-tex="\(D_\sigma\)">\(D_\sigma\)</span> is compact by <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a> and finite product compactness, proved in <a href="DG-CHAR-03.html#lemma-b-1">DG-CHAR-03 B.1</a>. Its image is compact and therefore closed in the Hausdorff Grassmannian. Since no boundary point maps into <span class="math" data-tex="\(e(\sigma)\)">\(e(\sigma)\)</span>,
+<span class="math" data-tex="\(\Phi_\sigma(\overline A)\cap e(\sigma)=\Phi_\sigma(A)\)">\(\Phi_\sigma(\overline A)\cap e(\sigma)=\Phi_\sigma(A)\)</span>.
+Thus the interior bijection is closed onto the cell and its inverse is continuous.</p>
+<p>Finally <span class="math" data-tex="\(D_\sigma\)">\(D_\sigma\)</span> is a disk, not just a product of disks. Omit zero-dimensional factors and identify the remaining direct sum with a real Euclidean space. Let <span class="math" data-tex="\(h(z)=\max_j\|z_j\|\)">\(h(z)=\max_j\|z_j\|\)</span>. If there are <span class="math" data-tex="\(s\)">\(s\)</span> factors, then
+<span class="math math-display" data-tex="\[
+ h(z)\leq\|z\|\leq\sqrt{s}\,h(z).
+\tag{A7}
+\]">\[
+ h(z)\leq\|z\|\leq\sqrt{s}\,h(z).
+\tag{A7}
+\]</span>
+The map from the Euclidean unit disk to <span class="math" data-tex="\(D_\sigma\)">\(D_\sigma\)</span> is
+<span class="math" data-tex="\(z\mapsto z\|z\|/h(z)\)">\(z\mapsto z\|z\|/h(z)\)</span> for <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, and zero at zero. Its inverse is <span class="math" data-tex="\(y\mapsto yh(y)/\|y\|\)">\(y\mapsto yh(y)/\|y\|\)</span>. These maps are continuous away from zero, inverse by direct substitution, and continuous at zero by (A7). They carry interiors to interiors and boundaries to boundaries. If there are no positive-dimensional factors, the product is one point. Composing with this map gives the stated characteristic disk. All rotations and vectors involve only the first <span class="math" data-tex="\(\sigma_r\)">\(\sigma_r\)</span> coordinates, so adjoining ambient zero coordinates leaves the construction unchanged. □</p>
+<p id="theorem-a-3"><strong>Theorem A.3 (finite and infinite CW structures).</strong> The cells <span class="math" data-tex="\(e(\sigma)\)">\(e(\sigma)\)</span> and the maps of A.2 give a finite CW structure on <span class="math" data-tex="\(G_r(\mathbb F^m)\)">\(G_r(\mathbb F^m)\)</span>. Their compatible union gives a Hausdorff closure-finite CW structure on <span class="math" data-tex="\(G_r(\mathbb F^\infty)\)">\(G_r(\mathbb F^\infty)\)</span>, with its specified final topology.</p>
+<p><strong>Proof.</strong> There are finitely many symbols in dimension <span class="math" data-tex="\(m\)">\(m\)</span>. Let <span class="math" data-tex="\(X^a\)">\(X^a\)</span> be the union of cells of real dimension at most <span class="math" data-tex="\(a\)">\(a\)</span>, and let <span class="math" data-tex="\(X^{-1}=\varnothing\)">\(X^{-1}=\varnothing\)</span>. By A.2, <span class="math" data-tex="\(X^a\)">\(X^a\)</span> is the union of the images of the finitely many characteristic disks of dimension at most <span class="math" data-tex="\(a\)">\(a\)</span>: each such image contains its interior cell and has boundary in lower dimensions. It is therefore compact. Every cell closure is precisely its characteristic image. One inclusion follows because this image is closed and contains the cell. For the reverse inclusion, each point of a parameter disk is a limit of interior points, for example by multiplying its coordinates by numbers tending to one from below, and continuity puts its image in the cell closure. The zero-dimensional case is immediate.</p>
+<p>Attach all dimension-<span class="math" data-tex="\(a\)">\(a\)</span> disks to <span class="math" data-tex="\(X^{a-1}\)">\(X^{a-1}\)</span> by their boundary maps. The resulting quotient is compact, being a quotient of a finite disjoint union of compact spaces. It maps continuously and bijectively to <span class="math" data-tex="\(X^a\)">\(X^a\)</span>: disk interiors map homeomorphically to distinct cells, and every boundary point was identified with its image in the previous skeleton. A continuous bijection from a compact space to a Hausdorff space is a homeomorphism, as proved in <a href="DG-CHAR-03.html#lemma-b-2">DG-CHAR-03 B.2</a>. Induction proves the finite CW attachment statement.</p>
+<p>In the infinite union a cell and its entire characteristic image lie in the finite stage with <span class="math" data-tex="\(m=\sigma_r\)">\(m=\sigma_r\)</span>. Each finite stage is a subcomplex, because its symbols are exactly those with <span class="math" data-tex="\(\sigma_r\leq m\)">\(\sigma_r\leq m\)</span>, and A.2's boundary symbols still satisfy that inequality. This proves closure finiteness. A set is closed in the union precisely when its intersections with all finite Grassmannians are closed. By the finite attachment topology just proved, this is equivalent to its inverse image in every characteristic disk being closed. Hence the given topology is the CW weak topology. Hausdorffness and the finite-stage embeddings are <a href="DG-CHAR-03.html#lemma-b-2">DG-CHAR-03 B.2</a>. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, the whole construction is the one-point CW complex. □</p>
+<p id="corollary-a-4"><strong>Corollary A.4 (the partition count).</strong> Real cells of dimension <span class="math" data-tex="\(q\)">\(q\)</span> are counted by partitions of <span class="math" data-tex="\(q\)">\(q\)</span> with at most <span class="math" data-tex="\(r\)">\(r\)</span> rows, each of length at most <span class="math" data-tex="\(m-r\)">\(m-r\)</span>. Complex cells have twice the partition size as their real dimension. In the infinite Grassmannian there is no row-length bound; in each dimension there are only finitely many cells.</p>
+<p><strong>Proof.</strong> For a symbol set
+<span class="math math-display" data-tex="\[
+ \lambda_j=\sigma_{r+1-j}-(r+1-j),\qquad 1\leq j\leq r.
+\tag{A8}
+\]">\[
+ \lambda_j=\sigma_{r+1-j}-(r+1-j),\qquad 1\leq j\leq r.
+\tag{A8}
+\]</span>
+Strict increase of the <span class="math" data-tex="\(\sigma_i\)">\(\sigma_i\)</span> says that <span class="math" data-tex="\(\sigma_i-i\)">\(\sigma_i-i\)</span> is nondecreasing. Thus <span class="math" data-tex="\(\lambda_1\geq\cdots\geq\lambda_r\geq0\)">\(\lambda_1\geq\cdots\geq\lambda_r\geq0\)</span>, and <span class="math" data-tex="\(\lambda_1\leq m-r\)">\(\lambda_1\leq m-r\)</span>. Their sum is <span class="math" data-tex="\(d(\sigma)\)">\(d(\sigma)\)</span>. Conversely such a tuple gives the symbol <span class="math" data-tex="\(\sigma_i=i+\lambda_{r+1-i}\)">\(\sigma_i=i+\lambda_{r+1-i}\)</span>, so the correspondence is bijective. A.2 gives the real dimension <span class="math" data-tex="\(c\,d(\sigma)\)">\(c\,d(\sigma)\)</span>.</p>
+<p>If the partition size is <span class="math" data-tex="\(q\)">\(q\)</span>, each of its at most <span class="math" data-tex="\(r\)">\(r\)</span> entries lies between zero and <span class="math" data-tex="\(q\)">\(q\)</span>. There are at most <span class="math" data-tex="\((q+1)^r\)">\((q+1)^r\)</span> possible tuples, proving finiteness without the row-length restriction. Also <span class="math" data-tex="\(\sigma_r\leq r+q\)">\(\sigma_r\leq r+q\)</span>, so all these cells and their closures already occur in that finite stage. For <span class="math" data-tex="\(G_2(\mathbb R^4)\)">\(G_2(\mathbb R^4)\)</span>, the six symbols <span class="math" data-tex="\((1,2),(1,3),(1,4),(2,3),(2,4),(3,4)\)">\((1,2),(1,3),(1,4),(2,3),(2,4),(3,4)\)</span> have dimensions <span class="math" data-tex="\(0,1,2,2,3,4\)">\(0,1,2,2,3,4\)</span>; for <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> these dimensions double. When <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, only the partition of zero occurs. □</p>
+<h2 id="part-b">B. From cells to singular homology</h2>
+<p>The coefficient ring <span class="math" data-tex="\(R\)">\(R\)</span> in this part is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> or a field. Singular chains have finite support, and all groups in negative degrees are zero. The proofs of homotopy invariance, exact sequences and excision in <a href="DG-CHAR-06.html#lemma-k-1">DG-CHAR-06 K.1</a>, <a href="DG-CHAR-06.html#lemma-e-1">DG-CHAR-06 E.1</a> and <a href="DG-CHAR-06.html#theorem-e-2">DG-CHAR-06 E.2</a> apply with these coefficients: their chain formulas are integer formulas, and their relative chain groups are quotients by the indicated simplex submodules.</p>
+<p id="lemma-b-1"><strong>Lemma B.1 (the relative group of an attachment).</strong> Suppose a Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span> is obtained from <span class="math" data-tex="\(Y\)">\(Y\)</span> by attaching finitely many <span class="math" data-tex="\(q\)">\(q\)</span>-dimensional disks, with the quotient topology. Then
+<span class="math math-display" data-tex="\[
+ H_j(X,Y;R)=
+ \begin{cases}
+ \displaystyle\bigoplus_{\text{attached }q\text{-disks}}R,&amp;j=q,\\
+ 0,&amp;j\ne q.
+ \end{cases}
+\tag{B1}
+\]">\[
+ H_j(X,Y;R)=
+ \begin{cases}
+ \displaystyle\bigoplus_{\text{attached }q\text{-disks}}R,&amp;j=q,\\
+ 0,&amp;j\ne q.
+ \end{cases}
+\tag{B1}
+\]</span>
+For <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>, choose a generator of <span class="math" data-tex="\(H_q(D^q,S^{q-1};\mathbb Z)\)">\(H_q(D^q,S^{q-1};\mathbb Z)\)</span> on each oriented disk. Its characteristic map sends that generator to the indicated summand generator. These identifications agree for inclusions that keep the characteristic disks.</p>
+<p><strong>Proof.</strong> First take <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>. Write <span class="math" data-tex="\(p\)">\(p\)</span> for the quotient map from <span class="math" data-tex="\(Y\)">\(Y\)</span> disjoint union the closed disks. The preimage of <span class="math" data-tex="\(Y\)">\(Y\)</span> is the <span class="math" data-tex="\(Y\)">\(Y\)</span>-component together with the disk boundaries, so it is closed; the quotient criterion makes <span class="math" data-tex="\(Y\)">\(Y\)</span> closed in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Let <span class="math" data-tex="\(U\)">\(U\)</span> consist of <span class="math" data-tex="\(Y\)">\(Y\)</span> and the images of the outer collars
+<span class="math math-display" data-tex="\[
+ \{x\in D^q:\|x\|&gt;1/2\}.
+\tag{B2}
+\]">\[
+ \{x\in D^q:\|x\|&gt;1/2\}.
+\tag{B2}
+\]</span>
+It is open, since its inverse image under <span class="math" data-tex="\(p\)">\(p\)</span> is open in every component. It deformation retracts to <span class="math" data-tex="\(Y\)">\(Y\)</span>. On each collar use the radial homotopy
+<span class="math math-display" data-tex="\[
+ x\longmapsto
+ \frac{(1-t)\|x\|+t}{\|x\|}\,x,\qquad 0\leq t\leq1,
+\tag{B3}
+\]">\[
+ x\longmapsto
+ \frac{(1-t)\|x\|+t}{\|x\|}\,x,\qquad 0\leq t\leq1,
+\tag{B3}
+\]</span>
+followed by the characteristic map, and fix <span class="math" data-tex="\(Y\)">\(Y\)</span>. This fixes boundary points, so the formulas agree on all attaching identifications. The restriction <span class="math" data-tex="\(p^{-1}(U)\to U\)">\(p^{-1}(U)\to U\)</span> is a quotient map: for a subset of the open set <span class="math" data-tex="\(U\)">\(U\)</span>, its open inverse image in <span class="math" data-tex="\(p^{-1}(U)\)">\(p^{-1}(U)\)</span> is open in the full domain, and the original quotient criterion applies. By <a href="DG-CHAR-03.html#lemma-e-2">DG-CHAR-03 E.2</a> its product with the interval is also a quotient. Thus (B3) descends to a continuous homotopy, not merely a pointwise deformation.</p>
+<p>The resulting relative chain homotopy makes <span class="math" data-tex="\(H_*(U,Y;R)=0\)">\(H_*(U,Y;R)=0\)</span>, by <a href="DG-CHAR-06.html#lemma-k-1">DG-CHAR-06 K.1</a>. The short exact sequence of complexes
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ 0\longrightarrow C_*(U;R)/C_*(Y;R)
+ &amp;\longrightarrow C_*(X;R)/C_*(Y;R)\\
+ &amp;\longrightarrow C_*(X;R)/C_*(U;R)
+ \longrightarrow0
+ \end{aligned}
+\tag{B4}
+\]">\[
+ \begin{aligned}
+ 0\longrightarrow C_*(U;R)/C_*(Y;R)
+ &amp;\longrightarrow C_*(X;R)/C_*(Y;R)\\
+ &amp;\longrightarrow C_*(X;R)/C_*(U;R)
+ \longrightarrow0
+ \end{aligned}
+\tag{B4}
+\]</span>
+and <a href="DG-CHAR-06.html#lemma-e-1">DG-CHAR-06 E.1</a> therefore give <span class="math" data-tex="\(H_*(X,Y;R)\cong H_*(X,U;R)\)">\(H_*(X,Y;R)\cong H_*(X,U;R)\)</span>. Excision removes <span class="math" data-tex="\(Y\)">\(Y\)</span> from the latter pair, since its closure is contained in the open set <span class="math" data-tex="\(U\)">\(U\)</span>:
+<span class="math math-display" data-tex="\[
+ H_*(X,U;R)\cong H_*(X\setminus Y,U\setminus Y;R).
+\tag{B5}
+\]">\[
+ H_*(X,U;R)\cong H_*(X\setminus Y,U\setminus Y;R).
+\tag{B5}
+\]</span>
+The pair on the right is the disjoint union, over the disks, of
+<span class="math math-display" data-tex="\[
+ (\{x:\|x\|&lt;1\},\ \{x:1/2&lt;\|x\|&lt;1\}).
+\tag{B6}
+\]">\[
+ (\{x:\|x\|&lt;1\},\ \{x:1/2&lt;\|x\|&lt;1\}).
+\tag{B6}
+\]</span>
+Indeed, away from the attaching boundaries the quotient makes no identifications and restricts to the disjoint union of the disk interiors with their original topology.</p>
+<p>The chain complex of this disjoint union is the direct sum of the component chain complexes: a singular simplex, whose domain is connected, lies in one of the open-and-closed components. Boundary maps keep that component, and cycles and boundaries are computed componentwise. In (B6) the open ball is contractible by scalar multiplication toward zero, and the annulus deformation retracts to the radius-<span class="math" data-tex="\(3/4\)">\(3/4\)</span> sphere by interpolating the radius with <span class="math" data-tex="\(3/4\)">\(3/4\)</span>. The long exact pair sequence and the sphere groups of <a href="DG-CHAR-06.html#lemma-e-5">DG-CHAR-06 E.5</a> give one copy of <span class="math" data-tex="\(R\)">\(R\)</span> in degree <span class="math" data-tex="\(q\)">\(q\)</span> and zero elsewhere. More explicitly, for positive degrees the pair groups are the reduced homology of that sphere shifted by one; in degree zero the map from the annulus's <span class="math" data-tex="\(H_0\)">\(H_0\)</span> onto the ball's <span class="math" data-tex="\(H_0\)">\(H_0\)</span> is onto, so the relative group is zero. When <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, the annulus has two components, and the kernel of <span class="math" data-tex="\(R\oplus R\to R\)">\(R\oplus R\to R\)</span>, <span class="math" data-tex="\((a,b)\mapsto a+b\)">\((a,b)\mapsto a+b\)</span>, is the required copy of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>To check the claimed generators, apply the same comparison to a single closed disk. Its collar (B2) deformation retracts to its boundary, so
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ H_q(D^q,S^{q-1};R)
+ &amp;\cong H_q(D^q,\{\|x\|&gt;1/2\};R)\\
+ &amp;\cong H_q(\{\|x\|&lt;1\},\{1/2&lt;\|x\|&lt;1\};R).
+ \end{aligned}
+\tag{B7}
+\]">\[
+ \begin{aligned}
+ H_q(D^q,S^{q-1};R)
+ &amp;\cong H_q(D^q,\{\|x\|&gt;1/2\};R)\\
+ &amp;\cong H_q(\{\|x\|&lt;1\},\{1/2&lt;\|x\|&lt;1\};R).
+ \end{aligned}
+\tag{B7}
+\]</span>
+The last is excision of the boundary; its closure lies in the relative interior of the collar. Naturality of the pair sequences and excision maps makes (B7) commute with the characteristic map into (B4)–(B6). Thus a disk generator goes to exactly its own summand generator, and inclusions preserving the disk preserve this generator.</p>
+<p>For <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, the attached points have empty boundary and <span class="math" data-tex="\(X\)">\(X\)</span> is the disjoint union of <span class="math" data-tex="\(Y\)">\(Y\)</span> and those points. The relative chain complex is the direct sum of their point complexes, which have <span class="math" data-tex="\(H_0=R\)">\(H_0=R\)</span> and other homology zero by <a href="DG-CHAR-06.html#lemma-k-1">DG-CHAR-06 K.1</a>. This proves the formula and its generator assertion in every case. □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (cellular homology with its comparison map).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be a finite CW complex, or a Hausdorff closure-finite CW complex with finitely many cells in each dimension and the weak topology of its characteristic disks. Put
+<span class="math math-display" data-tex="\[
+ C_q^{\mathrm{cell}}(X;R)=H_q(X^q,X^{q-1};R),
+ \qquad X^{-1}=\varnothing.
+\tag{B8}
+\]">\[
+ C_q^{\mathrm{cell}}(X;R)=H_q(X^q,X^{q-1};R),
+ \qquad X^{-1}=\varnothing.
+\tag{B8}
+\]</span>
+For <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span> define <span class="math" data-tex="\(d_q\)">\(d_q\)</span> as the composite of the pair boundary and relativization:
+<span class="math math-display" data-tex="\[
+ C_q^{\mathrm{cell}}
+ \xrightarrow{\partial_q}H_{q-1}(X^{q-1};R)
+ \xrightarrow{j_{q-1}}C_{q-1}^{\mathrm{cell}},
+ \qquad d_0=0.
+\tag{B9}
+\]">\[
+ C_q^{\mathrm{cell}}
+ \xrightarrow{\partial_q}H_{q-1}(X^{q-1};R)
+ \xrightarrow{j_{q-1}}C_{q-1}^{\mathrm{cell}},
+ \qquad d_0=0.
+\tag{B9}
+\]</span>
+Then <span class="math" data-tex="\(d_{q-1}d_q=0\)">\(d_{q-1}d_q=0\)</span>, and
+<span class="math math-display" data-tex="\[
+ H_q(X;R)\cong
+ \ker d_q/\operatorname{im}d_{q+1}.
+\tag{B10}
+\]">\[
+ H_q(X;R)\cong
+ \ker d_q/\operatorname{im}d_{q+1}.
+\tag{B10}
+\]</span>
+The comparison is natural for cellular maps. A subcomplex inclusion induces the inclusion of the corresponding cell generators when their disk generators are chosen consistently.</p>
+<p><strong>Proof.</strong> Each finite-dimensional skeleton here is a finite CW complex. Apply B.1 to successive skeletal attachments. Starting with the discrete zero-skeleton, their long exact pair sequences show by induction that
+<span class="math math-display" data-tex="\[
+ H_j(X^a;R)=0\quad(j&gt;a).
+\tag{B11}
+\]">\[
+ H_j(X^a;R)=0\quad(j&gt;a).
+\tag{B11}
+\]</span>
+For the induction step with <span class="math" data-tex="\(j&gt;a\)">\(j&gt;a\)</span>, both <span class="math" data-tex="\(H_j(X^{a-1};R)\)">\(H_j(X^{a-1};R)\)</span> and <span class="math" data-tex="\(H_j(X^a,X^{a-1};R)\)">\(H_j(X^a,X^{a-1};R)\)</span> vanish, so exactness gives the assertion. The same sequences show that <span class="math" data-tex="\(H_j(X^{a-1};R)\to H_j(X^a;R)\)">\(H_j(X^{a-1};R)\to H_j(X^a;R)\)</span> is an isomorphism when <span class="math" data-tex="\(j&lt;a-1\)">\(j&lt;a-1\)</span>, because the two adjacent relative groups, in degrees <span class="math" data-tex="\(j+1\)">\(j+1\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span>, vanish.</p>
+<p>The composite <span class="math" data-tex="\(d_{q-1}d_q\)">\(d_{q-1}d_q\)</span> contains the two consecutive maps
+<span class="math math-display" data-tex="\[
+ H_{q-1}(X^{q-1};R)\longrightarrow
+ H_{q-1}(X^{q-1},X^{q-2};R)\longrightarrow
+ H_{q-2}(X^{q-2};R)
+\tag{B12}
+\]">\[
+ H_{q-1}(X^{q-1};R)\longrightarrow
+ H_{q-1}(X^{q-1},X^{q-2};R)\longrightarrow
+ H_{q-2}(X^{q-2};R)
+\tag{B12}
+\]</span>
+in one exact sequence, hence is zero. The case <span class="math" data-tex="\(q=1\)">\(q=1\)</span> follows from <span class="math" data-tex="\(d_0=0\)">\(d_0=0\)</span>.</p>
+<p>By (B11), the map
+<span class="math math-display" data-tex="\[
+ j_q:H_q(X^q;R)\longrightarrow C_q^{\mathrm{cell}}
+\tag{B13}
+\]">\[
+ j_q:H_q(X^q;R)\longrightarrow C_q^{\mathrm{cell}}
+\tag{B13}
+\]</span>
+is injective, since the preceding <span class="math" data-tex="\(H_q(X^{q-1};R)\)">\(H_q(X^{q-1};R)\)</span> vanishes. For <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, the same argument makes <span class="math" data-tex="\(j_{q-1}\)">\(j_{q-1}\)</span> injective. Exactness of the pair <span class="math" data-tex="\((X^q,X^{q-1})\)">\((X^q,X^{q-1})\)</span> therefore identifies the image of (B13) with <span class="math" data-tex="\(\ker d_q\)">\(\ker d_q\)</span>. For <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, <span class="math" data-tex="\(j_0\)">\(j_0\)</span> is the identity identification of the zero-skeleton homology with <span class="math" data-tex="\(C_0^{\mathrm{cell}}\)">\(C_0^{\mathrm{cell}}\)</span>, giving the same conclusion.</p>
+<p>The sequence of <span class="math" data-tex="\((X^{q+1},X^q)\)">\((X^{q+1},X^q)\)</span> gives
+<span class="math math-display" data-tex="\[
+ H_q(X^{q+1};R)
+ \cong H_q(X^q;R)/\operatorname{im}\partial_{q+1},
+\tag{B14}
+\]">\[
+ H_q(X^{q+1};R)
+ \cong H_q(X^q;R)/\operatorname{im}\partial_{q+1},
+\tag{B14}
+\]</span>
+since its degree-<span class="math" data-tex="\(q\)">\(q\)</span> relative group is zero. Under the injection <span class="math" data-tex="\(j_q\)">\(j_q\)</span>, the denominator maps onto <span class="math" data-tex="\(\operatorname{im}d_{q+1}\)">\(\operatorname{im}d_{q+1}\)</span>. Thus <span class="math" data-tex="\(j_q\)">\(j_q\)</span> induces (B10) with <span class="math" data-tex="\(X^{q+1}\)">\(X^{q+1}\)</span> in place of <span class="math" data-tex="\(X\)">\(X\)</span>. All later attachments have dimension at least <span class="math" data-tex="\(q+2\)">\(q+2\)</span> and induce isomorphisms in degree <span class="math" data-tex="\(q\)">\(q\)</span>, by the earlier vanishing argument. This proves the result for finite complexes, including complexes of dimension below <span class="math" data-tex="\(q+1\)">\(q+1\)</span>, whose later skeleta repeat.</p>
+<p>For an infinite complex, every finite singular chain has compact image: its finitely many simplices are compact by <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>, and finite unions of their continuous images are compact. <a href="DG-CHAR-03.html#lemma-e-1">DG-CHAR-03 E.1</a> places this image in a finite subcomplex, hence in some finite-dimensional skeleton. Every <span class="math" data-tex="\(q\)">\(q\)</span>-cycle in <span class="math" data-tex="\(X\)">\(X\)</span> is consequently represented in a skeleton and, using the already established isomorphisms after <span class="math" data-tex="\(X^{q+1}\)">\(X^{q+1}\)</span>, is homologous to one in <span class="math" data-tex="\(X^{q+1}\)">\(X^{q+1}\)</span>. If a cycle there bounds in <span class="math" data-tex="\(X\)">\(X\)</span>, a finite bounding chain lies in some later skeleton; the same isomorphisms show it already bounds in <span class="math" data-tex="\(X^{q+1}\)">\(X^{q+1}\)</span>. This proves directly that <span class="math" data-tex="\(H_q(X^{q+1};R)\to H_q(X;R)\)">\(H_q(X^{q+1};R)\to H_q(X;R)\)</span> is an isomorphism, completing (B10) without an unproved passage-to-limit assertion.</p>
+<p>A cellular map carries <span class="math" data-tex="\(X^a\)">\(X^a\)</span> into the corresponding target skeleton. It therefore induces commuting maps on every pair sequence used in (B9), (B13) and (B14). These prove naturality of the induced quotient comparison. For a subcomplex inclusion, B.1 identifies each disk generator with the same characteristic disk in the larger complex. This is exactly the stated inclusion on the cellular chain groups. □</p>
+<p id="corollary-b-3"><strong>Corollary B.3 (Grassmannian homology and additive cohomology).</strong> Let <span class="math" data-tex="\(p_{r,m}(q)\)">\(p_{r,m}(q)\)</span> count partitions of <span class="math" data-tex="\(q\)">\(q\)</span> with at most <span class="math" data-tex="\(r\)">\(r\)</span> rows and row lengths at most <span class="math" data-tex="\(m-r\)">\(m-r\)</span>, and let <span class="math" data-tex="\(p_r(q)\)">\(p_r(q)\)</span> count partitions with at most <span class="math" data-tex="\(r\)">\(r\)</span> rows and no length bound. For finite or infinite real Grassmannians,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \dim_{\mathbb F_2}H^q(G_r(\mathbb R^m);\mathbb F_2)&amp;\leq p_{r,m}(q),\\
+ \dim_{\mathbb F_2}H^q(G_r(\mathbb R^\infty);\mathbb F_2)&amp;\leq p_r(q).
+ \end{aligned}
+\tag{B15}
+\]">\[
+ \begin{aligned}
+ \dim_{\mathbb F_2}H^q(G_r(\mathbb R^m);\mathbb F_2)&amp;\leq p_{r,m}(q),\\
+ \dim_{\mathbb F_2}H^q(G_r(\mathbb R^\infty);\mathbb F_2)&amp;\leq p_r(q).
+ \end{aligned}
+\tag{B15}
+\]</span>
+For complex Grassmannians, integral homology and cohomology vanish in odd degrees, and in degree <span class="math" data-tex="\(2q\)">\(2q\)</span> both are free abelian of rank <span class="math" data-tex="\(p_{r,m}(q)\)">\(p_{r,m}(q)\)</span>, or <span class="math" data-tex="\(p_r(q)\)">\(p_r(q)\)</span> in the infinite case.</p>
+<p><strong>Proof.</strong> A.3 and A.4 put these spaces within the hypotheses of B.2 and identify their cell counts. Over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, the homology of a finite-dimensional cellular chain group has dimension at most that chain group's dimension: its cycles form a subspace, and quotienting by boundaries can only decrease dimension, by basis extension. Field evaluation, proved for arbitrary chain complexes after <a href="DG-CHAR-06.html#theorem-u-3">DG-CHAR-06 U.3</a>, identifies singular cohomology with the full linear dual of singular homology. The latter has finite dimension here, so it and its dual have the same dimension, using a basis and its coordinate functionals. This gives (B15).</p>
+<p>For the complex spaces all cells have even real dimension. Every cellular differential is zero, since either its source or its target is an odd-degree group and therefore zero. The integral homology is consequently free with one generator for each even-dimensional cell, by B.2. In each degree there are finitely many such generators. Apply the natural coefficient sequence of <a href="DG-CHAR-06.html#theorem-u-3">DG-CHAR-06 U.3</a> with coefficient group <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Its <span class="math" data-tex="\(\operatorname{Ext}\)">\(\operatorname{Ext}\)</span> term vanishes whenever the preceding homology group is free, as that theorem proves using a free presentation. Thus evaluation identifies cohomology with the integral dual of homology in every degree, giving the asserted groups.</p>
+<p>These are additive statements. They do not yet identify a cup-product generator with a characteristic class, or determine the real Grassmannian's differentials. □</p>
+<h2 id="part-c">C. Paracompactness of the countable limits</h2>
+<p>We use the definitions and proofs in <a href="DG-CHAR-08.html#lemma-q-1">DG-CHAR-08 Q.1</a> and <a href="DG-CHAR-08.html#lemma-q-2">DG-CHAR-08 Q.2</a>: normality separates disjoint closed sets, paracompactness means that every open cover has a locally finite open refinement, and normal spaces have continuous functions separating disjoint closed sets. The next proof supplies the extension step needed here.</p>
+<p id="lemma-c-1"><strong>Lemma C.1 (bounded extension).</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be compact Hausdorff, <span class="math" data-tex="\(A\subset K\)">\(A\subset K\)</span> closed and <span class="math" data-tex="\(h:A\to[-M,M]\)">\(h:A\to[-M,M]\)</span> continuous, with <span class="math" data-tex="\(M\geq0\)">\(M\geq0\)</span>. There is a continuous extension <span class="math" data-tex="\(f:K\to[-M,M]\)">\(f:K\to[-M,M]\)</span>. In particular a function from <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> extends to one from <span class="math" data-tex="\(K\)">\(K\)</span> to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<p><strong>Proof.</strong> Compact Hausdorff spaces are paracompact, since every open cover has a finite subcover, and are therefore normal by <a href="DG-CHAR-08.html#lemma-q-1">DG-CHAR-08 Q.1</a>. The case <span class="math" data-tex="\(M=0\)">\(M=0\)</span> has the zero extension. For <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>, the sets
+<span class="math math-display" data-tex="\[
+ A_-=\{x\in A:h(x)\leq-M/3\},\qquad
+ A_+=\{x\in A:h(x)\geq M/3\}
+\tag{C1}
+\]">\[
+ A_-=\{x\in A:h(x)\leq-M/3\},\qquad
+ A_+=\{x\in A:h(x)\geq M/3\}
+\tag{C1}
+\]</span>
+are disjoint and closed in <span class="math" data-tex="\(K\)">\(K\)</span>, because they are closed in the closed subset <span class="math" data-tex="\(A\)">\(A\)</span>. By <a href="DG-CHAR-08.html#lemma-q-2">DG-CHAR-08 Q.2</a> there is a continuous <span class="math" data-tex="\(u:K\to[0,1]\)">\(u:K\to[0,1]\)</span>, zero on <span class="math" data-tex="\(A_-\)">\(A_-\)</span> and one on <span class="math" data-tex="\(A_+\)">\(A_+\)</span>. Put <span class="math" data-tex="\(g=(M/3)(2u-1)\)">\(g=(M/3)(2u-1)\)</span>. Then <span class="math" data-tex="\(|g|\leq M/3\)">\(|g|\leq M/3\)</span> everywhere, and on <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+ |h-g|\leq 2M/3.
+\tag{C2}
+\]">\[
+ |h-g|\leq 2M/3.
+\tag{C2}
+\]</span>
+On the two end sets <span class="math" data-tex="\(g\)">\(g\)</span> has the appropriate constant endpoint value, giving this bound directly; between them both <span class="math" data-tex="\(|h|\)">\(|h|\)</span> and <span class="math" data-tex="\(|g|\)">\(|g|\)</span> are at most <span class="math" data-tex="\(M/3\)">\(M/3\)</span>.</p>
+<p>Repeat this construction on the residual. More precisely set <span class="math" data-tex="\(h_0=h\)">\(h_0=h\)</span>, <span class="math" data-tex="\(M_n=M(2/3)^n\)">\(M_n=M(2/3)^n\)</span>, choose <span class="math" data-tex="\(g_n\)">\(g_n\)</span> extending an approximation with <span class="math" data-tex="\(|g_n|\leq M_n/3\)">\(|g_n|\leq M_n/3\)</span>, and put <span class="math" data-tex="\(h_{n+1}=h_n-g_n|_A\)">\(h_{n+1}=h_n-g_n|_A\)</span>. The same estimate gives <span class="math" data-tex="\(|h_n|\leq M_n\)">\(|h_n|\leq M_n\)</span> by induction. The series
+<span class="math math-display" data-tex="\[
+ f=\sum_{n=0}^{\infty}g_n
+\tag{C3}
+\]">\[
+ f=\sum_{n=0}^{\infty}g_n
+\tag{C3}
+\]</span>
+converges uniformly, since the tail is bounded by the tail of the geometric series <span class="math" data-tex="\(\sum M_n/3=M\)">\(\sum M_n/3=M\)</span>; real completeness is <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>. It is continuous on the possibly nonmetrizable space <span class="math" data-tex="\(K\)">\(K\)</span>: at a point, choose a partial sum whose uniform tail is less than <span class="math" data-tex="\(\epsilon/3\)">\(\epsilon/3\)</span>, and then a neighborhood on which that finite sum varies by less than <span class="math" data-tex="\(\epsilon/3\)">\(\epsilon/3\)</span>. The two tails and this finite variation bound the variation of <span class="math" data-tex="\(f\)">\(f\)</span> by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Its absolute value is at most <span class="math" data-tex="\(M\)">\(M\)</span>, and the residual estimate tending to zero shows <span class="math" data-tex="\(f|_A=h\)">\(f|_A=h\)</span>. Empty <span class="math" data-tex="\(A\)">\(A\)</span> is allowed; the same construction, or the zero function, suffices.</p>
+<p>For <span class="math" data-tex="\(h:A\to[0,1]\)">\(h:A\to[0,1]\)</span>, apply the result with <span class="math" data-tex="\(M=1\)">\(M=1\)</span> to <span class="math" data-tex="\(2h-1\)">\(2h-1\)</span> and transform its extension back by <span class="math" data-tex="\(f\mapsto(f+1)/2\)">\(f\mapsto(f+1)/2\)</span>. This preserves the interval bound. □</p>
+<p id="theorem-c-2"><strong>Theorem C.2 (paracompactness of compact-stage limits).</strong> Let <span class="math" data-tex="\(X=\bigcup_{n\geq1}K_n\)">\(X=\bigcup_{n\geq1}K_n\)</span> be Hausdorff, with the final topology of nested compact Hausdorff subspaces and closed inclusions. Then <span class="math" data-tex="\(X\)">\(X\)</span> is normal, Lindelöf and paracompact. Every finite product of such spaces has the same properties. In particular these conclusions apply to the infinite real and complex Grassmannians and projective spaces, and their finite products.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(A,B\)">\(A,B\)</span> be disjoint closed subsets of <span class="math" data-tex="\(X\)">\(X\)</span>. Construct compatible continuous functions <span class="math" data-tex="\(f_n:K_n\to[0,1]\)">\(f_n:K_n\to[0,1]\)</span>, zero on <span class="math" data-tex="\(A\cap K_n\)">\(A\cap K_n\)</span> and one on <span class="math" data-tex="\(B\cap K_n\)">\(B\cap K_n\)</span>. On <span class="math" data-tex="\(K_1\)">\(K_1\)</span> this is <a href="DG-CHAR-08.html#lemma-q-2">DG-CHAR-08 Q.2</a>, since compact Hausdorff spaces are normal as in C.1. Given <span class="math" data-tex="\(f_n\)">\(f_n\)</span>, prescribe a function on the closed subset
+<span class="math math-display" data-tex="\[
+ K_n\ \cup\ (A\cap K_{n+1})\ \cup\ (B\cap K_{n+1})
+ \quad\text{of }K_{n+1}
+\tag{C4}
+\]">\[
+ K_n\ \cup\ (A\cap K_{n+1})\ \cup\ (B\cap K_{n+1})
+ \quad\text{of }K_{n+1}
+\tag{C4}
+\]</span>
+by <span class="math" data-tex="\(f_n\)">\(f_n\)</span>, zero and one, respectively. The definitions agree on overlaps. The prescription is continuous by finite closed-set pasting: the inverse image of a closed subset of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is a finite union of sets closed in the three closed pieces, hence closed in their union. Lemma C.1 extends it to <span class="math" data-tex="\(f_{n+1}\)">\(f_{n+1}\)</span>.</p>
+<p>The compatible functions define <span class="math" data-tex="\(f:X\to[0,1]\)">\(f:X\to[0,1]\)</span>. It is continuous, since every stage restriction is continuous and openness is tested on stages. The disjoint open sets <span class="math" data-tex="\(f^{-1}([0,1/3))\)">\(f^{-1}([0,1/3))\)</span> and <span class="math" data-tex="\(f^{-1}((2/3,1])\)">\(f^{-1}((2/3,1])\)</span> contain <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>. This proves normality. Since <span class="math" data-tex="\(X\)">\(X\)</span> is Hausdorff, singleton sets are closed, so normality also gives the regular shrinking property: for <span class="math" data-tex="\(x\in U\)">\(x\in U\)</span> open, separate <span class="math" data-tex="\(\{x\}\)">\(\{x\}\)</span> and <span class="math" data-tex="\(X\setminus U\)">\(X\setminus U\)</span> by disjoint open sets <span class="math" data-tex="\(V,O\)">\(V,O\)</span>. Then <span class="math" data-tex="\(x\in V\subset\overline V\subset U\)">\(x\in V\subset\overline V\subset U\)</span>, because the open set <span class="math" data-tex="\(O\)">\(O\)</span> containing <span class="math" data-tex="\(X\setminus U\)">\(X\setminus U\)</span> misses <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>.</p>
+<p>The space is Lindelöf, meaning that every open cover has a countable subcover. For each compact <span class="math" data-tex="\(K_n\)">\(K_n\)</span> choose finitely many members of the cover that cover it, then take their union over <span class="math" data-tex="\(n\)">\(n\)</span>. This is a countable family covering <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>To prove paracompactness directly, start with any open cover <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. For every <span class="math" data-tex="\(x\)">\(x\)</span>, regularity gives an open <span class="math" data-tex="\(V_x\ni x\)">\(V_x\ni x\)</span> whose closure lies in some assigned <span class="math" data-tex="\(U_x\in\mathcal U\)">\(U_x\in\mathcal U\)</span>. Lindelöfness gives a countable subcover <span class="math" data-tex="\(V_1,V_2,\ldots\)">\(V_1,V_2,\ldots\)</span> of these neighborhoods, with <span class="math" data-tex="\(\overline V_n\subset U_n\in\mathcal U\)">\(\overline V_n\subset U_n\in\mathcal U\)</span>. If this subcover is finite the same argument below uses that finite list. Define
+<span class="math math-display" data-tex="\[
+ W_n=U_n\setminus\bigcup_{k&lt;n}\overline V_k.
+\tag{C5}
+\]">\[
+ W_n=U_n\setminus\bigcup_{k&lt;n}\overline V_k.
+\tag{C5}
+\]</span>
+Each <span class="math" data-tex="\(W_n\)">\(W_n\)</span> is open and refines the original cover. They cover <span class="math" data-tex="\(X\)">\(X\)</span>: at a point choose the least index <span class="math" data-tex="\(n\)">\(n\)</span> for which it lies in <span class="math" data-tex="\(\overline V_n\)">\(\overline V_n\)</span>; then it lies in <span class="math" data-tex="\(U_n\)">\(U_n\)</span> and in none of the earlier closed sets, hence in <span class="math" data-tex="\(W_n\)">\(W_n\)</span>. They are locally finite: choose <span class="math" data-tex="\(V_k\)">\(V_k\)</span> containing a given point; this neighborhood meets none of the <span class="math" data-tex="\(W_n\)">\(W_n\)</span> with <span class="math" data-tex="\(n&gt;k\)">\(n&gt;k\)</span>. This constructs the required locally finite open refinement.</p>
+<p>By <a href="DG-CHAR-03.html#lemma-b-1">DG-CHAR-03 B.1</a>, the ordinary product of two such spaces has the final topology of the products of corresponding stages. Those stages are compact Hausdorff, and their inclusions are closed embeddings: the complements of products of closed subsets are unions of the open sets where at least one coordinate leaves the subset. The whole product is Hausdorff by coordinate separation. Induction proves the finite-product assertion, to which the preceding proof applies.</p>
+<p>The finite Grassmannians are compact Hausdorff and embedded as closed stages in the Hausdorff infinite Grassmannian by <a href="DG-CHAR-03.html#proposition-a-1">DG-CHAR-03 A.1</a> and <a href="DG-CHAR-03.html#lemma-b-2">DG-CHAR-03 B.2</a>. Projective spaces are the rank-one cases by <a href="DG-CHAR-03.html#example-d-1">DG-CHAR-03 D.1</a>. Thus all the named spaces satisfy the hypotheses. No countability condition on the compact stages themselves has been used. □</p>
+<h2 id="part-d">D. The symmetric-polynomial calculation</h2>
+<p>This is the algebraic count that accompanies the partition count of cells. It is valid over coefficient rings with torsion and with zero divisors.</p>
+<p id="theorem-d-1"><strong>Theorem D.1 (symmetric polynomials over a ring).</strong> For a commutative ring <span class="math" data-tex="\(R\)">\(R\)</span> with identity, let <span class="math" data-tex="\(e_j(t_1,\ldots,t_r)\)">\(e_j(t_1,\ldots,t_r)\)</span> be the sum of the products of <span class="math" data-tex="\(j\)">\(j\)</span> distinct variables. Then
+<span class="math math-display" data-tex="\[
+ R[t_1,\ldots,t_r]^{S_r}=R[e_1,\ldots,e_r],
+\tag{D1}
+\]">\[
+ R[t_1,\ldots,t_r]^{S_r}=R[e_1,\ldots,e_r],
+\tag{D1}
+\]</span>
+and the substitution <span class="math" data-tex="\(R[z_1,\ldots,z_r]\to R[t_1,\ldots,t_r]\)">\(R[z_1,\ldots,z_r]\to R[t_1,\ldots,t_r]\)</span>, <span class="math" data-tex="\(z_j\mapsto e_j\)">\(z_j\mapsto e_j\)</span>, is injective. The number of its monomials of weighted degree <span class="math" data-tex="\(q\)">\(q\)</span>, with <span class="math" data-tex="\(\deg z_j=j\)">\(\deg z_j=j\)</span>, is <span class="math" data-tex="\(p_r(q)\)">\(p_r(q)\)</span>.</p>
+<p><strong>Proof.</strong> The general-ring result is also proved in <a href="../../characteristic-classes-and-the-weil-homomorphism.html#lemma-b-1">Characteristic classes B.1</a>; we give the leading-term calculation here. Order monomials lexicographically with <span class="math" data-tex="\(t_1&gt;\cdots&gt;t_r\)">\(t_1&gt;\cdots&gt;t_r\)</span>. The leading monomial of <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is <span class="math" data-tex="\(t_1\cdots t_j\)">\(t_1\cdots t_j\)</span>, with coefficient one. Lexicographic order is preserved by adding an exponent vector to both sides of a strict inequality. Hence a product of these monic leading terms is the leading term of the product. For
+<span class="math" data-tex="\(\prod_{j=1}^r e_j^{m_j}\)">\(\prod_{j=1}^r e_j^{m_j}\)</span>, its exponents are
+<span class="math math-display" data-tex="\[
+ a_k=\sum_{j=k}^r m_j,\qquad
+ m_k=a_k-a_{k+1},\qquad a_{r+1}=0.
+\tag{D2}
+\]">\[
+ a_k=\sum_{j=k}^r m_j,\qquad
+ m_k=a_k-a_{k+1},\qquad a_{r+1}=0.
+\tag{D2}
+\]</span>
+Thus distinct tuples <span class="math" data-tex="\(m\)">\(m\)</span> have distinct leading exponent vectors. In a nonzero finite polynomial relation in the <span class="math" data-tex="\(e_j\)">\(e_j\)</span>, choose the largest such exponent vector among terms with nonzero coefficients. Its coefficient survives unchanged, because that substituted monomial has leading coefficient one and every other substituted term has strictly smaller leading exponent. This proves injectivity, including when <span class="math" data-tex="\(R\)">\(R\)</span> has zero divisors.</p>
+<p>For generation, split a symmetric polynomial into homogeneous pieces. In a nonzero piece, let <span class="math" data-tex="\(c\,t_1^{a_1}\cdots t_r^{a_r}\)">\(c\,t_1^{a_1}\cdots t_r^{a_r}\)</span> be the leading term, with <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>. Symmetry forces <span class="math" data-tex="\(a_1\geq\cdots\geq a_r\)">\(a_1\geq\cdots\geq a_r\)</span>: if adjacent exponents increase, swapping those variables produces a larger monomial with the same nonzero coefficient. Subtract
+<span class="math math-display" data-tex="\[
+ c\,e_1^{a_1-a_2}e_2^{a_2-a_3}\cdots
+       e_{r-1}^{a_{r-1}-a_r}e_r^{a_r}.
+\tag{D3}
+\]">\[
+ c\,e_1^{a_1-a_2}e_2^{a_2-a_3}\cdots
+       e_{r-1}^{a_{r-1}-a_r}e_r^{a_r}.
+\tag{D3}
+\]</span>
+This removes the leading term, preserves symmetry and preserves total degree, since <span class="math" data-tex="\(\deg e_j=j\)">\(\deg e_j=j\)</span>. There are only finitely many monomials of that total degree. Repeating therefore terminates, expressing the piece, and then the original polynomial, in the <span class="math" data-tex="\(e_j\)">\(e_j\)</span>. No coefficient was divided.</p>
+<p>Finally the nonnegative tuple <span class="math" data-tex="\(m_1,\ldots,m_r\)">\(m_1,\ldots,m_r\)</span> of weighted degree <span class="math" data-tex="\(\sum j m_j=q\)">\(\sum j m_j=q\)</span> corresponds by (D2) to the partition
+<span class="math" data-tex="\((a_1\geq\cdots\geq a_r\geq0)\)">\((a_1\geq\cdots\geq a_r\geq0)\)</span> with sum <span class="math" data-tex="\(q\)">\(q\)</span>. The inverse differences in (D2) prove bijectivity, giving <span class="math" data-tex="\(p_r(q)\)">\(p_r(q)\)</span>. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> both rings are <span class="math" data-tex="\(R\)">\(R\)</span>, and only degree zero has a monomial. For the zero ring the substitution is the unique map between zero rings and is injective; the monomial count is the same combinatorial count of exponent tuples. □</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf"><em>Vector Bundles and K-Theory</em>, author version 2.2, November 2017</a>, printed pages 32–36, especially Proposition 1.17 on Schubert cells and Proposition 1.19 on paracompactness. The rotation, boundary, inverse-continuity and bounded-extension arguments needed here are supplied above.</p>
+<p>Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf"><em>Algebraic Topology</em>, author-hosted Chapter 2</a>, printed pages 137–140, Lemma 2.34 and Theorem 2.35. The cellular comparison above starts with the explicit collar and excision proof of the relative attachment groups.</p>
+</article><footer><p><a href="src/DG-CHAR-04.md">Chapter source</a> · <a href="../../index.html">Course contents</a></p><p>New exposition: CC0 1.0.</p><p><span class="unlinked">MathJax licence</span> · <span class="unlinked">Font notices</span></p></footer></main></body></html>

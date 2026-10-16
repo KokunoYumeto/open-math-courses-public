@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-The counting of arcs in minimal fillings, Lemma 5.1 of [Graphical presentations and coned diagrams](graphical-presentations-and-coned-diagrams.md), has two geometric consequences for the coned graph \(\widehat X\). A walk between two vertices of a copy \(P\) that avoids the center of \(P\) forces them to be intrinsically close in \(P\), at distance proportional to the length of the walk times \(\lambda\sigma(P)\). And closed walks in \(\widehat X\) have linear fillings by short loops, so geodesic triangles are thin, with a constant \(D_0\) that depends on nothing at all. Together they give the key geometric statement of the construction [OpenAI-IT, Lemma 2.4]: seen from any root, all the overlaps of a copy \(P\) with the copies whose centers are no farther from the root lie in one intrinsic ball of \(P\) of radius about \(\lambda\sigma(P)\).
+The counting of arcs in minimal fillings, Lemma 5.1 of [Graphical presentations and coned diagrams](graphical-presentations-and-coned-diagrams.md), has two geometric consequences for the coned graph \(\widehat X\). A walk between two vertices of a copy \(P\) that avoids the center of \(P\) forces them to be intrinsically close in \(P\), at distance proportional to the length of the walk times \(\lambda\sigma(P)\). And closed walks in \(\widehat X\) have linear fillings by short loops, so geodesic triangles are thin, with the constant \(D_0=10^6\), which depends on nothing at all. Together they give the key geometric statement of the construction [OpenAI-IT, Lemma 2.4]: seen from any root, all the overlaps of a copy \(P\) with the copies whose centers are no farther from the root lie in one intrinsic ball of \(P\) of radius about \(\lambda\sigma(P)\).
 
 - Avoidance and simplicity (Section 1).
 - Linear fillings and thin triangles (Section 2).
@@ -35,11 +35,7 @@ The designated side is made of at most \(2b\le12m\le12(L+1)\) arc occurrences, e
 
 ## 2. Linear fillings and thin triangles
 
-The following standard statement is not proved in the programme and is recorded as an open obligation of this course.
-
-**(HYP)** (linear fillings give thin triangles; [Belolipetsky–Paula, Teorema 8.22]; [OpenAI-IT, proof of Proposition 2.3] for the passage from products of conjugates to fillings). For all integers \(K,M\ge1\) there is an integer \(D(K,M)\ge1\) with the following property. Let \(Y\) be a connected graph, every edge of length one, in which every closed walk of length \(n\ge1\) is, in the fundamental group of \(Y\) at its first vertex, a product of at most \(Kn\) conjugates of closed walks of length at most \(M\). Then for every geodesic triangle in \(Y\) with vertices at vertices of \(Y\), every vertex on one side lies within distance \(D(K,M)\) of a vertex on one of the other two sides.
-
-No local finiteness is assumed: a connected graph with unit edges is a geodesic metric space in any case.
+Short fillings give thin triangles. The *chain* of a walk is the sum of its oriented edges, with the convention that an oriented edge plus its reverse is zero; it does not change when a backtrack is inserted or removed, so homotopic closed walks have the same chain. Lemma 2.1 of [Thin triangles, overlap balls and the residual forest](course:kadison-kaplansky-projections/thin-triangles-overlap-balls-and-the-residual-forest) proves, by integrating a discrete one-form around a loop: *in a connected graph with unit edges in which the chain of every closed walk of length \(n\) is a sum of at most \(12n\) chains of closed walks of length at most four, every geodesic triangle is \(10^6\)-thin*, that is, every vertex on one side lies within distance \(10^6\) of a vertex on one of the other two sides. No local finiteness is assumed. The general statement, with \(Kn\) conjugates of closed walks of length at most \(M\), is [Belolipetsky–Paula, Teorema 8.22].
 
 **Lemma 2.1** (short fillings; [OpenAI-IT, proof of Proposition 2.3]). Every closed walk in \(\widehat X\) of length \(n\ge1\) is, in the fundamental group of \(\widehat X\) at its first vertex, a product of at most \(12n\) conjugates of closed walks of length at most four.
 
@@ -57,7 +53,7 @@ By (VK)2, the exterior walk of \(D\) is, in the fundamental group of \(D\), a pr
 
 **Proposition 2.2** (thin triangles; [OpenAI-IT, Proposition 2.3]). There is an integer \(D_0\ge1\), which depends on none of the data \(\Theta_i\), \(S\), \(\lambda\), such that for every geodesic triangle in \(\widehat X\) with vertices at vertices of \(\widehat X\), every vertex on one side lies within distance \(D_0\) of a vertex on one of the other two sides.
 
-*Proof.* By Lemma 2.1, (HYP) applies to \(Y=\widehat X\) with \(K=12\) and \(M=4\); put \(D_0=D(12,4)\). \(\square\)
+*Proof.* By Lemma 2.1, every closed walk of length \(n\) in \(\widehat X\) is homotopic to a product of at most \(12n\) conjugates \(g_jr_jg_j^{-1}\) of closed walks \(r_j\) of length at most four. The chain of a product is the sum of the chains, and the chains of \(g_j\) and \(g_j^{-1}\) cancel, so the chain of the walk is the sum of the chains of the \(r_j\). Lemma 2.1 of [Thin triangles, overlap balls and the residual forest](course:kadison-kaplansky-projections/thin-triangles-overlap-balls-and-the-residual-forest) applies with \(D_0=10^6\). \(\square\)
 
 ## 3. Simultaneous overlaps
 

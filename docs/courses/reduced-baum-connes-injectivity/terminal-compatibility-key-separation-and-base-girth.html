@@ -1,0 +1,177 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Terminal compatibility, key separation and base girth</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to reduced Baum–Connes injectivity)</a><a href="coherent-returns-reconstruction-and-accumulated-rank.html">Previous lesson</a><a href="thetas-and-the-pruned-old-graph.html">Next lesson</a><a href="src/terminal-compatibility-key-separation-and-base-girth.md">Editable source</a></nav><main><article><h1 id="terminal-compatibility-key-separation-and-base-girth">Terminal compatibility, key separation and base girth</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson counts coherent returns. The constraints are <em>terminal</em>: a reconstructed state must vanish beyond its cutoff, and at each vertex this costs about as many bits as the evaluation stream exceeds the input stream. Probabilities of terminal tests at different vertices multiply when the tested tables are different, that is, when their <em>keys</em> differ. A repeated key would identify two vertex prefixes, hence a shorter coherent return, unless the two vertices lie near opposite ends of the path; so tests in fixed end intervals are omitted. The resulting first-moment bound shows that deleting all minimal coherent returns removes a vanishing fraction of each layer, and leaves a graph without cycles shorter than <span class="math" data-tex="\(0.93m_i\)">\(0.93m_i\)</span> [OpenAI-BCI, Sections 4.4-4.5, Lemmas 4.5-4.9].</p>
+<ul>
+<li>Surpluses and terminal compatibility (Section 1).</li>
+<li>Repeated keys (Section 2).</li>
+<li>The end guard (Section 3).</li>
+<li>The count of coherent returns and the base girth (Section 4).</li>
+</ul>
+<p>The notation of <a href="coherent-returns-reconstruction-and-accumulated-rank.html">Coherent returns, reconstruction and accumulated rank</a> is in force: aligned depths, <span class="math" data-tex="\(D(v)\)">\(D(v)\)</span>, bands <span class="math" data-tex="\(I_k\)">\(I_k\)</span> with margins <span class="math" data-tex="\(M_k\)">\(M_k\)</span>, coherent returns, patterns, <span class="math" data-tex="\(L_s\le2^{1.001s}\)">\(L_s\le2^{1.001s}\)</span>, the filtration <span class="math" data-tex="\(\mathcal F_{&lt;t}\)">\(\mathcal F_{&lt;t}\)</span>, the product law <span class="math" data-tex="\(\mathbb P_{\rm prod}\)">\(\mathbb P_{\rm prod}\)</span> and Lemma 4.1 there (accumulated rank). Throughout, <span class="math" data-tex="\(s/b\)">\(s/b\)</span> and then <span class="math" data-tex="\(H_0/s\)">\(H_0/s\)</span> are taken large; for definiteness <span class="math" data-tex="\(s/b\ge10^{12}\)">\(s/b\ge10^{12}\)</span> and <span class="math" data-tex="\(H_0/s\ge10^{12}\)">\(H_0/s\ge10^{12}\)</span> suffice.</p>
+<h2 id="1-surpluses-and-terminal-compatibility">1. Surpluses and terminal compatibility</h2>
+<p>For a vertex at height <span class="math" data-tex="\(i\)">\(i\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda_A(i)=r+\ell_B(i)-\ell_A(i),\\
+\lambda_B(i)=s-r+\ell_A(i)-\ell_B(i),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\lambda_A(i)=r+\ell_B(i)-\ell_A(i),\\
+\lambda_B(i)=s-r+\ell_A(i)-\ell_B(i),
+\end{gathered}
+\]</span>
+the <em>surplus</em> <span class="math" data-tex="\(|v|-|u|\)">\(|v|-|u|\)</span> of the evaluation over the input on each side. Since <span class="math" data-tex="\(r-s\le\ell_A-\ell_B\le r\)">\(r-s\le\ell_A-\ell_B\le r\)</span>, both lie in <span class="math" data-tex="\([0,s]\)">\([0,s]\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda_A(i)+\lambda_B(i)=s,\\
+|\lambda_A(i)+\lambda_B(j)-s|\le b\\
+(|i-j|\le1),
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+\lambda_A(i)+\lambda_B(i)=s,\\
+|\lambda_A(i)+\lambda_B(j)-s|\le b\\
+(|i-j|\le1),
+\end{gathered}\tag{1.1}
+\]</span>
+the second because one height step changes exactly one input length by <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>In a reconstruction (Lemma 3.1 of the previous lesson), a <em>receiver</em> is a vertex at which two incident evaluations are solved for its state. Its <em>terminal test</em> asks that the solution vanish beyond the cutoff.</p>
+<p><strong>Lemma 1.1</strong> (terminal compatibility; [OpenAI-BCI, Lemma 4.5]). Let <span class="math" data-tex="\(v\)">\(v\)</span> be a receiver whose two incident edges have distinct keys at the tested index, with arguments known beforehand and the required terminal gates open. If both incident common cutoffs equal the cutoff of <span class="math" data-tex="\(v\)">\(v\)</span>, its terminal conditions have <span class="math" data-tex="\(\mathbb P_{\rm prod}\)">\(\mathbb P_{\rm prod}\)</span>-probability exactly <span class="math" data-tex="\(2^{-\lambda(v)}\)">\(2^{-\lambda(v)}\)</span>. If each incident common cutoff is at most <span class="math" data-tex="\(b\)">\(b\)</span> bits below that of <span class="math" data-tex="\(v\)">\(v\)</span>, one can choose an event on the two tested tables, implied by the terminal conditions, with <span class="math" data-tex="\(\mathbb P_{\rm prod}\)">\(\mathbb P_{\rm prod}\)</span>-probability at most <span class="math" data-tex="\(2^{-\max\{0,\lambda(v)-4b\}}\)">\(2^{-\max\{0,\lambda(v)-4b\}}\)</span>. Only the actual uniform active prefix of a partial permutation is used.</p>
+<p><em>Proof.</em> <em>Equal cutoffs.</em> The initial block is never terminal. There are two terminal shapes, by the cutoff forms of Lemma 1.1 of <a href="streams-coefficient-pools-and-universal-corrections.html">Streams, coefficient pools and universal corrections</a>.</p>
+<p>If the last active input block of <span class="math" data-tex="\(v\)">\(v\)</span> has <span class="math" data-tex="\(t\)">\(t\)</span> bits, its last evaluation block has all <span class="math" data-tex="\(s\)">\(s\)</span> bits, and both incident evaluations of that block are outputs of full-block tables of the preceding index, uniform and independent given <span class="math" data-tex="\(\mathcal F_{&lt;t}\)">\(\mathcal F_{&lt;t}\)</span> because their keys differ. The map <span class="math" data-tex="\((u,w)\mapsto(w+c_1u,\,w+c_2u)\)">\((u,w)\mapsto(w+c_1u,\,w+c_2u)\)</span> from <span class="math" data-tex="\(\mathbb F_2^t\times\mathbb F_2^s\)">\(\mathbb F_2^t\times\mathbb F_2^s\)</span> (the <span class="math" data-tex="\(t\)">\(t\)</span> active input bits and the <span class="math" data-tex="\(s\)">\(s\)</span> evaluation bits) to <span class="math" data-tex="\(\mathbb F_2^s\times\mathbb F_2^s\)">\(\mathbb F_2^s\times\mathbb F_2^s\)</span> is linear and injective, because <span class="math" data-tex="\(c_1-c_2\)">\(c_1-c_2\)</span> is invertible; its image has dimension <span class="math" data-tex="\(s+t\)">\(s+t\)</span>, and the pair of evaluations lies in it with probability <span class="math" data-tex="\(2^{-(s-t)}\)">\(2^{-(s-t)}\)</span>. Here <span class="math" data-tex="\(\lambda(v)=s-t\)">\(\lambda(v)=s-t\)</span>.</p>
+<p>If instead the input of <span class="math" data-tex="\(v\)">\(v\)</span> has ended and its last evaluation block has <span class="math" data-tex="\(t\)">\(t\)</span> active bits, those bits are, on both incident edges, outputs of the current prefix tables, independent and uniform on <span class="math" data-tex="\(\mathbb F_2^t\)">\(\mathbb F_2^t\)</span>. Since <span class="math" data-tex="\(u=0\)">\(u=0\)</span> there, the two values must agree after their known offsets are removed: probability <span class="math" data-tex="\(2^{-t}\)">\(2^{-t}\)</span>, and <span class="math" data-tex="\(\lambda(v)=t\)">\(\lambda(v)=t\)</span>. The boundary cases <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and <span class="math" data-tex="\(t=s\)">\(t=s\)</span> move the whole surplus to the other shape.</p>
+<p><em>Adjacent cutoffs.</em> For an adjacent incidence the extras are label data and the gates read earlier raw blocks, so the correction of incidence <span class="math" data-tex="\(a\)">\(a\)</span> is a known vector <span class="math" data-tex="\(o_a=C^v_a+K_aC^u_a\)">\(o_a=C^v_a+K_aC^u_a\)</span>; move it to the other side of the equation. Its support may fill the output block, but a known translation costs no random dimension. On a common active random prefix of width <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span>, with coordinate projection <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the map
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(u,w)\longmapsto\bigl(&amp;\pi(w+K_1u-o_1),\\
+&amp;\pi(w+K_2u-o_2)\bigr)
+\end{aligned}
+\]">\[
+\begin{aligned}
+(u,w)\longmapsto\bigl(&amp;\pi(w+K_1u-o_1),\\
+&amp;\pi(w+K_2u-o_2)\bigr)
+\end{aligned}
+\]</span>
+has affine image of dimension at most <span class="math" data-tex="\(w&#x27;+t\)">\(w&#x27;+t\)</span> in <span class="math" data-tex="\(2w&#x27;\)">\(2w&#x27;\)</span> bits, where <span class="math" data-tex="\(t\)">\(t\)</span> is the number of free input bits involved; so the condition that the two random prefixes lie in it has codimension at least <span class="math" data-tex="\(\max\{0,w&#x27;-t\}\)">\(\max\{0,w&#x27;-t\}\)</span>. No invertibility of a truncated coefficient is needed. For the shape with no input, <span class="math" data-tex="\(t\)">\(t\)</span> is replaced by <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(t\in\{b,2b,\ldots,s\}\)">\(t\in\{b,2b,\ldots,s\}\)</span> be the width of the last active block of <span class="math" data-tex="\(v\)">\(v\)</span> in the interleaved input order; each incident common cutoff equals that of <span class="math" data-tex="\(v\)">\(v\)</span> or lies <span class="math" data-tex="\(b\)">\(b\)</span> bits earlier. If <span class="math" data-tex="\(t&gt;b\)">\(t&gt;b\)</span>, both evaluations of the partial-input shape lie in the preceding index and have <span class="math" data-tex="\(s\)">\(s\)</span> random bits, giving codimension at least <span class="math" data-tex="\(s-t\)">\(s-t\)</span>; on the evaluation-only shape the common random prefix has width at least <span class="math" data-tex="\(t-b\)">\(t-b\)</span>, giving at least <span class="math" data-tex="\(t-b\)">\(t-b\)</span> conditions. If <span class="math" data-tex="\(t=b\)">\(t=b\)</span>, a cutoff may cross a block boundary. On the partial-input shape the preceding index still has full random width (an ordinary block, or the full active prefix of a marked block), so it still gives <span class="math" data-tex="\(s-b\)">\(s-b\)</span> conditions. On the other shape a lower incidence may already be in its deterministic zone after a mark; its surplus is only <span class="math" data-tex="\(b\)">\(b\)</span>, and we charge nothing, which is allowed since <span class="math" data-tex="\(\max\{0,b-4b\}=0\)">\(\max\{0,b-4b\}=0\)</span>. The same holds with <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> exchanged, and <span class="math" data-tex="\(t=s\)">\(t=s\)</span> covers the boundary that appears as <span class="math" data-tex="\(t=0\)">\(t=0\)</span> on the other side. All retained outputs of positive width are actual independent uniform prefixes of current tables. These bounds are stronger than the stated loss of <span class="math" data-tex="\(4b\)">\(4b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-repeated-keys">2. Repeated keys</h2>
+<p><strong>Lemma 2.1</strong> (a repeated key identifies prefixes; [OpenAI-BCI, Lemma 4.6]). Let <span class="math" data-tex="\(H_*\)">\(H_*\)</span> be the least scale of a vertex of a counted path or theta. If two distinct tested terminal edge occurrences at the same source index use the same table key, their receivers lie on the same side and agree in both raw streams to an available aligned depth of at least
+<span class="math math-display" data-tex="\[
+H_*-8s .
+\]">\[
+H_*-8s .
+\]</span>
+At a nonterminal index, equality of keys identifies both receiver prefixes through the preceding complete receiver block.</p>
+<p><em>Proof.</em> At the update of a <span class="math" data-tex="\(B\)">\(B\)</span>-block <span class="math" data-tex="\(B_j\)">\(B_j\)</span> the table used is that of <span class="math" data-tex="\(A_{j-1}\)">\(A_{j-1}\)</span>, of index <span class="math" data-tex="\(2j-2\)">\(2j-2\)</span>; its key contains the family, the full label, the raw <span class="math" data-tex="\(A\)">\(A\)</span>-inputs through <span class="math" data-tex="\(A_{j-2}\)">\(A_{j-2}\)</span> and the raw <span class="math" data-tex="\(B\)">\(B\)</span>-inputs through <span class="math" data-tex="\(B_{j-1}\)">\(B_{j-1}\)</span>. So the two <span class="math" data-tex="\(B\)">\(B\)</span>-receivers have the same raw inputs through <span class="math" data-tex="\(B_{j-1}\)">\(B_{j-1}\)</span>. Their evaluations through position <span class="math" data-tex="\((j-1)s\)">\((j-1)s\)</span> are computed from <span class="math" data-tex="\(A\)">\(A\)</span>-inputs through <span class="math" data-tex="\(A_{j-2}\)">\(A_{j-2}\)</span>, the same earlier keys and the same offsets, so they agree, and <span class="math" data-tex="\(v=Q-K_\nu u\)">\(v=Q-K_\nu u\)</span> gives agreement of the evaluation streams through <span class="math" data-tex="\(B_{j-1}\)">\(B_{j-1}\)</span>: aligned depth <span class="math" data-tex="\(2(j-1)s\)">\(2(j-1)s\)</span>. At the update of <span class="math" data-tex="\(A_j\)">\(A_j\)</span> the table used is that of <span class="math" data-tex="\(B_j\)">\(B_j\)</span>, of index <span class="math" data-tex="\(2j-1\)">\(2j-1\)</span>, with key containing the raw <span class="math" data-tex="\(A\)">\(A\)</span>-inputs through <span class="math" data-tex="\(A_{j-1}\)">\(A_{j-1}\)</span> and the raw <span class="math" data-tex="\(B\)">\(B\)</span>-inputs through <span class="math" data-tex="\(B_{j-1}\)">\(B_{j-1}\)</span>; the <span class="math" data-tex="\(A\)">\(A\)</span>-evaluation through <span class="math" data-tex="\(A_{j-1}\)">\(A_{j-1}\)</span> uses only these, so the <span class="math" data-tex="\(A\)">\(A\)</span>-receivers agree to aligned depth <span class="math" data-tex="\((2j-1)s\)">\((2j-1)s\)</span>. In both cases a table of index <span class="math" data-tex="\(k\)">\(k\)</span> identifies the receivers to aligned depth exactly <span class="math" data-tex="\(ks\)">\(ks\)</span>.</p>
+<p>For terminal tests, let <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> be the final common source index of an incident edge and <span class="math" data-tex="\(t\in\{b,\ldots,s\}\)">\(t\in\{b,\ldots,s\}\)</span> its active length; its common scale is <span class="math" data-tex="\(H_c=\kappa s+t\)">\(H_c=\kappa s+t\)</span>. The two terminal shapes test the index <span class="math" data-tex="\(\kappa-1\)">\(\kappa-1\)</span> or <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, so <span class="math" data-tex="\(ks\ge H_c-2s\)">\(ks\ge H_c-2s\)</span>. The common scale is at least the receiver's scale minus <span class="math" data-tex="\(b\)">\(b\)</span>, so <span class="math" data-tex="\(ks\ge H_*-2s-b\)">\(ks\ge H_*-2s-b\)</span>. If two adjacent incidences straddle a block boundary, restricting both to their earlier common receiver prefix loses at most one more aligned step of <span class="math" data-tex="\(2s\)">\(2s\)</span>. The result exceeds <span class="math" data-tex="\(H_*-8s\)">\(H_*-8s\)</span>. These prefixes end before the first partial block of either receiver, so they are available at both. Finally, the two slots chosen at one receiver have different labels, so a repeated key never comes from one receiver. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-end-guard">3. The end guard</h2>
+<p>Fix a coherent pattern of length <span class="math" data-tex="\(p\)">\(p\)</span>, initial scale <span class="math" data-tex="\(H\)">\(H\)</span> and margin <span class="math" data-tex="\(M=M_k\)">\(M=M_k\)</span>. Every vertex scale <span class="math" data-tex="\(H_v\)">\(H_v\)</span> and the least one <span class="math" data-tex="\(H_*\)">\(H_*\)</span> satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H-bp\le H_*\le H_v\\
+\le H+bp .
+\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}
+H-bp\le H_*\le H_v\\
+\le H+bp .
+\end{gathered}\tag{3.1}
+\]</span>
+Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_p=100(s+bp),\\
+J_p=\lceil4E_p/s\rceil+4 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_p=100(s+bp),\\
+J_p=\lceil4E_p/s\rceil+4 .
+\end{gathered}
+\]</span>
+The <em>end guard</em> consists of the receiver positions at distance at most <span class="math" data-tex="\(J_p\)">\(J_p\)</span> from either end of the abstract path; it depends only on the pattern.</p>
+<p><strong>Lemma 3.1</strong> (key separation outside the end guard; [OpenAI-BCI, Lemma 4.7]). In a minimal coherent return, at every source index, the terminal keys tested at receivers outside the end guard are distinct.</p>
+<p><em>Proof.</em> By (2.2) of the previous lesson and (3.1), <span class="math" data-tex="\(ps/2+M\le h\le D(v_0)\le H_*+2bp\)">\(ps/2+M\le h\le D(v_0)\le H_*+2bp\)</span>, so
+<span class="math math-display" data-tex="\[
+p\le2(H_*-M+E_p)/s .
+\]">\[
+p\le2(H_*-M+E_p)/s .
+\]</span>
+Suppose keys at receiver positions <span class="math" data-tex="\(a&lt;b&#x27;\)">\(a&lt;b&#x27;\)</span> coincide. By Lemma 2.1 the two receivers lie on one side and agree to an available depth of at least <span class="math" data-tex="\(H_*-8s\)">\(H_*-8s\)</span>, which exceeds <span class="math" data-tex="\(H_*-E_p\)">\(H_*-E_p\)</span> by <span class="math" data-tex="\(92s\)">\(92s\)</span> or more. The segment of the path between them is nonbacktracking and lies in the same band. If
+<span class="math math-display" data-tex="\[
+(b&#x27;-a)s/2+M\le H_*-E_p,
+\]">\[
+(b&#x27;-a)s/2+M\le H_*-E_p,
+\]</span>
+the least aligned depth above the left side is at most <span class="math" data-tex="\(H_*-E_p+2s\)">\(H_*-E_p+2s\)</span>, still available, so the segment is a coherent return. Unless it is the whole path, whose ends lie in the guards, this contradicts minimality. Otherwise
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b&#x27;-a&amp;&gt;2(H_*-M-E_p)/s\\
+&amp;\ge p-4E_p/s ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+b&#x27;-a&amp;&gt;2(H_*-M-E_p)/s\\
+&amp;\ge p-4E_p/s ,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(a&lt;4E_p/s\)">\(a&lt;4E_p/s\)</span> and <span class="math" data-tex="\(p-b&#x27;&lt;4E_p/s\)">\(p-b&#x27;&lt;4E_p/s\)</span>, and both positions lie in the guards. Only contiguous subpaths of the given return were used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The tests charged to a return.</strong> In counting, a pattern is rejected at an index if its selected terminal keys outside the guard coincide, or if a required terminal gate is closed. These rejections are predictable, since keys and gates are known given <span class="math" data-tex="\(\mathcal F_{&lt;t}\)">\(\mathcal F_{&lt;t}\)</span>, and by Lemma 3.1 no minimal coherent return in <span class="math" data-tex="\(X^{\rm good}\)">\(X^{\rm good}\)</span> is lost; we do not condition on minimality. At each unguarded internal receiver with positive surplus, choose one terminal test; at one index these tests use distinct tables and their <span class="math" data-tex="\(\mathbb P_{\rm prod}\)">\(\mathbb P_{\rm prod}\)</span>-probabilities multiply. Pair successive internal vertices along the path in (1.1): each pair has total surplus at least <span class="math" data-tex="\(s-b\)">\(s-b\)</span>. Omitting the two endpoints and the guards loses at most <span class="math" data-tex="\((2J_p+4)s\)">\((2J_p+4)s\)</span> bits of surplus, and the adjacent-cutoff allowance of Lemma 1.1 loses at most <span class="math" data-tex="\(4bp\)">\(4bp\)</span>. So the accumulated rank of an actual minimal return satisfies
+<span class="math math-display" data-tex="\[
+R_{\rm ret}\ge\frac{ps}2-10^4(s+bp),\tag{3.2}
+\]">\[
+R_{\rm ret}\ge\frac{ps}2-10^4(s+bp),\tag{3.2}
+\]</span>
+trivially if the right side is negative; at most <span class="math" data-tex="\(2p\)">\(2p\)</span> whole tables are charged. Outputs of current tables that are not tested still enter later steps of the formal reconstruction, but they are integrated out in the current estimate.</p>
+<h2 id="4-the-count-and-the-base-girth">4. The count and the base girth</h2>
+<p><strong>Lemma 4.1</strong> (expected number of coherent returns; [OpenAI-BCI, Lemma 4.8]). For large <span class="math" data-tex="\(s/b\)">\(s/b\)</span> and then large <span class="math" data-tex="\(H_0/s\)">\(H_0/s\)</span>, the expected number of minimal coherent returns starting on either side at height <span class="math" data-tex="\(i\)">\(i\)</span>, over all bands containing them, is at most
+<span class="math math-display" data-tex="\[
+2^{0.975H_i} .
+\]">\[
+2^{0.975H_i} .
+\]</span>
+The count is of oriented rooted paths, with repetitions of vertices and edges allowed.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(H=H_i\)">\(H=H_i\)</span>. Since the first endpoint has scale <span class="math" data-tex="\(H\)">\(H\)</span>, (2.2) of the previous lesson gives <span class="math" data-tex="\(p\le2(H-M)/s\le2H/s\)">\(p\le2(H-M)/s\le2H/s\)</span>. There are at most four bands and at most <span class="math" data-tex="\(L_s^p\)">\(L_s^p\)</span> label and height patterns of length <span class="math" data-tex="\(p\)">\(p\)</span>. By Lemma 3.1 of the previous lesson the free endpoint bits number at most <span class="math" data-tex="\((H_-+H_+)/2-h\le H-h+bp\)">\((H_-+H_+)/2-h\le H-h+bp\)</span>, and each pattern with each choice of free bits has at most one realization. By Lemma 4.1 of the previous lesson and (3.2), applied to the event that this realization is a minimal coherent return in <span class="math" data-tex="\(X^{\rm good}\)">\(X^{\rm good}\)</span>, its probability is at most
+<span class="math math-display" data-tex="\[
+e^{2\varepsilon_sp}\,2^{-ps/2+10^4(s+bp)} .
+\]">\[
+e^{2\varepsilon_sp}\,2^{-ps/2+10^4(s+bp)} .
+\]</span>
+With <span class="math" data-tex="\(L_s\le2^{1.001s}\)">\(L_s\le2^{1.001s}\)</span>, <span class="math" data-tex="\(h\ge ps/2+M\)">\(h\ge ps/2+M\)</span> and <span class="math" data-tex="\(e^{2\varepsilon_sp}\le2^{3p}\)">\(e^{2\varepsilon_sp}\le2^{3p}\)</span> for large <span class="math" data-tex="\(s\)">\(s\)</span>, the contribution of one length and band is at most
+<span class="math math-display" data-tex="\[
+2^{\,H+0.001sp-M+10^5(s+bp)} .
+\]">\[
+2^{\,H+0.001sp-M+10^5(s+bp)} .
+\]</span>
+Since <span class="math" data-tex="\(M\ge H/30&gt;0.03H\)">\(M\ge H/30&gt;0.03H\)</span> by (2.1) of the previous lesson and <span class="math" data-tex="\(sp\le2H\)">\(sp\le2H\)</span>, the exponent is at most <span class="math" data-tex="\(0.972H+10^5(s+2bH/s)\)">\(0.972H+10^5(s+2bH/s)\)</span>, and the error term is below <span class="math" data-tex="\(0.001H\)">\(0.001H\)</span> when <span class="math" data-tex="\(s/b\ge10^{12}\)">\(s/b\ge10^{12}\)</span> and <span class="math" data-tex="\(H_0/s\ge10^{12}\)">\(H_0/s\ge10^{12}\)</span>. The number of lengths and bands is polynomial in <span class="math" data-tex="\(H\)">\(H\)</span>, which costs at most <span class="math" data-tex="\(0.002H\)">\(0.002H\)</span> more after increasing <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Delete every vertex of every minimal coherent return, in every band, from <span class="math" data-tex="\(X^{\rm good}\)">\(X^{\rm good}\)</span>; call the induced graph <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span>.</p>
+<p><strong>Lemma 4.2</strong> (the first deletion gives base girth; [OpenAI-BCI, Lemma 4.9]). In <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span>, every nonempty cyclically reduced closed path based at a vertex of height <span class="math" data-tex="\(i\)">\(i\)</span> has length greater than <span class="math" data-tex="\(0.93m_i\)">\(0.93m_i\)</span>.</p>
+<p><em>Proof.</em> Let such a path have length <span class="math" data-tex="\(L\le0.93m_i\)">\(L\le0.93m_i\)</span>. It has fewer than <span class="math" data-tex="\(7m_i\)">\(7m_i\)</span> edges, so it lies in one band, and its two ends are the same vertex, which agrees with itself to the available depth <span class="math" data-tex="\(D(v)\ge H_i-2s\)">\(D(v)\ge H_i-2s\)</span>. The required threshold is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{Ls}2+M_k\le\Bigl(\frac{0.93}{2\cdot0.50005}+0.05\Bigr)H_i\\
+&lt;0.98H_i ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{Ls}2+M_k\le\Bigl(\frac{0.93}{2\cdot0.50005}+0.05\Bigr)H_i\\
+&lt;0.98H_i ,
+\end{gathered}
+\]</span>
+using <span class="math" data-tex="\(m_i=H_i/(0.50005s)\)">\(m_i=H_i/(0.50005s)\)</span> and (2.1) of the previous lesson. The least aligned depth above it adds less than <span class="math" data-tex="\(2s\)">\(2s\)</span>, and <span class="math" data-tex="\(0.98H_i+2s\le H_i-2s\)">\(0.98H_i+2s\le H_i-2s\)</span> for large <span class="math" data-tex="\(H_0/s\)">\(H_0/s\)</span>. A cyclically reduced closed path is nonbacktracking as a path, so it is a coherent return, and it contains a minimal one, all of whose vertices were deleted. This contradicts its presence in <span class="math" data-tex="\(X^{(1)}\)">\(X^{(1)}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>Exercise 5.1.</strong> Compute <span class="math" data-tex="\(\lambda_A(i)\)">\(\lambda_A(i)\)</span> and <span class="math" data-tex="\(\lambda_B(i)\)">\(\lambda_B(i)\)</span> in the two cutoff forms, and verify (1.1).</p>
+<p><strong>Exercise 5.2.</strong> In the first shape of Lemma 1.1, show directly that the image of <span class="math" data-tex="\((u,w)\mapsto(w+c_1u,w+c_2u)\)">\((u,w)\mapsto(w+c_1u,w+c_2u)\)</span> is <span class="math" data-tex="\(\{(E_1,E_2):E_1-E_2\in(c_1-c_2)\,\mathbb F_2^t\}\)">\(\{(E_1,E_2):E_1-E_2\in(c_1-c_2)\,\mathbb F_2^t\}\)</span>, and deduce the probability <span class="math" data-tex="\(2^{-(s-t)}\)">\(2^{-(s-t)}\)</span>.</p>
+<p><strong>Exercise 5.3.</strong> Why does Lemma 3.1 need the minimality of the return? Give a nonminimal coherent return with two equal keys outside the guard.</p>
+<p><strong>Exercise 5.4.</strong> Check the numerical inequality <span class="math" data-tex="\(0.93/(2\cdot0.50005)+0.05&lt;0.98\)">\(0.93/(2\cdot0.50005)+0.05&lt;0.98\)</span> and find the largest constant <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> for which the same argument gives girth greater than <span class="math" data-tex="\(\gamma m_i\)">\(\gamma m_i\)</span> with threshold <span class="math" data-tex="\(0.98H_i\)">\(0.98H_i\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> In form (B): <span class="math" data-tex="\(\lambda_A=r+ns+t-(r+ns)=t\)">\(\lambda_A=r+ns+t-(r+ns)=t\)</span> and <span class="math" data-tex="\(\lambda_B=s-r+r+ns-ns-t=s-t\)">\(\lambda_B=s-r+r+ns-ns-t=s-t\)</span>. In form (A): <span class="math" data-tex="\(\lambda_A=r+(n+1)s-r-ns-t=s-t\)">\(\lambda_A=r+(n+1)s-r-ns-t=s-t\)</span> and <span class="math" data-tex="\(\lambda_B=s-r+r+ns+t-(n+1)s=t\)">\(\lambda_B=s-r+r+ns+t-(n+1)s=t\)</span>. The sum is <span class="math" data-tex="\(s\)">\(s\)</span>. From height <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(i\pm1\)">\(i\pm1\)</span> one input length changes by <span class="math" data-tex="\(b\)">\(b\)</span>, which changes <span class="math" data-tex="\(\lambda_A\)">\(\lambda_A\)</span> and <span class="math" data-tex="\(\lambda_B\)">\(\lambda_B\)</span> by <span class="math" data-tex="\(b\)">\(b\)</span> in opposite directions, so <span class="math" data-tex="\(\lambda_A(i)+\lambda_B(j)\)">\(\lambda_A(i)+\lambda_B(j)\)</span> differs from <span class="math" data-tex="\(s\)">\(s\)</span> by at most <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\((E_1,E_2)\)">\((E_1,E_2)\)</span> is in the image iff <span class="math" data-tex="\(E_1-E_2=(c_1-c_2)u\)">\(E_1-E_2=(c_1-c_2)u\)</span> for some <span class="math" data-tex="\(u\in\mathbb F_2^t\)">\(u\in\mathbb F_2^t\)</span> (then <span class="math" data-tex="\(w=E_1-c_1u\)">\(w=E_1-c_1u\)</span>); the set <span class="math" data-tex="\((c_1-c_2)\mathbb F_2^t\)">\((c_1-c_2)\mathbb F_2^t\)</span> has <span class="math" data-tex="\(2^t\)">\(2^t\)</span> elements, and for independent uniform <span class="math" data-tex="\(E_1,E_2\)">\(E_1,E_2\)</span> the difference <span class="math" data-tex="\(E_1-E_2\)">\(E_1-E_2\)</span> is uniform on <span class="math" data-tex="\(\mathbb F_2^s\)">\(\mathbb F_2^s\)</span>, so the probability is <span class="math" data-tex="\(2^{t-s}\)">\(2^{t-s}\)</span>.</p>
+<p><strong>5.3.</strong> In the proof, a repeated key at positions <span class="math" data-tex="\(a&lt;b&#x27;\)">\(a&lt;b&#x27;\)</span> produces a shorter coherent return; minimality makes that impossible. If a long path contains a shorter coherent return between positions <span class="math" data-tex="\(a&lt;b&#x27;\)">\(a&lt;b&#x27;\)</span> far from both of its ends, the receivers at <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> agree to a large depth, and the tables tested there may have the same key. Only minimality excludes this.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(0.93/1.0001=0.92990\ldots\)">\(0.93/1.0001=0.92990\ldots\)</span>, plus <span class="math" data-tex="\(0.05\)">\(0.05\)</span> gives <span class="math" data-tex="\(0.97990\ldots&lt;0.98\)">\(0.97990\ldots&lt;0.98\)</span>. The argument needs <span class="math" data-tex="\(\gamma/1.0001+0.05&lt;0.98\)">\(\gamma/1.0001+0.05&lt;0.98\)</span>, that is <span class="math" data-tex="\(\gamma&lt;0.93009\ldots\)">\(\gamma&lt;0.93009\ldots\)</span>; the margin <span class="math" data-tex="\(0.05\)">\(0.05\)</span> is the upper bound <span class="math" data-tex="\(M_k/H_i&lt;0.05\)">\(M_k/H_i&lt;0.05\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BCI] OpenAI, <em>A torsion-free counterexample to reduced Baum–Connes injectivity</em>, OpenAI Math Release preprint, 23 September 2026, Sections 4.4-4.5, Lemmas 4.5-4.9. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

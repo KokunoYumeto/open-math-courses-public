@@ -1,0 +1,363 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Masks, lists and one draw per edge</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to the Kadison–Kaplansky conjecture)</a><a href="the-model-operator-and-finite-tests.html">Previous lesson</a><a href="girth-and-centered-moments.html">Next lesson</a><a href="src/masks-lists-and-one-draw-per-edge.md">Editable source</a></nav><main><article><h1 id="masks-lists-and-one-draw-per-edge">Masks, lists and one draw per edge</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The realization theorem of <a href="the-model-operator-and-finite-tests.html">The model operator and finite tests</a> is proved by drawing, independently on every edge of a block <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>, one pair <span class="math" data-tex="\((W,z)\)">\((W,z)\)</span> of a matrix weight and a voltage from a finite distribution whose expectation is close to <span class="math" data-tex="\(h_i(t)h_k(t)p(t)\)">\(h_i(t)h_k(t)p(t)\)</span> in every fiber. This lesson builds that distribution in three approximations. The projection field <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span> is replaced by compactly supported coefficient templates at magnitudes on a logarithmic grid, multiplied by smooth scalar masks of the central parameter. The masks are realized by finitely many central powers, through their Fourier series. The second-factor templates, which carry the matrices <span class="math" data-tex="\(R_\gamma\)">\(R_\gamma\)</span>, are replaced by finite lists, so that only finitely many matrix weights occur: one list for each template used below the layer <span class="math" data-tex="\(I=H_0\)">\(I=H_0\)</span>, and one common list from <span class="math" data-tex="\(I\)">\(I\)</span> on, obtained by factoring through the congruence subgroup <span class="math" data-tex="\(\Lambda_q\)">\(\Lambda_q\)</span>. The lesson ends with the size of the resulting alphabet and the ranges of the voltage coordinates, which the girth argument of the next lesson needs [OpenAI-KK, Sections 9.4 to 9.6].</p>
+<ul>
+<li>Templates on a logarithmic grid (Section 1).</li>
+<li>Masks and their Fourier series (Section 2).</li>
+<li>Finite lists on the second factor (Section 3).</li>
+<li>One draw per edge (Section 4).</li>
+<li>The alphabet and the coordinates of the voltages (Section 5).</li>
+</ul>
+<p>The notation of the four preceding lessons is in force. In particular <span class="math" data-tex="\(L=\bar E_{\mathbb Z}\)">\(L=\bar E_{\mathbb Z}\)</span>, <span class="math" data-tex="\(q=d^{A_*}\)">\(q=d^{A_*}\)</span>, <span class="math" data-tex="\(\delta=q^{-1}\)">\(\delta=q^{-1}\)</span>, <span class="math" data-tex="\(N=q^{n_{\mathrm f}}\)">\(N=q^{n_{\mathrm f}}\)</span>, <span class="math" data-tex="\(I=H_0\)">\(I=H_0\)</span>, <span class="math" data-tex="\(w_i=q^{-1}2^{-\kappa|i|}\)">\(w_i=q^{-1}2^{-\kappa|i|}\)</span>, <span class="math" data-tex="\(M=\lfloor d^{1/32}\rfloor\)">\(M=\lfloor d^{1/32}\rfloor\)</span>, and <span class="math" data-tex="\(W\rho(g)\)">\(W\rho(g)\)</span> stands for <span class="math" data-tex="\(\rho(g)\otimes W\)">\(\rho(g)\otimes W\)</span> on <span class="math" data-tex="\(\ell^2(F)\otimes\mathbb C^N\)">\(\ell^2(F)\otimes\mathbb C^N\)</span>, with fibers given by (1.1) of the previous lesson. A target accuracy <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> is fixed; <em>fixed</em> constants may depend on it, and all statements hold for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<h2 id="1-templates-on-a-logarithmic-grid">1. Templates on a logarithmic grid</h2>
+<p>Let <span class="math" data-tex="\(J^\flat_\pm\)">\(J^\flat_\pm\)</span> be smooth compactly supported functions given by Lemma 4.1 of <a href="schwartz-idempotents-and-lattice-projections.html">Schwartz idempotents and lattice projections</a> for a fixed <span class="math" data-tex="\(\varepsilon_0&gt;0\)">\(\varepsilon_0&gt;0\)</span>, and let <span class="math" data-tex="\(\varrho\ge1\)">\(\varrho\ge1\)</span> be such that both supports lie in the box <span class="math" data-tex="\(\{|a_w|\le\varrho\}\)">\(\{|a_w|\le\varrho\}\)</span> of the coordinates of <span class="math" data-tex="\(\bar E\)">\(\bar E\)</span>. For a sign <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, a magnitude <span class="math" data-tex="\(0&lt;\alpha\le1\)">\(0&lt;\alpha\le1\)</span> and a family of operators <span class="math" data-tex="\(U&#x27;(\gamma)\)">\(U&#x27;(\gamma)\)</span>, <span class="math" data-tex="\(\gamma\in L\)">\(\gamma\in L\)</span>, put
+<span class="math math-display" data-tex="\[
+L_\epsilon(\alpha;U&#x27;)=\sum_{\gamma\in L}\alpha^{n_{\mathrm f}}J^\flat_\epsilon\bigl(\Delta_{\alpha^{1/m}}\gamma\bigr)\,U&#x27;(\gamma) .
+\]">\[
+L_\epsilon(\alpha;U&#x27;)=\sum_{\gamma\in L}\alpha^{n_{\mathrm f}}J^\flat_\epsilon\bigl(\Delta_{\alpha^{1/m}}\gamma\bigr)\,U&#x27;(\gamma) .
+\]</span>
+The lattice <span class="math" data-tex="\(\Delta_{\alpha^{1/m}}L\)">\(\Delta_{\alpha^{1/m}}L\)</span> has mesh at most one and cell volume <span class="math" data-tex="\(\alpha^{n_{\mathrm f}}\)">\(\alpha^{n_{\mathrm f}}\)</span> (Lemma 2.1 of <a href="an-affine-nilpotent-group.html">An affine nilpotent group</a>), so the coefficient <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> norm of <span class="math" data-tex="\(L_\epsilon(\alpha;\cdot)\)">\(L_\epsilon(\alpha;\cdot)\)</span> is at most <span class="math" data-tex="\(\|J^\flat_\epsilon\|_\infty\)">\(\|J^\flat_\epsilon\|_\infty\)</span> times the volume of the <span class="math" data-tex="\(1\)">\(1\)</span>-neighbourhood of the box, a fixed constant <span class="math" data-tex="\(C_\flat\)">\(C_\flat\)</span>.</p>
+<p>Fix a spacing <span class="math" data-tex="\(s_0&gt;0\)">\(s_0&gt;0\)</span>, and a smooth <span class="math" data-tex="\(\psi^0\ge0\)">\(\psi^0\ge0\)</span> supported in <span class="math" data-tex="\((-s_0,s_0)\)">\((-s_0,s_0)\)</span> with <span class="math" data-tex="\(\sum_{j\in\mathbb Z}\psi^0(v-js_0)=1\)">\(\sum_{j\in\mathbb Z}\psi^0(v-js_0)=1\)</span> for all <span class="math" data-tex="\(v\in\mathbb R\)">\(v\in\mathbb R\)</span>; it exists, as in the proof of Lemma 5.1 of <a href="the-magnetic-factor-and-the-weighted-trace.html">The magnetic factor and the weighted trace</a>. For <span class="math" data-tex="\(\nu,\omega\in\mathbb Z\)">\(\nu,\omega\in\mathbb Z\)</span> and <span class="math" data-tex="\(0&lt;t&lt;\delta\)">\(0&lt;t&lt;\delta\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\psi_\nu(t)&amp;=\psi^0\Bigl(\log_2\frac t\delta-\nu s_0\Bigr),\\
+a_\nu&amp;=\delta\,2^{\nu s_0},\\
+\theta_\omega(t)&amp;=\psi^0\Bigl(\log_2\frac{\delta-t}\delta-\omega s_0\Bigr),\\
+b_\omega&amp;=\delta\,2^{\omega s_0},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\psi_\nu(t)&amp;=\psi^0\Bigl(\log_2\frac t\delta-\nu s_0\Bigr),\\
+a_\nu&amp;=\delta\,2^{\nu s_0},\\
+\theta_\omega(t)&amp;=\psi^0\Bigl(\log_2\frac{\delta-t}\delta-\omega s_0\Bigr),\\
+b_\omega&amp;=\delta\,2^{\omega s_0},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\psi_\nu=\theta_\omega=0\)">\(\psi_\nu=\theta_\omega=0\)</span> off <span class="math" data-tex="\((0,\delta)\)">\((0,\delta)\)</span>. Then <span class="math" data-tex="\(\sum_\nu\psi_\nu=\sum_\omega\theta_\omega=1\)">\(\sum_\nu\psi_\nu=\sum_\omega\theta_\omega=1\)</span> on <span class="math" data-tex="\((0,\delta)\)">\((0,\delta)\)</span>, and on the supports <span class="math" data-tex="\(|\log(a_\nu/t)|\le s_0\)">\(|\log(a_\nu/t)|\le s_0\)</span> and <span class="math" data-tex="\(|\log(b_\omega/(\delta-t))|\le s_0\)">\(|\log(b_\omega/(\delta-t))|\le s_0\)</span>. Only <span class="math" data-tex="\(\nu,\omega\le0\)">\(\nu,\omega\le0\)</span> occur, so the magnitudes are at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. For an adjacent pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> let <span class="math" data-tex="\(\mathcal T_{ik}\)">\(\mathcal T_{ik}\)</span> be the set of pairs <span class="math" data-tex="\((\nu,\omega)\)">\((\nu,\omega)\)</span> such that <span class="math" data-tex="\(\psi_\nu\theta_\omega\)">\(\psi_\nu\theta_\omega\)</span> does not vanish identically on the support of <span class="math" data-tex="\(h_ih_k\)">\(h_ih_k\)</span>, and put
+<span class="math math-display" data-tex="\[
+f_{ik\nu\omega}=h_ih_k\,\psi_\nu\theta_\omega .
+\]">\[
+f_{ik\nu\omega}=h_ih_k\,\psi_\nu\theta_\omega .
+\]</span>
+Since <span class="math" data-tex="\(h\)">\(h\)</span> is positive on <span class="math" data-tex="\([-0.7,0.7]\)">\([-0.7,0.7]\)</span>, at <span class="math" data-tex="\(b(t)=(i+k)/2\)">\(b(t)=(i+k)/2\)</span> both <span class="math" data-tex="\(h_i\)">\(h_i\)</span> and <span class="math" data-tex="\(h_k\)">\(h_k\)</span> are positive, so <span class="math" data-tex="\(\mathcal T_{ik}\)">\(\mathcal T_{ik}\)</span> is not empty.</p>
+<p><strong>Lemma 1.1</strong> (templates; [OpenAI-KK, Section 9.4]). For every <span class="math" data-tex="\(\varepsilon_1&gt;0\)">\(\varepsilon_1&gt;0\)</span> there are fixed <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span> and <span class="math" data-tex="\(s_0\)">\(s_0\)</span> such that, for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(|\mathcal T_{ik}|\le\mathcal N\)">\(|\mathcal T_{ik}|\le\mathcal N\)</span> for every adjacent pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>, with <span class="math" data-tex="\(\mathcal N=(2\kappa/s_0+3)^2\)">\(\mathcal N=(2\kappa/s_0+3)^2\)</span>;</li>
+<li>for <span class="math" data-tex="\(0&lt;t&lt;\delta\)">\(0&lt;t&lt;\delta\)</span> and every adjacent pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl\|h_i(t)h_k(t)p(t)\\
+&amp;\quad-\sum_{(\nu,\omega)\in\mathcal T_{ik}}f_{ik\nu\omega}(t)\\
+&amp;\qquad\cdot L_+(a_\nu;u_t)\otimes L_-(b_\omega;V_t)\Bigr\|\\
+&amp;\quad\le\varepsilon_1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl\|h_i(t)h_k(t)p(t)\\
+&amp;\quad-\sum_{(\nu,\omega)\in\mathcal T_{ik}}f_{ik\nu\omega}(t)\\
+&amp;\qquad\cdot L_+(a_\nu;u_t)\otimes L_-(b_\omega;V_t)\Bigr\|\\
+&amp;\quad\le\varepsilon_1 .
+\end{aligned}
+\]</span></li>
+</ol>
+<p><em>Proof.</em> (1) On the support of <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, <span class="math" data-tex="\(|b(t)-i|&lt;1\)">\(|b(t)-i|&lt;1\)</span>, and <span class="math" data-tex="\(\log_2(t/\delta)=-\log_2(1+2^{-\kappa b})\)">\(\log_2(t/\delta)=-\log_2(1+2^{-\kappa b})\)</span> is a function of <span class="math" data-tex="\(b\)">\(b\)</span> with derivative between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. So it ranges over an interval of length at most <span class="math" data-tex="\(2\kappa\)">\(2\kappa\)</span>, which meets the supports of at most <span class="math" data-tex="\(2\kappa/s_0+3\)">\(2\kappa/s_0+3\)</span> functions <span class="math" data-tex="\(\psi_\nu\)">\(\psi_\nu\)</span>; the same holds for <span class="math" data-tex="\(\log_2((\delta-t)/\delta)=-\log_2(1+2^{\kappa b})\)">\(\log_2((\delta-t)/\delta)=-\log_2(1+2^{\kappa b})\)</span> and the <span class="math" data-tex="\(\theta_\omega\)">\(\theta_\omega\)</span>.</p>
+<p>(2) By Proposition 3.1 of the lesson on Schwartz idempotents, with <span class="math" data-tex="\(\theta=t\)">\(\theta=t\)</span>, the element <span class="math" data-tex="\(K_t=\sum_\gamma t^{n_{\mathrm f}}J_+(\Delta_{t^{1/m}}\gamma)u_t(\gamma)\)">\(K_t=\sum_\gamma t^{n_{\mathrm f}}J_+(\Delta_{t^{1/m}}\gamma)u_t(\gamma)\)</span> satisfies <span class="math" data-tex="\(\|p_t-K_t\|\le Ct^{1/m}\le C\delta^{1/m}\)">\(\|p_t-K_t\|\le Ct^{1/m}\le C\delta^{1/m}\)</span> and <span class="math" data-tex="\(\|K_t\|\le C\)">\(\|K_t\|\le C\)</span>. For <span class="math" data-tex="\(t\)">\(t\)</span> in the support of <span class="math" data-tex="\(\psi_\nu\)">\(\psi_\nu\)</span>, Lemma 4.1 of that lesson gives coefficient <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> distance at most <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span> for the passage from <span class="math" data-tex="\(J_+\)">\(J_+\)</span> to <span class="math" data-tex="\(J^\flat_+\)">\(J^\flat_+\)</span>, and at most <span class="math" data-tex="\(Cs_0\)">\(Cs_0\)</span> for the passage from the magnitude <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(a_\nu\)">\(a_\nu\)</span>; only coefficients change, the unitaries <span class="math" data-tex="\(u_t(\gamma)\)">\(u_t(\gamma)\)</span> stay the same. So <span class="math" data-tex="\(\|K_t-L_+(a_\nu;u_t)\|\le\varepsilon_0+Cs_0\)">\(\|K_t-L_+(a_\nu;u_t)\|\le\varepsilon_0+Cs_0\)</span>. With <span class="math" data-tex="\(\theta=t-\delta&lt;0\)">\(\theta=t-\delta&lt;0\)</span>, the same holds for <span class="math" data-tex="\(K_{t-\delta}\)">\(K_{t-\delta}\)</span> and <span class="math" data-tex="\(J_-\)">\(J_-\)</span> at magnitude <span class="math" data-tex="\(\delta-t\)">\(\delta-t\)</span>, evaluated on <span class="math" data-tex="\(V_t\)">\(V_t\)</span>; by Lemma 3.1 of <a href="the-magnetic-factor-and-the-weighted-trace.html">The magnetic factor and the weighted trace</a>, <span class="math" data-tex="\(\|p_{t-\delta}[V_t]-K_{t-\delta}[V_t]\|=\|p_{t-\delta}-K_{t-\delta}\|\)">\(\|p_{t-\delta}[V_t]-K_{t-\delta}[V_t]\|=\|p_{t-\delta}-K_{t-\delta}\|\)</span>, at most <span class="math" data-tex="\(C\delta^{1/m}\)">\(C\delta^{1/m}\)</span>, and for <span class="math" data-tex="\(t\)">\(t\)</span> in the support of <span class="math" data-tex="\(\theta_\omega\)">\(\theta_\omega\)</span>, <span class="math" data-tex="\(\|K_{t-\delta}[V_t]-L_-(b_\omega;V_t)\|\le\varepsilon_0+Cs_0\)">\(\|K_{t-\delta}[V_t]-L_-(b_\omega;V_t)\|\le\varepsilon_0+Cs_0\)</span>. Writing the difference of two tensor products as a sum of differences in one factor,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl\|p(t)-L_+(a_\nu;u_t)\otimes L_-(b_\omega;V_t)\bigr\|\\
+&amp;\quad\le C\bigl(\delta^{1/m}+\varepsilon_0+s_0\bigr)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl\|p(t)-L_+(a_\nu;u_t)\otimes L_-(b_\omega;V_t)\bigr\|\\
+&amp;\quad\le C\bigl(\delta^{1/m}+\varepsilon_0+s_0\bigr)
+\end{aligned}
+\]</span>
+whenever <span class="math" data-tex="\(\psi_\nu(t)\theta_\omega(t)\ne0\)">\(\psi_\nu(t)\theta_\omega(t)\ne0\)</span>. The numbers <span class="math" data-tex="\(\psi_\nu(t)\theta_\omega(t)\ge0\)">\(\psi_\nu(t)\theta_\omega(t)\ge0\)</span> sum to one, and those with <span class="math" data-tex="\(h_i(t)h_k(t)\psi_\nu(t)\theta_\omega(t)\ne0\)">\(h_i(t)h_k(t)\psi_\nu(t)\theta_\omega(t)\ne0\)</span> belong to <span class="math" data-tex="\(\mathcal T_{ik}\)">\(\mathcal T_{ik}\)</span>, so the left side of (2) is at most <span class="math" data-tex="\(h_i(t)h_k(t)\,C(\delta^{1/m}+\varepsilon_0+s_0)\)">\(h_i(t)h_k(t)\,C(\delta^{1/m}+\varepsilon_0+s_0)\)</span>. Choose <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span> and <span class="math" data-tex="\(s_0\)">\(s_0\)</span> with <span class="math" data-tex="\(C(\varepsilon_0+s_0)\le\varepsilon_1/2\)">\(C(\varepsilon_0+s_0)\le\varepsilon_1/2\)</span>, and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> so large that <span class="math" data-tex="\(C\delta^{1/m}\le\varepsilon_1/2\)">\(C\delta^{1/m}\le\varepsilon_1/2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The fiber of the operator <span class="math" data-tex="\(\sum_{\gamma}a_\nu^{n_{\mathrm f}}J^\flat_+(\Delta_{a_\nu^{1/m}}\gamma)\rho(\sigma_X(\gamma))\)">\(\sum_{\gamma}a_\nu^{n_{\mathrm f}}J^\flat_+(\Delta_{a_\nu^{1/m}}\gamma)\rho(\sigma_X(\gamma))\)</span> is <span class="math" data-tex="\(L_+(a_\nu;u_t)\otimes1\)">\(L_+(a_\nu;u_t)\otimes1\)</span>, by (1.1) of the previous lesson, and that of the <em>lifted template</em>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal T(b)\\
+=\sum_{v\in L}b^{n_{\mathrm f}}J^\flat_-\bigl(\Delta_{b^{1/m}}v\bigr)\\
+\cdot R_v\,\rho(\sigma_Y(v))
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+\mathcal T(b)\\
+=\sum_{v\in L}b^{n_{\mathrm f}}J^\flat_-\bigl(\Delta_{b^{1/m}}v\bigr)\\
+\cdot R_v\,\rho(\sigma_Y(v))
+\end{gathered}\tag{1.1}
+\]</span>
+is <span class="math" data-tex="\(1\otimes L_-(b;V_t)\)">\(1\otimes L_-(b;V_t)\)</span>, because <span class="math" data-tex="\(R_v\)">\(R_v\)</span> attached to <span class="math" data-tex="\(\sigma_Y(v)\)">\(\sigma_Y(v)\)</span> turns <span class="math" data-tex="\(u_t(v)\)">\(u_t(v)\)</span> into <span class="math" data-tex="\(V_t(v)=u_t(v)\otimes R_v\)">\(V_t(v)=u_t(v)\otimes R_v\)</span>.</p>
+<h2 id="2-masks-and-their-fourier-series">2. Masks and their Fourier series</h2>
+<p>For a smooth function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> put <span class="math" data-tex="\(\hat f(n)=\int_{\mathbb T}f(t)\mathbf e(-nt)\,dt\)">\(\hat f(n)=\int_{\mathbb T}f(t)\mathbf e(-nt)\,dt\)</span>. By (1.1) of the previous lesson, the operator <span class="math" data-tex="\(\sum_n\hat f(n)\rho(z_0^n)\)">\(\sum_n\hat f(n)\rho(z_0^n)\)</span> acts in the fiber at <span class="math" data-tex="\(t\)">\(t\)</span> by the scalar <span class="math" data-tex="\(\sum_n\hat f(n)\mathbf e(nt)\)">\(\sum_n\hat f(n)\mathbf e(nt)\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (masks; [OpenAI-KK, Section 9.4]). For every adjacent pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> and <span class="math" data-tex="\((\nu,\omega)\in\mathcal T_{ik}\)">\((\nu,\omega)\in\mathcal T_{ik}\)</span>, the mask <span class="math" data-tex="\(f=f_{ik\nu\omega}\)">\(f=f_{ik\nu\omega}\)</span> is smooth on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, supported in an interval of length at most <span class="math" data-tex="\(Cw_i\)">\(Cw_i\)</span>, and for every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|f^{(j)}\|_\infty\le C_jw_i^{-j},\\
+\|f^{(j)}\|_1\le C_jw_i^{1-j},\\
+|\hat f(n)|\le C_jw_i(1+|n|w_i)^{-j} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|f^{(j)}\|_\infty\le C_jw_i^{-j},\\
+\|f^{(j)}\|_1\le C_jw_i^{1-j},\\
+|\hat f(n)|\le C_jw_i(1+|n|w_i)^{-j} .
+\end{gathered}
+\]</span>
+Consequently <span class="math" data-tex="\(\sum_n|\hat f(n)|\le C\)">\(\sum_n|\hat f(n)|\le C\)</span>, and for <span class="math" data-tex="\(\Theta\ge1\)">\(\Theta\ge1\)</span> and <span class="math" data-tex="\(K_i=\lceil\Theta/w_i\rceil\)">\(K_i=\lceil\Theta/w_i\rceil\)</span>, the truncation <span class="math" data-tex="\(f^{\le}(t)=\sum_{|n|\le K_i}\hat f(n)\mathbf e(nt)\)">\(f^{\le}(t)=\sum_{|n|\le K_i}\hat f(n)\mathbf e(nt)\)</span> satisfies <span class="math" data-tex="\(\sup_t|f(t)-f^{\le}(t)|\le C\Theta^{-1}\)">\(\sup_t|f(t)-f^{\le}(t)|\le C\Theta^{-1}\)</span>. The constants depend on <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(\psi^0\)">\(\psi^0\)</span> and <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, not on <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p><em>Proof.</em> On the support of <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, <span class="math" data-tex="\(t=\delta\frac{2^{\kappa b}}{1+2^{\kappa b}}\)">\(t=\delta\frac{2^{\kappa b}}{1+2^{\kappa b}}\)</span> and <span class="math" data-tex="\(\delta-t=\frac\delta{1+2^{\kappa b}}\)">\(\delta-t=\frac\delta{1+2^{\kappa b}}\)</span> with <span class="math" data-tex="\(|b-i|&lt;1\)">\(|b-i|&lt;1\)</span>, so both are at least <span class="math" data-tex="\(c_\kappa w_i\)">\(c_\kappa w_i\)</span>: one of them is at least <span class="math" data-tex="\(\delta/2\ge w_i/2\)">\(\delta/2\ge w_i/2\)</span>, and the other is comparable to <span class="math" data-tex="\(\delta2^{-\kappa|b|}\)">\(\delta2^{-\kappa|b|}\)</span>. The <span class="math" data-tex="\(j\)">\(j\)</span>-th derivative of <span class="math" data-tex="\(\psi_\nu\)">\(\psi_\nu\)</span> is a combination of derivatives of <span class="math" data-tex="\(\psi^0\)">\(\psi^0\)</span> with products of derivatives of <span class="math" data-tex="\(\log_2t\)">\(\log_2t\)</span>, so it is at most <span class="math" data-tex="\(C_jt^{-j}\)">\(C_jt^{-j}\)</span>; likewise <span class="math" data-tex="\(|\theta_\omega^{(j)}|\le C_j(\delta-t)^{-j}\)">\(|\theta_\omega^{(j)}|\le C_j(\delta-t)^{-j}\)</span>. With <span class="math" data-tex="\(\|h_i^{(j)}\|_\infty\le C_jw_i^{-j}\)">\(\|h_i^{(j)}\|_\infty\le C_jw_i^{-j}\)</span> (Lemma 5.1 of <a href="the-magnetic-factor-and-the-weighted-trace.html">The magnetic factor and the weighted trace</a>), <span class="math" data-tex="\(w_k\ge2^{-\kappa}w_i\)">\(w_k\ge2^{-\kappa}w_i\)</span> for <span class="math" data-tex="\(|k-i|\le1\)">\(|k-i|\le1\)</span>, and the Leibniz rule, <span class="math" data-tex="\(\|f^{(j)}\|_\infty\le C_jw_i^{-j}\)">\(\|f^{(j)}\|_\infty\le C_jw_i^{-j}\)</span>. The support of <span class="math" data-tex="\(h_i\)">\(h_i\)</span> is a compact subset of <span class="math" data-tex="\((0,\delta)\)">\((0,\delta)\)</span> of length at most <span class="math" data-tex="\(Cw_i\)">\(Cw_i\)</span>, which gives smoothness on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> and the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bounds.</p>
+<p><span class="math" data-tex="\(|\hat f(n)|\le\|f\|_1\le Cw_i\)">\(|\hat f(n)|\le\|f\|_1\le Cw_i\)</span>, and <span class="math" data-tex="\(j\)">\(j\)</span> integrations by parts give <span class="math" data-tex="\(|\hat f(n)|\le\|f^{(j)}\|_1(2\pi|n|)^{-j}\)">\(|\hat f(n)|\le\|f^{(j)}\|_1(2\pi|n|)^{-j}\)</span>, at most <span class="math" data-tex="\(C_jw_i^{1-j}|n|^{-j}\)">\(C_jw_i^{1-j}|n|^{-j}\)</span>. If <span class="math" data-tex="\(|n|w_i\le1\)">\(|n|w_i\le1\)</span> the first bound gives the claim, otherwise the second, since then <span class="math" data-tex="\(|n|w_i\ge\frac12(1+|n|w_i)\)">\(|n|w_i\ge\frac12(1+|n|w_i)\)</span>. With <span class="math" data-tex="\(j=2\)">\(j=2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_nw_i(1+|n|w_i)^{-2}\\
+&amp;\quad\le w_i+2\int_0^\infty w_i(1+sw_i)^{-2}\,ds\le3 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_nw_i(1+|n|w_i)^{-2}\\
+&amp;\quad\le w_i+2\int_0^\infty w_i(1+sw_i)^{-2}\,ds\le3 ,
+\end{aligned}
+\]</span>
+and, the summand being decreasing in <span class="math" data-tex="\(|n|\)">\(|n|\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{|n|&gt;K_i}w_i(1+|n|w_i)^{-2}\\
+&amp;\quad\le2\int_{K_i}^\infty w_i(1+sw_i)^{-2}\,ds\\
+&amp;\quad=\frac2{1+K_iw_i}\le\frac2\Theta .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{|n|&gt;K_i}w_i(1+|n|w_i)^{-2}\\
+&amp;\quad\le2\int_{K_i}^\infty w_i(1+sw_i)^{-2}\,ds\\
+&amp;\quad=\frac2{1+K_iw_i}\le\frac2\Theta .
+\end{aligned}
+\]</span>
+The uniform bound for <span class="math" data-tex="\(f-f^{\le}\)">\(f-f^{\le}\)</span> is this tail, times <span class="math" data-tex="\(C_2\)">\(C_2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The truncated masks need not vanish off the supports of the masks; only the uniform closeness is used.</p>
+<h2 id="3-finite-lists-on-the-second-factor">3. Finite lists on the second factor</h2>
+<p>The scalar masks vary through infinitely many layers, but the alphabet of matrix weights must be finite. Below the layer <span class="math" data-tex="\(I\)">\(I\)</span> only <span class="math" data-tex="\(O(1+\log q)\)">\(O(1+\log q)\)</span> second-factor templates occur, each replaced by its own list; from <span class="math" data-tex="\(I\)">\(I\)</span> on, one common list serves all layers.</p>
+<p><strong>Lemma 3.1</strong> (lists below <span class="math" data-tex="\(I\)">\(I\)</span>; [OpenAI-KK, Section 9.5]). Let <span class="math" data-tex="\(\mathcal W_&lt;\)">\(\mathcal W_&lt;\)</span> be the set of magnitudes <span class="math" data-tex="\(b_\omega\)">\(b_\omega\)</span> with <span class="math" data-tex="\((\nu,\omega)\in\mathcal T_{ik}\)">\((\nu,\omega)\in\mathcal T_{ik}\)</span> for some adjacent pair with <span class="math" data-tex="\(i&lt;I\)">\(i&lt;I\)</span>. Then <span class="math" data-tex="\(|\mathcal W_&lt;|\le C(1+\log q)\)">\(|\mathcal W_&lt;|\le C(1+\log q)\)</span>. For every fixed <span class="math" data-tex="\(\varepsilon_2&gt;0\)">\(\varepsilon_2&gt;0\)</span> and large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, there are for each <span class="math" data-tex="\(b\in\mathcal W_&lt;\)">\(b\in\mathcal W_&lt;\)</span> elements <span class="math" data-tex="\(v_{b,1},\ldots,v_{b,M}\in L\)">\(v_{b,1},\ldots,v_{b,M}\in L\)</span> and scalars <span class="math" data-tex="\(c_{b,1},\ldots,c_{b,M}\)">\(c_{b,1},\ldots,c_{b,M}\)</span> with <span class="math" data-tex="\(|c_{b,h}|\le C\)">\(|c_{b,h}|\le C\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl\|\frac1M\sum_{h=1}^Mc_{b,h}R_{v_{b,h}}\rho\bigl(\sigma_Y(v_{b,h})\bigr)-\mathcal T(b)\Bigr\|\\
+&amp;\quad\le\varepsilon_2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl\|\frac1M\sum_{h=1}^Mc_{b,h}R_{v_{b,h}}\rho\bigl(\sigma_Y(v_{b,h})\bigr)-\mathcal T(b)\Bigr\|\\
+&amp;\quad\le\varepsilon_2 .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(i&lt;I\)">\(i&lt;I\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> in the support of <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, <span class="math" data-tex="\(b(t)&lt;i+1\le I\)">\(b(t)&lt;i+1\le I\)</span>, so <span class="math" data-tex="\(\delta\ge\delta-t\ge\delta2^{-\kappa(I+1)}/2\)">\(\delta\ge\delta-t\ge\delta2^{-\kappa(I+1)}/2\)</span>. On the support of <span class="math" data-tex="\(\theta_\omega\)">\(\theta_\omega\)</span>, <span class="math" data-tex="\(b_\omega\)">\(b_\omega\)</span> is within the factor <span class="math" data-tex="\(e^{s_0}\)">\(e^{s_0}\)</span> of <span class="math" data-tex="\(\delta-t\)">\(\delta-t\)</span>, so <span class="math" data-tex="\(\log_2b_\omega^{-1}\)">\(\log_2b_\omega^{-1}\)</span> lies in the interval from <span class="math" data-tex="\(\log_2q-C\)">\(\log_2q-C\)</span> to <span class="math" data-tex="\(\log_2q+\kappa(I+1)+C\)">\(\log_2q+\kappa(I+1)+C\)</span>, which contains at most <span class="math" data-tex="\((\kappa I+C)/s_0\)">\((\kappa I+C)/s_0\)</span> grid points. Since <span class="math" data-tex="\(I=H_0\le h_*\log_2d\)">\(I=H_0\le h_*\log_2d\)</span> and <span class="math" data-tex="\(\log_2q=A_*\log_2d\)">\(\log_2q=A_*\log_2d\)</span>, this is at most <span class="math" data-tex="\(C(1+\log q)\)">\(C(1+\log q)\)</span>.</p>
+<p>For <span class="math" data-tex="\(b\in\mathcal W_&lt;\)">\(b\in\mathcal W_&lt;\)</span> let <span class="math" data-tex="\(\mathfrak Q_b\subset L\)">\(\mathfrak Q_b\subset L\)</span> be the coordinate rectangle with radius <span class="math" data-tex="\(\lceil\varrho b^{-w/m}\rceil\)">\(\lceil\varrho b^{-w/m}\rceil\)</span> in every coordinate of weight <span class="math" data-tex="\(w\)">\(w\)</span>, and <span class="math" data-tex="\(n_b=|\mathfrak Q_b|\)">\(n_b=|\mathfrak Q_b|\)</span>. It contains every <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(J^\flat_-(\Delta_{b^{1/m}}v)\ne0\)">\(J^\flat_-(\Delta_{b^{1/m}}v)\ne0\)</span>, and since the weights of the <span class="math" data-tex="\(2n_{\mathrm f}\)">\(2n_{\mathrm f}\)</span> coordinates of <span class="math" data-tex="\(L\)">\(L\)</span> add up to <span class="math" data-tex="\(mn_{\mathrm f}\)">\(mn_{\mathrm f}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+n_b&amp;\le\prod_w(2\varrho+3)\,b^{-w/m}\\
+&amp;=(2\varrho+3)^{2n_{\mathrm f}}\,b^{-n_{\mathrm f}} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+n_b&amp;\le\prod_w(2\varrho+3)\,b^{-w/m}\\
+&amp;=(2\varrho+3)^{2n_{\mathrm f}}\,b^{-n_{\mathrm f}} .
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(v\)">\(v\)</span> uniform in <span class="math" data-tex="\(\mathfrak Q_b\)">\(\mathfrak Q_b\)</span>, the random operator <span class="math" data-tex="\(n_bb^{n_{\mathrm f}}J^\flat_-(\Delta_{b^{1/m}}v)R_v\rho(\sigma_Y(v))\)">\(n_bb^{n_{\mathrm f}}J^\flat_-(\Delta_{b^{1/m}}v)R_v\rho(\sigma_Y(v))\)</span> has expectation <span class="math" data-tex="\(\mathcal T(b)\)">\(\mathcal T(b)\)</span> and matrix part of norm at most <span class="math" data-tex="\((2\varrho+3)^{2n_{\mathrm f}}\|J^\flat_-\|_\infty\)">\((2\varrho+3)^{2n_{\mathrm f}}\|J^\flat_-\|_\infty\)</span>. Its group coordinates are at most <span class="math" data-tex="\((\varrho+1)b^{-1}\le Cq2^{\kappa I}\le q^a\)">\((\varrho+1)b^{-1}\le Cq2^{\kappa I}\le q^a\)</span> for a fixed <span class="math" data-tex="\(a\ge n_{\mathrm f}\)">\(a\ge n_{\mathrm f}\)</span>, because <span class="math" data-tex="\(2^{\kappa I}\le d^{\kappa h_*}=q^{\kappa h_*/A_*}\)">\(2^{\kappa I}\le d^{\kappa h_*}=q^{\kappa h_*/A_*}\)</span>. Lemma 5.1 of the previous lesson, applied to these at most <span class="math" data-tex="\(C(1+\log q)\)">\(C(1+\log q)\)</span> distributions, gives the lists. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>From <span class="math" data-tex="\(I\)">\(I\)</span> on, let <span class="math" data-tex="\(\Lambda=\Lambda_q\)">\(\Lambda=\Lambda_q\)</span>, of index <span class="math" data-tex="\(Q_q=q^{2n_{\mathrm f}}\)">\(Q_q=q^{2n_{\mathrm f}}\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span> (Section 2 of <a href="the-magnetic-factor-and-the-weighted-trace.html">The magnetic factor and the weighted trace</a>), and <span class="math" data-tex="\(\mathcal V_q\)">\(\mathcal V_q\)</span> the set of elements of <span class="math" data-tex="\(L\)">\(L\)</span> with all coordinates in <span class="math" data-tex="\(\{0,\ldots,q-1\}\)">\(\{0,\ldots,q-1\}\)</span>. Every <span class="math" data-tex="\(\gamma\in L\)">\(\gamma\in L\)</span> is uniquely <span class="math" data-tex="\(\gamma=yv\)">\(\gamma=yv\)</span> with <span class="math" data-tex="\(y\in\Lambda\)">\(y\in\Lambda\)</span>, <span class="math" data-tex="\(v\in\mathcal V_q\)">\(v\in\mathcal V_q\)</span> (Exercise 6.1), and <span class="math" data-tex="\(R_y=1\)">\(R_y=1\)</span> for <span class="math" data-tex="\(y\in\Lambda\)">\(y\in\Lambda\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_q=\frac1{Q_q}\sum_{v\in\mathcal V_q}R_v\,\rho(\sigma_Y(v)),\\
+\mathcal S(b)=Q_q\sum_{y\in\Lambda}b^{n_{\mathrm f}}J^\flat_-\bigl(\Delta_{b^{1/m}}y\bigr)\rho(\sigma_Y(y)) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+C_q=\frac1{Q_q}\sum_{v\in\mathcal V_q}R_v\,\rho(\sigma_Y(v)),\\
+\mathcal S(b)=Q_q\sum_{y\in\Lambda}b^{n_{\mathrm f}}J^\flat_-\bigl(\Delta_{b^{1/m}}y\bigr)\rho(\sigma_Y(y)) .
+\end{gathered}
+\]</span>
+By Lemma 5.1 of the previous lesson, applied to the uniform distribution on <span class="math" data-tex="\(\mathcal V_q\)">\(\mathcal V_q\)</span>, there are <span class="math" data-tex="\(v_1,\ldots,v_M\in\mathcal V_q\)">\(v_1,\ldots,v_M\in\mathcal V_q\)</span> with <span class="math" data-tex="\(\|C_q^M-C_q\|\le\varepsilon_2\)">\(\|C_q^M-C_q\|\le\varepsilon_2\)</span>, where <span class="math" data-tex="\(C_q^M=\frac1M\sum_hR_{v_h}\rho(\sigma_Y(v_h))\)">\(C_q^M=\frac1M\sum_hR_{v_h}\rho(\sigma_Y(v_h))\)</span>. This one list serves all layers <span class="math" data-tex="\(i\ge I\)">\(i\ge I\)</span>.</p>
+<p><strong>Lemma 3.2</strong> (the subgroup factorization; [OpenAI-KK, Section 9.5]). Let <span class="math" data-tex="\(\mathcal W_\ge\)">\(\mathcal W_\ge\)</span> be the set of magnitudes <span class="math" data-tex="\(b_\omega\)">\(b_\omega\)</span> with <span class="math" data-tex="\((\nu,\omega)\in\mathcal T_{ik}\)">\((\nu,\omega)\in\mathcal T_{ik}\)</span> for some adjacent pair with <span class="math" data-tex="\(i\ge I\)">\(i\ge I\)</span>. For large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>:</p>
+<ol>
+<li>for every such pair and <span class="math" data-tex="\(b=b_\omega\)">\(b=b_\omega\)</span>,
+<span class="math math-display" data-tex="\[
+b^{-1/m}/q\ge2^{2E_0H_i} ;\tag{3.1}
+\]">\[
+b^{-1/m}/q\ge2^{2E_0H_i} ;\tag{3.1}
+\]</span></li>
+<li>the coefficient <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> norms of the <span class="math" data-tex="\(\mathcal S(b)\)">\(\mathcal S(b)\)</span>, <span class="math" data-tex="\(b\in\mathcal W_\ge\)">\(b\in\mathcal W_\ge\)</span>, are at most a fixed constant, and every fiber of <span class="math" data-tex="\(\mathcal S(b)C_q\)">\(\mathcal S(b)C_q\)</span> and of <span class="math" data-tex="\(\mathcal S(b)C_q^M\)">\(\mathcal S(b)C_q^M\)</span> has norm at most a fixed constant;</li>
+<li><span class="math" data-tex="\(\|\mathcal S(b)C_q^M-\mathcal S(b)C_q\|\le C\varepsilon_2\)">\(\|\mathcal S(b)C_q^M-\mathcal S(b)C_q\|\le C\varepsilon_2\)</span>;</li>
+<li>for <span class="math" data-tex="\(t\)">\(t\)</span> in the support of <span class="math" data-tex="\(\theta_\omega\)">\(\theta_\omega\)</span>, the fiber of <span class="math" data-tex="\(\mathcal S(b_\omega)C_q\)">\(\mathcal S(b_\omega)C_q\)</span> at <span class="math" data-tex="\(t\)">\(t\)</span> is within <span class="math" data-tex="\(\varepsilon_2\)">\(\varepsilon_2\)</span> of <span class="math" data-tex="\(1\otimes L_-(b_\omega;V_t)\)">\(1\otimes L_-(b_\omega;V_t)\)</span>, uniformly in <span class="math" data-tex="\(\omega\)">\(\omega\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) For <span class="math" data-tex="\(i\ge I\)">\(i\ge I\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> in the support of <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, <span class="math" data-tex="\(b(t)&gt;i-1\ge0\)">\(b(t)&gt;i-1\ge0\)</span>, so <span class="math" data-tex="\(\delta-t\le\delta2^{-\kappa b}\le2^\kappa q^{-1}2^{-\kappa i}\)">\(\delta-t\le\delta2^{-\kappa b}\le2^\kappa q^{-1}2^{-\kappa i}\)</span>, and <span class="math" data-tex="\(b_\omega\le e^{s_0}(\delta-t)\)">\(b_\omega\le e^{s_0}(\delta-t)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log_2\frac{b^{-1/m}}q&amp;\ge\frac\kappa mi\\
+&amp;\quad-\Bigl(1-\frac1m\Bigr)A_*\log_2d-C .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\log_2\frac{b^{-1/m}}q&amp;\ge\frac\kappa mi\\
+&amp;\quad-\Bigl(1-\frac1m\Bigr)A_*\log_2d-C .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(i\ge I=H_0&gt;\log_2d\)">\(i\ge I=H_0&gt;\log_2d\)</span> and <span class="math" data-tex="\(H_i=H_0+i\le2i\)">\(H_i=H_0+i\le2i\)</span>, the right side minus <span class="math" data-tex="\(2E_0H_i\)">\(2E_0H_i\)</span> is at least <span class="math" data-tex="\((\kappa/m-A_*-4E_0)i-C\)">\((\kappa/m-A_*-4E_0)i-C\)</span>, which is positive for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span> by the choice <span class="math" data-tex="\(\kappa/m&gt;10(E_0+A_*+C_\bullet+1)\)">\(\kappa/m&gt;10(E_0+A_*+C_\bullet+1)\)</span>.</p>
+<p>(2) In coordinates <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is the set of points of <span class="math" data-tex="\(L\)">\(L\)</span> with all coordinates divisible by <span class="math" data-tex="\(q\)">\(q\)</span>. With <span class="math" data-tex="\(\beta=b^{1/m}\)">\(\beta=b^{1/m}\)</span>, <span class="math" data-tex="\(\Delta_\beta\Lambda\)">\(\Delta_\beta\Lambda\)</span> is a rectangular lattice with spacing <span class="math" data-tex="\(q\beta^w\le q\beta\le1\)">\(q\beta^w\le q\beta\le1\)</span> in weight <span class="math" data-tex="\(w\)">\(w\)</span>, by (3.1), and cell volume <span class="math" data-tex="\(Q_qb^{n_{\mathrm f}}\)">\(Q_qb^{n_{\mathrm f}}\)</span>. So the coefficient <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> norm <span class="math" data-tex="\(Q_qb^{n_{\mathrm f}}\sum_{y\in\Lambda}|J^\flat_-(\Delta_\beta y)|\)">\(Q_qb^{n_{\mathrm f}}\sum_{y\in\Lambda}|J^\flat_-(\Delta_\beta y)|\)</span> of <span class="math" data-tex="\(\mathcal S(b)\)">\(\mathcal S(b)\)</span> is bounded, as in Section 1. The operators <span class="math" data-tex="\(C_q\)">\(C_q\)</span> and <span class="math" data-tex="\(C_q^M\)">\(C_q^M\)</span> are averages of unitaries, and the fiber norms of a product are at most the products of the coefficient <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> norms.</p>
+<p>(3) <span class="math" data-tex="\(\|\mathcal S(b)\|\le C\)">\(\|\mathcal S(b)\|\le C\)</span> and <span class="math" data-tex="\(\|C_q^M-C_q\|\le\varepsilon_2\)">\(\|C_q^M-C_q\|\le\varepsilon_2\)</span>.</p>
+<p>(4) The factor <span class="math" data-tex="\(Q_q\)">\(Q_q\)</span> cancels, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal S(b)C_q&amp;=\sum_{y\in\Lambda,\,v\in\mathcal V_q}b^{n_{\mathrm f}}J^\flat_-(\Delta_\beta y)\\
+&amp;\qquad\cdot R_v\,\rho(\sigma_Y(y))\rho(\sigma_Y(v)) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal S(b)C_q&amp;=\sum_{y\in\Lambda,\,v\in\mathcal V_q}b^{n_{\mathrm f}}J^\flat_-(\Delta_\beta y)\\
+&amp;\qquad\cdot R_v\,\rho(\sigma_Y(y))\rho(\sigma_Y(v)) .
+\end{aligned}
+\]</span>
+By (1.1) of the previous lesson and <span class="math" data-tex="\(R_y=1\)">\(R_y=1\)</span>, the term acts in the fiber at <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(1\otimes V_t(y)V_t(v)\)">\(1\otimes V_t(y)V_t(v)\)</span>, and by Lemma 3.1 of the lesson on the magnetic factor, <span class="math" data-tex="\(V_t(y)V_t(v)=\mathbf e(\tau c(y,v))V_t(yv)\)">\(V_t(y)V_t(v)=\mathbf e(\tau c(y,v))V_t(yv)\)</span> with <span class="math" data-tex="\(\tau=t-\delta\)">\(\tau=t-\delta\)</span>. Since <span class="math" data-tex="\((y,v)\mapsto yv\)">\((y,v)\mapsto yv\)</span> is a bijection onto <span class="math" data-tex="\(L\)">\(L\)</span>, the fiber is <span class="math" data-tex="\(1\otimes\sum_\gamma d_\gamma V_t(\gamma)\)">\(1\otimes\sum_\gamma d_\gamma V_t(\gamma)\)</span> with <span class="math" data-tex="\(d_{yv}=b^{n_{\mathrm f}}J^\flat_-(\Delta_\beta y)\mathbf e(\tau c(y,v))\)">\(d_{yv}=b^{n_{\mathrm f}}J^\flat_-(\Delta_\beta y)\mathbf e(\tau c(y,v))\)</span>, to be compared with the coefficients <span class="math" data-tex="\(b^{n_{\mathrm f}}J^\flat_-(\Delta_\beta(yv))\)">\(b^{n_{\mathrm f}}J^\flat_-(\Delta_\beta(yv))\)</span> of <span class="math" data-tex="\(L_-(b;V_t)\)">\(L_-(b;V_t)\)</span>. By Lemma 2.1 of <a href="an-affine-nilpotent-group.html">An affine nilpotent group</a>, <span class="math" data-tex="\(\Delta_\beta(yv)=(\Delta_\beta y)(\Delta_\beta v)\)">\(\Delta_\beta(yv)=(\Delta_\beta y)(\Delta_\beta v)\)</span> and <span class="math" data-tex="\(\tau c(y,v)=(\tau/b)\,c(\Delta_\beta y,\Delta_\beta v)\)">\(\tau c(y,v)=(\tau/b)\,c(\Delta_\beta y,\Delta_\beta v)\)</span>, with <span class="math" data-tex="\(|\tau|/b\le e^{s_0}\le3\)">\(|\tau|/b\le e^{s_0}\le3\)</span> on the support of <span class="math" data-tex="\(\theta_\omega\)">\(\theta_\omega\)</span>. The coordinates of <span class="math" data-tex="\(\Delta_\beta v\)">\(\Delta_\beta v\)</span>, <span class="math" data-tex="\(v\in\mathcal V_q\)">\(v\in\mathcal V_q\)</span>, are at most <span class="math" data-tex="\(q\beta\le2^{-2E_0H_i}=:\vartheta\)">\(q\beta\le2^{-2E_0H_i}=:\vartheta\)</span>. On the compact <span class="math" data-tex="\(1\)">\(1\)</span>-neighbourhood <span class="math" data-tex="\(K_1\)">\(K_1\)</span> of the support of <span class="math" data-tex="\(J^\flat_-\)">\(J^\flat_-\)</span>, the group law and the cocycle are uniformly continuous, <span class="math" data-tex="\(c(a,1)=0\)">\(c(a,1)=0\)</span>, and <span class="math" data-tex="\(J^\flat_-\)">\(J^\flat_-\)</span> is Lipschitz; so for <span class="math" data-tex="\(\Delta_\beta y\in K_1\)">\(\Delta_\beta y\in K_1\)</span>,
+<span class="math math-display" data-tex="\[
+\bigl|d_{yv}-b^{n_{\mathrm f}}J^\flat_-(\Delta_\beta(yv))\bigr|\le b^{n_{\mathrm f}}\,\varpi(\vartheta),
+\]">\[
+\bigl|d_{yv}-b^{n_{\mathrm f}}J^\flat_-(\Delta_\beta(yv))\bigr|\le b^{n_{\mathrm f}}\,\varpi(\vartheta),
+\]</span>
+with <span class="math" data-tex="\(\varpi(\vartheta)\to0\)">\(\varpi(\vartheta)\to0\)</span> as <span class="math" data-tex="\(\vartheta\to0\)">\(\vartheta\to0\)</span>. For <span class="math" data-tex="\(\Delta_\beta y\notin K_1\)">\(\Delta_\beta y\notin K_1\)</span> and small <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span>, both coefficients vanish, since <span class="math" data-tex="\(\Delta_\beta(yv)\)">\(\Delta_\beta(yv)\)</span> is then outside the support. The nonzero differences occur at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> with <span class="math" data-tex="\(\Delta_\beta\gamma\)">\(\Delta_\beta\gamma\)</span> in a fixed compact set, whose number of points times <span class="math" data-tex="\(b^{n_{\mathrm f}}\)">\(b^{n_{\mathrm f}}\)</span> is bounded. So the coefficient <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> distance, and with it the fiber distance, is at most <span class="math" data-tex="\(C\varpi(\vartheta)\)">\(C\varpi(\vartheta)\)</span>, which is below <span class="math" data-tex="\(\varepsilon_2\)">\(\varepsilon_2\)</span> for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, uniformly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-one-draw-per-edge">4. One draw per edge</h2>
+<p>For an adjacent pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>, fix <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span> as in Section 1 and define a random pair <span class="math" data-tex="\((W,z)\in M_N(\mathbb C)\times F\)">\((W,z)\in M_N(\mathbb C)\times F\)</span> by the following choices, independent given <span class="math" data-tex="\((\nu,\omega)\)">\((\nu,\omega)\)</span>.</p>
+<ol>
+<li>Choose <span class="math" data-tex="\((\nu,\omega)\)">\((\nu,\omega)\)</span> uniformly in <span class="math" data-tex="\(\mathcal T_{ik}\)">\(\mathcal T_{ik}\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> uniformly in <span class="math" data-tex="\(\{-K_i,\ldots,K_i\}\)">\(\{-K_i,\ldots,K_i\}\)</span>. Record the scalar <span class="math" data-tex="\(c_1=|\mathcal T_{ik}|(2K_i+1)\hat f_{ik\nu\omega}(n)\)">\(c_1=|\mathcal T_{ik}|(2K_i+1)\hat f_{ik\nu\omega}(n)\)</span> and the element <span class="math" data-tex="\(z_0^n\)">\(z_0^n\)</span>.</li>
+<li>Choose <span class="math" data-tex="\(x\)">\(x\)</span> uniformly in the rectangle <span class="math" data-tex="\(\mathfrak P_\nu\subset L\)">\(\mathfrak P_\nu\subset L\)</span> with radius <span class="math" data-tex="\(\lceil\varrho a_\nu^{-w/m}\rceil\)">\(\lceil\varrho a_\nu^{-w/m}\rceil\)</span> in every coordinate of weight <span class="math" data-tex="\(w\)">\(w\)</span>. Record <span class="math" data-tex="\(c_2=|\mathfrak P_\nu|\,a_\nu^{n_{\mathrm f}}J^\flat_+(\Delta_{a_\nu^{1/m}}x)\)">\(c_2=|\mathfrak P_\nu|\,a_\nu^{n_{\mathrm f}}J^\flat_+(\Delta_{a_\nu^{1/m}}x)\)</span> and <span class="math" data-tex="\(\sigma_X(x)\)">\(\sigma_X(x)\)</span>.</li>
+<li>If <span class="math" data-tex="\(i&lt;I\)">\(i&lt;I\)</span>, choose <span class="math" data-tex="\(h\)">\(h\)</span> uniformly in <span class="math" data-tex="\(\{1,\ldots,M\}\)">\(\{1,\ldots,M\}\)</span>; record <span class="math" data-tex="\(c_3=c_{b_\omega,h}\)">\(c_3=c_{b_\omega,h}\)</span>, the matrix <span class="math" data-tex="\(R=R_{v_{b_\omega,h}}\)">\(R=R_{v_{b_\omega,h}}\)</span> and <span class="math" data-tex="\(g_3=\sigma_Y(v_{b_\omega,h})\)">\(g_3=\sigma_Y(v_{b_\omega,h})\)</span>. If <span class="math" data-tex="\(i\ge I\)">\(i\ge I\)</span>, choose <span class="math" data-tex="\(y\)">\(y\)</span> uniformly in the set <span class="math" data-tex="\(\mathfrak Q^\Lambda_\omega\)">\(\mathfrak Q^\Lambda_\omega\)</span> of <span class="math" data-tex="\(y\in\Lambda\)">\(y\in\Lambda\)</span> with all coordinates of weight <span class="math" data-tex="\(w\)">\(w\)</span> at most <span class="math" data-tex="\(\varrho b_\omega^{-w/m}\)">\(\varrho b_\omega^{-w/m}\)</span>, and independently <span class="math" data-tex="\(h\)">\(h\)</span> uniformly in <span class="math" data-tex="\(\{1,\ldots,M\}\)">\(\{1,\ldots,M\}\)</span>; record <span class="math" data-tex="\(c_3=|\mathfrak Q^\Lambda_\omega|\,Q_qb_\omega^{n_{\mathrm f}}J^\flat_-(\Delta_{b_\omega^{1/m}}y)\)">\(c_3=|\mathfrak Q^\Lambda_\omega|\,Q_qb_\omega^{n_{\mathrm f}}J^\flat_-(\Delta_{b_\omega^{1/m}}y)\)</span>, the matrix <span class="math" data-tex="\(R=R_{v_h}\)">\(R=R_{v_h}\)</span> and <span class="math" data-tex="\(g_3=\sigma_Y(y)\sigma_Y(v_h)\)">\(g_3=\sigma_Y(y)\sigma_Y(v_h)\)</span>.</li>
+</ol>
+<p>Put <span class="math" data-tex="\(z=z_0^n\sigma_X(x)g_3\)">\(z=z_0^n\sigma_X(x)g_3\)</span>, let <span class="math" data-tex="\(c^\flat\)">\(c^\flat\)</span> be a nearest point to <span class="math" data-tex="\(c_1c_2c_3\)">\(c_1c_2c_3\)</span> in a fixed finite set <span class="math" data-tex="\(G_\varepsilon\)">\(G_\varepsilon\)</span> of complex numbers within <span class="math" data-tex="\(\varepsilon_2\)">\(\varepsilon_2\)</span> of every point of the disk of radius <span class="math" data-tex="\(C_\varepsilon+1\)">\(C_\varepsilon+1\)</span>, and <span class="math" data-tex="\(W=c^\flat R\)">\(W=c^\flat R\)</span>. The voltage <span class="math" data-tex="\(z\)">\(z\)</span> is kept even when <span class="math" data-tex="\(W=0\)">\(W=0\)</span>.</p>
+<p>The scalars are bounded: <span class="math" data-tex="\(|c_1|\le\mathcal N(2\Theta/w_i+3)\,Cw_i\le C\)">\(|c_1|\le\mathcal N(2\Theta/w_i+3)\,Cw_i\le C\)</span> by Lemma 2.1; <span class="math" data-tex="\(|c_2|\le C\)">\(|c_2|\le C\)</span> as in the proof of Lemma 3.1; <span class="math" data-tex="\(|c_3|\le C\)">\(|c_3|\le C\)</span> by Lemma 3.1 for <span class="math" data-tex="\(i&lt;I\)">\(i&lt;I\)</span>, and for <span class="math" data-tex="\(i\ge I\)">\(i\ge I\)</span> because, by (3.1), <span class="math" data-tex="\(|\mathfrak Q^\Lambda_\omega|\le\prod_w(2\varrho+3)b_\omega^{-w/m}/q\)">\(|\mathfrak Q^\Lambda_\omega|\le\prod_w(2\varrho+3)b_\omega^{-w/m}/q\)</span>, which is <span class="math" data-tex="\((2\varrho+3)^{2n_{\mathrm f}}(Q_qb_\omega^{n_{\mathrm f}})^{-1}\)">\((2\varrho+3)^{2n_{\mathrm f}}(Q_qb_\omega^{n_{\mathrm f}})^{-1}\)</span>. This gives the constant <span class="math" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span>.</p>
+<p><strong>Proposition 4.1</strong> (the expectation of one draw; [OpenAI-KK, Section 9.6]). For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there are fixed choices of <span class="math" data-tex="\(\varepsilon_1\)">\(\varepsilon_1\)</span>, <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span>, <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>, <span class="math" data-tex="\(\varepsilon_2\)">\(\varepsilon_2\)</span> and <span class="math" data-tex="\(G_\varepsilon\)">\(G_\varepsilon\)</span> such that for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and every adjacent pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname*{ess\,sup}_t\bigl\|\mathbb E[W\rho(z)](t)\\
+-h_i(t)h_k(t)p(t)\bigr\|\le\varepsilon ,
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+\operatorname*{ess\,sup}_t\bigl\|\mathbb E[W\rho(z)](t)\\
+-h_i(t)h_k(t)p(t)\bigr\|\le\varepsilon ,
+\end{gathered}\tag{4.1}
+\]</span>
+where <span class="math" data-tex="\((t)\)">\((t)\)</span> denotes the fiber at <span class="math" data-tex="\(t\)">\(t\)</span>, and <span class="math" data-tex="\(h_ih_kp(t)=0\)">\(h_ih_kp(t)=0\)</span> for <span class="math" data-tex="\(t\notin(0,\delta)\)">\(t\notin(0,\delta)\)</span>.</p>
+<p><em>Proof.</em> Choose <span class="math" data-tex="\(\varepsilon_1=\varepsilon/4\)">\(\varepsilon_1=\varepsilon/4\)</span>; Lemma 1.1 fixes <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span>, <span class="math" data-tex="\(s_0\)">\(s_0\)</span> and <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. Then choose <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> and <span class="math" data-tex="\(\varepsilon_2\)">\(\varepsilon_2\)</span> so small, in terms of <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> and the fixed constants, that the bound below is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>Let <span class="math" data-tex="\(X=c_1c_2c_3R\rho(z)\)">\(X=c_1c_2c_3R\rho(z)\)</span>. Since <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(\rho(z)\)">\(\rho(z)\)</span> are unitary, rounding changes <span class="math" data-tex="\(W\rho(z)\)">\(W\rho(z)\)</span> by at most <span class="math" data-tex="\(\varepsilon_2\)">\(\varepsilon_2\)</span> in norm. As <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a homomorphism, <span class="math" data-tex="\(R\)">\(R\)</span> commutes with the <span class="math" data-tex="\(\rho(g)\)">\(\rho(g)\)</span>, and the choices are independent given <span class="math" data-tex="\((\nu,\omega)\)">\((\nu,\omega)\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb EX=\sum_{(\nu,\omega)\in\mathcal T_{ik}}F_{\nu\omega}\,\mathcal A_\nu\,\mathcal B_\omega ,
+\]">\[
+\mathbb EX=\sum_{(\nu,\omega)\in\mathcal T_{ik}}F_{\nu\omega}\,\mathcal A_\nu\,\mathcal B_\omega ,
+\]</span>
+where <span class="math" data-tex="\(F_{\nu\omega}=\sum_{|n|\le K_i}\hat f_{ik\nu\omega}(n)\rho(z_0^n)\)">\(F_{\nu\omega}=\sum_{|n|\le K_i}\hat f_{ik\nu\omega}(n)\rho(z_0^n)\)</span>; <span class="math" data-tex="\(\mathcal A_\nu=\sum_xa_\nu^{n_{\mathrm f}}J^\flat_+(\Delta_{a_\nu^{1/m}}x)\rho(\sigma_X(x))\)">\(\mathcal A_\nu=\sum_xa_\nu^{n_{\mathrm f}}J^\flat_+(\Delta_{a_\nu^{1/m}}x)\rho(\sigma_X(x))\)</span>, because <span class="math" data-tex="\(\mathfrak P_\nu\)">\(\mathfrak P_\nu\)</span> contains every <span class="math" data-tex="\(x\)">\(x\)</span> with a nonzero coefficient; and <span class="math" data-tex="\(\mathcal B_\omega\)">\(\mathcal B_\omega\)</span> is the list average of Lemma 3.1 if <span class="math" data-tex="\(i&lt;I\)">\(i&lt;I\)</span>, and <span class="math" data-tex="\(\mathcal S(b_\omega)C_q^M\)">\(\mathcal S(b_\omega)C_q^M\)</span> if <span class="math" data-tex="\(i\ge I\)">\(i\ge I\)</span>. In the fiber at <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(F_{\nu\omega}\)">\(F_{\nu\omega}\)</span> acts by <span class="math" data-tex="\(f^{\le}(t)\)">\(f^{\le}(t)\)</span> and <span class="math" data-tex="\(\mathcal A_\nu\)">\(\mathcal A_\nu\)</span> by <span class="math" data-tex="\(L_+(a_\nu;u_t)\otimes1\)">\(L_+(a_\nu;u_t)\otimes1\)</span>.</p>
+<p>The target <span class="math" data-tex="\(G(t)\)">\(G(t)\)</span>, the sum over <span class="math" data-tex="\(\mathcal T_{ik}\)">\(\mathcal T_{ik}\)</span> of <span class="math" data-tex="\(f(t)\,L_+(a_\nu;u_t)\otimes L_-(b_\omega;V_t)\)">\(f(t)\,L_+(a_\nu;u_t)\otimes L_-(b_\omega;V_t)\)</span>, is within <span class="math" data-tex="\(\varepsilon_1\)">\(\varepsilon_1\)</span> of <span class="math" data-tex="\(h_ih_kp(t)\)">\(h_ih_kp(t)\)</span> for <span class="math" data-tex="\(0&lt;t&lt;\delta\)">\(0&lt;t&lt;\delta\)</span> by Lemma 1.1, and equal to it, namely zero, for other <span class="math" data-tex="\(t\)">\(t\)</span>. For each pair, the fiber difference is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(f^{\le}-f)(t)\,(L_+\otimes1)\mathcal B_\omega(t)\\
+&amp;\quad+f(t)\,(L_+\otimes1)\\
+&amp;\qquad\cdot\bigl(\mathcal B_\omega(t)-1\otimes L_-(b_\omega;V_t)\bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(f^{\le}-f)(t)\,(L_+\otimes1)\mathcal B_\omega(t)\\
+&amp;\quad+f(t)\,(L_+\otimes1)\\
+&amp;\qquad\cdot\bigl(\mathcal B_\omega(t)-1\otimes L_-(b_\omega;V_t)\bigr) .
+\end{aligned}
+\]</span>
+The first term is at most <span class="math" data-tex="\(C\Theta^{-1}\cdot C_\flat\cdot C\)">\(C\Theta^{-1}\cdot C_\flat\cdot C\)</span>, since the fibers of <span class="math" data-tex="\(\mathcal B_\omega\)">\(\mathcal B_\omega\)</span> are bounded (Lemma 3.1 with <span class="math" data-tex="\(\|\mathcal T(b)\|\le C_\flat\)">\(\|\mathcal T(b)\|\le C_\flat\)</span>, and Lemma 3.2(2)). The second term vanishes off the support of <span class="math" data-tex="\(\theta_\omega\)">\(\theta_\omega\)</span>, and on it is at most <span class="math" data-tex="\(C_\flat\)">\(C_\flat\)</span> times <span class="math" data-tex="\(\varepsilon_2\)">\(\varepsilon_2\)</span> (Lemma 3.1, with the fiber of <span class="math" data-tex="\(\mathcal T(b)\)">\(\mathcal T(b)\)</span> from Section 1) or <span class="math" data-tex="\(\varepsilon_2+C\varepsilon_2\)">\(\varepsilon_2+C\varepsilon_2\)</span> (Lemma 3.2(3) and (4)). Summing over at most <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> pairs,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl\|\mathbb E[W\rho(z)](t)-h_ih_kp(t)\bigr\|\\
+&amp;\quad\le\varepsilon_2+\mathcal NC\bigl(\Theta^{-1}+\varepsilon_2\bigr)+\frac\varepsilon4
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl\|\mathbb E[W\rho(z)](t)-h_ih_kp(t)\bigr\|\\
+&amp;\quad\le\varepsilon_2+\mathcal NC\bigl(\Theta^{-1}+\varepsilon_2\bigr)+\frac\varepsilon4
+\end{aligned}
+\]</span>
+for almost every <span class="math" data-tex="\(t\)">\(t\)</span>, which is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> for the choices made. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-alphabet-and-the-coordinates-of-the-voltages">5. The alphabet and the coordinates of the voltages</h2>
+<p><strong>Lemma 5.1</strong> (alphabet and coordinates; [OpenAI-KK, Section 9.6]). For large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>:</p>
+<ol>
+<li>the matrices <span class="math" data-tex="\(W\)">\(W\)</span> that occur form a set of at most <span class="math" data-tex="\(C(1+\log q)M\)">\(C(1+\log q)M\)</span> elements, and the pairs of a label of <span class="math" data-tex="\(Y\)">\(Y\)</span> and such a matrix number <span class="math" data-tex="\(o(dD)\)">\(o(dD)\)</span>;</li>
+<li>there is a fixed <span class="math" data-tex="\(C\)">\(C\)</span> such that for every adjacent pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> every possible <span class="math" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>, has all coordinates at most <span class="math" data-tex="\(2^{CH_i}\)">\(2^{CH_i}\)</span> in absolute value;</li>
+<li>if <span class="math" data-tex="\(i\le2I\)">\(i\le2I\)</span>, then <span class="math" data-tex="\(a_\nu^{-1/m}\ge2^{2E_0H_i}\)">\(a_\nu^{-1/m}\ge2^{2E_0H_i}\)</span> for every <span class="math" data-tex="\((\nu,\omega)\in\mathcal T_{ik}\)">\((\nu,\omega)\in\mathcal T_{ik}\)</span>, and the superdiagonal coordinates <span class="math" data-tex="\((b_x-1)_{uv}\)">\((b_x-1)_{uv}\)</span>, <span class="math" data-tex="\(u&lt;v\)">\(u&lt;v\)</span>, of <span class="math" data-tex="\(x\)">\(x\)</span> in step 2 are independent and uniform on integer intervals with at least <span class="math" data-tex="\(2^{E_0H_i}\)">\(2^{E_0H_i}\)</span> points;</li>
+<li>if <span class="math" data-tex="\(i\ge I\)">\(i\ge I\)</span>, the numbers <span class="math" data-tex="\((b_y-1)_{uv}/q\)">\((b_y-1)_{uv}/q\)</span>, <span class="math" data-tex="\(u&lt;v\)">\(u&lt;v\)</span>, for <span class="math" data-tex="\(y\)">\(y\)</span> in step 3 are independent and uniform on integer intervals with at least <span class="math" data-tex="\(2^{E_0H_i}\)">\(2^{E_0H_i}\)</span> points.</li>
+</ol>
+<p><em>Proof.</em> (1) The matrices are <span class="math" data-tex="\(c^\flat R\)">\(c^\flat R\)</span> with <span class="math" data-tex="\(c^\flat\in G_\varepsilon\)">\(c^\flat\in G_\varepsilon\)</span>, a fixed finite set, and <span class="math" data-tex="\(R\)">\(R\)</span> in the lists of Lemma 3.1, at most <span class="math" data-tex="\(C(1+\log q)\)">\(C(1+\log q)\)</span> lists of <span class="math" data-tex="\(M\)">\(M\)</span> entries, or in the one list of <span class="math" data-tex="\(C_q^M\)">\(C_q^M\)</span>. With <span class="math" data-tex="\(M\le d^{1/32}\)">\(M\le d^{1/32}\)</span> and <span class="math" data-tex="\(\log q=A_*\log d\)">\(\log q=A_*\log d\)</span>, there are at most <span class="math" data-tex="\(Cd^{1/32}\log d\)">\(Cd^{1/32}\log d\)</span> matrices. The labels number <span class="math" data-tex="\(m_\ell\le27K^2d\,2^{r+2}=O(\ell^2d^{11/4})\)">\(m_\ell\le27K^2d\,2^{r+2}=O(\ell^2d^{11/4})\)</span> by Lemma 4.1 of <a href="gated-permutations-and-the-two-towers.html">Gated permutations and the two towers</a>, since <span class="math" data-tex="\(2^r=d^{7/4}\)">\(2^r=d^{7/4}\)</span> and <span class="math" data-tex="\(K=320\ell\)">\(K=320\ell\)</span>. The product is <span class="math" data-tex="\(O(d^{89/32}\ell^3)=o(d^3)=o(dD)\)">\(O(d^{89/32}\ell^3)=o(d^3)=o(dD)\)</span>.</p>
+<p>(2) By Lemma 2.1, <span class="math" data-tex="\(|n|\le K_i\le\Theta q2^{\kappa|i|}+1\)">\(|n|\le K_i\le\Theta q2^{\kappa|i|}+1\)</span>. On the support of <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(\delta-t\)">\(\delta-t\)</span> are at least <span class="math" data-tex="\(c_\kappa w_i\)">\(c_\kappa w_i\)</span>, so <span class="math" data-tex="\(a_\nu^{-1},b_\omega^{-1}\le Cq2^{\kappa|i|}\)">\(a_\nu^{-1},b_\omega^{-1}\le Cq2^{\kappa|i|}\)</span>, and the coordinates of <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(v_{b,h}\)">\(v_{b,h}\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> are at most <span class="math" data-tex="\((\varrho+1)Cq2^{\kappa|i|}\)">\((\varrho+1)Cq2^{\kappa|i|}\)</span>; those of <span class="math" data-tex="\(v_h\in\mathcal V_q\)">\(v_h\in\mathcal V_q\)</span> are at most <span class="math" data-tex="\(q\)">\(q\)</span>. Since <span class="math" data-tex="\(\log_2(q2^{\kappa|i|})=A_*\log_2d+\kappa|i|\)">\(\log_2(q2^{\kappa|i|})=A_*\log_2d+\kappa|i|\)</span> is at most <span class="math" data-tex="\((A_*+\kappa)H_i\)">\((A_*+\kappa)H_i\)</span>, every factor of <span class="math" data-tex="\(z\)">\(z\)</span> has coordinates at most <span class="math" data-tex="\(2^{C&#x27;H_i}\)">\(2^{C&#x27;H_i}\)</span>, and the fixed polynomial laws of multiplication and inversion give the bound <span class="math" data-tex="\(2^{CH_i}\)">\(2^{CH_i}\)</span> for <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>.</p>
+<p>(3) On the support of <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, <span class="math" data-tex="\(t&lt;\delta\)">\(t&lt;\delta\)</span>, so <span class="math" data-tex="\(a_\nu\le e^{s_0}\delta\)">\(a_\nu\le e^{s_0}\delta\)</span> and <span class="math" data-tex="\(\log_2a_\nu^{-1}\ge\log_2q-2\)">\(\log_2a_\nu^{-1}\ge\log_2q-2\)</span>. If <span class="math" data-tex="\(0\le i\le2I\)">\(0\le i\le2I\)</span>, then <span class="math" data-tex="\(H_i\le3H_0\le3h_*\log_2d\)">\(H_i\le3H_0\le3h_*\log_2d\)</span>, and <span class="math" data-tex="\(A_*/m&gt;10E_0h_*\)">\(A_*/m&gt;10E_0h_*\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac1m\log_2a_\nu^{-1}&amp;\ge10E_0h_*\log_2d-2\\
+&amp;\ge\tfrac{10}3E_0H_i-2\ge2E_0H_i .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac1m\log_2a_\nu^{-1}&amp;\ge10E_0h_*\log_2d-2\\
+&amp;\ge\tfrac{10}3E_0H_i-2\ge2E_0H_i .
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(i&lt;0\)">\(i&lt;0\)</span>, then <span class="math" data-tex="\(b(t)&lt;i+1\le0\)">\(b(t)&lt;i+1\le0\)</span> and <span class="math" data-tex="\(t\le\delta2^{\kappa b}\le2^\kappa q^{-1}2^{-\kappa|i|}\)">\(t\le\delta2^{\kappa b}\le2^\kappa q^{-1}2^{-\kappa|i|}\)</span>, so <span class="math" data-tex="\(\log_2a_\nu^{-1}\ge\log_2q+\kappa|i|-\kappa-2\)">\(\log_2a_\nu^{-1}\ge\log_2q+\kappa|i|-\kappa-2\)</span>, and with <span class="math" data-tex="\(\kappa/m&gt;10E_0\)">\(\kappa/m&gt;10E_0\)</span> and <span class="math" data-tex="\(H_i=H_0+|i|\le h_*\log_2d+|i|\)">\(H_i=H_0+|i|\le h_*\log_2d+|i|\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac1m\log_2a_\nu^{-1}&amp;\ge10E_0\bigl(h_*\log_2d+|i|\bigr)-C\\
+&amp;\ge2E_0H_i .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac1m\log_2a_\nu^{-1}&amp;\ge10E_0\bigl(h_*\log_2d+|i|\bigr)-C\\
+&amp;\ge2E_0H_i .
+\end{aligned}
+\]</span>
+The coordinate <span class="math" data-tex="\((b_x-1)_{uv}\)">\((b_x-1)_{uv}\)</span> has weight <span class="math" data-tex="\(v-u\ge1\)">\(v-u\ge1\)</span>, so its interval has radius at least <span class="math" data-tex="\(\varrho a_\nu^{-1/m}\ge2^{2E_0H_i}\)">\(\varrho a_\nu^{-1/m}\ge2^{2E_0H_i}\)</span>; a uniform point of a rectangle has independent uniform coordinates.</p>
+<p>(4) The coordinate <span class="math" data-tex="\((b_y-1)_{uv}\)">\((b_y-1)_{uv}\)</span> ranges over the multiples of <span class="math" data-tex="\(q\)">\(q\)</span> of absolute value at most <span class="math" data-tex="\(\varrho b_\omega^{-(v-u)/m}\)">\(\varrho b_\omega^{-(v-u)/m}\)</span>, which number at least <span class="math" data-tex="\(b_\omega^{-1/m}/q\ge2^{2E_0H_i}\)">\(b_\omega^{-1/m}/q\ge2^{2E_0H_i}\)</span> by (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The ranges in (3) and (4) overlap: every layer <span class="math" data-tex="\(i\)">\(i\)</span> is covered by one of them, and the layers from <span class="math" data-tex="\(I\)">\(I\)</span> to <span class="math" data-tex="\(2I\)">\(2I\)</span> by both.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). Show that <span class="math" data-tex="\(|\mathcal V_q|=Q_q\)">\(|\mathcal V_q|=Q_q\)</span>, and that every <span class="math" data-tex="\(\gamma\in L\)">\(\gamma\in L\)</span> is uniquely <span class="math" data-tex="\(yv\)">\(yv\)</span> with <span class="math" data-tex="\(y\in\Lambda\)">\(y\in\Lambda\)</span> and <span class="math" data-tex="\(v\in\mathcal V_q\)">\(v\in\mathcal V_q\)</span>.</p>
+<p><strong>6.2</strong> (easy). Let <span class="math" data-tex="\(g\)">\(g\)</span> be smooth with support in <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, <span class="math" data-tex="\(0&lt;w&lt;\frac12\)">\(0&lt;w&lt;\frac12\)</span>, and <span class="math" data-tex="\(f(t)=g((t-\frac12)/w)\)">\(f(t)=g((t-\frac12)/w)\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. Show that <span class="math" data-tex="\(\hat f(n)=w\,\hat g(nw)\,\mathbf e(-n/2)\)">\(\hat f(n)=w\,\hat g(nw)\,\mathbf e(-n/2)\)</span>, with the Fourier transform <span class="math" data-tex="\(\hat g(\xi)=\int g(s)\mathbf e(-\xi s)ds\)">\(\hat g(\xi)=\int g(s)\mathbf e(-\xi s)ds\)</span>, and deduce bounds of the form in Lemma 2.1.</p>
+<p><strong>6.3</strong> (medium). Show that <span class="math" data-tex="\(\mathbb E[c_2\rho(\sigma_X(x))]\)">\(\mathbb E[c_2\rho(\sigma_X(x))]\)</span> in step 2 does not change if <span class="math" data-tex="\(\mathfrak P_\nu\)">\(\mathfrak P_\nu\)</span> is replaced by a larger rectangle with the corresponding count, and that the bound <span class="math" data-tex="\(|c_2|\le C\)">\(|c_2|\le C\)</span> requires the rectangle radius to be of order <span class="math" data-tex="\(a_\nu^{-w/m}\)">\(a_\nu^{-w/m}\)</span> in weight <span class="math" data-tex="\(w\)">\(w\)</span>.</p>
+<p><strong>6.4</strong> (medium). Derive <span class="math" data-tex="\(V_t(y)V_t(v)=\mathbf e((t-\delta)c(y,v))V_t(yv)\)">\(V_t(y)V_t(v)=\mathbf e((t-\delta)c(y,v))V_t(yv)\)</span> for <span class="math" data-tex="\(y\in\Lambda_q\)">\(y\in\Lambda_q\)</span> directly from <span class="math" data-tex="\(\sigma(y)\sigma(v)=(0,1,c(y,v))\sigma(yv)\)">\(\sigma(y)\sigma(v)=(0,1,c(y,v))\sigma(yv)\)</span>, the multiplier of <span class="math" data-tex="\(u_t\)">\(u_t\)</span>, and <span class="math" data-tex="\(R(0,1,z)=\mathbf e(-\delta z)\)">\(R(0,1,z)=\mathbf e(-\delta z)\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> Reduction modulo <span class="math" data-tex="\(q\)">\(q\)</span> is a surjective homomorphism <span class="math" data-tex="\(L\to\bar E_{\mathbb Z/q\mathbb Z}\)">\(L\to\bar E_{\mathbb Z/q\mathbb Z}\)</span> with kernel <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and <span class="math" data-tex="\(\mathcal V_q\)">\(\mathcal V_q\)</span> maps bijectively onto <span class="math" data-tex="\(\bar E_{\mathbb Z/q\mathbb Z}\)">\(\bar E_{\mathbb Z/q\mathbb Z}\)</span>, a set of <span class="math" data-tex="\(q^{2n_{\mathrm f}}\)">\(q^{2n_{\mathrm f}}\)</span> elements. For <span class="math" data-tex="\(\gamma\in L\)">\(\gamma\in L\)</span>, let <span class="math" data-tex="\(v\in\mathcal V_q\)">\(v\in\mathcal V_q\)</span> have the same reduction; then <span class="math" data-tex="\(y=\gamma v^{-1}\in\Lambda\)">\(y=\gamma v^{-1}\in\Lambda\)</span>. If <span class="math" data-tex="\(yv=y&#x27;v&#x27;\)">\(yv=y&#x27;v&#x27;\)</span>, then <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(v&#x27;\)">\(v&#x27;\)</span> have the same reduction, so <span class="math" data-tex="\(v=v&#x27;\)">\(v=v&#x27;\)</span> and <span class="math" data-tex="\(y=y&#x27;\)">\(y=y&#x27;\)</span>.</p>
+<p><strong>6.2.</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\hat f(n)&amp;=\int g((t-\tfrac12)/w)\,\mathbf e(-nt)\,dt\\
+&amp;=w\int g(s)\,\mathbf e(-n(\tfrac12+ws))\,ds\\
+&amp;=w\,\mathbf e(-n/2)\hat g(nw) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\hat f(n)&amp;=\int g((t-\tfrac12)/w)\,\mathbf e(-nt)\,dt\\
+&amp;=w\int g(s)\,\mathbf e(-n(\tfrac12+ws))\,ds\\
+&amp;=w\,\mathbf e(-n/2)\hat g(nw) .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(|\hat g(\xi)|\le C_j(1+|\xi|)^{-j}\)">\(|\hat g(\xi)|\le C_j(1+|\xi|)^{-j}\)</span>, <span class="math" data-tex="\(|\hat f(n)|\le C_jw(1+|n|w)^{-j}\)">\(|\hat f(n)|\le C_jw(1+|n|w)^{-j}\)</span>, and <span class="math" data-tex="\(\sum_n|\hat f(n)|\le C\)">\(\sum_n|\hat f(n)|\le C\)</span>, as in Lemma 2.1.</p>
+<p><strong>6.3.</strong> The expectation over a rectangle <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> of <span class="math" data-tex="\(|\mathfrak P|a^{n_{\mathrm f}}J^\flat_+(\Delta x)\rho(\sigma_X(x))\)">\(|\mathfrak P|a^{n_{\mathrm f}}J^\flat_+(\Delta x)\rho(\sigma_X(x))\)</span> is <span class="math" data-tex="\(\sum_{x\in\mathfrak P}a^{n_{\mathrm f}}J^\flat_+(\Delta x)\rho(\sigma_X(x))\)">\(\sum_{x\in\mathfrak P}a^{n_{\mathrm f}}J^\flat_+(\Delta x)\rho(\sigma_X(x))\)</span>, which is the same for every rectangle containing the support. The scalar is at most <span class="math" data-tex="\(|\mathfrak P|a^{n_{\mathrm f}}\|J^\flat_+\|_\infty\)">\(|\mathfrak P|a^{n_{\mathrm f}}\|J^\flat_+\|_\infty\)</span>; with radii <span class="math" data-tex="\(\lceil\varrho a^{-w/m}\rceil\)">\(\lceil\varrho a^{-w/m}\rceil\)</span> the count is at most <span class="math" data-tex="\(Ca^{-n_{\mathrm f}}\)">\(Ca^{-n_{\mathrm f}}\)</span>, while radii larger by a factor <span class="math" data-tex="\(\lambda\ge1\)">\(\lambda\ge1\)</span> in every coordinate multiply it by about <span class="math" data-tex="\(\lambda^{2n_{\mathrm f}}\)">\(\lambda^{2n_{\mathrm f}}\)</span>.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(V_t(y)V_t(v)=u_t(y)u_t(v)\otimes R_yR_v\)">\(V_t(y)V_t(v)=u_t(y)u_t(v)\otimes R_yR_v\)</span>. The first factor is <span class="math" data-tex="\(\mathbf e(tc(y,v))u_t(yv)\)">\(\mathbf e(tc(y,v))u_t(yv)\)</span>. For the second,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;R(\sigma(y))R(\sigma(v))\\
+&amp;\quad=R(\sigma(y)\sigma(v))\\
+&amp;\quad=R(0,1,c(y,v))R(\sigma(yv))\\
+&amp;\quad=\mathbf e(-\delta c(y,v))R_{yv} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;R(\sigma(y))R(\sigma(v))\\
+&amp;\quad=R(\sigma(y)\sigma(v))\\
+&amp;\quad=R(0,1,c(y,v))R(\sigma(yv))\\
+&amp;\quad=\mathbf e(-\delta c(y,v))R_{yv} .
+\end{aligned}
+\]</span>
+Together, <span class="math" data-tex="\(\mathbf e((t-\delta)c(y,v))V_t(yv)\)">\(\mathbf e((t-\delta)c(y,v))V_t(yv)\)</span>; and <span class="math" data-tex="\(R_y=1\)">\(R_y=1\)</span> is not needed for this identity.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-KK] OpenAI, <em>A torsion-free counterexample to the Kadison–Kaplansky projection conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Sections 9.4 to 9.6. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-the-Kadison-Kaplansky-Projection-Conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

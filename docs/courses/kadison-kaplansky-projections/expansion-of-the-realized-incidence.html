@@ -1,0 +1,238 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Expansion of the realized incidence</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to the Kadison–Kaplansky conjecture)</a><a href="the-mean-incidence-and-its-gap.html">Previous lesson</a><a href="pruning-and-recovery-of-long-paths.html">Next lesson</a><a href="src/expansion-of-the-realized-incidence.md">Editable source</a></nav><main><article><h1 id="expansion-of-the-realized-incidence">Expansion of the realized incidence</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The previous lesson bounded the <em>mean</em> incidence of a pair, averaged over the random table of its marked block. This lesson chooses an actual table. A tail bound for the number of edges leaving a fixed set, summed over all sets, would bring in the number of vertices of the layer, which grows without bound; instead the bad events are indexed by connected sets in a graph of bounded degree, and the Lovász local lemma, whose proof is included, finds a table that avoids all of them. A discrete Cheeger argument then turns the edge expansion into a spectral bound, uniform in the layers [OpenAI-KK, Lemma 5.3 and Proposition 5.4].</p>
+<ul>
+<li>The mean cut (Section 1).</li>
+<li>The tail of a cut (Section 2).</li>
+<li>The local lemma (Section 3).</li>
+<li>Choosing the tables (Section 4).</li>
+<li>From cuts to the incidence norm (Section 5).</li>
+</ul>
+<p>The notation of <a href="the-mean-incidence-and-its-gap.html">The mean incidence and its gap</a> is in force: a fixed adjacent pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>, <span class="math" data-tex="\(A=A_i\)">\(A=A_i\)</span>, <span class="math" data-tex="\(B=B_k\)">\(B=B_k\)</span>, <span class="math" data-tex="\(D&#x27;=D_{ik}\)">\(D&#x27;=D_{ik}\)</span>, <span class="math" data-tex="\(E=d|A|=D&#x27;|B|\)">\(E=d|A|=D&#x27;|B|\)</span>, the tables at the earlier marked blocks of the family fixed, and the table of the marked block of <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> random, so that its edges in <span class="math" data-tex="\(Y^0\)">\(Y^0\)</span> are independent uniform matchings of clusters (Lemma 5.1 of <a href="gated-permutations-and-the-two-towers.html">Gated permutations and the two towers</a>).</p>
+<h2 id="1-the-mean-cut">1. The mean cut</h2>
+<p>Give <span class="math" data-tex="\(A\sqcup B\)">\(A\sqcup B\)</span> the <em>degree measure</em> <span class="math" data-tex="\(\mu(a)=d\)">\(\mu(a)=d\)</span>, <span class="math" data-tex="\(\mu(b)=D&#x27;\)">\(\mu(b)=D&#x27;\)</span>, and write <span class="math" data-tex="\(v(Z)=\sum_{z\in Z}\mu(z)\)">\(v(Z)=\sum_{z\in Z}\mu(z)\)</span>, so that <span class="math" data-tex="\(v(A\sqcup B)=2E\)">\(v(A\sqcup B)=2E\)</span>. For a set <span class="math" data-tex="\(Z\)">\(Z\)</span> and a realization of the edges, let <span class="math" data-tex="\(b(Z)\)">\(b(Z)\)</span> be the number of edges with exactly one end in <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p>On <span class="math" data-tex="\(L^2(A\sqcup B,\mu)\)">\(L^2(A\sqcup B,\mu)\)</span> the random walk of a realization is <span class="math" data-tex="\((R_0F)(x)=\mu(x)^{-1}\sum_{e\ni x}F(y_e)\)">\((R_0F)(x)=\mu(x)^{-1}\sum_{e\ni x}F(y_e)\)</span>, with <span class="math" data-tex="\(y_e\)">\(y_e\)</span> the other end of <span class="math" data-tex="\(e\)">\(e\)</span>. It is self-adjoint, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle(1-R_0)F,F\rangle_\mu\\
+=\sum_{\text{edges }xy}|F(x)-F(y)|^2 .
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+\langle(1-R_0)F,F\rangle_\mu\\
+=\sum_{\text{edges }xy}|F(x)-F(y)|^2 .
+\end{gathered}\tag{1.1}
+\]</span>
+In particular <span class="math" data-tex="\(\langle(1-R_0)\mathbf1_Z,\mathbf1_Z\rangle_\mu=b(Z)\)">\(\langle(1-R_0)\mathbf1_Z,\mathbf1_Z\rangle_\mu=b(Z)\)</span>. Up to the factor <span class="math" data-tex="\(E\)">\(E\)</span>, <span class="math" data-tex="\(L^2(A\sqcup B,\mu)\)">\(L^2(A\sqcup B,\mu)\)</span> is <span class="math" data-tex="\(L^2(A)\oplus L^2(B)\)">\(L^2(A)\oplus L^2(B)\)</span> with the uniform measures, and the mean walk <span class="math" data-tex="\(R=\mathbb ER_0\)">\(R=\mathbb ER_0\)</span> is the block operator with off-diagonal blocks <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(M^*\)">\(M^*\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (mean cut). For every set <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(0&lt;v(Z)\le E\)">\(0&lt;v(Z)\le E\)</span>, <span class="math" data-tex="\(\mathbb E\,b(Z)\ge0.1\,v(Z)\)">\(\mathbb E\,b(Z)\ge0.1\,v(Z)\)</span>.</p>
+<p><em>Proof.</em> The functions that are constant on each side span the eigenvectors <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span> and <span class="math" data-tex="\(\mathbf1_A-\mathbf1_B\)">\(\mathbf1_A-\mathbf1_B\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span>, with eigenvalues <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>. On their orthogonal complement, the sum of the spaces of functions of mean zero on each side, <span class="math" data-tex="\(\|R\|&lt;0.8\)">\(\|R\|&lt;0.8\)</span> by Lemma 4.1 of the previous lesson. So <span class="math" data-tex="\(R\le0.8\)">\(R\le0.8\)</span> on the orthogonal complement of <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span>. Write <span class="math" data-tex="\(\mathbf1_Z=c\mathbf1+w\)">\(\mathbf1_Z=c\mathbf1+w\)</span> with <span class="math" data-tex="\(c=v(Z)/2E\)">\(c=v(Z)/2E\)</span> and <span class="math" data-tex="\(w\perp\mathbf1\)">\(w\perp\mathbf1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,b(Z)&amp;=\langle(1-R)w,w\rangle_\mu\ge0.2\|w\|_\mu^2\\
+&amp;=0.2\Bigl(v(Z)-\frac{v(Z)^2}{2E}\Bigr)\\
+&amp;\ge0.1\,v(Z) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,b(Z)&amp;=\langle(1-R)w,w\rangle_\mu\ge0.2\|w\|_\mu^2\\
+&amp;=0.2\Bigl(v(Z)-\frac{v(Z)^2}{2E}\Bigr)\\
+&amp;\ge0.1\,v(Z) ,
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(v(Z)\le E\)">\(v(Z)\le E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-tail-of-a-cut">2. The tail of a cut</h2>
+<p><strong>Lemma 2.1</strong> (tail for a cut; [OpenAI-KK, Lemma 5.3]). For every set <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(0&lt;v(Z)\le E\)">\(0&lt;v(Z)\le E\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb P\Bigl\{b(Z)&lt;\frac{v(Z)}{20}\Bigr\}\le e^{-v(Z)/400} .
+\]">\[
+\mathbb P\Bigl\{b(Z)&lt;\frac{v(Z)}{20}\Bigr\}\le e^{-v(Z)/400} .
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(X\)">\(X\)</span> be the number of edges with both ends in <span class="math" data-tex="\(Z\)">\(Z\)</span>. Every slot incidence at <span class="math" data-tex="\(Z\)">\(Z\)</span> belongs to one edge, so <span class="math" data-tex="\(b(Z)=v(Z)-2X\)">\(b(Z)=v(Z)-2X\)</span>. Choose the side, <span class="math" data-tex="\(A\)">\(A\)</span> or <span class="math" data-tex="\(B\)">\(B\)</span>, on which <span class="math" data-tex="\(Z\)">\(Z\)</span> has fewer slot incidences, and let <span class="math" data-tex="\(N_Z\le v(Z)/2\)">\(N_Z\le v(Z)/2\)</span> be that number. In each cluster pair, the incidences of the chosen side that belong to <span class="math" data-tex="\(Z\)">\(Z\)</span> are mapped by a uniform bijection to the other cluster, and the number of them landing in <span class="math" data-tex="\(Z\)">\(Z\)</span> is a count of successes in sampling without replacement from a population of zeros and ones. These counts are independent over the cluster pairs, and their sample sizes add up to <span class="math" data-tex="\(N_Z\)">\(N_Z\)</span>. By Lemma 5.1 of <a href="streams-slots-and-slot-evaluations.html">Streams, slots and slot evaluations</a>, applied to each cluster, <span class="math" data-tex="\(\mathbb Ee^{h(X-\mathbb EX)}\le e^{N_Zh^2/8}\)">\(\mathbb Ee^{h(X-\mathbb EX)}\le e^{N_Zh^2/8}\)</span> for all real <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>By Lemma 1.1, <span class="math" data-tex="\(\mathbb EX=\frac12(v(Z)-\mathbb Eb(Z))\le0.45\,v(Z)\)">\(\mathbb EX=\frac12(v(Z)-\mathbb Eb(Z))\le0.45\,v(Z)\)</span>, while <span class="math" data-tex="\(b(Z)&lt;v(Z)/20\)">\(b(Z)&lt;v(Z)/20\)</span> means <span class="math" data-tex="\(X&gt;0.475\,v(Z)\)">\(X&gt;0.475\,v(Z)\)</span>. So a bad cut requires <span class="math" data-tex="\(X-\mathbb EX&gt;v(Z)/40\)">\(X-\mathbb EX&gt;v(Z)/40\)</span>; if <span class="math" data-tex="\(N_Z=0\)">\(N_Z=0\)</span> this is impossible. By Markov's inequality with <span class="math" data-tex="\(h=4(v(Z)/40)/N_Z\)">\(h=4(v(Z)/40)/N_Z\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb P\{X-\mathbb EX&gt;v(Z)/40\}\\
+&amp;\quad\le\exp\Bigl(-\frac{2(v(Z)/40)^2}{N_Z}\Bigr)\\
+&amp;\quad\le e^{-v(Z)/400} .\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb P\{X-\mathbb EX&gt;v(Z)/40\}\\
+&amp;\quad\le\exp\Bigl(-\frac{2(v(Z)/40)^2}{N_Z}\Bigr)\\
+&amp;\quad\le e^{-v(Z)/400} .\qquad\square
+\end{aligned}
+\]</span></p>
+<h2 id="3-the-local-lemma">3. The local lemma</h2>
+<p>The local lemma is due to Erdős and Lovász. The asymmetric form below has a short proof by conditional probabilities [OpenAI-KK, Section 5].</p>
+<p><strong>Lemma 3.1</strong> (the local lemma, asymmetric form). Let <span class="math" data-tex="\(\mathcal E_1,\ldots,\mathcal E_n\)">\(\mathcal E_1,\ldots,\mathcal E_n\)</span> be events in a probability space, and let a graph on <span class="math" data-tex="\(\{1,\ldots,n\}\)">\(\{1,\ldots,n\}\)</span> be such that each <span class="math" data-tex="\(\mathcal E_z\)">\(\mathcal E_z\)</span> is independent of the family of all <span class="math" data-tex="\(\mathcal E_{z&#x27;}\)">\(\mathcal E_{z&#x27;}\)</span> with <span class="math" data-tex="\(z&#x27;\)">\(z&#x27;\)</span> not adjacent to <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(z&#x27;\ne z\)">\(z&#x27;\ne z\)</span>. If there are numbers <span class="math" data-tex="\(0\le x_z&lt;1\)">\(0\le x_z&lt;1\)</span> with
+<span class="math math-display" data-tex="\[
+\mathbb P(\mathcal E_z)\le x_z\prod_{z&#x27;\sim z}(1-x_{z&#x27;})\qquad\text{for all }z,
+\]">\[
+\mathbb P(\mathcal E_z)\le x_z\prod_{z&#x27;\sim z}(1-x_{z&#x27;})\qquad\text{for all }z,
+\]</span>
+then <span class="math" data-tex="\(\mathbb P\bigl(\bigcap_z\mathcal E_z^c\bigr)\ge\prod_z(1-x_z)&gt;0\)">\(\mathbb P\bigl(\bigcap_z\mathcal E_z^c\bigr)\ge\prod_z(1-x_z)&gt;0\)</span>.</p>
+<p><em>Proof.</em> We show by induction on <span class="math" data-tex="\(|\mathcal S|\)">\(|\mathcal S|\)</span> that <span class="math" data-tex="\(\mathbb P(\mathcal E_z\mid\bigcap_{z&#x27;\in\mathcal S}\mathcal E_{z&#x27;}^c)\le x_z\)">\(\mathbb P(\mathcal E_z\mid\bigcap_{z&#x27;\in\mathcal S}\mathcal E_{z&#x27;}^c)\le x_z\)</span> for every set <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> of indices not containing <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(\mathbb P(\bigcap_{\mathcal S}\mathcal E^c)&gt;0\)">\(\mathbb P(\bigcap_{\mathcal S}\mathcal E^c)&gt;0\)</span>. Split <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> into the neighbours <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> of <span class="math" data-tex="\(z\)">\(z\)</span> and the rest <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. If <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> is empty, independence gives the probability <span class="math" data-tex="\(\mathbb P(\mathcal E_z)\le x_z\)">\(\mathbb P(\mathcal E_z)\le x_z\)</span>. Otherwise
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb P\Bigl(\mathcal E_z\Bigm|\bigcap_{\mathcal S}\mathcal E^c\Bigr)\\
+&amp;\quad\le\frac{\mathbb P(\mathcal E_z\mid\bigcap_{\mathcal T}\mathcal E^c)}{\mathbb P(\bigcap_{\mathcal N}\mathcal E^c\mid\bigcap_{\mathcal T}\mathcal E^c)}\\
+&amp;\quad=\frac{\mathbb P(\mathcal E_z)}{\mathbb P(\bigcap_{\mathcal N}\mathcal E^c\mid\bigcap_{\mathcal T}\mathcal E^c)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb P\Bigl(\mathcal E_z\Bigm|\bigcap_{\mathcal S}\mathcal E^c\Bigr)\\
+&amp;\quad\le\frac{\mathbb P(\mathcal E_z\mid\bigcap_{\mathcal T}\mathcal E^c)}{\mathbb P(\bigcap_{\mathcal N}\mathcal E^c\mid\bigcap_{\mathcal T}\mathcal E^c)}\\
+&amp;\quad=\frac{\mathbb P(\mathcal E_z)}{\mathbb P(\bigcap_{\mathcal N}\mathcal E^c\mid\bigcap_{\mathcal T}\mathcal E^c)} .
+\end{aligned}
+\]</span>
+Writing <span class="math" data-tex="\(\mathcal N=\{z_1,\ldots,z_r\}\)">\(\mathcal N=\{z_1,\ldots,z_r\}\)</span>, the denominator is the product of the probabilities <span class="math" data-tex="\(1-\mathbb P(\mathcal E_{z_l}\mid\bigcap_{\mathcal T}\mathcal E^c\cap\bigcap_{l&#x27;&lt;l}\mathcal E_{z_{l&#x27;}}^c)\)">\(1-\mathbb P(\mathcal E_{z_l}\mid\bigcap_{\mathcal T}\mathcal E^c\cap\bigcap_{l&#x27;&lt;l}\mathcal E_{z_{l&#x27;}}^c)\)</span>, each conditioned on fewer than <span class="math" data-tex="\(|\mathcal S|\)">\(|\mathcal S|\)</span> events, so by induction it is at least <span class="math" data-tex="\(\prod_{\mathcal N}(1-x_{z&#x27;})\ge\prod_{z&#x27;\sim z}(1-x_{z&#x27;})\)">\(\prod_{\mathcal N}(1-x_{z&#x27;})\ge\prod_{z&#x27;\sim z}(1-x_{z&#x27;})\)</span>. This proves the claim. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb P\Bigl(\bigcap_z\mathcal E_z^c\Bigr)\\
+&amp;\quad=\prod_{l=1}^n\Bigl(1-\mathbb P\Bigl(\mathcal E_l\Bigm|\bigcap_{l&#x27;&lt;l}\mathcal E_{l&#x27;}^c\Bigr)\Bigr)\\
+&amp;\quad\ge\prod_l(1-x_l) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb P\Bigl(\bigcap_z\mathcal E_z^c\Bigr)\\
+&amp;\quad=\prod_{l=1}^n\Bigl(1-\mathbb P\Bigl(\mathcal E_l\Bigm|\bigcap_{l&#x27;&lt;l}\mathcal E_{l&#x27;}^c\Bigr)\Bigr)\\
+&amp;\quad\ge\prod_l(1-x_l) ,
+\end{aligned}
+\]</span>
+where the conditioning events have positive probability by the same product, step by step. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-choosing-the-tables">4. Choosing the tables</h2>
+<p>Let <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> be the finite simple graph on <span class="math" data-tex="\(A\sqcup B\)">\(A\sqcup B\)</span> in which two vertices are adjacent if some edge of the pair can join them, that is, if they carry slot incidences in matched clusters. A cluster has <span class="math" data-tex="\(2^t\le2^s\)">\(2^t\le2^s\)</span> incidences, and a vertex has at most <span class="math" data-tex="\(\max\{d,D&#x27;\}\le2D\)">\(\max\{d,D&#x27;\}\le2D\)</span> slots, so the maximum degree of <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is at most
+<span class="math math-display" data-tex="\[
+\Delta=2D\,2^s,\qquad\text{and we put }Q=1+\Delta .
+\]">\[
+\Delta=2D\,2^s,\qquad\text{and we put }Q=1+\Delta .
+\]</span></p>
+<p>For every connected vertex set <span class="math" data-tex="\(Z\)">\(Z\)</span> of <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> with <span class="math" data-tex="\(0&lt;v(Z)\le E\)">\(0&lt;v(Z)\le E\)</span>, let <span class="math" data-tex="\(\mathcal E_Z\)">\(\mathcal E_Z\)</span> be the event <span class="math" data-tex="\(b(Z)&lt;v(Z)/20\)">\(b(Z)&lt;v(Z)/20\)</span>. It suffices to avoid these events: an arbitrary set <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(0&lt;v(Z)\le E\)">\(0&lt;v(Z)\le E\)</span> is the disjoint union of its components in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, no edge joins two of them, so <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> are additive over the components, and each component has volume at most <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Dependencies.</strong> The event <span class="math" data-tex="\(\mathcal E_Z\)">\(\mathcal E_Z\)</span> depends only on the matchings of the cluster pairs with incidences in <span class="math" data-tex="\(Z\)">\(Z\)</span>. All vertices of one cluster pair are within distance two of each other in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, since every edge between its two sides is possible. So if two sets have distance more than two in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, their events depend on disjoint families of independent matchings, and <span class="math" data-tex="\(\mathcal E_Z\)">\(\mathcal E_Z\)</span> is independent of the family of all events of sets at distance more than two from <span class="math" data-tex="\(Z\)">\(Z\)</span>. Join two events when their sets have distance at most two.</p>
+<p><strong>Counting.</strong> At most <span class="math" data-tex="\(zQ^2\)">\(zQ^2\)</span> vertices lie within distance two of a set of <span class="math" data-tex="\(z\)">\(z\)</span> vertices. The number of connected sets of <span class="math" data-tex="\(m\)">\(m\)</span> vertices containing a given vertex is at most <span class="math" data-tex="\(Q^{2(m-1)}\)">\(Q^{2(m-1)}\)</span>: a depth-first traversal of a spanning tree of the set, rooted at the vertex, is a walk of length <span class="math" data-tex="\(2(m-1)\)">\(2(m-1)\)</span> that visits exactly the set, and with fixed orders on the vertices and on their neighbours, the set determines its first spanning tree and traversal, so sets correspond injectively to walks, of which there are at most <span class="math" data-tex="\(\Delta^{2(m-1)}\)">\(\Delta^{2(m-1)}\)</span>. Hence an event <span class="math" data-tex="\(\mathcal E_Z\)">\(\mathcal E_Z\)</span> with <span class="math" data-tex="\(|Z|=z\)">\(|Z|=z\)</span> has at most <span class="math" data-tex="\(zQ^{2m}\)">\(zQ^{2m}\)</span> neighbours indexed by sets of <span class="math" data-tex="\(m\)">\(m\)</span> vertices.</p>
+<p><strong>Lemma 4.1</strong> (the realized expansion). For large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, uniformly in the pair and in the tables at the earlier marked blocks, the table of the marked block of <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> can be chosen so that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b(Z)\ge\frac{v(Z)}{20}\\
+\text{for every set }Z\\
+\text{with }0&lt;v(Z)\le E .
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+b(Z)\ge\frac{v(Z)}{20}\\
+\text{for every set }Z\\
+\text{with }0&lt;v(Z)\le E .
+\end{gathered}\tag{4.1}
+\]</span></p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(a=d/800\)">\(a=d/800\)</span> and <span class="math" data-tex="\(x_Z=e^{-a|Z|}\)">\(x_Z=e^{-a|Z|}\)</span>. Since <span class="math" data-tex="\(\log Q=O(\ell)\)">\(\log Q=O(\ell)\)</span> and <span class="math" data-tex="\(d=2^{4\ell}\)">\(d=2^{4\ell}\)</span>, for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>
+<span class="math math-display" data-tex="\[
+a\ge2,\qquad\rho:=Q^2e^{-a}\le\tfrac12 .
+\]">\[
+a\ge2,\qquad\rho:=Q^2e^{-a}\le\tfrac12 .
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{Z&#x27;\sim Z}x_{Z&#x27;}&amp;\le|Z|\sum_{m\ge1}Q^{2m}e^{-am}\\
+&amp;=|Z|\frac\rho{1-\rho}\le|Z| ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{Z&#x27;\sim Z}x_{Z&#x27;}&amp;\le|Z|\sum_{m\ge1}Q^{2m}e^{-am}\\
+&amp;=|Z|\frac\rho{1-\rho}\le|Z| ,
+\end{aligned}
+\]</span>
+and since <span class="math" data-tex="\(x_{Z&#x27;}\le e^{-2}&lt;\frac12\)">\(x_{Z&#x27;}\le e^{-2}&lt;\frac12\)</span> and <span class="math" data-tex="\(\log(1-x)\ge-2x\)">\(\log(1-x)\ge-2x\)</span> for <span class="math" data-tex="\(0\le x\le\frac12\)">\(0\le x\le\frac12\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x_Z\prod_{Z&#x27;\sim Z}(1-x_{Z&#x27;})&amp;\ge e^{-a|Z|-2|Z|}\\
+&amp;\ge e^{-2a|Z|}\ge e^{-v(Z)/400}\\
+&amp;\ge\mathbb P(\mathcal E_Z) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+x_Z\prod_{Z&#x27;\sim Z}(1-x_{Z&#x27;})&amp;\ge e^{-a|Z|-2|Z|}\\
+&amp;\ge e^{-2a|Z|}\ge e^{-v(Z)/400}\\
+&amp;\ge\mathbb P(\mathcal E_Z) ,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(v(Z)\ge d|Z|\)">\(v(Z)\ge d|Z|\)</span> (because <span class="math" data-tex="\(D&#x27;\ge D/2\ge d\)">\(D&#x27;\ge D/2\ge d\)</span>) and Lemma 2.1. There are finitely many events, so Lemma 3.1 gives a table that avoids all of them. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-from-cuts-to-the-incidence-norm">5. From cuts to the incidence norm</h2>
+<p><strong>Proposition 5.1</strong> (expansion of the realized incidence; [OpenAI-KK, Proposition 5.4]). For the tables of Lemma 4.1, let <span class="math" data-tex="\(U^0_{ik}\)">\(U^0_{ik}\)</span> be the incidence matrix of the pair, from <span class="math" data-tex="\(\ell^2(B_k)\)">\(\ell^2(B_k)\)</span> to <span class="math" data-tex="\(\ell^2(A_i)\)">\(\ell^2(A_i)\)</span> with counting measures, divided by <span class="math" data-tex="\(\sqrt{dD&#x27;}\)">\(\sqrt{dD&#x27;}\)</span>. Then <span class="math" data-tex="\(U^0_{ik}\)">\(U^0_{ik}\)</span> maps <span class="math" data-tex="\(|B_k|^{-1/2}\mathbf1_{B_k}\)">\(|B_k|^{-1/2}\mathbf1_{B_k}\)</span> to <span class="math" data-tex="\(|A_i|^{-1/2}\mathbf1_{A_i}\)">\(|A_i|^{-1/2}\mathbf1_{A_i}\)</span>, its adjoint maps <span class="math" data-tex="\(|A_i|^{-1/2}\mathbf1_{A_i}\)">\(|A_i|^{-1/2}\mathbf1_{A_i}\)</span> to <span class="math" data-tex="\(|B_k|^{-1/2}\mathbf1_{B_k}\)">\(|B_k|^{-1/2}\mathbf1_{B_k}\)</span>, and its norm from <span class="math" data-tex="\(\mathbf1_{B_k}^\perp\)">\(\mathbf1_{B_k}^\perp\)</span> to <span class="math" data-tex="\(\mathbf1_{A_i}^\perp\)">\(\mathbf1_{A_i}^\perp\)</span> is at most <span class="math" data-tex="\(1-\chi\)">\(1-\chi\)</span>, where
+<span class="math math-display" data-tex="\[
+\chi=\frac1{800} .
+\]">\[
+\chi=\frac1{800} .
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(w\ge0\)">\(w\ge0\)</span> be a function whose support has volume at most <span class="math" data-tex="\(E\)">\(E\)</span>. Every level set <span class="math" data-tex="\(\{w^2&gt;t\}\)">\(\{w^2&gt;t\}\)</span> has volume at most <span class="math" data-tex="\(E\)">\(E\)</span>, and an edge <span class="math" data-tex="\(xy\)">\(xy\)</span> crosses it exactly for <span class="math" data-tex="\(t\)">\(t\)</span> between <span class="math" data-tex="\(w(y)^2\)">\(w(y)^2\)</span> and <span class="math" data-tex="\(w(x)^2\)">\(w(x)^2\)</span>. Integrating (4.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\text{edges }xy}|w(x)^2-w(y)^2|\\
+&amp;\quad=\int_0^\infty b(\{w^2&gt;t\})\,dt\\
+&amp;\quad\ge\frac1{20}\int_0^\infty v(\{w^2&gt;t\})\,dt=\frac1{20}\|w\|_\mu^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\text{edges }xy}|w(x)^2-w(y)^2|\\
+&amp;\quad=\int_0^\infty b(\{w^2&gt;t\})\,dt\\
+&amp;\quad\ge\frac1{20}\int_0^\infty v(\{w^2&gt;t\})\,dt=\frac1{20}\|w\|_\mu^2 .
+\end{aligned}
+\]</span>
+By the Cauchy–Schwarz inequality and <span class="math" data-tex="\((w(x)+w(y))^2\le2w(x)^2+2w(y)^2\)">\((w(x)+w(y))^2\le2w(x)^2+2w(y)^2\)</span>, the square of the left side is at most <span class="math" data-tex="\(\mathcal E(w)\cdot2\|w\|_\mu^2\)">\(\mathcal E(w)\cdot2\|w\|_\mu^2\)</span>, where <span class="math" data-tex="\(\mathcal E(w)\)">\(\mathcal E(w)\)</span> is the right side of (1.1), because every vertex <span class="math" data-tex="\(x\)">\(x\)</span> lies on <span class="math" data-tex="\(\mu(x)\)">\(\mu(x)\)</span> edges. So <span class="math" data-tex="\(\mathcal E(w)\ge\|w\|_\mu^2/800\)">\(\mathcal E(w)\ge\|w\|_\mu^2/800\)</span>.</p>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be real with <span class="math" data-tex="\(\langle f,\mathbf1\rangle_\mu=0\)">\(\langle f,\mathbf1\rangle_\mu=0\)</span>. Order its finitely many values and choose <span class="math" data-tex="\(m\)">\(m\)</span> so that both <span class="math" data-tex="\(\{f&gt;m\}\)">\(\{f&gt;m\}\)</span> and <span class="math" data-tex="\(\{f&lt;m\}\)">\(\{f&lt;m\}\)</span> have volume at most <span class="math" data-tex="\(E\)">\(E\)</span>. Apply the preceding bound to <span class="math" data-tex="\(w_+=(f-m)_+\)">\(w_+=(f-m)_+\)</span> and <span class="math" data-tex="\(w_-=(m-f)_+\)">\(w_-=(m-f)_+\)</span>; on every edge
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(w_+(x)-w_+(y))^2\\
+&amp;\quad+(w_-(x)-w_-(y))^2\\
+&amp;\quad\le(f(x)-f(y))^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(w_+(x)-w_+(y))^2\\
+&amp;\quad+(w_-(x)-w_-(y))^2\\
+&amp;\quad\le(f(x)-f(y))^2 ,
+\end{aligned}
+\]</span>
+with equality when both ends lie on the same side of <span class="math" data-tex="\(m\)">\(m\)</span>, and by <span class="math" data-tex="\(a^2+b^2\le(a+b)^2\)">\(a^2+b^2\le(a+b)^2\)</span> otherwise. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E(f)&amp;\ge\frac{\|f-m\|_\mu^2}{800}=\frac{\|f\|_\mu^2+2Em^2}{800}\\
+&amp;\ge\frac{\|f\|_\mu^2}{800} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal E(f)&amp;\ge\frac{\|f-m\|_\mu^2}{800}=\frac{\|f\|_\mu^2+2Em^2}{800}\\
+&amp;\ge\frac{\|f\|_\mu^2}{800} .
+\end{aligned}
+\]</span>
+Applying this to real and imaginary parts, <span class="math" data-tex="\(R_0\le1-\chi\)">\(R_0\le1-\chi\)</span> on the orthogonal complement of <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span> in <span class="math" data-tex="\(L^2(A\sqcup B,\mu)\)">\(L^2(A\sqcup B,\mu)\)</span>.</p>
+<p>Multiplication by <span class="math" data-tex="\(\sqrt d\)">\(\sqrt d\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\sqrt{D&#x27;}\)">\(\sqrt{D&#x27;}\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span> is a unitary from <span class="math" data-tex="\(L^2(A\sqcup B,\mu)\)">\(L^2(A\sqcup B,\mu)\)</span> to the counting space, and it carries <span class="math" data-tex="\(R_0\)">\(R_0\)</span> to the block operator with off-diagonal blocks <span class="math" data-tex="\(U^0_{ik}\)">\(U^0_{ik}\)</span> and its adjoint. Each vertex of <span class="math" data-tex="\(A\)">\(A\)</span> has <span class="math" data-tex="\(d\)">\(d\)</span> edges and each vertex of <span class="math" data-tex="\(B\)">\(B\)</span> has <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span> edges, which, with <span class="math" data-tex="\(d|A|=D&#x27;|B|\)">\(d|A|=D&#x27;|B|\)</span>, gives the statements about constants. The two spaces of functions orthogonal to the constants on each side are invariant, and on their sum the block operator has norm <span class="math" data-tex="\(\|U^0_{ik}|_{\mathbf1^\perp}\|\)">\(\|U^0_{ik}|_{\mathbf1^\perp}\|\)</span> and a spectrum symmetric about <span class="math" data-tex="\(0\)">\(0\)</span>, because conjugation by <span class="math" data-tex="\(\operatorname{diag}(1,-1)\)">\(\operatorname{diag}(1,-1)\)</span> changes its sign. Its largest spectral value is therefore its norm. These vectors correspond to vectors orthogonal to <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span> in degree measure, where <span class="math" data-tex="\(R_0\le1-\chi\)">\(R_0\le1-\chi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The tables.</strong> There are finitely many families. In each family, the tables are chosen in increasing order of their marked blocks, each by Proposition 5.1, which applies whatever the earlier tables are; a table never changes the edges of an earlier pair, since its marked block is inactive on their padded streams (Lemma 2.1 of the lesson on gated permutations). Choosing at each step the first table in a fixed order of the finitely many candidates, all tables are defined, and every pair of <span class="math" data-tex="\(Y^0\)">\(Y^0\)</span> satisfies Proposition 5.1.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). Check (1.1) for the graph with one edge between <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, <span class="math" data-tex="\(d=D&#x27;=1\)">\(d=D&#x27;=1\)</span>.</p>
+<p><strong>6.2</strong> (medium). Show that the number of connected sets of <span class="math" data-tex="\(m\)">\(m\)</span> vertices containing a given vertex of the infinite <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>-regular tree is at most <span class="math" data-tex="\(\Delta^{2(m-1)}\)">\(\Delta^{2(m-1)}\)</span>, and compute it exactly for <span class="math" data-tex="\(m=2,3\)">\(m=2,3\)</span>.</p>
+<p><strong>6.3</strong> (medium). In Lemma 3.1 with all <span class="math" data-tex="\(x_z=x\)">\(x_z=x\)</span> and every event having at most <span class="math" data-tex="\(k\)">\(k\)</span> neighbours, show that <span class="math" data-tex="\(\mathbb P(\mathcal E_z)\le\frac1{e(k+1)}\)">\(\mathbb P(\mathcal E_z)\le\frac1{e(k+1)}\)</span> suffices, by choosing <span class="math" data-tex="\(x=\frac1{k+1}\)">\(x=\frac1{k+1}\)</span>.</p>
+<p><strong>6.4</strong> (medium). For the cycle of length <span class="math" data-tex="\(2n\)">\(2n\)</span> with alternate vertices in <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(d=D&#x27;=2\)">\(d=D&#x27;=2\)</span>, compute the smallest ratio <span class="math" data-tex="\(b(Z)/v(Z)\)">\(b(Z)/v(Z)\)</span> over sets with <span class="math" data-tex="\(v(Z)\le E\)">\(v(Z)\le E\)</span>, and show that it tends to <span class="math" data-tex="\(0\)">\(0\)</span> with <span class="math" data-tex="\(n\)">\(n\)</span>. Which step of this lesson fails for such graphs?</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(\mu(a)=\mu(b)=1\)">\(\mu(a)=\mu(b)=1\)</span>, <span class="math" data-tex="\((R_0F)(a)=F(b)\)">\((R_0F)(a)=F(b)\)</span>, <span class="math" data-tex="\((R_0F)(b)=F(a)\)">\((R_0F)(b)=F(a)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle(1-R_0)F,F\rangle&amp;=|F(a)|^2+|F(b)|^2\\
+&amp;\quad-2\operatorname{Re}F(a)\overline{F(b)}\\
+&amp;=|F(a)-F(b)|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle(1-R_0)F,F\rangle&amp;=|F(a)|^2+|F(b)|^2\\
+&amp;\quad-2\operatorname{Re}F(a)\overline{F(b)}\\
+&amp;=|F(a)-F(b)|^2 .
+\end{aligned}
+\]</span></p>
+<p><strong>6.2.</strong> Each connected set containing the root is the vertex set of a subtree, traversed by a closed walk of length <span class="math" data-tex="\(2(m-1)\)">\(2(m-1)\)</span> from the root with at most <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> choices per step. For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>: <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> sets. For <span class="math" data-tex="\(m=3\)">\(m=3\)</span>: either a path of two edges from the root, <span class="math" data-tex="\(\Delta(\Delta-1)\)">\(\Delta(\Delta-1)\)</span> sets, or two neighbours of the root, <span class="math" data-tex="\(\binom\Delta2\)">\(\binom\Delta2\)</span> sets; together <span class="math" data-tex="\(\frac{3\Delta(\Delta-1)}2\le\Delta^4\)">\(\frac{3\Delta(\Delta-1)}2\le\Delta^4\)</span>.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(x(1-x)^k=\frac1{k+1}\bigl(1-\frac1{k+1}\bigr)^k\ge\frac1{e(k+1)}\)">\(x(1-x)^k=\frac1{k+1}\bigl(1-\frac1{k+1}\bigr)^k\ge\frac1{e(k+1)}\)</span>, since <span class="math" data-tex="\((1-\frac1{k+1})^k\ge e^{-1}\)">\((1-\frac1{k+1})^k\ge e^{-1}\)</span>.</p>
+<p><strong>6.4.</strong> A path of <span class="math" data-tex="\(n\)">\(n\)</span> consecutive vertices has <span class="math" data-tex="\(v(Z)=2n=E\)">\(v(Z)=2n=E\)</span> and <span class="math" data-tex="\(b(Z)=2\)">\(b(Z)=2\)</span>, so the ratio is <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. The mean bound of Lemma 1.1 fails: the incidence of a cycle has no uniform gap, since its second singular value tends to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-KK] OpenAI, <em>A torsion-free counterexample to the Kadison–Kaplansky projection conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Section 5, Lemma 5.3 and Proposition 5.4. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-the-Kadison-Kaplansky-Projection-Conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

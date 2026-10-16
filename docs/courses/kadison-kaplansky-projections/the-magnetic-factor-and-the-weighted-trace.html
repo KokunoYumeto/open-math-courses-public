@@ -1,0 +1,243 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The magnetic factor and the weighted trace</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to the Kadison–Kaplansky conjecture)</a><a href="schwartz-idempotents-and-lattice-projections.html">Previous lesson</a><a href="the-model-operator-and-finite-tests.html">Next lesson</a><a href="src/the-magnetic-factor-and-the-weighted-trace.md">Editable source</a></nav><main><article><h1 id="the-magnetic-factor-and-the-weighted-trace">The magnetic factor and the weighted trace</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A projection <span class="math" data-tex="\(p_t\)">\(p_t\)</span> of the previous lesson has trace about <span class="math" data-tex="\(t^{n_{\mathrm f}}\)">\(t^{n_{\mathrm f}}\)</span>, small near the end <span class="math" data-tex="\(t=0\)">\(t=0\)</span> of the interval <span class="math" data-tex="\((0,\delta)\)">\((0,\delta)\)</span> of central characters but not near <span class="math" data-tex="\(t=\delta\)">\(t=\delta\)</span>. In the model operator the supporting layers move to one end of the tower as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span> and to the other as <span class="math" data-tex="\(t\to\delta\)">\(t\to\delta\)</span>, and the trace must be small at both ends, even after multiplication by the large geometric weights <span class="math" data-tex="\(\mathfrak w_i=2^{C_\bullet H_i}\)">\(\mathfrak w_i=2^{C_\bullet H_i}\)</span> that pay for overlaps of copies. A finite <em>magnetic</em> representation of the second factor shifts its effective parameter from <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(t-\delta\)">\(t-\delta\)</span>, at the price of a matrix multiplicity <span class="math" data-tex="\(N\)">\(N\)</span>; the product projection then has trace of order <span class="math" data-tex="\(Nt^{n_{\mathrm f}}(\delta-t)^{n_{\mathrm f}}\)">\(Nt^{n_{\mathrm f}}(\delta-t)^{n_{\mathrm f}}\)</span>, and suitable choices of the scales make it small at both ends, uniformly in the layers [OpenAI-KK, Sections 8.5 and 8.6].</p>
+<ul>
+<li>Parameters (Section 1).</li>
+<li>A finite magnetic representation (Section 2).</li>
+<li>Absorption (Section 3).</li>
+<li>The projection field (Section 4).</li>
+<li>Smooth layer windows (Section 5).</li>
+<li>The weighted trace (Section 6).</li>
+</ul>
+<p>The notation of <a href="an-affine-nilpotent-group.html">An affine nilpotent group</a> and <a href="schwartz-idempotents-and-lattice-projections.html">Schwartz idempotents and lattice projections</a> is in force, with <span class="math" data-tex="\(L=\bar E_{\mathbb Z}\)">\(L=\bar E_{\mathbb Z}\)</span>, the twisted representations <span class="math" data-tex="\(u_t\)">\(u_t\)</span>, the projections <span class="math" data-tex="\(p_\theta\)">\(p_\theta\)</span> and the constant <span class="math" data-tex="\(\theta_0\)">\(\theta_0\)</span>.</p>
+<h2 id="1-parameters">1. Parameters</h2>
+<p>The constants <span class="math" data-tex="\(m\)">\(m\)</span>, <span class="math" data-tex="\(C_*\)">\(C_*\)</span>, <span class="math" data-tex="\(C_\bullet\)">\(C_\bullet\)</span> are fixed, and <span class="math" data-tex="\(h_*=5003\)">\(h_*=5003\)</span> bounds <span class="math" data-tex="\(H_0\le h_*\log_2d\)">\(H_0\le h_*\log_2d\)</span>. Choose fixed constants
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_0&gt;10(C_*+C_\bullet+1),\\
+A_*\in\mathbb N,\ \frac{A_*}m&gt;10E_0h_*,\\
+\kappa&gt;0,\ \frac\kappa m&gt;10(E_0+A_*+C_\bullet+1),
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_0&gt;10(C_*+C_\bullet+1),\\
+A_*\in\mathbb N,\ \frac{A_*}m&gt;10E_0h_*,\\
+\kappa&gt;0,\ \frac\kappa m&gt;10(E_0+A_*+C_\bullet+1),
+\end{gathered}
+\]</span>
+and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q=d^{A_*},\qquad\delta=q^{-1},\\
+N=q^{n_{\mathrm f}},\qquad I=H_0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+q=d^{A_*},\qquad\delta=q^{-1},\\
+N=q^{n_{\mathrm f}},\qquad I=H_0 .
+\end{gathered}
+\]</span>
+These are integers except <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is taken so large that <span class="math" data-tex="\(\delta&lt;\theta_0\)">\(\delta&lt;\theta_0\)</span>.</p>
+<h2 id="2-a-finite-magnetic-representation">2. A finite magnetic representation</h2>
+<p>Let <span class="math" data-tex="\(\mathfrak n_q\)">\(\mathfrak n_q\)</span> be the strictly upper triangular matrices over <span class="math" data-tex="\(\mathbb Z/q\mathbb Z\)">\(\mathbb Z/q\mathbb Z\)</span>, a set of <span class="math" data-tex="\(q^{n_{\mathrm f}}=N\)">\(q^{n_{\mathrm f}}=N\)</span> elements. On <span class="math" data-tex="\(\mathbb C^N=\ell^2(\mathfrak n_q)\)">\(\mathbb C^N=\ell^2(\mathfrak n_q)\)</span> define, for <span class="math" data-tex="\((\lambda,b,z)\in E_{\mathbb Z}\)">\((\lambda,b,z)\in E_{\mathbb Z}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(R(\lambda,b,z)\psi)(x)\\
+&amp;\quad=\mathbf e\Bigl(-\frac{z+\lambda(x)}q\Bigr)\,\psi\bigl(b^{-1}(1+x)-1\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(R(\lambda,b,z)\psi)(x)\\
+&amp;\quad=\mathbf e\Bigl(-\frac{z+\lambda(x)}q\Bigr)\,\psi\bigl(b^{-1}(1+x)-1\bigr),
+\end{aligned}
+\]</span>
+with all arguments reduced modulo <span class="math" data-tex="\(q\)">\(q\)</span>; the phase depends only on the residue of the integer <span class="math" data-tex="\(z+\lambda(x)\)">\(z+\lambda(x)\)</span>. The affine map is a permutation of <span class="math" data-tex="\(\mathfrak n_q\)">\(\mathfrak n_q\)</span> and the phase has modulus one, so <span class="math" data-tex="\(R(\lambda,b,z)\)">\(R(\lambda,b,z)\)</span> is unitary. The identity <span class="math" data-tex="\(\mu(A_{b^{-1}}x)=c(\gamma,\eta)+(\mu\circ L_{b^{-1}})(x)\)">\(\mu(A_{b^{-1}}x)=c(\gamma,\eta)+(\mu\circ L_{b^{-1}})(x)\)</span> used in the proof of Lemma 1.1 of the previous lesson is an identity of integer polynomials, so it holds modulo <span class="math" data-tex="\(q\)">\(q\)</span>, and the computation given there, with the phase <span class="math" data-tex="\(-1/q\)">\(-1/q\)</span> in place of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, gives that <span class="math" data-tex="\(R(\lambda,b,0)R(\mu,b&#x27;,0)\)">\(R(\lambda,b,0)R(\mu,b&#x27;,0)\)</span> equals <span class="math" data-tex="\(\mathbf e(-c(\gamma,\eta)/q)R(\gamma\eta,0)\)">\(\mathbf e(-c(\gamma,\eta)/q)R(\gamma\eta,0)\)</span> for <span class="math" data-tex="\(\gamma=(\lambda,b)\)">\(\gamma=(\lambda,b)\)</span>, <span class="math" data-tex="\(\eta=(\mu,b&#x27;)\)">\(\eta=(\mu,b&#x27;)\)</span>. Since <span class="math" data-tex="\(R(\lambda,b,z)=\mathbf e(-z/q)R(\lambda,b,0)\)">\(R(\lambda,b,z)=\mathbf e(-z/q)R(\lambda,b,0)\)</span> and the law (1.1) of <a href="an-affine-nilpotent-group.html">An affine nilpotent group</a> adds <span class="math" data-tex="\(c(\gamma,\eta)\)">\(c(\gamma,\eta)\)</span> to the central coordinates, <span class="math" data-tex="\(R\)">\(R\)</span> is a representation of <span class="math" data-tex="\(E_{\mathbb Z}\)">\(E_{\mathbb Z}\)</span>. Its central character is <span class="math" data-tex="\(R(0,1,z)=\mathbf e(-\delta z)\)">\(R(0,1,z)=\mathbf e(-\delta z)\)</span>. Write <span class="math" data-tex="\(R_\gamma=R(\sigma(\gamma))\)">\(R_\gamma=R(\sigma(\gamma))\)</span> for <span class="math" data-tex="\(\gamma\in L\)">\(\gamma\in L\)</span>.</p>
+<p>Reduction modulo <span class="math" data-tex="\(q\)">\(q\)</span> is a surjective homomorphism <span class="math" data-tex="\(L\to\bar E_{\mathbb Z/q\mathbb Z}\)">\(L\to\bar E_{\mathbb Z/q\mathbb Z}\)</span>, because the group law has integer coefficients. Its kernel is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Lambda_q=\bigl\{(\lambda,b)\in L:\\
+\lambda_{ij}\equiv(b-1)_{ij}\equiv0\pmod q\bigr\},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Lambda_q=\bigl\{(\lambda,b)\in L:\\
+\lambda_{ij}\equiv(b-1)_{ij}\equiv0\pmod q\bigr\},
+\end{gathered}
+\]</span>
+of index <span class="math" data-tex="\(q^{2n_{\mathrm f}}\)">\(q^{2n_{\mathrm f}}\)</span>, and
+<span class="math math-display" data-tex="\[
+R_y=1_N\qquad(y\in\Lambda_q),\tag{2.1}
+\]">\[
+R_y=1_N\qquad(y\in\Lambda_q),\tag{2.1}
+\]</span>
+because then <span class="math" data-tex="\(\lambda(x)\in q\mathbb Z\)">\(\lambda(x)\in q\mathbb Z\)</span> and <span class="math" data-tex="\(b\equiv1\)">\(b\equiv1\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<h2 id="3-absorption">3. Absorption</h2>
+<p><strong>Lemma 3.1</strong> (absorption of the finite factor; [OpenAI-KK, Lemma 8.9]). On <span class="math" data-tex="\(\ell^2(L)\otimes\mathbb C^N\)">\(\ell^2(L)\otimes\mathbb C^N\)</span> put <span class="math" data-tex="\(V_t(\gamma)=u_t(\gamma)\otimes R_\gamma\)">\(V_t(\gamma)=u_t(\gamma)\otimes R_\gamma\)</span>. Then <span class="math" data-tex="\(V_t(\gamma)V_t(\eta)=\mathbf e((t-\delta)c(\gamma,\eta))V_t(\gamma\eta)\)">\(V_t(\gamma)V_t(\eta)=\mathbf e((t-\delta)c(\gamma,\eta))V_t(\gamma\eta)\)</span>, and the unitary <span class="math" data-tex="\(W(\delta_\eta\otimes v)=\delta_\eta\otimes R_\eta v\)">\(W(\delta_\eta\otimes v)=\delta_\eta\otimes R_\eta v\)</span> satisfies
+<span class="math math-display" data-tex="\[
+W^*V_t(\gamma)W=u_{t-\delta}(\gamma)\otimes1_N .
+\]">\[
+W^*V_t(\gamma)W=u_{t-\delta}(\gamma)\otimes1_N .
+\]</span>
+It fixes <span class="math" data-tex="\(\delta_1\otimes\mathbb C^N\)">\(\delta_1\otimes\mathbb C^N\)</span> pointwise. Consequently every coefficient sum in the <span class="math" data-tex="\(V_t(\gamma)\)">\(V_t(\gamma)\)</span>, and every continuous function of a self-adjoint one, has the same norm as the corresponding element for <span class="math" data-tex="\(u_{t-\delta}\)">\(u_{t-\delta}\)</span>, and its identity trace, summed over the <span class="math" data-tex="\(N\)">\(N\)</span> matrix indices, is <span class="math" data-tex="\(N\)">\(N\)</span> times the identity trace of that element.</p>
+<p><em>Proof.</em> The section law and the central character give <span class="math" data-tex="\(R_\gamma R_\eta=R((0,1,c(\gamma,\eta))\sigma(\gamma\eta))\)">\(R_\gamma R_\eta=R((0,1,c(\gamma,\eta))\sigma(\gamma\eta))\)</span>, which is <span class="math" data-tex="\(\mathbf e(-\delta c(\gamma,\eta))R_{\gamma\eta}\)">\(\mathbf e(-\delta c(\gamma,\eta))R_{\gamma\eta}\)</span>; with the multiplier of <span class="math" data-tex="\(u_t\)">\(u_t\)</span> this gives the multiplier of <span class="math" data-tex="\(V_t\)">\(V_t\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;V_t(\gamma)W(\delta_\eta\otimes v)\\
+&amp;\quad=\mathbf e(tc(\gamma,\eta))\delta_{\gamma\eta}\otimes R_\gamma R_\eta v\\
+&amp;\quad=\mathbf e((t-\delta)c(\gamma,\eta))\delta_{\gamma\eta}\otimes R_{\gamma\eta}v ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;V_t(\gamma)W(\delta_\eta\otimes v)\\
+&amp;\quad=\mathbf e(tc(\gamma,\eta))\delta_{\gamma\eta}\otimes R_\gamma R_\eta v\\
+&amp;\quad=\mathbf e((t-\delta)c(\gamma,\eta))\delta_{\gamma\eta}\otimes R_{\gamma\eta}v ,
+\end{aligned}
+\]</span>
+which is <span class="math" data-tex="\(W(u_{t-\delta}(\gamma)\otimes1)(\delta_\eta\otimes v)\)">\(W(u_{t-\delta}(\gamma)\otimes1)(\delta_\eta\otimes v)\)</span>. Since <span class="math" data-tex="\(R_1=1\)">\(R_1=1\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span> fixes <span class="math" data-tex="\(\delta_1\otimes v\)">\(\delta_1\otimes v\)</span>. Conjugation by <span class="math" data-tex="\(W\)">\(W\)</span> carries a coefficient sum <span class="math" data-tex="\(x\)">\(x\)</span> in the <span class="math" data-tex="\(V_t(\gamma)\)">\(V_t(\gamma)\)</span> to <span class="math" data-tex="\(y\otimes1_N\)">\(y\otimes1_N\)</span>, with <span class="math" data-tex="\(y\)">\(y\)</span> the same sum in the <span class="math" data-tex="\(u_{t-\delta}(\gamma)\)">\(u_{t-\delta}(\gamma)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_j\langle x(\delta_1\otimes e_j),\delta_1\otimes e_j\rangle\\
+&amp;\quad=\sum_j\langle(y\otimes1)(\delta_1\otimes e_j),\delta_1\otimes e_j\rangle\\
+&amp;\quad=N\langle y\delta_1,\delta_1\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_j\langle x(\delta_1\otimes e_j),\delta_1\otimes e_j\rangle\\
+&amp;\quad=\sum_j\langle(y\otimes1)(\delta_1\otimes e_j),\delta_1\otimes e_j\rangle\\
+&amp;\quad=N\langle y\delta_1,\delta_1\rangle .
+\end{aligned}
+\]</span>
+Both statements pass to norm limits and to continuous functions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The operators <span class="math" data-tex="\(V_t(\gamma)\)">\(V_t(\gamma)\)</span> commute with the right operators <span class="math" data-tex="\(v_t(k)\otimes1_N\)">\(v_t(k)\otimes1_N\)</span>, so the identity trace above is the one of <a href="separated-bands-and-equivariant-traces.html">Separated bands and equivariant traces</a>, Section 2.</p>
+<h2 id="4-the-projection-field">4. The projection field</h2>
+<p>Every element of <span class="math" data-tex="\(F\)">\(F\)</span> is uniquely <span class="math" data-tex="\(\sigma_X(\gamma)\sigma_Y(\gamma&#x27;)z_0^n\)">\(\sigma_X(\gamma)\sigma_Y(\gamma&#x27;)z_0^n\)</span>, and by Lemma 5.1 of <a href="an-affine-nilpotent-group.html">An affine nilpotent group</a>, <span class="math" data-tex="\(\lambda(\sigma_X(\gamma)\sigma_Y(\gamma&#x27;)z_0^n)\otimes W\)">\(\lambda(\sigma_X(\gamma)\sigma_Y(\gamma&#x27;)z_0^n)\otimes W\)</span>, with <span class="math" data-tex="\(W\in M_N(\mathbb C)\)">\(W\in M_N(\mathbb C)\)</span>, acts in the fiber at <span class="math" data-tex="\(t\)">\(t\)</span> of (5.1) there, amplified by <span class="math" data-tex="\(\mathbb C^N\)">\(\mathbb C^N\)</span>, by
+<span class="math math-display" data-tex="\[
+\mathbf e(nt)\,u_t(\gamma)\otimes u_t(\gamma&#x27;)\otimes W .
+\]">\[
+\mathbf e(nt)\,u_t(\gamma)\otimes u_t(\gamma&#x27;)\otimes W .
+\]</span>
+For <span class="math" data-tex="\(W=R_{\gamma&#x27;}\)">\(W=R_{\gamma&#x27;}\)</span> the second factor acts by <span class="math" data-tex="\(V_t(\gamma&#x27;)\)">\(V_t(\gamma&#x27;)\)</span>. So in the fibers of sums of the elements <span class="math" data-tex="\(\lambda(\sigma_X(\gamma)\sigma_Y(\gamma&#x27;)z_0^n)\otimes R_{\gamma&#x27;}\)">\(\lambda(\sigma_X(\gamma)\sigma_Y(\gamma&#x27;)z_0^n)\otimes R_{\gamma&#x27;}\)</span>, the first factor acts through <span class="math" data-tex="\(u_t\)">\(u_t\)</span> and the second through <span class="math" data-tex="\(V_t\)">\(V_t\)</span>; the two commute, and both commute with the right operators <span class="math" data-tex="\(v_t(k)\otimes v_t(k&#x27;)\otimes1_N\)">\(v_t(k)\otimes v_t(k&#x27;)\otimes1_N\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;t&lt;\delta\)">\(0&lt;t&lt;\delta\)</span>, both <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(t-\delta\)">\(t-\delta\)</span> lie in <span class="math" data-tex="\((-\theta_0,\theta_0)\setminus\{0\}\)">\((-\theta_0,\theta_0)\setminus\{0\}\)</span>. Put
+<span class="math math-display" data-tex="\[
+p(t)=p_t\otimes p_{t-\delta}[V_t] ,
+\]">\[
+p(t)=p_t\otimes p_{t-\delta}[V_t] ,
+\]</span>
+where <span class="math" data-tex="\(p_{t-\delta}[V_t]\)">\(p_{t-\delta}[V_t]\)</span> is obtained by evaluating the coefficients of <span class="math" data-tex="\(K_{t-\delta}\)">\(K_{t-\delta}\)</span> on the <span class="math" data-tex="\(V_t(\gamma)\)">\(V_t(\gamma)\)</span> and applying the same continuous function; by Lemma 3.1 it is conjugate by <span class="math" data-tex="\(W\)">\(W\)</span> to <span class="math" data-tex="\(p_{t-\delta}\otimes1_N\)">\(p_{t-\delta}\otimes1_N\)</span>. Put <span class="math" data-tex="\(p(t)=0\)">\(p(t)=0\)</span> for <span class="math" data-tex="\(t\notin(0,\delta)\)">\(t\notin(0,\delta)\)</span>. This is a measurable field of equivariant projections, and its identity trace <span class="math" data-tex="\(s_p(t)\)">\(s_p(t)\)</span>, summed over the matrix indices, satisfies, for <span class="math" data-tex="\(0&lt;t&lt;\delta\)">\(0&lt;t&lt;\delta\)</span>, by Proposition 3.1 of the previous lesson and Lemma 3.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;0&lt;s_p(t)\\
+&amp;\quad=N\operatorname{tr}_t(p_t)\operatorname{tr}_{t-\delta}(p_{t-\delta})\\
+&amp;\quad\le C\,N\,t^{n_{\mathrm f}}(\delta-t)^{n_{\mathrm f}} .
+\end{aligned}\tag{4.1}
+\]">\[
+\begin{aligned}
+&amp;0&lt;s_p(t)\\
+&amp;\quad=N\operatorname{tr}_t(p_t)\operatorname{tr}_{t-\delta}(p_{t-\delta})\\
+&amp;\quad\le C\,N\,t^{n_{\mathrm f}}(\delta-t)^{n_{\mathrm f}} .
+\end{aligned}\tag{4.1}
+\]</span></p>
+<h2 id="5-smooth-layer-windows">5. Smooth layer windows</h2>
+<p><strong>Lemma 5.1</strong> (smooth layer windows; [OpenAI-KK, Lemma 8.10]). There is a smooth function <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span>, supported in <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> and positive on <span class="math" data-tex="\([-0.7,0.7]\)">\([-0.7,0.7]\)</span>, with <span class="math" data-tex="\(\sum_{i\in\mathbb Z}h(v-i)^2=1\)">\(\sum_{i\in\mathbb Z}h(v-i)^2=1\)</span> for all <span class="math" data-tex="\(v\in\mathbb R\)">\(v\in\mathbb R\)</span>. For <span class="math" data-tex="\(0&lt;t&lt;\delta\)">\(0&lt;t&lt;\delta\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b(t)=\kappa^{-1}\log_2\frac t{\delta-t},\\
+h_i(t)=h(b(t)-i),
+\end{gathered}
+\]">\[
+\begin{gathered}
+b(t)=\kappa^{-1}\log_2\frac t{\delta-t},\\
+h_i(t)=h(b(t)-i),
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(h_i=0\)">\(h_i=0\)</span> outside <span class="math" data-tex="\((0,\delta)\)">\((0,\delta)\)</span>. Each <span class="math" data-tex="\(h_i\)">\(h_i\)</span> is smooth on the circle; the set <span class="math" data-tex="\(J(t)=\{i:h_i(t)\ne0\}\)">\(J(t)=\{i:h_i(t)\ne0\}\)</span> has one element or two adjacent elements, and <span class="math" data-tex="\(\sum_ih_i(t)^2=1\)">\(\sum_ih_i(t)^2=1\)</span> on <span class="math" data-tex="\((0,\delta)\)">\((0,\delta)\)</span>. With <span class="math" data-tex="\(w_i=q^{-1}2^{-\kappa|i|}\)">\(w_i=q^{-1}2^{-\kappa|i|}\)</span>, the support of <span class="math" data-tex="\(h_i\)">\(h_i\)</span> has length at most <span class="math" data-tex="\(C_\kappa w_i\)">\(C_\kappa w_i\)</span>, and <span class="math" data-tex="\(\|\partial_t^jh_i\|_\infty\le C_{\kappa,j}w_i^{-j}\)">\(\|\partial_t^jh_i\|_\infty\le C_{\kappa,j}w_i^{-j}\)</span>. For <span class="math" data-tex="\(i\in J(t)\)">\(i\in J(t)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log_2t^{-1}&amp;=\log_2q+\kappa\max(-i,0)\\
+&amp;\quad+O_\kappa(1),\\
+\log_2(\delta-t)^{-1}&amp;=\log_2q+\kappa\max(i,0)\\
+&amp;\quad+O_\kappa(1),\\
+t(\delta-t)&amp;\le2^\kappa q^{-2}2^{-\kappa|i|} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\log_2t^{-1}&amp;=\log_2q+\kappa\max(-i,0)\\
+&amp;\quad+O_\kappa(1),\\
+\log_2(\delta-t)^{-1}&amp;=\log_2q+\kappa\max(i,0)\\
+&amp;\quad+O_\kappa(1),\\
+t(\delta-t)&amp;\le2^\kappa q^{-2}2^{-\kappa|i|} .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Take a smooth <span class="math" data-tex="\(\beta\ge0\)">\(\beta\ge0\)</span> supported in <span class="math" data-tex="\((-0.9,0.9)\)">\((-0.9,0.9)\)</span> and positive on <span class="math" data-tex="\([-0.7,0.7]\)">\([-0.7,0.7]\)</span>, and <span class="math" data-tex="\(h=\beta\bigl(\sum_j\beta(\cdot-j)^2\bigr)^{-1/2}\)">\(h=\beta\bigl(\sum_j\beta(\cdot-j)^2\bigr)^{-1/2}\)</span>; the sum is smooth, periodic and positive, because some translate of every <span class="math" data-tex="\(v\)">\(v\)</span> lies in <span class="math" data-tex="\([-\frac12,\frac12]\)">\([-\frac12,\frac12]\)</span>. An interval of length <span class="math" data-tex="\(1.8\)">\(1.8\)</span> contains at most two integers, adjacent. The support of <span class="math" data-tex="\(h_i\)">\(h_i\)</span> corresponds to <span class="math" data-tex="\(|b-i|&lt;0.9\)">\(|b-i|&lt;0.9\)</span>, a compact subset of <span class="math" data-tex="\((0,\delta)\)">\((0,\delta)\)</span>, so <span class="math" data-tex="\(h_i\)">\(h_i\)</span> extends smoothly by zero.</p>
+<p>The inverse of <span class="math" data-tex="\(b\)">\(b\)</span> is <span class="math" data-tex="\(t(b)=\delta\frac{2^{\kappa b}}{1+2^{\kappa b}}\)">\(t(b)=\delta\frac{2^{\kappa b}}{1+2^{\kappa b}}\)</span>, with <span class="math" data-tex="\(\delta-t(b)=\frac\delta{1+2^{\kappa b}}\)">\(\delta-t(b)=\frac\delta{1+2^{\kappa b}}\)</span> and <span class="math" data-tex="\(t&#x27;(b)=\kappa\ln2\,\frac{t(\delta-t)}\delta\)">\(t&#x27;(b)=\kappa\ln2\,\frac{t(\delta-t)}\delta\)</span>. For <span class="math" data-tex="\(|b-i|\le0.9\)">\(|b-i|\le0.9\)</span>, <span class="math" data-tex="\(t&#x27;(b)\)">\(t&#x27;(b)\)</span> lies between two positive multiples of <span class="math" data-tex="\(w_i\)">\(w_i\)</span>, depending on <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, and all higher derivatives in <span class="math" data-tex="\(b\)">\(b\)</span> are at most a multiple of <span class="math" data-tex="\(w_i\)">\(w_i\)</span>. The chain rule for the inverse function gives the derivative bounds, and integrating <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span> the support bound. Finally <span class="math" data-tex="\(\log_2t(b)^{-1}=\log_2q+\log_2(1+2^{-\kappa b})\)">\(\log_2t(b)^{-1}=\log_2q+\log_2(1+2^{-\kappa b})\)</span> and <span class="math" data-tex="\(\log_2(\delta-t(b))^{-1}\)">\(\log_2(\delta-t(b))^{-1}\)</span> equals <span class="math" data-tex="\(\log_2q+\log_2(1+2^{\kappa b})\)">\(\log_2q+\log_2(1+2^{\kappa b})\)</span>, where <span class="math" data-tex="\(\log_2(1+2^x)-\max(x,0)\in[0,1]\)">\(\log_2(1+2^x)-\max(x,0)\in[0,1]\)</span>, and <span class="math" data-tex="\(|b-i|&lt;1\)">\(|b-i|&lt;1\)</span>; and <span class="math" data-tex="\(\frac{2^{\kappa b}}{(1+2^{\kappa b})^2}\le2^{-\kappa|b|}\le2^\kappa2^{-\kappa|i|}\)">\(\frac{2^{\kappa b}}{(1+2^{\kappa b})^2}\le2^{-\kappa|b|}\le2^\kappa2^{-\kappa|i|}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-weighted-trace">6. The weighted trace</h2>
+<p><strong>Proposition 6.1</strong> (uniform weighted trace bound; [OpenAI-KK, Proposition 8.11]). Let <span class="math" data-tex="\(\mathfrak w_i=2^{C_\bullet H_i}\)">\(\mathfrak w_i=2^{C_\bullet H_i}\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mu_\ell=\sup\bigl\{&amp;\mathfrak w_i\,s_p(t):\\
+&amp;0&lt;t&lt;\delta,\ i\in J(t)\bigr\} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mu_\ell=\sup\bigl\{&amp;\mathfrak w_i\,s_p(t):\\
+&amp;0&lt;t&lt;\delta,\ i\in J(t)\bigr\} .
+\end{aligned}
+\]</span>
+Then <span class="math" data-tex="\(\mu_\ell\to0\)">\(\mu_\ell\to0\)</span> as <span class="math" data-tex="\(\ell\to\infty\)">\(\ell\to\infty\)</span>. More precisely, for <span class="math" data-tex="\(i\in J(t)\)">\(i\in J(t)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathfrak w_iNt^{n_{\mathrm f}}(\delta-t)^{n_{\mathrm f}}\\
+&amp;\quad\le2^{\kappa n_{\mathrm f}}d^{-(A_*n_{\mathrm f}-C_\bullet h_*)}2^{-(\kappa n_{\mathrm f}-C_\bullet)|i|},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathfrak w_iNt^{n_{\mathrm f}}(\delta-t)^{n_{\mathrm f}}\\
+&amp;\quad\le2^{\kappa n_{\mathrm f}}d^{-(A_*n_{\mathrm f}-C_\bullet h_*)}2^{-(\kappa n_{\mathrm f}-C_\bullet)|i|},
+\end{aligned}
+\]</span>
+and both exponents subtracted on the right are positive.</p>
+<p><em>Proof.</em> With <span class="math" data-tex="\(H_i=H_0+|i|\)">\(H_i=H_0+|i|\)</span>, <span class="math" data-tex="\(H_0\le h_*\log_2d\)">\(H_0\le h_*\log_2d\)</span>, <span class="math" data-tex="\(N=q^{n_{\mathrm f}}\)">\(N=q^{n_{\mathrm f}}\)</span> and Lemma 5.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathfrak w_iN\bigl(t(\delta-t)\bigr)^{n_{\mathrm f}}\\
+&amp;\quad\le2^{C_\bullet H_0}2^{C_\bullet|i|}q^{n_{\mathrm f}}\bigl(2^\kappa q^{-2}2^{-\kappa|i|}\bigr)^{n_{\mathrm f}}\\
+&amp;\quad\le2^{\kappa n_{\mathrm f}}d^{C_\bullet h_*}d^{-A_*n_{\mathrm f}}2^{-(\kappa n_{\mathrm f}-C_\bullet)|i|} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathfrak w_iN\bigl(t(\delta-t)\bigr)^{n_{\mathrm f}}\\
+&amp;\quad\le2^{C_\bullet H_0}2^{C_\bullet|i|}q^{n_{\mathrm f}}\bigl(2^\kappa q^{-2}2^{-\kappa|i|}\bigr)^{n_{\mathrm f}}\\
+&amp;\quad\le2^{\kappa n_{\mathrm f}}d^{C_\bullet h_*}d^{-A_*n_{\mathrm f}}2^{-(\kappa n_{\mathrm f}-C_\bullet)|i|} .
+\end{aligned}
+\]</span>
+The choices of Section 1 give <span class="math" data-tex="\(A_*n_{\mathrm f}\ge A_*&gt;10mE_0h_*&gt;C_\bullet h_*\)">\(A_*n_{\mathrm f}\ge A_*&gt;10mE_0h_*&gt;C_\bullet h_*\)</span> and <span class="math" data-tex="\(\kappa n_{\mathrm f}\ge\kappa&gt;C_\bullet\)">\(\kappa n_{\mathrm f}\ge\kappa&gt;C_\bullet\)</span>. By (4.1), <span class="math" data-tex="\(\mu_\ell\le C2^{\kappa n_{\mathrm f}}d^{-(A_*n_{\mathrm f}-C_\bullet h_*)}\)">\(\mu_\ell\le C2^{\kappa n_{\mathrm f}}d^{-(A_*n_{\mathrm f}-C_\bullet h_*)}\)</span>, which tends to zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constants are fixed in this order: the geometry fixes <span class="math" data-tex="\(C_*\)">\(C_*\)</span> and <span class="math" data-tex="\(C_\bullet\)">\(C_\bullet\)</span>; then <span class="math" data-tex="\(m\)">\(m\)</span>, and the functions <span class="math" data-tex="\(J_\pm\)">\(J_\pm\)</span>; then <span class="math" data-tex="\(E_0\)">\(E_0\)</span>, <span class="math" data-tex="\(A_*\)">\(A_*\)</span>, <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>; later, all accuracies of the approximation in the next lessons; only then is <span class="math" data-tex="\(\ell\)">\(\ell\)</span> increased.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1</strong> (easy). For <span class="math" data-tex="\(q=2\)">\(q=2\)</span> and <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, write elements of <span class="math" data-tex="\(L\)">\(L\)</span> as <span class="math" data-tex="\((\lambda,\beta)\)">\((\lambda,\beta)\)</span> with <span class="math" data-tex="\(b=1+\beta\)">\(b=1+\beta\)</span>, as in the exercises of <a href="an-affine-nilpotent-group.html">An affine nilpotent group</a>. Write the four matrices <span class="math" data-tex="\(R_{(\lambda,\beta)}\)">\(R_{(\lambda,\beta)}\)</span>, <span class="math" data-tex="\(\lambda,\beta\in\{0,1\}\)">\(\lambda,\beta\in\{0,1\}\)</span>, on <span class="math" data-tex="\(\mathbb C^2=\ell^2(\mathbb Z/2)\)">\(\mathbb C^2=\ell^2(\mathbb Z/2)\)</span>, and check <span class="math" data-tex="\(R_\gamma R_\eta=\mathbf e(-c(\gamma,\eta)/2)R_{\gamma\eta}\)">\(R_\gamma R_\eta=\mathbf e(-c(\gamma,\eta)/2)R_{\gamma\eta}\)</span> for <span class="math" data-tex="\(\gamma=(0,1)\)">\(\gamma=(0,1)\)</span>, <span class="math" data-tex="\(\eta=(1,0)\)">\(\eta=(1,0)\)</span>.</p>
+<p><strong>7.2</strong> (easy). Show that <span class="math" data-tex="\(\Lambda_q\)">\(\Lambda_q\)</span> has index <span class="math" data-tex="\(q^{2n_{\mathrm f}}\)">\(q^{2n_{\mathrm f}}\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>7.3</strong> (medium). In Lemma 5.1, show that as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span> the active layers tend to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>, and as <span class="math" data-tex="\(t\to\delta\)">\(t\to\delta\)</span> to <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>.</p>
+<p><strong>7.4</strong> (medium). Show that <span class="math" data-tex="\(\operatorname{tr}_\theta(p_\theta)\ge c|\theta|^{n_{\mathrm f}}\)">\(\operatorname{tr}_\theta(p_\theta)\ge c|\theta|^{n_{\mathrm f}}\)</span> for <span class="math" data-tex="\(0&lt;|\theta|&lt;\theta_0\)">\(0&lt;|\theta|&lt;\theta_0\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> depending only on <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(J_\pm\)">\(J_\pm\)</span>, after decreasing <span class="math" data-tex="\(\theta_0\)">\(\theta_0\)</span> if necessary. Deduce that without the magnetic factor, that is with <span class="math" data-tex="\(p_t\otimes p_t\)">\(p_t\otimes p_t\)</span> in place of <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span>, the supremum <span class="math" data-tex="\(\mu_\ell\)">\(\mu_\ell\)</span> of Proposition 6.1 would be infinite for every <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> For <span class="math" data-tex="\(m=2\)">\(m=2\)</span> and <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, <span class="math" data-tex="\((R_{(\lambda,\beta)}\psi)(x)=(-1)^{\lambda x}\psi(x-\beta)\)">\((R_{(\lambda,\beta)}\psi)(x)=(-1)^{\lambda x}\psi(x-\beta)\)</span>, <span class="math" data-tex="\(x\in\mathbb Z/2\)">\(x\in\mathbb Z/2\)</span>: the identity, the diagonal matrix <span class="math" data-tex="\(\operatorname{diag}(1,-1)\)">\(\operatorname{diag}(1,-1)\)</span>, the swap of the two coordinates, and their product. For <span class="math" data-tex="\(\gamma=(0,1)\)">\(\gamma=(0,1)\)</span>, <span class="math" data-tex="\(\eta=(1,0)\)">\(\eta=(1,0)\)</span>: <span class="math" data-tex="\(c(\gamma,\eta)=-\mu\beta=-1\)">\(c(\gamma,\eta)=-\mu\beta=-1\)</span> and <span class="math" data-tex="\(\gamma\eta=(1,1)\)">\(\gamma\eta=(1,1)\)</span>, so the claim is <span class="math" data-tex="\(R_\gamma R_\eta=-R_{\gamma\eta}\)">\(R_\gamma R_\eta=-R_{\gamma\eta}\)</span>. Indeed <span class="math" data-tex="\(R_\gamma R_\eta\psi(x)=(-1)^{x-1}\psi(x-1)\)">\(R_\gamma R_\eta\psi(x)=(-1)^{x-1}\psi(x-1)\)</span> and <span class="math" data-tex="\(R_{(1,1)}\psi(x)=(-1)^x\psi(x-1)\)">\(R_{(1,1)}\psi(x)=(-1)^x\psi(x-1)\)</span>.</p>
+<p><strong>7.2.</strong> Reduction modulo <span class="math" data-tex="\(q\)">\(q\)</span> is surjective onto a group of <span class="math" data-tex="\(q^{2n_{\mathrm f}}\)">\(q^{2n_{\mathrm f}}\)</span> elements, the pairs of a functional and a unitriangular matrix modulo <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(\Lambda_q\)">\(\Lambda_q\)</span> is its kernel.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(b(t)=\kappa^{-1}\log_2\frac t{\delta-t}\)">\(b(t)=\kappa^{-1}\log_2\frac t{\delta-t}\)</span> tends to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span> and to <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> as <span class="math" data-tex="\(t\to\delta\)">\(t\to\delta\)</span>, and <span class="math" data-tex="\(J(t)\)">\(J(t)\)</span> consists of integers within distance one of <span class="math" data-tex="\(b(t)\)">\(b(t)\)</span>.</p>
+<p><strong>7.4.</strong> In the proof of Proposition 3.1 of the previous lesson, <span class="math" data-tex="\(p_\theta-K_\theta=f(K_\theta)(K_\theta^2-K_\theta)\)">\(p_\theta-K_\theta=f(K_\theta)(K_\theta^2-K_\theta)\)</span> with <span class="math" data-tex="\(\|f(K_\theta)\|\le2\)">\(\|f(K_\theta)\|\le2\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|p_\theta\delta_1\|&amp;\ge\|K_\theta\delta_1\|-2\|(K_\theta^2-K_\theta)\delta_1\|\\
+&amp;\ge C^{-1}\sqrt\nu-2Cy\sqrt\nu\\
+&amp;\ge(2C)^{-1}\sqrt\nu
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|p_\theta\delta_1\|&amp;\ge\|K_\theta\delta_1\|-2\|(K_\theta^2-K_\theta)\delta_1\|\\
+&amp;\ge C^{-1}\sqrt\nu-2Cy\sqrt\nu\\
+&amp;\ge(2C)^{-1}\sqrt\nu
+\end{aligned}
+\]</span>
+for small <span class="math" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-tex="\(\operatorname{tr}_\theta(p_\theta)=\|p_\theta\delta_1\|^2\ge(4C^2)^{-1}|\theta|^{n_{\mathrm f}}\)">\(\operatorname{tr}_\theta(p_\theta)=\|p_\theta\delta_1\|^2\ge(4C^2)^{-1}|\theta|^{n_{\mathrm f}}\)</span>. For <span class="math" data-tex="\(\delta/2&lt;t&lt;\delta\)">\(\delta/2&lt;t&lt;\delta\)</span> the trace of <span class="math" data-tex="\(p_t\otimes p_t\)">\(p_t\otimes p_t\)</span> is then at least <span class="math" data-tex="\(c^2(\delta/2)^{2n_{\mathrm f}}&gt;0\)">\(c^2(\delta/2)^{2n_{\mathrm f}}&gt;0\)</span>, a bound independent of <span class="math" data-tex="\(t\)">\(t\)</span>, while <span class="math" data-tex="\(J(t)\)">\(J(t)\)</span> contains integers <span class="math" data-tex="\(i\to+\infty\)">\(i\to+\infty\)</span> as <span class="math" data-tex="\(t\to\delta\)">\(t\to\delta\)</span> (Exercise 7.3) and <span class="math" data-tex="\(\mathfrak w_i=2^{C_\bullet(H_0+|i|)}\)">\(\mathfrak w_i=2^{C_\bullet(H_0+|i|)}\)</span> is unbounded.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-KK] OpenAI, <em>A torsion-free counterexample to the Kadison–Kaplansky projection conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Sections 8.5 and 8.6, Lemmas 8.9 and 8.10, Proposition 8.11. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-the-Kadison-Kaplansky-Projection-Conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

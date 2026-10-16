@@ -1,0 +1,232 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cone chains, torsion-freeness and the integral detector</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to reduced Baum–Connes injectivity)</a><a href="cycle-coordinates-and-disjoint-domains.html">Previous lesson</a><a href="carriers-trimming-and-constant-extraction.html">Next lesson</a><a href="src/cone-chains-torsion-freeness-and-the-integral-detector.md">Editable source</a></nav><main><article><h1 id="cone-chains-torsion-freeness-and-the-integral-detector">Cone chains, torsion-freeness and the integral detector</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Coning off every sheet of the Cayley graph gives a two-dimensional complex whose cellular chains, by the cycle coordinates, form an exact sequence. Two consequences follow. A subgroup of prime order would act freely on this complex, which is impossible for an acyclic complex of dimension two; so the graphical group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is torsion-free. And the same exact sequence makes restriction <span class="math" data-tex="\(H^2(B\Gamma;\mathbb Z)\to H^2(B\mathsf H;\mathbb Z)\)">\(H^2(B\Gamma;\mathbb Z)\to H^2(B\mathsf H;\mathbb Z)\)</span> onto. An explicit integral <span class="math" data-tex="\(2\)">\(2\)</span>-cocycle on the Heisenberg group evaluates to <span class="math" data-tex="\(-1\)">\(-1\)</span> on the torus spanned by <span class="math" data-tex="\((z,x)\)">\((z,x)\)</span>; extended to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, it is the class that detects the torus in the main theorem [OpenAI-BCI, Sections 7.4-7.7, Lemmas 7.6-7.10, Proposition 7.11].</p>
+<ul>
+<li>The cone complex and exact chains (Section 1).</li>
+<li>Torsion-freeness (Section 2).</li>
+<li>The bar model and a Heisenberg cocycle (Section 3).</li>
+<li>Degree-two classes extend (Section 4).</li>
+<li>The detector (Section 5).</li>
+</ul>
+<p>The setting of <a href="cycle-coordinates-and-disjoint-domains.html">Cycle coordinates and disjoint domains</a> is in force: the formal right Cayley graph <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, the family <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> of sheets, and the isomorphisms <span class="math" data-tex="\(\Phi_R\)">\(\Phi_R\)</span> of Lemma 1.1 there. Domains play no role here. We use Lemmas 3.1 and 3.2 of <a href="../kadison-kaplansky-projections/torsion-freeness.html#3-free-resolutions-over-a-cyclic-group">Torsion-freeness</a> (the periodic resolution over a cyclic group of prime order), and two standard facts of algebraic topology, not proved in the programme:</p>
+<p><strong>(BG)</strong> (the bar construction; [Hatcher, Example 1B.7, Theorem 1B.8]). For a group <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, the <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>-complex <span class="math" data-tex="\(E\Lambda\)">\(E\Lambda\)</span> whose <span class="math" data-tex="\(n\)">\(n\)</span>-simplices are the ordered <span class="math" data-tex="\((n+1)\)">\((n+1)\)</span>-tuples <span class="math" data-tex="\((g_0,\ldots,g_n)\)">\((g_0,\ldots,g_n)\)</span> of elements of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, with faces given by deleting entries, is contractible, and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> acts freely on it by left multiplication; the quotient <span class="math" data-tex="\(B\Lambda\)">\(B\Lambda\)</span> is a <span class="math" data-tex="\(K(\Lambda,1)\)">\(K(\Lambda,1)\)</span> CW complex, whose simplices are written <span class="math" data-tex="\([g_1|\cdots|g_n]\)">\([g_1|\cdots|g_n]\)</span> for the orbit of <span class="math" data-tex="\((1,g_1,g_1g_2,\ldots,g_1\cdots g_n)\)">\((1,g_1,g_1g_2,\ldots,g_1\cdots g_n)\)</span>. The homotopy type of a CW complex <span class="math" data-tex="\(K(\Lambda,1)\)">\(K(\Lambda,1)\)</span> is determined by <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and a homomorphism <span class="math" data-tex="\(f\)">\(f\)</span> induces the cellular map <span class="math" data-tex="\(Bf\)">\(Bf\)</span> sending <span class="math" data-tex="\([g_1|\cdots|g_n]\)">\([g_1|\cdots|g_n]\)</span> to <span class="math" data-tex="\([f(g_1)|\cdots|f(g_n)]\)">\([f(g_1)|\cdots|f(g_n)]\)</span>.</p>
+<p><strong>(CC)</strong> (cellular cohomology; [Hatcher, Theorem 3.5]). For a CW complex, singular cohomology with coefficients in <span class="math" data-tex="\(G\)">\(G\)</span> is the cohomology of the cellular cochain complex, which is <span class="math" data-tex="\(\operatorname{Hom}(-,G)\)">\(\operatorname{Hom}(-,G)\)</span> of the cellular chain complex, naturally for cellular maps.</p>
+<h2 id="1-the-cone-complex-and-exact-chains">1. The cone complex and exact chains</h2>
+<p>Starting from <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, add a vertex <span class="math" data-tex="\(c_Q\)">\(c_Q\)</span> for every sheet <span class="math" data-tex="\(Q\)">\(Q\)</span>, an oriented edge <span class="math" data-tex="\(\sigma_{Q,u}\)">\(\sigma_{Q,u}\)</span> (a <em>spoke</em>) from <span class="math" data-tex="\(c_Q\)">\(c_Q\)</span> to every vertex <span class="math" data-tex="\(u\)">\(u\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span>, and, for every positive edge <span class="math" data-tex="\(e:u\to v\)">\(e:u\to v\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span>, a triangle <span class="math" data-tex="\(\tau_{Q,e}\)">\(\tau_{Q,e}\)</span> with cellular boundary
+<span class="math math-display" data-tex="\[
+\partial\tau_{Q,e}=e+\sigma_{Q,u}-\sigma_{Q,v} .\tag{1.1}
+\]">\[
+\partial\tau_{Q,e}=e+\sigma_{Q,u}-\sigma_{Q,v} .\tag{1.1}
+\]</span>
+Call the resulting two-dimensional complex <span class="math" data-tex="\(\mathcal Z\)">\(\mathcal Z\)</span>. Different sheets give different spokes and triangles, also where their images in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> agree; the complex is defined by its cells, with finite chains only.</p>
+<p><strong>Lemma 1.1</strong> (exact cone chains; [OpenAI-BCI, Lemma 7.6]). For every commutative ring <span class="math" data-tex="\(R\)">\(R\)</span>, the augmented cellular chain complex
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to C_2(\mathcal Z;R)\xrightarrow{\partial_2}{}\\
+C_1(\mathcal Z;R)\xrightarrow{\partial_1}C_0(\mathcal Z;R)\\
+\xrightarrow{\varepsilon}R\to0
+\end{gathered}\tag{1.2}
+\]">\[
+\begin{gathered}
+0\to C_2(\mathcal Z;R)\xrightarrow{\partial_2}{}\\
+C_1(\mathcal Z;R)\xrightarrow{\partial_1}C_0(\mathcal Z;R)\\
+\xrightarrow{\varepsilon}R\to0
+\end{gathered}\tag{1.2}
+\]</span>
+is exact.</p>
+<p><em>Proof.</em> For an edge chain <span class="math" data-tex="\(b\)">\(b\)</span> of a sheet <span class="math" data-tex="\(Q\)">\(Q\)</span>, let <span class="math" data-tex="\(c_Q*b\)">\(c_Q*b\)</span> be the same combination of its triangles, and for a vertex chain <span class="math" data-tex="\(t\)">\(t\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span> let <span class="math" data-tex="\(\sigma_Q(t)\)">\(\sigma_Q(t)\)</span> be the corresponding spoke chain. By (1.1), <span class="math" data-tex="\(\partial(c_Q*b)=b-\sigma_Q(\partial b)\)">\(\partial(c_Q*b)=b-\sigma_Q(\partial b)\)</span>.</p>
+<p><em>At <span class="math" data-tex="\(C_2\)">\(C_2\)</span>.</em> A finite <span class="math" data-tex="\(2\)">\(2\)</span>-chain is <span class="math" data-tex="\(\sum_Qc_Q*b_Q\)">\(\sum_Qc_Q*b_Q\)</span> for finitely many edge chains <span class="math" data-tex="\(b_Q\)">\(b_Q\)</span>. If its boundary vanishes, its components on the distinct spoke sets give <span class="math" data-tex="\(\partial b_Q=0\)">\(\partial b_Q=0\)</span> for every <span class="math" data-tex="\(Q\)">\(Q\)</span>, and its component on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> gives <span class="math" data-tex="\(\sum_Qb_Q=0\)">\(\sum_Qb_Q=0\)</span>. Injectivity of <span class="math" data-tex="\(\Phi_R\)">\(\Phi_R\)</span> gives all <span class="math" data-tex="\(b_Q=0\)">\(b_Q=0\)</span>.</p>
+<p><em>At <span class="math" data-tex="\(C_1\)">\(C_1\)</span>.</em> Let <span class="math" data-tex="\(b+\sum_Q\sigma_Q(t_Q)\)">\(b+\sum_Q\sigma_Q(t_Q)\)</span> be a finite <span class="math" data-tex="\(1\)">\(1\)</span>-cycle, with <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Its coefficient at <span class="math" data-tex="\(c_Q\)">\(c_Q\)</span> is the augmentation of <span class="math" data-tex="\(t_Q\)">\(t_Q\)</span>, so <span class="math" data-tex="\(t_Q\)">\(t_Q\)</span> has total coefficient zero; as <span class="math" data-tex="\(Q\)">\(Q\)</span> is connected, <span class="math" data-tex="\(t_Q=\partial a_Q\)">\(t_Q=\partial a_Q\)</span> for a finite edge chain <span class="math" data-tex="\(a_Q\)">\(a_Q\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span> (join the vertices of its support to one of them by paths). Adding <span class="math" data-tex="\(\sum_Q\partial(c_Q*a_Q)\)">\(\sum_Q\partial(c_Q*a_Q)\)</span> removes all spokes, and leaves a <span class="math" data-tex="\(1\)">\(1\)</span>-cycle on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, which is <span class="math" data-tex="\(\sum_Qz_Q\)">\(\sum_Qz_Q\)</span> with sheet cycles <span class="math" data-tex="\(z_Q\)">\(z_Q\)</span>, by surjectivity of <span class="math" data-tex="\(\Phi_R\)">\(\Phi_R\)</span>; and <span class="math" data-tex="\(z_Q=\partial(c_Q*z_Q)\)">\(z_Q=\partial(c_Q*z_Q)\)</span>. So the original cycle is a boundary.</p>
+<p><em>At <span class="math" data-tex="\(C_0\)">\(C_0\)</span>.</em> <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is connected and every cone vertex is joined to it, so a vertex chain of total coefficient zero is a boundary, and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is onto. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Left translation acts cellularly on <span class="math" data-tex="\(\mathcal Z\)">\(\mathcal Z\)</span>, preserving all orientations. Put <span class="math" data-tex="\(A=\mathbb Z\Gamma\)">\(A=\mathbb Z\Gamma\)</span> and <span class="math" data-tex="\(B=\mathbb Z\mathsf H\)">\(B=\mathbb Z\mathsf H\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_1(\mathcal Z;\mathbb Z),\ C_2(\mathcal Z;\mathbb Z)\\
+\text{are free }A\text{-modules},\\
+C_0(\mathcal Z;\mathbb Z)\cong A\oplus A\otimes_B\mathbb Z .
+\end{gathered}\tag{1.3}
+\]">\[
+\begin{gathered}
+C_1(\mathcal Z;\mathbb Z),\ C_2(\mathcal Z;\mathbb Z)\\
+\text{are free }A\text{-modules},\\
+C_0(\mathcal Z;\mathbb Z)\cong A\oplus A\otimes_B\mathbb Z .
+\end{gathered}\tag{1.3}
+\]</span>
+Indeed an element stabilizing a formal edge fixes its initial vertex; one stabilizing a spoke fixes its endpoint in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>; one stabilizing a triangle fixes its positive base edge. So these stabilizers are trivial. The group vertices form one free orbit, and the cone vertices the orbit <span class="math" data-tex="\(\Gamma/\mathsf H\)">\(\Gamma/\mathsf H\)</span>, since the stabilizer of a sheet is a conjugate of <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span> (Proposition 5.1 of <a href="the-private-completion-and-the-graphical-group.html">The private completion and the graphical group</a>). Neither torsion-freeness nor equivariance of any domain choice is used.</p>
+<h2 id="2-torsion-freeness">2. Torsion-freeness</h2>
+<p><strong>Lemma 2.1</strong> (comparison of free resolutions; [OpenAI-BCI, Lemma 7.7]). Let <span class="math" data-tex="\(P_\bullet\to M\)">\(P_\bullet\to M\)</span> and <span class="math" data-tex="\(Q_\bullet\to N\)">\(Q_\bullet\to N\)</span> be exact augmented complexes of free modules over a ring <span class="math" data-tex="\(A\)">\(A\)</span>. Every homomorphism <span class="math" data-tex="\(M\to N\)">\(M\to N\)</span> lifts to a chain map <span class="math" data-tex="\(P_\bullet\to Q_\bullet\)">\(P_\bullet\to Q_\bullet\)</span>, and any two lifts are chain homotopic. In particular two free resolutions of one module are chain homotopy equivalent, also after tensoring with a right module or applying <span class="math" data-tex="\(\operatorname{Hom}_A(-,L)\)">\(\operatorname{Hom}_A(-,L)\)</span>.</p>
+<p><em>Proof.</em> On a basis of <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, choose images lifting the prescribed images under the augmentations. Having defined the map up to degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, the desired image of the boundary of a basis vector of <span class="math" data-tex="\(P_n\)">\(P_n\)</span> is a cycle of <span class="math" data-tex="\(Q_{n-1}\)">\(Q_{n-1}\)</span>, hence a boundary by exactness; choose a preimage and extend linearly. For two lifts, let <span class="math" data-tex="\(f\)">\(f\)</span> be their difference, with zero augmentation. Inductively, <span class="math" data-tex="\(f_n-h_{n-1}\partial_n\)">\(f_n-h_{n-1}\partial_n\)</span> takes values in the cycles of <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> (apply <span class="math" data-tex="\(\partial\)">\(\partial\)</span> and use the chain-map and previous homotopy identities), so it is <span class="math" data-tex="\(\partial_{n+1}h_n\)">\(\partial_{n+1}h_n\)</span> on a basis; then <span class="math" data-tex="\(f_n=\partial_{n+1}h_n+h_{n-1}\partial_n\)">\(f_n=\partial_{n+1}h_n+h_{n-1}\partial_n\)</span>, with <span class="math" data-tex="\(h_{-1}=0\)">\(h_{-1}=0\)</span> and the zero augmentation at <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. Lifts of the identity in both directions give the homotopy equivalence; tensor and <span class="math" data-tex="\(\operatorname{Hom}\)">\(\operatorname{Hom}\)</span> preserve the homotopy identities. No finite bases are needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2</strong> (no element of finite order; [OpenAI-BCI, Lemma 7.8]). The group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is torsion-free.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span> is torsion-free (Corollary 1.2 of <a href="the-heisenberg-group-and-its-laws.html">The Heisenberg group and its laws</a>). Suppose <span class="math" data-tex="\(P\le\Gamma\)">\(P\le\Gamma\)</span> has prime order <span class="math" data-tex="\(p\)">\(p\)</span>. The stabilizer of a cone vertex is a conjugate of <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>, so it meets <span class="math" data-tex="\(P\)">\(P\)</span> trivially; the other stabilizers are trivial by (1.3). So <span class="math" data-tex="\(P\)">\(P\)</span> acts freely on the cells of every dimension (on cells, not merely without fixed points of edges: no element can reverse a positive edge, since orientations are preserved). Choosing orbit representatives, the chains of <span class="math" data-tex="\(\mathcal Z\)">\(\mathcal Z\)</span> with coefficients <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> are free <span class="math" data-tex="\(\mathbb F_p[P]\)">\(\mathbb F_p[P]\)</span>-modules, and Lemma 1.1 with <span class="math" data-tex="\(R=\mathbb F_p\)">\(R=\mathbb F_p\)</span> makes them a free resolution of the trivial module <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> of length two. Tensoring with <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> gives zero homology above degree two, whereas by Lemmas 3.1 and 3.2 of <a href="../kadison-kaplansky-projections/torsion-freeness.html#3-free-resolutions-over-a-cyclic-group">Torsion-freeness</a> this homology is <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> in every degree. Hence <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> has no subgroup of prime order, and an element of finite order <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span> would have a power of prime order. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-bar-model-and-a-heisenberg-cocycle">3. The bar model and a Heisenberg cocycle</h2>
+<p>For a group <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, let <span class="math" data-tex="\(\mathcal B_n(\Lambda)\)">\(\mathcal B_n(\Lambda)\)</span> be the free abelian group on the tuples <span class="math" data-tex="\((g_0,\ldots,g_n)\in\Lambda^{n+1}\)">\((g_0,\ldots,g_n)\in\Lambda^{n+1}\)</span>, with the diagonal left action, the alternating deletion boundary, and augmentation <span class="math" data-tex="\(1\)">\(1\)</span> on every tuple of length one. It is free over <span class="math" data-tex="\(\mathbb Z\Lambda\)">\(\mathbb Z\Lambda\)</span>, with the orbit representatives with <span class="math" data-tex="\(g_0=1\)">\(g_0=1\)</span>, and prepending <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(s(g_0,\ldots,g_n)=(1,g_0,\ldots,g_n)\)">\(s(g_0,\ldots,g_n)=(1,g_0,\ldots,g_n)\)</span>, is a contracting homotopy of abelian groups: <span class="math" data-tex="\(\partial s+s\partial=\mathrm{id}\)">\(\partial s+s\partial=\mathrm{id}\)</span>, including the augmentation. So <span class="math" data-tex="\(\mathcal B_\bullet(\Lambda)\)">\(\mathcal B_\bullet(\Lambda)\)</span> is a free resolution of the trivial module <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. It is the cellular chain complex of <span class="math" data-tex="\(E\Lambda\)">\(E\Lambda\)</span> in (BG), so by (BG) and (CC) the cohomology of
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathbb Z\Lambda}(\mathcal B_\bullet(\Lambda),\mathbb Z)
+\]">\[
+\operatorname{Hom}_{\mathbb Z\Lambda}(\mathcal B_\bullet(\Lambda),\mathbb Z)
+\]</span>
+is <span class="math" data-tex="\(H^*(B\Lambda;\mathbb Z)\)">\(H^*(B\Lambda;\mathbb Z)\)</span>, and for a subgroup inclusion, restriction of these cochains to tuples of the subgroup is the pull-back along the induced map of classifying spaces. Write <span class="math" data-tex="\([g_1|\cdots|g_n]\)">\([g_1|\cdots|g_n]\)</span> for <span class="math" data-tex="\((1,g_1,g_1g_2,\ldots,g_1\cdots g_n)\)">\((1,g_1,g_1g_2,\ldots,g_1\cdots g_n)\)</span>; then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial[g|h]=g[h]-[gh]+[g],\\
+\partial[g|h|k]=g[h|k]-[gh|k]\\
++[g|hk]-[g|h],
+\end{gathered}
+\]">\[
+\begin{gathered}
+\partial[g|h]=g[h]-[gh]+[g],\\
+\partial[g|h|k]=g[h|k]-[gh|k]\\
++[g|hk]-[g|h],
+\end{gathered}
+\]</span>
+and with trivial coefficients these are the formulas of inhomogeneous group cochains.</p>
+<p>In the matrix coordinates <span class="math" data-tex="\((\alpha,\beta,\gamma)\)">\((\alpha,\beta,\gamma)\)</span> of Lemma 1.1 of the lesson on the Heisenberg group, <span class="math" data-tex="\(x^ny^lz^c=(n,l,c+nl)\)">\(x^ny^lz^c=(n,l,c+nl)\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(\alpha,\beta,\gamma)(\alpha&#x27;,\beta&#x27;,\gamma&#x27;)\\
+&amp;\quad=(\alpha+\alpha&#x27;,\,\beta+\beta&#x27;,\\
+&amp;\qquad\quad\gamma+\gamma&#x27;+\alpha\beta&#x27;) .
+\end{aligned}\tag{3.1}
+\]">\[
+\begin{aligned}
+&amp;(\alpha,\beta,\gamma)(\alpha&#x27;,\beta&#x27;,\gamma&#x27;)\\
+&amp;\quad=(\alpha+\alpha&#x27;,\,\beta+\beta&#x27;,\\
+&amp;\qquad\quad\gamma+\gamma&#x27;+\alpha\beta&#x27;) .
+\end{aligned}\tag{3.1}
+\]</span></p>
+<p><strong>Lemma 3.1</strong> (a primitive Heisenberg detector; [OpenAI-BCI, Lemma 7.9]). The integer function
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\omega\bigl((\alpha,\beta,\gamma),(\alpha&#x27;,\beta&#x27;,\gamma&#x27;)\bigr)\\
+=\alpha\gamma&#x27;+\binom\alpha2\beta&#x27;
+\end{gathered}\tag{3.2}
+\]">\[
+\begin{gathered}
+\omega\bigl((\alpha,\beta,\gamma),(\alpha&#x27;,\beta&#x27;,\gamma&#x27;)\bigr)\\
+=\alpha\gamma&#x27;+\binom\alpha2\beta&#x27;
+\end{gathered}\tag{3.2}
+\]</span>
+is a normalized group <span class="math" data-tex="\(2\)">\(2\)</span>-cocycle on <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>. Its class <span class="math" data-tex="\(c_{\mathsf H}\in H^2(B\mathsf H;\mathbb Z)\)">\(c_{\mathsf H}\in H^2(B\mathsf H;\mathbb Z)\)</span> evaluates to <span class="math" data-tex="\(-1\)">\(-1\)</span> on the torus with ordered generators <span class="math" data-tex="\((z,x)\)">\((z,x)\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\binom\alpha2=\alpha(\alpha-1)/2\)">\(\binom\alpha2=\alpha(\alpha-1)/2\)</span> is an integer for all integers <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> vanishes when either argument is the identity. For <span class="math" data-tex="\(g,h,k\)">\(g,h,k\)</span> with coordinates <span class="math" data-tex="\((\alpha,\beta,\gamma),(\alpha&#x27;,\beta&#x27;,\gamma&#x27;),(\alpha&#x27;&#x27;,\beta&#x27;&#x27;,\gamma&#x27;&#x27;)\)">\((\alpha,\beta,\gamma),(\alpha&#x27;,\beta&#x27;,\gamma&#x27;),(\alpha&#x27;&#x27;,\beta&#x27;&#x27;,\gamma&#x27;&#x27;)\)</span>, the cocycle identity
+<span class="math math-display" data-tex="\[
+\omega(g,h)+\omega(gh,k)=\omega(h,k)+\omega(g,hk)
+\]">\[
+\omega(g,h)+\omega(gh,k)=\omega(h,k)+\omega(g,hk)
+\]</span>
+reads, by (3.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\alpha\gamma&#x27;+\tbinom\alpha2\beta&#x27;+(\alpha+\alpha&#x27;)\gamma&#x27;&#x27;\\
+&amp;\qquad+\tbinom{\alpha+\alpha&#x27;}2\beta&#x27;&#x27;\\
+&amp;\quad=\alpha&#x27;\gamma&#x27;&#x27;+\tbinom{\alpha&#x27;}2\beta&#x27;&#x27;\\
+&amp;\qquad+\alpha(\gamma&#x27;+\gamma&#x27;&#x27;+\alpha&#x27;\beta&#x27;&#x27;)\\
+&amp;\qquad+\tbinom\alpha2(\beta&#x27;+\beta&#x27;&#x27;),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\alpha\gamma&#x27;+\tbinom\alpha2\beta&#x27;+(\alpha+\alpha&#x27;)\gamma&#x27;&#x27;\\
+&amp;\qquad+\tbinom{\alpha+\alpha&#x27;}2\beta&#x27;&#x27;\\
+&amp;\quad=\alpha&#x27;\gamma&#x27;&#x27;+\tbinom{\alpha&#x27;}2\beta&#x27;&#x27;\\
+&amp;\qquad+\alpha(\gamma&#x27;+\gamma&#x27;&#x27;+\alpha&#x27;\beta&#x27;&#x27;)\\
+&amp;\qquad+\tbinom\alpha2(\beta&#x27;+\beta&#x27;&#x27;),
+\end{aligned}
+\]</span>
+which holds by <span class="math" data-tex="\(\binom{\alpha+\alpha&#x27;}2=\binom\alpha2+\binom{\alpha&#x27;}2+\alpha\alpha&#x27;\)">\(\binom{\alpha+\alpha&#x27;}2=\binom\alpha2+\binom{\alpha&#x27;}2+\alpha\alpha&#x27;\)</span>. Equivalently, <span class="math" data-tex="\((t,g)(t&#x27;,h)=(t+t&#x27;+\omega(g,h),gh)\)">\((t,g)(t&#x27;,h)=(t+t&#x27;+\omega(g,h),gh)\)</span> is an associative multiplication on <span class="math" data-tex="\(\mathbb Z\times\mathsf H\)">\(\mathbb Z\times\mathsf H\)</span>, a central extension by <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p>The subgroup generated by <span class="math" data-tex="\(z=(0,0,1)\)">\(z=(0,0,1)\)</span> and <span class="math" data-tex="\(x=(1,0,0)\)">\(x=(1,0,0)\)</span> is free abelian of rank two, with <span class="math" data-tex="\(z^ux^v=(v,0,u)\)">\(z^ux^v=(v,0,u)\)</span>. Subdivide the square of the torus with vertices <span class="math" data-tex="\(1,z,zx,x\)">\(1,z,zx,x\)</span> by the diagonal from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(zx\)">\(zx\)</span>; its two oriented triangles are <span class="math" data-tex="\((1,z,zx)-(1,x,xz)\)">\((1,z,zx)-(1,x,xz)\)</span>, that is, the bar chain
+<span class="math math-display" data-tex="\[
+[z|x]-[x|z] .
+\]">\[
+[z|x]-[x|z] .
+\]</span>
+Sending the grid vertex <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> to <span class="math" data-tex="\(z^ux^v\)">\(z^ux^v\)</span> defines an equivariant map from the triangulated universal cover of the torus into <span class="math" data-tex="\(E\Lambda\)">\(E\Lambda\)</span>, <span class="math" data-tex="\(\Lambda=\langle z,x\rangle\)">\(\Lambda=\langle z,x\rangle\)</span>, which induces the identity on fundamental groups; so this chain represents the image of the fundamental class <span class="math" data-tex="\([T^2]\)">\([T^2]\)</span>. The evaluation is
+<span class="math math-display" data-tex="\[
+\omega(z,x)-\omega(x,z)=0-1=-1 ,
+\]">\[
+\omega(z,x)-\omega(x,z)=0-1=-1 ,
+\]</span>
+since <span class="math" data-tex="\(z\)">\(z\)</span> has <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, and <span class="math" data-tex="\(x=(1,0,0)\)">\(x=(1,0,0)\)</span>, <span class="math" data-tex="\(z=(0,0,1)\)">\(z=(0,0,1)\)</span> give <span class="math" data-tex="\(\omega(x,z)=1\)">\(\omega(x,z)=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-degree-two-classes-extend">4. Degree-two classes extend</h2>
+<p><strong>Lemma 4.1</strong> (integral restriction is onto in degree two; [OpenAI-BCI, Lemma 7.10]). The inclusion <span class="math" data-tex="\(\mathsf H\le\Gamma\)">\(\mathsf H\le\Gamma\)</span> induces a surjection
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H^2(B\Gamma;\mathbb Z)\\
+\longrightarrow H^2(B\mathsf H;\mathbb Z) .
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+H^2(B\Gamma;\mathbb Z)\\
+\longrightarrow H^2(B\mathsf H;\mathbb Z) .
+\end{gathered}\tag{4.1}
+\]</span></p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(M=\mathbb Z\)">\(M=\mathbb Z\)</span>, <span class="math" data-tex="\(C_0=C_0(\mathcal Z;\mathbb Z)\cong A\oplus A\otimes_BM\)">\(C_0=C_0(\mathcal Z;\mathbb Z)\cong A\oplus A\otimes_BM\)</span> and <span class="math" data-tex="\(K=\ker(C_0\to M)\)">\(K=\ker(C_0\to M)\)</span>. By Lemma 1.1 and (1.3), <span class="math" data-tex="\(K\)">\(K\)</span> has a free resolution of length one,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to P_1\xrightarrow{d_P}P_0\to K\to0,\\
+P_1=C_2(\mathcal Z;\mathbb Z),\quad P_0=C_1(\mathcal Z;\mathbb Z) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+0\to P_1\xrightarrow{d_P}P_0\to K\to0,\\
+P_1=C_2(\mathcal Z;\mathbb Z),\quad P_0=C_1(\mathcal Z;\mathbb Z) .
+\end{gathered}
+\]</span>
+As a right <span class="math" data-tex="\(B\)">\(B\)</span>-module, <span class="math" data-tex="\(A\)">\(A\)</span> is free (coset representatives), so <span class="math" data-tex="\(I_\bullet=A\otimes_B\mathcal B_\bullet(\mathsf H)\)">\(I_\bullet=A\otimes_B\mathcal B_\bullet(\mathsf H)\)</span> is a free resolution of <span class="math" data-tex="\(A\otimes_BM\)">\(A\otimes_BM\)</span>. Resolve <span class="math" data-tex="\(C_0\)">\(C_0\)</span> by <span class="math" data-tex="\(Q_0=A\oplus I_0\)">\(Q_0=A\oplus I_0\)</span> and <span class="math" data-tex="\(Q_n=I_n\)">\(Q_n=I_n\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Lift <span class="math" data-tex="\(K\to C_0\)">\(K\to C_0\)</span> to a chain map <span class="math" data-tex="\(f:P_\bullet\to Q_\bullet\)">\(f:P_\bullet\to Q_\bullet\)</span>: choose <span class="math" data-tex="\(f_0\)">\(f_0\)</span> on a basis lifting the inclusion; the elements <span class="math" data-tex="\(f_0d_P(P_1)\)">\(f_0d_P(P_1)\)</span> have zero augmentation in <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, so exactness gives <span class="math" data-tex="\(f_1:P_1\to Q_1\)">\(f_1:P_1\to Q_1\)</span> with <span class="math" data-tex="\(d_Qf_1=f_0d_P\)">\(d_Qf_1=f_0d_P\)</span>.</p>
+<p>Define a free augmented complex <span class="math" data-tex="\(T_\bullet\to M\)">\(T_\bullet\to M\)</span> by <span class="math" data-tex="\(T_0=Q_0\)">\(T_0=Q_0\)</span> and <span class="math" data-tex="\(T_n=Q_n\oplus P_{n-1}\)">\(T_n=Q_n\oplus P_{n-1}\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> (with <span class="math" data-tex="\(P_j=0\)">\(P_j=0\)</span> for <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>), with boundary <span class="math" data-tex="\(d_T(q,p)=(d_Qq+f_{n-1}p,\,-d_Pp)\)">\(d_T(q,p)=(d_Qq+f_{n-1}p,\,-d_Pp)\)</span> for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, <span class="math" data-tex="\(d_T(q,p)=d_Qq+f_0p\)">\(d_T(q,p)=d_Qq+f_0p\)</span> for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, and augmentation <span class="math" data-tex="\(Q_0\to C_0\to M\)">\(Q_0\to C_0\to M\)</span>. The identities defining <span class="math" data-tex="\(f\)">\(f\)</span> give <span class="math" data-tex="\(d_T^2=0\)">\(d_T^2=0\)</span>. It is exact. In degree two, a cycle <span class="math" data-tex="\((q,p)\)">\((q,p)\)</span> has <span class="math" data-tex="\(d_Pp=0\)">\(d_Pp=0\)</span>, so <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, and <span class="math" data-tex="\(q\)">\(q\)</span> is a boundary in <span class="math" data-tex="\(Q_\bullet\)">\(Q_\bullet\)</span>; the same holds in higher degrees. In degree one, if <span class="math" data-tex="\(d_Qq+f_0p=0\)">\(d_Qq+f_0p=0\)</span>, then the image of <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span> has zero image in <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, so <span class="math" data-tex="\(p=d_Pp_1\)">\(p=d_Pp_1\)</span>; then <span class="math" data-tex="\(q+f_1p_1\)">\(q+f_1p_1\)</span> is a <span class="math" data-tex="\(Q\)">\(Q\)</span>-cycle, equal to <span class="math" data-tex="\(d_Qq_2\)">\(d_Qq_2\)</span>, and <span class="math" data-tex="\((q,p)=d_T(q_2,-p_1)\)">\((q,p)=d_T(q_2,-p_1)\)</span>. In degree zero, an element with zero image in <span class="math" data-tex="\(M\)">\(M\)</span> has image in <span class="math" data-tex="\(K\)">\(K\)</span>; subtract a suitable <span class="math" data-tex="\(f_0p\)">\(f_0p\)</span> and lift the rest through <span class="math" data-tex="\(d_Q\)">\(d_Q\)</span>. So <span class="math" data-tex="\(T_\bullet\)">\(T_\bullet\)</span> is a free resolution of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>The inclusion <span class="math" data-tex="\(Q_\bullet\to T_\bullet\)">\(Q_\bullet\to T_\bullet\)</span> lifts <span class="math" data-tex="\(C_0\to M\)">\(C_0\to M\)</span>. A degree-two cocycle <span class="math" data-tex="\(\phi:Q_2\to M\)">\(\phi:Q_2\to M\)</span> extends to <span class="math" data-tex="\(\psi(q,p)=\phi(q)\)">\(\psi(q,p)=\phi(q)\)</span> on <span class="math" data-tex="\(T_2=Q_2\oplus P_1\)">\(T_2=Q_2\oplus P_1\)</span>, still a cocycle since <span class="math" data-tex="\(T_3=Q_3\)">\(T_3=Q_3\)</span> and <span class="math" data-tex="\(d_T\)">\(d_T\)</span> on <span class="math" data-tex="\(T_3\)">\(T_3\)</span> has no <span class="math" data-tex="\(P_1\)">\(P_1\)</span> component. So
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Ext}^2_A(M,M)\\
+\longrightarrow\operatorname{Ext}^2_A(C_0,M)
+\end{gathered}\tag{4.2}
+\]">\[
+\begin{gathered}
+\operatorname{Ext}^2_A(M,M)\\
+\longrightarrow\operatorname{Ext}^2_A(C_0,M)
+\end{gathered}\tag{4.2}
+\]</span>
+is onto. The isomorphism
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_A(A\otimes_B\mathcal B_n(\mathsf H),M)\\
+\to\operatorname{Hom}_B(\mathcal B_n(\mathsf H),M),\\
+\phi\mapsto\bigl(b\mapsto\phi(1\otimes b)\bigr),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_A(A\otimes_B\mathcal B_n(\mathsf H),M)\\
+\to\operatorname{Hom}_B(\mathcal B_n(\mathsf H),M),\\
+\phi\mapsto\bigl(b\mapsto\phi(1\otimes b)\bigr),
+\end{gathered}
+\]</span>
+with inverse <span class="math" data-tex="\(\eta\mapsto(a\otimes b\mapsto a\eta(b))\)">\(\eta\mapsto(a\otimes b\mapsto a\eta(b))\)</span>, commutes with the boundaries, and the extra free summand <span class="math" data-tex="\(A\)">\(A\)</span> in degree zero contributes no cohomology in degree two; so the target of (4.2) is <span class="math" data-tex="\(H^2(B\mathsf H;\mathbb Z)\)">\(H^2(B\mathsf H;\mathbb Z)\)</span>.</p>
+<p>It remains to identify (4.2) with restriction. Choose a comparison map <span class="math" data-tex="\(T_\bullet\to\mathcal B_\bullet(\Gamma)\)">\(T_\bullet\to\mathcal B_\bullet(\Gamma)\)</span> lifting the identity of <span class="math" data-tex="\(M\)">\(M\)</span> (Lemma 2.1). The composite <span class="math" data-tex="\(I_\bullet\to Q_\bullet\to T_\bullet\to\mathcal B_\bullet(\Gamma)\)">\(I_\bullet\to Q_\bullet\to T_\bullet\to\mathcal B_\bullet(\Gamma)\)</span> lifts the augmentation <span class="math" data-tex="\(A\otimes_BM\to M\)">\(A\otimes_BM\to M\)</span>, and so does
+<span class="math math-display" data-tex="\[
+\theta\bigl(a\otimes(h_0,\ldots,h_n)\bigr)=a\,(h_0,\ldots,h_n),
+\]">\[
+\theta\bigl(a\otimes(h_0,\ldots,h_n)\bigr)=a\,(h_0,\ldots,h_n),
+\]</span>
+the tuple read in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. By Lemma 2.1 the two lifts are homotopic. After the isomorphism above, precomposition with <span class="math" data-tex="\(\theta\)">\(\theta\)</span> restricts a <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-cochain to tuples of <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>, which is the pull-back along <span class="math" data-tex="\(B\mathsf H\to B\Gamma\)">\(B\mathsf H\to B\Gamma\)</span>. So (4.2) is (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-detector">5. The detector</h2>
+<p><strong>Proposition 5.1</strong> (torsion-freeness and the integral detector; [OpenAI-BCI, Proposition 7.11]). The graphical group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is torsion-free. The homomorphism <span class="math" data-tex="\(i_\Gamma:\mathbb Z^2\to\Gamma\)">\(i_\Gamma:\mathbb Z^2\to\Gamma\)</span> sending the ordered basis to <span class="math" data-tex="\((z,x)\)">\((z,x)\)</span> is injective, and there is <span class="math" data-tex="\(c_\Gamma\in H^2(B\Gamma;\mathbb Z)\)">\(c_\Gamma\in H^2(B\Gamma;\mathbb Z)\)</span> with
+<span class="math math-display" data-tex="\[
+\bigl\langle(Bi_\Gamma)^*c_\Gamma,[T^2]\bigr\rangle=-1 .\tag{5.1}
+\]">\[
+\bigl\langle(Bi_\Gamma)^*c_\Gamma,[T^2]\bigr\rangle=-1 .\tag{5.1}
+\]</span></p>
+<p><em>Proof.</em> Lemma 2.2 gives torsion-freeness. The embedding <span class="math" data-tex="\(\mathsf H\le\Gamma\)">\(\mathsf H\le\Gamma\)</span> of Proposition 5.1 of the lesson on the graphical group and <span class="math" data-tex="\(z^ux^v=(v,0,u)\)">\(z^ux^v=(v,0,u)\)</span> give injectivity of <span class="math" data-tex="\(i_\Gamma\)">\(i_\Gamma\)</span>. Choose <span class="math" data-tex="\(c_\Gamma\)">\(c_\Gamma\)</span> mapping to <span class="math" data-tex="\(c_{\mathsf H}\)">\(c_{\mathsf H}\)</span> under the surjection of Lemma 4.1; that map is restriction, so Lemma 3.1 gives (5.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 6.1.</strong> Verify the cocycle identity of Lemma 3.1 directly for <span class="math" data-tex="\(g=h=k=x\)">\(g=h=k=x\)</span>.</p>
+<p><strong>Exercise 6.2.</strong> In the central extension defined by <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, with multiplication <span class="math" data-tex="\((t,g)(t&#x27;,h)=(t+t&#x27;+\omega(g,h),gh)\)">\((t,g)(t&#x27;,h)=(t+t&#x27;+\omega(g,h),gh)\)</span>, show that <span class="math" data-tex="\(X=(0,x)\)">\(X=(0,x)\)</span> and <span class="math" data-tex="\(Z=(0,z)\)">\(Z=(0,z)\)</span> satisfy <span class="math" data-tex="\([X,Z]=T\)">\([X,Z]=T\)</span> with <span class="math" data-tex="\(T=(1,1)\)">\(T=(1,1)\)</span>, and that <span class="math" data-tex="\(Y=(0,y)\)">\(Y=(0,y)\)</span> commutes with <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p><strong>Exercise 6.3.</strong> Why does the proof of Lemma 2.2 need the free action on cells of every dimension, and not only on vertices?</p>
+<p><strong>Exercise 6.4.</strong> Show that <span class="math" data-tex="\(H^2(B\mathbb Z^2;\mathbb Z)\cong\mathbb Z\)">\(H^2(B\mathbb Z^2;\mathbb Z)\cong\mathbb Z\)</span>, generated by a class taking the value <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> on <span class="math" data-tex="\([T^2]\)">\([T^2]\)</span>, using the bar cochain <span class="math" data-tex="\(\omega_0((u,v),(u&#x27;,v&#x27;))=uv&#x27;\)">\(\omega_0((u,v),(u&#x27;,v&#x27;))=uv&#x27;\)</span> on <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> With <span class="math" data-tex="\(x=(1,0,0)\)">\(x=(1,0,0)\)</span>: <span class="math" data-tex="\(x^2=(2,0,0)\)">\(x^2=(2,0,0)\)</span>, <span class="math" data-tex="\(\omega(x,x)=1\cdot0+\binom12\cdot0=0\)">\(\omega(x,x)=1\cdot0+\binom12\cdot0=0\)</span>, and <span class="math" data-tex="\(\omega(x^2,x)=0\)">\(\omega(x^2,x)=0\)</span>; both sides vanish because <span class="math" data-tex="\(\beta=\gamma=0\)">\(\beta=\gamma=0\)</span> throughout.</p>
+<p><strong>6.2.</strong> In matrix coordinates <span class="math" data-tex="\(x=(1,0,0)\)">\(x=(1,0,0)\)</span>, <span class="math" data-tex="\(y=(0,1,0)\)">\(y=(0,1,0)\)</span>, <span class="math" data-tex="\(z=(0,0,1)\)">\(z=(0,0,1)\)</span>. Then <span class="math" data-tex="\(\omega(x,z)=1\cdot1=1\)">\(\omega(x,z)=1\cdot1=1\)</span> and <span class="math" data-tex="\(\omega(z,x)=0\)">\(\omega(z,x)=0\)</span>, so <span class="math" data-tex="\(XZ=(1,xz)\)">\(XZ=(1,xz)\)</span> and <span class="math" data-tex="\(ZX=(0,zx)=(0,xz)\)">\(ZX=(0,zx)=(0,xz)\)</span>. Hence <span class="math" data-tex="\(XZ=T\cdot ZX\)">\(XZ=T\cdot ZX\)</span> with <span class="math" data-tex="\(T=(1,1)\)">\(T=(1,1)\)</span>, which is central because <span class="math" data-tex="\(\omega\)">\(\omega\)</span> vanishes when an argument is the identity; that is, <span class="math" data-tex="\([X,Z]=XZ(ZX)^{-1}=T\)">\([X,Z]=XZ(ZX)^{-1}=T\)</span>. Also <span class="math" data-tex="\(\omega(y,z)=0\cdot1=0\)">\(\omega(y,z)=0\cdot1=0\)</span> and <span class="math" data-tex="\(\omega(z,y)=0\)">\(\omega(z,y)=0\)</span>, so <span class="math" data-tex="\(YZ=(0,yz)=(0,zy)=ZY\)">\(YZ=(0,yz)=(0,zy)=ZY\)</span>.</p>
+<p><strong>6.3.</strong> Freeness of a <span class="math" data-tex="\(\mathbb F_p[P]\)">\(\mathbb F_p[P]\)</span>-module of chains requires that <span class="math" data-tex="\(P\)">\(P\)</span> permute the cells of that dimension without fixed cells; a fixed edge or triangle would give a non-free summand <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> in <span class="math" data-tex="\(C_1\)">\(C_1\)</span> or <span class="math" data-tex="\(C_2\)">\(C_2\)</span>, and the chain complex would not be a free resolution.</p>
+<p><strong>6.4.</strong> For <span class="math" data-tex="\(\Lambda=\mathbb Z^2\)">\(\Lambda=\mathbb Z^2\)</span> the cocycle <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span> is the bilinear form <span class="math" data-tex="\(uv&#x27;\)">\(uv&#x27;\)</span>; on <span class="math" data-tex="\([z|x]-[x|z]\)">\([z|x]-[x|z]\)</span> with <span class="math" data-tex="\(z=(1,0)\)">\(z=(1,0)\)</span>, <span class="math" data-tex="\(x=(0,1)\)">\(x=(0,1)\)</span> it gives <span class="math" data-tex="\(1\cdot1-0\cdot0=1\)">\(1\cdot1-0\cdot0=1\)</span>. Bilinear forms are cocycles, and <span class="math" data-tex="\(H^2(B\mathbb Z^2;\mathbb Z)=H^2(T^2;\mathbb Z)\cong\mathbb Z\)">\(H^2(B\mathbb Z^2;\mathbb Z)=H^2(T^2;\mathbb Z)\cong\mathbb Z\)</span> by (BG), since the torus is a <span class="math" data-tex="\(K(\mathbb Z^2,1)\)">\(K(\mathbb Z^2,1)\)</span>; the class of <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span> evaluates to <span class="math" data-tex="\(1\)">\(1\)</span> on the fundamental class, so it generates.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BCI] OpenAI, <em>A torsion-free counterexample to reduced Baum–Connes injectivity</em>, OpenAI Math Release preprint, 23 September 2026, Sections 7.4-7.7, Lemmas 7.6-7.10, Proposition 7.11. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026</li>
+<li>[Hatcher] A. Hatcher, <em>Algebraic Topology</em>, Cambridge University Press 2002, author's edition, Section 1.B (Example 1B.7, Theorem 1B.8) and Theorem 3.5. https://pi.math.cornell.edu/~hatcher/AT/AT.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

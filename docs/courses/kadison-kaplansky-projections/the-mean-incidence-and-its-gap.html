@@ -1,0 +1,214 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The mean incidence and its gap</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to the Kadison–Kaplansky conjecture)</a><a href="gated-permutations-and-the-two-towers.html">Previous lesson</a><a href="expansion-of-the-realized-incidence.html">Next lesson</a><a href="src/the-mean-incidence-and-its-gap.md">Editable source</a></nav><main><article><h1 id="the-mean-incidence-and-its-gap">The mean incidence and its gap</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Fix an adjacent pair <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> and the tables at all earlier marked blocks of its family. The edges of the pair in the auxiliary tower <span class="math" data-tex="\(Y^0\)">\(Y^0\)</span> depend on the table at its own marked block, which we take uniformly random. This lesson proves that the <em>mean</em> incidence operator, averaged over that table, contracts every function of mean zero by a factor less than <span class="math" data-tex="\(0.8\)">\(0.8\)</span>, uniformly in the pair. The proof organizes functions by the length of the stream prefix they depend on: an incidence step can lengthen the prefix by at most one or two blocks, and each block that is read anew is randomized by an independent uniform vector, which a Fourier computation turns into a gain [OpenAI-KK, Section 5, Lemmas 5.1 and 5.2].</p>
+<ul>
+<li>The incidence operators (Section 1).</li>
+<li>A conditional Fourier estimate (Section 2).</li>
+<li>Prefixes and causality (Section 3).</li>
+<li>The gap of the mean (Section 4).</li>
+</ul>
+<p>The notation of <a href="streams-slots-and-slot-evaluations.html">Streams, slots and slot evaluations</a> and <a href="gated-permutations-and-the-two-towers.html">Gated permutations and the two towers</a> is in force. Write <span class="math" data-tex="\(A=A_i\)">\(A=A_i\)</span>, <span class="math" data-tex="\(B=B_k\)">\(B=B_k\)</span>, <span class="math" data-tex="\(D&#x27;=D_{ik}\)">\(D&#x27;=D_{ik}\)</span> and <span class="math" data-tex="\(E=d|A|=D&#x27;|B|\)">\(E=d|A|=D&#x27;|B|\)</span>, the number of edges of the pair.</p>
+<h2 id="1-the-incidence-operators">1. The incidence operators</h2>
+<p>Give <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> the uniform probability measures, with the inner products of <span class="math" data-tex="\(L^2(A)\)">\(L^2(A)\)</span> and <span class="math" data-tex="\(L^2(B)\)">\(L^2(B)\)</span>. For a realization of the edges of the pair, let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(Nf)(a)=\frac1d\sum_{e:\,e_-=a}f(e_+),\\
+(N^*g)(b)=\frac1{D&#x27;}\sum_{e:\,e_+=b}g(e_-),
+\end{gathered}
+\]">\[
+\begin{gathered}
+(Nf)(a)=\frac1d\sum_{e:\,e_-=a}f(e_+),\\
+(N^*g)(b)=\frac1{D&#x27;}\sum_{e:\,e_+=b}g(e_-),
+\end{gathered}
+\]</span>
+for <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span>, where <span class="math" data-tex="\(e_-\in A\)">\(e_-\in A\)</span> and <span class="math" data-tex="\(e_+\in B\)">\(e_+\in B\)</span> are the ends of the edge <span class="math" data-tex="\(e\)">\(e\)</span>, and parallel edges count separately. Both inner products <span class="math" data-tex="\(\langle Nf,g\rangle\)">\(\langle Nf,g\rangle\)</span> and <span class="math" data-tex="\(\langle f,N^*g\rangle\)">\(\langle f,N^*g\rangle\)</span> equal <span class="math" data-tex="\(E^{-1}\sum_ef(e_+)\overline{g(e_-)}\)">\(E^{-1}\sum_ef(e_+)\overline{g(e_-)}\)</span>, so <span class="math" data-tex="\(N^*\)">\(N^*\)</span> is the adjoint of <span class="math" data-tex="\(N\)">\(N\)</span>. Both operators map constants to constants, and they are contractions: by Jensen's inequality,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|Nf\|^2&amp;\le\frac1{|A|}\sum_a\frac1d\sum_{e_-=a}|f(e_+)|^2\\
+&amp;=\frac1E\sum_e|f(e_+)|^2=\|f\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|Nf\|^2&amp;\le\frac1{|A|}\sum_a\frac1d\sum_{e_-=a}|f(e_+)|^2\\
+&amp;=\frac1E\sum_e|f(e_+)|^2=\|f\|^2 .
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(M=\mathbb EN\)">\(M=\mathbb EN\)</span>, the expectation over the uniformly random table of the marked block of <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>. Then <span class="math" data-tex="\(M^*=\mathbb EN^*\)">\(M^*=\mathbb EN^*\)</span>, and <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(M^*\)">\(M^*\)</span> are contractions that map constants to constants and functions of mean zero to functions of mean zero.</p>
+<h2 id="2-a-conditional-fourier-estimate">2. A conditional Fourier estimate</h2>
+<p>For a function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb F_2^m\)">\(\mathbb F_2^m\)</span> and a linear functional <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> on <span class="math" data-tex="\(\mathbb F_2^m\)">\(\mathbb F_2^m\)</span>, put <span class="math" data-tex="\(\hat f(\zeta)=2^{-m}\sum_zf(z)(-1)^{\zeta(z)}\)">\(\hat f(\zeta)=2^{-m}\sum_zf(z)(-1)^{\zeta(z)}\)</span>. Then <span class="math" data-tex="\(f(z)=\sum_\zeta\hat f(\zeta)(-1)^{\zeta(z)}\)">\(f(z)=\sum_\zeta\hat f(\zeta)(-1)^{\zeta(z)}\)</span> and <span class="math" data-tex="\(\sum_\zeta|\hat f(\zeta)|^2=2^{-m}\sum_z|f(z)|^2\)">\(\sum_\zeta|\hat f(\zeta)|^2=2^{-m}\sum_z|f(z)|^2\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (conditional Fourier estimate; [OpenAI-KK, Lemma 5.1]). Let <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span> be independent random variables, <span class="math" data-tex="\(U\)">\(U\)</span> uniform on <span class="math" data-tex="\(\mathbb F_2^t\)">\(\mathbb F_2^t\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> uniform on <span class="math" data-tex="\(\mathbb F_2^m\)">\(\mathbb F_2^m\)</span>. For <span class="math" data-tex="\(1\le a\le q\)">\(1\le a\le q\)</span> let <span class="math" data-tex="\(M_a:\mathbb F_2^t\to\mathbb F_2^m\)">\(M_a:\mathbb F_2^t\to\mathbb F_2^m\)</span> be linear, <span class="math" data-tex="\(o_a\)">\(o_a\)</span> a function of <span class="math" data-tex="\((C,W)\)">\((C,W)\)</span>, and <span class="math" data-tex="\(f_a(C,z)\)">\(f_a(C,z)\)</span> complex functions with <span class="math" data-tex="\(\mathbb E|f_a(C,Z)|^2&lt;\infty\)">\(\mathbb E|f_a(C,Z)|^2&lt;\infty\)</span> for <span class="math" data-tex="\(Z\)">\(Z\)</span> uniform. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F=\frac1q\sum_af_a(C,V+M_aU+o_a),\\
+\mu(C)=\frac1q\sum_a2^{-m}\sum_zf_a(C,z).
+\end{gathered}
+\]">\[
+\begin{gathered}
+F=\frac1q\sum_af_a(C,V+M_aU+o_a),\\
+\mu(C)=\frac1q\sum_a2^{-m}\sum_zf_a(C,z).
+\end{gathered}
+\]</span>
+Suppose that for every nonzero functional <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> on <span class="math" data-tex="\(\mathbb F_2^m\)">\(\mathbb F_2^m\)</span>, every set of indices <span class="math" data-tex="\(a\)">\(a\)</span> on which <span class="math" data-tex="\(\zeta M_a\)">\(\zeta M_a\)</span> takes one value has at most <span class="math" data-tex="\(\theta q\)">\(\theta q\)</span> elements. Then <span class="math" data-tex="\(\mathbb E(F\mid C,U,W)=\mu(C)\)">\(\mathbb E(F\mid C,U,W)=\mu(C)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E|F-\mu(C)|^2\\
+&amp;\quad\le\theta\,\mathbb E\Bigl[\frac1q\sum_a2^{-m}\sum_z|f_a(C,z)|^2\Bigr] .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E|F-\mu(C)|^2\\
+&amp;\quad\le\theta\,\mathbb E\Bigl[\frac1q\sum_a2^{-m}\sum_z|f_a(C,z)|^2\Bigr] .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> For fixed <span class="math" data-tex="\(C,U,W\)">\(C,U,W\)</span>, the vector <span class="math" data-tex="\(V+M_aU+o_a\)">\(V+M_aU+o_a\)</span> is uniform, which gives the first identity. Expanding each <span class="math" data-tex="\(f_a(C,\cdot)\)">\(f_a(C,\cdot)\)</span> in its Fourier series, the term <span class="math" data-tex="\(\zeta=0\)">\(\zeta=0\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span> is <span class="math" data-tex="\(\mu(C)\)">\(\mu(C)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;F-\mu(C)\\
+&amp;\quad=\frac1q\sum_a\sum_{\zeta\ne0}\hat f_a(\zeta)\\
+&amp;\qquad\cdot(-1)^{\zeta(V)+\zeta(M_aU)+\zeta(o_a)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;F-\mu(C)\\
+&amp;\quad=\frac1q\sum_a\sum_{\zeta\ne0}\hat f_a(\zeta)\\
+&amp;\qquad\cdot(-1)^{\zeta(V)+\zeta(M_aU)+\zeta(o_a)} .
+\end{aligned}
+\]</span>
+In <span class="math" data-tex="\(\mathbb E_{U,V}|F-\mu(C)|^2\)">\(\mathbb E_{U,V}|F-\mu(C)|^2\)</span>, averaging over <span class="math" data-tex="\(V\)">\(V\)</span> kills the products of terms with different <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, and averaging over <span class="math" data-tex="\(U\)">\(U\)</span> kills the products of terms <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with <span class="math" data-tex="\(\zeta M_a\ne\zeta M_b\)">\(\zeta M_a\ne\zeta M_b\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_{U,V}|F-\mu(C)|^2\\
+&amp;\quad=\frac1{q^2}\sum_{\zeta\ne0}\sum_{\mathcal C}\Bigl|\sum_{a\in\mathcal C}(-1)^{\zeta(o_a)}\hat f_a(\zeta)\Bigr|^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_{U,V}|F-\mu(C)|^2\\
+&amp;\quad=\frac1{q^2}\sum_{\zeta\ne0}\sum_{\mathcal C}\Bigl|\sum_{a\in\mathcal C}(-1)^{\zeta(o_a)}\hat f_a(\zeta)\Bigr|^2 ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> runs over the classes of indices with a common value of <span class="math" data-tex="\(\zeta M_a\)">\(\zeta M_a\)</span>. By the Cauchy–Schwarz inequality each square is at most <span class="math" data-tex="\(|\mathcal C|\sum_{a\in\mathcal C}|\hat f_a(\zeta)|^2\le\theta q\sum_{a\in\mathcal C}|\hat f_a(\zeta)|^2\)">\(|\mathcal C|\sum_{a\in\mathcal C}|\hat f_a(\zeta)|^2\le\theta q\sum_{a\in\mathcal C}|\hat f_a(\zeta)|^2\)</span>. Summing over classes and <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, and using Parseval's identity, the right side is at most <span class="math" data-tex="\(\frac\theta q\sum_a2^{-m}\sum_z|f_a(C,z)|^2\)">\(\frac\theta q\sum_a2^{-m}\sum_z|f_a(C,z)|^2\)</span>. Integrate over <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>By Lemma 6.1 of the lesson on streams and slots, the hypothesis holds with <span class="math" data-tex="\(\theta=10^{-3}\)">\(\theta=10^{-3}\)</span> when <span class="math" data-tex="\(M_a\)">\(M_a\)</span> is the map of a slot on a full block of length <span class="math" data-tex="\(s\)">\(s\)</span> (input <span class="math" data-tex="\(\mathbb F_2^s\)">\(\mathbb F_2^s\)</span>, output the block and its spill), and with <span class="math" data-tex="\(\theta=0.55\)">\(\theta=0.55\)</span> when it is that map restricted to a nonempty initial segment of the input block.</p>
+<h2 id="3-prefixes-and-causality">3. Prefixes and causality</h2>
+<p>For <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> let <span class="math" data-tex="\(P^A_h\)">\(P^A_h\)</span> be the conditional expectation, on <span class="math" data-tex="\(L^2(A)\)">\(L^2(A)\)</span>, onto the functions of the first <span class="math" data-tex="\(r+sh\)">\(r+sh\)</span> coordinates of <span class="math" data-tex="\(u_A\)">\(u_A\)</span> and the first <span class="math" data-tex="\(r+sh\)">\(r+sh\)</span> coordinates of <span class="math" data-tex="\(v_A\)">\(v_A\)</span>; for <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> let <span class="math" data-tex="\(P^B_j\)">\(P^B_j\)</span> be the conditional expectation onto the functions of the first <span class="math" data-tex="\(sj\)">\(sj\)</span> coordinates of <span class="math" data-tex="\(u_B\)">\(u_B\)</span> and of <span class="math" data-tex="\(v_B\)">\(v_B\)</span>. Inactive coordinates are zero, so these are finite increasing families of orthogonal projections, eventually the identity, and <span class="math" data-tex="\(P^B_0=C_B\)">\(P^B_0=C_B\)</span> is the projection onto the constants; <span class="math" data-tex="\(C_A\)">\(C_A\)</span> is the projection onto the constants of <span class="math" data-tex="\(L^2(A)\)">\(L^2(A)\)</span>.</p>
+<p><strong>Forward data.</strong> Fix a slot <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>. The value at the <span class="math" data-tex="\(B\)">\(B\)</span>-end of the edge at <span class="math" data-tex="\(a\)">\(a\)</span> of a function in the range of <span class="math" data-tex="\(P^B_j\)">\(P^B_j\)</span> is determined by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_A\big|_{[0,r+s(j-1))}\ \text{and}\\
+Q_A\big|_{[0,p+sj)} .
+\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}
+u_A\big|_{[0,r+s(j-1))}\ \text{and}\\
+Q_A\big|_{[0,p+sj)} .
+\end{gathered}\tag{3.1}
+\]</span>
+Indeed the first <span class="math" data-tex="\(p\)">\(p\)</span> coordinates of <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span> are <span class="math" data-tex="\(x\)">\(x\)</span>, including the bucket; inverting <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> on the next <span class="math" data-tex="\(sj\)">\(sj\)</span> coordinates gives the first <span class="math" data-tex="\(j\)">\(j\)</span> blocks of <span class="math" data-tex="\(u_B\)">\(u_B\)</span>, whose keys use <span class="math" data-tex="\(A\)">\(A\)</span>-blocks up to <span class="math" data-tex="\(j-1\)">\(j-1\)</span>. The first <span class="math" data-tex="\(sj\)">\(sj\)</span> coordinates of <span class="math" data-tex="\(v_B=Q_B+\mathcal K_cu_B\)">\(v_B=Q_B+\mathcal K_cu_B\)</span> use <span class="math" data-tex="\(\mathcal J(u_A)\)">\(\mathcal J(u_A)\)</span> up to length <span class="math" data-tex="\(sj-p&#x27;=r+s(j-1)-\beta\)">\(sj-p&#x27;=r+s(j-1)-\beta\)</span>, at most <span class="math" data-tex="\(r+s(j-1)\)">\(r+s(j-1)\)</span>, whose keys use <span class="math" data-tex="\(B\)">\(B\)</span>-blocks up to <span class="math" data-tex="\(j-1\)">\(j-1\)</span>, and <span class="math" data-tex="\(\mathcal K_c\)">\(\mathcal K_c\)</span> applied to the first <span class="math" data-tex="\(j\)">\(j\)</span> blocks of <span class="math" data-tex="\(u_B\)">\(u_B\)</span>.</p>
+<p><strong>Reverse data.</strong> Fix a slot <span class="math" data-tex="\(c\)">\(c\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span>. The value at the <span class="math" data-tex="\(A\)">\(A\)</span>-end of a function in the range of <span class="math" data-tex="\(P^A_h\)">\(P^A_h\)</span> is determined by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_B\big|_{[0,sh)}\ \text{and}\\
+Q_B\big|_{[0,p&#x27;+r+sh)} .
+\end{gathered}\tag{3.2}
+\]">\[
+\begin{gathered}
+u_B\big|_{[0,sh)}\ \text{and}\\
+Q_B\big|_{[0,p&#x27;+r+sh)} .
+\end{gathered}\tag{3.2}
+\]</span>
+The first <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> coordinates of <span class="math" data-tex="\(Q_B\)">\(Q_B\)</span> are <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span>, and the bucket is part of the slot; inverting <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> gives <span class="math" data-tex="\(u_A\)">\(u_A\)</span> up to length <span class="math" data-tex="\(r+sh\)">\(r+sh\)</span>, with keys among the first <span class="math" data-tex="\(h\)">\(h\)</span> blocks of <span class="math" data-tex="\(u_B\)">\(u_B\)</span>; and <span class="math" data-tex="\(v_A\)">\(v_A\)</span> up to length <span class="math" data-tex="\(r+sh\)">\(r+sh\)</span> uses <span class="math" data-tex="\(\mathcal F(u_B)\)">\(\mathcal F(u_B)\)</span> up to length <span class="math" data-tex="\(r+sh-p=sh-\alpha\le sh\)">\(r+sh-p=sh-\alpha\le sh\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (causality). For every realization of the table, and hence for <span class="math" data-tex="\(M\)">\(M\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{ran}(MP^B_j)\subseteq\operatorname{ran}P^A_{j+1},\\
+\operatorname{ran}(M^*P^A_h)\subseteq\operatorname{ran}P^B_{h+2} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{ran}(MP^B_j)\subseteq\operatorname{ran}P^A_{j+1},\\
+\operatorname{ran}(M^*P^A_h)\subseteq\operatorname{ran}P^B_{h+2} .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> In (3.1), <span class="math" data-tex="\(p+sj=r+sj+\alpha\)">\(p+sj=r+sj+\alpha\)</span> lies at most two coordinates into <span class="math" data-tex="\(A\)">\(A\)</span>-block <span class="math" data-tex="\(j+1\)">\(j+1\)</span>, and these coordinates of <span class="math" data-tex="\(Q_A=v_A+\mathcal K_au_A\)">\(Q_A=v_A+\mathcal K_au_A\)</span> depend on the whole input block <span class="math" data-tex="\(j+1\)">\(j+1\)</span> through the diagonal coefficient. So the data (3.1) are functions of the first <span class="math" data-tex="\(r+s(j+1)\)">\(r+s(j+1)\)</span> coordinates of <span class="math" data-tex="\(u_A\)">\(u_A\)</span> and <span class="math" data-tex="\(v_A\)">\(v_A\)</span>. In (3.2), <span class="math" data-tex="\(p&#x27;+r+sh=(h+1)s+\beta\)">\(p&#x27;+r+sh=(h+1)s+\beta\)</span> lies at most two coordinates into <span class="math" data-tex="\(B\)">\(B\)</span>-block <span class="math" data-tex="\(h+2\)">\(h+2\)</span>, and the same reasoning applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2</strong> (one new block). Let <span class="math" data-tex="\(1\le j\le n\)">\(1\le j\le n\)</span> in the notation of the cutoff, so that <span class="math" data-tex="\(A\)">\(A\)</span>-block <span class="math" data-tex="\(j\)">\(j\)</span> is full, and suppose <span class="math" data-tex="\(r+sj+\alpha\le|v_A|\)">\(r+sj+\alpha\le|v_A|\)</span>. Then
+<span class="math math-display" data-tex="\[
+\|(1-P^A_{j-1})MP^B_j\|^2\le10^{-3} .
+\]">\[
+\|(1-P^A_{j-1})MP^B_j\|^2\le10^{-3} .
+\]</span>
+Symmetrically, if <span class="math" data-tex="\(B\)">\(B\)</span>-block <span class="math" data-tex="\(h+1\)">\(h+1\)</span> is full and <span class="math" data-tex="\(s(h+1)+\beta\le|v_B|\)">\(s(h+1)+\beta\le|v_B|\)</span>, then <span class="math" data-tex="\(\|(1-P^B_h)M^*P^A_h\|^2\le10^{-3}\)">\(\|(1-P^B_h)M^*P^A_h\|^2\le10^{-3}\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(f\)">\(f\)</span> be in the range of <span class="math" data-tex="\(P^B_j\)">\(P^B_j\)</span>, and put <span class="math" data-tex="\(R=r+s(j-1)\)">\(R=r+s(j-1)\)</span>. On <span class="math" data-tex="\(A\)">\(A\)</span> with the uniform measure, let <span class="math" data-tex="\(C\)">\(C\)</span> be the first <span class="math" data-tex="\(R\)">\(R\)</span> coordinates of <span class="math" data-tex="\(u_A\)">\(u_A\)</span> and of <span class="math" data-tex="\(v_A\)">\(v_A\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> the <span class="math" data-tex="\(A\)">\(A\)</span>-block <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(u_A\)">\(u_A\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span> the coordinates of <span class="math" data-tex="\(v_A\)">\(v_A\)</span> in <span class="math" data-tex="\([R,R+s+\alpha)\)">\([R,R+s+\alpha)\)</span>, and <span class="math" data-tex="\(W\)">\(W\)</span> all remaining coordinates; these are independent and uniform. By (3.1), the value of <span class="math" data-tex="\(f\)">\(f\)</span> at the <span class="math" data-tex="\(B\)">\(B\)</span>-end of the edge at the slot <span class="math" data-tex="\(a\)">\(a\)</span>, averaged over the table, is a function <span class="math" data-tex="\(f_a(C,Z_a)\)">\(f_a(C,Z_a)\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span> and the coordinates of <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span> in <span class="math" data-tex="\([R,R+s+\alpha)\)">\([R,R+s+\alpha)\)</span>,
+<span class="math math-display" data-tex="\[
+Z_a=V+M_aU+o_a ,
+\]">\[
+Z_a=V+M_aU+o_a ,
+\]</span>
+where <span class="math" data-tex="\(M_a\)">\(M_a\)</span> is the map of Lemma 6.1 of the lesson on streams and slots, and <span class="math" data-tex="\(o_a\)">\(o_a\)</span> collects the spill from <span class="math" data-tex="\(A\)">\(A\)</span>-block <span class="math" data-tex="\(j-1\)">\(j-1\)</span>, a function of <span class="math" data-tex="\(C\)">\(C\)</span>, and the contribution of <span class="math" data-tex="\(A\)">\(A\)</span>-block <span class="math" data-tex="\(j+1\)">\(j+1\)</span> to the last <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> coordinates, a function of <span class="math" data-tex="\(W\)">\(W\)</span>. So <span class="math" data-tex="\(Mf=\frac1d\sum_af_a(C,Z_a)\)">\(Mf=\frac1d\sum_af_a(C,Z_a)\)</span>, and Lemma 2.1 with <span class="math" data-tex="\(\theta=10^{-3}\)">\(\theta=10^{-3}\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E|Mf-\mu(C)|^2\\
+&amp;\quad\le10^{-3}\,\mathbb E\Bigl[\frac1d\sum_a2^{-m}\sum_z|f_a(C,z)|^2\Bigr],
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E|Mf-\mu(C)|^2\\
+&amp;\quad\le10^{-3}\,\mathbb E\Bigl[\frac1d\sum_a2^{-m}\sum_z|f_a(C,z)|^2\Bigr],
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\mu(C)=P^A_{j-1}Mf\)">\(\mu(C)=P^A_{j-1}Mf\)</span>.</p>
+<p>The right side is at most <span class="math" data-tex="\(10^{-3}\|f\|^2\)">\(10^{-3}\|f\|^2\)</span>. Indeed, for each <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(Z_a\)">\(Z_a\)</span> is uniform given <span class="math" data-tex="\(C\)">\(C\)</span>, so <span class="math" data-tex="\(\mathbb E\,2^{-m}\sum_z|f_a(C,z)|^2=\mathbb E|f_a(C,Z_a)|^2\)">\(\mathbb E\,2^{-m}\sum_z|f_a(C,z)|^2=\mathbb E|f_a(C,Z_a)|^2\)</span>; by Jensen's inequality this is at most the average over the table of <span class="math" data-tex="\(|f|^2\)">\(|f|^2\)</span> at the <span class="math" data-tex="\(B\)">\(B\)</span>-end of the edge at <span class="math" data-tex="\(a\)">\(a\)</span>; and averaging over the slots and a uniform vertex of <span class="math" data-tex="\(A\)">\(A\)</span> gives a uniform vertex of <span class="math" data-tex="\(B\)">\(B\)</span>, because every vertex of <span class="math" data-tex="\(B\)">\(B\)</span> has the same number of slots. The second statement is proved in the same way, with the roles of the sides exchanged, using (3.2) and the <span class="math" data-tex="\(B\)">\(B\)</span>-block <span class="math" data-tex="\(h+1\)">\(h+1\)</span> with the coordinates <span class="math" data-tex="\([sh,s(h+1)+\beta)\)">\([sh,s(h+1)+\beta)\)</span> of <span class="math" data-tex="\(v_B\)">\(v_B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-gap-of-the-mean">4. The gap of the mean</h2>
+<p><strong>Lemma 4.1</strong> (uniform gap of the mean; [OpenAI-KK, Lemma 5.2]). For every adjacent pair and every choice of the tables at the earlier marked blocks of its family,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bigl\|M:\mathbf1_B^\perp\to\mathbf1_A^\perp\bigr\|&amp;\le\sqrt{16\cdot10^{-3}+0.55}\\
+&amp;&lt;0.8 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\bigl\|M:\mathbf1_B^\perp\to\mathbf1_A^\perp\bigr\|&amp;\le\sqrt{16\cdot10^{-3}+0.55}\\
+&amp;&lt;0.8 .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(E^A_0=P^A_0-C_A\)">\(E^A_0=P^A_0-C_A\)</span>, <span class="math" data-tex="\(E^A_h=P^A_h-P^A_{h-1}\)">\(E^A_h=P^A_h-P^A_{h-1}\)</span> for <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>, and <span class="math" data-tex="\(E^B_j=P^B_j-P^B_{j-1}\)">\(E^B_j=P^B_j-P^B_{j-1}\)</span> for <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>. They are orthogonal projections whose ranges decompose the functions of mean zero. By Lemma 3.1, <span class="math" data-tex="\(E^A_hME^B_j=0\)">\(E^A_hME^B_j=0\)</span> unless
+<span class="math math-display" data-tex="\[
+-2\le h-j\le1 .
+\]">\[
+-2\le h-j\le1 .
+\]</span>
+For <span class="math" data-tex="\(h-j\in\{0,1\}\)">\(h-j\in\{0,1\}\)</span>, <span class="math" data-tex="\(E^A_h\le1-P^A_{j-1}\)">\(E^A_h\le1-P^A_{j-1}\)</span> and <span class="math" data-tex="\(E^B_j\le P^B_j\)">\(E^B_j\le P^B_j\)</span>, so <span class="math" data-tex="\(\|E^A_hME^B_j\|\le10^{-3/2}\)">\(\|E^A_hME^B_j\|\le10^{-3/2}\)</span> by Lemma 3.2 whenever its hypotheses hold. For <span class="math" data-tex="\(j-h\in\{1,2\}\)">\(j-h\in\{1,2\}\)</span>, <span class="math" data-tex="\(E^B_j\le1-P^B_h\)">\(E^B_j\le1-P^B_h\)</span>, and the adjoint form of Lemma 3.2 gives the same bound. Along a band of fixed <span class="math" data-tex="\(h-j\)">\(h-j\)</span> the blocks have mutually orthogonal domains and mutually orthogonal ranges, so the sum along a band has norm at most <span class="math" data-tex="\(10^{-3/2}\)">\(10^{-3/2}\)</span>, and the sum of the four bands at most <span class="math" data-tex="\(4\cdot10^{-3/2}=\sqrt{16\cdot10^{-3}}\)">\(4\cdot10^{-3/2}=\sqrt{16\cdot10^{-3}}\)</span>. It remains to treat the last block, in each of the two forms of the cutoff (Lemma 2.2 of the lesson on streams and slots).</p>
+<p><em>Form (B): <span class="math" data-tex="\(l_A=r+ns\)">\(l_A=r+ns\)</span>, <span class="math" data-tex="\(l_B=ns+t\)">\(l_B=ns+t\)</span>.</em> Then <span class="math" data-tex="\(|v_A|=r+ns+\alpha+t\)">\(|v_A|=r+ns+\alpha+t\)</span> and <span class="math" data-tex="\(|v_B|=(n+1)s+\beta\)">\(|v_B|=(n+1)s+\beta\)</span>. For inputs in the range of <span class="math" data-tex="\(P^B_n-C_B\)">\(P^B_n-C_B\)</span> only <span class="math" data-tex="\(j\le n\)">\(j\le n\)</span> occurs: in the bands <span class="math" data-tex="\(h-j\in\{0,1\}\)">\(h-j\in\{0,1\}\)</span> Lemma 3.2 uses the full <span class="math" data-tex="\(A\)">\(A\)</span>-block <span class="math" data-tex="\(j\le n\)">\(j\le n\)</span> and needs <span class="math" data-tex="\(r+sj+\alpha\le|v_A|\)">\(r+sj+\alpha\le|v_A|\)</span>, true; in the bands <span class="math" data-tex="\(j-h\in\{1,2\}\)">\(j-h\in\{1,2\}\)</span>, <span class="math" data-tex="\(h\le n-1\)">\(h\le n-1\)</span>, the full <span class="math" data-tex="\(B\)">\(B\)</span>-block <span class="math" data-tex="\(h+1\le n\)">\(h+1\le n\)</span> is used and <span class="math" data-tex="\(s(h+1)+\beta\le|v_B|\)">\(s(h+1)+\beta\le|v_B|\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|M(P^B_n-C_B)\|\\
+\le4\cdot10^{-3/2} .
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+\|M(P^B_n-C_B)\|\\
+\le4\cdot10^{-3/2} .
+\end{gathered}\tag{4.1}
+\]</span>
+Now let <span class="math" data-tex="\(g\)">\(g\)</span> be a function on <span class="math" data-tex="\(A\)">\(A\)</span>. At a vertex of <span class="math" data-tex="\(B\)">\(B\)</span> and a slot <span class="math" data-tex="\(c\)">\(c\)</span>, the blocks of <span class="math" data-tex="\(u_B\)">\(u_B\)</span> before the marked block <span class="math" data-tex="\(B(n+1)\)">\(B(n+1)\)</span> determine, by inversion, the whole of <span class="math" data-tex="\(u_A\)">\(u_A\)</span> and all of <span class="math" data-tex="\(v_A\)">\(v_A\)</span> except its last <span class="math" data-tex="\(t\)">\(t\)</span> coordinates, which occupy <span class="math" data-tex="\([p+ns,p+ns+t)\)">\([p+ns,p+ns+t)\)</span>. The table of the marked block matches these <span class="math" data-tex="\(t\)">\(t\)</span> coordinates of <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span> uniformly at random, and <span class="math" data-tex="\(\mathcal K_au_A\)">\(\mathcal K_au_A\)</span> vanishes on them, since its last spill ends at <span class="math" data-tex="\(r+ns+\alpha=p+ns\)">\(r+ns+\alpha=p+ns\)</span>; so after averaging over the table, the last <span class="math" data-tex="\(t\)">\(t\)</span> coordinates of <span class="math" data-tex="\(v_A\)">\(v_A\)</span> are uniform, and the averaged value of <span class="math" data-tex="\(g\)">\(g\)</span> at the <span class="math" data-tex="\(A\)">\(A\)</span>-end is a function of <span class="math" data-tex="\(u_B|_{[0,ns)}\)">\(u_B|_{[0,ns)}\)</span> and <span class="math" data-tex="\(Q_B|_{[0,(n+1)s+\beta)}\)">\(Q_B|_{[0,(n+1)s+\beta)}\)</span> only. Conditioning on the first <span class="math" data-tex="\(ns\)">\(ns\)</span> coordinates of <span class="math" data-tex="\(u_B\)">\(u_B\)</span> and <span class="math" data-tex="\(v_B\)">\(v_B\)</span>, the coordinates of <span class="math" data-tex="\(Q_B\)">\(Q_B\)</span> in <span class="math" data-tex="\([ns,(n+1)s+\beta)\)">\([ns,(n+1)s+\beta)\)</span> have the form <span class="math" data-tex="\(V+M_cU+o_c\)">\(V+M_cU+o_c\)</span> with <span class="math" data-tex="\(U\)">\(U\)</span> the <span class="math" data-tex="\(t\)">\(t\)</span> active coordinates of the last <span class="math" data-tex="\(B\)">\(B\)</span>-block and <span class="math" data-tex="\(V\)">\(V\)</span> the coordinates of <span class="math" data-tex="\(v_B\)">\(v_B\)</span> in that interval. Lemma 2.1 with <span class="math" data-tex="\(\theta=0.55\)">\(\theta=0.55\)</span>, and the norm argument of Lemma 3.2, give
+<span class="math math-display" data-tex="\[
+\|(1-P^B_n)M^*\|^2\le0.55 .
+\]">\[
+\|(1-P^B_n)M^*\|^2\le0.55 .
+\]</span>
+For <span class="math" data-tex="\(g\)">\(g\)</span> of mean zero, <span class="math" data-tex="\(M^*g\)">\(M^*g\)</span> has mean zero, so <span class="math" data-tex="\(P^B_nM^*g=(P^B_n-C_B)M^*g\)">\(P^B_nM^*g=(P^B_n-C_B)M^*g\)</span>, whose norm is at most <span class="math" data-tex="\(4\cdot10^{-3/2}\|g\|\)">\(4\cdot10^{-3/2}\|g\|\)</span> by (4.1). The two components are orthogonal, so <span class="math" data-tex="\(\|M^*g\|^2\le(16\cdot10^{-3}+0.55)\|g\|^2\)">\(\|M^*g\|^2\le(16\cdot10^{-3}+0.55)\|g\|^2\)</span>.</p>
+<p><em>Form (A): <span class="math" data-tex="\(l_B=(n+1)s\)">\(l_B=(n+1)s\)</span>, <span class="math" data-tex="\(l_A=r+ns+t\)">\(l_A=r+ns+t\)</span>.</em> Then <span class="math" data-tex="\(|v_A|=r+(n+1)s+\alpha\)">\(|v_A|=r+(n+1)s+\alpha\)</span> and <span class="math" data-tex="\(|v_B|=(n+1)s+\beta+t\)">\(|v_B|=(n+1)s+\beta+t\)</span>. For inputs in the range of <span class="math" data-tex="\(P^A_n-C_A\)">\(P^A_n-C_A\)</span>, the bands use full <span class="math" data-tex="\(A\)">\(A\)</span>-blocks <span class="math" data-tex="\(j\le n\)">\(j\le n\)</span>, with <span class="math" data-tex="\(r+sj+\alpha\le|v_A|\)">\(r+sj+\alpha\le|v_A|\)</span>, and full <span class="math" data-tex="\(B\)">\(B\)</span>-blocks <span class="math" data-tex="\(h+1\le n+1\)">\(h+1\le n+1\)</span>, with <span class="math" data-tex="\(s(h+1)+\beta\le|v_B|\)">\(s(h+1)+\beta\le|v_B|\)</span>; so <span class="math" data-tex="\(\|M^*(P^A_n-C_A)\|\le4\cdot10^{-3/2}\)">\(\|M^*(P^A_n-C_A)\|\le4\cdot10^{-3/2}\)</span>. The table of the marked block <span class="math" data-tex="\(A(n+1)\)">\(A(n+1)\)</span> matches the last <span class="math" data-tex="\(t\)">\(t\)</span> coordinates of <span class="math" data-tex="\(Q_B\)">\(Q_B\)</span>, which start at <span class="math" data-tex="\(p&#x27;+r+ns=(n+1)s+\beta\)">\(p&#x27;+r+ns=(n+1)s+\beta\)</span>, where <span class="math" data-tex="\(\mathcal K_cu_B\)">\(\mathcal K_cu_B\)</span> has ended; so they are the last <span class="math" data-tex="\(t\)">\(t\)</span> coordinates of <span class="math" data-tex="\(v_B\)">\(v_B\)</span>, and after averaging, the value of <span class="math" data-tex="\(f\)">\(f\)</span> at the <span class="math" data-tex="\(B\)">\(B\)</span>-end is a function of <span class="math" data-tex="\(u_A|_{[0,r+ns)}\)">\(u_A|_{[0,r+ns)}\)</span> and <span class="math" data-tex="\(Q_A|_{[0,p+(n+1)s)}\)">\(Q_A|_{[0,p+(n+1)s)}\)</span>. Conditioning on the first <span class="math" data-tex="\(r+ns\)">\(r+ns\)</span> coordinates of <span class="math" data-tex="\(u_A\)">\(u_A\)</span> and <span class="math" data-tex="\(v_A\)">\(v_A\)</span>, with <span class="math" data-tex="\(U\)">\(U\)</span> the <span class="math" data-tex="\(t\)">\(t\)</span> active coordinates of the last <span class="math" data-tex="\(A\)">\(A\)</span>-block and <span class="math" data-tex="\(V\)">\(V\)</span> the coordinates of <span class="math" data-tex="\(v_A\)">\(v_A\)</span> in <span class="math" data-tex="\([r+ns,r+(n+1)s+\alpha)\)">\([r+ns,r+(n+1)s+\alpha)\)</span>, Lemma 2.1 gives <span class="math" data-tex="\(\|(1-P^A_n)M\|^2\le0.55\)">\(\|(1-P^A_n)M\|^2\le0.55\)</span>, and the same orthogonal combination proves the bound for <span class="math" data-tex="\(\|Mf\|\)">\(\|Mf\|\)</span>, <span class="math" data-tex="\(f\perp\mathbf1_B\)">\(f\perp\mathbf1_B\)</span>.</p>
+<p>In both forms the bound holds for all <span class="math" data-tex="\(1\le t\le s\)">\(1\le t\le s\)</span> and <span class="math" data-tex="\(\alpha,\beta\in\{0,1,2\}\)">\(\alpha,\beta\in\{0,1,2\}\)</span>, and since <span class="math" data-tex="\(n\ge n_0-1\)">\(n\ge n_0-1\)</span>, there are full blocks before the last one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Verify the identity <span class="math" data-tex="\(\sum_\zeta|\hat f(\zeta)|^2=2^{-m}\sum_z|f(z)|^2\)">\(\sum_\zeta|\hat f(\zeta)|^2=2^{-m}\sum_z|f(z)|^2\)</span> for <span class="math" data-tex="\(m=1\)">\(m=1\)</span> and <span class="math" data-tex="\(f=(f(0),f(1))\)">\(f=(f(0),f(1))\)</span>.</p>
+<p><strong>5.2</strong> (medium). In Lemma 2.1 let <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, <span class="math" data-tex="\(t=m=1\)">\(t=m=1\)</span>, <span class="math" data-tex="\(M_1=M_2=1\)">\(M_1=M_2=1\)</span>, <span class="math" data-tex="\(o_1=o_2=0\)">\(o_1=o_2=0\)</span>, and <span class="math" data-tex="\(f_1=f_2=f\)">\(f_1=f_2=f\)</span> with <span class="math" data-tex="\(f(0)=1\)">\(f(0)=1\)</span>, <span class="math" data-tex="\(f(1)=-1\)">\(f(1)=-1\)</span>. Compute <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\mathbb E|F-\mu|^2\)">\(\mathbb E|F-\mu|^2\)</span>, and show that the hypothesis holds only with <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span>. What changes if <span class="math" data-tex="\(M_2=0\)">\(M_2=0\)</span>?</p>
+<p><strong>5.3</strong> (medium). Show that <span class="math" data-tex="\(\|M\|\le1\)">\(\|M\|\le1\)</span> on <span class="math" data-tex="\(L^2(B)\)">\(L^2(B)\)</span> and that <span class="math" data-tex="\(\|M:\mathbf1_B^\perp\to\mathbf1_A^\perp\|\)">\(\|M:\mathbf1_B^\perp\to\mathbf1_A^\perp\|\)</span> is the second largest singular value of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>5.4</strong> (medium). Explain why Lemma 3.1 cannot be improved to <span class="math" data-tex="\(\operatorname{ran}(MP^B_j)\subseteq\operatorname{ran}P^A_j\)">\(\operatorname{ran}(MP^B_j)\subseteq\operatorname{ran}P^A_j\)</span> in general.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(\hat f(0)=\frac{f(0)+f(1)}2\)">\(\hat f(0)=\frac{f(0)+f(1)}2\)</span>, <span class="math" data-tex="\(\hat f(1)=\frac{f(0)-f(1)}2\)">\(\hat f(1)=\frac{f(0)-f(1)}2\)</span>, and <span class="math" data-tex="\(|\hat f(0)|^2+|\hat f(1)|^2=\frac{|f(0)|^2+|f(1)|^2}2\)">\(|\hat f(0)|^2+|\hat f(1)|^2=\frac{|f(0)|^2+|f(1)|^2}2\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(F=f(V+U)=(-1)^{V+U}\)">\(F=f(V+U)=(-1)^{V+U}\)</span>, <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>, and <span class="math" data-tex="\(\mathbb E|F|^2=1\)">\(\mathbb E|F|^2=1\)</span>. For <span class="math" data-tex="\(\zeta\ne0\)">\(\zeta\ne0\)</span> both indices have <span class="math" data-tex="\(\zeta M_a=\zeta\)">\(\zeta M_a=\zeta\)</span>, one class of size <span class="math" data-tex="\(2=q\)">\(2=q\)</span>, so <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span>, and the bound <span class="math" data-tex="\(\theta\cdot1=1\)">\(\theta\cdot1=1\)</span> is attained. If <span class="math" data-tex="\(M_2=0\)">\(M_2=0\)</span>, the classes are <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span> and <span class="math" data-tex="\(\{2\}\)">\(\{2\}\)</span>, <span class="math" data-tex="\(\theta=\frac12\)">\(\theta=\frac12\)</span>, and <span class="math" data-tex="\(F=\frac12((-1)^{V+U}+(-1)^V)\)">\(F=\frac12((-1)^{V+U}+(-1)^V)\)</span> has <span class="math" data-tex="\(\mathbb E|F|^2=\frac12\)">\(\mathbb E|F|^2=\frac12\)</span>.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(M\)">\(M\)</span> is an average of contractions. It maps the constants of <span class="math" data-tex="\(B\)">\(B\)</span> to those of <span class="math" data-tex="\(A\)">\(A\)</span> and the orthogonal complements to each other, so its singular values are <span class="math" data-tex="\(1\)">\(1\)</span>, on the constants, and those of the restriction to <span class="math" data-tex="\(\mathbf1_B^\perp\)">\(\mathbf1_B^\perp\)</span>.</p>
+<p><strong>5.4.</strong> The coordinates of <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span> in <span class="math" data-tex="\([r+sj,r+sj+\alpha)\)">\([r+sj,r+sj+\alpha)\)</span> are needed in (3.1) when <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, and they involve <span class="math" data-tex="\(\lambda_au\)">\(\lambda_au\)</span> for the whole <span class="math" data-tex="\(A\)">\(A\)</span>-block <span class="math" data-tex="\(j+1\)">\(j+1\)</span> of <span class="math" data-tex="\(u_A\)">\(u_A\)</span>; a function of them is generally not a function of the first <span class="math" data-tex="\(r+sj\)">\(r+sj\)</span> coordinates.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-KK] OpenAI, <em>A torsion-free counterexample to the Kadison–Kaplansky projection conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Section 5, Lemmas 5.1 and 5.2. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-the-Kadison-Kaplansky-Projection-Conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

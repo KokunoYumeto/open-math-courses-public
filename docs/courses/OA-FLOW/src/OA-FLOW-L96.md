@@ -1,4 +1,4 @@
-# A weak-star Hille–Yosida criterion for isometric groups
+# Isometric group generation in norm and weak-star topologies
 
 An abstract weak-star closed operator need not generate a group. The decisive conditions are contractive lower bounds for both signs and one range condition in each direction. This lesson proves the weak-star group form of Takesaki II, Theorem XI.1.20, whose proof is omitted in the source. It also proves normality of every resolvent, the Euler approximation, and the sign-dependent correction to the displayed Yosida exponential.
 
@@ -355,3 +355,83 @@ If these exponentials converged strongly on every vector for fixed \(t<0\) as \(
 **Solution.** Since \(\delta e_n=in e_n\), the resolvent multiplier is \((1-isn)^{-1}\). Its modulus is at most one, so the inverse is a contraction and \(\|(I-s\delta)x\|^2=\sum_n(1+s^2n^2)|x_n|^2\ge\|x\|^2\) on the natural domain. \(\square\)
 
 The mathematical source is M. Takesaki, *Theory of Operator Algebras II*, Theorem XI.1.20 and equation (19), printed pages 326–327 ([edition record](https://doi.org/10.1007/978-3-662-10451-4)). The theorem proof is omitted there. The argument above supplies its full predual construction, both-sign domains, semigroup generator equality and onto group, together with exact Euler and directional Yosida estimates. The \(s=0\) resolvent convention and time-direction qualification are made explicit rather than treating the displays as domain-free identities. Every mathematical input has the actual earlier proof locator stated above.
+
+<a id="oa-flow.hy.norm"></a>
+
+## The norm-closed criterion on an ordinary Banach space
+
+Let \(E\) be a complex Banach space and let \(A:D\subset E\to E\) be linear, norm-closed and norm-densely defined. Then \(A\), with exactly the domain \(D\), generates a unique strongly continuous group of surjective isometries if and only if
+\[
+ \|(I-sA)x\|\geq\|x\|\quad(s\in\mathbb R,\ x\in D),
+ \qquad
+ (I-r_+A)D=(I+r_-A)D=E
+ \tag{NB1}
+\]
+for some \(r_+,r_->0\). The hypotheses here concern norm topology; no dual space or weak-star closedness is required.
+
+We first obtain every real resolvent directly in norm. If \(I-sA\) is onto for \(s\ne0\), its inverse \(J_s\) is a contraction by (NB1). Onto parameters form an open set in each half-line: the bounded factorization
+\[
+ (I-rA)J_s=I-(r-s)AJ_s,\qquad
+ AJ_s=(J_s-I)/s
+ \tag{NB2}
+\]
+and the Neumann series give surjectivity for \(r\) near \(s\). The lower bound in (NB1) supplies injectivity as well.
+
+For two such parameters, applying the two inverse identities on \(D\) gives
+\[
+ J_r-J_s=(r-s)J_rAJ_s,\qquad
+ \|J_r-J_s\|\leq\frac{2|r-s|}{|s|}.
+ \tag{NB3}
+\]
+To see the algebraic identity, apply \(I-rA\) to \(J_sx\), then apply \(J_r\), and rearrange. The estimate uses \(\|J_r\|,\|J_s\|\leq1\) and (NB2). Suppose \(s_n\to s\ne0\) through onto parameters. Equation (NB3) makes \(J_{s_n}\) Cauchy in operator norm, since the denominators stay away from zero. Let \(J\) be its contraction limit. For every \(x\in E\),
+\[
+ J_{s_n}x\longrightarrow Jx,\qquad
+ AJ_{s_n}x=\frac{J_{s_n}x-x}{s_n}
+       \longrightarrow\frac{Jx-x}{s}
+ \quad\text{in norm}.
+ \tag{NB4}
+\]
+Norm-closedness of \(A\) gives \(Jx\in D\) and \((I-sA)Jx=x\). Thus the onto-parameter set is also closed in each half-line. The interval connectedness argument given above after (H5), together with the two parameters in (NB1), proves
+\[
+ J_s=(I-sA)^{-1}\text{ exists and is contractive for every }s\ne0.
+ \tag{NB5}
+\]
+The zero space is included, with its unique linear maps.
+
+For clarity about applying the construction, (NB5) and the full inverse identities supply all of the inputs to the norm argument (H10)–(H13) in [the semigroup construction](#oa-flow.hy.preadjoint). That argument uses an arbitrary Banach space, a dense domain and the contractive resolvents of both signs. Its construction does not use a predual. With \(Y=E\), put \(A_\varepsilon=AJ_\varepsilon=(J_\varepsilon-I)/\varepsilon\), \(\varepsilon>0\). The resolvent identity gives commutation and
+\[
+ J_\varepsilon x-x=\varepsilon J_\varepsilon Ax,\qquad
+ A_\varepsilon x=J_\varepsilon Ax\longrightarrow Ax
+ \quad(x\in D),\qquad
+ \|e^{tA_\varepsilon}\|\leq1\quad(t\geq0).
+ \tag{NB6}
+\]
+Density extends \(J_\varepsilon\to I\) strongly to all of \(E\). The differentiated exponential product in (H11b) gives
+\(\sup_{0\leq t\leq b}\|(e^{tA_\varepsilon}-e^{tA_\eta})x\|
+ \leq b\|(A_\varepsilon-A_\eta)x\|\) on \(D\).
+Density and contractivity give strongly continuous contraction limits on all of \(E\), uniformly on bounded positive time intervals. Passing through the bounded products proves their semigroup law.
+
+The generator-domain argument (H12a)–(H13) applies with these same inputs. In detail, the integral identity
+\(T_+(t)x-x=\int_0^tT_+(u)Ax\,du\) for \(x\in D\) makes its right generator \(G_+\) extend \(A\). If \(G_+y=\varepsilon^{-1}y\), differentiating \(e^{-t/\varepsilon}T_+(t)y\) makes it constant; contractivity forces \(y=0\). Thus \(I-\varepsilon G_+\) is injective. For any \(y\in D(G_+)\), the vector \(q=J_\varepsilon(I-\varepsilon G_+)y\in D\) has the same image as \(y\) under that injective operator. Hence \(y=q\in D\) and \(G_+=A\) on its entire domain. The differentiability for positive times used here follows from the semigroup law on the right difference quotients; left difference quotients at a positive time give the same derivative, as shown in (H12a)'s following argument.
+
+Apply the construction also to \(-A\). Resolvent commutation gives commuting semigroups \(T_+,T_-\), with full generators \(A,-A\). On \(D\), differentiating \(T_+(t)T_-(t)x\) gives zero; each semigroup preserves the generator domain and commutes with \(A\) there. The initial value is \(x\), and density extends the identity to all of \(E\). The reversed product is also the identity. The definition \(T_t=T_+(t)\) for \(t\geq0\), \(T_t=T_-(-t)\) for \(t<0\), therefore gives a strongly continuous group. Its operators and their inverses are contractions, hence are isometries. Its two-sided norm generator is exactly \(A\).
+
+Conversely, [the norm generator theorem](OA-FLOW-L94.md#oa-flow.gen.norm) supplies closedness and density for any such group. Formula [NR6](OA-FLOW-L95.md#oa-flow.res.norm) gives all the contractive inverses \(J_s\), so both conditions in (NB1) follow, including the lower bound by applying \(J_s\) to \((I-sA)x\).
+
+Finally the complete norm integral and moment calculation (H15a)–(H16) in [the Euler argument](#oa-flow.hy.euler) applies directly to this strongly continuous group on \(E\), using (NR6). Hence, for every \(x\in E\),
+\[
+ T_tx=\lim_{n\to\infty}(I-(t/n)A)^{-n}x
+ \quad\text{in norm, uniformly on compact real time intervals},
+ \tag{NB7}
+\]
+where the \(t=0\) factor is \(I_E\). Any other group with generator \(A\) has the same resolvents by (NR6) and the same Euler limit, proving uniqueness. The norm moment estimate (H19b) likewise gives the directional Yosida limits
+\[
+ T_tx=\lim_{\varepsilon\downarrow0}e^{\,tA(I-\varepsilon A)^{-1}}x
+       \quad(t\geq0),\qquad
+ T_tx=\lim_{\varepsilon\downarrow0}e^{\,tA(I+\varepsilon A)^{-1}}x
+       \quad(t\leq0),
+ \tag{NB8}
+\]
+uniformly on compact subsets of the indicated half-lines. The bounded-generator formulas and the time-direction distinction are the same as in (H19); norm convergence now holds on the entire ordinary Banach space.
+
+This is the norm-topology form of the group criterion in Takesaki, *Theory of Operator Algebras II*, XI.1, p.312 and Theorem1.20, pp.326–327. The operator-norm Cauchy argument (NB3)–(NB4) supplies the range-closure step for this setting.

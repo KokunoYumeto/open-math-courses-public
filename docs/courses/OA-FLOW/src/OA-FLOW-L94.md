@@ -1,4 +1,4 @@
-# The weak-star generator and its domain
+# Generators and their norm and weak-star domains
 
 A scalar derivative can define an unbounded generator even when the orbit is not differentiable in norm. We first establish the uniform bounds and smoothing estimates that control this domain. The generator then appears as the adjoint of the predual generator, giving its full weak-star closed graph and a weak-star dense invariant domain.
 
@@ -187,3 +187,97 @@ $$\delta\alpha_sx=\alpha_s\delta x\qquad(x\in D(\delta)).\tag{G10}$$
 **Solution.** Every coordinate orbit is differentiable, so \(D(\delta)=\mathbb C^n\) and \(\delta=\operatorname{diag}(i\lambda_1,\ldots,i\lambda_n)\). Both (G5) and (G8) are immediate in finite dimension, while the general proof is needed when domain and weak-star topology matter. \(\square\)
 
 The mathematical source is M. Takesaki, *Theory of Operator Algebras II*, Definition XI.1.18 and the preceding domain assertions, printed page325 ([edition record](https://doi.org/10.1007/978-3-662-10451-4)). The proof above supplies the uniform-boundedness argument, smoothing estimates and complete adjoint-domain calculation. All mathematical inputs have the written local or earlier proof locators stated above.
+
+<a id="oa-flow.gen.norm"></a>
+
+## Norm generators on an ordinary Banach space
+
+Let \(E\) be a complex Banach space and let \(T:\mathbb R\to\mathcal B(E)\) be a group with \(T_0=I\), norm-continuous vector orbits, and \(C=\sup_t\|T_t\|<\infty\). No predual is assumed. Define
+\[
+ D(A)=\left\{x\in E:\lim_{h\to0}\frac{T_hx-x}{h}\text{ exists in }E\text{ norm}\right\},
+ \qquad Ax=\lim_{h\to0}\frac{T_hx-x}{h}.
+ \tag{NG1}
+\]
+This is a linear operator. The complete vector integral in [L24](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) and the scalar translation estimate (LR2) apply in \(E\). Thus for \(f\in C_c^1(\mathbb R)\),
+\[
+ x_f=\int_{\mathbb R}f(t)T_tx\,dt\in D(A),\qquad
+ Ax_f=-\int_{\mathbb R}f'(t)T_tx\,dt .
+ \tag{NG2}
+\]
+Indeed the difference between the difference quotient of \(x_f\) and the right-hand side is at most \(C\|x\|\|(L_hf-f)/h+f'\|_1\), which tends to zero. For the nonnegative mass-one kernels in (LR3),
+\(\|x_{f_\varepsilon}-x\|\leq\sup_{|t|\leq\varepsilon}\|T_tx-x\|\to0\).
+Consequently \(D(A)\) is norm dense in \(E\).
+
+For \(x\in D(A)\), boundedness of \(T_t\) permits passage through the norm difference quotient. The group law gives
+\[
+ T_tD(A)=D(A),\qquad AT_tx=T_tAx,\qquad
+ T_tx-x=\int_0^tT_uAx\,du .
+ \tag{NG3}
+\]
+The last equality follows from [Banach-valued fundamental calculus](OA-FLOW-CF.md#oa-flow.cf.1): the orbit derivative is \(T_uAx\), continuous in norm, and the integral is oriented for negative \(t\).
+
+These identities prove that \(A\) has a norm-closed graph. Suppose \(x_j\to x\) and \(Ax_j\to y\) in norm. Passing to the limit in (NG3) is justified by
+\(\|\int_0^tT_u(Ax_j-y)\,du\|\leq C|t|\|Ax_j-y\|\).
+It yields \(T_tx-x=\int_0^tT_uy\,du\). For nonzero \(t\),
+\[
+ \left\|\frac{T_tx-x}{t}-y\right\|
+ \leq \sup_{|u|\leq |t|}\|T_uy-y\|\longrightarrow0 .
+ \tag{NG4}
+\]
+Hence \(x\in D(A)\) and \(Ax=y\). Since the product norm topology is metrizable, this sequential argument proves closedness.
+
+There is also an exact link to the dual construction. Equip \(E^*\) with its specified predual \(E\), and let \(\alpha_t=T_t^*\). Its weak-star generator is the Banach adjoint \(A^*\), including equality of domains. Here \(z\in D(A^*)\) means that \(x\mapsto z(Ax)\), initially on \(D(A)\), is bounded in the \(E\)-norm. Density makes its extension unique. If \(z\) has a weak-star orbit derivative \(w\), testing on \(x\in D(A)\) gives \(w(x)=z(Ax)\). Conversely, for \(z\in D(A^*)\) and arbitrary \(x\in E\), the norm integral
+\[
+ v_t=\int_0^tT_ux\,du
+ \quad\text{satisfies}\quad v_t\in D(A),\qquad Av_t=T_tx-x .
+ \tag{NG5}
+\]
+To check this, the difference quotient of \(T_hv_t\) is
+\(h^{-1}\int_t^{t+h}T_ux\,du-h^{-1}\int_0^hT_ux\,du\), which tends in norm to \(T_tx-x\), for either time sign. Therefore
+\[
+ (\alpha_tz-z)(x)=z(Av_t)=\int_0^t(A^*z)(T_ux)\,du .
+ \tag{NG6}
+\]
+Division by \(t\) gives the weak-star derivative \(A^*z\). This proves the full adjoint-domain assertion without identifying \(E\) itself as a dual space.
+
+<a id="oa-flow.gen.norm-model"></a>
+
+## One action, different derivative domains
+
+The distinction between a norm derivative and a weak-star derivative is visible on sequence spaces. Let
+\[
+ (T_tx)_n=e^{int}x_n,\qquad n=1,2,\ldots .
+ \tag{NG7}
+\]
+First take \(E=c_0(\mathbb N)\) with the supremum norm. Here is the needed completeness argument. If \(x^{(j)}\) is Cauchy in \(\ell^\infty\), every coordinate has a limit \(x_n\). For \(j,k\geq J\), a uniform bound \(\|x^{(j)}-x^{(k)}\|_\infty\leq\varepsilon\) passes to the limit in each coordinate as \(k\to\infty\). Hence \(\sup_n|x^{(j)}_n-x_n|\leq\varepsilon\). Comparing with one bounded \(x^{(J)}\) shows that \(x\) is bounded and that convergence is in supremum norm. Thus \(\ell^\infty\) is complete. If all \(x^{(j)}\) vanish at infinity, choosing \(j\) with \(\|x-x^{(j)}\|_\infty<\varepsilon\) and then a tail on which \(|x^{(j)}_n|<\varepsilon\) gives \(|x_n|<2\varepsilon\) there. Therefore \(c_0\) is closed and complete. Finite truncations converge in norm for every \(x\in c_0\), so finite-support sequences are norm dense. The operators in (NG7) are surjective isometries; continuity on finite-support sequences and the bound \(\|T_t\|=1\) give norm continuity of every orbit. Its norm generator is
+\[
+ D(A)=\{x\in c_0:(n x_n)_n\in c_0\},\qquad
+ (Ax)_n=in x_n .
+ \tag{NG8}
+\]
+Coordinate differentiation proves necessity, because a norm derivative must belong to \(c_0\). For sufficiency, use
+\(|(e^{inh}-1)/h|\leq n\), obtained by integrating the scalar derivative. The error in the \(n\)-th derivative coordinate is at most \(2n|x_n|\). Its tail is uniformly small by the condition in (NG8), and the finite initial coordinates converge. This proves convergence in the supremum norm.
+
+Now put the same formula on \(X=\ell^\infty=(\ell^1)^*\) with the bilinear pairing \(\langle x,a\rangle=\sum_nx_na_n\). The completeness of \(\ell^1\) follows from [SC-07](OA-FLOW-SC.md#sc-07), applied to counting measure; finite truncations converge since the absolute-series tail tends to zero. To prove the duality, let \(\ell\) be a bounded linear functional on \(\ell^1\) and set \(x_n=\ell(e_n)\), where \(e_n\) is the \(n\)-th unit vector. Then \(|x_n|\leq\|\ell\|\), and continuity on finite truncations gives \(\ell(a)=\sum_n x_na_n\). Conversely, each bounded \(x\) defines such a functional with norm at most \(\|x\|_\infty\), and the tests \(e_n\) give the reverse norm inequality. This proves the asserted isometric dual identification. The predual action \(a_n\mapsto e^{int}a_n\) is norm continuous: on a fixed finite head each term is continuous, while its difference from \(a\) on the remaining tail has \(\ell^1\)-norm at most \(2\sum_{n>N}|a_n|\). Its adjoint is exactly (NG7). The weak-star generator has the different domain
+\[
+ D(\delta)=\{x\in\ell^\infty:\sup_n n|x_n|<\infty\},\qquad
+ (\delta x)_n=in x_n .
+ \tag{NG9}
+\]
+Necessity follows by testing individual coordinates and requiring \(\delta x\in\ell^\infty\). Conversely, if the displayed supremum is \(M<\infty\), both the difference quotients and their proposed limit have norm at most \(M\). For a fixed \(a\in\ell^1\), the tail of the paired difference is at most \(2M\sum_{n>N}|a_n|\); the finite head tends to zero. Thus the difference quotient converges weak-star to the stated bounded sequence.
+
+These are strict inclusions:
+\[
+ D(A)\ \subsetneq\ D(\delta)\ \subsetneq\ c_0\ \subsetneq\ \ell^\infty .
+ \tag{NG10}
+\]
+A sequence in \(D(\delta)\) tends to zero since \(|x_n|\leq M/n\). The witnesses for the three strict inclusions are, respectively, \((1/n)_n\), \((1/\sqrt n)_n\), and \((1)_n\). Both domains contain the finite-support sequences, so both have norm closure \(c_0\). Both are weak-star dense in \(\ell^\infty\): finite truncations of any bounded sequence converge against every \(\ell^1\) test by the tail estimate.
+
+In fact the norm-continuous vectors of (NG7) on \(\ell^\infty\) are exactly \(c_0\). The forward inclusion from \(c_0\) was proved above. If \(x\notin c_0\), choose \(n_j\to\infty\) with \(|x_{n_j}|\geq\varepsilon>0\), and put \(t_j=\pi/n_j\). Then \(t_j\to0\), but
+\(\|T_{t_j}x-x\|_\infty\geq2\varepsilon\). Thus weak-star continuity does not supply norm continuity on all of \(X\).
+
+![Four strictly nested sequence spaces, with a witness for each gap.](../assets/generator-domains/generator-domains.svg)
+
+The inclusions and witnesses in the diagram are exactly (NG8)–(NG10); the boxes represent sets, not lengths or quantitative distances. The weak-star derivative of \(x_n=1/n\) is the constant sequence \(i\), which is in \(\ell^\infty\) but not \(c_0\). This explains its membership in the middle domain and its exclusion from the norm-generator domain. The [editable SVG](../assets/generator-domains/generator-domains.svg) is the illustration source. Original diagram and caption: CC0-1.0 to the extent of rights held.
+
+The ordinary Banach-space setting is part of the scope of Takesaki, *Theory of Operator Algebras II*, XI.1, p.312; the generator discussion is on p.325. The norm-domain proof and the sequence-space calculation above give this case directly.

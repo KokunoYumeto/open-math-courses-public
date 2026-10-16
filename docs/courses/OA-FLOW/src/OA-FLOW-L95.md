@@ -1,4 +1,4 @@
-# Laplace resolvents of the weak-star generator
+# Laplace resolvents and full generator domains
 
 The generator of a uniformly bounded real-parameter action can be unbounded and only weak-star closed. Its resolvents still exist throughout both open half-planes, given by forward and backward Laplace integrals. This lesson proves Takesaki II, Lemma XI.1.19 with both inverse identities on the correct domains. The backward formula needs a minus sign under the convention of [the earlier generator proof](OA-FLOW-L94.md#oa-flow.gen.domain).
 
@@ -98,3 +98,80 @@ The estimates also give \(\|(\lambda I-\delta)^{-1}\|\le C_\alpha/|\operatorname
 **Solution.** The generator is multiplication by \(i\omega\). For \(\operatorname{Re}\lambda>0\), \(\int_0^\infty e^{-(\lambda-i\omega)t}dt=(\lambda-i\omega)^{-1}\). For \(\operatorname{Re}\lambda<0\), \(-\int_0^\infty e^{(\lambda-i\omega)t}dt=(\lambda-i\omega)^{-1}\) as well. Both agree with \((\lambda I-\delta)^{-1}\). \(\square\)
 
 The mathematical source is M. Takesaki, *Theory of Operator Algebras II*, Lemma XI.1.19, printed pages 325–326 ([edition record](https://doi.org/10.1007/978-3-662-10451-4)). The backward display on page326 needs the minus sign for the convention \((\lambda I-\delta)^{-1}\); the trivial-action test and the full reversed-action proof (L7)–(L8) establish it. The proof above retains both inverse identities at their exact domains and supplies all integral and earlier generator inputs.
+
+<a id="oa-flow.res.norm"></a>
+
+## Resolvents on an ordinary Banach space
+
+Let \(E,T,A\) be the norm-continuous-orbit group and full norm generator from [the norm-domain theorem](OA-FLOW-L94.md#oa-flow.gen.norm), with \(C=\sup_t\|T_t\|<\infty\). For \(\operatorname{Re}\lambda>0\), the vector integral
+\[
+ Q_\lambda x=\int_0^\infty e^{-\lambda t}T_tx\,dt,\qquad
+ \|Q_\lambda\|\leq\frac{C}{\operatorname{Re}\lambda}
+ \tag{NR1}
+\]
+exists in \(E\) by the complete Banach integration theorem. Linearity and its norm bound make \(Q_\lambda\) a bounded operator on all of \(E\).
+
+The translated integral satisfies, for real \(h\),
+\[
+ T_hQ_\lambda x
+ =e^{\lambda h}Q_\lambda x
+  -e^{\lambda h}\int_0^h e^{-\lambda u}T_ux\,du .
+ \tag{NR2}
+\]
+This follows by the scalar change of variable \(u=t+h\), with oriented integration if \(h<0\); bounded maps pass through the vector integral. The last integral divided by \(h\) converges to \(x\) in norm by orbit continuity. Taking the norm derivative at zero gives
+\[
+ Q_\lambda E\subset D(A),\qquad
+ (\lambda I-A)Q_\lambda x=x\quad(x\in E).
+ \tag{NR3}
+\]
+For \(x\in D(A)\), (NG3) gives
+\[
+ \frac{d}{dt}\bigl(e^{-\lambda t}T_tx\bigr)
+   =-e^{-\lambda t}T_t(\lambda I-A)x
+ \quad\text{in norm}.
+ \tag{NR4}
+\]
+Integrating to \(b>0\), then letting \(b\to\infty\), is justified by
+\(\|e^{-\lambda b}T_bx\|\leq C e^{-b\operatorname{Re}\lambda}\|x\|\to0\).
+It proves \(Q_\lambda(\lambda I-A)x=x\). Thus both inverse identities hold, on all of \(E\) and on the entire domain \(D(A)\), respectively.
+
+For \(\operatorname{Re}\lambda<0\), apply this proof to \(t\mapsto T_{-t}\), whose norm generator is \(-A\) on the same domain, and parameter \(-\lambda\). The result is
+\[
+ (\lambda I-A)^{-1}x
+ =-\int_0^\infty e^{\lambda t}T_{-t}x\,dt,\qquad
+ \|(\lambda I-A)^{-1}\|\leq\frac{C}{|\operatorname{Re}\lambda|}.
+ \tag{NR5}
+\]
+Together with (NR1)–(NR4), this proves the resolvent assertion on both open half-planes and \(\sigma(A)\subset i\mathbb R\), now for an ordinary Banach space with its norm-closed, norm-dense generator domain.
+
+Scalar twists have the same full norm domain. For \(b\in\mathbb R\), put \(S_t=e^{ibt}T_t\). For \(x\in D(A)\),
+\[
+ \frac{S_hx-x}{h}
+ =e^{ibh}\frac{T_hx-x}{h}+\frac{e^{ibh}-1}{h}x
+ \longrightarrow Ax+ibx .
+\]
+Conversely, the same identity applied to \(T_t=e^{-ibt}S_t\) shows that existence of the norm derivative for \(S\) implies \(x\in D(A)\). Its generator is therefore \(A+ibI\) on exactly \(D(A)\), and
+\[
+ (\lambda I-(A+ibI))^{-1}
+   =((\lambda-ib)I-A)^{-1}\qquad(\operatorname{Re}\lambda\ne0).
+\]
+Both sides act on all of \(E\) with range \(D(A)\), by the inverse identities just proved.
+
+In particular, if \(T_t\) are isometries, then for every nonzero real \(s\),
+\[
+ (I-sA)^{-1}x=\int_0^\infty e^{-u}T_{su}x\,du,\qquad
+ \|(I-sA)^{-1}\|\leq1 .
+ \tag{NR6}
+\]
+For \(s>0\) this is (NR1) with \(\lambda=1/s\) and a positive scaling; for \(s<0\) it is (NR5) with the same parameter and the corresponding backward scaling. The inverse has range exactly \(D(A)\), by the two inverse identities. No weak-star compactness is used.
+
+For the \(c_0\) model (NG7), these formulas give
+\[
+ ((\lambda I-A)^{-1}x)_n=\frac{x_n}{\lambda-in}.
+ \tag{NR7}
+\]
+This sequence is in \(c_0\), since its absolute value is at most \(|x_n|/|\operatorname{Re}\lambda|\). It lies in the full domain (NG8) because
+\(n/(\lambda-in)=i(1-\lambda/(\lambda-in))\) is bounded and \(x_n\to0\).
+Thus the coordinate formula verifies the claimed range, as well as the inverse equation.
+
+The source comparison is Takesaki, *Theory of Operator Algebras II*, XI.1, p.312 and Lemma1.19, pp.325–326. The norm argument above retains both time signs and both domain-sensitive inverse identities.

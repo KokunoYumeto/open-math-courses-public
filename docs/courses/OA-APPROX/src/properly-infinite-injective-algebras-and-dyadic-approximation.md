@@ -4,7 +4,7 @@
 
 Finite completely positive models record operators in a matrix algebra. In a properly infinite algebra, their reconstruction map can be implemented by one isometry. Approximating that isometry by unitaries then moves the matrix algebra itself into a position that approximates the original operators.
 
-We use the equivalence of injectivity and semidiscreteness proved in Averaging, crossed products, and injectivity, the Choi matrix criterion in [Completely positive finite models](completely-positive-finite-models.md), and standard form from OA-MOD. The projection facts are the existing foundations inputs: halving a properly infinite projection, projection comparison and projection Schroeder–Bernstein. The central finite-part criterion for projections and finite absorption are used in (8): a projection with no nonzero finite central summand in its central support is properly infinite. These facts imply a partition of the properly infinite identity into countably many projections equivalent to it. No general weight construction enters this lesson.
+We use the equivalence of injectivity and semidiscreteness proved in Averaging, crossed products, and injectivity, the Choi matrix criterion in [Completely positive finite models](completely-positive-finite-models.md), and the [Hilbert quotient construction for positive functionals](hypertraces-finite-injectivity.md#state-quotient). The projection arguments are [PC1–PC6](../components/central-finite-trace-inputs.md#pc-1): orthogonal sums, comparison, projection Schroeder–Bernstein, properly infinite halving, the finite central-part criterion and finite absorption. These imply a partition of the properly infinite identity into countably many projections equivalent to it. Normal-state GNS representations suffice for the vector estimates below.
 
 Here is the countable-partition argument, including its possible residual projection. Repeated proper halving gives orthogonal projections \(p_j\sim1\) and decreasing remainders \(r_j\sim1\), with
 \[
@@ -18,7 +18,11 @@ Write
 \|x\|_\varphi^\#=\left(\frac{\varphi(x^*x)+\varphi(xx^*)}{2}\right)^{1/2}.
 \tag{1}
 \]
-Here \(\varphi\) is a normal state, and \(\xi_\varphi\) its standard-form vector. Local **AFD** means approximation of each finite set in each sigma-strong* neighborhood by one finite-dimensional *-subalgebra. Separability below means separability of the predual. Local AFD makes sense without it; an increasing sequence is a stronger organizational conclusion for which we will explicitly assume it.
+Here \(\varphi\) is a normal state, and \(\xi_\varphi\) is the unit cyclic vector in its GNS representation. Local **AFD** means approximation of each finite set in each sigma-strong* neighborhood by one finite-dimensional *-subalgebra. Separability below means separability of the predual. Local AFD makes sense without it; an increasing sequence is a stronger organizational conclusion for which we will explicitly assume it.
+
+<a id="normal-state-representation"></a>
+
+The normality of this representation can be checked directly. Its coefficients on quotient vectors represented by bounded \(a,b\) are \(x\mapsto\varphi(b^*xa)\), which are normal by the predual coefficient and bounded multiplication proofs. Approximating arbitrary GNS vectors by these quotient vectors gives convergence in functional norm of the coefficients, using Cauchy–Schwarz and the norm bound for the representation. The predual is norm closed, so every vector coefficient is normal. Square-summable coefficient series converge in functional norm too, which proves ultraweak continuity of the representation on its entire domain. If \(\varphi\) is faithful, its GNS vector is separating, the representation is faithful, and the faithful normal range and inverse theorem identifies its image as a von Neumann algebra. In the nonfaithful case only the representation and its normal coefficients are needed.
 
 ## 1. A unitary can converge strongly to an isometry
 
@@ -95,7 +99,9 @@ Every diagonal projection in (6) is equivalent to one, since it dominates the co
 
 **Theorem 3.2.** For properly infinite \(M\) with separable predual, local AFD is equivalent to generation by an increasing sequence \(A_k\cong M_{2^k}\).
 
-**Proof.** An increasing generating sequence gives local approximation by Kaplansky density. Conversely choose a faithful normal state \(\varphi\) and a sigma-strong* dense sequence \((x_j)\) in the unit ball. Such a sequence exists for separable predual: the standard representation is separable and its bounded strong* balls are metrizable and separable.
+**Proof.** An increasing generating sequence gives local approximation by bounded density on its support corner. Conversely choose a faithful normal state \(\varphi\) and a sigma-strong* dense sequence \((x_j)\) in the unit ball.
+
+Here are explicit countability arguments. Choose a countable norm-dense family of positive normal states and take their convex sum with strictly positive summable coefficients. Positive normal functionals separate the positive cone, so this sum is faithful as well as normal. The unit ball is compact metrizable for the weak* topology, by the separable-predual dual-ball theorem. Take a countable weak* dense subset. Its rational convex combinations remain a countable set of contractions. In the faithful normal GNS representation, the map taking \(x\) to the pair \(x\xi_\varphi,x^*\xi_\varphi\) is real-linear and weakly continuous on the unit ball: testing either coordinate gives normal vector coefficients. The weak closure of a convex subset of a real Hilbert space equals its norm closure, by the Hilbert separation proof. Thus those rational convex combinations are dense for the faithful-state seminorm (1). The cyclic-commutant argument following Lemma 2.1 identifies that topology with sigma-strong* convergence on bounded sets. Enumerating this countable family gives the required \((x_j)\); no assertion about the boundedness of later reconstructed approximants is used.
 
 Suppose a unital dyadic subfactor \(A\cong M_d\) has already been chosen, with units \(e_{ij}\). Matrix coordinates identify
 \[

@@ -1,0 +1,126 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cycle coordinates and disjoint domains</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to reduced Baum–Connes injectivity)</a><a href="polygons-through-sheets-and-finite-peeling.html">Previous lesson</a><a href="cone-chains-torsion-freeness-and-the-integral-detector.html">Next lesson</a><a href="src/cycle-coordinates-and-disjoint-domains.md">Editable source</a></nav><main><article><h1 id="cycle-coordinates-and-disjoint-domains">Cycle coordinates and disjoint domains</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Peeling has two consequences. The first is algebraic: every finite cycle of the Cayley graph is, uniquely, a sum of cycles of the sheets. The second is analytic: one can remove from every sheet an allowed set (a small ball around an old vertex, a private vertex, or nothing) so that the remaining <em>domains</em> of all sheets are pairwise disjoint and the Cayley edges not internal to any domain form a forest. The domains are where the operators of the analytic part act; the forest is the residue whose norm is small. Choosing all removed sets at once, for infinitely many sheets, is a compactness argument, made possible by the finite cycle coordinates [OpenAI-BCI, Sections 7.2-7.3, Lemma 7.3, Proposition 7.4, Lemma 7.5].</p>
+<ul>
+<li>Finite cycle coordinates (Section 1).</li>
+<li>Simultaneous disjoint domains (Section 2).</li>
+<li>Incidence coordinates (Section 3).</li>
+</ul>
+<p>The setting of <a href="polygons-through-sheets-and-finite-peeling.html">Polygons through sheets and finite peeling</a> is in force: the formal right Cayley graph <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, whose positive edges <span class="math" data-tex="\((g,\sigma):g\to g\sigma\)">\((g,\sigma):g\to g\sigma\)</span> are separate cells, the family <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> of sheets with their intrinsic metrics and the types of their vertices, the allowed removed sets, the stars, and Lemmas 2.1 and 3.1 there.</p>
+<h2 id="1-finite-cycle-coordinates">1. Finite cycle coordinates</h2>
+<p>Chains are finite linear combinations of oriented edges over a commutative ring <span class="math" data-tex="\(R\)">\(R\)</span>. The <em>cycle module</em> of a graph <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(Z_1(Y;R)\)">\(Z_1(Y;R)\)</span>, the kernel of <span class="math" data-tex="\(\partial:C_1(Y;R)\to C_0(Y;R)\)">\(\partial:C_1(Y;R)\to C_0(Y;R)\)</span>. A forest has no nonzero cycle: the support of a cycle is a finite subforest, and the coefficient of an edge at a leaf of it must vanish, so repeated removal of leaves empties the support. Every cycle of a graph is a finite combination of <em>circuit chains</em> of simple closed paths: take a spanning forest of its finite support, and subtract, for each edge outside the forest, its coefficient times the circuit formed with the forest path between its endpoints; what remains is a cycle on a forest, hence zero. Loops and parallel edges are allowed in this argument.</p>
+<p><strong>Lemma 1.1</strong> (direct cycle coordinates; [OpenAI-BCI, Lemma 7.3]). For every commutative ring <span class="math" data-tex="\(R\)">\(R\)</span>, the sum of the inclusions
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi_R:\bigoplus_{Q\in\mathcal Q}Z_1(Q;R)\\
+\longrightarrow Z_1(\mathcal C;R),\\
+(c_Q)_Q\longmapsto\sum_Qc_Q ,
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+\Phi_R:\bigoplus_{Q\in\mathcal Q}Z_1(Q;R)\\
+\longrightarrow Z_1(\mathcal C;R),\\
+(c_Q)_Q\longmapsto\sum_Qc_Q ,
+\end{gathered}\tag{1.1}
+\]</span>
+is an isomorphism. All chains have finite support, and the direct sum has finitely many nonzero coordinates.</p>
+<p><em>Proof.</em> <em>Onto.</em> Let a circuit of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> start at <span class="math" data-tex="\(g\)">\(g\)</span> and read the word <span class="math" data-tex="\(w\)">\(w\)</span>. By the definition of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, <span class="math" data-tex="\(w\)">\(w\)</span> is in the free group a finite product of conjugates of labels of closed walks of <span class="math" data-tex="\(\widetilde X\)">\(\widetilde X\)</span> and their inverses. Follow this product from <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>: each conjugating stem is traversed once in each direction, so its chain cancels; each relator walk lies in a translated sheet; and a free cancellation of two inverse letters cancels the corresponding edge chains. So the circuit chain is a finite sum of sheet cycles, and by the circuit decomposition above <span class="math" data-tex="\(\Phi_R\)">\(\Phi_R\)</span> is onto.</p>
+<p><em>Injective.</em> Suppose <span class="math" data-tex="\(\sum_{j=1}^nc_{Q_j}=0\)">\(\sum_{j=1}^nc_{Q_j}=0\)</span>. Order the finitely many sheets involved by Lemma 3.1 of the previous lesson. An edge of <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span> with a nonzero coefficient in <span class="math" data-tex="\(c_{Q_1}\)">\(c_{Q_1}\)</span> must occur in another coordinate, since the total coefficient is zero; both of its endpoints are then contacts with a later sheet, hence lie in <span class="math" data-tex="\(R_1\)">\(R_1\)</span>. So <span class="math" data-tex="\(c_{Q_1}\)">\(c_{Q_1}\)</span> is supported on <span class="math" data-tex="\(\operatorname{Star}_{Q_1}(R_1)\)">\(\operatorname{Star}_{Q_1}(R_1)\)</span>, a forest by Lemma 2.1 of the previous lesson, and <span class="math" data-tex="\(c_{Q_1}=0\)">\(c_{Q_1}=0\)</span>. Remove this coordinate and repeat. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-simultaneous-disjoint-domains">2. Simultaneous disjoint domains</h2>
+<p><strong>Proposition 2.1</strong> (simultaneous disjoint domains; [OpenAI-BCI, Proposition 7.4]). There are sets <span class="math" data-tex="\(R_Q\subseteq V(Q)\)">\(R_Q\subseteq V(Q)\)</span>, one for each sheet, each empty, an old-centered ball <span class="math" data-tex="\(B_Q(v)\)">\(B_Q(v)\)</span>, or a private singleton, such that the <em>domains</em> <span class="math" data-tex="\(D_Q=V(Q)\setminus R_Q\)">\(D_Q=V(Q)\setminus R_Q\)</span> have the following properties.</p>
+<ol>
+<li>The vertex sets <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span> are pairwise disjoint in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</li>
+<li>Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_{\rm int}=\bigcup_{Q\in\mathcal Q}\{e\in E(Q):\\
+\text{both ends of }e\text{ lie in }D_Q\} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_{\rm int}=\bigcup_{Q\in\mathcal Q}\{e\in E(Q):\\
+\text{both ends of }e\text{ lie in }D_Q\} .
+\end{gathered}
+\]</span>
+Every edge of <span class="math" data-tex="\(E_{\rm int}\)">\(E_{\rm int}\)</span> belongs to a unique such sheet, and the graph <span class="math" data-tex="\((V(\mathcal C),E(\mathcal C)\setminus E_{\rm int})\)">\((V(\mathcal C),E(\mathcal C)\setminus E_{\rm int})\)</span> is a forest.</li>
+<li><span class="math" data-tex="\(\operatorname{Star}_Q(R_Q)\)">\(\operatorname{Star}_Q(R_Q)\)</span> is a forest. If <span class="math" data-tex="\(R_Q\)">\(R_Q\)</span> contains an old vertex of layer <span class="math" data-tex="\(i\)">\(i\)</span>, then <span class="math" data-tex="\(|R_Q|\le2^{10H_i}\)">\(|R_Q|\le2^{10H_i}\)</span>. A private singleton removes no old vertex.</li>
+</ol>
+<p>No equivariance of the choice is asserted or needed.</p>
+<p><em>Proof.</em> <em>The allowed sets form a closed set.</em> For a sheet <span class="math" data-tex="\(Q\)">\(Q\)</span>, let <span class="math" data-tex="\(\mathcal K_Q\)">\(\mathcal K_Q\)</span> be the set of allowed removed sets, as elements of <span class="math" data-tex="\(\{0,1\}^{V(Q)}\)">\(\{0,1\}^{V(Q)}\)</span> with the product topology. A fixed vertex <span class="math" data-tex="\(p\)">\(p\)</span> lies in only finitely many allowed balls: if <span class="math" data-tex="\(p\in B_Q(v)\)">\(p\in B_Q(v)\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d_Q(p,v)&amp;\le\kappa\,m_Q(v)\\
+&amp;\le\kappa\bigl(m_Q(p)+a\,d_Q(p,v)\bigr),\\
+d_Q(p,v)&amp;\le\frac{\kappa\,m_Q(p)}{1-\kappa a},
+\end{aligned}
+\]">\[
+\begin{aligned}
+d_Q(p,v)&amp;\le\kappa\,m_Q(v)\\
+&amp;\le\kappa\bigl(m_Q(p)+a\,d_Q(p,v)\bigr),\\
+d_Q(p,v)&amp;\le\frac{\kappa\,m_Q(p)}{1-\kappa a},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(Q\)">\(Q\)</span> is locally finite; <span class="math" data-tex="\(p\)">\(p\)</span> lies in at most one private singleton. If a sequence of allowed sets converges pointwise to a nonempty limit containing <span class="math" data-tex="\(p\)">\(p\)</span>, all late terms contain <span class="math" data-tex="\(p\)">\(p\)</span> and so belong to a finite collection; a constant subsequence shows that the limit is one of them. An empty limit is allowed. So <span class="math" data-tex="\(\mathcal K_Q\)">\(\mathcal K_Q\)</span> is closed, and compact.</p>
+<p><em>Finitary conditions.</em> All vertices, sheets, finite circuits and incidences are countable. Orient every finite circuit <span class="math" data-tex="\(C\)">\(C\)</span> of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and fix by Lemma 1.1 a decomposition of its integral circuit chain
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_C=\sum_{Q\in\mathcal F_C}c_{C,Q},\\
+|\mathcal F_C|&lt;\infty .
+\end{gathered}\tag{2.1}
+\]">\[
+\begin{gathered}
+c_C=\sum_{Q\in\mathcal F_C}c_{C,Q},\\
+|\mathcal F_C|&lt;\infty .
+\end{gathered}\tag{2.1}
+\]</span>
+Impose the following countably many conditions on the removed sets:</p>
+<ul>
+<li>(a) for each vertex <span class="math" data-tex="\(x\)">\(x\)</span> and distinct sheets <span class="math" data-tex="\(Q,Q&#x27;\)">\(Q,Q&#x27;\)</span> containing it, <span class="math" data-tex="\(x\)">\(x\)</span> does not lie in both <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span> and <span class="math" data-tex="\(D_{Q&#x27;}\)">\(D_{Q&#x27;}\)</span>;</li>
+<li>(b) for each circuit <span class="math" data-tex="\(C\)">\(C\)</span>, there are <span class="math" data-tex="\(Q\in\mathcal F_C\)">\(Q\in\mathcal F_C\)</span> and an edge <span class="math" data-tex="\(e\)">\(e\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span> and of <span class="math" data-tex="\(Q\)">\(Q\)</span> whose both ends lie in <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span>.</li>
+</ul>
+<p>Each condition involves finitely many membership coordinates, so it is preserved under pointwise limits. In (b), both the list of edges and the list of candidate sheets are finite; replacing <span class="math" data-tex="\(\mathcal F_C\)">\(\mathcal F_C\)</span> by all sheets would destroy this.</p>
+<p><em>Finite satisfiability.</em> Given finitely many conditions, take the finite family of all sheets appearing in the selected conditions of type (a) and in the sets <span class="math" data-tex="\(\mathcal F_C\)">\(\mathcal F_C\)</span> of those of type (b). Peel it by Lemma 3.1 of the previous lesson, use its removed sets, and give every other sheet the empty set. The conditions (a) hold by (3.1) there. Suppose a selected condition (b) failed for <span class="math" data-tex="\(C\)">\(C\)</span>. In (2.1), take the earliest peeled sheet with a nonzero coordinate. An edge of this coordinate with both ends outside its removed set cannot occur in any later coordinate, since its ends would then be contacts lying in the removed set. If it belonged to <span class="math" data-tex="\(C\)">\(C\)</span>, it would witness the condition; so it lies outside <span class="math" data-tex="\(C\)">\(C\)</span>, its coefficient in <span class="math" data-tex="\(c_C\)">\(c_C\)</span> is zero, and hence its coefficient in this coordinate is zero. So this coordinate is supported on the star of its removed set, a forest, and is zero, a contradiction. Repeating, all coordinates vanish, contradicting <span class="math" data-tex="\(c_C\ne0\)">\(c_C\ne0\)</span>.</p>
+<p><em>The limit.</em> Enumerate the conditions and choose, for each <span class="math" data-tex="\(n\)">\(n\)</span>, an assignment satisfying the first <span class="math" data-tex="\(n\)">\(n\)</span>. Enumerate the countably many coordinates <span class="math" data-tex="\((Q,v)\)">\((Q,v)\)</span>, and pass successively to subsequences on which the first coordinate, the second, and so on, are constant; the diagonal subsequence converges pointwise. Each limit lies in <span class="math" data-tex="\(\mathcal K_Q\)">\(\mathcal K_Q\)</span> by closedness, and every condition holds in the limit.</p>
+<p>The conditions (a) make the domains disjoint. An edge internal to two domains would have an endpoint in their intersection, so its sheet is unique. A circuit in the residual graph would violate its condition (b), so the residual graph is a forest. The last assertions are Lemma 2.1 of the previous lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-incidence-coordinates">3. Incidence coordinates</h2>
+<p><strong>Lemma 3.1</strong> (incidence coordinates; [OpenAI-BCI, Lemma 7.5]). Sending a sheet incidence <span class="math" data-tex="\((Q,u)\)">\((Q,u)\)</span>, <span class="math" data-tex="\(u\in V(Q)\)">\(u\in V(Q)\)</span>, to its vertex in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> and its base vertex in <span class="math" data-tex="\(X\)">\(X\)</span> is a bijection
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\{(Q,u)\}_{Q\in\mathcal Q,\ u\in V(Q)}\\
+\longrightarrow\Gamma\times V(X).
+\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}
+\{(Q,u)\}_{Q\in\mathcal Q,\ u\in V(Q)}\\
+\longrightarrow\Gamma\times V(X).
+\end{gathered}\tag{3.1}
+\]</span>
+In particular a vertex of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> occurs in at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+n^{\rm full}_i&amp;=|\mathscr A_i|+|\mathscr B_i|\\
+&amp;=(1+2^{2r-s})2^{H_i}\\
+&amp;\le C_s2^{H_i}
+\end{aligned}\tag{3.2}
+\]">\[
+\begin{aligned}
+n^{\rm full}_i&amp;=|\mathscr A_i|+|\mathscr B_i|\\
+&amp;=(1+2^{2r-s})2^{H_i}\\
+&amp;\le C_s2^{H_i}
+\end{aligned}\tag{3.2}
+\]</span>
+old incidences of layer <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><em>Proof.</em> Write the reference sheet as <span class="math" data-tex="\(j(v,f)=ft_v\)">\(j(v,f)=ft_v\)</span>, <span class="math" data-tex="\(f\in\mathsf H\)">\(f\in\mathsf H\)</span>, <span class="math" data-tex="\(v\in V(X)\)">\(v\in V(X)\)</span> (Proposition 5.1 of the lesson on the graphical group). A sheet is <span class="math" data-tex="\(hQ_0\)">\(hQ_0\)</span> for a coset <span class="math" data-tex="\(h\mathsf H\)">\(h\mathsf H\)</span>, its stabilizer being a conjugate of <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>. Given a vertex <span class="math" data-tex="\(u\in\Gamma\)">\(u\in\Gamma\)</span> and a base vertex <span class="math" data-tex="\(v\)">\(v\)</span>, the equation <span class="math" data-tex="\(u=hft_v\)">\(u=hft_v\)</span> determines the coset <span class="math" data-tex="\(h\mathsf H=ut_v^{-1}\mathsf H\)">\(h\mathsf H=ut_v^{-1}\mathsf H\)</span>, and embeddedness determines the source vertex. This is the bijection; (3.2) counts the base vertices of layer <span class="math" data-tex="\(i\)">\(i\)</span>. Private singleton removals add no old incidence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>Exercise 4.1.</strong> Give an example of a graph with two subgraphs <span class="math" data-tex="\(Q_1,Q_2\)">\(Q_1,Q_2\)</span> whose union carries a cycle that is not a sum of cycles of <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span> and <span class="math" data-tex="\(Q_2\)">\(Q_2\)</span>, and explain which hypothesis of Lemma 1.1 fails there.</p>
+<p><strong>Exercise 4.2.</strong> Show that the condition (b) for all circuits implies that <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> minus the internal edges has no circuit, and that a graph without circuits is a forest.</p>
+<p><strong>Exercise 4.3.</strong> Why is it essential, in the compactness argument, that a vertex lies in only finitely many allowed balls?</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> Let <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span> and <span class="math" data-tex="\(Q_2\)">\(Q_2\)</span> be two paths between the same two vertices, with no common edge. Their union is a cycle, but each <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> is a tree with no cycles. In Lemma 1.1 the surjectivity uses that every circuit of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is a product of conjugates of relators, each read in a sheet; in the example the union is not a product of cycles of the pieces.</p>
+<p><strong>4.2.</strong> A circuit <span class="math" data-tex="\(C\)">\(C\)</span> in the residual graph has no edge in <span class="math" data-tex="\(E_{\rm int}\)">\(E_{\rm int}\)</span>, but (b) provides an edge of <span class="math" data-tex="\(C\)">\(C\)</span> internal to the domain of some sheet. A finite connected graph without circuits is a tree, and a graph whose finite subgraphs are forests is a forest.</p>
+<p><strong>4.3.</strong> Closedness of <span class="math" data-tex="\(\mathcal K_Q\)">\(\mathcal K_Q\)</span> requires that a pointwise limit of allowed sets be allowed. If infinitely many balls contained a vertex, a limit of balls could be an infinite union not of the allowed form; local finiteness and the bound <span class="math" data-tex="\(d_Q(p,v)\le\kappa m_Q(p)/(1-\kappa a)\)">\(d_Q(p,v)\le\kappa m_Q(p)/(1-\kappa a)\)</span> rule this out.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BCI] OpenAI, <em>A torsion-free counterexample to reduced Baum–Connes injectivity</em>, OpenAI Math Release preprint, 23 September 2026, Sections 7.2-7.3, Lemma 7.3, Proposition 7.4, Lemma 7.5. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

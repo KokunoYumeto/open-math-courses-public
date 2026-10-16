@@ -1,0 +1,286 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Carriers, trimming and constant extraction</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to reduced Baum–Connes injectivity)</a><a href="cone-chains-torsion-freeness-and-the-integral-detector.html">Previous lesson</a><a href="finite-cayley-formulas-for-prescribed-profiles.html">Next lesson</a><a href="src/carriers-trimming-and-constant-extraction.md">Editable source</a></nav><main><article><h1 id="carriers-trimming-and-constant-extraction">Carriers, trimming and constant extraction</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The analytic part of the proof realizes, in the reduced group algebra of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, bounded families of Bott profiles indexed by the heights of the tower, and the homotopies that move them from height to height. This lesson builds the model of these families and the maps that carry the model into the regular representation of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. The model space has one summand for each height, the spread carrier of that height's Bott profile; it embeds in the sum of the sheets as normalized constant vectors on the <span class="math" data-tex="\(\mathscr B\)">\(\mathscr B\)</span>-side of each layer. Compressing to the disjoint domains costs little because the carriers have tiny trace and the removed balls are small; and products of the expanding incidences isolate the constant vectors, so that finite words in the mean incidence blocks reproduce any prescribed band profile on the model [OpenAI-BCI, Sections 8.1-8.3, Lemmas 8.1-8.3].</p>
+<ul>
+<li>Bott profiles and carriers (Section 1).</li>
+<li>The model space and the four patterns (Section 2).</li>
+<li>Trimming and synthesis (Section 3).</li>
+<li>Deleted vertices and constant extraction (Section 4).</li>
+</ul>
+<p>The setting of the preceding lessons is in force, in particular <a href="compact-bott-projections-and-spreading.html">Compact Bott projections and spreading</a>, <a href="polynomial-avoidance-norm-tests-and-moments.html">Polynomial avoidance, norm tests and moments</a> (the types, the incidences <span class="math" data-tex="\(U_{\tau,ik}\)">\(U_{\tau,ik}\)</span> and Proposition 1.1), and <a href="cycle-coordinates-and-disjoint-domains.html">Cycle coordinates and disjoint domains</a> (the domains <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span>, Proposition 2.1 and Lemma 3.1).</p>
+<h2 id="1-bott-profiles-and-carriers">1. Bott profiles and carriers</h2>
+<p>On <span class="math" data-tex="\(\ell^2(\Gamma)\)">\(\ell^2(\Gamma)\)</span> put <span class="math" data-tex="\(R(g)\delta_h=\delta_{hg^{-1}}\)">\(R(g)\delta_h=\delta_{hg^{-1}}\)</span>, so that <span class="math" data-tex="\(R(g)R(k)=R(gk)\)">\(R(g)R(k)=R(gk)\)</span>; the unitary <span class="math" data-tex="\(I\delta_h=\delta_{h^{-1}}\)">\(I\delta_h=\delta_{h^{-1}}\)</span> satisfies <span class="math" data-tex="\(IR(g)I=\lambda(g)\)">\(IR(g)I=\lambda(g)\)</span>, so the closure of the right regular group algebra is a copy of <span class="math" data-tex="\(C^*_r(\Gamma)\)">\(C^*_r(\Gamma)\)</span>, with the same group elements. In the coordinates <span class="math" data-tex="\(j(v,f)=ft_v\)">\(j(v,f)=ft_v\)</span> of the embedded cover (Proposition 5.1 of <a href="the-private-completion-and-the-graphical-group.html">The private completion and the graphical group</a>), a positive old edge from <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(w\)">\(w\)</span> with label <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and voltage <span class="math" data-tex="\(h_e\)">\(h_e\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_v\sigma=h_et_w,\\
+R(\sigma)\delta_{ft_w}=\delta_{fh_e^{-1}t_v} .
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+t_v\sigma=h_et_w,\\
+R(\sigma)\delta_{ft_w}=\delta_{fh_e^{-1}t_v} .
+\end{gathered}\tag{1.1}
+\]</span>
+So the block of <span class="math" data-tex="\(R(\sigma)\)">\(R(\sigma)\)</span> from the <span class="math" data-tex="\(\mathscr B\)">\(\mathscr B\)</span>-vertex <span class="math" data-tex="\(w\)">\(w\)</span> to the <span class="math" data-tex="\(\mathscr A\)">\(\mathscr A\)</span>-vertex <span class="math" data-tex="\(v\)">\(v\)</span> is the deck operator <span class="math" data-tex="\(R_{\mathsf H}(h_e)\)">\(R_{\mathsf H}(h_e)\)</span>, which is the sampled operator <span class="math" data-tex="\(\rho(h_e)\)">\(\rho(h_e)\)</span> of the lesson on polynomial avoidance.</p>
+<p>Use the compact Bott projection <span class="math" data-tex="\(p\)">\(p\)</span> of Lemma 2.1 of the lesson on compact Bott projections, with <span class="math" data-tex="\(e=\operatorname{diag}(0,1)\)">\(e=\operatorname{diag}(0,1)\)</span> and <span class="math" data-tex="\(a=p-e\)">\(a=p-e\)</span>. In the torus coordinates <span class="math" data-tex="\((\vartheta,\xi)\)">\((\vartheta,\xi)\)</span> of <span class="math" data-tex="\((z,x)\)">\((z,x)\)</span> put
+<span class="math math-display" data-tex="\[
+a_i(\vartheta,\xi)=a\bigl(Z_i(\vartheta-\alpha),N_i\xi\bigr),
+\]">\[
+a_i(\vartheta,\xi)=a\bigl(Z_i(\vartheta-\alpha),N_i\xi\bigr),
+\]</span>
+with <span class="math" data-tex="\(Z_i=2^{500H_i}\)">\(Z_i=2^{500H_i}\)</span>, <span class="math" data-tex="\(N_i=2^{200H_i}\)">\(N_i=2^{200H_i}\)</span>, supported in a small chart. Each <span class="math" data-tex="\(e+a_i\)">\(e+a_i\)</span> is a projection in <span class="math" data-tex="\(M_2(C(\mathbb T^2))\)">\(M_2(C(\mathbb T^2))\)</span>, and by Lemma 3.1 of that lesson
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+[e+a_i]-[e]=\beta\\
+\text{in }K_0(C(\mathbb T^2))
+\end{gathered}\tag{1.2}
+\]">\[
+\begin{gathered}
+[e+a_i]-[e]=\beta\\
+\text{in }K_0(C(\mathbb T^2))
+\end{gathered}\tag{1.2}
+\]</span>
+for one fixed class <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, independent of <span class="math" data-tex="\(i\)">\(i\)</span>. The <em>rescaling path</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_{i,t}(\vartheta,\xi)&amp;=a\bigl(2^{500bt}Z_i(\vartheta-\alpha),\\
+&amp;\qquad2^{200bt}N_i\xi\bigr),\qquad0\le t\le1,
+\end{aligned}
+\]">\[
+\begin{aligned}
+a_{i,t}(\vartheta,\xi)&amp;=a\bigl(2^{500bt}Z_i(\vartheta-\alpha),\\
+&amp;\qquad2^{200bt}N_i\xi\bigr),\qquad0\le t\le1,
+\end{aligned}
+\]</span>
+joins <span class="math" data-tex="\(a_i\)">\(a_i\)</span> to <span class="math" data-tex="\(a_{i+1}\)">\(a_{i+1}\)</span> through projections <span class="math" data-tex="\(e+a_{i,t}\)">\(e+a_{i,t}\)</span>, with one modulus of norm continuity independent of <span class="math" data-tex="\(i\)">\(i\)</span> and of the construction, since <span class="math" data-tex="\(b\)">\(b\)</span> is fixed.</p>
+<p>Choose real smooth cutoffs <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span>, <span class="math" data-tex="\(0\le\chi_i\le1\)">\(0\le\chi_i\le1\)</span>, equal to one on the supports of all profiles used at level <span class="math" data-tex="\(i\)">\(i\)</span>, including the <span class="math" data-tex="\(a_{i-1,t}\)">\(a_{i-1,t}\)</span>, and supported in fixed enlargements of the rectangle of level <span class="math" data-tex="\(i\)">\(i\)</span> (depending only on <span class="math" data-tex="\(b\)">\(b\)</span>); and a slightly larger Borel rectangle projection <span class="math" data-tex="\(e_i^{\rm car}\)">\(e_i^{\rm car}\)</span> containing <span class="math" data-tex="\(\operatorname{supp}\chi_i\)">\(\operatorname{supp}\chi_i\)</span>. The choices can be made so that every function of a block <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span>, <span class="math" data-tex="\(|i-k|\le1\)">\(|i-k|\le1\)</span>, is supported where <span class="math" data-tex="\(\chi_i=\chi_k=1\)">\(\chi_i=\chi_k=1\)</span>, because successive widths have the fixed ratios <span class="math" data-tex="\(2^{500b}\)">\(2^{500b}\)</span> and <span class="math" data-tex="\(2^{200b}\)">\(2^{200b}\)</span>. In the right regular representation the spreading operators of Lemma 5.1 of the lesson on compact Bott projections are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_i=\sum_ja_{ij}R(y)^j,\\
+e_i^{\rm car}T_i^*T_ie_i^{\rm car}=e_i^{\rm car},
+\end{gathered}
+\]">\[
+\begin{gathered}
+T_i=\sum_ja_{ij}R(y)^j,\\
+e_i^{\rm car}T_i^*T_ie_i^{\rm car}=e_i^{\rm car},
+\end{gathered}
+\]</span>
+and their <em>carriers</em>
+<span class="math math-display" data-tex="\[
+P_i=T_ie_i^{\rm car}T_i^*\tag{1.3}
+\]">\[
+P_i=T_ie_i^{\rm car}T_i^*\tag{1.3}
+\]</span>
+are projections commuting with the left translations, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau_{\mathsf H}(P_i)=\tau_{\mathsf H}(e_i^{\rm car})\\
+\le C_\nu2^{-700H_i},
+\end{gathered}\tag{1.4}
+\]">\[
+\begin{gathered}
+\tau_{\mathsf H}(P_i)=\tau_{\mathsf H}(e_i^{\rm car})\\
+\le C_\nu2^{-700H_i},
+\end{gathered}\tag{1.4}
+\]</span>
+by Lemma 5.1 of the lesson on compact Bott projections, applied to the enlarged rectangle.
+These Borel carriers serve only Hilbert space estimates; group algebra formulas use continuous functions and the finite sums <span class="math" data-tex="\(T_i\)">\(T_i\)</span>.</p>
+<h2 id="2-the-model-space-and-the-four-patterns">2. The model space and the four patterns</h2>
+<p>Put <span class="math" data-tex="\(\mathscr L=\ell^2(\Gamma)\)">\(\mathscr L=\ell^2(\Gamma)\)</span>, and let <span class="math" data-tex="\(e_i^{\rm car}\)">\(e_i^{\rm car}\)</span> act on it through the right regular operators of <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>. The <em>model space</em> is
+<span class="math math-display" data-tex="\[
+\mathscr K=\bigoplus_{i\ge0}e_i^{\rm car}\mathscr L .\tag{2.1}
+\]">\[
+\mathscr K=\bigoplus_{i\ge0}e_i^{\rm car}\mathscr L .\tag{2.1}
+\]</span>
+A <em>band profile</em> <span class="math" data-tex="\(f=(f_{ik})_{|i-k|\le1}\)">\(f=(f_{ik})_{|i-k|\le1}\)</span> of profile functions acts on <span class="math" data-tex="\(\mathscr K\)">\(\mathscr K\)</span> from the <span class="math" data-tex="\(k\)">\(k\)</span>-th to the <span class="math" data-tex="\(i\)">\(i\)</span>-th summand by the torus function <span class="math" data-tex="\(f_{ik}\)">\(f_{ik}\)</span>; supports in both carriers make each block well defined, and uniformly bounded blocks of width one give a bounded operator <span class="math" data-tex="\(f^{\rm mod}\)">\(f^{\rm mod}\)</span>. All cosets of <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span> carry the same profile. Four diagonal patterns are needed:
+<span class="math math-display" data-tex="\[
+\begin{array}{c|ccccc}
+&amp;0&amp;1&amp;2&amp;3&amp;\cdots\\\hline
+\mathrm{ev}&amp;a_0&amp;0&amp;a_2&amp;0&amp;\cdots\\
+\mathrm{od}&amp;0&amp;a_1&amp;0&amp;a_3&amp;\cdots\\
+\mathrm{ev},+&amp;0&amp;0&amp;a_2&amp;0&amp;\cdots\\
+0&amp;a_0&amp;0&amp;0&amp;0&amp;\cdots
+\end{array}
+\]">\[
+\begin{array}{c|ccccc}
+&amp;0&amp;1&amp;2&amp;3&amp;\cdots\\\hline
+\mathrm{ev}&amp;a_0&amp;0&amp;a_2&amp;0&amp;\cdots\\
+\mathrm{od}&amp;0&amp;a_1&amp;0&amp;a_3&amp;\cdots\\
+\mathrm{ev},+&amp;0&amp;0&amp;a_2&amp;0&amp;\cdots\\
+0&amp;a_0&amp;0&amp;0&amp;0&amp;\cdots
+\end{array}
+\]</span>
+Each entry is a compactly supported difference from the scalar projection <span class="math" data-tex="\(e\)">\(e\)</span>; a zero entry keeps the scalar part. Rotating within the disjoint pairs <span class="math" data-tex="\((0,1),(2,3),\ldots\)">\((0,1),(2,3),\ldots\)</span> and then rescaling moves the even pattern to the odd one; the pairs <span class="math" data-tex="\((1,2),(3,4),\ldots\)">\((1,2),(3,4),\ldots\)</span> move the odd pattern to the positive-even one; and the even pattern splits into the initial and the positive-even patterns. The last lesson turns this into the vanishing of the initial term.</p>
+<h2 id="3-trimming-and-synthesis">3. Trimming and synthesis</h2>
+<p>Fix one construction. Let <span class="math" data-tex="\(\mathscr H_{\rm abs}=\bigoplus_Q\ell^2(Q)\)">\(\mathscr H_{\rm abs}=\bigoplus_Q\ell^2(Q)\)</span> be the abstract orthogonal sum over the sheets; a fixed matrix factor can be tensored on throughout. At an old vertex of height <span class="math" data-tex="\(i\)">\(i\)</span> of a sheet, use the carrier <span class="math" data-tex="\(P_i\)">\(P_i\)</span> in its deck coordinate; let <span class="math" data-tex="\(E_{Q,i}\)">\(E_{Q,i}\)</span> be the sum of these over the old base vertices of both sides of height <span class="math" data-tex="\(i\)">\(i\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>, and
+<span class="math math-display" data-tex="\[
+E_i=\bigoplus_QE_{Q,i},\qquad E=\bigoplus_{i\ge0}E_i ;
+\]">\[
+E_i=\bigoplus_QE_{Q,i},\qquad E=\bigoplus_{i\ge0}E_i ;
+\]</span>
+they vanish on private coordinates. Let <span class="math" data-tex="\(D\)">\(D\)</span> be the restriction to the domains <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span> of Proposition 2.1 of the lesson on cycle coordinates. Their images in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> are disjoint, so coordinate inclusion is a partial isometry
+<span class="math math-display" data-tex="\[
+U:\mathscr H_{\rm abs}\to\ell^2(\Gamma),\qquad U^*U=D .
+\]">\[
+U:\mathscr H_{\rm abs}\to\ell^2(\Gamma),\qquad U^*U=D .
+\]</span></p>
+<p><strong>Lemma 3.1</strong> (uniform trimming; [OpenAI-BCI, Lemma 8.1]). For each construction,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|(1-D_Q)E_{Q,i}\|^2\\
+\le C_\nu2^{-690H_i},\\
+\delta_\nu:=\|(1-D)E\|\\
+\le C_\nu2^{-345H_0}.
+\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}
+\|(1-D_Q)E_{Q,i}\|^2\\
+\le C_\nu2^{-690H_i},\\
+\delta_\nu:=\|(1-D)E\|\\
+\le C_\nu2^{-345H_0}.
+\end{gathered}\tag{3.1}
+\]</span>
+In particular <span class="math" data-tex="\(H_{0,\nu}\)">\(H_{0,\nu}\)</span> can be chosen so that <span class="math" data-tex="\(\delta_\nu\to0\)">\(\delta_\nu\to0\)</span>. If <span class="math" data-tex="\(A=EAE\)">\(A=EAE\)</span>, <span class="math" data-tex="\(B=EBE\)">\(B=EBE\)</span> and <span class="math" data-tex="\(\Psi_\nu(A)=UDADU^*\)">\(\Psi_\nu(A)=UDADU^*\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\Psi_\nu(A)\Psi_\nu(B)-\Psi_\nu(AB)\|\\
+\le\delta_\nu^2\|A\|\|B\| .
+\end{gathered}\tag{3.2}
+\]">\[
+\begin{gathered}
+\|\Psi_\nu(A)\Psi_\nu(B)-\Psi_\nu(AB)\|\\
+\le\delta_\nu^2\|A\|\|B\| .
+\end{gathered}\tag{3.2}
+\]</span></p>
+<p><em>Proof.</em> For a projection <span class="math" data-tex="\(P\)">\(P\)</span> and a finite set <span class="math" data-tex="\(B_0\)">\(B_0\)</span> of coordinates, <span class="math" data-tex="\(\|1_{B_0}P\|^2\le\|1_{B_0}P\|_{\rm HS}^2\)">\(\|1_{B_0}P\|^2\le\|1_{B_0}P\|_{\rm HS}^2\)</span>, and <span class="math" data-tex="\(\|1_{B_0}P\|_{\rm HS}^2=\sum_{u\in B_0}\langle P\delta_u,\delta_u\rangle\)">\(\|1_{B_0}P\|_{\rm HS}^2=\sum_{u\in B_0}\langle P\delta_u,\delta_u\rangle\)</span>, summed also over the matrix basis in an amplification. The diagonal entries of <span class="math" data-tex="\(P_i\)">\(P_i\)</span> are all equal to <span class="math" data-tex="\(\tau_{\mathsf H}(P_i)\)">\(\tau_{\mathsf H}(P_i)\)</span>, since <span class="math" data-tex="\(P_i\)">\(P_i\)</span> commutes with left translations. If the removed set of <span class="math" data-tex="\(Q\)">\(Q\)</span> is an old-centered ball meeting height <span class="math" data-tex="\(i\)">\(i\)</span>, it has at most <span class="math" data-tex="\(2^{10H_i}\)">\(2^{10H_i}\)</span> elements (Proposition 2.1 of the lesson on cycle coordinates), and (1.4) gives the first estimate, with repeated deck lifts counted separately. Empty removed sets cost nothing, and private singletons cost nothing because <span class="math" data-tex="\(E_{Q,i}\)">\(E_{Q,i}\)</span> vanishes on private coordinates; this concerns indexed sheet coordinates, even if the same vertex is old in another sheet. Both <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> preserve the decomposition by sheets and heights, and the norm of an orthogonal sum is the supremum of the norms of the blocks, which gives <span class="math" data-tex="\(\delta_\nu\)">\(\delta_\nu\)</span>. Finally, using <span class="math" data-tex="\(U^*U=D\)">\(U^*U=D\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Psi_\nu(A)\Psi_\nu(B)-\Psi_\nu(AB)\\
+&amp;\qquad=UDA(D-1)BDU^*,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Psi_\nu(A)\Psi_\nu(B)-\Psi_\nu(AB)\\
+&amp;\qquad=UDA(D-1)BDU^*,
+\end{aligned}
+\]</span>
+of norm at most <span class="math" data-tex="\(\|A\|\|B\|\|E(1-D)E\|\)">\(\|A\|\|B\|\|E(1-D)E\|\)</span>, which is <span class="math" data-tex="\(\|A\|\|B\|\|(1-D)E\|^2\)">\(\|A\|\|B\|\|(1-D)E\|^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> be the map summing finitely supported vectors of finitely many abstract sheets into their vertex coordinates in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>; no boundedness of untrimmed summation is assumed.</p>
+<p><strong>Lemma 3.2</strong> (synthesis on the active carriers; [OpenAI-BCI, Lemma 8.2]). Let <span class="math" data-tex="\(n_i\)">\(n_i\)</span> be the number of surviving old base vertices on both sides of height <span class="math" data-tex="\(i\)">\(i\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\mathcal J(1-D)E_i\|^2\\
+\le n_i\sup_Q\|(1-D_Q)E_{Q,i}\|^2\\
+\le C_\nu2^{-689H_i}.
+\end{gathered}\tag{3.3}
+\]">\[
+\begin{gathered}
+\|\mathcal J(1-D)E_i\|^2\\
+\le n_i\sup_Q\|(1-D_Q)E_{Q,i}\|^2\\
+\le C_\nu2^{-689H_i}.
+\end{gathered}\tag{3.3}
+\]</span>
+Consequently <span class="math" data-tex="\(\mathcal JE\)">\(\mathcal JE\)</span> extends to a bounded operator, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\mathcal JE-UDE\|\\
+&amp;\quad\le C_\nu\sum_{i\ge0}2^{-344.5H_i}\\
+&amp;\quad=C_\nu\frac{2^{-344.5H_0}}{1-2^{-344.5b}} .
+\end{aligned}\tag{3.4}
+\]">\[
+\begin{aligned}
+&amp;\|\mathcal JE-UDE\|\\
+&amp;\quad\le C_\nu\sum_{i\ge0}2^{-344.5H_i}\\
+&amp;\quad=C_\nu\frac{2^{-344.5H_0}}{1-2^{-344.5b}} .
+\end{aligned}\tag{3.4}
+\]</span></p>
+<p><em>Proof.</em> For a vertex <span class="math" data-tex="\(u\in\Gamma\)">\(u\in\Gamma\)</span> and an old base vertex <span class="math" data-tex="\(v\)">\(v\)</span>, only one sheet contains <span class="math" data-tex="\(u\)">\(u\)</span> with base type <span class="math" data-tex="\(v\)">\(v\)</span>, by Lemma 3.1 of the lesson on cycle coordinates; so at height <span class="math" data-tex="\(i\)">\(i\)</span> every vertex receives at most <span class="math" data-tex="\(n_i\)">\(n_i\)</span> indexed coordinates, and the Cauchy–Schwarz inequality at each vertex gives the first inequality of (3.3) on the dense domain. Since <span class="math" data-tex="\(n_i\le C_s2^{H_i}\)">\(n_i\le C_s2^{H_i}\)</span>, (3.1) gives the second. The bounds are summable over the heights in operator norm, because <span class="math" data-tex="\(H_i=H_0+bi\)">\(H_i=H_0+bi\)</span>. On the common dense domain <span class="math" data-tex="\(\mathcal JE=UDE+\mathcal J(1-D)E\)">\(\mathcal JE=UDE+\mathcal J(1-D)E\)</span>, since <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> agrees with <span class="math" data-tex="\(U\)">\(U\)</span> on vectors supported in the disjoint domains. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-deleted-vertices-and-constant-extraction">4. Deleted vertices and constant extraction</h2>
+<p>For a pair <span class="math" data-tex="\(|i-k|\le1\)">\(|i-k|\le1\)</span> of a type, let <span class="math" data-tex="\(U^0_{ik}:\ell^2(\mathscr B_k)\to\ell^2(\mathscr A_i)\)">\(U^0_{ik}:\ell^2(\mathscr B_k)\to\ell^2(\mathscr A_i)\)</span> be the normalized incidence before the deletions; it sends normalized constants to normalized constants, so does its adjoint, and its centered norm is at most <span class="math" data-tex="\(\rho&lt;1\)">\(\rho&lt;1\)</span> (Proposition 6.1 of <a href="expansion-and-the-sequential-law.html">Expansion and the sequential law</a>). Let <span class="math" data-tex="\(U_{ik}\)">\(U_{ik}\)</span> be its compression to the surviving vertices; the deleted fraction is at most <span class="math" data-tex="\(\varepsilon_{\rm del}\)">\(\varepsilon_{\rm del}\)</span> on each side and layer. Constants are normalized with the actual surviving counts.</p>
+<p><strong>Lemma 4.1</strong> (deleting a small fraction of vertices; [OpenAI-BCI, Lemma 8.3]). There are contractions <span class="math" data-tex="\(\widehat U_{ik}\)">\(\widehat U_{ik}\)</span> on the surviving spaces that send normalized constants to normalized constants in both directions, have centered norm at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and satisfy
+<span class="math math-display" data-tex="\[
+\|U_{ik}-\widehat U_{ik}\|\le C\sqrt{\varepsilon_{\rm del}},
+\]">\[
+\|U_{ik}-\widehat U_{ik}\|\le C\sqrt{\varepsilon_{\rm del}},
+\]</span>
+with <span class="math" data-tex="\(C\)">\(C\)</span> independent of the height and the type.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(a,b\)">\(a,b\)</span> be the old normalized constants, <span class="math" data-tex="\(P_A,P_B\)">\(P_A,P_B\)</span> the surviving coordinate projections, and <span class="math" data-tex="\(a&#x27;,b&#x27;\)">\(a&#x27;,b&#x27;\)</span> the normalized restrictions; <span class="math" data-tex="\(\|P_Aa\|^2\ge1-\varepsilon_{\rm del}\)">\(\|P_Aa\|^2\ge1-\varepsilon_{\rm del}\)</span>, so <span class="math" data-tex="\(\|a&#x27;-a\|\le C\sqrt{\varepsilon_{\rm del}}\)">\(\|a&#x27;-a\|\le C\sqrt{\varepsilon_{\rm del}}\)</span>, and likewise for <span class="math" data-tex="\(b\)">\(b\)</span>. Put <span class="math" data-tex="\(Q_A=1-|a&#x27;\rangle\langle a&#x27;|\)">\(Q_A=1-|a&#x27;\rangle\langle a&#x27;|\)</span>, <span class="math" data-tex="\(Q_B=1-|b&#x27;\rangle\langle b&#x27;|\)">\(Q_B=1-|b&#x27;\rangle\langle b&#x27;|\)</span> on the surviving spaces and
+<span class="math math-display" data-tex="\[
+\widehat U=|a&#x27;\rangle\langle b&#x27;|+Q_AU_{ik}Q_B .
+\]">\[
+\widehat U=|a&#x27;\rangle\langle b&#x27;|+Q_AU_{ik}Q_B .
+\]</span>
+Write <span class="math" data-tex="\(U^0_{ik}=|a\rangle\langle b|+U_0\)">\(U^0_{ik}=|a\rangle\langle b|+U_0\)</span> with <span class="math" data-tex="\(\|U_0\|\le\rho\)">\(\|U_0\|\le\rho\)</span>. Since <span class="math" data-tex="\(Q_AP_Aa=0\)">\(Q_AP_Aa=0\)</span> and <span class="math" data-tex="\(\langle b|P_BQ_B=0\)">\(\langle b|P_BQ_B=0\)</span>, <span class="math" data-tex="\(Q_AU_{ik}Q_B=Q_AP_AU_0P_BQ_B\)">\(Q_AU_{ik}Q_B=Q_AP_AU_0P_BQ_B\)</span> has norm at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The two summands of <span class="math" data-tex="\(\widehat U\)">\(\widehat U\)</span> have orthogonal sources and orthogonal ranges, which gives the norm, the centered norm and the action on constants. The estimates <span class="math" data-tex="\(\|U_{ik}b&#x27;-a&#x27;\|+\|U_{ik}^*a&#x27;-b&#x27;\|\le C\sqrt{\varepsilon_{\rm del}}\)">\(\|U_{ik}b&#x27;-a&#x27;\|+\|U_{ik}^*a&#x27;-b&#x27;\|\le C\sqrt{\varepsilon_{\rm del}}\)</span> bound the three remaining blocks of <span class="math" data-tex="\(U_{ik}-\widehat U\)">\(U_{ik}-\widehat U\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The model embedding.</strong> The subgroup operators preserve <span class="math" data-tex="\(\mathscr L=\bigoplus_{h\mathsf H}\ell^2(h\mathsf H)\)">\(\mathscr L=\bigoplus_{h\mathsf H}\ell^2(h\mathsf H)\)</span>. For a coset <span class="math" data-tex="\(h\mathsf H\)">\(h\mathsf H\)</span>, the sheet <span class="math" data-tex="\(hj(\widetilde X)\)">\(hj(\widetilde X)\)</span> has coordinates <span class="math" data-tex="\(hft_v\)">\(hft_v\)</span>; map a vector <span class="math" data-tex="\(\eta\)">\(\eta\)</span> of <span class="math" data-tex="\(e_i^{\rm car}\ell^2(h\mathsf H)\)">\(e_i^{\rm car}\ell^2(h\mathsf H)\)</span>, written as a function of <span class="math" data-tex="\(f\in\mathsf H\)">\(f\in\mathsf H\)</span>, to the vector <span class="math" data-tex="\(b&#x27;_i\otimes T_i\eta\)">\(b&#x27;_i\otimes T_i\eta\)</span> of that sheet, where <span class="math" data-tex="\(b&#x27;_i\)">\(b&#x27;_i\)</span> is the normalized constant on the surviving <span class="math" data-tex="\(\mathscr B_i\)">\(\mathscr B_i\)</span>-vertices. Changing the representative of the coset changes both sides by a left deck translation, which commutes with the right regular operators and <span class="math" data-tex="\(T_i\)">\(T_i\)</span>. This defines an isometry
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal I:\mathscr K\to\mathscr H_{\rm abs},\\
+\mathcal I\mathcal I^*\le E ,
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+\mathcal I:\mathscr K\to\mathscr H_{\rm abs},\\
+\mathcal I\mathcal I^*\le E ,
+\end{gathered}\tag{4.1}
+\]</span>
+isometric because <span class="math" data-tex="\(e_i^{\rm car}T_i^*T_ie_i^{\rm car}=e_i^{\rm car}\)">\(e_i^{\rm car}T_i^*T_ie_i^{\rm car}=e_i^{\rm car}\)</span>.</p>
+<p><strong>Routes through constants.</strong> The <span class="math" data-tex="\(\mathscr A_i\)">\(\mathscr A_i\)</span>-coordinates connect the chosen <span class="math" data-tex="\(\mathscr B_i\)">\(\mathscr B_i\)</span>-constants. On <span class="math" data-tex="\(\mathscr H_{\rm abs}\)">\(\mathscr H_{\rm abs}\)</span> consider the mean blocks
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_i=U_{ii}\otimes T_i\chi_iT_i^*,\\
+W_{ik}(f)=U_{ik}\otimes T_if_{ik}T_k^*,
+\end{gathered}
+\]">\[
+\begin{gathered}
+V_i=U_{ii}\otimes T_i\chi_iT_i^*,\\
+W_{ik}(f)=U_{ik}\otimes T_if_{ik}T_k^*,
+\end{gathered}
+\]</span>
+the same on every sheet; <span class="math" data-tex="\(V_i\)">\(V_i\)</span> maps the <span class="math" data-tex="\(\mathscr B_i\)">\(\mathscr B_i\)</span>-side to the <span class="math" data-tex="\(\mathscr A_i\)">\(\mathscr A_i\)</span>-side, and <span class="math" data-tex="\(f_{ik}\)">\(f_{ik}\)</span> is supported where <span class="math" data-tex="\(\chi_i=\chi_k=1\)">\(\chi_i=\chi_k=1\)</span>. Matrix values in a fixed size are allowed. Let <span class="math" data-tex="\(V=\bigoplus_iV_i\)">\(V=\bigoplus_iV_i\)</span>, and let <span class="math" data-tex="\(W(f)\)">\(W(f)\)</span> be the band operator with blocks <span class="math" data-tex="\(W_{ik}(f)\)">\(W_{ik}(f)\)</span>. Both are supported on <span class="math" data-tex="\(E\)">\(E\)</span> and uniformly bounded by the Schur test. For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal R_k(f)&amp;=(V^*V)^kV^*W(f)\\
+&amp;\quad\times(V^*V)^k .
+\end{aligned}\tag{4.2}
+\]">\[
+\begin{aligned}
+\mathcal R_k(f)&amp;=(V^*V)^kV^*W(f)\\
+&amp;\quad\times(V^*V)^k .
+\end{aligned}\tag{4.2}
+\]</span>
+Its block from the <span class="math" data-tex="\(\mathscr B_j\)">\(\mathscr B_j\)</span>-side to the <span class="math" data-tex="\(\mathscr B_i\)">\(\mathscr B_i\)</span>-side has the incidence factor
+<span class="math math-display" data-tex="\[
+(U_{ii}^*U_{ii})^kU_{ii}^*U_{ij}(U_{jj}^*U_{jj})^k
+\]">\[
+(U_{ii}^*U_{ii})^kU_{ii}^*U_{ij}(U_{jj}^*U_{jj})^k
+\]</span>
+and the function factor exactly <span class="math" data-tex="\(T_if_{ij}T_j^*\)">\(T_if_{ij}T_j^*\)</span>, because every extra cutoff equals one on <span class="math" data-tex="\(\operatorname{supp}f_{ij}\)">\(\operatorname{supp}f_{ij}\)</span> and Lemma 5.1 of the lesson on compact Bott projections multiplies the spread symbols.</p>
+<p><strong>Proposition 4.2</strong> (constant extraction). For every band profile <span class="math" data-tex="\(f\)">\(f\)</span> of the fixed families,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bigl\|\mathcal R_k(f)-\mathcal If^{\rm mod}\mathcal I^*\bigr\|\\
+\le C_f\bigl(\rho^{2k}+k\sqrt{\varepsilon_{\rm del}}\bigr).
+\end{gathered}\tag{4.3}
+\]">\[
+\begin{gathered}
+\bigl\|\mathcal R_k(f)-\mathcal If^{\rm mod}\mathcal I^*\bigr\|\\
+\le C_f\bigl(\rho^{2k}+k\sqrt{\varepsilon_{\rm del}}\bigr).
+\end{gathered}\tag{4.3}
+\]</span></p>
+<p><em>Proof.</em> Replace every incidence by its hatted version of Lemma 4.1; this changes the product by at most <span class="math" data-tex="\(C_fk\sqrt{\varepsilon_{\rm del}}\)">\(C_fk\sqrt{\varepsilon_{\rm del}}\)</span>. Let <span class="math" data-tex="\(\Pi_i\)">\(\Pi_i\)</span> be the projection onto the normalized constants <span class="math" data-tex="\(b&#x27;_i\)">\(b&#x27;_i\)</span> of the surviving <span class="math" data-tex="\(\mathscr B_i\)">\(\mathscr B_i\)</span>-space. Then <span class="math" data-tex="\(\widehat U_{ii}^*\widehat U_{ii}=\Pi_i+C_i\)">\(\widehat U_{ii}^*\widehat U_{ii}=\Pi_i+C_i\)</span> with <span class="math" data-tex="\(\Pi_iC_i=C_i\Pi_i=0\)">\(\Pi_iC_i=C_i\Pi_i=0\)</span> and <span class="math" data-tex="\(\|C_i\|\le\rho^2\)">\(\|C_i\|\le\rho^2\)</span>, so <span class="math" data-tex="\((\widehat U_{ii}^*\widehat U_{ii})^k=\Pi_i+C_i^k\)">\((\widehat U_{ii}^*\widehat U_{ii})^k=\Pi_i+C_i^k\)</span> with <span class="math" data-tex="\(\|C_i^k\|\le\rho^{2k}\)">\(\|C_i^k\|\le\rho^{2k}\)</span>. The middle factor <span class="math" data-tex="\(\widehat U_{ii}^*\widehat U_{ij}\)">\(\widehat U_{ii}^*\widehat U_{ij}\)</span> maps <span class="math" data-tex="\(b&#x27;_j\)">\(b&#x27;_j\)</span> to <span class="math" data-tex="\(b&#x27;_i\)">\(b&#x27;_i\)</span> and the orthogonal complements to each other. So the hatted incidence factor is <span class="math" data-tex="\(|b&#x27;_i\rangle\langle b&#x27;_j|\)">\(|b&#x27;_i\rangle\langle b&#x27;_j|\)</span> plus a term of norm at most <span class="math" data-tex="\(C\rho^{4k}\)">\(C\rho^{4k}\)</span>. The term <span class="math" data-tex="\(|b&#x27;_i\rangle\langle b&#x27;_j|\otimes T_if_{ij}T_j^*\)">\(|b&#x27;_i\rangle\langle b&#x27;_j|\otimes T_if_{ij}T_j^*\)</span> is exactly the block of <span class="math" data-tex="\(\mathcal If^{\rm mod}\mathcal I^*\)">\(\mathcal If^{\rm mod}\mathcal I^*\)</span>. A band operator of width one has norm at most three times the supremum of its block norms, which gives (4.3), in the full operator norm, including all nonconstant modes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So finite words in the mean blocks extract any prescribed band profile on the model coordinates and suppress the other incidence modes, with an error made small by choosing <span class="math" data-tex="\(k\)">\(k\)</span> first and <span class="math" data-tex="\(\varepsilon_{\rm del}\)">\(\varepsilon_{\rm del}\)</span> after.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>Exercise 5.1.</strong> Verify (1.1): from <span class="math" data-tex="\(j(v,f)\sigma=j(w,fh_e)\)">\(j(v,f)\sigma=j(w,fh_e)\)</span> deduce <span class="math" data-tex="\(t_v\sigma=h_et_w\)">\(t_v\sigma=h_et_w\)</span>, and compute <span class="math" data-tex="\(R(\sigma)\delta_{ft_w}\)">\(R(\sigma)\delta_{ft_w}\)</span>.</p>
+<p><strong>Exercise 5.2.</strong> Why does the trimming estimate (3.1) need the trace bound <span class="math" data-tex="\(2^{-700H_i}\)">\(2^{-700H_i}\)</span> to beat the ball size <span class="math" data-tex="\(2^{10H_i}\)">\(2^{10H_i}\)</span> by a wide margin, while the synthesis estimate (3.3) needs it to beat also the number <span class="math" data-tex="\(n_i\le C_s2^{H_i}\)">\(n_i\le C_s2^{H_i}\)</span> of base vertices?</p>
+<p><strong>Exercise 5.3.</strong> Show that <span class="math" data-tex="\(\widehat U_{ii}^*\widehat U_{ii}\)">\(\widehat U_{ii}^*\widehat U_{ii}\)</span> restricted to <span class="math" data-tex="\(b_i&#x27;^{\perp}\)">\(b_i&#x27;^{\perp}\)</span> has norm at most <span class="math" data-tex="\(\rho^2\)">\(\rho^2\)</span>.</p>
+<p><strong>Exercise 5.4.</strong> In (4.2), what goes wrong if one takes <span class="math" data-tex="\(k=0\)">\(k=0\)</span>?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> The edge of the cover over <span class="math" data-tex="\(e\)">\(e\)</span> from <span class="math" data-tex="\((v,f)\)">\((v,f)\)</span> goes to <span class="math" data-tex="\((w,fh_e)\)">\((w,fh_e)\)</span>, so <span class="math" data-tex="\(j(v,f)\sigma=j(w,fh_e)\)">\(j(v,f)\sigma=j(w,fh_e)\)</span>, that is <span class="math" data-tex="\(ft_v\sigma=fh_et_w\)">\(ft_v\sigma=fh_et_w\)</span>, hence <span class="math" data-tex="\(t_v\sigma=h_et_w\)">\(t_v\sigma=h_et_w\)</span>. Then <span class="math" data-tex="\(R(\sigma)\delta_{ft_w}=\delta_{ft_w\sigma^{-1}}\)">\(R(\sigma)\delta_{ft_w}=\delta_{ft_w\sigma^{-1}}\)</span> and <span class="math" data-tex="\(t_w\sigma^{-1}=h_e^{-1}t_v\)">\(t_w\sigma^{-1}=h_e^{-1}t_v\)</span>, so it is <span class="math" data-tex="\(\delta_{fh_e^{-1}t_v}\)">\(\delta_{fh_e^{-1}t_v}\)</span>.</p>
+<p><strong>5.2.</strong> Trimming a single sheet removes at most <span class="math" data-tex="\(2^{10H_i}\)">\(2^{10H_i}\)</span> coordinates of height <span class="math" data-tex="\(i\)">\(i\)</span>, each costing <span class="math" data-tex="\(\tau(P_i)\le C2^{-700H_i}\)">\(\tau(P_i)\le C2^{-700H_i}\)</span>. Synthesis sums over sheets into one vertex, which receives up to <span class="math" data-tex="\(n_i\)">\(n_i\)</span> coordinates of height <span class="math" data-tex="\(i\)">\(i\)</span>, and Cauchy–Schwarz costs the factor <span class="math" data-tex="\(n_i\)">\(n_i\)</span>; <span class="math" data-tex="\(2^{H_i}\cdot2^{10H_i}\cdot2^{-700H_i}\)">\(2^{H_i}\cdot2^{10H_i}\cdot2^{-700H_i}\)</span> is still tiny.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(\widehat U_{ii}\)">\(\widehat U_{ii}\)</span> maps <span class="math" data-tex="\(b_i&#x27;^\perp\)">\(b_i&#x27;^\perp\)</span> into <span class="math" data-tex="\(a_i&#x27;^\perp\)">\(a_i&#x27;^\perp\)</span> by the summand <span class="math" data-tex="\(Q_AU_{ii}Q_B\)">\(Q_AU_{ii}Q_B\)</span>, of norm at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; so on <span class="math" data-tex="\(b_i&#x27;^\perp\)">\(b_i&#x27;^\perp\)</span>, <span class="math" data-tex="\(\widehat U_{ii}^*\widehat U_{ii}=(Q_AU_{ii}Q_B)^*(Q_AU_{ii}Q_B)\)">\(\widehat U_{ii}^*\widehat U_{ii}=(Q_AU_{ii}Q_B)^*(Q_AU_{ii}Q_B)\)</span>, of norm at most <span class="math" data-tex="\(\rho^2\)">\(\rho^2\)</span>.</p>
+<p><strong>5.4.</strong> With <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, <span class="math" data-tex="\(\mathcal R_0(f)=V^*W(f)\)">\(\mathcal R_0(f)=V^*W(f)\)</span> keeps all nonconstant modes of the incidences, whose contribution has norm of order one; the flanking powers are what suppress them, at the rate <span class="math" data-tex="\(\rho^{2k}\)">\(\rho^{2k}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BCI] OpenAI, <em>A torsion-free counterexample to reduced Baum–Connes injectivity</em>, OpenAI Math Release preprint, 23 September 2026, Sections 8.1-8.3, Lemmas 8.1-8.3. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

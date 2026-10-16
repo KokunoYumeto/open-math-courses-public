@@ -1,0 +1,254 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Streams, coefficient pools and universal corrections</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to reduced Baum–Connes injectivity)</a><a href="the-heisenberg-group-and-its-laws.html">Previous lesson</a><a href="auxiliary-incidences-deletions-and-recovery.html">Next lesson</a><a href="src/streams-coefficient-pools-and-universal-corrections.md">Editable source</a></nav><main><article><h1 id="streams-coefficient-pools-and-universal-corrections">Streams, coefficient pools and universal corrections</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The group of this course is built from an infinite layered graph, the <em>tower</em>, whose vertices are pairs of bit strings and whose edges are solutions of explicit equations. This lesson sets up the vertex sets and the edge equations. Two evaluations of a vertex state with different field coefficients determine the state block by block: over a finite field, <span class="math" data-tex="\(E_1=v+c_1u\)">\(E_1=v+c_1u\)</span> and <span class="math" data-tex="\(E_2=v+c_2u\)">\(E_2=v+c_2u\)</span> with <span class="math" data-tex="\(c_1\ne c_2\)">\(c_1\ne c_2\)</span> give <span class="math" data-tex="\(u=(c_1-c_2)^{-1}(E_1-E_2)\)">\(u=(c_1-c_2)^{-1}(E_1-E_2)\)</span> and then <span class="math" data-tex="\(v\)">\(v\)</span>. The labels of the edges supply such evaluations, and the next lesson turns this into recovery of long paths from their words. The edge equations couple each evaluation to a permuted input stream at the other endpoint; <em>gates</em> switch the permutations off on zero data, and <em>universal corrections</em> make one system of equations serve all heights at once [OpenAI-BCI, Sections 2.1-2.3].</p>
+<ul>
+<li>Parameters, stream lengths and cutoffs (Section 1).</li>
+<li>Types, families, extra coordinates, slots and labels (Section 2).</li>
+<li>Coefficient pools (Section 3).</li>
+<li>Gates, corrections, permutation tables and the edge equations (Section 4).</li>
+</ul>
+<p>We use the existence of a field with <span class="math" data-tex="\(2^h\)">\(2^h\)</span> elements for every <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>, from the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C40">Abstract Algebra II</a> (Judson, <em>Abstract Algebra: Theory and Applications</em>, <a href="https://judsonbooks.org/aata-files/aata-html/finite-section-field.html">Theorem 22.1.6</a>), and the concentration bound for sampling without replacement, Lemma 5.1 of <a href="../kadison-kaplansky-projections/streams-slots-and-slot-evaluations.html#5-concentration-for-sampling-with-and-without-replacement">Streams, slots and slot evaluations</a>. All logarithms have base two.</p>
+<h2 id="1-parameters-and-streams">1. Parameters and streams</h2>
+<p>Fix a positive integer <span class="math" data-tex="\(b\)">\(b\)</span>; it is chosen once, in the lesson <a href="expansion-and-the-sequential-law.html">Expansion and the sequential law</a>, and never changed. Let <span class="math" data-tex="\(s\)">\(s\)</span> be a large multiple of <span class="math" data-tex="\(20000\)">\(20000\)</span> and of <span class="math" data-tex="\(5b\)">\(5b\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r=\tfrac35s,\enspace d=2^{.40005s},\\
+D=2^{.60005s},\enspace q=2^{.50005s}.
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+r=\tfrac35s,\enspace d=2^{.40005s},\\
+D=2^{.60005s},\enspace q=2^{.50005s}.
+\end{gathered}\tag{1.1}
+\]</span>
+The exponents are integers because <span class="math" data-tex="\(.40005s=8001s/20000\)">\(.40005s=8001s/20000\)</span>, and similarly for the others; <span class="math" data-tex="\(r\)">\(r\)</span> is a multiple of <span class="math" data-tex="\(b\)">\(b\)</span>, and <span class="math" data-tex="\(q=\sqrt{dD}\)">\(q=\sqrt{dD}\)</span>. The numbers <span class="math" data-tex="\(d,D\)">\(d,D\)</span> will be the degrees of an incidence on its two sides, and <span class="math" data-tex="\(q\)">\(q\)</span> their geometric mean. Choose an integer <span class="math" data-tex="\(n_0\ge10^6\)">\(n_0\ge10^6\)</span>, to be increased later. For <span class="math" data-tex="\(i\ge0\)">\(i\ge0\)</span> write <span class="math" data-tex="\(bi=2sa_i+t_i\)">\(bi=2sa_i+t_i\)</span> with <span class="math" data-tex="\(0\le t_i&lt;2s\)">\(0\le t_i&lt;2s\)</span>, and define the <em>stream lengths</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ell_A(i)&amp;=r+n_0s+a_is\\
+&amp;\quad+\max\{t_i-s,0\},\\
+\ell_B(i)&amp;=n_0s+a_is\\
+&amp;\quad+\min\{t_i,s\}.
+\end{aligned}\tag{1.2}
+\]">\[
+\begin{aligned}
+\ell_A(i)&amp;=r+n_0s+a_is\\
+&amp;\quad+\max\{t_i-s,0\},\\
+\ell_B(i)&amp;=n_0s+a_is\\
+&amp;\quad+\min\{t_i,s\}.
+\end{aligned}\tag{1.2}
+\]</span>
+The vertex sets of the tower at <em>height</em> <span class="math" data-tex="\(i\)">\(i\)</span> are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathscr A_i=\mathbb F_2^{\ell_A(i)}\times\mathbb F_2^{r+\ell_B(i)},\\
+\mathscr B_i=\mathbb F_2^{\ell_B(i)}\times\mathbb F_2^{s-r+\ell_A(i)} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathscr A_i=\mathbb F_2^{\ell_A(i)}\times\mathbb F_2^{r+\ell_B(i)},\\
+\mathscr B_i=\mathbb F_2^{\ell_B(i)}\times\mathbb F_2^{s-r+\ell_A(i)} .
+\end{gathered}
+\]</span>
+A state is written <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>: <span class="math" data-tex="\(u\)">\(u\)</span> is the <em>input</em> and <span class="math" data-tex="\(v\)">\(v\)</span> the <em>evaluation</em> coordinate. Each coordinate is regarded as an infinite bit stream by adjoining zeros, the <em>padding</em>. The coordinates on side <span class="math" data-tex="\(A\)">\(A\)</span> are cut into an initial block <span class="math" data-tex="\(A_0\)">\(A_0\)</span> of length <span class="math" data-tex="\(r\)">\(r\)</span> followed by blocks <span class="math" data-tex="\(A_1,A_2,\ldots\)">\(A_1,A_2,\ldots\)</span> of length <span class="math" data-tex="\(s\)">\(s\)</span>; those on side <span class="math" data-tex="\(B\)">\(B\)</span> into blocks <span class="math" data-tex="\(B_1,B_2,\ldots\)">\(B_1,B_2,\ldots\)</span> of length <span class="math" data-tex="\(s\)">\(s\)</span>. The blocks of the two input streams are interleaved in the <em>source order</em>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_0\ (0),\ B_1\ (1),\ A_1\ (2),\\
+B_2\ (3),\ A_2\ (4),\ \ldots,
+\end{gathered}\tag{1.3}
+\]">\[
+\begin{gathered}
+A_0\ (0),\ B_1\ (1),\ A_1\ (2),\\
+B_2\ (3),\ A_2\ (4),\ \ldots,
+\end{gathered}\tag{1.3}
+\]</span>
+so that <span class="math" data-tex="\(A_j\)">\(A_j\)</span> has <em>source index</em> <span class="math" data-tex="\(2j\)">\(2j\)</span> and <span class="math" data-tex="\(B_j\)">\(B_j\)</span> has source index <span class="math" data-tex="\(2j-1\)">\(2j-1\)</span>. Evaluation blocks are indexed in the same way: the block of <span class="math" data-tex="\(v_A\)">\(v_A\)</span> in the positions of <span class="math" data-tex="\(A_j\)">\(A_j\)</span> has index <span class="math" data-tex="\(2j\)">\(2j\)</span>, and the block of <span class="math" data-tex="\(v_B\)">\(v_B\)</span> in the positions of <span class="math" data-tex="\(B_j\)">\(B_j\)</span> has index <span class="math" data-tex="\(2j-1\)">\(2j-1\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_i=r+2n_0s+bi,\\
+H_i=L_i+s-r=(2n_0+1)s+bi .
+\end{gathered}
+\]">\[
+\begin{gathered}
+L_i=r+2n_0s+bi,\\
+H_i=L_i+s-r=(2n_0+1)s+bi .
+\end{gathered}
+\]</span>
+The number <span class="math" data-tex="\(H_i\)">\(H_i\)</span> is the <em>scale</em> of height <span class="math" data-tex="\(i\)">\(i\)</span>; it grows by <span class="math" data-tex="\(b\)">\(b\)</span> from one height to the next.</p>
+<p><strong>Lemma 1.1</strong> (sizes and cutoffs). For every <span class="math" data-tex="\(i\ge0\)">\(i\ge0\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(\ell_A(i)+\ell_B(i)=L_i\)">\(\ell_A(i)+\ell_B(i)=L_i\)</span>, <span class="math" data-tex="\(|\mathscr B_i|=2^{H_i}\)">\(|\mathscr B_i|=2^{H_i}\)</span> and <span class="math" data-tex="\(|\mathscr A_i|=2^{H_i+2r-s}\)">\(|\mathscr A_i|=2^{H_i+2r-s}\)</span>.</li>
+<li>The active coordinates of the two input streams form an initial segment of the source order (1.3), of total length <span class="math" data-tex="\(L_i\)">\(L_i\)</span>. There are <span class="math" data-tex="\(n\ge n_0-1\)">\(n\ge n_0-1\)</span> and <span class="math" data-tex="\(t\in\{b,2b,\ldots,s\}\)">\(t\in\{b,2b,\ldots,s\}\)</span> such that one of the two <em>cutoff forms</em> holds:
+<span class="math math-display" data-tex="\[
+\begin{array}{c|cc}
+&amp;\text{(B)}&amp;\text{(A)}\\\hline
+\ell_A&amp;r+ns&amp;r+ns+t\\
+\ell_B&amp;ns+t&amp;(n+1)s\\
+|v_A|&amp;r+ns+t&amp;r+(n+1)s\\
+|v_B|&amp;(n+1)s&amp;(n+1)s+t
+\end{array}
+\]">\[
+\begin{array}{c|cc}
+&amp;\text{(B)}&amp;\text{(A)}\\\hline
+\ell_A&amp;r+ns&amp;r+ns+t\\
+\ell_B&amp;ns+t&amp;(n+1)s\\
+|v_A|&amp;r+ns+t&amp;r+(n+1)s\\
+|v_B|&amp;(n+1)s&amp;(n+1)s+t
+\end{array}
+\]</span>
+In form (B) the last active input block is <span class="math" data-tex="\(B_{n+1}\)">\(B_{n+1}\)</span> with <span class="math" data-tex="\(t\)">\(t\)</span> active coordinates; in form (A) it is <span class="math" data-tex="\(A_{n+1}\)">\(A_{n+1}\)</span>.</li>
+<li>From height <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(i+1\)">\(i+1\)</span> exactly one of <span class="math" data-tex="\(\ell_A,\ell_B\)">\(\ell_A,\ell_B\)</span> grows, by <span class="math" data-tex="\(b\)">\(b\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) For <span class="math" data-tex="\(0\le t&lt;2s\)">\(0\le t&lt;2s\)</span>, <span class="math" data-tex="\(\max\{t-s,0\}+\min\{t,s\}=t\)">\(\max\{t-s,0\}+\min\{t,s\}=t\)</span>, so <span class="math" data-tex="\(\ell_A+\ell_B=r+2n_0s+2a_is+t_i=L_i\)">\(\ell_A+\ell_B=r+2n_0s+2a_is+t_i=L_i\)</span>. Then <span class="math" data-tex="\(\log|\mathscr B_i|=\ell_B+s-r+\ell_A=H_i\)">\(\log|\mathscr B_i|=\ell_B+s-r+\ell_A=H_i\)</span> and <span class="math" data-tex="\(\log|\mathscr A_i|=\ell_A+r+\ell_B=L_i+r\)">\(\log|\mathscr A_i|=\ell_A+r+\ell_B=L_i+r\)</span>, which is <span class="math" data-tex="\(H_i+2r-s\)">\(H_i+2r-s\)</span>.</p>
+<p>(2) Put <span class="math" data-tex="\(n&#x27;=n_0+a_i\)">\(n&#x27;=n_0+a_i\)</span>. If <span class="math" data-tex="\(0&lt;t_i\le s\)">\(0&lt;t_i\le s\)</span>, then <span class="math" data-tex="\(\ell_A=r+n&#x27;s\)">\(\ell_A=r+n&#x27;s\)</span> and <span class="math" data-tex="\(\ell_B=n&#x27;s+t_i\)">\(\ell_B=n&#x27;s+t_i\)</span>: form (B) with <span class="math" data-tex="\(n=n&#x27;\)">\(n=n&#x27;\)</span>, <span class="math" data-tex="\(t=t_i\)">\(t=t_i\)</span>. If <span class="math" data-tex="\(s&lt;t_i&lt;2s\)">\(s&lt;t_i&lt;2s\)</span>, then <span class="math" data-tex="\(\ell_A=r+n&#x27;s+(t_i-s)\)">\(\ell_A=r+n&#x27;s+(t_i-s)\)</span> and <span class="math" data-tex="\(\ell_B=(n&#x27;+1)s\)">\(\ell_B=(n&#x27;+1)s\)</span>: form (A) with <span class="math" data-tex="\(n=n&#x27;\)">\(n=n&#x27;\)</span>, <span class="math" data-tex="\(t=t_i-s\)">\(t=t_i-s\)</span>. If <span class="math" data-tex="\(t_i=0\)">\(t_i=0\)</span>, then <span class="math" data-tex="\(\ell_A=r+n&#x27;s\)">\(\ell_A=r+n&#x27;s\)</span> and <span class="math" data-tex="\(\ell_B=n&#x27;s\)">\(\ell_B=n&#x27;s\)</span>: form (A) with <span class="math" data-tex="\(n=n&#x27;-1\)">\(n=n&#x27;-1\)</span>, <span class="math" data-tex="\(t=s\)">\(t=s\)</span>. In each case <span class="math" data-tex="\(t\)">\(t\)</span> is a multiple of <span class="math" data-tex="\(b\)">\(b\)</span> because <span class="math" data-tex="\(b\)">\(b\)</span> divides <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(bi\)">\(bi\)</span>. The evaluation lengths are <span class="math" data-tex="\(|v_A|=r+\ell_B\)">\(|v_A|=r+\ell_B\)</span> and <span class="math" data-tex="\(|v_B|=s-r+\ell_A\)">\(|v_B|=s-r+\ell_A\)</span>. In form (B) the input streams are full through <span class="math" data-tex="\(A_n\)">\(A_n\)</span> and <span class="math" data-tex="\(B_n\)">\(B_n\)</span> and <span class="math" data-tex="\(B_{n+1}\)">\(B_{n+1}\)</span> has <span class="math" data-tex="\(t\)">\(t\)</span> coordinates; in form (A) they are full through <span class="math" data-tex="\(B_{n+1}\)">\(B_{n+1}\)</span> and <span class="math" data-tex="\(A_{n+1}\)">\(A_{n+1}\)</span> has <span class="math" data-tex="\(t\)">\(t\)</span> coordinates. Either way the active part is an initial segment of (1.3).</p>
+<p>(3) Since <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(t_i\)">\(t_i\)</span> are multiples of <span class="math" data-tex="\(b\)">\(b\)</span>: if <span class="math" data-tex="\(t_i&lt;s\)">\(t_i&lt;s\)</span>, then <span class="math" data-tex="\(t_{i+1}=t_i+b\le s\)">\(t_{i+1}=t_i+b\le s\)</span> and only <span class="math" data-tex="\(\min\{t,s\}\)">\(\min\{t,s\}\)</span> grows; if <span class="math" data-tex="\(s\le t_i&lt;2s-b\)">\(s\le t_i&lt;2s-b\)</span>, only <span class="math" data-tex="\(\max\{t-s,0\}\)">\(\max\{t-s,0\}\)</span> grows; if <span class="math" data-tex="\(t_i=2s-b\)">\(t_i=2s-b\)</span>, then <span class="math" data-tex="\(a_{i+1}=a_i+1\)">\(a_{i+1}=a_i+1\)</span>, <span class="math" data-tex="\(t_{i+1}=0\)">\(t_{i+1}=0\)</span>, and <span class="math" data-tex="\(\ell_A\)">\(\ell_A\)</span> grows by <span class="math" data-tex="\(b\)">\(b\)</span> while <span class="math" data-tex="\(\ell_B\)">\(\ell_B\)</span> is unchanged. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-types-families-extras-slots-and-labels">2. Types, families, extras, slots and labels</h2>
+<p>Let <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> be a fixed finite set of <em>incidence types</em>, <span class="math" data-tex="\(T=|\mathcal T|\)">\(T=|\mathcal T|\)</span>. A type <span class="math" data-tex="\(\tau\)">\(\tau\)</span> has an <em>offset</em> <span class="math" data-tex="\(\delta_\tau\in\{-1,0,1\}\)">\(\delta_\tau\in\{-1,0,1\}\)</span> and occurs between <span class="math" data-tex="\(\mathscr A_i\)">\(\mathscr A_i\)</span> and <span class="math" data-tex="\(\mathscr B_{i+\delta_\tau}\)">\(\mathscr B_{i+\delta_\tau}\)</span> whenever both indices are nonnegative; the pair is <em>adjacent</em> if <span class="math" data-tex="\(\delta_\tau\ne0\)">\(\delta_\tau\ne0\)</span> and of <em>equal height</em> otherwise. Its smaller height is <span class="math" data-tex="\(h=\min\{i,i+\delta_\tau\}\)">\(h=\min\{i,i+\delta_\tau\}\)</span>. Put
+<span class="math math-display" data-tex="\[
+M=2\cdot10^6s .
+\]">\[
+M=2\cdot10^6s .
+\]</span>
+The <em>family</em> of the pair is <span class="math" data-tex="\(f=(\tau,\,i\bmod M)\)">\(f=(\tau,\,i\bmod M)\)</span>; there are at most <span class="math" data-tex="\(TM\)">\(TM\)</span> families, and <span class="math" data-tex="\(f\)">\(f\)</span> determines the residues of both endpoint heights, of <span class="math" data-tex="\(h\)">\(h\)</span>, and of <span class="math" data-tex="\(bh\)">\(bh\)</span> modulo <span class="math" data-tex="\(2s\)">\(2s\)</span>.</p>
+<p><strong>Extra coordinates.</strong> In an adjacent pair, the endpoint at height <span class="math" data-tex="\(h+1\)">\(h+1\)</span> is the <em>larger</em> one. Truncating its state to the lengths at height <span class="math" data-tex="\(h\)">\(h\)</span> discards exactly <span class="math" data-tex="\(b\)">\(b\)</span> coordinates: by Lemma 1.1(3) exactly one input stream grows from <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(h+1\)">\(h+1\)</span>; on side <span class="math" data-tex="\(A\)">\(A\)</span> the lengths are <span class="math" data-tex="\((\ell_A,r+\ell_B)\)">\((\ell_A,r+\ell_B)\)</span> and on side <span class="math" data-tex="\(B\)">\(B\)</span> they are <span class="math" data-tex="\((\ell_B,s-r+\ell_A)\)">\((\ell_B,s-r+\ell_A)\)</span>, so the discarded coordinates are the last <span class="math" data-tex="\(b\)">\(b\)</span> active coordinates of <span class="math" data-tex="\(u\)">\(u\)</span> if that side's own input stream grows, and of <span class="math" data-tex="\(v\)">\(v\)</span> otherwise. They form one interval. Their value <span class="math" data-tex="\(e\in\mathbb F_2^b\)">\(e\in\mathbb F_2^b\)</span> is the <em>extra</em>. For an equal-height pair, <span class="math" data-tex="\(e\)">\(e\)</span> is the empty string. In a fixed <em>extra slice</em> (a fixed value of <span class="math" data-tex="\(e\)">\(e\)</span>), both truncated endpoint spaces are exactly the spaces at height <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>Slots.</strong> A <em>slot</em> is a named candidate incidence at a vertex. At an <span class="math" data-tex="\(A\)">\(A\)</span>-endpoint a slot consists of the type and a serial number <span class="math" data-tex="\(j\in\{1,\ldots,d\}\)">\(j\in\{1,\ldots,d\}\)</span>; at a <span class="math" data-tex="\(B\)">\(B\)</span>-endpoint it consists of the type, a serial number <span class="math" data-tex="\(j\)">\(j\)</span> and a <em>bucket</em> <span class="math" data-tex="\(c\in\mathbb F_2^{2r-s}\)">\(c\in\mathbb F_2^{2r-s}\)</span>. At the smaller endpoint of an adjacent pair the extra <span class="math" data-tex="\(e\)">\(e\)</span> is also part of the slot; at the larger endpoint <span class="math" data-tex="\(e\)">\(e\)</span> is read from the state. So in a fixed extra slice each type gives every <span class="math" data-tex="\(A\)">\(A\)</span>-vertex <span class="math" data-tex="\(d\)">\(d\)</span> slots and every <span class="math" data-tex="\(B\)">\(B\)</span>-vertex <span class="math" data-tex="\(d\,2^{2r-s}=D\)">\(d\,2^{2r-s}=D\)</span> slots, since <span class="math" data-tex="\(2r-s=s/5\)">\(2r-s=s/5\)</span>.</p>
+<p><strong>Labels.</strong> A <em>positive label</em> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda=(f,j,e,h_0),\\
+h_0=c\Vert h_0&#x27;,\\
+|h_0|=r,\quad|h_0&#x27;|=s-r ,
+\end{gathered}\tag{2.1}
+\]">\[
+\begin{gathered}
+\lambda=(f,j,e,h_0),\\
+h_0=c\Vert h_0&#x27;,\\
+|h_0|=r,\quad|h_0&#x27;|=s-r ,
+\end{gathered}\tag{2.1}
+\]</span>
+with <span class="math" data-tex="\(f\)">\(f\)</span> a family, <span class="math" data-tex="\(j\)">\(j\)</span> a serial number, <span class="math" data-tex="\(e\)">\(e\)</span> an extra of that family and <span class="math" data-tex="\(h_0\)">\(h_0\)</span> the <em>label head</em>; its first <span class="math" data-tex="\(2r-s\)">\(2r-s\)</span> bits are the bucket <span class="math" data-tex="\(c\)">\(c\)</span>. Every positive edge will run from its <span class="math" data-tex="\(\mathscr A\)">\(\mathscr A\)</span>-endpoint to its <span class="math" data-tex="\(\mathscr B\)">\(\mathscr B\)</span>-endpoint, and the reverse traversal reads the formal inverse label.</p>
+<p><strong>Marks.</strong> For each family and each occurrence of it, that is, each height pair of the family, <em>mark</em> its <em>common cutoff</em>: the end of the active initial segment of (1.3) at the smaller height <span class="math" data-tex="\(h\)">\(h\)</span>, of length <span class="math" data-tex="\(L_h\)">\(L_h\)</span>. Let <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> be the source index of the last active block of that segment and <span class="math" data-tex="\(t\in\{b,\ldots,s\}\)">\(t\in\{b,\ldots,s\}\)</span> its number of active coordinates. At an adjacent occurrence also mark the interval of extra coordinates of the larger endpoint.</p>
+<p><strong>Lemma 2.1</strong> (marks). Within one family the side and the length <span class="math" data-tex="\(t\)">\(t\)</span> of the marked block are constant, and consecutive occurrences have marked indices exactly
+<span class="math math-display" data-tex="\[
+K=\frac{Mb}{s}=2\cdot10^6\,b\tag{2.2}
+\]">\[
+K=\frac{Mb}{s}=2\cdot10^6\,b\tag{2.2}
+\]</span>
+apart. The active input coordinates of an occurrence extend at most one source block beyond its marked index, and its extra interval, if it lies in an evaluation stream, at most two source blocks beyond it.</p>
+<p><em>Proof.</em> Consecutive occurrences have smaller heights <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(h+M\)">\(h+M\)</span>. Since <span class="math" data-tex="\(bM=2s\cdot10^6b\)">\(bM=2s\cdot10^6b\)</span> is a multiple of <span class="math" data-tex="\(2s\)">\(2s\)</span>, we have <span class="math" data-tex="\(t_{h+M}=t_h\)">\(t_{h+M}=t_h\)</span> and <span class="math" data-tex="\(a_{h+M}=a_h+10^6b\)">\(a_{h+M}=a_h+10^6b\)</span>, so both input lengths grow by <span class="math" data-tex="\(10^6bs\)">\(10^6bs\)</span>, the cutoff form and <span class="math" data-tex="\(t\)">\(t\)</span> are unchanged, and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> grows by <span class="math" data-tex="\(2\cdot10^6b\)">\(2\cdot10^6b\)</span>.</p>
+<p>At the larger height the input streams have <span class="math" data-tex="\(b\)">\(b\)</span> more coordinates than at <span class="math" data-tex="\(h\)">\(h\)</span>, on one side. In form (B) at <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span> they lie in the same block <span class="math" data-tex="\(B_{n+1}\)">\(B_{n+1}\)</span>; with <span class="math" data-tex="\(t=s\)">\(t=s\)</span> they are the first <span class="math" data-tex="\(b\)">\(b\)</span> coordinates of <span class="math" data-tex="\(A_{n+1}\)">\(A_{n+1}\)</span>, one index later. In form (A) with <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span> they lie in <span class="math" data-tex="\(A_{n+1}\)">\(A_{n+1}\)</span>; with <span class="math" data-tex="\(t=s\)">\(t=s\)</span> in <span class="math" data-tex="\(B_{n+2}\)">\(B_{n+2}\)</span>, one index later.</p>
+<p>An extra interval in an evaluation stream occurs on side <span class="math" data-tex="\(A\)">\(A\)</span> when <span class="math" data-tex="\(\ell_B\)">\(\ell_B\)</span> grows, at positions <span class="math" data-tex="\(r+\ell_B(h)\)">\(r+\ell_B(h)\)</span> to <span class="math" data-tex="\(r+\ell_B(h)+b\)">\(r+\ell_B(h)+b\)</span> of <span class="math" data-tex="\(v_A\)">\(v_A\)</span>, and on side <span class="math" data-tex="\(B\)">\(B\)</span> when <span class="math" data-tex="\(\ell_A\)">\(\ell_A\)</span> grows, at positions <span class="math" data-tex="\(s-r+\ell_A(h)\)">\(s-r+\ell_A(h)\)</span> onward of <span class="math" data-tex="\(v_B\)">\(v_B\)</span>. Using the table of Lemma 1.1: in form (B) with <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span>, <span class="math" data-tex="\(\ell_B\)">\(\ell_B\)</span> grows and the interval lies in the <span class="math" data-tex="\(v_A\)">\(v_A\)</span> block of index <span class="math" data-tex="\(2n+2=\kappa+1\)">\(2n+2=\kappa+1\)</span>; in form (B) with <span class="math" data-tex="\(t=s\)">\(t=s\)</span>, <span class="math" data-tex="\(\ell_A\)">\(\ell_A\)</span> grows and it lies in the <span class="math" data-tex="\(v_B\)">\(v_B\)</span> block of index <span class="math" data-tex="\(2n+3=\kappa+2\)">\(2n+3=\kappa+2\)</span>; in form (A) with <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span>, <span class="math" data-tex="\(\ell_A\)">\(\ell_A\)</span> grows and it lies in the <span class="math" data-tex="\(v_B\)">\(v_B\)</span> block of index <span class="math" data-tex="\(2n+3=\kappa+1\)">\(2n+3=\kappa+1\)</span>; in form (A) with <span class="math" data-tex="\(t=s\)">\(t=s\)</span>, <span class="math" data-tex="\(\ell_B\)">\(\ell_B\)</span> grows and it lies in the <span class="math" data-tex="\(v_A\)">\(v_A\)</span> block of index <span class="math" data-tex="\(2n+4=\kappa+2\)">\(2n+4=\kappa+2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-coefficient-pools">3. Coefficient pools</h2>
+<p>An <em><span class="math" data-tex="\(A\)">\(A\)</span>-name</em> is a triple <span class="math" data-tex="\((f,j,e)\)">\((f,j,e)\)</span> and a <em><span class="math" data-tex="\(B\)">\(B\)</span>-name</em> a quadruple <span class="math" data-tex="\((f,j,c,e)\)">\((f,j,c,e)\)</span>, over all legal values, including the extras read from a larger state. An <span class="math" data-tex="\(A\)">\(A\)</span>-name does not contain the bucket, which is not known when the label head is computed. Let <span class="math" data-tex="\(\mathcal N_A,\mathcal N_B\)">\(\mathcal N_A,\mathcal N_B\)</span> be these finite sets; then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\mathcal N_A|\le TM2^bd,\\
+|\mathcal N_B|\le TM2^bD .
+\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}
+|\mathcal N_A|\le TM2^bd,\\
+|\mathcal N_B|\le TM2^bD .
+\end{gathered}\tag{3.1}
+\]</span>
+For large <span class="math" data-tex="\(s\)">\(s\)</span> these are less than <span class="math" data-tex="\(2^r\)">\(2^r\)</span> and <span class="math" data-tex="\(2^s\)">\(2^s\)</span> respectively, since <span class="math" data-tex="\(TM2^b\)">\(TM2^b\)</span> is a polynomial in <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(r-.40005s\)">\(r-.40005s\)</span> and <span class="math" data-tex="\(s-.60005s\)">\(s-.60005s\)</span> are positive multiples of <span class="math" data-tex="\(s\)">\(s\)</span>. Fix fields <span class="math" data-tex="\(\mathbb F_{2^r}\)">\(\mathbb F_{2^r}\)</span> and <span class="math" data-tex="\(\mathbb F_{2^s}\)">\(\mathbb F_{2^s}\)</span>, identified linearly with <span class="math" data-tex="\(\mathbb F_2^r\)">\(\mathbb F_2^r\)</span> and <span class="math" data-tex="\(\mathbb F_2^s\)">\(\mathbb F_2^s\)</span>, and choose injections
+<span class="math math-display" data-tex="\[
+\iota_r:\mathcal N_A\to\mathbb F_{2^r},\qquad
+\iota_s:\mathcal N_A\sqcup\mathcal N_B\to\mathbb F_{2^s} .
+\]">\[
+\iota_r:\mathcal N_A\to\mathbb F_{2^r},\qquad
+\iota_s:\mathcal N_A\sqcup\mathcal N_B\to\mathbb F_{2^s} .
+\]</span>
+For a name <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, let <span class="math" data-tex="\(K_\nu\)">\(K_\nu\)</span> be the <em>block-diagonal</em> map of padded streams that multiplies the block <span class="math" data-tex="\(A_0\)">\(A_0\)</span> by <span class="math" data-tex="\(\iota_r(\nu)\)">\(\iota_r(\nu)\)</span> (for <span class="math" data-tex="\(A\)">\(A\)</span>-names) and every block of length <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(\iota_s(\nu)\)">\(\iota_s(\nu)\)</span>, in bit coordinates. The same coefficients are used on every block. A block whose active part is a proper prefix is multiplied as a full block, its padding being zero, so its output fills the whole block. By the table of Lemma 1.1 the output of <span class="math" data-tex="\(K_\nu\)">\(K_\nu\)</span> on an active input stream fits inside the active evaluation stream of the same side: for instance in form (B) on side <span class="math" data-tex="\(B\)">\(B\)</span> the output ends at <span class="math" data-tex="\((n+1)s=|v_B|\)">\((n+1)s=|v_B|\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (coefficient choice; [OpenAI-BCI, Lemma 2.1]). For large <span class="math" data-tex="\(s\)">\(s\)</span> the injections can be chosen so that the following holds within every family, extra value and side. Let <span class="math" data-tex="\(n\)">\(n\)</span> be the number of names there, <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> a nonzero linear functional on <span class="math" data-tex="\(\mathbb F_2^s\)">\(\mathbb F_2^s\)</span>, and <span class="math" data-tex="\(b\le t\le s\)">\(b\le t\le s\)</span>. Then each restricted functional
+<span class="math math-display" data-tex="\[
+(\zeta\circ K_\nu)|_{\mathbb F_2^t},
+\]">\[
+(\zeta\circ K_\nu)|_{\mathbb F_2^t},
+\]</span>
+where <span class="math" data-tex="\(\mathbb F_2^t\)">\(\mathbb F_2^t\)</span> is the subspace of the first <span class="math" data-tex="\(t\)">\(t\)</span> input coordinates of a block, is the same for at most <span class="math" data-tex="\(2^{1-b}n\)">\(2^{1-b}n\)</span> of the <span class="math" data-tex="\(n\)">\(n\)</span> names. The analogous statement holds on the initial block for <span class="math" data-tex="\(\iota_r\)">\(\iota_r\)</span>, for every <span class="math" data-tex="\(b\le t\le r\)">\(b\le t\le r\)</span>. Distinct names have distinct coefficients in each field.</p>
+<p><em>Proof.</em> Choose both injections uniformly at random among all injections. For a fixed nonzero <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, the map <span class="math" data-tex="\(c\mapsto\zeta(c\,\cdot)\)">\(c\mapsto\zeta(c\,\cdot)\)</span> is linear from <span class="math" data-tex="\(\mathbb F_{2^s}\)">\(\mathbb F_{2^s}\)</span> to the dual of <span class="math" data-tex="\(\mathbb F_2^s\)">\(\mathbb F_2^s\)</span> and injective, since <span class="math" data-tex="\(\{cu\}\)">\(\{cu\}\)</span> is the whole field for <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>; both have <span class="math" data-tex="\(2^s\)">\(2^s\)</span> elements, so it is a bijection. Thus on any fixed set of <span class="math" data-tex="\(n\)">\(n\)</span> names the functionals <span class="math" data-tex="\(\zeta\circ K_\nu\)">\(\zeta\circ K_\nu\)</span> are <span class="math" data-tex="\(n\)">\(n\)</span> draws without replacement from the set of all functionals. Restriction to the first <span class="math" data-tex="\(t\)">\(t\)</span> coordinates is a linear surjection onto the dual of <span class="math" data-tex="\(\mathbb F_2^t\)">\(\mathbb F_2^t\)</span>, so each restricted value is taken by a proportion <span class="math" data-tex="\(p=2^{-t}\le2^{-b}\)">\(p=2^{-t}\le2^{-b}\)</span> of all functionals.</p>
+<p>Fix a restricted value and let <span class="math" data-tex="\(S\)">\(S\)</span> be the number of the <span class="math" data-tex="\(n\)">\(n\)</span> names taking it; <span class="math" data-tex="\(\mathbb ES=np\)">\(\mathbb ES=np\)</span>. By the bound for sampling without replacement (Lemma 5.1 of <a href="../kadison-kaplansky-projections/streams-slots-and-slot-evaluations.html#5-concentration-for-sampling-with-and-without-replacement">Streams, slots and slot evaluations</a>),
+<span class="math math-display" data-tex="\[
+\mathbb P\{S-np\ge2^{-b}n\}\le e^{-2^{1-2b}n} .
+\]">\[
+\mathbb P\{S-np\ge2^{-b}n\}\le e^{-2^{1-2b}n} .
+\]</span>
+Outside this event <span class="math" data-tex="\(S&lt;np+2^{-b}n\le2^{1-b}n\)">\(S&lt;np+2^{-b}n\le2^{1-b}n\)</span>. The number of tests is at most <span class="math" data-tex="\(s\,2^{2s}\)">\(s\,2^{2s}\)</span> (functional, length <span class="math" data-tex="\(t\)">\(t\)</span> and restricted value) times the number of families, extra values and sides, which is <span class="math" data-tex="\(2^{O(s)}\)">\(2^{O(s)}\)</span> for fixed <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>; and <span class="math" data-tex="\(n\ge d=2^{.40005s}\)">\(n\ge d=2^{.40005s}\)</span> in every test. So the total failure probability is at most <span class="math" data-tex="\(2^{O(s)}e^{-2^{1-2b}2^{.40005s}}\)">\(2^{O(s)}e^{-2^{1-2b}2^{.40005s}}\)</span>, which tends to zero; the initial block is handled in the same way with <span class="math" data-tex="\(n\ge d\)">\(n\ge d\)</span> and <span class="math" data-tex="\(t\le r\)">\(t\le r\)</span>. Fix injections for which no test fails. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-gates-corrections-and-the-edge-equations">4. Gates, corrections and the edge equations</h2>
+<p>The edge equations are written once for arbitrary padded input streams <span class="math" data-tex="\(u_A,u_B\)">\(u_A,u_B\)</span>, not only for actual states; this is what allows occurrences at different heights to be compared later. Raw blocks are denoted <span class="math" data-tex="\(u_{A,j}\)">\(u_{A,j}\)</span>, <span class="math" data-tex="\(u_{B,j}\)">\(u_{B,j}\)</span>.</p>
+<p><strong>Gates.</strong> For a source index <span class="math" data-tex="\(k&gt;20\)">\(k&gt;20\)</span> put <span class="math" data-tex="\(J(k)=\lfloor(k-5)/2\rfloor\)">\(J(k)=\lfloor(k-5)/2\rfloor\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_k=1\\
+\iff(u_{B,J-3},u_{A,J-3},\\
+\ldots,u_{B,J},u_{A,J})\neq0,\\
+J=J(k);
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+g_k=1\\
+\iff(u_{B,J-3},u_{A,J-3},\\
+\ldots,u_{B,J},u_{A,J})\neq0,\\
+J=J(k);
+\end{gathered}\tag{4.1}
+\]</span>
+for <span class="math" data-tex="\(k\le20\)">\(k\le20\)</span> put <span class="math" data-tex="\(g_k=1\)">\(g_k=1\)</span>. So every gate with <span class="math" data-tex="\(k&gt;20\)">\(k&gt;20\)</span> reads exactly the eight full raw input blocks of the pairs <span class="math" data-tex="\((B_j,A_j)\)">\((B_j,A_j)\)</span>, <span class="math" data-tex="\(J-3\le j\le J\)">\(J-3\le j\le J\)</span>, whose source indices lie between <span class="math" data-tex="\(2J-7\ge9\)">\(2J-7\ge9\)</span> and <span class="math" data-tex="\(2J\le k-5\)">\(2J\le k-5\)</span>.</p>
+<p><strong>Corrections.</strong> Fix a positive label (2.1). At every marked extra interval of its family, add <span class="math" data-tex="\(e\)">\(e\)</span> (XOR) to the raw coordinates of that interval if <span class="math" data-tex="\(g_k=1\)">\(g_k=1\)</span>, where <span class="math" data-tex="\(k\)">\(k\)</span> is the index of the block containing the interval; for an equal-height family there are no corrections. This defines <em>correction streams</em> <span class="math" data-tex="\(C^u_{C,\lambda},C^v_{C,\lambda}\)">\(C^u_{C,\lambda},C^v_{C,\lambda}\)</span> and the <em>corrected streams</em>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bar u_C=u_C+C^u_{C,\lambda},\\
+\bar v_C=v_C+C^v_{C,\lambda},\\
+C\in\{A,B\}.
+\end{gathered}\tag{4.2}
+\]">\[
+\begin{gathered}
+\bar u_C=u_C+C^u_{C,\lambda},\\
+\bar v_C=v_C+C^v_{C,\lambda},\\
+C\in\{A,B\}.
+\end{gathered}\tag{4.2}
+\]</span>
+Each finite prefix meets finitely many marked intervals, so the sums are defined.</p>
+<p><strong>Permutation tables.</strong> For every family, label, source index <span class="math" data-tex="\(k\)">\(k\)</span>, and tuple of all raw input blocks with source index less than <span class="math" data-tex="\(k\)">\(k\)</span>, provide a <em>table</em>: at an unmarked index a permutation of the whole block, and at a marked cutoff with active length <span class="math" data-tex="\(t\)">\(t\)</span> a permutation of <span class="math" data-tex="\(\mathbb F_2^t\)">\(\mathbb F_2^t\)</span>. Distinct complete keys index distinct tables; each source index has finitely many tables. The <em>transformation</em> at source index <span class="math" data-tex="\(k\)">\(k\)</span> acts on the corrected block <span class="math" data-tex="\(\bar u\)">\(\bar u\)</span> as follows:</p>
+<ol>
+<li>At a marked cutoff: the table on the first <span class="math" data-tex="\(t\)">\(t\)</span> bits and the identity on the remaining bits if <span class="math" data-tex="\(g_k=1\)">\(g_k=1\)</span>; the identity if <span class="math" data-tex="\(g_k=0\)">\(g_k=0\)</span>.</li>
+<li>At the twenty source indices immediately following a marked cutoff: the identity, unconditionally.</li>
+<li>At every other index: the full-block table if <span class="math" data-tex="\(g_k=1\)">\(g_k=1\)</span>, the identity if <span class="math" data-tex="\(g_k=0\)">\(g_k=0\)</span>.</li>
+</ol>
+<p>Tables act on corrected blocks, while their keys and the gates read raw earlier blocks. Write <span class="math" data-tex="\(P_{A,\lambda}(\bar u_A)\)">\(P_{A,\lambda}(\bar u_A)\)</span> and <span class="math" data-tex="\(P_{B,\lambda}(\bar u_B)\)">\(P_{B,\lambda}(\bar u_B)\)</span> for the transformed streams. For a slot with name <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, the <em>corrected evaluation</em> is <span class="math" data-tex="\(Q_C=\bar v_C+K_\nu\bar u_C\)">\(Q_C=\bar v_C+K_\nu\bar u_C\)</span>; it differs from the raw evaluation <span class="math" data-tex="\(v_C+K_\nu u_C\)">\(v_C+K_\nu u_C\)</span> by the <em>offset</em> <span class="math" data-tex="\(C^v_{C,\lambda}+K_\nu C^u_{C,\lambda}\)">\(C^v_{C,\lambda}+K_\nu C^u_{C,\lambda}\)</span>.</p>
+<p><strong>The universal edge equations.</strong> For an <span class="math" data-tex="\(A\)">\(A\)</span>-name <span class="math" data-tex="\(\nu_A=(f,j,e)\)">\(\nu_A=(f,j,e)\)</span> and a <span class="math" data-tex="\(B\)">\(B\)</span>-name <span class="math" data-tex="\(\nu_B=(f,j,c,e)\)">\(\nu_B=(f,j,c,e)\)</span> with <span class="math" data-tex="\(h_0=c\Vert h_0&#x27;\)">\(h_0=c\Vert h_0&#x27;\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bar v_A+K_{\nu_A}\bar u_A\\
+&amp;\quad=h_0\Vert P_{B,\lambda}(\bar u_B),\\
+&amp;\bar v_B+K_{\nu_B}\bar u_B\\
+&amp;\quad=h_0&#x27;\Vert P_{A,\lambda}(\bar u_A).
+\end{aligned}\tag{4.3}
+\]">\[
+\begin{aligned}
+&amp;\bar v_A+K_{\nu_A}\bar u_A\\
+&amp;\quad=h_0\Vert P_{B,\lambda}(\bar u_B),\\
+&amp;\bar v_B+K_{\nu_B}\bar u_B\\
+&amp;\quad=h_0&#x27;\Vert P_{A,\lambda}(\bar u_A).
+\end{aligned}\tag{4.3}
+\]</span>
+These are equations of infinite padded streams. The <span class="math" data-tex="\(A\)">\(A\)</span>-evaluation block of index <span class="math" data-tex="\(2j\)">\(2j\)</span> (<span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>) contains <span class="math" data-tex="\(K_{\nu_A}\bar u_{A,j}\)">\(K_{\nu_A}\bar u_{A,j}\)</span> on the left and the transformed block of <span class="math" data-tex="\(B_j\)">\(B_j\)</span> on the right: it <em>couples</em> the source indices <span class="math" data-tex="\(2j\)">\(2j\)</span> and <span class="math" data-tex="\(2j-1\)">\(2j-1\)</span>. The <span class="math" data-tex="\(B\)">\(B\)</span>-evaluation block of index <span class="math" data-tex="\(2j-1\)">\(2j-1\)</span> occupies positions <span class="math" data-tex="\((j-1)s\)">\((j-1)s\)</span> to <span class="math" data-tex="\(js\)">\(js\)</span>, which on the right are <span class="math" data-tex="\(h_0&#x27;\)">\(h_0&#x27;\)</span> followed by <span class="math" data-tex="\(P_{A,\lambda}(\bar u_A)\)">\(P_{A,\lambda}(\bar u_A)\)</span> shifted by <span class="math" data-tex="\(s-r\)">\(s-r\)</span>; for <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span> these are the positions of <span class="math" data-tex="\(A_{j-1}\)">\(A_{j-1}\)</span>, so it couples the indices <span class="math" data-tex="\(2j-1\)">\(2j-1\)</span> and <span class="math" data-tex="\(2j-2\)">\(2j-2\)</span>, and for <span class="math" data-tex="\(j=1\)">\(j=1\)</span> it couples <span class="math" data-tex="\(B_1\)">\(B_1\)</span> with <span class="math" data-tex="\(h_0&#x27;\)">\(h_0&#x27;\)</span> and <span class="math" data-tex="\(A_0\)">\(A_0\)</span>.</p>
+<p><strong>Lemma 4.1</strong> (causality). (1) Every gate <span class="math" data-tex="\(g_k\)">\(g_k\)</span> with <span class="math" data-tex="\(k&gt;20\)">\(k&gt;20\)</span> reads only raw input blocks of source index at most <span class="math" data-tex="\(k-5\)">\(k-5\)</span>. (2) Every correction offset in an evaluation block is determined by the label and by raw input blocks of source index smaller than both source indices coupled by that block. (3) The key of the table at index <span class="math" data-tex="\(k\)">\(k\)</span> consists of the label and raw blocks of index less than <span class="math" data-tex="\(k\)">\(k\)</span>. (4) Marked cutoffs of one family and their following twenty-index identity zones do not overlap.</p>
+<p><em>Proof.</em> (1) is the description after (4.1). (2) A correction in the evaluation block of index <span class="math" data-tex="\(k\)">\(k\)</span> uses the gate <span class="math" data-tex="\(g_k\)">\(g_k\)</span>, which reads indices at most <span class="math" data-tex="\(k-5\)">\(k-5\)</span>, and the coupled indices are <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(k-1\)">\(k-1\)</span>. The input correction in the same block position has the same gate. (3) is the definition. (4) Consecutive marked indices are <span class="math" data-tex="\(K=2\cdot10^6b&gt;21\)">\(K=2\cdot10^6b&gt;21\)</span> apart by Lemma 2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lag in (4.1) is deliberate: a correction in an evaluation block never reads the input block that is recovered from that evaluation. The identity zones after each mark make it unnecessary to gate the transformations just beyond a cutoff, where they might otherwise read the raw extra bits.</p>
+<p><strong>Remark 4.2.</strong> The edge equations (4.3) are triangular. Starting from an <span class="math" data-tex="\(A\)">\(A\)</span>-endpoint state and a slot, the first <span class="math" data-tex="\(r\)">\(r\)</span> evaluation bits are the label head, which fixes the label. Then, in the source order, the key and gate of each table read only earlier raw blocks and are known before the table is used, and each evaluation block determines one new input block on the other side, after its known offset is removed and the known transformation is inverted. The next lesson uses this to construct exactly one edge at every slot and to recover states from labels.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>Exercise 5.1.</strong> Verify the cutoff forms of Lemma 1.1 for <span class="math" data-tex="\(b=1\)">\(b=1\)</span>, <span class="math" data-tex="\(s=5\)">\(s=5\)</span> (ignoring the divisibility conditions on <span class="math" data-tex="\(s\)">\(s\)</span>), <span class="math" data-tex="\(r=3\)">\(r=3\)</span>, <span class="math" data-tex="\(n_0=1\)">\(n_0=1\)</span> and <span class="math" data-tex="\(i=0,\ldots,10\)">\(i=0,\ldots,10\)</span>, and check that exactly one of <span class="math" data-tex="\(\ell_A,\ell_B\)">\(\ell_A,\ell_B\)</span> grows at each step.</p>
+<p><strong>Exercise 5.2.</strong> Show that two distinct names <span class="math" data-tex="\(\nu\neq\nu&#x27;\)">\(\nu\neq\nu&#x27;\)</span> of the same side satisfy <span class="math" data-tex="\(K_\nu u\ne K_{\nu&#x27;}u\)">\(K_\nu u\ne K_{\nu&#x27;}u\)</span> for every nonzero full block <span class="math" data-tex="\(u\)">\(u\)</span>, and that the two-evaluation recovery <span class="math" data-tex="\(u=(c_1-c_2)^{-1}(E_1-E_2)\)">\(u=(c_1-c_2)^{-1}(E_1-E_2)\)</span> holds blockwise for padded streams.</p>
+<p><strong>Exercise 5.3.</strong> Why must the <span class="math" data-tex="\(A\)">\(A\)</span>-names exclude the bucket <span class="math" data-tex="\(c\)">\(c\)</span>? Consider how the <span class="math" data-tex="\(A\)">\(A\)</span>-endpoint of an edge finds its label from its state.</p>
+<p><strong>Exercise 5.4.</strong> Show that the count <span class="math" data-tex="\(s\,2^{2s}\)">\(s\,2^{2s}\)</span> in the proof of Lemma 3.1 bounds the number of triples (functional <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, length <span class="math" data-tex="\(t\)">\(t\)</span>, restricted value) for full blocks.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> With <span class="math" data-tex="\(b=1\)">\(b=1\)</span>, <span class="math" data-tex="\(s=5\)">\(s=5\)</span>: <span class="math" data-tex="\(bi=10a_i+t_i\)">\(bi=10a_i+t_i\)</span>. For <span class="math" data-tex="\(i=0\)">\(i=0\)</span> we get <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, <span class="math" data-tex="\(\ell_A=3+5=8\)">\(\ell_A=3+5=8\)</span>, <span class="math" data-tex="\(\ell_B=5\)">\(\ell_B=5\)</span>, form (A) with <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, <span class="math" data-tex="\(t=5\)">\(t=5\)</span>. For <span class="math" data-tex="\(i=1,\ldots,5\)">\(i=1,\ldots,5\)</span>, <span class="math" data-tex="\(t_i=i\le5\)">\(t_i=i\le5\)</span>: form (B), <span class="math" data-tex="\(\ell_B=5+i\)">\(\ell_B=5+i\)</span>. For <span class="math" data-tex="\(i=6,\ldots,9\)">\(i=6,\ldots,9\)</span>: form (A), <span class="math" data-tex="\(\ell_A=8+(i-5)\)">\(\ell_A=8+(i-5)\)</span>. For <span class="math" data-tex="\(i=10\)">\(i=10\)</span>: <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, <span class="math" data-tex="\(\ell_A=13\)">\(\ell_A=13\)</span>, <span class="math" data-tex="\(\ell_B=10\)">\(\ell_B=10\)</span>. At each step exactly one length grows by <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(K_\nu u-K_{\nu&#x27;}u=(\iota_s(\nu)-\iota_s(\nu&#x27;))u\)">\(K_\nu u-K_{\nu&#x27;}u=(\iota_s(\nu)-\iota_s(\nu&#x27;))u\)</span> in the field, a product of nonzero elements, hence nonzero. For padded streams the equations <span class="math" data-tex="\(E_k=v+c_ku\)">\(E_k=v+c_ku\)</span> hold block by block, and in each full block the field computation applies; zero padding is preserved.</p>
+<p><strong>5.3.</strong> At an <span class="math" data-tex="\(A\)">\(A\)</span>-endpoint the first <span class="math" data-tex="\(r\)">\(r\)</span> evaluation bits equal <span class="math" data-tex="\(\bar v_A[0,r)+\iota_r(\nu_A)\bar u_{A,0}\)">\(\bar v_A[0,r)+\iota_r(\nu_A)\bar u_{A,0}\)</span>, and they are the label head <span class="math" data-tex="\(h_0\)">\(h_0\)</span>, which contains the bucket. If the coefficient depended on the bucket, the endpoint would need the bucket to compute the head, and the head to know the bucket.</p>
+<p><strong>5.4.</strong> There are <span class="math" data-tex="\(2^s-1\)">\(2^s-1\)</span> nonzero functionals, at most <span class="math" data-tex="\(s\)">\(s\)</span> lengths, and at most <span class="math" data-tex="\(2^t\le2^s\)">\(2^t\le2^s\)</span> restricted values; the product is at most <span class="math" data-tex="\(s\,2^{2s}\)">\(s\,2^{2s}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-BCI] OpenAI, <em>A torsion-free counterexample to reduced Baum–Connes injectivity</em>, OpenAI Math Release preprint, 23 September 2026, Sections 2.1-2.3, Lemma 2.1. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026</li>
+<li>[Judson] T. W. Judson, <em>Abstract Algebra: Theory and Applications</em>, Section 22.1. https://judsonbooks.org/aata-files/aata-html/finite-section-field.html</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

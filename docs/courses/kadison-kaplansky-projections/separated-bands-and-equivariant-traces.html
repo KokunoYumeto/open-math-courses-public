@@ -1,0 +1,216 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Separated bands and equivariant traces</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to the Kadison–Kaplansky conjecture)</a><a href="the-conjecture-and-scalar-compression.html">Previous lesson</a><a href="streams-slots-and-slot-evaluations.html">Next lesson</a><a href="src/separated-bands-and-equivariant-traces.md">Editable source</a></nav><main><article><h1 id="separated-bands-and-equivariant-traces">Separated bands and equivariant traces</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The projection of the course is the spectral projection of a self-adjoint operator onto a part of its spectrum that is separated from the rest. Such a projection is a continuous function of the operator, so it stays in every <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra containing the operator. Its size is measured by an <em>identity trace</em>: the sum of the diagonal coefficients at the identity of the group, for operators that commute with a right action of the group. This lesson proves the properties of that trace and two Hilbert-space estimates used at the end of the course: cutting a separated band by a projection that almost contains it, and moving a separated band by a small perturbation [OpenAI-KK, Lemmas 8.4, 10.1 and 10.2].</p>
+<ul>
+<li>Separated parts of the spectrum (Section 1).</li>
+<li>The identity trace of equivariant operators (Section 2).</li>
+<li>Cutting a separated band (Section 3).</li>
+<li>Perturbing a separated band (Section 4).</li>
+</ul>
+<p>We use the continuous functional calculus (Theorem 5.1), spectral permanence (Theorem 3.2) and the compatibility of the calculus with <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphisms (Corollary 5.4) of <a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">C*-algebras, continuous functional calculus, automatic continuity and positive cones</a>. All Hilbert spaces are complex; operators are bounded.</p>
+<h2 id="1-separated-parts-of-the-spectrum">1. Separated parts of the spectrum</h2>
+<p>Let <span class="math" data-tex="\(T=T^*\)">\(T=T^*\)</span> be a bounded operator. A subset <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> of its spectrum is <em>separated</em> if it has positive distance from the rest of the spectrum. The function equal to <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> on the rest of the spectrum is then continuous on the spectrum, and <span class="math" data-tex="\(\mathbf1_\Sigma(T)\)">\(\mathbf1_\Sigma(T)\)</span>, defined by the continuous functional calculus, is a projection.</p>
+<p><strong>Lemma 1.1</strong> (separated spectral projections). Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be a unital <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra of operators containing <span class="math" data-tex="\(T=T^*\)">\(T=T^*\)</span>, and let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be a separated part of the spectrum of <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<ol>
+<li>The projection <span class="math" data-tex="\(\mathbf1_\Sigma(T)\)">\(\mathbf1_\Sigma(T)\)</span> belongs to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and it commutes with every operator that commutes with <span class="math" data-tex="\(T\)">\(T\)</span>.</li>
+<li>If <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> lies inside a circle <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> and the rest of the spectrum lies outside it, then
+<span class="math math-display" data-tex="\[
+\mathbf1_\Sigma(T)=\frac1{2\pi i}\oint_{\mathcal C}(z-T)^{-1}\,dz ,
+\]">\[
+\mathbf1_\Sigma(T)=\frac1{2\pi i}\oint_{\mathcal C}(z-T)^{-1}\,dz ,
+\]</span>
+the integral of a norm-continuous function, taken counterclockwise.</li>
+</ol>
+<p><em>Proof.</em> (1) By spectral permanence, the spectrum of <span class="math" data-tex="\(T\)">\(T\)</span> in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> equals its operator spectrum, so the continuous functional calculus of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> applies, and <span class="math" data-tex="\(\mathbf1_\Sigma(T)\in\mathcal A\)">\(\mathbf1_\Sigma(T)\in\mathcal A\)</span>. It is a norm limit of polynomials in <span class="math" data-tex="\(T\)">\(T\)</span>, which commute with every operator commuting with <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>(2) For <span class="math" data-tex="\(z\in\mathcal C\)">\(z\in\mathcal C\)</span>, <span class="math" data-tex="\(z\mapsto(z-T)^{-1}\)">\(z\mapsto(z-T)^{-1}\)</span> is the continuous function <span class="math" data-tex="\(\lambda\mapsto(z-\lambda)^{-1}\)">\(\lambda\mapsto(z-\lambda)^{-1}\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>, and it is norm continuous in <span class="math" data-tex="\(z\)">\(z\)</span>. Riemann sums of the integral are functions <span class="math" data-tex="\(r_n(T)\)">\(r_n(T)\)</span>, where <span class="math" data-tex="\(r_n\)">\(r_n\)</span> are Riemann sums of <span class="math" data-tex="\(\lambda\mapsto\frac1{2\pi i}\oint_{\mathcal C}(z-\lambda)^{-1}dz\)">\(\lambda\mapsto\frac1{2\pi i}\oint_{\mathcal C}(z-\lambda)^{-1}dz\)</span>. This scalar integral is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> inside <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> outside, by Cauchy's formula, and the <span class="math" data-tex="\(r_n\)">\(r_n\)</span> converge to it uniformly on the spectrum, which has positive distance from <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Since <span class="math" data-tex="\(\|f(T)\|\)">\(\|f(T)\|\)</span> is the supremum of <span class="math" data-tex="\(|f|\)">\(|f|\)</span> on the spectrum, <span class="math" data-tex="\(r_n(T)\)">\(r_n(T)\)</span> converges in norm to <span class="math" data-tex="\(\mathbf1_\Sigma(T)\)">\(\mathbf1_\Sigma(T)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-identity-trace-of-equivariant-operators">2. The identity trace of equivariant operators</h2>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be a countable group and <span class="math" data-tex="\(I\)">\(I\)</span> a countable set. On <span class="math" data-tex="\(\mathcal H_I=\ell^2(L)\otimes\ell^2(I)\)">\(\mathcal H_I=\ell^2(L)\otimes\ell^2(I)\)</span> we write <span class="math" data-tex="\(\delta_{(\eta,i)}=\delta_\eta\otimes\delta_i\)">\(\delta_{(\eta,i)}=\delta_\eta\otimes\delta_i\)</span>. A <em>right phase action</em> of <span class="math" data-tex="\(L\)">\(L\)</span> is a family of unitaries <span class="math" data-tex="\(R_k\)">\(R_k\)</span>, <span class="math" data-tex="\(k\in L\)">\(k\in L\)</span>, on <span class="math" data-tex="\(\ell^2(L)\)">\(\ell^2(L)\)</span> with
+<span class="math math-display" data-tex="\[
+R_k\delta_\eta=\omega_k(\eta)\,\delta_{\eta k},\qquad|\omega_k(\eta)|=1 .
+\]">\[
+R_k\delta_\eta=\omega_k(\eta)\,\delta_{\eta k},\qquad|\omega_k(\eta)|=1 .
+\]</span>
+The right translations <span class="math" data-tex="\((R_k\xi)(\eta)=\xi(\eta k)\)">\((R_k\xi)(\eta)=\xi(\eta k)\)</span>, up to replacing <span class="math" data-tex="\(k\)">\(k\)</span> by <span class="math" data-tex="\(k^{-1}\)">\(k^{-1}\)</span>, are an example; twisted versions with phases appear in later lessons. An operator <span class="math" data-tex="\(A:\mathcal H_I\to\mathcal H_J\)">\(A:\mathcal H_I\to\mathcal H_J\)</span> is <em>equivariant</em> if <span class="math" data-tex="\(A(R_k\otimes1)=(R_k\otimes1)A\)">\(A(R_k\otimes1)=(R_k\otimes1)A\)</span> for all <span class="math" data-tex="\(k\)">\(k\)</span>, with the same right phase action on both sides. Every element of <span class="math" data-tex="\(M_N(C_r^*(L))\)">\(M_N(C_r^*(L))\)</span> is equivariant for the right translations, <span class="math" data-tex="\(I=\{1,\ldots,N\}\)">\(I=\{1,\ldots,N\}\)</span>, because left and right translations commute.</p>
+<p>For an equivariant <span class="math" data-tex="\(B\ge0\)">\(B\ge0\)</span> on <span class="math" data-tex="\(\mathcal H_I\)">\(\mathcal H_I\)</span>, the <em>identity trace</em> is
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_I(B)=\sum_{i\in I}\langle B\delta_{(1,i)},\delta_{(1,i)}\rangle\in[0,\infty] .
+\]">\[
+\operatorname{Tr}_I(B)=\sum_{i\in I}\langle B\delta_{(1,i)},\delta_{(1,i)}\rangle\in[0,\infty] .
+\]</span>
+For <span class="math" data-tex="\(B\in M_N(C_r^*(L))\)">\(B\in M_N(C_r^*(L))\)</span> positive, <span class="math" data-tex="\(\operatorname{Tr}_I(B)=\tau_{L,N}(B)\)">\(\operatorname{Tr}_I(B)=\tau_{L,N}(B)\)</span>, the unnormalized matrix trace.</p>
+<p><strong>Lemma 2.1</strong> (the identity trace; [OpenAI-KK, Lemma 8.4]). Let <span class="math" data-tex="\(A:\mathcal H_I\to\mathcal H_J\)">\(A:\mathcal H_I\to\mathcal H_J\)</span> be bounded and equivariant.</p>
+<ol>
+<li><span class="math" data-tex="\(\operatorname{Tr}_I(A^*A)=\operatorname{Tr}_J(AA^*)\)">\(\operatorname{Tr}_I(A^*A)=\operatorname{Tr}_J(AA^*)\)</span>.</li>
+<li><span class="math" data-tex="\(\operatorname{Tr}_I\)">\(\operatorname{Tr}_I\)</span> is additive on equivariant positive operators, monotone, and independent of the choice of orthonormal basis of <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span>.</li>
+<li>An equivariant projection <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(\operatorname{Tr}_I(P)=0\)">\(\operatorname{Tr}_I(P)=0\)</span> is zero.</li>
+<li>If <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> are equivariant projections and an equivariant bounded <span class="math" data-tex="\(A\)">\(A\)</span> is injective on the range of <span class="math" data-tex="\(P\)">\(P\)</span> and maps it into the range of <span class="math" data-tex="\(Q\)">\(Q\)</span>, then <span class="math" data-tex="\(\operatorname{Tr}(P)\le\operatorname{Tr}(Q)\)">\(\operatorname{Tr}(P)\le\operatorname{Tr}(Q)\)</span>. If <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> are equivalent through an equivariant partial isometry, their traces are equal.</li>
+</ol>
+<p><em>Proof.</em> (1) Let <span class="math" data-tex="\(k=g^{-1}\)">\(k=g^{-1}\)</span>. Since <span class="math" data-tex="\(R_k\otimes1\)">\(R_k\otimes1\)</span> is unitary and commutes with <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle A\delta_{(1,i)},\delta_{(g,j)}\rangle\\
+&amp;\qquad=\langle A(R_k\otimes1)\delta_{(1,i)},(R_k\otimes1)\delta_{(g,j)}\rangle ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle A\delta_{(1,i)},\delta_{(g,j)}\rangle\\
+&amp;\qquad=\langle A(R_k\otimes1)\delta_{(1,i)},(R_k\otimes1)\delta_{(g,j)}\rangle ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\((R_k\otimes1)\delta_{(1,i)}\)">\((R_k\otimes1)\delta_{(1,i)}\)</span>, <span class="math" data-tex="\((R_k\otimes1)\delta_{(g,j)}\)">\((R_k\otimes1)\delta_{(g,j)}\)</span> are unimodular multiples of <span class="math" data-tex="\(\delta_{(g^{-1},i)}\)">\(\delta_{(g^{-1},i)}\)</span>, <span class="math" data-tex="\(\delta_{(1,j)}\)">\(\delta_{(1,j)}\)</span>. So <span class="math" data-tex="\(|\langle A\delta_{(1,i)},\delta_{(g,j)}\rangle|=|\langle A\delta_{(g^{-1},i)},\delta_{(1,j)}\rangle|\)">\(|\langle A\delta_{(1,i)},\delta_{(g,j)}\rangle|=|\langle A\delta_{(g^{-1},i)},\delta_{(1,j)}\rangle|\)</span>. Summing nonnegative terms in any order,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Tr}_I(A^*A)&amp;=\sum_i\|A\delta_{(1,i)}\|^2\\
+&amp;=\sum_{i,j,g}|\langle A\delta_{(1,i)},\delta_{(g,j)}\rangle|^2\\
+&amp;=\sum_{j}\sum_{g,i}|\langle\delta_{(g^{-1},i)},A^*\delta_{(1,j)}\rangle|^2\\
+&amp;=\operatorname{Tr}_J(AA^*) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Tr}_I(A^*A)&amp;=\sum_i\|A\delta_{(1,i)}\|^2\\
+&amp;=\sum_{i,j,g}|\langle A\delta_{(1,i)},\delta_{(g,j)}\rangle|^2\\
+&amp;=\sum_{j}\sum_{g,i}|\langle\delta_{(g^{-1},i)},A^*\delta_{(1,j)}\rangle|^2\\
+&amp;=\operatorname{Tr}_J(AA^*) ,
+\end{aligned}
+\]</span>
+including the value <span class="math" data-tex="\(\infty\)">\(\infty\)</span>.</p>
+<p>(2) Additivity and monotonicity hold termwise. A change of orthonormal basis of <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span> is conjugation by an equivariant unitary <span class="math" data-tex="\(W=1\otimes w\)">\(W=1\otimes w\)</span>; by (1) applied to <span class="math" data-tex="\(A=WB^{1/2}\)">\(A=WB^{1/2}\)</span>, which is equivariant because <span class="math" data-tex="\(B^{1/2}\)">\(B^{1/2}\)</span> is a norm limit of polynomials in <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(\operatorname{Tr}(WBW^*)=\operatorname{Tr}(B^{1/2}W^*WB^{1/2})\)">\(\operatorname{Tr}(WBW^*)=\operatorname{Tr}(B^{1/2}W^*WB^{1/2})\)</span>, which is <span class="math" data-tex="\(\operatorname{Tr}(B)\)">\(\operatorname{Tr}(B)\)</span>.</p>
+<p>(3) Each term <span class="math" data-tex="\(\langle P\delta_{(1,i)},\delta_{(1,i)}\rangle=\|P\delta_{(1,i)}\|^2\)">\(\langle P\delta_{(1,i)},\delta_{(1,i)}\rangle=\|P\delta_{(1,i)}\|^2\)</span> vanishes, so <span class="math" data-tex="\(P\delta_{(1,i)}=0\)">\(P\delta_{(1,i)}=0\)</span>, and <span class="math" data-tex="\(P\delta_{(k,i)}\)">\(P\delta_{(k,i)}\)</span> is a unimodular multiple of <span class="math" data-tex="\((R_k\otimes1)P\delta_{(1,i)}=0\)">\((R_k\otimes1)P\delta_{(1,i)}=0\)</span>. So <span class="math" data-tex="\(P\)">\(P\)</span> vanishes on a basis.</p>
+<p>(4) Let <span class="math" data-tex="\(AP=V|AP|\)">\(AP=V|AP|\)</span> be the polar decomposition, with <span class="math" data-tex="\(\ker V=\ker AP\)">\(\ker V=\ker AP\)</span> (Proposition 5.2 of <a href="../foundations-of-von-neumann-algebras/the-spectral-theorem-for-bounded-self-adjoint-operators.html">The spectral theorem for bounded self-adjoint operators</a>). Its initial projection is the projection onto <span class="math" data-tex="\((\ker AP)^\perp\)">\((\ker AP)^\perp\)</span>, which is <span class="math" data-tex="\(P\)">\(P\)</span> because <span class="math" data-tex="\(AP\)">\(AP\)</span> is injective on the range of <span class="math" data-tex="\(P\)">\(P\)</span> and vanishes on its complement; its final projection is the projection onto the closure of the range of <span class="math" data-tex="\(AP\)">\(AP\)</span>, which is at most <span class="math" data-tex="\(Q\)">\(Q\)</span>. The partial isometry <span class="math" data-tex="\(V\)">\(V\)</span> is equivariant: if <span class="math" data-tex="\(W_I,W_J\)">\(W_I,W_J\)</span> denote the unitaries <span class="math" data-tex="\(R_k\otimes1\)">\(R_k\otimes1\)</span> on the two spaces, then <span class="math" data-tex="\(W_JVW_I^*\)">\(W_JVW_I^*\)</span> is again a partial isometry with <span class="math" data-tex="\(W_JVW_I^*\,|AP|=W_J\,AP\,W_I^*=AP\)">\(W_JVW_I^*\,|AP|=W_J\,AP\,W_I^*=AP\)</span>, because <span class="math" data-tex="\(|AP|\)">\(|AP|\)</span> commutes with <span class="math" data-tex="\(W_I\)">\(W_I\)</span>, and with the same kernel, so it equals <span class="math" data-tex="\(V\)">\(V\)</span> by the uniqueness of the polar decomposition. By (1) and monotonicity, <span class="math" data-tex="\(\operatorname{Tr}(P)=\operatorname{Tr}(V^*V)\)">\(\operatorname{Tr}(P)=\operatorname{Tr}(V^*V)\)</span>, which equals <span class="math" data-tex="\(\operatorname{Tr}(VV^*)\le\operatorname{Tr}(Q)\)">\(\operatorname{Tr}(VV^*)\le\operatorname{Tr}(Q)\)</span>. For equivalent projections apply (1) to the partial isometry. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The statements apply to countable orthogonal sums of such spaces, with the sum of the identity traces. In particular, a nonzero equivariant projection has strictly positive identity trace.</p>
+<h2 id="3-cutting-a-separated-band">3. Cutting a separated band</h2>
+<p><strong>Lemma 3.1</strong> (compression of a separated upper space; [OpenAI-KK, Lemma 10.1]). Let <span class="math" data-tex="\(A=A^*\)">\(A=A^*\)</span> with <span class="math" data-tex="\(\|A\|\le2\)">\(\|A\|\le2\)</span>, and <span class="math" data-tex="\(E\)">\(E\)</span> a projection commuting with <span class="math" data-tex="\(A\)">\(A\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|(A-I)E\|\le a,\\
+A|_{(1-E)\mathcal H}\le(1-b)I,\quad0&lt;b&lt;1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|(A-I)E\|\le a,\\
+A|_{(1-E)\mathcal H}\le(1-b)I,\quad0&lt;b&lt;1 .
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(J\)">\(J\)</span> be a projection with <span class="math" data-tex="\(\varepsilon=\|(1-J)E\|\le\frac12\)">\(\varepsilon=\|(1-J)E\|\le\frac12\)</span>. Then <span class="math" data-tex="\(JE\)">\(JE\)</span> has closed range; let <span class="math" data-tex="\(E^J\)">\(E^J\)</span> be the projection onto it, and on <span class="math" data-tex="\(J\mathcal H\)">\(J\mathcal H\)</span> put
+<span class="math math-display" data-tex="\[
+B_J=E^J+(J-E^J)A(J-E^J).
+\]">\[
+B_J=E^J+(J-E^J)A(J-E^J).
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|JAJ-B_J\|\le a+12\varepsilon,\quad\|B_J\|\le2 ,\\
+B_J|_{(J-E^J)\mathcal H}\le(1-b)I ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|JAJ-B_J\|\le a+12\varepsilon,\quad\|B_J\|\le2 ,\\
+B_J|_{(J-E^J)\mathcal H}\le(1-b)I ,
+\end{gathered}
+\]</span>
+and there is a partial isometry <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(V^*V=E\)">\(V^*V=E\)</span>, <span class="math" data-tex="\(VV^*=E^J\)">\(VV^*=E^J\)</span> and <span class="math" data-tex="\(\|V-E\|\le2\varepsilon\)">\(\|V-E\|\le2\varepsilon\)</span>. If <span class="math" data-tex="\(A,E,J\)">\(A,E,J\)</span> commute with a family of unitaries, so do <span class="math" data-tex="\(E^J\)">\(E^J\)</span>, <span class="math" data-tex="\(B_J\)">\(B_J\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>; in particular <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(E^J\)">\(E^J\)</span> have equal identity traces when the family is a right phase action.</p>
+<p><em>Proof.</em> In the corner <span class="math" data-tex="\(E\mathcal H\)">\(E\mathcal H\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+EJE&amp;=E-\bigl((1-J)E\bigr)^*(1-J)E\\
+&amp;\ge(1-\varepsilon^2)E .
+\end{aligned}
+\]">\[
+\begin{aligned}
+EJE&amp;=E-\bigl((1-J)E\bigr)^*(1-J)E\\
+&amp;\ge(1-\varepsilon^2)E .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(\|JEx\|^2=\langle EJEx,x\rangle\ge(1-\varepsilon^2)\|x\|^2\)">\(\|JEx\|^2=\langle EJEx,x\rangle\ge(1-\varepsilon^2)\|x\|^2\)</span> for <span class="math" data-tex="\(x\in E\mathcal H\)">\(x\in E\mathcal H\)</span>, and <span class="math" data-tex="\(JE\)">\(JE\)</span> has closed range. Let <span class="math" data-tex="\((EJE)^{-1/2}\)">\((EJE)^{-1/2}\)</span> be taken in the corner, by the continuous functional calculus, and <span class="math" data-tex="\(V=JE(EJE)^{-1/2}\)">\(V=JE(EJE)^{-1/2}\)</span>. Then <span class="math" data-tex="\(V^*V=E\)">\(V^*V=E\)</span>, and <span class="math" data-tex="\(VV^*\)">\(VV^*\)</span> is the projection onto the range of <span class="math" data-tex="\(JE\)">\(JE\)</span>, which is <span class="math" data-tex="\(E^J\)">\(E^J\)</span>. The spectrum of <span class="math" data-tex="\(EJE\)">\(EJE\)</span> in the corner lies in <span class="math" data-tex="\([1-\varepsilon^2,1]\)">\([1-\varepsilon^2,1]\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|(EJE)^{-1/2}-E\|&amp;\le(1-\varepsilon^2)^{-1/2}-1\\
+&amp;\le2\varepsilon^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|(EJE)^{-1/2}-E\|&amp;\le(1-\varepsilon^2)^{-1/2}-1\\
+&amp;\le2\varepsilon^2 ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\|V-E\|\le\|JE-E\|+2\varepsilon^2\)">\(\|V-E\|\le\|JE-E\|+2\varepsilon^2\)</span>, which is <span class="math" data-tex="\(\varepsilon+2\varepsilon^2\le2\varepsilon\)">\(\varepsilon+2\varepsilon^2\le2\varepsilon\)</span>.</p>
+<p>A vector <span class="math" data-tex="\(y\)">\(y\)</span> of <span class="math" data-tex="\((J-E^J)\mathcal H\)">\((J-E^J)\mathcal H\)</span> is orthogonal to <span class="math" data-tex="\(E\mathcal H\)">\(E\mathcal H\)</span>: <span class="math" data-tex="\(\langle y,Ex\rangle=\langle Jy,Ex\rangle=\langle y,JEx\rangle=0\)">\(\langle y,Ex\rangle=\langle Jy,Ex\rangle=\langle y,JEx\rangle=0\)</span>. Hence <span class="math" data-tex="\((J-E^J)\mathcal H\subseteq(1-E)\mathcal H\)">\((J-E^J)\mathcal H\subseteq(1-E)\mathcal H\)</span>, where <span class="math" data-tex="\(A\le(1-b)I\)">\(A\le(1-b)I\)</span>; this is the second assertion. The third holds because <span class="math" data-tex="\(B_J\)">\(B_J\)</span> is the orthogonal sum of <span class="math" data-tex="\(E^J\)">\(E^J\)</span> and an operator of norm at most <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p>On <span class="math" data-tex="\(J\mathcal H=E^J\mathcal H\oplus(J-E^J)\mathcal H\)">\(J\mathcal H=E^J\mathcal H\oplus(J-E^J)\mathcal H\)</span>, the operators <span class="math" data-tex="\(JAJ\)">\(JAJ\)</span> and <span class="math" data-tex="\(B_J\)">\(B_J\)</span> have the same lower right block. In the upper left block, <span class="math" data-tex="\(E^JAE^J-E^J=V(V^*AV-E)V^*\)">\(E^JAE^J-E^J=V(V^*AV-E)V^*\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|V^*AV-E\|&amp;\le\|V^*AV-EAE\|\\
+&amp;\quad+\|EAE-E\|\\
+&amp;\le8\varepsilon+a ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|V^*AV-E\|&amp;\le\|V^*AV-EAE\|\\
+&amp;\quad+\|EAE-E\|\\
+&amp;\le8\varepsilon+a ,
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(\|V-E\|\le2\varepsilon\)">\(\|V-E\|\le2\varepsilon\)</span>, <span class="math" data-tex="\(\|A\|\le2\)">\(\|A\|\le2\)</span> and <span class="math" data-tex="\(\|V\|=1\)">\(\|V\|=1\)</span>. The off-diagonal block of <span class="math" data-tex="\(JAJ\)">\(JAJ\)</span> is <span class="math" data-tex="\((J-E^J)AE^J=(J-E^J)AVV^*\)">\((J-E^J)AE^J=(J-E^J)AVV^*\)</span>, and since <span class="math" data-tex="\(AE=EAE\)">\(AE=EAE\)</span> and <span class="math" data-tex="\((J-E^J)E=0\)">\((J-E^J)E=0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|(J-E^J)AV\|\\
+&amp;\quad=\|(J-E^J)A(V-E)\|\le4\varepsilon .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|(J-E^J)AV\|\\
+&amp;\quad=\|(J-E^J)A(V-E)\|\le4\varepsilon .
+\end{aligned}
+\]</span>
+A self-adjoint block matrix with blocks of norms <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span>, <span class="math" data-tex="\(0\)">\(0\)</span> has norm at most <span class="math" data-tex="\(x+y\)">\(x+y\)</span>. So <span class="math" data-tex="\(\|JAJ-B_J\|\le a+8\varepsilon+4\varepsilon\)">\(\|JAJ-B_J\|\le a+8\varepsilon+4\varepsilon\)</span>.</p>
+<p>All the operators are built from <span class="math" data-tex="\(A,E,J\)">\(A,E,J\)</span> by products, adjoints and continuous functions, which commute with every unitary commuting with <span class="math" data-tex="\(A,E,J\)">\(A,E,J\)</span>. The trace statement is Lemma 2.1(4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-perturbing-a-separated-band">4. Perturbing a separated band</h2>
+<p><strong>Lemma 4.1</strong> (close projections). Let <span class="math" data-tex="\(F_1,F_2\)">\(F_1,F_2\)</span> be projections with <span class="math" data-tex="\(\|F_1-F_2\|&lt;1\)">\(\|F_1-F_2\|&lt;1\)</span>. Then
+<span class="math math-display" data-tex="\[
+W=F_2F_1(F_1F_2F_1)^{-1/2},
+\]">\[
+W=F_2F_1(F_1F_2F_1)^{-1/2},
+\]</span>
+with the inverse taken in the corner <span class="math" data-tex="\(F_1\mathcal H\)">\(F_1\mathcal H\)</span>, is a partial isometry with <span class="math" data-tex="\(W^*W=F_1\)">\(W^*W=F_1\)</span> and <span class="math" data-tex="\(WW^*=F_2\)">\(WW^*=F_2\)</span>. It commutes with every unitary commuting with <span class="math" data-tex="\(F_1\)">\(F_1\)</span> and <span class="math" data-tex="\(F_2\)">\(F_2\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(x=F_1x\)">\(x=F_1x\)</span>, <span class="math" data-tex="\(\|F_2x\|=\|x-(F_1-F_2)x\|\)">\(\|F_2x\|=\|x-(F_1-F_2)x\|\)</span>, which is at least <span class="math" data-tex="\((1-\|F_1-F_2\|)\|x\|\)">\((1-\|F_1-F_2\|)\|x\|\)</span>, so <span class="math" data-tex="\(F_1F_2F_1\ge(1-\|F_1-F_2\|)^2F_1\)">\(F_1F_2F_1\ge(1-\|F_1-F_2\|)^2F_1\)</span> in the corner and the inverse square root exists there. Then <span class="math" data-tex="\(W^*W=G^{-1/2}GG^{-1/2}=F_1\)">\(W^*W=G^{-1/2}GG^{-1/2}=F_1\)</span> with <span class="math" data-tex="\(G=F_1F_2F_1\)">\(G=F_1F_2F_1\)</span>, and <span class="math" data-tex="\(WW^*\)">\(WW^*\)</span> is the projection onto the range of <span class="math" data-tex="\(F_2F_1\)">\(F_2F_1\)</span>. That range is closed; if <span class="math" data-tex="\(y=F_2y\)">\(y=F_2y\)</span> is orthogonal to it, then <span class="math" data-tex="\(\langle y,F_1x\rangle=\langle F_2y,F_1x\rangle=0\)">\(\langle y,F_1x\rangle=\langle F_2y,F_1x\rangle=0\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(F_1y=0\)">\(F_1y=0\)</span> and <span class="math" data-tex="\(\|(F_2-F_1)y\|=\|y\|\)">\(\|(F_2-F_1)y\|=\|y\|\)</span>, which forces <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. So <span class="math" data-tex="\(WW^*=F_2\)">\(WW^*=F_2\)</span>. The last statement holds as in Lemma 3.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2</strong> (a contour estimate; [OpenAI-KK, Lemma 10.2]). Let <span class="math" data-tex="\(B=B^*\)">\(B=B^*\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> a projection commuting with <span class="math" data-tex="\(B\)">\(B\)</span>, with <span class="math" data-tex="\(BF=F\)">\(BF=F\)</span>, and the spectrum of <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\((1-F)\mathcal H\)">\((1-F)\mathcal H\)</span> contained in <span class="math" data-tex="\([-2,1-b]\)">\([-2,1-b]\)</span>, <span class="math" data-tex="\(0&lt;b&lt;1\)">\(0&lt;b&lt;1\)</span>. Let <span class="math" data-tex="\(0&lt;r_0\le b/2\)">\(0&lt;r_0\le b/2\)</span>, <span class="math" data-tex="\(r_0&lt;1\)">\(r_0&lt;1\)</span>, and <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> the circle <span class="math" data-tex="\(|z-1|=r_0\)">\(|z-1|=r_0\)</span>. Let <span class="math" data-tex="\(A=A^*\)">\(A=A^*\)</span> with <span class="math" data-tex="\(\|A-B\|\le u&lt;r_0\)">\(\|A-B\|\le u&lt;r_0\)</span>. Then <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> lies in the resolvent sets of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>, the spectrum of <span class="math" data-tex="\(A\)">\(A\)</span> lies in <span class="math" data-tex="\([-2-u,1-b+u]\cup[1-u,1+u]\)">\([-2-u,1-b+u]\cup[1-u,1+u]\)</span>, and the projection
+<span class="math math-display" data-tex="\[
+F_A=\frac1{2\pi i}\oint_{\mathcal C}(z-A)^{-1}\,dz
+\]">\[
+F_A=\frac1{2\pi i}\oint_{\mathcal C}(z-A)^{-1}\,dz
+\]</span>
+onto the spectral part of <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\([1-u,1+u]\)">\([1-u,1+u]\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\|F_A-F\|\le\frac u{r_0-u} .
+\]">\[
+\|F_A-F\|\le\frac u{r_0-u} .
+\]</span>
+If <span class="math" data-tex="\(u&lt;r_0/2\)">\(u&lt;r_0/2\)</span>, then <span class="math" data-tex="\(F_A\)">\(F_A\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> are equivalent through the partial isometry of Lemma 4.1, and if <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> commute with a right phase action, <span class="math" data-tex="\(F_A\)">\(F_A\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> have equal identity traces.</p>
+<p><em>Proof.</em> The spectrum of <span class="math" data-tex="\(B\)">\(B\)</span> lies in <span class="math" data-tex="\(\{1\}\cup[-2,1-b]\)">\(\{1\}\cup[-2,1-b]\)</span>. A point <span class="math" data-tex="\(z\in\mathcal C\)">\(z\in\mathcal C\)</span> has distance <span class="math" data-tex="\(r_0\)">\(r_0\)</span> from <span class="math" data-tex="\(1\)">\(1\)</span> and distance at least <span class="math" data-tex="\(1-r_0-(1-b)=b-r_0\ge r_0\)">\(1-r_0-(1-b)=b-r_0\ge r_0\)</span> from <span class="math" data-tex="\([-2,1-b]\)">\([-2,1-b]\)</span>. For the normal operator <span class="math" data-tex="\(z-B\)">\(z-B\)</span> this gives <span class="math" data-tex="\(\|(z-B)^{-1}\|\le r_0^{-1}\)">\(\|(z-B)^{-1}\|\le r_0^{-1}\)</span>. Writing <span class="math" data-tex="\(z-A=(z-B)Y\)">\(z-A=(z-B)Y\)</span> with <span class="math" data-tex="\(Y=1-(z-B)^{-1}(A-B)\)">\(Y=1-(z-B)^{-1}(A-B)\)</span> and summing the Neumann series, <span class="math" data-tex="\(z-A\)">\(z-A\)</span> is invertible with <span class="math" data-tex="\(\|(z-A)^{-1}\|\le(r_0-u)^{-1}\)">\(\|(z-A)^{-1}\|\le(r_0-u)^{-1}\)</span>. The same argument shows that every real <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> at distance more than <span class="math" data-tex="\(u\)">\(u\)</span> from the spectrum of <span class="math" data-tex="\(B\)">\(B\)</span> is outside the spectrum of <span class="math" data-tex="\(A\)">\(A\)</span>, which gives the stated location; the two parts lie inside and outside <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, since <span class="math" data-tex="\(1-b+u&lt;1-r_0&lt;1-u\)">\(1-b+u&lt;1-r_0&lt;1-u\)</span>. By Lemma 1.1(2), <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(F_A\)">\(F_A\)</span> are the contour integrals for <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span>. The resolvent identity
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(z-A)^{-1}-(z-B)^{-1}\\
+&amp;\qquad=(z-A)^{-1}(A-B)(z-B)^{-1}
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(z-A)^{-1}-(z-B)^{-1}\\
+&amp;\qquad=(z-A)^{-1}(A-B)(z-B)^{-1}
+\end{aligned}
+\]</span>
+bounds the integrand difference by <span class="math" data-tex="\(u/\bigl(r_0(r_0-u)\bigr)\)">\(u/\bigl(r_0(r_0-u)\bigr)\)</span>, and the circle has length <span class="math" data-tex="\(2\pi r_0\)">\(2\pi r_0\)</span>. This gives the estimate. If <span class="math" data-tex="\(u&lt;r_0/2\)">\(u&lt;r_0/2\)</span>, then <span class="math" data-tex="\(\|F_A-F\|&lt;1\)">\(\|F_A-F\|&lt;1\)</span>, and Lemma 4.1 applies; <span class="math" data-tex="\(F_A\)">\(F_A\)</span> commutes with every unitary commuting with <span class="math" data-tex="\(A\)">\(A\)</span>, by Lemma 1.1(1). The trace statement is Lemma 2.1(4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Let <span class="math" data-tex="\(T=\operatorname{diag}(0,1,1)\)">\(T=\operatorname{diag}(0,1,1)\)</span> and <span class="math" data-tex="\(\Sigma=\{1\}\)">\(\Sigma=\{1\}\)</span>. Compute the contour integral of Lemma 1.1(2) over the circle <span class="math" data-tex="\(|z-1|=\frac12\)">\(|z-1|=\frac12\)</span>, and check that it is <span class="math" data-tex="\(\operatorname{diag}(0,1,1)\)">\(\operatorname{diag}(0,1,1)\)</span>.</p>
+<p><strong>5.2</strong> (easy). On <span class="math" data-tex="\(\ell^2(\mathbb Z)\)">\(\ell^2(\mathbb Z)\)</span> with the right translations, show that the operator of multiplication by a function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is equivariant only if <span class="math" data-tex="\(f\)">\(f\)</span> is constant. Through the unitary <span class="math" data-tex="\(\ell^2(\mathbb Z)\cong L^2(\mathbb R/\mathbb Z)\)">\(\ell^2(\mathbb Z)\cong L^2(\mathbb R/\mathbb Z)\)</span>, <span class="math" data-tex="\(\delta_n\mapsto e^{2\pi in\theta}\)">\(\delta_n\mapsto e^{2\pi in\theta}\)</span>, let <span class="math" data-tex="\(P\)">\(P\)</span> be the projection onto the functions vanishing outside <span class="math" data-tex="\([0,\frac13]\)">\([0,\frac13]\)</span>. Show that <span class="math" data-tex="\(P\)">\(P\)</span> is equivariant and compute its identity trace.</p>
+<p><strong>5.3</strong> (medium). In Lemma 3.1 take <span class="math" data-tex="\(\mathcal H=\mathbb C^2\)">\(\mathcal H=\mathbb C^2\)</span>, <span class="math" data-tex="\(A=\operatorname{diag}(1,0)\)">\(A=\operatorname{diag}(1,0)\)</span>, <span class="math" data-tex="\(E=\operatorname{diag}(1,0)\)">\(E=\operatorname{diag}(1,0)\)</span>, <span class="math" data-tex="\(b=1/2\)">\(b=1/2\)</span>, and <span class="math" data-tex="\(J\)">\(J\)</span> the projection onto the line spanned by <span class="math" data-tex="\((\cos\theta,\sin\theta)\)">\((\cos\theta,\sin\theta)\)</span>. Compute <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, <span class="math" data-tex="\(E^J\)">\(E^J\)</span>, <span class="math" data-tex="\(B_J\)">\(B_J\)</span> and <span class="math" data-tex="\(\|JAJ-B_J\|\)">\(\|JAJ-B_J\|\)</span>, and compare with <span class="math" data-tex="\(12\varepsilon\)">\(12\varepsilon\)</span>.</p>
+<p><strong>5.4</strong> (medium). Show that two projections <span class="math" data-tex="\(F_1,F_2\)">\(F_1,F_2\)</span> with <span class="math" data-tex="\(\|F_1-F_2\|&lt;1\)">\(\|F_1-F_2\|&lt;1\)</span> on a finite-dimensional space have the same rank, and give an example with <span class="math" data-tex="\(\|F_1-F_2\|=1\)">\(\|F_1-F_2\|=1\)</span> and different ranks.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\((z-T)^{-1}\)">\((z-T)^{-1}\)</span> is diagonal with the entries <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>, <span class="math" data-tex="\((z-1)^{-1}\)">\((z-1)^{-1}\)</span>, <span class="math" data-tex="\((z-1)^{-1}\)">\((z-1)^{-1}\)</span>. Over <span class="math" data-tex="\(|z-1|=\frac12\)">\(|z-1|=\frac12\)</span>, <span class="math" data-tex="\(\frac1{2\pi i}\oint z^{-1}dz=0\)">\(\frac1{2\pi i}\oint z^{-1}dz=0\)</span> because <span class="math" data-tex="\(0\)">\(0\)</span> lies outside, and <span class="math" data-tex="\(\frac1{2\pi i}\oint(z-1)^{-1}dz=1\)">\(\frac1{2\pi i}\oint(z-1)^{-1}dz=1\)</span>.</p>
+<p><strong>5.2.</strong> If <span class="math" data-tex="\(M_f\)">\(M_f\)</span> commutes with the right translations, then <span class="math" data-tex="\(f(\eta k)=f(\eta)\)">\(f(\eta k)=f(\eta)\)</span> for all <span class="math" data-tex="\(\eta,k\)">\(\eta,k\)</span>, so <span class="math" data-tex="\(f\)">\(f\)</span> is constant. Under <span class="math" data-tex="\(\delta_n\mapsto e^{2\pi in\theta}\)">\(\delta_n\mapsto e^{2\pi in\theta}\)</span>, the right translations become multiplications by <span class="math" data-tex="\(e^{\pm2\pi ik\theta}\)">\(e^{\pm2\pi ik\theta}\)</span>, and the projection <span class="math" data-tex="\(P\)">\(P\)</span> becomes multiplication by <span class="math" data-tex="\(\mathbf1_{[0,1/3]}\)">\(\mathbf1_{[0,1/3]}\)</span>, which commutes with them. Its identity trace is <span class="math" data-tex="\(\langle P\delta_0,\delta_0\rangle=\int_0^{1/3}1\,d\theta=\frac13\)">\(\langle P\delta_0,\delta_0\rangle=\int_0^{1/3}1\,d\theta=\frac13\)</span>.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(\varepsilon=\|(1-J)E\|=|\sin\theta|\)">\(\varepsilon=\|(1-J)E\|=|\sin\theta|\)</span>. For <span class="math" data-tex="\(\theta\ne\frac\pi2\)">\(\theta\ne\frac\pi2\)</span>, <span class="math" data-tex="\(JE\)">\(JE\)</span> maps <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to <span class="math" data-tex="\(\cos\theta\,(\cos\theta,\sin\theta)\)">\(\cos\theta\,(\cos\theta,\sin\theta)\)</span>, so <span class="math" data-tex="\(E^J=J\)">\(E^J=J\)</span> and <span class="math" data-tex="\(J-E^J=0\)">\(J-E^J=0\)</span>, and <span class="math" data-tex="\(B_J=J\)">\(B_J=J\)</span> on <span class="math" data-tex="\(J\mathcal H\)">\(J\mathcal H\)</span>. There <span class="math" data-tex="\(JAJ=\cos^2\theta\,J\)">\(JAJ=\cos^2\theta\,J\)</span>, so <span class="math" data-tex="\(\|JAJ-B_J\|=\sin^2\theta=\varepsilon^2\le12\varepsilon\)">\(\|JAJ-B_J\|=\sin^2\theta=\varepsilon^2\le12\varepsilon\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(W\)">\(W\)</span> of Lemma 4.1 is an isometry from the range of <span class="math" data-tex="\(F_1\)">\(F_1\)</span> onto the range of <span class="math" data-tex="\(F_2\)">\(F_2\)</span>. The coordinate projections onto <span class="math" data-tex="\(e_1\)">\(e_1\)</span> and onto the span of <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> in <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> differ by the projection onto <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, of norm <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-KK] OpenAI, <em>A torsion-free counterexample to the Kadison–Kaplansky projection conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Lemmas 8.4, 10.1 and 10.2. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-the-Kadison-Kaplansky-Projection-Conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

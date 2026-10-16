@@ -13312,13 +13312,1015 @@ maps and contractions stipulated in the preceding theorems.
 
 Theorem C.59.1.1 retains all four terms of the full projection homotopy. Corollary C.59.2.1 gives the correctly typed finest primitive;Theorem C.59.3.1 extends its normalization to the prescribed ordered cuts. Exercises C.59.4.1–C.59.4.2 compute the necessary terms,inverse and sign. Editable SVG source.
 
+### C.60. Reverse path projection and coherent square transport
+
+The second projection of the module path category has an explicit
+normalized mapping-kernel contraction. It lifts a supplied entire
+coherent family to larger module models with projection-compatible
+edges. A coherent square with the exact compressed edge values then
+returns to the original comparisons through the full kernel homotopies.
+The results apply to the complete module differentials;identifying
+the prescribed native edges remains necessary in the geometric application.
+
+#### C.60.1. The other path projection has a normalized kernel contraction
+
+Let \(p_i:X_i\to Q_i\) be normalized full module SDR projections,
+with sections \(i_i\) and homotopies \(h_i\). Thus
+\(p_ii_i=1,\partial h_i=1-i_ip_i\),and
+\(h_i^2=p_ih_i=h_ii_i=0\). For the object paths \(p_i\),
+use C.53.4's path category. A degree-\(r\) morphism is
+\((f,g,a)\),with
+\[
+ \begin{aligned}
+ f&:X_i\to X_j,\qquad g:Q_i\to Q_j,\\
+ a&:X_i\to Q_j,\qquad |a|=r-1.
+ \end{aligned}
+\]
+Its differential is
+\(D(f,g,a)=(\partial f,\partial g,-\partial a+p_jf-gp_i)\).
+Let \(\pi_1\) retain \(g\),the second component.
+
+**Lemma C.60.1.1 (reverse path-projection kernel).** The projection \(\pi_1\)
+is graded-surjective on each mapping block and its kernel has the
+normalized contraction
+\[
+ k_1(f,a)=(h_jf+i_ja,0).
+\]
+The kernel differential is \(d_K(f,a)=(\partial f,-\partial a+p_jf)\).
+This is a contraction in the full mapping complex,including all module
+actions and fixed core maps.
+
+**Proof.** The triple \((0,g,0)\) is a graded preimage of every
+\(g\). In its kernel the displayed differential is immediate from
+the path formula. Since \(|h_j|=-1\) and \(i_j\) is closed,
+\[
+ \begin{aligned}
+ \partial(h_jf+i_ja)
+  &=(1-i_jp_j)f-h_j\partial f+i_j\partial a,\\
+ p_j(h_jf+i_ja)&=a.
+ \end{aligned}
+\]
+Consequently the first component of \(d_Kk_1+k_1d_K\) is
+\((1-i_jp_j)f-h_j\partial f+i_j\partial a
+  +h_j\partial f-i_j\partial a+i_jp_jf=f\).
+Its second component is \(a\). Also
+\(h_j(h_jf+i_ja)=0\),so \(k_1^2=0\).
+Every operation is postcomposition with an actual full module map.
+It therefore retains the two coactions and the stated core maps.
+This proves the contraction without omitting any source differential
+term. \(\square\)
+
+#### C.60.2. Lift the entire smaller family with exactly prescribed edges
+
+Let \(I\) be a finite directed parameter category,and let
+\(G:\Omega B(kI)\to\mathcal E\) be the supplied entire
+unital coherent family with objects \(Q_i\). Use the projections
+\(p_i:X_i\to Q_i\) above. The free source generator for an
+original strict-arrow string of length \(q\) has degree \(1-q\).
+Its differential uses merges or products of shorter generators.
+
+**Theorem C.60.2.1 (reverse coherent model transport).** There is a unital
+dg functor \(\mathscr H:\Omega B(kI)\to\operatorname{Path}(\mathcal E)\)
+with object paths \(p_i\),second projection exactly \(G\),and
+one-arrow values
+\[
+ \mathscr H(\alpha)
+    =(i_jG(\alpha)p_i,G(\alpha),0).
+\]
+Its first projection is a whole coherent family \(F\) on the larger
+models,whose arrows commute exactly with the specified projections.
+The construction retains every higher parameter generator and is
+finite. Compatible previously assigned free-generator face data can
+be kept.
+
+**Proof.** For an original arrow,\(G(\alpha)\) is closed. The
+first component is closed too,and
+\(p_ji_jG(\alpha)p_i=G(\alpha)p_i\). The path differential
+is therefore zero. Assign the identity triple to an identity arrow.
+This defines the lift on the length-one generators and their products.
+
+Suppose all shorter generator values are assigned. For a degree-\(1-q\)
+generator \(x\),choose \(v=(0,G(x),0)\) and set
+\[
+ o=Dv-\mathscr H(dx),\qquad
+ \mathscr H(x)=v-k_1o.
+\]
+The second projection of the defect is zero because \(G\) is a
+dg functor. Applying \(D\) to the defect gives zero:the chain
+equations already hold on every shorter product in \(dx\),and
+\(d^2x=0\). Lemma C.60.1.1 thus gives \(Dk_1o=o\). The corrected
+value has precisely the required differential and its second
+projection remains \(G(x)\). Extend freely and multiplicatively;
+the dg Leibniz identity gives the equation on all new products.
+
+Induction constructs the entire dg functor. Finite directed height
+bounds the length of every strict-arrow string,so this is a finite
+generator construction. A full parameter face consists of the free
+generators whose original vertices lie in that face. Merging removes
+vertices and splitting uses their subsets. Thus a union of already
+assigned face generators is differential-stable;use its agreeing
+values and perform the correction only on the remaining generators.
+The same induction retains compatible earlier finite corners.
+
+The first projection is a dg functor by the path-category identities.
+Its projection-compatible edge formula is the one assigned initially,
+and its higher values are the just-constructed coherent values,not
+separately chosen fillers. The object paths are homotopy equivalences,
+so the path family is an actual enhanced equivalence of the two
+whole families. \(\square\)
+
+#### C.60.3. A coherent small square and the corresponding actual raw square
+
+Use the C59 raw objects \(Z,Z',W,W'\) and projections
+\(a,a',b,b'\),with sections \(i,i',s,s'\) and normalized
+homotopies \(h,h',k,k'\),respectively. Let the actual closed raw
+comparisons be \(t:Z\to Z'\),\(u:W\to W'\). Set their
+exact compressed comparisons to be
+\[
+ t_0=a'ti,\qquad t_1=b'us.
+\]
+Suppose a supplied entire coherent square on the four smaller objects
+has horizontal edges \(B:Q_0\to Q_1\),\(B':Q_0'\to Q_1'\)
+and these vertical edges \(t_0,t_1\). For the square poset its
+two length-two generators have images \(H_0,H_1\) satisfying
+\[
+ \partial H_0=B't_0-c,\qquad
+ \partial H_1=t_1B-c,
+\]
+where \(c\) is the same original diagonal arrow image. Put
+\(C=H_0-H_1\),\(\phi=sBa,\phi'=s'B'a'\).
+
+**Theorem C.60.3.1 (return from projection-compatible edges).** The full
+projection homotopies and monoidal homotopy can be chosen as
+\[
+ \begin{aligned}
+ A_0&=a'th,\qquad A_1=b'uk,\\
+ C&=H_0-H_1.
+ \end{aligned}
+\]
+They have exactly C59's types and differentials. The raw roof square
+then has the full primitive
+\[
+ R=s'Ca+s'B'a'th-k'usBa.
+\]
+This is the corresponding specialization of the four-term formula:
+its fourth term is zero by the normalized equation \(ks=0\).
+Every higher component of the supplied smaller square can be retained
+via Theorem C.60.2.1. No zero homotopy is asserted for a general unnormalized
+projection square.
+
+**Proof.** Closedness of the other factors gives
+\[
+ \begin{aligned}
+ \partial A_0&=a't(1-ia)=a't-t_0a,\\
+ \partial A_1&=b'u(1-sb)=b'u-t_1b,\\
+ \partial C&=B't_0-t_1B.
+ \end{aligned}
+\]
+These are the required full mapping-complex identities. C.59.1.1
+now applies. Its last term is
+\(-s'A_1sBa=-s'b'uk sBa=0\),and its target kernel homotopy
+is \(k'\). The remaining terms give the displayed primitive.
+
+There is also a direct whole-family interpretation. Theorem C.60.2.1 lifts
+the supplied small square to the projection-compatible arrows
+\(t_c=i't_0a\),\(u_c=s't_1b\),\(\phi,\phi'\).
+The small primitive has the raw lift \(s'Ca\),since
+\(a'i'=1,bs=1\). The actual comparisons are connected to those
+canonical ones by the explicit full homotopies
+\[
+ \begin{aligned}
+ D_t&=-h't-i'a'th,\\
+ D_u&=-k'u-s'b'uk.
+ \end{aligned}
+\]
+Differentiating gives \(\partial D_t=t_c-t\) and
+\(\partial D_u=u_c-u\),by cancelling the two intermediate
+\(i'a't\) or \(s'b'u\) terms. Therefore
+\[
+ s'Ca-\phi'D_t+D_u\phi
+\]
+has differential \(\phi't-u\phi\). Its normalization identities
+\(a'h'=0,ks=0\) simplify it to exactly the displayed \(R\).
+This proves the return formula without replacing either actual raw
+comparison by an unrelated edge.
+
+All restrictions use these same maps and original generators. Thus
+every compatible assigned face is retained. Applying the actual
+contractions of C.59.2.1 to this \(R\) gives its finest primitive,
+and C.59.3.1 then normalizes the prescribed compatible ordered cuts.
+The supplied square,its compressed vertical maps,and its horizontal
+represented maps must have the stated exact values before those
+applications are made. \(\square\)
+
+
+#### C.60.4. Two solved reverse-transport examples
+
+**Exercise C.60.4.1 (the kernel correction; intermediate).** Let
+\(Q=ke\oplus k\eta\),with \(|e|=0,|\eta|=-1\) and zero
+differential. Put \(X=Q\oplus(kg\xrightarrow{d}kz)\),with
+\(|g|=-1,|z|=0,dg=z\). Let \(p\) be projection,\(i\)
+inclusion,and \(h(z)=g\),zero otherwise. In Lemma C.60.1.1's
+reverse mapping kernel take the degree-zero pair \((f,a)\),where
+\(f(e)=z,a(e)=\eta\),zero elsewhere. Compute both parts of
+\(d_Kk_1+k_1d_K\),retaining the source differential term,and
+verify the square-zero normalization.
+
+**Solution.** The pair has the stated degree because \(a\) has
+degree minus one. We have \(hf(e)=g,ia(e)=\eta\),so
+\(k_1(f,a)=(v,0)\),where \(v(e)=g+\eta\),zero elsewhere.
+The Hom differential of \(v\) is \(dv+vd\),which sends
+\(e\) to \(z\) and vanishes on the other basis vectors. Its
+second kernel component is \(pv=a\). Hence
+\(d_Kk_1(f,a)=(f,a)\). Directly \(\partial f=0\),
+\(\partial a=d_Qa+ad=0\),and \(pf=0\),so
+\(d_K(f,a)=0\). The second composite is therefore zero. Finally
+\(hv=0\),since \(v\) lands in \(kg\oplus k\eta\),where
+\(h\) vanishes. Thus \(k_1^2(f,a)=0\). Both summands
+\(hf\) and \(ia\) occur in this single correction.
+
+**Exercise C.60.4.2 (return to the actual comparisons; advanced).**
+Let \(V\) have basis \(e,f_1,y_1,f_2,y_2,f_3,y_3\),with
+\(|e|=|y_i|=0,|f_i|=-1,df_i=y_i\). Put
+\(X=V\oplus(kg\xrightarrow{d}kz)\),where \(dg=z\),
+\(|g|=-1,|z|=0\). Let all four larger objects be \(X\),all
+smaller objects be \(V\),all projections be \(p:X\to V\),
+all sections be \(i\),and all normalized homotopies be \(h(z)=g\).
+Take \(B=B'=1\). Define degree-zero chain maps \(t,u:X\to X\)
+by the identity except for
+\[
+ \begin{aligned}
+ t(e)&=e+y_3+z,&u(e)&=e+z,\\
+ t(g)&=g+f_1,&u(g)&=g+f_2,\\
+ t(z)&=z+y_1,&u(z)&=z+y_2.
+ \end{aligned}
+\]
+Find the compressed square,its two projection homotopies and the full
+return primitive. Explain precisely why its fourth roof term vanishes.
+
+**Solution.** The chain equations hold on \(g\) because its
+images differentiate to the stated images of \(z\);they hold
+on the other basis vectors directly. The compressed maps are
+\(t_0=pti\),which sends \(e\) to \(e+y_3\),and
+\(t_1=pui=1\). Take \(C(e)=f_3\),zero otherwise. Then
+\(\partial C=t_0-t_1\). A coherent small square can use the
+diagonal \(c=t_1\),with \(H_0=C,H_1=0\);its two triangle
+equations have exactly the required boundaries.
+
+The actual projection homotopies are \(A_0=pth,A_1=puh\).
+They send \(z\) to \(f_1,f_2\),respectively,and vanish on
+the remaining basis vectors. They are both nonzero. In the reverse
+homotopy equation their differentials also act on \(g\):the Hom
+source term gives \(A_0(dg)=f_1\) or \(A_1(dg)=f_2\).
+These are precisely the corresponding values of
+\(pt-t_0p\) and \(pu-t_1p\).
+
+The three terms of the return primitive \(R\) are
+\[
+ iCp,\qquad ipth,\qquad -huip.
+\]
+Their nonzero values are, respectively,\(e\mapsto f_3\),
+\(z\mapsto f_1\),and \(e\mapsto-g\). Their boundaries
+send \(e\) to \(y_3\),send \(z,g\) to \(y_1,f_1\),
+and send \(e\) to \(-z\),respectively. These are independent
+directions and sum exactly to \(\phi't-u\phi\),where
+\(\phi=\phi'=ip\). The fourth C59 term is
+\(-iA_1i p=0\),because \(hi=0\) in \(A_1=puh\).
+It vanishes by this proved normalization,even though \(A_1\ne0\).
+There is no general rule allowing its omission in an arbitrary roof.
+
+Tensoring with \(k[r]/r^2\),using regular left and right multiplication
+on that coefficient,retains these equations as bimodule equations.
+Their full cofree extensions therefore retain both nonzero actions and
+both outside coactions. This is an algebraic example of the return
+formula;the native application additionally requires its exact supplied
+coherent square and edge identifications.
+
+![The normalized reverse mapping-kernel contraction and the three nonzero terms returning a coherent square to its original raw comparisons](assets/native-square-recording.png)
+
+Lemma C.60.1.1 contracts the reverse path-projection kernel. Theorems C.60.2.1–C.60.3.1 lift entire coherent module families and return their exact compressed square to the raw comparisons. Exercises C.60.4.1–C.60.4.2 retain the source differential and the normalized nonzero correction terms. Editable SVG source.
+
+### C.61. Full mapping restriction and the fixed native square
+
+The actual bar-unit embedding retains the whole bicomodule mapping
+complex. Its restriction kernel contracts at fixed original rank,
+and a finite perturbation retains both module actions. Thus full
+transformation classes and their null-homotopies can be recorded on
+the common bars. The actual represented native equivalences identify
+the four edges of one specified product square in that full complex.
+The relative version retains genuine full faces when the required
+relative transformation class is given.
+
+#### C.61.1. The common-bar mapping complex is the correct full complex
+
+Let \(K=C^{\otimes n}\otimes D_I\),including \(n=0\),and
+let \(L=C^{\otimes m}\otimes D_J\). Use the actual minimal
+IC bar and finite directed index bars of C52. Write
+\(\widehat K=B\Omega K,\widehat L=B\Omega L\),and use
+their actual natural unit embeddings \(\eta_K,\eta_L\).
+Take two full cofree modules \(\widehat X,\widehat Y\) over
+\(\widehat L,\widehat K\),with central complexes \(M,N\).
+They have normalized module actions. Let \(X,Y\) be their genuine
+pullbacks over \(L,K\),retaining the same central complexes.
+
+Count original IC primitive letters plus index height jumps in an
+element of \(K\) or \(L\),and add these counts in an original
+word of \(B\Omega K\) or \(B\Omega L\). Denote the sum on
+the two outside runs by \(R\). Every reduced original input has
+positive count,and cuts preserve its sum. Assume the given module
+actions consume positive count whenever they are not central unary
+terms. This holds for the raw normalized represented modules used in
+C58:an action removes a nonempty original outside word,including its
+index height when the corresponding arrow acts by a scalar.
+
+**Theorem C.61.1.1 (full mapping restriction is a surjective quasi-isomorphism).**
+Restriction along \(\eta_L,\eta_K\) gives a graded-surjective
+chain map
+\[
+ \begin{aligned}
+ r:\operatorname{Hom}_{\widehat L,\widehat K}
+       (\widehat X,\widehat Y)\\
+ \longrightarrow \operatorname{Hom}_{L,K}(X,Y).
+ \end{aligned}
+\]
+Its kernel has a normalized contraction finite on every original
+outside input. Here both Hom complexes consist of full cofree
+bicomodule maps over identity pure cores,with their complete source
+and target action differential. Restriction preserves composition
+and identities on the whole dg category of these pullbacks. Thus it
+is fully faithful on full transformation cohomology,not only on bare
+central values.
+
+**Proof.** Each unit is a coalgebra map by C.39.4.1. It is graded
+injective:its one-bar-letter,one-cobar-generator component is exactly
+\(c\mapsto s(tc)\),an injective map on the reduced original
+coalgebra. Coaugmentations are retained too. Consequently the tensor
+embedding of the two outside runs is injective. A homogeneous full
+map is determined by its central Taylor map. Restrict that map to
+the two unit images;any prescribed homogeneous Taylor map on their
+tensor extends linearly. The cofree reconstruction proves graded
+surjectivity of \(r\).
+
+The pulled-back modules are chain modules because the unit embeddings
+are dg coalgebra maps. Their coactions on any retained word stay in
+the unit images. Hence restriction commutes with the entire mapping
+differential,including its source and target actions. The cofree
+composition formula cuts the original words using those same
+coactions. Restricting before or after that formula gives identical
+cuts and signs,so it preserves composition and the identity. This
+also shows directly that the restriction kernel is a subcomplex.
+
+We now contract that kernel without an infinite-length assertion.
+First discard only the nonunary IC operations and the nonunary module
+actions. Keep the central unary differential,all index-bar unary
+differentials,and the complete bar-cobar cut and splitting
+differentials. Call the resulting mapping differential \(\partial_0\).
+It preserves \(R\). The unit for these leading pure differentials
+also preserves \(R\),and is the same explicit unit formula as
+C.39.16. It contains all iterated coproduct terms;none is removed.
+
+At each fixed original rank the unit is a quasi-isomorphism. Here
+is the finite argument needed for that stronger assertion. In
+\(B\Omega K\),filter by the number \(r_0\) of original
+noncoaugmented \(K\)-elements before dividing them into cobar
+blocks. Every such element has positive original rank,so
+\(r_0\le R\). The cobar splitting increases \(r_0\);the
+original unary differential and bar merging preserve it. At a fixed
+\(r_0\ge2\) associated quotient,C.39.4.1's explicit cut
+homotopy inserts the first missing cut with coefficient
+\((-1)^{|c_1|}\). It contracts that full quotient,including
+the original unary differential. It preserves the total original
+rank,each endpoint and every original letter label. At \(r_0=1\)
+the unit has identity leading value. Finite cone elimination through
+\(1\le r_0\le R\) proves that the unit has acyclic comparison
+cone in that exact rank block. The argument applies to \(L\) as
+well. Tensoring over the field therefore makes
+\(\eta_L\otimes\eta_K\) a quasi-isomorphism in every fixed
+total rank,by splitting each acyclic tensor factor as in C30.
+
+It is an injective chain map. Thus its quotient complex on the two
+outside runs is acyclic in every rank and endpoint block. Choose a
+normalized splitting contraction there by C.30.1.1. Tensor it with
+the unchanged central complex \(M\),using the Koszul sign when
+the outside homotopy crosses a central factor. This gives a normalized
+quotient-input contraction \(h_Q\). The leading kernel of \(r\)
+is precisely the Taylor Hom complex from that quotient input to \(N\).
+For a degree-\(d\) map \(f\),the operator
+\(H_0(f)=(-1)^d f h_Q\) has
+\(\partial_0H_0+H_0\partial_0=1,H_0^2=0\),by the full
+signed Hom calculation in C.56.3.1. It preserves original rank.
+
+Write the entire mapping differential as \(\partial_0+\delta\).
+The omitted source pure IC terms reduce original primitive count.
+Every omitted source action consumes a positive-rank outside piece.
+For a target action,expand the full cofree formula:the central Taylor
+map is evaluated on the middle input left after those outside pieces
+have been removed. It has smaller original rank too. Normalization
+rules out a pure operation creating a scalar from nonempty original
+IC inputs;index-scalar action cases still consume positive height.
+These are all the omitted terms. Thus \(\delta f\) on a rank-\(R\)
+input uses \(f\) only on smaller ranks.
+
+The restriction kernel is stable under both differentials,so the
+finite perturbation formula of C.35.1 gives its actual contraction
+\[
+ H=H_0(1+\delta H_0)^{-1}.
+\]
+At most \(R\) perturbation factors contribute on that original
+input. It satisfies \(\partial H+H\partial=1,H^2=0\) in
+the full restriction kernel. The kernel is therefore contractible,
+and the already proved graded-surjective chain map is a
+quasi-isomorphism. No bound on arbitrary natural-transformation
+spaces or on infinitely many input lengths was used. \(\square\)
+
+#### C.61.2. A fully faithful recording transfers prescribed whole edge classes
+
+Let \(P:\mathcal D\to\mathcal E\) be a dg functor,with fixed
+chosen object labels,whose maps on all retained Hom complexes are
+surjective quasi-isomorphisms. In the application \(P\) is the
+actual restriction \(r\) of Theorem C.61.1.1 on a finite set of raw module
+objects. Let \(I\) be a finite directed parameter category and
+\(F:\Omega B(kI)\to\mathcal D\) a supplied entire family.
+For each original arrow \(\alpha\),suppose a closed map
+\(e_\alpha\) in \(\mathcal E\) is prescribed and its
+**full** cohomology class equals \([PF(\alpha)]\).
+
+**Theorem C.61.2.1 (exact-edge coherent recording).** There is a whole
+coherent family \(G:\Omega B(kI)\to\mathcal E\) whose edges
+are exactly \(e_\alpha\),with an actual resolved path equivalence
+to \(PF\). Each entire native null-homotopy is retained through
+the path construction. The result uses equality in the full mapping
+complex,not equality only of leading cohomology components.
+
+More explicitly,if \(z\in\mathcal D^0(X,Y)\) is closed and
+\(Pz=\partial c\),the kernel contraction produces a full
+primitive of \(z\). It can be chosen to have exact image \(c\).
+
+**Proof.** Equality of the stated full classes means precisely that
+there is a degree-minus-one map \(k_\alpha\) with
+\(\partial k_\alpha=e_\alpha-PF(\alpha)\). These maps
+belong to the actual full Hom complexes. Apply C.54.4.1 to the
+entire \(PF\) and these actual edge homotopies. Its explicit
+identity-path recursion retains all higher generators and gives the
+exact prescribed edges. This proves the coherent assertion,including
+the actual path to the original entire family. For example,on a
+triangle its new higher image is
+\(H+k_ba+b'k_a-k_c\),with every term and sign retained.
+
+Here is a constructive primitive lift,which also proves the stated
+faithfulness without appealing only to the phrase quasi-isomorphism.
+Choose a graded preimage \(c_0\) of \(c\). Then
+\(z-\partial c_0\) is a closed degree-zero element of the
+mapping kernel. With its actual contraction \(H\),put
+\[
+ c_{\mathcal D}=c_0+H(z-\partial c_0).
+\]
+Its differential is \(z\) and its image is exactly \(c\).
+All its values are full maps. For the restriction in Theorem C.61.1.1,
+the correction is finite on each original input. Thus a primitive
+on the common bars lifts without discarding a higher source or
+target component. The construction also shows that two native full
+edge representatives with the same restricted full class are
+homotopic upstairs. This does not assert that edges with equal
+bare components have the same restricted full class. \(\square\)
+
+#### C.61.3. The exact four edges of one specified native product square
+
+Fix one of C58's specified rootwise product families,with all its
+original parameter cells. Work over the extension field \(E\) and
+use the actual calibrated whole enhanced comparison of C.48.1.1.
+Retain its actual whole-prism representative from C50/C54. Denote
+its raw global and product restrictions by \(t:Z\to Z'\) and
+\(u:W\to W'\). Use C58's four common-target projections
+\(a,a',b,b'\) and their actual fixed-projection sections \(i,i',s,s'\).
+Let \(B,B'\) be exactly the represented evaluations of the native
+external-product transformations constructed in C.58.2.1.
+
+**Theorem C.61.3.1 (record one fixed native square with its prescribed edges).**
+For this fixed product family,there is an entire coherent square in
+the full module category whose horizontal edges are exactly \(B,B'\)
+and whose vertical edges are exactly
+\(t_0=a'ti,t_1=b'us\). Its two triangle images supply an actual
+full \(C\) with \(\partial C=B't_0-t_1B\). Consequently
+C.60.3.1 supplies the actual projection-roof homotopy,and C59 supplies
+its finest primitive and simultaneous normalization of the compatible
+ordered cuts. The assertion retains this whole parameter family;it
+does not yet assert that choices made on different native families
+agree on every overlapping parameter or grafting domain.
+
+**Proof.** First remove the varying-core type issue. C.48.1.1's
+actual coalgebra isomorphism \(g\) identifies the two pure core
+systems. Pull the target system back by its literal tensor powers
+and the index identities. C.52.2.1 makes every common-target
+projection commute strictly with that pullback. All four module
+objects and all the maps now belong to one dg category over the
+same fixed cores. This uses the actual \(g\);it is not an
+attempt to linearize an unfixed coalgebra coordinate.
+
+Each raw represented module of C58 is the pullback along
+\(\eta_L,\eta_K\) of its ordinary normalized bar module over
+\(\Omega L,\Omega K\). This follows directly from the
+canonical unit formula and the consecutive-block represented
+construction in C.33.2.1. The small common-target modules have the
+same property,using their target projection to the common dg tensor
+category. That projection is a quasi-equivalence on the pertinent
+finite envelopes by C.52.2.1/C.52.3.1. Thus they are actual
+represented objects on those envelopes too,with the specified
+represented comparisons. No module has been selected by its
+graded dimension alone.
+
+The entire native strong monoidal comparison of C48 supplies its
+original square,including its two triangles and their original
+diagonal,on these functor envelopes. Apply the full represented
+evaluation of C.33.2.1/C.53.1.1 before any compression. It records
+that complete square as full normalized module transformations.
+The full Yoneda mapping equivalence of C.33.2.1 retains the
+transformation mapping complexes,including every source-word
+component. The actual unit and counit equivalences of the chosen
+representing objects therefore transport this whole square to the
+four retained bar-module models. Restrict it by Theorem C.61.1.1. It is
+now an entire coherent square on the common bars,possibly with
+different edge representatives from the four prescribed ones.
+
+We check equality of those four **full** edge classes. In the
+homotopy category of full module maps,a normalized SDR gives
+\([i]=[a]^{-1}\),\([s]=[b]^{-1}\),and the corresponding
+primed equalities,because its two inverse equations have the
+specified actual full homotopies. Hence the transported vertical
+classes on the common-target objects are precisely
+\[
+ [a'][t][a]^{-1}=[a'ti],\qquad
+ [b'][u][b]^{-1}=[b'us].
+\]
+Here \([t],[u]\) are the classes of the supplied **whole**
+native comparison,not inferred comparison classes. C.50.2.1
+identifies its entire prism bimodule with that comparison by the
+actual represented evaluation maps. Its inverse and units are
+the full action-transfer equivalences of C.50.1.1;C.54.2.1
+keeps the prescribed complete pure-state actions in this recovery.
+Restricting these actual equivalences to the present product
+family is exactly the raw \(t,u\) stipulated above. Thus the
+two displayed classes use their full comparison provenance.
+
+For a horizontal edge,C.58.2.1 defines its transformation
+\(\beta\) by \(c_0^{-1}\alpha c_1\),where \(\alpha\)
+is the original native external-product comparison and \(c_0,c_1\)
+are these particular representing equivalences. Full represented
+evaluation gives exactly \(B=R_\beta\),and likewise \(B'\).
+The degree-zero contravariant direction is the one proved in
+C.53.1.1. Consequently these are exactly the horizontal classes
+of the transported native square. This argument identifies the
+entire transformations through their representing equivalences;
+it uses no assertion about their bare cohomology maps.
+
+Theorem C.61.1.1 ensures that passage to the common bars has retained
+these full mapping classes faithfully. In particular any two
+edge representatives just compared differ by an actual full
+degree-minus-one boundary. Choose those edge homotopies and
+apply the identity-path replacement of C.54.4.1 to the entire
+restricted square. Equivalently use Theorem C.61.2.1's exact-edge
+recording. The resulting coherent square has exactly
+\(B,B',a'ti,b'us\),with its actual two triangle components
+\(H_0,H_1\) and the same recorded diagonal. Their difference
+\(C=H_0-H_1\) therefore satisfies the required full equation.
+
+All constructions were on the supplied entire parameter family,
+so its higher parameter components remain present. C.60.3.1
+now gives \(A_0=a'th,A_1=b'uk\) and its normalized return
+homotopy;C.59.2.1 transfers that actual homotopy to the finest
+models,and C.59.3.1 retains its value while normalizing all
+prescribed compatible ordered cuts. Restore the same literal
+\(g\) powers afterwards. This proves the fixed-family assertion.
+The choice of full edge primitives on two different ambient
+families has not been compared here. Compatible assignments on
+all such overlaps,all whole-graph sectors and all external higher
+grafting marks still require their own relative construction.
+\(\square\)
+
+#### C.61.4. Relative restriction on genuine parameter faces
+
+Fix a finite collection of full parameter faces in the original
+root factors,and,if needed,a finite collection of full IC label
+corners. On a bar-cobar word retain a face when every one of its
+original parameter vertices and IC labels belongs to that face.
+The leading quotients in Theorem C.61.1.1 use these actual subcomplexes;
+they do not identify a nonrectangular joint domain with a rectangle.
+
+**Theorem C.61.4.1 (relative full-face mapping restriction).** The kernel
+contraction in Theorem C.61.1.1 can be chosen to preserve maps vanishing on
+the assigned union of such faces. Restriction remains a surjective
+quasi-isomorphism on those relative full mapping complexes. Thus a
+relative full null-homotopy on the common bars lifts while retaining
+its assigned native face values. Compatible increasing full corners
+can retain earlier choices. A relative null-homotopy class is required;
+absolute null-homotopy alone does not assert a relative one.
+
+**Proof.** At the leading differential work separately in each
+fixed original rank and endpoint block. The unit is injective with
+leading term \(s(tc)\). Choose an original basis of \(K\) and
+\(L\) consisting of the actual IC/index word tensors. In each
+\(B\Omega K\) basis,the unit image of such a basis element is
+its one-bar-letter,one-cobar-generator word plus terms with at
+least two original coalgebra elements. All terms use only its
+original parameter vertices and labels. The analogous assertion
+holds for the two outside runs together by taking their tensor.
+
+Eliminate each leading canonical unit-image basis vector using that
+unit relation. The quotient has the remaining bar-cobar word basis.
+A full face retains exactly its subset of this quotient basis:
+when a canonical vector belongs to the face,all terms of the
+unit relation used to eliminate it also belong to the face.
+Conversely the leading canonical component detects membership
+in the original face. Thus the quotient-face subspaces have the
+distributive original-word support lattice,and their intersections
+are the quotient subspaces for the actual common faces. The same
+basis argument works for a union of the retained faces.
+
+Theorem C.61.1.1's finite rank/cut proof applies to every full face and
+every finite intersection. Their leading quotient complexes are
+therefore acyclic. The acyclic-face-union construction of
+C.50.2.1 gives a normalized quotient contraction retaining all
+assigned faces:the sum of previously assigned acyclic face
+subcomplexes is acyclic by the distributive support lattice;its
+quotient is acyclic;extend the earlier contraction by a chain
+splitting of that quotient. The explicit corrected chain section
+and square-zero normalization are the ones proved there. Do this
+at each rank and endpoint block. It preserves the unit quotient
+and all earlier choices.
+
+Precomposition with this contraction preserves vanishing on each
+face. The leading signed Taylor Hom contraction \(H_0\) thus
+preserves the relative restriction kernel. The omitted source
+and target terms also preserve it,because the actual cofree
+coactions and full differentials retain these full face submodels.
+Every term in the finite perturbation
+\(H_0(1+\delta H_0)^{-1}\) has the same property. It contracts
+the full relative kernel.
+
+For graded surjectivity on the relative complexes,define the
+desired native Taylor map on the union of the unit image and the
+assigned faces:use the given common-bar value on the former and
+zero on the latter. Their intersection consists exactly of the
+unit image of the corresponding common face union,by the leading
+canonical-word argument. The given relative map vanishes there,
+so these prescriptions agree. Extend them on a graded complement.
+This gives a full relative graded lift. Together with the full
+relative kernel contraction it proves the asserted relative
+surjective quasi-isomorphism,and the primitive formula in
+Theorem C.61.2.1 retains every assigned zero face value. Subtracting an
+already prescribed full extension gives the analogous statement
+for nonzero compatible values.
+
+The same support argument and acyclic-quotient extension retain
+the chosen contractions along an increasing system of full
+finite corners. None of these statements replaces the actual
+relative class by an absolute class,or treats a clipped shuffle
+domain as a full factor face. Those separate distinctions are
+needed in applying the result to native overlaps. \(\square\)
+
+
+#### C.61.5. Two solved bar-unit calculations
+
+**Exercise C.61.5.1 (the actual index unit; intermediate).**
+For \(K=D_{[2]}\),write the index arrows as
+\(a:0\to1,b:1\to2,c:0\to2\),and put
+\(w=sb\mid sa\). Compute its actual unit in \(B\Omega K\),
+the quotient by that unit image and a normalized quotient contraction.
+Explain what the full face \(\{0,2\}\) retains.
+
+**Solution.** The two-arrow bar word satisfies \(d_Kw=-sc\). In \(\Omega K\)
+put \(A=t(sa),B=t(sb),C=t(sc),H=t(w)\). The retained sign
+convention C.39.15 gives \(dH=BA-C\). The actual unit therefore
+has
+\[
+ \begin{aligned}
+ \eta_K(w)&=sH+sB\mid sA,\\
+ \eta_K(sc)&=sC.
+ \end{aligned}
+\]
+In \(B\Omega K\),the two differential contributions are
+\(d(sH)=s(BA)-sC\) and \(d(sB\mid sA)=-s(BA)\).
+They cancel to give \(d\eta_K(w)=-sC=\eta_K(d_Kw)\).
+The quotient by the unit image has basis
+\(u=s(BA),v=sB\mid sA\),with \(dv=-u\). Indeed
+\(sC=0\) and \(sH=-v\) in that quotient. Its normalized
+contraction is \(h(u)=-v,h(v)=0\). Each proper full parameter
+face retains zero quotient here;in particular the face \(\{0,2\}\)
+still retains its actual direct arrow \(c\) and its unit image.
+The whole three-vertex face retains the displayed acyclic quotient.
+Thus the face statement does not erase the direct arrow or identify
+the two different source paths.
+
+
+**Exercise C.61.5.2 (the signed mapping primitive; intermediate).**
+Take \(K=k\oplus kx\),with \(x\) primitive of degree one
+and zero differential. At original rank two,describe the quotient
+of \(B\Omega K\) by the unit image. For the linear map \(f\)
+to \(k\) that is one on the two-block word and zero on the
+one-block word,compute its degree and a signed Hom primitive.
+
+**Solution.** We have
+\(\Omega K=k[t(x)]\),whose generator has degree two. At original
+rank two,the unit quotient has basis
+\(u=s(t(x)^2)\) in degree three and
+\(v=s(t(x))\mid s(t(x))\) in degree two. Again
+\(dv=-u,h(u)=-v\). For a degree-minus-two linear map to \(k\)
+with \(f(v)=1,f(u)=0\),the Hom differential is zero. Its signed
+primitive has
+\[
+ H_0(f)(u)=(-1)^{-2}f(-v)=-1,
+ \qquad H_0(f)(v)=0.
+\]
+This map has degree minus three,and its Hom differential on \(v\)
+is \(-(-1)^{-3}H_0(f)(-u)=1\),as required. This is the leading
+cut calculation,with trivial endpoint actions. With nontrivial source and target actions,the full finite perturbation
+in Theorem C.61.1.1 retains their additional terms;the leading
+cut contraction alone need not contract the entire mapping differential.
+
+![The actual two-arrow bar unit,its acyclic quotient and the signed mapping primitive retain the full face and transformation data](assets/bar-unit-full-mapping.png)
+
+Theorems C.61.1.1–C.61.4.1 prove full mapping restriction,exact-edge recording,the fixed native square and relative full-face restriction. Exercises C.61.5.1–C.61.5.2 compute the actual index unit quotient and its signed Hom primitive. Editable SVG source.
+
+### C.62. Relative coherent lifts with the original family fixed
+
+A supplied entire common-bar path lifts while retaining the original
+native first family and its already assigned faces. The relevant
+mapping kernel is an explicit identity cone;its contraction does not
+require the original restriction kernel to be acyclic. The generator
+construction retains every higher path component and both exact common
+images. Constructing the compatible common path with all native product
+conditions remains the input required for this lifting step.
+
+#### C.62.1. A path-recording projection with an elementary cone kernel
+
+Let \(P:\mathcal D\to\mathcal E\) be a unital dg functor
+surjective on its graded Hom spaces. No acyclicity of its mapping
+kernels is required in this lemma. Retain chosen object labels in
+\(\mathcal D\). Define \(\mathcal Q(P)\) on those labels:
+a degree-\(r\) morphism is a triple
+\[
+ \begin{aligned}
+ f&:X\to Y\quad\text{in }\mathcal D,\\
+ g&:PX\to PY\quad\text{in }\mathcal E,\\
+ a&:PX\to PY\quad\text{in }\mathcal E,\quad |a|=r-1.
+ \end{aligned}
+\]
+Use differential and composition
+\[
+ \begin{aligned}
+ D(f,g,a)&=(\partial f,\partial g,\\
+         &\qquad-\partial a+Pf-g),\\
+ (f_2,g_2,a_2)&(f_1,g_1,a_1)\\
+  &=(f_2f_1,g_2g_1,\\
+  &\qquad a_2Pf_1+(-1)^{|f_2|}g_2a_1).
+ \end{aligned}
+\]
+These are exactly the path-category formulas after restricting its
+first projection along \(P\). The object path in \(\mathcal E\)
+is the identity of \(PX\). Let \(\operatorname{Path}_1(\mathcal D)\)
+be the analogous identity-object-path category over \(\mathcal D\).
+
+**Lemma C.62.1.1 (keep the native first projection).** The map
+\[
+ \begin{aligned}
+ S&:\operatorname{Path}_1(\mathcal D)\to\mathcal Q(P),\\
+ S(f,g,a)&=(f,Pg,Pa)
+ \end{aligned}
+\]
+is a unital dg functor,graded-surjective and a quasi-isomorphism
+on every Hom complex. It fixes the first projection exactly.
+Its mapping kernel has the normalized contraction
+\[
+ k(0,g,a)=(0,-a,0).
+\]
+The same result holds in relative Hom spaces vanishing on assigned
+full faces whenever \(P\) is graded-surjective there.
+
+**Proof.** C.50.3's signed path identities give the dg category
+\(\mathcal Q(P)\),since \(P\) preserves the differential,
+composition and identities. Substitution in those same formulas
+shows that \(S\) is a dg functor. For a prescribed triple in
+\(\mathcal Q(P)\),keep its actual \(f\) and lift \(g,a\)
+graded-linearly through \(P\). This proves graded surjectivity.
+
+An element of the kernel has \(f=0\) and \(Pg=Pa=0\).
+On the remaining pair its differential is
+\(d_K(g,a)=(\partial g,-\partial a-g)\). It stays in the
+kernel because \(P\) is a chain map. With \(k(g,a)=(-a,0)\),
+\[
+ \begin{aligned}
+ d_Kk(g,a)&=(-\partial a,a),\\
+ kd_K(g,a)&=(\partial a+g,0).
+ \end{aligned}
+\]
+Their sum is \((g,a)\),and \(k^2=0\). Thus the mapping
+kernel is contractible even if \(\ker P\) has cohomology:
+it is the shifted cone of its identity. Surjectivity and this
+contraction prove the mapping quasi-isomorphism.
+
+All formulas preserve the first projection. They also preserve
+vanishing on each assigned face,as \(k\) merely moves \(-a\)
+to the second component. Relative graded lifts exist by the
+assumed relative surjectivity of \(P\). This proves the relative
+claim without asserting acyclicity of an arbitrary relative
+native transformation space. \(\square\)
+
+#### C.62.2. Lift a whole common path relative to its already assigned faces
+
+Let \(I\) be a finite directed parameter category. Let
+\(F:\Omega B(kI)\to\mathcal D\) be the actual whole native
+family,with all its original higher components. Suppose
+\(H:\Omega B(kI)\to\mathcal Q(P)\) is a supplied entire
+path recording whose first projection is exactly \(F\).
+Write its other components as \(G,A\);thus \(G\) is the
+desired entire common family and \(A\) records the full path
+from \(PF\) to \(G\). Its object paths are identities.
+Let a compatible lift to \(\operatorname{Path}_1(\mathcal D)\)
+already be assigned on a differential-stable union of original
+free generators,such as a union of full parameter faces.
+
+**Theorem C.62.2.1 (relative coherent native path lift).** The given lift
+extends to a whole unital dg functor
+\(\widetilde H:\Omega B(kI)\to\operatorname{Path}_1(\mathcal D)\)
+with \(S\widetilde H=H\). Its first projection is exactly the
+actual native \(F\). Its second projection \(\widetilde G\)
+and path component \(\widetilde A\) have exact prescribed images
+\(P\widetilde G=G,P\widetilde A=A\). All earlier face values
+are unchanged,and every higher generator is retained. This is a
+finite original-word construction.
+
+**Proof.** Keep the assigned values. Map a coefficient identity
+to the true identity triple. For the next original free generator
+\(x\),choose a graded lift \(v\) of \(H(x)\) under \(S\),
+keeping its first component exactly \(F(x)\). Its differential
+uses only shorter original generators or their products,already
+assigned. Put
+\[
+ o=Dv-\widetilde H(dx),\qquad
+ \widetilde H(x)=v-k o.
+\]
+The defect has image zero under \(S\),because the whole given
+\(H\) is a dg functor. Its first component is zero separately,
+because \(F\) is a dg functor and its earlier values are exact.
+Applying \(D\) to the defect gives zero:the chain equation has
+already been proved on all shorter terms of \(dx\),and
+\(d^2x=0\). Lemma C.62.1.1 therefore gives \(Dko=o\). The corrected
+value satisfies its chain equation,retains the exact image under
+\(S\),and keeps the first component fixed. Extend freely to
+products;the graded Leibniz identity proves their equations too.
+
+Induct on the original string length. The finite directed height
+bounds every strict-arrow string,so every generator receives its
+value after finitely many steps. If original arrows with the same
+endpoints are parallel,their distinct labels are never identified.
+The assigned differential-stable union is retained because only
+unassigned generators are corrected. For full parameter faces,
+merging removes vertices and splitting uses subsets,so that
+stability is exactly the one proved in C.53.5.1/C.54.4.1.
+
+The first and second projections of \(\widetilde H\) are
+dg functors by the signed path identities. Its object paths are
+identities,so it is an actual resolved equivalence from the original
+native family to \(\widetilde G\),with every higher path
+component included. The equality \(S\widetilde H=H\) holds
+on generators and therefore on all their free products. It gives
+the exact two prescribed common images.
+
+For additional internal full-face or full-corner constraints,apply
+the relative version of Lemma C.62.1.1 on each mapping block. C.61.4.1
+provides that graded surjectivity for the actual bar-unit restriction.
+The cone contraction preserves those relative subspaces regardless
+of their own cohomology. Thus compatible earlier values can also be
+retained along increasing finite corners. This is a lifting result
+for the **given compatible entire common path**. It does not infer
+that common path from unrelated absolute edge primitives.
+\(\square\)
+
+If a fixed chain-linear section \(J\) of \(P\) is available,
+the generator recipe can be especially explicit. Choose
+\(v=(F(x),JG(x),JA(x))\). Only its second component changes
+under the correction,because \(k o=(0,-o_a,0)\). On a
+one-arrow generator it gives
+\[
+ \begin{aligned}
+ \widetilde G(\alpha)&=F(\alpha)\\
+ &\quad+J\bigl(G(\alpha)-PF(\alpha)\bigr),\\
+ \widetilde A(\alpha)&=JA(\alpha).
+ \end{aligned}
+\]
+On higher generators it includes the defect of \(J\) with
+respect to all previously assigned products. A chain-linear
+section need not preserve multiplication,and those higher
+correction terms must not be dropped.
+
+#### C.62.3. Consequence and remaining common-path obligation
+
+For the actual restriction of C61,the theorem lifts a compatible
+common-bar normalization together with its entire comparison path
+to native normalized bar modules,retaining the original native
+first family and already assigned full faces. The new kernel is
+an identity cone,so this upward lift creates no additional
+relative null-homotopy obstruction. The possible obstruction
+identified in C.61.4.1 concerns the earlier construction of a
+compatible common-bar path with all desired product conditions.
+It has not been erased by this theorem. Its actual relative class
+must still be supplied on the whole native overlap domain.
+
+After that common path is constructed,the present theorem retains
+its whole parameter coherence,not just a set of lifted edges.
+The separate simultaneous whole-path-sector construction and
+every external several-transition/grafting covariance mark on
+the exact C47 domain remain required before the full marked point
+and rational strong monoidal descent.
+
+
+#### C.62.4. Two solved coherent-lift examples
+
+**Exercise C.62.4.1 (a nonacyclic restriction kernel; intermediate).**
+Take \(P:k[\epsilon]/\epsilon^2\to k\),concentrated in degree
+zero. Compute the kernel of the path-recording map \(S\) of
+Lemma C.62.1.1 and its contraction. Explain why the quasi-isomorphism
+assertion for \(S\) does not assert that \(P\) is one.
+
+**Solution.** The kernel of \(P\) is \(k\epsilon\) in degree
+zero,with nonzero cohomology. The kernel of \(S\) instead has
+\((\epsilon,0)\) in degree zero and \((0,\epsilon)\) in
+degree one. Its differential sends the former to
+\((0,-\epsilon)\) and the latter to zero. The contraction sends
+\((0,\epsilon)\) to \((-\epsilon,0)\) and the other basis
+vector to zero. Directly \(d_Kk+kd_K=1,k^2=0\) on both vectors.
+Thus \(\ker S\) is the contractible identity cone of the
+nonacyclic \(\ker P\). The two maps have different kernels;
+\(S\)'s mapping quasi-isomorphism uses exactly this cone.
+
+**Exercise C.62.4.2 (the missing triangle term; advanced).**
+Let \(Q=ke\oplus kf\oplus ky\),with \(|e|=|y|=0,|f|=-1\)
+and \(df=y\). Put \(V=Q\oplus(kg\xrightarrow{d}kz)\),
+with \(dg=z,|g|=-1,|z|=0\). Let \(\mathcal D\) be the
+dg endomorphisms preserving the second summand,and let \(P\)
+project to \(\mathcal E=\operatorname{End}(Q)\). A unital
+chain-linear section is
+\(J(a)=\operatorname{diag}(a,a_{ee}1_{kg\oplus kz})\).
+Define \(K(e)=f,N(f)=g,N(y)=z\),zero elsewhere,and put
+\(L=\partial K\),so \(L(e)=y\). On \(0<1<2\),take
+the original native edges \(F_{ij}=1+(j-i)N\). On the common
+side change only the edge01 to \(1+L\),with path component
+\(-K\);leave the other two edges equal to one. Compute the
+lifted higher triangle value. Show why \(JK\) alone fails.
+
+**Solution.** The functional \(a\mapsto a_{ee}\) annihilates
+the Hom differential because \(d_Q\) has zero row and column
+at \(e\). Thus \(J\) is a chain-linear section and sends
+the identity to the identity. It need not preserve multiplication.
+The map \(N\) is closed and \(N^2=0\),so
+\(F_{12}F_{01}=F_{02}\). The original higher triangle is zero.
+
+The common triangle comparison is \(K\),since its differential
+is \(L=(1)(1+L)-1\). Its higher path component is zero. The
+native edge values given by Theorem C.62.2.1 are
+\[
+ \begin{aligned}
+ \widetilde G_{01}&=1+N+JL,\\
+ \widetilde G_{12}&=1+N,\\
+ \widetilde G_{02}&=1+2N,
+ \end{aligned}
+\]
+with path components \(-JK,0,0\),respectively. Their triangle
+defect in the comparison component is
+\[
+ \widetilde G_{12}\widetilde G_{01}-\widetilde G_{02}
+      =JL+NJL.
+\]
+The differential of the candidate \(JK\) is only \(JL\).
+The missing term is \(NJL:e\mapsto z\ne0\). The actual
+kernel correction is \(NJK:e\mapsto g\),so the lifted
+triangle is
+\[
+ \widetilde G_{012}=JK+NJK.
+\]
+Indeed \(\partial(NJK)=NJL\),since \(N\) is closed of
+degree zero. The third component of the native path product
+on the triangle boundary is \(-(1+N)JK\),which is exactly
+\(-\widetilde G_{012}\);its higher path component remains
+zero. Thus the full path equation holds as well as its comparison
+equation. Finally \(P(NJK)=0\),so its common image is still
+exactly \(K\),and its first projection is the original zero
+higher component. Omitting the correction preserves that common
+image but breaks the native chain equation. This finite dg algebra
+example illustrates the full lifting formula;it is not an IC mapping
+space identification.
+
+![The explicit path-recording cone retains the original native first family;the triangle needs a nonzero kernel correction even though its common image is already correct](assets/relative-coherent-native-lifts.png)
+
+Lemma C.62.1.1 contracts the mixed path-recording kernel. Theorem C.62.2.1 lifts the supplied entire common path while keeping assigned native faces. Exercises C.62.4.1–C.62.4.2 calculate the cone and the essential higher triangle correction. Editable SVG source.
+
 ## 11. Scope and free reading
 
 Sections 2–7 establish the unit self-Ext formula,the invariant-polynomial classifying-space ring,the torus tensor model over characteristic-zero fields,the Koszul endomorphism and generated-category calculations,and the distinction between compact and bounded objects. The examples and exercises retain the specified shifts,coefficient fields and support conditions.
 
 Appendix A develops stabilizer cohomology,equivariant Ext purity,minimal-model transfer,Frobenius formality and spherical generator envelopes. Appendix B treats the polynomial Kostant slice,the universal centralizer,equivariant coherent restriction and composition on free dual polynomial generators. Appendix C.1–C.29 develops the geometric generator mapping comparison,finite-jet and constant-group comparisons,the graded tensor cohomology functor,determinant and primitive cup operators,geometric Kostant modules,and the arithmetic enhanced symmetric monoidal finite-envelope equivalence. Its Betti and trait comparisons retain the full action nerves,trace normalizations and ordered convolution data.
 
-Appendix C.30–C.59 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts.
+Appendix C.30–C.62 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator.
 
 A full strong monoidal descent to arbitrary characteristic-zero coefficients additionally requires compatible native choices over all overlaps and finite corners,product normalization of the global comparison,and every higher product and grafting covariance equation on its complete domain. The quantum/loop-rotation,renormalized,singular-support and Ran/factorization equivalences of Section 8 require arguments beyond the results established here.
 

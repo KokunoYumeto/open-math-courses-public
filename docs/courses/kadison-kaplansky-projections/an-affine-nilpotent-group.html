@@ -1,0 +1,204 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>An affine nilpotent group</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A torsion-free counterexample to the Kadison–Kaplansky conjecture)</a><a href="a-word-detector-in-unitriangular-matrices.html">Previous lesson</a><a href="schwartz-idempotents-and-lattice-projections.html">Next lesson</a><a href="src/an-affine-nilpotent-group.md">Editable source</a></nav><main><article><h1 id="an-affine-nilpotent-group">An affine nilpotent group</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The voltages of the cover lie in a torsion-free nilpotent group <span class="math" data-tex="\(F\)">\(F\)</span> built from an affine group <span class="math" data-tex="\(E\)">\(E\)</span>: the semidirect product of the affine functions on the strictly upper triangular matrices by the unitriangular group acting through <span class="math" data-tex="\(x\mapsto b(1+x)-1\)">\(x\mapsto b(1+x)-1\)</span>. The constants form the center of <span class="math" data-tex="\(E\)">\(E\)</span>, and the quotient <span class="math" data-tex="\(\bar E\)">\(\bar E\)</span> carries a real-valued cocycle. Fourier transformation in the central coordinate decomposes the regular representation of <span class="math" data-tex="\(F\)">\(F\)</span> into a field of <em>twisted</em> representations of <span class="math" data-tex="\(\bar E_{\mathbb Z}\times\bar E_{\mathbb Z}\)">\(\bar E_{\mathbb Z}\times\bar E_{\mathbb Z}\)</span>, indexed by a point <span class="math" data-tex="\(t\)">\(t\)</span> of the circle. The later lessons build projections of small trace in these fibers. This lesson sets up the group, its grading and Haar measure, the deck group, and the fiber decomposition [OpenAI-KK, Sections 8.2 and 8.3].</p>
+<ul>
+<li>The affine group and its cocycle (Section 1).</li>
+<li>Grading, Haar measure and integer points (Section 2).</li>
+<li>The deck group (Section 3).</li>
+<li>Fields over the circle (Section 4).</li>
+<li>Twisted representations in the fibers (Section 5).</li>
+</ul>
+<p>We write <span class="math" data-tex="\(\mathbf e(v)=e^{2\pi iv}\)">\(\mathbf e(v)=e^{2\pi iv}\)</span>. All discrete Hilbert spaces carry counting measure, and traces over auxiliary matrix indices are ordinary sums, not normalized.</p>
+<h2 id="1-the-affine-group-and-its-cocycle">1. The affine group and its cocycle</h2>
+<p>Let <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> be the space of strictly upper triangular real <span class="math" data-tex="\(m\times m\)">\(m\times m\)</span> matrices, of dimension <span class="math" data-tex="\(n_{\mathrm f}=m(m-1)/2\)">\(n_{\mathrm f}=m(m-1)/2\)</span>, and <span class="math" data-tex="\(U=1+\mathfrak n\)">\(U=1+\mathfrak n\)</span> the unitriangular group, with <span class="math" data-tex="\(m\)">\(m\)</span> fixed in the previous lesson. For <span class="math" data-tex="\(b\in U\)">\(b\in U\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_b(x)=b(1+x)-1,\quad L_b(x)=bx\\
+(x\in\mathfrak n) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+A_b(x)=b(1+x)-1,\quad L_b(x)=bx\\
+(x\in\mathfrak n) .
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(A_bA_{b&#x27;}=A_{bb&#x27;}\)">\(A_bA_{b&#x27;}=A_{bb&#x27;}\)</span>, an affine action of <span class="math" data-tex="\(U\)">\(U\)</span> on <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>. An affine function on <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> is <span class="math" data-tex="\(x\mapsto z+\lambda(x)\)">\(x\mapsto z+\lambda(x)\)</span> with <span class="math" data-tex="\(z\in\mathbb R\)">\(z\in\mathbb R\)</span> and <span class="math" data-tex="\(\lambda\in\mathfrak n^*\)">\(\lambda\in\mathfrak n^*\)</span>. Let <span class="math" data-tex="\(E\)">\(E\)</span> be the semidirect product of the additive group of affine functions by <span class="math" data-tex="\(U\)">\(U\)</span>, acting by <span class="math" data-tex="\(f\mapsto f\circ A_{b^{-1}}\)">\(f\mapsto f\circ A_{b^{-1}}\)</span>. In the coordinates <span class="math" data-tex="\((\lambda,b,z)\)">\((\lambda,b,z)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(\lambda,b,z)(\mu,b&#x27;,w)\\
+&amp;\quad=\bigl(\lambda+\mu\circ L_{b^{-1}},\,bb&#x27;,\\
+&amp;\qquad z+w+\mu(b^{-1}-1)\bigr),\\
+&amp;(\lambda,b,z)^{-1}\\
+&amp;\quad=\bigl(-\lambda\circ L_b,\,b^{-1},\\
+&amp;\qquad-z-\lambda(b-1)\bigr),
+\end{aligned}\tag{1.1}
+\]">\[
+\begin{aligned}
+&amp;(\lambda,b,z)(\mu,b&#x27;,w)\\
+&amp;\quad=\bigl(\lambda+\mu\circ L_{b^{-1}},\,bb&#x27;,\\
+&amp;\qquad z+w+\mu(b^{-1}-1)\bigr),\\
+&amp;(\lambda,b,z)^{-1}\\
+&amp;\quad=\bigl(-\lambda\circ L_b,\,b^{-1},\\
+&amp;\qquad-z-\lambda(b-1)\bigr),
+\end{aligned}\tag{1.1}
+\]</span>
+because <span class="math" data-tex="\((w+\mu)(A_{b^{-1}}x)\)">\((w+\mu)(A_{b^{-1}}x)\)</span> is <span class="math" data-tex="\(w+\mu(b^{-1}-1)+\mu(b^{-1}x)\)">\(w+\mu(b^{-1}-1)+\mu(b^{-1}x)\)</span>. The constants <span class="math" data-tex="\((0,1,z)\)">\((0,1,z)\)</span> are central. The quotient <span class="math" data-tex="\(\bar E\)">\(\bar E\)</span> by the constants has coordinates <span class="math" data-tex="\(\gamma=(\lambda,b)\)">\(\gamma=(\lambda,b)\)</span> and a section <span class="math" data-tex="\(\sigma(\gamma)=(\lambda,b,0)\)">\(\sigma(\gamma)=(\lambda,b,0)\)</span>. For <span class="math" data-tex="\(\eta=(\mu,b&#x27;)\)">\(\eta=(\mu,b&#x27;)\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\gamma\eta=(\lambda+\mu\circ L_{b^{-1}},bb&#x27;),\\
+c(\gamma,\eta)=\mu(b^{-1}-1) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\gamma\eta=(\lambda+\mu\circ L_{b^{-1}},bb&#x27;),\\
+c(\gamma,\eta)=\mu(b^{-1}-1) .
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(\sigma(\gamma)\sigma(\eta)=(0,1,c(\gamma,\eta))\,\sigma(\gamma\eta)\)">\(\sigma(\gamma)\sigma(\eta)=(0,1,c(\gamma,\eta))\,\sigma(\gamma\eta)\)</span>, and associativity gives the cocycle identity
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c(\gamma,\eta)+c(\gamma\eta,\zeta)\\
+=c(\eta,\zeta)+c(\gamma,\eta\zeta) .
+\end{gathered}\tag{1.2}
+\]">\[
+\begin{gathered}
+c(\gamma,\eta)+c(\gamma\eta,\zeta)\\
+=c(\eta,\zeta)+c(\gamma,\eta\zeta) .
+\end{gathered}\tag{1.2}
+\]</span>
+The cocycle vanishes when either argument is the identity, and <span class="math" data-tex="\(c(\gamma,\gamma^{-1})=c(\gamma^{-1},\gamma)=\lambda(b-1)\)">\(c(\gamma,\gamma^{-1})=c(\gamma^{-1},\gamma)=\lambda(b-1)\)</span>.</p>
+<h2 id="2-grading-haar-measure-and-integer-points">2. Grading, Haar measure and integer points</h2>
+<p><strong>Lemma 2.1</strong> (grading, Haar measure, integer points; [OpenAI-KK, Lemma 8.3]). The group laws (1.1) are polynomials with integer coefficients in the coordinates <span class="math" data-tex="\((\lambda,b-1,z)\)">\((\lambda,b-1,z)\)</span>. Give the coordinates the weights
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{wt}(b-1)_{ij}=j-i,\\
+\operatorname{wt}\lambda_{ij}=m-(j-i),\qquad\operatorname{wt}z=m .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{wt}(b-1)_{ij}=j-i,\\
+\operatorname{wt}\lambda_{ij}=m-(j-i),\qquad\operatorname{wt}z=m .
+\end{gathered}
+\]</span></p>
+<ol>
+<li>For <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, multiplying each coordinate of weight <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(y^a\)">\(y^a\)</span> is an automorphism <span class="math" data-tex="\(\Delta_y\)">\(\Delta_y\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span> and of <span class="math" data-tex="\(\bar E\)">\(\bar E\)</span>, and <span class="math" data-tex="\(c(\Delta_y\gamma,\Delta_y\eta)=y^mc(\gamma,\eta)\)">\(c(\Delta_y\gamma,\Delta_y\eta)=y^mc(\gamma,\eta)\)</span>.</li>
+<li>Lebesgue measure in these coordinates is a left and right Haar measure on <span class="math" data-tex="\(E\)">\(E\)</span> and on <span class="math" data-tex="\(\bar E\)">\(\bar E\)</span>, preserved by inversion; the Jacobian of <span class="math" data-tex="\(\Delta_y\)">\(\Delta_y\)</span> on <span class="math" data-tex="\(\bar E\)">\(\bar E\)</span> is <span class="math" data-tex="\(y^{mn_{\mathrm f}}\)">\(y^{mn_{\mathrm f}}\)</span>.</li>
+<li>The points with integer coordinates form subgroups <span class="math" data-tex="\(E_{\mathbb Z}\)">\(E_{\mathbb Z}\)</span> and <span class="math" data-tex="\(\bar E_{\mathbb Z}\)">\(\bar E_{\mathbb Z}\)</span>, which are countable, nilpotent and torsion-free.</li>
+</ol>
+<p><em>Proof.</em> The inverse <span class="math" data-tex="\(b^{-1}=\sum_{h=0}^{m-1}(1-b)^h\)">\(b^{-1}=\sum_{h=0}^{m-1}(1-b)^h\)</span> is an integer polynomial in <span class="math" data-tex="\(b-1\)">\(b-1\)</span>, which gives the first statement.</p>
+<p>(1) Let <span class="math" data-tex="\(\delta_y(b)=T^{-1}bT\)">\(\delta_y(b)=T^{-1}bT\)</span> with <span class="math" data-tex="\(T=\operatorname{diag}(y,y^2,\ldots,y^m)\)">\(T=\operatorname{diag}(y,y^2,\ldots,y^m)\)</span>, so that <span class="math" data-tex="\(\delta_y\)">\(\delta_y\)</span> multiplies the entry <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> by <span class="math" data-tex="\(y^{j-i}\)">\(y^{j-i}\)</span>; it is an automorphism of <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(\delta_y(A_b(x))=A_{\delta_yb}(\delta_yx)\)">\(\delta_y(A_b(x))=A_{\delta_yb}(\delta_yx)\)</span>. On affine functions put <span class="math" data-tex="\(f\mapsto y^mf\circ\delta_{y^{-1}}\)">\(f\mapsto y^mf\circ\delta_{y^{-1}}\)</span>: it multiplies <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(y^m\)">\(y^m\)</span> and <span class="math" data-tex="\(\lambda_{ij}\)">\(\lambda_{ij}\)</span> by <span class="math" data-tex="\(y^{m-(j-i)}\)">\(y^{m-(j-i)}\)</span>. These two maps intertwine the action, so together they are the automorphism <span class="math" data-tex="\(\Delta_y\)">\(\Delta_y\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>; it preserves the center and acts on the central coordinate by <span class="math" data-tex="\(y^m\)">\(y^m\)</span>, which gives the homogeneity of <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>(2) Order the entries of <span class="math" data-tex="\(b-1\)">\(b-1\)</span> by their distance from the diagonal. Left and right multiplications on <span class="math" data-tex="\(U\)">\(U\)</span> are then triangular coordinate changes with ones on the diagonal, of determinant one, and so is <span class="math" data-tex="\(L_b\)">\(L_b\)</span> on <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>, which acts on each column by a unitriangular block of <span class="math" data-tex="\(b\)">\(b\)</span>. For a fixed left factor in (1.1), the coordinates <span class="math" data-tex="\(\mu\)">\(\mu\)</span> change by the transpose of <span class="math" data-tex="\(L_{b^{-1}}\)">\(L_{b^{-1}}\)</span>, <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> by a left multiplication and <span class="math" data-tex="\(w\)">\(w\)</span> by a translation; for a fixed right factor, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span> are translated by functions of <span class="math" data-tex="\(b\)">\(b\)</span>, and <span class="math" data-tex="\(b\)">\(b\)</span> is multiplied on the right. In both cases the Jacobian is one, also after omitting <span class="math" data-tex="\(z\)">\(z\)</span>. Inversion exchanges two Haar measures normalized in the same way, so it preserves Lebesgue measure. The pairs <span class="math" data-tex="\((\lambda_{ij},(b-1)_{ij})\)">\((\lambda_{ij},(b-1)_{ij})\)</span> have total weight <span class="math" data-tex="\(m\)">\(m\)</span>, and there are <span class="math" data-tex="\(n_{\mathrm f}\)">\(n_{\mathrm f}\)</span> of them.</p>
+<p>(3) Integer coefficients make the integer points a subgroup. By (1), every monomial of the product in a coordinate of weight <span class="math" data-tex="\(a\)">\(a\)</span>, other than the sum of the two coordinates themselves, is homogeneous of weight <span class="math" data-tex="\(a\)">\(a\)</span> and involves coordinates of both factors, so each of its coordinates has weight less than <span class="math" data-tex="\(a\)">\(a\)</span>. Hence the elements whose coordinates of weight less than <span class="math" data-tex="\(a\)">\(a\)</span> vanish form normal subgroups <span class="math" data-tex="\(E_{\ge a}\)">\(E_{\ge a}\)</span>, with <span class="math" data-tex="\([E,E_{\ge a}]\subseteq E_{\ge a+1}\)">\([E,E_{\ge a}]\subseteq E_{\ge a+1}\)</span>, and <span class="math" data-tex="\(E\)">\(E\)</span> is nilpotent because all weights are at most <span class="math" data-tex="\(m\)">\(m\)</span>. If an element has first nonzero weight <span class="math" data-tex="\(a\)">\(a\)</span>, its <span class="math" data-tex="\(k\)">\(k\)</span>-th power, <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, has weight-<span class="math" data-tex="\(a\)">\(a\)</span> coordinates <span class="math" data-tex="\(k\)">\(k\)</span> times its own, so it is not the identity. The same holds for <span class="math" data-tex="\(\bar E\)">\(\bar E\)</span> and the integer points. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-deck-group">3. The deck group</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F&amp;=(E_{\mathbb Z}\times E_{\mathbb Z})\\
+&amp;\quad\big/\bigl\{((0,1,k),(0,1,-k)):k\in\mathbb Z\bigr\} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+F&amp;=(E_{\mathbb Z}\times E_{\mathbb Z})\\
+&amp;\quad\big/\bigl\{((0,1,k),(0,1,-k)):k\in\mathbb Z\bigr\} .
+\end{aligned}
+\]</span>
+Summing the two central integers identifies <span class="math" data-tex="\(F\)">\(F\)</span> with the set of triples <span class="math" data-tex="\((\gamma_X,\gamma_Y,z)\in\bar E_{\mathbb Z}\times\bar E_{\mathbb Z}\times\mathbb Z\)">\((\gamma_X,\gamma_Y,z)\in\bar E_{\mathbb Z}\times\bar E_{\mathbb Z}\times\mathbb Z\)</span> with the law
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(\gamma_X,\gamma_Y,z)(\eta_X,\eta_Y,w)\\
+&amp;\quad=\bigl(\gamma_X\eta_X,\gamma_Y\eta_Y,\\
+&amp;\qquad z+w+c(\gamma_X,\eta_X)+c(\gamma_Y,\eta_Y)\bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(\gamma_X,\gamma_Y,z)(\eta_X,\eta_Y,w)\\
+&amp;\quad=\bigl(\gamma_X\eta_X,\gamma_Y\eta_Y,\\
+&amp;\qquad z+w+c(\gamma_X,\eta_X)+c(\gamma_Y,\eta_Y)\bigr) .
+\end{aligned}
+\]</span>
+The two factors are called <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>; they are names, unrelated to the graphs. The grading of Lemma 2.1, with weight <span class="math" data-tex="\(m\)">\(m\)</span> for <span class="math" data-tex="\(z\)">\(z\)</span>, shows as there that <span class="math" data-tex="\(F\)">\(F\)</span> is countable, nilpotent and torsion-free. The projection to the unitriangular coordinate <span class="math" data-tex="\(b\)">\(b\)</span> of either factor is a surjective homomorphism onto <span class="math" data-tex="\(U_{\mathbb Z}\)">\(U_{\mathbb Z}\)</span>. Write <span class="math" data-tex="\(z_0\)">\(z_0\)</span> for the central element <span class="math" data-tex="\((1,1,1)\)">\((1,1,1)\)</span>, with the identity of <span class="math" data-tex="\(\bar E_{\mathbb Z}\)">\(\bar E_{\mathbb Z}\)</span> in the first two places, and <span class="math" data-tex="\(\sigma_X,\sigma_Y\)">\(\sigma_X,\sigma_Y\)</span> for the two sections <span class="math" data-tex="\(\bar E_{\mathbb Z}\to F\)">\(\bar E_{\mathbb Z}\to F\)</span>.</p>
+<h2 id="4-fields-over-the-circle">4. Fields over the circle</h2>
+<p>Let <span class="math" data-tex="\(\mathbb T=\mathbb R/\mathbb Z\)">\(\mathbb T=\mathbb R/\mathbb Z\)</span> with Lebesgue probability measure and <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> a separable Hilbert space. A <em>bounded measurable field</em> is a map <span class="math" data-tex="\(t\mapsto B(t)\)">\(t\mapsto B(t)\)</span> into the bounded operators on <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, with <span class="math" data-tex="\(t\mapsto\langle B(t)\xi,\zeta\rangle\)">\(t\mapsto\langle B(t)\xi,\zeta\rangle\)</span> measurable for all <span class="math" data-tex="\(\xi,\zeta\)">\(\xi,\zeta\)</span> and <span class="math" data-tex="\(\sup_t\|B(t)\|&lt;\infty\)">\(\sup_t\|B(t)\|&lt;\infty\)</span>. It acts on <span class="math" data-tex="\(L^2(\mathbb T;\mathcal K)\)">\(L^2(\mathbb T;\mathcal K)\)</span> by <span class="math" data-tex="\((B\Xi)(t)=B(t)\Xi(t)\)">\((B\Xi)(t)=B(t)\Xi(t)\)</span>.</p>
+<p><strong>Lemma 4.1</strong> (fields). The operator norm of <span class="math" data-tex="\(B\)">\(B\)</span> is the essential supremum of <span class="math" data-tex="\(\|B(t)\|\)">\(\|B(t)\|\)</span>. Products and adjoints are computed pointwise. If every <span class="math" data-tex="\(B(t)\)">\(B(t)\)</span> is self-adjoint and <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is continuous on an interval containing all their spectra, then <span class="math" data-tex="\(\phi(B)\)">\(\phi(B)\)</span> is the field <span class="math" data-tex="\(t\mapsto\phi(B(t))\)">\(t\mapsto\phi(B(t))\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\|B\Xi\|^2=\int\|B(t)\Xi(t)\|^2dt\)">\(\|B\Xi\|^2=\int\|B(t)\Xi(t)\|^2dt\)</span> gives <span class="math" data-tex="\(\|B\|\le\operatorname{ess\,sup}\|B(t)\|\)">\(\|B\|\le\operatorname{ess\,sup}\|B(t)\|\)</span>. Conversely, if <span class="math" data-tex="\(\|B(t)\|&gt;c\)">\(\|B(t)\|&gt;c\)</span> on a set of positive measure, then for a countable dense set of unit vectors <span class="math" data-tex="\(\xi_k\)">\(\xi_k\)</span>, some <span class="math" data-tex="\(\{t:\|B(t)\xi_k\|&gt;c\}\)">\(\{t:\|B(t)\xi_k\|&gt;c\}\)</span> has positive measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span>; the field equal to <span class="math" data-tex="\(\xi_k\)">\(\xi_k\)</span> on that set, with norm <span class="math" data-tex="\(\nu^{1/2}\)">\(\nu^{1/2}\)</span>, is mapped to a field of norm greater than <span class="math" data-tex="\(c\nu^{1/2}\)">\(c\nu^{1/2}\)</span>. Products and adjoints are pointwise by definition. For a polynomial <span class="math" data-tex="\(\phi\)">\(\phi\)</span> the last statement is clear; a continuous <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is a uniform limit of polynomials on the interval, and by the norm formula the corresponding fields converge in norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-twisted-representations-in-the-fibers">5. Twisted representations in the fibers</h2>
+<p>Let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be the right regular representation, <span class="math" data-tex="\((\rho(g)\xi)(f)=\xi(fg)\)">\((\rho(g)\xi)(f)=\xi(fg)\)</span>, on <span class="math" data-tex="\(\ell^2(F)\)">\(\ell^2(F)\)</span>. The unitary <span class="math" data-tex="\((\mathcal I\xi)(f)=\xi(f^{-1})\)">\((\mathcal I\xi)(f)=\xi(f^{-1})\)</span> satisfies <span class="math" data-tex="\(\mathcal I\rho(g)\mathcal I=\lambda(g)\)">\(\mathcal I\rho(g)\mathcal I=\lambda(g)\)</span>, the left regular representation, and fixes <span class="math" data-tex="\(\delta_1\)">\(\delta_1\)</span>. Write elements of <span class="math" data-tex="\(F\)">\(F\)</span> as <span class="math" data-tex="\(\sigma_X(\eta_X)\sigma_Y(\eta_Y)z_0^j\)">\(\sigma_X(\eta_X)\sigma_Y(\eta_Y)z_0^j\)</span>, that is, as <span class="math" data-tex="\((\eta_X,\eta_Y,j)\)">\((\eta_X,\eta_Y,j)\)</span>, and Fourier transform the central coordinate, <span class="math" data-tex="\(\delta_j\mapsto(t\mapsto\mathbf e(tj))\)">\(\delta_j\mapsto(t\mapsto\mathbf e(tj))\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ell^2(F)\\
+&amp;\cong L^2\bigl(\mathbb T;\\
+&amp;\qquad\ell^2(\bar E_{\mathbb Z})\otimes\ell^2(\bar E_{\mathbb Z})\bigr) .
+\end{aligned}\tag{5.1}
+\]">\[
+\begin{aligned}
+&amp;\ell^2(F)\\
+&amp;\cong L^2\bigl(\mathbb T;\\
+&amp;\qquad\ell^2(\bar E_{\mathbb Z})\otimes\ell^2(\bar E_{\mathbb Z})\bigr) .
+\end{aligned}\tag{5.1}
+\]</span></p>
+<p><strong>Lemma 5.1</strong> (the fiber representations). Under (5.1), <span class="math" data-tex="\(\lambda(z_0)\)">\(\lambda(z_0)\)</span> acts by <span class="math" data-tex="\(\mathbf e(t)\)">\(\mathbf e(t)\)</span>, and <span class="math" data-tex="\(\lambda(\sigma_X(\gamma))\)">\(\lambda(\sigma_X(\gamma))\)</span>, <span class="math" data-tex="\(\lambda(\sigma_Y(\gamma))\)">\(\lambda(\sigma_Y(\gamma))\)</span> act in the fiber at <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(u_t(\gamma)\otimes1\)">\(u_t(\gamma)\otimes1\)</span> and <span class="math" data-tex="\(1\otimes u_t(\gamma)\)">\(1\otimes u_t(\gamma)\)</span>, where
+<span class="math math-display" data-tex="\[
+u_t(\gamma)\delta_\eta=\mathbf e\bigl(t\,c(\gamma,\eta)\bigr)\delta_{\gamma\eta} .
+\]">\[
+u_t(\gamma)\delta_\eta=\mathbf e\bigl(t\,c(\gamma,\eta)\bigr)\delta_{\gamma\eta} .
+\]</span>
+These unitaries satisfy <span class="math" data-tex="\(u_t(\gamma)u_t(\eta)=\mathbf e(t\,c(\gamma,\eta))u_t(\gamma\eta)\)">\(u_t(\gamma)u_t(\eta)=\mathbf e(t\,c(\gamma,\eta))u_t(\gamma\eta)\)</span> and <span class="math" data-tex="\(u_t(\gamma)^*=\mathbf e(-t\,c(\gamma^{-1},\gamma))u_t(\gamma^{-1})\)">\(u_t(\gamma)^*=\mathbf e(-t\,c(\gamma^{-1},\gamma))u_t(\gamma^{-1})\)</span>. The operators
+<span class="math math-display" data-tex="\[
+v_t(k)\delta_\eta=\mathbf e\bigl(t\,c(\eta,k)\bigr)\delta_{\eta k}
+\]">\[
+v_t(k)\delta_\eta=\mathbf e\bigl(t\,c(\eta,k)\bigr)\delta_{\eta k}
+\]</span>
+commute with all <span class="math" data-tex="\(u_t(\gamma)\)">\(u_t(\gamma)\)</span>, and in each factor they are the fiber images of the right translations by the section elements.</p>
+<p><em>Proof.</em> In <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(\sigma_X(\gamma)\cdot(\eta_X,\eta_Y,j)\)">\(\sigma_X(\gamma)\cdot(\eta_X,\eta_Y,j)\)</span> is <span class="math" data-tex="\((\gamma\eta_X,\eta_Y,j+c(\gamma,\eta_X))\)">\((\gamma\eta_X,\eta_Y,j+c(\gamma,\eta_X))\)</span>, so <span class="math" data-tex="\(\lambda(\sigma_X(\gamma))\delta_{(\eta_X,\eta_Y,j)}=\delta_{(\gamma\eta_X,\eta_Y,j+c(\gamma,\eta_X))}\)">\(\lambda(\sigma_X(\gamma))\delta_{(\eta_X,\eta_Y,j)}=\delta_{(\gamma\eta_X,\eta_Y,j+c(\gamma,\eta_X))}\)</span>, whose transform is <span class="math" data-tex="\(\mathbf e(tc(\gamma,\eta_X))\mathbf e(tj)\,\delta_{\gamma\eta_X}\otimes\delta_{\eta_Y}\)">\(\mathbf e(tc(\gamma,\eta_X))\mathbf e(tj)\,\delta_{\gamma\eta_X}\otimes\delta_{\eta_Y}\)</span>. The second factor is the same. The multiplier formula follows from (1.2), and the adjoint formula from it and <span class="math" data-tex="\(c(\gamma,1)=0\)">\(c(\gamma,1)=0\)</span>. The cocycle identity (1.2) with the arguments <span class="math" data-tex="\(\gamma,\eta,k\)">\(\gamma,\eta,k\)</span> gives <span class="math" data-tex="\(u_t(\gamma)v_t(k)=v_t(k)u_t(\gamma)\)">\(u_t(\gamma)v_t(k)=v_t(k)u_t(\gamma)\)</span>. Right multiplication of <span class="math" data-tex="\((\eta_X,\eta_Y,j)\)">\((\eta_X,\eta_Y,j)\)</span> by <span class="math" data-tex="\(\sigma_X(k)\)">\(\sigma_X(k)\)</span> gives <span class="math" data-tex="\((\eta_Xk,\eta_Y,j+c(\eta_X,k))\)">\((\eta_Xk,\eta_Y,j+c(\eta_X,k))\)</span>, whose transform is <span class="math" data-tex="\(v_t(k)\)">\(v_t(k)\)</span> in the first factor. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The right operators <span class="math" data-tex="\(v_t(k)\otimes v_t(k&#x27;)\)">\(v_t(k)\otimes v_t(k&#x27;)\)</span>, <span class="math" data-tex="\(k,k&#x27;\in\bar E_{\mathbb Z}\)">\(k,k&#x27;\in\bar E_{\mathbb Z}\)</span>, form a right phase action of <span class="math" data-tex="\(\bar E_{\mathbb Z}\times\bar E_{\mathbb Z}\)">\(\bar E_{\mathbb Z}\times\bar E_{\mathbb Z}\)</span> in the sense of <a href="separated-bands-and-equivariant-traces.html">Separated bands and equivariant traces</a>, Section 2. An operator of the form <span class="math" data-tex="\(u_t(\gamma)\otimes u_t(\gamma&#x27;)\)">\(u_t(\gamma)\otimes u_t(\gamma&#x27;)\)</span>, and every norm limit of linear combinations of such operators tensored with matrices, is equivariant, and Lemma 2.1 of that lesson applies to its identity trace in each fiber.</p>
+<p><strong>Lemma 5.2</strong> (traces of fields). Let <span class="math" data-tex="\(B\ge0\)">\(B\ge0\)</span> be an operator on <span class="math" data-tex="\(\ell^2(F)\otimes\mathbb C^N\)">\(\ell^2(F)\otimes\mathbb C^N\)</span> that commutes with the right translations and is decomposed by (5.1) into a bounded measurable field <span class="math" data-tex="\(B(t)\)">\(B(t)\)</span> of equivariant operators. Then
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(B)=\int_{\mathbb T}\operatorname{Tr}\bigl(B(t)\bigr)\,dt ,
+\]">\[
+\operatorname{Tr}(B)=\int_{\mathbb T}\operatorname{Tr}\bigl(B(t)\bigr)\,dt ,
+\]</span>
+where on the left the identity trace is taken at the identity of <span class="math" data-tex="\(F\)">\(F\)</span>, and on the right at the identity of <span class="math" data-tex="\(\bar E_{\mathbb Z}\times\bar E_{\mathbb Z}\)">\(\bar E_{\mathbb Z}\times\bar E_{\mathbb Z}\)</span>, both summed over the <span class="math" data-tex="\(N\)">\(N\)</span> matrix indices.</p>
+<p><em>Proof.</em> The vector <span class="math" data-tex="\(\delta_1\otimes e_j\)">\(\delta_1\otimes e_j\)</span> corresponds to the constant field <span class="math" data-tex="\(t\mapsto\delta_{(1,1)}\otimes e_j\)">\(t\mapsto\delta_{(1,1)}\otimes e_j\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle B(\delta_1\otimes e_j),\delta_1\otimes e_j\rangle\\
+&amp;\quad=\int\langle B(t)(\delta_{(1,1)}\otimes e_j),\delta_{(1,1)}\otimes e_j\rangle\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle B(\delta_1\otimes e_j),\delta_1\otimes e_j\rangle\\
+&amp;\quad=\int\langle B(t)(\delta_{(1,1)}\otimes e_j),\delta_{(1,1)}\otimes e_j\rangle\,dt .
+\end{aligned}
+\]</span>
+Sum over <span class="math" data-tex="\(j\)">\(j\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> is one-dimensional. Write the group law of <span class="math" data-tex="\(E\)">\(E\)</span> in coordinates <span class="math" data-tex="\((\lambda,b,z)\in\mathbb R^3\)">\((\lambda,b,z)\in\mathbb R^3\)</span>, and identify <span class="math" data-tex="\(E\)">\(E\)</span> with the Heisenberg group.</p>
+<p><strong>6.2</strong> (easy). Check that <span class="math" data-tex="\(c(\gamma,\eta)=\mu(b^{-1}-1)\)">\(c(\gamma,\eta)=\mu(b^{-1}-1)\)</span> satisfies the cocycle identity (1.2) for <span class="math" data-tex="\(m=2\)">\(m=2\)</span>.</p>
+<p><strong>6.3</strong> (medium). For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, compute <span class="math" data-tex="\(u_t(\gamma)\)">\(u_t(\gamma)\)</span> on <span class="math" data-tex="\(\ell^2(\bar E_{\mathbb Z})=\ell^2(\mathbb Z^2)\)">\(\ell^2(\bar E_{\mathbb Z})=\ell^2(\mathbb Z^2)\)</span> and show that the operators <span class="math" data-tex="\(u_t(1,0)\)">\(u_t(1,0)\)</span> and <span class="math" data-tex="\(u_t(0,b)\)">\(u_t(0,b)\)</span> commute up to the factor <span class="math" data-tex="\(\mathbf e(\pm t)\)">\(\mathbf e(\pm t)\)</span>: they generate a rotation algebra.</p>
+<p><strong>6.4</strong> (medium). Show that in <span class="math" data-tex="\(F\)">\(F\)</span> the element <span class="math" data-tex="\(\sigma_X(\gamma)\)">\(\sigma_X(\gamma)\)</span> has infinite order for every <span class="math" data-tex="\(\gamma\ne1\)">\(\gamma\ne1\)</span>, directly from the grading.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> With <span class="math" data-tex="\(b=1+\beta\)">\(b=1+\beta\)</span>, <span class="math" data-tex="\(b^{-1}=1-\beta\)">\(b^{-1}=1-\beta\)</span>, <span class="math" data-tex="\(L_{b^{-1}}\)">\(L_{b^{-1}}\)</span> is the identity on the one-dimensional <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> (since <span class="math" data-tex="\((1-\beta)x=x\)">\((1-\beta)x=x\)</span> for <span class="math" data-tex="\(x\)">\(x\)</span> strictly upper triangular of size two), and the product <span class="math" data-tex="\((\lambda,\beta,z)(\mu,\beta&#x27;,w)\)">\((\lambda,\beta,z)(\mu,\beta&#x27;,w)\)</span> is <span class="math" data-tex="\((\lambda+\mu,\beta+\beta&#x27;,z+w-\mu\beta)\)">\((\lambda+\mu,\beta+\beta&#x27;,z+w-\mu\beta)\)</span>, a Heisenberg group law.</p>
+<p><strong>6.2.</strong> For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, <span class="math" data-tex="\(c((\lambda,\beta),(\mu,\beta&#x27;))=-\mu\beta\)">\(c((\lambda,\beta),(\mu,\beta&#x27;))=-\mu\beta\)</span>. Both sides of (1.2) with a third element <span class="math" data-tex="\((\nu,\beta&#x27;&#x27;)\)">\((\nu,\beta&#x27;&#x27;)\)</span> equal <span class="math" data-tex="\(-\mu\beta-\nu(\beta+\beta&#x27;)\)">\(-\mu\beta-\nu(\beta+\beta&#x27;)\)</span>.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(u_t(\gamma)\delta_{(\mu,\beta&#x27;)}=\mathbf e(-t\mu\beta)\delta_{\gamma(\mu,\beta&#x27;)}\)">\(u_t(\gamma)\delta_{(\mu,\beta&#x27;)}=\mathbf e(-t\mu\beta)\delta_{\gamma(\mu,\beta&#x27;)}\)</span>. For <span class="math" data-tex="\(U_1=u_t(1,0)\)">\(U_1=u_t(1,0)\)</span> and <span class="math" data-tex="\(U_2=u_t(0,1)\)">\(U_2=u_t(0,1)\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U_1U_2&amp;=\mathbf e(t\,c((1,0),(0,1)))u_t(1,1)\\
+&amp;=u_t(1,1),\\
+U_2U_1&amp;=\mathbf e(t\,c((0,1),(1,0)))u_t(1,1)\\
+&amp;=\mathbf e(-t)u_t(1,1),
+\end{aligned}
+\]">\[
+\begin{aligned}
+U_1U_2&amp;=\mathbf e(t\,c((1,0),(0,1)))u_t(1,1)\\
+&amp;=u_t(1,1),\\
+U_2U_1&amp;=\mathbf e(t\,c((0,1),(1,0)))u_t(1,1)\\
+&amp;=\mathbf e(-t)u_t(1,1),
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(U_2U_1=\mathbf e(-t)U_1U_2\)">\(U_2U_1=\mathbf e(-t)U_1U_2\)</span>.</p>
+<p><strong>6.4.</strong> If the first nonzero coordinate of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> has weight <span class="math" data-tex="\(a\)">\(a\)</span>, then <span class="math" data-tex="\(\sigma_X(\gamma)^k\)">\(\sigma_X(\gamma)^k\)</span> has weight-<span class="math" data-tex="\(a\)">\(a\)</span> coordinates <span class="math" data-tex="\(k\)">\(k\)</span> times those of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, by the proof of Lemma 2.1(3), so <span class="math" data-tex="\(\sigma_X(\gamma)^k\ne1\)">\(\sigma_X(\gamma)^k\ne1\)</span> for <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-KK] OpenAI, <em>A torsion-free counterexample to the Kadison–Kaplansky projection conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Sections 8.2 and 8.3, Lemmas 8.3 and 8.4. https://github.com/openai/math/tree/main/preprints/A-Torsion-Free-Counterexample-to-the-Kadison-Kaplansky-Projection-Conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
