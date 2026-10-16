@@ -32,7 +32,11 @@ An *occurrence* of a nonempty word \(s\) in \(A_\Gamma\) is an interval \([u,u+|
 
 **Proof.** Fix a walk and an occurrence \([u,v)\), \(v=u+|s|\). Exactly one up step of the lift reaches the end \(v\); let \([x,v)\) be its window. A window containing \([u,v)\) has end at least \(v\), so it occurs at or after this step, and starts only increase; hence the occurrence is recorded exactly when \(x\le u\), that is, when the word \(A_\Gamma[x,v)\) created by this up step ends with \(s\). So the recorded occurrences of \(s\), modulo \(P\), correspond to the up steps of one turn whose target word ends with \(s\). Over all walks these are all up edges of the base graph with such targets, counted with multiplicity, and by (3.1) of [Forced occurrence counts](forced-occurrence-counts.md)
 \[
-\sum_{y:\,ys\in V}u(ys)=\sum_{y:\,ys\in V}\Bigl(m(ys)-\sum_cm(cys)\Bigr)=m(s),
+\begin{aligned}
+&\sum_{y:\,ys\in V}u(ys)\\
+&\quad =\sum_{y:\,ys\in V}\Bigl(m(ys)-\sum_cm(cys)\Bigr)\\
+&\quad =m(s),
+\end{aligned}
 \]
 because the sum telescopes over the length of \(y\). \(\square\)
 
@@ -42,7 +46,11 @@ Two closed walks belong to the same *group* if their texts are translates of eac
 
 Since starts increase by one at each down step, the lift of a walk passes every start \(x\) once: it arrives at start \(x\) by a down step, takes up steps, and leaves by a down step at some end \(Z(x)\), the *exit end* at \(x\). Then the windows at start \(x\) are exactly \([x,e)\) with \(Z(x-1)\le e\le Z(x)\), and
 \[
-Z(x-1)\le Z(x),\qquad Z(x-1)\ge x,\qquad Z(x+P)=Z(x)+P.\tag{3.1}
+\begin{gathered}
+Z(x-1)\le Z(x),\\
+Z(x-1)\ge x,\\
+Z(x+P)=Z(x)+P.
+\end{gathered}\tag{3.1}
 \]
 Conversely, a function \(Z\colon\mathbb Z\to\mathbb Z\) with (3.1) for some multiple \(P\) of \(p\) describes a staircase in the text \(A\) that returns to the same word after each turn; it is a closed walk of the hierarchical graph when the words \(A[x,e)\) of its windows lie in \(V\).
 

@@ -1,0 +1,234 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Positive implementation from spectral tails · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math mjx-container mjx-assistive-mml{width:1px!important;height:1px!important;padding:0!important;overflow:hidden!important}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L81.html">Previous lesson</a><a href="OA-FLOW-ND.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L86.md">Lesson source</a></nav><h1 id="OA-FLOW.POSFLOW.SETTING">Positive implementation from spectral tails</h1>
+<p>For a one-parameter automorphism action, the left supports of positive-frequency spectral subspaces form a decreasing family of central projections in the fixed-point algebra. Their high-frequency intersection detects whether the action has a positive-energy unitary implementation inside the algebra. When that intersection is zero, a left-continuous regularization of the support tails constructs a particular spectral measure and unitary group. The proof then verifies that the constructed group implements the original action by tracing how spectral elements move its tail ranges. This is Takesaki II, Theorem XI.1.10, with its choice of implementer and the compact-spectrum recovery step made explicit.</p>
+<p><em>New expression is dedicated under CC0 to the extent of rights held; inherited component terms remain in force.</em></p>
+<p><a id="positiveflow.setting"></a></p>
+<h2 id="criterion-and-spectral-tail-ranges">Criterion and spectral tail ranges</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a von Neumann algebra with a point-ultraweakly continuous action <span class="math" data-tex="\(\alpha:\mathbb R\to\operatorname{Aut}(M)\)">\(\alpha:\mathbb R\to\operatorname{Aut}(M)\)</span>. Represent <span class="math" data-tex="\(M\)">\(M\)</span> faithfully and normally on a Hilbert space <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, without a separability assumption. Use the positive Fourier convention of <a href="OA-FLOW-MX.html#equation-mx1">MX1</a>:
+<span class="math math-display" data-tex="\[
+ \mathcal Fa(p)=\int_{\mathbb R}a(t)e^{itp}\,dt,\qquad
+ \alpha_f(x)=\int_{\mathbb R}a(t)\alpha_t(x)\,dt
+ \quad(f=\mathcal Fa).
+ \tag{C1}
+\]">\[
+ \mathcal Fa(p)=\int_{\mathbb R}a(t)e^{itp}\,dt,\qquad
+ \alpha_f(x)=\int_{\mathbb R}a(t)\alpha_t(x)\,dt
+ \quad(f=\mathcal Fa).
+ \tag{C1}
+\]</span>
+The integral on <span class="math" data-tex="\(M\)">\(M\)</span> is ultraweak. <a href="OA-FLOW-AT.html#oa-flow.at.3">AT3</a> gives the norm-continuous predual orbits needed for the <a href="OA-FLOW-BS.html#bs-1">BS1–BS3 filter laws</a>. The positive-character spectrum here is the reflection of the negative-character spectrum in <a href="OA-FLOW-GL.html#gl-0">GL</a>: the two transforms of the same kernel satisfy <span class="math" data-tex="\(\mathcal Fa(p)=\widehat a(-p)\)">\(\mathcal Fa(p)=\widehat a(-p)\)</span>, so their annihilator hulls have exactly opposite frequency coordinates. Hence our <span class="math" data-tex="\(M_\alpha(E)\)">\(M_\alpha(E)\)</span> is GL's <span class="math" data-tex="\(M(-E)\)">\(M(-E)\)</span>. Reflection preserves addition and the fixed frequency zero. The product rule, adjoint reflection, closed-space test, compact cutoffs and empty-spectrum criterion all transport with this convention.</p>
+<p>Let <span class="math" data-tex="\(q(E)\)">\(q(E)\)</span> be the join of <strong>left</strong> supports of <span class="math" data-tex="\(M_\alpha(E)\)">\(M_\alpha(E)\)</span>. The <a href="OA-FLOW-FS.html#fs-2">FS2 support theorem</a>, with its spectral set reflected, puts this join in <span class="math" data-tex="\(Z(M^\alpha)\)">\(Z(M^\alpha)\)</span>. It is the projection called <span class="math" data-tex="\(p_{-E}\)">\(p_{-E}\)</span> in FS's notation; that lesson uses <span class="math" data-tex="\(q\)">\(q\)</span> for the right-support join. We use <span class="math" data-tex="\(q(E)\)">\(q(E)\)</span> for the left join consistently throughout this lesson. Put</p>
+<p><span class="math math-display" data-tex="$$Q_t=q([t,\infty))\qquad(t\in\mathbb R). \tag{U1}$$">$$Q_t=q([t,\infty))\qquad(t\in\mathbb R). \tag{U1}$$</span></p>
+<p>The family <span class="math" data-tex="\(Q_t\)">\(Q_t\)</span> is decreasing, consists of projections in <span class="math" data-tex="\(Z(M^\alpha)\)">\(Z(M^\alpha)\)</span>, and satisfies <span class="math" data-tex="\(Q_t=1\)">\(Q_t=1\)</span> for <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span> because <span class="math" data-tex="\(1\in M_\alpha(\{0\})\)">\(1\in M_\alpha(\{0\})\)</span>. By the definition of a join of left supports,</p>
+<p><span class="math math-display" data-tex="$$Q_t\mathcal H
+=\overline{\operatorname{span}}
+\{x\eta:x\in M_\alpha([t,\infty)),\ \eta\in\mathcal H\}. \tag{U2}$$">$$Q_t\mathcal H
+=\overline{\operatorname{span}}
+\{x\eta:x\in M_\alpha([t,\infty)),\ \eta\in\mathcal H\}. \tag{U2}$$</span></p>
+<p>For a family of projections, its join has range the closed span of their ranges; the range of <span class="math" data-tex="\(l(x)\)">\(l(x)\)</span> is <span class="math" data-tex="\(\overline{x\mathcal H}\)">\(\overline{x\mathcal H}\)</span>. These two facts prove (U2), including when the spectral space is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>.</p>
+<p><strong>Positive-implementation criterion.</strong> The following are equivalent:</p>
+<ol>
+<li>There is a strongly continuous unitary group <span class="math" data-tex="\(u_s\in M\)">\(u_s\in M\)</span> with <span class="math" data-tex="\(\alpha_s=\operatorname{Ad}u_s\)">\(\alpha_s=\operatorname{Ad}u_s\)</span> and nonnegative self-adjoint generator in the faithful representation.</li>
+<li><span class="math" data-tex="\(\displaystyle\bigwedge_{t\in\mathbb R}Q_t=0\)">\(\displaystyle\bigwedge_{t\in\mathbb R}Q_t=0\)</span>.</li>
+</ol>
+<p>The first condition means that <span class="math" data-tex="\(u_s=\int_{[0,\infty)}e^{is\lambda}\,dP(\lambda)\)">\(u_s=\int_{[0,\infty)}e^{is\lambda}\,dP(\lambda)\)</span> for a projection-valued measure <span class="math" data-tex="\(P\)">\(P\)</span>. The resulting generator may be unbounded; no norm continuity of <span class="math" data-tex="\(s\mapsto u_s\)">\(s\mapsto u_s\)</span> is claimed. The zero algebra has the unique zero-Hilbert-space implementation and satisfies both conditions. Below, arbitrary projection meets and their strong limits are the concrete ones proved in <a href="OA-FLOW-PC.html#oa-flow.projection.pc1">PC1</a>.</p>
+<p><span id="OA-FLOW.POSFLOW.MODELS"></span><a id="positiveflow.models"></a></p>
+<h2 id="hilbert-spectral-spaces-and-normal-inclusions">Hilbert spectral spaces and normal inclusions</h2>
+<p>Here are the representation and topology facts used in both directions. A Hilbert space <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, with inner product linear in its first variable, is the Banach dual of its conjugate Hilbert space under <span class="math" data-tex="\(\langle\xi,\eta\rangle\)">\(\langle\xi,\eta\rangle\)</span>, by <a href="OA-FLOW-CF.html#oa-flow.cf.8">CF8</a>. For a strongly continuous unitary group <span class="math" data-tex="\(U_t\)">\(U_t\)</span>, the preadjoint is induced by <span class="math" data-tex="\(U_t^*\)">\(U_t^*\)</span>, and its orbits are norm continuous. Every bounded operator between Hilbert spaces is weak-to-weak continuous because it has an adjoint. Thus these groups and all bounded operators satisfy the specified-dual hypotheses of <a href="OA-FLOW-L80.html#sum-claim">L80</a> and <a href="OA-FLOW-L81.html#transfer-claim">L81</a>, at arbitrary Hilbert dimension.</p>
+<p>Suppose <span class="math" data-tex="\(U_t=\int e^{it\lambda}\,dP(\lambda)\)">\(U_t=\int e^{it\lambda}\,dP(\lambda)\)</span>. For <span class="math" data-tex="\(a\in L^1(\mathbb R)\)">\(a\in L^1(\mathbb R)\)</span>, scalar Fubini against the finite spectral coefficient measures gives
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}a(t)U_t\,dt
+       =\int_{\mathbb R}\mathcal Fa(\lambda)\,dP(\lambda).
+ \tag{C2}
+\]">\[
+ \int_{\mathbb R}a(t)U_t\,dt
+       =\int_{\mathbb R}\mathcal Fa(\lambda)\,dP(\lambda).
+ \tag{C2}
+\]</span>
+The left integral exists strongly on each vector, with norm at most <span class="math" data-tex="\(\|a\|_1\)">\(\|a\|_1\)</span>; <a href="OA-FLOW-SF.html#oa-flow.sf.sf1">SF1–SF2</a> give the spectral calculus and unitary-group representation. The scalar interchange is justified by <span class="math" data-tex="\(\int |a(t)|\,dt\)">\(\int |a(t)|\,dt\)</span> times the finite total variation of the coefficient measure. Consequently, for every closed <span class="math" data-tex="\(E\subset\mathbb R\)">\(E\subset\mathbb R\)</span>,
+<span class="math math-display" data-tex="\[
+ \mathcal H_U(E)=P(E)\mathcal H.
+ \tag{C3}
+\]">\[
+ \mathcal H_U(E)=P(E)\mathcal H.
+ \tag{C3}
+\]</span>
+For one inclusion, a filter whose transform vanishes near <span class="math" data-tex="\(E\)">\(E\)</span> annihilates every vector in <span class="math" data-tex="\(P(E)\mathcal H\)">\(P(E)\mathcal H\)</span>. For the other, cover <span class="math" data-tex="\(\mathbb R\setminus E\)">\(\mathbb R\setminus E\)</span> by countably many compact intervals <span class="math" data-tex="\(J\)">\(J\)</span> with rational endpoints inside that open set. <a href="OA-FLOW-LF.html#lf-1">LF1</a> supplies a compactly supported Fourier-algebra plateau equal to one on each <span class="math" data-tex="\(J\)">\(J\)</span>, supported off <span class="math" data-tex="\(E\)">\(E\)</span>. The closed-space annihilator test kills its filter on <span class="math" data-tex="\(\xi\in\mathcal H_U(E)\)">\(\xi\in\mathcal H_U(E)\)</span>; multiplying (C2) by <span class="math" data-tex="\(P(J)\)">\(P(J)\)</span> gives <span class="math" data-tex="\(P(J)\xi=0\)">\(P(J)\xi=0\)</span>. Countable additivity then gives <span class="math" data-tex="\(P(\mathbb R\setminus E)\xi=0\)">\(P(\mathbb R\setminus E)\xi=0\)</span>, proving (C3). The empty set and whole line are included.</p>
+<p>If <span class="math" data-tex="\(U_t\)">\(U_t\)</span> normalizes <span class="math" data-tex="\(M\)">\(M\)</span>, the filter of <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> computed in <span class="math" data-tex="\(M\)">\(M\)</span> and the filter computed in <span class="math" data-tex="\(B(\mathcal H)\)">\(B(\mathcal H)\)</span> agree. Indeed the normal inclusion carries the ultraweak integral to the same operator: pair with each vector functional, and then with the full summable vector series of <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4–CP6</a>. Absolute integrability is bounded by <span class="math" data-tex="\(\|a\|_1\|x\|\)">\(\|a\|_1\|x\|\)</span> times the functional norm. Since the inclusion is injective, the two annihilator ideals, and therefore the two operator spectra, are identical. This justifies applying the Hilbert-space transfer theorems to an element originally described by its intrinsic <span class="math" data-tex="\(M\)">\(M\)</span>-spectrum.</p>
+<p><span id="OA-FLOW.POSFLOW.NECESSITY"></span><a id="positiveflow.necessity"></a></p>
+<h2 id="necessity-of-the-vanishing-high-frequency-tail">Necessity of the vanishing high-frequency tail</h2>
+<p>Suppose a positive-energy unitary group <span class="math" data-tex="\(u\)">\(u\)</span> implements <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and let <span class="math" data-tex="\(P\)">\(P\)</span> be its spectral measure. For <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span>, the desired comparison <span class="math" data-tex="\(Q_t\le P([t,\infty))\)">\(Q_t\le P([t,\infty))\)</span> is immediate because both sides equal <span class="math" data-tex="\(1\)">\(1\)</span>. For general <span class="math" data-tex="\(t\)">\(t\)</span>, take <span class="math" data-tex="\(x\in M_\alpha([t,\infty))\)">\(x\in M_\alpha([t,\infty))\)</span> and <span class="math" data-tex="\(\eta\in P([0,\infty))\mathcal H=\mathcal H\)">\(\eta\in P([0,\infty))\mathcal H=\mathcal H\)</span>. The spectral theorem identifies the Hilbert-vector spectral space of the unitary action <span class="math" data-tex="\(u\)">\(u\)</span> at <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> with <span class="math" data-tex="\(P([0,\infty))\mathcal H\)">\(P([0,\infty))\mathcal H\)</span>. Applying the <a href="OA-FLOW-L80.html#sum-claim">closed-set operator/vector spectral-sum theorem (T1)</a> to <span class="math" data-tex="\(x\)">\(x\)</span> as an operator on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> gives</p>
+<p><span class="math math-display" data-tex="$$x\eta\in P([t,\infty))\mathcal H. \tag{U3}$$">$$x\eta\in P([t,\infty))\mathcal H. \tag{U3}$$</span></p>
+<p>The operator spectrum of <span class="math" data-tex="\(x\)">\(x\)</span> under <span class="math" data-tex="\(\operatorname{Ad}u\)">\(\operatorname{Ad}u\)</span> in <span class="math" data-tex="\(B(\mathcal H)\)">\(B(\mathcal H)\)</span> agrees with its spectrum under <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>: each Fourier filter has the same ultraweak integral in the normal inclusion <span class="math" data-tex="\(M\subset B(\mathcal H)\)">\(M\subset B(\mathcal H)\)</span>. Taking the closed span in (U2) yields</p>
+<p><span class="math math-display" data-tex="$$Q_t\le P([t,\infty))\qquad(t\in\mathbb R). \tag{U4}$$">$$Q_t\le P([t,\infty))\qquad(t\in\mathbb R). \tag{U4}$$</span></p>
+<p>The tails of a projection-valued measure decrease strongly to zero as <span class="math" data-tex="\(t\to+\infty\)">\(t\to+\infty\)</span>. Thus <span class="math" data-tex="\(\bigwedge_t Q_t\le\bigwedge_tP([t,\infty))=0\)">\(\bigwedge_t Q_t\le\bigwedge_tP([t,\infty))=0\)</span>, proving necessity. This argument would also work for a positive unitary group merely normalizing <span class="math" data-tex="\(M\)">\(M\)</span>; the criterion itself asks for one inside <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><span id="OA-FLOW.POSFLOW.MEASURE"></span><a id="positiveflow.measure"></a></p>
+<h2 id="constructing-the-canonical-positive-measure">Constructing the canonical positive measure</h2>
+<p>Assume <span class="math" data-tex="\(\bigwedge_tQ_t=0\)">\(\bigwedge_tQ_t=0\)</span>. Define a regularized decreasing family</p>
+<p><span class="math math-display" data-tex="$$E_t=\bigwedge_{r&lt;t}Q_r\qquad(t\in\mathbb R). \tag{U5}$$">$$E_t=\bigwedge_{r&lt;t}Q_r\qquad(t\in\mathbb R). \tag{U5}$$</span></p>
+<p>All <span class="math" data-tex="\(Q_r\)">\(Q_r\)</span> lie in the abelian center <span class="math" data-tex="\(Z(M^\alpha)\)">\(Z(M^\alpha)\)</span>, so these meets commute and remain in that center. Also <span class="math" data-tex="\(E_t=1\)">\(E_t=1\)</span> for <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span>, and <span class="math" data-tex="\(\bigwedge_tE_t=0\)">\(\bigwedge_tE_t=0\)</span>: the latter follows because for every <span class="math" data-tex="\(r\)">\(r\)</span> some <span class="math" data-tex="\(t&gt;r\)">\(t&gt;r\)</span> has <span class="math" data-tex="\(E_t\le Q_r\)">\(E_t\le Q_r\)</span>. The regularization is left-continuous in the order/strong-operator sense:</p>
+<p><span class="math math-display" data-tex="$$E_t=\bigwedge_{s&lt;t}E_s. \tag{U6}$$">$$E_t=\bigwedge_{s&lt;t}E_s. \tag{U6}$$</span></p>
+<p>Indeed the right side is the meet of <span class="math" data-tex="\(Q_r\)">\(Q_r\)</span> over all <span class="math" data-tex="\(r&lt;s&lt;t\)">\(r&lt;s&lt;t\)</span>, the same index set as <span class="math" data-tex="\(r&lt;t\)">\(r&lt;t\)</span>. We construct the projection-valued measure, including its endpoint convention. This avoids assuming a measure-extension theorem for a projection family.</p>
+<p>Put <span class="math" data-tex="\(F_0=1\)">\(F_0=1\)</span>, <span class="math" data-tex="\(F_1=0\)">\(F_1=0\)</span>, and
+<span class="math math-display" data-tex="\[
+ F_a=E_{a/(1-a)}\quad(0&lt;a&lt;1).
+ \tag{M1}
+\]">\[
+ F_a=E_{a/(1-a)}\quad(0&lt;a&lt;1).
+ \tag{M1}
+\]</span>
+These commuting projections decrease, satisfy <span class="math" data-tex="\(F_a=\bigwedge_{b&lt;a}F_b\)">\(F_a=\bigwedge_{b&lt;a}F_b\)</span> for <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, and have <span class="math" data-tex="\(\bigwedge_{a&lt;1}F_a=0\)">\(\bigwedge_{a&lt;1}F_a=0\)</span>. For <span class="math" data-tex="\(N=2^n\)">\(N=2^n\)</span>, form
+<span class="math math-display" data-tex="\[
+ A_n=\frac1N\sum_{k=1}^{N-1}F_{k/N}.
+ \tag{M2}
+\]">\[
+ A_n=\frac1N\sum_{k=1}^{N-1}F_{k/N}.
+ \tag{M2}
+\]</span>
+All sums are finite and belong to <span class="math" data-tex="\(Z(M^\alpha)\)">\(Z(M^\alpha)\)</span>. Comparing one interval with its two halves shows
+<span class="math math-display" data-tex="\[
+ 0\le A_{n+1}-A_n\le 2^{-n-1}1.
+ \tag{M3}
+\]">\[
+ 0\le A_{n+1}-A_n\le 2^{-n-1}1.
+ \tag{M3}
+\]</span>
+For an explicit verification, the difference is <span class="math" data-tex="\(1/(2N)\)">\(1/(2N)\)</span> times
+<span class="math" data-tex="\(\sum_{j=0}^{N-1}(F_{(2j+1)/(2N)}-F_{(j+1)/N})\)">\(\sum_{j=0}^{N-1}(F_{(2j+1)/(2N)}-F_{(j+1)/N})\)</span>, where <span class="math" data-tex="\(F_1=0\)">\(F_1=0\)</span>. Each difference is a projection, and these projections are pairwise orthogonal because the underlying family is decreasing. Their sum is at most <span class="math" data-tex="\(1\)">\(1\)</span>. Thus <span class="math" data-tex="\(A_n\)">\(A_n\)</span> converges in norm to a positive contraction <span class="math" data-tex="\(A\in Z(M^\alpha)\)">\(A\in Z(M^\alpha)\)</span>, with
+<span class="math math-display" data-tex="\[
+ 0\le A-A_n\le 2^{-n}1.
+ \tag{M4}
+\]">\[
+ 0\le A-A_n\le 2^{-n}1.
+ \tag{M4}
+\]</span></p>
+<p>Fix <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>. The projection <span class="math" data-tex="\(F_a\)">\(F_a\)</span> commutes with every <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, hence with <span class="math" data-tex="\(A\)">\(A\)</span>. On <span class="math" data-tex="\(F_a\mathcal H\)">\(F_a\mathcal H\)</span>, every grid term with <span class="math" data-tex="\(k/N\le a\)">\(k/N\le a\)</span> is the identity, so <span class="math" data-tex="\(A_n\ge(\lfloor Na\rfloor/N)F_a\)">\(A_n\ge(\lfloor Na\rfloor/N)F_a\)</span> on this reducing subspace. On <span class="math" data-tex="\((1-F_a)\mathcal H\)">\((1-F_a)\mathcal H\)</span>, every term with <span class="math" data-tex="\(k/N\ge a\)">\(k/N\ge a\)</span> vanishes; at most <span class="math" data-tex="\(\lceil Na\rceil-1\)">\(\lceil Na\rceil-1\)</span> terms remain. Passing to the limit gives
+<span class="math math-display" data-tex="\[
+ A|_{F_a\mathcal H}\ge a,\qquad
+ A|_{(1-F_a)\mathcal H}\le a.
+\]">\[
+ A|_{F_a\mathcal H}\ge a,\qquad
+ A|_{(1-F_a)\mathcal H}\le a.
+\]</span>
+The bounded spectral calculus from <a href="OA-FLOW-SF.html#oa-flow.sf.sb4">SF, SB4 and SB6</a> therefore gives
+<span class="math math-display" data-tex="\[
+ 1_{(a,1]}(A)\le F_a\le1_{[a,1]}(A).
+ \tag{M5}
+\]">\[
+ 1_{(a,1]}(A)\le F_a\le1_{[a,1]}(A).
+ \tag{M5}
+\]</span>
+For <span class="math" data-tex="\(0&lt;b&lt;a\)">\(0&lt;b&lt;a\)</span>, <span class="math" data-tex="\(1_{[a,1]}(A)\le1_{(b,1]}(A)\le F_b\)">\(1_{[a,1]}(A)\le1_{(b,1]}(A)\le F_b\)</span>. Taking the meet over <span class="math" data-tex="\(b&lt;a\)">\(b&lt;a\)</span> and using left continuity proves the exact equality
+<span class="math math-display" data-tex="\[
+ F_a=1_{[a,1]}(A)\quad(0&lt;a&lt;1).
+ \tag{M6}
+\]">\[
+ F_a=1_{[a,1]}(A)\quad(0&lt;a&lt;1).
+ \tag{M6}
+\]</span>
+The meet as <span class="math" data-tex="\(a\uparrow1\)">\(a\uparrow1\)</span> gives <span class="math" data-tex="\(1_{\{1\}}(A)=0\)">\(1_{\{1\}}(A)=0\)</span>. A zero eigenvalue is allowed.</p>
+<p>Define <span class="math" data-tex="\(g(a)=a/(1-a)\)">\(g(a)=a/(1-a)\)</span> for <span class="math" data-tex="\(0\le a&lt;1\)">\(0\le a&lt;1\)</span>, and assign any finite value at <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, whose spectral projection is zero. The full-domain measurable calculus of <a href="OA-FLOW-SF.html#oa-flow.sf.sf1">SF1</a> constructs
+<span class="math math-display" data-tex="\[
+ L=g(A),\qquad
+ D(L)=\left\{\xi:\int_{[0,1)}g(a)^2\,d\langle1_{da}(A)\xi,\xi\rangle&lt;\infty\right\}.
+ \tag{M7}
+\]">\[
+ L=g(A),\qquad
+ D(L)=\left\{\xi:\int_{[0,1)}g(a)^2\,d\langle1_{da}(A)\xi,\xi\rangle&lt;\infty\right\}.
+ \tag{M7}
+\]</span>
+It is positive and selfadjoint. Density of the domain also follows directly from the bounded cutoffs <span class="math" data-tex="\(1_{[0,1-1/j]}(A)\uparrow1\)">\(1_{[0,1-1/j]}(A)\uparrow1\)</span>. Define <span class="math" data-tex="\(P_0(S)=1_{g^{-1}(S)}(A)\)">\(P_0(S)=1_{g^{-1}(S)}(A)\)</span> for Borel <span class="math" data-tex="\(S\subset\mathbb R\)">\(S\subset\mathbb R\)</span>. The already proved spectral calculus makes <span class="math" data-tex="\(P_0\)">\(P_0\)</span> strongly countably additive; its total projection is <span class="math" data-tex="\(1\)">\(1\)</span>, its support is in <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, and (M6) gives
+<span class="math math-display" data-tex="\[
+ P_0([t,\infty))=E_t,\qquad
+ P_0([a,b))=E_a-E_b\quad(a&lt;b).
+ \tag{U7}
+\]">\[
+ P_0([t,\infty))=E_t,\qquad
+ P_0([a,b))=E_a-E_b\quad(a&lt;b).
+ \tag{U7}
+\]</span>
+For <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span> the first identity is the endpoint <span class="math" data-tex="\(E_t=1\)">\(E_t=1\)</span>; for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> it is (M6) at <span class="math" data-tex="\(a=t/(1+t)\)">\(a=t/(1+t)\)</span>.</p>
+<p>These formulas determine <span class="math" data-tex="\(P_0\)">\(P_0\)</span> uniquely. If two projection measures agree on all half-open intervals, their finite scalar vector measures agree there and on rays by increasing limits. Let <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> be this intersection-closed family together with the empty set and the whole line. For each fixed vector, the class where the two finite measures agree contains <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> and is closed under complements and countable disjoint unions. Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be the smallest class with those closure properties containing <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>. Such a class is also closed under differences of nested members. For fixed <span class="math" data-tex="\(A\in\Pi\)">\(A\in\Pi\)</span>, the class of <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(A\cap B\in\mathcal D\)">\(A\cap B\in\mathcal D\)</span> has the same closure properties and contains <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>, hence contains <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Now fix <span class="math" data-tex="\(B\in\mathcal D\)">\(B\in\mathcal D\)</span> and repeat with the class of <span class="math" data-tex="\(A\)">\(A\)</span> satisfying <span class="math" data-tex="\(A\cap B\in\mathcal D\)">\(A\cap B\in\mathcal D\)</span>. Thus <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is intersection-closed; disjointifying any countable union makes it a sigma-algebra. Since <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> generates the Borel sets, the two scalar measures agree on every Borel set. Polarization of their equal quadratic vector values gives equality of the projections.</p>
+<p>Every spectral projection lies in <span class="math" data-tex="\(Z(M^\alpha)\)">\(Z(M^\alpha)\)</span>, by the bounded Borel calculus for <span class="math" data-tex="\(A\)">\(A\)</span> in this von Neumann algebra. Define</p>
+<p><span class="math math-display" data-tex="$$u_s=\int_{[0,\infty)}e^{is\lambda}\,dP_0(\lambda). \tag{U8}$$">$$u_s=\int_{[0,\infty)}e^{is\lambda}\,dP_0(\lambda). \tag{U8}$$</span></p>
+<p>The spectral theorem gives a strongly continuous unitary group in <span class="math" data-tex="\(Z(M^\alpha)\subset M\)">\(Z(M^\alpha)\subset M\)</span> with nonnegative generator. Strong continuity follows by dominated convergence on each vector for the finite scalar measure <span class="math" data-tex="\(\langle P_0(\cdot)\eta,\eta\rangle\)">\(\langle P_0(\cdot)\eta,\eta\rangle\)</span>. Applying this also to <span class="math" data-tex="\(u_s^*=u_{-s}\)">\(u_s^*=u_{-s}\)</span> gives strong-star continuity. <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4</a> extends bounded vector convergence to the normal vector-series seminorms, so this is the intrinsic sigma-strong-star continuity in <span class="math" data-tex="\(M\)">\(M\)</span>. All projections of <span class="math" data-tex="\(L\)">\(L\)</span> are in <span class="math" data-tex="\(M\)">\(M\)</span>, so <span class="math" data-tex="\(L\)">\(L\)</span> is affiliated with <span class="math" data-tex="\(M\)">\(M\)</span>. <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST2</a> transports these bounded spectral projections, their normal integrals and the group continuity through any faithful normal representation; the criterion is intrinsic. Put <span class="math" data-tex="\(\beta_s=\operatorname{Ad}u_s\)">\(\beta_s=\operatorname{Ad}u_s\)</span>. We still have to prove <span class="math" data-tex="\(\beta=\alpha\)">\(\beta=\alpha\)</span>; membership of <span class="math" data-tex="\(u_s\)">\(u_s\)</span> in the fixed-point algebra alone does not give this.</p>
+<p><span id="OA-FLOW.POSFLOW.SHIFT"></span><a id="positiveflow.shift"></a></p>
+<h2 id="spectral-elements-shift-the-constructed-tails">Spectral elements shift the constructed tails</h2>
+<p>Let <span class="math" data-tex="\(x\in M_\alpha([r,\infty))\)">\(x\in M_\alpha([r,\infty))\)</span>. The <a href="OA-FLOW-GL.html#gl-6">GL6 product rule</a>, with the frequency reflection specified in (C1), says</p>
+<p><span class="math math-display" data-tex="$$xM_\alpha([t,\infty))
+\subset M_\alpha([r+t,\infty)). \tag{U9}$$">$$xM_\alpha([t,\infty))
+\subset M_\alpha([r+t,\infty)). \tag{U9}$$</span></p>
+<p>Apply (U9) to the spanning ranges in (U2). Boundedness of <span class="math" data-tex="\(x\)">\(x\)</span> permits closure, giving</p>
+<p><span class="math math-display" data-tex="$$xQ_t\mathcal H\subset Q_{r+t}\mathcal H. \tag{U10}$$">$$xQ_t\mathcal H\subset Q_{r+t}\mathcal H. \tag{U10}$$</span></p>
+<p>For every <span class="math" data-tex="\(s&lt;t\)">\(s&lt;t\)</span>, <span class="math" data-tex="\(E_t\le Q_s\)">\(E_t\le Q_s\)</span>, so (U10) gives <span class="math" data-tex="\(xE_t\mathcal H\subset Q_{r+s}\mathcal H\)">\(xE_t\mathcal H\subset Q_{r+s}\mathcal H\)</span>. Intersecting over <span class="math" data-tex="\(s&lt;t\)">\(s&lt;t\)</span> and using (U5),</p>
+<p><span class="math math-display" data-tex="$$xE_t\mathcal H\subset E_{r+t}\mathcal H
+\qquad(r,t\in\mathbb R). \tag{U11}$$">$$xE_t\mathcal H\subset E_{r+t}\mathcal H
+\qquad(r,t\in\mathbb R). \tag{U11}$$</span></p>
+<p>Under the unitary action <span class="math" data-tex="\(u\)">\(u\)</span> on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, the closed spectral space <span class="math" data-tex="\(\mathcal H_u([t,\infty))\)">\(\mathcal H_u([t,\infty))\)</span> is exactly <span class="math" data-tex="\(P_0([t,\infty))\mathcal H=E_t\mathcal H\)">\(P_0([t,\infty))\mathcal H=E_t\mathcal H\)</span>. The forward inclusion follows by filtering the spectral integral; the reverse follows because Fourier filters supported off the set separate its complementary spectral projection. Thus (U11) is a spectral-transfer statement for every translated half-line.</p>
+<p><span id="OA-FLOW.POSFLOW.INCLUSION"></span><a id="positiveflow.inclusion"></a></p>
+<h2 id="from-a-shifted-transfer-criterion-to-half-line-inclusion">From a shifted transfer criterion to half-line inclusion</h2>
+<p>To obtain the correct frequency shift, fix <span class="math" data-tex="\(r\)">\(r\)</span> and define a target unitary action <span class="math" data-tex="\(v_s=e^{-irs}u_s\)">\(v_s=e^{-irs}u_s\)</span> on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. Its spectral spaces satisfy <span class="math" data-tex="\(\mathcal H_v([t,\infty))=\mathcal H_u([r+t,\infty))\)">\(\mathcal H_v([t,\infty))=\mathcal H_u([r+t,\infty))\)</span>. Equation (U11) becomes</p>
+<p><span class="math math-display" data-tex="$$x\mathcal H_u([t,\infty))
+\subset\mathcal H_v([t,\infty))
+\qquad(t\in\mathbb R). \tag{U12}$$">$$x\mathcal H_u([t,\infty))
+\subset\mathcal H_v([t,\infty))
+\qquad(t\in\mathbb R). \tag{U12}$$</span></p>
+<p>The regular closed set <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> has translation semigroup <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Apply the reverse implication of Theorem XI.1.5, proved in <a href="OA-FLOW-L81.html#transfer-claim">lesson 81</a>, to <span class="math" data-tex="\(x:\mathcal H\to\mathcal H\)">\(x:\mathcal H\to\mathcal H\)</span>, input action <span class="math" data-tex="\(u\)">\(u\)</span>, target action <span class="math" data-tex="\(v\)">\(v\)</span>, and every translate of this half-line. The induced operator action is <span class="math" data-tex="\(T\mapsto v_sTu_{-s}=e^{-irs}\beta_s(T)\)">\(T\mapsto v_sTu_{-s}=e^{-irs}\beta_s(T)\)</span>. Character twisting shifts its spectrum by <span class="math" data-tex="\(-r\)">\(-r\)</span>. Explicitly, replacing a kernel <span class="math" data-tex="\(a(s)\)">\(a(s)\)</span> by <span class="math" data-tex="\(a(s)e^{-irs}\)">\(a(s)e^{-irs}\)</span> replaces its positive Fourier transform <span class="math" data-tex="\(f(p)\)">\(f(p)\)</span> by <span class="math" data-tex="\(f(p-r)\)">\(f(p-r)\)</span>; a frequency <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> for <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is therefore a frequency <span class="math" data-tex="\(\lambda-r\)">\(\lambda-r\)</span> for the twisted action. Thus</p>
+<p><span class="math math-display" data-tex="$$\operatorname{Sp}_\beta(x)\subset[r,\infty)
+\qquad\text{whenever}\qquad
+x\in M_\alpha([r,\infty)). \tag{U13}$$">$$\operatorname{Sp}_\beta(x)\subset[r,\infty)
+\qquad\text{whenever}\qquad
+x\in M_\alpha([r,\infty)). \tag{U13}$$</span></p>
+<p>The spectrum can be computed in <span class="math" data-tex="\(M\)">\(M\)</span> or <span class="math" data-tex="\(B(\mathcal H)\)">\(B(\mathcal H)\)</span> for <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, because the relevant integrated actions agree under the normal inclusion. Therefore (U13) is the one-sided half-line spectral-space inclusion</p>
+<p><span class="math math-display" data-tex="$$M_\alpha([r,\infty))\subset M_\beta([r,\infty))
+\qquad(r\in\mathbb R). \tag{U14}$$">$$M_\alpha([r,\infty))\subset M_\beta([r,\infty))
+\qquad(r\in\mathbb R). \tag{U14}$$</span></p>
+<p>The twist in (U12)–(U13) is necessary: applying the unshifted criterion directly would only detect nonnegative operator frequencies and lose the threshold <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><span id="OA-FLOW.POSFLOW.RECOVERY"></span><a id="positiveflow.recovery"></a></p>
+<h2 id="recovering-compact-spectral-sets-and-the-action">Recovering compact spectral sets and the action</h2>
+<p>The <a href="OA-FLOW-BS.html#bs-7">action-determination theorem BS7</a> asks for inclusion at every compact set, not just half-lines. We derive it. <a href="OA-FLOW-GL.html#gl-2">GL2's adjoint reflection</a>, reflected to (C1), and (U14) imply that for <span class="math" data-tex="\(a\le b\)">\(a\le b\)</span>,</p>
+<p><span class="math math-display" data-tex="$$M_\alpha([a,b])\subset M_\beta([a,b]). \tag{U15}$$">$$M_\alpha([a,b])\subset M_\beta([a,b]). \tag{U15}$$</span></p>
+<p>Indeed an <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-spectral element in <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> lies in its lower half-line, while its adjoint lies in the lower half-line <span class="math" data-tex="\([-b,\infty)\)">\([-b,\infty)\)</span>. Apply (U14) to both and reflect the adjoint back. The intersection of the resulting <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-spectral half-lines is <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>.</p>
+<p>Let <span class="math" data-tex="\(K\subset\mathbb R\)">\(K\subset\mathbb R\)</span> be compact and <span class="math" data-tex="\(x\in M_\alpha(K)\)">\(x\in M_\alpha(K)\)</span>. If <span class="math" data-tex="\(K\)">\(K\)</span> is empty, the empty-spectrum criterion gives <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Otherwise, fix an open neighborhood <span class="math" data-tex="\(U\supset K\)">\(U\supset K\)</span> and cover <span class="math" data-tex="\(K\)">\(K\)</span> by the interiors of finitely many compact intervals <span class="math" data-tex="\(I_1,\ldots,I_N\subset U\)">\(I_1,\ldots,I_N\subset U\)</span>. <a href="OA-FLOW-LF.html#lf-4">LF4's local Fourier cutoffs and subordinate finite partition</a> produce <span class="math" data-tex="\(c_i\in A_c(\mathbb R)\)">\(c_i\in A_c(\mathbb R)\)</span> with <span class="math" data-tex="\(\operatorname{supp}c_i\subset I_i\)">\(\operatorname{supp}c_i\subset I_i\)</span> and <span class="math" data-tex="\(c=\sum_i c_i=1\)">\(c=\sum_i c_i=1\)</span> on a neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>. This is the same finite cutoff construction used in <a href="OA-FLOW-LF.html#lf-6">LF6–LF7's local ideal lemma</a>.</p>
+<p>The filter <span class="math" data-tex="\(\alpha_c\)">\(\alpha_c\)</span> fixes <span class="math" data-tex="\(x\)">\(x\)</span>. To justify this without treating <span class="math" data-tex="\(1\)">\(1\)</span> as an element of <span class="math" data-tex="\(A(\mathbb R)\)">\(A(\mathbb R)\)</span>, take any <span class="math" data-tex="\(f\in A(\mathbb R)\)">\(f\in A(\mathbb R)\)</span> and approximate it in <span class="math" data-tex="\(A\)">\(A\)</span>-norm by <span class="math" data-tex="\(A_c\)">\(A_c\)</span>-functions <span class="math" data-tex="\(f_n\)">\(f_n\)</span>. Each <span class="math" data-tex="\(f_n(1-c)\)">\(f_n(1-c)\)</span> is compactly supported away from <span class="math" data-tex="\(K\)">\(K\)</span>, so the local ideal lemma makes its filter annihilate <span class="math" data-tex="\(x\)">\(x\)</span>. Passing to the <span class="math" data-tex="\(A\)">\(A\)</span>-norm limit gives <span class="math" data-tex="\(\alpha_f(x-\alpha_cx)=0\)">\(\alpha_f(x-\alpha_cx)=0\)</span> for every <span class="math" data-tex="\(f\)">\(f\)</span>; the empty-spectrum criterion gives <span class="math" data-tex="\(x=\alpha_cx\)">\(x=\alpha_cx\)</span>. Hence</p>
+<p><span class="math math-display" data-tex="$$x=\sum_{i=1}^N\alpha_{c_i}x. \tag{U16}$$">$$x=\sum_{i=1}^N\alpha_{c_i}x. \tag{U16}$$</span></p>
+<p>Each summand has <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-spectrum in <span class="math" data-tex="\(I_i\)">\(I_i\)</span> by <a href="OA-FLOW-BS.html#bs-3">BS3 filter localization</a>, hence <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-spectrum in <span class="math" data-tex="\(I_i\)">\(I_i\)</span> by (U15). The spectrum of a finite sum lies in the union of the summands' spectra, so <span class="math" data-tex="\(\operatorname{Sp}_\beta(x)\subset\bigcup_iI_i\subset U\)">\(\operatorname{Sp}_\beta(x)\subset\bigcup_iI_i\subset U\)</span>. As this holds for every open <span class="math" data-tex="\(U\supset K\)">\(U\supset K\)</span>, closedness gives <span class="math" data-tex="\(\operatorname{Sp}_\beta(x)\subset K\)">\(\operatorname{Sp}_\beta(x)\subset K\)</span>. Thus</p>
+<p><span class="math math-display" data-tex="$$M_\alpha(K)\subset M_\beta(K)
+\qquad\text{for every compact }K\subset\mathbb R. \tag{U17}$$">$$M_\alpha(K)\subset M_\beta(K)
+\qquad\text{for every compact }K\subset\mathbb R. \tag{U17}$$</span></p>
+<p><a href="OA-FLOW-BS.html#bs-7">BS7</a>, applied to the identity map on the specified dual <span class="math" data-tex="\(M=(M_*)^*\)">\(M=(M_*)^*\)</span>, now gives <span class="math" data-tex="\(\alpha=\beta=\operatorname{Ad}u\)">\(\alpha=\beta=\operatorname{Ad}u\)</span>. This completes sufficiency and the criterion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.POSFLOW.CHOICE"></span><a id="positiveflow.choice"></a></p>
+<h2 id="the-constructed-measure-is-a-choice-not-every-choice">The constructed measure is a choice, not every choice</h2>
+<p>Formula (U5) determines the particular measure <span class="math" data-tex="\(P_0\)">\(P_0\)</span> constructed from the action's intrinsic support tails. It does not identify the spectral measure of every positive-energy implementing unitary group. For the trivial action on a nonzero algebra, the only frequency of a nonzero spectral element is <span class="math" data-tex="\(0\)">\(0\)</span>. Thus <span class="math" data-tex="\(Q_t=1\)">\(Q_t=1\)</span> for <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span> and <span class="math" data-tex="\(Q_t=0\)">\(Q_t=0\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>; (U5) gives a point mass at <span class="math" data-tex="\(0\)">\(0\)</span>, and (U8) gives <span class="math" data-tex="\(u_s=1\)">\(u_s=1\)</span>. Yet <span class="math" data-tex="\(e^{ics}1\)">\(e^{ics}1\)</span>, for any <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, also implements the trivial action and has positive spectral mass at <span class="math" data-tex="\(c\)">\(c\)</span>. The criterion asserts existence, and (U5) selects one implementation.</p>
+<p><span id="OA-FLOW.POSFLOW.EXAMPLES"></span><a id="positiveflow.examples"></a></p>
+<h2 id="two-exact-tail-computations">Two exact tail computations</h2>
+<p><strong>A finite positive gap.</strong> In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, let <span class="math" data-tex="\(H=\operatorname{diag}(0,3)\)">\(H=\operatorname{diag}(0,3)\)</span> and <span class="math" data-tex="\(\alpha_t=\operatorname{Ad}(e^{itH})\)">\(\alpha_t=\operatorname{Ad}(e^{itH})\)</span>. The matrix unit <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> has frequency <span class="math" data-tex="\(h_i-h_j\)">\(h_i-h_j\)</span> under (C1), since <span class="math" data-tex="\(\alpha_t(e_{ij})=e^{it(h_i-h_j)}e_{ij}\)">\(\alpha_t(e_{ij})=e^{it(h_i-h_j)}e_{ij}\)</span>; applying filters and LF1 proves this singleton spectrum exactly. Thus
+<span class="math math-display" data-tex="\[
+ Q_t=
+ \begin{cases}
+ 1,&amp;t\le0,\\
+ e_{22},&amp;0&lt;t\le3,\\
+ 0,&amp;t&gt;3.
+ \end{cases}
+ \tag{D1}
+\]">\[
+ Q_t=
+ \begin{cases}
+ 1,&amp;t\le0,\\
+ e_{22},&amp;0&lt;t\le3,\\
+ 0,&amp;t&gt;3.
+ \end{cases}
+ \tag{D1}
+\]</span>
+The regularized tails <span class="math" data-tex="\(E_t\)">\(E_t\)</span> have the same values, including <span class="math" data-tex="\(E_3=e_{22}\)">\(E_3=e_{22}\)</span>. Hence the constructed generator is exactly <span class="math" data-tex="\(\operatorname{diag}(0,3)\)">\(\operatorname{diag}(0,3)\)</span>. The mass at the endpoint <span class="math" data-tex="\(3\)">\(3\)</span> confirms why (U7) uses closed tails and left continuity.</p>
+<p><strong>An unbounded lower energy cannot be removed.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb Z)\)">\(\ell^2(\mathbb Z)\)</span>, let <span class="math" data-tex="\(He_n=ne_n\)">\(He_n=ne_n\)</span> on the square-summable weighted domain and let <span class="math" data-tex="\(M=B(\ell^2(\mathbb Z))\)">\(M=B(\ell^2(\mathbb Z))\)</span>. This diagonal operator is selfadjoint by the explicit multiplication calculus, and <span class="math" data-tex="\(U_t e_n=e^{itn}e_n\)">\(U_t e_n=e^{itn}e_n\)</span> is strongly continuous by dominated convergence. Its conjugation action is point-ultraweakly continuous by the same vector-series estimate used above. For any real threshold <span class="math" data-tex="\(t\)">\(t\)</span> and every integer <span class="math" data-tex="\(n\)">\(n\)</span>, choose an integer <span class="math" data-tex="\(m\le n-t\)">\(m\le n-t\)</span>. Then <span class="math" data-tex="\(e_{nm}\)">\(e_{nm}\)</span> has frequency <span class="math" data-tex="\(n-m\ge t\)">\(n-m\ge t\)</span> and left support <span class="math" data-tex="\(e_{nn}\)">\(e_{nn}\)</span>. Their left supports join to <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(Q_t=1\)">\(Q_t=1\)</span> at every threshold. The criterion proves that this action has no positive internal implementing group. This conclusion is stronger than observing that the displayed <span class="math" data-tex="\(H\)">\(H\)</span> is unbounded below: it rules out every other positive internal choice.</p>
+<p>The mathematical source is M. Takesaki, <em>Theory of Operator Algebras II</em>, Theorem XI.1.10 and equation (12), printed pages 320–321 (<a href="https://doi.org/10.1007/978-3-662-10451-4">edition record</a>). The criterion retains arbitrary von Neumann algebras and faithful normal representations, with no separability, factor or finite-state assumption.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L81.html">Previous lesson</a><a href="OA-FLOW-ND.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L86.md">Lesson source</a></nav></main></body></html>

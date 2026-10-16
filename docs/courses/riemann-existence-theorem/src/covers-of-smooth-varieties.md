@@ -29,7 +29,10 @@ The module \(\mathcal B\) is locally free of rank \(d\). Indeed, at a closed poi
 *Step 3: the algebraic cover.* Let \(Y=\operatorname{Spec}_X(\mathcal B|_X)\) and \(q:Y\to X\). Then \(q\) is finite and flat of degree \(d\). At a closed point \(x\in X\), its fibre is \(\operatorname{Spec}\) of
 
 \[
-\mathcal B\otimes\kappa(x)=\mathcal B^{\rm an}\otimes\kappa(x)=\mathcal A\otimes\kappa(x)=p_*\mathcal O_E\otimes\kappa(x)=\mathbf C^{p^{-1}(x)}.
+\begin{aligned}
+&\mathcal B\otimes\kappa(x)=\mathcal B^{\rm an}\otimes\kappa(x)=\mathcal A\otimes\kappa(x)\\
+&\quad =p_*\mathcal O_E\otimes\kappa(x)=\mathbf C^{p^{-1}(x)}.
+\end{aligned}
 \]
 
 The first equality holds because analytification does not change fibres at complex points. The last holds because, over a neighbourhood on which \(E\) is trivial, the sections of \(p_*\mathcal O_E\) vanishing at \(x\) are the tuples of functions on the sheets vanishing at the points over \(x\). The fibre is a product of copies of \(\mathbf C\), so \(q\) is unramified at every point over a closed point, and, being flat, étale there. The étale locus of \(q\) is open and contains every closed point of the scheme \(Y\) of finite type over \(\mathbf C\), so it is all of \(Y\). Thus \(q\) is finite étale.
@@ -37,7 +40,10 @@ The first equality holds because analytification does not change fibres at compl
 *Step 4: comparison.* By [Finite étale covers and their analytification, Proposition 3.1](finite-etale-covers-and-their-analytification.md#3-the-analytic-structure-of-a-cover), \(Y(\mathbf C)\to X(\mathbf C)\) is a finite covering, and
 
 \[
-q^{\rm an}_*\mathcal O_{Y^{\rm an}}\cong(q_*\mathcal O_Y)^{\rm an}=\mathcal B^{\rm an}|_{X(\mathbf C)}\cong\mathcal A|_{X(\mathbf C)}=p_*\mathcal O_E
+\begin{aligned}
+q^{\rm an}_*\mathcal O_{Y^{\rm an}}&\cong(q_*\mathcal O_Y)^{\rm an}=\mathcal B^{\rm an}|_{X(\mathbf C)}\\
+&\cong\mathcal A|_{X(\mathbf C)}=p_*\mathcal O_E
+\end{aligned}
 \]
 
 as \(\mathcal O_{X^{\rm an}}\)-algebras. By Lemma 1.1 there is a homeomorphism \(E\cong Y(\mathbf C)\) over \(X(\mathbf C)\). \(\square\)

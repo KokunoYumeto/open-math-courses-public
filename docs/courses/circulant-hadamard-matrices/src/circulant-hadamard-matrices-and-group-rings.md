@@ -48,7 +48,7 @@ A sequence \(a=(a_0,\dots,a_{n-1})\in\{\pm1\}^n\), \(n>1\), is a *Barker sequenc
 
 **Proposition 3.1.** If \(a\) is a Barker sequence of even length \(n>2\), then the circulant matrix with first row \(a\) is a Hadamard matrix.
 
-**Proof.** The periodic autocorrelation is \(P_a(t)=\sum_{j}a_ja_{j+t\bmod n}=C_a(t)+C_a(n-t)\). The product of its \(n\) summands is \((\prod_ja_j)^2=1\), so an even number of them equal \(-1\), and \(P_a(t)\equiv n\pmod4\). Also \(C_a(t)\equiv n-t\pmod2\), being a sum of \(n-t\) signs. For \(t=2\), both \(C_a(2)\) and \(C_a(n-2)\) are even, hence \(0\) by the Barker bound; so \(P_a(2)=0\) and \(4\mid n\). For every \(1\le t<n\), \(|P_a(t)|\le2\) and \(P_a(t)\equiv0\pmod4\), so \(P_a(t)=0\). \(\square\)
+**Proof.** The periodic autocorrelation is \(P_a(t)=\sum_{j}a_ja_{j+t\bmod n}\), which equals \(C_a(t)+C_a(n-t)\). The product of its \(n\) summands is \((\prod_ja_j)^2=1\), so an even number of them equal \(-1\), and \(P_a(t)\equiv n\pmod4\). Also \(C_a(t)\equiv n-t\pmod2\), being a sum of \(n-t\) signs. For \(t=2\), both \(C_a(2)\) and \(C_a(n-2)\) are even, hence \(0\) by the Barker bound; so \(P_a(2)=0\) and \(4\mid n\). For every \(1\le t<n\), \(|P_a(t)|\le2\) and \(P_a(t)\equiv0\pmod4\), so \(P_a(t)=0\). \(\square\)
 
 With the theorem, Barker sequences of even length exist only for \(n=2\) and \(n=4\). For odd lengths, Turyn and Storer proved in 1961 that none exist beyond \(13\), and Schmidt and Willms gave a simpler proof [SW]; that part is not proved in this course. Together these give the lengths \(2,3,4,5,7,11,13\).
 

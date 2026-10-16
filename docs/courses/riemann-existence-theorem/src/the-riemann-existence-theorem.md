@@ -43,13 +43,19 @@ Put \(S''=S'\times_XS'\) and \(S'''=S'\times_XS'\times_XS'\), with projections \
 *Step 2: a descent datum.* The covering \(p_i^*E'\) of \(S''(\mathbf C)\) consists of the pairs \(\bigl((s_1,s_2),(s_i,e)\bigr)\) with \(g(s_i)=p(e)\). Since \(g(s_1)=g(s_2)\), the map
 
 \[
-c_E:p_1^*E'\longrightarrow p_2^*E',\qquad \bigl((s_1,s_2),(s_1,e)\bigr)\longmapsto\bigl((s_1,s_2),(s_2,e)\bigr),
+\begin{gathered}
+c_E:p_1^*E'\longrightarrow p_2^*E',\\
+\bigl((s_1,s_2),(s_1,e)\bigr)\longmapsto\bigl((s_1,s_2),(s_2,e)\bigr),
+\end{gathered}
 \]
 
 is an isomorphism of coverings of \(S''(\mathbf C)\). Over \(S'''(\mathbf C)\) both \(p_{13}^*c_E\) and \(p_{23}^*c_E\circ p_{12}^*c_E\) send \(\bigl((s_1,s_2,s_3),(s_1,e)\bigr)\) to \(\bigl((s_1,s_2,s_3),(s_3,e)\bigr)\), so they are equal. Now consider the isomorphism of coverings of \(S''(\mathbf C)\)
 
 \[
-\theta=(p_2^*\beta)^{-1}\circ c_E\circ p_1^*\beta:\ (p_1^*Y')(\mathbf C)\longrightarrow(p_2^*Y')(\mathbf C).
+\begin{gathered}
+\theta=(p_2^*\beta)^{-1}\circ c_E\circ p_1^*\beta,\\
+\theta:(p_1^*Y')(\mathbf C)\longrightarrow(p_2^*Y')(\mathbf C).
+\end{gathered}
 \]
 
 By full faithfulness of \(\Phi_{S''}\) (Corollary 3.1 of the second lesson, which holds for every scheme locally of finite type over \(\mathbf C\)), \(\theta=\Phi(\varphi)\) for a unique isomorphism \(\varphi:p_1^*Y'\to p_2^*Y'\) over \(S''\). In the composite \(p_{23}^*\theta\circ p_{12}^*\theta\) the middle factors of \(\beta\) cancel, so the cocycle identity for \(c_E\) gives \(p_{13}^*\theta=p_{23}^*\theta\circ p_{12}^*\theta\). Since \(\Phi\) commutes with pull-back, this says \(\Phi(p_{13}^*\varphi)=\Phi(p_{23}^*\varphi\circ p_{12}^*\varphi)\), and faithfulness of \(\Phi_{S'''}\) gives \(p_{13}^*\varphi=p_{23}^*\varphi\circ p_{12}^*\varphi\). So \((Y',\varphi)\) is a descent datum relative to \(g\).
@@ -62,10 +68,17 @@ By full faithfulness of \(\Phi_{S''}\) (Corollary 3.1 of the second lesson, whic
 
 where \(\mathrm{can}_Y:p_1^*g^*Y\to p_2^*g^*Y\) identifies both sides with the pull-back of \(Y\) to \(S''\).
 
-*Step 4: comparison.* Let \(\alpha'=\beta\circ\Phi(\psi):g(\mathbf C)^*\bigl(Y(\mathbf C)\bigr)\to E'=g(\mathbf C)^*E\), an isomorphism of coverings of \(S'(\mathbf C)\). On complex points, \(\mathrm{can}_Y\) becomes the map \(c_{Y(\mathbf C)}\) defined by the same formula as \(c_E\). Applying \(\Phi_{S''}\) to the compatibility of \(\psi\) and substituting \(\Phi(\varphi)=\theta\) gives
+*Step 4: comparison.* Let \(\alpha'=\beta\circ\Phi(\psi):g(\mathbf C)^*\bigl(Y(\mathbf C)\bigr)\to E'\), which is \(g(\mathbf C)^*E\), an isomorphism of coverings of \(S'(\mathbf C)\). On complex points, \(\mathrm{can}_Y\) becomes the map \(c_{Y(\mathbf C)}\) defined by the same formula as \(c_E\). Applying \(\Phi_{S''}\) to the compatibility of \(\psi\) and substituting \(\Phi(\varphi)=\theta\) gives
 
 \[
-(p_2^*\beta)^{-1}\circ c_E\circ p_1^*\beta\circ p_1^*\Phi(\psi)=p_2^*\Phi(\psi)\circ c_{Y(\mathbf C)},\qquad\text{that is,}\qquad c_E\circ p_1^*\alpha'=p_2^*\alpha'\circ c_{Y(\mathbf C)}.
+\begin{aligned}
+&(p_2^*\beta)^{-1}\circ c_E\circ p_1^*\beta\circ p_1^*\Phi(\psi)\\
+&\qquad=p_2^*\Phi(\psi)\circ c_{Y(\mathbf C)},
+\end{aligned}
+\]
+that is,
+\[
+c_E\circ p_1^*\alpha'=p_2^*\alpha'\circ c_{Y(\mathbf C)}.
 \]
 
 So the two pull-backs of \(\alpha'\) to \(S''(\mathbf C)\) agree under the canonical identifications. By [Descent along proper surjective morphisms, Proposition 4.1](descent-along-proper-surjective-morphisms.md#4-covering-spaces), applied to the proper surjective map \(g(\mathbf C)\) and the coverings \(Y(\mathbf C)\) and \(E\), there is an isomorphism \(\alpha:Y(\mathbf C)\to E\) over \(X(\mathbf C)\) with \(g(\mathbf C)^*\alpha=\alpha'\). Thus \(E\) is isomorphic to \(\Phi_X(Y)\). \(\square\)
@@ -87,13 +100,20 @@ Let \(X\) be a connected scheme, \(\overline x\) a geometric point and \(F_{\ove
 Now let \(X\) be locally of finite type over \(\mathbf C\) and connected, \(x\in X(\mathbf C)\) a closed point, and \(\overline x:\operatorname{Spec}\mathbf C\to X\) the corresponding geometric point. For a finite étale \(q:Y\to X\), the scheme \(Y\times_X\overline x\) is the spectrum of a finite étale \(\mathbf C\)-algebra, a finite disjoint union of copies of \(\operatorname{Spec}\mathbf C\), whose points are the complex points of \(Y\) over \(x\). So
 
 \[
-F_{\overline x}=F_x\circ\Phi_X,\qquad F_x:\operatorname{Cov}(X(\mathbf C))\to\mathrm{Sets},\quad(E\xrightarrow{p}X(\mathbf C))\mapsto p^{-1}(x).
+\begin{gathered}
+F_{\overline x}=F_x\circ\Phi_X,\\
+F_x:\operatorname{Cov}(X(\mathbf C))\to\mathrm{Sets},\\
+(E\xrightarrow{p}X(\mathbf C))\mapsto p^{-1}(x).
+\end{gathered}
 \]
 
 **Theorem 3.1.** Let \(X\) be connected and locally of finite type over \(\mathbf C\), and \(x\in X(\mathbf C)\). Then \((\operatorname{Cov}(X(\mathbf C)),F_x)\) is a Galois category, and restriction along \(\Phi_X\) is an isomorphism of profinite groups
 
 \[
-\operatorname{Aut}(F_x)\longrightarrow\operatorname{Aut}(F_x\circ\Phi_X)=\pi_1(X,\overline x),\qquad u\longmapsto u\Phi_X .
+\begin{gathered}
+\operatorname{Aut}(F_x)\longrightarrow\operatorname{Aut}(F_x\circ\Phi_X)=\pi_1(X,\overline x),\\
+u\longmapsto u\Phi_X .
+\end{gathered}
 \]
 
 **Proof.** By Theorem 2.1, \(\Phi_X\) is an equivalence. Composition with an equivalence is an equivalence of functor categories, so it induces a bijection on automorphism groups of functors, which is a group isomorphism. The topologies of Tag 0BMR are defined by the actions on the finite sets \(F_x(E)\) and \(F_{\overline x}(Y)\), and these sets correspond, because every covering is isomorphic to some \(\Phi_X(Y)\). So the isomorphism is a homeomorphism. The axioms of a Galois category are stated in terms of finite limits and colimits, connected objects, and properties of the functor, all of which are preserved by an equivalence compatible with the functors. \(\square\)
@@ -128,26 +148,26 @@ is a homeomorphism. Indeed, compatibility shows that \(T^{-1}(Z)=|L|\), and rest
 
 *Small contractible open sets in a locally finite polyhedron.* Fix \(p\in|L|\). For each vertex \(v\) of \(L\), let \(\lambda_v:|L|\to[0,1]\) be its barycentric-coordinate function, equal to zero on simplices not containing \(v\). These functions agree on common faces and are continuous: locally only finitely many closed simplices occur, so the finite closed-set pasting lemma applies. At each point their sum is one. Let \(I_p\) be the vertex set of the unique open simplex containing \(p\), and write \(a_v=\lambda_v(p)>0\) for \(v\in I_p\); then \(\sum_{v\in I_p}a_v=1\).
 
-For \(0<\varepsilon<1\), define
-
-\[
-U_\varepsilon=\{q\in|L|:\lambda_v(q)>(1-\varepsilon)a_v
-\text{ for every }v\in I_p\}.
-\]
+For \(0<\varepsilon<1\), let \(U_\varepsilon\) be the set of \(q\in|L|\) with \(\lambda_v(q)>(1-\varepsilon)a_v\) for every \(v\in I_p\).
 
 This is an open neighbourhood of \(p\). Every \(q\in U_\varepsilon\) has a carrier simplex containing all the vertices in \(I_p\), so that closed simplex contains both \(q\) and \(p\). Consequently the affine map
 
 \[
-H_\varepsilon:U_\varepsilon\times[0,1]\longrightarrow U_\varepsilon,
-\qquad H_\varepsilon(q,s)=(1-s)q+sp
+\begin{gathered}
+H_\varepsilon:U_\varepsilon\times[0,1]\longrightarrow U_\varepsilon,\\
+H_\varepsilon(q,s)=(1-s)q+sp
+\end{gathered}
 \]
 
 is well-defined. On that simplex its barycentric coordinates satisfy
 
 \[
-\lambda_v(H_\varepsilon(q,s))
-=(1-s)\lambda_v(q)+s a_v>(1-\varepsilon)a_v
+\begin{aligned}
+&\lambda_v(H_\varepsilon(q,s))
+=(1-s)\lambda_v(q)+s a_v\\
+&\quad >(1-\varepsilon)a_v
 \quad(v\in I_p).
+\end{aligned}
 \]
 
 The affine formula is continuous in the ambient Euclidean space, hence in the subspace topology. It satisfies \(H_\varepsilon(q,0)=q\), \(H_\varepsilon(q,1)=p\), and \(H_\varepsilon(p,s)=p\). It is therefore a strong deformation retraction onto \(p\).
@@ -155,9 +175,11 @@ The affine formula is continuous in the ambient Euclidean space, hence in the su
 These sets form a neighbourhood basis, not just a collection of large contractible sets. To verify this, fix one vertex \(v_0\in I_p\). Every \(U_\varepsilon\) lies in the union of simplices containing \(v_0\), which is a finite union by local finiteness at \(v_0\). Let \(W\) be the finite set of their vertices, and put \(M=\max(1,\max_{v\in W}\|v-p\|)\). For \(q\in U_\varepsilon\), extend both barycentric coordinate lists to \(W\) by zeros. Negative differences can occur only at vertices of \(I_p\), and their total absolute value is less than \(\varepsilon\sum_{v\in I_p}a_v=\varepsilon\). The differences sum to zero, so
 
 \[
-\sum_{v\in W}|\lambda_v(q)-\lambda_v(p)|<2\varepsilon,
-\qquad
-\|q-p\|\le M\sum_{v\in W}|\lambda_v(q)-\lambda_v(p)|<2M\varepsilon.
+\begin{aligned}
+&\sum_{v\in W}|\lambda_v(q)-\lambda_v(p)|<2\varepsilon,\\
+&\|q-p\|\le M\sum_{v\in W}|\lambda_v(q)-\lambda_v(p)|\\
+&\qquad<2M\varepsilon.
+\end{aligned}
 \]
 
 Every open neighbourhood of \(p\) in \(|L|\) contains its intersection with a sufficiently small Euclidean ball. The displayed estimate puts \(U_\varepsilon\) inside that neighbourhood for sufficiently small \(\varepsilon\).

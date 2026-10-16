@@ -7,9 +7,7 @@ This lesson completes the counterexample. Copies of the self-dual matroid \(Q\) 
 ## 1. Two matroids on a double ray
 
 For \(n\in\mathbb Z\), let the *bundle* \(e_n=\{n\}\times D\) join the vertices \(v_n\) and \(v_{n+1}\) of a doubly infinite path, and let \(E=\mathbb Z\times D=\bigcup_ne_n\), a countably infinite set. The *central bundle* is \(e_{-1}\), joining \(v_{-1}\) and \(v_0\). The vertex \(v_n\) is incident with \(e_{n-1}\) and \(e_n\); call the one closer to the central bundle its *inward* bundle and the other its *outward* bundle:
-\[
-\text{inward}(v_n)=e_{n-1},\ \text{outward}(v_n)=e_n\ \ (n\ge0);\qquad\text{inward}(v_n)=e_n,\ \text{outward}(v_n)=e_{n-1}\ \ (n\le-1).
-\]
+for \(n\ge0\), \(\text{inward}(v_n)=e_{n-1}\) and \(\text{outward}(v_n)=e_n\); for \(n\le-1\), \(\text{inward}(v_n)=e_n\) and \(\text{outward}(v_n)=e_{n-1}\).
 So both \(v_{-1}\) and \(v_0\) have the central bundle as inward bundle. Let \(Q_n\) be the copy of \(Q\) on \(e_{n-1}\cup e_n\) obtained by sending the element \(d\) of the copy \(L\) to \((\text{inward},d)\) and the element \(d\) of \(R\) to \((\text{outward},d)\). Put
 \[
 M_0=\bigoplus_{n\text{ even}}Q_n,\qquad M_1=\bigoplus_{n\text{ odd}}Q_n .

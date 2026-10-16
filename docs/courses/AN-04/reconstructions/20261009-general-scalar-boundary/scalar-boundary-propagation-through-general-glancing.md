@@ -1,6 +1,6 @@
 # Scalar boundary propagation through general glancing
 
-Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0.
+Exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra. Characteristic-square damping argument: GPT-6.1 Sol (OpenAI), Ultra. October 2026. CC0-1.0.
 
 The quadratic form of a scalar differential operator need not be a wave metric. Its boundary can still be noncharacteristic, its tangential Hamilton field can still move, and its singularities can still propagate through glancing. We prove the missing local estimate for this class and then assemble the general Dirichlet propagation theorem. No positive spatial energy or physical time coordinate is assumed.
 
@@ -109,7 +109,7 @@ The difference \(R-R_{\rm pr}\) is tangential of order one; its pairing with \(G
 
 ## 4. A tangential commutant gives a genuine half-order gain
 
-**C3. The regularized estimate.** Work on a fixed conic parameter region \(W\), with all forcing tests tangentially smooth in \(L^2_x\) and all value-data tests smooth. Suppose \(u\in\mathcal X_s\) there. Let real homogeneous symbols \(q,v,b,e\), of degrees \(0,0,1/2,1/2\), be supported inside that region, with \(q=v^2\) everywhere, and
+**C3. The regularized estimate.** Work on a fixed conic parameter region \(W\), with all forcing tests tangentially smooth in \(L^2_x\) and all value-data tests smooth. Suppose \(u\in\mathcal X_s\) there. Let real homogeneous symbols \(q,v,b,e\), of degrees \(0,0,1/2,1/2\), be supported inside that region, with \(q=v^2\) on \(p=0\), and
 \[
  H_pq+M\lambda q=-\psi^2-b^2+e^2
                   \quad\text{on }p=0.
@@ -156,14 +156,47 @@ The boundary term is bounded by (GS15) and the smooth value trace. With \(R_a=(R
  h_\epsilon=M+2k_\epsilon/\lambda\ge1.
  \tag{GS17}
 \]
-UMD:D1 supplies a uniformly bounded smooth positive square root, including all parameter derivatives. Since \(q=v^2\) is a nonnegative tangential symbol everywhere,
+UMD:D1 supplies a uniformly bounded smooth positive square root, including all parameter derivatives. Define the actual damping form
 \[
  \mathcal D_\epsilon[w]
- :=\operatorname{Re}((ML+2R_a+2Z_{\epsilon a})w,Qw)
- \ge-C\|w\|_2^2.
+ :=\operatorname{Re}((ML+2R_a+2Z_{\epsilon a})w,Qw).
  \tag{GS18}
 \]
-Indeed quantize the symbol \(\lambda^{1/2}\sqrt{h_\epsilon}\,v\). Its norm square has the same order-one principal symbol as the form on the left; the full ordered difference has order zero, uniformly. The ordinary Sobolev bound controls that difference. No sign of \(r\) enters this argument.
+Its order-one leading symbol is \(\lambda h_\epsilon q\).
+
+We first prove the lower bound with just the stated characteristic hypothesis. Apply C2's complete scalar construction to \(-\lambda q\), whose value on \(p=0\) is \(-(\lambda^{1/2}v)^2\). It gives real coefficients \(\phi_0,\phi_1,g\), of orders \(1/2,-1/2,-1\), supported in a fixed slightly larger part of \(W\), with
+\[
+ -\lambda q+(\phi_0+\rho\phi_1)^2-g(\rho^2-r)\le0
+                 \quad(\rho\in\mathbb R).
+ \tag{GS18a}
+\]
+The corresponding real symmetric two-by-two matrix is nonpositive also on complex pairs, by C2. Multiply it by the positive scalar \(h_\epsilon\). Quantize \(\sqrt{h_\epsilon}\phi_j\) to \(\Phi_{\epsilon j}\), and take an actual tangential selfadjoint quantization \(G_\epsilon\) of \(h_\epsilon g\). The latter has order minus one with every uniform normal-parameter bound. Both operations use the complete ordered composition and adjoint rules; the nonhomogeneous \(\epsilon\)-dependence of \(h_\epsilon\) causes no change in their uniform symbol orders.
+
+For \(w=w_\epsilon\), the full array of
+\[
+ -\mathcal D_\epsilon[w]
+ +\|\Phi_{\epsilon0}w+\Phi_{\epsilon1}D_xw\|_2^2
+                 -\operatorname{Re}q_{\rm pr}(w,G_\epsilon w)
+ \tag{GS18b}
+\]
+has the nonpositive weighted principal matrix just exhibited. Here \(q_{\rm pr}\) is the normal/tangential divergence-form principal energy, exactly the form in C2. All nonprincipal products have one lower mixed order. SDQ:W2 and the exact normal commutator SDQ:W3 bound (GS18b) above by \(C\|w_\epsilon\|_{\mathcal X_0}^2\).
+
+For this actual H2 input, (GS11) substitutes the original equation into \(q_{\rm pr}(w_\epsilon,G_\epsilon w_\epsilon)\). Its difference from the full \(R\) form has tangential order one paired with an order-minus-one operator, and is bounded by \(C\|w_\epsilon\|_2^2\). The remaining volume pairing is bounded by
+\(\|Pw_\epsilon\|_{L^2H^{-1}}\|\Lambda G_\epsilon w_\epsilon\|_2\).
+The boundary pairing is bounded by
+\(\|\gamma D_xw_\epsilon\|_{H^{-3/2}}
+\|G_\epsilon(0)\gamma w_\epsilon\|_{H^{3/2}}\).
+Every factor has its already proved uniform bound in (GS15) and the smooth value datum. Consequently
+\[
+ \mathcal D_\epsilon[w_\epsilon]
+ \ge\|\Phi_{\epsilon0}w_\epsilon+
+                  \Phi_{\epsilon1}D_xw_\epsilon\|_2^2-C_s
+ \ge-C_s .
+ \tag{GS18c}
+\]
+This is a lower bound for the actual regularized solutions with their known source and trace bounds. It does not assert a universal positive damping form on arbitrary inputs in an elliptic region where \(q\) may be negative.
+
+There is a shorter lower bound in the useful special case \(q=v^2\) everywhere. Quantize \(\lambda^{1/2}\sqrt{h_\epsilon}v\). Its norm square has the same order-one symbol as \(\mathcal D_\epsilon\); the full ordered difference has order zero. Thus \(\mathcal D_\epsilon[w]\ge-C\|w\|_2^2\) for arbitrary \(w\) in that case. The commutants constructed below have this stronger property, while the estimate just proved requires only the stated characteristic square.
 
 Subtract \(2\operatorname{Im}(Z_\epsilon w,Qw)\) from the volume array in (GS16), add \(\mathcal D_\epsilon[w]+\|Bw\|^2-\|Ew\|^2\), and retain every ordered term. NR:N5 and the scalar leading part of UMD:D6 show that its characteristic polynomial is
 \[
@@ -175,7 +208,7 @@ Subtract \(2\operatorname{Im}(Z_\epsilon w,Qw)\) from the volume array in (GS16)
 The only cross coefficient comes from \(Q_xD_x\); all lower terms have the mixed orders required in (GS10). Apply C2. The source pairing in (GS11) splits into \(F_\epsilon\) and \(Z_\epsilon w\). The former is controlled as above, and the latter by
 \(\|\Lambda^{-1}Z_\epsilon w\|\,\|\Lambda Gw\|
 \le C\|w\|_2^2\).
-The boundary pairing in (GS11) is bounded by (GS15). Substituting (GS16) and (GS18), then dropping the additional nonnegative completion square, gives
+The boundary pairing in (GS11) is bounded by (GS15). Substituting (GS16) and the lower bound (GS18c), then dropping the additional nonnegative completion square, gives
 \[
  \|Bw_\epsilon\|_2^2\le\|Ew_\epsilon\|_2^2+C_s.
  \tag{GS20}

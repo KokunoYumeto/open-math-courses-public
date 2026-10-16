@@ -7,21 +7,17 @@ then prove that finitely many directional tests recover the full local
 Besov estimate. This supplies the converse in the intrinsic localization
 theorem, including finite-rank matrix tests.
 
-This is a bounded modified selection of AN03-U010, Section 2, and
-AN03-U012, Section 6, with the conic and intrinsic arguments completed
-below. Original principal author and publisher: AN-03 course-writing
-task / AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and OpenAI
-Codex. This selection and its connecting proofs: GPT-6 Astra (OpenAI),
-Ultra, 4 October 2026; publisher: AN-04 local course project.
-
-Original text: CC0.
+The elliptic-inverse and localization material comes from the programme's
+analysis course. Conic connections, proofs and solved examples: GPT-6 Astra
+(OpenAI), Ultra. Source notes and editorial text: GPT-6.1 Sol (OpenAI), Ultra.
+Programme mathematical text: CC0. Linked human works retain their stated terms.
 
 ## K0. Exact inputs and conic conventions
 
 We use ordinary symbols \(S^d=S^d_{1,0}\), real orders, left
 quantization, \(D=-i\partial\), and the Fourier inverse factor
 \((2\pi)^{-n}\). No homogeneous expansion is assumed.
-The complete earlier proofs are:
+The calculus and localization inputs are supplied at these programme locators:
 
 - [P2 O0–O6](ordinary-operator-calculus.md): all differentiated product
   remainders, compact amplitudes, proper kernels and their smooth ideal;
@@ -32,6 +28,10 @@ The complete earlier proofs are:
   Fourier wavefront criterion and proper compact conic cutoffs;
 - the exact U001 smooth cutoffs, compactness, finite-dimensional inverse
   and differential proofs linked in those companions.
+
+The elementary analysis reference guide
+identifies the linked author proofs used by the U001 inputs. Those external
+texts retain their own terms and are not included in this CC0 reading.
 
 Write \(\operatorname{ess}(A)\) for the complementary closed conic set
 of points where a full symbol is smoothing on a neighborhood. In
@@ -550,22 +550,26 @@ then gives the exact endpoint bound for \(\varphi v\).
 This is K4–K5 with the two points of the one-dimensional unit sphere.
 \(\square\)
 
-## Free human sources and the remaining course scope
+## Sources and analytic scope {#free-human-sources-and-the-remaining-course-scope}
 
-[Gerd Grubb's author-hosted Chapter 7](https://web.math.ku.dk/~grubb/dist7n.pdf),
-Lemma 7.3 and Theorem 7.18(1), with Corollary 7.19(1), supplies
-the cutoff construction and finite inverse-correction method.
-Its summation lemma is a sketch; K1 supplies every missing derivative
-estimate and the support argument. K2–K3 give the full ordinary-symbol
-conic construction rather than assuming a homogeneous expansion.
+Gerd Grubb, [*Distributions and Operators*, Chapter 7: Pseudodifferential operators on open sets](https://web.math.ku.dk/~grubb/dist7n.pdf),
+Lemma 7.3 (printed page 166), Theorem 7.18(1) (184–185) and Corollary 7.19(1)
+(186–187), gives the asymptotic-summation construction and square-matrix
+inverse-correction method. The square-matrix proof there uses homogeneous
+leading terms. K1 gives explicit derivative and support estimates;
+K2–K3 work with full ordinary symbols without assuming a homogeneous expansion.
 
-[Lars Hörmander, *Fourier integral operators. I*](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
-Propositions 1.1.9 and 2.5.1, records the asymptotic convention and
-the parametrix mechanism. Its external proof references are not
-programme dependencies. The complete proofs used here are the
-ones written above and the exact earlier programme proofs in K0.
+Lars Hörmander, [*Fourier integral operators. I*](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
+*Acta Mathematica* **127** (1971), 79–183, Proposition 1.1.9 (printed page 87)
+and Proposition 2.5.1 (120–121), describes the asymptotic convention and
+elliptic-parametrix mechanism. An exact [free PDF copy](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6118-11511_2006_Article_BF02392052.pdf)
+is available from the Yau Mathematical Sciences Center archive. K1–K7 give
+the direct programme proofs, with the calculus and localization inputs
+identified in K0. Works appearing only in a source bibliography are not
+additional programme prerequisites.
 
-The intrinsic localization theorem is now supplied in full. The
-representation using every prescribed nondegenerate or clean phase,
-refined symbol orders, global Maslov data and the remaining AN-04
-course are still separate proof obligations.
+The localization theorem concerns ordinary symbols, finite rank matrix
+operators and the local Besov endpoint. With the indicated small conic
+cutoffs, the intrinsic class depends only on the germ of a closed conic
+Lagrangian. Prescribed phase representations, refined symbol orders and
+global Maslov data use separate phase-comparison and bundle arguments.

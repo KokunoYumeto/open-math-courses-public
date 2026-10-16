@@ -21,7 +21,7 @@ Let \(X\) be a scheme locally of finite type over \(\mathbf C\). By the Nullstel
 3. For general \(X\), each \(U(\mathbf C)\) with \(U\subset X\) affine open is an open subspace of \(X(\mathbf C)\) with the topology of Definition 1.1, and a morphism \(f:X\to Y\) induces a continuous map \(f(\mathbf C):X(\mathbf C)\to Y(\mathbf C)\). The space \(X(\mathbf C)\) is locally compact, and each \(U(\mathbf C)\) is Hausdorff.
 4. If \(X\) is a variety, \(X(\mathbf C)\) is the underlying topological space of \(X^{\rm an}\).
 5. The closed immersion \(X_{\rm red}\to X\) induces a homeomorphism \(X_{\rm red}(\mathbf C)\to X(\mathbf C)\).
-6. For morphisms \(Y\to X\leftarrow Z\), the canonical bijection \((Y\times_XZ)(\mathbf C)\to Y(\mathbf C)\times_{X(\mathbf C)}Z(\mathbf C)\) is a homeomorphism, where the right side has the subspace topology of the product.
+6. For morphisms \(Y\to X\leftarrow Z\), the canonical bijection from \((Y\times_XZ)(\mathbf C)\) to \(Y(\mathbf C)\times_{X(\mathbf C)}Z(\mathbf C)\) is a homeomorphism, where the right side has the subspace topology of the product.
 
 **Proof.** (1) If \(i:X\to\mathbf A^n\) and \(i':X\to\mathbf A^m\) are closed immersions, the coordinate functions of \(i'\) are elements of \(\mathcal O(X)\), which is a quotient of \(\mathbf C[x_1,\ldots,x_n]\) through \(i\). Lifting them gives a polynomial map \(P:\mathbf C^n\to\mathbf C^m\) with \(i'=P\circ i\) on complex points. So the identity of \(X(\mathbf C)\) is continuous from the \(i\)-topology to the \(i'\)-topology, and by symmetry it is a homeomorphism. A morphism \(X\to Y\) of affine schemes is given on coordinates by polynomials in the same way.
 
@@ -51,10 +51,17 @@ F(x,t)=(t-\varphi(x))\,u(x,t)
 
 near \((q(y),t(y))\) for a holomorphic function \(u\) without zeros.
 
-**Proof.** By [Stacks, Tag 02GT](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-locally-standard-etale), \(q\) is standard étale near \(y\), which gives the presentation. Write \(y=(x_0,t_0)\) in \(\mathbf C^{n+1}\). Then \(F(x_0,t_0)=0\) and \(\partial F/\partial t(x_0,t_0)\ne0\), since \(\partial f/\partial t\) is invertible at \(y\). By the holomorphic implicit function theorem ([Complex analytic spaces and analytification, Lemma 2.2](course:AG-QC/complex-analytic-spaces-and-analytification#2-local-analytic-algebra)) there are neighbourhoods \(W\) of \(x_0\) and \(I\) of \(t_0\), and a holomorphic \(\varphi:W\to I\), such that \(\{(x,t)\in W\times I:F(x,t)=0\}\) is the graph of \(\varphi\). The set of complex points of \(Y\) inside \(W\times I\) is therefore \(\{(x,\varphi(x)):x\in X(\mathbf C)\cap W,\ G(x,\varphi(x))\ne0\}\), and the projection maps it homeomorphically, with inverse \(x\mapsto(x,\varphi(x))\), onto the open subset of \(X(\mathbf C)\cap W\) where \(G(x,\varphi(x))\ne0\). Finally
+**Proof.** By [Stacks, Tag 02GT](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-locally-standard-etale), \(q\) is standard étale near \(y\), which gives the presentation. Write \(y=(x_0,t_0)\) in \(\mathbf C^{n+1}\). Then \(F(x_0,t_0)=0\) and \(\partial F/\partial t(x_0,t_0)\ne0\), since \(\partial f/\partial t\) is invertible at \(y\). By the holomorphic implicit function theorem ([Complex analytic spaces and analytification, Lemma 2.2](course:AG-QC/complex-analytic-spaces-and-analytification#2-local-analytic-algebra)) there are neighbourhoods \(W\) of \(x_0\) and \(I\) of \(t_0\), and a holomorphic \(\varphi:W\to I\), such that \(\{(x,t)\in W\times I:F(x,t)=0\}\) is the graph of \(\varphi\). The set of complex points of \(Y\) inside \(W\times I\) is therefore the set of points \((x,\varphi(x))\) with \(x\in X(\mathbf C)\cap W\) and \(G(x,\varphi(x))\ne0\), and the projection maps it homeomorphically, with inverse \(x\mapsto(x,\varphi(x))\), onto the open subset of \(X(\mathbf C)\cap W\) where \(G(x,\varphi(x))\ne0\). Finally
 
 \[
-F(x,t)=F(x,t)-F(x,\varphi(x))=(t-\varphi(x))\int_0^1\frac{\partial F}{\partial t}\bigl(x,\varphi(x)+s(t-\varphi(x))\bigr)\,ds,
+\begin{aligned}
+F(x,t)&=F(x,t)-F(x,\varphi(x))\\
+&=(t-\varphi(x))\,u(x,t),
+\end{aligned}
+\]
+where \(\tau_s=\varphi(x)+s(t-\varphi(x))\) and
+\[
+u(x,t)=\int_0^1\frac{\partial F}{\partial t}(x,\tau_s)\,ds ,
 \]
 
 and the integral \(u\) is holomorphic and equals \(\partial F/\partial t(x_0,t_0)\ne0\) at \((x_0,t_0)\), so it has no zeros near that point. \(\square\)

@@ -166,21 +166,33 @@ def render_unit(unit, template, number, total, units):
 def source_archive(destination):
     """Include the exact course, offline reader assets and their licence notices."""
     docs = COURSE.parent.parent
+    repository = docs.parent
     members = []
-    for path in COURSE.rglob('*'):
-        if path.is_file() and '__pycache__' not in path.parts and path.suffix not in {'.aux', '.log', '.out', '.zip', '.pdf'}:
-            members.append((path, 'docs/courses/TR-BAKER/' + path.relative_to(COURSE).as_posix()))
     metadata = json.loads((COURSE / 'course.json').read_text(encoding='utf-8'))
-    for unit in metadata['units']:
-        edition = current_pdf(unit)
-        if edition is not None:
-            members.append((edition, 'docs/courses/TR-BAKER/' + edition.name))
-    for name in ['site.css', 'mathjax']:
-        path = docs / 'assets' / name
-        files = list(path.rglob('*')) if path.is_dir() else [path]
-        for asset in files:
-            if asset.is_file():
-                members.append((asset, 'docs/assets/' + asset.relative_to(docs / 'assets').as_posix()))
+    allowed = json.loads((COURSE / 'source-package-files.json').read_text(encoding='utf-8'))['members']
+    if len(allowed) != len(set(allowed)):
+        raise ValueError('Duplicate source-package member')
+    current_editions = {path.resolve() for unit in metadata['units']
+                        if (path := current_pdf(unit)) is not None}
+    for name in allowed:
+        if not (name.startswith('docs/courses/TR-BAKER/') or
+                name.startswith('docs/assets/mathjax/') or name == 'docs/assets/site.css'):
+            raise ValueError('Source-package member outside its allowed scope')
+        path = repository / name
+        if path.resolve().relative_to(repository.resolve()).as_posix() != name:
+            raise ValueError('Source-package member has an indirect path')
+        if '__pycache__' in path.parts or path.suffix in {'.aux', '.log', '.out', '.zip', '.pyc'}:
+            raise ValueError('Unexpected source-package member')
+        if not path.is_file():
+            raise ValueError('Missing source-package member: ' + name)
+        if path.suffix == '.pdf' and path.resolve() not in current_editions:
+            continue
+        members.append((path, name))
+    required = {'docs/courses/TR-BAKER/' + unit['source'] for unit in metadata['units']}
+    required.update('docs/courses/TR-BAKER/sources/' + unit['internal_id'] + '.tex'
+                    for unit in metadata['units'])
+    if not required <= {name for _, name in members}:
+        raise ValueError('Incomplete editable source package')
     destination.parent.mkdir(parents=True, exist_ok=True)
     def archive_bytes(path):
         data = path.read_bytes()

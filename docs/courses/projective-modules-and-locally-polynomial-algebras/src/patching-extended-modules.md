@@ -10,17 +10,25 @@ We use from [Localization, local properties and support](course:AG-CA/localizati
 
 **Lemma 1.1** (isomorphisms spread). Let \(N,N'\) be finitely presented modules over a ring \(B\), \(S\subseteq B\) multiplicative, and \(\varphi\colon S^{-1}N\to S^{-1}N'\) an isomorphism. There are \(s\in S\) and an isomorphism \(N_s\to N'_s\) whose localization is \(\varphi\). Two homomorphisms \(N\to N'\) with the same localization agree after inverting some \(t\in S\).
 
-**Proof.** By Theorem 2.2 of the localization lesson, \(S^{-1}\operatorname{Hom}_B(N,N')=\operatorname{Hom}_{S^{-1}B}(S^{-1}N,S^{-1}N')\), and similarly for \(\operatorname{Hom}(N',N)\) and the endomorphism modules. So \(\varphi=\alpha/s_1\) and \(\varphi^{-1}=\beta/s_2\) with \(\alpha\colon N\to N'\), \(\beta\colon N'\to N\), \(s_i\in S\). The endomorphisms \(\beta\alpha-s_1s_2\) and \(\alpha\beta-s_1s_2\) have zero localization, so they are killed by some \(s_3\in S\). With \(s=s_1s_2s_3\), the maps \(\alpha/s_1\colon N_s\to N'_s\) and \(\beta/s_2\colon N'_s\to N_s\) are inverse to each other. The second assertion is the injectivity of \(\operatorname{Hom}_B(N,N')\to\operatorname{Hom}(S^{-1}N,S^{-1}N')\) up to \(S\)-torsion: a homomorphism with zero localization is killed by some \(t\in S\). \(\square\)
+**Proof.** By Theorem 2.2 of the localization lesson, \(S^{-1}\operatorname{Hom}_B(N,N')\) equals \(\operatorname{Hom}_{S^{-1}B}(S^{-1}N,S^{-1}N')\), and similarly for \(\operatorname{Hom}(N',N)\) and the endomorphism modules. So \(\varphi=\alpha/s_1\) and \(\varphi^{-1}=\beta/s_2\) with \(\alpha\colon N\to N'\), \(\beta\colon N'\to N\), \(s_i\in S\). The endomorphisms \(\beta\alpha-s_1s_2\) and \(\alpha\beta-s_1s_2\) have zero localization, so they are killed by some \(s_3\in S\). With \(s=s_1s_2s_3\), the maps \(\alpha/s_1\colon N_s\to N'_s\) and \(\beta/s_2\colon N'_s\to N_s\) are inverse to each other. The second assertion is the injectivity of \(\operatorname{Hom}_B(N,N')\to\operatorname{Hom}(S^{-1}N,S^{-1}N')\) up to \(S\)-torsion: a homomorphism with zero localization is killed by some \(t\in S\). \(\square\)
 
 **Lemma 1.2** (gluing). Let \(f_0,f_1\in A\) with \(Af_0+Af_1=A\). For every \(A\)-module \(M\) the sequence
 \[
-0\to M\to M_{f_0}\times M_{f_1}\to M_{f_0f_1},\qquad x\mapsto(x,x),\quad(a,b)\mapsto a-b,
+\begin{gathered}
+0\to M\to M_{f_0}\times M_{f_1}\to M_{f_0f_1},\\
+x\mapsto(x,x),\quad(a,b)\mapsto a-b,
+\end{gathered}
 \]
 is exact. Consequently, if \(u_i\colon M'_{f_i}\to M_{f_i}\) are isomorphisms of \(A_{f_i}\)-modules with \((u_0)_{f_1}=(u_1)_{f_0}\), there is a unique isomorphism \(u\colon M'\to M\) with \(u_{f_i}=u_i\) for \(i=0,1\).
 
 **Proof.** For every \(n\), \(Af_0^n+Af_1^n=A\), since a maximal ideal containing both powers would contain \(f_0\) and \(f_1\). If \(x\) maps to zero in both localizations, then \(f_0^nx=f_1^nx=0\) for some \(n\), so \(x=0\). Let \(a=y/f_0^n\) and \(b=z/f_1^n\) have the same image in \(M_{f_0f_1}\). Then \((f_0f_1)^m(f_1^ny-f_0^nz)=0\) for some \(m\); replacing \(y,z,n\) by \(f_0^my,\ f_1^mz,\ n+m\), which does not change \(a\) and \(b\), we may assume \(f_1^ny=f_0^nz\). Write \(1=cf_0^n+df_1^n\) and put \(x=cy+dz\). Then
 \[
-f_0^nx=cf_0^ny+df_0^nz=cf_0^ny+df_1^ny=y,\qquad f_1^nx=cf_1^ny+df_1^nz=cf_0^nz+df_1^nz=z,
+\begin{aligned}
+f_0^nx&=cf_0^ny+df_0^nz\\
+&=cf_0^ny+df_1^ny=y,\\
+f_1^nx&=cf_1^ny+df_1^nz\\
+&=cf_0^nz+df_1^nz=z,
+\end{aligned}
 \]
 so \(x\) maps to \((a,b)\). For the second assertion, send \(x'\in M'\) to the unique \(x\in M\) with image \((u_0(x'),u_1(x'))\); this defines an \(A\)-linear \(u\) with \(u_{f_i}=u_i\), because both sides are \(A_{f_i}\)-linear and agree on the image of \(M'\). The isomorphisms \(u_i^{-1}\) give \(v\colon M\to M'\) in the same way, and \(uv\), \(vu\) are identities by the uniqueness part of exactness. \(\square\)
 
@@ -32,16 +40,24 @@ For a ring \(R\), not necessarily commutative, write \((1+TR[T])^\times\) for th
 
 **Proof.** Write \(\theta(T)=\sum_{i=0}^pa_iT^i\) and \(\theta(T)^{-1}=\sum_{j=0}^pb_jT^j\) with \(a_i,b_j\in R_f\) and \(a_0=b_0=1\). Let \(Y,Z\) be further central indeterminates and \(r\ge0\). Since \(U^i-V^i=(U-V)\sum_{n=0}^{i-1}U^{i-1-n}V^n\),
 \[
-\theta\bigl((Y+f^rZ)T\bigr)\,\theta(YT)^{-1}
-=1+\bigl[\theta((Y+f^rZ)T)-\theta(YT)\bigr]\theta(YT)^{-1}
-=1+ZT\sum_{i=1}^p\sum_{j=0}^p\sum_{n=0}^{i-1}f^ra_ib_j\,(Y+f^rZ)^{i-1-n}\,Y^{n+j}\,T^{i-1+j}.
+\begin{aligned}
+&\theta\bigl((Y+f^rZ)T\bigr)\,\theta(YT)^{-1}\\
+&\quad=1+\bigl[\theta((Y+f^rZ)T)-\theta(YT)\bigr]\\
+&\qquad\cdot\theta(YT)^{-1}\\
+&\quad=1+ZT\sum_{i=1}^p\sum_{j=0}^p\sum_{n=0}^{i-1}f^ra_ib_j\\
+&\qquad\cdot(Y+f^rZ)^{i-1-n}\,Y^{n+j}\,T^{i-1+j}.
+\end{aligned}
 \]
-For \(r\) large, each of the finitely many elements \(f^ra_ib_j\) is the image of some \(c_{ij}\in R\). Hence there is \(\phi\in1+ZT\,R[Y,Z,T]\) with \(\phi_f=\theta((Y+f^rZ)T)\,\theta(YT)^{-1}\). Applying the same construction after the substitution \(Y\mapsto Y+f^rZ\), \(Z\mapsto-Z\) gives \(\phi'\in1+ZT\,R[Y,Z,T]\) with \(\phi'_f=\theta(YT)\,\theta((Y+f^rZ)T)^{-1}\). Then \((\phi\phi')_f=(\phi'\phi)_f=1\). Write \(\phi\phi'=1+ZTh_1\) and \(\phi'\phi=1+ZTh_2\); the polynomials \(h_1,h_2\) have zero image over \(R_f\), so their finitely many coefficients are killed by some power \(f^s\). Consequently \(\phi(Y,f^sZ,T)\) is invertible with inverse \(\phi'(Y,f^sZ,T)\): for instance \(\phi(Y,f^sZ,T)\phi'(Y,f^sZ,T)=1+f^sZT\,h_1(Y,f^sZ,T)=1\).
+For \(r\) large, each of the finitely many elements \(f^ra_ib_j\) is the image of some \(c_{ij}\in R\). Hence there is \(\phi\in1+ZT\,R[Y,Z,T]\) with \(\phi_f=\theta((Y+f^rZ)T)\,\theta(YT)^{-1}\). Applying the same construction after the substitution \(Y\mapsto Y+f^rZ\), \(Z\mapsto-Z\) gives \(\phi'\in1+ZT\,R[Y,Z,T]\) with \(\phi'_f=\theta(YT)\,\theta((Y+f^rZ)T)^{-1}\). Then \((\phi\phi')_f=(\phi'\phi)_f=1\). Write \(\phi\phi'=1+ZTh_1\) and \(\phi'\phi=1+ZTh_2\); the polynomials \(h_1,h_2\) have zero image over \(R_f\), so their finitely many coefficients are killed by some power \(f^s\). Consequently \(\phi(Y,f^sZ,T)\) is invertible with inverse \(\phi'(Y,f^sZ,T)\): for instance \(\phi(Y,f^sZ,T)\phi'(Y,f^sZ,T)\) equals \(1+f^sZT\,h_1(Y,f^sZ,T)\), which is \(1\).
 
 Put \(k=r+s\). If \(g_1=g_2+f^kz\) with \(z\in A\), let \(\psi(T)=\phi(g_2,f^sz,T)\). It lies in \((1+TR[T])^\times\), because \(\phi\) and its inverse are congruent to \(1\) modulo \(ZT\), and
 \[
-\psi_f(T)=\theta\bigl((g_2+f^rf^sz)T\bigr)\,\theta(g_2T)^{-1}=\theta(g_1T)\,\theta(g_2T)^{-1}.\qquad\square
+\begin{aligned}
+\psi_f(T)&=\theta\bigl((g_2+f^rf^sz)T\bigr)\,\theta(g_2T)^{-1}\\
+&=\theta(g_1T)\,\theta(g_2T)^{-1}.
+\end{aligned}
 \]
+\(\square\)
 
 ## 3. Quillen induction
 
@@ -72,15 +88,26 @@ Then \(\mathcal P(K)\) holds.
 
 *Sheaf condition.* Replacing \(A\) by \(L\), we may assume \(L=A\), with \(t_0,t_1\in A\), \(At_0+At_1=A\), and isomorphisms \(u_i\colon N_{t_i}[T]\to M_{t_i}\) reducing to the identity. Let \(R=\operatorname{End}_A(N)\). Since \(N\) is finitely presented, Theorem 2.2 of the localization lesson and the finite generation of \(N\) give
 \[
-\operatorname{End}_{A_{t_0t_1}[T]}\bigl(N_{t_0t_1}[T]\bigr)=\operatorname{Hom}_{A_{t_0t_1}}\Bigl(N_{t_0t_1},\bigoplus_{i\ge0}N_{t_0t_1}T^i\Bigr)=R_{t_0t_1}[T].
+\begin{aligned}
+&\operatorname{End}_{A_{t_0t_1}[T]}\bigl(N_{t_0t_1}[T]\bigr)\\
+&\quad =\operatorname{Hom}_{A_{t_0t_1}}\Bigl(N_{t_0t_1},\bigoplus_{i\ge0}N_{t_0t_1}T^i\Bigr)\\
+&\quad =R_{t_0t_1}[T].
+\end{aligned}
 \]
 So \(\theta=(u_0)_{t_1}^{-1}(u_1)_{t_0}\) is an element of \((1+TR_{t_0t_1}[T])^\times\). Apply Lemma 2.1 twice: to the \(A_{t_0}\)-algebra \(R_{t_0}\), the element \(t_1\) and \(\theta\), and to the \(A_{t_1}\)-algebra \(R_{t_1}\), the element \(t_0\) and \(\theta\); let \(k\) be larger than both resulting integers. Since \(At_0^k+At_1^k=A\), there is \(g\in At_0^k\) with \(1-g\in At_1^k\). Write
 \[
-\theta(T)=\bigl[\theta(T)\,\theta(gT)^{-1}\bigr]\bigl[\theta(gT)\,\theta(0\cdot T)^{-1}\bigr],\qquad\theta(0\cdot T)=1 .
+\begin{aligned}
+\theta(T)&=\bigl[\theta(T)\,\theta(gT)^{-1}\bigr]\\
+&\quad\cdot\bigl[\theta(gT)\,\theta(0\cdot T)^{-1}\bigr],
+\end{aligned}
 \]
+where \(\theta(0\cdot T)=1\).
 In \(A_{t_0}\), \(1-g\in t_1^kA_{t_0}\), so the first factor is \((\psi_0)_{t_1}\) for some \(\psi_0\in(1+TR_{t_0}[T])^\times\). In \(A_{t_1}\), \(g-0\in t_0^kA_{t_1}\), so the second factor is \((\psi_1)_{t_0}\) for some \(\psi_1\in(1+TR_{t_1}[T])^\times\). Now \(u_0\psi_0\) and \(u_1\psi_1^{-1}\) are isomorphisms reducing to the identity, and
 \[
-(u_0\psi_0)_{t_1}^{-1}(u_1\psi_1^{-1})_{t_0}=(\psi_0)_{t_1}^{-1}\,\theta\,(\psi_1)_{t_0}^{-1}=1 .
+\begin{aligned}
+&(u_0\psi_0)_{t_1}^{-1}(u_1\psi_1^{-1})_{t_0}\\
+&\quad =(\psi_0)_{t_1}^{-1}\,\theta\,(\psi_1)_{t_0}^{-1}=1 .
+\end{aligned}
 \]
 By Lemma 1.2 they glue to an isomorphism \(N[T]\to M\); its reduction modulo \(T\) is the identity, as it is after localizing at \(t_0\) and at \(t_1\). This proves \(\mathcal P(A)\).
 
@@ -106,7 +133,7 @@ Proposition 3.1 now gives \(\mathcal P(A)\). \(\square\)
 
 **5.2.** Since \(\tfrac16=\tfrac12-\tfrac13\), take \(\psi_0\) with rows \((1,\ T/2)\), \((0,1)\) and \(\psi_1\) with rows \((1,\ -T/3)\), \((0,1)\). Unipotent upper triangular matrices multiply by adding their corner entries, so \(\psi_0\psi_1=\theta\) in \(R_6[T]\).
 
-**5.3.** Let \((a_i)\in\prod_iM_{f_i}\) have equal images in all \(M_{f_if_j}\). Write \(a_i=y_i/f_i^n\) with one \(n\). For each pair \(i,j\), \((f_if_j)^{m}(f_j^ny_i-f_i^ny_j)=0\) for some \(m\), and one \(m\) serves all pairs. Since \((f_if_j)^m(f_j^ny_i-f_i^ny_j)=f_j^{n+m}(f_i^my_i)-f_i^{n+m}(f_j^my_j)\), replacing \(y_i\) by \(f_i^my_i\) and \(n\) by \(n+m\) achieves \(f_j^ny_i=f_i^ny_j\) for all \(i,j\). The \(f_i^n\) generate the unit ideal; write \(1=\sum_ic_if_i^n\) and put \(x=\sum_ic_iy_i\). Then \(f_j^nx=\sum_ic_if_j^ny_i=\sum_ic_if_i^ny_j=y_j\), so \(x\) maps to \(a_j\) for every \(j\). Injectivity and the gluing of isomorphisms follow as in Lemma 1.2.
+**5.3.** Let \((a_i)\in\prod_iM_{f_i}\) have equal images in all \(M_{f_if_j}\). Write \(a_i=y_i/f_i^n\) with one \(n\). For each pair \(i,j\), \((f_if_j)^{m}(f_j^ny_i-f_i^ny_j)=0\) for some \(m\), and one \(m\) serves all pairs. Since \((f_if_j)^m(f_j^ny_i-f_i^ny_j)\) equals \(f_j^{n+m}(f_i^my_i)-f_i^{n+m}(f_j^my_j)\), replacing \(y_i\) by \(f_i^my_i\) and \(n\) by \(n+m\) achieves \(f_j^ny_i=f_i^ny_j\) for all \(i,j\). The \(f_i^n\) generate the unit ideal; write \(1=\sum_ic_if_i^n\) and put \(x=\sum_ic_iy_i\). Then \(f_j^nx=\sum_ic_if_j^ny_i=\sum_ic_if_i^ny_j=y_j\), so \(x\) maps to \(a_j\) for every \(j\). Injectivity and the gluing of isomorphisms follow as in Lemma 1.2.
 
 **5.4.** The first claim is Theorem 4.1, since \(P\) is finitely presented. Then \(P\cong(P/TP)[T]\), and \(P/TP\) is a direct summand of \((A[T]/(T))^n=A^n\) because \(P\) is a direct summand of \(A[T]^n\).
 

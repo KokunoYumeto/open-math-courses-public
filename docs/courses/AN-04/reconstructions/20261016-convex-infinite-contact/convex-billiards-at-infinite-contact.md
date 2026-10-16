@@ -42,7 +42,7 @@ Taking the ratio of the second gap to the sum proves the assertion. In particula
 
 ## 2. Construct the actual smooth convex graph
 
-**I0. An exact moment profile.** Choose a nonnegative even smooth function \(\kappa\), positive on \((-a,a)\), supported in \([-a,a]\), with integral one, where \(a=1/32\). It can be obtained by normalizing
+**I0. An exact moment profile.** Choose a nonnegative even smooth function \(\kappa\), positive on \((-a,a)\), supported in \([-a,a]\), with integral one, where \(a=1/32\). For this construction, take it to be the normalization of
 \(\exp[-1/(1-(u/a)^2)]\) for \(|u|<a\), extended by zero. Every derivative at an endpoint is zero: differentiation produces a rational power of the endpoint distance times the same exponential, and \(v^{-N}e^{-1/v}\to0\). The integral is positive and finite. Define
 \[
  K(v)=\int_{-\infty}^v\kappa(u)\,du,\qquad
@@ -146,11 +146,48 @@ Differentiating (CB13) with \(x'=(1+f'^2)^{-1/2}\) gives exactly the last formul
 
 At \(s=0\) this arc has the same full state \(q_0\) as the reflected arc and agrees with it for \(s\le0\). For every positive chord interval the reflected arc has \(y>f(x)\), whereas this one stays on the boundary. They are different continuations of the same smooth real constant-coefficient wave characteristic problem. Finite-contact uniqueness cannot be extended to all infinite-contact states.
 
+## 5. Both specified continuations are limits of transverse broken rays
+
+**L0. Approximation of these two curves.** For this example the reflected arc and the boundary arc are each uniform compressed limits of finite transverse broken rays on every compact physical-time interval in their stated domain. We do not infer this property for all nonunique generalized rays.
+
+First check local uniqueness along the positive boundary arc, including its flat portions. Write \(\sigma\) for boundary arclength, \(T,N\) for its tangent and inward unit normal, and
+\[
+ \varkappa=\frac{f''}{(1+f'^2)^{3/2}}\ge0,\qquad
+ F(r,\sigma)=F(0,\sigma)+rN(\sigma).
+ \tag{CB15}
+\]
+At \(r=0\), the two coordinate derivatives are \(N,T\), hence the map has a smooth local inverse. Since \(N_\sigma=-\varkappa T\), its Euclidean metric is \(dr^2+(1-r\varkappa)^2d\sigma^2\). The actual pulled-back wave symbol, multiplied by two, is therefore
+\[
+ p=\rho^2-R,\qquad
+ R=\tau^2-\frac{\eta_\sigma^2}{(1-r\varkappa)^2},\qquad
+ R_0=\tau^2-\eta_\sigma^2,\qquad
+ R_1=-2\varkappa\eta_\sigma^2 .
+ \tag{CB16}
+\]
+Its boundary gliding field has constant \(\eta_\sigma,\tau\), with \(\sigma'=2\eta_\sigma\) and \(t'=-2\tau\). This factor-two Hamilton parameter agrees with the physical-time parameter of (CB11) after the stated constant rescaling.
+
+Where \(\varkappa>0\), strict gliding uniqueness follows from the normal-energy estimate GGL:T016–T017. In an open flat segment, the higher-contact comparison has \(e=0\), so the continuation is also uniquely the boundary line there. At a nonzero endpoint of a curvature bump, the curvature is monotone just inside that bump. To verify the last assertion, on its interval (CB7) gives
+\[
+ f''=\frac{b_j-b_{j+1}}{d_j}\,
+   \kappa\!\left(\frac{x-x_{j+1}}{d_j}-c_j\right),\qquad
+ \frac{d}{dx}\log\varkappa
+  =\frac{\kappa'(S-c_j)}{d_j\kappa(S-c_j)}
+                    -\frac{3f'f''}{1+f'^2}.
+ \tag{CB17}
+\]
+For the fixed exponential bump in I0, its logarithmic derivative tends to positive infinity at the left edge and negative infinity at the right edge. The second term is bounded on this one interval. Thus \(\varkappa\) increases from zero at entry and decreases to zero at exit on sufficiently small one-sided neighborhoods. The map from \(x\) to \(\sigma\) is strictly increasing. In the time direction entering either bump edge, \(e=R_1=-2\varkappa\), on the unit gliding state, is nonincreasing from zero. GGL:T024 forces the gliding continuation; on the flat side \(e=0\) gives the same conclusion. Every positive boundary point therefore has local uniqueness. This uses the specific bump just chosen, rather than a claim for arbitrary flat curvature.
+
+Every positive point of the polygon has local uniqueness as well, by ordinary flow or a transverse reflection. Neither curve has reflection accumulation at a positive time. On the negative side of zero the boundary is straight and \(R_1=0\). GGL:T019–T022, applied backward from the common state at zero, forces the unique boundary-line continuation. Hence each complete curve is the only generalized continuation through any one of its own fixed positive states on the compact interval considered: local uniqueness propagates agreement through every positive time, continuity supplies zero, and the backward zero-forcing comparison supplies negative times. This conclusion does not say that the common state at zero alone determines the positive future.
+
+It remains to obtain approximating finite rays through nearby states. Physical time is a uniform clock for these wave characteristics near \(\tau=-1\). On a bounded physical-time interval the base velocity has magnitude one, and reflection preserves that speed and the spatial covector magnitude. Nearby normalized states therefore remain in a common compact phase region. Apply the volume argument GGL:T031–T035 on this compact region. A finite boundary-chart cover has a common normal strip estimate \(O(\epsilon^3)\); the preceding clock grid has \(O(\epsilon^{-1})\) sections. The injective finite reflected clock maps preserve the whole reduced volume. The initial states whose continuation reaches glancing before either end thus have outer measure \(O(\epsilon^2)\) for every small \(\epsilon\), and form a null set. Fixed-clock wall endpoints are the null exceptions treated in GGL:A1. The same proof works forward and backward, and across the finitely many compact charts.
+
+Consequently finite transverse broken arcs on the entire interval have initial states dense near either selected positive state. Normalize them by their constant negative time covector and choose a sequence approaching that state. GGL:T027–T030 supplies uniformly convergent compressed subsequences, and every subsequential limit is a generalized arc through that state. The just-proved uniqueness on this interval identifies it with the chosen polygon or gliding arc. If the whole sequence did not converge, a subsequence with a fixed positive uniform error would have a further compactness limit with zero error, a contradiction. This proves the claimed uniform compressed approximation of both curves.
+
 ![Convex chord interpolation and its exact equal-angle reflection](figures/convex-infinite-contact.svg)
 
 **V0. What the diagram measures.** The left panel shows the actual vertices \(P_j\), straight chords and the smooth convex graph, with vertical coordinates multiplied by the stated factor. The middle panel subtracts the left tangent on the interval \(j=5\) and divides by \(d_j(b_j-b_{j+1})\): the chord is exactly \(\theta_j S\), the graph is \(L(S-c_j)\), and their difference is positive. The right panel uses an orthonormal frame at \(P_2\); its two unit directions have angles \(\pm(\alpha_1-\alpha_2)/2\) to the tangent. Numerical integration is used only to draw the fixed smooth profile; exact mean, convexity, flatness and reflection are proved above. The picture is a spatial section; physical time and covectors are supplied in (CB10)–(CB14).
 
-## 5. Exercises with complete solutions
+## 6. Exercises with complete solutions
 
 ### Exercise 1. Track the normal reflection gap
 

@@ -28,9 +28,9 @@ is an integer: each counterclockwise cycle contributes \(-1\) and each clockwise
 
 For a state \(s\), let \(Q_s\) be the spanning subgraph of \(T\) whose edges are, for each \(t\in\mathcal T\), the edge of \(t\) opposite \(s(t)\), that is, the edge joining the two other vertices of \(t\). These \(|\mathcal T|\) edges are distinct, since each edge lies in one black face.
 
-Assign a real number \(a(t,v)\) to every \(t\in\mathcal T\) and every vertex \(v\) of \(t\), to be chosen in Section 3, and let \(\omega(s)=\sum_{t\in\mathcal T}a(t,s(t))\). With \(\mathrm i^2=-1\), put
+Assign a real number \(a(t,v)\) to every \(t\in\mathcal T\) and every vertex \(v\) of \(t\), to be chosen in Section 3, and let \(\omega(s)=\sum_{t\in\mathcal T}a(t,s(t))\). With \(\mathrm i^2=-1\), put, for \(x\in\mathbb R\),
 \[
-Z(x)=\sum_{(r,s)\text{ a pair}}\mathrm i^{J(r,s)}\exp\bigl(x\,\omega(s)\bigr)\qquad(x\in\mathbb R).
+Z(x)=\sum_{(r,s)\text{ a pair}}\mathrm i^{J(r,s)}\exp\bigl(x\,\omega(s)\bigr).
 \]
 
 **Lemma 2.1.** For a black face \(t\) with three distinct vertices \(p,q,u\),
@@ -46,7 +46,11 @@ Z(x)=\sum_{(r,s)\text{ a pair}}\mathrm i^{J(r,s)}\exp\bigl(x\,\omega(s)\bigr)\qq
 
 By Lemma 2.1, the faces changed contribute
 \[
-3\bigl(J(\tilde r,s)-J(r,s)\bigr)=\sum_t\bigl(\delta(u(t),s(t))-\delta(r(t),s(t))\bigr)=2\sum_t\delta\bigl(r(t),u(t)\bigr),
+\begin{aligned}
+&3\bigl(J(\tilde r,s)-J(r,s)\bigr)\\
+&\quad=\sum_t\bigl(\delta(u(t),s(t))-\delta(r(t),s(t))\bigr)\\
+&\quad=2\sum_t\delta\bigl(r(t),u(t)\bigr),
+\end{aligned}
 \]
 the sums running over the faces whose edge lies in \(\Gamma_0\). The last sum is the \(\delta\)-sum of the directed cycle \(\Gamma_0\), which is \(\pm3\) by Lemma 1.1 (choose in every \(t\in\mathcal T\) the dart from \(r(t)\) to \(u(t)\)). Hence \(J(\tilde r,s)=J(r,s)\pm2\) and \(\mathrm i^{J(\tilde r,s)}=-\mathrm i^{J(r,s)}\). The terms cancel in couples. \(\square\)
 

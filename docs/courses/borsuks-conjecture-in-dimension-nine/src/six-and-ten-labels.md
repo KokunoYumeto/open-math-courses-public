@@ -32,7 +32,10 @@ The image of a six-label triangle system under a bijection \(C\to C'\) is a six-
 
 (3) Name the elements \(C=\{a,b,c,d,e,g\}\) so that the two members of \(\mathcal T\) containing \(\{a,b\}\) are \(\{a,b,c\}\) and \(\{a,b,d\}\). In the five-cycle at \(a\), the neighbours of \(b\) are \(c\) and \(d\); deleting \(b\) leaves a path through \(c,d,e,g\) with ends \(c\) and \(d\), whose middle edge is \(\{e,g\}\). Its two end edges form one of the matchings
 \[
-M_1=\bigl\{\{c,e\},\{d,g\}\bigr\},\qquad M_2=\bigl\{\{c,g\},\{d,e\}\bigr\}.
+\begin{gathered}
+M_1=\bigl\{\{c,e\},\{d,g\}\bigr\},\\
+M_2=\bigl\{\{c,g\},\{d,e\}\bigr\}.
+\end{gathered}
 \]
 The same holds for the link at \(b\), whose neighbours of \(a\) are also \(c\) and \(d\). The two links use different matchings: if the link at \(a\) uses \(M_1\), then \(\{a,c,e\},\{a,d,g\}\in\mathcal T\), so their complements \(\{b,d,g\},\{b,c,e\}\notin\mathcal T\), and the link at \(b\) contains neither \(\{d,g\}\) nor \(\{c,e\}\); it uses \(M_2\). The restrictions of the two links to \(\{c,d,e,g\}\) are the paths \(\{e,g\}\cup M_1\) and \(\{e,g\}\cup M_2\), which differ exactly in the four-cycle \(M_1\cup M_2\). Any three vertices of a four-cycle contain one of its edges, so the restrictions to any three-element \(R\subseteq\{c,d,e,g\}\) differ. A transposition \((a\ b)\) preserving \(\mathcal T\) would map the link at \(a\) onto the link at \(b\) and fix \(R\) pointwise, making the restrictions equal.
 
@@ -104,7 +107,7 @@ The proof does not determine the smallest dimension in which Borsuk's conjecture
 
 ## 4. Exercises
 
-**4.1.** Show that the ten triples \(\{1,2,3\},\{1,3,4\},\{1,4,5\},\{1,5,6\},\{1,2,6\},\{2,3,5\},\{3,4,6\},\{2,4,5\},\{3,5,6\},\{2,4,6\}\) form a six-label triangle system on \([6]\) (they are the triangles of the six-vertex triangulation of the projective plane), and find the link graph at \(1\).
+**4.1.** Show that the ten triples \(\{1,2,3\}\), \(\{1,3,4\}\), \(\{1,4,5\}\), \(\{1,5,6\}\), \(\{1,2,6\}\), \(\{2,3,5\}\), \(\{3,4,6\}\), \(\{2,4,5\}\), \(\{3,5,6\}\), \(\{2,4,6\}\) form a six-label triangle system on \([6]\) (they are the triangles of the six-vertex triangulation of the projective plane), and find the link graph at \(1\).
 
 **4.2.** Show that there are exactly twelve six-label triangle systems on \([6]\). (Show that the system is determined by the link at \(1\), a five-cycle on \(\{2,\dots,6\}\), and that each of the twelve five-cycles occurs.)
 
@@ -114,7 +117,7 @@ The proof does not determine the smallest dimension in which Borsuk's conjecture
 
 ## 5. Solutions
 
-**4.1.** The complements of the listed triples are \(\{4,5,6\},\{2,5,6\},\{2,3,6\},\{2,3,4\},\{3,4,5\},\{1,4,6\},\{1,2,5\},\{1,3,6\},\{1,2,4\},\{1,3,5\}\), none of which is listed, and together the twenty triples are all of \(\binom{[6]}3\). Each pair occurs in exactly two listed triples; for instance \(\{1,2\}\) in \(\{1,2,3\}\) and \(\{1,2,6\}\). The link at \(1\) has edges \(\{2,3\},\{3,4\},\{4,5\},\{5,6\},\{6,2\}\): the five-cycle \(2,3,4,5,6\).
+**4.1.** The complements of the listed triples are \(\{4,5,6\}\), \(\{2,5,6\}\), \(\{2,3,6\}\), \(\{2,3,4\}\), \(\{3,4,5\}\), \(\{1,4,6\}\), \(\{1,2,5\}\), \(\{1,3,6\}\), \(\{1,2,4\}\), \(\{1,3,5\}\), none of which is listed, and together the twenty triples are all of \(\binom{[6]}3\). Each pair occurs in exactly two listed triples; for instance \(\{1,2\}\) in \(\{1,2,3\}\) and \(\{1,2,6\}\). The link at \(1\) has edges \(\{2,3\},\{3,4\},\{4,5\},\{5,6\},\{6,2\}\): the five-cycle \(2,3,4,5,6\).
 
 **4.2.** The members containing \(1\) are given by the link at \(1\), and every other triple is the complement of a triple containing \(1\), so by condition 1 the link determines the system. There are \(4!/2=12\) five-cycles on the five labels \(2,\dots,6\). Relabelling the system of 4.1 by a permutation of \(\{2,\dots,6\}\) produces every five-cycle as the link at \(1\), and the resulting system satisfies conditions 1 and 2 because relabelling preserves them.
 

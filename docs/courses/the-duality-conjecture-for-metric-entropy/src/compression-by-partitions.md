@@ -10,22 +10,36 @@ The lesson is self-contained apart from elementary counting.
 
 Let \(X\) be a finite nonempty set, \(u,q\) positive integers and \([u]=\{1,\dots,u\}\). For each \(i\in[u]\) let \(L_i:X\to\Sigma_i\) be a map taking at most \(q\) values (the *labels*); its fibres form a partition of \(X\) into at most \(q\) classes. Fix \(0<\theta<1\) and a nonempty family \(\mathcal T\) of subsets of \([u]\) with
 \[
-|[u]\setminus T|\le\theta u\qquad(T\in\mathcal T).\tag{1.1}
+\begin{gathered}
+|[u]\setminus T|\le\theta u\\
+(T\in\mathcal T).
+\end{gathered}\tag{1.1}
 \]
 For \(T\in\mathcal T\), join distinct \(x,z\in X\) by an edge if \(L_i(x)=L_i(z)\) for some \(i\in T\), and let \(d_T(x,z)\in\{0,1,2,\dots\}\cup\{\infty\}\) be the graph distance (\(\infty\) between different components). It satisfies the triangle inequality.
 
 Fix a positive integer \(h\) with
 \[
-\frac{\log3}{\log(h+1)}\le\theta,\qquad\text{and put}\quad s=\lceil1/\theta\rceil.\tag{1.2}
+\begin{gathered}
+\frac{\log3}{\log(h+1)}\le\theta,\\
+\text{and put}\quad s=\lceil1/\theta\rceil.
+\end{gathered}\tag{1.2}
 \]
 The *logarithmic profile* is \(\phi_h(d)=\max\{0,1-\frac{\log(d+1)}{\log(h+1)}\}\) for \(d=0,1,2,\dots\) and \(\phi_h(\infty)=0\). Let \(Y=X\times\mathcal T\), and for \(y=(v,T)\in Y\) define the column
 \[
-g_y(x)=\phi_h\bigl(d_T(x,v)\bigr)\in[0,1]\qquad(x\in X).
+\begin{gathered}
+g_y(x)=\phi_h\bigl(d_T(x,v)\bigr)\in[0,1]\\
+(x\in X).
+\end{gathered}
 \]
 
 **Lemma 1.1** (the profile as a sum of balls). The numbers \(\gamma_j=\frac{\log(j+2)-\log(j+1)}{\log(h+1)}\), \(0\le j<h\), are positive and sum to \(1\), and for every \(d\in\{0,1,2,\dots\}\cup\{\infty\}\)
+the relations (1.3) hold:
 \[
-\phi_h(d)=\sum_{j=0}^{h-1}\gamma_j\mathbf1_{\{d\le j\}},\qquad\sum_{j=0}^{h-1}\gamma_j\mathbf1_{\{d\le3j+2\}}\le\phi_h(d)+\frac{\log3}{\log(h+1)}.\tag{1.3}
+\begin{aligned}
+\phi_h(d)&=\sum_{j=0}^{h-1}\gamma_j\mathbf1_{\{d\le j\}},\\
+\sum_{j=0}^{h-1}\gamma_j\mathbf1_{\{d\le3j+2\}}&\le\phi_h(d)\\
+&\quad+\frac{\log3}{\log(h+1)}.
+\end{aligned}
 \]
 
 **Proof.** The sum of the \(\gamma_j\) telescopes to \(\frac{\log(h+1)}{\log(h+1)}=1\). For \(0\le d<h\), the first sum runs over \(j=d,\dots,h-1\) and telescopes to \(\frac{\log(h+1)-\log(d+1)}{\log(h+1)}=\phi_h(d)\); for \(d\ge h\) both sides vanish. In the second sum, the indices not counted by \(\phi_h(d)\) are those with \(j<d\le3j+2\). For finite \(d\) they form the integers from \(a=\lceil\frac{d+1}3\rceil-1\ge0\) to \(b=\min\{h-1,d-1\}\), with total weight \(\frac1{\log(h+1)}\log\frac{b+2}{a+1}\), and \(b+2\le d+1\le3(a+1)\). For \(d=\infty\) all indicators vanish. \(\square\)
@@ -34,47 +48,63 @@ g_y(x)=\phi_h\bigl(d_T(x,v)\bigr)\in[0,1]\qquad(x\in X).
 
 For nonnegative \(\mu\in\mathbb R^Y\) with \(\sum_y\mu_y\le1\) put \(f_\mu=\sum_y\mu_yg_y\), and let \(\mathcal F_+\) be the set of these functions. For \(S\subseteq Y\) write \(\mu(S)=\sum_{y\in S}\mu_y\).
 
-**Proposition 2.1** (uniform compression). There is a list \(\mathcal A\) of \(Q\) real functions on \(X\) such that every \(f\in\mathcal F_+\) has some \(A\in\mathcal A\) with
+**Proposition 2.1** (uniform compression). There is a list \(\mathcal A\) of \(Q\) real functions on \(X\) such that every \(f\in\mathcal F_+\) has some \(A\in\mathcal A\) satisfying, for all \(x\in X\), the inequalities (2.1):
 \[
-f(x)-3\theta\le A(x)\le f(x)+\theta\qquad(x\in X),\tag{2.1}
+f(x)-3\theta\le A(x)\le f(x)+\theta,
 \]
-and
+and such that the bound (2.2) holds:
 \[
-\log Q\le hs\log q+C_{h,\theta,u},\qquad C_{h,\theta,u}=\log u+hs2^u\log\Bigl(1+\frac{s2^u}\theta\Bigr).\tag{2.2}
+\begin{aligned}
+\log Q&\le hs\log q+C_{h,\theta,u},\\
+C_{h,\theta,u}&=\log u\\
+&\quad+hs2^u\log\Bigl(1+\frac{s2^u}\theta\Bigr).
+\end{aligned}
 \]
 
 **Proof.** Fix once and for all, for each \(i\), a map \(\rho_i\) from the labels of \(L_i\) to \(X\) with \(L_i(\rho_i(\sigma))=\sigma\): a representative of each class.
 
 *One partition for most of the mass.* Let \(f=f_\mu\). By (1.1),
 \[
-\frac1u\sum_{i=1}^u\mu\{(v,T):i\notin T\}=\sum_{(v,T)\in Y}\mu_{(v,T)}\frac{|[u]\setminus T|}u\le\theta,
+\begin{aligned}
+&\frac1u\sum_{i=1}^u\mu\{(v,T):i\notin T\}\\
+&\quad =\sum_{(v,T)\in Y}\mu_{(v,T)}\frac{|[u]\setminus T|}u\le\theta,
+\end{aligned}
 \]
 so some \(i_0\in[u]\) has \(\mu\{(v,T):i_0\notin T\}\le\theta\). Put \(Y_0=\{(v,T)\in Y:i_0\in T\}\).
 
 *Few pivots at each level.* Fix \(j\in\{0,\dots,h-1\}\) and let \(I_x=\{(v,T)\in Y_0:d_T(x,v)\le j\}\) for \(x\in X\). Starting from \(U=\varnothing\), as long as some \(I_z\) has \(\mu(I_z\setminus U)>\theta\), choose such a \(z\) and replace \(U\) by \(U\cup I_z\). Each step adds mass more than \(\theta\), and the total mass is at most \(1\), so there are \(k_j<1/\theta\) steps, hence \(k_j\le s\). The result is a set of pivots \(z_{j,1},\dots,z_{j,k_j}\) and \(U_j=\bigcup_kI_{z_{j,k}}\) with
 \[
-\mu(I_x\setminus U_j)\le\theta\qquad(x\in X).\tag{2.3}
+\begin{gathered}
+\mu(I_x\setminus U_j)\le\theta\\
+(x\in X).
+\end{gathered}\tag{2.3}
 \]
 Assign each \(y\in U_j\) to the first pivot \(z_{j,k}\) with \(y\in I_{z_{j,k}}\), and write \(k=\kappa_j(y)\).
 
-*Replacing pivots by labels.* For a pivot \(z\), let \(z'=\rho_{i_0}(L_{i_0}(z))\). Then \(L_{i_0}(z')=L_{i_0}(z)\), so \(d_T(z,z')\le1\) for every \(T\) containing \(i_0\). If \(y=(v,T)\) is assigned to \(z\), then \(i_0\in T\) and \(d_T(v,z)\le j\), so \(d_T(v,z')\le j+1\), and for every \(x\in X\):
-\[
-d_T(x,v)\le j\ \Longrightarrow\ d_T(x,z')\le2j+1,\qquad d_T(x,z')\le2j+1\ \Longrightarrow\ d_T(x,v)\le3j+2.\tag{2.4}
-\]
+*Replacing pivots by labels.* For a pivot \(z\), let \(z'=\rho_{i_0}(L_{i_0}(z))\). Then \(L_{i_0}(z')=L_{i_0}(z)\), so \(d_T(z,z')\le1\) for every \(T\) containing \(i_0\). If \(y=(v,T)\) is assigned to \(z\), then \(i_0\in T\) and \(d_T(v,z)\le j\), so \(d_T(v,z')\le j+1\), and for every \(x\in X\) the implications (2.4) hold: if \(d_T(x,v)\le j\), then \(d_T(x,z')\le2j+1\); if \(d_T(x,z')\le2j+1\), then \(d_T(x,v)\le3j+2\).
 Writing \(z'_{j,k}\) for the replacement of \(z_{j,k}\), define
 \[
-A_j(x)=\sum_{y=(v,T)\in U_j}\mu_y\mathbf1_{\{d_T(x,z'_{j,\kappa_j(y)})\le2j+1\}},\qquad f_{\mu,j}(x)=\sum_{y=(v,T)\in Y}\mu_y\mathbf1_{\{d_T(x,v)\le j\}}.
+\begin{gathered}
+A_j(x)=\sum_{y=(v,T)\in U_j}\mu_y\mathbf1_{\{d_T(x,z'_{j,\kappa_j(y)})\le2j+1\}},\\
+f_{\mu,j}(x)=\sum_{y=(v,T)\in Y}\mu_y\mathbf1_{\{d_T(x,v)\le j\}}.
+\end{gathered}
 \]
-A column counted in \(f_{\mu,j}(x)\) is either in \(U_j\), and then counted in \(A_j(x)\) by (2.4), or outside \(Y_0\) (mass at most \(\theta\)), or in \(I_x\setminus U_j\) (mass at most \(\theta\) by (2.3)). A column counted in \(A_j(x)\) has \(d_T(x,v)\le3j+2\) by (2.4). Hence
+A column counted in \(f_{\mu,j}(x)\) is either in \(U_j\), and then counted in \(A_j(x)\) by (2.4), or outside \(Y_0\) (mass at most \(\theta\)), or in \(I_x\setminus U_j\) (mass at most \(\theta\) by (2.3)). A column counted in \(A_j(x)\) has \(d_T(x,v)\le3j+2\) by (2.4). Hence the inequalities (2.5) hold:
 \[
-f_{\mu,j}(x)-2\theta\le A_j(x)\le\sum_{y=(v,T)}\mu_y\mathbf1_{\{d_T(x,v)\le3j+2\}}.\tag{2.5}
+\begin{aligned}
+f_{\mu,j}(x)-2\theta&\le A_j(x)\\
+&\le\sum_{y=(v,T)}\mu_y\mathbf1_{\{d_T(x,v)\le3j+2\}}.
+\end{aligned}
 \]
 
 *Combining the levels.* Let \(F=\sum_j\gamma_jA_j\). By (1.3), \(f_\mu=\sum_j\gamma_jf_{\mu,j}\), so (2.5) gives \(F\ge f_\mu-2\theta\); and summing the second part of (1.3) over the columns with weights \(\mu_y\), with \(\frac{\log3}{\log(h+1)}\le\theta\) and \(\sum_y\mu_y\le1\), gives \(F\le f_\mu+\theta\).
 
 *Encoding.* The centre \(v\) of a column does not appear in \(A_j\). Grouping the columns by their slot \(k\) and their set \(T\),
 \[
-A_j(x)=\sum_{k=1}^s\sum_{T\in\mathcal T}w_{j,k,T}\mathbf1_{\{d_T(x,z'_{j,k})\le2j+1\}},\qquad w_{j,k,T}=\sum_{v:\ (v,T)\in U_j,\ \kappa_j(v,T)=k}\mu_{(v,T)}\in[0,1],
+\begin{gathered}
+A_j(x)=\sum_{k=1}^s\sum_{T\in\mathcal T}w_{j,k,T}\mathbf1_{\{d_T(x,z'_{j,k})\le2j+1\}},\\
+w_{j,k,T}=\sum_{v:\ (v,T)\in U_j,\ \kappa_j(v,T)=k}\mu_{(v,T)}\in[0,1],
+\end{gathered}
 \]
 where unused slots get weight \(0\) and an arbitrary fixed label. There are at most \(M_0=s2^u\) weights per level. Round each weight down to a multiple of \(\delta=\theta/M_0\), call the resulting functions \(\widetilde A_j\), and put \(A=\sum_j\gamma_j\widetilde A_j\). Since the indicators are at most \(1\), \(0\le A_j-\widetilde A_j\le M_0\delta=\theta\), so \(0\le F-A\le\theta\), and (2.1) follows.
 

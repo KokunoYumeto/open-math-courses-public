@@ -18,11 +18,15 @@ Basic references are [OpenAI-cancellation] and [Kaliman–Makar-Limanov].
 
 ## 1. The valuation along \(p=0\)
 
-Consider the algebras
+Consider the algebras (1.1):
 
 \[
-S=k[p,x,y,z,u]\big/\bigl(xy-z(z+1)-p^3u\bigr),\qquad R=S/pS=k[x,y,z,u]\big/\bigl(xy-z(z+1)\bigr).
-\tag{1.1}
+\begin{aligned}
+S&=k[p,x,y,z,u]\\
+&\quad\big/\bigl(xy-z(z+1)-p^3u\bigr),\\
+R&=S/pS\\
+&=k[x,y,z,u]\big/\bigl(xy-z(z+1)\bigr).
+\end{aligned}
 \]
 
 By Lemma 2.1 of the previous lesson, \(xy-z(z+1)=p^2(H+pu)\equiv p^3u\) modulo \(H\), so sending \(p,x,y,z,u\) to the elements of the same names defines a homomorphism \(S\to A\).
@@ -50,8 +54,10 @@ It is a degree function in the sense of Section 6 of [Locally nilpotent derivati
 The map
 
 \[
-\operatorname{gr}A\longrightarrow R[\tau,\tau^{-1}],\qquad[h]_d\longmapsto\overline{p^dh}\;\tau^{-d},
-\tag{1.2}
+\begin{gathered}
+\operatorname{gr}A\longrightarrow R[\tau,\tau^{-1}],\\
+[h]_d\longmapsto\overline{p^dh}\;\tau^{-d},
+\end{gathered}\tag{1.2}
 \]
 
 where the bar is reduction modulo \(pS\), is a well-defined injective homomorphism of graded rings, if \(R[\tau,\tau^{-1}]\) is graded by \(\deg R=0\) and \(\deg\tau=-1\). Indeed, for \(h\in\mathcal F_dA\) the element \(p^dh\) has nonnegative order, so lies in \(S\) by Lemma 1.1(3), and its residue vanishes exactly when \(p^dh\in pS\), that is, when \(h\in\mathcal F_{d-1}A\). Sums and products are respected.
@@ -61,34 +67,43 @@ where the bar is reduction modulo \(pS\), is a well-defined injective homomorphi
 In \(R\) put
 
 \[
-s_R=y-x(x-u^3),\qquad f=x-s_R^2-u^3,\qquad g=z-s_Rx,\qquad I=(f,g)\subset R .
-\tag{2.1}
+\begin{gathered}
+s_R=y-x(x-u^3),\\
+f=x-s_R^2-u^3,\\
+g=z-s_Rx,\\
+I=(f,g)\subset R .
+\end{gathered}\tag{2.1}
 \]
 
-The elements \(s\), \(u\), \(p^2F=x-s^2-u^3\) and \(p^2J=z-sx\) of \(A\) lie in \(S\), with residues \(s_R\), \(u\), \(f\), \(g\). These residues are nonzero: at the points \(x=z=0\) of \(\operatorname{Spec}R\) we get \(s_R=y\) and \(f=-y^2-u^3\), and at \(x=0\), \(z=-1\) we get \(g=-1\). So
+The elements \(s\), \(u\), \(p^2F=x-s^2-u^3\) and \(p^2J=z-sx\) of \(A\) lie in \(S\), with residues \(s_R\), \(u\), \(f\), \(g\). These residues are nonzero: at the points \(x=z=0\) of \(\operatorname{Spec}R\) we get \(s_R=y\) and \(f=-y^2-u^3\), and at \(x=0\), \(z=-1\) we get \(g=-1\). So the degrees and the images of the initial forms are given by the table (2.2):
+
+| \(h\) | \(\deg h\) | image of \(\operatorname{in}(h)\) in (1.2) |
+|---|---|---|
+| \(p\) | \(-1\) | \(\tau\) |
+| \(s\) | \(0\) | \(s_R\) |
+| \(u\) | \(0\) | \(u\) |
+| \(F\) | \(2\) | \(f/\tau^2\) |
+| \(J\) | \(2\) | \(g/\tau^2\) |
+
+Give \(P\) the **weights** \(\omega(p,s,u,F,J)=(-1,0,0,2,2)\), and make the definition (2.3):
 
 \[
-\begin{array}{c|ccccc}
-h&p&s&u&F&J\\ \hline
-\deg h&-1&0&0&2&2\\
-\text{image of }\operatorname{in}(h)\text{ in (1.2)}&\tau&s_R&u&f/\tau^2&g/\tau^2
-\end{array}
-\tag{2.2}
+\begin{aligned}
+H_{\mathrm{top}}&=x^2F-(1+2sx)J\\
+&\quad-p^2J^2,
+\end{aligned}
 \]
-
-Give \(P\) the **weights** \(\omega(p,s,u,F,J)=(-1,0,0,2,2)\), and put
-
-\[
-H_{\mathrm{top}}=x^2F-(1+2sx)J-p^2J^2,\qquad\text{so that}\qquad H=H_{\mathrm{top}}-pu,\quad xy-z(z+1)=p^2H_{\mathrm{top}}.
-\tag{2.3}
-\]
+so that \(H=H_{\mathrm{top}}-pu\) and \(xy-z(z+1)=p^2H_{\mathrm{top}}\).
 
 The element \(x\) has weight zero and \(H_{\mathrm{top}}\) is homogeneous of weight two.
 
 **Proposition 2.1.** Identify \(\operatorname{gr}A\) with its image under (1.2). Then
 
 \[
-G:=\operatorname{gr}A=R[\tau,f/\tau^2,g/\tau^2]\subset R[\tau,\tau^{-1}],
+\begin{aligned}
+G:=\operatorname{gr}A&=R[\tau,f/\tau^2,g/\tau^2]\\
+&\subset R[\tau,\tau^{-1}],
+\end{aligned}
 \]
 
 the generators \(p,s,u,F,J\) of \(A\) are exact for the valuation degree, and \(G\cong P/(H_{\mathrm{top}})\) as graded rings, with \(p,s,u,F,J\) going to \(\tau,s_R,u,f/\tau^2,g/\tau^2\). The ring \(G\) is a smooth domain, finitely generated over \(k\).
@@ -117,18 +132,22 @@ The derivation \(D_0\) need not preserve the subring \(R\) of \(G\). For this re
 
 ## 4. The line bundle that makes \(I\) principal
 
-Let
+Let \(\widetilde R=k[a,d,b,c,u]/(ac-bd-1)\), and consider the assignments (4.1):
 
 \[
-\widetilde R=k[a,d,b,c,u]/(ac-bd-1),\qquad x\mapsto ab,\quad y\mapsto dc,\quad z\mapsto db,\quad u\mapsto u .
-\tag{4.1}
+\begin{gathered}
+x\mapsto ab,\quad y\mapsto dc,\\
+z\mapsto db,\quad u\mapsto u .
+\end{gathered}
 \]
 
 This defines \(R\to\widetilde R\), since \(xy=(ab)(dc)=(db)(ac)=z(z+1)\). Grade \(\widetilde R\) by the **fibre weights** \(\operatorname{wt}(a)=\operatorname{wt}(d)=1\), \(\operatorname{wt}(b)=\operatorname{wt}(c)=-1\), \(\operatorname{wt}(u)=0\), and put
 
 \[
-v=a^3b-a^2u^3-d^2=a^2(x-u^3)-d^2,
-\tag{4.2}
+\begin{aligned}
+v&=a^3b-a^2u^3-d^2\\
+&=a^2(x-u^3)-d^2,
+\end{aligned}\tag{4.2}
 \]
 
 which has weight two.
@@ -139,15 +158,32 @@ which has weight two.
 2. In \(\widetilde R\), with \(C_1=c^2-b^2(x-u^3)\), \(\alpha=a^2(1-2bd)\) and \(\beta=d^2(3+2bd)+\alpha(x-u^3)\),
 
 \[
-f=C_1v,\qquad g=b^2v,\qquad v=\alpha f+\beta g .
-\tag{4.3}
+\begin{gathered}
+f=C_1v,\\
+g=b^2v,\qquad v=\alpha f+\beta g .
+\end{gathered}\tag{4.3}
 \]
 
 So \(I\widetilde R=v\widetilde R\).
 
-**Proof.** (1) The relation \(ac-(bd+1)\) is linear in \(c\) with coprime coefficients \(a\) and \(-(bd+1)\), so \(\widetilde R\) is a domain. After inverting \(z+1=ac\), the element \(a\) is a unit, and \(b=x/a\), \(c=(z+1)/a\), \(d=ay/(z+1)\). These formulas define mutually inverse homomorphisms between \(\widetilde R_{z+1}\) and \(R_{z+1}[a,a^{-1}]\); the relation is respected because \((z+1)-(x/a)(ay/(z+1))-1=(z(z+1)-xy)/(z+1)=0\) in \(R\). After inverting \(z=db\), the element \(d\) is a unit, and \(b=z/d\), \(c=y/d\), \(a=dx/z\) identify \(\widetilde R_z\) with \(R_z[d,d^{-1}]\). Since \(z+1\) and \(-z\) sum to one, \(\widetilde R\) is a Laurent bundle algebra over its weight-zero part; and \(R\subset\widetilde R_0\subset R_z\cap R_{z+1}=R\), because an element of \(R_z\cap R_{z+1}\) is multiplied into \(R\) by powers of \(z\) and of \(z+1\), which generate the unit ideal.
+**Proof.** (1) The relation \(ac-(bd+1)\) is linear in \(c\) with coprime coefficients \(a\) and \(-(bd+1)\), so \(\widetilde R\) is a domain. After inverting \(z+1=ac\), the element \(a\) is a unit, and \(b=x/a\), \(c=(z+1)/a\), \(d=ay/(z+1)\). These formulas define mutually inverse homomorphisms between \(\widetilde R_{z+1}\) and \(R_{z+1}[a,a^{-1}]\); the relation is respected because \((z+1)-(x/a)(ay/(z+1))-1\) equals \((z(z+1)-xy)/(z+1)=0\) in \(R\). After inverting \(z=db\), the element \(d\) is a unit, and \(b=z/d\), \(c=y/d\), \(a=dx/z\) identify \(\widetilde R_z\) with \(R_z[d,d^{-1}]\). Since \(z+1\) and \(-z\) sum to one, \(\widetilde R\) is a Laurent bundle algebra over its weight-zero part; and \(R\subset\widetilde R_0\subset R_z\cap R_{z+1}=R\), because an element of \(R_z\cap R_{z+1}\) is multiplied into \(R\) by powers of \(z\) and of \(z+1\), which generate the unit ideal.
 
-(2) Write \(h=x-u^3\). Since \(s_R=dc-abh\) and \(ac-bd=1\), we get \(as_R-d=a\,dc-a^2bh-d=d(ac-1)-a^2bh=b(d^2-a^2h)=-bv\). Hence \(g=db-s_Rab=b(d-as_R)=b^2v\). Next \(f-C_1v=h-(dc-abh)^2-(c^2-b^2h)(a^2h-d^2)=h\bigl(1-(ac-bd)^2\bigr)=0\) after expanding. Finally, with \(q=bd\) and \(ac=1+q\), \(\alpha C_1+\beta b^2=(ac)^2(1-2bd)+b^2d^2(3+2bd)=(1+q)^2(1-2q)+3q^2+2q^3=1\), and so \(\alpha f+\beta g=(\alpha C_1+\beta b^2)v=v\). \(\square\)
+(2) Write \(h=x-u^3\). Since \(s_R=dc-abh\) and \(ac-bd=1\), we get \(as_R-d=a\,dc-a^2bh-d\), which is \(d(ac-1)-a^2bh=b(d^2-a^2h)=-bv\). Hence \(g=db-s_Rab=b(d-as_R)=b^2v\). Next, after expanding,
+\[
+\begin{aligned}
+&f-C_1v=h-(dc-abh)^2\\
+&\quad-(c^2-b^2h)(a^2h-d^2)\\
+&\quad=h\bigl(1-(ac-bd)^2\bigr)=0.
+\end{aligned}
+\] Finally, with \(q=bd\) and \(ac=1+q\), 
+\[
+\begin{aligned}
+&\alpha C_1+\beta b^2\\
+&\quad=(ac)^2(1-2bd)+b^2d^2(3+2bd)\\
+&\quad=(1+q)^2(1-2q)+3q^2+2q^3=1,
+\end{aligned}
+\]
+and so \(\alpha f+\beta g=(\alpha C_1+\beta b^2)v=v\). \(\square\)
 
 Now base change the line bundle to \(\operatorname{Spec}G\): put
 
@@ -223,7 +259,10 @@ The sign of the weight matters: the derivation \(E_+\) with \(E_+(b)=a\), \(E_+(
 **Theorem 7.1 (Mason, Stothers).** Let \(K\) be a field of characteristic zero, and let \(X,Y,Z\in K[q]\) be nonzero, pairwise coprime, not all constant, with \(X+Y=Z\). Then
 
 \[
-\max\{\deg X,\deg Y,\deg Z\}\le r(XYZ)-1,
+\begin{aligned}
+&\max\{\deg X,\deg Y,\deg Z\}\\
+&\quad \le r(XYZ)-1,
+\end{aligned}
 \]
 
 where \(r(XYZ)\) is the number of distinct roots of \(XYZ\) in an algebraic closure of \(K\).
@@ -248,8 +287,10 @@ The theorem is due to Stothers and, independently, to Mason. The proof through t
 *The orbits of \(a\), \(d\), \(u\).* Inverting \(a\) gives \(\widetilde R[a^{-1}]=k[a^{\pm1},d,u][b]\) with \(c=(1+bd)/a\), so \(a,d,b,u\) are algebraically independent and \(K=\operatorname{Frac}\widetilde R=k(a,d,b)(u)\). Let \(a(q)=\exp(qE')(a)\), \(d(q)=\exp(qE')(d)\), \(u(q)=\exp(qE')(u)\), polynomials in \(K[q]\), nonzero because their values at \(q=0\) are nonzero. Since \(\exp(qE')\) is multiplicative, (8.1) gives
 
 \[
-d(q)^2+a(q)^2u(q)^3=N+q\,E'(N),
-\tag{8.2}
+\begin{aligned}
+&d(q)^2+a(q)^2u(q)^3\\
+&\quad =N+q\,E'(N),
+\end{aligned}\tag{8.2}
 \]
 
 a nonzero polynomial of degree at most one. The two summands on the left are coprime: a common root would be a root of multiplicity at least two of each, hence of their sum, which is impossible for a nonzero polynomial of degree at most one. So the three polynomials in (8.2) are pairwise coprime.
@@ -257,8 +298,10 @@ a nonzero polynomial of degree at most one. The two summands on the left are cop
 Write \(D_a,D_d,D_u\) for the degrees of \(a(q),d(q),u(q)\). Suppose a summand on the left is not constant. A nonconstant summand has degree at least two, and the right side has degree at most one, so both summands have the same degree \(M=2D_d=2D_a+3D_u\ge2\). The distinct roots of the product of the three polynomials number at most \(D_d+D_a+D_u+1\), so Theorem 7.1 gives \(2D_d\le D_d+D_a+D_u\), that is, \(D_d\le D_a+D_u\). With \(2D_d=2D_a+3D_u\) this gives \(3D_u\le2D_u\), so \(D_u=0\) and \(D_a=D_d>0\). The leading terms of degree \(M\) must cancel: if \(\alpha_0,\delta_0\in K^*\) are the leading coefficients of \(a(q)\) and \(d(q)\), then \(\delta_0^2+\alpha_0^2u^3=0\), so \((\delta_0/\alpha_0)^2=-u^3\) in \(K\). But in \(K=K_0(u)\), with \(K_0=k(a,d,b)\), the order of vanishing at \(u=0\) of a square is even, while \(-u^3\) has order three. This contradiction shows that both summands are constant, so \(D_a=D_d=D_u=0\), and comparing coefficients of \(q\),
 
 \[
-E'(a)=E'(d)=E'(u)=0 .
-\tag{8.3}
+\begin{aligned}
+E'(a)&=E'(d)\\
+&=E'(u)=0 .
+\end{aligned}\tag{8.3}
 \]
 
 *The remaining values.* Differentiating \(ac-bd=1\) and using (8.3) gives \(aE'(c)=dE'(b)\). Put \(h=cE'(b)-bE'(c)\). Then \(ah=(ac-bd)E'(b)=E'(b)\) and \(dh=(ac-bd)E'(c)=E'(c)\). Let \(C_0=k[a,d,u]\) and \(Q=k(a,d,u)\). Every nonzero element of \(C_0\) lies in \(\ker E'\) by (8.3), so \(E'\) extends to a locally nilpotent \(Q\)-linear derivation of the localization \((C_0\setminus0)^{-1}\widetilde R=Q[b]\) (Corollary 3.3 of the lesson on locally nilpotent derivations). By Proposition 4.1 of that lesson, \(E'(b)\in Q\), so \(h=E'(b)/a\in Q\). Moreover \(\widetilde R\cap Q=C_0\): solving for \(b\) instead gives \(\widetilde R[d^{-1}]=k[a,d^{\pm1},u][c]\), so an element of \(Q\cap\widetilde R\) lies in \(k[a^{\pm1},d,u]\cap k[a,d^{\pm1},u]=C_0\), the last equality by unique factorization in \(C_0\). Hence \(h\in C_0\). It is nonzero, since otherwise \(E'\) would kill \(a,d,u,b,c\). Its fibre weight is \(\operatorname{wt}(c)+\operatorname{wt}(b)+e=e-2<0\). But every nonzero homogeneous element of \(C_0=k[a,d,u]\) has nonnegative weight. This contradiction proves the proposition. \(\square\)

@@ -21,7 +21,7 @@ For example \(z_1+z_2^2\) is a coordinate of \(k[z_1,z_2,z_3]\), with complement
 1. For every \(c\in k\), the algebra \(R/(f-c)\) is isomorphic to \(k^{[n-1]}\).
 2. For every field \(K\supseteq k\), the gradient \(\nabla f\) has no zero in \(K^n\).
 
-**Proof.** Let \(\Phi=(f,f_2,\ldots,f_n)\) be an automorphism, and let \(\varphi:k[y_1,\ldots,y_n]\to R\) be the homomorphism with \(\varphi(y_i)=\Phi_i\). As in the proof of Theorem 4.1 of the first lesson, \(\varphi\) is an isomorphism. It carries the ideal \((y_1-c)\) onto \((f-c)\), so \(R/(f-c)\cong k[y_1,\ldots,y_n]/(y_1-c)\cong k[y_2,\ldots,y_n]\). This proves the first part. For the second, \(\Phi\) is still an automorphism over \(K\), so \(\det J\Phi\) is a nonzero constant by Proposition 1.1 of the first lesson. At every point \(p\in K^n\) the matrix \(J\Phi(p)\) is therefore invertible, and its first row \(\nabla f(p)\) is not zero. \(\square\)
+**Proof.** Let \(\Phi=(f,f_2,\ldots,f_n)\) be an automorphism, and let \(\varphi:k[y_1,\ldots,y_n]\to R\) be the homomorphism with \(\varphi(y_i)=\Phi_i\). As in the proof of Theorem 4.1 of the first lesson, \(\varphi\) is an isomorphism. It carries the ideal \((y_1-c)\) onto \((f-c)\), so \(R/(f-c)\cong k[y_1,\ldots,y_n]/(y_1-c)\), which is isomorphic to \(k[y_2,\ldots,y_n]\). This proves the first part. For the second, \(\Phi\) is still an automorphism over \(K\), so \(\det J\Phi\) is a nonzero constant by Proposition 1.1 of the first lesson. At every point \(p\in K^n\) the matrix \(J\Phi(p)\) is therefore invertible, and its first row \(\nabla f(p)\) is not zero. \(\square\)
 
 **The Abhyankar–Sathaye problem.** Suppose \(R/(f)\cong k^{[n-1]}\) as \(k\)-algebras. Is \(f\) a coordinate? Geometrically: can every closed embedding of affine \((n-1)\)-space as a hypersurface in affine \(n\)-space be moved onto a coordinate hyperplane by an automorphism of the ambient space?
 
@@ -34,11 +34,17 @@ Proposition 1.2 gives two invariants that every coordinate has and an isomorphis
 The construction is built around the cuspidal cubic \(X^2+Y^3=0\), parametrized by \((U^3,-U^2)\). Perturb the parametrization by multiples of a parameter \(H\): put \(X=U^3+HV\) and \(Y=-U^2+HW\). Then \(X^2+Y^3\) vanishes modulo \(H\), and it is in fact divisible by \(H\):
 
 \[
-(U^3+HV)^2+(-U^2+HW)^3=H\,S(H,U,V,W),
-\tag{2.1}
+\begin{aligned}
+&(U^3+HV)^2\\
+&\quad +(-U^2+HW)^3\\
+&\quad =H\,S(H,U,V,W),
+\end{aligned}\tag{2.1}
 \]
 \[
-S(H,U,V,W)=2U^3V+3U^4W+H\bigl(V^2-3U^2W^2\bigr)+H^2W^3 .
+\begin{aligned}
+&S(H,U,V,W)=2U^3V+3U^4W\\
+&\quad +H\bigl(V^2-3U^2W^2\bigr)+H^2W^3 .
+\end{aligned}
 \]
 
 Indeed, the terms \(U^6\) cancel and every remaining term contains \(H\). All rings below are commutative with identity.
@@ -46,14 +52,20 @@ Indeed, the terms \(U^6\) cancel and every remaining term contains \(H\). All ri
 **Lemma 2.1.** Let \(B\) be a ring and \(h,x,y,s\in B\) with
 
 \[
-x^2+y^3=hs\qquad\text{and}\qquad hB+yB=B .
-\tag{2.2}
+\begin{gathered}
+x^2+y^3=hs\\
+\text{and}\qquad hB+yB=B .
+\end{gathered}\tag{2.2}
 \]
 
 Then the \(B\)-algebra
 
 \[
-C=B[U,V,W]\big/\bigl(U^3+hV-x,\ \ -U^2+hW-y,\ \ S(h,U,V,W)-s\bigr)
+\begin{aligned}
+C=B[U,V,W]\big/\bigl(&U^3+hV-x,\\
+&-U^2+hW-y,\\
+&S(h,U,V,W)-s\bigr)
+\end{aligned}
 \]
 
 is isomorphic to the polynomial ring \(B[T]\).
@@ -63,32 +75,48 @@ is isomorphic to the polynomial ring \(B[T]\).
 *Step 1: a linear change of variables.* Substitute \(V=G-UW\), an automorphism of \(B[U,V,W]\) over \(B[U,W]\) with inverse \(G=V+UW\). Modulo the second relation \(hW=y+U^2\), the first relation becomes
 
 \[
-U^3+hG-U\cdot hW-x\equiv U^3+hG-U(y+U^2)-x=hG-yU-x ,
+\begin{aligned}
+&U^3+hG-U\cdot hW-x\equiv U^3+hG\\
+&\quad -U(y+U^2)-x=hG-yU-x ,
+\end{aligned}
 \]
 
 and expanding \(S(h,U,G-UW,W)\), then replacing \(hW\) by \(y+U^2\) wherever it occurs, gives
 
 \[
-S(h,U,G-UW,W)\equiv hG^2-2yUG+y^2W .
+\begin{aligned}
+&S(h,U,G-UW,W)\\
+&\quad \equiv hG^2-2yUG+y^2W .
+\end{aligned}
 \]
 
-Hence
+Hence we obtain the isomorphism (2.3):
 
 \[
-C\cong B[U,G,W]\big/\bigl(hG-yU-x,\ \ hW-(y+U^2),\ \ y^2W-(s-hG^2+2yUG)\bigr).
-\tag{2.3}
+\begin{aligned}
+&C\cong B[U,G,W]\big/\bigl(hG-yU-x,\\
+&\qquad hW-(y+U^2),\\
+&\qquad y^2W-(s-hG^2+2yUG)\bigr).
+\end{aligned}
 \]
 
 *Step 2: eliminating \(W\).* Let \(A=B[U,G]/(hG-yU-x)\), and in \(A\) put \(a=y+U^2\) and \(b=s-hG^2+2yUG\). By (2.3), \(C\cong A[W]/(hW-a,\ y^2W-b)\). The two linear equations are compatible:
 
 \[
-y^2a-hb=y^2U^2+y^3-hs+h^2G^2-2hyUG=(hG-yU)^2+y^3-hs=x^2+y^3-hs=0 .
+\begin{aligned}
+&y^2a-hb=y^2U^2+y^3-hs\\
+&\quad +h^2G^2-2hyUG=(hG-yU)^2\\
+&\quad +y^3-hs=x^2+y^3-hs=0 .
+\end{aligned}
 \]
 
 Put \(r=\alpha(1+\beta y)\) and \(q=\beta^2\). Then \(rh+qy^2=(1-\beta y)(1+\beta y)+\beta^2y^2=1\). Let \(W_0=ra+qb\in A\). Using \(hb=y^2a\),
 
 \[
-hW_0=rha+qy^2a=a,\qquad y^2W_0=ry^2a+qy^2b=rhb+qy^2b=b .
+\begin{gathered}
+hW_0=rha+qy^2a=a,\\
+y^2W_0=ry^2a+qy^2b=rhb+qy^2b=b .
+\end{gathered}
 \]
 
 So \(hW-a=h(W-W_0)\) and \(y^2W-b=y^2(W-W_0)\), while \(W-W_0=r(hW-a)+q(y^2W-b)\). The ideal generated by the two equations in \(A[W]\) is therefore the principal ideal \((W-W_0)\), and \(C\cong A[W]/(W-W_0)\cong A\).
@@ -96,15 +124,20 @@ So \(hW-a=h(W-W_0)\) and \(y^2W-b=y^2(W-W_0)\), while \(W-W_0=r(hW-a)+q(y^2W-b)\
 *Step 3: \(A\) is a polynomial ring.* Define \(B\)-algebra homomorphisms
 
 \[
-A\to B[T],\quad U\mapsto hT-\beta x,\ \ G\mapsto yT+\alpha x;\qquad
-B[T]\to A,\quad T\mapsto\alpha U+\beta G .
+\begin{aligned}
+A\to B[T]:&\quad U\mapsto hT-\beta x,\\
+&\quad G\mapsto yT+\alpha x;\\
+B[T]\to A:&\quad T\mapsto\alpha U+\beta G .
+\end{aligned}
 \]
 
-The first is well defined because \(h(yT+\alpha x)-y(hT-\beta x)=(\alpha h+\beta y)x=x\). The composite \(B[T]\to A\to B[T]\) sends \(T\) to \(\alpha(hT-\beta x)+\beta(yT+\alpha x)=T\). For the other composite, in \(A\) we have \(hG=yU+x\), hence
+The first is well defined because \(h(yT+\alpha x)-y(hT-\beta x)\) equals \((\alpha h+\beta y)x=x\). The composite \(B[T]\to A\to B[T]\) sends \(T\) to \(\alpha(hT-\beta x)+\beta(yT+\alpha x)=T\). For the other composite, in \(A\) we have \(hG=yU+x\), hence
 
 \[
-h(\alpha U+\beta G)-\beta x=(\alpha h+\beta y)U=U,\qquad
+\begin{gathered}
+h(\alpha U+\beta G)-\beta x=(\alpha h+\beta y)U=U,\\
 y(\alpha U+\beta G)+\alpha x=(\alpha h+\beta y)G=G .
+\end{gathered}
 \]
 
 Both composites are identities, so \(A\cong B[T]\), and \(C\cong B[T]\). \(\square\)
@@ -116,8 +149,11 @@ The proof never divides by \(h\) or \(y\), and \(B\) may have zero divisors. The
 From now on \(k\) has characteristic zero. In \(R=k[h,u,v,w]\), define
 
 \[
-x=u^3+hv,\qquad y=-u^2+hw,\qquad s=S(h,u,v,w),
-\tag{3.1}
+\begin{gathered}
+x=u^3+hv,\\
+y=-u^2+hw,\\
+s=S(h,u,v,w),
+\end{gathered}\tag{3.1}
 \]
 
 so that \(x^2+y^3=hs\) by (2.1). For independent variables \(x,y,s\), put
@@ -129,15 +165,19 @@ p(x,y,s)=-2s^2x+3sy^2-3s^3y .
 This polynomial measures the effect of a translation along the cuspidal cubic:
 
 \[
-(x+s^3)^2+(y-s^2)^3=x^2+y^3-s\,p(x,y,s),
-\tag{3.2}
+\begin{aligned}
+&(x+s^3)^2+(y-s^2)^3\\
+&\quad =x^2+y^3-s\,p(x,y,s),
+\end{aligned}\tag{3.2}
 \]
 
 as one checks by expanding; the terms \(s^6\) cancel. Define
 
 \[
-F=h-1-p(x,y,s)\in R ,
-\tag{3.3}
+\begin{aligned}
+F&=h-1\\
+&\quad -p(x,y,s)\in R ,
+\end{aligned}\tag{3.3}
 \]
 
 with \(x,y,s\) given by (3.1). It is a polynomial of degree \(17\) in \(h,u,v,w\), with \(69\) terms.
@@ -147,21 +187,31 @@ with \(x,y,s\) given by (3.1). It is a polynomial of degree \(17\) in \(h,u,v,w\
 **Proof.** Introduce an auxiliary algebra in which \(x,y,s\) are independent variables:
 
 \[
-B=k[h,x,y,s]\big/\bigl(h-1-p(x,y,s),\ \ x^2+y^3-sh\bigr).
+\begin{aligned}
+B=k[h,x,y,s]\big/\bigl(&h-1-p(x,y,s),\\
+&x^2+y^3-sh\bigr).
+\end{aligned}
 \]
 
-*\(B\) is a polynomial ring in two variables.* Eliminating \(h\) with the first relation gives \(B\cong k[x,y,s]/\bigl(x^2+y^3-s-s\,p(x,y,s)\bigr)\). The substitution \(X=x+s^3\), \(Y=y-s^2\) is an automorphism of \(k[x,y,s]\) over \(k[s]\), and by (3.2) it turns the relation into \(X^2+Y^3-s\). Hence
+*\(B\) is a polynomial ring in two variables.* Eliminating \(h\) with the first relation gives an isomorphism of \(B\) with \(k[x,y,s]/\bigl(x^2+y^3-s-s\,p(x,y,s)\bigr)\). The substitution \(X=x+s^3\), \(Y=y-s^2\) is an automorphism of \(k[x,y,s]\) over \(k[s]\), and by (3.2) it turns the relation into \(X^2+Y^3-s\). Hence
 
 \[
-B\cong k[X,Y,s]/(X^2+Y^3-s)\cong k[X,Y].
+\begin{aligned}
+B&\cong k[X,Y,s]/(X^2+Y^3-s)\\
+&\cong k[X,Y].
+\end{aligned}
 \]
 
 *The unit ideal condition.* Modulo \(h\) and \(y\), the relation \(x^2+y^3=sh\) gives \(x^2=0\), and the relation \(h=1+p\) gives \(0=1-2s^2x\). So \(2s^2x=1\), and squaring, \(1=4s^4x^2=0\). Thus \(B/(hB+yB)=0\), that is, \(hB+yB=B\).
 
-*Applying the lemma.* Since \(x^2+y^3=sh\) holds in \(B\), Lemma 2.1 applies to \(B\) and its elements \(h,x,y,s\). Write \(u,v,w\) for the three new variables. Then
+*Applying the lemma.* Since \(x^2+y^3=sh\) holds in \(B\), Lemma 2.1 applies to \(B\) and its elements \(h,x,y,s\). Write \(u,v,w\) for the three new variables. Then \(C\cong B[T]\cong k^{[3]}\), where
 
 \[
-C=k[h,x,y,s,u,v,w]\big/\bigl(h-1-p,\ x^2+y^3-sh,\ u^3+hv-x,\ -u^2+hw-y,\ S(h,u,v,w)-s\bigr)\cong B[T]\cong k^{[3]} .
+\begin{aligned}
+&C=k[h,x,y,s,u,v,w]\big/\bigl(h-1-p,\\
+&\qquad x^2+y^3-sh,\ u^3+hv-x,\\
+&\qquad -u^2+hw-y,\ S(h,u,v,w)-s\bigr).
+\end{aligned}
 \]
 
 The last three relations express \(x\), \(y\) and \(s\) as the polynomials (3.1), so dividing by them identifies \(k[h,x,y,s,u,v,w]\) with \(R\). Under this identification the relation \(x^2+y^3-sh\) becomes zero, by (2.1), and \(h-1-p\) becomes \(F\). So \(C\cong R/(F)\), and \(R/(F)\cong k^{[3]}\). \(\square\)
@@ -181,8 +231,10 @@ which lies on the fibre \(F=-1\).
 **Proof.** In \(R\), with \(x,y,s\) as in (3.1), put \(X=x+s^3\) and \(Y=y-s^2\). By (3.2), \(x^2+y^3=hs\) and (3.3),
 
 \[
-X^2+Y^3=hs-s\,p=s\,(h-p)=s\,(1+F).
-\tag{4.1}
+\begin{aligned}
+&X^2+Y^3=hs-s\,p\\
+&\quad =s\,(h-p)=s\,(1+F).
+\end{aligned}\tag{4.1}
 \]
 
 At \(P\): \(x=2\cdot(-\tfrac12)=-1\), \(y=2\cdot\tfrac12=1\), and \(s=2\cdot\tfrac14+4\cdot\tfrac18=1\). Hence \(X=-1+1=0\), \(Y=1-1=0\), \(p=2+3-3=2\) and \(F=2-1-2=-1\). Differentiate (4.1) with respect to any of the four variables:
@@ -197,7 +249,7 @@ At \(P\) the left side vanishes and so does \(1+F\), while \(s=1\). Hence every 
 
 **Corollary 4.2.** For every \(n\geq4\) there is a polynomial \(f\in k[z_1,\ldots,z_n]\) with \(k[z_1,\ldots,z_n]/(f)\cong k^{[n-1]}\) that is not a coordinate.
 
-**Proof.** Take \(f=F\) in \(R[z_5,\ldots,z_n]\). Then \(R[z_5,\ldots,z_n]/(F)\cong(R/(F))[z_5,\ldots,z_n]\cong k^{[n-1]}\) by Theorem 3.1. The derivatives of \(F\) in the new variables are zero, and its other derivatives vanish at \(P\), so the gradient vanishes at \((P,0,\ldots,0)\). \(\square\)
+**Proof.** Take \(f=F\) in \(R[z_5,\ldots,z_n]\). Then \(R[z_5,\ldots,z_n]/(F)\) is isomorphic to \((R/(F))[z_5,\ldots,z_n]\), hence to \(k^{[n-1]}\) by Theorem 3.1. The derivatives of \(F\) in the new variables are zero, and its other derivatives vanish at \(P\), so the gradient vanishes at \((P,0,\ldots,0)\). \(\square\)
 
 The critical point also shows that the fibre through it is not an affine space, so \(F\) fails the first condition of Proposition 1.2 as well.
 
@@ -206,7 +258,10 @@ The critical point also shows that the fibre through it is not an affine space, 
 **Proof.** Let \(\mathfrak m=(h-2,u,v+\tfrac12,w-\tfrac12)\), the maximal ideal of \(P\) in \(R\). Since \(F+1\) and all its first derivatives vanish at \(P\), its Taylor expansion at \(P\) starts in degree two, so \(F+1\in\mathfrak m^2\). The local ring \(\mathcal O=(R/(F+1))_{\mathfrak m}\) therefore has
 
 \[
-\mathfrak m\mathcal O\big/(\mathfrak m\mathcal O)^2\cong\mathfrak m/\bigl(\mathfrak m^2+(F+1)\bigr)=\mathfrak m/\mathfrak m^2\cong k^4,
+\begin{aligned}
+\mathfrak m\mathcal O\big/(\mathfrak m\mathcal O)^2&\cong\mathfrak m/\bigl(\mathfrak m^2+(F+1)\bigr)\\
+&=\mathfrak m/\mathfrak m^2\cong k^4,
+\end{aligned}
 \]
 
 so its embedding dimension is four. Suppose \(\psi:R/(F+1)\to k[X,Y,T]\) were an isomorphism of \(k\)-algebras. It carries \(\mathfrak m/(F+1)\), whose residue field is \(k\), to a maximal ideal \(\mathfrak n\) of \(k[X,Y,T]\) with residue field \(k\). If \(X,Y,T\) have images \(a,b,c\in k\) in that residue field, then \(\mathfrak n\) contains the maximal ideal \((X-a,Y-b,T-c)\), hence equals it. So the maximal ideal of \(k[X,Y,T]_{\mathfrak n}\) is generated by three elements, and its embedding dimension is at most three [Dimension theory of Noetherian local rings, Proposition 4.2](course:AG-CA/dimension-theory-of-noetherian-local-rings#4-parameters-and-embedding-dimension). But \(\psi\) induces an isomorphism of these local rings, which preserves the embedding dimension. This is a contradiction. \(\square\)
@@ -218,29 +273,42 @@ So the zero fibre of \(F\) is affine three-space while the fibre over \(-1\) is 
 The proofs of Lemma 2.1 and Theorem 3.1 give explicit formulas once \(\alpha\) and \(\beta\) with \(\alpha h+\beta y=1\) in \(B\) are known. Put
 
 \[
-\alpha=1+2s^2x+4s^5,\qquad \beta=(3s^3-3sy)(1+2s^2x)-4s^4y^2 .
+\begin{gathered}
+\alpha=1+2s^2x+4s^5,\\
+\beta=(3s^3-3sy)(1+2s^2x)-4s^4y^2 .
+\end{gathered}
 \]
 
-**Proposition 5.1.** In \(k[h,x,y,s]\),
+**Proposition 5.1.** In \(k[h,x,y,s]\) the identity (5.1) holds:
 
 \[
-\alpha h+\beta y-1=(1+2s^2x)\bigl(h-1-p(x,y,s)\bigr)-4s^4\bigl(x^2+y^3-sh\bigr).
-\tag{5.1}
+\begin{aligned}
+&\alpha h+\beta y-1\\
+&\quad=(1+2s^2x)\bigl(h-1-p(x,y,s)\bigr)\\
+&\qquad-4s^4\bigl(x^2+y^3-sh\bigr).
+\end{aligned}
 \]
 
 Consequently \(\alpha h+\beta y=1\) in \(B\), and the polynomials
 
 \[
-X=x+s^3,\qquad Y=y-s^2,\qquad T=\alpha u+\beta(v+uw),
-\tag{5.2}
+\begin{gathered}
+X=x+s^3,\\
+Y=y-s^2,\\
+T=\alpha u+\beta(v+uw),
+\end{gathered}\tag{5.2}
 \]
 
 with \(x,y,s\) given by (3.1), define an isomorphism \(k[X,Y,T]\to R/(F)\). The inverse isomorphism sends \(h,u,v,w\) to the polynomials in \(X,Y,T\) computed in this order:
 
 \[
 \begin{aligned}
-&s=X^2+Y^3,\quad x=X-s^3,\quad y=Y+s^2,\quad h=1+p(x,y,s),\\
-&u=hT-\beta x,\quad g=yT+\alpha x,\quad w=\alpha(1+\beta y)(y+u^2)+\beta^2\bigl(s-hg^2+2uyg\bigr),\quad v=g-uw .
+&s=X^2+Y^3,\quad x=X-s^3,\\
+&y=Y+s^2,\quad h=1+p(x,y,s),\\
+&u=hT-\beta x,\quad g=yT+\alpha x,\\
+&w=\alpha(1+\beta y)(y+u^2)\\
+&\qquad+\beta^2\bigl(s-hg^2+2uyg\bigr),\\
+&v=g-uw .
 \end{aligned}
 \]
 
@@ -260,7 +328,22 @@ with \(x,y,s\) given by (3.1), define an isomorphism \(k[X,Y,T]\to R/(F)\). The 
 
 **6.1.** The map \((z_1+z_2^2+z_3^3z_2,\ z_2,\ z_3)\) is triangular in the order \(z_3,z_2,z_1\): its inverse is \((y_1-y_2^2-y_3^3y_2,\ y_2,\ y_3)\). So the given polynomial is a coordinate, with complement \((z_2,z_3)\).
 
-**6.2.** For (2.1): \((U^3+HV)^2=U^6+2HU^3V+H^2V^2\) and \((-U^2+HW)^3=-U^6+3HU^4W-3H^2U^2W^2+H^3W^3\). The sum is \(H\) times \(2U^3V+3U^4W+H(V^2-3U^2W^2)+H^2W^3\). For (3.2): \((x+s^3)^2+(y-s^2)^3=x^2+y^3+2s^3x-3s^2y^2+3s^4y\), and \(-s\,p=2s^3x-3s^2y^2+3s^4y\).
+**6.2.** For (2.1): \((U^3+HV)^2=U^6+2HU^3V+H^2V^2\) and 
+\[
+\begin{aligned}
+&(-U^2+HW)^3\\
+&\quad=-U^6+3HU^4W\\
+&\qquad-3H^2U^2W^2+H^3W^3.
+\end{aligned}
+\]
+The sum is \(H\) times 
+\[
+\begin{aligned}
+&2U^3V+3U^4W\\
+&\quad+H(V^2-3U^2W^2)+H^2W^3 .
+\end{aligned}
+\]
+For (3.2): \((x+s^3)^2+(y-s^2)^3\) equals \(x^2+y^3+2s^3x-3s^2y^2+3s^4y\), and \(-s\,p=2s^3x-3s^2y^2+3s^4y\).
 
 **6.3.** \(D(h)=0\). \(D(x)=h\cdot3u^2+h\cdot(-3u^2)=0\) and \(D(y)=h\cdot(-2u)+h\cdot2u=0\). Applying \(D\) to \(hs=x^2+y^3\) gives \(h\,D(s)=0\), and \(h\) is not a zero divisor in the domain \(R\), so \(D(s)=0\). A derivation that kills \(h,x,y,s\) kills every polynomial in them, in particular \(F\).
 

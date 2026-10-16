@@ -1,0 +1,524 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Multiplier innerness, von Neumann uniformity, analytic measures, and positive energy · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math mjx-container mjx-assistive-mml{width:1px!important;height:1px!important;padding:0!important;overflow:hidden!important}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L136.html">Previous lesson</a><a href="OA-FLOW-WORD.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L137.md">Lesson source</a></nav><h1 id="OA-FLOW.BOUNDARIES.SETTING">Multiplier innerness, von Neumann uniformity, analytic measures, and positive energy</h1>
+<p>Four results close the boundary of Takesaki II, Chapter XI, Section 3. They live in different categories and require different proof routes. A derivation of a simple nonunital C*-algebra is implemented in its multiplier algebra, not necessarily in the algebra itself. Point-norm continuity of a flow upgrades to operator-norm continuity only because the algebra is a von Neumann algebra. The F. and M. Riesz theorem turns a one-sided Fourier condition on a measure into absolute continuity. Finally, a positive external implementation of a von Neumann flow can be replaced by a positive implementation affiliated with the algebra.</p>
+<p>For the first, we prove the primitive-extension theorem using the programme’s written bidual and representation foundations and the von Neumann innerness theorem proved here. For the second, we prove the full von Neumann automorphism convergence theorem from orthogonal projections, the programme’s written Phillips lemma and projection theory, and the small-automorphism theorem already proved here. The third is proved from the Poisson kernel and an elementary radial estimate. The fourth is derived from the positive-tail criterion already proved in this course.</p>
+<p><em>New expression is dedicated under CC0 to the extent of rights held; inherited component terms remain in force.</em></p>
+<p><a id="boundaries.setting"></a></p>
+<h2 id="four-targets-and-their-category-boundaries">Four targets and their category boundaries</h2>
+<p>Throughout, a C*-algebra may be nonunital. For such an algebra <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(M(A)\)">\(M(A)\)</span> denotes its multiplier algebra, realized as the algebra of bounded double centralizers. Every automorphism of a von Neumann algebra preserves the order in both directions, so it preserves each bounded increasing supremum: the image of a least upper bound is again a least upper bound. It is therefore normal by <a href="OA-FLOW-NF.html#oa-flow.nf.6">NF6</a>. For a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span>, a homomorphism</p>
+<p><span class="math math-display" data-tex="$$\alpha:\mathbb R\longrightarrow\operatorname{Aut}(M) \tag{1}$$">$$\alpha:\mathbb R\longrightarrow\operatorname{Aut}(M) \tag{1}$$</span></p>
+<p>is called point-norm continuous when</p>
+<p><span class="math math-display" data-tex="$$\|\alpha_t(x)-x\|\longrightarrow0
+\qquad(t\longrightarrow0) \tag{2}$$">$$\|\alpha_t(x)-x\|\longrightarrow0
+\qquad(t\longrightarrow0) \tag{2}$$</span></p>
+<p>for each fixed <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>. Operator-norm continuity means</p>
+<p><span class="math math-display" data-tex="$$\|\alpha_t-\operatorname{id}_M\|\longrightarrow0. \tag{3}$$">$$\|\alpha_t-\operatorname{id}_M\|\longrightarrow0. \tag{3}$$</span></p>
+<p>The distinction between (2) and (3) is essential on general C*-algebras: the compact-operator counterexample in lesson 34 satisfies (2) and fails (3).</p>
+<p>For the circle <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, let <span class="math" data-tex="\(m\)">\(m\)</span> be normalized Haar measure and fix</p>
+<p><span class="math math-display" data-tex="$$\widehat\mu(n)=\int_{\mathbb T}\zeta^{-n}\,d\mu(\zeta)
+\qquad(n\in\mathbb Z). \tag{4}$$">$$\widehat\mu(n)=\int_{\mathbb T}\zeta^{-n}\,d\mu(\zeta)
+\qquad(n\in\mathbb Z). \tag{4}$$</span></p>
+<p>For the positive-energy result, <span class="math" data-tex="\(M\subset B(K)\)">\(M\subset B(K)\)</span> is a faithful normal concrete realization and <span class="math" data-tex="\(U_t=e^{itH}\)">\(U_t=e^{itH}\)</span> is a strongly continuous unitary group on <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><span id="OA-FLOW.BOUNDARIES.PRIMITIVE"></span><a id="boundaries.primitive"></a></p>
+<h2 id="sakai-s-exact-primitive-extension-theorem">Sakai's exact primitive-extension theorem</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="$A\ne0$">$A\ne0$</span> is a simple C*-algebra, there is a unital primitive C*-algebra <span class="math" data-tex="$D$">$D$</span> containing <span class="math" data-tex="$A$">$A$</span> as an essential two-sided ideal. Every complex derivation of <span class="math" data-tex="$A$">$A$</span> is implemented by an element of <span class="math" data-tex="$D$">$D$</span>, uniquely modulo scalar multiples of <span class="math" data-tex="$1_D$">$1_D$</span>. Every derivation of <span class="math" data-tex="$D$">$D$</span> is inner, and <span class="math" data-tex="$D$">$D$</span> is unique up to an isomorphism fixing <span class="math" data-tex="$A$">$A$</span>.</p>
+<p>In particular,</p>
+<p><span class="math math-display" data-tex="$$\delta(a)=da-ad\qquad(a\in A),\quad d\in D. \tag{5}$$">$$\delta(a)=da-ad\qquad(a\in A),\quad d\in D. \tag{5}$$</span></p>
+<p>This is S. Sakai's <a href="https://www.numdam.org/articles/10.24033/bsmf.1719/">Derivations of simple C*-algebras II</a>, <em>Bull. Soc. Math. France</em> 99 (1971), Theorem on printed page 260. The proof uses a maximal quotient, an extreme annihilator and a scalar spectral-evaluation contradiction. Its bounded-derivation input is the von Neumann innerness theorem in <a href="OA-FLOW-L35.html#oa-flow.gi.innerness">lesson 35</a>.</p>
+<p>The other operator-algebra prerequisites are actual programme lessons. <a href="../OA-MOD/OA-MOD-UB.html#transfer-of-the-algebra-structure-to-the-banach-bidual">Every bounded functional becomes normal in one representation</a>, sections 2–8, constructs the C*-bidual, its product and normal extensions. <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-01">Functionals as vector coefficients</a>, Proposition 1.1(1), gives the norm-additive positive decomposition of a hermitian functional; <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-02">Representations, normal extensions and central corners</a>, Lemma 2.1, gives the corresponding representation statement. <a href="../foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html">Pure states and irreducible representations</a>, Lemma 8.1 and Theorems 8.3–8.5, gives the commutant Radon–Nikodym lemma and enough irreducible representations. Continuous and spectral functional calculus and approximate-identity nets retain their full nonseparable scopes. The bidual and arbitrary-representation derivation arguments are also written in <a href="OA-FLOW-L35.html#oa-flow.gi.bidual">GI11–GI12</a>. The maximality and norm separation used below are <a href="OA-FLOW-CF.html#oa-flow.cf.1">CF1</a>; the compactness of arbitrary products of discs is proved in <a href="OA-FLOW-CF.html#oa-flow.cf.4">CF4</a>.</p>
+<h3 id="derivations-extend-to-the-bidual-and-become-spatial">Derivations extend to the bidual and become spatial</h3>
+<p>Let <span class="math" data-tex="$\Delta$">$\Delta$</span> preserve star. It is bounded by <a href="OA-FLOW-L34.html#oa-flow.dfd.algebra">lesson 34</a>. Its second adjoint is a normal star derivation of <span class="math" data-tex="$A^{**}$">$A^{**}$</span>. To verify the product rule, first hold <span class="math" data-tex="$a\in A$">$a\in A$</span> fixed and approximate <span class="math" data-tex="$Y\in A^{**}$">$Y\in A^{**}$</span> ultraweakly by elements of <span class="math" data-tex="$A$">$A$</span>. Separate ultraweak continuity of multiplication and of <span class="math" data-tex="$\Delta^{**}$">$\Delta^{**}$</span> gives</p>
+<p><span class="math math-display" data-tex="$$\Delta^{**}(aY)=\Delta(a)Y+a\Delta^{**}(Y).$$">$$\Delta^{**}(aY)=\Delta(a)Y+a\Delta^{**}(Y).$$</span></p>
+<p>Then hold <span class="math" data-tex="$Y$">$Y$</span> fixed and approximate <span class="math" data-tex="$X\in A^{**}$">$X\in A^{**}$</span> in the same way. This gives the product rule for <span class="math" data-tex="$XY$">$XY$</span>. The star identity follows by the same density argument.</p>
+<p>Lesson 35 therefore gives a selfadjoint <span class="math" data-tex="$h\in A^{**}$">$h\in A^{**}$</span> with <span class="math" data-tex="$\Delta^{**}=i[h,\mathord\cdot]$">$\Delta^{**}=i[h,\mathord\cdot]$</span>. If <span class="math" data-tex="$\pi$">$\pi$</span> is any nondegenerate representation of <span class="math" data-tex="$A$">$A$</span>, its normal extension gives</p>
+<p><span class="math math-display" data-tex="$$\pi(\Delta(a))=i[\bar\pi(h),\pi(a)]. \tag{SP.1}$$">$$\pi(\Delta(a))=i[\bar\pi(h),\pi(a)]. \tag{SP.1}$$</span></p>
+<p>There is no assumption that the original derivation is normal in a chosen representation; (SP.1) follows from the bidual first. For a simple nonzero <span class="math" data-tex="$A$">$A$</span>, take a nonzero irreducible representation, which is faithful because its kernel is an ideal. Identify <span class="math" data-tex="$A$">$A$</span> with this concrete copy. Adding a scalar to the spatial selfadjoint implementer gives <span class="math" data-tex="$r_0\ge1$">$r_0\ge1$</span> without changing <span class="math" data-tex="$\Delta=i[r_0,\mathord\cdot]$">$\Delta=i[r_0,\mathord\cdot]$</span>.</p>
+<h3 id="a-maximal-quotient-with-no-ideal-disjoint-from-the-simple-algebra">A maximal quotient with no ideal disjoint from the simple algebra</h3>
+<p>Put <span class="math" data-tex="$C_0=C^*(A,r_0)$">$C_0=C^*(A,r_0)$</span>. This algebra contains the Hilbert-space identity: a continuous function equal to one on the positive spectrum of <span class="math" data-tex="$r_0$">$r_0$</span> and zero at zero supplies it in the nonunital functional calculus.</p>
+<p>Choose a maximal closed two-sided ideal <span class="math" data-tex="$J_0$">$J_0$</span> of <span class="math" data-tex="$C_0$">$C_0$</span> with <span class="math" data-tex="$J_0\cap A=0$">$J_0\cap A=0$</span>. Such an ideal exists by Zorn's lemma. Indeed, each quotient by an ideal disjoint from <span class="math" data-tex="$A$">$A$</span> is isometric on <span class="math" data-tex="$A$">$A$</span>. If the closure of an increasing chain of these ideals contained an <span class="math" data-tex="$a\in A$">$a\in A$</span> of norm one, some member would contain a <span class="math" data-tex="$b$">$b$</span> with <span class="math" data-tex="$\|a-b\|&lt;1/2$">$\|a-b\|&lt;1/2$</span>. Its quotient would give <span class="math" data-tex="$1=\|a+J\|\le\|a-b\|&lt;1/2$">$1=\|a+J\|\le\|a-b\|&lt;1/2$</span>, a contradiction.</p>
+<p>In <span class="math" data-tex="$C=C_0/J_0$">$C=C_0/J_0$</span>, the copy of <span class="math" data-tex="$A$">$A$</span> remains faithful and <span class="math" data-tex="$r=r_0+J_0\ge1$">$r=r_0+J_0\ge1$</span>. Moreover,</p>
+<p><span class="math math-display" data-tex="$$K\text{ a closed ideal of }C,\quad K\cap A=0
+\quad\Longrightarrow\quad K=0. \tag{SP.2}$$">$$K\text{ a closed ideal of }C,\quad K\cap A=0
+\quad\Longrightarrow\quad K=0. \tag{SP.2}$$</span></p>
+<p>Otherwise the inverse image of <span class="math" data-tex="$K$">$K$</span> would contradict maximality. At this point <span class="math" data-tex="$A$">$A$</span> is only a subalgebra of <span class="math" data-tex="$C$">$C$</span>; we have not yet proved it is an ideal. Put <span class="math" data-tex="$B=A+\mathbb C1_C$">$B=A+\mathbb C1_C$</span>, a closed C*-subalgebra, and let <span class="math" data-tex="$I$">$I$</span> be the closed ideal of <span class="math" data-tex="$C$">$C$</span> generated by <span class="math" data-tex="$A$">$A$</span>.</p>
+<p>Suppose <span class="math" data-tex="$I\ne A$">$I\ne A$</span>. Then there is a selfadjoint <span class="math" data-tex="$s\in I\setminus B$">$s\in I\setminus B$</span>. To see this, if <span class="math" data-tex="$I\subset B$">$I\subset B$</span>, the quotient <span class="math" data-tex="$B/A$">$B/A$</span> has dimension at most one. Strict containment <span class="math" data-tex="$A\subsetneq I$">$A\subsetneq I$</span> would force <span class="math" data-tex="$I=B$">$I=B$</span>. Then <span class="math" data-tex="$1_C\in I$">$1_C\in I$</span> gives <span class="math" data-tex="$I=C=B$">$I=C=B$</span>, in which <span class="math" data-tex="$A$">$A$</span> is already an ideal, so the ideal it generates is <span class="math" data-tex="$A$">$A$</span> after all. If <span class="math" data-tex="$I\not\subset B$">$I\not\subset B$</span>, one of the real or imaginary selfadjoint parts of an element outside <span class="math" data-tex="$B$">$B$</span> is outside <span class="math" data-tex="$B$">$B$</span>.</p>
+<p>The hermitian annihilator ball</p>
+<p><span class="math math-display" data-tex="$$\mathcal S=\{g\in C^*:g=g^*,\ \|g\|\le1,\ g|_B=0\} \tag{SP.3}$$">$$\mathcal S=\{g\in C^*:g=g^*,\ \|g\|\le1,\ g|_B=0\} \tag{SP.3}$$</span></p>
+<p>has an extreme point <span class="math" data-tex="$g$">$g$</span> with <span class="math" data-tex="$g(s)&gt;0$">$g(s)&gt;0$</span>. Here are the compactness and extremality details. Hahn–Banach separates <span class="math" data-tex="$s$">$s$</span> from <span class="math" data-tex="$B_{\rm sa}$">$B_{\rm sa}$</span> and gives an element of <span class="math" data-tex="$\mathcal S$">$\mathcal S$</span> positive on <span class="math" data-tex="$s$">$s$</span>. The dual unit ball is compact in the pointwise topology: embed it in the product of the discs <span class="math" data-tex="$\{|z|\le\|x\|\}$">$\{|z|\le\|x\|\}$</span>, <span class="math" data-tex="$x\in C$">$x\in C$</span>, and note that linearity and the norm inequalities define a closed subset. The hermitian and annihilator constraints are closed as well. Maximizing evaluation at <span class="math" data-tex="$s$">$s$</span> therefore gives a nonempty compact face with positive maximum. A descending chain of its nonempty closed faces has a nonempty face as its intersection, by compactness. Zorn gives a minimal such face. If it had two distinct functionals, an evaluation on a selfadjoint element would separate them; its maximizing subface would be proper. Thus the minimal face is a point, extreme also in <span class="math" data-tex="$\mathcal S$">$\mathcal S$</span>. Since <span class="math" data-tex="$g\ne0$">$g\ne0$</span> is extreme in this ball, <span class="math" data-tex="$\|g\|=1$">$\|g\|=1$</span>: otherwise the distinct small radial perturbations <span class="math" data-tex="$(1\pm\varepsilon)g$">$(1\pm\varepsilon)g$</span> would express it as a midpoint.</p>
+<h3 id="an-extreme-annihilator-forces-the-coefficient-algebra-to-be-a-factor">An extreme annihilator forces the coefficient algebra to be a factor</h3>
+<p>Write <span class="math" data-tex="$g=g_+-g_-$">$g=g_+-g_-$</span>, where <span class="math" data-tex="$g_\pm$">$g_\pm$</span> are positive and <span class="math" data-tex="$\|g_+\|+\|g_-\|=1$">$\|g_+\|+\|g_-\|=1$</span>, and put <span class="math" data-tex="$\lambda=g_++g_-$">$\lambda=g_++g_-$</span>. Let <span class="math" data-tex="$(\pi,H,\xi)$">$(\pi,H,\xi)$</span> be the GNS triple of the state <span class="math" data-tex="$\lambda$">$\lambda$</span>. The commutant Radon–Nikodym lemma gives positive contractions <span class="math" data-tex="$T_\pm\in\pi(C)'$">$T_\pm\in\pi(C)'$</span> representing <span class="math" data-tex="$g_\pm$">$g_\pm$</span>, with <span class="math" data-tex="$T_++T_-=1$">$T_++T_-=1$</span>. Consequently <span class="math" data-tex="$T=T_+-T_-$">$T=T_+-T_-$</span> is a selfadjoint contraction and</p>
+<p><span class="math math-display" data-tex="$$g(x)=\langle\pi(x)T\xi,\xi\rangle,
+\qquad \|\xi\|=1. \tag{SP.4}$$">$$g(x)=\langle\pi(x)T\xi,\xi\rangle,
+\qquad \|\xi\|=1. \tag{SP.4}$$</span></p>
+<p>This vector formula gives a normal functional <span class="math" data-tex="$f$">$f$</span> on <span class="math" data-tex="$R=\pi(C)''$">$R=\pi(C)''$</span>. Since <span class="math" data-tex="$g$">$g$</span> vanishes on <span class="math" data-tex="$B$">$B$</span>, <span class="math" data-tex="$f$">$f$</span> vanishes on <span class="math" data-tex="$N=\pi(B)''$">$N=\pi(B)''$</span>.</p>
+<p>The commutator with the selfadjoint <span class="math" data-tex="$\pi(r)$">$\pi(r)$</span> maps <span class="math" data-tex="$\pi(B)$">$\pi(B)$</span> into itself. It is ultraweakly continuous, so it maps <span class="math" data-tex="$N$">$N$</span> into <span class="math" data-tex="$N$">$N$</span>. Apply lesson 35 to the bounded star derivation <span class="math" data-tex="$i[\pi(r),\mathord\cdot]$">$i[\pi(r),\mathord\cdot]$</span> on <span class="math" data-tex="$N$">$N$</span>. There is a selfadjoint <span class="math" data-tex="$p\in N$">$p\in N$</span> such that</p>
+<p><span class="math math-display" data-tex="$$q=\pi(r)-p\in N'. \tag{SP.5}$$">$$q=\pi(r)-p\in N'. \tag{SP.5}$$</span></p>
+<p>Every central projection <span class="math" data-tex="$e$">$e$</span> of <span class="math" data-tex="$N$">$N$</span> commutes with <span class="math" data-tex="$p$">$p$</span>, with <span class="math" data-tex="$q$">$q$</span> and hence with <span class="math" data-tex="$\pi(r)$">$\pi(r)$</span>. As <span class="math" data-tex="$C$">$C$</span> is generated by <span class="math" data-tex="$B$">$B$</span> and <span class="math" data-tex="$r$">$r$</span>, it follows that <span class="math" data-tex="$e\in Z(R)$">$e\in Z(R)$</span>.</p>
+<p>If <span class="math" data-tex="$0&lt;e&lt;1$">$0&lt;e&lt;1$</span>, cyclicity of <span class="math" data-tex="$\xi$">$\xi$</span> for <span class="math" data-tex="$\pi(C)$">$\pi(C)$</span> gives <span class="math" data-tex="$0&lt;t=\langle e\xi,\xi\rangle&lt;1$">$0&lt;t=\langle e\xi,\xi\rangle&lt;1$</span>: a central projection killing <span class="math" data-tex="$\xi$">$\xi$</span> kills the whole dense cyclic subspace. Define</p>
+<p><span class="math math-display" data-tex="$$g_e(x)=\langle\pi(x)T e\xi,e\xi\rangle,
+\qquad g_{1-e}(x)=\langle\pi(x)T(1-e)\xi,(1-e)\xi\rangle.$$">$$g_e(x)=\langle\pi(x)T e\xi,e\xi\rangle,
+\qquad g_{1-e}(x)=\langle\pi(x)T(1-e)\xi,(1-e)\xi\rangle.$$</span></p>
+<p>They are hermitian, their sum is <span class="math" data-tex="$g$">$g$</span>, and their norms are at most <span class="math" data-tex="$t$">$t$</span> and <span class="math" data-tex="$1-t$">$1-t$</span>. Because <span class="math" data-tex="$e$">$e$</span> is central in <span class="math" data-tex="$N$">$N$</span> and <span class="math" data-tex="$f|_N=0$">$f|_N=0$</span>, both vanish on <span class="math" data-tex="$B$">$B$</span>. The equality <span class="math" data-tex="$\|g\|=1$">$\|g\|=1$</span> and the triangle inequality force <span class="math" data-tex="$\|g_e\|=t$">$\|g_e\|=t$</span> and <span class="math" data-tex="$\|g_{1-e}\|=1-t$">$\|g_{1-e}\|=1-t$</span>. Thus</p>
+<p><span class="math math-display" data-tex="$$g=t\,(g_e/t)+(1-t)\,(g_{1-e}/(1-t))$$">$$g=t\,(g_e/t)+(1-t)\,(g_{1-e}/(1-t))$$</span></p>
+<p>is a convex decomposition in <span class="math" data-tex="$\mathcal S$">$\mathcal S$</span>. Extremality implies <span class="math" data-tex="$g_e=tg$">$g_e=tg$</span>. Extend this equality normally to <span class="math" data-tex="$R$">$R$</span>. The functional on its left vanishes on <span class="math" data-tex="$(1-e)R$">$(1-e)R$</span>, whereas the restriction of <span class="math" data-tex="$f$">$f$</span> to <span class="math" data-tex="$(1-e)R$">$(1-e)R$</span> has norm <span class="math" data-tex="$1-t&gt;0$">$1-t&gt;0$</span>, by the preceding vector formula and equality. This contradicts <span class="math" data-tex="$t&gt;0$">$t&gt;0$</span>. Hence <span class="math" data-tex="$N$">$N$</span> has no nontrivial central projections. Spectral approximation of central selfadjoint elements now gives</p>
+<p><span class="math math-display" data-tex="$$N\text{ is a factor}. \tag{SP.6}$$">$$N\text{ is a factor}. \tag{SP.6}$$</span></p>
+<h3 id="spectral-evaluation-gives-the-scalar-shift-contradiction">Spectral evaluation gives the scalar-shift contradiction</h3>
+<p>Suppose <span class="math" data-tex="$\pi(A)\ne0$">$\pi(A)\ne0$</span>. Because <span class="math" data-tex="$A$">$A$</span> is an ideal of <span class="math" data-tex="$B$">$B$</span>, its ultraweak closure is a nonzero ultraweakly closed ideal of the factor <span class="math" data-tex="$N$">$N$</span>, and therefore equals <span class="math" data-tex="$N$">$N$</span>. In particular <span class="math" data-tex="$\pi|_A$">$\pi|_A$</span> is a nonzero, hence faithful, representation of the simple algebra.</p>
+<p>The selfadjoint <span class="math" data-tex="$q$">$q$</span> in (SP.5) cannot be scalar. If it were, <span class="math" data-tex="$\pi(r)\in N$">$\pi(r)\in N$</span> would imply <span class="math" data-tex="$R=N$">$R=N$</span>; then <span class="math" data-tex="$f|_N=0$">$f|_N=0$</span> would imply <span class="math" data-tex="$g=0$">$g=0$</span>. Write <span class="math" data-tex="$X=\sigma(q)$">$X=\sigma(q)$</span>, a compact subset of <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span> with at least two points.</p>
+<p>We justify evaluation at every <span class="math" data-tex="$t\in X$">$t\in X$</span> on <span class="math" data-tex="$C^*(N,q)$">$C^*(N,q)$</span>. For a finite sum <span class="math" data-tex="$F(t)=\sum_j a_j u_j(t)$">$F(t)=\sum_j a_j u_j(t)$</span>, <span class="math" data-tex="$a_j\in N$">$a_j\in N$</span>, <span class="math" data-tex="$u_j\in C(X)$">$u_j\in C(X)$</span>, define <span class="math" data-tex="$F(q)=\sum_j a_j u_j(q)$">$F(q)=\sum_j a_j u_j(q)$</span>. Then</p>
+<p><span class="math math-display" data-tex="$$\|F(q)\|=\sup_{t\in X}\|F(t)\|. \tag{SP.7}$$">$$\|F(q)\|=\sup_{t\in X}\|F(t)\|. \tag{SP.7}$$</span></p>
+<p>For the upper bound, approximate the finitely many <span class="math" data-tex="$u_j$">$u_j$</span> uniformly by step functions on a common finite spectral partition of <span class="math" data-tex="$q$">$q$</span>. The resulting operator is block diagonal, and the norm of a block is at most the norm of its coefficient in <span class="math" data-tex="$N$">$N$</span>. The approximation error is bounded by the sum of the coefficient norms times the scalar errors; letting these errors decrease gives the upper bound.</p>
+<p>For the lower bound, fix <span class="math" data-tex="$t\in X$">$t\in X$</span>. A sufficiently small spectral neighborhood <span class="math" data-tex="$U$">$U$</span> of <span class="math" data-tex="$t$">$t$</span> has a nonzero spectral projection <span class="math" data-tex="$e_U$">$e_U$</span> of <span class="math" data-tex="$q$">$q$</span>. The representation <span class="math" data-tex="$a\mapsto a|_{e_UH}$">$a\mapsto a|_{e_UH}$</span> of <span class="math" data-tex="$N$">$N$</span> is normal because <span class="math" data-tex="$e_U\in N'$">$e_U\in N'$</span>. Its kernel is an ultraweakly closed ideal of the factor <span class="math" data-tex="$N$">$N$</span>; since <span class="math" data-tex="$e_U\ne0$">$e_U\ne0$</span>, the representation is faithful and isometric. Uniform continuity gives</p>
+<p><span class="math math-display" data-tex="$$\|(F(q)-F(t))e_U\|
+\le\sum_j\|a_j\|\sup_{u\in U\cap X}|u_j(u)-u_j(t)|.$$">$$\|(F(q)-F(t))e_U\|
+\le\sum_j\|a_j\|\sup_{u\in U\cap X}|u_j(u)-u_j(t)|.$$</span></p>
+<p>This can be made arbitrarily small, whereas <span class="math" data-tex="$\|F(t)e_U\|=\|F(t)\|$">$\|F(t)e_U\|=\|F(t)\|$</span>. This proves (SP.7). Finite sums of this form are uniformly dense in <span class="math" data-tex="$C(X,N)$">$C(X,N)$</span>, by uniform continuity and a finite scalar partition of unity on <span class="math" data-tex="$X$">$X$</span>. The map <span class="math" data-tex="$F\mapsto F(q)$">$F\mapsto F(q)$</span> is therefore an isometric star isomorphism onto <span class="math" data-tex="$C^*(N,q)$">$C^*(N,q)$</span>. Evaluation at <span class="math" data-tex="$t$">$t$</span> is a unital star homomorphism onto <span class="math" data-tex="$N$">$N$</span>.</p>
+<p>Since <span class="math" data-tex="$\pi(B)\subset N$">$\pi(B)\subset N$</span> and <span class="math" data-tex="$\pi(r)=p+q$">$\pi(r)=p+q$</span>, evaluation restricts to a star homomorphism</p>
+<p><span class="math math-display" data-tex="$$\theta_t:C\longrightarrow N,\qquad
+\theta_t(a)=\pi(a)\ (a\in A),\qquad
+\theta_t(r)=p+t1. \tag{SP.8}$$">$$\theta_t:C\longrightarrow N,\qquad
+\theta_t(a)=\pi(a)\ (a\in A),\qquad
+\theta_t(r)=p+t1. \tag{SP.8}$$</span></p>
+<p>It is faithful on <span class="math" data-tex="$A$">$A$</span>, so its kernel is disjoint from <span class="math" data-tex="$A$">$A$</span>. Property (SP.2) makes <span class="math" data-tex="$\theta_t$">$\theta_t$</span> faithful on all of <span class="math" data-tex="$C$">$C$</span>. Since <span class="math" data-tex="$r\ge1$">$r\ge1$</span>, we have <span class="math" data-tex="$p+t1\ge1$">$p+t1\ge1$</span> and</p>
+<p><span class="math math-display" data-tex="$$\|r\|=\|p+t1\|=\max\sigma(p)+t
+\qquad(t\in X). \tag{SP.9}$$">$$\|r\|=\|p+t1\|=\max\sigma(p)+t
+\qquad(t\in X). \tag{SP.9}$$</span></p>
+<p>Two different points of <span class="math" data-tex="$X$">$X$</span> contradict this equality. Thus <span class="math" data-tex="$\pi(A)=0$">$\pi(A)=0$</span>.</p>
+<p>But then <span class="math" data-tex="$\pi(I)=0$">$\pi(I)=0$</span>, since <span class="math" data-tex="$I$">$I$</span> is the ideal generated by <span class="math" data-tex="$A$">$A$</span>. Formula (SP.4) gives <span class="math" data-tex="$g(s)=0$">$g(s)=0$</span>, contrary to its choice. The supposition <span class="math" data-tex="$I\ne A$">$I\ne A$</span> was false. We have proved that <span class="math" data-tex="$A$">$A$</span> is an ideal of <span class="math" data-tex="$C$">$C$</span>, and (SP.2) now makes it an essential ideal. For every star derivation <span class="math" data-tex="$\Delta$">$\Delta$</span> we have obtained such a unital algebra <span class="math" data-tex="$C_\Delta$">$C_\Delta$</span> and a selfadjoint <span class="math" data-tex="$r_\Delta\ge1$">$r_\Delta\ge1$</span> with <span class="math" data-tex="$\Delta=i[r_\Delta,\mathord\cdot]$">$\Delta=i[r_\Delta,\mathord\cdot]$</span>.</p>
+<h3 id="assemble-all-implementers-in-one-primitive-algebra">Assemble all implementers in one primitive algebra</h3>
+<p>Fix one faithful irreducible representation <span class="math" data-tex="$\rho$">$\rho$</span> of <span class="math" data-tex="$A$">$A$</span> on <span class="math" data-tex="$K$">$K$</span>. A nondegenerate representation of an ideal extends to its ambient algebra. For completeness, if <span class="math" data-tex="$A$">$A$</span> is an ideal of <span class="math" data-tex="$E$">$E$</span> and <span class="math" data-tex="$(e_j)$">$(e_j)$</span> is a contractive approximate-identity net of <span class="math" data-tex="$A$">$A$</span>, the uniformly bounded operators <span class="math" data-tex="$\rho(c e_j)$">$\rho(c e_j)$</span>, <span class="math" data-tex="$c\in E$">$c\in E$</span>, converge strongly: on the dense subspace spanned by <span class="math" data-tex="$\rho(a)\eta$">$\rho(a)\eta$</span> they converge to <span class="math" data-tex="$\rho(ca)\eta$">$\rho(ca)\eta$</span>. Their strong limit <span class="math" data-tex="$\widetilde\rho(c)$">$\widetilde\rho(c)$</span> satisfies</p>
+<p><span class="math math-display" data-tex="$$\widetilde\rho(c)\rho(a)\eta=\rho(ca)\eta. \tag{SP.10}$$">$$\widetilde\rho(c)\rho(a)\eta=\rho(ca)\eta. \tag{SP.10}$$</span></p>
+<p>This identity proves multiplication. Testing the inner product on two vectors from the dense subspace proves the adjoint identity, and <span class="math" data-tex="$1_E$">$1_E$</span> acts as <span class="math" data-tex="$1_K$">$1_K$</span>. The extension is unique. If <span class="math" data-tex="$\rho$">$\rho$</span> is faithful and <span class="math" data-tex="$A$">$A$</span> is essential in <span class="math" data-tex="$E$">$E$</span>, its kernel is zero, since an element of the kernel annihilates <span class="math" data-tex="$A$">$A$</span>.</p>
+<p>Apply this to each <span class="math" data-tex="$C_\Delta$">$C_\Delta$</span> and write <span class="math" data-tex="$R_\Delta=\widetilde\rho(r_\Delta)$">$R_\Delta=\widetilde\rho(r_\Delta)$</span>. Each <span class="math" data-tex="$R_\Delta$">$R_\Delta$</span> multiplies <span class="math" data-tex="$\rho(A)$">$\rho(A)$</span> into itself on both sides. Hence</p>
+<p><span class="math math-display" data-tex="$$D=C^*(\rho(A),1_K,\{R_\Delta:\Delta\text{ a star derivation of }A\}) \tag{SP.11}$$">$$D=C^*(\rho(A),1_K,\{R_\Delta:\Delta\text{ a star derivation of }A\}) \tag{SP.11}$$</span></p>
+<p>contains <span class="math" data-tex="$\rho(A)$">$\rho(A)$</span> as an ideal: products and sums of generators preserve that property, as do norm limits. It is primitive because it contains the irreducibly acting <span class="math" data-tex="$\rho(A)$">$\rho(A)$</span>. That ideal is essential, since an operator annihilating <span class="math" data-tex="$\rho(A)$">$\rho(A)$</span> annihilates its dense nondegenerate range.</p>
+<p>Every complex derivation is a complex linear combination of two star derivations. Explicitly, for <span class="math" data-tex="$\delta^\sharp(a)=\delta(a^*)^*$">$\delta^\sharp(a)=\delta(a^*)^*$</span>, the maps <span class="math" data-tex="$(\delta+\delta^\sharp)/2$">$(\delta+\delta^\sharp)/2$</span> and <span class="math" data-tex="$(\delta-\delta^\sharp)/(2i)$">$(\delta-\delta^\sharp)/(2i)$</span> preserve star. Thus the corresponding linear combination of <span class="math" data-tex="$iR_\Delta$">$iR_\Delta$</span> implements <span class="math" data-tex="$\delta$">$\delta$</span> in <span class="math" data-tex="$D$">$D$</span>. Two implementers differ by an operator commuting with the irreducible algebra <span class="math" data-tex="$\rho(A)$">$\rho(A)$</span>. Each selfadjoint part of such an operator has spectral projections commuting with <span class="math" data-tex="$\rho(A)$">$\rho(A)$</span>; irreducibility makes their ranges zero or the whole space. Spectral approximation makes each selfadjoint part scalar, and hence their complex combination is scalar.</p>
+<p>Let <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> be a derivation of <span class="math" data-tex="$D$">$D$</span>. It preserves <span class="math" data-tex="$A$">$A$</span>: for <span class="math" data-tex="$a\in A_+$">$a\in A_+$</span>,</p>
+<p><span class="math math-display" data-tex="$$\varepsilon(a)=\varepsilon(a^{1/2})a^{1/2}
++a^{1/2}\varepsilon(a^{1/2})\in A,$$">$$\varepsilon(a)=\varepsilon(a^{1/2})a^{1/2}
++a^{1/2}\varepsilon(a^{1/2})\in A,$$</span></p>
+<p>and positive elements span <span class="math" data-tex="$A$">$A$</span>. Its restriction therefore has an implementer <span class="math" data-tex="$d\in D$">$d\in D$</span>. The derivation <span class="math" data-tex="$\eta=\varepsilon-[d,\mathord\cdot]$">$\eta=\varepsilon-[d,\mathord\cdot]$</span> vanishes on <span class="math" data-tex="$A$">$A$</span>. For <span class="math" data-tex="$x\in D$">$x\in D$</span> and <span class="math" data-tex="$a\in A$">$a\in A$</span>,</p>
+<p><span class="math math-display" data-tex="$$\eta(x)a=\eta(xa)-x\eta(a)=0.$$">$$\eta(x)a=\eta(xa)-x\eta(a)=0.$$</span></p>
+<p>Nondegeneracy of <span class="math" data-tex="$A$">$A$</span> forces <span class="math" data-tex="$\eta(x)=0$">$\eta(x)=0$</span>. Hence every derivation of <span class="math" data-tex="$D$">$D$</span> is inner.</p>
+<h3 id="uniqueness-of-the-derived-algebra">Uniqueness of the derived algebra</h3>
+<p>If <span class="math" data-tex="$D'$">$D'$</span> is another unital primitive algebra satisfying the theorem's implementer clauses, <span class="math" data-tex="$A$">$A$</span> is essential in <span class="math" data-tex="$D'$">$D'$</span>. Indeed, in a faithful irreducible representation of <span class="math" data-tex="$D'$">$D'$</span>, the nonzero subspace generated by <span class="math" data-tex="$A$">$A$</span> is the whole space. An ideal disjoint from <span class="math" data-tex="$A$">$A$</span> annihilates that subspace and is zero. Formula (SP.10) therefore extends the fixed <span class="math" data-tex="$\rho$">$\rho$</span> faithfully to <span class="math" data-tex="$D'$">$D'$</span>.</p>
+<p>For <span class="math" data-tex="$c\in D'$">$c\in D'$</span>, its commutator on <span class="math" data-tex="$A$">$A$</span> has an implementer <span class="math" data-tex="$d\in D$">$d\in D$</span>, so <span class="math" data-tex="$\widetilde\rho(c)-d$">$\widetilde\rho(c)-d$</span> commutes with <span class="math" data-tex="$\rho(A)$">$\rho(A)$</span> and is scalar. Thus <span class="math" data-tex="$\widetilde\rho(D')\subset D$">$\widetilde\rho(D')\subset D$</span>. Conversely, each star derivation <span class="math" data-tex="$\Delta$">$\Delta$</span> has an implementer in <span class="math" data-tex="$D'$">$D'$</span>; its image differs from <span class="math" data-tex="$iR_\Delta$">$iR_\Delta$</span> by a scalar. Together with <span class="math" data-tex="$A$">$A$</span> and the unit, these elements generate <span class="math" data-tex="$D$">$D$</span>, so <span class="math" data-tex="$D\subset\widetilde\rho(D')$">$D\subset\widetilde\rho(D')$</span>. This proves the required isomorphism fixing <span class="math" data-tex="$A$">$A$</span>. It is unique: two extensions of the identity on <span class="math" data-tex="$A$">$A$</span> agree after multiplication by every <span class="math" data-tex="$a\in A$">$a\in A$</span>, and essentiality removes their difference. The theorem is proved without a separability or countable-approximate-identity assumption.</p>
+<p><span id="OA-FLOW.BOUNDARIES.EMBEDDING"></span><a id="boundaries.embedding"></a></p>
+<h2 id="an-essential-ideal-embeds-its-ambient-algebra-in-the-multiplier-algebra">An essential ideal embeds its ambient algebra in the multiplier algebra</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a closed two-sided essential ideal of a C*-algebra <span class="math" data-tex="\(D\)">\(D\)</span>. For <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>, define</p>
+<p><span class="math math-display" data-tex="$$L_d(a)=da,\qquad R_d(a)=ad\qquad(a\in A). \tag{6}$$">$$L_d(a)=da,\qquad R_d(a)=ad\qquad(a\in A). \tag{6}$$</span></p>
+<p>These maps are bounded and satisfy the double-centralizer identities</p>
+<p><span class="math math-display" data-tex="$$L_d(ab)=L_d(a)b,\qquad
+R_d(ab)=aR_d(b),\qquad
+aL_d(b)=R_d(a)b. \tag{7}$$">$$L_d(ab)=L_d(a)b,\qquad
+R_d(ab)=aR_d(b),\qquad
+aL_d(b)=R_d(a)b. \tag{7}$$</span></p>
+<p>Thus</p>
+<p><span class="math math-display" data-tex="$$\iota:D\longrightarrow M(A),\qquad
+\iota(d)=(L_d,R_d), \tag{8}$$">$$\iota:D\longrightarrow M(A),\qquad
+\iota(d)=(L_d,R_d), \tag{8}$$</span></p>
+<p>is a star homomorphism, unital when <span class="math" data-tex="\(D\)">\(D\)</span> is unital. It extends the canonical copy of <span class="math" data-tex="\(A\)">\(A\)</span>: if <span class="math" data-tex="\(d=a\in A\)">\(d=a\in A\)</span>, then <span class="math" data-tex="\(\iota(a)\)">\(\iota(a)\)</span> is left and right multiplication by <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>It remains to check injectivity. If <span class="math" data-tex="\(\iota(d)=0\)">\(\iota(d)=0\)</span>, then <span class="math" data-tex="\(dA=Ad=0\)">\(dA=Ad=0\)</span>. The closed ideal generated by <span class="math" data-tex="\(d^*d\)">\(d^*d\)</span> is orthogonal to <span class="math" data-tex="\(A\)">\(A\)</span>. Essentiality forces that ideal to be zero, so <span class="math" data-tex="\(d^*d=0\)">\(d^*d=0\)</span> and <span class="math" data-tex="\(d=0\)">\(d=0\)</span>. Hence</p>
+<p><span class="math math-display" data-tex="$$D\hookrightarrow M(A) \quad\text{faithfully}. \tag{9}$$">$$D\hookrightarrow M(A) \quad\text{faithfully}. \tag{9}$$</span></p>
+<p>This argument is valid without a countable approximate identity, separability, or unitality of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>We also need the faithful represented meaning of a general multiplier. Fix a faithful nondegenerate representation <span class="math" data-tex="\(\rho:A\to B(K)\)">\(\rho:A\to B(K)\)</span>, and a contractive approximate-identity net <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span>. If <span class="math" data-tex="\((L,R)\)">\((L,R)\)</span> is a bounded double centralizer, the operators <span class="math" data-tex="\(\rho(L(e_j))\)">\(\rho(L(e_j))\)</span> have norm at most <span class="math" data-tex="\(\|L\|\)">\(\|L\|\)</span>. On the dense vectors <span class="math" data-tex="\(\rho(a)\xi\)">\(\rho(a)\xi\)</span>, the identity <span class="math" data-tex="\(L(e_j)a=L(e_ja)\)">\(L(e_j)a=L(e_ja)\)</span> shows that they converge to <span class="math" data-tex="\(\rho(L(a))\xi\)">\(\rho(L(a))\xi\)</span>. Their common bound extends the limit to every vector. Denote the resulting bounded operator by <span class="math" data-tex="\(T\)">\(T\)</span>. Then
+<span class="math math-display" data-tex="\[
+ T\rho(a)=\rho(L(a)),\qquad
+ \rho(a)T=\rho(R(a)).
+ \tag{MP1}
+\]">\[
+ T\rho(a)=\rho(L(a)),\qquad
+ \rho(a)T=\rho(R(a)).
+ \tag{MP1}
+\]</span>
+The second identity follows from <span class="math" data-tex="\(aL(e_j)=R(a)e_j\)">\(aL(e_j)=R(a)e_j\)</span>. These identities make the map multiplicative and unique. For the adjoint, compatibility gives <span class="math" data-tex="\(b^*L(a)=R(b^*)a\)">\(b^*L(a)=R(b^*)a\)</span>; testing scalar inner products on <span class="math" data-tex="\(\rho(A)K\)">\(\rho(A)K\)</span> yields
+<span class="math math-display" data-tex="\[
+ T^*\rho(b)=\rho(R(b^*)^*).
+ \tag{MP2}
+\]">\[
+ T^*\rho(b)=\rho(R(b^*)^*).
+ \tag{MP2}
+\]</span>
+This is precisely the double-centralizer adjoint. If <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, faithfulness of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives <span class="math" data-tex="\(L=R=0\)">\(L=R=0\)</span>; the representation is therefore faithful. Its norm equals <span class="math" data-tex="\(\|L\|\)">\(\|L\|\)</span>: the construction gives <span class="math" data-tex="\(\|T\|\le\|L\|\)">\(\|T\|\le\|L\|\)</span>, while (MP1) and isometry of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> give the reverse inequality. The usual unit multiplier acts as <span class="math" data-tex="\(1_K\)">\(1_K\)</span>.</p>
+<p>For <span class="math" data-tex="\(A=K(K)\)">\(A=K(K)\)</span> in its defining representation, every bounded <span class="math" data-tex="\(T\)">\(T\)</span> preserves the compact operators on both sides. This follows first for finite-rank operators and then for their norm closure. Hence every <span class="math" data-tex="\(T\in B(K)\)">\(T\in B(K)\)</span> gives a double centralizer, and (MP1) proves
+<span class="math math-display" data-tex="\[
+ M(K(K))=B(K)
+ \tag{MP3}
+\]">\[
+ M(K(K))=B(K)
+ \tag{MP3}
+\]</span>
+with no dimension restriction. An operator commuting with all rank-one operators is scalar: it leaves each one-dimensional range invariant, and comparison on <span class="math" data-tex="\(v,w,v+w\)">\(v,w,v+w\)</span>, for independent vectors <span class="math" data-tex="\(v,w\)">\(v,w\)</span>, makes their eigenvalues equal. For a general irreducible representation, the scalar-commutant assertion follows separately from spectral projections. If a selfadjoint operator commutes with the represented algebra, each of its spectral projections does too. Its range and orthogonal complement are invariant, so irreducibility makes each such projection zero or one. Spectral approximation makes the selfadjoint operator scalar. Applying this to the real and imaginary parts proves that every commuting operator is scalar; no rank-one operator is assumed to belong to the represented algebra.</p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> itself is unital, its unit is the ambient unit in every essential unital extension: their difference annihilates <span class="math" data-tex="\(A\)">\(A\)</span>, so essentiality makes it zero. Since <span class="math" data-tex="\(A\)">\(A\)</span> is an ideal, this forces <span class="math" data-tex="\(D=A=M(A)\)">\(D=A=M(A)\)</span>. Thus the theorem includes the statement that all derivations of a unital simple algebra are inner in the algebra itself.</p>
+<p><span id="OA-FLOW.BOUNDARIES.MULTIPLIER"></span><a id="boundaries.multiplier"></a></p>
+<h2 id="simple-c-algebra-derivations-are-multiplier-inner">Simple C*-algebra derivations are multiplier-inner</h2>
+<p>Let <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span> be simple and let <span class="math" data-tex="\(\delta:A\to A\)">\(\delta:A\to A\)</span> be any complex derivation. Apply Sakai's theorem to obtain <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span> satisfying (5). The preceding irreducible-representation argument makes <span class="math" data-tex="\(A\)">\(A\)</span> essential in <span class="math" data-tex="\(D\)">\(D\)</span>, so (8)–(9) send <span class="math" data-tex="\(d\)">\(d\)</span> to a multiplier <span class="math" data-tex="\(h=\iota(d)\)">\(h=\iota(d)\)</span>. Because <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is the identity on <span class="math" data-tex="\(A\)">\(A\)</span>,</p>
+<p><span class="math math-display" data-tex="$$\boxed{\delta(a)=ha-ah\qquad(a\in A),\quad h\in M(A).} \tag{10}$$">$$\boxed{\delta(a)=ha-ah\qquad(a\in A),\quad h\in M(A).} \tag{10}$$</span></p>
+<p>If <span class="math" data-tex="\(\delta\)">\(\delta\)</span> preserves star, the usual adjoint calculation shows that <span class="math" data-tex="\(h+h^*\)">\(h+h^*\)</span> commutes with <span class="math" data-tex="\(A\)">\(A\)</span>. A faithful irreducible representation of the simple algebra extends to <span class="math" data-tex="\(M(A)\)">\(M(A)\)</span>, so a multiplier commuting with <span class="math" data-tex="\(A\)">\(A\)</span> is scalar. Subtracting half that scalar makes the implementer skew adjoint; equivalently,</p>
+<p><span class="math math-display" data-tex="$$\delta(a)=i[k,a]\qquad(k=k^*\in M(A)). \tag{11}$$">$$\delta(a)=i[k,a]\qquad(k=k^*\in M(A)). \tag{11}$$</span></p>
+<p>The location <span class="math" data-tex="\(M(A)\)">\(M(A)\)</span> is sharp. For <span class="math" data-tex="\(A=K(\mathcal H)\)">\(A=K(\mathcal H)\)</span> with <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> infinite dimensional, <span class="math" data-tex="\(M(A)=B(\mathcal H)\)">\(M(A)=B(\mathcal H)\)</span>. Choose a bounded selfadjoint
+<span class="math" data-tex="\(k\notin K(\mathcal H)+\mathbb C1\)">\(k\notin K(\mathcal H)+\mathbb C1\)</span>, for example a projection of infinite rank and infinite corank. The projection cannot differ from a scalar by a compact operator: choose orthonormal sequences in its range and kernel. A compact operator sends either sequence to zero in norm, because a finite-rank approximation does so and its norm error is uniform. The two sequences would respectively force the scalar to be <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>. Then <span class="math" data-tex="\(i[k,\mathord\cdot]\)">\(i[k,\mathord\cdot]\)</span> is a derivation of <span class="math" data-tex="\(K(\mathcal H)\)">\(K(\mathcal H)\)</span>. If a compact operator implemented the same derivation, its difference from <span class="math" data-tex="\(ik\)">\(ik\)</span> would commute with every compact operator and hence would be scalar, contradicting the choice of <span class="math" data-tex="\(k\)">\(k\)</span>. Thus this derivation has no implementer in <span class="math" data-tex="\(K(\mathcal H)\)">\(K(\mathcal H)\)</span>.</p>
+<p><span id="OA-FLOW.BOUNDARIES.UNIFORMITY"></span><a id="boundaries.uniformity"></a></p>
+<h2 id="uniform-continuity-of-von-neumann-actions">Uniform continuity of von Neumann actions</h2>
+<p>We prove the sequential automorphism theorem needed for the flow, at arbitrary von Neumann algebra scope:</p>
+<p><span class="math math-display" data-tex="$$
+\forall x\in M,\quad \|\beta_n(x)-x\|\longrightarrow0
+\quad\Longrightarrow\quad
+\|\beta_n-\operatorname{id}_M\|\longrightarrow0,
+\qquad \beta_n\in\operatorname{Aut}(M).
+\tag{UW.1}
+$$">$$
+\forall x\in M,\quad \|\beta_n(x)-x\|\longrightarrow0
+\quad\Longrightarrow\quad
+\|\beta_n-\operatorname{id}_M\|\longrightarrow0,
+\qquad \beta_n\in\operatorname{Aut}(M).
+\tag{UW.1}
+$$</span></p>
+<p>The argument uses three already written programme results. <a href="../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-12">Phillips's lemma and Schur's theorem</a>, Lemma 7.1, applies to a bounded sequence of functionals on <span class="math" data-tex="$\ell^\infty(\Gamma)$">$\ell^\infty(\Gamma)$</span> which tends to zero on every indicator function; it concludes that the sum of the absolute values on the individual coordinates tends to zero. <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-14">Homogeneous algebras and the structure of type I algebras</a>, Theorem 10.3, supplies the central homogeneous matrix decomposition. <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-17">Orthogonal families of equivalent projections, and halving</a>, Propositions 13.3–13.4 and Corollary 13.5, supplies equal halves outside type I and countably many copies of a properly infinite unit. These are exact existing prerequisite lessons, with their stated arbitrary-cardinality hypotheses. We derive all the convergence and finite-cover estimates used here.</p>
+<h3 id="orthogonal-projections-cannot-carry-persistent-errors">Orthogonal projections cannot carry persistent errors</h3>
+<p>Write <span class="math" data-tex="$T_n=\beta_n-\operatorname{id}_M$">$T_n=\beta_n-\operatorname{id}_M$</span>. Then <span class="math" data-tex="$\|T_n\|\le2$">$\|T_n\|\le2$</span>. Suppose <span class="math" data-tex="$(f_j)$">$(f_j)$</span> is an orthogonal sequence of projections and <span class="math" data-tex="$n_j$">$n_j$</span> increases to infinity. We claim</p>
+<p><span class="math math-display" data-tex="$$\|T_{n_j}(f_j)\|\longrightarrow0. \tag{UW.2}$$">$$\|T_{n_j}(f_j)\|\longrightarrow0. \tag{UW.2}$$</span></p>
+<p>Otherwise pass to a subsequence for which these norms exceed some <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>. Choose functionals <span class="math" data-tex="$\omega_j\in M^*$">$\omega_j\in M^*$</span> with <span class="math" data-tex="$\|\omega_j\|\le1$">$\|\omega_j\|\le1$</span> and</p>
+<p><span class="math math-display" data-tex="$$|\omega_j(T_{n_j}(f_j))|&gt;\varepsilon/2.$$">$$|\omega_j(T_{n_j}(f_j))|&gt;\varepsilon/2.$$</span></p>
+<p>For a bounded scalar sequence <span class="math" data-tex="$a$">$a$</span>, the strong sum <span class="math" data-tex="$\rho(a)=\sum_j a_jf_j$">$\rho(a)=\sum_j a_jf_j$</span> exists and defines a contractive star homomorphism <span class="math" data-tex="$\ell^\infty(\mathbb N)\to M$">$\ell^\infty(\mathbb N)\to M$</span>. To see existence, the orthogonal subspaces <span class="math" data-tex="$f_jK$">$f_jK$</span> give a bounded diagonal operator of norm at most <span class="math" data-tex="$\sup_j|a_j|$">$\sup_j|a_j|$</span> on their sum, extended by zero on its orthogonal complement; finite partial sums converge strongly to this operator, so it belongs to <span class="math" data-tex="$M$">$M$</span>. Define</p>
+<p><span class="math math-display" data-tex="$$\mu_j(a)=\omega_j(T_{n_j}(\rho(a))).$$">$$\mu_j(a)=\omega_j(T_{n_j}(\rho(a))).$$</span></p>
+<p>These functionals have norm at most two. For every subset <span class="math" data-tex="$E\subseteq\mathbb N$">$E\subseteq\mathbb N$</span>, <span class="math" data-tex="$\rho(1_E)$">$\rho(1_E)$</span> is one fixed projection in <span class="math" data-tex="$M$">$M$</span>, and point-norm convergence gives <span class="math" data-tex="$\mu_j(1_E)\to0$">$\mu_j(1_E)\to0$</span>. Phillips's lemma therefore gives <span class="math" data-tex="$\sum_i|\mu_j(1_{\{i\}})|\to0$">$\sum_i|\mu_j(1_{\{i\}})|\to0$</span>. Its <span class="math" data-tex="$i=j$">$i=j$</span> term is greater than <span class="math" data-tex="$\varepsilon/2$">$\varepsilon/2$</span>, a contradiction. This proves (UW.2). The functionals need not be normal: no interchange of a functional with an infinite projection sum was used.</p>
+<p>There is also a uniform consequence for orthogonal <em>corners</em>. If <span class="math" data-tex="$(p_k)$">$(p_k)$</span> is an orthogonal sequence, put</p>
+<p><span class="math math-display" data-tex="$$d_k=\limsup_{n\to\infty}\|T_n|_{p_kMp_k}\|. \tag{UW.3}$$">$$d_k=\limsup_{n\to\infty}\|T_n|_{p_kMp_k}\|. \tag{UW.3}$$</span></p>
+<p>Then <span class="math" data-tex="$d_k\to0$">$d_k\to0$</span>. Indeed a bounded linear map <span class="math" data-tex="$T$">$T$</span> on a von Neumann corner satisfies</p>
+<p><span class="math math-display" data-tex="$$\|T\|\le4\sup\{\|T(e)\|:e\text{ is a projection in the corner}\}. \tag{UW.4}$$">$$\|T\|\le4\sup\{\|T(e)\|:e\text{ is a projection in the corner}\}. \tag{UW.4}$$</span></p>
+<p>For a positive contraction <span class="math" data-tex="$x$">$x$</span>, its spectral step approximants are positive combinations of spectral projections with coefficient sum at most one: for example <span class="math" data-tex="$m^{-1}\sum_{j=1}^{m}1_{[j/m,1]}(x)$">$m^{-1}\sum_{j=1}^{m}1_{[j/m,1]}(x)$</span> differs from <span class="math" data-tex="$x$">$x$</span> by at most <span class="math" data-tex="$1/m$">$1/m$</span>. Thus the projection supremum bounds <span class="math" data-tex="$\|T(x)\|$">$\|T(x)\|$</span>. Split a selfadjoint contraction into its positive and negative parts, and then split an arbitrary contraction into its real and imaginary parts, to obtain the factor four. If <span class="math" data-tex="$d_k\not\to0$">$d_k\not\to0$</span>, choose distinct increasing <span class="math" data-tex="$k_j$">$k_j$</span> with <span class="math" data-tex="$d_{k_j}\ge\varepsilon$">$d_{k_j}\ge\varepsilon$</span>, increasing <span class="math" data-tex="$n_j$">$n_j$</span>, and projections <span class="math" data-tex="$f_j\le p_{k_j}$">$f_j\le p_{k_j}$</span> with <span class="math" data-tex="$\|T_{n_j}(f_j)\|&gt;\varepsilon/8$">$\|T_{n_j}(f_j)\|&gt;\varepsilon/8$</span>, using (UW.4). These <span class="math" data-tex="$f_j$">$f_j$</span> are orthogonal, contradicting (UW.2).</p>
+<h3 id="the-action-on-the-centre-eventually-becomes-the-identity">The action on the centre eventually becomes the identity</h3>
+<p>First consider an abelian von Neumann algebra <span class="math" data-tex="$B$">$B$</span> and point-norm convergent automorphisms <span class="math" data-tex="$\gamma_n\to\operatorname{id}_B$">$\gamma_n\to\operatorname{id}_B$</span>. For each projection <span class="math" data-tex="$r$">$r$</span>, <span class="math" data-tex="$\gamma_n(r)=r$">$\gamma_n(r)=r$</span> eventually: distinct commuting projections have distance one. We show that <span class="math" data-tex="$\gamma_n$">$\gamma_n$</span> is the identity on all of <span class="math" data-tex="$B$">$B$</span> eventually.</p>
+<p>Suppose it is not. Starting with <span class="math" data-tex="$r_0=1$">$r_0=1$</span>, maintain a projection <span class="math" data-tex="$r_j$">$r_j$</span> on whose corner infinitely many <span class="math" data-tex="$\gamma_n$">$\gamma_n$</span> act nontrivially. Choose <span class="math" data-tex="$n_j$">$n_j$</span> greater than the preceding indices, with <span class="math" data-tex="$\gamma_{n_j}(r_{j-1})=r_{j-1}$">$\gamma_{n_j}(r_{j-1})=r_{j-1}$</span> and nontrivial action on <span class="math" data-tex="$r_{j-1}B$">$r_{j-1}B$</span>. Since spectral step functions span that corner densely, choose <span class="math" data-tex="$e\le r_{j-1}$">$e\le r_{j-1}$</span> with <span class="math" data-tex="$\gamma_{n_j}(e)\ne e$">$\gamma_{n_j}(e)\ne e$</span>. The complementary projection <span class="math" data-tex="$r_{j-1}-e$">$r_{j-1}-e$</span> is also changed by <span class="math" data-tex="$\gamma_{n_j}$">$\gamma_{n_j}$</span>.</p>
+<p>For sufficiently large <span class="math" data-tex="$n$">$n$</span>, both <span class="math" data-tex="$e$">$e$</span> and <span class="math" data-tex="$r_{j-1}-e$">$r_{j-1}-e$</span> are fixed. At least one of their corners still has nontrivial action for infinitely many <span class="math" data-tex="$n$">$n$</span>; otherwise the action on <span class="math" data-tex="$r_{j-1}B$">$r_{j-1}B$</span>, the direct sum of these two corners, would eventually be the identity. Retain such a corner as <span class="math" data-tex="$r_j$">$r_j$</span> and denote the discarded projection by <span class="math" data-tex="$f_j$">$f_j$</span>. Then <span class="math" data-tex="$(f_j)$">$(f_j)$</span> is orthogonal and <span class="math" data-tex="$\|\gamma_{n_j}(f_j)-f_j\|=1$">$\|\gamma_{n_j}(f_j)-f_j\|=1$</span>. Applying (UW.2), whose proof only required point-norm convergence and boundedness, gives a contradiction.</p>
+<p>Apply this result to <span class="math" data-tex="$B=Z(M)$">$B=Z(M)$</span> and <span class="math" data-tex="$\gamma_n=\beta_n|_{Z(M)}$">$\gamma_n=\beta_n|_{Z(M)}$</span>. After discarding finitely many indices we may therefore assume</p>
+<p><span class="math math-display" data-tex="$$\beta_n(z)=z\qquad(z\in Z(M),\ n\ge1). \tag{UW.5}$$">$$\beta_n(z)=z\qquad(z\in Z(M),\ n\ge1). \tag{UW.5}$$</span></p>
+<p>In particular all the central summands used next are invariant. No faithful normal state or countability condition on the centre is required.</p>
+<h3 id="small-corner-errors-give-a-cover-independent-bound">Small corner errors give a cover-independent bound</h3>
+<p>Let <span class="math" data-tex="$p\le q$">$p\le q$</span> be projections, with <span class="math" data-tex="$q$">$q$</span> central, and suppose that <span class="math" data-tex="$q$">$q$</span> is a finite sum of orthogonal projections <span class="math" data-tex="$q_i=v_iv_i^*$">$q_i=v_iv_i^*$</span>, where</p>
+<p><span class="math math-display" data-tex="$$v_i^*v_i=a_i\le p. \tag{UW.6}$$">$$v_i^*v_i=a_i\le p. \tag{UW.6}$$</span></p>
+<p>The number of <span class="math" data-tex="$v_i$">$v_i$</span> is fixed in this paragraph. Assume (UW.5) and put <span class="math" data-tex="$d=\limsup_n\|T_n|_{pMp}\|$">$d=\limsup_n\|T_n|_{pMp}\|$</span>. We prove</p>
+<p><span class="math math-display" data-tex="$$d&lt;\tfrac14\quad\Longrightarrow\quad
+\limsup_n\|T_n|_{qMq}\|\le4d. \tag{UW.7}$$">$$d&lt;\tfrac14\quad\Longrightarrow\quad
+\limsup_n\|T_n|_{qMq}\|\le4d. \tag{UW.7}$$</span></p>
+<p>The constant does not depend on the number of covering projections. This independence is needed when the matrix sizes are unbounded.</p>
+<p>If <span class="math" data-tex="$p=0$">$p=0$</span>, (UW.6) forces <span class="math" data-tex="$q=0$">$q=0$</span> and the assertion is immediate. Assume <span class="math" data-tex="$p\ne0$">$p\ne0$</span> in the construction that follows.</p>
+<p>Because <span class="math" data-tex="$\beta_n(p)\to p$">$\beta_n(p)\to p$</span> in norm, put</p>
+<p><span class="math math-display" data-tex="$$b_n=\beta_n(p)p+(q-\beta_n(p))(q-p)\in qMq.$$">$$b_n=\beta_n(p)p+(q-\beta_n(p))(q-p)\in qMq.$$</span></p>
+<p>It satisfies <span class="math" data-tex="$\|b_n-q\|=\|\beta_n(p)-p\|\to0$">$\|b_n-q\|=\|\beta_n(p)-p\|\to0$</span> and <span class="math" data-tex="$b_np=\beta_n(p)b_n$">$b_np=\beta_n(p)b_n$</span>. For large <span class="math" data-tex="$n$">$n$</span>, <span class="math" data-tex="$b_n$">$b_n$</span> is invertible in <span class="math" data-tex="$qMq$">$qMq$</span>. Its polar unitary <span class="math" data-tex="$s_n=b_n(b_n^*b_n)^{-1/2}$">$s_n=b_n(b_n^*b_n)^{-1/2}$</span> tends to <span class="math" data-tex="$q$">$q$</span> in norm, by continuous functional calculus. Moreover <span class="math" data-tex="$b_n^*b_n$">$b_n^*b_n$</span> commutes with <span class="math" data-tex="$p$">$p$</span>, so <span class="math" data-tex="$s_nps_n^*=\beta_n(p)$">$s_nps_n^*=\beta_n(p)$</span>. Extend <span class="math" data-tex="$s_n$">$s_n$</span> by <span class="math" data-tex="$1-q$">$1-q$</span> and set</p>
+<p><span class="math math-display" data-tex="$$\eta_n=\operatorname{Ad}(s_n^*+1-q)\circ\beta_n.$$">$$\eta_n=\operatorname{Ad}(s_n^*+1-q)\circ\beta_n.$$</span></p>
+<p>Then <span class="math" data-tex="$\eta_n(p)=p$">$\eta_n(p)=p$</span>, <span class="math" data-tex="$\eta_n(q)=q$">$\eta_n(q)=q$</span>, and <span class="math" data-tex="$\|\eta_n-\beta_n\|\to0$">$\|\eta_n-\beta_n\|\to0$</span>. The restriction <span class="math" data-tex="$\eta_n|_{pMp}$">$\eta_n|_{pMp}$</span> is an automorphism and has norm distance <span class="math" data-tex="$c_n$">$c_n$</span> from the identity with <span class="math" data-tex="$\limsup_n c_n=d$">$\limsup_n c_n=d$</span>.</p>
+<p>For large <span class="math" data-tex="$n$">$n$</span>, <span class="math" data-tex="$c_n&lt;1/2$">$c_n&lt;1/2$</span>. <a href="OA-FLOW-L135.html">Principal logarithms and small automorphisms</a> proves that its principal logarithm is a bounded star derivation. The norm-convergent series for the logarithm gives</p>
+<p><span class="math math-display" data-tex="$$
+\|\operatorname{Log}(\eta_n|_{pMp})\|
+\le\sum_{j\ge1}\frac{c_n^j}{j}
+=-\log(1-c_n)\le2c_n.
+\tag{UW.8}
+$$">$$
+\|\operatorname{Log}(\eta_n|_{pMp})\|
+\le\sum_{j\ge1}\frac{c_n^j}{j}
+=-\log(1-c_n)\le2c_n.
+\tag{UW.8}
+$$</span></p>
+<p><a href="OA-FLOW-L35.html#oa-flow.gi.innerness">General innerness</a>, including its normalized implementer bound, supplies <span class="math" data-tex="$h_n=h_n^*\in pMp$">$h_n=h_n^*\in pMp$</span> of norm at most <span class="math" data-tex="$2c_n$">$2c_n$</span> with this derivation equal to <span class="math" data-tex="$i[h_n,\cdot]$">$i[h_n,\cdot]$</span>. Hence <span class="math" data-tex="$w_n=e^{ih_n}$">$w_n=e^{ih_n}$</span> implements <span class="math" data-tex="$\eta_n$">$\eta_n$</span> on <span class="math" data-tex="$pMp$">$pMp$</span> and <span class="math" data-tex="$\|w_n-p\|\le2c_n$">$\|w_n-p\|\le2c_n$</span>. The exponential is taken in the corner with unit <span class="math" data-tex="$p$">$p$</span>.</p>
+<p>Define</p>
+<p><span class="math math-display" data-tex="$$u_n=\sum_i\eta_n(v_i)w_nv_i^*\in qMq. \tag{UW.9}$$">$$u_n=\sum_i\eta_n(v_i)w_nv_i^*\in qMq. \tag{UW.9}$$</span></p>
+<p>The final projections <span class="math" data-tex="$\eta_n(q_i)$">$\eta_n(q_i)$</span> are orthogonal, as are the <span class="math" data-tex="$q_i$">$q_i$</span>. Since <span class="math" data-tex="$\eta_n(a_i)=w_na_iw_n^*$">$\eta_n(a_i)=w_na_iw_n^*$</span>, multiplication gives</p>
+<p><span class="math math-display" data-tex="$$u_n^*u_n=\sum_i v_iw_n^*\eta_n(a_i)w_nv_i^*=q,
+\qquad
+u_nu_n^*=\sum_i\eta_n(q_i)=q.$$">$$u_n^*u_n=\sum_i v_iw_n^*\eta_n(a_i)w_nv_i^*=q,
+\qquad
+u_nu_n^*=\sum_i\eta_n(q_i)=q.$$</span></p>
+<p>For <span class="math" data-tex="$x\in qMq$">$x\in qMq$</span>, expand <span class="math" data-tex="$x=\sum_{i,j}v_i(v_i^*xv_j)v_j^*$">$x=\sum_{i,j}v_i(v_i^*xv_j)v_j^*$</span>. The middle entries lie in <span class="math" data-tex="$a_iMa_j\subset pMp$">$a_iMa_j\subset pMp$</span>. Applying <span class="math" data-tex="$\operatorname{Ad}u_n$">$\operatorname{Ad}u_n$</span> to this expansion shows that it equals <span class="math" data-tex="$\eta_n(x)$">$\eta_n(x)$</span>, because <span class="math" data-tex="$w_n$">$w_n$</span> implements <span class="math" data-tex="$\eta_n$">$\eta_n$</span> on every middle entry. Thus <span class="math" data-tex="$u_n$">$u_n$</span> implements <span class="math" data-tex="$\eta_n$">$\eta_n$</span> throughout <span class="math" data-tex="$qMq$">$qMq$</span>.</p>
+<p>Finally,</p>
+<p><span class="math math-display" data-tex="$$u_n-q
+=\sum_i(\eta_n(v_i)-v_i)w_nv_i^*
++\sum_i v_i(w_n-p)v_i^*. \tag{UW.10}$$">$$u_n-q
+=\sum_i(\eta_n(v_i)-v_i)w_nv_i^*
++\sum_i v_i(w_n-p)v_i^*. \tag{UW.10}$$</span></p>
+<p>The first sum tends to zero in norm: it is finite, the <span class="math" data-tex="$v_i$">$v_i$</span> are fixed, and <span class="math" data-tex="$\eta_n(v_i)\to v_i$">$\eta_n(v_i)\to v_i$</span>. The second sum is block diagonal on the mutually orthogonal <span class="math" data-tex="$q_i$">$q_i$</span>, and every block has norm at most <span class="math" data-tex="$\|w_n-p\|$">$\|w_n-p\|$</span>. Its norm is therefore at most <span class="math" data-tex="$2c_n$">$2c_n$</span>, with no factor equal to the number of blocks. The elementary bound <span class="math" data-tex="$\|\operatorname{Ad}u_n-\operatorname{id}\|\le2\|u_n-q\|$">$\|\operatorname{Ad}u_n-\operatorname{id}\|\le2\|u_n-q\|$</span>, followed by <span class="math" data-tex="$\|\eta_n-\beta_n\|\to0$">$\|\eta_n-\beta_n\|\to0$</span>, proves (UW.7).</p>
+<p>The small-automorphism and bounded-derivation theorems used here do not assume the point-norm upgrade being proved: the former starts from an operator-norm inequality, and the latter starts from an already bounded derivation and its norm-continuous exponential. Thus the argument is not circular.</p>
+<h3 id="orthogonal-corners-covering-the-large-matrix-summands">Orthogonal corners covering the large matrix summands</h3>
+<p>Use the existing projection and type results to write <span class="math" data-tex="$M$">$M$</span> as the central sum of its part <span class="math" data-tex="$M_c$">$M_c$</span> with no type I summand, its properly infinite type I part <span class="math" data-tex="$M_\infty$">$M_\infty$</span>, and its finite homogeneous parts</p>
+<p><span class="math math-display" data-tex="$$M_m\cong M_m(Z_m),\qquad m=1,2,\ldots, \tag{UW.11}$$">$$M_m\cong M_m(Z_m),\qquad m=1,2,\ldots, \tag{UW.11}$$</span></p>
+<p>where <span class="math" data-tex="$Z_m$">$Z_m$</span> is abelian and zero summands are allowed. Write their central units as <span class="math" data-tex="$z_c,z_\infty,z_m$">$z_c,z_\infty,z_m$</span>.</p>
+<p>In <span class="math" data-tex="$M_c$">$M_c$</span>, repeatedly halve the unused projection. This gives orthogonal <span class="math" data-tex="$p_k^c$">$p_k^c$</span>, <span class="math" data-tex="$k\ge1$">$k\ge1$</span>, such that <span class="math" data-tex="$z_c$">$z_c$</span> is the sum of <span class="math" data-tex="$2^k$">$2^k$</span> projections equivalent to <span class="math" data-tex="$p_k^c$">$p_k^c$</span>: after the <span class="math" data-tex="$k$">$k$</span>th halving, its two equal halves can be transported into each of the <span class="math" data-tex="$2^{k-1}$">$2^{k-1}$</span> equal pieces obtained at the preceding stage. In <span class="math" data-tex="$M_\infty$">$M_\infty$</span>, division of the properly infinite unit by <span class="math" data-tex="$\aleph_0$">$\aleph_0$</span> gives orthogonal <span class="math" data-tex="$p_k^\infty\sim z_\infty$">$p_k^\infty\sim z_\infty$</span>.</p>
+<p>In <span class="math" data-tex="$M_m(Z_m)$">$M_m(Z_m)$</span> choose fixed standard matrix units. For <span class="math" data-tex="$k\ge1$">$k\ge1$</span> set <span class="math" data-tex="$N_k=2^{k+1}$">$N_k=2^{k+1}$</span> and let <span class="math" data-tex="$p_k^{(m)}$">$p_k^{(m)}$</span> be a diagonal projection of rank</p>
+<p><span class="math math-display" data-tex="$$r_k(m)=\lfloor m/N_k\rfloor.$$">$$r_k(m)=\lfloor m/N_k\rfloor.$$</span></p>
+<p>Choose its diagonal slots just after all the slots used at earlier stages. This is possible because <span class="math" data-tex="$\sum_{k\ge1}r_k(m)\le m/2$">$\sum_{k\ge1}r_k(m)\le m/2$</span>. These projections are orthogonal as <span class="math" data-tex="$k$">$k$</span> varies. If <span class="math" data-tex="$m\ge N_k$">$m\ge N_k$</span>, then <span class="math" data-tex="$r_k(m)\ge m/(2N_k)$">$r_k(m)\ge m/(2N_k)$</span>, so the <span class="math" data-tex="$m$">$m$</span> diagonal slots can be partitioned into at most <span class="math" data-tex="$2N_k$">$2N_k$</span> groups of size at most <span class="math" data-tex="$r_k(m)$">$r_k(m)$</span>. Each group's projection is equivalent, by a fixed matrix partial isometry, to a subprojection of <span class="math" data-tex="$p_k^{(m)}$">$p_k^{(m)}$</span>.</p>
+<p>Now form the strong central sums</p>
+<p><span class="math math-display" data-tex="$$
+p_k=p_k^c+p_k^\infty+\sum_{m\ge N_k}p_k^{(m)},
+\qquad
+q_k=z_c+z_\infty+\sum_{m\ge N_k}z_m.
+\tag{UW.12}
+$$">$$
+p_k=p_k^c+p_k^\infty+\sum_{m\ge N_k}p_k^{(m)},
+\qquad
+q_k=z_c+z_\infty+\sum_{m\ge N_k}z_m.
+\tag{UW.12}
+$$</span></p>
+<p>The <span class="math" data-tex="$p_k$">$p_k$</span> are orthogonal. For each fixed <span class="math" data-tex="$k$">$k$</span>, <span class="math" data-tex="$q_k$">$q_k$</span> is a sum of at most <span class="math" data-tex="$2N_k$">$2N_k$</span> orthogonal projections equivalent to subprojections of <span class="math" data-tex="$p_k$">$p_k$</span>. To assemble the partial isometries, pad the finite lists on each central summand by zeros and take their strong sums across the orthogonal central units. These sums are bounded by one, their initial and final projections are the corresponding strong sums, and they belong to <span class="math" data-tex="$M$">$M$</span>. Thus (UW.6) holds exactly, even with arbitrary multiplicities and a non-countably decomposable <span class="math" data-tex="$M$">$M$</span>.</p>
+<h3 id="completing-the-sequential-theorem-and-the-flow-implication">Completing the sequential theorem and the flow implication</h3>
+<p>Let <span class="math" data-tex="$d_k$">$d_k$</span> be (UW.3) for these <span class="math" data-tex="$p_k$">$p_k$</span>. We proved <span class="math" data-tex="$d_k\to0$">$d_k\to0$</span>. For every sufficiently large <span class="math" data-tex="$k$">$k$</span>, (UW.7) gives</p>
+<p><span class="math math-display" data-tex="$$\limsup_n\|T_n|_{q_kMq_k}\|\le4d_k. \tag{UW.13}$$">$$\limsup_n\|T_n|_{q_kMq_k}\|\le4d_k. \tag{UW.13}$$</span></p>
+<p>The complementary algebra has only finitely many finite homogeneous sizes <span class="math" data-tex="$m&lt;N_k$">$m&lt;N_k$</span>. On each of them, (UW.5) makes <span class="math" data-tex="$\beta_n$">$\beta_n$</span> linear over <span class="math" data-tex="$Z_m$">$Z_m$</span>. Writing <span class="math" data-tex="$x=\sum_{i,j}a_{ij}E_{ij}$">$x=\sum_{i,j}a_{ij}E_{ij}$</span> with <span class="math" data-tex="$a_{ij}\in Z_m$">$a_{ij}\in Z_m$</span> and <span class="math" data-tex="$\|a_{ij}\|\le\|x\|$">$\|a_{ij}\|\le\|x\|$</span> gives</p>
+<p><span class="math math-display" data-tex="$$\|T_n|_{M_m(Z_m)}\|
+\le m^2\max_{i,j}\|\beta_n(E_{ij})-E_{ij}\|
+\longrightarrow0. \tag{UW.14}$$">$$\|T_n|_{M_m(Z_m)}\|
+\le m^2\max_{i,j}\|\beta_n(E_{ij})-E_{ij}\|
+\longrightarrow0. \tag{UW.14}$$</span></p>
+<p>There are finitely many such summands, so <span class="math" data-tex="$\|T_n|_{(1-q_k)M}\|\to0$">$\|T_n|_{(1-q_k)M}\|\to0$</span>. Since <span class="math" data-tex="$q_k$">$q_k$</span> is central and fixed, <span class="math" data-tex="$T_n$">$T_n$</span> preserves the two central blocks and its norm is the maximum of the two restricted norms. Consequently <span class="math" data-tex="$\limsup_n\|T_n\|\le4d_k$">$\limsup_n\|T_n\|\le4d_k$</span> for every sufficiently large <span class="math" data-tex="$k$">$k$</span>. Letting <span class="math" data-tex="$k\to\infty$">$k\to\infty$</span> proves (UW.1). If <span class="math" data-tex="$M$">$M$</span> has only bounded finite homogeneous sizes, the same conclusion follows directly from (UW.14); zero <span class="math" data-tex="$p_k$">$p_k$</span> and <span class="math" data-tex="$q_k$">$q_k$</span> present no exception.</p>
+<p>For the real flow, failure of (3) would give <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span> and a sequence <span class="math" data-tex="$t_n\to0$">$t_n\to0$</span> with <span class="math" data-tex="$\|\alpha_{t_n}-\operatorname{id}_M\|\ge\varepsilon$">$\|\alpha_{t_n}-\operatorname{id}_M\|\ge\varepsilon$</span>. Condition (2) says that the automorphisms <span class="math" data-tex="$\beta_n=\alpha_{t_n}$">$\beta_n=\alpha_{t_n}$</span> converge pointwise in norm. Applying (UW.1) is a contradiction. We have therefore proved</p>
+<p><span class="math math-display" data-tex="$$
+\bigl[\ \forall x\in M,\ \|\alpha_t(x)-x\|\to0\ \bigr]
+\quad\Longrightarrow\quad
+\|\alpha_t-\operatorname{id}_M\|\to0. \tag{12}
+$$">$$
+\bigl[\ \forall x\in M,\ \|\alpha_t(x)-x\|\to0\ \bigr]
+\quad\Longrightarrow\quad
+\|\alpha_t-\operatorname{id}_M\|\to0. \tag{12}
+$$</span></p>
+<p>This is a sequential argument for the first-countable real parameter. It introduces no factor, separability, sigma-finiteness or faithful-state hypothesis. The uniform boundedness principle alone would only bound the already isometric <span class="math" data-tex="$\alpha_t$">$\alpha_t$</span>; the orthogonal-projection and cover-independent estimates supply the decay.</p>
+<p>Kallman's 1969 and 1970 work gives the historical flow result, as credited in Takesaki's notes. Elliott's <a href="https://doi.org/10.1017/S1446788700001439">On the convergence of a sequence of completely positive maps to the identity</a>, Theorem 1, printed page 341, proves a stronger statement for completely positive maps on AW* algebras and their quotients. That stronger theorem is research context here; the proof above supplies the full von Neumann automorphism statement actually used in (12), through the programme's written prerequisites. It does not claim a proof for general completely positive maps, AW* algebras or their quotients.</p>
+<h3 id="a-matrix-product-example-shows-why-the-von-neumann-hypothesis-matters">A matrix-product example shows why the von Neumann hypothesis matters</h3>
+<p>Let <span class="math" data-tex="$M=\prod_{m\ge2}M_m(\mathbb C)$">$M=\prod_{m\ge2}M_m(\mathbb C)$</span>, the algebra of bounded matrix families. Define <span class="math" data-tex="$\theta_n$">$\theta_n$</span> to act only on the <span class="math" data-tex="$n$">$n$</span>th factor, <span class="math" data-tex="$n\ge2$">$n\ge2$</span>, by conjugation with <span class="math" data-tex="$\operatorname{diag}(-1,1,\ldots,1)$">$\operatorname{diag}(-1,1,\ldots,1)$</span>. Its norm distance from the identity is two: the matrix unit <span class="math" data-tex="$E_{12}$">$E_{12}$</span> in that factor is sent to <span class="math" data-tex="$-E_{12}$">$-E_{12}$</span>, and two is the general upper bound for the difference of isometries. The bounded family <span class="math" data-tex="$x=(E_{12}^{(m)})_{m\ge2}$">$x=(E_{12}^{(m)})_{m\ge2}$</span> lies in <span class="math" data-tex="$M$">$M$</span> and satisfies <span class="math" data-tex="$\|\theta_n(x)-x\|=2$">$\|\theta_n(x)-x\|=2$</span> for every <span class="math" data-tex="$n$">$n$</span>. Thus this sequence cannot satisfy the point-norm hypothesis of (UW.1).</p>
+<p>On the C*-algebra <span class="math" data-tex="$A=\bigoplus_{m\ge2}^{c_0}M_m(\mathbb C)$">$A=\bigoplus_{m\ge2}^{c_0}M_m(\mathbb C)$</span>, the same automorphisms do converge pointwise in norm: <span class="math" data-tex="$\|\theta_n(a)-a\|\le2\|a_n\|\to0$">$\|\theta_n(a)-a\|\le2\|a_n\|\to0$</span> for each <span class="math" data-tex="$a\in A$">$a\in A$</span>. They still have norm distance two from the identity. The test family <span class="math" data-tex="$x$">$x$</span> belongs to the von Neumann product and is excluded from the <span class="math" data-tex="$c_0$">$c_0$</span> sum; it detects precisely the error that point-norm convergence on the smaller algebra misses. This gives a finite-matrix counterpart of the compact-operator example from lesson 34.</p>
+<p><span id="OA-FLOW.BOUNDARIES.GENERATOR"></span><a id="boundaries.generator"></a></p>
+<h2 id="uniform-continuity-gives-a-bounded-internal-generator">Uniform continuity gives a bounded internal generator</h2>
+<p>Regard <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> as a group of isometries of the Banach space <span class="math" data-tex="\(M\)">\(M\)</span>. By (12) it is operator-norm continuous. The <a href="OA-FLOW-L34.html#oa-flow.dfd.implementation">uniform-flow theorem in lesson 34</a> therefore gives a bounded star derivation</p>
+<p><span class="math math-display" data-tex="$$d(x)=\lim_{t\to0}\frac{\alpha_t(x)-x}{t},
+\qquad
+\alpha_t=e^{td}. \tag{13}$$">$$d(x)=\lim_{t\to0}\frac{\alpha_t(x)-x}{t},
+\qquad
+\alpha_t=e^{td}. \tag{13}$$</span></p>
+<p>The <a href="OA-FLOW-L35.html#oa-flow.gi.innerness">general von Neumann innerness theorem in lesson 35</a> supplies a bounded selfadjoint <span class="math" data-tex="\(h\in M\)">\(h\in M\)</span> such that</p>
+<p><span class="math math-display" data-tex="$$d(x)=i[h,x]. \tag{14}$$">$$d(x)=i[h,x]. \tag{14}$$</span></p>
+<p>The commuting left-right exponential calculation then yields</p>
+<p><span class="math math-display" data-tex="$$e^{td}(x)=e^{ith}xe^{-ith}. \tag{15}$$">$$e^{td}(x)=e^{ith}xe^{-ith}. \tag{15}$$</span></p>
+<p>Consequently</p>
+<p><span class="math math-display" data-tex="$$\boxed{\alpha_t=\operatorname{Ad}(e^{ith}),\qquad h=h^*\in M,} \tag{16}$$">$$\boxed{\alpha_t=\operatorname{Ad}(e^{ith}),\qquad h=h^*\in M,} \tag{16}$$</span></p>
+<p>and</p>
+<p><span class="math math-display" data-tex="$$\|\alpha_t-\operatorname{id}_M\|
+\le e^{|t|\|d\|}-1\longrightarrow0. \tag{17}$$">$$\|\alpha_t-\operatorname{id}_M\|
+\le e^{|t|\|d\|}-1\longrightarrow0. \tag{17}$$</span></p>
+<p>Thus the conclusion includes both assertions in Exercise XI.3.6. It does not say that a merely point-ultraweakly continuous flow has a bounded generator; modular automorphism groups provide the central reason to keep that distinction.</p>
+<p><span id="OA-FLOW.BOUNDARIES.ANALYTIC"></span><a id="boundaries.analytic"></a></p>
+<h2 id="the-analytic-ingredients-for-the-radial-estimate">The analytic ingredients for the radial estimate</h2>
+<p>We use “analytic” to mean locally represented by a convergent complex power series. Such series have continuous derivatives, by uniform convergence of the differentiated series on smaller discs. Here are the disc facts needed below, with their proofs.</p>
+<p><strong>Taylor expansion throughout a disc.</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is analytic on <span class="math" data-tex="\(|z|&lt;R_0\)">\(|z|&lt;R_0\)</span>, fix <span class="math" data-tex="\(R&lt;R_0\)">\(R&lt;R_0\)</span>. For <span class="math" data-tex="\(|w|&lt;R\)">\(|w|&lt;R\)</span>, the function
+<span class="math math-display" data-tex="\[
+ h(z)=\frac{f(z)-f(w)}{z-w}
+\]">\[
+ h(z)=\frac{f(z)-f(w)}{z-w}
+\]</span>
+extends analytically at <span class="math" data-tex="\(w\)">\(w\)</span>, by its local series. The circle-mean calculation in <a href="OA-FLOW-CF.html#oa-flow.cf.2">CF2</a>, applied to <span class="math" data-tex="\(zh(z)\)">\(zh(z)\)</span>, gives <span class="math" data-tex="\(\int_{|z|=R}h(z)\,dz=0\)">\(\int_{|z|=R}h(z)\,dz=0\)</span>. The geometric expansion of <span class="math" data-tex="\(1/(z-w)\)">\(1/(z-w)\)</span> on that circle has integral <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ f(w)=\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{z-w}\,dz
+      =\sum_{n\ge0}c_nw^n,\qquad
+ c_n=\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{z^{n+1}}\,dz.
+ \tag{AN1}
+\]">\[
+ f(w)=\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{z-w}\,dz
+      =\sum_{n\ge0}c_nw^n,\qquad
+ c_n=\frac{1}{2\pi i}\int_{|z|=R}\frac{f(z)}{z^{n+1}}\,dz.
+ \tag{AN1}
+\]</span>
+The geometric series is uniformly convergent for <span class="math" data-tex="\(|w|\le r&lt;R\)">\(|w|\le r&lt;R\)</span>, which licenses its integration. If <span class="math" data-tex="\(M_R=\max_{|z|=R}|f(z)|\)">\(M_R=\max_{|z|=R}|f(z)|\)</span>, then <span class="math" data-tex="\(|c_n|\le M_RR^{-n}\)">\(|c_n|\le M_RR^{-n}\)</span>. Thus the resulting Taylor series and its differentiated series converge uniformly on each smaller closed disc. Local uniqueness of coefficients identifies the expansions for different <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Zeros and analytic square roots.</strong> The first nonzero coefficient of a local Taylor series factors a zero as <span class="math" data-tex="\((z-a)^m\)">\((z-a)^m\)</span> times a nonvanishing analytic function. If zeros accumulate at an interior point, all its coefficients vanish, and the function vanishes in a neighborhood. The set where it vanishes in a neighborhood is both open and closed in the disc: at a limit point, either that point already belongs to the set or accumulating zeros force the same local conclusion. The disc is connected by line segments. Hence a nonzero analytic function has isolated zeros and only finitely many zeros in a compact subdisc.</p>
+<p>If <span class="math" data-tex="\(F\)">\(F\)</span> is zero-free on a disc, <span class="math" data-tex="\(F'/F\)">\(F'/F\)</span> is analytic there: the reciprocal is locally given by a geometric series. Expand <span class="math" data-tex="\(F'/F\)">\(F'/F\)</span> at zero by (AN1), integrate its coefficients, and call the primitive <span class="math" data-tex="\(H\)">\(H\)</span>, normalized by <span class="math" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>. Termwise differentiation gives <span class="math" data-tex="\(H'=F'/F\)">\(H'=F'/F\)</span>, so <span class="math" data-tex="\((Fe^{-H})'=0\)">\((Fe^{-H})'=0\)</span>. Restricting to line segments and using the real fundamental theorem from <a href="OA-FLOW-CF.html#oa-flow.cf.1">CF1</a> gives <span class="math" data-tex="\(Fe^{-H}=F(0)\)">\(Fe^{-H}=F(0)\)</span>. Choose a scalar <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c^2=F(0)\)">\(c^2=F(0)\)</span>. Then
+<span class="math math-display" data-tex="\[
+ c\,e^{H/2}
+ \tag{AN2}
+\]">\[
+ c\,e^{H/2}
+ \tag{AN2}
+\]</span>
+is an analytic square root of <span class="math" data-tex="\(F\)">\(F\)</span> throughout the disc.</p>
+<p><strong>A finite product removes exactly the interior zeros.</strong> For <span class="math" data-tex="\(0&lt;\rho&lt;1\)">\(0&lt;\rho&lt;1\)</span> and a zero <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(|a|&lt;\rho\)">\(|a|&lt;\rho\)</span>, put
+<span class="math math-display" data-tex="\[
+ B_a(z)=\frac{\rho(z-a)}{\rho^2-\overline a z}.
+ \tag{AN3}
+\]">\[
+ B_a(z)=\frac{\rho(z-a)}{\rho^2-\overline a z}.
+ \tag{AN3}
+\]</span>
+Its denominator has no zero on the closed <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-disc, and
+<span class="math math-display" data-tex="\[
+ |\rho^2-\overline a z|^2-\rho^2|z-a|^2
+    =(\rho^2-|a|^2)(\rho^2-|z|^2).
+ \tag{AN4}
+\]">\[
+ |\rho^2-\overline a z|^2-\rho^2|z-a|^2
+    =(\rho^2-|a|^2)(\rho^2-|z|^2).
+ \tag{AN4}
+\]</span>
+Thus <span class="math" data-tex="\(|B_a|\le1\)">\(|B_a|\le1\)</span> there and equals <span class="math" data-tex="\(1\)">\(1\)</span> on the boundary. If <span class="math" data-tex="\(f\)">\(f\)</span> has no zero on that boundary, multiply one factor for each interior zero, with its multiplicity; there are finitely many. The quotient <span class="math" data-tex="\(F=f/B\)">\(F=f/B\)</span> has removable singularities at precisely those zeros and no remaining zero on the closed disc. Compactness and continuity give a slightly larger disc on which the quotient is analytic and zero-free. Formula (AN2) applies on that disc. The empty product is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Finally, normalized arc measure satisfies
+<span class="math" data-tex="\(\int_{\mathbb T}\zeta^n\overline{\zeta^m}\,dm=\delta_{nm}\)">\(\int_{\mathbb T}\zeta^n\overline{\zeta^m}\,dm=\delta_{nm}\)</span>, by integrating <span class="math" data-tex="\(e^{i(n-m)t}\)">\(e^{i(n-m)t}\)</span> on <span class="math" data-tex="\([0,2\pi]\)">\([0,2\pi]\)</span>. Applying this to finite partial sums, then using uniform convergence from (AN1), proves the power-series <span class="math" data-tex="\(L^2\)">\(L^2\)</span> identities used next. All radii in the next proof lie strictly inside the analyticity disc.</p>
+<p><span id="OA-FLOW.BOUNDARIES.RADIAL"></span><a id="boundaries.radial"></a></p>
+<h2 id="an-elementary-radial-estimate-for-analytic-functions">An elementary radial estimate for analytic functions</h2>
+<p>For an analytic function <span class="math" data-tex="\(f\)">\(f\)</span> on the unit disc write</p>
+<p><span class="math math-display" data-tex="$$f_r(\zeta)=f(r\zeta),\qquad
+N(r)=\|f_r\|_{L^1(\mathbb T,m)}. \tag{18}$$">$$f_r(\zeta)=f(r\zeta),\qquad
+N(r)=\|f_r\|_{L^1(\mathbb T,m)}. \tag{18}$$</span></p>
+<p>We prove the estimate</p>
+<p><span class="math math-display" data-tex="$$\boxed{
+\|f_\rho-f_r\|_1
+\le2\sqrt{N(\rho)^2-N(r)^2}
+\qquad(0\le r\le\rho&lt;1).
+} \tag{19}$$">$$\boxed{
+\|f_\rho-f_r\|_1
+\le2\sqrt{N(\rho)^2-N(r)^2}
+\qquad(0\le r\le\rho&lt;1).
+} \tag{19}$$</span></p>
+<p>If <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>, then <span class="math" data-tex="\(r=0\)">\(r=0\)</span> and both sides of (19) vanish. The zero function also gives the inequality immediately. Assume henceforth that <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span> and <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>. First suppose that <span class="math" data-tex="\(f\)">\(f\)</span> has no zero on <span class="math" data-tex="\(|z|=\rho\)">\(|z|=\rho\)</span>. Take the finite Blaschke product <span class="math" data-tex="\(B\)">\(B\)</span> constructed in (AN3)–(AN4) for the zeros of <span class="math" data-tex="\(f\)">\(f\)</span> in the disc of radius <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, normalized so that</p>
+<p><span class="math math-display" data-tex="$$|B(z)|=1\quad(|z|=\rho),\qquad
+|B(z)|\le1\quad(|z|\le\rho). \tag{20}$$">$$|B(z)|=1\quad(|z|=\rho),\qquad
+|B(z)|\le1\quad(|z|\le\rho). \tag{20}$$</span></p>
+<p>Then <span class="math" data-tex="\(F=f/B\)">\(F=f/B\)</span> is analytic and zero-free on a neighborhood of the closed <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-disc. It has an analytic square root there. Put</p>
+<p><span class="math math-display" data-tex="$$g=B F^{1/2},\qquad h=F^{1/2},\qquad f=gh. \tag{21}$$">$$g=B F^{1/2},\qquad h=F^{1/2},\qquad f=gh. \tag{21}$$</span></p>
+<p>On the outer circle,</p>
+<p><span class="math math-display" data-tex="$$\|g_\rho\|_2^2=\|h_\rho\|_2^2=N(\rho). \tag{22}$$">$$\|g_\rho\|_2^2=\|h_\rho\|_2^2=N(\rho). \tag{22}$$</span></p>
+<p>Write <span class="math" data-tex="\(a=\|g_r\|_2\)">\(a=\|g_r\|_2\)</span>, <span class="math" data-tex="\(b=\|h_r\|_2\)">\(b=\|h_r\|_2\)</span>, and <span class="math" data-tex="\(c=N(\rho)^{1/2}\)">\(c=N(\rho)^{1/2}\)</span>. The power-series orthogonality identity gives</p>
+<p><span class="math math-display" data-tex="$$\|g_\rho-g_r\|_2^2
+\le c^2-a^2,\qquad
+\|h_\rho-h_r\|_2^2
+\le c^2-b^2. \tag{23}$$">$$\|g_\rho-g_r\|_2^2
+\le c^2-a^2,\qquad
+\|h_\rho-h_r\|_2^2
+\le c^2-b^2. \tag{23}$$</span></p>
+<p>Indeed, term by term,</p>
+<p><span class="math math-display" data-tex="$$(\rho^n-r^n)^2\le\rho^{2n}-r^{2n}. \tag{24}$$">$$(\rho^n-r^n)^2\le\rho^{2n}-r^{2n}. \tag{24}$$</span></p>
+<p>The factorization and Cauchy–Schwarz now give</p>
+<p><span class="math math-display" data-tex="$$
+\begin{aligned}
+\|f_\rho-f_r\|_1
+&amp;\le\|(g_\rho-g_r)h_\rho\|_1
+  +\|g_r(h_\rho-h_r)\|_1\\
+&amp;\le c\sqrt{c^2-a^2}+a\sqrt{c^2-b^2}. 
+\end{aligned} \tag{25}
+$$">$$
+\begin{aligned}
+\|f_\rho-f_r\|_1
+&amp;\le\|(g_\rho-g_r)h_\rho\|_1
+  +\|g_r(h_\rho-h_r)\|_1\\
+&amp;\le c\sqrt{c^2-a^2}+a\sqrt{c^2-b^2}. 
+\end{aligned} \tag{25}
+$$</span></p>
+<p>Moreover <span class="math" data-tex="\(N(r)\le ab\)">\(N(r)\le ab\)</span>, while <span class="math" data-tex="\(a,b\le c\)">\(a,b\le c\)</span>. Each summand in (25) is at most</p>
+<p><span class="math math-display" data-tex="$$\sqrt{c^4-a^2b^2}
+\le\sqrt{N(\rho)^2-N(r)^2}. \tag{26}$$">$$\sqrt{c^4-a^2b^2}
+\le\sqrt{N(\rho)^2-N(r)^2}. \tag{26}$$</span></p>
+<p>This proves (19), and also proves <span class="math" data-tex="\(N(r)\le N(\rho)\)">\(N(r)\le N(\rho)\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> has a zero on the circle of radius <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, approximate <span class="math" data-tex="\(\rho\)">\(\rho\)</span> by radii avoiding the discrete zero set and pass to the limit by continuity. The case <span class="math" data-tex="\(f=0\)">\(f=0\)</span> is immediate.</p>
+<p>The finite-Blaschke proof of (19) is included so that no Fatou boundary theorem or inner-outer factorization theorem is hidden in the next argument.</p>
+<p><span id="OA-FLOW.BOUNDARIES.RIESZ"></span><a id="boundaries.riesz"></a></p>
+<h2 id="the-f-and-m-riesz-theorem">The F. and M. Riesz theorem</h2>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a finite complex Borel measure on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> satisfying</p>
+<p><span class="math math-display" data-tex="$$\widehat\mu(n)=0\qquad(n&lt;0). \tag{27}$$">$$\widehat\mu(n)=0\qquad(n&lt;0). \tag{27}$$</span></p>
+<p>The Poisson kernel is</p>
+<p><span class="math math-display" data-tex="$$P_r(\zeta)=\sum_{n\in\mathbb Z}r^{|n|}\zeta^n
+=\frac{1-r^2}{|1-r\zeta|^2}. \tag{28}$$">$$P_r(\zeta)=\sum_{n\in\mathbb Z}r^{|n|}\zeta^n
+=\frac{1-r^2}{|1-r\zeta|^2}. \tag{28}$$</span></p>
+<p>Define</p>
+<p><span class="math math-display" data-tex="$$f_r(\zeta)
+=\int_{\mathbb T}P_r(\zeta\overline\eta)\,d\mu(\eta). \tag{29}$$">$$f_r(\zeta)
+=\int_{\mathbb T}P_r(\zeta\overline\eta)\,d\mu(\eta). \tag{29}$$</span></p>
+<p>Condition (27) removes every negative Fourier term, so these are the radial values of the analytic function</p>
+<p><span class="math math-display" data-tex="$$f(z)=\sum_{n=0}^\infty\widehat\mu(n)z^n. \tag{30}$$">$$f(z)=\sum_{n=0}^\infty\widehat\mu(n)z^n. \tag{30}$$</span></p>
+<p>Positivity and unit mass of <span class="math" data-tex="\(P_r\)">\(P_r\)</span>, followed by Fubini, give</p>
+<p><span class="math math-display" data-tex="$$\|f_r\|_1\le\|\mu\|_{\mathrm{TV}}. \tag{31}$$">$$\|f_r\|_1\le\|\mu\|_{\mathrm{TV}}. \tag{31}$$</span></p>
+<p>The increasing function <span class="math" data-tex="\(N(r)=\|f_r\|_1\)">\(N(r)=\|f_r\|_1\)</span> therefore has a finite limit as <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span>. Estimate (19) shows that <span class="math" data-tex="\((f_r)\)">\((f_r)\)</span> is Cauchy in <span class="math" data-tex="\(L^1(\mathbb T)\)">\(L^1(\mathbb T)\)</span>: if <span class="math" data-tex="\(r,\rho\)">\(r,\rho\)</span> are close to one, the difference <span class="math" data-tex="\(N(\rho)^2-N(r)^2\)">\(N(\rho)^2-N(r)^2\)</span> is small. Let</p>
+<p><span class="math math-display" data-tex="$$f_r\longrightarrow f^*\quad\text{in }L^1(\mathbb T). \tag{32}$$">$$f_r\longrightarrow f^*\quad\text{in }L^1(\mathbb T). \tag{32}$$</span></p>
+<p>The approximate-identity assertion also follows directly from (28). The geometric series proves that formula and its uniform absolute convergence for <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>. Its constant Fourier coefficient is <span class="math" data-tex="\(1\)">\(1\)</span>, so its integral is <span class="math" data-tex="\(1\)">\(1\)</span>, and the displayed quotient makes it nonnegative. Fix <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. When <span class="math" data-tex="\(|1-\zeta|\ge\delta\)">\(|1-\zeta|\ge\delta\)</span> and <span class="math" data-tex="\(1-r&lt;\delta/2\)">\(1-r&lt;\delta/2\)</span>,
+<span class="math math-display" data-tex="\[
+ |1-r\zeta|\ge\delta/2,\qquad
+ 0\le P_r(\zeta)\le4(1-r^2)/\delta^2.
+ \tag{AN5}
+\]">\[
+ |1-r\zeta|\ge\delta/2,\qquad
+ 0\le P_r(\zeta)\le4(1-r^2)/\delta^2.
+ \tag{AN5}
+\]</span>
+For continuous <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, split its convolution difference into <span class="math" data-tex="\(|1-\zeta|&lt;\delta\)">\(|1-\zeta|&lt;\delta\)</span> and the complement. Unit mass bounds the first part by the uniform modulus of continuity of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>; (AN5) bounds the second by <span class="math" data-tex="\(8\|\varphi\|_\infty(1-r^2)/\delta^2\)">\(8\|\varphi\|_\infty(1-r^2)/\delta^2\)</span>. Choosing <span class="math" data-tex="\(\delta\)">\(\delta\)</span> first and then <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span> proves uniform convergence to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. The kernel is invariant under <span class="math" data-tex="\(\zeta\mapsto\overline\zeta\)">\(\zeta\mapsto\overline\zeta\)</span>, so the convolution orientation in the following identity is the same as in (29). For every <span class="math" data-tex="\(\varphi\in C(\mathbb T)\)">\(\varphi\in C(\mathbb T)\)</span>, Fubini gives</p>
+<p><span class="math math-display" data-tex="$$
+\int_{\mathbb T}\varphi(\zeta)f_r(\zeta)\,dm(\zeta)
+=\int_{\mathbb T}(P_r*\varphi)(\eta)\,d\mu(\eta)
+\longrightarrow\int_{\mathbb T}\varphi\,d\mu. \tag{33}
+$$">$$
+\int_{\mathbb T}\varphi(\zeta)f_r(\zeta)\,dm(\zeta)
+=\int_{\mathbb T}(P_r*\varphi)(\eta)\,d\mu(\eta)
+\longrightarrow\int_{\mathbb T}\varphi\,d\mu. \tag{33}
+$$</span></p>
+<p>The <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-limit in (32) makes the left side converge to</p>
+<p><span class="math math-display" data-tex="$$\int_{\mathbb T}\varphi f^*\,dm. \tag{34}$$">$$\int_{\mathbb T}\varphi f^*\,dm. \tag{34}$$</span></p>
+<p>Uniqueness in the <a href="OA-FLOW-HR.html#hr-02">Riesz representation theorem HR2</a> therefore gives</p>
+<p><span class="math math-display" data-tex="$$\boxed{d\mu=f^*\,dm.} \tag{35}$$">$$\boxed{d\mu=f^*\,dm.} \tag{35}$$</span></p>
+<p>Thus every finite analytic measure on the circle is absolutely continuous. The argument preserves the convention (4); reversing the Fourier convention reverses which half of the coefficients must vanish.</p>
+<p><span id="OA-FLOW.BOUNDARIES.EXTERNAL"></span><a id="boundaries.external"></a></p>
+<h2 id="a-positive-external-group-forces-vanishing-intrinsic-tails">A positive external group forces vanishing intrinsic tails</h2>
+<p>Let <span class="math" data-tex="\(U_t=e^{itH}\)">\(U_t=e^{itH}\)</span> be a strongly continuous unitary group on <span class="math" data-tex="\(K\)">\(K\)</span>, assume <span class="math" data-tex="\(H\ge0\)">\(H\ge0\)</span>, and suppose</p>
+<p><span class="math math-display" data-tex="$$U_tMU_t^*=M\qquad(t\in\mathbb R). \tag{36}$$">$$U_tMU_t^*=M\qquad(t\in\mathbb R). \tag{36}$$</span></p>
+<p>Then</p>
+<p><span class="math math-display" data-tex="$$\alpha_t(x)=U_txU_t^*\qquad(x\in M) \tag{37}$$">$$\alpha_t(x)=U_txU_t^*\qquad(x\in M) \tag{37}$$</span></p>
+<p>is a point-ultraweakly continuous automorphism group. Let <span class="math" data-tex="\(P\)">\(P\)</span> be the spectral measure of <span class="math" data-tex="\(H\)">\(H\)</span>, so <span class="math" data-tex="\(P([0,\infty))=1\)">\(P([0,\infty))=1\)</span>.</p>
+<p>For the intrinsic Arveson spectral subspace <span class="math" data-tex="\(M_\alpha([s,\infty))\)">\(M_\alpha([s,\infty))\)</span>, let <span class="math" data-tex="\(Q_s\)">\(Q_s\)</span> be the join in <span class="math" data-tex="\(M\)">\(M\)</span> of its left supports, with the positive Fourier convention and left-support notation of <a href="OA-FLOW-L86.html#positiveflow.setting">L86</a>. The <a href="OA-FLOW-L80.html#sum-claim">operator-to-vector spectral transfer theorem</a>, with its Hilbert and normal-inclusion hypotheses verified in <a href="OA-FLOW-L86.html#positiveflow.models">L86</a>, gives</p>
+<p><span class="math math-display" data-tex="$$xP([r,\infty))K
+\subset P([r+s,\infty))K
+\quad
+\bigl(x\in M_\alpha([s,\infty))\bigr). \tag{38}$$">$$xP([r,\infty))K
+\subset P([r+s,\infty))K
+\quad
+\bigl(x\in M_\alpha([s,\infty))\bigr). \tag{38}$$</span></p>
+<p>Put <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Since <span class="math" data-tex="\(P([0,\infty))=1\)">\(P([0,\infty))=1\)</span>,</p>
+<p><span class="math math-display" data-tex="$$xK\subset P([s,\infty))K. \tag{39}$$">$$xK\subset P([s,\infty))K. \tag{39}$$</span></p>
+<p>Taking left supports and then their join yields</p>
+<p><span class="math math-display" data-tex="$$Q_s\le P([s,\infty)). \tag{40}$$">$$Q_s\le P([s,\infty)). \tag{40}$$</span></p>
+<p>Spectral tails of a selfadjoint operator decrease strongly to zero, hence</p>
+<p><span class="math math-display" data-tex="$$\bigwedge_{s\in\mathbb R}Q_s
+\le\bigwedge_{s\in\mathbb R}P([s,\infty))=0. \tag{41}$$">$$\bigwedge_{s\in\mathbb R}Q_s
+\le\bigwedge_{s\in\mathbb R}P([s,\infty))=0. \tag{41}$$</span></p>
+<p>The external group is used only to prove the intrinsic condition (41). Its unitaries need not belong to <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><span id="OA-FLOW.BOUNDARIES.INTERNAL"></span><a id="boundaries.internal"></a></p>
+<h2 id="the-positive-tail-criterion-constructs-the-internal-group">The positive tail criterion constructs the internal group</h2>
+<p><a href="OA-FLOW-L86.html#positiveflow.recovery">L86's positive-tail criterion</a> proves the converse direction at exactly these hypotheses. From (41), regularize the tails by</p>
+<p><span class="math math-display" data-tex="$$E_s=\bigwedge_{r&lt;s}Q_r. \tag{42}$$">$$E_s=\bigwedge_{r&lt;s}Q_r. \tag{42}$$</span></p>
+<p>The projections <span class="math" data-tex="\(E_s\)">\(E_s\)</span> lie in <span class="math" data-tex="\(Z(M^\alpha)\)">\(Z(M^\alpha)\)</span>, form the closed tails of a projection-valued measure <span class="math" data-tex="\(E\)">\(E\)</span> supported in <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, and define</p>
+<p><span class="math math-display" data-tex="$$V_t=\int_{[0,\infty)}e^{it\lambda}\,dE(\lambda)\in M. \tag{43}$$">$$V_t=\int_{[0,\infty)}e^{it\lambda}\,dE(\lambda)\in M. \tag{43}$$</span></p>
+<p>The <a href="OA-FLOW-L86.html#positiveflow.shift">shifted-tail transfer</a> and <a href="OA-FLOW-L86.html#positiveflow.recovery">compact spectral recovery</a> prove</p>
+<p><span class="math math-display" data-tex="$$\alpha_t=\operatorname{Ad}V_t. \tag{44}$$">$$\alpha_t=\operatorname{Ad}V_t. \tag{44}$$</span></p>
+<p>The <a href="OA-FLOW-L86.html#positiveflow.measure">full-domain spectral construction</a> gives</p>
+<p><span class="math math-display" data-tex="$$V_t=e^{itL},\qquad
+L=\int_{[0,\infty)}\lambda\,dE(\lambda)\ge0. \tag{45}$$">$$V_t=e^{itL},\qquad
+L=\int_{[0,\infty)}\lambda\,dE(\lambda)\ge0. \tag{45}$$</span></p>
+<p>Every spectral projection of <span class="math" data-tex="\(L\)">\(L\)</span> lies in <span class="math" data-tex="\(M\)">\(M\)</span>, so <span class="math" data-tex="\(L\)">\(L\)</span> is affiliated with <span class="math" data-tex="\(M\)">\(M\)</span>. It may be unbounded, which is why (45) is a strong-operator spectral integral rather than an element of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><span id="OA-FLOW.BOUNDARIES.POSITIVE"></span><a id="boundaries.positive"></a></p>
+<h2 id="positive-external-implementation-becomes-positive-internal-implementation">Positive external implementation becomes positive internal implementation</h2>
+<p>Combining (36)–(45) proves the Borchers–Arveson conclusion:</p>
+<p><span class="math math-display" data-tex="$$
+\boxed{
+U_t=e^{itH},\ H\ge0,\ U_tMU_t^*=M
+\ \Longrightarrow\
+\exists\,L\ge0\text{ affiliated with }M:
+\alpha_t=\operatorname{Ad}(e^{itL}).
+} \tag{46}
+$$">$$
+\boxed{
+U_t=e^{itH},\ H\ge0,\ U_tMU_t^*=M
+\ \Longrightarrow\
+\exists\,L\ge0\text{ affiliated with }M:
+\alpha_t=\operatorname{Ad}(e^{itL}).
+} \tag{46}
+$$</span></p>
+<p>No factor, separability, sigma-finiteness, cyclic-vector, separating-vector, or invariant-state hypothesis was introduced. The proof does not claim that the external generator <span class="math" data-tex="\(H\)">\(H\)</span> belongs to <span class="math" data-tex="\(M\)">\(M\)</span>, nor that the internal generator <span class="math" data-tex="\(L\)">\(L\)</span> is bounded. It identifies the exact mechanism: external positivity forces the intrinsic high-frequency tail to vanish, and the canonical tail measure supplies a positive internal implementation.</p>
+<p><strong>Source locators.</strong> Multiplier innerness is Takesaki II, Exercise XI.3.1, printed page 358, using Sakai's Theorem on page 260 and the local essentiality and multiplier-embedding proofs above. The point-norm upgrade is Exercise XI.3.6, printed page 361; it follows here from the proved von Neumann automorphism sequence theorem (UW.1), by the explicit sequential contradiction, followed by the bounded-generator arguments in lessons 34–35. The broader completely-positive-map theorem is credited as research context and is not used as a proof substitute. The analytic-measure and positive-implementation statements occur in the Notes on Chapter XI on the same printed page. The F. and M. Riesz proof above is complete under the stated measure and complex-analysis foundations; the radial estimate follows the finite-Blaschke method of O. F. Brevig, <a href="https://arxiv.org/abs/2407.06843v2">Two footnotes to the F. &amp; M. Riesz theorem, version 2</a>, Lemma 2 on page 2 and its proof in Section 2 on page 4. The positive implementation proof uses the full intrinsic criterion in L86, including its spectral-measure construction and exact representation transport.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L136.html">Previous lesson</a><a href="OA-FLOW-WORD.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L137.md">Lesson source</a></nav></main></body></html>

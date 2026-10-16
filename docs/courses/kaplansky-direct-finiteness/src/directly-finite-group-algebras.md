@@ -142,7 +142,7 @@ Later work builds on the existence of nonsofic groups. Gelander constructs invar
 
 ## 9. Solutions
 
-**8.1.** \(lr(x)=l(0,x_0,x_1,\ldots)=(x_0,x_1,\ldots)=x\). For \(x=(1,0,0,\ldots)\), \(rl(x)=r(0,0,\ldots)=0\ne x\).
+**8.1.** \(lr(x)=l(0,x_0,x_1,\ldots)\), which is \((x_0,x_1,\ldots)=x\). For \(x=(1,0,0,\ldots)\), \(rl(x)=r(0,0,\ldots)=0\ne x\).
 
 **8.2.** If \(ab=1\) and \(R\) is commutative, then \(ba=ab=1\). If \(G\) is abelian, the product formula \((cd)_w=\sum_{uv=w}c_ud_v\) is symmetric in \(c\) and \(d\), so \(K[G]\) is commutative.
 

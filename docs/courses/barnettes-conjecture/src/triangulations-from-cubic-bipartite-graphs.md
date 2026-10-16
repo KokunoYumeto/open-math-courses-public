@@ -32,13 +32,16 @@ A graph is *\(3\)-connected* if it has at least four vertices and deleting any o
 
 **Theorem 2.3.** Let \(G\) be a simple, cubic, bipartite, \(3\)-connected graph with a sphere map. Then the dual map \(T=G^*\) is a sphere triangulation, and colouring each face of \(T\) by the bipartition class of the corresponding vertex of \(G\) is a face colouring of \(T\). The dual of \(T\) is \(G\), and \(T\) has \(2+|V(G)|/2\) vertices.
 
-*Proof.* A loop of \(T\) is a cycle of length \(1\) of \(G^*\), and two parallel edges of \(T\) form a cycle of length \(2\). By Lemma 2.2 either would be a cut of \(G\) with one or two edges, which Lemma 2.1 excludes. So the underlying graph of \(T\) is simple. The faces of \(T\) are the vertices of \(G\), which have degree \(3\), so every face of \(T\) has length \(3\). The two darts of an edge lie in the faces of \(T\) corresponding to the two ends of the edge in \(G\), which lie in different bipartition classes. \(T\) is a sphere map by Lemma 2.1 of [Sphere maps](sphere-maps.md), with \(T^*=G\). Its number of vertices is the number of faces of \(G\), namely \(2-|V(G)|+|E(G)|=2+|V(G)|/2\ge4\), because \(|E(G)|=3|V(G)|/2\) and \(|V(G)|\ge4\). \(\square\)
+*Proof.* A loop of \(T\) is a cycle of length \(1\) of \(G^*\), and two parallel edges of \(T\) form a cycle of length \(2\). By Lemma 2.2 either would be a cut of \(G\) with one or two edges, which Lemma 2.1 excludes. So the underlying graph of \(T\) is simple. The faces of \(T\) are the vertices of \(G\), which have degree \(3\), so every face of \(T\) has length \(3\). The two darts of an edge lie in the faces of \(T\) corresponding to the two ends of the edge in \(G\), which lie in different bipartition classes. \(T\) is a sphere map by Lemma 2.1 of [Sphere maps](sphere-maps.md), with \(T^*=G\). Its number of vertices is the number of faces of \(G\), namely \(2-|V(G)|+|E(G)|\), which is \(2+|V(G)|/2\ge4\), because \(|E(G)|=3|V(G)|/2\) and \(|V(G)|\ge4\). \(\square\)
 
 ## 3. Counting on one side of a cycle
 
 **Corollary 3.1.** Let \(C\) be a cycle of length \(h\) in a sphere map all of whose faces have length \(3\), and let \(\mathcal A\) be a side of \(C\) with \(I\) vertices strictly inside it. Then
 \[
-|\mathcal A|=2I+h-2,\qquad E_{\mathcal A}=3I+h-3 .
+\begin{gathered}
+|\mathcal A|=2I+h-2,\\
+E_{\mathcal A}=3I+h-3 .
+\end{gathered}
 \]
 
 *Proof.* Each face of \(\mathcal A\) has three darts. An edge counted by \(E_{\mathcal A}\) has both darts in faces of \(\mathcal A\), an edge of \(C\) has exactly one, and no other edge has any (Theorem 3.2 of [Sphere maps](sphere-maps.md)). So \(3|\mathcal A|=2E_{\mathcal A}+h\). Together with \(I-E_{\mathcal A}+|\mathcal A|=1\) (Proposition 3.5 there) this gives both formulas. \(\square\)
@@ -68,7 +71,10 @@ A cycle of length \(3\) in a sphere triangulation is a *triangle*; it is *separa
 
 *Proof.* A face of \(\mathcal A\) contains no dart of a deleted edge, so by Lemma 1.4 of [Sphere maps](sphere-maps.md) it survives every deletion unchanged. By Lemma 3.4(b) there, every edge at a vertex strictly inside \(\mathcal A'\) has both darts in faces of \(\mathcal A'\), so these vertices become isolated and are removed. What remains is the subgraph \(G_{\mathcal A}\) of the proof of Proposition 3.5 there: it is connected, with \(I+3\) vertices and \(E_{\mathcal A}+3\) edges, and by Proposition 1.6(e) there it is a sphere map. Let \(F_{\mathrm{rest}}\) be its number of faces other than those of \(\mathcal A\). Then
 \[
-2=(I+3)-(E_{\mathcal A}+3)+|\mathcal A|+F_{\mathrm{rest}}=1+F_{\mathrm{rest}},
+\begin{aligned}
+2&=(I+3)-(E_{\mathcal A}+3)+|\mathcal A|+F_{\mathrm{rest}}\\
+&=1+F_{\mathrm{rest}},
+\end{aligned}
 \]
 by Proposition 3.5 there, so there is exactly one further face. Its darts are the remaining darts, namely the darts of \(C\) not lying in faces of \(\mathcal A\), which are the three darts with \(\mathcal A'\) on the left. The underlying graph is a subgraph of a simple graph, every face has length \(3\), and there are \(I+3\ge4\) vertices because \(C\) is separating; the vertices strictly inside \(\mathcal A'\), at least one, have been removed.
 

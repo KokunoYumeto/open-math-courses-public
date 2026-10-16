@@ -24,15 +24,18 @@ A *network* is a finite directed graph with a source \(o\), a sink \(z\ne o\), a
 
 *Proof.* Summing the conservation equations over a cut \(Z\) shows that the value of any flow equals the flow on arcs leaving \(Z\) minus the flow on arcs entering \(Z\); in particular it is at most the capacity of \(Z\). Start with the zero flow. Given an integral flow \(g\), form the residual graph: an arc \(a\) from \(x\) to \(y\) gives a forward residual arc with capacity \(\kappa(a)-g(a)\) if this is positive, and a backward residual arc from \(y\) to \(x\) with capacity \(g(a)\) if this is positive. If the residual graph has a directed path from \(o\) to \(z\), increase the flow by the smallest residual capacity on it (forward arcs up, backward arcs down); this is a positive integer, conservation is kept, and the value increases by at least \(1\). The value is bounded by the capacity of any cut, so after finitely many steps no path exists. Then let \(Z\) be the set of vertices reachable from \(o\) in the residual graph. Every arc leaving \(Z\) is saturated and every arc entering \(Z\) carries zero flow, so the value equals the capacity of \(Z\), which is at least \(c\). \(\square\)
 
-**Lemma 2.2.** Let \(\Gamma\) be a simple bipartite graph with parts \(P\), \(Q\) of equal size \(n\). If
+**Lemma 2.2.** Let \(\Gamma\) be a simple bipartite graph with parts \(P\), \(Q\) of equal size \(n\). Suppose that every \(S\subseteq Q\) satisfies the condition (2.1):
 \[
-\sum_{p\in P}\min\bigl(2,|N(p)\cap S|\bigr)\ge2|S|\qquad\text{for every }S\subseteq Q, \tag{2.1}
+\sum_{p\in P}\min\bigl(2,|N(p)\cap S|\bigr)\ge2|S| ,
 \]
-where \(N(p)\) is the set of neighbours of \(p\), then \(\Gamma\) has two edge-disjoint perfect matchings.
+where \(N(p)\) is the set of neighbours of \(p\). Then \(\Gamma\) has two edge-disjoint perfect matchings.
 
 *Proof.* Build a network with arcs \(o\to q\) of capacity \(2\) for \(q\in Q\), arcs \(q\to p\) of capacity \(1\) for the edges of \(\Gamma\), and arcs \(p\to z\) of capacity \(2\) for \(p\in P\). For a cut \(Z\), put \(S=Q\cap Z\). The arcs \(o\to q\) with \(q\notin S\) contribute \(2(n-|S|)\). A vertex \(p\in Z\) contributes \(2\) through its arc to \(z\), and a vertex \(p\notin Z\) contributes \(|N(p)\cap S|\) through the arcs from \(S\). Hence the capacity of \(Z\) is at least
 \[
-2(n-|S|)+\sum_{p\in P}\min\bigl(2,|N(p)\cap S|\bigr)\ge2n
+\begin{aligned}
+&2(n-|S|)+\sum_{p\in P}\min\bigl(2,|N(p)\cap S|\bigr)\\
+&\quad\ge2n
+\end{aligned}
 \]
 by (2.1). Lemma 2.1 gives an integral flow of value \(2n\), which saturates all arcs at \(o\) and at \(z\). The edges of \(\Gamma\) carrying flow \(1\) therefore form a spanning subgraph in which every vertex has degree \(2\). Its components are cycles; they have even length because \(\Gamma\) is bipartite, and length at least \(4\) because \(\Gamma\) is simple. Taking alternate edges of every cycle gives two edge-disjoint perfect matchings. \(\square\)
 
@@ -61,28 +64,48 @@ Suppose \(\mathcal S\ne\mathcal S_0\). As \(p\ge4\) and \(K\) is connected, some
 
 *Counting.* The regions partition the faces of \(T\), which has as many black as white faces (Lemma 1.3 of the previous lesson). The triangular faces of \(K\) are single faces of \(T\), so
 \[
-w_K-b_K=\sum_{d_f\ge4}(b'_f-w'_f)\le\sum_{d_f\ge4}(d_f-4),
+\begin{aligned}
+w_K-b_K&=\sum_{d_f\ge4}(b'_f-w'_f)\\
+&\le\sum_{d_f\ge4}(d_f-4),
+\end{aligned}
 \]
 the sums running over the faces of \(K\) of length at least \(4\). With \(F_K\) the number of faces of \(K\),
 \[
-2m=\sum_fd_f=4F_K-(b_K+w_K)+\sum_{d_f\ge4}(d_f-4)\ge4F_K-2b_K .
+\begin{aligned}
+&2m=\sum_fd_f\\
+&\quad=4F_K-(b_K+w_K)\\
+&\qquad+\sum_{d_f\ge4}(d_f-4)\\
+&\quad\ge4F_K-2b_K .
+\end{aligned}
 \]
 Since \(K\) is a sphere map, \(F_K=2-p+m\), and therefore \(2m\ge8-4p+4m-2b_K\), that is, \(m-b_K\le2p-4\). \(\square\)
 
 *Proof of Proposition 3.1.* The three roots are pairwise adjacent, so they lie in one component \(K_0\) of \(T[U]\). If \(K_0\) has at least four vertices, Lemma 3.2 gives \(m_0-b_{K_0}\le2p_0-4\). If it has three, it is the triangle of \(t_0\), with \(m_0=3\) and \(b_{K_0}=1\): another black face on the same three vertices would also be bounded by this triangle, both sides of the triangle would then be single faces, and \(T\) would have only two faces. So \(m_0-b_{K_0}=2=2\cdot3-4\). Every other component \(K\) satisfies \(m_K-b_K\le2p_K\): by Lemma 3.2 if \(p_K\ge4\), and otherwise because a simple graph with \(p_K\le3\) vertices has at most \(\binom{p_K}{2}\le2p_K\) edges. The edges of \(T[U]\) and the black faces with all vertices in \(U\) are distributed among the components, so
 \[
-e(U)-b(U)=\sum_K(m_K-b_K)\le(2p_0-4)+\sum_{K\ne K_0}2p_K=2|U|-4.\qquad\square
+\begin{aligned}
+e(U)-b(U)&=\sum_K(m_K-b_K)\\
+&\le(2p_0-4)+\sum_{K\ne K_0}2p_K\\
+&=2|U|-4.
+\end{aligned}
 \]
+\(\square\)
 
 **Proposition 3.3.** If \(T\) has no separating triangle, a pair of states exists.
 
 *Proof.* We verify (2.1) for the incidence graph, with \(P=\mathcal T\) and \(Q=X\). Let \(S\subseteq X\) and \(U=V(T)\setminus S\), which contains the roots. For a black face \(t\) with \(j\) vertices in \(U\), the number \(e_t(U)\) of its edges with both ends in \(U\) is \(0,0,1,3\) for \(j=0,1,2,3\), and
 \[
-\min\bigl(2,|V(t)\cap S|\bigr)=\min(2,3-j)=2-e_t(U)+\mathbf 1[j=3].
+\begin{aligned}
+&\min\bigl(2,|V(t)\cap S|\bigr)=\min(2,3-j)\\
+&\quad=2-e_t(U)+\mathbf 1[j=3].
+\end{aligned}
 \]
 For \(t_0\) both sides vanish. Every edge of \(T\) lies in exactly one black face, so summing over all \(k\) black faces gives
 \[
-\sum_{t\in\mathcal T}\min\bigl(2,|N(t)\cap S|\bigr)=2k-e(U)+b(U)\ge2k-2|U|+4=2|S|,
+\begin{aligned}
+&\sum_{t\in\mathcal T}\min\bigl(2,|N(t)\cap S|\bigr)\\
+&\quad=2k-e(U)+b(U)\\
+&\quad\ge2k-2|U|+4=2|S|,
+\end{aligned}
 \]
 by Proposition 3.1 and \(|U|+|S|=k+2\). Lemma 2.2 gives two edge-disjoint perfect matchings of \(\Gamma\), that is, a pair. \(\square\)
 

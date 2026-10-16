@@ -200,7 +200,7 @@ Elek and Szabó proved more: for a sofic group, \(D[G]\) is stably finite over e
 
 **7.3.** \(\tau\) has memory \(\{0,1\}\) and rule \((p_0,p_1)\mapsto p_0+p_1\). The constant configurations \(0\) and \(1\) both map to \(0\), so \(\tau\) is not injective. Given \(y\), define \(x(0)=0\), \(x(n+1)=y(n)-x(n)\) for \(n\ge0\) and \(x(n)=y(n)-x(n+1)\) for \(n<0\); then \(\tau(x)=y\).
 
-**7.4.** \((T_c\lambda_hx)(g)=\sum_uc_ux(h^{-1}gu)=(T_cx)(h^{-1}g)=(\lambda_hT_cx)(g)\). If \(dc=1\), then \(T_dT_c=T_{dc}=\mathrm{id}\) by Lemma 2.1, so \(T_c\) is injective.
+**7.4.** \((T_c\lambda_hx)(g)=\sum_uc_ux(h^{-1}gu)\), and this equals \((T_cx)(h^{-1}g)=(\lambda_hT_cx)(g)\). If \(dc=1\), then \(T_dT_c=T_{dc}=\mathrm{id}\) by Lemma 2.1, so \(T_c\) is injective.
 
 **7.5.** With \(\tau'_\sigma(\xi)(\eta)=\varphi((\xi(\sigma(u)\eta))_u)\) and \(x(g)=\xi(\sigma(g)\omega)\), one has \(\tau(x)(g)=\varphi((\xi(\sigma(gu)\omega))_u)\), while \(\tau'_\sigma(\xi)(\sigma(g)\omega)=\varphi((\xi(\sigma(u)\sigma(g)\omega))_u)\). The definition controls \(\sigma(u)\sigma(g)\) against \(\sigma(ug)\), not \(\sigma(gu)\). With inverses, \(\sigma(u^{-1})\sigma(g^{-1})\) is compared with \(\sigma(u^{-1}g^{-1})=\sigma((gu)^{-1})\), which is exactly what (5.1) needs.
 

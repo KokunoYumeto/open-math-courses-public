@@ -18,18 +18,28 @@ It exists because \(\lambda^j-\mu^j=(\lambda-\mu)\sum_{i<j}\lambda^i\mu^{j-1-i}\
 
 **Lemma 1.1.** Let \(B\) be a noetherian ring, \(e,d'\in B\), \(d=ed'\), and \(S\in B[\lambda]\). In the polynomial ring \(B[\lambda,w]\) put
 \[
-F=\lambda+d\,\bigl(S(\lambda)+ew\bigr),\qquad G=w-d'\,\bigl(S(\lambda)+ew\bigr)\,\delta S(\lambda,F).
+\begin{gathered}
+F=\lambda+d\,\bigl(S(\lambda)+ew\bigr),\\
+G=w-d'\,\bigl(S(\lambda)+ew\bigr)\,\delta S(\lambda,F).
+\end{gathered}
 \]
 Then \(B[\lambda,w]=B[F,G]\), and \(F,G\) are algebraically independent over \(B\). In particular \(F\) is a coordinate of \(B[\lambda,w]\) over \(B\).
 
 **Proof.** Put \(\Phi=S(\lambda)+ew\), so that \(F=\lambda+d\Phi\). Then
 \[
-S(\lambda)-S(F)=(\lambda-F)\,\delta S(\lambda,F)=-d\Phi\,\delta S(\lambda,F)=-e\,d'\Phi\,\delta S(\lambda,F),
+\begin{aligned}
+&S(\lambda)-S(F)=(\lambda-F)\,\delta S(\lambda,F)\\
+&\quad =-d\Phi\,\delta S(\lambda,F)=-e\,d'\Phi\,\delta S(\lambda,F),
+\end{aligned}
 \]
 and therefore
 \[
-eG=ew-ed'\Phi\,\delta S(\lambda,F)=ew+S(\lambda)-S(F)=\Phi-S(F),\qquad\text{that is,}\qquad \Phi=S(F)+eG .
+\begin{aligned}
+eG&=ew-ed'\Phi\,\delta S(\lambda,F)\\
+&=ew+S(\lambda)-S(F)=\Phi-S(F),
+\end{aligned}
 \]
+that is, \(\Phi=S(F)+eG\).
 Hence \(\Phi\in B[F,G]\), then \(\lambda=F-d\Phi\in B[F,G]\), and finally
 \[
 w=G+d'\Phi\,\delta S(\lambda,F)\in B[F,G].
@@ -42,11 +52,17 @@ For example, with \(B=k[t]\), \(e=t\), \(d'=t\) and \(S=\lambda^2\), the polynom
 
 Recall the notation of the cylinder lesson: \(x_0=s^2+u^3\),
 \[
-L=x_0^2F-(1+2sx_0)J,\qquad M=(1-2sx_0)F+4s^2J,
+\begin{gathered}
+L=x_0^2F-(1+2sx_0)J,\\
+M=(1-2sx_0)F+4s^2J,
+\end{gathered}
 \]
 a linear change of \(F,J\) over \(k[p,s,u]\) of determinant \(1\); so \(P=B[L]\) with \(B=k[p,s,u,M]\), a polynomial ring in four variables, and \(P[w]=B[L,w]\). In these coordinates
 \[
-H=L-pu+p^2Q+p^4F^3,\qquad Q=2x_0F^2-2sFJ-J^2,
+\begin{gathered}
+H=L-pu+p^2Q+p^4F^3,\\
+Q=2x_0F^2-2sFJ-J^2,
+\end{gathered}
 \]
 where \(F\) and \(J\) are linear in \(L\) over \(B\). Write \(Q=C+L\,Q_1\) with \(C=Q|_{L=0}\in B\) and \(Q_1\in B[L]\), and put \(L_*=pu-p^2C\in B\).
 
@@ -57,11 +73,17 @@ where \(F\) and \(J\) are linear in \(L\) over \(B\). Write \(Q=C+L\,Q_1\) with 
 1. \(w\mapsto w-pF^3\). Since \(F\in B[L]\), this is an automorphism, and it sends \(g=L-pu+p^2Q+p^4F^3+p^3w\) to \(g_1=L-pu+p^2Q+p^3w\).
 2. \(L\mapsto L_*+\lambda\), a translation by an element of \(B\); here \(\lambda\) is the new variable. Since \(L_*-pu+p^2C=0\),
 \[
-g_1=\lambda+p^2(L_*+\lambda)\,Q_1(L_*+\lambda)+p^3w .
+\begin{aligned}
+g_1&=\lambda+p^2(L_*+\lambda)\,Q_1(L_*+\lambda)\\
+&\quad +p^3w .
+\end{aligned}
 \]
-3. \(L_*=p(u-pC)\), so \(p^2L_*Q_1(L_*+\lambda)=p^3(u-pC)Q_1(L_*+\lambda)\). The automorphism \(w\mapsto w-(u-pC)Q_1(L_*+\lambda)\) turns \(g_1\) into
+3. \(L_*=p(u-pC)\), so \(p^2L_*Q_1(L_*+\lambda)\) equals \(p^3(u-pC)Q_1(L_*+\lambda)\). The automorphism \(w\mapsto w-(u-pC)Q_1(L_*+\lambda)\) turns \(g_1\) into
 \[
-g_2=\lambda+p^2\bigl(S(\lambda)+pw\bigr),\qquad S(\lambda)=\lambda\,Q_1(L_*+\lambda)\in B[\lambda].
+\begin{gathered}
+g_2=\lambda+p^2\bigl(S(\lambda)+pw\bigr),\\
+S(\lambda)=\lambda\,Q_1(L_*+\lambda)\in B[\lambda].
+\end{gathered}
 \]
 4. Lemma 1.1 with \(e=p\), \(d'=p\), \(d=p^2\) shows that \(g_2\) is a coordinate of \(B[\lambda,w]\) over \(B\).
 
@@ -73,7 +95,10 @@ Undoing the automorphisms of steps 1–3 carries the partner of \(g_2\) to a par
 
 **Proof.** By Section 3 of the cylinder lesson, \(\Phi=\exp(w\Delta)\) is a \(k[w]\)-automorphism of \(P[w]\) with \(\Phi(H)=H+p^3w=g\). By Proposition 2.1, \(P[w]=B[g,G_2]=k[p,s,u,M,g,G_2]\), so
 \[
-P[w]=k\bigl[\Phi^{-1}(p),\Phi^{-1}(s),\Phi^{-1}(u),\Phi^{-1}(M),H,\Phi^{-1}(G_2)\bigr],
+\begin{aligned}
+P[w]=k\bigl[&\Phi^{-1}(p),\Phi^{-1}(s),\Phi^{-1}(u),\\
+&\Phi^{-1}(M),H,\Phi^{-1}(G_2)\bigr],
+\end{aligned}
 \]
 and \(H\) is a coordinate of \(P[w]\). If \(H\) were a coordinate of \(P\), say \(P=k[H,f_2,\ldots,f_5]\), then \(A=P/(H)\cong k[f_2,\ldots,f_5]\) would be a polynomial ring in four variables, contrary to Theorem 9.1 of [Cancellation fails in dimension four](cancellation-fails-in-dimension-four.md#9-conclusion). \(\square\)
 

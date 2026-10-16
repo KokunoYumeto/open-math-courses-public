@@ -10,13 +10,13 @@ We use the notation of [Superstrings and the hierarchical graph](superstrings-an
 
 A *periodic text* is a map \(A\colon\mathbb Z\to\Sigma\) with \(A(i+p)=A(i)\) for all \(i\) and some integer \(p\ge1\), a *period* of \(A\). We write \(A[i:j)\) for the string \(A(i)A(i+1)\cdots A(j-1)\).
 
-Fix a periodic text \(A\) and a nonempty string \(s\) with \(A[0:|s|)=s\). For \(r\in V\), let \(b_{A,s}(r)\) be the number of integers \(j\) with \(1\le j\) and \(j+|s|\le|r|-1\) such that
-\[
-r(h)=A(h-j)\quad(1\le h\le|r|-2),\qquad r(0)\neq A(-j),\qquad r(|r|-1)\neq A(|r|-1-j).\tag{1.1}
-\]
+Fix a periodic text \(A\) and a nonempty string \(s\) with \(A[0:|s|)=s\). For \(r\in V\), let \(b_{A,s}(r)\) be the number of integers \(j\) with \(1\le j\) and \(j+|s|\le|r|-1\) such that the conditions (1.1) hold: \(r(h)=A(h-j)\) for \(1\le h\le|r|-2\), \(r(0)\neq A(-j)\), and \(r(|r|-1)\neq A(|r|-1-j)\).
 Placing position \(j\) of \(r\) at position \(0\) of \(A\), the word \(r\) agrees with \(A\) except at its two end letters, and \(s=r[j:j+|s|)\) lies strictly inside. For a function \(m\) on the nonempty words, let
 \[
-B_A(s;m)=\sum_{r\in V\setminus\{\varepsilon\}}b_{A,s}(r)\,m(r).\tag{1.2}
+\begin{aligned}
+&B_A(s;m)\\
+&\quad =\sum_{r\in V\setminus\{\varepsilon\}}b_{A,s}(r)\,m(r).
+\end{aligned}\tag{1.2}
 \]
 Only words with \(|r|\ge|s|+2\) contribute.
 
@@ -32,7 +32,10 @@ A single occurrence of \(r\) can bracket several occurrences of \(s\) (Exercise 
 
 **Lemma 2.1.** For every string \(T\) and every nonempty \(s\),
 \[
-N_T(s)\ge\sum_{c\in\Sigma}N_T(cs),\qquad N_T(s)\ge\sum_{c\in\Sigma}N_T(sc).\tag{2.1}
+\begin{gathered}
+N_T(s)\ge\sum_{c\in\Sigma}N_T(cs),\\
+N_T(s)\ge\sum_{c\in\Sigma}N_T(sc).
+\end{gathered}\tag{2.1}
 \]
 If \(T\) is a common superstring, then \(N_T(s)\ge1\) for every required string \(s\).
 
@@ -52,7 +55,10 @@ The right sides only involve words longer than \(s\): \(v\) is longer than \(s\)
 
 **Lemma 2.2** (occurrence lower bound; OpenAI). For every common superstring \(T\) and every nonempty \(s\in V\), \(m(s)\le N_T(s)\). Consequently
 \[
-W:=\sum_{c\in\Sigma}m(c)\le\mathrm{OPT}(\mathcal S),\qquad m(s)\le L.
+\begin{gathered}
+W:=\sum_{c\in\Sigma}m(c)\le\mathrm{OPT}(\mathcal S),\\
+m(s)\le L.
+\end{gathered}
 \]
 
 **Proof.** Write \(N=N_T\). We prove \(m(s)\le N(s)\) by induction on decreasing length; it suffices to show that \(N(s)\) satisfies every lower bound used in Definition 2.1. Conditions 1 and 2 hold for \(N\) by Lemma 2.1 and induction. Consider a periodic rule \((v,p,k)\) whose trigger (2.2) holds; we show \(N(s)\ge B_A(s;N)+k+1\), which is at least \(B_A(s;m)+k+1\), since every word in \(B_A(s;\cdot)\) is longer than \(s\) and has \(N\ge m\) by induction.
@@ -61,13 +67,21 @@ W:=\sum_{c\in\Sigma}m(c)\le\mathrm{OPT}(\mathcal S),\qquad m(s)\le L.
 
 *Case \(N(v)\le B_A(v;N)\).* By Lemma 1.1 equality holds, and with the induction hypothesis and (2.2),
 \[
-\sum_rb_{A,v}(r)\bigl(N(r)-m(r)\bigr)=B_A(v;N)-B_A(v;m)=N(v)-B_A(v;m)\ge m(v)-B_A(v;m)>0,
+\begin{aligned}
+&\sum_rb_{A,v}(r)\bigl(N(r)-m(r)\bigr)\\
+&\quad =B_A(v;N)-B_A(v;m)=N(v)\\
+&\quad -B_A(v;m)\ge m(v)-B_A(v;m)>0,
+\end{aligned}
 \]
 where every difference \(N(r)-m(r)\) is nonnegative. Choose \(r\) with \(b_{A,v}(r)\ge1\) and \(N(r)\ge m(r)+1\), and an offset \(j\) counted in \(b_{A,v}(r)\). The offsets \(j,j+p,\dots,j+kp\) are counted in \(b_{A,s}(r)\): by periodicity, \(A(h-j-lp)=A(h-j)\), so (1.1) holds with the same values, and \(j+lp+|s|\le j+|v|\le|r|-1\). Hence \(b_{A,s}(r)\ge k+1\), and since all terms are nonnegative,
 \[
-N(s)\ge B_A(s;N)\ge B_A(s;m)+b_{A,s}(r)\bigl(N(r)-m(r)\bigr)\ge B_A(s;m)+k+1.
+\begin{aligned}
+&N(s)\ge B_A(s;N)\ge B_A(s;m)\\
+&\quad +b_{A,s}(r)\bigl(N(r)-m(r)\bigr)\\
+&\quad \ge B_A(s;m)+k+1.
+\end{aligned}
 \]
-In both cases the rule holds for \(N\). For an optimal \(T\), \(W=\sum_cm(c)\le\sum_cN_T(c)=|T|=\mathrm{OPT}(\mathcal S)\). For \(T\) the concatenation of the required strings, \(m(s)\le N_T(s)\le|T|=L\). \(\square\)
+In both cases the rule holds for \(N\). For an optimal \(T\), \(W=\sum_cm(c)\le\sum_cN_T(c)\), which is \(|T|=\mathrm{OPT}(\mathcal S)\). For \(T\) the concatenation of the required strings, \(m(s)\le N_T(s)\le|T|=L\). \(\square\)
 
 The periodic rule records forced repetitions. For example, if the only required string is \(a^h\) with \(h\ge2\), the extension inequalities alone allow \(m(a^j)=1\) for all \(j\), with \(W=1\). The constant text \(A=aaa\cdots\) has period \(1\), every word \(r\in V\) agrees with it, so all blocking functionals vanish; the rule for \(v=a^h\), \(p=1\), \(k=h-j\) forces \(m(a^j)\ge h-j+1\), and indeed \(m(a^j)=h-j+1=N_{a^h}(a^j)\) and \(W=h=\mathrm{OPT}\).
 
@@ -75,7 +89,10 @@ The periodic rule records forced repetitions. For example, if the only required 
 
 Give the up edge \(\operatorname{pref}(s)\to s\) and the down edge \(s\to\operatorname{suf}(s)\) at each nonempty \(s\in V\) the multiplicities
 \[
-u(s)=m(s)-\sum_cm(cs),\qquad d(s)=m(s)-\sum_cm(sc),\tag{3.1}
+\begin{gathered}
+u(s)=m(s)-\sum_cm(cs),\\
+d(s)=m(s)-\sum_cm(sc),
+\end{gathered}\tag{3.1}
 \]
 both nonnegative by Definition 2.1. The *base graph* \(G\) is this multiset of edges.
 
@@ -83,9 +100,14 @@ both nonnegative by Definition 2.1. The *base graph* \(G\) is this multiset of e
 
 **Proof.** At a nonempty \(s\), the edges entering \(s\) are the up edge into \(s\) and the down edges from the words \(cs\); those leaving \(s\) are its down edge and the up edges into the words \(sc\). So
 \[
-\text{in}(s)=u(s)+\sum_cd(cs)=m(s)-\sum_{c,c'}m(csc'),\qquad\text{out}(s)=d(s)+\sum_cu(sc)=m(s)-\sum_{c,c'}m(c'sc),
+\begin{aligned}
+\text{in}(s)&=u(s)+\sum_cd(cs)\\
+&=m(s)-\sum_{c,c'}m(csc'),\\
+\text{out}(s)&=d(s)+\sum_cu(sc)\\
+&=m(s)-\sum_{c,c'}m(c'sc),
+\end{aligned}
 \]
-and the two agree. Since the numbers of edges entering and leaving all vertices have equal sums, the vertex \(\varepsilon\) is balanced too. Every word of length at least \(2\) is \(cs\) for exactly one letter \(c\) and one nonempty \(s\), so \(\sum_su(s)=\sum_sm(s)-\sum_{|s'|\ge2}m(s')=\sum_cm(c)=W\), and likewise for \(d\). A required string has no proper extension in \(V\) (Lemma 1.1 of [Superstrings and the hierarchical graph](superstrings-and-the-hierarchical-graph.md)), so both its edges have multiplicity \(m(s)\ge1\). \(\square\)
+and the two agree. Since the numbers of edges entering and leaving all vertices have equal sums, the vertex \(\varepsilon\) is balanced too. Every word of length at least \(2\) is \(cs\) for exactly one letter \(c\) and one nonempty \(s\), so \(\sum_su(s)=\sum_sm(s)-\sum_{|s'|\ge2}m(s')\), which is \(\sum_cm(c)=W\), and likewise for \(d\). A required string has no proper extension in \(V\) (Lemma 1.1 of [Superstrings and the hierarchical graph](superstrings-and-the-hierarchical-graph.md)), so both its edges have multiplicity \(m(s)\ge1\). \(\square\)
 
 By Corollary 3.2 of [Superstrings and the hierarchical graph](superstrings-and-the-hierarchical-graph.md), it suffices to add closed walks, of total cost at most \(W\), that connect the support of \(G\) to \(\varepsilon\). For \(a^h\), the base graph already contains the path from \(\varepsilon\) to \(a^h\) in both directions and is connected. In general it is not (Exercise 4.1).
 

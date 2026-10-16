@@ -108,7 +108,15 @@ We show by induction on \(|\mathcal S|\) that for every event \(A\) and every se
 \[
 \Pr\Bigl(A\Bigm|\bigcap_{B\in\mathcal S}B^c\Bigr)\le x_A .
 \]
-For \(\mathcal S=\emptyset\) this is (5.1). Otherwise, write \(\mathcal S_1\) for the neighbours of \(A\) in \(\mathcal S\), \(\mathcal S_2\) for the rest, and \(D_i=\bigcap_{B\in\mathcal S_i}B^c\). Listing \(\mathcal S=\{B_1,\ldots,B_k\}\), the chain rule gives \(\Pr(D_1\cap D_2)=\prod_i\bigl(1-\Pr(B_i\mid\bigcap_{i'<i}B_{i'}^c)\bigr)\ge\prod_i(1-x_{B_i})>0\) by the induction hypothesis for smaller sets. If \(\mathcal S_1=\emptyset\), independence gives \(\Pr(A\mid D_2)=\Pr(A)\le x_A\). Otherwise
+For \(\mathcal S=\emptyset\) this is (5.1). Otherwise, write \(\mathcal S_1\) for the neighbours of \(A\) in \(\mathcal S\), \(\mathcal S_2\) for the rest, and \(D_i=\bigcap_{B\in\mathcal S_i}B^c\). Listing \(\mathcal S=\{B_1,\ldots,B_k\}\), the chain rule gives
+\[
+\begin{aligned}
+&\Pr(D_1\cap D_2)\\
+&\quad=\prod_i\Bigl(1-\Pr\bigl(B_i\bigm|\textstyle\bigcap_{i'<i}B_{i'}^c\bigr)\Bigr)\\
+&\quad\ge\prod_i(1-x_{B_i})>0
+\end{aligned}
+\]
+by the induction hypothesis for smaller sets. If \(\mathcal S_1=\emptyset\), independence gives \(\Pr(A\mid D_2)=\Pr(A)\le x_A\). Otherwise
 \[
 \begin{aligned}
 &\Pr(A\mid D_1\cap D_2)\\
@@ -116,7 +124,7 @@ For \(\mathcal S=\emptyset\) this is (5.1). Otherwise, write \(\mathcal S_1\) fo
 &\quad=\frac{\Pr(A)}{\Pr(D_1\mid D_2)} ,
 \end{aligned}
 \]
-using independence of \(A\) from \(D_2\). The chain rule over \(\mathcal S_1\), with the induction hypothesis for the smaller conditioning sets, gives \(\Pr(D_1\mid D_2)\ge\prod_{B\in\mathcal S_1}(1-x_B)\ge\prod_{B\in\mathcal N(A)}(1-x_B)\), and (5.1) gives the bound \(x_A\). Finally, for the whole list \(A_1,\ldots,A_N\),
+using independence of \(A\) from \(D_2\). The chain rule over \(\mathcal S_1\), with the induction hypothesis for the smaller conditioning sets, gives \(\Pr(D_1\mid D_2)\ge\prod_{B\in\mathcal S_1}(1-x_B)\), which is at least \(\prod_{B\in\mathcal N(A)}(1-x_B)\) because \(\mathcal S_1\subseteq\mathcal N(A)\) and every factor lies in \((0,1]\); with (5.1) this gives the bound \(x_A\). Finally, for the whole list \(A_1,\ldots,A_N\),
 \[
 \begin{aligned}
 &\Pr\Bigl(\bigcap_iA_i^c\Bigr)\\
@@ -145,7 +153,7 @@ The general form of the local lemma with weights \(x_A\) is due to Erdős and Lo
 
 **6.1.** An ordered basis of a two-dimensional subspace is a pair \((y_1,y_2)\) with \(y_1\ne0\) and \(y_2\notin Qy_1\): \((q^d-1)(q^d-q)\) pairs, and each subspace has \((q^2-1)(q^2-q)\) ordered bases. The subspaces containing a fixed \(y\ne0\) correspond to the directions of \(Q^d/Qy\), of which there are \((q^{d-1}-1)/(q-1)\). The quotient of the two counts is \(\frac{(q^{d-1}-1)(q^2-1)(q^2-q)}{(q-1)(q^d-1)(q^d-q)}=\frac{q^2-1}{q^d-1}\), which is \(p_*\) for \(d=b-1\).
 
-**6.2.** Using \(p_*\le2q^{3-b}\), \(D<q^{s+1}\) and \(b=s+20\): \(p_*=O(q^{3-b})=O(q^{-s-17})\); \(Dq^{3b}p_*^4=O(q^{s+1+3b+12-4b})=O(q^{s+13-b})=O(q^{-7})\); \(Dp_*^2=O(q^{s+1+6-2b})=O(q^{-s-33})\); \(q^3p_*^2=O(q^{9-2b})=O(q^{-2s-31})\); \(q^{3b+2}p_*^4=O(q^{14-b})=O(q^{-s-6})\).
+**6.2.** Using \(p_*\le2q^{3-b}\), \(D<q^{s+1}\) and \(b=s+20\): \(p_*=O(q^{3-b})=O(q^{-s-17})\); \(Dq^{3b}p_*^4=O(q^{s+1+3b+12-4b})\), which is \(O(q^{s+13-b})=O(q^{-7})\); \(Dp_*^2=O(q^{s+1+6-2b})=O(q^{-s-33})\); \(q^3p_*^2=O(q^{9-2b})=O(q^{-2s-31})\); \(q^{3b+2}p_*^4=O(q^{14-b})=O(q^{-s-6})\).
 
 **6.3.** Each generic label occurs exactly twice and its two occurrences are not adjacent; in a cycle of three steps any two positions are adjacent.
 

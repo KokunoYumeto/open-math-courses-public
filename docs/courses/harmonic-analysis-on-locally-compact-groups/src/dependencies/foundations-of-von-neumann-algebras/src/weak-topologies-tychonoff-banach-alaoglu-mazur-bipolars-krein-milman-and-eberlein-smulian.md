@@ -11,7 +11,7 @@ This lesson proves the facts about weak topologies that the operator-algebra les
 - the Krein–Milman theorem and Milman's converse;
 - the Eberlein–Šmulian theorem, which says that weak compactness of a subset of a Banach space can be tested with sequences.
 
-It builds on the lesson Hahn–Banach, Baire and the basic theorems on Banach spaces, cited below as *the previous lesson*.
+It builds on the lesson [Hahn–Banach, Baire and the basic theorems on Banach spaces](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html), cited below as *the previous lesson*.
 
 ## Conventions
 
@@ -35,7 +35,7 @@ A net \(x_i\to x\) weakly when \(\varphi(x_i)\to\varphi(x)\) for every \(\varphi
 
 **Proof.** Elements of \(Y\) are continuous by definition. Let \(f\) be continuous. Then \(\{x:|f(x)|<1\}\) contains a basic neighbourhood \(\{x:|y_i(x)|<\varepsilon,\ i\le n\}\) with \(y_i\in Y\). If \(y_i(x)=0\) for all \(i\), then \(tx\) lies in this neighbourhood for every scalar \(t\), so \(|f(tx)|<1\) for all \(t\), and \(f(x)=0\). By Lemma 1.1, \(f\) is a linear combination of the \(y_i\), so \(f\in Y\). \(\square\)
 
-**Corollary 1.3.** The weak topology of a normed space has continuous dual \(E^*\). The weak\* topology of \(E^*\) has continuous dual \(j(E)\). Both topologies are Hausdorff: \(E^*\) separates points of \(E\) by the previous lesson, Corollary 2.3, and \(j(E)\) separates points of \(E^*\) trivially.
+**Corollary 1.3.** The weak topology of a normed space has continuous dual \(E^*\). The weak\* topology of \(E^*\) has continuous dual \(j(E)\). Both topologies are Hausdorff: \(E^*\) separates points of \(E\) by the [previous lesson, Corollary 2.3](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-02), and \(j(E)\) separates points of \(E^*\) trivially.
 
 ## 2. Tychonoff's theorem
 
@@ -51,7 +51,7 @@ An *ultrafilter* is a filter not properly contained in another. A filter on a to
 2. A filter \(\mathcal U\) is an ultrafilter iff for every \(A\subseteq S\), either \(A\in\mathcal U\) or \(S\setminus A\in\mathcal U\).
 3. If \(f:S\to T\) and \(\mathcal U\) is an ultrafilter on \(S\), then \(f_*\mathcal U=\{B\subseteq T:f^{-1}(B)\in\mathcal U\}\) is an ultrafilter on \(T\).
 
-**Proof.** 1. Filters containing the given one, ordered by inclusion, have unions of chains as upper bounds. Zorn's lemma (previous lesson, Theorem 1.1) gives a maximal one.
+**Proof.** 1. Filters containing the given one, ordered by inclusion, have unions of chains as upper bounds. Zorn's lemma ([previous lesson, Theorem 1.1](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-01)) gives a maximal one.
 
 2. Suppose \(\mathcal U\) is an ultrafilter and \(A\notin\mathcal U\). If \(A\cap U\neq\varnothing\) for all \(U\in\mathcal U\), then the sets containing some \(A\cap U\) form a filter that contains \(\mathcal U\) and \(A\), contradicting maximality. So \(A\cap U=\varnothing\) for some \(U\in\mathcal U\), and then \(S\setminus A\supseteq U\) lies in \(\mathcal U\). Conversely, a filter with this property is maximal: a larger filter would contain some \(A\notin\mathcal U\) together with \(S\setminus A\in\mathcal U\), hence \(\varnothing\).
 
@@ -92,7 +92,7 @@ A closed subset of a compact space is compact. \(\square\)
 
 **Theorem 4.1** (Mazur). A convex subset \(C\) of a normed space has the same closure in the weak and in the norm topology. In particular, norm-closed convex sets are weakly closed. If \(x_n\to x\) weakly, then some sequence of convex combinations of the \(x_n\) converges to \(x\) in norm.
 
-**Proof.** The weak topology is coarser, so the norm closure \(\overline C\) lies in the weak closure. Conversely, if \(x\notin\overline C\), the previous lesson, Corollary 6.4(2), gives \(\varphi\in E^*\) and \(t\) with \(\operatorname{Re}\varphi\le t\) on \(\overline C\) and \(\operatorname{Re}\varphi(x)>t\). The weakly open set \(\{\operatorname{Re}\varphi>t\}\) contains \(x\) and misses \(C\), so \(x\) is not in the weak closure.
+**Proof.** The weak topology is coarser, so the norm closure \(\overline C\) lies in the weak closure. Conversely, if \(x\notin\overline C\), the [previous lesson, Corollary 6.4(2)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-06), gives \(\varphi\in E^*\) and \(t\) with \(\operatorname{Re}\varphi\le t\) on \(\overline C\) and \(\operatorname{Re}\varphi(x)>t\). The weakly open set \(\{\operatorname{Re}\varphi>t\}\) contains \(x\) and misses \(C\), so \(x\) is not in the weak closure.
 
 For the last statement, apply this to the convex hull of \(\{x_n:n\ge1\}\). The point \(x\) lies in its weak closure, hence in its norm closure. \(\square\)
 
@@ -100,7 +100,7 @@ The same argument works in every locally convex space.
 
 **Theorem 4.2** (Closures of convex sets). Let \((X,\tau)\) be a locally convex space with continuous dual \(X^*\). A convex set \(C\subseteq X\) has the same closure for \(\tau\) and for \(\sigma(X,X^*)\). Consequently, two locally convex topologies on \(X\) with the same continuous linear functionals have the same closed convex sets.
 
-**Proof.** Every \(\varphi\in X^*\) is \(\tau\)-continuous, so \(\sigma(X,X^*)\subseteq\tau\), and the \(\tau\)-closure \(\overline C\) lies in the \(\sigma(X,X^*)\)-closure. Let \(x\notin\overline C\). The set \(\overline C\) is closed and convex. The previous lesson, Corollary 6.4(2), gives \(\varphi\in X^*\) and \(t\) with \(\operatorname{Re}\varphi\le t\) on \(\overline C\) and \(\operatorname{Re}\varphi(x)>t\). The \(\sigma(X,X^*)\)-open set \(\{\operatorname{Re}\varphi>t\}\) contains \(x\) and misses \(C\). For the last claim, both topologies give the closure of \(C\) that \(\sigma(X,X^*)\) gives. \(\square\)
+**Proof.** Every \(\varphi\in X^*\) is \(\tau\)-continuous, so \(\sigma(X,X^*)\subseteq\tau\), and the \(\tau\)-closure \(\overline C\) lies in the \(\sigma(X,X^*)\)-closure. Let \(x\notin\overline C\). The set \(\overline C\) is closed and convex. The [previous lesson, Corollary 6.4(2)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-06), gives \(\varphi\in X^*\) and \(t\) with \(\operatorname{Re}\varphi\le t\) on \(\overline C\) and \(\operatorname{Re}\varphi(x)>t\). The \(\sigma(X,X^*)\)-open set \(\{\operatorname{Re}\varphi>t\}\) contains \(x\) and misses \(C\). For the last claim, both topologies give the closure of \(C\) that \(\sigma(X,X^*)\) gives. \(\square\)
 
 ## 5. Annihilators, bipolars and Goldstine's theorem
 
@@ -110,9 +110,9 @@ For \(L\subseteq E\) let \(L^\perp=\{\varphi\in E^*:\varphi|_L=0\}\). For \(N\su
 1. For a subspace \(L\subseteq E\), the norm closure of \(L\) is \((L^\perp)_\perp\).
 2. For a subspace \(N\subseteq E^*\), the weak\* closure of \(N\) is \((N_\perp)^\perp\).
 
-**Proof.** 1. The set \((L^\perp)_\perp\) is norm closed and contains \(L\). If \(x\notin\overline L\), the previous lesson, Corollary 2.3(3), gives \(\varphi\in L^\perp\) with \(\varphi(x)\ne0\), so \(x\notin(L^\perp)_\perp\).
+**Proof.** 1. The set \((L^\perp)_\perp\) is norm closed and contains \(L\). If \(x\notin\overline L\), the [previous lesson, Corollary 2.3(3)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-02), gives \(\varphi\in L^\perp\) with \(\varphi(x)\ne0\), so \(x\notin(L^\perp)_\perp\).
 
-2. The set \((N_\perp)^\perp\) is weak\* closed and contains \(N\). Let \(\psi\) lie outside the weak\* closure \(\overline N\), a weak\* closed subspace. The weak\* topology is locally convex. By the previous lesson, Corollary 6.4(2), there is a weak\* continuous functional \(F\) with \(\operatorname{Re}F(\psi)>t\ge\operatorname{Re}F(\overline N)\) for some \(t\).
+2. The set \((N_\perp)^\perp\) is weak\* closed and contains \(N\). Let \(\psi\) lie outside the weak\* closure \(\overline N\), a weak\* closed subspace. The weak\* topology is locally convex. By the [previous lesson, Corollary 6.4(2)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-06), there is a weak\* continuous functional \(F\) with \(\operatorname{Re}F(\psi)>t\ge\operatorname{Re}F(\overline N)\) for some \(t\).
 
 Since \(\overline N\) is a subspace, \(F\) vanishes on it: if \(F(\varphi)\neq0\) for some \(\varphi\in\overline N\), suitable multiples \(s\varphi\) would make \(\operatorname{Re}F(s\varphi)\) as large as we like. So \(t\ge0\) and \(\operatorname{Re}F(\psi)>0\).
 
@@ -122,7 +122,7 @@ By Corollary 1.3, \(F=j(x)\) for some \(x\in E\). Then \(x\in N_\perp\) and \(\p
 
 **Proof.** Let \(K\) be the weak\* closure of \(j(B)\). It is convex and lies in the unit ball of \(E^{**}\), which is weak\* closed.
 
-Suppose \(\Phi\) is in the unit ball of \(E^{**}\) but not in \(K\). The space \((E^{**},\sigma(E^{**},E^*))\) is locally convex with continuous dual \(E^*\) (Theorem 1.2). The previous lesson, Corollary 6.4(2), gives \(\varphi\in E^*\) and \(t\) with \(\operatorname{Re}\Phi(\varphi)>t\ge\operatorname{Re}j(x)(\varphi)=\operatorname{Re}\varphi(x)\) for all \(x\in B\).
+Suppose \(\Phi\) is in the unit ball of \(E^{**}\) but not in \(K\). The space \((E^{**},\sigma(E^{**},E^*))\) is locally convex with continuous dual \(E^*\) (Theorem 1.2). The [previous lesson, Corollary 6.4(2)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-06), gives \(\varphi\in E^*\) and \(t\) with \(\operatorname{Re}\Phi(\varphi)>t\ge\operatorname{Re}j(x)(\varphi)=\operatorname{Re}\varphi(x)\) for all \(x\in B\).
 
 Taking the supremum over \(B\), and using that \(B\) is balanced, gives \(\|\varphi\|\le t\). Then \(\operatorname{Re}\Phi(\varphi)>t\ge\|\varphi\|\ge\|\Phi\|\,\|\varphi\|\), which is impossible. \(\square\)
 
@@ -132,7 +132,7 @@ Taking the supremum over \(B\), and using that \(B\) is balanced, gives \(\|\var
 3. \((ST)^{**}=S^{**}T^{**}\).
 4. \(T^{**}\) is weak\*–weak\* continuous.
 
-**Proof.** 1. \(\|T^*\psi\|=\sup_{\|x\|\le1}|\psi(Tx)|\le\|\psi\|\|T\|\). Conversely, for \(\|x\|\le1\) choose \(\psi\) of norm at most \(1\) with \(\psi(Tx)=\|Tx\|\) (previous lesson, Corollary 2.3(2)); then \(\|Tx\|\le\|T^*\|\). Apply the same to \(T^*\).
+**Proof.** 1. \(\|T^*\psi\|=\sup_{\|x\|\le1}|\psi(Tx)|\le\|\psi\|\|T\|\). Conversely, for \(\|x\|\le1\) choose \(\psi\) of norm at most \(1\) with \(\psi(Tx)=\|Tx\|\) ([previous lesson, Corollary 2.3(2)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-02)); then \(\|Tx\|\le\|T^*\|\). Apply the same to \(T^*\).
 
 2. \[
 \begin{gathered}
@@ -168,14 +168,14 @@ A point \(e\) of a convex set \(K\) is *extreme* if \(e=tx+(1-t)y\) with \(x,y\i
 
 **Proof.** *Faces contain extreme points.* Faces of \(K\), ordered by reverse inclusion, satisfy the hypothesis of Zorn's lemma. The intersection of a chain is nonempty, by compactness and the finite intersection property, and it is closed and a face. So there is a minimal face \(F\).
 
-Suppose \(F\) has two points \(x\ne y\). Choose a continuous \(\varphi\) with \(\operatorname{Re}\varphi(x)\ne\operatorname{Re}\varphi(y)\); this exists by the previous lesson, Corollary 6.4(1), replacing \(\varphi\) by \(i\varphi\) if needed. The set \(F'=\{z\in F:\operatorname{Re}\varphi(z)=\max_F\operatorname{Re}\varphi\}\) is then:
+Suppose \(F\) has two points \(x\ne y\). Choose a continuous \(\varphi\) with \(\operatorname{Re}\varphi(x)\ne\operatorname{Re}\varphi(y)\); this exists by the [previous lesson, Corollary 6.4(1)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-06), replacing \(\varphi\) by \(i\varphi\) if needed. The set \(F'=\{z\in F:\operatorname{Re}\varphi(z)=\max_F\operatorname{Re}\varphi\}\) is then:
 - nonempty, because \(F\) is compact;
 - closed, and a face of \(F\), hence of \(K\): if \(tx'+(1-t)y'\in F'\) with \(x',y'\in K\), then \(x',y'\in F\) because \(F\) is a face, and both attain the maximum, since a strict average of two values at most the maximum equals the maximum only if both do;
 - smaller than \(F\), since it cannot contain both \(x\) and \(y\).
 
 This contradicts minimality. So \(F=\{e\}\), and \(e\) is an extreme point of \(K\), because \(\{e\}\) is a face.
 
-*The closed convex hull.* Let \(C\) be the closed convex hull of the extreme points; it lies in \(K\). If some \(x\in K\setminus C\) existed, the previous lesson, Theorem 6.3, would give a continuous \(\varphi\) and \(t\) with \(\operatorname{Re}\varphi<t\) on \(C\) and \(\operatorname{Re}\varphi(x)>t\).
+*The closed convex hull.* Let \(C\) be the closed convex hull of the extreme points; it lies in \(K\). If some \(x\in K\setminus C\) existed, the [previous lesson, Theorem 6.3](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-06), would give a continuous \(\varphi\) and \(t\) with \(\operatorname{Re}\varphi<t\) on \(C\) and \(\operatorname{Re}\varphi(x)>t\).
 
 The set \(F=\{z\in K:\operatorname{Re}\varphi(z)=\max_K\operatorname{Re}\varphi\}\) is a face of \(K\) disjoint from \(C\), because its points have \(\operatorname{Re}\varphi\ge\operatorname{Re}\varphi(x)>t\). By the first part, applied to the compact convex set \(F\), it contains an extreme point of \(F\), which is an extreme point of \(K\) because \(F\) is a face, and so lies in \(C\). This is a contradiction. \(\square\)
 
@@ -196,7 +196,7 @@ The set \(F=\{z\in K:\operatorname{Re}\varphi(z)=\max_K\operatorname{Re}\varphi\
 
 **Lemma 7.1.** Let \(E\) be a normed space and \(M\subseteq E^{**}\) a finite-dimensional subspace. Then there are finitely many \(\varphi_1,\dots,\varphi_m\in E^*\) of norm \(1\) with \(\max\{0,|\Phi(\varphi_1)|,\dots,|\Phi(\varphi_m)|\}\ge\frac12\|\Phi\|\) for every \(\Phi\in M\). The family may be empty when \(M=\{0\}\).
 
-**Proof.** If \(M=\{0\}\), the empty family works. Otherwise the unit sphere \(S_M\) of \(M\) is nonempty and compact (previous lesson, Theorem 7.1). For each \(\Phi\in S_M\), choose \(\varphi_\Phi\) of norm \(1\) with \(|\Phi(\varphi_\Phi)|>3/4\). The open sets \(\{\Psi\in S_M:\|\Psi-\Phi\|<1/4\}\) cover \(S_M\), so finitely many centres \(\Phi_1,\dots,\Phi_m\) suffice. For \(\Psi\in S_M\) with \(\|\Psi-\Phi_k\|<1/4\), \(|\Psi(\varphi_{\Phi_k})|\ge|\Phi_k(\varphi_{\Phi_k})|-\|\Psi-\Phi_k\|>1/2\). Scale for general \(\Phi\in M\). \(\square\)
+**Proof.** If \(M=\{0\}\), the empty family works. Otherwise the unit sphere \(S_M\) of \(M\) is nonempty and compact ([previous lesson, Theorem 7.1](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-07)). For each \(\Phi\in S_M\), choose \(\varphi_\Phi\) of norm \(1\) with \(|\Phi(\varphi_\Phi)|>3/4\). The open sets \(\{\Psi\in S_M:\|\Psi-\Phi\|<1/4\}\) cover \(S_M\), so finitely many centres \(\Phi_1,\dots,\Phi_m\) suffice. For \(\Psi\in S_M\) with \(\|\Psi-\Phi_k\|<1/4\), \(|\Psi(\varphi_{\Phi_k})|\ge|\Phi_k(\varphi_{\Phi_k})|-\|\Psi-\Phi_k\|>1/2\). Scale for general \(\Phi\in M\). \(\square\)
 
 **Theorem 7.2** (Eberlein–Šmulian). For a subset \(A\) of a Banach space \(E\), the following are equivalent:
 1. \(A\) is relatively weakly compact;
@@ -209,7 +209,7 @@ The set \(F=\{z\in K:\operatorname{Re}\varphi(z)=\max_K\operatorname{Re}\varphi\
 
 *3 implies 1.*
 
-**Step 1: \(A\) is bounded.** Otherwise there is \(\varphi\in E^*\) with \(\sup_{x\in A}|\varphi(x)|=\infty\), by the previous lesson, Corollary 4.3(2). So there are \(x_n\in A\) with \(|\varphi(x_n)|\ge n\). A weak cluster point \(x\) of \((x_n)\) would make \(\varphi(x)\) a cluster point of \((\varphi(x_n))\), which has none.
+**Step 1: \(A\) is bounded.** Otherwise there is \(\varphi\in E^*\) with \(\sup_{x\in A}|\varphi(x)|=\infty\), by the [previous lesson, Corollary 4.3(2)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-04). So there are \(x_n\in A\) with \(|\varphi(x_n)|\ge n\). A weak cluster point \(x\) of \((x_n)\) would make \(\varphi(x)\) a cluster point of \((\varphi(x_n))\), which has none.
 
 **Step 2: the weak\* closure of \(j(A)\) lies in \(j(E)\).** The weak\* closure \(\overline{j(A)}^{w*}\) is weak\* compact by Theorem 3.1, since \(A\) is bounded. Let \(\Phi\) be in it. We build \(x_n\in A\) and functionals of norm \(1\) inductively.
 - Let \(\varphi_1\) be any functional of norm \(1\), and choose \(x_1\in A\) with \(|(\Phi-jx_1)(\varphi_1)|<1\).

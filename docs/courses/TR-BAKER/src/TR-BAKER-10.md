@@ -12149,7 +12149,311 @@ Each is at most the stated \(c(\nu,\eta)\); equality in the first row is harmles
 \]
 Here \(\nu\ge4,\eta\ge5,\lambda\le18/5\), \(\sqrt{k}<21/10\) and \(\ln2<7/10\). Every stated constant is at least \(18\), so this alternative satisfies each estimate as well. The final identity for \(zB^2\) proves the asserted table. \(\square\)
 
-## 58. Exercises with solutions
+## 58. The second constant and coefficient imbalance
+
+Two features of an explicit logarithmic-form estimate can be separated:
+the constant multiplying the height product, and the parameter measuring
+the coefficients. We first compare Yu's two constants, with their own
+coefficient parameters. We then give a two-branch estimate in which the
+last coefficient has a separate bound.
+
+### Comparing the two constants
+
+Retain every hypothesis and definition of Theorem 10.152. In particular,
+the bases are independent local units, the last nonzero coefficient has
+minimum p-adic valuation, and the original saturated residue index is
+used. Write \(C_1\) for (10.449), \(P=p^\kappa\), where
+
+\[
+p^{\kappa-1}(p-1)\le2e<P(p-1),
+\qquad t=f\ln p.
+\tag{10.641}
+\]
+
+Here \(\kappa\) can be zero. Put \(a^{(2)}=7\) at odd
+primes and \(a^{(2)}=13\) at two. Define
+
+\[
+C_2=\frac{c^{(2)}}P(a^{(2)}\mathrm eP)^n
+\frac{(n+1)^{n+1}d^{n+2}\ell_d}{(n-1)!q^ut^3}
+\max\left\{\frac{p^f}{\delta(\boldsymbol a)},
+                  \frac{\mathrm e^nt^{n+1}}{n^n}\right\}A_n.
+\tag{10.642}
+\]
+
+The constants that specify its coefficient parameter are as follows;
+\(x=(p-1)/(p-2)\) in the two III rows.
+
+| Case | \(c^{(2)}\) | \(a_0^{(2)}\) | \(a_1^{(2)}\) |
+| --- | ---: | ---: | ---: |
+| I.1 | \(1438\) | \(2+\ln21\) | \(1.94\) |
+| I.2 | \(648\) | \(2+\ln21\) | \(2.76\) |
+| II | \(690\) | \(2+\ln35\) | \(0.71\) |
+| III.1 | \(495x\) | \(2+\ln7\) | \(1.99\) |
+| III.2 | \(557x\) | \(2+\ln7\) | \(3.32\) |
+| IV | \(2418\) | \(2+\ln7\) | \(3.58\) |
+| V | \(406\) | \(2+\ln52\) | \(1.48\) |
+
+Set
+
+\[
+\begin{aligned}
+G_2(n,d)&=(n+1)\bigl(a_0^{(2)}n+a_1^{(2)}+\ln(n+1)+\ln d\bigr),\\
+\mathsf h_2&=\max\left\{\ln\frac{R_{\max}}{dW(d)},
+                 \ln B_\dagger,G_2(n,d),(n+1)t\right\}.
+\end{aligned}
+\tag{10.643}
+\]
+
+These are equations (1.10), (1.12), (1.13), (1.29) and (1.30) of
+[Yu's free paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).
+The following comparison uses the programme proof of Theorem 10.152.
+
+**Lemma 10.172 (uniform comparison of coefficient parameters).** For
+every \(n\ge2,d\ge1\) in each of the seven cases,
+
+\[
+G_1(n,d)<\frac32G_2(n,d),\qquad
+\mathsf h\le\frac32\mathsf h_2.
+\tag{10.644}
+\]
+
+**Proof.** In this proof write \(a_0,a_1,a_2\) for the first
+constant's parameters in (10.448)–(10.449). Their displayed values give
+\(a_0<7\) and \(a_2<7\), so
+\(\ln(a_0n+a_2)<\ln(n+1)+\ln7\).
+For example, \(\mathrm e>27/10\) gives \(\ln26<4\),
+and \(\ln2<7/10\) checks every entry involving \(\ln2\).
+Consequently \((3G_2/2-G_1)/(n+1)\) is greater than
+
+\[
+\left(\frac32a_0^{(2)}-a_0\right)n
++\frac32a_1^{(2)}-a_1+\frac12\ln(n+1)
++\frac12\ln d-\ln7.
+\tag{10.645}
+\]
+
+The coefficient of n is positive: in every row
+\(a_0\le a_0^{(2)}+\ln2\) and \(a_0^{(2)}>3\).
+The displayed expression therefore has its least value at n=2,d=1.
+Substitution and cancellation of logarithms gives, respectively,
+
+\[
+\begin{array}{c|c}
+\mathrm{I.1}&22/25+\ln(27/4)+\tfrac12\ln3\\
+\mathrm{I.2}&27/20+\ln(27/4)+\tfrac12\ln3\\
+\mathrm{II}&-3/8+\ln(125/4)+\tfrac12\ln3\\
+\mathrm{III.1}&11/40+\tfrac12\ln3\\
+\mathrm{III.2}&57/50+\tfrac12\ln3\\
+\mathrm{IV}&9/4-2\ln2+\tfrac12\ln3\\
+\mathrm V&17/10+\ln(208/7)+\tfrac12\ln3.
+\end{array}
+\tag{10.646}
+\]
+
+Every entry is positive. For II use \(125/4>\mathrm e\),
+which follows from \(\mathrm e<3\); for IV use
+\(\ln2<7/10\). The elementary bounds on \(\mathrm e\)
+follow from its positive power series: the partial sum through degree
+four exceeds \(27/10\), while \(k!\ge2^{k-1}\), with
+strict inequality for k at least four, bounds the full sum above by
+three. This proves the first assertion. The other entries of the two
+maxima agree. Since \(G_2>0\), each of them is bounded by
+\(3\mathsf h_2/2\), including entries that are negative. This proves
+the second assertion. \(\square\)
+
+**Theorem 10.173 (the second estimate when \(n\le Pt\)).** Under the
+hypotheses of Theorem 10.152, if \(n\le p^\kappa f\ln p\), then
+
+\[
+\operatorname{ord}_{\mathfrak p}(\Xi-1)
+<C_2\mathsf h_2\prod_{j=1}^nh(a_j).
+\tag{10.647}
+\]
+
+**Proof.** Multiplying the maximum in \(C_1\) by
+\(t^{n+1}\) gives exactly the maximum in \(C_2\).
+Cancelling all common factors, including \(n!/(n-1)!=n\), yields
+
+\[
+\frac{C_2}{C_1}
+=\frac{c^{(2)}}c
+ \left(\frac{a^{(2)}\mathrm e}{\mathfrak a}\right)^n
+ \left(\frac{Pt}{n}\right)^{n-1}.
+\tag{10.648}
+\]
+
+The last factor is at least one. Outside III, the middle base is
+\(\mathrm e/2>27/20>1\), so its least power for n at least two
+is its square. In III the first two factors are
+\((c_*/c)\mathrm e^n x^{1-n}\), with
+\(1<x\le4/3\). For fixed x their least value is at n=2, and
+at n=2 their least value over x is bounded below by
+\((c_*/c)(27/10)^2(3/4)\). The resulting strict rational lower
+bounds for \(C_2/C_1\) are
+
+| Case | Strict lower bound for \(C_2/C_1\) |
+| --- | ---: |
+| I.1 | \(174717/62600\) |
+| I.2 | \(19683/10600\) |
+| II | \(50301/20200\) |
+| III.1 | \(72171/47840\) |
+| III.2 | \(1218159/716000\) |
+| IV | \(881361/536000\) |
+| V | \(147987/41200\) |
+
+All exceed \(3/2\). The smallest gap is the exact positive
+fraction \(411/47840\) in III.1. Lemma 10.172 and Theorem 10.152
+now give \(C_1\mathsf h<C_2\mathsf h_2\), and the asserted
+valuation bound follows. No height floor, residue index, field extension
+or coefficient ordering has been changed. \(\square\)
+
+For example, over \(\mathbb Q\) at three, \(P=3\) and
+\(Pt=3\ln3>3\). Thus the theorem applies to two or three
+independent rational local units. In contrast, for an unramified prime
+\(p\ge5\), \(P=1\): the condition is \(n\le f\ln p\).
+The stated range is part of the theorem's hypothesis.
+
+### A separate bound for the last coefficient
+
+We use \(\varepsilon\) for the coefficient-imbalance parameter;
+it is unrelated to the saturated residue index
+\(\delta(\boldsymbol a)\). The two alternatives below allow a
+small last coefficient \(B_n\) to be retained explicitly.
+
+**Lemma 10.174 (a logarithm versus a linear term).** Let
+\(T,H_0>0\), \(X,B_n,r\ge1\), and
+\(0<\varepsilon\le1\). Put
+
+\[
+\eta=\frac{23}{500},\qquad \Phi=(1+\eta)T,
+\qquad Z=\max\{8\Phi X,\exp(H_0/(1+\eta))\}.
+\tag{10.649}
+\]
+
+Then
+
+\[
+T\max\{\ln(B_nXr),H_0\}
+\le\max\left\{\Phi\ln\frac{ZB_n}{\varepsilon},
+                        \varepsilon r\right\}.
+\tag{10.650}
+\]
+
+**Proof.** The positive exponential series gives
+
+\[
+\mathrm e>\sum_{j=0}^6\frac1{j!}=\frac{1957}{720}
+>\frac{125}{46}=\frac1{8\eta};
+\qquad \frac{1957}{720}-\frac{125}{46}=\frac{11}{16560}>0.
+\tag{10.651}
+\]
+
+For any \(s>0\), differentiation of
+\(u\exp(-su)\) on \(u\ge0\) proves
+\(\ln y\le y^s/(\mathrm e s)\) for \(y\ge1\).
+Let \(Y=B_nXr\) and \(A=ZB_n/\varepsilon\).
+Then \(A\ge\exp(H_0/(1+\eta))>1\).
+If \(Y<A^{1+\eta}\), both entries on the left are at most
+\(\Phi\ln A\), proving the inequality in this alternative.
+For \(Y\ge A^{1+\eta}\), use \(s=\eta/(1+\eta)\).
+Since \(Z/X\ge8\Phi\),
+
+\[
+\varepsilon r=\frac Z X\frac Y A
+\ge8\Phi Y^{\eta/(1+\eta)}
+>T\ln Y.
+\tag{10.652}
+\]
+
+The last strict comparison follows from \(8\eta\mathrm e>1\).
+Also \(T\ln Y\ge\Phi\ln A\ge T H_0\).
+This proves the weak scalar inequality, and proves it strictly in the
+second alternative. \(\square\)
+
+**Theorem 10.175 (a two-branch coefficient estimate).** Keep the
+hypotheses of Theorem 10.152. Let
+\(B\ge\max_j|b_j|\), \(1\le B_n\le B\), and
+\(|b_n|\le B_n\). Define
+
+\[
+\begin{aligned}
+h_{\min}&=\min_jh(a_j),&
+T&=C_1\prod_{j=1}^nh(a_j),\\
+H_0&=\max\{G_1(n,d),(n+1)t\},&
+X&=\max\left\{1,\frac1{dW(d)}
+            \left(\frac1{h_{\min}}+\frac1{h(a_n)}\right)\right\}.
+\end{aligned}
+\tag{10.653}
+\]
+
+With \(\Phi,Z\) as in Lemma 10.174, for every
+\(0<\varepsilon\le1\),
+
+\[
+\operatorname{ord}_{\mathfrak p}(\Xi-1)
+<\max\left\{\Phi\ln\frac{ZB_n}{\varepsilon},
+                         \varepsilon\frac B{B_n}\right\}.
+\tag{10.654}
+\]
+
+**Proof.** Put \(r=B/B_n\). The nonzero integer \(b_n\)
+implies \(B_\dagger\le |b_n|\le B_n\). For every \(j<n\),
+
+\[
+\frac1{dW(d)}\left(\frac{|b_n|}{h(a_j)}
+                     +\frac{|b_j|}{h(a_n)}\right)
+\le B_nXr.
+\tag{10.655}
+\]
+
+It follows that \(\mathsf h\le\max\{\ln(B_nXr),H_0\}\).
+Theorem 10.152 is strict. Combining it with the weak scalar inequality
+of Lemma 10.174 therefore proves the strict valuation estimate,
+including its scalar equality case. \(\square\)
+
+Every constant in this result is explicit and independent of B and
+\(B_n\). The factor \(1.046\) measures the logarithmic slack;
+the price for that small slack is the fixed factor Z. The proof applies
+to arbitrary signed coefficients and allows zero coefficients other
+than the designated last one. Its transcendence input is exactly the
+proved first estimate, not a citation standing in for a proof.
+
+For \((a_1,a_2)=(2,5)\) over \(\mathbb Q\) at three,
+take \((b_1,b_2)=(3^k,1)\), with \(k\ge1\).
+The bases are independent by their prime valuations. Here
+\(B_n=1,B=3^k\), and X=1: substituting W(1) reduces its
+other entry to
+\((\ln3)(\ln10)/((\ln5)(\ln6))<1\), since
+\((\ln2)(\ln3)<(\ln2)(\ln5)\).
+Theorem 10.175 reads
+
+\[
+v_3(5\cdot2^{3^k}-1)
+<\max\{\Phi\ln(Z/\varepsilon),\varepsilon3^k\}.
+\tag{10.656}
+\]
+
+The exact valuation is one: modulo nine, \(3^k\equiv3\pmod6\),
+\(2^{3^k}\equiv8\), and \(5\cdot8-1\equiv3\).
+Thus \(B_n\) has stayed fixed while the other coefficient grows.
+
+![The seven constant comparisons and the logarithmic versus linear branches](../figures/yu-coefficient-transfer.png)
+
+*Figure 10.51. Left: exact rational lower bounds for \(C_2/C_1\)
+under \(n\le Pt\); the dashed line is \(3/2\), the factor in
+Lemma 10.172. Theorem 10.173 proves the resulting second estimate in
+that range. Right: the scalar model \(T=X=B_n=1,H_0=2,r=\exp20\)
+of Lemma 10.174. With \(z=\varepsilon r\), the two curves are
+\(\Phi\ln(Zr/z)\) and z. Their upper envelope bounds 20, the
+original scalar estimate. The curves illustrate the proved inequality;
+they are not sampled prime-ideal valuations. Theorem 10.175 transfers
+this mechanism to the logarithmic form. [Reproducible calculation and
+figure](../figure_sources/yu_coefficient_transfer.py). Human source
+for the two constants: equations (1.9)–(1.13), (1.28)–(1.30) of
+[Yu's freely accessible paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).*
+
+## 59. Exercises with solutions
 
 1. **Easy.** Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.
 2. **Medium.** Derive (10.34) from (10.22), including the maximum in \(H\).
@@ -12334,6 +12638,21 @@ strict exponent and residue-height budgets add to \(1/4000\).
 70. **(Medium: fixed rectangles and the one-base case.)** Verify the exact margin \(22/7-96/35=2/5\) and the coefficient \(539/2+7/3=1631/6<283\) in Theorem 10.167. For \(a=8,b=1,p=3\), choose an allowed auxiliary prime \(c\), check the valuation-preserving identity and calculate the exact Fermat-difference valuation. Determine \(v_3(8^n-1)\) for all positive integers \(n\).
 
 71. **(Medium: congruence capacity and field data.)** In the \(8\)-by-\(8\) rectangle with \(r+s\equiv0\pmod2\), select all 32 admissible pairs and put \(K=4,L=8\). Compute the exact maximum centered first-coordinate sum, the compressed occupancy bound and the relaxed bound \(G_1\) of Lemma 10.168. Then take the independent rational bases \(2,3\) at \(p=5\): determine \(d,e,f,D,g\) in Theorem 10.170 and explain why no unramifiedness assumption or coefficient-ordering assumption is needed in its general statement.
+
+72. **Hard: constants and coefficient imbalance.** (a) Derive the
+exact quotient \(C_2/C_1\), and verify its seven rational lower
+bounds under \(n\le Pt\). Calculate the smallest gap above
+\(3/2\). Why does the comparison also require Lemma 10.172?
+Determine P over \(\mathbb Q\) at three and at an unramified
+prime at least five. (b) For \((2,5)\) at three with exponents
+\((3^k,1)\), compute the coefficient ordering, residue index,
+height factor X and exact valuation. State which second estimate
+applies. (c) Prove the scalar logarithm bound used in Lemma 10.174,
+verify the exact positive exponential-series margin, and explain why
+the scalar inequality can be weak although Theorem 10.175 is strict.
+In the model of Figure 10.51, express both branches in terms of
+\(z=\varepsilon r\), and show that \(z\ge0\) alone does not
+specify the allowable parameter interval.
 
 **Solution 1.** Put \(q_i=v(\alpha_i)\). If \(b_1q_1\ne b_2q_2\), the ultrametric inequality gives the exact valuation \(\min(b_1q_1,b_2q_2)\), so no cancellation estimate is needed. If they are equal, choose \(\pi=p^{1/e}\) in an algebraic extension and set \(\epsilon_i=\alpha_i\pi^{-e q_i}\). The exponents \(e q_i\) are integers, the \(\epsilon_i\) are units, and
 
@@ -13758,6 +14077,78 @@ G_1=\frac{32\cdot8\cdot9}{8}
 It is less than the no-capacity bound \(32\cdot8\cdot7/8=224\), though relaxing the compressed parameters loses some of the stronger bound \(512/3\).
 
 For the bases \(2,3\), the global field and the local field are \(\mathbb Q\) and \(\mathbb Q_5\), so \(d=e=f=D=1\). The residue of two has order four and already generates the whole residue group, so \(g=4\). Independence follows by comparing exponents at the primes two and three. The general proof keeps \(e\) throughout the analytic and one-place height estimates and uses only \(ef\le d\). It handles whichever coefficient becomes a unit after removing their common p-part by interchanging the bases inside the analytic argument; both principal factors have the same universally guaranteed precision \(p^t/e\). Hence neither unramifiedness nor an asymmetric coefficient condition is imposed by Theorem 10.170.
+
+**Solution 72.** (a) The first maximum becomes the second on
+multiplication by \(t^{n+1}\). The factorial quotient is n,
+so the constant quotient is exactly
+\((c^{(2)}/c)(a^{(2)}\mathrm e/\mathfrak a)^n(Pt/n)^{n-1}\).
+With \(Pt/n\ge1\), the least power outside III is the square
+of \(\mathrm e/2\); use \(\mathrm e>27/10\).
+In III write \(x=(p-1)/(p-2)\), with \(1<x\le4/3\).
+The expression \((c_*/c)\mathrm e^n x^{1-n}\) increases with
+n for each x, and its n=2 value decreases with x. Using x=4/3
+and \(\mathrm e>27/10\) gives the two III fractions. Subtracting
+\(3/2\) from the seven fractions gives, in order,
+
+\[
+\frac{80817}{62600},\quad\frac{3783}{10600},\quad
+\frac{20001}{20200},\quad\frac{411}{47840},\quad
+\frac{144159}{716000},\quad\frac{77361}{536000},\quad
+\frac{86187}{41200}.
+\tag{10.657}
+\]
+
+Cross-multiplication shows that the smallest is \(411/47840\).
+The coefficient parameters are different; comparing \(C_1,C_2\)
+alone would not compare the full bounds. Lemma 10.172 supplies
+\(\mathsf h\le3\mathsf h_2/2\), which is absorbed by the
+strict constant quotient.
+At three with e=1, the inequalities are \(2\le2<6\), giving
+\(\kappa=1,P=3\). At an unramified prime \(p\ge5\), they
+are \((p-1)/p\le2<p-1\), giving \(\kappa=0,P=1\).
+
+(b) The coefficients have valuations k and zero, so the last
+coefficient is correctly ordered. The prime valuations of two and five
+prove independence and that a rational element of their 2-primary
+saturation has integral prime exponents. Including minus one, the
+residues generate \(\mathbb F_3^*\); thus
+\(\delta(2,5)=1,q^u=2,d=e=f=1\).
+The heights are \(\ln2,\ln5\). Substitution of W(1) shows
+
+\[
+\frac{1/h_{\min}+1/h(5)}{W(1)}
+=\frac{(\ln3)(\ln10)}{(\ln5)(\ln6)}<1,
+\tag{10.658}
+\]
+
+because cancelling the common \((\ln3)(\ln5)\) term reduces
+the comparison to \(\ln3<\ln5\). Hence X=1.
+For k at least one, \(3^k\equiv3\pmod6\), and the powers of
+two modulo nine have period six. Therefore
+\(5\cdot2^{3^k}-1\equiv3\pmod9\), of exact valuation one.
+Since n=2 is less than \(3\ln3\), Theorem 10.173 applies with
+the I.2 row, \(c^{(2)}=648,a^{(2)}=7\), the original residue
+index one and the same field. Theorem 10.175 applies as well, with
+\(B_n=1,B=3^k\).
+
+(c) For s positive, the derivative of \(u\exp(-su)\) is
+\(\exp(-su)(1-su)\). Its maximum for u nonnegative is
+\(1/(\mathrm e s)\), at u=1/s. Taking u=ln y gives the
+claimed bound. The partial exponential sum through degree six is
+\(1957/720\), whose difference from \(125/46\) is
+\(11/16560>0\); therefore \(8\eta\mathrm e>1\).
+The scalar equality in the constant branch can occur when
+\(A=\exp(H_0/(1+\eta))\), so a universal strict scalar statement
+is unnecessary. The strict inequality supplied by Theorem 10.152
+persists after composing it with this weak scalar estimate.
+
+In the plotted model \(\Phi=523/500\) and
+\(Z=\max\{8\Phi,\exp(1000/523)\}\).
+The branches are \(\Phi\ln(Z\exp20/z)\) and z, and the
+scalar bound is 20. The parameter condition is exactly
+\(0<z\le r=\exp20\), since \(0<\varepsilon\le1\).
+Only a bounded subinterval of that positive interval is drawn; the
+proof, rather than the plot, supplies every allowable value.
 
 ## References
 

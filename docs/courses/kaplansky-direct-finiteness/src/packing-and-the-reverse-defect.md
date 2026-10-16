@@ -72,7 +72,7 @@ Put \(\Delta=b_{\rm mat}a_{\rm mat}-I_m\). The same vanishing of cross terms giv
 
 **Lemma 3.1** (the sandwich). \(J_0\Delta C=e(TU-P)\), a \(t\times t\) matrix with entries in \(K[H]\).
 
-*Proof.* By Lemma 1.1, \(J_0\Delta C=(J_0C)TU(J_0C)-eJ_0C=(eP)TU(eP)-e^2P\). Since \(e\) is central, this is \(e(PT)(UP)-eP=e(TU-P)\). The entries of \(T\), \(U\) and \(P\) lie in \(K[N]\) and \(e\) lies in \(K[\langle z\rangle]\), so all entries lie in \(K[H]\). \(\square\)
+*Proof.* By Lemma 1.1, \(J_0\Delta C=(J_0C)TU(J_0C)-eJ_0C\), and this is \((eP)TU(eP)-e^2P\). Since \(e\) is central, this is \(e(PT)(UP)-eP=e(TU-P)\). The entries of \(T\), \(U\) and \(P\) lie in \(K[N]\) and \(e\) lies in \(K[\langle z\rangle]\), so all entries lie in \(K[H]\). \(\square\)
 
 The order of the factors matters here: \(P\) is absorbed into \(T\) on the left and into \(U\) on the right.
 
@@ -133,7 +133,7 @@ f_{\rm blk}=\sum_{i=1}^mp_{ii},\\
 
 **Lemma 4.3.** \(\Phi\) is additive, multiplicative and injective, \(\Phi(I_m)=f_{\rm blk}\), and \(f_{\rm blk}\Phi(Z)=\Phi(Z)=\Phi(Z)f_{\rm blk}\).
 
-*Proof.* Since the entries commute with the \(p_{ij}\), Lemma 4.2 gives \(\Phi(Z)\Phi(Z')=\sum Z_{ij}Z'_{kr}p_{ij}p_{kr}=\sum_{i,j,r}Z_{ij}Z'_{jr}p_{ir}=\Phi(ZZ')\). Then \(\Phi(I_m)=f_{\rm blk}\), and the last identities are \(\Phi(I_m)\Phi(Z)=\Phi(Z)=\Phi(Z)\Phi(I_m)\). If \(\Phi(Z)=0\), write \(Z_{ij}=\sum_{g\in L}c_{ij,g}\,g\); collecting the terms with first coordinate \(g\) gives \(\sum_{i,j}c_{ij,g}\,p_{ij}=0\) for each \(g\), so all \(c_{ij,g}=0\) by Lemma 4.2. \(\square\)
+*Proof.* Since the entries commute with the \(p_{ij}\), Lemma 4.2 gives \(\Phi(Z)\Phi(Z')=\sum Z_{ij}Z'_{kr}p_{ij}p_{kr}\), which is \(\sum_{i,j,r}Z_{ij}Z'_{jr}p_{ir}=\Phi(ZZ')\). Then \(\Phi(I_m)=f_{\rm blk}\), and the last identities are \(\Phi(I_m)\Phi(Z)=\Phi(Z)=\Phi(Z)\Phi(I_m)\). If \(\Phi(Z)=0\), write \(Z_{ij}=\sum_{g\in L}c_{ij,g}\,g\); collecting the terms with first coordinate \(g\) gives \(\sum_{i,j}c_{ij,g}\,p_{ij}=0\) for each \(g\), so all \(c_{ij,g}=0\) by Lemma 4.2. \(\square\)
 
 Now put
 \[
@@ -178,9 +178,9 @@ The proof shows failure of direct finiteness by exhibiting the two elements; it 
 
 ## 7. Solutions
 
-**6.1.** \(b_{\rm mat}a_{\rm mat}=CTUJ_0+CT(1-e)+(1-e)UJ_0+(1-e)^2I_m\). The second term is \(C(1-e)T=0\) and the third is \(U(1-e)J_0=0\), since \(1-e\) is central and kills the entries of \(C\) and \(J_0\). The last is \((1-e)I_m\). Subtracting \(I_m\) leaves \(CTUJ_0-eI_m\).
+**6.1.** \(b_{\rm mat}a_{\rm mat}\) is the sum of the four terms \(CTUJ_0\), \(CT(1-e)\), \((1-e)UJ_0\) and \((1-e)^2I_m\). The second term is \(C(1-e)T=0\) and the third is \(U(1-e)J_0=0\), since \(1-e\) is central and kills the entries of \(C\) and \(J_0\). The last is \((1-e)I_m\). Subtracting \(I_m\) leaves \(CTUJ_0-eI_m\).
 
-**6.2.** \(X(I_t-X^{\mathsf T}X)=X-(XX^{\mathsf T})X=X-X=0\). The matrix \(X^{\mathsf T}X\) has rank at most \(m<t\), so it is not \(I_t\). A nonzero column \(y\) of \(I_t-X^{\mathsf T}X\) then satisfies \(Xy=0\).
+**6.2.** \(X(I_t-X^{\mathsf T}X)=X-(XX^{\mathsf T})X\), which is \(X-X=0\). The matrix \(X^{\mathsf T}X\) has rank at most \(m<t\), so it is not \(I_t\). A nonzero column \(y\) of \(I_t-X^{\mathsf T}X\) then satisfies \(Xy=0\).
 
 **6.3.** As in Exercise 8.4 of [Directly finite group algebras](directly-finite-group-algebras.md), \((1-f)x=x(1-f)=0\) and the same for \(y\), so \(ab=(1-f)+xy=1\) and \(ba=(1-f)+yx\ne(1-f)+f=1\).
 

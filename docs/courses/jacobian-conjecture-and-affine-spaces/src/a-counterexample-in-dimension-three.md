@@ -10,29 +10,34 @@ Basic references are [Alpöge], [AFP] and [Tao].
 
 ## 1. The map
 
-Let \(k\) be a field of characteristic zero, and write points of \(k^3\) as \(z=(z_1,z_2,z_3)\). Define \(F=(F_1,F_2,F_3):k^3\to k^3\) by
+Let \(k\) be a field of characteristic zero, and write points of \(k^3\) as \(z=(z_1,z_2,z_3)\). Define \(F=(F_1,F_2,F_3):k^3\to k^3\) by the formulas (1.1):
 
 \[
 \begin{aligned}
-F_1&=(1+z_1z_2)^3z_3+z_2^2(1+z_1z_2)(4+3z_1z_2),\\
-F_2&=z_2+3z_1(1+z_1z_2)^2z_3+3z_1z_2^2(4+3z_1z_2),\\
+F_1&=(1+z_1z_2)^3z_3\\
+&\quad+z_2^2(1+z_1z_2)(4+3z_1z_2),\\
+F_2&=z_2+3z_1(1+z_1z_2)^2z_3\\
+&\quad+3z_1z_2^2(4+3z_1z_2),\\
 F_3&=2z_1-3z_1^2z_2-z_1^3z_3 .
 \end{aligned}
-\tag{1.1}
 \]
 
 The components have degrees \(7\), \(6\) and \(4\). Two auxiliary polynomials organize them:
 
 \[
-t=1+z_1z_2,\qquad Q=t^2z_3+z_2^2(1+3t).
-\tag{1.2}
+\begin{gathered}
+t=1+z_1z_2,\\
+Q=t^2z_3+z_2^2(1+3t).
+\end{gathered}\tag{1.2}
 \]
 
-Since \(4+3z_1z_2=1+3t\), the definitions give
+Since \(4+3z_1z_2=1+3t\), the definitions give the formulas (1.3):
 
 \[
-F_1=t\,Q,\qquad F_2=z_2+3z_1Q,\qquad F_3=z_1\bigl(2-3z_1z_2-z_1^2z_3\bigr).
-\tag{1.3}
+\begin{gathered}
+F_1=t\,Q,\qquad F_2=z_2+3z_1Q,\\
+F_3=z_1\bigl(2-3z_1z_2-z_1^2z_3\bigr).
+\end{gathered}
 \]
 
 Levent Alpöge announced this map on 19 and 20 July 2026. He credited the AI model Claude Fable 5 with the work that led to it, and Akhil Mathew with suggesting the question [Alpöge]. Its two decisive properties were formally verified in the proof assistant Isabelle/HOL within days [AFP], and Terence Tao explained the geometry behind it [Tao].
@@ -42,30 +47,42 @@ Levent Alpöge announced this map on 19 and 20 July 2026. He credited the AI mod
 Put
 
 \[
-u=z_1,\qquad t=1+z_1z_2,\qquad P=z_1^2\,Q .
-\tag{2.1}
+\begin{gathered}
+u=z_1,\qquad t=1+z_1z_2,\\
+P=z_1^2\,Q .
+\end{gathered}\tag{2.1}
 \]
 
 **Lemma 2.1.** The following identities hold in \(k[z_1,z_2,z_3]\):
 
 \[
-z_1^2F_1=tP,\qquad z_1F_2=t-1+3P,\qquad t^2F_3=z_1\,(t+1-P).
-\tag{2.2}
+\begin{gathered}
+z_1^2F_1=tP,\\
+z_1F_2=t-1+3P,\\
+t^2F_3=z_1\,(t+1-P).
+\end{gathered}\tag{2.2}
 \]
 
 **Proof.** The first is \(z_1^2\,tQ=tP\). For the second, \(z_1F_2=z_1z_2+3z_1^2Q=(t-1)+3P\). For the third, write \(s=z_1^2z_3\). Since \(z_1^2z_2^2=(t-1)^2\),
 
 \[
-P=t^2s+(t-1)^2(1+3t),\qquad F_3=z_1\bigl(2-3(t-1)-s\bigr)=z_1(5-3t-s).
+\begin{aligned}
+P&=t^2s+(t-1)^2(1+3t),\\
+F_3&=z_1\bigl(2-3(t-1)-s\bigr)\\
+&=z_1(5-3t-s).
+\end{aligned}
 \]
 
-Hence \(t^2F_3=z_1\bigl(t^2(5-3t)-t^2s\bigr)=z_1\bigl(t^2(5-3t)+(t-1)^2(1+3t)-P\bigr)\). Expanding, \((t-1)^2(1+3t)=3t^3-5t^2+t+1\), so \(t^2(5-3t)+(t-1)^2(1+3t)=t+1\). \(\square\)
+Hence \(t^2F_3=z_1\bigl(t^2(5-3t)-t^2s\bigr)\), which is \(z_1\bigl(t^2(5-3t)+(t-1)^2(1+3t)-P\bigr)\). Expanding, \((t-1)^2(1+3t)=3t^3-5t^2+t+1\), so \(t^2(5-3t)+(t-1)^2(1+3t)=t+1\). \(\square\)
 
 On the open set \(U=\{z\in k^3: z_1t\ne0\}\), the identities (2.2) express the map in the coordinates \(u,t,P\):
 
 \[
-F_1=\frac{tP}{u^2},\qquad F_2=\frac{t-1+3P}{u},\qquad F_3=\frac{u\,(t+1-P)}{t^2}.
-\tag{2.3}
+\begin{gathered}
+F_1=\frac{tP}{u^2},\\
+F_2=\frac{t-1+3P}{u},\\
+F_3=\frac{u\,(t+1-P)}{t^2}.
+\end{gathered}\tag{2.3}
 \]
 
 ## 3. The Jacobian determinant
@@ -74,17 +91,22 @@ We work in the field \(k(z_1,z_2,z_3)\) of rational functions. Partial derivativ
 
 **Theorem 3.1.** \(\det JF=-2\).
 
-**Proof.** Let \(\Phi=(u,t,P)\) be the polynomial map (2.1), and let \(\Psi\) be the rational map
+**Proof.** Let \(\Phi=(u,t,P)\) be the polynomial map (2.1), and let \(\Psi=(\Psi_1,\Psi_2,\Psi_3)\) be the rational map in the variables \(u,t,P\) given by
 
 \[
-\Psi(u,t,P)=\Bigl(\frac{tP}{u^2},\ \frac{t-1+3P}{u},\ \frac{u\,(t+1-P)}{t^2}\Bigr).
+\begin{gathered}
+\Psi_1=\frac{tP}{u^2},\qquad\Psi_2=\frac{t-1+3P}{u},\\
+\Psi_3=\frac{u\,(t+1-P)}{t^2}.
+\end{gathered}
 \]
 
 By (2.3), \(F=\Psi\circ\Phi\) as tuples of rational functions, so the chain rule gives
 
 \[
-\det JF=(\det J\Psi\circ\Phi)\cdot\det J\Phi .
-\tag{3.1}
+\begin{aligned}
+&\det JF\\
+&\quad =(\det J\Psi\circ\Phi)\cdot\det J\Phi .
+\end{aligned}\tag{3.1}
 \]
 
 *The factor \(\det J\Phi\).* The partial derivatives of \(u\) are \((1,0,0)\), those of \(t\) are \((z_2,z_1,0)\), and \(\partial P/\partial z_3=z_1^2\,\partial Q/\partial z_3=z_1^2t^2\). The matrix \(J\Phi\) is lower triangular, so
@@ -99,30 +121,34 @@ By (2.3), \(F=\Psi\circ\Phi\) as tuples of rational functions, so the chain rule
 \begin{aligned}
 &\bigl(-2tP\,u^{-3},\ \ P\,u^{-2},\ \ t\,u^{-2}\bigr),\\
 &\bigl(-(t-1+3P)\,u^{-2},\ \ u^{-1},\ \ 3u^{-1}\bigr),\\
-&\bigl((t+1-P)\,t^{-2},\ \ u\,(2P-t-2)\,t^{-3},\ \ -u\,t^{-2}\bigr).
+&\bigl((t+1-P)\,t^{-2},\ \ u\,(2P-t-2)\,t^{-3},\\
+&\qquad -u\,t^{-2}\bigr).
 \end{aligned}
 \]
 
-For the middle entry of the last row, \(\partial_t\bigl(u(t+1-P)t^{-2}\bigr)=u\bigl(t-2(t+1-P)\bigr)t^{-3}\). Multiply the three rows by \(u^3\), \(u^2\) and \(t^3\), and then divide the second and third columns by \(u\). This multiplies the determinant by \(u^5t^3\cdot u^{-2}=u^3t^3\), and leaves
-
-\[
-M=\begin{pmatrix}-2tP&P&t\\-(t-1+3P)&1&3\\t(t+1-P)&2P-t-2&-t\end{pmatrix}.
-\]
+For the middle entry of the last row, \(\partial_t\bigl(u(t+1-P)t^{-2}\bigr)\) equals \(u\bigl(t-2(t+1-P)\bigr)t^{-3}\). Multiply the three rows by \(u^3\), \(u^2\) and \(t^3\), and then divide the second and third columns by \(u\). This multiplies the determinant by \(u^5t^3\cdot u^{-2}=u^3t^3\), and leaves the matrix \(M\) with the rows \((-2tP,\ P,\ t)\), \((-(t-1+3P),\ 1,\ 3)\) and \((t(t+1-P),\ 2P-t-2,\ -t)\).
 
 Expand along the first row. The three \(2\times2\) minors are
 
 \[
 \begin{aligned}
 &1\cdot(-t)-3(2P-t-2)=2t-6P+6,\\
-&(t-1+3P)\,t-3t(t+1-P)=t\,(6P-2t-4),\\
-&-(t-1+3P)(2P-t-2)-t(t+1-P)=-6P^2+2tP+8P-2 .
+&(t-1+3P)\,t-3t(t+1-P)\\
+&\qquad=t\,(6P-2t-4),\\
+&-(t-1+3P)(2P-t-2)\\
+&\qquad-t(t+1-P)\\
+&\qquad=-6P^2+2tP+8P-2 .
 \end{aligned}
 \]
 
 So
 
 \[
-\det M=-2tP(2t-6P+6)-P\cdot t(6P-2t-4)+t(-6P^2+2tP+8P-2).
+\begin{aligned}
+&\det M=-2tP(2t-6P+6)\\
+&\quad -P\cdot t(6P-2t-4)\\
+&\quad +t(-6P^2+2tP+8P-2).
+\end{aligned}
 \]
 
 Collecting terms, the coefficients of \(t^2P\) are \(-4+2+2=0\), those of \(tP^2\) are \(12-6-6=0\), and those of \(tP\) are \(-12+4+8=0\). Only \(-2t\) survives: \(\det M=-2t\). Hence
@@ -156,16 +182,20 @@ From now on \(k\) is algebraically closed of characteristic zero. The coordinate
 **Theorem 5.1.** Let \((a,b,c)\in k^3\). The points \(z\in U\) with \(F(z)=(a,b,c)\) correspond bijectively, by \(z\mapsto u/t\), to the roots \(\lambda\) of
 
 \[
-C(\lambda)=2a\lambda^3-b\lambda^2+2\lambda-c
-\tag{5.1}
+\begin{aligned}
+&C(\lambda)\\
+&\quad =2a\lambda^3-b\lambda^2+2\lambda-c
+\end{aligned}\tag{5.1}
 \]
 
-with \(\lambda\ne0\) and \(1-b\lambda+3a\lambda^2\ne0\). The point belonging to such a root is given by
+with \(\lambda\ne0\) and \(1-b\lambda+3a\lambda^2\ne0\). The point belonging to such a root is given by the formulas (5.2), where \(P=a\lambda^2t\):
 
 \[
-t=\frac1{1-b\lambda+3a\lambda^2},\quad z_1=\lambda t,\quad z_2=\frac{t-1}{z_1},\quad
-z_3=\frac{P-(t-1)^2(1+3t)}{z_1^2t^2},\quad\text{where } P=a\lambda^2t .
-\tag{5.2}
+\begin{gathered}
+t=\frac1{1-b\lambda+3a\lambda^2},\qquad z_1=\lambda t,\\
+z_2=\frac{t-1}{z_1},\\
+z_3=\frac{P-(t-1)^2(1+3t)}{z_1^2t^2}.
+\end{gathered}
 \]
 
 **Proof.** Let \(z\in U\) satisfy \(F(z)=(a,b,c)\), and put \(\lambda=u/t\ne0\). By (2.2), \(tP=au^2\), so \(P=a\lambda^2t\). Next, \(t-1+3P=bu=b\lambda t\), that is,
@@ -182,7 +212,7 @@ t\,(c-\lambda+a\lambda^3)=\lambda .
 \tag{5.4}
 \]
 
-Multiplying (5.4) by \(1-b\lambda+3a\lambda^2\) and using (5.3) gives \(c-\lambda+a\lambda^3=\lambda(1-b\lambda+3a\lambda^2)\), which is \(C(\lambda)=0\). The point \(z\) is recovered from \(\lambda\): \(z_1=u=\lambda t\), \(z_2=(t-1)/z_1\), and from \(P=z_1^2\bigl(t^2z_3+z_2^2(1+3t)\bigr)=z_1^2t^2z_3+(t-1)^2(1+3t)\) we get the formula for \(z_3\). So distinct points give distinct \(\lambda\).
+Multiplying (5.4) by \(1-b\lambda+3a\lambda^2\) and using (5.3) gives \(c-\lambda+a\lambda^3=\lambda(1-b\lambda+3a\lambda^2)\), which is \(C(\lambda)=0\). The point \(z\) is recovered from \(\lambda\): \(z_1=u=\lambda t\), \(z_2=(t-1)/z_1\), and from \(P=z_1^2\bigl(t^2z_3+z_2^2(1+3t)\bigr)\), which is \(z_1^2t^2z_3+(t-1)^2(1+3t)\), we get the formula for \(z_3\). So distinct points give distinct \(\lambda\).
 
 Conversely, let \(\lambda\) be a root of \(C\) with \(\lambda\ne0\) and \(1-b\lambda+3a\lambda^2\ne0\), and define \(t,z_1,z_2,z_3,P\) by (5.2). Then \(z_1=\lambda t\ne0\), \(1+z_1z_2=t\ne0\), and \(z_1^2Q=P\) by the formula for \(z_3\). So \(z\in U\), and (2.2) holds with these values of \(u,t,P\). From \(tP=a\lambda^2t^2=az_1^2\) we get \(F_1(z)=a\). From (5.3), \(t-1+3P=t-1+3a\lambda^2t=b\lambda t=bz_1\), so \(F_2(z)=b\). Reversing the last computation, \(C(\lambda)=0\) gives (5.4), which says \(t^2c=z_1(t+1-P)\), so \(F_3(z)=c\). Finally \(z_1/t=\lambda\). \(\square\)
 
@@ -205,7 +235,10 @@ Conversely, let \(\lambda\) be a root of \(C\) with \(\lambda\ne0\) and \(1-b\la
 and expresses \(t\), then \(z_1\), \(z_2\) and \(z_3\), rationally in \(\lambda\) and \(F_1,F_2,F_3\), by (5.2). Hence \(K=L(\lambda)\), and \(\lambda\) is a root of
 
 \[
-m(X)=2F_1X^3-F_2X^2+2X-F_3\in L[X].
+\begin{aligned}
+&m(X)=2F_1X^3-F_2X^2\\
+&\quad +2X-F_3\in L[X].
+\end{aligned}
 \]
 
 It remains to show that \(m\) is irreducible over \(L\). By Proposition 2.1 of the previous lesson, \(F_1,F_2,F_3\) are algebraically independent, so \(R=k[F_1,F_2,F_3]\) is a polynomial ring with fraction field \(L\). As an element of \(R[X]=k[F_1,F_2,F_3,X]\), the polynomial \(m\) has degree one in \(F_3\), with coefficient \(-1\). In a factorization \(m=gh\), the degrees in \(F_3\) add up to one, so one factor, say \(h\), does not involve \(F_3\). Comparing the coefficients of \(F_3\) gives \(-1=g_1h\), where \(g_1\) is the coefficient of \(F_3\) in \(g\). So \(h\) is a unit. Thus \(m\) is irreducible in \(R[X]\). Its coefficients \(2F_1,-F_2,2,-F_3\) have no common factor, because \(2\) is a unit. So \(m\) is primitive, and Gauss's lemma [Integral extensions: lying over, going up and going down, proof of Proposition 2.3](course:AG-CA/integral-extensions-lying-over-going-up-and-going-down#2-integral-closure-survives-localization) shows that \(m\) is irreducible in \(L[X]\). Hence \([K:L]=3\). The last assertion is Theorem 3.3 of the previous lesson. \(\square\)
@@ -230,14 +263,17 @@ The day after the announcement, Gallagher gave an infinite family of counterexam
 
 **7.1.** The points \((0,0,-\tfrac14,0)\) and \((1,-\tfrac32,\tfrac{13}2,0)\) both map to \((-\tfrac14,0,0,0)\). The Jacobian matrix of \(F\times\mathrm{id}_k\) is block diagonal with blocks \(JF\) and \((1)\), so its determinant is \(-2\).
 
-**7.2.** Let \(F(z)=(0,0,0)\). If \(z_1=0\), Proposition 5.2 gives \(z_2=0\) and \(z_3+4z_2^2=0\), so \(z=0\). If \(t=1+z_1z_2=0\), then \(Q=z_2^2(1+3t)=z_2^2\), and \(F_2=z_2+3z_1z_2^2=z_2(1+3z_1z_2)=-2z_2\). So \(z_2=0\), and then \(t=1\), a contradiction. If \(z\in U\), Theorem 5.1 applies with \(C(\lambda)=2\lambda\), whose only root \(\lambda=0\) is excluded. So the fibre is \(\{0\}\).
+**7.2.** Let \(F(z)=(0,0,0)\). If \(z_1=0\), Proposition 5.2 gives \(z_2=0\) and \(z_3+4z_2^2=0\), so \(z=0\). If \(t=1+z_1z_2=0\), then \(Q=z_2^2(1+3t)=z_2^2\), and \(F_2=z_2+3z_1z_2^2\), which is \(z_2(1+3z_1z_2)=-2z_2\). So \(z_2=0\), and then \(t=1\), a contradiction. If \(z\in U\), Theorem 5.1 applies with \(C(\lambda)=2\lambda\), whose only root \(\lambda=0\) is excluded. So the fibre is \(\{0\}\).
 
 **7.3.** Since \(c\ne0\), Proposition 5.2 excludes points with \(z_1=0\). Since \(a\ne0\), it excludes points with \(t=0\). The roots of (5.1) are nonzero because \(C(0)=-c\ne0\). By hypothesis there are three of them, and each satisfies \(1-b\lambda+3a\lambda^2\ne0\). By Theorem 5.1 they give exactly three preimages, all in \(U\).
 
 **7.4.** Here \(a=\tfrac13\), \(b=2\), \(c=\tfrac23\). Since \(a\ne0\) and \(c\ne0\), Proposition 5.2 excludes points outside \(U\). In \(U\), the cubic is
 
 \[
-C(\lambda)=\tfrac23\lambda^3-2\lambda^2+2\lambda-\tfrac23=\tfrac23(\lambda-1)^3,
+\begin{aligned}
+&C(\lambda)=\tfrac23\lambda^3-2\lambda^2+2\lambda\\
+&\quad -\tfrac23=\tfrac23(\lambda-1)^3,
+\end{aligned}
 \]
 
 with the single root \(\lambda=1\). But \(1-b\lambda+3a\lambda^2=1-2+1=0\) at \(\lambda=1\). So Theorem 5.1 allows no point of \(U\) either. The same computation works for \(\bigl(\tfrac1{3r^2},\tfrac2r,\tfrac{2r}3\bigr)\) with any \(r\ne0\), where \(C(\lambda)=\tfrac2{3r^2}(\lambda-r)^3\) and \(1-b\lambda+3a\lambda^2=\tfrac1{r^2}(\lambda-r)^2\).

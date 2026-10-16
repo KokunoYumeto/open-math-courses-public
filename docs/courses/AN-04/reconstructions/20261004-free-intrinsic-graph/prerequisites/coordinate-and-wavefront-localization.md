@@ -1,21 +1,22 @@
 # Coordinate transport and directional localization
 
-This is a bounded modified selection from AN03-U012, Sections 2, 7–8
-and 18.1–18.3, with connecting arguments for the present intrinsic
-class.
+Coordinate and directional-localization material comes from the programme's
+analysis course. Connecting arguments and examples: GPT-6 Astra (OpenAI),
+Ultra. Chart-domain specification, source notes and editorial text: GPT-6.1
+Sol (OpenAI), Ultra. Programme mathematical text: CC0. Linked human works
+retain their stated terms.
 
-Original principal author and publisher: AN-03 course-writing task /
-AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and
-OpenAI Codex. This selection and its connecting arguments: GPT-6 Astra
-(OpenAI), Ultra, 4 October 2026; publisher: AN-04 local course project.
-Original text: CC0.
-
-The free human sources are Gerd Grubb's author-hosted
-[Chapter 8, Section 8.1](https://web.math.ku.dk/~grubb/dist8n.pdf),
-and Lars Hörmander's freely readable
-[*Fourier integral operators. I*, Section 2.5](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf).
-Only the coordinate-amplitude and Fourier directional arguments specified
-below are used. Every proof needed here is supplied in the programme.
+Gerd Grubb's author-hosted [*Distributions and Operators*, Chapter 8, Section 8.1](https://web.math.ku.dk/~grubb/dist8n.pdf),
+Theorem 8.1(1), formulas (8.2)–(8.3), printed pages 195–197, gives the
+coordinate-amplitude construction and both Jacobian factors. Lars Hörmander,
+[*Fourier integral operators. I*](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
+*Acta Mathematica* **127** (1971), 79–183, Section 2.5, especially Proposition
+2.5.5, Lemma 2.5.6 and Propositions 2.5.7–2.5.9 (printed 121–124), gives the
+Fourier directional criteria and operator regularity framework. An exact
+[free PDF copy](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6118-11511_2006_Article_BF02392052.pdf)
+is available from the Yau Mathematical Sciences Center archive. The proofs
+below use the explicit programme inputs, rather than works appearing only
+in those source bibliographies.
 
 ## T0. Inputs, test functions and the distributional coordinate map
 
@@ -34,6 +35,11 @@ Compact chart substitution is proved in
 [U001 P21.3–P21.4](../../20261004-free-stationary-phase/change-of-variables-prerequisite-completions.md).
 No new theorem about general distribution kernels
 or arbitrary smooth-map pullbacks is assumed.
+
+The elementary analysis reference guide
+distinguishes linked author proofs from programme arguments in those U001
+inputs. External texts retain their own terms and are not included in this
+CC0 reading.
 
 Write \(\langle u,\varphi\rangle\) for the bilinear pairing of a
 scalar distribution with a compact smooth test density, represented
@@ -452,8 +458,9 @@ Put \(x_0=\kappa(y_0)\) and
 Choose \(v=\chi u\) compactly supported, with \(\chi=1\)
 near \(y_0\), whose transform is rapidly decreasing on
 a cone \(V\) about \(\xi_0\).
-Take \(b\) supported sufficiently close to \(x_0\),
-with \(g(\operatorname{supp}b)\) inside that neighborhood.
+Take a compact smooth \(b\), equal to one near \(x_0\) and supported
+sufficiently close to \(x_0\), with \(g(\operatorname{supp}b)\) inside
+that neighborhood.
 Equations (T3) and Fourier inversion on its test give
 \[
  \begin{aligned}
@@ -684,12 +691,29 @@ This scalar-density factor is distinct from the
 principal-symbol cancellation. \(\square\)
 
 **Exercise T2.** For
-\(\kappa(y_1,y_2)=(y_1+(y_1^2+y_2^2)/2,y_2)\),
-find the image of the covector \((\lambda,0)\) at
+\(\kappa(y_1,y_2)=(y_1+(y_1^2+y_2^2)/2,y_2)\), use the chart
+\[
+ \begin{aligned}
+ U&=\{(y_1,y_2)\in\mathbb R^2:y_1>-1\},\\
+ V&=\{(x_1,x_2)\in\mathbb R^2:1+2x_1-x_2^2>0\},
+ \qquad \kappa:U\longrightarrow V.
+ \end{aligned}
+\]
+Find the image of the covector \((\lambda,0)\) at
 \((0,s)\), \(\lambda>0\), and check the principal symbol
 of the transported \(D_{y_2}\).
 
-**Solution.** On this curve,
+**Solution.** The positive-root chart of
+[C6](conic-frequency-coordinates.html#c6-an-exact-model-and-two-exercises) has inverse
+\[
+ g(x_1,x_2)=\bigl(-1+\sqrt{1+2x_1-x_2^2},\,x_2\bigr).
+\]
+Indeed, \(1+2x_1-x_2^2=(1+y_1)^2\). The inequality defining the source
+domain selects the positive square root. Both maps are smooth on their
+displayed domains, and substitution proves both inverse identities. The
+chosen domain contains the entire curve in the question.
+
+On this curve,
 \[
  D\kappa=\begin{pmatrix}1&s\\0&1\end{pmatrix},
  \qquad D\kappa^{-T}
@@ -709,13 +733,13 @@ quantization. On the transformed conormal covector
 Thus the operator and wavefront cotangent conventions
 agree with the exact model in C6. \(\square\)
 
-## Supplied scope and remaining localization
+## Coordinate and analytic scope {#supplied-scope-and-remaining-localization}
 
-This component proves ordinary coordinate transport, invariance of the
-intrinsic word condition under charts and frames, Fourier wavefront
-covariance, proper microlocal cutoffs, pseudolocality, and (W14).
-The converse using an arbitrary elliptic order-zero test still needs
-the full conic parametrix and finite conic reconstruction.
-Those proofs, the prescribed nondegenerate and clean phase converse,
-the refined symbol order theorem and global Maslov data remain in
-the original course scope. This component does not clear publication.
+The results concern ordinary coordinate transport, chart and frame
+invariance of the intrinsic word condition, Fourier wavefront covariance,
+proper microlocal cutoffs and pseudolocality. The iterated word condition
+confines wavefront to the closed conic Lagrangian. The converse from
+arbitrary elliptic tests uses the conic parametrix and finite reconstruction
+in [K3–K7](conic-parametrices-and-localization.html#k3-a-two-sided-conic-parametrix-with-one-fixed-error-cone).
+Prescribed phase representations, refined symbol orders and global Maslov
+data use their separate phase-comparison and bundle arguments.

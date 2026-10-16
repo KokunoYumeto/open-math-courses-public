@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Free-tree representations and projections · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/free-tree-representations-and-projections.md">Editable Markdown</a></nav><article class="lesson"><h1 id="free-tree-representations-and-projections">Free-tree representations and projections</h1>
+<p>The reduced C*-algebra of the free group on two generators has no projections other than zero and its identity. We prove this by comparing the action on vertices of a tree with its action on edges. Their discrepancy has trace one at the root. A trace-class difference of projections has integral trace, whereas a nontrivial projection would have trace strictly between zero and one.</p>
+<p>We use the reduced-word construction in <a href="OA-MOD-RSG.html">Residual subgroups and group-factor estimates</a>, OA-MOD-RSG-01, and continuous functional calculus in <a href="OA-MOD-BK.html">Bounded operator kernel</a>, OA-MOD-BK-01. The following earlier programme lessons supply the analytic tools, with proofs:</p>
+<ul>
+<li><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/foundations-of-von-neumann-algebras/src/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.md">Compact and trace-class operators</a>, §§2–4: compactness, the trace ideal, its completeness and ideal estimates, and the absolutely convergent diagonal formula for the trace.</li>
+<li><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/foundations-of-von-neumann-algebras/src/hilbert-spaces-and-compact-operators.md">Hilbert spaces and compact operators</a>, §6: the compact self-adjoint spectral theorem.</li>
+<li><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/foundations-of-von-neumann-algebras/src/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.md">Banach algebras and holomorphic functional calculus</a>, §§2, 4 and 6: the Neumann series, resolvents and the contour calculus in a unital Banach algebra.</li>
+<li><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/foundations-of-von-neumann-algebras/src/cauchy-s-theorem-for-cycles-and-its-consequences.md">Cauchy's theorem for cycles</a>, §§2–6: Cauchy's formula, cycles surrounding compact sets and Banach-valued contour integration.</li>
+</ul>
+<p>For a Hilbert space <span class="math" data-tex="\(K\)">\(K\)</span>, write <span class="math" data-tex="\(\mathcal S_1(K)\)">\(\mathcal S_1(K)\)</span> for its trace-class operators. The tools just named give</p>
+<span class="math math-display" data-tex="\[
+\|T\|\leq\|T\|_1,\qquad
+\|BTC\|_1\leq\|B\|\|T\|_1\|C\|,
+\qquad \|T^*\|_1=\|T\|_1.
+\]">\[
+\|T\|\leq\|T\|_1,\qquad
+\|BTC\|_1\leq\|B\|\|T\|_1\|C\|,
+\qquad \|T^*\|_1=\|T\|_1.
+\]</span>
+<p>They also give completeness in <span class="math" data-tex="\(\|\cdot\|_1\)">\(\|\cdot\|_1\)</span>, compactness of every trace-class operator, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(T)=\sum_j\langle Te_j,e_j\rangle
+\]">\[
+\operatorname{Tr}(T)=\sum_j\langle Te_j,e_j\rangle
+\]</span>
+<p>for every orthonormal basis, with absolute convergence. These are programme proof inputs throughout the argument.</p>
+<h2 id="vertices-edges-and-the-modified-representation"><span id="OA-MOD-FPI-01"></span><span id="oa-mod-fpi-01"></span>Vertices, edges and the modified representation</h2>
+<p>Let <span class="math" data-tex="\(G=\mathbb F(a,b)\)">\(G=\mathbb F(a,b)\)</span>, <span class="math" data-tex="\(H=\ell^2(G)\)">\(H=\ell^2(G)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+H&#x27;=\ell^2(G\setminus\{e\}),\qquad
+\lambda(g)\delta_h=\delta_{gh},\qquad
+A=C_r^*(G)\subseteq B(H).
+\]">\[
+H&#x27;=\ell^2(G\setminus\{e\}),\qquad
+\lambda(g)\delta_h=\delta_{gh},\qquad
+A=C_r^*(G)\subseteq B(H).
+\]</span>
+<p>Here <span class="math" data-tex="\(A\)">\(A\)</span> is the operator-norm closure of the group algebra in its left regular representation. We retain the notation <span class="math" data-tex="\(\lambda(x)=x\)">\(\lambda(x)=x\)</span> for its action on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Use the <strong>right Cayley tree</strong>: the vertices are <span class="math" data-tex="\(G\)">\(G\)</span>, and its undirected edges are</p>
+<span class="math math-display" data-tex="\[
+\{q,qa\},\quad \{q,qb\}\qquad(q\in G).
+\]">\[
+\{q,qa\},\quad \{q,qb\}\qquad(q\in G).
+\]</span>
+<p>Deleting the last letter of a nonempty reduced word gives its parent. Every vertex is connected to <span class="math" data-tex="\(e\)">\(e\)</span> by successive deletions. A non-backtracking closed path would give a nonempty reduced word equal to <span class="math" data-tex="\(e\)">\(e\)</span>, which reduced-word uniqueness excludes. Thus this graph is a tree. Each edge has one endpoint further from <span class="math" data-tex="\(e\)">\(e\)</span>; sending that endpoint to its parent edge defines a bijection</p>
+<span class="math math-display" data-tex="\[
+\phi:G\setminus\{e\}\longrightarrow\{	ext{undirected edges}\}.
+\]">\[
+\phi:G\setminus\{e\}\longrightarrow\{	ext{undirected edges}\}.
+\]</span>
+<p>Each edge is uniquely <span class="math" data-tex="\(\{q,qs\}\)">\(\{q,qs\}\)</span> with <span class="math" data-tex="\(s\in\{a,b\}\)">\(s\in\{a,b\}\)</span>. Indeed, reversing the two endpoints would replace <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span>, which is not a positive generator, and distinct generator labels cannot give the same edge. Left multiplication preserves this positive label. Consequently the edge set consists of two free transitive <span class="math" data-tex="\(G\)">\(G\)</span>-orbits.</p>
+<p>Define a unitary</p>
+<span class="math math-display" data-tex="\[
+U:H&#x27;\longrightarrow H\oplus H
+\]">\[
+U:H&#x27;\longrightarrow H\oplus H
+\]</span>
+<p>by sending the basis vector at a nonroot vertex to the basis vector indexed by the positive description <span class="math" data-tex="\((q,s)\)">\((q,s)\)</span> of its parent edge; <span class="math" data-tex="\(s\)">\(s\)</span> selects the summand. Set</p>
+<span class="math math-display" data-tex="\[
+\pi(g)=U^*(\lambda(g)\oplus\lambda(g))U.
+\]">\[
+\pi(g)=U^*(\lambda(g)\oplus\lambda(g))U.
+\]</span>
+<p>This is a unitary representation. For every group polynomial <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\pi(x)\|=\|\lambda(x)\oplus\lambda(x)\|=\|x\|.
+\]">\[
+\|\pi(x)\|=\|\lambda(x)\oplus\lambda(x)\|=\|x\|.
+\]</span>
+<p>It therefore extends by completion to an isometric unital *-representation <span class="math" data-tex="\(\pi:A\to B(H&#x27;)\)">\(\pi:A\to B(H&#x27;)\)</span>.</p>
+<p>For either <span class="math" data-tex="\(s=a\)">\(s=a\)</span> or <span class="math" data-tex="\(s=b\)">\(s=b\)</span>, its formula is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pi(s)\delta_g&amp;=\delta_{sg}
+&amp;&amp;\bigl(g\in G\setminus\{e,s^{-1}\}\bigr),\\
+\pi(s)\delta_{s^{-1}}&amp;=\delta_s.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\pi(s)\delta_g&amp;=\delta_{sg}
+&amp;&amp;\bigl(g\in G\setminus\{e,s^{-1}\}\bigr),\\
+\pi(s)\delta_{s^{-1}}&amp;=\delta_s.
+\end{aligned}
+\]</span>
+<p>To check it, translation of the parent edge of <span class="math" data-tex="\(g\)">\(g\)</span> is the parent edge of <span class="math" data-tex="\(sg\)">\(sg\)</span> whenever adding or cancelling the first letter leaves the last-letter deletion intact. This includes words of length at least two, and words of length one other than <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span>. For <span class="math" data-tex="\(g=s^{-1}\)">\(g=s^{-1}\)</span>, the edge <span class="math" data-tex="\(\{s^{-1},e\}\)">\(\{s^{-1},e\}\)</span> translates to <span class="math" data-tex="\(\{e,s\}\)">\(\{e,s\}\)</span>, whose nonroot endpoint is <span class="math" data-tex="\(s\)">\(s\)</span>. These cases exhaust the domain. In particular, the same formula includes both unchanged cross-generator cases. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><img src="assets/free-tree-trace-defect.svg" alt="The exceptional root edge and the pairing of interior eigenvalues" /></p>
+<p><em>Left panel: left multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> sends the parent edge of <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> to that of <span class="math" data-tex="\(a\)">\(a\)</span>; the root is absent from the vertex model for <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span>. Right panel: the operator <span class="math" data-tex="\(1-E-F\)">\(1-E-F\)</span> pairs the <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(-t\)">\(-t\)</span> eigenspaces when <span class="math" data-tex="\(0&lt;|t|&lt;1\)">\(0&lt;|t|&lt;1\)</span>; only the endpoint multiplicities contribute to the trace. These are the constructions of OA-MOD-FPI-01 and OA-MOD-FPI-05.</em></p>
+<h2 id="finite-rank-representation-differences"><span id="OA-MOD-FPI-02"></span><span id="oa-mod-fpi-02"></span>Finite-rank representation differences</h2>
+<p>On <span class="math" data-tex="\(H=\mathbb C\delta_e\oplus H&#x27;\)">\(H=\mathbb C\delta_e\oplus H&#x27;\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\pi_0(x)=0\oplus\pi(x),\qquad D(x)=\lambda(x)-\pi_0(x).
+\]">\[
+\pi_0(x)=0\oplus\pi(x),\qquad D(x)=\lambda(x)-\pi_0(x).
+\]</span>
+<p>The representation <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> is nonunital. If <span class="math" data-tex="\(p_e\)">\(p_e\)</span> projects onto <span class="math" data-tex="\(\mathbb C\delta_e\)">\(\mathbb C\delta_e\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\pi_0(1)=1-p_e,\qquad D(1)=p_e.
+\]">\[
+\pi_0(1)=1-p_e,\qquad D(1)=p_e.
+\]</span>
+<p>For a positive generator <span class="math" data-tex="\(s\)">\(s\)</span>, the preceding formulas give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(s)\delta_e&amp;=\delta_s,\\
+D(s)\delta_{s^{-1}}&amp;=\delta_e-\delta_s,\\
+D(s)\delta_g&amp;=0&amp;&amp;\bigl(g\notin\{e,s^{-1}\}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(s)\delta_e&amp;=\delta_s,\\
+D(s)\delta_{s^{-1}}&amp;=\delta_e-\delta_s,\\
+D(s)\delta_g&amp;=0&amp;&amp;\bigl(g\notin\{e,s^{-1}\}\bigr).
+\end{aligned}
+\]</span>
+<p>Thus <span class="math" data-tex="\(D(s)\)">\(D(s)\)</span> has rank at most two. Also <span class="math" data-tex="\(D(x^*)=D(x)^*\)">\(D(x^*)=D(x)^*\)</span>, so the inverse generators have finite-rank differences. Direct expansion gives, for all <span class="math" data-tex="\(x,y\in A\)">\(x,y\in A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+D(xy)=\lambda(x)D(y)+D(x)\pi_0(y).
+\]">\[
+D(xy)=\lambda(x)D(y)+D(x)\pi_0(y).
+\]</span>
+<p>Induction on word length, including <span class="math" data-tex="\(D(1)=p_e\)">\(D(1)=p_e\)</span>, shows that <span class="math" data-tex="\(D(g)\)">\(D(g)\)</span> is finite rank for every <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>. Finite linear combinations show the same for every group polynomial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-trace-difference-algebra-and-its-projections"><span id="OA-MOD-FPI-03"></span><span id="oa-mod-fpi-03"></span>The trace-difference algebra and its projections</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+A_0=\{x\in A:D(x)\in\mathcal S_1(H)\},\qquad
+\|x\|_0=\|x\|+\|D(x)\|_1.
+\]">\[
+A_0=\{x\in A:D(x)\in\mathcal S_1(H)\},\qquad
+\|x\|_0=\|x\|+\|D(x)\|_1.
+\]</span>
+<p>This is a dense unital *-subalgebra of <span class="math" data-tex="\(A\)">\(A\)</span>, complete in its displayed submultiplicative norm. It is also closed under the holomorphic functional calculus of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof.</strong> The trace ideal is a vector space, and the product formula and ideal bound imply</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|D(xy)\|_1
+&amp;\leq\|x\|\|D(y)\|_1+\|D(x)\|_1\|y\|,\\
+\|xy\|_0&amp;\leq\|x\|_0\|y\|_0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|D(xy)\|_1
+&amp;\leq\|x\|\|D(y)\|_1+\|D(x)\|_1\|y\|,\\
+\|xy\|_0&amp;\leq\|x\|_0\|y\|_0.
+\end{aligned}
+\]</span>
+<p>The adjoint identity gives *-closure and <span class="math" data-tex="\(\|x^*\|_0=\|x\|_0\)">\(\|x^*\|_0=\|x\|_0\)</span>. The finite-rank result puts the group algebra, including <span class="math" data-tex="\(1\)">\(1\)</span>, in <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, proving operator-norm density. Its unit has <span class="math" data-tex="\(\|1\|_0=2\)">\(\|1\|_0=2\)</span>; a unital Banach algebra need not have a normalized unit norm for the contour calculus.</p>
+<p>If <span class="math" data-tex="\((x_n)\)">\((x_n)\)</span> is Cauchy in <span class="math" data-tex="\(\|\cdot\|_0\)">\(\|\cdot\|_0\)</span>, then <span class="math" data-tex="\(x_n\to x\)">\(x_n\to x\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(D(x_n)\to T\)">\(D(x_n)\to T\)</span> in trace norm for some <span class="math" data-tex="\(T\in\mathcal S_1(H)\)">\(T\in\mathcal S_1(H)\)</span>. Since trace norm dominates operator norm and</p>
+<span class="math math-display" data-tex="\[
+\|D(x_n)-D(x)\|\leq2\|x_n-x\|,
+\]">\[
+\|D(x_n)-D(x)\|\leq2\|x_n-x\|,
+\]</span>
+<p>we have <span class="math" data-tex="\(T=D(x)\)">\(T=D(x)\)</span>. Thus <span class="math" data-tex="\(x\in A_0\)">\(x\in A_0\)</span> and <span class="math" data-tex="\(x_n\to x\)">\(x_n\to x\)</span> in the graph norm.</p>
+<p>Suppose <span class="math" data-tex="\(x\in A_0\)">\(x\in A_0\)</span> is invertible in <span class="math" data-tex="\(A\)">\(A\)</span>. Applying the product identity to <span class="math" data-tex="\(xx^{-1}=1\)">\(xx^{-1}=1\)</span> and multiplying on the left by <span class="math" data-tex="\(\lambda(x^{-1})\)">\(\lambda(x^{-1})\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(x^{-1})={}&amp;\lambda(x^{-1})p_e\\
+&amp;-\lambda(x^{-1})D(x)\pi_0(x^{-1}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(x^{-1})={}&amp;\lambda(x^{-1})p_e\\
+&amp;-\lambda(x^{-1})D(x)\pi_0(x^{-1}).
+\end{aligned}
+\]</span>
+<p>Both terms are trace class, so <span class="math" data-tex="\(x^{-1}\in A_0\)">\(x^{-1}\in A_0\)</span>. The first term is essential because <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> is nonunital. Since the inclusion <span class="math" data-tex="\(A_0\subseteq A\)">\(A_0\subseteq A\)</span> is unital, this proves</p>
+<span class="math math-display" data-tex="\[
+\sigma_{A_0}(x)=\sigma_A(x)\qquad(x\in A_0).
+\]">\[
+\sigma_{A_0}(x)=\sigma_A(x)\qquad(x\in A_0).
+\]</span>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be holomorphic on an open neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> of this common compact spectrum. The surrounding-cycle theorem gives a finite piecewise smooth cycle <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> in <span class="math" data-tex="\(V\setminus\sigma_A(x)\)">\(V\setminus\sigma_A(x)\)</span>, with index one on the spectrum and zero off <span class="math" data-tex="\(V\)">\(V\)</span>. The resolvent is continuous in the <span class="math" data-tex="\(A_0\)">\(A_0\)</span> norm: near any resolvent point, expand its inverse by the Neumann series in the Banach algebra <span class="math" data-tex="\(A_0\)">\(A_0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+y=\frac1{2\pi i}\int_\gamma f(z)(z1-x)^{-1}\,dz
+\]">\[
+y=\frac1{2\pi i}\int_\gamma f(z)(z1-x)^{-1}\,dz
+\]</span>
+<p>exists in <span class="math" data-tex="\(A_0\)">\(A_0\)</span>. Its continuous inclusion into <span class="math" data-tex="\(A\)">\(A\)</span> commutes with the integral, where the result is precisely <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>. The earlier contour-calculus proof supplies independence of the cycle and the unital algebra identities. Thus <span class="math" data-tex="\(f(x)\in A_0\)">\(f(x)\in A_0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Projection consequence.</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> has a nontrivial projection <span class="math" data-tex="\(p\)">\(p\)</span>, then <span class="math" data-tex="\(A_0\)">\(A_0\)</span> has one.</p>
+<p><strong>Proof.</strong> Density and symmetrization give a self-adjoint group polynomial <span class="math" data-tex="\(q\)">\(q\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\|q-p\|&lt;\varepsilon=\frac1{16}.
+\]">\[
+\|q-p\|&lt;\varepsilon=\frac1{16}.
+\]</span>
+<p>The explicit resolvent of <span class="math" data-tex="\(p\)">\(p\)</span> is</p>
+<span class="math math-display" data-tex="\[
+(z-p)^{-1}=z^{-1}(1-p)+(z-1)^{-1}p.
+\]">\[
+(z-p)^{-1}=z^{-1}(1-p)+(z-1)^{-1}p.
+\]</span>
+<p>For <span class="math" data-tex="\(z\notin\{0,1\}\)">\(z\notin\{0,1\}\)</span>, its norm is the reciprocal of the distance to <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>, since both orthogonal summands are nonzero. Factoring <span class="math" data-tex="\(z-q\)">\(z-q\)</span> using this inverse and a Neumann series proves that</p>
+<span class="math math-display" data-tex="\[
+\sigma_A(q)\subseteq[-\varepsilon,\varepsilon]
+\ \cup\ [1-\varepsilon,1+\varepsilon].
+\]">\[
+\sigma_A(q)\subseteq[-\varepsilon,\varepsilon]
+\ \cup\ [1-\varepsilon,1+\varepsilon].
+\]</span>
+<p>Here self-adjointness makes the spectrum real by OA-MOD-BK-01. Take the positively oriented circle <span class="math" data-tex="\(\gamma:|z-1|=1/2\)">\(\gamma:|z-1|=1/2\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+r=\frac1{2\pi i}\int_\gamma(z-q)^{-1}\,dz.
+\]">\[
+r=\frac1{2\pi i}\int_\gamma(z-q)^{-1}\,dz.
+\]</span>
+<p>Its resolvents belong to <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, continuously in graph norm, so <span class="math" data-tex="\(r\in A_0\)">\(r\in A_0\)</span>. In the continuous calculus of <span class="math" data-tex="\(q\)">\(q\)</span>, the same integral is the function which is zero on the spectral cluster near zero and one on the cluster near one. Indeed, evaluation at each spectral point reduces the integral to the scalar circle Cauchy formula; uniform boundedness of the resolvents on the circle allows the continuous calculus to commute with the integral. The function is real and idempotent, so <span class="math" data-tex="\(r=r^*=r^2\)">\(r=r^*=r^2\)</span>.</p>
+<p>On this circle the resolvent bounds are</p>
+<span class="math math-display" data-tex="\[
+\|(z-p)^{-1}\|=2,\qquad
+\|(z-q)^{-1}\|\leq\frac1{1/2-\varepsilon}.
+\]">\[
+\|(z-p)^{-1}\|=2,\qquad
+\|(z-q)^{-1}\|\leq\frac1{1/2-\varepsilon}.
+\]</span>
+<p>The resolvent identity and the circle length <span class="math" data-tex="\(\pi\)">\(\pi\)</span> therefore give</p>
+<span class="math math-display" data-tex="\[
+\|r-p\|
+\leq\frac{\varepsilon}{1/2-\varepsilon}
+=\frac17&lt;1.
+\]">\[
+\|r-p\|
+\leq\frac{\varepsilon}{1/2-\varepsilon}
+=\frac17&lt;1.
+\]</span>
+<p>The integral of <span class="math" data-tex="\((z-p)^{-1}\)">\((z-p)^{-1}\)</span> is <span class="math" data-tex="\(p\)">\(p\)</span>, directly from its displayed formula. Since a nontrivial projection has distance one from both <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, the bound excludes <span class="math" data-tex="\(r=0\)">\(r=0\)</span> and <span class="math" data-tex="\(r=1\)">\(r=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-canonical-trace-on-the-entire-algebra"><span id="OA-MOD-FPI-04"></span><span id="oa-mod-fpi-04"></span>The canonical trace on the entire algebra</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\tau(x)=\langle x\delta_e,\delta_e\rangle\qquad(x\in A).
+\]">\[
+\tau(x)=\langle x\delta_e,\delta_e\rangle\qquad(x\in A).
+\]</span>
+<p>This is a normalized positive functional. It is tracial: for two group polynomials the coefficient at <span class="math" data-tex="\(e\)">\(e\)</span> in their product is <span class="math" data-tex="\(\sum_g x_g y_{g^{-1}}\)">\(\sum_g x_g y_{g^{-1}}\)</span>, unchanged by reversing the factors and reindexing. Continuity of multiplication and of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> extends the identity to all <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>It is faithful as well. The right translations</p>
+<span class="math math-display" data-tex="\[
+\rho(h)\delta_g=\delta_{gh^{-1}}
+\]">\[
+\rho(h)\delta_g=\delta_{gh^{-1}}
+\]</span>
+<p>commute with every <span class="math" data-tex="\(\lambda(k)\)">\(\lambda(k)\)</span> and hence with every <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>. If <span class="math" data-tex="\(\tau(x^*x)=\|x\delta_e\|^2=0\)">\(\tau(x^*x)=\|x\delta_e\|^2=0\)</span>, then <span class="math" data-tex="\(x\delta_e=0\)">\(x\delta_e=0\)</span>. Commuting with <span class="math" data-tex="\(\rho(g^{-1})\)">\(\rho(g^{-1})\)</span> gives <span class="math" data-tex="\(x\delta_g=0\)">\(x\delta_g=0\)</span> for every <span class="math" data-tex="\(g\)">\(g\)</span>, so <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. For a positive element, apply this conclusion to its square root, which belongs to <span class="math" data-tex="\(A\)">\(A\)</span> by OA-MOD-BK-01.</p>
+<p>For every <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>, each diagonal entry <span class="math" data-tex="\(\langle\lambda(x)\delta_g,\delta_g\rangle\)">\(\langle\lambda(x)\delta_g,\delta_g\rangle\)</span> equals <span class="math" data-tex="\(\tau(x)\)">\(\tau(x)\)</span>. This follows by inspection for group polynomials, and then by norm continuity. Under <span class="math" data-tex="\(U\)">\(U\)</span>, each basis vector of <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> becomes a regular basis vector in one of two summands. Its diagonal entry for <span class="math" data-tex="\(\pi(x)\)">\(\pi(x)\)</span> is therefore also <span class="math" data-tex="\(\tau(x)\)">\(\tau(x)\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\langle D(x)\delta_g,\delta_g\rangle
+=\begin{cases}\tau(x),&amp;g=e,\\0,&amp;g\ne e.\end{cases}
+\]">\[
+\langle D(x)\delta_g,\delta_g\rangle
+=\begin{cases}\tau(x),&amp;g=e,\\0,&amp;g\ne e.\end{cases}
+\]</span>
+<p>If <span class="math" data-tex="\(x\in A_0\)">\(x\in A_0\)</span>, the trace-class diagonal formula applies and yields</p>
+<span class="math math-display" data-tex="\[
+\boxed{\operatorname{Tr}(D(x))=\tau(x).}
+\]">\[
+\boxed{\operatorname{Tr}(D(x))=\tau(x).}
+\]</span>
+<p>The coefficient argument applies to every element of <span class="math" data-tex="\(A\)">\(A\)</span>, before the trace is taken. Thus the formula holds on all of <span class="math" data-tex="\(A_0\)">\(A_0\)</span>; no density assertion in the graph norm is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="integral-trace-for-two-projections"><span id="OA-MOD-FPI-05"></span><span id="oa-mod-fpi-05"></span>Integral trace for two projections</h2>
+<p>Let <span class="math" data-tex="\(E,F\)">\(E,F\)</span> be orthogonal projections on any Hilbert space <span class="math" data-tex="\(K\)">\(K\)</span>, and suppose <span class="math" data-tex="\(S=E-F\)">\(S=E-F\)</span> is trace class. Then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(E-F)
+=\dim\ker(S-1)-\dim\ker(S+1)\in\mathbb Z.
+\]">\[
+\operatorname{Tr}(E-F)
+=\dim\ker(S-1)-\dim\ker(S+1)\in\mathbb Z.
+\]</span>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(T=1-E-F\)">\(T=1-E-F\)</span>. Multiplication using <span class="math" data-tex="\(E^2=E\)">\(E^2=E\)</span> and <span class="math" data-tex="\(F^2=F\)">\(F^2=F\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+ST=FE-EF=-TS,\qquad S^2+T^2=1.
+\]">\[
+ST=FE-EF=-TS,\qquad S^2+T^2=1.
+\]</span>
+<p>Both operators are self-adjoint. The second identity gives <span class="math" data-tex="\(S^2\leq1\)">\(S^2\leq1\)</span>, so the spectrum of <span class="math" data-tex="\(S\)">\(S\)</span> lies in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Since <span class="math" data-tex="\(S\)">\(S\)</span> is compact, the compact self-adjoint spectral theorem expresses its nonzero spectral part as a finite or countable orthogonal sum of finite-dimensional eigenspaces, with eigenvalues tending to zero if there are infinitely many.</p>
+<p>For <span class="math" data-tex="\(0&lt;|t|&lt;1\)">\(0&lt;|t|&lt;1\)</span>, anticommutation makes <span class="math" data-tex="\(T\)">\(T\)</span> send <span class="math" data-tex="\(\ker(S-t)\)">\(\ker(S-t)\)</span> into <span class="math" data-tex="\(\ker(S+t)\)">\(\ker(S+t)\)</span>. On either eigenspace, the other identity gives</p>
+<span class="math math-display" data-tex="\[
+T^2=(1-t^2)1.
+\]">\[
+T^2=(1-t^2)1.
+\]</span>
+<p>Hence these two restrictions of <span class="math" data-tex="\(T\)">\(T\)</span> are bijections inverse to one another after division by <span class="math" data-tex="\(1-t^2\)">\(1-t^2\)</span>. The multiplicities of <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(-t\)">\(-t\)</span> agree. In an eigenbasis, completed by a basis of <span class="math" data-tex="\(\ker S\)">\(\ker S\)</span>, the trace-class diagonal formula is an absolutely convergent eigenvalue sum. Pairing the opposite interior eigenvalues is therefore legitimate and cancels their contributions. The kernel contributes zero. The eigenvalues <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> have finite multiplicity by compactness, and give exactly the two dimensions in the formula. This also covers nonseparable <span class="math" data-tex="\(K\)">\(K\)</span>, since only the nonzero spectral part contributes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="absence-of-nontrivial-projections"><span id="OA-MOD-FPI-06"></span><span id="oa-mod-fpi-06"></span>Absence of nontrivial projections</h2>
+<p><strong>Theorem.</strong> The only projections in <span class="math" data-tex="\(C_r^*(\mathbb F(a,b))\)">\(C_r^*(\mathbb F(a,b))\)</span> are <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Proof.</strong> Suppose a nontrivial projection exists. OA-MOD-FPI-03 supplies a nontrivial projection <span class="math" data-tex="\(r\in A_0\)">\(r\in A_0\)</span>. The operators</p>
+<span class="math math-display" data-tex="\[
+E=\lambda(r),\qquad F=\pi_0(r)
+\]">\[
+E=\lambda(r),\qquad F=\pi_0(r)
+\]</span>
+<p>are orthogonal projections, since both representations preserve multiplication and adjoints; unitality of <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> is unnecessary. Their difference is trace class by the definition of <span class="math" data-tex="\(A_0\)">\(A_0\)</span>. OA-MOD-FPI-04 and OA-MOD-FPI-05 give</p>
+<span class="math math-display" data-tex="\[
+\tau(r)=\operatorname{Tr}(E-F)\in\mathbb Z.
+\]">\[
+\tau(r)=\operatorname{Tr}(E-F)\in\mathbb Z.
+\]</span>
+<p>But <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful and normalized. Applying faithfulness to the two nonzero positive elements <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(1-r\)">\(1-r\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+0&lt;\tau(r)&lt;1,
+\]">\[
+0&lt;\tau(r)&lt;1,
+\]</span>
+<p>a contradiction. Both <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> are projections, proving the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The tree construction and its trace obstruction are discussed in A. Connes, <a href="https://pmihes.centre-mersenne.org/item/10.1007/BF02698807.pdf">Non-commutative differential geometry</a>, <em>Publications Mathématiques de l'IHÉS</em> 62 (1985), Part I, §1, pp. 54–56, especially Lemma 6 and Corollary 7. Connes attributes the projectionlessness result to Pimsner and Voiculescu and the tree interpretation to Julg and Valette. The argument here supplies the representation, inverse-closed algebra, projection approximation, trace identity and spectral-pairing proofs explicitly.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

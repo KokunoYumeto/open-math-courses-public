@@ -42,8 +42,29 @@ check('Linear endpoint integral derivative',S.diff(2*S.sqrt(z),z),z**(-S.Rationa
 for m in [S.Rational(1,2),S.Integer(1),S.Rational(3,2)]:
     check('General endpoint primitive m='+str(m),S.diff(z**(1-m/2)/(1-m/2),z),z**(-m/2))
 check('Borderline logarithmic primitive',S.diff(S.log(z),z),1/z)
+
+# Exact algebra for the normalized Airy formula and the vertical-turn example.
+def coeff(j):
+    v=S.Integer(1)
+    for ell0 in range(1,j+1):v*=3*ell0*(3*ell0+1)
+    return (-1)**j/v
+for j0 in range(9):
+    check('Airy coefficient recurrence '+str(j0),(3*j0+4)*(3*j0+3)*coeff(j0+1)+coeff(j0))
+w=S.Function('w')(t);energy=S.diff(w,t)**2+t*w**2
+check('Airy energy derivative',S.diff(energy,t).subs(S.diff(w,t,2),-t*w),w*w)
+check('Airy divided energy derivative',S.diff(energy/t,t).subs(S.diff(w,t,2),-t*w),-S.diff(w,t)**2/t**2)
+pturn=xi**2-(x-y*y)*eta**2
+turn={x:y*y,xi:0}
+check('Vertical interior turn base x',S.diff(pturn,xi).subs(turn))
+check('Vertical interior turn base y',S.diff(pturn,eta).subs(turn))
+check('Vertical interior turn is characteristic',pturn.subs(turn))
+check('Positive normal Hamilton velocity at turn',(-S.diff(pturn,x)).subs(turn),eta*eta)
+check('Actual normal datum normalization',-S.I*S.I,1)
+frequency=S.symbols('frequency',positive=True)
+check('Normal Airy Fourier scaling exponent',frequency**(-S.Rational(2,3))*frequency**S.Rational(4,3)*x*frequency**S.Rational(2,3),x*frequency**2*frequency**(-S.Rational(2,3)))
+
 source=root/'singularities-on-diffractive-tricomi-rays.md'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-out={'passed':True,'total_cases':len(cases),'exact_algebraic_checks':len(cases),'numerical_checks':0,'source_sha256':sha(source),'script_sha256':sha(Path(__file__)),'scope':'Exact Hamilton, compression, ordered operator, lift, Sobolev exponent and endpoint-integral identities. Analytic existence, wavefront equality and rough-domain claims are proved in the lesson.','cases':cases}
+out={'passed':True,'total_cases':len(cases),'exact_algebraic_checks':len(cases),'numerical_checks':0,'source_sha256':sha(source),'script_sha256':sha(Path(__file__)),'scope':'Exact Hamilton, compression, ordered operator, lift, Sobolev exponent endpoint-integral, Airy coefficient/energy and vertical-turn identities. Analytic existence, wavefront equality and rough-domain claims are proved in the lesson.','cases':cases}
 (root/'model-check.json').write_text(json.dumps(out,indent=2)+'\n','utf-8')
 print(json.dumps({k:out[k] for k in ['passed','total_cases','source_sha256']}))

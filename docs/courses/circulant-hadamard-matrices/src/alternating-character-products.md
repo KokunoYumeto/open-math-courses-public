@@ -28,7 +28,7 @@ The exponent of the group must match the valuation of the scalar. For odd \(p\),
 
 **Proof.** (i) Let \(b_1,\dots,b_d\) be a basis of the free abelian group \(B\) (Lemma 1.1 of [Local rings of cyclotomic integers](local-rings-of-cyclotomic-integers.md)), and let \(M_b\in M_d(\mathbb Z)\) be the matrix of multiplication by \(b\). The matrices of the generating roots of unity commute and have finite order, so each is diagonalizable over \(\mathbb C\) (its minimal polynomial divides some \(X^m-1\), which has distinct roots), and they are simultaneously diagonalizable: the eigenspaces of one are invariant under the others, and one proceeds on each eigenspace. On a common eigenvector, multiplication by each \(b\in B\) acts by a scalar \(\sigma(b)\), and \(b\mapsto\sigma(b)\) is a ring homomorphism \(B\to\mathbb C\). So \(M_z\) is diagonalizable with eigenvalues \(\sigma(z)\) of absolute value \(1\). For each \(a\ge1\), \(M_z^a\) has integer characteristic polynomial with roots of absolute value \(1\), so its coefficients are integers bounded by binomial coefficients; there are finitely many such polynomials, hence finitely many possible eigenvalues of all powers. So each eigenvalue \(\lambda\) has two equal powers, and being nonzero, finite order. For a common multiple \(N\) of these orders \(M_z^N\) is the identity, and \(z^N=M_z^N(1)=1\).
 
-(ii) Write the order as \(p^am\) with \(p\nmid m\). Then \(\zeta=\omega^{p^a}\) has order \(m\) and residue \(1\). If \(m>1\), \((\zeta-1)(1+\zeta+\dots+\zeta^{m-1})=\zeta^m-1=0\) in the domain gives \(1+\zeta+\dots+\zeta^{m-1}=0\), whose residue is \(m\neq0\) in characteristic \(p\). So \(m=1\). \(\square\)
+(ii) Write the order as \(p^am\) with \(p\nmid m\). Then \(\zeta=\omega^{p^a}\) has order \(m\) and residue \(1\). If \(m>1\), then \((\zeta-1)(1+\zeta+\dots+\zeta^{m-1})\) equals \(\zeta^m-1=0\), and since \(\zeta\neq1\) in the domain this gives \(1+\zeta+\dots+\zeta^{m-1}=0\), whose residue is \(m\neq0\) in characteristic \(p\). So \(m=1\). \(\square\)
 
 ## 3. The alternating product
 
@@ -40,9 +40,9 @@ Put \(\varepsilon_S=(-1)^{|S|}\). If \(xx^*=u^2\), then \(x_S\overline{x_S}=u^2\
 \[
 \Delta(x)=\prod_{S\subseteq I}x_S^{\varepsilon_S}\in\operatorname{Frac}(B).
 \]
-For \(p\in I\), grouping \(S\) with \(S\cup\{p\}\) for \(p\notin S\) gives the *pairing in the direction \(p\)*:
+For \(p\in I\), grouping \(S\) with \(S\cup\{p\}\) for \(p\notin S\) gives the *pairing in the direction \(p\)*, the identity (3.1):
 \[
-\Delta(x)=\prod_{S\subseteq I,\ p\notin S}\Bigl(\frac{x_S}{x_{S\cup\{p\}}}\Bigr)^{\varepsilon_S}.\tag{3.1}
+\Delta(x)=\prod_{S\subseteq I,\ p\notin S}\Bigl(\frac{x_S}{x_{S\cup\{p\}}}\Bigr)^{\varepsilon_S}.
 \]
 
 **Proposition 3.1** (OpenAI). If \(x\in\mathbb Z[i][P]\) and \(xx^*=u^2\), then \(\Delta(x)\in B\) is a root of unity whose order is a power of \(p\) for every \(p\in I\). In particular its order is odd.

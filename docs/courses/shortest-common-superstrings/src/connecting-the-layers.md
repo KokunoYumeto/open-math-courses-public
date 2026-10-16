@@ -24,7 +24,11 @@ A *record* is a window of a layer together with a periodic text, its *alignment*
 
 **Lemma 2.2** (collective link). Let \(k\) layers of one group have the common text \(A\) of period \(p\), and let \(K=kp\). Let \(R=[a,b)\) be a window spelling a word of \(V\) that agrees with \(A\). Let \(r_H=f_H(a)\) be the first end of the highest and \(r_L=l_L(a)\) the last end of the lowest of these layers. If
 \[
-r_H\le b+K,\qquad r_H-r_L\le K,\qquad r_L+K\ge b,\tag{2.1}
+\begin{gathered}
+r_H\le b+K,\\
+r_H-r_L\le K,\\
+r_L+K\ge b,
+\end{gathered}\tag{2.1}
 \]
 there is a closed walk of cost \(K\), through the word of \(R\), that touches all \(k\) layers.
 
@@ -48,19 +52,29 @@ b_i-a_l<p_i+p_l,\tag{2.4}
 \]
 which is trivial without overlap. Choose \(j\) with \(p_j\) minimal. Translating the windows \(R_i\) by multiples of \(q\), together with the coordinates of their child groups (which changes no word, period or budget), we may assume \(a_j\le a_i\le T:=a_j+q\) and \(b_j\le b_i\le b_j+q\) for all \(i\). The next copy of \(R_j\) is \(R_j+q=[T,b_j+q)\), a window of the same host, and (2.4) applies to it as well.
 
-*The host excursion.* At start \(a_j\), visit the windows \([a_j,e)\) of the requesters of group \(j\) in increasing order of \(e\), then \(R_j\). Then, for each other \(i\) in the order of the \(R_i\), and within \(i\) in increasing order of \(e\), visit
+*The host excursion.* At start \(a_j\), visit the windows \([a_j,e)\) of the requesters of group \(j\) in increasing order of \(e\), then \(R_j\). Then, for each other \(i\) in the order of the \(R_i\), and within \(i\) in increasing order of \(e\), visit the windows (2.5):
 \[
-Q_{i,e}=[s_i,h_{i,e})=\bigl[\min(a_i+p_i,T),\ \max(e,b_j)\bigr).\tag{2.5}
+\begin{aligned}
+Q_{i,e}&=[s_i,h_{i,e})\\
+&=\bigl[\min(a_i+p_i,T),\ \max(e,b_j)\bigr).
+\end{aligned}
 \]
 Finally visit \([T,e_0+q)\), where \(e_0\) is the first requester end at \(j\). For \(R_i\) before \(R_l\), (2.2) and (2.4) give \(a_i+p_i<e_i\le b_i-p_i<a_l+p_l<e_l\), so the raw windows \([a_i+p_i,e)\) have increasing starts and ends, and so do the \(Q_{i,e}\). Each \(Q_{i,e}\) lies in \(R_i\) (as \(a_i\le T\) and \(b_j\le b_i\)) and is nonempty, so it spells a word of \(V\) that also agrees with child text \(i\). Applying (2.4) to \(R_i\) and \(R_j+q\) gives \(b_i-T<p_i+p_j\), and with (2.3) for \(j\),
 \[
-e\le b_i-p_i<T+p_j,\qquad b_j<T+p_j,\qquad h_{i,e}<T+p_j.\tag{2.6}
+\begin{gathered}
+e\le b_i-p_i<T+p_j,\\
+b_j<T+p_j,\\
+h_{i,e}<T+p_j.
+\end{gathered}\tag{2.6}
 \]
 Since \(e_0>a_j+p_j\), the last window ends after \(T+p_j\); so the whole list is ordered. The last window is \([a_j,e_0)\) translated by \(q\), so Lemma 1.1 gives a closed walk of cost \(q\), the host's budget. Its last transition starts at a window ending before \(T+p_j\) and reaches start \(T\), so it visits a word of length less than \(p_j\).
 
 *Attaching the other requesters.* For a requester of group \(i\neq j\) with window \([a_i,e)\),
 \[
-a_i\le s_i\le a_i+p_i,\qquad e\le h_{i,e}\le e+p_i.\tag{2.7}
+\begin{gathered}
+a_i\le s_i\le a_i+p_i,\\
+e\le h_{i,e}\le e+p_i.
+\end{gathered}\tag{2.7}
 \]
 Only the last inequality needs comment: if \(h_{i,e}=b_j\), then (2.4) for \(R_j\) before \(R_i\) and the minimality of \(p_j\) give \(b_j<a_i+p_j+p_i\le a_i+2p_i<e+p_i\). In child text \(i\), the list \(Q_{i,e}\), \([a_i+p_i,e+p_i)\), \(Q_{i,e}+p_i\) is ordered by (2.7); its middle window is a translate of the requester's window, hence the same vertex, and its last window spells the same word as the first. Lemma 1.1 gives a closed walk of cost \(p_i\), the requester's budget, through the requester and the host excursion.
 
@@ -80,10 +94,7 @@ Let \(n\) be the number of layers above the baseline, or of all layers of the gr
 
 ### 3.2 Easy connections
 
-Let \(A\) be the text of the group and \(t\) a distinguished position of \(A\) (Section 5 of [Periodic layers](periodic-layers.md)). Let \(H=f_H(t)\) be the first end at \(t\) of the highest layer. If \(H-t\le np\), a round trip from \(\varepsilon\) through \([t,H)\) costs at most \(np\); its up path passes all windows \([t,e)\), \(t\le e\le H\), and so touches every upper layer. If a baseline exists and its last end at \(t\) is at least \(H-np\), Lemma 2.1, with the baseline as lowest layer and \(h=np\), joins the baseline and the upper layers. In both cases the upper layers are rooted within their budgets. It remains to treat the case
-\[
-H>t+np,\qquad\text{and }l_{\mathrm{base}}(t)<H-np\text{ if a baseline exists}.\tag{3.1}
-\]
+Let \(A\) be the text of the group and \(t\) a distinguished position of \(A\) (Section 5 of [Periodic layers](periodic-layers.md)). Let \(H=f_H(t)\) be the first end at \(t\) of the highest layer. If \(H-t\le np\), a round trip from \(\varepsilon\) through \([t,H)\) costs at most \(np\); its up path passes all windows \([t,e)\), \(t\le e\le H\), and so touches every upper layer. If a baseline exists and its last end at \(t\) is at least \(H-np\), Lemma 2.1, with the baseline as lowest layer and \(h=np\), joins the baseline and the upper layers. In both cases the upper layers are rooted within their budgets. It remains to treat the case (3.1): \(H>t+np\), and \(l_{\mathrm{base}}(t)<H-np\) if a baseline exists.
 
 ### 3.3 Forcing a record on another text
 
@@ -94,7 +105,10 @@ Starting with \(k=1\), increase \(k\) as long as more than \(k\) layers \(i\) of
 l_{L_*}(t)\ge H-(k-1)p,\tag{3.2}
 \]
 \[
-f_H(x)-l_{L_*}(x)\le K\qquad\text{for all }x.\tag{3.3}
+\begin{gathered}
+f_H(x)-l_{L_*}(x)\le K\\
+\text{for all }x.
+\end{gathered}\tag{3.3}
 \]
 At most \(k\) recorded occurrences of \(w=A[t:H-K)\) on layers have, as their whole text, the text \(A\) aligned at the occurrence.
 
@@ -104,19 +118,22 @@ By (3.1), \(H-K>t\), so \(w\) is nonempty. Another group has no text equal to a 
 
 Apply the periodic rule of Definition 2.1 of [Forced occurrence counts](forced-occurrence-counts.md), with the origin moved to \(t\), to
 \[
-v=A[t:H),\qquad w=A[t:H-K),\qquad|v|=|w|+kp.
+\begin{gathered}
+v=A[t:H),\qquad w=A[t:H-K),\\
+|v|=|w|+kp.
+\end{gathered}
 \]
-The window \([t,H)\) of the highest layer is a recorded occurrence of \(v\) on a layer whose whole text is the template, so it is unblocked, and Lemma 4.1 of [Periodic layers](periodic-layers.md) gives \(m(v)>B_A(v;m)\). The rule gives \(m(w)\ge B_A(w;m)+k+1\), so \(w\) has at least \(k+1\) unblocked recorded occurrences. By Lemma 3.1 one of them lies on a layer \(D\) whose aligned text differs from \(A\); \(D\) may belong to this group with a different phase. By Lemma 4.1 of [Periodic layers](periodic-layers.md), \(D\) has a window \(R=[a,b)\) that agrees with \(A\) throughout and contains \([t,H-K)\). Let \(q\) be the period of \(D\). By Lemma 5.1 there,
-\[
-a\le t,\qquad b\ge H-K,\qquad b-a<p+q,\qquad\text{and }b-a<p\text{ if }D\text{ is in this group}.\tag{3.4}
-\]
+The window \([t,H)\) of the highest layer is a recorded occurrence of \(v\) on a layer whose whole text is the template, so it is unblocked, and Lemma 4.1 of [Periodic layers](periodic-layers.md) gives \(m(v)>B_A(v;m)\). The rule gives \(m(w)\ge B_A(w;m)+k+1\), so \(w\) has at least \(k+1\) unblocked recorded occurrences. By Lemma 3.1 one of them lies on a layer \(D\) whose aligned text differs from \(A\); \(D\) may belong to this group with a different phase. By Lemma 4.1 of [Periodic layers](periodic-layers.md), \(D\) has a window \(R=[a,b)\) that agrees with \(A\) throughout and contains \([t,H-K)\). Let \(q\) be the period of \(D\). By Lemma 5.1 there, the conditions (3.4) hold: \(a\le t\), \(b\ge H-K\), \(b-a<p+q\), and \(b-a<p\) if \(D\) is in this group.
 This one record is used for all connections from this group.
 
 ### 3.4 Distributing the remaining budgets
 
 At start \(a\) put \(r_H=f_H(a)\) and \(r_L=l_{L_*}(a)\). By monotonicity, (3.3) and (3.4),
 \[
-r_H-r_L\le K,\qquad r_H\le H\le b+K.\tag{3.5}
+\begin{gathered}
+r_H-r_L\le K,\\
+r_H\le H\le b+K.
+\end{gathered}\tag{3.5}
 \]
 
 *The collective case.* If \(r_L+K\ge b\), the conditions (2.1) hold for the \(k\) highest layers and \(R\). They form a *collective block*, with a planned link to \(D\) at \(R\) as in Lemma 2.2, which reserves their combined budget \(K\). Otherwise \(r_H\le r_L+K<b\).
@@ -124,14 +141,14 @@ r_H-r_L\le K,\qquad r_H\le H\le b+K.\tag{3.5}
 *The individual cases.* Every upper layer \(i\) not in the collective block has \(f_i(a)\le b\): if the collective test failed, \(f_i(a)\le r_H<b\); and a layer below the \(k\) highest has \(f_i(a)\le l_i(t)<H-K\le b\), by the stopping rule and \(a\le t\). For such a layer, do exactly one of the following.
 
 1. If it has a window of length at most \(p\), root it by a round trip through \(\varepsilon\).
-2. If all its windows are longer than \(p\) and \(l_i(a)+p\ge b\), it forms an *individual block* with a planned link to \(D\) at \(R\): at start \(a+p\) its ends range over \([f_i(a)+p,l_i(a)+p]\), which meets \([b,b+p]\), so it has a window \([a+p,e')\) with \(b\le e'\le b+p\). The list
-\[
-[a,b),\qquad[a+p,e'),\qquad[a+p,b+p)
-\]
+2. If all its windows are longer than \(p\) and \(l_i(a)+p\ge b\), it forms an *individual block* with a planned link to \(D\) at \(R\): at start \(a+p\) its ends range over \([f_i(a)+p,l_i(a)+p]\), which meets \([b,b+p]\), so it has a window \([a+p,e')\) with \(b\le e'\le b+p\). The list \([a,b)\), \([a+p,e')\), \([a+p,b+p)\)
 is ordered and gives a closed walk of cost \(p\) in \(A\) through \(R\) and the layer. Its transition into start \(a+p\) visits a word of length at most \(\max(0,b-a-p)<q\), by Lemma 1.1 and (3.4). The layer's budget is reserved for this link.
 3. Otherwise its first end \(e=f_i(a)\) satisfies
 \[
-a+p<e\le l_i(a)<b-p,\tag{3.6}
+\begin{aligned}
+a+p&<e\\
+&\le l_i(a)<b-p,
+\end{aligned}\tag{3.6}
 \]
 since its windows are longer than \(p\). Reserve its budget and send a request to \(D\) at \(R\). Then \(b-a>2p\), and with \(b-a<p+q\) this gives \(q>p\).
 
@@ -155,10 +172,7 @@ Regard each block as a node, with an arrow to the block containing its target la
 
 The target layer belongs to a block of the cycle, so every forward word of its text is at most the forward word of its own group at its distinguished position, and hence at most that of \(A\) at \(t\). Its aligned text differs from \(A\). By Lemma 5.2 of [Periodic layers](periodic-layers.md), it does not agree with \(A\) on all of \([t,t+q)\); since it agrees with \(A\) on \(R\supseteq[t,\min(b,t+q))\), we get \(b-t<q\). Let \(x=\min(t,a+K)\). Then \(a\le x\le a+K\) and \(x\le t<b\); if \(x=t\), then \(b-x<q\), and if \(x=a+K<t\), then \(b-x=b-a-K<p+q-K\le q\). So \([x,b)\) is a suffix of \(R\) of length less than \(q\).
 
-At start \(x\), each layer of the block has its first window \([x,f_i(x))\) longer than \(q>b-x\), so \(f_i(x)>b\); and \(f_i(x)\le f_H(x)\le f_H(t)=H\). Let \(F=f_H(x)\), so \(b<F\le H\le b+K\). Follow the list
-\[
-[a,b),\qquad[x,b),\qquad[x,F),\qquad[a+K,b+K).\tag{4.1}
-\]
+At start \(x\), each layer of the block has its first window \([x,f_i(x))\) longer than \(q>b-x\), so \(f_i(x)>b\); and \(f_i(x)\le f_H(x)\le f_H(t)=H\). Let \(F=f_H(x)\), so \(b<F\le H\le b+K\). Follow the list (4.1): \([a,b)\), \([x,b)\), \([x,F)\), \([a+K,b+K)\).
 Its starts and ends are nondecreasing, its words lie in \(V\) (a suffix of \(R\), a window of the highest layer, and a translate of \(R\)), and the last spells the word of \(R\) in the text \(A\) of period \(p\mid K\). By Lemma 1.1 it is a closed walk of cost \(K\). The vertical part at start \(x\) passes every first end \(f_i(x)\in(b,F]\), so it touches every layer of the block, and \([x,b)\) is the short word. \(\square\)
 
 **Theorem 4.3** (connecting the base graph; OpenAI). Closed walks of total cost at most \(W\) can be added to the base graph so that every layer is rooted.

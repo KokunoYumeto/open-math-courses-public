@@ -146,8 +146,10 @@ If \(S\) spans, choose a maximal independent subset \(B\) of \(S\). The equality
 
 *Proof.* By Lemma 2.7, spanning means containing a basis \(B\). Complementation turns \(B\subseteq S\) into \(F\setminus S\subseteq F\setminus B\), exactly dual independence. The same implication backwards proves the equivalence. Apply it on ground set \(X\) to the restriction and to the dual restriction. The identities
 \[
-(N\!\upharpoonright\!X)^*=N^*.X,
-\qquad (N.X)^*=N^*\!\upharpoonright\!X
+\begin{gathered}
+(N\!\upharpoonright\!X)^*=N^*.X,\\
+(N.X)^*=N^*\!\upharpoonright\!X
+\end{gathered}
 \]
 follow from the contraction definition and Theorem 2.3. \(\square\)
 
@@ -285,8 +287,10 @@ and the \(B\)-spanning set \(S^B=P'\setminus S^A\). Each row of \(S^B\) omits at
 
 *From the pair to the family.* Start with a partition \(F\times K=P'\mathbin{\dot\cup}C'\), disjoint spanning sets \(S^A,S^B\subseteq P'\), and independent covering sets \(I^A,I^B\subseteq C'\). No assumption that the spanning sets cover \(P'\) or that the covering sets are disjoint is needed. Partition \(F\) by
 \[
-P=\{e:\{e\}\times K\subseteq P'\},
-\qquad C=F\setminus P.
+\begin{gathered}
+P=\{e:\{e\}\times K\subseteq P'\},\\
+C=F\setminus P.
+\end{gathered}
 \]
 For a row indexed by \(e\in C\), its portion in \(P'\) is a proper subset of the row. The restriction of \(Q_e\) there is free. Since \(S^B\) spans that restriction, it contains the entire portion. Disjointness forces \(S^A\) to avoid it. Thus \(S^A\subseteq P\times K\). It spans the larger set \(P'\) in \(A\), and hence spans the restriction to \(P\times K\).
 

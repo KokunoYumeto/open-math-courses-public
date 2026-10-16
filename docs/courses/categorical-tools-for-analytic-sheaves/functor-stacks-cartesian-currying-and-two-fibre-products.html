@@ -1,0 +1,254 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Functor stacks, cartesian currying and two-fibre products</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="functor-stacks-cartesian-currying-and-two-fibre-products">Functor stacks, cartesian currying and two-fibre products</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Original text: CC0.</em></p>
+<p>Two objects can have compatible images without those images being literally equal. A two-fibre product records the chosen comparison isomorphism. A functor of stacks has another kind of compatibility: it acts on every slice and commutes with every restriction. These constructions give products and internal functors for stacks, and they interact well with the associated-stack construction.</p>
+<p>Work on a small Grothendieck sieve site <span class="math" data-tex="\((\mathcal C,J)\)">\((\mathcal C,J)\)</span>. Use the definitions, full universal property and local equivalence criterion in <a href="stackification-by-cartesian-sections-on-covering-sieves.html#1-sieve-descent-includes-all-base-arrows">Stackification by cartesian sections on covering sieves, Sections 1–6</a>. Choose ambient universes large enough for the displayed categories of functors and transformations. Base fibre products and points are not assumed. Fibre morphisms and transformations may be noninvertible; only explicitly stated comparison maps are required to be isomorphisms.</p>
+<p>The existing <a href="dual-and-tensor-products-of-locally-module-stacks.html#2-the-stack-of-functors-with-a-stack-right-adjoint">Dual and tensor products of locally module stacks, Lemma 2.1</a> proves gluing for linear functors with stack right adjoints. We retain that result and its hypotheses. The internal functor category below includes all stack functors, and the tensor product in that module-stack lesson is distinct from the cartesian product here.</p>
+<h2 id="1-the-comparison-is-part-of-a-two-fibre-product">1. The comparison is part of a two-fibre product</h2>
+<p>For functors <span class="math" data-tex="\(r:A\to C\)">\(r:A\to C\)</span>, <span class="math" data-tex="\(s:B\to C\)">\(s:B\to C\)</span>, define <span class="math" data-tex="\(A\times_C^2B\)">\(A\times_C^2B\)</span> to have objects <span class="math" data-tex="\((a,b,\phi)\)">\((a,b,\phi)\)</span>, where <span class="math" data-tex="\(\phi:r(a)\to s(b)\)">\(\phi:r(a)\to s(b)\)</span> is an isomorphism. A morphism to <span class="math" data-tex="\((a&#x27;,b&#x27;,\psi)\)">\((a&#x27;,b&#x27;,\psi)\)</span> is a pair <span class="math" data-tex="\((u:a\to a&#x27;,v:b\to b&#x27;)\)">\((u:a\to a&#x27;,v:b\to b&#x27;)\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\psi\,r(u)=s(v)\,\phi.
+\tag{1.1}
+\]">\[
+\psi\,r(u)=s(v)\,\phi.
+\tag{1.1}
+\]</span>
+<p>Neither <span class="math" data-tex="\(u\)">\(u\)</span> nor <span class="math" data-tex="\(v\)">\(v\)</span> is required to be invertible. Identities are identity pairs, and composition is componentwise. For a second compatible pair <span class="math" data-tex="\((u&#x27;,v&#x27;)\)">\((u&#x27;,v&#x27;)\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\chi\,r(u&#x27;u)=s(v&#x27;)\,\psi\,r(u)\\
+=s(v&#x27;v)\,\phi,
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\chi\,r(u&#x27;u)=s(v&#x27;)\,\psi\,r(u)\\
+=s(v&#x27;v)\,\phi,
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>so the composite again satisfies (1.1). Associativity follows in <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. The projections have a specified invertible natural transformation between their composites to <span class="math" data-tex="\(C\)">\(C\)</span>, with components <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p>For every category <span class="math" data-tex="\(D\)">\(D\)</span>, a functor <span class="math" data-tex="\(D\to A\times_C^2B\)">\(D\to A\times_C^2B\)</span> is exactly a pair of functors <span class="math" data-tex="\(F:D\to A\)">\(F:D\to A\)</span>, <span class="math" data-tex="\(G:D\to B\)">\(G:D\to B\)</span> with an invertible natural transformation <span class="math" data-tex="\(rF\to sG\)">\(rF\to sG\)</span>. Equation (1.1) is its naturality equation. A transformation between two such functors is exactly a pair of transformations satisfying that same comparison square at every object of <span class="math" data-tex="\(D\)">\(D\)</span>. These constructions are inverse on objects, arrows, identities and composition. This proves the full comparison-isomorphism universal property, including noninvertible transformations between cones.</p>
+<p>The construction is invariant under equivalences of the three categories and coherent isomorphisms of the two functors. Indeed, lift an object of the new product to objects in the two original categories. Transport its comparison isomorphism along those chosen equivalences, then use full faithfulness of the middle equivalence to lift it and its inverse. Full faithfulness also lifts (1.1) and identifies all pairs of arrows. The resulting functor is fully faithful and essentially surjective, hence an equivalence by the full criterion in <span class="unlinked">Equivalences and chosen representatives, Theorem 1.1</span>. A strict equality of images would not permit that transport; Exercise 1 computes the difference.</p>
+<p>Now let <span class="math" data-tex="\(r:\mathsf A\to\mathsf C\)">\(r:\mathsf A\to\mathsf C\)</span>, <span class="math" data-tex="\(s:\mathsf B\to\mathsf C\)">\(s:\mathsf B\to\mathsf C\)</span> be morphisms of category-valued presheaves, with coherent invertible restriction comparisons. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\mathsf P(U)=\mathsf A(U)\times^2_{\mathsf C(U)}\mathsf B(U).
+\tag{1.3}
+\]">\[
+\mathsf P(U)=\mathsf A(U)\times^2_{\mathsf C(U)}\mathsf B(U).
+\tag{1.3}
+\]</span>
+<p>For <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span>, write <span class="math" data-tex="\(\rho^r_a:r_V(f^*a)\to f^*r_U(a)\)">\(\rho^r_a:r_V(f^*a)\to f^*r_U(a)\)</span> and similarly for <span class="math" data-tex="\(s\)">\(s\)</span>. The restricted comparison of a triple is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+(\rho^s_b)^{-1}\,f^*(\phi)\,\rho^r_a:\\
+r_V(f^*a)\longrightarrow s_V(f^*b).
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+(\rho^s_b)^{-1}\,f^*(\phi)\,\rho^r_a:\\
+r_V(f^*a)\longrightarrow s_V(f^*b).
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>Restrict its two component arrows in the original presheaves. Naturality of <span class="math" data-tex="\(\rho^r,\rho^s\)">\(\rho^r,\rho^s\)</span> makes (1.1) hold after this restriction. The unit and composite restriction comparisons are the component comparisons in <span class="math" data-tex="\(\mathsf A,\mathsf B\)">\(\mathsf A,\mathsf B\)</span>; their compatibility with (1.4) is the coherence law for <span class="math" data-tex="\(r,s\)">\(r,s\)</span>. Thus <span class="math" data-tex="\(\mathsf P\)">\(\mathsf P\)</span> is a category-valued presheaf. Applying the preceding cone correspondence on every slice, with (1.4), gives the two-fibre-product universal property for category-valued presheaves and all their transformations.</p>
+<h2 id="2-descent-and-stackification-of-the-product">2. Descent and stackification of the product</h2>
+<p><strong>Theorem 2.1.</strong> If <span class="math" data-tex="\(\mathsf A,\mathsf B,\mathsf C\)">\(\mathsf A,\mathsf B,\mathsf C\)</span> are stacks, then <span class="math" data-tex="\(\mathsf P\)">\(\mathsf P\)</span> in (1.3) is a stack.</p>
+<p><strong>Proof.</strong> Between two triples, its Hom presheaf is the equalizer of the two maps</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+H_{a,a&#x27;}\times H_{b,b&#x27;}
+\rightrightarrows H_{r(a),s(b&#x27;)},\\
+(u,v)\longmapsto\psi r(u),\\
+(u,v)\longmapsto s(v)\phi.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+H_{a,a&#x27;}\times H_{b,b&#x27;}
+\rightrightarrows H_{r(a),s(b&#x27;)},\\
+(u,v)\longmapsto\psi r(u),\\
+(u,v)\longmapsto s(v)\phi.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>All identifications with restrictions use (1.4). This equalizer is a sheaf: glue the two components in their Hom sheaves; their required equality holds on the cover, hence globally in the last Hom sheaf. Uniqueness is componentwise.</p>
+<p>For object descent on a covering sieve <span class="math" data-tex="\(R\)">\(R\)</span>, project a cartesian section of triples to sections in <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> and <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span>. Descend them to <span class="math" data-tex="\(a\in\mathsf A(U)\)">\(a\in\mathsf A(U)\)</span>, <span class="math" data-tex="\(b\in\mathsf B(U)\)">\(b\in\mathsf B(U)\)</span>, with their prescribed local identifications. Transport the local comparison isomorphisms to arrows from <span class="math" data-tex="\(f^*r(a)\)">\(f^*r(a)\)</span> to <span class="math" data-tex="\(f^*s(b)\)">\(f^*s(b)\)</span>, for <span class="math" data-tex="\(f\in R\)">\(f\in R\)</span>. The compatibility equation for the section of triples, including (1.4), says they are a matching family in that Hom sheaf of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Glue them to <span class="math" data-tex="\(\phi:r(a)\to s(b)\)">\(\phi:r(a)\to s(b)\)</span>. Their inverses are also a matching family; gluing them proves both inverse identities, so <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is an isomorphism. The local identifications with <span class="math" data-tex="\((a,b,\phi)\)">\((a,b,\phi)\)</span> satisfy (1.1), because that is how <span class="math" data-tex="\(\phi\)">\(\phi\)</span> was glued. Their section compatibility is the original descent compatibility. Thus they descend the original triples, proving effectiveness. Empty covers are included in these same Hom and object descent arguments. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(\operatorname{St}\)">\(\operatorname{St}\)</span> for the associated stack of the linked sieve construction. Its functoriality carries the two projections and their invertible comparison to a morphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+K:\operatorname{St}(\mathsf A\times^2_{\mathsf C}\mathsf B)\\
+\longrightarrow
+\operatorname{St}(\mathsf A)
+\times^2_{\operatorname{St}(\mathsf C)}
+\operatorname{St}(\mathsf B).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+K:\operatorname{St}(\mathsf A\times^2_{\mathsf C}\mathsf B)\\
+\longrightarrow
+\operatorname{St}(\mathsf A)
+\times^2_{\operatorname{St}(\mathsf C)}
+\operatorname{St}(\mathsf B).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>This morphism is canonical up to its coherent comparisons, rather than a literal equality of chosen presentations.</p>
+<p><strong>Theorem 2.2.</strong> The morphism <span class="math" data-tex="\(K\)">\(K\)</span> is an equivalence for arbitrary category-valued presheaves <span class="math" data-tex="\(\mathsf A,\mathsf B,\mathsf C\)">\(\mathsf A,\mathsf B,\mathsf C\)</span>.</p>
+<p><strong>Proof: morphisms.</strong> First map the original presheaf of triples into the right side of (2.2), using the three units. Coherent unit comparisons transport each original <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to the comparison between the two unit-image objects. For two original triples, an arrow between their images is a compatible pair in the sheafifications of the original component Hom presheaves. Represent its two components on a common covering sieve by original arrows <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. Their compatibility equation holds in the associated stack of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. It is therefore equality of the images of the two original arrows in (1.1). The unit's local equality rule allows a further covering refinement on which (1.1) holds in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> itself. On that refinement <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> is an actual original product morphism. Local character combines these refinements into a cover of the original object.</p>
+<p>If two such original product morphisms have equal images, their component arrows have equal associated-stack images. Refine the cover so that both component equalities hold in the original presheaves. Then the original product morphisms are equal there. Thus the map identifies the sheafification of every original product Hom presheaf with the target Hom sheaf: local representatives give surjectivity and the local equality test gives injectivity.</p>
+<p><strong>Proof: objects.</strong> Take a triple in the right side of (2.2). Locally represent its first and second objects by original <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; intersect their representing covering sieves. Transport its comparison to an isomorphism between the unit images of <span class="math" data-tex="\(r(a)\)">\(r(a)\)</span> and <span class="math" data-tex="\(s(b)\)">\(s(b)\)</span> in <span class="math" data-tex="\(\operatorname{St}(\mathsf C)\)">\(\operatorname{St}(\mathsf C)\)</span>, using the component and unit comparisons. Represent that arrow and its inverse locally by original arrows <span class="math" data-tex="\(\phi,\tau\)">\(\phi,\tau\)</span>. The two inverse equations hold in <span class="math" data-tex="\(\operatorname{St}(\mathsf C)\)">\(\operatorname{St}(\mathsf C)\)</span>; refine once more so that both hold in the original category <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. These finite simultaneous refinements are allowed by the local equality rule, intersection of covering sieves and local character. Hence <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is an actual original isomorphism on the resulting cover, and <span class="math" data-tex="\((a,b,\phi)\)">\((a,b,\phi)\)</span> is an original product object there. Its image is isomorphic to the given triple by the chosen component identifications, which satisfy (1.1) by construction.</p>
+<p>The target of (2.2) is a stack by Theorem 2.1. We have proved the sheafified-Hom and local-object hypotheses of the local equivalence criterion for stackification in Section 6 of the linked sieve lesson. Applying that criterion gives exactly the equivalence (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The terminal category-valued presheaf is already a stack. Taking the middle presheaf terminal in Theorem 2.2 shows that stackification preserves binary cartesian products; iteration gives all finite products with their projection maps. The theorem also preserves the displayed two-fibre products and their comparison isomorphisms. These statements do not assert preservation of every kind of two-categorical limit.</p>
+<h2 id="3-functors-on-every-slice-form-a-stack">3. Functors on every slice form a stack</h2>
+<p>For category-valued presheaves <span class="math" data-tex="\(\mathsf A,\mathsf B\)">\(\mathsf A,\mathsf B\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)(U)\\
+=\operatorname{Fun}_{\mathcal C/U}(\mathsf A|_U,\mathsf B|_U).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)(U)\\
+=\operatorname{Fun}_{\mathcal C/U}(\mathsf A|_U,\mathsf B|_U).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>An object acts on the entire slice site, with coherent invertible restriction comparisons. In particular, it has a component functor <span class="math" data-tex="\(T_f:\mathsf A(V)\to\mathsf B(V)\)">\(T_f:\mathsf A(V)\to\mathsf B(V)\)</span> for every object <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> of the slice, with comparisons <span class="math" data-tex="\(g^*T_f\simeq T_{fg}g^*\)">\(g^*T_f\simeq T_{fg}g^*\)</span>. Different arrows with the same domain retain their distinct components. An arrow in (3.1) is a compatible family of natural transformations, with arbitrary components.</p>
+<p>Restriction along <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> means restricting this entire data along <span class="math" data-tex="\(\mathcal C/V\to\mathcal C/U\)">\(\mathcal C/V\to\mathcal C/U\)</span>. That functor sends <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\(fg\)">\(fg\)</span>; no monomorphism hypothesis on <span class="math" data-tex="\(f\)">\(f\)</span> is needed. These restrictions have their canonical coherent comparisons. For a slice functor <span class="math" data-tex="\(T\)">\(T\)</span>, the notation <span class="math" data-tex="\(T_{1_U}\)">\(T_{1_U}\)</span> means its component at the identity object of that slice.</p>
+<p><strong>Theorem 3.1.</strong> If <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> is a stack, then (3.1) is a stack, for any category-valued presheaf <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span>.</p>
+<p><strong>Proof: transformations.</strong> Fix functors <span class="math" data-tex="\(T,S\)">\(T,S\)</span> over <span class="math" data-tex="\(U\)">\(U\)</span> and compatible local transformations on a covering sieve <span class="math" data-tex="\(R\)">\(R\)</span>. For <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> and <span class="math" data-tex="\(a\in\mathsf A(V)\)">\(a\in\mathsf A(V)\)</span>, evaluate the local transformation over <span class="math" data-tex="\(fg\in R\)">\(fg\in R\)</span> at the identity object of its slice, on <span class="math" data-tex="\(g^*a\)">\(g^*a\)</span>. Using the restriction comparisons of <span class="math" data-tex="\(T,S\)">\(T,S\)</span>, this gives a matching family of arrows from <span class="math" data-tex="\(g^*T_f(a)\)">\(g^*T_f(a)\)</span> to <span class="math" data-tex="\(g^*S_f(a)\)">\(g^*S_f(a)\)</span>, for <span class="math" data-tex="\(g\in f^*R\)">\(g\in f^*R\)</span>. The Hom sheaf in <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> glues them to a unique component at <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>For an arrow in <span class="math" data-tex="\(\mathsf A(V)\)">\(\mathsf A(V)\)</span>, the naturality square holds on <span class="math" data-tex="\(f^*R\)">\(f^*R\)</span>, where it is a square for the given local transformations, so holds globally. Compatibility with any further restriction is checked on its pulled-back covering sieve in the same way. This gives a transformation over the whole slice. Uniqueness of its components proves the Hom sheaf axiom, on every slice.</p>
+<p><strong>Proof: functors.</strong> Let <span class="math" data-tex="\(L_q\)">\(L_q\)</span> be a cartesian section of local slice functors over <span class="math" data-tex="\(R\)">\(R\)</span>, with compatible invertible transformations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\delta_{q,g}:g^*L_q\xrightarrow{\sim}L_{qg}.
+\tag{3.2}
+\]">\[
+\delta_{q,g}:g^*L_q\xrightarrow{\sim}L_{qg}.
+\tag{3.2}
+\]</span>
+<p>For <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> and <span class="math" data-tex="\(a\in\mathsf A(V)\)">\(a\in\mathsf A(V)\)</span>, use the covering sieve <span class="math" data-tex="\(f^*R\)">\(f^*R\)</span>. Its local objects in <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+(L_{fg})_{1_W}(g^*a),\\
+g:W\to V,\qquad g\in f^*R.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+(L_{fg})_{1_W}(g^*a),\\
+g:W\to V,\qquad g\in f^*R.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>The inner subscript means evaluation at the identity object of the slice on <span class="math" data-tex="\(W\)">\(W\)</span>. The restriction comparisons of each <span class="math" data-tex="\(L_q\)">\(L_q\)</span>, followed by components of (3.2), supply the cartesian-section isomorphisms for (3.3). Their unit and composite laws follow from those two given coherences. Descend this section to an object <span class="math" data-tex="\(T_f(a)\in\mathsf B(V)\)">\(T_f(a)\in\mathsf B(V)\)</span>.</p>
+<p>For an arrow <span class="math" data-tex="\(a\to a&#x27;\)">\(a\to a&#x27;\)</span>, apply the local functors to its restrictions and conjugate by the chosen descent isomorphisms. This is a matching family in the Hom sheaf between <span class="math" data-tex="\(T_f(a)\)">\(T_f(a)\)</span> and <span class="math" data-tex="\(T_f(a&#x27;)\)">\(T_f(a&#x27;)\)</span>. Glue it. Identity and composition hold locally, hence globally. This defines a functor <span class="math" data-tex="\(T_f\)">\(T_f\)</span> for each slice object <span class="math" data-tex="\(f\)">\(f\)</span>. A restriction of a chosen descent object and the descent for the restricted input have the same specified local values (3.3). Full faithfulness of descent in <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> gives a unique compatible invertible comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+g^*T_f(a)\xrightarrow{\sim}T_{fg}(g^*a).
+\tag{3.4}
+\]">\[
+g^*T_f(a)\xrightarrow{\sim}T_{fg}(g^*a).
+\tag{3.4}
+\]</span>
+<p>Its naturality and coherence are local equations. Thus the <span class="math" data-tex="\(T_f\)">\(T_f\)</span>'s give a functor on the entire slice, retaining all its objects and factorization arrows.</p>
+<p>For <span class="math" data-tex="\(q\in R\)">\(q\in R\)</span>, the sieve <span class="math" data-tex="\(q^*R\)">\(q^*R\)</span> is maximal. The identity member and (3.2) identify the construction of <span class="math" data-tex="\(T|_{\operatorname{dom}q}\)">\(T|_{\operatorname{dom}q}\)</span> with <span class="math" data-tex="\(L_q\)">\(L_q\)</span>. More explicitly, at a slice object <span class="math" data-tex="\(g:W\to\operatorname{dom}q\)">\(g:W\to\operatorname{dom}q\)</span>, the comparisons <span class="math" data-tex="\(\delta_{q,g}\)">\(\delta_{q,g}\)</span> identify <span class="math" data-tex="\((L_q)_g(a)\)">\((L_q)_g(a)\)</span> with the identity component of <span class="math" data-tex="\(L_{qg}\)">\(L_{qg}\)</span> at <span class="math" data-tex="\(a\)">\(a\)</span>; its further restrictions are the local values used to construct the global component <span class="math" data-tex="\(T_{qg}(a)\)">\(T_{qg}(a)\)</span>. Uniqueness of descent therefore gives the required isomorphism at each <span class="math" data-tex="\(g,a\)">\(g,a\)</span>. These isomorphisms are natural in every input arrow and compatible with further restrictions, so are isomorphisms of slice functors. Their compatibility with the original <span class="math" data-tex="\(\delta\)">\(\delta\)</span>'s holds on those local values. Hence they make the original section effective, proving the stack axiom. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the componentwise gluing mechanism used in the first paragraph of the module-stack lemma cited above; (3.1) records explicitly the slice data on which that argument operates. It is generally not the assignment <span class="math" data-tex="\(U\mapsto\operatorname{Fun}(\mathsf A(U),\mathsf B(U))\)">\(U\mapsto\operatorname{Fun}(\mathsf A(U),\mathsf B(U))\)</span>. A functor between two individual fibre categories may fail to extend compatibly to any smaller base. Exercise 2 gives a concrete failure.</p>
+<h2 id="4-evaluation-and-cartesian-currying">4. Evaluation and cartesian currying</h2>
+<p>There is an evaluation functor of category-valued presheaves</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{ev}:\\
+\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\times\mathsf A
+\longrightarrow\mathsf B,\\
+(T,a)\longmapsto T_{1_U}(a)\quad\hbox{over }U.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\operatorname{ev}:\\
+\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\times\mathsf A
+\longrightarrow\mathsf B,\\
+(T,a)\longmapsto T_{1_U}(a)\quad\hbox{over }U.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>For an arrow <span class="math" data-tex="\((\eta:T\to T&#x27;,u:a\to a&#x27;)\)">\((\eta:T\to T&#x27;,u:a\to a&#x27;)\)</span>, its image is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\eta_{a&#x27;}\,T_{1_U}(u)=T&#x27;_{1_U}(u)\,\eta_a,
+\tag{4.2}
+\]">\[
+\eta_{a&#x27;}\,T_{1_U}(u)=T&#x27;_{1_U}(u)\,\eta_a,
+\tag{4.2}
+\]</span>
+<p>where the components of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> are evaluated at <span class="math" data-tex="\(1_U\)">\(1_U\)</span>. Naturality gives this equality. It also proves preservation of composition, by expanding a composite pair and commuting its middle transformation past the relevant image arrow. Identity preservation follows from the two identity components. The restriction comparison is that of <span class="math" data-tex="\(T\)">\(T\)</span>, between <span class="math" data-tex="\(f^*T_{1_U}(a)\)">\(f^*T_{1_U}(a)\)</span> and <span class="math" data-tex="\(T_f(f^*a)\)">\(T_f(f^*a)\)</span>; the latter is the identity component of the restricted slice functor. Compatibility for (4.2) is the restriction compatibility of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Their coherence is the specified coherence of the slice functors. Thus evaluation is defined on all arrows and restrictions.</p>
+<p><strong>Theorem 4.1 (cartesian currying).</strong> There is a natural equivalence of categories</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Fun}_{\mathcal C}(\mathsf D\times\mathsf A,\mathsf B)\\
+\simeq\\
+\operatorname{Fun}_{\mathcal C}
+\bigl(\mathsf D,\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\bigr).
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\operatorname{Fun}_{\mathcal C}(\mathsf D\times\mathsf A,\mathsf B)\\
+\simeq\\
+\operatorname{Fun}_{\mathcal C}
+\bigl(\mathsf D,\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\bigr).
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>It includes all compatible natural transformations. In particular, for stacks, Theorem 3.1 supplies an internal functor stack and (4.3) gives its cartesian universal property.</p>
+<p><strong>Proof: curry.</strong> Given <span class="math" data-tex="\(H:\mathsf D\times\mathsf A\to\mathsf B\)">\(H:\mathsf D\times\mathsf A\to\mathsf B\)</span> and <span class="math" data-tex="\(d\in\mathsf D(U)\)">\(d\in\mathsf D(U)\)</span>, define a functor <span class="math" data-tex="\(T_d\)">\(T_d\)</span> on <span class="math" data-tex="\(\mathcal C/U\)">\(\mathcal C/U\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+(T_d)_f(a)=H_V(f^*d,a),\\
+f:V\to U.
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+(T_d)_f(a)=H_V(f^*d,a),\\
+f:V\to U.
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>On an arrow in <span class="math" data-tex="\(\mathsf A(V)\)">\(\mathsf A(V)\)</span>, apply <span class="math" data-tex="\(H_V\)">\(H_V\)</span> to the pair consisting of the identity on <span class="math" data-tex="\(f^*d\)">\(f^*d\)</span> and that arrow. For a further base arrow, the restriction comparisons of <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> identify the two expressions in (4.4); their coherences give the slice-functor coherence. For <span class="math" data-tex="\(v:d\to d&#x27;\)">\(v:d\to d&#x27;\)</span>, apply <span class="math" data-tex="\(H_V\)">\(H_V\)</span> to <span class="math" data-tex="\((f^*v,1_a)\)">\((f^*v,1_a)\)</span>. This is a transformation <span class="math" data-tex="\(T_d\to T_{d&#x27;}\)">\(T_d\to T_{d&#x27;}\)</span>: its naturality follows because the two corresponding pairs commute in the product category. The formula also proves its restriction compatibility. Functoriality in <span class="math" data-tex="\(d\)">\(d\)</span> follows from that of <span class="math" data-tex="\(H\)">\(H\)</span>. The comparison between restriction of <span class="math" data-tex="\(T_d\)">\(T_d\)</span> and <span class="math" data-tex="\(T_{f^*d}\)">\(T_{f^*d}\)</span> is given by the same restriction comparisons; their coherence gives a functor <span class="math" data-tex="\(\mathsf D\to\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\)">\(\mathsf D\to\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\)</span>.</p>
+<p>A transformation <span class="math" data-tex="\(H\to H&#x27;\)">\(H\to H&#x27;\)</span> is curried by evaluating its components at every pair <span class="math" data-tex="\((f^*d,a)\)">\((f^*d,a)\)</span>. Its naturality in both variables and its restriction compatibility give exactly a transformation of the curried functors. This operation preserves identities and composition.</p>
+<p><strong>Proof: uncurry and the inverse comparisons.</strong> Given <span class="math" data-tex="\(G:\mathsf D\to\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\)">\(G:\mathsf D\to\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+H_U(d,a)=[G_U(d)]_{1_U}(a).
+\tag{4.5}
+\]">\[
+H_U(d,a)=[G_U(d)]_{1_U}(a).
+\tag{4.5}
+\]</span>
+<p>For a pair <span class="math" data-tex="\((v:d\to d&#x27;,u:a\to a&#x27;)\)">\((v:d\to d&#x27;,u:a\to a&#x27;)\)</span>, apply (4.2) to the transformation <span class="math" data-tex="\(G_U(v)\)">\(G_U(v)\)</span> and the arrow <span class="math" data-tex="\(u\)">\(u\)</span>. The category laws follow from evaluation. Restriction comparisons combine those of <span class="math" data-tex="\(G\)">\(G\)</span> with those of its slice functor <span class="math" data-tex="\(G_U(d)\)">\(G_U(d)\)</span>; the two coherence laws give their coherence. A transformation of the <span class="math" data-tex="\(G\)">\(G\)</span>'s is evaluated on <span class="math" data-tex="\(a\)">\(a\)</span>, giving a transformation of the uncurried functors.</p>
+<p>Currying then uncurrying <span class="math" data-tex="\(H\)">\(H\)</span> returns <span class="math" data-tex="\(H_U(1_U^*d,a)\)">\(H_U(1_U^*d,a)\)</span>; the unit comparison in <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> gives a natural isomorphism to <span class="math" data-tex="\(H_U(d,a)\)">\(H_U(d,a)\)</span>, compatible with all restrictions and transformations. In the other order, the reconstructed slice functor at <span class="math" data-tex="\(d\)">\(d\)</span>, evaluated over <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span>, has value <span class="math" data-tex="\([G_V(f^*d)]_{1_V}(a)\)">\([G_V(f^*d)]_{1_V}(a)\)</span>. The restriction comparison of <span class="math" data-tex="\(G\)">\(G\)</span> identifies it with <span class="math" data-tex="\([G_U(d)]_f(a)\)">\([G_U(d)]_f(a)\)</span>. These comparisons are natural in <span class="math" data-tex="\(a,d\)">\(a,d\)</span> and compatible with base composition, by the coherence of <span class="math" data-tex="\(G\)">\(G\)</span>. Thus they give an invertible transformation from the reconstructed functor to <span class="math" data-tex="\(G\)">\(G\)</span>. The two constructions are functors on the Hom categories and these comparisons commute with every transformation, proving they are quasi-inverse. The formulas commute with precomposition and postcomposition up to the given comparisons, which gives the asserted naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-linear-functors-and-stack-adjoints-keep-their-extra-conditions">5. Linear functors and stack adjoints keep their extra conditions</h2>
+<p>For linear locally module stacks <span class="math" data-tex="\(\mathsf M,\mathsf N\)">\(\mathsf M,\mathsf N\)</span>, the stack <span class="math" data-tex="\(\mathsf H(\mathsf M,\mathsf N)\)">\(\mathsf H(\mathsf M,\mathsf N)\)</span> of the cited module-stack lesson is the full subcategory of (3.1) on linear functors admitting a right adjoint as a stack functor. The cited Lemma 2.1 proves that this condition glues: adjoint comparison maps are obtained by transporting the adjunction Hom bijections, their coherence follows by composition, and the units, counits and triangles glue. That proof remains applicable on each slice. Separate right adjoints to the individual fibre functors do not supply its required invertible restriction mates.</p>
+<p>Consequently Theorem 3.1 does not add linearity or right adjoints to its objects. Its cartesian product in (4.3) also imposes no bilinearity condition. The module-stack closed currying theorem uses the balanced tensor product and its own right-adjointable linear functor stack. It is proved in <a href="dual-and-tensor-products-of-locally-module-stacks.html#5-closed-currying">Dual and tensor products of locally module stacks, Section 5</a>. These are the two respective universal problems, with their stated domains and morphisms.</p>
+<h2 id="6-four-exercises-with-complete-solutions">6. Four exercises with complete solutions</h2>
+<h3 id="exercise-1-strict-equality-loses-the-comparison">Exercise 1 — strict equality loses the comparison</h3>
+<p><em>Introductory.</em> Let <span class="math" data-tex="\(G\)">\(G\)</span> be a nontrivial group, <span class="math" data-tex="\(BG\)">\(BG\)</span> its one-object category, and <span class="math" data-tex="\(1\to BG\leftarrow1\)">\(1\to BG\leftarrow1\)</span> the two unique functors from the terminal category. Compute the strict categorical fibre product and the two-fibre product. Interpret them as stacks on a point.</p>
+<p><strong>Solution.</strong> In the strict fibre product, the two image objects are the same unique object of <span class="math" data-tex="\(BG\)">\(BG\)</span>. There is one pair of source objects, and the only pair of source arrows is the identity pair. Thus the strict product is terminal. In the two-fibre product an object also chooses an isomorphism of the two image objects, namely an element <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>. A morphism from <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\(h\)">\(h\)</span> can only be the identity pair; (1.1) then requires <span class="math" data-tex="\(h=g\)">\(h=g\)</span>. Hence it is the discrete category with object set <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>On the open-set site of a point, a category gives a stack by placing it on the nonempty open and the terminal category on the empty open. Every cover of the nonempty open contains that open, so descent adds no new isomorphism classes or arrows. Thus the same calculation is the stack two-fibre product. The strict terminal category and the discrete category <span class="math" data-tex="\(G\)">\(G\)</span> are not equivalent for nontrivial <span class="math" data-tex="\(G\)">\(G\)</span>. Stackification of the strict product cannot restore the discarded comparison choices in this example.</p>
+<h3 id="exercise-2-a-fibre-functor-need-not-be-local">Exercise 2 — a fibre functor need not be local</h3>
+<p><em>Intermediate.</em> Let <span class="math" data-tex="\(X\)">\(X\)</span> be two discrete points, and let <span class="math" data-tex="\(\mathsf A=\mathsf B\)">\(\mathsf A=\mathsf B\)</span> be the stack with value <span class="math" data-tex="\(\mathsf{FinSet}\times\mathsf{FinSet}\)">\(\mathsf{FinSet}\times\mathsf{FinSet}\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, value <span class="math" data-tex="\(\mathsf{FinSet}\)">\(\mathsf{FinSet}\)</span> on each point, and terminal value on the empty open. Can the swap functor <span class="math" data-tex="\((M,N)\mapsto(N,M)\)">\((M,N)\mapsto(N,M)\)</span> on the global fibre extend to a stack functor? Describe the actual global objects of <span class="math" data-tex="\(\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\)">\(\underline{\operatorname{Fun}}(\mathsf A,\mathsf B)\)</span>.</p>
+<p><strong>Solution.</strong> If the swap extended, its restriction comparison at the first point would identify <span class="math" data-tex="\(T_0(M)\)">\(T_0(M)\)</span> with <span class="math" data-tex="\(N\)">\(N\)</span>, for every <span class="math" data-tex="\(M,N\)">\(M,N\)</span>. Fix <span class="math" data-tex="\(M\)">\(M\)</span> and take <span class="math" data-tex="\(N\)">\(N\)</span> first empty and then a singleton. Those finite sets are not isomorphic, so such a comparison is impossible.</p>
+<p>A pair of functors <span class="math" data-tex="\(F_0,F_1:\mathsf{FinSet}\to\mathsf{FinSet}\)">\(F_0,F_1:\mathsf{FinSet}\to\mathsf{FinSet}\)</span> does define a stack functor, by <span class="math" data-tex="\((M,N)\mapsto(F_0(M),F_1(N))\)">\((M,N)\mapsto(F_0(M),F_1(N))\)</span> globally and <span class="math" data-tex="\(F_i\)">\(F_i\)</span> at the corresponding point. The empty-open comparison is unique. Conversely any stack functor has these two local functors; its restriction comparisons identify its global value with exactly that ordered pair of outputs. They form a natural isomorphism to this componentwise functor, compatible with restrictions. Transformations are likewise pairs of natural transformations, since the cover by the two points determines every component uniquely. Therefore the global internal functor category is equivalent to the product of the two categories <span class="math" data-tex="\(\operatorname{Fun}(\mathsf{FinSet},\mathsf{FinSet})\)">\(\operatorname{Fun}(\mathsf{FinSet},\mathsf{FinSet})\)</span>. The swap is a functor of global fibres but is absent from this category.</p>
+<h3 id="exercise-3-comparison-isomorphisms-can-appear-locally">Exercise 3 — comparison isomorphisms can appear locally</h3>
+<p><em>Advanced.</em> On the fork site with objects <span class="math" data-tex="\(a,b,u\)">\(a,b,u\)</span> and cover <span class="math" data-tex="\(\{a\to u,b\to u\}\)">\(\{a\to u,b\to u\}\)</span> from the sieve-stackification lesson, let <span class="math" data-tex="\(\mathsf C(u)=B\mathbb N\)">\(\mathsf C(u)=B\mathbb N\)</span>, the one-object category with additive nonnegative-integer endomorphisms. Put <span class="math" data-tex="\(\mathsf C(a)=\mathsf C(b)=B\mathbb Z\)">\(\mathsf C(a)=\mathsf C(b)=B\mathbb Z\)</span>, with the inclusion on restrictions. Take <span class="math" data-tex="\(\mathsf A=\mathsf B=1\)">\(\mathsf A=\mathsf B=1\)</span>, mapping to the unique objects of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Compute both sides of (2.2) over <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>Solution.</strong> In <span class="math" data-tex="\(B\mathbb N\)">\(B\mathbb N\)</span>, an invertible endomorphism must have an additive inverse in <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, so is <span class="math" data-tex="\(0\)">\(0\)</span>. The original product <span class="math" data-tex="\(\mathsf P(u)\)">\(\mathsf P(u)\)</span> is therefore terminal. At either leg, every integer is invertible in <span class="math" data-tex="\(B\mathbb Z\)">\(B\mathbb Z\)</span>. Since both source categories are terminal, (1.1) permits an arrow between two such integers only when they are equal. Thus <span class="math" data-tex="\(\mathsf P(a)\)">\(\mathsf P(a)\)</span> and <span class="math" data-tex="\(\mathsf P(b)\)">\(\mathsf P(b)\)</span> are discrete copies of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and the restriction of the unique global object is <span class="math" data-tex="\(0\)">\(0\)</span> in each.</p>
+<p>The covering sieve at <span class="math" data-tex="\(u\)">\(u\)</span> has two unrelated objects in its element category. Stackification therefore permits an independent integer at each leg, with no further comparison condition. Its global value is the discrete category <span class="math" data-tex="\(\mathbb Z\times\mathbb Z\)">\(\mathbb Z\times\mathbb Z\)</span>: arrows exist only between equal pairs, and every pair supplies a descent presentation. This computes the left side.</p>
+<p>Sheafifying the endomorphisms of the original object of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> gives <span class="math" data-tex="\(\mathbb Z\times\mathbb Z\)">\(\mathbb Z\times\mathbb Z\)</span> over <span class="math" data-tex="\(u\)">\(u\)</span>, with projection restrictions. Every descent object has the same unique object at each leg; these are also the restrictions of the original global object, so every associated-stack object is isomorphic to that object. Hence <span class="math" data-tex="\(\operatorname{St}(\mathsf C)(u)\)">\(\operatorname{St}(\mathsf C)(u)\)</span> is equivalent to <span class="math" data-tex="\(B(\mathbb Z\times\mathbb Z)\)">\(B(\mathbb Z\times\mathbb Z)\)</span>. The associated terminal source stacks stay terminal. Their two-fibre product is consequently the discrete category <span class="math" data-tex="\(\mathbb Z\times\mathbb Z\)">\(\mathbb Z\times\mathbb Z\)</span>, just as on the left. The comparison maps a local pair of integers to that same isomorphism pair. The original global value, which supplied only <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>, alone would not establish this result.</p>
+<h3 id="exercise-4-currying-a-commuting-square-with-all-its-maps">Exercise 4 — currying a commuting square with all its maps</h3>
+<p><em>Advanced calculation.</em> Let <span class="math" data-tex="\([1]\)">\([1]\)</span> be the category <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span>, and <span class="math" data-tex="\(B\)">\(B\)</span> any category. Describe the currying equivalence <span class="math" data-tex="\(\operatorname{Fun}([1]\times[1],B)\simeq\operatorname{Fun}([1],\operatorname{Fun}([1],B))\)">\(\operatorname{Fun}([1]\times[1],B)\simeq\operatorname{Fun}([1],\operatorname{Fun}([1],B))\)</span> on both objects and arrows. Are its transformations required to be isomorphisms?</p>
+<p><strong>Solution.</strong> An object on the left is a commuting square, with horizontal maps <span class="math" data-tex="\(h_0,h_1\)">\(h_0,h_1\)</span> and vertical maps <span class="math" data-tex="\(v_0,v_1\)">\(v_0,v_1\)</span>, satisfying <span class="math" data-tex="\(v_1h_0=h_1v_0\)">\(v_1h_0=h_1v_0\)</span>. Curry in the horizontal coordinate. Its values are the two objects <span class="math" data-tex="\(v_0,v_1\)">\(v_0,v_1\)</span> of the arrow category <span class="math" data-tex="\(\operatorname{Fun}([1],B)\)">\(\operatorname{Fun}([1],B)\)</span>, and its arrow has components <span class="math" data-tex="\((h_0,h_1)\)">\((h_0,h_1)\)</span>. The naturality equation for that arrow is exactly the commuting-square equation. Uncurrying restores the same four vertices and edges.</p>
+<p>A transformation between two square diagrams consists of four vertex maps. Naturality imposes the four equations for the two horizontal and two vertical edges. On the curried side, the two vertical pairs of vertex maps are morphisms of arrows, giving the vertical-edge equations. Naturality of the transformation in the horizontal coordinate gives the other two equations. Thus the two constructions give exactly the same set of transformations, with the same componentwise identities and composition. The diagonal square equations then follow from the edge equations, so there is no missing condition. No vertex map is required to be invertible. In a category of modules, the four zero maps give a valid transformation between any two such square diagrams, and are retained by currying.</p>
+<h2 id="7-further-reading">7. Further reading</h2>
+<p>The Stacks Project describes <a href="https://stacks.math.columbia.edu/tag/02XG">two-fibre products of categories over a category</a>, <a href="https://stacks.math.columbia.edu/tag/0268">two-fibre products of stacks</a>, and <a href="https://stacks.math.columbia.edu/tag/02ZM">compatibility of stackification with two-fibre products</a>. These are freely accessible references. Our internal functor notation always includes compatible functors on the whole slice site and all their transformations.</p>
+</main></body></html>

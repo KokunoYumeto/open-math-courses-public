@@ -28,7 +28,10 @@ For a double cover \(p:E\to B\) and a singular simplex \(\sigma\) of \(B\), put 
 
 **Lemma 2.1.** The sequence of chain complexes
 \[
-0\longrightarrow C_\bullet(B;\mathbb F_2)\xrightarrow{\ \tau\ }C_\bullet(E;\mathbb F_2)\xrightarrow{\ p_\#\ }C_\bullet(B;\mathbb F_2)\longrightarrow0
+\begin{aligned}
+&0\longrightarrow C_\bullet(B;\mathbb F_2)\xrightarrow{\ \tau\ }C_\bullet(E;\mathbb F_2)\\
+&\qquad\xrightarrow{\ p_\#\ }C_\bullet(B;\mathbb F_2)\longrightarrow0
+\end{aligned}
 \]
 is exact. Moreover \(\tau\circ p_\#=\mathrm{id}+T_\#\) on \(C_\bullet(E;\mathbb F_2)\).
 
@@ -36,7 +39,11 @@ is exact. Moreover \(\tau\circ p_\#=\mathrm{id}+T_\#\) on \(C_\bullet(E;\mathbb 
 
 **Proposition 2.2.** A double cover has a long exact sequence
 \[
-\cdots\to H_i(B)\xrightarrow{\tau_*}H_i(E)\xrightarrow{p_*}H_i(B)\xrightarrow{\partial}H_{i-1}(B)\xrightarrow{\tau_*}H_{i-1}(E)\to\cdots\to H_0(E)\xrightarrow{p_*}H_0(B)\to0,
+\begin{aligned}
+&\cdots\to H_i(B)\xrightarrow{\tau_*}H_i(E)\xrightarrow{p_*}H_i(B)\\
+&\quad\xrightarrow{\partial}H_{i-1}(B)\xrightarrow{\tau_*}H_{i-1}(E)\to\cdots\\
+&\quad\to H_0(E)\xrightarrow{p_*}H_0(B)\to0,
+\end{aligned}
 \]
 with \(\tau_*p_*=\mathrm{id}+T_*\) on \(H_\bullet(E)\). A map of double covers \(\tilde\varphi\), inducing \(\varphi\), gives a commutative ladder: \(\tilde\varphi_*\tau_*=\tau'_*\varphi_*\), \(p'_*\tilde\varphi_*=\varphi_*p_*\) and \(\partial'\varphi_*=\varphi_*\partial\).
 
@@ -90,11 +97,17 @@ a map between closed manifolds of dimension \(a-1\), has \(\deg_2\bar\Psi=0\).
 
 By definition \(\bar\Psi_*[B]=\deg_2(\bar\Psi)\,[\mathbb{RP}^{a-1}]\). By Proposition 3.1, \(\partial^{a-1}[\mathbb{RP}^{a-1}]\) generates \(H_0(\mathbb{RP}^{a-1})\), so \(\varepsilon\partial^{a-1}[\mathbb{RP}^{a-1}]=1\). Since \(\Psi\) is a map of double covers (Example 1.2(c)), Proposition 2.2 gives
 \[
-\deg_2\bar\Psi=\varepsilon\bigl(\partial^{a-1}\bar\Psi_*[B]\bigr)=\varepsilon\bigl(\bar\Psi_*\partial_M^{a-1}[B]\bigr)=\varepsilon\bigl(\partial_M^{a-1}[B]\bigr),
+\begin{aligned}
+&\deg_2\bar\Psi=\varepsilon\bigl(\partial^{a-1}\bar\Psi_*[B]\bigr)\\
+&\quad =\varepsilon\bigl(\bar\Psi_*\partial_M^{a-1}[B]\bigr)=\varepsilon\bigl(\partial_M^{a-1}[B]\bigr),
+\end{aligned}
 \]
 where \(\partial_M\) is the connecting map of the cover \(M\to B\). The projection \(\mathrm{pr}_2:M\to S^{h-1}\) is a map of double covers inducing \(\mathrm{pr}_2:B\to\mathbb{RP}^{h-1}\) (Example 1.2(b)), so
 \[
-\varepsilon\bigl(\partial_M^{a-1}[B]\bigr)=\varepsilon\bigl((\mathrm{pr}_2)_*\partial_M^{a-1}[B]\bigr)=\varepsilon\bigl(\partial^{a-1}(\mathrm{pr}_2)_*[B]\bigr).
+\begin{aligned}
+&\varepsilon\bigl(\partial_M^{a-1}[B]\bigr)=\varepsilon\bigl((\mathrm{pr}_2)_*\partial_M^{a-1}[B]\bigr)\\
+&\quad =\varepsilon\bigl(\partial^{a-1}(\mathrm{pr}_2)_*[B]\bigr).
+\end{aligned}
 \]
 Here \((\mathrm{pr}_2)_*[B]\) lies in \(H_{a-1}(\mathbb{RP}^{h-1})\), which is zero because \(a-1>h-1\) (Proposition 3.1(b); for \(h=1\), \(\mathbb{RP}^0\) is a point). Hence \(\deg_2\bar\Psi=0\). \(\square\)
 

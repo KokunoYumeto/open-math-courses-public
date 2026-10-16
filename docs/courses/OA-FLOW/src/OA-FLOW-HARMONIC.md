@@ -1,8 +1,8 @@
 # Fourier completion and the character topology
 
-Original reviewed H1 proof, now placed after the independently proved topology and Haar/Radon foundations and L24/L25. It identifies the universal Fourier completion and compact-open character topology without a scalar Plancherel or biduality premise. Original CC0 expression retained.
+For a locally compact Hausdorff abelian group, the full group C* algebra is the algebra of continuous functions vanishing at infinity on its character group. We prove this identification and show that its spectrum topology is exactly uniform convergence of characters on compact sets. The proof uses the topology, Haar integration and representation results below. The exposition is dedicated under CC0.
 
-The actual earlier inputs are [H0: compact topology and Hilbert tensor](OA-FLOW-TOPOLOGY.md#l138-h0), [HR-03](OA-FLOW-HR.md#hr-03), [HR-06](OA-FLOW-HR.md#hr-06), [HR-07](OA-FLOW-HR.md#hr-07), [HR-09](OA-FLOW-HR.md#hr-09), [CF-6](OA-FLOW-CF.md#oa-flow.cf.6), [CF-7](OA-FLOW-CF.md#oa-flow.cf.7), [CF-9](OA-FLOW-CF.md#oa-flow.cf.9), and [L24 convolution](OA-FLOW-L24.md#oa-flow.grp.algebra), [L24 recovery](OA-FLOW-L24.md#oa-flow.grp.recovery), [L24 translation continuity](OA-FLOW-L24.md#oa-flow.grp.translations), [L24 universal completion](OA-FLOW-L24.md#oa-flow.grp.completions).
+The earlier inputs are [H0: compact topology and Hilbert tensor](OA-FLOW-TOPOLOGY.md#l138-h0), [HR-03](OA-FLOW-HR.md#hr-03), [HR-06](OA-FLOW-HR.md#hr-06), [HR-07](OA-FLOW-HR.md#hr-07), [HR-09](OA-FLOW-HR.md#hr-09), [CF-6](OA-FLOW-CF.md#oa-flow.cf.6), [CF-7](OA-FLOW-CF.md#oa-flow.cf.7), [CF-9](OA-FLOW-CF.md#oa-flow.cf.9), and [L24 convolution](OA-FLOW-L24.md#oa-flow.grp.algebra), [L24 recovery](OA-FLOW-L24.md#oa-flow.grp.recovery), [L24 translation continuity](OA-FLOW-L24.md#oa-flow.grp.translations), [L24 universal completion](OA-FLOW-L24.md#oa-flow.grp.completions).
 
 <a id="l138-h1"></a>
 
@@ -45,23 +45,23 @@ The group operations are continuous for compact-open convergence by the scalar i
 
 <a id="l138-h0"></a><a id="oa-flow.xgaps.cstar.h0"></a><a id="OA-FLOW.XGAPS.CSTAR.H0"></a>
 
-[H0: actual earlier topology](OA-FLOW-TOPOLOGY.md#l138-h0).
+[H0: compact topology](OA-FLOW-TOPOLOGY.md#l138-h0).
 
 <a id="OA-FLOW.XGAPS.CSTAR.H2"></a>
 
-[H2: actual later deduction](OA-FLOW-HARMONIC-LATE.md#l138-h2).
+[H2: reduced Fourier norm](OA-FLOW-HARMONIC-LATE.md#l138-h2).
 
 <a id="l138-h3"></a><a id="oa-flow.xgaps.cstar.h3"></a><a id="OA-FLOW.XGAPS.CSTAR.H3"></a>
 
-[H3: actual later deduction](OA-FLOW-HARMONIC-LATE.md#l138-h3).
+[H3: topological biduality](OA-FLOW-HARMONIC-LATE.md#l138-h3).
 
 <a id="l138-h4"></a><a id="oa-flow.xgaps.cstar.h4"></a><a id="OA-FLOW.XGAPS.CSTAR.H4"></a>
 
-[H4: actual later deduction](OA-FLOW-HARMONIC-LATE.md#l138-h4).
+[H4: returned Haar measure](OA-FLOW-HARMONIC-LATE.md#l138-h4).
 
 <a id="l138-h5"></a><a id="oa-flow.xgaps.cstar.h5"></a><a id="OA-FLOW.XGAPS.CSTAR.H5"></a>
 
-[H5: actual later deduction](OA-FLOW-HARMONIC-LATE.md#l138-h5).
+[H5: further reading and prerequisites](OA-FLOW-HARMONIC-LATE.md#l138-h5).
 
 <a id="oa-flow.xgaps.cstar.harmonic"></a><a id="OA-FLOW.XGAPS.CSTAR.HARMONIC"></a>
 

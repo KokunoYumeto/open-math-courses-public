@@ -24,22 +24,25 @@ For a face \(I\) let \(\Delta_I\) be the closed face of \(\Delta^{m-1}\) spanned
 
 *Proof.* Fix a facet \(I\), a witness \(x_0\) with \(S(x_0)=I\), and put
 \[
-s=|I|,\qquad J=[m]\setminus I,\qquad a=|J|,\qquad h=N_{k-1}.
+\begin{gathered}
+s=|I|,\qquad J=[m]\setminus I,\\
+a=|J|,\qquad h=N_{k-1}.
+\end{gathered}
 \]
 
 *Step 1: \(s\le k\).* Every line of \(x_0^\perp\) uses only labels of \(J\) (Lemma 3.2 of [Diameter covers and admissible maps](diameter-covers-and-admissible-maps.md)), and at least \(h\) labels occur there (Corollary 1.2, \(\dim x_0^\perp=k-1\ge2\)). So \(a\ge h\) and \(s=N_k-a\le N_k-N_{k-1}=k\).
 
 *Step 2: the level set.* Let \(r\in\mathring\Delta_I\) be a regular value of \(f_I\) on \(U_I\); regular values exist by Sard's theorem (Corollary 2.2 of [Regular values and degree modulo two](regular-values-and-degree-modulo-two.md)). Put \(L=f^{-1}(\tilde r)\). A line with \(f(x)=\tilde r\) has \(f_i(x)=r_i>0\) for \(i\in I\), so \(L=f_I^{-1}(r)\subseteq U_I\). Admissibility makes \(f\) smooth as an \(\mathbb R^m\)-valued map on the whole compact projective space. It is therefore continuous as a map \(f:\mathbb P(V)\to\Delta^{m-1}\), with the simplex carrying its subspace topology. The simplex is Hausdorff, so \(L=f^{-1}(\{\tilde r\})\) is closed in \(\mathbb P(V)\) and therefore compact. Apply the local manifold assertion of Proposition 3.1 there to \(f_I:U_I\to\mathring\Delta_I\); it gives the smooth structure on this same fibre, of dimension \((k-1)-(s-1)=k-s=a-h\), with its subspace topology. Compactness here comes from the global map \(f\), not from compactness of the open set \(U_I\). Moreover \(U_I\) lies in the affine chart \(\mathbb P(V)\setminus\mathbb P(x_0^\perp)\).
 
-*Step 3: a sphere bundle and an odd map.* For \(x\in U_I\), lines orthogonal to \(x\) use only labels in \(J\), so \(f|_{\mathbb P(x^\perp)}\), in the coordinates \(J\), is an admissible map to \(\Delta_J\cong\Delta^{a-1}\); let \(F_{x^\perp}\) be its odd extension, mapping \(\Sigma(x^\perp)\) to \(\Sigma_a\). Let \(\mathcal S_x\) be the set of \(B\in\operatorname{Sym}(V)\) that vanish on \(x\) and map \(x^\perp\) into itself; restriction identifies \(\mathcal S_x\) with \(\operatorname{Sym}(x^\perp)\), and by Proposition 3.1(e) of [An odd map on symmetric matrices](an-odd-map-on-symmetric-matrices.md), \(F_V(B)\) has zero \(I\)-coordinates and \(J\)-coordinates \(F_{x^\perp}(B|_{x^\perp})\). Put
-\[
-M=\{(x,B):x\in L,\ B\in\mathcal S_x,\ \operatorname{tr}|B|=1\},\qquad G(x,B)=F_V(B)_J\in\Sigma_a .
-\]
+*Step 3: a sphere bundle and an odd map.* For \(x\in U_I\), lines orthogonal to \(x\) use only labels in \(J\), so \(f|_{\mathbb P(x^\perp)}\), in the coordinates \(J\), is an admissible map to \(\Delta_J\cong\Delta^{a-1}\); let \(F_{x^\perp}\) be its odd extension, mapping \(\Sigma(x^\perp)\) to \(\Sigma_a\). Let \(\mathcal S_x\) be the set of \(B\in\operatorname{Sym}(V)\) that vanish on \(x\) and map \(x^\perp\) into itself; restriction identifies \(\mathcal S_x\) with \(\operatorname{Sym}(x^\perp)\), and by Proposition 3.1(e) of [An odd map on symmetric matrices](an-odd-map-on-symmetric-matrices.md), \(F_V(B)\) has zero \(I\)-coordinates and \(J\)-coordinates \(F_{x^\perp}(B|_{x^\perp})\). Let \(M\) be the set of the pairs \((x,B)\) with \(x\in L\), \(B\in\mathcal S_x\) and \(\operatorname{tr}|B|=1\), and put \(G(x,B)=F_V(B)_J\in\Sigma_a\).
 \(G\) is continuous, and \(G(x,-B)=-G(x,B)\).
 
 The bundle is trivial over the affine chart. Let \(u_0\) be a unit vector of \(x_0\). For \(x\) not orthogonal to \(x_0\), the operator \(I-P_x\) maps \(x_0^\perp\) injectively into \(x^\perp\): if \(w\in x_0^\perp\) and \(w=P_xw\), then \(w\in x\) is orthogonal to \(u_0\), and \(x\not\perp x_0\) forces \(w=0\). Both spaces have dimension \(k-1\), so this is an isomorphism, depending smoothly on \(x\). Applying the Gram–Schmidt process to the images of a fixed orthonormal basis of \(x_0^\perp\) gives a smooth isometry \(T_x:\mathbb R^{k-1}\to V\) with range \(x^\perp\). Then \(B\mapsto D=T_x^{\mathsf T}BT_x\) identifies \(\mathcal S_x\) with \(\operatorname{Sym}(\mathbb R^{k-1})\cong\mathbb R^h\), preserving trace norms, and with the radial projection \(\rho\) onto the unit sphere \(S^{h-1}\) of \(\operatorname{Sym}(\mathbb R^{k-1})\) we get a homeomorphism
 \[
-\Theta:M\to L\times S^{h-1},\qquad(x,B)\mapsto\bigl(x,\rho(T_x^{\mathsf T}BT_x)\bigr),
+\begin{gathered}
+\Theta:M\to L\times S^{h-1},\\
+(x,B)\mapsto\bigl(x,\rho(T_x^{\mathsf T}BT_x)\bigr),
+\end{gathered}
 \]
 which turns \((x,B)\mapsto(x,-B)\) into \((x,z)\mapsto(x,-z)\). We give \(M\) the smooth structure of \(L\times S^{h-1}\); it is a closed manifold of dimension \((a-h)+(h-1)=a-1\). Then \(\Psi=\rho_a\circ G\circ\Theta^{-1}:L\times S^{h-1}\to S^{a-1}\) satisfies \(\Psi(x,-z)=-\Psi(x,z)\).
 
@@ -47,7 +50,10 @@ which turns \((x,B)\mapsto(x,-B)\) into \((x,z)\mapsto(x,-z)\). We give \(M\) th
 
 Fix \(0<\lambda<1\) and let \(y\in\Sigma_m\) have \(I\)-coordinates \(\lambda r\) and \(J\)-coordinates \((1-\lambda)g\). All coordinates of \(y\) are nonzero. We claim that
 \[
-(x,B)\longmapsto A=\lambda P_x+(1-\lambda)B \tag{2.1}
+\begin{aligned}
+&(x,B)\longmapsto A\\
+&\quad =\lambda P_x+(1-\lambda)B
+\end{aligned}\tag{2.1}
 \]
 is a bijection from \(G^{-1}(g)\) onto \(F_V^{-1}(y)\cap\Sigma(V)\).
 
@@ -55,7 +61,10 @@ If \((x,B)\in G^{-1}(g)\), then \(B\) is negative definite on \(x^\perp\), so \(
 
 Each \(A\) in (2.1) is a regular point. Near \(A^*=\lambda P_{x^*}+(1-\lambda)B^*\), the operators of \(\Sigma(V)\) are nonsingular with exactly one positive eigenvalue, and
 \[
-(\lambda',x',D')\longmapsto\lambda'P_{x'}+(1-\lambda')T_{x'}D'T_{x'}^{\mathsf T},
+\begin{aligned}
+&(\lambda',x',D')\longmapsto\lambda'P_{x'}\\
+&\quad +(1-\lambda')T_{x'}D'T_{x'}^{\mathsf T},
+\end{aligned}
 \]
 with \(\lambda'\) near \(\lambda\), \(x'\) near \(x^*\) in \(U_I\), and \(D'\) negative definite with \(\operatorname{tr}D'=-1\), is a system of smooth coordinates on the hypersurface \(\Sigma(V)\) (Lemma 4.1 there): its inverse sends \(A\) to the positive eigenvalue \(\operatorname{tr}A_+\), the line \(\operatorname{ran}\Pi_+(A)\), and \(T_{x'}^{\mathsf T}(-A_-)T_{x'}/(1-\lambda')\), all smooth by Lemma 1.2 there. The number of coordinates is \(1+(k-1)+(h-1)=N_k-1\). Near \(y\), the vectors of \(\Sigma_m\) with positive \(I\)-coordinates and negative \(J\)-coordinates have smooth coordinates \((\mu,y_I/\mu,y_J/(1-\mu))\) with \(\mu=\sum_{i\in I}y_i\). By the computation above, valid for every \(x'\in U_I\), the map \(F_V\) reads in these coordinates
 \[
@@ -65,7 +74,11 @@ where \(G(x',D')=-E_V(T_{x'}(-D')T_{x'}^{\mathsf T})_J\) is smooth for \(x'\in U
 
 By Proposition 1.1, \(\deg_2\widehat F=1\). The local counting lemma (Lemma 4.2 of [Regular values and degree modulo two](regular-values-and-degree-modulo-two.md)), applied to \(\widehat F\) at \(\rho_m(y)\) with Lemma 4.1(c) of [An odd map on symmetric matrices](an-odd-map-on-symmetric-matrices.md), gives
 \[
-|G^{-1}(g)|=|F_V^{-1}(y)\cap\Sigma(V)|\equiv1\pmod2 . \tag{2.2}
+\begin{aligned}
+&|G^{-1}(g)|\\
+&\quad =|F_V^{-1}(y)\cap\Sigma(V)|\\
+&\quad \equiv1\pmod2 .
+\end{aligned}\tag{2.2}
 \]
 In particular \(L\ne\varnothing\).
 
@@ -85,7 +98,10 @@ Order the labels \(1<\dots<m\). For a face \(I=\{i_0<\dots<i_d\}\) let \(\sigma_
 
 *Proof.* A point of \(|K|\) close to \(t\) has positive coordinates in \(I\), so it lies in some \(\Delta_J\) with \(J\supseteq I\), \(J\in K\); by maximality \(J=I\). So a neighbourhood of \(t\) in \(|K|\) lies in \(\mathring\Delta_I\). Let \(E\) be the affine span of \(\Delta_I\), a Euclidean space of dimension \(d\). Excision of \(|K|\setminus\Delta_I\), whose closure misses \(\mathring\Delta_I\), and of \(E\setminus\Delta_I\), gives
 \[
-H_d(|K|,|K|\setminus t)\cong H_d(\Delta_I,\Delta_I\setminus t)\cong H_d(E,E\setminus t),
+\begin{aligned}
+H_d(|K|,|K|\setminus t)&\cong H_d(\Delta_I,\Delta_I\setminus t)\\
+&\cong H_d(E,E\setminus t),
+\end{aligned}
 \]
 and by Lemma 1.2(3) of [Orientations and fundamental classes](course:poincare-duality-on-manifolds/orientations-and-fundamental-classes), the class of \(\sigma_I\) generates the last group. For \(J\ne I\) of dimension \(d\), \(\sigma_J\) has image \(\Delta_J\), which does not contain \(t\), so its class in \(H_d(|K|,|K|\setminus t)\) is zero. \(\square\)
 
@@ -107,7 +123,7 @@ and by Lemma 1.2(3) of [Orientations and fundamental classes](course:poincare-du
 
 **4.1.** If \(S(x)=\{1,2,3\}\), a line orthogonal to \(x\) would have empty support. By Proposition 1.1 every pair is a face, so the facets are the three pairs. Each label lies in exactly two of them, so the boundary of their sum vanishes modulo two.
 
-**4.2.** \(N_k-N_{k-1}=\frac{k(k+1)-(k-1)k}2=k\), and \(1+(k-1)+N_{k-1}-1=k+N_{k-1}-1=N_k-1\).
+**4.2.** \(N_k-N_{k-1}=\frac{k(k+1)-(k-1)k}2=k\), and \(1+(k-1)+N_{k-1}-1=k+N_{k-1}-1\), which is \(N_k-1\).
 
 **4.3.** A subspace of dimension at least two meets every hyperplane, in particular \(x_0^\perp\), in a nonzero vector. Lines of \(x_0^\perp\) use only labels outside \(S(x_0)=I\), by admissibility; lines of the positive spectral subspace use only labels in \(I\), because the positive coordinates of \(F_V(A)\) are exactly those in \(I\). A line in both would have empty support. This uses that \(x_0\) witnesses \(I\) exactly.
 

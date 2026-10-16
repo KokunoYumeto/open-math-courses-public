@@ -5,9 +5,10 @@ and phase transition have both been included. We construct that symbol,
 prove its exact kernel, and realize every global symbol class. The proof
 includes the support construction on a noncompact base manifold.
 
-Original programme exposition and examples: GPT-6 Astra (OpenAI), Ultra,
-4 October 2026; CC0 to the extent rights exist. Earlier components retain
-their own licences.
+Programme exposition and examples: GPT-6 Astra (OpenAI), Ultra.
+Dyadic point-mass calculation, source notes and editorial text: GPT-6.1 Sol
+(OpenAI), Ultra. Independent programme text: CC0 to the extent rights exist.
+Linked human works and earlier components retain their own terms.
 
 ## PS0. Statement and exact inputs
 
@@ -47,7 +48,7 @@ the exact sequence
 All orders are real. A principal symbol here is a class modulo one
 lower order; an ordinary symbol need not have a homogeneous leading term.
 
-The complete earlier programme proofs are:
+The mathematical inputs are:
 
 - [C0–C5](conic-frequency-coordinates.md): cotangent coordinates,
   frequency graphs, critical sets and inverse charts;
@@ -60,10 +61,15 @@ The complete earlier programme proofs are:
 - [K6–K7](conic-parametrices-and-localization.md): intrinsic localization,
   sufficiently small cutoffs and Lagrangian extension independence;
 - [U001 A.4–A.6](../../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md)
-  and its exact earlier proofs: finite smooth bumps, quotient densities
+  and its elementary inputs: finite smooth bumps, quotient densities
   and compact integration; U001 P2–P4, P8, P13–P16 and P21.3–P21.4:
   matrix and smooth inverses, derivatives, roots, powers, exponentials
   and change of variables.
+
+The elementary analysis reference guide
+distinguishes linked human proofs from programme arguments in the U001
+inputs. Those human texts retain their own terms and are not included
+in this CC0 reading.
 
 PS5 proves the global partition needed here. No global partition,
 sheaf or phase-equivalence theorem is imported as a prerequisite.
@@ -582,12 +588,12 @@ as required when \(N\) increases by one.
 The old phase symbol is
 \(e^{i\pi/4}a_0|d\theta|^{1/2}\); the new is
 \(e^{i\pi(2-\epsilon)/4}a_0|d\theta|^{1/2}\).
-The ratio is \(e^{i\pi(\epsilon-1)/4}\), equal to \(1\)
+Dividing the old coefficient by the new coefficient gives \(e^{i\pi(\epsilon-1)/4}\), equal to \(1\)
 for the positive square and \(-i\) for the negative square,
 exactly M6's transition. Geometric evaluation (PS28) gives
 \(a_0|d\theta|^{1/2}\) in both descriptions.
-The distributions agree modulo \(I^{m-1}\); agreement to
-all orders requires F5's further amplitude correction. \(\square\)
+The distributions agree modulo \(I^{m-1}\). F5 provides representatives
+agreeing to all orders by correcting any lower-order differences. \(\square\)
 
 **Exercise PS3: the point mass.** For \(X=\mathbb R\) and
 \(\Lambda=\{(0,\xi):\xi\ne0\}\), compute the principal symbol
@@ -614,24 +620,53 @@ geometric half-density \((2\pi)^{-1/4}|d\xi|^{1/2}\).
 Equivalently use \(H=0,\widehat{\delta_0}=1\) in (PS29).
 This symbol is not in \(S^{M-1}\) on either ray, so the exact
 sequence also gives \(\delta_0\notin I^{-3/4}(\Lambda)\).
+
+For the sharp threshold at every real order, take
+\(\chi\in C_c^\infty(\mathbb R)\) equal to one near zero. Then
+\(\chi\delta_0=\delta_0\). For the sharp frequency blocks in B1,
+Plancherel gives, for \(j\ge1\),
+\[
+ \begin{aligned}
+ \|\Pi_j\delta_0\|_2^2
+   &=(2\pi)^{-1}\bigl|\{\xi:2^j\leq|\xi|<2^{j+1}\}\bigr|
+     =\pi^{-1}2^j,\\
+ 2^{j(-m-1/4)}\|\Pi_j\delta_0\|_2
+   &=\pi^{-1/2}2^{j(1/4-m)}.
+ \end{aligned}
+\]
+The low-frequency block is finite. Thus the empty word in the intrinsic
+condition already excludes every \(m<1/4\). The phase representation
+above gives the full word condition at \(m=1/4\), by F6. The dyadic
+inclusion \(B^s\subset B^t\) for \(s\ge t\), applied to every word,
+then gives
+\[
+ \delta_0|dx|^{1/2}\in I^m(\mathbb R,\Lambda)
+       \quad\Longleftrightarrow\quad m\ge\tfrac14.
+\]
 \(\square\)
 
 ## Free human source and scope
 
-The freely readable source is Lars Hörmander,
+Lars Hörmander,
 [*Fourier integral operators. I*](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
-Section 3.2, printed pages 142–154: critical densities, phase
-normalization and the global symbol construction.
-The internal proof uses the already proved ordinary Fourier-testing
-argument; the global support construction is supplied in PS5–PS6.
-No source prose, figure, PDF, phase-equivalence proof or cohomology
-argument is imported.
+*Acta Mathematica* **127** (1971), 79–183, Section 3.2, printed pages
+142–154, develops the critical densities, phase normalization and global
+principal symbol. Formula (3.2.15) gives the phase-line transition, and
+Theorem 3.2.5 identifies the symbol quotient. An exact
+[free PDF copy](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6118-11511_2006_Article_BF02392052.pdf)
+is available from the Yau Mathematical Sciences Center archive.
+
+The argument here uses ordinary Fourier testing and the explicit
+base-local support construction in PS5–PS6. Phase signatures are evaluated
+in the relative Maslov line through M22. The point-mass threshold is also
+computed directly from dyadic block norms. Works appearing only in the
+source bibliography are not additional proof inputs.
 
 The theorem concerns ordinary symbols on a closed embedded conic
 Lagrangian, finite-rank bundle values, all real orders and local
-estimates on an arbitrary such base manifold. It does not choose
-a natural global trivialization of the Maslov line.
-The tangent lesson still needs its Gaussian-model identification
-and convention reconciliation. Fourier-integral composition
-and the remaining AN-04 course are separate obligations.
+estimates on an arbitrary such base manifold. The Maslov line is kept
+intrinsic; no natural global trivialization is chosen. The Fourier
+formula uses compact local representatives in graph charts. Composition
+of Fourier integral operators requires its own geometric and analytic
+hypotheses.
 

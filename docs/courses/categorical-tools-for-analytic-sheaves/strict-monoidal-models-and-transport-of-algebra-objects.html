@@ -1,0 +1,300 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Strict monoidal models and transport of algebra objects</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="strict-monoidal-models-and-transport-of-algebra-objects">Strict monoidal models and transport of algebra objects</h1>
+<p>Parentheses can be normalized while every original morphism remains available. The resulting strict category has words as objects, but its arrows are all maps between their evaluated tensor products. This distinguishes a strict model of a given category from the free category whose arrows act separately on letters.</p>
+<p>Work with a locally small monoidal category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> in suitable fixed universes, enlarging the object universe when necessary. Write <span class="math" data-tex="\(I\)">\(I\)</span> for its unit and <span class="math" data-tex="\(a:(X\otimes Y)\otimes Z\to X\otimes(Y\otimes Z)\)">\(a:(X\otimes Y)\otimes Z\to X\otimes(Y\otimes Z)\)</span>, <span class="math" data-tex="\(l\)">\(l\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span> for its constraints. No braiding, additivity or exactness is assumed. We use the independent normal-form coherence proof described in <a href="tensor-actions-and-absolute-algebra-presentations.html#1-the-action-of-the-unit-detects-unitality">Tensor actions, Section 1</a>: its pinned Mathlib proof constructs a natural normalization isomorphism and proves equality of parallel formal structural maps. That proof does not assume the strictification constructed here. It applies to the same ordered formal letters and unit insertions; it does not identify arbitrary arrows with equal evaluated endpoints. The <a href="free-tensor-words-and-ordered-algebra-encoding.html">free tensor-word lesson</a> supplies the comparison with the letterwise free construction.</p>
+<h2 id="1-evaluation-and-the-concatenation-comparisons">1. Evaluation and the concatenation comparisons</h2>
+<p>For a finite word <span class="math" data-tex="\(u=(X_1,\ldots,X_n)\)">\(u=(X_1,\ldots,X_n)\)</span>, evaluate with left association:
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}E[]=I,\qquad E[X]=X,\\
+E(u[X])=Eu\otimes X\quad(u\ne[]).\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}E[]=I,\qquad E[X]=X,\\
+E(u[X])=Eu\otimes X\quad(u\ne[]).\end{gathered}
+\tag{1.1}
+\]</span>
+The empty word is a genuine object, distinct from the one-letter word <span class="math" data-tex="\([I]\)">\([I]\)</span>. Concatenation is written <span class="math" data-tex="\(uv\)">\(uv\)</span>.</p>
+<p>Choose the structural isomorphism
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+\mu_{u,v}:Eu\otimes Ev\longrightarrow E(uv).
+\tag{1.2}
+\]">\[
+\mu_{u,v}:Eu\otimes Ev\longrightarrow E(uv).
+\tag{1.2}
+\]</span>
+For empty factors use <span class="math" data-tex="\(\mu_{[],v}=l_{Ev}\)">\(\mu_{[],v}=l_{Ev}\)</span> and <span class="math" data-tex="\(\mu_{u,[]}=r_{Eu}\)">\(\mu_{u,[]}=r_{Eu}\)</span>; for both empty these agree because <span class="math" data-tex="\(l_I=r_I\)">\(l_I=r_I\)</span>. For nonempty factors, reassociate the ordered factors to their left-associated evaluation. Coherence makes every such choice equal; in particular <span class="math" data-tex="\(\mu_{[X],[Y]}=1_{X\otimes Y}\)">\(\mu_{[X],[Y]}=1_{X\otimes Y}\)</span>.</p>
+<p><strong>Lemma 1.1 (the split identity).</strong> For any three words,
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\mu_{uv,w}(\mu_{u,v}\otimes1)\\
+=\mu_{u,vw}(1\otimes\mu_{v,w})\\
+\cdot a_{Eu,Ev,Ew}.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+\mu_{uv,w}(\mu_{u,v}\otimes1)\\
+=\mu_{u,vw}(1\otimes\mu_{v,w})\\
+\cdot a_{Eu,Ev,Ew}.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<strong>Proof.</strong> Both sides are structural maps from <span class="math" data-tex="\((Eu\otimes Ev)\otimes Ew\)">\((Eu\otimes Ev)\otimes Ew\)</span> to the left-associated evaluation of the same concatenated word. Replace each occurrence of an evaluated nonempty word by its ordered formal letters and each empty word by a formal unit. The independent coherence theorem makes the two formal composites equal, and evaluation gives (1.3). This includes every empty-factor case and the identity <span class="math" data-tex="\(l_I=r_I\)">\(l_I=r_I\)</span>. Naturality of all these maps follows from naturality of the associator and unit maps, by composition and tensoring. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-strict-category-with-all-the-original-arrows">2. A strict category with all the original arrows</h2>
+<p>Let <span class="math" data-tex="\(\mathcal W\mathcal C\)">\(\mathcal W\mathcal C\)</span> have finite words as objects, and define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathcal W\mathcal C}(u,v)
+=\operatorname{Hom}_{\mathcal C}(Eu,Ev).
+\tag{2.1}
+\]">\[
+\operatorname{Hom}_{\mathcal W\mathcal C}(u,v)
+=\operatorname{Hom}_{\mathcal C}(Eu,Ev).
+\tag{2.1}
+\]</span>
+Identity and composition are those in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. This is a category because their types, associativity and units are inherited exactly; its Hom collections are small. Define tensor on objects by concatenation. For <span class="math" data-tex="\(f:u\to u&#x27;\)">\(f:u\to u&#x27;\)</span> and <span class="math" data-tex="\(g:v\to v&#x27;\)">\(g:v\to v&#x27;\)</span>, define its arrow by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}f\mathbin{\Box}g\\
+=\mu_{u&#x27;,v&#x27;}(f\otimes g)\mu_{u,v}^{-1}.\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}f\mathbin{\Box}g\\
+=\mu_{u&#x27;,v&#x27;}(f\otimes g)\mu_{u,v}^{-1}.\end{gathered}
+\tag{2.2}
+\]</span></p>
+<p><strong>Theorem 2.1.</strong> These operations make <span class="math" data-tex="\(\mathcal W\mathcal C\)">\(\mathcal W\mathcal C\)</span> a strict monoidal category, with empty word as unit. Evaluation <span class="math" data-tex="\(E:\mathcal W\mathcal C\to\mathcal C\)">\(E:\mathcal W\mathcal C\to\mathcal C\)</span>, identity on each Hom set, is a strong monoidal equivalence with tensor comparison <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and unit comparison <span class="math" data-tex="\(1_I\)">\(1_I\)</span>.</p>
+<p><strong>Proof: tensor is a bifunctor.</strong> Tensoring identity arrows in (2.2) gives identity. For successive pairs of arrows, the adjacent inverse and forward <span class="math" data-tex="\(\mu\)">\(\mu\)</span>'s cancel. Bifunctoriality of the original tensor then gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}(f&#x27;f)\Box(g&#x27;g)\\
+=(f&#x27;\Box g&#x27;)(f\Box g).\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}(f&#x27;f)\Box(g&#x27;g)\\
+=(f&#x27;\Box g&#x27;)(f\Box g).\end{gathered}
+\tag{2.3}
+\]</span>
+Thus this is a bifunctor, not just an operation on isomorphisms.</p>
+<p><strong>Proof: strict associativity.</strong> Expanding <span class="math" data-tex="\((f\Box g)\Box h\)">\((f\Box g)\Box h\)</span> gives the composite through <span class="math" data-tex="\((Eu\otimes Ev)\otimes Ew\)">\((Eu\otimes Ev)\otimes Ew\)</span>, with the outer comparisons
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\mu_{uv,w}(\mu_{u,v}\otimes1)
+\tag{2.4}
+\]">\[
+\mu_{uv,w}(\mu_{u,v}\otimes1)
+\tag{2.4}
+\]</span>
+at source and target. Expanding <span class="math" data-tex="\(f\Box(g\Box h)\)">\(f\Box(g\Box h)\)</span> gives the corresponding comparisons through <span class="math" data-tex="\(Eu\otimes(Ev\otimes Ew)\)">\(Eu\otimes(Ev\otimes Ew)\)</span>. Identity (1.3) changes the first comparisons into the second with an associator inserted. Naturality of that associator moves <span class="math" data-tex="\((f\otimes g)\otimes h\)">\((f\otimes g)\otimes h\)</span> to <span class="math" data-tex="\(f\otimes(g\otimes h)\)">\(f\otimes(g\otimes h)\)</span>; the source inverse cancels the remaining associator. The two arrows are therefore equal. Their source and target words are literally equal by associativity of concatenation. Consequently the associator of <span class="math" data-tex="\(\mathcal W\mathcal C\)">\(\mathcal W\mathcal C\)</span> is identity.</p>
+<p><strong>Proof: strict units and evaluation.</strong> The left empty-word tensor of <span class="math" data-tex="\(f:u\to v\)">\(f:u\to v\)</span> is <span class="math" data-tex="\(l_{Ev}(1_I\otimes f)l_{Eu}^{-1}=f\)">\(l_{Ev}(1_I\otimes f)l_{Eu}^{-1}=f\)</span>, by naturality of <span class="math" data-tex="\(l\)">\(l\)</span>. The right calculation uses <span class="math" data-tex="\(r\)">\(r\)</span> and gives the same conclusion. Hence both unit constraints are identity on arrows as well as objects. Equation (2.2) is exactly naturality of the tensor comparison for <span class="math" data-tex="\(E\)">\(E\)</span>, and (1.3) is its associativity axiom. Its two unit axioms are the definitions of <span class="math" data-tex="\(\mu_{[],u}\)">\(\mu_{[],u}\)</span> and <span class="math" data-tex="\(\mu_{u,[]}\)">\(\mu_{u,[]}\)</span>. Thus <span class="math" data-tex="\(E\)">\(E\)</span> is strong monoidal. It is fully faithful by (2.1), and every <span class="math" data-tex="\(X\)">\(X\)</span> is the evaluation of <span class="math" data-tex="\([X]\)">\([X]\)</span>, proving essential surjectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an explicit inverse, let <span class="math" data-tex="\(JX=[X]\)">\(JX=[X]\)</span> and let <span class="math" data-tex="\(Jf=f\)">\(Jf=f\)</span> as a singleton-word arrow. Its tensor comparison <span class="math" data-tex="\([X,Y]\to[X\otimes Y]\)">\([X,Y]\to[X\otimes Y]\)</span> is represented by <span class="math" data-tex="\(1_{X\otimes Y}\)">\(1_{X\otimes Y}\)</span>; its unit comparison <span class="math" data-tex="\([]\to[I]\)">\([]\to[I]\)</span> is represented by <span class="math" data-tex="\(1_I\)">\(1_I\)</span>. These maps satisfy the strong functor axioms: applying the faithful <span class="math" data-tex="\(E\)">\(E\)</span> reduces associativity to the canonical reassociations of the three original factors, and reduces the unit equations to the original unit constraints. The composite <span class="math" data-tex="\(EJ\)">\(EJ\)</span> is the identity strong monoidal functor.</p>
+<p>There is a natural monoidal isomorphism
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}\kappa:1_{\mathcal W\mathcal C}\longrightarrow JE,\\
+\kappa_u:u\to[Eu]\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}\kappa:1_{\mathcal W\mathcal C}\longrightarrow JE,\\
+\kappa_u:u\to[Eu]\end{gathered}
+\tag{2.5}
+\]</span>
+represented by <span class="math" data-tex="\(1_{Eu}\)">\(1_{Eu}\)</span>. Naturality follows because <span class="math" data-tex="\(\kappa_v f=[f]\kappa_u\)">\(\kappa_v f=[f]\kappa_u\)</span> has representative <span class="math" data-tex="\(f\)">\(f\)</span> on both sides. For tensor compatibility, both routes from <span class="math" data-tex="\(uv\)">\(uv\)</span> to <span class="math" data-tex="\([E(uv)]\)">\([E(uv)]\)</span> are represented by <span class="math" data-tex="\(1_{E(uv)}\)">\(1_{E(uv)}\)</span>: the transported tensor of the two identity representatives introduces precisely the <span class="math" data-tex="\(\mu_{u,v}^{-1}\)">\(\mu_{u,v}^{-1}\)</span> canceled by the comparison of <span class="math" data-tex="\(JE\)">\(JE\)</span>. At the empty word its component is the specified unit comparison. This proves a monoidal equivalence, with its maps and inverse, rather than only an equivalence of underlying categories.</p>
+<h2 id="3-strong-functors-become-strict-on-word-models">3. Strong functors become strict on word models</h2>
+<p>Let <span class="math" data-tex="\(F:\mathcal C\to\mathcal D\)">\(F:\mathcal C\to\mathcal D\)</span> be strong monoidal, with comparisons
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+F_2:FX\otimes FY\longrightarrow F(X\otimes Y),\\
+F_0:I_{\mathcal D}\longrightarrow F(I_{\mathcal C}).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+F_2:FX\otimes FY\longrightarrow F(X\otimes Y),\\
+F_0:I_{\mathcal D}\longrightarrow F(I_{\mathcal C}).
+\end{gathered}
+\tag{3.1}
+\]</span>
+Define isomorphisms <span class="math" data-tex="\(\phi_u:E_{\mathcal D}(Fu)\to F(E_{\mathcal C}u)\)">\(\phi_u:E_{\mathcal D}(Fu)\to F(E_{\mathcal C}u)\)</span>. At the empty word use <span class="math" data-tex="\(F_0\)">\(F_0\)</span>, at a singleton use identity, and for a nonempty word followed by a letter use
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\phi_{u[X]}=F_2(\phi_u\otimes1_{FX}).
+\tag{3.2}
+\]">\[
+\phi_{u[X]}=F_2(\phi_u\otimes1_{FX}).
+\tag{3.2}
+\]</span>
+These are invertible because every factor is invertible.</p>
+<p><strong>Lemma 3.1 (comparison across a split).</strong> For all words,
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\phi_{uv}\mu^{\mathcal D}_{Fu,Fv}
+&amp;=F(\mu^{\mathcal C}_{u,v})F_2\\
+&amp;\hspace{10mm}\cdot(\phi_u\otimes\phi_v).
+\end{aligned}
+\tag{3.3}
+\]">\[
+\begin{aligned}
+\phi_{uv}\mu^{\mathcal D}_{Fu,Fv}
+&amp;=F(\mu^{\mathcal C}_{u,v})F_2\\
+&amp;\hspace{10mm}\cdot(\phi_u\otimes\phi_v).
+\end{aligned}
+\tag{3.3}
+\]</span>
+<strong>Proof.</strong> If either word is empty, the equation is the corresponding unit axiom of the strong monoidal functor, with naturality of the unit constraint and the definition of <span class="math" data-tex="\(F_0\)">\(F_0\)</span>. For nonempty words, induct on the length of <span class="math" data-tex="\(v\)">\(v\)</span>. Length one is (3.2), since evaluation of a word followed by one letter has the prescribed left association. For the step <span class="math" data-tex="\(v=t[X]\)">\(v=t[X]\)</span>, expand <span class="math" data-tex="\(\phi_{ut[X]}\)">\(\phi_{ut[X]}\)</span> by (3.2) and apply the induction hypothesis to <span class="math" data-tex="\(u,t\)">\(u,t\)</span>. The associativity axiom for <span class="math" data-tex="\(F_2\)">\(F_2\)</span> changes the resulting comparison of <span class="math" data-tex="\((F(Eu)\otimes F(Et))\otimes FX\)">\((F(Eu)\otimes F(Et))\otimes FX\)</span> into the comparison through <span class="math" data-tex="\(F(Eu)\otimes(F(Et)\otimes FX)\)">\(F(Eu)\otimes(F(Et)\otimes FX)\)</span>. The two original <span class="math" data-tex="\(\mu\)">\(\mu\)</span>'s are changed in exactly this way by (1.3). Naturality of <span class="math" data-tex="\(F_2\)">\(F_2\)</span> then moves <span class="math" data-tex="\(\phi_t\)">\(\phi_t\)</span> and the last identity inside, leaving the right-hand side of (3.3). This proves the step and all cases. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define <span class="math" data-tex="\(\mathcal WF\)">\(\mathcal WF\)</span> letterwise on objects and, for an arbitrary word arrow, by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}(\mathcal WF)(f)=\phi_v^{-1}F(f)\phi_u,\\
+f:u\to v.\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}(\mathcal WF)(f)=\phi_v^{-1}F(f)\phi_u,\\
+f:u\to v.\end{gathered}
+\tag{3.4}
+\]</span>
+It respects identity and composition by cancellation of adjacent <span class="math" data-tex="\(\phi\)">\(\phi\)</span>'s. It preserves the empty word and concatenation literally. To check tensor on arrows, substitute (2.2) into (3.4) and use (3.3) once at the source and once at the target. The remaining middle expression is <span class="math" data-tex="\(F_2^{-1}F(f\otimes g)F_2=F(f)\otimes F(g)\)">\(F_2^{-1}F(f\otimes g)F_2=F(f)\otimes F(g)\)</span>, by naturality of <span class="math" data-tex="\(F_2\)">\(F_2\)</span>. Formula (2.2) in <span class="math" data-tex="\(\mathcal W\mathcal D\)">\(\mathcal W\mathcal D\)</span> is exactly the result. Thus <span class="math" data-tex="\(\mathcal WF\)">\(\mathcal WF\)</span> is a strict monoidal functor. The maps <span class="math" data-tex="\(\phi_u\)">\(\phi_u\)</span> give a monoidal natural isomorphism <span class="math" data-tex="\(E_{\mathcal D}\mathcal WF\simeq FE_{\mathcal C}\)">\(E_{\mathcal D}\mathcal WF\simeq FE_{\mathcal C}\)</span>; its naturality is (3.4) and its tensor equation is (3.3).</p>
+<p><strong>Every monoidal natural transformation is retained.</strong> For a monoidal natural transformation <span class="math" data-tex="\(\alpha:F\to G\)">\(\alpha:F\to G\)</span>, set
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}(\mathcal W\alpha)_u\\
+=(\phi^G_u)^{-1}\alpha_{E_{\mathcal C}u}\phi^F_u.\end{gathered}
+\tag{3.5}
+\]">\[
+\begin{gathered}(\mathcal W\alpha)_u\\
+=(\phi^G_u)^{-1}\alpha_{E_{\mathcal C}u}\phi^F_u.\end{gathered}
+\tag{3.5}
+\]</span>
+Naturality follows by inserting (3.4) on each side and applying naturality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Its component at the empty word is identity because <span class="math" data-tex="\(\alpha_I F_0=G_0\)">\(\alpha_I F_0=G_0\)</span>. The tensor equation for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, together with (3.3), gives <span class="math" data-tex="\((\mathcal W\alpha)_{uv}=(\mathcal W\alpha)_u\Box(\mathcal W\alpha)_v\)">\((\mathcal W\alpha)_{uv}=(\mathcal W\alpha)_u\Box(\mathcal W\alpha)_v\)</span>. Hence it is a monoidal transformation between strict functors. Cancellation shows that identities and vertical composites are preserved. No component of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> was assumed invertible.</p>
+<h2 id="4-the-universal-property-for-strict-targets">4. The universal property for strict targets</h2>
+<p>Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be strict monoidal. Write <span class="math" data-tex="\(\mathsf{StrMon}\)">\(\mathsf{StrMon}\)</span> for strict monoidal functors with monoidal natural transformations, and <span class="math" data-tex="\(\mathsf{StrongMon}\)">\(\mathsf{StrongMon}\)</span> for strong monoidal functors with the same kind of transformations.</p>
+<p><strong>Theorem 4.1.</strong> Restriction along <span class="math" data-tex="\(J\)">\(J\)</span> gives an equivalence
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}\mathsf{StrMon}(\mathcal W\mathcal C,\mathcal D)\\
+\simeq\mathsf{StrongMon}(\mathcal C,\mathcal D).\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}\mathsf{StrMon}(\mathcal W\mathcal C,\mathcal D)\\
+\simeq\mathsf{StrongMon}(\mathcal C,\mathcal D).\end{gathered}
+\tag{4.1}
+\]</span>
+<strong>Proof.</strong> For strong <span class="math" data-tex="\(F\)">\(F\)</span>, use <span class="math" data-tex="\(\overline F=E_{\mathcal D}\mathcal WF\)">\(\overline F=E_{\mathcal D}\mathcal WF\)</span>. Evaluation in a strict category is strict, since all its <span class="math" data-tex="\(\mu\)">\(\mu\)</span>'s are identity, so this is a strict functor. Use (3.5) on transformations. On single letters the formula recovers <span class="math" data-tex="\(F\)">\(F\)</span> exactly; on the comparison <span class="math" data-tex="\([X,Y]\to[X\otimes Y]\)">\([X,Y]\to[X\otimes Y]\)</span> it recovers <span class="math" data-tex="\(F_2\)">\(F_2\)</span>, because <span class="math" data-tex="\(\phi_{[X,Y]}=F_2\)">\(\phi_{[X,Y]}=F_2\)</span> and the representative is identity. On <span class="math" data-tex="\([]\to[I]\)">\([]\to[I]\)</span> it recovers <span class="math" data-tex="\(F_0\)">\(F_0\)</span>. Thus <span class="math" data-tex="\(\overline FJ\)">\(\overline FJ\)</span> has precisely the original strong structure, including its unit.</p>
+<p>Conversely let <span class="math" data-tex="\(H:\mathcal W\mathcal C\to\mathcal D\)">\(H:\mathcal W\mathcal C\to\mathcal D\)</span> be strict and put <span class="math" data-tex="\(F=HJ\)">\(F=HJ\)</span>. Strictness gives <span class="math" data-tex="\(\overline F(u)=H(u)\)">\(\overline F(u)=H(u)\)</span> on objects, since every word is the concatenation of its singletons. The recursive definition (3.2) now gives <span class="math" data-tex="\(\phi_u=H(\kappa_u)\)">\(\phi_u=H(\kappa_u)\)</span>; this follows first for empty and singleton words, and then from the tensor comparison of <span class="math" data-tex="\(HJ\)">\(HJ\)</span>. For <span class="math" data-tex="\(f:u\to v\)">\(f:u\to v\)</span>, naturality of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> says
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+[f]\kappa_u=\kappa_v f.
+\tag{4.2}
+\]">\[
+[f]\kappa_u=\kappa_v f.
+\tag{4.2}
+\]</span>
+Applying <span class="math" data-tex="\(H\)">\(H\)</span> and substituting into (3.4) gives <span class="math" data-tex="\(\overline{HJ}(f)=H(f)\)">\(\overline{HJ}(f)=H(f)\)</span>. Finally a monoidal transformation between strict functors has on a word the tensor product of its components on the letters, and has identity component at the empty word. Its restriction therefore determines it; formula (3.5) reconstructs those components, by (4.2) and naturality. These are mutually inverse constructions on functors and transformations, proving (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-transporting-algebras-and-all-their-modules">5. Transporting algebras and all their modules</h2>
+<p>An algebra object has multiplication <span class="math" data-tex="\(m:A\otimes A\to A\)">\(m:A\otimes A\to A\)</span> and unit <span class="math" data-tex="\(e:I\to A\)">\(e:I\to A\)</span>, satisfying the associativity and unit diagrams. A left module has action <span class="math" data-tex="\(s:A\otimes M\to M\)">\(s:A\otimes M\to M\)</span>, with the corresponding action and unit diagrams. These definitions make sense without an additive category.</p>
+<p><strong>Proposition 5.1.</strong> A strong monoidal functor sends these structures to
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\widetilde m=F(m)F_2,\\
+\widetilde e=F(e)F_0,\\
+\widetilde s=F(s)F_2.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\widetilde m=F(m)F_2,\\
+\widetilde e=F(e)F_0,\\
+\widetilde s=F(s)F_2.
+\end{gathered}
+\tag{5.1}
+\]</span>
+If its underlying functor is an equivalence, it induces an equivalence of algebra categories, and for each <span class="math" data-tex="\(A\)">\(A\)</span> an equivalence of the full left-module categories over <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(FA\)">\(FA\)</span>.</p>
+<p><strong>Proof: laws and maps.</strong> From <span class="math" data-tex="\((FA\otimes FA)\otimes FA\)">\((FA\otimes FA)\otimes FA\)</span>, expanding the left associativity route for <span class="math" data-tex="\(\widetilde m\)">\(\widetilde m\)</span> gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}F(m)F(m\otimes1)\\
+\cdot F_2(F_2\otimes1).\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}F(m)F(m\otimes1)\\
+\cdot F_2(F_2\otimes1).\end{gathered}
+\tag{5.2}
+\]</span>
+Naturality of <span class="math" data-tex="\(F_2\)">\(F_2\)</span> justifies the expansion. The other route expands through <span class="math" data-tex="\(FA\otimes(FA\otimes FA)\)">\(FA\otimes(FA\otimes FA)\)</span>. The associativity axiom of <span class="math" data-tex="\(F\)">\(F\)</span> identifies the comparison into <span class="math" data-tex="\(F(A\otimes(A\otimes A))\)">\(F(A\otimes(A\otimes A))\)</span> with <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span> followed after the comparison into <span class="math" data-tex="\(F((A\otimes A)\otimes A)\)">\(F((A\otimes A)\otimes A)\)</span>. The original equation <span class="math" data-tex="\(m(m\otimes1)=m(1\otimes m)a\)">\(m(m\otimes1)=m(1\otimes m)a\)</span> now proves equality. Replacing the third <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(M\)">\(M\)</span> gives exactly the action calculation. For the left unit, naturality changes the inserted <span class="math" data-tex="\(F(e)F_0\)">\(F(e)F_0\)</span> into <span class="math" data-tex="\(F(e\otimes1)F_2(F_0\otimes1)\)">\(F(e\otimes1)F_2(F_0\otimes1)\)</span>; the original unit equation and the left unit axiom of <span class="math" data-tex="\(F\)">\(F\)</span> reduce the result to the target left unitor. The right algebra unit uses the right unit axiom in the same way. For a structure-preserving arrow, naturality of <span class="math" data-tex="\(F_2\)">\(F_2\)</span> and functoriality carry its multiplication or action equation to the transported equation. Thus (5.1) defines the asserted functors on all morphisms.</p>
+<p><strong>Proof: full faithfulness and lifting objects.</strong> Assume <span class="math" data-tex="\(F\)">\(F\)</span> is fully faithful and essentially surjective. Every arrow <span class="math" data-tex="\(FA\to FB\)">\(FA\to FB\)</span> is <span class="math" data-tex="\(Fh\)">\(Fh\)</span> for a unique <span class="math" data-tex="\(h\)">\(h\)</span>. Its transported multiplication and unit equations, after canceling the invertible comparisons and using naturality, are exactly the images of the equations for <span class="math" data-tex="\(h\)">\(h\)</span>. Faithfulness reflects those equations. This proves full faithfulness on algebras; the action equation proves it for modules too.</p>
+<p>For an algebra <span class="math" data-tex="\(B\)">\(B\)</span> in the target choose an isomorphism <span class="math" data-tex="\(t:FA\to B\)">\(t:FA\to B\)</span>. Fullness uniquely lifts
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+F(m)=t^{-1}m_B(t\otimes t)F_2^{-1},\\
+F(e)=t^{-1}e_BF_0^{-1}.
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+F(m)=t^{-1}m_B(t\otimes t)F_2^{-1},\\
+F(e)=t^{-1}e_BF_0^{-1}.
+\end{gathered}
+\tag{5.3}
+\]</span>
+Applying <span class="math" data-tex="\(F\)">\(F\)</span> to each required law and inserting these formulas reduces it to the corresponding law of <span class="math" data-tex="\(B\)">\(B\)</span>, conjugated by the comparisons in (5.2). Faithfulness proves the laws in the source, and <span class="math" data-tex="\(t\)">\(t\)</span> is an algebra isomorphism. For a module <span class="math" data-tex="\(N\)">\(N\)</span> over the fixed algebra <span class="math" data-tex="\(FA\)">\(FA\)</span>, choose <span class="math" data-tex="\(v:FM\to N\)">\(v:FM\to N\)</span> invertible and lift
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}F(s)=v^{-1}s_N(1_{FA}\otimes v)\\
+\cdot F_2^{-1}.\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}F(s)=v^{-1}s_N(1_{FA}\otimes v)\\
+\cdot F_2^{-1}.\end{gathered}
+\tag{5.4}
+\]</span>
+The same action and unit calculation, now with the algebra fixed, proves the lifted laws and makes <span class="math" data-tex="\(v\)">\(v\)</span> a module isomorphism. This proves both essential-surjectivity statements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Applied to <span class="math" data-tex="\(E\)">\(E\)</span>, this shows that strictification preserves algebras and module categories with every morphism. The singleton algebra <span class="math" data-tex="\([A]\)">\([A]\)</span> has multiplication <span class="math" data-tex="\([A,A]\to[A]\)">\([A,A]\to[A]\)</span> represented by <span class="math" data-tex="\(m\)">\(m\)</span>, and unit <span class="math" data-tex="\([]\to[A]\)">\([]\to[A]\)</span> represented by <span class="math" data-tex="\(e\)">\(e\)</span>. A singleton module <span class="math" data-tex="\([M]\)">\([M]\)</span> has action represented by <span class="math" data-tex="\(s\)">\(s\)</span>. For a longer word <span class="math" data-tex="\(u\)">\(u\)</span>, an action <span class="math" data-tex="\(A\otimes Eu\to Eu\)">\(A\otimes Eu\to Eu\)</span> is represented on <span class="math" data-tex="\([A]u\to u\)">\([A]u\to u\)</span> by composing it with <span class="math" data-tex="\(\mu_{[A],u}^{-1}\)">\(\mu_{[A],u}^{-1}\)</span>. This last comparison is needed because the word is evaluated with fixed parentheses.</p>
+<h2 id="6-four-graded-exercises-with-full-solutions">6. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-a-word-model-contains-more-than-letterwise-maps-introductory">Exercise 1 — A word model contains more than letterwise maps (introductory)</h3>
+<p>Over a field let <span class="math" data-tex="\(V=k^2\)">\(V=k^2\)</span>, <span class="math" data-tex="\(W=k^3\)">\(W=k^3\)</span>. Compare the words <span class="math" data-tex="\(u=[V,W]\)">\(u=[V,W]\)</span> and <span class="math" data-tex="\(v=[V\otimes W]\)">\(v=[V\otimes W]\)</span> in <span class="math" data-tex="\(\mathcal W\mathsf{Vect}_k\)">\(\mathcal W\mathsf{Vect}_k\)</span>. Describe their Hom space and construct an invertible endomorphism of <span class="math" data-tex="\(u\)">\(u\)</span> that is not a single tensor product of two maps on the letters.</p>
+<p><strong>Solution.</strong> Both evaluations are <span class="math" data-tex="\(V\otimes W\)">\(V\otimes W\)</span>, so the identity representative gives an isomorphism <span class="math" data-tex="\(u\to v\)">\(u\to v\)</span>, although the words have different lengths. Their Hom space is the full space of linear maps <span class="math" data-tex="\(k^6\to k^6\)">\(k^6\to k^6\)</span>, of dimension <span class="math" data-tex="\(36\)">\(36\)</span> after bases are chosen. Put <span class="math" data-tex="\(N_V(e_2)=e_1\)">\(N_V(e_2)=e_1\)</span>, <span class="math" data-tex="\(N_V(e_1)=0\)">\(N_V(e_1)=0\)</span>, and <span class="math" data-tex="\(N_W(f_2)=f_1\)">\(N_W(f_2)=f_1\)</span>, <span class="math" data-tex="\(N_W(f_1)=N_W(f_3)=0\)">\(N_W(f_1)=N_W(f_3)=0\)</span>. Then
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{gathered}T=1+N_V\otimes N_W,\\
+T^{-1}=1-N_V\otimes N_W,\end{gathered}
+\]">\[
+\begin{gathered}T=1+N_V\otimes N_W,\\
+T^{-1}=1-N_V\otimes N_W,\end{gathered}
+\]</span>
+because the added map squares to zero. If <span class="math" data-tex="\(T=p\otimes q\)">\(T=p\otimes q\)</span>, the identity of <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(e_1\otimes W\)">\(e_1\otimes W\)</span> forces <span class="math" data-tex="\(p(e_1)=c e_1\)">\(p(e_1)=c e_1\)</span> with <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, and <span class="math" data-tex="\(q=c^{-1}1_W\)">\(q=c^{-1}1_W\)</span>. Its identity on <span class="math" data-tex="\(e_2\otimes f_1\)">\(e_2\otimes f_1\)</span> then forces <span class="math" data-tex="\(p(e_2)=c e_2\)">\(p(e_2)=c e_2\)</span>. This would make <span class="math" data-tex="\(T\)">\(T\)</span> the identity, contrary to its value <span class="math" data-tex="\(e_2\otimes f_2+e_1\otimes f_1\)">\(e_2\otimes f_2+e_1\otimes f_1\)</span> on <span class="math" data-tex="\(e_2\otimes f_2\)">\(e_2\otimes f_2\)</span>. Thus it is a genuine full-morphism word arrow absent from the letterwise free construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-2-noninvertible-monoidal-transformations-intermediate">Exercise 2 — Noninvertible monoidal transformations (intermediate)</h3>
+<p>Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be the discrete strict monoidal category of nonnegative integers under addition. Let <span class="math" data-tex="\(\mathsf{Mat}_k\)">\(\mathsf{Mat}_k\)</span> have dimensions as objects, matrices as arrows and Kronecker tensor; ordered indices make it strict. Take the strict functor <span class="math" data-tex="\(F(n)=2^n\)">\(F(n)=2^n\)</span>. Classify monoidal natural endomorphisms of <span class="math" data-tex="\(F\)">\(F\)</span>, and extend one noninvertible example to <span class="math" data-tex="\(\mathcal W\mathcal C\)">\(\mathcal W\mathcal C\)</span>.</p>
+<p><strong>Solution.</strong> There are no nonidentity arrows imposing naturality equations. The empty tensor forces <span class="math" data-tex="\(\alpha_0=1_k\)">\(\alpha_0=1_k\)</span>, and <span class="math" data-tex="\(n=1+\cdots+1\)">\(n=1+\cdots+1\)</span> forces <span class="math" data-tex="\(\alpha_n=h^{\otimes n}\)">\(\alpha_n=h^{\otimes n}\)</span> for the matrix <span class="math" data-tex="\(h=\alpha_1\)">\(h=\alpha_1\)</span>. Conversely these matrices satisfy every tensor equation by associativity of Kronecker tensor, so every <span class="math" data-tex="\(2\)">\(2\)</span>-by-<span class="math" data-tex="\(2\)">\(2\)</span> matrix occurs. Choose <span class="math" data-tex="\(h=\operatorname{diag}(1,0)\)">\(h=\operatorname{diag}(1,0)\)</span>. For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span> the resulting matrix has rank one and is idempotent, hence noninvertible. On a word <span class="math" data-tex="\((n_1,\ldots,n_r)\)">\((n_1,\ldots,n_r)\)</span>, its strict extension is <span class="math" data-tex="\(h^{\otimes(n_1+\cdots+n_r)}\)">\(h^{\otimes(n_1+\cdots+n_r)}\)</span>, with scalar identity for the empty word. The comparisons <span class="math" data-tex="\(\phi\)">\(\phi\)</span> are identity here, so (3.5) gives precisely this formula. Words with the same sum have the unique identity representative between their evaluations in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>; the displayed components coincide on such words, verifying naturality for every word arrow. In particular the one-letter word <span class="math" data-tex="\([0]\)">\([0]\)</span> and the empty word both have identity component, as required by their isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-3-the-full-module-category-survives-advanced">Exercise 3 — The full module category survives (advanced)</h3>
+<p>Let <span class="math" data-tex="\(A=k[\varepsilon]/(\varepsilon^2)\)">\(A=k[\varepsilon]/(\varepsilon^2)\)</span> and <span class="math" data-tex="\(M=k^2\)">\(M=k^2\)</span>, with <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> acting by <span class="math" data-tex="\(N(e_2)=e_1\)">\(N(e_2)=e_1\)</span>, <span class="math" data-tex="\(N(e_1)=0\)">\(N(e_1)=0\)</span>. Give the singleton-word algebra and module, write the action matrix, and compute every module endomorphism before and after strictification.</p>
+<p><strong>Solution.</strong> The algebra multiplication <span class="math" data-tex="\([A,A]\to[A]\)">\([A,A]\to[A]\)</span> sends <span class="math" data-tex="\(1\otimes1\)">\(1\otimes1\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(1\otimes\varepsilon\)">\(1\otimes\varepsilon\)</span> and <span class="math" data-tex="\(\varepsilon\otimes1\)">\(\varepsilon\otimes1\)</span> to <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and <span class="math" data-tex="\(\varepsilon\otimes\varepsilon\)">\(\varepsilon\otimes\varepsilon\)</span> to zero. Its unit is the arrow <span class="math" data-tex="\([]\to[A]\)">\([]\to[A]\)</span> represented by <span class="math" data-tex="\(1\mapsto1\)">\(1\mapsto1\)</span>. The module action <span class="math" data-tex="\([A,M]\to[M]\)">\([A,M]\to[M]\)</span>, on the ordered basis <span class="math" data-tex="\(1\otimes e_1,1\otimes e_2,\varepsilon\otimes e_1,\varepsilon\otimes e_2\)">\(1\otimes e_1,1\otimes e_2,\varepsilon\otimes e_1,\varepsilon\otimes e_2\)</span>, is
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{pmatrix}1&amp;0&amp;0&amp;1\\0&amp;1&amp;0&amp;0\end{pmatrix}.
+\]">\[
+\begin{pmatrix}1&amp;0&amp;0&amp;1\\0&amp;1&amp;0&amp;0\end{pmatrix}.
+\]</span>
+Associativity reduces to <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>, and the unit acts as identity. An endomorphism commutes with the action exactly when it commutes with <span class="math" data-tex="\(N\)">\(N\)</span>. Multiplying two-by-two matrices gives all such maps as
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{pmatrix}a&amp;b\\0&amp;a\end{pmatrix},
+\qquad a,b\in k.
+\]">\[
+\begin{pmatrix}a&amp;b\\0&amp;a\end{pmatrix},
+\qquad a,b\in k.
+\]</span>
+They are invertible exactly for <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. In the word model Hom sets are still the full underlying linear-map sets, and the represented action equation is the same equation. Thus the entire endomorphism algebra, including the noninvertible maps with <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, survives. This is an explicit check of Proposition 5.1 on a fixed algebra and its full module category. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-4-a-strict-model-need-not-erase-an-associator-scalar-advanced">Exercise 4 — A strict model need not erase an associator scalar (advanced)</h3>
+<p>Consider a monoidal groupoid with objects <span class="math" data-tex="\(0,1\)">\(0,1\)</span> under addition modulo two, automorphism group <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span> at each object, and no arrows between different objects. Tensor and composition multiply scalars. Units are strict, and the associator at <span class="math" data-tex="\((g,h,k)\)">\((g,h,k)\)</span> is <span class="math" data-tex="\((-1)^{ghk}\)">\((-1)^{ghk}\)</span>. Verify its axioms, show that an identity underlying functor with identity unit comparison cannot make it strict by a tensor comparison alone, and locate the sign in its word model.</p>
+<p><strong>Solution.</strong> Naturality holds because the scalar groups are commutative. All associators with a zero entry are identity, giving the triangle. In the pentagon the exponents modulo two are
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+hkl+g(h+k)l+ghk,\\
+(g+h)kl+gh(k+l).
+\end{gathered}
+\]">\[
+\begin{gathered}
+hkl+g(h+k)l+ghk,\\
+(g+h)kl+gh(k+l).
+\end{gathered}
+\]</span>
+Expanding gives the same four terms, proving the pentagon. A tensor comparison for the identity underlying functor is a scalar <span class="math" data-tex="\(c(g,h)\)">\(c(g,h)\)</span>. Identity unit comparison forces <span class="math" data-tex="\(c(0,g)=c(g,0)=1\)">\(c(0,g)=c(g,0)=1\)</span>. At <span class="math" data-tex="\((1,1,1)\)">\((1,1,1)\)</span>, the strong functor associativity equation would require
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+c(1,0)c(1,1)
+=-c(0,1)c(1,1),
+\]">\[
+c(1,0)c(1,1)
+=-c(0,1)c(1,1),
+\]</span>
+which is impossible in <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>. Thus this way of strictifying on the same underlying category fails. In the word model, however, objects are words and the associator is identity on the three-letter word. The evaluation comparison <span class="math" data-tex="\(\mu_{[1,1],[1]}\)">\(\mu_{[1,1],[1]}\)</span> is identity by left association, whereas <span class="math" data-tex="\(\mu_{[1],[1,1]}\)">\(\mu_{[1],[1,1]}\)</span> is the inverse original associator, namely <span class="math" data-tex="\(-1\)">\(-1\)</span>. Equation (1.3) retains that scalar exactly. Also the original endomorphism <span class="math" data-tex="\(-1:1\to1\)">\(-1:1\to1\)</span> remains a nonidentity singleton-word arrow by (2.1). Strictness of structural parentheses has therefore neither discarded an original arrow nor forced its scalar to be identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-further-reading-and-licence">7. Further reading and licence</h2>
+<ul>
+<li>Pavel Etingof, Shlomo Gelaki, Dmitri Nikshych and Victor Ostrik, <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf">Tensor Categories, author-hosted final version</a>, Sections 2.4, 2.8 and 2.9, for monoidal functors, strictness and coherence. Their strictness proof uses an endofunctor construction; the proof above uses a full-morphism word model and the independently normalized coherence prerequisite.</li>
+<li>Markus Himmel, <a href="https://github.com/leanprover-community/mathlib4/blob/87fc9444ea2b018e3940bd8853f4d40f870b50ba/Mathlib/CategoryTheory/Monoidal/Free/Coherence.lean">Mathlib monoidal coherence</a>, for the normalization proof used in Section 1, under its <a href="https://github.com/leanprover-community/mathlib4/blob/87fc9444ea2b018e3940bd8853f4d40f870b50ba/LICENSE">Apache 2.0 licence</a>. Its discrete normal forms and natural normalization isomorphism prove equality of formal structural maps before any strictification is used here. No source code is reproduced in this lesson.</li>
+</ul>
+<p>The exposition, constructions and four worked solutions here are independently written and released under CC0-1.0. Linked works retain their own copyrights and licences. This lesson is self-checked; no independent review is claimed.</p>
+</main></body></html>

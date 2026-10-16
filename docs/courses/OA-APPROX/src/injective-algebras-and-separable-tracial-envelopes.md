@@ -4,9 +4,11 @@
 
 Every injective von Neumann algebra is locally approximately finite dimensional. Countability is needed for the familiar increasing sequence and the center-times-\(R\) structure, but the local approximation theorem itself has no factor or separability assumption. The bridge is a separable injective algebra containing any prescribed countable set in a faithfully tracial algebra.
 
-We use exact trace-preserving finite models, [the separable finite theorem](central-disintegration-and-measurable-matrix-assembly.md#theorem-3-2), injectivity and semidiscreteness, [the properly infinite local theorem](properly-infinite-injective-algebras-and-dyadic-approximation.md#theorem-4-2), and [the finite AFD structure](central-traces-and-afd-finite-algebras.md#theorem-3-1). The trace inputs include the faithful normal center-valued trace on every finite algebra and the positive \(L^1\) densities of normal functionals relative to a faithful finite trace. Standard form, trace-preserving expectations, projection comparison and the finite/type II/properly infinite central decomposition retain their declared foundation and OA-MOD interfaces.
+The complete trace-preserving matrix models, [separable finite theorem](central-disintegration-and-measurable-matrix-assembly.md#theorem-3-2), [properly infinite theorem and dyadic construction](properly-infinite-injective-algebras-and-dyadic-approximation.md#theorem-4-2), and [central finite AFD structure](central-traces-and-afd-finite-algebras.md#theorem-3-1) supply the approximation arguments. The [semidiscrete retraction proof](semidiscrete-finite-models.md#theorem-4-2) is used at its full normal finite-matrix scope.
 
-The selected [foundation results on projections and types](https://raw.githubusercontent.com/KokunoYumeto/open-math-courses/3188415a95f932d4ad6794418c3aed2abc3fbb77/docs/courses/foundations-of-von-neumann-algebras/src/projections-and-types-of-von-neumann-algebras.md) — Lemma 7.4, Proposition 8.4, Lemmas 9.3 and 9.5, Lemma 10.2, Theorem 10.3 and Proposition 15.2 — supply the finite type I structure and countable projection absorption used below. The central decomposition into finite type I, finite type II and properly infinite summands is the one needed for the local approximation theorem.
+The remaining foundations are the complete [central trace, comparison, corner-center and countable absorption proofs](../components/central-finite-trace-inputs.md), [faithful normal-state topology](../components/central-sequence-foundations.md#nt2-faithful-state-topology), [trace Hilbert space and trace-preserving expectations](../components/invariant-state-trace-hilbert-inputs.md), and actual measurable operators and positive integrable densities. In particular TI.19–20 proves the onto positive isometry \(L^1(M,\tau)\to M_*\) for every faithful normal semifinite trace, including nonseparable finite algebras. Its measure-completion, closed-domain, spectral-tail, normality and predual prerequisites are included in that proof route. Formula (4) uses that actual density theorem.
+
+The [projection proofs PC1–7](../components/central-finite-trace-inputs.md#pc-1) include arbitrary orthogonal sums, central comparison, mutual subequivalence, the normal corner-center isomorphism, the finite central-part criterion and PC8 countable absorption. Here type II means that there is no nonzero abelian projection and that the central supports of finite projections fill the identity. The full-support finite corner and its countable matrix decomposition will be constructed below. The zero algebra has the zero finite-dimensional algebra as its unital approximant; the faithful-state arguments concern nonzero algebras.
 
 ## 1. A countable set has a separable injective envelope
 
@@ -38,7 +40,7 @@ The diagonal choice of tests, norm contractivity and norm density imply \(\theta
 \]
 The maps \(S_k|_N,T_k\) are normal: \(S_k\) is normal by (1), and a positive map from a finite-dimensional algebra is normal. Their compositions converge pointwise \(2\)-norm, hence pointwise ultraweakly on the bounded image of each fixed \(x\). These are finite matrix models for \(N\), making it semidiscrete and therefore injective.
 
-Finally \(A\) is norm separable. In the faithful normal trace GNS representation of \(N\), \(A\xi_\tau\) is dense by Kaplansky density. Hence \(L^2(N,\tau)\) is separable. The predual of a von Neumann algebra represented faithfully and normally on a separable Hilbert space is a quotient of its separable trace-class space, so \(N_*\) is separable. \(\square\)
+Finally \(A\) is norm separable. In the faithful normal trace GNS representation of \(N\), \(A\xi_\tau\) is dense by Kaplansky density. Hence \(L^2(N,\tau)\) is separable. For a separable Hilbert space \(K\), its completed Hilbert projective tensor \(\overline K\widehat\otimes_\pi K\) is separable: finite rational combinations of tensor pairs from countable dense sets are dense. The complete predual coefficient theorem identifies \(N_*\) as the quotient of this space by the kernel of its normal coefficient map. Indeed finite sums give vector coefficients and the completed projective tensors give their absolutely summable series; every normal functional has such a series. Thus \(N_*\) is separable. The restricted trace is faithful, and normality follows by the normal inclusion \(N\subset M\). \(\square\)
 
 **Corollary 1.2.** Every injective algebra with faithful normal tracial state is locally AFD, with no separability assumption.
 
@@ -52,6 +54,18 @@ Choose \(L\) to control the integrable tail and then the \(2\)-norm error. This 
 
 Exact trace preservation in (1) matters. Normal finite-rank maps approximating only a strongly dense C* algebra need not approximate its von Neumann closure; Exercise 7 gives a concrete counterexample.
 
+<a id="normal-model-counterexample-inputs"></a>
+
+### The scalar construction for the normal-model counterexample
+
+Here are all the measure and positivity inputs for Exercise 7. Enumerate the rationals in \((0,1)\) as \(q_j\), and choose an open interval about \(q_j\) of length at most \(2^{-j-2}\). Their union \(O\) is dense and has Lebesgue measure at most \(1/4\). Hence \(K=[0,1]\setminus O\) is closed, nowhere dense, and has measure at least \(3/4\). Every dyadic cell has nonempty interior meeting the open set \(O\), so its intersection with \(O\) has positive measure. Endpoints can be assigned to one of their adjacent cells without changing any integral.
+
+The averages on these intersections are positive normal unital scalar functionals. Positivity makes a scalar functional completely positive: for a positive operator matrix and a scalar vector, its scalar quadratic form is the functional applied to a positive element. Taking their diagonal direct sum therefore gives normal ucp \(S_n\). At each point of a dyadic cell, \(T_n\) is one diagonal matrix coefficient, a ucp scalar functional; positivity at every matrix size proves that \(T_n\) is ucp. Its finite-dimensional domain makes it normal. Oscillation of a continuous function on intervals of length \(2^{-n}\) tends uniformly to zero, so these maps approximate every continuous function uniformly.
+
+For completeness continuous functions are strongly dense in the represented \(L^\infty[0,1]\). [Finite regularity and compact cutoffs](../components/compact-rmk-from-function-covers.md#rm03) give, for every measurable set modulo a null set, continuous functions between zero and one converging to its indicator in \(L^2\). Approximate bounded functions first by simple functions, then their indicators this way. Apply the continuous radial retraction to the original bound disk; its error from a point in that disk is at most twice the original error. Thus the continuous approximants have a common norm bound and converge in \(L^2\), as do their conjugates. If \(g\in L^2\), truncate \(g\) to a bounded function; the bounded part of \(g\) tests the \(L^2\) error, and the remaining tail is controlled by the common sup norm bound. This proves strong convergence of the multiplication operators and their adjoints. Conversely every multiplication operator in this von Neumann algebra is bounded and measurable, so the closure is precisely \(L^\infty\).
+
+Finally the averages of \(1_K\) on every chosen intersection are zero, while its Lebesgue integral is positive. This supplies the failure on the closure and the failure of trace preservation, without changing the full example of Exercise 7.
+
 ## 2. Finite algebras need not carry a faithful normal state
 
 **Theorem 2.1.** Every finite injective von Neumann algebra is locally AFD.
@@ -61,7 +75,7 @@ Exact trace preservation in (1) matters. Normal finite-rank maps approximating o
 \eta=\sum_j\psi_j|_Z,\qquad z=s(\eta)\in Z.
 \tag{5}
 \]
-The restriction of \(\eta\) to \(Zz\) is faithful. The finite central algebra \(Mz\) has the faithful normal tracial state
+The support in (5) can be constructed without a global faithful state. In the commutative algebra \(Z\), finite joins of projections of zero \(\eta\)-value again have zero value. Normality makes their full supremum \(p\) have zero value. Put \(z=1-p\). If a positive central element on \(z\) had zero value, each of its positive spectral cuts would be a zero-value projection dominated by both \(p\) and \(z\), hence zero. This proves faithfulness on \(Zz\), and also \(\eta(1-z)=0\). The restriction of \(\eta\) to \(Zz\) is faithful. The finite central algebra \(Mz\) has the faithful normal tracial state
 \[
 \tau_z(x)=\eta(T(x))/\eta(z)\qquad(x\in Mz).
 \tag{6}
@@ -88,7 +102,12 @@ Conversely represent a locally AFD \(M\) in standard form on \(H\). Direct the f
 F_i(b)=\int_{\mathcal U(D_i)}ubu^*\,du\in D_i',\qquad b\in B(H).
 \tag{7}
 \]
-Each \(F_i\) fixes \(M'\), and \(\|F_i(b)\|\le\|b\|\). Product ultraweak compactness gives a pointwise convergent subnet with ucp limit \(F\). For fixed \(x\in M\), vectors \(\xi,\zeta\in H\), and approximants \(d_i\in D_i\) to \(x\), its commutation with \(F_i(b)\) gives
+The average in (7) has an explicit finite formula. If \(D_i=\bigoplus_aM_{n_a}\) has matrix units \(e^{(a)}_{jk}\) with their block identities summing to one, put
+\[
+ F_i(b)=\sum_a\frac1{n_a}\sum_{j,k=1}^{n_a}
+                 e^{(a)}_{jk}b e^{(a)}_{kj}.
+\]
+Each summand is a completely positive Kraus term. Summing its value at one gives one. Matrix-unit multiplication shows that the output commutes with every block and every matrix unit, hence belongs to \(D_i'\). If \(b\in D_i'\), moving \(b\) past the units shows that this sum is \(b\). Conjugating the input by any block unitary and summing its scalar matrix entries uses \(\sum_k u_{rk}\overline{u_{sk}}=\delta_{rs}\), proving invariance. Thus this finite formula is the normalized invariant unitary average denoted by the integral in (7); no general existence theorem for Haar measure is a prerequisite here. It is normal and ucp. Each \(F_i\) fixes \(M'\), and \(\|F_i(b)\|\le\|b\|\). Product ultraweak compactness gives a pointwise convergent subnet with ucp limit \(F\). For fixed \(x\in M\), vectors \(\xi,\zeta\in H\), and approximants \(d_i\in D_i\) to \(x\), its commutation with \(F_i(b)\) gives
 \[
 \begin{aligned}
 &\left|\langle\zeta,[F_i(b),x]\xi\rangle\right|\\
@@ -113,7 +132,29 @@ M\cong Z(M)\bar\otimes R\bar\otimes B(\ell^2).
 \tag{9}
 \]
 
-**Proof.** The finite case combines Theorem 3.1 with the already proved central finite AFD structure theorem. For the infinite case choose a finite projection \(e\) with central support one. Such a projection exists by the semifinite projection lemma. The properly infinite identity splits into countably many equivalent copies of itself; transport \(e\) into each copy to obtain orthogonal equivalent projections \(e_n\), and put \(q=\sum_ne_n\). Their even and odd sums show \(q\) is properly infinite, and \(c(q)=1\). Since \(M_*\) is separable, \(M\) is sigma-finite. The countable absorption theorem, Proposition 15.2(2), gives \(1\precsim q\); as \(q\le1\), projection Schroeder–Bernstein gives \(q\sim1\).
+<a id="full-nonfactor-matrix-decomposition"></a>
+
+Here is the full projection construction needed for the infinite case. A separable predual gives a faithful normal state by NT2, so every orthogonal family of nonzero projections is countable. Every nonzero projection \(r\) contains a nonzero finite subprojection: its central support meets that of some finite projection \(p\); PC2 supplies a nonzero polar bridge between subprojections of \(r\) and \(p\), and finiteness passes to equivalent subprojections. Choose a maximal orthogonal family of finite nonzero projections \(p_j\); the preceding argument forces their sum to be one. Their central supports therefore have supremum one. Define disjoint central projections
+\[
+ z_j=c(p_j)\left(1-\bigvee_{i<j}c(p_i)\right),\qquad
+ e=\sum_jz_jp_j.
+\]
+They fill the center, and \(c(e)=1\). The projection \(e\) is finite: an isometry in \(eMe\) compresses on each \(z_j\) to an isometry in the finite corner of \(p_j\), so each compressed defect is zero; their strong sum is the entire defect. The corner has no abelian nonzero projection, hence is of type \(\mathrm{II}_1\).
+
+A properly infinite identity has an orthogonal countable partition \(r_j\sim1\), with any residual absorbed into the first member by PC3 and PC5. Transport \(e\) into these corners to obtain \(e_j\sim e\), as in the proof below. If \(v_j^*v_j=e_1\), \(v_jv_j^*=e_j\), the strong sums of \(v_{2j}v_j^*\) and \(v_{2j-1}v_j^*\) implement equivalences of \(q=\sum_je_j\) with its even and odd sums. PC1 justifies the sums and all initial and final projections. The same holds on every nonzero central cut; full central support of \(e\) ensures those cuts are nonzero. Thus \(q\) is properly infinite and \(c(q)=1\). The countable absorption proof PC8 applies to the source projection \(1\), giving \(1\precsim q\); PC3 then gives \(1\sim q\). This is the countable absorption theorem in exactly the nonfactor scope used here.
+
+Choose \(w^*w=1\), \(ww^*=q\) and put \(f_j=w^*e_jw\). These are equivalent finite projections with sum one. Set \(f=f_1\), and choose \(u_j^*u_j=f\), \(u_ju_j^*=f_j\), with \(u_1=f\). The map
+\[
+ U:H\longrightarrow fH\otimes\ell^2,\qquad
+ U\xi=\sum_j u_j^*\xi\otimes\delta_j
+\]
+is unitary: orthogonality gives equality of squared norms, and the inverse on finitely supported vectors is \(\sum_j u_j\xi_j\). Completeness extends that inverse to all vectors. For \(x\in M\), all its matrix entries \(u_i^*xu_j\) belong to \(fMf\). Its finite block compressions lie in \(fMf\otimes M_n\), are uniformly bounded and converge strongly to \(UxU^*\). Conversely the elementary matrices \(a\otimes E_{ij}\) correspond to \(u_i a u_j^*\in M\), so taking the von Neumann closure gives both inclusions and
+\[
+ UMU^*=fMf\bar\otimes B(\ell^2).
+\]
+Commuting with every scalar matrix unit forces a central element to be a constant diagonal; commuting with \(fMf\) makes its entry central. Equivalently PC4 identifies \(Z(fMf)=fZ(M)\), normally and onto, since \(c(f)=1\). Compression extends every normal corner functional normally to \(M\), so the corner has separable predual. A ucp retraction onto \(M\), compressed by \(f\) after extending an operator on \(fH\) by zero, is a ucp retraction onto \(fMf\), with unit \(f\). Thus injectivity also passes to this corner.
+
+**Proof.** The finite case combines Theorem 3.1 with the already proved central finite AFD structure theorem. For the infinite case choose a finite projection \(e\) with central support one. Such a projection exists by the semifinite projection lemma. The properly infinite identity splits into countably many equivalent copies of itself; transport \(e\) into each copy to obtain orthogonal equivalent projections \(e_n\), and put \(q=\sum_ne_n\). Their even and odd sums show \(q\) is properly infinite, and \(c(q)=1\). Since \(M_*\) is separable, \(M\) is sigma-finite. The countable absorption theorem PC8, proved above at its exact source-countability scope, gives \(1\precsim q\); as \(q\le1\), projection Schroeder–Bernstein gives \(q\sim1\).
 
 Transporting the \(e_n\)'s by this equivalence yields a partition of \(1\) into countably many equivalent finite projections. Its matrix units give \(M\cong e'Me'\bar\otimes B(\ell^2)\), with \(e'\sim e\). The corner is injective, has separable predual, and is type \(\mathrm{II}_1\). Its center identifies with \(Z(M)\) by full central support and matrix splitting. Apply the finite case. This proof is valid for nonfactors: every projection equivalence used has full central support, and sigma-finiteness is stated exactly where absorption needs it. \(\square\)
 
@@ -125,7 +166,7 @@ P\cong(A_0\bar\otimes R)\ \oplus\
 \]
 where the \(A_n\) are commutative von Neumann algebras, any of which may be zero. The countable sum is the von Neumann direct sum.
 
-**Proof.** First suppose \(P\) has unit \(1_R\). The normal trace-preserving expectation \(E_P:R\to P\) exists in a finite traced algebra. Composing it with a ucp retraction onto the injective \(R\) gives a ucp retraction onto \(P\), so \(P\) is injective. It is finite and has separable predual: it acts faithfully and normally on the separable trace Hilbert space of \(R\). Theorem 3.1 gives an increasing finite-dimensional generating sequence.
+**Proof.** If \(P=0\), all the summands in (10) are zero. Otherwise first suppose \(P\) has unit \(1_R\). The normal trace-preserving expectation \(E_P:R\to P\) exists in a finite traced algebra. Composing it with a ucp retraction onto the injective \(R\) gives a ucp retraction onto \(P\), so \(P\) is injective. It is finite and has separable predual: it acts faithfully and normally on the separable trace Hilbert space of \(R\). Theorem 3.1 gives an increasing finite-dimensional generating sequence.
 
 Split \(P\) into its finite type I and type \(\mathrm{II}_1\) central parts. The finite type I structure theorem decomposes the first into \(A_n\bar\otimes M_n\), \(n\ge1\); infinite homogeneous sizes are excluded by finiteness. Corollary 4.1 identifies the second with its center \(A_0\) tensored with \(R\). This gives (10). If \(P\)'s unit is a projection \(p<1_R\), apply the same argument in the injective finite corner \(pRp\), with normalized trace. \(\square\)
 
@@ -187,6 +228,6 @@ Sorin Popa, [*A short proof of “injectivity implies hyperfiniteness” for fin
 
 Uffe Haagerup, [*A new proof of the equivalence of injectivity and hyperfiniteness for factors on a separable Hilbert space*](https://doi.org/10.1016/0022-1236(85)90002-3), Journal of Functional Analysis 62 (1985), 160–201: §6.3, pp.199–200, discusses the nonfactor extension, and §6.4, p.200, records Elliott’s arbitrary-algebra equivalence. Those final sections are discussion and attribution, not complete proofs of the general central structure and equivalence.
 
-Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft: Proposition 2.6.7, p.48, proves the tracial Hilbert-space separability criterion; Theorems 7.3.8 and 7.4.5, pp.110–111 and 114–115, prove the normal-functional and positive integrable-density inputs; Theorem 9.1.2, p.140, proves existence of the normal trace-preserving expectation. Proposition 10.2.2, p.161, explains the ucp extension and retraction criteria, and Theorem 10.2.4, p.162, proves injectivity of \(R\).
+Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft: the trace Hilbert-space chapter discusses separability; the normal-functional and positive integrable-density chapters discuss the trace pairing; the conditional-expectation chapter gives the normal trace-preserving expectation. The injectivity chapter discusses ucp extension/retraction criteria and injectivity of \(R\). The complete programme trace-density, coefficient, expectation and retraction arguments are the proof inputs here; page numbers differ between author drafts.
 
 The center-times-\(R\) conclusions retain separable predual. The separable-envelope and finite normal-test arguments above prove the local theorem for arbitrary injective algebras. The local converse is also proved without countability. All twelve exercises have full solutions.

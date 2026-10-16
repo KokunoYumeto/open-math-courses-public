@@ -12,18 +12,22 @@ We use the notation of [Sensitivity, block sensitivity and composition](sensitiv
 
 Fix integers \(d\ge1\) and \(M\ge3\), and put
 \[
-L=d+2,\qquad k=2M^2+1,\qquad r=\lceil\sqrt M\,\rceil,\qquad t=16.
+\begin{gathered}
+L=d+2,\qquad k=2M^2+1,\\
+r=\lceil\sqrt M\,\rceil,\qquad t=16.
+\end{gathered}
 \]
 A *tournament* on \([k]\) orients each pair of distinct vertices: exactly one of \(i\to j\) and \(j\to i\) holds. We use the cyclic tournament: \(i\to j\) when \(j-i\) is congruent to one of \(1,\dots,M^2\) modulo \(k\). Every vertex has exactly \(M^2\) outgoing edges (Exercise 6.1).
 
-**Lemma 1.1** (labels). The edges can be labelled by numbers \(a(i,j)\in[r]\) so that there is no set \(I\subseteq[k]\) with \(|I|=t\) and numbers \(m_j\in[r]\), \(j\in I\), such that
-\[
-a(i,j)=m_j\qquad\text{for every edge }i\to j\text{ with }i,j\in I.
-\]
+**Lemma 1.1** (labels). The edges can be labelled by numbers \(a(i,j)\in[r]\) so that there is no set \(I\subseteq[k]\) with \(|I|=t\) and numbers \(m_j\in[r]\), \(j\in I\), such that \(a(i,j)=m_j\) for every edge \(i\to j\) with \(i,j\in I\).
 
 **Proof.** Choose the labels independently and uniformly in \([r]\). For a fixed \(I\) and fixed \((m_j)_{j\in I}\), the \(\binom t2=120\) edges inside \(I\) have their labels prescribed, each with probability \(1/r\), independently; so the event has probability \(r^{-120}\). There are at most \(k^t\) sets \(I\) and \(r^t\) choices of the \(m_j\), so the probability that some \((I,(m_j))\) occurs is at most
 \[
-k^{16}r^{16}r^{-120}=k^{16}r^{-104}\le(3M^2)^{16}M^{-52}=3^{16}M^{-20}\le3^{-4}<1,
+\begin{aligned}
+&k^{16}r^{16}r^{-120}=k^{16}r^{-104}\\
+&\quad\le(3M^2)^{16}M^{-52}=3^{16}M^{-20}\\
+&\quad\le3^{-4}<1,
+\end{aligned}
 \]
 using \(k\le3M^2\), \(r\ge\sqrt M\) and \(M\ge3\). Hence some labelling has the property. \(\square\)
 
@@ -37,22 +41,18 @@ H_\ell=d+1-\ell,\qquad N_\ell=LM(kr)^\ell.
 \]
 The predicates of level \(\ell\) are \(P_{\ell,q}:\{0,1\}^{N_\ell}\to\{0,1\}\), \(q\in[H_\ell]\).
 
-At level \(0\), split the \(LM\) coordinates into \(M\) blocks \(E_1,\dots,E_M\) of size \(L\), let \(z_j\in\{0,1\}^{LM}\) be the indicator of \(E_j\), let \(\operatorname{dist}\) be the Hamming distance (the number of differing coordinates), and put
+At level \(0\), split the \(LM\) coordinates into \(M\) blocks \(E_1,\dots,E_M\) of size \(L\), let \(z_j\in\{0,1\}^{LM}\) be the indicator of \(E_j\), let \(\operatorname{dist}\) be the Hamming distance (the number of differing coordinates), and put, for \(q\in[d+1]\),
 \[
-D(x)=\min_{j\in[M]}\operatorname{dist}(x,z_j),\qquad P_{0,q}(x)=\mathbf 1\{D(x)\le H_0-q\}\quad(q\in[d+1]).
+\begin{gathered}
+D(x)=\min_{j\in[M]}\operatorname{dist}(x,z_j),\\
+P_{0,q}(x)=\mathbf 1\{D(x)\le H_0-q\}.
+\end{gathered}
 \]
 These are the indicators of the unions of the balls of radius \(d+1-q\) around the centres, for the radii \(d,d-1,\dots,0\), so they are nested. Distinct centres have distance \(2L=2d+4\).
 
 ## 3. Clauses
 
-Let \(1\le\ell\le d\), and put \(H=H_\ell\) and \(Q=H+1=H_{\ell-1}\). Split an input \(x\in\{0,1\}^{N_\ell}\) into \(kr\) *children* \(x_{j,c}\in\{0,1\}^{N_{\ell-1}}\), \(j\in[k]\) (the *row*) and \(c\in[r]\) (the *position*). For \(q\in[H]\) and \(i\in[k]\), the clause \(C_{i,q}\) holds at \(x\) if
-\[
-\begin{aligned}
-P_{\ell-1,Q}(x_{i,c})&=1\quad\text{for all }c\in[r]&&\text{(the targets of }C_{i,q}),\\
-P_{\ell-1,Q-q}(x_{j,a(i,j)})&=0\quad\text{for all }j\text{ with }i\to j&&\text{(the gates of }C_{i,q}),
-\end{aligned}
-\]
-and \(P_{\ell,q}(x)=1\) if some clause \(C_{i,q}\), \(i\in[k]\), holds. Since \(1\le Q-q\le H<Q\), the indices are those of predicates of level \(\ell-1\), and the targets always use the predicate with the largest index \(Q\).
+Let \(1\le\ell\le d\), and put \(H=H_\ell\) and \(Q=H+1=H_{\ell-1}\). Split an input \(x\in\{0,1\}^{N_\ell}\) into \(kr\) *children* \(x_{j,c}\in\{0,1\}^{N_{\ell-1}}\), \(j\in[k]\) (the *row*) and \(c\in[r]\) (the *position*). For \(q\in[H]\) and \(i\in[k]\), the clause \(C_{i,q}\) holds at \(x\) if its *targets* satisfy \(P_{\ell-1,Q}(x_{i,c})=1\) for all \(c\in[r]\) and its *gates* satisfy \(P_{\ell-1,Q-q}(x_{j,a(i,j)})=0\) for all \(j\) with \(i\to j\); and \(P_{\ell,q}(x)=1\) if some clause \(C_{i,q}\), \(i\in[k]\), holds. Since \(1\le Q-q\le H<Q\), the indices are those of predicates of level \(\ell-1\), and the targets always use the predicate with the largest index \(Q\).
 
 **Lemma 3.1** (structure). (a) The \(r+M^2\) conditions of a clause concern \(r+M^2\) distinct children. Consequently, flipping one input coordinate changes the truth value of at most one condition of a given clause.
 
@@ -76,11 +76,7 @@ For \(0\le\ell\le d\) and \(b\in\{0,1\}\) let
 \[
 S_{\ell,b}=\max_{q\in[H_\ell]}s_b(P_{\ell,q}),
 \]
-the largest number of coordinates whose flip changes some predicate of level \(\ell\) from the value \(b\). For simultaneous changes of two predicates of the same level, let \(J_{\ell,b}\) be the largest value of
-\[
-\bigl|\{a\in[N_\ell]:P_{\ell,q}(x^a)=P_{\ell,q'}(x^a)=1-b\}\bigr|
-\]
-over all \(q<q'\) in \([H_\ell]\) and all \(x\) with \(P_{\ell,q}(x)=P_{\ell,q'}(x)=b\); a maximum over no cases is \(0\). In particular \(J_{d,0}=J_{d,1}=0\), since \(H_d=1\).
+the largest number of coordinates whose flip changes some predicate of level \(\ell\) from the value \(b\). For simultaneous changes of two predicates of the same level, let \(J_{\ell,b}\) be the largest number of coordinates \(a\in[N_\ell]\) with \(P_{\ell,q}(x^a)=P_{\ell,q'}(x^a)=1-b\), over all \(q<q'\) in \([H_\ell]\) and all \(x\) with \(P_{\ell,q}(x)=P_{\ell,q'}(x)=b\); a maximum over no cases is \(0\). In particular \(J_{d,0}=J_{d,1}=0\), since \(H_d=1\).
 
 **Lemma 5.1** (level zero). \(S_{0,0}\le L\), \(S_{0,1}\le LM\) and \(J_{0,0}=J_{0,1}=0\).
 

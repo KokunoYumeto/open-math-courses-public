@@ -14,11 +14,7 @@ We use [Circulant Hadamard matrices and group rings](circulant-hadamard-matrices
 
 **Lemma 1.1.** Let \(O\) be a local domain with maximal ideal \(\mathfrak n\) and residue field \(k=O/\mathfrak n\), and let \(0\neq t\in\mathfrak n\). Then \(1+tO\) is a subgroup of the unit group \(O^\times\), and \(\lambda_t(1+tL)=L\bmod\mathfrak n\) defines a homomorphism \(\lambda_t:1+tO\to(k,+)\).
 
-**Proof.** An element \(1+tL\) has residue \(1\), so it is a unit, and \(L\) is determined by it because \(O\) is a domain. The identities
-\[
-\frac{(1+tL)(1+tM)-1}t=L+M+tLM,\qquad\frac{(1+tL)^{-1}-1}t=-\frac L{1+tL}
-\]
-show closure under products and inverses; reducing them modulo \(\mathfrak n\) gives \(\lambda_t(xy)=\lambda_t(x)+\lambda_t(y)\). \(\square\)
+**Proof.** An element \(1+tL\) has residue \(1\), so it is a unit, and \(L\) is determined by it because \(O\) is a domain. The product \((1+tL)(1+tM)\) equals \(1+t(L+M+tLM)\), and the inverse of \(1+tL\) is \(1+t\bigl(-L/(1+tL)\bigr)\), where \(-L/(1+tL)\in O\) because \(1+tL\) is a unit. This shows closure under products and inverses; reducing the product formula modulo \(\mathfrak n\) gives \(\lambda_t(xy)=\lambda_t(x)+\lambda_t(y)\). \(\square\)
 
 ## 2. Proof of the theorem
 
@@ -26,11 +22,18 @@ show closure under products and inverses; reducing them modulo \(\mathfrak n\) g
 
 *Three elements of norm \(u^2\).* Write \(C_n=C_4\times P\) with \(P=C_{u^2}\) and a generator \(Z\) of \(C_4\), and the first row as
 \[
-h=H_0+ZH_1+Z^2H_2+Z^3H_3,\qquad H_j\in\mathbb Z[P];
+\begin{gathered}
+h=H_0+ZH_1+Z^2H_2+Z^3H_3,\\
+H_j\in\mathbb Z[P];
+\end{gathered}
 \]
 every coefficient of every \(H_j\) is a sign. Put
 \[
-c=\tfrac12(H_0+H_1+H_2+H_3),\qquad d=\tfrac12(H_0-H_1+H_2-H_3),\qquad g=\tfrac12(H_0-H_2)+\tfrac i2(H_1-H_3),
+\begin{aligned}
+c&=\tfrac12(H_0+H_1+H_2+H_3),\\
+d&=\tfrac12(H_0-H_1+H_2-H_3),\\
+g&=\tfrac12(H_0-H_2)+\tfrac i2(H_1-H_3),
+\end{aligned}
 \]
 the halved evaluations of \(h\) at \(Z=1,-1,i\). Their coefficients are integers, being halves of sums or differences of an even number of signs; so \(c,d\in\mathbb Z[P]\) and \(g\in\mathbb Z[i][P]\). Evaluation of \(Z\) at a fourth root of unity commutes with the involution, so \(hh^*=4u^2\) gives
 \[
@@ -39,7 +42,11 @@ cc^*=dd^*=gg^*=u^2.
 
 *Odd roots of unity.* With the notation \(I,B,\chi_S,x_S,\varepsilon_S,\Delta\) of Section 3 of [Alternating character products](alternating-character-products.md), Proposition 3.1 there shows that \(\Delta(c),\Delta(d),\Delta(g)\) are roots of unity of odd order. Hence so are
 \[
-R=\frac{\Delta(d)}{\Delta(c)}=\prod_{S\subseteq I}r_S^{\varepsilon_S},\qquad W=\frac{\Delta(g)}{\Delta(c)}=\prod_{S\subseteq I}w_S^{\varepsilon_S},\qquad r_S=\frac{d_S}{c_S},\quad w_S=\frac{g_S}{c_S}:
+\begin{aligned}
+R&=\frac{\Delta(d)}{\Delta(c)}=\prod_{S\subseteq I}r_S^{\varepsilon_S},\\
+W&=\frac{\Delta(g)}{\Delta(c)}=\prod_{S\subseteq I}w_S^{\varepsilon_S},\\
+r_S&=\frac{d_S}{c_S},\quad w_S=\frac{g_S}{c_S}:
+\end{aligned}
 \]
 a quotient of roots of unity whose orders divide odd numbers \(m,m'\) has order dividing \(mm'\).
 
@@ -47,20 +54,34 @@ a quotient of roots of unity whose orders divide odd numbers \(m,m'\) has order 
 
 *The sign coefficients.* Let \(b=\frac12(H_1+H_3)\in\mathbb Z[P]\) and \(J=\sum_{z\in P}z\). Direct computation gives
 \[
-d-c=-2b,\qquad g-c=(i-1)b-(H_2+iH_3).
+\begin{gathered}
+d-c=-2b,\\
+g-c=(i-1)b-(H_2+iH_3).
+\end{gathered}
 \]
 Every coefficient of \(H_2+iH_3\) has the form \(\alpha+i\beta\) with \(\alpha,\beta\in\{\pm1\}\), and \((\alpha+i\beta)-(1+i)\in2\mathbb Z[i]\); so \(H_2+iH_3=(1+i)J+2U\) with \(U\in\mathbb Z[i][P]\). Using \(i-1=i(1+i)\) and \(2=(1+i)(1-i)\), evaluation at \(\chi_S\) and division by the unit \(c_S\) give
 \[
-r_S=1+2L_{r,S},\quad L_{r,S}=-\frac{b_S}{c_S};\qquad w_S=1+(1+i)L_{w,S},\quad L_{w,S}=\frac{ib_S-J_S-(1-i)U_S}{c_S},
+\begin{gathered}
+r_S=1+2L_{r,S},\quad L_{r,S}=-\frac{b_S}{c_S};\\
+w_S=1+(1+i)L_{w,S},\\
+L_{w,S}=\frac{ib_S-J_S-(1-i)U_S}{c_S},
+\end{gathered}
 \]
-with \(L_{r,S},L_{w,S}\in O\). Adding, and using \(i\equiv1\), \(1-i\equiv0\) and \(-1\equiv1\) in \(k\),
+with \(L_{r,S},L_{w,S}\in O\). Adding, and using \(i\equiv1\), \(1-i\equiv0\) and \(-1\equiv1\) in \(k\), gives the congruence (2.1):
 \[
-L_{r,S}+L_{w,S}=-\frac{J_S}{c_S}-(1-i)\frac{b_S+U_S}{c_S}\equiv\frac{J_S}{c_S}\pmod{\mathfrak n}.\tag{2.1}
+\begin{aligned}
+&L_{r,S}+L_{w,S}\\
+&\quad=-\frac{J_S}{c_S}-(1-i)\frac{b_S+U_S}{c_S}\\
+&\quad\equiv\frac{J_S}{c_S}\pmod{\mathfrak n}.
+\end{aligned}
 \]
 
 *Exact equalities.* By Lemma 1.1, \(R\in1+2O\) and \(W\in1+(1+i)O\), so both have residue \(1\). Their orders are odd, so Lemma 2.1(ii) of [Alternating character products](alternating-character-products.md), in residue characteristic \(2\), gives \(R=W=1\). Applying \(\lambda_2\) to \(R\) and \(\lambda_{1+i}\) to \(W\),
 \[
-\sum_{S\subseteq I}\varepsilon_SL_{r,S}\equiv0,\qquad\sum_{S\subseteq I}\varepsilon_SL_{w,S}\equiv0\pmod{\mathfrak n}.
+\begin{gathered}
+\sum_{S\subseteq I}\varepsilon_SL_{r,S}\equiv0\pmod{\mathfrak n},\\
+\sum_{S\subseteq I}\varepsilon_SL_{w,S}\equiv0\pmod{\mathfrak n}.
+\end{gathered}
 \]
 Adding and using (2.1), \(\sum_S\varepsilon_SJ_S/c_S\equiv0\pmod{\mathfrak n}\).
 
@@ -92,7 +113,7 @@ With the theorem of Turyn and Storer for odd lengths [SW], which this course doe
 
 **4.2.** \((i-1)^2=i^2-2i+1=-2i=0\), and a field has no nonzero nilpotents.
 
-**4.3.** \(d-c=\frac12(-2H_1-2H_3)=-(H_1+H_3)\). For \(g\): \(g-c=-H_2+\frac12\bigl((i-1)H_1-(i+1)H_3\bigr)\), and \((i-1)b-H_2-iH_3=\frac12\bigl((i-1)H_1+(i-1)H_3\bigr)-H_2-iH_3\) is the same.
+**4.3.** \(d-c=\frac12(-2H_1-2H_3)\), which is \(-(H_1+H_3)=-2b\). For \(g\): written as combinations of \(H_0,H_1,H_2,H_3\), \(g-c\) has the coefficients \(0\), \(\frac12(i-1)\), \(-1\), \(-\frac12(i+1)\), and \((i-1)b-H_2-iH_3\) has the coefficients \(0\), \(\frac12(i-1)\), \(-1\), \(\frac12(i-1)-i\), where \(\frac12(i-1)-i=-\frac12(i+1)\).
 
 **4.4.** \(H_0=H_1=H_2=1\) and \(H_3=-1\), so \(c=d=1\), \(g=i\), \(b=0\), and \(H_2+iH_3=1-i=(1+i)+2U\) with \(U=-i\). Then \(L_{r,\varnothing}=0\) and \(L_{w,\varnothing}=-1-(1-i)(-i)=i\), with residue \(1=J_\varnothing/c_\varnothing\), in accordance with (2.1). Here \(I\) is empty and \(R=1\), but \(W=w_\varnothing=i\) has order \(4\); the step \(W=1\) is not available, and indeed \(\lambda_{1+i}(W)=1\neq0\).
 

@@ -4,7 +4,50 @@
 
 The [multiplier construction](multiplier-ultraproducts-and-normal-embeddings.md) gives a von Neumann algebra \(M^\omega=N_\omega/I_\omega\) with a normal constant copy of \(M\). Taking the ultraweak limit of a representative recovers an element of \(M\). We construct this map, prove its normality directly, and use it to distinguish the information in a convergent automorphism family from the information in its limit.
 
-Throughout Sections 1–2, \(M\) has a faithful normal state \(\varphi\), and \(\omega\) is free. Section 3 assumes separable predual when using \(M_\omega=C_\omega/I_\omega\). Section 4 uses the tracial hyperfinite \(\mathrm{II}_1\) factor \(R\). Inputs are the preceding quotient and normal embedding proofs, ultraweak compactness of bounded balls, and the already proved tensor model for \(R\). We construct the expectation directly from the quotient.
+Throughout Sections 1–2, \(M\) has a faithful normal state \(\varphi\), and \(\omega\) is free. Section 3 assumes separable predual when using \(M_\omega=C_\omega/I_\omega\). Section 4 uses the tracial hyperfinite \(\mathrm{II}_1\) factor \(R\). Inputs are the preceding quotient and normal embedding proofs, ultraweak compactness of bounded balls, and the already proved tensor model for \(R\). We construct the expectation directly from the quotient. The [complete multiplier and faithful quotient-state proofs](multiplier-ultraproducts-and-normal-embeddings.md#theorem-3-2), [normal-functional coefficient and bounded topology proofs](../components/central-sequence-foundations.md#nt2-faithful-state-topology), and order-normal positive-functional theorem NF1–4 supply their exact full prerequisites. The [tracial Hilbert-space arguments](../components/invariant-state-trace-hilbert-inputs.md) and [full dyadic tensor model](../components/strong-stability-matrix-and-product-inputs.md#ss2-whole-variable-matrix-tracial-product) supply the finite tensor example. The general centralizing algebra is constructed below without a factor assumption.
+
+<a id="general-centralizing-algebra-inputs"></a>
+
+## The centralizing algebra at nonfactor scope
+
+The C* algebra and norm estimates in the first paragraphs use only a faithful normal state. The countable metric-completion argument below additionally assumes separable predual, as in Section 3. For the module convention \((x\psi)(a)=\psi(ax)\), \((\psi x)(a)=\psi(xa)\), let \(C_\omega\) be the bounded sequences whose commutators with every fixed \(\psi\in M_*\) tend to zero along \(\omega\). The identity \([ab,\psi]=a[b,\psi]+[a,\psi]b\), the corresponding adjoint identity obtained by conjugating functionals, and \(\|[a,\psi]\|\le2\|a\|\|\psi\|\) show that this is a norm-closed unital C* algebra.
+
+Every bounded strong*-null sequence belongs to \(C_\omega\). For a vector-pair functional, its two module products are bounded by the norm of the fixed vector times the norm of the null operator or its adjoint on the other fixed vector. Every normal functional is a summable vector-pair series; a finite head and the uniform operator bound control its tail. This proves the assertion for all normal functionals, also along an ultrafilter.
+
+For completeness \(C_\omega\subset N_\omega\). If \(\|a_n\|\le C\), \(\|b_n\|\le K\), \(a\) is centralizing and \(b\in I_\omega\), moving \(a_n^*\) past the state and then applying Cauchy–Schwarz gives
+\[
+ \begin{aligned}
+ \varphi(a_n^*b_n^*b_na_n)
+ &\le |\varphi(b_n^*b_na_na_n^*)|
+        +CK^2\|[a_n^*,\varphi]\|\\
+ &\le C^2K\,\varphi(b_n^*b_n)^{1/2}
+        +CK^2\|[a_n^*,\varphi]\|\longrightarrow_\omega0.
+ \end{aligned}
+\]
+Indeed \(\varphi((b_n^*b_n)^2)\le K^2\varphi(b_n^*b_n)\) and \(\varphi((a_na_n^*)^2)\le C^4\). The adjoint estimate uses \(b_nb_n^*\) and \([a_n,\varphi]\). The two other product seminorms are directly at most \(C\) times the corresponding seminorm of \(b_n\). Thus both multiplier conditions hold. Hence \(I_\omega\) is a closed two-sided ideal in \(C_\omega\), and \(C_\omega/I_\omega\) embeds isometrically into \(M^\omega\).
+
+The restricted faithful quotient state \(\lambda=\varphi^\omega\) is a trace, since for centralizing representatives
+\[
+ |\varphi(a_nb_n-b_na_n)|
+ \le \sup_n\|b_n\|\,\|[a_n,\varphi]\|\longrightarrow_\omega0.
+\]
+Its squared trace norm is exactly the ultralimit of the squared symmetric seminorm. This trace depends on the chosen center state in general; no scalar trace invariant under every automorphism of a nonfactor is asserted.
+
+<a id="separable-centralizing-completion"></a>
+
+Here is the full metric-completion step. Now assume separable predual. For a Cauchy sequence of quotient contractions choose a subsequence \(A_r\) with \(\|A_r-A_p\|_{2,\lambda}<2^{-p}\) for \(r>p\). Continuous radial clipping gives centralizing contraction lifts \(a_r(k)\). Choose a norm-dense countable family \(\psi_j\) in \(M_*\), and nested sets \(W_r\in\omega\), each contained in \(\{k:k\ge r\}\), on which
+\[
+ \begin{aligned}
+ \|[a_r(k),\psi_j]\|&<1/r &&(j\le r),\\
+ \|a_r(k)-a_p(k)\|_{\varphi,\#}
+     &<2^{-p}+2^{-r} &&(p<r).
+ \end{aligned}
+\]
+Each step intersects only finitely many large sets. Put \(r(k)=\max\{r\le k:k\in W_r\}\), or zero when empty, and \(a(k)=a_{r(k)}(k)\), with \(a_0=0\). For every fixed \(r\), the set \(W_r\) forces \(r(k)\ge r\), so \(r(k)\to_\omega\infty\). The commutator tests and the uniform contraction bound imply \(a\in C_\omega\) by norm density. For fixed \(p\), the second line yields \(\|\pi(a)-A_p\|_{2,\lambda}\le2^{-p}\). Thus the subsequence, and then the whole Cauchy sequence, converges in the quotient unit ball.
+
+This metric completeness also handles an arbitrary Cauchy net in that ball: choose successively indices whose tails have diameters below \(2^{-r}\), making the indices increasing by directedness. The selected sequence is Cauchy and has a limit; its tail-diameter bounds force the original net to that same limit. No cofinal sequence of the net is asserted.
+
+Apply bounded strong* density to the C* subalgebra \(C_\omega/I_\omega\) in the faithful normal representation of \(M^\omega\). A bounded approximating net for an element of its von Neumann closure is Cauchy for \(\|\cdot\|_{2,\lambda}\); the complete metric ball gives its limit in the quotient itself. Traciality makes both symmetric state seminorms converge. The bounded faithful-state topology then makes this the strong* limit in \(M^\omega\), so it is the original approximated element. Consequently the subalgebra is strongly closed. Its inclusion is normal because all its vector-pair coefficients, and their summable series, are restrictions of those on \(M^\omega\). The restriction of the faithful normal state is a faithful normal trace. A proper isometry would have positive range defect of zero trace, contradicting faithfulness; hence the algebra is finite. This proves all the needed structural assertions for \(M_\omega\), with arbitrary center.
 
 ## 1. The canonical ultraweak-limit map
 
@@ -35,9 +78,9 @@ Equation (2) follows from the definition of the quotient state. To prove normali
 =\varphi^\omega(X)-\lim_i\varphi^\omega(X_i)=0.
 \tag{4}
 \]
-The positive difference vanishes by faithfulness of \(\varphi\). Thus \(E_\omega\) preserves increasing positive suprema and is normal. If \(X\ge0\) and \(E_\omega(X)=0\), then \(\varphi^\omega(X)=0\); the faithful quotient state makes \(X=0\). This proves faithfulness as well. \(\square\)
+The positive difference vanishes by faithfulness of \(\varphi\). Thus \(E_\omega\) preserves increasing positive suprema and is normal. If \(X\ge0\) and \(E_\omega(X)=0\), then \(\varphi^\omega(X)=0\); the faithful quotient state makes \(X=0\). This proves faithfulness as well. To verify full ultraweak continuity, compose \(E_\omega\) with each positive normal functional \(\rho\) of \(M\). Preservation of increasing positive suprema makes \(\rho E_\omega\) order-normal, so the complete theorem NF1–4 places it in \((M^\omega)_*\). Every normal functional is a linear combination of four positive normal functionals. Thus all predual coefficients pull back to actual predual coefficients, which is exactly ultraweak continuity on the whole domain. \(\square\)
 
-The map depends on the ultrafilter but not on the state used to describe the strong*-null ideal. The state identity (2) is a convenient proof of normality, rather than an extra definition of the map.
+The map depends on the ultrafilter but not on the state used to describe the strong*-null ideal. The state identity (2) is a convenient proof of normality, rather than an extra definition of the map. On each fixed norm ball the two faithful normal-state symmetric seminorms describe the same topology. Continuity at zero therefore supplies, for each positive tolerance in one seminorm, a positive tolerance in the other, uniformly over that ball. Applying this implication on an ultrafilter-large set proves equality of their null ideals. The multiplier algebra is the normalizer of that ideal and hence is unchanged. Formula (1) uses only ultraweak ultralimits in the original algebra, so it gives the same expectation after this identification.
 
 ## 2. Covariance of a chosen semi-lift
 
@@ -46,7 +89,37 @@ For a fixed normal automorphism \(\beta\), write \(\beta^\omega\) for its consta
 \Gamma_{(\beta_n)}(\pi(x_n))=\pi(\beta_n(x_n)).
 \tag{5}
 \]
-The preceding lesson proves that this is a normal automorphism, and that its restriction to \(M\) is \(\beta\).
+The preceding lesson proves that this is a normal automorphism, and that its restriction to \(M\) is \(\beta\). The coordinate map and its inverse preserve the null ideal, the two-sided multiplier condition and the centralizing commutator tests. Once the induced map is a *-automorphism of the von Neumann quotient, it preserves every bounded increasing positive supremum, because it and its inverse preserve order. NF1–4 applied to each positive normal coefficient then proves its full ultraweak continuity. No state-preservation assumption is needed for this normality argument.
+
+<a id="general-convergent-lift-inputs"></a>
+
+Here is a direct proof of the coordinate-lift assertions at the general faithful-state scope. The coordinate map on bounded sequences is an isometric *-automorphism. If \(b=(b_n)\in I_\omega\) and \(\|b_n\|\le C\), then
+\[
+ \begin{aligned}
+ \varphi(\beta_n(b_n)^*\beta_n(b_n))
+ &\le C^2\|\varphi\circ\beta_n-\varphi\circ\beta\|
+       +(\varphi\circ\beta)(b_n^*b_n)
+       \longrightarrow_\omega0.
+ \end{aligned}
+\]
+The adjoint square has the same bound with \(b_nb_n^*\). The final terms tend to zero because fixed normal positive functionals test the same bounded strong* topology as the faithful state. The inverse family also converges in the \(u\)-topology: composing with \(\beta_n\), an isometry on the predual, gives
+\[
+ \|\psi\circ\beta_n^{-1}-\psi\circ\beta^{-1}\|
+ =\|\psi-(\psi\circ\beta^{-1})\circ\beta_n\|
+ \longrightarrow0.
+\]
+Thus both coordinate maps preserve \(I_\omega\). Its two-sided normalizer \(N_\omega\) is consequently invariant too, by applying the coordinate automorphism to both ideal-preservation equations. This yields a *-automorphism of \(M^\omega\), normal by the order and coefficient argument just given.
+
+For a fixed \(a\in M\), \(u\)-convergence implies \(\beta_n(a)\to\beta(a)\) strong*. To check it directly after reducing the limit to the identity, expand each square of \(\beta_n(a)-a\). The first term is tested by \(\psi\circ\beta_n\) at \(a^*a\). The two cross terms are tested at \(a,a^*\) by the fixed normal functionals \(x\mapsto\psi(a^*x)\) and \(x\mapsto\psi(xa)\). Their limits cancel the two diagonal terms. Repeat for the adjoint square and every positive normal \(\psi\). Hence the quotient restriction to constants is precisely \(\beta\).
+
+For centralizing \((a_n)\), bounded by \(C\), the module identity gives
+\[
+ \|[\beta_n(a_n),\psi]\|
+ \le \|[a_n,\psi\circ\beta]\|
+       +2C\|\psi\circ\beta_n-\psi\circ\beta\|
+       \longrightarrow_\omega0.
+\]
+The inverse estimate proves invariance of \(C_\omega\) in both directions. None of these arguments uses separable predual, a factor assumption, or preservation of the chosen state. Under the separable-predual hypothesis of Section 3, the restriction is an automorphism of the finite normally embedded centralizing von Neumann algebra constructed above.
 
 **Proposition 2.1.** Every such chosen family satisfies
 \[
@@ -117,6 +190,8 @@ They are self-adjoint unitaries, with trace zero and \(zx=-xz\). Each sequence c
 \tag{14}
 \]
 The finite trace centralizing criterion from the preceding lessons makes these sequences centralizing. Equivalently, finite tensor densities are dense in \(L^1(R,\tau)\), so their commutation proves the required convergence against every normal functional.
+
+The density assertion has a direct whole-predual proof. In the trace representation, every normal functional is a norm-convergent summable vector-pair series. Its finite head can be approximated by vector pairs \(a\Omega,b\Omega\) with \(a,b\) in finite tensor stages; the coefficient error is at most \(\|\xi-a\Omega\|\|\eta\|+\|a\Omega\|\|\eta-b\Omega\|\). These coefficients are \(y\mapsto\tau(b^*ya)=\tau(ab^*y)\), so finite tensor densities are norm dense in \(R_*\). [HF0's full isometric trace pairing](../components/hyperfinite-finite-algebra-and-vacuum-inputs.md#hf0) identifies the completion for \(\|h\|_1=\tau(|h|)\) with that entire predual. Alternatively its inequality \(\|h\|_1\le\|h\|_2\) for bounded \(h\), and finite-stage Hilbert density, show the same density in this completion. Thus eventual commutation with every finite tensor density, followed by the uniform commutator bound, gives centralizing against every normal functional. Adjoint conjugation is an isometry on the predual; the same dense coefficients are eventually fixed by the tail conjugations. This also proves ordinary \(u\)-convergence used in Proposition 4.1.
 
 Put \(Z=\pi(z_n)\), \(X=\pi(x_n)\) in \(R_\omega\). They satisfy
 \[

@@ -4861,9 +4861,1146 @@ CD1–CD8 constructs the curve and its smooth surjective Jacobian homomorphism a
 
     Finally a positive-dimensional kernel cannot be the finite kernel of an isogeny. Even the exact rational Tate sequence (CD23) is not a construction of a complementary abelian subvariety or a Galois-equivariant splitting. The reducibility argument must construct that additional geometry before using isogeny transfer to obtain the desired general period presentation. \(\square\)
 
+### 2N. Translation lines detected by one curve
+
+Let \(A/k\) be an abelian variety. We construct, after a finite separable extension \(E/k\), a pointed smooth projective geometrically integral curve \(C\subset A_E\) and a factorization
+\[
+ A_E\xrightarrow{\ h\ }Q\hookrightarrow J_C
+ \tag{NL1}
+\]
+in which \(Q\) is an abelian variety and \(h\) is a finite flat isogeny. The construction keeps the full kernel scheme, including possible nilpotents in positive characteristic. It also gives a line on \(A_E\times Q\) whose pullback along \(h\) is the normalized translation line of a symmetric ample line on \(A_E\). This is a particular family of degree-zero lines; we do not assume a dual abelian variety or a general Picard scheme for \(A\).
+
+A free comparison for ample translation kernels is Milne's author notes [*Abelian Varieties*, Chapter I, §8, Proposition 8.1](https://www.jmilne.org/math/CourseNotes/AV.pdf). Our kernel is represented using the curve Jacobian already constructed in JC1–JC9. The family test below supplies the scheme-theoretic assertion on arbitrary bases. CD1–CD6 supply the resolutions, negative twists and connected smooth cuts; FC10 and FC13–FC14 supply the finite complexes used for base change. Reducibility and a complementary abelian subvariety remain separate requirements.
+
+#### 2N.1. Negative twists of a line and degree-zero section tests
+
+**NL1.** Let \(X/K\) be smooth projective geometrically integral of dimension \(n>0\), let \(H\) be very ample, and let \(L\) be any line on \(X\). Then
+\[
+ H^i(X,L\otimes H^{-r})=0\qquad(0\le i<n,\ r\gg0).
+ \tag{NL2}
+\]
+If \(L\) has degree zero on every smooth projective geometrically integral curve in \(X\), after every algebraically closed field extension, a nonzero global section of \(L\) makes \(L\) trivial. For every \(r>0\),
+\[
+ H^0(X,L\otimes H^{-r})=0.
+ \tag{NL3}
+\]
+
+For (NL2), embed \(X\) by \(H\) in \(\mathbf P^N\), and write \(i:X\hookrightarrow\mathbf P^N\). PF7 gives a surjection from a finite sum of twists to \(i_*L\), and another such surjection to its coherent kernel. The resulting presentation matrix is a matrix of homogeneous polynomials: PF6 identifies each map between two twists with a homogeneous polynomial of the corresponding degree, or zero when that degree is negative. The cokernel of this matrix of shifted graded free modules is a finite graded module whose associated sheaf is \(i_*L\). CD1 therefore gives a finite twist resolution \(F^\bullet\to i_*L\).
+
+Put \(c=N-n\) and \(\omega=\mathcal O_{\mathbf P^N}(-N-1)\). Locally on \(X\), the line \(L\) is free of rank one. CD3's completed smooth-coordinate calculation and its faithfully detected Koszul resolution apply there without change to \(i_*L\). Thus
+\[
+ G^\bullet=\mathcal Hom(F^\bullet,\omega)
+ \quad\hbox{has cohomology sheaves only in degree }c.
+ \tag{NL4}
+\]
+More explicitly, the local ideal is a regular sequence of length \(c\); its dual Koszul complex is its reversed exterior complex, with cohomology only in the top degree. Comparing free resolutions by recursively lifted chain maps and homotopies identifies this calculation with that for \(F^\bullet\). This uses CD3's all-dimensional completion argument, rather than the curve-only local-ring assertion SF5.
+
+Apply PF8 to the finitely many terms, cycles, boundaries and cohomology sheaves of \(G^\bullet(r)\). For sufficiently large \(r\) their positive cohomology vanishes. Their short exact sequences then show that the Čech total cohomology of \(G^\bullet(r)\) is concentrated in degree \(c\). CD2 consequently gives
+\[
+ H^i(X,L\otimes H^{-r})^\vee
+   \simeq\mathbb H^{N-i}(G^\bullet(r))=0
+       \quad(i<n).
+ \tag{NL5}
+\]
+The calculation can be made over an algebraic closure; tensoring the affine Čech complex with a field extension is exact and detects vanishing. Hence it proves the assertion over \(K\).
+
+For the section assertions, we may likewise extend to an algebraic closure. If a nonzero section of \(L\) has a zero at \(x\), choose a point \(y\) where it is nonzero. When \(n\ge2\), CD6 gives one smooth integral curve through both points, by connected smooth cuts. When \(n=1\), use \(X\) itself. The restricted section is nonzero and has a zero, so DC4 makes its line have positive degree, a contradiction. The section is therefore nowhere zero and trivializes \(L\).
+
+A nonzero section of \(L\otimes H^{-r}\) would remain nonzero on a smooth integral curve through a point where its value is nonzero, using CD6 again. On that curve its degree is \(-r\deg H<0\), contradicting DC4. To verify the strict positivity used here, choose two distinct points of the embedded curve and a hyperplane containing one and not the other. Its nonzero restricted section has a zero, so DC4 gives \(\deg H>0\). The assertions descend by faithful field extension. \(\square\)
+
+#### 2N.2. One negative twist for an entire family
+
+**NL2.** Suppose \(K\) is infinite, \(n=\dim X\ge2\), and \(S\) is a quasi-compact noetherian \(K\)-scheme. Let \(\mathcal M\) be a line on \(X\times S\) whose geometric fibres have degree zero on every smooth projective curve, also after algebraically closed extension. There are arbitrarily large integers \(r>0\), and smooth geometrically integral divisors \(Y\in|H^r|\), for which
+\[
+ R^j\pi_{T*}(\mathcal M_T\otimes H^{-r})=0
+ \qquad(j=0,1)
+ \tag{NL6}
+\]
+for every scheme \(T\to S\). In particular \(T\) may be nonreduced or nonnoetherian.
+
+Choose first a smooth geometrically integral divisor \(D\in|H^e|\), with \(e>0\), using CD3–CD5. Its dimension is at least one. For every geometric parameter \(s\) and every \(r>0\), NL1 on curves in \(D\) gives
+\[
+ H^0\bigl(D,\mathcal M_s|_D\otimes H^{-r}|_D\bigr)=0.
+ \tag{NL7}
+\]
+The restriction sequence and its cohomology sequence therefore give an injection
+\[
+ H^1(X,\mathcal M_s\otimes H^{-(r+e)})
+       \hookrightarrow
+ H^1(X,\mathcal M_s\otimes H^{-r}).
+ \tag{NL8}
+\]
+This is the reason a finite cover of the parameter scheme suffices: once the right side is zero at a positive multiple of \(e\), it stays zero at all larger multiples.
+
+For each point \(s\) of \(S\), NL1 supplies such a multiple \(r_s\). The finite projective cohomology complex FC10, followed by the unit cancellations FC13–FC14, makes the vanishing locus of fibre \(H^1\) open near \(s\). Indeed \(H^0\) is already zero by NL1. After cancellation of an injective degree-zero differential modulo the residue field, cancel the injective remaining degree-one differential. The relevant invertible minors persist on an open neighbourhood. Call this neighbourhood \(U_s\). Quasi-compactness gives a finite cover by \(U_{s_1},\ldots,U_{s_m}\). Choose a multiple \(r\) of \(e\) at least as large as their \(r_{s_i}\). Injection (NL8) gives fibre \(H^1=0\) at every geometric point of \(S\).
+
+Apply the same finite-complex cancellation at every point for this fixed \(r\). Locally the cohomology complex is homotopy equivalent to a finite projective complex with no terms in degrees zero and one. The cancelled summands are contractible by actual unit matrices. After any base change they remain contractible, and the remaining complex still has no terms in those degrees. FC10's arbitrary-base-change identification now proves (NL6), not merely vanishing after residue-field tensor. This also proves the assertion for sheaves \(R^j\pi_*\), by making the argument locally on the parameter scheme.
+
+The same reasoning works at every larger multiple of \(e\). Choose one also beyond CD3's connectedness bound and CD4's marked-jet bound. CD5 then gives the required smooth integral \(Y\); it can be required to pass through any fixed finite collection of distinct rational points with prescribed nonzero normal covectors. The bound for (NL6) depends on the degree \(r\), not on which section defines \(Y\). \(\square\)
+
+#### 2N.3. A curve test that retains nilpotent parameters
+
+**NL3.** Assume \(K\) is infinite and \(X\) has a rational point \(P\). Give \(\mathcal M\) of NL2 a rigidification on \(\{P\}\times S\). There is a pointed smooth projective geometrically integral curve \(C\subset X\), containing \(P\), such that for every \(T\to S\)
+\[
+ \pi_{T*}\mathcal M_T
+       \xrightarrow{\ \sim\ }
+ \pi_{C,T*}(\mathcal M_T|_{C\times T}).
+ \tag{NL9}
+\]
+Restriction detects rigidified triviality on all those bases:
+\[
+ (\mathcal M_T,\rho_T)\simeq(\mathcal O,1)
+ \quad\Longleftrightarrow\quad
+ (\mathcal M_T|_{C\times T},\rho_T)\simeq(\mathcal O,1).
+ \tag{NL10}
+\]
+
+If \(X\) is a curve, take \(C=X\). Otherwise NL2 chooses a smooth integral cut \(Y\) through \(P\) with universally vanishing negative-twist \(R^0\) and \(R^1\). The exact sequence
+\[
+ 0\to\mathcal M_T\otimes H^{-r}
+     \to\mathcal M_T\to\mathcal M_T|_{Y\times T}\to0
+ \tag{NL11}
+\]
+is exact after every \(T\to S\): the defining regular equation remains regular after tensor over the field, and \(\mathcal M_T\) is invertible. Its direct-image sequence gives the isomorphism of section sheaves. The restricted family on \(Y\) still has degree zero on every smooth projective curve after field extension. Repeat in dimension \(\dim Y\) until reaching one curve. Composing the isomorphisms proves (NL9); all restrictions preserve evaluation at \(P\).
+
+If the right side of (NL10) holds, its normalized section \(1\) lifts uniquely by (NL9), locally and hence globally on \(T\). At a geometric point \(t\), this section of \(\mathcal M_t\) has value \(1\) at \(P\). NL1 makes it nowhere zero on \(X_t\). Therefore its coefficient in a local frame is outside every maximal ideal at every point of \(X\times T\), and is a unit in each local ring. It trivializes \(\mathcal M_T\), even when \(T\) has nilpotents. Its normalization is the prescribed one. Uniqueness follows either from (NL9) or from FC20's equality \(\pi_*\mathcal O_{X_T}=\mathcal O_T\). The converse is restriction. Thus the proof uses a full finite-complex base-change argument, rather than applying the reduced-base see-saw statement CE3 to a nonreduced scheme. \(\square\)
+
+#### 2N.4. Normalized translation lines and their curve homomorphism
+
+**NL4.** Work first over the infinite separably closed field \(K=k^{\mathrm{sep}}\). Let \(H\) be a symmetric ample line on \(A_K\), supplied by CU7, and put \(\widetilde H=H\otimes_K H_0^{-1}\), with its canonical trivialization at zero. For addition \(m\) define
+\[
+ \mathcal P_H
+   =m^*\widetilde H\otimes p_1^*\widetilde H^{-1}
+                         \otimes p_2^*\widetilde H^{-1}
+       \quad\hbox{on }A_K\times A_K .
+ \tag{NL12}
+\]
+It has canonical trivializations on both axes. It is symmetric in the two factors and additive in each, as a rigidified line family. In particular, for any parameter scheme and any two parameter maps \(a,a'\), its restrictions satisfy
+\[
+ \mathcal P_{a+a'}\simeq\mathcal P_a\otimes\mathcal P_{a'}.
+ \tag{NL13}
+\]
+
+To check this on schemes, pull CU5's normalized cube identity to the three maps \(x,a,a'\). Its eight factors are \(\widetilde H_{x+a+a'}\), the inverses of the three pairwise sums, the three single factors, and the inverse of the zero factor. Rearranging gives exactly (NL13), with the normalization at \(x=0\). FC20 makes a rigidification-preserving isomorphism unique: its ratio with another would be a unit pulled back from the parameter scheme and equal to one on that axis. Consequently the associative and commutative compatibility diagrams commute. Symmetry of (NL12) gives additivity in the first factor too. All assertions retain arbitrary nonreduced parameters.
+
+More generally let \(B\subset A_K\) be a positive-dimensional abelian subvariety, and restrict the first factor of \(\mathcal P_H\) to \(B\). This family has degree zero on every smooth projective curve in every geometric fibre. Indeed fix any such curve \(D\subset B_\Omega\) over an algebraically closed extension \(\Omega/K\). On \(D\times A_\Omega\), CE3 makes the Euler characteristic of this flat line family locally constant in the parameter. DC5 identifies the difference of Euler characteristics with the degree. The connected scheme \(A_\Omega\) contains the parameter zero, where the line is trivial. Its degree is therefore zero at every parameter. This argument applies over every algebraically closed extension and to every such \(D\).
+
+Apply NL3 to \(X=B\), \(S=A_K\), \(P=0\) and this family, taking a very ample power of \(H|_B\) for the cuts. We obtain one pointed curve \(C\subset B\). The full curve Picard representation JC4–JC7 gives a morphism
+\[
+ h_{A,B}:A_K\longrightarrow J_C,\qquad
+ a\longmapsto[\mathcal P_H|_{C\times\{a\}}],
+ \tag{NL14}
+\]
+with its actual rigidified universal-line identification. Equation (NL13) proves it is a group homomorphism on every parameter scheme. Its restriction \(h_B:B\to J_C\) satisfies
+\[
+ \ker h_B(T)=
+ \{b\in B(T):\mathcal P_{H|_B,b}
+                 \text{ is rigidified-trivial on }B_T\}
+ \tag{NL15}
+\]
+for every \(K\)-scheme \(T\), by (NL10). Thus the kernel here is the closed kernel scheme of a morphism into the separated scheme \(J_C\); its description is not just a set of geometric translation stabilizers. For \(B=A_K\), write \(h=h_{A,A}\). \(\square\)
+
+#### 2N.5. Finiteness of the full ample translation kernel
+
+**NL5.** The kernel scheme \(K_B=\ker h_B\) in (NL15) is finite over \(K\).
+
+It is a closed proper scheme in \(B\). Extend to an algebraic closure \(\Omega\). Suppose its support has a positive-dimensional irreducible component. Give that component its reduced structure and translate one of its closed points to zero. Translation by a point of the kernel is an automorphism of the full kernel scheme, so we obtain a proper integral positive-dimensional subscheme \(Z\subset(K_B)_\Omega\) through zero. The line \(\mathcal P_{H|_B}\) on \(B_\Omega\times Z\) has trivial geometric fibres by (NL15). Since \(Z\) is reduced, the reduced-base see-saw theorem CE3 applies here: its direct image is a line and evaluation is an isomorphism. The rigidification on \(\{0\}\times Z\) identifies that direct-image line with \(\mathcal O_Z\). Hence
+\[
+ \mathcal P_{H|_B}|_{B_\Omega\times Z}\simeq\mathcal O.
+ \tag{NL16}
+\]
+Pull this along \(z\mapsto(-z,z)\). Addition becomes zero; the two other factors in (NL12) become the restrictions of \([-1]^*\widetilde H|_B\) and \(\widetilde H|_B\). Since \(H\) is symmetric, (NL16) gives
+\[
+       (H|_Z)^{\otimes2}\simeq\mathcal O_Z .
+ \tag{NL17}
+\]
+Constant one-dimensional factors from normalization do not change this line-isomorphism assertion. But \(H|_Z\) is ample: a very ample power of \(H|_B\) restricts to a closed projective immersion of \(Z\). Its square is ample as well. A trivial line cannot be ample on a proper integral positive-dimensional scheme over \(\Omega\). Indeed every global function there is constant: its map to \(\mathbf P^1\) has closed irreducible image by properness, and a nonconstant such map would have image all of \(\mathbf P^1\), contradicting its avoidance of infinity. A very ample trivial power would therefore give a constant map to projective space. This contradicts the positive dimension of \(Z\).
+
+Thus the geometric support of \(K_B\) is zero-dimensional. A zero-dimensional noetherian scheme has finitely many points: a finite affine cover reduces this to a zero-dimensional noetherian ring, whose finitely many minimal primes are maximal. Proper finite-fibre finiteness from Lesson 3 makes \(K_B\to\operatorname{Spec}K\) finite. This conclusion is about the full kernel scheme. Its rank may exceed its number of geometric points, and the argument does not assert that it is étale. \(\square\)
+
+#### 2N.6. The finite flat image inside a curve Jacobian
+
+**NL6.** For \(B=A_K\), let \(Q\) be the scheme-theoretic image of \(h:A_K\to J_C\). Then \(Q\) is an abelian variety and
+\[
+       h:A_K\longrightarrow Q
+ \quad\hbox{is finite flat of degree }
+       d=\dim_K\mathcal O(K_A).
+ \tag{NL18}
+\]
+
+The map \(h\) is proper: its graph is closed in \(A_K\times J_C\), and projection to \(J_C\) is proper. Each nonempty geometric fibre is a translate of \(K_A\) as a scheme. To see the scheme assertion, choose a point \(a\) in that fibre over the algebraically closed residue field; the inverse maps are \(x\mapsto x-a\) and \(u\mapsto a+u\), and their defining equations are exactly \(h(x)=h(a)\) and \(h(u)=0\). By NL5 all such fibres are finite. The proper finite-fibre theorem makes \(h\) finite.
+
+On an affine open \(U\subset J_C\), its inverse image is affine and its coordinate ring is finite over \(\mathcal O(U)\). The quotient of \(\mathcal O(U)\) by the kernel of this map defines \(Q\cap U\). These kernels sheafify and glue, by localization. At a nonempty inverse image the coordinate ring is a domain, so its image subring is a domain. More globally finite \(h\) gives a closed image, which is irreducible because \(A_K\) is; these affine descriptions show that the image is reduced. The construction commutes with every field extension: kernel and finite pushforward on an affine open commute with flat scalar extension. Since \(A_K\) is geometrically integral, the same argument after algebraic closure shows that \(Q\) is geometrically integral. Lying-over for the finite integral extension shows that \(A_K\to Q\) is surjective.
+
+Every geometric fibre over \(Q\), including a geometric generic fibre, is a translate of \(K_A\), so its length is the same integer \(d\). On an affine domain \(R\subset Q\), put \(M=\mathcal O(h^{-1}\operatorname{Spec}R)\). Its generic rank and all residue-field fibre dimensions are \(d\). FF1's domain fibre-rank lemma makes \(M\) locally free of rank \(d\). Explicitly, at a local point choose \(d\) lifts of a residue-field basis, giving \(R^d\to M\) onto by Nakayama. The kernel has rank zero after tensor with the fraction field, and is a submodule of the torsion-free module \(R^d\). It is therefore zero. This proves finite flatness and faithful flatness, since \(d>0\).
+
+The group structure on \(J_C\) restricts to \(Q\). For example, the ideal defining \(Q\) pulls back to zero under the composite \(A_K\times A_K\to J_C\) given by addition, because this composite is \(h\) after addition on \(A_K\). The finite faithfully flat cover \(A_K\times A_K\to Q\times Q\) detects the vanishing of that ideal, proving that addition factors through \(Q\). Inversion and zero factor in the same manner. The group axioms follow from those on \(J_C\), or after the same faithful covers. Thus \(Q\) is a proper geometrically integral group scheme.
+
+Over \(\Omega\), generic smoothness for reduced finite-type schemes over a perfect field, proved by the separating-transcendence-basis calculation in FQ3, gives a nonempty smooth open in \(Q_\Omega\). Translating a smooth closed point to any other closed point makes all closed points smooth. The nonsmooth closed locus must be empty, since a nonempty finite-type closed locus has a closed point. Hence \(Q_\Omega\) is smooth. The smooth-chart and faithful-field-descent criteria SF1–SF4 imply smoothness over \(K\). It is connected and proper, so it is an abelian variety, with projectivity also supplied by CU7. Its dimension equals \(\dim A_K\), either by the finite integral function-field extension or by finite flatness. This proves (NL18). \(\square\)
+
+#### 2N.7. Descent of the normalized translation line
+
+**NL7.** There is a unique rigidified line \(\mathcal P_Q\) on \(A_K\times Q\), with its descent identification, such that
+\[
+ (1\times h)^*\mathcal P_Q\simeq\mathcal P_H .
+ \tag{NL19}
+\]
+Its restriction to \(C\times Q\) is the universal rigidified curve line pulled back by \(Q\hookrightarrow J_C\). Consequently the natural map
+\[
+ Q(T)\longrightarrow
+ \{\text{isomorphism classes of lines on }A_K\times T
+                       \text{ rigidified at }0\times T\}
+ \tag{NL20}
+\]
+is injective for every \(K\)-scheme \(T\). Its image consists exactly of the classes that become a normalized translation line \(\mathcal P_a\), for some \(a\in A_K(T')\), after an fppf cover \(T'\to T\).
+
+The relation scheme of the cover \(h\) has the explicit isomorphism
+\[
+ A_K\times_Q A_K\simeq A_K\times K_A,\qquad
+ (a,a')\longmapsto(a,a'-a).
+ \tag{NL21}
+\]
+This follows on all points with values in every scheme, from the equations for a group kernel; addition gives its inverse. On \(A_K\times K_A\), with the first factor now the object on which the line lives, the line \(\mathcal P_H\) is canonically trivial. Indeed its restriction to \(C\times K_A\) is rigidified-trivial by the defining Jacobian kernel, and (NL10), applied to \(T=K_A\to A_K\), gives a unique normalized trivialization on the whole \(A_K\times K_A\). This includes a nonreduced kernel.
+
+Biadditivity (NL13) now gives a normalized isomorphism between the two pullbacks of \(\mathcal P_H\) to \(A_K\times(A_K\times_Q A_K)\). Over the triple relation scheme the two composites agree: they are rigidification-preserving isomorphisms of the same lines, and FC20 makes such an isomorphism unique. We have an actual descent datum. Apply effective faithfully flat module descent FD2, preservation of finite locally free rank one FD4, and the gluing of these affine constructions. Since \(1\times h\) is finite faithfully flat, this gives \(\mathcal P_Q\) and (NL19), with its descended rigidification. Its isomorphism is unique with the specified descent identification.
+
+Let \(\mathcal U\) be the curve's universal rigidified line on \(C\times J_C\). By definition of \(h\), both \(\mathcal P_Q|_{C\times Q}\) and \(\mathcal U|_{C\times Q}\) pull back to the same rigidified line on \(C\times A_K\). The isomorphism and its cocycle are unique by FC20, so faithful descent identifies them. If two maps \(T\to Q\) give isomorphic rigidified lines on \(A_K\times T\), restriction to \(C\times T\) and the full Jacobian representation make their composites \(T\to J_C\) equal. The closed immersion \(Q\hookrightarrow J_C\) is a monomorphism, proving injectivity in (NL20).
+
+A map \(q:T\to Q\) lifts fppf locally to \(a:T'\to A_K\), since \(h\) is finite faithfully flat; (NL19) then gives its line as \(\mathcal P_a\). Conversely, suppose a rigidified line \(\mathcal L\) on \(A_K\times T\) has that property. Its restriction to \(C\times T\) defines a map \(u:T\to J_C\). On the cover \(T'\), this map factors as \(h(a)\), hence through \(Q\). The ideal of \(Q\) pulls back to zero after a faithful flat cover, and is therefore zero already on \(T\). Thus \(u\) factors uniquely through \(q:T\to Q\). On the cover the two rigidified lines \(\mathcal L\) and \(\mathcal P_q\) are isomorphic; uniqueness makes the isomorphisms compatible on overlaps, so they descend. This proves the precise image assertion.
+
+We have not identified that image with every line that might be called algebraically trivial on \(A_K\). Nor can triviality after pulling back by an isogeny, in the other factor, be used without checking its descent datum. The construction establishes exactly (NL19)–(NL20). \(\square\)
+
+#### 2N.8. Finite separable descent and the integral Tate image
+
+**NL8.** The data in (NL1), (NL12) and (NL19) can be constructed over a finite separable extension \(E/k\). For every prime \(\ell\ne\operatorname{char}k\), they give \(G_E\)-equivariant injections
+\[
+ T_\ell A_E\xrightarrow{\ T_\ell h\ }T_\ell Q
+                  \hookrightarrow T_\ell J_C .
+ \tag{NL22}
+\]
+The first cokernel has order \(\ell^{v_\ell(d)}\), where \(d=\deg h\). The second image is saturated: if a class in \(T_\ell J_C/T_\ell Q\) is killed by a power of \(\ell\), it is zero. Hence
+\[
+ \operatorname{Sat}_{T_\ell J_C}(\operatorname{im}T_\ell h)
+       =T_\ell Q,\qquad
+ V_\ell A_E\simeq V_\ell Q\subset V_\ell J_C .
+ \tag{NL23}
+\]
+Here saturation means the elements whose some \(\ell\)-power multiple lies in the given submodule.
+
+The curves and finitely many cuts constructed over \(k^{\mathrm{sep}}\) use finitely many equations and coefficients. They, their marked zero, and their embeddings therefore descend to a finite separable \(E/k\). Use the symmetric ample line already defined over \(k\) in CU7. JC7 gives the pointed curve Jacobian and its universal line over \(E\), and its representation defines \(h\) there from (NL12). The construction of the finite scheme image commutes with faithful field extension as proved in NL6. Finiteness, finite flatness, the kernel length and geometric smoothness are consequently detected after \(k^{\mathrm{sep}}/E\).
+
+The curve test and its normalized isomorphisms descend too. For any \(E\)-scheme \(T\), apply the test after the faithfully flat cover \(T_{k^{\mathrm{sep}}}\to T\). A normalized trivialization is unique by FC20; its two pullbacks agree, so FD2 descends it. Thus the actual full kernel and descent construction over \(E\) are those just proved over \(K\), not a replacement by geometric points. Alternatively apply finite faithfully flat descent directly to the already constructed \(E\)-map \(h\) and its relation scheme.
+
+CU10 gives injectivity of \(T_\ell h\) and the asserted exact finite index for any isogeny, including one whose degree has an inseparable factor. The closed immersion \(Q\hookrightarrow J_C\) gives an injection of torsion points and inverse limits. To prove saturation, write \(t=(t_r)_{r\ge1}\in T_\ell J_C\), with \(t_r=\ell t_{r+1}\). If \(\ell^e t\in T_\ell Q\), then for every \(r\)
+\[
+             t_r=\ell^e t_{r+e}\in Q.
+ \tag{NL24}
+\]
+Each \(t_r\) is already killed by \(\ell^r\) and all transition equations hold in \(Q\), so \(t\in T_\ell Q\). Since the finite cokernel of the first map in (NL22) is killed by an \(\ell\)-power, its image saturates to all \(T_\ell Q\). Saturation inside the larger module is exactly \(T_\ell Q\), by the result just proved. Tensor with \(\mathbf Q_\ell\) to obtain (NL23). All maps come from maps over \(E\), so they commute with \(G_E\); no equivariant splitting has been inferred.
+
+If \(\dim A=0\), take \(C=\mathbf P^1_E\), \(A_E=Q=J_C=0\), \(d=1\), and the trivial lines. For positive dimension, the constructed \(Q\) has dimension \(\dim A\); the inclusion in \(J_C\) need not have the same dimension as \(J_C\). An abelian complement to \(Q\), or an isogeny retraction from \(J_C\) onto it, has not been constructed here. Likewise the earlier surjection CD7 has not acquired a splitting merely from (NL1). Those are the remaining reducibility assertions. \(\square\)
+
+#### 2N.9. Graded exercise: families, kernels and Tate saturation
+
+**Exercise 2N (100 points; ten parts of 10 points).**
+
+1. On \(\mathbf P^2_K\), take \(H=\mathcal O(1)\) and \(L=\mathcal O(a)\), \(a\in\mathbf Z\). Determine exactly when \(H^0(LH^{-r})\) and \(H^1(LH^{-r})\) vanish, for \(r>0\). Explain which part of NL1 needs the degree-zero hypothesis.
+2. In NL2 take \(e=6\), and suppose three opens covering the parameter scheme have respective vanishing thresholds \(6,12,18\), all in the progression of positive multiples of \(e\). List the first three common allowable degrees. State the direction of the cohomology injection that makes the argument work. Explain why no relative duality theorem was needed.
+3. Let \(R=K[\epsilon]/(\epsilon^2)\). Compare the complexes \([R\xrightarrow{1}R]\) and \([R\xrightarrow{\epsilon}R]\) in degrees zero and one, before and after reduction modulo \(\epsilon\). For a genus-one curve, construct a line over \(R\) with trivial closed fibre that is not itself trivial. Identify why NL3 can nevertheless test the actual family on a curve.
+4. Expand the ratio \(\mathcal P_{a+a'}\otimes\mathcal P_a^{-1}\otimes\mathcal P_{a'}^{-1}\) using (NL12), including its parameter-only factors. Match it with the normalized cube at \((x,a,a')\). Explain why the resulting biadditivity isomorphisms satisfy the cocycle identity.
+5. Compute the pullback of \(\mathcal P_H\) by \(z\mapsto(-z,z)\), with the normalization at zero included. Suppose \(H\) is symmetric and the resulting line is trivial on a proper integral \(Z\). Prove \(\dim Z=0\) when \(H|_Z\) is ample. Explain the role of reducedness in the use of see-saw.
+6. Let \(E\) be an elliptic curve and \(H=\mathcal O_E(m[0])\), \(m>0\). Take \(C=E\) and identify \(J_E\) with \(E\) using \(a\mapsto\mathcal O_E([a]-[0])\). Compute \(h\), its full kernel and its degree. In characteristic \(p\), discuss \(m=p\) and the indices on \(T_\ell\) for \(\ell\ne p\).
+7. In characteristic \(p\), prove that \(K[x]\) is free of rank \(p\) over \(K[u]\) under \(u\mapsto x^p\). Compute every geometric fibre and the relation algebra of the cover. Explain why a single geometric point in each fibre does not imply an isomorphism or an étale map.
+8. Over a field of characteristic \(p\), set \(R=K[u,u^{-1}]\), \(B=K[x,x^{-1}]\), \(u=x^p\). Compute the \(\mu_p\)-grading and the weight-one descent module. Write the character cocycle on the relation scheme. Distinguish a trivial underlying line after pullback from the trivial descent identification.
+9. Let \(M=\mathbf Z_\ell^4\), \(Q_0=\mathbf Z_\ell e_1\oplus\mathbf Z_\ell e_2\), and \(I=\mathbf Z_\ell\ell^2e_1\oplus\mathbf Z_\ell\ell^3e_2\). Compute \(Q_0/I\), its order, and the saturation of \(I\) in \(M\). Give the compatible-torsion argument proving saturation for an actual abelian subvariety.
+10. Prove the image description in (NL20) by descending a local lift through \(A\to Q\). Explain why finite separable descent is available, and why the constructed inclusions and surjections involving Jacobians do not yet prove an isogeny decomposition.
+
+**Full solution.**
+
+1. PF5–PF6 gives
+   \[
+    h^0(\mathbf P^2,\mathcal O(a-r))=
+    \begin{cases}\binom{a-r+2}{2}&a-r\ge0,\\0&a-r<0,\end{cases}
+    \qquad H^1(\mathbf P^2,\mathcal O(a-r))=0.
+    \tag{NLX1}
+   \]
+   Thus both groups vanish exactly for \(r>a\), subject to \(r>0\); degree-one cohomology vanishes for every integer twist. The eventual negative vanishing of NL1 holds for every line. The conclusions that a section of the line trivializes it, and that every strictly negative twist has no section, use degree zero on curves. For example \(a=2,r=1\) has three sections, so eventual vanishing for arbitrary lines cannot be replaced by vanishing at every positive \(r\).
+
+2. The first three choices guaranteed by the three bounds are \(18,24,30\). They may be enlarged further for the smooth-section and marked-jet bounds. The injection is
+   \[
+    H^1(\mathcal M_sH^{-(r+6)})
+          \hookrightarrow H^1(\mathcal M_sH^{-r}).
+    \tag{NLX2}
+   \]
+   Its source is the group at the larger positive integer \(r+6\). A zero target forces that source to be zero. The preceding \(H^0\) on the auxiliary divisor is zero by the negative-degree curve test. Individual eventual vanishing came from a finite resolution and the explicit projective duality calculation CD2. Openness and arbitrary base change came from the finite complexes FC10 and their actual unit cancellations. The proof therefore needs neither a uniform relative dualizing complex nor a general relative duality theorem.
+
+3. The identity complex is contractible over \(R\), with inverse differential one, and stays so after every base change. For the other complex,
+   \[
+      H^0=\epsilon R,\qquad H^1=R/\epsilon R.
+      \tag{NLX3}
+   \]
+   After reduction its differential is zero and both cohomology spaces are \(K\). In particular the map \(H^0\otimes_RK\to H^0([K\xrightarrow0K])\) is zero: the inclusion \(\epsilon R\hookrightarrow R\) reduces to zero. Fibre dimensions do not give a trivialized complex.
+
+   For a smooth projective genus-one curve \(D\), choose a nonzero Čech class \((c_{ij})\) in \(H^1(D,\mathcal O_D)\), whose dimension is one by SD. On an affine cover glue frames by \(1+\epsilon c_{ij}\). The additive cocycle equation and \(\epsilon^2=0\) give the multiplicative cocycle equation. A trivialization would have reduction a nowhere-zero function, hence a constant by FC20; divide by that constant. Its frames would then be \(1+\epsilon b_i\), making \(c_{ij}=b_j-b_i\), a contradiction. Tensoring off the line at a chosen point gives a rigidification without changing this conclusion.
+
+   Consequently reduced-fibre triviality alone is insufficient on a nonreduced parameter scheme. NL3 instead proves an isomorphism of section sheaves after **every** base change. Its lifted section has value one at the marked point and is fibrewise nowhere zero; its local coefficients are then units. For \(X=D\), the testing curve is \(D\) itself, so the nontrivial infinitesimal line is detected.
+
+4. Write \(H_b\) for the pullback of \(\widetilde H\) by the indicated map \(b\). Direct expansion gives
+   \[
+    H_{x+a+a'}H_{x+a}^{-1}H_{x+a'}^{-1}
+       H_x H_a H_{a'}H_{a+a'}^{-1}.
+    \tag{NLX4}
+   \]
+   Tensor products of the written line factors are understood. The zero factor of the normalized cube is \(H_0^{-1}\), canonically trivial. With that factor inserted, (NLX4) is exactly its eight-factor expression. The factors \(H_a,H_{a'},H_{a+a'}^{-1}\) are necessary; omitting them destroys the rigidification. The cube trivialization respects \(x=0\). Any two such isomorphisms have a unit ratio pulled back from the parameter scheme, by FC20; its value at \(x=0\) is one. Thus the isomorphisms are unique, and the two composites for three parameters agree. This proves the cocycle compatibility on nonreduced bases as well.
+
+5. Since addition is zero on the anti-diagonal, the pullback is
+   \[
+     \widetilde H_0\otimes
+           ([-1]^*\widetilde H|_Z)^{-1}
+                   \otimes(\widetilde H|_Z)^{-1}.
+     \tag{NLX5}
+   \]
+   The first factor is canonically trivial. Symmetry identifies the last two unnormalized line factors with \(H|_Z^{-2}\), up to constant lines. Triviality therefore implies \(H|_Z^2\simeq\mathcal O_Z\). A high power is very ample and also trivial. Every global function on \(Z\) is constant, by the proper-map-to-\(\mathbf P^1\) argument of NL5, so its projective map is constant. It cannot embed a positive-dimensional \(Z\).
+
+   The \(Z\) used in NL5 is explicitly the reduced structure of a translated irreducible component of the geometric kernel support. Thus CE3's reduced-base hypothesis holds exactly where it is used. Reducedness is not asserted for the full kernel; its nilpotents remain part of its finite length.
+
+6. Translation pulls the divisor \([0]\) back to \([-a]\). Parameter-only factors disappear in the divisor class, so
+   \[
+       h(a)=-[m]a,\qquad K_A=E[m],\qquad d=m^2.
+       \tag{NLX6}
+   \]
+   The identification \(J_E\simeq E\) is JC's genus-one Abel isomorphism; tensoring divisor lines corresponds to addition under it. Thus the displayed formula is an equality of morphisms, including their full kernel schemes, since both arise from the same universal rigidified family.
+
+   For \(m=p=\operatorname{char}K\), the kernel has rank \(p^2\); it must not be replaced by its geometric points. The differential of \([p]\) is multiplication by \(p\) on the tangent line, hence zero, so this positive-degree finite map is not étale. For \(\ell\ne p\), \(v_\ell(d)=0\); CU10 gives an isomorphism on \(T_\ell\). This does not make the original finite map an isomorphism.
+
+7. Division of an exponent by \(p\) uniquely writes every polynomial as
+   \[
+          \sum_{j=0}^{p-1} f_j(x^p)x^j .
+          \tag{NLX7}
+   \]
+   The monomials occurring in different summands have distinct residues modulo \(p\), proving independence as well as generation. Over an algebraically closed residue field at \(u=b\), choose the unique \(a\) with \(a^p=b\). Its fibre algebra is
+   \[
+       \Omega[x]/(x^p-b)\simeq\Omega[v]/(v^p),
+       \qquad v=x-a.
+       \tag{NLX8}
+   \]
+   It has length \(p\) and one geometric point. The relation algebra is
+   \[
+       K[x,x']/(x'^p-x^p)
+              \simeq K[x,v]/(v^p),\qquad v=x'-x.
+       \tag{NLX9}
+   \]
+   These nilpotents rule out étaleness and, for \(p>1\), an isomorphism. The basis proves finite flatness directly. This affine model illustrates why NL6 keeps fibre lengths, rather than counting points.
+
+8. The same exponent calculation, now allowing negative powers, gives the grading
+   \[
+     B=\bigoplus_{j=0}^{p-1}R x^j,\qquad
+       \delta(x)=x\otimes z,\qquad
+       \mathcal O(\mu_p)=K[z]/(z^p-1).
+       \tag{NLX10}
+   \]
+   The weight-one module is \(B_1=Rx\), free of rank one over \(R\). Multiplication by \(x\) trivializes its pullback to \(B\). The relation scheme is \(B[z]/(z^p-1)\), with \(x'=xz\); its character transition is \(z=x'/x\). On the triple relation scheme,
+   \[
+       \frac{x'}x\,\frac{x''}{x'}=\frac{x''}x.
+       \tag{NLX11}
+   \]
+   This proves the cocycle identity. In characteristic \(p\), \(z^p-1=(z-1)^p\), so its character is one at the sole geometric point while remaining different from one as a function. The underlying descended module here is indeed free, but its specified pullback identification has transition \(z\), rather than transition one. Ignoring that identification erases real descent information. NL7 supplies the normalized transition isomorphisms and checks their cocycle, including on nilpotent relation schemes.
+
+9. The coordinates are independent, so
+   \[
+       Q_0/I\simeq
+        \mathbf Z_\ell/\ell^2\oplus\mathbf Z_\ell/\ell^3,
+        \qquad [Q_0:I]=\ell^5.
+        \tag{NLX12}
+   \]
+   Every element of \(Q_0\) is sent into \(I\) by \(\ell^3\). An element of \(M\) with a nonzero third or fourth coordinate has no \(\ell\)-power multiple in \(I\), since \(\mathbf Z_\ell\) is torsion-free. Thus the saturation is precisely \(Q_0\).
+
+   For a closed abelian subvariety \(Q\subset J\), suppose \(\ell^e t\in T_\ell Q\). Compatibility gives \(t_r=\ell^e t_{r+e}\); the right side belongs to \(Q\), so each \(t_r\) is a point of \(Q[\ell^r]\). The same compatibility holds there, proving \(t\in T_\ell Q\). This geometric argument proves the saturation assertion without assuming a complement or a Galois-equivariant direct-sum decomposition.
+
+10. A map \(q:T\to Q\) lifts along the finite faithfully flat map \(A\to Q\) after the cover \(T'=T\times_QA\to T\). Equation (NL19) identifies its line with a normalized translation line there. Conversely a rigidified line locally of that form restricts to \(C\) and yields \(u:T\to J_C\). After the cover its map is \(h(a)\), so the ideal of \(Q\) vanishes after faithful flat pullback and hence before it. This gives a unique \(q:T\to Q\). The local line isomorphisms descend because their rigidifications make them unique on overlaps. This proves precisely the image statement of (NL20).
+
+   The chosen curves and cuts have finitely many coefficients in \(k^{\mathrm{sep}}\), so they descend to a finite separable extension. The Jacobian is constructed there from its pointed curve; the line family defines its map there. The kernel, finite flatness, image and normalized descent are detected by faithful field extension as in NL8. Finally a saturated submodule of a Tate module is not a constructed abelian complement. Neither an algebraic retraction \(J_C\to Q\) nor a complementary subvariety has been provided by this argument. The smooth surjection from CD7 and the finite map into a possibly different curve Jacobian here retain their stated directions. Poincaré reducibility still requires its own proof.
+
+### 2O. Abelian complements and a Jacobian isogeny factor
+
+We now construct the complement needed after CD7. If \(B\hookrightarrow A\) is an abelian subvariety over \(k\), then there is an abelian subvariety \(D\subset A\), defined over \(k\), such that addition is an isogeny
+\[
+             B\times D\longrightarrow A.
+             \tag{NR1}
+\]
+Applied to the connected kernel of CD7, this makes \(A_E\) an actual isogeny factor of the dominating curve Jacobian. The proof uses the translation-line families of §2N, not an assumed general Picard scheme for an abelian variety.
+
+A free comparison is Conrad's [*Abelian Varieties*, §§5.1 and 7.6](https://math.stanford.edu/~conrad/249CS15Page/handouts/abvarnotes.pdf). We prove the cohomological dimension bound, the degree-one coproduct argument, the image and flatness assertions, and the full-kernel descent used below. No Hopf structure theorem, dual abelian variety or complement is being taken from a citation.
+
+#### 2O.1. Coherent dimension and the coproduct bound
+
+**NR1.** If \(X/K\) is smooth projective geometrically integral of dimension \(g\), then \(H^i(X,\mathcal O_X)=0\) for \(i>g\). If \(X=A\) is an abelian variety, then
+\[
+                 \dim_K H^1(A,\mathcal O_A)\le g.
+                 \tag{NR2}
+\]
+
+We first justify the dimension bound using exactly the projective calculation already proved. Extend to an algebraic closure, where field base change on the affine Čech complex is exact. Embed \(X\) in \(\mathbf P^N\) and take CD1's finite twist resolution \(F^\bullet\to\mathcal O_X\). Write \(c=N-g\). By CD3's local smooth-coordinate and dual Koszul calculation, \(G^\bullet=\mathcal Hom(F^\bullet,\mathcal O(-N-1))\) has coherent cohomology sheaves only in degree \(c\).
+
+Consequently its Čech total cohomology vanishes below \(c\). Here is the truncation argument. Replace its degree-\(c\) term by its kernel and discard higher terms, then map that truncated complex onto its single cohomology sheaf in degree \(c\). Both comparison maps are quasi-isomorphisms. On every intersection of standard projective affine opens, sections of coherent sheaves are exact by SC; their mapping-cone complexes are therefore exact there. The finite signed total-complex argument SH9 makes their Čech total complexes quasi-isomorphic as well. The single sheaf in degree \(c\) has no total terms below that degree. CD2 now identifies
+\[
+ H^i(X,\mathcal O_X)^\vee\simeq\mathbb H^{N-i}(G^\bullet)=0
+                      \qquad(i>g).
+ \tag{NR3}
+\]
+This proof uses neither a general cohomological dimension theorem nor an unproved higher-dimensional duality theorem.
+
+We need the product calculation in all degrees. Take finite affine covers of proper separated \(X,Y\). Their intersections and their products are affine. The two augmented Čech resolutions tensor to a double resolution of the structure sheaf on \(X\times Y\): locally a chosen covering index contracts each augmented direction. Its terms are acyclic on these product affines. The resulting global total complex is the signed tensor product of the two Čech complexes. Over a field, every complex of vector spaces splits as its cohomology with zero differential plus contractible two-term summands, by choosing complements to cycles and boundaries. Tensoring preserves the contractions. Thus external cup product gives
+\[
+ H^q(X\times Y,\mathcal O)=
+       \bigoplus_{u+v=q}H^u(X,\mathcal O_X)\otimes_K H^v(Y,\mathcal O_Y).
+ \tag{NR4}
+\]
+This is CU2's computation in every degree, with the same natural maps. Tensor multiplication has the sign for passing a class in the second factor past one in the first.
+
+For completeness, the needed interchange of degree-one Čech classes has an explicit homotopy. If \(\alpha_{ij},\beta_{ij}\) are additive one-cocycles, put \(h_{ij}=\alpha_{ij}\beta_{ij}\). Their cocycle equations give
+\[
+    (\delta h)_{ijk}
+       =-\alpha_{ij}\beta_{jk}-\beta_{ij}\alpha_{jk}.
+       \tag{NR5}
+\]
+Hence their cup products anticommute in cohomology, in characteristic two as well. Ordered cup product is associative and natural under pullback. Formula (NR5) verifies the signs needed when multiplying the degree-one external classes used next.
+
+Let \(V=H^1(A,\mathcal O_A)\), \(r=\dim V\), and let \(v_1,\ldots,v_r\) be a basis. The multiplication morphism induces a coproduct on cohomology. CU2 identifies its degree-one part, since both axis restrictions are the identity:
+\[
+       m^*v=v\otimes1+1\otimes v,\qquad v\in V.
+       \tag{NR6}
+\]
+Iterate addition to \(A^r\). Pull back the product \(v_1\cdots v_r\) and project (NR4) to multidegree \((1,\ldots,1)\). Naturality, associativity and the tensor signs give
+\[
+ \sum_{\sigma\in S_r}\operatorname{sgn}(\sigma)\,
+                v_{\sigma(1)}\otimes\cdots\otimes v_{\sigma(r)}.
+ \tag{NR7}
+\]
+Every summand is a different tensor-basis vector; the identity permutation has coefficient one. Thus (NR7) is nonzero over every field. In particular there is no division by \(r!\), which could be zero in the field. It follows that \(H^r(A,\mathcal O_A)\ne0\) when \(r>0\). Bound (NR3) implies \(r\le g\); for \(r=0\) the inequality is immediate. This proves (NR2). \(\square\)
+
+#### 2O.2. Tangent lines give the reverse bound
+
+**NR2.** For every abelian variety \(A/K\),
+\[
+                 \dim_K H^1(A,\mathcal O_A)=\dim A.
+                 \tag{NR8}
+\]
+The vector space of first-order deformations of the trivial line on \(A\), rigidified at zero, is \(H^1(A,\mathcal O_A)\).
+
+To prove the last assertion, put \(R=K[\epsilon]/(\epsilon^2)\), and use a finite affine cover. A line on \(A_R\) whose reduction is trivial is free on each lifted affine: lift a generator and use nilpotent Nakayama and the rank-one projective-module splitting, exactly as in CU3. After choosing frames with prescribed trivial reduction, its transitions have the form \(1+\epsilon c_{ij}\). The line cocycle equation is precisely the additive Čech cocycle equation for \(c\), and frame changes \(1+\epsilon b_i\) change it by a boundary. Any trivialization of the reduced line differs by a global constant, by FC20; scaling a frame by that constant does not change the class. Tensoring off its fibre at zero supplies a rigidification. Conversely two rigidifications differ by a unit of \(R\), which extends as a global unit, so they give the same isomorphism class. Tensor product of lines adds the cocycles, and \(\epsilon\mapsto\lambda\epsilon\) scales them. This proves the stated vector-space identification.
+
+After the finite separable extension used in NL6–NL8, the abelian variety \(Q\) there has dimension \(g=\dim A\). NL20 gives a monomorphism from its point functor to rigidified line classes on \(A\). At the identity, this induces an injective linear map
+\[
+                    T_0Q\hookrightarrow H^1(A,\mathcal O_A).
+                    \tag{NR9}
+\]
+Injectivity can be checked directly: a tangent vector is a map from the dual numbers reducing to zero, and the zero line class has only the zero such map by NL20. Group addition and scalar substitution give linearity. Since \(Q\) is smooth of dimension \(g\), the left side has dimension \(g\). Combine with NR1's upper bound. Field extension does not change the cohomology dimension, by the exact Čech tensor comparison, so the result holds over the original field. \(\square\)
+
+#### 2O.3. Images of homomorphisms and faithful flatness
+
+**NR3.** The scheme-theoretic image \(R\) of a homomorphism \(f:X\to Y\) of abelian varieties is an abelian subvariety of \(Y\), and \(X\to R\) is faithfully flat and of finite presentation. Its kernel is retained as a full scheme.
+
+The map \(f\) is projective, hence proper: its graph is closed, and projection from the projective \(X\) is projective. The kernel of \(\mathcal O_Y\to f_*\mathcal O_X\) is a coherent ideal by the earlier projective direct-image result. It defines \(R\). On any affine open of \(Y\) with nonempty inverse image, sections on that inverse image form a domain, because \(X\) is integral. The image quotient ring is a domain. Properness makes the underlying image closed and irreducible, so \(R\) is integral and \(X\to R\) is surjective.
+
+This formation commutes with field extension. For an affine open of \(Y\), compute sections on its quasi-compact separated inverse image by the kernel of the first map of a finite affine Čech complex. Flat extension commutes with that kernel and with the coordinate rings of the affine intersections. It therefore commutes with \(f_*\mathcal O_X\) and the defining ideal. Since \(X\) is geometrically integral, the same domain argument shows that \(R\) is geometrically integral.
+
+Over an algebraic closure \(\Omega\), every \(\Omega\)-point of \(R\) lifts to an \(\Omega\)-point of \(X\): a nonempty finite-type fibre has a closed point. Addition and inversion on \(Y\) consequently preserve the geometric points of \(R\). Their pulled-back defining equations vanish on all closed points of the reduced schemes \(R_\Omega\times R_\Omega\) and \(R_\Omega\), so they vanish as functions, by the finite-type radical-ideal assertion B1. Thus these maps restrict as scheme maps. The restrictions descend by faithful field extension. Their group axioms follow from those on \(Y\).
+
+FQ3's separating-transcendence-basis proof gives a nonempty smooth open in the integral \(R_\Omega\). Translation carries a smooth closed point to every other closed point, so smoothness holds everywhere. A nonempty closed complement would contain a closed point. Smoothness descends to the ground field by SF's relation-gradient criterion. Hence the proper geometrically integral group \(R\) is an abelian variety.
+
+We give the generic-flatness calculation needed for \(X\to R\). If \(D\) is a noetherian domain, \(F\) its fraction field, and \(C=D[t_1,\ldots,t_s]/I\) is a finite-type algebra, then some nonzero localization \(C_a\) is free, possibly of infinite rank, over \(D_a\). Choose a monomial order. The ideal of leading monomials of \(I_F\) is finitely generated, since the polynomial ring is noetherian. Choose monic polynomials \(g_1,\ldots,g_m\in I_F\) with these leading monomials. Division terminates because that order is well ordered and decreases each leading monomial.
+
+Clear the finitely many denominators of the \(g_i\), their expressions in a fixed finite generating set for \(I\), and the expressions of those generators in the \(g_i\). After inverting one \(a\ne0\), they generate \(I_a\) and remain monic. Monic division now works over \(D_a\). The monomials not divisible by any leading monomial span the quotient. They are independent: a nonzero relation among them would remain a nonzero element of \(I_F\) over \(F\), contradicting the definition of its leading-monomial ideal. This proves freeness. If \(I_F\) is the whole ring, the same denominator clearing makes \(C_a=0\), also a free module.
+
+Apply this on a finite affine cover of the inverse image of a nonempty affine open in \(R_\Omega\). A common localization makes every coordinate algebra flat over that base open. Thus \(f\) is flat over some nonempty open \(U\) of \(R_\Omega\). Fix \(u\in U(\Omega)\). For any \(r\in R(\Omega)\), choose \(x\in X(\Omega)\) with \(f(x)=r-u\). The translation square for \(x\) on \(X\) and \(r-u\) on \(R\) identifies the map over \(U+r-u\) with the map over \(U\). These flat opens cover all closed points and therefore all of \(R_\Omega\). Flatness descends from \(\Omega\), by faithful tensor detection. Surjectivity and finite presentation were already established, so the map is an fppf cover. \(\square\)
+
+#### 2O.4. The restricted translation family has the right dimension
+
+**NR4.** Let \(0\ne B\subset A\), and choose a symmetric ample line \(H\) on \(A\). After a finite separable extension, NL4's homomorphism
+\[
+       f=h_{A,B}:A\longrightarrow J_C
+       \tag{NR10}
+\]
+has image equal to the image \(Q_B\) of its restriction \(h_B:B\to J_C\). In particular \(f:A\to Q_B\) is an fppf cover, and \(h_B:B\to Q_B\) is an isogeny.
+
+Work first over \(k^{\mathrm{sep}}\). The pointed curve \(C\subset B\) in NL4 tests the full family \(\mathcal M=\mathcal P_H|_{B\times A}\), on every parameter scheme mapping to \(A\). By NR3, the image \(R\subset J_C\) is an abelian variety and \(f:A\to R\) is faithfully flat. The finite-kernel assertion NL5 and the proper finite-fibre theorem make \(h_B\) finite onto its image. The finite-image proof NL6, applied to this same curve and its full translation kernel on \(B\), makes \(Q_B\) an abelian variety of dimension \(b=\dim B\), with finite flat map \(h_B\). It is a closed subvariety of \(R\).
+
+We must bound \(\dim R\); the differential of \(f\) alone would not do so in positive characteristic. Instead descend the actual line \(\mathcal M\) to \(B\times R\). On the full kernel \(K=\ker(A\to R)\), the curve restriction is rigidified-trivial by the curve Jacobian representation. NL3, with the parameter map \(K\to A\), makes \(\mathcal M|_{B\times K}\) canonically rigidified-trivial, including all nilpotents of \(K\). Biadditivity gives the normalized transition isomorphisms on
+\[
+        A\times_R A\simeq A\times K.
+        \tag{NR11}
+\]
+They satisfy the cocycle identity by FC20's uniqueness. Effective descent of invertible modules FD2–FD4 now gives a rigidified line \(\mathcal M_R\) on \(B\times R\).
+
+This descent works although the fppf cover \(A\to R\) need not be finite. On an affine open of \(B\times R\), take a finite affine open cover of its quasi-compact inverse image in \(B\times A\). The finite disjoint union of these affines is an affine faithfully flat cover of that open. Apply FD2 to this affine cover and its full overlap datum; rank-one projectivity descends by FD4. Uniqueness glues the descended modules on overlapping target affines. Thus only the already proved faithfully flat module descent is used.
+
+Restriction of \(\mathcal M_R\) to \(C\times R\) is the universal curve line pulled back along the closed immersion \(R\hookrightarrow J_C\). Indeed their pullbacks along the cover \(A\to R\) agree, and the normalized isomorphisms descend uniquely. Therefore \(R(T)\) injects into rigidified line classes on \(B_T\), for every \(T\), by restriction to \(C\). NR2's dual-number calculation gives
+\[
+                T_0R\hookrightarrow H^1(B,\mathcal O_B).
+                \tag{NR12}
+\]
+It follows that \(\dim R\le b\), by smoothness and (NR8). Since \(Q_B\subset R\) already has dimension \(b\), the two integral closed varieties are equal: a proper closed subset of an integral finite-type variety has smaller dimension by GQ1. This proves the assertions.
+
+All chosen curve equations and marked data involve finitely many coefficients of \(k^{\mathrm{sep}}\); descend them to a finite separable extension. Their Jacobian and map are defined there by JC7 and the universal line. NR3's image formation commutes with faithful field extension. Equality of the two images, finiteness and flatness are consequently detected there, so all conclusions hold over that finite extension. No representation of every algebraically trivial line on \(B\) was needed. \(\square\)
+
+#### 2O.5. Killing a finite kernel and reversing an isogeny
+
+**NR5.** A finite commutative group scheme \(K/k\) of rank \(d\) is killed by some positive integer defined solely from \(d\) and the characteristic. One may take
+\[
+ n=d!\quad(\operatorname{char}k=0),\qquad
+ n=d!\,p^d\quad(\operatorname{char}k=p>0).
+ \tag{NR13}
+\]
+Consequently any isogeny \(q:X\to Y\) of abelian varieties admits an isogeny \(u:Y\to X\), over the same field, with
+\[
+                  uq=[n]_X,\qquad qu=[n]_Y.
+                  \tag{NR14}
+\]
+
+Extend first to an algebraic closure \(\Omega\). In characteristic zero, FF5's finite-group Cartier proof makes \(K_\Omega\) a product of points. Its point group has order \(d\), hence is killed by \(d!\). In characteristic \(p\), its geometric point group has order at most \(d\), so every point is killed by \(d!\), by the elementary coset proof of Lagrange's theorem. Thus \([d!]\) maps the whole scheme into the open-and-closed identity component \(K^0_\Omega\): the inverse image of any other component has empty support and is empty.
+
+The coordinate ring of \(K^0_\Omega\) is a local Artinian algebra of length at most \(d\), with augmentation ideal \(\mathfrak m\). Its powers satisfy \(\mathfrak m^d=0\). Indeed an equality of two consecutive powers makes that finite module zero by Nakayama; until then every strict inclusion reduces its vector-space dimension by at least one. On the cotangent space at the identity, multiplication by \(p\) is the sum of \(p\) identity maps, hence zero. This follows directly by applying the two augmentations to the coproduct: modulo the product of the two augmentation ideals, its expression is \(x\otimes1+1\otimes x\). Thus
+\[
+              [p]^*\mathfrak m\subset\mathfrak m^2,\qquad
+              [p^e]^*\mathfrak m\subset\mathfrak m^{2^e}.
+              \tag{NR15}
+\]
+Taking \(e=d\) kills that ideal, since \(2^d\ge d\). The morphism \([p^d]\) on \(K^0_\Omega\) is therefore the identity-section constant map. Composition with \([d!]\) proves (NR13). Faithful field extension detects equality of morphisms, so the annihilation holds over \(k\), not only on its geometric points.
+
+For (NR14), \(q\) is finite faithfully flat by CE6. Its relation scheme is \(X\times\ker q\), with the two maps differing by kernel translation. Formula (NR13) makes \([n]_X\) invariant on that full relation. Finite faithfully flat morphism descent FD5 gives \(u\) and \(uq=[n]_X\). Faithful descent detects the group law. Composing with \(q\) and cancelling the same cover gives \(qu=[n]_Y\).
+
+The map \(u\) is proper. Each of its geometric fibres lies in a fibre of \(qu=[n]_Y\), so is finite. Proper finite-fibre finiteness makes \(u\) finite. Its image contains that of \(uq=[n]_X\), hence is all \(X\). CE6 then makes it finite flat. If \(\dim X=\dim Y=b\), composition of the finite function-field degrees and CU8 give
+\[
+                   \deg u=\frac{n^{2b}}{\deg q}.
+                   \tag{NR16}
+\]
+This proves both existence of the reverse isogeny and integrality of this degree without assuming that a nonreduced kernel is killed by the number of its geometric points. \(\square\)
+
+#### 2O.6. An integral multiple of a projector over the original field
+
+**NR6 (abelian complement).** For any abelian subvariety \(\iota:B\hookrightarrow A\) over \(k\), there are an integer \(t>0\), a homomorphism \(r:A\to B\), and an abelian subvariety \(D\subset A\), all over \(k\), such that
+\[
+ r\iota=[t]_B,\qquad
+ v=[t]_A-\iota r,\qquad
+ D=\operatorname{im}v,\qquad rv=0.
+ \tag{NR17}
+\]
+Addition \(g:B\times D\to A\) is an isogeny.
+
+For \(B=0\), take \(t=1\), \(D=A\), and the zero \(r\). Otherwise NR4, after a finite separable extension \(E/k\), gives \(f:A_E\to Q_B\) whose restriction \(q:B_E\to Q_B\) is an isogeny. Choose \(u:Q_B\to B_E\) from NR5. Then \(r_E=uf\) satisfies \(r_E\iota=[n]_B\).
+
+We descend a multiple of this map, so the complement will be over \(k\) itself. Enlarge \(E\) to a finite Galois extension \(L/k\), with group \(\Gamma\). On \(A_L\), form the sum of conjugate homomorphisms
+\[
+                 r_L'=\sum_{\sigma\in\Gamma}\sigma(r_E).
+                 \tag{NR18}
+\]
+Conjugation permutes the summands, so this map has the actual Galois descent datum. The field relation \(L\otimes_k L\simeq\prod_{\sigma\in\Gamma}L\) and FD5's finite faithfully flat morphism descent give a homomorphism \(r:A\to B\). Its restriction to \(B\) is multiplication by \(t=n|\Gamma|>0\). This remains a nonzero multiplication isogeny when the characteristic divides \(t\), by CU8.
+
+Define \(v\) by (NR17). Direct composition gives \(v\iota=0\) and \(rv=tr-r\iota r=0\). NR3 makes its scheme-theoretic image \(D\) an abelian subvariety over \(k\), with fppf cover \(A\to D\). In particular the zero composite \(rv\) implies \(r|_D=0\), detected after that cover; hence \(v|_D=[t]_D\).
+
+Let \(K=B\times_A D\), the full scheme intersection inside \(A\). Since \(r|_B=[t]\) and \(r|_D=0\), it is a closed subgroup scheme of \(B[t]\), and is finite. The kernel of addition is exactly
+\[
+       K\xrightarrow{\ \sim\ }\ker g,\qquad
+                  b\longmapsto(b,-b).
+       \tag{NR19}
+\]
+Both inverse identities are valid on every parameter scheme. Every nonempty geometric fibre of \(g\) is consequently a translate of this finite kernel. The map \(g\) is proper, so the proper finite-fibre theorem makes it finite. It is surjective because the morphism
+\[
+       w:A\longrightarrow B\times D,\qquad a\longmapsto(r(a),v(a))
+       \tag{NR20}
+\]
+satisfies \(gw=[t]_A\), whose image is all of \(A\). Thus \(g\) is an isogeny, and CE6 makes it finite flat. The dimension identity \(\dim D=\dim A-\dim B\) follows from the finite integral function-field extension for \(g\) and the dimension of a product. This proves (NR1) over the original field. The construction never takes a reduced identity component of a possibly nonreduced kernel over an imperfect field. \(\square\)
+
+#### 2O.7. Degrees, actual kernels and rational projectors
+
+**NR7.** Write \(a=\dim A\) and \(\delta=\operatorname{rank}_k K\), with \(K\) as in (NR19). Then
+\[
+        \deg g=\delta,\qquad
+        gw=[t]_A,\qquad wg=[t]_{B\times D}.
+        \tag{NR21}
+\]
+The map \(w\) is an isogeny of degree \(t^{2a}/\delta\). For every \(\ell\ne\operatorname{char}k\),
+\[
+ V_\ell A=V_\ell B\oplus V_\ell D
+ \quad\text{via addition, and}\quad
+ \#\operatorname{coker}T_\ell g=\ell^{v_\ell(\delta)}.
+ \tag{NR22}
+\]
+These statements respect \(G_k\).
+
+The kernel degree statement is (NR19) with CE6's full scheme length. The first composition identity was proved above. On a pair \((b,d)\), the two components of \(wg\) are \(r(b+d)=tb\) and \(v(b+d)=td\), proving the second on all schemes. The map \(w\) is proper and its fibres lie in those of \(gw=[t]\), so it is finite. Its image has dimension \(a\) by finiteness and the integral dimension calculation; the target \(B\times D\) is integral of that dimension. Thus the image is the entire target. CE6 gives finite flatness, and finite degree multiplication gives its claimed degree.
+
+After tensoring homomorphisms with \(\mathbf Q\), or on \(V_\ell A\), the two maps
+\[
+              e=\frac{\iota r}{t},\qquad
+              1-e=\frac v t
+              \tag{NR23}
+\]
+are complementary idempotents. Indeed \(r\iota=t\) gives \((\iota r)^2=t\iota r\); (NR17) gives the sum and the zero mixed products. Their images are respectively \(V_\ell B\) and \(V_\ell D\), since multiplication by \(t\) is invertible on rational Tate spaces and both maps restrict to that multiplication on their corresponding subvariety. CU10 applied to \(g\) gives the exact integral cokernel order in (NR22). If \(\ell\nmid\delta\), addition already identifies \(T_\ell A=T_\ell B\oplus T_\ell D\). For other primes the rational projectors need not preserve \(T_\ell A\); the actual maps \(te=\iota r\) and \(t(1-e)=v\) do preserve it.
+
+All maps and subvarieties are over \(k\), so these decompositions are \(G_k\)-equivariant. They concern the subspaces supplied by abelian subvarieties. They do not assert that every Galois-stable subspace arises from a subvariety or prove general semisimplicity of a Galois representation. \(\square\)
+
+#### 2O.8. A factor of the dominating curve Jacobian
+
+**NR8.** Let \(\Phi:J_C\to A_E\) be the smooth surjective map constructed in CD7, over its finite separable field \(E/k\). There are abelian subvarieties \(B,D\subset J_C\), defined over \(E\), such that
+\[
+ B=(\ker\Phi)^0,\qquad
+ B\times D\longrightarrow J_C\text{ is an isogeny},\qquad
+ q=\Phi|_D:D\longrightarrow A_E\text{ is an isogeny}.
+ \tag{NR24}
+\]
+If \(N\) is the number of geometric components of \(\ker\Phi\), and \(\delta=\operatorname{rank}(B\cap D)\), then
+\[
+                  \deg q=N\delta.
+                  \tag{NR25}
+\]
+
+First the indicated identity component is an abelian variety over \(E\), without replacing the whole kernel by it. CD8 gives a proper smooth kernel \(K\). Over an algebraic closure its connected components are smooth integral: their local rings are domains by CD3, and connectedness leaves one component. Their global functions are constants by properness. Thus \(H^0(K,\mathcal O_K)\), a finite-dimensional \(E\)-algebra, becomes \(\overline E^N\) after field extension. Field base change follows from the affine Čech kernel, so this algebra is finite étale: its finite field factors have separable minimal polynomials, as detected by the reduced geometric algebra. Evaluation at the identity picks an \(E\)-factor. The corresponding idempotent cuts out an open-and-closed subscheme \(B\subset K\) whose geometric fibre is the identity component. Addition and inversion preserve that component; their scheme factorizations follow on the reduced geometric products and descend exactly as in NR3. Thus \(B\) is a subgroup. It is proper, smooth and geometrically connected, hence an abelian variety. Its dimension is \(\dim J_C-\dim A\), by the relative smooth dimension of \(\Phi\). The remaining components of \(K\) are retained in \(N\).
+
+Apply NR6 over \(E\) to \(B\subset J_C\). It gives \(D\), \(r:J_C\to B\), and \(v=[t]-\iota r\) with image \(D\). Since \(\Phi\iota=0\), we have \(\Phi v=[t]\Phi\). Surjectivity of \(\Phi\) and of \([t]\) therefore makes \(\Phi(D)=A_E\). Its full kernel is \(D\cap K\). Over an algebraic closure, each component of \(K\) meets \(D\): express any one of its points as \(b+d\) using the surjective addition \(B\times D\to J_C\); then \(\Phi(d)=0\), and \(b\) is in the identity component. Translation by such a \(d\) identifies that component's intersection with \(D\), as a scheme, with \(B\cap D\). Thus \(D\cap K\) is finite of total length \(N\delta\). Proper finite-fibre finiteness makes \(q\) finite, and CE6 makes it finite flat. This proves (NR24)–(NR25), including possible nonreduced intersections.
+
+In particular CD8's rational exact sequence is now split by an actual isogeny factor:
+\[
+ V_\ell J_C=V_\ell B\oplus V_\ell D,\qquad
+ V_\ell\Phi|_{V_\ell D}:V_\ell D\xrightarrow{\ \sim\ }V_\ell A_E.
+ \tag{NR26}
+\]
+The section is the inclusion of \(V_\ell D\) composed with the inverse of this isomorphism, and is \(G_E\)-equivariant. At integral level CU10 gives index \(\ell^{v_\ell(N\delta)}\) for \(T_\ell q\). If \(\ell\nmid N\delta\), it is an isomorphism and the addition decomposition is integral too. In general a finite \(\mathbf Z_\ell\)-module of order \(\ell^m\) is killed by \(\ell^m\): its cyclic subgroups have orders dividing that order. Hence the rational section satisfies
+\[
+       \ell^{v_\ell(N\delta)}s(T_\ell A_E)
+                                \subset T_\ell J_C .
+       \tag{NR27}
+\]
+This does not remove CD8's distinction between rational exactness and an integral surjection at primes dividing the component order.
+
+The dimension-zero cases use point factors and degree one. For positive dimension, (NR24) is the required abelian reducibility step: it supplies an isogeny between \(A_E\) and a factor of a genuinely constructed curve Jacobian. It does not construct a semistable curve model, a formal or analytic period cover, or the later modularity and comparison results of the course. Those constructions still need their own proofs. \(\square\)
+
+#### 2O.9. Graded exercise: coproducts and abelian projectors
+
+**Exercise 2O (100 points; ten parts of 10 points).**
+
+1. Explain why the dual finite resolution in NR1 implies vanishing of \(H^i(X,\mathcal O_X)\) above \(\dim X\). Identify the two quasi-isomorphisms in its truncation argument. State the geometric hypotheses.
+2. For independent degree-one primitive elements \(x,y,z\), compute the multidegree \((1,1,1)\) part of the iterated coproduct of \(xyz\). Explain why it is nonzero in characteristics two and three, even though \(3!=0\) there. Generalize to \(r\) independent degree-one classes.
+3. Derive the first-order rigidified line classification using \(1+\epsilon c_{ij}\), and explain why NL20's monomorphism gives the reverse inequality in (NR8). Does this prove a full exterior-algebra description of coherent cohomology?
+4. For \(R=K[t]\), study \(R[x]/(tx)\) and \(R[x,y]/(ty-x^2)\) after inverting \(t\). Give free bases there. Explain why a generic flat open alone does not prove flatness everywhere, and what the homomorphism translation square adds in NR3.
+5. In characteristic \(p\), write \(\mu_{p^h}\) as a local Artinian algebra at its sole geometric point and compute \([p]^*(z-1)\). Prove it is killed by \(p^h\), although the geometric point group has order one. Compare this with the deliberately generous bound (NR13).
+6. Let \(q:X\to Y\) be an isogeny with kernel killed by \(n\). Construct its reverse map \(u\) by the full finite faithfully flat relation, prove both identities in (NR14), and compute its degree. Which part would fail if annihilation had only been checked on geometric points?
+7. Take \(k=\mathbf Q\), \(L=\mathbf Q(i)\), \(E:y^2=x^3-x\), and \(\alpha(x,y)=(-x,iy)\). For \(A=E\times E\), \(B=E\times0\), consider \(r_L(x,y)=2x+\alpha(y)\). Compute its Galois average and the descended complement obtained from NR6.
+8. On \(A=E\times E\) over any field, take \(r(x,y)=2x+y\), \(t=2\). Determine \(v,D,B\cap D\), the addition map \(g\), and \(w\). Compute both degrees and both rational projectors. Discuss the integral Tate decomposition at \(\ell=2\) and at odd \(\ell\ne\operatorname{char}k\).
+9. In NR8 suppose \(N=6\), \(\delta=4\). Compute \(\deg q\), the orders of the Tate cokernel for \(\ell=2,3,5\), and the corresponding section denominator bounds. Explain why these data do not give all Smith factors. Give a connected-kernel example where the chosen \(D\) still has a nonintegral section at \(2\).
+10. Construct the identity component of CD8's smooth proper kernel over its actual field \(E\). Prove that every component meets \(D\) and that its intersection has length \(\delta\). State exactly which geometric requirement is now supplied for the period construction and which remains.
+
+**Full solution.**
+
+1. Let \(X\hookrightarrow\mathbf P^N\) be smooth projective geometrically integral of dimension \(g\), put \(c=N-g\), and let \(F^\bullet\) be CD1's twist resolution. The dual \(G^\bullet\) has cohomology only in degree \(c\), by the regular-embedding and dual Koszul calculation CD3. The good truncation \(\tau_{\le c}G\) has \(\ker d^c\) in degree \(c\); its inclusion into \(G\) and its map onto \(\mathcal H^c(G)\) placed in degree \(c\) are both quasi-isomorphisms. Coherent affine sections and the finite Čech total comparison preserve them. Hence
+   \[
+       \mathbb H^j(G)=0\ (j<c),\qquad
+       H^i(X,\mathcal O_X)^\vee=\mathbb H^{N-i}(G)=0\ (i>g).
+       \tag{NRX1}
+   \]
+   Smoothness supplies the regular embedding used in the local calculation. Geometric integrality keeps the dimension pure and permits the faithful algebraic-closure comparison used here. This is a consequence of the proved finite-complex projective pairing, not an invocation of a general duality theorem.
+
+2. Distributing the three primitive coproducts and retaining one degree-one element in each factor gives
+   \[
+   \begin{aligned}
+      &x\otimes y\otimes z-x\otimes z\otimes y
+       -y\otimes x\otimes z+y\otimes z\otimes x\\
+      &\hspace{2em}+z\otimes x\otimes y-z\otimes y\otimes x.
+   \end{aligned}
+   \tag{NRX2}
+   \]
+   These six tensors are different basis vectors. In characteristic two all their signs are positive, but their coefficients remain one on six different coordinates. In characteristic three the negative coefficients are two, also nonzero. Adding the coefficients into \(3!\) would incorrectly identify distinct tensor vectors. For \(r\) basis elements the same argument gives \(r!\) different tensor vectors, each with coefficient \(1\) or \(-1\), so the sum is nonzero in every characteristic. Vanishing in degrees \(>g\) then forces \(\dim H^1\le g\).
+
+3. A line with trivial reduction has local frames lifting that reduction. Their transitions \(1+\epsilon c_{ij}\) satisfy the additive cocycle equation because \(\epsilon^2=0\); replacing frames by \(1+\epsilon b_i\) adds a Čech boundary. Tensor product and scalar substitution give the vector-space operations. Proper constants show that changing the trivial reduced frame, or the rigidification at zero, adds no new class. Thus the deformation space is \(H^1(A,\mathcal O_A)\).
+
+   NL20 injects tangent vectors of the smooth \(g\)-dimensional \(Q\) into that space. Together with the coproduct bound this gives dimension exactly \(g\). The proof has not determined all higher cohomology dimensions or proved that squares of degree-one classes vanish in characteristic two. It therefore does not by itself assert a full exterior-algebra identification.
+
+4. In the first algebra, after inverting \(t\) the relation is \(x=0\), so the algebra is \(R_t\), free on \(1\). Before localization, \(x\ne0\) but \(tx=0\); thus it is not flat over \(R\), since the injective multiplication-by-\(t\) map of \(R\) stops being injective after tensor.
+
+   In the second algebra, invert \(t\) and eliminate \(y=t^{-1}x^2\). The result is \(R_t[x]\), with basis
+   \[
+                          1,x,x^2,x^3,\ldots .
+                          \tag{NRX3}
+   \]
+   Infinite rank is allowed in the generic algebra freeness argument. At \(t=0\) its fibre is \(K[x,y]/(x^2)\); generic freeness does not imply that every fibre is reduced or smooth. For a surjective group homomorphism, translation carries a flat base open to a neighbourhood of every closed point, using lifts of the corresponding target translations. Those opens cover the target, and faithful field extension detects flatness. That group argument is what extends the generic result in NR3.
+
+5. Put \(w=z-1\). Then
+   \[
+       \mathcal O(\mu_{p^h})=K[w]/(w^{p^h}),\qquad
+       [p]^*w=(1+w)^p-1=w^p,\qquad
+       [p^h]^*w=w^{p^h}=0.
+       \tag{NRX4}
+   \]
+   Its full rank is \(p^h\), although its only geometric point is the identity. Multiplication by one plainly does not kill its nonzero augmentation ideal. The general bound \((p^h)!\,p^{p^h}\) from (NR13) is a multiple of a valid annihilator; it is not a proposed minimal exponent. Its proof uses the nilpotent augmentation ideal, so does not make the geometric-point error.
+
+6. The relation is \(X\times_YX\simeq X\times\ker q\), with the second point obtained by adding a kernel element. Full scheme annihilation gives equality of the two pullbacks of \([n]_X\). FD5 descends this map uniquely to \(u:Y\to X\) and its group law. Then \(uq=[n]_X\), and composition with the faithfully flat cover \(q\) proves \(qu=[n]_Y\). The proper finite-fibre argument makes \(u\) finite and onto, and CE6 makes it flat. If \(b=\dim X\),
+   \[
+                      \deg u=n^{2b}/\deg q.
+                      \tag{NRX5}
+   \]
+   Checking only point annihilation would not establish equality on the relation scheme with nilpotents. Part 5 is an explicit obstruction to that shortcut.
+
+7. The indicated coordinate map preserves the elliptic equation, fixes zero, and has inverse \((x,y)\mapsto(-x,-iy)\); CU1 therefore makes it a group automorphism. Its square is inversion, and its Galois conjugate is \(-\alpha\). Consequently
+   \[
+       r_L+\overline r_L:(x,y)\longmapsto4x,\qquad
+       t=4,\qquad v(x,y)=(0,4y).
+       \tag{NRX6}
+   \]
+   The descended \(D\) is the second factor, since \([4]\) is onto. Addition from \(B\times D\) is the product identification and has degree one. The finite Galois sum, rather than the original noninvariant map, is what descends. The scalar \(t\) need not be the degree of the resulting addition isogeny.
+
+8. Here
+   \[
+        v(x,y)=(-y,2y),\qquad
+        D=\{(-z,2z):z\in E\},\qquad B\cap D\simeq E[2].
+        \tag{NRX7}
+   \]
+   The parametrization is a closed immersion, since its first coordinate is an automorphism. The intersection statement holds on all schemes: its second coordinate vanishes exactly when \(2z=0\). Hence \(\delta=4\), including in characteristic two. Using \(z\) as the coordinate on \(D\), the two maps have matrices
+   \[
+       G=\begin{pmatrix}1&-1\\ 0&2\end{pmatrix},
+       \qquad W=\begin{pmatrix}2&1\\ 0&1\end{pmatrix},
+       \qquad GW=WG=2I.
+       \tag{NRX8}
+   \]
+   Both maps have degree four: each is a product of an automorphism with identity on one elliptic factor and \([2]\) on the other. Their degree product is \(16=2^{2\dim A}\), as required.
+
+   The projectors in the original coordinates are
+   \[
+        e=\begin{pmatrix}1&1/2\\ 0&0\end{pmatrix},
+        \qquad1-e=\begin{pmatrix}0&-1/2\\ 0&1\end{pmatrix}.
+        \tag{NRX9}
+   \]
+   For odd \(\ell\), these preserve the Tate lattice and the addition map has index one. At \(\ell=2\ne\operatorname{char}k\), the rational projector sends \((0,z)\) with primitive \(z\in T_2E\) to \((z/2,0)\), which is not integral. The addition cokernel is \((\mathbf Z_2/2)^2\), of order four. In characteristic two the full addition kernel still has rank four, while its differential is singular; that prime is excluded from this Tate-module assertion.
+
+9. We have
+   \[
+   \begin{array}{c|c|c|c}
+     \ell&\deg q&\#\operatorname{coker}T_\ell q&
+                  \text{section multiple guaranteed integral}\\ \hline
+     2&24&8&8s\\
+     3&24&3&3s\\
+     5&24&1&s
+   \end{array}
+   \tag{NRX10}
+   \]
+   The orders determine the sum of the Smith exponents, not their individual list. For instance order eight permits \(\mathbf Z_2/8\), \(\mathbf Z_2/4\oplus\mathbf Z_2/2\), or \((\mathbf Z_2/2)^3\), subject to the actual rank bound.
+
+   Take the smooth surjection \(\Phi:E^2\to E\), \((x,y)\mapsto y\). Its kernel \(B=E\times0\) is connected, so \(N=1\). Choose part 8's \(D\). Then \(\Phi|_D=[2]\), of degree four, and its rational section is nonintegral at two. In contrast \(T_2\Phi\) itself is onto. Thus a chosen complement's section denominator and the component obstruction to integral surjectivity are different quantities.
+
+10. For the proper smooth kernel \(K\), geometric components are proper connected smooth integral schemes. Their functions are constants, so
+   \[
+             H^0(K,\mathcal O_K)\otimes_E\overline E
+                       \simeq\overline E^N.
+                       \tag{NRX11}
+   \]
+   Proper coherent finiteness and the affine Čech base change make the algebra on the left finite étale over \(E\). Evaluation at the identity chooses an \(E\)-factor and its idempotent, defining \(B\). Group operations preserve that geometric component and descend as scheme maps, so \(B\) is an abelian subvariety over \(E\).
+
+   The surjective addition \(B\times D\to J_C\) expresses any point of a component of \(K\) as \(b+d\). Then \(d\in D\cap K\) lies in the same component. Translating by it identifies that entire scheme intersection with \(D\cap B\), including nilpotents. Summing the equal lengths gives \(N\delta\), and the proper finite-fibre argument makes \(\Phi|_D\) the stated isogeny. The curve domination and its abelian isogeny factor are now constructed. A semistable curve model, the associated integral semiabelian extension, and an actual formal or analytic period cover remain separate substantive tasks; reducibility does not supply them by itself.
+
+### 2P. Nodal curves and their generalized Jacobians
+
+We construct the degree-zero line-bundle group of a split nodal curve. Its torus is governed by cycles in the dual graph, and its abelian quotient is the product of the smooth component Jacobians. The construction represents families on arbitrary parameter schemes, including schemes with nilpotents.
+
+The input is a finite collection of smooth projective geometrically integral curves \(C_v/K\), indexed by a nonempty finite set \(V\). A finite edge set \(E\) specifies disjoint pairs of distinct rational points \(P_e^-,P_e^+\) on the disjoint union of these curves. Write \(s(e),t(e)\) for their components. A loop is allowed; all the marked branch points are distinct. Assume the resulting graph \(\Gamma\) is connected, and choose an additional unmarked rational point \(P_v\) on each component. We will construct their pinched curve \(C\), with root point \(P=P_{v_0}\), and an exact sequence of algebraic groups
+\[
+ 0\longrightarrow T_\Gamma\longrightarrow J_C^0
+       \longrightarrow\prod_{v\in V}J_{C_v}\longrightarrow0,
+ \qquad X^*(T_\Gamma)=H_1(\Gamma,\mathbf Z).
+ \tag{NC1}
+\]
+The notation \(J_C^0\) here means the group of multidegree-zero line bundles, rigidified at \(P\); its representability and its identification as an identity component are proved below.
+
+Free comparisons are the Stacks project's [point gluing and Picard calculation](https://stacks.math.columbia.edu/tag/0C1H) and [torsion under normalization](https://stacks.math.columbia.edu/tag/0C1Y). The affine gluing, projectivity, full-family patching and representing group used here are proved explicitly. This is geometry of a nodal fibre. Existence of a semistable model and construction of its formal or analytic period cover remain separate tasks.
+
+#### 2P.1. The finite pinching algebra
+
+**NC1.** Identifying each prescribed pair produces a reduced finite-type curve \(C\), with finite normalization
+\[
+             \nu:\widetilde C=\coprod_v C_v\longrightarrow C.
+             \tag{NC2}
+\]
+It is an isomorphism away from the prescribed pairs. Its nodes are distinct \(K\)-points indexed by \(E\), and its affine algebra there is a fibre product.
+
+Choose affine opens on the components containing all branch points and all the \(P_v\). Such opens exist by QS1's finite-point homogeneous avoidance: the complement of a projective hypersurface avoiding the finite prescribed set is affine. The finite disjoint union is affine, say \(\operatorname{Spec}B\). Evaluation at the \(2|E|\) distinct rational points is surjective by the Chinese remainder equations. Let \(I\subset B\) be their common vanishing ideal, so \(B/I=K^{2E}\), and put
+\[
+ A=\{b\in B:b(P_e^-)=b(P_e^+)\text{ for every }e\}
+       =B\times_{K^{2E}}K^E.
+ \tag{NC3}
+\]
+The last map sends each coordinate diagonally into its two branch coordinates. Thus \(I\subset A\), \(A/I=K^E\), and \(B/A\) has dimension \(|E|\) over \(K\). A basis of that quotient, lifted to \(B\), together with \(1\), generates \(B\) as an \(A\)-module. Therefore \(B\) is finite over \(A\).
+
+We also verify finite type of \(A\). Choose a finite \(A\)-module generating list \(x_i\) for \(B\), containing \(1\), and a finite \(K\)-algebra generating list \(b_j\) for \(B\). Express every \(b_j\) and every \(x_ix_h\) in the \(x_i\), with coefficients in \(A\). Let \(D\) be the \(K\)-algebra generated by this finite coefficient list. The \(D\)-span of the \(x_i\) is a subalgebra containing all \(b_j\), hence is \(B\). Thus \(B\) is finite over the noetherian \(D\). Its \(D\)-submodule \(A\) is finite, so \(A\) is a finite-type \(K\)-algebra. It is reduced because it embeds in the reduced \(B\).
+
+For \(c\in I\), we have \(A_c=B_c\): for every \(b\in B\), the product \(cb\) is in \(I\subset A\). Such principal opens cover the complement of the marked points. Hence \(\operatorname{Spec}A\) glues to \(\widetilde C\) away from them along these identical opens. This constructs \(C\) and the finite map (NC2); finiteness is checked on the displayed affine and on the unchanged opens. Its fibre at each new point is exactly its two branch points, since the corresponding quotient of \(B\) is \(K^2\).
+
+The source is normal: its smooth curve local rings are discrete valuation rings by SF5–SF6. It is finite and birational on each component. If an element of the total fraction ring is integral over \(A\), its monic equation is also an equation over \(B\); normality puts it in \(B\). Thus \(B\) is the integral closure of \(A\), proving the normalization assertion.
+
+For any \(K\)-algebra \(R\), tensor the exact sequence of \(K\)-vector spaces
+\[
+ 0\longrightarrow A\longrightarrow B\oplus K^E
+          \longrightarrow K^{2E}\longrightarrow0.
+ \tag{NC4}
+\]
+The last arrow is the difference of evaluation and the diagonal map, and is onto. Tensor is exact over the field. Consequently
+\[
+          A_R=B_R\times_{R^{2E}}R^E.
+          \tag{NC5}
+\]
+This is the full base-changed gluing algebra, also for nonreduced or nonnoetherian \(R\). No claim that a base-changed nonreduced scheme is normal is involved. \(\square\)
+
+#### 2P.2. Nodes, properness and explicit projectivity
+
+**NC2.** The curve \(C\) is projective, geometrically reduced and geometrically connected. At each new point its completed local ring is
+\[
+ \widehat{\mathcal O}_{C,e}
+       \simeq K[[u]]\times_KK[[v]]
+       \simeq K[[x,y]]/(xy).
+       \tag{NC6}
+\]
+All other points are smooth.
+
+To compute the completion, localize (NC3) at a single new point. The branch algebra is finite and semilocal, with the two rational branch maximal ideals. Its conductor \(I\) is their intersection, and it is the maximal ideal of the pinched local ring. Products \(I^r\), computed in the branch algebra or the pinched ring, coincide: multiplication by a branch coefficient can be absorbed into one of the factors, because \(I\) is already an ideal of the branch algebra. The Chinese remainder equations identify the branch quotients by \(I^r\) with the two branch local quotients. Smooth curve coordinates give their inverse limits \(K[[u]],K[[v]]\). Condition (NC3) retains equality of the two constant terms at every level. Passing to the inverse limit proves the first isomorphism in (NC6). The second sends \(x\) to \((u,0)\) and \(y\) to \((0,v)\); every equal-constant pair is uniquely a constant plus a series in \(u\) with zero constant and a series in \(v\) with zero constant. This proves the ring isomorphism, in every characteristic.
+
+We give the separation argument before using properness. The inverse image of the diagonal of \(C\) under the finite surjective \(\nu\times\nu\) is, as a closed set, the diagonal of \(\widetilde C\) together with the finitely many ordered branch pairs. A finite surjective map is a closed quotient map, by the integral lying-over calculation. Hence the diagonal of \(C\) has closed underlying set. It is an immersion: the open union of \(U\times U\), for affine opens \(U\subset C\), contains the diagonal, and its restriction on each such open is the affine quotient-ring closed immersion. Since its image is closed in the whole product, those local ideals glue with the unit ideal off its image to give a closed immersion. Thus \(C\) is separated.
+
+For any base change, a closed subset of \(C\) and its inverse image under the finite surjective \(\nu\) have the same image in the base. The latter image is closed because \(\widetilde C\) is proper. Therefore \(C\) is universally closed; it is separated and of finite type, hence proper. Construction (NC5) commutes with field extension and embeds each affine gluing algebra in the reduced branch algebra. This proves geometric reducedness. Each component remains connected, and the connected graph identifies them into one connected space, after any field extension. Thus \(C\) is geometrically connected.
+
+We construct a finite map to \(\mathbf P^1\) to prove projectivity. If there are no edges, connectedness leaves one component and \(C=C_v\) is already projective. Otherwise every component has a branch mark. On \(C_v\), choose a positive very ample line power and a section \(b_v\) nonzero at all its branch marks. Prescribing nonzero values at those finitely many points is possible by PF8 applied to their ideal. Its zero divisor is finite and nonempty: its line has positive degree by DC4. After replacing \(b_v\) by a positive power, PF8 permits a section \(a_v\) of the same line which vanishes at every branch mark and is nonzero at every point in the support of that zero divisor. These conditions concern disjoint finite subschemes, so their evaluation map is onto; over a nonrational closed point choose a nonzero value in its residue line. Thus \(a_v,b_v\) have no common zero.
+
+They define a nonconstant map \(C_v\to\mathbf P^1\), with value zero at every branch mark and a pole at each zero of \(b_v\). Near the marks, the functions \(a_v/b_v\) satisfy (NC3), so these maps glue to a map \(C\to\mathbf P^1\). Each geometric fibre is finite, as its inverse image on every smooth component is finite. The map is proper by its closed graph and proper source. The proper finite-fibre theorem of Lesson 3 makes it finite. The explicit finite-cover embedding of Lesson 3, Theorem 0.F.7 and Corollary 0.F.8, now makes \(C\) projective. This uses an actual finite map, rather than assuming projectivity of the pinching. \(\square\)
+
+#### 2P.3. Invertible modules patch on every parameter scheme
+
+**NC3.** For every \(K\)-scheme \(S\), a line on \(C_S\) is equivalent to lines \(M_v\) on \((C_v)_S\), together with isomorphisms
+\[
+     \lambda_e:M_{s(e)}|_{P_e^-\times S}
+                       \xrightarrow{\ \sim\ }
+                    M_{t(e)}|_{P_e^+\times S}
+              \qquad(e\in E).
+     \tag{NC7}
+\]
+Morphisms are the component line isomorphisms commuting with these edge maps. The equivalence is compatible with every base change on \(S\).
+
+It suffices to prove the affine statement for (NC5). An equivalent description keeps a line \(N_e\) on each node section and identifies both branch restrictions with \(N_e\). Choosing the first branch as \(N_e\) removes it and gives exactly (NC7). With the node lines retained, form
+\[
+ M=\ker\left(M_B\oplus M_{R^E}
+                   \longrightarrow M_{R^{2E}}\right),
+                   \tag{NC8}
+\]
+using the difference of the two specified identifications. We show this is invertible over \(A_R\) and recovers the given modules.
+
+Off the conductor, \(A_R=B_R\), so this is immediate. At a prime over a node, localize \(A_R\). The finite branch algebra is semilocal; its quotient along the two branches is the product of two copies of the corresponding local ring of \(R\). Its conductor is contained in every maximal ideal of that semilocal algebra, since every such maximal ideal lies over the node prime.
+
+A rank-one projective module over a semilocal ring is free. To see this, choose a nonzero generator in each of its finitely many residue lines, lift them simultaneously by the Chinese remainder equations, and apply finite Nakayama. The resulting surjection from the ring splits by projectivity; its kernel has zero reduction at every maximal ideal and is zero by Nakayama locally. Thus choose frames for the branch and node modules. Their mismatch is a unit in the product branch quotient. Lift that unit to the branch algebra; it is a unit there, because its quotient kernel lies in the Jacobson radical. Changing the branch frame by this unit makes the two identifications agree with the node frame. In these frames (NC8) is precisely \(A_R\), and its pullbacks are the prescribed free modules.
+
+These local descriptions show that (NC8) is a line and recovers the given data. They require no noetherian hypothesis on \(R\). Conversely, tensoring (NC4) with an invertible \(A_R\)-module preserves exactness, so every line is recovered by this kernel. Compatible maps patch by the same equalizer. The local free-frame description also proves base-change compatibility, even when tensoring a general kernel would not be exact. Gluing these affine constructions proves the assertion over arbitrary \(S\), including nilpotent parameters. \(\square\)
+
+#### 2P.4. Cycle coordinates and constants on the curve
+
+**NC4.** Put
+\[
+ \partial:\mathbf Z^E\longrightarrow\mathbf Z^V,\qquad
+       e\longmapsto t(e)-s(e),\qquad
+ X=H_1(\Gamma,\mathbf Z)=\ker\partial.
+ \tag{NC9}
+\]
+Then \(X\) is free of rank \(r=|E|-|V|+1\). The group of branch gluing scalars modulo component frame changes, with one root frame fixed, is the split torus
+\[
+             T_\Gamma=\operatorname{Hom}(X,\mathbf G_m).
+             \tag{NC10}
+\]
+Moreover \(\pi_*\mathcal O_{C_S}=\mathcal O_S\) for every \(K\)-scheme \(S\).
+
+Choose a spanning tree \(\mathcal T\) of the connected graph, with root \(v_0\), and orient its edges away from the root. A spanning tree exists by successively adjoining an edge reaching a new vertex; absence of cycles gives exactly \(|V|-1\) edges. Every non-tree edge closes a unique path in the tree, and gives a cycle with its own non-tree coefficient one and all other non-tree coefficients zero. These cycles form a basis of \(X\). Indeed subtract their multiples from any cycle to leave one supported on the tree; at a terminal vertex its incident coefficient must be zero, and induction removes the tree. This also proves the rank, without division or a field hypothesis.
+
+For an affine parameter \(\operatorname{Spec}R\), component frame changes \(c_v\in R^\times\) change gluing scalars by
+\[
+                 \lambda_e\longmapsto c_{s(e)}c_{t(e)}^{-1}\lambda_e.
+                 \tag{NC11}
+\]
+Fix \(c_{v_0}=1\). Successively along the tree there is a unique choice making every tree scalar one: set \(c_{t(e)}=c_{s(e)}\lambda_e\) on each tree edge. The remaining \(r\) edge scalars are arbitrary units, giving \(\mathbf G_m^r\) on every ring \(R\). The intrinsic character for a cycle \(z=(z_e)\in X\) is
+\[
+                       \chi_z(\lambda)=\prod_e\lambda_e^{z_e}.
+                       \tag{NC12}
+\]
+It is unchanged by (NC11), since the exponent at each vertex is the negative of its boundary coefficient. On the fundamental cycle basis these are exactly the remaining coordinates. Thus (NC10) is independent of the chosen tree, and \(X^*(T_\Gamma)=X\).
+
+Finally FC20 on each smooth component gives \(H^0((C_v)_R,\mathcal O)=R\). By (NC3), global functions on \(C_R\) are precisely tuples in \(R^V\) agreeing across every edge. A tree forces all entries equal. Hence \(H^0(C_R,\mathcal O)=R\), for every \(R\), not just residue fields. This local calculation on \(S\) proves the sheaf assertion. In particular an automorphism of a line on \(C_S\) is a base unit, and a rigidification at \(P\) makes it the identity. \(\square\)
+
+#### 2P.5. The universal multidegree-zero group
+
+**NC5.** The functor of lines on \(C_S\) of degree zero on every geometric component, rigidified at \(P\), is represented by a smooth geometrically connected commutative algebraic group \(G=J_C^0\). It has the fppf exact sequence (NC1), and
+\[
+                         \dim G=\sum_v g_v+r,
+                         \tag{NC13}
+\]
+where \(g_v\) is the genus of \(C_v\).
+
+Put \(J=\prod_v J_{C_v}\), using the full pointed curve representations JC1–JC9, and let \(\mathcal L_v\) denote the universal component line and its pullback to \(C_v\times J\), rigidified at \(P_v\). On \(J\) define the fibre lines
+\[
+ F_e=\mathcal L_{t(e)}|_{P_e^+\times J}
+             \otimes\bigl(\mathcal L_{s(e)}|_{P_e^-\times J}\bigr)^{-1}.
+ \tag{NC14}
+\]
+Use the rooted tree of NC4 and define base lines \(N_v\) recursively by
+\[
+           N_{v_0}=\mathcal O_J,\qquad
+           N_{t(e)}=N_{s(e)}\otimes F_e^{-1}\quad(e\in\mathcal T).
+           \tag{NC15}
+\]
+Set \(\mathcal L_v'=\mathcal L_v\otimes p_J^*N_v\). Their fibre lines at the two ends of each tree edge have a canonical isomorphism: their ratio \(F_eN_{t(e)}N_{s(e)}^{-1}\) is canonically trivial by (NC15). For each remaining edge set
+\[
+           E_e=F_e\otimes N_{t(e)}\otimes N_{s(e)}^{-1},
+           \qquad
+           G=\prod_{e\notin\mathcal T,\ J} E_e^\times .
+           \tag{NC16}
+\]
+Here \(E_e^\times\) is the scheme of nowhere-zero frames of the line \(E_e\), an open in its total vector bundle. Its universal frame supplies the gluing isomorphism on that edge. Tree edges use their canonical isomorphisms. NC3 therefore gives a universal line on \(C\times G\), rigidified at the root.
+
+We prove the representation on arbitrary \(S\), including component base lines which need not be trivial. Given a line \(M\) and its root rigidification, write \(M_v=M|_{(C_v)_S}\), and put \(Q_v=M_v|_{P_v\times S}\). Normalizing \(M_v\) by \(Q_v^{-1}\) gives, by JC's full representation, a unique map \(a_v:S\to J_{C_v}\) and a normalized isomorphism
+\[
+                         M_v\simeq a_v^*\mathcal L_v\otimes Q_v.
+                         \tag{NC17}
+\]
+Take the product map \(a:S\to J\). The root rigidification gives \(Q_{v_0}=\mathcal O_S\). The edge isomorphisms along the tree then identify, recursively and uniquely, \(Q_v\simeq a^*N_v\): an isomorphism from source fibre to target fibre says \(Q_{t(e)}\simeq Q_{s(e)}\otimes a^*F_e^{-1}\). After these identifications, the non-tree edge maps are exactly nowhere-zero sections of the \(a^*E_e\). They give a unique map \(S\to G\).
+
+Conversely, such a map pulls back the universal glued line. The two procedures are inverse by their explicit component lines and edge maps in NC3. Their isomorphisms are unique by NC4's root normalization, so they are natural in \(S\). This proves the full functor statement, not merely a description of geometric line classes.
+
+Tensor product, inverse and the trivial line now define morphisms giving \(G\) its commutative group structure; all identities hold on every parameter scheme by the corresponding line identities. Restriction to the components is its homomorphism \(G\to J\). Over zero the universal component lines and all their marked fibres are canonically trivial, so (NC16) identifies its full kernel with NC4's torus. The map \(G\to J\) is a Zariski locally trivial product of line-frame bundles, hence smooth and surjective. It is a torsor under this kernel, with relation isomorphism supplied by subtracting two points in a fibre. This proves the fppf exact sequence.
+
+The total space in (NC16) is smooth over the smooth \(J\), has relative dimension \(r\), and is geometrically integral: over a nonempty trivializing open it is the product of an integral open with \(\mathbf G_m^r\), and the same holds locally over every point. Thus it is geometrically connected and has (NC13). It is quasi-projective: each line-frame bundle is an open in the projective bundle of \(\mathcal O_J\oplus E_e\), and their finite product over the projective \(J\) is projective. Removing the zero and infinity sections gives (NC16).
+
+One can also identify the identity component without presupposing a Picard scheme. The smooth points \(P_v\) are Cartier divisors on \(C\), and \(\mathcal O_C(\sum_v d_vP_v)\) has component degree vector \(d\in\mathbf Z^V\). Give each such line a root rigidification. Tensoring with it represents the degree-\(d\) functor by a copy of \(G\). Degrees in a line family are locally constant, by CE3's Euler calculation on the smooth components and DC5. For an arbitrary affine base, this assertion reduces to a noetherian one: local line frames, their finite presentation matrices and their transition inverses involve finitely many coefficients in that base ring, so descend to a finite-type \(K\)-subalgebra; all the required inverse identities descend with those coefficients. The disjoint union of these copies, indexed by \(\mathbf Z^V\), therefore represents the whole rigidified line functor. Its zero-degree copy is its geometrically connected identity component. No general Picard representability theorem is assumed here. \(\square\)
+
+#### 2P.6. Normalization cohomology and infinitesimal gluing
+
+**NC6.** If \(g=1-\chi(C,\mathcal O_C)\) is the arithmetic genus, then
+\[
+                    g=\sum_v g_v+r.
+                    \tag{NC18}
+\]
+There is a natural exact sequence
+\[
+ 0\longrightarrow H^1(\Gamma,K)\longrightarrow H^1(C,\mathcal O_C)
+       \longrightarrow\bigoplus_v H^1(C_v,\mathcal O_{C_v})
+       \longrightarrow0.
+ \tag{NC19}
+\]
+It is the tangent sequence of (NC1), including its signs.
+
+The affine difference map in (NC3) gives the sheaf exact sequence
+\[
+ 0\longrightarrow\mathcal O_C\longrightarrow\nu_*\mathcal O_{\widetilde C}
+       \xrightarrow{\ \text{value at }P_e^+-\text{value at }P_e^-\ }
+                   \bigoplus_e K_e\longrightarrow0.
+ \tag{NC20}
+\]
+The last map is onto locally at each node by the Chinese remainder equations. A finite morphism is affine, and coherent affine cohomology is zero in positive degree. Computing on an affine cover of \(C\), whose finite inverse images are affine, therefore identifies cohomology of the middle sheaf with that of \(\widetilde C\). Each skyscraper \(K_e\) has no positive cohomology. The resulting long exact sequence begins
+\[
+ 0\to K\to K^V\xrightarrow{\ d\ }K^E
+       \to H^1(C,\mathcal O_C)\to\bigoplus_vH^1(C_v,\mathcal O_{C_v})\to0,
+ \qquad (da)_e=a_{t(e)}-a_{s(e)}.
+ \tag{NC21}
+\]
+The same sequence and NR1's smooth-curve dimension bound give \(H^i(C,\mathcal O_C)=0\) for \(i>1\).
+
+A tree solves the vertex difference equations without dividing by an integer. Thus the kernel of \(d\) is the diagonal \(K\), and its cokernel is \(H^1(\Gamma,K)=\operatorname{Hom}(X,K)\), of dimension \(r\). This proves (NC19), and its dimension gives (NC18), using \(H^0(C,\mathcal O_C)=K\).
+
+For the tangent identification, a first-order line with trivial reduction has transitions \(1+\epsilon c_{ij}\), exactly as in NR2; that affine proof did not require smoothness. NC4's constant-function calculation supplies uniqueness after root normalization. Hence \(T_0G=H^1(C,\mathcal O_C)\). Restriction to the normalization sends these cocycles to their component restrictions. On the kernel, gluing scalars \(1+\epsilon a_e\) change under component frames \(1+\epsilon b_v\) by adding \(b_{s(e)}-b_{t(e)}\). Their quotient is exactly the cokernel of \(d\); the sign is reversed on the map from vertex frames, without changing its image. The cycle character (NC12) differentiates to \(z\mapsto\sum_e z_ea_e\), identifying \(T_0T_\Gamma=\operatorname{Hom}(X,K)\). Thus the differentiated sequence is precisely (NC19). This retains the infinitesimal gluing directions at every node. \(\square\)
+
+#### 2P.7. Full multiplication kernels, Tate modules and actions
+
+**NC7.** Write \(b=\sum_v g_v\). For every positive integer \(n\), multiplication by \(n\) on \(G\) is finite faithfully flat of rank \(n^{2b+r}\), and
+\[
+ 0\longrightarrow T_\Gamma[n]\longrightarrow G[n]
+       \longrightarrow J[n]\longrightarrow0
+       \quad\text{is fppf exact},\qquad
+ \operatorname{rank}G[n]=n^{2b+r}.
+ \tag{NC22}
+\]
+For \(n=\ell^m\) with \(\ell\ne\operatorname{char}K\), multiplication is étale and gives
+\[
+ 0\longrightarrow\operatorname{Hom}(X,\mathbf Z_\ell(1))
+       \longrightarrow T_\ell G\longrightarrow
+                       \bigoplus_vT_\ell J_{C_v}\longrightarrow0.
+ \tag{NC23}
+\]
+In particular \(T_\ell G\) is free of rank \(2b+r=2g-r\).
+
+The torus multiplication is finite free of rank \(n^r\): in one coordinate its algebra has basis \(1,t,\ldots,t^{n-1}\) over \(K[t^n,t^{-n}]\), and take tensor products. It is surjective as an fppf map. Over a parameter ring, adjoining an \(n\)-th root of a unit gives a monic finite free rank-\(n\) algebra in which that root is a unit. This applies also when the characteristic divides \(n\).
+
+For a section of \(J[n]\), lift it locally to \(G\) using its line-frame torsor. The multiple of the lift lies in the torus. Divide that torus element by \(n\) after the finite free root cover, and subtract it from the lift. This produces a section of \(G[n]\), on actual parameter schemes. Its kernel is \(T_\Gamma[n]\). The relation of two lifts is torus-kernel translation, so \(G[n]\to J[n]\) is a torsor under \(T_\Gamma[n]\). CU8 gives rank \(n^{2b}\) for \(J[n]\). Faithfully flat descent FD4 therefore makes \(G[n]\) finite locally free of rank \(n^{2b+r}\).
+
+The same division argument, starting with any section of \(G\), first divides its image in \(J\) and then corrects its torus difference. Thus \([n]:G\to G\) is fppf surjective. Its full relation scheme is \(G\times G[n]\), with the usual difference and addition maps. It is a torsor under that finite locally free kernel, so finite faithful flatness and its stated rank descend. When \(n\) is prime to the characteristic, its tangent correction is multiplication by the unit \(n\) on the smooth group. The standard smooth lifting calculation SF1–SF3 makes this map étale. These arguments concern the full schemes \(G[n]\), not their point counts.
+
+At prime-to-characteristic levels, the algebraically closed points of (NC22) are exact and finite; multiplication transitions are onto. Compatible torus torsion is \(\operatorname{Hom}(X,\mathbf Z_\ell(1))\), by its cycle characters and the root-of-unity tower. A compatible sequence in \(J[\ell^m]\) lifts compatibly in \(G[\ell^m]\): any finite initial segment lifts by choosing its last lift and multiplying down, and the nested nonempty finite compatibility sets have a point by the finite inverse-limit compactness of Lesson 1. This proves (NC23). Both end modules are free, of ranks \(r\) and \(2b\), by CU9 and the torus calculation. Lifting a basis of the right free module gives a \(\mathbf Z_\ell\)-linear section, so the middle module is free of their sum rank. No Galois-equivariant section is asserted.
+
+The construction is natural in curve isomorphisms. If \(a:C\to C\) moves the root, pull back a line and normalize it by the inverse of its fibre at \(P\). NC4's uniqueness makes this a well-defined morphism on the representing group, with the full pullback composition identities. For a cycle \(z\) and a torus gluing class \(t\), direct edge substitution in (NC12) gives
+\[
+                   \chi_z(a^*t)=\chi_{a_*z}(t).
+                   \tag{NC24}
+\]
+Reversing a branch orientation sends the corresponding edge coordinate to its inverse and its cycle coefficient to its negative; the formula includes this sign. A left action of curve automorphisms consequently acts on the group by inverse pullback. The component Jacobian maps and the exact sequences commute with these actual maps.
+
+The same argument gives full semilinear action identities over a finite Galois splitting field when such curve descent data are supplied: pullback of families, base normalization and the representing property construct the semilinear group maps and their cocycle, independently of the chosen tree or component base points. In cycle coordinates their compatibility reads
+\[
+            \chi_{\sigma z}(\sigma t)=\sigma\bigl(\chi_z(t)\bigr),
+ \qquad
+            (\sigma f)(z)=\sigma\bigl(f(\sigma^{-1}z)\bigr)
+            \quad\bigl(f\in\operatorname{Hom}(X,\mathbf Z_\ell(1))\bigr).
+            \tag{NC25}
+\]
+Thus the graph part carries the signed edge-permutation action together with the cyclotomic action. The Tate exact sequence respects it. This supplies actions for the given curve data, without asserting that an unconstructed model or period map already has such data. \(\square\)
+
+#### 2P.8. A nontrivial extension and the remaining period directions
+
+**NC8.** The torus rank of \(G\) is \(r\). It is proper exactly when \(r=0\), in which case restriction gives \(G\simeq\prod_vJ_{C_v}\). For \(r>0\) the extension need not split, even for one component and one node.
+
+When \(r=0\), every edge is in the tree and (NC16) has no frame factors, so its restriction map is an isomorphism to \(J\). If \(r>0\), the closed subgroup \(T_\Gamma\) contains a closed copy of \(\mathbf G_m\). That group is not proper: its map into \(\mathbf P^1\) has nonclosed image, whereas any map from a proper scheme into the separated \(\mathbf P^1\) is proper by its graph. Hence \(G\) is not proper.
+
+There is no larger geometric torus in \(G\). A homomorphism \(\mathbf G_m\to J\) extends across zero and infinity to \(\mathbf P^1\to J\), by properness and the curve DVR-extension proof of Lesson 3. AL2 says that such a map is constant. A homomorphism from a split torus is generated by its coordinate one-parameter subgroups, so is zero. Every torus over an algebraic closure splits. Consequently any torus subgroup of \(G\) lies in the kernel of \(G\to J\), which is \(T_\Gamma\). This proves the maximal torus rank assertion.
+
+For a concrete nonsplit case, take an elliptic curve \(E\), root zero, and distinct nonzero rational points \(a,b\), and pinch \(a\) to \(b\). Then \(J=J_E\simeq E\) by the proved genus-one Abel isomorphism, the graph has one loop, and
+\[
+                     G=F^\times\longrightarrow E,
+       \qquad F=\mathcal L|_{b\times E}\otimes
+                            (\mathcal L|_{a\times E})^{-1}.
+                     \tag{NC26}
+\]
+Its line is \(F\simeq\mathcal O_E([b]-[a])\). To check this, the universal pointed line on \(E\times E\) is, up to the constant factor fixed by its rigidification,
+\[
+ \mathcal O_{E\times E}(\Delta)
+        \otimes p_1^*\mathcal O_E(-[0])
+        \otimes p_2^*\mathcal O_E(-[0]).
+ \tag{NC27}
+\]
+On the fibre with parameter \(z\), it is \(\mathcal O_E([z]-[0])\); this and the root normalization identify it with the universal line by the full curve Picard property. Evaluating at \(a\) and \(b\), both different from zero, cancels the parameter \(-[0]\) factors and gives the claimed \(F\). The genus-one Abel isomorphism makes this line nontrivial for \(a\ne b\). A section of \(F^\times\to E\) would trivialize \(F\); therefore the torus torsor has no section, and the extension is not a product extension.
+
+For this one-node elliptic example, \(g=2\), \(r=1\), and \(T_\ell G\) has rank three. A smooth curve Jacobian of genus \(g\) has Tate rank \(2g\) by CU9. In general the nodal-fibre group constructed here has rank \(2g-r\); the additional \(r\) directions required by a smooth generic Jacobian are not produced by merely naming \(G\) its special group. One must still construct a semistable curve model, the associated integral or formal semiabelian extension, and an actual period covering with its lattice and compatible actions. No identification of a graph form with a geometric monodromy pairing is claimed without that construction. \(\square\)
+
+#### 2P.9. Graded exercise: nodes, cycles and torus directions
+
+**Exercise 2P (100 points; ten parts of 10 points).**
+
+1. Pinch \(0\) to \(1\) on the affine line. Put \(q=t(t-1)\), \(z=tq\). Prove that its pinching algebra is \(K[q,z]\), give its single relation, and prove the presentation in every characteristic. Identify the completed node and the generalized Jacobian after adding the point at infinity.
+2. On the resulting rational nodal projective curve, glue the trivial line on its normalization by \(\lambda=1+\epsilon\), over \(R=K[\epsilon]/(\epsilon^2)\). Show that the closed fibre is trivial but the line family is not. Explain why local freeness at the node does not make that global line trivial.
+3. Let \(\Gamma\) have two vertices and three edges, all oriented from the first vertex to the second. Choose the third edge as a tree. Compute the incidence matrix, an integral cycle basis, and the two torus coordinates. Prove the vertex gauge leaves them unchanged over any ring.
+4. Join an elliptic component \(E\) to a rational component by a single edge from \(a\ne0\) on \(E\) to a point of \(\mathbf P^1\). Root the curve at \(0\in E\). Describe \(F_e,N_{\mathbf P^1}\) over \(J=E\). Why can the universal glued line exist although \(F_e\) has no global frame?
+5. Take a triangle of three rational components. Compute its arithmetic genus and coherent tangent sequence. Determine the action of a cyclic rotation and of a reflection on its torus. In characteristic two, show on \(K[\epsilon]/(\epsilon^3)\) that the reflection can be nontrivial even though its tangent action is the identity.
+6. For the graph in part 3, suppose the component genera are one and two. Compute the dimension of \(G\), arithmetic genus, full rank of \(G[n]\), and prime-to-characteristic Tate rank. Compare it with the Tate rank of a smooth genus-\(g\) Jacobian. Discuss the torus part of \(G[p]\) in characteristic \(p\).
+7. On \(E:y^2=x^3-x\) over \(\mathbf Q\), pinch \(a=(0,0)\) to \(b=(1,0)\), with root infinity. Determine the line \(F\) whose frame bundle represents \(G\to E\), prove it is nontrivial, and deduce that this is a nonsplit torus extension. Compute its dimensions and Tate rank.
+8. Prove (NC22) on arbitrary parameter schemes by dividing first on \(J\) and then on the torus. Explain how the proof retains nilpotent torsion. Prove the compatible lifting step in (NC23).
+9. For the three-edge graph, compute the cycle-lattice actions of exchanging edges one and two, and of reversing all edges while exchanging the two vertices. Give the corresponding action on \(\operatorname{Hom}(X,\mathbf Z_\ell(1))\). Explain the inverse-pullback convention for a left automorphism action.
+10. Give the three edges positive integer weights \(m_1,m_2,m_3\). Compute the Gram matrix of \(\sum_e m_ez_ew_e\) on part 3's cycle basis and prove positivity. For weights \(1,2,3\), compute its determinant, Smith factors and rational inverse. State when an edge permutation preserves it and whether it has already been identified with geometric monodromy.
+
+**Full solution.**
+
+1. The equality of values at zero and one is equivalent to
+   \[
+       A=K+qK[t],\qquad q=t^2-t,\qquad z=tq.
+       \tag{NCX1}
+   \]
+   The algebra \(K[t]\) is free on \(1,t\) over \(K[q]\): the presentation \(K[q,t]/(t^2-t-q)\) is \(K[t]\) by eliminating \(q\), while monic division in \(t\) gives that free basis. Therefore \(qf(t)\) is a polynomial in \(q\) plus \(z\) times a polynomial in \(q\), proving \(A=K[q,z]\). Moreover
+   \[
+                    z^2=qz+q^3,\qquad
+       A\simeq K[Q,Z]/(Z^2-QZ-Q^3).
+       \tag{NCX2}
+   \]
+   Surjectivity was just proved. For injectivity, monic division in \(Z\) leaves \(a(Q)+b(Q)Z\); its image \(a(q)+qb(q)t\) is zero only when both coefficients in the free \(K[q]\)-basis vanish. The argument includes characteristic two.
+
+   The two preimages of the node are \(t=0,1\), and its completed ring is \(K[[u]]\times_KK[[v]]\simeq K[[x,y]]/(xy)\), by NC2. Pinching these points on \(\mathbf P^1\) has one vertex, one loop, component genus zero and \(r=1\). Thus \(J_C^0=\mathbf G_m\). This conclusion is about the projective pinched curve, rather than the Picard group of the affine open alone.
+
+2. The unit \(1+\epsilon\) supplies a valid full edge isomorphism by NC3. Its reduction is one, so its closed-fibre line is trivial. There is one component and the edge is a loop. Any global automorphism of its trivial component line is a single base unit, which changes \(\lambda\) by \(c/c=1\). Hence \(\lambda\ne1\) cannot be transformed into the trivial gluing.
+
+   Locally at the node the line is free: the two branch frames can be adjusted independently in the finite semilocal branch algebra, as in (NC8). They cannot in general be adjusted independently by a global function on the projective normalization, whose functions are only base constants. This is precisely the distinction between a locally free line and a globally trivial one. The example is also the nonzero tangent direction of \(\mathbf G_m\).
+
+3. With columns \(e_1,e_2,e_3\), we have
+   \[
+    \partial=\begin{pmatrix}-1&-1&-1\\ 1&1&1\end{pmatrix},
+    \quad z_1=e_1-e_3,\quad z_2=e_2-e_3,\quad
+    (u_1,u_2)=(\lambda_1/\lambda_3,\lambda_2/\lambda_3).
+    \tag{NCX3}
+   \]
+   Every cycle has coefficients \((a,b,-a-b)\), so \(z_1,z_2\) are an integral basis. A vertex change multiplies all three \(\lambda_i\) by the same unit, so both ratios are unchanged over any ring, including a ring with nilpotents. Conversely choose the root frame one and the other frame \(\lambda_3\); this makes the third edge one and gives exactly these two ratios.
+
+4. The normalized universal line on \(E\times E\) evaluates at \(a\) to \(\mathcal O_E([a]-[0])\), by (NC27). The rational component has trivial Jacobian and trivial universal component line. Therefore
+   \[
+       F_e\simeq\mathcal O_E([0]-[a]),\qquad
+       N_{\mathbf P^1}=F_e^{-1}\simeq\mathcal O_E([a]-[0]).
+       \tag{NCX4}
+   \]
+   This base-line twist on the rational component makes its branch fibre equal to the elliptic branch fibre. The tree edge then glues canonically. There are no non-tree edges, so \(G=E\). A naive construction insisting that every component base line be trivial would wrongly require a global frame of the nontrivial \(F_e\); the recursive \(N_v\) is what removes that false requirement.
+
+5. Orient the triangle cyclically. Its cycle lattice is generated by \(e_1+e_2+e_3\), so \(r=1\), \(g=1\), \(G=\mathbf G_m\), and
+   \[
+       0\to K\to K^3\xrightarrow{d}K^3
+                 \to H^1(C,\mathcal O_C)\to0,
+       \qquad H^1(C,\mathcal O_C)\simeq K.
+       \tag{NCX5}
+   \]
+   A rotation preserves the cycle generator and acts trivially on the torus. A reflection reverses it and acts by \(t\mapsto t^{-1}\). Its tangent is multiplication by \(-1\), which is \(+1\) in characteristic two. Nevertheless
+   \[
+          (1+\epsilon)^{-1}=1+\epsilon+\epsilon^2
+                \ne1+\epsilon
+          \quad\text{in }K[\epsilon]/(\epsilon^3),\quad \operatorname{char}K=2.
+          \tag{NCX6}
+   \]
+   Thus the whole automorphism is not determined by that tangent action.
+
+6. Here \(b=3,r=2\). Consequently
+   \[
+       \dim G=g=5,\qquad \operatorname{rank}G[n]=n^8,
+       \qquad\operatorname{rank}_{\mathbf Z_\ell}T_\ell G=8.
+       \tag{NCX7}
+   \]
+   A smooth genus-five Jacobian has Tate rank ten. The difference is two, the cycle rank. In characteristic \(p\), the torus kernel is
+   \[
+       T_\Gamma[p]=\mu_p^2,\qquad
+       \mathcal O(\mu_p^2)=K[u,v]/(u^p,v^p),
+       \quad t_1=1+u,\quad t_2=1+v.
+       \tag{NCX8}
+   \]
+   It has full length \(p^2\) and only one geometric point. It is a subgroup of \(G[p]\), whose rank remains \(p^8\). Replacing the torus kernel by its point count would destroy the finite flat rank formula.
+
+7. The specified curve is smooth in characteristic zero and both points are distinct from infinity. By NC8,
+   \[
+          F=\mathcal O_E([b]-[a]),\qquad G=F^\times\to E.
+          \tag{NCX9}
+   \]
+   The genus-one Abel isomorphism identifies its class with \(b-a\), which is nonzero since \(a\ne b\). Both displayed points are two-torsion, so this is a nonzero two-torsion line, in particular nontrivial. A section of its frame bundle would be a nowhere-zero section of the line and would trivialize it. Hence there is no section, and no product extension over \(E\). Here \(b=1,r=1,g=2,\dim G=2\), and its prime-to-characteristic Tate rank is three.
+
+8. Lift a section of \(J[n]\) locally to \(G\). Its multiple is in the torus; divide that element after adjoining monic \(n\)-th roots of units, then subtract the division. This makes the lift \(n\)-torsion. The kernel and relation are the full \(T_\Gamma[n]\), so this is a torsor on all schemes, not only on fields. Finite flat descent and CU8 give rank \(n^{2b+r}\). Dividing an arbitrary section first in \(J\), lifting, and correcting its torus difference proves fppf surjectivity of multiplication on \(G\).
+
+   For a compatible sequence in the quotient Tate module, any finite initial segment lifts by lifting its last term and multiplying down. These are finite nonempty compatibility sets, nested under extension. Finite inverse-limit compactness gives a simultaneous lift. The kernel is the compatible torus tower, giving exactly (NC23). It does not supply an equivariant splitting of that extension.
+
+9. Exchanging the first two edges swaps \(z_1,z_2\). Reversing all edges and exchanging the two vertices sends each \(z_i\) to \(-z_i\). Their matrices on \(X\) are
+   \[
+       S=\begin{pmatrix}0&1\\ 1&0\end{pmatrix},\qquad
+       R=-I_2.
+       \tag{NCX10}
+   \]
+   On the dual Tate lattice, the edge part is the inverse transpose; these two matrices happen to equal their own inverse transposes. A semilinear action also acts on the values in \(\mathbf Z_\ell(1)\), as in (NC25). Omitting that cyclotomic action changes the representation. Pullback of lines reverses composition, so a left action of curve automorphisms uses inverse pullback on the group. The character identity (NC24) records the convention without suppressing the orientation signs.
+
+10. In the basis \(z_1,z_2\), the inclusion into the edge lattice and its weighted Gram matrix are
+   \[
+       C=\begin{pmatrix}1&0\\ 0&1\\ -1&-1\end{pmatrix},\qquad
+       Q=C^{\mathsf T}\operatorname{diag}(m_1,m_2,m_3)C
+         =\begin{pmatrix}m_1+m_3&m_3\\ m_3&m_2+m_3\end{pmatrix}.
+       \tag{NCX11}
+   \]
+   For any nonzero rational or real cycle vector, \(Cz\ne0\), so its quadratic value is a sum of positive weights times squares and is strictly positive. Its determinant is \(m_1m_2+m_1m_3+m_2m_3>0\). For \(1,2,3\) it becomes
+   \[
+       Q=\begin{pmatrix}4&3\\ 3&5\end{pmatrix},\quad
+       \det Q=11,\quad
+       \operatorname{coker}Q\simeq\mathbf Z/11,\quad
+       Q^{-1}=\frac1{11}\begin{pmatrix}5&-3\\ -3&4\end{pmatrix}.
+       \tag{NCX12}
+   \]
+   The first Smith factor is the gcd of its entries, one, and their product is the determinant, by PC0's full integer Smith proof. A signed edge permutation preserves the form when it preserves the edge weights; the signs simply change orientation coordinates. Swapping weights one and two in the displayed numerical example does not preserve this fixed weighted form. These are integral graph calculations. Identifying such weights or this pairing with geometric thickness or monodromy still requires the model and period construction, and has not been inferred here.
+
 **Theorem 2.4 (full local abelian compatibility; remaining geometric proof obligation).** For every abelian variety over a nonarchimedean local field of characteristic zero, its prime-to-residue-characteristic rational Tate modules have a common Galois-invariant Frobenius-semisimple Weil–Deligne class over \(\overline{\mathbf Q}\).
 
-The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. AL1–AL8 in §2L gives the Albanese property on full parameter schemes,finite-curve norm and pullback maps,their degree and composition identities,and the infinitesimal trace. CD1–CD8 in §2M constructs one smooth projective geometrically integral marked curve after a finite separable extension and a smooth surjective map from its Jacobian, with its full kernel and rational Tate sequence. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, the remaining geometric work includes the required reducibility, semistable curve and formal/analytic constructions producing the initial integral extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.
+The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. AL1–AL8 in §2L gives the Albanese property on full parameter schemes,finite-curve norm and pullback maps,their degree and composition identities,and the infinitesimal trace. CD1–CD8 in §2M constructs one smooth projective geometrically integral marked curve after a finite separable extension and a smooth surjective map from its Jacobian, with its full kernel and rational Tate sequence. NL1–NL8 in §2N constructs a curve test for the full normalized translation-line family, its finite ample kernel and a finite flat isogeny onto an abelian subvariety of a curve Jacobian, with descended line and saturated Tate image. NR1–NR8 in §2O proves the coherent degree-one dimension,constructs abelian complements over the original field and makes the dominating curve Jacobian an isogeny product with a factor isogenous to the given abelian variety,with full kernel degrees and rational Tate projectors. NC1–NC8 in §2P constructs split nodal curves and their full-family generalized Jacobians,with cycle-character torus,component-Jacobian quotient,normalization cohomology,full multiplication kernels,Tate sequence and finite actions. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, the remaining geometric work includes the semistable curve and formal/analytic constructions producing the initial integral extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.
 
 For an elliptic curve the local classification gives every case without invoking the unproved higher-dimensional part. At good places use (6) and \(N=0\). At potentially good places use Lemma 2.3. At potentially multiplicative places use the Tate-curve proof and its quadratic descent in *Elliptic curves over local fields and their Weil–Deligne representations*, §§3–5: the common quadratic splitting character \(\eta_v\) and the common block are
 \[

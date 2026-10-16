@@ -33,7 +33,10 @@ A morphism is *submersive* if it is surjective and its target carries the quotie
 **Proposition 2.2.** Let \(g:S'\to S\) be universally submersive, and let \(X,Y\) be finite étale over \(S\), with pull-backs \(X',Y'\) to \(S'\) and \(X'',Y''\) to \(S''\). Then
 
 \[
-\operatorname{Hom}_S(X,Y)\longrightarrow\operatorname{Hom}_{S'}(X',Y')\rightrightarrows\operatorname{Hom}_{S''}(X'',Y'')
+\begin{aligned}
+&\operatorname{Hom}_S(X,Y)\longrightarrow\operatorname{Hom}_{S'}(X',Y')\\
+&\qquad\rightrightarrows\operatorname{Hom}_{S''}(X'',Y'')
+\end{aligned}
 \]
 
 is an equalizer. In particular \(g\) is a descent morphism for finite étale covers.

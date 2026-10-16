@@ -10,11 +10,12 @@ Basic references are [Kaliman–Makar-Limanov] and [OpenAI-cancellation].
 
 ## 1. Derivations and local nilpotence
 
-A **derivation** of a ring \(A\) is a \(k\)-linear map \(D:A\to A\) with \(D(fg)=fD(g)+gD(f)\). It kills \(k\), because \(D(1)=D(1\cdot1)=2D(1)\). Induction on \(n\) gives the **Leibniz formula**
+A **derivation** of a ring \(A\) is a \(k\)-linear map \(D:A\to A\) with \(D(fg)=fD(g)+gD(f)\). It kills \(k\), because \(D(1)=D(1\cdot1)=2D(1)\). Induction on \(n\) gives the **Leibniz formula** (1.1):
 
 \[
-D^n(fg)=\sum_{i=0}^{n}\binom ni D^i(f)\,D^{n-i}(g).
-\tag{1.1}
+\begin{aligned}
+D^n(fg)&=\sum_{i=0}^{n}\binom ni D^i(f)\,D^{n-i}(g).
+\end{aligned}
 \]
 
 A derivation is determined by its values on a set of generators of \(A\), since the product rule computes it on every monomial in the generators.
@@ -40,22 +41,29 @@ is finite. Extend \(D\) to polynomial rings \(A[s]\), \(A[t]\), \(A[s,t]\) by le
 **Proposition 2.1.** Let \(D\) be a locally nilpotent derivation of \(A\).
 
 1. \(\exp(tD):A\to A[t]\) is a ring homomorphism, and setting \(t=0\) gives the identity.
-2. In \(A[s,t]\), \(\exp(sD)\bigl(\exp(tD)(f)\bigr)=\exp((s+t)D)(f)\) for every \(f\in A\), where \(\exp(sD)\) is applied to the coefficients.
+2. In \(A[s,t]\), \(\exp(sD)\bigl(\exp(tD)(f)\bigr)\) equals \(\exp((s+t)D)(f)\) for every \(f\in A\), where \(\exp(sD)\) is applied to the coefficients.
 3. For a new variable \(w\), the map \(\Phi=\exp(wD):A[w]\to A[w]\), \(\Phi(f)=\sum_n w^nD^n(f)/n!\) with \(D(w)=0\), is a ring automorphism fixing \(w\), with inverse \(\exp(-wD)\).
 
 **Proof.** (1) By (1.1),
 
 \[
-\exp(tD)(f)\,\exp(tD)(g)=\sum_{i,j}\frac{t^{i+j}}{i!\,j!}D^i(f)D^j(g)=\sum_n\frac{t^n}{n!}\sum_{i}\binom niD^i(f)D^{n-i}(g)=\exp(tD)(fg).
+\begin{aligned}
+&\exp(tD)(f)\,\exp(tD)(g)\\
+&\quad =\sum_{i,j}\frac{t^{i+j}}{i!\,j!}D^i(f)D^j(g)\\
+&\quad =\sum_n\frac{t^n}{n!}\sum_{i}\binom niD^i(f)D^{n-i}(g)\\
+&\quad =\exp(tD)(fg).
+\end{aligned}
 \]
 
-Additivity and \(\exp(tD)(1)=1\) are clear. (2) The left side is \(\sum_{m,n}s^mt^nD^{m+n}(f)/(m!\,n!)\), which is \(\sum_l D^l(f)(s+t)^l/l!\) by the binomial theorem. (3) The extended derivation of \(A[w]\) is locally nilpotent, so part (1) gives a ring homomorphism \(A[w]\to A[w][t]\); composing with \(t\mapsto w\) gives \(\Phi\), a ring homomorphism fixing \(w\). Since \(D\) kills \(w\), the same computation as in (2), with \(s=-w\) and \(t=w\), gives \(\exp(-wD)(\Phi(f))=\sum_lD^l(f)(w-w)^l/l!=f\). Exchanging the roles of \(w\) and \(-w\) gives the other composite. \(\square\)
+Additivity and \(\exp(tD)(1)=1\) are clear. (2) The left side is \(\sum_{m,n}s^mt^nD^{m+n}(f)/(m!\,n!)\), which is \(\sum_l D^l(f)(s+t)^l/l!\) by the binomial theorem. (3) The extended derivation of \(A[w]\) is locally nilpotent, so part (1) gives a ring homomorphism \(A[w]\to A[w][t]\); composing with \(t\mapsto w\) gives \(\Phi\), a ring homomorphism fixing \(w\). Since \(D\) kills \(w\), the same computation as in (2), with \(s=-w\) and \(t=w\), shows that \(\exp(-wD)(\Phi(f))\) equals \(\sum_lD^l(f)(w-w)^l/l!\), which is \(f\). Exchanging the roles of \(w\) and \(-w\) gives the other composite. \(\square\)
 
-**Definition 2.2.** An **action of the additive group** on \(\operatorname{Spec}A\) is a ring homomorphism \(\rho:A\to A[t]\), written \(\rho(f)=\sum_n\delta_n(f)t^n\), such that \(\delta_0\) is the identity and, for every \(f\),
+**Definition 2.2.** An **action of the additive group** on \(\operatorname{Spec}A\) is a ring homomorphism \(\rho:A\to A[t]\), written \(\rho(f)=\sum_n\delta_n(f)t^n\), such that \(\delta_0\) is the identity and, for every \(f\), the identity (2.1) holds in \(A[s,t]\):
 
 \[
-\sum_{n}\rho_s\bigl(\delta_n(f)\bigr)\,t^n=\sum_n\delta_n(f)\,(s+t)^n\quad\text{in }A[s,t],
-\tag{2.1}
+\begin{aligned}
+&\sum_{n}\rho_s\bigl(\delta_n(f)\bigr)\,t^n\\
+&\quad=\sum_n\delta_n(f)\,(s+t)^n,
+\end{aligned}
 \]
 
 where \(\rho_s\) is \(\rho\) with the variable renamed \(s\). Geometrically, \(\rho\) is the comorphism of a morphism \(\mathbb A^1\times\operatorname{Spec}A\to\operatorname{Spec}A\), and (2.1) is the action law.
@@ -93,7 +101,7 @@ Equivalently, \(\nu_D(f)\) is the degree in \(t\) of the polynomial \(\exp(tD)(f
 
 **Corollary 3.3.** Let \(S\subset\ker D\) be a multiplicative set not containing \(0\). Then \(D(f/s)=D(f)/s\) defines a locally nilpotent derivation of \(S^{-1}A\), and \(D^n(f/s)=D^n(f)/s\).
 
-**Proof.** The quotient rule gives \(D(f/s)=(sD(f)-fD(s))/s^2=D(f)/s\) because \(D(s)=0\); iterating gives the formula, and local nilpotence follows. \(\square\)
+**Proof.** The quotient rule gives \(D(f/s)=(sD(f)-fD(s))/s^2\), which is \(D(f)/s\) because \(D(s)=0\); iterating gives the formula, and local nilpotence follows. \(\square\)
 
 ## 4. Derivations of a polynomial ring in one variable
 
@@ -113,13 +121,7 @@ Let \(f\in A_i\). Expanding \((\sum_jD_j)^n\), each composite \(D_{j_1}\cdots D_
 
 ## 6. Filtrations and the associated graded ring
 
-Let \(A\) be a domain with a **degree function** \(\deg:A\setminus\{0\}\to\mathbb Z\) such that
-
-\[
-\deg(fg)=\deg f+\deg g,\qquad \deg(f+g)\le\max\{\deg f,\deg g\}\ \ (f+g\ne0),
-\]
-
-and \(\deg c=0\) for \(c\in k^*\). Put \(\mathcal F_dA=\{f:\deg f\le d\}\cup\{0\}\), and let
+Let \(A\) be a domain with a **degree function** \(\deg:A\setminus\{0\}\to\mathbb Z\) such that \(\deg(fg)=\deg f+\deg g\), that \(\deg(f+g)\le\max\{\deg f,\deg g\}\) when \(f+g\ne0\), and \(\deg c=0\) for \(c\in k^*\). Put \(\mathcal F_dA=\{f:\deg f\le d\}\cup\{0\}\), and let
 
 \[
 \operatorname{gr}A=\bigoplus_{d\in\mathbb Z}\mathcal F_dA/\mathcal F_{d-1}A .
@@ -139,15 +141,11 @@ defines a locally nilpotent derivation of \(\operatorname{gr}A\), homogeneous of
 
 The next statement chooses \(j\) and guarantees \(D_0\ne0\). Suppose \(A\) is generated by \(h_1,\ldots,h_r\), give a monomial \(h_1^{e_1}\cdots h_r^{e_r}\) the **weight** \(\sum e_i\deg h_i\), and say that the generators are **exact** if every nonzero \(f\in A\) is a polynomial in the \(h_i\) all of whose monomials have weight at most \(\deg f\).
 
-**Proposition 6.2.** Suppose the generators \(h_1,\ldots,h_r\) are exact, and let \(D\ne0\) be locally nilpotent. Put
-
-\[
-j=\max\{\deg D(h_i)-\deg h_i: D(h_i)\ne0\}.
-\]
+**Proposition 6.2.** Suppose the generators \(h_1,\ldots,h_r\) are exact, and let \(D\ne0\) be locally nilpotent. Put \(j=\max_i\bigl(\deg D(h_i)-\deg h_i\bigr)\), the maximum over the \(i\) with \(D(h_i)\ne0\).
 
 Then \(D(\mathcal F_dA)\subset\mathcal F_{d+j}A\) for all \(d\), and the derivation \(D_0\) of Proposition 6.1 is nonzero.
 
-**Proof.** Represent \(f\ne0\) as a polynomial in the \(h_i\) with monomials of weight at most \(\deg f\). By the product rule, \(D\) of a monomial of weight \(\omega\) is a sum of terms of degree at most \(\omega+j\), because differentiating a factor \(h_i\) raises its degree by at most \(j\). Hence \(\deg D(f)\le\deg f+j\). For an index \(i\) attaining the maximum, \(D_0(\operatorname{in}h_i)=[D(h_i)]_{\deg h_i+j}=\operatorname{in}(D(h_i))\ne0\). \(\square\)
+**Proof.** Represent \(f\ne0\) as a polynomial in the \(h_i\) with monomials of weight at most \(\deg f\). By the product rule, \(D\) of a monomial of weight \(\omega\) is a sum of terms of degree at most \(\omega+j\), because differentiating a factor \(h_i\) raises its degree by at most \(j\). Hence \(\deg D(f)\le\deg f+j\). For an index \(i\) attaining the maximum, \(D_0(\operatorname{in}h_i)=[D(h_i)]_{\deg h_i+j}\), which is \(\operatorname{in}(D(h_i))\ne0\). \(\square\)
 
 ## 7. Exercises
 

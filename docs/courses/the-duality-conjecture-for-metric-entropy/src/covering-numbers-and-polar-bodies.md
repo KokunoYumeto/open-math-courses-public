@@ -4,11 +4,18 @@
 
 For bounded sets \(A,B\subseteq\mathbb R^n\), with \(B\) having nonempty interior, the *covering number* \(N(A,B)\) is the least number of translates \(z+B\), \(z\in\mathbb R^n\), whose union contains \(A\). Its logarithm measures the complexity of \(A\) at the resolution given by \(B\). A *convex body* is a compact convex set with nonempty interior; it is *symmetric* if \(-K=K\). The *polar* of a symmetric convex body is the symmetric convex body
 \[
-K^\circ=\{y\in\mathbb R^n:\langle x,y\rangle\le1\text{ for all }x\in K\}.
+\begin{aligned}
+&K^\circ\\
+&\quad =\{y\in\mathbb R^n:\langle x,y\rangle\le1\text{ for all }x\in K\}.
+\end{aligned}
 \]
 Pietsch asked in 1972, in the language of operators and their adjoints, whether covering numbers are preserved by polarity up to universal constants. In the geometric form recorded by Artstein, Milman, Szarek and Tomczak-Jaegermann [AMSTJ, Conjecture 1], the *duality conjecture for metric entropy* asks for absolute constants \(a,b\ge1\) such that
 \[
-\frac1b\log N(L^\circ,aK^\circ)\le\log N(K,L)\le b\log N(L^\circ,a^{-1}K^\circ)\tag{0.1}
+\begin{aligned}
+&\frac1b\log N(L^\circ,aK^\circ)\\
+&\quad \le\log N(K,L)\\
+&\quad \le b\log N(L^\circ,a^{-1}K^\circ)
+\end{aligned}\tag{0.1}
 \]
 for all dimensions and all symmetric convex bodies \(K,L\). Artstein, Milman and Szarek proved it when one of the bodies is an ellipsoid [AMS], and related versions were proved under further assumptions. OpenAI showed in September 2026 that the right-hand inequality fails for every choice of constants, already with \(L\) a cube [OpenAI-E]; passing to polar pairs, the left-hand inequality fails as well:
 
@@ -22,7 +29,10 @@ We use the separation of a point from a closed convex set and of disjoint convex
 
 For a compact convex \(K\subseteq\mathbb R^n\) the *support function* is \(h_K(\delta)=\max_{z\in K}\langle z,\delta\rangle\). For a symmetric convex body \(K\) it is a norm, and by definition
 \[
-\delta\in cK^\circ\iff h_K(\delta)\le c\qquad(c>0).\tag{1.1}
+\begin{gathered}
+\delta\in cK^\circ\iff h_K(\delta)\le c\\
+(c>0).
+\end{gathered}\tag{1.1}
 \]
 The support function of a Minkowski sum is the sum of the support functions, because the two maximizations are independent; that of the convex hull of finitely many points is the maximum over the points. For the cube \(B_\infty^n=[-1,1]^n\), \(h(\delta)=\sum_i|\delta_i|=\|\delta\|_1\), so \((B_\infty^n)^\circ=B_1^n\), the unit ball of \(\ell^1\). For a symmetric convex body \(K\) let \(\|x\|_K=\min\{t\ge0:x\in tK\}\) be its gauge.
 
@@ -42,14 +52,21 @@ Covering numbers are monotone: \(N(A,B)\le N(A',B')\) if \(A\subseteq A'\) and \
 
 For \(t>0\) let \(K=3\operatorname{absconv}\{R_x:x\in X\}+t\,B_\infty^Y\) and \(L=B_\infty^Y\), where \(\operatorname{absconv}\) is the convex hull of the points \(\pm R_x\). Then \(K\) and \(L\) are symmetric convex bodies in \(\mathbb R^Y\), and
 \[
-N(K,L)\ge|X|,\qquad N\bigl(L^\circ,(6\varepsilon+2t)K^\circ\bigr)\le M.\tag{2.1}
+\begin{gathered}
+N(K,L)\ge|X|,\\
+N\bigl(L^\circ,(6\varepsilon+2t)K^\circ\bigr)\le M.
+\end{gathered}\tag{2.1}
 \]
 
 **Proof.** \(K\) is compact, convex and symmetric and contains the cube \(tB_\infty^Y\), so it is a body. The points \(3R_x\) lie in \(K\) and have pairwise distance at least \(3\) in the maximum norm, while every translate of \(L\) has diameter \(2\) in that norm; so a translate contains at most one of them, and \(N(K,L)\ge|X|\).
 
 By Section 1,
 \[
-h_K(\delta)=3\max_{x\in X}|\langle R_x,\delta\rangle|+t\|\delta\|_1=3\max_{x\in X}|f_\delta(x)|+t\|\delta\|_1,\tag{2.2}
+\begin{aligned}
+&h_K(\delta)=3\max_{x\in X}|\langle R_x,\delta\rangle|\\
+&\quad +t\|\delta\|_1=3\max_{x\in X}|f_\delta(x)|\\
+&\quad +t\|\delta\|_1,
+\end{aligned}\tag{2.2}
 \]
 and \(L^\circ=B_1^Y\). Order the \(M\) functions of (b) and assign each \(\lambda\in B_1^Y\) to the first one within \(\varepsilon\) of \(f_\lambda\). This splits \(B_1^Y\) into at most \(M\) nonempty classes; choose \(\lambda^{(k)}\) in each class. For \(\lambda\) in the class of \(\lambda^{(k)}\), \(\max_X|f_\lambda-f_{\lambda^{(k)}}|\le2\varepsilon\) and \(\|\lambda-\lambda^{(k)}\|_1\le2\), so \(h_K(\lambda-\lambda^{(k)})\le6\varepsilon+2t\) by (2.2), that is \(\lambda\in\lambda^{(k)}+(6\varepsilon+2t)K^\circ\) by (1.1). These \(M\) translates cover \(L^\circ\). \(\square\)
 
@@ -57,7 +74,7 @@ The representatives \(\lambda^{(k)}\) are chosen in \(B_1^Y\), not among the app
 
 **Corollary 2.2** (what remains to be done). Let \(a,b\ge1\). If a matrix as in Lemma 2.1 has \(\log|X|>b\log M\) with \(6\varepsilon+2t\le a^{-1}\), then the bodies of the lemma violate the right-hand inequality of (0.1) for these constants.
 
-**Proof.** \(N(L^\circ,a^{-1}K^\circ)\le N(L^\circ,(6\varepsilon+2t)K^\circ)\le M\) by monotonicity, since \((6\varepsilon+2t)K^\circ\subseteq a^{-1}K^\circ\), and \(\log N(K,L)\ge\log|X|>b\log M\). \(\square\)
+**Proof.** Since \((6\varepsilon+2t)K^\circ\subseteq a^{-1}K^\circ\), monotonicity gives \(N(L^\circ,a^{-1}K^\circ)\le N(L^\circ,(6\varepsilon+2t)K^\circ)\), which is at most \(M\), and \(\log N(K,L)\ge\log|X|>b\log M\). \(\square\)
 
 ## 3. Convexified packing
 
@@ -74,11 +91,14 @@ For a bounded set \(T\) and a symmetric convex body \(B\), a sequence \(x_1,\dot
 
 **Proof.** Let \(R=\max_{x\in K}\|x\|_B>0\). Let \(x_1,\dots,x_N\) be \(B\)-convexly separated in \(K\), with functionals \(y_j\) as in Lemma 3.1. Each \(|\langle y_j,x_j\rangle|\le R\). Divide \([-R,R]\) into \(\lceil4R\rceil\) intervals of length at most \(\frac12\); one of them contains \(\langle y_j,x_j\rangle\) for at least \(N/\lceil4R\rceil\) indices \(j_1<\dots<j_M\). For \(i<j\) among these indices,
 \[
-\langle y_i-y_j,x_i\rangle=\bigl(\langle y_i,x_i\rangle-\langle y_j,x_j\rangle\bigr)+\langle y_j,x_j-x_i\rangle\ge-\tfrac12+1=\tfrac12.
+\begin{aligned}
+&\langle y_i-y_j,x_i\rangle=\bigl(\langle y_i,x_i\rangle-\langle y_j,x_j\rangle\bigr)\\
+&\quad +\langle y_j,x_j-x_i\rangle\ge-\tfrac12+1=\tfrac12.
+\end{aligned}
 \]
 So the sequence \(y_{j_M},\dots,y_{j_1}\), in this order, satisfies the criterion of Lemma 3.1 for the body \(\frac12K^\circ\) with the functionals \(2x_{j_i}\in2K=(\frac12K^\circ)^\circ\). Hence \(\widehat M(B^\circ,\frac12K^\circ)\ge N/\lceil4R\rceil\).
 
-Second, \(R=\max_{x\in K}h_{B^\circ}(x)=\max_{y\in B^\circ}h_K(y)=\max_{y\in B^\circ}\|y\|_{K^\circ}\), so there is \(y\in B^\circ\) with \(\|y\|_{K^\circ}=R\). Points of the segment \([-y,y]\subseteq B^\circ\) listed in increasing order along it, with consecutive \(\|\cdot\|_{K^\circ}\)-distances at least \(\frac12\), are \(\frac12K^\circ\)-convexly separated: the hull of the earlier points is a segment on the line, and reaching it from the next point requires a vector of \(K^\circ\)-norm at least \(\frac12\), which is not in \(\operatorname{int}\frac12K^\circ\). There are \(\lfloor4R\rfloor+1\) such points. Hence \(\widehat M(B^\circ,\frac12K^\circ)^2\ge\frac N{\lceil4R\rceil}(\lfloor4R\rfloor+1)\ge N\). \(\square\)
+Second, \(R=\max_{x\in K}h_{B^\circ}(x)\), which is \(\max_{y\in B^\circ}h_K(y)=\max_{y\in B^\circ}\|y\|_{K^\circ}\), so there is \(y\in B^\circ\) with \(\|y\|_{K^\circ}=R\). Points of the segment \([-y,y]\subseteq B^\circ\) listed in increasing order along it, with consecutive \(\|\cdot\|_{K^\circ}\)-distances at least \(\frac12\), are \(\frac12K^\circ\)-convexly separated: the hull of the earlier points is a segment on the line, and reaching it from the next point requires a vector of \(K^\circ\)-norm at least \(\frac12\), which is not in \(\operatorname{int}\frac12K^\circ\). There are \(\lfloor4R\rfloor+1\) such points. Hence \(\widehat M(B^\circ,\frac12K^\circ)^2\ge\frac N{\lceil4R\rceil}(\lfloor4R\rfloor+1)\ge N\). \(\square\)
 
 **Lemma 3.3.** \(\widehat M(T,B)\le N(T,\frac14B)\).
 

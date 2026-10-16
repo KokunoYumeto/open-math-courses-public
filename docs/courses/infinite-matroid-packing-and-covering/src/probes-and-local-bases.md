@@ -12,14 +12,23 @@ Fix \(T\subseteq E_0\) such that \(T\) and \(T^c\) are \(\mathcal J_0\)-positive
 \]
 Every \(X\in\mathcal C(T)\) and its complement are \(\mathcal J_0\)-positive: otherwise \(T\subseteq X\cup(X\mathbin\triangle T)\) or \(T^c\subseteq X^c\cup(X\mathbin\triangle T)\) would lie in \(\mathcal J_0\). For \(n\ge1\) let \(V_n=W_0\cup\dots\cup W_{n-1}\) and \(c_n=|V_n|\), and for \(X\in\mathcal C(T)\) define
 \[
-p_n(X)=|X\cap V_n|-|T\cap V_n|,\qquad d_m(X)=\frac{|X\cap W_m|-|T\cap W_m|}{|W_m|},
+\begin{gathered}
+p_n(X)=|X\cap V_n|-|T\cap V_n|,\\
+d_m(X)=\frac{|X\cap W_m|-|T\cap W_m|}{|W_m|},
+\end{gathered}
 \]
 \[
-f_n(X)=p_n(X)+c_n\Bigl(\sup_{m\ge n}d_m(X)+\inf_{m\ge n}d_m(X)\Bigr),
+\begin{aligned}
+&f_n(X)=p_n(X)\\
+&\quad +c_n\Bigl(\sup_{m\ge n}d_m(X)+\inf_{m\ge n}d_m(X)\Bigr),
+\end{aligned}
 \]
 and \(\ell(X)=\liminf_nf_n(X)\), \(h(X)=\limsup_nf_n(X)\), with values in \([-\infty,+\infty]\). When the prototype must be shown we write \(f_n^T\), \(\ell_T\), \(h_T\). The two families of **local bases** are
 \[
-\mathcal B^-(T)=\{X\in\mathcal C(T):-1<\ell(X)\le0\},\qquad\mathcal B^+(T)=\{X\in\mathcal C(T):0\le h(X)<1\}.
+\begin{gathered}
+\mathcal B^-(T)=\{X\in\mathcal C(T):-1<\ell(X)\le0\},\\
+\mathcal B^+(T)=\{X\in\mathcal C(T):0\le h(X)<1\}.
+\end{gathered}
 \]
 By Lemma 1.1 of [Ideals, ultrafilters and an ordinal rank](ideals-ultrafilters-and-an-ordinal-rank.md), \(|W_k|=2w_k\ge2\sum_{m<k}|W_m|\), so
 \[
@@ -43,7 +52,7 @@ By Lemma 1.1 of [Ideals, ultrafilters and an ordinal rank](ideals-ultrafilters-a
 
 **Lemma 1.2** (Continuity inside an interval). Let \(I,Y\in\mathcal C(T)\) and \(I\subseteq X_k\subseteq Y\) for \(k\ge1\), and suppose that every element of \(E_0\) eventually belongs to \(X_k\) exactly when it belongs to a set \(X\). Then \(X\in\mathcal C(T)\) and \(f_n(X_k)\to f_n(X)\) for every fixed \(n\).
 
-*Proof.* \(I\subseteq X\subseteq Y\) and \(Y\setminus I\in\mathcal J_0\), so \(X\in\mathcal C(T)\). On the finite set \(V_n\), \(X_k\) eventually agrees with \(X\). For all \(m\), \(|d_m(X_k)-d_m(X)|\le|(Y\setminus I)\cap W_m|/|W_m|\), and for every finite set of blocks the difference is eventually zero; since the bound tends to zero as \(m\to\infty\), \(\sup_m|d_m(X_k)-d_m(X)|\to0\). Tail extrema move by at most this supremum. \(\square\)
+*Proof.* \(I\subseteq X\subseteq Y\) and \(Y\setminus I\in\mathcal J_0\), so \(X\in\mathcal C(T)\). On the finite set \(V_n\), \(X_k\) eventually agrees with \(X\). For all \(m\), \(|d_m(X_k)-d_m(X)|\) is at most \(|(Y\setminus I)\cap W_m|/|W_m|\), and for every finite set of blocks the difference is eventually zero; since the bound tends to zero as \(m\to\infty\), \(\sup_m|d_m(X_k)-d_m(X)|\to0\). Tail extrema move by at most this supremum. \(\square\)
 
 **Lemma 1.3** (Antichains and exchanges). \(T\) belongs to \(\mathcal B^-(T)\) and to \(\mathcal B^+(T)\). Both families are antichains under inclusion, and both are closed under replacing finitely many elements by equally many others.
 
@@ -53,15 +62,18 @@ By Lemma 1.1 of [Ideals, ultrafilters and an ordinal rank](ideals-ultrafilters-a
 
 **Lemma 2.1** (Divergence from a positive pool). Let \(X\in\mathcal C(T)\). If \(G\subseteq X^c\) is \(\mathcal J_0\)-positive, there is \(P\subseteq G\) with \(P\in\mathcal J_0\) and \(f_n(X\cup P)\to+\infty\). If \(G\subseteq X\) is \(\mathcal J_0\)-positive, there is \(P\subseteq G\) with \(P\in\mathcal J_0\) and \(f_n(X\setminus P)\to-\infty\).
 
-*Proof.* Choose \(\delta>0\) such that \(|G\cap W_m|\ge\delta|W_m|\) for infinitely many \(m\), put \(a_n=\sup_{m\ge n}|d_m(X)|\), and by Lemma 1.1(1) choose increasing integers \(N_j\) with
+*Proof.* Choose \(\delta>0\) such that \(|G\cap W_m|\ge\delta|W_m|\) for infinitely many \(m\), put \(a_n=\sup_{m\ge n}|d_m(X)|\), and by Lemma 1.1(1) choose increasing integers \(N_j\) such that the inequality (2.1) holds for \(n\ge N_j\):
 \[
-\frac{|p_n(X)|}{c_n}+2a_n+\frac1{\sqrt{c_n}}\le2^{-j}\qquad(n\ge N_j). \tag{2.1}
+\frac{|p_n(X)|}{c_n}+2a_n+\frac1{\sqrt{c_n}}\le2^{-j}.
 \]
 Let \(j_0\) be such that \(b_j=2^{1-j}<\delta\) for \(j\ge j_0\). For each \(j\ge j_0\) choose a block \(m_j\ge N_{j+1}\), increasing in \(j\), with \(|G\cap W_{m_j}|\ge\delta|W_{m_j}|\) and \(1/|W_{m_j}|\le\delta-b_j\), and select exactly \(\lceil b_j|W_{m_j}|\rceil\le\delta|W_{m_j}|\) elements of \(G\cap W_{m_j}\). Let \(P\) be the union of the selections. Its density in \(W_{m_j}\) is at most \(b_j+1/|W_{m_j}|\), which tends to zero, so \(P\in\mathcal J_0\).
 
 Let \(N_j\le n<N_{j+1}\) with \(j\ge j_0\). The block \(m_j\) belongs to the tail \(m\ge n\), and \(d_{m_j}(X\cup P)\ge b_j-a_n\); every \(d_m(X\cup P)\ge-a_n\) for \(m\ge n\); and \(p_n(X\cup P)\ge p_n(X)\). With (2.1),
 \[
-\frac{f_n(X\cup P)}{c_n}\ge-\frac{|p_n(X)|}{c_n}+b_j-2a_n\ge2^{-j}+\frac1{\sqrt{c_n}},
+\begin{aligned}
+&\frac{f_n(X\cup P)}{c_n}\ge-\frac{|p_n(X)|}{c_n}\\
+&\quad +b_j-2a_n\ge2^{-j}+\frac1{\sqrt{c_n}},
+\end{aligned}
 \]
 so \(f_n(X\cup P)\ge\sqrt{c_n}\to\infty\). For deletions apply this to \(X^c\), the prototype \(T^c\) and the pool \(G\subseteq(X^c)^c\), and use Lemma 1.1(4). \(\square\)
 
@@ -71,7 +83,10 @@ so \(f_n(X\cup P)\ge\sqrt{c_n}\to\infty\). For deletions apply this to \(X^c\), 
 
 *Infinite limits.* Let \(\ell(I)=-\infty\) and \(\ell(Y)=+\infty\). Put \(X_0=Y\). At stage \(j\ge1\): if \(f_n(X_{j-1})\le0\) for some \(n\ge j\), put \(X_j=X_{j-1}\). Otherwise choose \(M_j\ge j\) with
 \[
-2c_j\sup_{m\ge M_j}\frac{|(Y\setminus I)\cap W_m|}{|W_m|}<2^{-j}, \tag{2.2}
+\begin{aligned}
+&2c_j\sup_{m\ge M_j}\frac{|(Y\setminus I)\cap W_m|}{|W_m|}\\
+&\quad <2^{-j},
+\end{aligned}\tag{2.2}
 \]
 possible since \(Y\setminus I\in\mathcal J_0\), and delete the elements of \(X_{j-1}\setminus I\) lying in blocks \(m\ge M_j\) one at a time, in order of increasing block, stopping as soon as \(f_n\le0\) for some \(n\ge j\); let \(X_j\) be the result.
 
@@ -85,7 +100,11 @@ Let \(X_\infty=\bigcap_jX_j\). Then \(I\subseteq X_\infty\subseteq Y\), and \(f_
 
 **Proposition 2.3** (Interval alternatives). Let \(\sigma\in\{-,+\}\) and \(I\subseteq Y\subseteq E_0\), and suppose \(T\setminus I\in\mathcal J_0\) or \(Y\setminus T\in\mathcal J_0\). Then some \(B\in\mathcal B^\sigma(T)\) satisfies
 \[
-B\subseteq I,\qquad\text{or}\qquad I\subseteq B\subseteq Y,\qquad\text{or}\qquad Y\subseteq B. \tag{2.4}
+\begin{gathered}
+B\subseteq I,\\
+\text{or}\qquad I\subseteq B\subseteq Y,\\
+\text{or}\qquad Y\subseteq B.
+\end{gathered}\tag{2.4}
 \]
 
 *Proof.* *Step 1 (correcting one set, rule \(-\)).* Let \(X\in\mathcal C(T)\). If \(\ell(X)\le-1\) and \(G\subseteq X^c\) is positive, Lemma 2.1 gives \(P\subseteq G\) in \(\mathcal J_0\) with \(\ell(X\cup P)=+\infty\), and Lemma 2.2 gives \(B\in\mathcal B^-(T)\) with \(X\subseteq B\subseteq X\cup G\). If \(\ell(X)>0\) and \(G\subseteq X\) is positive, the deletion version gives \(B\in\mathcal B^-(T)\) with \(X\setminus G\subseteq B\subseteq X\). If \(-1<\ell(X)\le0\), then \(X\) itself is in \(\mathcal B^-(T)\). Since \(X\) and \(X^c\) are positive, every \(X\in\mathcal C(T)\) has a local basis below it, equal to it, or above it.

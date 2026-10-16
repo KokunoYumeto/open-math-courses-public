@@ -1,6 +1,6 @@
 # Hilbert spaces and compact operators
 
-*Originally written by Claude Opus 5.5 (Anthropic), October 2026, and self-checked by that writing AI. GPT-6.1 Sol (OpenAI), at the Ultra setting, checked the full lesson and its solutions, supplied the metric compactness tools and repaired the measure prerequisites, October 2026. Public domain (CC0). GPT-6.1 Sol (OpenAI), at the Ultra setting, also supplied and self-checked the complete normed-space and inner-product completion construction and bounded-map extension, October 2026.*
+*Originally written by Claude Opus 5.5 (Anthropic), October 2026, and self-checked by that writing AI. GPT-6.1 Sol (OpenAI), at the Ultra setting, checked the full lesson and its solutions, supplied the metric compactness tools and repaired the measure prerequisites, October 2026. Public domain (CC0). GPT-6.1 Sol (OpenAI), at the Ultra setting, also supplied and self-checked the complete normed-space and inner-product completion construction and bounded-map extension, October 2026. The interval-space density argument is by GPT-6.1 Sol (OpenAI), Ultra.*
 
 This lesson proves the Hilbert-space facts that the operator-algebra lessons use. It covers:
 - the Cauchy–Schwarz inequality for positive semidefinite forms;
@@ -13,7 +13,7 @@ This lesson proves the Hilbert-space facts that the operator-algebra lessons use
 - Hilbert tensor products;
 - multiplication operators on a \(\sigma\)-finite measure space, which form an algebra equal to its own commutant.
 
-It builds on Hahn–Banach, Baire and the basic theorems on Banach spaces, cited as *the first lesson*.
+It builds on [Hahn–Banach, Baire and the basic theorems on Banach spaces](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html), cited as *the first lesson*.
 
 ## Conventions
 
@@ -165,9 +165,9 @@ An *orthonormal family* \((e_i)_{i\in I}\) satisfies \(\langle e_i,e_j\rangle=\d
 - *Parseval implies maximality:* a unit vector \(e\) orthogonal to all \(e_i\) would have \(\|e\|^2=\sum|\langle e,e_i\rangle|^2=0\).
 - *Maximality implies basis:* if the closed span \(L\) were not \(H\), Theorem 2.2 would give a unit vector in \(L^\perp\), which could be added to the family.
 
-4. Orthonormal families containing the given one, ordered by inclusion, have unions of chains as upper bounds. Zorn's lemma (first lesson, Theorem 1.1) gives a maximal one, a basis by 3. For separable \(H\), apply the Gram–Schmidt process to a dense sequence.
+4. Orthonormal families containing the given one, ordered by inclusion, have unions of chains as upper bounds. Zorn's lemma ([first lesson, Theorem 1.1](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-01)) gives a maximal one, a basis by 3. For separable \(H\), apply the Gram–Schmidt process to a dense sequence.
 
-5. If one basis is finite, \(H\) is finite-dimensional, and both bases have \(\dim H\) elements. Suppose both are infinite, \((e_i)_{i\in I}\) and \((f_j)_{j\in J}\). Each \(e_i\) has at most countably many \(j\) with \(\langle e_i,f_j\rangle\ne0\), by 1. Every \(j\) occurs for some \(i\), since \(f_j\ne0\) is the sum of its expansion in the \(e_i\). So \(J\) is a union of countable sets indexed by \(I\), and \(|J|\le|I|\) (first lesson, Theorem 8.4(3)). Symmetrically \(|I|\le|J|\), and \(|I|=|J|\) by the Cantor–Schröder–Bernstein theorem (first lesson, Theorem 8.1). \(\square\)
+5. If one basis is finite, \(H\) is finite-dimensional, and both bases have \(\dim H\) elements. Suppose both are infinite, \((e_i)_{i\in I}\) and \((f_j)_{j\in J}\). Each \(e_i\) has at most countably many \(j\) with \(\langle e_i,f_j\rangle\ne0\), by 1. Every \(j\) occurs for some \(i\), since \(f_j\ne0\) is the sum of its expansion in the \(e_i\). So \(J\) is a union of countable sets indexed by \(I\), and \(|J|\le|I|\) ([first lesson, Theorem 8.4(3)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-08)). Symmetrically \(|I|\le|J|\), and \(|I|=|J|\) by the Cantor–Schröder–Bernstein theorem ([first lesson, Theorem 8.1](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-08)). \(\square\)
 
 ## 5. Compact operators
 
@@ -221,7 +221,7 @@ so \(T^*\xi_n\) converges along the subsequence. Apply this to \(T^*\) for the c
 
 3. Let \(T\) be compact. The closure \(K\) of \(T(\text{ball})\) is a compact metric space, so it has a countable dense subset. The range of \(T\) is the union of the sets \(nT(\text{ball})\), so its closure \(L\) is separable. Let \((e_k)\) be an orthonormal basis of \(L\), and \(P_n\) the projection onto \(\operatorname{span}\{e_1,\dots,e_n\}\). Then \(P_ny\to y\) for \(y\in L\) (Theorem 4.1(3)), and \(P_n=0\) on \(L^\perp\). The argument of 5, applied with \(K\subseteq L\), gives \(\|T-P_nT\|\to0\). Each \(P_nT\) has finite rank.
 
-4. Let \(\xi_n\to\xi\) weakly. Then \((\xi_n)\) is bounded (first lesson, Corollary 4.3(2)), and \(T\xi_n\to T\xi\) weakly. If \(\|T\xi_n-T\xi\|\not\to0\), a subsequence stays at distance \(\ge\varepsilon\). A further subsequence converges in norm, by compactness, and its limit must be the weak limit \(T\xi\), a contradiction. \(\square\)
+4. Let \(\xi_n\to\xi\) weakly. Then \((\xi_n)\) is bounded ([first lesson, Corollary 4.3(2)](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-04)), and \(T\xi_n\to T\xi\) weakly. If \(\|T\xi_n-T\xi\|\not\to0\), a subsequence stays at distance \(\ge\varepsilon\). A further subsequence converges in norm, by compactness, and its limit must be the weak limit \(T\xi\), a contradiction. \(\square\)
 
 ## 6. The spectral theorem for compact self-adjoint operators
 
@@ -276,7 +276,7 @@ Choose unit vectors \(x_k\in S^k(H)\ominus S^{k+1}(H)\). For \(k<m\),
 \[
 Tx_k-Tx_m=\lambda x_k+\big(Sx_k-Sx_m-\lambda x_m\big),
 \]
-and the bracket lies in \(S^{k+1}(H)\), which is orthogonal to \(x_k\). So \(\|Tx_k-Tx_m\|\ge|\lambda|\), and \((Tx_k)\) has no convergent subsequence, contradicting compactness. Hence \(S\) is surjective, and its inverse is bounded by the inverse mapping theorem (first lesson, Corollary 5.2).
+and the bracket lies in \(S^{k+1}(H)\), which is orthogonal to \(x_k\). So \(\|Tx_k-Tx_m\|\ge|\lambda|\), and \((Tx_k)\) has no convergent subsequence, contradicting compactness. Hence \(S\) is surjective, and its inverse is bounded by the inverse mapping theorem ([first lesson, Corollary 5.2](../../../../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-05)).
 
 4. If \(\lambda\ne0\) is not an eigenvalue, then \(S\) is injective, hence invertible by 3, so \(\lambda\notin\sigma(T)\). The multiplicity is finite by 1.
 
@@ -371,6 +371,8 @@ The converse holds because the algebra is commutative. \(\square\)
 \le\|\xi\|(\sum_{n>k}\|Te_n\|^2)^{1/2}
 \end{gathered}
 \] by Cauchy–Schwarz. So \(TP_k\to T\) in norm, and each \(TP_k\) has finite rank. \(\square\)
+
+**Countable basis for the interval space.** The Lebesgue construction in [the tools lesson, Section 1](../../../measure-and-hilbert-space-tools.md#1-from-an-outer-measure-to-a-measure) and its simple-function density proof in Section 3 give a countable dense family in \(L^2[0,1]\), as follows. For a Borel \(E\subset[0,1]\) and \(\varepsilon>0\), outer regularity gives a relatively open \(O\supset E\) with \(m(O\setminus E)<\varepsilon\). Apply outer regularity to the complement within the finite-measure interval to get a relatively closed, hence compact, \(K\subset E\) with \(m(E\setminus K)<\varepsilon\). Each point of \(K\) has a relatively open interval with rational endpoints contained in \(O\); finitely many cover \(K\). Their union \(R\) satisfies \(m(E\mathbin\triangle R)<2\varepsilon\), and therefore \(\|1_E-1_R\|_2^2<2\varepsilon\). A completed measurable set has a Borel representative modulo a null set, by the definition of completion, so the same conclusion holds there. Finite linear combinations of indicators of these finite rational interval unions, with coefficients in \(\mathbb Q+i\mathbb Q\), are countable and dense: first approximate an \(L^2\) function by a simple function, then approximate its finitely many sets and coefficients, using the triangle inequality. Enumerate this dense family and perform Gram–Schmidt, discarding zero residuals. The resulting finite or countable orthonormal family has dense span, since every member of the enumerated dense family lies in that span at its finite stage. Thus it is an orthonormal basis. The space is infinite-dimensional because indicators of arbitrarily many disjoint positive-length intervals are linearly independent, so this basis is countably infinite. This construction uses only the tools lesson's measure construction, elementary integration and simple density; it precedes and does not use its Hilbert-space Radon–Nikodym theorem.
 
 **Exercise 3** (hard; the Volterra operator). On \(L^2[0,1]\), let \((V\xi)(s)=\int_0^s\xi(t)\,dt\). Show that \(V\) is compact and that \(\sigma(V)=\{0\}\).
 

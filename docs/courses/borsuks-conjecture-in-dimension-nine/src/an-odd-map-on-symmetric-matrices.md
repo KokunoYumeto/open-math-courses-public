@@ -34,9 +34,9 @@ For \(A\in\operatorname{Sym}(V)\) put \(|A|=(A^2)^{1/2}\) and \(A_\pm=\frac12(|A
 
 Let \(\gamma_V\) be the standard Gaussian measure on \(V\): in an orthonormal basis, the measure with density \((2\pi)^{-k/2}e^{-|v|^2/2}\). It does not depend on the orthonormal basis, because orthogonal maps preserve Lebesgue measure and the density depends only on \(|v|\). It gives positive mass to nonempty open sets, \(\int\langle a,v\rangle\langle b,v\rangle\,d\gamma_V(v)=\langle a,b\rangle\), and for an orthogonal decomposition \(V=W\oplus W^\perp\) it is the product \(\gamma_W\otimes\gamma_{W^\perp}\), so \(\int\phi(\pi_Wv)\,d\gamma_V(v)=\int_W\phi\,d\gamma_W\) for every integrable \(\phi\) on \(W\), \(\pi_W\) being the orthogonal projection (Fubini).
 
-Define \(H:V\to\mathbb R^m\) by \(H(v)=|v|^2f([v])\) for \(v\neq0\) and \(H(0)=0\). It is continuous, because \(\|H(v)\|_1=|v|^2\); smooth on \(V\setminus\{0\}\), because \(v\mapsto[v]\) is smooth there; and \(H(tv)=t^2H(v)\) for real \(t\). For \(Q\succeq0\) put
+Define \(H:V\to\mathbb R^m\) by \(H(v)=|v|^2f([v])\) for \(v\neq0\) and \(H(0)=0\). It is continuous, because \(\|H(v)\|_1=|v|^2\); smooth on \(V\setminus\{0\}\), because \(v\mapsto[v]\) is smooth there; and \(H(tv)=t^2H(v)\) for real \(t\). For \(Q\succeq0\) define \(E_V(Q)\in\mathbb R^m\) by (2.1):
 \[
-E_V(Q)=\int_VH(Q^{1/2}v)\,d\gamma_V(v)\in\mathbb R^m . \tag{2.1}
+E_V(Q)=\int_VH(Q^{1/2}v)\,d\gamma_V(v).
 \]
 
 **Lemma 2.1** (Positive extension). The map \(E_V\) is continuous on \(\{Q\succeq0\}\), and for \(Q\succeq0\):
@@ -63,7 +63,11 @@ E_V(Q)=\int_VH(Q^{1/2}v)\,d\gamma_V(v)\in\mathbb R^m . \tag{2.1}
 
 (e) By (d) and the isometry \(T_\lambda\) onto its range,
 \[
-E_V(T_\lambda C_\lambda T_\lambda^{\mathsf T})=\int_{\mathbb R^r}H(T_\lambda C_\lambda^{1/2}w)\,d\gamma_r(w)=\int_{\mathbb R^r}\langle C_\lambda w,w\rangle\,\Phi(\lambda,w)\,d\gamma_r(w),
+\begin{aligned}
+&E_V(T_\lambda C_\lambda T_\lambda^{\mathsf T})\\
+&\quad =\int_{\mathbb R^r}H(T_\lambda C_\lambda^{1/2}w)\,d\gamma_r(w)\\
+&\quad =\int_{\mathbb R^r}\langle C_\lambda w,w\rangle\,\Phi(\lambda,w)\,d\gamma_r(w),
+\end{aligned}
 \]
 where \(\Phi(\lambda,w)=f([T_\lambda C_\lambda^{1/2}w])\) for \(w\ne0\). The map \((\lambda,w)\mapsto T_\lambda C_\lambda^{1/2}w\) is smooth on \(\Lambda\times(\mathbb R^r\setminus0)\) with nonzero values (Lemma 1.1(c)), so \(\Phi\) is smooth there, and \(\Phi(\lambda,w)=\Phi(\lambda,w/|w|)\). On \(K\times(\mathbb R^r\setminus0)\), for \(K\subseteq\Lambda\) compact, every \(\lambda\)-derivative of \(\Phi\) is therefore bounded (by its maximum on \(K\times S^{r-1}\)), and every \(\lambda\)-derivative of the integrand is bounded by \(c(1+|w|^2)\). Differentiation under the integral sign (Fremlin 123D), applied repeatedly in each coordinate of \(\lambda\), together with dominated convergence for the continuity of the derivatives, shows that the integral is smooth. \(\square\)
 
@@ -71,7 +75,10 @@ where \(\Phi(\lambda,w)=f([T_\lambda C_\lambda^{1/2}w])\) for \(w\ne0\). The map
 
 For \(A\in\operatorname{Sym}(V)\) define
 \[
-F_V(A)=E_V(A_+)-E_V(A_-)\in\mathbb R^m . \tag{3.1}
+\begin{aligned}
+F_V(A)&=E_V(A_+)\\
+&\quad -E_V(A_-)\in\mathbb R^m .
+\end{aligned}\tag{3.1}
 \]
 
 **Proposition 3.1** (The odd extension). \(F_V\) is continuous and odd, \(F_V(tA)=tF_V(A)\) for \(t\ge0\), and
@@ -98,7 +105,10 @@ F_V(A)=E_V(A_+)-E_V(A_-)\in\mathbb R^m . \tag{3.1}
 
 Put
 \[
-\Sigma(V)=\{A\in\operatorname{Sym}(V):\operatorname{tr}|A|=1\},\qquad\Sigma_m=\{y\in\mathbb R^m:\|y\|_1=1\}.
+\begin{gathered}
+\Sigma(V)=\{A\in\operatorname{Sym}(V):\operatorname{tr}|A|=1\},\\
+\Sigma_m=\{y\in\mathbb R^m:\|y\|_1=1\}.
+\end{gathered}
 \]
 By Proposition 3.1(b), \(F_V\) maps \(\Sigma(V)\) into \(\Sigma_m\), and it commutes with \(A\mapsto-A\) and \(y\mapsto-y\). Radial projection \(\rho_V(A)=A/\|A\|_F\) is a homeomorphism from \(\Sigma(V)\) onto the unit sphere of \(\operatorname{Sym}(V)\), a copy of \(S^{N_k-1}\), with inverse \(B\mapsto B/\operatorname{tr}|B|\); likewise \(\rho_m(y)=y/|y|\) identifies \(\Sigma_m\) with \(S^{m-1}\). Both commute with negation. So
 \[

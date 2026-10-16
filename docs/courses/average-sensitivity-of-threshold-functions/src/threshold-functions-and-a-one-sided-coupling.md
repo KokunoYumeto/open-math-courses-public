@@ -16,11 +16,11 @@ This course proves it. The present lesson sets up the cube and shows that the or
 
 For \(S\subseteq[n]=\{1,\dots,n\}\), the *character* \(\chi_S(x)=\prod_{i\in S}x_i\) is a function \(\Omega\to\{-1,1\}\), with \(\chi_\varnothing=1\), \(\chi_S\chi_T=\chi_{S\triangle T}\) and \(\sum_{x\in\Omega}\chi_S(x)=0\) for \(S\neq\varnothing\) (pair \(x\) with \(x^{\oplus i}\) for some \(i\in S\)). Hence the \(2^n\) characters are orthogonal for \(\langle a,b\rangle=\sum_x\overline{a(x)}b(x)\), with \(\langle\chi_S,\chi_T\rangle=2^n\mathbf 1_{S=T}\), and form a basis of the functions on \(\Omega\). Since \(x_i^2=1\) on \(\Omega\), every monomial agrees on \(\Omega\) with a character of no larger degree; so a real polynomial of degree at most \(d\) agrees on \(\Omega\) with a combination of characters \(\chi_S\), \(|S|\le d\). We say that a function on \(\Omega\) has *Fourier degree at most \(d\)* if it is such a combination.
 
-Counting ordered pairs \((x,x^{\oplus i})\),
+Call \(x,y\in\Omega\) *adjacent* if they differ in exactly one coordinate, and let \(\mathcal P_f\) be the set of ordered pairs \((x,y)\) of adjacent points with \(f(x)\neq f(y)\). Counting the pairs \((x,x^{\oplus i})\) gives the identity (1.1):
 \[
-I(f)=\frac{|\{(x,y)\in\Omega^2:\ x,y\text{ adjacent},\ f(x)\neq f(y)\}|}{2^n}=\frac1{2^n}\sum_{x\in\Omega}s(f,x),\tag{1.1}
+I(f)=\frac{|\mathcal P_f|}{2^n}=\frac1{2^n}\sum_{x\in\Omega}s(f,x).
 \]
-where \(x,y\) are *adjacent* if they differ in exactly one coordinate. In particular \(I(f)\le n\).
+In particular \(I(f)\le n\).
 
 ## 2. Symmetric examples
 
@@ -38,18 +38,25 @@ I(\operatorname{sgn}p_J)=\frac n{2^{n-1}}\sum_{j\in J}\binom{n-1}j.
 I(\operatorname{sgn}p_J)\ge\tfrac16\,d\sqrt n.
 \]
 
-**Proof.** *The central coefficient.* Put \(a_k=\binom{2k}k4^{-k}\). Then \(a_1=\frac12\) and \(a_{k+1}=a_k\frac{2k+1}{2k+2}\), and by induction \(a_k^2\ge\frac1{4k}\): indeed \((2k+1)^2(k+1)\ge k(2k+2)^2\) reduces to \(k+1\ge0\). So \(\binom{2k}k\ge4^k/(2\sqrt k)\). If \(m=2k\), this is \(\binom mc\ge2^m/\sqrt{2m}\); if \(m=2k+1\), then \(c=k+1\) and \(\binom m{k+1}=\binom{2k}k\frac{2k+1}{k+1}\ge4^k/(2\sqrt k)\ge2^m/(2\sqrt{2m})\). In both cases \(\binom mc\ge2^m/(3\sqrt m)\).
+**Proof.** *The central coefficient.* Put \(a_k=\binom{2k}k4^{-k}\). Then \(a_1=\frac12\) and \(a_{k+1}=a_k\frac{2k+1}{2k+2}\), and by induction \(a_k^2\ge\frac1{4k}\): indeed \((2k+1)^2(k+1)\ge k(2k+2)^2\) reduces to \(k+1\ge0\). So \(\binom{2k}k\ge4^k/(2\sqrt k)\). If \(m=2k\), this is \(\binom mc\ge2^m/\sqrt{2m}\); if \(m=2k+1\), then \(c=k+1\) and \(\binom m{k+1}=\binom{2k}k\frac{2k+1}{k+1}\), which is at least \(4^k/(2\sqrt k)\ge2^m/(2\sqrt{2m})\). In both cases \(\binom mc\ge2^m/(3\sqrt m)\).
 
-*Nearby coefficients.* For \(j=c+u\) with \(u\ge0\), \(\binom m{j+1}/\binom mj=\frac{m-j}{j+1}\ge\frac{(m-1)/2-u}{(m+3)/2+u}\ge1-\frac{4u+4}m\). For \(0\le T\le\sqrt m/3\), using \(\prod(1-\epsilon_u)\ge1-\sum\epsilon_u\) for \(\epsilon_u\in[0,1]\),
+*Nearby coefficients.* For \(j=c+u\) with \(u\ge0\), \(\binom m{j+1}/\binom mj=\frac{m-j}{j+1}\), which is at least \(\frac{(m-1)/2-u}{(m+3)/2+u}\ge1-\frac{4u+4}m\). For \(0\le T\le\sqrt m/3\), using \(\prod(1-\epsilon_u)\ge1-\sum\epsilon_u\) for \(\epsilon_u\in[0,1]\),
 \[
-\binom m{c+T}\ge\binom mc\Bigl(1-\sum_{u=0}^{T-1}\frac{4u+4}m\Bigr)=\binom mc\Bigl(1-\frac{2T^2+2T}m\Bigr)\ge\frac12\binom mc,
+\begin{aligned}
+&\binom m{c+T}\ge\binom mc\Bigl(1-\sum_{u=0}^{T-1}\frac{4u+4}m\Bigr)\\
+&\quad =\binom mc\Bigl(1-\frac{2T^2+2T}m\Bigr)\ge\frac12\binom mc,
+\end{aligned}
 \]
 because \(2T^2\le\frac29m\) and \(2T\le\frac23\sqrt m\le\frac16m\) for \(m\ge16\). The numbers \(\epsilon_u=(4u+4)/m\) lie in \([0,1]\), since \(u\le T-1\) gives \(4u+4\le\frac43\sqrt m\le m\).
 
 *Conclusion.* Each \(j\in J\) is \(c+T\) with \(0\le T\le d-1\le\sqrt m/3\), and \(c+d-1\le\frac{m+1}2+\frac{\sqrt m}3\le m\), so each \(\binom mj\ge2^m/(6\sqrt m)\), and by Proposition 2.1
 \[
-I(\operatorname{sgn}p_J)\ge\frac n{2^m}\cdot d\cdot\frac{2^m}{6\sqrt m}=\frac{nd}{6\sqrt{n-1}}\ge\frac{d\sqrt n}6.\qquad\square
+\begin{aligned}
+&I(\operatorname{sgn}p_J)\ge\frac n{2^m}\cdot d\cdot\frac{2^m}{6\sqrt m}\\
+&\quad =\frac{nd}{6\sqrt{n-1}}\ge\frac{d\sqrt n}6.
+\end{aligned}
 \]
+\(\square\)
 
 So the bound \(8d\sqrt n\) of the theorem is attained up to a constant factor for \(d\) up to about \(\sqrt n/3\). For \(d\ge\sqrt n/8\) the theorem gives nothing beyond \(I(f)\le n\).
 
@@ -60,15 +67,21 @@ So the bound \(8d\sqrt n\) of the theorem is attained up to a constant factor fo
 \mathbb E(U-V)^2\le8a\sigma.
 \]
 
-**Proof.** Let \(g(t)=\int_\mu^t|z-\mu|\,dz=\frac12(t-\mu)|t-\mu|\), a strictly increasing function. For \(u<v\),
+**Proof.** Let \(g(t)=\int_\mu^t|z-\mu|\,dz=\frac12(t-\mu)|t-\mu|\), a strictly increasing function. For \(u<v\) the bounds (3.1) hold:
 \[
-\frac{(v-u)^2}4\le g(v)-g(u)\le\frac{v-u}2\bigl(|u-\mu|+|v-\mu|\bigr).\tag{3.1}
+\begin{aligned}
+\frac{(v-u)^2}4&\le g(v)-g(u)\\
+&\le\frac{v-u}2\bigl(|u-\mu|+|v-\mu|\bigr).
+\end{aligned}
 \]
 For the lower bound: if \(u\le\mu\le v\), the integral is \(\frac12((\mu-u)^2+(v-\mu)^2)\ge\frac14(v-u)^2\); if, say, \(\mu\le u<v\), it is \(\frac12(v-u)(v+u-2\mu)\ge\frac12(v-u)^2\), and similarly if \(u<v\le\mu\). For the upper bound, \(|z-\mu|\) is convex, so it lies below its chord on \([u,v]\), whose integral is the right-hand side.
 
 Since \(U\) and \(V\) have the same distribution, \(\mathbb Eg(U)=\mathbb Eg(V)\). Let \(Y=g(V)-g(U)\); then \(\mathbb EY=0\), so \(\mathbb E|Y|=2\mathbb E\max\{Y,0\}\), and \(Y>0\) exactly when \(V>U\). On that event \(0<V-U\le a\), so by (3.1)
 \[
-\mathbb E|Y|=2\,\mathbb E\bigl[\mathbf 1_{V>U}Y\bigr]\le a\,\mathbb E\bigl(|U-\mu|+|V-\mu|\bigr)\le2a\sigma,
+\begin{aligned}
+&\mathbb E|Y|=2\,\mathbb E\bigl[\mathbf 1_{V>U}Y\bigr]\\
+&\quad \le a\,\mathbb E\bigl(|U-\mu|+|V-\mu|\bigr)\le2a\sigma,
+\end{aligned}
 \]
 using \(\mathbb E|U-\mu|\le(\mathbb E(U-\mu)^2)^{1/2}=\sigma\). By the lower bound in (3.1), \((U-V)^2\le4|g(U)-g(V)|=4|Y|\) always. Taking expectations, \(\mathbb E(U-V)^2\le8a\sigma\). \(\square\)
 
@@ -78,7 +91,7 @@ Nothing is assumed about the joint distribution of \(U\) and \(V\), and \(V-U\) 
 
 **Exercise 4.1** (easy). Compute \(I(f)\) for \(f(x)=x_1\), for \(f=\chi_{[n]}\), and for the majority function \(\operatorname{sgn}(x_1+\dots+x_n)\) with \(n\) odd.
 
-**Exercise 4.2** (easy). Show that \(I(f)=\sum_{S}|S|\,\widehat f(S)^2\), where \(\widehat f(S)=2^{-n}\langle\chi_S,f\rangle\). *Hint:* \(\mathbb P(f(X)\neq f(X^{\oplus i}))=\frac14\mathbb E(f(X)-f(X^{\oplus i}))^2\).
+**Exercise 4.2** (easy). Show that \(I(f)=\sum_{S}|S|\,\widehat f(S)^2\), where \(\widehat f(S)=2^{-n}\langle\chi_S,f\rangle\). *Hint:* \(\mathbb P(f(X)\neq f(X^{\oplus i}))\) equals \(\frac14\mathbb E(f(X)-f(X^{\oplus i}))^2\).
 
 **Exercise 4.3** (medium). Show that the conclusion of Lemma 3.1 fails if \(U\) and \(V\) are not assumed to have the same distribution.
 

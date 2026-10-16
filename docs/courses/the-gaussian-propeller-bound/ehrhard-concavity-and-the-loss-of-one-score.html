@@ -1,0 +1,401 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ehrhard concavity and the loss of one score</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Gaussian propeller bound)</a><a href="rearrangement-bounds-for-one-cell.html">Previous lesson</a><a href="two-competing-scores.html">Next lesson</a><a href="src/ehrhard-concavity-and-the-loss-of-one-score.md">Editable source</a></nav><main><article><h1 id="ehrhard-concavity-and-the-loss-of-one-score">Ehrhard concavity and the loss of one score</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>We continue in the standing setting (S1)–(S6) of <span class="unlinked">Gaussian first moments of partitions</span>, Section 4. <a href="rearrangement-bounds-for-one-cell.html">Rearrangement bounds for one cell</a> gave <span class="math" data-tex="\(P_i&gt;Ar_i^2\)">\(P_i&gt;Ar_i^2\)</span>, a bound that is weak for short moments. This lesson proves a bound that is linear in <span class="math" data-tex="\(r_i\)">\(r_i\)</span> (Proposition 5.2):
+<span class="math math-display" data-tex="\[
+P_i&gt;0.415\,r_i+0.15\,r_i^2 .
+\]">\[
+P_i&gt;0.415\,r_i+0.15\,r_i^2 .
+\]</span>
+The idea is to delete one score. By optimality the expected maximum of the remaining scores is noticeably smaller, so the deleted score must win by a margin on a substantial set. On the other hand, the probability that the deleted score wins by a margin <span class="math" data-tex="\(u\)">\(u\)</span> is the Gaussian measure of a translate of its cone, and Ehrhard's inequality makes this probability decay at least as fast as for a half-space.</p>
+<h2 id="1-the-loss-of-one-score">1. The loss of one score</h2>
+<p>Fix <span class="math" data-tex="\(i\)">\(i\)</span>, put <span class="math" data-tex="\(\alpha=m/(m-1)\)">\(\alpha=m/(m-1)\)</span>, <span class="math" data-tex="\(M_i=\max_{j\ne i}X_j\)">\(M_i=\max_{j\ne i}X_j\)</span>, and <span class="math" data-tex="\(u_+=\max\{u,0\}\)">\(u_+=\max\{u,0\}\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> <span class="math" data-tex="\(1-\alpha r_i^2\ge0\)">\(1-\alpha r_i^2\ge0\)</span>, and
+<span class="math math-display" data-tex="\[
+\mathbb E(X_i-M_i)_+\ge C\bigl(1-\sqrt{1-\alpha r_i^2}\bigr).
+\]">\[
+\mathbb E(X_i-M_i)_+\ge C\bigl(1-\sqrt{1-\alpha r_i^2}\bigr).
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(w_j=z_j+z_i/(m-1)\)">\(w_j=z_j+z_i/(m-1)\)</span> for <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>. Since <span class="math" data-tex="\(\sum_{j\ne i}z_j=-z_i\)">\(\sum_{j\ne i}z_j=-z_i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{j\ne i}|w_j|^2&amp;=C-|z_i|^2-\frac{2|z_i|^2}{m-1}\\
+&amp;\quad+\frac{|z_i|^2}{m-1}=C-\alpha|z_i|^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{j\ne i}|w_j|^2&amp;=C-|z_i|^2-\frac{2|z_i|^2}{m-1}\\
+&amp;\quad+\frac{|z_i|^2}{m-1}=C-\alpha|z_i|^2 ,
+\end{aligned}
+\]</span>
+which is nonnegative, so <span class="math" data-tex="\(\alpha r_i^2\le1\)">\(\alpha r_i^2\le1\)</span>. The scores <span class="math" data-tex="\(\langle w_j,g\rangle\)">\(\langle w_j,g\rangle\)</span> differ from the <span class="math" data-tex="\(X_j\)">\(X_j\)</span> by the common term <span class="math" data-tex="\(\langle z_i,g\rangle/(m-1)\)">\(\langle z_i,g\rangle/(m-1)\)</span>, whose mean is zero, so <span class="math" data-tex="\(\mathbb EM_i=\mathbb E\max_{j\ne i}\langle w_j,g\rangle\)">\(\mathbb EM_i=\mathbb E\max_{j\ne i}\langle w_j,g\rangle\)</span>, which is at most <span class="math" data-tex="\(\sqrt C\sqrt{C-\alpha|z_i|^2}\)">\(\sqrt C\sqrt{C-\alpha|z_i|^2}\)</span> by (S6). Since <span class="math" data-tex="\(\max_jX_j=M_i+(X_i-M_i)_+\)">\(\max_jX_j=M_i+(X_i-M_i)_+\)</span> and <span class="math" data-tex="\(\mathbb E\max_jX_j=C\)">\(\mathbb E\max_jX_j=C\)</span> by (S5),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E(X_i-M_i)_+&amp;=C-\mathbb EM_i\\
+&amp;\ge C-\sqrt C\sqrt{C-\alpha|z_i|^2} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E(X_i-M_i)_+&amp;=C-\mathbb EM_i\\
+&amp;\ge C-\sqrt C\sqrt{C-\alpha|z_i|^2} .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-gap-probabilities">2. Gap probabilities</h2>
+<p>By (S3) the vectors <span class="math" data-tex="\(z_i-z_j\)">\(z_i-z_j\)</span>, <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>, form a basis of <span class="math" data-tex="\(V\)">\(V\)</span>, so there is <span class="math" data-tex="\(h\in V\)">\(h\in V\)</span> with <span class="math" data-tex="\(\langle h,z_i-z_j\rangle=1\)">\(\langle h,z_i-z_j\rangle=1\)</span> for every <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>; then <span class="math" data-tex="\(\langle h,z_i\rangle=1/\alpha\)">\(\langle h,z_i\rangle=1/\alpha\)</span> (<span class="unlinked">Gaussian first moments of partitions</span>, Exercise 5.5). For <span class="math" data-tex="\(u\in\mathbb R\)">\(u\in\mathbb R\)</span>, the translate <span class="math" data-tex="\(K_i+uh\)">\(K_i+uh\)</span> is the set of <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span> with <span class="math" data-tex="\(\langle z_i-z_j,x\rangle\ge u\)">\(\langle z_i-z_j,x\rangle\ge u\)</span> for all <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>. So the <em>gap probability</em> <span class="math" data-tex="\(p_i(u)\)">\(p_i(u)\)</span>, the probability that <span class="math" data-tex="\(X_i-X_j\ge u\)">\(X_i-X_j\ge u\)</span> for all <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>, is
+<span class="math math-display" data-tex="\[
+p_i(u)=\gamma_{m-1}(K_i+uh).
+\]">\[
+p_i(u)=\gamma_{m-1}(K_i+uh).
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> <span class="math" data-tex="\(p_i(0)=P_i\)">\(p_i(0)=P_i\)</span>, <span class="math" data-tex="\(p_i\)">\(p_i\)</span> is differentiable, and <span class="math" data-tex="\(p_i&#x27;(0)=-1/\alpha\)">\(p_i&#x27;(0)=-1/\alpha\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\mathbb E(X_i-M_i)_+=\int_0^\infty p_i(u)\,du .
+\]">\[
+\mathbb E(X_i-M_i)_+=\int_0^\infty p_i(u)\,du .
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\varphi(y)=(2\pi)^{-(m-1)/2}e^{-|y|^2/2}\)">\(\varphi(y)=(2\pi)^{-(m-1)/2}e^{-|y|^2/2}\)</span>. Translation invariance of Lebesgue measure gives <span class="math" data-tex="\(p_i(u)=\int_{K_i}\varphi(y+uh)\,dy\)">\(p_i(u)=\int_{K_i}\varphi(y+uh)\,dy\)</span>. The derivative of the integrand in <span class="math" data-tex="\(u\)">\(u\)</span> is <span class="math" data-tex="\(-\langle y+uh,h\rangle\varphi(y+uh)\)">\(-\langle y+uh,h\rangle\varphi(y+uh)\)</span>; for <span class="math" data-tex="\(|u|\le u_0\)">\(|u|\le u_0\)</span> it is bounded by <span class="math" data-tex="\(|h|(|y|+u_0|h|)\)">\(|h|(|y|+u_0|h|)\)</span> times <span class="math" data-tex="\((2\pi)^{-(m-1)/2}e^{-|y|^2/2+u_0|y||h|}\)">\((2\pi)^{-(m-1)/2}e^{-|y|^2/2+u_0|y||h|}\)</span>, which is integrable. Differentiation under the integral sign (<a href="https://www1.essex.ac.uk/maths/people/fremlin/chap12.pdf">Fremlin, <em>Measure Theory</em>, Volume 1, 123D</a>, core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_i&#x27;(0)&amp;=-\int_{K_i}\langle y,h\rangle\varphi(y)\,dy\\
+&amp;=-\langle h,z_i\rangle=-\frac1\alpha ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+p_i&#x27;(0)&amp;=-\int_{K_i}\langle y,h\rangle\varphi(y)\,dy\\
+&amp;=-\langle h,z_i\rangle=-\frac1\alpha ,
+\end{aligned}
+\]</span>
+using (S4). For the last formula, <span class="math" data-tex="\(W=(X_i-M_i)_+\)">\(W=(X_i-M_i)_+\)</span> is nonnegative, <span class="math" data-tex="\(\mathbb EW=\int_0^\infty\Pr\{W\ge u\}\,du\)">\(\mathbb EW=\int_0^\infty\Pr\{W\ge u\}\,du\)</span> by Fubini's theorem, and for <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span> the event <span class="math" data-tex="\(\{W\ge u\}\)">\(\{W\ge u\}\)</span> is <span class="math" data-tex="\(\{X_i-X_j\ge u\text{ for all }j\ne i\}\)">\(\{X_i-X_j\ge u\text{ for all }j\ne i\}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-ehrhard-s-inequality">3. Ehrhard's inequality</h2>
+<p>The following theorem is used without proof.</p>
+<p><strong>(EHR) Ehrhard's inequality.</strong> Let <span class="math" data-tex="\(K,L\subseteq\mathbb R^d\)">\(K,L\subseteq\mathbb R^d\)</span> be closed convex sets with <span class="math" data-tex="\(\gamma_d(K),\gamma_d(L)\in(0,1)\)">\(\gamma_d(K),\gamma_d(L)\in(0,1)\)</span>, and <span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Phi^{-1}\bigl(\gamma_d(\lambda K+(1-\lambda)L)\bigr)\\
+&amp;\quad\ge\lambda\,\Phi^{-1}(\gamma_d(K))\\
+&amp;\qquad+(1-\lambda)\,\Phi^{-1}(\gamma_d(L)).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Phi^{-1}\bigl(\gamma_d(\lambda K+(1-\lambda)L)\bigr)\\
+&amp;\quad\ge\lambda\,\Phi^{-1}(\gamma_d(K))\\
+&amp;\qquad+(1-\lambda)\,\Phi^{-1}(\gamma_d(L)).
+\end{aligned}
+\]</span></p>
+<p>Ehrhard proved it for convex sets by a Gaussian symmetrization [Ehrhard]. Latała extended it to the case in which only one set is convex, and Borell to arbitrary Borel sets; van Handel [vH] and Neeman and Paouris [NP] gave further proofs, by a stochastic game and by interpolation along the Ornstein–Uhlenbeck semigroup. For parallel half-spaces <span class="math" data-tex="\(\{\langle e,x\rangle\le a\}\)">\(\{\langle e,x\rangle\le a\}\)</span> and <span class="math" data-tex="\(\{\langle e,x\rangle\le b\}\)">\(\{\langle e,x\rangle\le b\}\)</span> both sides equal <span class="math" data-tex="\(\lambda a+(1-\lambda)b\)">\(\lambda a+(1-\lambda)b\)</span>, so the inequality is sharp.</p>
+<p><strong>Lemma 3.1.</strong> The function <span class="math" data-tex="\(u\mapsto\Phi^{-1}(p_i(u))\)">\(u\mapsto\Phi^{-1}(p_i(u))\)</span> is concave on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<p><strong>Proof.</strong> By (S4) the cone <span class="math" data-tex="\(K_i\)">\(K_i\)</span> is closed and convex with nonempty interior, and it is not all of <span class="math" data-tex="\(V\)">\(V\)</span>; its complement is open and nonempty. So every translate <span class="math" data-tex="\(K_i+uh\)">\(K_i+uh\)</span> has Gaussian measure in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. For convex <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(\lambda K+(1-\lambda)K=K\)">\(\lambda K+(1-\lambda)K=K\)</span>, hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\lambda(K_i+u_1h)+(1-\lambda)(K_i+u_2h)\\
+&amp;\quad=K_i+(\lambda u_1+(1-\lambda)u_2)h ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\lambda(K_i+u_1h)+(1-\lambda)(K_i+u_2h)\\
+&amp;\quad=K_i+(\lambda u_1+(1-\lambda)u_2)h ,
+\end{aligned}
+\]</span>
+and (EHR) gives the concavity inequality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2</strong> (tangent bound). Let <span class="math" data-tex="\(q=\Phi^{-1}(P_i)\)">\(q=\Phi^{-1}(P_i)\)</span>. For every <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+p_i(u)\le\Phi\Bigl(q-\frac u{\alpha\phi(q)}\Bigr).
+\]">\[
+p_i(u)\le\Phi\Bigl(q-\frac u{\alpha\phi(q)}\Bigr).
+\]</span></p>
+<p><strong>Proof.</strong> The function <span class="math" data-tex="\(\psi=\Phi^{-1}\circ p_i\)">\(\psi=\Phi^{-1}\circ p_i\)</span> is concave by Lemma 3.1 and differentiable at <span class="math" data-tex="\(0\)">\(0\)</span> with <span class="math" data-tex="\(\psi(0)=q\)">\(\psi(0)=q\)</span> and <span class="math" data-tex="\(\psi&#x27;(0)=p_i&#x27;(0)/\phi(q)=-1/(\alpha\phi(q))\)">\(\psi&#x27;(0)=p_i&#x27;(0)/\phi(q)=-1/(\alpha\phi(q))\)</span>, by Lemma 2.1 and the derivative of <span class="math" data-tex="\(\Phi^{-1}\)">\(\Phi^{-1}\)</span>. For a concave function the difference quotient <span class="math" data-tex="\((\psi(u)-\psi(0))/u\)">\((\psi(u)-\psi(0))/u\)</span> is nonincreasing in <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>, so it is at most its limit <span class="math" data-tex="\(\psi&#x27;(0)\)">\(\psi&#x27;(0)\)</span> as <span class="math" data-tex="\(u\to0^+\)">\(u\to0^+\)</span>. Hence <span class="math" data-tex="\(\psi(u)\le q+\psi&#x27;(0)u\)">\(\psi(u)\le q+\psi&#x27;(0)u\)</span>, and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is increasing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.3.</strong> With <span class="math" data-tex="\(q=\Phi^{-1}(P_i)\)">\(q=\Phi^{-1}(P_i)\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E(X_i-M_i)_+\le\alpha\,\phi(q)\bigl(q\Phi(q)+\phi(q)\bigr).
+\]">\[
+\mathbb E(X_i-M_i)_+\le\alpha\,\phi(q)\bigl(q\Phi(q)+\phi(q)\bigr).
+\]</span></p>
+<p><strong>Proof.</strong> By Lemmas 2.1 and 3.2 and the substitution <span class="math" data-tex="\(s=q-u/(\alpha\phi(q))\)">\(s=q-u/(\alpha\phi(q))\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E(X_i-M_i)_+\\
+&amp;\quad\le\int_0^\infty\Phi\Bigl(q-\frac u{\alpha\phi(q)}\Bigr)du\\
+&amp;\quad=\alpha\phi(q)\int_{-\infty}^q\Phi(s)\,ds ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E(X_i-M_i)_+\\
+&amp;\quad\le\int_0^\infty\Phi\Bigl(q-\frac u{\alpha\phi(q)}\Bigr)du\\
+&amp;\quad=\alpha\phi(q)\int_{-\infty}^q\Phi(s)\,ds ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\int_{-\infty}^q\Phi=q\Phi(q)+\phi(q)\)">\(\int_{-\infty}^q\Phi=q\Phi(q)+\phi(q)\)</span>, because the right side has derivative <span class="math" data-tex="\(\Phi(q)\)">\(\Phi(q)\)</span> and tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(q\to-\infty\)">\(q\to-\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The loss constraint.</strong> Put
+<span class="math math-display" data-tex="\[
+G(q)=\frac{\phi(q)\bigl(q\Phi(q)+\phi(q)\bigr)}{\Phi(q)^2}.
+\]">\[
+G(q)=\frac{\phi(q)\bigl(q\Phi(q)+\phi(q)\bigr)}{\Phi(q)^2}.
+\]</span>
+Lemma 1.1 and Corollary 3.3 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\alpha\phi(q)\bigl(q\Phi(q)+\phi(q)\bigr)\\
+&amp;\quad\ge C\bigl(1-\sqrt{1-\alpha r_i^2}\bigr)\\
+&amp;\quad=\frac{C\alpha r_i^2}{1+\sqrt{1-\alpha r_i^2}} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\alpha\phi(q)\bigl(q\Phi(q)+\phi(q)\bigr)\\
+&amp;\quad\ge C\bigl(1-\sqrt{1-\alpha r_i^2}\bigr)\\
+&amp;\quad=\frac{C\alpha r_i^2}{1+\sqrt{1-\alpha r_i^2}} .
+\end{aligned}
+\]</span>
+Dividing by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and using <span class="math" data-tex="\(C&gt;B^2\)">\(C&gt;B^2\)</span> and <span class="math" data-tex="\(\alpha&gt;1\)">\(\alpha&gt;1\)</span>, we obtain the <em>loss constraint</em> (L):
+<span class="math math-display" data-tex="\[
+P_i^2\,G\bigl(\Phi^{-1}(P_i)\bigr)&gt;\frac{B^2r_i^2}{1+\sqrt{1-r_i^2}} .
+\]">\[
+P_i^2\,G\bigl(\Phi^{-1}(P_i)\bigr)&gt;\frac{B^2r_i^2}{1+\sqrt{1-r_i^2}} .
+\]</span></p>
+<h2 id="4-the-function-g">4. The function <span class="math" data-tex="\(G\)">\(G\)</span></h2>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(\lambda(q)=\phi(q)/\Phi(q)\)">\(\lambda(q)=\phi(q)/\Phi(q)\)</span> and <span class="math" data-tex="\(V(q)=\operatorname{Var}(Z\mid Z\le q)\)">\(V(q)=\operatorname{Var}(Z\mid Z\le q)\)</span> for a standard normal <span class="math" data-tex="\(Z\)">\(Z\)</span>. Then <span class="math" data-tex="\(G=\lambda(q+\lambda)=1-V\)">\(G=\lambda(q+\lambda)=1-V\)</span>, so <span class="math" data-tex="\(0&lt;G&lt;1\)">\(0&lt;G&lt;1\)</span>; <span class="math" data-tex="\(G\)">\(G\)</span> is nonincreasing; and <span class="math" data-tex="\(P\mapsto P^2G(\Phi^{-1}(P))\)">\(P\mapsto P^2G(\Phi^{-1}(P))\)</span> is increasing on <span class="math" data-tex="\((0,\frac12]\)">\((0,\frac12]\)</span>.</p>
+<p><strong>Proof.</strong> Integration by parts gives <span class="math" data-tex="\(\int_{-\infty}^qs\phi(s)\,ds=-\phi(q)\)">\(\int_{-\infty}^qs\phi(s)\,ds=-\phi(q)\)</span> and <span class="math" data-tex="\(\int_{-\infty}^qs^2\phi(s)\,ds=\Phi(q)-q\phi(q)\)">\(\int_{-\infty}^qs^2\phi(s)\,ds=\Phi(q)-q\phi(q)\)</span>, so <span class="math" data-tex="\(\mathbb E(Z\mid Z\le q)=-\lambda\)">\(\mathbb E(Z\mid Z\le q)=-\lambda\)</span> and <span class="math" data-tex="\(V=1-q\lambda-\lambda^2\)">\(V=1-q\lambda-\lambda^2\)</span>. Expanding <span class="math" data-tex="\(G\)">\(G\)</span> gives <span class="math" data-tex="\(G=\lambda q+\lambda^2=1-V\)">\(G=\lambda q+\lambda^2=1-V\)</span>. The variable <span class="math" data-tex="\(U=q-Z\)">\(U=q-Z\)</span>, conditioned on <span class="math" data-tex="\(Z\le q\)">\(Z\le q\)</span>, is nonnegative and nonconstant, with mean <span class="math" data-tex="\(q+\lambda&gt;0\)">\(q+\lambda&gt;0\)</span> and variance <span class="math" data-tex="\(V&gt;0\)">\(V&gt;0\)</span>; so <span class="math" data-tex="\(G=\lambda(q+\lambda)&gt;0\)">\(G=\lambda(q+\lambda)&gt;0\)</span> and <span class="math" data-tex="\(G=1-V&lt;1\)">\(G=1-V&lt;1\)</span>.</p>
+<p>The survival function of <span class="math" data-tex="\(U\)">\(U\)</span> is <span class="math" data-tex="\(S(u)=\Phi(q-u)/\Phi(q)\)">\(S(u)=\Phi(q-u)/\Phi(q)\)</span> for <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>. Since <span class="math" data-tex="\(\lambda&#x27;=-\lambda(q+\lambda)\)">\(\lambda&#x27;=-\lambda(q+\lambda)\)</span>, we have <span class="math" data-tex="\((\log\Phi)&#x27;&#x27;=\lambda&#x27;&lt;0\)">\((\log\Phi)&#x27;&#x27;=\lambda&#x27;&lt;0\)</span>, so <span class="math" data-tex="\(\log S\)">\(\log S\)</span> is concave on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> with <span class="math" data-tex="\(\log S(0)=0\)">\(\log S(0)=0\)</span>. A concave function has nonincreasing increments over intervals of equal length, so <span class="math" data-tex="\(\log S(u+v)-\log S(u)\)">\(\log S(u+v)-\log S(u)\)</span> is at most <span class="math" data-tex="\(\log S(v)-\log S(0)\)">\(\log S(v)-\log S(0)\)</span>, that is, <span class="math" data-tex="\(S(u+v)\le S(u)S(v)\)">\(S(u+v)\le S(u)S(v)\)</span>. Integrating over <span class="math" data-tex="\(u,v\ge0\)">\(u,v\ge0\)</span> by Fubini's theorem,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac12\mathbb EU^2&amp;=\int_0^\infty\!\!\int_0^\infty S(u+v)\,du\,dv\\
+&amp;\le\Bigl(\int_0^\infty S\Bigr)^2=(\mathbb EU)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac12\mathbb EU^2&amp;=\int_0^\infty\!\!\int_0^\infty S(u+v)\,du\,dv\\
+&amp;\le\Bigl(\int_0^\infty S\Bigr)^2=(\mathbb EU)^2 .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(V=\mathbb EU^2-(\mathbb EU)^2\le(\mathbb EU)^2=(q+\lambda)^2\)">\(V=\mathbb EU^2-(\mathbb EU)^2\le(\mathbb EU)^2=(q+\lambda)^2\)</span>. Differentiating <span class="math" data-tex="\(V=1-q\lambda-\lambda^2\)">\(V=1-q\lambda-\lambda^2\)</span> with <span class="math" data-tex="\(\lambda&#x27;=-\lambda(q+\lambda)\)">\(\lambda&#x27;=-\lambda(q+\lambda)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+V&#x27;&amp;=-\lambda+\lambda(q+\lambda)(q+2\lambda)\\
+&amp;=\lambda\bigl((q+\lambda)^2-V\bigr)\ge0 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+V&#x27;&amp;=-\lambda+\lambda(q+\lambda)(q+2\lambda)\\
+&amp;=\lambda\bigl((q+\lambda)^2-V\bigr)\ge0 ,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(G=1-V\)">\(G=1-V\)</span> is nonincreasing.</p>
+<p>Finally <span class="math" data-tex="\(P^2G(\Phi^{-1}(P))=\phi(q)(q\Phi(q)+\phi(q))\)">\(P^2G(\Phi^{-1}(P))=\phi(q)(q\Phi(q)+\phi(q))\)</span> with <span class="math" data-tex="\(q=\Phi^{-1}(P)\)">\(q=\Phi^{-1}(P)\)</span>. For <span class="math" data-tex="\(q\le0\)">\(q\le0\)</span> both factors are positive and increasing in <span class="math" data-tex="\(q\)">\(q\)</span>: <span class="math" data-tex="\(\phi\)">\(\phi\)</span> increases on <span class="math" data-tex="\((-\infty,0]\)">\((-\infty,0]\)</span>, and <span class="math" data-tex="\(q\Phi(q)+\phi(q)\)">\(q\Phi(q)+\phi(q)\)</span> has derivative <span class="math" data-tex="\(\Phi(q)&gt;0\)">\(\Phi(q)&gt;0\)</span> and is positive, being <span class="math" data-tex="\(\Phi(q)\,\mathbb E(q-Z\mid Z\le q)\)">\(\Phi(q)\,\mathbb E(q-Z\mid Z\le q)\)</span>. Since <span class="math" data-tex="\(P\le\frac12\)">\(P\le\frac12\)</span> means <span class="math" data-tex="\(q\le0\)">\(q\le0\)</span>, the claim follows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At the two ends, <span class="math" data-tex="\(G(0)=\phi(0)^2/\Phi(0)^2=2/\pi\)">\(G(0)=\phi(0)^2/\Phi(0)^2=2/\pi\)</span> and <span class="math" data-tex="\(G(q)\to1\)">\(G(q)\to1\)</span> as <span class="math" data-tex="\(q\to-\infty\)">\(q\to-\infty\)</span> (Exercise 6.3).</p>
+<h2 id="5-the-linear-quadratic-bound">5. The linear–quadratic bound</h2>
+<p>Put <span class="math" data-tex="\(P_0(r)=(0.415+0.15r)\,r\)">\(P_0(r)=(0.415+0.15r)\,r\)</span>. Then <span class="math" data-tex="\(P_0(r)\le P_0(\frac23)=\frac{103}{300}&lt;\frac12\)">\(P_0(r)\le P_0(\frac23)=\frac{103}{300}&lt;\frac12\)</span> for <span class="math" data-tex="\(0&lt;r\le\frac23\)">\(0&lt;r\le\frac23\)</span>.</p>
+<p><strong>Lemma 5.1.</strong> For <span class="math" data-tex="\(0&lt;r\le\frac23\)">\(0&lt;r\le\frac23\)</span> the following inequality (T) holds:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(0.415+0.15r)^2\,G\bigl(\Phi^{-1}(P_0(r))\bigr)\\
+&amp;\qquad&lt;\frac{B^2}{1+\sqrt{1-r^2}} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(0.415+0.15r)^2\,G\bigl(\Phi^{-1}(P_0(r))\bigr)\\
+&amp;\qquad&lt;\frac{B^2}{1+\sqrt{1-r^2}} .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Cover <span class="math" data-tex="\((0,\frac23]\)">\((0,\frac23]\)</span> by the ten intervals <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> of Table 1. On each interval we bound <span class="math" data-tex="\(G(\Phi^{-1}(P_0(r)))\)">\(G(\Phi^{-1}(P_0(r)))\)</span> above by the number <span class="math" data-tex="\(U\)">\(U\)</span> of the table: in the first row by <span class="math" data-tex="\(G&lt;1\)">\(G&lt;1\)</span> (Lemma 4.1); in the other rows, Table 2 gives a rational <span class="math" data-tex="\(q_a\)">\(q_a\)</span> with <span class="math" data-tex="\(\Phi(q_a)&lt;P_0(a)\)">\(\Phi(q_a)&lt;P_0(a)\)</span> and <span class="math" data-tex="\(G(q_a)&lt;U\)">\(G(q_a)&lt;U\)</span>, and for <span class="math" data-tex="\(r\ge a\)">\(r\ge a\)</span> we have <span class="math" data-tex="\(\Phi^{-1}(P_0(r))\ge\Phi^{-1}(P_0(a))&gt;q_a\)">\(\Phi^{-1}(P_0(r))\ge\Phi^{-1}(P_0(a))&gt;q_a\)</span>, so <span class="math" data-tex="\(G(\Phi^{-1}(P_0(r)))\le G(q_a)&lt;U\)">\(G(\Phi^{-1}(P_0(r)))\le G(q_a)&lt;U\)</span> because <span class="math" data-tex="\(G\)">\(G\)</span> is nonincreasing. The coefficient <span class="math" data-tex="\((0.415+0.15r)^2\)">\((0.415+0.15r)^2\)</span> and the right side of (T) increase with <span class="math" data-tex="\(r\)">\(r\)</span>, so (T) holds on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> as soon as
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Delta(a,b,U)=\frac{B^2}{1+\sqrt{1-a^2}}\\
+&amp;\quad-U(0.415+0.15b)^2&gt;0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Delta(a,b,U)=\frac{B^2}{1+\sqrt{1-a^2}}\\
+&amp;\quad-U(0.415+0.15b)^2&gt;0 .
+\end{aligned}
+\]</span>
+The last column of Table 1 gives strict lower bounds, obtained with the rational enclosures of <a href="rearrangement-bounds-for-one-cell.html">Rearrangement bounds for one cell</a>, Section 3 (an upper bound for <span class="math" data-tex="\(\pi\)">\(\pi\)</span> in <span class="math" data-tex="\(B^2=9/(8\pi)\)">\(B^2=9/(8\pi)\)</span> and an upper bound for <span class="math" data-tex="\(\sqrt{1-a^2}\)">\(\sqrt{1-a^2}\)</span>). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Table 1. The interval cover for (T).</em></p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(a\)">\(a\)</span></th>
+<th><span class="math" data-tex="\(b\)">\(b\)</span></th>
+<th><span class="math" data-tex="\(U\)">\(U\)</span></th>
+<th><span class="math" data-tex="\(10^6\,\Delta(a,b,U)&gt;\)">\(10^6\,\Delta(a,b,U)&gt;\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.05</td>
+<td>1</td>
+<td>542</td>
+</tr>
+<tr>
+<td>0.05</td>
+<td>0.14</td>
+<td>0.91</td>
+<td>6173</td>
+</tr>
+<tr>
+<td>0.14</td>
+<td>0.24</td>
+<td>0.87</td>
+<td>2976</td>
+</tr>
+<tr>
+<td>0.24</td>
+<td>0.33</td>
+<td>0.836</td>
+<td>1328</td>
+</tr>
+<tr>
+<td>0.33</td>
+<td>0.41</td>
+<td>0.809</td>
+<td>523</td>
+</tr>
+<tr>
+<td>0.41</td>
+<td>0.48</td>
+<td>0.788</td>
+<td>392</td>
+</tr>
+<tr>
+<td>0.48</td>
+<td>0.54</td>
+<td>0.771</td>
+<td>1076</td>
+</tr>
+<tr>
+<td>0.54</td>
+<td>0.59</td>
+<td>0.756</td>
+<td>2787</td>
+</tr>
+<tr>
+<td>0.59</td>
+<td>0.64</td>
+<td>0.743</td>
+<td>4115</td>
+</tr>
+<tr>
+<td>0.64</td>
+<td>2/3</td>
+<td>0.73</td>
+<td>8886</td>
+</tr>
+</tbody>
+</table>
+<p><em>Table 2. Quantiles and values of <span class="math" data-tex="\(G\)">\(G\)</span>, from the enclosures of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</em></p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(a\)">\(a\)</span></th>
+<th><span class="math" data-tex="\(q_a\)">\(q_a\)</span></th>
+<th><span class="math" data-tex="\(10^6\,(P_0(a)-\Phi(q_a))&gt;\)">\(10^6\,(P_0(a)-\Phi(q_a))&gt;\)</span></th>
+<th><span class="math" data-tex="\(G(q_a)&lt;\)">\(G(q_a)&lt;\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.05</td>
+<td>−2.033</td>
+<td>98</td>
+<td>0.887728</td>
+</tr>
+<tr>
+<td>0.14</td>
+<td>−1.548</td>
+<td>228</td>
+<td>0.854397</td>
+</tr>
+<tr>
+<td>0.24</td>
+<td>−1.238</td>
+<td>381</td>
+<td>0.826606</td>
+</tr>
+<tr>
+<td>0.33</td>
+<td>−1.024</td>
+<td>366</td>
+<td>0.803691</td>
+</tr>
+<tr>
+<td>0.41</td>
+<td>−0.860</td>
+<td>470</td>
+<td>0.783737</td>
+</tr>
+<tr>
+<td>0.48</td>
+<td>−0.728</td>
+<td>452</td>
+<td>0.766006</td>
+</tr>
+<tr>
+<td>0.54</td>
+<td>−0.621</td>
+<td>539</td>
+<td>0.750456</td>
+</tr>
+<tr>
+<td>0.59</td>
+<td>−0.535</td>
+<td>739</td>
+<td>0.737150</td>
+</tr>
+<tr>
+<td>0.64</td>
+<td>−0.450</td>
+<td>684</td>
+<td>0.723262</td>
+</tr>
+</tbody>
+</table>
+<p>In every row of Table 2 the bound for <span class="math" data-tex="\(G(q_a)\)">\(G(q_a)\)</span> is below the <span class="math" data-tex="\(U\)">\(U\)</span> of the same row of Table 1.</p>
+<p><strong>Proposition 5.2.</strong> For every <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(P_i&gt;(0.415+0.15r_i)\,r_i\)">\(P_i&gt;(0.415+0.15r_i)\,r_i\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(P_i\le P_0(r_i)\)">\(P_i\le P_0(r_i)\)</span>. Both numbers lie in <span class="math" data-tex="\((0,\frac12]\)">\((0,\frac12]\)</span>, by (S5) and since <span class="math" data-tex="\(r_i&lt;\frac23\)">\(r_i&lt;\frac23\)</span> (<a href="rearrangement-bounds-for-one-cell.html">Rearrangement bounds for one cell</a>, Proposition 2.4). By Lemma 4.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;P_i^2G(\Phi^{-1}(P_i))\\
+&amp;\quad\le P_0(r_i)^2G\bigl(\Phi^{-1}(P_0(r_i))\bigr)\\
+&amp;\quad=r_i^2(0.415+0.15r_i)^2\\
+&amp;\qquad\cdot G\bigl(\Phi^{-1}(P_0(r_i))\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;P_i^2G(\Phi^{-1}(P_i))\\
+&amp;\quad\le P_0(r_i)^2G\bigl(\Phi^{-1}(P_0(r_i))\bigr)\\
+&amp;\quad=r_i^2(0.415+0.15r_i)^2\\
+&amp;\qquad\cdot G\bigl(\Phi^{-1}(P_0(r_i))\bigr),
+\end{aligned}
+\]</span>
+which is less than <span class="math" data-tex="\(B^2r_i^2/(1+\sqrt{1-r_i^2})\)">\(B^2r_i^2/(1+\sqrt{1-r_i^2})\)</span> by (T). This contradicts (L). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Summary of the scalar bounds.</strong> With <span class="math" data-tex="\(A=0.929\)">\(A=0.929\)</span> for <span class="math" data-tex="\(m=5\)">\(m=5\)</span> and <span class="math" data-tex="\(A=0.884\)">\(A=0.884\)</span> for <span class="math" data-tex="\(m\ge6\)">\(m\ge6\)</span>, every cell satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r_i&lt;\frac23,\qquad P_i&gt;Ar_i^2,\\
+P_i&gt;0.415\,r_i+0.15\,r_i^2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+r_i&lt;\frac23,\qquad P_i&gt;Ar_i^2,\\
+P_i&gt;0.415\,r_i+0.15\,r_i^2 .
+\end{gathered}
+\]</span>
+These three bounds, the identities <span class="math" data-tex="\(\sum P_i=\sum r_i^2=1\)">\(\sum P_i=\sum r_i^2=1\)</span>, and the geometric constraints of <a href="two-competing-scores.html">Two competing scores</a> are all that <span class="unlinked">Five or more cells and the propeller bound</span> uses.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). Let <span class="math" data-tex="\(K=\{x:\langle e,x\rangle\ge0\}\)">\(K=\{x:\langle e,x\rangle\ge0\}\)</span> with <span class="math" data-tex="\(|e|=1\)">\(|e|=1\)</span>, and <span class="math" data-tex="\(h\)">\(h\)</span> a vector with <span class="math" data-tex="\(\langle e,h\rangle=c&gt;0\)">\(\langle e,h\rangle=c&gt;0\)</span>. Show that <span class="math" data-tex="\(\Phi^{-1}(\gamma_d(K+uh))=-cu\)">\(\Phi^{-1}(\gamma_d(K+uh))=-cu\)</span> for all <span class="math" data-tex="\(u\)">\(u\)</span>, so Lemma 3.2 holds with equality for a half-space whose parameters match.</p>
+<p><strong>6.2</strong> (medium). Suppose only that <span class="math" data-tex="\(\log p_i\)">\(\log p_i\)</span> is concave. (This follows from Lemma 3.1, because <span class="math" data-tex="\(\log\Phi\)">\(\log\Phi\)</span> is concave and increasing.) Show that then <span class="math" data-tex="\(p_i(u)\le P_ie^{-u/(\alpha P_i)}\)">\(p_i(u)\le P_ie^{-u/(\alpha P_i)}\)</span>, and that the argument of Section 3 yields only <span class="math" data-tex="\(P_i&gt;Br_i/\sqrt{1+\sqrt{1-r_i^2}}\)">\(P_i&gt;Br_i/\sqrt{1+\sqrt{1-r_i^2}}\)</span>. Evaluate both this bound and <span class="math" data-tex="\(P_0(r)\)">\(P_0(r)\)</span> at <span class="math" data-tex="\(r=0.42\)">\(r=0.42\)</span>.</p>
+<p><strong>6.3</strong> (medium). Show that <span class="math" data-tex="\(G(q)\to1\)">\(G(q)\to1\)</span> as <span class="math" data-tex="\(q\to-\infty\)">\(q\to-\infty\)</span>, using <span class="math" data-tex="\(\lambda(q)=-q+1/(-q)+O(|q|^{-3})\)">\(\lambda(q)=-q+1/(-q)+O(|q|^{-3})\)</span>.</p>
+<p><strong>6.4</strong> (easy). Show that <span class="math" data-tex="\(\mathbb EW=\int_0^\infty\Pr\{W\ge u\}\,du\)">\(\mathbb EW=\int_0^\infty\Pr\{W\ge u\}\,du\)</span> for a nonnegative random variable <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(K+uh=\{x:\langle e,x\rangle\ge cu\}\)">\(K+uh=\{x:\langle e,x\rangle\ge cu\}\)</span>, whose measure is <span class="math" data-tex="\(\Phi(-cu)\)">\(\Phi(-cu)\)</span>. Here <span class="math" data-tex="\(\gamma_d(K)=\frac12\)">\(\gamma_d(K)=\frac12\)</span>, <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, and <span class="math" data-tex="\(\int_Kx\,d\gamma_d=\phi(0)e\)">\(\int_Kx\,d\gamma_d=\phi(0)e\)</span> gives <span class="math" data-tex="\(p&#x27;(0)=-\langle h,\phi(0)e\rangle=-c\phi(0)\)">\(p&#x27;(0)=-\langle h,\phi(0)e\rangle=-c\phi(0)\)</span>; the tangent bound is <span class="math" data-tex="\(\Phi(0-c\phi(0)u/\phi(0))=\Phi(-cu)\)">\(\Phi(0-c\phi(0)u/\phi(0))=\Phi(-cu)\)</span>, the exact value.</p>
+<p><strong>6.2.</strong> The tangent line of <span class="math" data-tex="\(\log p_i\)">\(\log p_i\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span> has slope <span class="math" data-tex="\(p_i&#x27;(0)/P_i=-1/(\alpha P_i)\)">\(p_i&#x27;(0)/P_i=-1/(\alpha P_i)\)</span>, so <span class="math" data-tex="\(p_i(u)\le P_ie^{-u/(\alpha P_i)}\)">\(p_i(u)\le P_ie^{-u/(\alpha P_i)}\)</span> and <span class="math" data-tex="\(\int_0^\infty p_i\le\alpha P_i^2\)">\(\int_0^\infty p_i\le\alpha P_i^2\)</span>. With Lemma 1.1, <span class="math" data-tex="\(\alpha P_i^2\ge C\alpha r_i^2/(1+\sqrt{1-\alpha r_i^2})\)">\(\alpha P_i^2\ge C\alpha r_i^2/(1+\sqrt{1-\alpha r_i^2})\)</span>, so <span class="math" data-tex="\(P_i^2&gt;B^2r_i^2/(1+\sqrt{1-r_i^2})\)">\(P_i^2&gt;B^2r_i^2/(1+\sqrt{1-r_i^2})\)</span>. At <span class="math" data-tex="\(r=0.42\)">\(r=0.42\)</span> this gives only <span class="math" data-tex="\(P&gt;0.18197\)">\(P&gt;0.18197\)</span>, whereas <span class="math" data-tex="\(P_0(0.42)=0.20076\)">\(P_0(0.42)=0.20076\)</span>. The difference matters: <span class="unlinked">Five or more cells and the propeller bound</span> uses the excess of <span class="math" data-tex="\(P_0(0.42)\)">\(P_0(0.42)\)</span> over <span class="math" data-tex="\(Ar^2\)">\(Ar^2\)</span> with a margin of less than <span class="math" data-tex="\(0.003\)">\(0.003\)</span>.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(G=\lambda(q+\lambda)\)">\(G=\lambda(q+\lambda)\)</span>. With <span class="math" data-tex="\(\lambda=-q+1/(-q)+O(|q|^{-3})\)">\(\lambda=-q+1/(-q)+O(|q|^{-3})\)</span>, <span class="math" data-tex="\(q+\lambda=1/(-q)+O(|q|^{-3})\)">\(q+\lambda=1/(-q)+O(|q|^{-3})\)</span>, and <span class="math" data-tex="\(\lambda(q+\lambda)=1+O(q^{-2})\)">\(\lambda(q+\lambda)=1+O(q^{-2})\)</span>. (The expansion of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> follows from the asymptotic series of <span class="math" data-tex="\(\Phi(q)/\phi(q)\)">\(\Phi(q)/\phi(q)\)</span> as <span class="math" data-tex="\(q\to-\infty\)">\(q\to-\infty\)</span>, obtained by integrating by parts twice.)</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(W=\int_0^\infty\mathbf 1_{\{W\ge u\}}\,du\)">\(W=\int_0^\infty\mathbf 1_{\{W\ge u\}}\,du\)</span> pointwise; take expectations and exchange the integrals by Fubini's theorem for nonnegative functions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-GP] OpenAI, <em>The Gaussian propeller bound in every dimension</em>, OpenAI Math Release preprint, 24 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/The-Gaussian-Propeller-Bound-in-Every-Dimension-September-24-2026</li>
+<li>[Ehrhard] A. Ehrhard, <em>Symétrisation dans l'espace de Gauss</em>, Mathematica Scandinavica 53 (1983), 281–301. https://journals.msp.org/mscand/article/view/1636</li>
+<li>[vH] R. van Handel, <em>The Borell–Ehrhard game</em>, Probability Theory and Related Fields 170 (2018), 555–585; arXiv:1605.00285. https://arxiv.org/abs/1605.00285</li>
+<li>[NP] J. Neeman and G. Paouris, <em>An interpolation proof of Ehrhard's inequality</em>, arXiv:1605.07233. https://arxiv.org/abs/1605.07233</li>
+<li>[Fremlin] D. H. Fremlin, <em>Measure Theory</em>, Volumes 1 and 2, author's edition, the basis of the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>. https://www1.essex.ac.uk/maths/people/fremlin/mt.htm</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -2,7 +2,7 @@
 
 *Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
-An automorphism changes a weight and therefore changes the coordinates used to represent a core. Its canonical unitary must compensate for that change. We construct the compensation on the whole Hilbert space, characterize the resulting automorphisms by the action and trace they preserve, and prove continuity for arbitrary nets. Matrix and infinite-dimensional models will distinguish canonical phases, strong continuity and operator-norm continuity.
+An automorphism changes a weight and therefore changes the coordinates used to represent a core. Its canonical unitary must compensate for that change. We construct the compensation on the whole Hilbert space, characterize the resulting automorphisms by the action and trace they preserve, and identify their group as a closed subgroup with a continuous inverse to the canonical lift. The continuity proofs apply to arbitrary nets. Matrix and infinite-dimensional models distinguish canonical phases, strong continuity and operator-norm continuity.
 
 <a id="cim-setting"></a>
 ## The represented core and its normalized lift
@@ -590,6 +590,50 @@ The exact image, group law and both continuity arguments prove the topological g
  \tag{CIM5.n}
 \]
 The accompanying \(V_\varphi\) is a genuine strongly continuous unitary representation. These conclusions do not assert operator-norm continuity; the infinite-dimensional model below gives an exact obstruction.
+
+<a id="cim-closed"></a>
+### The canonical image is closed
+
+**Proposition.** The group in (CIM4.a) is closed in \(\operatorname{Aut}(N_\varphi)\) for the u-topology. Hence the canonical lift in (CIM5.n) identifies \(\operatorname{Aut}(M)\) with a closed subgroup. More explicitly, if a net \(\widetilde\alpha_i\) converges in u to an automorphism \(\beta\) of \(N_\varphi\), then there is a unique \(\alpha\in\operatorname{Aut}(M)\) such that
+\[
+ \beta=\widetilde\alpha,\qquad
+ \alpha_i\longrightarrow\alpha\text{ in u},\qquad
+ V_\varphi(\alpha_i)\longrightarrow V_\varphi(\alpha)
+       \text{ strongly and strongly for adjoints}.
+ \tag{CIM5.o}
+\]
+The limit is assumed to belong to the automorphism group; the assertion does not identify limits in a larger space of linear maps.
+
+**Normal weights remain invariant under automorphic limits.** We prove the weight step on an arbitrary von Neumann algebra \(A\). Let \(\omega\) be any normal weight on \(A\), possibly nonfaithful or nonsemifinite, and suppose \(\gamma_i\to\gamma\) in u, with every \(\gamma_i,\gamma\in\operatorname{Aut}(A)\) and \(\omega\gamma_i=\omega\). For each fixed \(x\in A\) and \(f\in A_*\),
+\[
+ |f(\gamma_i(x)-\gamma(x))|
+ \le \|f\circ\gamma_i-f\circ\gamma\|\,\|x\|
+ \longrightarrow0.
+ \tag{CIM5.p}
+\]
+Thus \(\gamma_i(x)\to\gamma(x)\) ultraweakly. If \(x\ge0\) and \(\omega(x)=a<\infty\), then every \(\gamma_i(x)\) belongs to the same sublevel \(\{y\ge0:\omega(y)\le a\}\). Its ultraweak closedness is the whole-cone theorem [EW3](OA-FLOW-EW.md#oa-flow.ew.3), so \(\omega(\gamma(x))\le\omega(x)\). If \(\omega(x)=\infty\), that inequality holds in the extended order as well.
+
+Each inverse also preserves the weight: substitute \(\gamma_i^{-1}(y)\) into \(\omega\gamma_i=\omega\). Formula (CIM5.b), applied in \(A\), gives \(\gamma_i^{-1}\to\gamma^{-1}\) in u. The argument just made therefore applies to those inverses. For every \(x\ge0\), including infinite weight values,
+\[
+ \omega(x)=\omega(\gamma^{-1}(\gamma(x)))
+       \le\omega(\gamma(x))\le\omega(x).
+ \tag{CIM5.q}
+\]
+Both inequalities force equality. In particular, if \(\omega(x)=\infty\), the first inequality forces \(\omega(\gamma(x))=\infty\); no subtraction of infinities or continuity of an unbounded weight is used.
+
+**The flow remains fixed.** Now take a net \(\beta_i\) in (CIM4.a) with u-limit \(\beta\in\operatorname{Aut}(N_\varphi)\). The preceding argument with \(\omega=\tau_\varphi\) gives \(\tau_\varphi\beta=\tau_\varphi\) on the whole positive cone. For each \(s\in\mathbb R\) and \(X\in N_\varphi\), (CIM5.p) and normality of \(\theta_s\) give
+\[
+ \beta(\theta_s(X))
+   =\mathop{\mathrm{uw}\!-\!\lim}_i\beta_i(\theta_s(X))
+   =\mathop{\mathrm{uw}\!-\!\lim}_i\theta_s(\beta_i(X))
+   =\theta_s(\beta(X)).
+ \tag{CIM5.r}
+\]
+Ultraweak limits are unique because the normal functionals separate the algebra. Thus \(\beta\) preserves both specified data and belongs to (CIM4.a), proving closedness.
+
+The exact image theorem (CIM4.b) now gives \(\beta=\widetilde\alpha\), with \(\alpha\) the unique coefficient restriction (CIM4.c). The inverse-continuity estimate (CIM5.m) gives \(\alpha_i\to\alpha\). The full-Hilbert estimates (CIM5.h)–(CIM5.i), followed by the unitary-adjoint estimate (CIM5.d), give the last assertion of (CIM5.o). This proves every conclusion for arbitrary directed nets and arbitrary Hilbert-space dimension. ∎
+
+The inverse step in (CIM5.q) is essential to this proof. Lower semicontinuity alone gives only one inequality. For example, on \(H=\ell^2(\mathbb N_0)\) with basis \((e_n)\), the rank-one projections \(p_n=|e_n\rangle\langle e_n|\) and the [matrix-sum trace](OA-FLOW-MIV.md#miv-6) satisfy \(p_n\to0\) strongly and ultraweakly, but \(\operatorname{Tr}(p_n)=1\) while \(\operatorname{Tr}(0)=0\). Strong convergence follows from \(\|p_n\xi\|=|\langle\xi,e_n\rangle|\to0\); the bounded strong-to-ultraweak implication is proved in [ST2](OA-FLOW-ST12.md#oa-flow.st.2). In the automorphism argument, convergence of the inverse maps supplies precisely the opposite inequality.
 
 <a id="cim-6"></a>
 ## 6. Exact matrix phases and a moving reflection

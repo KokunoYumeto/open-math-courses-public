@@ -1,0 +1,245 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Path transport and monodromy of locally constant sheaves</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="path-transport-and-monodromy-of-locally-constant-sheaves">Path transport and monodromy of locally constant sheaves</h1>
+<p>A locally constant sheaf carries its fibres along paths. The reverse construction needs a local condition: a representation of paths must become trivial on the loops in some neighborhood of each point. Keeping that condition visible gives both the general classification and its familiar fundamental-group form.</p>
+<p>Fix a unital ring <span class="math" data-tex="\(R\)">\(R\)</span>, not necessarily commutative, and left modules in fixed universes with choice. There is no finite-generation assumption. A locally constant module sheaf is locally isomorphic to the sheaf of locally constant functions with values in one module. Use <a href="locally-constant-module-sheaves-and-transition-maps.html">Locally constant module sheaves and transition maps</a> for that construction and ordinary sheaf descent. Use <a href="interval-cohomology-and-homotopy-invariance-for-sheaves.html#2-locally-constant-sheaves-on-an-interval">Interval cohomology and homotopy invariance, Sections 2 and 6</a> for interval triviality and the contractible-space consequence. The <a href="cech-complexes-refinements-and-acyclic-covers.html">open-cover Čech theorem</a> supplies the cohomological comparison below. For the exact inverse-image adjunction and injectives used in Section 6, use <a href="injective-objects-in-locally-module-stacks.html#3-injective-embeddings-over-an-arbitrary-ring">Injective objects, Sections 3–6</a>.</p>
+<h2 id="1-paths-and-their-actual-fibre-maps">1. Paths and their actual fibre maps</h2>
+<p>Write <span class="math" data-tex="\(I=[0,1]\)">\(I=[0,1]\)</span>. The fundamental groupoid <span class="math" data-tex="\(\Pi_1(X)\)">\(\Pi_1(X)\)</span> has points as objects and endpoint-preserving homotopy classes of paths as arrows. For <span class="math" data-tex="\(\gamma:x\to y\)">\(\gamma:x\to y\)</span> and <span class="math" data-tex="\(\eta:y\to z\)">\(\eta:y\to z\)</span>, the composite <span class="math" data-tex="\(\eta\gamma\)">\(\eta\gamma\)</span> traverses <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> first. The product <span class="math" data-tex="\(gh\)">\(gh\)</span> of based loops consequently traverses <span class="math" data-tex="\(h\)">\(h\)</span> first. All representations below are covariant with this convention.</p>
+<p>The path operations give a groupoid. Indeed a homotopy can be reversed in its homotopy parameter, and two homotopies can be concatenated there; the pasting lemma gives continuity. Concatenating path homotopies proves that composition respects the classes. Changing the lengths of finitely many traversal intervals gives endpoint-fixed reparametrization homotopies; these prove associativity and the unit identities. A path followed by its reverse contracts by traversing only its initial segment, whose length decreases continuously to zero. Its reverse composite has the same contraction. Thus reversal gives an inverse in the groupoid. None of these facts requires a local condition on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Proposition 1.1 (canonical transport).</strong> For a locally constant sheaf <span class="math" data-tex="\(L\)">\(L\)</span>, there are natural isomorphisms
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+T_\gamma:L_x\longrightarrow L_y,
+\qquad T_{\eta\gamma}=T_\eta T_\gamma,
+\tag{1.1}
+\]">\[
+T_\gamma:L_x\longrightarrow L_y,
+\qquad T_{\eta\gamma}=T_\eta T_\gamma,
+\tag{1.1}
+\]</span>
+depending only on the path class. They give a functor <span class="math" data-tex="\(T_L:\Pi_1(X)\to R\text{-}\mathsf{Mod}\)">\(T_L:\Pi_1(X)\to R\text{-}\mathsf{Mod}\)</span>.</p>
+<p><strong>Proof: definition and concatenation.</strong> The inverse image <span class="math" data-tex="\(\gamma^{-1}L\)">\(\gamma^{-1}L\)</span> is locally constant on <span class="math" data-tex="\(I\)">\(I\)</span>. Interval triviality says that both germ maps from its global sections to its endpoint fibres are isomorphisms. Define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+T_\gamma=\operatorname{ev}_1\operatorname{ev}_0^{-1}.
+\tag{1.2}
+\]">\[
+T_\gamma=\operatorname{ev}_1\operatorname{ev}_0^{-1}.
+\tag{1.2}
+\]</span>
+On any subinterval lying in one constant chart of <span class="math" data-tex="\(L\)">\(L\)</span>, this is the identification of the two fibres in that chart. Restricting a section on <span class="math" data-tex="\(I\)">\(I\)</span> to consecutive subintervals shows that its endpoint comparison is the composite of their comparisons. Conversely, constant sections on those subintervals with matching endpoint germs glue, by the interval trivializations or the sheaf axiom on slightly enlarged subintervals. This proves the concatenation identity. A constant path gives identity, and reversal interchanges the two evaluation maps.</p>
+<p><strong>Proof: homotopies and naturality.</strong> For an endpoint-fixed homotopy <span class="math" data-tex="\(H:I^2\to X\)">\(H:I^2\to X\)</span>, the pullback of <span class="math" data-tex="\(L\)">\(L\)</span> is locally constant. The square is contractible, so this pullback is constant by the cited contractible-space result. In a constant sheaf, transport along every path is the identity in its constant model. Compare the two routes round the square's boundary. Its two vertical sides map to constant paths in <span class="math" data-tex="\(X\)">\(X\)</span>, hence their transports are identity on the corresponding fibres. The top and bottom comparisons are therefore equal. This proves homotopy invariance. For a sheaf map <span class="math" data-tex="\(a:L\to K\)">\(a:L\to K\)</span>, apply inverse image and global sections to <span class="math" data-tex="\(a\)">\(a\)</span> in (1.2). The germ maps commute, giving
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+a_yT^L_\gamma=T^K_\gamma a_x.
+\tag{1.3}
+\]">\[
+a_yT^L_\gamma=T^K_\gamma a_x.
+\tag{1.3}
+\]</span>
+Identity and composite sheaf maps act by the corresponding stalk maps. This proves the asserted functoriality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If a path stays in an open set on which <span class="math" data-tex="\(L\)">\(L\)</span> is constant, its transport is exactly the chart comparison. In particular every loop there acts trivially, including on modules with infinitely many generators.</p>
+<h2 id="2-reconstructing-sheaves-from-path-data">2. Reconstructing sheaves from path data</h2>
+<p>Assume in this section that <span class="math" data-tex="\(X\)">\(X\)</span> is <strong>locally path connected</strong>: every point of every open neighborhood has a path-connected open neighborhood contained in it. Call a functor <span class="math" data-tex="\(V:\Pi_1(X)\to R\text{-}\mathsf{Mod}\)">\(V:\Pi_1(X)\to R\text{-}\mathsf{Mod}\)</span> <strong>locally monodromy-trivial</strong> if each point has a path-connected open neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> such that every loop contained in <span class="math" data-tex="\(U\)">\(U\)</span>, based at any point of <span class="math" data-tex="\(U\)">\(U\)</span>, acts by identity under <span class="math" data-tex="\(V\)">\(V\)</span>. It is equivalent to test loops at one point of <span class="math" data-tex="\(U\)">\(U\)</span>: a path in <span class="math" data-tex="\(U\)">\(U\)</span> conjugates the two tests.</p>
+<p>The transport of every locally constant sheaf satisfies this condition. Choose a constant-chart neighborhood and then a path-connected open neighborhood inside it. Conversely, the condition gives the uniform local comparison needed to reconstruct all of the fibre, not just individual locally extendible elements.</p>
+<p><strong>Construction 2.1 (parallel families).</strong> For an open <span class="math" data-tex="\(W\)">\(W\)</span>, let <span class="math" data-tex="\(S(V)(W)\)">\(S(V)(W)\)</span> consist of families
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+s=(s_x)_{x\in W},\qquad s_x\in V_x,
+\tag{2.1}
+\]">\[
+s=(s_x)_{x\in W},\qquad s_x\in V_x,
+\tag{2.1}
+\]</span>
+which are locally parallel in the following precise sense. Every point has a path-connected open neighborhood <span class="math" data-tex="\(U\subseteq W\)">\(U\subseteq W\)</span> on which
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered} s_b=V([\gamma])s_a\\ \text{for every path }\gamma:a\to b\text{ in }U. \end{gathered}\tag{2.2}
+\]">\[
+\begin{gathered} s_b=V([\gamma])s_a\\ \text{for every path }\gamma:a\to b\text{ in }U. \end{gathered}\tag{2.2}
+\]</span>
+Restrictions forget coordinates. This definition also specifies the unique empty family on the empty open set.</p>
+<p><strong>Sheaf and module laws.</strong> Two locally parallel families that agree on an open cover agree in every coordinate. Matching families on a cover therefore glue to a unique family on their union, and condition (2.2) holds locally because it holds on the cover. This proves the sheaf axiom. Addition and the left <span class="math" data-tex="\(R\)">\(R\)</span>-action are coordinatewise. For the sum of two families, intersect their witnessing neighborhoods and choose a path-connected open neighborhood inside that intersection. Both equations hold there, hence so does their sum. The same argument applies to scalar multiplication, since every <span class="math" data-tex="\(V([\gamma])\)">\(V([\gamma])\)</span> is linear. All module identities and compatibility with restriction hold coordinatewise.</p>
+<p><strong>Constant charts and stalks.</strong> Let <span class="math" data-tex="\(U\)">\(U\)</span> be a path-connected neighborhood on which all loop actions are identity, and fix <span class="math" data-tex="\(a\in U\)">\(a\in U\)</span>. For <span class="math" data-tex="\(b\in U\)">\(b\in U\)</span>, put
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\tau_b=V([\gamma_b]):V_a\longrightarrow V_b,
+\tag{2.3}
+\]">\[
+\tau_b=V([\gamma_b]):V_a\longrightarrow V_b,
+\tag{2.3}
+\]</span>
+where <span class="math" data-tex="\(\gamma_b\)">\(\gamma_b\)</span> is any path in <span class="math" data-tex="\(U\)">\(U\)</span> from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>. Two choices differ by a loop in <span class="math" data-tex="\(U\)">\(U\)</span>, so <span class="math" data-tex="\(\tau_b\)">\(\tau_b\)</span> is independent of the choice. For a path <span class="math" data-tex="\(\gamma:b\to c\)">\(\gamma:b\to c\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span>, composition gives <span class="math" data-tex="\(V([\gamma])\tau_b=\tau_c\)">\(V([\gamma])\tau_b=\tau_c\)</span>.</p>
+<p>On any open <span class="math" data-tex="\(W\subseteq U\)">\(W\subseteq U\)</span>, send a locally constant function <span class="math" data-tex="\(f:W\to V_a\)">\(f:W\to V_a\)</span> to <span class="math" data-tex="\(s_b=\tau_b f(b)\)">\(s_b=\tau_b f(b)\)</span>. Around each point choose a path-connected neighborhood where <span class="math" data-tex="\(f\)">\(f\)</span> is constant; the displayed identity gives (2.2). Conversely, a locally parallel family gives <span class="math" data-tex="\(f(b)=\tau_b^{-1}s_b\)">\(f(b)=\tau_b^{-1}s_b\)</span>. On a witnessing path-connected neighborhood, (2.2) makes that function constant. These operations are inverse and commute with restrictions and module operations. They identify <span class="math" data-tex="\(S(V)|_U\)">\(S(V)|_U\)</span> with the constant sheaf of <span class="math" data-tex="\(V_a\)">\(V_a\)</span>. Moreover the coordinate evaluation gives an intrinsic isomorphism
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+S(V)_x\simeq V_x.
+\tag{2.4}
+\]">\[
+S(V)_x\simeq V_x.
+\tag{2.4}
+\]</span>
+Surjectivity follows from a chart as above centered at <span class="math" data-tex="\(x\)">\(x\)</span>; injectivity follows because a parallel family zero at <span class="math" data-tex="\(x\)">\(x\)</span> is zero on a smaller such neighborhood. Thus the construction has exactly the requested fibres.</p>
+<p><strong>Recovery of the prescribed transport.</strong> A path has a finite subdivision whose pieces lie in these chart neighborhoods: pull the cover back to <span class="math" data-tex="\(I\)">\(I\)</span> and use compactness and a Lebesgue number. Within one piece, (2.3) identifies the sheaf transport with <span class="math" data-tex="\(V\)">\(V\)</span>'s map on that piece. Composition in Proposition 1.1 then gives the same assertion for the whole path. Consequently (2.4) is a natural isomorphism <span class="math" data-tex="\(T_{S(V)}\simeq V\)">\(T_{S(V)}\simeq V\)</span>.</p>
+<h2 id="3-the-classification-including-every-morphism">3. The classification, including every morphism</h2>
+<p><strong>Theorem 3.1.</strong> On a locally path-connected space, transport is fully faithful. It identifies locally constant left <span class="math" data-tex="\(R\)">\(R\)</span>-module sheaves with the full category of locally monodromy-trivial functors on <span class="math" data-tex="\(\Pi_1(X)\)">\(\Pi_1(X)\)</span>.</p>
+<p><strong>Proof: recovery of a sheaf.</strong> Send a section of <span class="math" data-tex="\(L\)">\(L\)</span> to its family of germs. Near a point choose a constant chart and a path-connected open neighborhood on which that section is represented by one constant value. Its germs satisfy (2.2), so this defines a sheaf map
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+L\longrightarrow S(T_L).
+\tag{3.1}
+\]">\[
+L\longrightarrow S(T_L).
+\tag{3.1}
+\]</span>
+For a locally parallel family, shrink to a path-connected constant chart of <span class="math" data-tex="\(L\)">\(L\)</span> inside a witnessing neighborhood. Each point there is joined to its center by a path in that neighborhood. Equation (2.2) says that all coordinates come from the single constant-chart section with the prescribed central germ. These local sections agree on overlaps because their germs agree everywhere; the sheaf axiom glues them. This is the inverse of (3.1). The construction is independent of every chart choice and natural in <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Proof: fullness and faithfulness.</strong> A natural transformation <span class="math" data-tex="\(v:V\to W\)">\(v:V\to W\)</span> sends a parallel family to <span class="math" data-tex="\((v_xs_x)_x\)">\((v_xs_x)_x\)</span>. Naturality with respect to paths proves (2.2), so this gives a linear sheaf map <span class="math" data-tex="\(S(v)\)">\(S(v)\)</span>. Its stalk maps under (2.4) are exactly <span class="math" data-tex="\(v_x\)">\(v_x\)</span>. Applying this to <span class="math" data-tex="\(V=T_L\)">\(V=T_L\)</span> and <span class="math" data-tex="\(W=T_K\)">\(W=T_K\)</span>, followed by (3.1), realizes every natural transformation as a sheaf map. Two sheaf maps with identical stalk maps agree: for every section their images agree near each point and hence agree by the sheaf axiom. Thus the realization is unique. In particular no finite generation is used to turn the family of linear maps into a sheaf map; naturality along paths gives the uniform local comparison. The isomorphisms (2.4) and (3.1), also on maps, prove the equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> Suppose additionally that <span class="math" data-tex="\(X\)">\(X\)</span> is semilocally simply connected: each point has an open neighborhood whose loops based at that point are null-homotopic in <span class="math" data-tex="\(X\)">\(X\)</span>. Then
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\mathsf{Loc}_R(X)\simeq
+\mathsf{Fun}(\Pi_1(X),R\text{-}\mathsf{Mod}).
+\tag{3.2}
+\]">\[
+\mathsf{Loc}_R(X)\simeq
+\mathsf{Fun}(\Pi_1(X),R\text{-}\mathsf{Mod}).
+\tag{3.2}
+\]</span>
+Indeed shrink such a neighborhood to a path-connected open neighborhood. Its other based loops are conjugate to loops at the chosen point; their classes in <span class="math" data-tex="\(X\)">\(X\)</span> are also identity. Every functor is therefore locally monodromy-trivial. Theorem 3.1 applies. This assumption concerns null-homotopies in <span class="math" data-tex="\(X\)">\(X\)</span>; the neighborhoods themselves need not be simply connected. Without it, Theorem 3.1 still gives the exact essential image.</p>
+<h2 id="4-one-basepoint-invariant-sections-and-intertwiners">4. One basepoint, invariant sections and intertwiners</h2>
+<p>Assume <span class="math" data-tex="\(X\)">\(X\)</span> is path connected and locally path connected, with basepoint <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. For a local system, transport of based loops is a representation
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}\rho:\pi_1(X,x_0)\longrightarrow\operatorname{Aut}_R(L_{x_0}),\\ \rho(gh)=\rho(g)\rho(h).\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}\rho:\pi_1(X,x_0)\longrightarrow\operatorname{Aut}_R(L_{x_0}),\\ \rho(gh)=\rho(g)\rho(h).\end{gathered}\tag{4.1}
+\]</span>
+The order is the one specified in Section 1.</p>
+<p><strong>Proposition 4.1 (basepoint reduction).</strong> Evaluation at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> identifies functors on the connected groupoid with modules carrying representations of <span class="math" data-tex="\(\pi_1(X,x_0)\)">\(\pi_1(X,x_0)\)</span>, and natural transformations with all linear intertwiners. Under this identification, Theorem 3.1 selects the locally monodromy-trivial representations. Under Corollary 3.2 every representation occurs.</p>
+<p><strong>Proof.</strong> Choose paths <span class="math" data-tex="\(q_x:x_0\to x\)">\(q_x:x_0\to x\)</span>, with <span class="math" data-tex="\(q_{x_0}\)">\(q_{x_0}\)</span> constant. From a representation on <span class="math" data-tex="\(M\)">\(M\)</span>, put <span class="math" data-tex="\(V_x=M\)">\(V_x=M\)</span> and assign to <span class="math" data-tex="\(\gamma:x\to y\)">\(\gamma:x\to y\)</span> the map
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+V([\gamma])=\rho([q_y^{-1}\gamma q_x]).
+\tag{4.2}
+\]">\[
+V([\gamma])=\rho([q_y^{-1}\gamma q_x]).
+\tag{4.2}
+\]</span>
+For two successive paths the middle <span class="math" data-tex="\(q_yq_y^{-1}\)">\(q_yq_y^{-1}\)</span> cancels up to endpoint-fixed homotopy, so (4.2) respects composition; it also respects identity. A linear intertwiner gives the same map <span class="math" data-tex="\(M\to N\)">\(M\to N\)</span> at each point and commutes with every (4.2). Conversely, in a natural transformation between arbitrary groupoid functors, its component at <span class="math" data-tex="\(x\)">\(x\)</span> is forced to be
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+v_x=V&#x27;([q_x])v_{x_0}V([q_x])^{-1}.
+\tag{4.3}
+\]">\[
+v_x=V&#x27;([q_x])v_{x_0}V([q_x])^{-1}.
+\tag{4.3}
+\]</span>
+Its component at the basepoint must intertwine all loops. That condition also suffices, by inserting (4.2), so every such linear map gives a unique natural transformation. Finally the maps <span class="math" data-tex="\(V([q_x])\)">\(V([q_x])\)</span> identify an arbitrary functor with the one reconstructed from its basepoint representation. Different choices of the paths yield naturally isomorphic reconstructions by this same formula. Local admissibility means that the conjugated image of the fundamental group of a sufficiently small path-connected neighborhood acts trivially. This is exactly the condition of Section 2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(\eta:x_0\to x_1\)">\(\eta:x_0\to x_1\)</span>, the actual fibre map <span class="math" data-tex="\(T_\eta\)">\(T_\eta\)</span> gives the change-of-basepoint identity
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\rho_{x_1}([\ell])=
+T_\eta\,\rho_{x_0}([\eta^{-1}\ell\eta])\,T_\eta^{-1}.
+\tag{4.4}
+\]">\[
+\rho_{x_1}([\ell])=
+T_\eta\,\rho_{x_0}([\eta^{-1}\ell\eta])\,T_\eta^{-1}.
+\tag{4.4}
+\]</span>
+This follows directly by composing the three transports inside the middle expression. It does not identify the two fibres without the chosen path.</p>
+<p><strong>Proposition 4.2 (global sections and maps).</strong> Evaluation at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}\Gamma(X,L)\simeq M^{\pi_1(X,x_0)},\\ \operatorname{Hom}(L,K)\simeq\\ \left\{\begin{gathered}a:M\to N\\ a\rho(g)=\sigma(g)a\text{ for all }g\end{gathered}\right\}.\end{gathered}\tag{4.5}
+\]">\[
+\begin{gathered}\Gamma(X,L)\simeq M^{\pi_1(X,x_0)},\\ \operatorname{Hom}(L,K)\simeq\\ \left\{\begin{gathered}a:M\to N\\ a\rho(g)=\sigma(g)a\text{ for all }g\end{gathered}\right\}.\end{gathered}\tag{4.5}
+\]</span>
+Here the first expression is the submodule fixed by every loop; the second includes noninvertible maps.</p>
+<p><strong>Proof.</strong> A section transports its own germs, so its basepoint germ is invariant. Conversely, for an invariant <span class="math" data-tex="\(m\)">\(m\)</span>, put <span class="math" data-tex="\(s_x=T_{q_x}m\)">\(s_x=T_{q_x}m\)</span>. Changing <span class="math" data-tex="\(q_x\)">\(q_x\)</span> composes it with a loop at the basepoint, which fixes <span class="math" data-tex="\(m\)">\(m\)</span>; the value is independent of the choice. On a path-connected constant-chart neighborhood these values are parallel, hence are germs of a section by (3.1). They glue globally and give the inverse to evaluation. The map formula is Proposition 4.1 followed by full faithfulness in Theorem 3.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-circle-and-its-cohomology">5. The circle and its cohomology</h2>
+<p>For clarity one can justify the circle's fundamental group without a covering-classification theorem. Every path in <span class="math" data-tex="\(S^1\)">\(S^1\)</span> lifts uniquely to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> after a starting lift is chosen: subdivide its parameter into finitely many intervals mapping to arcs with a continuous argument, and adjust each successive argument by the unique integer matching the previous endpoint. Uniqueness holds locally on those arcs, hence everywhere. For a based loop the lift ends at its starting value plus an integer, its winding number. This integer is unchanged under a based homotopy. To see this, a sufficiently small uniform change of a path uses the same finite chain of argument arcs and makes the endpoint of its lift vary continuously. Its integer endpoint difference is locally constant in the homotopy parameter, and thus constant on <span class="math" data-tex="\(I\)">\(I\)</span>. Such a uniform chain exists near each parameter by compactness of <span class="math" data-tex="\(I\)">\(I\)</span> and continuity on the square. A loop with winding zero has a lift with equal endpoints; the linear contraction of that real path, followed by the exponential, is an endpoint-fixed contraction. Two loops with the same winding have a composite with zero winding. Every integer is the winding of the corresponding exponential loop, and concatenation adds winding. This proves <span class="math" data-tex="\(\pi_1(S^1)\simeq\mathbb Z\)">\(\pi_1(S^1)\simeq\mathbb Z\)</span>.</p>
+<p>Thus a local system on the circle is specified by a module <span class="math" data-tex="\(M\)">\(M\)</span> and an automorphism <span class="math" data-tex="\(T\)">\(T\)</span>, up to simultaneous conjugacy. Take two open arcs <span class="math" data-tex="\(U,V\)">\(U,V\)</span> whose intersection has two components <span class="math" data-tex="\(J_0,J_1\)">\(J_0,J_1\)</span>. Orient the circle so that the positive loop goes from <span class="math" data-tex="\(J_0\)">\(J_0\)</span> to <span class="math" data-tex="\(J_1\)">\(J_1\)</span> through <span class="math" data-tex="\(U\)">\(U\)</span>, then returns through <span class="math" data-tex="\(V\)">\(V\)</span>. Choose charts with matching rule <span class="math" data-tex="\(b=a\)">\(b=a\)</span> on <span class="math" data-tex="\(J_0\)">\(J_0\)</span>, and <span class="math" data-tex="\(b=Ta\)">\(b=Ta\)</span> on <span class="math" data-tex="\(J_1\)">\(J_1\)</span>, where <span class="math" data-tex="\(a\)">\(a\)</span> is the <span class="math" data-tex="\(U\)">\(U\)</span>-coordinate and <span class="math" data-tex="\(b\)">\(b\)</span> the <span class="math" data-tex="\(V\)">\(V\)</span>-coordinate. Transport around that positive loop is then <span class="math" data-tex="\(T\)">\(T\)</span>, not its inverse.</p>
+<p>All four connected pieces are intervals, so their locally constant coefficients are acyclic by interval cohomology. Here is why the finite two-open Čech complex suffices, including its normalization. For any cover by two opens, extension by zero of the constant free rank-one module sheaves gives an exact augmented sequence
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{gathered}0\to j_{U\cap V,!}R_{U\cap V}\\ \xrightarrow{(-1,1)}j_{U,!}R_U\oplus j_{V,!}R_V\\ \xrightarrow{(1,1)}R_X\to0.\end{gathered}
+\]">\[
+\begin{gathered}0\to j_{U\cap V,!}R_{U\cap V}\\ \xrightarrow{(-1,1)}j_{U,!}R_U\oplus j_{V,!}R_V\\ \xrightarrow{(1,1)}R_X\to0.\end{gathered}
+\]</span>
+At a point in just one open this is the identity sequence; at a point in both it is the split difference-and-sum sequence. Thus exactness follows on stalks. Apply Hom into every term of an injective resolution of the coefficient sheaf. The augmented horizontal rows remain exact by injectivity. The resulting two-column section complex in each vertical degree therefore totals to the global injective-section complex. Vertically its columns compute cohomology on the two opens and their intersection: restriction of an injective to an open is injective because its left adjoint, extension by zero, is exact. If these restrictions are acyclic, inclusion of the degree-zero column kernels is a quasi-isomorphism on each column, and hence on the total complex, by the finite column filtration. This proves the finite two-open comparison directly. In the chosen charts it represents derived sections by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}M\oplus M\xrightarrow{\delta}M\oplus M,\\ \delta(a,b)=(b-a,b-Ta).\end{gathered}\tag{5.1}
+\]">\[
+\begin{gathered}M\oplus M\xrightarrow{\delta}M\oplus M,\\ \delta(a,b)=(b-a,b-Ta).\end{gathered}\tag{5.1}
+\]</span>
+It follows that
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+H^0(S^1,L_T)&amp;=\ker(T-1),\\
+H^1(S^1,L_T)&amp;=\operatorname{coker}(T-1),\\
+H^q(S^1,L_T)&amp;=0\quad(q&gt;1).
+\end{aligned}
+\tag{5.2}
+\]">\[
+\begin{aligned}
+H^0(S^1,L_T)&amp;=\ker(T-1),\\
+H^1(S^1,L_T)&amp;=\operatorname{coker}(T-1),\\
+H^q(S^1,L_T)&amp;=0\quad(q&gt;1).
+\end{aligned}
+\tag{5.2}
+\]</span>
+For the kernel, the first equation in (5.1) gives <span class="math" data-tex="\(b=a\)">\(b=a\)</span>, and the second gives <span class="math" data-tex="\(Ta=a\)">\(Ta=a\)</span>. For the cokernel, send <span class="math" data-tex="\((s,t)\)">\((s,t)\)</span> to the class of <span class="math" data-tex="\(s-t\)">\(s-t\)</span> modulo <span class="math" data-tex="\((T-1)M\)">\((T-1)M\)</span>. This is surjective and kills <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. If <span class="math" data-tex="\(s-t=(T-1)a\)">\(s-t=(T-1)a\)</span>, take <span class="math" data-tex="\(b=s+a\)">\(b=s+a\)</span>; then <span class="math" data-tex="\(\delta(a,b)=(s,t)\)">\(\delta(a,b)=(s,t)\)</span>. This proves the asserted cokernel identification as an actual quotient, for arbitrary <span class="math" data-tex="\(R\)">\(R\)</span>-modules.</p>
+<h2 id="6-finite-coverings-and-direct-image">6. Finite coverings and direct image</h2>
+<p>Let <span class="math" data-tex="\(q:Y\to X\)">\(q:Y\to X\)</span> be a finite covering, meaning every point has an evenly covered neighborhood with finitely many sheets. For a locally constant sheaf <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>, its direct image is locally constant and
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+(q_*L)_x\simeq\prod_{y\in q^{-1}(x)}L_y.
+\tag{6.1}
+\]">\[
+(q_*L)_x\simeq\prod_{y\in q^{-1}(x)}L_y.
+\tag{6.1}
+\]</span>
+Indeed first take an evenly covered neighborhood. At each of the finitely many points of the fibre choose a constant-chart neighborhood in its sheet. Intersect their images to shrink the base neighborhood simultaneously. On the resulting sheets <span class="math" data-tex="\(L\)">\(L\)</span> is constant, so sections over their disjoint union are the product of the constant section sheaves. This gives both local constancy and (6.1). Finiteness justifies the common shrinking and the stalk of this product.</p>
+<p>A path in <span class="math" data-tex="\(X\)">\(X\)</span> lifts uniquely from every point of its fibre. Subdivide it into evenly covered neighborhoods and follow the unique sheet at each step; adjacent lifts agree at the joint, and this also proves uniqueness. The transport of <span class="math" data-tex="\(q_*L\)">\(q_*L\)</span> permutes the fibre factors by these lifted endpoints and uses the transport of <span class="math" data-tex="\(L\)">\(L\)</span> along each lift. This follows in a single evenly covered chart, where it is the product of the sheet comparisons, and hence along the path by concatenation. This description fixes the permutation direction.</p>
+<p>The stalk formula for an arbitrary sheaf follows by the same finite-sheet germ argument, without constant charts. Consequently <span class="math" data-tex="\(q_*\)">\(q_*\)</span> is exact: finite products of modules are exact, and sheaf exactness is tested on stalks. Also <span class="math" data-tex="\(q_*\)">\(q_*\)</span> preserves injectives, being right adjoint to the exact inverse image for constant-ring module sheaves. Applying it to an injective resolution therefore proves the natural identity
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+R\Gamma(X,q_*L)\simeq R\Gamma(Y,L).
+\tag{6.2}
+\]">\[
+R\Gamma(X,q_*L)\simeq R\Gamma(Y,L).
+\tag{6.2}
+\]</span>
+Here exactness of <span class="math" data-tex="\(q_*\)">\(q_*\)</span>, rather than just its preservation of injectives, ensures that the pushed-forward resolution resolves <span class="math" data-tex="\(q_*L\)">\(q_*L\)</span>.</p>
+<h2 id="7-four-graded-exercises-with-full-solutions">7. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-integral-unipotent-monodromy-introductory">Exercise 1 — Integral unipotent monodromy (introductory)</h3>
+<p>On <span class="math" data-tex="\(S^1\)">\(S^1\)</span>, take <span class="math" data-tex="\(M=\mathbb Z^2\)">\(M=\mathbb Z^2\)</span> and <span class="math" data-tex="\(T(a,b)=(a+3b,b)\)">\(T(a,b)=(a+3b,b)\)</span>. Compute all endomorphisms and automorphisms of the corresponding local system, and its sheaf cohomology.</p>
+<p><strong>Solution.</strong> For a matrix <span class="math" data-tex="\(A=\begin{pmatrix}u&amp;v\\w&amp;z\end{pmatrix}\)">\(A=\begin{pmatrix}u&amp;v\\w&amp;z\end{pmatrix}\)</span>, the equation <span class="math" data-tex="\(AT=TA\)">\(AT=TA\)</span> gives <span class="math" data-tex="\(3w=0\)">\(3w=0\)</span> and <span class="math" data-tex="\(3(u-z)=0\)">\(3(u-z)=0\)</span>. Since the entries are integers, <span class="math" data-tex="\(w=0\)">\(w=0\)</span> and <span class="math" data-tex="\(z=u\)">\(z=u\)</span>. Thus every endomorphism is <span class="math" data-tex="\(\begin{pmatrix}u&amp;v\\0&amp;u\end{pmatrix}\)">\(\begin{pmatrix}u&amp;v\\0&amp;u\end{pmatrix}\)</span>, and it is invertible exactly when <span class="math" data-tex="\(u=1\)">\(u=1\)</span> or <span class="math" data-tex="\(u=-1\)">\(u=-1\)</span>. No condition is imposed on <span class="math" data-tex="\(v\)">\(v\)</span>. This uses all intertwiners, not only isomorphisms. Since <span class="math" data-tex="\((T-1)(a,b)=(3b,0)\)">\((T-1)(a,b)=(3b,0)\)</span>, formula (5.2) gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{gathered}H^0=\mathbb Z(1,0),\\ H^1=\mathbb Z/3\mathbb Z\oplus\mathbb Z,\\ H^q=0\quad(q&gt;1).\end{gathered}
+\]">\[
+\begin{gathered}H^0=\mathbb Z(1,0),\\ H^1=\mathbb Z/3\mathbb Z\oplus\mathbb Z,\\ H^q=0\quad(q&gt;1).\end{gathered}
+\]</span>
+The torsion summand records the nonprimitive image <span class="math" data-tex="\(3\mathbb Z(1,0)\)">\(3\mathbb Z(1,0)\)</span>, which cannot be replaced by its rational span. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-2-two-independent-loops-intermediate">Exercise 2 — Two independent loops (intermediate)</h3>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be two circles joined at one vertex. Construct a local system with fibre <span class="math" data-tex="\(M\)">\(M\)</span> and specified automorphisms <span class="math" data-tex="\(A,B\)">\(A,B\)</span> around the two oriented loops, and compute its cohomology. Evaluate the answer for <span class="math" data-tex="\(M=\mathbb Z\)">\(M=\mathbb Z\)</span>, <span class="math" data-tex="\(A=-1\)">\(A=-1\)</span>, <span class="math" data-tex="\(B=1\)">\(B=1\)</span>.</p>
+<p><strong>Solution.</strong> Cover the graph by a small open star <span class="math" data-tex="\(U\)">\(U\)</span> of its vertex and the union <span class="math" data-tex="\(V\)">\(V\)</span> of the two middle open edge arcs. The star is a finite tree and contracts by scaling distance along each branch; each component of <span class="math" data-tex="\(V\)">\(V\)</span> is an interval. There are four interval components of <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span>, two for each edge. Glue the constant sheaf <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> to the constant sheaves on the two components of <span class="math" data-tex="\(V\)">\(V\)</span>, using identity at the first end and <span class="math" data-tex="\(A\)">\(A\)</span>, respectively <span class="math" data-tex="\(B\)">\(B\)</span>, at the second end. Ordinary open descent constructs the sheaf. Orient each loop to cross from its first end through <span class="math" data-tex="\(U\)">\(U\)</span> to its second end and then return through its middle arc. The transition rule gives exactly <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>. No theorem about the presentation of the graph's fundamental group is needed for this construction.</p>
+<p>All pieces and intersection components are contractible, hence acyclic with these coefficients. Sections on a finite disjoint union form a finite product, so the Čech comparison gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{gathered}M^3\longrightarrow M^4,\\ (a,b,c)\longmapsto\\ (b-a,b-Aa,c-a,c-Ba).\end{gathered}
+\]">\[
+\begin{gathered}M^3\longrightarrow M^4,\\ (a,b,c)\longmapsto\\ (b-a,b-Aa,c-a,c-Ba).\end{gathered}
+\]</span>
+The kernel is identified with the elements <span class="math" data-tex="\(a\)">\(a\)</span> fixed by both automorphisms, with <span class="math" data-tex="\(b=c=a\)">\(b=c=a\)</span>. Modulo the images of <span class="math" data-tex="\(b,c\)">\(b,c\)</span>, subtract the first coordinate from the second and the third from the fourth. The remaining map from <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(a\mapsto((1-A)a,(1-B)a)\)">\(a\mapsto((1-A)a,(1-B)a)\)</span>; changing its overall sign does not change its image. Therefore
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+H^0(X,L)&amp;=\ker\bigl(M\xrightarrow{(A-1,B-1)}M^2\bigr),\\
+H^1(X,L)&amp;=\operatorname{coker}\bigl(M\xrightarrow{(A-1,B-1)}M^2\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+H^0(X,L)&amp;=\ker\bigl(M\xrightarrow{(A-1,B-1)}M^2\bigr),\\
+H^1(X,L)&amp;=\operatorname{coker}\bigl(M\xrightarrow{(A-1,B-1)}M^2\bigr),
+\end{aligned}
+\]</span>
+and higher cohomology is zero. More explicitly, the difference map <span class="math" data-tex="\(M^4\to M^2\)">\(M^4\to M^2\)</span> is surjective; its kernel consists exactly of the two diagonal pairs contributed by <span class="math" data-tex="\(b,c\)">\(b,c\)</span>, so the quotient calculation loses no relation. For the indicated integer example the map is <span class="math" data-tex="\(a\mapsto(-2a,0)\)">\(a\mapsto(-2a,0)\)</span>. Hence <span class="math" data-tex="\(H^0=0\)">\(H^0=0\)</span> and <span class="math" data-tex="\(H^1=\mathbb Z/2\mathbb Z\oplus\mathbb Z\)">\(H^1=\mathbb Z/2\mathbb Z\oplus\mathbb Z\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-3-a-three-sheeted-circle-and-the-direction-of-transport-advanced">Exercise 3 — A three-sheeted circle and the direction of transport (advanced)</h3>
+<p>For the covering <span class="math" data-tex="\(q:S^1\to S^1\)">\(q:S^1\to S^1\)</span>, <span class="math" data-tex="\(q(z)=z^3\)">\(q(z)=z^3\)</span>, let <span class="math" data-tex="\(L_T\)">\(L_T\)</span> have fibre <span class="math" data-tex="\(M\)">\(M\)</span> and source-circle monodromy <span class="math" data-tex="\(T\)">\(T\)</span>. Determine the target-circle monodromy of <span class="math" data-tex="\(q_*L_T\)">\(q_*L_T\)</span> and verify (6.2) by computing kernels and cokernels.</p>
+<p><strong>Solution.</strong> Number the three points over the basepoint by <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span> in positive order. Choose fibre identifications by transporting from sheet <span class="math" data-tex="\(0\)">\(0\)</span> along the first and second consecutive lifted base loops. The first two lifted steps then have identity matrix; the third finishes a positive source-circle loop and has matrix <span class="math" data-tex="\(T\)">\(T\)</span>. A positive target loop sends the value at sheet <span class="math" data-tex="\(0\)">\(0\)</span> to sheet <span class="math" data-tex="\(1\)">\(1\)</span>, at sheet <span class="math" data-tex="\(1\)">\(1\)</span> to sheet <span class="math" data-tex="\(2\)">\(2\)</span>, and at sheet <span class="math" data-tex="\(2\)">\(2\)</span> to sheet <span class="math" data-tex="\(0\)">\(0\)</span>. Thus its monodromy is
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{gathered}P(m_0,m_1,m_2)=(Tm_2,m_0,m_1),\\ P^3=\operatorname{diag}(T,T,T).\end{gathered}
+\]">\[
+\begin{gathered}P(m_0,m_1,m_2)=(Tm_2,m_0,m_1),\\ P^3=\operatorname{diag}(T,T,T).\end{gathered}
+\]</span>
+Its fixed vectors are exactly <span class="math" data-tex="\((m,m,m)\)">\((m,m,m)\)</span> with <span class="math" data-tex="\(Tm=m\)">\(Tm=m\)</span>, so its kernel of <span class="math" data-tex="\(P-1\)">\(P-1\)</span> is <span class="math" data-tex="\(\ker(T-1)\)">\(\ker(T-1)\)</span>. For the cokernel, send a triple to the class of its sum in <span class="math" data-tex="\(M/(T-1)M\)">\(M/(T-1)M\)</span>. This kills <span class="math" data-tex="\((P-1)(m_0,m_1,m_2)\)">\((P-1)(m_0,m_1,m_2)\)</span>, whose coordinate sum is <span class="math" data-tex="\((T-1)m_2\)">\((T-1)m_2\)</span>. In the quotient by the image of <span class="math" data-tex="\(P-1\)">\(P-1\)</span>, applying that map to triples supported in positions <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> identifies all three coordinate inclusions of <span class="math" data-tex="\(M\)">\(M\)</span>. Applying it to position <span class="math" data-tex="\(2\)">\(2\)</span> then imposes exactly the additional relation <span class="math" data-tex="\(Tm=m\)">\(Tm=m\)</span>. The sum map is consequently an isomorphism of cokernels. Formula (5.2) identifies these with the two cohomology groups upstairs, and both sides have no higher cohomology. This checks the actual sheet permutation as well as the groups; replacing <span class="math" data-tex="\(P\)">\(P\)</span> by an arbitrary cyclic block matrix without tracking the wrapped transport would not establish that comparison. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-4-why-path-data-alone-can-miss-a-sheaf-map-advanced">Exercise 4 — Why path data alone can miss a sheaf map (advanced)</h3>
+<p>Let <span class="math" data-tex="\(X=\mathbb Q\)">\(X=\mathbb Q\)</span> with its usual subspace topology and take the constant sheaf <span class="math" data-tex="\(L=\underline{\mathbb F_2}\)">\(L=\underline{\mathbb F_2}\)</span>. Show that transport on this space is not full by specifying a natural endomorphism of its path-groupoid functor that comes from no sheaf endomorphism.</p>
+<p><strong>Solution.</strong> Every connected subset of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is a point: between two distinct rationals choose an irrational number, whose two complementary open half-lines separate that subset. A path has connected image and is therefore constant. The fundamental groupoid consequently has only identity arrows. Its functor for <span class="math" data-tex="\(L\)">\(L\)</span> has fibre <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> at every rational, and an arbitrary family of linear endomorphisms is natural. Take identity at <span class="math" data-tex="\(0\)">\(0\)</span> and zero at every other rational. If it were induced by a sheaf map, the image of the global constant section <span class="math" data-tex="\(1\)">\(1\)</span> would be a locally constant function whose value is <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere. That function is not locally constant at <span class="math" data-tex="\(0\)">\(0\)</span>, since every rational neighborhood contains a different rational. This contradicts the definition of the constant sheaf. Thus full faithfulness fails here. The space is not locally path connected: its path-connected subsets are points and its singletons are not open. This example does not contradict Proposition 1.1, which constructs transport on arbitrary spaces, or Theorem 3.1, which imposes local path connectedness for reconstruction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-further-reading-and-licence">8. Further reading and licence</h2>
+<ul>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf">An Introduction to Sheaves on Grothendieck Topologies</a>, Sections 1.9 and 3.6, for locally constant sheaves, gluing and homotopy invariance. The path-groupoid reconstruction and its explicit local admissibility condition are proved above.</li>
+<li>Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch1.pdf">Algebraic Topology, Chapter 1</a>, Sections 1.1 and 1.3, for paths, winding numbers, covering spaces and the role of local hypotheses. The proofs above use parallel families directly and require no chosen universal covering space.</li>
+</ul>
+<p>The exposition, examples and solutions in this lesson are independently written and released under CC0-1.0. The linked works retain their own copyrights and licences. This lesson has been self-checked; no independent review is claimed.</p>
+</main></body></html>

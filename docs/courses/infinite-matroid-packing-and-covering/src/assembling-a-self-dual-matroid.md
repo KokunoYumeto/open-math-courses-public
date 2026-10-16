@@ -6,9 +6,14 @@ This lesson builds the self-dual matroid \(Q\) on \(E_0=L\mathbin{\dot\cup}R\). 
 
 ## 1. Admissible sets and two zones
 
-For \(X\subseteq E_0\) put \(u(X)=X_L\) and \(y(X)=D\setminus X_R\). Call \(X\) **admissible** if
+For \(X\subseteq E_0\) put \(u(X)=X_L\) and \(y(X)=D\setminus X_R\). Call \(X\) **admissible** if (1.1) holds:
 \[
-u(X),y(X)\in\mathcal U\ \text{ and }\ \rho(u(X))>\rho(y(X)),\qquad\text{or}\qquad u(X),y(X)\notin\mathcal U\ \text{ and }\ \rho(D\setminus u(X))>\rho(D\setminus y(X)). \tag{1.1}
+\begin{aligned}
+&u(X),y(X)\in\mathcal U\ \text{ and}\\
+&\qquad\rho(u(X))>\rho(y(X)),\\
+&\text{or}\quad u(X),y(X)\notin\mathcal U\ \text{ and}\\
+&\qquad\rho(D\setminus u(X))>\rho(D\setminus y(X)).
+\end{aligned}
 \]
 The **Upper zone** consists of the \(X\) with \(u(X)\) large and either \(y(X)\) small, or \(y(X)\) large and \(\rho(u(X))\le\rho(y(X))\). The **Lower zone** consists of the \(X\) with \(X^c\) in the Upper zone.
 
@@ -24,15 +29,15 @@ Let \(X\subseteq X'\) with \(X\) Upper, \(u'=u(X')\supseteq u\), \(y'=y(X')\subs
 
 ## 2. Separation from earlier classes
 
-**Lemma 2.1** (Inserting a prototype). Let \(\mathcal T\) be a family of fewer than \(\mathfrak c\) admissible sets, and let \(A\subseteq Z\subseteq E_0\) with \(A\) not Upper and \(Z\) not Lower, such that
-\[
-T\setminus A\notin\mathcal J_0\quad\text{and}\quad Z\setminus T\notin\mathcal J_0\qquad(T\in\mathcal T). \tag{2.1}
-\]
+**Lemma 2.1** (Inserting a prototype). Let \(\mathcal T\) be a family of fewer than \(\mathfrak c\) admissible sets, and let \(A\subseteq Z\subseteq E_0\) with \(A\) not Upper and \(Z\) not Lower, such that the conditions (2.1) hold for every \(T\in\mathcal T\): \(T\setminus A\notin\mathcal J_0\) and \(Z\setminus T\notin\mathcal J_0\).
 Then there is an admissible \(B\) with \(A\subseteq B\subseteq Z\) such that \(B\setminus T\) and \(T\setminus B\) are \(\mathcal J_0\)-positive for every \(T\in\mathcal T\).
 
 *Proof.* Put \(G=Z\setminus A\). List the set \(G\setminus T\) for every \(T\) with \(A\setminus T\in\mathcal J_0\); it is positive by (2.1), since \(Z\setminus T=(A\setminus T)\cup(G\setminus T)\). List also \(T\cap G\) for every \(T\) with \(T\setminus Z\in\mathcal J_0\); it is positive since \(T\setminus A=(T\setminus Z)\cup(T\cap G)\). There are fewer than \(\mathfrak c\) listed sets, so Lemma 5.1 of [Ideals, ultrafilters and an ordinal rank](ideals-ultrafilters-and-an-ordinal-rank.md) gives \(t\) such that \(H_0=H_{t,0}\) and \(H_1=H_{t,1}\), disjoint members of \(\mathcal K_0\), meet every listed set in a positive set. Put
 \[
-A'=A\cup(H_0\cap G),\qquad Z'=Z\setminus(H_1\cap G).
+\begin{gathered}
+A'=A\cup(H_0\cap G),\\
+Z'=Z\setminus(H_1\cap G).
+\end{gathered}
 \]
 Then \(A'\subseteq Z'\). The changes lie in \(\mathcal K_0\), so by Lemma 1.1 \(A'\) is not Upper and \(Z'\) is not Lower. If \(A'\) or \(Z'\) is admissible, let \(B\) be it; otherwise \(A'\) is Lower and \(Z'\) Upper, and Lemma 1.2 gives an admissible \(B\) between them. Let \(T\in\mathcal T\). If \(A\setminus T\) is positive, so is \(B\setminus T\supseteq A\setminus T\); otherwise \(B\setminus T\) contains the positive set \(H_0\cap(G\setminus T)\). If \(T\setminus Z\) is positive, so is \(T\setminus B\supseteq T\setminus Z\); otherwise \(T\setminus B\) contains the positive set \(H_1\cap T\cap G\). \(\square\)
 
@@ -44,24 +49,28 @@ Then \(A'\subseteq Z'\). The changes lie in \(\mathcal K_0\), so by Lemma 1.1 \(
 2. if \(B\in\mathcal B\) and \(F\subseteq B\), \(H\subseteq E_0\setminus B\) are finite with \(|F|=|H|\), then \((B\setminus F)\cup H\in\mathcal B\);
 3. for all \(I\subseteq Y\subseteq E_0\) with \(Y\setminus I\) infinite, some \(B\in\mathcal B\) satisfies
 \[
-B\subseteq I,\qquad\text{or}\qquad I\subseteq B\subseteq Y,\qquad\text{or}\qquad Y\subseteq B. \tag{3.1}
+\begin{gathered}
+B\subseteq I,\\
+\text{or}\qquad I\subseteq B\subseteq Y,\\
+\text{or}\qquad Y\subseteq B.
+\end{gathered}\tag{3.1}
 \]
 
 *Proof.* There are \(\mathfrak c\) pairs \(I\subseteq Y\); list those with infinite gap as \((I_\alpha,Y_\alpha)_{\alpha<\mathfrak c}\), and fix a well-ordering of the subsets of \(E_0\) for the choices below. By transfinite recursion we retain *prototypes* in complementary pairs \(T,T^c\), the first with the rule \(-\) and the second with the rule \(+\) (so with local bases \(\mathcal B^-(T)\) and \(\mathcal B^+(T^c)=\{X^c:X\in\mathcal B^-(T)\}\)), maintaining that all prototypes are admissible and that any two distinct prototypes \(T,T'\) have \(T\setminus T'\) and \(T'\setminus T\) both \(\mathcal J_0\)-positive. The local bases of prototypes already retained are the *old bases*; they are closed under complements.
 
-At stage \(\alpha\), let \(I=I_\alpha\), \(Y=Y_\alpha\). If some old basis satisfies (3.1), retain nothing. Otherwise, for every old prototype \(T\) with rule \(\sigma\), Proposition 2.3 of [Probes and local bases](probes-and-local-bases.md) shows that
-\[
-T\setminus I\notin\mathcal J_0\quad\text{and}\quad Y\setminus T\notin\mathcal J_0. \tag{3.2}
-\]
+At stage \(\alpha\), let \(I=I_\alpha\), \(Y=Y_\alpha\). If some old basis satisfies (3.1), retain nothing. Otherwise, for every old prototype \(T\) with rule \(\sigma\), Proposition 2.3 of [Probes and local bases](probes-and-local-bases.md) shows that the conditions (3.2) hold: \(T\setminus I\notin\mathcal J_0\) and \(Y\setminus T\notin\mathcal J_0\).
 Choose \([A,Z]=[\varnothing,I]\) if \(I\) is Upper, \([A,Z]=[Y,E_0]\) if \(Y\) is Lower, and \([A,Z]=[I,Y]\) otherwise; the first two cases exclude each other, because an Upper \(I\subseteq Y\) makes \(Y\) Upper. In each case \(A\) is not Upper and \(Z\) is not Lower. We check (2.1) for every old prototype \(T\). In the third case it is (3.2). In the first case \(T\setminus A=T\) is positive, and if \(I\setminus T\in\mathcal J_0\), then \(I\cap T\) would be Upper by invariance and contained in \(T\), making \(T\) Upper; so \(Z\setminus T=I\setminus T\) is positive. In the second case \(Z\setminus T=T^c\) is positive, and if \(T\setminus Y\in\mathcal J_0\), then \(T\cap Y\) would be admissible and contained in the Lower set \(Y\), hence Lower; so \(T\setminus A=T\setminus Y\) is positive. There are at most two prototypes for each earlier stage, so fewer than \(\mathfrak c\) old prototypes (Lemma 0.1 of [Ideals, ultrafilters and an ordinal rank](ideals-ultrafilters-and-an-ordinal-rank.md)). Lemma 2.1 gives an admissible \(B\) between \(A\) and \(Z\), separated from every old prototype; retain \(B\) with the rule \(-\) and \(B^c\) with the rule \(+\). The complement is separated from every old \(T\) as well, because \(T^c\) is old and \(B^c\setminus T=T^c\setminus B\), \(T\setminus B^c=B\setminus T^c\); and \(B\), \(B^c\) are separated from each other because both are \(\mathcal J_0\)-positive (Lemma 1.1). Since the probes of \(B\) relative to itself vanish, \(B\in\mathcal B^-(B)\), and its position in \([A,Z]\) gives (3.1).
 
 Let \(\mathcal B\) be the union of all retained local families. It is nonempty and closed under complements. Its members differ from their prototypes by sets in \(\mathcal J_0\subseteq\mathcal K_0\), so they are admissible (Lemma 1.1). Within one class, Lemma 1.3 of [Probes and local bases](probes-and-local-bases.md) gives the antichain property and (2). Members \(X\in\mathcal C(T)\) and \(X'\in\mathcal C(T')\) of different classes satisfy \(X\setminus X'\supseteq(T\setminus T')\setminus(X\mathbin\triangle T\cup X'\mathbin\triangle T')\), which is positive, hence nonempty; so \(X\not\subseteq X'\), and symmetrically. Every interval received an outcome at its stage, and retained families are never changed. \(\square\)
 
 ## 4. The matroid
 
-**Theorem 4.1** (OpenAI). There is a matroid \(Q\) on \(E_0\) whose bases are exactly the members of \(\mathcal B\). It is self-dual, and for every basis \(B\),
+**Theorem 4.1** (OpenAI). There is a matroid \(Q\) on \(E_0\) whose bases are exactly the members of \(\mathcal B\). It is self-dual, and for every basis \(B\) the implication (4.1) holds:
 \[
-B_L\in\mathcal U\quad\Longrightarrow\quad D\setminus B_R\in\mathcal U\quad\text{and}\quad\rho(B_L)>\rho(D\setminus B_R). \tag{4.1}
+\begin{aligned}
+&B_L\in\mathcal U\ \Longrightarrow\ D\setminus B_R\in\mathcal U\\
+&\qquad\text{and}\ \rho(B_L)>\rho(D\setminus B_R).
+\end{aligned}
 \]
 Moreover every independent set that is not a basis remains independent after adding any element.
 

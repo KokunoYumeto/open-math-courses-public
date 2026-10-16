@@ -15,12 +15,14 @@ We use from [Nested predicates on a labelled tournament](nested-predicates-on-a-
 
 ## 1. The recurrences
 
-**Proposition 1.1** (sensitivity recurrences). For \(1\le\ell\le d\), write \(S'_b=S_{\ell-1,b}\) and \(J'_b=J_{\ell-1,b}\). Then
+**Proposition 1.1** (sensitivity recurrences). For \(1\le\ell\le d\), write \(S'_b=S_{\ell-1,b}\) and \(J'_b=J_{\ell-1,b}\). Then the four inequalities (1.1) hold:
 \[
 \begin{aligned}
-S_{\ell,1}&\le M^2S'_0+rS'_1, &\qquad J_{\ell,1}&\le M^2J'_0+rS'_1,\\
-S_{\ell,0}&\le tS'_0+S'_1+3J'_1, &\qquad J_{\ell,0}&\le tS'_0+3J'_1.
-\end{aligned}\tag{1.1}
+S_{\ell,1}&\le M^2S'_0+rS'_1,\\
+J_{\ell,1}&\le M^2J'_0+rS'_1,\\
+S_{\ell,0}&\le tS'_0+S'_1+3J'_1,\\
+J_{\ell,0}&\le tS'_0+3J'_1.
+\end{aligned}
 \]
 
 **Proof.** Let \(H=H_\ell\) and \(Q=H+1\). A *flip* is a flip of one coordinate of the input; it changes only the predicates of the child containing that coordinate, possibly several of them. By Lemma 3.1(a) of [Nested predicates on a labelled tournament](nested-predicates-on-a-labelled-tournament.md), it changes at most one condition of any fixed clause. The predicates of level \(\ell-1\) are nested, so for indices \(g'<g\) and any child \(y\): \(P_{\ell-1,g}(y)=1\) implies \(P_{\ell-1,g'}(y)=1\), and \(P_{\ell-1,g'}(y)=0\) implies \(P_{\ell-1,g}(y)=0\).
@@ -49,11 +51,18 @@ Taking maxima over \(q\), \(q<q'\) and \(x\) gives (1.1); if \(H=1\) the joint p
 
 **Proof.** Put
 \[
-u_\ell=\max_{b\in\{0,1\}}\frac{S_{\ell,b}}{M^{\ell+b}},\qquad v_\ell=\max_{b\in\{0,1\}}\frac{J_{\ell,b}}{M^{\ell+b}},\qquad\varepsilon=\frac{\max\{r,t\}}M.
+\begin{gathered}
+u_\ell=\max_{b\in\{0,1\}}\frac{S_{\ell,b}}{M^{\ell+b}},\\
+v_\ell=\max_{b\in\{0,1\}}\frac{J_{\ell,b}}{M^{\ell+b}},\\
+\varepsilon=\frac{\max\{r,t\}}M.
+\end{gathered}
 \]
-Lemma 5.1 of [Nested predicates on a labelled tournament](nested-predicates-on-a-labelled-tournament.md) gives \(u_0\le L\) and \(v_0=0\). Dividing the four inequalities (1.1) by \(M^{\ell+1}\), \(M^{\ell+1}\), \(M^\ell\) and \(M^\ell\), and using \(S'_b\le u_{\ell-1}M^{\ell-1+b}\) and \(J'_b\le v_{\ell-1}M^{\ell-1+b}\),
+Lemma 5.1 of [Nested predicates on a labelled tournament](nested-predicates-on-a-labelled-tournament.md) gives \(u_0\le L\) and \(v_0=0\). Dividing the four inequalities (1.1) by \(M^{\ell+1}\), \(M^{\ell+1}\), \(M^\ell\) and \(M^\ell\), and using \(S'_b\le u_{\ell-1}M^{\ell-1+b}\) and \(J'_b\le v_{\ell-1}M^{\ell-1+b}\), we obtain the inequalities (2.1):
 \[
-u_\ell\le(1+\varepsilon)u_{\ell-1}+3v_{\ell-1},\qquad v_\ell\le\varepsilon u_{\ell-1}+3v_{\ell-1}.\tag{2.1}
+\begin{aligned}
+u_\ell&\le(1+\varepsilon)u_{\ell-1}+3v_{\ell-1},\\
+v_\ell&\le\varepsilon u_{\ell-1}+3v_{\ell-1}.
+\end{aligned}
 \]
 Since \(\sqrt M\ge3^{d+1}\ge9\), \(r\le\sqrt M+1\le2\sqrt M\) and \(t=16\le2\sqrt M\), so
 \[
@@ -61,19 +70,29 @@ Since \(\sqrt M\ge3^{d+1}\ge9\), \(r\le\sqrt M+1\le2\sqrt M\) and \(t=16\le2\sqr
 \]
 Let \(U_0=L\), \(V_0=0\), \(U_\ell=(1+\varepsilon)U_{\ell-1}+3V_{\ell-1}\) and \(V_\ell=\varepsilon U_{\ell-1}+3V_{\ell-1}\). The coefficients are nonnegative, so (2.1) gives \(u_\ell\le U_\ell\) and \(v_\ell\le V_\ell\) by induction. We show by induction that \(U_\ell\le2L\) and \(V_\ell\le\varepsilon L(3^\ell-1)\) for \(0\le\ell\le d\). Both hold for \(\ell=0\). If they hold below \(\ell\), then \(V_\ell\le2\varepsilon L+3\varepsilon L(3^{\ell-1}-1)=\varepsilon L(3^\ell-1)\), and
 \[
-U_\ell=L+\sum_{j=0}^{\ell-1}(\varepsilon U_j+3V_j)\le L+2\varepsilon L\ell+3\varepsilon L\sum_{j=0}^{\ell-1}(3^j-1)=L+\varepsilon L\Bigl(\tfrac32(3^\ell-1)-\ell\Bigr).
+\begin{aligned}
+U_\ell&=L+\sum_{j=0}^{\ell-1}(\varepsilon U_j+3V_j)\\
+&\le L+2\varepsilon L\ell+3\varepsilon L\sum_{j=0}^{\ell-1}(3^j-1)\\
+&=L+\varepsilon L\Bigl(\tfrac32(3^\ell-1)-\ell\Bigr).
+\end{aligned}
 \]
 By (2.2) and \(\ell\le d\), \(\varepsilon\bigl(\frac32(3^\ell-1)-\ell\bigr)\le\frac{3^{\ell+1}-3-2\ell}{3^{d+1}}<1\), so \(U_\ell<2L\). Hence \(u_\ell\le2L\), which is the claim. \(\square\)
 
 ## 3. The separation
 
-**Proof of Theorem 3.1.** Let \(d\ge1\), choose an integer \(M\ge9^{d+1}\), and fix labels by Lemma 1.1 of [Nested predicates on a labelled tournament](nested-predicates-on-a-labelled-tournament.md). Let \(f\) be the disjoint OR of \(M\) copies of \(P_{d,1}\), a function on \(n=MN_d=LM^2(kr)^d\) bits. By Lemma 4.1 there, \(P_{d,1}(0)=0\) and \(\operatorname{bs}(P_{d,1},0)\ge Mk^d\). By Lemma 2.1 of [Sensitivity, block sensitivity and composition](sensitivity-block-sensitivity-and-composition.md) and Lemma 2.1 above (with \(H_d=1\), so \(s_b(P_{d,1})=S_{d,b}\)),
+**Proof of Theorem 3.1.** Let \(d\ge1\), choose an integer \(M\ge9^{d+1}\), and fix labels by Lemma 1.1 of [Nested predicates on a labelled tournament](nested-predicates-on-a-labelled-tournament.md). Let \(f\) be the disjoint OR of \(M\) copies of \(P_{d,1}\), a function on \(n=MN_d=LM^2(kr)^d\) bits. By Lemma 4.1 there, \(P_{d,1}(0)=0\) and \(\operatorname{bs}(P_{d,1},0)\ge Mk^d\). By Lemma 2.1 of [Sensitivity, block sensitivity and composition](sensitivity-block-sensitivity-and-composition.md) and Lemma 2.1 above (with \(H_d=1\), so \(s_b(P_{d,1})=S_{d,b}\)), the two bounds (3.1) hold:
 \[
-s(f)\le\max\{M\,S_{d,0},\,S_{d,1}\}\le2LM^{d+1},\qquad\operatorname{bs}(f)\ge\operatorname{bs}(f,0)\ge M^2k^d.\tag{3.1}
+\begin{gathered}
+s(f)\le\max\{M\,S_{d,0},\,S_{d,1}\}\le2LM^{d+1},\\
+\operatorname{bs}(f)\ge\operatorname{bs}(f,0)\ge M^2k^d.
+\end{gathered}
 \]
 In particular \(f(0)=0\) and \(f\) has a sensitive block, so \(f\) is nonconstant and \(s(f)\ge1\). Since \(k/M^2>2\) and \(L=d+2\),
 \[
-\frac{\operatorname{bs}(f)}{s(f)^2}\ge\frac{M^2k^d}{4L^2M^{2d+2}}=\frac{(k/M^2)^d}{4L^2}\ge\frac{2^d}{4(d+2)^2}.
+\begin{aligned}
+\frac{\operatorname{bs}(f)}{s(f)^2}&\ge\frac{M^2k^d}{4L^2M^{2d+2}}\\
+&=\frac{(k/M^2)^d}{4L^2}\ge\frac{2^d}{4(d+2)^2}.
+\end{aligned}
 \]
 Given \(C>0\), choose \(d\) with \(2^d>4(d+2)^2C\). \(\square\)
 
@@ -103,7 +122,21 @@ Since \(A>1\), Proposition 4.2 of [Sensitivity, block sensitivity and compositio
 
 ## 5. Solutions
 
-**4.1.** For instance \(S_{\ell,1}/M^{\ell+1}\le S'_0/M^{\ell-1}+\frac rM\,S'_1/M^\ell\le(1+\frac rM)u_{\ell-1}\), and \(S_{\ell,0}/M^\ell\le\frac tM\,S'_0/M^{\ell-1}+S'_1/M^\ell+3J'_1/M^\ell\le(1+\frac tM)u_{\ell-1}+3v_{\ell-1}\); similarly \(J_{\ell,1}/M^{\ell+1}\le v_{\ell-1}+\frac rMu_{\ell-1}\) and \(J_{\ell,0}/M^\ell\le\frac tMu_{\ell-1}+3v_{\ell-1}\). Take maxima and use \(r,t\le\varepsilon M\).
+**4.1.** For instance
+\[
+\begin{aligned}
+\frac{S_{\ell,1}}{M^{\ell+1}}&\le\frac{S'_0}{M^{\ell-1}}+\frac rM\cdot\frac{S'_1}{M^\ell}\\
+&\le\Bigl(1+\frac rM\Bigr)u_{\ell-1},
+\end{aligned}
+\]
+and
+\[
+\begin{aligned}
+\frac{S_{\ell,0}}{M^\ell}&\le\frac tM\cdot\frac{S'_0}{M^{\ell-1}}+\frac{S'_1}{M^\ell}+\frac{3J'_1}{M^\ell}\\
+&\le\Bigl(1+\frac tM\Bigr)u_{\ell-1}+3v_{\ell-1};
+\end{aligned}
+\]
+similarly \(J_{\ell,1}/M^{\ell+1}\le v_{\ell-1}+\frac rMu_{\ell-1}\) and \(J_{\ell,0}/M^\ell\le\frac tMu_{\ell-1}+3v_{\ell-1}\). Take maxima and use \(r,t\le\varepsilon M\).
 
 **4.2.** The \(\binom m2\) edges each leave one vertex, so \(\binom m2\le m\), that is \(m\le3\). For \(m=3\), the three edges leave three different vertices, so every vertex has exactly one out-neighbour, which forces a directed triangle.
 

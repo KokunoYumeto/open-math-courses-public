@@ -1,0 +1,998 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Weyl-plane action and its continuous part · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math mjx-container mjx-assistive-mml{width:1px!important;height:1px!important;padding:0!important;overflow:hidden!important}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L133.html">Previous lesson</a><a href="OA-FLOW-L135.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L134.md">Lesson source</a></nav><h1 id="OA-FLOW.WEYLPLANE.ACTION">The Weyl-plane action and its continuous part</h1>
+<p>Translations and modulations on <span class="math" data-tex="$L^2(\mathbb R)$">$L^2(\mathbb R)$</span> form a projective
+representation of the phase plane.  Scalar projective multipliers disappear
+under conjugation, producing an honest action on all bounded operators.  The
+same Weyl relations compute its integrability, Connes spectrum, centralizer,
+and invariant von Neumann subalgebras.</p>
+<p>For a first reading, follow the Weyl relations and orthogonality in
+(Y1)–(Y13), then the continuous part in (Y28)–(Y37). The centralizer
+calculation (Y14)–(Y17) is a short matrix-unit application. The longer
+subgroup correspondence (Y18)–(Y27) can be read separately after the
+trace-class convolution, Fourier localization and synthesis arguments.</p>
+<p>The norm-continuous part contains the identity and every Weyl unitary, so it strictly contains the compact operators. We characterize it by <span class="math" data-tex="$L^1$">$L^1$</span> convolution and explain the discrepancy with the source exercise in the final sections.</p>
+<p>The earlier inputs are <a href="OA-FLOW-CP.html#oa-flow.cp.1">the concrete predual construction</a>, <a href="OA-FLOW-FF.html#oa-flow.ff.1">scalar integration and Fourier analysis</a>, <a href="OA-FLOW-L35.html#oa-flow.gi.fourier">smooth filters</a>, <a href="OA-FLOW-RF.html#oa-flow.rf.1">smooth Fourier cutoffs and inversion</a>, <a href="OA-FLOW-AT.html#oa-flow.at.5">normal integrated actions</a>, <a href="OA-FLOW-ND.html#nd-weyl-proof">the concrete Weyl commutant calculation</a>, and <a href="OA-FLOW-L115.html#oa-flow.connes.centerkernel">the action and Connes spectra</a>. The trace-class realization and Euclidean subgroup synthesis are proved below.</p>
+<p>Let <span class="math" data-tex="$\mathcal H=L^2(\mathbb R)$">$\mathcal H=L^2(\mathbb R)$</span>, with Lebesgue measure, and define</p>
+<p><span class="math math-display" data-tex="$$
+(U_s\xi)(r)=\xi(r+s),
+\qquad
+(V_t\xi)(r)=e^{irt}\xi(r),
+\qquad
+W(s,t)=U_sV_t.
+\tag{Y1}
+$$">$$
+(U_s\xi)(r)=\xi(r+s),
+\qquad
+(V_t\xi)(r)=e^{irt}\xi(r),
+\qquad
+W(s,t)=U_sV_t.
+\tag{Y1}
+$$</span></p>
+<p>We identify the dual of <span class="math" data-tex="$\mathbb R^2$">$\mathbb R^2$</span> by
+<span class="math" data-tex="$\chi_{(p,q)}(s,t)=e^{i(sp+tq)}$">$\chi_{(p,q)}(s,t)=e^{i(sp+tq)}$</span> and use Lebesgue measure <span class="math" data-tex="$ds\,dt$">$ds\,dt$</span>.</p>
+<p><em>Original lesson exposition: CC0-1.0 to the extent of rights held. Cited works retain their own terms.</em></p>
+<p><a id="weylplane-action"></a></p>
+<h2 id="the-projective-weyl-pair-gives-an-honest-plane-action">The projective Weyl pair gives an honest plane action</h2>
+<p>Direct calculation gives</p>
+<p><span class="math math-display" data-tex="$$
+U_sV_t=e^{ist}V_tU_s
+\tag{Y2}
+$$">$$
+U_sV_t=e^{ist}V_tU_s
+\tag{Y2}
+$$</span></p>
+<p>and therefore</p>
+<p><span class="math math-display" data-tex="$$
+W(s,t)W(a,b)=e^{-iat}W(s+a,t+b).
+\tag{Y3}
+$$">$$
+W(s,t)W(a,b)=e^{-iat}W(s+a,t+b).
+\tag{Y3}
+$$</span></p>
+<p>Thus <span class="math" data-tex="$W$">$W$</span> is a strongly continuous projective unitary representation with
+multiplier <span class="math" data-tex="$m((s,t),(a,b))=e^{-iat}$">$m((s,t),(a,b))=e^{-iat}$</span>.  Define</p>
+<p><span class="math math-display" data-tex="$$
+\alpha_{(s,t)}=\operatorname{Ad}W(s,t)
+\quad\text{on }B(\mathcal H).
+\tag{Y4}
+$$">$$
+\alpha_{(s,t)}=\operatorname{Ad}W(s,t)
+\quad\text{on }B(\mathcal H).
+\tag{Y4}
+$$</span></p>
+<p>The two multipliers in a product of inner automorphisms cancel, so</p>
+<p><span class="math math-display" data-tex="$$
+\alpha_z\alpha_w=\alpha_{z+w}
+\qquad(z,w\in\mathbb R^2).
+\tag{Y5}
+$$">$$
+\alpha_z\alpha_w=\alpha_{z+w}
+\qquad(z,w\in\mathbb R^2).
+\tag{Y5}
+$$</span></p>
+<p>Translations are strongly continuous on <span class="math" data-tex="$L^2(\mathbb R)$">$L^2(\mathbb R)$</span> by <a href="OA-FLOW-FF.html#oa-flow.ff.2">FF-1</a>; modulation continuity follows by dominated convergence, since <span class="math" data-tex="$|e^{irt}-1|^2|\xi(r)|^2\le4|\xi(r)|^2$">$|e^{irt}-1|^2|\xi(r)|^2\le4|\xi(r)|^2$</span>. Splitting a product difference proves joint strong continuity of <span class="math" data-tex="$W(s,t)$">$W(s,t)$</span>. The adjoints are strongly continuous too, by the group formulas. For fixed <span class="math" data-tex="$x$">$x$</span> and <span class="math" data-tex="$\xi$">$\xi$</span>, split
+<span class="math math-display" data-tex="\[
+ (W(z)xW(z)^*-W(z_0)xW(z_0)^*)\xi
+ =W(z)x(W(z)^*-W(z_0)^*)\xi
+ +(W(z)-W(z_0))xW(z_0)^*\xi .
+\]">\[
+ (W(z)xW(z)^*-W(z_0)xW(z_0)^*)\xi
+ =W(z)x(W(z)^*-W(z_0)^*)\xi
+ +(W(z)-W(z_0))xW(z_0)^*\xi .
+\]</span>
+Both terms tend to zero; replacing <span class="math" data-tex="$x$">$x$</span> by <span class="math" data-tex="$x^*$">$x^*$</span> proves strong-star continuity. Every normal functional is a summable vector series by CP-04. The uniform bound <span class="math" data-tex="$2\|x\|$">$2\|x\|$</span> controls its tail, so finite vector tests prove point-ultraweak continuity on the whole predual. Thus (Y4) is a continuous action despite the multiplier in (Y3).</p>
+<p>The commutator phase will be used repeatedly.  If
+<span class="math" data-tex="$z=(s,t)$">$z=(s,t)$</span> and <span class="math" data-tex="$w=(a,b)$">$w=(a,b)$</span>, then</p>
+<p><span class="math math-display" data-tex="$$
+\alpha_z(W(w))
+=e^{i\omega(z,w)}W(w),
+\qquad
+\omega(z,w)=sb-at.
+\tag{Y6}
+$$">$$
+\alpha_z(W(w))
+=e^{i\omega(z,w)}W(w),
+\qquad
+\omega(z,w)=sb-at.
+\tag{Y6}
+$$</span></p>
+<p>The alternating form <span class="math" data-tex="$\omega$">$\omega$</span> is nondegenerate.</p>
+<p><span id="OA-FLOW.WEYLPLANE.INTEGRABLE"></span><a id="weylplane-integrable"></a></p>
+<h2 id="phase-space-orthogonality-proves-integrability">Phase-space orthogonality proves integrability</h2>
+<p>For <span class="math" data-tex="$\xi,\eta\in\mathcal H$">$\xi,\eta\in\mathcal H$</span>, Fubini and scalar Plancherel give the exact
+orthogonality identity</p>
+<p><span class="math math-display" data-tex="$$
+\int_{\mathbb R^2}
+|\langle\eta,W(s,t)\xi\rangle|^2\,ds\,dt
+=2\pi\|\xi\|^2\|\eta\|^2.
+\tag{Y7}
+$$">$$
+\int_{\mathbb R^2}
+|\langle\eta,W(s,t)\xi\rangle|^2\,ds\,dt
+=2\pi\|\xi\|^2\|\eta\|^2.
+\tag{Y7}
+$$</span></p>
+<p>For fixed <span class="math" data-tex="$s$">$s$</span>, the product <span class="math" data-tex="$h_s(u)=\xi(u)\overline{\eta(u-s)}$">$h_s(u)=\xi(u)\overline{\eta(u-s)}$</span> is integrable by Cauchy–Schwarz. Tonelli gives
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}\int_{\mathbb R}|h_s(u)|^2\,du\,ds
+ =\|\xi\|^2\|\eta\|^2,
+\]">\[
+ \int_{\mathbb R}\int_{\mathbb R}|h_s(u)|^2\,du\,ds
+ =\|\xi\|^2\|\eta\|^2,
+\]</span>
+so <span class="math" data-tex="$h_s\in L^1\cap L^2$">$h_s\in L^1\cap L^2$</span> for almost every <span class="math" data-tex="$s$">$s$</span>. After the change <span class="math" data-tex="$u=r+s$">$u=r+s$</span>, the coefficient in (Y7) is <span class="math" data-tex="$\overline{\int h_s(u)e^{itu}\,du}$">$\overline{\int h_s(u)e^{itu}\,du}$</span>. Its modulus is therefore the modulus of the ordinary Fourier transform of <span class="math" data-tex="$h_s$">$h_s$</span>. The full <span class="math" data-tex="$L^1\cap L^2$">$L^1\cap L^2$</span> compatibility and Plancherel theorem of <a href="OA-FLOW-FF.html#oa-flow.ff.3">FF-2</a> therefore give the factor <span class="math" data-tex="$2\pi$">$2\pi$</span> for almost every <span class="math" data-tex="$s$">$s$</span>. A second application of Tonelli proves (Y7) for all <span class="math" data-tex="$\xi,\eta\in L^2$">$\xi,\eta\in L^2$</span>, with no boundedness or smoothness hypothesis on the vectors.</p>
+<p>Write <span class="math" data-tex="$\Theta_{\xi,\xi}$">$\Theta_{\xi,\xi}$</span> for the positive rank-one operator
+<span class="math" data-tex="$\zeta\mapsto\langle\zeta,\xi\rangle\xi$">$\zeta\mapsto\langle\zeta,\xi\rangle\xi$</span>, using the course convention that
+the inner product is linear in the first variable.  For every <span class="math" data-tex="$\eta$">$\eta$</span>,
+(Y7) says</p>
+<p><span class="math math-display" data-tex="$$
+\int_{\mathbb R^2}
+\langle\alpha_z(\Theta_{\xi,\xi})\eta,\eta\rangle\,dz
+=2\pi\|\xi\|^2\|\eta\|^2.
+\tag{Y8}
+$$">$$
+\int_{\mathbb R^2}
+\langle\alpha_z(\Theta_{\xi,\xi})\eta,\eta\rangle\,dz
+=2\pi\|\xi\|^2\|\eta\|^2.
+\tag{Y8}
+$$</span></p>
+<p>The increasing net of compact positive orbit integrals therefore has the
+bounded ultraweak supremum</p>
+<p><span class="math math-display" data-tex="$$
+\int_{\mathbb R^2}\alpha_z(\Theta_{\xi,\xi})\,dz
+=2\pi\|\xi\|^2 1.
+\tag{Y9}
+$$">$$
+\int_{\mathbb R^2}\alpha_z(\Theta_{\xi,\xi})\,dz
+=2\pi\|\xi\|^2 1.
+\tag{Y9}
+$$</span></p>
+<p>Positive finite-rank operators are finite positive sums of such rank-one
+operators, so they all belong to the bounded positive integrability domain.
+For every <span class="math" data-tex="$x\ge0$">$x\ge0$</span>, the operators <span class="math" data-tex="$x^{1/2}P_Fx^{1/2}$">$x^{1/2}P_Fx^{1/2}$</span>, where <span class="math" data-tex="$P_F$">$P_F$</span> ranges over the projections onto finite-dimensional subspaces, are positive finite-rank operators bounded by <span class="math" data-tex="$x$">$x$</span> and increase strongly to <span class="math" data-tex="$x$">$x$</span>. Their values under every positive normal functional increase to its value at <span class="math" data-tex="$x$">$x$</span>, and all normal-functional values converge, by the vector-series description. Thus the positive bounded-integral domain is order dense, as well as having ultraweakly dense linear span. The positive action integral is semifinite:</p>
+<p><span class="math math-display" data-tex="$$
+\boxed{\alpha\text{ is an integrable action of }\mathbb R^2.}
+\tag{Y10}
+$$">$$
+\boxed{\alpha\text{ is an integrable action of }\mathbb R^2.}
+\tag{Y10}
+$$</span></p>
+<p>No operator-norm integral over the whole plane is asserted in (Y8)–(Y9).</p>
+<p><span id="OA-FLOW.WEYLPLANE.CONNES"></span><a id="weylplane-connes"></a></p>
+<h2 id="the-connes-spectrum-is-the-whole-dual-plane">The Connes spectrum is the whole dual plane</h2>
+<p>An operator fixed by every <span class="math" data-tex="$\alpha_z$">$\alpha_z$</span> commutes with every translation and
+every modulation.  Commutation with all <span class="math" data-tex="$V_t$">$V_t$</span> makes it a multiplication
+operator, and commutation with all <span class="math" data-tex="$U_s$">$U_s$</span> makes its multiplier translation
+invariant.  The multiplier and translation-invariant-class steps, including almost-everywhere equivalence, are the full <a href="OA-FLOW-ND.html#nd-weyl-proof">ND Weyl proof</a>. Thus</p>
+<p><span class="math math-display" data-tex="$$
+B(\mathcal H)^\alpha=\mathbb C1.
+\tag{Y11}
+$$">$$
+B(\mathcal H)^\alpha=\mathbb C1.
+\tag{Y11}
+$$</span></p>
+<p>Formula (Y6) says that <span class="math" data-tex="$W(a,b)$">$W(a,b)$</span> is an eigenunitary for the dual frequency</p>
+<p><span class="math math-display" data-tex="$$
+(p,q)=(b,-a).
+\tag{Y12}
+$$">$$
+(p,q)=(b,-a).
+\tag{Y12}
+$$</span></p>
+<p>As <span class="math" data-tex="$(a,b)$">$(a,b)$</span> ranges over the plane, so does <span class="math" data-tex="$(p,q)$">$(p,q)$</span>. If an integrated kernel annihilates the entire action, applying it to <span class="math" data-tex="$W(a,b)$">$W(a,b)$</span> makes its Fourier transform vanish at every such frequency. Consequently the hull defining the action spectrum contains every <span class="math" data-tex="$(p,q)$">$(p,q)$</span>; equivalently each displayed eigenunitary contributes its own frequency. Thus the point spectrum and action spectrum both fill <span class="math" data-tex="$\mathbb R^2$">$\mathbb R^2$</span>.  The only nonzero
+projection in the fixed algebra (Y11) is <span class="math" data-tex="$1$">$1$</span>, so the intersection defining
+the Connes spectrum has only the unreduced action as a term.  Consequently</p>
+<p><span class="math math-display" data-tex="$$
+\boxed{\Gamma(\alpha)=\operatorname{Sp}(\alpha)=\mathbb R^2.}
+\tag{Y13}
+$$">$$
+\boxed{\Gamma(\alpha)=\operatorname{Sp}(\alpha)=\mathbb R^2.}
+\tag{Y13}
+$$</span></p>
+<p>The same calculation proves that every eigenspace is one dimensional.  If
+<span class="math" data-tex="$x$">$x$</span> has the character in (Y12), then <span class="math" data-tex="$W(a,b)^*x$">$W(a,b)^*x$</span> is fixed by <span class="math" data-tex="$\alpha$">$\alpha$</span> and
+therefore scalar by (Y11).</p>
+<p><span id="OA-FLOW.WEYLPLANE.CENTRALIZER"></span><a id="weylplane-centralizer"></a></p>
+<h2 id="every-commuting-automorphism-is-a-weyl-translation">Every commuting automorphism is a Weyl translation</h2>
+<p>Let <span class="math" data-tex="$\beta\in\operatorname{Aut}(B(\mathcal H))$">$\beta\in\operatorname{Aut}(B(\mathcal H))$</span> commute with every
+<span class="math" data-tex="$\alpha_z$">$\alpha_z$</span>. A star automorphism of a von Neumann algebra is normal: it and its inverse preserve order, hence every existing least upper bound of a bounded increasing net. The equivalence with ultraweak normality is the <a href="OA-FLOW-L123.html#oa-flow.l123.ic0">automatic normality proof</a>. Here is its inner implementation in this setting.
+Choose an orthonormal basis <span class="math" data-tex="$(\xi_i)$">$(\xi_i)$</span> and its matrix units <span class="math" data-tex="$e_{ij}$">$e_{ij}$</span>,
+with one distinguished index <span class="math" data-tex="$0$">$0$</span>. The image <span class="math" data-tex="$\beta(e_{00})$">$\beta(e_{00})$</span> is a
+minimal projection of <span class="math" data-tex="$B(\mathcal H)$">$B(\mathcal H)$</span> and therefore has rank one:
+a projection of larger rank has a nontrivial rank-one subprojection.
+Choose a unit vector <span class="math" data-tex="$\eta_0$">$\eta_0$</span> in its range and set
+<span class="math" data-tex="$\eta_i=\beta(e_{i0})\eta_0$">$\eta_i=\beta(e_{i0})\eta_0$</span>. The matrix-unit relations make these
+vectors orthonormal. Normality of <span class="math" data-tex="$\beta$">$\beta$</span> gives
+<span class="math" data-tex="$\sum_i\beta(e_{ii})=1$">$\sum_i\beta(e_{ii})=1$</span>, so they form a basis. The unitary
+<span class="math" data-tex="$T\xi_i=\eta_i$">$T\xi_i=\eta_i$</span> implements <span class="math" data-tex="$\beta$">$\beta$</span> on every matrix unit. Finite
+matrix compressions converge strongly on the bounded unit ball,
+and hence ultraweakly; normality extends the identity to every
+operator. Thus <span class="math" data-tex="$\beta=\operatorname{Ad}T$">$\beta=\operatorname{Ad}T$</span>. Commutation of the two inner
+automorphisms implies</p>
+<p><span class="math math-display" data-tex="$$
+TW(z)T^*W(z)^*\in\mathbb T1.
+\tag{Y14}
+$$">$$
+TW(z)T^*W(z)^*\in\mathbb T1.
+\tag{Y14}
+$$</span></p>
+<p>Hence there is a scalar function <span class="math" data-tex="$c$">$c$</span> with</p>
+<p><span class="math math-display" data-tex="$$
+TW(z)T^*=c(z)W(z).
+\tag{Y15}
+$$">$$
+TW(z)T^*=c(z)W(z).
+\tag{Y15}
+$$</span></p>
+<p>Strong continuity makes <span class="math" data-tex="$c$">$c$</span> continuous.  Applying (Y15) to the product law
+(Y3) shows <span class="math" data-tex="$c(z+w)=c(z)c(w)$">$c(z+w)=c(z)c(w)$</span>, so</p>
+<p><span class="math math-display" data-tex="$$
+c(s,t)=e^{i(ps+qt)}
+\tag{Y16}
+$$">$$
+c(s,t)=e^{i(ps+qt)}
+\tag{Y16}
+$$</span></p>
+<p>for unique <span class="math" data-tex="$p,q\in\mathbb R$">$p,q\in\mathbb R$</span>. Here the elementary character assertion can be seen without a duality theorem. For a continuous character <span class="math" data-tex="$d:\mathbb R\to\mathbb T$">$d:\mathbb R\to\mathbb T$</span>, choose a neighborhood of zero on which <span class="math" data-tex="$d(t)=e^{i\phi(t)}$">$d(t)=e^{i\phi(t)}$</span> with continuous <span class="math" data-tex="$|\phi(t)|&lt;\pi/4$">$|\phi(t)|&lt;\pi/4$</span> and <span class="math" data-tex="$\phi(0)=0$">$\phi(0)=0$</span>. The character law makes <span class="math" data-tex="$\phi(s+t)-\phi(s)-\phi(t)$">$\phi(s+t)-\phi(s)-\phi(t)$</span> an integer multiple of <span class="math" data-tex="$2\pi$">$2\pi$</span>; when all three arguments are in that neighborhood its absolute value is less than <span class="math" data-tex="$3\pi/4$">$3\pi/4$</span>, hence it is zero. Fix a positive <span class="math" data-tex="$a$">$a$</span> in a smaller interval. Subdivision and repeated local addition show <span class="math" data-tex="$\phi(ra)=r\phi(a)$">$\phi(ra)=r\phi(a)$</span> for rational <span class="math" data-tex="$r$">$r$</span> with <span class="math" data-tex="$ra$">$ra$</span> in that smaller interval. Continuity extends this to real <span class="math" data-tex="$r$">$r$</span>, so <span class="math" data-tex="$\phi(t)=pt$">$\phi(t)=pt$</span> there. Writing any <span class="math" data-tex="$t$">$t$</span> as a sufficiently large integer multiple of a small argument gives <span class="math" data-tex="$d(t)=e^{ipt}$">$d(t)=e^{ipt}$</span> everywhere. Apply this to <span class="math" data-tex="$c(s,0)$">$c(s,0)$</span> and <span class="math" data-tex="$c(0,t)$">$c(0,t)$</span> and use <span class="math" data-tex="$c(s,t)=c(s,0)c(0,t)$">$c(s,t)=c(s,0)c(0,t)$</span>. Equality of two slopes at every sufficiently small real argument forces them equal. By (Y6), conjugation by <span class="math" data-tex="$W(q,-p)$">$W(q,-p)$</span> has exactly
+the same effect (Y16) on every <span class="math" data-tex="$W(s,t)$">$W(s,t)$</span>.  Therefore
+<span class="math" data-tex="$W(q,-p)^*T$">$W(q,-p)^*T$</span> commutes with the irreducible Weyl family and is scalar.  We
+obtain</p>
+<p><span class="math math-display" data-tex="$$
+\boxed{
+\{\beta\in\operatorname{Aut}(B(\mathcal H)):
+\beta\alpha_z=\alpha_z\beta\ \forall z\}
+=\alpha(\mathbb R^2).}
+\tag{Y17}
+$$">$$
+\boxed{
+\{\beta\in\operatorname{Aut}(B(\mathcal H)):
+\beta\alpha_z=\alpha_z\beta\ \forall z\}
+=\alpha(\mathbb R^2).}
+\tag{Y17}
+$$</span></p>
+<p>Faithfulness follows at the same time: nondegeneracy of <span class="math" data-tex="$\omega$">$\omega$</span> makes
+<span class="math" data-tex="$\alpha_z=\operatorname{id}$">$\alpha_z=\operatorname{id}$</span> possible only for <span class="math" data-tex="$z=0$">$z=0$</span>.</p>
+<p><span id="OA-FLOW.WEYLPLANE.TRACE"></span><a id="weylplane-subgroups"></a></p>
+<h2 id="closed-subgroups-classify-invariant-von-neumann-subalgebras">Closed subgroups classify invariant von Neumann subalgebras</h2>
+<p>For <span class="math" data-tex="$E\subseteq\mathbb R^2$">$E\subseteq\mathbb R^2$</span>, define its symplectic annihilator by</p>
+<p><span class="math math-display" data-tex="$$
+E^{\perp_\omega}
+=\{z\in\mathbb R^2:e^{i\omega(z,e)}=1\text{ for every }e\in E\}.
+\tag{Y18}
+$$">$$
+E^{\perp_\omega}
+=\{z\in\mathbb R^2:e^{i\omega(z,e)}=1\text{ for every }e\in E\}.
+\tag{Y18}
+$$</span></p>
+<p>An eigenoperator calculation alone does not prove this classification.
+We supply the extra argument below: trace-class convolutions give a
+Gaussian correspondence with classical ideals, and closed subgroups of
+the Euclidean plane are synthesis sets.</p>
+<p><a id="weylplane-trace"></a></p>
+<h3 id="trace-class-operators-from-the-concrete-predual">Trace-class operators from the concrete predual</h3>
+<p>Let <span class="math" data-tex="$E_{\mathcal H}$">$E_{\mathcal H}$</span> be the completed projective tensor space constructed in <a href="OA-FLOW-CP.html#oa-flow.cp.1">CP-01–04</a>. On algebraic tensors define
+<span class="math math-display" data-tex="\[
+ \iota(\xi\otimes\overline\eta)=\Theta_{\xi,\eta},
+ \qquad \Theta_{\xi,\eta}\zeta=\langle\zeta,\eta\rangle\xi .
+ \tag{TC1}
+\]">\[
+ \iota(\xi\otimes\overline\eta)=\Theta_{\xi,\eta},
+ \qquad \Theta_{\xi,\eta}\zeta=\langle\zeta,\eta\rangle\xi .
+ \tag{TC1}
+\]</span>
+The bound <span class="math" data-tex="$\|\Theta_{\xi,\eta}\|=\|\xi\|\|\eta\|$">$\|\Theta_{\xi,\eta}\|=\|\xi\|\|\eta\|$</span> makes <span class="math" data-tex="$\iota$">$\iota$</span> contractive into <span class="math" data-tex="$B(\mathcal H)$">$B(\mathcal H)$</span>, so it extends to the completion. This extension is injective. Indeed, for a finite-rank orthogonal projection <span class="math" data-tex="$P$">$P$</span>, the tensor map <span class="math" data-tex="$C_P=P\otimes\overline P$">$C_P=P\otimes\overline P$</span> is contractive and
+<span class="math" data-tex="$\iota(C_Pu)=P\iota(u)P$">$\iota(C_Pu)=P\iota(u)P$</span>. As <span class="math" data-tex="$P$">$P$</span> increases over all finite-dimensional subspaces, <span class="math" data-tex="$C_Pu\to u$">$C_Pu\to u$</span> in the projective norm: this is immediate for a finite tensor sum and follows for the completion by contraction and approximation. The range of <span class="math" data-tex="$C_P$">$C_P$</span> is the finite-dimensional tensor space <span class="math" data-tex="$P\mathcal H\otimes\overline{P\mathcal H}$">$P\mathcal H\otimes\overline{P\mathcal H}$</span>, and its rank-one matrix units are linearly independent as operators. Thus <span class="math" data-tex="$\iota(u)=0$">$\iota(u)=0$</span> makes every <span class="math" data-tex="$C_Pu=0$">$C_Pu=0$</span>, and the limit makes <span class="math" data-tex="$u=0$">$u=0$</span>.</p>
+<p>Define <span class="math" data-tex="$\mathcal T(\mathcal H)=\iota(E_{\mathcal H})$">$\mathcal T(\mathcal H)=\iota(E_{\mathcal H})$</span> and <span class="math" data-tex="$\|S\|_1=\|\iota^{-1}S\|$">$\|S\|_1=\|\iota^{-1}S\|$</span>. This is a Banach space and finite-rank operators are dense. CP-03 gives its complete dual:
+<span class="math math-display" data-tex="\[
+ \langle S,x\rangle=\operatorname{Tr}(Sx),\qquad
+ \operatorname{Tr}(\Theta_{\xi,\eta}x)=\langle x\xi,\eta\rangle,
+ \qquad \mathcal T(\mathcal H)^*=B(\mathcal H).
+ \tag{TC2}
+\]">\[
+ \langle S,x\rangle=\operatorname{Tr}(Sx),\qquad
+ \operatorname{Tr}(\Theta_{\xi,\eta}x)=\langle x\xi,\eta\rangle,
+ \qquad \mathcal T(\mathcal H)^*=B(\mathcal H).
+ \tag{TC2}
+\]</span>
+Here the trace is defined by pairing with <span class="math" data-tex="$1$">$1$</span>. It agrees with the ordinary finite matrix trace on finite-rank operators. In particular
+<span class="math" data-tex="$|\operatorname{Tr}(Sx)|\le\|S\|_1\|x\|$">$|\operatorname{Tr}(Sx)|\le\|S\|_1\|x\|$</span> and
+<span class="math" data-tex="$\|\Theta_{\xi,\eta}\|_1=\|\xi\|\|\eta\|$">$\|\Theta_{\xi,\eta}\|_1=\|\xi\|\|\eta\|$</span> by CP-02.</p>
+<p>For <span class="math" data-tex="$a,b\in B(\mathcal H)$">$a,b\in B(\mathcal H)$</span>,
+<span class="math" data-tex="$a\Theta_{\xi,\eta}b=\Theta_{a\xi,b^*\eta}$">$a\Theta_{\xi,\eta}b=\Theta_{a\xi,b^*\eta}$</span>. Taking the infimum over finite tensor representations, then passing to the completion, proves
+<span class="math" data-tex="$\|aSb\|_1\le\|a\|\|S\|_1\|b\|$">$\|aSb\|_1\le\|a\|\|S\|_1\|b\|$</span>.
+Finite-rank calculation gives <span class="math" data-tex="$\operatorname{Tr}(Sx)=\operatorname{Tr}(xS)$">$\operatorname{Tr}(Sx)=\operatorname{Tr}(xS)$</span>; both sides are trace-norm continuous, so this holds for every <span class="math" data-tex="$S\in\mathcal T$">$S\in\mathcal T$</span>. Conjugation by a unitary is a trace-norm isometry, since its inverse is also contractive. CP-04 represents every <span class="math" data-tex="$S$">$S$</span> by an absolutely summable series of rank-one operators. The equality of the induced dual topology with the ultraweak topology and the annihilator identity for every ultraweakly closed linear subspace are <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP-04–05</a>. Thus
+<span class="math math-display" data-tex="\[
+ N=(N_\perp)^\perp,\qquad
+ N_\perp=\{S:\operatorname{Tr}(Sx)=0\text{ for every }x\in N\}.
+ \tag{TC3}
+\]">\[
+ N=(N_\perp)^\perp,\qquad
+ N_\perp=\{S:\operatorname{Tr}(Sx)=0\text{ for every }x\in N\}.
+ \tag{TC3}
+\]</span></p>
+<p>For completeness, the Hilbert–Schmidt completion used below also embeds faithfully in operators. On finite-rank operators put
+<span class="math" data-tex="$\|S\|_{\mathrm{HS}}^2=\sum_j\|Se_j\|^2$">$\|S\|_{\mathrm{HS}}^2=\sum_j\|Se_j\|^2$</span> for an orthonormal basis. Parseval on the finite-dimensional range makes this basis independent and gives its Hilbert inner product. Rank-one operators identify this space with the algebraic Hilbert tensor product <span class="math" data-tex="$\mathcal H\otimes\overline{\mathcal H}$">$\mathcal H\otimes\overline{\mathcal H}$</span>. The inequality <span class="math" data-tex="$\|S\|\le\|S\|_{\mathrm{HS}}$">$\|S\|\le\|S\|_{\mathrm{HS}}$</span> gives a bounded operator associated to every vector of the completion. If that operator is zero, its inner products with all rank-one tensors vanish, because these are its matrix coefficients; density forces the Hilbert tensor vector to be zero. Moreover the triangle inequality and
+<span class="math" data-tex="$\|\Theta_{\xi,\eta}\|_{\mathrm{HS}}=\|\xi\|\|\eta\|$">$\|\Theta_{\xi,\eta}\|_{\mathrm{HS}}=\|\xi\|\|\eta\|$</span>
+give <span class="math" data-tex="$\|S\|_{\mathrm{HS}}\le\|S\|_1$">$\|S\|_{\mathrm{HS}}\le\|S\|_1$</span> first on finite sums and then on all of <span class="math" data-tex="$\mathcal T$">$\mathcal T$</span>. Hence trace-norm convergence implies Hilbert–Schmidt convergence with the same resulting operator.</p>
+<p>These arguments supply precisely the trace-class, normal-functional and Hilbert–Schmidt facts needed here. No singular-value expansion is required. Rank-one operators with Schwartz vectors are trace-norm dense: approximate each vector in a finite sum in <span class="math" data-tex="$L^2$">$L^2$</span> and use the rank-one norm bound.</p>
+<p><span id="OA-FLOW.WEYLPLANE.DIVISION"></span><a id="weylplane-fourier"></a></p>
+<h3 id="the-scalar-fourier-and-ideal-conventions">The scalar Fourier and ideal conventions</h3>
+<p>The earlier <a href="OA-FLOW-FF.html#oa-flow.ff.2">FF-1–2</a>, <a href="OA-FLOW-L35.html#oa-flow.gi.fourier">smooth-filter proof</a> and <a href="OA-FLOW-RF.html#oa-flow.rf.1">RF-1</a> give Gaussian integration, Fourier inversion, scalar Plancherel, smooth cutoffs and the required <span class="math" data-tex="$L^1$">$L^1$</span> compatibility. In two variables apply the one-variable transforms successively; integrable majorants justify Fubini on Schwartz functions, and the <span class="math" data-tex="$L^2$">$L^2$</span> isometries extend the resulting identities by density. Repeated differentiation under the integral and integration by parts show that Fourier transform and inverse preserve the Schwartz seminorms. In particular, multiplying a Schwartz transform by a smooth cutoff equal to one on expanding balls converges in all Schwartz seminorms, as do the inverse transforms. Schwartz density in <span class="math" data-tex="$L^1$">$L^1$</span> and <span class="math" data-tex="$L^2$">$L^2$</span> follows by approximating by compact continuous functions and convolving with smooth compact approximate identities; uniform convergence on a common compact set gives the claimed norms. These are also the scalar approximation constructions of the linked Fourier lessons.</p>
+<p>The vector integrals use <a href="OA-FLOW-FF.html#oa-flow.ff.4">FF-3</a>. For <span class="math" data-tex="$m=1,2$">$m=1,2$</span>, write <span class="math" data-tex="$A(\mathbb R^m)=\{Fa:a\in L^1(\mathbb R^m)\}$">$A(\mathbb R^m)=\{Fa:a\in L^1(\mathbb R^m)\}$</span> with the positive Fourier convention below. Its norm is <span class="math" data-tex="$\|Fa\|_A=\|a\|_1$">$\|Fa\|_A=\|a\|_1$</span>. Fourier injectivity makes the norm well-defined, and convolution makes it a Banach algebra. For a closed set <span class="math" data-tex="$E$">$E$</span> put
+<span class="math math-display" data-tex="\[
+ I(E)=\{f\in A:f|_E=0\},\qquad
+ j(E)=\overline{\{f\in A:\operatorname{supp}f\text{ is compact and disjoint from }E\}}^{\,\|\cdot\|_A}.
+ \tag{TC4}
+\]">\[
+ I(E)=\{f\in A:f|_E=0\},\qquad
+ j(E)=\overline{\{f\in A:\operatorname{supp}f\text{ is compact and disjoint from }E\}}^{\,\|\cdot\|_A}.
+ \tag{TC4}
+\]</span>
+For a closed ideal <span class="math" data-tex="$J$">$J$</span>, its hull is <span class="math" data-tex="$h(J)=\{p:f(p)=0\text{ for every }f\in J\}$">$h(J)=\{p:f(p)=0\text{ for every }f\in J\}$</span>. These are the ideals in the local division and synthesis arguments below; no synthesis theorem is assumed.</p>
+<p><a id="weylplane-division"></a></p>
+<p><strong>Euclidean local division.</strong> Use the ordinary positive-sign
+transform <span class="math" data-tex="$Fa(p)=\int a(t)e^{it\cdot p}\,dt$">$Fa(p)=\int a(t)e^{it\cdot p}\,dt$</span> on <span class="math" data-tex="$\mathbb R^m$">$\mathbb R^m$</span>,
+<span class="math" data-tex="$m=1,2$">$m=1,2$</span>, and the norm <span class="math" data-tex="$\|Fa\|_A=\|a\|_1$">$\|Fa\|_A=\|a\|_1$</span>. Smooth compact
+functions are in this algebra by Schwartz inversion. Its compact
+Fourier functions are dense: multiplying <span class="math" data-tex="$Fa$">$Fa$</span> by
+<span class="math" data-tex="$\eta(p/R)$">$\eta(p/R)$</span>, where <span class="math" data-tex="$\eta\in C_c^\infty$">$\eta\in C_c^\infty$</span> is one near zero,
+convolves <span class="math" data-tex="$a$">$a$</span> with a bounded <span class="math" data-tex="$L^1$">$L^1$</span> approximate identity.
+Translation continuity proves convergence in <span class="math" data-tex="$L^1$">$L^1$</span>.
+Fourier injectivity follows from the preceding Plancherel
+argument, and vanishing at infinity follows by <span class="math" data-tex="$L^1$">$L^1$</span>
+approximation from Schwartz kernels.</p>
+<p>Let <span class="math" data-tex="$f=Fa$">$f=Fa$</span> and <span class="math" data-tex="$f(p_0)=c\ne0$">$f(p_0)=c\ne0$</span>. Choose
+<span class="math" data-tex="$\chi\in C_c^\infty$">$\chi\in C_c^\infty$</span>, equal to one near zero, and write
+<span class="math" data-tex="$\chi_\varepsilon(p)=\chi((p-p_0)/\varepsilon)$">$\chi_\varepsilon(p)=\chi((p-p_0)/\varepsilon)$</span>.
+If <span class="math" data-tex="$b_\varepsilon$">$b_\varepsilon$</span> is the inverse transform of
+<span class="math" data-tex="$\chi(p/\varepsilon)$">$\chi(p/\varepsilon)$</span>, then
+<span class="math" data-tex="$b_\varepsilon(t)=\varepsilon^m b(\varepsilon t)$">$b_\varepsilon(t)=\varepsilon^m b(\varepsilon t)$</span>.
+Its <span class="math" data-tex="$L^1$">$L^1$</span> norm is constant, and
+<span class="math" data-tex="$\|\tau_y b_\varepsilon-b_\varepsilon\|_1\to0$">$\|\tau_y b_\varepsilon-b_\varepsilon\|_1\to0$</span>
+for every fixed <span class="math" data-tex="$y$">$y$</span>. The inverse kernel of
+<span class="math" data-tex="$(f-c)\chi_\varepsilon$">$(f-c)\chi_\varepsilon$</span> is a modulation of</p>
+<p><span class="math math-display" data-tex="$$
+\int a(y)e^{iy\cdot p_0}
+       (\tau_y b_\varepsilon-b_\varepsilon)\,dy .
+\tag{Y18a}
+$$">$$
+\int a(y)e^{iy\cdot p_0}
+       (\tau_y b_\varepsilon-b_\varepsilon)\,dy .
+\tag{Y18a}
+$$</span></p>
+<p>This is an <span class="math" data-tex="$L^1$">$L^1$</span> Bochner integral. Dominated convergence,
+with bound <span class="math" data-tex="$2\|b\|_1|a(y)|$">$2\|b\|_1|a(y)|$</span>, makes its norm tend to zero.
+Choose <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> with
+<span class="math" data-tex="$\|(f-c)\chi_\varepsilon\|_A&lt;|c|$">$\|(f-c)\chi_\varepsilon\|_A&lt;|c|$</span>. In the unitized Fourier
+algebra, <span class="math" data-tex="$d=c1+(f-c)\chi_\varepsilon$">$d=c1+(f-c)\chi_\varepsilon$</span> has the inverse given by
+its convergent Neumann series. On a neighborhood of <span class="math" data-tex="$p_0$">$p_0$</span>,
+<span class="math" data-tex="$d=f$">$d=f$</span>. Multiply <span class="math" data-tex="$d^{-1}$">$d^{-1}$</span> by a smooth compact cutoff that is
+one on a smaller neighborhood. The result lies in <span class="math" data-tex="$A$">$A$</span> and
+is a local inverse of <span class="math" data-tex="$f$">$f$</span> there.</p>
+<p>For a compact set on which <span class="math" data-tex="$f$">$f$</span> has no zeros, choose finitely
+many such neighborhoods and smooth cutoffs <span class="math" data-tex="$c_i$">$c_i$</span> supported
+inside them and equal to one on a smaller covering.
+The functions <span class="math" data-tex="$q_1=c_1$">$q_1=c_1$</span>,
+<span class="math" data-tex="$q_i=c_i\prod_{k&lt;i}(1-c_k)$">$q_i=c_i\prod_{k&lt;i}(1-c_k)$</span> sum to one near that compact set.
+Multiplying each local inverse by <span class="math" data-tex="$q_i$">$q_i$</span> and summing proves
+the compact local inverse assertion. It also proves the
+local ideal inclusion used below: if <span class="math" data-tex="$J$">$J$</span> is a closed ideal,
+a compact Fourier function supported outside its common
+zero set has a finite decomposition <span class="math" data-tex="$h=\sum_i hq_i$">$h=\sum_i hq_i$</span> with
+<span class="math" data-tex="$hq_i=f_i(v_i hq_i)\in J$">$hq_i=f_i(v_i hq_i)\in J$</span>, where <span class="math" data-tex="$f_i\in J$">$f_i\in J$</span> is nonzero on
+the supporting neighborhood and <span class="math" data-tex="$v_i$">$v_i$</span> is its local inverse.
+Taking norm closure gives <span class="math" data-tex="$j(h(J))\subset J\subset I(h(J))$">$j(h(J))\subset J\subset I(h(J))$</span>.
+This supplies the Euclidean instance directly; no local
+inverse theorem for an arbitrary LCA group is needed here.</p>
+<p><span id="OA-FLOW.WEYLPLANE.SUBGROUPS"></span><a id="weylplane-synthesis"></a></p>
+<p><strong>Weyl synthesis lemma.</strong> Let <span class="math" data-tex="$N\subseteq B(\mathcal H)$">$N\subseteq B(\mathcal H)$</span> be a unital von
+Neumann algebra satisfying <span class="math" data-tex="$\alpha_z(N)=N$">$\alpha_z(N)=N$</span> for every <span class="math" data-tex="$z$">$z$</span>.  Then</p>
+<p><span class="math math-display" data-tex="$$
+L_N=\{w\in\mathbb R^2:W(w)\in N\}
+\tag{Y19}
+$$">$$
+L_N=\{w\in\mathbb R^2:W(w)\in N\}
+\tag{Y19}
+$$</span></p>
+<p>is a closed subgroup and</p>
+<p><span class="math math-display" data-tex="$$
+N=\{W(w):w\in L_N\}''.
+\tag{Y20}
+$$">$$
+N=\{W(w):w\in L_N\}''.
+\tag{Y20}
+$$</span></p>
+<p>Moreover, for every closed subgroup <span class="math" data-tex="$L$">$L$</span>,</p>
+<p><span class="math math-display" data-tex="$$
+\{W(w):w\in L\}'
+=\{W(z):z\in L^{\perp_\omega}\}''.
+\tag{Y21}
+$$">$$
+\{W(w):w\in L\}'
+=\{W(z):z\in L^{\perp_\omega}\}''.
+\tag{Y21}
+$$</span></p>
+<p>For trace-class <span class="math" data-tex="$S$">$S$</span>, its Fourier–Wigner
+transform</p>
+<p><span class="math math-display" data-tex="$$
+\mathcal W_S(w)=\operatorname{Tr}(S W(w)^*)
+\tag{Y22}
+$$">$$
+\mathcal W_S(w)=\operatorname{Tr}(S W(w)^*)
+\tag{Y22}
+$$</span></p>
+<p>is continuous, vanishes at infinity, and separates trace-class operators.
+Here is the norm argument needed for the last assertion. Polarizing (Y7)
+in both vector variables and summing the resulting rank-one pairings gives,
+for every finite-rank <span class="math" data-tex="$S$">$S$</span>,</p>
+<p><span class="math math-display" data-tex="$$
+\int_{\mathbb R^2}|\mathcal W_S(w)|^2\,dw
+=2\pi\|S\|_{\mathrm{HS}}^2.
+\tag{Y22a}
+$$">$$
+\int_{\mathbb R^2}|\mathcal W_S(w)|^2\,dw
+=2\pi\|S\|_{\mathrm{HS}}^2.
+\tag{Y22a}
+$$</span></p>
+<p>Take finite-rank <span class="math" data-tex="$S_n$">$S_n$</span> converging to an arbitrary trace-class <span class="math" data-tex="$S$">$S$</span> in trace
+norm. They also converge in Hilbert--Schmidt norm, so (Y22a) gives an
+<span class="math" data-tex="$L^2$">$L^2$</span> limit of their transforms. Meanwhile
+<span class="math" data-tex="$\|\mathcal W_{S_n}-\mathcal W_S\|_\infty\leq\|S_n-S\|_1$">$\|\mathcal W_{S_n}-\mathcal W_S\|_\infty\leq\|S_n-S\|_1$</span>.
+On each compact set this uniform convergence is also <span class="math" data-tex="$L^2$">$L^2$</span> convergence.
+Hence the <span class="math" data-tex="$L^2$">$L^2$</span> limit is <span class="math" data-tex="$\mathcal W_S$">$\mathcal W_S$</span> almost everywhere, and (Y22a)
+holds for <span class="math" data-tex="$S$">$S$</span>. In particular, <span class="math" data-tex="$\mathcal W_S=0$">$\mathcal W_S=0$</span> implies <span class="math" data-tex="$S=0$">$S=0$</span>.
+Injectivity is proved by this norm identity, rather than inferred from
+injectivity on the finite-rank subspace alone.</p>
+<p>For continuity and vanishing at infinity, approximate <span class="math" data-tex="$S$">$S$</span> in trace norm
+by finite-rank operators formed from Schwartz vectors. Their transforms
+are Schwartz functions: explicitly,</p>
+<p><span class="math math-display" data-tex="$$
+\mathcal W_{\Theta_{\xi,\eta}}(s,t)
+=\int e^{-irt}\xi(r-s)\overline{\eta(r)}\,dr.
+\tag{Y22b}
+$$">$$
+\mathcal W_{\Theta_{\xi,\eta}}(s,t)
+=\int e^{-irt}\xi(r-s)\overline{\eta(r)}\,dr.
+\tag{Y22b}
+$$</span></p>
+<p>This is a partial Fourier transform of a Schwartz function of <span class="math" data-tex="$(r,s)$">$(r,s)$</span>.
+The same uniform bound makes <span class="math" data-tex="$\mathcal W_S$">$\mathcal W_S$</span> a uniform limit in <span class="math" data-tex="$C_0$">$C_0$</span>.
+Conjugating <span class="math" data-tex="$S$">$S$</span> by
+<span class="math" data-tex="$W(z)$">$W(z)$</span> multiplies (Y22) by the character <span class="math" data-tex="$w\mapsto e^{i\omega(z,w)}$">$w\mapsto e^{i\omega(z,w)}$</span>.
+Consequently <span class="math" data-tex="$N_\perp$">$N_\perp$</span> is invariant under conjugation by Weyl operators.
+The common zero set of its transforms is exactly <span class="math" data-tex="$L_N$">$L_N$</span>: by the
+preannihilator separation theorem, <span class="math" data-tex="$\mathcal W_S(w)=0$">$\mathcal W_S(w)=0$</span> for every
+<span class="math" data-tex="$S\in N_\perp$">$S\in N_\perp$</span> if and only if <span class="math" data-tex="$W(w)^*\in N$">$W(w)^*\in N$</span>, equivalently <span class="math" data-tex="$W(w)\in N$">$W(w)\in N$</span>.
+The multiplication and adjoint formulas (Y3) make <span class="math" data-tex="$L_N$">$L_N$</span> a subgroup.
+Strong continuity of <span class="math" data-tex="$W$">$W$</span> and weak-star closedness of <span class="math" data-tex="$N$">$N$</span> make it closed.</p>
+<p><strong>Trace-class convolution.</strong> For this proof only, use the normalized
+measure <span class="math" data-tex="$d\mu(z)=ds\,dt/(2\pi)$">$d\mu(z)=ds\,dt/(2\pi)$</span> and symmetric Weyl operators</p>
+<p><span class="math math-display" data-tex="$$
+D(s,t)=e^{-ist/2}W(s,t),\qquad
+Q_S(w)=\operatorname{Tr}(S D(w)^*),\qquad
+(J\xi)(r)=\xi(-r).
+\tag{Y22c}
+$$">$$
+D(s,t)=e^{-ist/2}W(s,t),\qquad
+Q_S(w)=\operatorname{Tr}(S D(w)^*),\qquad
+(J\xi)(r)=\xi(-r).
+\tag{Y22c}
+$$</span></p>
+<p>Thus <span class="math" data-tex="$D(z)^*=D(-z)$">$D(z)^*=D(-z)$</span>, <span class="math" data-tex="$JD(z)J=D(-z)$">$JD(z)J=D(-z)$</span>, and
+<span class="math" data-tex="$Q_S(a,b)=e^{iab/2}\mathcal W_S(a,b)$">$Q_S(a,b)=e^{iab/2}\mathcal W_S(a,b)$</span>. Neither the zero sets nor the
+generated algebras change. For <span class="math" data-tex="$f\in L^1(d\mu)$">$f\in L^1(d\mu)$</span> and trace-class <span class="math" data-tex="$T,S$">$T,S$</span>, set</p>
+<p><span class="math math-display" data-tex="$$
+\begin{aligned}
+f*T&amp;=\int f(z)\alpha_z(T)\,d\mu(z),\\
+(T*S)(z)&amp;=\operatorname{Tr}\bigl(T\alpha_z(JSJ)\bigr),\\
+F_\omega f(w)&amp;=\int f(z)e^{i\omega(z,w)}\,d\mu(z).
+\end{aligned}
+\tag{Y22d}
+$$">$$
+\begin{aligned}
+f*T&amp;=\int f(z)\alpha_z(T)\,d\mu(z),\\
+(T*S)(z)&amp;=\operatorname{Tr}\bigl(T\alpha_z(JSJ)\bigr),\\
+F_\omega f(w)&amp;=\int f(z)e^{i\omega(z,w)}\,d\mu(z).
+\end{aligned}
+\tag{Y22d}
+$$</span></p>
+<p>We also write <span class="math" data-tex="$T*f=f*T$">$T*f=f*T$</span>.
+The first integral converges in trace norm: rank-one approximation and
+strong continuity of <span class="math" data-tex="$D$">$D$</span> make trace-class orbits norm continuous. It
+satisfies <span class="math" data-tex="$\|f*T\|_1\leq\|f\|_{L^1}\|T\|_1$">$\|f*T\|_1\leq\|f\|_{L^1}\|T\|_1$</span>. For two rank-one operators,
+the integrand defining <span class="math" data-tex="$T*S$">$T*S$</span> is a product of two Weyl coefficients.
+Cauchy--Schwarz and (Y7), with the normalized measure, bound its
+<span class="math" data-tex="$L^1$">$L^1$</span> norm by the product of the four vector norms. Apply this bound to finite sums of rank-one operators and take the infimum over both projective tensor representations. Trace-norm completion and completeness of <span class="math" data-tex="$L^1$">$L^1$</span> then give</p>
+<p><span class="math math-display" data-tex="$$
+\|T*S\|_{L^1}\leq\|T\|_1\|S\|_1,\qquad
+F_\omega(T*S)=Q_TQ_S,\qquad
+Q_{f*T}=(F_\omega f)Q_T.
+\tag{Y22e}
+$$">$$
+\|T*S\|_{L^1}\leq\|T\|_1\|S\|_1,\qquad
+F_\omega(T*S)=Q_TQ_S,\qquad
+Q_{f*T}=(F_\omega f)Q_T.
+\tag{Y22e}
+$$</span></p>
+<p>Here is a direct sign and normalization check for the middle identity.
+For finite-rank Schwartz operators with kernels <span class="math" data-tex="$K_T,K_S$">$K_T,K_S$</span>, the
+convolution is</p>
+<p><span class="math math-display" data-tex="$$
+(T*S)(s,t)=\int_{\mathbb R^2}
+ K_T(r,u)e^{it(u-r)}K_S(-u-s,-r-s)\,dr\,du.
+\tag{Y22f}
+$$">$$
+(T*S)(s,t)=\int_{\mathbb R^2}
+ K_T(r,u)e^{it(u-r)}K_S(-u-s,-r-s)\,dr\,du.
+\tag{Y22f}
+$$</span></p>
+<p>For fixed <span class="math" data-tex="$s$">$s$</span>, write (Y22f) as <span class="math" data-tex="$\int H_s(v)e^{itv}\,dv$">$\int H_s(v)e^{itv}\,dv$</span>, where
+<span class="math" data-tex="$H_s(v)=\int K_T(r,r+v)K_S(-r-v-s,-r-s)\,dr$">$H_s(v)=\int K_T(r,r+v)K_S(-r-v-s,-r-s)\,dr$</span>.
+This is a Schwartz function of <span class="math" data-tex="$(s,v)$">$(s,v)$</span>. Taking <span class="math" data-tex="$F_\omega$">$F_\omega$</span> at <span class="math" data-tex="$(a,b)$">$(a,b)$</span>,
+one-dimensional Fourier inversion evaluates <span class="math" data-tex="$H_s$">$H_s$</span> at <span class="math" data-tex="$a$">$a$</span>; this
+justifies <span class="math" data-tex="$u=r+a$">$u=r+a$</span> without exchanging a nonintegrable oscillatory
+integrand by Fubini. Put <span class="math" data-tex="$v=-r-s$">$v=-r-s$</span> in the remaining integral. The result
+is the product</p>
+<p><span class="math math-display" data-tex="$$
+\left(\int K_T(r,r+a)e^{-ib(r+a/2)}\,dr\right)
+\left(\int K_S(v-a,v)e^{-ib(v-a/2)}\,dv\right)
+=Q_T(a,b)Q_S(a,b).
+\tag{Y22g}
+$$">$$
+\left(\int K_T(r,r+a)e^{-ib(r+a/2)}\,dr\right)
+\left(\int K_S(v-a,v)e^{-ib(v-a/2)}\,dv\right)
+=Q_T(a,b)Q_S(a,b).
+\tag{Y22g}
+$$</span></p>
+<p>All the functions in this calculation are Schwartz, so inversion is
+valid before the trace-norm approximation. The norm bound in (Y22e)
+and the uniform bound for <span class="math" data-tex="$Q$">$Q$</span> extend the identity to arbitrary
+trace-class operators. The last identity in (Y22e) follows directly
+by pairing the trace-norm integral with <span class="math" data-tex="$D(w)^*$">$D(w)^*$</span>.</p>
+<p>Classical Fourier injectivity and (Y22a) now prove associativity of
+these convolutions: both parenthesizations of three trace-class factors
+have transform <span class="math" data-tex="$Q_TQ_SQ_R$">$Q_TQ_SQ_R$</span>. The same verification covers mixed
+classical and trace-class factors. Also <span class="math" data-tex="$T*S=S*T$">$T*S=S*T$</span>; cyclicity of trace
+and <span class="math" data-tex="$JD(z)J=D(-z)$">$JD(z)J=D(-z)$</span> give this directly.</p>
+<p><strong>A Gaussian recovers the trace-class subspace.</strong> Let
+<span class="math" data-tex="$g_0(r)=\pi^{-1/4}e^{-r^2/2}$">$g_0(r)=\pi^{-1/4}e^{-r^2/2}$</span> and <span class="math" data-tex="$G=\Theta_{g_0,g_0}$">$G=\Theta_{g_0,g_0}$</span>. Completing
+the square in (Y22b) gives</p>
+<p><span class="math math-display" data-tex="$$
+Q_G(w)=e^{-|w|^2/4},\qquad
+F_\omega(G*G)(w)=e^{-|w|^2/2}.
+\tag{Y22h}
+$$">$$
+Q_G(w)=e^{-|w|^2/4},\qquad
+F_\omega(G*G)(w)=e^{-|w|^2/2}.
+\tag{Y22h}
+$$</span></p>
+<p>The classical ideal <span class="math" data-tex="$(G*G)*L^1$">$(G*G)*L^1$</span> is dense in <span class="math" data-tex="$L^1$">$L^1$</span>. To prove this
+specific assertion, take a Schwartz function <span class="math" data-tex="$h$">$h$</span> whose Fourier
+transform is smooth and compactly supported. Dividing that transform
+by the nowhere-zero Gaussian in (Y22h) gives another smooth compactly
+supported function; its inverse transform <span class="math" data-tex="$b$">$b$</span> is Schwartz, and
+<span class="math" data-tex="$h=(G*G)*b$">$h=(G*G)*b$</span>. Such <span class="math" data-tex="$h$">$h$</span> are dense in <span class="math" data-tex="$L^1$">$L^1$</span>: first approximate by
+Schwartz functions, then multiply their Schwartz transforms by smooth
+cutoffs equal to one on expanding balls. The inverse transforms
+converge in the Schwartz topology, hence in <span class="math" data-tex="$L^1$">$L^1$</span>. No unrestricted
+spectral-synthesis or Wiener-density assertion is used here.</p>
+<p>Let <span class="math" data-tex="$\mathcal M$">$\mathcal M$</span> be a norm-closed conjugation-invariant trace-class
+subspace, and define</p>
+<p><span class="math math-display" data-tex="$$
+\mathcal I_{\mathcal M}
+=\overline{\operatorname{span}\{T*S:
+       T\text{ trace class},\ S\in\mathcal M\}}^{L^1}.
+\tag{Y22i}
+$$">$$
+\mathcal I_{\mathcal M}
+=\overline{\operatorname{span}\{T*S:
+       T\text{ trace class},\ S\in\mathcal M\}}^{L^1}.
+\tag{Y22i}
+$$</span></p>
+<p>Covariance makes this a closed translation-invariant classical
+subspace. It is an ideal: convolution by a classical kernel is a
+Bochner integral of translates, hence preserves it. Likewise
+<span class="math" data-tex="$f*S\in\mathcal M$">$f*S\in\mathcal M$</span> for <span class="math" data-tex="$S\in\mathcal M$">$S\in\mathcal M$</span>. Associativity gives
+<span class="math" data-tex="$T*(R*S)=(T*R)*S\in\mathcal M$">$T*(R*S)=(T*R)*S\in\mathcal M$</span>, so</p>
+<p><span class="math math-display" data-tex="$$
+\overline{\operatorname{span}
+   \{T*f:T\text{ trace class},\ f\in\mathcal I_{\mathcal M}\}}^{\|\cdot\|_1}
+=\mathcal M.
+\tag{Y22j}
+$$">$$
+\overline{\operatorname{span}
+   \{T*f:T\text{ trace class},\ f\in\mathcal I_{\mathcal M}\}}^{\|\cdot\|_1}
+=\mathcal M.
+\tag{Y22j}
+$$</span></p>
+<p>For the reverse inclusion, approximate a classical approximate
+identity in <span class="math" data-tex="$L^1$">$L^1$</span> by kernels <span class="math" data-tex="$(G*G)*b$">$(G*G)*b$</span>. Acting on <span class="math" data-tex="$S\in\mathcal M$">$S\in\mathcal M$</span>,
+these kernels approach <span class="math" data-tex="$S$">$S$</span> in trace norm. Their actions equal
+<span class="math" data-tex="$G*(G*(b*S))$">$G*(G*(b*S))$</span>, whose inner classical factor is in
+<span class="math" data-tex="$\mathcal I_{\mathcal M}$">$\mathcal I_{\mathcal M}$</span>. This proves the missing inclusion in
+(Y22j). Formula (Y22e) and the nonvanishing <span class="math" data-tex="$Q_G$">$Q_G$</span> also show that the
+common Fourier zero set of <span class="math" data-tex="$\mathcal I_{\mathcal M}$">$\mathcal I_{\mathcal M}$</span> is exactly the
+common zero set of the <span class="math" data-tex="$Q_S$">$Q_S$</span> for <span class="math" data-tex="$S\in\mathcal M$">$S\in\mathcal M$</span>.</p>
+<p><strong>Classical closed-subgroup synthesis.</strong> We prove
+<span class="math" data-tex="$j(L)=I(L)$">$j(L)=I(L)$</span> in the Euclidean Fourier algebra for every closed
+subgroup <span class="math" data-tex="$L\leq\mathbb R^2$">$L\leq\mathbb R^2$</span>, using the ideals of lesson 17.
+The symplectic Fourier transform differs from the ordinary one by
+an invertible linear change of frequency coordinates, which
+preserves this assertion.</p>
+<p>First a point is a synthesis set in <span class="math" data-tex="$\mathbb R^m$">$\mathbb R^m$</span>; the case <span class="math" data-tex="$m=0$">$m=0$</span>
+has zero vanishing ideal and is immediate.
+Choose <span class="math" data-tex="$\chi\in C_c^\infty(\mathbb R^m)$">$\chi\in C_c^\infty(\mathbb R^m)$</span> equal to one near zero,
+and let <span class="math" data-tex="$b_\varepsilon$">$b_\varepsilon$</span> be the inverse transform of
+<span class="math" data-tex="$\chi(\,\cdot/\varepsilon)$">$\chi(\,\cdot/\varepsilon)$</span>. Scaling gives uniformly bounded
+<span class="math" data-tex="$L^1$">$L^1$</span> norms and
+<span class="math" data-tex="$\|\tau_yb_\varepsilon-b_\varepsilon\|_1\to0$">$\|\tau_yb_\varepsilon-b_\varepsilon\|_1\to0$</span> for every fixed <span class="math" data-tex="$y$">$y$</span>.
+For a mean-zero <span class="math" data-tex="$a\in L^1$">$a\in L^1$</span>, its convolution is the actual
+<span class="math" data-tex="$L^1$">$L^1$</span> Bochner integral</p>
+<p><span class="math math-display" data-tex="$$
+a*b_\varepsilon
+=\int a(y)(\tau_yb_\varepsilon-b_\varepsilon)\,dy
+\longrightarrow0\quad\text{in }L^1.
+\tag{Y22k}
+$$">$$
+a*b_\varepsilon
+=\int a(y)(\tau_yb_\varepsilon-b_\varepsilon)\,dy
+\longrightarrow0\quad\text{in }L^1.
+\tag{Y22k}
+$$</span></p>
+<p>The convergence follows by dominated convergence and the uniform
+norm bound. Consequently <span class="math" data-tex="$(Fa)(1-\chi(\,\cdot/\varepsilon))$">$(Fa)(1-\chi(\,\cdot/\varepsilon))$</span>
+approaches <span class="math" data-tex="$Fa$">$Fa$</span> in Fourier-algebra norm and vanishes near zero.
+Multiplication by smooth expanding Fourier cutoffs then makes each
+approximant compactly supported without losing that vanishing.
+Modulation shifts the same proof to any point.</p>
+<p>Every affine plane <span class="math" data-tex="$V\times\{\lambda\}$">$V\times\{\lambda\}$</span> in
+<span class="math" data-tex="$\mathbb R^d\times\mathbb R^m$">$\mathbb R^d\times\mathbb R^m$</span> is therefore a synthesis set.
+Indeed, restriction of a Fourier transform to that plane is the
+Fourier transform of the bounded map</p>
+<p><span class="math math-display" data-tex="$$
+r_\lambda a(u)=\int a(u,v)e^{iv\cdot\lambda}\,dv.
+\tag{Y22l}
+$$">$$
+r_\lambda a(u)=\int a(u,v)e^{iv\cdot\lambda}\,dv.
+\tag{Y22l}
+$$</span></p>
+<p>Choose <span class="math" data-tex="$\rho\in L^1(\mathbb R^m)$">$\rho\in L^1(\mathbb R^m)$</span> with
+<span class="math" data-tex="$\int\rho(v)e^{iv\cdot\lambda}\,dv=1$">$\int\rho(v)e^{iv\cdot\lambda}\,dv=1$</span>.
+The map <span class="math" data-tex="$a\mapsto(r_\lambda a)\otimes\rho$">$a\mapsto(r_\lambda a)\otimes\rho$</span> is a bounded
+projection. Approximate an element of <span class="math" data-tex="$\ker r_\lambda$">$\ker r_\lambda$</span> by finite
+separated sums in <span class="math" data-tex="$L^1(\mathbb R^{d+m})$">$L^1(\mathbb R^{d+m})$</span>, then apply one minus this
+projection. The resulting sums have transverse factors of zero
+<span class="math" data-tex="$\lambda$">$\lambda$</span>-evaluation. The point-synthesis proof approximates each
+such factor by a compact Fourier function vanishing near
+<span class="math" data-tex="$\lambda$">$\lambda$</span>; compact Fourier approximation of the other factors
+completes the affine-plane synthesis proof. Fourier injectivity
+identifies <span class="math" data-tex="$\ker r_\lambda$">$\ker r_\lambda$</span> with the full vanishing ideal of the
+plane. The cases <span class="math" data-tex="$d=0$">$d=0$</span> and <span class="math" data-tex="$m=0$">$m=0$</span> are included, with the latter
+full-plane vanishing ideal equal to zero.</p>
+<p>To handle <span class="math" data-tex="$L$">$L$</span>, choose a vector subspace <span class="math" data-tex="$V\subset L$">$V\subset L$</span> of maximal
+dimension. Orthogonal projection gives
+<span class="math" data-tex="$L=V+\Lambda$">$L=V+\Lambda$</span>, where <span class="math" data-tex="$\Lambda=L\cap V^\perp$">$\Lambda=L\cap V^\perp$</span> is closed and
+discrete. For if nonzero <span class="math" data-tex="$\lambda_n\in\Lambda$">$\lambda_n\in\Lambda$</span> tended to zero,
+a subsequence of their unit directions would converge to a unit
+vector <span class="math" data-tex="$v\in V^\perp$">$v\in V^\perp$</span>. For every real <span class="math" data-tex="$t$">$t$</span>, suitable integer
+multiples of <span class="math" data-tex="$\lambda_n$">$\lambda_n$</span> converge to <span class="math" data-tex="$tv$">$tv$</span>, so closedness would
+put the line <span class="math" data-tex="$\mathbb Rv$">$\mathbb Rv$</span> in <span class="math" data-tex="$L$">$L$</span>, contradicting maximality.</p>
+<p>Write the frequency coordinates as <span class="math" data-tex="$(u,v)\in V\times V^\perp$">$(u,v)\in V\times V^\perp$</span>.
+Every smooth compact cutoff in just one coordinate block acts as
+a bounded Fourier-algebra multiplier, because it convolves the
+inverse kernel in that block with an <span class="math" data-tex="$L^1$">$L^1$</span> kernel. Thus the
+expressions <span class="math" data-tex="$1\otimes\eta_R$">$1\otimes\eta_R$</span> and <span class="math" data-tex="$1\otimes u_\lambda$">$1\otimes u_\lambda$</span> below do not
+require the constant function to belong to the full Fourier algebra.
+For <span class="math" data-tex="$f\in I(L)$">$f\in I(L)$</span>, multiply in the transverse variable by smooth
+compact cutoffs <span class="math" data-tex="$\eta_R(v)=\eta(v/R)$">$\eta_R(v)=\eta(v/R)$</span> with <span class="math" data-tex="$\eta=1$">$\eta=1$</span> near zero.
+Their inverse kernels are an approximate identity in that
+variable, so <span class="math" data-tex="$f_R=(1\otimes\eta_R)f\to f$">$f_R=(1\otimes\eta_R)f\to f$</span> in Fourier-algebra
+norm. Only finitely many points of <span class="math" data-tex="$\Lambda$">$\Lambda$</span> meet
+<span class="math" data-tex="$\operatorname{supp}\eta_R$">$\operatorname{supp}\eta_R$</span>.</p>
+<p>Choose disjoint smooth transverse cutoffs <span class="math" data-tex="$u_\lambda$">$u_\lambda$</span>, equal to
+one near these finitely many points and supported in neighborhoods
+containing no other lattice points. Each
+<span class="math" data-tex="$(1\otimes u_\lambda)f_R$">$(1\otimes u_\lambda)f_R$</span> vanishes on
+<span class="math" data-tex="$V\times\{\lambda\}$">$V\times\{\lambda\}$</span>. Approximate it by the affine-plane result,
+then multiply the approximants by a slightly larger cutoff equal
+to one on <span class="math" data-tex="$\operatorname{supp}u_\lambda$">$\operatorname{supp}u_\lambda$</span> and still avoiding all
+other lattice points. They are compact Fourier functions whose
+supports miss the whole of <span class="math" data-tex="$L$">$L$</span>. Hence each localized piece is in
+<span class="math" data-tex="$j(L)$">$j(L)$</span>. The remainder
+<span class="math" data-tex="$(1-\sum_\lambda1\otimes u_\lambda)f_R$">$(1-\sum_\lambda1\otimes u_\lambda)f_R$</span> has compact transverse
+support disjoint from <span class="math" data-tex="$\Lambda$">$\Lambda$</span>. Expanding compact cutoffs in the
+<span class="math" data-tex="$V$">$V$</span> variable approximate it in norm by compact Fourier functions
+with supports disjoint from <span class="math" data-tex="$L$">$L$</span>, so it too belongs to <span class="math" data-tex="$j(L)$">$j(L)$</span>.
+Thus <span class="math" data-tex="$f_R\in j(L)$">$f_R\in j(L)$</span>, and closedness gives <span class="math" data-tex="$f\in j(L)$">$f\in j(L)$</span>.
+This proves subgroup synthesis.</p>
+<p><strong>Finish the Weyl synthesis proof.</strong> Take
+<span class="math" data-tex="$\mathcal M=N_\perp$">$\mathcal M=N_\perp$</span>. Its classical ideal has common zero set
+<span class="math" data-tex="$L_N$">$L_N$</span>. The Euclidean local ideal inclusion just proved,
+together with the preceding subgroup proof and the definitions (TC4), implies that its Fourier image is exactly <span class="math" data-tex="$I(L_N)$">$I(L_N)$</span>.
+If a trace-class <span class="math" data-tex="$S$">$S$</span> has <span class="math" data-tex="$Q_S|_{L_N}=0$">$Q_S|_{L_N}=0$</span>, then
+<span class="math" data-tex="$G*S\in\mathcal I_{\mathcal M}$">$G*S\in\mathcal I_{\mathcal M}$</span> by (Y22e).
+Approximate a classical approximate identity by <span class="math" data-tex="$(G*G)*b$">$(G*G)*b$</span> once
+again. Its action on <span class="math" data-tex="$S$">$S$</span> equals
+<span class="math" data-tex="$G*(b*(G*S))$">$G*(b*(G*S))$</span>, which lies in <span class="math" data-tex="$\mathcal M$">$\mathcal M$</span> by (Y22j).
+Taking the trace-norm limit puts <span class="math" data-tex="$S$">$S$</span> in <span class="math" data-tex="$\mathcal M$">$\mathcal M$</span>.
+The opposite inclusion is the definition of the common zero set.
+Since <span class="math" data-tex="$Q_S$">$Q_S$</span> and <span class="math" data-tex="$\mathcal W_S$">$\mathcal W_S$</span> have identical zeros, we obtain</p>
+<p><span class="math math-display" data-tex="$$
+N_\perp
+=\{S\in\mathcal T(\mathcal H):
+\mathcal W_S(w)=0\text{ for every }w\in L_N\}.
+\tag{Y23}
+$$">$$
+N_\perp
+=\{S\in\mathcal T(\mathcal H):
+\mathcal W_S(w)=0\text{ for every }w\in L_N\}.
+\tag{Y23}
+$$</span></p>
+<p>This Gaussian argument supplies the exact correspondence and subgroup
+synthesis needed in
+<a href="https://wiki.math.ntnu.no/_media/ma8107/2024h/werner_-_quantuysis_on_phase_spacem_harmonic_anal.pdf">Werner's Corollary 4.4(1), (4), (5)</a>,
+printed page 1409. The trace-class convolution identities correspond to
+Propositions 3.2 and 3.4, printed pages 1405–1407. Its proof uses
+classical Wiener approximation; the proof here uses explicit Gaussian
+division on compact smooth Fourier supports. The Euclidean subgroup
+argument above supplies the synthesis step directly.</p>
+<p>Taking annihilators in (Y23) gives (Y20). To prove (Y21), set
+<span class="math" data-tex="$C=\{W(w):w\in L\}'$">$C=\{W(w):w\in L\}'$</span>. The character formula (Y6) makes <span class="math" data-tex="$C$">$C$</span>
+<span class="math" data-tex="$\alpha$">$\alpha$</span>-invariant. It also shows that <span class="math" data-tex="$W(z)\in C$">$W(z)\in C$</span> holds exactly when
+<span class="math" data-tex="$z\in L^{\perp_\omega}$">$z\in L^{\perp_\omega}$</span>. Applying (Y20) to <span class="math" data-tex="$C$">$C$</span> proves (Y21).
+The same synthesis argument applies to this commutant because it is a unital ultraweakly closed algebra invariant under every <span class="math" data-tex="$\alpha_z$">$\alpha_z$</span>.</p>
+<p><strong>Euclidean double annihilators.</strong> The remaining subgroup identity can
+also be proved here. For the decomposition <span class="math" data-tex="$L=V+\Lambda$">$L=V+\Lambda$</span> obtained above,
+put <span class="math" data-tex="$E=\operatorname{span}_{\mathbb R}\Lambda\subset V^\perp$">$E=\operatorname{span}_{\mathbb R}\Lambda\subset V^\perp$</span>.
+The discrete subgroup <span class="math" data-tex="$\Lambda$">$\Lambda$</span> has a lattice basis in <span class="math" data-tex="$E$">$E$</span>.
+We give the argument in the dimensions at issue, rather than importing
+an arbitrary-group duality theorem.</p>
+<p>If <span class="math" data-tex="$\Lambda\ne\{0\}$">$\Lambda\ne\{0\}$</span>, choose a shortest nonzero <span class="math" data-tex="$\lambda_1\in\Lambda$">$\lambda_1\in\Lambda$</span>.
+It exists because a closed discrete subset has finite intersection with
+every compact set. On the line <span class="math" data-tex="$\mathbb R\lambda_1$">$\mathbb R\lambda_1$</span>, subtracting an
+integer multiple of <span class="math" data-tex="$\lambda_1$">$\lambda_1$</span> leaves a multiple with coefficient in
+<span class="math" data-tex="$[0,1)$">$[0,1)$</span>; minimal length makes that remainder zero. Thus
+<span class="math" data-tex="$\Lambda\cap\mathbb R\lambda_1=\mathbb Z\lambda_1$">$\Lambda\cap\mathbb R\lambda_1=\mathbb Z\lambda_1$</span>. This settles
+<span class="math" data-tex="$\dim E=1$">$\dim E=1$</span>.</p>
+<p>If <span class="math" data-tex="$\dim E=2$">$\dim E=2$</span>, project <span class="math" data-tex="$\Lambda$">$\Lambda$</span> onto the line perpendicular to
+<span class="math" data-tex="$\lambda_1$">$\lambda_1$</span> within <span class="math" data-tex="$E$">$E$</span>. Zero is isolated in the projected subgroup.
+Otherwise choose nonzero projected values tending to zero, and
+subtract integer multiples of <span class="math" data-tex="$\lambda_1$">$\lambda_1$</span> from their lifts so that
+their coordinates along <span class="math" data-tex="$\lambda_1$">$\lambda_1$</span> lie in <span class="math" data-tex="$[0,\|\lambda_1\|)$">$[0,\|\lambda_1\|)$</span>.
+The reduced lifts lie in a fixed compact rectangle. Its intersection
+with <span class="math" data-tex="$\Lambda$">$\Lambda$</span> is finite, which is incompatible with those nonzero
+projected values tending to zero. A nonzero subgroup of <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span>
+with zero isolated is <span class="math" data-tex="$d\mathbb Z$">$d\mathbb Z$</span> for a least positive <span class="math" data-tex="$d$">$d$</span>:
+distinct elements are separated by a fixed positive distance, so
+there are only finitely many in any bounded interval; division by
+the least positive element leaves zero remainder.
+Choose <span class="math" data-tex="$\lambda_2\in\Lambda$">$\lambda_2\in\Lambda$</span> with projection <span class="math" data-tex="$d$">$d$</span>.
+For every <span class="math" data-tex="$\lambda\in\Lambda$">$\lambda\in\Lambda$</span>, subtract an integer multiple of
+<span class="math" data-tex="$\lambda_2$">$\lambda_2$</span> to remove that projection, then an integer multiple of
+<span class="math" data-tex="$\lambda_1$">$\lambda_1$</span>. This proves
+<span class="math" data-tex="$\Lambda=\mathbb Z\lambda_1+\mathbb Z\lambda_2$">$\Lambda=\mathbb Z\lambda_1+\mathbb Z\lambda_2$</span>.
+The case <span class="math" data-tex="$E=\{0\}$">$E=\{0\}$</span> requires no basis.</p>
+<p>Let <span class="math" data-tex="$x\notin L$">$x\notin L$</span> and write <span class="math" data-tex="$x=x_V+x_{V^\perp}$">$x=x_V+x_{V^\perp}$</span>. If
+<span class="math" data-tex="$x_{V^\perp}\notin E$">$x_{V^\perp}\notin E$</span>, its nonzero component perpendicular to <span class="math" data-tex="$E$">$E$</span>
+gives a vector <span class="math" data-tex="$p\in V^\perp\cap E^\perp$">$p\in V^\perp\cap E^\perp$</span> with <span class="math" data-tex="$p\cdot x=\pi$">$p\cdot x=\pi$</span>.
+This <span class="math" data-tex="$p$">$p$</span> pairs to zero with <span class="math" data-tex="$L$">$L$</span>. If <span class="math" data-tex="$x_{V^\perp}\in E$">$x_{V^\perp}\in E$</span>, express it
+in the lattice basis. Some coefficient <span class="math" data-tex="$a_j$">$a_j$</span> is not an integer.
+The dual vector <span class="math" data-tex="$p_j\in E$">$p_j\in E$</span> satisfying
+<span class="math" data-tex="$p_j\cdot\lambda_i=2\pi\delta_{ji}$">$p_j\cdot\lambda_i=2\pi\delta_{ji}$</span> pairs with every member of <span class="math" data-tex="$L$">$L$</span>
+in <span class="math" data-tex="$2\pi\mathbb Z$">$2\pi\mathbb Z$</span>, while <span class="math" data-tex="$p_j\cdot x=2\pi a_j\notin2\pi\mathbb Z$">$p_j\cdot x=2\pi a_j\notin2\pi\mathbb Z$</span>.
+Thus in every case an ordinary Euclidean character separates <span class="math" data-tex="$x$">$x$</span>
+from <span class="math" data-tex="$L$">$L$</span>.</p>
+<p>For the symplectic convention (Y6), set <span class="math" data-tex="$J_0(s,t)=(-t,s)$">$J_0(s,t)=(-t,s)$</span>, a
+rotation of the plane distinct from the parity operator <span class="math" data-tex="$J$">$J$</span> in
+(Y22c). Then <span class="math" data-tex="$\omega(z,w)=J_0z\cdot w$">$\omega(z,w)=J_0z\cdot w$</span>. If <span class="math" data-tex="$p$">$p$</span> is a separating
+vector just found, <span class="math" data-tex="$w=J_0^{-1}p$">$w=J_0^{-1}p$</span> belongs to <span class="math" data-tex="$L^{\perp_\omega}$">$L^{\perp_\omega}$</span> and
+<span class="math" data-tex="$\omega(x,w)=-p\cdot x\notin2\pi\mathbb Z$">$\omega(x,w)=-p\cdot x\notin2\pi\mathbb Z$</span>. Alternation gives the
+opposite inclusion for elements of <span class="math" data-tex="$L$">$L$</span>. We have therefore proved</p>
+<p><span class="math math-display" data-tex="$$
+(L^{\perp_\omega})^{\perp_\omega}=L
+\quad\text{for every closed }L\le\mathbb R^2.
+\tag{Y23a}
+$$">$$
+(L^{\perp_\omega})^{\perp_\omega}=L
+\quad\text{for every closed }L\le\mathbb R^2.
+\tag{Y23a}
+$$</span></p>
+<p>Now let <span class="math" data-tex="$H\le\mathbb R^2$">$H\le\mathbb R^2$</span> be closed.  By (Y21),</p>
+<p><span class="math math-display" data-tex="$$
+B(\mathcal H)^{\alpha|_H}
+=\{W(h):h\in H\}'
+=\{W(w):w\in H^{\perp_\omega}\}''.
+\tag{Y24}
+$$">$$
+B(\mathcal H)^{\alpha|_H}
+=\{W(h):h\in H\}'
+=\{W(w):w\in H^{\perp_\omega}\}''.
+\tag{Y24}
+$$</span></p>
+<p>Conversely, if <span class="math" data-tex="$N$">$N$</span> is invariant, put <span class="math" data-tex="$H=L_N^{\perp_\omega}$">$H=L_N^{\perp_\omega}$</span>. The locally
+proved identity (Y23a) and (Y20) give</p>
+<p><span class="math math-display" data-tex="$$
+N=\{W(w):w\in L_N\}''
+=B(\mathcal H)^{\alpha|_H}.
+\tag{Y25}
+$$">$$
+N=\{W(w):w\in L_N\}''
+=B(\mathcal H)^{\alpha|_H}.
+\tag{Y25}
+$$</span></p>
+<p>The subgroup is recovered exactly as</p>
+<p><span class="math math-display" data-tex="$$
+H=\{z:\alpha_z(x)=x\text{ for every }x\in N\},
+\tag{Y26}
+$$">$$
+H=\{z:\alpha_z(x)=x\text{ for every }x\in N\},
+\tag{Y26}
+$$</span></p>
+<p>because (Y6) and <span class="math" data-tex="$L_N^{\perp_\omega}=H$">$L_N^{\perp_\omega}=H$</span> test every Weyl generator of <span class="math" data-tex="$N$">$N$</span>.
+Thus</p>
+<p><span class="math math-display" data-tex="$$
+\boxed{
+H\longmapsto B(\mathcal H)^{\alpha|_H}
+\text{ is an order-reversing bijection}}
+\tag{Y27}
+$$">$$
+\boxed{
+H\longmapsto B(\mathcal H)^{\alpha|_H}
+\text{ is an order-reversing bijection}}
+\tag{Y27}
+$$</span></p>
+<p>from closed subgroups of <span class="math" data-tex="$\mathbb R^2$">$\mathbb R^2$</span> to unital <span class="math" data-tex="$\alpha$">$\alpha$</span>-invariant von
+Neumann subalgebras.</p>
+<p><span id="OA-FLOW.WEYLPLANE.DEFECT"></span><a id="weylplane-continuous"></a></p>
+<h2 id="the-printed-compact-operator-equality-is-false">The printed compact-operator equality is false</h2>
+<p>Let</p>
+<p><span class="math math-display" data-tex="$$
+B(\mathcal H)_c
+=\{x\in B(\mathcal H):
+\|\alpha_z(x)-x\|\longrightarrow0\text{ as }z\to0\}.
+\tag{Y28}
+$$">$$
+B(\mathcal H)_c
+=\{x\in B(\mathcal H):
+\|\alpha_z(x)-x\|\longrightarrow0\text{ as }z\to0\}.
+\tag{Y28}
+$$</span></p>
+<p>The proposed equality <span class="math" data-tex="$B(\mathcal H)_c=K(\mathcal H)$">$B(\mathcal H)_c=K(\mathcal H)$</span> cannot hold.  First,</p>
+<p><span class="math math-display" data-tex="$$
+1\in B(\mathcal H)_c\setminus K(\mathcal H).
+\tag{Y29}
+$$">$$
+1\in B(\mathcal H)_c\setminus K(\mathcal H).
+\tag{Y29}
+$$</span></p>
+<p>More structurally, (Y6) gives</p>
+<p><span class="math math-display" data-tex="$$
+\|\alpha_z(W(w))-W(w)\|
+=|e^{i\omega(z,w)}-1|\longrightarrow0.
+\tag{Y30}
+$$">$$
+\|\alpha_z(W(w))-W(w)\|
+=|e^{i\omega(z,w)}-1|\longrightarrow0.
+\tag{Y30}
+$$</span></p>
+<p>Every <span class="math" data-tex="$W(w)$">$W(w)$</span> is therefore in the continuous part, while a unitary on the
+infinite-dimensional space <span class="math" data-tex="$L^2(\mathbb R)$">$L^2(\mathbb R)$</span> is not compact.  These
+examples disprove the equality in Takesaki's Exercise XI.2.5(e). The strict inclusion and convolution characterization below describe the continuous part.</p>
+<p><span id="OA-FLOW.WEYLPLANE.CONTINUOUS"></span><a id="weylplane-convolution"></a></p>
+<h2 id="convolution-exactly-characterizes-the-continuous-part">Convolution exactly characterizes the continuous part</h2>
+<p>For <span class="math" data-tex="$f\in L^1(\mathbb R^2)$">$f\in L^1(\mathbb R^2)$</span> and <span class="math" data-tex="$x\in B(\mathcal H)$">$x\in B(\mathcal H)$</span>, define the ultraweak
+integral</p>
+<p><span class="math math-display" data-tex="$$
+\alpha_f(x)=\int_{\mathbb R^2}f(z)\alpha_z(x)\,dz.
+\tag{Y31}
+$$">$$
+\alpha_f(x)=\int_{\mathbb R^2}f(z)\alpha_z(x)\,dz.
+\tag{Y31}
+$$</span></p>
+<p>Normal-functional testing gives
+<span class="math" data-tex="$\|\alpha_f(x)\|\le\|f\|_1\|x\|$">$\|\alpha_f(x)\|\le\|f\|_1\|x\|$</span>.  If
+<span class="math" data-tex="$(\tau_hf)(z)=f(z-h)$">$(\tau_hf)(z)=f(z-h)$</span>, invariance of Haar measure gives</p>
+<p><span class="math math-display" data-tex="$$
+\alpha_h(\alpha_f(x))=\alpha_{\tau_hf}(x),
+\qquad
+\|\alpha_h(\alpha_f(x))-\alpha_f(x)\|
+\le\|\tau_hf-f\|_1\|x\|.
+\tag{Y32}
+$$">$$
+\alpha_h(\alpha_f(x))=\alpha_{\tau_hf}(x),
+\qquad
+\|\alpha_h(\alpha_f(x))-\alpha_f(x)\|
+\le\|\tau_hf-f\|_1\|x\|.
+\tag{Y32}
+$$</span></p>
+<p>Translation is norm continuous on <span class="math" data-tex="$L^1$">$L^1$</span>, so every convolution in (Y31)
+belongs to <span class="math" data-tex="$B(\mathcal H)_c$">$B(\mathcal H)_c$</span>.  Conversely, let <span class="math" data-tex="$(k_i)$">$(k_i)$</span> be a nonnegative
+<span class="math" data-tex="$C_c(\mathbb R^2)$">$C_c(\mathbb R^2)$</span> approximate identity with integral one and supports
+shrinking to <span class="math" data-tex="$0$">$0$</span>.  For <span class="math" data-tex="$x\in B(\mathcal H)_c$">$x\in B(\mathcal H)_c$</span>,</p>
+<p><span class="math math-display" data-tex="$$
+\|\alpha_{k_i}(x)-x\|
+\le\int k_i(z)\|\alpha_z(x)-x\|\,dz
+\longrightarrow0.
+\tag{Y33}
+$$">$$
+\|\alpha_{k_i}(x)-x\|
+\le\int k_i(z)\|\alpha_z(x)-x\|\,dz
+\longrightarrow0.
+\tag{Y33}
+$$</span></p>
+<p>We obtain the characterization</p>
+<p><span class="math math-display" data-tex="$$
+\boxed{
+B(\mathcal H)_c
+=\operatorname{cl}_{\|\cdot\|}
+\{\alpha_f(x):f\in C_c(\mathbb R^2),\ x\in B(\mathcal H)\}.}
+\tag{Y34}
+$$">$$
+\boxed{
+B(\mathcal H)_c
+=\operatorname{cl}_{\|\cdot\|}
+\{\alpha_f(x):f\in C_c(\mathbb R^2),\ x\in B(\mathcal H)\}.}
+\tag{Y34}
+$$</span></p>
+<p>Finally, the valid compact-operator inclusion follows directly.  For rank-one
+operators,</p>
+<p><span class="math math-display" data-tex="$$
+\alpha_z(\Theta_{\xi,\eta})
+=\Theta_{W(z)\xi,W(z)\eta}
+\tag{Y35}
+$$">$$
+\alpha_z(\Theta_{\xi,\eta})
+=\Theta_{W(z)\xi,W(z)\eta}
+\tag{Y35}
+$$</span></p>
+<p>and</p>
+<p><span class="math math-display" data-tex="$$
+\|\Theta_{\xi,\eta}-\Theta_{\xi',\eta'}\|
+\le
+\|\xi-\xi'\|\,\|\eta\|
++\|\xi'\|\,\|\eta-\eta'\|.
+\tag{Y36}
+$$">$$
+\|\Theta_{\xi,\eta}-\Theta_{\xi',\eta'}\|
+\le
+\|\xi-\xi'\|\,\|\eta\|
++\|\xi'\|\,\|\eta-\eta'\|.
+\tag{Y36}
+$$</span></p>
+<p>Strong continuity of <span class="math" data-tex="$W$">$W$</span> makes every finite-rank orbit norm continuous.
+Automorphisms are isometric, so norm closure gives</p>
+<p><span class="math math-display" data-tex="$$
+\boxed{K(\mathcal H)\subsetneq B(\mathcal H)_c.}
+\tag{Y37}
+$$">$$
+\boxed{K(\mathcal H)\subsetneq B(\mathcal H)_c.}
+\tag{Y37}
+$$</span></p>
+<p><strong>Problem.</strong> Why does point-strong continuity of <span class="math" data-tex="$z\mapsto W(z)$">$z\mapsto W(z)$</span> not make
+<span class="math" data-tex="$z\mapsto\alpha_z(x)$">$z\mapsto\alpha_z(x)$</span> norm continuous for every <span class="math" data-tex="$x\in B(\mathcal H)$">$x\in B(\mathcal H)$</span>?</p>
+<p><strong>Solution.</strong> Strong convergence of unitaries is uniform on each fixed
+finite-dimensional range, which proves (Y35) for finite-rank operators, but
+it is not uniform on the unit ball of an infinite-dimensional Hilbert space.
+For an explicit example, let <span class="math" data-tex="$P$">$P$</span> be multiplication by <span class="math" data-tex="$1_{[0,\infty)}$">$1_{[0,\infty)}$</span>.
+Modulations commute with <span class="math" data-tex="$P$">$P$</span>, whereas <span class="math" data-tex="$\alpha_{(s,0)}(P)$">$\alpha_{(s,0)}(P)$</span> is multiplication
+by <span class="math" data-tex="$1_{[-s,\infty)}$">$1_{[-s,\infty)}$</span>. For every <span class="math" data-tex="$s\ne0$">$s\ne0$</span> the two indicator functions differ
+by absolute value <span class="math" data-tex="$1$">$1$</span> on an interval of positive measure, so
+<span class="math" data-tex="$\|\alpha_{(s,0)}(P)-P\|=1$">$\|\alpha_{(s,0)}(P)-P\|=1$</span>, although <span class="math" data-tex="$U_s\to1$">$U_s\to1$</span> strongly as <span class="math" data-tex="$s\to0$">$s\to0$</span>.
+The <span class="math" data-tex="$L^1$">$L^1$</span> regularization in (Y31)–(Y34) identifies exactly the operators for
+which norm continuity does hold. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The source locator is Takesaki, <em>Theory of Operator Algebras II</em>, Exercise
+XI.2.5, on printed page 351. Equations (Y1)–(Y17) prove clauses
+(a)–(c); (Y18)–(Y27), including the Gaussian correspondence and
+Euclidean subgroup proof (Y22c)–(Y22l), derive clause (d).
+Equations (Y28)–(Y30) diagnose clause (e) as printed, while (Y31)–(Y37) give
+the exact continuous-part replacement and retain the valid compact-operator
+inclusion. The trace-class facts used in the subgroup proof are constructed in (TC1)–(TC3), and its Fourier ideal conventions are (TC4).</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L133.html">Previous lesson</a><a href="OA-FLOW-L135.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L134.md">Lesson source</a></nav></main></body></html>

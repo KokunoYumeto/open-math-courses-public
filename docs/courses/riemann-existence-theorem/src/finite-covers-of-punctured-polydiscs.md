@@ -11,13 +11,20 @@ The method is classical: after pulling back along the map that takes \(N\)-th ro
 Let \(\Delta=\{t\in\mathbf C:|t|<1\}\) and \(\Delta^*=\Delta\setminus\{0\}\). Fix integers \(0\le p\le n\) and put
 
 \[
-V=\Delta^n,\qquad V^*=\{z\in V:\ z_1\cdots z_p\ne0\}=(\Delta^*)^p\times\Delta^{n-p}.
+\begin{aligned}
+V&=\Delta^n,\\
+V^*&=\{z\in V:\ z_1\cdots z_p\ne0\}\\
+&=(\Delta^*)^p\times\Delta^{n-p}.
+\end{aligned}
 \]
 
 The space \(V^*\) is a connected complex manifold. For an integer \(N\ge1\) let
 
 \[
-\pi_N:V\to V,\qquad \pi_N(w)=(w_1^N,\ldots,w_p^N,w_{p+1},\ldots,w_n).
+\begin{gathered}
+\pi_N:V\to V,\\
+\pi_N(w)=(w_1^N,\ldots,w_p^N,w_{p+1},\ldots,w_n).
+\end{gathered}
 \]
 
 It is a finite, proper, surjective holomorphic map, and \(\pi_N^{-1}(V^*)=V^*\). The finite group \(G=\mu_N^p\) of \(p\)-tuples of \(N\)-th roots of unity acts on \(V\) by \(\zeta\cdot w=(\zeta_1w_1,\ldots,\zeta_pw_p,w_{p+1},\ldots,w_n)\). It preserves the fibres of \(\pi_N\) and acts simply transitively on the fibres over points of \(V^*\). Over \(V^*\), \(\pi_N\) is a covering map of degree \(N^p\), and a local biholomorphism.
@@ -34,7 +41,7 @@ For a finite covering \(q:E\to M\) of a path-connected, locally path-connected s
 
 **Lemma 2.2.**
 
-1. For path-connected spaces \(X,Y\), the projections induce an isomorphism \(\pi_1(X\times Y,(x,y))\cong\pi_1(X,x)\times\pi_1(Y,y)\).
+1. For path-connected spaces \(X,Y\), the projections induce from \(\pi_1(X\times Y,(x,y))\) onto \(\pi_1(X,x)\times\pi_1(Y,y)\).
 2. \(\pi_1(V^*,b)\cong\mathbf Z^p\), the \(i\)-th basis element being the class of a loop that winds once around zero in the \(i\)-th coordinate and is constant in the others.
 3. The covering \(\pi_N|_{V^*}:V^*\to V^*\) induces multiplication by \(N\) on \(\pi_1\cong\mathbf Z^p\).
 
@@ -96,7 +103,7 @@ The averaging map \(e=|G|^{-1}\sum_\zeta\zeta\star(-)\) is an \(\mathcal O_V\)-l
 
 **Exercise 5.2.** Let \(n=p=1\). Write the function \(f(w)=e^w\) on \(\pi_N^{-1}(\Delta)=\Delta\) in the form \(\sum_{a=0}^{N-1}w^a\,(h_a\circ\pi_N)\) of Lemma 3.2, and find the functions \(h_a\).
 
-*Solution.* Group the terms of \(e^w=\sum_{k\ge0}w^k/k!\) by the residue of \(k\) modulo \(N\). The \(\chi_a\)-component is \(f_a=\sum_{m\ge0}w^{a+mN}/(a+mN)!=w^a\sum_{m\ge0}(w^N)^m/(a+mN)!\), so \(h_a(z)=\sum_{m\ge0}z^m/(a+mN)!\), an entire function. For \(N=2\) this is \(e^w=\cosh w+\sinh w\), with \(h_0(z)=\cosh\sqrt z\) and \(h_1(z)=\sinh(\sqrt z)/\sqrt z\), both holomorphic in \(z\).
+*Solution.* Group the terms of \(e^w=\sum_{k\ge0}w^k/k!\) by the residue of \(k\) modulo \(N\). The \(\chi_a\)-component is \(f_a=\sum_{m\ge0}w^{a+mN}/(a+mN)!\), which is \(w^a\sum_{m\ge0}(w^N)^m/(a+mN)!\), so \(h_a(z)=\sum_{m\ge0}z^m/(a+mN)!\), an entire function. For \(N=2\) this is \(e^w=\cosh w+\sinh w\), with \(h_0(z)=\cosh\sqrt z\) and \(h_1(z)=\sinh(\sqrt z)/\sqrt z\), both holomorphic in \(z\).
 
 **Exercise 5.3.** Let \(E\to\Delta^*\) be the identity covering, and \(j:\Delta^*\to\Delta\) the inclusion. Show that \(\mathcal A_E=\mathcal O_\Delta\), and that the stalk at \(0\) of the sheaf \(j_*\mathcal O_{\Delta^*}\) of all holomorphic functions on punctured neighbourhoods is not a finitely generated \(\mathcal O_{\Delta,0}\)-module. This is why the growth condition is needed.
 

@@ -20,11 +20,19 @@ Let \(N=2^n\) and \(\mathcal H=\mathbb C^\Omega\) with \(\langle a,b\rangle=\sum
 
 (c) If \(\mathcal H=E_0\oplus\dots\oplus E_n\) is an orthogonal decomposition with orthogonal projections \(\Pi_k\) onto \(E_k\), then \(\|B\|_{\rm HS}^2=\sum_{r,s}\|\Pi_sB\Pi_r\|_{\rm HS}^2\).
 
-**Proof.** (a) By Parseval's identity in the two bases, \(\sum_\alpha\|Be_\alpha\|^2=\sum_\alpha\sum_x|\langle B^*\delta_x,e_\alpha\rangle|^2=\sum_x\|B^*\delta_x\|^2=\sum_{x,y}|\langle\delta_y,B^*\delta_x\rangle|^2=\sum_{x,y}|B_{xy}|^2\).
+**Proof.** (a) By Parseval's identity in the two bases,
+\[
+\begin{aligned}
+\sum_\alpha\|Be_\alpha\|^2&=\sum_\alpha\sum_x|\langle B^*\delta_x,e_\alpha\rangle|^2\\
+&=\sum_x\|B^*\delta_x\|^2\\
+&=\sum_{x,y}|\langle\delta_y,B^*\delta_x\rangle|^2\\
+&=\sum_{x,y}|B_{xy}|^2 .
+\end{aligned}
+\]
 
 (b) \(|B_{xy}|\le\|B\delta_y\|\le\|B\|_{\rm op}\), and \(\|UBU^*\xi\|=\|BU^*\xi\|\) with \(\|U^*\xi\|=\|\xi\|\).
 
-(c) Choose an orthonormal basis of each \(E_k\); together they form an orthonormal basis of \(\mathcal H\). For \(e_\alpha\in E_r\), \(\|Be_\alpha\|^2=\sum_s\|\Pi_sBe_\alpha\|^2=\sum_s\|\Pi_sB\Pi_re_\alpha\|^2\), while \(\Pi_sB\Pi_{r'}e_\alpha=0\) for \(r'\neq r\). Sum over \(\alpha\) and use (a) for each \(\Pi_sB\Pi_r\). \(\square\)
+(c) Choose an orthonormal basis of each \(E_k\); together they form an orthonormal basis of \(\mathcal H\). For \(e_\alpha\in E_r\), \(\|Be_\alpha\|^2=\sum_s\|\Pi_sBe_\alpha\|^2\), which is \(\sum_s\|\Pi_sB\Pi_re_\alpha\|^2\), while \(\Pi_sB\Pi_{r'}e_\alpha=0\) for \(r'\neq r\). Sum over \(\alpha\) and use (a) for each \(\Pi_sB\Pi_r\). \(\square\)
 
 ## 2. The weighted grading
 
@@ -32,7 +40,10 @@ For \(0\le k\le n\) let \(V_k\) be the span of the characters \(\chi_S\) with \(
 
 Fix \(w:\Omega\to(0,\infty)\), let \(D\) be multiplication by \(\sqrt w\), and put
 \[
-K_k=DV_k,\qquad K_{-1}=\{0\},\qquad E_k=K_k\cap K_{k-1}^\perp\quad(0\le k\le n),
+\begin{gathered}
+K_k=DV_k,\qquad K_{-1}=\{0\},\\
+E_k=K_k\cap K_{k-1}^\perp\quad(0\le k\le n),
+\end{gathered}
 \]
 with orthogonal projections \(\Pi_k\) onto \(E_k\). Define
 \[
@@ -62,30 +73,36 @@ For \(w\equiv1\), \(E_k\) is spanned by the characters with \(|S|=k\) and \(M\ch
 
 Write \(\rho(x,y)\) for the Hamming distance, the number of coordinates where \(x\) and \(y\) differ. Pairs of vertices are ordered.
 
-**Lemma 3.1** (edges from the anticommutator; OpenAI). Let \(h\colon\Omega\to\{-1,1\}\), \(H\) the multiplication by \(h\), and
-\[
-\mathcal E_h=\{(x,y)\in\Omega^2:\rho(x,y)=1,\ h(x)=h(y)\}.
-\]
-Then \(|\mathcal E_h|\le2\|MH+HM\|_{\rm HS}^2\).
+**Lemma 3.1** (edges from the anticommutator; OpenAI). Let \(h\colon\Omega\to\{-1,1\}\), \(H\) the multiplication by \(h\), and \(\mathcal E_h\) the set of ordered pairs \((x,y)\in\Omega^2\) with \(\rho(x,y)=1\) and \(h(x)=h(y)\). Then \(|\mathcal E_h|\le2\|MH+HM\|_{\rm HS}^2\).
 
 **Proof.** *Each entry.* Let \(C_i=LZ_i-Z_iL=MZ_i-Z_iM\). Its blocks are \(\Pi_sC_i\Pi_r=(s-r)\Pi_sZ_i\Pi_r\), which vanish unless \(|s-r|=1\), by Lemma 2.1(c). Let
 \[
-J=\sum_k(-1)^k\Pi_k,\qquad W=\sum_k\mathrm i^k\Pi_k,\qquad O_i=\tfrac12(Z_i-JZ_iJ),
+\begin{gathered}
+J=\sum_k(-1)^k\Pi_k,\qquad W=\sum_k\mathrm i^k\Pi_k,\\
+O_i=\tfrac12(Z_i-JZ_iJ),
+\end{gathered}
 \]
 where \(J\) and \(W\) are unitary. Then \(\|O_i\|_{\rm op}\le1\), and the \((s,r)\) block of \(O_i\) is \(\frac12(1-(-1)^{s+r})\Pi_sZ_i\Pi_r\), which is \(\Pi_sZ_i\Pi_r\) if \(|s-r|=1\) and \(0\) otherwise. Conjugation by \(W\) multiplies the \((s,r)\) block by \(\mathrm i^{s-r}=\mathrm i(s-r)\) when \(|s-r|=1\). Hence \(WO_iW^*=\mathrm iC_i\) and \(\|C_i\|_{\rm op}\le1\) by Lemma 1.1(b). In the point basis \((C_i)_{xy}=(y_i-x_i)M_{xy}\), since \(Z_i\delta_y=y_i\delta_y\). For \(x\neq y\), choosing \(i\) with \(x_i\neq y_i\) gives \(2|M_{xy}|=|(C_i)_{xy}|\le1\); so
 \[
 |M_{xy}|^2\le\tfrac14\qquad(x\neq y).\tag{3.1}
 \]
 
-*Distant entries.* By Lemma 1.1(c) and Lemma 2.1(c), \(\|C_i\|_{\rm HS}^2=\sum_{r,s}(s-r)^2\|\Pi_sZ_i\Pi_r\|_{\rm HS}^2\le\|Z_i\|_{\rm HS}^2=N\). Summing \(|(C_i)_{xy}|^2=|y_i-x_i|^2|M_{xy}|^2\) over \(i\),
+*Distant entries.* By Lemma 1.1(c) and Lemma 2.1(c), \(\|C_i\|_{\rm HS}^2=\sum_{r,s}(s-r)^2\|\Pi_sZ_i\Pi_r\|_{\rm HS}^2\), which is at most \(\|Z_i\|_{\rm HS}^2=N\). Summing \(|(C_i)_{xy}|^2=|y_i-x_i|^2|M_{xy}|^2\) over \(i\),
 \[
-\sum_{x,y}\rho(x,y)|M_{xy}|^2=\frac14\sum_{i=1}^n\|C_i\|_{\rm HS}^2\le\frac{nN}4=\sum_{x,y}|M_{xy}|^2,
+\begin{aligned}
+&\sum_{x,y}\rho(x,y)|M_{xy}|^2=\frac14\sum_{i=1}^n\|C_i\|_{\rm HS}^2\\
+&\quad \le\frac{nN}4=\sum_{x,y}|M_{xy}|^2,
+\end{aligned}
 \]
 by Lemma 2.1(b). Let \(A_0=\sum_x|M_{xx}|^2\) and \(F=\sum_{\rho(x,y)\ge2}|M_{xy}|^2\). Subtracting the right side from the left gives \(-A_0+\sum_{\rho(x,y)\ge2}(\rho(x,y)-1)|M_{xy}|^2\le0\), so \(F\le A_0\).
 
 *The deficit on edges.* There are \(nN\) ordered adjacent pairs, so by Lemma 2.1(b)
 \[
-\sum_{\rho(x,y)=1}\Bigl(\frac14-|M_{xy}|^2\Bigr)=\frac{nN}4-\sum_{\rho(x,y)=1}|M_{xy}|^2=A_0+F\le2A_0,
+\begin{aligned}
+&\sum_{\rho(x,y)=1}\Bigl(\frac14-|M_{xy}|^2\Bigr)\\
+&\quad =\frac{nN}4-\sum_{\rho(x,y)=1}|M_{xy}|^2\\
+&\quad =A_0+F\le2A_0,
+\end{aligned}
 \]
 and each term is nonnegative by (3.1).
 
@@ -109,11 +126,11 @@ The anticommutator erases the entries of \(M\) between vertices of opposite sign
 
 ## 5. Solutions
 
-**4.1.** With \(w\equiv1\), \(K_k=V_k\), and the characters with \(|S|=k\) are orthogonal to \(V_{k-1}\) and span a complement of it in \(V_k\). Then \(M\chi_S=(|S|-\frac n2)\chi_S\), while \((A\chi_S)(x)=\sum_i\chi_S(x^{\oplus i})=(n-2|S|)\chi_S(x)\). The two operators agree on a basis.
+**4.1.** With \(w\equiv1\), \(K_k=V_k\), and the characters with \(|S|=k\) are orthogonal to \(V_{k-1}\) and span a complement of it in \(V_k\). Then \(M\chi_S=(|S|-\frac n2)\chi_S\), while \((A\chi_S)(x)=\sum_i\chi_S(x^{\oplus i})\), which is \((n-2|S|)\chi_S(x)\). The two operators agree on a basis.
 
 **4.2.** \(M_{xy}=-\frac12\) for adjacent \(x,y\) and \(0\) otherwise, so \(T_{xy}=-\frac12(h(x)+h(y))\) on edges and \(0\) elsewhere, and \(\|T\|_{\rm HS}^2=|\mathcal E_h|\). Lemma 3.1 loses a factor \(2\) here.
 
-**4.3.** \(k\binom nk=n\binom{n-1}{k-1}\) and \(k(k-1)\binom nk=n(n-1)\binom{n-2}{k-2}\); sum over \(k\). Then \(\sum\binom nkk^2=n(n+1)2^{n-2}\), and \(\sum\binom nk(k-\frac n2)^2=n(n+1)2^{n-2}-n\cdot n2^{n-1}+\frac{n^2}42^n=n2^{n-2}\).
+**4.3.** \(k\binom nk=n\binom{n-1}{k-1}\) and \(k(k-1)\binom nk=n(n-1)\binom{n-2}{k-2}\); sum over \(k\). Then \(\sum\binom nkk^2=n(n+1)2^{n-2}\), and \(\sum_k\binom nk(k-\frac n2)^2\) equals \(n(n+1)2^{n-2}-n\cdot n2^{n-1}+\frac{n^2}42^n\), that is, \(n2^{n-2}\).
 
 **4.4.** \(K_0=E_0\) is spanned by \(\sqrt w\), that is by \((\sqrt\alpha,\sqrt\beta)\), and \(E_1\) by \((\sqrt\beta,-\sqrt\alpha)\). With \(s=\alpha+\beta\), \(M=\frac12(\Pi_1-\Pi_0)\) has entries \(M_{11}=\frac{\beta-\alpha}{2s}=-M_{-1,-1}\) and \(M_{1,-1}=M_{-1,1}=-\frac{\sqrt{\alpha\beta}}s\). Then \(|M_{1,-1}|^2=\frac{\alpha\beta}{s^2}\le\frac14\), with deficit \(\frac14-\frac{\alpha\beta}{s^2}=\frac{(\alpha-\beta)^2}{4s^2}=|M_{11}|^2\), and \(F=0\).
 

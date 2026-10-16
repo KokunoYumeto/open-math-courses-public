@@ -2,7 +2,7 @@
 
 For an inclusion of finite von Neumann algebras, a small tracial square norm of a conditional expectation can be converted into a small operator norm after taking a smaller, nonzero projection. The quantitative point is to control how much trace the cut removes. For inclusions of type II factors, this gives an exact description of the index using the expectations of projections.
 
-Throughout, \(N\subset M\subset B(H)\) are unital finite von Neumann algebras, \(\tau\) is a faithful normal tracial state on \(M\), and \(E:M\to N\) is a trace-preserving conditional expectation. Thus \(E\) is positive, unital and \(N\)-bimodular. Write \(\|x\|_2^2=\tau(x^*x)\). Sections 1–2 use only these assumptions. Sections 3–4 additionally assume that \(N\) and \(M\) are type \(\mathrm{II}_1\) factors.
+In Sections 1–4, \(N\subset M\subset B(H)\) are unital finite von Neumann algebras, \(\tau\) is a faithful normal tracial state on \(M\), and \(E:M\to N\) is a trace-preserving conditional expectation. Thus \(E\) is positive, unital and \(N\)-bimodular. Write \(\|x\|_2^2=\tau(x^*x)\). Sections 1–2 use only these assumptions. Sections 3–4 additionally assume that \(N\) and \(M\) are type \(\mathrm{II}_1\) factors.
 
 The continuous functional calculus, support projections and bounded polar decomposition used below are proved in Bounded operator kernel, items BK-01, BK-06 and BK-07. The factor-index inputs, with their proofs, are in the earlier programme lessons Positivity and index rigidity, Theorem 7.5, and Finite bases and positive index, Theorem 3.5 and Corollary 3.5a. The precise forms used here are stated at the point of use.
 
@@ -159,6 +159,84 @@ Corollary 3.5a of that same earlier lesson constructs a projection \(q\in M\) wi
 
 For infinite \(d\), SEP-03 makes the nonnegative infimum zero. It cannot be attained: if \(\|E(q)\|=0\), then \(E(q)=0\), so trace preservation gives \(\tau(q)=\tau(E(q))=0\). Faithfulness of \(\tau\) forces \(q=0\), which is excluded. \(\square\)
 
+## The exact spectral cutoff for a normal state
+
+This section allows any von Neumann algebra \(M\) and any normal state \(\varphi\), without a trace or a faithfulness assumption. Put \(\|x\|_\varphi=\varphi(x^*x)^{1/2}\).
+
+**Proposition.** Let \(0\le h\le1\), and suppose
+
+
+\[
+\delta=\|h-h^2\|_\varphi<\frac14.
+\]
+
+
+For the specified spectral projection
+
+
+\[
+e=1_{[1-\sqrt\delta,1]}(h),
+\]
+
+
+one has
+
+
+\[
+\|h-e\|_\varphi\le\sqrt{2\delta},
+\qquad
+\|h^{1/2}-e\|_\varphi\le\sqrt{3\delta}.
+\]
+
+
+In particular these imply \(\|h-e\|_\varphi\le2\sqrt\delta\) and \(\|h^{1/2}-e\|_\varphi\le2\delta^{1/4}\), including \(\delta=0\).
+
+**Proof.** The bounded Borel calculus in Spectral calculus kernel, SK-04, supplies the interval projections, their order comparisons and their increasing strong limits in \(M\). First assume \(\delta>0\). Write \(a=h(1-h)\). All projections and functions in this argument commute. On \(1-e\), the inequality \((1-h)^2\ge\delta\) gives
+
+
+\[
+h^2(1-e)\le\delta^{-1}a^2,
+\qquad
+\varphi(h^2(1-e))\le\delta.
+\]
+
+
+Put \(t=\varphi(a)\ge0\). Applying \(\varphi\) to the positive element \((a-t1)^2\) gives \(0\le\varphi(a^2)-t^2\), so \(\varphi(a)\le\varphi(a^2)^{1/2}=\delta\). Therefore
+
+
+\[
+\varphi(h(1-e))
+=\varphi(h^2(1-e))+\varphi(a(1-e))
+\le2\delta.
+\]
+
+
+On \(e\), both \((1-h)^2\) and \((1-h^{1/2})^2\) are bounded by \(\delta e\). Decomposing each squared error over \(e\) and \(1-e\) now gives \(\varphi((h-e)^2)\le2\delta\) and \(\varphi((h^{1/2}-e)^2)\le3\delta\).
+
+Now let \(\delta=0\), so the required projection is exactly \(e=1_{\{1\}}(h)\). For each integer \(n\ge2\), put
+
+
+\[
+p_n=1_{[1/n,\,1-1/n]}(h),
+\qquad
+c_n=\frac1{n^2}\left(1-\frac1n\right)^2>0.
+\]
+
+
+Functional calculus gives \(a^2\ge c_n p_n\). Since \(\varphi(a^2)=0\), positivity implies \(\varphi(p_n)=0\). These projections increase to \(p=1_{(0,1)}(h)\); normality consequently gives \(\varphi(p)=0\). The functions \(h-e\) and \(h^{1/2}-e\) vanish on both endpoint spectral subspaces. On the remaining subspace their squares are positive contractions. Thus
+
+
+\[
+0\le(h-e)^2\le p,
+\qquad
+0\le(h^{1/2}-e)^2\le p.
+\]
+
+
+Applying \(\varphi\) proves both zero-error conclusions for the prescribed projection. This argument does not infer \(h^2=h\) from a nonfaithful state. \(\square\)
+
+For example, in \(M_2(\mathbb C)\) let \(h=\operatorname{diag}(1,1/2)\) and \(\varphi(x)=x_{11}\). Then \(\delta=0\) and \(e=\operatorname{diag}(1,0)\), while \(h\) itself is not a projection. Both stated seminorm errors are zero, exactly as the proposition asserts.
+
 ### Sources and scope
 
-The spectral-cut argument addresses the unnumbered final step of Takesaki, *Theory of Operator Algebras III*, XIX.4, Theorem 4.14, printed page 477. Sections 1–2 give its projection-intersection and trace estimates explicitly for arbitrary finite von Neumann algebras with a faithful tracial state. Sections 3–4 combine that argument with the earlier programme proofs named above. The results are presented as course exposition; no novelty is claimed.
+The spectral-cut argument addresses the unnumbered final step of Takesaki, *Theory of Operator Algebras III*, XIX.4, Theorem 4.14, printed page 477. Sections 1–2 give its projection-intersection and trace estimates explicitly for arbitrary finite von Neumann algebras with a faithful tracial state. Sections 3–4 combine that argument with the earlier programme proofs named above. Section 5 treats the specified state spectral cutoff of XIV.2, Lemma 2.2, printed pages 96–97. Its bounds hold for every normal state, including the exact zero-defect endpoint and nonfaithful states. The results are presented as course exposition; no novelty is claimed.

@@ -1,6 +1,6 @@
 # Discrete decomposition and periodic weights
 
-A type III factor with a discrete modular spectrum has a trace-scaling description by one automorphism of a type II factor. We construct that description for each specified infinite periodic weight, prove its converse and strict uniqueness, and keep the projection cardinalities that matter when the predual is not separable. A continuous suspension proves the discrete cocycle theorem used in the uniqueness argument.
+A type III factor with a discrete modular spectrum has a trace-scaling description by one automorphism of a type II factor. We construct that description for each specified infinite periodic weight, prove its converse and strict uniqueness, and keep the projection cardinalities that matter when the predual is not separable. A continuous suspension and a direct integer-averaging construction prove the discrete cocycle theorem used in the uniqueness argument.
 
 *Original exposition, examples, figures, data and reproducible drawing code in this lesson are dedicated to CC0-1.0. Source publications retain their own terms; no font files are redistributed.*
 
@@ -213,6 +213,61 @@ on the entire von Neumann algebras, with normal inverse, exactly as [GT4](OA-FLO
 
 If a finite centralizer corner is normalized as \(\bar\phi=\phi(e)^{-1}\phi|_{eMe}\), its trace amplification transports as \(\phi(e)(\bar\phi\otimes\operatorname{Tr})\). The scalar \(\phi(e)\) cannot be silently removed. The balanced proof above requires no claim that independently chosen amplifications preserve the two weights.
 
+<a id="dd-homogeneous-weight"></a>
+## 4A. Weight scaling on an entire homogeneous corner
+
+The following assertion holds on every von Neumann algebra \(B\), without a type, periodicity or countability assumption. Let \(\omega\) be a faithful normal semifinite weight, let \(v\in B\) be a partial isometry, and suppose that, for a fixed \(\mu>0\),
+\[
+ \sigma_t^\omega(v)=\mu^{it}v\qquad(t\in\mathbb R).
+ \tag{DDP18a}
+\]
+Put \(e=v^*v\) and \(f=vv^*\). Then \(e,f\in B_\omega\), and
+\[
+ \omega(vxv^*)=\mu\,\omega(x)\qquad(x\in(eBe)_+).
+ \tag{DDP18b}
+\]
+Both sides include infinite values. Equivalently, for every \(x\in B_+\) the right side is \(\mu\,\omega(exe)\).
+
+**Proof.** Fixedness of \(e,f\) follows by multiplying the eigenoperator identity by its adjoint. On \(M_2(B)\), form the faithful normal semifinite balanced weight
+\[
+ \Omega(X)=\omega(X_{11})+\mu\,\omega(X_{22}).
+\]
+The balanced modular formula [BC3–4](OA-FLOW-BC.md#oa-flow.bc.3) and its scalar normalization [BC5](OA-FLOW-BC.md#oa-flow.bc.5) give
+\[
+ \sigma_t^\Omega(X)=
+ \begin{pmatrix}
+ \sigma_t^\omega(X_{11})&
+       \mu^{-it}\sigma_t^\omega(X_{12})\\
+ \mu^{it}\sigma_t^\omega(X_{21})&
+       \sigma_t^\omega(X_{22})
+ \end{pmatrix}.
+ \tag{DDP18c}
+\]
+Consequently the upper-right partial isometry
+\[
+ V=\begin{pmatrix}0&v\\0&0\end{pmatrix},\qquad
+ P=VV^*=\begin{pmatrix}f&0\\0&0\end{pmatrix},\qquad
+ Q=V^*V=\begin{pmatrix}0&0\\0&e\end{pmatrix}
+\]
+is fixed by this modular group. The projections \(P,Q\) are orthogonal even when \(e,f\) overlap in \(B\). Thus
+\[
+ W=V+V^*+(1-P-Q),\qquad W^*=W,\qquad W^2=1
+ \tag{DDP18d}
+\]
+is a unitary in the centralizer of \(\Omega\): the first two summands square to \(P+Q\), and the complementary projection annihilates them on both sides.
+
+For \(x\in(eBe)_+\), direct block multiplication gives
+\(W\operatorname{diag}(0,x)W^*=\operatorname{diag}(vxv^*,0)\).
+The full positive-cone centralizer invariance proved in [CZ0](OA-FLOW-CZ.md#oa-flow.cz.0) therefore gives
+\[
+ \omega(vxv^*)=\Omega\!\left(W\operatorname{diag}(0,x)W^*\right)
+             =\Omega(\operatorname{diag}(0,x))
+             =\mu\,\omega(x).
+\]
+No finite value of either support, or GNS vector for \(v\), is required. The zero partial isometry is included. Finally \(v=ve\), so replacing \(x\) by \(exe\) proves the formulation for all of \(B_+\). \(\square\)
+
+Taking \(x=e\) gives \(\omega(f)=\mu\,\omega(e)\). In the periodic-state setting of Section 8 this is the finite support-trace ratio; the statement above also controls every positive element of the source corner for an infinite weight. With \(e=f=1\), it gives the whole-cone scaling of a homogeneous unitary used in the discrete decomposition.
+
 <a id="dd-converse"></a>
 ## 5. The converse from an arbitrary trace-scaling II∞ system
 
@@ -346,6 +401,196 @@ The complete set of implementers is
 Indeed any two solutions \(z,w\) satisfy
 \(\alpha(wz^*)=wc_1(zc_1)^*=wz^*\); the converse follows by substitution. The zero algebra has its unique zero-algebra interpretation. This argument uses no measurable selection of implementers, no norm continuity of the cocycle, and no trace equality at infinity as a comparison substitute.
 
+<a id="dd-discrete-counting"></a>
+## 6A. Direct integer averaging and the linking projection
+
+Retain the hypotheses of Section 6. Let \(Q\) carry a faithful n.s.f. trace \(T\), let \(\alpha\in\operatorname{Aut}(Q)\) satisfy \(T\circ\alpha=\lambda T\), and let \((c_n)_{n\in\mathbb Z}\) be a unitary \(\alpha\)-cocycle. Then there is \(z\in\mathcal U(Q)\) such that
+
+\[
+ c_n=z^*\alpha^n(z)
+ \qquad(n\in\mathbb Z).
+ \tag{DDP43}
+\]
+
+This proof constructs the fixed linking partial isometry using integer translates in the original algebra. The zero algebra has the interpretation stated in Section 6; assume now that \(Q\ne0\).
+
+### The counting weight and its finite corners
+
+It is enough to treat \(c=c_1\). On \(A=M_2(Q)\), with \(T_2=\operatorname{Tr}_2\otimes T\), put
+
+\[
+ \gamma=\operatorname{Ad}
+ \begin{pmatrix}1&0\\0&c\end{pmatrix}
+ \circ(\operatorname{id}_2\otimes\alpha),
+ \qquad F=A^\gamma,\quad p=e_{11},\quad q=e_{22}.
+ \tag{DDP44}
+\]
+
+Inner invariance of a trace gives \(T_2\circ\gamma=\lambda T_2\). Both diagonal projections are fixed. We prove that they are equivalent in \(F\). The matrix trace is the full normal amplification constructed in [TW2](OA-FLOW-TW.md#tw-2). The weight inputs are [EP2–6](OA-FLOW-EP.md#oa-flow.ep.2), [OT5](OA-FLOW-OT.md#oa-flow.ot.5), the tracial density theorem [TD4–6](OA-FLOW-TD.md#oa-flow.td.4), and its modular formula [CZ5](OA-FLOW-CZ.md#oa-flow.cz.5). Projection comparison and arbitrary orthogonal sums are proved in [PC1–5](OA-FLOW-PC.md#oa-flow.projection.pc1); the finite-central-witness lemma is proved in [CST, Section 5](OA-FLOW-CST.md#cst-5). No continuous action interpolating \(\alpha\) is used.
+
+First establish the discrete action weight
+
+\[
+ E(x)=\sum_{n\in\mathbb Z}\gamma^n(x)
+ \quad(x\in A_+)
+ \tag{DDP45}
+\]
+
+as the supremum of the finite positive sums in the extended-positive cone. Here is its full meaning. For every positive normal functional \(\eta\) on \(A\), set
+\[
+ S_x(\eta)=\sup_{J\subset\mathbb Z\ {\rm finite}}
+                   \sum_{n\in J}\eta(\gamma^n(x)).
+\]
+[EP4](OA-FLOW-EP.md#oa-flow.ep.4) constructs this extended-positive element, including its infinite-value projection. Reindexing makes it \(\gamma\)-invariant. Uniqueness of the spectral pair in [EP2–3](OA-FLOW-EP.md#oa-flow.ep.2) then puts its infinite projection and all finite-part spectral projections in \(F\). Thus the same pair defines \(E(x)\in\widehat F_+\); its inclusion into \(\widehat A_+\) is \(m\mapsto[\eta\mapsto m(\eta|_F)]\), which is injective by uniqueness of that pair.
+
+Additivity and homogeneity follow by taking common finite index sets, also when a value is infinite. For a bounded increasing positive net \(x_i\uparrow x\), normality of \(\gamma\) and \(\eta\) gives
+\[
+ S_x(\eta)=\sup_J\sup_i\sum_{n\in J}\eta(\gamma^n(x_i))
+         =\sup_i S_{x_i}(\eta).
+\]
+A positive normal functional on \(F\) extends positively and normally to \(A\): write it as a positive vector series in the faithful normal representation, by [EP1](OA-FLOW-EP.md#oa-flow.ep.1), and use the same vectors on \(A\). The preceding identity therefore tests all of \(F_*^+\), proving normality in the target cone. For \(b\in F\), termwise compression gives \(E(b^*xb)=b^*E(x)b\), with the full extended-cone meaning of [EP4](OA-FLOW-EP.md#oa-flow.ep.4). Reindexing gives \(E\gamma=E\). The term \(n=0\) proves faithfulness.
+
+For semifiniteness we construct an integer wandering partition directly. The finite-trace projections and join bound used below are proved in [L19, Section 2](OA-FLOW-L19.md#l19-2) and [PC3](OA-FLOW-PC.md#oa-flow.projection.pc3). In a nonzero invariant projection choose a nonzero finite-trace projection \(a\), and set \(f=\bigvee_{n\geq0}\gamma^n(a)\). The projection join estimate gives \(0<T_2(f)\leq T_2(a)/(1-\lambda)<\infty\). Since \(\gamma(f)\leq f\) and \(T_2(\gamma(f))=\lambda T_2(f)\), the projection \(f-\gamma(f)\) is nonzero. Its translates are pairwise orthogonal. A maximal family with orthogonal saturations fills the identity, since the same construction works in any invariant remainder. Summing the family's initial projections gives a single projection \(a_0\) whose translates \(a_n=\gamma^n(a_0)\), \(n\in\mathbb Z\), are orthogonal and sum strongly to one. The maximal family can be uncountable; its sum is taken over finite subsets before forming the countable translation orbit.
+
+An invariant remainder means the complement of the orthogonal sum of the already chosen saturations. Every nonzero such remainder contains a nonzero finite-trace projection by semifiniteness of \(T_2\), so maximality forces it to vanish. The orthogonal sums and the maximal-family argument are those proved in [PC0–1](OA-FLOW-PC.md#oa-flow.projection.pc0).
+
+Put \(a^{(m)}=\sum_{|n|\leq m}a_n\). Direct counting gives
+
+\[
+ \sum_{j\in\mathbb Z}\gamma^j(a^{(m)})=(2m+1)1,
+ \qquad E(x)\leq(2m+1)\|x\|1
+ \quad\bigl(x\in(a^{(m)}Aa^{(m)})_+\bigr).
+ \tag{DDP46}
+\]
+
+The bounded strong-star approximants \(a^{(m)}ya^{(m)}\to y\) show that the finite left ideal of \(E\) is ultraweakly dense. Thus \(E:A_+\to\widehat F_+\) is an n.s.f. operator-valued weight, with its counting-sum domain proved rather than inferred from the real-line case.
+
+### A logarithmic coordinate and a normalized integer window
+
+Choose a faithful n.s.f. weight \(\omega\) on \(F\), using [FR1](OA-FLOW-FR.md#oa-flow.fr.1), and form \(\Phi=\widehat\omega\circ E\). [EP6](OA-FLOW-EP.md#oa-flow.ep.6) makes \(\Phi\) faithful n.s.f., and reindexing makes it invariant under \(\gamma\). The full modular restriction [OT5](OA-FLOW-OT.md#oa-flow.ot.5) gives \(\sigma_t^\Phi|_F=\sigma_t^\omega\); in particular for every unitary \(u\in F\),
+
+\[
+ u^*\sigma_t^\Phi(u)=u^*\sigma_t^\omega(u),
+ \qquad \sigma_t^\Phi|_F=\sigma_t^\omega.
+ \tag{DDP47}
+\]
+
+Write \(\Phi=(T_2)_H\), using [TD4–6](OA-FLOW-TD.md#oa-flow.td.4)'s nonsingular positive affiliated density. Transporting its bounded spectral cutoffs gives \((T_2)_H\circ\gamma=\lambda(T_2)_{\gamma^{-1}(H)}\) on the whole cone, as in [L19, Section 3](OA-FLOW-L19.md#l19-3). Invariance and uniqueness of the density therefore give \(\gamma(H)=\lambda H\). To avoid confusing this coordinate with the modular period \(P\) fixed in the opening, denote its normalized logarithm by \(R\):
+
+\[
+ R=L^{-1}\log H,\qquad \gamma(R)=R-1,
+ \qquad \sigma_t^\Phi=\operatorname{Ad}(H^{it}).
+ \tag{DDP48}
+\]
+
+The equalities for affiliated operators mean the corresponding transported spectral resolutions.
+
+The discrete averaging window must have an exact partition of unity. Set
+
+\[
+ g(r)=(1+r^2)^{-1/2},\quad
+ d(r)=\sum_{n\in\mathbb Z}g(r-n)^2,\quad
+ k(r)=g(r)d(r)^{-1/2}.
+ \tag{DDP49}
+\]
+
+The series for \(d\) converges uniformly on \([0,1]\): its tails are bounded by a constant times \(\sum_{|n|>m}n^{-2}\). It is continuous and one-periodic. Choosing a nearest integer gives \(d(r)\geq4/5\), and uniform convergence on the compact interval gives a finite upper bound. Consequently \(k\) is strictly positive, bounded by one, continuous, and vanishes at infinity. Periodicity of the denominator gives, including integer endpoints,
+
+\[
+ \sum_{n\in\mathbb Z}k(r-n)^2=1,
+ \qquad \sum_{n\in\mathbb Z}k(R-n)^2=1.
+ \tag{DDP50}
+\]
+
+The operator sum is a strong positive sum, verified against each finite scalar spectral measure. The operator \(k(R)\) is injective with dense range.
+
+For \(x\in A\), define \(b_n=\gamma^n(k(R)xk(R))=k(R-n)\gamma^n(x)k(R-n)\). Positive-functional Cauchy--Schwarz yields
+
+\[
+ |\rho(b_n)|\leq\|x\|\rho(k(R-n)^2),
+ \qquad \sum_n|\rho(b_n)|\leq\|x\|\rho(1)
+ \quad(\rho\in A_*^+).
+ \tag{DDP51}
+\]
+
+Every normal functional is a linear combination of four positive ones, so all its scalar tests form an \(\ell^1(\mathbb Z)\) sequence. In any faithful normal representation, a finite subset \(J\subset\mathbb Z\) satisfies
+
+\[
+ \sum_{n\in J}|\langle b_n\xi,\eta\rangle|
+ \leq\|x\|
+ \Bigl(\sum_{n\in J}\|k(R-n)\xi\|^2\Bigr)^{1/2}
+ \Bigl(\sum_{n\in J}\|k(R-n)\eta\|^2\Bigr)^{1/2}
+ \leq\|x\|\|\xi\|\|\eta\|.
+ \tag{DDP52}
+\]
+
+This estimate also holds if each \(b_n\) is multiplied on the left or right by \(e^{ir(R-n)}\): that unitary commutes with the window and preserves the relevant vector norm. Weak-star compactness and the absolutely convergent scalar tests therefore give actual bounded operators
+
+\[
+ \begin{aligned}
+ L_r(x)&=\sum_{n\in\mathbb Z}\gamma^n(e^{irR}k(R)xk(R))
+       =e^{irR}\widehat b(r),\\
+ R_r(x)&=\sum_{n\in\mathbb Z}\gamma^n(k(R)xk(R)e^{irR})
+       =\widehat b(r)e^{irR},\\
+ \widehat b(r)&=\sum_{n\in\mathbb Z}e^{-irn}b_n,
+ \end{aligned}
+ \qquad \|L_r(x)\|,\|R_r(x)\|\leq\|x\|.
+ \tag{DDP53}
+\]
+
+The limits are unique because every predual functional determines them. Reindexing shows that \(L_r(x),R_r(x)\in F\). The left and right factor orders in (DDP53) are retained; \(x\) need not commute with \(R\).
+
+We next prove \(A=W^*(F,e^{irR}:r\in\mathbb R)\). Call the right side \(B\). It contains \(\widehat b(r)\) by (DDP53). If \(\ell\in A_*\) annihilates \(B\), the Fourier series \(\sum_n e^{-irn}\ell(b_n)\) vanishes identically. It converges absolutely and uniformly, and its \(m\)-th coefficient is recovered by integration against \(e^{irm}\) on \([0,2\pi]\). Hence every \(\ell(b_m)\), in particular \(\ell(k(R)xk(R))\), is zero. Predual separation gives \(k(R)xk(R)\in B\). Its spectral cuts \(f_m=1_{[1/m,1]}(k(R))\) increase strongly to one, and \(k(R)^{-1}f_m\) is bounded and belongs to \(B\). Multiplying the sandwich by these bounded inverses gives \(f_mxf_m\in B\); their bounded strong-star limit is \(x\). This proves generation by an explicit \(\ell^1\) Fourier argument.
+
+By [NC4](OA-FLOW-NC.md#oa-flow.nc.4), \(\sigma^\omega\) fixes \(Z(F)\) pointwise. If \(z\in Z(F)\), equation (DDP47) therefore says that \(z\) commutes with all \(H^{it}\), and thus with the spectral projections of \(R\). Generation gives \(Z(F)\subset Z(A)\). In particular every central type decomposition of \(F\) cuts \(A\) into invariant central pieces and commutes with its actual matrix units. On a semifinite such piece choose any n.s.f. trace \(\rho\) on \(Fz\). Repeat the density construction there. Equation (DDP47) makes its imaginary powers commute with \(Fz\); generation then makes them central in \(Az\). Its logarithmic coordinate \(R_\rho\) is affiliated with \(Z(Az)\), and \(\widehat\rho\circ E_z\) has trivial modular group and is an n.s.f. trace by [KT5](OA-FLOW-KT.md#oa-flow.kt.5).
+
+### Two support comparisons retain the cardinality
+
+To control cardinality, choose the original auxiliary weight diagonally: \(\omega(x)=\omega_1(pxp)+\omega_2(qxq)\), with n.s.f. corner weights. Such corner weights exist by [FR1](OA-FLOW-FR.md#oa-flow.fr.1). Their direct sum is faithful n.s.f.: finite positive elements in each diagonal corner have finite sum weight and strongly fill both diagonal units, so [EP6](OA-FLOW-EP.md#oa-flow.ep.6) applies after the bounded faithful diagonal expectation. Invariance under \(p-q\), bimodularity of \(E\), and density uniqueness make \(R=\operatorname{diag}(R_1,R_2)\). For \(x=e_{12}\), the sole entry of \(b_0\) is \(k(R_1)k(R_2)\). This product is injective, and has dense range because its adjoint \(k(R_2)k(R_1)\) is also a product of injective operators. No commutation of the factors is needed.
+
+Use the countable dense frequencies \(\mathcal D=\mathbb Q\cap[0,2\pi)\). If a projection \(a\leq q\) is a common right annihilator of \(L_r(e_{12})\), \(r\in\mathcal D\), cancel the left unitary in (DDP53) to get \(\widehat b(r)a=0\). For each normal functional, the Fourier series testing \(b_na\) is continuous by (DDP51), since multiplication by \(a\) preserves normality. It vanishes on \(\mathcal D\), hence everywhere. Fourier coefficient recovery gives \(b_0a=0\), so injectivity makes \(a=0\). Thus the right supports of these entries join to \(q\). Canceling the right unitary for \(R_r(e_{12})\) gives the corresponding left-support assertion for \(p\), using the dense range of \(b_0\).
+
+Enumerate \(\mathcal D=(r_j)_{j\geq1}\). The column with entries \(2^{-j}L_{r_j}(e_{12})\) is bounded and injective on \(q\mathcal H\). Its finite columns and their adjoints converge strongly with a square-summable tail bound, so [TW1](OA-FLOW-TW.md#tw-1) puts it in the normal amplification of \(F\). Its polar part, and the analogous adjoint column for the \(R_{r_j}\), give
+
+\[
+ q\precsim p\otimes1_{\ell^2},\qquad
+ p\precsim q\otimes1_{\ell^2}.
+ \tag{DDP54}
+\]
+
+Both projections therefore have full central support in \(F\), and these comparisons survive every central restriction. On a piece where both are properly infinite, recursive splitting absorbs the countable multiplicity on each side. [PC5](OA-FLOW-PC.md#oa-flow.projection.pc5) supplies countably many filling copies of each properly infinite projection, and [PC3](OA-FLOW-PC.md#oa-flow.projection.pc3) makes mutual subequivalence an equivalence. Hence \(p\sim q\). This covers the type III part of \(F\) and those properly infinite pieces of its semifinite part. It uses the countable support comparisons, rather than assuming that full central support determines the size of a projection.
+
+### A half-open spectral cell gives a finite trace witness
+
+On every semifinite central piece \(z\), and for every n.s.f. trace \(\rho\) on \(Fz\), use the central coordinate \(R_\rho\) already constructed and the half-open spectral interval
+
+\[
+ f=1_{[0,1)}(R_\rho),\qquad
+ E_z(f)=\sum_{n\in\mathbb Z}1_{[0,1)}(R_\rho-n)=z.
+ \tag{DDP55}
+\]
+
+This is an exact spectral identity: precisely one integer translate contains any real coordinate. A closed interval would double count integer coordinates and cannot be used when spectral atoms are possible. With \(a=ze_{12}f\), centrality of \(f\) gives \(aa^*=zpf\) and \(a^*a=zqf\). Traciality of \(\rho\circ E_z\) and bimodularity now give the full-cone equalities
+
+\[
+ \rho(zp)=(\rho\circ E_z)(aa^*)
+         =(\rho\circ E_z)(a^*a)=\rho(zq).
+ \tag{DDP56}
+\]
+
+These hold for every such local trace, including infinite values. Use [L18, Section 6](OA-FLOW-L18.md#l18-6) for the semifinite/type III central decomposition, [PC4–5](OA-FLOW-PC.md#oa-flow.projection.pc4) for the finite and properly infinite central parts of \(p,q\), and [PC2](OA-FLOW-PC.md#oa-flow.projection.pc2) to compare them on each remaining semifinite piece. If a finite full projection is the smaller side and the enlargement is strict, the finite-central-witness lemma [CST5.3](OA-FLOW-CST.md#cst-5) supplies a further central restriction and a faithful trace finite on that projection but strictly larger on the other. This contradicts (DDP56). If the finite side is the larger side, its subequivalent counterpart is finite; exchange their roles and apply the same lemma. Thus \(p\sim q\) on these pieces too. Orthogonal central sums of the resulting partial isometries give \(w\in pFq\) with \(ww^*=p\), \(w^*w=q\).
+
+### Read the specified cocycle from the fixed entry
+
+Its sole nonzero entry is a unitary \(z\in Q\). Fixedness in (DDP44) says
+
+\[
+ \alpha(z)c^*=z,\qquad c=z^*\alpha(z).
+ \tag{DDP57}
+\]
+
+For positive integers the cocycle law telescopes to \(c_n=z^*\alpha^n(z)\). The law \(1=c_n\alpha^n(c_{-n})\) gives the same formula for negative integers, and the zero case is immediate. This proves (DDP43), including the specified cocycle and arbitrary algebra cardinality. Formula (DDP27) gives all possible choices of \(z\). \(\square\)
+
 <a id="dd-comparison"></a>
 ## 7. Generalized traces and strict uniqueness
 
@@ -473,6 +718,6 @@ The diagram records the actual suspension, not a numerical model of a type III f
 <a id="dd-reading"></a>
 ## Further reading
 
-M. Takesaki, *Theory of Operator Algebras II*, Theorems XII.2.1–2.2, Definition XII.2.3 and Exercises XII.2.1–5, printed pp. 380–384, treat discrete decomposition, generalized traces and periodic-state centralizers. The complete proofs above retain arbitrary factor cardinality: Sections 1 and 3 justify the corner and projection comparisons, Section 4 gives the normal recognition for the specified weight, and Section 5 proves the converse and full core-center period. Section 6 proves discrete cocycle stability on arbitrary traced algebras through a continuous suspension; Sections 7–8 apply it to uniqueness and prove the state consequences.
+M. Takesaki, *Theory of Operator Algebras II*, Theorems XII.2.1–2.2, Definition XII.2.3 and Exercises XII.2.1–5, printed pp. 380–384, treat discrete decomposition, generalized traces and periodic-state centralizers. The complete proofs above retain arbitrary factor cardinality: Sections 1 and 3 justify the corner and projection comparisons, Section 4 gives the normal recognition for the specified weight, and Section 5 proves the converse and full core-center period. Sections 6 and 6A prove discrete cocycle stability on arbitrary traced algebras through a continuous suspension and a direct counting-weight construction; Sections 7–8 apply it to uniqueness and prove the state consequences.
 
 The complementary earlier treatments are [discrete-decomposition existence](OA-FLOW-DD.md#oa-flow.dd.0), [recognition for a given periodic weight](OA-FLOW-GT.md#oa-flow.gt.4), and [continuous trace-scaling cocycle stability](OA-FLOW-CST.md#cst-5).

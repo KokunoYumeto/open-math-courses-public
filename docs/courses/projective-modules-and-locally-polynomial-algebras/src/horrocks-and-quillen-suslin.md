@@ -48,7 +48,10 @@ The Jacobson radical of \(U^{-1}B\) contains \(\mathfrak mU^{-1}B\): if \(a\in\m
 
 *The quotient \(B/I\) is a free \(A\)-module of finite rank.* Consider the exact sequences of \(A\)-modules
 \[
-0\to B\xrightarrow{\ \cdot f\ }I\to I/fB\to0,\qquad 0\to fB/fI\to I/fI\to I/fB\to0 .
+\begin{gathered}
+0\to B\xrightarrow{\ \cdot f\ }I\to I/fB\to0,\\
+0\to fB/fI\to I/fI\to I/fB\to0 .
+\end{gathered}
 \]
 The \(B\)-module \(I\) is projective and \(B\) is a free \(A\)-module, so \(I\) is a projective \(A\)-module. The \(B/fB\)-module \(I/fI\) is projective and \(B/fB\) is a free \(A\)-module, so \(I/fI\) is a projective \(A\)-module. By Schanuel's lemma, \(B\oplus I/fI\cong fB/fI\oplus I\); hence \(fB/fI\) is a direct summand of a projective \(A\)-module. Multiplication by \(f\) is an isomorphism \(B/I\to fB/fI\), since \(f\) is a nonzerodivisor. So \(B/I\) is projective over \(A\), and finitely generated, as a quotient of \(B/fB\). By Lemma 1.1, it is free of some rank \(d\).
 

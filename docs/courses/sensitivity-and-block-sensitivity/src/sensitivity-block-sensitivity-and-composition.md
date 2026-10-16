@@ -20,9 +20,12 @@ The sensitive coordinates at \(x\) form disjoint sensitive blocks \(\{a\}\), so 
 
 ## 2. Disjoint ORs
 
-For \(P:\{0,1\}^N\to\{0,1\}\) and \(m\ge1\), the *disjoint OR* of \(m\) copies of \(P\) is the function on \(mN\) bits
+For \(P:\{0,1\}^N\to\{0,1\}\) and \(m\ge1\), the *disjoint OR* of \(m\) copies of \(P\) is the function on \(mN\) bits, with \(x_i\in\{0,1\}^N\),
 \[
-F(x_1,\dots,x_m)=P(x_1)\vee\dots\vee P(x_m),\qquad x_i\in\{0,1\}^N.
+\begin{aligned}
+&F(x_1,\dots,x_m)\\
+&\quad=P(x_1)\vee\dots\vee P(x_m).
+\end{aligned}
 \]
 
 **Lemma 2.1** (disjoint ORs). \(s_0(F)\le m\,s_0(P)\) and \(s_1(F)\le s_1(P)\). If \(P(0)=0\), then \(F(0)=0\) and \(\operatorname{bs}(F,0)\ge m\operatorname{bs}(P,0)\).
@@ -43,9 +46,12 @@ Virza, and then Ambainis and Sun, improved the constant to \(\frac23\) by refini
 
 ## 4. Composition
 
-For \(f:\{0,1\}^a\to\{0,1\}\) and \(g:\{0,1\}^b\to\{0,1\}\), the *composition* \(f\circ g\) is the function on \(ab\) bits
+For \(f:\{0,1\}^a\to\{0,1\}\) and \(g:\{0,1\}^b\to\{0,1\}\), the *composition* \(f\circ g\) is the function on \(ab\) bits, with \(x_i\in\{0,1\}^b\),
 \[
-(f\circ g)(x_1,\dots,x_a)=f\bigl(g(x_1),\dots,g(x_a)\bigr),\qquad x_i\in\{0,1\}^b.
+\begin{aligned}
+&(f\circ g)(x_1,\dots,x_a)\\
+&\quad=f\bigl(g(x_1),\dots,g(x_a)\bigr).
+\end{aligned}
 \]
 We index its coordinates by \([a]\times[b]\), the coordinate \((i,c)\) being coordinate \(c\) of \(x_i\).
 
@@ -53,13 +59,19 @@ We index its coordinates by \([a]\times[b]\), the coordinate \((i,c)\) being coo
 
 **Proof.** Fix \(x=(x_1,\dots,x_a)\) and let \(y=(g(x_1),\dots,g(x_a))\). Flipping coordinate \((i,c)\) changes at most the \(i\)-th entry of \(y\); it changes \(f\circ g\) exactly when it changes \(g(x_i)\) and \(f(y^i)\neq f(y)\). Hence
 \[
-s(f\circ g,x)=\sum_{i:\,f(y^i)\neq f(y)}s(g,x_i)\le s(f,y)\,s(g)\le s(f)\,s(g).
+\begin{aligned}
+s(f\circ g,x)&=\sum_{i:\,f(y^i)\neq f(y)}s(g,x_i)\\
+&\le s(f,y)\,s(g)\le s(f)\,s(g).
+\end{aligned}
 \]
 Now let \(g(0)=0\), so the all-zero input gives \(y=0\). Let \(C_1,\dots,C_p\subseteq[a]\) be disjoint sensitive blocks of \(f\) at \(0\) and \(D_1,\dots,D_q\subseteq[b]\) disjoint sensitive blocks of \(g\) at \(0\). The sets \(C_i\times D_j\) are nonempty and pairwise disjoint. Flipping \(C_i\times D_j\) at \(0\) turns exactly the children \(x_l\), \(l\in C_i\), into \(0^{D_j}\), where \(g\) is \(1\); so \(y\) becomes \(0^{C_i}\), where \(f\) differs from \(f(0)\). This gives \(pq\) disjoint sensitive blocks. \(\square\)
 
 **Proposition 4.2** (powering). Let \(f\) be a Boolean function with \(f(0)=0\), \(s(f)\le A\) and \(\operatorname{bs}(f,0)\ge B\), where \(A>1\) and \(B>A^2\). Put \(F_1=f\) and \(F_{m+1}=f\circ F_m\), and \(\alpha=\log B/\log A>2\). Then for every \(m\ge1\), \(F_m(0)=0\), \(F_m\) is nonconstant, and
 \[
-\operatorname{bs}(F_m)\ge\operatorname{bs}(F_m,0)\ge B^m\ge s(F_m)^\alpha,\qquad\frac{\operatorname{bs}(F_m)}{s(F_m)^2}\ge\Bigl(\frac B{A^2}\Bigr)^m.
+\begin{gathered}
+\operatorname{bs}(F_m)\ge\operatorname{bs}(F_m,0)\ge B^m\ge s(F_m)^\alpha,\\
+\frac{\operatorname{bs}(F_m)}{s(F_m)^2}\ge\Bigl(\frac B{A^2}\Bigr)^m.
+\end{gathered}
 \]
 
 **Proof.** By induction with Lemma 4.1, \(F_m(0)=0\), \(s(F_m)\le A^m\) and \(\operatorname{bs}(F_m,0)\ge B^m\ge1\); the last bound gives a sensitive block, so \(F_m\) is nonconstant. Then \(s(F_m)^\alpha\le A^{m\alpha}=B^m\), and \(B^m/s(F_m)^2\ge B^m/A^{2m}\). \(\square\)

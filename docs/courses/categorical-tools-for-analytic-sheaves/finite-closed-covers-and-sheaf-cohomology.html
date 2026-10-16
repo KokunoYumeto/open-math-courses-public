@@ -1,0 +1,291 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite closed covers and sheaf cohomology</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="finite-closed-covers-and-sheaf-cohomology">Finite closed covers and sheaf cohomology</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Original text: CC0.</em></p>
+<p>A finite closed cover gives a resolution by restrictions to its intersections. At a point, the surviving terms form the augmented cochain complex of a simplex. Its contraction proves exactness, while derived sections account for any higher cohomology on the intersections. This construction uses closed restriction and pushforward, rather than sections with support.</p>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a topological space, <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> a sheaf of unital rings, possibly noncommutative, and <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> a left <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>-module sheaf. Work in fixed universes with choice. No separation or paracompactness assumption is imposed. Finiteness enters in the stalk calculation and the finite column filtration.</p>
+<p>Use <a href="relative-pullback-of-locally-module-stacks.html#1-the-inverse-image-of-module-sheaves">The inverse image of module sheaves</a> for the actual inverse-image adjunction and stalk formula; <a href="godement-resolutions-and-flabby-sheaf-cohomology.html">Godement resolutions and flabby sheaf cohomology</a> for enough injectives and the stalk criteria; <a href="filtered-complexes-and-cartan-eilenberg-resolutions.html">Filtered complexes and Cartan–Eilenberg resolutions</a> for the complete injective double-resolution and spectral-sequence construction; and <a href="injective-replacements-and-right-derived-functors.html">Injective replacements and right derived functors</a> for bounded-below derived sections. The companion <a href="cech-complexes-refinements-and-acyclic-covers.html">open-cover Čech lesson</a> has a different cover hypothesis. Exercise 2 also uses the explicit diagram resolution in <a href="finite-poset-sheaves-and-canonical-homological-resolutions.html">Finite-poset sheaves and canonical homological resolutions</a>.</p>
+<h2 id="1-closed-restriction-its-maps-and-its-cohomology">1. Closed restriction, its maps and its cohomology</h2>
+<p>For a closed subset <span class="math" data-tex="\(Z\)">\(Z\)</span>, let <span class="math" data-tex="\(i_Z:Z\hookrightarrow X\)">\(i_Z:Z\hookrightarrow X\)</span> be its inclusion and write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\mathcal F[Z]=i_{Z*}i_Z^{-1}\mathcal F.
+\tag{1.1}
+\]">\[
+\mathcal F[Z]=i_{Z*}i_Z^{-1}\mathcal F.
+\tag{1.1}
+\]</span>
+<p>The inverse-image sheaf is a module over <span class="math" data-tex="\(i_Z^{-1}\mathcal R\)">\(i_Z^{-1}\mathcal R\)</span>, and pushforward uses the natural scalar map from <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>. The inverse-image construction and adjunction recalled in the prerequisite apply to these possibly noncommutative rings too: transport the addition and left action on local representatives, and a map out of the sheafification is a compatible family of module maps. The inverse adjunction rules restrict or extend that same family, so respect the left action without commuting any scalars. In particular <span class="math" data-tex="\(\mathcal F[\varnothing]=0\)">\(\mathcal F[\varnothing]=0\)</span> and <span class="math" data-tex="\(\mathcal F[X]=\mathcal F\)">\(\mathcal F[X]=\mathcal F\)</span>, through their canonical identifications. The notation in (1.1) does not denote the subsheaf of sections supported in <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> For <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+\mathcal F[Z]_x\simeq
+\begin{cases}
+\mathcal F_x,&amp;x\in Z,\\
+0,&amp;x\notin Z.
+\end{cases}
+\tag{1.2}
+\]">\[
+\mathcal F[Z]_x\simeq
+\begin{cases}
+\mathcal F_x,&amp;x\in Z,\\
+0,&amp;x\notin Z.
+\end{cases}
+\tag{1.2}
+\]</span>
+<p>For closed subsets <span class="math" data-tex="\(W\subseteq Z\)">\(W\subseteq Z\)</span>, there is a natural map <span class="math" data-tex="\(\rho_{Z,W}:\mathcal F[Z]\to\mathcal F[W]\)">\(\rho_{Z,W}:\mathcal F[Z]\to\mathcal F[W]\)</span>. Its stalk is the identity where <span class="math" data-tex="\(x\in W\)">\(x\in W\)</span> and zero elsewhere. These maps compose according to inclusions.</p>
+<p><strong>Proof.</strong> Direct image on an open <span class="math" data-tex="\(V\)">\(V\)</span> has value <span class="math" data-tex="\((i_Z^{-1}\mathcal F)(V\cap Z)\)">\((i_Z^{-1}\mathcal F)(V\cap Z)\)</span>. If <span class="math" data-tex="\(x\notin Z\)">\(x\notin Z\)</span>, the closedness of <span class="math" data-tex="\(Z\)">\(Z\)</span> gives a neighborhood disjoint from <span class="math" data-tex="\(Z\)">\(Z\)</span>, making the stalk zero. If <span class="math" data-tex="\(x\in Z\)">\(x\in Z\)</span>, neighborhoods in <span class="math" data-tex="\(Z\)">\(Z\)</span> are intersections with neighborhoods in <span class="math" data-tex="\(X\)">\(X\)</span>. Taking their germs identifies the pushforward stalk with <span class="math" data-tex="\((i_Z^{-1}\mathcal F)_x\simeq\mathcal F_x\)">\((i_Z^{-1}\mathcal F)_x\simeq\mathcal F_x\)</span>, by the inverse-image stalk formula.</p>
+<p>For <span class="math" data-tex="\(j:W\hookrightarrow Z\)">\(j:W\hookrightarrow Z\)</span>, apply the adjunction unit to the sheaf <span class="math" data-tex="\(i_Z^{-1}\mathcal F\)">\(i_Z^{-1}\mathcal F\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span>, then push it forward by <span class="math" data-tex="\(i_Z\)">\(i_Z\)</span>. The composite-inverse-image identification gives <span class="math" data-tex="\(\rho_{Z,W}\)">\(\rho_{Z,W}\)</span>. Thus the map to a closed restriction is an adjunction-unit map; it is not an ordinary restriction to an open set. The unit stalk is the identity at points of <span class="math" data-tex="\(W\)">\(W\)</span>, giving the stated stalk description. For nested closed subsets, its composite and the direct map have the same stalk maps, hence are equal. To recall that last criterion, equality of the images of a section at every germ gives equality on a neighborhood of every point, then equality by the sheaf axiom. Naturality follows from the same unit construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2.</strong> Closed pushforward is exact and preserves injective module sheaves. There are natural identifications</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+H^q(X,\mathcal F[Z])\simeq H^q(Z,i_Z^{-1}\mathcal F),\\
+q\ge0.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+H^q(X,\mathcal F[Z])\simeq H^q(Z,i_Z^{-1}\mathcal F),\\
+q\ge0.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p><strong>Proof.</strong> The stalk description for a pushed-forward sheaf is its original stalk on <span class="math" data-tex="\(Z\)">\(Z\)</span>, and zero off <span class="math" data-tex="\(Z\)">\(Z\)</span>, by the proof of Lemma 1.1. The stalk exactness criterion therefore makes <span class="math" data-tex="\(i_{Z*}\)">\(i_{Z*}\)</span> exact. The functor <span class="math" data-tex="\(i_Z^{-1}\)">\(i_Z^{-1}\)</span> is exact, since its stalk at a point of <span class="math" data-tex="\(Z\)">\(Z\)</span> is the original stalk functor and filtered module colimits preserve exact sequences.</p>
+<p>If <span class="math" data-tex="\(I\)">\(I\)</span> is injective on <span class="math" data-tex="\(Z\)">\(Z\)</span>, a map from a subsheaf <span class="math" data-tex="\(A\subseteq B\)">\(A\subseteq B\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(i_{Z*}I\)">\(i_{Z*}I\)</span> corresponds by adjunction to a map <span class="math" data-tex="\(i_Z^{-1}A\to I\)">\(i_Z^{-1}A\to I\)</span>. Exactness of inverse image makes <span class="math" data-tex="\(i_Z^{-1}A\subseteq i_Z^{-1}B\)">\(i_Z^{-1}A\subseteq i_Z^{-1}B\)</span>, so injectivity extends that map. Adjunction extends the original map to <span class="math" data-tex="\(B\)">\(B\)</span>. Hence <span class="math" data-tex="\(i_{Z*}I\)">\(i_{Z*}I\)</span> is injective.</p>
+<p>Push forward an injective resolution of <span class="math" data-tex="\(i_Z^{-1}\mathcal F\)">\(i_Z^{-1}\mathcal F\)</span>. Exactness and preservation of injectives give an injective resolution of <span class="math" data-tex="\(\mathcal F[Z]\)">\(\mathcal F[Z]\)</span>. Its section complex over <span class="math" data-tex="\(X\)">\(X\)</span> is exactly the original section complex over <span class="math" data-tex="\(Z\)">\(Z\)</span>, because <span class="math" data-tex="\(\Gamma(X,i_{Z*}I)=\Gamma(Z,I)\)">\(\Gamma(X,i_{Z*}I)=\Gamma(Z,I)\)</span>. This proves (1.3), with naturality from comparison of resolutions. The construction also identifies the map induced by <span class="math" data-tex="\(\rho_{Z,W}\)">\(\rho_{Z,W}\)</span> with the usual derived restriction from <span class="math" data-tex="\(Z\)">\(Z\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-signed-finite-closed-cover-resolution">2. The signed finite closed-cover resolution</h2>
+<p>Let <span class="math" data-tex="\(Z_0,\ldots,Z_{m-1}\)">\(Z_0,\ldots,Z_{m-1}\)</span> be a finite family of closed subsets, and put <span class="math" data-tex="\(Z=\bigcup_i Z_i\)">\(Z=\bigcup_i Z_i\)</span>. For a nonempty subset <span class="math" data-tex="\(J\)">\(J\)</span> of the index set, put <span class="math" data-tex="\(Z_J=\bigcap_{j\in J}Z_j\)">\(Z_J=\bigcap_{j\in J}Z_j\)</span>. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+C^p(\mathcal Z,\mathcal F)
+=\bigoplus_{i_0&lt;\cdots&lt;i_p}\mathcal F[Z_{i_0\cdots i_p}],\\
+0\le p&lt;m.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+C^p(\mathcal Z,\mathcal F)
+=\bigoplus_{i_0&lt;\cdots&lt;i_p}\mathcal F[Z_{i_0\cdots i_p}],\\
+0\le p&lt;m.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>and use zero in all higher degrees. Empty intersections contribute zero when the corresponding closed subset is empty. Define the differential component at an increasing tuple <span class="math" data-tex="\(K=(i_0,\ldots,i_{p+1})\)">\(K=(i_0,\ldots,i_{p+1})\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+(dc)_K=\\
+\sum_{a=0}^{p+1}(-1)^a\rho_{Z_{K\setminus i_a},Z_K}
+(c_{K\setminus i_a}).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+(dc)_K=\\
+\sum_{a=0}^{p+1}(-1)^a\rho_{Z_{K\setminus i_a},Z_K}
+(c_{K\setminus i_a}).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>The augmentation <span class="math" data-tex="\(\epsilon:\mathcal F[Z]\to C^0\)">\(\epsilon:\mathcal F[Z]\to C^0\)</span> has components <span class="math" data-tex="\(\rho_{Z,Z_i}\)">\(\rho_{Z,Z_i}\)</span>. Deleting two distinct indices in opposite orders gives the same composite closed-restriction map. The two coefficients have opposite signs, because the earlier deletion changes the later position by one. Pairing them proves <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>. The same calculation gives <span class="math" data-tex="\(d\epsilon=0\)">\(d\epsilon=0\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> The augmented complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+0\longrightarrow\mathcal F[Z]
+\xrightarrow{\epsilon}C^0\xrightarrow d C^1\\
+\xrightarrow d\cdots\xrightarrow d C^{m-1}\longrightarrow0.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+0\longrightarrow\mathcal F[Z]
+\xrightarrow{\epsilon}C^0\xrightarrow d C^1\\
+\xrightarrow d\cdots\xrightarrow d C^{m-1}\longrightarrow0.
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>is exact. In particular, if the closed subsets cover <span class="math" data-tex="\(X\)">\(X\)</span>, the complex <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span> is a resolution of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>.</p>
+<p><strong>Proof.</strong> Stalks commute with the finite sums in (2.1). At <span class="math" data-tex="\(x\notin Z\)">\(x\notin Z\)</span>, every stalk in (2.3) is zero. At <span class="math" data-tex="\(x\in Z\)">\(x\in Z\)</span>, set <span class="math" data-tex="\(K_x=\{i:x\in Z_i\}\)">\(K_x=\{i:x\in Z_i\}\)</span>, which is nonempty. Lemma 1.1 identifies the surviving summands with one copy of <span class="math" data-tex="\(M=\mathcal F_x\)">\(M=\mathcal F_x\)</span> for each nonempty subset of <span class="math" data-tex="\(K_x\)">\(K_x\)</span>, and every restriction in (2.2) with its identity map. This is the augmented simplex cochain complex on <span class="math" data-tex="\(K_x\)">\(K_x\)</span>.</p>
+<p>Here is its contraction with the signs fixed. Choose <span class="math" data-tex="\(k\in K_x\)">\(k\in K_x\)</span>. For a cochain <span class="math" data-tex="\(c\)">\(c\)</span> of degree <span class="math" data-tex="\(p\)">\(p\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+(hc)_J=\\
+\begin{cases}
+(-1)^{r(J)}c_{J\cup\{k\}},&amp;k\notin J,\\
+0,&amp;k\in J.
+\end{cases}
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+(hc)_J=\\
+\begin{cases}
+(-1)^{r(J)}c_{J\cup\{k\}},&amp;k\notin J,\\
+0,&amp;k\in J.
+\end{cases}
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p>where <span class="math" data-tex="\(J\)">\(J\)</span> is increasing with <span class="math" data-tex="\(p\)">\(p\)</span> entries and <span class="math" data-tex="\(r(J)\)">\(r(J)\)</span> is the number of its entries smaller than <span class="math" data-tex="\(k\)">\(k\)</span>. In degree zero this means <span class="math" data-tex="\(hc=c_k\in M\)">\(hc=c_k\in M\)</span>, the augmentation term. Put <span class="math" data-tex="\(h=0\)">\(h=0\)</span> on that term.</p>
+<p>To check the contraction, use formal exterior basis symbols <span class="math" data-tex="\(e_J\)">\(e_J\)</span>, with coefficients in the abelian group underlying <span class="math" data-tex="\(M\)">\(M\)</span>. The differential is multiplication on the left by <span class="math" data-tex="\(\omega=\sum_{i\in K_x}e_i\)">\(\omega=\sum_{i\in K_x}e_i\)</span>. The operator <span class="math" data-tex="\(h\)">\(h\)</span> contracts the basis vector <span class="math" data-tex="\(e_k\)">\(e_k\)</span>: deleting it in position <span class="math" data-tex="\(r\)">\(r\)</span> contributes <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span>, which is exactly (2.4). For <span class="math" data-tex="\(i\ne k\)">\(i\ne k\)</span>, inserting <span class="math" data-tex="\(e_i\)">\(e_i\)</span> and deleting <span class="math" data-tex="\(e_k\)">\(e_k\)</span> in the two orders gives opposite signs; for <span class="math" data-tex="\(i=k\)">\(i=k\)</span>, exactly one of inserting-then-deleting and deleting-then-inserting is nonzero and returns the original basis symbol. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+hd+dh=1
+\tag{2.5}
+\]">\[
+hd+dh=1
+\tag{2.5}
+\]</span>
+<p>in every degree, including the augmentation. All maps are sums of <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> times module identities, so this check applies to arbitrary left modules over noncommutative rings as well. It proves exactness at every stalk, and hence exactness of the sheaf complex. The choice of <span class="math" data-tex="\(k\)">\(k\)</span> is only a stalkwise proof; no global splitting of (2.3) is asserted. If the family is empty, then <span class="math" data-tex="\(Z=\varnothing\)">\(Z=\varnothing\)</span> and (2.3) is the zero complex, so the statement still holds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-derived-sections-and-the-intersection-spectral-sequence">3. Derived sections and the intersection spectral sequence</h2>
+<p>In the next display, put <span class="math" data-tex="\(\mathcal F_J=i_{Z_J}^{-1}\mathcal F\)">\(\mathcal F_J=i_{Z_J}^{-1}\mathcal F\)</span>; the sum runs over subsets of the finite index set.</p>
+<p><strong>Theorem 3.1.</strong> There is a first-quadrant spectral sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+E_1^{p,q}=\bigoplus_{|J|=p+1}H^q(Z_J,\mathcal F_J)\\
+\Longrightarrow H^{p+q}(Z,i_Z^{-1}\mathcal F).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+E_1^{p,q}=\bigoplus_{|J|=p+1}H^q(Z_J,\mathcal F_J)\\
+\Longrightarrow H^{p+q}(Z,i_Z^{-1}\mathcal F).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>Its first differential is the alternating closed-restriction map (2.2) on cohomology. The column index has <span class="math" data-tex="\(0\le p&lt;m\)">\(0\le p&lt;m\)</span>; hence its abutment filtration is finite. For a closed cover of <span class="math" data-tex="\(X\)">\(X\)</span>, the target is <span class="math" data-tex="\(H^{p+q}(X,\mathcal F)\)">\(H^{p+q}(X,\mathcal F)\)</span>.</p>
+<p><strong>Proof.</strong> Take the injective Cartan–Eilenberg double resolution of the bounded complex <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span>, using the full construction in the stated prerequisite. Choose the zero injective embedding for all zero boundary and cohomology objects outside degrees <span class="math" data-tex="\(0,\ldots,m-1\)">\(0,\ldots,m-1\)</span>. In that construction each horizontal term is the sum of the injective boundary object in its degree, the injective cohomology object in its degree and the injective boundary object in the next degree. Since the boundary in degree <span class="math" data-tex="\(m\)">\(m\)</span> and in degree zero is zero, this choice preserves both horizontal bounds; every quotient complex used in the next vertical step has the same bounds. Thus the resolution has only those <span class="math" data-tex="\(m\)">\(m\)</span> columns. Its column at <span class="math" data-tex="\(p\)">\(p\)</span> is an injective resolution of <span class="math" data-tex="\(C^p\)">\(C^p\)</span>. The horizontal maps lift <span class="math" data-tex="\(d\)">\(d\)</span>, commute with the vertical differential, and square to zero. Use total differential <span class="math" data-tex="\(d_h+(-1)^p d_v\)">\(d_h+(-1)^p d_v\)</span> on column <span class="math" data-tex="\(p\)">\(p\)</span>, and the finite sums along total degrees. The column comparison makes <span class="math" data-tex="\(C^\bullet\to\operatorname{Tot}I\)">\(C^\bullet\to\operatorname{Tot}I\)</span> a quasi-isomorphism: its vertical-first comparison is an isomorphism on the column cohomology, and the finite column filtration gives convergence of that comparison. When <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, all the complexes and groups are zero and the assertion is immediate.</p>
+<p>Each total degree is a finite sum of injective sheaves and is injective. The total complex is bounded below, so it computes the derived section complex of <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span> by the bounded-below injective comparison theorem. Theorem 2.1 identifies <span class="math" data-tex="\(\mathcal F[Z]\to C^\bullet\)">\(\mathcal F[Z]\to C^\bullet\)</span> as a quasi-isomorphism. Consequently this total section complex computes <span class="math" data-tex="\(R\Gamma(X,\mathcal F[Z])\)">\(R\Gamma(X,\mathcal F[Z])\)</span>, and Proposition 1.2 identifies its cohomology with the stated target.</p>
+<p>Filter the total section complex by columns. Vertical cohomology in column <span class="math" data-tex="\(p\)">\(p\)</span> is <span class="math" data-tex="\(H^q(X,C^p)\)">\(H^q(X,C^p)\)</span>. Since (2.1) is a finite sum, this is the finite sum of the groups <span class="math" data-tex="\(H^q(X,\mathcal F[Z_J])\)">\(H^q(X,\mathcal F[Z_J])\)</span>. Proposition 1.2 gives the first page in (3.1). The horizontal maps are the lifts of (2.2), so their induced maps are exactly its alternating closed restrictions. The spectral-sequence construction and finite convergence are the proved filtered-complex theorem in the prerequisite. Comparison of the double resolutions gives the natural sequence and its abutment maps; no particular choices of injective lifts are part of the resulting cohomology comparison. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> If every nonempty intersection satisfies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+H^q(Z_J,i_{Z_J}^{-1}\mathcal F)=0
+\quad(q&gt;0),
+\tag{3.2}
+\]">\[
+H^q(Z_J,i_{Z_J}^{-1}\mathcal F)=0
+\quad(q&gt;0),
+\tag{3.2}
+\]</span>
+<p>then there is a natural derived identification</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+R\Gamma(Z,i_Z^{-1}\mathcal F)
+\simeq\Gamma(X,C^\bullet(\mathcal Z,\mathcal F)).
+\tag{3.3}
+\]">\[
+R\Gamma(Z,i_Z^{-1}\mathcal F)
+\simeq\Gamma(X,C^\bullet(\mathcal Z,\mathcal F)).
+\tag{3.3}
+\]</span>
+<p>In particular the cohomology of the finite closed-intersection section complex gives all the cohomology of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p><strong>Proof.</strong> By Proposition 1.2, every <span class="math" data-tex="\(C^p\)">\(C^p\)</span> is acyclic for sections. In the double resolution above, the map from <span class="math" data-tex="\(\Gamma(X,C^p)\)">\(\Gamma(X,C^p)\)</span>, placed in vertical degree zero, to its column section complex is a quasi-isomorphism. The finite column comparison makes their total map a quasi-isomorphism. Combining it with the preceding derived identification proves (3.3). Equivalently (3.1) has only its <span class="math" data-tex="\(q=0\)">\(q=0\)</span> row on the first page, whose cohomology is the displayed section complex. Empty intersections give zero and require no additional hypothesis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-naturality-order-and-refinements">4. Naturality, order and refinements</h2>
+<p>A sheaf map induces a map of (2.3) by functoriality of each closed restriction. It commutes with (2.2), so all comparisons above are natural in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. Reordering the finite index set changes each increasing-tuple component by the sign needed to sort the reordered tuple. This gives an isomorphism of augmented complexes: the formal exterior permutation sends the coefficient symbol <span class="math" data-tex="\(e_i\)">\(e_i\)</span> to the reordered basis symbol and commutes with insertion of <span class="math" data-tex="\(\sum_i e_i\)">\(\sum_i e_i\)</span>, while the actual closed-restriction maps compose identically. Its inverse is the reverse permutation.</p>
+<p>For a finite closed family <span class="math" data-tex="\((T_a)\)">\((T_a)\)</span> with <span class="math" data-tex="\(T_a\subseteq Z_{r(a)}\)">\(T_a\subseteq Z_{r(a)}\)</span>, extend a cochain antisymmetrically to arbitrary tuples of distinct indices, and assign zero to tuples with a repeated index. The refinement map is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+(r^*c)_{a_0\cdots a_p}
+=c_{r(a_0)\cdots r(a_p)}|_{T_{a_0\cdots a_p}},
+\tag{4.1}
+\]">\[
+(r^*c)_{a_0\cdots a_p}
+=c_{r(a_0)\cdots r(a_p)}|_{T_{a_0\cdots a_p}},
+\tag{4.1}
+\]</span>
+<p>where the vertical bar denotes the closed adjunction-unit map of Lemma 1.1. The required containment holds by the refinement condition. Formula (2.2) commutes with (4.1): both sums delete one target position and apply the same composite closed-restriction map. If the image tuple has repetitions, terms retaining a repetition vanish and the two deletions that remove one repeated entry cancel with their signs. This also proves the identity and composite refinement laws, since the sorting signs multiply, and a repeated intermediate tuple remains repeated after further mapping.</p>
+<p>If both families have the same union <span class="math" data-tex="\(Z\)">\(Z\)</span>, the refinement map commutes with their augmentations from <span class="math" data-tex="\(\mathcal F[Z]\)">\(\mathcal F[Z]\)</span>. Both augmentations are quasi-isomorphisms by Theorem 2.1. The refinement therefore induces the identity on the derived cohomology of <span class="math" data-tex="\(\mathcal F[Z]\)">\(\mathcal F[Z]\)</span>. Two choices of refinement function give that same derived map: after inverting the source augmentation, either map is the target augmentation composed with its inverse. This asserts independence on the derived abutment; it does not identify two generally different maps of first-page intersection groups. If the union of the <span class="math" data-tex="\(T_a\)">\(T_a\)</span>'s is a smaller closed subset <span class="math" data-tex="\(W\)">\(W\)</span>, the augmentation instead uses <span class="math" data-tex="\(\rho_{Z,W}\)">\(\rho_{Z,W}\)</span>, so the same construction induces the derived closed-restriction map.</p>
+<h2 id="5-four-exercises-with-complete-solutions">5. Four exercises with complete solutions</h2>
+<h3 id="exercise-1-the-two-set-sequence-and-its-signs">Exercise 1 — the two-set sequence and its signs</h3>
+<p><em>Introductory.</em> Suppose <span class="math" data-tex="\(X=A\cup B\)">\(X=A\cup B\)</span> with <span class="math" data-tex="\(A,B\)">\(A,B\)</span> closed, ordered in that order. Write the augmented resolution and its cohomology sequence, identifying the first two maps and the difference sign.</p>
+<p><strong>Solution.</strong> The resolution is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+0\longrightarrow\mathcal F\longrightarrow\mathcal F[A]\oplus\mathcal F[B]\\
+\longrightarrow\mathcal F[A\cap B]\longrightarrow0,\\
+s\longmapsto(s|_A,s|_B),\\
+(a,b)\longmapsto b|_{A\cap B}-a|_{A\cap B}.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+0\longrightarrow\mathcal F\longrightarrow\mathcal F[A]\oplus\mathcal F[B]\\
+\longrightarrow\mathcal F[A\cap B]\longrightarrow0,\\
+s\longmapsto(s|_A,s|_B),\\
+(a,b)\longmapsto b|_{A\cap B}-a|_{A\cap B}.
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>Here all closed restrictions are the maps of Section 1. At a point in only one member, the augmentation is the identity on its only surviving term. At a point in both, it is <span class="math" data-tex="\(M\to M\oplus M\to M\)">\(M\to M\oplus M\to M\)</span>, with diagonal first map and difference second map, which is exact. This also checks the signs directly. Apply the long exact derived-section sequence to (5.1), then use Proposition 1.2. It begins</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+0\to H^0(X,\mathcal F)\\
+\to H^0(A,\mathcal F|_A)\oplus H^0(B,\mathcal F|_B)\\
+\to H^0(A\cap B,\mathcal F|_{A\cap B})\\
+\xrightarrow{\partial}H^1(X,\mathcal F)\to\cdots.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+0\to H^0(X,\mathcal F)\\
+\to H^0(A,\mathcal F|_A)\oplus H^0(B,\mathcal F|_B)\\
+\to H^0(A\cap B,\mathcal F|_{A\cap B})\\
+\xrightarrow{\partial}H^1(X,\mathcal F)\to\cdots.
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>In every degree, the first map is the pair of derived restrictions and the second is restriction from <span class="math" data-tex="\(B\)">\(B\)</span> minus restriction from <span class="math" data-tex="\(A\)">\(A\)</span>. The connecting map is the boundary of the exact sheaf sequence (5.1): on an injective-resolution comparison, lift a cocycle through its middle term and take its differential; changing the lift changes the result by a coboundary, as in the derived-section long exact sequence. Reversing the order of <span class="math" data-tex="\(A,B\)">\(A,B\)</span> negates the intersection term, giving the same sequence under the signed order comparison of Section 4.</p>
+<h3 id="exercise-2-a-six-point-cycle-over-any-coefficient-ring">Exercise 2 — a six-point cycle over any coefficient ring</h3>
+<p><em>Intermediate.</em> Give the six-element poset vertices <span class="math" data-tex="\(v_0,v_1,v_2\)">\(v_0,v_1,v_2\)</span>, edges <span class="math" data-tex="\(e_0,e_1,e_2\)">\(e_0,e_1,e_2\)</span>, and relations <span class="math" data-tex="\(v_i&lt;e_i\)">\(v_i&lt;e_i\)</span>, <span class="math" data-tex="\(v_{i+1}&lt;e_i\)">\(v_{i+1}&lt;e_i\)</span>, with indices modulo three. Use the topology of upper sets. For a left module <span class="math" data-tex="\(M\)">\(M\)</span> over a ring <span class="math" data-tex="\(R\)">\(R\)</span>, let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be the diagram sheaf with every stalk <span class="math" data-tex="\(M\)">\(M\)</span> and every generization map the identity. Compute its cohomology using the three closed subsets <span class="math" data-tex="\(Z_i=\{v_i,v_{i+1},e_i\}\)">\(Z_i=\{v_i,v_{i+1},e_i\}\)</span>.</p>
+<p><strong>Solution.</strong> Each <span class="math" data-tex="\(Z_i\)">\(Z_i\)</span> is a lower set and hence closed, and their union is the whole poset. Its induced diagram has two minimal vertices mapping to one edge. First justify the diagram computation for arbitrary <span class="math" data-tex="\(R\)">\(R\)</span>-modules, since the prerequisite's injectivity assertion is stated for vector spaces. The sheaf–diagram equivalence uses compatible families on upper sets and minimal-open evaluation; that same construction and its inverse work for <span class="math" data-tex="\(R\)">\(R\)</span>-modules, with kernels and exactness calculated pointwise. For a point <span class="math" data-tex="\(x\)">\(x\)</span>, write <span class="math" data-tex="\(I_x(N)\)">\(I_x(N)\)</span> for the diagram equal to <span class="math" data-tex="\(N\)">\(N\)</span> below <span class="math" data-tex="\(x\)">\(x\)</span>, zero elsewhere, and identity on arrows within that lower set. It is the exact right adjoint to evaluation at <span class="math" data-tex="\(x\)">\(x\)</span>, by assigning a map's component at <span class="math" data-tex="\(y\le x\)">\(y\le x\)</span> through the structure map to <span class="math" data-tex="\(x\)">\(x\)</span>. Its sections are naturally <span class="math" data-tex="\(N\)">\(N\)</span>. Applying <span class="math" data-tex="\(I_x\)">\(I_x\)</span> to an injective resolution of <span class="math" data-tex="\(N\)">\(N\)</span> gives an injective diagram resolution: exactness is pointwise, and preservation of injectives follows from its exact left adjoint. Its section complex is the original resolution of <span class="math" data-tex="\(N\)">\(N\)</span>, so <span class="math" data-tex="\(I_x(N)\)">\(I_x(N)\)</span> is section-acyclic even when <span class="math" data-tex="\(N\)">\(N\)</span> is not injective.</p>
+<p>On the three-point piece <span class="math" data-tex="\(v,w&lt;e\)">\(v,w&lt;e\)</span>, an explicit resolution of the constant diagram is <span class="math" data-tex="\(J^0=I_v(M)\oplus I_w(M)\oplus I_e(M)\)">\(J^0=I_v(M)\oplus I_w(M)\oplus I_e(M)\)</span>, followed by <span class="math" data-tex="\(J^1=I_v(M)\oplus I_w(M)\)">\(J^1=I_v(M)\oplus I_w(M)\)</span>. At <span class="math" data-tex="\(v\)">\(v\)</span> the differential subtracts the <span class="math" data-tex="\(v\)">\(v\)</span>-coordinate from the <span class="math" data-tex="\(e\)">\(e\)</span>-coordinate, and at <span class="math" data-tex="\(w\)">\(w\)</span> it subtracts the <span class="math" data-tex="\(w\)">\(w\)</span>-coordinate from the <span class="math" data-tex="\(e\)">\(e\)</span>-coordinate. At <span class="math" data-tex="\(e\)">\(e\)</span> its target is zero. The augmentation is diagonal on each surviving pair and identity at <span class="math" data-tex="\(e\)">\(e\)</span>. These maps commute with the two arrows. Pointwise they are the exact sequences <span class="math" data-tex="\(0\to M\to M^2\to M\to0\)">\(0\to M\to M^2\to M\to0\)</span>, or <span class="math" data-tex="\(0\to M\to M\to0\)">\(0\to M\to M\to0\)</span>. Both <span class="math" data-tex="\(J^0,J^1\)">\(J^0,J^1\)</span> are acyclic by the preceding paragraph and finite direct sums. The finite-column injective comparison used in Corollary 3.2 applies to this acyclic resolution as well, so its section complex computes cohomology. That complex is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+M^3\longrightarrow M^2,\\
+(a,b,c)\longmapsto(c-a,c-b).
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+M^3\longrightarrow M^2,\\
+(a,b,c)\longmapsto(c-a,c-b).
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>with these choices of degree-one generators. There are no strict chains of length two. Its kernel is the diagonal <span class="math" data-tex="\(M\)">\(M\)</span>, and it is surjective, since <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> is the image of <span class="math" data-tex="\((-u,-v,0)\)">\((-u,-v,0)\)</span>. Thus each <span class="math" data-tex="\(Z_i\)">\(Z_i\)</span> has <span class="math" data-tex="\(H^0=M\)">\(H^0=M\)</span> and no positive cohomology. Every nonempty pair intersection is one vertex, whose section functor is evaluation and is exact, so is acyclic too. The triple intersection is empty. These statements use the actual diagram resolution from the finite-poset prerequisite and include arbitrary modules, not just vector spaces.</p>
+<p>Corollary 3.2 therefore applies. In the order <span class="math" data-tex="\(Z_0,Z_1,Z_2\)">\(Z_0,Z_1,Z_2\)</span>, the global closed-cover complex is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+M^3\longrightarrow M^3,\\
+(a_0,a_1,a_2)\longmapsto\\
+(a_1-a_0,a_2-a_0,a_2-a_1).
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+M^3\longrightarrow M^3,\\
+(a_0,a_1,a_2)\longmapsto\\
+(a_1-a_0,a_2-a_0,a_2-a_1).
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>Its kernel is the diagonal <span class="math" data-tex="\(M\)">\(M\)</span>. Its image is exactly the kernel of <span class="math" data-tex="\((b_{01},b_{02},b_{12})\mapsto b_{01}-b_{02}+b_{12}\)">\((b_{01},b_{02},b_{12})\mapsto b_{01}-b_{02}+b_{12}\)</span>: the displayed composite is zero, and conversely a tuple in that kernel is the image of <span class="math" data-tex="\((0,b_{01},b_{02})\)">\((0,b_{01},b_{02})\)</span>. The latter map onto <span class="math" data-tex="\(M\)">\(M\)</span> is surjective, using <span class="math" data-tex="\((0,0,m)\)">\((0,0,m)\)</span>. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+H^0(X,\mathcal F)\simeq M,\\
+H^1(X,\mathcal F)\simeq M,\\
+H^q(X,\mathcal F)=0\quad(q\ge2).
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+H^0(X,\mathcal F)\simeq M,\\
+H^1(X,\mathcal F)\simeq M,\\
+H^q(X,\mathcal F)=0\quad(q\ge2).
+\end{gathered}
+\tag{5.5}
+\]</span>
+<p>No division, rank argument over a field or commutativity of <span class="math" data-tex="\(R\)">\(R\)</span> was used. The nonzero degree-one group also shows why the stalk contractions in Theorem 2.1 are not a global contraction of the section complex.</p>
+<h3 id="exercise-3-an-infinite-closed-cover-fails-the-argument">Exercise 3 — an infinite closed cover fails the argument</h3>
+<p><em>Advanced boundary case.</em> Cover <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> by all its singleton closed subsets, and take the constant sheaf with a nonzero abelian group <span class="math" data-tex="\(M\)">\(M\)</span>. Does the analogous product of closed-restriction section groups compute degree zero? Locate the failure in the stalk proof.</p>
+<p><strong>Solution.</strong> Distinct singletons have empty intersection. Thus the normalized candidate section complex has degree zero <span class="math" data-tex="\(\prod_{x\in\mathbb R}M\)">\(\prod_{x\in\mathbb R}M\)</span> and zero degree one. Its zeroth cohomology is that entire product. But sections of the constant sheaf on the connected real line are constant, so its actual zeroth cohomology is <span class="math" data-tex="\(M\)">\(M\)</span>, mapping diagonally into the product. The map is not surjective: choose nonzero <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span> and assign value zero on negative real numbers and <span class="math" data-tex="\(m\)">\(m\)</span> on nonnegative real numbers.</p>
+<p>At the sheaf level, the product of the point-supported pushforwards has sections all functions into <span class="math" data-tex="\(M\)">\(M\)</span> on an open set. The displayed step function has a germ at zero that is not represented by a locally constant section on any neighborhood of zero. Hence the augmentation is not surjective even on that stalk. Stalks commute with the finite sums in (2.1), but they do not commute with this infinite product. The stalk of the product is not obtained by discarding every singleton except the one at the stalk point. This is precisely the step of Theorem 2.1 that was justified by finiteness and is unavailable here.</p>
+<h3 id="exercise-4-restriction-is-not-support">Exercise 4 — restriction is not support</h3>
+<p><em>Advanced hypotheses.</em> Let <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, <span class="math" data-tex="\(A=(-\infty,0]\)">\(A=(-\infty,0]\)</span>, <span class="math" data-tex="\(B=[0,\infty)\)">\(B=[0,\infty)\)</span>, and <span class="math" data-tex="\(\mathcal F=M_X\)">\(\mathcal F=M_X\)</span> for a nonzero module <span class="math" data-tex="\(M\)">\(M\)</span>. Compare the section groups of <span class="math" data-tex="\(\mathcal F[A]\)">\(\mathcal F[A]\)</span>, <span class="math" data-tex="\(\mathcal F[B]\)">\(\mathcal F[B]\)</span>, <span class="math" data-tex="\(\mathcal F[\{0\}]\)">\(\mathcal F[\{0\}]\)</span> with sections of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> supported in those subsets. Can one replace the terms of (5.1) by supported sections?</p>
+<p><strong>Solution.</strong> The restrictions of the constant sheaf to either connected half-line are constant, so the first two closed-restriction section groups are both <span class="math" data-tex="\(M\)">\(M\)</span>. The point restriction also has section group <span class="math" data-tex="\(M\)">\(M\)</span>. The section complex in degree zero and one is <span class="math" data-tex="\(M\oplus M\to M\)">\(M\oplus M\to M\)</span>, with <span class="math" data-tex="\((a,b)\mapsto b-a\)">\((a,b)\mapsto b-a\)</span>, and its augmented kernel is the diagonal <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Every nonzero global section of <span class="math" data-tex="\(M_X\)">\(M_X\)</span> is a nonzero constant section and has support all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. No such section is supported in <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span>, or <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. Thus each corresponding supported-section group is zero. Replacing the middle terms by those groups would give <span class="math" data-tex="\(M\to0\)">\(M\to0\)</span>, which is not injective. The closed-cover resolution uses inverse-image restriction followed by pushforward, and never identifies it with the supported-section functor. This conclusion does not assume or claim acyclicity of arbitrary restrictions merely from the section calculation.</p>
+<h2 id="6-further-reading">6. Further reading</h2>
+<p>Pierre Schapira's freely accessible <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf"><em>An Introduction to Sheaves on Grothendieck Topologies</em></a>, October 2026, Section 3.4, treats complexes for finite closed families and an acyclic-cover comparison. The proofs above use the stated injective derived-section construction and the finite closed-family hypotheses. For open covers, including arbitrary set-indexed covers and refinement homotopies, use the companion Čech lesson linked at the beginning.</p>
+</main></body></html>

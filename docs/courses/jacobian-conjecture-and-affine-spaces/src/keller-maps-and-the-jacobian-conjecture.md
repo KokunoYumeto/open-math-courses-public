@@ -15,14 +15,19 @@ Let \(k\) be a field. A **polynomial map** \(F=(F_1,\ldots,F_n):k^n\to k^n\) is 
 The **Jacobian matrix** of \(F\) is the matrix of formal partial derivatives
 
 \[
-JF=\Bigl(\frac{\partial F_i}{\partial x_j}\Bigr)_{1\le i,j\le n}\in M_n\bigl(k[x_1,\ldots,x_n]\bigr),
+\begin{aligned}
+JF&=\Bigl(\frac{\partial F_i}{\partial x_j}\Bigr)_{1\le i,j\le n}\\
+&\in M_n\bigl(k[x_1,\ldots,x_n]\bigr),
+\end{aligned}
 \]
 
 and \(\det JF\in k[x_1,\ldots,x_n]\) is its **Jacobian determinant**. Formal partial derivatives obey the sum and product rules, so they obey the chain rule
 
 \[
-J(G\circ F)=\bigl(JG\circ F\bigr)\cdot JF ,
-\tag{1.1}
+\begin{aligned}
+&J(G\circ F)\\
+&\quad =\bigl(JG\circ F\bigr)\cdot JF ,
+\end{aligned}\tag{1.1}
 \]
 
 where \(JG\circ F\) means that \(F\) is substituted into every entry of \(JG\). For \(G\) a monomial, (1.1) follows from the product rule; both sides of (1.1) are additive in \(G\), so it holds for all \(G\).
@@ -48,7 +53,11 @@ The hypothesis on the characteristic cannot be dropped.
 From now on in Sections 2 to 4, \(k\) is an algebraically closed field of characteristic zero, and \(F=(F_1,\ldots,F_n)\) is a Keller map. Write
 
 \[
-A=k[y_1,\ldots,y_n],\qquad B=k[x_1,\ldots,x_n],\qquad \varphi:A\to B,\quad \varphi(y_i)=F_i .
+\begin{gathered}
+A=k[y_1,\ldots,y_n],\\
+B=k[x_1,\ldots,x_n],\\
+\varphi:A\to B,\quad \varphi(y_i)=F_i .
+\end{gathered}
 \]
 
 So \(\varphi\) is the \(k\)-algebra homomorphism \(P\mapsto P(F_1,\ldots,F_n)=P\circ F\). By the weak Nullstellensatz [The Nullstellensatz and Jacobson rings, Theorem 2.1](course:AG-CA/the-nullstellensatz-and-jacobson-rings#2-closed-points-detect-radical-equations), the points \(p\in k^n\) correspond to the maximal ideals \(\mathfrak m_p=(x_1-p_1,\ldots,x_n-p_n)\) of \(B\), and also to the \(k\)-algebra homomorphisms \(B\to k\), by evaluation at \(p\). The point \(p\) satisfies \(F(p)=q\) exactly when evaluation at \(p\), composed with \(\varphi\), is evaluation at \(q\).
@@ -72,7 +81,10 @@ So the image of \(F\) lies in no hypersurface: if it lay in the zero set of a no
 Fix such a point \(p\), and let \(\mathfrak n\) be the maximal ideal of the local ring \(R_{\mathfrak m_p}\). Expanding a polynomial in powers of \(x-p\) gives
 
 \[
-F_i-q_i=F_i-F_i(p)\equiv\sum_{j=1}^n\frac{\partial F_i}{\partial x_j}(p)\,(x_j-p_j)\pmod{\mathfrak m_p^2}.
+\begin{aligned}
+&F_i-q_i=F_i-F_i(p)\\
+&\quad \equiv\sum_{j=1}^n\frac{\partial F_i}{\partial x_j}(p)\,(x_j-p_j)\pmod{\mathfrak m_p^2}.
+\end{aligned}
 \]
 
 The matrix \(JF(p)\) is invertible, because \(\det JF(p)=\det JF\ne0\). Hence every \(x_j-p_j\) is a \(k\)-linear combination of the \(F_i-q_i\) modulo \(\mathfrak m_p^2\), and \(\mathfrak m_p\subset I+\mathfrak m_p^2\). In the local ring this says \(\mathfrak n=\mathfrak n^2\), so \(R_{\mathfrak m_p}\) has embedding dimension zero. By [Dimension theory of Noetherian local rings, Proposition 4.2 and the remark after it](course:AG-CA/dimension-theory-of-noetherian-local-rings#4-parameters-and-embedding-dimension), Nakayama's lemma gives \(\mathfrak n=0\), so \(R_{\mathfrak m_p}\) is a field. Then the only prime of \(R\) inside the maximal ideal at \(p\) is that maximal ideal itself, so every maximal ideal of \(R\) is a minimal prime of \(R\).
@@ -98,7 +110,10 @@ The polynomial \(h(X)=f(\theta-cX)\) has coefficients in \(L(\theta)\), and \(h(
 **Proof.** By Lemma 3.2 there are \(c_2,\ldots,c_n\in k\) with \(K=L(\theta)\) for \(\theta=x_1+c_2x_2+\cdots+c_nx_n\in B\). Let
 
 \[
-m(T)=T^d+a_{d-1}T^{d-1}+\cdots+a_0\in L[T]
+\begin{aligned}
+&m(T)=T^d+a_{d-1}T^{d-1}\\
+&\quad +\cdots+a_0\in L[T]
+\end{aligned}
 \]
 
 be the minimal polynomial of \(\theta\) over \(L\). Each \(x_i\) lies in \(L(\theta)=L[\theta]\), so \(x_i=\sum_{j<d}b_{ij}\theta^j\) with \(b_{ij}\in L\). Identify \(L\) with \(k(y_1,\ldots,y_n)\) through \(\varphi\), and choose a nonzero \(h\in A\) such that all \(a_j\) and all \(b_{ij}\) lie in \(A_h=A[1/h]\). The discriminant \(\delta\) of \(m\) is a polynomial in its coefficients, so \(\delta\in A_h\). It is nonzero, because \(m\) is irreducible over a field of characteristic zero and so has distinct roots. Write \(\delta=e/h^N\) with \(0\ne e\in A\), and put \(D=he\).
@@ -114,7 +129,10 @@ is therefore surjective. It is also injective: if \(r(\theta)=0\) for some \(r\i
 Now let \(q\in k^n\) with \(D(q)\ne0\). The preimages \(p\) of \(q\) correspond to the \(k\)-algebra homomorphisms \(\psi:B\to k\) with \(\psi\circ\varphi\) equal to evaluation at \(q\). For such \(\psi\), \(\psi(\varphi(h))=h(q)\ne0\), so \(\psi\) extends uniquely to \(B_h\). Hence the preimages correspond to the \(k\)-algebra homomorphisms \(A_h[T]/(m)\to k\) that restrict to evaluation at \(q\) on \(A_h\). These are given by the roots in \(k\) of the polynomial
 
 \[
-m_q(T)=T^d+a_{d-1}(q)T^{d-1}+\cdots+a_0(q).
+\begin{aligned}
+m_q(T)&=T^d+a_{d-1}(q)T^{d-1}\\
+&\quad +\cdots+a_0(q).
+\end{aligned}
 \]
 
 Its discriminant is \(\delta(q)=e(q)/h(q)^N\ne0\). As \(k\) is algebraically closed, \(m_q\) has exactly \(d\) distinct roots in \(k\). \(\square\)
@@ -148,7 +166,10 @@ Suppose not, and let \(g\) be an irreducible factor of \(b\). Put \(G=\varphi(g)
 For \(p\in Z_0\) we have \(g(F(p))=G(p)=0\). Moreover \(b=g\,b'\) for some \(b'\in A\), so
 
 \[
-a(F(p))=\varphi(a)(p)=p_i\,\varphi(b')(p)\,G(p)=0 .
+\begin{aligned}
+&a(F(p))=\varphi(a)(p)\\
+&\quad =p_i\,\varphi(b')(p)\,G(p)=0 .
+\end{aligned}
 \]
 
 Hence \(F(Z_0)\subset W=Z(g)\cap Z(a)\subset k^n\). Let \(Y_0\) be the closure of \(F(Z_0)\). It is irreducible, as the closure of the image of an irreducible set under a continuous map, so its ideal is a prime \(\mathfrak Q\) of \(A\) containing \(g\) and \(a\). The ideal \((g)\) is prime, because \(A\) is factorial, and it has height one by Krull's height theorem. It does not contain \(a\), because \(g\) does not divide \(a\). So \(0\subsetneq(g)\subsetneq\mathfrak Q\), hence \(\operatorname{ht}\mathfrak Q\ge2\), and the height formula gives \(\dim Y_0=n-\operatorname{ht}\mathfrak Q\le n-2\).
@@ -156,7 +177,10 @@ Hence \(F(Z_0)\subset W=Z(g)\cap Z(a)\subset k^n\). Let \(Y_0\) be the closure o
 The restriction of \(F\) is a dominant morphism \(Z_0\to Y_0\) of irreducible affine varieties over \(k\). By [Dimension of fibres, Theorem 4.1](course:AG-MO/dimension-of-fibres#4-dominant-families-of-varieties), every irreducible component of every nonempty fibre of \(Z_0\to Y_0\) has dimension at least
 
 \[
-\dim Z_0-\dim Y_0\ \ge\ (n-1)-(n-2)=1 .
+\begin{aligned}
+&\dim Z_0-\dim Y_0\ \ge\ (n-1)\\
+&\quad -(n-2)=1 .
+\end{aligned}
 \]
 
 Take \(p\in Z_0\) and \(s=F(p)\). The fibre over \(s\) is a scheme of finite type over \(k\). Its closed points are the points \(p'\in Z_0\) with \(F(p')=s\), and there are finitely many of them by Proposition 2.2. A scheme of finite type over \(k\) is Jacobson [The Nullstellensatz and Jacobson rings, Theorem 4.2](course:AG-CA/the-nullstellensatz-and-jacobson-rings#4-finite-type-over-a-jacobson-base): every closed irreducible subset is the closure of its closed points. So each irreducible component of this nonempty fibre is a single closed point, of dimension zero. This contradicts the bound just obtained.
@@ -166,7 +190,10 @@ So \(b\) is a nonzero constant, and \(x_i=\varphi(a/b)=H_i(F_1,\ldots,F_n)\) for
 It remains to see that \(F\circ H\) is the identity too. The homomorphism \(\varphi\) is injective by Proposition 2.1. It is surjective, because its image contains every \(x_i=\varphi(H_i)\). So \(\varphi\) is an isomorphism. Let \(\eta:B\to A\) be the \(k\)-algebra homomorphism with \(\eta(x_i)=H_i\). Then \(\varphi(\eta(x_i))=\varphi(H_i)=x_i\), so \(\varphi\circ\eta\) is the identity of \(B\), and \(\eta=\varphi^{-1}\). Therefore \(\eta\circ\varphi\) is the identity of \(A\):
 
 \[
-y_j=\eta(\varphi(y_j))=\eta(F_j)=F_j(H_1,\ldots,H_n),
+\begin{aligned}
+y_j&=\eta(\varphi(y_j))=\eta(F_j)\\
+&=F_j(H_1,\ldots,H_n),
+\end{aligned}
 \]
 
 which says that \(F\circ H\) is the identity. \(\square\)
@@ -177,13 +204,13 @@ The proof shows a little more: any polynomial map with algebraically independent
 
 ## 5. Two classical cases
 
-**Proposition 5.1 (triangular maps).** Let \(k\) be any field, let \(c_1,\ldots,c_n\in k\) be nonzero, and let \(f_i\in k[x_1,\ldots,x_{i-1}]\). The map
+**Proposition 5.1 (triangular maps).** Let \(k\) be any field, let \(c_1,\ldots,c_n\in k\) be nonzero, and let \(f_i\in k[x_1,\ldots,x_{i-1}]\). The map \(F=(F_1,\ldots,F_n)\) given, for \(1\le i\le n\), by
 
 \[
-F=\bigl(c_1x_1+f_1,\ c_2x_2+f_2(x_1),\ \ldots,\ c_nx_n+f_n(x_1,\ldots,x_{n-1})\bigr),
+F_i=c_ix_i+f_i(x_1,\ldots,x_{i-1}),
 \]
 
-with \(f_1\in k\) a constant, is a polynomial automorphism with \(\det JF=c_1\cdots c_n\).
+where \(f_1\in k\) is a constant, is a polynomial automorphism with \(\det JF=c_1\cdots c_n\).
 
 **Proof.** The Jacobian matrix is lower triangular with diagonal \(c_1,\ldots,c_n\). Define \(H\) recursively by \(H_1=(y_1-f_1)/c_1\) and
 
@@ -198,7 +225,11 @@ Substituting shows \(F_i(H_1,\ldots,H_n)=y_i\) for every \(i\), so \(F\circ H\) 
 **Proof.** By Remark 4.2 we may assume \(k\) algebraically closed. By Theorem 4.1 it suffices to prove that \(F\) is injective. Write \(F(x)=c+Lx+Q(x)\), with \(c\in k^n\), \(L\) a linear map and \(Q\) a tuple of quadratic forms. Let \(\beta\) be the symmetric bilinear map with \(\beta(u,u)=Q(u)\), namely \(\beta(u,v)=\tfrac12\bigl(Q(u+v)-Q(u)-Q(v)\bigr)\). Then \(JF(x)\,v=Lv+2\beta(x,v)\). For \(a,b\in k^n\) with midpoint \(m=\tfrac12(a+b)\),
 
 \[
-F(b)-F(a)=L(b-a)+\beta(b+a,\,b-a)=JF(m)\,(b-a),
+\begin{aligned}
+&F(b)-F(a)=L(b-a)\\
+&\quad +\beta(b+a,\,b-a)\\
+&\quad =JF(m)\,(b-a),
+\end{aligned}
 \]
 
 using bilinearity and symmetry: \(\beta(b+a,b-a)=Q(b)-Q(a)\). If \(F(a)=F(b)\), then \(JF(m)(b-a)=0\), and the invertibility of \(JF(m)\) gives \(a=b\). \(\square\)
@@ -220,15 +251,19 @@ The equivalence in Theorem 4.1 shows that a Keller map is an automorphism as soo
 *Step 3: the general case.* Suppose \(F\) is injective but some \(c\in k^n\) is not a value of \(F\). The polynomials \(F_j-c_j\) have no common zero, so by the weak Nullstellensatz they generate the unit ideal of \(k[x]\):
 
 \[
-1=\sum_{j=1}^nu_j\,(F_j-c_j),\qquad u_j\in k[x].
-\tag{6.1}
+\begin{gathered}
+1=\sum_{j=1}^nu_j\,(F_j-c_j),\\
+u_j\in k[x].
+\end{gathered}\tag{6.1}
 \]
 
-In the polynomial ring \(k[x,x']\) in \(2n\) variables, the polynomials \(F_j(x)-F_j(x')\) have common zeros only on the diagonal \(x=x'\), because \(F\) is injective. So each \(x_i-x'_i\) vanishes on their common zeros, and the strong Nullstellensatz [The Nullstellensatz and Jacobson rings, Theorem 2.2](course:AG-CA/the-nullstellensatz-and-jacobson-rings#2-closed-points-detect-radical-equations) gives some \(N\ge1\) with
+In the polynomial ring \(k[x,x']\) in \(2n\) variables, the polynomials \(F_j(x)-F_j(x')\) have common zeros only on the diagonal \(x=x'\), because \(F\) is injective. So each \(x_i-x'_i\) vanishes on their common zeros, and the strong Nullstellensatz [The Nullstellensatz and Jacobson rings, Theorem 2.2](course:AG-CA/the-nullstellensatz-and-jacobson-rings#2-closed-points-detect-radical-equations) gives some \(N\ge1\) and polynomials \(v_{ij}\in k[x,x']\) satisfying (6.2):
 
 \[
-(x_i-x'_i)^N=\sum_{j=1}^nv_{ij}\,\bigl(F_j(x)-F_j(x')\bigr),\qquad v_{ij}\in k[x,x'] .
-\tag{6.2}
+\begin{aligned}
+&(x_i-x'_i)^N\\
+&\quad=\sum_{j=1}^nv_{ij}\,\bigl(F_j(x)-F_j(x')\bigr).
+\end{aligned}
 \]
 
 Let \(R\subset k\) be the subring generated by the coefficients of all the polynomials \(F_j,u_j,v_{ij}\) and by the \(c_j\). It is a nonzero finitely generated \(\mathbb Z\)-algebra. Choose a maximal ideal \(\mathfrak M\) of \(R\). The ring \(\mathbb Z\) is Jacobson [The Nullstellensatz and Jacobson rings, Proposition 3.2](course:AG-CA/the-nullstellensatz-and-jacobson-rings#3-the-jacobson-property), so by Theorem 4.2 of that lesson \(\mathfrak M\) contracts to a maximal ideal \((p)\) of \(\mathbb Z\), and \(R/\mathfrak M\) is a finite extension of \(\mathbb F_p\). Embed the finite field \(R/\mathfrak M\) in an algebraic closure \(\overline{\mathbb F}_p\), and reduce all coefficients modulo \(\mathfrak M\). The identities (6.1) and (6.2) stay true for the reduced polynomials \(\bar F,\bar c,\bar u,\bar v\). By (6.1), \(\bar c\) is not a value of \(\bar F\) on \(\overline{\mathbb F}_p^{\,n}\). By (6.2), if \(\bar F(a)=\bar F(a')\) then \((a_i-a'_i)^N=0\) for every \(i\), so \(a=a'\): the map \(\bar F\) is injective on \(\overline{\mathbb F}_p^{\,n}\). This contradicts Step 2. \(\square\)
@@ -251,7 +286,7 @@ Let \(R\subset k\) be the subring generated by the coefficients of all the polyn
 
 **7.1.** By (1.1), \(\det J(G\circ F)=(\det JG\circ F)\cdot\det JF\). If both determinants are nonzero constants, so is the product. The composite of automorphisms is an automorphism with inverse \(F^{-1}\circ G^{-1}\); the identity is an automorphism; composition of polynomial maps is associative.
 
-**7.2.** The Jacobian matrix is lower triangular with ones on the diagonal, so \(\det JF=1\). The map is triangular as in Proposition 5.1. Its inverse is \(H(u,v,w)=(u,\ v-u^2,\ w-uv)\). Indeed \(F(H(u,v,w))=\bigl(u,\ (v-u^2)+u^2,\ (w-uv)+u(v-u^2)+u^3\bigr)=(u,v,w)\).
+**7.2.** The Jacobian matrix is lower triangular with ones on the diagonal, so \(\det JF=1\). The map is triangular as in Proposition 5.1. Its inverse is \(H(u,v,w)=(u,\ v-u^2,\ w-uv)\). Indeed, the components of \(F(H(u,v,w))\) are \(u\), \((v-u^2)+u^2=v\) and \((w-uv)+u(v-u^2)+u^3=w\).
 
 **7.3.** Let \(F\) be a Keller map of \(k^m\), and let \(G=F\times\mathrm{id}\), that is, \(G(x,z)=(F(x),z)\) with \(z\in k^{n-m}\). Its Jacobian matrix is block diagonal with blocks \(JF\) and the identity, so \(\det JG=\det JF\), and \(G\) is a Keller map. By hypothesis \(G\) has an inverse \(H=(H',H'')\), with \(H'\) the first \(m\) components. From \(G\circ H=\mathrm{id}\) we get \(F(H'(y,z))=y\) and \(H''(y,z)=z\). From \(H\circ G=\mathrm{id}\) we get \(H'(F(x),z)=x\). Put \(E(y)=H'(y,0)\). Then \(F\circ E=\mathrm{id}\) and \(E\circ F=\mathrm{id}\), so \(F\) is an automorphism.
 

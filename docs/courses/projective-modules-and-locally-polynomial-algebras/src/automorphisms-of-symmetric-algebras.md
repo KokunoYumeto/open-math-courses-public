@@ -10,7 +10,10 @@ The arguments of Section 2 adapt Lemma 1.1 and Quillen's Lemma 2.1 of [Patching 
 
 Let \(G\) be a functor from algebras to groups. For an algebra \(L\) and \(s\in L\), \(G(L)_s\) denotes the image of \(G(L)\to G(L_s)\), and \(u\mapsto u_s\) the map. For an indeterminate \(T\), an element \(u\in G(L[T])\) is also written \(u(T)\); if \(L'\) is an \(L\)-algebra and \(c\in L'\), \(u(c)\) is its image under the map induced by \(L[T]\to L'\), \(T\mapsto c\). In particular \(u(cT)\in G(L'[T])\) for \(c\in L'\). Put
 \[
-G(TL[T])=\ker\bigl(G(L[T])\to G(L)\bigr),\qquad T\mapsto0 .
+\begin{gathered}
+G(TL[T])=\ker\bigl(G(L[T])\to G(L)\bigr),\\
+T\mapsto0 .
+\end{gathered}
 \]
 
 **Definition 1.1.** \(G\) satisfies **axiom Q** if for every algebra \(L\), every \(s\in L\) and every \(u(T)\in G(TL_s[T])\) there are \(r\ge0\) and \(v(T)\in G(TL[T])\) with \(v(T)_s=u(s^rT)\).
@@ -53,10 +56,12 @@ For an algebra \(L\) define three groups of \(L\)-algebra automorphisms of \(S(M
 
 All three are functors of \(L\). An endomorphism \(u\) satisfies \(\varepsilon\circ u=\varepsilon\) if and only if \(u(I_L)\subseteq I_L\), and since \(M_L\) generates, if and only if \(u(M_L)\subseteq I_L\). If \(u\) is an automorphism with \(\varepsilon\circ u=\varepsilon\), then \(\varepsilon\circ u^{-1}=\varepsilon\), so \(G_M(L)\) is a group. The group \(\operatorname{GL}(M_L)\) of linear automorphisms acts by graded automorphisms, and for every \(L\)-linear \(t\colon M_L\to L\) the **translation** \(\tau_t\), the endomorphism with \(\tau_t(x)=x+t(x)\) for \(x\in M_L\), is an automorphism with inverse \(\tau_{-t}\); both lie in \(Af_M(L)\).
 
-*Components.* Let \(u\in G_M(L)\). Since \(u(M_L)\subseteq I_L\), \(u\) maps \(S^p(M_L)\), which is spanned by products of \(p\) elements of \(M_L\), into \(\bigoplus_{m\ge p}S^m(M_L)\). For \(n\ge0\) let \(u_n\) be the \(L\)-linear map sending \(a\in S^p(M_L)\) to the component of \(u(a)\) in degree \(p+n\). Then \(u=\sum_{n\ge0}u_n\), the sum being finite on each element, and comparing components of \(u(ab)=u(a)u(b)\) and of \(u(v(a))\) gives, for homogeneous \(a,b\) and \(u,v\in G_M(L)\),
+*Components.* Let \(u\in G_M(L)\). Since \(u(M_L)\subseteq I_L\), \(u\) maps \(S^p(M_L)\), which is spanned by products of \(p\) elements of \(M_L\), into \(\bigoplus_{m\ge p}S^m(M_L)\). For \(n\ge0\) let \(u_n\) be the \(L\)-linear map sending \(a\in S^p(M_L)\) to the component of \(u(a)\) in degree \(p+n\). Then \(u=\sum_{n\ge0}u_n\), the sum being finite on each element, and comparing components of \(u(ab)=u(a)u(b)\) and of \(u(v(a))\) gives the identities (3.1), for homogeneous \(a,b\) and \(u,v\in G_M(L)\):
 \[
-u_n(ab)=\sum_{p+q=n}u_p(a)\,u_q(b),\qquad (uv)_n=\sum_{p+q=n}u_p\,v_q .
-\tag{3.1}
+\begin{gathered}
+u_n(ab)=\sum_{p+q=n}u_p(a)\,u_q(b),\\
+(uv)_n=\sum_{p+q=n}u_p\,v_q .
+\end{gathered}
 \]
 The map \(u_0\) is the graded automorphism of \(S(M_L)\) induced by the linear map \(u_0|_{M_L}\colon M_L\to M_L\); it is an automorphism because \((u^{-1})_0\) is its inverse, by (3.1).
 
@@ -84,16 +89,26 @@ Throughout this section \(M\) is finitely presented.
 
 **Proof.** Let \(Y,T\) be indeterminates and
 \[
-w(Y,T)=({}^{Y+T}u)\,({}^Yu)^{-1}\in G_M\bigl(L_s[Y,T]\bigr),
+\begin{aligned}
+&w(Y,T)\\
+&\quad =({}^{Y+T}u)\,({}^Yu)^{-1}\in G_M\bigl(L_s[Y,T]\bigr),
+\end{aligned}
 \]
 where \(u\) is regarded over \(L_s[Y,T]\). Since \(w(Y,0)=\mathrm{id}\), \(w\) lies in \(G_M(T\,L[Y]_s[T])\), and \({}^0w=u_0u_0^{-1}=\mathrm{id}\). Axiom Q for \(G_M\) (Proposition 3.4), over the algebra \(L[Y]\), gives \(r\) and \(v(Y,T)\in G_M(T\,L[Y][T])\) with \(v_s=w(Y,s^rT)\). By naturality \(({}^0v)_s={}^0w(Y,s^rT)=\mathrm{id}\), and \({}^0v(Y,0)=\mathrm{id}\); replacing \(v\) by \(v\,({}^0v)^{-1}\) keeps these properties and gives \({}^0v=\mathrm{id}\), by Lemma 3.2. If \(a=b+s^rc\) with \(c\in L\), the specialization \(Y\mapsto b\), \(T\mapsto c\) gives \(v(b,c)\in G_{M,0}(L)\) with
 \[
-v(b,c)_s=w(b,s^rc)=({}^{b+s^rc}u)({}^bu)^{-1}=({}^au)({}^bu)^{-1}.\qquad\square
+\begin{aligned}
+&v(b,c)_s=w(b,s^rc)\\
+&\quad =({}^{b+s^rc}u)({}^bu)^{-1}=({}^au)({}^bu)^{-1}.
+\end{aligned}
 \]
+\(\square\)
 
 **Theorem 4.2.** Let \(L\) be an algebra and \(s_0,s_1\in L\) with \(Ls_0+Ls_1=L\). Then
 \[
-G_{M,0}(L_{s_0s_1})=G_{M,0}(L_{s_0})_{s_1}\cdot G_{M,0}(L_{s_1})_{s_0}.
+\begin{aligned}
+&G_{M,0}(L_{s_0s_1})\\
+&\quad =G_{M,0}(L_{s_0})_{s_1}\cdot G_{M,0}(L_{s_1})_{s_0}.
+\end{aligned}
 \]
 
 **Proof.** Let \(u\in G_{M,0}(L_{s_0s_1})\). Apply Lemma 4.1 to the algebra \(L_{s_0}\) with the element \(s_1\), and to \(L_{s_1}\) with \(s_0\); let \(r\) exceed both resulting integers. Since \(Ls_0^r+Ls_1^r=L\), there is \(a\in Ls_0^r\) with \(1-a\in Ls_1^r\). Then
@@ -108,8 +123,9 @@ using \({}^1u=u\) and \({}^0u=\mathrm{id}\). As \(1-a\in L_{s_0}s_1^r\), the fir
 
 **Proposition 4.4.** Let \(L\) be an algebra and \(s_0,s_1\in L\) with \(Ls_0+Ls_1=L\). Every element of \(GA_M(L_{s_0s_1})\) can be written
 \[
-(v_0)_{s_1}\,h\,(v_1)_{s_0},\qquad v_0\in G_{M,0}(L_{s_0}),\quad h\in Af_M(L_{s_0s_1}),\quad v_1\in GA_M(L_{s_1}).
+(v_0)_{s_1}\,h\,(v_1)_{s_0}
 \]
+with \(v_0\in G_{M,0}(L_{s_0})\), \(h\in Af_M(L_{s_0s_1})\) and \(v_1\in GA_M(L_{s_1})\).
 
 **Proof.** By Proposition 3.3 an element of \(GA_M(L_{s_0s_1})\) is \(uh\) with \(u\in G_{M,0}(L_{s_0s_1})\) and \(h\in Af_M(L_{s_0s_1})\). For \(a\in L\),
 \[

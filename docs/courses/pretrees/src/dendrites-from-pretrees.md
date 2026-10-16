@@ -33,7 +33,7 @@ w\in H(x,y)\iff\\
 
 1. If \(z\in(x,y)\), then \(H(x,z)\cap H(y,z)=\varnothing\).
 2. If \(a\ne b\), \(x\notin[a,b]\), \(c=\operatorname{med}(a,b,x)\) and \(y\in(c,x)\), then \(H(x,y)\cap[a,b]=\varnothing\).
-3. Let \(u,v,w\) be points of an interval \([a,b]\). Then \(\operatorname{med}(u,v,w)\) is the one of the three that lies between the other two in the order of \([a,b]\), or the repeated point if two coincide. Consequently, for \(y\in[a,b]\), \(y\ne a\), and the direction with \(a<b\): \([a,b]\cap H(a,y)=\{w\in[a,b]:w<y\}\).
+3. Let \(u,v,w\) be points of an interval \([a,b]\). Then \(\operatorname{med}(u,v,w)\) is the one of the three that lies between the other two in the order of \([a,b]\), or the repeated point if two coincide. Consequently, for \(y\in[a,b]\), \(y\ne a\), and the direction with \(a<b\), the set \([a,b]\cap H(a,y)\) equals \(\{w\in[a,b]:w<y\}\).
 4. Let \(x\ne z\), \(p,q\in(x,z)\) with \(p\in(x,q)\), and \(q'\in(q,z)\). Then \(x\in H(p,q)\), \(z\in H(z,q')\), and \(H(p,q)\cap H(z,q')=\varnothing\).
 5. Let \(x\ne z\) and \(t\in(x,z)\). If \(y\in H(x,t)\) and \(w\in H(z,t)\), then \(\operatorname{med}(x,y,w)=\operatorname{med}(x,t,y)\in[x,t)\).
 

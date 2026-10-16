@@ -73,7 +73,10 @@ Both maps in the cocycle identity are isomorphisms between the same two invertib
 *Uniqueness.* Let \(\widetilde D'\) be another weight-preserving locally nilpotent derivation extending \(D\), and \(\widetilde\rho'=\exp(t\widetilde D')\). Its degree-one part is a normalized \(C[t]\)-linear map \(\theta:N_\rho\to N_0\). The module \(\operatorname{Hom}_{C[t]}(N_\rho,N_0)\) is invertible and contains the isomorphism \(\psi\), so it is free on \(\psi\) by Lemma 1.1, and \(\theta=g\psi\) with \(g\in C[t]\) and \(g(0)=1\). Write \(g=\sum_mg_mt^m\). The action law for \(\widetilde\rho'\), evaluated on \(x\in T_1\) and combined with the cocycle identity for \(\psi\), gives
 
 \[
-g(s)\Bigl(\sum_m\rho_s(g_m)\,t^m\Bigr)=g(s+t)\quad\text{in }C[s,t],
+\begin{aligned}
+&g(s)\Bigl(\sum_m\rho_s(g_m)\,t^m\Bigr)\\
+&\quad =g(s+t)\quad\text{in }C[s,t],
+\end{aligned}
 \]
 
 after cancelling the nonzero factor \(\psi_{s+t}(x)\) for some \(x\ne0\) in the torsion-free module \(T_1[s,t]\). Let \(d\) be the degree of \(g\) and \(\gamma\ne0\) its leading coefficient. The coefficient of \(t^d\) on the right is \(\gamma\); on the left it is \(g(s)\rho_s(\gamma)\), a product of polynomials in \(s\) with constant terms \(1\) and \(\gamma\). If \(d\ge1\), the left side has degree at least \(d\) in \(s\), since degrees add over a domain, while the right side has degree zero. So \(d=0\), \(g=1\) and \(\theta=\psi\). By Lemma 1.4(3), \(\widetilde\rho'=\widetilde\rho\), and the derivations, which are the coefficients of \(t\), agree. \(\square\)

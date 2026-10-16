@@ -29,7 +29,10 @@ X_k=\{P_x:x\in\mathbb P(V)\}\subset\operatorname{Sym}(V).
 
 (b) If \(u,v\) are unit vectors spanning lines \(x,y\), then
 \[
-\|P_x-P_y\|_F^2=2-2\langle u,v\rangle^2 . \tag{1.1}
+\begin{aligned}
+&\|P_x-P_y\|_F^2\\
+&\quad =2-2\langle u,v\rangle^2 .
+\end{aligned}\tag{1.1}
 \]
 In particular \(\operatorname{diam}X_k=\sqrt2\), and \(\|P_x-P_y\|_F=\sqrt2\) exactly when \(x\perp y\).
 
@@ -37,7 +40,10 @@ In particular \(\operatorname{diam}X_k=\sqrt2\), and \(\|P_x-P_y\|_F=\sqrt2\) ex
 
 We identify \(\mathbb P(V)\) with \(X_k\) and give it the subspace topology; it is then compact, Hausdorff and second countable. Fix an orthonormal basis \(e_1,\dots,e_k\) of \(V\) and write \(u_i=\langle u,e_i\rangle\). For each \(i\), let \(U_i\) be the set of lines not orthogonal to \(e_i\), and define
 \[
-\varphi_i:U_i\to\mathbb R^{k-1},\qquad\varphi_i([u])=\Bigl(\frac{u_j}{u_i}\Bigr)_{j\ne i},
+\begin{gathered}
+\varphi_i:U_i\to\mathbb R^{k-1},\\
+\varphi_i([u])=\Bigl(\frac{u_j}{u_i}\Bigr)_{j\ne i},
+\end{gathered}
 \]
 where \([u]\) denotes the line spanned by \(u\ne0\). In terms of the projector, \(U_i=\{P:P_{ii}>0\}\) and \(\varphi_i(P)=(P_{ij}/P_{ii})_{j\ne i}\), so \(U_i\) is open and \(\varphi_i\) is continuous. Its inverse sends \(w\) to \(uu^{\mathsf T}\), where \(u\) is the unit vector in the direction of the vector with \(i\)-th coordinate \(1\) and the other coordinates \(w\); it is continuous, so \(\varphi_i\) is a homeomorphism onto \(\mathbb R^{k-1}\). The sets \(U_i\) cover \(\mathbb P(V)\), and on \(\varphi_i(U_i\cap U_j)\) the transition map \(\varphi_j\circ\varphi_i^{-1}\) sends \(w\) to the ratios \(u_l/u_j\) of the coordinates of \((w\text{ with }1\text{ inserted at }i)\), a rational map with nonvanishing denominator, hence smooth. So the charts \(\varphi_i\) make \(\mathbb P(V)\) a compact smooth manifold of dimension \(k-1\), the *projective space* of \(V\). Charts from another orthonormal basis are smooth with respect to these, because ratios of linear forms are smooth where the denominator does not vanish; so the smooth structure does not depend on the basis. For \(V=\mathbb R^k\) we write \(\mathbb{RP}^{k-1}\).
 
@@ -53,7 +59,10 @@ S(x)=\{i\in[m]:f_i(x)>0\}
 \]
 satisfy
 \[
-x\perp y\quad\Longrightarrow\quad S(x)\cap S(y)=\varnothing . \tag{2.1}
+\begin{aligned}
+&x\perp y\quad\\
+&\quad \Longrightarrow\quad S(x)\cap S(y)=\varnothing .
+\end{aligned}\tag{2.1}
 \]
 The elements of \([m]\) are called *labels*. Since \(\sum_if_i(x)=1\), every support is nonempty.
 
@@ -65,7 +74,10 @@ The elements of \([m]\) are called *labels*. Since \(\sum_if_i(x)=1\), every sup
 
 *Proof.* Let the subsets be \(A_1,\dots,A_m\); empty ones are allowed. For nonempty \(A_i\) put \(d_i=\operatorname{diam}A_i<\sqrt2\) and \(\varepsilon_i=(\sqrt2-d_i)/4\), and let \(O_i\) be the set of \(P\in X_k\) with \(\|P-Q\|_F<\varepsilon_i\) for some \(Q\in A_i\); put \(O_i=\varnothing\) if \(A_i=\varnothing\). Each \(O_i\) is open in \(X_k\), and the \(O_i\) cover \(X_k\). If \(P,P'\in O_i\), choose \(Q,Q'\in A_i\) within \(\varepsilon_i\) of them; then
 \[
-\|P-P'\|_F<2\varepsilon_i+d_i=\frac{\sqrt2+d_i}2<\sqrt2 .
+\begin{aligned}
+&\|P-P'\|_F<2\varepsilon_i+d_i\\
+&\quad =\frac{\sqrt2+d_i}2<\sqrt2 .
+\end{aligned}
 \]
 Regard the \(O_i\) as an open cover of \(\mathbb P(V)\). By Theorem 3.1 of [Local tools for bundles and transport](course:DG-FND/local-tools-for-bundles-and-transport) there is a locally finite smooth partition of unity \((h_j)_{j\in\mathcal J}\) subordinate to it: \(h_j\ge0\), \(\sum_jh_j=1\), and the support of each \(h_j\) lies in some \(O_{i(j)}\). Put \(f_i=\sum_{i(j)=i}h_j\), a locally finite sum of smooth functions, hence smooth; then \(f_i\ge0\), \(\sum_if_i=1\), and \(f_i(x)>0\) implies \(x\in O_i\). If \(x\perp y\) and \(i\in S(x)\cap S(y)\), then \(P_x,P_y\in O_i\) are at distance less than \(\sqrt2\), contradicting Lemma 1.1(b). \(\square\)
 
@@ -79,7 +91,10 @@ A subset of a face is a face, so \(K\) is a finite simplicial complex on the lab
 
 **Lemma 3.2.** Let \(f\) be admissible and \(I\in K\) a facet. On the open set
 \[
-U_I=\{x\in\mathbb P(V):f_i(x)>0\text{ for all }i\in I\}
+\begin{aligned}
+&U_I\\
+&\quad =\{x\in\mathbb P(V):f_i(x)>0\text{ for all }i\in I\}
+\end{aligned}
 \]
 the support is exactly \(I\). If \(x_0\) is a witness of \(I\), then every line in \(x_0^\perp\) uses only labels outside \(I\), and \(U_I\) does not meet \(\mathbb P(x_0^\perp)\).
 
@@ -91,9 +106,14 @@ These two facts drive the counting arguments of [Supports at equality](supports-
 
 **4.1.** Show that for lines at angle \(\theta\in[0,\pi/2]\), \(\|P_x-P_y\|_F=\sqrt2\sin\theta\).
 
-**4.2.** For \(k=4\), show that the map from trace-one symmetric \(4\times4\) matrices to \(\mathbb R^9\),
+**4.2.** For \(k=4\), show that the map from trace-one symmetric \(4\times4\) matrices to \(\mathbb R^9\) sending \(A\) to the vector whose nine coordinates are, in order,
 \[
-A\mapsto\Bigl(\tfrac{a_{11}-a_{22}}{\sqrt2},\ \tfrac{a_{11}+a_{22}-2a_{33}}{\sqrt6},\ \tfrac{a_{11}+a_{22}+a_{33}-3a_{44}}{\sqrt{12}},\ \sqrt2a_{12},\sqrt2a_{13},\sqrt2a_{14},\sqrt2a_{23},\sqrt2a_{24},\sqrt2a_{34}\Bigr),
+\begin{gathered}
+\tfrac{a_{11}-a_{22}}{\sqrt2},\quad\tfrac{a_{11}+a_{22}-2a_{33}}{\sqrt6},\\
+\tfrac{a_{11}+a_{22}+a_{33}-3a_{44}}{\sqrt{12}},\\
+\sqrt2a_{12},\ \sqrt2a_{13},\ \sqrt2a_{14},\\
+\sqrt2a_{23},\ \sqrt2a_{24},\ \sqrt2a_{34},
+\end{gathered}
 \]
 preserves distances. So \(X_4\) is isometric to a compact subset of \(\mathbb R^9\).
 

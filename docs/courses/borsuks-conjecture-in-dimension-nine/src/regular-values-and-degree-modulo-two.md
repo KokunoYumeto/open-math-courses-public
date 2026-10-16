@@ -93,7 +93,11 @@ Homotopic maps have the same degree modulo two, because they induce the same map
 
 *Proof.* By Proposition 3.2 of [Orientations and fundamental classes](course:poincare-duality-on-manifolds/orientations-and-fundamental-classes), each \(x\in q^{-1}(y)\) has a neighbourhood containing no other point of \(q^{-1}(y)\). So \(q^{-1}(y)\), a closed subset of the compact space \(M\), is finite: \(q^{-1}(y)=\{x_1,\dots,x_N\}\). Choose disjoint open chart balls \(B_j\ni x_j\) with \(q(B_j)\subseteq W\) and \(q(B_j\setminus x_j)\subseteq Y\setminus y\), small enough for Proposition 3.2. Put \(F=q^{-1}(y)\). The class \([M]\) maps to a class in \(H_n(M,M\setminus F)\), and \(q_*\) sends this group to \(H_n(Y,Y\setminus y)\) because \(q(M\setminus F)\subseteq Y\setminus y\). Excision of the closed set \(M\setminus\bigcup_jB_j\), contained in the open set \(M\setminus F\), gives
 \[
-H_n(M,M\setminus F)\cong H_n\Bigl(\bigcup_jB_j,\bigcup_jB_j\setminus F\Bigr)=\bigoplus_{j=1}^NH_n(B_j,B_j\setminus x_j),
+\begin{aligned}
+&H_n(M,M\setminus F)\\
+&\quad \cong H_n\Bigl(\bigcup_jB_j,\bigcup_jB_j\setminus F\Bigr)\\
+&\quad =\bigoplus_{j=1}^NH_n(B_j,B_j\setminus x_j),
+\end{aligned}
 \]
 and the component of \([M]\) in the \(j\)-th summand corresponds to the generator of \(H_n(M,M\setminus x_j)\). Similarly \(H_n(W,W\setminus y)\cong H_n(Y,Y\setminus y)\) by excision of the closed set \(Y\setminus W\), and \(\psi\) identifies it with \(H_n(\mathbb R^n,\mathbb R^n\setminus\psi(y))\). In charts, Proposition 3.2 says that \(q_*\) maps the integral local generator at \(x_j\) to the integral local generator at \(\psi(y)\) when the derivative has positive determinant; reducing coefficients modulo two (Lemma 1.2(2) there), it maps the generator of \(H_n(B_j,B_j\setminus x_j)\) to the generator of \(H_n(\mathbb R^n,\mathbb R^n\setminus\psi(y))\). If the determinant is negative, apply this to \(\rho\circ\psi\circ q\) for a reflection \(\rho\) of \(\mathbb R^n\) fixing \(\psi(y)\); the homeomorphism \(\rho\) induces an automorphism of \(H_n(\mathbb R^n,\mathbb R^n\setminus\psi(y))\cong\mathbb F_2\), which is the identity. So the image of \([M]\) is \(N\) times the generator. If \(Y\) is a connected closed \(n\)-manifold, \([Y]\) maps to the generator of \(H_n(Y,Y\setminus y)\) by an isomorphism, and comparing gives \(\deg_2q=N\bmod2\). \(\square\)
 

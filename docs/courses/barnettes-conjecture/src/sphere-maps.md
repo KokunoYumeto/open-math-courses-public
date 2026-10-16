@@ -60,11 +60,19 @@ An edge is a *bridge* if deleting it disconnects the underlying graph.
 
 *Proof.* (b) The face of the dart \(d\) of a bridge, from \(u\) to \(v\), is a closed walk through \(d\) (Lemma 1.2). A closed walk that crosses a bridge from \(u\) to \(v\) must cross it back, so it contains \(d'=\theta d\); a face contains each dart at most once.
 
-(a) By induction on the number \(E\) of edges; trivial maps have \(\chi=2\). If every edge is a bridge, the underlying graph is a tree (a loop or a parallel edge is never a bridge), and Lemma 1.5 gives \(\chi=V-(V-1)+1=2\). Otherwise let \(e\) be an edge that is not a bridge. Then \(M-e\) is a connected map with \(E-1\) edges, \(\chi(M-e)\le2\) by induction, and by Lemma 1.4 its number of faces \(F'\) satisfies \(F'\ge F-1\). Hence \(\chi(M)=\chi(M-e)-1+(F-F')\le\chi(M-e)\le2\).
+(a) By induction on the number \(E\) of edges; trivial maps have \(\chi=2\). If every edge is a bridge, the underlying graph is a tree (a loop or a parallel edge is never a bridge), and Lemma 1.5 gives \(\chi=V-(V-1)+1=2\). Otherwise let \(e\) be an edge that is not a bridge. Then \(M-e\) is a connected map with \(E-1\) edges, \(\chi(M-e)\le2\) by induction, and by Lemma 1.4 its number of faces \(F'\) satisfies \(F'\ge F-1\). Hence \(\chi(M)=\chi(M-e)-1+(F-F')\), which is at most \(\chi(M-e)\le2\).
 
-(c) With the notation of (a), \(2=\chi(M)\le\chi(M-e)-1+(F-F')\le2\) forces \(F'=F-1\) and \(\chi(M-e)=2\). By Lemma 1.4, \(F'=F-1\) happens in case (a), or in case (b) with \(p=q=0\). In the latter case \(\varphi(d)=d'\) and \(\varphi(d')=d\), so \(\sigma(d')=d'\) and \(\sigma(d)=d\): both ends of \(e\) are leaves and \(M\) is a single edge, in which \(e\) is a bridge. Hence the two darts lie in different faces.
+(c) With the notation of (a), \(\chi(M)=2\) and \(\chi(M)=\chi(M-e)-1+(F-F')\); since \(F-F'\le1\) and \(\chi(M-e)\le2\), this forces \(F'=F-1\) and \(\chi(M-e)=2\). By Lemma 1.4, \(F'=F-1\) happens in case (a), or in case (b) with \(p=q=0\). In the latter case \(\varphi(d)=d'\) and \(\varphi(d')=d\), so \(\sigma(d')=d'\) and \(\sigma(d)=d\): both ends of \(e\) are leaves and \(M\) is a single edge, in which \(e\) is a bridge. Hence the two darts lie in different faces.
 
-(d) By (b) we are in case (b) of Lemma 1.4. The walk \(a_1,\dots,a_p\) runs from \(v\) back to \(v\) in the component of \(v\), and \(b_1,\dots,b_q\) in the component of \(u\); an empty piece corresponds to an isolated vertex, which carries one face by convention. So the components \(M_1\), \(M_2\) together have \(F+1\) faces, and \(\chi(M_1)+\chi(M_2)=V-(E-1)+(F+1)=\chi(M)+2=4\). As each is at most \(2\) by (a), both equal \(2\).
+(d) By (b) we are in case (b) of Lemma 1.4. The walk \(a_1,\dots,a_p\) runs from \(v\) back to \(v\) in the component of \(v\), and \(b_1,\dots,b_q\) in the component of \(u\); an empty piece corresponds to an isolated vertex, which carries one face by convention. So the components \(M_1\), \(M_2\) together have \(F+1\) faces, and
+\[
+\begin{aligned}
+&\chi(M_1)+\chi(M_2)\\
+&\quad=V-(E-1)+(F+1)\\
+&\quad=\chi(M)+2=4 .
+\end{aligned}
+\]
+As each is at most \(2\) by (a), both equal \(2\).
 
 (e) Delete the edges one at a time and apply (c) and (d) to the component containing the deleted edge. \(\square\)
 
@@ -125,8 +133,9 @@ I-E_{\mathcal A}+|\mathcal A|=1 .
 
 For \(f\in\mathcal A\), every edge with a dart in \(f\) lies in \(C\) or is counted by \(E_{\mathcal A}\) (by Theorem 3.2), so \(b_f\in\mathcal Z(G_{\mathcal A})\). The vectors \(b_f\), \(f\in\mathcal A\), are linearly independent by Lemma 3.1(c), because \(\mathcal A\) is not the set of all faces. By Lemma 3.1(a),
 \[
-|\mathcal A|\le(E_{\mathcal A}+h)-(I+h)+1,\qquad\text{that is,}\qquad I-E_{\mathcal A}+|\mathcal A|\le1 .
+|\mathcal A|\le(E_{\mathcal A}+h)-(I+h)+1,
 \]
+that is, \(I-E_{\mathcal A}+|\mathcal A|\le1\).
 The same holds for the other side \(\mathcal A'\). Every vertex not on \(C\) is strictly inside exactly one side (Lemma 3.4), and every edge not in \(C\) has both darts on one side (Theorem 3.2), so the two left-hand sides add up to \((V-h)-(E-h)+F=2\). Hence both equal \(1\). \(\square\)
 
 ## 4. Faces of a connected submap
@@ -139,7 +148,10 @@ Let \(K\) be a connected subgraph of the underlying graph of a sphere map \(M\),
 
 *There are at least as many regions as faces of \(K\).* A graph has at least as many components as its number of vertices minus its number of edges plus the dimension of its cycle space, and in fact exactly that many, by Lemma 3.1(a) applied to each component. The graph of regions has the \(F_M\) faces of \(M\) as vertices and \(E_M-E_K\) edges. For a vertex \(v\) of \(M\) not in \(K\), all edges at \(v\) lie outside \(K\), so the face boundary of \(M^*\) belonging to \(v\) lies in its cycle space; for the \(V_M-p\) vertices outside \(K\) (where \(p\) is the number of vertices of \(K\)) these vectors are independent by Lemma 3.1(c) applied to \(M^*\). Hence the number \(c\) of regions satisfies
 \[
-c\ge F_M-(E_M-E_K)+(V_M-p)=2-p+E_K=F_K .
+\begin{aligned}
+c&\ge F_M-(E_M-E_K)+(V_M-p)\\
+&=2-p+E_K=F_K .
+\end{aligned}
 \]
 
 *Every region contains the left face of a dart of \(K\).* Otherwise every dart of every face of a region \(R\) belongs to an edge outside \(K\), whose other face is then also in \(R\); so \(R\) would be closed under adjacency in the connected graph of \(M^*\), hence contain all faces, including the face of a dart of \(K\).

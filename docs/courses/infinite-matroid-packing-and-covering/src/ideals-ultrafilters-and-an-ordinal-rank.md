@@ -14,13 +14,16 @@ We work in ZFC. From the core course [Mathematical Logic, Set Theory, and Comput
 
 For \(m\ge0\) let
 \[
-D_m=\{m\}\times\{0,1\}^{\{0,1\}^m},\qquad D=\bigcup_{m\ge0}D_m,\qquad w_m=|D_m|=2^{2^m}.
+\begin{gathered}
+D_m=\{m\}\times\{0,1\}^{\{0,1\}^m},\\
+D=\bigcup_{m\ge0}D_m,\qquad w_m=|D_m|=2^{2^m}.
+\end{gathered}
 \]
 The sets \(D_m\), the *blocks*, are finite and disjoint, and \(D\) is countably infinite. Each element of \(D_m\) is a pair \((m,f)\) with \(f:\{0,1\}^m\to\{0,1\}\).
 
 **Lemma 1.1** (Block growth). \(w_m\ge2\sum_{j<m}w_j\) for every \(m\ge1\).
 
-*Proof.* For \(m=1\): \(w_1=4=2w_0\). If it holds for \(m\), then \(2\sum_{j\le m}w_j\le w_m+2w_m=3w_m\le w_m^2=w_{m+1}\), since \(w_m\ge4\). \(\square\)
+*Proof.* For \(m=1\): \(w_1=4=2w_0\). If it holds for \(m\), then \(2\sum_{j\le m}w_j\le w_m+2w_m\), which is \(3w_m\le w_m^2=w_{m+1}\), since \(w_m\ge4\). \(\square\)
 
 An **ideal** on a set \(S\) is a family of subsets closed under subsets and finite unions; a set not in the ideal is **positive** for it. The **density ideal** is
 \[
@@ -34,10 +37,7 @@ It is a proper ideal containing every finite set. Let \(L\) and \(R\) be two lab
 
 *Proof.* By Lemma 0.1(a) we can assign pairwise distinct infinite binary sequences \(h\) to the \(3\mathfrak c\) columns. Put \((m,f)\) in the column with sequence \(h\) exactly when \(f(h\upharpoonright m)=1\), where \(h\upharpoonright m\) is the initial segment of length \(m\). For finitely many distinct sequences, their initial segments of length \(m\) are distinct once \(m\) is large. Prescribing the values of \(f\) at \(r\) distinct arguments leaves \(2^{2^m-r}\) of the \(2^{2^m}\) functions. \(\square\)
 
-Define
-\[
-\mathcal K=\Bigl\{X\subseteq D:X\cap\bigcap_{t\in\Phi}A_t\in\mathcal J\ \text{for some finite }\Phi\subseteq\mathfrak c\Bigr\},
-\]
+Define \(\mathcal K\) as the family of the sets \(X\subseteq D\) such that \(X\cap\bigcap_{t\in\Phi}A_t\in\mathcal J\) for some finite \(\Phi\subseteq\mathfrak c\),
 where the empty intersection is \(D\). It is closed under subsets, and under finite unions because enlarging \(\Phi\) keeps the defining condition. It contains \(\mathcal J\) and every complement \(D\setminus A_t\). Write \(X\subseteq_{\mathcal K}Y\) if \(X\setminus Y\in\mathcal K\), and let \(\mathcal K_0\) be the ideal of subsets of \(E_0\) with both slices in \(\mathcal K\).
 
 **Lemma 2.2** (Patterns are positive). Let \(P\) be the set of points of \(D\) lying in \(A_t\) for \(t\) in a finite set \(\Phi_1\), and lying in or outside \(G_t\) as prescribed for \(t\) in a finite set \(\Phi_2\). Then \(P\notin\mathcal K\). In particular \(D\notin\mathcal K\), so \(\mathcal K\) is proper.
@@ -54,10 +54,7 @@ A **filter** on a set \(S\) is a nonempty family of subsets, closed under supers
 
 Call \(Z\subseteq D\) *forbidden* if \(Z\subseteq_{\mathcal K}G_t\) for infinitely many \(t\).
 
-**Lemma 3.2** (The ultrafilter). There is an ultrafilter \(\mathcal U\) on \(D\) containing no member of \(\mathcal K\), containing every \(G_t\), and such that for every \(X\in\mathcal U\),
-\[
-\{t<\mathfrak c:X\subseteq_{\mathcal K}G_t\}\ \text{is finite}. \tag{3.1}
-\]
+**Lemma 3.2** (The ultrafilter). There is an ultrafilter \(\mathcal U\) on \(D\) containing no member of \(\mathcal K\), containing every \(G_t\), and such that condition (3.1) holds: for every \(X\in\mathcal U\), the set \(\{t<\mathfrak c:X\subseteq_{\mathcal K}G_t\}\) is finite.
 
 *Proof.* Consider the family of all complements of members of \(\mathcal K\), all \(G_t\), and all complements of forbidden sets. A finite subfamily consists of complements \(D\setminus N_k\), whose intersection is \(D\setminus N\) with \(N=\bigcup_kN_k\in\mathcal K\); sets \(G_t\) for \(t\) in a finite \(\Phi\); and complements of forbidden sets \(Z_1,\dots,Z_q\). Choose distinct indices \(t_1,\dots,t_q\notin\Phi\) with \(Z_j\subseteq_{\mathcal K}G_{t_j}\), possible since each \(Z_j\) has infinitely many such indices. The pattern
 \[
@@ -83,7 +80,10 @@ which exists because \(X\) itself occurs in the list (Proposition 10.2). This *o
 
 *Proof.* For \(\xi\le\gamma\), the set \(Y_\xi=F_\xi\cap(X\setminus s)\) is large, so by (3.1) only finitely many \(t\) have \(Y_\xi\subseteq_{\mathcal K}G_t\). The union over \(\xi\le\gamma\) of these finite sets has fewer than \(\mathfrak c\) elements (Lemma 0.1(b), (c)); choose \(t\) outside it and put \(u=s\cup(X\cap G_t)\). It is large, as it contains \(X\cap G_t\), and \(s\subseteq u\subseteq X\). If \(F_\xi\subseteq_{\mathcal K}u\) for some \(\xi\le\gamma\), then
 \[
-Y_\xi\setminus G_t=F_\xi\cap X\cap(D\setminus s)\cap(D\setminus G_t)\subseteq F_\xi\setminus u\in\mathcal K,
+\begin{aligned}
+Y_\xi\setminus G_t&=F_\xi\cap X\cap(D\setminus s)\cap(D\setminus G_t)\\
+&\subseteq F_\xi\setminus u\in\mathcal K,
+\end{aligned}
 \]
 so \(Y_\xi\subseteq_{\mathcal K}G_t\), contrary to the choice of \(t\). Hence \(\rho(u)>\gamma\). \(\square\)
 
@@ -91,7 +91,10 @@ so \(Y_\xi\subseteq_{\mathcal K}G_t\), contrary to the choice of \(t\). Hence \(
 
 For \(t<\mathfrak c\) define the subsets of \(E_0\), with the same labels in both copies,
 \[
-H_{t,0}=\bigl((D\setminus A_t)\cap(D\setminus B_t)\bigr)\times\{L,R\},\qquad H_{t,1}=\bigl((D\setminus A_t)\cap B_t\bigr)\times\{L,R\}.
+\begin{gathered}
+H_{t,0}=\bigl((D\setminus A_t)\cap(D\setminus B_t)\bigr)\times\{L,R\},\\
+H_{t,1}=\bigl((D\setminus A_t)\cap B_t\bigr)\times\{L,R\}.
+\end{gathered}
 \]
 They are disjoint and belong to \(\mathcal K_0\), because their slices lie in \(D\setminus A_t\in\mathcal K\).
 
@@ -99,7 +102,10 @@ They are disjoint and belong to \(\mathcal K_0\), because their slices lie in \(
 
 *Proof.* Fix \(S\in\mathscr S\) and \(\varepsilon>0\) such that \(|S\cap W_m|\ge\varepsilon|W_m|\) for infinitely many \(m\). Call \(t\) *bad* for \(S\) if \(S\cap H_{t,0}\) or \(S\cap H_{t,1}\) lies in \(\mathcal J_0\). Let \(t_1,\dots,t_q\) be distinct bad indices and choose \(k_i\) with \(S\cap H_{t_i,k_i}\in\mathcal J_0\); put \(H_i=H_{t_i,k_i}\). Avoiding \(H_i\) excludes one of the four membership patterns in the two columns \(A_{t_i},B_{t_i}\); these \(2q\) columns are distinct, so by Lemma 2.1 the points of \(W_m\) outside \(H_1\cup\dots\cup H_q\) have proportion exactly \((3/4)^q\) for large \(m\). Every point of \(S\cap W_m\) avoids all \(H_i\) or lies in some \(S\cap H_i\), so
 \[
-\frac{|S\cap W_m|}{|W_m|}\le\Bigl(\frac34\Bigr)^q+\sum_{i=1}^q\frac{|S\cap H_i\cap W_m|}{|W_m|},
+\begin{aligned}
+&\frac{|S\cap W_m|}{|W_m|}\le\Bigl(\frac34\Bigr)^q\\
+&\quad +\sum_{i=1}^q\frac{|S\cap H_i\cap W_m|}{|W_m|},
+\end{aligned}
 \]
 and the sum tends to zero. Along the infinitely many \(m\) with density at least \(\varepsilon\), this gives \(\varepsilon\le(3/4)^q\). So there are only finitely many bad indices for \(S\). The union of these finite sets over \(S\in\mathscr S\) has fewer than \(\mathfrak c\) elements (Lemma 0.1(b)); any \(t\) outside it works. \(\square\)
 

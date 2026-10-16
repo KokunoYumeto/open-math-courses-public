@@ -1,0 +1,341 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rearrangement bounds for one cell</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Gaussian propeller bound)</a><span class="unlinked">Previous lesson</span><a href="ehrhard-concavity-and-the-loss-of-one-score.html">Next lesson</a><a href="src/rearrangement-bounds-for-one-cell.md">Editable source</a></nav><main><article><h1 id="rearrangement-bounds-for-one-cell">Rearrangement bounds for one cell</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>We work in the standing setting (S1)–(S6) of <span class="unlinked">Gaussian first moments of partitions</span>, Section 4: an optimal partition with <span class="math" data-tex="\(m\ge5\)">\(m\ge5\)</span> active cells, cones <span class="math" data-tex="\(K_i\)">\(K_i\)</span> in <span class="math" data-tex="\(V\cong\mathbb R^{m-1}\)">\(V\cong\mathbb R^{m-1}\)</span>, moments <span class="math" data-tex="\(z_i\)">\(z_i\)</span>, cell measures <span class="math" data-tex="\(P_i\)">\(P_i\)</span> and normalized lengths <span class="math" data-tex="\(r_i=|z_i|/\sqrt C\)">\(r_i=|z_i|/\sqrt C\)</span>, under the hypothesis <span class="math" data-tex="\(C&gt;B^2=9/(8\pi)\)">\(C&gt;B^2=9/(8\pi)\)</span>. A cell with a long moment must carry a lot of mass, because mass far out in one direction is limited. This lesson proves (Proposition 2.4): with <span class="math" data-tex="\(A=0.929\)">\(A=0.929\)</span> if <span class="math" data-tex="\(m=5\)">\(m=5\)</span> and <span class="math" data-tex="\(A=0.884\)">\(A=0.884\)</span> if <span class="math" data-tex="\(m\ge6\)">\(m\ge6\)</span>, every cell satisfies
+<span class="math math-display" data-tex="\[
+r_i&lt;\frac23\qquad\text{and}\qquad P_i&gt;Ar_i^2 .
+\]">\[
+r_i&lt;\frac23\qquad\text{and}\qquad P_i&gt;Ar_i^2 .
+\]</span></p>
+<p>Here and in the rest of the course every terminating decimal denotes an exact rational number. Since <span class="math" data-tex="\(\sum_iP_i=\sum_ir_i^2=1\)">\(\sum_iP_i=\sum_ir_i^2=1\)</span> by (S2) and (S5), the bound <span class="math" data-tex="\(P_i&gt;Ar_i^2\)">\(P_i&gt;Ar_i^2\)</span> leaves a total excess of <span class="math" data-tex="\(1-A\)">\(1-A\)</span> to be distributed; the last lesson shows that the cells cannot afford it.</p>
+<h2 id="1-the-half-space-comparison">1. The half-space comparison</h2>
+<p><strong>Lemma 1.1</strong> (bathtub principle). Let <span class="math" data-tex="\(K\subseteq\mathbb R^d\)">\(K\subseteq\mathbb R^d\)</span> be measurable with <span class="math" data-tex="\(\gamma_d(K)=P\in(0,1)\)">\(\gamma_d(K)=P\in(0,1)\)</span>, let <span class="math" data-tex="\(e\)">\(e\)</span> be a unit vector, <span class="math" data-tex="\(x=\Phi^{-1}(1-P)\)">\(x=\Phi^{-1}(1-P)\)</span> and <span class="math" data-tex="\(H=\{y:\langle e,y\rangle\ge x\}\)">\(H=\{y:\langle e,y\rangle\ge x\}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_K\langle e,y\rangle\,d\gamma_d(y)&amp;\le\int_H\langle e,y\rangle\,d\gamma_d(y)\\
+&amp;=\phi(x).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_K\langle e,y\rangle\,d\gamma_d(y)&amp;\le\int_H\langle e,y\rangle\,d\gamma_d(y)\\
+&amp;=\phi(x).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> The coordinate <span class="math" data-tex="\(\langle e,y\rangle\)">\(\langle e,y\rangle\)</span> is standard normal under <span class="math" data-tex="\(\gamma_d\)">\(\gamma_d\)</span>, so <span class="math" data-tex="\(\gamma_d(H)=1-\Phi(x)=P\)">\(\gamma_d(H)=1-\Phi(x)=P\)</span> and <span class="math" data-tex="\(\int_H\langle e,y\rangle\,d\gamma_d=\int_x^\infty s\phi(s)\,ds=\phi(x)\)">\(\int_H\langle e,y\rangle\,d\gamma_d=\int_x^\infty s\phi(s)\,ds=\phi(x)\)</span>. The function <span class="math" data-tex="\((\langle e,y\rangle-x)(\mathbf 1_K-\mathbf 1_H)\)">\((\langle e,y\rangle-x)(\mathbf 1_K-\mathbf 1_H)\)</span> is nonpositive everywhere: where <span class="math" data-tex="\(\mathbf 1_K-\mathbf 1_H=1\)">\(\mathbf 1_K-\mathbf 1_H=1\)</span>, the point is outside <span class="math" data-tex="\(H\)">\(H\)</span>; where it is <span class="math" data-tex="\(-1\)">\(-1\)</span>, the point is in <span class="math" data-tex="\(H\)">\(H\)</span>. Integrating, and using <span class="math" data-tex="\(\int x(\mathbf 1_K-\mathbf 1_H)\,d\gamma_d=x(P-P)=0\)">\(\int x(\mathbf 1_K-\mathbf 1_H)\,d\gamma_d=x(P-P)=0\)</span>, gives the inequality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.2.</strong> Let <span class="math" data-tex="\(x_i=\Phi^{-1}(1-P_i)\)">\(x_i=\Phi^{-1}(1-P_i)\)</span>. Then <span class="math" data-tex="\(x_i\ge0\)">\(x_i\ge0\)</span>, <span class="math" data-tex="\(|z_i|\le\phi(x_i)\)">\(|z_i|\le\phi(x_i)\)</span>, <span class="math" data-tex="\(r_i&lt;\frac23\)">\(r_i&lt;\frac23\)</span>, and
+<span class="math math-display" data-tex="\[
+\frac{P_i}{r_i^2}&gt;f(x_i),\qquad f(x)=\frac94\,e^{x^2}\,\Phi(-x).
+\]">\[
+\frac{P_i}{r_i^2}&gt;f(x_i),\qquad f(x)=\frac94\,e^{x^2}\,\Phi(-x).
+\]</span></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(x_i\ge0\)">\(x_i\ge0\)</span> because <span class="math" data-tex="\(P_i\le\frac12\)">\(P_i\le\frac12\)</span>. Apply Lemma 1.1 to <span class="math" data-tex="\(K_i\)">\(K_i\)</span> and <span class="math" data-tex="\(e=z_i/|z_i|\)">\(e=z_i/|z_i|\)</span>: <span class="math" data-tex="\(|z_i|=\int_{K_i}\langle e,y\rangle\,d\gamma_{m-1}\le\phi(x_i)\)">\(|z_i|=\int_{K_i}\langle e,y\rangle\,d\gamma_{m-1}\le\phi(x_i)\)</span>. Since <span class="math" data-tex="\(\sqrt C&gt;B=\frac32\phi(0)\)">\(\sqrt C&gt;B=\frac32\phi(0)\)</span>,
+<span class="math math-display" data-tex="\[
+r_i=\frac{|z_i|}{\sqrt C}&lt;\frac{\phi(x_i)}{B}\le\frac{\phi(0)}{B}=\frac23,
+\]">\[
+r_i=\frac{|z_i|}{\sqrt C}&lt;\frac{\phi(x_i)}{B}\le\frac{\phi(0)}{B}=\frac23,
+\]</span>
+and <span class="math" data-tex="\(r_i^2&lt;\phi(x_i)^2/B^2=\frac49e^{-x_i^2}\)">\(r_i^2&lt;\phi(x_i)^2/B^2=\frac49e^{-x_i^2}\)</span>. With <span class="math" data-tex="\(P_i=\Phi(-x_i)\)">\(P_i=\Phi(-x_i)\)</span> this gives <span class="math" data-tex="\(P_i/r_i^2&gt;f(x_i)\)">\(P_i/r_i^2&gt;f(x_i)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.3.</strong> <span class="math" data-tex="\(\min_{x\in\mathbb R}f(x)&gt;0.8843837\)">\(\min_{x\in\mathbb R}f(x)&gt;0.8843837\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(M(x)=\phi(x)/\Phi(-x)\)">\(M(x)=\phi(x)/\Phi(-x)\)</span> and let <span class="math" data-tex="\(Z\)">\(Z\)</span> be standard normal. Integration by parts gives <span class="math" data-tex="\(\int_x^\infty s\phi(s)\,ds=\phi(x)\)">\(\int_x^\infty s\phi(s)\,ds=\phi(x)\)</span> and <span class="math" data-tex="\(\int_x^\infty s^2\phi(s)\,ds=x\phi(x)+\Phi(-x)\)">\(\int_x^\infty s^2\phi(s)\,ds=x\phi(x)+\Phi(-x)\)</span>, so, with <span class="math" data-tex="\(M=M(x)\)">\(M=M(x)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E(Z\mid Z&gt;x)&amp;=M,\\
+\operatorname{Var}(Z\mid Z&gt;x)&amp;=1+xM-M^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E(Z\mid Z&gt;x)&amp;=M,\\
+\operatorname{Var}(Z\mid Z&gt;x)&amp;=1+xM-M^2 .
+\end{aligned}
+\]</span>
+Differentiating, <span class="math" data-tex="\(M&#x27;=M^2-xM\)">\(M&#x27;=M^2-xM\)</span>, which is <span class="math" data-tex="\(1-\operatorname{Var}(Z\mid Z&gt;x)&lt;1\)">\(1-\operatorname{Var}(Z\mid Z&gt;x)&lt;1\)</span>, the variance of a nonconstant random variable being positive. Since <span class="math" data-tex="\((\log f)&#x27;(x)=2x-M(x)=:D(x)\)">\((\log f)&#x27;(x)=2x-M(x)=:D(x)\)</span>, we get <span class="math" data-tex="\((\log f)&#x27;&#x27;=2-M&#x27;&gt;1\)">\((\log f)&#x27;&#x27;=2-M&#x27;&gt;1\)</span>: <span class="math" data-tex="\(\log f\)">\(\log f\)</span> is strictly convex and <span class="math" data-tex="\(D\)">\(D\)</span> is strictly increasing.</p>
+<p>The rational enclosures of Section 3 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-0.000131&amp;&lt;D(0.6119)&lt;-0.000126,\\
+0.000120&amp;&lt;D(0.6121)&lt;0.000124,
+\end{aligned}
+\]">\[
+\begin{aligned}
+-0.000131&amp;&lt;D(0.6119)&lt;-0.000126,\\
+0.000120&amp;&lt;D(0.6121)&lt;0.000124,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(f\)">\(f\)</span> has a unique minimizer <span class="math" data-tex="\(x_*\in(0.6119,0.6121)\)">\(x_*\in(0.6119,0.6121)\)</span>. Evaluating <span class="math" data-tex="\(D\)">\(D\)</span> on the whole interval <span class="math" data-tex="\([0.6119,0.6121]\)">\([0.6119,0.6121]\)</span> with interval arithmetic gives <span class="math" data-tex="\(|D|&lt;0.001\)">\(|D|&lt;0.001\)</span> there, and the enclosures give <span class="math" data-tex="\(f(0.612)&gt;0.884383832\)">\(f(0.612)&gt;0.884383832\)</span>. Since <span class="math" data-tex="\(|x_*-0.612|&lt;0.0001\)">\(|x_*-0.612|&lt;0.0001\)</span> and <span class="math" data-tex="\(|D|&lt;0.001\)">\(|D|&lt;0.001\)</span>, <span class="math" data-tex="\(\log f(x_*)\ge\log f(0.612)-10^{-7}\)">\(\log f(x_*)\ge\log f(0.612)-10^{-7}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\min f&amp;\ge f(0.612)e^{-10^{-7}}\\
+&amp;&gt;0.884383832\,(1-10^{-7})\\
+&amp;&gt;0.8843837 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\min f&amp;\ge f(0.612)e^{-10^{-7}}\\
+&amp;&gt;0.884383832\,(1-10^{-7})\\
+&amp;&gt;0.8843837 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The minimum is about <span class="math" data-tex="\(0.8843841\)">\(0.8843841\)</span>, attained near <span class="math" data-tex="\(x=0.6120032\)">\(x=0.6120032\)</span>.</p>
+<h2 id="2-five-cells-caps-on-the-three-sphere">2. Five cells: caps on the three-sphere</h2>
+<p>When <span class="math" data-tex="\(m=5\)">\(m=5\)</span>, the cones live in <span class="math" data-tex="\(V\cong\mathbb R^4\)">\(V\cong\mathbb R^4\)</span>, and a cone is determined by its trace on the unit sphere <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. Comparing with spherical caps instead of half-spaces improves the constant.</p>
+<p><strong>Polar coordinates.</strong> For the <span class="math" data-tex="\(r\)">\(r\)</span>-dimensional Hausdorff measure <span class="math" data-tex="\(\nu_r\)">\(\nu_r\)</span> on <span class="math" data-tex="\(\mathbb R^{r+1}\)">\(\mathbb R^{r+1}\)</span> and a nonnegative measurable function <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(\mathbb R^{r+1}\)">\(\mathbb R^{r+1}\)</span>,
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^{r+1}}F\,dx=\int_0^\infty\int_{\{|x|=t\}}F\,d\nu_r\,dt
+\]">\[
+\int_{\mathbb R^{r+1}}F\,dx=\int_0^\infty\int_{\{|x|=t\}}F\,d\nu_r\,dt
+\]</span>
+(<a href="https://www1.essex.ac.uk/maths/people/fremlin/cont26.htm">Fremlin, <em>Measure Theory</em>, Volume 2, Theorem 265G</a>, with <span class="math" data-tex="\(\delta\to\infty\)">\(\delta\to\infty\)</span> by monotone convergence), the sphere of radius <span class="math" data-tex="\(t\)">\(t\)</span> has <span class="math" data-tex="\(\nu_r\)">\(\nu_r\)</span>-measure <span class="math" data-tex="\(t^r\nu_r(S^r)\)">\(t^r\nu_r(S^r)\)</span> and <span class="math" data-tex="\(\nu_r\)">\(\nu_r\)</span> scales by <span class="math" data-tex="\(t^r\)">\(t^r\)</span> under <span class="math" data-tex="\(x\mapsto tx\)">\(x\mapsto tx\)</span> (<a href="https://www1.essex.ac.uk/maths/people/fremlin/cont26.htm">Fremlin, Volume 2, 264G and Corollary 265H</a>), and <span class="math" data-tex="\(\nu_r(S^r)=(r+1)\beta_{r+1}\)">\(\nu_r(S^r)=(r+1)\beta_{r+1}\)</span>, where <span class="math" data-tex="\(\beta_{r+1}\)">\(\beta_{r+1}\)</span> is the volume of the unit ball; so <span class="math" data-tex="\(\nu_2(S^2)=4\pi\)">\(\nu_2(S^2)=4\pi\)</span> and <span class="math" data-tex="\(\nu_3(S^3)=2\pi^2\)">\(\nu_3(S^3)=2\pi^2\)</span>. For <span class="math" data-tex="\(F(x)=\psi(|x|)\,h(x/|x|)\)">\(F(x)=\psi(|x|)\,h(x/|x|)\)</span> this gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{\mathbb R^{r+1}}\psi(|x|)\,h\Bigl(\frac x{|x|}\Bigr)dx\\
+&amp;\quad=\int_0^\infty\psi(t)t^r\,dt\int_{S^r}h\,d\nu_r .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{\mathbb R^{r+1}}\psi(|x|)\,h\Bigl(\frac x{|x|}\Bigr)dx\\
+&amp;\quad=\int_0^\infty\psi(t)t^r\,dt\int_{S^r}h\,d\nu_r .
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(g\)">\(g\)</span> be standard Gaussian in <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>, <span class="math" data-tex="\(R=|g|\)">\(R=|g|\)</span> and <span class="math" data-tex="\(U=g/|g|\)">\(U=g/|g|\)</span>.
+(a) <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span> are independent, <span class="math" data-tex="\(U\)">\(U\)</span> has the normalized surface measure <span class="math" data-tex="\(\sigma=\nu_3/(2\pi^2)\)">\(\sigma=\nu_3/(2\pi^2)\)</span>, and <span class="math" data-tex="\(\mathbb ER=3\sqrt{2\pi}/4\)">\(\mathbb ER=3\sqrt{2\pi}/4\)</span>.
+(b) For a unit vector <span class="math" data-tex="\(e\)">\(e\)</span>, the coordinate <span class="math" data-tex="\(\langle e,U\rangle\)">\(\langle e,U\rangle\)</span> has density <span class="math" data-tex="\(\frac2\pi\sqrt{1-u^2}\)">\(\frac2\pi\sqrt{1-u^2}\)</span> on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>.</p>
+<p><strong>Proof.</strong> (a) Apply the polar formula with <span class="math" data-tex="\(r=3\)">\(r=3\)</span> and <span class="math" data-tex="\(\psi(t)=\psi_0(t)(2\pi)^{-2}e^{-t^2/2}\)">\(\psi(t)=\psi_0(t)(2\pi)^{-2}e^{-t^2/2}\)</span>: <span class="math" data-tex="\(\mathbb E[\psi_0(R)h(U)]\)">\(\mathbb E[\psi_0(R)h(U)]\)</span> is a product of a factor depending only on <span class="math" data-tex="\(\psi_0\)">\(\psi_0\)</span> and the factor <span class="math" data-tex="\(\int h\,d\nu_3\)">\(\int h\,d\nu_3\)</span>. Taking <span class="math" data-tex="\(\psi_0=1\)">\(\psi_0=1\)</span> or <span class="math" data-tex="\(h=1\)">\(h=1\)</span> identifies the factors with <span class="math" data-tex="\(\mathbb E\psi_0(R)\)">\(\mathbb E\psi_0(R)\)</span> and <span class="math" data-tex="\(\mathbb Eh(U)=\int h\,d\sigma\)">\(\mathbb Eh(U)=\int h\,d\sigma\)</span>. Also
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb ER&amp;=\frac{2\pi^2}{(2\pi)^2}\int_0^\infty t^4e^{-t^2/2}\,dt\\
+&amp;=\frac12\cdot\frac{3\sqrt{2\pi}}2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb ER&amp;=\frac{2\pi^2}{(2\pi)^2}\int_0^\infty t^4e^{-t^2/2}\,dt\\
+&amp;=\frac12\cdot\frac{3\sqrt{2\pi}}2 .
+\end{aligned}
+\]</span></p>
+<p>(b) By rotation invariance take <span class="math" data-tex="\(e\)">\(e\)</span> to be the first basis vector and write <span class="math" data-tex="\(g=(g_1,g&#x27;)\)">\(g=(g_1,g&#x27;)\)</span> with <span class="math" data-tex="\(g&#x27;\in\mathbb R^3\)">\(g&#x27;\in\mathbb R^3\)</span> independent of <span class="math" data-tex="\(g_1\)">\(g_1\)</span>. By the polar formula with <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, <span class="math" data-tex="\(\rho=|g&#x27;|\)">\(\rho=|g&#x27;|\)</span> has density <span class="math" data-tex="\(\sqrt{2/\pi}\,\rho^2e^{-\rho^2/2}\)">\(\sqrt{2/\pi}\,\rho^2e^{-\rho^2/2}\)</span> on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Since <span class="math" data-tex="\(\frac1{\sqrt{2\pi}}\sqrt{\frac2\pi}=\frac1\pi\)">\(\frac1{\sqrt{2\pi}}\sqrt{\frac2\pi}=\frac1\pi\)</span>, the pair <span class="math" data-tex="\((g_1,\rho)\)">\((g_1,\rho)\)</span> has the density <span class="math" data-tex="\(\frac1\pi\rho^2e^{-(g_1^2+\rho^2)/2}\)">\(\frac1\pi\rho^2e^{-(g_1^2+\rho^2)/2}\)</span> on <span class="math" data-tex="\(\mathbb R\times(0,\infty)\)">\(\mathbb R\times(0,\infty)\)</span>. For bounded measurable <span class="math" data-tex="\(F\)">\(F\)</span>, polar coordinates <span class="math" data-tex="\((g_1,\rho)=(s\cos\theta,s\sin\theta)\)">\((g_1,\rho)=(s\cos\theta,s\sin\theta)\)</span> with <span class="math" data-tex="\(0&lt;\theta&lt;\pi\)">\(0&lt;\theta&lt;\pi\)</span> (<a href="https://www1.essex.ac.uk/maths/people/fremlin/cont26.htm">Fremlin, Volume 2, 263G</a>), with area element <span class="math" data-tex="\(s\,ds\,d\theta\)">\(s\,ds\,d\theta\)</span> and <span class="math" data-tex="\(\int_0^\infty s^3e^{-s^2/2}\,ds=2\)">\(\int_0^\infty s^3e^{-s^2/2}\,ds=2\)</span>, give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb EF\Bigl(\frac{g_1}{\sqrt{g_1^2+\rho^2}}\Bigr)\\
+&amp;\quad=\frac2\pi\int_0^\pi F(\cos\theta)\sin^2\theta\,d\theta .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb EF\Bigl(\frac{g_1}{\sqrt{g_1^2+\rho^2}}\Bigr)\\
+&amp;\quad=\frac2\pi\int_0^\pi F(\cos\theta)\sin^2\theta\,d\theta .
+\end{aligned}
+\]</span>
+The substitution <span class="math" data-tex="\(u=\cos\theta\)">\(u=\cos\theta\)</span> turns this into <span class="math" data-tex="\(\frac2\pi\int_{-1}^1F(u)\sqrt{1-u^2}\,du\)">\(\frac2\pi\int_{-1}^1F(u)\sqrt{1-u^2}\,du\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(0\le x&lt;1\)">\(0\le x&lt;1\)</span> the <em>cap</em> <span class="math" data-tex="\(\{u\in S^3:\langle e,u\rangle\ge x\}\)">\(\{u\in S^3:\langle e,u\rangle\ge x\}\)</span> has <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-measure
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p(x)&amp;=\frac2\pi\int_x^1\sqrt{1-u^2}\,du\\
+&amp;=\frac12-\frac{\arcsin x+x\sqrt{1-x^2}}\pi
+\end{aligned}
+\]">\[
+\begin{aligned}
+p(x)&amp;=\frac2\pi\int_x^1\sqrt{1-u^2}\,du\\
+&amp;=\frac12-\frac{\arcsin x+x\sqrt{1-x^2}}\pi
+\end{aligned}
+\]</span>
+and first moment
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac2\pi\int_x^1u\sqrt{1-u^2}\,du\\
+&amp;\quad=\frac2{3\pi}(1-x^2)^{3/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac2\pi\int_x^1u\sqrt{1-u^2}\,du\\
+&amp;\quad=\frac2{3\pi}(1-x^2)^{3/2}.
+\end{aligned}
+\]</span></p>
+<p><strong>Corollary 2.2.</strong> Let <span class="math" data-tex="\(m=5\)">\(m=5\)</span> and let <span class="math" data-tex="\(x_i\in[0,1)\)">\(x_i\in[0,1)\)</span> satisfy <span class="math" data-tex="\(p(x_i)=P_i\)">\(p(x_i)=P_i\)</span>. Then <span class="math" data-tex="\(|z_i|\le\phi(0)(1-x_i^2)^{3/2}\)">\(|z_i|\le\phi(0)(1-x_i^2)^{3/2}\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{P_i}{r_i^2}&gt;R(x_i),\\
+R(x)=\frac94\cdot\frac{p(x)}{(1-x^2)^3}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{P_i}{r_i^2}&gt;R(x_i),\\
+R(x)=\frac94\cdot\frac{p(x)}{(1-x^2)^3}.
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(p\)">\(p\)</span> decreases continuously from <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, so <span class="math" data-tex="\(x_i\)">\(x_i\)</span> exists because <span class="math" data-tex="\(0&lt;P_i\le\frac12\)">\(0&lt;P_i\le\frac12\)</span>. The cone <span class="math" data-tex="\(K_i\)">\(K_i\)</span> satisfies <span class="math" data-tex="\(\mathbf 1_{K_i}(g)=\mathbf 1_{K_i}(U)\)">\(\mathbf 1_{K_i}(g)=\mathbf 1_{K_i}(U)\)</span>, so by Lemma 2.1(a), with <span class="math" data-tex="\(e=z_i/|z_i|\)">\(e=z_i/|z_i|\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_i&amp;=\sigma(K_i\cap S^3),\\
+|z_i|&amp;=\mathbb E\bigl[R\langle e,U\rangle\mathbf 1_{K_i}(U)\bigr]\\
+&amp;=\mathbb ER\cdot\mathbb E\bigl[\langle e,U\rangle\mathbf 1_{K_i}(U)\bigr].
+\end{aligned}
+\]">\[
+\begin{aligned}
+P_i&amp;=\sigma(K_i\cap S^3),\\
+|z_i|&amp;=\mathbb E\bigl[R\langle e,U\rangle\mathbf 1_{K_i}(U)\bigr]\\
+&amp;=\mathbb ER\cdot\mathbb E\bigl[\langle e,U\rangle\mathbf 1_{K_i}(U)\bigr].
+\end{aligned}
+\]</span>
+The bathtub argument of Lemma 1.1, with the law <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(U\)">\(U\)</span> and the threshold <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, bounds the last expectation by the first moment of the cap. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|z_i|&amp;\le\frac{3\sqrt{2\pi}}4\cdot\frac2{3\pi}(1-x_i^2)^{3/2}\\
+&amp;=\phi(0)(1-x_i^2)^{3/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+|z_i|&amp;\le\frac{3\sqrt{2\pi}}4\cdot\frac2{3\pi}(1-x_i^2)^{3/2}\\
+&amp;=\phi(0)(1-x_i^2)^{3/2}.
+\end{aligned}
+\]</span>
+Dividing <span class="math" data-tex="\(P_i=p(x_i)\)">\(P_i=p(x_i)\)</span> by <span class="math" data-tex="\(r_i^2&lt;|z_i|^2/B^2\le\frac49(1-x_i^2)^3\)">\(r_i^2&lt;|z_i|^2/B^2\le\frac49(1-x_i^2)^3\)</span> gives the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3.</strong> <span class="math" data-tex="\(\min_{0\le x&lt;1}R(x)&gt;0.9311326\)">\(\min_{0\le x&lt;1}R(x)&gt;0.9311326\)</span>.</p>
+<p><strong>Proof.</strong> Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(x)&amp;=6x\,p(x)-\frac2\pi(1-x^2)^{3/2},\\
+H(x)&amp;=p(x)-\frac x\pi\sqrt{1-x^2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+F(x)&amp;=6x\,p(x)-\frac2\pi(1-x^2)^{3/2},\\
+H(x)&amp;=p(x)-\frac x\pi\sqrt{1-x^2}.
+\end{aligned}
+\]</span>
+Using <span class="math" data-tex="\(p&#x27;(x)=-\frac2\pi\sqrt{1-x^2}\)">\(p&#x27;(x)=-\frac2\pi\sqrt{1-x^2}\)</span>, direct differentiation gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R&#x27;=\frac94\cdot\frac{F}{(1-x^2)^4},\\
+F&#x27;=6H,\qquad H&#x27;=\frac{4x^2-3}{\pi\sqrt{1-x^2}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+R&#x27;=\frac94\cdot\frac{F}{(1-x^2)^4},\\
+F&#x27;=6H,\qquad H&#x27;=\frac{4x^2-3}{\pi\sqrt{1-x^2}} .
+\end{gathered}
+\]</span>
+So <span class="math" data-tex="\(H\)">\(H\)</span> decreases on <span class="math" data-tex="\([0,\sqrt3/2]\)">\([0,\sqrt3/2]\)</span> and increases on <span class="math" data-tex="\([\sqrt3/2,1)\)">\([\sqrt3/2,1)\)</span>. Since <span class="math" data-tex="\(H(0)=\frac12\)">\(H(0)=\frac12\)</span> and <span class="math" data-tex="\(H(x)\to0\)">\(H(x)\to0\)</span> as <span class="math" data-tex="\(x\to1\)">\(x\to1\)</span>, <span class="math" data-tex="\(H\)">\(H\)</span> is negative on <span class="math" data-tex="\([\sqrt3/2,1)\)">\([\sqrt3/2,1)\)</span> and has exactly one zero <span class="math" data-tex="\(x_H\in(0,\sqrt3/2)\)">\(x_H\in(0,\sqrt3/2)\)</span>. Hence <span class="math" data-tex="\(F\)">\(F\)</span> increases on <span class="math" data-tex="\([0,x_H]\)">\([0,x_H]\)</span> and decreases on <span class="math" data-tex="\([x_H,1)\)">\([x_H,1)\)</span>; as <span class="math" data-tex="\(F(0)=-2/\pi&lt;0\)">\(F(0)=-2/\pi&lt;0\)</span> and <span class="math" data-tex="\(F(x)\to0\)">\(F(x)\to0\)</span> as <span class="math" data-tex="\(x\to1\)">\(x\to1\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> is positive on <span class="math" data-tex="\([x_H,1)\)">\([x_H,1)\)</span> and has exactly one zero <span class="math" data-tex="\(x_F\in(0,x_H)\)">\(x_F\in(0,x_H)\)</span>. So <span class="math" data-tex="\(R\)">\(R\)</span> decreases on <span class="math" data-tex="\([0,x_F]\)">\([0,x_F]\)</span> and increases on <span class="math" data-tex="\([x_F,1)\)">\([x_F,1)\)</span>, and <span class="math" data-tex="\(\min R=R(x_F)\)">\(\min R=R(x_F)\)</span>.</p>
+<p>The enclosures of Section 3 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-0.0047010&amp;&lt;F(0.29)&lt;-0.0046981,\\
+0.0007683&amp;&lt;F(0.294)&lt;0.0007712,
+\end{aligned}
+\]">\[
+\begin{aligned}
+-0.0047010&amp;&lt;F(0.29)&lt;-0.0046981,\\
+0.0007683&amp;&lt;F(0.294)&lt;0.0007712,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(x_F\in(0.29,0.294)\)">\(x_F\in(0.29,0.294)\)</span>. On this interval <span class="math" data-tex="\(p\)">\(p\)</span> decreases and <span class="math" data-tex="\(x\sqrt{1-x^2}\le0.294\)">\(x\sqrt{1-x^2}\le0.294\)</span>, so <span class="math" data-tex="\(H(x)\ge p(0.294)-0.294/\pi\)">\(H(x)\ge p(0.294)-0.294/\pi\)</span>, which exceeds <span class="math" data-tex="\(0.22198\)">\(0.22198\)</span>; hence <span class="math" data-tex="\(H&gt;0\)">\(H&gt;0\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> increases there and <span class="math" data-tex="\(|F|&lt;0.004702\)">\(|F|&lt;0.004702\)</span>. Consequently, on <span class="math" data-tex="\([0.29,0.294]\)">\([0.29,0.294]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|R&#x27;(x)|&amp;&lt;\frac94\cdot\frac{0.004702}{(1-0.294^2)^4}\\
+&amp;&lt;0.015189&lt;0.03 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|R&#x27;(x)|&amp;&lt;\frac94\cdot\frac{0.004702}{(1-0.294^2)^4}\\
+&amp;&lt;0.015189&lt;0.03 .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(R(0.29)&gt;0.9312526\)">\(R(0.29)&gt;0.9312526\)</span> from Section 3,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(x_F)&amp;\ge R(0.29)-0.03\cdot0.004\\
+&amp;&gt;0.9312526-0.00012\\
+&amp;=0.9311326 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+R(x_F)&amp;\ge R(0.29)-0.03\cdot0.004\\
+&amp;&gt;0.9312526-0.00012\\
+&amp;=0.9311326 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.4.</strong> Put <span class="math" data-tex="\(A=0.929\)">\(A=0.929\)</span> if <span class="math" data-tex="\(m=5\)">\(m=5\)</span> and <span class="math" data-tex="\(A=0.884\)">\(A=0.884\)</span> if <span class="math" data-tex="\(m\ge6\)">\(m\ge6\)</span>. For every <span class="math" data-tex="\(i\)">\(i\)</span>,
+<span class="math math-display" data-tex="\[
+r_i&lt;\frac23\qquad\text{and}\qquad P_i&gt;Ar_i^2 .
+\]">\[
+r_i&lt;\frac23\qquad\text{and}\qquad P_i&gt;Ar_i^2 .
+\]</span></p>
+<p><strong>Proof.</strong> The bound <span class="math" data-tex="\(r_i&lt;\frac23\)">\(r_i&lt;\frac23\)</span> is Corollary 1.2. For <span class="math" data-tex="\(m\ge6\)">\(m\ge6\)</span>, Corollary 1.2 and Lemma 1.3 give <span class="math" data-tex="\(P_i/r_i^2&gt;0.8843837&gt;0.884\)">\(P_i/r_i^2&gt;0.8843837&gt;0.884\)</span>. For <span class="math" data-tex="\(m=5\)">\(m=5\)</span>, Corollary 2.2 and Lemma 2.3 give <span class="math" data-tex="\(P_i/r_i^2&gt;0.9311326&gt;0.929\)">\(P_i/r_i^2&gt;0.9311326&gt;0.929\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-rational-enclosures">3. Rational enclosures</h2>
+<p>All finite comparisons of the course reduce to rational arithmetic with the following enclosures. Each tabulated value was also recomputed with ball arithmetic (python-flint, 256-bit precision) in the check program of the course record.</p>
+<ul>
+<li><span class="math" data-tex="\(3.14159&lt;\pi&lt;3.14160\)">\(3.14159&lt;\pi&lt;3.14160\)</span>, for instance from <span class="math" data-tex="\(\pi=16\arctan\frac15-4\arctan\frac1{239}\)">\(\pi=16\arctan\frac15-4\arctan\frac1{239}\)</span> and alternating partial sums of the arctangent series.</li>
+<li>For <span class="math" data-tex="\(y\ge0\)">\(y\ge0\)</span>, Taylor's formula with integral remainder gives <span class="math" data-tex="\(E_{15}(y)\le e^{-y}\le E_{14}(y)\)">\(E_{15}(y)\le e^{-y}\le E_{14}(y)\)</span>, where <span class="math" data-tex="\(E_N(y)=\sum_{j=0}^N(-y)^j/j!\)">\(E_N(y)=\sum_{j=0}^N(-y)^j/j!\)</span>; the sign of the remainder of order <span class="math" data-tex="\(N\)">\(N\)</span> is <span class="math" data-tex="\((-1)^{N+1}\)">\((-1)^{N+1}\)</span>.</li>
+<li>Integrating these bounds for <span class="math" data-tex="\(e^{-s^2/2}\)">\(e^{-s^2/2}\)</span> from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>: with <span class="math" data-tex="\(J_N(x)=\sum_{j=0}^N\frac{(-1)^jx^{2j+1}}{2^jj!\,(2j+1)}\)">\(J_N(x)=\sum_{j=0}^N\frac{(-1)^jx^{2j+1}}{2^jj!\,(2j+1)}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi(x)&amp;\ge\frac12+\frac{J_{15}(x)}{\sqrt{2\pi}},\\
+\Phi(x)&amp;\le\frac12+\frac{J_{14}(x)}{\sqrt{2\pi}},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi(x)&amp;\ge\frac12+\frac{J_{15}(x)}{\sqrt{2\pi}},\\
+\Phi(x)&amp;\le\frac12+\frac{J_{14}(x)}{\sqrt{2\pi}},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\Phi(-x)=1-\Phi(x)\)">\(\Phi(-x)=1-\Phi(x)\)</span>.</li>
+<li>For <span class="math" data-tex="\(0\le x&lt;1\)">\(0\le x&lt;1\)</span>, the binomial series of <span class="math" data-tex="\((1-u^2)^{-1/2}\)">\((1-u^2)^{-1/2}\)</span> has positive coefficients at most one; integrating it gives <span class="math" data-tex="\(Q(x)\le\arcsin x\le Q(x)+\frac{x^{11}}{11(1-x^2)}\)">\(Q(x)\le\arcsin x\le Q(x)+\frac{x^{11}}{11(1-x^2)}\)</span> with <span class="math" data-tex="\(Q(x)=\sum_{j=0}^4\binom{2j}j\frac{x^{2j+1}}{4^j(2j+1)}\)">\(Q(x)=\sum_{j=0}^4\binom{2j}j\frac{x^{2j+1}}{4^j(2j+1)}\)</span>.</li>
+<li>Square roots: <span class="math" data-tex="\(l\le\sqrt y\le u\)">\(l\le\sqrt y\le u\)</span> for rationals with <span class="math" data-tex="\(l^2\le y\le u^2\)">\(l^2\le y\le u^2\)</span>.</li>
+</ul>
+<p>The values used in this lesson:</p>
+<table>
+<thead>
+<tr>
+<th>quantity</th>
+<th>enclosure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(D(0.6119)\)">\(D(0.6119)\)</span></td>
+<td><span class="math" data-tex="\((-0.000131,\,-0.000126)\)">\((-0.000131,\,-0.000126)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(D(0.6121)\)">\(D(0.6121)\)</span></td>
+<td><span class="math" data-tex="\((0.000120,\,0.000124)\)">\((0.000120,\,0.000124)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(D\)">\(D\)</span> on <span class="math" data-tex="\([0.6119,0.6121]\)">\([0.6119,0.6121]\)</span></td>
+<td><span class="math" data-tex="\((-0.000430,\,0.000424)\)">\((-0.000430,\,0.000424)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(f(0.612)\)">\(f(0.612)\)</span></td>
+<td><span class="math" data-tex="\(&gt;0.884383832\)">\(&gt;0.884383832\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(F(0.29)\)">\(F(0.29)\)</span></td>
+<td><span class="math" data-tex="\((-0.0047010,\,-0.0046981)\)">\((-0.0047010,\,-0.0046981)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(F(0.294)\)">\(F(0.294)\)</span></td>
+<td><span class="math" data-tex="\((0.0007683,\,0.0007712)\)">\((0.0007683,\,0.0007712)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(R(0.29)\)">\(R(0.29)\)</span></td>
+<td><span class="math" data-tex="\(&gt;0.9312526\)">\(&gt;0.9312526\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(p(0.294)-0.294/\pi\)">\(p(0.294)-0.294/\pi\)</span></td>
+<td><span class="math" data-tex="\(&gt;0.22198\)">\(&gt;0.22198\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Show that Lemma 1.1 fails without the condition <span class="math" data-tex="\(\gamma_d(K)=\gamma_d(H)\)">\(\gamma_d(K)=\gamma_d(H)\)</span>: find <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(\int_K\langle e,y\rangle\,d\gamma_d&gt;\phi(x)\)">\(\int_K\langle e,y\rangle\,d\gamma_d&gt;\phi(x)\)</span> when <span class="math" data-tex="\(K\)">\(K\)</span> is allowed a larger measure than <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>4.2</strong> (medium). For the propeller of <span class="unlinked">Gaussian first moments of partitions</span>, Corollary 2.2, compute <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span> for each sector (with <span class="math" data-tex="\(C=9/(8\pi)\)">\(C=9/(8\pi)\)</span>) and the ratio <span class="math" data-tex="\(P/r^2\)">\(P/r^2\)</span>. Compare it with <span class="math" data-tex="\(\min f\)">\(\min f\)</span>.</p>
+<p><strong>4.3</strong> (medium). Show that <span class="math" data-tex="\(f(x)\to\infty\)">\(f(x)\to\infty\)</span> as <span class="math" data-tex="\(x\to\pm\infty\)">\(x\to\pm\infty\)</span> without using Lemma 1.3, using <span class="math" data-tex="\(\Phi(-x)\ge\frac{x}{1+x^2}\phi(x)\)">\(\Phi(-x)\ge\frac{x}{1+x^2}\phi(x)\)</span> for <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>.</p>
+<p><strong>4.4</strong> (medium). Show that for <span class="math" data-tex="\(g\)">\(g\)</span> standard Gaussian in <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span> and a cone <span class="math" data-tex="\(K\)">\(K\)</span> (a set with <span class="math" data-tex="\(tK=K\)">\(tK=K\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>), <span class="math" data-tex="\(\gamma_4(K)=\sigma(K\cap S^3)\)">\(\gamma_4(K)=\sigma(K\cap S^3)\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> Take <span class="math" data-tex="\(K=\{\langle e,y\rangle\ge0\}\)">\(K=\{\langle e,y\rangle\ge0\}\)</span>, of measure <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>, and <span class="math" data-tex="\(x=\Phi^{-1}(1-P)\)">\(x=\Phi^{-1}(1-P)\)</span> for a smaller <span class="math" data-tex="\(P\)">\(P\)</span>, say <span class="math" data-tex="\(P=0.1\)">\(P=0.1\)</span> and <span class="math" data-tex="\(x\approx1.28\)">\(x\approx1.28\)</span>. Then <span class="math" data-tex="\(\int_K\langle e,y\rangle\,d\gamma_d=\phi(0)\approx0.399\)">\(\int_K\langle e,y\rangle\,d\gamma_d=\phi(0)\approx0.399\)</span>, more than <span class="math" data-tex="\(\phi(1.28)\approx0.176\)">\(\phi(1.28)\approx0.176\)</span>.</p>
+<p><strong>4.2.</strong> Each sector has <span class="math" data-tex="\(P=\frac13\)">\(P=\frac13\)</span> and <span class="math" data-tex="\(|z|=\sin(\pi/3)/\sqrt{2\pi}\)">\(|z|=\sin(\pi/3)/\sqrt{2\pi}\)</span>, so <span class="math" data-tex="\(r^2=|z|^2/C=\frac{3/(8\pi)}{9/(8\pi)}=\frac13\)">\(r^2=|z|^2/C=\frac{3/(8\pi)}{9/(8\pi)}=\frac13\)</span> and <span class="math" data-tex="\(P/r^2=1\)">\(P/r^2=1\)</span>. The proof of Corollary 1.2 with <span class="math" data-tex="\(C=9/(8\pi)\)">\(C=9/(8\pi)\)</span> gives <span class="math" data-tex="\(P/r^2\ge f(x)\)">\(P/r^2\ge f(x)\)</span> with <span class="math" data-tex="\(x=\Phi^{-1}(\frac23)\approx0.431\)">\(x=\Phi^{-1}(\frac23)\approx0.431\)</span>, where <span class="math" data-tex="\(f(x)\approx0.903\)">\(f(x)\approx0.903\)</span>; so the propeller is far from the extreme case of the half-space comparison.</p>
+<p><strong>4.3.</strong> For <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, <span class="math" data-tex="\(f(x)\ge\frac94e^{x^2}\frac{x}{1+x^2}\frac{e^{-x^2/2}}{\sqrt{2\pi}}\)">\(f(x)\ge\frac94e^{x^2}\frac{x}{1+x^2}\frac{e^{-x^2/2}}{\sqrt{2\pi}}\)</span>, which tends to infinity. For <span class="math" data-tex="\(x\to-\infty\)">\(x\to-\infty\)</span>, <span class="math" data-tex="\(\Phi(-x)\to1\)">\(\Phi(-x)\to1\)</span> and <span class="math" data-tex="\(e^{x^2}\to\infty\)">\(e^{x^2}\to\infty\)</span>. (The inequality <span class="math" data-tex="\(\Phi(-x)\ge\frac{x}{1+x^2}\phi(x)\)">\(\Phi(-x)\ge\frac{x}{1+x^2}\phi(x)\)</span> follows by differentiating <span class="math" data-tex="\(\Phi(-x)-\frac{x}{1+x^2}\phi(x)\)">\(\Phi(-x)-\frac{x}{1+x^2}\phi(x)\)</span>, which has derivative <span class="math" data-tex="\(-\frac{2\phi(x)}{(1+x^2)^2}&lt;0\)">\(-\frac{2\phi(x)}{(1+x^2)^2}&lt;0\)</span> and limit <span class="math" data-tex="\(0\)">\(0\)</span> at infinity.)</p>
+<p><strong>4.4.</strong> Apply Lemma 2.1(a) with <span class="math" data-tex="\(h=\mathbf 1_{K\cap S^3}\)">\(h=\mathbf 1_{K\cap S^3}\)</span>: since <span class="math" data-tex="\(\mathbf 1_K(g)=\mathbf 1_K(U)\)">\(\mathbf 1_K(g)=\mathbf 1_K(U)\)</span>, <span class="math" data-tex="\(\gamma_4(K)=\mathbb E\mathbf 1_{K}(U)=\sigma(K\cap S^3)\)">\(\gamma_4(K)=\mathbb E\mathbf 1_{K}(U)=\sigma(K\cap S^3)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-GP] OpenAI, <em>The Gaussian propeller bound in every dimension</em>, OpenAI Math Release preprint, 24 September 2026, Section 3 and Appendix A. https://github.com/openai/math/tree/main/preprints/The-Gaussian-Propeller-Bound-in-Every-Dimension-September-24-2026</li>
+<li>[Fremlin] D. H. Fremlin, <em>Measure Theory</em>, Volume 2, author's edition, the basis of the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>. https://www1.essex.ac.uk/maths/people/fremlin/mt.htm</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
