@@ -10,7 +10,7 @@ In the limit of strong interaction, density functional theory leads to a transpo
 2. no pair of measure-preserving Borel maps attains it;
 3. pairs of measure-preserving Borel maps come arbitrarily close to it.
 
-The Coulomb case is \(d=3\), \(s=1\). Parts 1 and 2 are Theorem 4.2 of [Two branches with a shared potential](two-branches-with-a-shared-potential.md), and part 3 is Theorem 4.1 of [Monge plans approach the minimum](monge-plans-approach-the-minimum.md).
+The Coulomb case is \(d=3\), \(s=1\). Parts 1 and 2 are Theorem 4.2 of [Two branches with a shared potential](two-branches-with-a-shared-potential.md), and part 3 is Theorem 4.1 of [Monge plans approach the minimum](monge-plans-approach-the-minimum.md). [Monge plans at infinitesimal resolution](monge-plans-at-infinitesimal-resolution.md) restates parts 2 and 3 with infinitesimals: one internal pair of maps exceeds the minimum by a positive infinitesimal, and its standard part is an optimal coupling that is not given by maps.
 
 The mechanism goes back to Gerolin, Kausamo and Rajala, who used it for the repulsive harmonic cost \(-\sum_{i<j}|x_i-x_j|^2\) [GKR]. A *supporting potential* forces every optimal coupling onto two prescribed families of triples (Section 2), and an imbalance of masses prevents a map from choosing between the families (Section 3). This lesson proves these two abstract steps; the next lesson builds the potential and the density for the Riesz costs.
 
@@ -20,9 +20,12 @@ Let \(\mu\) be a Borel probability measure on \(\mathbb R^d\). A *coupling* of t
 
 Let \(c\colon(\mathbb R^d)^3\to[0,\infty]\) be Borel. The *Kantorovich value* and the *Monge value* are
 \[
-\mathcal E_c(\mu)=\inf_{\pi\in\Pi(\mu)}\int c\,d\pi,\qquad \mathcal M_c(\mu)=\inf_{T_2,T_3}\int c\bigl(x,T_2(x),T_3(x)\bigr)\,d\mu(x),
+\begin{aligned}
+\mathcal E_c(\mu)&=\inf_{\pi\in\Pi(\mu)}\int c\,d\pi,\\
+\mathcal M_c(\mu)&=\inf_{T_2,T_3}J_c(T_2,T_3),
+\end{aligned}
 \]
-the second infimum running over pairs of Borel maps \(T_2,T_3\) that preserve \(\mu\). The coupling \((\mathrm{id},T_2,T_3)_\#\mu\) has the three marginals \(\mu\), \(T_{2\#}\mu=\mu\) and \(T_{3\#}\mu=\mu\), and its cost is \(\int c(x,T_2(x),T_3(x))\,d\mu(x)\). Hence
+where \(J_c(T_2,T_3)=\int c\bigl(x,T_2(x),T_3(x)\bigr)\,d\mu(x)\), and the second infimum runs over pairs of Borel maps \(T_2,T_3\) that preserve \(\mu\). The coupling \((\mathrm{id},T_2,T_3)_\#\mu\) has the three marginals \(\mu\), \(T_{2\#}\mu=\mu\) and \(T_{3\#}\mu=\mu\), and its cost is \(\int c(x,T_2(x),T_3(x))\,d\mu(x)\). Hence
 \[
 \mathcal M_c(\mu)\ge\mathcal E_c(\mu).\tag{1.1}
 \]
@@ -30,15 +33,21 @@ A coupling of the form \((\mathrm{id},T_2,T_3)_\#\mu\) is a *Monge plan*, and a 
 
 For \(d\ge1\) and \(s>0\), the *Riesz cost* is
 \[
-c_s(x_1,x_2,x_3)=|x_1-x_2|^{-s}+|x_1-x_3|^{-s}+|x_2-x_3|^{-s},
+\begin{aligned}
+&c_s(x_1,x_2,x_3)=|x_1-x_2|^{-s}\\
+&\qquad+|x_1-x_3|^{-s}+|x_2-x_3|^{-s},
+\end{aligned}
 \]
 with the value \(+\infty\) when two points coincide; \(|\cdot|\) is the Euclidean norm. It is lower semicontinuous, hence Borel, and symmetric under permutations of the three points. The *Coulomb cost* is \(c_1\) on \((\mathbb R^3)^3\).
 
 ## 2. Supporting potentials
 
-**Proposition 2.1.** Let \(c\colon(\mathbb R^d)^3\to[0,\infty]\) be Borel, let \(U\subseteq\mathbb R^d\) be a Borel set with \(\mu(U)=1\), and let \(u\colon U\to\mathbb R\) be a bounded Borel function with
+**Proposition 2.1.** Let \(c\colon(\mathbb R^d)^3\to[0,\infty]\) be Borel, let \(U\subseteq\mathbb R^d\) be a Borel set with \(\mu(U)=1\), and let \(u\colon U\to\mathbb R\) be a bounded Borel function satisfying the inequality (2.1):
 \[
-c(x_1,x_2,x_3)\ge u(x_1)+u(x_2)+u(x_3)\qquad\text{for all }(x_1,x_2,x_3)\in U^3 .\tag{2.1}
+\begin{gathered}
+c(x_1,x_2,x_3)\ge u(x_1)+u(x_2)+u(x_3)\\
+\text{for all }(x_1,x_2,x_3)\in U^3 .
+\end{gathered}
 \]
 Let \(\Gamma\subseteq U^3\) be the set where (2.1) is an equality.
 
@@ -63,11 +72,19 @@ There is no Borel map \(T\colon\mathbb R^d\to\mathbb R^d\) that preserves \(\mu\
 
 **Proof.** Suppose \(T\) is such a map, and let \(S_j=\{x\in B:T(x)=H_j(x)\}\), a Borel set. Since \(H_{j\#}\nu\) is carried by \(H_j(B)\), which is disjoint from \(B\) and from the other images, and \(H_j\) is injective,
 \[
-\mu(S_j)=\tfrac13\nu(S_j),\qquad \mu\bigl(H_j(S_j)\bigr)=\tfrac16\nu\bigl(H_j^{-1}(H_j(S_j))\bigr)=\tfrac16\nu(S_j).
+\begin{aligned}
+\mu(S_j)&=\tfrac13\nu(S_j),\\
+\mu\bigl(H_j(S_j)\bigr)&=\tfrac16\nu\bigl(H_j^{-1}(H_j(S_j))\bigr)\\
+&=\tfrac16\nu(S_j).
+\end{aligned}
 \]
 Every point of \(S_j\) is mapped by \(T\) into \(H_j(S_j)\), so \(S_j\subseteq T^{-1}(H_j(S_j))\), and since \(T\) preserves \(\mu\),
 \[
-\tfrac13\nu(S_j)=\mu(S_j)\le\mu\bigl(T^{-1}(H_j(S_j))\bigr)=\mu\bigl(H_j(S_j)\bigr)=\tfrac16\nu(S_j).
+\begin{aligned}
+\tfrac13\nu(S_j)&=\mu(S_j)\\
+&\le\mu\bigl(T^{-1}(H_j(S_j))\bigr)\\
+&=\mu\bigl(H_j(S_j)\bigr)=\tfrac16\nu(S_j).
+\end{aligned}
 \]
 Hence \(\nu(S_j)=0\) for every \(j\). But the four sets \(S_j\) cover \(\nu\)-almost all of \(B\), and \(\nu(B)=1\), a contradiction. \(\square\)
 
@@ -95,7 +112,15 @@ The next lesson constructs, for the Riesz cost \(c_s\) in every dimension \(d\ge
 
 **5.1.** Each coordinate of the averaged measure is an average of the coordinates of \(\pi\), all of law \(\mu\); the cost is unchanged because \(c\) is symmetric. The average of the six permutations of a Monge plan \((\mathrm{id},T_2,T_3)_\#\mu\) is in general not of the form \((\mathrm{id},T_2',T_3')_\#\mu\): given its first coordinate, the other two coordinates are random.
 
-**5.2.** On the open sets \(B\) and \(H(B)\) the map \(T\) is continuous, and it is the identity on the Borel set outside them, so it is Borel. For a Borel set \(A\), \(\mu(T^{-1}(A))=\frac12\nu(T^{-1}(A)\cap B)+\frac12H_\#\nu(T^{-1}(A)\cap H(B))=\frac12\nu(H^{-1}(A))+\frac12\nu(A\cap B)=\frac12H_\#\nu(A)+\frac12\nu(A)=\mu(A)\).
+**5.2.** On the open sets \(B\) and \(H(B)\) the map \(T\) is continuous, and it is the identity on the Borel set outside them, so it is Borel. For a Borel set \(A\),
+\[
+\begin{aligned}
+&\mu(T^{-1}(A))=\tfrac12\nu(T^{-1}(A)\cap B)\\
+&\quad+\tfrac12H_\#\nu(T^{-1}(A)\cap H(B))\\
+&\quad=\tfrac12\nu(H^{-1}(A))+\tfrac12\nu(A\cap B)\\
+&\quad=\tfrac12H_\#\nu(A)+\tfrac12\nu(A)=\mu(A).
+\end{aligned}
+\]
 
 **5.3.** In the proof, \(\sum_iu(x_i)\) is \(\pi\)-integrable with integral \(3\int_Uu\,d\mu\) because \(\int|u(x_i)|\,d\pi=\int_U|u|\,d\mu\) for each \(i\); boundedness was used only for this.
 

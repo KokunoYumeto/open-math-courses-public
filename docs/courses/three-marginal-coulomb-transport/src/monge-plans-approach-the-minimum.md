@@ -26,23 +26,35 @@ Consequently, if \(U\) is uniform on \((0,1)\), then \(q(U)\) has distribution f
 
 Let \(f\ge0\) be a Borel function on \(\mathbb R^d\) with \(\int f=1\). For \(1\le j<d\) and \(x\in\mathbb R^d\) write \(x_{1:j}=(x_1,\dots,x_j)\), and let
 \[
-f_{1:j}(x_{1:j})=\int_{\mathbb R^{d-j}}f(x_{1:j},z)\,dz,\qquad f_{1:d}=f,\qquad f_{1:0}=1 .
+\begin{gathered}
+f_{1:j}(x_{1:j})=\int_{\mathbb R^{d-j}}f(x_{1:j},z)\,dz,\\
+f_{1:d}=f,\qquad f_{1:0}=1 .
+\end{gathered}
 \]
 By Tonelli's theorem these are Borel functions with values in \([0,\infty]\), \(f_{1:j}\) is the density of the first \(j\) coordinates of a random vector with density \(f\), and \(\int_{\mathbb R}f_{1:j}(a,r)\,dr=f_{1:j-1}(a)\) for every \(a\in\mathbb R^{j-1}\). For \(1\le j\le d\), \(a\in\mathbb R^{j-1}\) and \(t\in\mathbb R\) let
 \[
-F_j(a,t)=\frac1{f_{1:j-1}(a)}\int_{-\infty}^tf_{1:j}(a,r)\,dr\qquad\text{if }0<f_{1:j-1}(a)<\infty,
+\begin{aligned}
+F_j(a,t)&=\frac1{f_{1:j-1}(a)}\int_{-\infty}^tf_{1:j}(a,r)\,dr\\
+&\qquad\text{if }0<f_{1:j-1}(a)<\infty,
+\end{aligned}
 \]
 and \(F_j(a,t)=(1+\mathrm e^{-t})^{-1}\) otherwise. Each \(F_j(a,\cdot)\) is a continuous distribution function (the integral of an integrable function is continuous in its upper limit), and \(F_j\) is Borel in \((a,t)\) by Tonelli's theorem. The *exceptional* prefixes, those with \(f_{1:j-1}(a)\in\{0,\infty\}\), carry no mass: the measure \(f_{1:j-1}(a)\,da\) of the set where \(f_{1:j-1}=0\) is zero, and the set where \(f_{1:j-1}=\infty\) is Lebesgue-null because \(f_{1:j-1}\) is integrable.
 
 **Lemma 2.1** (Rosenblatt's transform). The Borel map
 \[
-R_f(x)=\bigl(F_1(x_1),\,F_2(x_1,x_2),\,\dots,\,F_d(x_{1:d-1},x_d)\bigr),
+\begin{aligned}
+R_f(x)=\bigl(&F_1(x_1),\,F_2(x_1,x_2),\,\dots,\\
+&F_d(x_{1:d-1},x_d)\bigr),
+\end{aligned}
 \]
 where \(F_1(t)\) means \(F_1(\varnothing,t)\), sends the measure \(f\,dx\) to the uniform measure on \([0,1]^d\).
 
 **Proof.** Let \(X\) have density \(f\) and \(V_j=F_j(X_{1:j-1},X_j)\). We show that \(V_j\) is uniform on \([0,1]\) and independent of \(X_{1:j-1}\). Let \(A\subseteq\mathbb R^{j-1}\) be Borel and \(0\le u\le1\). By Tonelli's theorem,
 \[
-\mathbb P(X_{1:j-1}\in A,\ V_j\le u)=\int_A\Bigl(\int_{\mathbb R}\mathbf 1\{F_j(a,r)\le u\}\,f_{1:j}(a,r)\,dr\Bigr)da .
+\begin{aligned}
+&\mathbb P(X_{1:j-1}\in A,\ V_j\le u)=\int_AI(a)\,da,\\
+&I(a)=\int_{\mathbb R}\mathbf 1\{F_j(a,r)\le u\}\,f_{1:j}(a,r)\,dr .
+\end{aligned}
 \]
 For a non-exceptional \(a\), the inner integral is \(f_{1:j-1}(a)\) times the probability that \(F_j(a,R_a)\le u\), where \(R_a\) has density \(f_{1:j}(a,\cdot)/f_{1:j-1}(a)\) and distribution function \(F_j(a,\cdot)\); by Lemma 1.1 this probability is \(u\). If \(f_{1:j-1}(a)=0\), the inner integral is \(0=u\,f_{1:j-1}(a)\), and the prefixes with \(f_{1:j-1}(a)=\infty\) form a null set. Hence the probability equals \(u\int_Af_{1:j-1}(a)\,da=u\,\mathbb P(X_{1:j-1}\in A)\). So \(V_j\) is uniform and independent of \(X_{1:j-1}\), and therefore of \(V_1,\dots,V_{j-1}\), which are functions of \(X_{1:j-1}\). By induction on \(j\), the variables \(V_1,\dots,V_d\) are independent and uniform. \(\square\)
 
@@ -50,7 +62,12 @@ For a non-exceptional \(a\), the inner integral is \(f_{1:j-1}(a)\) times the pr
 
 **Proof.** For \(0<u<1\) and real \(t\), \(q_j(a,u)<t\) holds exactly when \(F_j(a,r)\ge u\) for some rational \(r<t\); this is a countable union of Borel sets, so \(q_j\) is Borel, and so is the finite recursion \(S_f\). Let \(U\) be uniform on \([0,1]^d\) and \(Z=S_f(U)\). Suppose that \(Z_{1:j-1}\) has density \(f_{1:j-1}\). Since \(U_j\) is independent of \(Z_{1:j-1}\), a function of \(U_1,\dots,U_{j-1}\), Tonelli's theorem and Lemma 1.2 give, for Borel \(A\subseteq\mathbb R^{j-1}\) and real \(t\),
 \[
-\mathbb P(Z_{1:j-1}\in A,\ Z_j\le t)=\int_A\mathbb P\bigl(q_j(a,U_j)\le t\bigr)f_{1:j-1}(a)\,da=\int_AF_j(a,t)f_{1:j-1}(a)\,da=\int_A\int_{-\infty}^tf_{1:j}(a,r)\,dr\,da,
+\begin{aligned}
+&\mathbb P(Z_{1:j-1}\in A,\ Z_j\le t)\\
+&\quad=\int_A\mathbb P\bigl(q_j(a,U_j)\le t\bigr)f_{1:j-1}(a)\,da\\
+&\quad=\int_AF_j(a,t)f_{1:j-1}(a)\,da\\
+&\quad=\int_A\int_{-\infty}^tf_{1:j}(a,r)\,dr\,da,
+\end{aligned}
 \]
 using that the exceptional prefixes carry no mass. Sets of the form \(A\times(-\infty,t]\) are closed under intersection and generate the Borel sets of \(\mathbb R^j\), so \(Z_{1:j}\) has density \(f_{1:j}\). Induction on \(j\) proves the claim. \(\square\)
 
@@ -70,7 +87,11 @@ Let \(d\ge2\), \(s>0\), and let \(\mu\), \(B\), \(g\), \(\mathcal H=\{Y_1,W_1,Y_
 
 **Theorem 4.1** (OpenAI 2026). For every \(\epsilon>0\) there are Borel maps \(T_2,T_3\) preserving \(\mu\) with
 \[
-\mathcal E_{c_s}(\mu)<\int c_s\bigl(x,T_2(x),T_3(x)\bigr)\,d\mu(x)\le\mathcal E_{c_s}(\mu)+\epsilon .
+\begin{aligned}
+&\mathcal E_{c_s}(\mu)\\
+&\quad<\int c_s\bigl(x,T_2(x),T_3(x)\bigr)\,d\mu(x)\\
+&\quad\le\mathcal E_{c_s}(\mu)+\epsilon .
+\end{aligned}
 \]
 Hence the Monge value \(\mathcal M_{c_s}(\mu)\) equals the Kantorovich value \(\mathcal E_{c_s}(\mu)\), and it is not attained.
 
@@ -82,13 +103,21 @@ and \(K=K_0\cup\dots\cup K_4\) has \(\mu(K)=1\). The coupling \(\pi_0\) is carri
 
 *Cells.* Fix \(\delta>0\). Cut each \(K_a\) by a grid of half-open cubes of side \(\delta/\sqrt d\) into finitely many Borel cells of diameter at most \(\delta\), and discard the cells of \(\mu\)-measure zero. The remaining cells \(A_1,\dots,A_N\) are disjoint, each lies in a single \(K_a\), and they cover \(\mu\)-almost all of \(K\). Put \(q_{ijk}=\pi_0(A_i\times A_j\times A_k)\). Since \(\pi_0\) is carried by \(K^3\) and has marginals \(\mu\),
 \[
-\sum_{j,k}q_{ijk}=\mu(A_i),\qquad\sum_{i,k}q_{ijk}=\mu(A_j),\qquad\sum_{i,j}q_{ijk}=\mu(A_k).\tag{4.1}
+\begin{aligned}
+\sum_{j,k}q_{ijk}&=\mu(A_i),\\
+\sum_{i,k}q_{ijk}&=\mu(A_j),\\
+\sum_{i,j}q_{ijk}&=\mu(A_k).
+\end{aligned}\tag{4.1}
 \]
 Call the triple \((i,j,k)\) *active* if \(q_{ijk}>0\). Then \(\pi_0\) charges \(A_i\times A_j\times A_k\), so the three cells lie in three different sets \(K_a\), and every point of this product has its three entries at mutual distances at least \(\eta\).
 
 *Maps.* By (4.1) and Lemma 3.1, each \(A_i\) is the disjoint union of Borel sets \(B_{ijk}\) with \(\mu(B_{ijk})=q_{ijk}\). For active \((i,j,k)\), Corollary 2.3 gives Borel maps sending the probability measure \(q_{ijk}^{-1}\mu|_{B_{ijk}}\) to \(\mu|_{A_j}/\mu(A_j)\) and to \(\mu|_{A_k}/\mu(A_k)\), respectively; changing them on the Borel \(\mu\)-null set of points sent outside \(A_j\), respectively \(A_k\), we may assume that they take values in \(A_j\) and \(A_k\). Let \(T_2\) and \(T_3\) be these maps on each \(B_{ijk}\) with \((i,j,k)\) active, and a fixed point of \(K\) on the remaining \(\mu\)-null Borel set. For a Borel set \(D\), by (4.1),
 \[
-\mu\bigl(T_2^{-1}(D)\bigr)=\sum_{(i,j,k)\text{ active}}q_{ijk}\,\frac{\mu(D\cap A_j)}{\mu(A_j)}=\sum_j\mu(D\cap A_j)=\mu(D),
+\begin{aligned}
+&\mu\bigl(T_2^{-1}(D)\bigr)\\
+&\quad=\sum_{(i,j,k)\text{ active}}q_{ijk}\,\frac{\mu(D\cap A_j)}{\mu(A_j)}\\
+&\quad=\sum_j\mu(D\cap A_j)=\mu(D),
+\end{aligned}
 \]
 and likewise for \(T_3\). So \(T_2\) and \(T_3\) preserve \(\mu\), and the Monge plan \(\pi_\delta=(\mathrm{id},T_2,T_3)_\#\mu\) gives each product \(A_i\times A_j\times A_k\) the mass \(\mu(B_{ijk})=q_{ijk}\), exactly as \(\pi_0\) does.
 
@@ -103,6 +132,8 @@ Both \(\pi_0\) and \(\pi_\delta\) are carried by the union of the active product
 Since \(\int c_s\,d\pi_0=\mathcal E_{c_s}(\mu)\), choosing \(\delta\) with \(6s\delta\eta^{-s-1}\le\epsilon\) gives the upper bound. The cost of every Monge plan is at least \(\mathcal E_{c_s}(\mu)\), and it is strictly larger by Theorem 4.2 of [Two branches with a shared potential](two-branches-with-a-shared-potential.md). \(\square\)
 
 The argument never passes the singular cost to a limit: the approximating plans themselves keep all three particles at distance at least \(\eta\) from each other.
+
+As \(\delta\to0\), the plans \(\pi_\delta\) converge to the optimal coupling \(\pi_0\) when tested against bounded continuous functions; [Monge plans at infinitesimal resolution](monge-plans-at-infinitesimal-resolution.md) proves this and restates Theorem 4.1 with infinitesimals.
 
 ## 5. Exercises
 

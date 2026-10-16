@@ -16169,13 +16169,572 @@ five and seven examples retain their nonzero higher model-change components.
 
 Theorem C.67.1.1 gives the actual augmented counit and full projection kernel. Theorem C.67.2.1 gives a full natural isomorphism and dg retraction to strict operator objects. Theorem C.67.3.1 retains the marked postcomposition data. Exercises C.67.4.1–C.67.4.2 compute the necessary unit term and marked sign. Editable SVG source.
 
+### C.68. Native operator models through dg bridges
+
+Full natural transformations can be lifted through a specified mapping
+projection even when their source has no augmentation. An actual dg bridge
+retains the geometric object representatives, their positive models and
+their entire comparison. On fixed overall input and output types, this
+gives relative models of the complete native partition diagrams.
+
+#### C.68.1. Full normalized lifting without a source augmentation
+
+Use the full normalized natural-transformation cochains of uncurved unital
+\(A_\infty\) functors. They vanish on ordinary unit arguments in positive
+source length. Their differential can be computed on the tensor bar of all
+source mapping spaces; no augmented bar-cobar counit is applied to that
+possibly unaugmented source. All coefficient actions are over the split
+semisimple identity category.
+
+**Theorem C.68.1.1 (actual projection fibers, sections and equivalences).**
+Let \(P:B\to D\) be a relative unital dg functor with surjective
+quasi-isomorphisms on its selected mapping complexes. The full Nat projection
+of C.66.3 and C.67.1 remains a surjective quasi-isomorphism for normalized
+unital functors from an unaugmented dg source. Its kernel contraction is
+finite on every original input.
+
+If the object labels and their coefficient maps have sections, \(P\)
+has a normalized unital \(A_\infty\) section on those labels. Its
+postcomposition with \(P\) is exactly the identity functor, including
+all higher components. Finally a closed full natural transformation whose
+bare object maps are homotopy equivalences is invertible in the full Nat
+cohomology category, with actual full inverse cochains and homotopies.
+
+**Proof.** First split the mapping projection kernels over the coefficient
+actions, as in C30. The leading differential of a Taylor cochain includes
+the output unary differential and all original source unary differentials.
+Applying the kernel contraction to its output gives the leading Hom
+contraction. All remaining terms consume at least one source letter: they
+compose adjacent source inputs or apply a nonempty functor action. These
+statements use the full tensor bar, including products with unit outputs.
+
+The normalized cochains are stable under that differential. When an input is
+a unit, its neighboring source-composition terms cancel the corresponding
+functor unit actions; higher unital functor components at that input vanish.
+The leading contraction preserves normalization since it changes only the
+output. Thus both the leading differential and its remaining perturbation
+preserve this normalized subspace. The finite series
+\[
+ H=H_0(1+\delta H_0)^{-1}
+ \tag{C.68.1}
+\]
+contracts exactly the projection kernel on each input length. Graded Taylor
+sections lift normalized cochains by assigning zero at their unit inputs.
+This proves the first assertion. No augmentation of the source was used.
+
+For a section, choose a graded mapping section preserving the coefficient
+maps. Correct its chain defect by the output kernel contraction; the defect
+is zero on the coefficients, so this gives a coefficient-preserving chain
+section \(j_1\). At source word length \(q\geq2\), the known
+lower-length components give the full Stasheff obstruction \(O_q\).
+It takes values in the mapping kernel, because after projection the chosen
+components are exactly the strict identity. Keep the entire unary complex
+of the length-\(q\) source generators. The obstruction is closed in
+that Hom complex: its differential is the length-\(q\) component of
+the source square-zero equation and of the already assigned lower equations.
+Postcomposition with the kernel contraction contracts this Hom complex.
+Set \(j_q=H_0O_q\), with the sign fixed by the equation
+\(\partial j_q=O_q\). This gives the next component with zero
+projection. If one input is a unit, the two adjacent source-unit terms and
+the corresponding target-unit term cancel; hence \(O_q\) is normalized
+and so is \(j_q\). Induction constructs the full unital section. This
+is induction on original input length, retaining the nonminimal unary
+complex, rather than induction assuming its basis generators are cycles.
+
+For the last assertion, fix a closed natural transformation \(u:F\to G\)
+whose object maps are homotopy equivalences. Composition by a bare object
+map is a quasi-isomorphism on every appropriate mapping complex: its inverse
+and Hom homotopies are given by composition with its actual homotopy inverse
+and its two homotopies, with the Hom derivation signs. The cone of this
+leading map is therefore acyclic. Split and contract that cone over the
+coefficient actions. In the cone of composition by the full \(u\), all
+further terms consume positive source length. The same finite perturbation
+contracts that cone on each original input. Thus composition by \(u\)
+is a quasi-isomorphism on the full Nat complexes.
+
+In particular choose a closed \(v:G\to F\) whose class maps to
+\([1_G]\) under postcomposition by \(u\). Then \(uv\) is
+homotopic to \(1_G\) in the full complex. Faithfulness of that same
+composition on \(H^0\) gives \(vu\simeq1_F\). Both differences
+are actual boundaries in full Nat complexes, giving the asserted inverse
+and homotopies. The contractions concerned a specified projection kernel
+or a cone of composition by an actual equivalence; arbitrary Nat complexes
+have not been declared acyclic. \(\square\)
+
+#### C.68.2. Relative replacement of a complete coherent diagram
+
+Let \(\mathcal E\) be a dg category and choose closed homotopy
+equivalences \(u_i:X_i\to Y_i\). Use the path category with maps
+\((f,g,a)\), whose differential and composition are those of C.53.4,
+and whose object at \(i\) is this actual \(u_i\).
+
+**Lemma C.68.2.1 (relative full-diagram replacement).** Both path projections
+have graded-surjective quasi-isomorphisms on their full mapping complexes.
+Given a whole \(\Omega B(kJ)\)-diagram on the \(X_i\)'s and an
+already assigned compatible full-face path to a diagram on the corresponding
+\(Y_i\)'s, the path extends to the whole parameter diagram with those
+object maps fixed. Its second projection retains every assigned face
+exactly. The assertion also holds for a countable locally forward finite
+parameter category, using the same original-word induction.
+
+**Proof.** The first projection's mapping kernel has components \((g,a)\)
+and differential
+\[
+ (g,a)\longmapsto(\partial g,-\partial a-gu_i).
+\]
+It is a shifted cone of precomposition by \(u_i\). This is an actual
+mapping-complex quasi-isomorphism, since \(u_i\) has a homotopy inverse.
+Its cone is acyclic. The second projection has the cone of postcomposition
+by \(u_j\), with the same conclusion. Each projection is graded
+surjective because its retained component can be chosen arbitrarily.
+Split and contract each such kernel over the coefficient category. These
+are contractions of the specified path-projection kernels.
+
+Keep the assigned path generators. For each remaining original parameter
+generator choose a graded lift of its specified first component. Its chain
+defect is a closed element of the projection kernel, because its differential
+uses only previously treated shorter strings. Subtract its kernel primitive.
+The resulting generator image has the same exact projection and satisfies
+its chain equation. Extend by the free cobar composition. This is the
+relative induction of C.66.3, now with the displayed actual path kernels.
+Every original generator lies at finite string length. A common face is the
+same original word on both sides, so prescribing compatible unions retains
+all of them. This proves both assertions, including the full path comparison.
+\(\square\)
+
+#### C.68.3. A bridge with the actual geometric object representatives
+
+Let \(v:U\to G\) be a unital dg quasi-equivalence. In the application
+\(U\) is the positive IC model or its finite additive matrix envelope;
+\(G\) is the chosen geometric dg model, including the actual forward
+perverse images. It need not be augmented. For every needed \(y\in G\)
+choose \(x\in U\) and a closed homotopy equivalence
+\(u:vx\to y\). Include the canonical choices \((x,vx,1_{vx})\).
+
+**Theorem C.68.3.1 (the full dg model bridge).** There is a dg category \(R(v)\)
+whose objects are those triples \((x,y,u)\). A degree-\(r\) mapping
+has components
+\[
+ \begin{gathered}
+ f\in U^r(x,x'),\quad g\in G^r(y,y'),\\
+ a\in G^{r-1}(vx,y').
+ \end{gathered}
+\]
+Its differential and composition are
+\[
+ \begin{gathered}
+ D(f,g,a)\\
+ \quad=(\partial f,\partial g,\\
+ \qquad-\partial a+u'v(f)-gu),\\
+ (f_2,g_2,a_2)(f_1,g_1,a_1)\\
+ \quad=(f_2f_1,g_2g_1,\\
+ \qquad a_2v(f_1)\\
+ \qquad+(-1)^{|f_2|}g_2a_1).
+ \end{gathered}
+ \tag{C.68.2}
+\]
+The two projections \(p:R(v)\to U\), \(q:R(v)\to G\) are
+graded-surjective quasi-isomorphisms on every selected mapping complex.
+The canonical-object inclusion \(j:U\to R(v)\) is a strict dg functor
+with \(pj=1_U\) and \(qj=v\). The bridge has its actual resolved
+comparison from \(vp\) to \(q\), with object components \(u\),
+and that comparison restricts to the identity on \(j(U)\).
+
+The bridge is used as a dg target. No augmentation of this expanded object
+category is assumed or used.
+
+**Proof.** Formula (C.68.2) is the path construction after applying \(v\)
+to the first component. The square-zero differential uses closedness of
+\(u,u'\), and the third product component has its Hom Leibniz sign
+\((-1)^{|f_2|}\). In a triple product its third component expands to
+\(a_3v(f_2f_1)+(-1)^{|f_3|}g_3a_2v(f_1)
++(-1)^{|f_3|+|f_2|}g_3g_2a_1\) in both groupings. Together with the
+ordinary dg identities on \(U,G\), these calculations prove all dg
+category identities. Its identity maps are \((1_x,1_y,0)\).
+
+Both projections are plainly graded surjective. The kernel of \(p\)
+is the cone of precomposition
+\(G(y,y')\to G(vx,y')\) by \(u\). This is a quasi-isomorphism
+because \(u\) is a homotopy equivalence. The kernel of \(q\) is
+the cone of
+\[
+ U(x,x')\longrightarrow G(vx,y'),\qquad f\longmapsto u'v(f).
+\]
+That map is a quasi-isomorphism by the quasi-equivalence on Hom complexes
+and the homotopy equivalence \(u'\). Both kernels are acyclic, proving
+the mapping assertions. The canonical inclusion sends \(f\) to
+\((f,v(f),0)\) between the canonical objects. Formula (C.68.2) proves
+its dg and retraction identities exactly.
+
+There is a strict dg functor from this bridge to the path category of \(G\),
+sending its object to \(u:vx\to y\) and its map to \((v(f),g,a)\).
+This is the actual resolved comparison. Its object maps are homotopy
+equivalences, and Theorem C.68.1.1 gives full inverse transformations when they
+are needed. On the canonical inclusion its objects are identity maps and
+every third component is zero. Thus its comparison there is exactly the
+identity. Keeping all three components also retains a geometric object
+which is merely homotopy equivalent to its positive-model representative;
+it is not identified with that representative as a dg object. \(\square\)
+
+#### C.68.4. Native partition operators at fixed overall arities
+
+Use \(U_n=(\Omega C)^{\otimes n}\) and the common cobar state
+\(V_n=\Omega(C^{\otimes n})\), with the actual surjective
+quasi-isomorphism \(\rho_n:V_n\to U_n\) of C41/C52. At zero
+arity all three pure input models are the coefficient category. The fixed
+positive generator model has an actual strict dg quasi-equivalence into
+the geometric IC model. Explicitly, write \(C=B\mathcal M\) for the
+minimal IC model in C34, and let \(I:\mathcal M\to G\) be its
+full enhanced inclusion from the normalized transfer of C33. On a free
+cobar generator \(t c\), define \(v(t c)\) to be the corresponding
+Taylor value of \(I\). The full functor equation for \(I\) is the
+twisting equation, so extending multiplicatively defines a strict dg
+\(v:\Omega C\to G\). Its composite with C34's unit
+\(\mathcal M\to\Omega C\) is exactly \(I\), by the same
+consecutive-partition reconstruction. Both that unit and \(I\) are
+mapping-complex quasi-isomorphisms, so \(v\) is one as well.
+Tensor powers retain those quasi-isomorphisms by the split tensor
+contractions of C30.1. Finite additive images use C38's full matrix
+balancing. Write \(v_n:U_n\to G_n\) for this ordered tensor
+input model and its finite additive extension.
+
+For one original joint string, let \(J\) be its consecutive-block
+partition category, directed by merging blocks. Retain each actual composite
+contraction label. Its native objects are operators with fixed overall
+input arity \(a\) and output arity \(b\); intermediate frontier arities
+can vary. More generally the same assertion applies to any directed native
+parameter diagram of this same overall type, on the complete C64 domain.
+Use the full enhanced native diagram of C47: its functors and every higher
+transformation are evaluated on all their original source mapping inputs.
+In dg models these are exactly its normalized full functor-category cochains.
+
+**Theorem C.68.4.1 (relative native operator models at fixed outer type).** The
+whole native diagram has a strict dg parameter model whose objects are strict
+dg operators \(V_a\to V_b\), with its actual full native comparison.
+Suppose an already assigned compatible union of full parameter faces is
+given in these positive models, together with its actual full native face
+comparison. The construction retains those faces exactly.
+
+For collapsed original-string faces, choose the model data once on each
+actual ordered block sequence. The resulting fixed-outer-type diagrams
+then agree on their shared faces. This retains complete partition diagrams;
+strict external-root product and source-end-changing graft covariance still
+require their full common marked presentation.
+
+**Proof.** On the primitive IC tuple inputs, precompose the actual native
+operators with the strict dg input model \(v_a\rho_a\). This gives
+their full normalized diagram in
+\(\operatorname{Fun}_\infty(V_a,G_b)\). Here the higher cochains
+are the supplied enhanced native cells of C47, not edge classes selected
+afterwards. Theorem C.67.2.1 makes the operator objects strict and retains
+the whole parameter diagram. If the parameter model itself is initially
+\(A_\infty\), apply C.67.3's second strictification as well. On a
+face already strict in both senses, these retractions fix all its data.
+
+An actual face comparison can first be used to put the whole geometric diagram
+under that exact boundary convention: apply Lemma C.68.2.1 in the full functor
+category, with the given face path. Outside that face use identity object
+equivalences. This changes the whole diagram through its actual path and
+makes the prescribed face exact. Thus the following construction may assume
+that the geometric face is \(v_b\) of its given positive-model face.
+
+Form the bridge \(R(v_b)\), including the geometric operator image
+objects. Such objects are perverse finite IC sums by C47; their needed
+homotopy equivalences to finite additive \(v_b\)-images are their actual
+IC decomposition isomorphisms in the enhanced category. Choose these object
+resolutions once. For a strict geometric operator \(V_a\to G_b\),
+choose those bridge objects over its primitive source objects. Lift its
+free cobar generators through \(q:R(v_b)\to G_b\). The mapping
+kernel is acyclic by Theorem C.68.3.1. The full unary complex of each source
+generator stage is retained, exactly as in C.46.2; its Hom kernel is
+contracted by the output kernel homotopy. Correcting the closed defect
+therefore gives a strict operator lift. No target augmentation is needed.
+Extend from primitive tuple inputs to their finite additive envelopes by
+the actual matrix functor.
+
+On an assigned positive face, use instead the canonical lift \(j\) of
+its whole positive diagram. It has the exact prescribed geometric image.
+Theorem C.68.1.1's full Nat projection for \(q\), followed by C.66.3's relative
+free-parameter induction, now lifts the entire strict geometric parameter
+diagram with these operator objects fixed. The prescribed whole face lifts
+are retained. Projection by \(p\) gives strict operators into \(U_b\)
+and the whole dg parameter diagram there, with the assigned faces exact.
+
+The bridge's resolved comparison retains the full native interpretation.
+For complete cochains this can be written by the marked construction of
+C.67.3 with the closed bridge comparison in its distinguished slot. Its
+bar equation is the corresponding commutator identity: unmarked terms are
+functor equations, marked terms are its full transformation differential,
+and cuts give its naturality equation. Every term uses the same suspended
+maps and signs, and on a source word of length \(L\) with \(r\)
+parameter marks there are at most \(L+r+1\) output letters. Thus this
+gives the actual entire comparison. Its object maps are homotopy equivalences;
+Theorem C.68.1.1 supplies full inverses and homotopies, first in the operator
+category and then in the parameter category. On the assigned canonical
+face the comparison is the identity, because the bridge's third components
+there are zero.
+
+Finally lift each strict operator into \(U_b\) through the actual
+\(\rho_b:V_b\to U_b\). The source is a cobar and the target mapping
+projection is surjective with acyclic kernel, so the same full generator
+complex argument gives strict operators \(V_a\to V_b\). On assigned
+faces keep their existing lifts. The full Nat projection of C66 lifts the
+whole parameter diagram with those operator objects fixed, and retains all
+its prescribed faces exactly. This proves the positive-state assertion,
+including arities zero and the original unit-output functors.
+
+All constructions use the actual block composite and the original source
+and target labels. If an internal original-string cut is collapsed, its
+partition category is the full face with that cut absent. Its block objects
+and composites are literally those same ordered blocks. Choose bridge
+resolutions, graded sections and kernel contractions once on these data.
+C67's canonical units and corrections restrict to the same faces. At each
+free parameter stage the lift is a graded section minus its closed kernel
+defect primitive, so the same original generator receives the same correction
+on every shared face. Induction over those original generators gives the
+claimed common family. The locally forward finite C64 bounds place each
+calculation in a finite corner; they do not replace its whole compatible
+domain by a clipped shuffle domain. \(\square\)
+
+#### C.68.5. Solved calculations
+
+Write \(E_{a,b}\) for the matrix sending \(b\) to \(a\), with all
+other basis vectors sent to zero. Products are in target-to-source order.
+
+**Exercise C.68.5.1 (a forced higher component for an unaugmented source;
+advanced).** Let
+\[
+ \begin{gathered}
+ V=ke\oplus kf\oplus ky,\\
+ |e|=|y|=0,\\
+ |f|=-1,\quad df=y,\\
+ G=\operatorname{End}(V),\\
+ v(\lambda)=\lambda1_V.
+ \end{gathered}
+ \tag{C.68.3}
+\]
+Construct the one-object bridge of Theorem C.68.3.1 and a normalized unital
+\(A_\infty\) section of its geometric projection. Prove that no graded
+unital algebra augmentation \(G\to k\) exists. Compute a nonzero
+second component of the composite section \(w:G\to k\), retaining
+the source unary differential.
+
+**Solution.** Put \(h=E_{f,y}\), \(E=E_{e,e}\), and
+\(\beta(g)=g_{ee}\). Thus
+\(dh+hd=1-E\), \(h^2=Eh=hE=0\), and \(\beta\) is a unital
+linear chain map. For a homogeneous \(g\) set
+\[
+ \begin{gathered}
+ H_G(g)=hg\\
+ \quad+(-1)^{|g|}Egh\\
+ \quad-\beta(g)h.
+ \end{gathered}
+ \tag{C.68.4}
+\]
+The Hom derivation rule gives
+\[
+ \begin{gathered}
+ \partial H_G+H_G\partial=1-v\beta,\\
+ H_G^2=\beta H_G=H_Gv=0.
+ \end{gathered}
+ \tag{C.68.5}
+\]
+For example the first two terms in (C.68.4) contract to the inclusion
+\(g\mapsto\beta(g)E\); the final term changes that inclusion to
+\(\beta(g)1_V\), since \(\partial h=1-E\). The three displayed
+side conditions follow from \(h^2=Eh=hE=0\) and the zero \(ee\)
+entry of \(hg,Egh,h\). These are identities on every homogeneous matrix.
+They show directly that \(v\) is a mapping-complex quasi-isomorphism.
+
+The bridge has maps \((f,g,a)\) of dimensions \(1+9+9=19\), with
+\(a\) shifted as in (C.68.2). Its geometric projection kernel is contracted
+by
+\[
+ \begin{gathered}
+ k_q(f,0,a)\\
+ \quad=(\beta(a),0,-H_G(a)).
+ \end{gathered}
+ \tag{C.68.6}
+\]
+Indeed inserting (C.68.5) into (C.68.2) gives
+\(Dk_q+k_qD=1\) on that kernel. Its scalar projection kernel is
+contracted by \(k_p(0,g,a)=(0,-a,0)\), the cone-of-identity contraction.
+The two kernel dimensions are respectively \(10\) and \(18\).
+The chain section of the geometric projection is
+\[
+ j_1(g)=(\beta(g),g,-H_G(g)).
+ \tag{C.68.7}
+\]
+It preserves the unit by (C.68.5).
+
+Here is an explicit all-length recursion. For a full suspended input word
+\(c=sg_1|\cdots|sg_q\), use the bar differential whose unary term
+is \(s\partial g\) and whose binary term on adjacent letters is
+\((-1)^{|g_i|-1}s(g_ig_{i+1})\), with the preceding suspended tensor
+sign. Write \(b_1,b_2\) for those two parts, and use
+\(j[c]\) for the corresponding unsuspended cobar generator image.
+For \(q\geq2\) set
+\[
+ \begin{gathered}
+ O[c]=j[b_2c]\\
+ \quad-\sum_{c=c_L|c_R}(-1)^{|c_L|}\\
+ \qquad{}\cdot j[c_L]j[c_R],\\
+ j[c]=k_qO[c].
+ \end{gathered}
+ \tag{C.68.8}
+\]
+Both sides use shorter words in the first two lines. Theorem C.68.1.1 proves that
+this solves the full equation
+\(D j[c]=j[b_1c]+O[c]\), including its source unary terms. It also
+proves the ordinary-unit normalization at every length. Geometric projection
+of every higher component is zero.
+
+Let \(A=E_{e,y}\), \(B=E_{y,e}\), and \(C=E_{e,f}\). Then
+\[
+ \begin{gathered}
+ \partial A=-C,\quad \partial B=0,\\
+ AB=E,\\
+ \beta(A)=\beta(B)=0.
+ \end{gathered}
+ \tag{C.68.9}
+\]
+In the scalar projection of (C.68.8) at \(sA|sB\), the obstruction is
+\(-\beta(AB)+\beta(A)\beta(B)=-1\). Its second scalar component
+on \((A,B)\) is zero by degree. Consequently its full source unary
+equation is \(0=-w_2(C,B)-1\), and hence
+\[
+ w_2(E_{e,f},E_{y,e})=-1.
+ \tag{C.68.10}
+\]
+Thus the higher section cannot be replaced by its linear component.
+
+Finally, every nonzero-degree matrix must map to zero under a graded map to
+\(k\). The identities
+\(E_{e,f}E_{f,e}=E_{e,e}\),
+\(E_{y,f}E_{f,y}=E_{y,y}\), and
+\(E_{f,e}E_{e,f}=E_{f,f}\) then force all three diagonal matrices
+to map to zero under any such algebra map. Their sum is \(1_V\), so
+no unital graded algebra augmentation exists. The full normalized argument
+therefore applies to a source for which an augmented reduced bar-cobar
+counit is unavailable. \(\square\)
+
+**Exercise C.68.5.2 (distinct geometric representatives and their entire path;
+advanced).** Enlarge the geometric category to the two actual complexes
+\(X_0=V\) and \(X_1=Q=ke\), with projection \(p:V\to Q\),
+inclusion \(i:Q\to V\), and the same \(h\) as above. Use bridge
+objects \(r_0=(k,V,1_V)\), \(r_1=(k,Q,p)\). Compute their full
+bridge mapping dimensions and a normalized homotopy retraction. Check its
+third-component sign on full natural-transformation cochains for the source
+\(k[\epsilon]/\epsilon^2\), \(|\epsilon|=2\), when every functor
+sends \(\epsilon\) to zero.
+
+**Solution.** A map \(r_i\to r_j\) has a scalar component, a matrix
+\(X_i\to X_j\), and a shifted matrix \(V\to X_j\). Thus
+\[
+ \begin{gathered}
+ \dim R_{00}=19,\\
+ \dim R_{01}=7,\\
+ \dim R_{10}=13,\\
+ \dim R_{11}=5.
+ \end{gathered}
+ \tag{C.68.11}
+\]
+Their sum is \(44\). On the kernel of the scalar projection the
+contractions are
+\[
+ \begin{gathered}
+ i=0:\quad k_p(0,g,a)\\
+ \quad=(0,-a,0),\\
+ i=1:\quad k_p(0,g,a)\\
+ \quad=(0,-ai,(-1)^r ah),
+ \end{gathered}
+ \tag{C.68.12}
+\]
+where \(r\) is the input total degree. Substituting
+\(pi=1\), \(ip=E\), and \(\partial h=1-E\) into (C.68.2)
+gives \(Dk_p+k_pD=1\) and \(k_p^2=0\).
+
+For the other kernel, put \(\beta_j(a)=a_{ee}\),
+\(h_0=h,h_1=0\), and let \(E_j\) project \(X_j\) onto its
+\(e\)-line. On a homogeneous \(a:V\to X_j\) set
+\[
+ \begin{gathered}
+ H_j(a)=h_j a\\
+ \quad+(-1)^{|a|}E_jah\\
+ \quad-\beta_j(a)h_j.
+ \end{gathered}
+ \tag{C.68.13}
+\]
+Its contraction identity is
+\(\partial H_j+H_j\partial=1-u_j\beta_j\), where
+\(u_0=1_V,u_1=p\). To check this, the first two terms contract
+to the map \(a\mapsto\beta_j(a)i_jp\), with
+\(i_0=i,i_1=1_Q\). The last term changes this to
+\(\beta_j(a)u_j\), because
+\(\partial h_j=u_j-i_jp\). The side conditions follow as in
+(C.68.5). Hence \((f,0,a)\mapsto(\beta_j(a),0,-H_j(a))\)
+contracts the geometric projection kernel. The scalar and geometric
+projection kernels have total dimensions \(40\) and \(28\).
+
+The closed maps \(F:r_0\to r_1\), \(I:r_1\to r_0\), and their
+degree-minus-one homotopy are
+\[
+ \begin{gathered}
+ F=(1,p,0),\\
+ I=(1,i,h),\\
+ H_R=(0,h,0),\\
+ H_R\in R^{-1}(r_0,r_0).
+ \end{gathered}
+ \tag{C.68.14}
+\]
+Their products give
+\[
+ \begin{gathered}
+ FI=1_{r_1},\\
+ D H_R=1_{r_0}-IF,\\
+ H_R^2=0,\\
+ F H_R=H_R I=0.
+ \end{gathered}
+ \tag{C.68.15}
+\]
+In contrast, \(D(1,i,0)=(0,0,1-E)\ne0\). The third component
+of the actual inverse map is necessary. There is no strict dg object
+isomorphism between these bridge objects: its geometric projection would
+give an invertible graded map from a three-dimensional complex to a
+one-dimensional complex.
+
+For the last assertion, a cochain of total degree \(r\) at source Taylor
+length \(q\) has bridge output degree \(r+q\). Its third component
+has ordinary matrix degree \(r+q-1\). Since the source actions on
+\(\epsilon\) vanish, its Nat differential is the bridge differential.
+Composing a left cochain at length \(p\) and total degree \(r_2\)
+with a right one at length \(q\) and total degree \(r_1\) has tensor
+coefficient \((-1)^{r_1p}\). Thus the two third-component terms in the
+bridge are
+\[
+ \begin{gathered}
+ (-1)^{r_1p}a_2v(f_1),\\
+ (-1)^{r_1p+r_2+p}g_2a_1.
+ \end{gathered}
+ \tag{C.68.16}
+\]
+Computing instead in the path of full Nat complexes gives the second sign
+\((-1)^{r_2+(r_1-1)p}\), which is equal to the one displayed.
+The first signs agree directly. This checks the resolved comparison with
+its full Taylor composition. On the canonical inclusion \(j(U)\), every
+third component is zero and the comparison is the identity. \(\square\)
+
+![The actual geometric and positive objects are connected by the full dg model bridge; the displayed inverse retains its third component](assets/native-operator-models.png)
+
+Theorems C.68.1.1 and C.68.3.1 give the full normalized projection and actual dg bridge. Lemma C.68.2.1 and Theorem C.68.4.1 retain prescribed full faces of the fixed-outer-type operator diagram. Exercises C.68.5.1–C.68.5.2 compute the forced second component and the actual homotopy retraction. Editable SVG source.
+
 ## 11. Scope and free reading
 
 Sections 2–7 establish the unit self-Ext formula,the invariant-polynomial classifying-space ring,the torus tensor model over characteristic-zero fields,the Koszul endomorphism and generated-category calculations,and the distinction between compact and bounded objects. The examples and exercises retain the specified shifts,coefficient fields and support conditions.
 
 Appendix A develops stabilizer cohomology,equivariant Ext purity,minimal-model transfer,Frobenius formality and spherical generator envelopes. Appendix B treats the polynomial Kostant slice,the universal centralizer,equivariant coherent restriction and composition on free dual polynomial generators. Appendix C.1–C.29 develops the geometric generator mapping comparison,finite-jet and constant-group comparisons,the graded tensor cohomology functor,determinant and primitive cup operators,geometric Kostant modules,and the arithmetic enhanced symmetric monoidal finite-envelope equivalence. Its Betti and trait comparisons retain the full action nerves,trace normalizations and ordered convolution data.
 
-Appendix C.30–C.67 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator. Global locally forward finite root indices support one fixed-profile product normalization whose finite-corner and full-face restrictions agree on their intersections. The full joint-execution grafting domain has its original bar map; complete product shuffles lie in it exactly under the outer-final/inner-initial prerequisite condition. Entire coherent diagrams in a specified dg category admit explicit full-string transport and strictly associative staged model contraction, retaining their path comparisons. Typed kernel cotensors preserve their intermediate frontier cores, and the actual canonical-state projection has an acyclic full Nat kernel for relative coherent operator lifting. Canonical cobar sources admit an actual dg retraction to strict operator objects, and full marked postcomposition carries entire higher model-change diagrams.
+Appendix C.30–C.68 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator. Global locally forward finite root indices support one fixed-profile product normalization whose finite-corner and full-face restrictions agree on their intersections. The full joint-execution grafting domain has its original bar map; complete product shuffles lie in it exactly under the outer-final/inner-initial prerequisite condition. Entire coherent diagrams in a specified dg category admit explicit full-string transport and strictly associative staged model contraction, retaining their path comparisons. Typed kernel cotensors preserve their intermediate frontier cores, and the actual canonical-state projection has an acyclic full Nat kernel for relative coherent operator lifting. Canonical cobar sources admit an actual dg retraction to strict operator objects, and full marked postcomposition carries entire higher model-change diagrams. Actual dg model bridges retain geometric object representatives and give relative fixed-outer-type native operator diagrams without requiring source augmentations.
 
 A full strong monoidal descent to arbitrary characteristic-zero coefficients additionally requires the transferred profile-changing joint-execution and external grafting data,with every higher covariance equation on its complete compatible domain. The fixed-profile restriction result does not identify those domains with independent root products. The quantum/loop-rotation,renormalized,singular-support and Ran/factorization equivalences of Section 8 require arguments beyond the results established here.
 

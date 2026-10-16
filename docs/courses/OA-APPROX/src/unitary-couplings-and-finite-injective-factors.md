@@ -4,7 +4,7 @@
 
 A balanced family can approximately intertwine two tuples of unitaries without containing a single unitary. We will first sample finitely many intertwiners, bound their operator norms without increasing their errors, and pass to an ultrapower. Exact intertwiners there equate two corner dimensions. Projection comparison gives a unitary, and a unitary representative returns the desired approximation to the original algebra.
 
-We use the [balanced coupling construction](balancing-kraus-families-and-unitary-couplings.md), the [von Neumann multiplier ultrapower](multiplier-ultraproducts-and-normal-embeddings.md#theorem-3-2), canonical center-valued trace comparison and finite polar decomposition. In a faithfully tracial algebra every bounded sequence is a multiplier: \(\|axb\|_2\le\|a\|\|b\|\|x\|_2\). Thus its ultrapower is the quotient of all bounded sequences by those with vanishing ultralimit \(2\)-norm, and its faithful normal state is a trace. Factoriality of the ultrapower is unnecessary for the proof below.
+We use the full [balanced coupling construction](balancing-kraus-families-and-unitary-couplings.md), the [von Neumann multiplier ultrapower](multiplier-ultraproducts-and-normal-embeddings.md#theorem-3-2), and the complete [center-valued trace comparison and finite polar-decomposition proofs](../components/central-finite-trace-inputs.md). In a faithfully tracial algebra every bounded sequence is a multiplier: \(\|axb\|_2\le\|a\|\|b\|\|x\|_2\). Thus its ultrapower is the quotient of all bounded sequences by those with vanishing ultralimit \(2\)-norm, and its faithful normal state is a trace: the coordinate traces of \(xy\) and \(yx\) agree before taking the scalar ultralimit. Factoriality of the ultrapower is unnecessary for the proof below. [NT2](../components/central-sequence-foundations.md#nt2-faithful-state-topology) proves the bounded faithful-state topology and the normal-state countability facts; [TL1–3](../components/invariant-state-trace-hilbert-inputs.md) supplies the complete finite trace Hilbert-space and expectation proofs.
 
 Sections 1–4 allow every finite von Neumann algebra \(M\) with a faithful normal tracial state \(\tau\); separability is unnecessary. The final application to injectivity uses a \(\mathrm{II}_1\) factor. Separable predual is assumed only for a generating sequence and the identification with \(R\).
 
@@ -33,7 +33,7 @@ A=\sum_{i=1}^p a_i^*a_i\le1,\qquad
 B=\sum_{i=1}^p a_i a_i^*\le1.
 \tag{3}
 \]
-Their scalar traces agree. Give \(\Omega=\mathbb T^p\) its product probability measure, with coordinate phases \(s_i\), and put \(b(s)=\sum_{i=1}^p s_i a_i\). Orthogonality of the phases gives
+Their scalar traces agree. The continuous notation \(\Omega=\mathbb T^p\), with coordinate phases \(s_i\), has a finite realization for all the moments used here: take the \(s_i\) independently and uniformly from \(\{1,\mathrm i,-1,-\mathrm i\}\). Every phase exponent occurring in a second or fourth moment lies between \(-2\) and \(2\); the average of each nonzero such power is zero, just as for uniform circle phases. All expectations below can therefore be finite averages on the \(4^p\) phase choices and their finite products. Put \(b(s)=\sum_{i=1}^p s_i a_i\). Orthogonality of the phases gives
 \[
 \mathbb E(b^*b)=A,\qquad \mathbb E(bb^*)=B,
 \qquad \mathbb E\|bu_k-v_kb\|_2^2<\delta.
@@ -228,9 +228,31 @@ For separable predual, the [finite-factor exact containment and uniqueness theor
 
 **Corollary 5.2.** Every separable injective \(\mathrm{II}_\infty\) factor is isomorphic to \(R\bar\otimes B(\ell^2)\).
 
-**Proof.** The [semifinite matrix decomposition](masas-in-expected-semifinite-subfactors.md#3-splitting-the-semifinite-case) gives \(M\cong eMe\bar\otimes B(\ell^2)\) for a nonzero finite projection \(e\). Corner permanence of injectivity makes \(eMe\) injective, and it is a \(\mathrm{II}_1\) factor with separable predual. Theorem 5.1 identifies it with \(R\). The matrix decomposition uses countable projection comparison, independently of the finite injective-to-AFD result. \(\square\)
+**Proof.** We first construct \(M\cong eMe\bar\otimes B(\ell^2)\) for a nonzero finite projection \(e\). The type II∞ hypothesis supplies such a projection. Its corner is a finite factor and has no minimal projections, because a minimal projection there would also be minimal in \(M\). Thus it is of type \(\mathrm{II}_1\), and the full center-trace construction gives its faithful normal normalized trace. Separable predual gives a faithful normal state on \(M\), by NT2.
 
-This also supplies the finite-corner input for the AFD \(\mathrm{II}_\infty\) MASA regularity branch: AFD implies injective, an injective finite corner is AFD by Theorem 5.1, and the previously proved finite regularity construction applies. The nonfactor conclusion is proved in [Central disintegration and measurable matrix assembly](central-disintegration-and-measurable-matrix-assembly.md) and [Injective algebras and separable tracial envelopes](injective-algebras-and-separable-tracial-envelopes.md). The separate [second finite proof](small-corners-and-the-second-injective-proof.md) reaches the same factor conclusion through finite-rank models and repaired small corners.
+Choose a maximal orthogonal family \((e_i)\) of projections equivalent to \(e\). Zorn's lemma applies because unions of chains remain orthogonal families. The family is countable: under the faithful normal state every member has positive value, while every finite sum of those values is at most one. The finite threshold sets with values at least \(1/r\), \(r\ge1\), exhaust it. Write \(S=\sum_i e_i\) and \(r_0=1-S\). Factor projection comparison and maximality imply \(r_0\precsim e\): if \(e\precsim r_0\), another copy could be added.
+
+There must be infinitely many \(e_i\). Otherwise, connecting the finitely many copies and the residual subprojection of \(e\) identifies \(M\) with a corner of a finite matrix algebra over \(eMe\). That matrix algebra is finite: summing its diagonal entries under the faithful corner trace gives a faithful normal finite trace. This would make the identity of \(M\) finite, contrary to type II∞.
+
+If \(r_0=0\), put \(V=1\). If \(r_0\ne0\), choose \(r_i\le e_i\) equivalent to \(r_0\), and partial isometries \(t_i\) with \(t_i^*t_i=r_0\), \(t_it_i^*=r_i\), for \(i\ge1\). Put \(t_0=r_0\) and \(q=\sum_{i\ge1}r_i\). Orthogonality of the initial and final supports makes
+\[
+V=\sum_{i\ge0}t_{i+1}t_i^*+(S-q)
+\]
+a strong sum in \(M\), with
+\[
+V^*V=r_0+q+(S-q)=1,\qquad VV^*=q+(S-q)=S.
+\]
+Thus the residual projection is absorbed without changing the size of a finite corner. The projections \(f_i=V^*e_iV\) sum to one, and each is equivalent to \(e\); the partial isometry \(e_iV\) identifies \(f_i\) with \(e_i\).
+
+For completeness, the countable matrix coordinates give the entire spatial tensor product. Choose \(v_i\) with \(v_i^*v_i=f_1\), \(v_iv_i^*=f_i\), and \(v_1=f_1\). In a faithful representation of \(M\) on \(H\), the map
+\[
+W:H\longrightarrow\ell^2\otimes f_1H,\qquad W\xi=(v_i^*\xi)_i
+\]
+is a unitary: the squared coordinate norms sum to \(\|\xi\|^2\), and every finitely supported tuple has preimage \(\sum_i v_i\eta_i\). It sends \(v_iv_j^*\) to the scalar matrix units. For \(a\in f_1Mf_1\), the bounded strong sum \(\sum_i v_iav_i^*\) becomes \(1\otimes a\). Conversely, every finite block compression of \(x\in M\) has entries \(v_i^*xv_j\in f_1Mf_1\). Those compressions converge strongly to \(x\), because their support projections increase to one. This proves equality with \(B(\ell^2)\bar\otimes f_1Mf_1\), rather than only an embedding. Flipping the tensor legs and identifying the equivalent corners gives the asserted decomposition.
+
+Corner permanence of injectivity now makes \(eMe\) injective, and it is a \(\mathrm{II}_1\) factor with separable predual. Theorem 5.1 identifies it with \(R\). The matrix decomposition uses countable projection comparison, independently of the finite injective-to-AFD result. \(\square\)
+
+This also supplies the finite-corner input for the AFD \(\mathrm{II}_\infty\) MASA regularity branch: AFD implies injective, an injective finite corner is AFD by Theorem 5.1, and the finite regularity construction applies. The nonfactor construction is treated in [Central disintegration and measurable matrix assembly](central-disintegration-and-measurable-matrix-assembly.md) and [Injective algebras and separable tracial envelopes](injective-algebras-and-separable-tracial-envelopes.md). The separate [second finite proof](small-corners-and-the-second-injective-proof.md) develops the finite-rank model approach, using Repairing small matrix corners.
 
 ## 6. Problems with complete solutions
 
@@ -278,4 +300,6 @@ This also supplies the finite-corner input for the AFD \(\mathrm{II}_\infty\) MA
 
 Uffe Haagerup, [*A new proof of the equivalence of injectivity and hyperfiniteness for factors on a separable Hilbert space*](https://doi.org/10.1016/0022-1236(85)90002-3), *Journal of Functional Analysis* 62 (1985), 160–201. Section 4 and Theorem 5.3 develop sampling, clipping and the ultrapower comparison method. Sections 1–4 here give complete arguments for arbitrary faithfully tracial finite algebras. They include the trace-Hilbert Lipschitz inequality, the finite unitary lift and the square-root bound in the central trace comparison; factoriality of the ultrapower is unnecessary. The AFD application retains the factor hypothesis of balanced reconstruction, and its generating sequence retains separable predual.
 
-The declared programme lemma *Uniqueness of the injective II₁ factor*, Lemma 2.3, has the same polar unitary lifting argument at factor generality. Its later flip/McDuff route is a different proof. The general nonfactor conclusion is completed in [Central disintegration and measurable matrix assembly](central-disintegration-and-measurable-matrix-assembly.md). [Small corners and the second injective proof](small-corners-and-the-second-injective-proof.md) develops the other finite approach, with Repairing small matrix corners supplying its corner correction.
+Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://www.math.ucla.edu/~popa/Books/IIun.pdf), Proposition 4.2.5, Exercise 8.1 and Corollary 11.2.4. Proposition 4.2.5 gives finite matrix coordinates. Exercise 8.1 states the countable finite-corner decomposition used by Corollary 11.2.4; it does not supply its proof. The proof of Corollary 5.2 above constructs the orthogonal copies, absorbs the residual projection and proves the full spatial matrix decomposition before using injectivity.
+
+The programme lemma *Uniqueness of the injective II₁ factor*, Lemma 2.3, has the same polar unitary lifting argument at factor generality. Its flip/McDuff route is a different proof. The nonfactor case is treated in [Central disintegration and measurable matrix assembly](central-disintegration-and-measurable-matrix-assembly.md).
