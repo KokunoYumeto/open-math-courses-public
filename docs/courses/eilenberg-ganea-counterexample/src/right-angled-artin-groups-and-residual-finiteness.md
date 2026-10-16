@@ -38,7 +38,7 @@ Let \(P'/C\) be the set of left cosets \(gC\), \(g\in P'\), and \(F(P'/C)\) the 
 
 **Lemma 2.1** (splitting). There is an isomorphism \(\varphi\colon A_\Theta\to F(P'/C)\rtimes P'\) with \(\varphi(a_r)=(1,a_r)\) for \(r\in V'\) and \(\varphi(t)=(b_C,1)\). Its inverse \(\psi\) sends \((b_{gC},1)\) to \(gtg^{-1}\) and \((1,g)\) to \(g\).
 
-*Proof.* *\(\varphi\) is a homomorphism.* The relations among the \(a_r\), \(r\in V'\), hold in the factor \(P'\). For \(r\in N(q)\), \(\varphi(t)\varphi(a_r)=(b_C,a_r)\) and \(\varphi(a_r)\varphi(t)=(a_r\cdot b_C,a_r)=(b_{a_rC},a_r)=(b_C,a_r)\), since \(a_r\in C\).
+*Proof.* *\(\varphi\) is a homomorphism.* The relations among the \(a_r\), \(r\in V'\), hold in the factor \(P'\). For \(r\in N(q)\), \(\varphi(t)\varphi(a_r)=(b_C,a_r)\) and \(\varphi(a_r)\varphi(t)=(a_r\cdot b_C,a_r)=(b_{a_rC},a_r)\), which is \((b_C,a_r)\) since \(a_r\in C\).
 
 *\(\psi\) is a homomorphism.* The element \(gtg^{-1}\) depends only on the coset \(gC\): for \(c\in C\), \(gc\,t\,c^{-1}g^{-1}=gtg^{-1}\), since \(t\) commutes with the generators of \(C\). Let \(\psi_F\colon F(P'/C)\to A_\Theta\) be the homomorphism with \(\psi_F(b_{gC})=gtg^{-1}\); then \(\psi_F(g\cdot w)=g\,\psi_F(w)\,g^{-1}\) for \(g\in P'\), since both sides are homomorphisms in \(w\) that agree on the symbols. Put \(\psi(w,g)=\psi_F(w)g\). Then
 \[
@@ -49,7 +49,15 @@ Let \(P'/C\) be the set of left cosets \(gC\), \(g\in P'\), and \(F(P'/C)\) the 
 \end{aligned}
 \]
 
-*They are inverse.* \(\psi\varphi\) fixes the generators \(a_r\) and \(t\). The element \(\varphi\psi(b_{gC},1)=\varphi(g)\varphi(t)\varphi(g)^{-1}=(1,g)(b_C,1)(1,g^{-1})=(b_{gC},1)\), and \(\varphi\psi(1,g)=\varphi(g)=(1,g)\), since \(\varphi\) restricted to \(P'\) is \(g\mapsto(1,g)\). These elements generate the semidirect product. \(\square\)
+*They are inverse.* \(\psi\varphi\) fixes the generators \(a_r\) and \(t\). Moreover
+\[
+\begin{aligned}
+&\varphi\psi(b_{gC},1)\\
+&\quad=\varphi(g)\varphi(t)\varphi(g)^{-1}\\
+&\quad=(1,g)(b_C,1)(1,g^{-1})=(b_{gC},1),
+\end{aligned}
+\]
+and \(\varphi\psi(1,g)=\varphi(g)=(1,g)\), since \(\varphi\) restricted to \(P'\) is \(g\mapsto(1,g)\). These elements generate the semidirect product. \(\square\)
 
 ## 3. Free groups and separation of cosets
 
@@ -93,7 +101,13 @@ In particular the kernel \(G\) of the height homomorphism \(\lambda\colon A_L\to
 
 **5.2.** The relations have exponent sum \(0\), so \(\lambda\) is well defined, and \(\lambda(a_q)=1\) shows surjectivity. For a complete graph \(A_\Theta=\mathbb Z^n\) and \(\lambda\) is the sum of coordinates; its kernel is free abelian of rank \(n-1\), with basis \(a_1a_q^{-1}\), \(q=2,\ldots,n\).
 
-**5.3.** Here \(n=4\). Position \(1\) (\(a\), sign \(1\)) gives \(\pi_a(3)=4\); position \(2\) (\(b\), sign \(1\)) gives \(\pi_b(2)=3\); position \(3\) (\(a\), sign \(-1\)) gives \(\pi_a(2)=1\); position \(4\) (\(b\), sign \(-1\)) gives \(\pi_b(1)=0\). Extend, for example, by \(\pi_a(0)=0,\ \pi_a(1)=2,\ \pi_a(4)=3\) and \(\pi_b(0)=1,\ \pi_b(3)=2,\ \pi_b(4)=4\). Then \(w=\pi_a\circ\pi_b\circ\pi_a^{-1}\circ\pi_b^{-1}\) sends \(0\mapsto\pi_b^{-1}(0)=1\mapsto\pi_a^{-1}(1)=2\mapsto\pi_b(2)=3\mapsto\pi_a(3)=4\). So \(w(0)=4\), and \(w\) is not the identity.
+**5.3.** Here \(n=4\). Position \(1\) (\(a\), sign \(1\)) gives \(\pi_a(3)=4\); position \(2\) (\(b\), sign \(1\)) gives \(\pi_b(2)=3\); position \(3\) (\(a\), sign \(-1\)) gives \(\pi_a(2)=1\); position \(4\) (\(b\), sign \(-1\)) gives \(\pi_b(1)=0\). Extend, for example, by \(\pi_a(0)=0,\ \pi_a(1)=2,\ \pi_a(4)=3\) and \(\pi_b(0)=1,\ \pi_b(3)=2,\ \pi_b(4)=4\). Then \(w=\pi_a\circ\pi_b\circ\pi_a^{-1}\circ\pi_b^{-1}\) sends
+\[
+\begin{aligned}
+0&\mapsto\pi_b^{-1}(0)=1\mapsto\pi_a^{-1}(1)=2\\
+&\mapsto\pi_b(2)=3\mapsto\pi_a(3)=4.
+\end{aligned}
+\] So \(w(0)=4\), and \(w\) is not the identity.
 
 **5.4.** By Lemma 3.2, for each \(g\notin C\) there is a finite quotient \(p\) with \(p(g)\notin p(C)\); then \(p^{-1}(p(C))\) is a subgroup of finite index containing \(C\) and not \(g\). The intersection of these subgroups over all \(g\notin C\) is \(C\).
 

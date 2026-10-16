@@ -1,0 +1,232 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The lower bound for complete graphs</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Crossing numbers of complete and complete bipartite graphs)</a><a href="the-zarankiewicz-formula.html">Previous lesson</a><a href="two-page-drawings-and-the-harary-hill-formula.html">Next lesson</a><a href="src/the-lower-bound-for-complete-graphs.md">Editable source</a></nav><main><article><h1 id="the-lower-bound-for-complete-graphs">The lower bound for complete graphs</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves <span class="math" data-tex="\(\operatorname{cr}(K_n)\ge Z(n)\)">\(\operatorname{cr}(K_n)\ge Z(n)\)</span> [OpenAI-C, Corollary 4.4], the lower half of the Harary–Hill formula. For odd <span class="math" data-tex="\(n=2s+1\)">\(n=2s+1\)</span>, a real number <span class="math" data-tex="\(t_i\)">\(t_i\)</span> is attached to every vertex, and a polynomial in four variables, symmetric in the two endpoints of each of two edges, is evaluated at the pairs of independent edges whose signed crossing count is not zero. The cycle pairing of <a href="signed-crossings-and-cycles.html">Signed crossings and cycles</a>, applied to cycles whose coefficients are weighted powers of the <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, gives two facts: the evaluation determines the polynomial, and the evaluations of any two polynomials are orthogonal for a nondegenerate diagonal form. An isotropic subspace has at most half the dimension of the space, so there are at least twice as many crossing pairs as the dimension <span class="math" data-tex="\(\binom s2^2\)">\(\binom s2^2\)</span> of the space of polynomials. Even <span class="math" data-tex="\(n\)">\(n\)</span> follows by deleting vertices.</p>
+<ul>
+<li>Cycles with polynomial coefficients (Section 1).</li>
+<li>The order pairing (Section 2).</li>
+<li>The evaluation map (Section 3).</li>
+<li>The odd lower bound (Section 4).</li>
+<li>All <span class="math" data-tex="\(n\)">\(n\)</span> (Section 5).</li>
+</ul>
+<h2 id="1-cycles-with-polynomial-coefficients">1. Cycles with polynomial coefficients</h2>
+<p>Let <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span> and let <span class="math" data-tex="\(D\)">\(D\)</span> be a normal drawing of <span class="math" data-tex="\(K_n\)">\(K_n\)</span> (Definition 1.1 of <a href="polygonal-drawings.html">Polygonal drawings</a>) with vertices <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span>. Orient the edges in any way, choose cuts, and let <span class="math" data-tex="\(J\)">\(J\)</span> be the form of Definition 1.2 of <a href="signed-crossings-and-cycles.html">Signed crossings and cycles</a>. For distinct <span class="math" data-tex="\(i,p\)">\(i,p\)</span> let <span class="math" data-tex="\([ip]\)">\([ip]\)</span> be the edge <span class="math" data-tex="\(\{i,p\}\)">\(\{i,p\}\)</span> as an element of the edge space with the sign of the direction from <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(p\)">\(p\)</span>: it is the basis vector if the edge is oriented from <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(p\)">\(p\)</span>, and its negative otherwise; put <span class="math" data-tex="\([ii]=0\)">\([ii]=0\)</span>. Then <span class="math" data-tex="\([pi]=-[ip]\)">\([pi]=-[ip]\)</span> and <span class="math" data-tex="\(\partial[ip]=p-i\)">\(\partial[ip]=p-i\)</span>. As <span class="math" data-tex="\(J\)">\(J\)</span> does not depend on the orientations (Section 1 of <a href="signed-crossings-and-cycles.html">Signed crossings and cycles</a>), we may compute <span class="math" data-tex="\(J([ip],[kq])\)">\(J([ip],[kq])\)</span> with the edges oriented from <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(p\)">\(p\)</span> and from <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span>:</p>
+<ul>
+<li>for <span class="math" data-tex="\(\{i,p\}\cap\{k,q\}=\varnothing\)">\(\{i,p\}\cap\{k,q\}=\varnothing\)</span>, <span class="math" data-tex="\(J([ip],[kq])=I\)">\(J([ip],[kq])=I\)</span>, the signed number of crossings of the two edges in these directions;</li>
+<li>for <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>, both different from <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(J([ip],[iq])=\frac12T_i(ip,iq)\)">\(J([ip],[iq])=\frac12T_i(ip,iq)\)</span>, because adjacent edges do not cross and both point out of <span class="math" data-tex="\(i\)">\(i\)</span>.</li>
+</ul>
+<p>Choose distinct real numbers <span class="math" data-tex="\(t_1,\ldots,t_n\)">\(t_1,\ldots,t_n\)</span>, put <span class="math" data-tex="\(F(t)=\prod_i(t-t_i)\)">\(F(t)=\prod_i(t-t_i)\)</span> and <span class="math" data-tex="\(w_i=1/F&#x27;(t_i)\)">\(w_i=1/F&#x27;(t_i)\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (polynomial cycle tests; [OpenAI-C, Lemma 4.1]). For every polynomial <span class="math" data-tex="\(H(x,u,y,v)\)">\(H(x,u,y,v)\)</span> of degree at most <span class="math" data-tex="\(n-2\)">\(n-2\)</span> in each of its four variables,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i,p,k,q=1}^nJ([ip],[kq])\,w_iw_pw_kw_q\\
+\cdot H(t_i,t_p,t_k,t_q)=0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{i,p,k,q=1}^nJ([ip],[kq])\,w_iw_pw_kw_q\\
+\cdot H(t_i,t_p,t_k,t_q)=0 .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Both sides are linear in <span class="math" data-tex="\(H\)">\(H\)</span>, so let <span class="math" data-tex="\(H=x^au^by^cv^e\)">\(H=x^au^by^cv^e\)</span> with <span class="math" data-tex="\(a,b,c,e\le n-2\)">\(a,b,c,e\le n-2\)</span>. For <span class="math" data-tex="\(a,b\le n-2\)">\(a,b\le n-2\)</span> put
+<span class="math math-display" data-tex="\[
+z_{a,b}=\sum_{i,p=1}^nw_iw_p\,t_i^at_p^b\,[ip] .
+\]">\[
+z_{a,b}=\sum_{i,p=1}^nw_iw_p\,t_i^at_p^b\,[ip] .
+\]</span>
+Its boundary is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial z_{a,b}&amp;=\sum_{i,p}w_iw_pt_i^at_p^b\,(p-i)\\
+&amp;=\Bigl(\sum_iw_it_i^a\Bigr)\sum_pw_pt_p^b\,p\\
+&amp;\quad-\Bigl(\sum_pw_pt_p^b\Bigr)\sum_iw_it_i^a\,i=0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial z_{a,b}&amp;=\sum_{i,p}w_iw_pt_i^at_p^b\,(p-i)\\
+&amp;=\Bigl(\sum_iw_it_i^a\Bigr)\sum_pw_pt_p^b\,p\\
+&amp;\quad-\Bigl(\sum_pw_pt_p^b\Bigr)\sum_iw_it_i^a\,i=0,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\sum_iw_it_i^a=0\)">\(\sum_iw_it_i^a=0\)</span> for <span class="math" data-tex="\(a\le n-2\)">\(a\le n-2\)</span> by Corollary 1.2 of <a href="interpolation.html">Interpolation</a>. So <span class="math" data-tex="\(z_{a,b}\)">\(z_{a,b}\)</span> and <span class="math" data-tex="\(z_{c,e}\)">\(z_{c,e}\)</span> are cycles, and Theorem 1.3 of <a href="signed-crossings-and-cycles.html">Signed crossings and cycles</a> gives <span class="math" data-tex="\(J(z_{a,b},z_{c,e})=0\)">\(J(z_{a,b},z_{c,e})=0\)</span>; expanded by bilinearity, this is the stated identity for <span class="math" data-tex="\(H=x^au^by^cv^e\)">\(H=x^au^by^cv^e\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-order-pairing">2. The order pairing</h2>
+<p>For integers <span class="math" data-tex="\(a,b\)">\(a,b\)</span> let <span class="math" data-tex="\(\mathcal P_{a,b}\)">\(\mathcal P_{a,b}\)</span> be the polynomials in two variables of degree at most <span class="math" data-tex="\(a\)">\(a\)</span> in the first and <span class="math" data-tex="\(b\)">\(b\)</span> in the second (Section 2 of <a href="interpolation.html">Interpolation</a>).</p>
+<p><strong>Lemma 2.1</strong> (order pairing; [OpenAI-C, Lemma 3.3]). Let <span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span>, let <span class="math" data-tex="\(u_1,\ldots,u_{2s}\)">\(u_1,\ldots,u_{2s}\)</span> be distinct real numbers, <span class="math" data-tex="\(G(t)=\prod_p(t-u_p)\)">\(G(t)=\prod_p(t-u_p)\)</span>, and <span class="math" data-tex="\(\prec\)">\(\prec\)</span> a linear order of <span class="math" data-tex="\(\{1,\ldots,2s\}\)">\(\{1,\ldots,2s\}\)</span>. Let <span class="math" data-tex="\(S(p,q)=\frac12\)">\(S(p,q)=\frac12\)</span> if <span class="math" data-tex="\(p\prec q\)">\(p\prec q\)</span>, <span class="math" data-tex="\(S(p,q)=-\frac12\)">\(S(p,q)=-\frac12\)</span> if <span class="math" data-tex="\(q\prec p\)">\(q\prec p\)</span>, <span class="math" data-tex="\(S(p,p)=0\)">\(S(p,p)=0\)</span>, and for polynomials <span class="math" data-tex="\(A,B\)">\(A,B\)</span> in two variables put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\kappa_{pq}=\frac{u_p-u_q}{G&#x27;(u_p)\,G&#x27;(u_q)},\\
+M(A,B)=\sum_{p,q=1}^{2s}S(p,q)\,\kappa_{pq}\\
+\cdot A(u_p,u_q)\,B(u_p,u_q).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\kappa_{pq}=\frac{u_p-u_q}{G&#x27;(u_p)\,G&#x27;(u_q)},\\
+M(A,B)=\sum_{p,q=1}^{2s}S(p,q)\,\kappa_{pq}\\
+\cdot A(u_p,u_q)\,B(u_p,u_q).
+\end{gathered}
+\]</span></p>
+<ol>
+<li>The bilinear form <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(\mathcal P_{s-1,s-2}\times\mathcal P_{s-2,s-1}\)">\(\mathcal P_{s-1,s-2}\times\mathcal P_{s-2,s-1}\)</span> is nondegenerate: only <span class="math" data-tex="\(A=0\)">\(A=0\)</span> pairs to zero with all <span class="math" data-tex="\(B\)">\(B\)</span>, and only <span class="math" data-tex="\(B=0\)">\(B=0\)</span> with all <span class="math" data-tex="\(A\)">\(A\)</span>.</li>
+<li>If <span class="math" data-tex="\(A\in\mathcal P_{s-2,s-2}\)">\(A\in\mathcal P_{s-2,s-2}\)</span> and <span class="math" data-tex="\(M(A,B)=0\)">\(M(A,B)=0\)</span> for every <span class="math" data-tex="\(B\in\mathcal P_{s-1,s-1}\)">\(B\in\mathcal P_{s-1,s-1}\)</span>, then <span class="math" data-tex="\(A=0\)">\(A=0\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) Let <span class="math" data-tex="\(A\in\mathcal P_{s-1,s-2}\)">\(A\in\mathcal P_{s-1,s-2}\)</span> and <span class="math" data-tex="\(B\in\mathcal P_{s-2,s-1}\)">\(B\in\mathcal P_{s-2,s-1}\)</span>. The polynomial <span class="math" data-tex="\((u-v)A(u,v)B(u,v)\)">\((u-v)A(u,v)B(u,v)\)</span> has degree at most <span class="math" data-tex="\(2s-2\)">\(2s-2\)</span> in each variable. Hence, by Corollary 1.2 of <a href="interpolation.html">Interpolation</a> with <span class="math" data-tex="\(2s\)">\(2s\)</span> nodes, replacing <span class="math" data-tex="\(S(p,q)\)">\(S(p,q)\)</span> by <span class="math" data-tex="\(S(p,q)+r_p+c_q\)">\(S(p,q)+r_p+c_q\)</span> does not change <span class="math" data-tex="\(M(A,B)\)">\(M(A,B)\)</span>: for fixed <span class="math" data-tex="\(p\)">\(p\)</span> the sum over <span class="math" data-tex="\(q\)">\(q\)</span> of <span class="math" data-tex="\((u_p-u_q)A(u_p,u_q)B(u_p,u_q)/G&#x27;(u_q)\)">\((u_p-u_q)A(u_p,u_q)B(u_p,u_q)/G&#x27;(u_q)\)</span> vanishes, and likewise for fixed <span class="math" data-tex="\(q\)">\(q\)</span>. The diagonal values of <span class="math" data-tex="\(S\)">\(S\)</span> do not matter, because of the factor <span class="math" data-tex="\(u_p-u_q\)">\(u_p-u_q\)</span>.</p>
+<p>Renumber the indices so that <span class="math" data-tex="\(\prec\)">\(\prec\)</span> becomes the natural order; the nodes remain arbitrary distinct numbers and <span class="math" data-tex="\(G\)">\(G\)</span> does not change. Off the diagonal <span class="math" data-tex="\(S(p,q)=\frac12-\mathbf 1_{q&lt;p}\)">\(S(p,q)=\frac12-\mathbf 1_{q&lt;p}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K(p,q)=S(p,q)-\tfrac12+\mathbf1_{p&gt;s}\\
+=\begin{cases}-1,&amp;1\le q&lt;p\le s,\\ \ 1,&amp;s&lt;p&lt;q\le2s,\\ \ 0,&amp;\text{otherwise, }p\ne q,\end{cases}
+\end{gathered}
+\]">\[
+\begin{gathered}
+K(p,q)=S(p,q)-\tfrac12+\mathbf1_{p&gt;s}\\
+=\begin{cases}-1,&amp;1\le q&lt;p\le s,\\ \ 1,&amp;s&lt;p&lt;q\le2s,\\ \ 0,&amp;\text{otherwise, }p\ne q,\end{cases}
+\end{gathered}
+\]</span>
+differs from <span class="math" data-tex="\(S\)">\(S\)</span> by a row term. So
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M(A,B)=\sum_{(p,q)\in L_s}K(p,q)\,\kappa_{pq}\\
+\cdot A(u_p,u_q)\,B(u_p,u_q),
+\end{gathered}
+\]">\[
+\begin{gathered}
+M(A,B)=\sum_{(p,q)\in L_s}K(p,q)\,\kappa_{pq}\\
+\cdot A(u_p,u_q)\,B(u_p,u_q),
+\end{gathered}
+\]</span>
+the sum over the even pattern <span class="math" data-tex="\(L_s\)">\(L_s\)</span> of Section 4 of <a href="interpolation.html">Interpolation</a>. By Lemma 4.1 there, evaluation on <span class="math" data-tex="\(L_s\)">\(L_s\)</span> identifies both <span class="math" data-tex="\(\mathcal P_{s-1,s-2}\)">\(\mathcal P_{s-1,s-2}\)</span> and <span class="math" data-tex="\(\mathcal P_{s-2,s-1}\)">\(\mathcal P_{s-2,s-1}\)</span> with <span class="math" data-tex="\(\mathbb R^{L_s}\)">\(\mathbb R^{L_s}\)</span>. In these coordinates <span class="math" data-tex="\(M\)">\(M\)</span> is the diagonal form with the nonzero coefficients <span class="math" data-tex="\(K(p,q)\,\kappa_{pq}\)">\(K(p,q)\,\kappa_{pq}\)</span>, which is nondegenerate.</p>
+<p>(2) <span class="math" data-tex="\(\mathcal P_{s-2,s-2}\subseteq\mathcal P_{s-1,s-2}\)">\(\mathcal P_{s-2,s-2}\subseteq\mathcal P_{s-1,s-2}\)</span> and <span class="math" data-tex="\(\mathcal P_{s-2,s-1}\subseteq\mathcal P_{s-1,s-1}\)">\(\mathcal P_{s-2,s-1}\subseteq\mathcal P_{s-1,s-1}\)</span>; apply (1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lemma is a counterpart of Lemma 3.1 of <a href="the-zarankiewicz-formula.html">The Zarankiewicz formula</a> for an even number of nodes: the weighted pairing detects the linear order of the nodes, whatever it is.</p>
+<h2 id="3-the-evaluation-map">3. The evaluation map</h2>
+<p>From here on <span class="math" data-tex="\(n=2s+1\)">\(n=2s+1\)</span> with <span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span>. Let <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> be the set of ordered pairs <span class="math" data-tex="\((\{i,p\},\{k,q\})\)">\((\{i,p\},\{k,q\})\)</span> of disjoint edges with <span class="math" data-tex="\(J([ip],[kq])\ne0\)">\(J([ip],[kq])\ne0\)</span>; this condition does not depend on the orientations. Each such pair crosses at least once, different unordered pairs cross at different points, and every unordered pair gives two ordered ones, so
+<span class="math math-display" data-tex="\[
+|\mathcal T|\le2\,c(D).\tag{3.1}
+\]">\[
+|\mathcal T|\le2\,c(D).\tag{3.1}
+\]</span></p>
+<p>Let <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> be the space of polynomials <span class="math" data-tex="\(P(x,u,y,v)\)">\(P(x,u,y,v)\)</span> of degree at most <span class="math" data-tex="\(s-2\)">\(s-2\)</span> in each variable that are symmetric under exchanging <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> and under exchanging <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> (not necessarily under exchanging the pairs). The symmetric polynomials in two variables of degree at most <span class="math" data-tex="\(s-2\)">\(s-2\)</span> in each have the basis <span class="math" data-tex="\(x^au^b+x^bu^a\)">\(x^au^b+x^bu^a\)</span> (<span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>) and <span class="math" data-tex="\(x^au^a\)">\(x^au^a\)</span>, with <span class="math" data-tex="\(0\le a\le b\le s-2\)">\(0\le a\le b\le s-2\)</span>, so they form a space of dimension <span class="math" data-tex="\(\binom s2\)">\(\binom s2\)</span>, and
+<span class="math math-display" data-tex="\[
+\dim\mathcal S=\binom s2^2 .\tag{3.2}
+\]">\[
+\dim\mathcal S=\binom s2^2 .\tag{3.2}
+\]</span>
+The <em>evaluation map</em> <span class="math" data-tex="\(E:\mathcal S\to\mathbb R^{\mathcal T}\)">\(E:\mathcal S\to\mathbb R^{\mathcal T}\)</span> is
+<span class="math math-display" data-tex="\[
+E(P)_{(\{i,p\},\{k,q\})}=P(t_i,t_p,t_k,t_q),
+\]">\[
+E(P)_{(\{i,p\},\{k,q\})}=P(t_i,t_p,t_k,t_q),
+\]</span>
+well defined by the two symmetries.</p>
+<p><strong>Lemma 3.1</strong> (injectivity; [OpenAI-C, Lemma 4.2]). The map <span class="math" data-tex="\(E\)">\(E\)</span> is injective.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(P\in\mathcal S\)">\(P\in\mathcal S\)</span> with <span class="math" data-tex="\(E(P)=0\)">\(E(P)=0\)</span>.</p>
+<p><em>Step 1: vanishing at a common endpoint.</em> Let <span class="math" data-tex="\(U,V\)">\(U,V\)</span> be polynomials in one variable of degree at most <span class="math" data-tex="\(s\)">\(s\)</span>, and <span class="math" data-tex="\(B\in\mathcal P_{s-1,s-1}\)">\(B\in\mathcal P_{s-1,s-1}\)</span>. Apply Lemma 1.1 to
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H(x,u,y,v)=P(x,u,y,v)\\
+\cdot(u-v)(u-y)(v-x)\\
+\cdot U(x)\,V(y)\,B(u,v),
+\end{gathered}
+\]">\[
+\begin{gathered}
+H(x,u,y,v)=P(x,u,y,v)\\
+\cdot(u-v)(u-y)(v-x)\\
+\cdot U(x)\,V(y)\,B(u,v),
+\end{gathered}
+\]</span>
+whose degrees in <span class="math" data-tex="\(x,u,y,v\)">\(x,u,y,v\)</span> are at most <span class="math" data-tex="\((s-2)+1+s\)">\((s-2)+1+s\)</span>, <span class="math" data-tex="\((s-2)+2+(s-1)\)">\((s-2)+2+(s-1)\)</span>, <span class="math" data-tex="\((s-2)+1+s\)">\((s-2)+1+s\)</span> and <span class="math" data-tex="\((s-2)+2+(s-1)\)">\((s-2)+2+(s-1)\)</span>, all equal to <span class="math" data-tex="\(2s-1=n-2\)">\(2s-1=n-2\)</span>. Consider the terms <span class="math" data-tex="\((i,p,k,q)\)">\((i,p,k,q)\)</span>. If the two edges are disjoint, either <span class="math" data-tex="\(J([ip],[kq])=0\)">\(J([ip],[kq])=0\)</span> or the pair lies in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> and <span class="math" data-tex="\(P(t_i,t_p,t_k,t_q)=0\)">\(P(t_i,t_p,t_k,t_q)=0\)</span>. If <span class="math" data-tex="\(i=p\)">\(i=p\)</span> or <span class="math" data-tex="\(k=q\)">\(k=q\)</span>, the edge vector is <span class="math" data-tex="\(0\)">\(0\)</span>. The factor <span class="math" data-tex="\((u-v)(u-y)(v-x)\)">\((u-v)(u-y)(v-x)\)</span> vanishes when <span class="math" data-tex="\(p=q\)">\(p=q\)</span>, <span class="math" data-tex="\(p=k\)">\(p=k\)</span> or <span class="math" data-tex="\(q=i\)">\(q=i\)</span>. The only remaining terms have <span class="math" data-tex="\(i=k\)">\(i=k\)</span> and <span class="math" data-tex="\(p,q\)">\(p,q\)</span> distinct and different from <span class="math" data-tex="\(i\)">\(i\)</span>, where <span class="math" data-tex="\(J([ip],[iq])=\frac12T_i(ip,iq)=:S_i(p,q)\)">\(J([ip],[iq])=\frac12T_i(ip,iq)=:S_i(p,q)\)</span>. Writing <span class="math" data-tex="\(F_i(t)=\prod_{p\ne i}(t-t_p)\)">\(F_i(t)=\prod_{p\ne i}(t-t_p)\)</span>, we have <span class="math" data-tex="\((t_p-t_i)w_p=1/F_i&#x27;(t_p)\)">\((t_p-t_i)w_p=1/F_i&#x27;(t_p)\)</span> for <span class="math" data-tex="\(p\ne i\)">\(p\ne i\)</span>, and the identity of Lemma 1.1 becomes
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^nw_i^2\,U(t_i)V(t_i)\,\Psi_i(B)=0,
+\]">\[
+\sum_{i=1}^nw_i^2\,U(t_i)V(t_i)\,\Psi_i(B)=0,
+\]</span>
+where, with <span class="math" data-tex="\(\kappa^{(i)}_{pq}=(t_p-t_q)/\bigl(F_i&#x27;(t_p)F_i&#x27;(t_q)\bigr)\)">\(\kappa^{(i)}_{pq}=(t_p-t_q)/\bigl(F_i&#x27;(t_p)F_i&#x27;(t_q)\bigr)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Psi_i(B)=\sum_{p,q\ne i}S_i(p,q)\,\kappa^{(i)}_{pq}\\
+\cdot P(t_i,t_p,t_i,t_q)\,B(t_p,t_q).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Psi_i(B)=\sum_{p,q\ne i}S_i(p,q)\,\kappa^{(i)}_{pq}\\
+\cdot P(t_i,t_p,t_i,t_q)\,B(t_p,t_q).
+\end{gathered}
+\]</span>
+Every polynomial of degree at most <span class="math" data-tex="\(2s=n-1\)">\(2s=n-1\)</span> is a sum of products <span class="math" data-tex="\(U(t)V(t)\)">\(U(t)V(t)\)</span> with <span class="math" data-tex="\(\deg U,\deg V\le s\)">\(\deg U,\deg V\le s\)</span>, one monomial at a time. Taking for this polynomial the Lagrange polynomial that is <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(t_i\)">\(t_i\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> at the other nodes (Lemma 1.1 of <a href="interpolation.html">Interpolation</a>), linearity gives <span class="math" data-tex="\(w_i^2\Psi_i(B)=0\)">\(w_i^2\Psi_i(B)=0\)</span>, so <span class="math" data-tex="\(\Psi_i(B)=0\)">\(\Psi_i(B)=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span> and every <span class="math" data-tex="\(B\in\mathcal P_{s-1,s-1}\)">\(B\in\mathcal P_{s-1,s-1}\)</span>.</p>
+<p>For fixed <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(\Psi_i(B)\)">\(\Psi_i(B)\)</span> is the order pairing of Lemma 2.1 for the <span class="math" data-tex="\(2s\)">\(2s\)</span> nodes <span class="math" data-tex="\(t_p\)">\(t_p\)</span>, <span class="math" data-tex="\(p\ne i\)">\(p\ne i\)</span>, with <span class="math" data-tex="\(G=F_i\)">\(G=F_i\)</span>, the order of the edges at <span class="math" data-tex="\(i\)">\(i\)</span> given by the cut, and <span class="math" data-tex="\(A_i(u,v)=P(t_i,u,t_i,v)\in\mathcal P_{s-2,s-2}\)">\(A_i(u,v)=P(t_i,u,t_i,v)\in\mathcal P_{s-2,s-2}\)</span>. By Lemma 2.1(2), <span class="math" data-tex="\(P(t_i,u,t_i,v)=0\)">\(P(t_i,u,t_i,v)=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><em>Step 2: division by the differences.</em> As a polynomial in <span class="math" data-tex="\(x\)">\(x\)</span>, with coefficients polynomials in <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, <span class="math" data-tex="\(P(x,u,x,v)\)">\(P(x,u,x,v)\)</span> has degree at most <span class="math" data-tex="\(2s-4\)">\(2s-4\)</span> and vanishes at the <span class="math" data-tex="\(n=2s+1\)">\(n=2s+1\)</span> numbers <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, so it is zero. Divide <span class="math" data-tex="\(P\)">\(P\)</span>, as a polynomial in <span class="math" data-tex="\(y\)">\(y\)</span> with coefficients in the polynomials in <span class="math" data-tex="\(x,u,v\)">\(x,u,v\)</span>, by the monic <span class="math" data-tex="\(y-x\)">\(y-x\)</span>: the remainder is <span class="math" data-tex="\(P(x,u,x,v)=0\)">\(P(x,u,x,v)=0\)</span>, so <span class="math" data-tex="\(P=(y-x)P_1\)">\(P=(y-x)P_1\)</span>. By the symmetries, <span class="math" data-tex="\(P\)">\(P\)</span> also vanishes when <span class="math" data-tex="\(v=x\)">\(v=x\)</span>, when <span class="math" data-tex="\(y=u\)">\(y=u\)</span> and when <span class="math" data-tex="\(v=u\)">\(v=u\)</span>: for instance <span class="math" data-tex="\(P(x,u,y,x)=P(x,u,x,y)=0\)">\(P(x,u,y,x)=P(x,u,x,y)=0\)</span>, and <span class="math" data-tex="\(P(x,u,y,u)=P(u,x,u,y)=0\)">\(P(x,u,y,u)=P(u,x,u,y)=0\)</span>. Substituting <span class="math" data-tex="\(v=x\)">\(v=x\)</span> in <span class="math" data-tex="\(P=(y-x)P_1\)">\(P=(y-x)P_1\)</span> gives <span class="math" data-tex="\((y-x)P_1(x,u,y,x)=0\)">\((y-x)P_1(x,u,y,x)=0\)</span>, and as polynomials form an integral domain (Section 1 of <a href="interpolation.html">Interpolation</a>), <span class="math" data-tex="\(P_1(x,u,y,x)=0\)">\(P_1(x,u,y,x)=0\)</span>, so <span class="math" data-tex="\(P_1=(v-x)P_2\)">\(P_1=(v-x)P_2\)</span>. In the same way, substituting <span class="math" data-tex="\(y=u\)">\(y=u\)</span> gives <span class="math" data-tex="\(P_2=(y-u)P_3\)">\(P_2=(y-u)P_3\)</span>, and substituting <span class="math" data-tex="\(v=u\)">\(v=u\)</span> gives <span class="math" data-tex="\(P_3=(v-u)R\)">\(P_3=(v-u)R\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P=C\,R,\\
+C=(x-y)(x-v)(u-y)(u-v).
+\end{gathered}
+\]">\[
+\begin{gathered}
+P=C\,R,\\
+C=(x-y)(x-v)(u-y)(u-v).
+\end{gathered}
+\]</span>
+The polynomial <span class="math" data-tex="\(C\)">\(C\)</span> has degree exactly two in each variable and is invariant under both exchanges; as degrees in each variable add under multiplication, <span class="math" data-tex="\(R\)">\(R\)</span> has degree at most <span class="math" data-tex="\(s-4\)">\(s-4\)</span> in each variable and the same two symmetries: <span class="math" data-tex="\(R\in\mathcal S\)">\(R\in\mathcal S\)</span>. At every pair in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> the four numbers <span class="math" data-tex="\(t_i,t_p,t_k,t_q\)">\(t_i,t_p,t_k,t_q\)</span> are distinct, so <span class="math" data-tex="\(C\ne0\)">\(C\ne0\)</span> there and <span class="math" data-tex="\(E(R)=0\)">\(E(R)=0\)</span>.</p>
+<p><em>Step 3: descent.</em> If <span class="math" data-tex="\(E\)">\(E\)</span> had a nonzero kernel, take a nonzero <span class="math" data-tex="\(P\)">\(P\)</span> in it of least degree in <span class="math" data-tex="\(x\)">\(x\)</span>. Step 2 gives a nonzero <span class="math" data-tex="\(R\)">\(R\)</span> in the kernel of smaller degree in <span class="math" data-tex="\(x\)">\(x\)</span>, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-odd-lower-bound">4. The odd lower bound</h2>
+<p><strong>Proposition 4.1</strong> (odd <span class="math" data-tex="\(n\)">\(n\)</span>; [OpenAI-C, Proposition 4.3]). Let <span class="math" data-tex="\(n=2s+1\)">\(n=2s+1\)</span> with <span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span>. For every normal drawing <span class="math" data-tex="\(D\)">\(D\)</span> of <span class="math" data-tex="\(K_n\)">\(K_n\)</span>,
+<span class="math math-display" data-tex="\[
+c(D)\ \ge\ \frac{|\mathcal T|}2\ \ge\ \binom s2^{\!2}=Z(n).
+\]">\[
+c(D)\ \ge\ \frac{|\mathcal T|}2\ \ge\ \binom s2^{\!2}=Z(n).
+\]</span></p>
+<p><em>Proof.</em> Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Delta(x,u,y,v)=(x-u)(y-v)\\
+\cdot(x-y)(x-v)(u-y)(u-v).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Delta(x,u,y,v)=(x-u)(y-v)\\
+\cdot(x-y)(x-v)(u-y)(u-v).
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(P,Q\in\mathcal S\)">\(P,Q\in\mathcal S\)</span> the polynomial <span class="math" data-tex="\(PQ\Delta\)">\(PQ\Delta\)</span> has degree at most <span class="math" data-tex="\(2(s-2)+3=n-2\)">\(2(s-2)+3=n-2\)</span> in each variable, since each variable occurs in three of the six factors of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. Apply Lemma 1.1 to <span class="math" data-tex="\(H=PQ\Delta\)">\(H=PQ\Delta\)</span>. The terms with two equal indices among <span class="math" data-tex="\(i,p,k,q\)">\(i,p,k,q\)</span> vanish, because <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> does. The terms with four distinct indices come in groups of four, <span class="math" data-tex="\((i,p,k,q)\)">\((i,p,k,q)\)</span>, <span class="math" data-tex="\((p,i,k,q)\)">\((p,i,k,q)\)</span>, <span class="math" data-tex="\((i,p,q,k)\)">\((i,p,q,k)\)</span>, <span class="math" data-tex="\((p,i,q,k)\)">\((p,i,q,k)\)</span>, belonging to the same ordered pair of disjoint edges: exchanging <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> changes the signs of <span class="math" data-tex="\([ip]\)">\([ip]\)</span> and of the factor <span class="math" data-tex="\(x-u\)">\(x-u\)</span> of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, and leaves <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(Q\)">\(Q\)</span>, the other factors of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> and the weights unchanged; similarly for <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span>. So the four terms are equal, and with fixed representatives <span class="math" data-tex="\((i,p,k,q)\)">\((i,p,k,q)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{\alpha\in\mathcal T}a_\alpha\,E(P)_\alpha\,E(Q)_\alpha=0,\\
+a_\alpha=J([ip],[kq])\,w_iw_pw_kw_q\\
+\cdot\Delta(t_i,t_p,t_k,t_q),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{\alpha\in\mathcal T}a_\alpha\,E(P)_\alpha\,E(Q)_\alpha=0,\\
+a_\alpha=J([ip],[kq])\,w_iw_pw_kw_q\\
+\cdot\Delta(t_i,t_p,t_k,t_q),
+\end{gathered}
+\]</span>
+the ordered pairs of disjoint edges outside <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> contributing nothing. Every <span class="math" data-tex="\(a_\alpha\)">\(a_\alpha\)</span> is nonzero, so <span class="math" data-tex="\(\langle\xi,\zeta\rangle=\sum_{\alpha\in\mathcal T}a_\alpha\xi_\alpha\zeta_\alpha\)">\(\langle\xi,\zeta\rangle=\sum_{\alpha\in\mathcal T}a_\alpha\xi_\alpha\zeta_\alpha\)</span> is a nondegenerate symmetric bilinear form on <span class="math" data-tex="\(\mathbb R^{\mathcal T}\)">\(\mathbb R^{\mathcal T}\)</span>, and the image <span class="math" data-tex="\(W=E(\mathcal S)\)">\(W=E(\mathcal S)\)</span> is <em>isotropic</em>: <span class="math" data-tex="\(\langle w,w&#x27;\rangle=0\)">\(\langle w,w&#x27;\rangle=0\)</span> for all <span class="math" data-tex="\(w,w&#x27;\in W\)">\(w,w&#x27;\in W\)</span>.</p>
+<p>An isotropic subspace has at most half the dimension of the space. Indeed, let <span class="math" data-tex="\(w_1,\ldots,w_r\)">\(w_1,\ldots,w_r\)</span> be a basis of <span class="math" data-tex="\(W\)">\(W\)</span>. The orthogonal space <span class="math" data-tex="\(W^\perp=\{\xi:\langle\xi,w_j\rangle=0\text{ for all }j\}\)">\(W^\perp=\{\xi:\langle\xi,w_j\rangle=0\text{ for all }j\}\)</span> is the kernel of the linear map <span class="math" data-tex="\(\xi\mapsto(\langle\xi,w_j\rangle)_j\)">\(\xi\mapsto(\langle\xi,w_j\rangle)_j\)</span>, whose matrix has the rows <span class="math" data-tex="\((a_\alpha w_j(\alpha))_\alpha\)">\((a_\alpha w_j(\alpha))_\alpha\)</span>; these rows are linearly independent, being the images of the independent <span class="math" data-tex="\(w_j\)">\(w_j\)</span> under the invertible diagonal matrix of the <span class="math" data-tex="\(a_\alpha\)">\(a_\alpha\)</span>. So <span class="math" data-tex="\(\dim W^\perp=|\mathcal T|-r\)">\(\dim W^\perp=|\mathcal T|-r\)</span>, and <span class="math" data-tex="\(W\subseteq W^\perp\)">\(W\subseteq W^\perp\)</span> gives <span class="math" data-tex="\(2r\le|\mathcal T|\)">\(2r\le|\mathcal T|\)</span>.</p>
+<p>By Lemma 3.1, <span class="math" data-tex="\(r=\dim\mathcal S\)">\(r=\dim\mathcal S\)</span>, and with (3.1) and (3.2), <span class="math" data-tex="\(2\binom s2^2\le|\mathcal T|\le2c(D)\)">\(2\binom s2^2\le|\mathcal T|\le2c(D)\)</span>. Finally <span class="math" data-tex="\(\binom s2^2=Z(2s+1)\)">\(\binom s2^2=Z(2s+1)\)</span> by (2.2) of <a href="drawings-and-crossing-numbers.html">Drawings and crossing numbers</a>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 4.2.</strong> As for complete bipartite graphs, the proof bounds the number of pairs of independent edges with a nonzero signed number of crossings, <span class="math" data-tex="\(|\mathcal T|/2\)">\(|\mathcal T|/2\)</span>, in every normal drawing of <span class="math" data-tex="\(K_{2s+1}\)">\(K_{2s+1}\)</span>, minimal or not. In a drawing with exactly <span class="math" data-tex="\(Z(n)\)">\(Z(n)\)</span> crossings, such as the two-page drawing of <a href="two-page-drawings-and-the-harary-hill-formula.html">Two-page drawings and the Harary–Hill formula</a>, equality holds throughout: <span class="math" data-tex="\(|\mathcal T|=2\dim\mathcal S\)">\(|\mathcal T|=2\dim\mathcal S\)</span>, and the image of <span class="math" data-tex="\(E\)">\(E\)</span> is a maximal isotropic subspace.</p>
+<h2 id="5-all-n">5. All <span class="math" data-tex="\(n\)">\(n\)</span></h2>
+<p><strong>Theorem 5.1</strong> (the lower bound; [OpenAI-C, Corollary 4.4]). For every <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span>, <span class="math" data-tex="\(\operatorname{cr}(K_n)\ge Z(n)\)">\(\operatorname{cr}(K_n)\ge Z(n)\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(n=3,4\)">\(n=3,4\)</span>, <span class="math" data-tex="\(Z(n)=0\)">\(Z(n)=0\)</span>. For odd <span class="math" data-tex="\(n\ge5\)">\(n\ge5\)</span>, apply Proposition 4.1 to a normal drawing attaining <span class="math" data-tex="\(\operatorname{cr}(K_n)\)">\(\operatorname{cr}(K_n)\)</span> (Theorem 1.2 of <a href="polygonal-drawings.html">Polygonal drawings</a>). Let <span class="math" data-tex="\(n=2s\ge6\)">\(n=2s\ge6\)</span> and let <span class="math" data-tex="\(D\)">\(D\)</span> be such a normal drawing. Deleting a vertex <span class="math" data-tex="\(r\)">\(r\)</span> and its edges gives a drawing <span class="math" data-tex="\(D_r\)">\(D_r\)</span> of <span class="math" data-tex="\(K_{n-1}\)">\(K_{n-1}\)</span>, with at least <span class="math" data-tex="\(\operatorname{cr}(K_{n-1})\ge Z(n-1)\)">\(\operatorname{cr}(K_{n-1})\ge Z(n-1)\)</span> crossings by the odd case. A crossing point lies on two edges with four distinct endpoints (Corollary 4.2 of <a href="polygonal-drawings.html">Polygonal drawings</a>), so it survives in exactly <span class="math" data-tex="\(n-4\)">\(n-4\)</span> of the drawings <span class="math" data-tex="\(D_r\)">\(D_r\)</span>. Hence <span class="math" data-tex="\((n-4)c(D)\ge nZ(n-1)\)">\((n-4)c(D)\ge nZ(n-1)\)</span>, and by Exercise 7.4 of <a href="drawings-and-crossing-numbers.html">Drawings and crossing numbers</a>, <span class="math" data-tex="\(nZ(n-1)\)">\(nZ(n-1)\)</span> equals <span class="math" data-tex="\((2s-4)Z(2s)\)">\((2s-4)Z(2s)\)</span>, so <span class="math" data-tex="\(c(D)\ge Z(n)\)">\(c(D)\ge Z(n)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> For <span class="math" data-tex="\(n=5\)">\(n=5\)</span> (<span class="math" data-tex="\(s=2\)">\(s=2\)</span>) the space <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> consists of the constants. Show that Lemma 3.1 says <span class="math" data-tex="\(\mathcal T\ne\varnothing\)">\(\mathcal T\ne\varnothing\)</span>, and conclude <span class="math" data-tex="\(\operatorname{cr}(K_5)\ge1\)">\(\operatorname{cr}(K_5)\ge1\)</span>.</p>
+<p><strong>6.2.</strong> For <span class="math" data-tex="\(s=2\)">\(s=2\)</span>, check Lemma 2.1(1) directly with nodes <span class="math" data-tex="\(u=(0,1,2,3)\)">\(u=(0,1,2,3)\)</span> and the natural order: <span class="math" data-tex="\(\mathcal P_{1,0}\)">\(\mathcal P_{1,0}\)</span> and <span class="math" data-tex="\(\mathcal P_{0,1}\)">\(\mathcal P_{0,1}\)</span> are two-dimensional, and the pairing is a <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix. Compute its determinant.</p>
+<p><strong>6.3.</strong> Show that <span class="math" data-tex="\(C=(x-y)(x-v)(u-y)(u-v)\)">\(C=(x-y)(x-v)(u-y)(u-v)\)</span> is invariant under exchanging <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> and under exchanging <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>, while <span class="math" data-tex="\(\Delta=(x-u)(y-v)C\)">\(\Delta=(x-u)(y-v)C\)</span> changes sign under each exchange.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(\dim\mathcal S=\binom22^2=1\)">\(\dim\mathcal S=\binom22^2=1\)</span>, spanned by the constant <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(E(1)\)">\(E(1)\)</span> is the all-ones vector on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>; it is nonzero exactly when <span class="math" data-tex="\(\mathcal T\ne\varnothing\)">\(\mathcal T\ne\varnothing\)</span>. A pair in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> crosses, so every normal drawing of <span class="math" data-tex="\(K_5\)">\(K_5\)</span> has a crossing, and by Theorem 1.2 of the polygonal lesson so does every drawing.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(G&#x27;(0)=-6\)">\(G&#x27;(0)=-6\)</span>, <span class="math" data-tex="\(G&#x27;(1)=2\)">\(G&#x27;(1)=2\)</span>, <span class="math" data-tex="\(G&#x27;(2)=-2\)">\(G&#x27;(2)=-2\)</span>, <span class="math" data-tex="\(G&#x27;(3)=6\)">\(G&#x27;(3)=6\)</span>. The pattern <span class="math" data-tex="\(L_2\)">\(L_2\)</span> is <span class="math" data-tex="\(\{(2,1),(3,4)\}\)">\(\{(2,1),(3,4)\}\)</span> with <span class="math" data-tex="\(K(2,1)=-1\)">\(K(2,1)=-1\)</span>, <span class="math" data-tex="\(K(3,4)=1\)">\(K(3,4)=1\)</span>. With bases <span class="math" data-tex="\(1,u\)">\(1,u\)</span> of <span class="math" data-tex="\(\mathcal P_{1,0}\)">\(\mathcal P_{1,0}\)</span> and <span class="math" data-tex="\(1,v\)">\(1,v\)</span> of <span class="math" data-tex="\(\mathcal P_{0,1}\)">\(\mathcal P_{0,1}\)</span>: the two coefficients are <span class="math" data-tex="\(K(2,1)\kappa_{21}=-\frac{1-0}{2\cdot(-6)}=\frac1{12}\)">\(K(2,1)\kappa_{21}=-\frac{1-0}{2\cdot(-6)}=\frac1{12}\)</span> and <span class="math" data-tex="\(K(3,4)\kappa_{34}=\frac{2-3}{(-2)\cdot6}=\frac1{12}\)">\(K(3,4)\kappa_{34}=\frac{2-3}{(-2)\cdot6}=\frac1{12}\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M(A,B)=\tfrac1{12}\bigl(A(u_2,u_1)B(u_2,u_1)\\
++A(u_3,u_4)B(u_3,u_4)\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+M(A,B)=\tfrac1{12}\bigl(A(u_2,u_1)B(u_2,u_1)\\
++A(u_3,u_4)B(u_3,u_4)\bigr).
+\end{gathered}
+\]</span> The evaluation matrices are <span class="math" data-tex="\(\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}\)">\(\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}\)</span> (values of <span class="math" data-tex="\(1,u\)">\(1,u\)</span> at <span class="math" data-tex="\(u_2=1,u_3=2\)">\(u_2=1,u_3=2\)</span>) and <span class="math" data-tex="\(\begin{pmatrix}1&amp;0\\1&amp;3\end{pmatrix}\)">\(\begin{pmatrix}1&amp;0\\1&amp;3\end{pmatrix}\)</span> (values of <span class="math" data-tex="\(1,v\)">\(1,v\)</span> at <span class="math" data-tex="\(u_1=0,u_4=3\)">\(u_1=0,u_4=3\)</span>); the pairing matrix is <span class="math" data-tex="\(\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}^{\mathsf T}\operatorname{diag}(\tfrac1{12},\tfrac1{12})\begin{pmatrix}1&amp;0\\1&amp;3\end{pmatrix}\)">\(\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}^{\mathsf T}\operatorname{diag}(\tfrac1{12},\tfrac1{12})\begin{pmatrix}1&amp;0\\1&amp;3\end{pmatrix}\)</span>, with determinant <span class="math" data-tex="\(1\cdot\frac1{144}\cdot3=\frac1{48}\ne0\)">\(1\cdot\frac1{144}\cdot3=\frac1{48}\ne0\)</span>.</p>
+<p><strong>6.3.</strong> Exchanging <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> maps <span class="math" data-tex="\((x-y)(x-v)(u-y)(u-v)\)">\((x-y)(x-v)(u-y)(u-v)\)</span> to <span class="math" data-tex="\((u-y)(u-v)(x-y)(x-v)\)">\((u-y)(u-v)(x-y)(x-v)\)</span>, the same product; similarly for <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>. The factor <span class="math" data-tex="\(x-u\)">\(x-u\)</span> changes sign under the first exchange and <span class="math" data-tex="\(y-v\)">\(y-v\)</span> under the second.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-C] OpenAI, <em>The crossing number of complete graphs</em>, OpenAI Math Release preprint, 23 September 2026, Sections 3 and 4: Lemma 3.3, Lemma 4.1, Lemma 4.2, Proposition 4.3 and Corollary 4.4. https://github.com/openai/math/tree/main/preprints/The-crossing-number-of-complete-graphs-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

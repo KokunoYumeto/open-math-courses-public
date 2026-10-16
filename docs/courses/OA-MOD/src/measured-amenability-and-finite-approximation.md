@@ -473,9 +473,93 @@ The cocycle calculation in MGH07 proves that \(u\) is an \(\alpha\)-cocycle and 
 
 ## Exact innerness and a coherent unitary correction
 
-Exercise XIII.4.3 has the stronger assumption
-\(\operatorname{Aut}(N)=\operatorname{Int}(N)\),
-without a closure bar. It allows any separable abelian centre, including an atomic one. Under a free ergodic amenable centre action, there is an \(\alpha\)-cocycle \(u_g\) with
+### Approximate innerness and the printed third exercise
+
+Exercise XIII.4.3 assumes \(\overline{\operatorname{Int}(N)}=\operatorname{Aut}(N)\), with a closure bar, just as Exercise 1 does. Under this density hypothesis the conclusion with a conjugating automorphism follows from MGH06. The stronger displayed conclusion with only a unitary cocycle need not hold in the given tensor coordinates. We prove the obstruction, including an example with a free ergodic centre action.
+
+**Lemma (the fibre obstruction).** Suppose
+\[
+\begin{aligned}
+(\alpha_gm)(y)&=D_g(y)m(T_g^{-1}y),\\
+\beta_gm(y)&=m(T_g^{-1}y).
+\end{aligned}
+\]
+If \(\operatorname{Ad}u_g\,\alpha_g=\beta_g\), then \(D_g(y)\) is inner for almost every \(y\).
+
+*Proof.* Apply the identity to constant fields \(m(y)=a\), with \(a\in N\). It gives \(\operatorname{Ad}u_g(y)D_g(y)(a)=a\). A countable strongly dense subset of the unit ball of the separable factor, followed by normality, gives this identity for every \(a\) on one conull set. Thus \(D_g(y)=\operatorname{Ad}u_g(y)^*\). For an atomic centre this argument holds at each point of positive mass directly. \(\square\)
+
+**A factor with dense inner automorphisms and an outer shift.** Let
+\[
+N=\overline{\bigotimes_{j\in\mathbb Z}}
+\bigl(M_2(\mathbb C),\operatorname{tr}_2\bigr)
+\]
+be the von Neumann algebra in the product-trace GNS representation. The trace-GNS construction is the one in the finite-state construction. Write \(\tau\) for its faithful normal trace, \(\|a\|_2=\tau(a^*a)^{1/2}\), and \(A_n=\bigotimes_{j=-n}^nM_2\). Their union is dense in \(L^2(N,\tau)\) by this construction. In particular the GNS Hilbert space, and hence the predual, are separable.
+
+We verify the factor and density assertions. The trace pairing defines a map \(E_n:N\to A_n\) by
+\(\tau(E_n(x)a)=\tau(xa)\) for all \(a\in A_n\). Nondegeneracy in the finite matrix algebra gives existence and uniqueness. Testing positive matrices proves positivity; the trace identity gives \(E_n(1)=1\) and the \(A_n\)-bimodule identity. It is the orthogonal projection in \(L^2\), so \(E_n(x)\to x\) in \(L^2\). If \(x\) is central, bimodularity makes \(E_n(x)\) central in \(A_n\), hence \(E_n(x)=\tau(x)1\). Therefore \(x=\tau(x)1\), and \(N\) is a finite factor.
+
+Every normal automorphism \(\gamma\) preserves \(\tau\): the normal tracial states \(\tau\gamma\) and \(\tau\) agree on every full matrix algebra \(A_n\), and hence on their weakly dense union and on \(N\). Two projections of equal trace in a finite factor are equivalent, as follows. Choose a maximal orthogonal family of partial isometries from subprojections of the first to subprojections of the second, and sum it strongly. If both complementary projections \(p',q'\) were nonzero, then \(q'Np'\ne0\). Indeed, the projection onto the closed span of \(Np'\mathcal H\) is central: that span and its orthogonal complement are invariant under both \(N\) and \(N'\); its central projection is nonzero and thus is one. The equality \(q'Np'=0\) would annihilate that span. Polar decomposition of a nonzero corner element would extend the family, a contradiction. One complement therefore vanishes; equality of traces and faithfulness make the other vanish too.
+
+For matrix units \((e_{ij})\) of \(A_n\), put \(f_{ij}=\gamma(e_{ij})\). Choose \(v\) with \(v^*v=e_{11}\) and \(vv^*=f_{11}\). The finite sum
+\[
+z_n=\sum_i f_{i1}v e_{1i}
+\]
+is unitary and satisfies \(z_ne_{ij}z_n^*=f_{ij}\), by the matrix-unit identities. Thus \(\operatorname{Ad}z_n\) agrees with \(\gamma\) on \(A_n\). Trace preservation and approximation by the increasing \(A_n\) show
+\[
+\|\operatorname{Ad}z_n(x)-\gamma(x)\|_2\longrightarrow0
+\qquad(x\in N).
+\]
+The inverse automorphisms converge in the same sense, since their error at \(x\) equals the forward error at \(\gamma^{-1}(x)\). For \(a\in N\), the norm of the predual difference tested by \(\tau(a\,\cdot)\) is bounded by
+\(\|\operatorname{Ad}z_n^{-1}(a)-\gamma^{-1}(a)\|_1\), which tends to zero by the \(L^2\) bound. Bounded elements are dense in \(L^1(N,\tau)=N_*\), and the predual actions are isometries. This proves convergence in the predual topology and hence
+\[
+\overline{\operatorname{Int}(N)}=\operatorname{Aut}(N).
+\tag{MGH.40}
+\]
+
+Let \(\sigma\) shift tensor position \(j\) to \(j+1\). It preserves the product trace and extends to a normal automorphism, implemented on the GNS Hilbert space by the trace-preserving shift on the dense tensor algebra. Put \(x_j=\operatorname{diag}(1,-1)\) at position \(j\), with identities elsewhere. Then
+\[
+\begin{gathered}
+\|x_j\|=1,\quad \tau(x_j)=0,\\
+\|\sigma(x_j)-x_j\|_2=\sqrt2.
+\end{gathered}
+\tag{MGH.41}
+\]
+The last equality follows because the two distinct tensor positions are trace independent. For each fixed \(u\in N\), approximation by a finite tensor gives \(\|ux_j-x_ju\|_2\to0\) as \(j\to+\infty\): the finite tensor commutes with \(x_j\) eventually, and the remaining error is at most twice its \(L^2\) distance from \(u\). Thus \(\sigma\) cannot equal \(\operatorname{Ad}u\) for a unitary \(u\). It is outer, despite (MGH.40).
+
+**Counterexample to the literal conclusion of Exercise XIII.4.3.** Take \(X=\mathbb Z\) with counting measure, \(C=\ell^\infty(\mathbb Z)\), and the amenable group \(\Gamma=\mathbb Z\) acting by translations. The centre has separable predual. This action is free and ergodic: a translation-invariant subset of the single orbit is empty or all of \(\mathbb Z\). On \(M=C\,\bar\otimes\,N\) define
+\[
+\begin{aligned}
+(\alpha_km)(j)&=\sigma^k\bigl(m(j-k)\bigr),\\
+(\beta_km)(j)&=m(j-k).
+\end{aligned}
+\tag{MGH.42}
+\]
+These are normal automorphisms and satisfy the action law. All hypotheses printed in Exercise 3 hold, including (MGH.40). If even one unitary \(u_1\in M\) gave \(\operatorname{Ad}u_1\alpha_1=\beta_1\), evaluation at any atom \(j\) on constant fields would make \(\sigma=\operatorname{Ad}u_1(j)^*\), contrary to (MGH.41). There can therefore be no such unitary cocycle.
+
+The missing conjugacy is visible in the same example. The centre-fixing normal automorphism
+\[
+(\theta m)(j)=\sigma^{-j}(m(j))
+\]
+satisfies
+\[
+\begin{aligned}
+(\theta\alpha_k\theta^{-1}m)(j)
+&=\sigma^{-j}\sigma^k\sigma^{j-k}(m(j-k))\\
+&=m(j-k)=\beta_km(j).
+\end{aligned}
+\tag{MGH.43}
+\]
+The norm of every fibre map is one, so these coordinate formulas define automorphisms of the full bounded direct product. The tensor order can be reversed to match \(N\bar\otimes C\). This example distinguishes the literal equality in fixed tensor coordinates from a conclusion up to a centre-fixing automorphism.
+
+Under the printed density assumption, the valid general conclusion retains \(\theta\), as in (MGH.28) and (MGH.31); the same reduction and lifting work on atomic centres by choosing a root in the single conull orbit. A sufficient stronger hypothesis for the equality without \(\theta\) is actual innerness of every fibre automorphism. In particular \(\operatorname{Aut}(N)=\operatorname{Int}(N)\) suffices, and the following construction proves that assertion on arbitrary separable abelian centres.
+
+![An outer tensor shift cannot be removed by inner fibre corrections; a field conjugacy makes the action square commute.](assets/outer-shift-fibre-obstruction.svg)
+
+*Figure. In (MGH.41), the tail matrices commute asymptotically with every fixed unitary, but their shift difference has constant L2 norm square root of two. The commuting square is (MGH.43) on the fibres at j-k and j; its vertical maps are automorphisms, not asserted to be inner. The counterexample concerns the fixed tensor coordinates. The source question is Takesaki III, Exercise XIII.4.3, p. 79. Classical background: the tracial matrix-product construction and approximate innerness of the hyperfinite finite factor; the proof above gives the precise construction and estimates used here.*
+
+### The exact-innerness conclusion
+
+**Theorem.** Suppose \(\operatorname{Aut}(N)=\operatorname{Int}(N)\). For any separable abelian centre, including an atomic one, and a free ergodic amenable centre action, there is an \(\alpha\)-cocycle \(u_g\) with
 
 \[
 \alpha_g^u=\beta_g.
@@ -525,7 +609,7 @@ u_g\alpha_g(u_h)
 
 This is the \(\alpha\)-cocycle identity, and \(\operatorname{Ad}u_g\alpha_g=\beta_g\), proving (MGH.32). The same calculation after conjugating by \(\theta\) proves (MGH.31).
 
-For completeness, if the centre has an atom, ergodicity makes a countable orbit conull, as in MGH04. Pick a point \(o\), choose \(v_y\) implementing \(b(y,o)\), and take \(w(y,x)=v_yv_x^*\). This is the whole lifting argument on that orbit, with no nonatomicity or equal-mass assumption. For a sigma-finite centre first use the equivalent probability measure of MGH01. These operations do not change the von Neumann algebra or its action. This proves the full scope of the third exercise.
+For completeness, if the centre has an atom, ergodicity makes a countable orbit conull, as in MGH04. Pick a point \(o\), choose \(v_y\) implementing \(b(y,o)\), and take \(w(y,x)=v_yv_x^*\). This is the whole lifting argument on that orbit, with no nonatomicity or equal-mass assumption. For a sigma-finite centre first use the equivalent probability measure of MGH01. These operations do not change the von Neumann algebra or its action. This proves the exact-innerness theorem. Under the density hypothesis printed in Exercise 3, the conjugating automorphism remains necessary in general, as (MGH.42)-(MGH.43) show.
 
 ## Modular domains and weighted boundary checks
 

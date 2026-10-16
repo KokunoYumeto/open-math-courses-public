@@ -12,9 +12,9 @@ A representation extension should preserve its measurable operators, not merely 
 <a id="l118-inputs"></a>
 ## Setting and earlier proofs
 
-Spaces are locally compact Hausdorff, representations are on arbitrary complex Hilbert spaces, and every group in the final application is arbitrary LCA. There is no countability, measurable-selection or finite-multiplicity hypothesis. Inner products are linear in their first variable. The zero Hilbert space has its unique zero representation and extension. If $Y$ is empty, surjectivity forces $X$ empty and nondegeneracy forces that zero case; all conclusions then hold. In the proof involving a unit vector or state, the Hilbert space is nonzero.
+Spaces are locally compact Hausdorff, representations are on arbitrary complex Hilbert spaces, and every group in the final application is arbitrary LCA. There is no countability, measurable-selection or finite-multiplicity hypothesis. Inner products are linear in their first variable. The zero Hilbert space has its unique zero representation and extension. If $Y$ is empty, surjectivity forces $X$ empty and both representations are zero; the final essential-subspace argument includes this case on every Hilbert space. In the proof involving a unit vector or state, the Hilbert space is nonzero.
 
-The actual earlier proofs are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) and [CF4](OA-FLOW-CF.md#oa-flow.cf.4) for Hahn–Banach, choice and compactness, [CF8](OA-FLOW-CF.md#oa-flow.cf.8) and [CF10](OA-FLOW-CF.md#oa-flow.cf.10) for Hilbert operators and completion, [GNS3.1](OA-FLOW-GNS.md#gns-lemma-3-1) and [GNS5.1](OA-FLOW-GNS.md#gns-theorem-5-1) for approximate identities and cyclic representations, [HR2](OA-FLOW-HR.md#oa-flow.hr.2) and [HR3](OA-FLOW-HR.md#oa-flow.hr.3) for finite Radon measures and continuous $L^2$ density, and [QF1](OA-FLOW-QF.md#qf-1) for compact lifting and continuous extension from a closed subspace. The expectation uses the complete [TD4](OA-FLOW-TD.md#oa-flow.td.4), [TD5](OA-FLOW-TD.md#oa-flow.td.5), [TD8](OA-FLOW-TD.md#oa-flow.td.8), [EP3](OA-FLOW-EP.md#oa-flow.ep.3) and [NF1](OA-FLOW-NF.md#oa-flow.nf.1) and [NF6](OA-FLOW-NF.md#oa-flow.nf.6) proofs. Normal representation transport uses [CP6](OA-FLOW-CP.md#oa-flow.cp.6), [NF5](OA-FLOW-NF.md#oa-flow.nf.5), [ST2](OA-FLOW-ST12.md#oa-flow.st.2) and [BD4](OA-FLOW-BD.md#oa-flow.bd.4) and [BD5](OA-FLOW-BD.md#oa-flow.bd.5). Bounded spectral projections and normal-vector convergence are proved in [SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [SF1](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-1) and [SF2](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-2). The final dual argument uses [H1](OA-FLOW-HARMONIC.md#oa-flow.xgaps.cstar.h1), [H3](OA-FLOW-HARMONIC-LATE.md#oa-flow.xgaps.cstar.h3), and [L24 integration](OA-FLOW-L24.md#oa-flow.grp.integration) and [recovery](OA-FLOW-L24.md#oa-flow.grp.recovery). Exact individual scopes, including these grouped links, are recorded in the proof ledger; a citation is not a replacement for a proof.
+The actual earlier proofs are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) and [CF4](OA-FLOW-CF.md#oa-flow.cf.4) for Hahn–Banach, choice and compactness, [CF8](OA-FLOW-CF.md#oa-flow.cf.8) and [CF10](OA-FLOW-CF.md#oa-flow.cf.10) for Hilbert operators and completion, [GNS3.1](OA-FLOW-GNS.md#gns-lemma-3-1) and [GNS5.1](OA-FLOW-GNS.md#gns-theorem-5-1) for approximate identities and cyclic representations, [HR2](OA-FLOW-HR.md#oa-flow.hr.2) and [HR3](OA-FLOW-HR.md#oa-flow.hr.3) for finite Radon measures and continuous $L^2$ density, and [QF1](OA-FLOW-QF.md#qf-1) for compact lifting and continuous extension from a closed subspace. The expectation uses the complete [TD4](OA-FLOW-TD.md#oa-flow.td.4), [TD5](OA-FLOW-TD.md#oa-flow.td.5), [TD8](OA-FLOW-TD.md#oa-flow.td.8), [EP3](OA-FLOW-EP.md#oa-flow.ep.3) and [NF1](OA-FLOW-NF.md#oa-flow.nf.1) and [NF6](OA-FLOW-NF.md#oa-flow.nf.6) proofs. Normal representation transport uses [CP6](OA-FLOW-CP.md#oa-flow.cp.6), [NF5](OA-FLOW-NF.md#oa-flow.nf.5), [ST2](OA-FLOW-ST12.md#oa-flow.st.2) and [BD4](OA-FLOW-BD.md#oa-flow.bd.4) and [BD5](OA-FLOW-BD.md#oa-flow.bd.5). Bounded spectral projections and normal-vector convergence are proved in [SB6](OA-FLOW-SF.md#oa-flow.sf.sb6), [SF1](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-1) and [SF2](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-2). The final dual argument uses [H1](OA-FLOW-HARMONIC.md#oa-flow.xgaps.cstar.h1), [H3](OA-FLOW-HARMONIC-LATE.md#oa-flow.xgaps.cstar.h3), and [L24 integration](OA-FLOW-L24.md#oa-flow.grp.integration) and [recovery](OA-FLOW-L24.md#oa-flow.grp.recovery). The proof below applies each result with its stated hypotheses.
 
 <a id="oa-flow.l118.statement"></a>
 
@@ -46,7 +46,7 @@ q^*:B\longrightarrow M(A)=C_b(X),
 \qquad q^*(b)=b\circ q. \tag{E3}
 $$
 
-We will prove that every nondegenerate representation $\pi:B\to B(K)$ has a nondegenerate representation $\rho:A\to B(K)$ whose multiplier extension satisfies
+We will prove that every representation $\pi:B\to B(K)$ has a representation $\rho:A\to B(K)$ with the same essential subspace, nondegenerate whenever $\pi$ is, whose canonical multiplier extension satisfies
 
 <a id="equation-e4"></a>
 
@@ -222,7 +222,7 @@ $$
 (\rho,H,\xi) \tag{E9}
 $$
 
-be its cyclic GNS representation.  Write
+as its cyclic GNS representation. Write
 
 <a id="equation-e10"></a>
 
@@ -232,7 +232,7 @@ $$
 \mathcal B=\rho(C(C))''. \tag{E10}
 $$
 
-Both algebras are abelian and $\mathcal B\subseteq\mathcal A$. Indeed a commuting represented algebra $D$ satisfies $D\subseteq D'$, hence $D''\subseteq D'$; every element of $D''$ commutes with $D'$, so in particular with every other element of $D''$.  The vector state of $\xi$ is faithful on $\mathcal A$: in an abelian von Neumann algebra a cyclic vector is separating.  Its restriction is therefore faithful on $\mathcal B$ as well.
+Both algebras are abelian and $\mathcal B\subseteq\mathcal A$. Indeed a commuting represented algebra $D$ satisfies $D\subseteq D'$, hence $D''\subseteq D'$; every element of $D''$ commutes with $D'$, so in particular with every other element of $D''$.  The vector state of $\xi$ is faithful on $\mathcal A$: in an abelian von Neumann algebra a cyclic vector is separating. To see this directly, let $a\in\mathcal A$ satisfy $a\xi=0$. For every $b\in\mathcal A$, commutativity gives $ab\xi=ba\xi=0$. The vectors $b\xi$ are dense, since they include the original cyclic GNS subspace, so boundedness forces $a=0$. If $a\in\mathcal A$ is positive and $\psi(a)=0$, then $\|a^{1/2}\xi\|^2=\psi(a)=0$. Applying the separating property to $a^{1/2}$ gives $a=0$, which proves faithfulness. CP6 proves normality of the vector functional. Its restriction is therefore faithful on $\mathcal B$ as well.
 
 The closed subspace $H_0=\overline{\mathcal B\xi}$ carries the GNS representation of $\varphi$.  The orthogonal projection onto $H_0$ commutes with $\mathcal B$, because the subspace is invariant under it and its adjoints. Compression identifies $\mathcal B$ normally and faithfully with its action on $H_0$: if $b|_{H_0}=0$, then $b\xi=0$, and separatingness gives $b=0$. CP6 proves normality by regarding every square-summable target vector series as that same series in $H$. ST2's full faithful-normal-representation proof then proves that the compression image is ultraweakly closed and that its inverse onto that image is normal. Its compact-unit-ball step and bounded density are essential; injectivity alone would not prove this.
 
@@ -269,9 +269,9 @@ Their restrictions to $D$ remain distinct. If their normal difference vanished o
 <a id="oa-flow.repext.collapse"></a>
 
 <a id="l118-projection"></a>
-## The retained projection alternative
+## A proof by projection perturbation
 
-Suppose that a projection $p\in\mathcal A$ has $P(p)$ nonprojective.  The bounded Borel calculus of SB6/SF1 puts $r=1_{[2\lambda,1-2\lambda]}(P(p))$ in $\mathcal B$ for sufficiently small $\lambda>0$, with $r\ne0$: otherwise the increasing union of those interior intervals would have zero spectral projection, and $P(p)$ would have spectrum supported on $\{0,1\}$, hence would be a projection. In particular the historical weaker inequalities remain
+Suppose that a projection $p\in\mathcal A$ has $P(p)$ nonprojective.  The bounded Borel calculus of SB6/SF1 puts $r=1_{[2\lambda,1-2\lambda]}(P(p))$ in $\mathcal B$ for sufficiently small $\lambda>0$, with $r\ne0$: otherwise the increasing union of those interior intervals would have zero spectral projection, and $P(p)$ would have spectrum supported on $\{0,1\}$, hence would be a projection. In particular
 
 <a id="equation-e12"></a>
 
@@ -420,7 +420,17 @@ $$
 \pi(B)''\subseteq\rho(A)''\subseteq\Sigma=\pi(B)'', \tag{E24}
 $$
 
-which proves (E4).  This assembly avoids choosing unrelated extensions on equivalent multiplicity summands.
+which proves (E4) for nondegenerate representations. This assembly avoids choosing unrelated extensions on equivalent multiplicity summands.
+
+### Degenerate representations and the zero case
+
+Now let $\pi:B\to B(K)$ be an arbitrary representation and put $K_{\mathrm{ess}}=\overline{\operatorname{span}\pi(B)K}$ and $K_0=K_{\mathrm{ess}}^\perp$. Both subspaces reduce $\pi$: products preserve the first, and the same holds for adjoints. If $\eta\in K_0$, then $\langle\pi(b)\eta,\zeta\rangle=\langle\eta,\pi(b^*)\zeta\rangle=0$ for every $\zeta$, so $\pi(b)\eta=0$. Let $P$ be the projection onto $K_{\mathrm{ess}}$. The positive contractive approximate identity $(u_i)$ of [GNS3.1](OA-FLOW-GNS.md#gns-lemma-3-1) satisfies $\pi(u_i)\to P$ strongly: it converges to the identity on every generating vector $\pi(b)\eta$, vanishes on $K_0$, and its uniform bound extends convergence to the closure. In particular $P\in\pi(B)''$, and the restricted representation $\pi_{\mathrm{ess}}$ on $K_{\mathrm{ess}}$ is nondegenerate.
+
+Apply the preceding construction on $K_{\mathrm{ess}}$ to obtain $\rho_{\mathrm{ess}}$ satisfying (E4), and define $\rho(a)=\rho_{\mathrm{ess}}(a)\oplus0$ and $\widetilde\rho(h)=\widetilde\rho_{\mathrm{ess}}(h)\oplus0$ on $K=K_{\mathrm{ess}}\oplus K_0$. These are star homomorphisms, and the multiplier agreement in (E4) holds on both summands. For a degenerate representation this is the canonical multiplier extension: it acts as zero on the null subspace. The same approximate-identity argument gives $\rho(v_i)\to P$ for a positive contractive approximate identity $(v_i)$ of $A$, so both representations have exactly the same essential subspace.
+
+Here is why their bicommutants agree on the whole original Hilbert space. For either represented algebra $D=D_{\mathrm{ess}}\oplus0$, its strong approximate identity is $P$. Every operator commuting with $D$ therefore commutes with $P$, and conversely the block diagonal operators in $D_{\mathrm{ess}}'\oplus B(K_0)$ commute with $D$. Hence $D'=D_{\mathrm{ess}}'\oplus B(K_0)$. The projection $P$ also belongs to $D'$, so taking commutants again gives $D''=D_{\mathrm{ess}}''\oplus\mathbb C I_{K_0}$ when $K_0\ne0$, with the last summand omitted when it is zero. The scalar commutant fact follows directly from the orthogonal projections supplied by [CF8](OA-FLOW-CF.md#oa-flow.cf.8): commuting with every rank-one projection preserves each line, and applying this to the lines through two independent vectors and their sum forces one common scalar. The equality $\rho_{\mathrm{ess}}(A)''=\pi_{\mathrm{ess}}(B)''$ thus proves (E4) on $K$.
+
+If $K_{\mathrm{ess}}=0$, simply take $\rho=0$ and $\widetilde\rho=0$. Then both generated bicommutants equal $\mathbb C I_K$ for nonzero $K$, by the same commutant argument; on the zero Hilbert space they are the zero algebra. This also treats $X=Y=\varnothing$. Thus no nondegeneracy hypothesis is needed for the extension theorem.
 
 <a id="oa-flow.l118.dual-map"></a>
 
@@ -541,9 +551,9 @@ Both new states keep the marginals, average to the balanced one, and differ at $
 <a id="l118-sources"></a>
 ## Source antecedent and established scope
 
-Takesaki, [*Theory of Operator Algebras II*, Lemma XI.2.13, printed338–339](https://doi.org/10.1007/978-3-662-10451-4), is the human source for the unchanged-closure extension theorem and its retained projection perturbation. The local finite-density expectation and kernel test precede that alternative here; compact measure and compressed normal-inverse proofs, arbitrary support-corner assembly, and compact-open quotient duality are written out separately. The assigned earlier freely accessible programme constructions remain actual proof inputs.
+Takesaki, [*Theory of Operator Algebras II*, Lemma XI.2.13, printed338–339](https://doi.org/10.1007/978-3-662-10451-4), is the human source for the unchanged-closure extension theorem and the projection perturbation argument. The local finite-density expectation and kernel test precede that alternative here; compact measure and compressed normal-inverse proofs, arbitrary support-corner assembly, and compact-open quotient duality are written out separately. The earlier programme lessons provide the analytic prerequisites.
 
-The conclusion is exactly (E4) for every continuous open onto map of arbitrary LCH spaces and every nondegenerate representation, and (E27)–(E28) for every closed subgroup of an arbitrary LCA group. No uniqueness of the extension, continuous section, measurable selection theorem, nonabelian subgroup-extension result, or whole-course closure is asserted.
+The conclusion is exactly (E4) for every continuous open onto map of arbitrary LCH spaces and every representation, including degenerate and zero representations, and (E27)–(E28) for every closed subgroup of an arbitrary LCA group. The extension need not be unique. The construction requires neither a continuous section nor a measurable selection theorem; its subgroup conclusion assumes the group is abelian.
 
 <a id="oa-flow.l118.figure"></a>
 
@@ -558,4 +568,4 @@ The balanced interior point has weights $(1/6,1/6,1/3,1/3)$. On its own weighted
 
 This is an exact finite example of the kernel perturbation (AE6). The complete expectation and general collapse are proved in [the finite-state argument](OA-FLOW-L118.md#l118-expectation) and [the kernel argument](OA-FLOW-L118.md#l118-kernel); equations (E5)–(E24) handle the arbitrary representation. The theorem antecedent is Takesaki, [*Theory of Operator Algebras II*, Lemma XI.2.13, printed338–339](https://doi.org/10.1007/978-3-662-10451-4).
 
-The native image is $3000\times2600$. Its [editable SVG](../assets/abelian-representation-extension/assets/extension-rectangle.svg), [exact data](../assets/abelian-representation-extension/assets/extension-rectangle-data.json) and [reproduction source](../assets/abelian-representation-extension/render_extension_rectangle.py) are retained. Original illustration and added caption expression are CC0-1.0 to the extent of rights held; DejaVu font terms remain separate.
+The native image is $3000\times2600$. Its [editable SVG](../assets/abelian-representation-extension/assets/extension-rectangle.svg), [exact data](../assets/abelian-representation-extension/assets/extension-rectangle-data.json) and [reproduction source](../assets/abelian-representation-extension/render_extension_rectangle.py) accompany the figure. Original illustration and added caption expression are CC0-1.0 to the extent of rights held; DejaVu font terms remain separate.

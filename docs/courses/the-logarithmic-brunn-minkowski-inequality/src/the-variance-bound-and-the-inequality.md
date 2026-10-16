@@ -135,7 +135,10 @@ What the course proves and what it assumes: the reduction to the variance bound,
 
 **A Gaussian form of the inequality.** Kalantzopoulos recorded, from Saroglou's reformulation and the second variation computed by Cordero-Erausquin and Rotem, that the logarithmic Brunn–Minkowski inequality for all convex bodies symmetric about the origin is equivalent to the following inequality on the cube \(B_\infty^n=[-1,1]^n\): for every positive definite symmetric matrix \(\Sigma\) and every diagonal matrix \(A\),
 \[
-\operatorname{Var}_{\nu}\bigl(\langle A\Sigma^{-1}y,y\rangle\bigr)\le\int\bigl\langle(A^2\Sigma^{-1}+A\Sigma^{-1}A)y,y\bigr\rangle\,d\nu(y),
+\begin{aligned}
+&\operatorname{Var}_{\nu}\bigl(\langle A\Sigma^{-1}y,y\rangle\bigr)\\
+&\quad\le\int\bigl\langle(A^2\Sigma^{-1}+A\Sigma^{-1}A)y,y\bigr\rangle\,d\nu(y),
+\end{aligned}
 \]
 where \(\nu\) is the centered Gaussian measure with covariance \(\Sigma\), restricted to the cube and normalized to a probability measure [Kalantzopoulos 2026, Proposition 3]. With this equivalence, which the course does not prove, the theorem of this course gives the inequality on the cube. On rotated boxes it can fail: for \(\Sigma\) positive definite and \(A\) diagonal, it holds on every box symmetric about the origin with edges along some orthonormal basis exactly when \(A\) and \(\Sigma\) commute [Kalantzopoulos 2026, Theorem 1].
 

@@ -260,7 +260,7 @@ This is the normalized faithful matrix trace on a noncommutative algebra. Faithf
 <a id="et-4"></a>
 ## Source and scope
 
-The mathematical target is Takesaki, [*Theory of Operator Algebras II*, Exercise XI.1.6, printed page 331](https://doi.org/10.1007/978-3-662-10451-4), read on native page 352 in the exact approved edition. That page states the exercise without its proof. The retained local proof develops the normal preadjoint, full-support faithfulness and opposite-fiber trace calculation, followed by an explicitly bounded approximation net. The matrix example and solved calculation are local additions. The earlier free-source foundations remain actual programme proofs; the book citation replaces none of them.
+The mathematical target is Takesaki, [*Theory of Operator Algebras II*, Exercise XI.1.6, printed page 331](https://doi.org/10.1007/978-3-662-10451-4). The proof develops normal predual averaging, faithfulness from full Haar support, and the opposite-fiber trace identity, followed by a bounded trigonometric approximation net. The matrix example exhibits a noncommutative algebra with an ergodic abelian action.
 
 The normalized-state conclusion requires a nonzero algebra. It assumes neither faithfulness of the action nor sigma-finiteness of the algebra, and its approximation uses a net.
 
@@ -276,4 +276,4 @@ The lower row uses the positive matrix \(X=\left(\begin{smallmatrix}5&2\\2&1\end
 
 The figure illustrates the finite case. The complete arbitrary compact Hausdorff abelian theorem is proved in [ET1–2](OA-FLOW-ET.md#et-1): normal predual averaging, full-support faithfulness, opposite-fiber multiplication and a uniformly bounded trigonometric approximation net. The matrix calculation does not supply that general theorem or impose a countability assumption.
 
-Human mathematical target: Takesaki, *Theory of Operator Algebras II*, Exercise XI.1.6 in the exact approved edition. This model, diagram and caption are locally authored; no source illustration is reproduced. Reproducible files: [renderer](../assets/ergodic-haar-trace/render_figure.py), [exact data](../assets/ergodic-haar-trace/assets/ergodic-haar-data.json), [SVG](../assets/ergodic-haar-trace/assets/ergodic-haar.svg) and [PNG](../assets/ergodic-haar-trace/assets/ergodic-haar.png).
+Human mathematical target: Takesaki, *Theory of Operator Algebras II*, Exercise XI.1.6, printed page 331. This model, diagram and caption are locally authored; no source illustration is reproduced. Reproducible files: [renderer](../assets/ergodic-haar-trace/render_figure.py), [exact data](../assets/ergodic-haar-trace/assets/ergodic-haar-data.json), [SVG](../assets/ergodic-haar-trace/assets/ergodic-haar.svg) and [PNG](../assets/ergodic-haar-trace/assets/ergodic-haar.png).

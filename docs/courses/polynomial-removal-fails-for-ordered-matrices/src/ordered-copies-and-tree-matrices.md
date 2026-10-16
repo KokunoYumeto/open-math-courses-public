@@ -10,11 +10,11 @@ This lesson defines the pattern and the matrices \(A_h\). [Every copy meets the 
 
 ## 1. Ordered copies and the conjecture
 
-For \(k\ge1\) write \([k]=\{1,\dots,k\}\). Let \(H\) be a binary \(k\times k\) matrix and \(A\) a binary \(n\times n\) matrix. An *ordered copy* of \(H\) in \(A\) is a pair of increasing sequences \(r_1<\dots<r_k\) and \(c_1<\dots<c_k\) in \([n]\) with \(A(r_i,c_j)=H(i,j)\) for all \(i,j\in[k]\); zeros must match as well as ones. Let \(N_H(A)\) be the number of ordered copies, and call \(A\) *\(H\)-free* if \(N_H(A)=0\). The *distance* of \(A\) from \(H\)-freeness is
+For \(k\ge1\) write \([k]=\{1,\dots,k\}\). Let \(H\) be a binary \(k\times k\) matrix and \(A\) a binary \(n\times n\) matrix. An *ordered copy* of \(H\) in \(A\) is a pair of increasing sequences \(r_1<\dots<r_k\) and \(c_1<\dots<c_k\) in \([n]\) with \(A(r_i,c_j)=H(i,j)\) for all \(i,j\in[k]\); zeros must match as well as ones. Let \(N_H(A)\) be the number of ordered copies, and call \(A\) *\(H\)-free* if \(N_H(A)=0\). The *distance* \(\operatorname{dist}_H(A)\) of \(A\) from \(H\)-freeness is the minimum of
 \[
-\operatorname{dist}_H(A)=\frac1{n^2}\min\bigl\{|\{(r,c):A(r,c)\ne B(r,c)\}|:B\text{ binary and }H\text{-free}\bigr\},
+\frac1{n^2}\bigl|\{(r,c):A(r,c)\ne B(r,c)\}\bigr|
 \]
-and \(A\) is *\(\epsilon\)-far* from \(H\)-freeness if \(\operatorname{dist}_H(A)\ge\epsilon\). Changes are allowed in both directions.
+over binary \(H\)-free \(n\times n\) matrices \(B\), and \(A\) is *\(\epsilon\)-far* from \(H\)-freeness if \(\operatorname{dist}_H(A)\ge\epsilon\). Changes are allowed in both directions.
 
 **Conjecture 1.1** (polynomial ordered matrix removal). For every binary square matrix \(H\), of size \(k\), there are \(c_H,C_H>0\) such that \(N_H(A)\ge c_H\epsilon^{C_H}n^{2k}\) for every \(n\ge1\), every \(0<\epsilon<1\) and every binary \(n\times n\) matrix \(A\) that is \(\epsilon\)-far from \(H\)-freeness.
 
@@ -22,18 +22,28 @@ The theorem above shows that Conjecture 1.1 fails (Corollary 2.2 of the third le
 
 ## 2. The pattern
 
-Let \(s=64\). For \(0\le a<32\) and \(1\le b\le5\), let \(\eta_b(a)=\lfloor a/2^{5-b}\rfloor\bmod2\) be the \(b\)-th binary digit of \(a\), written with five digits; so \((\eta_1(a),\dots,\eta_5(a))\), \(a=0,\dots,31\), lists all binary words of length five. The *anchor* \(S\in\{0,1\}^{s\times s}\) is
+Let \(s=64\). For \(0\le a<32\) and \(1\le b\le5\), let \(\eta_b(a)=\lfloor a/2^{5-b}\rfloor\bmod2\) be the \(b\)-th binary digit of \(a\), written with five digits; so \((\eta_1(a),\dots,\eta_5(a))\), \(a=0,\dots,31\), lists all binary words of length five. The *anchor* \(S\in\{0,1\}^{s\times s}\) has the entries
 \[
-S(u,v)=\begin{cases}\eta_{v-59}(u-33),&33\le u\le64\text{ and }60\le v\le64,\\ 1&\text{otherwise, if }u\ne v,\\ 0&\text{otherwise, if }u=v.\end{cases}
+\begin{gathered}
+S(u,v)=\eta_{v-59}(u-33)\\
+\text{for }33\le u\le64\text{ and }60\le v\le64;
+\end{gathered}
 \]
+every other entry \(S(u,v)\) is \(1\) if \(u\ne v\) and \(0\) if \(u=v\).
 So \(S\) is the all-ones matrix with zeros on the diagonal, except that its lower right \(32\times5\) corner lists the binary words of length five. With \(e_1,e_2\) the first two standard basis vectors of \(\mathbb R^s\), the pattern and its *body* are
 \[
-H=\begin{pmatrix}S&e_1&e_2\\ e_1^{\mathsf T}&1&0\\ e_2^{\mathsf T}&1&1\end{pmatrix},\qquad P=\begin{pmatrix}1&0\\1&1\end{pmatrix},\qquad k=66 .
+\begin{gathered}
+H=\begin{pmatrix}S&e_1&e_2\\ e_1^{\mathsf T}&1&0\\ e_2^{\mathsf T}&1&1\end{pmatrix},\\
+P=\begin{pmatrix}1&0\\1&1\end{pmatrix},\qquad k=66 .
+\end{gathered}
 \]
 
 The body is used through two facts about \(2\times2\) binary matrices: for binary \(a,b\),
 \[
-\begin{pmatrix}1&a\\1&b\end{pmatrix}\ne P\iff b\le a,\qquad\begin{pmatrix}a&b\\1&1\end{pmatrix}\ne P\iff a\le b. \tag{2.1}
+\begin{gathered}
+\begin{pmatrix}1&a\\1&b\end{pmatrix}\ne P\iff b\le a,\\
+\begin{pmatrix}a&b\\1&1\end{pmatrix}\ne P\iff a\le b.
+\end{gathered}\tag{2.1}
 \]
 Indeed, the first matrix equals \(P\) exactly when \(a=0\) and \(b=1\), and the second exactly when \(a=1\) and \(b=0\). In both cases, if the smaller side is known to be \(1\), the other entry is forced to be \(1\); if the larger side is \(0\), the other is forced to be \(0\).
 
@@ -51,10 +61,16 @@ All other blocks are disjoint. For \(\sigma\in\{-,+\}\) let \(R_i^\sigma\) and \
 
 **Lemma 3.1.** For \(1\le i\le h\), nodes \(p,q\) at depth \(i\) and nodes \(a,b\) at depth \(i-1\):
 \[
-R_i^+(p)<R_{i-1}^+(a)\iff\pi(p)\le a,\qquad R_{i-1}^-(a)<R_i^-(p)\iff\pi(p)\ge a,
+\begin{aligned}
+R_i^+(p)<R_{i-1}^+(a)&\iff\pi(p)\le a,\\
+R_{i-1}^-(a)<R_i^-(p)&\iff\pi(p)\ge a,
+\end{aligned}
 \]
 \[
-C_{i-1}^+(b)<C_i^+(q)\iff\pi(q)\ge b,\qquad C_i^-(q)<C_{i-1}^-(b)\iff\pi(q)\le b .
+\begin{aligned}
+C_{i-1}^+(b)<C_i^+(q)&\iff\pi(q)\ge b,\\
+C_i^-(q)<C_{i-1}^-(b)&\iff\pi(q)\le b .
+\end{aligned}
 \]
 
 *Proof.* The recursion places the subtrees of the nodes at depth \(i-1\) consecutively, in increasing order of the node, each subtree occupying an interval of positions that begins with the minus row block (plus column block) of its root and ends with its plus row block (minus column block). A block of the child \(p\) lies inside the interval of its parent \(\pi(p)\), strictly between the parent's two blocks; this holds also for a leaf. Hence \(R_i^+(p)\) precedes \(R_{i-1}^+(a)\) exactly when the subtree of \(\pi(p)\) does not come after that of \(a\), that is, \(\pi(p)\le a\); and \(R_{i-1}^-(a)\) precedes \(R_i^-(p)\) exactly when \(a\le\pi(p)\). The column statements are the same with the signs exchanged. \(\square\)
@@ -76,7 +92,10 @@ In each mode the two row sets are disjoint, and so are the two column sets. A *b
 
 Each axis thus consists of \(6hs\) anchor groups, the dummy block, \(2h\) classes \(R_i^\sigma\) (or \(C_i^\sigma\)) with \(i<h\), and one class of leaves, each of size \(m\). Hence each axis has
 \[
-n=d_hm\quad\text{positions},\qquad d_h=6hs+2h+2=386h+2 ,
+\begin{gathered}
+n=d_hm\quad\text{positions},\\
+d_h=6hs+2h+2=386h+2 ,
+\end{gathered}
 \]
 identified with \([n]\) in the order just described.
 
@@ -86,14 +105,14 @@ The entries of \(A_h\in\{0,1\}^{n\times n}\) are given by three rules.
 
 1. *Anchor against anchor.* Between \(\widehat R_t(u)\) and \(\widehat C_{t'}(v)\) the entry is \(S(u,v)\) if \(t=t'\) and \(0\) if \(t\ne t'\).
 2. *Signatures.* A non-anchor row \(r\) has, against the groups \(\widehat C_t(1),\dots,\widehat C_t(s)\) of a mode \(t\), the values of \(e_j^{\mathsf T}\) if \(r\in\mathsf R_j(t)\) (\(j=1,2\)), and zeros if \(r\) lies in neither set. Symmetrically, a non-anchor column \(c\) has, against \(\widehat R_t(1),\dots,\widehat R_t(s)\), the values of \(e_j\) if \(c\in\mathsf C_j(t)\), and zeros otherwise.
-3. *Non-anchor entries.* An entry in a dummy row or a dummy column, between non-anchor positions, is \(1\). Between variable positions the entries are
+3. *Non-anchor entries.* An entry in a dummy row or a dummy column, between non-anchor positions, is \(1\). Between variable positions the entries are as in the following table, for \(0\le i\le h\) in its first line, \(0\le i<h\) in its second and \(1\le i\le h\) in its last two lines:
 \[
-\begin{array}{ccc|c}
-\text{row}&\text{column}&\text{depths}&\text{entry}\\ \hline
-R_i^+(p)&C_i^+(q)&0\le i\le h&\mathbf 1[p\le q]\\
-R_i^-(p)&C_i^-(q)&0\le i<h&\mathbf 1[p<q]\\
-R_i^+(p)&C_{i-1}^+(q)&1\le i\le h&\mathbf 1[\pi(p)\le q]\\
-R_i^-(p)&C_{i-1}^-(q)&1\le i\le h&\mathbf 1[\pi(p)<q]
+\begin{array}{cc|c}
+\text{row}&\text{column}&\text{entry}\\ \hline
+R_i^+(p)&C_i^+(q)&\mathbf 1[p\le q]\\
+R_i^-(p)&C_i^-(q)&\mathbf 1[p<q]\\
+R_i^+(p)&C_{i-1}^+(q)&\mathbf 1[\pi(p)\le q]\\
+R_i^-(p)&C_{i-1}^-(q)&\mathbf 1[\pi(p)<q]
 \end{array}
 \]
 and \(0\) in every other case.

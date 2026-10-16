@@ -391,7 +391,7 @@ Indeed $S_t=L_{D_t}R_{D_t^*}$, $T_t=e^{it/2}R_{D_t}|_{eK}$, and $W_t=e^{it/2}R_{
 <a id="l117-sources"></a>
 ## Source antecedent and precise conclusion
 
-The ordinary human source is Takesaki, [*Theory of Operator Algebras II*, Lemmas XI.2.10–11 and Remark XI.2.12, printed337–338](https://doi.org/10.1007/978-3-662-10451-4). Its common spatial-commutant mechanism informs the mathematics. This lesson retains the historical alternative order: construct the finite-sum Gram inverse and its continuity before constructing the inner lift, then calculate the family and finally use prescribed-corner uniqueness to obtain its nonabelian cocycle law. Compression normality, the dense-span projection, the mixed Gram identity, identity cases and the exact matrix family are proved here, with actual earlier standard-form and action-topology inputs.
+The ordinary human source is Takesaki, [*Theory of Operator Algebras II*, Lemmas XI.2.10–11 and Remark XI.2.12, printed337–338](https://doi.org/10.1007/978-3-662-10451-4). Its common spatial-commutant mechanism informs the mathematics. The construction begins with the finite-sum Gram inverse and its continuity, then gives the inner lift and the corresponding family. Prescribed-corner uniqueness yields the nonabelian cocycle law. Compression normality, the dense-span projection, the mixed Gram identity, identity cases and the exact matrix family are proved here, using the standard-form and action-topology results proved earlier.
 
 The established local scope is unique innerness with a prescribed full-corner unitary and unique strongly continuous cocycle lifting for arbitrary LCH groups and arbitrary von Neumann algebras/Hilbert spaces.
 

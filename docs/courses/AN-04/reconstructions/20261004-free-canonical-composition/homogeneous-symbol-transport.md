@@ -6,7 +6,7 @@ be called intrinsic. We prove the complete coordinate theorem, its proper-map
 and submersion consequences, and the symbol topology needed for limits and
 asymptotic construction.
 
-Original programme exposition, complete proofs, examples and figure: GPT-6 Astra (OpenAI), Ultra, 4 October 2026; dedicated under CC0. Exact earlier components retain their stated terms.
+Mathematical exposition, proofs, examples and figure: GPT-6 Astra (OpenAI), Ultra. Source notes and editorial text: GPT-6.1 Sol (OpenAI), Ultra. Programme text and figure: CC0. Linked human sources retain their stated terms.
 
 ## H0. Classes, conventions and exact inputs
 
@@ -40,16 +40,20 @@ The intersection is independent of the two parameters: for any fixed
 derivative its finite weight shift can be absorbed by choosing a more
 negative order. All assertions apply component by component to finite matrices.
 
-The exact earlier programme inputs are the U001 proofs of the chain and
-product rules, the smooth inverse theorem, finite-dimensional compactness,
-smooth cutoffs, the fundamental theorem of calculus and completeness of real
-numbers. They are bound by their individual identifiers in the proof map.
+The elementary inputs are the chain and product rules, the smooth inverse
+theorem, finite-dimensional compactness, smooth cutoffs, the fundamental
+theorem of calculus and completeness of real numbers. Individual locators
+are recorded in the [proof map](proof-map.json). The
+elementary analysis references
+distinguish programme arguments from linked proofs in Jiří Lebl's *Basic Analysis I–II*;
+those external texts are not included in this CC0 reading.
 [PS5](../20261004-free-intrinsic-graph/prerequisites/global-principal-symbol.md)
-supplies the proved locally finite partition construction when a manifold is
-used. No completeness, interpolation or symbol summation theorem is imported
-without proof. The specific ordinary phase lift in
+supplies a locally finite partition construction for the manifold arguments.
+Completeness of symbol spaces, the finite-difference estimate and asymptotic
+summation are proved below. The ordinary phase lift in
 [PH F4](../20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md)
-is an earlier application; the theorem here permits arbitrary homogeneous maps.
+is an application to a specific phase; H2 treats arbitrary homogeneous maps
+under its stated parameter conditions.
 
 ![The derivative budget and normalized properness](figures/symbol-transport.svg)
 
@@ -494,7 +498,7 @@ on every order must agree by applying continuity at \(q>m\) to (H19).
 This argument does not claim that bounded-frequency symbols are dense in
 the original order topology.
 
-## H9. Transport of expansions and the exact scope now proved
+## H9. Transport of expansions and parameter scope {#h9-transport-of-expansions-and-the-exact-scope-now-proved}
 
 Let \(F\) satisfy any case in H2. If \(a\sim\sum_j a_j\) with
 orders tending to minus infinity as in H6, then
@@ -509,15 +513,14 @@ well defined. On equivariant bundles use H3, adding the stated degree shift
 if a nonzero-degree bundle morphism is applied. The support properties in
 H4–H5 apply to the resulting symbols, including their smoothing ambiguity.
 
-The general homogeneous-map prerequisite is now supplied, with properness
-controlling normalized compact supports, submersions reflecting symbol
-regularity, and explicit finite-seminorm continuity. The symbol spaces have
-proved completeness, asymptotic summation, differentiated-asymptotic recovery,
-and the exact weaker-order cutoff topology. These results include the
-derivative-loss classes, but they do not by themselves extend the earlier
-ordinary-symbol stationary-phase, composition or Sobolev theorems to those
-classes. Those analytic estimates, involutivity, propagation and the remaining
-full AN-04 scope are still open obligations.
+Homogeneous pullback is continuous in the cases specified in H2. Properness
+controls normalized compact supports, and submersions reflect symbol
+regularity. The symbol spaces are complete and admit asymptotic summation,
+recovery of differentiated asymptotics and convergence of frequency cutoffs
+in every weaker order. These statements apply to the indicated derivative-loss
+classes. Stationary-phase estimates, Fourier-integral composition, Sobolev
+mapping, involutivity and propagation require separate analytic arguments
+at their respective parameter ranges.
 
 ## Four exercises with complete solutions
 
@@ -587,14 +590,18 @@ order-\(\varepsilon\) weight gives at most
 Compact seminorms vanish eventually. This proves (H19) in this example
 and shows why continuity at all orders appears in the extension principle.
 
-## Free source and programme continuation
+## Sources and prerequisite scope {#free-source-and-programme-continuation}
 
-The human source is Lars Hörmander's freely readable
+Lars Hörmander's freely readable
 [*Fourier integral operators. I*](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
-Section 1.1. It supplies the symbol-class framework
-and homogeneous-map parameter ranges. H1–H9 give the proofs in the programme,
-including the completeness and asymptotic arguments whose proofs that paper
-refers elsewhere. No work appearing only in its bibliography is adopted.
-The properness argument, explicit local-section left inverse and the full
-finite-difference estimates are supplied here. Source citations replace none
-of the exact proof dependencies. All earlier component notices remain intact.
+*Acta Mathematica* **127** (1971), 79–183, Section 1.1 (printed pages 82–88),
+is the source for the symbol-class framework and homogeneous-map parameter
+ranges. Proposition 1.1.6 gives the elementary symbol-space operations;
+Proposition 1.1.7 and its following remark describe the four pullback cases.
+Propositions 1.1.9–1.1.11 and Corollary 1.1.12 concern asymptotics and cutoff
+topology. H1–H9 give direct programme proofs, including the completeness and
+asymptotic arguments for which the article refers to another work. The
+properness argument, explicit local-section left inverse and finite-difference
+estimates are also proved here. Elementary analysis proofs are identified
+separately in the linked prerequisite guide; the cited human works retain
+their own terms. A [free PDF copy](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6118-11511_2006_Article_BF02392052.pdf) is available from the Yau Mathematical Sciences Center archive.

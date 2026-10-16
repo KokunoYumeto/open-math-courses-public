@@ -5,7 +5,7 @@
 
 The ordinary spectrum of an action sees every frequency occurring anywhere in the algebra. The Connes spectrum keeps only frequencies that survive every nonzero corner cut out by a fixed projection. This lesson defines that intersection, proves that central supports suffice, and shows that equivalent fixed projections give reduced actions with the same Connes spectrum.
 
-The proof is organized around spectral subspaces rather than an unproved corner slogan. Its key construction localizes a partial isometry in frequency, takes the join of the right supports of its orbit, and sandwiches a spectral element between two orbit translates.
+The proof uses spectral subspaces to compare fixed corners. Its key construction localizes a partial isometry in frequency, takes the join of the right supports of its orbit, and sandwiches a spectral element between two orbit translates.
 
 *Original expression and new illustration are CC0-1.0 to the extent of rights held; prerequisite component terms remain their own.*
 
@@ -16,7 +16,7 @@ The proof is organized around spectral subspaces rather than an unproved corner 
 
 The group and Hilbert space are arbitrary; no countability, separability or factor assumption is imposed. The actual normal integrated action is [AT5](OA-FLOW-AT.md#oa-flow.at.5). Its restriction to any fixed corner uses exactly the same scalar integrals. The complete spectral tools are [GL0–3](OA-FLOW-GL.md#gl-0), [GL6–7](OA-FLOW-GL.md#gl-6), the compact local Fourier plateaus of [LF1](OA-FLOW-LF.md#lf-1), and the fixed/eigenoperator identification of [SS3](OA-FLOW-SS.md#ss-3). Bounded supports and arbitrary joins are constructed in [PC1](OA-FLOW-PC.md#oa-flow.projection.pc1); [SF0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0) proves the commutant-unitary test. The local compact-neighbourhood arguments use [H0](OA-FLOW-TOPOLOGY.md#l138-h0).
 
-Use the negative transform \(\widehat k(\gamma)=\int_G k(t)\overline{\gamma(t)}\,dm(t)\) and \(A(H)=\{\widehat k:k\in L^1(G)\}\), with \(\|\widehat k\|_A=\|k\|_1\). In the retained formulas \(\alpha_g=T_k\) when \(g=\widehat k\). Fourier injectivity is the earlier scalar theorem bound through LF/GL. Thus \(\alpha_t(x)=\overline{\gamma(t)}x\) has label \(\gamma\). This fixes all signs while leaving the historical equations (C1)–(C28) unchanged. The existing real-line positive-transform proof and alternative support sandwich in [CS0–3](OA-FLOW-CS.md#oa-flow.cs.0) remain earlier results; reflection of real labels compares the two conventions. The general-group proof below does not replace that specialization.
+Use the negative transform \(\widehat k(\gamma)=\int_G k(t)\overline{\gamma(t)}\,dm(t)\) and \(A(H)=\{\widehat k:k\in L^1(G)\}\), with \(\|\widehat k\|_A=\|k\|_1\). In the formulas below \(\alpha_g=T_k\) when \(g=\widehat k\). Fourier injectivity is the earlier scalar theorem bound through LF/GL. Thus \(\alpha_t(x)=\overline{\gamma(t)}x\) has label \(\gamma\). This convention fixes the signs in (C1)–(C28). The real-line positive-transform proof and alternative support sandwich in [CS0–3](OA-FLOW-CS.md#oa-flow.cs.0) give another treatment of real actions; reflection of real labels compares the two conventions.
 
 For \(J\subset A(H)\), write \(h(J)=\{\gamma\in H:g(\gamma)=0\text{ for every }g\in J\}\). Here \(\operatorname{Sp}_\alpha(x)=h(\{g:\alpha_g(x)=0\})\), \(\operatorname{Sp}(\alpha)=h(\{g:\alpha_g=0\})\), and \(M_\alpha(E)=\{x:\operatorname{Sp}_\alpha(x)\subset E\}\). These are exactly the GL hull spectra, with capitalized notation; no second spectrum or support convention is introduced.
 
@@ -362,18 +362,18 @@ The exact neighbourhoods \(V=(-1/10,1/10)\), \(W=(-13/10,13/10)\), \(O=(-3/2,3/2
 
 **Additional problem.** Could one replace \(e_1\) by \(s_r(x)\) in this model merely because it is a projection?
 
-**Solution.** No: its displayed matrix is changed by \(\alpha_\pi\), so it is not a fixed projection and cannot index (C6). The join of the two displayed translates is already \(1\), which is fixed. This is exactly the domain distinction used in the retained problem and solution after (C28).
+**Solution.** No: its displayed matrix is changed by \(\alpha_\pi\), so it is not a fixed projection and cannot index (C6). The join of the two displayed translates is already \(1\), which is fixed. This is exactly the domain distinction used in the problem and solution after (C28).
 
 <a id="oa-flow.gcc.sources"></a>
 
 <a id="gcc-sources"></a>
 ## Sources and the bounded conclusion
 
-The historical equations (C1)–(C28), their proofs, rank-one example, and original problem and solution are retained. The transport is presented before the central-support reduction: one mechanism transports a nonzero local spectral witness along orbit supports, while the other finds a witness by multiplying with fixed unitaries. Both use the actual earlier local Fourier and projection proofs.
+Two mechanisms compare the spectra of corners. The first transports a nonzero local spectral witness along orbit supports; the second finds a witness by multiplying with fixed unitaries. The rank-one example and solved problems illustrate the support conditions used in both arguments.
 
-The general fixed-corner assertions correspond to Takesaki, *Theory of Operator Algebras II*, [XI.2 Definition 2.1 and Lemma 2.2, printed 332–333](https://doi.org/10.1007/978-3-662-10451-4). The independent integration and hull-spectrum framework is also developed in Arveson, [*On groups of automorphisms of operator algebras*](https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf), J. Funct. Anal. 15 (1974), §§1–2. LF, GL and SS supply complete local proofs for the harmonic-analysis results that those source pages cite externally. The existing free-source real-action CS argument remains available with its own stronger factor hypotheses and positive-transform convention. None of these citations replaces a programme proof.
+The general fixed-corner assertions correspond to Takesaki, *Theory of Operator Algebras II*, [XI.2 Definition 2.1 and Lemma 2.2, printed 332–333](https://doi.org/10.1007/978-3-662-10451-4). The independent integration and hull-spectrum framework is also developed in Arveson, [*On groups of automorphisms of operator algebras*](https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf), J. Funct. Anal. 15 (1974), §§1–2. LF, GL and SS supply complete local proofs for the harmonic-analysis results that those source pages cite externally. The real-action CS argument has stronger factor hypotheses and a positive-transform convention. None of these citations replaces a programme proof.
 
-The bounded results here are fixed-corner restriction, local detection, central-support spectral detection, the central-corner formula, the fixed-algebra factor case and equivalent-fixed-corner invariance for arbitrary LCA \(G\). No subgroup theorem, cocycle invariance, dual-action-center identification or whole C3 completion is claimed. Spot-checked in a separate AI session.
+The results here are fixed-corner restriction, local detection, central-support spectral detection, the central-corner formula, the fixed-algebra factor case and equivalent-fixed-corner invariance for arbitrary LCA \(G\).
 
 <a id="oa-flow.gcc.figure"></a>
 
@@ -418,6 +418,6 @@ For \(t_1=t_2=0\), the final sandwich is
 \]
 Thus the product bound can be conservative without losing nonvanishing or the target corner. With \(V=(-1/10,1/10)\), \(W=(-13/10,13/10)\), and \(O=(-3/2,3/2)\), the exact containments are \(\overline{U_1}-\overline{U_1}=[-6/5,6/5]\subset W\) and \(\overline V+W=(-7/5,7/5)\subset O\). These are the neighbourhood relations required by C20–C21. The abstract argument can choose arbitrarily small differences around any selected spectral point; this particular model uses the explicitly stated larger window.
 
-The proof mechanism's human antecedent is Takesaki, *Theory of Operator Algebras II*, [XI.2 Lemma 2.2(iv), printed 332–333](https://doi.org/10.1007/978-3-662-10451-4). The earlier local Fourier and hull-spectrum tools retain their freely accessible Arveson/LF/GL/SS developments. The reviewed source pages contain no corresponding matrix circle or finite model; this figure and its caption are original.
+The proof mechanism's human antecedent is Takesaki, *Theory of Operator Algebras II*, [XI.2 Lemma 2.2(iv), printed 332–333](https://doi.org/10.1007/978-3-662-10451-4). The earlier local Fourier and hull-spectrum tools retain their freely accessible Arveson/LF/GL/SS developments. The matrix circle and finite model illustrate the orbit-support construction used in the proof.
 
 [Editable SVG](../assets/general-connes-corners/assets/fixed-corners.svg), [exact semantic data](../assets/general-connes-corners/assets/fixed-corners-data.json), and [reproduction source](../assets/general-connes-corners/render_corners.py) are included. Native PNG: 3000 by 2000 pixels. Original figure and caption: GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026, CC0-1.0 to the extent of rights held.

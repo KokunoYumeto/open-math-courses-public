@@ -135,7 +135,7 @@ a linear isomorphism of \(\mathfrak u(k)\times M_{r\times k}(\mathbb C)\times\ma
 &=\begin{pmatrix}0&2Z^*\\2Z&-B\end{pmatrix}.
 \end{aligned}
 \]
-At \(t=0\), \(F_0=W_0=W_0^{-1}\), so the derivative of \(F_0W^{-1}\) is \(\dot FW_0^{-1}-F_0W_0^{-1}\dot WW_0^{-1}=\dot FW_0-\dot WW_0\), which is the displayed matrix; the derivative of \(\log\) at \(I\) is the identity. The linear map is injective, and both spaces have real dimension \(k^2+2kr+r^2=m^2\). If \(r=0\), the map is \(A\mapsto\varepsilon A\). \(\square\)
+At \(t=0\), \(F_0=W_0=W_0^{-1}\), so the derivative of \(F_0W^{-1}\) is \(\dot FW_0^{-1}-F_0W_0^{-1}\dot WW_0^{-1}\), that is \(\dot FW_0-\dot WW_0\), which is the displayed matrix; the derivative of \(\log\) at \(I\) is the identity. The linear map is injective, and both spaces have real dimension \(k^2+2kr+r^2=m^2\). If \(r=0\), the map is \(A\mapsto\varepsilon A\). \(\square\)
 
 ## 5. The fixed-space lemma
 

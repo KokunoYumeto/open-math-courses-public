@@ -138,7 +138,14 @@ The proof never assumes that the labelling \(a\) is pulled back from a finite qu
 
 **5.2.** Both \(g\) and \(g'\) lie in \(P\), and \(\pi\) is injective on \(P\).
 
-**5.3.** \(\exp(w)=\cos|w|+\frac w{|w|}\sin|w|\), so \(|\exp(w)-1|^2=(1-\cos|w|)^2+\sin^2|w|=2-2\cos|w|=4\sin^2(|w|/2)\). For \(\tau\in[0,1]\), \(\tau|w|/2\in[0,\pi/2)\), where the sine increases.
+**5.3.** \(\exp(w)=\cos|w|+\frac w{|w|}\sin|w|\), so
+\[
+\begin{aligned}
+&|\exp(w)-1|^2\\
+&\quad=(1-\cos|w|)^2+\sin^2|w|\\
+&\quad=2-2\cos|w|=4\sin^2(|w|/2).
+\end{aligned}
+\] For \(\tau\in[0,1]\), \(\tau|w|/2\in[0,\pi/2)\), where the sine increases.
 
 **5.4.** The second condition of the lemma is vacuous when \(\mathcal D\) is empty, and so is (2.1); then \(h=0\) and \(\mathcal O_\tau=H^m\), which has empty boundary. The degree of \(f_\tau\) on \(H^m\) is constant by (DEG 3) and equals \(\deg(f_0,H^m,\mathbf 1)\ne0\) by Lemma 5.1 of the lesson on word maps, so \(f_1\) has a root.
 

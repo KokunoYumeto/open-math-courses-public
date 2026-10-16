@@ -212,7 +212,7 @@ The model and diagram accompany the complete proofs [LC0](#lc0), [LC1](#lc1), [L
 <a id="historical-alternative"></a>
 ## A second proof through full-corner Connes equality
 
-We now prove the same conclusion by first transferring the trivial cyclic Connes spectrum from the chosen corner to the whole algebra. This route uses the full-corner theorem in Cancel an inner subgroup, then detect the exact spectrum, followed by the same innerness criterion and fixed small-spectrum theorem.
+We now prove the same conclusion by first transferring the trivial cyclic Connes spectrum from the chosen corner to the whole algebra. This route uses the full-corner theorem in [Cancel an inner subgroup, then detect the exact spectrum](OA-FLOW-L119.md#oa-flow.minfix.fullconnes), followed by the same innerness criterion and fixed small-spectrum theorem.
 
 For a centrally ergodic action, a time annihilating the Connes spectrum is not
 merely inner when the reduced spectrum is compact modulo the Connes spectrum.
@@ -482,7 +482,7 @@ z_M(e)=1.
 $$
 
 The full fixed-corner theorem from
-Cancel an inner subgroup, then detect the exact spectrum now
+[Cancel an inner subgroup, then detect the exact spectrum](OA-FLOW-L119.md#oa-flow.minfix.fullconnes) now
 gives
 
 <a id="equation-q22"></a>
@@ -672,7 +672,7 @@ thickenings occurs in the proof. $\square$
 Further reading: Takesaki, *Theory of Operator Algebras II*, Theorem
 XI.2.9(iii).
 Equations (Q3)–(Q16) give the saturated compact-quotient selection, (Q17)–(Q23)
-deduce global innerness from the corrected cyclic-spectrum argument,
+deduce global innerness from the cyclic-spectrum argument,
 (Q24)–(Q28) make the tolerance and open-arc estimates consistent, and
 (Q29)–(Q36) use unique full-corner lifting to obtain and characterize the
 central fixed implementer.

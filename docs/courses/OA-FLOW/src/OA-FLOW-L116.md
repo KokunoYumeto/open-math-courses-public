@@ -3,9 +3,9 @@
 
 # The fixed center and the factor criterion
 
-The coefficient algebra can carry many central operators while its crossed product has only scalar center. The exact obstruction is the invariant center of the coefficient algebra, together with the action of the dual group on the crossed-product center. We identify the first obstruction directly from the regular generators, prove the factor criterion, and retain a complete bidual proof of the same identity. A two-component translation system then shows why central ergodicity is necessary.
+The coefficient algebra can carry many central operators while its crossed product has only scalar center. The exact obstruction is the invariant center of the coefficient algebra, together with the action of the dual group on the crossed-product center. We identify the first obstruction directly from the regular generators, prove the factor criterion, and give a second proof of the same identity using biduality. A two-component translation system then shows why central ergodicity is necessary.
 
-*Original programme expression is dedicated to CC0-1.0 to the extent of rights held; genuine prerequisite and component terms remain separate. The complete L115 input is bound to its earlier canonical proof.*
+*Original programme expression is dedicated to CC0-1.0 to the extent of rights held; genuine prerequisite and component terms remain separate.*
 
 <a id="oa-flow.connes.centralergodic"></a>
 
@@ -55,9 +55,9 @@ Its spectral input is the complete [L115 dual-center kernel proof](OA-FLOW-L115.
 =\ker\!\left(\theta:H\to\operatorname{Aut}Z(N)\right). \tag{F4}
 \]
 
-That input is a separately owned full proof, not a citation to an external theorem. Our direct bridge uses the entire [DA FIXED proof](OA-FLOW-DA.md#da-fixed). The alternative uses the full [ND construction](OA-FLOW-ND.md#nd-construction) and [normal inverse](OA-FLOW-ND.md#nd-inverse), not its opening theorem announcement. The [NCF1 matrix-entry proof](OA-FLOW-NCF.md#ncf-1), [BD1 bicommutant density](OA-FLOW-BD.md#oa-flow.bd.1), [BD4 bounded approximation](OA-FLOW-BD.md#oa-flow.bd.4) and [BD5 bounded strong-to-ultraweak limit](OA-FLOW-BD.md#oa-flow.bd.5) justify the generator and arbitrary-basis passages. [CF1 choice](OA-FLOW-CF.md#oa-flow.cf.1), [CF8 Hilbert projections](OA-FLOW-CF.md#oa-flow.cf.8), [CF10 completion](OA-FLOW-CF.md#oa-flow.cf.10) and the [H0 tensor construction](OA-FLOW-TOPOLOGY.md#l138-h0) give arbitrary Hilbert tensor spaces and bases.
+The direct bridge uses the entire [DA FIXED proof](OA-FLOW-DA.md#da-fixed). The alternative uses the full [ND construction](OA-FLOW-ND.md#nd-construction) and [normal inverse](OA-FLOW-ND.md#nd-inverse), not its opening theorem announcement. The [NCF1 matrix-entry proof](OA-FLOW-NCF.md#ncf-1), [BD1 bicommutant density](OA-FLOW-BD.md#oa-flow.bd.1), [BD4 bounded approximation](OA-FLOW-BD.md#oa-flow.bd.4) and [BD5 bounded strong-to-ultraweak limit](OA-FLOW-BD.md#oa-flow.bd.5) justify the generator and arbitrary-basis passages. [CF1 choice](OA-FLOW-CF.md#oa-flow.cf.1), [CF8 Hilbert projections](OA-FLOW-CF.md#oa-flow.cf.8), [CF10 completion](OA-FLOW-CF.md#oa-flow.cf.10) and the [H0 tensor construction](OA-FLOW-TOPOLOGY.md#l138-h0) give arbitrary Hilbert tensor spaces and bases.
 
-For the translation model below we use the actual [ND multiplication/predual proof](OA-FLOW-ND.md#nd-multiplication) and [concrete Weyl proof](OA-FLOW-ND.md#nd-weyl-proof), including its full translation-invariant-multiplier conclusion. The exact Haar and vector conventions are [L24 HAAR](OA-FLOW-L24.md#oa-flow.grp.haarconventions), [TRANSLATIONS](OA-FLOW-L24.md#oa-flow.grp.translations) and [VECTORINTEGRATION](OA-FLOW-L24.md#oa-flow.grp.vectorintegration), [HR3](OA-FLOW-HR.md#hr-03), [HR5 Radon product and Hilbert tensor corollary](OA-FLOW-HR.md#hr-05), [HR6 Haar positivity](OA-FLOW-HR.md#hr-06) and [HR7 changes of variables](OA-FLOW-HR.md#hr-07). [AT1](OA-FLOW-AT.md#oa-flow.at.1) and [ST2](OA-FLOW-ST12.md#oa-flow.st.2) supply the whole normal-action and normal-image topologies. The earlier free-source action, Haar and Fourier developments remain intact.
+For the translation model below we use the actual [ND multiplication/predual proof](OA-FLOW-ND.md#nd-multiplication) and [concrete Weyl proof](OA-FLOW-ND.md#nd-weyl-proof), including its full translation-invariant-multiplier conclusion. The exact Haar and vector conventions are [L24 HAAR](OA-FLOW-L24.md#oa-flow.grp.haarconventions), [TRANSLATIONS](OA-FLOW-L24.md#oa-flow.grp.translations) and [VECTORINTEGRATION](OA-FLOW-L24.md#oa-flow.grp.vectorintegration), [HR3](OA-FLOW-HR.md#hr-03), [HR5 Radon product and Hilbert tensor corollary](OA-FLOW-HR.md#hr-05), [HR6 Haar positivity](OA-FLOW-HR.md#hr-06) and [HR7 changes of variables](OA-FLOW-HR.md#hr-07). [AT1](OA-FLOW-AT.md#oa-flow.at.1) and [ST2](OA-FLOW-ST12.md#oa-flow.st.2) supply the whole normal-action and normal-image topologies. The action, Haar and Fourier lessons establish these analytic prerequisites.
 
 <a id="oa-flow.l116.direct"></a>
 
@@ -143,7 +143,7 @@ Using (F4) gives
 \boxed{\Gamma(\alpha)=H.} \tag{F19}
 \]
 
-This reverse implication does not need central ergodicity. In fact factoriality also forces central ergodicity: (F5) and injectivity of \(i\) imply \(Z(M)^\alpha=\mathbb C1\). Consequently, at these exact inputs, the two conditions \(Z(M)^\alpha=\mathbb C1\) and \(\Gamma(\alpha)=H\) together are equivalent to factoriality. This adds no recognition or classification conclusion.
+This reverse implication does not need central ergodicity. In fact factoriality also forces central ergodicity: (F5) and injectivity of \(i\) imply \(Z(M)^\alpha=\mathbb C1\). Consequently, at these exact inputs, the two conditions \(Z(M)^\alpha=\mathbb C1\) and \(\Gamma(\alpha)=H\) together are equivalent to factoriality.
 
 <a id="oa-flow.l116.tensorcenter"></a>
 
@@ -170,9 +170,9 @@ In the application \(K=L^2(G)\), this space is nonzero. Choose a nonzero compact
 <a id="oa-flow.connes.bidualcenter"></a>
 
 <a id="fc-bidual"></a>
-## The retained bidual proof of the fixed-center identity
+## A bidual proof of the fixed-center identity
 
-This second proof of (F5) retains the original generator and surviving-action argument in full. The inclusion \(i(Z(M)^\alpha)\subset Z(N)^\theta\) was already proved by (F6). For the other inclusion, take \(z\in Z(N)^\theta\) and form
+This second proof of (F5) uses the generators and the surviving action in the double crossed product. The inclusion \(i(Z(M)^\alpha)\subset Z(N)^\theta\) was already proved by (F6). For the other inclusion, take \(z\in Z(N)^\theta\) and form
 
 <a id="equation-f7"></a>
 
@@ -384,9 +384,9 @@ For the drawing only, let \(G=\mathbb Z/3\mathbb Z\), with counting Haar measure
 <a id="fc-sources"></a>
 ## Source and conclusion
 
-Takesaki, [*Theory of Operator Algebras II*, Corollary XI.2.8, printed336](https://doi.org/10.1007/978-3-662-10451-4), gives the factor criterion and the bidual-center route. The direct generator proof of (F5) leads this treatment; the arbitrary-basis tensor-center calculation, exact regular shear and complete two-component example expose the normality, multiplicity and countability issues. The earlier free-source AT, Haar and concrete Fourier/Weyl developments are substantive complete proof inputs and remain retained. The reference supplies historical credit and proof comparison, rather than a substitute for the written internal proofs.
+Takesaki, [*Theory of Operator Algebras II*, Corollary XI.2.8, printed336](https://doi.org/10.1007/978-3-662-10451-4), gives the factor criterion and the bidual-center route. The direct generator proof of (F5) leads this treatment; the arbitrary-basis tensor-center calculation, exact regular shear and complete two-component example expose the normality, multiplicity and countability issues. The AT, Haar and concrete Fourier/Weyl lessons establish the analytic inputs. The reference supplies historical credit and proof comparison, rather than a substitute for the written internal proofs.
 
-The conclusions are the fixed-center identity, both implications of the factor criterion at the complete dual-center input, the full normal translation model and its unrestricted two-component counterexample. No general action recognition, integrability criterion, homogeneity theorem, classification or whole C1–C6 completion follows merely from these center calculations.
+The conclusions are the fixed-center identity, both implications of the factor criterion at the complete dual-center input, the full normal translation model and its unrestricted two-component counterexample.
 
 <a id="oa-flow.l116.figure"></a>
 
@@ -394,7 +394,7 @@ The conclusions are the fixed-center identity, both implications of the factor c
 
 ![Fixed center, exact shear and two surviving components](../assets/factor-criterion/assets/factor-criterion.png)
 
-The upper panels record the proof for every nonzero von Neumann algebra and every locally compact Hausdorff abelian group in [the setting](OA-FLOW-L116.md#fc-setting). For \(z\in Z(N)^\theta\), the full dual-fixed-algebra theorem writes \(z=i(c)\). Faithfulness of \(i\) turns \(i([c,a])=0\) into \(c\in Z(M)\); covariance turns \(i(\alpha_s(c))=i(c)\) into \(\alpha_s(c)=c\). The converse checks both generating families and their strong closure. This proves exactly \(Z(N)^\theta=i(Z(M)^\alpha)\), [F5 and FC1–FC2](OA-FLOW-L116.md#fc-direct). Full Connes spectrum makes the entire center dual-fixed by the complete earlier kernel proof. Central ergodicity then gives \(Z(N)=\mathbb C1\), [F16–F17](OA-FLOW-L116.md#fc-factor). The diagram does not replace either proof or its separately bound L115 input.
+The upper panels record the proof for every nonzero von Neumann algebra and every locally compact Hausdorff abelian group in [the setting](OA-FLOW-L116.md#fc-setting). For \(z\in Z(N)^\theta\), the full dual-fixed-algebra theorem writes \(z=i(c)\). Faithfulness of \(i\) turns \(i([c,a])=0\) into \(c\in Z(M)\); covariance turns \(i(\alpha_s(c))=i(c)\) into \(\alpha_s(c)=c\). The converse checks both generating families and their strong closure. This proves exactly \(Z(N)^\theta=i(Z(M)^\alpha)\), [F5 and FC1–FC2](OA-FLOW-L116.md#fc-direct). Full Connes spectrum makes the entire center dual-fixed by the complete earlier kernel proof. Central ergodicity then gives \(Z(N)=\mathbb C1\), [F16–F17](OA-FLOW-L116.md#fc-factor). The diagram summarizes the two proofs and the L115 kernel theorem.
 
 The lower panels specialize only the drawing to \(G=\mathbb Z/3\mathbb Z\) with counting Haar measure. Thus \(K=L^2(G)=\mathbb C^3\), the regular tensor space has dimension \(9\), and the shear \((r,t)\mapsto(u,v)=(r+t,r)\) is a permutation of all nine coordinate vectors. Its inverse is \((r,t)=(v,u-v)\), with all coordinates reduced modulo three. The color identifies the retained coordinate \(v=r\); the curved arrows and their lengths are layout choices, not a metric on the group. The actual unitary is \([S\xi](u,v)=\xi(v,u-v)\), and its [full unrestricted proof](OA-FLOW-L116.md#fc-translation) first uses compact continuous Radon-product functions before extending to the whole Hilbert space.
 

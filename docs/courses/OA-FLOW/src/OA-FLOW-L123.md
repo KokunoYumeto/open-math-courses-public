@@ -81,7 +81,7 @@ e\in\operatorname{Proj}(Z(N)),\quad \sigma(e)=e,\quad v^*v=vv^*=e,
 \tag{IC4}
 \]
 
-The implementation statement follows by multiplying (IC3) by \(v^*\) and using \(\sigma(e)=e\). Both support inequalities have been obtained from the same intertwiner. The adjoint-intertwiner route is retained in the alternative proof below.
+The implementation statement follows by multiplying (IC3) by \(v^*\) and using \(\sigma(e)=e\). Both support inequalities have been obtained from the same intertwiner. The alternative proof below obtains the second inequality from the adjoint intertwiner.
 
 <a id="oa-flow.l123.ic2"></a><a id="ic2"></a>
 ## Disjointify the carriers and construct the largest inner central part
@@ -164,7 +164,7 @@ For \(\zeta\ne0\), \(\omega_\zeta(d)=\langle d\zeta,\zeta\rangle/\|\zeta\|^2\) i
 
 For completeness the normal slices in the alternative proof can be constructed for every normal functional. Write \(\omega(d)=\sum_n\langle d\xi_n,\eta_n\rangle\) by CP4/CP6 and set \(S_\omega(X)=\sum_n S_{\xi_n,\eta_n}(X)\). The series converges in operator norm, uniformly on a bounded set of \(X\), because \(\sum_n\|\xi_n\|\|\eta_n\|<\infty\). Its values lie in \(M_1\). Its bimodule identity passes through the series. Each predual test pulled back by this map is the norm limit of the normal pullbacks of its finite sums; CP6's norm closure of the concrete predual proves normality. On elementary tensors it equals \(\omega(d)b\); this also proves independence of the chosen vector-series representation, since two normal maps agreeing on the elementary tensor algebra agree everywhere by BD4/BD5.
 
-Formula (NS1) expresses every normal functional as a linear combination of four positive normal ones. If a positive functional \(\psi\) is nonzero, positivity of \(\psi((x+\lambda y)^*(x+\lambda y))\) as a quadratic polynomial proves its Cauchy–Schwarz inequality. Taking \(y=1\), and using \(x^*x\le\|x\|^2 1\), gives \(|\psi(x)|\le\psi(1)\|x\|\); equality at \(1\) proves \(\|\psi\|=\psi(1)>0\). Dividing by that value yields a normal state. Therefore every normal functional is a linear combination of normal states, exactly as used in the retained proof.
+Formula (NS1) expresses every normal functional as a linear combination of four positive normal ones. If a positive functional \(\psi\) is nonzero, positivity of \(\psi((x+\lambda y)^*(x+\lambda y))\) as a quadratic polynomial proves its Cauchy–Schwarz inequality. Taking \(y=1\), and using \(x^*x\le\|x\|^2 1\), gives \(|\psi(x)|\le\psi(1)\|x\|\); equality at \(1\) proves \(\|\psi\|=\psi(1)>0\). Dividing by that value yields a normal state. Therefore every normal functional is a linear combination of normal states, as used in the maximal-remainder proof.
 
 <a id="oa-flow.l123.ic4"></a><a id="ic4"></a>
 ## The slice family fills the identity

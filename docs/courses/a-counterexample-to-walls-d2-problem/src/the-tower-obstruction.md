@@ -10,7 +10,7 @@ The proof builds a tower. A map from a finite complex \(F\) into \(Y\) on which 
 - The tower theorem (Theorem 2.1).
 - Characters and elements of finite order (Corollary 3.1).
 
-The lesson follows [OpenAI-W, Section 2]. It uses the complexes \(C_*(Z;\rho)\), Lemmas 4.1 to 4.4 and the standard theorems TOP1 to TOP6 from [Wall's D(2) problem and twisted homology](walls-d2-problem-and-twisted-homology.md).
+The lesson follows [OpenAI-W, Section 2]. It uses the complexes \(C_*(Z;\rho)\), Lemmas 4.1 to 4.4 and the theorems TOP1 to TOP6 from [Wall's D(2) problem and twisted homology](walls-d2-problem-and-twisted-homology.md); of these, only the homotopy invariance in TOP5 is not proved in the programme.
 
 ## 1. Infinite cyclic covers
 
@@ -52,7 +52,7 @@ The cover \(\widehat A\) is an infinite complex, and its twisted chain groups ha
 
 For a connected complex \(F\), a map \(f:F\to Y\) and a character \(\rho\) of \(\pi_1(Y)\), the character \(\rho f_*\) of \(\pi_1(F)\) is the *pullback* of \(\rho\) by \(f\).
 
-**Theorem 2.1** ([OpenAI-W]). Assume TOP1 to TOP6. Let \(Y\) be a finite connected CW complex of dimension at most two and \(\rho\) a character of \(\pi_1(Y)\) with \(H_2(Y;\rho)=0\). Let \(F\) be a finite connected simplicial complex with \(b_1(F)=0\). Then for every map \(f:F\to Y\) the pullback of \(\rho\) by \(f\) is trivial.
+**Theorem 2.1** ([OpenAI-W]). Assume the homotopy invariance in TOP5. Let \(Y\) be a finite connected CW complex of dimension at most two and \(\rho\) a character of \(\pi_1(Y)\) with \(H_2(Y;\rho)=0\). Let \(F\) be a finite connected simplicial complex with \(b_1(F)=0\). Then for every map \(f:F\to Y\) the pullback of \(\rho\) by \(f\) is trivial.
 
 **Proof.** Suppose that the pullback of \(\rho\) by a map \(f\) is not trivial.
 
@@ -84,7 +84,7 @@ and let \(\rho_{i+1}\) be the character \(\rho_i|_{N_i}\) of \(\pi_1(\widehat A_
 
 ## 3. Elements of finite order
 
-**Corollary 3.1** ([OpenAI-W]). Assume TOP1 to TOP6. Let \(Y\) be a finite connected CW complex of dimension at most two and \(\rho\) a character of \(\pi_1(Y)\) with \(H_2(Y;\rho)=0\). Then \(\rho(g)=1\) for every element \(g\in\pi_1(Y)\) of finite order.
+**Corollary 3.1** ([OpenAI-W]). Assume the homotopy invariance in TOP5. Let \(Y\) be a finite connected CW complex of dimension at most two and \(\rho\) a character of \(\pi_1(Y)\) with \(H_2(Y;\rho)=0\). Then \(\rho(g)=1\) for every element \(g\in\pi_1(Y)\) of finite order.
 
 **Proof.** Let \(g\) have the order \(n\ge2\). Let \(M_n\) be the presentation complex of \(\langle x\mid x^n\rangle\): a circle with one cell of dimension two attached along the loop that runs \(n\) times around the circle. A loop in \(Y\) that represents \(g\) is a map of the circle to \(Y\); the loop that runs \(n\) times along it represents \(g^n=1\) and is homotopic to a constant loop, so the map extends over the cell of dimension two. This gives a map \(f:M_n\to Y\) with \(f_*(x)=g\).
 

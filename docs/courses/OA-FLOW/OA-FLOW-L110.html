@@ -1,0 +1,540 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Spectral transfer on ordinary Banach spaces · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math mjx-container mjx-assistive-mml{width:1px!important;height:1px!important;padding:0!important;overflow:hidden!important}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L109.html">Previous lesson</a><a href="OA-FLOW-GCC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L110.md">Lesson source</a></nav><h1 id="OA-FLOW.NBS.VECTORS">Spectral transfer on ordinary Banach spaces</h1>
+<p>For two uniformly bounded actions, an operator can move a vector's frequencies by the frequencies it carries itself. We prove this for bounded maps between arbitrary complex Banach spaces. The vector limits are in norm; the operator limits are pointwise in norm, with explicit uniform bounds. No predual or reflexivity assumption is used.</p>
+<p><em>Original expression: CC0-1.0 to the extent of rights held.</em></p>
+<p><a id="oa-flow.nbs.vectors"></a></p>
+<h2 id="vector-filters-and-the-fourier-convention">Vector filters and the Fourier convention</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff abelian group, write <span class="math" data-tex="\(H=\widehat G\)">\(H=\widehat G\)</span>, and use additive notation. Fix the positive transform
+<span class="math math-display" data-tex="\[
+ f(p)=\mathcal Fa(p)=\int_G a(t)(t,p)\,dt,\qquad
+ A(H)=\mathcal F(L^1(G)),\qquad \|f\|_A=\|a\|_1.
+ \tag{NB1}
+\]">\[
+ f(p)=\mathcal Fa(p)=\int_G a(t)(t,p)\,dt,\qquad
+ A(H)=\mathcal F(L^1(G)),\qquad \|f\|_A=\|a\|_1.
+ \tag{NB1}
+\]</span>
+Fourier injectivity and the Banach-algebra identification are proved in <a href="OA-FLOW-LF.html#lf-0">LF0</a>. That lesson and <a href="OA-FLOW-BS.html#bs-1">BS</a> use the negative transform <span class="math" data-tex="\(\widehat a(p)=\mathcal Fa(-p)\)">\(\widehat a(p)=\mathcal Fa(-p)\)</span>. The reflection <span class="math" data-tex="\(Rf(p)=f(-p)\)">\(Rf(p)=f(-p)\)</span> is an isometric algebra isomorphism, and <span class="math" data-tex="\(\widehat a=R(\mathcal Fa)\)">\(\widehat a=R(\mathcal Fa)\)</span>. Applying their statements through <span class="math" data-tex="\(R\)">\(R\)</span> reflects every spectral set and preserves all inclusions and sums below.</p>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a complex Banach space with a representation <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ \alpha_0=1,\quad \alpha_{s+t}=\alpha_s\alpha_t,\quad
+ C_\alpha=\sup_t\|\alpha_t\|&lt;\infty,\quad
+ \|\alpha_t x-x\|\longrightarrow0\quad(t\to0).
+ \tag{NB2}
+\]">\[
+ \alpha_0=1,\quad \alpha_{s+t}=\alpha_s\alpha_t,\quad
+ C_\alpha=\sup_t\|\alpha_t\|&lt;\infty,\quad
+ \|\alpha_t x-x\|\longrightarrow0\quad(t\to0).
+ \tag{NB2}
+\]</span>
+For <span class="math" data-tex="\(f=\mathcal Fa\)">\(f=\mathcal Fa\)</span>, put
+<span class="math math-display" data-tex="\[
+ \alpha_f x=\int_G a(t)\alpha_t x\,dt.
+ \tag{NB3}
+\]">\[
+ \alpha_f x=\int_G a(t)\alpha_t x\,dt.
+ \tag{NB3}
+\]</span>
+This is a Bochner integral on the entire <span class="math" data-tex="\(L^1\)">\(L^1\)</span> domain, as proved in <a href="OA-FLOW-BS.html#bs-1">BS1</a>. More explicitly, <a href="OA-FLOW-L24.html#oa-flow.grp.haarconventions">L24</a> gives a Borel representative of <span class="math" data-tex="\(a\)">\(a\)</span> with sigma compact carrier. On each compact piece the continuous orbit has compact, hence separable, image. Its product with <span class="math" data-tex="\(a\)">\(a\)</span> is strongly measurable and has integrable norm bound <span class="math" data-tex="\(C_\alpha|a(t)|\|x\|\)">\(C_\alpha|a(t)|\|x\|\)</span>. <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24's vector integral</a> supplies the integral and its norm bound:
+<span class="math math-display" data-tex="\[
+ \|\alpha_f\|\leq C_\alpha\|f\|_A,\qquad
+ \alpha_f\alpha_g=\alpha_{fg}.
+ \tag{NB4}
+\]">\[
+ \|\alpha_f\|\leq C_\alpha\|f\|_A,\qquad
+ \alpha_f\alpha_g=\alpha_{fg}.
+ \tag{NB4}
+\]</span>
+The product identity follows by vector Fubini, using
+<span class="math" data-tex="\(\alpha_s\alpha_t=\alpha_{s+t}\)">\(\alpha_s\alpha_t=\alpha_{s+t}\)</span> and the absolute norm bound
+<span class="math" data-tex="\(C_\alpha|a(s)b(t)|\|x\|\)">\(C_\alpha|a(s)b(t)|\|x\|\)</span>. All products use <a href="OA-FLOW-HR.html#hr-05">HR5's qualified Radon integration</a>.</p>
+<p>For nonnegative mass-one <span class="math" data-tex="\(a_V\in C_c(G)\)">\(a_V\in C_c(G)\)</span> supported in a shrinking identity neighborhood <span class="math" data-tex="\(V\)">\(V\)</span>,
+<span class="math math-display" data-tex="\[
+ \|\alpha_{\mathcal Fa_V}x-x\|
+ \leq\sup_{t\in V}\|\alpha_t x-x\|\longrightarrow0.
+ \tag{NB5}
+\]">\[
+ \|\alpha_{\mathcal Fa_V}x-x\|
+ \leq\sup_{t\in V}\|\alpha_t x-x\|\longrightarrow0.
+ \tag{NB5}
+\]</span>
+Define <span class="math" data-tex="\(I_\alpha(x)=\{f:\alpha_fx=0\}\)">\(I_\alpha(x)=\{f:\alpha_fx=0\}\)</span> and
+<span class="math" data-tex="\(\operatorname{Sp}_\alpha(x)=hI_\alpha(x)\)">\(\operatorname{Sp}_\alpha(x)=hI_\alpha(x)\)</span>. The ideal is closed by (NB4).
+<a href="OA-FLOW-LF.html#lf-6">LF6–7</a>, together with (NB5), gives
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ X_\alpha(E)&amp;=\{x:\operatorname{Sp}_\alpha(x)\subset E\}
+   =\bigcap_{\substack{f\in A_c(H)\\
+                       \operatorname{supp}f\cap E=\varnothing}}\ker\alpha_f,
+       \quad E\text{ closed},\\
+ \operatorname{Sp}_\alpha(x)=\varnothing&amp;\ \Longleftrightarrow\ x=0,\\
+ \operatorname{Sp}_\alpha(\alpha_fx)
+       &amp;\subset\operatorname{supp}f\cap\operatorname{Sp}_\alpha(x).
+ \end{split}
+ \tag{NB6}
+\]">\[
+ \begin{split}
+ X_\alpha(E)&amp;=\{x:\operatorname{Sp}_\alpha(x)\subset E\}
+   =\bigcap_{\substack{f\in A_c(H)\\
+                       \operatorname{supp}f\cap E=\varnothing}}\ker\alpha_f,
+       \quad E\text{ closed},\\
+ \operatorname{Sp}_\alpha(x)=\varnothing&amp;\ \Longleftrightarrow\ x=0,\\
+ \operatorname{Sp}_\alpha(\alpha_fx)
+       &amp;\subset\operatorname{supp}f\cap\operatorname{Sp}_\alpha(x).
+ \end{split}
+ \tag{NB6}
+\]</span>
+For the first equality, the closed-ideal sandwich puts every compactly supported function avoiding the hull into the ideal; conversely a compact cutoff at any point outside <span class="math" data-tex="\(E\)">\(E\)</span> excludes that point from the hull. An empty hull makes the ideal all of <span class="math" data-tex="\(A(H)\)">\(A(H)\)</span>, and (NB5) then gives <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. The filter inclusion follows from the ideal inclusion
+<span class="math" data-tex="\(I_\alpha(x)\subset I_\alpha(\alpha_fx)\)">\(I_\alpha(x)\subset I_\alpha(\alpha_fx)\)</span> and a cutoff supported outside <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>. In particular <span class="math" data-tex="\(X_\alpha(E)\)">\(X_\alpha(E)\)</span> is norm closed.</p>
+<p>For open <span class="math" data-tex="\(U\subset H\)">\(U\subset H\)</span>, define
+<span class="math math-display" data-tex="\[
+ X_0^\alpha(U)=
+ \overline{\operatorname{span}\{\alpha_fz:
+        f\in A_c(H),\ \operatorname{supp}f\subset U,\ z\in X\}}^{\|\cdot\|}.
+ \tag{NB7}
+\]">\[
+ X_0^\alpha(U)=
+ \overline{\operatorname{span}\{\alpha_fz:
+        f\in A_c(H),\ \operatorname{supp}f\subset U,\ z\in X\}}^{\|\cdot\|}.
+ \tag{NB7}
+\]</span>
+For closed <span class="math" data-tex="\(E\subset U\)">\(E\subset U\)</span>, <a href="OA-FLOW-BS.html#bs-4">BS4</a>, with the reflection above, proves
+<span class="math math-display" data-tex="\[
+ X_\alpha(E)\subset X_0^\alpha(U)\subset X_\alpha(\overline U).
+ \tag{NB8}
+\]">\[
+ X_\alpha(E)\subset X_0^\alpha(U)\subset X_\alpha(\overline U).
+ \tag{NB8}
+\]</span>
+One can also see the first inclusion directly in the Banach quotient <span class="math" data-tex="\(X/X_0^\alpha(U)\)">\(X/X_0^\alpha(U)\)</span>. The subspace is invariant, by covariance of the filters, so the quotient has a uniformly bounded strongly continuous induced action. The image of <span class="math" data-tex="\(x\in X_\alpha(E)\)">\(x\in X_\alpha(E)\)</span> has spectrum inside <span class="math" data-tex="\(E\)">\(E\)</span>. At each point of <span class="math" data-tex="\(E\)">\(E\)</span>, a cutoff supported in <span class="math" data-tex="\(U\)">\(U\)</span> annihilates the quotient image and is nonzero at that point. Its spectrum is therefore empty, so (NB6) in the quotient makes its image zero. The second inclusion follows from (NB6) on the generators and norm closedness. Completeness and boundedness of the quotient action follow from the usual quotient norm and its Cauchy-series construction, proved in <a href="OA-FLOW-CP.html#oa-flow.cp.5">CP5</a>.</p>
+<p><span id="OA-FLOW.NBS.OPERATORS"></span><a id="oa-flow.nbs.operators"></a></p>
+<h2 id="pointwise-bochner-integration-on-the-operator-space">Pointwise Bochner integration on the operator space</h2>
+<p>Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be another complex Banach space with a representation <span class="math" data-tex="\(\beta\)">\(\beta\)</span> satisfying (NB2), with bound <span class="math" data-tex="\(C_\beta\)">\(C_\beta\)</span>. Set
+<span class="math math-display" data-tex="\[
+ \mathcal B=B(X,Y),\qquad
+ \gamma_t(T)=\beta_tT\alpha_{-t},\qquad D=C_\alpha C_\beta.
+ \tag{NB9}
+\]">\[
+ \mathcal B=B(X,Y),\qquad
+ \gamma_t(T)=\beta_tT\alpha_{-t},\qquad D=C_\alpha C_\beta.
+ \tag{NB9}
+\]</span>
+The space <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is Banach: a norm-Cauchy sequence of bounded operators has pointwise limits in <span class="math" data-tex="\(Y\)">\(Y\)</span>, and its uniform norm estimates pass to those limits and prove operator-norm convergence. The maps <span class="math" data-tex="\(\gamma_t\)">\(\gamma_t\)</span> form a representation with <span class="math" data-tex="\(\|\gamma_t\|\leq D\)">\(\|\gamma_t\|\leq D\)</span>.</p>
+<p>For fixed <span class="math" data-tex="\(T,x\)">\(T,x\)</span>, the orbit <span class="math" data-tex="\(t\mapsto\gamma_t(T)x\)">\(t\mapsto\gamma_t(T)x\)</span> is norm continuous. At zero, expand
+<span class="math math-display" data-tex="\[
+ \gamma_t(T)x-Tx
+   =\beta_tT(\alpha_{-t}x-x)+(\beta_t-1)Tx.
+ \tag{NB10}
+\]">\[
+ \gamma_t(T)x-Tx
+   =\beta_tT(\alpha_{-t}x-x)+(\beta_t-1)Tx.
+ \tag{NB10}
+\]</span>
+The first term tends to zero by its uniform bound and the second by strong continuity of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Translation of the parameter gives continuity everywhere.</p>
+<p>For <span class="math" data-tex="\(f=\mathcal Fa\)">\(f=\mathcal Fa\)</span>, define an operator by its values
+<span class="math math-display" data-tex="\[
+ (\Gamma_fT)x=\int_G a(t)\beta_tT\alpha_{-t}x\,dt.
+ \tag{NB11}
+\]">\[
+ (\Gamma_fT)x=\int_G a(t)\beta_tT\alpha_{-t}x\,dt.
+ \tag{NB11}
+\]</span>
+The same measurable-carrier argument as for (NB3) applies to this <span class="math" data-tex="\(Y\)">\(Y\)</span>-valued orbit. Linearity in <span class="math" data-tex="\(x\)">\(x\)</span> and the integral estimate give
+<span class="math math-display" data-tex="\[
+ \|\Gamma_fT\|\leq D\|f\|_A\|T\|,\qquad
+ \Gamma_f\Gamma_gT=\Gamma_{fg}T,\qquad
+ \gamma_s(\Gamma_{\mathcal Fa}T)=\Gamma_{\mathcal F(L_sa)}T,
+ \quad L_sa(t)=a(t-s).
+ \tag{NB12}
+\]">\[
+ \|\Gamma_fT\|\leq D\|f\|_A\|T\|,\qquad
+ \Gamma_f\Gamma_gT=\Gamma_{fg}T,\qquad
+ \gamma_s(\Gamma_{\mathcal Fa}T)=\Gamma_{\mathcal F(L_sa)}T,
+ \quad L_sa(t)=a(t-s).
+ \tag{NB12}
+\]</span>
+For the product identity, apply both sides to <span class="math" data-tex="\(x\)">\(x\)</span>. The iterated integrand collapses to
+<span class="math" data-tex="\(a(s)b(t)\beta_{s+t}T\alpha_{-(s+t)}x\)">\(a(s)b(t)\beta_{s+t}T\alpha_{-(s+t)}x\)</span>, whose norm is at most
+<span class="math" data-tex="\(D|a(s)b(t)|\|T\|\|x\|\)">\(D|a(s)b(t)|\|T\|\|x\|\)</span>. Vector Fubini gives convolution of the kernels. Translation of the integration variable proves the last formula.</p>
+<p>Although the original orbit need not be norm continuous, every filtered operator has a norm-continuous orbit:
+<span class="math math-display" data-tex="\[
+ \|\gamma_s(\Gamma_{\mathcal Fa}T)-\Gamma_{\mathcal Fa}T\|
+       \leq D\|T\|\|L_sa-a\|_1\longrightarrow0.
+ \tag{NB13}
+\]">\[
+ \|\gamma_s(\Gamma_{\mathcal Fa}T)-\Gamma_{\mathcal Fa}T\|
+       \leq D\|T\|\|L_sa-a\|_1\longrightarrow0.
+ \tag{NB13}
+\]</span>
+Here <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-translation continuity is <a href="OA-FLOW-L24.html#oa-flow.grp.translations">L24</a>. The operators with norm-continuous orbits form a norm-closed invariant subspace <span class="math" data-tex="\(Z\subset\mathcal B\)">\(Z\subset\mathcal B\)</span>. Closedness follows from
+<span class="math math-display" data-tex="\[
+ \|\gamma_tT-T\|
+ \leq D\|T-S\|+\|\gamma_tS-S\|+\|S-T\|
+\]">\[
+ \|\gamma_tT-T\|
+ \leq D\|T-S\|+\|\gamma_tS-S\|+\|S-T\|
+\]</span>
+with <span class="math" data-tex="\(S\in Z\)">\(S\in Z\)</span> near <span class="math" data-tex="\(T\)">\(T\)</span>; invariance follows from the group law and boundedness of each <span class="math" data-tex="\(\gamma_s\)">\(\gamma_s\)</span>. Thus the restriction to <span class="math" data-tex="\(Z\)">\(Z\)</span> is an ordinary strongly continuous Banach action.</p>
+<p>The mass-one kernels in (NB5) give
+<span class="math math-display" data-tex="\[
+ \Gamma_{\mathcal Fa_V}T\longrightarrow T
+ \quad\text{pointwise in norm},\qquad
+ \|\Gamma_{\mathcal Fa_V}T\|\leq D\|T\|.
+ \tag{NB14}
+\]">\[
+ \Gamma_{\mathcal Fa_V}T\longrightarrow T
+ \quad\text{pointwise in norm},\qquad
+ \|\Gamma_{\mathcal Fa_V}T\|\leq D\|T\|.
+ \tag{NB14}
+\]</span>
+Indeed evaluate at <span class="math" data-tex="\(x\)">\(x\)</span> and bound the difference by the supremum of (NB10) over <span class="math" data-tex="\(V\)">\(V\)</span>. In particular, if all filters annihilate <span class="math" data-tex="\(T\)">\(T\)</span>, then <span class="math" data-tex="\(T=0\)">\(T=0\)</span>.</p>
+<p><span id="OA-FLOW.NBS.TOPOLOGY"></span><a id="oa-flow.nbs.topology"></a></p>
+<h2 id="which-operator-limits-the-filters-preserve">Which operator limits the filters preserve</h2>
+<p>The strong operator topology on <span class="math" data-tex="\(B(X,Y)\)">\(B(X,Y)\)</span> uses the seminorms
+<span class="math" data-tex="\(T\mapsto\|Tx\|\)">\(T\mapsto\|Tx\|\)</span>, <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>. Its continuous linear functionals are precisely
+<span class="math math-display" data-tex="\[
+ T\longmapsto\sum_{j=1}^n y_j^*(Tx_j),
+ \qquad x_j\in X,\quad y_j^*\in Y^*.
+ \tag{NB15}
+\]">\[
+ T\longmapsto\sum_{j=1}^n y_j^*(Tx_j),
+ \qquad x_j\in X,\quad y_j^*\in Y^*.
+ \tag{NB15}
+\]</span>
+The displayed functionals are continuous. Conversely, continuity and rescaling bound a linear functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span> by
+<span class="math" data-tex="\(C\max_j\|Tx_j\|\)">\(C\max_j\|Tx_j\|\)</span> for finitely many <span class="math" data-tex="\(x_j\)">\(x_j\)</span>. It vanishes on the kernel of
+<span class="math" data-tex="\(T\mapsto(Tx_1,\ldots,Tx_n)\)">\(T\mapsto(Tx_1,\ldots,Tx_n)\)</span>, so it factors as a bounded functional on that map's range in <span class="math" data-tex="\(Y^n\)">\(Y^n\)</span>. Hahn–Banach, as proved in <a href="OA-FLOW-CF.html#oa-flow.cf.1">CF1</a>, extends it to <span class="math" data-tex="\(Y^n\)">\(Y^n\)</span>. Evaluating the extension on each coordinate gives (NB15).</p>
+<p>The weak topology generated by these scalar functionals is the weak operator topology. It can be strictly weaker than the strong operator topology. For example, take <span class="math" data-tex="\(X=\mathbb C\)">\(X=\mathbb C\)</span>, <span class="math" data-tex="\(Y=\ell^2\)">\(Y=\ell^2\)</span>, and <span class="math" data-tex="\(T_nz=ze_n\)">\(T_nz=ze_n\)</span>. Every scalar test tends to zero because the coordinates of an <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> vector tend to zero, whereas <span class="math" data-tex="\(\|T_n1\|=1\)">\(\|T_n1\|=1\)</span>.</p>
+<p>For the filters we need the following exact continuity statement:
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ T_i x\longrightarrow Tx\text{ in norm for every }x,\qquad
+ \sup_i\|T_i\|&lt;\infty\\
+ \Longrightarrow\quad
+ (\Gamma_fT_i)x\longrightarrow(\Gamma_fT)x
+       \text{ in norm for every }f,x.
+ \end{gathered}
+ \tag{NB16}
+\]">\[
+ \begin{gathered}
+ T_i x\longrightarrow Tx\text{ in norm for every }x,\qquad
+ \sup_i\|T_i\|&lt;\infty\\
+ \Longrightarrow\quad
+ (\Gamma_fT_i)x\longrightarrow(\Gamma_fT)x
+       \text{ in norm for every }f,x.
+ \end{gathered}
+ \tag{NB16}
+\]</span>
+Put <span class="math" data-tex="\(L=\sup_i\|T_i-T\|&lt;\infty\)">\(L=\sup_i\|T_i-T\|&lt;\infty\)</span>. Strong convergence is uniform on a compact subset <span class="math" data-tex="\(C\subset X\)">\(C\subset X\)</span>: choose a finite <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>-net in <span class="math" data-tex="\(C\)">\(C\)</span>, use convergence at its finitely many points, and bound the errors to those points by <span class="math" data-tex="\(L\epsilon\)">\(L\epsilon\)</span>. If <span class="math" data-tex="\(f=\mathcal Fa\)">\(f=\mathcal Fa\)</span>, choose a compact <span class="math" data-tex="\(K\subset G\)">\(K\subset G\)</span> with small <span class="math" data-tex="\(\int_{G\setminus K}|a|\)">\(\int_{G\setminus K}|a|\)</span>; such compact <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-approximation follows from L24 and HR3. The set
+<span class="math" data-tex="\(\{\alpha_{-t}x:t\in K\}\)">\(\{\alpha_{-t}x:t\in K\}\)</span> is compact. Hence
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ \|(\Gamma_fT_i-\Gamma_fT)x\|
+ &amp;\leq C_\beta\int_K|a(t)|
+             \|(T_i-T)\alpha_{-t}x\|\,dt\\
+ &amp;\quad+D L\|x\|\int_{G\setminus K}|a(t)|\,dt
+ \end{split}
+ \tag{NB17}
+\]">\[
+ \begin{split}
+ \|(\Gamma_fT_i-\Gamma_fT)x\|
+ &amp;\leq C_\beta\int_K|a(t)|
+             \|(T_i-T)\alpha_{-t}x\|\,dt\\
+ &amp;\quad+D L\|x\|\int_{G\setminus K}|a(t)|\,dt
+ \end{split}
+ \tag{NB17}
+\]</span>
+tends to zero by first choosing the tail and then the finite-net convergence. This proof applies to nets; it does not use a dominated-convergence theorem for arbitrary nets.</p>
+<p>The uniform bound in (NB16) is a real hypothesis. On an infinite-dimensional Hilbert space, direct pairs <span class="math" data-tex="\((F,n)\)">\((F,n)\)</span>, with <span class="math" data-tex="\(F\)">\(F\)</span> a finite-dimensional subspace and <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, by inclusion of <span class="math" data-tex="\(F\)">\(F\)</span> and increase of <span class="math" data-tex="\(n\)">\(n\)</span>. Choose a unit vector <span class="math" data-tex="\(v_F\in F^\perp\)">\(v_F\in F^\perp\)</span> and fix a unit vector <span class="math" data-tex="\(e\)">\(e\)</span>. The operators
+<span class="math math-display" data-tex="\[
+ T_{F,n}x=n\langle x,v_F\rangle e
+ \tag{NB18}
+\]">\[
+ T_{F,n}x=n\langle x,v_F\rangle e
+ \tag{NB18}
+\]</span>
+converge strongly to zero: eventually <span class="math" data-tex="\(F\)">\(F\)</span> contains any fixed <span class="math" data-tex="\(x\)">\(x\)</span>. But <span class="math" data-tex="\(\|T_{F,n}\|=n\)">\(\|T_{F,n}\|=n\)</span>, unbounded on every tail. Existence of the orthogonal complements and vectors follows from <a href="OA-FLOW-CF.html#oa-flow.cf.8">CF8</a>. Thus pointwise convergence of a net alone does not supply the common bound used in (NB17).</p>
+<p><span id="OA-FLOW.NBS.LOCALIZATION"></span><a id="oa-flow.nbs.localization"></a></p>
+<h2 id="bounded-operator-localization">Bounded operator localization</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+ I_\gamma(T)=\{f:\Gamma_fT=0\},\qquad
+ \operatorname{Sp}_\gamma(T)=hI_\gamma(T),\qquad
+ B_\gamma(E)=\{T:\operatorname{Sp}_\gamma(T)\subset E\}.
+ \tag{NB19}
+\]">\[
+ I_\gamma(T)=\{f:\Gamma_fT=0\},\qquad
+ \operatorname{Sp}_\gamma(T)=hI_\gamma(T),\qquad
+ B_\gamma(E)=\{T:\operatorname{Sp}_\gamma(T)\subset E\}.
+ \tag{NB19}
+\]</span>
+The norm bound and product law in (NB12) make <span class="math" data-tex="\(I_\gamma(T)\)">\(I_\gamma(T)\)</span> a closed ideal of <span class="math" data-tex="\(A(H)\)">\(A(H)\)</span>. The same scalar ideal proof as in (NB6), using (NB14) for essentiality, gives
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ B_\gamma(E)
+   &amp;=\bigcap_{\substack{f\in A_c(H)\\
+                       \operatorname{supp}f\cap E=\varnothing}}\ker\Gamma_f,
+                   \quad E\text{ closed},\\
+ \operatorname{Sp}_\gamma(T)=\varnothing
+   &amp;\ \Longleftrightarrow\ T=0,\\
+ \operatorname{Sp}_\gamma(\Gamma_fT)
+   &amp;\subset\operatorname{supp}f\cap\operatorname{Sp}_\gamma(T).
+ \end{split}
+ \tag{NB20}
+\]">\[
+ \begin{split}
+ B_\gamma(E)
+   &amp;=\bigcap_{\substack{f\in A_c(H)\\
+                       \operatorname{supp}f\cap E=\varnothing}}\ker\Gamma_f,
+                   \quad E\text{ closed},\\
+ \operatorname{Sp}_\gamma(T)=\varnothing
+   &amp;\ \Longleftrightarrow\ T=0,\\
+ \operatorname{Sp}_\gamma(\Gamma_fT)
+   &amp;\subset\operatorname{supp}f\cap\operatorname{Sp}_\gamma(T).
+ \end{split}
+ \tag{NB20}
+\]</span>
+We will also use the plateau identity
+<span class="math math-display" data-tex="\[
+ f=1\text{ near }\operatorname{Sp}_\gamma(T)
+        \quad\Longrightarrow\quad\Gamma_fT=T.
+ \tag{NB21}
+\]">\[
+ f=1\text{ near }\operatorname{Sp}_\gamma(T)
+        \quad\Longrightarrow\quad\Gamma_fT=T.
+ \tag{NB21}
+\]</span>
+For every <span class="math" data-tex="\(g\in A(H)\)">\(g\in A(H)\)</span>, the function <span class="math" data-tex="\(g-gf\)">\(g-gf\)</span> vanishes near that spectrum. <a href="OA-FLOW-LF.html#lf-6">LF6</a> puts it in <span class="math" data-tex="\(I_\gamma(T)\)">\(I_\gamma(T)\)</span>; hence
+<span class="math" data-tex="\(\Gamma_g(T-\Gamma_fT)=0\)">\(\Gamma_g(T-\Gamma_fT)=0\)</span> for every <span class="math" data-tex="\(g\)">\(g\)</span>, and (NB14) proves (NB21).
+By (NB16), <span class="math" data-tex="\(B_\gamma(E)\)">\(B_\gamma(E)\)</span> is closed under uniformly bounded strongly convergent nets.</p>
+<p>For open <span class="math" data-tex="\(U\subset H\)">\(U\subset H\)</span>, let <span class="math" data-tex="\(B_0^\gamma(U)\)">\(B_0^\gamma(U)\)</span> consist of all strong limits of uniformly norm-bounded nets in
+<span class="math math-display" data-tex="\[
+ \operatorname{span}\{\Gamma_fS:
+       f\in A_c(H),\ \operatorname{supp}f\subset U,\ S\in B(X,Y)\}.
+ \tag{NB22}
+\]">\[
+ \operatorname{span}\{\Gamma_fS:
+       f\in A_c(H),\ \operatorname{supp}f\subset U,\ S\in B(X,Y)\}.
+ \tag{NB22}
+\]</span>
+The zero operator is included. Sums and scalar multiples stay in this space by taking product directed sets and adding their uniform bounds. We prove
+<span class="math math-display" data-tex="\[
+ B_\gamma(E)\subset B_0^\gamma(U)\subset B_\gamma(\overline U),
+       \qquad E\subset U,\quad E\text{ closed}.
+ \tag{NB23}
+\]">\[
+ B_\gamma(E)\subset B_0^\gamma(U)\subset B_\gamma(\overline U),
+       \qquad E\subset U,\quad E\text{ closed}.
+ \tag{NB23}
+\]</span></p>
+<p>The first inclusion has a bounded approximation with no increase beyond <span class="math" data-tex="\(D\|T\|\)">\(D\|T\|\)</span>. Use the particular kernels <span class="math" data-tex="\(k_i=k_{V,\epsilon}\)">\(k_i=k_{V,\epsilon}\)</span> constructed in <a href="OA-FLOW-LF.html#lf-5">LF5</a>:
+<span class="math math-display" data-tex="\[
+ k_i\geq0,\quad \|k_i\|_1=\int k_i=1,\quad
+ \|k_{V,\epsilon}-a_V\|_1&lt;2\epsilon,\quad
+ K_i=\operatorname{supp}\mathcal Fk_i\text{ compact}.
+ \tag{NB24}
+\]">\[
+ k_i\geq0,\quad \|k_i\|_1=\int k_i=1,\quad
+ \|k_{V,\epsilon}-a_V\|_1&lt;2\epsilon,\quad
+ K_i=\operatorname{supp}\mathcal Fk_i\text{ compact}.
+ \tag{NB24}
+\]</span>
+The reflection in (NB1) preserves compactness of their frequency supports. Set <span class="math" data-tex="\(T_i=\Gamma_{\mathcal Fk_i}T\)">\(T_i=\Gamma_{\mathcal Fk_i}T\)</span>. Equations (NB12) and (NB14) give
+<span class="math math-display" data-tex="\[
+ T_i\longrightarrow T\text{ strongly},\qquad
+ \|T_i\|\leq D\|T\|,\qquad
+ \operatorname{Sp}_\gamma(T_i)\subset E\cap K_i.
+ \tag{NB25}
+\]">\[
+ T_i\longrightarrow T\text{ strongly},\qquad
+ \|T_i\|\leq D\|T\|,\qquad
+ \operatorname{Sp}_\gamma(T_i)\subset E\cap K_i.
+ \tag{NB25}
+\]</span>
+For example,
+<span class="math" data-tex="\(\|(T_i-\Gamma_{\mathcal Fa_V}T)x\|\leq2D\epsilon\|T\|\|x\|\)">\(\|(T_i-\Gamma_{\mathcal Fa_V}T)x\|\leq2D\epsilon\|T\|\|x\|\)</span>, which proves the first convergence.</p>
+<p>The compact set <span class="math" data-tex="\(E\cap K_i\)">\(E\cap K_i\)</span> lies in <span class="math" data-tex="\(U\)">\(U\)</span>. By <a href="OA-FLOW-LF.html#lf-4">LF4</a>, choose <span class="math" data-tex="\(q_i\in A_c(H)\)">\(q_i\in A_c(H)\)</span>, supported in <span class="math" data-tex="\(U\)">\(U\)</span>, equal to one on a neighborhood of <span class="math" data-tex="\(E\cap K_i\)">\(E\cap K_i\)</span>. Then (NB21) says <span class="math" data-tex="\(T_i=\Gamma_{q_i}T_i\)">\(T_i=\Gamma_{q_i}T_i\)</span>. If that compact set is empty, (NB20) gives <span class="math" data-tex="\(T_i=0\)">\(T_i=0\)</span>. Thus the actual <span class="math" data-tex="\(T_i\)">\(T_i\)</span> lie in the generating ranges of (NB22), with the common bound in (NB25), proving the first inclusion in (NB23). Each <span class="math" data-tex="\(T_i\)">\(T_i\)</span> also lies in the norm-continuous subspace <span class="math" data-tex="\(Z\)">\(Z\)</span>, by (NB13).</p>
+<p>For the second inclusion, every generator has spectrum in <span class="math" data-tex="\(\overline U\)">\(\overline U\)</span> by (NB20). Their finite sums are annihilated by every compactly supported filter avoiding <span class="math" data-tex="\(\overline U\)">\(\overline U\)</span>. Equation (NB16) preserves those annihilations along the defining bounded strong net. The kernel criterion in (NB20) proves the inclusion.</p>
+<p><span id="OA-FLOW.NBS.KERNEL"></span><a id="oa-flow.nbs.kernel"></a></p>
+<h2 id="a-bochner-three-kernel-identity">A Bochner three-kernel identity</h2>
+<p>Let <span class="math" data-tex="\(g=\mathcal Fa\)">\(g=\mathcal Fa\)</span>, <span class="math" data-tex="\(f=\mathcal Fb\)">\(f=\mathcal Fb\)</span>, <span class="math" data-tex="\(h=\mathcal Fc\)">\(h=\mathcal Fc\)</span>, with all three kernels in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>. For <span class="math" data-tex="\(T\in B(X,Y)\)">\(T\in B(X,Y)\)</span> and <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, substituting (NB3) and (NB11) gives
+<span class="math math-display" data-tex="\[
+ \beta_h\bigl((\Gamma_gT)(\alpha_fx)\bigr)
+  =\int_{G^3}c(t)a(r)b(s)\,
+           \beta_{t+r}T\alpha_{s-r}x\,dt\,dr\,ds.
+ \tag{NB26}
+\]">\[
+ \beta_h\bigl((\Gamma_gT)(\alpha_fx)\bigr)
+  =\int_{G^3}c(t)a(r)b(s)\,
+           \beta_{t+r}T\alpha_{s-r}x\,dt\,dr\,ds.
+ \tag{NB26}
+\]</span>
+This is a <span class="math" data-tex="\(Y\)">\(Y\)</span>-valued Bochner identity. The norm integrand is bounded by
+<span class="math" data-tex="\(D|c(t)a(r)b(s)|\|T\|\|x\|\)">\(D|c(t)a(r)b(s)|\|T\|\|x\|\)</span>. Its orbit factor is jointly norm continuous, by strong continuity of <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>, their uniform bounds, and boundedness of <span class="math" data-tex="\(T\)">\(T\)</span>. On compact carriers its image is separable. Thus vector Fubini from L24 applies, first to compactly supported continuous kernels and then, by their <span class="math" data-tex="\(L^1\)">\(L^1\)</span> approximation and the bound, to the stated full domain.</p>
+<p>Set <span class="math" data-tex="\(u=t+r\)">\(u=t+r\)</span>, <span class="math" data-tex="\(v=s-r\)">\(v=s-r\)</span>, and
+<span class="math math-display" data-tex="\[
+ k(u,v)=\int_G a(r)b(v+r)c(u-r)\,dr.
+ \tag{NB27}
+\]">\[
+ k(u,v)=\int_G a(r)b(v+r)c(u-r)\,dr.
+ \tag{NB27}
+\]</span>
+The scalar lemma proved in <a href="OA-FLOW-L80.html#sum-kernel">L80, the three-kernel identity</a> gives
+<span class="math math-display" data-tex="\[
+ \|k\|_{L^1(G^2)}\leq\|a\|_1\|b\|_1\|c\|_1,\qquad
+ \widehat k(q,p)=h(q)g(q-p)f(p).
+ \tag{NB28}
+\]">\[
+ \|k\|_{L^1(G^2)}\leq\|a\|_1\|b\|_1\|c\|_1,\qquad
+ \widehat k(q,p)=h(q)g(q-p)f(p).
+ \tag{NB28}
+\]</span>
+Only its scalar kernel assertion is used here. Its proof substitutes the above variables in the Radon Haar integral on <span class="math" data-tex="\(G^3\)">\(G^3\)</span>; the character product is
+<span class="math" data-tex="\((t+r,q)(s-r,p)=(t,q)(r,q-p)(s,p)\)">\((t+r,q)(s-r,p)=(t,q)(r,q-p)(s,p)\)</span>. All kernels and shear images have sigma compact carriers, and <a href="OA-FLOW-HARMONIC.html#l138-h1">H1</a> gives Fourier injectivity on the product LCA group.</p>
+<p>Equation (NB26) is therefore also
+<span class="math math-display" data-tex="\[
+ \int_{G^2}k(u,v)\beta_uT\alpha_vx\,du\,dv.
+ \tag{NB29}
+\]">\[
+ \int_{G^2}k(u,v)\beta_uT\alpha_vx\,du\,dv.
+ \tag{NB29}
+\]</span>
+The same norm bound justifies this vector integral and the substitutions. If
+<span class="math math-display" data-tex="\[
+ \operatorname{supp}h\ \cap\
+       (\operatorname{supp}g+\operatorname{supp}f)=\varnothing,
+ \tag{NB30}
+\]">\[
+ \operatorname{supp}h\ \cap\
+       (\operatorname{supp}g+\operatorname{supp}f)=\varnothing,
+ \tag{NB30}
+\]</span>
+the transform in (NB28) is zero everywhere. Fourier injectivity makes <span class="math" data-tex="\(k=0\)">\(k=0\)</span> almost everywhere, so
+<span class="math math-display" data-tex="\[
+ \beta_h\bigl((\Gamma_gT)(\alpha_fx)\bigr)=0.
+ \tag{NB31}
+\]">\[
+ \beta_h\bigl((\Gamma_gT)(\alpha_fx)\bigr)=0.
+ \tag{NB31}
+\]</span>
+No normality of <span class="math" data-tex="\(T\)">\(T\)</span> or identification of either Banach space as a dual is needed.</p>
+<p><span id="OA-FLOW.NBS.TRANSFER"></span><a id="oa-flow.nbs.transfer"></a></p>
+<h2 id="the-full-closed-set-transfer-theorem">The full closed-set transfer theorem</h2>
+<p>For arbitrary closed sets <span class="math" data-tex="\(E,F\subset H\)">\(E,F\subset H\)</span>, we have
+<span class="math math-display" data-tex="\[
+ \boxed{\quad
+ T\in B_\gamma(E),\quad x\in X_\alpha(F)
+ \quad\Longrightarrow\quad
+ Tx\in Y_\beta(\overline{E+F}).
+ \quad}
+ \tag{NB32}
+\]">\[
+ \boxed{\quad
+ T\in B_\gamma(E),\quad x\in X_\alpha(F)
+ \quad\Longrightarrow\quad
+ Tx\in Y_\beta(\overline{E+F}).
+ \quad}
+ \tag{NB32}
+\]</span>
+The zero-space and empty-spectrum cases follow from (NB6) and (NB20). Otherwise put <span class="math" data-tex="\(C=\overline{E+F}\)">\(C=\overline{E+F}\)</span>, and take <span class="math" data-tex="\(h\in A_c(H)\)">\(h\in A_c(H)\)</span> whose compact support <span class="math" data-tex="\(K\)">\(K\)</span> misses <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>There is a symmetric identity neighborhood <span class="math" data-tex="\(W\subset H\)">\(W\subset H\)</span> such that
+<span class="math math-display" data-tex="\[
+ K\cap(C+W+W)=\varnothing.
+ \tag{NB33}
+\]">\[
+ K\cap(C+W+W)=\varnothing.
+ \tag{NB33}
+\]</span>
+To see this, continuity of subtraction and a finite cover of the compact <span class="math" data-tex="\(K\)">\(K\)</span> give an identity neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\((K+V)\cap C=\varnothing\)">\((K+V)\cap C=\varnothing\)</span>. Shrink to a symmetric <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(W+W\subset V\)">\(W+W\subset V\)</span>. An intersection in (NB33) would put a point of <span class="math" data-tex="\(C\)">\(C\)</span> in <span class="math" data-tex="\(K-W-W\subset K+V\)">\(K-W-W\subset K+V\)</span>, a contradiction. Thus the open sets <span class="math" data-tex="\(U_E=E+W\)">\(U_E=E+W\)</span> and <span class="math" data-tex="\(U_F=F+W\)">\(U_F=F+W\)</span> satisfy
+<span class="math" data-tex="\(K\cap(U_E+U_F)=\varnothing\)">\(K\cap(U_E+U_F)=\varnothing\)</span>.</p>
+<p>By (NB8), <span class="math" data-tex="\(x\)">\(x\)</span> is a norm limit of finite sums of vectors <span class="math" data-tex="\(\alpha_fz\)">\(\alpha_fz\)</span> with <span class="math" data-tex="\(f\in A_c(H)\)">\(f\in A_c(H)\)</span> supported in <span class="math" data-tex="\(U_F\)">\(U_F\)</span>. By (NB23), <span class="math" data-tex="\(T\)">\(T\)</span> is a strong limit of a uniformly bounded net of finite sums of <span class="math" data-tex="\(\Gamma_gS\)">\(\Gamma_gS\)</span> with <span class="math" data-tex="\(g\in A_c(H)\)">\(g\in A_c(H)\)</span> supported in <span class="math" data-tex="\(U_E\)">\(U_E\)</span>. Every pair of generators satisfies (NB30), so (NB31) annihilates it.</p>
+<p>Fix one filtered operator <span class="math" data-tex="\(B=\Gamma_gS\)">\(B=\Gamma_gS\)</span>. The bounded map <span class="math" data-tex="\(z\mapsto\beta_h(Bz)\)">\(z\mapsto\beta_h(Bz)\)</span> preserves the first, norm limit; hence <span class="math" data-tex="\(\beta_h(Bx)=0\)">\(\beta_h(Bx)=0\)</span>. This remains true for finite sums of these operators. Now hold <span class="math" data-tex="\(x\)">\(x\)</span> fixed and take the second, strong operator limit. Since <span class="math" data-tex="\(B_ix\to Tx\)">\(B_ix\to Tx\)</span> in norm and <span class="math" data-tex="\(\beta_h\)">\(\beta_h\)</span> is bounded, <span class="math" data-tex="\(\beta_h(Tx)=0\)">\(\beta_h(Tx)=0\)</span>. These are successive limits; no joint continuity of evaluation in a weaker topology is being assumed.</p>
+<p>Every compactly supported test avoiding <span class="math" data-tex="\(C\)">\(C\)</span> has therefore annihilated <span class="math" data-tex="\(Tx\)">\(Tx\)</span>. The closed-space criterion (NB6) for <span class="math" data-tex="\(\beta\)">\(\beta\)</span> proves (NB32).</p>
+<p><span id="OA-FLOW.NBS.EXAMPLES"></span><a id="oa-flow.nbs.examples"></a></p>
+<h2 id="frequencies-and-the-difference-between-the-two-operator-topologies">Frequencies, and the difference between the two operator topologies</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The product h(q) g(q-p) f(p) can be nonzero only when q is a sum of an operator frequency and a vector frequency." src="assets/spectral-transfer/80-spectral-sum-kernel.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The figure marks the four possible pairs with <span class="math" data-tex="\(p\in\{0,3\}\)">\(p\in\{0,3\}\)</span> and
+<span class="math" data-tex="\(q-p\in\{-1,2\}\)">\(q-p\in\{-1,2\}\)</span>. Their output frequencies lie in <span class="math" data-tex="\(\{-1,2,5\}\)">\(\{-1,2,5\}\)</span>. For the filter proof, replace these finite sets by sufficiently small neighborhoods and take the test <span class="math" data-tex="\(h\)">\(h\)</span> near <span class="math" data-tex="\(q=4\)">\(q=4\)</span>, away from their sum. The horizontal line indicates that test's center; a nonzero continuous filter on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> cannot be supported at that point alone. Formula (NB28) is then zero.</p>
+<p>An actual finite-dimensional model also shows why the theorem gives containment. Take <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span>, <span class="math" data-tex="\(X=Y=\mathbb C^2\)">\(X=Y=\mathbb C^2\)</span>,
+<span class="math math-display" data-tex="\[
+ \alpha_t=\operatorname{diag}(1,e^{3it}),\qquad
+ \beta_t=\operatorname{diag}(e^{-it},e^{2it}),\qquad
+ T=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},\quad x=e_2.
+ \tag{NB34}
+\]">\[
+ \alpha_t=\operatorname{diag}(1,e^{3it}),\qquad
+ \beta_t=\operatorname{diag}(e^{-it},e^{2it}),\qquad
+ T=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},\quad x=e_2.
+ \tag{NB34}
+\]</span>
+In the matrix unit at position <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>, <span class="math" data-tex="\(\gamma_t\)">\(\gamma_t\)</span> has frequency <span class="math" data-tex="\(b_i-a_j\)">\(b_i-a_j\)</span>, where <span class="math" data-tex="\(a=(0,3)\)">\(a=(0,3)\)</span> and <span class="math" data-tex="\(b=(-1,2)\)">\(b=(-1,2)\)</span>. Integration in (NB11) multiplies that entry by <span class="math" data-tex="\(f(b_i-a_j)\)">\(f(b_i-a_j)\)</span>. Compact cutoffs separate the finitely many frequencies, so
+<span class="math math-display" data-tex="\[
+ \operatorname{Sp}_\gamma(T)=\{-4,-1,2\},\quad
+ \operatorname{Sp}_\alpha(x)=\{3\},\quad
+ \operatorname{Sp}_\beta(Tx)=\{-1,2\}.
+ \tag{NB35}
+\]">\[
+ \operatorname{Sp}_\gamma(T)=\{-4,-1,2\},\quad
+ \operatorname{Sp}_\alpha(x)=\{3\},\quad
+ \operatorname{Sp}_\beta(Tx)=\{-1,2\}.
+ \tag{NB35}
+\]</span>
+The possible sum also contains <span class="math" data-tex="\(5\)">\(5\)</span>, but the entry of <span class="math" data-tex="\(T\)">\(T\)</span> at frequency <span class="math" data-tex="\(2\)">\(2\)</span> lies in its first column and does not act on <span class="math" data-tex="\(e_2\)">\(e_2\)</span>. Thus equality in (NB32) is not forced.</p>
+<p>For failure of operator-norm continuity, take <span class="math" data-tex="\(X=Y=L^2(\mathbb R)\)">\(X=Y=L^2(\mathbb R)\)</span>, let
+<span class="math" data-tex="\(\alpha_t=1\)">\(\alpha_t=1\)</span>, let <span class="math" data-tex="\((\beta_t\xi)(r)=\xi(r-t)\)">\((\beta_t\xi)(r)=\xi(r-t)\)</span>, and put <span class="math" data-tex="\(T=1\)">\(T=1\)</span>. Then <span class="math" data-tex="\(\gamma_t(T)=\beta_t\)">\(\gamma_t(T)=\beta_t\)</span> is strongly continuous by L24, but
+<span class="math math-display" data-tex="\[
+ \|\beta_t-1\|=2\qquad(t\ne0).
+ \tag{NB36}
+\]">\[
+ \|\beta_t-1\|=2\qquad(t\ne0).
+ \tag{NB36}
+\]</span>
+The upper bound follows from unitarity. The unitary negative Fourier transform proved in <a href="OA-FLOW-FF.html#oa-flow.ff.3">FF3</a> conjugates the difference to multiplication by <span class="math" data-tex="\(e^{-itp}-1\)">\(e^{-itp}-1\)</span>. For any <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, an interval about <span class="math" data-tex="\(p=\pi/t\)">\(p=\pi/t\)</span> has
+<span class="math" data-tex="\(|e^{-itp}-1|&gt;2-\epsilon\)">\(|e^{-itp}-1|&gt;2-\epsilon\)</span>. A normalized indicator of a finite such interval has <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm one and is moved by at least <span class="math" data-tex="\(2-\epsilon\)">\(2-\epsilon\)</span>. Fourier unitarity transports it back to the original space. Letting <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span> proves (NB36). The smoothing in (NB13), rather than norm continuity of every operator orbit, supplies the norm-continuous operators used above.</p>
+<p><span id="OA-FLOW.NBS.ADJOINTS"></span><a id="oa-flow.nbs.adjoints"></a></p>
+<h2 id="adjoint-filters-and-source-conventions">Adjoint filters and source conventions</h2>
+<p>Suppose <span class="math" data-tex="\(X\)">\(X\)</span> is also a Banach star algebra with continuous conjugate-linear involution, and that every <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> preserves adjoints. For <span class="math" data-tex="\(f=\mathcal Fa\)">\(f=\mathcal Fa\)</span>, put
+<span class="math math-display" data-tex="\[
+ f^\dagger(p)=\overline{f(-p)}
+              =\mathcal F(\overline a)(p).
+ \tag{NB37}
+\]">\[
+ f^\dagger(p)=\overline{f(-p)}
+              =\mathcal F(\overline a)(p).
+ \tag{NB37}
+\]</span>
+The equality follows by conjugating the character integral. A continuous conjugate-linear map passes through Bochner integrals by conjugating scalar coefficients: this holds for simple functions and extends by the defining integral-norm approximation. Consequently
+<span class="math math-display" data-tex="\[
+ (\alpha_f x)^*
+    =\int_G\overline{a(t)}\,\alpha_t(x^*)\,dt
+    =\alpha_{f^\dagger}(x^*).
+ \tag{NB38}
+\]">\[
+ (\alpha_f x)^*
+    =\int_G\overline{a(t)}\,\alpha_t(x^*)\,dt
+    =\alpha_{f^\dagger}(x^*).
+ \tag{NB38}
+\]</span>
+For a normal action on a von Neumann algebra, <a href="OA-FLOW-AT.html#oa-flow.at.5">AT5</a> supplies the weakly integrated filter. For <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>, put <span class="math" data-tex="\(\omega^\sharp(z)=\overline{\omega(z^*)}\)">\(\omega^\sharp(z)=\overline{\omega(z^*)}\)</span>. The vector-series description in <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4–6</a> shows that <span class="math" data-tex="\(\omega^\sharp\)">\(\omega^\sharp\)</span> is normal. Then
+<span class="math math-display" data-tex="\[
+ \omega((\alpha_fx)^*)
+ =\overline{\omega^\sharp(\alpha_fx)}
+ =\int_G\overline{a(t)}\,\omega(\alpha_t(x^*))\,dt
+ =\omega(\alpha_{f^\dagger}(x^*)).
+\]">\[
+ \omega((\alpha_fx)^*)
+ =\overline{\omega^\sharp(\alpha_fx)}
+ =\int_G\overline{a(t)}\,\omega(\alpha_t(x^*))\,dt
+ =\omega(\alpha_{f^\dagger}(x^*)).
+\]</span>
+Normal functionals separate <span class="math" data-tex="\(M\)">\(M\)</span>, so (NB38) holds in this setting as well.</p>
+<p>The mathematical source is Takesaki, <em>Theory of Operator Algebras II</em>, Definition XI.1.1 and the nondual extension on p. 312, the operator/vector sum theorem in Corollary XI.1.7 on p. 319 with the preceding argument on pp. 317–318, and the adjoint-filter identity in equation (9) on p. 320. The source uses the negative Fourier transform and integrates its inverse kernel at <span class="math" data-tex="\(-t\)">\(-t\)</span>. If <span class="math" data-tex="\(f=\mathcal F_+a\)">\(f=\mathcal F_+a\)</span> as in (NB1), its inverse under <span class="math" data-tex="\(\mathcal F_-\)">\(\mathcal F_-\)</span> is <span class="math" data-tex="\(a(-t)\)">\(a(-t)\)</span>; evaluating that inverse at <span class="math" data-tex="\(-t\)">\(-t\)</span> recovers <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span>. Its filters and spectral labels therefore agree with (NB3) and (NB11). This differs from BS's convention, which pairs its negative transform directly with the unreflected kernel; the reflection from BS to this lesson is the one stated after (NB1).</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L109.html">Previous lesson</a><a href="OA-FLOW-GCC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L110.md">Lesson source</a></nav></main></body></html>

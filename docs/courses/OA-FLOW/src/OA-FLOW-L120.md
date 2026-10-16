@@ -11,11 +11,11 @@ The spectrum intersection is governed by one construction: amplify a fixed corne
 
 Throughout the main theorem, \(M\ne0\) is an arbitrary concrete von Neumann algebra on a Hilbert space \(\mathcal H\), \(G\) is an arbitrary locally compact Hausdorff abelian group, and \(\alpha:G\to\operatorname{Aut}(M)\) is a point-ultraweakly continuous action by normal unital star automorphisms. Assume \(Z(M)^\alpha=\mathbb C1\), and put \(F=M^\alpha\). No separability, countable basis, sigma-compact group, sigma-finite algebra or faithful normal scalar state is assumed. Local projection lemmas expressly allow general algebras and dispense with this action. A sigma-finite projection means that its corner has a faithful normal state, as proved equivalent to countable decomposability in PC7. A sigma-finite central piece refers to its **center**, and need not make the whole piece sigma-finite.
 
-Use the negative Fourier convention of the actual [GCC setting](OA-FLOW-GCC.md#oa-flow.gcc.setting): \(\widehat b(\chi)=\int_G b(t)\overline{\chi(t)}\,dt\). The ordinary action spectrum is the character hull of \(\{b\in L^1(G):T_b=0\}\), as in [GL7](OA-FLOW-GL.md#gl-7). The Connes spectrum is the intersection of the ordinary spectra of all nonzero fixed corners, from [GCC DEFINITION](OA-FLOW-GCC.md#oa-flow.gcc.definition). Thus equality of the same \(L^1\) filter-annihilator ideals gives equality of spectra. Whole action spectra are symmetric, so the positive convention in the reviewed L119 input yields the same action spectrum and intersection; no individual vector spectrum is silently reflected.
+Use the negative Fourier convention of the actual [GCC setting](OA-FLOW-GCC.md#oa-flow.gcc.setting): \(\widehat b(\chi)=\int_G b(t)\overline{\chi(t)}\,dt\). The ordinary action spectrum is the character hull of \(\{b\in L^1(G):T_b=0\}\), as in [GL7](OA-FLOW-GL.md#gl-7). The Connes spectrum is the intersection of the ordinary spectra of all nonzero fixed corners, from [GCC DEFINITION](OA-FLOW-GCC.md#oa-flow.gcc.definition). Thus equality of the same \(L^1\) filter-annihilator ideals gives equality of spectra. Whole action spectra are symmetric, so the positive convention in L119 yields the same action spectrum and intersection; no individual vector spectrum is silently reflected.
 
-The exact earlier complete projection mechanisms are [PC0–7](OA-FLOW-PC.md#pc-0), with [CF1](OA-FLOW-CF.md#oa-flow.cf.1) for choice, [CF6–8](OA-FLOW-CF.md#oa-flow.cf.6) for continuous calculus, positivity and Hilbert facts, [CP4–6](OA-FLOW-CP.md#oa-flow.cp.4) for full vector-series normal tests and norm closure of the predual, and [NF1](OA-FLOW-NF.md#oa-flow.nf.1) for support and faithfulness. The actual [NCF1 matrix proof](OA-FLOW-NCF.md#ncf-1), [AT1/3/5](OA-FLOW-AT.md#oa-flow.at.1), [L117 continuity and cocycle proofs](OA-FLOW-L117.md#oa-flow.fullcorner.continuity) and [L112 cocycle invariance](OA-FLOW-L112.md#oa-flow.cocmat.corners) are earlier canonical inputs. Opening paragraphs, source commentary and figures are context; they are never earlier proved premises.
+The exact earlier complete projection mechanisms are [PC0–7](OA-FLOW-PC.md#pc-0), with [CF1](OA-FLOW-CF.md#oa-flow.cf.1) for choice, [CF6–8](OA-FLOW-CF.md#oa-flow.cf.6) for continuous calculus, positivity and Hilbert facts, [CP4–6](OA-FLOW-CP.md#oa-flow.cp.4) for full vector-series normal tests and norm closure of the predual, and [NF1](OA-FLOW-NF.md#oa-flow.nf.1) for support and faithfulness. The actual [NCF1 matrix proof](OA-FLOW-NCF.md#ncf-1), [AT1/3/5](OA-FLOW-AT.md#oa-flow.at.1), [L117 continuity and cocycle proofs](OA-FLOW-L117.md#oa-flow.fullcorner.continuity) and [L112 cocycle invariance](OA-FLOW-L112.md#oa-flow.cocmat.corners) supply the projection, continuity and cocycle results used below.
 
-The two complete earlier inputs are now canonically installed. The [full FCT trace proof](OA-FLOW-FCT.md#oa-flow.fct.8) constructs the unique faithful normal normalized center-valued trace on every finite algebra, its projection comparison and its naturality; the full L119 proof constructs a continuous \(M\)-valued cocycle realizing the Connes spectrum whenever the fixed algebra has a nonzero minimal projection. The complete internal proofs supply the strictly earlier premises here; introductions, sources and figures remain context.
+The [full FCT trace proof](OA-FLOW-FCT.md#oa-flow.fct.8) constructs the unique faithful normal normalized center-valued trace on every finite algebra, its projection comparison and its naturality; the [full L119 proof](OA-FLOW-L119.md#oa-flow.minfix.cancel) constructs a continuous \(M\)-valued cocycle realizing the Connes spectrum whenever the fixed algebra has a nonzero minimal projection. The finite branch uses the center-valued trace, while the atomic branch uses the minimal-fixed-projection result.
 
 <a id="oa-flow.l120.transport"></a>
 
@@ -101,7 +101,7 @@ A subcorner has a smaller action spectrum. For fixed \(0\ne a\le e\), GCC SETTIN
 <a id="ci-equivalent"></a>
 ## An elementary transport when the whole unit fits in the corner
 
-If a fixed \(e\sim1\), the normal isomorphism \(x\mapsto vxv^*\) transports an action explicitly. Retain the historical orientation \(v^*v=1,\ vv^*=e\); its coboundary and complete identities are:
+If a fixed \(e\sim1\), the normal isomorphism \(x\mapsto vxv^*\) transports an action explicitly. Use the orientation \(v^*v=1,\ vv^*=e\); its coboundary and complete identities are:
 
 Here \(\Phi:M\to eMe\) is \(\Phi(x)=vxv^*\). The equations establish unitarity, the correctly ordered cocycle law and exact intertwining.
 
@@ -170,7 +170,7 @@ Equivalently write \(s=v\). The same computation gives the identity:
 <a id="ci-atomic"></a>
 ## Minimal fixed projections give an independent normalization route
 
-If \(F\) has a nonzero minimal projection, the complete accepted earlier canonical L119 theorem applies at these exact hypotheses and supplies a strongly continuous unitary \(\alpha\)-cocycle satisfying:
+If \(F\) has a nonzero minimal projection, the L119 theorem applies at these exact hypotheses and supplies a strongly continuous unitary \(\alpha\)-cocycle satisfying:
 
 The full L119 conclusion is the following equality; its proof includes ambient fullness, the whole normal crossed-product corner, the prescribed continuous subgroup implementers and extension inside the original fixed algebra.
 
@@ -200,7 +200,7 @@ If \(\tau(a)<t\), then \(r=e-a\) has positive trace, hence is nonzero. The prece
 <a id="ci-finite"></a>
 ## FD2. Central ergodicity converts the finite trace into the needed scalar trace
 
-Assume \(M\) is finite, \(Z(M)^\alpha=\mathbb C1\), and \(F=M^\alpha\) has no nonzero minimal projection. Suppose the complete FCT theorem has supplied a faithful normal normalized center-valued trace \(T:M\to Z(M)\), its automorphism naturality, and its projection order/equivalence criterion. These are the three explicit FCT premises; citing a trace-existence theorem is not a substitute for installing that proof.
+Assume \(M\) is finite, \(Z(M)^\alpha=\mathbb C1\), and \(F=M^\alpha\) has no nonzero minimal projection. Suppose the complete FCT theorem has supplied a faithful normal normalized center-valued trace \(T:M\to Z(M)\), its automorphism naturality, and its projection order/equivalence criterion. The trace theorem supplies these three properties in the required generality.
 
 For every \(x\in F\), naturality gives \(\alpha_t(T(x))=T(\alpha_t(x))=T(x)\). Hence \(T(x)=\tau(x)1\) for a unique complex scalar \(\tau(x)\). Linearity, positivity, normalization and traciality pass from \(T\) to \(\tau\). It is faithful because \(T\) is. It is normal: evaluate \(T(x)\) in any fixed unit vector of the nonzero representation space; that vector functional is normal and takes \(\tau(x)1\) to \(\tau(x)\). Restriction to the fixed algebra remains normal. Thus \(\tau\) is a faithful normal tracial state on \(F\), even when no faithful scalar state was initially assumed on \(M\).
 
@@ -271,9 +271,9 @@ TR2 applies and supplies a strongly continuous cocycle satisfying
  \subseteq\operatorname{Sp}(\alpha^e).
  \tag{FD6}
 \]
-This proves the complete diffuse finite branch at the exact accepted earlier canonical FCT theorem and the actual earlier canonical inputs. It retains full group and Hilbert-space generality. The atomic fixed-algebra and properly infinite cardinal constructions are the other branches of L120; they are not inferred from this module.
+This proves the diffuse finite branch for arbitrary groups and Hilbert spaces under the stated hypotheses. The atomic and properly infinite branches use different constructions.
 
-The original finite-case notation is \(e_1=a\), with \(e_j=a_j\) and \(s_j\) as constructed above. Its numbered displays are retained exactly. Here \(T\) is the full reviewed finite trace, \(\tau\) is its scalar restriction to \(F\), and \(T(e)=\lambda1\) defines the positive scalar; these symbols have all the proved properties in FD1–2:
+The original finite-case notation is \(e_1=a\), with \(e_j=a_j\) and \(s_j\) as constructed above. Here \(T\) is the finite trace supplied by FCT, \(\tau\) is its scalar restriction to \(F\), and \(T(e)=\lambda1\) defines the positive scalar; these symbols have all the proved properties in FD1–2:
 
 <a id="equation-c13"></a>
 
@@ -630,7 +630,7 @@ It is fixed and full, so it has one cardinal \(\mu=d(q)\). On a nonzero sigma-fi
  \tag{FC3}
 \]
 
-In the following retained displays, \(p\) in (C25a) means a nonzero **full properly infinite fixed** projection. Only such a projection has the single \(d(p)\) just defined; the display does not assign one cardinal to an arbitrary projection. In (C25b), \(f\) is nonzero finite and fixed; in (C25c), \(e\) is properly infinite, fixed and not equivalent to \(1\):
+In the following displays, \(p\) in (C25a) means a nonzero **full properly infinite fixed** projection. Only such a projection has the single \(d(p)\) just defined; the display does not assign one cardinal to an arbitrary projection. In (C25b), \(f\) is nonzero finite and fixed; in (C25c), \(e\) is properly infinite, fixed and not equivalent to \(1\):
 
 <a id="equation-c25a"></a>
 
@@ -762,7 +762,7 @@ v^*v=p,\qquad vv^*=q,\qquad vr=rv=r.
 
 PC5's intrinsic finite/properly-infinite central decomposition is preserved by every automorphism. Central ergodicity makes \(M\) finite or properly infinite. In finite \(M\), either the fixed algebra has a minimal projection and the atomic normalization applies, or it has none and FD1–2 gives the diffuse construction for every fixed \(e\).
 
-In properly infinite \(M\), if \(e\sim1\), the explicit equivalent-corner coboundary applies. If \(e\) is properly infinite but not equivalent to \(1\), FC3–5 gives the prescribed first-corner transport with \(a=e\). Otherwise the finite central part of \(eMe\) in PC5 is nonzero. It is fixed under the restricted action because the decomposition is intrinsic. This gives a nonzero finite fixed \(f\le e\), and its fullness follows from (C5). FC2 and FC4–5 apply with \(a=f\). These cases cover every nonzero fixed projection, including projections with mixed intrinsic central types. They prove the following retained reduction:
+In properly infinite \(M\), if \(e\sim1\), the explicit equivalent-corner coboundary applies. If \(e\) is properly infinite but not equivalent to \(1\), FC3–5 gives the prescribed first-corner transport with \(a=e\). Otherwise the finite central part of \(eMe\) in PC5 is nonzero. It is fixed under the restricted action because the decomposition is intrinsic. This gives a nonzero finite fixed \(f\le e\), and its fullness follows from (C5). FC2 and FC4–5 apply with \(a=f\). These cases cover every nonzero fixed projection, including projections with mixed intrinsic central types. They prove the following reduction:
 
 Here \(Z^1_\alpha(G,M)\) denotes the strongly continuous unitary cocycles, and the full L112 matrix-corner proof gives \(\Gamma(\alpha^u)=\Gamma(\alpha)\). The GCC definition includes the identity corner, giving the general containment in (C2):
 
@@ -829,12 +829,12 @@ The two inclusions, with the separately constructed cocycle for each corner, can
 \tag{C29}
 \]
 
-This theorem is proved relative to the exact earlier canonical proofs, including the complete FCT and L119 proofs installed strictly earlier.
+The finite, atomic and properly infinite constructions together establish the intersection formula in the stated generality.
 
 <a id="oa-flow.l120.problem"></a>
 
 <a id="ci-problem"></a>
-## The retained matrix-unit problem
+## The matrix-unit problem
 
 **Problem.** Why would using the printed expression $s_i^*s_j$ in place of (C20) break the amplification proof?
 
@@ -888,11 +888,11 @@ The last equality uses that every nonzero fixed corner contains its fixed unit, 
 <a id="oa-flow.l120.sources"></a>
 
 <a id="ci-sources"></a>
-## Source context and the independent teaching order
+## Sources and proof structure
 
-Takesaki, [*Theory of Operator Algebras II*, Theorem XI.2.9(i), printed336 and339–340](https://doi.org/10.1007/978-3-662-10451-4), states the unrestricted cocycle spectral intersection and explicitly restricts its displayed proof to the sigma-finite case. The exact approved registered copy was checked and the actual relevant pages compared. The source's four-case sequence is not the teaching order here: this lesson proves the common normal transport first, retains the elementary equivalent-corner and atomic alternatives, supplies the diffuse finite construction, and then builds the intrinsic covering cardinal from elementary arithmetic through central assembly before comparing complements.
+Takesaki, [*Theory of Operator Algebras II*, Theorem XI.2.9(i), printed336 and339–340](https://doi.org/10.1007/978-3-662-10451-4), states the unrestricted cocycle spectral intersection and explicitly restricts its displayed proof to the sigma-finite case. This lesson begins with normal transport and gives the equivalent-corner and atomic constructions, followed by the diffuse finite case. The intrinsic covering cardinal is built from elementary arithmetic and normal states; its central assembly then permits comparison of complementary projections.
 
-The original September programme's arbitrary-cardinal route, all C1–24, C25a–e, C26 and C29 display bodies, and its solved orientation problem are retained. The completed CA/HF, LC and FC arguments correct maximal-family enlargement and fill the state-support, weighted-state, central grouping and first-corner details. The free Peterson/Nelson projection development in PC and the free Peterson quantitative trace construction in FCT remain actual mathematical inputs and useful alternatives; source approval does not replace them. Exact ordinary source citations and component terms are retained in those providers. The current proof does not copy source prose, figures or exercise sequencing; SOURCE_DEVELOPMENT.md records the bounded actual comparison and its limits.
+The CA/HF arguments construct homogeneous families and absorb residual projections. LC supplies full sigma-finite corners, the normal-state covering bound and the intrinsic central partition. FC compares complements and constructs an amplification that fixes the prescribed first corner. The PC projection development, following Peterson and Nelson, and the FCT trace construction, following Peterson, provide the projection and trace results used throughout. Their lessons give the corresponding sources and component terms.
 
 <a id="oa-flow.l120.figure"></a>
 
@@ -908,4 +908,4 @@ The lower-left panel uses exactly \((h_0,h_1,h_2,h_3)=(0,1,3,7)\). Its entry in 
 
 The standard theorem antecedent is Takesaki, [*Theory of Operator Algebras II*, XI.2 Theorem2.9(i), printed336 and339–340](https://doi.org/10.1007/978-3-662-10451-4). The source has no corresponding coordinate illustration. The actual local proof uses the earlier free-source PC construction and the complete normal matrix and action-topology proofs. The figure explains the first-corner condition that makes the cocycle lift apply; it does not supply a missing theorem.
 
-[Reproduction source](../assets/arbitrary-cardinality-cocycle-intersection/render_figure.py), [editable SVG](../assets/arbitrary-cardinality-cocycle-intersection/first-corner.svg), and [exact integer semantic data](../assets/arbitrary-cardinality-cocycle-intersection/first-corner-data.json) are retained. Original figure and caption: GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026, CC0-1.0 to the extent of rights held. The renderer uses the installed DejaVu Sans font; no font file is redistributed.
+[Reproduction source](../assets/arbitrary-cardinality-cocycle-intersection/render_figure.py), [editable SVG](../assets/arbitrary-cardinality-cocycle-intersection/first-corner.svg), and [exact integer semantic data](../assets/arbitrary-cardinality-cocycle-intersection/first-corner-data.json) accompany the figure. Original figure and caption: GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026, CC0-1.0 to the extent of rights held. The renderer uses the installed DejaVu Sans font; no font file is redistributed.

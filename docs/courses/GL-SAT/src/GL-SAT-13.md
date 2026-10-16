@@ -14314,15 +14314,1870 @@ space identification.
 
 Lemma C.62.1.1 contracts the mixed path-recording kernel. Theorem C.62.2.1 lifts the supplied entire common path while keeping assigned native faces. Exercises C.62.4.1–C.62.4.2 calculate the cone and the essential higher triangle correction. Editable SVG source.
 
+### C.63. Global fixed-root-profile normalization
+
+The full root-tree index is countable and locally forward finite.
+Its height may be negative;each nonidentity arrow still has positive
+height jump. The finite-on-original-rank constructions extend to this
+whole index. Choosing the independent fixed-profile models and their
+comparisons globally gives exact agreement on intersections of their
+finite capacities,corners and full parameter faces by restriction.
+Profile-changing joint execution and external grafting keep their
+separate domains and higher equations.
+
+#### C.63.1. The unbounded tree index is locally forward finite
+
+For \(n\ge0\),let \(\mathcal T_n\) have every finite planar
+operation-rooted tree with \(n\) ordered external leaves. Keep
+nullary and unary operation vertices. An arrow is the selected set
+of original operation edges to contract,as in C44. There is no
+vertex-capacity bound. Put \(h(t)=-V(t)\). If \(n=1\),adjoin
+an isolated identity-strand object \(\mathbf e\),with no new
+arrows to operation-rooted trees;set its height zero. Denote this
+enlarged category by \(\mathcal R_n\). The strand's native
+functor is the identity. It is not identified with the unary corolla.
+
+**Lemma C.63.1.1 (the actual global root index).** These are countable
+directed categories in the strict-height sense. Every object has
+a finite full forward closure,including its actual parallel arrows.
+The finite capacity subcategories of C44 are full and forward-closed,
+and exhaust \(\mathcal T_n\). A nonidentity arrow increases
+height by its number of selected edges;any strict chain starting
+at \(t\) has length at most \(V(t)-1\).
+
+For a fixed ordered root input profile
+\(\mathbf n=(n_1,\ldots,n_m)\),with \(m\) finite and
+\(n_i\ge0\),the category of independent such root components
+is literally \(\mathcal R_{\mathbf n}=\prod_i\mathcal R_{n_i}\).
+It is locally forward finite. Its ordered cut maps and their refined
+intersections retain the actual product arrow labels.
+
+**Proof.** All objects and arrows lie in some C44 finite capacity
+subcategory. Its union/edge-lifting composition rule is independent
+of that capacity,so defines the global category. A finite tree has
+at most \(2^{V(t)-1}\) selected contraction sets. Every quotient
+has no more vertices than the source. Iterating a contraction is
+again contraction of one original selected set. Thus its whole
+forward closure consists of finitely many quotients,with finitely
+many arrows between them. An arrow starting at any quotient also
+ends in that closure. It is a full finite forward-closed subcategory.
+
+C.44.1.1 gives \(V(t/E)=V(t)-|E|\),and hence the asserted
+height jump and source chain bound. It also proves that the full
+subcategory \(V\le L\) is finite and that contraction retains
+all external leaves. These subcategories are forward-closed and
+their union contains every finite tree. Countably many finite
+subcategories give a countable object and arrow set. Adding the
+isolated identity strand preserves all claims and keeps its label
+distinct from the unary operation vertex.
+
+An ordered planar forest has one component for each root. Each
+component's external leaves form a consecutive block;each original
+external leaf occurs in exactly one block. Contracting operation
+edges cannot join different root components,so an arrow is exactly
+its tuple of component selected sets. The same tuple rule gives
+composition. Thus for the fixed input-block profile these independent
+forests form the displayed product category,not merely an equivalent
+one. Its finite forward closure is the product of the finite root
+forward closures. The summed height is strict on every nonidentity
+arrow. Ordered regrouping and refinement merely regroup those tuples,
+retaining their individual selected-set labels. \(\square\)
+
+The native root functors and their full coherence maps are defined
+on this whole index before a capacity is imposed. They are precisely
+the actual finite-frame convolution/unit/contraction maps of C44 on
+each original finite tree. Passing to a larger capacity adds trees;
+it changes none of an earlier tree's maps. The same common-chain
+construction of C.44.3.1 supplies all finite higher diagrams at once.
+
+The unsuspended graded central mapping space at a root tree can be
+identified with that at its \(n\)-corolla using its unique terminal
+contraction. On an arrow \(t\to u\),the two composites to the
+corolla are the same original contraction. Their actual enhanced
+comparison gives the same equality in full transformation cohomology
+and therefore on graded central mappings. This is a natural graded
+identification over \(\mathcal T_n\). The identity strand has
+its identity-functor mapping space. A zero-input root keeps its
+actual \(\operatorname{RHom}(IC_0,y)\) factor. In a tagged
+parameter mapping block,also keep the actual arrow-space factor
+\(k\mathcal R_n(t,u)\);parallel contraction labels are not
+discarded by this central identification. Ordered roots tensor
+these spaces by the actual C.57.4.1 identification.
+
+#### C.63.2. The finite-on-rank constructions extend to this full index
+
+Let each root parameter category be as in Lemma C.63.1.1,or a full finite
+forward-closed subcategory. A finite strict index word has the
+same positive height jump as in any capacity containing it. Use
+the original rank
+\[
+ \begin{aligned}
+ R&=\#\{\text{original outside IC letters}\}\\
+  &\quad+\sum\Delta h.
+ \end{aligned}
+\]
+No nonnegative absolute height is needed;only these height
+differences enter the count.
+
+**Theorem C.63.2.1 (global original-rank construction).** The ordered cut
+algebra and its acyclic quotient,the full Taylor and bar-unit
+restriction contractions,the fixed-projection native cobar lifts,
+the relative module-action construction,and the coherent path
+lifts of C55–C62 apply on these full root
+indices. The actual maps and homotopies can be chosen once on the
+whole index and then restricted. These restrictions agree exactly
+on all intersections of their finite corners or full parameter
+faces. Every value on an original input remains finite.
+
+This assertion concerns a global choice followed by restriction.
+It does not claim that arbitrary independently prescribed face
+primitives extend,or that each restricted choice is the result
+of a fresh canonical finite construction on that face.
+
+**Proof.** Every finite collection of root objects lies in a finite
+full forward-closed subcategory:take the union of their finite
+forward closures. Its product over roots is another such finite
+corner. These corners form an increasing directed collection,
+and every finite index word occurs in one. The explicit shuffle,
+ordered retraction,unit and coproduct formulas on an original
+word are independent of its corner. The finite C55 and C56
+identities therefore hold on the global index as literal equations.
+
+For the comparison cones and quotients asserted to be acyclic,
+the global complexes are unions of their finite counterparts.
+A cycle is a finite linear combination of words and
+lies in one finite corner. The already proved finite acyclicity
+gives it a primitive in a larger finite corner if needed. Thus
+the union is acyclic,with an actual finite primitive. This argument
+also applies to the leading quotient in each fixed original rank:
+the differential and all the cut and unit maps preserve rank
+there. Every finite rank-block cycle still belongs to a finite
+corner and has its primitive in that same rank block by C56/C61.
+No commutation of Hom with an infinite product is being assumed.
+
+Choose the leading splitting contractions on these global acyclic
+rank blocks. They can retain the full finite forward-closed
+corners:at fixed outside endpoints every intermediate parameter
+object lies in the finite forward closure of its initial endpoint.
+Compute that block in that finite closure. Any forward-closed
+corner containing the original word already contains that whole
+closure. Thus the choice is the same on every such corner. If
+necessary split further by the actual total composite parameter
+arrow. Differential,unit,ordered cut projection and shuffle all
+preserve this composite;their finite comparison cones split over
+those arrow blocks too. The contraction then preserves those
+original parallel-arrow composite labels. The outside IC words
+are left fixed in these leading index choices.
+
+The remaining full module terms consume original IC letters or
+positive index height exactly as in C.56.4.1 and C.61.1.1. Their
+perturbation series terminates after at most \(R\) factors on
+any fixed input. Each leading contraction value is an algebraic
+vector,so is itself a finite sum. The full global contraction
+therefore produces an actual finite sum on that input. The same
+argument applies to the rank-by-rank curvature correction of
+C.57.1.1. Pure core powers,central unary maps and actual parameter
+composites are kept in the same blocks.
+
+The actual fixed-projection sections and strict native free-cobar
+lifts in C46/C52 have the same extension. Their mapping kernels
+contract in these endpoint/composite blocks. Their source unary
+generator complex is retained,and the remaining original-rank
+induction is finite on each generator. The fixed-projection defect
+correction is the full Hom contraction,not a choice based only on
+the generator's cohomology. Thus they supply genuine global
+representatives of the one original native functor diagram.
+
+In the coherent path constructions,the original generator has
+finite string length. Its differential uses shorter strings.
+Induction over that length defines the global values,one finite
+algebraic correction at each step. There is no need for a uniform
+height bound on all objects at once. It retains every given full
+coherent native family because that original family is the input,
+not a family reconstructed from unrelated finite edge choices.
+
+Finally all the constructed cofree maps and homotopies preserve
+any genuine full parameter face. Their outside coactions only
+cut the original input word;their central value has the original
+outer endpoint labels and its retained composite arrow. A full
+face contains those endpoints and all their actual arrows.
+No new output parameter vertex occurs. This is the central
+cofree argument of C.52.5.1. Hence restricting the one global
+map gives a full map or homotopy on each face. Restricting first
+to either of two faces and then to their intersection is
+literally the same restriction. This does not require the
+auxiliary outside contraction to be the separately chosen one
+for a nonrectangular face. The full forward-corner statements
+above ensure finite-stage retention as well. This proves all
+claims with the stated global-choice convention. \(\square\)
+
+#### C.63.3. One common product normalization for a fixed root profile
+
+Use the actual global root families just described,with the
+calibrated extension-field comparison of C48 and all original
+endpoint/string labels retained. The whole native functor and
+its represented equivalences are fixed before any finite
+capacity or full face is selected.
+
+**Theorem C.63.3.1 (fixed-profile product normalization before restriction).**
+For every finite ordered root profile \(\mathbf n\),the common
+one-cross source and target models and their comparison can be
+chosen on the whole \(\mathcal R_{\mathbf n}\) so that their
+restrictions to every proper ordered root cut are the prescribed
+ordered products of the smaller-root choices. Their actual full
+comparison homotopies are one global assignment. Consequently
+all restrictions to finite capacities,finite forward-closed
+corners and full parameter faces agree on their overlaps.
+
+These are the independent fixed-profile product marks. A
+profile-changing joint execution or external several-transition
+grafting mark is not asserted to be such a restriction.
+
+**Proof.** Induct on the number of output roots. Fix the single-root
+native modules and their actual full comparison on their entire
+\(\mathcal R_n\),using the original native family and its
+bar/common-core representatives. Theorem C.63.2.1 applies to these
+global representatives and contractions. The isolated identity
+strand keeps its original identity module,and a nullary root
+keeps its original unit-output mapping module.
+
+At \(m>1\),the already chosen models on all shorter consecutive
+root profiles prescribe their product actions on every proper
+ordered cut. On refined cut intersections they give the same
+flat ordered product,including the single final cross shift,
+by the shorter-root induction. The global rank construction
+in Theorem C.63.2.1 and C.57.1.1 therefore extend these actions to the
+whole current parameter product. C.57.2.1 proves all its finer
+ordered-cut restrictions too.
+
+The actual native finest comparison of C58 exists on this
+global family by Theorem C.63.2.1:its strict projection square is
+wordwise,the represented natural transformations come from
+the one supplied whole native family,and the full fixed
+projection kernel contractions are the global finite-on-rank
+ones. C.57.3.1 extends it to an actual old-to-product-normalized
+module isomorphism. Thus these models retain their original
+native interpretation,not just their graded central ranks.
+Use those actual isomorphisms on both sides to interpret the
+whole calibrated comparison on the new models.
+
+The full native monoidal square now gives the one global
+finest primitive by C.61.3.1,C.60.3.1 and C.59.2.1,all valid
+globally by Theorem C.63.2.1. Prescribe the products of the already
+normalized shorter-root comparisons on every proper cut.
+Their refined-intersection compatibility is the induction
+hypothesis and C41's literal graded regrouping. C.59.3.1
+extends and glues their homotopies from that one actual finest
+primitive. Its central Taylor extension and finite inverse
+give the global comparison with precisely those cut values.
+This construction is performed once for the entire profile;
+no unrelated primitive is chosen on an already named finite
+face. That proves the induction.
+
+Theorem C.63.2.1's cofree restriction argument shows that all finite
+capacities and full faces now inherit their maps and homotopies
+by literal restriction. They agree on every overlap for that
+reason. This establishes a compatible common path for this
+whole fixed-profile independent-root diagram,which can also
+be lifted with the original native first family fixed by C62.
+It is not an assertion that an arbitrary old collection of
+face homotopies had zero relative obstruction.
+
+On a given whole nested path graph,apply C.51.3.1 using these
+global one-cross homotopies whenever the sectors carry these
+same endpoint/string labels. Each string sector receives its
+choice once;its copies in different finite corners are the
+same restriction. The logarithm,whole-path coderivation and
+exponential are finite on every original word as proved in
+C51. Thus this step retains the several-cross differential
+and comparison components. It does not make every external
+grafting map a strict product:the latter has its distinct
+actual C47 domain and may have higher central components.
+Those complete external covariance equations remain required
+before the marked-point descent can be invoked. \(\square\)
+
+
+#### C.63.4. Two solved global-index calculations
+
+**Exercise C.63.4.1 (parallel contractions and a bar class; intermediate).**
+Take the unary operation chain with three operation vertices above
+one external leaf. Describe its complete forward contraction category.
+Compute a nonzero degree-minus-two class in its internal relative
+index bar,and explain why larger capacities do not remove it.
+
+**Solution.** Contract either its upper or lower operation edge.
+These give two distinct arrows \(\alpha,\beta:t_3\to t_2\).
+There is one remaining-edge contraction
+\(\gamma:t_2\to t_1\),and
+\(\gamma\alpha=\gamma\beta=\delta\),the selected contraction
+of both original edges. These are the same arrows in every
+capacity \(L\ge3\). The global heights are \(-3,-2,-1\).
+In the internal relative index bar,
+\[
+ z=s\gamma\mid s\alpha-s\gamma\mid s\beta
+\]
+is a nonzero degree-minus-two cycle:both summands have differential
+\(-s\delta\),so they cancel. No length-three index word starts
+at \(t_3\),so this cycle is not a boundary in that endpoint
+block. The actual ordered product shuffle retains this cycle and
+its two distinct contraction labels. Terminality contracts the
+augmented full nerve;it does not authorize replacing these internal
+relative-bar words by a single path.
+
+
+**Exercise C.63.4.2 (negative height and a zero-input root; intermediate).**
+Take root0 to be a unary operation above a nullary operation,root1
+to be a unary operation above a binary operation with two external
+leaves,and root2 to be the isolated identity strand. Determine their
+input-block profile,full forward product corner and heights. State
+which central mapping factors remain,and check the height differences
+used in the original-rank bound.
+
+**Solution.** The input-block profile is
+\((0,2,1)\). The two nontrivial root forward closures each
+have two objects,so their product is the actual four-object
+square,with heights \(-4,-3,-3,-2\). Each edge has positive
+height jump one,and a diagonal has jump two. Every capacity
+\(L\ge2\) containing these two-operation roots has exactly
+that same full forward square. For source tuple \((x_1,x_2,x_3)\) and target tuple
+\((y_0,y_1,y_2)\),the actual central tensor is
+\[
+ \begin{aligned}
+ &H^\bullet\operatorname{RHom}(IC_0,y_0)\\
+ &\quad\otimes H^\bullet\operatorname{RHom}(x_1*x_2,y_1)\\
+ &\quad\otimes H^\bullet\operatorname{RHom}(x_3,y_2).
+ \end{aligned}
+\]
+The unit-output and identity-strand mapping factors both remain. Increasing the ambient
+capacity changes none of them. The rank bounds use the displayed
+height jumps,so they require no shift to a globally nonnegative
+height on the infinite index.
+
+![The global root index retains its two parallel contractions and bar cycle;the zero/binary/identity root corner has positive height jumps despite negative absolute heights](assets/global-root-profile-normalization.png)
+
+Lemma C.63.1.1 constructs the actual locally forward finite root index. Theorems C.63.2.1–C.63.3.1 extend the original-rank constructions and normalize the whole fixed-profile product diagram before finite restriction. Exercises C.63.4.1–C.63.4.2 compute the retained parallel class and negative-height corner. Editable SVG source.
+
+### C.64. Joint execution and the complete grafting domain
+
+A grafting transition can execute an outer operation after completing an
+inner tree. Its source and target frontiers can have different arities.
+The compatible parameter domain retains these joint transitions and every
+composable string. A product shuffle lies in that domain exactly when its
+whole prefix rectangle is compatible. This criterion distinguishes complete
+shuffle maps from a deletion of forbidden terms.
+
+#### C.64.1. Global joint indices and compatibility
+
+Let \(\mathcal E_n\) be the union of the categories of C.47.1. Its
+objects are finite operation-rooted planar trees \(t\) with \(n\)
+ordered external leaves, together with operation-descendant ideals \(J\).
+Keep every nullary and unary operation vertex. An arrow
+\((t,J)\longrightarrow(t/K,J')\) remembers its selected original
+operation-edge set \(K\), and satisfies \(\pi_K(J)\subseteq J'\).
+Put
+\[
+ h(t,J)=-2V(t)+|J|.
+ \tag{C.64.1}
+\]
+For an outer tree with \(m\) leaves, write \(B(t,J)\subseteq[m]\)
+for the external-leaf positions lying below at least one executed operation
+vertex. For an inner state \(s=(u,I)\), put \(c(s)=1\) exactly when
+\(I\) contains all operation vertices of \(u\); otherwise put
+\(c(s)=0\).
+
+**Lemma C.64.1.1 (global joint indices and monotone prerequisites).**
+The category \(\mathcal E_n\) is countable, has strictly increasing
+integer height on nonidentity arrows, and has a finite full forward closure
+at every object. Its capacity subcategories are full, forward-closed and
+exhaustive. A chain from \((t,J)\) has length at most
+\(2V(t)-|J|-1\). The functions \(B\) and \(c\) are nondecreasing
+along arrows, where subsets are ordered by inclusion.
+
+For \(m,n_i\geq0\), the compatible grafting domain is the full
+subcategory
+\[
+ \mathcal D_{m;\mathbf n}\subseteq
+ \mathcal E_m\times\prod_{i=1}^m\mathcal E_{n_i},
+ \qquad
+ B(t_0,J_0)\subseteq\{i:c(t_i,J_i)=1\}.
+ \tag{C.64.2}
+\]
+It too is locally forward finite and has full exhaustive capacity corners.
+It need not be forward-closed in its ambient product.
+
+**Proof.** Composition is C.47.1's lifted union of original contracted edge
+sets and the final target ideal. It does not use the capacity. Every finite
+object and composable string lies in some capacity subcategory, so their
+unchanged composition rules give a category on the union. Countability follows
+from the finite number of trees, ideals and arrows at each capacity.
+
+For an arrow, let \(k=|K|\), \(I=\pi_K^{-1}(J')\), and let
+\(k_{\mathrm{ex}}\) count the contracted edges inside the completed
+target clusters. C.47.1 proves
+\[
+ h(t/K,J')-h(t,J)
+ =k+(k-k_{\mathrm{ex}})+(|I|-|J|).
+ \tag{C.64.3}
+\]
+Every term is nonnegative. If \(k>0\), the first is positive. If
+\(k=0\), positivity fails only for unchanged ideal, the identity arrow.
+Since \(V\geq1\) and \(|J|\leq V\), every target has height at
+most \(-1\). Strict increase therefore bounds a chain from the specified
+source by \(-1-h(t,J)=2V(t)-|J|-1\). An absolute nonnegative height
+is unnecessary.
+
+Every subsequent quotient of \(t\) is obtained by one of its finitely
+many original operation-edge subsets. Each such quotient has finitely many
+ideals. These are all possible forward targets; the full category on those
+targets has finite arrow sets. It is forward-closed because another quotient
+still comes from one original subset. Capacity cannot increase under an
+arrow, proving the capacity assertions.
+
+If an external leaf lies below \(v\in J\), its same external position
+lies below the quotient vertex \(\pi_K(v)\in J'\). Contracting operation
+edges never removes an external leaf or changes its order. Thus
+\(B(t,J)\subseteq B(t/K,J')\). If every original vertex is in
+\(J\), its image is every quotient vertex, so the arrow condition forces
+\(J'\) to be complete. This proves monotonicity of \(c\).
+
+The union of embedded executed vertices in a graft is an ideal precisely when
+an executed outer vertex has every attached inner operation descendant
+executed. The attached inner trees are exactly the leaves in \(B(t_0,J_0)\).
+Each must be complete; there is no condition on other inner trees. This proves
+(C.64.2), including inner trees with no external leaves. At \(m=0\) the
+condition is empty and the domain is just \(\mathcal E_0\).
+
+A finite product of finite full forward closures is finite. Its intersection
+with the full compatible subcategory contains the entire forward closure
+inside that subcategory. An arrow in the subcategory cannot increase any
+factor capacity, so its capacity corners are full and forward-closed there.
+They exhaust it. For failure of ambient forward closure, take an unexecuted
+unary outer corolla and an unexecuted nullary inner corolla. The tuple is
+compatible. Executing only the outer vertex gives an ambient arrow whose
+target violates (C.64.2). This completes the proof. \(\square\)
+
+#### C.64.2. Which complete product shuffles lie in the domain
+
+Set \(n_0=m\) and use the actual reduced category bars
+\(D_i=B(k\mathcal E_{n_i})\), with the outer factor indexed by
+\(i=0\). A factor word records a finite
+composable string of nonidentity arrows, including its endpoints. A length-zero
+word records its object. In a tensor of factor words \(w_0\otimes\cdots
+\otimes w_m\), write \(s_i^-\) and \(s_i^+\) for the first and last
+objects of the \(i\)-th word. The tensor's prefix rectangle consists of
+all tuples of vertices obtained by independently choosing a prefix of each
+factor word. Call this tensor word safe when
+\[
+ B(s_0^+)\subseteq\{i:c(s_i^-)=1\}.
+ \tag{C.64.4}
+\]
+All labels here are original category labels, including parallel contraction
+arrows. Let \(S\) be the span of safe tensor words in
+\(D_0\otimes\cdots\otimes D_m\).
+
+**Theorem C.64.2.1 (the exact complete-shuffle domain).** The prefix rectangle
+is contained in \(\mathcal D_{m;\mathbf n}\) if and only if (C.64.4)
+holds. The span \(S\) is a differential graded subcoalgebra, with its
+colored coaugmentations. The entire usual signed shuffle restricts to a chain
+coalgebra injection
+\[
+ \operatorname{sh}:S\longrightarrow B(k\mathcal D_{m;\mathbf n}).
+ \tag{C.64.5}
+\]
+Within the tensor of the actual factor word bases, \(S\) is exactly the
+linear preimage of \(B(k\mathcal D_{m;\mathbf n})\) under the ordinary
+shuffle into the ambient product bar. This assertion includes finite linear
+combinations, not only individual words.
+
+On the sector where the outer ideal is empty at every vertex of its word,
+every tensor word is safe. General compatible joint transitions are retained
+in \(B(k\mathcal D_{m;\mathbf n})\), even when they are absent from
+the safe product-shuffle image.
+
+**Proof.** Along the outer word the sets \(B\) increase, and along each
+inner word completeness can only increase, by Lemma C.64.1.1. If (C.64.4) holds,
+every prefix tuple therefore satisfies (C.64.2). Conversely the prefix tuple
+with the outer word finished and every inner word at its beginning is in
+the rectangle. Its compatibility is exactly (C.64.4). This proves the criterion.
+
+Every prefix tuple occurs in some complete interleaving: first take its chosen
+prefixes, preserving each factor's order, and then take their remaining
+suffixes. A shuffle term's vertices are prefix tuples. Thus every shuffle
+term lies in the compatible full subcategory precisely when the full prefix
+rectangle does. Fullness is relevant here: the simultaneous composite arrows
+arising in the bar differential are actual arrows of the subcategory whenever
+their endpoints lie there.
+
+The reduced internal bar differential composes two adjacent arrows in a
+factor word. It retains that word's endpoints and removes one intermediate
+vertex. Therefore it preserves (C.64.4). There are no other terms, since the
+linear categories have degree-zero arrows and zero internal differential.
+The tensor differential includes its usual Koszul signs and consequently
+preserves \(S\).
+
+In a term of the tensor coproduct each factor word is cut into a prefix and
+a suffix. For the prefix tensor, the outer final \(B\) is contained in
+the old final \(B\), and every inner initial state is unchanged. It is
+safe. For the suffix tensor, the outer final state is unchanged and every
+inner initial state occurs later in its word, so its completeness is at least
+the old initial completeness. It too is safe. All coproduct terms thus lie
+in \(S\otimes S\). The compatible object identities give exactly the
+length-zero safe words and their coaugmentations. This proves the subcoalgebra
+statement, with the inherited tensor coproduct signs.
+
+The full shuffle on bars of degree-zero categories is the signed interleaving
+map proved in C.34.2 and C.42.1. Its differential cancellation pairs opposite
+orders of adjacent arrows from different factors; arrows in the same factor
+give that factor's bar differential. Its coalgebra identity cuts each
+interleaving at every prefix, with the tensor Koszul sign. These complete
+identities restrict to \(S\), since every term now lies in the indicated
+subcoalgebras. This proves the chain and coalgebra assertions in (C.64.5).
+
+For injectivity and the claimed linear preimage, each interleaving has arrows
+supported in exactly one factor at each step. The nonidentity factor and
+its original arrow label are recoverable from that product arrow. Reading
+those steps in their original order recovers each factor word, including
+its endpoints. Thus different tensor word basis elements have disjoint
+shuffle supports. Within a single shuffle, the different interleavings also
+give distinct product-bar basis words and have coefficients \(1\) or
+\(-1\). This uses the actual arrow labels and holds for parallel arrows.
+No coefficient can cancel a forbidden interleaving coming from another
+tensor word. A linear combination has shuffle support entirely in the full
+compatible bar exactly when every tensor basis word occurring with nonzero
+coefficient is safe. This proves both assertions.
+
+When the outer ideals are all empty, \(B(s_0^+)=\varnothing\), so the
+criterion imposes no condition on inner factors. This is precisely the native
+external-product sector of C.47.3. In general (C.64.2) permits a transition
+which first completes an inner tree and then executes an outer vertex
+depending on it. Such a transition need not satisfy (C.64.4) for its separate
+factor words. It remains an ordinary composable string, and its simultaneous
+composite remains an arrow, in the full compatible bar. \(\square\)
+
+#### C.64.3. The full graft map and finite original-word bounds
+
+**Theorem C.64.3.1 (full joint grafting and its original domains).** Literal
+grafting defines a functor
+\[
+ \mathfrak g:\mathcal D_{m;\mathbf n}\longrightarrow
+              \mathcal E_N,\qquad N=\sum_{i=1}^m n_i,
+ \tag{C.64.6}
+\]
+which preserves the sum of the heights (C.64.1), retains the selected edge
+labels, and sends every nonidentity arrow to a nonidentity arrow. It induces
+the genuine chain coalgebra map
+\[
+ B\mathfrak g:B(k\mathcal D_{m;\mathbf n})
+                         \longrightarrow B(k\mathcal E_N).
+ \tag{C.64.7}
+\]
+The composite with (C.64.5) is the complete product shuffle followed by grafting
+on its exact safe domain. No clipping of unsafe shuffles defines (C.64.7).
+Nested grafts and restrictions to full parameter faces commute on their
+actual common domains.
+
+Every finite joint or grafting string and its native enhanced functors and
+higher comparison cells are contained in finite capacity corners. Their
+native interpretation and its extension-field comparison are the original
+ones of C.47.2–3 and C.29. The total original-word rank
+\[
+ R=r+\sum_{\text{outside runs}}\Delta h
+ \tag{C.64.8}
+\]
+is nonnegative and bounds the total number of nonidentity outside index
+letters plus the \(r\) original IC primitive letters. It is preserved by
+grafting of outside index runs. A frontier-changing arrow uses its actual
+source and target arities; it is not replaced by a tensor power at a fixed
+arity.
+
+**Proof.** Choose any finite factor capacities containing a source object
+and its considered finite strings. The exact compatibility criterion is
+Lemma C.64.1.1, which is independent of capacities. C.47.3 then grafts the tuple,
+keeps every factor's operation vertex and joining seam, and embeds the
+disjoint selected factor-edge subsets without selecting a seam. Its quotient
+is the graft of the factor quotients. Its executed union is an ideal by
+compatibility. The original edge-union composition rule is unchanged at
+larger capacities. It therefore defines the global functor (C.64.6).
+
+There are exactly \(\sum_i V_i\) operation vertices and
+\(\sum_i|J_i|\) executed vertices in its object image. Consequently
+\[
+ h(\mathfrak g(s_0;\ldots,s_m))=\sum_{i=0}^m h(s_i).
+ \tag{C.64.9}
+\]
+A nonempty selected factor-edge set remains nonempty in the disjoint
+embedded union and reduces the grafted vertex count. If every selected edge
+set is empty but an execution ideal strictly increases, the disjoint executed
+union strictly increases. These are all nonidentity arrows. Thus the functor
+never turns a nonidentity into an identity. Different selected sets at a fixed
+decomposed source retain their distinct embedded labels. Distinct decomposed
+objects may have the same flattened tree; injectivity on all object colors
+is not asserted.
+
+On a reduced bar word, apply \(\mathfrak g\) to each arrow, retaining
+every letter. The output is reduced by noncollapse. Its coproduct is still
+word cutting. Its differential composes adjacent arrows with the original
+suspended sign; the functor equation sends their composite to the composite
+of their images. Hence it is a chain coalgebra map. This proof includes an
+arrow in which several factors change at once and every higher composable
+string in the full compatible category. Restricting this map to the complete
+shuffle image gives the stated composite.
+
+For nested grafts, C.47.3's two groupings have the same embedded operation
+vertices, seams and executed union. Their common compatibility condition is
+that this final union be an ideal. Selected contractions are the same lifted
+embedded unions, so the functors, and therefore their bar maps, agree on
+that common domain. For a full target face on an object set \(T\),
+restrict the source to the full subcategory on
+\(\mathfrak g^{-1}(T)\). Every arrow in it maps to the full face on
+\(T\), giving the actual restriction square. Pulling back two object sets
+commutes with intersection; successive face restrictions agree literally.
+This is a statement about those colored restriction maps. Because different
+decompositions can flatten to the same object, it does not identify the
+linear preimage of a face subspace under a noninjective flattened bar map
+with a basis-support subspace.
+
+A finite list of factor trees has finite maximum capacities. All its forward
+quotients remain within them by Lemma C.64.1.1, and its grafts remain within their
+sum. C.47.2 constructs the actual partial-forest functor of each arrow from
+arbitrary source frontier variables. Its saturation ideal is
+\(\pi_K^{-1}(J')\), so the source frontier arity is
+\(n+\sum_{v\in J}(1-r(v))\) and the target arity is the corresponding
+quantity in the quotient. These can differ. Every such arity in the finite
+forward closure is bounded by the source leaf count plus its vertex capacity.
+Finite IC generator selections can be closed under forward images in this
+finite directed diagram by C.47.2's height induction. Thus its full enhanced
+native strings, the graft comparisons and all their higher cells are the
+finite-corner constructions already proved there. Those constructions are
+defined by the original partial forests, tensor, proper and unit maps; none
+depends on unused larger-capacity trees. Their restrictions agree. C.29's
+actual full comparison carries these same maps and all their coherent cells
+after coefficient extension. Taking their compatible finite restrictions
+proves the global assertion without independently choosing edge comparisons.
+
+Finally each nonidentity index letter has positive integer height jump by
+(C.64.3). A run of \(q\) such letters therefore has \(q\leq\Delta h\).
+Summing proves the bound in (C.64.8). The height is bounded above, not below
+globally, but its endpoint jumps are positive and telescope; this is all that
+the bound uses. Equation (C.64.9) preserves those summed endpoint jumps under
+grafting. Original IC letters are unchanged by an index graft. This proves
+rank preservation. Any use of this index map with the native functors must
+keep the actual frontier arities just computed. The theorem supplies their
+full parameter domain and native interpretation; it does not replace them
+by a fixed-profile product. \(\square\)
+
+#### C.64.4. Solved calculations
+
+**Exercise C.64.4.1 (intermediate; the first unsafe square).** Graft a nullary
+inner corolla below a unary outer corolla. Record states by
+\((o,i)\in\{0,1\}^2\), where a one means that the corresponding
+vertex is executed. Determine the compatible domain and the reduced bar
+differential after retaining only allowed interleavings of the tensor of
+the two execution arrows.
+
+**Solution.** Compatibility is \(o\leq i\). The full domain is the
+three-object chain \(00<01<11\), including its direct composite
+\(\delta:00\to11\); \(10\) is forbidden. The graft has two
+operation vertices, so their heights are \(-4,-3,-2\). Their frontiers
+have respectively \(0,1,1\) factors. Write
+\(\alpha:00\to01\) and \(\beta:01\to11\). The first functor
+is the actual unit output, and the second is the unary operation on that
+arbitrary output factor. Its mapping complex is retained.
+
+The factor tensor is not safe: the outer final executed vertex requires
+the inner to be complete initially, whereas its initial state is zero.
+Its full signed shuffle has two terms. In chronological storage, the term
+inner-then-outer has coefficient \(+1\), and outer-then-inner has
+coefficient \(-1\). In target-to-source suspended notation the allowed
+term is \(w=s\beta\mid s\alpha\). The programme convention
+\(b_2(sb\mid sa)=-s(ba)\) for degree-zero arrows gives
+\[
+ b(w)=-s\delta\ne0.
+ \tag{C.64.EX1}
+\]
+The tensor of two single-arrow bar words has differential zero. Clipping its
+other interleaving therefore fails the chain equation. The full compatible
+bar retains both \(w\) and \(s\delta\), with precisely (C.64.EX1);
+there is no failure in that genuine bar complex.
+
+**Exercise C.64.4.2 (advanced; two units under one binary operation).** Take
+the binary outer corolla and two nullary inner corollas. Among the tensor
+bars of their three two-state execution categories, determine the safe-word
+dimension and compare it with the whole compatible bar. Count the allowed
+interleavings of the tensor of all three execution arrows.
+
+**Solution.** With coordinates \((o,l,r)\), compatibility is
+\(o=0\) or \(l=r=1\). There are five objects
+\[
+ 000,\quad010,\quad001,\quad011,\quad111.
+ \tag{C.64.EX2a}
+\]
+Their heights are respectively \(-6,-5,-5,-4,-3\), and their frontier
+arities are \(0,1,1,2,1\). The last arrow executes the actual binary
+convolution of its two arbitrary frontier factors.
+
+Each two-state factor bar has basis the two object words and its one-arrow
+word, so the full tensor has dimension \(3^3=27\). If the outer word
+is the empty word at state zero, all \(3^2=9\) inner pairs are safe.
+The other two outer basis words end at state one; each then requires both
+inner words to begin at one. Each inner word must therefore be the empty
+word at one. This contributes two more, giving \(\dim S=11\).
+
+The full compatible category is the poset on (C.64.EX2a). It has nine strict
+arrows, seven strict two-arrow strings, and two strict three-arrow strings,
+in addition to its five objects. Its whole reduced bar has dimension
+\(5+9+7+2=23\). In particular the simultaneous arrow
+\(000\to111\) is retained even though the tensor of the three separate
+execution arrows is unsafe. Among its six interleavings, exactly the two
+which execute both inner units before the outer operation stay in the
+compatible domain. This count does not turn their clipped signed sum into
+a replacement for the full bar. Theorem C.64.3.1 uses all 23 actual words and
+their composition differential.
+
+![The compatible unit-under-unary states form a full three-object chain; two inner units under a binary operation give five states with all joint composite arrows retained](assets/joint-graft-compatibility-faces.png)
+
+Lemma C.64.1.1 gives the positive height jumps and prerequisites. Theorem C.64.2.1 characterizes complete product shuffles, and Theorem C.64.3.1 gives the whole grafting bar map. Exercises C.64.4.1–C.64.4.2 compute the unit and binary domains. Editable SVG source.
+
+### C.65. Entire coherent strings and staged model contractions
+
+Transport through a chosen model contraction acts on the full coherent
+diagram, including its higher components and its path comparison. Consecutive
+partitions give explicit finite formulas. Nested partitions show that staged
+contractions give exactly the same transported diagram as their composite
+contraction. These statements concern diagrams in a single specified dg
+category, with all map types retained.
+
+#### C.65.1. Every component of the transported coherent diagram
+
+Let \(I\) be a directed category with its actual parallel-arrow labels.
+It may be countable and locally forward finite, as in C64. Let
+\(\mathcal A\) be a dg category. For each object \(s\) choose objects
+\(X_s,Q_s\) and normalized contraction data in \(\mathcal A\):
+\[
+ \begin{gathered}
+ p_s:X_s\to Q_s,\\
+ i_s:Q_s\to X_s,\\
+ p_si_s=1,\\
+ \partial h_s=1-i_sp_s,\\
+ h_s^2=p_sh_s=h_si_s=0.
+ \end{gathered}
+ \tag{C.65.1}
+\]
+The maps \(i_s,p_s\) are closed of degree zero; \(h_s\) has degree
+minus one. Suppose the entire normalized dg functor
+\(F:\Omega B(kI)\to\mathcal A\), with objects \(X_s\), is given.
+For a nonempty composable string \(c=(f_1,\ldots,f_q)\), written
+chronologically, write \(F[c]\) for its free cobar generator image. Its
+degree is \(1-q\). The suspended bar word reads in the opposite order.
+Write \(c/j\) for the string composing its \(j\)-th and
+\((j+1)\)-st arrows, and \(c_{\le j},c_{>j}\) for its prefix and
+suffix at that vertex. In the programme convention the generator equation is
+\[
+ \begin{aligned}
+ \partial F[c]
+ &=\sum_{j=1}^{q-1}(-1)^{q-j}
+       F[c/j]\\
+ &\quad+\sum_{j=1}^{q-1}(-1)^{q-j+1}\\
+ &\qquad\cdot F[c_{>j}]F[c_{\le j}].
+ \end{aligned}
+ \tag{C.65.2}
+\]
+For \(q=1\) the sums are empty. This is C.39.15/C.43.6 on the
+actual degree-zero index category; in particular the two-arrow generator
+has differential \(F[f_2]F[f_1]-F[f_2f_1]\).
+
+Partition the chronological string into nonempty consecutive blocks
+\(c_1,\ldots,c_r\). Between two blocks the indicated \(h\) is at
+their shared original object. Write \(\Pi_F(c_r,\ldots,c_1)\) for
+the ordered composite \(F[c_r]h\cdots hF[c_1]\), with one \(h\)
+at each block seam. Put
+\[
+ \begin{aligned}
+ U[c]&=\sum_{c=c_1\cdots c_r}(-1)^{r-1}\\
+ &\quad\cdot p_{s_q}\Pi_F(c_r,\ldots,c_1),\\
+ T[c]&=U[c]i_{s_0},\\
+ A[c]&=(-1)^{q-1}U[c]h_{s_0}.
+ \end{aligned}
+ \tag{C.65.3}
+\]
+There are \(2^{q-1}\) partitions, so these are finite sums.
+
+**Theorem C.65.1.1 (explicit full coherent transport).** The assignments \(T[c]\)
+give a normalized dg functor \(T:\Omega B(kI)\to\mathcal A\) with
+objects \(Q_s\). The triples
+\[
+ \bigl(F[c],T[c],A[c]\bigr)
+ \tag{C.65.4}
+\]
+give an entire dg functor to the path category of C.53.4, whose object at
+\(s\) is \(p_s:X_s\to Q_s\). Thus this is an actual coherent
+comparison with the original full diagram, with its prescribed object
+projections, not merely a collection of edge comparisons.
+
+The construction preserves restriction to every full parameter face and to
+their intersections, when one family (C.65.1) has been chosen before restriction.
+It retains parallel arrows and all original composable strings. No uniform
+global height bound is required for the finite sums in (C.65.3).
+
+**Proof.** Every term of \(U[c]\) has degree \(1-q\), since its
+\(r\) functor components contribute \(r-q\) and its \(r-1\)
+homotopies contribute \(1-r\). Thus \(T[c]\) has the required degree
+and \(A[c]\) has degree \(-q\). The endpoints and every intermediate
+object are those of the original string.
+
+Differentiate (C.65.3) using the full Hom derivation rule. Terms from
+differentiating an \(F\)-block split into its internal adjacent-arrow
+merges and its two-block products, by (C.65.2). An internal merge has exactly
+the corresponding term on the first line of (C.65.2) for \(T\). Indeed
+if it merges the arrows at original position \(j\), the degree of all
+terms to the left of its block, including the intervening homotopies, is
+congruent modulo two to the number of arrows in the chronological suffix
+after that block. Adding the block's internal sign gives \((-1)^{q-j}\). The
+partition sign remains \((-1)^{r-1}\).
+
+Consider a seam between blocks, with \(L\) original arrows in its
+chronological suffix, on its target side.
+Differentiating its \(h\) gives \(1-ip\). With \(r\) blocks the
+coefficient of its identity term is \((-1)^{r+L}\): the \(F\)-blocks
+and homotopies to its left have total degree congruent to \(L+1\), and
+the partition contributes \((-1)^{r-1}\). The product term obtained by
+differentiating the merged block of the corresponding \((r-1)\)-block
+partition has coefficient \((-1)^{r-1+L}\). These cancel. This pairs
+every identity seam with exactly one functor-component product.
+
+The remaining \(-ip\) seam has coefficient \((-1)^{r+L+1}\).
+Cutting the whole string at that seam gives the product of the corresponding
+two terms of \(T\). Their partition signs multiply to
+\((-1)^{r-2}\), while the cobar cut has sign \((-1)^{L+1}\).
+The product is \((-1)^{r+L-1}\), the same coefficient. Thus all remaining
+seams are exactly the second line of (C.65.2) for \(T\). This proves its
+generator equation. Extension to the free cobar by composition and object
+units is consequently a dg functor.
+
+For the path assertion use the differential and product of C.53.4:
+\[
+ \begin{gathered}
+ D(f,g,a)=(\partial f,\partial g,\\
+ \qquad-\partial a+p_tf-gp_s),\\
+ (f_2,g_2,a_2)(f_1,g_1,a_1)\\
+ \quad=(f_2f_1,g_2g_1,\\
+ \qquad a_2f_1+(-1)^{|f_2|}g_2a_1).
+ \end{gathered}
+ \tag{C.65.5}
+\]
+For clarity, the calculation just made, before its final \(i\), gives
+the full identity
+\[
+ \begin{aligned}
+ \partial U[c]&=\sum_j(-1)^{q-j}U[c/j]\\
+ &\quad+\sum_j(-1)^{q-j+1}\\
+ &\qquad\cdot T[c_{>j}]U[c_{\le j}],
+ \end{aligned}
+ \tag{C.65.6}
+\]
+where \(c/j\) composes its \(j\)-th and \((j+1)\)-st arrows.
+Its product terms close the suffix component with \(i\) at the cut, while
+the prefix component retains its original \(X\)-source. Its signs follow from
+precisely the same two seam counts. For a one-arrow string all sums vanish:
+\(\partial U=0\). Grouping the partitions by their first chronological
+block also gives the exact recursion
+\[
+ \begin{aligned}
+ p_{s_q}F[c]-U[c]
+       &=\sum_j U[c_{>j}]\\
+       &\qquad\cdot h_{s_j}F[c_{\le j}].
+ \end{aligned}
+\]
+
+Multiply (C.65.6) on the right by \(h_{s_0}\), use
+\(\partial h=1-ip\), and multiply by \((-1)^{q-1}\). The Hom
+derivation sign of \(U[c]\) is \((-1)^{1-q}\). The resulting identity
+is exactly
+\[
+ \begin{aligned}
+ &-\partial A[c]+p_{s_q}F[c]\\
+ &\qquad-T[c]p_{s_0}\\
+ &\quad=\sum_j(-1)^{q-j}A[c/j]\\
+ &\qquad+\sum_j(-1)^{q-j+1}\\
+ &\qquad\quad\cdot A[c_{>j}]F[c_{\le j}]\\
+ &\qquad+\sum_j T[c_{>j}]A[c_{\le j}].
+ \end{aligned}
+ \tag{C.65.7}
+\]
+The displayed recursion gives the terms containing \(A[c_{>j}]F[c_{\le j}]\)
+and \(pF\). Equation
+(C.65.7) is the third component of (C.65.2) for (C.65.4), using (C.65.5) and
+\(|F[c_{>j}]|=1-(q-j)\). Its first two components were proved above.
+This proves the entire path functor.
+
+Ordinary identity arguments normalize correctly. A block of length greater
+than one containing an identity has zero native component. A singleton
+identity block gives \(ph=0\) at the target end, \(hi=0\) at the source
+end of \(T\), or \(h^2=0\) internally. For \(A\) the source end
+also gives \(h^2=0\). The one-letter identity has \(T[1]=pi=1\)
+and \(A[1]=ph=0\). Thus the usual unital normalization is retained.
+
+All blocks are consecutive parts of the original word. Their composite
+arrows and endpoints stay in every full subcategory containing its vertices.
+No additional intermediate vertex is introduced. Choosing the data globally
+therefore makes both functors and the path restrict term by term; two face
+restrictions agree on their intersection. At each finite word the sums are
+finite regardless of the size or negative absolute heights of the index.
+Every retained arrow is its original label, so parallel arrows are not
+identified. \(\square\)
+
+#### C.65.2. Successive contractions give the same entire transport
+
+Suppose each \(Q_s\) has a second normalized contraction
+\(q_s:Q_s\to R_s\), \(j_s:R_s\to Q_s\), \(k_s\), with
+\(q_sj_s=1\) and \(\partial k_s=1-j_sq_s\).
+
+**Theorem C.65.2.1 (strict staged transport identity).** The composite contraction
+from \(X_s\) to \(R_s\) is
+\[
+ \begin{aligned}
+ P_s&=q_sp_s,\quad I_s=i_sj_s,\\
+ H_s&=h_s+i_sk_sp_s.
+ \end{aligned}
+ \tag{C.65.8}
+\]
+Transporting the entire coherent \(F\) first by \((p,i,h)\) and then
+by \((q,j,k)\) gives exactly the same component on every original string
+as applying (C.65.3) once using (C.65.8). This is equality of all Taylor
+components, not just equality of the edge classes. Three or more stages
+associate strictly. Full-face restrictions preserve this identity.
+
+**Proof.** The maps \(P,I\) are closed and \(PI=qpij=qj=1\).
+The Hom derivation identity gives
+\[
+ \partial H=(1-ip)+i(1-jq)p=1-IP.
+\]
+Also \(H^2=0\): its four terms vanish by \(h^2=hi=ph=k^2=0\)
+and \(pi=1\). The equations \(PH=HI=0\) follow from the same
+identities and \(qk=kj=0\). Thus this is the required normalized
+contraction.
+
+Expand the two uses of (C.65.3). A second-stage partition divides the original
+string into larger blocks. Within each larger block choose the first-stage
+partition defining its component. The resulting fine partition has a seam
+of type \(h\) inside a larger block and a seam of type \(ikp\)
+between larger blocks. Conversely every fine partition whose seams are
+independently marked with these two types determines uniquely those two
+stages of partitions: group blocks across the \(h\)-seams. The resulting
+ordered composite has the common end maps \(qp\) and \(ij\).
+
+If there are \(r\) fine blocks and \(a\) large blocks, the first-stage
+partition signs multiply to \((-1)^{r-a}\), and the second-stage sign
+is \((-1)^{a-1}\). Their product is \((-1)^{r-1}\). No permutation
+of a map is used; the maps are in the identical target-to-source order.
+Hence there is no additional Koszul sign. Summing the two seam types gives
+\(h+ikp=H\) at every seam. This is precisely the single-stage formula
+using (C.65.8), with matching signs and endpoints.
+
+For three stages the composite homotopy is, in either grouping,
+\(h_1+i_1h_2p_1+i_1i_2h_3p_2p_1\); the projection and inclusion
+are the same ordered composites. The two-stage identity therefore proves
+associativity for three, and induction proves every finite number of stages.
+All partition identities are on the original string, so commute with the
+full-face restrictions of Theorem C.65.1.1. The theorem asserts equality of the
+transported functors; it does not assert that independently chosen auxiliary
+path homotopies are equal. \(\square\)
+
+#### C.65.3. Even cohomology does not remove long coherent components
+
+**Proposition C.65.3.1 (arbitrarily long nonzero transferred components).** For
+every odd \(N\geq3\) there is a strict diagram of finite cochain
+complexes on \([N]=\{0<1<\cdots<N\}\), with normalized contractions
+to complexes supported in even degrees, for which (C.65.3) has a nonzero
+component on its length-\(N\) consecutive string. Every positive-length
+component of smaller length is zero. The original strict diagram has no
+higher components.
+
+**Proof.** At zero take \(X_0=Q_0=kx\) in degree zero. At \(N\)
+take \(X_N=Q_N=kz\) in degree \(1-N\), which is even. For
+\(1\leq j\leq N-1\), take
+\[
+ \begin{aligned}
+ X_j&=ke_j\oplus ka_j\oplus kb_j,\\
+ |e_j|&=0,\quad |a_j|=-j,\\
+ |b_j|&=1-j,\quad da_j=b_j.
+ \end{aligned}
+ \tag{C.65.9}
+\]
+All other differentials are zero. Put \(Q_j=ke_j\), let \(p_j,i_j\)
+be its projection and inclusion, and set \(h_jb_j=a_j\), with \(h_j\)
+zero on the other basis vectors. These are normalized contractions. At
+the two endpoints use the identity contraction and zero homotopy.
+
+The first adjacent arrow sends \(x\) to \(b_1\). For
+\(2\leq j\leq N-1\), the \(j\)-th adjacent arrow sends
+\(a_{j-1}\) to \(b_j\) and all other basis vectors to zero. The
+last adjacent arrow sends \(a_{N-1}\) to \(z\) and all other basis
+vectors to zero. These are degree-zero chain maps. Every product of two
+adjacent arrows is zero, because an arrow's image lies in a \(b\)-line,
+which the next arrow kills. Set every nonadjacent strict arrow to zero.
+Together with identity maps this is a strict diagram on the full category
+\([N]\), not just on its adjacent-arrow quiver.
+
+In (C.65.3) every native block of length greater than one is zero. Thus for
+the full consecutive string there is one contributing partition, into
+single arrows. Starting with \(x\), its ordered composite successively
+visits
+\[
+ \begin{aligned}
+ x&\longmapsto b_1\longmapsto a_1\longmapsto b_2\\
+  &\longmapsto a_2\longmapsto\cdots\\
+  &\longmapsto a_{N-1}\longmapsto z.
+ \end{aligned}
+ \tag{C.65.10}
+\]
+Its coefficient is \((-1)^{N-1}=1\), so \(T[0,1,\ldots,N](x)=z\).
+If a string starts after zero, its source inclusion lands in an \(e\)-line
+and its first nonidentity arrow kills that line. If it starts at zero but
+ends before \(N\), its last projection kills its \(b\)-line image.
+If it skips a vertex, a nonadjacent native arrow is zero. These exhaust every
+other positive-length string. Thus all shorter components vanish, as claimed.
+
+This proves that even cohomology alone does not force a transported coherent
+diagram to have only edge components. It does not assert that the displayed
+long component is invariant under all changes of coherent representative.
+The statement concerns the exact full transport with the specified native
+diagram and specified contractions. \(\square\)
+
+#### C.65.4. Solved calculations
+
+**Exercise C.65.4.1 (intermediate; the complete length-three transport).** For
+Proposition C.65.3.1 with \(N=3\), compute the transferred edge, two-arrow and
+three-arrow components. Remove only the first intermediate acyclic pair
+at the first stage. Compute the first-stage component on \((0,1,2)\)
+and its contribution to the second-stage three-arrow component.
+
+**Solution.** The full transport has all edge and two-arrow components
+zero. Its only nonzero positive-length component is
+\[
+ \begin{gathered}
+ T[0,1,2,3](x)\\
+ =F[2,3]h_2F[1,2]\\
+ \qquad\cdot h_1F[0,1](x)\\
+ =z.
+ \end{gathered}
+ \tag{C.65.EX1}
+\]
+The coefficient is positive because its partition has three blocks.
+If the first stage removes just the pair at object one, the component
+\(T^{(1)}[0,1,2]\) sends \(x\) to \(-b_2\). Object two has not
+yet been contracted, so that output remains. At the second stage the
+two-block partition with blocks \((0,1,2)\) and \((2,3)\) contributes
+\(-F[2,3]h_2T^{(1)}[0,1,2](x)=z\). Replacing the first-stage functor
+by its edge maps would lose this term. The intermediate cohomology lines
+are degree zero and the final one has degree minus two; they are all even.
+
+**Exercise C.65.4.2 (advanced; a higher path component with zero transported
+two-arrow component).** In the same example compute \(A[1,2,3]\)
+and verify the third path equation on \(a_1\). Explain what would fail
+if this higher path component were omitted while keeping its prescribed
+edge path components.
+
+**Solution.** The native two-arrow component is zero. Formula (C.65.3) has
+\(q=2\), so the minus sign in \(A=(-1)^{q-1}Uh_1\) cancels the
+minus sign of the two-block term in \(U\). Consequently
+\[
+ \begin{gathered}
+ A[1,2,3]\\
+ =p_3F[2,3]h_2\\
+ \qquad\cdot F[1,2]h_1,\\
+ A[1,2,3](b_1)=z.
+ \end{gathered}
+ \tag{C.65.EX2}
+\]
+It is zero on the other source basis vectors. Its degree is minus two.
+Since \(da_1=b_1\), the full Hom differential gives
+\(\partial A[1,2,3](a_1)=-z\). Meanwhile
+\(A[2,3](b_2)=z\), and all other terms on the right of (C.65.7) vanish
+on \(a_1\). Thus that equation reads \(-\partial A(a_1)=z\),
+exactly \(A[2,3]F[1,2](a_1)\). The corresponding transported
+two-arrow component is zero because its source inclusion lands in
+\(ke_1\), which \(F[1,2]\) kills. Omitting the displayed higher
+path component would therefore break its actual chain equation even though
+the transported two-arrow component itself is zero.
+
+![The full length-three transport survives staged contractions; its higher path component satisfies the prescribed edge path equation](assets/coherent-string-transfer.png)
+
+Theorem C.65.1.1 gives every transported component and the full path comparison. Theorem C.65.2.1 proves strict staged transport, and Proposition C.65.3.1 constructs arbitrary-length examples with even cohomology. Exercises C.65.4.1–C.65.4.2 compute the length-three and higher path signs. Editable SVG source.
+
+### C.66. Typed kernel models and coherence lifting
+
+Kernel composition retains the pure core at each intermediate frontier.
+Tagging kernels by their original source and target states puts the
+consecutive-block products of a fixed string in one dg category. Their
+ordered cotensor contractions associate exactly. A canonical-state
+projection also gives an acyclic kernel on the full normalized
+natural-transformation complexes; this is the kernel needed to lift
+specified coherent operator diagrams with their object functors fixed.
+
+#### C.66.1. A common dg category with all frontier types retained
+
+Fix finitely many state labels \(S\). At state \(s\) let the pure
+coalgebra be \(C_s=C^{\otimes m_s}\), with its actual coefficient
+object labels, where \(m_s\geq0\). Distinct states retain distinct
+copies even when their frontier arities agree. At \(m_s=0\) the pure
+coalgebra is the genuine coefficient coalgebra. Put
+\[
+ \begin{gathered}
+ K=\bigoplus_{s\in S}C_s,\\
+ E=\bigoplus_{s\in S}E_s,
+ \end{gathered}
+ \tag{C.66.1}
+\]
+where \(E_s\) is its split identity coefficient algebra and \(K\)
+is a relative dg coalgebra over \(E\). Work at finite IC corners first,
+so the coefficient algebra is split semisimple. Write
+\(\mathsf{Bicomod}(K)\) for the dg category of dg \(K\)-bicomodules
+and homogeneous bicomodule maps, with the full Hom differential.
+
+**Lemma C.66.1.1 (typed zero extension).** Every ordinary dg
+\((C_t,C_s)\)-bicomodule extends by zero to an object of
+\(\mathsf{Bicomod}(K)\). Its full homogeneous mapping complex to
+another object of that same outer type is unchanged. Its mapping complex
+to an object with a different source or target state label is zero.
+
+For a fixed original composable string of joint arrows, the ordinary
+cotensor products associated with all its consecutive block partitions
+have the same outer endpoint type. Thus all those products and their
+properly typed kernel comparison maps are objects and maps in one dg
+category, even when intermediate frontier arities change.
+
+**Proof.** Include each of the two original coaction coalgebras in its
+summand of \(K\). The old coactions, followed by these inclusions, give
+the new coactions. Counits, coassociativity and their compatibility are
+unchanged. Their differential equations are also unchanged, so this is a
+dg bicomodule. Its coefficient support is exactly \(E_tME_s\).
+
+A homogeneous bicomodule map commutes with the left and right coefficient
+coactions. Equivalently, after taking counits on the coefficient components,
+it commutes with the state idempotents on both sides. A map from support
+\(E_tME_s\) to support \(E_vNE_u\) is therefore zero unless
+\(v=t\) and \(u=s\): applying the target idempotent \(e_t\) or
+the source idempotent \(e_s\) gives its entire source value on one side
+and zero on the other. When the two types agree, the enlarged coaction
+equations reduce to exactly the old two coaction equations. The map spaces
+and the Hom differential are identical. This proves all mapping assertions.
+
+The ordinary kernel of an arrow \(f:s\to t\) has target coaction
+\(C_t\) and source coaction \(C_s\). In any composable sequence the
+adjacent target and source colors match at their shared state. Cotensoring
+over that shared coalgebra leaves precisely the outer target and source
+coactions. The same is true after grouping consecutive blocks. Each
+partition therefore has the same original outer type. This proves the last
+claim. It does not replace a kernel product by the kernel of its composite
+arrow: that replacement requires its actual comparison map. \(\square\)
+
+#### C.66.2. Ordinary cotensor paths and their normalized contractions
+
+Use ordinary one-cross kernels \(M_f=K(Z_f)=Z_f[-1]\) as in C.41.2.
+For two successive arrows suppose their graded bicomodules are cofree:
+\[
+ \begin{gathered}
+ X=C_u\otimes N_X\otimes C_t,\\
+ Y=C_t\otimes N_Y\otimes C_s.
+ \end{gathered}
+ \tag{C.66.2}
+\]
+All tensor products retain their coefficient balancing. Their differentials
+may contain the full higher source and target module actions. Suppose
+\(I_X,P_X,H_X\) and \(I_Y,P_Y,H_Y\) are normalized dg bicomodule
+contractions over the identity pure cores, and put \(E_X=I_XP_X\).
+
+**Theorem C.66.2.1 (typed cotensor contraction and regrouping).** The ordinary
+cotensor \(X\square_{C_t}Y\) is canonically the graded bicomodule
+\[
+ \begin{gathered}
+ C_u\otimes N_X\otimes C_t\\
+ \qquad\otimes N_Y\otimes C_s,
+ \end{gathered}
+ \tag{C.66.3}
+\]
+with its induced full differential. Its contraction has inclusion and
+projection given by the two factor maps on the cotensor, and homotopy
+\[
+ H=H_X\otimes1+E_X\otimes H_Y
+ \tag{C.66.4}
+\]
+restricted to that equalizer, with its graded tensor evaluation signs.
+Iterating in the original target-to-source order gives the same contraction
+in every parenthesization. All intermediate pure cores remain in (C.66.3)
+and its longer analogues.
+
+For a path of \(q\) successive ordinary kernels, the corresponding
+whole graph sector has \(q\) cross suspensions. Independent ordered
+output roots have the single final cross suspension of C.41.4. The two
+statements retain their respective types and degree shifts.
+
+**Proof.** Define the inclusion of (C.66.3) in \(X\otimes Y\) by
+coproduct on its sole middle \(C_t\)-factor:
+\[
+ \begin{gathered}
+ c\otimes x\otimes a\otimes y\otimes b\\
+ \longmapsto\sum c\otimes x\otimes a_{(1)}\\
+ \qquad\otimes a_{(2)}\otimes y\otimes b.
+ \end{gathered}
+ \tag{C.66.5}
+\]
+Coassociativity puts its image in the cotensor equalizer. Applying the
+counit to one of the two middle copies is an inverse on the image.
+Conversely apply that same counit to the equalizer equation of an arbitrary
+element of \(X\otimes Y\). It states that the element is exactly
+(C.66.5) applied after that counit. This proves surjectivity onto the full
+equalizer as well. The two coactions defining the equalizer are chain maps;
+thus it has the induced differential with every original higher action.
+This is an explicit cofree calculation and makes no assertion that arbitrary
+cotensor functors are exact.
+
+Every factor map preserves both coactions, with the homogeneous tensor sign
+for a map of degree minus one. Consequently their tensors preserve the
+cotensor equalizer. The maps \(I,P\) satisfy \(PI=1\). On the
+ambient tensor differential, the full Hom derivation rule gives
+\[
+ \begin{gathered}
+ \partial H=(1-E_X)\otimes1\\
+ \qquad+E_X\otimes(1-E_Y)\\
+ =1-E_X\otimes E_Y.
+ \end{gathered}
+ \tag{C.66.6}
+\]
+This restricts to the equalizer. The side conditions also restrict:
+\(PH=HI=0\), and in \(H^2\) each mixed term contains either
+\(H_XE_X\) or \(E_XH_X\), while the two diagonal terms contain
+\(H_X^2\) or \(H_Y^2\). All are zero. Thus these are the full
+normalized contraction identities.
+
+For three factors, both groupings identify with the subspace in the original
+threefold tensor satisfying the two middle equalizer equations. Coassociativity
+of the two middle coproducts identifies it with the same cofree ordered
+expression. Both grouped homotopies expand to
+\[
+ \begin{gathered}
+ H_1\otimes1\otimes1\\
+ \quad+E_1\otimes H_2\otimes1\\
+ \quad+E_1\otimes E_2\otimes H_3.
+ \end{gathered}
+\]
+Their Koszul evaluation signs are those of these same ordered graded maps.
+Inclusions and projections are likewise the same ordered tensors. Induction
+proves every parenthesization. Each middle pure core occurs once in the
+cofree expression (C.66.3), so none has been counited away.
+
+Restoring the crossed bar sector suspends each of its \(q\) successive
+central mapping factors, lowering degree by \(q\). In the independent
+root product C.41.4 first takes the ordinary tensor of all root kernels and
+then suspends once. These are the indicated two formulas. At a zero frontier
+the matching middle coalgebra is the coefficient coalgebra; cotensor there
+is the corresponding balanced ordinary tensor. All central mapping factors,
+including a unit-output kernel, still occur. No unary operation vertex or
+graft seam is removed by the cotensor identification. \(\square\)
+
+#### C.66.3. The specific full natural-transformation kernel is acyclic
+
+Let \(A\) be an augmented unital dg input category over its split
+identity coefficients, using its actual normalized reduced bar. Let
+\(P:B\to D\) be a
+unital dg functor whose mapping-complex maps, on the selected object images,
+are degreewise surjective quasi-isomorphisms. For example use the actual
+canonical counit \(\epsilon_b:Q_b=\Omega B U_b\to U_b\), including
+its finite additive matrix envelope. Fix unital dg functors \(F,G:A\to B\).
+Write \(\operatorname{Nat}_\infty(F,G)\) for the full normalized
+natural-transformation complex, with all its source-bar Taylor components.
+
+**Theorem C.66.3.1 (actual projection kernel and relative coherent lifting).**
+Postcomposition gives a degreewise surjective quasi-isomorphism
+\[
+ \begin{gathered}
+ \operatorname{Nat}_\infty(F,G)\\
+ \longrightarrow\operatorname{Nat}_\infty(PF,PG).
+ \end{gathered}
+ \tag{C.66.7}
+\]
+Its kernel has a normalized contraction finite on each original source-bar
+input. This does not assert that either full natural-transformation complex
+is acyclic. The construction retains normalized units, identity-valued
+outputs of nonidentity input arrows, and full source-object faces.
+
+Consequently a full coherent parameter diagram in the target functor category,
+with specified object functors \(PF_j\), lifts to the source functor
+category with those chosen \(F_j\) fixed. The assertion applies to the
+free parameter source \(\Omega B(kJ)\), retaining any already assigned
+compatible union of full parameter faces. It requires the entire typed
+target diagram as input, rather than only the classes of its edge maps.
+
+**Proof.** A normalized Taylor component is an arbitrary homogeneous linear
+map from a reduced source-bar word to
+\(B(Fx_0,Gx_q)\). Applying \(P\) projects that entire output mapping
+space. Choose graded sections of its surjections over the split coefficient
+actions, separately for each endpoint pair. Semisimple splitting gives
+these choices. They lift every Taylor component. Thus (C.66.7) is
+degreewise surjective, including its component of source length zero.
+Postcomposition is a dg functor on the full natural-transformation categories:
+the complete differential and vertical products are the cofree Hom formulas
+of C.53.1, and the dg functor \(P\) preserves each output differential,
+composition and identity in those formulas. Scalar outputs are retained.
+
+Let \(V_{x,y}\) be the kernel of
+\(B(Fx,Gy)\to D(PFx,PGy)\). It is acyclic, since this is a surjective
+quasi-isomorphism. The splitting proof of C.30.1 gives a normalized
+coefficient-linear contraction \(h_{x,y}\) on it. Choose these once
+for every endpoint pair.
+The kernel of (C.66.7) consists exactly of the normalized Taylor maps valued
+in these \(V_{x,y}\).
+
+Its leading differential \(d_0\) contains the output kernel differential
+and the source unary differential on every original bar letter. Postcompose
+a Taylor value with its endpoint contraction to obtain \(H_0\). The
+Hom derivation rule cancels the two source-unary terms and gives
+\(d_0H_0+H_0d_0=1\), with \(H_0^2=0\). Put \(\delta=d-d_0\).
+Every remaining term either composes adjacent source letters, or consumes a
+nonempty source prefix or suffix in a functor action. Thus when evaluated
+on an original word of length \(L\), it uses the Taylor map on words
+of length strictly less than \(L\). The same statement permits normalized
+higher functor components, which consume larger nonempty pieces.
+
+The maps \(H_0\) preserve that input length. Therefore the formula
+\[
+ \begin{gathered}
+ H=H_0(1+\delta H_0)^{-1}\\
+   =\sum_{r\geq0}(-1)^rH_0(\delta H_0)^r
+ \end{gathered}
+ \tag{C.66.8}
+\]
+has only finitely many terms on each input, at most \(L+1\).
+C.35.1's contraction calculation, applied with zero retract, gives
+\(dH+Hd=1\) and \(H^2=0\). This contracts exactly the projection
+kernel. It proves the quasi-isomorphism in (C.66.7). The source bar is reduced,
+so every step retains normalization at identity arguments. Output identities
+were never projected away. Endpoint contractions and the source word operations
+add no new source object; full-face restrictions therefore retain these same
+formulas when their endpoint choices were made before restriction.
+
+Finally consider a free parameter generator \(x\) of original string
+length \(q\). Its differential has only lower-length generators and their
+composites. Suppose their lifted images have already been assigned. Choose
+a graded lift \(v\) of its given entire target Taylor cochain and set
+\(o=\partial v-\widetilde F(dx)\). Its projection is zero by the
+target chain equation, and \(\partial o=0\) by the previously assigned
+generator equations and \(d^2x=0\). Its corrected image
+\(v-Ho\) has the same exact projection and satisfies the generator chain
+equation. This constructs the whole dg functor by induction on \(q\).
+Object units are their prescribed identity maps. Generators on already
+assigned faces are kept; only the remaining generators receive corrections.
+Their overlaps are the same original strings, so compatible prescribed
+unions stay fixed. This proves the relative lifting assertion. The proof
+contracts a specified projection kernel and uses no contraction of an
+arbitrary natural-transformation complex. \(\square\)
+
+#### C.66.4. Solved calculations
+
+**Exercise C.66.4.1 (advanced; the essential second projection-kernel correction).**
+Construct a full normalized natural-transformation projection whose kernel
+needs a nonzero second perturbation correction. Compute one such primitive,
+and show that the full natural-transformation complex need not be acyclic.
+
+**Solution.**
+
+For (C.66.7) use \(A=k[\varepsilon]/(\varepsilon^2)\), with
+\(|\varepsilon|=2\). Put \(V=kx\oplus K\), where \(|x|=0\)
+and \(K\) has the three acyclic pairs
+\[
+ \begin{gathered}
+ a_0\xrightarrow{d}b_1,\\
+ c_1\xrightarrow{d}d_2,\\
+ e_2\xrightarrow{d}f_3.
+ \end{gathered}
+\]
+The subscripts are degrees. Let \(B\) be the dg algebra of endomorphisms
+preserving \(K\), and let \(P:B\to k\) be its quotient action on
+\(V/K\). Its allowed matrix entries are one quotient entry, six entries
+from the quotient into \(K\), and 36 entries within \(K\). Thus
+\(\dim B=43\) and \(\dim\ker P=42\). Every kernel matrix has
+image in \(K\). Postcomposing with the homotopy sending \(b_1,d_2,f_3\)
+to \(a_0,c_1,e_2\), respectively, contracts that kernel, so \(P\)
+is a surjective quasi-isomorphism. The functors \(F,G\) send
+the ordinary identity to the identity of \(V\), with
+\(F(\varepsilon)=0\) and
+\(G(\varepsilon)(a_0)=d_2\),
+\(G(\varepsilon)(c_1)=f_3\), zero on the other basis vectors.
+This is a closed degree-two square-zero endomorphism.
+
+For a natural cochain of total degree \(r\), write \(\phi_q\)
+for its value on \((s\varepsilon)^{\otimes q}\). Its value-map degree
+is \(r+q\). The kernel differential is
+\[
+ \begin{gathered}
+ (\partial\phi)_q
+ =\partial_{\operatorname{End}(V)}\phi_q\\
+ \qquad+(-1)^rG(\varepsilon)\phi_{q-1},\\
+ \phi_{-1}=0.
+ \end{gathered}
+\]
+The bare kernel cycle \(v:x\mapsto b_1\), zero elsewhere, has degree
+one. Formula (C.66.8) gives the degree-zero primitive with values
+\(x\mapsto a_0\) at \(q=0\),
+\(x\mapsto-c_1\) at \(q=1\), and
+\(x\mapsto e_2\) at \(q=2\). The second correction is essential:
+omitting it leaves an uncancelled \(-f_3\) at source length two.
+Indeed its differential has the values \(b_1\),
+\(-d_2+G(\varepsilon)a_0=0\), and
+\(f_3-G(\varepsilon)c_1=0\) at lengths zero, one and two.
+Every higher value is zero since \(G(\varepsilon)e_2=0\).
+
+The target functors \(PF,PG\) both kill \(\varepsilon\). Their full
+natural-transformation complex has one closed scalar coefficient at each
+Taylor length \(q\), in total degree \(-q\), and zero differential.
+The projection maps onto it. Its scalar coefficients have chain lifts by
+the matrices supported solely on the quotient \(kx\). They are closed
+because \(G(\varepsilon)x=0\). They cannot be boundaries since their
+projected values are nonzero. Thus at Taylor-prefix length \(L\) there
+are \(L+1\) independent quotient cohomology classes. The kernel is
+contractible, while those classes remain in the full complex.
+
+**Exercise C.66.4.2 (intermediate; retained intermediate cores and a Koszul sign).**
+Let \(C=k\oplus ku\), with \(|u|=1\), zero differential and
+primitive coproduct on \(u\). Use pure cores \(C^{\otimes m_s}\)
+along the arity path \(0\to2\to1\to0\). For every ordinary kernel
+use central complex \(N=ke\oplus ka\oplus kb\), with
+\(|e|=|b|=0\), \(|a|=-1\), \(da=b\), and \(Hb=a\).
+Compute the three-kernel path dimension and its retract dimension. Evaluate
+its homotopy on the word \((1,e,u,b,u\otimes u,e,1)\).
+
+**Solution.** In target-to-source order the cofree path is
+\[
+ \begin{gathered}
+ C^{\otimes0}\otimes N_3\otimes C\\
+ \qquad\otimes N_2\otimes C^{\otimes2}
+       \otimes N_1\otimes C^{\otimes0}.
+ \end{gathered}
+\]
+Its dimension is \(1\cdot3\cdot2\cdot3\cdot4\cdot3\cdot1=216\).
+The retract replaces each \(N_i\) by \(ke\); both middle cores
+remain, so its dimension is \(2\cdot4=8\). The graded coalgebra
+\(C^{\otimes2}\) has
+\[
+ \begin{gathered}
+ \Delta(u\otimes u)
+   =(u\otimes u)\otimes1\\
+   \quad+1\otimes(u\otimes u)\\
+   \quad+(u\otimes1)\otimes(1\otimes u)\\
+   \quad-(1\otimes u)\otimes(u\otimes1),
+ \end{gathered}
+\]
+where the last sign comes from interchanging two odd primitives.
+
+Only the homotopy at \(N_2\) acts on the specified word. The preceding
+\(u\) has odd degree, so its tensor evaluation sign is minus:
+\[
+ \begin{gathered}
+ H(1,e,u,b,u\otimes u,e,1)\\
+ \qquad=-(1,e,u,a,u\otimes u,e,1).
+ \end{gathered}
+\]
+Applying the differential gives the original word: its sign at \(da=b\)
+is also minus. The word has zero differential and its projection is zero,
+which verifies \(dH+Hd=1-IP\) on this input. The bare three-cross
+sector has degree minus three after restoring its three suspensions; the
+independent three-root product has its one final suspension and bare degree
+minus one.
+
+![The typed0-to2-to1-to0 kernel path retains both intermediate cores; the actual natural-transformation projection kernel requires its second perturbation correction](assets/typed-kernel-coherence.png)
+
+Lemma C.66.1.1 retains the outer state types. Theorem C.66.2.1 gives the full cotensor contraction, and Theorem C.66.3.1 lifts coherent operator cells through the specific Nat-projection kernel. Exercises C.66.4.1–C.66.4.2 compute its essential second correction and retained middle-core sign. Editable SVG source.
+
+### C.67. Coherent operator strictification
+
+Canonical cobar sources admit strict operator models with an actual
+invertible full natural comparison. Their identity bare components give
+a finite inverse on each original source input. Conjugating an entire
+operator diagram therefore retains every higher cell and fixes operators
+already strict. Full marked postcomposition also retains the higher
+components of a change of enhanced model.
+
+#### C.67.1. The counit and the full A-infinity projection kernel
+
+All bars and cobars in this section are the actual augmented reduced ones,
+over the split coefficient category. Let \(A\) be an augmented unital dg
+category; its mapping degrees need not be nonnegative. Its canonical counit is
+\[
+ \epsilon_A:\Omega BA\longrightarrow A.
+ \tag{C.67.1}
+\]
+
+**Theorem C.67.1.1 (finite-on-original-words counit and full projection).**
+The counit is degreewise surjective and a quasi-isomorphism on mapping
+complexes. It has a normalized linear mapping-complex contraction finite on
+each original \(A\)-word. The contraction commutes with retained source
+faces and augmented coefficient-preserving dg input maps.
+
+Theorem C.66.3.1 also holds when its fixed functors \(F,G\) are normalized
+uncurved unital \(A_\infty\) functors. Its full Nat-projection remains
+graded-surjective, with a contractible kernel and the same finite-on-input
+correction. Only the specified mapping projection kernels are contracted.
+
+**Proof.** Write a cobar word as nonempty bar blocks of original reduced
+\(A\)-morphisms. Let \(r\) be its total number of original morphisms.
+The counit sends a word all of whose blocks have one letter to its ordered
+product in \(A\); it kills a word containing a longer block. In particular
+its one-letter generators map onto every reduced mapping, and its coefficient
+map retains the units. This proves graded surjectivity.
+
+First keep the original unary differential and the cobar differential inserting
+block cuts, and omit the internal binary bar compositions. On a fixed original
+word with \(r\geq2\), remove its first boundary if its first block consists
+of one original letter and that boundary is present; otherwise give zero.
+The coefficient is \((-1)^{|a|}\), where \(a\) is that first original
+letter in target-to-source order. This is the inverse coefficient of its
+first-cut term in C.39.15. Call this operator \(H_0\). At \(r=0,1\)
+it is zero.
+
+In the leading cut differential, adding and removing that first boundary give
+the identity. Adding another boundary before or after removing the first gives
+opposite coefficients by the degree-one Leibniz sign, so all those terms
+cancel. The unary differential on the first letter changes \(|a|\) by one,
+giving the opposite removal coefficient. The unary terms on the other letters
+cancel by the same tensor sign. This gives the normalized leading contraction
+onto the coefficient and single-letter complex. Its inclusion \(I_0\)
+places a reduced \(A\)-mapping in one single-letter block.
+
+Restoring binary bar composition is a perturbation \(\delta\) strictly
+decreasing \(r\). The first-cut homotopy preserves \(r\), so
+\[
+ H_\epsilon=H_0(1+\delta H_0)^{-1}
+ \tag{C.67.2}
+\]
+is finite on every original word. The perturbed inclusion stays \(I_0\),
+since \(\delta I_0=0\). The image of every nonzero term of
+\(H_\epsilon\) contains a block of length at least two, so
+\(\epsilon_AH_\epsilon=0\); also \(\epsilon_AI_0=1\).
+Applying the counit to the perturbed contraction identity shows that its
+projection is exactly \(\epsilon_A\). Thus
+\[
+ \begin{gathered}
+ dH_\epsilon+H_\epsilon d\\
+ \qquad=1-I_0\epsilon_A,\\
+ H_\epsilon^2=H_\epsilon I_0=0,\\
+ \epsilon_AH_\epsilon=0.
+ \end{gathered}
+ \tag{C.67.3}
+\]
+This proves the mapping-complex assertion without a convergence claim based
+on cohomological degree. Every formula uses the same original letters and
+their compositions. It therefore commutes with the indicated restrictions
+and input maps. The inclusion \(I_0\) is a linear chain section; its
+multiplicativity is not part of this claim.
+
+For the second assertion use the full Taylor description in C.66.3. An
+\(A_\infty\) functor's additional terms consume a nonempty input word.
+Uncurvedness excludes a zero-input functor term. Consequently every additional
+term in the full Nat differential again evaluates its Taylor map on a
+strictly shorter original source input. The degreewise lifts and the leading
+kernel contraction are unchanged. The finite formula (C.66.8) therefore
+contracts this same full projection kernel. All higher functor outputs,
+including scalar identities, remain in that differential. This also proves
+the relative coherent lifting statement for these functor objects. \(\square\)
+
+#### C.67.2. Strict operator objects with an actual full natural isomorphism
+
+Let \(L\) be a conilpotent coaugmented relative dg coalgebra and put
+\(A=\Omega L\). Its actual unit gives the dg section
+\[
+ \begin{gathered}
+ \sigma_A=\Omega\eta_L,\\
+ \sigma_A:A\longrightarrow\Omega BA,\\
+ \epsilon_A\sigma_A=1_A.
+ \end{gathered}
+ \tag{C.67.4}
+\]
+Write \(\iota_A:A\to\Omega BA\) for the normalized
+\(A_\infty\) unit, with bar map \(\eta_{BA}\). For an uncurved
+normalized unital \(A_\infty\) functor \(F:A\to B\), with \(B\)
+a unital dg category, let \(F^\sharp:\Omega BA\to B\) be its
+strict representative retaining its complete outputs, as in C.43.2. Define
+\[
+ F^{\mathrm{st}}=F^\sharp\sigma_A.
+ \tag{C.67.5}
+\]
+
+**Theorem C.67.2.1 (full coherent strictification and an actual dg retraction).**
+There is a closed invertible full natural transformation
+\(\alpha_F:F\to F^{\mathrm{st}}\), with identity bare components.
+Its inverse is finite on each original source-bar input. If \(F\) is
+already a strict dg functor, then \(F^{\mathrm{st}}=F\) and
+\(\alpha_F=1_F\) exactly.
+
+The assignment on objects, together with
+\[
+ \theta\longmapsto
+ \alpha_G\,\theta\,\alpha_F^{-1},
+ \tag{C.67.6}
+\]
+is a dg retraction of \(\operatorname{Fun}_\infty(A,B)\) onto its
+full dg subcategory of strict dg functor objects. The full Nat complexes and
+every higher parameter cell are retained. Hence it conjugates an entire
+coherent parameter diagram, rather than replacing just its edge maps. It
+fixes an already strict-object subdiagram literally.
+
+**Proof.** The unit and counit are the actual coproduct formulas. On a free
+generator \(t\ell\) of \(\Omega L\), the one-bar-letter term of
+\(\eta_L(\ell)\) is \(s(t\ell)\). All other terms have longer
+bar length and are killed by the counit. This proves the second identity
+in (C.67.4) on generators and therefore on all cobar words. The other triangle
+identity gives \(\epsilon_A\iota_A=1_A\) as a full normalized functor:
+after applying the counit to the unit expansion of an original bar word,
+the term cut into its individual original letters is exactly that word,
+and all other terms are killed.
+
+The functors \(\iota_A,\sigma_A:A\to\Omega BA\) have the same
+object map and their postcompositions with \(\epsilon_A\) are both
+exactly \(1_A\). Apply Theorem C.67.1.1's full Nat-projection kernel to these
+two functors. Choose the graded preimage \(u^0\) of the identity target
+transformation which has identity bare components and zero higher components.
+Its defect \(\partial u^0\) is in that projection kernel, is closed,
+and has zero source-length-zero component. With its contraction \(H\), put
+\[
+ u=u^0-H(\partial u^0).
+ \tag{C.67.7}
+\]
+It is closed and has exact image the identity. The correction still has
+zero bare component: its leading homotopy preserves input length, and its
+perturbation uses shorter input words. Thus \(u\) has identity bare
+components.
+
+View a full natural transformation as its actual cofree source-bar map.
+After identifying the two underlying graded fibers by their identity bare
+maps, \(u-1\) consumes positive source length. Its geometric inverse is
+therefore finite on every original input. The full cut composition proves
+both inverse identities. The differential derivation rule and
+\(\partial u=0\) make the inverse closed. Thus this is an actual
+invertible transformation, not just equality of its cohomology class.
+
+Postcomposition by the strict dg functor \(F^\sharp\) is a dg functor
+on the full Nat categories, by the output-composition argument of C.66.3.
+It sends \(u\) to \(\alpha_F\). The recovery identity
+\(F^\sharp\iota_A=F\) is C.43.2's exact free-generator identity,
+including its scalar outputs. Its other end is (C.67.5). For strict \(F\),
+one has \(F^\sharp=F\epsilon_A\) on every free generator. Hence
+\(F^{\mathrm{st}}=F\) and
+\(\alpha_F=F(\epsilon_Au)=1_F\) exactly.
+
+Closed degree-zero conjugation preserves differentials, products and identities
+on full Nat complexes. It gives the stated dg retraction, and fixes all
+morphisms between already strict objects. Applying that dg functor to every
+generator of a given \(\Omega B(kJ)\)-diagram retains its whole chain
+equation and every higher parameter generator. On an assigned face with
+strict objects all the conjugating transformations are identities.
+
+For restrictions along retained coalgebra faces and their canonical cobar
+maps, \(\sigma_A\) is natural by its unit formula. The counit
+contraction in Theorem C.67.1.1 preserves the original labels and letters. Choosing
+that contraction in (C.67.7) makes the universal transformation and its finite
+inverse restrict to the same formulas. Thus the construction retains the
+original compatible faces as well. \(\square\)
+
+#### C.67.3. Model change retains the entire functor-category diagram
+
+Let \(W:B\to D\) be a normalized uncurved unital \(A_\infty\)
+functor between dg categories. The input and output here need not be
+augmented. For the finite insertion calculation use the tensor bar on all
+mapping spaces, retaining identity outputs as actual mapping letters.
+Normalized functors and normalized pre-natural transformations form the
+usual unital subspaces of that calculation.
+
+**Theorem C.67.3.1 (full postcomposition and double strict models).** There is
+a normalized unital \(A_\infty\) functor
+\[
+ \begin{gathered}
+ W_*:\operatorname{Fun}_\infty(A,B)\\
+       \longrightarrow\operatorname{Fun}_\infty(A,D)
+ \end{gathered}
+ \tag{C.67.8}
+\]
+whose object map is actual composition with \(W\). Its higher components
+retain every higher component of \(W\). They are finite on each original
+input word. When \(W\) is strict dg, (C.67.8) is exactly the dg functor
+of postcomposition on every full Taylor component.
+
+Suppose both the operator source \(A\) and parameter source \(T\)
+are augmented cobars. Any whole normalized coherent model-change diagram
+\(S:T\to\operatorname{Fun}_\infty(A,B)\), including a normalized
+\(A_\infty\) one, therefore has a strict dg parameter model in
+\(\operatorname{Fun}_\infty(A,D)\) with strict dg operator objects.
+It carries actual full natural isomorphisms to the model-change diagram.
+An already strict parameter face with strict operator objects is fixed
+whenever its postcomposed face has those properties.
+
+**Proof.** Work in suspended coordinates. A pre-natural transformation
+\(\phi:F_0\to F_1\) of degree \(|\phi|\) has suspended core
+degree \(|\phi|-1\), including its zero-input object component. Its
+cofree expansion has the original \(F_0\)-outputs before that component
+and the original \(F_1\)-outputs after it. For a sequence
+\(\phi_1,\ldots,\phi_r\), expand an original source word into
+consecutive pieces with these \(r\) marked transformation components in
+their prescribed order. Fill every intervening unmarked run with the
+appropriate original functor. Empty transformation inputs are allowed; an
+empty unmarked run contributes its coefficient coaugmentation.
+
+Apply the actual bar map of \(W\) to that ordered output word and take
+its single-letter corestriction. This defines the \(r\)-th suspended
+component of (C.67.8). All signs are the tensor evaluation signs of the marked
+maps: a marked map of suspended degree \(|\phi_i|-1\) crossing a
+preceding source piece of degree \(d\) contributes
+\((-1)^{(|\phi_i|-1)d}\). No input or output identity is discarded.
+If the source word has length \(L\), its unmarked functor outputs
+contribute at most \(L\) letters, by uncurvedness, and the marked slots
+contribute \(r\). Thus only \(W_m\) with \(m\leq L+r\)
+occurs. Every consecutive partition and every such marked expansion is finite.
+Unsuspending gives the required component degree \(1-r\).
+
+We verify the full equation by retaining the marked slots in the bar equation
+\(BW\,b_B=b_D\,BW\). A term of \(b_B\) wholly inside an unmarked
+functor run is its original functor equation, with the source differential
+on those same inputs. A term meeting one marked component is exactly the
+full differential of that natural transformation. A term joining two adjacent
+marked components gives their vertical source composition. On the other
+side, cutting the marked sequence into consecutive nonempty groups gives
+the vertical products of the corresponding components of (C.67.8). These
+are all terms: the dg categories have only unary differentials and binary
+mapping compositions. Their signs are those of the same suspended tensor
+maps, in the same order, in the displayed bar equation. Thus each term has
+its identical signed counterpart. This is the complete functor equation.
+
+Ordinary unit arguments normalize as follows. In a nontrivial higher component
+an identity transformation supplies an identity mapping to a higher component
+of \(W\), which vanishes by strict unitality. For its unary component
+\(W_1\) takes that identity to the identity. The same unit cancellation
+in the original functor and transformation differentials preserves the
+normalized source cochains. When \(W_m=0\) for \(m>1\), more than
+one marked slot contributes zero, and the single marked slot is precisely
+\(W_1\) on that full Taylor output. This proves the strict dg special case.
+The unreduced tensor bar in this insertion calculation is not used as an
+augmented bar-cobar counit; that counit is the reduced augmented construction
+of Theorem C.67.1.1.
+
+Apply (C.67.8) to the whole supplied parameter diagram. Then apply Theorem C.67.2.1's
+dg retraction for the operator source \(A\). Its objects are now strict
+dg operator models, with every parameter and full Nat component retained.
+Finally apply Theorem C.67.2.1 to this parameter functor, whose source is the cobar
+\(T\) and whose target is the dg full Nat category. This makes the
+parameter functor strict without changing its object map, so the operator
+objects stay strict. Both steps come with their actual full natural
+isomorphisms from Theorem C.67.2.1. Its retraction fixes a strict-object subcategory
+pointwise, and fixes an already strict parameter functor exactly. This proves
+the relative assertion and the whole model-change statement. \(\square\)
+
+#### C.67.4. Solved calculations
+
+**Exercise C.67.4.1 (advanced; the extra unit term and an actual comparison).**
+Compute the strict section for the nonminimal source \(\Omega B(k[2])\),
+including its degree-minus-one generator. Give its full comparison with the
+\(A_\infty\) unit, and exhibit a scalar-output operator whose strict
+model needs that extra term.
+
+**Solution.**
+
+Take \(A=\Omega B(k[2])\), with objects \(0,1,2\), degree-zero
+arrows \(a:0\to1\), \(b:1\to2\), \(c:0\to2\), the product
+\(D=ba\), and a degree-minus-one generator \(H\) with
+\(dH=D-c\). Its mapping basis has eight elements including identities.
+In \(\widehat A=\Omega BA\), the mapping basis has ten elements:
+the three identities, \(a',b',c',D',H',V\), and \(P=b'a'\).
+The nonzero differentials are
+\[
+ dH'=D'-c',\qquad dV=P-D'.
+\]
+The counit sends \(V\) to zero, \(P,D'\) to \(D\), and
+\(H'\) to \(H\). Its linear section sends \(H\) to \(H'\)
+and \(D\) to \(D'\). Its strict section instead satisfies
+\[
+ \sigma_A(H)=H'+V,\qquad\sigma_A(D)=P.
+\]
+The extra unit term is essential: \(d(H'+V)=P-c'\), which is the
+strict section's value on \(D-c\). The linear section's value \(H'\)
+instead has differential \(D'-c'\).
+
+For the universal comparison, use the two functors \(\iota_A,\sigma_A\)
+and the full Nat-projection of the counit. Let \(u^0\) have identity bare
+components and zero higher components, and let \(\phi\) have the single
+higher value \(\phi(D)=V\). Its full differential has the values
+\[
+ \begin{gathered}
+ (\partial\phi)(D)=P-D',\\
+ (\partial\phi)(H)=V,\\
+ (\partial\phi)(a,b)=-V.
+ \end{gathered}
+\]
+These are exactly \(\partial u^0\). Thus \(u=u^0-\phi\) is closed
+and has higher value \(-V\) on \(D\). Its exact inverse is
+\(u^0+\phi\): two positive-length pieces supported only on the arrow
+\(D:0\to2\) cannot compose. Projection kills its higher values and
+gives the identity. This calculation retains both the source unary
+differential of \(H\) and the two-arrow word \((a,b)\).
+
+For a scalar-output operator example take \(X=ke\oplus kf\oplus ky\),
+with \(|e|=|y|=0\), \(|f|=-1\), \(df=y\). Let \(K(e)=f\),
+\(L=\partial K\). Send \(a',b'\) to \(1_X\), \(c',D'\)
+to \(1_X-L\), \(H'\) to zero and \(V\) to \(K\). This
+is the strictification of a normalized non-strict \(A_\infty\)
+operator on \(A\). Its strict model sends \(H\) to \(K\),
+since \(\partial K=L=1_X-(1_X-L)\). The full comparison has value
+\(-K\) on the original source morphism \(D\), or on its generator
+\(D'\) in the resolved comparison path. Omitting \(V\) would assign
+zero to \(H\) while its required strict differential is the nonzero
+\(L\). Both nonidentity arrows \(a,b\) retain their actual identity
+outputs.
+
+**Exercise C.67.4.2 (advanced; the marked postcomposition sign).** Let the operator
+source be \(k[\varepsilon]/(\varepsilon^2)\), with
+\(|\varepsilon|=2\). Let \(F_j\) select object \(j\) of \([2]\)
+and kill \(\varepsilon\). Write \(a_q,b_p,c_r\) for full natural
+cochains supported at the indicated Taylor lengths, with values the arrows
+\(a,b,c=ba\). For the model change \(W\) with
+\(W_1(a)=W_1(b)=1_X\), \(W_1(c)=1_X-L\), and
+\(W_2(b,a)=K\), compute \((W_*)_2(b_p,a_q)\).
+
+**Solution.** The cochain degrees are \(-q,-p,-r\), respectively, since
+\(s\varepsilon\) has degree one. The full vertical product is
+\[
+ b_pa_q=(-1)^{pq}c_{p+q}.
+\]
+In the marked formula the suspended \(a_q\)-component has degree
+\(-q-1\). It crosses a preceding source piece of degree \(p\), so
+\[
+ (W_*)_2(b_p,a_q)=(-1)^{(q+1)p}K
+\]
+at Taylor length \(p+q\). The two terms of its source/cut equation give
+\[
+ \begin{gathered}
+ (-1)^{p+1+pq}(1_X-L)\\
+ \qquad+(-1)^{p+pq}1_X\\
+ =(-1)^{p+pq}L.
+ \end{gathered}
+\]
+This is precisely the differential of the displayed marked component.
+At \(p=1,q=0\) that component is \(-K\). Using \(+K\) would
+give a nonzero discrepancy \(2L\) over the characteristic-zero field.
+For a coefficient operator source there are no source letters and the marked
+formula gives \((W_*)_r=W_r\) itself. Thus C.65.3.1's actual length-three,
+five and seven examples retain their nonzero higher model-change components.
+
+![The canonical strict section retains its higher unit term; the full comparison and marked model change preserve the displayed signs](assets/coherent-operator-strictification.png)
+
+Theorem C.67.1.1 gives the actual augmented counit and full projection kernel. Theorem C.67.2.1 gives a full natural isomorphism and dg retraction to strict operator objects. Theorem C.67.3.1 retains the marked postcomposition data. Exercises C.67.4.1–C.67.4.2 compute the necessary unit term and marked sign. Editable SVG source.
+
 ## 11. Scope and free reading
 
 Sections 2–7 establish the unit self-Ext formula,the invariant-polynomial classifying-space ring,the torus tensor model over characteristic-zero fields,the Koszul endomorphism and generated-category calculations,and the distinction between compact and bounded objects. The examples and exercises retain the specified shifts,coefficient fields and support conditions.
 
 Appendix A develops stabilizer cohomology,equivariant Ext purity,minimal-model transfer,Frobenius formality and spherical generator envelopes. Appendix B treats the polynomial Kostant slice,the universal centralizer,equivariant coherent restriction and composition on free dual polynomial generators. Appendix C.1–C.29 develops the geometric generator mapping comparison,finite-jet and constant-group comparisons,the graded tensor cohomology functor,determinant and primitive cup operators,geometric Kostant modules,and the arithmetic enhanced symmetric monoidal finite-envelope equivalence. Its Betti and trait comparisons retain the full action nerves,trace normalizations and ordered convolution data.
 
-Appendix C.30–C.62 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator.
+Appendix C.30–C.67 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator. Global locally forward finite root indices support one fixed-profile product normalization whose finite-corner and full-face restrictions agree on their intersections. The full joint-execution grafting domain has its original bar map; complete product shuffles lie in it exactly under the outer-final/inner-initial prerequisite condition. Entire coherent diagrams in a specified dg category admit explicit full-string transport and strictly associative staged model contraction, retaining their path comparisons. Typed kernel cotensors preserve their intermediate frontier cores, and the actual canonical-state projection has an acyclic full Nat kernel for relative coherent operator lifting. Canonical cobar sources admit an actual dg retraction to strict operator objects, and full marked postcomposition carries entire higher model-change diagrams.
 
-A full strong monoidal descent to arbitrary characteristic-zero coefficients additionally requires compatible native choices over all overlaps and finite corners,product normalization of the global comparison,and every higher product and grafting covariance equation on its complete domain. The quantum/loop-rotation,renormalized,singular-support and Ran/factorization equivalences of Section 8 require arguments beyond the results established here.
+A full strong monoidal descent to arbitrary characteristic-zero coefficients additionally requires the transferred profile-changing joint-execution and external grafting data,with every higher covariance equation on its complete compatible domain. The fixed-profile restriction result does not identify those domains with independent root products. The quantum/loop-rotation,renormalized,singular-support and Ran/factorization equivalences of Section 8 require arguments beyond the results established here.
 
 Free further reading:
 

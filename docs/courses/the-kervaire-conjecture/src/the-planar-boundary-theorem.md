@@ -33,10 +33,12 @@ with \(k\) positive and \(k\) negative disks (Lemma 4.1 of the disk lesson), slo
 
 Work in \(H=\mathbb C^D\otimes\ell^2(A)\), with matrix coordinates indexed by \(D\), so that \(M_{2nk}(\mathcal M)\) and \(\tau=\tau_{2nk}\) are defined. Define
 \[
-\begin{gathered}
-S(e_d\otimes v)=e_{\sigma d}\otimes L(c_d^{-1})v,\\
-\Theta(e_d\otimes v)=e^{2\pi i\gamma_d}\,e_{\theta d}\otimes v .
-\end{gathered}\tag{1.1}
+\begin{aligned}
+&S(e_d\otimes v)\\
+&\quad=e_{\sigma d}\otimes L(c_d^{-1})v,\\
+&\Theta(e_d\otimes v)\\
+&\quad=e^{2\pi i\gamma_d}\,e_{\theta d}\otimes v .
+\end{aligned}\tag{1.1}
 \]
 Both are unitaries in \(M_{2nk}(\mathcal M)\): each permutes the coordinates with unitary weights, and the weights of \(S\) are left translations, which lie in \(\mathcal M\). \(\Theta\) is scalar, and \(\Theta^2=I\) because \(\gamma_{\theta d}+\gamma_d=0\). The product follows the boundary permutation:
 \[
@@ -47,7 +49,7 @@ For a cycle \(z=(d_1,\ldots,d_m)\) of \(\sigma\theta\), with \(d_{j+1}=\sigma\th
 \begin{aligned}
 &e^{2\pi i\gamma_{d_m}}L(c_{\theta d_m}^{-1})\cdots\\
 &\qquad\cdots e^{2\pi i\gamma_{d_1}}L(c_{\theta d_1}^{-1})\\
-&=e^{2\pi i\eta_z}L\bigl((c_{\theta d_1}\cdots c_{\theta d_m})^{-1}\bigr)\\
+&=e^{2\pi i\eta_z}L(c_{\theta d_m}^{-1}\cdots c_{\theta d_1}^{-1})\\
 &=e^{2\pi i\eta_z}L(r_z^{-1}) ,
 \end{aligned}\tag{1.2}
 \]
@@ -143,7 +145,14 @@ To see this, let \(y\in[0,1/m)\) and \(l\in\{0,\ldots,m-1\}\) with \(x-\lfloor x
 \[
 \sum_{j=0}^{m-1}h(\zeta^jT)=\frac{m-1}2I+h(T^m).
 \]
-The operator \(T^m\) is diagonal, with entries the circuit weights starting at \(d_0,\ldots,d_{m-1}\). The weight starting at \(d_{j+1}\) is \(W_j\) times the weight starting at \(d_j\) times \(W_j^{-1}\), so all are conjugate in \(\mathcal M\) to the weight (1.2), and \(\tau_m(h(T^m))=m\,\tau(h(e^{2\pi i\eta_z}L(r_z^{-1})))\). Taking \(\tau_m\) of both sides gives \(m\,\ell(T)=\frac{m(m-1)}2+m\,\tau(h(e^{2\pi i\eta_z}L(r_z^{-1})))\). \(\square\)
+The operator \(T^m\) is diagonal, with entries the circuit weights starting at \(d_0,\ldots,d_{m-1}\). The weight starting at \(d_{j+1}\) is \(W_j\) times the weight starting at \(d_j\) times \(W_j^{-1}\), so all are conjugate in \(\mathcal M\) to the weight (1.2), and \(\tau_m(h(T^m))=m\,\tau(h(e^{2\pi i\eta_z}L(r_z^{-1})))\). Taking \(\tau_m\) of both sides gives
+\[
+\begin{aligned}
+m\,\ell(T)&=\frac{m(m-1)}2\\
+&\quad+m\,\tau\bigl(h(e^{2\pi i\eta_z}L(r_z^{-1}))\bigr).
+\end{aligned}
+\]
+\(\square\)
 
 ## 4. Proof of the planar boundary theorem
 

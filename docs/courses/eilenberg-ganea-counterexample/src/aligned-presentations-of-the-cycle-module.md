@@ -25,7 +25,7 @@ Its kernel is the *cycle module*. A word \(w\) in the letters of \(A\) and their
 2. if \(\bar b=1\), then \([vbv^{-1}]=\bar v[b]\) and \([vb^{-1}v^{-1}]=-\bar v[b]\);
 3. the chain depends only on the element of the free group on \(A\) represented by the word.
 
-*Proof.* (1) The path reading \(uv\) reads \(u\) from \(1\) and then \(v\) from \(\bar u\), and the path reading \(u^{-1}\) is the path reading \(u\), translated to start at \(\bar u^{-1}\) and traversed backwards. The boundary of the chain of a path is its endpoint minus its starting point. (2) By (1), \([vbv^{-1}]=[v]+\bar v[b]+\bar v\bar b[v^{-1}]=[v]+\bar v[b]-[v]\), and \([b^{-1}]=-[b]\) when \(\bar b=1\). (3) Inserting or deleting \(aa^{-1}\) or \(a^{-1}a\) adds a forward and a backward traversal of one edge. \(\square\)
+*Proof.* (1) The path reading \(uv\) reads \(u\) from \(1\) and then \(v\) from \(\bar u\), and the path reading \(u^{-1}\) is the path reading \(u\), translated to start at \(\bar u^{-1}\) and traversed backwards. The boundary of the chain of a path is its endpoint minus its starting point. (2) By (1), \([vbv^{-1}]=[v]+\bar v[b]+\bar v\bar b[v^{-1}]\), which is \([v]+\bar v[b]-[v]\), and \([b^{-1}]=-[b]\) when \(\bar b=1\). (3) Inserting or deleting \(aa^{-1}\) or \(a^{-1}a\) adds a forward and a backward traversal of one edge. \(\square\)
 
 ## 2. Presentations and moves that keep a basis
 
@@ -49,9 +49,9 @@ with image in the cycle module. The presentation has the *basis property* if thi
 
 ## 3. From a classifying space to a presentation
 
-We use the following standard facts of homotopy theory without proof; a course proving them is recorded as an open obligation of this course.
+We use the following facts of homotopy theory, proved in the course on cell complexes, fundamental groups and covering spaces: parts 1 and 2 are Propositions 2.1 and 3.1 of [Cell complexes and homotopy equivalences](course:cell-complexes-and-covering-spaces/cell-complexes-and-homotopy-equivalences), with Lemma 4.3 and Proposition 4.2 there for spanning trees and their contractibility; parts 3 and 5 are Corollaries 2.5 and 4.2 of [Fundamental groups of graphs and two-complexes](course:cell-complexes-and-covering-spaces/fundamental-groups-of-graphs-and-two-complexes); and part 4 is Proposition 4.1 of [Universal covers and cellular chains](course:cell-complexes-and-covering-spaces/universal-covers-and-cellular-chains).
 
-**(HE)** (homotopy equivalences of CW complexes; [Hatcher, Propositions 0.16, 0.17, 0.18, 1.26 and 1A.2, Theorem 4.8]).
+**(HE)** (homotopy equivalences of CW complexes; also [Hatcher, Propositions 0.17, 0.18, 1.26 and 1A.2]).
 
 1. If \(T\) is a contractible subcomplex of a CW complex \(Y\), the quotient map \(Y\to Y/T\) is a homotopy equivalence.
 2. Attaching cells along homotopic maps gives homotopy equivalent CW complexes.
@@ -146,11 +146,24 @@ The words in \(\mathcal D\) have value \(1\), but their normal closure need not 
 
 **5.1.** The graph is the line with vertices \(t^n\) and edges from \(t^n\) to \(t^{n+1}\). The boundary map \(\Lambda\to\Lambda\), \(e_t\mapsto t-1\), is injective, so the cycle module is \(0\), and the empty list gives the isomorphism \(0\to0\).
 
-**5.2.** By Lemma 1.1, \([xyx^{-1}y^{-1}]=e_x+xe_y-xyx^{-1}e_x-xyx^{-1}y^{-1}e_y=(1-y)e_x+(x-1)e_y\), using commutativity. In Lemma 3.2 of that lesson, the kernel of \(d_1\) is the image of the injective map \(d_2(r)=\bigl((y-1)r,-(x-1)r\bigr)\), which is \(-r\) times this chain.
+**5.2.** By Lemma 1.1 and commutativity,
+\[
+\begin{aligned}
+[xyx^{-1}y^{-1}]&=e_x+xe_y-xyx^{-1}e_x-xyx^{-1}y^{-1}e_y\\
+&=(1-y)e_x+(x-1)e_y.
+\end{aligned}
+\] In Lemma 3.2 of that lesson, the kernel of \(d_1\) is the image of the injective map \(d_2(r)=\bigl((y-1)r,-(x-1)r\bigr)\), which is \(-r\) times this chain.
 
-**5.3.** \([yxy^{-1}x^{-1}]=(1-x)e_y+(y-1)e_x=-[xyx^{-1}y^{-1}]\); the two words are inverse to each other in the free group, \((xyx^{-1}y^{-1})^{-1}=yxy^{-1}x^{-1}\), and a commutator of free generators is not its own inverse.
+**5.3.** \([yxy^{-1}x^{-1}]=(1-x)e_y+(y-1)e_x\), which is \(-[xyx^{-1}y^{-1}]\); the two words are inverse to each other in the free group, \((xyx^{-1}y^{-1})^{-1}=yxy^{-1}x^{-1}\), and a commutator of free generators is not its own inverse.
 
-**5.4.** \(PQ=\begin{pmatrix}1-\mathsf A^{-1}\mathsf A&\mathsf A^{-1}\\-\mathsf A&1\end{pmatrix}=\begin{pmatrix}0&\mathsf A^{-1}\\-\mathsf A&1\end{pmatrix}\), then \(PQP=\begin{pmatrix}0&\mathsf A^{-1}\\-\mathsf A&-\mathsf A\mathsf A^{-1}+1\end{pmatrix}\), and multiply by \(D_0\) on the left.
+**5.4.** First
+\[
+\begin{aligned}
+PQ&=\begin{pmatrix}1-\mathsf A^{-1}\mathsf A&\mathsf A^{-1}\\-\mathsf A&1\end{pmatrix}\\
+&=\begin{pmatrix}0&\mathsf A^{-1}\\-\mathsf A&1\end{pmatrix},
+\end{aligned}
+\]
+then \(PQP=\begin{pmatrix}0&\mathsf A^{-1}\\-\mathsf A&-\mathsf A\mathsf A^{-1}+1\end{pmatrix}\), and multiply by \(D_0\) on the left.
 
 **5.5.** Shears change the relator boundary map by triangular matrices with identity diagonal blocks. To obtain relators whose chains are exactly the basis elements \(e_i\) from the family \(R\) alone, one would have to write \(\mathsf A^{-1}\) as a product of such matrices, which need not be possible. The identity block carried by the loops \(u_i\) makes room for three shears whose composite \(PQP\) exchanges the two blocks, as in (4.3); this is the usual way of writing \(\begin{pmatrix}0&\mathsf A^{-1}\\-\mathsf A&0\end{pmatrix}\) as a product of elementary block matrices.
 

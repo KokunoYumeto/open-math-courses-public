@@ -36,12 +36,12 @@ So \(L(w,v)\) is the product, in the order of traversal, of the labels along the
 1. \(L(uw,v)=L(u,v)\,L\bigl(w,v\pi(\bar u)\bigr)\).
 2. \(L(u^{-1},v)=L\bigl(u,v\pi(\bar u)^{-1}\bigr)^{-1}\).
 3. \(L(w,v)\) depends only on the element of the free group on \(A\) represented by \(w\).
-4. If \(\bar r=1\) and \(\sigma\in\{1,-1\}\), then \(L(ur^\sigma u^{-1},v)=L(u,v)\,L\bigl(r,v\pi(\bar u)\bigr)^\sigma\,L(u,v)^{-1}\).
-5. If \(\bar w_1=\cdots=\bar w_n=1\), then \(L(w_1\cdots w_n,v)=L(w_1,v)\cdots L(w_n,v)\).
+4. If \(\bar r=1\) and \(\sigma\in\{1,-1\}\), then \(L(ur^\sigma u^{-1},v)\) equals \(L(u,v)\,L\bigl(r,v\pi(\bar u)\bigr)^\sigma\,L(u,v)^{-1}\).
+5. If \(\bar w_1=\cdots=\bar w_n=1\), then \(L(w_1\cdots w_n,v)\) is the product \(L(w_1,v)\cdots L(w_n,v)\).
 
 *Proof.* (1) By induction on the length of \(u\), directly from the definition.
 
-(2) By induction on the length of \(u\). For a letter, \(L(a^{-1},v)=\ell(v\pi(\bar a)^{-1},a)^{-1}=L(a,v\pi(\bar a)^{-1})^{-1}\). If \(u=u'a\), then by (1), the case of a letter and the induction hypothesis,
+(2) By induction on the length of \(u\). For a letter, \(L(a^{-1},v)=\ell(v\pi(\bar a)^{-1},a)^{-1}\), which is \(L(a,v\pi(\bar a)^{-1})^{-1}\). If \(u=u'a\), then by (1), the case of a letter and the induction hypothesis,
 \[
 \begin{aligned}
 &L(u^{-1},v)\\
@@ -51,9 +51,16 @@ So \(L(w,v)\) is the product, in the order of traversal, of the labels along the
 \]
 and this is the inverse of \(L(u',x)L(a,x\pi(\bar u'))=L(u,x)\) for \(x=v\pi(\bar u)^{-1}\), since \(x\pi(\bar u')=v\pi(\bar a)^{-1}\). If \(u=u'a^{-1}\), the same computation applies with \(a^{-1}\) in place of \(a\).
 
-(3) By (1) and (2), \(L(aa^{-1},x)=L(a,x)L(a,x)^{-1}=1\) and \(L(a^{-1}a,x)=L(a,x\pi(\bar a)^{-1})^{-1}L(a,x\pi(\bar a)^{-1})=1\) for every vertex \(x\). By (1), inserting or deleting \(aa^{-1}\) or \(a^{-1}a\) anywhere in a word therefore does not change the product.
+(3) By (1) and (2), \(L(aa^{-1},x)=L(a,x)L(a,x)^{-1}=1\) and \(L(a^{-1}a,x)=1\), as the product of \(L(a,x\pi(\bar a)^{-1})^{-1}\) and \(L(a,x\pi(\bar a)^{-1})\), for every vertex \(x\). By (1), inserting or deleting \(aa^{-1}\) or \(a^{-1}a\) anywhere in a word therefore does not change the product.
 
-(4) By (1) and (2), \(L(ur^\sigma u^{-1},v)=L(u,v)\,L(r^\sigma,v\pi(\bar u))\,L(u^{-1},v\pi(\bar u))\), since \(\bar r^\sigma=1\); the last factor is \(L(u,v)^{-1}\) by (2). For \(\sigma=-1\), (2) gives \(L(r^{-1},x)=L(r,x\pi(\bar r)^{-1})^{-1}=L(r,x)^{-1}\).
+(4) By (1) and (2),
+\[
+\begin{aligned}
+&L(ur^\sigma u^{-1},v)\\
+&\quad=L(u,v)\,L(r^\sigma,v\pi(\bar u))\,L(u^{-1},v\pi(\bar u)),
+\end{aligned}
+\]
+since \(\bar r^\sigma=1\); the last factor is \(L(u,v)^{-1}\) by (2). For \(\sigma=-1\), (2) gives \(L(r^{-1},x)=L(r,x\pi(\bar r)^{-1})^{-1}\), which is \(L(r,x)^{-1}\).
 
 (5) By (1), since every prefix \(w_1\cdots w_k\) has value \(1\). \(\square\)
 
@@ -168,7 +175,14 @@ By the first estimate of (3.2), \(\bigl|L(z,v)-\prod_{j\in J}b_j\bigr|\le2nK(\ep
 
 *Step 5: the second inequality.* The word \(z\) uses letters of \(S\) only, so by (a) and (3.2), \(|L(z,v)-1|\le|z|\epsilon\), where \(|z|\) is the length of \(z\).
 
-Both inequalities of (3.1) hold with \(C=\max\bigl(1,\ \max_{z}(2n_zK+n_z(n_z-1)),\ \max_z|z|\bigr)\), which depends only on the choices of Section 2. \(\square\)
+Both inequalities of (3.1) hold with
+\[
+\begin{aligned}
+C=\max\bigl(&1,\ \max_z|z|,\\
+&\max_{z}(2n_zK+n_z(n_z-1))\bigr),
+\end{aligned}
+\]
+which depends only on the choices of Section 2. \(\square\)
 
 The constant does not depend on the quotient \(F\), on the labelling or on \(\epsilon\). This uniformity is what the next lesson needs: it applies the estimate on infinitely many finite quotients, and on \(\Gamma\) itself.
 
@@ -217,7 +231,7 @@ The supremum \(h\) need not be attained. On a finite quotient it is a maximum of
 
 **5.3.** \(C(\delta+\eta)=\frac14+\frac1{16C}\le\frac14+\frac1{16}<\frac12\), and \(C\eta=\frac1{16C}<\frac1{8C}=\frac\delta2\).
 
-**5.4.** \(ab=\cos^2\theta+(i+j)\sin\theta\cos\theta+k\sin^2\theta\) and \(ba=\cos^2\theta+(i+j)\sin\theta\cos\theta-k\sin^2\theta\), since \(ji=-k\). So \(|ab-ba|=2\sin^2\theta\). Further \(|a-1|^2=(1-\cos\theta)^2+\sin^2\theta=4\sin^2(\theta/2)\), so \(2|a-1|\,|b-1|=8\sin^2(\theta/2)\). The ratio is \(\sin^2\theta/(4\sin^2(\theta/2))=\cos^2(\theta/2)\to1\). With \(h=|a-1|=|b-1|\), one interchange of \(a\) and \(b\) costs \(\cos^2(\theta/2)\cdot2h^2\).
+**5.4.** \(ab=\cos^2\theta+(i+j)\sin\theta\cos\theta+k\sin^2\theta\) and \(ba=\cos^2\theta+(i+j)\sin\theta\cos\theta-k\sin^2\theta\), since \(ji=-k\). So \(|ab-ba|=2\sin^2\theta\). Further \(|a-1|^2=(1-\cos\theta)^2+\sin^2\theta\), which is \(4\sin^2(\theta/2)\), so \(2|a-1|\,|b-1|=8\sin^2(\theta/2)\). The ratio is \(\sin^2\theta/(4\sin^2(\theta/2))=\cos^2(\theta/2)\to1\). With \(h=|a-1|=|b-1|\), one interchange of \(a\) and \(b\) costs \(\cos^2(\theta/2)\cdot2h^2\).
 
 **5.5.** Here \(n_z=1\), the conjugator is empty, so \(\mathcal T_0\) is empty, \(M=0\), \(K=\max(1,0)\cdot0=0\), and Steps 3 and 4 give the error \(2\cdot1\cdot0+0=0\). The proof gives \(C=\max(1,\max_z|z|)\), the largest length of a word of \(\mathcal D\) (or \(1\)).
 

@@ -18,7 +18,7 @@ Let \(G\) be a compact Hausdorff abelian group, and let \(\alpha\) be a point-ul
 \]
 Assume \(M^{H_\alpha}=\mathbb C1\). We prove that every automorphism \(\sigma\) commuting with \(H_\alpha\) and fixing \(A\) pointwise belongs to \(\alpha(G)\). No sigma-finiteness or countability hypothesis on \(M\) is imposed. If \(M=0\), there is only one automorphism and the conclusion holds separately.
 
-The precise earlier inputs are [Hilbert completion and bounded extension](OA-FLOW-CF.md#oa-flow.cf.10), [scalar and choice conventions](OA-FLOW-CF.md#oa-flow.cf.1), [Hilbert projections](OA-FLOW-CF.md#oa-flow.cf.8), [compact approximation](OA-FLOW-CF.md#oa-flow.cf.5), [bounded square roots](OA-FLOW-CF.md#oa-flow.cf.7), [the concrete commutant test](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0), [projection joins](OA-FLOW-NF.md#oa-flow.nf.1), [Haar finiteness and positivity](OA-FLOW-HR.md#hr-06), [normal integrated actions](OA-FLOW-AT.md#oa-flow.at.5), [normal-functional duality](OA-FLOW-CP.md#oa-flow.cp.6), [compact quotient topology](OA-FLOW-QF.md#qf-1), and the complete [topological biduality proof](OA-FLOW-HARMONIC-LATE.md#l138-h3). They supply actual proofs, rather than bibliography substitutes. The exact source and range ledger is separate from this chapter.
+The precise earlier inputs are [Hilbert completion and bounded extension](OA-FLOW-CF.md#oa-flow.cf.10), [scalar and choice conventions](OA-FLOW-CF.md#oa-flow.cf.1), [Hilbert projections](OA-FLOW-CF.md#oa-flow.cf.8), [compact approximation](OA-FLOW-CF.md#oa-flow.cf.5), [bounded square roots](OA-FLOW-CF.md#oa-flow.cf.7), [the concrete commutant test](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0), [projection joins](OA-FLOW-NF.md#oa-flow.nf.1), [Haar finiteness and positivity](OA-FLOW-HR.md#hr-06), [normal integrated actions](OA-FLOW-AT.md#oa-flow.at.5), [normal-functional duality](OA-FLOW-CP.md#oa-flow.cp.6), [compact quotient topology](OA-FLOW-QF.md#qf-1), and the complete [topological biduality proof](OA-FLOW-HARMONIC-LATE.md#l138-h3). They supply actual proofs, rather than bibliography substitutes.
 
 <a id="oa-flow.hcr.1"></a>
 
@@ -220,11 +220,11 @@ The character is evaluation at the nonzero group element. This illustrates the d
 
 <a id="oa-flow.hcr.5"></a>
 
-## HC5. Source and retained work
+## HC5. Mathematical source
 
 The target is the homogeneous centralizer theorem in Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Exercise XI.1.5, printed330–331. Its proposed route uses twisted two-by-two matrix fixed points, properly infinite projection comparison, a calculation with a unitary fiber generator, and stabilization under a sigma-finiteness hypothesis. Those mathematical antecedents are credited here.
 
-The present proof is organized around the densely defined Gram isometry (HC4). It supplies scalar action on a fiber directly and does not consume those matrix-comparison or stabilization steps. Its arbitrary-algebra scope follows from that independently reviewed proof at its exact earlier inputs; it is not inferred from the source's restricted statement. Not all ancillary results of those historical works are reproved here.
+The Gram isometry (HC4) determines scalar action on a fiber from its inner products and aggregate supports. Together with Fourier density and biduality, this proves the centralizer theorem for arbitrary von Neumann algebras. The matrix-corner construction and the stabilization proof under sigma-finiteness are developed in the following lesson.
 
 <a id="oa-flow.hcr.figure"></a>
 

@@ -13,7 +13,7 @@ Write
 \left(\frac{\varphi(a^*a)+\varphi(aa^*)}{2}\right)^{1/2}.
 \tag{1}
 \]
-On bounded subsets of \(M\), convergence of the latter to zero is precisely strong* convergence. The faithful state GNS proof uses the separating cyclic vector and the dense vectors from its commutant, and does not require a separable Hilbert space.
+On bounded subsets of \(M\), convergence of the latter to zero is precisely strong* convergence. The full [faithful-state topology proof, NT2](../components/central-sequence-foundations.md#nt2-faithful-state-topology), uses the normal GNS representation, its separating cyclic vector and the dense vectors from its commutant; it does not require a separable Hilbert space. [NT1](../components/central-sequence-foundations.md#nt1-normal-functional-decomposition) proves the normal-functional decompositions, module bounds and Cauchy–Schwarz estimates used below. [CQ1](../components/central-sequence-quotient-and-lifting-inputs.md#cq1-complete-cstar-quotient) proves the complete C* quotient construction, including its approximate identity and exact norm identity. The bounded spectral and density arguments are the complete CF, SF and BD components linked there.
 
 ## 1. The zero algebra and its multipliers
 
@@ -83,6 +83,10 @@ Use its faithful GNS representation, with cyclic vector \(\Omega\), and put
 \(\|X\|_{\varphi^\omega}=\varphi^\omega(X^*X)^{1/2}\).
 For a representative \(x\in N_\omega\), this norm equals the ultralimit of \(\|x_n\|_\varphi\).
 
+Here the quotient state is used only as a state on a C* algebra; its normality has not yet been asserted. Its GNS construction is direct. Complete the inner-product space with form \(\varphi^\omega(X^*Y)\), whose null space is zero by faithfulness. Positivity gives
+\(\|AX\|_{\varphi^\omega}\le\|A\|\|X\|_{\varphi^\omega}\), so left multiplication extends to a unital star representation with cyclic vector \(\Omega=1\). It is faithful, since \(A\Omega=0\) implies \(\varphi^\omega(A^*A)=0\). It is also isometric: for \(h=A^*A\ne0\), choose a nonzero continuous spectral cut \(f(h)\) supported arbitrarily close to the spectral maximum \(\lambda=\|A\|^2\). Then
+\(\|A f(h)\|_{\varphi^\omega}^2\ge(\lambda-\varepsilon)\|f(h)\|_{\varphi^\omega}^2\), and the latter norm is nonzero by faithfulness. This gives the lower operator-norm bound as \(\varepsilon\) tends to zero. Thus the represented image is a norm-closed C* algebra, and \(\Omega\) separates its elements. Theorem 3.2 proves strong closure and vector-state normality afterward.
+
 ## 3. Completeness on two cyclic vectors
 
 **Lemma 3.1.** For every fixed \(Y\in M^\omega\), the self-adjoint unit ball is complete for
@@ -124,7 +128,7 @@ Equation (9) now passes to the quotient, giving \(p_Y(\pi(a)-X_r)\le2^{1-r}\). T
 
 **Theorem 3.2.** \(M^\omega\) is a von Neumann algebra in this GNS representation, and \(\varphi^\omega\) is faithful normal.
 
-**Proof.** Suppose \(X_i\) is a strong-operator Cauchy net of self-adjoint contractions. For every \(Y\in M^\omega\), it is Cauchy for (7), since that expression tests the vectors \(\Omega,Y\Omega\). Completeness of that metric gives an element \(X_Y\) with
+**Proof.** Suppose \(X_i\) is a strong-operator Cauchy net of self-adjoint contractions. For every \(Y\in M^\omega\), it is Cauchy for (7), since that expression tests the vectors \(\Omega,Y\Omega\). Metric completeness applies to this net: choose increasing indices \(i_r\) beyond a \(2^{-r}\)-Cauchy tail for that metric. The sequence \(X_{i_r}\) has a limit by Lemma 3.1, and the triangle inequality between the sequence and each sufficiently late net element proves convergence of the whole net. No countable cofinal subset of its directed index set is assumed. Thus there is an element \(X_Y\) with
 \[
 (X_i-X_Y)\Omega\to0,\qquad
 (X_i-X_Y)Y\Omega\to0.
@@ -212,7 +216,13 @@ It restricts to \(\beta\) on the constant copy of \(M\). At separable-predual ge
 +(\varphi\circ\beta)(z_n^*z_n)\to_\omega0.
 \tag{19}
 \]
-The adjoint seminorm has the same estimate. Inverses converge in the \(u\)-topology as well: continuity of inversion for surjective predual isometries follows from its pointwise norm identity, without needing a metric or a separable Banach space. Thus the termwise sequence automorphism preserves \(I_\omega\) in both directions. It preserves its multiplier algebra, so induces a *-automorphism of the quotient. A bijective *-homomorphism between von Neumann algebras is normal: its order inverse preserves the least-upper-bound property of every increasing bounded positive net.
+The adjoint seminorm has the same estimate. Inverses converge in the \(u\)-topology as well. For any fixed \(\psi\in M_*\), precomposition by \(\beta_n\) is isometric, so
+\[
+\|\psi\circ\beta_n^{-1}-\psi\circ\beta^{-1}\|
+=\|\psi-(\psi\circ\beta^{-1})\circ\beta_n\|
+\longrightarrow0.
+\]
+The last limit tests the fixed normal functional \(\psi\circ\beta^{-1}\). This needs neither a metric nor a separable Banach space. Thus the termwise sequence automorphism preserves \(I_\omega\) in both directions. It preserves its multiplier algebra, so induces a *-automorphism of the quotient. A bijective *-homomorphism between von Neumann algebras is normal: its order inverse preserves the least-upper-bound property of every increasing bounded positive net.
 
 For fixed \(a\in M\), \(u\)-convergence gives \(\beta_n(a)\to\beta(a)\) strong*. Expand each state square norm of their difference; multiplicativity makes the square term \(\beta_n(a^*a)\), and the cross terms involve fixed normal functionals applied to \(\beta_n(a)\). Their limits cancel. The adjoint expansion is the same. This proves the constant restriction.
 
@@ -245,7 +255,7 @@ The difference belongs to \(I_\omega\subset N_\omega\); hence \(b\) is a multipl
 
 **Theorem 7.2.** If \(M=B(H)\) is a countably decomposable type I factor, then every multiplier sequence converges strong* along \(\omega\). The constant embedding is a normal isomorphism \(M\cong M^\omega\).
 
-**Proof.** The finite-dimensional case follows from compactness of bounded operator balls. In infinite dimension \(H\) is separable; choose a basis \(\xi_j\) and the faithful diagonal state
+**Proof.** The finite-dimensional case follows from compactness of bounded operator balls. In infinite dimension \(H\) is separable. Indeed, the rank-one projections from any orthonormal basis have strictly positive values under a faithful normal state, and every finite sum of those values is at most one. For each positive integer \(r\), at most \(r\) of them can have value at least \(1/r\); their union exhausts the basis. Choose a basis \(\xi_j\) and the faithful diagonal state
 \[
 \varphi_0(x)=\sum_{j\ge0}2^{-j-1}\langle\xi_j,x\xi_j\rangle.
 \tag{22}

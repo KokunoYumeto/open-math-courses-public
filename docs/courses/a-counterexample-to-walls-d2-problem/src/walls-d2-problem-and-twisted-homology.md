@@ -7,7 +7,7 @@ A finite CW complex of dimension three can behave, for homology and cohomology w
 This lesson states the problem and the theorem, lists the standard theorems of algebraic topology on which the course rests, and develops the tool of the whole course: the chain complex of a CW complex with coefficients twisted by a character of the fundamental group.
 
 - The D(2) condition and the theorem (Section 1).
-- Six standard theorems, used as named hypotheses TOP1 to TOP6 (Section 2).
+- Six standard theorems TOP1 to TOP6, all proved in the programme except the homotopy invariance in TOP5 (Section 2).
 - Chains of the universal cover; coefficients in a module; characters (Section 3).
 - Dimension two, \(H_0\), the Euler characteristic, maps to \(\mathbb Z\) (Lemmas 4.1 to 4.4).
 - Presentation complexes and Fox derivatives (Lemma 5.1).
@@ -26,48 +26,48 @@ and \(H^3(X;M)=0\) for every left module \(M\) over the group ring \(\mathbb Z[G
 
 The cohomology with coefficients in \(M\) is defined in Section 3. A complex of dimension at most two satisfies the condition, because it has no cells of dimension three. The condition is invariant under homotopy equivalence (TOP5 below, in its version for cohomology). So a complex that is homotopy equivalent to a complex of dimension at most two satisfies D(2). The *finite D(2) problem* asks for the converse: is every finite connected complex with D(2) homotopy equivalent to a finite complex of dimension at most two? According to [OpenAI-W], the question goes back to Wall (1965) and is Problem D3 of Wall's list of 1979.
 
-**Theorem 1.1** ([OpenAI-W]). Assume the standard theorems TOP1 to TOP6 of Section 2. There is a finite connected CW complex \(X\) of dimension three that satisfies the condition D(2) and is not homotopy equivalent to any finite CW complex of dimension at most two.
+**Theorem 1.1** ([OpenAI-W]). Assume the homotopy invariance in TOP5 of Section 2. There is a finite connected CW complex \(X\) of dimension three that satisfies the condition D(2) and is not homotopy equivalent to any finite CW complex of dimension at most two.
 
 The complex has one vertex, five edges, six cells of dimension two and two cells of dimension three. Its fundamental group is infinite. The theorem is proved in [The counterexample](the-counterexample.md).
 
 ## 2. The standard theorems used
 
-The course uses six theorems of algebraic topology that are in every textbook of the subject. They are not proved in this course; they are **named hypotheses**. For each we give a place in Hatcher's book [Hatcher], which is free on the author's page. All complexes are CW complexes, and maps are continuous.
+The course uses six theorems of algebraic topology that are in every textbook of the subject. Five of them, and the part of TOP5 on subcomplexes, are proved in the programme: in the course [Cell complexes, fundamental groups and covering spaces](course:cell-complexes-and-covering-spaces/cell-complexes-and-homotopy-equivalences), in the lesson [Frame fields and primary obstructions](course:DG-CHAR/DG-CHAR-08B) and in the core course [Algebraic Topology](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D60); the places are given with each statement. The homotopy invariance in TOP5 is a **named hypothesis**, with a place in Hatcher's book [Hatcher], which is free on the author's page. All complexes are CW complexes, and maps are continuous.
 
-**TOP1** (cells and the fundamental group; [Hatcher, Proposition 1.26]). Let \(Z\) be a connected complex.
+**TOP1** (cells and the fundamental group; [Fundamental groups of graphs and two-complexes, Corollary 2.4 and Theorem 3.3](course:cell-complexes-and-covering-spaces/fundamental-groups-of-graphs-and-two-complexes)). Let \(Z\) be a connected complex.
 
 - A complex with one vertex and loops \(x_1,\dots,x_g\) has the free group on \(x_1,\dots,x_g\) as its fundamental group.
 - If \(Z'\) arises from \(Z\) by attaching cells of dimension two along loops that represent \(t_1,\dots,t_r\in\pi_1(Z)\), then \(\pi_1(Z)\to\pi_1(Z')\) is surjective, and its kernel is the normal closure of \(t_1,\dots,t_r\).
 - If \(Z'\) arises from \(Z\) by attaching cells of dimension at least three, then \(\pi_1(Z)\to\pi_1(Z')\) is an isomorphism.
 
-**TOP2** (covering spaces; [Hatcher, Proposition 1.33, Theorem 1.38, Proposition 1.39 and Appendix, Exercise 1]). Let \(Z\) be a connected complex, \(G=\pi_1(Z)\) and \(N\) a normal subgroup of \(G\).
+**TOP2** (covering spaces; [Universal covers and cellular chains, Theorem 1.1 and Propositions 3.1 and 3.2](course:cell-complexes-and-covering-spaces/universal-covers-and-cellular-chains)). Let \(Z\) be a connected complex, \(G=\pi_1(Z)\) and \(N\) a normal subgroup of \(G\).
 
 - There is a connected covering \(p:Z_N\to Z\) with \(p_*\pi_1(Z_N)=N\). The space \(Z_N\) is a CW complex whose cells are the lifts of the cells of \(Z\). The group \(G/N\) acts on \(Z_N\) by homeomorphisms that commute with \(p\) and permute the cells; for every cell of \(Z\) it permutes the lifts of this cell freely and transitively.
 - For \(N=1\) this is the universal cover \(\widetilde Z\), which is simply connected, and \(Z_N\) is the quotient of \(\widetilde Z\) by \(N\).
 - A map \(f:F\to Z\) from a connected complex lifts to a map \(F\to Z_N\) if and only if \(f_*\pi_1(F)\subseteq N\).
 - If \(Z\) is a simplicial complex, so is \(Z_N\), and \(p\) maps every simplex of \(Z_N\) isomorphically onto a simplex of \(Z\). If \(Z'\subseteq Z\) is a subcomplex, \(p^{-1}(Z')\) is a subcomplex of \(Z_N\).
 
-**TOP3** (cellular homology; [Hatcher, Theorem 2.35, the cellular boundary formula, Theorem 2A.1]). The homology of a complex \(Z\) with integer coefficients is the homology of its cellular chain complex \(C_*(Z)\), in which \(C_j(Z)\) is the free abelian group on the cells of dimension \(j\).
+**TOP3** (cellular homology; [Universal covers and cellular chains, Section 5 and Propositions 5.2 and 5.3](course:cell-complexes-and-covering-spaces/universal-covers-and-cellular-chains), and for \(H_1\) [Frame fields and primary obstructions, Lemma E.1](course:DG-CHAR/DG-CHAR-08B)). The homology of a complex \(Z\) with integer coefficients is the homology of its cellular chain complex \(C_*(Z)\), in which \(C_j(Z)\) is the free abelian group on the cells of dimension \(j\).
 
 - If a cell of dimension \(j+1\) is attached to a complex \(Z\) of dimension at most \(j\) by a map \(\varphi:S^j\to Z\), its boundary in \(C_j(Z)\) is the cycle that represents the image of the fundamental class of \(S^j\) under \(\varphi\). In particular, if a cell of dimension two is attached along a closed path of edges \(e_{i_1}^{\epsilon_1}\cdots e_{i_q}^{\epsilon_q}\) with \(\epsilon_k=\pm1\), its boundary is \(\sum_k\epsilon_ke_{i_k}\).
 - In a covering, the boundary of a lift of a cell is the lift of the boundary: the lifted cell is attached by the lifted map.
 - For a connected complex, \(H_1(Z;\mathbb Z)\) is the abelianization of \(\pi_1(Z)\).
 
-**TOP4** (Hurewicz; [Hatcher, Theorem 4.32]). Let \(Z\) be a simply connected complex. Every class in \(H_2(Z;\mathbb Z)\) is the image of the fundamental class of \(S^2\) under a map \(S^2\to Z\).
+**TOP4** (Hurewicz; [Frame fields and primary obstructions, Lemma E.1](course:DG-CHAR/DG-CHAR-08B)). Let \(Z\) be a simply connected complex. Every class in \(H_2(Z;\mathbb Z)\) is the image of the fundamental class of \(S^2\) under a map \(S^2\to Z\).
 
-**TOP5** (twisted coefficients; [Hatcher, Section 3.H]). With the notation of Section 3:
+**TOP5** (twisted coefficients). With the notation of Section 3:
 
 - *Homotopy invariance.* Let \(h:Z\to Z'\) be a homotopy equivalence of connected complexes, and \(\theta:\pi_1(Z)\to\pi_1(Z')\) the isomorphism that it induces. For every right module \(N\) over \(\mathbb Z[\pi_1(Z')]\), with \(\theta^*N\) the same group with the action through \(\theta\), there are isomorphisms \(H_j(Z;\theta^*N)\cong H_j(Z';N)\) for all \(j\). The same holds for cohomology with coefficients in left modules, and for the homology of the universal covers.
 - *Subcomplexes.* Let \(A\) be a connected subcomplex of a connected complex \(Z\), with \(\iota:\pi_1(A)\to\pi_1(Z)\). Then \(C_*(A;\iota^*N)\) is isomorphic to the subcomplex of \(C_*(Z;N)\) that is spanned by the cells of \(A\).
 
-**TOP6** (simplicial models; [Hatcher, Theorems 2C.1 and 2C.5]).
+**TOP6** (simplicial models; [Fundamental groups of graphs and two-complexes, Corollary 4.4](course:cell-complexes-and-covering-spaces/fundamental-groups-of-graphs-and-two-complexes) and [Cell complexes and homotopy equivalences, Proposition 5.2](course:cell-complexes-and-covering-spaces/cell-complexes-and-homotopy-equivalences)).
 
 - Every finite connected CW complex of dimension at most two is homotopy equivalent to a finite simplicial complex of dimension at most two.
 - Every map from a finite simplicial complex \(F\) to a simplicial complex is homotopic to a map that is simplicial for an iterated barycentric subdivision of \(F\).
 
-In [Hatcher] the first part of TOP2 for CW complexes is an exercise, and the cellular form of TOP5 is stated without a detailed proof. The core course on algebraic topology treats covering spaces and homology; a lesson that proves TOP1 to TOP6 in the form used here does not exist in the programme yet.
+The part of TOP5 on subcomplexes is [Universal covers and cellular chains, Proposition 5.4](course:cell-complexes-and-covering-spaces/universal-covers-and-cellular-chains): if the lifts of the cells of \(A\) are chosen in \(\widetilde A\) and mapped to \(\widetilde Z\) by the map of that proposition, the boundary coefficients computed in \(\widetilde Z\) are the images under \(\iota\) of those computed in \(\widetilde A\). The homotopy invariance in TOP5 is a named hypothesis [Hatcher, Section 3.H]: it needs a comparison of the cellular chains of the universal cover with its singular chains as complexes of modules over the group ring, which [Hatcher] states without a detailed proof and which is not proved in the programme. It is recorded as an open obligation of the course.
 
-Everything else in the course is proved in its four lessons.
+Everything else in the course is proved in its four lessons and the lessons cited above.
 
 ## 3. Chains of the universal cover
 

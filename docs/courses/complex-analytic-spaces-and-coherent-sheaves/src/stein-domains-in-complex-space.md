@@ -1,6 +1,6 @@
 # Stein domains in complex space
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0). Annulus maximum-principle argument and skyscraper section map: GPT-6.1 Sol (OpenAI), Ultra; author self-check, CC0.*
 
 Hörmander's existence theorem solves \(\bar\partial u=g\) with locally square integrable data on every open subset of \(\mathbf C^n\) with a smooth strictly plurisubharmonic exhaustion. This lesson turns it into statements about holomorphic functions and coherent sheaves on such sets, which we call Stein domains. The cohomology of the structure sheaf vanishes in positive degrees; holomorphic functions on a sublevel set of the exhaustion are limits of holomorphic functions on the whole domain; and every coherent sheaf with a finite free resolution has no higher cohomology on any Stein domain inside the domain of the resolution. Since every point of a complex space has such resolutions nearby, this gives each point a basis of neighbourhoods on which a given coherent sheaf is acyclic.
 
@@ -125,7 +125,7 @@ Finally choose a compact exhaustion \(L_j\subset\operatorname{int}L_{j+1}\) of \
 \]
 Such a choice is possible from the explicit exponential bound; if its constant is zero, any \(\nu\geq1\) suffices. Empty initial exhaustion sets may be discarded. Every compact subset of \(\Omega_b\) is contained in some \(L_N\), since the interiors cover it and compactness gives a finite subcover. For \(j\geq N\) the same error bound holds there, and tends to zero. This constructs one sequence converging on every compact subset, rather than a separate limiting family for each compact set. Finite-dimensional vector-valued approximation follows componentwise, with the finite sum of squared component errors controlling the original Euclidean norm.
 
-*Stein-domain dependency integration and approximation details: GPT-6 Astra (OpenAI), Ultra, 13 October 2026; author self-check, CC0. Original statements, proofs, variants, citations and author credits remain. No independent whole-course review is claimed.*
+*Locally square-integrable resolutions, approximation estimates and convex-ramp construction: GPT-6 Astra (OpenAI), Ultra; author self-check, CC0.*
 
 ## 4. Coherent sheaves on Stein domains
 
@@ -172,7 +172,7 @@ Here the same notation \(V\) as in Proposition 4.3 denotes the ambient Stein ope
 
 For the neighbourhood basis, choose small balls inside the ambient resolution neighbourhood. They are Stein by [Examples 2.3](plurisubharmonic-functions-and-stein-manifolds.md#2-stein-manifolds), so the preceding comparison gives acyclicity of their intersections with \(A\). Such sets form a relative neighbourhood basis. On a manifold, for a finite intersection of the chosen balls in one chart, [Proposition 2.2(4)](plurisubharmonic-functions-and-stein-manifolds.md#2-stein-manifolds) proves the intersection is Stein by summing bounded-below strictly plurisubharmonic exhaustions. The intersection lies in the resolution neighbourhood belonging to any one of its balls; restrict that resolution and apply Theorem 4.1. Thus no simultaneous global choice of resolutions for all the balls is required. An empty intersection has zero sections and cohomology and causes no exception. This proves the stated same-chart conclusion; the separate singular-space chart-intersection argument remains in its later lesson.
 
-*Coherent-sheaf application integration: GPT-6 Astra (OpenAI), Ultra, 13 October 2026; author self-check, CC0. This is a scoped dependency reconciliation, not independent review or whole-course certification.*
+*Finite free resolutions and distinguished patches: GPT-6 Astra (OpenAI), Ultra; author self-check, CC0.*
 
 ## 5. Exercises
 
@@ -182,14 +182,14 @@ For the neighbourhood basis, choose small balls inside the ambient resolution ne
 
 **Exercise 5.2.** Let \(\Omega=\{|z|<1\}\subset\mathbf C\) and \(\Omega_b=\{|z|<1/2\}\). Show directly that every \(h\in\mathcal O(\Omega_b)\) is a uniform limit on compact subsets of \(\Omega_b\) of functions in \(\mathcal O(\Omega)\), and that the analogous statement fails for the annulus \(\Omega_b'=\{1/4<|z|<1/2\}\subset\Omega\).
 
-*Solution.* The partial sums of the Taylor series of \(h\) at \(0\) are polynomials, hence holomorphic on \(\Omega\), and they converge uniformly on compact subsets of \(\Omega_b\). For the annulus, \(1/z\) is not a limit: if \(p_\nu\in\mathcal O(\Omega)\) converged uniformly to \(1/z\) on the circle \(|z|=3/8\), then \(\int_{|z|=3/8}p_\nu\,dz=0\) would converge to \(\int_{|z|=3/8}dz/z=2\pi i\). The annulus is not a sublevel set of a strictly subharmonic exhaustion of \(\Omega\): such a set has no holes, by the maximum principle.
+*Solution.* The partial sums of the Taylor series of \(h\) at \(0\) are polynomials, hence holomorphic on \(\Omega\), and they converge uniformly on compact subsets of \(\Omega_b\). For the annulus, \(1/z\) is not a limit: if \(p_\nu\in\mathcal O(\Omega)\) converged uniformly to \(1/z\) on the circle \(|z|=3/8\), then \(\int_{|z|=3/8}p_\nu\,dz=0\) would converge to \(\int_{|z|=3/8}dz/z=2\pi i\). The annulus is not a sublevel set of a strictly subharmonic exhaustion of \(\Omega\): such a set has no holes, by the maximum principle. Indeed, if this annulus were \(\{\psi<b\}\) for such a function on \(\Omega\), continuity would give \(M=\max_{|z|=3/8}\psi(z)<b\). The [disc maximum principle](plurisubharmonic-functions-and-stein-manifolds.md#disc-maximum-principle) would imply \(\psi(0)\leq M<b\), although \(0\) is outside the annulus, a contradiction.
 
 **Exercise 5.3.** Let \(\mathcal S=\mathcal O/(z_1,z_2)\) on \(\mathbf C^2\), the skyscraper sheaf at \(0\). Write down a finite free resolution and verify Theorem 4.1 on the ball.
 
-*Solution.* The Koszul complex \(0\to\mathcal O\xrightarrow{(-z_2,\,z_1)}\mathcal O^2\xrightarrow{(z_1,\,z_2)}\mathcal O\to\mathcal S\to0\) is exact: at \(\mathcal O^2\), a relation \(g_1z_1+g_2z_2=0\) is a multiple of \((-z_2,z_1)\) by Exercise 4.1 of the lesson on Oka's theorem, and the first map is injective. On a ball \(B\), \(\mathcal S(B)=\mathbf C\) if \(0\in B\) and \(0\) otherwise, \(H^k(B,\mathcal S)=0\) for \(k\geq1\) since a skyscraper sheaf is flasque, and \(\mathcal O(B)\to\mathcal S(B)\) is evaluation at \(0\), which is surjective.
+*Solution.* The Koszul complex \(0\to\mathcal O\xrightarrow{(-z_2,\,z_1)}\mathcal O^2\xrightarrow{(z_1,\,z_2)}\mathcal O\to\mathcal S\to0\) is exact: at \(\mathcal O^2\), a relation \(g_1z_1+g_2z_2=0\) is a multiple of \((-z_2,z_1)\) by Exercise 4.1 of the lesson on Oka's theorem, and the first map is injective. On a ball \(B\), \(\mathcal S(B)=\mathbf C\) if \(0\in B\) and \(0\) otherwise, \(H^k(B,\mathcal S)=0\) for \(k\geq1\) since a skyscraper sheaf is flasque, and \(\mathcal O(B)\to\mathcal S(B)\) is evaluation at \(0\) when \(0\in B\), and is the map to the zero section space otherwise; in either case it is surjective.
 
 ## References
 
 - [Demailly] J.-P. Demailly, *Complex Analytic and Differential Geometry*, version of 21 June 2012, freely available from the author with permission to copy, modify and redistribute with credit. <https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf>
-- [Hörmander 1965] L. Hörmander, \(L^2\) estimates and existence theorems for the \(\bar\partial\) operator, *Acta Mathematica* 113 (1965), 89–152. <https://doi.org/10.1007/BF02391775>
+- [Hörmander 1965] L. Hörmander, \(L^2\) estimates and existence theorems for the \(\bar\partial\) operator, *Acta Mathematica* 113 (1965), 89–152. <https://doi.org/10.1007/BF02391775> [Freely readable article](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/5989-11511_2006_Article_BF02391775.pdf).
 - [Stacks] The Stacks project, cited by tag; each tag links to the same result in the AI Integrated Stacks Project. <https://stacks.math.columbia.edu/>

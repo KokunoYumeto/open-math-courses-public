@@ -92,7 +92,7 @@ The set in parentheses is closed by SC0 and closedness of the action hull. As th
 <a id="oa-flow.l121.sc3"></a><a id="sc3"></a>
 ## SC3. Central ergodicity constructs the comparison family
 
-Assume now \(Z(M)^\alpha=\mathbb C1\). We construct a family satisfying SC2 for any prescribed nonzero central fixed corners and any identity neighborhood. The retained equations (D2)–(D23) make every step explicit.
+Assume now \(Z(M)^\alpha=\mathbb C1\). We construct a family satisfying SC2 for any prescribed nonzero central fixed corners and any identity neighborhood. Equations (D2)–(D23) give the localized bridge and its two spectral comparisons.
 
 <a id="oa-flow.mutual.localize"></a>
 ### Localize a nonzero operator between the prescribed corners
@@ -219,7 +219,7 @@ The exponential differentiation argument in SC2 shows that an element commuting 
 <a id="oa-flow.mutual.sandwich"></a>
 ### A support-density lemma produces a nonzero spectral sandwich
 
-This is the SC1 density argument specialized to (D9), retained here in the historical notation.  If \(0\ne b\in f_1Mf_1\), then there are \(a_0,a_1\in\mathcal B\) such that
+Apply the SC1 density argument to the carriers in (D9).  If \(0\ne b\in f_1Mf_1\), then there are \(a_0,a_1\in\mathcal B\) such that
 
 <a id="equation-d13"></a>
 
@@ -456,9 +456,9 @@ Thus the support-density step is visible on actual matrix units, with frequencie
 <a id="oa-flow.l121.sources"></a><a id="l121-sources"></a>
 ## Source development and scope
 
-Masamichi Takesaki, *Theory of Operator Algebras II*, Theorem XI.2.9(ii), printed pages 337 and 341, and Lemma XI.2.15 are the historical mathematical source for mutual approximation and directedness. Its lemma uses a Fourier-localized bridge and two support joins; its theorem deduces directedness. The present organization instead proves a reusable family-of-ranges comparison before constructing a centrally ergodic example of that family. SC0 proves the needed compact-plus-closed statement; SC1 proves both range-detection implications; SC2 proves both carrier invariances and both spectral inclusions; SC3 supplies the Fourier family with complete general-group internal premises. SC4 chooses and checks one refinement, and SC5 proves the finite model used in the diagram. Shared mathematical mechanisms are credited; no book prose, illustration, or exercise sequence is reproduced.
+Masamichi Takesaki, *Theory of Operator Algebras II*, Theorem XI.2.9(ii), printed pages 337 and 341, and Lemma XI.2.15, printed pages 340–341, are the sources for mutual approximation and directedness. SC0 establishes closedness of the compact spectral sums, SC1 proves range detection, and SC2 compares the two carrier spectra. SC3 constructs the Fourier-localized family under central ergodicity. SC4 obtains a common refinement, and SC5 gives the finite matrix example.
 
-The preserved free-source foundation route remains in the earlier PC, CP, Fourier and topology proofs, including the Peterson and Nelson comparison contributions recorded by PC. Those proofs and their inherited source histories remain earlier inputs; this lesson makes no new claim of reading their entire external source editions. All D1–D30 displays and the historical solved problem are retained exactly in mathematical content. The original SC5 family display is the same mathematical family as (D8), with \(F=M^\alpha\); its content is incorporated there. The new general comparison is valid without central ergodicity. Nothing here proves the later compactness, kernel or cocycle conclusions of other parts of Theorem XI.2.9.
+The PC projection proofs, including the contributions of Peterson and Nelson cited there, and the CP, Fourier and topology lessons provide the prerequisites. The family (D8) uses \(F=M^\alpha\). The general comparison in SC2 needs no central ergodicity; that hypothesis enters when SC3 produces a family between two prescribed corners. Compactness, kernel and cocycle conclusions of other parts of Theorem XI.2.9 require further arguments.
 
 The original [spectral-carrier figure and full caption](OA-FLOW-L121.md#l121-figure) display an exact finite illustration, with reproducible matrix and rational-interval checks. They are explanatory evidence, not premises in the arbitrary-group proof.
 

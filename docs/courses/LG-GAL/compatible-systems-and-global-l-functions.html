@@ -4827,8 +4827,982 @@ Find its kernel, its normalized trivialization locus, and its reductions to <spa
 <p>More generally tensor product sends <span class="math" data-tex="\(J_d\times J_e\)">\(J_d\times J_e\)</span> to <span class="math" data-tex="\(J_{d+e}\)">\(J_{d+e}\)</span>. These are morphisms of the represented functors, not just rules on rational points. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 </li>
 </ol>
+<h3 id="2l-albanese-maps-and-norms-of-curve-line-bundles">2L. Albanese maps and norms of curve line bundles</h3>
+<p>The Jacobian <span class="math" data-tex="\(J_C\)">\(J_C\)</span> of the pointed curve <span class="math" data-tex="\((C,P)\)">\((C,P)\)</span> represents rigidified degree-zero lines by JC1–JC9. We now prove its mapping property and the functorial maps needed when curves are related by finite morphisms. All curves in this section are smooth, projective and geometrically integral over a field <span class="math" data-tex="\(k\)">\(k\)</span>. All abelian varieties are over <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+ i_P:C\longrightarrow J_C,\quad
+ R\longmapsto[\mathcal O_C(R-P)^\natural],\qquad
+ q_d:S_d(C)\longrightarrow J_C,\quad
+ D\longmapsto[\mathcal O_C(D-dP)^\natural].
+ \tag{AL1}
+\]">\[
+ i_P:C\longrightarrow J_C,\quad
+ R\longmapsto[\mathcal O_C(R-P)^\natural],\qquad
+ q_d:S_d(C)\longrightarrow J_C,\quad
+ D\longmapsto[\mathcal O_C(D-dP)^\natural].
+ \tag{AL1}
+\]</span>
+<p>These are morphisms defined by the universal divisor lines, including families of points. For <span class="math" data-tex="\(d\ge\max(0,2g-1)\)">\(d\ge\max(0,2g-1)\)</span>, JC8 identifies <span class="math" data-tex="\(q_d\)">\(q_d\)</span> with a projective-space bundle having Zariski local sections.</p>
+<p>Free primary comparisons are Milne's author version of <a href="https://www.jmilne.org/math/xnotes/JVs.pdf"><em>Jacobian Varieties</em>, §6, Proposition 6.1</a> and the Stacks project's <a href="https://stacks.math.columbia.edu/tag/0BCX">norm construction</a>. We use a projective-bundle argument with full parameter schemes, rather than import extension of rational maps as an additional theorem. The norm and infinitesimal calculations below are also proved here.</p>
+<h4 id="2l-1-the-finite-torsors-used-on-the-projective-line">2L.1. The finite torsors used on the projective line</h4>
+<p><strong>AL1.</strong> Over an algebraically closed field <span class="math" data-tex="\(K\)">\(K\)</span>, every finite locally free torsor on <span class="math" data-tex="\(\mathbf P^1_K\)">\(\mathbf P^1_K\)</span> under <span class="math" data-tex="\(\mu_\ell^r\)">\(\mu_\ell^r\)</span>, with <span class="math" data-tex="\(\ell\)">\(\ell\)</span> prime to the characteristic, has a section.</p>
+<p>A finite locally free torsor here means a finite faithfully flat map <span class="math" data-tex="\(X\to\mathbf P^1_K\)">\(X\to\mathbf P^1_K\)</span> with the group action and an isomorphism <span class="math" data-tex="\(\mu_\ell^r\times X\simeq X\times_{\mathbf P^1}X\)">\(\mu_\ell^r\times X\simeq X\times_{\mathbf P^1}X\)</span> given by the action and projection. The cover <span class="math" data-tex="\(X\)">\(X\)</span> itself then trivializes the torsor. Write its finite algebra as <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. The diagonalizable-group coaction gives an actual grading</p>
+<span class="math math-display" data-tex="\[
+ \mathcal B=\bigoplus_{\chi\in(\mathbf Z/\ell)^r}\mathcal B_\chi,\qquad
+ \mathcal B_0=\mathcal O_{\mathbf P^1},\qquad
+ \mathcal B_\chi\otimes\mathcal B_\psi\xrightarrow{\sim}
+                         \mathcal B_{\chi+\psi}.
+ \tag{AL2}
+\]">\[
+ \mathcal B=\bigoplus_{\chi\in(\mathbf Z/\ell)^r}\mathcal B_\chi,\qquad
+ \mathcal B_0=\mathcal O_{\mathbf P^1},\qquad
+ \mathcal B_\chi\otimes\mathcal B_\psi\xrightarrow{\sim}
+                         \mathcal B_{\chi+\psi}.
+ \tag{AL2}
+\]</span>
+<p>Indeed expand the coaction in the basis of the character group algebra. Its counit and coassociativity say that these coefficients are orthogonal projections with sum the identity. On a trivializing cover their images are the rank-one character summands of the group algebra, and the multiplication maps are isomorphisms there. Their being invertible modules and the displayed maps' being isomorphisms descend faithfully by FD1–FD4. This proves (AL2) without choosing points of the torsor.</p>
+<p>For a coordinate character <span class="math" data-tex="\(e_j\)">\(e_j\)</span>, multiplication gives <span class="math" data-tex="\(\mathcal B_{e_j}^{\otimes\ell}\simeq\mathcal O\)">\(\mathcal B_{e_j}^{\otimes\ell}\simeq\mathcal O\)</span>. Exercise 2K proved <span class="math" data-tex="\(\operatorname{Pic}(\mathbf P^1_K)=\mathbf Z[\mathcal O(1)]\)">\(\operatorname{Pic}(\mathbf P^1_K)=\mathbf Z[\mathcal O(1)]\)</span>, so <span class="math" data-tex="\(\mathcal B_{e_j}\)">\(\mathcal B_{e_j}\)</span> is trivial. Choose a global basis <span class="math" data-tex="\(u_j\)">\(u_j\)</span>. Its <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th power is a unit <span class="math" data-tex="\(c_j\in K^\times\)">\(c_j\in K^\times\)</span>, since global functions on <span class="math" data-tex="\(\mathbf P^1_K\)">\(\mathbf P^1_K\)</span> are <span class="math" data-tex="\(K\)">\(K\)</span>. Rescale using an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th root of <span class="math" data-tex="\(c_j\)">\(c_j\)</span>. The multiplication isomorphisms in (AL2) show that the monomials in the <span class="math" data-tex="\(u_j\)">\(u_j\)</span>, with exponents between zero and <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span>, are bases of all character summands. Thus</p>
+<span class="math math-display" data-tex="\[
+ \mathcal B\simeq
+ \mathcal O_{\mathbf P^1}[u_1,\ldots,u_r]/
+                (u_1^\ell-1,\ldots,u_r^\ell-1).
+ \tag{AL3}
+\]">\[
+ \mathcal B\simeq
+ \mathcal O_{\mathbf P^1}[u_1,\ldots,u_r]/
+                (u_1^\ell-1,\ldots,u_r^\ell-1).
+ \tag{AL3}
+\]</span>
+<p>Evaluation <span class="math" data-tex="\(u_j\mapsto1\)">\(u_j\mapsto1\)</span> is an algebra retraction and gives the required section. This also covers <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2l-2-no-rational-curves-in-an-abelian-variety">2L.2. No rational curves in an abelian variety</h4>
+<p><strong>AL2.</strong> Every morphism <span class="math" data-tex="\(\mathbf P^s_k\to A\)">\(\mathbf P^s_k\to A\)</span> is constant, for <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>.</p>
+<p>First take <span class="math" data-tex="\(s=1\)">\(s=1\)</span> over an algebraic closure <span class="math" data-tex="\(K\)">\(K\)</span>, and choose a prime <span class="math" data-tex="\(\ell\ne\operatorname{char}K\)">\(\ell\ne\operatorname{char}K\)</span>. CU8–CU9 identifies the finite étale group <span class="math" data-tex="\(A[\ell]\)">\(A[\ell]\)</span> with the constant group <span class="math" data-tex="\((\mathbf Z/\ell)^{2a}\)">\((\mathbf Z/\ell)^{2a}\)</span>, where <span class="math" data-tex="\(a=\dim A\)">\(a=\dim A\)</span>. Choosing a primitive <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th root identifies it with <span class="math" data-tex="\(\mu_\ell^{2a}\)">\(\mu_\ell^{2a}\)</span>. Multiplication <span class="math" data-tex="\([\ell]:A\to A\)">\([\ell]:A\to A\)</span> is a torsor under its kernel: for every base scheme, two points with the same multiple differ uniquely by a kernel point, so</p>
+<span class="math math-display" data-tex="\[
+ A[\ell]\times A\xrightarrow{\sim}A\times_{[\ell],A,[\ell]}A,
+ \qquad (h,x)\longmapsto(x+h,x).
+ \tag{AL4}
+\]">\[
+ A[\ell]\times A\xrightarrow{\sim}A\times_{[\ell],A,[\ell]}A,
+ \qquad (h,x)\longmapsto(x+h,x).
+ \tag{AL4}
+\]</span>
+<p>The map <span class="math" data-tex="\([\ell]\)">\([\ell]\)</span> is faithfully flat by CU8 and trivializes its own torsor. Pulling it back along <span class="math" data-tex="\(f:\mathbf P^1_K\to A\)">\(f:\mathbf P^1_K\to A\)</span> gives the torsor in AL1. A section supplies a lift <span class="math" data-tex="\(f_1\)">\(f_1\)</span> with <span class="math" data-tex="\([\ell]f_1=f\)">\([\ell]f_1=f\)</span>. Repeat to obtain <span class="math" data-tex="\(f_n\)">\(f_n\)</span> with <span class="math" data-tex="\([\ell^n]f_n=f\)">\([\ell^n]f_n=f\)</span>.</p>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be a symmetric ample line on <span class="math" data-tex="\(A\)">\(A\)</span>, supplied by CU7. CU5 gives <span class="math" data-tex="\([\ell^n]^*H\simeq H^{\otimes\ell^{2n}}\)">\([\ell^n]^*H\simeq H^{\otimes\ell^{2n}}\)</span>, up to a constant one-dimensional factor which has degree zero on a curve. Therefore</p>
+<span class="math math-display" data-tex="\[
+ \deg f^*H=\ell^{2n}\deg f_n^*H\qquad(n\ge1).
+ \tag{AL5}
+\]">\[
+ \deg f^*H=\ell^{2n}\deg f_n^*H\qquad(n\ge1).
+ \tag{AL5}
+\]</span>
+<p>The left side is a nonnegative integer divisible by arbitrarily large powers of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, hence zero. A nonconstant <span class="math" data-tex="\(f\)">\(f\)</span> would give positive degree: choose a very ample power of <span class="math" data-tex="\(H\)">\(H\)</span>, and a hyperplane containing one image point but not another. Its pulled-back section has a nonempty effective zero divisor, so has positive degree by DC4. This contradiction proves constancy.</p>
+<p>Any two <span class="math" data-tex="\(K\)">\(K\)</span>-points of <span class="math" data-tex="\(\mathbf P^s_K\)">\(\mathbf P^s_K\)</span> lie on a line, so the result for <span class="math" data-tex="\(s=1\)">\(s=1\)</span> makes their images equal. The closed equalizer with the constant map at a chosen point is the whole scheme: on each affine chart, its defining functions vanish at every closed point; B1's closed-point detection and reducedness make those functions zero. Constancy over <span class="math" data-tex="\(k\)">\(k\)</span> follows by faithful scalar extension, with constant value the image of a <span class="math" data-tex="\(k\)">\(k\)</span>-point of <span class="math" data-tex="\(\mathbf P^s_k\)">\(\mathbf P^s_k\)</span>. Dimension zero is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2l-3-factoring-families-through-a-projective-space-bundle">2L.3. Factoring families through a projective-space bundle</h4>
+<p><strong>AL3.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be any <span class="math" data-tex="\(k\)">\(k\)</span>-scheme, <span class="math" data-tex="\(E\)">\(E\)</span> a vector bundle of positive rank on <span class="math" data-tex="\(B\)">\(B\)</span>, and <span class="math" data-tex="\(\pi:\mathbf P_{\mathrm{lines}}(E)\to B\)">\(\pi:\mathbf P_{\mathrm{lines}}(E)\to B\)</span>. Every morphism <span class="math" data-tex="\(F:\mathbf P_{\mathrm{lines}}(E)\to A\)">\(F:\mathbf P_{\mathrm{lines}}(E)\to A\)</span> has a unique factorization through <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, including when <span class="math" data-tex="\(B\)">\(B\)</span> is nonreduced.</p>
+<p>Work on an affine open <span class="math" data-tex="\(V\subset B\)">\(V\subset B\)</span> trivializing <span class="math" data-tex="\(E\)">\(E\)</span>, and choose a coordinate section <span class="math" data-tex="\(s:V\to\mathbf P^{r-1}_V\)">\(s:V\to\mathbf P^{r-1}_V\)</span>. Put <span class="math" data-tex="\(a=Fs\)">\(a=Fs\)</span>, and subtract it using the group law:</p>
+<span class="math math-display" data-tex="\[
+ G=F-a\pi:\mathbf P^{r-1}_V\longrightarrow A.
+ \tag{AL6}
+\]">\[
+ G=F-a\pi:\mathbf P^{r-1}_V\longrightarrow A.
+ \tag{AL6}
+\]</span>
+<p>On every geometric fibre, AL2 makes <span class="math" data-tex="\(F\)">\(F\)</span> constant; its value is the value at <span class="math" data-tex="\(s\)">\(s\)</span>. Hence <span class="math" data-tex="\(G\)">\(G\)</span> has value zero on every geometric fibre. Its topological image lies in the origin of <span class="math" data-tex="\(A\)">\(A\)</span>, so it factors through any affine open <span class="math" data-tex="\(W\subset A\)">\(W\subset A\)</span> containing the origin. This says only that its image lies in <span class="math" data-tex="\(W\)">\(W\)</span>, not that the morphism is already zero.</p>
+<p>FC20 applied to the proper flat scheme <span class="math" data-tex="\(\mathbf P^{r-1}_V\)">\(\mathbf P^{r-1}_V\)</span> gives the actual ring equality</p>
+<span class="math math-display" data-tex="\[
+ \Gamma(\mathbf P^{r-1}_V,\mathcal O)=\Gamma(V,\mathcal O),
+ \tag{AL7}
+\]">\[
+ \Gamma(\mathbf P^{r-1}_V,\mathcal O)=\Gamma(V,\mathcal O),
+ \tag{AL7}
+\]</span>
+<p>also for nonreduced <span class="math" data-tex="\(V\)">\(V\)</span>. Since <span class="math" data-tex="\(W\)">\(W\)</span> is affine, the map into <span class="math" data-tex="\(W\)">\(W\)</span> factors through <span class="math" data-tex="\(V\)">\(V\)</span>. Its restriction to <span class="math" data-tex="\(s\)">\(s\)</span> is the zero morphism, so that factor and <span class="math" data-tex="\(G\)">\(G\)</span> are zero as scheme morphisms. Thus <span class="math" data-tex="\(F=a\pi\)">\(F=a\pi\)</span>. The factors on different trivializing opens agree: on an overlap they become equal after <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has local sections. They glue uniquely. The same argument proves compatibility with every base change on <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Notice that the factor <span class="math" data-tex="\(a\)">\(a\)</span> can be a nonzero infinitesimal family through the origin even when all its geometric fibres are zero. Subtracting <span class="math" data-tex="\(a\)">\(a\)</span>, and then using (AL7), is the step which retains that information. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2l-4-symmetric-maps-over-parameter-rings">2L.4. Symmetric maps over parameter rings</h4>
+<p><strong>AL4.</strong> For every <span class="math" data-tex="\(k\)">\(k\)</span>-scheme <span class="math" data-tex="\(T\)">\(T\)</span>, a permutation-invariant morphism <span class="math" data-tex="\((C^d)_T\to Z\)">\((C^d)_T\to Z\)</span> into a <span class="math" data-tex="\(T\)">\(T\)</span>-scheme factors uniquely through <span class="math" data-tex="\(S_d(C)_T\)">\(S_d(C)_T\)</span>.</p>
+<p>On an affine curve open <span class="math" data-tex="\(V\)">\(V\)</span>, DR7 gives <span class="math" data-tex="\(S_d(V)=\operatorname{Spec}D\)">\(S_d(V)=\operatorname{Spec}D\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+ A=\mathcal O(V)^{\otimes_kd},\qquad
+ D=A^{\mathfrak S_d}
+   =\ker\left(A\longrightarrow\bigoplus_{\gamma\in\mathfrak S_d}A,\ 
+                         a\longmapsto(\gamma a-a)_\gamma\right).
+ \tag{AL8}
+\]">\[
+ A=\mathcal O(V)^{\otimes_kd},\qquad
+ D=A^{\mathfrak S_d}
+   =\ker\left(A\longrightarrow\bigoplus_{\gamma\in\mathfrak S_d}A,\ 
+                         a\longmapsto(\gamma a-a)_\gamma\right).
+ \tag{AL8}
+\]</span>
+<p>For <span class="math" data-tex="\(T=\operatorname{Spec}R\)">\(T=\operatorname{Spec}R\)</span>, tensoring over the field <span class="math" data-tex="\(k\)">\(k\)</span> is exact. Hence</p>
+<span class="math math-display" data-tex="\[
+ (A\otimes_kR)^{\mathfrak S_d}=D\otimes_kR.
+ \tag{AL9}
+\]">\[
+ (A\otimes_kR)^{\mathfrak S_d}=D\otimes_kR.
+ \tag{AL9}
+\]</span>
+<p>The same assertion holds on affine subopens of the quotient by localization at invariant functions. The ordered cover is finite faithfully flat, with geometric fibres the permutation orbits. Consequently a stable open in its source is saturated and descends to an open in the quotient: the complement has closed image under the finite map, and its inverse image is exactly that complement. For an invariant map into <span class="math" data-tex="\(Z\)">\(Z\)</span>, apply this to inverse images of affine target opens. On affine subopens of their quotient opens, (AL9) factors the coordinate maps. Uniqueness glues these factorizations. Curve opens <span class="math" data-tex="\(V\)">\(V\)</span> covering the finite supports, as in DR4, give the global assertion. Affine opens in <span class="math" data-tex="\(T\)">\(T\)</span> then give it for arbitrary <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>This proof extends the ground field to the parameter ring <span class="math" data-tex="\(R\)">\(R\)</span>; it does not assert that invariants commute with arbitrary restriction to a subscheme of <span class="math" data-tex="\(S_d(C)\)">\(S_d(C)\)</span>. In characteristic dividing <span class="math" data-tex="\(d!\)">\(d!\)</span>, that latter assertion can fail, as the exercise shows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2l-5-the-albanese-homomorphism-on-full-parameter-schemes">2L.5. The Albanese homomorphism, on full parameter schemes</h4>
+<p><strong>AL5.</strong> For every <span class="math" data-tex="\(k\)">\(k\)</span>-scheme <span class="math" data-tex="\(T\)">\(T\)</span> and abelian variety <span class="math" data-tex="\(A/k\)">\(A/k\)</span>, restriction along <span class="math" data-tex="\(i_P\)">\(i_P\)</span> gives a natural bijection</p>
+<span class="math math-display" data-tex="\[
+ \operatorname{Hom}_{T\text{-groups}}((J_C)_T,A_T)
+ \xrightarrow{\sim}
+ \{f:C_T\to A_T:\ fP_T=0_T\}.
+ \tag{AL10}
+\]">\[
+ \operatorname{Hom}_{T\text{-groups}}((J_C)_T,A_T)
+ \xrightarrow{\sim}
+ \{f:C_T\to A_T:\ fP_T=0_T\}.
+ \tag{AL10}
+\]</span>
+<p>The equality at <span class="math" data-tex="\(P_T\)">\(P_T\)</span> is an equality of scheme morphisms.</p>
+<p>Choose <span class="math" data-tex="\(d\ge\max(1,2g-1)\)">\(d\ge\max(1,2g-1)\)</span>. For a pointed <span class="math" data-tex="\(f\)">\(f\)</span> on the right, form the symmetric sum of its values on <span class="math" data-tex="\((C^d)_T\)">\((C^d)_T\)</span>. AL4 supplies <span class="math" data-tex="\(h_d\)">\(h_d\)</span> and JC8 supplies the indicated projective bundle:</p>
+<span class="math math-display" data-tex="\[
+ (C^d)_T\xrightarrow{\sigma_d}S_d(C)_T
+       \xrightarrow{q_d}(J_C)_T,\qquad
+ h_d\sigma_d(R_1,\ldots,R_d)=\sum_{j=1}^d f(R_j).
+ \tag{AL11}
+\]">\[
+ (C^d)_T\xrightarrow{\sigma_d}S_d(C)_T
+       \xrightarrow{q_d}(J_C)_T,\qquad
+ h_d\sigma_d(R_1,\ldots,R_d)=\sum_{j=1}^d f(R_j).
+ \tag{AL11}
+\]</span>
+<p>Regard <span class="math" data-tex="\(h_d\)">\(h_d\)</span> as a map to <span class="math" data-tex="\(A\)">\(A\)</span> together with its fixed map to <span class="math" data-tex="\(T\)">\(T\)</span>. AL3 gives a unique <span class="math" data-tex="\(T\)">\(T\)</span>-morphism <span class="math" data-tex="\(\phi_d:(J_C)_T\to A_T\)">\(\phi_d:(J_C)_T\to A_T\)</span> with <span class="math" data-tex="\(h_d=\phi_dq_d\)">\(h_d=\phi_dq_d\)</span>.</p>
+<p>Insert <span class="math" data-tex="\(R+(d-1)P\)">\(R+(d-1)P\)</span> as a family of divisors. Its class under <span class="math" data-tex="\(q_d\)">\(q_d\)</span> is <span class="math" data-tex="\(i_P(R)\)">\(i_P(R)\)</span>, and its value under <span class="math" data-tex="\(h_d\)">\(h_d\)</span> is <span class="math" data-tex="\(f(R)\)">\(f(R)\)</span>. The divisor <span class="math" data-tex="\(dP\)">\(dP\)</span> similarly shows <span class="math" data-tex="\(\phi_d(0_T)=0_T\)">\(\phi_d(0_T)=0_T\)</span>. These identities are identities of line bundles and morphisms on all families. They do not rely on density of rational points.</p>
+<p>To prove that <span class="math" data-tex="\(\phi_d\)">\(\phi_d\)</span> is a homomorphism, perform the construction with <span class="math" data-tex="\(2d\)">\(2d\)</span>. Adding the fixed divisor <span class="math" data-tex="\(dP\)">\(dP\)</span> gives <span class="math" data-tex="\(j:S_d(C)_T\to S_{2d}(C)_T\)">\(j:S_d(C)_T\to S_{2d}(C)_T\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+ q_{2d}j=q_d,\qquad h_{2d}j=h_d,\qquad
+ \phi_{2d}q_d=\phi_dq_d.
+ \tag{AL12}
+\]">\[
+ q_{2d}j=q_d,\qquad h_{2d}j=h_d,\qquad
+ \phi_{2d}q_d=\phi_dq_d.
+ \tag{AL12}
+\]</span>
+<p>The first equality is tensoring the divisor lines. The second is checked after the finite faithfully flat ordered cover, where it says that adding <span class="math" data-tex="\(d\)">\(d\)</span> values <span class="math" data-tex="\(f(P)=0\)">\(f(P)=0\)</span> changes no sum; equality then descends by FD5. Since <span class="math" data-tex="\(q_d\)">\(q_d\)</span> has local sections, the third equality gives <span class="math" data-tex="\(\phi_{2d}=\phi_d\)">\(\phi_{2d}=\phi_d\)</span> as morphisms.</p>
+<p>For addition of divisors <span class="math" data-tex="\(a:S_d(C)_T\times_T S_d(C)_T\to S_{2d}(C)_T\)">\(a:S_d(C)_T\times_T S_d(C)_T\to S_{2d}(C)_T\)</span>, the same reasoning gives</p>
+<span class="math math-display" data-tex="\[
+ q_{2d}a=+\,(q_d\times q_d),\qquad
+ h_{2d}a=h_d\operatorname{pr}_1+h_d\operatorname{pr}_2.
+ \tag{AL13}
+\]">\[
+ q_{2d}a=+\,(q_d\times q_d),\qquad
+ h_{2d}a=h_d\operatorname{pr}_1+h_d\operatorname{pr}_2.
+ \tag{AL13}
+\]</span>
+<p>Consequently the two group-law expressions for <span class="math" data-tex="\(\phi_d\)">\(\phi_d\)</span> become equal after <span class="math" data-tex="\(q_d\times q_d\)">\(q_d\times q_d\)</span>, which also has local sections. They are equal before that cover. Thus <span class="math" data-tex="\(\phi_d\)">\(\phi_d\)</span> is a group homomorphism, with <span class="math" data-tex="\(\phi_di_P=f\)">\(\phi_di_P=f\)</span>.</p>
+<p>If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is any other such homomorphism, the actual divisor-line identity</p>
+<span class="math math-display" data-tex="\[
+ q_d\sigma_d=\sum_{j=1}^d i_P\operatorname{pr}_j
+ \tag{AL14}
+\]">\[
+ q_d\sigma_d=\sum_{j=1}^d i_P\operatorname{pr}_j
+ \tag{AL14}
+\]</span>
+<p>gives <span class="math" data-tex="\(\psi q_d\sigma_d=h_d\sigma_d=\phi_dq_d\sigma_d\)">\(\psi q_d\sigma_d=h_d\sigma_d=\phi_dq_d\sigma_d\)</span>. Cancel the finite faithfully flat cover <span class="math" data-tex="\(\sigma_d\)">\(\sigma_d\)</span> by FD5 and then <span class="math" data-tex="\(q_d\)">\(q_d\)</span> using its local sections. This proves uniqueness. It also proves independence of <span class="math" data-tex="\(d\)">\(d\)</span>, naturality under every <span class="math" data-tex="\(T&#x27;\to T\)">\(T&#x27;\to T\)</span>, and compatibility with homomorphisms of the target.</p>
+<p>An arbitrary <span class="math" data-tex="\(f:C_T\to A_T\)">\(f:C_T\to A_T\)</span> has the unique form</p>
+<span class="math math-display" data-tex="\[
+ f(R)=a+\phi i_P(R),\qquad a=f(P_T),\qquad
+ \phi:(J_C)_T\to A_T\text{ a group homomorphism}.
+ \tag{AL15}
+\]">\[
+ f(R)=a+\phi i_P(R),\qquad a=f(P_T),\qquad
+ \phi:(J_C)_T\to A_T\text{ a group homomorphism}.
+ \tag{AL15}
+\]</span>
+<p>Subtract <span class="math" data-tex="\(a\)">\(a\)</span> and apply (AL10). If <span class="math" data-tex="\(Q\)">\(Q\)</span> is another rational base point, the Picard quotient (JC6) canonically identifies the two Jacobians, and</p>
+<span class="math math-display" data-tex="\[
+ i_Q(R)=i_P(R)-i_P(Q).
+ \tag{AL16}
+\]">\[
+ i_Q(R)=i_P(R)-i_P(Q).
+ \tag{AL16}
+\]</span>
+<p>The same <span class="math" data-tex="\(\phi\)">\(\phi\)</span> occurs in (AL15); the new constant is <span class="math" data-tex="\(f(Q)\)">\(f(Q)\)</span>. Thus changing the base point changes the translation, not the homomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2l-6-norms-for-a-finite-morphism-of-curves">2L.6. Norms for a finite morphism of curves</h4>
+<p><strong>AL6.</strong> Let <span class="math" data-tex="\(u:(C,P)\to(D,Q)\)">\(u:(C,P)\to(D,Q)\)</span> be a nonconstant pointed morphism. It is finite locally free of a positive degree <span class="math" data-tex="\(m\)">\(m\)</span>. For every parameter scheme <span class="math" data-tex="\(T\)">\(T\)</span>, its base change has a norm operation on line bundles,</p>
+<span class="math math-display" data-tex="\[
+ N_u(L)=\det (u_T)_*L\otimes
+                     \bigl(\det (u_T)_*\mathcal O_{C_T}\bigr)^{-1}.
+ \tag{AL17}
+\]">\[
+ N_u(L)=\det (u_T)_*L\otimes
+                     \bigl(\det (u_T)_*\mathcal O_{C_T}\bigr)^{-1}.
+ \tag{AL17}
+\]</span>
+<p>It commutes with arbitrary base change, is multiplicative, and satisfies</p>
+<span class="math math-display" data-tex="\[
+ N_u(u_T^*M)\simeq M^{\otimes m},\qquad
+ N_u(\pi_C^*B)\simeq\pi_D^*(B^{\otimes m})
+ \tag{AL18}
+\]">\[
+ N_u(u_T^*M)\simeq M^{\otimes m},\qquad
+ N_u(\pi_C^*B)\simeq\pi_D^*(B^{\otimes m})
+ \tag{AL18}
+\]</span>
+<p>for lines <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(D_T\)">\(D_T\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>We justify every finiteness and module assertion used here. The nonconstant map is dominant; after extending the field, a fibre containing a curve component would make the map constant on the geometrically integral source. Its geometric fibres are therefore finite. It is proper, so the proved proper finite-fibres theorem makes it finite. On a target local DVR its finite algebra is torsion-free: a nonzero target function is a nonzero function on the integral source and cannot annihilate a nonzero element. The DVR module theorem of Lesson 1 makes it free. Its rank is the function-field degree <span class="math" data-tex="\(m\)">\(m\)</span>. This proves finite local freeness and preserves it under every base change.</p>
+<p>Here is a useful elementary observation about any finite locally free algebra <span class="math" data-tex="\(B/R\)">\(B/R\)</span> and invertible <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(L\)">\(L\)</span>. Locally on <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span>, <span class="math" data-tex="\(L\)">\(L\)</span> has a single <span class="math" data-tex="\(B\)">\(B\)</span>-basis. At a residue field, <span class="math" data-tex="\(B\)">\(B\)</span> is a finite-dimensional algebra, a product of Artinian local algebras by B1 and HS2. An invertible module has a basis on each factor by Nakayama; their sum is a basis on the product. Lift that basis to <span class="math" data-tex="\(L\)">\(L\)</span>. As an <span class="math" data-tex="\(R\)">\(R\)</span>-module, <span class="math" data-tex="\(L\)">\(L\)</span> is finite projective: it is a direct summand of a finite free <span class="math" data-tex="\(B\)">\(B\)</span>-module, which is projective over <span class="math" data-tex="\(R\)">\(R\)</span>. Its fibre rank equals <span class="math" data-tex="\(\operatorname{rank}_RB\)">\(\operatorname{rank}_RB\)</span>. On a neighbourhood where both are free, the determinant of the map <span class="math" data-tex="\(B\to L\)">\(B\to L\)</span> given by the lift is a unit at the chosen point. Invert that determinant. The map is then an isomorphism, proving the observation.</p>
+<p>Use such <span class="math" data-tex="\(B\)">\(B\)</span>-bases for a line on the inverse images of target opens. A change of basis by a unit <span class="math" data-tex="\(v\in B^\times\)">\(v\in B^\times\)</span> changes its determinant line by</p>
+<span class="math math-display" data-tex="\[
+ N_{B/R}(v)=\det_R(\text{multiplication by }v).
+ \tag{AL19}
+\]">\[
+ N_{B/R}(v)=\det_R(\text{multiplication by }v).
+ \tag{AL19}
+\]</span>
+<p>The identity <span class="math" data-tex="\(\det(M_vM_w)=\det(M_v)\det(M_w)\)">\(\det(M_vM_w)=\det(M_v)\det(M_w)\)</span> shows that these transitions multiply, and hence proves multiplicativity of (AL17). Changing the chosen bases gives the same determinant line, so the construction is canonical. A base unit <span class="math" data-tex="\(b\)">\(b\)</span> acts on a rank-<span class="math" data-tex="\(m\)">\(m\)</span> module by <span class="math" data-tex="\(bI_m\)">\(bI_m\)</span>, with determinant <span class="math" data-tex="\(b^m\)">\(b^m\)</span>; this proves (AL18). Determinants and finite affine pushforwards commute with all base changes, proving that assertion as well. The argument uses actual finite projective modules and is valid over nilpotent and non-Noetherian parameter rings. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2l-7-covariant-and-contravariant-maps-on-jacobians">2L.7. Covariant and contravariant maps on Jacobians</h4>
+<p><strong>AL7.</strong> The pointed map <span class="math" data-tex="\(u\)">\(u\)</span> gives homomorphisms</p>
+<span class="math math-display" data-tex="\[
+ u^*:J_D\longrightarrow J_C,\qquad
+ u_*:J_C\longrightarrow J_D,\qquad
+ u_*u^*=[m]_{J_D},\qquad u_*i_P=i_Q u .
+ \tag{AL20}
+\]">\[
+ u^*:J_D\longrightarrow J_C,\qquad
+ u_*:J_C\longrightarrow J_D,\qquad
+ u_*u^*=[m]_{J_D},\qquad u_*i_P=i_Q u .
+ \tag{AL20}
+\]</span>
+<p>Here <span class="math" data-tex="\(u^*\)">\(u^*\)</span> is pullback of lines and <span class="math" data-tex="\(u_*\)">\(u_*\)</span> is norm followed by normalization at <span class="math" data-tex="\(Q\)">\(Q\)</span>. These identities hold on all parameter schemes, and no separability assumption on <span class="math" data-tex="\(u\)">\(u\)</span> is needed.</p>
+<p>First we check degrees, so these operations really preserve the specified components. For a divisor <span class="math" data-tex="\(E=\sum_R n_R[R]\)">\(E=\sum_R n_R[R]\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>, the determinant construction gives</p>
+<span class="math math-display" data-tex="\[
+ N_u(\mathcal O_C(E))\simeq\mathcal O_D(u_*E),\qquad
+ u_*E=\sum_{S\in D}
+       \left(\sum_{R\mapsto S}n_R[\kappa(R):\kappa(S)]\right)[S].
+ \tag{AL21}
+\]">\[
+ N_u(\mathcal O_C(E))\simeq\mathcal O_D(u_*E),\qquad
+ u_*E=\sum_{S\in D}
+       \left(\sum_{R\mapsto S}n_R[\kappa(R):\kappa(S)]\right)[S].
+ \tag{AL21}
+\]</span>
+<p>To see this, work at a target closed point <span class="math" data-tex="\(S\)">\(S\)</span>, with local DVR <span class="math" data-tex="\(R_S\)">\(R_S\)</span>. The finite algebra there is semilocal, with localizations the DVRs at the points above <span class="math" data-tex="\(S\)">\(S\)</span>. The two line lattices <span class="math" data-tex="\(\mathcal O_C\)">\(\mathcal O_C\)</span> and <span class="math" data-tex="\(\mathcal O_C(E)\)">\(\mathcal O_C(E)\)</span> are free over this semilocal algebra by AL6's basis argument. After adding a sufficiently large multiple of <span class="math" data-tex="\(u^*[S]\)">\(u^*[S]\)</span>, first suppose <span class="math" data-tex="\(E\)">\(E\)</span> effective there. The inclusion between these lattices has cokernel of length <span class="math" data-tex="\(n_R\)">\(n_R\)</span> at <span class="math" data-tex="\(R\)">\(R\)</span>. A composition series shows that its length as an <span class="math" data-tex="\(R_S\)">\(R_S\)</span>-module is <span class="math" data-tex="\(\sum n_R[\kappa(R):\kappa(S)]\)">\(\sum n_R[\kappa(R):\kappa(S)]\)</span>. The DVR Smith calculation identifies this length with the valuation of the determinant of the inclusion. That determinant is the canonical rational section of the norm line (AL17). This proves (AL21) in the effective case. Subtract the added divisor using multiplicativity and (AL18) to obtain the general case. Rational sections of any line give divisors by DC3, so this covers all lines over the field.</p>
+<p>Since <span class="math" data-tex="\([\kappa(R):k]=[\kappa(R):\kappa(S)][\kappa(S):k]\)">\([\kappa(R):k]=[\kappa(R):\kappa(S)][\kappa(S):k]\)</span>, (AL21) gives</p>
+<span class="math math-display" data-tex="\[
+ \deg N_u(L)=\deg L,\qquad \deg u^*M=m\deg M .
+ \tag{AL22}
+\]">\[
+ \deg N_u(L)=\deg L,\qquad \deg u^*M=m\deg M .
+ \tag{AL22}
+\]</span>
+<p>The second equality is the finite-map degree formula DC7, also proved there by local DVR lengths. Applying these equations on geometric fibres and using AL6's arbitrary base change proves preservation of degree zero on all <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>Pullback preserves rigidification because <span class="math" data-tex="\(u(P)=Q\)">\(u(P)=Q\)</span>. For the norm, take <span class="math" data-tex="\(N_u(L)^\natural\)">\(N_u(L)^\natural\)</span> on <span class="math" data-tex="\(D_T\)">\(D_T\)</span>. Multiplicativity and normalization make this a natural transformation of the represented degree-zero group functors; thus Yoneda gives the homomorphisms in (AL20). If <span class="math" data-tex="\(L\)">\(L\)</span> changes by a base line, its norm changes by the <span class="math" data-tex="\(m\)">\(m\)</span>-th power of that base line by (AL18), which normalization removes. The first identity in (AL18) therefore proves <span class="math" data-tex="\(u_*u^*=[m]\)">\(u_*u^*=[m]\)</span> on every <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For a geometric point <span class="math" data-tex="\(R\)">\(R\)</span> over an algebraic closure, (AL21) sends <span class="math" data-tex="\([R]-[P]\)">\([R]-[P]\)</span> to <span class="math" data-tex="\([u(R)]-[Q]\)">\([u(R)]-[Q]\)</span>. Thus <span class="math" data-tex="\(u_*i_P\)">\(u_*i_P\)</span> and <span class="math" data-tex="\(i_Q u\)">\(i_Q u\)</span> agree on every geometric point of <span class="math" data-tex="\(C\)">\(C\)</span>. Their closed equalizer is the entire reduced curve, by B1's closed-point detection as in AL2. Equality descends faithfully to <span class="math" data-tex="\(k\)">\(k\)</span>, proving the last identity of (AL20) as morphisms. AL5 then also characterizes <span class="math" data-tex="\(u_*\)">\(u_*\)</span> uniquely.</p>
+<p>The norm map is surjective: <span class="math" data-tex="\([m]\)">\([m]\)</span> is surjective by CU8, and factors through <span class="math" data-tex="\(u_*\)">\(u_*\)</span>. For <span class="math" data-tex="\(\ell\ne\operatorname{char}k\)">\(\ell\ne\operatorname{char}k\)</span>, all <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic Tate maps consequently satisfy</p>
+<span class="math math-display" data-tex="\[
+ T_\ell(u_*)T_\ell(u^*)=mI,\qquad
+ V_\ell(u^*)\text{ injective},\qquad
+ V_\ell(u_*)\text{ surjective}.
+ \tag{AL23}
+\]">\[
+ T_\ell(u_*)T_\ell(u^*)=mI,\qquad
+ V_\ell(u^*)\text{ injective},\qquad
+ V_\ell(u_*)\text{ surjective}.
+ \tag{AL23}
+\]</span>
+<p>These follow directly by tensoring the actual equality in (AL20) with <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, where the nonzero integer <span class="math" data-tex="\(m\)">\(m\)</span> is invertible. If <span class="math" data-tex="\(\ell\nmid m\)">\(\ell\nmid m\)</span>, the integral maps split: <span class="math" data-tex="\(m^{-1}T_\ell(u_*)\)">\(m^{-1}T_\ell(u_*)\)</span> is a retraction of <span class="math" data-tex="\(T_\ell(u^*)\)">\(T_\ell(u^*)\)</span>. If <span class="math" data-tex="\(\ell\mid m\)">\(\ell\mid m\)</span>, (AL23) alone does not imply an integral splitting or saturation; the exercise gives the precise module obstruction.</p>
+<p>For a second pointed finite map <span class="math" data-tex="\(v:D\to E\)">\(v:D\to E\)</span>, one has <span class="math" data-tex="\((vu)^*=u^*v^*\)">\((vu)^*=u^*v^*\)</span> by line pullback, and</p>
+<span class="math math-display" data-tex="\[
+ (vu)_*=v_*u_* .
+ \tag{AL24}
+\]">\[
+ (vu)_*=v_*u_* .
+ \tag{AL24}
+\]</span>
+<p>Both homomorphisms in the second equality agree after <span class="math" data-tex="\(i_P\)">\(i_P\)</span>, by (AL20), so AL5's uniqueness proves the equality. Isomorphisms give inverse maps. The constructions commute with field extension and with parameter base change because their line operations do. They retain the scheme kernels when the degree is divisible by the characteristic; no assertion about those kernels is inferred merely from their geometric points. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2l-8-infinitesimal-norm-and-trace">2L.8. Infinitesimal norm and trace</h4>
+<p><strong>AL8.</strong> Under <span class="math" data-tex="\(T_0J_C=H^1(C,\mathcal O_C)\)">\(T_0J_C=H^1(C,\mathcal O_C)\)</span> and <span class="math" data-tex="\(T_0J_D=H^1(D,\mathcal O_D)\)">\(T_0J_D=H^1(D,\mathcal O_D)\)</span> of JC9, the differentials are</p>
+<span class="math math-display" data-tex="\[
+ d(u^*)=H^1(u^\#),\qquad
+ d(u_*)=H^1(\operatorname{Tr}_{u_*\mathcal O_C/\mathcal O_D}),\qquad
+ d(u_*)d(u^*)=mI .
+ \tag{AL25}
+\]">\[
+ d(u^*)=H^1(u^\#),\qquad
+ d(u_*)=H^1(\operatorname{Tr}_{u_*\mathcal O_C/\mathcal O_D}),\qquad
+ d(u_*)d(u^*)=mI .
+ \tag{AL25}
+\]</span>
+<p>The trace is trace of multiplication on the finite locally free algebra; it remains defined when that algebra is not étale.</p>
+<p>Use an affine open cover of <span class="math" data-tex="\(D\)">\(D\)</span>, whose inverse images in <span class="math" data-tex="\(C\)">\(C\)</span> are affine since <span class="math" data-tex="\(u\)">\(u\)</span> is finite. A first-order line trivial on reduction has bases over these inverse images, by affine lifting and Nakayama as in JC9. Write its transition functions <span class="math" data-tex="\(1+\epsilon c_{ij}\)">\(1+\epsilon c_{ij}\)</span>. On each overlap, multiplication by <span class="math" data-tex="\(c_{ij}\)">\(c_{ij}\)</span> has a finite matrix <span class="math" data-tex="\(M_{c_{ij}}\)">\(M_{c_{ij}}\)</span>, and expansion of the determinant gives</p>
+<span class="math math-display" data-tex="\[
+ \det(I+\epsilon M_{c_{ij}})
+       =1+\epsilon\operatorname{Tr}(M_{c_{ij}}),\qquad \epsilon^2=0 .
+ \tag{AL26}
+\]">\[
+ \det(I+\epsilon M_{c_{ij}})
+       =1+\epsilon\operatorname{Tr}(M_{c_{ij}}),\qquad \epsilon^2=0 .
+ \tag{AL26}
+\]</span>
+<p>Indeed the identity permutation contributes the constant and the sum of the diagonal linear terms; any other nonzero permutation term uses at least two off-diagonal entries and is divisible by <span class="math" data-tex="\(\epsilon^2\)">\(\epsilon^2\)</span>. Thus the norm sends the Čech cocycle to its trace. Coboundaries map to coboundaries because trace is additive and commutes with restriction. Normalization along <span class="math" data-tex="\(Q\)">\(Q\)</span> changes only the base-line factor and no class in <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, by JC9. This proves the norm differential. Pullback just pulls back each <span class="math" data-tex="\(c_{ij}\)">\(c_{ij}\)</span>, giving the other assertion. A base scalar acts by its scalar matrix of rank <span class="math" data-tex="\(m\)">\(m\)</span>, whose trace is <span class="math" data-tex="\(m\)">\(m\)</span> times that scalar; hence their composite is <span class="math" data-tex="\(mI\)">\(mI\)</span>, agreeing with differentiation of (AL20).</p>
+<p>For example, in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the purely inseparable field algebra <span class="math" data-tex="\(B=K[t]/(t^p-a)\)">\(B=K[t]/(t^p-a)\)</span>, with <span class="math" data-tex="\(a\notin K^p\)">\(a\notin K^p\)</span>, has basis <span class="math" data-tex="\(1,t,\ldots,t^{p-1}\)">\(1,t,\ldots,t^{p-1}\)</span>. Multiplication by <span class="math" data-tex="\(t^j\)">\(t^j\)</span>, for <span class="math" data-tex="\(1\le j&lt;p\)">\(1\le j&lt;p\)</span>, has zero diagonal in that basis, while multiplication by <span class="math" data-tex="\(1\)">\(1\)</span> has trace <span class="math" data-tex="\(p=0\)">\(p=0\)</span>. Therefore every element has trace zero. Nevertheless</p>
+<span class="math math-display" data-tex="\[
+ N_{B/K}(t)=a,\qquad
+ N_{B\otimes_K K[\epsilon]/(\epsilon^2)\,/\,K[\epsilon]/(\epsilon^2)}
+          (1+\epsilon b)=1 .
+ \tag{AL27}
+\]">\[
+ N_{B/K}(t)=a,\qquad
+ N_{B\otimes_K K[\epsilon]/(\epsilon^2)\,/\,K[\epsilon]/(\epsilon^2)}
+          (1+\epsilon b)=1 .
+ \tag{AL27}
+\]</span>
+<p>The first equality is the determinant of the companion matrix: its sign is <span class="math" data-tex="\((-1)^{p-1}\)">\((-1)^{p-1}\)</span>, which is <span class="math" data-tex="\(1\)">\(1\)</span> for odd <span class="math" data-tex="\(p\)">\(p\)</span> and also <span class="math" data-tex="\(1\)">\(1\)</span> in characteristic two. The second follows from (AL26). A norm operation can therefore be nontrivial while its infinitesimal trace is zero.</p>
+<p>AL1–AL8 proves the Albanese property and finite-curve pullback/norm functoriality. It supplies these geometric inputs to the period construction. The domination and reducibility arguments for arbitrary abelian varieties, semistable curve reduction and the initial formal/analytic period cover still require their actual proofs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2l-9-graded-exercise-albanese-maps-collision-invariants-and-norms">2L.9. Graded exercise: Albanese maps, collision invariants and norms</h4>
+<p><strong>Exercise 2L (100 points; ten parts of 10 points).</strong> All assertions about maps below are assertions about scheme morphisms, except where a module calculation is explicitly requested.</p>
+<ol>
+<li>Let <span class="math" data-tex="\(\ell\ne\operatorname{char}K\)">\(\ell\ne\operatorname{char}K\)</span>, with <span class="math" data-tex="\(K\)">\(K\)</span> algebraically closed. Prove directly from a torsor grading that every <span class="math" data-tex="\(\mu_\ell\)">\(\mu_\ell\)</span>-torsor on <span class="math" data-tex="\(\mathbf P^1_K\)">\(\mathbf P^1_K\)</span> splits. Explain why the affine equation <span class="math" data-tex="\(v^\ell=x\)">\(v^\ell=x\)</span> on <span class="math" data-tex="\(\mathbf G_{m,K}\)">\(\mathbf G_{m,K}\)</span> is instead a nonsplit torsor.</li>
+<li>For <span class="math" data-tex="\(f:\mathbf P^1_K\to A\)">\(f:\mathbf P^1_K\to A\)</span>, suppose a symmetric ample line <span class="math" data-tex="\(H\)">\(H\)</span> has <span class="math" data-tex="\(\deg f^*H=18\)">\(\deg f^*H=18\)</span>. Use repeated lifting through multiplication by <span class="math" data-tex="\(5\)">\(5\)</span>, assuming <span class="math" data-tex="\(5\ne\operatorname{char}K\)">\(5\ne\operatorname{char}K\)</span>, to give the contradiction. Explain why merely proving <span class="math" data-tex="\(df=0\)">\(df=0\)</span> would not suffice in positive characteristic.</li>
+<li>Over <span class="math" data-tex="\(R=k[\epsilon]/(\epsilon^2)\)">\(R=k[\epsilon]/(\epsilon^2)\)</span>, choose a nonzero tangent vector <span class="math" data-tex="\(v\in T_0A\)">\(v\in T_0A\)</span> and let <span class="math" data-tex="\(a:\operatorname{Spec}R\to A\)">\(a:\operatorname{Spec}R\to A\)</span> be the corresponding point through the origin. Describe <span class="math" data-tex="\(F=a\pi:\mathbf P^2_R\to A\)">\(F=a\pi:\mathbf P^2_R\to A\)</span>. What do its geometric fibres detect, and what does its coordinate-section restriction detect?</li>
+<li>In characteristic two, compute the permutation invariants of the collision algebra<span class="math math-display" data-tex="\[
+    B=k[x,y]/(x+y,xy).
+    \tag{ALX1}
+   \]">\[
+    B=k[x,y]/(x+y,xy).
+    \tag{ALX1}
+   \]</span>
+Compare them with the restriction of <span class="math" data-tex="\(k[x+y,xy]\)">\(k[x+y,xy]\)</span> to that quotient point. Explain precisely why this does not contradict (AL9).</li>
+<li>Take <span class="math" data-tex="\(g=3\)">\(g=3\)</span> and <span class="math" data-tex="\(d=5\)">\(d=5\)</span>. For a pointed <span class="math" data-tex="\(f:C_T\to A_T\)">\(f:C_T\to A_T\)</span>, list the two Abel projective bundles used to prove that its factor is a homomorphism, their ranks and fibre dimensions. Justify both cancellations in the uniqueness proof on a nonreduced <span class="math" data-tex="\(T\)">\(T\)</span>.</li>
+<li>For a second point <span class="math" data-tex="\(Q\in C(k)\)">\(Q\in C(k)\)</span>, compute the effect of changing <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\(Q\)">\(Q\)</span> on <span class="math" data-tex="\(i_P\)">\(i_P\)</span>, on the factor <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and on the constant part of a general map <span class="math" data-tex="\(f:C_T\to A_T\)">\(f:C_T\to A_T\)</span>. What does AL5 imply when <span class="math" data-tex="\(C=\mathbf P^1\)">\(C=\mathbf P^1\)</span>, and when <span class="math" data-tex="\(C\)">\(C\)</span> has genus one?</li>
+<li>Let <span class="math" data-tex="\(B=R[t]/(t^2-a)\)">\(B=R[t]/(t^2-a)\)</span>. Compute multiplication matrices, trace and norm for <span class="math" data-tex="\(b=b_0+b_1t\)">\(b=b_0+b_1t\)</span>. Over <span class="math" data-tex="\(R[\epsilon]/(\epsilon^3)\)">\(R[\epsilon]/(\epsilon^3)\)</span>, calculate the norm of <span class="math" data-tex="\(1+\epsilon b+\epsilon^2c\)">\(1+\epsilon b+\epsilon^2c\)</span>. Give a characteristic-two example with zero first-order norm differential and nontrivial second-order norm.</li>
+<li>For <span class="math" data-tex="\(u:\mathbf P^1_t\to\mathbf P^1_x\)">\(u:\mathbf P^1_t\to\mathbf P^1_x\)</span>, <span class="math" data-tex="\(x=t^m\)">\(x=t^m\)</span>, compute the pullback and pushforward of the divisors at zero and infinity. Compute <span class="math" data-tex="\(N_{k(t)/k(x)}(t)\)">\(N_{k(t)/k(x)}(t)\)</span>, including its sign. Discuss <span class="math" data-tex="\(m=p\)">\(m=p\)</span> in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>.</li>
+<li>Construct maps of free <span class="math" data-tex="\(\mathbf Z_\ell\)">\(\mathbf Z_\ell\)</span>-modules <span class="math" data-tex="\(A:\mathbf Z_\ell^2\to\mathbf Z_\ell^2\)">\(A:\mathbf Z_\ell^2\to\mathbf Z_\ell^2\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(BA=\ell^2I\)">\(BA=\ell^2I\)</span>, for which <span class="math" data-tex="\(A\)">\(A\)</span> has nonsaturated image. Give its cokernel and its reductions modulo <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span>. Contrast the conclusion if <span class="math" data-tex="\(BA=mI\)">\(BA=mI\)</span> with <span class="math" data-tex="\(\ell\nmid m\)">\(\ell\nmid m\)</span>. Do not infer an actual curve map merely from these matrices.</li>
+<li>For <span class="math" data-tex="\(C\xrightarrow{u}D\xrightarrow{v}E\)">\(C\xrightarrow{u}D\xrightarrow{v}E\)</span>, prove the composition laws on both pullback and norm Jacobian maps using their full universal properties. Identify the two tangent composites and check that trace after scalar pullback is multiplication by the degree even for a nonétale algebra.</li>
+</ol>
+<p><strong>Full solution.</strong></p>
+<ol>
+<li>
+<p>The graded summand <span class="math" data-tex="\(L=\mathcal B_1\)">\(L=\mathcal B_1\)</span> is an invertible module, with <span class="math" data-tex="\(L^{\otimes\ell}\simeq\mathcal O\)">\(L^{\otimes\ell}\simeq\mathcal O\)</span>. The proved Picard group of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> has no torsion, so choose a basis <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>. Its <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th power is a nonzero constant. Rescale <span class="math" data-tex="\(v\)">\(v\)</span> by a root of that constant in <span class="math" data-tex="\(K\)">\(K\)</span>. Multiplication identifies all the summands with powers of <span class="math" data-tex="\(v\)">\(v\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+    \mathcal B\simeq\mathcal O_{\mathbf P^1}[v]/(v^\ell-1);
+    \qquad v\longmapsto1
+    \tag{ALX2}
+   \]">\[
+    \mathcal B\simeq\mathcal O_{\mathbf P^1}[v]/(v^\ell-1);
+    \qquad v\longmapsto1
+    \tag{ALX2}
+   \]</span>
+<p>is a section. On <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>, a section of <span class="math" data-tex="\(v^\ell=x\)">\(v^\ell=x\)</span> would be a unit <span class="math" data-tex="\(c x^n\)">\(c x^n\)</span> in <span class="math" data-tex="\(K[x,x^{-1}]\)">\(K[x,x^{-1}]\)</span>, satisfying <span class="math" data-tex="\(c^\ell x^{n\ell}=x\)">\(c^\ell x^{n\ell}=x\)</span>. Units are exactly such monomials: lowest and highest exponents of a product add, so a product equal to one forces each factor to have only one exponent. The equation <span class="math" data-tex="\(n\ell=1\)">\(n\ell=1\)</span> has no integer solution. The cover is nonetheless a finite étale torsor: the monic equation gives a free rank-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> algebra, its root is a unit, and its derivative <span class="math" data-tex="\(\ell v^{\ell-1}\)">\(\ell v^{\ell-1}\)</span> is a unit. After the cover, division by its chosen root gives the trivial <span class="math" data-tex="\(\mu_\ell\)">\(\mu_\ell\)</span>-torsor.</p>
+</li>
+<li>
+<p>A lift through <span class="math" data-tex="\([5]\)">\([5]\)</span> would give</p>
+<span class="math math-display" data-tex="\[
+       18=25\deg f_1^*H ,
+       \tag{ALX3}
+   \]">\[
+       18=25\deg f_1^*H ,
+       \tag{ALX3}
+   \]</span>
+<p>impossible for an integer degree. The general proof uses all powers when a degree is divisible by one such square. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the map <span class="math" data-tex="\([X:Y]\mapsto[X^p:Y^p]\)">\([X:Y]\mapsto[X^p:Y^p]\)</span> of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> has zero differential on both standard charts and is nonconstant. Thus zero differential alone would not prove constancy; the torsor lifts and integer degrees supply the stronger argument.</p>
+</li>
+<li>
+<p>The map is constant along each projective-space fibre but can vary infinitesimally with the base. Every geometric point of <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span> kills <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, so every geometric fibre maps to zero. Yet for a suitable local function <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(0\in A\)">\(0\in A\)</span>, the nonzero tangent vector gives</p>
+<span class="math math-display" data-tex="\[
+       a^*z=\lambda\epsilon,\qquad\lambda\ne0 .
+       \tag{ALX4}
+   \]">\[
+       a^*z=\lambda\epsilon,\qquad\lambda\ne0 .
+       \tag{ALX4}
+   \]</span>
+<p>Consequently <span class="math" data-tex="\(a\)">\(a\)</span>, and hence <span class="math" data-tex="\(F\)">\(F\)</span>, is not the zero scheme morphism. Any coordinate section <span class="math" data-tex="\(s\)">\(s\)</span> has <span class="math" data-tex="\(Fs=a\)">\(Fs=a\)</span> and recovers the infinitesimal parameter. AL3 subtracts exactly this <span class="math" data-tex="\(a\)">\(a\)</span> before using global functions, so it retains the family rather than discarding it.</p>
+</li>
+<li>
+<p>The equation <span class="math" data-tex="\(x+y=0\)">\(x+y=0\)</span> gives <span class="math" data-tex="\(y=x\)">\(y=x\)</span> in characteristic two, and <span class="math" data-tex="\(xy=0\)">\(xy=0\)</span> gives <span class="math" data-tex="\(x^2=0\)">\(x^2=0\)</span>. The transposition acts by <span class="math" data-tex="\(x\leftrightarrow y=x\)">\(x\leftrightarrow y=x\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+       B=k[x]/(x^2),\qquad B^{\mathfrak S_2}=B .
+       \tag{ALX5}
+   \]">\[
+       B=k[x]/(x^2),\qquad B^{\mathfrak S_2}=B .
+       \tag{ALX5}
+   \]</span>
+<p>The base quotient ring <span class="math" data-tex="\(D=k[e_1,e_2]\)">\(D=k[e_1,e_2]\)</span>, <span class="math" data-tex="\(e_1=x+y,e_2=xy\)">\(e_1=x+y,e_2=xy\)</span>, restricts to <span class="math" data-tex="\(D/(e_1,e_2)=k\)">\(D/(e_1,e_2)=k\)</span>; its map to <span class="math" data-tex="\(B^{\mathfrak S_2}\)">\(B^{\mathfrak S_2}\)</span> misses the nonzero nilpotent <span class="math" data-tex="\(x\)">\(x\)</span>. This is base change along a nonflat map from the quotient <span class="math" data-tex="\(D\)">\(D\)</span>. In (AL9) the tensor product is over the ground field <span class="math" data-tex="\(k\)">\(k\)</span>, for which every module is flat, and the kernel calculation is exact. These are different base changes. In odd characteristic the transposition instead acts on this fibre by <span class="math" data-tex="\(x\mapsto-x\)">\(x\mapsto-x\)</span>, whose invariants are just <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+</li>
+<li>
+<p>Here <span class="math" data-tex="\(E_5\)">\(E_5\)</span> has rank <span class="math" data-tex="\(5+1-3=3\)">\(5+1-3=3\)</span>, so <span class="math" data-tex="\(q_5:S_5(C)\to J_C\)">\(q_5:S_5(C)\to J_C\)</span> is a <span class="math" data-tex="\(\mathbf P^2\)">\(\mathbf P^2\)</span>-bundle. For <span class="math" data-tex="\(2d=10\)">\(2d=10\)</span>, <span class="math" data-tex="\(E_{10}\)">\(E_{10}\)</span> has rank eight and <span class="math" data-tex="\(q_{10}\)">\(q_{10}\)</span> is a <span class="math" data-tex="\(\mathbf P^7\)">\(\mathbf P^7\)</span>-bundle. Their source dimensions are five and ten; the Jacobian dimension is three. Addition of the fixed divisor <span class="math" data-tex="\(5P\)">\(5P\)</span> compares their factors, and addition of two varying degree-five divisors proves the group law. In uniqueness, equality after the ordered cover descends because it is finite faithfully flat and FD5 detects equality of morphisms. Equality after <span class="math" data-tex="\(q_5\)">\(q_5\)</span> cancels because it has Zariski local sections. Both statements concern the actual structure sheaves and apply on nonreduced <span class="math" data-tex="\(T\)">\(T\)</span>; equality on geometric points is not substituted for either one.</p>
+</li>
+<li>
+<p>Under the canonical identity of the represented degree-zero Picard quotients,</p>
+<span class="math math-display" data-tex="\[
+      i_Q(R)=i_P(R)-i_P(Q),\qquad
+      f(R)=f(P)+\phi i_P(R)=f(Q)+\phi i_Q(R).
+      \tag{ALX6}
+   \]">\[
+      i_Q(R)=i_P(R)-i_P(Q),\qquad
+      f(R)=f(P)+\phi i_P(R)=f(Q)+\phi i_Q(R).
+      \tag{ALX6}
+   \]</span>
+<p>In particular <span class="math" data-tex="\(f(Q)=f(P)+\phi i_P(Q)\)">\(f(Q)=f(P)+\phi i_P(Q)\)</span> as <span class="math" data-tex="\(T\)">\(T\)</span>-points, and the homomorphism <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is unchanged. For <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, its Jacobian is the point by Exercise 2K, so every such family <span class="math" data-tex="\(f\)">\(f\)</span> factors through its base <span class="math" data-tex="\(T\)">\(T\)</span>, in agreement with AL3. For genus one, Exercise 2K identifies <span class="math" data-tex="\(i_P:C\simeq J_C\)">\(i_P:C\simeq J_C\)</span>; every map into an abelian variety is uniquely a translation of a group homomorphism after this identification.</p>
+</li>
+<li>
+<p>In the basis <span class="math" data-tex="\(1,t\)">\(1,t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+      M_b=\begin{pmatrix}b_0&amp;a b_1\\ b_1&amp;b_0\end{pmatrix},
+      \qquad\operatorname{Tr}(b)=2b_0,\qquad N(b)=b_0^2-a b_1^2.
+      \tag{ALX7}
+   \]">\[
+      M_b=\begin{pmatrix}b_0&amp;a b_1\\ b_1&amp;b_0\end{pmatrix},
+      \qquad\operatorname{Tr}(b)=2b_0,\qquad N(b)=b_0^2-a b_1^2.
+      \tag{ALX7}
+   \]</span>
+<p>Put <span class="math" data-tex="\(c=c_0+c_1t\)">\(c=c_0+c_1t\)</span>. Expanding that same determinant modulo <span class="math" data-tex="\(\epsilon^3\)">\(\epsilon^3\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+     N(1+\epsilon b+\epsilon^2c)
+       =1+2b_0\epsilon+
+          (2c_0+b_0^2-a b_1^2)\epsilon^2 .
+       \tag{ALX8}
+   \]">\[
+     N(1+\epsilon b+\epsilon^2c)
+       =1+2b_0\epsilon+
+          (2c_0+b_0^2-a b_1^2)\epsilon^2 .
+       \tag{ALX8}
+   \]</span>
+<p>This identity uses no inverse of <span class="math" data-tex="\(2\)">\(2\)</span>. In characteristic two with <span class="math" data-tex="\(b=t,c=0,a\ne0\)">\(b=t,c=0,a\ne0\)</span>, the result is <span class="math" data-tex="\(1-a\epsilon^2\ne1\)">\(1-a\epsilon^2\ne1\)</span>, although <span class="math" data-tex="\(dN=\operatorname{Tr}=0\)">\(dN=\operatorname{Tr}=0\)</span>. It is a unit with a nontrivial second-order coefficient. Thus passing only to the residue field or to first-order tangent information loses this norm value.</p>
+</li>
+<li>
+<p>The map extends at infinity by the local equation <span class="math" data-tex="\(x^{-1}=(t^{-1})^m\)">\(x^{-1}=(t^{-1})^m\)</span>, so it is a finite map of degree <span class="math" data-tex="\(m\)">\(m\)</span>. Its divisor operations are</p>
+<span class="math math-display" data-tex="\[
+    u^*[0_x]=m[0_t],\quad u^*[\infty_x]=m[\infty_t],
+    \qquad u_*[0_t]=[0_x],\quad u_*[\infty_t]=[\infty_x].
+    \tag{ALX9}
+   \]">\[
+    u^*[0_x]=m[0_t],\quad u^*[\infty_x]=m[\infty_t],
+    \qquad u_*[0_t]=[0_x],\quad u_*[\infty_t]=[\infty_x].
+    \tag{ALX9}
+   \]</span>
+<p>The multiplication companion matrix for <span class="math" data-tex="\(t\)">\(t\)</span> has <span class="math" data-tex="\(m-1\)">\(m-1\)</span> subdiagonal ones and top-right entry <span class="math" data-tex="\(x\)">\(x\)</span>. Its determinant is</p>
+<span class="math math-display" data-tex="\[
+        N(t)=(-1)^{m-1}x .
+        \tag{ALX10}
+   \]">\[
+        N(t)=(-1)^{m-1}x .
+        \tag{ALX10}
+   \]</span>
+<p>Its divisor is <span class="math" data-tex="\([0_x]-[\infty_x]\)">\([0_x]-[\infty_x]\)</span>, as predicted by (AL21); the scalar sign affects no divisor. For <span class="math" data-tex="\(m=p=\operatorname{char}k\)">\(m=p=\operatorname{char}k\)</span>, the extension is purely inseparable and the fibre at zero has algebra <span class="math" data-tex="\(k[t]/(t^p)\)">\(k[t]/(t^p)\)</span>, of length <span class="math" data-tex="\(p\)">\(p\)</span> with one geometric point. Its trace is zero as in AL8, while <span class="math" data-tex="\(N(t)=x\)">\(N(t)=x\)</span>. These are genuine curve/algebra examples, although both Jacobians here are zero-dimensional.</p>
+</li>
+<li>
+<p>Take</p>
+<span class="math math-display" data-tex="\[
+       A=\begin{pmatrix}\ell&amp;0\\0&amp;1\end{pmatrix},
+       \qquad
+       B=\begin{pmatrix}\ell&amp;0\\0&amp;\ell^2\end{pmatrix},
+       \qquad BA=\ell^2I .
+       \tag{ALX11}
+   \]">\[
+       A=\begin{pmatrix}\ell&amp;0\\0&amp;1\end{pmatrix},
+       \qquad
+       B=\begin{pmatrix}\ell&amp;0\\0&amp;\ell^2\end{pmatrix},
+       \qquad BA=\ell^2I .
+       \tag{ALX11}
+   \]</span>
+<p>The cokernel of <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(\mathbf Z/\ell\)">\(\mathbf Z/\ell\)</span>, so its image is not saturated. On <span class="math" data-tex="\((\mathbf Z/\ell^r)^2\)">\((\mathbf Z/\ell^r)^2\)</span>, its kernel has <span class="math" data-tex="\(\ell\)">\(\ell\)</span> elements, its image has <span class="math" data-tex="\(\ell^{2r-1}\)">\(\ell^{2r-1}\)</span> elements, and its cokernel has <span class="math" data-tex="\(\ell\)">\(\ell\)</span> elements, for every <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>. Indeed the second coordinate is unchanged and the first is multiplication by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Over <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, both maps are invertible. If <span class="math" data-tex="\(\ell\nmid m\)">\(\ell\nmid m\)</span> instead, <span class="math" data-tex="\(m^{-1}B\)">\(m^{-1}B\)</span> is an integral left inverse, so the source embeds as a direct summand and its image is saturated. This is the exact implication justified by (AL23). The displayed matrices alone do not produce a curve morphism or identify its geometric kernel.</p>
+</li>
+<li>
+<p>Pulling back a line along a composite gives <span class="math" data-tex="\((vu)^*=u^*v^*\)">\((vu)^*=u^*v^*\)</span> on every parameter scheme. The norm maps <span class="math" data-tex="\(v_*u_*\)">\(v_*u_*\)</span> and <span class="math" data-tex="\((vu)_*\)">\((vu)_*\)</span> both restrict along <span class="math" data-tex="\(i_P\)">\(i_P\)</span> to <span class="math" data-tex="\(i_{v(Q)}vu\)">\(i_{v(Q)}vu\)</span>, by (AL20). AL5 gives their equality as homomorphisms. Differentiating gives the corresponding identities on <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. Locally a scalar <span class="math" data-tex="\(b\)">\(b\)</span> acts on a rank-<span class="math" data-tex="\(m\)">\(m\)</span> finite algebra by <span class="math" data-tex="\(bI_m\)">\(bI_m\)</span>, whether or not the algebra is étale, hence</p>
+<span class="math math-display" data-tex="\[
+       \operatorname{Tr}_{B/R}(b\cdot1)=m b,\qquad
+       \operatorname{Tr}_{B/R}\circ(R\to B)=m\,\operatorname{id}_R .
+       \tag{ALX12}
+    \]">\[
+       \operatorname{Tr}_{B/R}(b\cdot1)=m b,\qquad
+       \operatorname{Tr}_{B/R}\circ(R\to B)=m\,\operatorname{id}_R .
+       \tag{ALX12}
+    \]</span>
+<p>Applying the affine Čech complex gives the composite <span class="math" data-tex="\(mI\)">\(mI\)</span> on <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. In characteristic dividing <span class="math" data-tex="\(m\)">\(m\)</span> this composite can be zero; the group-scheme equality <span class="math" data-tex="\(u_*u^*=[m]\)">\(u_*u^*=[m]\)</span> still holds and need not be the zero morphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</li>
+</ol>
+<h3 id="2m-a-curve-whose-jacobian-dominates-an-abelian-variety">2M. A curve whose Jacobian dominates an abelian variety</h3>
+<p>Let <span class="math" data-tex="\(A/k\)">\(A/k\)</span> be an abelian variety of dimension <span class="math" data-tex="\(a\)">\(a\)</span>. We will construct, after a finite separable extension <span class="math" data-tex="\(E/k\)">\(E/k\)</span>, a pointed smooth projective geometrically integral curve <span class="math" data-tex="\((C,P)\)">\((C,P)\)</span> and a smooth surjective homomorphism</p>
+<span class="math math-display" data-tex="\[
+ \Phi:J_C\longrightarrow A_E .
+ \tag{CD1}
+\]">\[
+ \Phi:J_C\longrightarrow A_E .
+ \tag{CD1}
+\]</span>
+<p>The construction includes one connected curve and prescribed tangent directions. Its proof supplies the smooth-section and connectedness arguments; neither is admitted as an unnamed Bertini input. It does not yet supply a complementary abelian subvariety or an isogeny splitting (CD1).</p>
+<p>Free comparisons are the Stacks project's <a href="https://stacks.math.columbia.edu/tag/0FD6">smooth hyperplane incidence argument</a> and Milne's author notes <a href="https://www.jmilne.org/math/CourseNotes/AV.pdf"><em>Abelian Varieties</em>, Chapter III, §10</a>. The latter argument uses reducibility. We instead arrange independent tangent directions so that surjectivity follows from an actual invertible Jacobian. PF1–PF9, SF1–SF6, DR1, CU7–CU9 and AL5 provide the earlier projective, smooth-chart, completion, abelian and Albanese results used below.</p>
+<h4 id="2m-1-finite-graded-resolutions-over-a-polynomial-ring">2M.1. Finite graded resolutions over a polynomial ring</h4>
+<p><strong>CD1.</strong> For <span class="math" data-tex="\(S=K[X_0,\ldots,X_N]\)">\(S=K[X_0,\ldots,X_N]\)</span>, every finite graded <span class="math" data-tex="\(S\)">\(S\)</span>-module has a finite resolution by finite direct sums of shifted copies of <span class="math" data-tex="\(S\)">\(S\)</span>, of length at most <span class="math" data-tex="\(N+1\)">\(N+1\)</span>.</p>
+<p>All graded modules here are bounded below, and all maps preserve degree. Choose homogeneous generators whose classes form a <span class="math" data-tex="\(K\)">\(K\)</span>-basis modulo <span class="math" data-tex="\(\mathfrak n=(X_0,\ldots,X_N)\)">\(\mathfrak n=(X_0,\ldots,X_N)\)</span>, and continue with each kernel. Noetherianity makes the kernels finite. The graded Nakayama assertion used at each step has an elementary proof: a nonzero bounded-below graded module <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(M=\mathfrak nM\)">\(M=\mathfrak nM\)</span> would have a nonzero homogeneous element of smallest possible degree, which cannot be a sum of positive-degree variables times elements of smaller degree. Hence the chosen lifts generate. Their independence modulo <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> makes every differential matrix in the resulting resolution have its entries in <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>.</p>
+<p>The variables form a regular sequence: after quotienting by any initial set, the remaining polynomial ring is a domain, and its next variable is regular. The Koszul complex on them resolves <span class="math" data-tex="\(K=S/\mathfrak n\)">\(K=S/\mathfrak n\)</span>. For one variable this is the injective two-term multiplication complex; adjoining another variable is its mapping cone, whose homology is exact except at the new quotient because that variable is regular there. Induction proves exactness and the differential</p>
+<span class="math math-display" data-tex="\[
+ \partial(e_{i_1}\wedge\cdots\wedge e_{i_r})
+ =\sum_{j=1}^r(-1)^{j-1}X_{i_j}
+    e_{i_1}\wedge\cdots\widehat e_{i_j}\cdots\wedge e_{i_r}.
+ \tag{CD2}
+\]">\[
+ \partial(e_{i_1}\wedge\cdots\wedge e_{i_r})
+ =\sum_{j=1}^r(-1)^{j-1}X_{i_j}
+    e_{i_1}\wedge\cdots\widehat e_{i_j}\cdots\wedge e_{i_r}.
+ \tag{CD2}
+\]</span>
+<p>Tensor the constructed free resolution <span class="math" data-tex="\(F_\bullet\)">\(F_\bullet\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> with this length-<span class="math" data-tex="\((N+1)\)">\((N+1)\)</span> resolution of <span class="math" data-tex="\(K\)">\(K\)</span>. In its signed double complex, resolving in the <span class="math" data-tex="\(F\)">\(F\)</span> direction gives the Koszul complex tensored with <span class="math" data-tex="\(M\)">\(M\)</span>; resolving in the other direction gives <span class="math" data-tex="\(F_\bullet\otimes_SK\)">\(F_\bullet\otimes_SK\)</span>. Both assertions follow by exactness when tensoring with a free module and the finite-diagonal elimination SH9. Each total degree has finitely many terms, so the initially unbounded resolution causes no infinite-sum problem.</p>
+<p>The second complex has zero differentials, by minimality, while the first has no terms in degrees <span class="math" data-tex="\(&gt;N+1\)">\(&gt;N+1\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+ F_i\otimes_SK=0\quad(i&gt;N+1).
+ \tag{CD3}
+\]">\[
+ F_i\otimes_SK=0\quad(i&gt;N+1).
+ \tag{CD3}
+\]</span>
+<p>The finite free graded modules <span class="math" data-tex="\(F_i\)">\(F_i\)</span> there are zero, since every nonzero shifted free summand has a nonzero reduction. This proves the finite resolution, including its bound. Sheafification is exact: on each standard projective chart it is graded localization followed by taking the degree-zero component, both exact operations. Thus a closed projective subscheme has a finite resolution of its structure sheaf by finite sums of twists <span class="math" data-tex="\(\mathcal O(b)\)">\(\mathcal O(b)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2m-2-the-finite-complex-projective-duality-calculation">2M.2. The finite-complex projective duality calculation</h4>
+<p><strong>CD2.</strong> Put <span class="math" data-tex="\(\omega=\mathcal O_{\mathbf P^N_K}(-N-1)\)">\(\omega=\mathcal O_{\mathbf P^N_K}(-N-1)\)</span>. If <span class="math" data-tex="\(F^\bullet\)">\(F^\bullet\)</span> is a bounded complex of finite sums of twists on <span class="math" data-tex="\(\mathbf P^N_K\)">\(\mathbf P^N_K\)</span>, then there is a perfect pairing of finite-dimensional vector spaces</p>
+<span class="math math-display" data-tex="\[
+ \mathbb H^i(F^\bullet)\ \times\
+ \mathbb H^{N-i}\bigl(\mathcal Hom(F^\bullet,\omega)\bigr)
+       \longrightarrow K .
+ \tag{CD4}
+\]">\[
+ \mathbb H^i(F^\bullet)\ \times\
+ \mathbb H^{N-i}\bigl(\mathcal Hom(F^\bullet,\omega)\bigr)
+       \longrightarrow K .
+ \tag{CD4}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span> means the cohomology of the finite affine Čech total complex, with the usual signed total differential; the internal Hom complex has differential <span class="math" data-tex="\(d(h)=-(-1)^{\deg h}h\,d_F\)">\(d(h)=-(-1)^{\deg h}h\,d_F\)</span>, since <span class="math" data-tex="\(\omega\)">\(\omega\)</span> has zero differential.</p>
+<p>We give the calculation rather than assuming a general duality theorem. PF5–PF6 gives the monomial bases of the cohomology of every twist. For <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, only degrees zero and <span class="math" data-tex="\(N\)">\(N\)</span> can be nonzero. Multiplication, followed by taking the coefficient of</p>
+<span class="math math-display" data-tex="\[
+       X_0^{-1}\cdots X_N^{-1}
+       \quad\text{in }H^N(\mathbf P^N,\omega),
+ \tag{CD5}
+\]">\[
+       X_0^{-1}\cdots X_N^{-1}
+       \quad\text{in }H^N(\mathbf P^N,\omega),
+ \tag{CD5}
+\]</span>
+<p>pairs the basis <span class="math" data-tex="\(X^\alpha\)">\(X^\alpha\)</span>, <span class="math" data-tex="\(\alpha_i\ge0\)">\(\alpha_i\ge0\)</span>, with the basis <span class="math" data-tex="\(X^{-\alpha-\mathbf1}\)">\(X^{-\alpha-\mathbf1}\)</span>. It is therefore perfect between <span class="math" data-tex="\(H^q(\mathcal O(b))\)">\(H^q(\mathcal O(b))\)</span> and <span class="math" data-tex="\(H^{N-q}(\mathcal O(-b-N-1))\)">\(H^{N-q}(\mathcal O(-b-N-1))\)</span>, for every integer <span class="math" data-tex="\(b\)">\(b\)</span>. When both groups vanish the assertion is the perfect pairing of zero spaces. For <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, use the single frame <span class="math" data-tex="\(X_0^b\)">\(X_0^b\)</span>, pairing it with <span class="math" data-tex="\(X_0^{-b-1}\)">\(X_0^{-b-1}\)</span>, and send the frame <span class="math" data-tex="\(X_0^{-1}\)">\(X_0^{-1}\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>The coefficient functional in (CD5) vanishes on Čech boundaries: a term supported on a proper subset of the coordinate opens has at least one exponent nonnegative, whereas all the exponents in (CD5) are negative. Thus it is a chain map from the Čech complex of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, placed in degree <span class="math" data-tex="\(N\)">\(N\)</span>, to <span class="math" data-tex="\(K\)">\(K\)</span>. Ordered Čech cup product and evaluation <span class="math" data-tex="\(F\otimes\mathcal Hom(F,\omega)\to\omega\)">\(F\otimes\mathcal Hom(F,\omega)\to\omega\)</span>, with the sign for passing a Čech degree past a complex degree, give a chain map</p>
+<span class="math math-display" data-tex="\[
+ \check C\bigl(\mathcal Hom(F,\omega)\bigr)[N]
+          \longrightarrow \operatorname{Hom}_K(\check C(F),K).
+ \tag{CD6}
+\]">\[
+ \check C\bigl(\mathcal Hom(F,\omega)\bigr)[N]
+          \longrightarrow \operatorname{Hom}_K(\check C(F),K).
+ \tag{CD6}
+\]</span>
+<p>We use the cohomological convention <span class="math" data-tex="\(D[N]^j=D^{j+N}\)">\(D[N]^j=D^{j+N}\)</span>. The identity <span class="math" data-tex="\(d(uv)=d(u)v+(-1)^{\deg u}u\,d(v)\)">\(d(uv)=d(u)v+(-1)^{\deg u}u\,d(v)\)</span> for the cup product and the displayed Hom differential check the chain identity, including the signs.</p>
+<p>Filter by the finite set of degrees of <span class="math" data-tex="\(F\)">\(F\)</span>. On each associated successive quotient, (CD6) is the single-twist cohomology pairing just computed, extended to its finite direct sums and duals. It is a quasi-isomorphism on that quotient. Induction up the filtration, using the long exact cohomology sequence and the elementary five-lemma chase, proves it is a quasi-isomorphism on the whole complex. Algebraic duality over <span class="math" data-tex="\(K\)">\(K\)</span> is exact, by choosing vector-space bases, so the right complex has cohomology dual to that of <span class="math" data-tex="\(\check C(F)\)">\(\check C(F)\)</span>. This proves (CD4). The same finite filtration and PF cohomology show that all these cohomology spaces are finite-dimensional. No higher-dimensional duality theorem has been used in this argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2m-3-negative-twists-and-connected-smooth-sections">2M.3. Negative twists and connected smooth sections</h4>
+<p><strong>CD3.</strong> Let <span class="math" data-tex="\(X/K\)">\(X/K\)</span> be smooth projective geometrically integral of dimension <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, with a fixed projective embedding and hyperplane line <span class="math" data-tex="\(H\)">\(H\)</span>. For all sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+       H^i(X,H^{-r})=0\qquad(0\le i&lt;n).
+       \tag{CD7}
+\]">\[
+       H^i(X,H^{-r})=0\qquad(0\le i&lt;n).
+       \tag{CD7}
+\]</span>
+<p>In particular, if <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, every smooth zero divisor of a nonzero section of <span class="math" data-tex="\(H^r\)">\(H^r\)</span>, for such <span class="math" data-tex="\(r\)">\(r\)</span>, is nonempty and geometrically integral.</p>
+<p>To prove the vanishing, extend to an algebraic closure; field base change is the exact tensor of the affine Čech complex, so vanishing there detects vanishing over <span class="math" data-tex="\(K\)">\(K\)</span>. Write <span class="math" data-tex="\(X\hookrightarrow\mathbf P^N\)">\(X\hookrightarrow\mathbf P^N\)</span>, <span class="math" data-tex="\(c=N-n\)">\(c=N-n\)</span>, and take the finite twist resolution <span class="math" data-tex="\(F^\bullet\to\mathcal O_X\)">\(F^\bullet\to\mathcal O_X\)</span> from CD1, with <span class="math" data-tex="\(F\)">\(F\)</span> in nonpositive degrees. The complex</p>
+<span class="math math-display" data-tex="\[
+       G^\bullet=\mathcal Hom(F^\bullet,\omega)
+       \tag{CD8}
+\]">\[
+       G^\bullet=\mathcal Hom(F^\bullet,\omega)
+       \tag{CD8}
+\]</span>
+<p>has just one nonzero cohomology sheaf, in degree <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>Here is the local justification, in all dimensions. For the local ring <span class="math" data-tex="\(R\)">\(R\)</span> at a geometric closed point of a standard smooth <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional chart, SF4 gives a basis of the cotangent space by the free coordinates. Nakayama makes those coordinates generate the maximal ideal. They therefore give a surjection <span class="math" data-tex="\(K[[t_1,\ldots,t_n]]\to\widehat R\)">\(K[[t_1,\ldots,t_n]]\to\widehat R\)</span>: lift each successive homogeneous term of a completed element by monomials in those coordinates, and sum by completeness. Conversely SF3's successive coordinate corrections solve the defining equations in that power-series ring, giving a map from <span class="math" data-tex="\(R\)">\(R\)</span>, and hence its completion, back to <span class="math" data-tex="\(K[[t_1,\ldots,t_n]]\)">\(K[[t_1,\ldots,t_n]]\)</span>. The composite on the free coordinates is the identity. The other composite is the identity too: solutions with the same free coordinates are unique modulo each power of the maximal ideal, by SF3's invertible-gradient correction; pass to the inverse limit. Thus the completion is precisely that power-series ring. Faithful completion DR1 makes <span class="math" data-tex="\(R\to\widehat R\)">\(R\to\widehat R\)</span> injective, so <span class="math" data-tex="\(R\)">\(R\)</span> is a domain. All other points on the chart have domain local rings by localization at a closed point containing their prime. This proves the local-domain assertion in every dimension; SF5 alone was a curve statement.</p>
+<p>For the closed embedding above, the completed ambient ring and completed smooth quotient are consequently <span class="math" data-tex="\(K[[z_1,\ldots,z_N]]\)">\(K[[z_1,\ldots,z_N]]\)</span> and <span class="math" data-tex="\(K[[t_1,\ldots,t_n]]\)">\(K[[t_1,\ldots,t_n]]\)</span>. The quotient map is surjective on cotangents. Choose <span class="math" data-tex="\(n\)">\(n\)</span> source coordinates whose images are a parameter basis in the quotient, and use the same degree-by-degree formal inverse to identify their images with the <span class="math" data-tex="\(t_i\)">\(t_i\)</span>. The other <span class="math" data-tex="\(c\)">\(c\)</span> coordinates map to formal series in the <span class="math" data-tex="\(t_i\)">\(t_i\)</span>; subtract those series. The completed kernel is generated by these <span class="math" data-tex="\(c\)">\(c\)</span> new coordinates. It is a regular sequence, since its successive quotients are power-series rings.</p>
+<p>These generators and the equality of the completed ideal can be detected algebraically. Lift a cotangent basis of the local ideal. Nakayama and faithful exact completion DR1 show that its <span class="math" data-tex="\(c\)">\(c\)</span> lifts generate the local ideal. Their Koszul complex becomes exact on completion by the coordinate description; its finite homology modules are therefore zero before completion. The dual Koszul complex is the same exterior complex in reversed degrees, up to the signs of (CD2), and has cohomology only in degree <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>Any two finite free resolutions of a module on this local affine neighbourhood are homotopy equivalent. Lift their augmentations recursively using freeness and exactness; lift the differences recursively to give the homotopies of their composites with the identity. Applying <span class="math" data-tex="\(\operatorname{Hom}(-,\omega)\)">\(\operatorname{Hom}(-,\omega)\)</span> preserves these homotopies. Thus the local cohomology of (CD8) is the same as for the dual Koszul complex. It vanishes outside degree <span class="math" data-tex="\(c\)">\(c\)</span>. The assertion at all points follows because a nonzero coherent cohomology sheaf would have a closed point in its support, by B1. Its degree-<span class="math" data-tex="\(c\)">\(c\)</span> cohomology sheaf is coherent.</p>
+<p>For <span class="math" data-tex="\(r\)">\(r\)</span> sufficiently large, Serre vanishing PF8 applies to the finitely many terms, cycles, boundaries and cohomology sheaves of <span class="math" data-tex="\(G^\bullet(r)\)">\(G^\bullet(r)\)</span>. Their positive cohomology groups all vanish. Short exact sequences for cycles and boundaries then show directly that its Čech total cohomology is the cohomology of its global-sections complex, and is concentrated in degree <span class="math" data-tex="\(c\)">\(c\)</span>: taking global sections of those short exact sequences is exact. CD2, applied to <span class="math" data-tex="\(F^\bullet(-r)\)">\(F^\bullet(-r)\)</span>, now gives</p>
+<span class="math math-display" data-tex="\[
+       H^i(X,H^{-r})^\vee
+          \simeq \mathbb H^{N-i}(G^\bullet(r))=0
+             \quad\text{if }N-i\ne c .
+       \tag{CD9}
+\]">\[
+       H^i(X,H^{-r})^\vee
+          \simeq \mathbb H^{N-i}(G^\bullet(r))=0
+             \quad\text{if }N-i\ne c .
+       \tag{CD9}
+\]</span>
+<p>This proves (CD7), with no general duality premise.</p>
+<p>For a nonzero section with zero divisor <span class="math" data-tex="\(Y\)">\(Y\)</span>, the integral scheme <span class="math" data-tex="\(X\)">\(X\)</span> makes its equation regular, so</p>
+<span class="math math-display" data-tex="\[
+ 0\longrightarrow H^{-r}\longrightarrow\mathcal O_X
+                    \longrightarrow\mathcal O_Y\longrightarrow0 .
+ \tag{CD10}
+\]">\[
+ 0\longrightarrow H^{-r}\longrightarrow\mathcal O_X
+                    \longrightarrow\mathcal O_Y\longrightarrow0 .
+ \tag{CD10}
+\]</span>
+<p>If <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, (CD7) in degrees zero and one, and the constant-function theorem FC20, give <span class="math" data-tex="\(H^0(Y,\mathcal O_Y)=K\)">\(H^0(Y,\mathcal O_Y)=K\)</span>. The same holds after algebraic closure. Hence <span class="math" data-tex="\(Y\)">\(Y\)</span> is nonempty and geometrically connected: a disconnected decomposition would produce a nonconstant idempotent global function. If <span class="math" data-tex="\(Y\)">\(Y\)</span> is smooth, its geometric local rings are domains by the all-dimensional formal-coordinate argument just proved; different irreducible components cannot meet. There are finitely many components, so connectedness makes there be just one. The same domain argument gives reducedness. Thus <span class="math" data-tex="\(Y\)">\(Y\)</span> is geometrically integral. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2m-4-prescribed-jets-and-uniform-freedom-away-from-the-marks">2M.4. Prescribed jets and uniform freedom away from the marks</h4>
+<p><strong>CD4.</strong> Let <span class="math" data-tex="\(X\hookrightarrow\mathbf P^N_K\)">\(X\hookrightarrow\mathbf P^N_K\)</span> be smooth projective, let <span class="math" data-tex="\(P_1,\ldots,P_s\)">\(P_1,\ldots,P_s\)</span> be distinct <span class="math" data-tex="\(K\)">\(K\)</span>-points with <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>, and put <span class="math" data-tex="\(Z=\coprod_i\operatorname{Spec}(\mathcal O_{X,P_i}/\mathfrak m_{P_i}^2)\)">\(Z=\coprod_i\operatorname{Spec}(\mathcal O_{X,P_i}/\mathfrak m_{P_i}^2)\)</span>. For all sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>, any specified first jets at the <span class="math" data-tex="\(P_i\)">\(P_i\)</span> are the jets of a section of <span class="math" data-tex="\(H^r\)">\(H^r\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+ V_r=H^0(X,\mathcal I_ZH^r)\longrightarrow
+             H^r_x/\mathfrak m_x^2H^r_x
+ \tag{CD11}
+\]">\[
+ V_r=H^0(X,\mathcal I_ZH^r)\longrightarrow
+             H^r_x/\mathfrak m_x^2H^r_x
+ \tag{CD11}
+\]</span>
+<p>is surjective after extension to a geometric residue field, at every geometric point <span class="math" data-tex="\(x\notin\{P_i\}\)">\(x\notin\{P_i\}\)</span>, provided <span class="math" data-tex="\(r\ge2s+1\)">\(r\ge2s+1\)</span>.</p>
+<p>The first assertion follows from the exact sequence with quotient <span class="math" data-tex="\(H^r|_Z\)">\(H^r|_Z\)</span> and Serre vanishing <span class="math" data-tex="\(H^1(X,\mathcal I_ZH^r)=0\)">\(H^1(X,\mathcal I_ZH^r)=0\)</span>, proved in PF8. This is a finite closed scheme <span class="math" data-tex="\(Z\)">\(Z\)</span>, so its section space is exactly the direct sum of the specified finite jet spaces.</p>
+<p>For the uniform assertion, work over an algebraic closure and fix <span class="math" data-tex="\(x\ne P_i\)">\(x\ne P_i\)</span>. For each <span class="math" data-tex="\(i\)">\(i\)</span>, choose a hyperplane equation <span class="math" data-tex="\(l_i\)">\(l_i\)</span> vanishing at <span class="math" data-tex="\(P_i\)">\(P_i\)</span> and nonzero at <span class="math" data-tex="\(x\)">\(x\)</span>. Such an equation exists because the projective embedding separates the two points. Choose a coordinate linear form <span class="math" data-tex="\(h\)">\(h\)</span> nonzero at <span class="math" data-tex="\(x\)">\(x\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+ b=\left(\prod_{i=1}^s l_i^2\right)h^{\,r-2s-1}
+ \tag{CD12}
+\]">\[
+ b=\left(\prod_{i=1}^s l_i^2\right)h^{\,r-2s-1}
+ \tag{CD12}
+\]</span>
+<p>is a degree-<span class="math" data-tex="\((r-1)\)">\((r-1)\)</span> section, vanishes to order at least two at every mark, and is a unit in a local frame at <span class="math" data-tex="\(x\)">\(x\)</span>. Multiplying it by all coordinate linear forms gives sections in <span class="math" data-tex="\(V_r\)">\(V_r\)</span>.</p>
+<p>Those linear forms span the full first-jet space of <span class="math" data-tex="\(H\)">\(H\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>: the form <span class="math" data-tex="\(h\)">\(h\)</span> supplies the value, and the differences <span class="math" data-tex="\(l-(l/h)(x)h\)">\(l-(l/h)(x)h\)</span>, divided by <span class="math" data-tex="\(h\)">\(h\)</span>, generate the cotangent space because the affine coordinate functions of a closed embedding generate its local algebra. Multiplication by the unit <span class="math" data-tex="\(b\)">\(b\)</span> is an invertible linear map on the local algebra modulo <span class="math" data-tex="\(\mathfrak m_x^2\)">\(\mathfrak m_x^2\)</span>. Thus these products span all first jets in (CD11). In a smooth <span class="math" data-tex="\(n\)">\(n\)</span>-fold that jet space has dimension <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. This proof uses squares to preserve the marked jets in every characteristic, not a division by <span class="math" data-tex="\(2\)">\(2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2m-5-a-smooth-integral-section-with-fixed-tangent-constraints">2M.5. A smooth integral section with fixed tangent constraints</h4>
+<p><strong>CD5.</strong> Assume <span class="math" data-tex="\(K\)">\(K\)</span> infinite, <span class="math" data-tex="\(X/K\)">\(X/K\)</span> smooth projective geometrically integral of dimension <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, and <span class="math" data-tex="\(P_i\)">\(P_i\)</span> as above. Choose nonzero covectors <span class="math" data-tex="\(\alpha_i\in T_{P_i}^*X\)">\(\alpha_i\in T_{P_i}^*X\)</span>. For sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>, after choosing frames of <span class="math" data-tex="\(H^r\)">\(H^r\)</span> at the marks, there is a section <span class="math" data-tex="\(s\)">\(s\)</span> whose zero divisor <span class="math" data-tex="\(Y\)">\(Y\)</span> is smooth geometrically integral and satisfies</p>
+<span class="math math-display" data-tex="\[
+ s(P_i)=0,\qquad ds(P_i)=\alpha_i,\qquad
+                T_{P_i}Y=\ker\alpha_i .
+ \tag{CD13}
+\]">\[
+ s(P_i)=0,\qquad ds(P_i)=\alpha_i,\qquad
+                T_{P_i}Y=\ker\alpha_i .
+ \tag{CD13}
+\]</span>
+<p>The derivative at a zero of a line-bundle section is well-defined with values in that line's fibre; the chosen frame identifies it with the displayed covector.</p>
+<p>Choose <span class="math" data-tex="\(r\)">\(r\)</span> so that CD3 and CD4 apply. The sections with the prescribed jets form a nonempty affine space</p>
+<span class="math math-display" data-tex="\[
+       W=s_0+V_r,\qquad M=\dim_KV_r .
+       \tag{CD14}
+\]">\[
+       W=s_0+V_r,\qquad M=\dim_KV_r .
+       \tag{CD14}
+\]</span>
+<p>We verify that the bad sections lie in a proper closed subset of <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>On an affine smooth chart with local parameters <span class="math" data-tex="\(u_1,\ldots,u_n\)">\(u_1,\ldots,u_n\)</span> and a frame for <span class="math" data-tex="\(H^r\)">\(H^r\)</span>, write the universal section as <span class="math" data-tex="\(f(x,w)\)">\(f(x,w)\)</span>. The differentials <span class="math" data-tex="\(du_j\)">\(du_j\)</span> form a basis, so its coefficients <span class="math" data-tex="\(\partial f/\partial u_j\)">\(\partial f/\partial u_j\)</span> are regular functions. The locus</p>
+<span class="math math-display" data-tex="\[
+ \Sigma:\quad f=\frac{\partial f}{\partial u_1}
+                  =\cdots=\frac{\partial f}{\partial u_n}=0
+             \quad\subset X\times_KW
+ \tag{CD15}
+\]">\[
+ \Sigma:\quad f=\frac{\partial f}{\partial u_1}
+                  =\cdots=\frac{\partial f}{\partial u_n}=0
+             \quad\subset X\times_KW
+ \tag{CD15}
+\]</span>
+<p>glues to a closed locus: changing parameters changes the derivative coefficients by an invertible matrix, and changing frame adds multiples of <span class="math" data-tex="\(f\)">\(f\)</span> to those coefficients. By the standard Jacobian chart SF3, a section's zero scheme is smooth of dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span> exactly where its value vanishes and not all these derivatives vanish. At a mark, the fixed nonzero <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> excludes <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>, for every parameter value.</p>
+<p>Away from the marks, CD4 says that value and all <span class="math" data-tex="\(n\)">\(n\)</span> derivatives are independent affine linear conditions on <span class="math" data-tex="\(W\)">\(W\)</span>. More explicitly, on an open where one <span class="math" data-tex="\((n+1)\)">\((n+1)\)</span>-column minor of the jet matrix of <span class="math" data-tex="\(V_r\)">\(V_r\)</span> is invertible, solve for those <span class="math" data-tex="\(n+1\)">\(n+1\)</span> parameter coordinates. The restriction of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is an affine-space bundle of rank <span class="math" data-tex="\(M-n-1\)">\(M-n-1\)</span> over that open of <span class="math" data-tex="\(X\)">\(X\)</span>. Such opens cover, by the rank assertion and B1. Thus every component of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> has dimension at most</p>
+<span class="math math-display" data-tex="\[
+                  n+M-n-1=M-1 .
+                  \tag{CD16}
+\]">\[
+                  n+M-n-1=M-1 .
+                  \tag{CD16}
+\]</span>
+<p>The dimension calculation uses the actual local affine-bundle coordinates and GQ1's dimension-as-transcendence-degree proof.</p>
+<p>The projection <span class="math" data-tex="\(X\times W\to W\)">\(X\times W\to W\)</span> is proper, hence the image of the closed <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is closed. Its dimension is at most <span class="math" data-tex="\(M-1\)">\(M-1\)</span>: on an irreducible component dominating an image component, the induced injection of function fields bounds transcendence degree. Therefore the image is a proper closed subset of the <span class="math" data-tex="\(M\)">\(M\)</span>-dimensional affine space <span class="math" data-tex="\(W\)">\(W\)</span>. Its complement is a nonempty open defined over <span class="math" data-tex="\(K\)">\(K\)</span>. It has a <span class="math" data-tex="\(K\)">\(K\)</span>-point because <span class="math" data-tex="\(K\)">\(K\)</span> is infinite: a nonzero polynomial cannot vanish on all <span class="math" data-tex="\(K^M\)">\(K^M\)</span>, by induction on the variables; a nonempty open contains a principal open defined by such a polynomial.</p>
+<p>Take the section at that point. It is nonzero, since it has a specified nonzero derivative at every mark. Its zero divisor is smooth, satisfies (CD13), and is geometrically integral by CD3. All the smoothness and connectedness assertions were checked after geometric scalar extension, so they apply even if the infinite field <span class="math" data-tex="\(K\)">\(K\)</span> is imperfect. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2m-6-one-curve-with-finitely-many-prescribed-tangent-lines">2M.6. One curve with finitely many prescribed tangent lines</h4>
+<p><strong>CD6.</strong> Over an infinite field <span class="math" data-tex="\(K\)">\(K\)</span>, let <span class="math" data-tex="\(X/K\)">\(X/K\)</span> be smooth projective geometrically integral, of dimension <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Given distinct <span class="math" data-tex="\(K\)">\(K\)</span>-points <span class="math" data-tex="\(P_i\)">\(P_i\)</span> and lines <span class="math" data-tex="\(L_i\subset T_{P_i}X\)">\(L_i\subset T_{P_i}X\)</span>, there is a smooth projective geometrically integral curve <span class="math" data-tex="\(C\hookrightarrow X\)">\(C\hookrightarrow X\)</span> through the marks, with</p>
+<span class="math math-display" data-tex="\[
+                         T_{P_i}C=L_i .
+                         \tag{CD17}
+\]">\[
+                         T_{P_i}C=L_i .
+                         \tag{CD17}
+\]</span>
+<p>In each <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional marked tangent space choose a complete flag ending in <span class="math" data-tex="\(L_i\)">\(L_i\)</span>. Apply CD5 with covectors whose kernels are the next <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-dimensional flag spaces. It gives one smooth geometrically integral divisor with exactly those tangent spaces. Its restricted hyperplane line remains very ample, because it is still closed in the original projective space. Repeat on this divisor, choosing new sufficiently large powers at each stage and the next flag covectors. Until dimension one, the ambient dimension at each cut is at least two, so CD3's connectedness applies. After <span class="math" data-tex="\(n-1\)">\(n-1\)</span> steps the result is the stated single curve. Every cut is an actual closed divisor, with the prescribed tangent kernels; no component is selected or discarded.</p>
+<p>Apply this over the separable closure <span class="math" data-tex="\(K=k^{\mathrm{sep}}\)">\(K=k^{\mathrm{sep}}\)</span> to <span class="math" data-tex="\(A_K\)">\(A_K\)</span>. This field is infinite. The smooth <span class="math" data-tex="\(A_K\)">\(A_K\)</span> has infinitely many <span class="math" data-tex="\(K\)">\(K\)</span>-points when <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>: a standard étale chart maps to an open of <span class="math" data-tex="\(\mathbf A^a_K\)">\(\mathbf A^a_K\)</span>; every nonempty finite étale fibre over a <span class="math" data-tex="\(K\)">\(K\)</span>-point splits over the separably closed field, and the open has infinitely many <span class="math" data-tex="\(K\)">\(K\)</span>-points. Choose distinct <span class="math" data-tex="\(P_1,\ldots,P_a\in A(K)\)">\(P_1,\ldots,P_a\in A(K)\)</span>, a basis <span class="math" data-tex="\(v_1,\ldots,v_a\)">\(v_1,\ldots,v_a\)</span> of <span class="math" data-tex="\(\operatorname{Lie}(A_K)=T_0A_K\)">\(\operatorname{Lie}(A_K)=T_0A_K\)</span>, and the translated tangent lines</p>
+<span class="math math-display" data-tex="\[
+            L_i=d(t_{P_i})_0(Kv_i)\subset T_{P_i}A_K .
+            \tag{CD18}
+\]">\[
+            L_i=d(t_{P_i})_0(Kv_i)\subset T_{P_i}A_K .
+            \tag{CD18}
+\]</span>
+<p>For <span class="math" data-tex="\(a\ge2\)">\(a\ge2\)</span>, construct <span class="math" data-tex="\(C\)">\(C\)</span> with these tangent lines by the preceding argument. All equations of its finitely many cuts, the marked points, the vectors and the witnessing nonzero minors involve finitely many elements of <span class="math" data-tex="\(k^{\mathrm{sep}}\)">\(k^{\mathrm{sep}}\)</span>. They lie in one finite separable extension <span class="math" data-tex="\(E/k\)">\(E/k\)</span>. The same equations define <span class="math" data-tex="\(C\hookrightarrow A_E\)">\(C\hookrightarrow A_E\)</span>, the points and the tangent identities there. Smoothness and geometric integrality hold over <span class="math" data-tex="\(E\)">\(E\)</span>, since they hold after the algebraic closure and these equations base change to the constructed curve. Put <span class="math" data-tex="\(P=P_1\)">\(P=P_1\)</span>, and use the pointed map <span class="math" data-tex="\(f:C\to A_E\)">\(f:C\to A_E\)</span>, <span class="math" data-tex="\(R\mapsto R-P\)">\(R\mapsto R-P\)</span>.</p>
+<p>If <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, take <span class="math" data-tex="\(C=A\)">\(C=A\)</span>, <span class="math" data-tex="\(P=0\)">\(P=0\)</span>, <span class="math" data-tex="\(f=\operatorname{id}\)">\(f=\operatorname{id}\)</span>, with no cuts. If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, CU7's dimension-zero argument gives <span class="math" data-tex="\(A=\operatorname{Spec}k\)">\(A=\operatorname{Spec}k\)</span>; take <span class="math" data-tex="\(C=\mathbf P^1_k\)">\(C=\mathbf P^1_k\)</span>, whose Jacobian is a point by Exercise 2K. These choices prove the same existence assertion in the boundary dimensions. In particular no assertion that an open has a point over the original finite field is needed; the finite separable extension is part of the construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2m-7-an-invertible-sum-jacobian-and-the-surjective-homomorphism">2M.7. An invertible sum Jacobian and the surjective homomorphism</h4>
+<p><strong>CD7.</strong> The pointed map <span class="math" data-tex="\(f\)">\(f\)</span> in CD6 induces (CD1), and that homomorphism is smooth. For <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span>, the actual sum map</p>
+<span class="math math-display" data-tex="\[
+ F:C^a\longrightarrow A_E,\qquad
+     (R_1,\ldots,R_a)\longmapsto\sum_{j=1}^a f(R_j)
+ \tag{CD19}
+\]">\[
+ F:C^a\longrightarrow A_E,\qquad
+     (R_1,\ldots,R_a)\longmapsto\sum_{j=1}^a f(R_j)
+ \tag{CD19}
+\]</span>
+<p>is surjective and generically finite separable.</p>
+<p>For <span class="math" data-tex="\(a\ge2\)">\(a\ge2\)</span>, identify the tangent spaces of <span class="math" data-tex="\(A_E\)">\(A_E\)</span> with <span class="math" data-tex="\(\operatorname{Lie}A_E\)">\(\operatorname{Lie}A_E\)</span> by translation to the origin. The differential of addition at the origin is addition on tangent vectors: its restrictions to the two axes are the identity, and a linear map on their direct sum is determined by those restrictions. Translation gives the same rule at every tuple of points. At the marked tuple <span class="math" data-tex="\(\mathbf P=(P_1,\ldots,P_a)\)">\(\mathbf P=(P_1,\ldots,P_a)\)</span>, (CD17)–(CD18) therefore identify <span class="math" data-tex="\(dF\)">\(dF\)</span> with</p>
+<span class="math math-display" data-tex="\[
+ E^a\xrightarrow{\sim}\operatorname{Lie}A_E,\qquad
+               (c_1,\ldots,c_a)\longmapsto\sum_i c_iv_i .
+               \tag{CD20}
+\]">\[
+ E^a\xrightarrow{\sim}\operatorname{Lie}A_E,\qquad
+               (c_1,\ldots,c_a)\longmapsto\sum_i c_iv_i .
+               \tag{CD20}
+\]</span>
+<p>It is an isomorphism. Both source and target are smooth of dimension <span class="math" data-tex="\(a\)">\(a\)</span>. In their standard smooth coordinates, the invertible matrix in (CD20) makes <span class="math" data-tex="\(F\)">\(F\)</span> étale on a neighbourhood of <span class="math" data-tex="\(\mathbf P\)">\(\mathbf P\)</span>: combine its coordinate functions with the defining smooth-chart equations, and the full gradient minor is invertible, giving a relative-dimension-zero chart SF3 and its flatness from EA1–EA18.</p>
+<p>Étale maps are open by the earlier EA proof. Thus <span class="math" data-tex="\(F\)">\(F\)</span> has image containing a nonempty open in the integral <span class="math" data-tex="\(A_E\)">\(A_E\)</span>, and is dominant. It is proper because its source is projective and its target separated. Its image is closed, so it is all of <span class="math" data-tex="\(A_E\)">\(A_E\)</span>. Equality of the dimensions and GQ1 give a finite algebraic extension of function fields. The nonempty étale source open contains the generic point of the integral <span class="math" data-tex="\(C^a\)">\(C^a\)</span>, so that field extension is separable. For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, CD6 chose <span class="math" data-tex="\(F=\operatorname{id}_A\)">\(F=\operatorname{id}_A\)</span>, giving the same conclusions directly.</p>
+<p>By AL5 there is a unique homomorphism <span class="math" data-tex="\(\Phi:J_C\to A_E\)">\(\Phi:J_C\to A_E\)</span> with <span class="math" data-tex="\(\Phi i_P=f\)">\(\Phi i_P=f\)</span>. Its composition with the sum of the <span class="math" data-tex="\(a\)">\(a\)</span> maps <span class="math" data-tex="\(i_P\)">\(i_P\)</span> is <span class="math" data-tex="\(F\)">\(F\)</span>, an equality of morphisms on all parameter schemes by (AL14). Surjectivity of <span class="math" data-tex="\(F\)">\(F\)</span> makes <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> surjective.</p>
+<p>The differential of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is surjective at the image in <span class="math" data-tex="\(J_C\)">\(J_C\)</span> of <span class="math" data-tex="\(\mathbf P\)">\(\mathbf P\)</span>, because its composition with the differential of that sum map is the isomorphism (CD20). The homomorphism identity and translation make <span class="math" data-tex="\(d\Phi_0\)">\(d\Phi_0\)</span> surjective as well. For a map between smooth varieties, this gives a smooth chart of relative dimension <span class="math" data-tex="\(g_C-a\)">\(g_C-a\)</span>: choose <span class="math" data-tex="\(g_C-a\)">\(g_C-a\)</span> additional source coordinates complementary to the independent target coordinate differentials, and apply the same invertible-Jacobian argument to the map into <span class="math" data-tex="\(A_E\times\mathbf A^{g_C-a}\)">\(A_E\times\mathbf A^{g_C-a}\)</span>. Its composition with the smooth projection is <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p>After algebraic closure, translation takes this smooth chart to a chart at every closed point of <span class="math" data-tex="\(J_C\)">\(J_C\)</span>. The nonsmooth closed complement, if nonempty, would have a closed point by B1, so there is none. Smoothness descends by SF1–SF3 and FD1–FD4. This proves that <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is smooth and surjective, with the stated relative dimension. The case <span class="math" data-tex="\(a=0\)">\(a=0\)</span> is the map between points already constructed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2m-8-the-full-kernel-components-and-the-rational-tate-sequence">2M.8. The full kernel, components and the rational Tate sequence</h4>
+<p><strong>CD8.</strong> Let <span class="math" data-tex="\(K=\ker\Phi\)">\(K=\ker\Phi\)</span>. It is a smooth proper group scheme of dimension <span class="math" data-tex="\(g_C-a\)">\(g_C-a\)</span>, and (CD1) is an actual faithfully flat quotient:</p>
+<span class="math math-display" data-tex="\[
+ K\times_EJ_C\xrightarrow{\sim}J_C\times_{A_E}J_C,\quad
+       (h,x)\longmapsto(x+h,x),\qquad
+ 0\longrightarrow K\longrightarrow J_C
+               \xrightarrow{\Phi}A_E\longrightarrow0 .
+ \tag{CD21}
+\]">\[
+ K\times_EJ_C\xrightarrow{\sim}J_C\times_{A_E}J_C,\quad
+       (h,x)\longmapsto(x+h,x),\qquad
+ 0\longrightarrow K\longrightarrow J_C
+               \xrightarrow{\Phi}A_E\longrightarrow0 .
+ \tag{CD21}
+\]</span>
+<p>Exactness in the second display is for the faithfully flat topology, not an assertion that every original-field point lifts.</p>
+<p>The kernel is the base change of the identity along the smooth proper <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>; hence it is smooth and proper, of that relative dimension. The first map in (CD21) has inverse <span class="math" data-tex="\((y,x)\mapsto(y-x,x)\)">\((y,x)\mapsto(y-x,x)\)</span> on every scheme, giving an actual inverse of schemes. Smooth surjectivity is faithfully flat and locally of finite presentation; properness makes it quasi-compact. Thus this cover itself gives local lifts and proves the asserted quotient exactness.</p>
+<p>Over an algebraic closure <span class="math" data-tex="\(\bar E\)">\(\bar E\)</span>, write <span class="math" data-tex="\(K^0\)">\(K^0\)</span> for the connected component of the origin. CD3's all-dimensional formal-coordinate argument makes the local rings of the smooth Noetherian <span class="math" data-tex="\(K\)">\(K\)</span> domains. Its finitely many irreducible components are therefore disjoint and open, so its connected components are integral. Translation identifies the component through a point with the translate of <span class="math" data-tex="\(K^0\)">\(K^0\)</span>. Multiplication and inverse preserve <span class="math" data-tex="\(K^0\)">\(K^0\)</span>: their connected images contain the origin. The product is connected because the field Čech calculation gives <span class="math" data-tex="\(H^0(K^0\times K^0,\mathcal O)=\bar E\)">\(H^0(K^0\times K^0,\mathcal O)=\bar E\)</span> from <span class="math" data-tex="\(H^0(K^0,\mathcal O)=\bar E\)">\(H^0(K^0,\mathcal O)=\bar E\)</span>, so it has no nontrivial idempotent; this is also the degree-zero case of CU2. Thus <span class="math" data-tex="\(K^0\)">\(K^0\)</span> is an abelian variety of dimension <span class="math" data-tex="\(g_C-a\)">\(g_C-a\)</span>, and the components form a finite group</p>
+<span class="math math-display" data-tex="\[
+                \Pi=K(\bar E)/K^0(\bar E),\qquad N=|\Pi|.
+                \tag{CD22}
+\]">\[
+                \Pi=K(\bar E)/K^0(\bar E),\qquad N=|\Pi|.
+                \tag{CD22}
+\]</span>
+<p>Every component has a <span class="math" data-tex="\(\bar E\)">\(\bar E\)</span>-point by B1. The group is therefore exactly the set of geometric components, with its indicated cosets. The origin component is stable under every element of <span class="math" data-tex="\(G_E\)">\(G_E\)</span>.</p>
+<p>For <span class="math" data-tex="\(\ell\ne\operatorname{char}E\)">\(\ell\ne\operatorname{char}E\)</span>, the actual homomorphisms give</p>
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ N\,T_\ell(A_E)\subset
+       \operatorname{image}\bigl(T_\ell(J_C)\to T_\ell(A_E)\bigr),\\
+ 0\longrightarrow V_\ell(K^0)\longrightarrow V_\ell(J_C)
+            \longrightarrow V_\ell(A_E)\longrightarrow0 .
+ \end{gathered}
+ \tag{CD23}
+\]">\[
+ \begin{gathered}
+ N\,T_\ell(A_E)\subset
+       \operatorname{image}\bigl(T_\ell(J_C)\to T_\ell(A_E)\bigr),\\
+ 0\longrightarrow V_\ell(K^0)\longrightarrow V_\ell(J_C)
+            \longrightarrow V_\ell(A_E)\longrightarrow0 .
+ \end{gathered}
+ \tag{CD23}
+\]</span>
+<p>These are <span class="math" data-tex="\(G_E\)">\(G_E\)</span>-stable assertions; the action on <span class="math" data-tex="\(K^0\)">\(K^0\)</span>'s geometric torsion is the restricted action on <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>To prove the first, take <span class="math" data-tex="\(b\in A_E[\ell^r](\bar E)\)">\(b\in A_E[\ell^r](\bar E)\)</span> and lift it to <span class="math" data-tex="\(x\in J_C(\bar E)\)">\(x\in J_C(\bar E)\)</span>, using surjectivity and a closed point in the geometric fibre. Then <span class="math" data-tex="\(\ell^rx\in K\)">\(\ell^rx\in K\)</span>, so <span class="math" data-tex="\(N\ell^rx\in K^0\)">\(N\ell^rx\in K^0\)</span>, since the finite group <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> is killed by its order. By CU8 choose <span class="math" data-tex="\(y\in K^0(\bar E)\)">\(y\in K^0(\bar E)\)</span> with <span class="math" data-tex="\(\ell^ry=N\ell^rx\)">\(\ell^ry=N\ell^rx\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+       z=Nx-y\in J_C[\ell^r](\bar E),\qquad \Phi(z)=Nb .
+       \tag{CD24}
+\]">\[
+       z=Nx-y\in J_C[\ell^r](\bar E),\qquad \Phi(z)=Nb .
+       \tag{CD24}
+\]</span>
+<p>For a compatible sequence <span class="math" data-tex="\(b_r\)">\(b_r\)</span>, these levelwise lifts give compatible lifts of every finite initial segment by projecting any lift at its highest level. The sets of such finite segments are finite and nonempty. Their inverse limit is nonempty by the finite-product compactness argument of Lesson 1: the finitely many compatibility equations have the finite-intersection property. This supplies a compatible lift of <span class="math" data-tex="\(Nb_r\)">\(Nb_r\)</span>, proving the first line of (CD23), not just its levelwise analogue.</p>
+<p>If <span class="math" data-tex="\((x_r)\in T_\ell(J_C)\)">\((x_r)\in T_\ell(J_C)\)</span> maps to zero, all <span class="math" data-tex="\(x_r\)">\(x_r\)</span> lie in <span class="math" data-tex="\(K\)">\(K\)</span>. Their component classes <span class="math" data-tex="\(\xi_r\in\Pi\)">\(\xi_r\in\Pi\)</span> are killed by <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span> and satisfy <span class="math" data-tex="\(\ell\xi_{r+1}=\xi_r\)">\(\ell\xi_{r+1}=\xi_r\)</span>. They lie in the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-primary subgroup of the finite <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>, killed by some <span class="math" data-tex="\(\ell^e\)">\(\ell^e\)</span>. Hence <span class="math" data-tex="\(\xi_r=\ell^e\xi_{r+e}=0\)">\(\xi_r=\ell^e\xi_{r+e}=0\)</span>. Thus every <span class="math" data-tex="\(x_r\)">\(x_r\)</span> lies in <span class="math" data-tex="\(K^0\)">\(K^0\)</span>, proving the exact integral kernel <span class="math" data-tex="\(T_\ell(K^0)\)">\(T_\ell(K^0)\)</span>. CU9 makes all three Tate modules finite free. Tensoring with <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span> and using the first line of (CD23), where <span class="math" data-tex="\(N\)">\(N\)</span> becomes invertible, proves its exact rational sequence.</p>
+<p>If <span class="math" data-tex="\(\ell\nmid N\)">\(\ell\nmid N\)</span>, the Tate map is already onto integrally. For primes dividing <span class="math" data-tex="\(N\)">\(N\)</span>, we assert only that its cokernel is killed by <span class="math" data-tex="\(N\)">\(N\)</span>. In particular (CD23) does not choose a Galois-equivariant splitting or a complementary abelian variety. If <span class="math" data-tex="\(g_C=a\)">\(g_C=a\)</span>, the smooth proper zero-dimensional kernel is finite étale, and the proper finite-fibres theorem makes <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> an isogeny. In general its positive-dimensional kernel must be handled by the required reducibility argument before the already proved isogeny-transfer theorem can be applied.</p>
+<p>CD1–CD8 constructs the curve and its smooth surjective Jacobian homomorphism after a finite separable extension in every characteristic. Reducibility, semistable curve geometry and the initial formal/analytic period cover remain separate proof obligations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h4 id="2m-9-graded-exercise-connected-sections-and-dominating-curves">2M.9. Graded exercise: connected sections and dominating curves</h4>
+<p><strong>Exercise 2M (100 points; ten parts of 10 points).</strong> Use the actual constructions CD1–CD8.</p>
+<ol>
+<li>Write the Koszul resolution of <span class="math" data-tex="\(K\)">\(K\)</span> over <span class="math" data-tex="\(K[x,y,z]\)">\(K[x,y,z]\)</span>, including its matrices and signs. Compute its reduction modulo <span class="math" data-tex="\((x,y,z)\)">\((x,y,z)\)</span> and explain the length bound for a minimal graded resolution.</li>
+<li>Give dual monomial bases for <span class="math" data-tex="\(H^0(\mathbf P^2,\mathcal O(2))\)">\(H^0(\mathbf P^2,\mathcal O(2))\)</span> and <span class="math" data-tex="\(H^2(\mathbf P^2,\mathcal O(-5))\)">\(H^2(\mathbf P^2,\mathcal O(-5))\)</span>, using (CD5). Compute <span class="math" data-tex="\(\dim H^3(\mathbf P^3,\mathcal O(-7))\)">\(\dim H^3(\mathbf P^3,\mathcal O(-7))\)</span>. State why the same calculation applies to a finite complex of twists.</li>
+<li>Let <span class="math" data-tex="\(X\subset\mathbf P^3_K\)">\(X\subset\mathbf P^3_K\)</span> be a smooth geometrically integral hypersurface of degree <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. Prove directly that <span class="math" data-tex="\(H^0(X,\mathcal O_X(-r))=H^1(X,\mathcal O_X(-r))=0\)">\(H^0(X,\mathcal O_X(-r))=H^1(X,\mathcal O_X(-r))=0\)</span> for every <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Deduce connectedness and integrality of a smooth positive-degree section. Identify the degree-one cohomology sheaf of its dual resolution.</li>
+<li>In the affine plane, mark <span class="math" data-tex="\((0,0),(1,0)\)">\((0,0),(1,0)\)</span>, and put <span class="math" data-tex="\(q=x^2(x-1)^2\)">\(q=x^2(x-1)^2\)</span>. Compute the first-jet matrix at a point <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> of the three polynomials <span class="math" data-tex="\(q,xq,yq\)">\(q,xq,yq\)</span>, its determinant, and its behaviour in characteristic two. Give a point in <span class="math" data-tex="\(\mathbf F_4\)">\(\mathbf F_4\)</span> where <span class="math" data-tex="\(q\ne0\)">\(q\ne0\)</span>.</li>
+<li>A smooth threefold and a section parameter space <span class="math" data-tex="\(W=\mathbf A^{12}\)">\(W=\mathbf A^{12}\)</span> satisfy CD4's jet-surjectivity. Compute the dimension of the section parameters singular at a fixed unmarked point and the dimension bound for the entire singular incidence. Explain why the bad-parameter image is closed here.</li>
+<li>On a smooth fourfold, prescribe four marked tangent lines corresponding under translation to <span class="math" data-tex="\(e_1,e_2,e_3,e_4\)">\(e_1,e_2,e_3,e_4\)</span>. Give explicit local flags and normal covectors for all three cuts at each mark. Compute the final sum-map Jacobian. Explain which global result turns these local flags into one curve.</li>
+<li>Let <span class="math" data-tex="\(A\)">\(A\)</span> be an abelian surface, and let <span class="math" data-tex="\(C\subset A_E\)">\(C\subset A_E\)</span> have the two prescribed translated tangent axes of CD6. Prove that the resulting map <span class="math" data-tex="\(J_C\to A_E\)">\(J_C\to A_E\)</span> is smooth and onto, and state what can be concluded about <span class="math" data-tex="\(g_C\)">\(g_C\)</span>, the kernel and the generic degree of <span class="math" data-tex="\(C^2\to A_E\)">\(C^2\to A_E\)</span>.</li>
+<li>In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, compare the differential of <span class="math" data-tex="\([p]:A\to A\)">\([p]:A\to A\)</span> with the differential of the constructed <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. Why does surjectivity alone not prove smoothness or give the tangent argument (CD20)?</li>
+<li>Suppose the geometric component group in (CD22) is <span class="math" data-tex="\(\mathbf Z/6\)">\(\mathbf Z/6\)</span>. Determine the restrictions on the Tate cokernel for <span class="math" data-tex="\(\ell=2,3,5\)">\(\ell=2,3,5\)</span>, and prove the compatible component classes in the Tate kernel vanish. Distinguish an annihilator bound from an exact cokernel computation.</li>
+<li>Explain the finite separable field-extension step, including the polynomial <span class="math" data-tex="\(T^q-T\)">\(T^q-T\)</span> over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span> as a warning about rational points. Treat the case <span class="math" data-tex="\(\dim A=0\)">\(\dim A=0\)</span>, and explain why a positive-dimensional kernel in (CD21) does not yet give an isogeny decomposition.</li>
+</ol>
+<p><strong>Full solution.</strong></p>
+<ol>
+<li>
+<p>With bases <span class="math" data-tex="\((e_x,e_y,e_z)\)">\((e_x,e_y,e_z)\)</span> and <span class="math" data-tex="\((e_x\wedge e_y,e_x\wedge e_z,e_y\wedge e_z)\)">\((e_x\wedge e_y,e_x\wedge e_z,e_y\wedge e_z)\)</span>, the sequence is</p>
+<span class="math math-display" data-tex="\[
+    0\to S(-3)\xrightarrow{\ d_3\ }S(-2)^3
+      \xrightarrow{\ d_2\ }S(-1)^3
+      \xrightarrow{\ d_1\ }S\to K\to0,
+    \tag{CDX1}
+   \]">\[
+    0\to S(-3)\xrightarrow{\ d_3\ }S(-2)^3
+      \xrightarrow{\ d_2\ }S(-1)^3
+      \xrightarrow{\ d_1\ }S\to K\to0,
+    \tag{CDX1}
+   \]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+    d_1=\begin{pmatrix}x&amp;y&amp;z\end{pmatrix},\quad
+    d_2=\begin{pmatrix}-y&amp;-z&amp;0\\x&amp;0&amp;-z\\0&amp;x&amp;y\end{pmatrix},
+    \quad d_3=\begin{pmatrix}z\\ -y\\ x\end{pmatrix}.
+    \tag{CDX2}
+   \]">\[
+    d_1=\begin{pmatrix}x&amp;y&amp;z\end{pmatrix},\quad
+    d_2=\begin{pmatrix}-y&amp;-z&amp;0\\x&amp;0&amp;-z\\0&amp;x&amp;y\end{pmatrix},
+    \quad d_3=\begin{pmatrix}z\\ -y\\ x\end{pmatrix}.
+    \tag{CDX2}
+   \]</span>
+<p>Multiplying gives <span class="math" data-tex="\(d_1d_2=d_2d_3=0\)">\(d_1d_2=d_2d_3=0\)</span>, with the same cancellations in characteristic two. Exactness follows from the regular-sequence mapping-cone proof of CD1, not just those zero products. Modulo the variables all matrices are zero, and the resulting vector spaces have dimensions <span class="math" data-tex="\(1,3,3,1\)">\(1,3,3,1\)</span>. Thus they compute the four Tor groups. For any finite graded module, the double-resolution argument in CD1 identifies its minimal resolution modulo the variables with the homology of the length-three Koszul complex tensored with that module. There is no homology in higher degrees, so the higher minimal free modules are zero.</p>
+</li>
+<li>
+<p>List the six monomials <span class="math" data-tex="\(X_0^2,X_0X_1,X_0X_2,X_1^2,X_1X_2,X_2^2\)">\(X_0^2,X_0X_1,X_0X_2,X_1^2,X_1X_2,X_2^2\)</span>. The monomial <span class="math" data-tex="\(X^\alpha\)">\(X^\alpha\)</span> is paired with <span class="math" data-tex="\(X^{-\alpha-\mathbf1}\)">\(X^{-\alpha-\mathbf1}\)</span>; its pairing with that partner is one. Its pairing with another listed partner is zero: the coefficient of <span class="math" data-tex="\(X_0^{-1}X_1^{-1}X_2^{-1}\)">\(X_0^{-1}X_1^{-1}X_2^{-1}\)</span> occurs precisely when the nonnegative exponents coincide. This gives the identity <span class="math" data-tex="\(6\times6\)">\(6\times6\)</span> pairing matrix. On <span class="math" data-tex="\(\mathbf P^3\)">\(\mathbf P^3\)</span>, write the four strictly negative exponents as <span class="math" data-tex="\(-b_i-1\)">\(-b_i-1\)</span>. Their sum is <span class="math" data-tex="\(-7\)">\(-7\)</span> exactly when <span class="math" data-tex="\(\sum b_i=3\)">\(\sum b_i=3\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+       \dim H^3(\mathbf P^3,\mathcal O(-7))
+                     =\binom{6}{3}=20 .
+       \tag{CDX3}
+   \]">\[
+       \dim H^3(\mathbf P^3,\mathcal O(-7))
+                     =\binom{6}{3}=20 .
+       \tag{CDX3}
+   \]</span>
+<p>For a finite twist complex, the Čech evaluation map (CD6) respects the finite filtration by its terms. Each quotient has the just-proved perfect pairing; induction with the exact cohomology sequences gives perfection for the total complexes, with the internal Hom differential signs.</p>
+</li>
+<li>
+<p>A nonzero degree-<span class="math" data-tex="\(d\)">\(d\)</span> equation is regular in the homogeneous polynomial domain, and gives</p>
+<span class="math math-display" data-tex="\[
+    0\to\mathcal O_{\mathbf P^3}(-d-r)
+      \to\mathcal O_{\mathbf P^3}(-r)
+      \to\mathcal O_X(-r)\to0 .
+    \tag{CDX4}
+   \]">\[
+    0\to\mathcal O_{\mathbf P^3}(-d-r)
+      \to\mathcal O_{\mathbf P^3}(-r)
+      \to\mathcal O_X(-r)\to0 .
+    \tag{CDX4}
+   \]</span>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, both left terms have no <span class="math" data-tex="\(H^0\)">\(H^0\)</span>, and twists on <span class="math" data-tex="\(\mathbf P^3\)">\(\mathbf P^3\)</span> have no <span class="math" data-tex="\(H^1\)">\(H^1\)</span> or <span class="math" data-tex="\(H^2\)">\(H^2\)</span>. The long exact sequence proves the asserted zero groups. Apply <span class="math" data-tex="\(0\to\mathcal O_X(-r)\to\mathcal O_X\to\mathcal O_Y\to0\)">\(0\to\mathcal O_X(-r)\to\mathcal O_X\to\mathcal O_Y\to0\)</span> to get <span class="math" data-tex="\(H^0(Y,\mathcal O_Y)=K\)">\(H^0(Y,\mathcal O_Y)=K\)</span>, also after algebraic closure. Thus <span class="math" data-tex="\(Y\)">\(Y\)</span> is nonempty and geometrically connected. If smooth, its regular local domains make its components disjoint; connectedness forces one component, giving geometric integrality.</p>
+<p>The two-term resolution of <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> has dual into <span class="math" data-tex="\(\mathcal O_{\mathbf P^3}(-4)\)">\(\mathcal O_{\mathbf P^3}(-4)\)</span></p>
+<span class="math math-display" data-tex="\[
+        [\,\mathcal O(-4)\xrightarrow{\ F\ }
+                            \mathcal O(d-4)\,]
+        \quad\text{in degrees }0,1 .
+        \tag{CDX5}
+   \]">\[
+        [\,\mathcal O(-4)\xrightarrow{\ F\ }
+                            \mathcal O(d-4)\,]
+        \quad\text{in degrees }0,1 .
+        \tag{CDX5}
+   \]</span>
+<p>Its degree-zero kernel is zero and its degree-one cohomology sheaf is <span class="math" data-tex="\(\mathcal O_X(d-4)\)">\(\mathcal O_X(d-4)\)</span>. This explicitly illustrates the codimension-one concentration used in CD3.</p>
+</li>
+<li>
+<p>Put <span class="math" data-tex="\(q_0=q(u)\)">\(q_0=q(u)\)</span>, <span class="math" data-tex="\(q_1=q&#x27;(u)\)">\(q_1=q&#x27;(u)\)</span>. In the value,<span class="math" data-tex="\(\partial_x,\partial_y\)">\(\partial_x,\partial_y\)</span> rows, the first jets give</p>
+<span class="math math-display" data-tex="\[
+     J(u,v)=
+     \begin{pmatrix}
+        q_0&amp;u q_0&amp;v q_0\\
+        q_1&amp;q_0+u q_1&amp;v q_1\\
+        0&amp;0&amp;q_0
+     \end{pmatrix},\qquad
+                    \det J=q_0^3 .
+     \tag{CDX6}
+   \]">\[
+     J(u,v)=
+     \begin{pmatrix}
+        q_0&amp;u q_0&amp;v q_0\\
+        q_1&amp;q_0+u q_1&amp;v q_1\\
+        0&amp;0&amp;q_0
+     \end{pmatrix},\qquad
+                    \det J=q_0^3 .
+     \tag{CDX6}
+   \]</span>
+<p>Subtract <span class="math" data-tex="\(u\)">\(u\)</span> times column one from column two and <span class="math" data-tex="\(v\)">\(v\)</span> times column one from column three. The determinant is then the product of the three diagonal <span class="math" data-tex="\(q_0\)">\(q_0\)</span>'s. Each polynomial vanishes to order at least two at both marks, so these variations preserve their fixed jets.</p>
+<p>In characteristic two, <span class="math" data-tex="\(q=x^4+x^2\)">\(q=x^4+x^2\)</span> and <span class="math" data-tex="\(q&#x27;=0\)">\(q&#x27;=0\)</span>, but (CDX6) still has determinant <span class="math" data-tex="\(q_0^3\)">\(q_0^3\)</span>; the derivatives of the multiplying coordinates supply the missing directions. In <span class="math" data-tex="\(\mathbf F_4=\mathbf F_2[\omega]/(\omega^2+\omega+1)\)">\(\mathbf F_4=\mathbf F_2[\omega]/(\omega^2+\omega+1)\)</span>, one has <span class="math" data-tex="\(\omega^3=1\)">\(\omega^3=1\)</span> and</p>
+<span class="math math-display" data-tex="\[
+                         q(\omega)=1 .
+                         \tag{CDX7}
+   \]">\[
+                         q(\omega)=1 .
+                         \tag{CDX7}
+   \]</span>
+<p>Thus the matrix is invertible there. Vanishing derivative of <span class="math" data-tex="\(q\)">\(q\)</span> alone does not prevent full jet separation by <span class="math" data-tex="\(q,xq,yq\)">\(q,xq,yq\)</span>.</p>
+</li>
+<li>
+<p>A first jet on a smooth threefold has four coefficients. Surjectivity makes their vanishing four independent affine linear conditions, so the fibre of the singular incidence has dimension <span class="math" data-tex="\(12-4=8\)">\(12-4=8\)</span>. Allowing its point to vary gives dimension at most <span class="math" data-tex="\(3+8=11\)">\(3+8=11\)</span>. The incidence is closed in the product with the projective threefold, and its projection to <span class="math" data-tex="\(W\)">\(W\)</span> is proper, hence closed. Its image has dimension at most eleven by the function-field argument. Therefore its complement in the twelve-dimensional <span class="math" data-tex="\(W\)">\(W\)</span> is a nonempty open. One cannot replace the properness step by an unsupported assertion that every projection of a closed set is closed.</p>
+</li>
+<li>
+<p>At the <span class="math" data-tex="\(i\)">\(i\)</span>-th mark list the other indices as <span class="math" data-tex="\(j_1&lt;j_2&lt;j_3\)">\(j_1&lt;j_2&lt;j_3\)</span>. Use the flags</p>
+<span class="math math-display" data-tex="\[
+    E^4\supset\ker e_{j_1}^*
+     \supset\ker e_{j_1}^*\cap\ker e_{j_2}^*
+     \supset\bigcap_{h=1}^3\ker e_{j_h}^*=Ee_i .
+     \tag{CDX8}
+   \]">\[
+    E^4\supset\ker e_{j_1}^*
+     \supset\ker e_{j_1}^*\cap\ker e_{j_2}^*
+     \supset\bigcap_{h=1}^3\ker e_{j_h}^*=Ee_i .
+     \tag{CDX8}
+   \]</span>
+<p>At the successive stages use <span class="math" data-tex="\(e_{j_1}^*\)">\(e_{j_1}^*\)</span>, then the restriction of <span class="math" data-tex="\(e_{j_2}^*\)">\(e_{j_2}^*\)</span>, then the restriction of <span class="math" data-tex="\(e_{j_3}^*\)">\(e_{j_3}^*\)</span>. Each is nonzero on the current tangent space and kills the required line. CD5 realizes these fixed first jets by actual smooth integral divisors, with high powers chosen anew on each stage. CD3 preserves connectedness at all three cuts, so CD6 gives one curve. After translation to the Lie algebra, the four final line directions are the four basis vectors. The sum-map derivative is</p>
+<span class="math math-display" data-tex="\[
+                       dF_{\mathbf P}=I_4 .
+                       \tag{CDX9}
+   \]">\[
+                       dF_{\mathbf P}=I_4 .
+                       \tag{CDX9}
+   \]</span>
+<p>The local matrix alone would not produce a global curve; the proved section construction is essential.</p>
+</li>
+<li>
+<p>The map <span class="math" data-tex="\(C^2\to A_E\)">\(C^2\to A_E\)</span> has invertible derivative at the chosen pair of marks. It is therefore étale there, has image containing a nonempty open, and is onto by properness and integrality of <span class="math" data-tex="\(A_E\)">\(A_E\)</span>. It factors through <span class="math" data-tex="\(\Phi:J_C\to A_E\)">\(\Phi:J_C\to A_E\)</span> by AL5, so <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is onto. Its differential is onto because its composition with the differential of the sum of the Abel maps is that invertible matrix. Translation and the smooth-coordinate argument in CD7 prove that <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is smooth. Hence</p>
+<span class="math math-display" data-tex="\[
+                  g_C\ge2,\qquad \dim\ker\Phi=g_C-2 .
+                  \tag{CDX10}
+   \]">\[
+                  g_C\ge2,\qquad \dim\ker\Phi=g_C-2 .
+                  \tag{CDX10}
+   \]</span>
+<p>The sum map is generically finite separable of a positive degree. That degree is not determined by its being étale at one point. The genus is not asserted to be two, and the kernel is not asserted connected. If <span class="math" data-tex="\(g_C=2\)">\(g_C=2\)</span>, it is finite étale and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is an isogeny; for larger genus it has positive dimension.</p>
+</li>
+<li>
+<p>The differential of multiplication by an integer <span class="math" data-tex="\(n\)">\(n\)</span> at the origin is <span class="math" data-tex="\(nI\)">\(nI\)</span>, by adding tangent vectors. Thus <span class="math" data-tex="\(d[p]=0\)">\(d[p]=0\)</span> in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. Yet CU8 proves <span class="math" data-tex="\([p]\)">\([p]\)</span> finite flat and surjective, of degree <span class="math" data-tex="\(p^{2a}\)">\(p^{2a}\)</span>; for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> it is not étale. By contrast, the constructed <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> has surjective differential of rank <span class="math" data-tex="\(a\)">\(a\)</span>, and hence is smooth. Its differential need not be an isomorphism when <span class="math" data-tex="\(g_C&gt;a\)">\(g_C&gt;a\)</span>. Surjectivity on the underlying points alone would not distinguish these maps or justify the tangent argument.</p>
+</li>
+<li>
+<p>The Tate cokernel is killed by <span class="math" data-tex="\(N=6\)">\(N=6\)</span>. Since it is a quotient of the rank-<span class="math" data-tex="\(2a\)">\(2a\)</span> free <span class="math" data-tex="\(\mathbf Z_\ell\)">\(\mathbf Z_\ell\)</span>-module <span class="math" data-tex="\(T_\ell(A_E)\)">\(T_\ell(A_E)\)</span>, this gives</p>
+<span class="math math-display" data-tex="\[
+    \begin{array}{c|c|c}
+      \ell&amp;\text{cokernel exponent divides}&amp;\text{cokernel order at most}\\ \hline
+      2&amp;2&amp;2^{2a}\\
+      3&amp;3&amp;3^{2a}\\
+      5&amp;1&amp;1
+    \end{array}
+    \tag{CDX11}
+   \]">\[
+    \begin{array}{c|c|c}
+      \ell&amp;\text{cokernel exponent divides}&amp;\text{cokernel order at most}\\ \hline
+      2&amp;2&amp;2^{2a}\\
+      3&amp;3&amp;3^{2a}\\
+      5&amp;1&amp;1
+    \end{array}
+    \tag{CDX11}
+   \]</span>
+<p>Indeed an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-primary quotient killed by <span class="math" data-tex="\(\ell^e\)">\(\ell^e\)</span> with at most <span class="math" data-tex="\(2a\)">\(2a\)</span> generators has order at most <span class="math" data-tex="\(\ell^{2ae}\)">\(\ell^{2ae}\)</span>, by mapping <span class="math" data-tex="\((\mathbf Z/\ell^e)^{2a}\)">\((\mathbf Z/\ell^e)^{2a}\)</span> onto it. For a compatible kernel sequence, each component class <span class="math" data-tex="\(\xi_r\)">\(\xi_r\)</span> is killed by <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span>, so lies in the finite <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-primary subgroup of <span class="math" data-tex="\(\mathbf Z/6\)">\(\mathbf Z/6\)</span>. That subgroup is killed by <span class="math" data-tex="\(\ell\)">\(\ell\)</span> for <span class="math" data-tex="\(\ell=2,3\)">\(\ell=2,3\)</span>, and is zero for <span class="math" data-tex="\(\ell=5\)">\(\ell=5\)</span>. Compatibility gives <span class="math" data-tex="\(\xi_r=\ell\xi_{r+1}=0\)">\(\xi_r=\ell\xi_{r+1}=0\)</span> in the first two cases as well. This proves the exact Tate kernel <span class="math" data-tex="\(T_\ell(K^0)\)">\(T_\ell(K^0)\)</span>. The bounds do not determine a cokernel to be nonzero, nor specify its isomorphism class; they can be strict.</p>
+</li>
+<li>
+<p>The construction over <span class="math" data-tex="\(k^{\mathrm{sep}}\)">\(k^{\mathrm{sep}}\)</span> uses finitely many hyperplane coefficients, marked coordinates and derivative data. A finite list of separable algebraic elements lies in one finite separable extension <span class="math" data-tex="\(E/k\)">\(E/k\)</span>. Keeping those actual equations defines the same curve after base change and detects its geometric smoothness/integrality, as in CD6. This works for finite ground fields too. A nonempty open over a finite field need not have a point over that field:</p>
+<span class="math math-display" data-tex="\[
+          D(T^q-T)\subset\mathbf A^1_{\mathbf F_q}
+          \quad\text{is nonempty but has no }\mathbf F_q\text{-point}.
+          \tag{CDX12}
+    \]">\[
+          D(T^q-T)\subset\mathbf A^1_{\mathbf F_q}
+          \quad\text{is nonempty but has no }\mathbf F_q\text{-point}.
+          \tag{CDX12}
+    \]</span>
+<p>The polynomial has derivative <span class="math" data-tex="\(-1\)">\(-1\)</span>, so its roots are exactly the <span class="math" data-tex="\(q\)">\(q\)</span> distinct elements of <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>. Any element of <span class="math" data-tex="\(\mathbf F_{q^2}\setminus\mathbf F_q\)">\(\mathbf F_{q^2}\setminus\mathbf F_q\)</span> gives a point of the open, a finite separable extension. When <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span> is a point and <span class="math" data-tex="\(J_{\mathbf P^1}\)">\(J_{\mathbf P^1}\)</span> is a point, so the map is the identity of points.</p>
+<p>Finally a positive-dimensional kernel cannot be the finite kernel of an isogeny. Even the exact rational Tate sequence (CD23) is not a construction of a complementary abelian subvariety or a Galois-equivariant splitting. The reducibility argument must construct that additional geometry before using isogeny transfer to obtain the desired general period presentation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</li>
+</ol>
 <p><strong>Theorem 2.4 (full local abelian compatibility; remaining geometric proof obligation).</strong> For every abelian variety over a nonarchimedean local field of characteristic zero, its prime-to-residue-characteristic rational Tate modules have a common Galois-invariant Frobenius-semisimple Weil–Deligne class over <span class="math" data-tex="\(\overline{\mathbf Q}\)">\(\overline{\mathbf Q}\)</span>.</p>
-<p>The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, the remaining geometric work includes Albanese factorization and the required domination/reducibility, semistable curve and formal/analytic constructions producing the initial integral extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.</p>
+<p>The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. AL1–AL8 in §2L gives the Albanese property on full parameter schemes,finite-curve norm and pullback maps,their degree and composition identities,and the infinitesimal trace. CD1–CD8 in §2M constructs one smooth projective geometrically integral marked curve after a finite separable extension and a smooth surjective map from its Jacobian, with its full kernel and rational Tate sequence. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, the remaining geometric work includes the required reducibility, semistable curve and formal/analytic constructions producing the initial integral extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.</p>
 <p>For an elliptic curve the local classification gives every case without invoking the unproved higher-dimensional part. At good places use (6) and <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. At potentially good places use Lemma 2.3. At potentially multiplicative places use the Tate-curve proof and its quadratic descent in <em>Elliptic curves over local fields and their Weil–Deligne representations</em>, §§3–5: the common quadratic splitting character <span class="math" data-tex="\(\eta_v\)">\(\eta_v\)</span> and the common block are</p>
 <span class="math math-display" data-tex="\[
 D_v=\eta_v\otimes\mathrm{Sp}(2);

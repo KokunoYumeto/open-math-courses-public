@@ -1,0 +1,228 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Zarankiewicz formula</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Crossing numbers of complete and complete bipartite graphs)</a><a href="an-intersection-inequality-for-subspaces.html">Previous lesson</a><a href="the-lower-bound-for-complete-graphs.html">Next lesson</a><a href="src/the-zarankiewicz-formula.md">Editable source</a></nav><main><article><h1 id="the-zarankiewicz-formula">The Zarankiewicz formula</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves Zarankiewicz's formula <span class="math" data-tex="\(\operatorname{cr}(K_{m,n})=d_md_n\)">\(\operatorname{cr}(K_{m,n})=d_md_n\)</span> [OpenAI-B, Theorem 1.1]. The upper bound is Zarankiewicz's drawing, Proposition 4.1 of <a href="drawings-and-crossing-numbers.html">Drawings and crossing numbers</a>. For the lower bound with <span class="math" data-tex="\(n=2s+1\)">\(n=2s+1\)</span> odd, the form <span class="math" data-tex="\(J\)">\(J\)</span> of a normal drawing is cut into <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> blocks, one for each pair of vertices of the first class. A linear map built from interpolation weights sends each block to an <span class="math" data-tex="\(s^2\times s^2\)">\(s^2\times s^2\)</span> matrix: diagonal blocks become invertible, an off-diagonal block becomes a matrix whose rank is at most the number of crossings between two stars, and the cycle pairing of <a href="signed-crossings-and-cycles.html">Signed crossings and cycles</a> gives the images the form <span class="math" data-tex="\(X_i-Y_k\)">\(X_i-Y_k\)</span>. The rank inequality of <a href="an-intersection-inequality-for-subspaces.html">An intersection inequality for subspaces</a> then counts the crossings. Even <span class="math" data-tex="\(n\)">\(n\)</span> follows by deleting vertices.</p>
+<ul>
+<li>The blocks of a drawing of <span class="math" data-tex="\(K_{m,n}\)">\(K_{m,n}\)</span> (Section 1).</li>
+<li>The block relation (Section 2).</li>
+<li>The detector (Section 3).</li>
+<li>The lower bound for odd <span class="math" data-tex="\(n\)">\(n\)</span> (Section 4).</li>
+<li>Even <span class="math" data-tex="\(n\)">\(n\)</span> and the formula (Section 5).</li>
+</ul>
+<p>Throughout, the vertex classes of <span class="math" data-tex="\(K_{m,n}\)">\(K_{m,n}\)</span> are <span class="math" data-tex="\(\{a_1,\ldots,a_m\}\)">\(\{a_1,\ldots,a_m\}\)</span> and <span class="math" data-tex="\(\{b_1,\ldots,b_n\}\)">\(\{b_1,\ldots,b_n\}\)</span>, and <span class="math" data-tex="\(d_r=\lfloor r/2\rfloor\lfloor(r-1)/2\rfloor\)">\(d_r=\lfloor r/2\rfloor\lfloor(r-1)/2\rfloor\)</span>.</p>
+<h2 id="1-the-blocks-of-a-drawing-of-k_-m-n">1. The blocks of a drawing of <span class="math" data-tex="\(K_{m,n}\)">\(K_{m,n}\)</span></h2>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be a normal drawing of <span class="math" data-tex="\(K_{m,n}\)">\(K_{m,n}\)</span> (Definition 1.1 of <a href="polygonal-drawings.html">Polygonal drawings</a>). Orient every edge <span class="math" data-tex="\(a_ib_p\)">\(a_ib_p\)</span> from <span class="math" data-tex="\(a_i\)">\(a_i\)</span> to <span class="math" data-tex="\(b_p\)">\(b_p\)</span>, choose a cut at every vertex, and let <span class="math" data-tex="\(J\)">\(J\)</span> be the form of Definition 1.2 of <a href="signed-crossings-and-cycles.html">Signed crossings and cycles</a>. For <span class="math" data-tex="\(1\le i,k\le m\)">\(1\le i,k\le m\)</span> let <span class="math" data-tex="\(J^{ik}\)">\(J^{ik}\)</span> be the <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> matrix
+<span class="math math-display" data-tex="\[
+J^{ik}(p,q)=J(a_ib_p,\,a_kb_q).
+\]">\[
+J^{ik}(p,q)=J(a_ib_p,\,a_kb_q).
+\]</span></p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(\prec_i\)">\(\prec_i\)</span> be the order of the edges at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> given by the cut there, read as an order of their second endpoints <span class="math" data-tex="\(b_1,\ldots,b_n\)">\(b_1,\ldots,b_n\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(J^{ii}\)">\(J^{ii}\)</span> is the matrix <span class="math" data-tex="\(S_{\prec_i}\)">\(S_{\prec_i}\)</span> with entries <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> at <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> if <span class="math" data-tex="\(b_p\prec_ib_q\)">\(b_p\prec_ib_q\)</span>, <span class="math" data-tex="\(-\frac12\)">\(-\frac12\)</span> if <span class="math" data-tex="\(b_q\prec_ib_p\)">\(b_q\prec_ib_p\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> on the diagonal.</li>
+<li>For <span class="math" data-tex="\(i\ne k\)">\(i\ne k\)</span> and <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>, <span class="math" data-tex="\(J^{ik}(p,q)=I(a_ib_p,a_kb_q)\)">\(J^{ik}(p,q)=I(a_ib_p,a_kb_q)\)</span>, the signed number of crossings of the two edges.</li>
+</ol>
+<p><em>Proof.</em> (1) For <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span> the edges <span class="math" data-tex="\(a_ib_p\)">\(a_ib_p\)</span> and <span class="math" data-tex="\(a_ib_q\)">\(a_ib_q\)</span> have the common endpoint <span class="math" data-tex="\(a_i\)">\(a_i\)</span> only; they do not cross, the drawing being normal, and both point out of <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, so <span class="math" data-tex="\(J(a_ib_p,a_ib_q)=\frac12T_{a_i}(a_ib_p,a_ib_q)\)">\(J(a_ib_p,a_ib_q)=\frac12T_{a_i}(a_ib_p,a_ib_q)\)</span>. The diagonal of <span class="math" data-tex="\(J\)">\(J\)</span> vanishes. (2) The edges have no common endpoint, so there is no local term. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(c_{ik}\)">\(c_{ik}\)</span> be the number of crossing points of <span class="math" data-tex="\(D\)">\(D\)</span> on an edge at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> and an edge at <span class="math" data-tex="\(a_k\)">\(a_k\)</span>. By Corollary 4.2 of <a href="polygonal-drawings.html">Polygonal drawings</a>, the two edges through a crossing point have four distinct endpoints, so they belong to the stars of two different vertices <span class="math" data-tex="\(a_i\ne a_k\)">\(a_i\ne a_k\)</span>, and
+<span class="math math-display" data-tex="\[
+\sum_{i\ne k}c_{ik}=2\,c(D),\tag{1.1}
+\]">\[
+\sum_{i\ne k}c_{ik}=2\,c(D),\tag{1.1}
+\]</span>
+the sum over ordered pairs, each crossing point being counted for <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> and for <span class="math" data-tex="\((k,i)\)">\((k,i)\)</span>.</p>
+<h2 id="2-the-block-relation">2. The block relation</h2>
+<p>Let <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> be the space of <em>additive</em> <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> matrices, those of the form <span class="math" data-tex="\(H(p,q)=r_p+c_q\)">\(H(p,q)=r_p+c_q\)</span> for some <span class="math" data-tex="\(r,c\in\mathbb R^n\)">\(r,c\in\mathbb R^n\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (block relation; [OpenAI-B, Lemma 3.2]). For all <span class="math" data-tex="\(1\le i,k\le m\)">\(1\le i,k\le m\)</span>,
+<span class="math math-display" data-tex="\[
+J^{ik}-J^{i1}-J^{1k}+J^{11}\in\mathcal L .
+\]">\[
+J^{ik}-J^{i1}-J^{1k}+J^{11}\in\mathcal L .
+\]</span></p>
+<p><em>Proof.</em> Call the left side <span class="math" data-tex="\(H\)">\(H\)</span>. For a matrix <span class="math" data-tex="\(K\)">\(K\)</span> and indices <span class="math" data-tex="\(p,p&#x27;,q,q&#x27;\)">\(p,p&#x27;,q,q&#x27;\)</span>, the <em>rectangle sum</em> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho(K)=K(p,q)-K(p,q&#x27;)\\
+-K(p&#x27;,q)+K(p&#x27;,q&#x27;).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\rho(K)=K(p,q)-K(p,q&#x27;)\\
+-K(p&#x27;,q)+K(p&#x27;,q&#x27;).
+\end{gathered}
+\]</span>
+A matrix <span class="math" data-tex="\(H\)">\(H\)</span> is additive exactly when all its rectangle sums vanish: then, for fixed <span class="math" data-tex="\(p_0,q_0\)">\(p_0,q_0\)</span>, <span class="math" data-tex="\(H(p,q)\)">\(H(p,q)\)</span> is <span class="math" data-tex="\(H(p,q_0)+H(p_0,q)-H(p_0,q_0)\)">\(H(p,q_0)+H(p_0,q)-H(p_0,q_0)\)</span>, and conversely. If <span class="math" data-tex="\(i=1\)">\(i=1\)</span> or <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, then <span class="math" data-tex="\(H=0\)">\(H=0\)</span>. If <span class="math" data-tex="\(p=p&#x27;\)">\(p=p&#x27;\)</span> or <span class="math" data-tex="\(q=q&#x27;\)">\(q=q&#x27;\)</span>, the rectangle sum vanishes trivially. Otherwise <span class="math" data-tex="\(i,k\ne1\)">\(i,k\ne1\)</span>, and the closed walks
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_i\to b_p\to a_1\to b_{p&#x27;}\to a_i,\\
+a_k\to b_q\to a_1\to b_{q&#x27;}\to a_k
+\end{gathered}
+\]">\[
+\begin{gathered}
+a_i\to b_p\to a_1\to b_{p&#x27;}\to a_i,\\
+a_k\to b_q\to a_1\to b_{q&#x27;}\to a_k
+\end{gathered}
+\]</span>
+are simple cycles with signed edge vectors
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+z=a_ib_p-a_1b_p+a_1b_{p&#x27;}-a_ib_{p&#x27;},\\
+y=a_kb_q-a_1b_q+a_1b_{q&#x27;}-a_kb_{q&#x27;} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+z=a_ib_p-a_1b_p+a_1b_{p&#x27;}-a_ib_{p&#x27;},\\
+y=a_kb_q-a_1b_q+a_1b_{q&#x27;}-a_kb_{q&#x27;} .
+\end{gathered}
+\]</span>
+By Theorem 1.3 of <a href="signed-crossings-and-cycles.html">Signed crossings and cycles</a>, <span class="math" data-tex="\(J(z,y)=0\)">\(J(z,y)=0\)</span>. Expand <span class="math" data-tex="\(J(z,y)\)">\(J(z,y)\)</span> by bilinearity into sixteen terms and group them by the first-class endpoints of the two edges. The four terms with an edge at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> from <span class="math" data-tex="\(z\)">\(z\)</span> and an edge at <span class="math" data-tex="\(a_k\)">\(a_k\)</span> from <span class="math" data-tex="\(y\)">\(y\)</span> add up to <span class="math" data-tex="\(\rho(J^{ik})\)">\(\rho(J^{ik})\)</span>. The terms with edges at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> and <span class="math" data-tex="\(a_1\)">\(a_1\)</span> give <span class="math" data-tex="\(-\rho(J^{i1})\)">\(-\rho(J^{i1})\)</span>, because the edges at <span class="math" data-tex="\(a_1\)">\(a_1\)</span> enter <span class="math" data-tex="\(y\)">\(y\)</span> with the opposite signs; likewise those at <span class="math" data-tex="\(a_1\)">\(a_1\)</span> and <span class="math" data-tex="\(a_k\)">\(a_k\)</span> give <span class="math" data-tex="\(-\rho(J^{1k})\)">\(-\rho(J^{1k})\)</span>, and those at <span class="math" data-tex="\(a_1\)">\(a_1\)</span> and <span class="math" data-tex="\(a_1\)">\(a_1\)</span> give <span class="math" data-tex="\(+\rho(J^{11})\)">\(+\rho(J^{11})\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0=J(z,y)&amp;=\rho(J^{ik})-\rho(J^{i1})\\
+&amp;\quad-\rho(J^{1k})+\rho(J^{11})\\
+&amp;=\rho(H),
+\end{aligned}
+\]">\[
+\begin{aligned}
+0=J(z,y)&amp;=\rho(J^{ik})-\rho(J^{i1})\\
+&amp;\quad-\rho(J^{1k})+\rho(J^{11})\\
+&amp;=\rho(H),
+\end{aligned}
+\]</span>
+and every rectangle sum of <span class="math" data-tex="\(H\)">\(H\)</span> vanishes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-detector">3. The detector</h2>
+<p>Fix <span class="math" data-tex="\(n=2s+1\)">\(n=2s+1\)</span> with <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>, put <span class="math" data-tex="\(d=s^2\)">\(d=s^2\)</span>, and choose distinct real numbers <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span>. Let <span class="math" data-tex="\(F(t)=\prod_p(t-x_p)\)">\(F(t)=\prod_p(t-x_p)\)</span>, let <span class="math" data-tex="\(h_{pq}\in\mathbb R^d\)">\(h_{pq}\in\mathbb R^d\)</span> be the vector with coordinates <span class="math" data-tex="\(x_p^ix_q^j\)">\(x_p^ix_q^j\)</span>, <span class="math" data-tex="\(0\le i,j&lt;s\)">\(0\le i,j&lt;s\)</span>, in a fixed order, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\omega_{pq}=\frac{x_p-x_q}{F&#x27;(x_p)\,F&#x27;(x_q)},\\
+B_{pq}=\omega_{pq}\,h_{pq}h_{pq}^{\mathsf T},\\
+\Phi(H)=\sum_{p,q=1}^nH(p,q)\,B_{pq}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\omega_{pq}=\frac{x_p-x_q}{F&#x27;(x_p)\,F&#x27;(x_q)},\\
+B_{pq}=\omega_{pq}\,h_{pq}h_{pq}^{\mathsf T},\\
+\Phi(H)=\sum_{p,q=1}^nH(p,q)\,B_{pq}
+\end{gathered}
+\]</span>
+for an <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> matrix <span class="math" data-tex="\(H\)">\(H\)</span>. For a linear order <span class="math" data-tex="\(\prec\)">\(\prec\)</span> of <span class="math" data-tex="\(\{1,\ldots,n\}\)">\(\{1,\ldots,n\}\)</span> let <span class="math" data-tex="\(S_\prec\)">\(S_\prec\)</span> be the matrix with entries <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> at <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> if <span class="math" data-tex="\(p\prec q\)">\(p\prec q\)</span>, <span class="math" data-tex="\(-\frac12\)">\(-\frac12\)</span> if <span class="math" data-tex="\(q\prec p\)">\(q\prec p\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> on the diagonal.</p>
+<p><strong>Lemma 3.1</strong> (the detector; [OpenAI-B, Lemma 4.2]). The linear map <span class="math" data-tex="\(\Phi:\mathbb R^{n\times n}\to\mathbb R^{d\times d}\)">\(\Phi:\mathbb R^{n\times n}\to\mathbb R^{d\times d}\)</span> has the following properties.</p>
+<ol>
+<li><span class="math" data-tex="\(\Phi(H)=0\)">\(\Phi(H)=0\)</span> for every additive matrix <span class="math" data-tex="\(H\)">\(H\)</span> and every diagonal matrix <span class="math" data-tex="\(H\)">\(H\)</span>.</li>
+<li><span class="math" data-tex="\(B_{pp}=0\)">\(B_{pp}=0\)</span>, and <span class="math" data-tex="\(B_{pq}\)">\(B_{pq}\)</span> has rank one for <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>. Hence <span class="math" data-tex="\(\operatorname{rank}\Phi(H)\)">\(\operatorname{rank}\Phi(H)\)</span> is at most the number of off-diagonal entries of <span class="math" data-tex="\(H\)">\(H\)</span> that are not zero.</li>
+<li><span class="math" data-tex="\(\Phi(S_\prec)\)">\(\Phi(S_\prec)\)</span> is invertible for every linear order <span class="math" data-tex="\(\prec\)">\(\prec\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (2) The factor <span class="math" data-tex="\(x_p-x_q\)">\(x_p-x_q\)</span> vanishes for <span class="math" data-tex="\(p=q\)">\(p=q\)</span> and not otherwise, and <span class="math" data-tex="\(h_{pq}\ne0\)">\(h_{pq}\ne0\)</span> since its coordinate for <span class="math" data-tex="\(i=j=0\)">\(i=j=0\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>; a nonzero multiple of <span class="math" data-tex="\(hh^{\mathsf T}\)">\(hh^{\mathsf T}\)</span> with <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span> has rank one. A sum of matrices has rank at most the sum of their ranks.</p>
+<p>(1) Diagonal matrices are killed by (2). The entry of <span class="math" data-tex="\(B_{pq}\)">\(B_{pq}\)</span> in row <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> and column <span class="math" data-tex="\((i&#x27;,j&#x27;)\)">\((i&#x27;,j&#x27;)\)</span> is
+<span class="math math-display" data-tex="\[
+\frac{x_p^{\,i+i&#x27;}}{F&#x27;(x_p)}\cdot\frac{(x_p-x_q)\,x_q^{\,j+j&#x27;}}{F&#x27;(x_q)} .
+\]">\[
+\frac{x_p^{\,i+i&#x27;}}{F&#x27;(x_p)}\cdot\frac{(x_p-x_q)\,x_q^{\,j+j&#x27;}}{F&#x27;(x_q)} .
+\]</span>
+For fixed <span class="math" data-tex="\(p\)">\(p\)</span>, the polynomial <span class="math" data-tex="\(t\mapsto(x_p-t)t^{\,j+j&#x27;}\)">\(t\mapsto(x_p-t)t^{\,j+j&#x27;}\)</span> has degree at most <span class="math" data-tex="\(2s-1=n-2\)">\(2s-1=n-2\)</span>, so by Corollary 1.2 of <a href="interpolation.html">Interpolation</a> the sum over <span class="math" data-tex="\(q\)">\(q\)</span> vanishes: <span class="math" data-tex="\(\sum_qB_{pq}=0\)">\(\sum_qB_{pq}=0\)</span>. In the same way <span class="math" data-tex="\(\sum_pB_{pq}=0\)">\(\sum_pB_{pq}=0\)</span> for fixed <span class="math" data-tex="\(q\)">\(q\)</span>. Hence, for <span class="math" data-tex="\(H(p,q)=r_p+c_q\)">\(H(p,q)=r_p+c_q\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi(H)&amp;=\sum_pr_p\sum_qB_{pq}+\sum_qc_q\sum_pB_{pq}\\
+&amp;=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi(H)&amp;=\sum_pr_p\sum_qB_{pq}+\sum_qc_q\sum_pB_{pq}\\
+&amp;=0 .
+\end{aligned}
+\]</span></p>
+<p>(3) First let <span class="math" data-tex="\(\prec\)">\(\prec\)</span> be the natural order. Let <span class="math" data-tex="\(H_&lt;(p,q)=1\)">\(H_&lt;(p,q)=1\)</span> if <span class="math" data-tex="\(q&lt;p\)">\(q&lt;p\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise, and let <span class="math" data-tex="\(\mathbf 1\)">\(\mathbf 1\)</span> be the all-ones vector; then <span class="math" data-tex="\(S_\prec=\frac12\mathbf1\mathbf1^{\mathsf T}-H_&lt;-\frac12I\)">\(S_\prec=\frac12\mathbf1\mathbf1^{\mathsf T}-H_&lt;-\frac12I\)</span>, and by (1), <span class="math" data-tex="\(\Phi(S_\prec)=-\Phi(H_&lt;)\)">\(\Phi(S_\prec)=-\Phi(H_&lt;)\)</span>. Subtracting <span class="math" data-tex="\(1\)">\(1\)</span> from every entry in the rows <span class="math" data-tex="\(p&gt;s+1\)">\(p&gt;s+1\)</span> changes <span class="math" data-tex="\(H_&lt;\)">\(H_&lt;\)</span> by an additive matrix, giving <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> with <span class="math" data-tex="\(\Phi(H&#x27;)=\Phi(H_&lt;)\)">\(\Phi(H&#x27;)=\Phi(H_&lt;)\)</span>. Off the diagonal, <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> is <span class="math" data-tex="\(+1\)">\(+1\)</span> on the pairs <span class="math" data-tex="\(1\le q&lt;p\le s+1\)">\(1\le q&lt;p\le s+1\)</span>, <span class="math" data-tex="\(-1\)">\(-1\)</span> on the pairs <span class="math" data-tex="\(s+1&lt;p&lt;q\le2s+1\)">\(s+1&lt;p&lt;q\le2s+1\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere: its off-diagonal support is the odd pattern <span class="math" data-tex="\(Q_s\)">\(Q_s\)</span> of Section 3 of <a href="interpolation.html">Interpolation</a>. Its diagonal does not matter. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi(S_\prec)&amp;=-\sum_{(p,q)\in Q_s}H&#x27;(p,q)\,\omega_{pq}\,h_{pq}h_{pq}^{\mathsf T}\\
+&amp;=-A\,\Lambda\,A^{\mathsf T},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi(S_\prec)&amp;=-\sum_{(p,q)\in Q_s}H&#x27;(p,q)\,\omega_{pq}\,h_{pq}h_{pq}^{\mathsf T}\\
+&amp;=-A\,\Lambda\,A^{\mathsf T},
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(A\)">\(A\)</span> is the <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> matrix with the columns <span class="math" data-tex="\(h_{pq}\)">\(h_{pq}\)</span>, <span class="math" data-tex="\((p,q)\in Q_s\)">\((p,q)\in Q_s\)</span>, and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is diagonal with the nonzero entries <span class="math" data-tex="\(H&#x27;(p,q)\,\omega_{pq}\)">\(H&#x27;(p,q)\,\omega_{pq}\)</span>. By Lemma 3.1 of <a href="interpolation.html">Interpolation</a> the columns of <span class="math" data-tex="\(A\)">\(A\)</span> form a basis, so <span class="math" data-tex="\(A\)">\(A\)</span> is invertible, and so is <span class="math" data-tex="\(\Phi(S_\prec)\)">\(\Phi(S_\prec)\)</span>.</p>
+<p>For an arbitrary order <span class="math" data-tex="\(\pi(1)\prec\pi(2)\prec\cdots\prec\pi(n)\)">\(\pi(1)\prec\pi(2)\prec\cdots\prec\pi(n)\)</span>, put <span class="math" data-tex="\(x&#x27;_a=x_{\pi(a)}\)">\(x&#x27;_a=x_{\pi(a)}\)</span>, distinct numbers. The polynomial <span class="math" data-tex="\(F\)">\(F\)</span> is the same for the nodes <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span>, and the vectors and matrices built from them are <span class="math" data-tex="\(h&#x27;_{ab}=h_{\pi(a)\pi(b)}\)">\(h&#x27;_{ab}=h_{\pi(a)\pi(b)}\)</span> and <span class="math" data-tex="\(B&#x27;_{ab}=B_{\pi(a)\pi(b)}\)">\(B&#x27;_{ab}=B_{\pi(a)\pi(b)}\)</span>. Since <span class="math" data-tex="\(S_\prec(\pi(a),\pi(b))\)">\(S_\prec(\pi(a),\pi(b))\)</span> is the entry of the natural order at <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, <span class="math" data-tex="\(\Phi(S_\prec)=\sum_{a,b}S_{\text{nat}}(a,b)B&#x27;_{ab}\)">\(\Phi(S_\prec)=\sum_{a,b}S_{\text{nat}}(a,b)B&#x27;_{ab}\)</span>, which is invertible by the first case applied to the nodes <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> forgets exactly what the cycle relations leave undetermined (additive terms and diagonal entries), it costs at most one unit of rank per nonzero off-diagonal entry, and it recognizes every linear order of the spokes, all at once.</p>
+<h2 id="4-the-lower-bound-for-odd-n">4. The lower bound for odd <span class="math" data-tex="\(n\)">\(n\)</span></h2>
+<p>For a normal drawing <span class="math" data-tex="\(D\)">\(D\)</span> of <span class="math" data-tex="\(K_{m,n}\)">\(K_{m,n}\)</span>, let <span class="math" data-tex="\(N_I(D)\)">\(N_I(D)\)</span> be the number of unordered pairs of independent edges whose signed number of crossings <span class="math" data-tex="\(I\)">\(I\)</span> is not zero. Each such pair crosses at least once, and different pairs cross at different points, so <span class="math" data-tex="\(N_I(D)\le c(D)\)">\(N_I(D)\le c(D)\)</span>.</p>
+<p><strong>Proposition 4.1</strong> (odd <span class="math" data-tex="\(n\)">\(n\)</span>; [OpenAI-B, Section 5.2]). Let <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(n=2s+1\ge3\)">\(n=2s+1\ge3\)</span>. For every normal drawing <span class="math" data-tex="\(D\)">\(D\)</span> of <span class="math" data-tex="\(K_{m,n}\)">\(K_{m,n}\)</span>,
+<span class="math math-display" data-tex="\[
+c(D)\ \ge\ N_I(D)\ \ge\ d_m\,d_n .
+\]">\[
+c(D)\ \ge\ N_I(D)\ \ge\ d_m\,d_n .
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(R_{ik}=\Phi(J^{ik})\)">\(R_{ik}=\Phi(J^{ik})\)</span> and
+<span class="math math-display" data-tex="\[
+X_i=R_{i1},\qquad Y_k=R_{11}-R_{1k}.
+\]">\[
+X_i=R_{i1},\qquad Y_k=R_{11}-R_{1k}.
+\]</span>
+By Lemma 2.1 and Lemma 3.1(1), <span class="math" data-tex="\(R_{ik}=R_{i1}+R_{1k}-R_{11}=X_i-Y_k\)">\(R_{ik}=R_{i1}+R_{1k}-R_{11}=X_i-Y_k\)</span> for all <span class="math" data-tex="\(i,k\)">\(i,k\)</span>. By Lemma 1.1(1) and Lemma 3.1(3), <span class="math" data-tex="\(X_i-Y_i=R_{ii}=\Phi(S_{\prec_i})\)">\(X_i-Y_i=R_{ii}=\Phi(S_{\prec_i})\)</span> is invertible. For <span class="math" data-tex="\(i\ne k\)">\(i\ne k\)</span>, Lemma 1.1(2) and Lemma 3.1(2) give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{rank}R_{ik}\le\#\{(p,q):p\ne q,\\
+I(a_ib_p,a_kb_q)\ne0\},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{rank}R_{ik}\le\#\{(p,q):p\ne q,\\
+I(a_ib_p,a_kb_q)\ne0\},
+\end{gathered}
+\]</span>
+because the diagonal entries of <span class="math" data-tex="\(J^{ik}\)">\(J^{ik}\)</span>, which may carry a local term at a common endpoint <span class="math" data-tex="\(b_p\)">\(b_p\)</span>, do not affect <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. Summing over the ordered pairs <span class="math" data-tex="\(i\ne k\)">\(i\ne k\)</span>, every unordered pair of independent edges with <span class="math" data-tex="\(I\ne0\)">\(I\ne0\)</span> is counted twice, so the right sides add up to <span class="math" data-tex="\(2N_I(D)\)">\(2N_I(D)\)</span>. Corollary 3.1 of <a href="an-intersection-inequality-for-subspaces.html">An intersection inequality for subspaces</a>, with <span class="math" data-tex="\(d=s^2=d_n\)">\(d=s^2=d_n\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+2\,d_md_n&amp;\le\sum_{i\ne k}\operatorname{rank}(X_i-Y_k)\\
+&amp;\le2N_I(D)\le2\,c(D). \qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+2\,d_md_n&amp;\le\sum_{i\ne k}\operatorname{rank}(X_i-Y_k)\\
+&amp;\le2N_I(D)\le2\,c(D). \qquad\square
+\end{aligned}
+\]</span></p>
+<p><strong>Remark 4.2.</strong> In Zarankiewicz's drawing with <span class="math" data-tex="\(n\)">\(n\)</span> odd, <span class="math" data-tex="\(c(D)=d_md_n\)">\(c(D)=d_md_n\)</span> (Proposition 4.1 of <a href="drawings-and-crossing-numbers.html">Drawings and crossing numbers</a>), so every inequality in the proof is an equality: two independent edges cross at most once, no crossing pair has signed count zero, and the ranks of the matrices <span class="math" data-tex="\(X_i-Y_k\)">\(X_i-Y_k\)</span> add up exactly to <span class="math" data-tex="\(2d_md_n\)">\(2d_md_n\)</span>.</p>
+<h2 id="5-even-n-and-the-formula">5. Even <span class="math" data-tex="\(n\)">\(n\)</span> and the formula</h2>
+<p><strong>Proposition 5.1</strong> (even <span class="math" data-tex="\(n\)">\(n\)</span>; [OpenAI-B, Section 5.3]). For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and even <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, <span class="math" data-tex="\(\operatorname{cr}(K_{m,n})\ge d_md_n\)">\(\operatorname{cr}(K_{m,n})\ge d_md_n\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(d_2=0\)">\(d_2=0\)</span>. Let <span class="math" data-tex="\(n=2t\ge4\)">\(n=2t\ge4\)</span> and let <span class="math" data-tex="\(D\)">\(D\)</span> be a normal drawing attaining <span class="math" data-tex="\(\operatorname{cr}(K_{m,n})\)">\(\operatorname{cr}(K_{m,n})\)</span> (Theorem 1.2 of <a href="polygonal-drawings.html">Polygonal drawings</a>). Deleting <span class="math" data-tex="\(b_r\)">\(b_r\)</span> and its edges gives a drawing <span class="math" data-tex="\(D_r\)">\(D_r\)</span> of <span class="math" data-tex="\(K_{m,n-1}\)">\(K_{m,n-1}\)</span>, and <span class="math" data-tex="\(n-1\)">\(n-1\)</span> is odd. A crossing point of <span class="math" data-tex="\(D\)">\(D\)</span> lies on edges <span class="math" data-tex="\(a_ib_p\)">\(a_ib_p\)</span> and <span class="math" data-tex="\(a_kb_q\)">\(a_kb_q\)</span> with <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span> (Corollary 4.2 of <a href="polygonal-drawings.html">Polygonal drawings</a>), so it is a crossing point of <span class="math" data-tex="\(D_r\)">\(D_r\)</span> exactly for the <span class="math" data-tex="\(n-2\)">\(n-2\)</span> values <span class="math" data-tex="\(r\ne p,q\)">\(r\ne p,q\)</span>. By Proposition 4.1, applied to a normal drawing with no more crossings than <span class="math" data-tex="\(D_r\)">\(D_r\)</span> (Theorem 1.2 of <a href="polygonal-drawings.html">Polygonal drawings</a>), each <span class="math" data-tex="\(D_r\)">\(D_r\)</span> has at least <span class="math" data-tex="\(d_md_{n-1}\)">\(d_md_{n-1}\)</span> crossings. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(n-2)\,c(D)=\sum_{r=1}^nc(D_r)\ge n\,d_md_{n-1},\\
+c(D)\ge\frac{2t}{2t-2}\,d_m\,(t-1)^2\\
+=d_m\,t(t-1)=d_md_n . \qquad\square
+\end{gathered}
+\]">\[
+\begin{gathered}
+(n-2)\,c(D)=\sum_{r=1}^nc(D_r)\ge n\,d_md_{n-1},\\
+c(D)\ge\frac{2t}{2t-2}\,d_m\,(t-1)^2\\
+=d_m\,t(t-1)=d_md_n . \qquad\square
+\end{gathered}
+\]</span></p>
+<p><strong>Theorem 5.2</strong> (Zarankiewicz's formula; [OpenAI-B, Theorem 1.1]). For all integers <span class="math" data-tex="\(m,n\ge1\)">\(m,n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{cr}(K_{m,n})\\
+=\Bigl\lfloor\frac m2\Bigr\rfloor\Bigl\lfloor\frac{m-1}2\Bigr\rfloor\Bigl\lfloor\frac n2\Bigr\rfloor\Bigl\lfloor\frac{n-1}2\Bigr\rfloor .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{cr}(K_{m,n})\\
+=\Bigl\lfloor\frac m2\Bigr\rfloor\Bigl\lfloor\frac{m-1}2\Bigr\rfloor\Bigl\lfloor\frac n2\Bigr\rfloor\Bigl\lfloor\frac{n-1}2\Bigr\rfloor .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> The upper bound is Proposition 4.1 of <a href="drawings-and-crossing-numbers.html">Drawings and crossing numbers</a>. For the lower bound, if <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the right side is <span class="math" data-tex="\(0\)">\(0\)</span>; if <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span> is odd, apply Proposition 4.1 to a normal drawing attaining <span class="math" data-tex="\(\operatorname{cr}(K_{m,n})\)">\(\operatorname{cr}(K_{m,n})\)</span>; if <span class="math" data-tex="\(n\)">\(n\)</span> is even, apply Proposition 5.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 5.3.</strong> The proof gives more than the crossing number. In every normal drawing of <span class="math" data-tex="\(K_{m,n}\)">\(K_{m,n}\)</span> with <span class="math" data-tex="\(n\)">\(n\)</span> odd, minimal or not, at least <span class="math" data-tex="\(d_md_n\)">\(d_md_n\)</span> pairs of independent edges have a nonzero signed number of crossings (Proposition 4.1): pairs that cross an even number of times with cancelling signs never help.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Take <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, so <span class="math" data-tex="\(s=1\)">\(s=1\)</span> and <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, with nodes <span class="math" data-tex="\(x=(0,1,2)\)">\(x=(0,1,2)\)</span>. Compute the numbers <span class="math" data-tex="\(B_{pq}\)">\(B_{pq}\)</span>, check that their row and column sums vanish, and compute <span class="math" data-tex="\(\Phi(S_\prec)\)">\(\Phi(S_\prec)\)</span> for the natural order.</p>
+<p><strong>6.2.</strong> For <span class="math" data-tex="\(K_{3,3}\)">\(K_{3,3}\)</span> (<span class="math" data-tex="\(m=n=3\)">\(m=n=3\)</span>) follow the proof of Proposition 4.1: the <span class="math" data-tex="\(R_{ik}\)">\(R_{ik}\)</span> are numbers with <span class="math" data-tex="\(R_{ik}=X_i-Y_k\)">\(R_{ik}=X_i-Y_k\)</span> and <span class="math" data-tex="\(X_i\ne Y_i\)">\(X_i\ne Y_i\)</span>. Conclude with Exercise 4.2 of <a href="an-intersection-inequality-for-subspaces.html">An intersection inequality for subspaces</a> that some two independent edges have nonzero signed crossing number, and hence <span class="math" data-tex="\(\operatorname{cr}(K_{3,3})\ge1\)">\(\operatorname{cr}(K_{3,3})\ge1\)</span>.</p>
+<p><strong>6.3.</strong> Show that in Proposition 5.1 the number of crossings that survive the deletion of <span class="math" data-tex="\(b_r\)">\(b_r\)</span> is <span class="math" data-tex="\(c(D)-\sum_{\text{edges }e\text{ at }b_r}(\text{crossings on }e)\)">\(c(D)-\sum_{\text{edges }e\text{ at }b_r}(\text{crossings on }e)\)</span>, and use this to give a second proof of <span class="math" data-tex="\(\sum_rc(D_r)=(n-2)c(D)\)">\(\sum_rc(D_r)=(n-2)c(D)\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(F&#x27;(0)=2\)">\(F&#x27;(0)=2\)</span>, <span class="math" data-tex="\(F&#x27;(1)=-1\)">\(F&#x27;(1)=-1\)</span>, <span class="math" data-tex="\(F&#x27;(2)=2\)">\(F&#x27;(2)=2\)</span>, and <span class="math" data-tex="\(B_{pq}=(x_p-x_q)/(F&#x27;(x_p)F&#x27;(x_q))\)">\(B_{pq}=(x_p-x_q)/(F&#x27;(x_p)F&#x27;(x_q))\)</span>: <span class="math" data-tex="\(B_{12}=\frac12\)">\(B_{12}=\frac12\)</span>, <span class="math" data-tex="\(B_{13}=-\frac12\)">\(B_{13}=-\frac12\)</span>, <span class="math" data-tex="\(B_{21}=-\frac12\)">\(B_{21}=-\frac12\)</span>, <span class="math" data-tex="\(B_{23}=\frac12\)">\(B_{23}=\frac12\)</span>, <span class="math" data-tex="\(B_{31}=\frac12\)">\(B_{31}=\frac12\)</span>, <span class="math" data-tex="\(B_{32}=-\frac12\)">\(B_{32}=-\frac12\)</span>, and <span class="math" data-tex="\(B_{pp}=0\)">\(B_{pp}=0\)</span>. Every row and every column sums to <span class="math" data-tex="\(0\)">\(0\)</span>. For the natural order, <span class="math" data-tex="\(\Phi(S)\)">\(\Phi(S)\)</span> is <span class="math" data-tex="\(\frac12(B_{12}+B_{13}+B_{23})\)">\(\frac12(B_{12}+B_{13}+B_{23})\)</span> minus <span class="math" data-tex="\(\frac12(B_{21}+B_{31}+B_{32})\)">\(\frac12(B_{21}+B_{31}+B_{32})\)</span>, that is <span class="math" data-tex="\(\frac14+\frac14=\frac12\ne0\)">\(\frac14+\frac14=\frac12\ne0\)</span>.</p>
+<p><strong>6.2.</strong> Here <span class="math" data-tex="\(R_{ik}=\Phi(J^{ik})\)">\(R_{ik}=\Phi(J^{ik})\)</span> are real numbers, <span class="math" data-tex="\(R_{ik}=X_i-Y_k\)">\(R_{ik}=X_i-Y_k\)</span>, and <span class="math" data-tex="\(R_{ii}\ne0\)">\(R_{ii}\ne0\)</span>. By Exercise 4.2 of the subspace lesson, at least two of the six numbers <span class="math" data-tex="\(R_{ik}\)">\(R_{ik}\)</span>, <span class="math" data-tex="\(i\ne k\)">\(i\ne k\)</span>, are nonzero. A nonzero <span class="math" data-tex="\(R_{ik}\)">\(R_{ik}\)</span> requires a nonzero off-diagonal entry of <span class="math" data-tex="\(J^{ik}\)">\(J^{ik}\)</span>, that is, two independent edges at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> and <span class="math" data-tex="\(a_k\)">\(a_k\)</span> with <span class="math" data-tex="\(I\ne0\)">\(I\ne0\)</span>, which cross. So <span class="math" data-tex="\(c(D)\ge1\)">\(c(D)\ge1\)</span>.</p>
+<p><strong>6.3.</strong> The crossings lost by deleting <span class="math" data-tex="\(b_r\)">\(b_r\)</span> are those on edges at <span class="math" data-tex="\(b_r\)">\(b_r\)</span>; a crossing lies on two edges with distinct ends <span class="math" data-tex="\(b_p\ne b_q\)">\(b_p\ne b_q\)</span>, so it is lost for exactly two values of <span class="math" data-tex="\(r\)">\(r\)</span>. Summing over <span class="math" data-tex="\(r\)">\(r\)</span>, <span class="math" data-tex="\(\sum_rc(D_r)=nc(D)-2c(D)\)">\(\sum_rc(D_r)=nc(D)-2c(D)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-B] OpenAI, <em>The crossing number of complete bipartite graphs</em>, OpenAI Math Release preprint, 23 September 2026, Theorem 1.1, Lemma 3.2, Lemma 4.2 and Section 5. https://github.com/openai/math/tree/main/preprints/The-crossing-number-of-complete-bipartite-graphs-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,6 +1,6 @@
 # A central order correction fixes the implementer and retains its bound
 
-An inner automorphism with small Banach-operator spectrum has an implementer with a small principal logarithm. A commuting group can then be removed from that implementer by a central correction. We first prove the order construction that makes this correction possible for an arbitrary group. We next construct the small logarithm by spectral separation. The independent compact convex argument for a general abelian bounded cocycle and the entire earlier P argument remain available as alternative routes.
+An inner automorphism with small Banach-operator spectrum has an implementer with a small principal logarithm. A commuting group can then be removed from that implementer by a central correction. We first prove the order construction that makes this correction possible for an arbitrary group. We next construct the small logarithm by spectral separation. A second route uses compact convex averaging for general abelian bounded cocycles, followed by the principal-logarithm calculation.
 
 *Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
 
@@ -186,7 +186,7 @@ z(P(E))z(P(F))=0.
 \tag{CO15}
 \]
 
-Empty compact sets give zero projections immediately. This supplies the exact uniform resolvent estimate behind the retained phase-subdivision argument.
+Empty compact sets give zero projections immediately. This supplies the exact uniform resolvent estimate for the phase-subdivision argument.
 
 <a id="co4"></a>
 <a id="oa-flow.l125.co4"></a>
@@ -243,7 +243,7 @@ The final implementer is fixed and retains the spectral bound. No abelian or ame
 
 <a id="co5"></a>
 <a id="oa-flow.l125.co5"></a>
-## CO5. Keep the separate general abelian cocycle theorem
+## CO5. Bounded additive cocycles for abelian groups
 
 Here \(G\) is abelian, \(\alpha\) is point-ultraweakly continuous and \(h:G\to M\) is ultraweakly continuous and uniformly norm bounded, satisfying CO3. Its values need not be central or selfadjoint.
 
@@ -862,7 +862,7 @@ $\square$
 
 Further reading: Takesaki, *Theory of Operator Algebras II*, Lemmas
 XI.2.19–XI.2.22.  Equations (P3)–(P10) prove central
-orthogonality, (P11)–(P21) construct the corrected small-spectrum implementer,
+orthogonality, (P11)–(P21) construct the small-spectrum implementer,
 (P22)–(P29) establish the additive-cocycle fixed-point theorem for the standing
 abelian action, and (P30)–(P43) give the branch-controlled central logarithm and
 fixed implementer.
@@ -885,6 +885,6 @@ The algebra is $M_2(\mathbb C)\oplus M_2(\mathbb C)$ and the nontrivial action e
 
 The lower angular axis shows exactly the three spectrum arguments $-2,0,2$ in the same units, strictly between the excluded endpoints $-4,4$ of $V(\pi/8)$. It is an argument coordinate, not a chord or a numerical spectral approximation. Both logarithms have norm $3\pi/32$. CO0–CO2 prove the general central order and norm-preserving correction for arbitrary group actions; CO3–CO4 prove the small-spectrum localization. The finite example illustrates these mechanisms without replacing their proofs.
 
-All block entries and all eight matrix-unit phase differences are checked exactly in the reproducible renderer. Mathematical source context: Takesaki, *Theory of Operator Algebras II*, Lemmas XI.2.19–XI.2.22; CO0–CO4 prove the general central-order route. Original expression and diagram are CC0-1.0 to the extent of rights held; the retained DejaVu font notice has separate terms.
+All block entries and all eight matrix-unit phase differences are checked exactly in the reproducible renderer. Mathematical source context: Takesaki, *Theory of Operator Algebras II*, Lemmas XI.2.19–XI.2.22; CO0–CO4 prove the general central-order route. Original expression and diagram are CC0-1.0 to the extent of rights held; DejaVu fonts have separate terms.
 
-Exact local proofs: [CO0 order suprema](OA-FLOW-L125.md#co0), [CO1 central cocycles](OA-FLOW-L125.md#co1), [CO2 the preserved logarithm bound](OA-FLOW-L125.md#co2), [CO3 resolvent separation](OA-FLOW-L125.md#co3), [CO4 phase localization](OA-FLOW-L125.md#co4), [CO5 the distinct abelian route](OA-FLOW-L125.md#co5), and [CO6 the exact model](OA-FLOW-L125.md#co6). [Renderer](../assets/fixed-implementer-central-order/render_central_order.py), [exact data](../assets/fixed-implementer-central-order/figure/central-order-data.json), [editable SVG](../assets/fixed-implementer-central-order/figure/central-order.svg), and font terms are preserved.
+Exact local proofs: [CO0 order suprema](OA-FLOW-L125.md#co0), [CO1 central cocycles](OA-FLOW-L125.md#co1), [CO2 the preserved logarithm bound](OA-FLOW-L125.md#co2), [CO3 resolvent separation](OA-FLOW-L125.md#co3), [CO4 phase localization](OA-FLOW-L125.md#co4), [CO5 the distinct abelian route](OA-FLOW-L125.md#co5), and [CO6 the exact model](OA-FLOW-L125.md#co6). [Renderer](../assets/fixed-implementer-central-order/render_central_order.py), [exact data](../assets/fixed-implementer-central-order/figure/central-order-data.json), [editable SVG](../assets/fixed-implementer-central-order/figure/central-order.svg), and font terms accompany the lesson.

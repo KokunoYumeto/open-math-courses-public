@@ -12,13 +12,20 @@
 
 *A random choice of positions.* On each axis, the positions are partitioned into *classes* of \(m\) positions: the \(6hs\) anchor groups, the dummy block, the classes \(R_i^\sigma\) (or \(C_i^\sigma\)) for \(i<h\) and \(\sigma=\pm\), and the class of leaves, counted once. Choose \(z\in\{0,\dots,m-1\}\) uniformly, and let \(a_i=\lfloor z/2^{h-i}\rfloor\) for \(0\le i\le h\); thus \(a_i\) is the ancestor of the leaf \(z\) at depth \(i\), and \(\pi(a_i)=a_{i-1}\). Given \(z\), choose independently and uniformly
 \[
-x_i^\sigma\in R_i^\sigma(a_i),\qquad y_i^\sigma\in C_i^\sigma(a_i)\qquad(0\le i<h,\ \sigma=\pm),
+\begin{gathered}
+x_i^\sigma\in R_i^\sigma(a_i),\qquad y_i^\sigma\in C_i^\sigma(a_i)\\
+(0\le i<h,\ \sigma=\pm),
+\end{gathered}
 \]
 let \(x_h=x_h^+=x_h^-\) and \(y_h=y_h^+=y_h^-\) be the leaf positions of \(z\), and choose, independently of everything else, one uniform position in every anchor group and \(x_*\in R_*\), \(y_*\in C_*\).
 
 Every position \(r\) of a class is chosen with probability \(1/m\): for a variable position of depth \(i\), the node \(a_i\) equals the node of \(r\) with probability \(2^{-i}\), and then \(r\) is chosen with probability \(2^i/m\). Call a cell \((r,c)\) *protected* if \(r\) or \(c\) is an anchor or dummy position, or if both lie in blocks of depth \(0\). For a protected cell, the events "\(r\) is chosen" and "\(c\) is chosen" are independent: an anchor or dummy choice is independent of all choices on the other axis, and the depth-\(0\) choices are independent uniform choices in fixed blocks, since \(a_0=0\). Hence a protected cell has both its row and its column chosen with probability \(1/m^2\). Each class contributes exactly one chosen position, so by the union bound
 \[
-\Pr\bigl(\text{some protected cell with chosen row and column lies in }E\bigr)\le\frac{|E|}{m^2}<1 .
+\begin{aligned}
+&\Pr\bigl(\text{some protected cell with chosen}\\
+&\qquad\text{row and column lies in }E\bigr)\\
+&\le\frac{|E|}{m^2}<1 .
+\end{aligned}
 \]
 Fix a choice for which no protected cell with chosen row and column lies in \(E\). On all such cells \(B\) agrees with \(A\); all other cells are unrestricted.
 
@@ -26,11 +33,18 @@ Fix a choice for which no protected cell with chosen row and column lies in \(E\
 
 *Propagation along the path.* The depth-\(0\) entries are protected, so
 \[
-B(x_0^+,y_0^+)=A(x_0^+,y_0^+)=\mathbf 1[0\le0]=1,\qquad B(x_0^-,y_0^-)=\mathbf 1[0<0]=0 .
+\begin{aligned}
+B(x_0^+,y_0^+)&=A(x_0^+,y_0^+)=\mathbf 1[0\le0]=1,\\
+B(x_0^-,y_0^-)&=\mathbf 1[0<0]=0 .
+\end{aligned}
 \]
 We show by induction on \(i\) that
 \[
-B(x_i^+,y_i^+)=1\qquad\text{and}\qquad B(x_i^-,y_i^-)=0\qquad(0\le i\le h). \tag{1.1}
+\begin{aligned}
+B(x_i^+,y_i^+)&=1,\\
+B(x_i^-,y_i^-)&=0,\\
+&\quad(0\le i\le h).
+\end{aligned}\tag{1.1}
 \]
 Let \(1\le i\le h\) and assume (1.1) at depth \(i-1\). Entries in the dummy row \(x_*\) or the dummy column \(y_*\) against chosen non-anchor positions are protected and equal \(1\). By Lemma 3.1 of the first lesson, with \(\pi(a_i)=a_{i-1}\), all the following quadruples are bodies of the stated modes.
 

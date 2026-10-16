@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>An intersection inequality for subspaces</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Crossing numbers of complete and complete bipartite graphs)</a><a href="interpolation.html">Previous lesson</a><a href="the-zarankiewicz-formula.html">Next lesson</a><a href="src/an-intersection-inequality-for-subspaces.md">Editable source</a></nav><main><article><h1 id="an-intersection-inequality-for-subspaces">An intersection inequality for subspaces</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let <span class="math" data-tex="\(U_1,\ldots,U_m\)">\(U_1,\ldots,U_m\)</span> and <span class="math" data-tex="\(V_1,\ldots,V_m\)">\(V_1,\ldots,V_m\)</span> be subspaces of an <span class="math" data-tex="\(N\)">\(N\)</span>-dimensional real vector space such that each <span class="math" data-tex="\(U_i\)">\(U_i\)</span> meets its partner <span class="math" data-tex="\(V_i\)">\(V_i\)</span> only in <span class="math" data-tex="\(0\)">\(0\)</span>. How large can the intersections <span class="math" data-tex="\(U_i\cap V_j\)">\(U_i\cap V_j\)</span> of the other pairs be in total? Splitting the space into two halves and the indices into two groups shows that the total can reach <span class="math" data-tex="\(\lfloor m^2/4\rfloor N\)">\(\lfloor m^2/4\rfloor N\)</span>. This lesson proves that it cannot be larger [OpenAI-B, Lemma 2.1], by interpolating vectors with polynomials and counting the zeros of a determinant. Applied to graphs of linear maps, the inequality becomes a lower bound for the ranks of differences <span class="math" data-tex="\(X_i-Y_j\)">\(X_i-Y_j\)</span> of matrices [OpenAI-B, Corollary 2.3], which is the algebraic heart of <a href="the-zarankiewicz-formula.html">The Zarankiewicz formula</a>. Nothing in this lesson refers to drawings.</p>
+<ul>
+<li>Polynomial vectors and matrices (Section 1).</li>
+<li>The inequality (Section 2).</li>
+<li>Ranks of differences (Section 3).</li>
+</ul>
+<h2 id="1-polynomial-vectors-and-matrices">1. Polynomial vectors and matrices</h2>
+<p>Let <span class="math" data-tex="\(W\)">\(W\)</span> be a real vector space of dimension <span class="math" data-tex="\(N\)">\(N\)</span> with a fixed basis, and <span class="math" data-tex="\(Z\subseteq W\)">\(Z\subseteq W\)</span> a subspace. Write <span class="math" data-tex="\(Z[\xi]\)">\(Z[\xi]\)</span> for the polynomials in one variable <span class="math" data-tex="\(\xi\)">\(\xi\)</span> with coefficients in <span class="math" data-tex="\(Z\)">\(Z\)</span>, that is, expressions <span class="math" data-tex="\(P=\sum_kz_k\xi^k\)">\(P=\sum_kz_k\xi^k\)</span> with <span class="math" data-tex="\(z_k\in Z\)">\(z_k\in Z\)</span>; for a real number <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(P(t)=\sum_kz_kt^k\in Z\)">\(P(t)=\sum_kz_kt^k\in Z\)</span>. In coordinates, <span class="math" data-tex="\(P\)">\(P\)</span> is a column of <span class="math" data-tex="\(N\)">\(N\)</span> polynomials, and finitely many such columns form a <em>polynomial matrix</em> <span class="math" data-tex="\(M(\xi)\)">\(M(\xi)\)</span>, whose value <span class="math" data-tex="\(M(t)\)">\(M(t)\)</span> at <span class="math" data-tex="\(t\)">\(t\)</span> is a real matrix. Its minors are polynomials in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (rank at special points). Let <span class="math" data-tex="\(M(\xi)\)">\(M(\xi)\)</span> be a polynomial matrix and <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>. If <span class="math" data-tex="\(\operatorname{rank}M(t)\le r\)">\(\operatorname{rank}M(t)\le r\)</span> for infinitely many real <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(\operatorname{rank}M(t)\le r\)">\(\operatorname{rank}M(t)\le r\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><em>Proof.</em> A real matrix has rank at most <span class="math" data-tex="\(r\)">\(r\)</span> exactly when all its minors of size <span class="math" data-tex="\(r+1\)">\(r+1\)</span> vanish. Indeed, if the rank is at least <span class="math" data-tex="\(r+1\)">\(r+1\)</span>, choose <span class="math" data-tex="\(r+1\)">\(r+1\)</span> linearly independent columns; the submatrix they form has column rank <span class="math" data-tex="\(r+1\)">\(r+1\)</span>, hence row rank <span class="math" data-tex="\(r+1\)">\(r+1\)</span> [Hefferon, Theorem Two.III.3.11], so it has <span class="math" data-tex="\(r+1\)">\(r+1\)</span> independent rows, and the square submatrix on these rows and columns is nonsingular, with nonzero determinant [Hefferon, Lemma Four.I.2.4]. Conversely, a nonzero minor of size <span class="math" data-tex="\(r+1\)">\(r+1\)</span> gives <span class="math" data-tex="\(r+1\)">\(r+1\)</span> independent columns. Each minor of size <span class="math" data-tex="\(r+1\)">\(r+1\)</span> of <span class="math" data-tex="\(M(\xi)\)">\(M(\xi)\)</span> is a polynomial in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>; vanishing at infinitely many <span class="math" data-tex="\(t\)">\(t\)</span>, it is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2</strong> (rank loss and multiple roots). Let <span class="math" data-tex="\(M(\xi)\)">\(M(\xi)\)</span> be a square polynomial matrix of size <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(t_0\)">\(t_0\)</span> a real number and <span class="math" data-tex="\(q\ge0\)">\(q\ge0\)</span>. If <span class="math" data-tex="\(\operatorname{rank}M(t_0)\le k-q\)">\(\operatorname{rank}M(t_0)\le k-q\)</span>, then <span class="math" data-tex="\((\xi-t_0)^q\)">\((\xi-t_0)^q\)</span> divides <span class="math" data-tex="\(\det M(\xi)\)">\(\det M(\xi)\)</span>.</p>
+<p><em>Proof.</em> The kernel of <span class="math" data-tex="\(M(t_0)\)">\(M(t_0)\)</span> has dimension at least <span class="math" data-tex="\(q\)">\(q\)</span>, by rank plus nullity [Hefferon, Theorem Three.II.2.14]; choose a basis of <span class="math" data-tex="\(\mathbb R^k\)">\(\mathbb R^k\)</span> whose last <span class="math" data-tex="\(q\)">\(q\)</span> vectors lie in it, and let <span class="math" data-tex="\(C\)">\(C\)</span> be the invertible real matrix with these columns. The last <span class="math" data-tex="\(q\)">\(q\)</span> columns of <span class="math" data-tex="\(M(\xi)C\)">\(M(\xi)C\)</span> vanish at <span class="math" data-tex="\(\xi=t_0\)">\(\xi=t_0\)</span>, so each of their entries is divisible by <span class="math" data-tex="\(\xi-t_0\)">\(\xi-t_0\)</span>. Taking the factor <span class="math" data-tex="\(\xi-t_0\)">\(\xi-t_0\)</span> out of each of these columns, by multilinearity in the columns [Hefferon, Corollary Four.I.3.16], shows that <span class="math" data-tex="\((\xi-t_0)^q\)">\((\xi-t_0)^q\)</span> divides <span class="math" data-tex="\(\det\bigl(M(\xi)C\bigr)=\det M(\xi)\det C\)">\(\det\bigl(M(\xi)C\bigr)=\det M(\xi)\det C\)</span> [Hefferon, Theorem Four.II.1.5], and <span class="math" data-tex="\(\det C\ne0\)">\(\det C\ne0\)</span>. Here the determinant of a polynomial matrix is given by the permutation expansion [Hefferon, Definition Four.I.3.12], a polynomial in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and the two determinant rules hold for it because they are polynomial identities in the entries. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\((\xi-t_1)^{q_1},\ldots,(\xi-t_m)^{q_m}\)">\((\xi-t_1)^{q_1},\ldots,(\xi-t_m)^{q_m}\)</span> all divide a nonzero polynomial, with <span class="math" data-tex="\(t_1,\ldots,t_m\)">\(t_1,\ldots,t_m\)</span> distinct, then so does their product, and the degree of the polynomial is at least <span class="math" data-tex="\(q_1+\cdots+q_m\)">\(q_1+\cdots+q_m\)</span>: each <span class="math" data-tex="\(t_j\)">\(t_j\)</span> is a root of multiplicity at least <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, and the multiplicities of the distinct roots of a nonzero polynomial add up to at most its degree.</p>
+<h2 id="2-the-inequality">2. The inequality</h2>
+<p><strong>Theorem 2.1</strong> (subspace intersection inequality; [OpenAI-B, Lemma 2.1]). Let <span class="math" data-tex="\(W\)">\(W\)</span> be a real vector space of dimension <span class="math" data-tex="\(N\)">\(N\)</span>, let <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, and let <span class="math" data-tex="\(U_1,\ldots,U_m,V_1,\ldots,V_m\)">\(U_1,\ldots,U_m,V_1,\ldots,V_m\)</span> be subspaces of <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(U_i\cap V_i=0\)">\(U_i\cap V_i=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{i,j=1}^m\dim(U_i\cap V_j)\le\Bigl\lfloor\frac{m^2}4\Bigr\rfloor N .
+\]">\[
+\sum_{i,j=1}^m\dim(U_i\cap V_j)\le\Bigl\lfloor\frac{m^2}4\Bigr\rfloor N .
+\]</span></p>
+<p><em>Proof.</em> <em>Interpolation spaces.</em> Choose distinct real numbers <span class="math" data-tex="\(t_1,\ldots,t_m\)">\(t_1,\ldots,t_m\)</span>, the <em>nodes</em>. For a subspace <span class="math" data-tex="\(Z\subseteq W\)">\(Z\subseteq W\)</span> and an integer <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal P_h(Z)=\bigl\{P\in Z[\xi]:\deg P\le h,\\
+P(t_i)\in U_i\text{ for }i=1,\ldots,m\bigr\},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal P_h(Z)=\bigl\{P\in Z[\xi]:\deg P\le h,\\
+P(t_i)\in U_i\text{ for }i=1,\ldots,m\bigr\},
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(\mathcal P_{-1}(Z)=0\)">\(\mathcal P_{-1}(Z)=0\)</span>. These are nested subspaces, <span class="math" data-tex="\(\mathcal P_{h-1}(Z)\subseteq\mathcal P_h(Z)\)">\(\mathcal P_{h-1}(Z)\subseteq\mathcal P_h(Z)\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k_h(Z)=\dim\mathcal P_h(Z)-\dim\mathcal P_{h-1}(Z),\\
+E_h(Z;t)=\{P(t):P\in\mathcal P_h(Z)\}\subseteq Z .
+\end{gathered}
+\]">\[
+\begin{gathered}
+k_h(Z)=\dim\mathcal P_h(Z)-\dim\mathcal P_{h-1}(Z),\\
+E_h(Z;t)=\{P(t):P\in\mathcal P_h(Z)\}\subseteq Z .
+\end{gathered}
+\]</span></p>
+<p><em>(a) Evaluation away from the nodes.</em> Let <span class="math" data-tex="\(t\)">\(t\)</span> be a real number other than the nodes. If <span class="math" data-tex="\(P\in\mathcal P_h(Z)\)">\(P\in\mathcal P_h(Z)\)</span> and <span class="math" data-tex="\(P(t)=0\)">\(P(t)=0\)</span>, then <span class="math" data-tex="\(P=(\xi-t)Q\)">\(P=(\xi-t)Q\)</span> with <span class="math" data-tex="\(Q\in Z[\xi]\)">\(Q\in Z[\xi]\)</span> of degree at most <span class="math" data-tex="\(h-1\)">\(h-1\)</span>, dividing coordinate by coordinate, and <span class="math" data-tex="\(Q(t_i)=P(t_i)/(t_i-t)\in U_i\)">\(Q(t_i)=P(t_i)/(t_i-t)\in U_i\)</span>; so <span class="math" data-tex="\(Q\in\mathcal P_{h-1}(Z)\)">\(Q\in\mathcal P_{h-1}(Z)\)</span>. Conversely <span class="math" data-tex="\((\xi-t)\mathcal P_{h-1}(Z)\subseteq\mathcal P_h(Z)\)">\((\xi-t)\mathcal P_{h-1}(Z)\subseteq\mathcal P_h(Z)\)</span>. Hence the kernel of <span class="math" data-tex="\(P\mapsto P(t)\)">\(P\mapsto P(t)\)</span> on <span class="math" data-tex="\(\mathcal P_h(Z)\)">\(\mathcal P_h(Z)\)</span> is <span class="math" data-tex="\((\xi-t)\mathcal P_{h-1}(Z)\)">\((\xi-t)\mathcal P_{h-1}(Z)\)</span>, which has the dimension of <span class="math" data-tex="\(\mathcal P_{h-1}(Z)\)">\(\mathcal P_{h-1}(Z)\)</span>, and for every <span class="math" data-tex="\(t\)">\(t\)</span> that is not a node
+<span class="math math-display" data-tex="\[
+\dim E_h(Z;t)=k_h(Z).\tag{2.1}
+\]">\[
+\dim E_h(Z;t)=k_h(Z).\tag{2.1}
+\]</span></p>
+<p><em>(b) Evaluation at all nodes.</em> The map <span class="math" data-tex="\(P\mapsto(P(t_1),\ldots,P(t_m))\)">\(P\mapsto(P(t_1),\ldots,P(t_m))\)</span> is a bijection from <span class="math" data-tex="\(\mathcal P_{m-1}(Z)\)">\(\mathcal P_{m-1}(Z)\)</span> onto <span class="math" data-tex="\(\bigoplus_i(U_i\cap Z)\)">\(\bigoplus_i(U_i\cap Z)\)</span>: it lands there, since the coefficients lie in <span class="math" data-tex="\(Z\)">\(Z\)</span>; it is injective, since a polynomial of degree at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span> vanishing at <span class="math" data-tex="\(m\)">\(m\)</span> nodes is zero, coordinate by coordinate; and it is surjective, since for <span class="math" data-tex="\(z_i\in U_i\cap Z\)">\(z_i\in U_i\cap Z\)</span> the polynomial <span class="math" data-tex="\(\sum_iL_i(\xi)z_i\)">\(\sum_iL_i(\xi)z_i\)</span> with the Lagrange polynomials <span class="math" data-tex="\(L_i\)">\(L_i\)</span> of Lemma 1.1 of <a href="interpolation.html">Interpolation</a> has coefficients in <span class="math" data-tex="\(Z\)">\(Z\)</span> and value <span class="math" data-tex="\(z_i\)">\(z_i\)</span> at <span class="math" data-tex="\(t_i\)">\(t_i\)</span>. Summing the definition of <span class="math" data-tex="\(k_h\)">\(k_h\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{h=0}^{m-1}k_h(Z)\\
+=\dim\mathcal P_{m-1}(Z)\\
+=\sum_{i=1}^m\dim(U_i\cap Z).
+\end{gathered}\tag{2.2}
+\]">\[
+\begin{gathered}
+\sum_{h=0}^{m-1}k_h(Z)\\
+=\dim\mathcal P_{m-1}(Z)\\
+=\sum_{i=1}^m\dim(U_i\cap Z).
+\end{gathered}\tag{2.2}
+\]</span></p>
+<p><em>(c) A filtration of <span class="math" data-tex="\(W\)">\(W\)</span>.</em> Fix a real number <span class="math" data-tex="\(t_*\)">\(t_*\)</span> other than the nodes. As <span class="math" data-tex="\(\mathcal P_{h-1}(W)\subseteq\mathcal P_h(W)\)">\(\mathcal P_{h-1}(W)\subseteq\mathcal P_h(W)\)</span>, the spaces <span class="math" data-tex="\(E_h(W;t_*)\)">\(E_h(W;t_*)\)</span> increase with <span class="math" data-tex="\(h\)">\(h\)</span>, and by (2.1) the numbers <span class="math" data-tex="\(\ell_h=k_h(W)-k_{h-1}(W)\)">\(\ell_h=k_h(W)-k_{h-1}(W)\)</span>, with <span class="math" data-tex="\(k_{-1}=0\)">\(k_{-1}=0\)</span>, are nonnegative. Choose polynomials stage by stage: at stage <span class="math" data-tex="\(h=0,1,\ldots,m-1\)">\(h=0,1,\ldots,m-1\)</span>, choose <span class="math" data-tex="\(\ell_h\)">\(\ell_h\)</span> elements of <span class="math" data-tex="\(\mathcal P_h(W)\)">\(\mathcal P_h(W)\)</span> whose values at <span class="math" data-tex="\(t_*\)">\(t_*\)</span> extend the values chosen before to a basis of <span class="math" data-tex="\(E_h(W;t_*)\)">\(E_h(W;t_*)\)</span>. Let <span class="math" data-tex="\(M_h(\xi)\)">\(M_h(\xi)\)</span> be the polynomial matrix whose columns are all elements chosen up to stage <span class="math" data-tex="\(h\)">\(h\)</span>; it has <span class="math" data-tex="\(r_h=k_h(W)\)">\(r_h=k_h(W)\)</span> columns, linearly independent at <span class="math" data-tex="\(t_*\)">\(t_*\)</span>, each in <span class="math" data-tex="\(\mathcal P_h(W)\)">\(\mathcal P_h(W)\)</span>, and a column chosen at stage <span class="math" data-tex="\(e\)">\(e\)</span> has degree at most <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p>Since the columns of <span class="math" data-tex="\(M_h(t_*)\)">\(M_h(t_*)\)</span> are independent, <span class="math" data-tex="\(M_h(t_*)\)">\(M_h(t_*)\)</span> has <span class="math" data-tex="\(r_h\)">\(r_h\)</span> linearly independent rows [Hefferon, Theorem Two.III.3.11]; let <span class="math" data-tex="\(\Delta_h(\xi)\)">\(\Delta_h(\xi)\)</span> be the determinant of the square submatrix of <span class="math" data-tex="\(M_h(\xi)\)">\(M_h(\xi)\)</span> formed by these rows (with <span class="math" data-tex="\(\Delta_h=1\)">\(\Delta_h=1\)</span> if <span class="math" data-tex="\(r_h=0\)">\(r_h=0\)</span>). Then <span class="math" data-tex="\(\Delta_h(t_*)\ne0\)">\(\Delta_h(t_*)\ne0\)</span>, so <span class="math" data-tex="\(\Delta_h\)">\(\Delta_h\)</span> is a nonzero polynomial, and in the permutation expansion each term is a product of one entry from each column, so
+<span class="math math-display" data-tex="\[
+\deg\Delta_h\le\sum_{e=0}^he\,\ell_e .\tag{2.3}
+\]">\[
+\deg\Delta_h\le\sum_{e=0}^he\,\ell_e .\tag{2.3}
+\]</span></p>
+<p><em>(d) Rank loss at the nodes.</em> Fix <span class="math" data-tex="\(j\)">\(j\)</span> and let <span class="math" data-tex="\(\pi_j:W\to W/V_j\)">\(\pi_j:W\to W/V_j\)</span> be the quotient map. We claim
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\dim E_h(W;t_j)\\
+\le k_h(W)-k_h(V_j).
+\end{gathered}\tag{2.4}
+\]">\[
+\begin{gathered}
+\dim E_h(W;t_j)\\
+\le k_h(W)-k_h(V_j).
+\end{gathered}\tag{2.4}
+\]</span>
+Let <span class="math" data-tex="\(t\)">\(t\)</span> be a real number other than the nodes. The space <span class="math" data-tex="\(E_h(W;t)\)">\(E_h(W;t)\)</span> has dimension <span class="math" data-tex="\(k_h(W)\)">\(k_h(W)\)</span> by (2.1) and contains <span class="math" data-tex="\(E_h(V_j;t)\)">\(E_h(V_j;t)\)</span>, of dimension <span class="math" data-tex="\(k_h(V_j)\)">\(k_h(V_j)\)</span>, which lies in <span class="math" data-tex="\(V_j=\ker\pi_j\)">\(V_j=\ker\pi_j\)</span>; so <span class="math" data-tex="\(\dim\pi_j(E_h(W;t))\le k_h(W)-k_h(V_j)\)">\(\dim\pi_j(E_h(W;t))\le k_h(W)-k_h(V_j)\)</span>. Take a basis of <span class="math" data-tex="\(\mathcal P_h(W)\)">\(\mathcal P_h(W)\)</span> and the polynomial matrix whose columns are the images of its elements under <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span>, in coordinates of <span class="math" data-tex="\(W/V_j\)">\(W/V_j\)</span>; its value at <span class="math" data-tex="\(t\)">\(t\)</span> spans <span class="math" data-tex="\(\pi_j(E_h(W;t))\)">\(\pi_j(E_h(W;t))\)</span>. By Lemma 1.1 its rank at <span class="math" data-tex="\(t_j\)">\(t_j\)</span> is also at most <span class="math" data-tex="\(k_h(W)-k_h(V_j)\)">\(k_h(W)-k_h(V_j)\)</span>. But <span class="math" data-tex="\(E_h(W;t_j)\subseteq U_j\)">\(E_h(W;t_j)\subseteq U_j\)</span>, by the definition of <span class="math" data-tex="\(\mathcal P_h\)">\(\mathcal P_h\)</span>, and <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span> is injective on <span class="math" data-tex="\(U_j\)">\(U_j\)</span> because <span class="math" data-tex="\(U_j\cap V_j=0\)">\(U_j\cap V_j=0\)</span>; so <span class="math" data-tex="\(\dim E_h(W;t_j)=\dim\pi_j(E_h(W;t_j))\)">\(\dim E_h(W;t_j)=\dim\pi_j(E_h(W;t_j))\)</span>, which proves (2.4).</p>
+<p>The columns of <span class="math" data-tex="\(M_h(t_j)\)">\(M_h(t_j)\)</span> lie in <span class="math" data-tex="\(E_h(W;t_j)\)">\(E_h(W;t_j)\)</span>, so <span class="math" data-tex="\(M_h(t_j)\)">\(M_h(t_j)\)</span> and its square submatrix defining <span class="math" data-tex="\(\Delta_h\)">\(\Delta_h\)</span> have rank at most <span class="math" data-tex="\(r_h-k_h(V_j)\)">\(r_h-k_h(V_j)\)</span>. By Lemma 1.2, <span class="math" data-tex="\((\xi-t_j)^{k_h(V_j)}\)">\((\xi-t_j)^{k_h(V_j)}\)</span> divides <span class="math" data-tex="\(\Delta_h\)">\(\Delta_h\)</span>. This holds for every <span class="math" data-tex="\(j\)">\(j\)</span>, and the nodes are distinct, so by the remark after Lemma 1.2 and (2.3),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{j=1}^mk_h(V_j)\le\deg\Delta_h\\
+\le\sum_{e=0}^he\,\ell_e .
+\end{gathered}\tag{2.5}
+\]">\[
+\begin{gathered}
+\sum_{j=1}^mk_h(V_j)\le\deg\Delta_h\\
+\le\sum_{e=0}^he\,\ell_e .
+\end{gathered}\tag{2.5}
+\]</span></p>
+<p><em>(e) Summation.</em> Add (2.5) over <span class="math" data-tex="\(h=0,\ldots,m-1\)">\(h=0,\ldots,m-1\)</span>. By (2.2) with <span class="math" data-tex="\(Z=V_j\)">\(Z=V_j\)</span> the left side becomes <span class="math" data-tex="\(\sum_j\sum_i\dim(U_i\cap V_j)\)">\(\sum_j\sum_i\dim(U_i\cap V_j)\)</span>. On the right, <span class="math" data-tex="\(\ell_e\)">\(\ell_e\)</span> occurs for the <span class="math" data-tex="\(m-e\)">\(m-e\)</span> values <span class="math" data-tex="\(h=e,\ldots,m-1\)">\(h=e,\ldots,m-1\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{i,j=1}^m\dim(U_i\cap V_j)&amp;\le\sum_{e=0}^{m-1}e(m-e)\,\ell_e\\
+&amp;\le\Bigl\lfloor\frac{m^2}4\Bigr\rfloor\sum_{e=0}^{m-1}\ell_e\\
+&amp;\le\Bigl\lfloor\frac{m^2}4\Bigr\rfloor N,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{i,j=1}^m\dim(U_i\cap V_j)&amp;\le\sum_{e=0}^{m-1}e(m-e)\,\ell_e\\
+&amp;\le\Bigl\lfloor\frac{m^2}4\Bigr\rfloor\sum_{e=0}^{m-1}\ell_e\\
+&amp;\le\Bigl\lfloor\frac{m^2}4\Bigr\rfloor N,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(e(m-e)\le m^2/4\)">\(e(m-e)\le m^2/4\)</span> for every integer <span class="math" data-tex="\(e\)">\(e\)</span>, so <span class="math" data-tex="\(e(m-e)\le\lfloor m^2/4\rfloor\)">\(e(m-e)\le\lfloor m^2/4\rfloor\)</span>, and <span class="math" data-tex="\(\sum_{e=0}^{m-1}\ell_e=k_{m-1}(W)\)">\(\sum_{e=0}^{m-1}\ell_e=k_{m-1}(W)\)</span>, which equals <span class="math" data-tex="\(\dim E_{m-1}(W;t_*)\le N\)">\(\dim E_{m-1}(W;t_*)\le N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 2.2</strong> (sharpness; [OpenAI-B, Remark 2.2]). Write <span class="math" data-tex="\(W=P\oplus Q\)">\(W=P\oplus Q\)</span> with <span class="math" data-tex="\(\dim P+\dim Q=N\)">\(\dim P+\dim Q=N\)</span>, split the indices into a group of <span class="math" data-tex="\(\lfloor m/2\rfloor\)">\(\lfloor m/2\rfloor\)</span> and a group of <span class="math" data-tex="\(\lceil m/2\rceil\)">\(\lceil m/2\rceil\)</span>, and put <span class="math" data-tex="\((U_i,V_i)=(P,Q)\)">\((U_i,V_i)=(P,Q)\)</span> in the first group and <span class="math" data-tex="\((U_i,V_i)=(Q,P)\)">\((U_i,V_i)=(Q,P)\)</span> in the second. Then <span class="math" data-tex="\(U_i\cap V_i=0\)">\(U_i\cap V_i=0\)</span>, pairs within a group contribute <span class="math" data-tex="\(0\)">\(0\)</span>, and each pair from different groups contributes <span class="math" data-tex="\(\dim P\)">\(\dim P\)</span> or <span class="math" data-tex="\(\dim Q\)">\(\dim Q\)</span>; the total is <span class="math" data-tex="\(\lfloor m/2\rfloor\lceil m/2\rceil N=\lfloor m^2/4\rfloor N\)">\(\lfloor m/2\rfloor\lceil m/2\rceil N=\lfloor m^2/4\rfloor N\)</span>.</p>
+<h2 id="3-ranks-of-differences">3. Ranks of differences</h2>
+<p><strong>Corollary 3.1</strong> (ranks of differences; [OpenAI-B, Corollary 2.3]). Let <span class="math" data-tex="\(X_1,\ldots,X_m,Y_1,\ldots,Y_m\)">\(X_1,\ldots,X_m,Y_1,\ldots,Y_m\)</span> be real <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> matrices such that <span class="math" data-tex="\(X_i-Y_i\)">\(X_i-Y_i\)</span> is invertible for every <span class="math" data-tex="\(i\)">\(i\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i\ne j}\operatorname{rank}(X_i-Y_j)\ge2\,d_m\,d,\\
+d_m=\Bigl\lfloor\frac m2\Bigr\rfloor\Bigl\lfloor\frac{m-1}2\Bigr\rfloor,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{i\ne j}\operatorname{rank}(X_i-Y_j)\ge2\,d_m\,d,\\
+d_m=\Bigl\lfloor\frac m2\Bigr\rfloor\Bigl\lfloor\frac{m-1}2\Bigr\rfloor,
+\end{gathered}
+\]</span>
+the sum over the ordered pairs of distinct indices.</p>
+<p><em>Proof.</em> In <span class="math" data-tex="\(W=\mathbb R^d\oplus\mathbb R^d\)">\(W=\mathbb R^d\oplus\mathbb R^d\)</span>, of dimension <span class="math" data-tex="\(N=2d\)">\(N=2d\)</span>, let <span class="math" data-tex="\(U_i=\{(x,X_ix)\}\)">\(U_i=\{(x,X_ix)\}\)</span> and <span class="math" data-tex="\(V_j=\{(x,Y_jx)\}\)">\(V_j=\{(x,Y_jx)\}\)</span> be the graphs of the two matrices. The map <span class="math" data-tex="\(x\mapsto(x,X_ix)\)">\(x\mapsto(x,X_ix)\)</span> is injective and carries <span class="math" data-tex="\(\ker(X_i-Y_j)\)">\(\ker(X_i-Y_j)\)</span> onto <span class="math" data-tex="\(U_i\cap V_j\)">\(U_i\cap V_j\)</span>, so
+<span class="math math-display" data-tex="\[
+\dim(U_i\cap V_j)=d-\operatorname{rank}(X_i-Y_j),
+\]">\[
+\dim(U_i\cap V_j)=d-\operatorname{rank}(X_i-Y_j),
+\]</span>
+and in particular <span class="math" data-tex="\(U_i\cap V_i=0\)">\(U_i\cap V_i=0\)</span>. Theorem 2.1 gives <span class="math" data-tex="\(\sum_{i,j}\bigl(d-\operatorname{rank}(X_i-Y_j)\bigr)\le2d\lfloor m^2/4\rfloor\)">\(\sum_{i,j}\bigl(d-\operatorname{rank}(X_i-Y_j)\bigr)\le2d\lfloor m^2/4\rfloor\)</span>. The <span class="math" data-tex="\(m\)">\(m\)</span> diagonal terms have rank <span class="math" data-tex="\(d\)">\(d\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i\ne j}\operatorname{rank}(X_i-Y_j)\\
+\ge\Bigl(m^2-m-2\Bigl\lfloor\frac{m^2}4\Bigr\rfloor\Bigr)d ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{i\ne j}\operatorname{rank}(X_i-Y_j)\\
+\ge\Bigl(m^2-m-2\Bigl\lfloor\frac{m^2}4\Bigr\rfloor\Bigr)d ,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(m^2-m-2\lfloor m^2/4\rfloor\)">\(m^2-m-2\lfloor m^2/4\rfloor\)</span> equals <span class="math" data-tex="\(4r^2-2r-2r^2=2r(r-1)\)">\(4r^2-2r-2r^2=2r(r-1)\)</span> for <span class="math" data-tex="\(m=2r\)">\(m=2r\)</span> and <span class="math" data-tex="\(4r^2+2r-2(r^2+r)=2r^2\)">\(4r^2+2r-2(r^2+r)=2r^2\)</span> for <span class="math" data-tex="\(m=2r+1\)">\(m=2r+1\)</span>, which is <span class="math" data-tex="\(2d_m\)">\(2d_m\)</span> in both cases. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(m\le2\)">\(m\le2\)</span> the bound is <span class="math" data-tex="\(0\)">\(0\)</span>; for <span class="math" data-tex="\(m=3\)">\(m=3\)</span> it says that the six off-diagonal differences have total rank at least <span class="math" data-tex="\(2d\)">\(2d\)</span>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Prove Theorem 2.1 for <span class="math" data-tex="\(m=2\)">\(m=2\)</span> directly: if <span class="math" data-tex="\(U_1\cap V_1=0\)">\(U_1\cap V_1=0\)</span> and <span class="math" data-tex="\(U_2\cap V_2=0\)">\(U_2\cap V_2=0\)</span>, then <span class="math" data-tex="\(\dim(U_1\cap V_2)+\dim(U_2\cap V_1)\le N\)">\(\dim(U_1\cap V_2)+\dim(U_2\cap V_1)\le N\)</span>. (Show that the two intersections meet only in <span class="math" data-tex="\(0\)">\(0\)</span>.)</p>
+<p><strong>4.2.</strong> Let <span class="math" data-tex="\(m=3\)">\(m=3\)</span> and <span class="math" data-tex="\(d=1\)">\(d=1\)</span>: <span class="math" data-tex="\(X_i,Y_i\)">\(X_i,Y_i\)</span> are numbers with <span class="math" data-tex="\(X_i\ne Y_i\)">\(X_i\ne Y_i\)</span>. Show directly that at least two of the six differences <span class="math" data-tex="\(X_i-Y_j\)">\(X_i-Y_j\)</span>, <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, are nonzero.</p>
+<p><strong>4.3.</strong> Give an example of real numbers <span class="math" data-tex="\(X_1,X_2,X_3,Y_1,Y_2,Y_3\)">\(X_1,X_2,X_3,Y_1,Y_2,Y_3\)</span> with <span class="math" data-tex="\(X_i\ne Y_i\)">\(X_i\ne Y_i\)</span> for which exactly two of the six off-diagonal differences are nonzero, so Corollary 3.1 is sharp for <span class="math" data-tex="\(m=3\)">\(m=3\)</span>, <span class="math" data-tex="\(d=1\)">\(d=1\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> A vector in <span class="math" data-tex="\((U_1\cap V_2)\cap(U_2\cap V_1)\)">\((U_1\cap V_2)\cap(U_2\cap V_1)\)</span> lies in <span class="math" data-tex="\(U_1\cap V_1=0\)">\(U_1\cap V_1=0\)</span>. Two subspaces meeting only in <span class="math" data-tex="\(0\)">\(0\)</span> have dimensions adding up to at most <span class="math" data-tex="\(N\)">\(N\)</span>. Here <span class="math" data-tex="\(\lfloor4/4\rfloor=1\)">\(\lfloor4/4\rfloor=1\)</span>.</p>
+<p><strong>4.2.</strong> Suppose at most one off-diagonal difference is nonzero. Renumbering the indices (the same permutation for the <span class="math" data-tex="\(X\)">\(X\)</span> and the <span class="math" data-tex="\(Y\)">\(Y\)</span>), we may assume that all except possibly <span class="math" data-tex="\(X_1-Y_2\)">\(X_1-Y_2\)</span> vanish. Then <span class="math" data-tex="\(X_1=Y_3=X_2=Y_1\)">\(X_1=Y_3=X_2=Y_1\)</span>, using <span class="math" data-tex="\(X_1-Y_3=0\)">\(X_1-Y_3=0\)</span>, <span class="math" data-tex="\(X_2-Y_3=0\)">\(X_2-Y_3=0\)</span> and <span class="math" data-tex="\(X_2-Y_1=0\)">\(X_2-Y_1=0\)</span>; this contradicts <span class="math" data-tex="\(X_1\ne Y_1\)">\(X_1\ne Y_1\)</span>.</p>
+<p><strong>4.3.</strong> Take <span class="math" data-tex="\(X_1=X_2=0\)">\(X_1=X_2=0\)</span>, <span class="math" data-tex="\(Y_1=Y_2=1\)">\(Y_1=Y_2=1\)</span>, and <span class="math" data-tex="\(X_3=1\)">\(X_3=1\)</span>, <span class="math" data-tex="\(Y_3=0\)">\(Y_3=0\)</span>. Then <span class="math" data-tex="\(X_1-Y_3=X_2-Y_3=0\)">\(X_1-Y_3=X_2-Y_3=0\)</span>, <span class="math" data-tex="\(X_3-Y_1=X_3-Y_2=0\)">\(X_3-Y_1=X_3-Y_2=0\)</span>, and the nonzero ones are <span class="math" data-tex="\(X_1-Y_2=-1\)">\(X_1-Y_2=-1\)</span> and <span class="math" data-tex="\(X_2-Y_1=-1\)">\(X_2-Y_1=-1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Hefferon] J. Hefferon, <em>Linear Algebra</em>, fourth edition, 2020, Theorem Two.III.3.11, Theorem Three.II.2.14, Lemma Four.I.2.4, Definition Four.I.3.12, Corollary Four.I.3.16 and Theorem Four.II.1.5; the text of the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B40">Linear Algebra</a>, on the author's page. https://jheffero.w3.uvm.edu/linearalgebra/</li>
+<li>[OpenAI-B] OpenAI, <em>The crossing number of complete bipartite graphs</em>, OpenAI Math Release preprint, 23 September 2026, Section 2, Lemma 2.1, Remark 2.2 and Corollary 2.3. https://github.com/openai/math/tree/main/preprints/The-crossing-number-of-complete-bipartite-graphs-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

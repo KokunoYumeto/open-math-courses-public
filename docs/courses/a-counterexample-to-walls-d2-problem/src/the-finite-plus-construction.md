@@ -8,7 +8,7 @@ Let \(B\) be a finite complex of dimension two and \(K\) a normal subgroup of it
 - Cycles that pass once through the new cells (Lemma 2.1).
 - The construction and its three properties (Proposition 3.1).
 
-The lesson follows [OpenAI-W, Section 3]. It uses chains of covers, coefficients in a module and the standard theorems TOP1 to TOP4 from [Wall's D(2) problem and twisted homology](walls-d2-problem-and-twisted-homology.md).
+The lesson follows [OpenAI-W, Section 3]. It uses chains of covers, coefficients in a module and the theorems TOP1 to TOP4 from [Wall's D(2) problem and twisted homology](walls-d2-problem-and-twisted-homology.md), which are proved in the programme.
 
 ## 1. The setting
 
@@ -53,7 +53,7 @@ This is the place where the perfectness of \(K\) is used. The cycle \(\alpha_j\)
 
 ## 3. The construction
 
-**Proposition 3.1** ([OpenAI-W]; Quillen, Mannan). Assume TOP1 to TOP4. In the setting of Section 1 there is a finite complex \(X\) that contains \(B\) and has, besides the cells of \(B\), exactly \(r\) cells of dimension two and \(r\) cells of dimension three, such that:
+**Proposition 3.1** ([OpenAI-W]; Quillen, Mannan). In the setting of Section 1 there is a finite complex \(X\) that contains \(B\) and has, besides the cells of \(B\), exactly \(r\) cells of dimension two and \(r\) cells of dimension three, such that:
 
 1. the inclusion \(B\to X\) induces the quotient map \(P\to G\) on the fundamental groups;
 2. \(H_i(\widetilde X;\mathbb Z)=0\) for all \(i>2\), and \(H^3(X;M)=0\) for every left \(R\)-module \(M\): the complex \(X\) satisfies the condition D(2);

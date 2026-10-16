@@ -50,7 +50,7 @@ be the set of the \(m\) *diagonal leaf cells*.
 
 **Proposition 3.1.** Every ordered copy of \(H\) in \(A_h\) maps the entry \((65,65)\) of \(H\) to a cell of \(\mathcal L_h\). Consequently
 \[
-N_H(A_h)\le m\,n^{130},\qquad\frac{N_H(A_h)}{n^{132}}\le\frac{2^{-h}}{d_h^2}.
+N_H(A_h)\le m\,n^{130},\quad\frac{N_H(A_h)}{n^{132}}\le\frac{2^{-h}}{d_h^2}.
 \]
 
 *Proof.* By Corollary 2.2, the last two rows \(r_1<r_2\) and columns \(c_1<c_2\) of a copy form a body in some mode \(t\), and their entries must be \(P\). We use Lemma 3.1 and the table of entries of the previous lesson.

@@ -5,7 +5,7 @@
 
 An integrable orbit has a weak Fourier field. The proof starts with the entire positive orbit average and its bounded domain, then proves a uniform coefficient estimate and the exact filter multiplier. Those steps identify the field support and show why an integrable action detects actual eigenoperators in every nonzero open localization.
 
-The arbitrary LCH abelian group and arbitrary von Neumann algebra are retained. Weak C0 decay is distinguished from operator-norm decay. The real translation example is a separate exact model; it is not a countable reduction of the group.
+The group is arbitrary LCH abelian, and the von Neumann algebra is arbitrary. Weak C0 decay is distinguished from operator-norm decay. The real translation example is a separate exact model; it is not a countable reduction of the group.
 
 *Original expression and illustration are CC0-1.0 to the extent of rights held; earlier component terms remain their own.*
 
@@ -20,7 +20,7 @@ Use the actual arbitrary-group Haar conventions [HR3/5/7–9](OA-FLOW-HR.md#hr-0
 
 <a id="oa-flow.l114.conventions"></a>
 
-Throughout, \(G\) is LCH abelian, \(H=\widehat G\), \(M\) is a nonzero von Neumann algebra, and \(\alpha\) is a point-ultraweakly continuous normal action. The retained I-formulas use positive spectral labels. Write \(p\mapsto-p\) for inversion of characters. For the same \(b\in L^1(G)\), put
+Throughout, \(G\) is LCH abelian, \(H=\widehat G\), \(M\) is a nonzero von Neumann algebra, and \(\alpha\) is a point-ultraweakly continuous normal action. The I-formulas use positive spectral labels. Write \(p\mapsto-p\) for inversion of characters. For the same \(b\in L^1(G)\), put
 
 <a id="equation-ip1"></a>
 
@@ -41,7 +41,7 @@ Let \(T_b\) be the actual normal AT5 filter. The positive-label annihilator is \
  \operatorname{Sp}(\alpha)=-\operatorname{sp}(\alpha).
  \tag{IP2}
 \]
-The same reflection transports all filter supports, ideals and their hulls. An eigenphase \(p(t)\) has the GL/SS label \(-p\), hence the retained positive label \(p\). The open filter span with positive supports in \(V\) is the negative-support span for \(-V\). Every GL/SS use below is through this dictionary; no sign is silently identified.
+The same reflection transports all filter supports, ideals and their hulls. An eigenphase \(p(t)\) has the GL/SS label \(-p\), hence the positive label \(p\). The open filter span with positive supports in \(V\) is the negative-support span for \(-V\). Every GL/SS use below is through this dictionary; no sign is silently identified.
 
 <a id="oa-flow.l114.average"></a><a id="oa-flow.intspec.domain"></a>
 
@@ -281,7 +281,7 @@ Let \(f=\mathcal Fb\in A(H)\), using the positive Fourier sign
 
 $$f(p)=\int_Gb(t)(t,p)\,dt. \tag{I16}$$
 
-The normal AT5 filter, in the retained positive-label convention, is
+The normal AT5 filter, in the positive-label convention, is
 
 <a id="equation-i17"></a>
 
@@ -522,13 +522,13 @@ For the translation action (I25), every character \(r\mapsto e^{-irp}\) is a non
 <a id="oa-flow.l114.sources"></a>
 
 <a id="ip-sources"></a>
-## Sources and bounded conclusion
+## Sources and scope
 
-The integrable-action spectral assertions correspond to Takesaki, *Theory of Operator Algebras II*, [XI.2 Lemma 2.6, printed 334–335](https://doi.org/10.1007/978-3-662-10451-4). The complete local normal/extended average, controlled density, near-norm vector-series estimate, qualified product integrations and direct open-localization argument supply the steps required here. The historical I1–I37 displays, translation model and original problem/solution are retained.
+The integrable-action spectral assertions correspond to Takesaki, *Theory of Operator Algebras II*, [XI.2 Lemma 2.6, printed 334–335](https://doi.org/10.1007/978-3-662-10451-4). The complete local normal/extended average, controlled density, near-norm vector-series estimate, qualified product integrations and direct open-localization argument supply the steps required here. The translation model and solved problem illustrate the Fourier-field and localization formulas (I1)–(I37).
 
-The earlier freely accessible Haar, Fourier and normal-action developments remain in use. Arveson, [*On groups of automorphisms of operator algebras*](https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf), J. Funct. Anal. 15 (1974), Section 1, is a primary account of integration with explicit continuity hypotheses; LF/GL/SS supply the actual complete scalar and normal-action proofs used here. Citations do not replace programme premises.
+The Haar, Fourier and normal-action lessons provide the integration and spectral tools. Arveson, [*On groups of automorphisms of operator algebras*](https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf), J. Funct. Anal. 15 (1974), Section 1, is a primary account of integration with explicit continuity hypotheses; LF/GL/SS supply the actual complete scalar and normal-action proofs used here. Citations do not replace programme premises.
 
-The bounded conclusion is the full normal faithful orbit-integration operator-valued weight, its exact bounded domain and semifiniteness criterion; the integrable-domain Fourier field and exact multiplier/support formula; and, for an integrable action, open eigenfrequency detection and the closed point-spectrum theorem. No recognition, dual-system integrability, Connes subgroup or whole C3/C1–C6 conclusion is inferred.
+The conclusion is the full normal faithful orbit-integration operator-valued weight, its exact bounded domain and semifiniteness criterion; the integrable-domain Fourier field and exact multiplier/support formula; and, for an integrable action, open eigenfrequency detection and the closed point-spectrum theorem.
 
 <a id="oa-flow.l114.figure"></a>
 

@@ -85,13 +85,22 @@ The flag condition is what makes the right-angled Artin group of \(L\) see the s
 
 ## 5. Solutions
 
-**4.1.** For \(n=0\) both sides are \(1\). If it holds for \(n\), then \((\cos\theta+v\sin\theta)^{n+1}=(\cos n\theta+v\sin n\theta)(\cos\theta+v\sin\theta)=\cos n\theta\cos\theta+v^2\sin n\theta\sin\theta+v(\sin n\theta\cos\theta+\cos n\theta\sin\theta)\), which is \(\cos(n+1)\theta+v\sin(n+1)\theta\) since \(v^2=-1\). The inverse of \(\cos\theta+v\sin\theta\) is its conjugate \(\cos\theta-v\sin\theta=\cos(-\theta)+v\sin(-\theta)\), which gives negative \(n\).
+**4.1.** For \(n=0\) both sides are \(1\). If it holds for \(n\), then
+\[
+\begin{aligned}
+&(\cos\theta+v\sin\theta)^{n+1}\\
+&\quad=(\cos n\theta+v\sin n\theta)(\cos\theta+v\sin\theta)\\
+&\quad=\cos n\theta\cos\theta+v^2\sin n\theta\sin\theta\\
+&\qquad+v(\sin n\theta\cos\theta+\cos n\theta\sin\theta),
+\end{aligned}
+\]
+which is \(\cos(n+1)\theta+v\sin(n+1)\theta\) since \(v^2=-1\). The inverse of \(\cos\theta+v\sin\theta\) is its conjugate \(\cos\theta-v\sin\theta=\cos(-\theta)+v\sin(-\theta)\), which gives negative \(n\).
 
 **4.2.** One vertex, one loop \(x\) and one \(2\)-cell with \(d_2=2\colon\mathbb Z\to\mathbb Z\). So \(H_1=\mathbb Z/2\ne0\).
 
 **4.3.** \(\alpha(x^2)=u^2=-1\). Hatcher's surjection \(\rho\) sends \(a\) and \(b\) to rotations with \(\rho(ab)^2=1\), so \(\rho(x^2)=\rho(ab)^2=1\). If \(\alpha=\beta\circ\rho\) for a homomorphism \(\beta\) from the rotation group, then \(\alpha(x^2)=\beta(1)=1\), a contradiction. The values in \(H\) are used twice: the comparison theorem is proved for labels in \(H\), with the degree theory of [Word maps on unit quaternions and degree](word-maps-on-unit-quaternions-and-degree.md), and the transport of [Small transport and the counterexample](small-transport-and-the-counterexample.md) extends a map over the \(2\)-cells of the universal cover of \(L\) using that \(H\) is simply connected.
 
-**4.4.** \(\sin\theta\approx0.5878\), \(\cos\theta\approx0.8090\), \(\cos\varphi\approx0.8507\), \(\sin\varphi\approx0.5257\). Then \(v\sin\theta\approx0.5000\,i+0.3090\,j\), \(\cos\theta-v\sin\theta\approx0.8090-0.5000\,i-0.3090\,j\), and \(w=i(0.8090-0.5000i-0.3090j)\approx0.5000+0.8090\,i-0.3090\,k\), using \(i^2=-1\) and \(ij=k\). Its real part is \(\frac12\) and its norm is \(1\); with \(w=\frac12+\frac{\sqrt3}2n\), \(w^3=-1\).
+**4.4.** \(\sin\theta\approx0.5878\), \(\cos\theta\approx0.8090\), \(\cos\varphi\approx0.8507\), \(\sin\varphi\approx0.5257\). Then \(v\sin\theta\approx0.5000\,i+0.3090\,j\), \(\cos\theta-v\sin\theta\) is approximately \(0.8090-0.5000\,i-0.3090\,j\), and \(w=i(0.8090-0.5000i-0.3090j)\) is approximately \(0.5000+0.8090\,i-0.3090\,k\), using \(i^2=-1\) and \(ij=k\). Its real part is \(\frac12\) and its norm is \(1\); with \(w=\frac12+\frac{\sqrt3}2n\), \(w^3=-1\).
 
 ## References
 

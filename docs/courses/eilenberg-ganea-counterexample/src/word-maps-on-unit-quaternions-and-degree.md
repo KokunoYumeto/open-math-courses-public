@@ -25,7 +25,7 @@ The quaternions \(\mathbb H\) form the real algebra with basis \(1,i,j,k\) and \
 \]
 and \(|a^{-1}-1|=|a-1|=|gag^{-1}-1|\). In particular \(|a_1\cdots a_n-1|\le\sum_j|a_j-1|\).
 
-*Proof.* The first inequality follows by telescoping: \(\prod a_j-\prod b_j\) is the sum over \(k\) of \(a_1\cdots a_{k-1}(a_k-b_k)b_{k+1}\cdots b_n\), and each term has norm \(|a_k-b_k|\). For the second, \(ab-ba=(a-1)(b-1)-(b-1)(a-1)\). Finally \(|a^{-1}-1|=|a^{-1}(1-a)|=|1-a|\) and \(|gag^{-1}-1|=|g(a-1)g^{-1}|=|a-1|\). \(\square\)
+*Proof.* The first inequality follows by telescoping: \(\prod a_j-\prod b_j\) is the sum over \(k\) of \(a_1\cdots a_{k-1}(a_k-b_k)b_{k+1}\cdots b_n\), and each term has norm \(|a_k-b_k|\). For the second, \(ab-ba\) equals \((a-1)(b-1)-(b-1)(a-1)\). Finally \(|a^{-1}-1|=|a^{-1}(1-a)|=|1-a|\) and \(|gag^{-1}-1|=|g(a-1)g^{-1}|=|a-1|\). \(\square\)
 
 The *imaginary* quaternions \(\operatorname{Im}\mathbb H\) are those with \(a_0=0\). Every unit quaternion is \(\exp(w)=\cos|w|+\frac w{|w|}\sin|w|\) for some \(w\in\operatorname{Im}\mathbb H\), and \(\exp\) is a diffeomorphism from the open ball of radius \(\pi\) onto \(H\setminus\{-1\}\); its inverse is the *logarithm* \(\log\). Conjugation is an automorphism of \(\mathbb H\) preserving \(\operatorname{Im}\mathbb H\) and the norm, so \(g\exp(w)g^{-1}=\exp(gwg^{-1})\).
 
@@ -65,7 +65,14 @@ Fix an odd prime \(p\), put \(\zeta=e^{2\pi i/p}\in J\), and let \(c\colon H^m\t
 
 **Lemma 4.1.** In the coordinates \(a=z+wj\), \(c\) acts on each factor by \((z,w)\mapsto(z,\omega w)\). The fixed set of every nontrivial element of \(C_p\) is \(J^m\), so \(C_p\) acts freely on \(H^m\setminus J^m\). Simultaneous conjugation by any element of \(H\), in particular \(c\), preserves the orientation of \(H^m\), and every word map commutes with \(c\).
 
-*Proof.* \(\zeta(z+wj)\zeta^{-1}=z+\zeta w\,j\bar\zeta=z+\zeta w\zeta j=z+\omega wj\), since \(j\bar\zeta=\zeta j\). The element \(c^r\), \(0<r<p\), multiplies \(w\) by \(\omega^r\ne1\), as \(p\) does not divide \(2r\); so it fixes exactly the points with \(w=0\) in every factor. Conjugation by \(g\) is joined to the identity by conjugations along a path from \(1\) to \(g\) in the connected group \(H\), so it preserves orientation. \(\square\)
+*Proof.* For a quaternion \(z+wj\),
+\[
+\begin{aligned}
+\zeta(z+wj)\zeta^{-1}&=z+\zeta w\,j\bar\zeta\\
+&=z+\zeta w\zeta j=z+\omega wj,
+\end{aligned}
+\]
+since \(j\bar\zeta=\zeta j\). The element \(c^r\), \(0<r<p\), multiplies \(w\) by \(\omega^r\ne1\), as \(p\) does not divide \(2r\); so it fixes exactly the points with \(w=0\) in every factor. Conjugation by \(g\) is joined to the identity by conjugations along a path from \(1\) to \(g\) in the connected group \(H\), so it preserves orientation. \(\square\)
 
 ## 5. The localized degree of a word map
 
@@ -73,7 +80,7 @@ Fix an odd prime \(p\), put \(\zeta=e^{2\pi i/p}\in J\), and let \(c\colon H^m\t
 
 *Proof.* Let \(b\) be the number of torus roots in \(\mathcal O\); since \(\mathbf 1\) is one, \(b\ge1\). Choose an odd prime \(p>b\), with \(C_p\), \(c\) and \(\omega\) as in Section 4. We change \(f\) by a small homotopy of \(C_p\)-equivariant maps that keeps \(f\) unchanged on \(J^m\) and creates no root on \(\partial\mathcal O\), until \(\mathbf 1\) is a regular value; by (DEG 3) the degree does not change. The set \(\partial\mathcal O\) is compact and contains no root, so \(f\) stays at a positive distance from \(\mathbf 1\) on it, and every sufficiently small change keeps this property.
 
-*Coordinates at a torus root.* Let \(x\) be a torus root. Use the coordinates \((u,v)\in\mathbb R^m\oplus\mathbb C^m\mapsto x\exp(u_1i+v_1j,\ldots,u_mi+v_mj)\) near \(x\) and \(\log\) near \(\mathbf 1\). Since \(x\) commutes with \(\zeta\), \(c\bigl(x\exp(w)\bigr)=x\exp(\zeta w\zeta^{-1})\), so in both charts \(c\) acts by \((u,v)\mapsto(u,\omega v)\), and the fixed set \(J^m\) is \(\{v=0\}\). Left translation by \(x\) preserves orientation, as in Lemma 4.1, so both charts can be oriented compatibly. In these charts \(f\) becomes an equivariant map \(F\) with \(F(0)=0\). Its derivative \(A\) at \(0\) commutes with the action. A block from \(\mathbb C^m\) to \(\mathbb R^m\) satisfies \(Q(\omega v)=Q(v)\), and a block \(R\) from \(\mathbb R^m\) to \(\mathbb C^m\) satisfies \(R(u)=\omega R(u)\); as \(\omega\ne1\), both vanish. The block \(N\) on \(\mathbb C^m\) commutes with multiplication by the nonreal number \(\omega\), hence with multiplication by \(i\), which is a real combination of \(1\) and \(\omega\): it is complex linear. By Lemma 2.2 the block on \(\mathbb R^m\) is \(B\).
+*Coordinates at a torus root.* Let \(x\) be a torus root. Use the coordinates that send \((u,v)\in\mathbb R^m\oplus\mathbb C^m\) to \(x\exp(u_1i+v_1j,\ldots,u_mi+v_mj)\) near \(x\), and \(\log\) near \(\mathbf 1\). Since \(x\) commutes with \(\zeta\), \(c\bigl(x\exp(w)\bigr)=x\exp(\zeta w\zeta^{-1})\), so in both charts \(c\) acts by \((u,v)\mapsto(u,\omega v)\), and the fixed set \(J^m\) is \(\{v=0\}\). Left translation by \(x\) preserves orientation, as in Lemma 4.1, so both charts can be oriented compatibly. In these charts \(f\) becomes an equivariant map \(F\) with \(F(0)=0\). Its derivative \(A\) at \(0\) commutes with the action. A block from \(\mathbb C^m\) to \(\mathbb R^m\) satisfies \(Q(\omega v)=Q(v)\), and a block \(R\) from \(\mathbb R^m\) to \(\mathbb C^m\) satisfies \(R(u)=\omega R(u)\); as \(\omega\ne1\), both vanish. The block \(N\) on \(\mathbb C^m\) commutes with multiplication by the nonreal number \(\omega\), hence with multiplication by \(i\), which is a real combination of \(1\) and \(\omega\): it is complex linear. By Lemma 2.2 the block on \(\mathbb R^m\) is \(B\).
 
 *Regularizing the torus roots.* No root lies on \(\partial\mathcal O\), so each torus root has a coordinate neighbourhood, invariant under \(C_p\), lying in \(\mathcal O\) or outside \(\overline{\mathcal O}\); choose these neighbourhoods pairwise disjoint. In the neighbourhood of \(x\) add to \(F\) the map \((u,v)\mapsto s\chi(u,v)(0,v)\), where \(\chi\) is a smooth function of \(|u|^2+|v|^2\), equal to \(1\) near \(0\) and supported in the neighbourhood, and \(s\) is a small real number with \(\det_{\mathbb C}(N+sI)\ne0\); only finitely many values of \(s\) are excluded. The change is equivariant, vanishes on \(\{v=0\}\), and leaves the block \(B\) unchanged. The new derivative at \(x\) is invertible, and the sign of its determinant is
 \[

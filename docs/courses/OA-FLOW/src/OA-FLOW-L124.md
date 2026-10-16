@@ -1,6 +1,6 @@
 # Read an inner implementer from a circle eigenunitary
 
-Trivial Connes spectrum acquires force when the commuting automorphisms are ergodic on the center. The mechanism has two parts: a faithful circle action on an abelian algebra admits a unitary of degree one, and a central degree-one unitary in the cyclic stabilization has a matrix coefficient that implements the original automorphism. We prove the circle statement first and construct the matrix descent before applying the Connes-spectrum hypothesis.
+Trivial Connes spectrum acquires force when the commuting automorphisms are ergodic on the center. The mechanism has two parts: a faithful circle action on an abelian algebra, with a commuting automorphism group acting ergodically, admits a unitary of degree one, and a central degree-one unitary in the cyclic stabilization has a matrix coefficient that implements the original automorphism. We prove the circle statement first and construct the matrix descent before applying the Connes-spectrum hypothesis.
 
 *Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
 

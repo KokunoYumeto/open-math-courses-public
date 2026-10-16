@@ -19,7 +19,7 @@ The ordinary complex spectrum in the algebra \(M\), or in the Banach algebra of 
 
 The eleven direct earlier scopes are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) (choice and maximality), [CF2](OA-FLOW-CF.md#oa-flow.cf.2) (Banach spectrum and geometric series), [CF4](OA-FLOW-CF.md#oa-flow.cf.4) (characters), [CF6](OA-FLOW-CF.md#oa-flow.cf.6) (isometric continuous calculus and automorphism contractivity), [PC1](OA-FLOW-PC.md#oa-flow.projection.pc1) (corners, supports and polar decomposition), [PC2](OA-FLOW-PC.md#oa-flow.projection.pc2) (central support and nonzero bridges), [GCC SETTING](OA-FLOW-GCC.md#gcc-setting), [GCC TOOLS](OA-FLOW-GCC.md#gcc-tools), [GCC DEFINITION](OA-FLOW-GCC.md#gcc-definition), [L115 CONVENTIONS](OA-FLOW-L115.md#oa-flow.l115.conventions), and [OPSP FORMULA](OA-FLOW-L89.md#oa-flow.opsp.formula).
 
-For OPSP the scope includes its full source setting and proof O1–O9, the actual [AF0](OA-FLOW-AF.md#af-0) specified-dual hypotheses, and the full [AT1–3](OA-FLOW-AT.md#oa-flow.at.3) bridge. Those contexts are necessary: mere ultraweak continuity must be connected to norm continuity of every orbit in the actual predual. They are complete inherited contexts within the eleven-root closure, not extra direct proof roots. Opening descriptions, source comparisons and illustrations are never proof providers.
+For OPSP the scope includes its full source setting and proof O1–O9, the actual [AF0](OA-FLOW-AF.md#af-0) specified-dual hypotheses, and the full [AT1–3](OA-FLOW-AT.md#oa-flow.at.3) bridge. Those contexts are necessary: mere ultraweak continuity must be connected to norm continuity of every orbit in the actual predual. The specified predual and its orbit continuity justify the operator-spectrum formula in the corner.
 
 <a id="oa-flow.l122.support"></a>
 
@@ -215,7 +215,7 @@ Apply the already complete product lemma in \(\mathcal L(M)\):
 \tag{IA8}
 \]
 
-Equivalently, retaining the equivalent formulation,
+Equivalently,
 
 <a id="equation-i5"></a>
 
@@ -273,7 +273,7 @@ Using \(e_1v=v=ve_2\), unitarity and \(|\lambda|=|\mu|=1\), we have the complete
 \end{aligned}\tag{IA9}
 \]
 
-The same calculation in the corresponding display is
+Written with each term separated, the calculation is
 
 <a id="equation-i8"></a>
 
@@ -320,7 +320,7 @@ e=1_{\{z\in\mathbb T:|z-\lambda|<\varepsilon\}}(u)
 \tag{I11}
 $$
 
-The projection is nonzero and fixed by the preceding norm-calculus and least-support argument. The reference to bounded Borel calculus is thus replaced by a full construction of the particular projection actually needed. Its compressed unitary and spectral containment are
+The projection is nonzero and fixed by the preceding norm-calculus and least-support argument. The support-limit construction gives the particular spectral projection needed here. Its compressed unitary and spectral containment are
 
 <a id="equation-i12"></a>
 

@@ -144,7 +144,7 @@ So the four rows are linearly independent, and \(H_2(B;\rho)=0\) by Lemma 5.1 of
 
 ## 4. The theorem
 
-**Theorem 4.1** ([OpenAI-W]). Assume the standard theorems TOP1 to TOP6. There is a finite connected CW complex \(X\) of dimension three, with one vertex, five edges, six cells of dimension two and two cells of dimension three, such that
+**Theorem 4.1** ([OpenAI-W]). Assume the homotopy invariance in TOP5. There is a finite connected CW complex \(X\) of dimension three, with one vertex, five edges, six cells of dimension two and two cells of dimension three, such that
 \[
 \begin{gathered}
 H_i(\widetilde X;\mathbb Z)=0\ \text{ for }i>2,\\
@@ -169,7 +169,7 @@ This is Theorem 1.1 of the first lesson.
 
 **The roles of the two complexes.** The character \(\rho\) has vanishing second homology on \(B\), a complex of dimension two. This does not contradict the tower obstruction: the fundamental group of \(B\) is \(P\), and the obstruction says that \(\rho\) is \(1\) on every element of finite order of \(P\). Since \(\rho(x_1)=-1\), it shows that \(x_1\) has infinite order in \(P\). In \(G\) the element \(x_1\) has the order two. A complex of dimension two with the fundamental group \(G\) is, for example, \(B\) with the two cells for \(t_1,t_2\). For it the matrix \(D\) gets two more rows, the Fox derivatives of \(x_1^2\) and \(x_2^3\) at \(\rho\). They are \(1+\rho(x_1)=0\) and \(1+\zeta^2+\zeta^4=0\) in their columns and \(0\) elsewhere. So the second homology twisted by \(\rho\) has the dimension two there, as the obstruction demands. The two cells of dimension three of \(X\) remove exactly these two classes. A complex of dimension two cannot do this.
 
-**What is proved and what is assumed.** The lessons prove the obstruction, the properties of the plus construction, the perfectness of \(K\) and the computation of the matrix. They use the standard theorems TOP1 to TOP6 of the first lesson without proof. The computation of \(D\) and of its minors was repeated by a program that differentiates the four words.
+**What is proved and what is assumed.** The lessons prove the obstruction, the properties of the plus construction, the perfectness of \(K\) and the computation of the matrix. They use the standard theorems TOP1 to TOP6 of the first lesson; all of them are proved in the programme except the homotopy invariance in TOP5, which is a named hypothesis. The computation of \(D\) and of its minors was repeated by a program that differentiates the four words.
 
 **What the theorem does not say.** It concerns finite complexes; the group \(G\) is infinite. For finite fundamental groups the problem is not touched by this example. The complex \(X\) is not given by explicit attaching maps for its cells of dimension three: they come from the theorem of Hurewicz.
 

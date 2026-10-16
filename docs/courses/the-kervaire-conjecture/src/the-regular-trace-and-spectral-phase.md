@@ -157,12 +157,12 @@ Each \(W_u\) is a unitary in \(M_b(\mathcal M)\), \(W_0=U\), \(W_1=UV\), and \(u
 *Step 1: a derivative formula.* For \(f(z)=z^r\) with an integer \(r\ge1\), the product rule and Lemma 1.3 give
 \[
 \begin{aligned}
-\frac{d}{du}\tau_b(W_u^r)&=2\pi i\sum_{j=0}^{r-1}\tau_b\bigl(W_u^{j+1}BW_u^{r-1-j}\bigr)\\
-&=2\pi ir\,\tau_b(W_u^rB)\\
-&=\tau_b\bigl(f'(W_u)B\bigr) ,
+&\frac{d}{du}\tau_b(W_u^r)\\
+&\quad=2\pi i\sum_{j=0}^{r-1}\tau_b\bigl(W_u^{j+1}BW_u^{r-1-j}\bigr)\\
+&\quad=2\pi ir\,\tau_b(W_u^rB)=\tau_b\bigl(f'(W_u)B\bigr) ,
 \end{aligned}
 \]
-since \(\tau_b(W_u^{j+1}BW_u^{r-1-j})=\tau_b(W_u^{r-1-j}W_u^{j+1}B)\) and \(f'(z)=2\pi irz^r\). For \(r\le-1\) the same calculation with \(\frac{d}{du}W_u^{-1}=-2\pi iBW_u^{-1}\) gives the same formula, and for \(r=0\) both sides vanish. Now let \(f\) be a smooth function on \(\mathbb T\) with Fourier series \(f(e^{2\pi ix})=\sum_ra_re^{2\pi irx}\). Integrating by parts three times gives \(|a_r|\le C/|r|^3\) for \(r\ne0\), so \(\sum_r(1+|r|)|a_r|<\infty\). Hence \(f(W)=\sum_ra_rW^r\) and \(f'(W)=\sum_r2\pi ira_rW^r\), with norm-convergent series, for every unitary \(W\), and the derivatives \(2\pi ira_r\tau_b(W_u^rB)\) of the terms of \(\tau_b(f(W_u))\) are bounded by \(2\pi b|r||a_r|\), uniformly in \(u\). So the series may be differentiated term by term:
+since \(\tau_b(W_u^{j+1}BW_u^{r-1-j})\) equals \(\tau_b(W_u^{r-1-j}W_u^{j+1}B)\) and \(f'(z)=2\pi irz^r\). For \(r\le-1\) the same calculation with \(\frac{d}{du}W_u^{-1}=-2\pi iBW_u^{-1}\) gives the same formula, and for \(r=0\) both sides vanish. Now let \(f\) be a smooth function on \(\mathbb T\) with Fourier series \(f(e^{2\pi ix})=\sum_ra_re^{2\pi irx}\). Integrating by parts three times gives \(|a_r|\le C/|r|^3\) for \(r\ne0\), so \(\sum_r(1+|r|)|a_r|<\infty\). Hence \(f(W)=\sum_ra_rW^r\) and \(f'(W)=\sum_r2\pi ira_rW^r\), with norm-convergent series, for every unitary \(W\), and the derivatives \(2\pi ira_r\tau_b(W_u^rB)\) of the terms of \(\tau_b(f(W_u))\) are bounded by \(2\pi b|r||a_r|\), uniformly in \(u\). So the series may be differentiated term by term:
 \[
 \begin{aligned}
 &\frac{d}{du}\tau_b\bigl(f(W_u)\bigr)\\
@@ -182,7 +182,7 @@ because \(B^{1/2}(I-f'(W_u))B^{1/2}\ge0\). The right side of (4.1) is continuous
 \[
 \begin{aligned}
 &\tau_b\bigl(f(UV)\bigr)\\
-&\qquad\le\tau_b\bigl(f(U)\bigr)+\tau_b\bigl(h(V)\bigr).
+&\quad\le\tau_b\bigl(f(U)\bigr)+\tau_b\bigl(h(V)\bigr).
 \end{aligned}\tag{4.2}
 \]
 
@@ -193,7 +193,7 @@ f_\epsilon(e^{2\pi ix})&=\int_0^\epsilon\rho_\epsilon(s)\,g(x+s)\,ds\\
 &=\int_{\mathbb R}\rho_\epsilon(y-x)\,g(y)\,dy .
 \end{aligned}
 \]
-The second form shows that \(f_\epsilon\) is smooth, and it is periodic because \(g\) is. Its values lie in \([0,1)\). For \(\delta\ge0\), \(g(x+\delta)-g(x)=\delta-(\lfloor x+\delta\rfloor-\lfloor x\rfloor)\le\delta\), and averaging gives \(f_\epsilon(x+\delta)-f_\epsilon(x)\le\delta\); so \(f_\epsilon'\le1\). Finally, \(g\) is continuous from the right at every point, including the integers, where \(g(n+s)=s\to0=g(n)\); so \(\sup_{0<s<\epsilon}|g(x+s)-g(x)|\to0\) as \(\epsilon\to0\), and \(f_\epsilon\to h\) pointwise on \(\mathbb T\), including \(f_\epsilon(1)\to0=h(1)\). Apply (4.2) to \(f_\epsilon\) and let \(\epsilon\to0\), using Lemma 2.1(2) for the fixed unitaries \(U\) and \(UV\). \(\square\)
+The second form shows that \(f_\epsilon\) is smooth, and it is periodic because \(g\) is. Its values lie in \([0,1)\). For \(\delta\ge0\), the difference \(g(x+\delta)-g(x)\) equals \(\delta-(\lfloor x+\delta\rfloor-\lfloor x\rfloor)\le\delta\), and averaging gives \(f_\epsilon(x+\delta)-f_\epsilon(x)\le\delta\); so \(f_\epsilon'\le1\). Finally, \(g\) is continuous from the right at every point, including the integers, where \(g(n+s)=s\to0=g(n)\); so \(\sup_{0<s<\epsilon}|g(x+s)-g(x)|\to0\) as \(\epsilon\to0\), and \(f_\epsilon\to h\) pointwise on \(\mathbb T\), including \(f_\epsilon(1)\to0=h(1)\). Apply (4.2) to \(f_\epsilon\) and let \(\epsilon\to0\), using Lemma 2.1(2) for the fixed unitaries \(U\) and \(UV\). \(\square\)
 
 The smoothing approaches every angle from the right, so that the limit takes the value \(0\), not \(1\), at the cut. With the left-continuous choice \(h(1)=1\), the trace of the phase would not detect the identity.
 

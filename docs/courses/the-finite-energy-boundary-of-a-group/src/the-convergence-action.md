@@ -49,7 +49,7 @@ the total length of the translates by \(g\) of the edges that equal \(e\) or sha
 \[
 I(F,g)=\int_{\mathbb R}\ \sum_{e\in S(F,t)}\Lambda_g(e)\,dt .
 \]
-Then \(I(F,g)=\sum_e|dF(e)|\,\Lambda_g(e)\le D\,\|dF\|\,\|\lambda\|\), and \(I(F,g)\to0\) as \(g\to\infty\).
+Then \(I(F,g)=\sum_e|dF(e)|\,\Lambda_g(e)\) satisfies \(I(F,g)\le D\,\|dF\|\,\|\lambda\|\), and \(I(F,g)\to0\) as \(g\to\infty\).
 
 **Proof.** The first equality is Tonelli's theorem, as in Lemma 3.1 of [Finite-energy functions on a Cayley complex](finite-energy-functions-on-a-cayley-complex.md): the levels \(t\) with \(e\in S(F,t)\) form an interval of length \(|dF(e)|\). Exchanging the order of summation,
 \[

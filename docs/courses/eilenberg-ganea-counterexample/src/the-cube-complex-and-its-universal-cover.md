@@ -10,16 +10,16 @@ A right-angled Artin group acts freely on a contractible cube complex: the unive
 - Acyclicity (Section 4).
 - Contractibility (Section 5).
 
-We use: from [Right-angled Artin groups and residual finiteness](right-angled-artin-groups-and-residual-finiteness.md), Lemma 1.1 (retractions) and Lemma 2.1 (splitting); the Hurewicz theorem, [Explicit CW models and the first Hurewicz map, Theorem 4.1](course:CG-S6/cw-models-and-the-first-hurewicz-map), and Whitehead's theorem, [Homotopy fibres and the Serre spectral sequence, Section B.4](course:DG-CHAR/DG-CHAR-13B); and the facts (PI1) and (COV) on fundamental groups and covering spaces stated in [Cone pictures and asphericity](course:torsion-free-group-algebra-with-zero-divisors/cone-pictures-and-asphericity), Section 2. The following standard fact is also used without proof; a course proving it is recorded as an open obligation of this course.
+We use: from [Right-angled Artin groups and residual finiteness](right-angled-artin-groups-and-residual-finiteness.md), Lemma 1.1 (retractions) and Lemma 2.1 (splitting); the Hurewicz theorem, [Explicit CW models and the first Hurewicz map, Theorem 4.1](course:CG-S6/cw-models-and-the-first-hurewicz-map), and Whitehead's theorem, [Homotopy fibres and the Serre spectral sequence, Section B.4](course:DG-CHAR/DG-CHAR-13B); and the facts (PI1) and (COV) on fundamental groups and covering spaces stated in [Cone pictures and asphericity](course:torsion-free-group-algebra-with-zero-divisors/cone-pictures-and-asphericity), Section 2. We also use the following standard facts. Part 2 is Theorem 3.3 of [Fundamental groups of graphs and two-complexes](course:cell-complexes-and-covering-spaces/fundamental-groups-of-graphs-and-two-complexes), and part 3 is Proposition 3.1 of [Universal covers and cellular chains](course:cell-complexes-and-covering-spaces/universal-covers-and-cellular-chains); part 1 is not proved in the programme and is recorded as an open obligation of this course.
 
-**(CUBE)** (cellular homology of cube complexes; [Hatcher, Theorem 2.35 and the cellular boundary formula of Section 2.2; Proposition 1.26]).
+**(CUBE)** (cellular homology of cube complexes; [Hatcher, Theorem 2.35 and the cellular boundary formula of Section 2.2; Propositions 1.26, 1.36 and 1.40]).
 
 1. Let \(Y\) be a CW complex whose \(k\)-cells are given with characteristic maps from the cube \([0,1]^k\), such that the restriction of the characteristic map of every \(k\)-cell \(c\) to each face \(\{x_i=\epsilon\}\) is a characteristic map of a \((k-1)\)-cell \(c_{i,\epsilon}\), composed with the affine identification of the face with \([0,1]^{k-1}\) that keeps the order of the remaining coordinates. Then the singular homology of \(Y\) is the homology of the chain complex \(C_*(Y)\), with \(C_k\) free abelian on the \(k\)-cells and
 \[
 \partial c=\sum_{i=1}^k(-1)^{i+1}\bigl(c_{i,1}-c_{i,0}\bigr).
 \]
 2. Attaching cells of dimension at least three to a path-connected CW complex does not change its fundamental group.
-3. Let \(\widetilde Y\to Y\) be the universal cover of a connected CW complex and \(G\) a subgroup of \(\pi_1(Y)\), acting on \(\widetilde Y\) by deck transformations. Then \(\widetilde Y/G\) is a CW complex whose cells are the \(G\)-orbits of the cells of \(\widetilde Y\), the quotient map \(\widetilde Y\to\widetilde Y/G\) is a universal cover, and \(\pi_1(\widetilde Y/G)\cong G\) [Hatcher, Propositions 1.36 and 1.40].
+3. Let \(\widetilde Y\to Y\) be the universal cover of a connected CW complex and \(G\) a subgroup of \(\pi_1(Y)\), acting on \(\widetilde Y\) by deck transformations. Then \(\widetilde Y/G\) is a CW complex whose cells are the \(G\)-orbits of the cells of \(\widetilde Y\), the quotient map \(\widetilde Y\to\widetilde Y/G\) is a universal cover, and \(\pi_1(\widetilde Y/G)\cong G\).
 
 ## 1. The torus complex
 
@@ -138,7 +138,13 @@ For the group \(G=\ker\lambda\) of the main theorem, with \(L\) of dimension two
 
 **6.3.** With \(q=2\): \(P'=\langle a_1\rangle\cong\mathbb Z\), \(N(2)=\varnothing\) and \(C=1\). \(\mathcal A=\Lambda\otimes_{\mathbb ZP'}\mathcal C(\{1\})\) is spanned by \(e_\varnothing\) and \(e_1\), and \(\mathcal B\) by the image of \(e_2\). The tree has vertices \(P/\langle a_1\rangle\) and edges \(P\), the edge of \(g\) joining \(g\langle a_1\rangle\) to \(ga_2\langle a_1\rangle\). The space \(E\) itself is a graph with vertices \(P=F(a_1,a_2)\) and edges from \(g\) to \(ga_1\) and to \(ga_2\), the tree of Lemma 4.1.
 
-**6.4.** For the complete graph every subset is a clique, \(A_\Theta=\mathbb Z^n\), and \(\Lambda=\mathbb Z[a_1^{\pm1},\ldots,a_n^{\pm1}]\). The modules \(\Lambda^{(K_k)}\) with basis \(e_\sigma\), \(|\sigma|=k\), and the boundary (3.1) are the exterior powers \(\Lambda\otimes\bigwedge^k\mathbb Z^n\) with the Koszul differential \(e_{q_1}\wedge\cdots\wedge e_{q_k}\mapsto\sum_i(-1)^{i+1}(a_{q_i}-1)e_{q_1}\wedge\cdots\widehat{e_{q_i}}\cdots\wedge e_{q_k}\). Theorem 4.2 says that it is a resolution of \(\mathbb Z=\Lambda/(a_1-1,\ldots,a_n-1)\).
+**6.4.** For the complete graph every subset is a clique, \(A_\Theta=\mathbb Z^n\), and \(\Lambda=\mathbb Z[a_1^{\pm1},\ldots,a_n^{\pm1}]\). The modules \(\Lambda^{(K_k)}\) with basis \(e_\sigma\), \(|\sigma|=k\), and the boundary (3.1) are the exterior powers \(\Lambda\otimes\bigwedge^k\mathbb Z^n\) with the Koszul differential
+\[
+\begin{aligned}
+&e_{q_1}\wedge\cdots\wedge e_{q_k}\mapsto\sum_i(-1)^{i+1}(a_{q_i}-1)\\
+&\qquad e_{q_1}\wedge\cdots\wedge\widehat{e_{q_i}}\wedge\cdots\wedge e_{q_k}.
+\end{aligned}
+\] Theorem 4.2 says that it is a resolution of \(\mathbb Z=\Lambda/(a_1-1,\ldots,a_n-1)\).
 
 **6.5.** All the coordinates of the corners of \([0,1]^\sigma\) are \(0\) or \(1\), which are identified in \(S^1\), so all \(2^{|\sigma|}\ge2\) corners are mapped to the single vertex. In \(E\) the corners of \(\chi_{g,\sigma}\) are the vertices \(g\prod_{q\in\tau}a_q\), and the abelianization map \(P\to\mathbb Z^V\) separates them.
 
