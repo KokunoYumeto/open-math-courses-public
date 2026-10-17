@@ -1,0 +1,246 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Random sampling in expanding graphs</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Erdős–Gallai cycle decomposition theorem)</a><a href="splitting-a-graph-at-a-scale.html">Previous lesson</a><a href="closing-paths-through-reservoirs.html">Next lesson</a><a href="src/random-sampling-in-expanding-graphs.md">Editable source</a></nav><main><article><h1 id="random-sampling-in-expanding-graphs">Random sampling in expanding graphs</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The pieces produced in <a href="splitting-a-graph-at-a-scale.html">Splitting a graph at a scale</a> have order between <span class="math" data-tex="\(D^{0.90}\)">\(D^{0.90}\)</span> and <span class="math" data-tex="\(D^{1.02}\)">\(D^{1.02}\)</span> and cut expansion of order <span class="math" data-tex="\(D^{0.90}\)">\(D^{0.90}\)</span>. Two random operations on such a piece are needed later: dividing its edges into a few classes that each keep a fixed fraction of the cut expansion, and choosing a random set of vertices that still induces a graph with good cut expansion. This lesson proves both. The second is the delicate one: a sampled set has far too many subsets to control each cut separately, and the proof approximates every possible bad cut by a cut from a small family fixed in advance.</p>
+<p>All probability spaces in this lesson are finite. Logarithms are to base two and <span class="math" data-tex="\(\ln\)">\(\ln\)</span> is the natural logarithm. Throughout, <span class="math" data-tex="\(D\)">\(D\)</span> is a large real number, and
+<span class="math math-display" data-tex="\[
+\sigma=D^{0.90},\qquad\tau=D^{0.74}.
+\]">\[
+\sigma=D^{0.90},\qquad\tau=D^{0.74}.
+\]</span>
+Statements &quot;for all sufficiently large <span class="math" data-tex="\(D\)">\(D\)</span>&quot; hold with a threshold that depends only on the constants fixed in the statement, uniformly over all graphs and orders allowed there.</p>
+<h2 id="1-tail-bounds">1. Tail bounds</h2>
+<p><strong>Lemma 1.1</strong> (Markov's inequality). For a random variable <span class="math" data-tex="\(X\ge0\)">\(X\ge0\)</span> and <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(\Pr(X\ge a)\le\mathbb EX/a\)">\(\Pr(X\ge a)\le\mathbb EX/a\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(X\ge a\mathbf 1_{\{X\ge a\}}\)">\(X\ge a\mathbf 1_{\{X\ge a\}}\)</span>; take expectations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <em>binomial</em> random variable is a sum of independent indicator variables with a common success probability; its mean is the number of indicators times that probability.</p>
+<p><strong>Lemma 1.2</strong> (Chernoff bounds). If <span class="math" data-tex="\(X\)">\(X\)</span> is binomial with mean <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Pr\Bigl(X\le\frac\mu2\Bigr)\le e^{-\mu/8},\\
+\Pr(X\ge2\mu)\le e^{-\mu/3}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Pr\Bigl(X\le\frac\mu2\Bigr)\le e^{-\mu/8},\\
+\Pr(X\ge2\mu)\le e^{-\mu/3}.
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(X=X_1+\dots+X_m\)">\(X=X_1+\dots+X_m\)</span> with independent indicators of probability <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, so <span class="math" data-tex="\(\mu=m\pi\)">\(\mu=m\pi\)</span>. For real <span class="math" data-tex="\(t\)">\(t\)</span>, independence gives
+<span class="math math-display" data-tex="\[
+\mathbb Ee^{tX}=\prod_{i=1}^m\bigl(1+\pi(e^t-1)\bigr)\le e^{\mu(e^t-1)},
+\]">\[
+\mathbb Ee^{tX}=\prod_{i=1}^m\bigl(1+\pi(e^t-1)\bigr)\le e^{\mu(e^t-1)},
+\]</span>
+using <span class="math" data-tex="\(1+y\le e^y\)">\(1+y\le e^y\)</span>. With <span class="math" data-tex="\(t=\ln2\)">\(t=\ln2\)</span> and Lemma 1.1 applied to <span class="math" data-tex="\(e^{tX}\)">\(e^{tX}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Pr(X\ge2\mu)&amp;\le e^{\mu(2-1)-2\mu\ln2}\\
+&amp;=e^{-\mu(2\ln2-1)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Pr(X\ge2\mu)&amp;\le e^{\mu(2-1)-2\mu\ln2}\\
+&amp;=e^{-\mu(2\ln2-1)} .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(t=-\ln2\)">\(t=-\ln2\)</span>, the event <span class="math" data-tex="\(X\le\mu/2\)">\(X\le\mu/2\)</span> is the event <span class="math" data-tex="\(e^{tX}\ge e^{t\mu/2}\)">\(e^{tX}\ge e^{t\mu/2}\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Pr\Bigl(X\le\frac\mu2\Bigr)&amp;\le e^{\mu(\frac12-1)+\frac\mu2\ln2}\\
+&amp;=e^{-\mu\frac{1-\ln2}2} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Pr\Bigl(X\le\frac\mu2\Bigr)&amp;\le e^{\mu(\frac12-1)+\frac\mu2\ln2}\\
+&amp;=e^{-\mu\frac{1-\ln2}2} .
+\end{aligned}
+\]</span>
+Finally <span class="math" data-tex="\(2\ln2-1&gt;0.38&gt;1/3\)">\(2\ln2-1&gt;0.38&gt;1/3\)</span> and <span class="math" data-tex="\((1-\ln2)/2&gt;0.15&gt;1/8\)">\((1-\ln2)/2&gt;0.15&gt;1/8\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Together with the union bound, <span class="math" data-tex="\(\Pr(\bigcup_iE_i)\le\sum_i\Pr(E_i)\)">\(\Pr(\bigcup_iE_i)\le\sum_i\Pr(E_i)\)</span>, these are the only probabilistic tools of the course.</p>
+<h2 id="2-splitting-the-edges">2. Splitting the edges</h2>
+<p><strong>Lemma 2.1</strong> (edge splitting). Fix <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and an integer <span class="math" data-tex="\(l\ge1\)">\(l\ge1\)</span>. For all sufficiently large <span class="math" data-tex="\(D\)">\(D\)</span>: if a graph <span class="math" data-tex="\(P\)">\(P\)</span> of order <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(D^{0.90}\le r\le D^{1.02}\)">\(D^{0.90}\le r\le D^{1.02}\)</span> has cut expansion at least <span class="math" data-tex="\(h_0\ge cD^{0.90}\)">\(h_0\ge cD^{0.90}\)</span>, then <span class="math" data-tex="\(E(P)\)">\(E(P)\)</span> can be partitioned into <span class="math" data-tex="\(l\)">\(l\)</span> spanning subgraphs, each of cut expansion at least <span class="math" data-tex="\(h_0/(2l)\)">\(h_0/(2l)\)</span>.</p>
+<p><em>Proof.</em> Put every edge into one of <span class="math" data-tex="\(l\)">\(l\)</span> classes, independently and uniformly. Fix <span class="math" data-tex="\(U\subseteq V(P)\)">\(U\subseteq V(P)\)</span> with <span class="math" data-tex="\(u=|U|\)">\(u=|U|\)</span> and <span class="math" data-tex="\(1\le u\le r/2\)">\(1\le u\le r/2\)</span>, and let <span class="math" data-tex="\(e=|\partial_PU|\ge h_0u\)">\(e=|\partial_PU|\ge h_0u\)</span>. In a fixed class the number of edges of <span class="math" data-tex="\(\partial_PU\)">\(\partial_PU\)</span> is binomial with mean <span class="math" data-tex="\(e/l\ge h_0u/l\)">\(e/l\ge h_0u/l\)</span>. By Lemma 1.2 it is less than <span class="math" data-tex="\(h_0u/(2l)\)">\(h_0u/(2l)\)</span> with probability at most <span class="math" data-tex="\(e^{-h_0u/(8l)}\)">\(e^{-h_0u/(8l)}\)</span>. There are at most <span class="math" data-tex="\(r^u\)">\(r^u\)</span> sets <span class="math" data-tex="\(U\)">\(U\)</span> of size <span class="math" data-tex="\(u\)">\(u\)</span>, so the probability that some class fails at some cut is at most
+<span class="math math-display" data-tex="\[
+l\sum_{u\ge1}\rho^u,\qquad\rho=re^{-h_0/(8l)} .
+\]">\[
+l\sum_{u\ge1}\rho^u,\qquad\rho=re^{-h_0/(8l)} .
+\]</span>
+Since <span class="math" data-tex="\(r\le D^{1.02}\)">\(r\le D^{1.02}\)</span> and <span class="math" data-tex="\(h_0\ge cD^{0.90}\)">\(h_0\ge cD^{0.90}\)</span>, the ratio <span class="math" data-tex="\(\rho\)">\(\rho\)</span> tends to zero uniformly, and for large <span class="math" data-tex="\(D\)">\(D\)</span> the sum <span class="math" data-tex="\(l\rho/(1-\rho)\)">\(l\rho/(1-\rho)\)</span> is less than one. Some assignment therefore succeeds. A cut is controlled by its smaller side, so each class, taken on all of <span class="math" data-tex="\(V(P)\)">\(V(P)\)</span>, has cut expansion at least <span class="math" data-tex="\(h_0/(2l)\)">\(h_0/(2l)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-sampling-the-vertices">3. Sampling the vertices</h2>
+<p>For <span class="math" data-tex="\(A,B\subseteq V(P)\)">\(A,B\subseteq V(P)\)</span> disjoint, <span class="math" data-tex="\(e_P(A,B)\)">\(e_P(A,B)\)</span> is the number of edges of <span class="math" data-tex="\(P\)">\(P\)</span> with one end in <span class="math" data-tex="\(A\)">\(A\)</span> and the other in <span class="math" data-tex="\(B\)">\(B\)</span>. For <span class="math" data-tex="\(V&#x27;\subseteq V(P)\)">\(V&#x27;\subseteq V(P)\)</span>, <span class="math" data-tex="\(P[V&#x27;]\)">\(P[V&#x27;]\)</span> is the subgraph induced on <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (vertex sampling). Fix <span class="math" data-tex="\(c&#x27;&gt;0\)">\(c&#x27;&gt;0\)</span> and <span class="math" data-tex="\(p\in(0,1)\)">\(p\in(0,1)\)</span>. Let <span class="math" data-tex="\(P\)">\(P\)</span> be a graph of order <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(D^{0.90}\le r\le D^{1.02}\)">\(D^{0.90}\le r\le D^{1.02}\)</span> and cut expansion at least <span class="math" data-tex="\(h=c&#x27;D^{0.90}\)">\(h=c&#x27;D^{0.90}\)</span>. Choose every vertex independently with probability <span class="math" data-tex="\(p\)">\(p\)</span>, forming <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>. Then, with probability <span class="math" data-tex="\(1-o(1)\)">\(1-o(1)\)</span> as <span class="math" data-tex="\(D\to\infty\)">\(D\to\infty\)</span>, uniformly in <span class="math" data-tex="\(P\)">\(P\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|V&#x27;|\le2pr,\\
+|N_P(v)\cap V&#x27;|\ge\frac{ph}2\quad(v\in V(P)),\\
+P[V&#x27;]\text{ has cut expansion at least }\tau .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|V&#x27;|\le2pr,\\
+|N_P(v)\cap V&#x27;|\ge\frac{ph}2\quad(v\in V(P)),\\
+P[V&#x27;]\text{ has cut expansion at least }\tau .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> <em>Size and degrees.</em> By Lemma 1.2 of <a href="routing-in-graphs-with-cut-expansion.html">Routing in graphs with cut expansion</a>, every vertex has degree at least <span class="math" data-tex="\(h\)">\(h\)</span>. So <span class="math" data-tex="\(|N_P(v)\cap V&#x27;|\)">\(|N_P(v)\cap V&#x27;|\)</span> is binomial with mean at least <span class="math" data-tex="\(ph\)">\(ph\)</span>, and Lemma 1.2 bounds the probability that it is at most <span class="math" data-tex="\(ph/2\)">\(ph/2\)</span> by <span class="math" data-tex="\(e^{-ph/8}\)">\(e^{-ph/8}\)</span>. Also <span class="math" data-tex="\(|V&#x27;|\)">\(|V&#x27;|\)</span> is binomial with mean <span class="math" data-tex="\(pr\)">\(pr\)</span>. The first two assertions fail with probability at most
+<span class="math math-display" data-tex="\[
+e^{-pr/3}+re^{-ph/8}=o(1).
+\]">\[
+e^{-pr/3}+re^{-ph/8}=o(1).
+\]</span></p>
+<p><em>A family of witness sets, fixed before sampling.</em> Put
+<span class="math math-display" data-tex="\[
+M=\frac{16}p\log r,\qquad s=\Bigl\lceil\frac{4rM}h\Bigr\rceil .
+\]">\[
+M=\frac{16}p\log r,\qquad s=\Bigl\lceil\frac{4rM}h\Bigr\rceil .
+\]</span>
+For large <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(M/h&lt;1\)">\(M/h&lt;1\)</span> and <span class="math" data-tex="\(s\le r\)">\(s\le r\)</span>. Let <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> be the family of all unions <span class="math" data-tex="\(\bigcup_{v\in S}N_P(v)\)">\(\bigcup_{v\in S}N_P(v)\)</span> of neighbourhoods in <span class="math" data-tex="\(P\)">\(P\)</span>, over sets <span class="math" data-tex="\(S\subseteq V(P)\)">\(S\subseteq V(P)\)</span> with <span class="math" data-tex="\(|S|\le s\)">\(|S|\le s\)</span>. Then
+<span class="math math-display" data-tex="\[
+|\mathcal U|\le\sum_{t=0}^s\binom rt\le(s+1)r^s .
+\]">\[
+|\mathcal U|\le\sum_{t=0}^s\binom rt\le(s+1)r^s .
+\]</span></p>
+<p><strong>Claim 1.</strong> With probability <span class="math" data-tex="\(1-o(1)\)">\(1-o(1)\)</span>, every <span class="math" data-tex="\(U\in\mathcal U\)">\(U\in\mathcal U\)</span> with <span class="math" data-tex="\(\min\{|U|,r-|U|\}\ge ph/8\)">\(\min\{|U|,r-|U|\}\ge ph/8\)</span> satisfies
+<span class="math math-display" data-tex="\[
+e_P(U\cap V&#x27;,\,V&#x27;\setminus U)\ge\frac{p^2}4|\partial_PU| .
+\]">\[
+e_P(U\cap V&#x27;,\,V&#x27;\setminus U)\ge\frac{p^2}4|\partial_PU| .
+\]</span></p>
+<p>Fix such a <span class="math" data-tex="\(U\)">\(U\)</span> and put <span class="math" data-tex="\(e=|\partial_PU|\)">\(e=|\partial_PU|\)</span>; cut expansion gives <span class="math" data-tex="\(e\ge ph^2/8\)">\(e\ge ph^2/8\)</span>. Colour the edges of <span class="math" data-tex="\(\partial_PU\)">\(\partial_PU\)</span> greedily so that edges of one colour share no vertex: an edge meets fewer than <span class="math" data-tex="\(2r\)">\(2r\)</span> other edges, so <span class="math" data-tex="\(2r\)">\(2r\)</span> colours suffice, and the colour classes are matchings. Fix this colouring before sampling. Classes with fewer than <span class="math" data-tex="\(e/(4r)\)">\(e/(4r)\)</span> edges contain fewer than <span class="math" data-tex="\(e/2\)">\(e/2\)</span> edges in total. In a class with <span class="math" data-tex="\(m\ge e/(4r)\)">\(m\ge e/(4r)\)</span> edges, the edges have pairwise disjoint ends, so the events that both ends of an edge are sampled are independent, each of probability <span class="math" data-tex="\(p^2\)">\(p^2\)</span>. The number of edges of the class with both ends in <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> is binomial with mean <span class="math" data-tex="\(p^2m\)">\(p^2m\)</span>, and by Lemma 1.2 it is less than <span class="math" data-tex="\(p^2m/2\)">\(p^2m/2\)</span> with probability at most
+<span class="math math-display" data-tex="\[
+e^{-p^2m/8}\le e^{-p^2e/(32r)}\le e^{-p^3h^2/(256r)} .
+\]">\[
+e^{-p^2m/8}\le e^{-p^2e/(32r)}\le e^{-p^3h^2/(256r)} .
+\]</span>
+If no large class fails, at least <span class="math" data-tex="\(\frac{p^2}2\cdot\frac e2\)">\(\frac{p^2}2\cdot\frac e2\)</span> edges of <span class="math" data-tex="\(\partial_PU\)">\(\partial_PU\)</span> have both ends sampled, and each of them joins <span class="math" data-tex="\(U\cap V&#x27;\)">\(U\cap V&#x27;\)</span> to <span class="math" data-tex="\(V&#x27;\setminus U\)">\(V&#x27;\setminus U\)</span>. The union bound over the at most <span class="math" data-tex="\(2r|\mathcal U|\)">\(2r|\mathcal U|\)</span> pairs of a set and a class bounds the failure probability by
+<span class="math math-display" data-tex="\[
+2r(s+1)r^se^{-p^3h^2/(256r)} .
+\]">\[
+2r(s+1)r^se^{-p^3h^2/(256r)} .
+\]</span>
+Here <span class="math" data-tex="\(h^2/r\ge c&#x27;^2D^{0.78}\)">\(h^2/r\ge c&#x27;^2D^{0.78}\)</span>, while <span class="math" data-tex="\(r/h\le D^{0.12}/c&#x27;\)">\(r/h\le D^{0.12}/c&#x27;\)</span> and <span class="math" data-tex="\(M=O(\log D)\)">\(M=O(\log D)\)</span>, so the logarithm of <span class="math" data-tex="\(2r(s+1)r^s\)">\(2r(s+1)r^s\)</span> is <span class="math" data-tex="\(O(D^{0.12}\log^2D)\)">\(O(D^{0.12}\log^2D)\)</span>, with constants depending on <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span>. The bound is <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>, which proves Claim 1.</p>
+<p><em>Approximating a bad cut.</em> Fix an outcome satisfying the size and degree bounds and Claim 1. Suppose that some <span class="math" data-tex="\(A\subseteq V&#x27;\)">\(A\subseteq V&#x27;\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0&lt;a=|A|\le\frac{|V&#x27;|}2,\\
+e_P(A,V&#x27;\setminus A)&lt;\tau a .
+\end{gathered}
+\]">\[
+\begin{gathered}
+0&lt;a=|A|\le\frac{|V&#x27;|}2,\\
+e_P(A,V&#x27;\setminus A)&lt;\tau a .
+\end{gathered}
+\]</span>
+We derive a contradiction for large <span class="math" data-tex="\(D\)">\(D\)</span>; take <span class="math" data-tex="\(D\)">\(D\)</span> so large that <span class="math" data-tex="\(\tau&lt;ph/4\)">\(\tau&lt;ph/4\)</span>.</p>
+<p><em>Step 1: <span class="math" data-tex="\(a&gt;ph/4\)">\(a&gt;ph/4\)</span>.</em> Otherwise a vertex of <span class="math" data-tex="\(A\)">\(A\)</span> has at least <span class="math" data-tex="\(ph/2\)">\(ph/2\)</span> sampled neighbours, of which at most <span class="math" data-tex="\(a-1&lt;ph/4\)">\(a-1&lt;ph/4\)</span> lie in <span class="math" data-tex="\(A\)">\(A\)</span>; so it has more than <span class="math" data-tex="\(ph/4\)">\(ph/4\)</span> neighbours in <span class="math" data-tex="\(V&#x27;\setminus A\)">\(V&#x27;\setminus A\)</span>, and <span class="math" data-tex="\(e_P(A,V&#x27;\setminus A)&gt;aph/4&gt;\tau a\)">\(e_P(A,V&#x27;\setminus A)&gt;aph/4&gt;\tau a\)</span>.</p>
+<p><em>Step 2: few vertices of <span class="math" data-tex="\(A\)">\(A\)</span> look outward.</em> Let <span class="math" data-tex="\(A_{\rm good}\)">\(A_{\rm good}\)</span> be the set of <span class="math" data-tex="\(v\in A\)">\(v\in A\)</span> with <span class="math" data-tex="\(|N_P(v)\cap A|\ge ph/4\)">\(|N_P(v)\cap A|\ge ph/4\)</span>. A vertex of <span class="math" data-tex="\(A\setminus A_{\rm good}\)">\(A\setminus A_{\rm good}\)</span> has more than <span class="math" data-tex="\(ph/4\)">\(ph/4\)</span> neighbours in <span class="math" data-tex="\(V&#x27;\setminus A\)">\(V&#x27;\setminus A\)</span>, so
+<span class="math math-display" data-tex="\[
+|A\setminus A_{\rm good}|\le\frac{4\tau a}{ph}.
+\]">\[
+|A\setminus A_{\rm good}|\le\frac{4\tau a}{ph}.
+\]</span></p>
+<p><em>Step 3: a small hitting set.</em> With <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> fixed, choose a random set <span class="math" data-tex="\(S\subseteq A\)">\(S\subseteq A\)</span>, containing each vertex independently with probability <span class="math" data-tex="\(q=M/h\)">\(q=M/h\)</span>. For <span class="math" data-tex="\(v\in A_{\rm good}\)">\(v\in A_{\rm good}\)</span>, the probability that <span class="math" data-tex="\(S\)">\(S\)</span> misses <span class="math" data-tex="\(N_P(v)\cap A\)">\(N_P(v)\cap A\)</span> is at most
+<span class="math math-display" data-tex="\[
+(1-q)^{ph/4}\le e^{-pM/4}=e^{-4\log r}\le r^{-4},
+\]">\[
+(1-q)^{ph/4}\le e^{-pM/4}=e^{-4\log r}\le r^{-4},
+\]</span>
+so with probability at least <span class="math" data-tex="\(1-r^{-3}\ge7/8\)">\(1-r^{-3}\ge7/8\)</span>, the set <span class="math" data-tex="\(S\)">\(S\)</span> meets the neighbourhood of every vertex of <span class="math" data-tex="\(A_{\rm good}\)">\(A_{\rm good}\)</span>. Let <span class="math" data-tex="\(T(S)\)">\(T(S)\)</span> be the number of vertices of <span class="math" data-tex="\(V&#x27;\setminus A\)">\(V&#x27;\setminus A\)</span> with a neighbour in <span class="math" data-tex="\(S\)">\(S\)</span>. Then <span class="math" data-tex="\(\mathbb E|S|=aM/h\)">\(\mathbb E|S|=aM/h\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb ET(S)&amp;\le\frac Mh\sum_{w\in V&#x27;\setminus A}|N_P(w)\cap A|\\
+&amp;=\frac Mhe_P(A,V&#x27;\setminus A)&lt;\frac{\tau Ma}h .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb ET(S)&amp;\le\frac Mh\sum_{w\in V&#x27;\setminus A}|N_P(w)\cap A|\\
+&amp;=\frac Mhe_P(A,V&#x27;\setminus A)&lt;\frac{\tau Ma}h .
+\end{aligned}
+\]</span>
+By Lemma 1.1, <span class="math" data-tex="\(|S|&gt;4aM/h\)">\(|S|&gt;4aM/h\)</span> and <span class="math" data-tex="\(T(S)&gt;4\tau Ma/h\)">\(T(S)&gt;4\tau Ma/h\)</span> each have probability at most <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. The three failure probabilities add up to less than one, so there is a set <span class="math" data-tex="\(S\subseteq A\)">\(S\subseteq A\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|S|\le\frac{4aM}h,\qquad T(S)\le\frac{4\tau Ma}h,\\
+S\cap N_P(v)\ne\varnothing\quad(v\in A_{\rm good}).
+\end{gathered}
+\]">\[
+\begin{gathered}
+|S|\le\frac{4aM}h,\qquad T(S)\le\frac{4\tau Ma}h,\\
+S\cap N_P(v)\ne\varnothing\quad(v\in A_{\rm good}).
+\end{gathered}
+\]</span>
+This auxiliary choice only proves that <span class="math" data-tex="\(S\)">\(S\)</span> exists; Claim 1 was established for the whole family <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> in advance.</p>
+<p><em>Step 4: comparison.</em> Put <span class="math" data-tex="\(U=\bigcup_{v\in S}N_P(v)\)">\(U=\bigcup_{v\in S}N_P(v)\)</span>. Since <span class="math" data-tex="\(|S|\le4rM/h\le s\)">\(|S|\le4rM/h\le s\)</span>, <span class="math" data-tex="\(U\in\mathcal U\)">\(U\in\mathcal U\)</span>. Every vertex of <span class="math" data-tex="\(A_{\rm good}\)">\(A_{\rm good}\)</span> has a neighbour in <span class="math" data-tex="\(S\)">\(S\)</span> and so lies in <span class="math" data-tex="\(U\)">\(U\)</span>; every vertex of <span class="math" data-tex="\((U\cap V&#x27;)\setminus A\)">\((U\cap V&#x27;)\setminus A\)</span> is counted by <span class="math" data-tex="\(T(S)\)">\(T(S)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\delta=\bigl|(U\cap V&#x27;)\,\triangle\,A\bigr|\le\frac{4\tau a}{ph}+\frac{4\tau Ma}h .
+\]">\[
+\delta=\bigl|(U\cap V&#x27;)\,\triangle\,A\bigr|\le\frac{4\tau a}{ph}+\frac{4\tau Ma}h .
+\]</span>
+Since <span class="math" data-tex="\(\tau M/h=O(D^{-0.16}\log D)\)">\(\tau M/h=O(D^{-0.16}\log D)\)</span>, we have <span class="math" data-tex="\(\delta=o(a)\)">\(\delta=o(a)\)</span>. Both sides of the cut of <span class="math" data-tex="\(U\)">\(U\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span> are large:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|U|&amp;\ge a-\delta,\\
+r-|U|&amp;\ge|V&#x27;\setminus U|\\
+&amp;\ge|V&#x27;\setminus A|-\delta\ge a-\delta ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+|U|&amp;\ge a-\delta,\\
+r-|U|&amp;\ge|V&#x27;\setminus U|\\
+&amp;\ge|V&#x27;\setminus A|-\delta\ge a-\delta ,
+\end{aligned}
+\]</span>
+and for large <span class="math" data-tex="\(D\)">\(D\)</span> both are at least <span class="math" data-tex="\(a/2&gt;ph/8\)">\(a/2&gt;ph/8\)</span>. Claim 1 and cut expansion give
+<span class="math math-display" data-tex="\[
+e_P(U\cap V&#x27;,V&#x27;\setminus U)\ge\frac{p^2}4h\frac a2=\frac{p^2ha}8 .
+\]">\[
+e_P(U\cap V&#x27;,V&#x27;\setminus U)\ge\frac{p^2}4h\frac a2=\frac{p^2ha}8 .
+\]</span>
+On the other hand, moving one vertex of <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> from one side to the other changes the number of crossing edges by at most <span class="math" data-tex="\(r-1\)">\(r-1\)</span>. Turning <span class="math" data-tex="\(A\)">\(A\)</span> into <span class="math" data-tex="\(U\cap V&#x27;\)">\(U\cap V&#x27;\)</span> takes <span class="math" data-tex="\(\delta\)">\(\delta\)</span> such moves, so
+<span class="math math-display" data-tex="\[
+e_P(U\cap V&#x27;,V&#x27;\setminus U)&lt;\tau a+r\delta .
+\]">\[
+e_P(U\cap V&#x27;,V&#x27;\setminus U)&lt;\tau a+r\delta .
+\]</span>
+Dividing by <span class="math" data-tex="\(ha\)">\(ha\)</span>, the right side becomes at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac\tau h+O\Bigl(\frac{\tau Mr}{h^2}\Bigr)\\
+&amp;\quad=O(D^{-0.16})+O(D^{-0.04}\log D),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac\tau h+O\Bigl(\frac{\tau Mr}{h^2}\Bigr)\\
+&amp;\quad=O(D^{-0.16})+O(D^{-0.04}\log D),
+\end{aligned}
+\]</span>
+which is less than <span class="math" data-tex="\(p^2/8\)">\(p^2/8\)</span> for large <span class="math" data-tex="\(D\)">\(D\)</span>. This contradiction shows that no such <span class="math" data-tex="\(A\)">\(A\)</span> exists.</p>
+<p>A set <span class="math" data-tex="\(X\subseteq V&#x27;\)">\(X\subseteq V&#x27;\)</span> with <span class="math" data-tex="\(|X|&gt;|V&#x27;|/2\)">\(|X|&gt;|V&#x27;|/2\)</span> is handled through its complement in <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>. So <span class="math" data-tex="\(P[V&#x27;]\)">\(P[V&#x27;]\)</span> has cut expansion at least <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and the three assertions hold with probability <span class="math" data-tex="\(1-o(1)\)">\(1-o(1)\)</span>. Every <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span> above depends only on <span class="math" data-tex="\(D\)">\(D\)</span>, once <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span> are fixed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A direct union bound over all subsets of <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> would fail. The edges leaving a set <span class="math" data-tex="\(A\)">\(A\)</span> may end at few outside vertices, each joined to <span class="math" data-tex="\(A\)">\(A\)</span> by many edges, and then the probability that few of them survive the sampling is only about <span class="math" data-tex="\(e^{-pha/r}\)">\(e^{-pha/r}\)</span>, far more than <span class="math" data-tex="\(r^{-a}\)">\(r^{-a}\)</span>. The witness family has <span class="math" data-tex="\(e^{O(D^{0.12}\log^2D)}\)">\(e^{O(D^{0.12}\log^2D)}\)</span> members, each controlled with failure probability <span class="math" data-tex="\(e^{-\Omega(D^{0.78})}\)">\(e^{-\Omega(D^{0.78})}\)</span>, and every bad cut is close to one of them; this is where the gap between the exponents <span class="math" data-tex="\(0.78\)">\(0.78\)</span> and <span class="math" data-tex="\(0.12\)">\(0.12\)</span> is used.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Prove <span class="math" data-tex="\(1+y\le e^y\)">\(1+y\le e^y\)</span> for all real <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><strong>4.2</strong> (easy). Show that a greedy colouring of the edges of a simple graph of order <span class="math" data-tex="\(r\)">\(r\)</span> uses at most <span class="math" data-tex="\(2r-3\)">\(2r-3\)</span> colours, with every colour class a matching.</p>
+<p><strong>4.3</strong> (medium). Let <span class="math" data-tex="\(X\)">\(X\)</span> be binomial with mean <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Show that <span class="math" data-tex="\(\Pr(X\ge3\mu)\le e^{-\mu}\)">\(\Pr(X\ge3\mu)\le e^{-\mu}\)</span>.</p>
+<p><strong>4.4</strong> (medium). In Step 3, the vertices of <span class="math" data-tex="\(S\)">\(S\)</span> are chosen inside <span class="math" data-tex="\(A\)">\(A\)</span>. Explain why choosing them in all of <span class="math" data-tex="\(V(P)\)">\(V(P)\)</span> would not work with the same estimate for <span class="math" data-tex="\(T(S)\)">\(T(S)\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> The function <span class="math" data-tex="\(e^y-1-y\)">\(e^y-1-y\)</span> has derivative <span class="math" data-tex="\(e^y-1\)">\(e^y-1\)</span>, negative for <span class="math" data-tex="\(y&lt;0\)">\(y&lt;0\)</span> and positive for <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, so its minimum is its value <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(y=0\)">\(y=0\)</span>.</p>
+<p><strong>4.2.</strong> An edge <span class="math" data-tex="\(xy\)">\(xy\)</span> meets at most <span class="math" data-tex="\(r-2\)">\(r-2\)</span> other edges at <span class="math" data-tex="\(x\)">\(x\)</span> and at most <span class="math" data-tex="\(r-2\)">\(r-2\)</span> at <span class="math" data-tex="\(y\)">\(y\)</span>. When it is coloured, at most <span class="math" data-tex="\(2r-4\)">\(2r-4\)</span> colours are excluded, so one of <span class="math" data-tex="\(2r-3\)">\(2r-3\)</span> colours is free.</p>
+<p><strong>4.3.</strong> With <span class="math" data-tex="\(t=\ln3\)">\(t=\ln3\)</span>, the bound on <span class="math" data-tex="\(\mathbb Ee^{tX}\)">\(\mathbb Ee^{tX}\)</span> and Lemma 1.1 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Pr(X\ge3\mu)&amp;\le e^{\mu(3-1)-3\mu\ln3}\\
+&amp;=e^{-\mu(3\ln3-2)},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Pr(X\ge3\mu)&amp;\le e^{\mu(3-1)-3\mu\ln3}\\
+&amp;=e^{-\mu(3\ln3-2)},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(3\ln3-2&gt;1.29&gt;1\)">\(3\ln3-2&gt;1.29&gt;1\)</span>.</p>
+<p><strong>4.4.</strong> The estimate <span class="math" data-tex="\(\mathbb ET(S)\le\frac Mhe_P(A,V&#x27;\setminus A)\)">\(\mathbb ET(S)\le\frac Mhe_P(A,V&#x27;\setminus A)\)</span> counts, for each outside vertex <span class="math" data-tex="\(w\)">\(w\)</span>, its neighbours that could enter <span class="math" data-tex="\(S\)">\(S\)</span>. If <span class="math" data-tex="\(S\)">\(S\)</span> could contain vertices outside <span class="math" data-tex="\(A\)">\(A\)</span>, a vertex of <span class="math" data-tex="\(V&#x27;\setminus A\)">\(V&#x27;\setminus A\)</span> could have many neighbours outside <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(T(S)\)">\(T(S)\)</span> would not be controlled by the few edges leaving <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-EG] OpenAI, <em>A linear cycle-and-edge decomposition of every graph</em>, OpenAI Math Release preprint, 24 September 2026. https://github.com/openai/math/tree/main/preprints/A-linear-cycle-and-edge-decomposition-of-every-graph-September-24-2026</li>
+<li>[BM] M. Bucić and R. Montgomery, <em>Towards the Erdős–Gallai cycle decomposition conjecture</em>, Advances in Mathematics 437 (2024), 109434; arXiv:2211.07689. https://arxiv.org/abs/2211.07689</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

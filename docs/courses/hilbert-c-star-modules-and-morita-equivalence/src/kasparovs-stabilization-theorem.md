@@ -303,7 +303,7 @@ The equivariant variant has a carefully qualified conclusion. For a separable gr
 \]
 with the left regular action on \(L^2(G)\) and the diagonal action on the exterior product. There is an even unitary
 \(U:E\oplus\widehat H_A^G\to\widehat H_A^G\)
-whose orbit \(g\mapsto gUg^{-1}\) is norm continuous. The exact programme dependency is *Equivariant KK-theory and the Green–Julg theorem*, Section 1 of *Kasparov’s KK-theory*. That assigned section owns this G-continuous even stabilization statement, under precisely the second countability, separability, grading and strong-continuity hypotheses just given. Its proof is planned; it is not presented as written or independently checked. Blackadar, Theorem 20.1.4, is the historical source. It does not assert that this unitary intertwines the group actions for arbitrary noncompact \(G\). The theorem and its equivariant refinements are used in equivariant Kasparov theory.
+whose orbit \(g\mapsto gUg^{-1}\) is norm continuous. The exact programme dependency is [*Equivariant KK-theory and the Green–Julg theorem*, Section 3, Theorem 3.2](../../KT-KK/KT-KK-17.html#3-equivariant-stabilization), in *Kasparov’s KK-theory*. Its proof constructs this G-continuous even stabilization under the second countability, separability, grading and strong-continuity hypotheses just given. Blackadar, Theorem 20.1.4, is the historical source. It does not assert that this unitary intertwines the group actions for arbitrary noncompact \(G\). The theorem and its equivariant refinements are used in equivariant Kasparov theory.
 
 ## 6. Exercises with solutions
 
@@ -338,7 +338,7 @@ We use the earlier course results on compact rank-one norms and composition, non
 
 The bundle example uses locally compact cutoffs, local orthonormal frames and subordinate finite partitions on compact subsets; these are proved in the opening lemma of Section 5 of *Finite projective modules, frames and K₀*. Emerson, Section 5.2, gives the classical bundle treatment. It assumes second countability explicitly. We do not infer countable generation for arbitrary bundles on arbitrary locally compact spaces.
 
-The \(G\)-continuous equivariant stabilization application has the exact planned programme provider *Equivariant KK-theory and the Green–Julg theorem*, Section 1; its required hypotheses and conclusion are stated above. This dependency does not enter the ordinary or graded stabilization proofs here. Graded stabilization is proved above. We do not construct foliated continuous fields or their geometric realization: [Connes 1982, the section on C*-modules and continuous fields on the leaf space] supplies that application context. The full-amplification proof here is algebraic and does not depend on a stable-isomorphism theorem.
+The \(G\)-continuous equivariant stabilization application has the programme provider [*Equivariant KK-theory and the Green–Julg theorem*, Section 3, Theorem 3.2](../../KT-KK/KT-KK-17.html#3-equivariant-stabilization); its required hypotheses and conclusion are stated above. This dependency does not enter the ordinary or graded stabilization proofs here. Graded stabilization is proved above. We do not construct foliated continuous fields or their geometric realization: [Connes 1982, the section on C*-modules and continuous fields on the leaf space] supplies that application context. The full-amplification proof here is algebraic and does not depend on a stable-isomorphism theorem.
 
 ## References
 

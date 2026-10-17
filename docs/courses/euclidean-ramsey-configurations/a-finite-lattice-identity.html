@@ -1,0 +1,201 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A finite lattice identity</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The classification of finite Euclidean Ramsey sets)</a><a href="a-colouring-obstruction.html">Previous lesson</a><a href="two-scale-configurations.html">Next lesson</a><a href="src/a-finite-lattice-identity.md">Editable source</a></nav><main><article><h1 id="a-finite-lattice-identity">A finite lattice identity</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>From this lesson to the eighth, the tensor condition of <a href="ramsey-sets-and-the-tensor-criterion.html">Ramsey sets and the tensor criterion</a> is assumed, and the aim is to show that the set is Ramsey. The first step turns the tensor equations, which live in the enormous space <span class="math" data-tex="\(\mathbb R\otimes_{\mathbb Q}\mathbb R\)">\(\mathbb R\otimes_{\mathbb Q}\mathbb R\)</span>, into a finite combinatorial object: rational weights on finitely many points of a lattice, whose sums vanish on every fibre of every evaluation, and whose second moment is a prescribed matrix. The proof passes through formal power series and uses one theorem of commutative algebra, the flatness of completion.</p>
+<h2 id="1-the-data">1. The data</h2>
+<p>Keep <span class="math" data-tex="\(A=\{a_1,\dots,a_s\}\subset\mathbb R^d\)">\(A=\{a_1,\dots,a_s\}\subset\mathbb R^d\)</span> with <span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span> and affine span <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, <span class="math" data-tex="\(W=\mathbb R\times\mathbb R^d\)">\(W=\mathbb R\times\mathbb R^d\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and <span class="math" data-tex="\(e_i(v,u)=v+a_i\cdot u\)">\(e_i(v,u)=v+a_i\cdot u\)</span>. Let <span class="math" data-tex="\(T\in W\otimes W\)">\(T\in W\otimes W\)</span> be a symmetric tensor with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(e_i\otimes e_i)(T)=0\quad(1\le i\le s),\\
+G(T)=I_d .
+\end{gathered}
+\]">\[
+\begin{gathered}
+(e_i\otimes e_i)(T)=0\quad(1\le i\le s),\\
+G(T)=I_d .
+\end{gathered}
+\]</span>
+A tensor involves finitely many vectors. Choose a basis <span class="math" data-tex="\(w_1,\dots,w_k\)">\(w_1,\dots,w_k\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> of a finite-dimensional subspace of <span class="math" data-tex="\(W\)">\(W\)</span> containing them, and write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T=\sum_{a,b=1}^kC_{ab}\,w_a\otimes w_b,\\
+C\in\mathrm{Mat}_k(\mathbb Q).
+\end{gathered}
+\]">\[
+\begin{gathered}
+T=\sum_{a,b=1}^kC_{ab}\,w_a\otimes w_b,\\
+C\in\mathrm{Mat}_k(\mathbb Q).
+\end{gathered}
+\]</span>
+By (T1) of the first lesson the coefficients are unique, so <span class="math" data-tex="\(C=C^{\mathsf T}\)">\(C=C^{\mathsf T}\)</span> because <span class="math" data-tex="\(T\)">\(T\)</span> is symmetric. For <span class="math" data-tex="\(\lambda\in\mathbb Q^k\)">\(\lambda\in\mathbb Q^k\)</span> put <span class="math" data-tex="\(w(\lambda)=\sum_j\lambda_jw_j\)">\(w(\lambda)=\sum_j\lambda_jw_j\)</span>. Write <span class="math" data-tex="\(w_j=(v_j,u_j)\)">\(w_j=(v_j,u_j)\)</span> and let <span class="math" data-tex="\(U\)">\(U\)</span> be the real <span class="math" data-tex="\(d\times k\)">\(d\times k\)</span> matrix with columns <span class="math" data-tex="\(u_1,\dots,u_k\)">\(u_1,\dots,u_k\)</span>. The gradient equation <span class="math" data-tex="\(G(T)=I_d\)">\(G(T)=I_d\)</span> says
+<span class="math math-display" data-tex="\[
+UCU^{\mathsf T}=I_d .
+\]">\[
+UCU^{\mathsf T}=I_d .
+\]</span>
+Let <span class="math" data-tex="\(\Gamma=\mathbb Z^k\)">\(\Gamma=\mathbb Z^k\)</span>, and define the <em>evaluation lattices</em> and their spans
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Lambda_i=\{\lambda\in\Gamma:e_i(w(\lambda))=0\},\\
+V_i=\mathrm{span}_{\mathbb Q}\Lambda_i .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Lambda_i=\{\lambda\in\Gamma:e_i(w(\lambda))=0\},\\
+V_i=\mathrm{span}_{\mathbb Q}\Lambda_i .
+\end{gathered}
+\]</span>
+The map <span class="math" data-tex="\(\phi_i:\mathbb Q^k\to\mathbb R\)">\(\phi_i:\mathbb Q^k\to\mathbb R\)</span>, <span class="math" data-tex="\(\lambda\mapsto e_i(w(\lambda))\)">\(\lambda\mapsto e_i(w(\lambda))\)</span>, is <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-linear, and clearing denominators shows that <span class="math" data-tex="\(V_i=\ker\phi_i\)">\(V_i=\ker\phi_i\)</span>. So <span class="math" data-tex="\(\phi_i\)">\(\phi_i\)</span> induces an injection <span class="math" data-tex="\(\mathbb Q^k/V_i\to\mathbb R\)">\(\mathbb Q^k/V_i\to\mathbb R\)</span>. With <span class="math" data-tex="\(\varepsilon_1,\dots,\varepsilon_k\)">\(\varepsilon_1,\dots,\varepsilon_k\)</span> the standard basis of <span class="math" data-tex="\(\mathbb Q^k\)">\(\mathbb Q^k\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(e_i\otimes e_i)(T)\\
+&amp;\quad=(\phi_i\otimes\phi_i)\Bigl(\sum_{a,b}C_{ab}\,\varepsilon_a\otimes\varepsilon_b\Bigr)\\
+&amp;\quad=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(e_i\otimes e_i)(T)\\
+&amp;\quad=(\phi_i\otimes\phi_i)\Bigl(\sum_{a,b}C_{ab}\,\varepsilon_a\otimes\varepsilon_b\Bigr)\\
+&amp;\quad=0 .
+\end{aligned}
+\]</span>
+By (T2) of the first lesson, the map <span class="math" data-tex="\((\mathbb Q^k/V_i)\otimes(\mathbb Q^k/V_i)\to\mathbb R\otimes\mathbb R\)">\((\mathbb Q^k/V_i)\otimes(\mathbb Q^k/V_i)\to\mathbb R\otimes\mathbb R\)</span> induced by the injection is injective. Hence the image of <span class="math" data-tex="\(\sum_{a,b}C_{ab}\,\varepsilon_a\otimes\varepsilon_b\)">\(\sum_{a,b}C_{ab}\,\varepsilon_a\otimes\varepsilon_b\)</span> in <span class="math" data-tex="\((\mathbb Q^k/V_i)\otimes(\mathbb Q^k/V_i)\)">\((\mathbb Q^k/V_i)\otimes(\mathbb Q^k/V_i)\)</span> is zero, for every <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>Two lattice points have the same evaluation at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> exactly when they differ by an element of <span class="math" data-tex="\(\Lambda_i\)">\(\Lambda_i\)</span>: <span class="math" data-tex="\(e_i(w(\gamma))=e_i(w(\gamma&#x27;))\)">\(e_i(w(\gamma))=e_i(w(\gamma&#x27;))\)</span> if and only if <span class="math" data-tex="\(\gamma-\gamma&#x27;\in\Lambda_i\)">\(\gamma-\gamma&#x27;\in\Lambda_i\)</span>.</p>
+<h2 id="2-the-lemma">2. The lemma</h2>
+<p>For a function <span class="math" data-tex="\(\nu:\Gamma\to\mathbb Q\)">\(\nu:\Gamma\to\mathbb Q\)</span> with finite support and a subgroup <span class="math" data-tex="\(\Lambda\subseteq\Gamma\)">\(\Lambda\subseteq\Gamma\)</span>, the <em>pushforward</em> of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> to <span class="math" data-tex="\(\Gamma/\Lambda\)">\(\Gamma/\Lambda\)</span> assigns to each coset <span class="math" data-tex="\(q\)">\(q\)</span> the sum <span class="math" data-tex="\(\sum_{\gamma\in q}\nu(\gamma)\)">\(\sum_{\gamma\in q}\nu(\gamma)\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (finite lattice identity). Let <span class="math" data-tex="\(k,s\ge1\)">\(k,s\ge1\)</span>, let <span class="math" data-tex="\(\Lambda_1,\dots,\Lambda_s\)">\(\Lambda_1,\dots,\Lambda_s\)</span> be subgroups of <span class="math" data-tex="\(\Gamma=\mathbb Z^k\)">\(\Gamma=\mathbb Z^k\)</span> with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-spans <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, and let <span class="math" data-tex="\(C\in\mathrm{Mat}_k(\mathbb Q)\)">\(C\in\mathrm{Mat}_k(\mathbb Q)\)</span> be symmetric. Suppose that for every <span class="math" data-tex="\(i\)">\(i\)</span> the image of <span class="math" data-tex="\(\sum_{a,b}C_{ab}\,\varepsilon_a\otimes\varepsilon_b\)">\(\sum_{a,b}C_{ab}\,\varepsilon_a\otimes\varepsilon_b\)</span> in <span class="math" data-tex="\((\mathbb Q^k/V_i)\otimes(\mathbb Q^k/V_i)\)">\((\mathbb Q^k/V_i)\otimes(\mathbb Q^k/V_i)\)</span> is zero. Then there is a finitely supported <span class="math" data-tex="\(\nu:\Gamma\to\mathbb Q\)">\(\nu:\Gamma\to\mathbb Q\)</span> whose pushforward to every <span class="math" data-tex="\(\Gamma/\Lambda_i\)">\(\Gamma/\Lambda_i\)</span> is zero and which satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_\gamma\nu(\gamma)=0,\qquad\sum_\gamma\nu(\gamma)\gamma=0,\\
+\sum_\gamma\nu(\gamma)\gamma\gamma^{\mathsf T}=C .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_\gamma\nu(\gamma)=0,\qquad\sum_\gamma\nu(\gamma)\gamma=0,\\
+\sum_\gamma\nu(\gamma)\gamma\gamma^{\mathsf T}=C .
+\end{gathered}
+\]</span></p>
+<p>Applied to the data of Section 1, the lemma gives rational weights <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on finitely many lattice points such that, for every <span class="math" data-tex="\(i\)">\(i\)</span> and every real value <span class="math" data-tex="\(x\)">\(x\)</span>, the weights of the points <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> with <span class="math" data-tex="\(e_i(w(\gamma))=x\)">\(e_i(w(\gamma))=x\)</span> add up to zero: positive and negative weights cancel separately at every evaluation value. Their second moment is <span class="math" data-tex="\(C\)">\(C\)</span>, and <span class="math" data-tex="\(UCU^{\mathsf T}=I_d\)">\(UCU^{\mathsf T}=I_d\)</span>.</p>
+<h2 id="3-proof-of-the-lemma">3. Proof of the lemma</h2>
+<p><strong>Step 1: Laurent polynomials.</strong> Let <span class="math" data-tex="\(R=\mathbb Q[X_1^{\pm1},\dots,X_k^{\pm1}]\)">\(R=\mathbb Q[X_1^{\pm1},\dots,X_k^{\pm1}]\)</span>, with monomials <span class="math" data-tex="\(X^\gamma=\prod_jX_j^{\gamma_j}\)">\(X^\gamma=\prod_jX_j^{\gamma_j}\)</span> for <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>; it is the group algebra of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. A finitely supported <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is the same as the Laurent polynomial <span class="math" data-tex="\(\sum_\gamma\nu(\gamma)X^\gamma\)">\(\sum_\gamma\nu(\gamma)X^\gamma\)</span>. The quotient map <span class="math" data-tex="\(\Gamma\to\Gamma/\Lambda_i\)">\(\Gamma\to\Gamma/\Lambda_i\)</span> induces a ring homomorphism from <span class="math" data-tex="\(R\)">\(R\)</span> to the group algebra of <span class="math" data-tex="\(\Gamma/\Lambda_i\)">\(\Gamma/\Lambda_i\)</span>, and <span class="math" data-tex="\(\nu\)">\(\nu\)</span> has zero pushforward to <span class="math" data-tex="\(\Gamma/\Lambda_i\)">\(\Gamma/\Lambda_i\)</span> exactly when its polynomial lies in the kernel. We claim that this kernel is the ideal
+<span class="math math-display" data-tex="\[
+J_i=(X^h-1:h\in\Lambda_i).
+\]">\[
+J_i=(X^h-1:h\in\Lambda_i).
+\]</span>
+Each <span class="math" data-tex="\(X^h-1\)">\(X^h-1\)</span> with <span class="math" data-tex="\(h\in\Lambda_i\)">\(h\in\Lambda_i\)</span> lies in the kernel. Conversely, a polynomial in the kernel is a sum of its parts supported on single cosets, each with coefficient sum zero. On a coset with a chosen point <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>, such a part equals <span class="math" data-tex="\(\sum_\gamma c_\gamma(X^\gamma-X^{\gamma_0})\)">\(\sum_\gamma c_\gamma(X^\gamma-X^{\gamma_0})\)</span>, that is, <span class="math" data-tex="\(\sum_\gamma c_\gamma X^{\gamma_0}(X^{\gamma-\gamma_0}-1)\)">\(\sum_\gamma c_\gamma X^{\gamma_0}(X^{\gamma-\gamma_0}-1)\)</span>, which lies in <span class="math" data-tex="\(J_i\)">\(J_i\)</span>.</p>
+<p>So the lemma asks for a Laurent polynomial <span class="math" data-tex="\(f=\sum\nu(\gamma)X^\gamma\)">\(f=\sum\nu(\gamma)X^\gamma\)</span> in
+<span class="math math-display" data-tex="\[
+I=J_1\cap\dots\cap J_s
+\]">\[
+I=J_1\cap\dots\cap J_s
+\]</span>
+whose behaviour near the point <span class="math" data-tex="\(X=(1,\dots,1)\)">\(X=(1,\dots,1)\)</span> is prescribed to second order. To see this, write <span class="math" data-tex="\(X_j=e^{Y_j}\)">\(X_j=e^{Y_j}\)</span>: then <span class="math" data-tex="\(X^\gamma=e^{\gamma\cdot Y}\)">\(X^\gamma=e^{\gamma\cdot Y}\)</span>, which is <span class="math" data-tex="\(1+\gamma\cdot Y+\frac12(\gamma\cdot Y)^2+\dots\)">\(1+\gamma\cdot Y+\frac12(\gamma\cdot Y)^2+\dots\)</span>, so the three moment conditions say exactly that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(e^{Y_1},\dots,e^{Y_k})\equiv\tfrac12Y^{\mathsf T}CY\\
+\pmod{(Y_1,\dots,Y_k)^3}
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(e^{Y_1},\dots,e^{Y_k})\equiv\tfrac12Y^{\mathsf T}CY\\
+\pmod{(Y_1,\dots,Y_k)^3}
+\end{gathered}
+\]</span>
+in the formal power series ring <span class="math" data-tex="\(\mathbb Q[[Y_1,\dots,Y_k]]\)">\(\mathbb Q[[Y_1,\dots,Y_k]]\)</span>. Steps 2 to 5 make this precise.</p>
+<p><strong>Step 2: completion.</strong> Put <span class="math" data-tex="\(Z_j=X_j-1\)">\(Z_j=X_j-1\)</span> and <span class="math" data-tex="\(\mathfrak m=(Z_1,\dots,Z_k)\subseteq R\)">\(\mathfrak m=(Z_1,\dots,Z_k)\subseteq R\)</span>. The ring <span class="math" data-tex="\(R\)">\(R\)</span> is obtained from the polynomial ring <span class="math" data-tex="\(\mathbb Q[Z_1,\dots,Z_k]\)">\(\mathbb Q[Z_1,\dots,Z_k]\)</span> by inverting the elements <span class="math" data-tex="\(1+Z_j\)">\(1+Z_j\)</span>, so it is Noetherian, by the Hilbert basis theorem with its corollary on localizations (Theorem 2.1 of <a href="../AG-CA/noetherian-and-artinian-rings.html">Noetherian and Artinian rings</a>). Each <span class="math" data-tex="\(1+Z_j\)">\(1+Z_j\)</span> is already invertible modulo <span class="math" data-tex="\((Z)^n\)">\((Z)^n\)</span>, with inverse <span class="math" data-tex="\(\sum_{m&lt;n}(-Z_j)^m\)">\(\sum_{m&lt;n}(-Z_j)^m\)</span>. So <span class="math" data-tex="\(R/\mathfrak m^n=\mathbb Q[Z]/(Z)^n\)">\(R/\mathfrak m^n=\mathbb Q[Z]/(Z)^n\)</span>, and the completion <span class="math" data-tex="\(\widehat R=\varprojlim R/\mathfrak m^n\)">\(\widehat R=\varprojlim R/\mathfrak m^n\)</span> is the formal power series ring <span class="math" data-tex="\(\mathbb Q[[Z_1,\dots,Z_k]]\)">\(\mathbb Q[[Z_1,\dots,Z_k]]\)</span>. Since <span class="math" data-tex="\(R\)">\(R\)</span> is Noetherian, the map <span class="math" data-tex="\(R\to\widehat R\)">\(R\to\widehat R\)</span> is flat (Theorem 3.2 of <a href="../AG-CA/completion.html">Completion</a>).</p>
+<p><strong>Step 3: logarithmic coordinates.</strong> The substitutions <span class="math" data-tex="\(Z_j=e^{Y_j}-1\)">\(Z_j=e^{Y_j}-1\)</span> and <span class="math" data-tex="\(Y_j=\log(1+Z_j)\)">\(Y_j=\log(1+Z_j)\)</span>, with the usual exponential and logarithm series, are inverse to each other and identify <span class="math" data-tex="\(\mathbb Q[[Z]]\)">\(\mathbb Q[[Z]]\)</span> with <span class="math" data-tex="\(\mathbb Q[[Y]]\)">\(\mathbb Q[[Y]]\)</span>; they carry the ideal <span class="math" data-tex="\((Z_1,\dots,Z_k)\)">\((Z_1,\dots,Z_k)\)</span> to <span class="math" data-tex="\((Y_1,\dots,Y_k)\)">\((Y_1,\dots,Y_k)\)</span>, because each <span class="math" data-tex="\(Z_j\)">\(Z_j\)</span> is <span class="math" data-tex="\(Y_j\)">\(Y_j\)</span> times a unit and conversely. For <span class="math" data-tex="\(h\in\Gamma\)">\(h\in\Gamma\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X^h-1&amp;=e^{h\cdot Y}-1\\
+&amp;=(h\cdot Y)\sum_{n\ge0}\frac{(h\cdot Y)^n}{(n+1)!},
+\end{aligned}
+\]">\[
+\begin{aligned}
+X^h-1&amp;=e^{h\cdot Y}-1\\
+&amp;=(h\cdot Y)\sum_{n\ge0}\frac{(h\cdot Y)^n}{(n+1)!},
+\end{aligned}
+\]</span>
+and the last factor is a unit. Hence
+<span class="math math-display" data-tex="\[
+J_i\widehat R=(h\cdot Y:h\in\Lambda_i)\,\widehat R .
+\]">\[
+J_i\widehat R=(h\cdot Y:h\in\Lambda_i)\,\widehat R .
+\]</span></p>
+<p><strong>Step 4: the quadratic form lies in every <span class="math" data-tex="\(J_i\widehat R\)">\(J_i\widehat R\)</span>.</strong> Let <span class="math" data-tex="\(Q_2=\frac12Y^{\mathsf T}CY\)">\(Q_2=\frac12Y^{\mathsf T}CY\)</span>. Fix <span class="math" data-tex="\(i\)">\(i\)</span>, choose a basis <span class="math" data-tex="\(g_1,\dots,g_m\)">\(g_1,\dots,g_m\)</span> of <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, and extend it to a basis <span class="math" data-tex="\(g_1,\dots,g_k\)">\(g_1,\dots,g_k\)</span> of <span class="math" data-tex="\(\mathbb Q^k\)">\(\mathbb Q^k\)</span>; let <span class="math" data-tex="\(\Gamma_g\)">\(\Gamma_g\)</span> be the invertible matrix with these columns. The linear forms <span class="math" data-tex="\(\hat Y_c=g_c\cdot Y\)">\(\hat Y_c=g_c\cdot Y\)</span> are new coordinates, with <span class="math" data-tex="\(Y^{\mathsf T}CY=\hat Y^{\mathsf T}C&#x27;\hat Y\)">\(Y^{\mathsf T}CY=\hat Y^{\mathsf T}C&#x27;\hat Y\)</span> for <span class="math" data-tex="\(C&#x27;=\Gamma_g^{-1}C\,\Gamma_g^{-\mathsf T}\)">\(C&#x27;=\Gamma_g^{-1}C\,\Gamma_g^{-\mathsf T}\)</span>. In the basis <span class="math" data-tex="\((g_c)\)">\((g_c)\)</span>, the tensor <span class="math" data-tex="\(\sum_{a,b}C_{ab}\,\varepsilon_a\otimes\varepsilon_b\)">\(\sum_{a,b}C_{ab}\,\varepsilon_a\otimes\varepsilon_b\)</span> equals <span class="math" data-tex="\(\sum_{c,e}C&#x27;_{ce}\,g_c\otimes g_e\)">\(\sum_{c,e}C&#x27;_{ce}\,g_c\otimes g_e\)</span>. The classes of <span class="math" data-tex="\(g_{m+1},\dots,g_k\)">\(g_{m+1},\dots,g_k\)</span> form a basis of <span class="math" data-tex="\(\mathbb Q^k/V_i\)">\(\mathbb Q^k/V_i\)</span> and the classes of <span class="math" data-tex="\(g_1,\dots,g_m\)">\(g_1,\dots,g_m\)</span> vanish, so by (T1) the hypothesis of the lemma says <span class="math" data-tex="\(C&#x27;_{ce}=0\)">\(C&#x27;_{ce}=0\)</span> whenever <span class="math" data-tex="\(c&gt;m\)">\(c&gt;m\)</span> and <span class="math" data-tex="\(e&gt;m\)">\(e&gt;m\)</span>. Therefore every monomial of <span class="math" data-tex="\(\hat Y^{\mathsf T}C&#x27;\hat Y\)">\(\hat Y^{\mathsf T}C&#x27;\hat Y\)</span> contains a factor <span class="math" data-tex="\(\hat Y_c\)">\(\hat Y_c\)</span> with <span class="math" data-tex="\(c\le m\)">\(c\le m\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_2&amp;\in(g_1\cdot Y,\dots,g_m\cdot Y)\\
+&amp;\subseteq(h\cdot Y:h\in\Lambda_i),
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q_2&amp;\in(g_1\cdot Y,\dots,g_m\cdot Y)\\
+&amp;\subseteq(h\cdot Y:h\in\Lambda_i),
+\end{aligned}
+\]</span>
+the last inclusion because each <span class="math" data-tex="\(g_c\)">\(g_c\)</span> is a rational combination of elements of <span class="math" data-tex="\(\Lambda_i\)">\(\Lambda_i\)</span>. By Step 3, <span class="math" data-tex="\(Q_2\in J_i\widehat R\)">\(Q_2\in J_i\widehat R\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><strong>Step 5: from the completion back to <span class="math" data-tex="\(R\)">\(R\)</span>.</strong> The map <span class="math" data-tex="\(R/I\to\bigoplus_{i=1}^sR/J_i\)">\(R/I\to\bigoplus_{i=1}^sR/J_i\)</span> is injective. Since <span class="math" data-tex="\(\widehat R\)">\(\widehat R\)</span> is flat over <span class="math" data-tex="\(R\)">\(R\)</span>, it stays injective after tensoring with <span class="math" data-tex="\(\widehat R\)">\(\widehat R\)</span>; as <span class="math" data-tex="\((R/J)\otimes_R\widehat R=\widehat R/J\widehat R\)">\((R/J)\otimes_R\widehat R=\widehat R/J\widehat R\)</span>, this says
+<span class="math math-display" data-tex="\[
+I\widehat R=J_1\widehat R\cap\dots\cap J_s\widehat R .
+\]">\[
+I\widehat R=J_1\widehat R\cap\dots\cap J_s\widehat R .
+\]</span>
+Hence <span class="math" data-tex="\(Q_2\in I\widehat R\)">\(Q_2\in I\widehat R\)</span>, that is, <span class="math" data-tex="\(Q_2=\sum_{a=1}^Nf_a\alpha_a\)">\(Q_2=\sum_{a=1}^Nf_a\alpha_a\)</span> with <span class="math" data-tex="\(f_a\in I\)">\(f_a\in I\)</span> and <span class="math" data-tex="\(\alpha_a\in\widehat R\)">\(\alpha_a\in\widehat R\)</span>. Truncate each <span class="math" data-tex="\(\alpha_a\)">\(\alpha_a\)</span>, written as a power series in <span class="math" data-tex="\(Z\)">\(Z\)</span>, after degree two; this gives a polynomial <span class="math" data-tex="\(b_a\in\mathbb Q[Z]\subseteq R\)">\(b_a\in\mathbb Q[Z]\subseteq R\)</span> with <span class="math" data-tex="\(\alpha_a-b_a\in(Z)^3\widehat R\)">\(\alpha_a-b_a\in(Z)^3\widehat R\)</span>. Then <span class="math" data-tex="\(f=\sum_af_ab_a\)">\(f=\sum_af_ab_a\)</span> lies in <span class="math" data-tex="\(I\)">\(I\)</span>, and <span class="math" data-tex="\(f-Q_2=\sum_af_a(b_a-\alpha_a)\)">\(f-Q_2=\sum_af_a(b_a-\alpha_a)\)</span> lies in <span class="math" data-tex="\((Z)^3\widehat R=(Y)^3\widehat R\)">\((Z)^3\widehat R=(Y)^3\widehat R\)</span>.</p>
+<p>Write <span class="math" data-tex="\(f=\sum_\gamma\nu(\gamma)X^\gamma\)">\(f=\sum_\gamma\nu(\gamma)X^\gamma\)</span> with finitely many terms. Since <span class="math" data-tex="\(f\in J_i\)">\(f\in J_i\)</span>, the pushforward of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> to every <span class="math" data-tex="\(\Gamma/\Lambda_i\)">\(\Gamma/\Lambda_i\)</span> is zero (Step 1). Modulo <span class="math" data-tex="\((Y)^3\)">\((Y)^3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f&amp;=\sum_\gamma\nu(\gamma)\Bigl(1+\gamma\cdot Y+\tfrac12(\gamma\cdot Y)^2\Bigr)\\
+&amp;\equiv\tfrac12Y^{\mathsf T}CY ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+f&amp;=\sum_\gamma\nu(\gamma)\Bigl(1+\gamma\cdot Y+\tfrac12(\gamma\cdot Y)^2\Bigr)\\
+&amp;\equiv\tfrac12Y^{\mathsf T}CY ,
+\end{aligned}
+\]</span>
+and comparing the constant, linear and quadratic parts gives the three moment identities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (medium). Take <span class="math" data-tex="\(A=\{0,1\}\subset\mathbb R\)">\(A=\{0,1\}\subset\mathbb R\)</span>, <span class="math" data-tex="\(w_1=(0,1)\)">\(w_1=(0,1)\)</span> and <span class="math" data-tex="\(w_2=(1,0)\)">\(w_2=(1,0)\)</span>, and the tensor of Exercise 4.2 of the first lesson, which is <span class="math" data-tex="\(T=w_1\otimes w_1-\frac12(w_1\otimes w_2+w_2\otimes w_1)\)">\(T=w_1\otimes w_1-\frac12(w_1\otimes w_2+w_2\otimes w_1)\)</span>. Determine <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\(\Lambda_1\)">\(\Lambda_1\)</span> and <span class="math" data-tex="\(\Lambda_2\)">\(\Lambda_2\)</span>, and check that
+<span class="math math-display" data-tex="\[
+\nu=\tfrac12\bigl(-\delta_{(0,0)}+\delta_{(1,0)}+\delta_{(-1,1)}-\delta_{(0,1)}\bigr)
+\]">\[
+\nu=\tfrac12\bigl(-\delta_{(0,0)}+\delta_{(1,0)}+\delta_{(-1,1)}-\delta_{(0,1)}\bigr)
+\]</span>
+satisfies the conclusion of Lemma 2.1.</p>
+<p><strong>4.2</strong> (easy). Show that the moment conditions of Lemma 2.1 are unchanged when <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is replaced by its translate <span class="math" data-tex="\(\gamma\mapsto\nu(\gamma-\beta)\)">\(\gamma\mapsto\nu(\gamma-\beta)\)</span>, for any <span class="math" data-tex="\(\beta\in\Gamma\)">\(\beta\in\Gamma\)</span>.</p>
+<p><strong>4.3</strong> (medium). Show that the flatness of <span class="math" data-tex="\(\widehat R\)">\(\widehat R\)</span> is really needed in Step 5 in the following sense: give two ideals <span class="math" data-tex="\(J_1,J_2\)">\(J_1,J_2\)</span> of a ring <span class="math" data-tex="\(S\)">\(S\)</span> and an <span class="math" data-tex="\(S\)">\(S\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span> for which <span class="math" data-tex="\((J_1\cap J_2)\otimes M\to(J_1\otimes M)\cap(J_2\otimes M)\)">\((J_1\cap J_2)\otimes M\to(J_1\otimes M)\cap(J_2\otimes M)\)</span> is not onto, with the intersection taken in <span class="math" data-tex="\(M\)">\(M\)</span>. (Take <span class="math" data-tex="\(S=\mathbb Q[x,y]\)">\(S=\mathbb Q[x,y]\)</span>, <span class="math" data-tex="\(J_1=(x)\)">\(J_1=(x)\)</span>, <span class="math" data-tex="\(J_2=(y)\)">\(J_2=(y)\)</span> and <span class="math" data-tex="\(M=S/(x-y)\)">\(M=S/(x-y)\)</span>.)</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> Here
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T=\tfrac12\bigl[{}&amp;w_1\otimes w_1\\
+&amp;+(w_2-w_1)\otimes(w_2-w_1)\\
+&amp;-w_2\otimes w_2\bigr],
+\end{aligned}
+\]">\[
+\begin{aligned}
+T=\tfrac12\bigl[{}&amp;w_1\otimes w_1\\
+&amp;+(w_2-w_1)\otimes(w_2-w_1)\\
+&amp;-w_2\otimes w_2\bigr],
+\end{aligned}
+\]</span>
+which expands to the given form, so <span class="math" data-tex="\(C=\begin{pmatrix}1&amp;-1/2\\-1/2&amp;0\end{pmatrix}\)">\(C=\begin{pmatrix}1&amp;-1/2\\-1/2&amp;0\end{pmatrix}\)</span>. Since <span class="math" data-tex="\(e_1(w_1)=0\)">\(e_1(w_1)=0\)</span>, <span class="math" data-tex="\(e_1(w_2)=1\)">\(e_1(w_2)=1\)</span>, <span class="math" data-tex="\(e_2(w_1)=1\)">\(e_2(w_1)=1\)</span>, <span class="math" data-tex="\(e_2(w_2)=1\)">\(e_2(w_2)=1\)</span>, we get <span class="math" data-tex="\(e_1(w(\lambda))=\lambda_2\)">\(e_1(w(\lambda))=\lambda_2\)</span> and <span class="math" data-tex="\(e_2(w(\lambda))=\lambda_1+\lambda_2\)">\(e_2(w(\lambda))=\lambda_1+\lambda_2\)</span>, so <span class="math" data-tex="\(\Lambda_1=\mathbb Z\times\{0\}\)">\(\Lambda_1=\mathbb Z\times\{0\}\)</span> and <span class="math" data-tex="\(\Lambda_2=\{\lambda_1+\lambda_2=0\}\)">\(\Lambda_2=\{\lambda_1+\lambda_2=0\}\)</span>. The four points <span class="math" data-tex="\((0,0),(1,0),(-1,1),(0,1)\)">\((0,0),(1,0),(-1,1),(0,1)\)</span> have second coordinates <span class="math" data-tex="\(0,0,1,1\)">\(0,0,1,1\)</span> and coordinate sums <span class="math" data-tex="\(0,1,0,1\)">\(0,1,0,1\)</span>; in both cases the weights <span class="math" data-tex="\(-\frac12,\frac12,\frac12,-\frac12\)">\(-\frac12,\frac12,\frac12,-\frac12\)</span> cancel in pairs. The total weight and the first moment vanish, and the second moment is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tfrac12\Bigl[\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}+\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}\\
+&amp;\qquad-\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}\Bigr]=C .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\tfrac12\Bigl[\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}+\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}\\
+&amp;\qquad-\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}\Bigr]=C .
+\end{aligned}
+\]</span></p>
+<p><strong>4.2.</strong> The pushforwards are translated by the class of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, so they stay zero. With <span class="math" data-tex="\(\gamma&#x27;=\gamma+\beta\)">\(\gamma&#x27;=\gamma+\beta\)</span>, the total weight is unchanged, the first moment becomes <span class="math" data-tex="\(\sum\nu(\gamma)(\gamma+\beta)=0+0\cdot\beta=0\)">\(\sum\nu(\gamma)(\gamma+\beta)=0+0\cdot\beta=0\)</span>, and the second moment becomes <span class="math" data-tex="\(\sum\nu(\gamma)(\gamma+\beta)(\gamma+\beta)^{\mathsf T}\)">\(\sum\nu(\gamma)(\gamma+\beta)(\gamma+\beta)^{\mathsf T}\)</span>, which is <span class="math" data-tex="\(C+0+0+0=C\)">\(C+0+0+0=C\)</span>.</p>
+<p><strong>4.3.</strong> In <span class="math" data-tex="\(M=S/(x-y)\cong\mathbb Q[x]\)">\(M=S/(x-y)\cong\mathbb Q[x]\)</span>, both images <span class="math" data-tex="\(J_1M\)">\(J_1M\)</span> and <span class="math" data-tex="\(J_2M\)">\(J_2M\)</span> equal <span class="math" data-tex="\(xM\)">\(xM\)</span>, so their intersection is <span class="math" data-tex="\(xM\ne0\)">\(xM\ne0\)</span>. But <span class="math" data-tex="\(J_1\cap J_2=(xy)\)">\(J_1\cap J_2=(xy)\)</span>, whose image is <span class="math" data-tex="\(x^2M\)">\(x^2M\)</span>, which does not contain <span class="math" data-tex="\(x\)">\(x\)</span>. So intersecting ideals does not commute with extension to a module that is not flat.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-ER] OpenAI, <em>A classification of finite Euclidean Ramsey configurations</em>, OpenAI Math Release preprint, 23 September 2026. https://github.com/openai/math/tree/main/preprints/A-classification-of-finite-Euclidean-Ramsey-configurations-September-23-2026</li>
+<li>[Stacks] The Stacks Project Authors, <em>The Stacks Project</em>, Tag 00MB (completion of a Noetherian ring is flat). https://stacks.math.columbia.edu/tag/00MB</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

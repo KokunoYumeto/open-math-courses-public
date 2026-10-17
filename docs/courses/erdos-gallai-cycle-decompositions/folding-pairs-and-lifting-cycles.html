@@ -1,0 +1,225 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Folding pairs and lifting cycles</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Erdős–Gallai cycle decomposition theorem)</a><a href="closing-paths-through-reservoirs.html">Previous lesson</a><a href="the-linear-bound.html">Next lesson</a><a href="src/folding-pairs-and-lifting-cycles.md">Editable source</a></nav><main><article><h1 id="folding-pairs-and-lifting-cycles">Folding pairs and lifting cycles</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The induction of <a href="the-linear-bound.html">The linear bound</a> saves vertices by identifying pairs. If a set of vertices of low degree is paired up and every pair is identified, the graph loses a third of these vertices or more; the smaller <em>quotient</em> graph is decomposed by induction, and its cycles are lifted back. A quotient cycle may enter a pair at one of its two vertices and leave at the other; a connecting path through an expanding <em>router</em> then joins the two, and the <a href="routing-in-graphs-with-cut-expansion.html">routing theorem</a> supplies all these paths at once. This lesson proves the two statements that make this work: the pair folding lemma, which bounds the edges lost when pairs are identified, and the batch resolution lemma, which carries out the folding and the lifting for many overlapping vertex sets together.</p>
+<h2 id="1-pair-folding">1. Pair folding</h2>
+<p>Identifying a pair <span class="math" data-tex="\(\{u,v\}\)">\(\{u,v\}\)</span> of vertices of a graph replaces them by one vertex adjacent to all neighbours of <span class="math" data-tex="\(u\)">\(u\)</span> and of <span class="math" data-tex="\(v\)">\(v\)</span>. An edge <span class="math" data-tex="\(uv\)">\(uv\)</span> becomes a loop, and two edges <span class="math" data-tex="\(uw\)">\(uw\)</span>, <span class="math" data-tex="\(vw\)">\(vw\)</span> become parallel. To keep a simple quotient, such edges are set aside beforehand. A degree bound at the paired vertices alone does not keep their number small: pairing the <span class="math" data-tex="\(m\)">\(m\)</span> vertices of one side of a complete bipartite graph with sides of sizes <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> makes <span class="math" data-tex="\(am/2\)">\(am/2\)</span> pairs of edges parallel, although every paired vertex has degree <span class="math" data-tex="\(a\)">\(a\)</span>. The lemma therefore also bounds, at every vertex, the number of neighbours in each folding set.</p>
+<p><strong>Lemma 1.1</strong> (pair folding). Let <span class="math" data-tex="\(J\)">\(J\)</span> be a finite simple graph and <span class="math" data-tex="\(X_1,\dots,X_t\)">\(X_1,\dots,X_t\)</span> pairwise disjoint subsets of <span class="math" data-tex="\(V(J)\)">\(V(J)\)</span>. Let <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span>, and suppose that <span class="math" data-tex="\(m_i=|X_i|\ge\max\{8,a^2\}\)">\(m_i=|X_i|\ge\max\{8,a^2\}\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, that <span class="math" data-tex="\(d_J(x)\le a\)">\(d_J(x)\le a\)</span> for every <span class="math" data-tex="\(x\in X_1\cup\dots\cup X_t\)">\(x\in X_1\cup\dots\cup X_t\)</span>, and that
+<span class="math math-display" data-tex="\[
+d_i(v)=|N_J(v)\cap X_i|\le a
+\]">\[
+d_i(v)=|N_J(v)\cap X_i|\le a
+\]</span>
+for every <span class="math" data-tex="\(v\in V(J)\)">\(v\in V(J)\)</span> and every <span class="math" data-tex="\(i\)">\(i\)</span>. Then there are pairings of the vertices inside each <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, leaving exactly <span class="math" data-tex="\(m_i\bmod2\)">\(m_i\bmod2\)</span> vertices of <span class="math" data-tex="\(X_i\)">\(X_i\)</span> unpaired, and a set <span class="math" data-tex="\(E_{\rm err}\subseteq E(J)\)">\(E_{\rm err}\subseteq E(J)\)</span> with
+<span class="math math-display" data-tex="\[
+|E_{\rm err}|\le2\sum_im_i,
+\]">\[
+|E_{\rm err}|\le2\sum_im_i,
+\]</span>
+such that identifying every pair in <span class="math" data-tex="\(J-E_{\rm err}\)">\(J-E_{\rm err}\)</span> gives a simple graph <span class="math" data-tex="\(Q\)">\(Q\)</span> in which every edge comes from exactly one remaining edge of <span class="math" data-tex="\(J\)">\(J\)</span>, its <em>representative</em>. Keeping all quotient vertices, including isolated ones,
+<span class="math math-display" data-tex="\[
+|V(Q)|=|V(J)|-\sum_i\Bigl\lfloor\frac{m_i}2\Bigr\rfloor .
+\]">\[
+|V(Q)|=|V(J)|-\sum_i\Bigl\lfloor\frac{m_i}2\Bigr\rfloor .
+\]</span>
+If <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, the identity and <span class="math" data-tex="\(E_{\rm err}=\varnothing\)">\(E_{\rm err}=\varnothing\)</span> satisfy the conclusion.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>.</p>
+<p><em>Random pairings.</em> If <span class="math" data-tex="\(m_i\)">\(m_i\)</span> is even, choose a uniformly random perfect pairing of <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. If <span class="math" data-tex="\(m_i\)">\(m_i\)</span> is odd, add a dummy vertex, choose a uniformly random perfect pairing of the <span class="math" data-tex="\(m_i+1\)">\(m_i+1\)</span> vertices, and delete the dummy vertex and its pair, leaving its partner unpaired. Choose independently for different <span class="math" data-tex="\(i\)">\(i\)</span>. In a uniform perfect pairing of a set of even size <span class="math" data-tex="\(M\)">\(M\)</span>, the partner of a fixed vertex is uniform among the other <span class="math" data-tex="\(M-1\)">\(M-1\)</span> vertices, and given one pair, the remaining pairs form a uniform perfect pairing of the other <span class="math" data-tex="\(M-2\)">\(M-2\)</span> vertices. Hence, for distinct <span class="math" data-tex="\(u,v\in X_i\)">\(u,v\in X_i\)</span> and for two disjoint pairs inside <span class="math" data-tex="\(X_i\)">\(X_i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Pr(\{u,v\}\text{ paired})\le\frac1{m_i-1},\\
+\Pr(\text{both paired})\le\frac1{(m_i-1)(m_i-3)} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Pr(\{u,v\}\text{ paired})\le\frac1{m_i-1},\\
+\Pr(\text{both paired})\le\frac1{(m_i-1)(m_i-3)} .
+\end{gathered}
+\]</span>
+For even <span class="math" data-tex="\(m_i\)">\(m_i\)</span> these are equalities. For odd <span class="math" data-tex="\(m_i\)">\(m_i\)</span> the exact values are <span class="math" data-tex="\(1/m_i\)">\(1/m_i\)</span> and <span class="math" data-tex="\(1/(m_i(m_i-2))\)">\(1/(m_i(m_i-2))\)</span>, which are smaller.</p>
+<p><em>Counting the errors.</em> Let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> map every vertex to its class after the identifications; classes have one or two vertices. Let <span class="math" data-tex="\(Z\)">\(Z\)</span> be the number of edges of <span class="math" data-tex="\(J\)">\(J\)</span> that become loops plus the number of unordered pairs of distinct edges of <span class="math" data-tex="\(J\)">\(J\)</span> that become the same edge, not a loop. We bound <span class="math" data-tex="\(\mathbb EZ\)">\(\mathbb EZ\)</span>. Two distinct edges of the simple graph <span class="math" data-tex="\(J\)">\(J\)</span> either share exactly one end or have four distinct ends, so the following cases are complete.</p>
+<p><em>Loops.</em> An edge becomes a loop exactly when its ends form a pair in some <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. The vertices of <span class="math" data-tex="\(X_i\)">\(X_i\)</span> have degree at most <span class="math" data-tex="\(a\)">\(a\)</span>, so at most <span class="math" data-tex="\(am_i/2\)">\(am_i/2\)</span> edges lie inside <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, and the expected number of loops from <span class="math" data-tex="\(X_i\)">\(X_i\)</span> is at most <span class="math" data-tex="\(am_i/(2(m_i-1))\)">\(am_i/(2(m_i-1))\)</span>.</p>
+<p><em>A common end.</em> If <span class="math" data-tex="\(vu\)">\(vu\)</span> and <span class="math" data-tex="\(vw\)">\(vw\)</span>, with <span class="math" data-tex="\(u\ne w\)">\(u\ne w\)</span>, become the same edge that is not a loop, then <span class="math" data-tex="\(\pi(u)=\pi(w)\ne\pi(v)\)">\(\pi(u)=\pi(w)\ne\pi(v)\)</span>; classes have at most two vertices, so <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> form a pair in some <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. For a fixed <span class="math" data-tex="\(v\)">\(v\)</span> there are <span class="math" data-tex="\(\binom{d_i(v)}2\)">\(\binom{d_i(v)}2\)</span> such pairs <span class="math" data-tex="\(\{u,w\}\subseteq X_i\)">\(\{u,w\}\subseteq X_i\)</span>. Since <span class="math" data-tex="\(\binom d2\le\frac{(a-1)d}2\)">\(\binom d2\le\frac{(a-1)d}2\)</span> for every integer <span class="math" data-tex="\(0\le d\le a\)">\(0\le d\le a\)</span>, and
+<span class="math math-display" data-tex="\[
+\sum_{v\in V(J)}d_i(v)=\sum_{x\in X_i}d_J(x)\le am_i
+\]">\[
+\sum_{v\in V(J)}d_i(v)=\sum_{x\in X_i}d_J(x)\le am_i
+\]</span>
+(both sides count the pairs of a vertex of <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and an incident edge), the expected contribution charged to <span class="math" data-tex="\(X_i\)">\(X_i\)</span> is at most
+<span class="math math-display" data-tex="\[
+\frac1{m_i-1}\sum_v\binom{d_i(v)}2\le\frac{a(a-1)m_i}{2(m_i-1)} .
+\]">\[
+\frac1{m_i-1}\sum_v\binom{d_i(v)}2\le\frac{a(a-1)m_i}{2(m_i-1)} .
+\]</span>
+Loops and common ends together contribute at most
+<span class="math math-display" data-tex="\[
+\sum_i\frac{a^2m_i}{2(m_i-1)}\le\frac47\sum_ia^2,
+\]">\[
+\sum_i\frac{a^2m_i}{2(m_i-1)}\le\frac47\sum_ia^2,
+\]</span>
+since <span class="math" data-tex="\(m_i\ge8\)">\(m_i\ge8\)</span>.</p>
+<p><em>Four distinct ends, one folding set.</em> If <span class="math" data-tex="\(uv\)">\(uv\)</span> and <span class="math" data-tex="\(xy\)">\(xy\)</span> with four distinct ends become the same edge, the two classes are <span class="math" data-tex="\(\{u,x\},\{v,y\}\)">\(\{u,x\},\{v,y\}\)</span> or <span class="math" data-tex="\(\{u,y\},\{v,x\}\)">\(\{u,y\},\{v,x\}\)</span>; all four vertices lie in folding sets, since a class of one vertex cannot contain two of them. If both pairs lie in one <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, both edges lie inside <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. With <span class="math" data-tex="\(e_i\le am_i/2\)">\(e_i\le am_i/2\)</span> edges inside <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, there are at most <span class="math" data-tex="\(e_i^2/2\)">\(e_i^2/2\)</span> such pairs of edges, each with two possible patterns, and the contribution is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_i\frac{e_i^2}{(m_i-1)(m_i-3)}\\
+&amp;\quad\le\sum_i\frac{a^2m_i^2}{4(m_i-1)(m_i-3)}\\
+&amp;\quad\le\frac{16}{35}\sum_ia^2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_i\frac{e_i^2}{(m_i-1)(m_i-3)}\\
+&amp;\quad\le\sum_i\frac{a^2m_i^2}{4(m_i-1)(m_i-3)}\\
+&amp;\quad\le\frac{16}{35}\sum_ia^2,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(m_i/(m_i-1)\le8/7\)">\(m_i/(m_i-1)\le8/7\)</span> and <span class="math" data-tex="\(m_i/(m_i-3)\le8/5\)">\(m_i/(m_i-3)\le8/5\)</span>.</p>
+<p><em>Four distinct ends, two folding sets.</em> If the two pairs lie in different sets <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and <span class="math" data-tex="\(X_j\)">\(X_j\)</span>, both edges join <span class="math" data-tex="\(X_i\)">\(X_i\)</span> to <span class="math" data-tex="\(X_j\)">\(X_j\)</span>, and only one pattern is possible, since pairs stay inside their sets. Let <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> be the number of edges between <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and <span class="math" data-tex="\(X_j\)">\(X_j\)</span>. There are at most <span class="math" data-tex="\(e_{ij}^2/2\)">\(e_{ij}^2/2\)</span> such pairs of edges, and by independence of the two pairings the contribution is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{i&lt;j}\frac{e_{ij}^2}{2(m_i-1)(m_j-1)}\\
+&amp;\quad\le\frac{32}{49}\sum_{i&lt;j}\frac{e_{ij}^2}{m_im_j}\le\frac{16}{49}\sum_ia^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{i&lt;j}\frac{e_{ij}^2}{2(m_i-1)(m_j-1)}\\
+&amp;\quad\le\frac{32}{49}\sum_{i&lt;j}\frac{e_{ij}^2}{m_im_j}\le\frac{16}{49}\sum_ia^2 .
+\end{aligned}
+\]</span>
+For the last step, fix <span class="math" data-tex="\(i\)">\(i\)</span>: since <span class="math" data-tex="\(e_{ij}\le am_j\)">\(e_{ij}\le am_j\)</span> and <span class="math" data-tex="\(\sum_{j\ne i}e_{ij}\le am_i\)">\(\sum_{j\ne i}e_{ij}\le am_i\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{j\ne i}\frac{e_{ij}^2}{m_im_j}\le\frac a{m_i}\sum_{j\ne i}e_{ij}\le a^2 ,
+\]">\[
+\sum_{j\ne i}\frac{e_{ij}^2}{m_im_j}\le\frac a{m_i}\sum_{j\ne i}e_{ij}\le a^2 ,
+\]</span>
+and summing over <span class="math" data-tex="\(i\)">\(i\)</span> counts each unordered pair of sets twice.</p>
+<p>Altogether, using <span class="math" data-tex="\(a^2\le m_i\)">\(a^2\le m_i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb EZ&amp;\le\Bigl(\frac47+\frac{16}{35}+\frac{16}{49}\Bigr)\sum_ia^2\\
+&amp;=\frac{332}{245}\sum_ia^2&lt;2\sum_im_i .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb EZ&amp;\le\Bigl(\frac47+\frac{16}{35}+\frac{16}{49}\Bigr)\sum_ia^2\\
+&amp;=\frac{332}{245}\sum_ia^2&lt;2\sum_im_i .
+\end{aligned}
+\]</span></p>
+<p><em>Deleting the errors.</em> Fix pairings with <span class="math" data-tex="\(Z\le\mathbb EZ\)">\(Z\le\mathbb EZ\)</span>. Delete every edge that becomes a loop, and in every class of <span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span> edges that become the same edge, delete all but one. Since <span class="math" data-tex="\(s-1\le\binom s2\)">\(s-1\le\binom s2\)</span>, at most <span class="math" data-tex="\(Z\)">\(Z\)</span> edges are deleted; they form <span class="math" data-tex="\(E_{\rm err}\)">\(E_{\rm err}\)</span>. Identifying the pairs in <span class="math" data-tex="\(J-E_{\rm err}\)">\(J-E_{\rm err}\)</span> gives a simple graph in which every edge has exactly one representative. No vertex is deleted, and every pair removes one vertex, which gives the order formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-batch-resolution">2. Batch resolution</h2>
+<p>The induction applies Lemma 1.1 not to one graph but to many graphs <span class="math" data-tex="\(J_W\)">\(J_W\)</span>, called <em>batches</em>, whose vertex sets overlap inside a common set <span class="math" data-tex="\(Y\)">\(Y\)</span>. Their quotients are decomposed separately by induction, and all their cycles are lifted through the same routers. The degree bound is imposed on the union of the batches, which keeps the load on the routers independent of the number of batches.</p>
+<p>Throughout this section <span class="math" data-tex="\(D\)">\(D\)</span> is a large real number and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a=D^{0.01},\quad L_0=D^{0.03},\\
+B_0=D^{0.30},\quad\sigma=D^{0.90}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+a=D^{0.01},\quad L_0=D^{0.03},\\
+B_0=D^{0.30},\quad\sigma=D^{0.90}.
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 2.1</strong> (batch resolution). For all sufficiently large <span class="math" data-tex="\(D\)">\(D\)</span> the following holds. Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be a finite set and <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> a finite indexed family of subsets <span class="math" data-tex="\(W\subseteq Y\)">\(W\subseteq Y\)</span> with <span class="math" data-tex="\(|W|\le B_0\)">\(|W|\le B_0\)</span>. For every index let <span class="math" data-tex="\(J_W\)">\(J_W\)</span> be a simple graph on <span class="math" data-tex="\(W\)">\(W\)</span>; the <span class="math" data-tex="\(J_W\)">\(J_W\)</span> have pairwise disjoint edge sets, and <span class="math" data-tex="\(F\)">\(F\)</span> denotes their union, taken on <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> be a family of graphs on pairwise disjoint subsets of <span class="math" data-tex="\(Y\)">\(Y\)</span>, each <span class="math" data-tex="\(R\in\mathcal R\)">\(R\in\mathcal R\)</span> of order <span class="math" data-tex="\(r_R\)">\(r_R\)</span> with <span class="math" data-tex="\(\sigma\le r_R\le D^{1.02}\)">\(\sigma\le r_R\le D^{1.02}\)</span>, with <span class="math" data-tex="\(E(R)\cap E(F)=\varnothing\)">\(E(R)\cap E(F)=\varnothing\)</span>, and with its edges partitioned into two spanning graphs <span class="math" data-tex="\(P_R\)">\(P_R\)</span> and <span class="math" data-tex="\(T_R\)">\(T_R\)</span>, each of cut expansion at least <span class="math" data-tex="\(\sigma/4\)">\(\sigma/4\)</span>. Call <span class="math" data-tex="\(P_R\)">\(P_R\)</span> the <em>router</em> of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>For some pairs <span class="math" data-tex="\((W,R)\)">\((W,R)\)</span> let an <em>active set</em> <span class="math" data-tex="\(X_{W,R}\subseteq W\cap V(R)\)">\(X_{W,R}\subseteq W\cap V(R)\)</span> be given, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|X_{W,R}|\ge L_0,\\
+d_F(x)\le a\quad(x\in X_{W,R}).
+\end{gathered}
+\]">\[
+\begin{gathered}
+|X_{W,R}|\ge L_0,\\
+d_F(x)\le a\quad(x\in X_{W,R}).
+\end{gathered}
+\]</span>
+Sums over pairs <span class="math" data-tex="\((W,R)\)">\((W,R)\)</span> include only active sets; put <span class="math" data-tex="\(\Sigma_Y=\sum_{W,R}|X_{W,R}|\)">\(\Sigma_Y=\sum_{W,R}|X_{W,R}|\)</span>.</p>
+<p>Then there are simple graphs <span class="math" data-tex="\(Q_W\)">\(Q_W\)</span>, the <em>quotients</em>, with all their vertices retained, of orders
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+q_W&amp;=|W|-\sum_R\Bigl\lfloor\frac{|X_{W,R}|}2\Bigr\rfloor\\
+&amp;\le|W|-\frac13\sum_R|X_{W,R}|\le B_0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+q_W&amp;=|W|-\sum_R\Bigl\lfloor\frac{|X_{W,R}|}2\Bigr\rfloor\\
+&amp;\le|W|-\frac13\sum_R|X_{W,R}|\le B_0,
+\end{aligned}
+\]</span>
+so that <span class="math" data-tex="\(\sum_Wq_W\le\sum_W|W|-\frac13\Sigma_Y\)">\(\sum_Wq_W\le\sum_W|W|-\frac13\Sigma_Y\)</span>, with the following property. For every choice of cycle-and-edge partitions of the quotients, with <span class="math" data-tex="\(t_W\)">\(t_W\)</span> members for <span class="math" data-tex="\(Q_W\)">\(Q_W\)</span>, there are sets <span class="math" data-tex="\(U_R\subseteq E(P_R)\)">\(U_R\subseteq E(P_R)\)</span> and a cycle-and-edge partition of
+<span class="math math-display" data-tex="\[
+E(F)\cup\bigcup_{R\in\mathcal R}U_R
+\]">\[
+E(F)\cup\bigcup_{R\in\mathcal R}U_R
+\]</span>
+with at most <span class="math" data-tex="\(\sum_Wt_W+8\Sigma_Y\)">\(\sum_Wt_W+8\Sigma_Y\)</span> members. The graphs <span class="math" data-tex="\(R&#x27;=R-U_R\)">\(R&#x27;=R-U_R\)</span>, on <span class="math" data-tex="\(V(R)\)">\(V(R)\)</span>, contain <span class="math" data-tex="\(T_R\)">\(T_R\)</span>; the members of the partition together with the graphs <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span> partition <span class="math" data-tex="\(E(F)\cup\bigcup_RE(R)\)">\(E(F)\cup\bigcup_RE(R)\)</span>. The threshold for <span class="math" data-tex="\(D\)">\(D\)</span> is absolute.</p>
+<p><em>Proof.</em> The quotients are fixed first, before any router edge is used.</p>
+<p><strong>2.1. Edges to heavy neighbours.</strong> Fix a batch <span class="math" data-tex="\(W\)">\(W\)</span>. Its active sets are pairwise disjoint, because the graphs <span class="math" data-tex="\(R\)">\(R\)</span> have disjoint vertex sets. For an active set <span class="math" data-tex="\(X=X_{W,R}\)">\(X=X_{W,R}\)</span> put
+<span class="math math-display" data-tex="\[
+H_X=\{v\in W:|N_{J_W}(v)\cap X|&gt;a\},
+\]">\[
+H_X=\{v\in W:|N_{J_W}(v)\cap X|&gt;a\},
+\]</span>
+and let <span class="math" data-tex="\(E_X\)">\(E_X\)</span> be the set of edges of <span class="math" data-tex="\(J_W\)">\(J_W\)</span> between <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(H_X\)">\(H_X\)</span>. Every vertex of an active set has degree at most <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(J_W\subseteq F\)">\(J_W\subseteq F\)</span>, so <span class="math" data-tex="\(H_X\)">\(H_X\)</span> meets no active set of the batch. If <span class="math" data-tex="\(H_X\ne\varnothing\)">\(H_X\ne\varnothing\)</span>, then
+<span class="math math-display" data-tex="\[
+a|H_X|&lt;|E_X|\le\sum_{x\in X}d_{J_W}(x)\le a|X| ,
+\]">\[
+a|H_X|&lt;|E_X|\le\sum_{x\in X}d_{J_W}(x)\le a|X| ,
+\]</span>
+so in all cases <span class="math" data-tex="\(|H_X|\le|X|\)">\(|H_X|\le|X|\)</span>. An edge of <span class="math" data-tex="\(E_X\)">\(E_X\)</span> has one end in <span class="math" data-tex="\(X\)">\(X\)</span> and the other outside every active set, so the sets <span class="math" data-tex="\(E_X\)">\(E_X\)</span> for different active sets are disjoint.</p>
+<p>By Corollary 3.1 of <a href="paths-cycles-and-lovasz-decompositions.html">Paths, cycles and Lovász's decomposition theorem</a>, the bipartite graph on <span class="math" data-tex="\(X\cup H_X\)">\(X\cup H_X\)</span> with edge set <span class="math" data-tex="\(E_X\)">\(E_X\)</span> has a decomposition into paths with at most two ends at each vertex, hence into at most <span class="math" data-tex="\(|X|+|H_X|\le2|X|\)">\(|X|+|H_X|\le2|X|\)</span> paths. From each path delete the edge at each end lying in <span class="math" data-tex="\(H_X\)">\(H_X\)</span>, as in the cycle packing argument of Conlon, Fox and Sudakov [CFS, Section 6], and make every deleted edge a single-edge member; at most two edges are deleted, and they are distinct, since a path with both ends in <span class="math" data-tex="\(H_X\)">\(H_X\)</span> has at least two edges. What remains of a path is either edgeless, and is ignored, or a path of even positive length with both ends in <span class="math" data-tex="\(X\)">\(X\)</span>, since the paths alternate between <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(H_X\)">\(H_X\)</span>; call it a <em>remnant</em>. Its ends are distinct. For every remnant <span class="math" data-tex="\(L\)">\(L\)</span> in <span class="math" data-tex="\(X=X_{W,R}\)">\(X=X_{W,R}\)</span>, record a demand in the router <span class="math" data-tex="\(P_R\)">\(P_R\)</span> between the ends of <span class="math" data-tex="\(L\)">\(L\)</span>, with forbidden set <span class="math" data-tex="\(V(L)\cap V(R)\)">\(V(L)\cap V(R)\)</span>, forming a team on its own. Once this demand is routed, <span class="math" data-tex="\(L\)">\(L\)</span> is closed into a cycle. Every path of the decomposition thus gives at most two single edges and one cycle, at most <span class="math" data-tex="\(6|X|\)">\(6|X|\)</span> members in total.</p>
+<p><strong>2.2. The quotients.</strong> Delete all sets <span class="math" data-tex="\(E_X\)">\(E_X\)</span> from <span class="math" data-tex="\(J_W\)">\(J_W\)</span>, keeping the vertex set <span class="math" data-tex="\(W\)">\(W\)</span>, and call the result <span class="math" data-tex="\(J_W^0\)">\(J_W^0\)</span>. Active vertices still have degree at most <span class="math" data-tex="\(a\)">\(a\)</span>. For an active <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(v\in W\)">\(v\in W\)</span>, either <span class="math" data-tex="\(v\in H_X\)">\(v\in H_X\)</span>, and all its edges to <span class="math" data-tex="\(X\)">\(X\)</span> were deleted, or <span class="math" data-tex="\(v\)">\(v\)</span> had at most <span class="math" data-tex="\(a\)">\(a\)</span> neighbours in <span class="math" data-tex="\(X\)">\(X\)</span>; so <span class="math" data-tex="\(|N_{J_W^0}(v)\cap X|\le a\)">\(|N_{J_W^0}(v)\cap X|\le a\)</span>. For large <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(L_0\ge\max\{8,a^2\}\)">\(L_0\ge\max\{8,a^2\}\)</span>. Lemma 1.1, applied to <span class="math" data-tex="\(J_W^0\)">\(J_W^0\)</span> with the active sets of <span class="math" data-tex="\(W\)">\(W\)</span> as folding sets, gives at most <span class="math" data-tex="\(2\sum_R|X_{W,R}|\)">\(2\sum_R|X_{W,R}|\)</span> error edges, which become single-edge members, and a simple quotient <span class="math" data-tex="\(Q_W\)">\(Q_W\)</span> with quotient map <span class="math" data-tex="\(\pi_W\)">\(\pi_W\)</span>. Every edge <span class="math" data-tex="\(e\)">\(e\)</span> of <span class="math" data-tex="\(Q_W\)">\(Q_W\)</span> has a unique representative <span class="math" data-tex="\(\hat e\)">\(\hat e\)</span> in <span class="math" data-tex="\(J_W^0\)">\(J_W^0\)</span>.</p>
+<p>Every pair removes one vertex. Since <span class="math" data-tex="\(\lfloor m/2\rfloor\ge m/3\)">\(\lfloor m/2\rfloor\ge m/3\)</span> for every integer <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, the order formula of Lemma 1.1 gives the bounds on <span class="math" data-tex="\(q_W\)">\(q_W\)</span> and <span class="math" data-tex="\(\sum_Wq_W\)">\(\sum_Wq_W\)</span>. The quotients do not depend on the partitions chosen for them later.</p>
+<p><strong>2.3. Switches of a quotient cycle.</strong> Fix cycle-and-edge partitions of all quotients. A single-edge member <span class="math" data-tex="\(e\)">\(e\)</span> of a quotient partition is replaced by its representative <span class="math" data-tex="\(\hat e\)">\(\hat e\)</span>. Let <span class="math" data-tex="\(C\)">\(C\)</span> be a cycle of <span class="math" data-tex="\(Q_W\)">\(Q_W\)</span> with vertices <span class="math" data-tex="\(z_1,\dots,z_s\)">\(z_1,\dots,z_s\)</span> in cyclic order, <span class="math" data-tex="\(s\ge3\)">\(s\ge3\)</span>, and edges <span class="math" data-tex="\(e_j=z_jz_{j+1}\)">\(e_j=z_jz_{j+1}\)</span>, indices modulo <span class="math" data-tex="\(s\)">\(s\)</span>. At the visit <span class="math" data-tex="\(z_j\)">\(z_j\)</span>, let <span class="math" data-tex="\(u_j\)">\(u_j\)</span> be the end of <span class="math" data-tex="\(\hat e_{j-1}\)">\(\hat e_{j-1}\)</span> in the class <span class="math" data-tex="\(\pi_W^{-1}(z_j)\)">\(\pi_W^{-1}(z_j)\)</span>, and <span class="math" data-tex="\(v_j\)">\(v_j\)</span> the end of <span class="math" data-tex="\(\hat e_j\)">\(\hat e_j\)</span> in that class. If <span class="math" data-tex="\(u_j=v_j\)">\(u_j=v_j\)</span>, the two representatives meet at that vertex. Otherwise the class is a pair <span class="math" data-tex="\(\{u_j,v_j\}\)">\(\{u_j,v_j\}\)</span> inside an active set <span class="math" data-tex="\(X_{W,R}\)">\(X_{W,R}\)</span>, and we record a <em>switch</em> demand between <span class="math" data-tex="\(u_j\)">\(u_j\)</span> and <span class="math" data-tex="\(v_j\)">\(v_j\)</span> in the router <span class="math" data-tex="\(P_R\)">\(P_R\)</span>.</p>
+<p>Let <span class="math" data-tex="\(Z_C\)">\(Z_C\)</span> be the set of all ends of the representatives <span class="math" data-tex="\(\hat e_1,\dots,\hat e_s\)">\(\hat e_1,\dots,\hat e_s\)</span>. Every switch demand of <span class="math" data-tex="\(C\)">\(C\)</span> in the router <span class="math" data-tex="\(P_R\)">\(P_R\)</span> receives the forbidden set <span class="math" data-tex="\(Z_C\cap V(R)\)">\(Z_C\cap V(R)\)</span>, and the switch demands of <span class="math" data-tex="\(C\)">\(C\)</span> in <span class="math" data-tex="\(P_R\)">\(P_R\)</span> form one team. Teams of different cycles, also of different batches, are different, and differ from the one-demand teams of Section 2.1.</p>
+<p><strong>2.4. The load on a router.</strong> Fix <span class="math" data-tex="\(R\)">\(R\)</span> and collect all demands in <span class="math" data-tex="\(P_R\)">\(P_R\)</span>, from all batches and both constructions. Every demand end lies in an active set, so it has degree at most <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(F\)">\(F\)</span>. Associate with every occurrence of a vertex <span class="math" data-tex="\(x\)">\(x\)</span> as a demand end an edge of <span class="math" data-tex="\(F\)">\(F\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>:</p>
+<ul>
+<li>for the demand closing a remnant <span class="math" data-tex="\(L\)">\(L\)</span>, the edge of <span class="math" data-tex="\(L\)">\(L\)</span> at its end <span class="math" data-tex="\(x\)">\(x\)</span>;</li>
+<li>for a switch with <span class="math" data-tex="\(u_j\ne v_j\)">\(u_j\ne v_j\)</span>, the edge <span class="math" data-tex="\(\hat e_{j-1}\)">\(\hat e_{j-1}\)</span> at the occurrence of <span class="math" data-tex="\(u_j\)">\(u_j\)</span>, and <span class="math" data-tex="\(\hat e_j\)">\(\hat e_j\)</span> at the occurrence of <span class="math" data-tex="\(v_j\)">\(v_j\)</span>.</li>
+</ul>
+<p>At a fixed vertex these edges are distinct. Remnants come from edge-disjoint paths, and the sets <span class="math" data-tex="\(E_X\)">\(E_X\)</span> are disjoint. A quotient edge lies in exactly one member and has one representative; a cycle visits each class once, and a switch uses its two edges at two different vertices. The two constructions use disjoint edges, because the sets <span class="math" data-tex="\(E_X\)">\(E_X\)</span> were deleted before folding, and different batches have disjoint edge sets, whatever their vertex sets and pairings. So the number of demand ends at <span class="math" data-tex="\(x\)">\(x\)</span> is at most <span class="math" data-tex="\(d_F(x)\le a\)">\(d_F(x)\le a\)</span>.</p>
+<p><strong>2.5. Supplying the connections.</strong> A team of switch demands of a cycle <span class="math" data-tex="\(C\)">\(C\)</span> has at most <span class="math" data-tex="\(s\le q_W\le B_0\)">\(s\le q_W\le B_0\)</span> demands, and <span class="math" data-tex="\(|Z_C|\le2s\le2B_0\)">\(|Z_C|\le2s\le2B_0\)</span>. A remnant team has one demand, with a forbidden set of at most <span class="math" data-tex="\(|W|\le B_0\)">\(|W|\le B_0\)</span> vertices. Apply Theorem 2.1 of <a href="routing-in-graphs-with-cut-expansion.html">Routing in graphs with cut expansion</a> once in every router <span class="math" data-tex="\(P_R\)">\(P_R\)</span>, to all its demands, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r=r_R,\quad h=\frac\sigma4,\quad k=a,\\
+b=B_0,\quad z=2B_0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+r=r_R,\quad h=\frac\sigma4,\quad k=a,\\
+b=B_0,\quad z=2B_0 .
+\end{gathered}
+\]</span>
+By Corollary 2.2 there, <span class="math" data-tex="\(\ell=O(D^{0.12}\log^2D)\)">\(\ell=O(D^{0.12}\log^2D)\)</span> uniformly in <span class="math" data-tex="\(R\)">\(R\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ell^2(a+B_0)+2B_0&amp;=O(D^{0.54}\log^4D)\\
+&amp;=o(D^{0.90}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\ell^2(a+B_0)+2B_0&amp;=O(D^{0.54}\log^4D)\\
+&amp;=o(D^{0.90}),
+\end{aligned}
+\]</span>
+and for large <span class="math" data-tex="\(D\)">\(D\)</span> this is at most <span class="math" data-tex="\(\sigma/512=h/128\)">\(\sigma/512=h/128\)</span>, the hypothesis of the theorem. If a router has no demand, nothing is used. The paths supplied in one router are pairwise edge-disjoint over all teams and batches, and paths of one team have disjoint sets of inner vertices.</p>
+<p><strong>2.6. The completed cycles are cycles.</strong> For a remnant <span class="math" data-tex="\(L\)">\(L\)</span>, the supplied path has the ends of <span class="math" data-tex="\(L\)">\(L\)</span> as its ends, and its inner vertices lie in <span class="math" data-tex="\(V(R)\)">\(V(R)\)</span> and avoid <span class="math" data-tex="\(V(L)\cap V(R)\)">\(V(L)\cap V(R)\)</span>, hence avoid <span class="math" data-tex="\(V(L)\)">\(V(L)\)</span>. So <span class="math" data-tex="\(L\)">\(L\)</span> and the path form a cycle, with at least two edges of <span class="math" data-tex="\(L\)">\(L\)</span> and at least one of the path.</p>
+<p>For a quotient cycle <span class="math" data-tex="\(C\)">\(C\)</span>, the classes of <span class="math" data-tex="\(z_1,\dots,z_s\)">\(z_1,\dots,z_s\)</span> are pairwise disjoint. At a visit with <span class="math" data-tex="\(u_j=v_j\)">\(u_j=v_j\)</span>, the representatives use one vertex of the class; at a switch, they use its two vertices, and the supplied path joins them. So, before inner vertices of supplied paths are added, the vertices used at different visits are distinct. Every supplied path for <span class="math" data-tex="\(C\)">\(C\)</span> avoids <span class="math" data-tex="\(Z_C\)">\(Z_C\)</span> in its inner vertices, and <span class="math" data-tex="\(Z_C\)">\(Z_C\)</span> contains all these vertices. Two supplied paths for <span class="math" data-tex="\(C\)">\(C\)</span> in one router have disjoint inner vertices, as one team; paths in different routers lie in the disjoint sets <span class="math" data-tex="\(V(R)\)">\(V(R)\)</span>. Hence the closed walk formed by the representatives and the supplied paths, in cyclic order, repeats no vertex.</p>
+<p>One case deserves a separate word. If a visited class is a pair <span class="math" data-tex="\(\{u,u&#x27;\}\)">\(\{u,u&#x27;\}\)</span> with <span class="math" data-tex="\(u_j=v_j=u\)">\(u_j=v_j=u\)</span>, the other vertex <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span> need not lie in <span class="math" data-tex="\(Z_C\)">\(Z_C\)</span> and may be an inner vertex of a supplied path. No representative of <span class="math" data-tex="\(C\)">\(C\)</span> contains <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span>, since the representatives meet that class only at <span class="math" data-tex="\(u\)">\(u\)</span>; and no second supplied path of <span class="math" data-tex="\(C\)">\(C\)</span> can contain <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span>, by the team condition in its router and by disjointness of routers. So <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span> is visited at most once. The same holds for vertices of classes not visited by <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>The cycle contains the <span class="math" data-tex="\(s\ge3\)">\(s\ge3\)</span> representatives, so its length is at least three. A quotient cycle without switches lifts to its representatives alone. Every member of a quotient partition gives exactly one member for <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>2.7. Accounting.</strong> For each batch, every edge of <span class="math" data-tex="\(J_W\)">\(J_W\)</span> has exactly one destination: an edge deleted from a path end in Section 2.1 is a single-edge member; an edge of a remnant lies in its closed cycle; an error edge of the folding is a single-edge member; every other edge is the representative of exactly one quotient edge and lies in the lifted member of that edge. The batches have disjoint edge sets, so every edge of <span class="math" data-tex="\(F\)">\(F\)</span> is accounted for once. Let <span class="math" data-tex="\(U_R\)">\(U_R\)</span> be the set of edges of all paths supplied in <span class="math" data-tex="\(P_R\)">\(P_R\)</span>; each is used once, these edges are not in <span class="math" data-tex="\(F\)">\(F\)</span>, and different routers are edge-disjoint. So the members form a partition of <span class="math" data-tex="\(E(F)\cup\bigcup_RU_R\)">\(E(F)\cup\bigcup_RU_R\)</span>. The heavy-neighbour work gives at most <span class="math" data-tex="\(6\Sigma_Y\)">\(6\Sigma_Y\)</span> members, the folding errors at most <span class="math" data-tex="\(2\Sigma_Y\)">\(2\Sigma_Y\)</span>, and the quotient partitions exactly <span class="math" data-tex="\(\sum_Wt_W\)">\(\sum_Wt_W\)</span>; supplied paths add no members. Finally <span class="math" data-tex="\(U_R\subseteq E(P_R)\)">\(U_R\subseteq E(P_R)\)</span> is disjoint from <span class="math" data-tex="\(E(T_R)\)">\(E(T_R)\)</span>, so <span class="math" data-tex="\(R&#x27;=R-U_R\)">\(R&#x27;=R-U_R\)</span> contains <span class="math" data-tex="\(T_R\)">\(T_R\)</span>, and its edges are exactly the edges of <span class="math" data-tex="\(R\)">\(R\)</span> not used by a member. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1</strong> (easy). Verify the example of Section 1: pairing the <span class="math" data-tex="\(m\)">\(m\)</span> vertices of one side of a complete bipartite graph with sides of sizes <span class="math" data-tex="\(m\)">\(m\)</span> (even) and <span class="math" data-tex="\(a\)">\(a\)</span> creates exactly <span class="math" data-tex="\(am/2\)">\(am/2\)</span> pairs of parallel edges. Which hypothesis of Lemma 1.1 fails?</p>
+<p><strong>3.2</strong> (medium). Prove the two probability formulas for a uniform perfect pairing of a set of even size <span class="math" data-tex="\(M\)">\(M\)</span>: a given pair occurs with probability <span class="math" data-tex="\(1/(M-1)\)">\(1/(M-1)\)</span>, and two given disjoint pairs both occur with probability <span class="math" data-tex="\(1/((M-1)(M-3))\)">\(1/((M-1)(M-3))\)</span>.</p>
+<p><strong>3.3</strong> (medium). Show that <span class="math" data-tex="\(\binom d2\le\frac{(a-1)d}2\)">\(\binom d2\le\frac{(a-1)d}2\)</span> for all integers <span class="math" data-tex="\(0\le d\le a\)">\(0\le d\le a\)</span>.</p>
+<p><strong>3.4</strong> (medium). In Section 2.3, why must the forbidden set of a switch demand contain the ends of all representatives of <span class="math" data-tex="\(C\)">\(C\)</span>, and not only those of <span class="math" data-tex="\(\hat e_{j-1}\)">\(\hat e_{j-1}\)</span> and <span class="math" data-tex="\(\hat e_j\)">\(\hat e_j\)</span>?</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> Every pair <span class="math" data-tex="\(\{u,v\}\)">\(\{u,v\}\)</span> of the <span class="math" data-tex="\(m\)">\(m\)</span>-side becomes one vertex, and each of the <span class="math" data-tex="\(a\)">\(a\)</span> vertices <span class="math" data-tex="\(w\)">\(w\)</span> on the other side is adjacent to both <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>, so the edges <span class="math" data-tex="\(uw\)">\(uw\)</span> and <span class="math" data-tex="\(vw\)">\(vw\)</span> become parallel: <span class="math" data-tex="\(a\)">\(a\)</span> pairs of parallel edges for each of the <span class="math" data-tex="\(m/2\)">\(m/2\)</span> pairs of vertices. The paired vertices have degree <span class="math" data-tex="\(a\)">\(a\)</span>, but every vertex <span class="math" data-tex="\(w\)">\(w\)</span> of the other side has <span class="math" data-tex="\(m\)">\(m\)</span> neighbours in the folding set, and <span class="math" data-tex="\(m&gt;a\)">\(m&gt;a\)</span> when <span class="math" data-tex="\(m\ge\max\{8,a^2\}\)">\(m\ge\max\{8,a^2\}\)</span>. The hypothesis <span class="math" data-tex="\(d_i(w)\le a\)">\(d_i(w)\le a\)</span> fails.</p>
+<p><strong>3.2.</strong> The number of perfect pairings of an even set of size <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\((M-1)(M-3)\cdots1\)">\((M-1)(M-3)\cdots1\)</span>. Fixing one pair leaves a set of size <span class="math" data-tex="\(M-2\)">\(M-2\)</span>, so a given pair occurs in a fraction <span class="math" data-tex="\(1/(M-1)\)">\(1/(M-1)\)</span> of all pairings; fixing two disjoint pairs leaves a set of size <span class="math" data-tex="\(M-4\)">\(M-4\)</span>, a fraction <span class="math" data-tex="\(1/((M-1)(M-3))\)">\(1/((M-1)(M-3))\)</span>.</p>
+<p><strong>3.3.</strong> <span class="math" data-tex="\(\binom d2=\frac{d(d-1)}2\le\frac{d(a-1)}2\)">\(\binom d2=\frac{d(d-1)}2\le\frac{d(a-1)}2\)</span> because <span class="math" data-tex="\(d-1\le a-1\)">\(d-1\le a-1\)</span>; for <span class="math" data-tex="\(d=0\)">\(d=0\)</span> both sides vanish.</p>
+<p><strong>3.4.</strong> A supplied path for the switch at <span class="math" data-tex="\(z_j\)">\(z_j\)</span> may pass near any part of the lifted cycle. If one of its inner vertices were an end of another representative <span class="math" data-tex="\(\hat e_m\)">\(\hat e_m\)</span>, the lifted closed walk would visit that vertex twice. Forbidding all of <span class="math" data-tex="\(Z_C\)">\(Z_C\)</span> excludes this, and the team condition excludes collisions between two supplied paths of the same cycle.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-EG] OpenAI, <em>A linear cycle-and-edge decomposition of every graph</em>, OpenAI Math Release preprint, 24 September 2026. https://github.com/openai/math/tree/main/preprints/A-linear-cycle-and-edge-decomposition-of-every-graph-September-24-2026</li>
+<li>[CFS] D. Conlon, J. Fox and B. Sudakov, <em>Cycle packing</em>, Random Structures &amp; Algorithms 45 (2014), 608–626; arXiv:1310.0632. Removing the end edges of paths in a bipartite graph so that all ends lie on one side is used in its Section 6. https://arxiv.org/abs/1310.0632</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

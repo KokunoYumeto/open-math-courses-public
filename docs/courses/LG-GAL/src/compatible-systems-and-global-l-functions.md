@@ -5998,9 +5998,393 @@ For this one-node elliptic example, \(g=2\), \(r=1\), and \(T_\ell G\) has rank 
    \]
    The first Smith factor is the gcd of its entries, one, and their product is the determinant, by PC0's full integer Smith proof. A signed edge permutation preserves the form when it preserves the edge weights; the signs simply change orientation coordinates. Swapping weights one and two in the displayed numerical example does not preserve this fixed weighted form. These are integral graph calculations. Identifying such weights or this pairing with geometric thickness or monodromy still requires the model and period construction, and has not been inferred here.
 
+### 2Q. Line bundles through the infinitesimal neighbourhood of a nodal fibre
+
+The group in §2P describes a nodal fibre. We now deform its line bundles over a supplied proper flat family. The construction keeps the nilpotent coefficients and produces an actual formal group at the identity. A compatible formal line bundle will mean a system on the finite thickenings with its restriction isomorphisms; algebraization of that system is a separate assertion.
+
+Fix a complete discrete valuation ring \(R\), with uniformizer \(\pi\), residue field \(k\), and a proper flat finitely presented morphism
+\[
+ f:\mathcal C\longrightarrow\operatorname{Spec}R,\qquad
+ P:\operatorname{Spec}R\longrightarrow\mathcal C .
+ \tag{NQ1}
+\]
+Assume that the closed fibre \(C\), with root \(P_k\), is the split connected nodal curve constructed in NC1–NC8. Put
+\[
+ b=\sum_v g_v,\qquad r=|E|-|V|+1,\qquad g=b+r .
+ \tag{NQ2}
+\]
+There is no assumption here that an arbitrary smooth curve already has such a model. For an \(R\)-algebra \(A\), write \(\mathcal P(A)\) for isomorphism classes of lines \(L\) on \(\mathcal C_A\) with an isomorphism \(P_A^*L\simeq\mathcal O_A\). Tensor product gives its group law. On local Artinian \(R\)-algebras with specified residue field \(k\), define
+\[
+ \widehat{\mathcal P}(A)=
+ \ker\bigl(\mathcal P(A)\longrightarrow\mathcal P(k)\bigr).
+ \tag{NQ3}
+\]
+Here a test algebra is a local \(R\)-algebra with specified residue field \(k\) and finite length as a module over itself. Its maximal ideal is nilpotent: finite length makes every ideal finitely generated and the descending sequence of its powers stationary; Nakayama applied to a stationary power makes that power zero. Morphisms are local \(R\)-algebra maps inducing the identity on \(k\).
+
+Free comparisons for the deformation terminology are the Stacks project's [Picard groups of thickenings](https://stacks.math.columbia.edu/tag/0C6Q) and [smooth deformation functors](https://stacks.math.columbia.edu/tag/06HF). The proofs below use the already written affine Čech and finite-complex arguments; no representability or algebraization theorem is taken from those comparisons.
+
+#### 2Q.1. Cohomology of the supplied family, with every coefficient module
+
+**NQ1.** The module \(M=H^1(\mathcal C,\mathcal O_{\mathcal C})\) is free of rank \(g\). For every \(R\)-module \(N\), the natural coefficient maps give
+\[
+ H^0(\mathcal C,\mathcal O_{\mathcal C}\otimes_RN)=N,\qquad
+ H^1(\mathcal C,\mathcal O_{\mathcal C}\otimes_RN)=M\otimes_RN,\qquad
+ H^q(\mathcal C,\mathcal O_{\mathcal C}\otimes_RN)=0\ (q\ge2).
+ \tag{NQ4}
+\]
+For every \(R\)-algebra \(A\), the analogous formulas on \(\mathcal C_A\) hold with coefficients in any \(A\)-module \(I\), viewed on the right as an \(R\)-module. In particular,
+\[
+ \Gamma(\mathcal C_A,\mathcal O_{\mathcal C_A})=A .
+ \tag{NQ5}
+\]
+The identifications of degree zero send \(a\) to the constant section \(a\).
+
+*Proof.* Apply Lesson 3, FC10, to the flat structure sheaf of the proper family. It gives a bounded nonnegative finite free complex after choosing bases over the local ring \(R\), and an actual comparison with the flat affine Čech complex which stays a quasi-isomorphism after tensoring with any module, by FC9. Cancel every unit entry as in FC13. The remaining differential matrices have entries in \((\pi)\), so reduction modulo \(\pi\) makes every differential zero. NC4 and NC6 say that the closed-fibre cohomology has dimensions \(1,g,0,0,\ldots\). Thus the remaining terms have ranks \(1,g,0,0,\ldots\).
+
+The actual global section \(1\) is a degree-zero cycle whose reduction is the closed-fibre basis. FC16 makes it a basis of the degree-zero term and forces its outgoing differential to be zero. We have therefore obtained a comparison, valid under every tensor specialization, with
+\[
+                    [\,R\xrightarrow{\ 0\ }R^g\,]
+                     \quad\hbox{in degrees }0,1 .
+                     \tag{NQ6}
+\]
+This proves (NQ4), and identifies the second term with \(M\). The module is free without choosing a preferred basis.
+
+For the asserted coefficient formula after \(R\to A\), choose the same finite affine cover of \(\mathcal C\). Each intersection is affine by separatedness. Its coordinate module \(B\) becomes \(B\otimes_RA\); tensoring further with \(I\) gives \(B\otimes_RI\). The resulting coefficient Čech complex is consequently the same tensor specialization used in (NQ4). Affine acyclicity and the signed affine Čech comparison SC11–SC12 apply over arbitrary rings. These are the natural restriction and coefficient maps, so all identifications commute with algebra maps and coefficient homomorphisms. The actual unit gives (NQ5). \(\square\)
+
+An automorphism of an invertible sheaf is multiplication by a global unit: locally it is multiplication by a function, and the functions agree under a change of rank-one frame. By (NQ5) that unit comes from \(A^\times\). Preserving the root trivialization forces it to be \(1\). Thus between isomorphic rigidified lines there is a unique rigidified isomorphism, on nonreduced bases as well.
+
+#### 2Q.2. Lifting lines and measuring all the choices
+
+**NQ2.** Let \(A'\twoheadrightarrow A\) be a surjection of arbitrary \(R\)-algebras, with square-zero kernel \(I\). There is a natural exact sequence of groups
+\[
+ 0\longrightarrow M\otimes_R I
+   \longrightarrow\mathcal P(A')
+   \longrightarrow\mathcal P(A)\longrightarrow0 .
+ \tag{NQ7}
+\]
+In particular each nonempty fibre of restriction is a torsor under \(M\otimes_RI\): its elements differ by a unique such class. There is no preferred lift in general.
+
+*Proof.* Flatness of \(\mathcal C_{A'}\) over \(A'\) identifies the ideal of \(\mathcal C_A\) with
+\[
+                 \mathcal J=\mathcal O_{\mathcal C_A}\otimes_A I .
+                 \tag{NQ8}
+\]
+It has square zero. On an affine chart the restriction of functions is a surjection. A lift of a unit is a unit: if its product with a lifted inverse is \(1+j\), then multiplication by \(1-j\) supplies an inverse. Hence functions and units can be lifted on affine intersections.
+
+Start with a line on \(\mathcal C_A\). Choose a finite affine cover of \(\mathcal C_{A'}\), refined by finitely many principal opens so that the restricted line is free on every reduced chart. This is possible because principal opens form an affine basis and the base change is quasi-compact. A principal function on a quotient chart lifts to its original affine chart. The lifted principal opens still cover: the square-zero closed immersion is a homeomorphism. All intersections in this cover are affine.
+
+Write the transition units as \(u_{ij}\), with \(u_{ij}u_{jk}=u_{ik}\), and lift them to units \(\widetilde u_{ij}\), choosing reverse transitions as inverses. On triple intersections define
+\[
+ \widetilde u_{ij}\widetilde u_{jk}\widetilde u_{ik}^{-1}
+                   =1+c_{ijk},\qquad c_{ijk}\in\mathcal J .
+ \tag{NQ9}
+\]
+Multiplying the two associations of a four-fold product shows
+\[
+             c_{jkl}-c_{ikl}+c_{ijl}-c_{ijk}=0 .
+             \tag{NQ10}
+\]
+Products of two elements of \(\mathcal J\) vanish, so no omitted higher terms occur. Thus \(c\) is an additive Čech 2-cocycle. NQ1 gives \(H^2(\mathcal C_A,\mathcal J)=0\). The affine comparison therefore writes \(c=\delta d\) for a Čech 1-cochain \(d\). Replace \(\widetilde u_{ij}\) by \(\widetilde u_{ij}(1-d_{ij})\). Equation (NQ9) then becomes the exact cocycle identity. Gluing free rank-one modules with these units constructs a line \(L'\).
+
+To rigidify it, replace \(L'\) by
+\[
+       (L')^\natural=L'\otimes f_{A'}^*(P_{A'}^*L')^{-1}.
+       \tag{NQ11}
+\]
+Evaluation supplies the root trivialization. On reduction this recovers the given rigidified line using its given trivialization; it does not require that the root line on \(\operatorname{Spec}A'\) be globally free.
+
+Now compare two lifts and their unique rigidified identification over \(A\). After a common affine refinement, their transition ratios are \(1+a_{ij}\), with \(a\) an additive 1-cocycle in \(\mathcal J\). Changing compatible local frames changes \(a\) by a Čech boundary. Conversely every such 1-cocycle gives a line trivial on reduction. If its class is zero, the frames give a trivialization of the line; normalize that trivialization at the root. More explicitly, a chosen reduction trivialization can be matched because a unit of \(A\) lifts to a unit of \(A'\). This also shows that there is no quotient by an unaccounted group of global units. NQ1 identifies the resulting classes with \(M\otimes_R I\). Tensor product adds \(a\), since
+\[
+                       (1+a)(1+a')=1+a+a' .
+                       \tag{NQ12}
+\]
+This proves exactness, freeness and transitivity in (NQ7). Restricting the equations proves naturality. \(\square\)
+
+A surjection of local Artinian rings can be factored into square-zero surjections: use successive powers of its nilpotent kernel. It can also be factored into **small** surjections, whose kernels \(I\) satisfy \(\mathfrak m_{A'}I=0\). For a nonzero ideal in an Artinian local ring, take its last nonzero product by a power of the maximal ideal and then a one-dimensional residue-field subspace; it is an ideal killed by that maximal ideal. Quotient by it and induct on length. Consequently every rigidified line over \(k\) lifts through every Artinian test ring. For a small extension the choice module is
+\[
+                 M\otimes_RI=H^1(C,\mathcal O_C)\otimes_k I .
+                 \tag{NQ13}
+\]
+
+#### 2Q.3. A compatible universal line system
+
+**NQ3.** Choose a basis \(e_1,\ldots,e_g\) of \(H^1(C,\mathcal O_C)\), and put
+\[
+ S=R[[t_1,\ldots,t_g]],\qquad
+ \mathfrak n=(\pi,t_1,\ldots,t_g),\qquad S_n=S/\mathfrak n^{\,n+1}.
+ \tag{NQ14}
+\]
+There are compatible rigidified lines \(\xi_n\) on \(\mathcal C_{S_n}\), reducing to the trivial line over \(k\), whose first-order class in the variable directions is
+\[
+                             \sum_{i=1}^g e_i\otimes t_i .
+                             \tag{NQ15}
+\]
+They may be chosen to restrict to the trivial rigidified line under \(t_1=\cdots=t_g=0\) at every order.
+
+*Proof.* Start with the trivial line on \(S_0=k\). The map \(S_1\to R/(\pi^2)\) setting all variables to zero has square-zero kernel freely spanned over \(k\) by the \(t_i\). NQ2 identifies the lifts of the trivial line with \(H^1(C,\mathcal O_C)\otimes_k k^g\). Choose (NQ15).
+
+Suppose \(\xi_n\) has been chosen with the stated augmentation property. The kernel of \(S_{n+1}\to S_n\) is \(\mathfrak n^{n+1}/\mathfrak n^{n+2}\), a square-zero ideal. NQ2 lifts \(\xi_n\) to a line \(\eta\) on \(S_{n+1}\). Its augmentation is a rigidified line \(\eta_0\) on \(R/(\pi^{n+2})\), trivial modulo \(\pi^{n+1}\). Pull \(\eta_0\) back along the constant-coefficient map
+\[
+                     R/(\pi^{n+2})\longrightarrow S_{n+1}
+                     \tag{NQ16}
+\]
+and tensor \(\eta\) with its inverse. The new augmentation is trivial and its restriction to \(S_n\) is still \(\xi_n\). The restriction isomorphisms are unique after rigidification, so their further compatibility is automatic. This constructs the entire system. For \(g=0\) it is simply the trivial system on the quotients of \(R\). \(\square\)
+
+The construction gives actual finite-level line bundles. It does not identify a power series with an algebraic transition function on \(\mathcal C\).
+
+#### 2Q.4. Why these coordinates represent every infinitesimal line
+
+**NQ4.** Pullback of this system gives natural bijections
+\[
+ \theta_A:\operatorname{Hom}^{\rm loc,cont}_{R}(S,A)
+       =\mathfrak m_A^g\xrightarrow{\ \sim\ }\widehat{\mathcal P}(A)
+ \tag{NQ17}
+\]
+for every local Artinian test algebra \(A\). Thus \(S\), together with the system just constructed, prorepresents this formal functor. Both existence and uniqueness are part of (NQ17).
+
+*Proof.* A tuple in \(\mathfrak m_A^g\) defines the substitution map from \(S\), since the maximal ideal of \(A\) is nilpotent. The map factors through some \(S_n\). Compatibility of \(\xi_n\) makes its pulled-back class independent of \(n\), defining \(\theta_A\).
+
+We first compute how this map changes across a small extension \(A'\twoheadrightarrow A\) with kernel \(I\). Fix a tuple \(a\in\mathfrak m_{A'}^g\) and \(z\in I^g\). Then
+\[
+              \theta_{A'}(a+z)-\theta_{A'}(a)
+                             =\sum_i e_i\otimes z_i
+       \quad\hbox{in }H^1(C,\mathcal O_C)\otimes_k I .
+       \tag{NQ18}
+\]
+Here the left difference means tensoring the first line with the inverse of the second, with its canonical reduction trivialization.
+
+To check (NQ18), use a fixed finite affine cover of \(\mathcal C\). On each chart a line whose reduction is free modulo a nilpotent ideal is free: lift a generator of its rank-one projective module; nilpotent Nakayama makes the resulting map onto, projectivity splits it, and the reduction of its kernel is zero, so nilpotent Nakayama kills that kernel. Local frames of \(\xi_n\) can be chosen compatibly as \(n\) increases, since units lift across nilpotent ideals. Modulo \(\mathfrak n\) choose the trivial frame. Their transition units have first-order variable terms representing the \(e_i\).
+
+In any sufficiently large finite quotient \(S_n\), subtracting the evaluations of a transition coefficient at \(a+z\) and \(a\) keeps only its linear variable terms modulo \(\mathfrak n\). Indeed every term involving a factor \(\pi\), another variable, or a second \(z\) vanishes after multiplication by \(z_i\): the hypotheses give
+\[
+                       \mathfrak m_{A'}I=0,\qquad I^2=0 .
+                       \tag{NQ19}
+\]
+This calculation is valid on the affine coefficient modules as well; it is an identity in their tensor products with \(A'\). Dividing by the original transition unit changes nothing, since that unit is \(1\) modulo \(\mathfrak m_{A'}\). Thus the ratio cocycle is the sum of the first-order variable cocycles times the \(z_i\), which is (NQ18). No coefficient-field embedding into the mixed-characteristic ring \(R\) has been used.
+
+Now induct on the finite length of \(A'\). For \(k\), both sides of (NQ17) have one element. Choose a one-dimensional small ideal \(I\subset A'\) and write \(A=A'/I\). By induction a class in \(\widehat{\mathcal P}(A')\) has a unique coordinate tuple over \(A\). Lift the tuple arbitrarily to \(A'\). NQ2 says that its pulled-back line differs from the desired line by one element of \(H^1(C,\mathcal O_C)\otimes_k I\). Since the \(e_i\) are a basis, (NQ18) gives exactly one coordinate correction in \(I^g\) removing that difference. This proves existence and uniqueness on each fibre over \(A\), and hence the bijection on \(A'\).
+
+Pullback of lines commutes with substitution, so the bijections are natural. This proof constructs the representing object directly; no hull or representability criterion is being invoked. \(\square\)
+
+The smallness condition is used only in the constant-derivative formula (NQ18), not in NQ2's square-zero lifting theorem.
+
+#### 2Q.5. Tensor product gives a formal group law
+
+**NQ5.** There is a commutative \(g\)-dimensional formal group law over \(R\) representing tensor product in (NQ17). In the chosen coordinates it consists of power series
+\[
+ F(X,Y)\in R[[X_1,\ldots,X_g,Y_1,\ldots,Y_g]]^g,\qquad
+ F(X,0)=X,\quad F(0,Y)=Y ,
+ \tag{NQ20}
+\]
+with an inverse series \(\iota(X)\), and it satisfies
+\[
+ F(F(X,Y),Z)=F(X,F(Y,Z)),\qquad
+ F(X,Y)=F(Y,X),\qquad F(X,\iota(X))=0 .
+ \tag{NQ21}
+\]
+Its linear term and multiplication series are
+\[
+ F(X,Y)=X+Y+\text{terms of total variable degree at least }2,\qquad
+ [n]_F(X)=nX+\text{terms of degree at least }2 .
+ \tag{NQ22}
+\]
+Its closed-fibre tangent space is \(H^1(C,\mathcal O_C)\); its tangent module over \(R\) is \(M\).
+
+*Proof.* In each Artinian quotient of \(R[[X,Y]]\) by a power of \((\pi,X,Y)\), pull back the universal lines at \(X\) and at \(Y\), tensor them, and use NQ4 to get its unique coordinate tuple. These tuples are compatible under restriction. Taking the inverse limit gives the power series \(F\); completeness here is the definition of the power-series ring with its \((\pi,X,Y)\)-adic topology. The inverse-line operation similarly gives \(\iota\). The augmentation property of NQ3 identifies coordinate zero with the trivial line at every level, giving the unit equations.
+
+Tensor associativity, symmetry, and evaluation of a line with its dual give the equations in (NQ21) in every finite quotient. Equality in their separated inverse limit proves the actual series identities. The unit equations imply that no constant term occurs and that the terms involving just one variable are exactly \(X\) and \(Y\). This proves the first formula in (NQ22), and induction under addition proves the second for every positive \(n\); inverse gives the analogous formula for negative \(n\).
+
+For the tangent assertion apply NQ2 to the square-zero extension \((R/\pi^m)[\epsilon]/(\epsilon^2)\to R/\pi^m\). Its identity fibre is \(M/\pi^mM\), with addition of cocycles. These identifications commute with \(m\). Their inverse limit is \(M\), since \(M\) is finite free and \(R\) is complete. For \(m=1\) it is the closed-fibre space. The representing series give the same fibres and addition by NQ4, proving the claim. A change of the chosen universal system gives an invertible formal coordinate substitution by applying the two representing bijections to each other; composition is identity on every quotient. Thus the functor and formal group are intrinsic, although the coordinates are not. \(\square\)
+
+#### 2Q.6. Prime-to-characteristic torsion through every thickening
+
+**NQ6.** If \(n\) is a unit of \(R\), multiplication by \(n\) is an automorphism of \(\widehat{\mathcal P}\), and reduction gives natural bijections
+\[
+                         \mathcal P(A)[n]\xrightarrow{\ \sim\ }\mathcal P(k)[n]
+                         \tag{NQ23}
+\]
+on all Artinian test algebras. The bijections commute with multiplication, tensor product and transitions between torsion orders.
+
+*Proof.* We first invert \([n]_F\) as a series over \(R\). Its linear coefficient is the invertible matrix \(nI_g\). Suppose a substitution \(h(Y)\), with linear part \(n^{-1}Y\), has been chosen to make \([n]_F(h(Y))=Y\) through degree \(d-1\). Its error in degree \(d\) is a homogeneous tuple \(E_d\). Correct the degree-\(d\) part of \(h\) by \(-n^{-1}E_d\). Higher terms of \([n]_F\) cannot change this new degree except through its linear term. This recursively gives a right inverse. Uniqueness by the first nonzero homogeneous difference proves that the same series is a left inverse: applying the equation to \(h([n]_F(X))\) forces that tuple to equal \(X\). Thus multiplication is bijective on every nilpotent coordinate set in (NQ17).
+
+Given \(x_0\in\mathcal P(k)[n]\), use NQ2 successively to lift it to \(y\in\mathcal P(A)\). Then \(ny\) lies in \(\widehat{\mathcal P}(A)\). There is a unique \(z\) in that subgroup with \(nz=ny\). Hence \(y-z\) is an \(n\)-torsion lift of \(x_0\). Two such lifts differ by an element of \(\widehat{\mathcal P}(A)[n]\), which is zero. This proves (NQ23). Every stated compatibility follows from uniqueness after reduction. \(\square\)
+
+In particular there are compatible \(n\)-torsion line systems on the thickenings \(R/\pi^{m+1}\), one for each \(n\)-torsion class on \(C\). This statement concerns finite-level line bundles and their formal systems. It has not turned those systems into algebraic line bundles on \(\mathcal C\), or identified them with all torsion of the generic Jacobian.
+
+#### 2Q.7. Supplied automorphisms act on the actual formal group
+
+**NQ7.** Every \(R\)-automorphism \(\alpha\) of the supplied curve family acts functorially on these groups, even when it moves the root section. For a left action on the curve, the corresponding left action on rigidified lines is
+\[
+       [L]\longmapsto
+       \bigl((\alpha^{-1})^*L\bigr)^\natural .
+       \tag{NQ24}
+\]
+It induces a formal group automorphism whose tangent action is \((\alpha^{-1})^*\) on \(M\). The torsion lifts of NQ6 respect these actions.
+
+*Proof.* Root normalization is (NQ11). It removes any line pulled back from the base. Applying two pullbacks and then normalizing therefore gives the same rigidified class as their composite followed by normalization. Since pullback reverses composition, inverse pullback has the left-action identity in (NQ24). Every possible intervening isomorphism preserving rigidification is unique by NQ1, so the identities hold on full families, not merely on closed points. Tensor product commutes with pullback and normalization.
+
+At every finite universal quotient NQ4 now assigns a unique coordinate tuple to this transformed universal line. Compatibility produces a formal series \(A_\alpha(t)\), just as in NQ5. Its inverse is \(A_{\alpha^{-1}}\); the group identities and
+\[
+          A_{\alpha\beta}=A_\alpha\circ A_\beta,\qquad
+          A_\alpha(F(X,Y))=F(A_\alpha(X),A_\alpha(Y))
+          \tag{NQ25}
+\]
+follow by equality at each finite level. On a square-zero cocycle, pullback sends \(1+\epsilon c_{ij}\) to its pulled-back cocycle. Root normalization removes a base line, whose class is zero in NQ2's kernel description. This gives exactly the asserted action on \(M/\pi^mM\), and then on \(M\) by inverse limit. Finally an automorphism takes an \(n\)-torsion lift to a lift of the transformed closed class; uniqueness in NQ6 proves equivariance. Only automorphisms of the supplied family have been used. \(\square\)
+
+#### 2Q.8. Constant nodal curves and the scope of the formal construction
+
+**NQ8.** Suppose \(R=k[[\pi]]\) and the family, with its root, is the constant family \(C\times_k R\). On Artinian test algebras there is an exact sequence of formal group functors
+\[
+ 0\longrightarrow\widehat{T_\Gamma}(A)
+   \longrightarrow\widehat{\mathcal P}(A)
+   \longrightarrow\prod_v\widehat{J_{C_v}}(A)\longrightarrow0 .
+ \tag{NQ26}
+\]
+In cycle coordinates its kernel has parameters \(x_1,\ldots,x_r\) with group law
+\[
+       (x\mathbin{\star} y)_i=x_i+y_i+x_iy_i,\qquad
+       [n](x)_i=(1+x_i)^n-1 .
+       \tag{NQ27}
+\]
+Its tangent sequence is the normalization sequence (NC19).
+
+*Proof.* NC5 identifies full multidegree-zero rigidified line families with \(G=J_C^0\). A line reducing to the trivial line has multidegree zero, since every geometric point of a local Artinian test ring factors through its residue field. Thus its identity formal functor is exactly the kernel of \(G(A)\to G(k)\).
+
+The map \(G\to\prod J_{C_v}\) in NC5 is a product of line-frame bundles. After pullback to the local affine scheme \(\operatorname{Spec}A\), each of its finitely many lines is free: lift a residue-field generator and apply the local rank-one projective argument used in NQ4. Hence any quotient point lifts to \(G(A)\). If that point reduces to the identity, the reduction of such a lift lies in \(T_\Gamma(k)\). The coordinates of that torus point are units of \(k\), which lift to units of \(A\); translating by their inverse makes the lift reduce to the identity. The full kernel remains \(T_\Gamma(A)\), so the kernel on these identity fibres is \(\widehat{T_\Gamma}(A)\). This proves exactness in (NQ26).
+
+NC4's cycle basis identifies that kernel with tuples of units \(\lambda_i\) reducing to \(1\). Write \(\lambda_i=1+x_i\), with \(x_i\in\mathfrak m_A\). Multiplying the units proves both identities in (NQ27). Differentiating the full line restriction and gluing maps gives NC6's cocycle sequence, which is the asserted tangent sequence. \(\square\)
+
+Already for a rational curve with one node, the formal law is \(x+y+xy\), rather than the assertion that all higher coefficients vanish. In characteristic \(p\) it has \([p](x)=x^p\); on test algebras with nilpotents this is a substantive distinction from the additive law.
+
+NQ1–NQ8 constructs the identity formal Picard group of the supplied family, with full square-zero lifting, unique formal coordinates, torsion lifting and supplied actions. For a varying nodal family it has not lifted the *entire* nodal-fibre semiabelian group, its torus and abelian quotient to a formal or algebraic extension. Nor has it constructed a semistable model of an arbitrary curve, proved algebraization of compatible lines, or produced an analytic period cover. Those remain necessary geometric steps toward Theorem 2.4.
+
+#### 2Q.9. Graded exercise: infinitesimal lines and formal multiplication
+
+**Exercise 2Q (100 points; ten parts of 10 points).**
+
+1. Let \(R\) be a discrete valuation ring. Cancel the unit differential in the direct sum of the complexes \(R\xrightarrow{1}R\) in degrees \(0,1\) and \([R\xrightarrow{0}R^g]\). Explain why replacing that unit by \(\pi\) changes the closed-fibre ranks and cannot be cancelled. Explain the role of the actual section \(1\) in NQ1.
+2. On a cover with three opens suppose lifted transition units satisfy \(\widetilde u_{01}\widetilde u_{12}\widetilde u_{02}^{-1}=1+c\), with \(c\) in a square-zero ideal. Write a correction on that triple when \(c=(\delta d)_{012}\). On four opens derive the additive cocycle identity, with signs.
+3. Let \(A'=k[u]/(u^4)\), \(A=k[u]/(u^2)\), \(I=(u^2)\). Prove \(I^2=0\) but \(\mathfrak m_{A'}I\ne0\). Compute \((1+u+u^2)/(1+u)\) and explain why the constant-derivative formula NQ18 is restricted to small extensions.
+4. For a split nodal curve with two smooth components of genera \(1,2\), joined by three edges, compute \(b,r,g\), the number of formal coordinates, and the dimension of the graph tangent subspace. For a one-dimensional small kernel \(I\) over \(k=\mathbf F_q\), count all lifts of any fixed rigidified line through that extension.
+5. Starting from NQ15, explain the augmentation correction from order \(n\) to \(n+1\). Prove that this correction preserves the existing line and its first-order variable class. Distinguish this construction from choosing a canonical line at each order.
+6. Let \(A'\twoheadrightarrow A\) be small with \(\dim_k I=d\). Prove that the coordinate fibre has \(I^g\) as its simply transitive translation group and that NQ18 identifies it with all line lifts. Explain both the surjectivity and the injectivity step of NQ4.
+7. For the multiplicative formal law \(F(X,Y)=X+Y+XY\), compute its inverse and \([2]\), \([3]\). If \(2\) is a unit, compute the inverse of \([2]\) through degree three, with its precise denominators.
+8. In characteristic \(p\), for \(a\ge1\) and \(N\ge1\), compute the full kernel of multiplication by \(p^a\) on the identity formal multiplicative group over \(A=k[\epsilon]/(\epsilon^N)\). Give its defining coordinate algebra as a formal subgroup and count its \(A\)-points when \(k=\mathbf F_q\). Compare it with the kernel on the additive formal group.
+9. For a constant rational one-loop nodal curve, let an automorphism reverse the loop orientation. Compute its formal torus action, verify it is an involution and preserves \(F\), and identify its tangent action. In characteristic two, decide whether it is the identity on \(k[\epsilon]/(\epsilon^3)\).
+10. Let \(k\) be algebraically closed, \(n\) invertible in \(k\), and suppose the closed nodal curve has invariants \(b,r,g=b+r\). Count its \(n\)-torsion classes and all their lifts to any Artinian test ring. Compare that number with \(n^{2g}\), the torsion rank of a smooth genus-\(g\) Jacobian. State precisely which model, group, algebraization and period assertions have not followed from the formal identity construction.
+
+**Full solution.**
+
+1. In bases separating the two summands, the degree-zero and degree-one modules have ranks \(2\) and \(g+1\), and the only nonzero differential entry is \(1\). The degree-\(-1\) map taking its target basis vector to its source contracts that pair. What remains is exactly
+\[
+                         [\,R\xrightarrow{0}R^g\,] .
+                         \tag{NQX1}
+\]
+If the entry is \(\pi\), reduction makes it zero, so the closed-fibre cohomology dimensions are \(2,g+1\), not \(1,g\). The corresponding pair has zero degree-zero cohomology over \(R\) and degree-one cohomology \(k\), so it is not a contractible complex. In NQ1, the actual global unit is a cycle lifting the unique closed-fibre degree-zero basis. Its coefficient in the remaining rank-one term is a unit, forcing the entire outgoing differential to vanish over \(R\), including all powers of \(\pi\). A residue-field equality alone would not do that.
+
+2. The additive differential is
+\[
+                 (\delta d)_{012}=d_{12}-d_{02}+d_{01}.
+                 \tag{NQX2}
+\]
+Replace each transition by \(\widetilde u_{ij}(1-d_{ij})\). Its triple defect is
+\[
+ (1+c)(1-d_{01})(1-d_{12})(1+d_{02})
+                      =1+c-d_{01}-d_{12}+d_{02}=1 .
+ \tag{NQX3}
+\]
+All products of two ideal elements are zero, which justifies both the inverse and the last equality. Associating the product of transitions from \(0\) to \(3\) along the two possible successive triples gives
+\[
+                        c_{123}-c_{023}+c_{013}-c_{012}=0 .
+                        \tag{NQX4}
+\]
+This is the signed 2-cocycle equation. Its solvability as a coboundary on the full cover uses NQ1's actual vanishing of \(H^2\), rather than just the presence of three chosen local lifts.
+
+3. The ideal is spanned by \(u^2,u^3\); its square vanishes modulo \(u^4\), but \(u\cdot u^2=u^3\ne0\). Since \((1+u)^{-1}=1-u+u^2-u^3\), direct multiplication gives
+\[
+                  \frac{1+u+u^2}{1+u}=1+u^2-u^3 .
+                  \tag{NQX5}
+\]
+The change is not \(1+u^2\). In a small extension the base-point factor \(u\) would annihilate the increment; here it does not. NQ2 still applies and classifies the square-zero difference, but NQ18's particular identification by the closed tangent basis alone requires smallness.
+
+4. The edge boundary has rank one, so
+\[
+                  b=3,\qquad r=3-2+1=2,\qquad g=5 .
+                  \tag{NQX6}
+\]
+There are five formal coordinates. The graph tangent subspace has dimension two, while the quotient component-Jacobian tangent space has dimension three. NQ2 makes the lift set a torsor under \(k^5\), so it has \(q^5\) elements. This is a count of every infinitesimal lift of the fixed line, and is independent of whether the fixed line is the trivial one.
+
+5. Choose any lift \(\eta\) over \(S_{n+1}\) by NQ2. Its value at \(t=0\) is \(\eta_0\), trivial over \(R/\pi^{n+1}\). The corrected class is
+\[
+                    \xi_{n+1}=\eta-f^*\eta_0
+                    \quad\hbox{in }\mathcal P(S_{n+1}),
+                    \tag{NQX7}
+\]
+where \(f^*\) here denotes pullback by the constant-coefficient base map (NQ16). Its augmentation is zero. Its difference from \(\eta\) restricts to zero at order \(n\), so it still restricts to \(\xi_n\). Consequently its restriction to \(S_1\) is unchanged, proving preservation of NQ15. Several corrected lifts can remain: their differences lie in the kernel described by NQ2 subject to the augmentation condition. The construction chooses a compatible system; it does not assert that those choices are canonical.
+
+6. Each coordinate lift can be changed by one element of \(I\), giving a simply transitive \(I^g\)-action on the fibre of tuples. On line lifts the action group is \(H^1(C,\mathcal O_C)\otimes_k I\). In the basis \(e_i\), the map is
+\[
+                I^g\longrightarrow H^1(C,\mathcal O_C)\otimes_k I,
+                \qquad(z_i)\longmapsto\sum_i e_i\otimes z_i .
+                \tag{NQX8}
+\]
+It is an isomorphism, with inverse given by basis coefficients. NQ18 says that the two fibre actions correspond under pullback. Thus an arbitrary discrepancy has a coordinate correction, proving surjectivity; two corrections giving the same line have zero image, hence are equal, proving injectivity. In particular over a finite field each fibre has \(q^{gd}\) elements. A proof of existence alone would establish neither unique coordinates nor prorepresentability.
+
+7. The inverse, and the two multiplication series, are
+\[
+ \iota(X)=\frac{-X}{1+X}=-X+X^2-X^3+\cdots,\quad
+ [2](X)=2X+X^2,\quad [3](X)=3X+3X^2+X^3 .
+ \tag{NQX9}
+\]
+They follow by writing the coordinate as \(\lambda-1\). Write the inverse of \([2]\) as \(aY+bY^2+cY^3+\cdots\). Substituting in \(2h+h^2=Y\) gives \(2a=1\), \(2b+a^2=0\), \(2c+2ab=0\). Therefore
+\[
+                [2]^{-1}(Y)=\frac12Y-\frac18Y^2+\frac1{16}Y^3
+                                  +\text{terms of degree at least }4 .
+                \tag{NQX10}
+\]
+Only powers of two occur in the displayed denominators, so these coefficients lie in any ring where two is a unit. The calculation does not assume all positive integers are invertible.
+
+8. Repeated Frobenius gives \([p^a](X)=X^{p^a}\). With \(h=p^a\), the full formal kernel has algebra
+\[
+          k[[X]]/(X^h),\qquad
+          \Delta(X)=X\otimes1+1\otimes X+X\otimes X .
+          \tag{NQX11}
+\]
+It has length \(h\). An \(A\)-point is an \(x\in(\epsilon)\) with \(x^h=0\). Write \(x=\sum_{j=1}^{N-1}c_j\epsilon^j\). Frobenius makes
+\[
+                x^h=\sum_{jh<N}c_j^h\epsilon^{jh}.
+                \tag{NQX12}
+\]
+The exponents \(jh\) are distinct, and Frobenius is injective on a field. Thus exactly the coefficients with \(j<\lceil N/h\rceil\) must vanish. Over \(\mathbf F_q\) the kernel has
+\[
+                                  q^{\,N-\lceil N/h\rceil}
+                                  \tag{NQX13}
+\]
+points. For the additive formal group multiplication by \(p^a\) is the zero series, so its kernel is the entire formal group, with all \(q^{N-1}\) identity points on this test ring. These assertions concern the full nilpotent functors, not only their one closed point.
+
+9. Reversing the cycle takes \(\lambda\) to \(\lambda^{-1}\), so its coordinate is
+\[
+                                A(X)=\frac{-X}{1+X}.
+                                \tag{NQX14}
+\]
+The identity \(1+A(X)=(1+X)^{-1}\) proves both \(A(A(X))=X\) and \(A(F(X,Y))=F(A(X),A(Y))\), by multiplication of units. Its tangent is \(-1\). In characteristic two it is \(+1\) on tangent space, but
+\[
+                  A(\epsilon)=\epsilon+\epsilon^2\ne\epsilon
+                       \quad\hbox{in }k[\epsilon]/(\epsilon^3).
+                  \tag{NQX15}
+\]
+Thus the tangent action does not determine the full finite action on the formal group.
+
+10. NC7 supplies the finite étale group on the closed fibre with rank \(n^{2b+r}\). Over the algebraically closed field its algebra is a product of that many copies of \(k\): a finite reduced algebra splits into its maximal-field factors, and each finite extension of \(k\) is \(k\). Hence it has exactly that many points. Any torsion line has component degree zero because its degree vector is killed by \(n\) in the torsion-free group \(\mathbf Z^V\). Thus these are exactly \(\mathcal P(k)[n]\). NQ6 gives one and only one torsion lift of each class at every Artinian test algebra, compatibly at all orders. The count remains
+\[
+                        n^{2b+r}=n^{2g-r}.
+                        \tag{NQX16}
+\]
+If a smooth generic genus-\(g\) Jacobian is also supplied, CU8 gives its full multiplication rank \(n^{2g}\); for \(n>1,r>0\) the ratio of these two numbers is \(n^r\). The formal identity neighbourhood has no nonzero \(n\)-torsion because \([n]\) is an automorphism there. Neither that fact nor the unique lifts of closed torsion proves that all generic torsion has been captured. A model of an arbitrary curve, a lift of the entire special semiabelian group with its torus and abelian quotient, algebraization of compatible lines, and a genuine analytic period cover with its lattice, lifting and action properties remain to be constructed. This conclusion retains those requirements; it does not replace them with the formal identity group.
+
 **Theorem 2.4 (full local abelian compatibility; remaining geometric proof obligation).** For every abelian variety over a nonarchimedean local field of characteristic zero, its prime-to-residue-characteristic rational Tate modules have a common Galois-invariant Frobenius-semisimple Weil–Deligne class over \(\overline{\mathbf Q}\).
 
-The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. AL1–AL8 in §2L gives the Albanese property on full parameter schemes,finite-curve norm and pullback maps,their degree and composition identities,and the infinitesimal trace. CD1–CD8 in §2M constructs one smooth projective geometrically integral marked curve after a finite separable extension and a smooth surjective map from its Jacobian, with its full kernel and rational Tate sequence. NL1–NL8 in §2N constructs a curve test for the full normalized translation-line family, its finite ample kernel and a finite flat isogeny onto an abelian subvariety of a curve Jacobian, with descended line and saturated Tate image. NR1–NR8 in §2O proves the coherent degree-one dimension,constructs abelian complements over the original field and makes the dominating curve Jacobian an isogeny product with a factor isogenous to the given abelian variety,with full kernel degrees and rational Tate projectors. NC1–NC8 in §2P constructs split nodal curves and their full-family generalized Jacobians,with cycle-character torus,component-Jacobian quotient,normalization cohomology,full multiplication kernels,Tate sequence and finite actions. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, the remaining geometric work includes the semistable curve and formal/analytic constructions producing the initial integral extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.
+The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. AL1–AL8 in §2L gives the Albanese property on full parameter schemes,finite-curve norm and pullback maps,their degree and composition identities,and the infinitesimal trace. CD1–CD8 in §2M constructs one smooth projective geometrically integral marked curve after a finite separable extension and a smooth surjective map from its Jacobian, with its full kernel and rational Tate sequence. NL1–NL8 in §2N constructs a curve test for the full normalized translation-line family, its finite ample kernel and a finite flat isogeny onto an abelian subvariety of a curve Jacobian, with descended line and saturated Tate image. NR1–NR8 in §2O proves the coherent degree-one dimension,constructs abelian complements over the original field and makes the dominating curve Jacobian an isogeny product with a factor isogenous to the given abelian variety,with full kernel degrees and rational Tate projectors. NC1–NC8 in §2P constructs split nodal curves and their full-family generalized Jacobians,with cycle-character torus,component-Jacobian quotient,normalization cohomology,full multiplication kernels,Tate sequence and finite actions. NQ1–NQ8 in §2Q constructs the identity formal Picard group of a supplied proper flat nodal family,with every square-zero line lift,unique formal coordinates,prime-to-characteristic torsion lifting and supplied family actions. This does not lift the entire semiabelian special group or construct a model or period covering. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, the remaining geometric work includes the semistable curve and formal/analytic constructions producing the initial integral extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.
 
 For an elliptic curve the local classification gives every case without invoking the unproved higher-dimensional part. At good places use (6) and \(N=0\). At potentially good places use Lemma 2.3. At potentially multiplicative places use the Tate-curve proof and its quadratic descent in *Elliptic curves over local fields and their Weil–Deligne representations*, §§3–5: the common quadratic splitting character \(\eta_v\) and the common block are
 \[

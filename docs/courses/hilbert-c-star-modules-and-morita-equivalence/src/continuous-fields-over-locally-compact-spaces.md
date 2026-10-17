@@ -374,7 +374,7 @@ For our locally compact \(X\), the unitary preserves fibre norms and hence vanis
 
 ### The continuous-trace gluing class
 
-The Dixmier–Douady class is a different construction: it measures the scalar discrepancy in gluing local compact algebras. Its proof requires the imprimitivity and representation correspondence developed in the next lessons. After those prerequisites, *The Rieffel correspondence and induced representations*, Section 8 constructs the class, proves its independence and integer cohomological degree, and proves the fixed-spectrum Morita classification and zero-class compact-module criterion. Thus the ordinary module–field dictionary and the triviality theorem are established here before the Morita application.
+The Dixmier–Douady class is a different construction: it measures the scalar discrepancy in gluing local compact algebras. Its proof requires the imprimitivity and representation correspondence developed in the next lessons. After those prerequisites, [*The Rieffel correspondence and induced representations*, Section 8](../the-rieffel-correspondence-and-induced-representations.html#8-continuous-trace-algebras-and-the-gluing-class) constructs the class, proves its independence and integer cohomological degree, and proves the fixed-spectrum Morita classification and zero-class compact-module criterion. Thus the ordinary module–field dictionary and the triviality theorem are established here before the Morita application.
 
 ## 8. Preview: fields on a leaf space
 

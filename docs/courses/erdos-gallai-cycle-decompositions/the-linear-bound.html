@@ -1,0 +1,398 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The linear bound</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Erdős–Gallai cycle decomposition theorem)</a><a href="folding-pairs-and-lifting-cycles.html">Previous lesson</a><a href="src/the-linear-bound.md">Editable source</a></nav><main><article><h1 id="the-linear-bound">The linear bound</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the cycle decomposition theorem of <a href="paths-cycles-and-lovasz-decompositions.html">Paths, cycles and Lovász's decomposition theorem</a>: every graph with <span class="math" data-tex="\(n\)">\(n\)</span> vertices has a cycle-and-edge partition with at most <span class="math" data-tex="\(Cn\)">\(Cn\)</span> members. The graph is split at the scales <span class="math" data-tex="\(D_j=n^{0.95^j}\)">\(D_j=n^{0.95^j}\)</span> by <a href="splitting-a-graph-at-a-scale.html">Splitting a graph at a scale</a>. Processing the expanding pieces of every scale separately would cost a fixed multiple of <span class="math" data-tex="\(n\)">\(n\)</span> at each of the many scales. Instead, one layer of pieces is chosen whose total order pays for a whole prefix of scales. Its pieces serve as routers for <a href="folding-pairs-and-lifting-cycles.html">folding pairs and lifting cycles</a>, which saves a fixed fraction of their order, and the graphs left over by <a href="closing-paths-through-reservoirs.html">closing paths through reservoirs</a> are small. An induction with a slightly sublinear potential absorbs the remaining overhead.</p>
+<p>All logarithms are to base two. A <em>member</em> is a cycle or a single edge, as in a cycle-and-edge partition.</p>
+<h2 id="1-parameters-and-the-choice-of-a-prefix">1. Parameters and the choice of a prefix</h2>
+<p>Fix
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta=0.95,\quad K=200,\\
+P_0=4(K+1),\quad\eta=\frac1{100P_0}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\theta=0.95,\quad K=200,\\
+P_0=4(K+1),\quad\eta=\frac1{100P_0}.
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(200\ln0.95&lt;-10\)">\(200\ln0.95&lt;-10\)</span>, we have <span class="math" data-tex="\(\theta^K\le e^{-10}\)">\(\theta^K\le e^{-10}\)</span>, hence
+<span class="math math-display" data-tex="\[
+1.02\,\theta^K&lt;0.001,\qquad\theta^{K+1}&lt;0.001 .
+\]">\[
+1.02\,\theta^K&lt;0.001,\qquad\theta^{K+1}&lt;0.001 .
+\]</span></p>
+<p><strong>Lemma 1.1</strong> (choice of a prefix). Let <span class="math" data-tex="\((S_j)_{j\ge0}\)">\((S_j)_{j\ge0}\)</span> be a sequence of nonnegative numbers, only finitely many of them nonzero, and not all zero. There is an index <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(S_i&gt;0\)">\(S_i&gt;0\)</span> and
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^{i+K}S_j\le P_0S_i .
+\]">\[
+\sum_{j=0}^{i+K}S_j\le P_0S_i .
+\]</span></p>
+<p><em>Proof.</em> Start at the first positive term <span class="math" data-tex="\(i\)">\(i\)</span>; then <span class="math" data-tex="\(\sum_{j\le i}S_j=S_i\le2(K+1)S_i\)">\(\sum_{j\le i}S_j=S_i\le2(K+1)S_i\)</span>. Maintain the invariant <span class="math" data-tex="\(\sum_{j\le i}S_j\le2(K+1)S_i\)">\(\sum_{j\le i}S_j\le2(K+1)S_i\)</span>. If the conclusion fails at <span class="math" data-tex="\(i\)">\(i\)</span>, the <span class="math" data-tex="\(K\)">\(K\)</span> terms <span class="math" data-tex="\(S_{i+1},\dots,S_{i+K}\)">\(S_{i+1},\dots,S_{i+K}\)</span> add up to more than <span class="math" data-tex="\(4(K+1)S_i-2(K+1)S_i\)">\(4(K+1)S_i-2(K+1)S_i\)</span>, so their largest value <span class="math" data-tex="\(M\)">\(M\)</span> satisfies <span class="math" data-tex="\(M&gt;2S_i\)">\(M&gt;2S_i\)</span>. Move to an index <span class="math" data-tex="\(i&#x27;\)">\(i&#x27;\)</span> in this window with <span class="math" data-tex="\(S_{i&#x27;}=M\)">\(S_{i&#x27;}=M\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{j\le i&#x27;}S_j&amp;\le2(K+1)S_i+KM\\
+&amp;&lt;(K+1)M+KM\\
+&amp;\le2(K+1)S_{i&#x27;} ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{j\le i&#x27;}S_j&amp;\le2(K+1)S_i+KM\\
+&amp;&lt;(K+1)M+KM\\
+&amp;\le2(K+1)S_{i&#x27;} ,
+\end{aligned}
+\]</span>
+so the invariant persists. Each move increases the index and lands on a positive term; there are finitely many positive terms, so the moves stop, and then the conclusion holds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-potential-slightly-below-one">2. A potential slightly below one</h2>
+<p>Put <span class="math" data-tex="\(\phi(1)=\frac12\)">\(\phi(1)=\frac12\)</span> and, for real <span class="math" data-tex="\(x&gt;1\)">\(x&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\phi(x)=\max\Bigl\{\tfrac12,\,1-\frac1{\sqrt{\log x}}\Bigr\}.
+\]">\[
+\phi(x)=\max\Bigl\{\tfrac12,\,1-\frac1{\sqrt{\log x}}\Bigr\}.
+\]</span>
+The function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is nondecreasing and <span class="math" data-tex="\(\frac12\le\phi\le1\)">\(\frac12\le\phi\le1\)</span>.</p>
+<p><strong>Proposition 2.1.</strong> There is an absolute constant <span class="math" data-tex="\(C\)">\(C\)</span> such that every graph with <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> vertices has a cycle-and-edge partition with at most <span class="math" data-tex="\(C\phi(n)n\)">\(C\phi(n)n\)</span> members.</p>
+<p>The proof occupies Sections 3 to 6. It is a strong induction on <span class="math" data-tex="\(n\)">\(n\)</span>. An absolute <em>cutoff</em> <span class="math" data-tex="\(D_*&gt;2\)">\(D_*&gt;2\)</span> is fixed first, large enough for the requirements collected in Section 6; then <span class="math" data-tex="\(C\)">\(C\)</span> is chosen. Every auxiliary constant introduced before that choice is independent of <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<h2 id="3-small-graphs-and-the-prospective-layers">3. Small graphs and the prospective layers</h2>
+<p><em>Small graphs.</em> A graph without edges has the empty partition. If <span class="math" data-tex="\(1\le n&lt;D_*\)">\(1\le n&lt;D_*\)</span>, taking every edge singly gives at most <span class="math" data-tex="\(n(n-1)/2&lt;D_*n/2\)">\(n(n-1)/2&lt;D_*n/2\)</span> members, which is at most <span class="math" data-tex="\(C\phi(n)n\)">\(C\phi(n)n\)</span> when <span class="math" data-tex="\(C\ge D_*\)">\(C\ge D_*\)</span>, because <span class="math" data-tex="\(\phi\ge\frac12\)">\(\phi\ge\frac12\)</span>.</p>
+<p>Let <span class="math" data-tex="\(n\ge D_*\)">\(n\ge D_*\)</span> and assume Proposition 2.1 for all smaller positive orders. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_j=n^{\theta^j},\\
+m=\min\{j\ge0:D_j&lt;D_*\} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+D_j=n^{\theta^j},\\
+m=\min\{j\ge0:D_j&lt;D_*\} .
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(D_j\)">\(D_j\)</span> decreases to <span class="math" data-tex="\(1&lt;D_*\)">\(1&lt;D_*\)</span> and <span class="math" data-tex="\(D_0=n\ge D_*\)">\(D_0=n\ge D_*\)</span>, the index <span class="math" data-tex="\(m\)">\(m\)</span> is finite and positive, and <span class="math" data-tex="\(D_0,\dots,D_{m-1}\)">\(D_0,\dots,D_{m-1}\)</span> are at least <span class="math" data-tex="\(D_*\)">\(D_*\)</span>.</p>
+<p><em>Prospective layers.</em> Apply both operations of Lemma 2.1 of <a href="splitting-a-graph-at-a-scale.html">Splitting a graph at a scale</a> at the scales <span class="math" data-tex="\(D_0,D_1,\dots,D_{m-1}\)">\(D_0,D_1,\dots,D_{m-1}\)</span> in turn: at stage <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(G\)">\(G\)</span>, and at stage <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span> to the residual graph of every box of level <span class="math" data-tex="\(j-1\)">\(j-1\)</span>, on that box's vertex set. The inputs of stage <span class="math" data-tex="\(j\)">\(j\)</span> have average degree at most <span class="math" data-tex="\(D_j\)">\(D_j\)</span>: for <span class="math" data-tex="\(G\)">\(G\)</span> because its average degree is at most <span class="math" data-tex="\(n-1&lt;D_0\)">\(n-1&lt;D_0\)</span>, and for a residual because its average degree is at most <span class="math" data-tex="\(D_{j-1}^{0.95}=D_j\)">\(D_{j-1}^{0.95}=D_j\)</span>. Let <span class="math" data-tex="\(\mathcal Y_j\)">\(\mathcal Y_j\)</span> be the indexed family of boxes of level <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(\mathcal R_j\)">\(\mathcal R_j\)</span> the family of pieces extracted from them. Every box has a unique parent, whose vertex set contains its own, and the descendants of a box cover its vertex set (Remark 2.2 there). Only a prefix of these stages is kept in the end. At the end of every prefix, the long cycles removed so far, the pieces extracted so far and the residuals of the last level partition <span class="math" data-tex="\(E(G)\)">\(E(G)\)</span>.</p>
+<p>Put <span class="math" data-tex="\(N_{-1}=n\)">\(N_{-1}=n\)</span> and, for <span class="math" data-tex="\(0\le j&lt;m\)">\(0\le j&lt;m\)</span>,
+<span class="math math-display" data-tex="\[
+N_j=\sum_{Y\in\mathcal Y_j}|Y|,\qquad S_j=\sum_{R\in\mathcal R_j}|V(R)| ;
+\]">\[
+N_j=\sum_{Y\in\mathcal Y_j}|Y|,\qquad S_j=\sum_{R\in\mathcal R_j}|V(R)| ;
+\]</span>
+set <span class="math" data-tex="\(S_j=0\)">\(S_j=0\)</span> for <span class="math" data-tex="\(j\ge m\)">\(j\ge m\)</span>. Let <span class="math" data-tex="\(C_2=80\)">\(C_2=80\)</span>. For <span class="math" data-tex="\(0\le j&lt;m\)">\(0\le j&lt;m\)</span>, since <span class="math" data-tex="\(\log D_l=\theta^{l-j}\log D_j\)">\(\log D_l=\theta^{l-j}\log D_j\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{l=0}^j\frac1{\log D_l}=\frac1{\log D_j}\sum_{u=0}^j\theta^u\le\frac{20}{\log D_j} .
+\]">\[
+\sum_{l=0}^j\frac1{\log D_l}=\frac1{\log D_j}\sum_{u=0}^j\theta^u\le\frac{20}{\log D_j} .
+\]</span>
+Every stage multiplies the total order of the boxes by at most <span class="math" data-tex="\(1+2/\log D_l\)">\(1+2/\log D_l\)</span>. If <span class="math" data-tex="\(\log D_*\ge C_2\)">\(\log D_*\ge C_2\)</span>, then <span class="math" data-tex="\(x=40/\log D_j\le\frac12\)">\(x=40/\log D_j\le\frac12\)</span>, and <span class="math" data-tex="\(e^x\le1+2x\)">\(e^x\le1+2x\)</span> on <span class="math" data-tex="\([0,\frac12]\)">\([0,\frac12]\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+n\le N_j&amp;\le n\prod_{l=0}^j\Bigl(1+\frac2{\log D_l}\Bigr)\\
+&amp;\le n\Bigl(1+\frac{C_2}{\log D_j}\Bigr)\le2n .
+\end{aligned}
+\]">\[
+\begin{aligned}
+n\le N_j&amp;\le n\prod_{l=0}^j\Bigl(1+\frac2{\log D_l}\Bigr)\\
+&amp;\le n\Bigl(1+\frac{C_2}{\log D_j}\Bigr)\le2n .
+\end{aligned}
+\]</span>
+The lower bound holds because the boxes of each level cover <span class="math" data-tex="\(V(G)\)">\(V(G)\)</span>. The same computation, applied to the stages after level <span class="math" data-tex="\(i\)">\(i\)</span>, shows that the boxes of level <span class="math" data-tex="\(j\)">\(j\)</span> descending from one box of level <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> and order <span class="math" data-tex="\(y\)">\(y\)</span> have total order at most <span class="math" data-tex="\((1+C_2/\log D_j)y\)">\((1+C_2/\log D_j)y\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathcal L_j\)">\(\mathcal L_j\)</span> be the family of long cycles removed at the stages <span class="math" data-tex="\(0,\dots,j\)">\(0,\dots,j\)</span>. If <span class="math" data-tex="\(D^{-0.01}\le1/\log D\)">\(D^{-0.01}\le1/\log D\)</span> for all <span class="math" data-tex="\(D\ge D_*\)">\(D\ge D_*\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\mathcal L_j|&amp;\le\sum_{l=0}^j\frac{N_{l-1}}{2D_l^{0.01}}\le n\sum_{l=0}^j\frac1{\log D_l}\\
+&amp;\le\frac{20n}{\log D_j}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\mathcal L_j|&amp;\le\sum_{l=0}^j\frac{N_{l-1}}{2D_l^{0.01}}\le n\sum_{l=0}^j\frac1{\log D_l}\\
+&amp;\le\frac{20n}{\log D_j}.
+\end{aligned}
+\]</span>
+Pieces in one box are vertex-disjoint, so <span class="math" data-tex="\(S_j\le N_j\le2n\)">\(S_j\le N_j\le2n\)</span>.</p>
+<h2 id="4-the-terminal-cases">4. The terminal cases</h2>
+<p><em>No pieces.</em> If every <span class="math" data-tex="\(S_j\)">\(S_j\)</span> is zero, keep all stages. Take the long cycles as members and every other edge singly. The remaining edges lie in residuals of level <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, of average degree at most <span class="math" data-tex="\(D_m&lt;D_*\)">\(D_m&lt;D_*\)</span>; there are at most <span class="math" data-tex="\(N_{m-1}D_m/2&lt;D_*n\)">\(N_{m-1}D_m/2&lt;D_*n\)</span> of them. With the bound on <span class="math" data-tex="\(|\mathcal L_{m-1}|\)">\(|\mathcal L_{m-1}|\)</span>, at most <span class="math" data-tex="\((20+D_*)n\)">\((20+D_*)n\)</span> members are used.</p>
+<p><em>A prefix reaching the end.</em> Otherwise choose <span class="math" data-tex="\(i\)">\(i\)</span> by Lemma 1.1. If <span class="math" data-tex="\(i+K\ge m-1\)">\(i+K\ge m-1\)</span>, keep all stages again, take the long cycles as members and every edge of the last residuals singly, at most <span class="math" data-tex="\((20+D_*)n\)">\((20+D_*)n\)</span> members. Since <span class="math" data-tex="\(S_j=0\)">\(S_j=0\)</span> for <span class="math" data-tex="\(j\ge m\)">\(j\ge m\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^{m-1}S_j\le P_0S_i .
+\]">\[
+\sum_{j=0}^{m-1}S_j\le P_0S_i .
+\]</span>
+Apply the small residue lemma (Lemma 1.1 of <a href="closing-paths-through-reservoirs.html">Closing paths through reservoirs</a>, with <span class="math" data-tex="\(c=1\)">\(c=1\)</span> and the fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span>) to every piece at its own scale; a piece of level <span class="math" data-tex="\(j\)">\(j\)</span> has cut expansion at least <span class="math" data-tex="\(D_j^{0.90}\)">\(D_j^{0.90}\)</span> and order between <span class="math" data-tex="\(D_j^{0.90}\)">\(D_j^{0.90}\)</span> and <span class="math" data-tex="\(D_j^{1.02}\)">\(D_j^{1.02}\)</span>. This gives at most <span class="math" data-tex="\(9P_0S_i\le18P_0n\)">\(9P_0S_i\le18P_0n\)</span> members and residual graphs of total order at most
+<span class="math math-display" data-tex="\[
+\eta P_0S_i=\frac{S_i}{100}\le\frac n{50} .
+\]">\[
+\eta P_0S_i=\frac{S_i}{100}\le\frac n{50} .
+\]</span>
+Each residual graph has order less than the order of its piece, which is at most <span class="math" data-tex="\(n\)">\(n\)</span>. By the induction hypothesis and <span class="math" data-tex="\(\phi\le1\)">\(\phi\le1\)</span>, the residual graphs need at most <span class="math" data-tex="\(Cn/50\le Cn/4\)">\(Cn/50\le Cn/4\)</span> members together.</p>
+<p>In both terminal cases the number of members is at most
+<span class="math math-display" data-tex="\[
+T(D_*)n+\frac{Cn}4,
+\]">\[
+T(D_*)n+\frac{Cn}4,
+\]</span>
+where <span class="math" data-tex="\(T(D_*)=20+D_*+18P_0\)">\(T(D_*)=20+D_*+18P_0\)</span>; this is at most <span class="math" data-tex="\(Cn/2\le C\phi(n)n\)">\(Cn/2\le C\phi(n)n\)</span> when <span class="math" data-tex="\(C\ge4T(D_*)\)">\(C\ge4T(D_*)\)</span>.</p>
+<h2 id="5-a-prefix-with-a-gap-of-scales">5. A prefix with a gap of scales</h2>
+<p>Let <span class="math" data-tex="\(i+K&lt;m-1\)">\(i+K&lt;m-1\)</span>. Keep the stages <span class="math" data-tex="\(0,\dots,t\)">\(0,\dots,t\)</span>, where <span class="math" data-tex="\(t=i+K\)">\(t=i+K\)</span>, and discard the later ones. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D=D_i,\qquad w=\log D,\\
+H=C_2\theta^{-K},\\
+a=D^{0.01},\quad L_0=D^{0.03},\\
+B_0=D^{0.30},\quad\sigma=D^{0.90}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+D=D_i,\qquad w=\log D,\\
+H=C_2\theta^{-K},\\
+a=D^{0.01},\quad L_0=D^{0.03},\\
+B_0=D^{0.30},\quad\sigma=D^{0.90}.
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(\log D_t=\theta^Kw\)">\(\log D_t=\theta^Kw\)</span>, Section 3 gives
+<span class="math math-display" data-tex="\[
+N_t\le\Bigl(1+\frac Hw\Bigr)n,\qquad|\mathcal L_t|\le\frac{Hn}w ,
+\]">\[
+N_t\le\Bigl(1+\frac Hw\Bigr)n,\qquad|\mathcal L_t|\le\frac{Hn}w ,
+\]</span>
+the second because <span class="math" data-tex="\(C_2\ge20\)">\(C_2\ge20\)</span>.</p>
+<p><strong>5.1. Batches.</strong> Fix a box <span class="math" data-tex="\(Y\)">\(Y\)</span> of level <span class="math" data-tex="\(i\)">\(i\)</span>, of order <span class="math" data-tex="\(y\le D^{1.02}\)">\(y\le D^{1.02}\)</span>. Its descendants of level <span class="math" data-tex="\(t\)">\(t\)</span> have order at most <span class="math" data-tex="\(D_t^{1.02}=D^{1.02\theta^K}&lt;D^{0.001}\)">\(D_t^{1.02}=D^{1.02\theta^K}&lt;D^{0.001}\)</span>, and their residuals have average degree at most <span class="math" data-tex="\(D_{t+1}=D^{\theta^{K+1}}\)">\(D_{t+1}=D^{\theta^{K+1}}\)</span>. Let <span class="math" data-tex="\(T_Y\)">\(T_Y\)</span> be the total order of these descendants; then
+<span class="math math-display" data-tex="\[
+y\le T_Y\le\Bigl(1+\frac Hw\Bigr)y\le2y ,
+\]">\[
+y\le T_Y\le\Bigl(1+\frac Hw\Bigr)y\le2y ,
+\]</span>
+since <span class="math" data-tex="\(H/w=C_2/\log D_t\le1\)">\(H/w=C_2/\log D_t\le1\)</span>. Let <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span> be the graph on <span class="math" data-tex="\(Y\)">\(Y\)</span> formed by the residual edges of all these descendants. Their edge sets are disjoint, so <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span> is simple, and
+<span class="math math-display" data-tex="\[
+2|E(F(Y))|\le T_YD^{\theta^{K+1}}\le2yD^{\theta^{K+1}} .
+\]">\[
+2|E(F(Y))|\le T_YD^{\theta^{K+1}}\le2yD^{\theta^{K+1}} .
+\]</span>
+Group the descendants into <em>batches</em> whose orders add up to at most <span class="math" data-tex="\(B_0\)">\(B_0\)</span>: fill a batch until the next descendant would exceed <span class="math" data-tex="\(B_0\)">\(B_0\)</span>, then start a new one. If <span class="math" data-tex="\(D^{0.001}\le B_0/2\)">\(D^{0.001}\le B_0/2\)</span>, every batch except possibly the last has order sum greater than <span class="math" data-tex="\(B_0/2\)">\(B_0/2\)</span>, so there are at most <span class="math" data-tex="\(1+2T_Y/B_0\le1+4y/B_0\)">\(1+2T_Y/B_0\le1+4y/B_0\)</span> batches. For a batch, let <span class="math" data-tex="\(W\)">\(W\)</span> be the union of the vertex sets of its descendants and <span class="math" data-tex="\(J_W\)">\(J_W\)</span> the graph on <span class="math" data-tex="\(W\)">\(W\)</span> of their residual edges; the batch index is kept, so different batches are different even if their sets <span class="math" data-tex="\(W\)">\(W\)</span> coincide. Then the graphs <span class="math" data-tex="\(J_W\)">\(J_W\)</span> partition <span class="math" data-tex="\(E(F(Y))\)">\(E(F(Y))\)</span>, the sets <span class="math" data-tex="\(W\)">\(W\)</span> cover <span class="math" data-tex="\(Y\)">\(Y\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|W|\le B_0,\qquad\sum_W|W|\le T_Y,\\
+\sum_{Y\in\mathcal Y_i}\sum_W|W|\le N_t .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|W|\le B_0,\qquad\sum_W|W|\le T_Y,\\
+\sum_{Y\in\mathcal Y_i}\sum_W|W|\le N_t .
+\end{gathered}
+\]</span>
+Every box of level <span class="math" data-tex="\(t\)">\(t\)</span> has a unique ancestor of level <span class="math" data-tex="\(i\)">\(i\)</span>, so at the end of the kept prefix
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E(G)={}&amp;\bigcup_{L\in\mathcal L_t}E(L)\\
+&amp;\cup\bigcup_{j\le t}\bigcup_{R\in\mathcal R_j}E(R)\\
+&amp;\cup\bigcup_{Y,W}E(J_W),
+\end{aligned}
+\]">\[
+\begin{aligned}
+E(G)={}&amp;\bigcup_{L\in\mathcal L_t}E(L)\\
+&amp;\cup\bigcup_{j\le t}\bigcup_{R\in\mathcal R_j}E(R)\\
+&amp;\cup\bigcup_{Y,W}E(J_W),
+\end{aligned}
+\]</span>
+a disjoint union.</p>
+<p><strong>5.2. Active sets.</strong> Call a vertex of <span class="math" data-tex="\(Y\)">\(Y\)</span> <em>good</em> if its degree in <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span> is at most <span class="math" data-tex="\(a\)">\(a\)</span>. At most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{2|E(F(Y))|}a&amp;\le2yD^{\theta^{K+1}-0.01}\\
+&amp;\le2yD^{-0.009}\le\frac yw
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{2|E(F(Y))|}a&amp;\le2yD^{\theta^{K+1}-0.01}\\
+&amp;\le2yD^{-0.009}\le\frac yw
+\end{aligned}
+\]</span>
+vertices of <span class="math" data-tex="\(Y\)">\(Y\)</span> are not good, the last inequality being a requirement on the cutoff. For every batch <span class="math" data-tex="\(W\)">\(W\)</span> and every piece <span class="math" data-tex="\(R\in\mathcal R_i\)">\(R\in\mathcal R_i\)</span> inside <span class="math" data-tex="\(Y\)">\(Y\)</span>, consider the good vertices of <span class="math" data-tex="\(W\cap V(R)\)">\(W\cap V(R)\)</span>. If there are at least <span class="math" data-tex="\(L_0\)">\(L_0\)</span> of them, they form the <em>active set</em> <span class="math" data-tex="\(X_{W,R}\)">\(X_{W,R}\)</span>; otherwise the set is <em>skipped</em>. Active sets of one batch are disjoint. There are at most <span class="math" data-tex="\(y/\sigma\)">\(y/\sigma\)</span> pieces in <span class="math" data-tex="\(Y\)">\(Y\)</span>, so the skipped sets of <span class="math" data-tex="\(Y\)">\(Y\)</span>, counted with their batches, have total size at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;L_0\Bigl(1+\frac{4y}{B_0}\Bigr)\frac y\sigma\\
+&amp;\quad\le y\bigl(D^{-0.87}+4D^{-0.15}\bigr)\le\frac yw ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;L_0\Bigl(1+\frac{4y}{B_0}\Bigr)\frac y\sigma\\
+&amp;\quad\le y\bigl(D^{-0.87}+4D^{-0.15}\bigr)\le\frac yw ,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(y\le D^{1.02}\)">\(y\le D^{1.02}\)</span> and again a requirement on the cutoff.</p>
+<p>Let <span class="math" data-tex="\(s(Y)\)">\(s(Y)\)</span> be the total order of the pieces of level <span class="math" data-tex="\(i\)">\(i\)</span> in <span class="math" data-tex="\(Y\)">\(Y\)</span>, let <span class="math" data-tex="\(\Sigma_Y\)">\(\Sigma_Y\)</span> be the total size of the active sets of <span class="math" data-tex="\(Y\)">\(Y\)</span>, and <span class="math" data-tex="\(\Sigma=\sum_{Y\in\mathcal Y_i}\Sigma_Y\)">\(\Sigma=\sum_{Y\in\mathcal Y_i}\Sigma_Y\)</span>. Every good piece vertex lies in some batch; choose one such occurrence for each. At most <span class="math" data-tex="\(y/w\)">\(y/w\)</span> piece vertices are not good, and at most <span class="math" data-tex="\(y/w\)">\(y/w\)</span> chosen occurrences lie in skipped sets, so <span class="math" data-tex="\(\Sigma_Y\ge s(Y)-2y/w\)">\(\Sigma_Y\ge s(Y)-2y/w\)</span>. Conversely, a vertex of <span class="math" data-tex="\(Y\)">\(Y\)</span> lying in <span class="math" data-tex="\(u(v)\ge1\)">\(u(v)\ge1\)</span> batches is counted at most <span class="math" data-tex="\(u(v)\)">\(u(v)\)</span> times, and <span class="math" data-tex="\(\sum_v(u(v)-1)=\sum_W|W|-y\)">\(\sum_v(u(v)-1)=\sum_W|W|-y\)</span>; since the pieces are vertex-disjoint, <span class="math" data-tex="\(\Sigma_Y\le s(Y)+\sum_W|W|-y\)">\(\Sigma_Y\le s(Y)+\sum_W|W|-y\)</span>. Summing over <span class="math" data-tex="\(Y\)">\(Y\)</span>, with <span class="math" data-tex="\(n\le N_i\le2n\)">\(n\le N_i\le2n\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S_i-\frac{4n}w\le\Sigma&amp;\le S_i+N_t-N_i\\
+&amp;\le S_i+\frac{Hn}w .
+\end{aligned}
+\]">\[
+\begin{aligned}
+S_i-\frac{4n}w\le\Sigma&amp;\le S_i+N_t-N_i\\
+&amp;\le S_i+\frac{Hn}w .
+\end{aligned}
+\]</span></p>
+<p><strong>5.3. Resolving the batches and the pieces.</strong> Split the edges of every piece of level <span class="math" data-tex="\(i\)">\(i\)</span> into two spanning graphs <span class="math" data-tex="\(P_R\)">\(P_R\)</span> and <span class="math" data-tex="\(T_R\)">\(T_R\)</span>, each of cut expansion at least <span class="math" data-tex="\(\sigma/4\)">\(\sigma/4\)</span>, by Lemma 2.1 of <a href="random-sampling-in-expanding-graphs.html">Random sampling in expanding graphs</a> with two classes. In every box <span class="math" data-tex="\(Y\)">\(Y\)</span> of level <span class="math" data-tex="\(i\)">\(i\)</span>, the hypotheses of the batch resolution lemma (Lemma 2.1 of <a href="folding-pairs-and-lifting-cycles.html">Folding pairs and lifting cycles</a>) hold: the batches have order at most <span class="math" data-tex="\(B_0\)">\(B_0\)</span> and disjoint edge sets with union <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span>; the pieces have orders between <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(D^{1.02}\)">\(D^{1.02}\)</span>, disjoint vertex sets inside <span class="math" data-tex="\(Y\)">\(Y\)</span> and edges outside <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span>; and the active sets have at least <span class="math" data-tex="\(L_0\)">\(L_0\)</span> vertices, each of degree at most <span class="math" data-tex="\(a\)">\(a\)</span> in the whole of <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span>. The lemma gives simple quotients <span class="math" data-tex="\(Q_W\)">\(Q_W\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+q_W&amp;=|W|-\sum_R\Bigl\lfloor\frac{|X_{W,R}|}2\Bigr\rfloor\\
+&amp;\le|W|-\frac13\sum_R|X_{W,R}| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+q_W&amp;=|W|-\sum_R\Bigl\lfloor\frac{|X_{W,R}|}2\Bigr\rfloor\\
+&amp;\le|W|-\frac13\sum_R|X_{W,R}| .
+\end{aligned}
+\]</span>
+Every batch has positive order and every pair leaves a vertex, so <span class="math" data-tex="\(1\le q_W\le B_0\le n^{0.30}&lt;n\)">\(1\le q_W\le B_0\le n^{0.30}&lt;n\)</span>. Apply the induction hypothesis to every quotient, and lift all the resulting partitions by the lemma: in each <span class="math" data-tex="\(Y\)">\(Y\)</span> this costs at most <span class="math" data-tex="\(8\Sigma_Y\)">\(8\Sigma_Y\)</span> members beyond the quotient members, and the remaining graph of every piece <span class="math" data-tex="\(R\)">\(R\)</span> of level <span class="math" data-tex="\(i\)">\(i\)</span> contains <span class="math" data-tex="\(T_R\)">\(T_R\)</span>.</p>
+<p>Then apply the small residue lemma with the fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span>: with <span class="math" data-tex="\(c=1/4\)">\(c=1/4\)</span> to the remaining graph of every piece of level <span class="math" data-tex="\(i\)">\(i\)</span>, and with <span class="math" data-tex="\(c=1\)">\(c=1\)</span> to every other piece of the kept prefix, at its own scale. These applications give at most <span class="math" data-tex="\(9P_0S_i\)">\(9P_0S_i\)</span> members, and their family <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> of residual graphs satisfies
+<span class="math math-display" data-tex="\[
+\sum_{H&#x27;\in\mathcal H}|V(H&#x27;)|\le\eta\sum_{j=0}^tS_j\le\eta P_0S_i .
+\]">\[
+\sum_{H&#x27;\in\mathcal H}|V(H&#x27;)|\le\eta\sum_{j=0}^tS_j\le\eta P_0S_i .
+\]</span>
+Each member of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> has order less than its piece, hence less than <span class="math" data-tex="\(n\)">\(n\)</span>, and the induction hypothesis applies to it.</p>
+<p>Every edge of <span class="math" data-tex="\(G\)">\(G\)</span> is accounted for once: the long cycles are members; the batch lemma partitions the batch edges together with the router edges it uses, each router edge coming from one piece of level <span class="math" data-tex="\(i\)">\(i\)</span> and used once; the small residue lemma, applied after those edges were removed, partitions all remaining piece edges into members and the graphs of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>; and boxes with overlapping vertex sets have disjoint edge sets. Recursive partitions of the graphs of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> complete a cycle-and-edge partition of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>5.4. The final estimate.</strong> Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_1=H+\frac43,\\
+A_2=\max\{9P_0+8,\;9H\}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+A_1=H+\frac43,\\
+A_2=\max\{9P_0+8,\;9H\}.
+\end{gathered}
+\]</span>
+By Sections 5.1 to 5.3,
+<span class="math math-display" data-tex="\[
+\sum_{Y,W}q_W\le N_t-\frac\Sigma3\le n-\frac{S_i}3+\frac{A_1n}w .
+\]">\[
+\sum_{Y,W}q_W\le N_t-\frac\Sigma3\le n-\frac{S_i}3+\frac{A_1n}w .
+\]</span>
+The members not produced by the recursive calls number at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\mathcal L_t|+8\Sigma+9P_0S_i\\
+&amp;\quad\le(9P_0+8)S_i+\frac{9Hn}w\\
+&amp;\quad\le A_2\Bigl(S_i+\frac nw\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|\mathcal L_t|+8\Sigma+9P_0S_i\\
+&amp;\quad\le(9P_0+8)S_i+\frac{9Hn}w\\
+&amp;\quad\le A_2\Bigl(S_i+\frac nw\Bigr).
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is nondecreasing and <span class="math" data-tex="\(q_W\le B_0\)">\(q_W\le B_0\)</span>, the induction hypothesis bounds the members of the quotient partitions by <span class="math" data-tex="\(C\phi(B_0)\sum q_W\)">\(C\phi(B_0)\sum q_W\)</span>, and those of the partitions of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> by <span class="math" data-tex="\(C\eta P_0S_i\)">\(C\eta P_0S_i\)</span>. So the partition has at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;A_2\Bigl(S_i+\frac nw\Bigr)+C\eta P_0S_i\\
+&amp;\quad+C\phi(B_0)\Bigl(n-\frac{S_i}3+\frac{A_1n}w\Bigr)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;A_2\Bigl(S_i+\frac nw\Bigr)+C\eta P_0S_i\\
+&amp;\quad+C\phi(B_0)\Bigl(n-\frac{S_i}3+\frac{A_1n}w\Bigr)
+\end{aligned}
+\]</span>
+members. As <span class="math" data-tex="\(\eta P_0=\frac1{100}\)">\(\eta P_0=\frac1{100}\)</span> and <span class="math" data-tex="\(\phi\ge\frac12\)">\(\phi\ge\frac12\)</span>, the coefficient of <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is at most
+<span class="math math-display" data-tex="\[
+A_2+\frac C{100}-\frac C6=A_2-\frac{47C}{300},
+\]">\[
+A_2+\frac C{100}-\frac C6=A_2-\frac{47C}{300},
+\]</span>
+which is at most zero if <span class="math" data-tex="\(C\ge7A_2\)">\(C\ge7A_2\)</span>.
+Then, as <span class="math" data-tex="\(A_2\le C\)">\(A_2\le C\)</span> and <span class="math" data-tex="\(\phi\le1\)">\(\phi\le1\)</span>, the number of members is at most
+<span class="math math-display" data-tex="\[
+C\phi(B_0)n+\frac{C(A_1+1)n}w .
+\]">\[
+C\phi(B_0)n+\frac{C(A_1+1)n}w .
+\]</span>
+Put <span class="math" data-tex="\(\delta=1/\sqrt{0.30}-1&gt;0\)">\(\delta=1/\sqrt{0.30}-1&gt;0\)</span>. If <span class="math" data-tex="\(w\ge40/3\)">\(w\ge40/3\)</span>, then <span class="math" data-tex="\(\log B_0=0.30w\ge4\)">\(\log B_0=0.30w\ge4\)</span> and <span class="math" data-tex="\(\log n\ge w\)">\(\log n\ge w\)</span>, so both <span class="math" data-tex="\(\phi(B_0)\)">\(\phi(B_0)\)</span> and <span class="math" data-tex="\(\phi(n)\)">\(\phi(n)\)</span> are given by the second expression in the definition, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi(n)-\phi(B_0)&amp;=\frac1{\sqrt{0.30w}}-\frac1{\sqrt{\log n}}\\
+&amp;\ge\frac\delta{\sqrt w} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\phi(n)-\phi(B_0)&amp;=\frac1{\sqrt{0.30w}}-\frac1{\sqrt{\log n}}\\
+&amp;\ge\frac\delta{\sqrt w} .
+\end{aligned}
+\]</span>
+If moreover <span class="math" data-tex="\(w\ge((A_1+1)/\delta)^2\)">\(w\ge((A_1+1)/\delta)^2\)</span>, then <span class="math" data-tex="\((A_1+1)/w\le\delta/\sqrt w\)">\((A_1+1)/w\le\delta/\sqrt w\)</span>, and the partition has at most <span class="math" data-tex="\(C\phi(n)n\)">\(C\phi(n)n\)</span> members. The total quotient order need not be at most <span class="math" data-tex="\(n\)">\(n\)</span>; the gain in the potential pays for its excess.</p>
+<h2 id="6-the-order-of-the-constants">6. The order of the constants</h2>
+<p>The parameters <span class="math" data-tex="\(\theta,K,P_0,\eta\)">\(\theta,K,P_0,\eta\)</span> are fixed, and so are <span class="math" data-tex="\(C_2=80\)">\(C_2=80\)</span>, <span class="math" data-tex="\(H=C_2\theta^{-K}\)">\(H=C_2\theta^{-K}\)</span>, <span class="math" data-tex="\(A_1\)">\(A_1\)</span>, <span class="math" data-tex="\(A_2\)">\(A_2\)</span> and <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Choose the cutoff <span class="math" data-tex="\(D_*&gt;2\)">\(D_*&gt;2\)</span> so large that:</p>
+<ul>
+<li>Lemma 2.1 of <a href="splitting-a-graph-at-a-scale.html">Splitting a graph at a scale</a> holds for all <span class="math" data-tex="\(D\ge D_*\)">\(D\ge D_*\)</span>;</li>
+<li>the batch resolution lemma holds for all <span class="math" data-tex="\(D\ge D_*\)">\(D\ge D_*\)</span>;</li>
+<li>the edge splitting lemma holds with two classes and <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, and the small residue lemma holds with the fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and with <span class="math" data-tex="\(c=1\)">\(c=1\)</span> and <span class="math" data-tex="\(c=1/4\)">\(c=1/4\)</span>, for all <span class="math" data-tex="\(D\ge D_*\)">\(D\ge D_*\)</span>;</li>
+<li><span class="math" data-tex="\(\log D_*\ge C_2\)">\(\log D_*\ge C_2\)</span>, <span class="math" data-tex="\(\log D_*\ge40/3\)">\(\log D_*\ge40/3\)</span> and <span class="math" data-tex="\(\log D_*\ge((A_1+1)/\delta)^2\)">\(\log D_*\ge((A_1+1)/\delta)^2\)</span>;</li>
+<li>for every <span class="math" data-tex="\(D\ge D_*\)">\(D\ge D_*\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D^{-0.01}\le\frac1{\log D},\\
+D^{0.001}\le\frac{D^{0.30}}2,\\
+2D^{-0.009}\le\frac1{\log D},\\
+D^{-0.87}+4D^{-0.15}\le\frac1{\log D}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+D^{-0.01}\le\frac1{\log D},\\
+D^{0.001}\le\frac{D^{0.30}}2,\\
+2D^{-0.009}\le\frac1{\log D},\\
+D^{-0.87}+4D^{-0.15}\le\frac1{\log D}.
+\end{gathered}
+\]</span></li>
+</ul>
+<p>Each of these holds for all sufficiently large <span class="math" data-tex="\(D\)">\(D\)</span>, and none depends on <span class="math" data-tex="\(C\)">\(C\)</span>. Then choose
+<span class="math math-display" data-tex="\[
+C\ge\max\{7A_2,\;4T(D_*)\},
+\]">\[
+C\ge\max\{7A_2,\;4T(D_*)\},
+\]</span>
+which also gives <span class="math" data-tex="\(C\ge D_*\)">\(C\ge D_*\)</span>. With these choices the small graphs, the terminal cases and the case of a gap of scales all satisfy the bound <span class="math" data-tex="\(C\phi(n)n\)">\(C\phi(n)n\)</span>, which completes the strong induction and proves Proposition 2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-the-theorem-and-two-consequences">7. The theorem and two consequences</h2>
+<p><strong>Theorem 7.1</strong> (the Erdős–Gallai cycle decomposition theorem [OpenAI-EG]). There is an absolute constant <span class="math" data-tex="\(C\)">\(C\)</span> such that the edges of every graph with <span class="math" data-tex="\(n\)">\(n\)</span> vertices can be partitioned into at most <span class="math" data-tex="\(Cn\)">\(Cn\)</span> cycles and single edges.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> this is Proposition 2.1, since <span class="math" data-tex="\(\phi\le1\)">\(\phi\le1\)</span>. The graph without vertices has the empty partition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A graph is <em>Eulerian</em> if all its degrees are even; connectivity is not required. A partition of an Eulerian graph into cycles needs at least <span class="math" data-tex="\(\Delta(G)/2\)">\(\Delta(G)/2\)</span> cycles, where <span class="math" data-tex="\(\Delta(G)\)">\(\Delta(G)\)</span> is the largest degree, because a cycle contains at most two edges at a vertex.</p>
+<p>The second assertion below uses a named statement, which this course does not prove. For disjoint vertex sets <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, <span class="math" data-tex="\(e_G(A,B)\)">\(e_G(A,B)\)</span> is the number of edges joining them.</p>
+<p><strong>(GGKO)</strong> [GGKO, Proposition 6.3]. Suppose there is a constant <span class="math" data-tex="\(c\)">\(c\)</span> such that every graph with <span class="math" data-tex="\(N\)">\(N\)</span> vertices, for every <span class="math" data-tex="\(N\)">\(N\)</span>, has a cycle-and-edge partition with at most <span class="math" data-tex="\(cN\)">\(cN\)</span> members. Then for all <span class="math" data-tex="\(\delta,p&gt;0\)">\(\delta,p&gt;0\)</span> there are <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and <span class="math" data-tex="\(n_0\)">\(n_0\)</span> such that every Eulerian graph <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span> vertices in which every partition <span class="math" data-tex="\(V(G)=A\cup B\)">\(V(G)=A\cup B\)</span> with <span class="math" data-tex="\(|A|,|B|\ge\varepsilon n\)">\(|A|,|B|\ge\varepsilon n\)</span> satisfies <span class="math" data-tex="\(e_G(A,B)\ge p|A||B|\)">\(e_G(A,B)\ge p|A||B|\)</span> can be partitioned into at most <span class="math" data-tex="\(\Delta(G)/2+\delta n\)">\(\Delta(G)/2+\delta n\)</span> cycles.</p>
+<p>Its proof uses the regularity and absorption methods of [GGKO]; in their terms, the condition on partitions says that <span class="math" data-tex="\(G\)">\(G\)</span> is weakly <span class="math" data-tex="\((\varepsilon,p)\)">\((\varepsilon,p)\)</span>-quasirandom.</p>
+<p><strong>Corollary 7.2.</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be the constant of Theorem 7.1.</p>
+<ol>
+<li>Every Eulerian graph with <span class="math" data-tex="\(n\)">\(n\)</span> vertices can be partitioned into at most <span class="math" data-tex="\(Cn\)">\(Cn\)</span> cycles.</li>
+<li>Assuming (GGKO): for all <span class="math" data-tex="\(\delta,p&gt;0\)">\(\delta,p&gt;0\)</span> there are <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and <span class="math" data-tex="\(n_0\)">\(n_0\)</span> such that every Eulerian graph <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span> vertices satisfying the partition condition of (GGKO) can be partitioned into at most <span class="math" data-tex="\(\Delta(G)/2+\delta n\)">\(\Delta(G)/2+\delta n\)</span> cycles.</li>
+</ol>
+<p><em>Proof.</em> (1) Take a partition from Theorem 7.1 with <span class="math" data-tex="\(r\)">\(r\)</span> cycles and <span class="math" data-tex="\(s\)">\(s\)</span> single edges, <span class="math" data-tex="\(r+s\le Cn\)">\(r+s\le Cn\)</span>. Deleting the edges of a cycle keeps all degrees even (Lemma 4.2 of <a href="paths-cycles-and-lovasz-decompositions.html">Paths, cycles and Lovász's decomposition theorem</a>), so the graph formed by the <span class="math" data-tex="\(s\)">\(s\)</span> single edges is Eulerian, and by Lemma 4.1 there it is partitioned into cycles. Each has at least three edges, so there are at most <span class="math" data-tex="\(s/3\)">\(s/3\)</span> of them, and <span class="math" data-tex="\(r+s/3\le Cn\)">\(r+s/3\le Cn\)</span> cycles partition <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>(2) Theorem 7.1 supplies the hypothesis of (GGKO) with <span class="math" data-tex="\(c=C\)">\(c=C\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So the bound <span class="math" data-tex="\(\Delta(G)/2\)">\(\Delta(G)/2\)</span> for Eulerian graphs is attained up to an arbitrarily small linear error under the partition condition of (GGKO).</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>8.1</strong> (easy). Check that <span class="math" data-tex="\(\theta^K\le e^{-10}\)">\(\theta^K\le e^{-10}\)</span> and that <span class="math" data-tex="\(1.02\theta^K&lt;0.001\)">\(1.02\theta^K&lt;0.001\)</span> and <span class="math" data-tex="\(\theta^{K+1}&lt;0.001\)">\(\theta^{K+1}&lt;0.001\)</span>.</p>
+<p><strong>8.2</strong> (easy). Show that <span class="math" data-tex="\(e^x\le1+2x\)">\(e^x\le1+2x\)</span> for <span class="math" data-tex="\(0\le x\le\frac12\)">\(0\le x\le\frac12\)</span>.</p>
+<p><strong>8.3</strong> (medium). Show, conversely to Corollary 7.2(1), that if every Eulerian graph with <span class="math" data-tex="\(n\)">\(n\)</span> vertices has a partition into at most <span class="math" data-tex="\(c&#x27;n\)">\(c&#x27;n\)</span> cycles, then every graph with <span class="math" data-tex="\(n\)">\(n\)</span> vertices has a cycle-and-edge partition with at most <span class="math" data-tex="\((c&#x27;+1)n\)">\((c&#x27;+1)n\)</span> members.</p>
+<p><strong>8.4</strong> (medium). Explain why the induction is run with <span class="math" data-tex="\(C\phi(n)n\)">\(C\phi(n)n\)</span> rather than <span class="math" data-tex="\(Cn\)">\(Cn\)</span>: which term of Section 5.4 could not be absorbed otherwise?</p>
+<p><strong>8.5</strong> (medium). Show that the proof of Lemma 1.1 gives the same conclusion with <span class="math" data-tex="\(P_0\)">\(P_0\)</span> replaced by <span class="math" data-tex="\(2\lambda(K+1)\)">\(2\lambda(K+1)\)</span>, for every real <span class="math" data-tex="\(\lambda\ge2\)">\(\lambda\ge2\)</span>. (Use the invariant <span class="math" data-tex="\(\sum_{j\le i}S_j\le\lambda(K+1)S_i\)">\(\sum_{j\le i}S_j\le\lambda(K+1)S_i\)</span>.)</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>8.1.</strong> <span class="math" data-tex="\(\ln0.95&lt;-0.0512\)">\(\ln0.95&lt;-0.0512\)</span>, so <span class="math" data-tex="\(200\ln0.95&lt;-10.24\)">\(200\ln0.95&lt;-10.24\)</span> and <span class="math" data-tex="\(\theta^K&lt;e^{-10.24}&lt;4\cdot10^{-5}\)">\(\theta^K&lt;e^{-10.24}&lt;4\cdot10^{-5}\)</span>. Then <span class="math" data-tex="\(1.02\theta^K&lt;0.001\)">\(1.02\theta^K&lt;0.001\)</span>, and <span class="math" data-tex="\(\theta^{K+1}&lt;\theta^K&lt;0.001\)">\(\theta^{K+1}&lt;\theta^K&lt;0.001\)</span>.</p>
+<p><strong>8.2.</strong> The function <span class="math" data-tex="\(e^x-1-2x\)">\(e^x-1-2x\)</span> is convex, vanishes at <span class="math" data-tex="\(0\)">\(0\)</span>, and at <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> equals <span class="math" data-tex="\(e^{1/2}-2&lt;0\)">\(e^{1/2}-2&lt;0\)</span>; so it is at most zero on <span class="math" data-tex="\([0,\frac12]\)">\([0,\frac12]\)</span>.</p>
+<p><strong>8.3.</strong> Take a maximal family of edge-disjoint cycles in <span class="math" data-tex="\(G\)">\(G\)</span>. The remaining edges form a forest, with at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span> edges, and the union of the cycles is an Eulerian graph, which by assumption is partitioned into at most <span class="math" data-tex="\(c&#x27;n\)">\(c&#x27;n\)</span> cycles. Together with the forest edges taken singly this gives at most <span class="math" data-tex="\((c&#x27;+1)n\)">\((c&#x27;+1)n\)</span> members.</p>
+<p><strong>8.4.</strong> The term <span class="math" data-tex="\(C(A_1+1)n/w\)">\(C(A_1+1)n/w\)</span> comes from the overlap of the boxes and the long cycles; it is of order <span class="math" data-tex="\(Cn/\log D\)">\(Cn/\log D\)</span>. It contains the factor <span class="math" data-tex="\(C\)">\(C\)</span>, so a larger <span class="math" data-tex="\(C\)">\(C\)</span> does not help. The potential gains <span class="math" data-tex="\(C\delta n/\sqrt w\)">\(C\delta n/\sqrt w\)</span> between the order <span class="math" data-tex="\(n\)">\(n\)</span> and the order of the quotients, which is larger than <span class="math" data-tex="\(C(A_1+1)n/w\)">\(C(A_1+1)n/w\)</span> for large <span class="math" data-tex="\(w\)">\(w\)</span>.</p>
+<p><strong>8.5.</strong> The invariant holds at the first positive term. If the conclusion fails at <span class="math" data-tex="\(i\)">\(i\)</span>, the <span class="math" data-tex="\(K\)">\(K\)</span> window terms add up to more than <span class="math" data-tex="\(2\lambda(K+1)S_i-\lambda(K+1)S_i\)">\(2\lambda(K+1)S_i-\lambda(K+1)S_i\)</span>, so their largest value <span class="math" data-tex="\(M\)">\(M\)</span> satisfies <span class="math" data-tex="\(M&gt;\lambda(K+1)S_i/K&gt;\lambda S_i\)">\(M&gt;\lambda(K+1)S_i/K&gt;\lambda S_i\)</span>. At the index <span class="math" data-tex="\(i&#x27;\)">\(i&#x27;\)</span> of that value,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{j\le i&#x27;}S_j&amp;\le\lambda(K+1)S_i+KM\\
+&amp;&lt;(K+1)M+KM ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{j\le i&#x27;}S_j&amp;\le\lambda(K+1)S_i+KM\\
+&amp;&lt;(K+1)M+KM ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\((2K+1)M\le\lambda(K+1)M\)">\((2K+1)M\le\lambda(K+1)M\)</span> because <span class="math" data-tex="\(\lambda\ge2\)">\(\lambda\ge2\)</span>. So the invariant persists, and the moves stop as in the proof of Lemma 1.1. The proof of Proposition 2.1 needs only that <span class="math" data-tex="\(\eta P_0\)">\(\eta P_0\)</span> is a small fixed number, so any such <span class="math" data-tex="\(P_0\)">\(P_0\)</span> works with <span class="math" data-tex="\(\eta=1/(100P_0)\)">\(\eta=1/(100P_0)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-EG] OpenAI, <em>A linear cycle-and-edge decomposition of every graph</em>, OpenAI Math Release preprint, 24 September 2026. https://github.com/openai/math/tree/main/preprints/A-linear-cycle-and-edge-decomposition-of-every-graph-September-24-2026</li>
+<li>[GGKO] A. Girão, B. Granet, D. Kühn and D. Osthus, <em>Path and cycle decompositions of dense graphs</em>, Journal of the London Mathematical Society 104 (2021), 1085–1134; arXiv:1911.05501. https://arxiv.org/abs/1911.05501</li>
+<li>[BM] M. Bucić and R. Montgomery, <em>Towards the Erdős–Gallai cycle decomposition conjecture</em>, Advances in Mathematics 437 (2024), 109434; arXiv:2211.07689. https://arxiv.org/abs/2211.07689</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

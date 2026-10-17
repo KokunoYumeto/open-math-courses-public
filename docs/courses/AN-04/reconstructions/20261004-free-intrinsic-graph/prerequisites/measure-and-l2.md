@@ -1,11 +1,10 @@
 # Measure and the complete square-integrable space
 
-This companion retains the used measure arguments of AN03-P004, *Banach
-estimates, quotient spaces and compact parameter arguments*. Its original
-labels LM1–LM6, GM2–GM3, GM6 and LP3–LP4, LP10–LP11 are retained. The norm,
-completeness and density assertions are selected only at \(p=1,2\).
-Young's inequality, weak derivatives and the rest of AN-03 are not required
-by this selection. The full original AN-03 scope remains unchanged.
+This reading constructs completed Lebesgue measure in coordinates and proves
+convergence and product-integration formulas for Fourier analysis. Its
+norm, completeness and compact smooth density results concern \(p=1,2\).
+The labels LM1–LM6, GM2–GM3, GM6 and LP3–LP4, LP10–LP11 identify the
+measure, integral and approximation formulas used below.
 
 The scalar and compact-calculus proofs are the earlier
 [AN04-U001 prerequisite chain](../../20261004-free-stationary-phase/quadratic-stationary-phase.md#f0-the-exact-earlier-programme-proofs),
@@ -14,17 +13,21 @@ In particular, real completeness, the Archimedean property,
 finite-dimensional continuity, complex arithmetic and absolute
 series are supplied there. The rational density and enumeration steps are
 written in M0 below. The smooth taper used in LP11 is proved in
-[U001, Appendix A.4](../../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md#a-4-finite-smooth-cutoffs).
+[U001, Appendix A.4](../../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.html#a-4-finite-smooth-cutoffs).
 The selection below supplies measure construction and convergence, rather
 than taking those theorems as axioms.
 
-This is a separate modified selection from the earlier AN-03 programme.
-Original principal author and publisher: AN-03 course-writing
-task / AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and OpenAI Codex.
-Selection and the explicitly identified connecting arguments: GPT-6 Astra
-(OpenAI), Ultra, 4 October 2026.
+The elementary analysis reference guide
+distinguishes linked human proofs from programme arguments in the U001
+inputs. Definitions in the notation guide fix conventions; a definition
+does not assert a construction theorem. External human texts keep their
+own terms and are not included in this CC0 reading.
 
-Original text: CC0.
+Measure, convergence and density material comes from the programme's
+AN-03 analysis course. Connecting arguments: GPT-6 Astra (OpenAI), Ultra.
+Increasing-set continuity, the compact-box continuity argument, source notes
+and editorial text: GPT-6.1 Sol (OpenAI), Ultra. Independent programme text:
+CC0. Linked human works retain their own terms.
 
 ## M0. The declared choice input
 
@@ -111,6 +114,19 @@ For disjoint measurable \(A_k\), repeated finite splitting gives, for every posi
 \]
 Let \(N\to\infty\). The full sum bounds \(\mu^*(E\cap\bigcup_k A_k)\) from below by (LM2), proving (LM4) for their union. For an arbitrary countable union of measurable sets, replace its \(k\)-th set by its difference from the preceding finite union; finite intersections and complements have already proved these disjoint differences measurable. Their union is the original union, so \(\mathcal M\) is a sigma-algebra. Taking \(E=\bigcup_k A_k\) in (LM5) and using (LM2) proves countable additivity of \(\mu=\mu^*|_{\mathcal M}\). No subtraction of two infinite numbers occurs.
 
+Countable additivity also gives continuity along an increasing sequence
+of measurable sets. If \(E_j\uparrow E\), put \(E_0=\varnothing\) and
+\(D_j=E_j\setminus E_{j-1}\). These measurable sets are disjoint,
+their union is \(E\), and their first \(N\) terms have union \(E_N\).
+Consequently
+\[
+ \mu(E)=\sum_{j=1}^{\infty}\mu(D_j)
+       =\lim_{N\to\infty}\sum_{j=1}^{N}\mu(D_j)
+       =\lim_{N\to\infty}\mu(E_N).
+\]
+This identity allows infinite values and uses no integral convergence
+theorem. It is the measure-continuity step used in M3 and M7.
+
 Every covering box \(Q\) is in \(\mathcal M\). Indeed, subdivide any covering box \(B_j\) at all coordinate endpoints of \(Q\). The half-open grid pieces partition \(B_j\) exactly. Each is either inside \(Q\) or outside it, and the sum of their full volume products is \(v(B_j)\), by the distributive law. The inside pieces cover \(E\cap Q\), and the outside pieces cover \(E\setminus Q\), for any original cover of \(E\). Thus each covering cost is at least \(\mu^*(E\cap Q)+\mu^*(E\setminus Q)\). Taking its infimum proves (LM4). These boxes generate the Borel sigma-algebra: every open set is a countable union of coordinate boxes with rational endpoints whose closures are contained in it, since each of its points has an interior ball and rational endpoints can be chosen on both sides of each original coordinate. Hence every Borel set is measurable, with the exact box volumes proved in (LM3).
 
 Every subset of an outer-measure-zero set is also measurable. For such a subset \(S\), \(\mu^*(E\cap S)=0\), and (LM2) and monotonicity give \(\mu^*(E)=\mu^*(E\setminus S)\). This is (LM4), with its first term zero. Therefore \(\mu\) is complete. A coordinate hyperplane has outer measure zero: its bounded part with other coordinates in \([-R,R]\) is covered by one box of thickness \(2\delta\) in its fixed coordinate and side lengths \(2R+2\delta\) in the others. Its full cost is
@@ -194,8 +210,8 @@ for nonnegative \(h\), with possibly infinite integrals, and for absolutely inte
 
 ## M5. The two required norms
 
-This is the \(p=1,2\) specialization of AN03-P004, Section 15.2, with its
-scalar step displayed explicitly. Functions are identified when they agree
+The two norms concern \(p=1,2\). Their scalar inequalities and
+definiteness on almost-everywhere equivalence classes are proved here. Functions are identified when they agree
 almost everywhere. Set \(\|f\|_p=(\int|f|^p)^{1/p}\).
 For a nonnegative measurable \(g\), an integral of zero forces \(g=0\)
 almost everywhere: \(j^{-1}1_{\{g>1/j\}}\le g\), so each displayed level set
@@ -262,9 +278,27 @@ widths meets both conditions. Thus for \(f\in L^1\cap L^2\) there are
 
 ## M8. Compatibility with the earlier integral
 
-This connecting proof identifies the new measure integral with the
-continuous and Schwartz integrals used in U001. It does not assume that
-the two constructions agree. On a bounded coordinate box \(Q\), partition
+The measure integral agrees with the continuous and Schwartz integrals
+used in U001. We first justify the compactness step. An empty box has
+zero integral and poses no continuity question. On a nonempty closed
+bounded coordinate box \(Q\), a continuous function \(f\) is bounded: continuity gives
+a neighborhood at each point on which its value differs from its value
+at that point by less than one. The finite-subcover proof in M2 applies
+to the closed box itself. A finite choice of these neighborhoods bounds
+the function by the largest of the finitely many central absolute values
+plus one.
+
+It is uniformly continuous as well. Given \(\varepsilon>0\), choose
+\(r_x>0\) so that
+\(y\in Q\cap B(x,2r_x)\) implies
+\(|f(y)-f(x)|<\varepsilon/2\).
+Choose finitely many \(B(x_i,r_{x_i})\) covering \(Q\) and let
+\(\delta=\min_i r_{x_i}>0\).
+If \(y,z\in Q\) satisfy \(|y-z|<\delta\), choose an index with
+\(y\in B(x_i,r_{x_i})\). Then \(z\in B(x_i,2r_{x_i})\), so
+the triangle inequality gives \(|f(y)-f(z)|<\varepsilon\).
+Degenerate boxes have zero volume by M2; their integrals and Darboux
+sums are zero. For a box with positive side lengths, partition
 into smaller coordinate boxes. A continuous real function has lower and
 upper simple functions on that partition, with integrals equal to its
 lower and upper Darboux sums, because M2 proves the exact box volumes and
@@ -289,18 +323,24 @@ measure, including their original \(2\pi\) factors.
 ## Free source comparisons
 
 Terence Tao, *An introduction to measure theory*, the
-[author-linked preliminary draft hosted December 2012](https://terrytao.wordpress.com/wp-content/uploads/2012/12/gsm-126-tao5-measure-book.pdf):
-Lemma 1.2.6 (box volume), Lemma 1.2.12 (outer approximation),
-Theorem 1.4.44 and Corollary 1.4.47 / Theorem 1.4.49 (convergence),
-Theorem 1.7.3 (outer-measure construction), and Theorems 1.7.15,
-1.7.18 and 1.7.21 (product integration).
-The companion proves its own completion, generating-class and null-section
-steps, including steps left as exercises in that draft.
+[author-linked preliminary draft hosted December 2012](https://terrytao.wordpress.com/wp-content/uploads/2012/12/gsm-126-tao5-measure-book.pdf),
+gives the box-volume and open-approximation arguments in Lemmas 1.2.6
+and 1.2.12 (printed 25–27 and 30–31), convergence in Theorem 1.4.44,
+Corollary 1.4.47 and Theorem 1.4.49 (printed 107–112), the outer-measure
+construction in Theorem 1.7.3 (printed 181–184), and product integration
+in Theorems 1.7.15, 1.7.18 and 1.7.21 (printed 200–205).
+The completed-measure and exceptional-null-section arguments here include
+the distinction between sections defined everywhere for Borel sets and
+sections defined almost everywhere after completion.
 
-Tao, [*245B, notes 3: Lp spaces*](https://terrytao.wordpress.com/2009/01/09/245b-notes-3-lp-spaces/),
-9 January 2009, Lemma 1, Propositions 1–3 and Remark 7, supplies the free
-norm, completeness and simple-density comparison. M6 supplies the full
-Cauchy-subsequence step; M7 supplies the smooth approximation itself.
-These human readings are mathematical comparisons, not imported prose or
-substitutes for the programme proofs above. The free draft and blog are
-not included in this component.
+Tao's [*245B, notes 3: Lp spaces*](https://terrytao.wordpress.com/2009/01/09/245b-notes-3-lp-spaces/),
+9 January 2009, Lemma 1, Propositions 1–3 and Remark 7, treats norms,
+completeness, simple-function density and Hölder's inequality. M5 proves
+the scalar norm inequalities at the two exponents used here. M6 gives
+the Cauchy-subsequence construction and its tail estimate; M7 proves
+compact smooth approximation by box layers, including simultaneous
+approximation in the intersection of the two spaces.
+
+The programme arguments use their own wording. These linked human
+readings retain their own terms; neither the draft nor the blog text
+is included in this component.

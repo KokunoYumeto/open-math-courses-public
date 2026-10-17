@@ -1,0 +1,48 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "erdos-gallai-cycle-decompositions",
+  "title": "The Erdős–Gallai cycle decomposition theorem",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-17",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's proof (2026) of the Erdős–Gallai cycle decomposition conjecture: the edges of every graph with n vertices can be partitioned into at most Cn cycles and single edges, for an absolute constant C. The course proves Lovász's theorem on decompositions into paths and cycles, and path decompositions with at most two ends at every vertex; Haxell's condition for disjoint representatives in hypergraphs; the routing of many short edge-disjoint paths, with disjoint inner vertices within teams, in graphs with cut expansion; the splitting of a graph at a scale into long cycles, overlapping boxes and expanding pieces; Chernoff bounds and the cut expansion of random vertex samples; the closing of paths through three random reservoirs; pair folding and the lifting of quotient cycles through routers; and the induction over the scales n^(0.95^j) with a slightly sublinear potential. Consequences: every Eulerian graph with n vertices decomposes into at most Cn cycles, and, with a named theorem of Girão, Granet, Kühn and Osthus, into at most Delta/2 + delta n cycles under a large-cut condition.",
+  "prerequisites": [
+    "core course Probability (Grinstead and Snell, Introduction to Probability): independence, expectation and its linearity, binomial distributions; all probability spaces in the course are finite, and Markov's inequality and the Chernoff bounds used are proved in the fifth lesson",
+    "basic graph terminology: degrees, paths, cycles, components, induced subgraphs"
+  ],
+  "lessons": [
+    "paths-cycles-and-lovasz-decompositions",
+    "disjoint-representatives-in-hypergraphs",
+    "routing-in-graphs-with-cut-expansion",
+    "splitting-a-graph-at-a-scale",
+    "random-sampling-in-expanding-graphs",
+    "closing-paths-through-reservoirs",
+    "folding-pairs-and-lifting-cycles",
+    "the-linear-bound"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "reading": "The manuscript 'A linear cycle-and-edge decomposition of every graph' (OpenAI, 24 Sep 2026; build/main.tex and the sections preliminaries, routing, residue, splitting, folding and induction, 110 kB of TeX; local library copy openai-math-20261006) was read in full on 17 Oct 2026, and every step was derived again while the lessons were written. No error affecting a statement was found. Changes of form in the course: (1) the manuscript cites Lovász's path-and-cycle theorem; the first lesson proves it, following Lovász's 1968 proof (read in the scanned Tihany proceedings, REAL-EOD 14547, pages 231-236). There the construction is split into cases by the number of ends of the path U_{i,mu} lying in H'; the construction needs the number of vertices of H' that chose the path. A path can end at two vertices of H' and be chosen by only one of them, and read literally the recipe of case (2) would then add one edge twice and delete an edge that need not lie on the path. The lesson fixes the choice U(h) once and states the cases by choosers; with this reading the proof is complete. (2) The manuscript uses the Aharoni-Haxell theorem (a matching with more than s(|I|-1) edges); the course proves Haxell's condition with (2s-1)(|I|-1) by an alternating-tree argument with a lexicographic signature, and states the routing lemma with 128 in place of 64, using hyperedges of size at most 2l-1; every application has a polynomial margin, so all other statements are unchanged. (3) The second assertion of the Eulerian corollary rests on Proposition 6.3 of Girão, Granet, Kühn and Osthus (arXiv:1911.05501), whose proof uses their regularity and absorption machinery; it is recorded as the named statement (GGKO). (4) In the first assertion of that corollary the single edges are decomposed into at most s/3 cycles. Sources checked for the attributions: Erdős, Goodman and Pósa 1966, Section 5 (page images; the O(n log n) bound, Gallai's example and the question whether cn suffices); Bucić and Montgomery arXiv:2211.07689 v2 (TeX: introduction, Section 2 for the Aharoni-Haxell statement, Section 5 for the three vertex classes, Section 6 for the 3/2 lower bound and Pyber's covering theorem); Conlon, Fox and Sudakov arXiv:1310.0632 (TeX: Lemma 3.1 small-side charging, Lemma 3.2 reservoir set, Lemma 6.3 trimming of path ends); Girão, Granet, Kühn and Osthus arXiv:1911.05501 (TeX: Conjecture 1.14, Proposition 6.3 and its proof). Field state (17 Oct 2026): J. Kim, 'A proof of the Erdős-Gallai cycle decomposition conjecture', arXiv:2610.07840 (v1 6 Oct 2026, v2 9 Oct 2026), an independent proof using a degree potential, near-closed sets and robust sublinear expanders; only its abstract and method summary were read.",
+    "exact_checks": "Python (plan/checks_20261017/erdos_gallai_check.py, output erdos_gallai_check.out, 17 Oct 2026): 146,844 checks, 0 problems. Lovász's construction implemented step by step, with the paths U(h) chosen at random, on all 33,867 graphs with at most 6 vertices (graphs with at most 5 vertices twice) and on 3,000 random graphs with 7 to 11 vertices; every output checked as a decomposition into paths and cycles of size at most floor(sigma/2); all cases occurred, among them 721 paths chosen by one vertex of H' while ending at two. The path corollary with at most two ends at every vertex on the same graphs; complete graphs K_3 to K_11 (the odd ones into Hamiltonian cycles). Haxell's alternating-tree procedure on 210 random hypergraph families satisfying the condition (checked by brute force over all index sets), with the size bound of Lemma 2.2 and the strict decrease of the signature checked at every step; the case s = 1 compared with Hall's condition on 200 random families. Pair folding: the pairing probabilities for m = 4 to 9 by exhaustive enumeration in exact fractions, and 4/7 + 16/35 + 16/49 = 332/245 < 2. Constants: theta^K <= e^-10, 1.02 theta^K < 0.001, theta^(K+1) < 0.001, log(4/3) > 1/16, the Chernoff exponents, 1/100 - 1/6 = -47/300, delta = 1/sqrt(0.3) - 1 > 0.82, the geometric sum of theta^t at most 20, e^x <= 1 + 2x on [0, 1/2], floor(m/2) >= m/3, log2(1 + x) >= x on [0, 1], and the exponent identities 0.68, 0.54, 0.78, 0.12, -0.04, -0.16, -0.87, -0.15.",
+    "lint": "gp_lint.py (scratch): headings, provenance line, banned wording, balanced TeX delimiters, sibling links; 0 problems. check_spaces.py: 0 suspects.",
+    "layout": "Tested on 17 Oct 2026 with the site's MathJax at 375 px against the 328 px text column (288 px in lists) before staging: 55 formulas of the first draft were rewritten (displays set on several lines, chains split by words, conditions moved into the text), and two more after the first staging. Measured in the staged reader on 17 Oct 2026: the eight lessons have 399, 234, 307, 235, 262, 186, 359 and 371 formulas (2,353 in all), 0 rendering errors, 0 formulas wider than the column, no sideways page scroll."
+  },
+  "open_obligations": [
+    "(GGKO) A. Girão, B. Granet, D. Kühn and D. Osthus, Path and cycle decompositions of dense graphs, arXiv:1911.05501, Proposition 6.3 (the implication from the Erdős-Gallai conjecture to their Conjecture 1.14): if every graph with N vertices has a cycle-and-edge partition with at most cN members, then for all delta, p > 0 there are epsilon > 0 and n_0 such that every Eulerian graph on n >= n_0 vertices in which every partition V = A u B with |A|, |B| >= epsilon n has e(A, B) >= p|A||B| decomposes into at most Delta/2 + delta n cycles. Used only in Corollary 7.2(2) of the last lesson.",
+    "The sharper condition of Aharoni and Haxell (a matching with more than s(|I|-1) edges suffices) is stated in the second lesson for comparison only; the course proves and uses Haxell's condition with (2s-1)(|I|-1).",
+    "The manuscript reports a formal verification in Lean (lean/docs/181.md of the OpenAI repository); the Lean files were not read, and the course does not depend on them.",
+    "The lessons were written and checked by one model in one session; they have not been checked by a second reader."
+  ],
+  "free_sources": [
+    "OpenAI, A linear cycle-and-edge decomposition of every graph (OpenAI Math Release preprint, 24 Sep 2026)",
+    "L. Lovász, On covering of graphs, in P. Erdős and G. Katona (eds.), Theory of Graphs, Proceedings of the Colloquium held at Tihany, Hungary, September 1966, Akadémiai Kiadó, Budapest, 1968, 231-236; scanned proceedings at https://real-eod.mtak.hu/14547/",
+    "P. Erdős, A. W. Goodman and L. Pósa, The representation of a graph by set intersections, Canadian Journal of Mathematics 18 (1966), 106-112; https://www.renyi.hu/~p_erdos/1966-21.pdf",
+    "D. Conlon, J. Fox and B. Sudakov, Cycle packing, arXiv:1310.0632",
+    "M. Bucić and R. Montgomery, Towards the Erdős-Gallai cycle decomposition conjecture, arXiv:2211.07689",
+    "J. Kim, A proof of the Erdős-Gallai cycle decomposition conjecture, arXiv:2610.07840",
+    "A. Girão, B. Granet, D. Kühn and D. Osthus, Path and cycle decompositions of dense graphs, arXiv:1911.05501",
+    "C. Annamalai, Finding perfect matchings in bipartite hypergraphs, arXiv:1509.07007",
+    "C. M. Grinstead and J. L. Snell, Introduction to Probability (core course Probability), https://math.dartmouth.edu/~prob/prob/prob.pdf"
+  ]
+}

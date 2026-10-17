@@ -1,0 +1,211 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Splitting a graph at a scale</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Erdős–Gallai cycle decomposition theorem)</a><a href="routing-in-graphs-with-cut-expansion.html">Previous lesson</a><a href="random-sampling-in-expanding-graphs.html">Next lesson</a><a href="src/splitting-a-graph-at-a-scale.md">Editable source</a></nav><main><article><h1 id="splitting-a-graph-at-a-scale">Splitting a graph at a scale</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The proof of the cycle decomposition theorem looks at a graph at a sequence of decreasing <em>scales</em> <span class="math" data-tex="\(D\)">\(D\)</span>. At one scale, a graph of average degree at most <span class="math" data-tex="\(D\)">\(D\)</span> is treated in two operations. First, a few long cycles are removed, and the remaining edges are distributed over <em>boxes</em>: vertex sets of order at most <span class="math" data-tex="\(D^{1.02}\)">\(D^{1.02}\)</span> that may overlap, but whose orders add up to only slightly more than the order of the graph. Second, inside every box, vertex-disjoint <em>pieces</em> of cut expansion <span class="math" data-tex="\(D^{0.90}\)">\(D^{0.90}\)</span> are extracted; what remains in the box has average degree at most <span class="math" data-tex="\(D^{0.95}\)">\(D^{0.95}\)</span> and is passed to the next scale. This lesson proves that both operations are possible. The overlapping split adapts the expander splitting of Bucić and Montgomery [BM, Section 3], and the extraction of pieces uses the small-side charging of Conlon, Fox and Sudakov [CFS, Section 3].</p>
+<p>All logarithms are to base two. Cut expansion is defined in <a href="routing-in-graphs-with-cut-expansion.html">Routing in graphs with cut expansion</a>, Definition 1.1. For a vertex set <span class="math" data-tex="\(U\)">\(U\)</span> of a graph <span class="math" data-tex="\(H\)">\(H\)</span>, write <span class="math" data-tex="\(N_H(U)\)">\(N_H(U)\)</span> for the set of vertices adjacent to some vertex of <span class="math" data-tex="\(U\)">\(U\)</span>; the <em>external neighbours</em> of <span class="math" data-tex="\(U\)">\(U\)</span> are the vertices of <span class="math" data-tex="\(N_H(U)\setminus U\)">\(N_H(U)\setminus U\)</span>.</p>
+<h2 id="1-a-long-cycle-from-vertex-expansion">1. A long cycle from vertex expansion</h2>
+<p><strong>Lemma 1.1</strong> (vertex expansion gives a long cycle). Put <span class="math" data-tex="\(\varepsilon=1/32\)">\(\varepsilon=1/32\)</span>. For every sufficiently large integer <span class="math" data-tex="\(u\)">\(u\)</span>, with <span class="math" data-tex="\(\alpha=\varepsilon/\log^2u\)">\(\alpha=\varepsilon/\log^2u\)</span>, the following holds. If a graph <span class="math" data-tex="\(H\)">\(H\)</span> of order <span class="math" data-tex="\(u\)">\(u\)</span> satisfies
+<span class="math math-display" data-tex="\[
+|N_H(U)\setminus U|\ge\alpha|U|
+\]">\[
+|N_H(U)\setminus U|\ge\alpha|U|
+\]</span>
+for every <span class="math" data-tex="\(U\subseteq V(H)\)">\(U\subseteq V(H)\)</span> with <span class="math" data-tex="\(0&lt;|U|\le u/2\)">\(0&lt;|U|\le u/2\)</span>, then <span class="math" data-tex="\(H\)">\(H\)</span> contains a cycle of length greater than
+<span class="math math-display" data-tex="\[
+q(u)=\frac{\alpha^2u}{100}=\frac{\varepsilon^2u}{100\log^4u}.
+\]">\[
+q(u)=\frac{\alpha^2u}{100}=\frac{\varepsilon^2u}{100\log^4u}.
+\]</span></p>
+<p><em>Proof.</em> Take <span class="math" data-tex="\(u\)">\(u\)</span> so large that <span class="math" data-tex="\(q(u)\ge1\)">\(q(u)\ge1\)</span>; also <span class="math" data-tex="\(\alpha\le1\)">\(\alpha\le1\)</span>. The graph <span class="math" data-tex="\(H\)">\(H\)</span> is connected: otherwise its smallest component has between <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(u/2\)">\(u/2\)</span> vertices and no external neighbours.</p>
+<p><em>Depth-first search.</em> At every moment the vertices are divided into <em>unexplored</em> vertices, vertices on a <em>stack</em>, and <em>finished</em> vertices. Initially the stack holds one vertex and all others are unexplored. In each step, if the top vertex of the stack has an unexplored neighbour, push one such neighbour onto the stack; otherwise remove the top vertex and mark it finished. Every pushed vertex is adjacent to the previous top, so the stack, read from bottom to top, is a path. No edge joins a finished vertex to an unexplored one: when a vertex is finished it has no unexplored neighbour, and the unexplored set only shrinks afterwards. If the stack became empty while unexplored vertices remained, connectivity would give an edge between a finished and an unexplored vertex; so the search ends with all vertices finished.</p>
+<p>The number of unexplored vertices minus the number of finished vertices starts at <span class="math" data-tex="\(u-1\)">\(u-1\)</span>, ends at <span class="math" data-tex="\(-u\)">\(-u\)</span>, and decreases by exactly one in every step. So at some moment both numbers equal the same integer <span class="math" data-tex="\(t\)">\(t\)</span>. The stack then holds <span class="math" data-tex="\(L=u-2t\)">\(L=u-2t\)</span> vertices, forming a path <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>. If <span class="math" data-tex="\(t\ge u/3\)">\(t\ge u/3\)</span>, the unexplored set has <span class="math" data-tex="\(t\)">\(t\)</span> vertices, <span class="math" data-tex="\(0&lt;t\le u/2\)">\(0&lt;t\le u/2\)</span>, and all its external neighbours lie on <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>; so <span class="math" data-tex="\(L\ge\alpha t\ge\alpha u/3\)">\(L\ge\alpha t\ge\alpha u/3\)</span>. If <span class="math" data-tex="\(t&lt;u/3\)">\(t&lt;u/3\)</span>, then <span class="math" data-tex="\(L&gt;u/3\ge\alpha u/3\)">\(L&gt;u/3\ge\alpha u/3\)</span>. In both cases
+<span class="math math-display" data-tex="\[
+L\ge\frac{\alpha u}3 .
+\]">\[
+L\ge\frac{\alpha u}3 .
+\]</span></p>
+<p><em>Three segments.</em> Write <span class="math" data-tex="\(q=q(u)\)">\(q=q(u)\)</span> and <span class="math" data-tex="\(j=\lfloor q\rfloor\ge1\)">\(j=\lfloor q\rfloor\ge1\)</span>. Then
+<span class="math math-display" data-tex="\[
+j+1\le2q=\frac{\alpha^2u}{50}\le\frac{\alpha u}6\le\frac L2 .
+\]">\[
+j+1\le2q=\frac{\alpha^2u}{50}\le\frac{\alpha u}6\le\frac L2 .
+\]</span>
+Divide <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> into three consecutive segments <span class="math" data-tex="\(X,J,Z\)">\(X,J,Z\)</span> with <span class="math" data-tex="\(|J|=j\)">\(|J|=j\)</span>, distributing the other <span class="math" data-tex="\(L-j\)">\(L-j\)</span> vertices as evenly as possible. Then <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span> each have at least <span class="math" data-tex="\(\lfloor(L-j)/2\rfloor\ge(L-j-1)/2\ge L/4\)">\(\lfloor(L-j)/2\rfloor\ge(L-j-1)/2\ge L/4\)</span> vertices, the last step because <span class="math" data-tex="\(L\ge2j+2\)">\(L\ge2j+2\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(H-J\)">\(H-J\)</span> contains a path from <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(Z\)">\(Z\)</span>, and take a shortest one, from <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> to <span class="math" data-tex="\(z\in Z\)">\(z\in Z\)</span>. Its inner vertices avoid <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span>, since a shorter path between the two sets would otherwise exist, and they avoid <span class="math" data-tex="\(J\)">\(J\)</span>. So it meets <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> only at <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span>, and together with the segment of <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> between <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span> it forms a cycle. That segment contains all <span class="math" data-tex="\(j\)">\(j\)</span> vertices of <span class="math" data-tex="\(J\)">\(J\)</span> and has at least <span class="math" data-tex="\(j+1\)">\(j+1\)</span> edges, and the connecting path has at least one; the cycle has at least <span class="math" data-tex="\(j+2&gt;q\)">\(j+2&gt;q\)</span> edges.</p>
+<p>Otherwise <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span>, each connected along <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>, lie in different components of <span class="math" data-tex="\(H-J\)">\(H-J\)</span>. Let <span class="math" data-tex="\(C\)">\(C\)</span> be the component containing <span class="math" data-tex="\(X\)">\(X\)</span>, let <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> be the union of the other components, which contains <span class="math" data-tex="\(Z\)">\(Z\)</span>, and let <span class="math" data-tex="\(A\)">\(A\)</span> be the smaller of <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac L4\le|A|\le\frac{u-j}2\le\frac u2,\\
+N_H(A)\setminus A\subseteq J .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac L4\le|A|\le\frac{u-j}2\le\frac u2,\\
+N_H(A)\setminus A\subseteq J .
+\end{gathered}
+\]</span>
+The hypothesis gives
+<span class="math math-display" data-tex="\[
+j\ge\alpha|A|\ge\frac{\alpha L}4\ge\frac{\alpha^2u}{12}&gt;q\ge j,
+\]">\[
+j\ge\alpha|A|\ge\frac{\alpha L}4\ge\frac{\alpha^2u}{12}&gt;q\ge j,
+\]</span>
+a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-splitting-lemma">2. The splitting lemma</h2>
+<p><strong>Lemma 2.1</strong> (splitting at a scale). There is an absolute constant <span class="math" data-tex="\(D_{\rm sp}\)">\(D_{\rm sp}\)</span> such that for every real <span class="math" data-tex="\(D\ge D_{\rm sp}\)">\(D\ge D_{\rm sp}\)</span> and every graph <span class="math" data-tex="\(G\)">\(G\)</span> on a nonempty vertex set of order <span class="math" data-tex="\(N\)">\(N\)</span> with average degree at most <span class="math" data-tex="\(D\)">\(D\)</span>, the following two operations can be carried out one after the other.</p>
+<ol>
+<li>Remove a family <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of edge-disjoint cycles, each of length at least <span class="math" data-tex="\(D^{1.01}\)">\(D^{1.01}\)</span>, with
+<span class="math math-display" data-tex="\[
+|\mathcal C|\le\frac N{2D^{0.01}} .
+\]">\[
+|\mathcal C|\le\frac N{2D^{0.01}} .
+\]</span>
+Partition the remaining edges into graphs <span class="math" data-tex="\(G_Y\)">\(G_Y\)</span> on an indexed family <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span> of vertex sets, the <em>boxes</em>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bigcup_{Y\in\mathcal Y}Y=V(G),\\
+1\le|Y|\le D^{1.02},\\
+\sum_{Y\in\mathcal Y}|Y|\le\Bigl(1+\frac2{\log D}\Bigr)N .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\bigcup_{Y\in\mathcal Y}Y=V(G),\\
+1\le|Y|\le D^{1.02},\\
+\sum_{Y\in\mathcal Y}|Y|\le\Bigl(1+\frac2{\log D}\Bigr)N .
+\end{gathered}
+\]</span>
+Each <span class="math" data-tex="\(G_Y\)">\(G_Y\)</span> has vertex set <span class="math" data-tex="\(Y\)">\(Y\)</span> and carries only its assigned edges; boxes may overlap.</li>
+<li>Put <span class="math" data-tex="\(\sigma=D^{0.90}\)">\(\sigma=D^{0.90}\)</span>. For every box <span class="math" data-tex="\(Y\)">\(Y\)</span>, partition <span class="math" data-tex="\(E(G_Y)\)">\(E(G_Y)\)</span> into the edge sets of a family <span class="math" data-tex="\(\mathcal R_Y\)">\(\mathcal R_Y\)</span> of graphs <span class="math" data-tex="\(R\)">\(R\)</span>, the <em>pieces</em>, and a graph <span class="math" data-tex="\(H_Y\)">\(H_Y\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>, the <em>residual</em>. The pieces have pairwise disjoint vertex sets contained in <span class="math" data-tex="\(Y\)">\(Y\)</span>, cut expansion at least <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and order
+<span class="math math-display" data-tex="\[
+\sigma\le|V(R)|\le D^{1.02},
+\]">\[
+\sigma\le|V(R)|\le D^{1.02},
+\]</span>
+and the residual satisfies
+<span class="math math-display" data-tex="\[
+\frac{2|E(H_Y)|}{|Y|}\le D^{0.95}.
+\]">\[
+\frac{2|E(H_Y)|}{|Y|}\le D^{0.95}.
+\]</span></li>
+</ol>
+<p>So the cycles of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, the pieces and the residuals together partition <span class="math" data-tex="\(E(G)\)">\(E(G)\)</span>.</p>
+<p><em>Proof.</em> The lower bounds imposed on <span class="math" data-tex="\(D\)">\(D\)</span> below are absolute, and <span class="math" data-tex="\(D_{\rm sp}\)">\(D_{\rm sp}\)</span> is chosen to satisfy all of them.</p>
+<p><em>Long cycles.</em> Choose a maximal family <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of edge-disjoint cycles of length at least <span class="math" data-tex="\(D^{1.01}\)">\(D^{1.01}\)</span>. They use at least <span class="math" data-tex="\(|\mathcal C|D^{1.01}\)">\(|\mathcal C|D^{1.01}\)</span> of the at most <span class="math" data-tex="\(ND/2\)">\(ND/2\)</span> edges, which gives the bound on <span class="math" data-tex="\(|\mathcal C|\)">\(|\mathcal C|\)</span>. Delete their edges and keep all vertices. By maximality the remaining graph has no cycle of length at least <span class="math" data-tex="\(D^{1.01}\)">\(D^{1.01}\)</span>, and neither has any subgraph of it formed below.</p>
+<p><em>Sparse external neighbourhoods.</em> Put <span class="math" data-tex="\(T=D^{1.02}\)">\(T=D^{1.02}\)</span>. We claim that every graph <span class="math" data-tex="\(H\)">\(H\)</span> formed below, of order <span class="math" data-tex="\(u&gt;T\)">\(u&gt;T\)</span>, has a nonempty vertex set <span class="math" data-tex="\(U\)">\(U\)</span> with
+<span class="math math-display" data-tex="\[
+|U|\le\frac u2,\qquad|N_H(U)\setminus U|&lt;\frac{\varepsilon|U|}{\log^2u}.
+\]">\[
+|U|\le\frac u2,\qquad|N_H(U)\setminus U|&lt;\frac{\varepsilon|U|}{\log^2u}.
+\]</span>
+Otherwise Lemma 1.1 gives a cycle of length greater than <span class="math" data-tex="\(q(u)\)">\(q(u)\)</span>. The function <span class="math" data-tex="\(x/\log^4x\)">\(x/\log^4x\)</span> increases for <span class="math" data-tex="\(\ln x&gt;4\)">\(\ln x&gt;4\)</span>, as differentiation shows, and
+<span class="math math-display" data-tex="\[
+\frac{q(T)}{D^{1.01}}=\frac{\varepsilon^2}{100\cdot1.02^4}\cdot\frac{D^{0.01}}{\log^4D}
+\]">\[
+\frac{q(T)}{D^{1.01}}=\frac{\varepsilon^2}{100\cdot1.02^4}\cdot\frac{D^{0.01}}{\log^4D}
+\]</span>
+tends to infinity with <span class="math" data-tex="\(D\)">\(D\)</span>. Choose <span class="math" data-tex="\(D_{\rm sp}\)">\(D_{\rm sp}\)</span> so large that <span class="math" data-tex="\(T\)">\(T\)</span> lies in the range of Lemma 1.1, <span class="math" data-tex="\(\ln T&gt;4\)">\(\ln T&gt;4\)</span> and <span class="math" data-tex="\(q(T)&gt;D^{1.01}\)">\(q(T)&gt;D^{1.01}\)</span>. Then <span class="math" data-tex="\(q(u)&gt;D^{1.01}\)">\(q(u)&gt;D^{1.01}\)</span> for all <span class="math" data-tex="\(u&gt;T\)">\(u&gt;T\)</span>, and the long cycle is impossible.</p>
+<p><em>Overlapping splits.</em> For such a set <span class="math" data-tex="\(U\)">\(U\)</span> put <span class="math" data-tex="\(B=N_H(U)\setminus U\)">\(B=N_H(U)\setminus U\)</span> and form two <em>children</em> with vertex sets
+<span class="math math-display" data-tex="\[
+V_1=U\cup B,\qquad V_2=V(H)\setminus U .
+\]">\[
+V_1=U\cup B,\qquad V_2=V(H)\setminus U .
+\]</span>
+Assign to the first child every edge of <span class="math" data-tex="\(H\)">\(H\)</span> with both ends in <span class="math" data-tex="\(V_1\)">\(V_1\)</span>, and to the second child every other edge. An edge at a vertex of <span class="math" data-tex="\(U\)">\(U\)</span> has both ends in <span class="math" data-tex="\(U\cup B\)">\(U\cup B\)</span>, so every edge of the second child has both ends in <span class="math" data-tex="\(V_2\)">\(V_2\)</span>. The children's vertex sets cover <span class="math" data-tex="\(V(H)\)">\(V(H)\)</span> and meet exactly in <span class="math" data-tex="\(B\)">\(B\)</span>, and their edge sets partition <span class="math" data-tex="\(E(H)\)">\(E(H)\)</span>. Isolated vertices of the children are kept.</p>
+<p>Write <span class="math" data-tex="\(s=|U|\)">\(s=|U|\)</span>, <span class="math" data-tex="\(b=|B|\)">\(b=|B|\)</span>, <span class="math" data-tex="\(u_1=s+b\)">\(u_1=s+b\)</span> and <span class="math" data-tex="\(u_2=u-s\)">\(u_2=u-s\)</span>. Then <span class="math" data-tex="\(1\le s\le u/2\)">\(1\le s\le u/2\)</span> and <span class="math" data-tex="\(b&lt;\varepsilon s/\log^2u\le s/2\)">\(b&lt;\varepsilon s/\log^2u\le s/2\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+1\le u_1\le\frac{3u}4,\qquad1\le u_2&lt;u,\\
+u_1+u_2=u+b\le u+\frac{\varepsilon u_1}{\log^2u}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+1\le u_1\le\frac{3u}4,\qquad1\le u_2&lt;u,\\
+u_1+u_2=u+b\le u+\frac{\varepsilon u_1}{\log^2u}.
+\end{gathered}
+\]</span>
+Split every graph of order greater than <span class="math" data-tex="\(T\)">\(T\)</span>, starting with the remaining graph on <span class="math" data-tex="\(V(G)\)">\(V(G)\)</span>. Child orders are positive integers smaller than the parent order, so the binary tree of splits is finite. Its leaves are the boxes, with the graphs <span class="math" data-tex="\(G_Y\)">\(G_Y\)</span> formed by their assigned edges. The cover property at every split gives <span class="math" data-tex="\(\bigcup_YY=V(G)\)">\(\bigcup_YY=V(G)\)</span>, and the boxes have order at most <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><em>The total order of the boxes.</em> For real <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(x)&amp;=1+\frac1{\log(T/2)}\\
+&amp;\quad-\frac1{\log\max\{x,T/2\}} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(x)&amp;=1+\frac1{\log(T/2)}\\
+&amp;\quad-\frac1{\log\max\{x,T/2\}} .
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(T\ge4\)">\(T\ge4\)</span> the function <span class="math" data-tex="\(f\)">\(f\)</span> is nondecreasing, and <span class="math" data-tex="\(1\le f\le1+1/\log(T/2)\le2\)">\(1\le f\le1+1/\log(T/2)\le2\)</span>. At a split of a graph of order <span class="math" data-tex="\(u&gt;T\)">\(u&gt;T\)</span>, put <span class="math" data-tex="\(M=\max\{u_1,T/2\}\)">\(M=\max\{u_1,T/2\}\)</span>; then <span class="math" data-tex="\(2\le M\le3u/4\)">\(2\le M\le3u/4\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(u)-f(u_1)&amp;=\frac1{\log M}-\frac1{\log u}\\
+&amp;=\frac{\log(u/M)}{\log M\,\log u}\\
+&amp;\ge\frac{\log(4/3)}{\log^2u}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(u)-f(u_1)&amp;=\frac1{\log M}-\frac1{\log u}\\
+&amp;=\frac{\log(u/M)}{\log M\,\log u}\\
+&amp;\ge\frac{\log(4/3)}{\log^2u}.
+\end{aligned}
+\]</span>
+Also <span class="math" data-tex="\(f(u_2)\le f(u)\)">\(f(u_2)\le f(u)\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;u_1f(u_1)+u_2f(u_2)\\
+&amp;\quad\le(u_1+u_2)f(u)-\frac{u_1\log(4/3)}{\log^2u}\\
+&amp;\quad\le uf(u)+\frac{u_1(\varepsilon f(u)-\log(4/3))}{\log^2u}\\
+&amp;\quad\le uf(u),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;u_1f(u_1)+u_2f(u_2)\\
+&amp;\quad\le(u_1+u_2)f(u)-\frac{u_1\log(4/3)}{\log^2u}\\
+&amp;\quad\le uf(u)+\frac{u_1(\varepsilon f(u)-\log(4/3))}{\log^2u}\\
+&amp;\quad\le uf(u),
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(\varepsilon f(u)\le1/16&lt;\log(4/3)\)">\(\varepsilon f(u)\le1/16&lt;\log(4/3)\)</span>. Applying this at every split of the tree, from the leaves upwards, and using <span class="math" data-tex="\(f\ge1\)">\(f\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{Y}|Y|&amp;\le\sum_Y|Y|f(|Y|)\le Nf(N)\\
+&amp;\le N\Bigl(1+\frac1{\log(T/2)}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{Y}|Y|&amp;\le\sum_Y|Y|f(|Y|)\le Nf(N)\\
+&amp;\le N\Bigl(1+\frac1{\log(T/2)}\Bigr).
+\end{aligned}
+\]</span>
+This also holds if <span class="math" data-tex="\(N\le T\)">\(N\le T\)</span>, when the tree is a single box. Finally <span class="math" data-tex="\(1/\log(T/2)=1/(1.02\log D-1)\)">\(1/\log(T/2)=1/(1.02\log D-1)\)</span>, which is at most <span class="math" data-tex="\(2/\log D\)">\(2/\log D\)</span> for <span class="math" data-tex="\(D\ge4\)">\(D\ge4\)</span>. This proves the first operation.</p>
+<p><em>Pieces.</em> Fix a box <span class="math" data-tex="\(Y\)">\(Y\)</span>, write <span class="math" data-tex="\(y=|Y|\)">\(y=|Y|\)</span>, and start with <span class="math" data-tex="\(G_Y\)">\(G_Y\)</span>. As long as some current graph, on a vertex set <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(|A|\ge2\)">\(|A|\ge2\)</span>, fails to have cut expansion <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, choose a partition <span class="math" data-tex="\(A=A_1\cup A_2\)">\(A=A_1\cup A_2\)</span> into nonempty sets whose cut has fewer than <span class="math" data-tex="\(\sigma\min\{|A_1|,|A_2|\}\)">\(\sigma\min\{|A_1|,|A_2|\}\)</span> edges. Put these cut edges into <span class="math" data-tex="\(H_Y\)">\(H_Y\)</span>, and continue separately with the edges inside <span class="math" data-tex="\(A_1\)">\(A_1\)</span> and inside <span class="math" data-tex="\(A_2\)">\(A_2\)</span>. Orders decrease, so the procedure stops, and the final vertex sets partition <span class="math" data-tex="\(Y\)">\(Y\)</span>. The final graphs on at least two vertices are the pieces; each has cut expansion at least <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. By Lemma 1.2 of <a href="routing-in-graphs-with-cut-expansion.html">Routing in graphs with cut expansion</a>, a piece of order <span class="math" data-tex="\(r\)">\(r\)</span> has <span class="math" data-tex="\(r-1\ge\sigma\)">\(r-1\ge\sigma\)</span>, so <span class="math" data-tex="\(\sigma\le r\le y\le D^{1.02}\)">\(\sigma\le r\le y\le D^{1.02}\)</span>. Final single vertices carry no edges. Every edge not put into <span class="math" data-tex="\(H_Y\)">\(H_Y\)</span> ends in exactly one final graph, so the pieces and <span class="math" data-tex="\(H_Y\)">\(H_Y\)</span> partition <span class="math" data-tex="\(E(G_Y)\)">\(E(G_Y)\)</span>; the residual <span class="math" data-tex="\(H_Y\)">\(H_Y\)</span> is taken on all of <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>To bound <span class="math" data-tex="\(|E(H_Y)|\)">\(|E(H_Y)|\)</span>, charge the cut edges of each split equally to the vertices of a smaller side. Each charged vertex receives less than <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> at that split. Whenever a vertex is charged, the current set containing it shrinks at least by half, so a vertex is charged at most <span class="math" data-tex="\(\log y\)">\(\log y\)</span> times. The cut edges of different splits are distinct, because later splits use only edges inside an earlier child. Hence
+<span class="math math-display" data-tex="\[
+|E(H_Y)|\le\sigma y\log y,
+\]">\[
+|E(H_Y)|\le\sigma y\log y,
+\]</span>
+and, for <span class="math" data-tex="\(1\le y\le D^{1.02}\)">\(1\le y\le D^{1.02}\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> large,
+<span class="math math-display" data-tex="\[
+\frac{2|E(H_Y)|}y\le2.04D^{0.90}\log D\le D^{0.95}.
+\]">\[
+\frac{2|E(H_Y)|}y\le2.04D^{0.90}\log D\le D^{0.95}.
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 2.2.</strong> If both operations are repeated on the residuals, the boxes descending from a fixed box cover all its vertices: every split covers its parent, and every residual <span class="math" data-tex="\(H_Y\)">\(H_Y\)</span> keeps the whole vertex set <span class="math" data-tex="\(Y\)">\(Y\)</span>, whichever of its edges were removed as cycles or pieces.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1</strong> (easy). Show that in Lemma 1.1 the hypothesis cannot be dropped: a star with <span class="math" data-tex="\(u\)">\(u\)</span> vertices has no cycle at all. Which sets <span class="math" data-tex="\(U\)">\(U\)</span> violate the hypothesis?</p>
+<p><strong>3.2</strong> (medium). Let <span class="math" data-tex="\(H\)">\(H\)</span> be a graph whose longest cycle has length at most <span class="math" data-tex="\(m\)">\(m\)</span>. Show that <span class="math" data-tex="\(H\)">\(H\)</span> has a vertex set <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(0&lt;|U|\le|V(H)|/2\)">\(0&lt;|U|\le|V(H)|/2\)</span> and <span class="math" data-tex="\(|N_H(U)\setminus U|&lt;\alpha|U|\)">\(|N_H(U)\setminus U|&lt;\alpha|U|\)</span> whenever <span class="math" data-tex="\(m\le q(|V(H)|)\)">\(m\le q(|V(H)|)\)</span> and <span class="math" data-tex="\(|V(H)|\)">\(|V(H)|\)</span> is large.</p>
+<p><strong>3.3</strong> (easy). Show that the inequality <span class="math" data-tex="\(u_1f(u_1)+u_2f(u_2)\le uf(u)\)">\(u_1f(u_1)+u_2f(u_2)\le uf(u)\)</span> is strict at every split.</p>
+<p><strong>3.4</strong> (easy). Show that the pieces produced in a box have order at least <span class="math" data-tex="\(\sigma+1\)">\(\sigma+1\)</span>.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> In a star with centre <span class="math" data-tex="\(c\)">\(c\)</span>, a set <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(\lfloor u/2\rfloor\)">\(\lfloor u/2\rfloor\)</span> leaves has the single external neighbour <span class="math" data-tex="\(c\)">\(c\)</span>. The hypothesis would require at least <span class="math" data-tex="\(\alpha\lfloor u/2\rfloor\)">\(\alpha\lfloor u/2\rfloor\)</span> external neighbours, and <span class="math" data-tex="\(\alpha u/2=u/(64\log^2u)\)">\(\alpha u/2=u/(64\log^2u)\)</span> exceeds one for large <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>3.2.</strong> This is the contrapositive of Lemma 1.1: if every such <span class="math" data-tex="\(U\)">\(U\)</span> had at least <span class="math" data-tex="\(\alpha|U|\)">\(\alpha|U|\)</span> external neighbours, <span class="math" data-tex="\(H\)">\(H\)</span> would contain a cycle longer than <span class="math" data-tex="\(q(|V(H)|)\ge m\)">\(q(|V(H)|)\ge m\)</span>.</p>
+<p><strong>3.3.</strong> The last step of the chain drops the term <span class="math" data-tex="\(u_1(\varepsilon f(u)-\log(4/3))/\log^2u\)">\(u_1(\varepsilon f(u)-\log(4/3))/\log^2u\)</span>. It is negative, because <span class="math" data-tex="\(u_1\ge1\)">\(u_1\ge1\)</span> and <span class="math" data-tex="\(\varepsilon f(u)\le1/16&lt;\log(4/3)\)">\(\varepsilon f(u)\le1/16&lt;\log(4/3)\)</span>.</p>
+<p><strong>3.4.</strong> By Lemma 1.2 of the routing lesson, every vertex of a piece of order <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> has at least <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> neighbours, and a vertex has at most <span class="math" data-tex="\(r-1\)">\(r-1\)</span> neighbours, so <span class="math" data-tex="\(r\ge\sigma+1\)">\(r\ge\sigma+1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[BM] M. Bucić and R. Montgomery, <em>Towards the Erdős–Gallai cycle decomposition conjecture</em>, Advances in Mathematics 437 (2024), 109434; arXiv:2211.07689. https://arxiv.org/abs/2211.07689</li>
+<li>[CFS] D. Conlon, J. Fox and B. Sudakov, <em>Cycle packing</em>, Random Structures &amp; Algorithms 45 (2014), 608–626; arXiv:1310.0632. https://arxiv.org/abs/1310.0632</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

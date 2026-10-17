@@ -1,0 +1,191 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Routing in graphs with cut expansion</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The Erdős–Gallai cycle decomposition theorem)</a><a href="disjoint-representatives-in-hypergraphs.html">Previous lesson</a><a href="splitting-a-graph-at-a-scale.html">Next lesson</a><a href="src/routing-in-graphs-with-cut-expansion.md">Editable source</a></nav><main><article><h1 id="routing-in-graphs-with-cut-expansion">Routing in graphs with cut expansion</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>In the proof of the cycle decomposition theorem, paths are closed into cycles and the cycles of smaller graphs are lifted to the original graph. Both operations need many connecting paths at once: short, pairwise edge-disjoint, avoiding prescribed vertices, and with disjoint inner vertices whenever several of them become parts of one cycle. This lesson proves that a graph with good cut expansion supplies all of them simultaneously. The proof encodes paths as hypergraph edges and applies Haxell's condition from <a href="disjoint-representatives-in-hypergraphs.html">Disjoint representatives in hypergraphs</a>; the method of encoding and of verifying the condition by ball growth is that of Bucić and Montgomery [BM, Section 2].</p>
+<p>All logarithms are to base two.</p>
+<h2 id="1-cut-expansion">1. Cut expansion</h2>
+<p>For a graph <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(U\subseteq V(P)\)">\(U\subseteq V(P)\)</span>, let <span class="math" data-tex="\(\partial_PU\)">\(\partial_PU\)</span> be the set of edges with one end in <span class="math" data-tex="\(U\)">\(U\)</span> and the other outside <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Definition 1.1.</strong> A graph <span class="math" data-tex="\(P\)">\(P\)</span> of order <span class="math" data-tex="\(r\)">\(r\)</span> has <em>cut expansion at least <span class="math" data-tex="\(h\)">\(h\)</span></em> if
+<span class="math math-display" data-tex="\[
+|\partial_PU|\ge h\min\{|U|,\,r-|U|\}
+\]">\[
+|\partial_PU|\ge h\min\{|U|,\,r-|U|\}
+\]</span>
+for every <span class="math" data-tex="\(U\subseteq V(P)\)">\(U\subseteq V(P)\)</span>.</p>
+<p><strong>Lemma 1.2.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> have order <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> and cut expansion at least <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>. Then every vertex has degree at least <span class="math" data-tex="\(h\)">\(h\)</span>, so <span class="math" data-tex="\(h\le r-1&lt;r\)">\(h\le r-1&lt;r\)</span>, and <span class="math" data-tex="\(P\)">\(P\)</span> is connected.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(U=\{v\}\)">\(U=\{v\}\)</span> the definition gives <span class="math" data-tex="\(d_P(v)\ge h\)">\(d_P(v)\ge h\)</span>; a vertex of a simple graph has at most <span class="math" data-tex="\(r-1\)">\(r-1\)</span> neighbours. If <span class="math" data-tex="\(P\)">\(P\)</span> were disconnected, a component <span class="math" data-tex="\(U\)">\(U\)</span> would have <span class="math" data-tex="\(\partial_PU=\varnothing\)">\(\partial_PU=\varnothing\)</span> although <span class="math" data-tex="\(\min\{|U|,r-|U|\}\ge1\)">\(\min\{|U|,r-|U|\}\ge1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-demands-teams-and-the-routing-theorem">2. Demands, teams and the routing theorem</h2>
+<p>A <em>demand</em> <span class="math" data-tex="\(p\)">\(p\)</span> asks for a path between two distinct vertices <span class="math" data-tex="\(x_p,y_p\)">\(x_p,y_p\)</span>, its <em>ends</em>. Demands are indexed, so several demands may ask for the same pair. A vertex occurs in at most <span class="math" data-tex="\(k\)">\(k\)</span> demands if it is an end of at most <span class="math" data-tex="\(k\)">\(k\)</span> of them. A partition of the demands into <em>teams</em> is given; <span class="math" data-tex="\(c(p)\)">\(c(p)\)</span> denotes the team of <span class="math" data-tex="\(p\)">\(p\)</span>. Each demand also carries a set <span class="math" data-tex="\(Z_p\)">\(Z_p\)</span> of <em>forbidden</em> vertices, which its path must avoid as inner vertices; <span class="math" data-tex="\(Z_p\)">\(Z_p\)</span> may contain <span class="math" data-tex="\(x_p\)">\(x_p\)</span> or <span class="math" data-tex="\(y_p\)">\(y_p\)</span>.</p>
+<p><strong>Theorem 2.1</strong> (routing). Let <span class="math" data-tex="\(P\)">\(P\)</span> be a graph of order <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> with cut expansion at least <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g=\Bigl\lceil\frac{8r}h\log(2r)\Bigr\rceil,\\
+\ell=2g\bigl(1+\lceil\log r\rceil\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+g=\Bigl\lceil\frac{8r}h\log(2r)\Bigr\rceil,\\
+\ell=2g\bigl(1+\lceil\log r\rceil\bigr).
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be a finite set of demands in <span class="math" data-tex="\(P\)">\(P\)</span>, in which every vertex occurs in at most <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> demands. Let the teams have at most <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span> demands each, and let every forbidden set have at most <span class="math" data-tex="\(z\ge0\)">\(z\ge0\)</span> vertices. If
+<span class="math math-display" data-tex="\[
+h\ge128\bigl(\ell^2(k+b)+z\bigr),
+\]">\[
+h\ge128\bigl(\ell^2(k+b)+z\bigr),
+\]</span>
+then there are paths <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span> from <span class="math" data-tex="\(x_p\)">\(x_p\)</span> to <span class="math" data-tex="\(y_p\)">\(y_p\)</span>, one for every <span class="math" data-tex="\(p\in\mathcal D\)">\(p\in\mathcal D\)</span>, such that:</p>
+<ol>
+<li>each <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span> has length at most <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and no inner vertex in <span class="math" data-tex="\(Z_p\)">\(Z_p\)</span>;</li>
+<li>the paths <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span> are pairwise edge-disjoint;</li>
+<li>paths of the same team have pairwise disjoint sets of inner vertices.</li>
+</ol>
+<p>The proof of [OpenAI-EG] obtains the same conclusion under <span class="math" data-tex="\(h\ge64(\ell^2(k+b)+z)\)">\(h\ge64(\ell^2(k+b)+z)\)</span>, using the sharper hypergraph condition of Aharoni and Haxell. The constant plays no role in the later lessons: in every application, <span class="math" data-tex="\(h\)">\(h\)</span> exceeds <span class="math" data-tex="\(\ell^2(k+b)+z\)">\(\ell^2(k+b)+z\)</span> by a positive power of the scale.</p>
+<p><strong>Corollary 2.2</strong> (length of the paths). Under the hypotheses of Theorem 2.1,
+<span class="math math-display" data-tex="\[
+\ell\le108\,\frac rh\,(\log r)^2 .
+\]">\[
+\ell\le108\,\frac rh\,(\log r)^2 .
+\]</span></p>
+<p><em>Proof.</em> By Lemma 1.2, <span class="math" data-tex="\(h&lt;r\)">\(h&lt;r\)</span>, and <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span>. Hence <span class="math" data-tex="\(\frac rh\log(2r)\ge1\)">\(\frac rh\log(2r)\ge1\)</span>, and
+<span class="math math-display" data-tex="\[
+g\le\frac{8r}h\log(2r)+1\le\frac{9r}h\log(2r).
+\]">\[
+g\le\frac{8r}h\log(2r)+1\le\frac{9r}h\log(2r).
+\]</span>
+Also <span class="math" data-tex="\(\log(2r)=1+\log r\le2\log r\)">\(\log(2r)=1+\log r\le2\log r\)</span> and <span class="math" data-tex="\(1+\lceil\log r\rceil\le2+\log r\le3\log r\)">\(1+\lceil\log r\rceil\le2+\log r\le3\log r\)</span>. Multiplying, <span class="math" data-tex="\(\ell\le2\cdot\frac{9r}h\cdot2\log r\cdot3\log r\)">\(\ell\le2\cdot\frac{9r}h\cdot2\log r\cdot3\log r\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-proof-of-theorem-2-1">3. Proof of Theorem 2.1</h2>
+<p>If <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is empty there is nothing to prove; let it be nonempty.</p>
+<p><strong>3.1. Paths as hypergraph edges.</strong> Take as ground set the disjoint union of <span class="math" data-tex="\(E(P)\)">\(E(P)\)</span> and the <em>tokens</em> <span class="math" data-tex="\((v,c)\)">\((v,c)\)</span>, where <span class="math" data-tex="\(v\in V(P)\)">\(v\in V(P)\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> is a team. To a path <span class="math" data-tex="\(Q\)">\(Q\)</span> serving demand <span class="math" data-tex="\(p\)">\(p\)</span> assign the set <span class="math" data-tex="\(R_p(Q)\)">\(R_p(Q)\)</span> consisting of the edges of <span class="math" data-tex="\(Q\)">\(Q\)</span> and the tokens <span class="math" data-tex="\((v,c(p))\)">\((v,c(p))\)</span> of the inner vertices <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span>. A path of length <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> has <span class="math" data-tex="\(t\)">\(t\)</span> edges and <span class="math" data-tex="\(t-1\)">\(t-1\)</span> inner vertices, so <span class="math" data-tex="\(|R_p(Q)|=2t-1\)">\(|R_p(Q)|=2t-1\)</span>. Let <span class="math" data-tex="\(\mathcal H_p\)">\(\mathcal H_p\)</span> be the hypergraph of all sets <span class="math" data-tex="\(R_p(Q)\)">\(R_p(Q)\)</span>, where <span class="math" data-tex="\(Q\)">\(Q\)</span> runs over the paths from <span class="math" data-tex="\(x_p\)">\(x_p\)</span> to <span class="math" data-tex="\(y_p\)">\(y_p\)</span> of length at most <span class="math" data-tex="\(\ell\)">\(\ell\)</span> with no inner vertex in <span class="math" data-tex="\(Z_p\)">\(Z_p\)</span>. Its edges have at most <span class="math" data-tex="\(2\ell-1\)">\(2\ell-1\)</span> elements.</p>
+<p>Disjoint representatives of <span class="math" data-tex="\((\mathcal H_p)_{p\in\mathcal D}\)">\((\mathcal H_p)_{p\in\mathcal D}\)</span> give paths with the three required properties: disjointness of the edge parts gives (2), and two paths of the same team <span class="math" data-tex="\(c\)">\(c\)</span> sharing an inner vertex <span class="math" data-tex="\(v\)">\(v\)</span> would share the token <span class="math" data-tex="\((v,c)\)">\((v,c)\)</span>, which gives (3). Property (1) holds by the definition of <span class="math" data-tex="\(\mathcal H_p\)">\(\mathcal H_p\)</span>.</p>
+<p>By Theorem 1.1 of <a href="disjoint-representatives-in-hypergraphs.html">Disjoint representatives in hypergraphs</a> with <span class="math" data-tex="\(s=2\ell-1\)">\(s=2\ell-1\)</span>, it suffices to show: for every nonempty <span class="math" data-tex="\(I\subseteq\mathcal D\)">\(I\subseteq\mathcal D\)</span>, the hypergraph <span class="math" data-tex="\(\bigcup_{p\in I}\mathcal H_p\)">\(\bigcup_{p\in I}\mathcal H_p\)</span> has a matching with more than <span class="math" data-tex="\((4\ell-3)(|I|-1)\)">\((4\ell-3)(|I|-1)\)</span> edges. Suppose this fails for some nonempty <span class="math" data-tex="\(I\)">\(I\)</span>, and let <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> be a matching of <span class="math" data-tex="\(\bigcup_{p\in I}\mathcal H_p\)">\(\bigcup_{p\in I}\mathcal H_p\)</span> with the largest number of edges. Then
+<span class="math math-display" data-tex="\[
+|\mathcal M|\le(4\ell-3)(|I|-1)&lt;4\ell|I| .
+\]">\[
+|\mathcal M|\le(4\ell-3)(|I|-1)&lt;4\ell|I| .
+\]</span>
+We derive a contradiction.</p>
+<p><strong>3.2. What the matching uses.</strong> Let <span class="math" data-tex="\(F\subseteq E(P)\)">\(F\subseteq E(P)\)</span> be the set of graph edges occurring in members of <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>, and for every team <span class="math" data-tex="\(c\)">\(c\)</span> let <span class="math" data-tex="\(Y_c\)">\(Y_c\)</span> be the set of vertices <span class="math" data-tex="\(v\)">\(v\)</span> such that the token <span class="math" data-tex="\((v,c)\)">\((v,c)\)</span> occurs in a member of <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>. A member of <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> contains at most <span class="math" data-tex="\(\ell\)">\(\ell\)</span> graph edges and at most <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span> tokens, so
+<span class="math math-display" data-tex="\[
+|F|&lt;4\ell^2|I|,\qquad\sum_c|Y_c|&lt;4\ell^2|I| .
+\]">\[
+|F|&lt;4\ell^2|I|,\qquad\sum_c|Y_c|&lt;4\ell^2|I| .
+\]</span>
+These bounds count every member of <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>, whichever demand it serves.</p>
+<p>For a team <span class="math" data-tex="\(c\)">\(c\)</span> let <span class="math" data-tex="\(m_c\le b\)">\(m_c\le b\)</span> be the number of demands of <span class="math" data-tex="\(I\)">\(I\)</span> in <span class="math" data-tex="\(c\)">\(c\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{p\in I}|Y_{c(p)}|=\sum_cm_c|Y_c|&lt;4b\ell^2|I| .
+\]">\[
+\sum_{p\in I}|Y_{c(p)}|=\sum_cm_c|Y_c|&lt;4b\ell^2|I| .
+\]</span>
+Let <span class="math" data-tex="\(I_1\)">\(I_1\)</span> be the set of <span class="math" data-tex="\(p\in I\)">\(p\in I\)</span> with <span class="math" data-tex="\(|Y_{c(p)}|\le8b\ell^2\)">\(|Y_{c(p)}|\le8b\ell^2\)</span>. Each demand of <span class="math" data-tex="\(I\setminus I_1\)">\(I\setminus I_1\)</span> contributes more than <span class="math" data-tex="\(8b\ell^2\)">\(8b\ell^2\)</span> to the last sum, so <span class="math" data-tex="\(|I\setminus I_1|&lt;|I|/2\)">\(|I\setminus I_1|&lt;|I|/2\)</span> and <span class="math" data-tex="\(|I_1|&gt;|I|/2\)">\(|I_1|&gt;|I|/2\)</span>.</p>
+<p>Choose a set <span class="math" data-tex="\(I_2\subseteq I_1\)">\(I_2\subseteq I_1\)</span> of demands whose end pairs are pairwise disjoint, maximal under inclusion. Every demand of <span class="math" data-tex="\(I_1\)">\(I_1\)</span> shares an end with some demand of <span class="math" data-tex="\(I_2\)">\(I_2\)</span>. The two ends of a demand of <span class="math" data-tex="\(I_2\)">\(I_2\)</span> are ends of at most <span class="math" data-tex="\(2k\)">\(2k\)</span> demands in total, so <span class="math" data-tex="\(|I_1|\le2k|I_2|\)">\(|I_1|\le2k|I_2|\)</span> and
+<span class="math math-display" data-tex="\[
+|I_2|&gt;\frac{|I|}{4k}.
+\]">\[
+|I_2|&gt;\frac{|I|}{4k}.
+\]</span>
+Finally, every demand has two ends and every vertex is an end of at most <span class="math" data-tex="\(k\)">\(k\)</span> demands, so
+<span class="math math-display" data-tex="\[
+2|I|\le kr .
+\]">\[
+2|I|\le kr .
+\]</span></p>
+<p><strong>3.3. A small ball at one end of each selected demand.</strong> For <span class="math" data-tex="\(p\in I_2\)">\(p\in I_2\)</span> put
+<span class="math math-display" data-tex="\[
+W_p=(Z_p\cup Y_{c(p)})\setminus\{x_p,y_p\},
+\]">\[
+W_p=(Z_p\cup Y_{c(p)})\setminus\{x_p,y_p\},
+\]</span>
+and let <span class="math" data-tex="\(P_p\)">\(P_p\)</span> arise from <span class="math" data-tex="\(P\)">\(P\)</span> by deleting the edges of <span class="math" data-tex="\(F\)">\(F\)</span> and then the vertices of <span class="math" data-tex="\(W_p\)">\(W_p\)</span>. Both ends of <span class="math" data-tex="\(p\)">\(p\)</span> are vertices of <span class="math" data-tex="\(P_p\)">\(P_p\)</span>. The hypothesis gives <span class="math" data-tex="\(128(\ell^2(k+b)+z)\ge4z+32b\ell^2\)">\(128(\ell^2(k+b)+z)\ge4z+32b\ell^2\)</span>, so
+<span class="math math-display" data-tex="\[
+|W_p|\le z+8b\ell^2\le\frac h4 .
+\]">\[
+|W_p|\le z+8b\ell^2\le\frac h4 .
+\]</span>
+Put <span class="math" data-tex="\(T=\ell/2=g(1+\lceil\log r\rceil)\)">\(T=\ell/2=g(1+\lceil\log r\rceil)\)</span>, an integer, and write <span class="math" data-tex="\(\mathrm{Ball}_{P_p}(v,t)\)">\(\mathrm{Ball}_{P_p}(v,t)\)</span> for the set of vertices at distance at most <span class="math" data-tex="\(t\)">\(t\)</span> from <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(P_p\)">\(P_p\)</span>.</p>
+<p>Suppose that both <span class="math" data-tex="\(\mathrm{Ball}_{P_p}(x_p,T)\)">\(\mathrm{Ball}_{P_p}(x_p,T)\)</span> and <span class="math" data-tex="\(\mathrm{Ball}_{P_p}(y_p,T)\)">\(\mathrm{Ball}_{P_p}(y_p,T)\)</span> have more than <span class="math" data-tex="\(r/2\)">\(r/2\)</span> vertices. Then they share a vertex, and there is a walk from <span class="math" data-tex="\(x_p\)">\(x_p\)</span> to <span class="math" data-tex="\(y_p\)">\(y_p\)</span> in <span class="math" data-tex="\(P_p\)">\(P_p\)</span> of length at most <span class="math" data-tex="\(2T=\ell\)">\(2T=\ell\)</span>. Deleting closed subwalks gives a path <span class="math" data-tex="\(Q\)">\(Q\)</span> of length at most <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. It uses no edge of <span class="math" data-tex="\(F\)">\(F\)</span>. Its inner vertices differ from <span class="math" data-tex="\(x_p\)">\(x_p\)</span> and <span class="math" data-tex="\(y_p\)">\(y_p\)</span> and are vertices of <span class="math" data-tex="\(P_p\)">\(P_p\)</span>, so they avoid <span class="math" data-tex="\(Z_p\)">\(Z_p\)</span> and <span class="math" data-tex="\(Y_{c(p)}\)">\(Y_{c(p)}\)</span>. Therefore <span class="math" data-tex="\(R_p(Q)\)">\(R_p(Q)\)</span> is an edge of <span class="math" data-tex="\(\mathcal H_p\)">\(\mathcal H_p\)</span> whose graph edges are not in <span class="math" data-tex="\(F\)">\(F\)</span> and whose tokens <span class="math" data-tex="\((v,c(p))\)">\((v,c(p))\)</span> have <span class="math" data-tex="\(v\notin Y_{c(p)}\)">\(v\notin Y_{c(p)}\)</span>: it is disjoint from every member of <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>. Adding it to <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> gives a larger matching of <span class="math" data-tex="\(\bigcup_{p\in I}\mathcal H_p\)">\(\bigcup_{p\in I}\mathcal H_p\)</span>, which is impossible.</p>
+<p>So for every <span class="math" data-tex="\(p\in I_2\)">\(p\in I_2\)</span> we can choose an end <span class="math" data-tex="\(s_p\in\{x_p,y_p\}\)">\(s_p\in\{x_p,y_p\}\)</span> with
+<span class="math math-display" data-tex="\[
+|\mathrm{Ball}_{P_p}(s_p,T)|\le\frac r2 .
+\]">\[
+|\mathrm{Ball}_{P_p}(s_p,T)|\le\frac r2 .
+\]</span>
+Let <span class="math" data-tex="\(S\)">\(S\)</span> be the set of these <em>roots</em>. They are distinct, since the end pairs in <span class="math" data-tex="\(I_2\)">\(I_2\)</span> are disjoint; for <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span> write <span class="math" data-tex="\(p(s)\)">\(p(s)\)</span> for the demand with <span class="math" data-tex="\(s=s_{p(s)}\)">\(s=s_{p(s)}\)</span>. Thus <span class="math" data-tex="\(|S|=|I_2|\)">\(|S|=|I_2|\)</span>.</p>
+<p><strong>3.4. Growing unions of balls.</strong> For a nonempty <span class="math" data-tex="\(A\subseteq S\)">\(A\subseteq S\)</span> and an integer <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> put
+<span class="math math-display" data-tex="\[
+B_t(A)=\bigcup_{s\in A}\mathrm{Ball}_{P_{p(s)}}(s,t).
+\]">\[
+B_t(A)=\bigcup_{s\in A}\mathrm{Ball}_{P_{p(s)}}(s,t).
+\]</span>
+Each ball is taken in the graph of its own root.</p>
+<p><strong>Lemma 3.1</strong> (growth). If <span class="math" data-tex="\(0&lt;|B_t(A)|\le r/2\)">\(0&lt;|B_t(A)|\le r/2\)</span> and <span class="math" data-tex="\(|F|\le h|B_t(A)|/4\)">\(|F|\le h|B_t(A)|/4\)</span>, then
+<span class="math math-display" data-tex="\[
+|B_{t+1}(A)|\ge\Bigl(1+\frac h{2r}\Bigr)|B_t(A)| .
+\]">\[
+|B_{t+1}(A)|\ge\Bigl(1+\frac h{2r}\Bigr)|B_t(A)| .
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(B=B_t(A)\)">\(B=B_t(A)\)</span>, and for every <span class="math" data-tex="\(v\in B\)">\(v\in B\)</span> choose a root <span class="math" data-tex="\(s(v)\in A\)">\(s(v)\in A\)</span> with <span class="math" data-tex="\(v\in\mathrm{Ball}_{P_{p(s(v))}}(s(v),t)\)">\(v\in\mathrm{Ball}_{P_{p(s(v))}}(s(v),t)\)</span>. Let <span class="math" data-tex="\(vw\)">\(vw\)</span> be an edge of <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(v\in B\)">\(v\in B\)</span> and <span class="math" data-tex="\(w\notin B\)">\(w\notin B\)</span>. If <span class="math" data-tex="\(vw\notin F\)">\(vw\notin F\)</span> and <span class="math" data-tex="\(w\notin W_{p(s(v))}\)">\(w\notin W_{p(s(v))}\)</span>, then <span class="math" data-tex="\(vw\)">\(vw\)</span> is an edge of <span class="math" data-tex="\(P_{p(s(v))}\)">\(P_{p(s(v))}\)</span>, so <span class="math" data-tex="\(w\in B_{t+1}(A)\setminus B\)">\(w\in B_{t+1}(A)\setminus B\)</span>. At a fixed <span class="math" data-tex="\(v\)">\(v\)</span>, at most <span class="math" data-tex="\(|W_{p(s(v))}|\le h/4\)">\(|W_{p(s(v))}|\le h/4\)</span> boundary edges end in that forbidden set, because <span class="math" data-tex="\(P\)">\(P\)</span> is simple. Since <span class="math" data-tex="\(|B|\le r/2\)">\(|B|\le r/2\)</span>, cut expansion gives <span class="math" data-tex="\(|\partial_PB|\ge h|B|\)">\(|\partial_PB|\ge h|B|\)</span>. So at least
+<span class="math math-display" data-tex="\[
+h|B|-\frac h4|B|-|F|\ge\frac h2|B|
+\]">\[
+h|B|-\frac h4|B|-|F|\ge\frac h2|B|
+\]</span>
+boundary edges lead to vertices of <span class="math" data-tex="\(B_{t+1}(A)\setminus B\)">\(B_{t+1}(A)\setminus B\)</span>. A vertex receives at most <span class="math" data-tex="\(r\)">\(r\)</span> of them, so at least <span class="math" data-tex="\(h|B|/(2r)\)">\(h|B|/(2r)\)</span> new vertices are reached. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2</strong> (growth over <span class="math" data-tex="\(g\)">\(g\)</span> steps). If <span class="math" data-tex="\(|B_t(A)|\ge1\)">\(|B_t(A)|\ge1\)</span> and <span class="math" data-tex="\(|F|\le h|B_t(A)|/4\)">\(|F|\le h|B_t(A)|/4\)</span>, then <span class="math" data-tex="\(|B_{t+g}(A)|&gt;r/2\)">\(|B_{t+g}(A)|&gt;r/2\)</span>.</p>
+<p><em>Proof.</em> The sets <span class="math" data-tex="\(B_t(A)\)">\(B_t(A)\)</span> increase with <span class="math" data-tex="\(t\)">\(t\)</span>. If <span class="math" data-tex="\(|B_t(A)|&gt;r/2\)">\(|B_t(A)|&gt;r/2\)</span>, we are done. Otherwise suppose <span class="math" data-tex="\(|B_{t+g}(A)|\le r/2\)">\(|B_{t+g}(A)|\le r/2\)</span>. Then every <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span> with <span class="math" data-tex="\(t\le t&#x27;&lt;t+g\)">\(t\le t&#x27;&lt;t+g\)</span> satisfies <span class="math" data-tex="\(|B_t(A)|\le|B_{t&#x27;}(A)|\le r/2\)">\(|B_t(A)|\le|B_{t&#x27;}(A)|\le r/2\)</span>, so Lemma 3.1 applies at each of these <span class="math" data-tex="\(g\)">\(g\)</span> steps, and
+<span class="math math-display" data-tex="\[
+|B_{t+g}(A)|\ge\Bigl(1+\frac h{2r}\Bigr)^g .
+\]">\[
+|B_{t+g}(A)|\ge\Bigl(1+\frac h{2r}\Bigr)^g .
+\]</span>
+For <span class="math" data-tex="\(0\le u\le1\)">\(0\le u\le1\)</span>, concavity gives <span class="math" data-tex="\(\log(1+u)\ge u\)">\(\log(1+u)\ge u\)</span>. With <span class="math" data-tex="\(u=h/(2r)&lt;1\)">\(u=h/(2r)&lt;1\)</span> and <span class="math" data-tex="\(g\ge8(r/h)\log(2r)\)">\(g\ge8(r/h)\log(2r)\)</span>,
+<span class="math math-display" data-tex="\[
+\Bigl(1+\frac h{2r}\Bigr)^g\ge2^{gh/(2r)}\ge(2r)^4&gt;\frac r2 ,
+\]">\[
+\Bigl(1+\frac h{2r}\Bigr)^g\ge2^{gh/(2r)}\ge(2r)^4&gt;\frac r2 ,
+\]</span>
+a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>3.5. Halving the roots.</strong> First, <span class="math" data-tex="\(B_0(S)=S\)">\(B_0(S)=S\)</span>, and
+<span class="math math-display" data-tex="\[
+|F|&lt;4\ell^2|I|&lt;16k\ell^2|S|\le\frac h4|S|,
+\]">\[
+|F|&lt;4\ell^2|I|&lt;16k\ell^2|S|\le\frac h4|S|,
+\]</span>
+since <span class="math" data-tex="\(h\ge128k\ell^2\)">\(h\ge128k\ell^2\)</span>. By Lemma 3.2, <span class="math" data-tex="\(|B_g(S)|&gt;r/2\)">\(|B_g(S)|&gt;r/2\)</span>.</p>
+<p>Let <span class="math" data-tex="\(A\subseteq S\)">\(A\subseteq S\)</span> have <span class="math" data-tex="\(|A|\ge2\)">\(|A|\ge2\)</span> and <span class="math" data-tex="\(|B_t(A)|&gt;r/2\)">\(|B_t(A)|&gt;r/2\)</span> for some <span class="math" data-tex="\(t\)">\(t\)</span>. Split <span class="math" data-tex="\(A\)">\(A\)</span> into two nonempty halves whose sizes differ by at most one. Their unions of balls of radius <span class="math" data-tex="\(t\)">\(t\)</span> together form <span class="math" data-tex="\(B_t(A)\)">\(B_t(A)\)</span>, so one half <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> has <span class="math" data-tex="\(|B_t(A&#x27;)|&gt;r/4\)">\(|B_t(A&#x27;)|&gt;r/4\)</span>, and <span class="math" data-tex="\(|A&#x27;|\le\lceil|A|/2\rceil\)">\(|A&#x27;|\le\lceil|A|/2\rceil\)</span>. By the endpoint count <span class="math" data-tex="\(2|I|\le kr\)">\(2|I|\le kr\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|F|&amp;&lt;4\ell^2|I|\le2k\ell^2r\\
+&amp;\le\frac{hr}{64}&lt;\frac h4|B_t(A&#x27;)| ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+|F|&amp;&lt;4\ell^2|I|\le2k\ell^2r\\
+&amp;\le\frac{hr}{64}&lt;\frac h4|B_t(A&#x27;)| ,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(h\ge128k\ell^2\)">\(h\ge128k\ell^2\)</span>. Lemma 3.2 gives <span class="math" data-tex="\(|B_{t+g}(A&#x27;)|&gt;r/2\)">\(|B_{t+g}(A&#x27;)|&gt;r/2\)</span>.</p>
+<p>Start with <span class="math" data-tex="\(A=S\)">\(A=S\)</span> at radius <span class="math" data-tex="\(g\)">\(g\)</span> and repeat the halving until one root remains. After <span class="math" data-tex="\(j\)">\(j\)</span> halvings at most <span class="math" data-tex="\(\lceil|S|/2^j\rceil\)">\(\lceil|S|/2^j\rceil\)</span> roots remain, so at most <span class="math" data-tex="\(\lceil\log|S|\rceil\)">\(\lceil\log|S|\rceil\)</span> halvings are needed. Since <span class="math" data-tex="\(|S|\le r\)">\(|S|\le r\)</span>, the final single root <span class="math" data-tex="\(s\)">\(s\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\bigl|\mathrm{Ball}_{P_{p(s)}}(s,t^*)\bigr|&gt;\frac r2
+\]">\[
+\bigl|\mathrm{Ball}_{P_{p(s)}}(s,t^*)\bigr|&gt;\frac r2
+\]</span>
+for some <span class="math" data-tex="\(t^*\le g(1+\lceil\log r\rceil)=T\)">\(t^*\le g(1+\lceil\log r\rceil)=T\)</span>. As balls grow with the radius, this contradicts the choice of the root <span class="math" data-tex="\(s\)">\(s\)</span> in Section 3.3.</p>
+<p>So the matching condition holds for every nonempty <span class="math" data-tex="\(I\)">\(I\)</span>, and Haxell's condition gives disjoint representatives. Their paths satisfy (1)–(3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Show that the complete graph on <span class="math" data-tex="\(r\)">\(r\)</span> vertices has cut expansion at least <span class="math" data-tex="\(r/2\)">\(r/2\)</span>.</p>
+<p><strong>4.2</strong> (medium). Let <span class="math" data-tex="\(P\)">\(P\)</span> have order <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> and cut expansion at least <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>. Show that any two vertices of <span class="math" data-tex="\(P\)">\(P\)</span> are joined by a path of length at most <span class="math" data-tex="\(2\lceil(r/h)\log r\rceil\)">\(2\lceil(r/h)\log r\rceil\)</span>.</p>
+<p><strong>4.3</strong> (medium). Show that if the tokens are omitted from the encoding of Section 3.1, the same argument still yields pairwise edge-disjoint paths of length at most <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, but two paths of one team may share inner vertices. Give an example of a cycle formed from paths of one team that fails to be a cycle when two of them share an inner vertex.</p>
+<p><strong>4.4</strong> (medium). Where does the proof use that <span class="math" data-tex="\(P\)">\(P\)</span> is simple? Point to both places.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> For <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(u\)">\(u\)</span> vertices, <span class="math" data-tex="\(|\partial U|=u(r-u)\)">\(|\partial U|=u(r-u)\)</span>. This is the product of <span class="math" data-tex="\(\min\{u,r-u\}\)">\(\min\{u,r-u\}\)</span> and <span class="math" data-tex="\(\max\{u,r-u\}\)">\(\max\{u,r-u\}\)</span>, and the larger of <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(r-u\)">\(r-u\)</span> is at least <span class="math" data-tex="\(r/2\)">\(r/2\)</span>.</p>
+<p><strong>4.2.</strong> For a vertex <span class="math" data-tex="\(v\)">\(v\)</span>, let <span class="math" data-tex="\(B_t\)">\(B_t\)</span> be its ball of radius <span class="math" data-tex="\(t\)">\(t\)</span>. If <span class="math" data-tex="\(|B_t|\le r/2\)">\(|B_t|\le r/2\)</span>, the boundary of <span class="math" data-tex="\(B_t\)">\(B_t\)</span> has at least <span class="math" data-tex="\(h|B_t|\)">\(h|B_t|\)</span> edges, and a vertex outside receives at most <span class="math" data-tex="\(r\)">\(r\)</span> of them, so <span class="math" data-tex="\(|B_{t+1}|\ge(1+h/r)|B_t|\ge2^{h/r}|B_t|\)">\(|B_{t+1}|\ge(1+h/r)|B_t|\ge2^{h/r}|B_t|\)</span>, using <span class="math" data-tex="\(\log(1+u)\ge u\)">\(\log(1+u)\ge u\)</span> for <span class="math" data-tex="\(0\le u\le1\)">\(0\le u\le1\)</span>. Put <span class="math" data-tex="\(t_0=\lceil(r/h)\log r\rceil\)">\(t_0=\lceil(r/h)\log r\rceil\)</span>. If <span class="math" data-tex="\(|B_{t_0}|\le r/2\)">\(|B_{t_0}|\le r/2\)</span>, all smaller balls are at most as large, and <span class="math" data-tex="\(|B_{t_0}|\ge2^{t_0h/r}\ge r\)">\(|B_{t_0}|\ge2^{t_0h/r}\ge r\)</span>, a contradiction. So the balls of radius <span class="math" data-tex="\(t_0\)">\(t_0\)</span> around any two vertices have more than <span class="math" data-tex="\(r/2\)">\(r/2\)</span> vertices each and meet, which gives a walk, and hence a path, of length at most <span class="math" data-tex="\(2t_0\)">\(2t_0\)</span>.</p>
+<p><strong>4.3.</strong> Without tokens, the hypergraph edges are the edge sets of the paths, with at most <span class="math" data-tex="\(\ell\)">\(\ell\)</span> elements; the same proof with <span class="math" data-tex="\(Y_c=\varnothing\)">\(Y_c=\varnothing\)</span> works and gives edge-disjoint paths. Example: let a closed walk consist of a path from <span class="math" data-tex="\(v_1\)">\(v_1\)</span> to <span class="math" data-tex="\(u_2\)">\(u_2\)</span>, a connecting path from <span class="math" data-tex="\(u_2\)">\(u_2\)</span> to <span class="math" data-tex="\(v_2\)">\(v_2\)</span>, a path from <span class="math" data-tex="\(v_2\)">\(v_2\)</span> to <span class="math" data-tex="\(u_1\)">\(u_1\)</span> and a connecting path from <span class="math" data-tex="\(u_1\)">\(u_1\)</span> to <span class="math" data-tex="\(v_1\)">\(v_1\)</span>, where the two connecting paths form one team. If they share an inner vertex, the closed walk visits it twice and is not a cycle.</p>
+<p><strong>4.4.</strong> In Lemma 1.2 (a vertex has at most <span class="math" data-tex="\(r-1\)">\(r-1\)</span> neighbours) and in Lemma 3.1 (a vertex <span class="math" data-tex="\(v\)">\(v\)</span> has at most one edge to each forbidden vertex, so at most <span class="math" data-tex="\(|W_{p(s(v))}|\)">\(|W_{p(s(v))}|\)</span> boundary edges at <span class="math" data-tex="\(v\)">\(v\)</span> end in the forbidden set, and a new vertex receives at most <span class="math" data-tex="\(r\)">\(r\)</span> boundary edges).</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-EG] OpenAI, <em>A linear cycle-and-edge decomposition of every graph</em>, OpenAI Math Release preprint, 24 September 2026. https://github.com/openai/math/tree/main/preprints/A-linear-cycle-and-edge-decomposition-of-every-graph-September-24-2026</li>
+<li>[BM] M. Bucić and R. Montgomery, <em>Towards the Erdős–Gallai cycle decomposition conjecture</em>, Advances in Mathematics 437 (2024), 109434; arXiv:2211.07689. https://arxiv.org/abs/2211.07689</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

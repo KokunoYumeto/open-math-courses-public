@@ -1,0 +1,292 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Two-scale configurations</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The classification of finite Euclidean Ramsey sets)</a><a href="a-finite-lattice-identity.html">Previous lesson</a><a href="the-hales-jewett-theorem.html">Next lesson</a><a href="src/two-scale-configurations.md">Editable source</a></nav><main><article><h1 id="two-scale-configurations">Two-scale configurations</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The weights of <a href="a-finite-lattice-identity.html">A finite lattice identity</a> split into a positive and a negative part with the same evaluation values at every point of the set. Read as two lists of affine functions, they give two configurations whose corresponding points have the same coordinates in different orders. Their gradient Gram matrices differ by the identity, but the negative one is not yet small. This lesson makes it as small as desired, while keeping every cancellation exact: the weights are smoothed by a Gaussian average, discretized on a fine lattice, and finally made rational. The result is the following pair of configurations, at scales one and <span class="math" data-tex="\(q\)">\(q\)</span>, with <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> as small as desired.</p>
+<p><strong>Theorem 3.1</strong> (two-scale configurations). Assume the tensor condition for <span class="math" data-tex="\(A=\{a_1,\dots,a_s\}\subset\mathbb R^d\)">\(A=\{a_1,\dots,a_s\}\subset\mathbb R^d\)</span>, with <span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span> and affine span <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. For every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> there are an integer <span class="math" data-tex="\(\ell\ge1\)">\(\ell\ge1\)</span> and vectors <span class="math" data-tex="\(f_i,g_i\in\mathbb R^\ell\)">\(f_i,g_i\in\mathbb R^\ell\)</span> such that, with <span class="math" data-tex="\(q=\eta/(1+\eta)\)">\(q=\eta/(1+\eta)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|f_i-f_j\|^2=\|a_i-a_j\|^2,\\
+\|g_i-g_j\|^2=q\|a_i-a_j\|^2
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|f_i-f_j\|^2=\|a_i-a_j\|^2,\\
+\|g_i-g_j\|^2=q\|a_i-a_j\|^2
+\end{gathered}
+\]</span>
+for all <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, and each <span class="math" data-tex="\(g_i\)">\(g_i\)</span> is obtained from <span class="math" data-tex="\(f_i\)">\(f_i\)</span> by permuting its coordinates.</p>
+<p>So <span class="math" data-tex="\((f_i)\)">\((f_i)\)</span> is a congruent copy of <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\((g_i)\)">\((g_i)\)</span> is a copy of <span class="math" data-tex="\(A\)">\(A\)</span> scaled by <span class="math" data-tex="\(\sqrt q\)">\(\sqrt q\)</span>, and the coordinates of corresponding points agree as multisets. The proof is in Section 3. The notation of the previous lesson is kept: the basis <span class="math" data-tex="\(w_1,\dots,w_k\)">\(w_1,\dots,w_k\)</span>, the rational symmetric matrix <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(UCU^{\mathsf T}=I_d\)">\(UCU^{\mathsf T}=I_d\)</span>, the lattice <span class="math" data-tex="\(\Gamma=\mathbb Z^k\)">\(\Gamma=\mathbb Z^k\)</span>, the evaluation lattices <span class="math" data-tex="\(\Lambda_i\)">\(\Lambda_i\)</span>, and the weights <span class="math" data-tex="\(\nu\)">\(\nu\)</span> of its Lemma 2.1.</p>
+<p>For a real symmetric <span class="math" data-tex="\(k\times k\)">\(k\times k\)</span> matrix <span class="math" data-tex="\(C\)">\(C\)</span> write
+<span class="math math-display" data-tex="\[
+D_C=\frac12\sum_{j,l=1}^kC_{jl}\,\partial_j\partial_l,
+\]">\[
+D_C=\frac12\sum_{j,l=1}^kC_{jl}\,\partial_j\partial_l,
+\]</span>
+and for a real number <span class="math" data-tex="\(r\)">\(r\)</span> let <span class="math" data-tex="\(r_+=\max\{r,0\}\)">\(r_+=\max\{r,0\}\)</span> and <span class="math" data-tex="\(r_-=\max\{-r,0\}\)">\(r_-=\max\{-r,0\}\)</span>. The map <span class="math" data-tex="\(r\mapsto r_-\)">\(r\mapsto r_-\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>-Lipschitz.</p>
+<h2 id="1-a-smooth-function-with-small-negative-curvature">1. A smooth function with small negative curvature</h2>
+<p><em>Integrals over <span class="math" data-tex="\(\mathbb R^k\)">\(\mathbb R^k\)</span>.</em> All integrals in this lesson are Riemann integrals of continuous functions. If <span class="math" data-tex="\(f\)">\(f\)</span> is continuous on <span class="math" data-tex="\(\mathbb R^k\)">\(\mathbb R^k\)</span> and <span class="math" data-tex="\(|f(x)|\le p(\|x\|)e^{-c\|x\|^2}\)">\(|f(x)|\le p(\|x\|)e^{-c\|x\|^2}\)</span> for a polynomial <span class="math" data-tex="\(p\)">\(p\)</span> and some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, put
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^k}f=\lim_{R\to\infty}\int_{[-R,R]^k}f ;
+\]">\[
+\int_{\mathbb R^k}f=\lim_{R\to\infty}\int_{[-R,R]^k}f ;
+\]</span>
+the limit exists, because the integral of <span class="math" data-tex="\(|f|\)">\(|f|\)</span> over <span class="math" data-tex="\([-R&#x27;,R&#x27;]^k\setminus[-R,R]^k\)">\([-R&#x27;,R&#x27;]^k\setminus[-R,R]^k\)</span> tends to zero as <span class="math" data-tex="\(R&#x27;&gt;R\to\infty\)">\(R&#x27;&gt;R\to\infty\)</span>. For such functions, Fubini's theorem and the linear change of variables, for <span class="math" data-tex="\(\det M\ne0\)">\(\det M\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{\mathbb R^k}f(x)\,dx\\
+&amp;\quad=|\det M|\int_{\mathbb R^k}f(My)\,dy ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{\mathbb R^k}f(x)\,dx\\
+&amp;\quad=|\det M|\int_{\mathbb R^k}f(My)\,dy ,
+\end{aligned}
+\]</span>
+follow from their versions for cubes and their images, Theorems 10.2.2 and 10.7.2 of [Lebl]: the image of a large cube under <span class="math" data-tex="\(M\)">\(M\)</span> contains a cube and lies in another, both of comparable size, and the integrals over the differences tend to zero. Derivatives of <span class="math" data-tex="\(\int_0^1g(x,t)\,dt\)">\(\int_0^1g(x,t)\,dt\)</span> with respect to <span class="math" data-tex="\(x\)">\(x\)</span> may be taken under the integral sign when the partial derivatives of <span class="math" data-tex="\(g\)">\(g\)</span> are continuous [Lebl, Theorem 9.1.1]. For a continuous <span class="math" data-tex="\(f\)">\(f\)</span> with compact support, the lattice sums <span class="math" data-tex="\(n^{-k}\sum_{\lambda\in\mathbb Z^k}f(\lambda/n)\)">\(n^{-k}\sum_{\lambda\in\mathbb Z^k}f(\lambda/n)\)</span> tend to <span class="math" data-tex="\(\int f\)">\(\int f\)</span>: they lie between the lower and the upper Darboux sums of <span class="math" data-tex="\(f\)">\(f\)</span> for the cubes of side <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, and the difference of these sums tends to zero by uniform continuity, as in the proof of [Lebl, Theorem 10.1.15].</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be a real symmetric <span class="math" data-tex="\(k\times k\)">\(k\times k\)</span> matrix and <span class="math" data-tex="\(U\)">\(U\)</span> a real <span class="math" data-tex="\(d\times k\)">\(d\times k\)</span> matrix with <span class="math" data-tex="\(UCU^{\mathsf T}=I_d\)">\(UCU^{\mathsf T}=I_d\)</span>. For every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> there is a nonnegative smooth function <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(\mathbb R^k\)">\(\mathbb R^k\)</span> with compact support such that <span class="math" data-tex="\(\int b&gt;0\)">\(\int b&gt;0\)</span> and
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^k}(D_Cb)_-(x)\,\|Ux\|^2\,dx&lt;\eta\int_{\mathbb R^k}b .
+\]">\[
+\int_{\mathbb R^k}(D_Cb)_-(x)\,\|Ux\|^2\,dx&lt;\eta\int_{\mathbb R^k}b .
+\]</span></p>
+<p><em>Proof.</em> <em>Two covariance matrices.</em> Since <span class="math" data-tex="\(UCU^{\mathsf T}=I_d\)">\(UCU^{\mathsf T}=I_d\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> has rank <span class="math" data-tex="\(d\)">\(d\)</span>. Let <span class="math" data-tex="\(H\)">\(H\)</span> be the image of <span class="math" data-tex="\(U^{\mathsf T}\)">\(U^{\mathsf T}\)</span> and <span class="math" data-tex="\(V=\ker U\)">\(V=\ker U\)</span>, so <span class="math" data-tex="\(\mathbb R^k=H\oplus V\)">\(\mathbb R^k=H\oplus V\)</span> orthogonally, with orthogonal projections <span class="math" data-tex="\(P_H,P_V\)">\(P_H,P_V\)</span>. The quadratic form of <span class="math" data-tex="\(C\)">\(C\)</span> is positive definite on <span class="math" data-tex="\(H\)">\(H\)</span>: for <span class="math" data-tex="\(h=U^{\mathsf T}y\ne0\)">\(h=U^{\mathsf T}y\ne0\)</span>, <span class="math" data-tex="\(h^{\mathsf T}Ch=y^{\mathsf T}UCU^{\mathsf T}y=\|y\|^2&gt;0\)">\(h^{\mathsf T}Ch=y^{\mathsf T}UCU^{\mathsf T}y=\|y\|^2&gt;0\)</span>. Choose <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> with <span class="math" data-tex="\(\epsilon\,\mathrm{tr}(UU^{\mathsf T})&lt;\eta/8\)">\(\epsilon\,\mathrm{tr}(UU^{\mathsf T})&lt;\eta/8\)</span>, and put <span class="math" data-tex="\(S=\epsilon P_H+LP_V\)">\(S=\epsilon P_H+LP_V\)</span> with <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span> to be chosen. In orthonormal coordinates adapted to <span class="math" data-tex="\(H\oplus V\)">\(H\oplus V\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S+C=\begin{pmatrix}A_0&amp;B_0\\B_0^{\mathsf T}&amp;C_{VV}+LI\end{pmatrix},\\
+A_0=C_{HH}+\epsilon I ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+S+C=\begin{pmatrix}A_0&amp;B_0\\B_0^{\mathsf T}&amp;C_{VV}+LI\end{pmatrix},\\
+A_0=C_{HH}+\epsilon I ,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(A_0\)">\(A_0\)</span> is positive definite. For <span class="math" data-tex="\(L\)">\(L\)</span> large, the Schur complement <span class="math" data-tex="\(C_{VV}+LI-B_0^{\mathsf T}A_0^{-1}B_0\)">\(C_{VV}+LI-B_0^{\mathsf T}A_0^{-1}B_0\)</span> is positive definite, and then so is <span class="math" data-tex="\(S+C\)">\(S+C\)</span>; if <span class="math" data-tex="\(V=0\)">\(V=0\)</span> there is nothing to choose. The matrix <span class="math" data-tex="\(S\)">\(S\)</span> is positive definite, and since <span class="math" data-tex="\(UP_V=0\)">\(UP_V=0\)</span> and <span class="math" data-tex="\(UP_H=U\)">\(UP_H=U\)</span>,
+<span class="math math-display" data-tex="\[
+\mathrm{tr}(USU^{\mathsf T})=\epsilon\,\mathrm{tr}(UU^{\mathsf T})&lt;\frac\eta8 .
+\]">\[
+\mathrm{tr}(USU^{\mathsf T})=\epsilon\,\mathrm{tr}(UU^{\mathsf T})&lt;\frac\eta8 .
+\]</span>
+For <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span> the matrix <span class="math" data-tex="\(Q_t=S+tC=(1-t)S+t(S+C)\)">\(Q_t=S+tC=(1-t)S+t(S+C)\)</span> is positive definite, and its eigenvalues lie in a fixed compact subinterval of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>.</p>
+<p><em>Gaussian densities.</em> Let <span class="math" data-tex="\(\omega=\int_{\mathbb R}e^{-t^2/2}\,dt&gt;0\)">\(\omega=\int_{\mathbb R}e^{-t^2/2}\,dt&gt;0\)</span>; its value <span class="math" data-tex="\(\sqrt{2\pi}\)">\(\sqrt{2\pi}\)</span> is not needed. For positive definite <span class="math" data-tex="\(Q\)">\(Q\)</span> let
+<span class="math math-display" data-tex="\[
+\phi_Q(x)=\frac{\exp(-\frac12x^{\mathsf T}Q^{-1}x)}{\omega^k(\det Q)^{1/2}} .
+\]">\[
+\phi_Q(x)=\frac{\exp(-\frac12x^{\mathsf T}Q^{-1}x)}{\omega^k(\det Q)^{1/2}} .
+\]</span>
+Write <span class="math" data-tex="\(Q=MM^{\mathsf T}\)">\(Q=MM^{\mathsf T}\)</span> with <span class="math" data-tex="\(M\)">\(M\)</span> invertible, for instance <span class="math" data-tex="\(M=O\Delta^{1/2}\)">\(M=O\Delta^{1/2}\)</span> if <span class="math" data-tex="\(Q=O\Delta O^{\mathsf T}\)">\(Q=O\Delta O^{\mathsf T}\)</span> with <span class="math" data-tex="\(O\)">\(O\)</span> orthogonal and <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> diagonal. The substitution <span class="math" data-tex="\(x=My\)">\(x=My\)</span> has <span class="math" data-tex="\(x^{\mathsf T}Q^{-1}x=\|y\|^2\)">\(x^{\mathsf T}Q^{-1}x=\|y\|^2\)</span> and <span class="math" data-tex="\(|\det M|=(\det Q)^{1/2}\)">\(|\det M|=(\det Q)^{1/2}\)</span>, so for continuous <span class="math" data-tex="\(g\)">\(g\)</span> of polynomial growth
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int\phi_Q(x)g(x)\,dx\\
+&amp;\quad=\omega^{-k}\int e^{-\|y\|^2/2}g(My)\,dy .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int\phi_Q(x)g(x)\,dx\\
+&amp;\quad=\omega^{-k}\int e^{-\|y\|^2/2}g(My)\,dy .
+\end{aligned}
+\]</span>
+With Fubini's theorem, <span class="math" data-tex="\(\int te^{-t^2/2}dt=0\)">\(\int te^{-t^2/2}dt=0\)</span> and <span class="math" data-tex="\(\int t^2e^{-t^2/2}dt=\omega\)">\(\int t^2e^{-t^2/2}dt=\omega\)</span> (integration by parts), this gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int\phi_Q=1,\\
+\int\phi_Q(x)\,xx^{\mathsf T}dx=MM^{\mathsf T}=Q .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int\phi_Q=1,\\
+\int\phi_Q(x)\,xx^{\mathsf T}dx=MM^{\mathsf T}=Q .
+\end{gathered}
+\]</span>
+Differentiation gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_j\partial_l\phi_Q={}&amp;\bigl((Q^{-1}x)_j(Q^{-1}x)_l\\
+&amp;-(Q^{-1})_{jl}\bigr)\phi_Q ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_j\partial_l\phi_Q={}&amp;\bigl((Q^{-1}x)_j(Q^{-1}x)_l\\
+&amp;-(Q^{-1})_{jl}\bigr)\phi_Q ,
+\end{aligned}
+\]</span>
+and, using <span class="math" data-tex="\(\frac d{dt}\log\det Q_t=\mathrm{tr}(Q_t^{-1}C)\)">\(\frac d{dt}\log\det Q_t=\mathrm{tr}(Q_t^{-1}C)\)</span> and <span class="math" data-tex="\(\frac d{dt}Q_t^{-1}=-Q_t^{-1}CQ_t^{-1}\)">\(\frac d{dt}Q_t^{-1}=-Q_t^{-1}CQ_t^{-1}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac d{dt}\phi_{Q_t}&amp;=\frac12\bigl(x^{\mathsf T}Q_t^{-1}CQ_t^{-1}x\\
+&amp;\qquad-\mathrm{tr}(Q_t^{-1}C)\bigr)\phi_{Q_t}\\
+&amp;=D_C\phi_{Q_t}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac d{dt}\phi_{Q_t}&amp;=\frac12\bigl(x^{\mathsf T}Q_t^{-1}CQ_t^{-1}x\\
+&amp;\qquad-\mathrm{tr}(Q_t^{-1}C)\bigr)\phi_{Q_t}\\
+&amp;=D_C\phi_{Q_t}.
+\end{aligned}
+\]</span>
+No positivity of <span class="math" data-tex="\(C\)">\(C\)</span> is needed here. Put
+<span class="math math-display" data-tex="\[
+b_*(x)=\int_0^1\phi_{Q_t}(x)\,dt .
+\]">\[
+b_*(x)=\int_0^1\phi_{Q_t}(x)\,dt .
+\]</span>
+The densities <span class="math" data-tex="\(\phi_{Q_t}\)">\(\phi_{Q_t}\)</span> and all their derivatives are bounded by a polynomial times <span class="math" data-tex="\(e^{-c\|x\|^2}\)">\(e^{-c\|x\|^2}\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and the polynomial independent of <span class="math" data-tex="\(t\)">\(t\)</span>. So <span class="math" data-tex="\(b_*\)">\(b_*\)</span> is a nonnegative smooth function, of integral one by Fubini's theorem, whose derivatives decay faster than any power, and differentiation under the integral gives
+<span class="math math-display" data-tex="\[
+D_Cb_*=\int_0^1\frac d{dt}\phi_{Q_t}\,dt=\phi_{S+C}-\phi_S .
+\]">\[
+D_Cb_*=\int_0^1\frac d{dt}\phi_{Q_t}\,dt=\phi_{S+C}-\phi_S .
+\]</span>
+Since both densities are nonnegative, <span class="math" data-tex="\((\phi_{S+C}-\phi_S)_-\le\phi_S\)">\((\phi_{S+C}-\phi_S)_-\le\phi_S\)</span>. Since <span class="math" data-tex="\(\|Ux\|^2=\mathrm{tr}(Uxx^{\mathsf T}U^{\mathsf T})\)">\(\|Ux\|^2=\mathrm{tr}(Uxx^{\mathsf T}U^{\mathsf T})\)</span>, the second moments give <span class="math" data-tex="\(\int\phi_S(x)\|Ux\|^2dx=\mathrm{tr}(USU^{\mathsf T})\)">\(\int\phi_S(x)\|Ux\|^2dx=\mathrm{tr}(USU^{\mathsf T})\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int(D_Cb_*)_-(x)\|Ux\|^2dx\\
+&amp;\quad\le\mathrm{tr}(USU^{\mathsf T})&lt;\frac\eta8 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int(D_Cb_*)_-(x)\|Ux\|^2dx\\
+&amp;\quad\le\mathrm{tr}(USU^{\mathsf T})&lt;\frac\eta8 .
+\end{aligned}
+\]</span></p>
+<p><em>Compact support.</em> Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be smooth with <span class="math" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span>, equal to one on the unit ball and zero outside the ball of radius two, put <span class="math" data-tex="\(\chi_R(x)=\chi(x/R)\)">\(\chi_R(x)=\chi(x/R)\)</span> and <span class="math" data-tex="\(b_R=\chi_Rb_*\)">\(b_R=\chi_Rb_*\)</span>. Then <span class="math" data-tex="\(\int b_R\to1\)">\(\int b_R\to1\)</span> as <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>. Since <span class="math" data-tex="\(C\)">\(C\)</span> is symmetric,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_Cb_R={}&amp;\chi_RD_Cb_*+\sum_{j,l}C_{jl}(\partial_j\chi_R)(\partial_lb_*)\\
+&amp;+b_*D_C\chi_R .
+\end{aligned}
+\]">\[
+\begin{aligned}
+D_Cb_R={}&amp;\chi_RD_Cb_*+\sum_{j,l}C_{jl}(\partial_j\chi_R)(\partial_lb_*)\\
+&amp;+b_*D_C\chi_R .
+\end{aligned}
+\]</span>
+The derivatives of <span class="math" data-tex="\(\chi_R\)">\(\chi_R\)</span> are bounded by constants times <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> and <span class="math" data-tex="\(R^{-2}\)">\(R^{-2}\)</span> and vanish outside <span class="math" data-tex="\(R\le\|x\|\le2R\)">\(R\le\|x\|\le2R\)</span>. By the rapid decay of <span class="math" data-tex="\(b_*\)">\(b_*\)</span> and its derivatives,
+<span class="math math-display" data-tex="\[
+\int|D_Cb_R-D_Cb_*|(x)\,\|Ux\|^2dx\to0 .
+\]">\[
+\int|D_Cb_R-D_Cb_*|(x)\,\|Ux\|^2dx\to0 .
+\]</span>
+Since <span class="math" data-tex="\(r\mapsto r_-\)">\(r\mapsto r_-\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>-Lipschitz, the integrals of <span class="math" data-tex="\((D_Cb_R)_-\|Ux\|^2\)">\((D_Cb_R)_-\|Ux\|^2\)</span> converge to that of <span class="math" data-tex="\((D_Cb_*)_-\|Ux\|^2\)">\((D_Cb_*)_-\|Ux\|^2\)</span>. Choose <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(\int b_R&gt;\frac12\)">\(\int b_R&gt;\frac12\)</span> and with the difference of the two integrals below <span class="math" data-tex="\(\eta/8\)">\(\eta/8\)</span>. Then
+<span class="math math-display" data-tex="\[
+\int(D_Cb_R)_-\|Ux\|^2&lt;\frac\eta4&lt;\eta\int b_R ,
+\]">\[
+\int(D_Cb_R)_-\|Ux\|^2&lt;\frac\eta4&lt;\eta\int b_R ,
+\]</span>
+and <span class="math" data-tex="\(b=b_R\)">\(b=b_R\)</span> has the required properties. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-rational-weights-at-a-fine-scale">2. Rational weights at a fine scale</h2>
+<p>For finitely supported functions <span class="math" data-tex="\(\nu,d\)">\(\nu,d\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, the convolution is <span class="math" data-tex="\((\nu*d)(\lambda)=\sum_\gamma\nu(\gamma)d(\lambda-\gamma)\)">\((\nu*d)(\lambda)=\sum_\gamma\nu(\gamma)d(\lambda-\gamma)\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(\nu:\Gamma\to\mathbb Q\)">\(\nu:\Gamma\to\mathbb Q\)</span> be finitely supported with zero pushforward to every <span class="math" data-tex="\(\Gamma/\Lambda_i\)">\(\Gamma/\Lambda_i\)</span>, with <span class="math" data-tex="\(\sum\nu(\gamma)=0\)">\(\sum\nu(\gamma)=0\)</span>, <span class="math" data-tex="\(\sum\nu(\gamma)\gamma=0\)">\(\sum\nu(\gamma)\gamma=0\)</span> and <span class="math" data-tex="\(\sum\nu(\gamma)\gamma\gamma^{\mathsf T}=C\)">\(\sum\nu(\gamma)\gamma\gamma^{\mathsf T}=C\)</span>, and let <span class="math" data-tex="\(UCU^{\mathsf T}=I_d\)">\(UCU^{\mathsf T}=I_d\)</span>. For every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> there are an integer <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, a finitely supported <span class="math" data-tex="\(\mu:\Gamma\to\mathbb Q\)">\(\mu:\Gamma\to\mathbb Q\)</span> with zero pushforward to every <span class="math" data-tex="\(\Gamma/\Lambda_i\)">\(\Gamma/\Lambda_i\)</span>, and a rational <span class="math" data-tex="\(\zeta&gt;0\)">\(\zeta&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_\lambda\mu(\lambda)\frac\lambda n\frac{\lambda^{\mathsf T}}n=\zeta C,\\
+\sum_\lambda\mu(\lambda)_-\Bigl\|U\frac\lambda n\Bigr\|^2&lt;\eta\zeta .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_\lambda\mu(\lambda)\frac\lambda n\frac{\lambda^{\mathsf T}}n=\zeta C,\\
+\sum_\lambda\mu(\lambda)_-\Bigl\|U\frac\lambda n\Bigr\|^2&lt;\eta\zeta .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> <em>Convolution keeps the cancellations.</em> For any finitely supported real <span class="math" data-tex="\(d\)">\(d\)</span>, the pushforward of <span class="math" data-tex="\(\nu*d\)">\(\nu*d\)</span> to <span class="math" data-tex="\(\Gamma/\Lambda_i\)">\(\Gamma/\Lambda_i\)</span> is zero: summing <span class="math" data-tex="\((\nu*d)(\lambda)\)">\((\nu*d)(\lambda)\)</span> over a coset <span class="math" data-tex="\(q\)">\(q\)</span> gives <span class="math" data-tex="\(\sum_\gamma\nu(\gamma)\sum_{\beta\in q-\gamma}d(\beta)\)">\(\sum_\gamma\nu(\gamma)\sum_{\beta\in q-\gamma}d(\beta)\)</span>, the inner sum depends only on the coset of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, and the sum of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> over each coset vanishes. Substituting <span class="math" data-tex="\(\lambda=\beta+\gamma\)">\(\lambda=\beta+\gamma\)</span>, the zeroth and first moments of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_\lambda(\nu*d)(\lambda)=0,\\
+\sum_\lambda(\nu*d)(\lambda)\lambda\lambda^{\mathsf T}=\Bigl(\sum_\beta d(\beta)\Bigr)C,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_\lambda(\nu*d)(\lambda)=0,\\
+\sum_\lambda(\nu*d)(\lambda)\lambda\lambda^{\mathsf T}=\Bigl(\sum_\beta d(\beta)\Bigr)C,
+\end{gathered}
+\]</span>
+because the terms with <span class="math" data-tex="\(\beta\beta^{\mathsf T}\)">\(\beta\beta^{\mathsf T}\)</span>, <span class="math" data-tex="\(\beta\gamma^{\mathsf T}\)">\(\beta\gamma^{\mathsf T}\)</span> and <span class="math" data-tex="\(\gamma\beta^{\mathsf T}\)">\(\gamma\beta^{\mathsf T}\)</span> vanish after summing over <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>.</p>
+<p><em>A discretized smooth function.</em> Take <span class="math" data-tex="\(b\)">\(b\)</span> from Lemma 1.1 and, for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d_n(\lambda)=n^{2-k}b(\lambda/n),\qquad\mu_n=\nu*d_n,\\
+\zeta_n=n^{-2}\sum_\lambda d_n(\lambda).
+\end{gathered}
+\]">\[
+\begin{gathered}
+d_n(\lambda)=n^{2-k}b(\lambda/n),\qquad\mu_n=\nu*d_n,\\
+\zeta_n=n^{-2}\sum_\lambda d_n(\lambda).
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(\zeta_n=n^{-k}\sum_\lambda b(\lambda/n)\to\int b&gt;0\)">\(\zeta_n=n^{-k}\sum_\lambda b(\lambda/n)\to\int b&gt;0\)</span>, a Riemann sum, and the identity above gives exactly <span class="math" data-tex="\(\sum_\lambda\mu_n(\lambda)\frac\lambda n\frac{\lambda^{\mathsf T}}n=\zeta_nC\)">\(\sum_\lambda\mu_n(\lambda)\frac\lambda n\frac{\lambda^{\mathsf T}}n=\zeta_nC\)</span>.</p>
+<p><em>Taylor expansion.</em> For <span class="math" data-tex="\(x=\lambda/n\)">\(x=\lambda/n\)</span>,
+<span class="math math-display" data-tex="\[
+n^k\mu_n(\lambda)=n^2\sum_\gamma\nu(\gamma)\,b\Bigl(x-\frac\gamma n\Bigr).
+\]">\[
+n^k\mu_n(\lambda)=n^2\sum_\gamma\nu(\gamma)\,b\Bigl(x-\frac\gamma n\Bigr).
+\]</span>
+Expand <span class="math" data-tex="\(\tau\mapsto b(x-\tau\gamma/n)\)">\(\tau\mapsto b(x-\tau\gamma/n)\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> to second order by Taylor's theorem [Lebl, Theorem 4.3.2]; the remainder is bounded by <span class="math" data-tex="\(\|\gamma/n\|^3\)">\(\|\gamma/n\|^3\)</span> times a constant that depends only on the third derivatives of <span class="math" data-tex="\(b\)">\(b\)</span>. The zeroth and first moments of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> remove the constant and linear terms, and the second moment gives <span class="math" data-tex="\(D_Cb(x)\)">\(D_Cb(x)\)</span>, so
+<span class="math math-display" data-tex="\[
+n^k\mu_n(\lambda)=D_Cb(\lambda/n)+O(n^{-1}),
+\]">\[
+n^k\mu_n(\lambda)=D_Cb(\lambda/n)+O(n^{-1}),
+\]</span>
+uniformly in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, since <span class="math" data-tex="\(\sum_\gamma|\nu(\gamma)|\|\gamma\|^3\)">\(\sum_\gamma|\nu(\gamma)|\|\gamma\|^3\)</span> is finite. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, both <span class="math" data-tex="\(\mu_n(\lambda)\)">\(\mu_n(\lambda)\)</span> and <span class="math" data-tex="\(D_Cb(\lambda/n)\)">\(D_Cb(\lambda/n)\)</span> vanish unless <span class="math" data-tex="\(\lambda/n\)">\(\lambda/n\)</span> lies in a fixed ball, which contains <span class="math" data-tex="\(O(n^k)\)">\(O(n^k)\)</span> points of <span class="math" data-tex="\(\frac1n\Gamma\)">\(\frac1n\Gamma\)</span> and on which <span class="math" data-tex="\(\|Ux\|^2\)">\(\|Ux\|^2\)</span> is bounded. By the Lipschitz property of <span class="math" data-tex="\(r\mapsto r_-\)">\(r\mapsto r_-\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_\lambda\mu_n(\lambda)_-\Bigl\|U\frac\lambda n\Bigr\|^2\\
+&amp;\quad-n^{-k}\sum_\lambda\bigl(D_Cb(\lambda/n)\bigr)_-\Bigl\|U\frac\lambda n\Bigr\|^2\Bigr|\\
+&amp;\quad=O(n^{-1}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_\lambda\mu_n(\lambda)_-\Bigl\|U\frac\lambda n\Bigr\|^2\\
+&amp;\quad-n^{-k}\sum_\lambda\bigl(D_Cb(\lambda/n)\bigr)_-\Bigl\|U\frac\lambda n\Bigr\|^2\Bigr|\\
+&amp;\quad=O(n^{-1}).
+\end{aligned}
+\]</span>
+The second sum is a Riemann sum of a continuous function with compact support, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_\lambda\mu_n(\lambda)_-\Bigl\|U\frac\lambda n\Bigr\|^2\\
+&amp;\quad\to\int(D_Cb)_-\|Ux\|^2&lt;\eta\int b .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_\lambda\mu_n(\lambda)_-\Bigl\|U\frac\lambda n\Bigr\|^2\\
+&amp;\quad\to\int(D_Cb)_-\|Ux\|^2&lt;\eta\int b .
+\end{aligned}
+\]</span>
+Fix <span class="math" data-tex="\(n\)">\(n\)</span> so large that <span class="math" data-tex="\(\zeta_n&gt;0\)">\(\zeta_n&gt;0\)</span> and <span class="math" data-tex="\(\sum\mu_n(\lambda)_-\|U\lambda/n\|^2&lt;\eta\zeta_n\)">\(\sum\mu_n(\lambda)_-\|U\lambda/n\|^2&lt;\eta\zeta_n\)</span>.</p>
+<p><em>Rational coefficients.</em> Let <span class="math" data-tex="\(E\subset\Gamma\)">\(E\subset\Gamma\)</span> be a finite set containing the support of <span class="math" data-tex="\(d_n\)">\(d_n\)</span>. On the space <span class="math" data-tex="\(\mathbb R^E\)">\(\mathbb R^E\)</span> of functions <span class="math" data-tex="\(d\)">\(d\)</span> supported in <span class="math" data-tex="\(E\)">\(E\)</span>, the maps <span class="math" data-tex="\(d\mapsto\nu*d\)">\(d\mapsto\nu*d\)</span> and <span class="math" data-tex="\(d\mapsto\zeta(d)=n^{-2}\sum d\)">\(d\mapsto\zeta(d)=n^{-2}\sum d\)</span> are linear, and <span class="math" data-tex="\(d\mapsto\sum_\lambda(\nu*d)(\lambda)_-\|U\lambda/n\|^2\)">\(d\mapsto\sum_\lambda(\nu*d)(\lambda)_-\|U\lambda/n\|^2\)</span> is continuous; the sum runs over the finite set <span class="math" data-tex="\(\mathrm{supp}\,\nu+E\)">\(\mathrm{supp}\,\nu+E\)</span>. The two strict inequalities hold at <span class="math" data-tex="\(d_n\)">\(d_n\)</span>, hence on a neighbourhood of <span class="math" data-tex="\(d_n\)">\(d_n\)</span>. Choose a rational <span class="math" data-tex="\(d\)">\(d\)</span> in it and put <span class="math" data-tex="\(\mu=\nu*d\)">\(\mu=\nu*d\)</span> and <span class="math" data-tex="\(\zeta=\zeta(d)\)">\(\zeta=\zeta(d)\)</span>. They are rational, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> has zero pushforwards, and the identity of the first paragraph gives the exact second moment. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-proof-of-theorem-3-1">3. Proof of Theorem 3.1</h2>
+<p>Take <span class="math" data-tex="\(\nu\)">\(\nu\)</span> from Lemma 2.1 of the previous lesson and <span class="math" data-tex="\(n,\mu,\zeta\)">\(n,\mu,\zeta\)</span> from Lemma 2.1 above. Choose a positive integer <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(M\mu(\lambda)\in\mathbb Z\)">\(M\mu(\lambda)\in\mathbb Z\)</span> for every <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Form two finite lists of affine functions in <span class="math" data-tex="\(W\)">\(W\)</span>: the <em>positive list</em> contains <span class="math" data-tex="\(M\mu(\lambda)_+\)">\(M\mu(\lambda)_+\)</span> copies of <span class="math" data-tex="\(w(\lambda/n)\)">\(w(\lambda/n)\)</span>, and the <em>negative list</em> <span class="math" data-tex="\(M\mu(\lambda)_-\)">\(M\mu(\lambda)_-\)</span> copies, for every <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The total weight of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is zero, so the lists have the same length.</p>
+<p><em>Equal values.</em> Fix <span class="math" data-tex="\(i\)">\(i\)</span> and a real number <span class="math" data-tex="\(x\)">\(x\)</span>. The <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with <span class="math" data-tex="\(e_i(w(\lambda/n))=x\)">\(e_i(w(\lambda/n))=x\)</span> form a coset of <span class="math" data-tex="\(\Lambda_i\)">\(\Lambda_i\)</span> or the empty set, because <span class="math" data-tex="\(e_i(w(\lambda/n))=e_i(w(\lambda))/n\)">\(e_i(w(\lambda/n))=e_i(w(\lambda))/n\)</span>. The pushforward of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> to <span class="math" data-tex="\(\Gamma/\Lambda_i\)">\(\Gamma/\Lambda_i\)</span> is zero, so the positive and the negative parts of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> have equal sums on this set. Hence the value <span class="math" data-tex="\(x\)">\(x\)</span> occurs equally often among the evaluations at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> of the two lists.</p>
+<p><em>Gram matrices.</em> Divide every function in both lists by <span class="math" data-tex="\(\sqrt{\zeta M}\)">\(\sqrt{\zeta M}\)</span>. The function <span class="math" data-tex="\(w(\lambda/n)\)">\(w(\lambda/n)\)</span> has gradient <span class="math" data-tex="\(U\lambda/n\)">\(U\lambda/n\)</span>, so the gradient Gram matrices of the two lists are
+<span class="math math-display" data-tex="\[
+B_\pm=\frac1\zeta\sum_\lambda\mu(\lambda)_\pm\Bigl(U\frac\lambda n\Bigr)\Bigl(U\frac\lambda n\Bigr)^{\mathsf T}.
+\]">\[
+B_\pm=\frac1\zeta\sum_\lambda\mu(\lambda)_\pm\Bigl(U\frac\lambda n\Bigr)\Bigl(U\frac\lambda n\Bigr)^{\mathsf T}.
+\]</span>
+By Lemma 2.1, <span class="math" data-tex="\(B_+-B_-=\frac1\zeta U(\zeta C)U^{\mathsf T}=I_d\)">\(B_+-B_-=\frac1\zeta U(\zeta C)U^{\mathsf T}=I_d\)</span> and <span class="math" data-tex="\(\mathrm{tr}\,B_-&lt;\eta\)">\(\mathrm{tr}\,B_-&lt;\eta\)</span>. The matrix <span class="math" data-tex="\(B_-\)">\(B_-\)</span> is positive semidefinite, so its eigenvalues are at most its trace, and <span class="math" data-tex="\(P=\eta I_d-B_-\)">\(P=\eta I_d-B_-\)</span> is positive semidefinite. Choose vectors <span class="math" data-tex="\(\rho_1,\dots,\rho_d\)">\(\rho_1,\dots,\rho_d\)</span> with <span class="math" data-tex="\(\sum_j\rho_j\rho_j^{\mathsf T}=P\)">\(\sum_j\rho_j\rho_j^{\mathsf T}=P\)</span>, for example the columns of <span class="math" data-tex="\(P^{1/2}\)">\(P^{1/2}\)</span>, and append the same functions <span class="math" data-tex="\((0,\rho_j)\)">\((0,\rho_j)\)</span> to both lists. The Gram matrices become <span class="math" data-tex="\((1+\eta)I_d\)">\((1+\eta)I_d\)</span> and <span class="math" data-tex="\(\eta I_d\)">\(\eta I_d\)</span>, and the appended functions add the same values to both lists. Finally divide every function in both lists by <span class="math" data-tex="\(\sqrt{1+\eta}\)">\(\sqrt{1+\eta}\)</span>; the Gram matrices become <span class="math" data-tex="\(I_d\)">\(I_d\)</span> and <span class="math" data-tex="\(qI_d\)">\(qI_d\)</span>.</p>
+<p><em>The vectors.</em> Let <span class="math" data-tex="\(f_i\)">\(f_i\)</span> be the vector of values at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> of the functions of the positive list, and <span class="math" data-tex="\(g_i\)">\(g_i\)</span> that of the negative list, each list in a fixed order. By the second paragraph, <span class="math" data-tex="\(g_i\)">\(g_i\)</span> is a permutation of the coordinates of <span class="math" data-tex="\(f_i\)">\(f_i\)</span>. For an affine function <span class="math" data-tex="\((v,u)\)">\((v,u)\)</span>, the difference of its values at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> and <span class="math" data-tex="\(a_j\)">\(a_j\)</span> is <span class="math" data-tex="\((a_i-a_j)\cdot u\)">\((a_i-a_j)\cdot u\)</span>. Summing the squares over a list with gradient Gram matrix <span class="math" data-tex="\(I_d\)">\(I_d\)</span>, respectively <span class="math" data-tex="\(qI_d\)">\(qI_d\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|f_i-f_j\|^2=\|a_i-a_j\|^2,\\
+\|g_i-g_j\|^2=q\|a_i-a_j\|^2 .\qquad\square
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|f_i-f_j\|^2=\|a_i-a_j\|^2,\\
+\|g_i-g_j\|^2=q\|a_i-a_j\|^2 .\qquad\square
+\end{gathered}
+\]</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). For <span class="math" data-tex="\(k=1\)">\(k=1\)</span> and <span class="math" data-tex="\(Q_t=s+tc\)">\(Q_t=s+tc\)</span>, check directly that <span class="math" data-tex="\(\frac d{dt}\phi_{Q_t}=\frac c2\phi_{Q_t}&#x27;&#x27;\)">\(\frac d{dt}\phi_{Q_t}=\frac c2\phi_{Q_t}&#x27;&#x27;\)</span>.</p>
+<p><strong>4.2</strong> (easy). Show that <span class="math" data-tex="\((a-b)_-\le b\)">\((a-b)_-\le b\)</span> for real <span class="math" data-tex="\(a,b\ge0\)">\(a,b\ge0\)</span>, and that <span class="math" data-tex="\(|r_--r&#x27;_-|\le|r-r&#x27;|\)">\(|r_--r&#x27;_-|\le|r-r&#x27;|\)</span>.</p>
+<p><strong>4.3</strong> (medium). In the proof of Theorem 3.1, why is it essential that the functions <span class="math" data-tex="\((0,\rho_j)\)">\((0,\rho_j)\)</span> are appended to both lists, rather than only to the positive one?</p>
+<p><strong>4.4</strong> (medium). Show that in Theorem 3.1 the vectors <span class="math" data-tex="\(f_i\)">\(f_i\)</span> cannot all be equal to the vectors <span class="math" data-tex="\(g_i\)">\(g_i\)</span> after a permutation that does not depend on <span class="math" data-tex="\(i\)">\(i\)</span>, unless <span class="math" data-tex="\(q=1\)">\(q=1\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> With <span class="math" data-tex="\(Q=s+tc\)">\(Q=s+tc\)</span> and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> as in Section 1, <span class="math" data-tex="\(\phi=\omega^{-1}Q^{-1/2}e^{-x^2/(2Q)}\)">\(\phi=\omega^{-1}Q^{-1/2}e^{-x^2/(2Q)}\)</span>, so <span class="math" data-tex="\(\partial_Q\phi=\bigl(-\frac1{2Q}+\frac{x^2}{2Q^2}\bigr)\phi\)">\(\partial_Q\phi=\bigl(-\frac1{2Q}+\frac{x^2}{2Q^2}\bigr)\phi\)</span> and <span class="math" data-tex="\(\phi&#x27;&#x27;=\bigl(\frac{x^2}{Q^2}-\frac1Q\bigr)\phi\)">\(\phi&#x27;&#x27;=\bigl(\frac{x^2}{Q^2}-\frac1Q\bigr)\phi\)</span>. Hence <span class="math" data-tex="\(\frac d{dt}\phi=c\,\partial_Q\phi=\frac c2\phi&#x27;&#x27;\)">\(\frac d{dt}\phi=c\,\partial_Q\phi=\frac c2\phi&#x27;&#x27;\)</span>.</p>
+<p><strong>4.2.</strong> If <span class="math" data-tex="\(a\ge b\)">\(a\ge b\)</span>, the left side is zero. Otherwise it is <span class="math" data-tex="\(b-a\le b\)">\(b-a\le b\)</span>. The map <span class="math" data-tex="\(r\mapsto r_-=\max\{-r,0\}\)">\(r\mapsto r_-=\max\{-r,0\}\)</span> is a maximum of two <span class="math" data-tex="\(1\)">\(1\)</span>-Lipschitz functions.</p>
+<p><strong>4.3.</strong> The permutation property compares the two lists value by value at each point. Functions appended to only one list would add values at <span class="math" data-tex="\(a_i\)">\(a_i\)</span> that have no partner in the other list, and the coordinate multisets of <span class="math" data-tex="\(f_i\)">\(f_i\)</span> and <span class="math" data-tex="\(g_i\)">\(g_i\)</span> would differ.</p>
+<p><strong>4.4.</strong> If <span class="math" data-tex="\(g_i=\pi f_i\)">\(g_i=\pi f_i\)</span> for one coordinate permutation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and every <span class="math" data-tex="\(i\)">\(i\)</span>, then <span class="math" data-tex="\(\|g_i-g_j\|=\|\pi(f_i-f_j)\|=\|f_i-f_j\|\)">\(\|g_i-g_j\|=\|\pi(f_i-f_j)\|=\|f_i-f_j\|\)</span>, so <span class="math" data-tex="\(q\|a_i-a_j\|^2=\|a_i-a_j\|^2\)">\(q\|a_i-a_j\|^2=\|a_i-a_j\|^2\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, which forces <span class="math" data-tex="\(q=1\)">\(q=1\)</span>. The permutations in the lemma depend on <span class="math" data-tex="\(i\)">\(i\)</span>, and that is what makes two different scales possible.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Lebl] J. Lebl, <em>Basic Analysis I &amp; II</em>, version 6.3, Theorem 4.3.2 (Taylor's theorem), Theorem 9.1.1 (Leibniz integral rule), Theorem 10.1.15, Theorem 10.2.2 (Fubini) and Theorem 10.7.2 (change of variables); the text of the core courses <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C10">Real Analysis I</a> and <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C20">Real Analysis II</a>. https://www.jirka.org/ra/html/sec_taylor.html#thm_taylor, https://www.jirka.org/ra/html/sec_diffunderint.html#sec_diffunderint-6, https://www.jirka.org/ra/html/sec_mvchangeofvars.html#sec_mvchangeofvars-8</li>
+<li>[OpenAI-ER] OpenAI, <em>A classification of finite Euclidean Ramsey configurations</em>, OpenAI Math Release preprint, 23 September 2026. https://github.com/openai/math/tree/main/preprints/A-classification-of-finite-Euclidean-Ramsey-configurations-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
