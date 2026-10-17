@@ -18,8 +18,10 @@ Each \(d_n\) is a metric on \(X\), and \(d_1=d\). It is continuous on \(X\times 
 
 **Definition 1.1.** Let \(\varepsilon>0\). A set \(E\subseteq X\) is **\((n,\varepsilon)\)-separated** if \(d_n(x,y)>\varepsilon\) for all distinct \(x,y\in E\). Let \(s_F(n,\varepsilon)\) be the largest cardinality of an \((n,\varepsilon)\)-separated set. Put
 \[
-h(F,\varepsilon)=\limsup_{n\to\infty}\frac1n\log s_F(n,\varepsilon),\qquad
+\begin{gathered}
+h(F,\varepsilon)=\limsup_{n\to\infty}\frac1n\log s_F(n,\varepsilon),\\
 h_{\mathrm{top}}(F)=\lim_{\varepsilon\downarrow0}h(F,\varepsilon).
+\end{gathered}
 \]
 The number \(h_{\mathrm{top}}(F)\in[0,\infty]\) is the **topological entropy** of \(F\).
 
@@ -41,7 +43,7 @@ A set \(Z\subseteq X\) is **forward invariant** if \(F(Z)\subseteq Z\). For comp
 
 (a) \(h_{\mathrm{top}}(F|_Z)\leq h_{\mathrm{top}}(F)\).
 
-(b) If \(Z=Z_1\cup Z_2\), then \(s_Z(n,\varepsilon)\leq s_{Z_1}(n,\varepsilon)+s_{Z_2}(n,\varepsilon)\), and \(h_{\mathrm{top}}(F|_Z)=\max\{h_{\mathrm{top}}(F|_{Z_1}),h_{\mathrm{top}}(F|_{Z_2})\}\).
+(b) If \(Z=Z_1\cup Z_2\), then \(s_Z(n,\varepsilon)\leq s_{Z_1}(n,\varepsilon)+s_{Z_2}(n,\varepsilon)\), and \(h_{\mathrm{top}}(F|_Z)\) is the larger of \(h_{\mathrm{top}}(F|_{Z_1})\) and \(h_{\mathrm{top}}(F|_{Z_2})\).
 
 (c) If \(F^p=\mathrm{id}_X\) for some \(p\geq1\), then \(h_{\mathrm{top}}(F)=0\).
 
@@ -49,9 +51,12 @@ A set \(Z\subseteq X\) is **forward invariant** if \(F(Z)\subseteq Z\). For comp
 
 (b) An \((n,\varepsilon)\)-separated \(E\subseteq Z\) splits into \(E\cap Z_1\subseteq Z_1\) and \(E\setminus Z_1\subseteq Z_2\), each separated. For positive numbers \(a,b\) we have \(\log(a+b)\leq\log2+\max\{\log a,\log b\}\), so
 \[
-\frac1n\log s_Z(n,\varepsilon)\leq\frac{\log2}n+\max_{i=1,2}\frac1n\log s_{Z_i}(n,\varepsilon),
+\begin{aligned}
+&\frac1n\log s_Z(n,\varepsilon)\leq\frac{\log2}n\\
+&\quad +\max_{i=1,2}\frac1n\log s_{Z_i}(n,\varepsilon),
+\end{aligned}
 \]
-and the upper limit of a maximum of two sequences is the maximum of their upper limits. Thus \(h(F|_Z,\varepsilon)\leq\max_i h(F|_{Z_i},\varepsilon)\leq\max_ih_{\mathrm{top}}(F|_{Z_i})\); letting \(\varepsilon\downarrow0\) gives \(\leq\), and (a) applied inside \(Z\) gives \(\geq\).
+and the upper limit of a maximum of two sequences is the maximum of their upper limits. Thus \(h(F|_Z,\varepsilon)\leq\max_i h(F|_{Z_i},\varepsilon)\), which is at most \(\max_ih_{\mathrm{top}}(F|_{Z_i})\); letting \(\varepsilon\downarrow0\) gives \(\leq\), and (a) applied inside \(Z\) gives \(\geq\).
 
 (c) For \(n\geq p\) every \(F^j\) with \(j<n\) equals some \(F^{j'}\) with \(j'<p\), so \(d_n=d_p\) and \(s_F(n,\varepsilon)=s_F(p,\varepsilon)\), a number independent of \(n\). Hence \(h(F,\varepsilon)=0\) for every \(\varepsilon\). \(\square\)
 
@@ -89,8 +94,10 @@ Z^{n-k}(M;\mathbb R)&\longrightarrow W_k\cap Z_k(M;\mathbb R),\\
 \]
 This is a cycle because \(\partial c=0\) and \(\delta\varphi=0\), by the cap boundary identity, [Cap products and cohomology with compact supports, (1.1)–(1.2)](course:poincare-duality-on-manifolds/cap-products-and-cohomology-with-compact-supports#1-the-cap-product). The same identity makes the resulting homology class depend only on \([\varphi]\). By [Poincaré duality, Corollary 2.1](course:poincare-duality-on-manifolds/poincare-duality#2-consequences), every class of \(H_k(M;\mathbb R)\) is \([c\frown\varphi]\) for some such cocycle. Hence the map
 \[
-W_k\cap Z_k(M;\mathbb R)\longrightarrow H_k(M;\mathbb R),
-\qquad z\longmapsto[z]
+\begin{gathered}
+W_k\cap Z_k(M;\mathbb R)\longrightarrow H_k(M;\mathbb R),\\
+z\longmapsto[z]
+\end{gathered}
 \]
 is surjective, and \(\dim H_k(M;\mathbb R)\leq N\). We do not assert that the individual faces spanning \(W_k\) are cycles. Vanishing for \(k>n\) is Corollary 5.1 of the orientation lesson. Thus the total dimension is at most \((n+1)N\). The cited duality proof is local-to-global and does not assume finite-dimensional homology.
 
@@ -142,10 +149,7 @@ H_k(M;\mathbb R)\otimes_{\mathbb R}\mathbb C
 \]
 is an isomorphism, compatible with maps induced by continuous self-maps of \(M\). Lemma 2.2 makes the total complex homology a finite-dimensional vector space. Its endomorphism is block diagonal by degree, so its eigenvalues are exactly the union of the eigenvalues of the degree blocks: its characteristic polynomial is the product of theirs. The maximum of their absolute values is therefore the usual spectral radius on total homology. In particular a nonzero real eigenvector with eigenvalue \(2\) remains nonzero after complexification and gives spectral radius at least \(2\).
 
-**The entropy conjecture.** Let \(M\) be a nonempty compact smooth manifold without boundary and \(f:M\to M\) continuous. The induced linear maps \(f_*:H_k(M;\mathbb R)\to H_k(M;\mathbb R)\) on singular homology with real coefficients (functoriality: [Algebraic Topology](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D60), Fomberg's notes, Proposition 1.9; coefficients as in Section 1 of [Orientations and fundamental classes](course:poincare-duality-on-manifolds/orientations-and-fundamental-classes)) have eigenvalues; put
-\[
-\rho(f_*)=\sup\{|\lambda|:\lambda\in\mathbb C\text{ is an eigenvalue of }f_*\otimes\mathbb C\text{ on some }H_k(M;\mathbb C)\}.
-\]
+**The entropy conjecture.** Let \(M\) be a nonempty compact smooth manifold without boundary and \(f:M\to M\) continuous. The induced linear maps \(f_*:H_k(M;\mathbb R)\to H_k(M;\mathbb R)\) on singular homology with real coefficients (functoriality: [Algebraic Topology](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D60), Fomberg's notes, Proposition 1.9; coefficients as in Section 1 of [Orientations and fundamental classes](course:poincare-duality-on-manifolds/orientations-and-fundamental-classes)) have eigenvalues; let \(\rho(f_*)\) be the supremum of \(|\lambda|\) over the eigenvalues \(\lambda\in\mathbb C\) of \(f_*\otimes\mathbb C\) on the spaces \(H_k(M;\mathbb C)\).
 (By Lemma 2.2 these spaces are finite dimensional and \(\rho(f_*)\) is the spectral radius of \(f_*\) on \(\bigoplus_kH_k(M;\mathbb R)\); this course only uses that a real eigenvector \(v\neq0\) with \(f_*v=2v\) forces \(\rho(f_*)\geq2\).) Shub's **entropy conjecture** asks whether
 \[
 h_{\mathrm{top}}(f)\geq\log\rho(f_*)\tag{2.1}
@@ -154,10 +158,7 @@ for every \(C^1\) map \(f\) of a compact smooth manifold without boundary. Known
 
 ## 3. Localization of entropy
 
-**Theorem 3.1 (entropy localization).** Let \(F:X\to X\) be a continuous map of a nonempty compact metric space and \(Z\subseteq X\) a nonempty compact forward invariant set. Suppose that
-\[
-h_{\mathrm{top}}(F|_Z)=0\qquad\text{and}\qquad d(F^nx,Z)\longrightarrow0\ \text{ for every }x\in X.
-\]
+**Theorem 3.1 (entropy localization).** Let \(F:X\to X\) be a continuous map of a nonempty compact metric space and \(Z\subseteq X\) a nonempty compact forward invariant set. Suppose that \(h_{\mathrm{top}}(F|_Z)=0\) and that \(d(F^nx,Z)\to0\) for every \(x\in X\).
 Then \(h_{\mathrm{top}}(F)=0\).
 
 No uniform rate of approach is assumed: different points may need arbitrarily long to come close to \(Z\). The proof shows that, nevertheless, the proportion of time an orbit spends far from \(Z\) is uniformly small in the long run.
@@ -166,7 +167,11 @@ No uniform rate of approach is assumed: different points may need arbitrarily lo
 
 *Step 1: few visits outside \(V\).* We show: for every \(0<\tau<1\) there is an integer \(J\geq1\) with
 \[
-\#\{0\leq i<r:\ F^{mi}x\notin V\}\leq\tau r+J\qquad\text{for all }x\in X\text{ and }r\geq1.\tag{3.1}
+\begin{aligned}
+&\#\{0\leq i<r:\ F^{mi}x\notin V\}\\
+&\quad \leq\tau r+J\\
+&\text{for all }x\in X\text{ and }r\geq1.
+\end{aligned}\tag{3.1}
 \]
 The function \(y\mapsto d(y,X\setminus V)\) is continuous and positive on the compact set \(Z\) (if \(V=X\) there is nothing to prove), so it has a positive minimum \(\eta\) there (Lebl, Theorem 7.5.6). Every \(y\) with \(d(y,Z)<\eta\) lies in \(V\): take \(z\in Z\) with \(d(y,z)<\eta\), so \(y\) is closer to \(z\) than \(X\setminus V\) is. By hypothesis \(d(F^{mi}x,Z)\to0\) as \(i\to\infty\), so only finitely many indices \(i\) have \(F^{mi}x\notin V\). Choose \(k_x\geq1\) so large that
 \[
@@ -187,7 +192,10 @@ s_F(mr,\varepsilon)\leq2^rP^rQ^{\tau r+J}.
 
 *Step 3: limits.* For \(n\geq1\) put \(r=\lceil n/m\rceil\); then \(s_F(n,\varepsilon)\leq s_F(mr,\varepsilon)\) by Lemma 1.2(b), and \(r/n\to1/m\). Therefore
 \[
-h(F,\varepsilon)=\limsup_{n\to\infty}\frac1n\log s_F(n,\varepsilon)\leq\frac{\log2+\log P(m)+\tau\log Q(m)}{m}.
+\begin{aligned}
+&h(F,\varepsilon)=\limsup_{n\to\infty}\frac1n\log s_F(n,\varepsilon)\\
+&\quad \leq\frac{\log2+\log P(m)+\tau\log Q(m)}{m}.
+\end{aligned}
 \]
 This holds for every \(\tau\in(0,1)\), with \(m\) fixed; letting \(\tau\downarrow0\) gives \(h(F,\varepsilon)\leq(\log2+\log P(m))/m\) for every \(m\geq1\). Now \(\frac1m\log P(m)=\frac1m\log s_Z(m,\varepsilon/4)\), and its upper limit as \(m\to\infty\) is \(h(F|_Z,\varepsilon/4)\leq h_{\mathrm{top}}(F|_Z)=0\). Taking the lower limit over \(m\) of the bound gives \(h(F,\varepsilon)\leq0\). As \(\varepsilon\) was arbitrary, \(h_{\mathrm{top}}(F)=0\). \(\square\)
 
@@ -199,15 +207,21 @@ Let \(\Sigma=\mathbb C\cup\{\infty\}\) be the Riemann sphere (its smooth structu
 
 **Lemma 4.1 (radial maps have zero entropy).** Let \(T:\Sigma\to\Sigma\) be continuous with \(T(\Sigma)\subseteq D_A\), and suppose that
 \[
-T(re^{i\theta})=R(r)e^{i\theta}\qquad(0\leq r\leq A,\ \theta\in\mathbb R),
+\begin{gathered}
+T(re^{i\theta})=R(r)e^{i\theta}\\
+(0\leq r\leq A,\ \theta\in\mathbb R),
+\end{gathered}
 \]
 where \(R:[0,A]\to[0,A]\) is continuous and nondecreasing with \(R(0)=0\). Then for every \(q\geq1\) the product map \(T^{\times q}(v_1,\ldots,v_q)=(Tv_1,\ldots,Tv_q)\) of \(\Sigma^q\) has zero topological entropy.
 
 *Proof.* Fix a compatible metric \(d_\Sigma\) on \(\Sigma\) and give \(\Sigma^q\) the maximum metric. Fix \(\varepsilon>0\). The polar map \([0,A]\times S^1\to D_A\), \((r,u)\mapsto ru\), is continuous on a compact space, hence uniformly continuous (Lebl, Theorem 7.5.11). So there are partitions of \([0,A]\) into \(H\) half-open intervals and of \(S^1\) into \(K\) half-open arcs such that \(d_\Sigma(ru,r'u')<\varepsilon\) whenever \(r,r'\) lie in one interval and \(u,u'\) in one arc. Number the intervals from left to right and let \(b(r)\in\{1,\ldots,H\}\) be the number of the interval containing \(r\); then \(b\) is nondecreasing.
 
-*Radius itineraries.* For \(N\geq1\) and \(r\in[0,A]\) consider the vector
+*Radius itineraries.* For \(N\geq1\) and \(r\in[0,A]\) consider the vector \(\iota_N(r)\in\{1,\ldots,H\}^N\) given by
 \[
-\iota_N(r)=\bigl(b(r),b(R(r)),\ldots,b(R^{N-1}(r))\bigr)\in\{1,\ldots,H\}^N.
+\begin{aligned}
+&\iota_N(r)=\bigl(b(r),b(R(r)),\ldots,\\
+&\qquad b(R^{N-1}(r))\bigr).
+\end{aligned}
 \]
 Each \(R^j\) is nondecreasing, so each coordinate of \(\iota_N\) is a nondecreasing function of \(r\). Hence any two values of \(\iota_N\) are comparable coordinatewise: if \(r\leq r'\) then \(\iota_N(r)\leq\iota_N(r')\) in every coordinate. Listing the distinct values in increasing order of \(r\), the coordinate sum strictly increases at each change and stays between \(N\) and \(NH\). So \(\iota_N\) takes at most \(1+N(H-1)\) values. (This orders itineraries by their initial radii; it asserts nothing about monotonicity in time.)
 
@@ -215,7 +229,10 @@ Each \(R^j\) is nondecreasing, so each coordinate of \(\iota_N\) is a nondecreas
 
 *All of \(\Sigma^q\).* Cover \(\Sigma^q\) by \(C\) sets of diameter less than \(\varepsilon\) (finitely many suffice, by compactness). Let \(n\geq2\). Describe a point \(\mathbf v=(v_1,\ldots,v_q)\) by a set of this cover containing it, together with, for each coordinate \(k\), the description above of the point \(Tv_k\in D_A\) for \(N=n-1\). Two points with the same description are within \(\varepsilon\) at time \(0\) and, coordinatewise, at times \(1,\ldots,n-1\). Hence
 \[
-s_{T^{\times q}}(n,\varepsilon)\leq C\bigl[K\bigl(1+(n-1)(H-1)\bigr)\bigr]^q,
+\begin{aligned}
+&s_{T^{\times q}}(n,\varepsilon)\\
+&\quad \leq C\bigl[K\bigl(1+(n-1)(H-1)\bigr)\bigr]^q,
+\end{aligned}
 \]
 a polynomial in \(n\). Its logarithm divided by \(n\) tends to \(0\), so \(h(T^{\times q},\varepsilon)=0\) for every \(\varepsilon\). \(\square\)
 

@@ -29,13 +29,13 @@ Every arc lies on some path, since every non-leaf node has a child and all leave
 1. level \(j\) of \(\mathcal T'_W\) has capacity \(\lfloor m_j/2\rfloor\) and is \(\alpha_j/(1-\mathrm e^{-m_j})\)-spread;
 2. for every path \(Q\) of \(\mathcal T'_W\) there is a path \(P\) of \(\mathcal T\) with \(\mathcal U(P)\subseteq W\cup\mathcal U(Q)\).
 
-**Proof.** *Local quantities.* Let \(v\) be a non-leaf node at depth \(s-1\), so that its arcs belong to level \(s\). Apply the transition of [Resampling a spread family](resampling-a-spread-family.md) to the family \((A_v(b))_{b\in\operatorname{Ch}(v)}\) with weights \(\nu_v\), parameter \(\rho\) and capacity \(m_s\); since \(\alpha_s\le a=\mathrm e^{-50}\rho\), Theorem 3.1 there applies. For a fixed set \(W\subseteq X\), let
-\[
-d_v(W)=\mathbb P(\text{local failure}\mid W),\qquad t_{vb}(W)=\mathbb P(\text{no local failure and target }b\mid W),
-\]
+**Proof.** *Local quantities.* Let \(v\) be a non-leaf node at depth \(s-1\), so that its arcs belong to level \(s\). Apply the transition of [Resampling a spread family](resampling-a-spread-family.md) to the family \((A_v(b))_{b\in\operatorname{Ch}(v)}\) with weights \(\nu_v\), parameter \(\rho\) and capacity \(m_s\); since \(\alpha_s\le a=\mathrm e^{-50}\rho\), Theorem 3.1 there applies. For a fixed set \(W\subseteq X\), let \(d_v(W)\) be the conditional probability of a local failure given \(W\), and \(t_{vb}(W)\) the conditional probability of no local failure and target \(b\) given \(W\),
 probabilities over the source and the target only. Then
 \[
-d_v(W)+\sum_{b\in\operatorname{Ch}(v)}t_{vb}(W)=1,\tag{2.1}
+\begin{aligned}
+&d_v(W)+\sum_{b\in\operatorname{Ch}(v)}t_{vb}(W)\\
+&\quad =1,
+\end{aligned}\tag{2.1}
 \]
 and by Lemma 2.1(2) there, \(d_v(W)\) and \(t_{vb}(W)\) depend only on \(W\cap\bigcup_bA_v(b)\).
 
@@ -45,17 +45,23 @@ and by Lemma 2.1(2) there, \(d_v(W)\) and \(t_{vb}(W)\) depend only on \(W\cap\b
 \]
 Let \(\mathcal S\) be the family of sets \(W\) for which the root is good.
 
-*A potential.* Define \(D_v(W)\ge0\) by \(D_v(W)=0\) at the leaves and
+*A potential.* Define \(D_v(W)\ge0\) by \(D_v(W)=0\) at the leaves and by (2.3) at a non-leaf node \(v\) at depth \(s-1\):
 \[
-D_v(W)=\varepsilon_s^{-1}\Bigl(d_v(W)+\sum_{b\in\operatorname{Ch}(v)}t_{vb}(W)\,D_b(W)\Bigr)\tag{2.3}
+\begin{aligned}
+&D_v(W)=\varepsilon_s^{-1}\Bigl(d_v(W)\\
+&\qquad+\sum_{b\in\operatorname{Ch}(v)}t_{vb}(W)\,D_b(W)\Bigr).
+\end{aligned}
 \]
-at a non-leaf node \(v\) at depth \(s-1\). Every bad node \(v\) has \(D_v(W)>1\). Indeed, assume this for the children of \(v\). If \(v\) is bad, then (2.1) and the failure of (2.2) give \(d_v+\sum_{b\text{ bad}}t_{vb}=1-\sum_{b\text{ good}}t_{vb}>\varepsilon_s\); since \(D_b>1\) for the bad children, the bracket in (2.3) exceeds \(\varepsilon_s\).
+Every bad node \(v\) has \(D_v(W)>1\). Indeed, assume this for the children of \(v\). If \(v\) is bad, then (2.1) and the failure of (2.2) give \(d_v+\sum_{b\text{ bad}}t_{vb}=1-\sum_{b\text{ good}}t_{vb}>\varepsilon_s\); since \(D_b>1\) for the bad children, the bracket in (2.3) exceeds \(\varepsilon_s\).
 
 *The potential below an arc.* Let \(b\) be a child of \(v\). By its recursive definition, \(D_b(W)\) is a function of the quantities \(d_u(W)\) and \(t_{ub'}(W)\) at the nodes \(u\) of the subtree rooted at \(b\), and each of these depends only on the intersection of \(W\) with labels of arcs in that subtree. By Lemma 1.2, all these labels are disjoint from \(A_v(b)\). Hence \(D_b(W)\) depends only on \(W\setminus A_v(b)\). This holds at every node of \(\mathcal T\), good or bad.
 
-*The expected potential.* Let \(W\sim\mu_\rho\), and let \(v\) be a non-leaf node at depth \(s-1\). Theorem 3.1(1) of [Resampling a spread family](resampling-a-spread-family.md) gives \(\mathbb Ed_v(W)\le\mathrm e^{-9m_s}\). A transition without local failure has \(Z(Y)\ge\mathrm e^{-10m_s}\), so \(t_{vb}(W)\le\mathbb P(\text{target }b,\ Z(Y)\ge\mathrm e^{-10m_s}\mid W)\), and Theorem 3.1(2) there, applied to \(f=D_b\), gives \(\mathbb E[t_{vb}(W)D_b(W)]\le\mathrm e^{11m_s}\nu_v(b)\,\mathbb ED_b(W)\). With \(\varepsilon_s^{-1}=\mathrm e^{m_s}\), (2.3) yields
+*The expected potential.* Let \(W\sim\mu_\rho\), and let \(v\) be a non-leaf node at depth \(s-1\). Theorem 3.1(1) of [Resampling a spread family](resampling-a-spread-family.md) gives \(\mathbb Ed_v(W)\le\mathrm e^{-9m_s}\). A transition without local failure has \(Z(Y)\ge\mathrm e^{-10m_s}\), so \(t_{vb}(W)\) is at most \(\mathbb P(\text{target }b,\ Z(Y)\ge\mathrm e^{-10m_s}\mid W)\), and Theorem 3.1(2) there, applied to \(f=D_b\), gives \(\mathbb E[t_{vb}(W)D_b(W)]\le\mathrm e^{11m_s}\nu_v(b)\,\mathbb ED_b(W)\). With \(\varepsilon_s^{-1}=\mathrm e^{m_s}\), (2.3) yields the bound (2.4):
 \[
-\mathbb ED_v(W)\le\mathrm e^{-8m_s}+\mathrm e^{12m_s}\sum_b\nu_v(b)\,\mathbb ED_b(W).\tag{2.4}
+\begin{aligned}
+&\mathbb ED_v(W)\le\mathrm e^{-8m_s}\\
+&\quad+\mathrm e^{12m_s}\sum_b\nu_v(b)\,\mathbb ED_b(W).
+\end{aligned}
 \]
 Since \(\sum_b\nu_v(b)=1\), induction from the leaves upward gives, for every \(v\) at depth \(s-1\),
 \[
@@ -63,16 +69,24 @@ Since \(\sum_b\nu_v(b)=1\), induction from the leaves upward gives, for every \(
 \]
 For the root \(o\), take \(s=1\). Since \(m_h\le16^{h-j}m_j\) for \(h<j\), \(\sum_{h<j}m_h\le m_j\sum_{i\ge1}16^{-i}=m_j/15\), and each exponent is at most \(\frac{12}{15}m_j-8m_j\le-7m_j\). The \(m_j\) are distinct positive integers, so
 \[
-1-\mu_\rho(\mathcal S)=\mu_\rho(\text{root bad})\le\mathbb P\bigl(D_o(W)>1\bigr)\le\mathbb ED_o(W)\le\sum_{m\ge1}\mathrm e^{-7m}=\frac1{\mathrm e^7-1}<\frac14.
+\begin{aligned}
+&1-\mu_\rho(\mathcal S)=\mu_\rho(\text{root bad})\\
+&\quad \le\mathbb P\bigl(D_o(W)>1\bigr)\le\mathbb ED_o(W)\\
+&\quad \le\sum_{m\ge1}\mathrm e^{-7m}=\frac1{\mathrm e^7-1}<\frac14.
+\end{aligned}
 \]
 
 *The reduced tree.* Let \(W\in\mathcal S\), and build \(\mathcal T'_W\) from the root downward. At a retained good non-leaf node \(v\) at depth \(j-1\), put \(\gamma_v=\sum_{b\text{ good}}t_{vb}(W)\ge1-\varepsilon_j>0\); retain the good children \(b\) with \(t_{vb}(W)>0\), and give them the weights \(\nu'_v(b)=t_{vb}(W)/\gamma_v\) and the labels \(A'_v(b)=A_v(b)\setminus W\). These weights are positive and sum to \(1\), every retained non-leaf node has a retained child, and the retained nodes form a probability tree with \(k\) levels. Its labels are subsets of labels of \(\mathcal T\), so it is disjoint. Every path \(Q\) of \(\mathcal T'_W\) is a path \(P\) of \(\mathcal T\), and \(A_v(b)\subseteq W\cup A'_v(b)\) on every arc gives \(\mathcal U(P)\subseteq W\cup\mathcal U(Q)\).
 
 If \(t_{vb}(W)>0\), some outcome of the transition at \(v\) has target \(b\) and no local failure, so its fragment \(A_v(b)\setminus W\) has at most \(m_j/2\) elements. Thus level \(j\) has capacity \(\lfloor m_j/2\rfloor\).
 
-For the spread, let \(J\subseteq X\) be nonempty, and run the transition at \(v\) with the fixed set \(W\). The retained children \(b\) with \(J\subseteq A'_v(b)\) are targets of outcomes with no local failure, a good target and \(J\subseteq T\). By Lemma 2.1(1) of [Resampling a spread family](resampling-a-spread-family.md), \(T\subseteq A_v(c)\) for the source \(c\), whose law is \(\nu_v\) whatever \(W\) is. Hence
+For the spread, let \(J\subseteq X\) be nonempty, and run the transition at \(v\) with the fixed set \(W\). The retained children \(b\) with \(J\subseteq A'_v(b)\) are targets of outcomes with no local failure, a good target and \(J\subseteq T\). By Lemma 2.1(1) of [Resampling a spread family](resampling-a-spread-family.md), \(T\subseteq A_v(c)\) for the source \(c\), whose law is \(\nu_v\) whatever \(W\) is. Hence, writing \(E_J\) for the event that there is no local failure, the target is good and \(J\subseteq T\),
 \[
-\sum_{\substack{b\text{ retained}\\J\subseteq A'_v(b)}}\nu'_v(b)=\frac{\mathbb P(\text{no local failure, good target, }J\subseteq T\mid W)}{\gamma_v}\le\frac{\mathbb P_{c\sim\nu_v}\bigl(J\subseteq A_v(c)\bigr)}{1-\varepsilon_j}\le\frac{\alpha_j^{|J|}}{1-\varepsilon_j}\le\Bigl(\frac{\alpha_j}{1-\varepsilon_j}\Bigr)^{|J|}.
+\begin{aligned}
+&\sum_{\substack{b\text{ retained}\\J\subseteq A'_v(b)}}\nu'_v(b)=\frac{\mathbb P(E_J\mid W)}{\gamma_v}\\
+&\quad\le\frac{\mathbb P_{c\sim\nu_v}\bigl(J\subseteq A_v(c)\bigr)}{1-\varepsilon_j}\le\frac{\alpha_j^{|J|}}{1-\varepsilon_j}\\
+&\quad\le\Bigl(\frac{\alpha_j}{1-\varepsilon_j}\Bigr)^{|J|}.
+\end{aligned}
 \]
 \(\square\)
 
@@ -84,8 +98,12 @@ The sources and targets are auxiliary: for each \(W\), the tree \(\mathcal T'_W\
 
 **Proof.** For \(0<y<1\), \(-\log(1-y)=\sum_{i\ge1}y^i/i\le y/(1-y)\). Hence
 \[
-\sum_{m\ge1}-\log(1-\mathrm e^{-m})\le\frac1{1-\mathrm e^{-1}}\sum_{m\ge1}\mathrm e^{-m}=\frac{\mathrm e^{-1}}{(1-\mathrm e^{-1})^2}<0.93<\log4.\qquad\square
+\begin{aligned}
+&\sum_{m\ge1}-\log(1-\mathrm e^{-m})\le\frac1{1-\mathrm e^{-1}}\sum_{m\ge1}\mathrm e^{-m}\\
+&\quad =\frac{\mathrm e^{-1}}{(1-\mathrm e^{-1})^2}<0.93<\log4.
+\end{aligned}
 \]
+\(\square\)
 
 **Theorem 3.2** (tree covering; OpenAI). Let \(\mathcal T\) be a disjoint probability tree on \(X\) with \(k\ge1\) levels. Suppose that every level is \(\sigma\)-spread, where \(\sigma>0\), and that level \(i\) has capacity \(\ell_i\), where the \(\ell_i\) are positive integers with \(\ell_{i+1}\ge16\ell_i\). Let
 \[
@@ -95,7 +113,10 @@ Then a random set \(W\sim\mu_r\) contains \(\mathcal U(P)\) for some path \(P\) 
 
 **Proof.** If \(r=1\), then \(W=X\) and every path works. Let \(r<1\), and put
 \[
-a=4\sigma,\qquad\rho=\mathrm e^{50}a,\qquad s=\lfloor\log_2\ell_k\rfloor+1.
+\begin{gathered}
+a=4\sigma,\qquad \rho=\mathrm e^{50}a,\\
+s=\lfloor\log_2\ell_k\rfloor+1.
+\end{gathered}
 \]
 Then \(\rho=r/(4(1+\log_2\ell_k))<1\), and \(2^{s-1}\le\ell_k<2^s\).
 
@@ -108,7 +129,7 @@ Then \(\rho=r/(4(1+\log_2\ell_k))<1\), and \(2^{s-1}\le\ell_k<2^s\).
 \alpha_i(t)=\sigma\prod_{u=0}^{t-1}\bigl(1-\mathrm e^{-\lfloor\ell_i/2^u\rfloor}\bigr)^{-1}.
 \]
 
-Both hold for \(t=0\). Suppose that they hold after \(t\) successes and that \(\mathcal T_t\) has at least one level. For a remaining level \(i\), the numbers \(\lfloor\ell_i/2^u\rfloor\) with \(0\le u<t\) are distinct positive integers, since each is at least \(m_i(t)\ge1\) and halving a positive integer decreases it; so Lemma 3.1 gives \(\alpha_i(t)<4\sigma=a\). For consecutive remaining levels \(i<i'\), \(m_{i'}(t)=\lfloor\ell_{i'}/2^t\rfloor\ge\lfloor16\ell_i/2^t\rfloor\ge16\,m_i(t)\). So Lemma 2.1 applies to \(\mathcal T_t\) and the next set \(W\) of the sequence. If \(W\notin\mathcal S\), the attempt *fails* and the current tree is kept. If \(W\in\mathcal S\), the attempt *succeeds*, and \(\mathcal T'_W\) has level capacities \(\lfloor m_i(t)/2\rfloor=m_i(t+1)\), because \(\lfloor\lfloor x\rfloor/2\rfloor=\lfloor x/2\rfloor\), and spread parameters \(\alpha_i(t)/(1-\mathrm e^{-m_i(t)})=\alpha_i(t+1)\). The levels of \(\mathcal T'_W\) with \(m_i(t+1)=0\) form an initial segment, since \(\ell_i\) increases with \(i\), and all their labels are empty. Follow a path of \(\mathcal T'_W\) through this segment, chosen by a fixed rule, to a node \(u\), and let \(\mathcal T_{t+1}\) be the subtree rooted at \(u\). A path of \(\mathcal T_{t+1}\), preceded by the chosen segment, is a path of \(\mathcal T'_W\) with the same union; so Lemma 2.1(2) and (a) for \(\mathcal T_t\) give (a) for \(\mathcal T_{t+1}\) with \(W^{(t+1)}=W\), and (b) holds by construction.
+Both hold for \(t=0\). Suppose that they hold after \(t\) successes and that \(\mathcal T_t\) has at least one level. For a remaining level \(i\), the numbers \(\lfloor\ell_i/2^u\rfloor\) with \(0\le u<t\) are distinct positive integers, since each is at least \(m_i(t)\ge1\) and halving a positive integer decreases it; so Lemma 3.1 gives \(\alpha_i(t)<4\sigma=a\). For consecutive remaining levels \(i<i'\), \(m_{i'}(t)=\lfloor\ell_{i'}/2^t\rfloor\), which is at least \(\lfloor16\ell_i/2^t\rfloor\ge16\,m_i(t)\). So Lemma 2.1 applies to \(\mathcal T_t\) and the next set \(W\) of the sequence. If \(W\notin\mathcal S\), the attempt *fails* and the current tree is kept. If \(W\in\mathcal S\), the attempt *succeeds*, and \(\mathcal T'_W\) has level capacities \(\lfloor m_i(t)/2\rfloor=m_i(t+1)\), because \(\lfloor\lfloor x\rfloor/2\rfloor=\lfloor x/2\rfloor\), and spread parameters \(\alpha_i(t)/(1-\mathrm e^{-m_i(t)})=\alpha_i(t+1)\). The levels of \(\mathcal T'_W\) with \(m_i(t+1)=0\) form an initial segment, since \(\ell_i\) increases with \(i\), and all their labels are empty. Follow a path of \(\mathcal T'_W\) through this segment, chosen by a fixed rule, to a node \(u\), and let \(\mathcal T_{t+1}\) be the subtree rooted at \(u\). A path of \(\mathcal T_{t+1}\), preceded by the chosen segment, is a path of \(\mathcal T'_W\) with the same union; so Lemma 2.1(2) and (a) for \(\mathcal T_t\) give (a) for \(\mathcal T_{t+1}\) with \(W^{(t+1)}=W\), and (b) holds by construction.
 
 *Completion.* Since \(\ell_i\le\ell_k<2^s\), every \(m_i(s)\) is \(0\), while \(m_k(t)\ge1\) for \(t<s\). So the current tree keeps at least one level until the \(s\)-th success and has no levels after it. Then (a), applied to the single path of \(\mathcal T_s\), whose union is empty, gives a path \(P\) of \(\mathcal T\) with \(\mathcal U(P)\subseteq W^{(1)}\cup\dots\cup W^{(s)}\).
 

@@ -35,7 +35,12 @@ For a nonempty finite \(A\subseteq\Gamma\) and \(\psi:\Gamma\to\mathbb R\) write
 
 Let \(H=L^2([0,1];\mathbb R^2)\), with closed unit ball \(B\), and let \(f:B\to B\) be the map of Theorem 5.1 of the lesson on the Hilbert ball. Let \(L>0\) be a Lipschitz constant for \(f\) and \(\delta=\frac12\), so that
 \[
-\|f(x)-f(y)\|\le L\|x-y\|,\qquad\|f(x)-x\|\ge\delta\qquad(x,y\in B).\tag{2.1}
+\begin{aligned}
+&\|f(x)-f(y)\|\\
+&\quad \le L\|x-y\|,\\
+&\|f(x)-x\|\ge\delta\\
+&(x,y\in B).
+\end{aligned}\tag{2.1}
 \]
 Only these two properties of \(f\) and \(H\) are used below. Fix an integer \(D\ge2\) with
 \[
@@ -47,10 +52,11 @@ I_j=\bigl[(2j-1)2^{-r},\,2j\,2^{-r}\bigr].
 \]
 These are dyadic intervals of level \(r\), since \(0\le2j-1<2^r\); they are internal, since \(\min I_1=2^{-r}>0\) and \(\max I_D=2D\,2^{-r}<1\); and \(I_1<I_2<\dots<I_D\), with gaps of length \(2^{-r}\). We call them the *parent intervals*.
 
-**Definition 2.1** (colors). For every dyadic partition \(T\) define \(p(T)\in B\) by recursion on the number of cells \(|T|\):
+**Definition 2.1** (colors). For every dyadic partition \(T\) define \(p(T)\in B\) by recursion on the number of cells \(|T|\), by the rule (2.3): if \(T\) respects every \(I_j\), then
 \[
-p(T)=\begin{cases}\displaystyle f\Bigl(\frac1D\sum_{j=1}^Dp\bigl(T_{I_j}\bigr)\Bigr),&\text{if \(T\) respects every \(I_j\)},\\ 0,&\text{otherwise.}\end{cases}\tag{2.3}
+p(T)=f\Bigl(\frac1D\sum_{j=1}^Dp\bigl(T_{I_j}\bigr)\Bigr),
 \]
+and otherwise \(p(T)=0\).
 
 The recursion is well founded. Suppose \(p\) has been defined, with values in \(B\), on all dyadic partitions with fewer than \(N\) cells, and let \(|T|=N\). If \(T\) respects every \(I_j\), then each \(T_{I_j}\) is a dyadic partition with fewer than \(N\) cells, by Lemma 2.4(b) of the lesson on dyadic partitions, because \(I_j\neq[0,1]\). So the colors \(p(T_{I_j})\) are defined and lie in \(B\); their average lies in the convex set \(B\), \(f\) can be applied, and \(p(T)\in B\). In particular the one-cell partition \(T^{(0)}\) respects no internal interval and has color \(0\).
 
@@ -58,10 +64,7 @@ For the uniform partitions, formula (5.1) of the lesson on dyadic partitions giv
 
 ## 3. Colors along the group
 
-Let
-\[
-\mathcal I=\{I_i:1\le i\le D\}\cup\{I_i\cdot I_j:1\le i,j\le D\}.
-\]
+Let \(\mathcal I\) be the set of the intervals \(I_i\) and \(I_i\cdot I_j\) for \(1\le i,j\le D\).
 We call \(I_i\cdot I_j\) the *descendants* of \(I_i\). By Lemma 2.4(a) of the lesson on dyadic partitions they are dyadic intervals contained in \(I_i\), so every member of \(\mathcal I\) is internal. Call two intervals *separated* if one lies to the left of the other, \(I<J\) or \(J<I\).
 
 **Lemma 3.1.** (a) \(I_i\) and \(I_k\) are separated for \(i\neq k\).
@@ -74,10 +77,7 @@ We call \(I_i\cdot I_j\) the *descendants* of \(I_i\). By Lemma 2.4(a) of the le
 
 The only pairs of distinct members of \(\mathcal I\) that are not separated are the pairs consisting of a parent and one of its own descendants.
 
-Call a pair \((n,g)\in\mathbb Z_{\ge0}\times F\) *admissible* if \(gT^{(n)}\) is a dyadic partition that respects every member of \(\mathcal I\). For \(I\in\mathcal I\), \(n\ge0\) and \(g\in F\) put
-\[
-X^{(n)}_I(g)=\begin{cases}p\bigl((gT^{(n)})_I\bigr),&\text{if \((n,g)\) is admissible},\\ 0,&\text{otherwise.}\end{cases}
-\]
+Call a pair \((n,g)\in\mathbb Z_{\ge0}\times F\) *admissible* if \(gT^{(n)}\) is a dyadic partition that respects every member of \(\mathcal I\). For \(I\in\mathcal I\), \(n\ge0\) and \(g\in F\) put \(X^{(n)}_I(g)=p\bigl((gT^{(n)})_I\bigr)\) if \((n,g)\) is admissible, and \(X^{(n)}_I(g)=0\) otherwise.
 Each \(X^{(n)}_I\) is a map \(F\to B\). By Lemma 3.1 of the lesson on dyadic partitions, applied to \(\mathcal J=\mathcal I\), every finite subset \(K\subseteq F\) has a level \(n\) such that \((n,g)\) is admissible for all \(g\in K\).
 
 **Lemma 3.2** (the recursion along the group). If \((n,g)\) is admissible, then for each \(i\)
@@ -87,12 +87,19 @@ X^{(n)}_{I_i}(g)=f\Bigl(\frac1D\sum_{j=1}^DX^{(n)}_{I_i\cdot I_j}(g)\Bigr).
 
 **Proof.** Put \(T=gT^{(n)}\). It respects \(I_i\) and every \(I_i\cdot I_j\). By Lemma 2.4(c) of the lesson on dyadic partitions, \(T_{I_i}\) respects every \(I_j\) and \((T_{I_i})_{I_j}=T_{I_i\cdot I_j}\). So the first case of (2.3) applies to \(T_{I_i}\):
 \[
-p(T_{I_i})=f\Bigl(\frac1D\sum_jp\bigl((T_{I_i})_{I_j}\bigr)\Bigr)=f\Bigl(\frac1D\sum_jp(T_{I_i\cdot I_j})\Bigr).\qquad\square
+\begin{aligned}
+p(T_{I_i})&=f\Bigl(\frac1D\sum_jp\bigl((T_{I_i})_{I_j}\bigr)\Bigr)\\
+&=f\Bigl(\frac1D\sum_jp(T_{I_i\cdot I_j})\Bigr).
+\end{aligned}
 \]
+\(\square\)
 
 **Lemma 3.3** (transport of colors). Let \(I<J\) be members of \(\mathcal I\) and \(h\in F\) with \(h\circ s_I=s_{I_1}\) and \(h\circ s_J=s_{I_2}\). If \((n,g)\) and \((n,hg)\) are admissible, then
 \[
-X^{(n)}_I(g)=X^{(n)}_{I_1}(hg),\qquad X^{(n)}_J(g)=X^{(n)}_{I_2}(hg).
+\begin{gathered}
+X^{(n)}_I(g)=X^{(n)}_{I_1}(hg),\\
+X^{(n)}_J(g)=X^{(n)}_{I_2}(hg).
+\end{gathered}
 \]
 
 **Proof.** Admissibility says that \(gT^{(n)}\) respects \(I\) and \(J\) and that \((hg)T^{(n)}\) respects \(I_1\) and \(I_2\). Lemma 4.2 of the lesson on dyadic partitions gives \(((hg)T^{(n)})_{I_1}=(gT^{(n)})_I\) and \(((hg)T^{(n)})_{I_2}=(gT^{(n)})_J\). Apply \(p\). \(\square\)
@@ -107,14 +114,20 @@ this is possible because all members of \(\mathcal I\) are internal and \(I_1<I_
 
 **Proposition 4.1.** For every nonempty finite \(A\subseteq F\),
 \[
-\max_{h\in S}\frac{|hA\triangle A|}{|A|}\ \ge\ \frac{\delta^2/L^2-4/D}{4(1-1/D)}\ >0.\tag{4.1}
+\begin{aligned}
+&\max_{h\in S}\frac{|hA\triangle A|}{|A|}\\\
+&\quad \ge\ \frac{\delta^2/L^2-4/D}{4(1-1/D)}\ >0.
+\end{aligned}\tag{4.1}
 \]
 
 **Proof.** Let \(\eta\) be the left side of (4.1). The set \(A\cup SA\), where \(SA=\{hg:h\in S,\ g\in A\}\), is finite; fix a level \(n\) such that \((n,g)\) is admissible for every \(g\in A\cup SA\), and omit the superscript \(n\). For \(I,J\in\mathcal I\) put \(\varphi_{I,J}(g)=\langle X_I(g),X_J(g)\rangle\), a function \(F\to[-1,1]\), and let \(\alpha=\mathbb E_A\varphi_{I_1,I_2}\).
 
 *Step 1: separated correlations are nearly equal.* We claim
 \[
-\bigl|\mathbb E_A\varphi_{I,J}-\alpha\bigr|\le\eta\qquad\text{for all separated }I,J\in\mathcal I.\tag{4.2}
+\begin{gathered}
+\bigl|\mathbb E_A\varphi_{I,J}-\alpha\bigr|\le\eta\\
+\text{for all separated }I,J\in\mathcal I.
+\end{gathered}\tag{4.2}
 \]
 Since \(\varphi_{I,J}=\varphi_{J,I}\), we may assume \(I<J\). Let \(h=h_{I,J}\). For \(g\in A\), both \(g\) and \(hg\) lie in \(A\cup SA\), so \((n,g)\) and \((n,hg)\) are admissible, and Lemma 3.3 gives \(\varphi_{I,J}(g)=\varphi_{I_1,I_2}(hg)\). Therefore
 \[
@@ -124,17 +137,28 @@ and Lemma 1.2, applied to \(\varphi_{I_1,I_2}\), bounds its distance from \(\alp
 
 *Step 2: a pointwise lower bound.* For \(g\in A\) put
 \[
-m(g)=\frac1D\sum_{k=1}^DX_{I_k}(g),\qquad z_i(g)=\frac1D\sum_{j=1}^DX_{I_i\cdot I_j}(g)\quad(1\le i\le D).
+\begin{gathered}
+m(g)=\frac1D\sum_{k=1}^DX_{I_k}(g),\\
+z_i(g)=\frac1D\sum_{j=1}^DX_{I_i\cdot I_j}(g)\quad(1\le i\le D).
+\end{gathered}
 \]
-These are averages of vectors in \(B\), so they lie in \(B\). By Lemma 3.2, \(X_{I_i}(g)=f(z_i(g))\), hence \(m(g)=\frac1D\sum_if(z_i(g))\). Using (2.1), the inequality \(\|\frac1D\sum_iy_i\|^2\le\frac1D\sum_i\|y_i\|^2\) (the triangle inequality followed by the Cauchy–Schwarz inequality in \(\mathbb R^D\)), and (2.1) again,
+These are averages of vectors in \(B\), so they lie in \(B\). By Lemma 3.2, \(X_{I_i}(g)=f(z_i(g))\), hence \(m(g)=\frac1D\sum_if(z_i(g))\). Using (2.1), the inequality \(\|\frac1D\sum_iy_i\|^2\le\frac1D\sum_i\|y_i\|^2\) (the triangle inequality followed by the Cauchy–Schwarz inequality in \(\mathbb R^D\)), and (2.1) again, we obtain the chain (4.3):
 \[
-\delta^2\le\|m-f(m)\|^2=\Bigl\|\frac1D\sum_{i=1}^D\bigl(f(z_i)-f(m)\bigr)\Bigr\|^2\le\frac1D\sum_{i=1}^D\|f(z_i)-f(m)\|^2\le\frac{L^2}D\sum_{i=1}^D\|z_i-m\|^2,\tag{4.3}
+\begin{aligned}
+&\delta^2\le\|m-f(m)\|^2\\
+&\quad=\Bigl\|\frac1D\sum_{i=1}^D\bigl(f(z_i)-f(m)\bigr)\Bigr\|^2\\
+&\quad\le\frac1D\sum_{i=1}^D\|f(z_i)-f(m)\|^2\\
+&\quad\le\frac{L^2}D\sum_{i=1}^D\|z_i-m\|^2,
+\end{aligned}
 \]
 everything evaluated at \(g\).
 
 *Step 3: the variance bound.* We show that for each \(i\)
 \[
-\mathbb E_A\|z_i-m\|^2\le\frac4D+4\Bigl(1-\frac1D\Bigr)\eta.\tag{4.4}
+\begin{aligned}
+&\mathbb E_A\|z_i-m\|^2\\
+&\quad \le\frac4D+4\Bigl(1-\frac1D\Bigr)\eta.
+\end{aligned}\tag{4.4}
 \]
 Expand \(\|m\|^2=\frac1{D^2}\sum_{k,l}\langle X_{I_k},X_{I_l}\rangle\). The \(D\) diagonal terms are at most \(1\), since colors lie in \(B\). The \(D(D-1)\) terms with \(k\neq l\) pair separated intervals (Lemma 3.1(a)), so by (4.2) their averages over \(A\) are at most \(\alpha+\eta\). Hence
 \[
@@ -148,7 +172,10 @@ Combining the three bounds in \(\|z_i-m\|^2=\|z_i\|^2+\|m\|^2-2\langle z_i,m\ran
 
 *Step 4: conclusion.* Average (4.3) over \(g\in A\) and apply (4.4):
 \[
-\delta^2\le\frac{L^2}D\sum_{i=1}^D\mathbb E_A\|z_i-m\|^2\le L^2\Bigl(\frac4D+4\Bigl(1-\frac1D\Bigr)\eta\Bigr).
+\begin{aligned}
+&\delta^2\le\frac{L^2}D\sum_{i=1}^D\mathbb E_A\|z_i-m\|^2\\
+&\quad \le L^2\Bigl(\frac4D+4\Bigl(1-\frac1D\Bigr)\eta\Bigr).
+\end{aligned}
 \]
 Solving for \(\eta\) gives (4.1). The right side of (4.1) is positive by (2.2) and does not depend on \(A\). \(\square\)
 
@@ -164,7 +191,7 @@ Solving for \(\eta\) gives (4.1). The right side of (4.1) is positive by (2.2) a
 
 (4) Theorem 5.1 combines with two companion theorems of OpenAI about nonamenable groups. The first [OpenAI-U, Theorem 1.1] says that a discrete group is amenable if and only if every uniformly bounded representation of it on a complex Hilbert space is similar to a unitary representation, which answers Dixmier's unitarizability question for discrete groups. Applied to \(F\), it gives for every \(\varepsilon>0\) a separable complex Hilbert space and a representation \(\pi\) of \(F\) on it by bounded invertible operators with \(\sup_{g\in F}\|\pi(g)\|\le1+\varepsilon\) such that no bounded invertible \(T\) makes every \(T\pi(g)T^{-1}\) unitary. The second [OpenAI-P, Corollary 1.2] concerns Cayley graphs of nonamenable finitely generated groups. Applied to \(F\), which is finitely generated, it says that for every finite symmetric generating set, Bernoulli bond percolation on the corresponding Cayley graph has \(p_c<p_u\), and for each fixed \(p\) strictly between them there are almost surely infinitely many infinite clusters. The first companion theorem is proved in the course [Amenability and unitarizability](course:amenability-and-unitarizability/unitarizability-implies-amenability#4-all-discrete-groups), whose Corollary 5.1 is the statement for \(F\); the proof of the second is not part of the programme's courses.
 
-(5) Kim and Lodha gave a short exposition of the argument [KL]. It works with the dyadic rationals \(\mathcal D\) in \([0,1]\) instead of dyadic partitions, and with an invariant mean instead of Følner sets. If \(F\) were amenable, its action on \(\mathcal D\) would be extensively amenable, by a theorem of Juschenko, Matte Bon, Monod and de la Salle [KL, Lemma 1.2]: there would be an \(F\)-invariant finitely additive probability measure \(\mu\) on the finite subsets of \(\mathcal D\) such that, for every finite \(M\subseteq\mathcal D\), the finite sets containing \(M\) have measure one. Finite sets \(P\) are colored recursively by points of the Hilbert ball, the color of \(P\) being \(f\) applied to the average of the colors of the two rescaled pieces of \(P\) in two fixed separated dyadic intervals. Here \(f\) is a Lipschitz self-map of the ball with Lipschitz constant below \(\sqrt2\) and displacement bounded below by a positive constant (Exercise 6.6 produces one from Theorem 5.1 of [A Lipschitz map of the Hilbert ball that moves every point](a-lipschitz-map-of-the-hilbert-ball-that-moves-every-point.md)). Elements of \(F\) moving one separated pair of dyadic intervals onto another (Lemma 4.1 of the lesson on dyadic partitions) and the invariance of \(\mu\) make the mean squared distances between the colors of the rescaled pieces all equal; Apollonius's identity \(\|x-\frac{a+b}2\|^2=\frac12(\|x-a\|^2+\|x-b\|^2-\frac12\|a-b\|^2)\) and the bound \(L^2<2\) then force these distances to vanish, so that the colors are fixed by \(f\) on average, which the displacement bound excludes [KL, Section 2]. Their Theorem 2.7 states the argument for a group of permutations of an abstract set \(X\) with two disjoint subsets in bijection with \(X\).
+(5) Kim and Lodha gave a short exposition of the argument [KL]. It works with the dyadic rationals \(\mathcal D\) in \([0,1]\) instead of dyadic partitions, and with an invariant mean instead of Følner sets. If \(F\) were amenable, its action on \(\mathcal D\) would be extensively amenable, by a theorem of Juschenko, Matte Bon, Monod and de la Salle [KL, Lemma 1.2]: there would be an \(F\)-invariant finitely additive probability measure \(\mu\) on the finite subsets of \(\mathcal D\) such that, for every finite \(M\subseteq\mathcal D\), the finite sets containing \(M\) have measure one. Finite sets \(P\) are colored recursively by points of the Hilbert ball, the color of \(P\) being \(f\) applied to the average of the colors of the two rescaled pieces of \(P\) in two fixed separated dyadic intervals. Here \(f\) is a Lipschitz self-map of the ball with Lipschitz constant below \(\sqrt2\) and displacement bounded below by a positive constant (Exercise 6.6 produces one from Theorem 5.1 of [A Lipschitz map of the Hilbert ball that moves every point](a-lipschitz-map-of-the-hilbert-ball-that-moves-every-point.md)). Elements of \(F\) moving one separated pair of dyadic intervals onto another (Lemma 4.1 of the lesson on dyadic partitions) and the invariance of \(\mu\) make the mean squared distances between the colors of the rescaled pieces all equal; Apollonius's identity, by which \(\|x-\frac{a+b}2\|^2\) is half of \(\|x-a\|^2+\|x-b\|^2-\frac12\|a-b\|^2\), and the bound \(L^2<2\) then force these distances to vanish, so that the colors are fixed by \(f\) on average, which the displacement bound excludes [KL, Section 2]. Their Theorem 2.7 states the argument for a group of permutations of an abstract set \(X\) with two disjoint subsets in bijection with \(X\).
 
 ## 6. Exercises
 
@@ -188,11 +215,11 @@ Solving for \(\eta\) gives (4.1). The right side of (4.1) is positive by (2.2) a
 
 **6.3.** \(I_1\cdot I_1\subseteq I_1\), so \(h(I_1\cdot I_1)\subseteq h(I_1)=I_1\), which is disjoint from \(I_2\).
 
-**6.4.** Choose a set \(R\) of representatives of the right cosets \(\Lambda\rho\), so that every \(g\in\Gamma\) is uniquely \(g=\lambda\rho\) with \(\lambda\in\Lambda\), \(\rho\in R\). For \(\phi\in\ell^\infty(\Lambda)\) define \(\tilde\phi\in\ell^\infty(\Gamma)\) by \(\tilde\phi(\lambda\rho)=\phi(\lambda)\). If \(m\) is a left invariant mean on \(\Gamma\), then \(m_\Lambda(\phi)=m(\tilde\phi)\) is positive, linear and \(m_\Lambda(1)=1\). For \(\mu\in\Lambda\), \((L_\mu\tilde\phi)(\lambda\rho)=\tilde\phi(\mu^{-1}\lambda\rho)=\phi(\mu^{-1}\lambda)=\widetilde{L_\mu\phi}(\lambda\rho)\), so \(m_\Lambda(L_\mu\phi)=m(L_\mu\tilde\phi)=m(\tilde\phi)=m_\Lambda(\phi)\). An isomorphism carries invariant means to invariant means, so a group containing a copy of \(F\) would make \(F\) amenable, contradicting Theorem 5.1.
+**6.4.** Choose a set \(R\) of representatives of the right cosets \(\Lambda\rho\), so that every \(g\in\Gamma\) is uniquely \(g=\lambda\rho\) with \(\lambda\in\Lambda\), \(\rho\in R\). For \(\phi\in\ell^\infty(\Lambda)\) define \(\tilde\phi\in\ell^\infty(\Gamma)\) by \(\tilde\phi(\lambda\rho)=\phi(\lambda)\). If \(m\) is a left invariant mean on \(\Gamma\), then \(m_\Lambda(\phi)=m(\tilde\phi)\) is positive, linear and \(m_\Lambda(1)=1\). For \(\mu\in\Lambda\), \((L_\mu\tilde\phi)(\lambda\rho)=\tilde\phi(\mu^{-1}\lambda\rho)\), which is \(\phi(\mu^{-1}\lambda)=\widetilde{L_\mu\phi}(\lambda\rho)\), so \(m_\Lambda(L_\mu\phi)=m(L_\mu\tilde\phi)=m(\tilde\phi)=m_\Lambda(\phi)\). An isomorphism carries invariant means to invariant means, so a group containing a copy of \(F\) would make \(F\) amenable, contradicting Theorem 5.1.
 
 **6.5.** If \(X_I(g)=x_g\) for all \(I\in\mathcal I\), then \(z_i(g)=x_g\), and Lemma 3.2 gives \(x_g=X_{I_i}(g)=f(z_i(g))=f(x_g)\), contradicting \(\|f(x_g)-x_g\|\ge\delta\). In this special case \(z_i=m=x_g\), so \(\|z_i-m\|^2=0\): all the terms in Step 3, including the parent–descendant terms, vanish. In general nothing forces the parent–descendant correlations to match the others, and Step 3 pays \(\frac4D\) for them.
 
-**6.6.** For \(x\in B\), \(f_t(x)\) is a convex combination of \(x\) and \(f_0(x)\), both in the convex set \(B\). Next, \(f_t(x)-x=t(f_0(x)-x)\) has norm at least \(\frac t2\). Finally \(\|f_t(x)-f_t(y)\|\le(1-t)\|x-y\|+tL_0\|x-y\|=(1+t(L_0-1))\|x-y\|\), and \(1+t(L_0-1)<\sqrt2\) under the stated condition. (By Exercise 7.2 of the lesson on the Lipschitz map, \(L_0>1\), so the condition is a genuine upper bound on \(t\).)
+**6.6.** For \(x\in B\), \(f_t(x)\) is a convex combination of \(x\) and \(f_0(x)\), both in the convex set \(B\). Next, \(f_t(x)-x=t(f_0(x)-x)\) has norm at least \(\frac t2\). Finally \(\|f_t(x)-f_t(y)\|\) is at most \((1-t)\|x-y\|+tL_0\|x-y\|\), which is \((1+t(L_0-1))\|x-y\|\), and \(1+t(L_0-1)<\sqrt2\) under the stated condition. (By Exercise 7.2 of the lesson on the Lipschitz map, \(L_0>1\), so the condition is a genuine upper bound on \(t\).)
 
 ## References
 

@@ -5,7 +5,10 @@
 [A square with little prime mass in the next interval](a-square-with-little-prime-mass-in-the-next-interval.md) computed, for every family of test functions \(f_0,\dots,f_k\), the three numbers that govern the weight \(Z^2\): its mass \(w=\sum_j\alpha_j\|f_j\|^2\), its prime mass \(\lambda w\) in the first block, and its prime mass
 
 \[
-v=\lambda\sum_{j=0}^k\alpha_j\|f_j+Tf_{j+1}\|^2,\qquad\alpha_j=\frac{\lambda^j}{j!},
+\begin{gathered}
+v=\lambda\sum_{j=0}^k\alpha_j\|f_j+Tf_{j+1}\|^2,\\
+\alpha_j=\frac{\lambda^j}{j!},
+\end{gathered}
 \]
 
 in the second block, where \(Tf_{j+1}\) integrates out the last variable of \(f_{j+1}\). With one level, \(v\ge\lambda w\) (Exercise 5.2 there). This lesson constructs families with \(w\to1\) and \(v\to0\). The construction alternates signs over a short range of levels \(j\) near \(k\), using product functions for which \(Tf_{j+1}\) is almost exactly \(-f_j\). This proves Proposition 4.1 of [Prime gaps and adjacent intervals](prime-gaps-and-adjacent-intervals.md), and with it the theorem that a positive proportion of prime gaps exceed \(C\log p\).
@@ -19,31 +22,44 @@ We use Chebyshev's inequality \(\mathbb P(|Y-\mathbb EY|\ge x)\le\operatorname{V
 **Lemma 1.1.** For all \(\lambda>0\) and \(\beta>0\) there is a nonnegative \(g\in C_c^\infty((0,\infty))\) with
 
 \[
-\int_0^\infty g(u)^2\,du=1,\qquad\int_0^\infty g(u)\,du=\sqrt\lambda,\qquad\mu_g:=\int_0^\infty u\,g(u)^2\,du<\beta .
+\begin{gathered}
+\int_0^\infty g(u)^2\,du=1,\\
+\int_0^\infty g(u)\,du=\sqrt\lambda,\\
+\mu_g:=\int_0^\infty u\,g(u)^2\,du<\beta .
+\end{gathered}
 \]
 
 **Proof.** For \(R\ge2\) choose a smooth function \(\phi_R\) on \((0,\infty)\) with \(\phi_R(u)=1/u\) on \([1,R]\), \(0\le\phi_R(u)\le1/u\) everywhere, and support in \([1/2,2R]\). Put
 
 \[
-A_R=\int\phi_R,\qquad B_R=\int u\,\phi_R(u)^2\,du,\qquad N_R^2=\int\phi_R^2 .
+\begin{gathered}
+A_R=\int\phi_R,\qquad B_R=\int u\,\phi_R(u)^2\,du,\\
+N_R^2=\int\phi_R^2 .
+\end{gathered}
 \]
 
 Then \(A_R\ge\int_1^Rdu/u=\log R\), \(B_R\le\int_{1/2}^{2R}du/u=\log(4R)\), and \(1/2\le1-1/R\le N_R^2\le\int_{1/2}^\infty u^{-2}du=2\). Let \(g_0=\phi_R/N_R\), so \(\int g_0^2=1\) and \(\int g_0=A_R/N_R\). For \(c>0\) put \(g(u)=c^{-1/2}g_0(u/c)\). The substitution \(u=cx\) gives
 
 \[
-\int g^2=1,\qquad\int g=c^{1/2}\int g_0,\qquad\int u\,g(u)^2du=c\int x\,g_0(x)^2dx=\frac{cB_R}{N_R^2}.
+\begin{gathered}
+\int g^2=1,\qquad \int g=c^{1/2}\int g_0,\\
+\int u\,g(u)^2du=c\int x\,g_0(x)^2dx=\frac{cB_R}{N_R^2}.
+\end{gathered}
 \]
 
 The choice \(c=\lambda/(\int g_0)^2=\lambda N_R^2/A_R^2\) gives \(\int g=\sqrt\lambda\) and \(\mu_g=\lambda B_R/A_R^2\le\lambda\log(4R)/(\log R)^2\). This is less than \(\beta\) for \(R\) large. \(\square\)
 
-The profile must be spread over many scales. If \(g\ge0\) is supported in \([a,b]\), Cauchy–Schwarz gives \(\lambda=(\int g)^2\le\int u\,g^2\cdot\int_a^bdu/u=\mu_g\log(b/a)\), so a small \(\mu_g\) forces \(b/a\ge e^{\lambda/\mu_g}\). With the smooth cut-offs of the construction, \(\lambda=2\) gives \(\mu_g=0.137\) for \(R=10^6\) and \(\mu_g=0.070\) for \(R=10^{12}\).
+The profile must be spread over many scales. If \(g\ge0\) is supported in \([a,b]\), Cauchy–Schwarz gives \(\lambda=(\int g)^2\le\int u\,g^2\cdot\int_a^bdu/u\), which is \(\mu_g\log(b/a)\), so a small \(\mu_g\) forces \(b/a\ge e^{\lambda/\mu_g}\). With the smooth cut-offs of the construction, \(\lambda=2\) gives \(\mu_g=0.137\) for \(R=10^6\) and \(\mu_g=0.070\) for \(R=10^{12}\).
 
 ## 2. The cancelling family
 
 Fix \(\lambda>0\) and \(0<\beta<\gamma<\tau=1/8\). Choose \(g\) by Lemma 1.1 and put
 
 \[
-d=\beta-\mu_g>0,\qquad s_g^2=\int_0^\infty(u-\mu_g)^2g(u)^2\,du,
+\begin{gathered}
+d=\beta-\mu_g>0,\\
+s_g^2=\int_0^\infty(u-\mu_g)^2g(u)^2\,du,
+\end{gathered}
 \]
 
 and let \(B_g\) be an upper bound for the support of \(g\). Fix a smooth \(\chi:[0,\infty)\to[0,1]\) equal to \(1\) on \([0,\beta]\) and to \(0\) on \([\gamma,\infty)\). These are fixed once and for all; only the integer \(k\) below varies.
@@ -51,13 +67,20 @@ and let \(B_g\) be an upper bound for the support of \(g\). Fix a smooth \(\chi:
 For an integer \(k\ge4\) put \(r=\lfloor\sqrt k\rfloor\) and \(a=k-r+1\), so that the \(r\) levels \(a\le j\le k\) are the active ones. For \(0\le j\le k\) let
 
 \[
-Q_j(t)=k^{j/2}\prod_{i=1}^jg(kt_i),\qquad S_j(t)=t_1+\dots+t_j,\qquad Q_0=1,\ S_0=0,
+\begin{gathered}
+Q_j(t)=k^{j/2}\prod_{i=1}^jg(kt_i),\\
+S_j(t)=t_1+\dots+t_j,\\
+Q_0=1,\ S_0=0,
+\end{gathered}
 \]
 
 and define the family
 
 \[
-f_j=\frac{(-1)^j}{\sqrt r\sqrt{\alpha_j}}\,Q_j\,\chi(S_j)\quad(a\le j\le k),\qquad f_j=0\quad(0\le j<a).
+\begin{gathered}
+f_j=\frac{(-1)^j}{\sqrt r\sqrt{\alpha_j}}\,Q_j\,\chi(S_j)\quad(a\le j\le k),\\
+f_j=0\quad(0\le j<a).
+\end{gathered}
 \]
 
 **Lemma 2.1.**
@@ -66,12 +89,23 @@ f_j=\frac{(-1)^j}{\sqrt r\sqrt{\alpha_j}}\,Q_j\,\chi(S_j)\quad(a\le j\le k),\qqu
 2. \(\|Q_j\|=1\), and \(TQ_{j+1}=\sqrt{\lambda/k}\,Q_j\) for \(0\le j<k\).
 3. Under the probability density \(Q_j^2\) on \((0,\infty)^j\), the variables \(kt_1,\dots,kt_j\) are independent with density \(g^2\). Hence \(\mathbb E_jS_j=j\mu_g/k\le\mu_g\) and \(\operatorname{Var}_jS_j=js_g^2/k^2\le s_g^2/k\).
 
-**Proof.** (1) If \(g\) is supported in \([b_0,B_g]\) with \(b_0>0\), every coordinate on the support of \(Q_j\) lies in \([b_0/k,B_g/k]\), and \(\chi(S_j)=0\) unless \(S_j<\gamma<\tau\). So the support of \(f_j\) is a compact subset of \(\Omega_j\). Smoothness, reality and symmetry are clear. (2) \(\int Q_j^2=\prod_i\int k\,g(kt_i)^2dt_i=1\), and \(\int_0^\infty Q_{j+1}(t,u)\,du=Q_j(t)\,k^{1/2}\int_0^\infty g(ku)\,du=Q_j(t)k^{-1/2}\sqrt\lambda\). (3) \(Q_j^2(t)\,dt=\prod_ik\,g(kt_i)^2dt_i\) is a product of probability densities, and \(kt_i\) has density \(g^2\), mean \(\mu_g\) and variance \(s_g^2\). Then \(S_j=k^{-1}\sum_i(kt_i)\), and \(j\le k\). \(\square\)
+**Proof.** (1) If \(g\) is supported in \([b_0,B_g]\) with \(b_0>0\), every coordinate on the support of \(Q_j\) lies in \([b_0/k,B_g/k]\), and \(\chi(S_j)=0\) unless \(S_j<\gamma<\tau\). So the support of \(f_j\) is a compact subset of \(\Omega_j\). Smoothness, reality and symmetry are clear. (2) \(\int Q_j^2=\prod_i\int k\,g(kt_i)^2dt_i=1\), and
+\[
+\begin{aligned}
+&\int_0^\infty Q_{j+1}(t,u)\,du\\
+&\quad=Q_j(t)\,k^{1/2}\int_0^\infty g(ku)\,du\\
+&\quad=Q_j(t)k^{-1/2}\sqrt\lambda.
+\end{aligned}
+\]
+(3) \(Q_j^2(t)\,dt=\prod_ik\,g(kt_i)^2dt_i\) is a product of probability densities, and \(kt_i\) has density \(g^2\), mean \(\mu_g\) and variance \(s_g^2\). Then \(S_j=k^{-1}\sum_i(kt_i)\), and \(j\le k\). \(\square\)
 
 Since \(\alpha_j/\alpha_{j+1}=(j+1)/\lambda\), part (2) gives for the unrestricted products
 
 \[
-\sqrt{\alpha_j}\,T\Bigl(\frac{(-1)^{j+1}Q_{j+1}}{\sqrt{\alpha_{j+1}}}\Bigr)=-\sqrt{\frac{j+1}k}\,(-1)^jQ_j .
+\begin{aligned}
+&\sqrt{\alpha_j}\,T\Bigl(\frac{(-1)^{j+1}Q_{j+1}}{\sqrt{\alpha_{j+1}}}\Bigr)\\
+&\quad =-\sqrt{\frac{j+1}k}\,(-1)^jQ_j .
+\end{aligned}
 \]
 
 For \(j\) close to \(k\) the factor \(\sqrt{(j+1)/k}\) is close to \(1\), so the level \(j+1\) almost cancels the level \(j\) in \(v\). The cut-off \(\chi\) is needed to keep the supports inside \(\Omega_j\); it equals \(1\) on most of the mass because \(S_j\) concentrates near \(j\mu_g/k\le\mu_g<\beta\).
@@ -92,17 +126,24 @@ In particular \(w\to1\) and \(v\to0\) as \(k\to\infty\).
 
 **Proof.** *The mass.* \(\alpha_j\|f_j\|^2=r^{-1}\mathbb E_j[\chi(S_j)^2]\) for the \(r\) active levels, so \(w=r^{-1}\sum_{j=a}^k\mathbb E_j[\chi(S_j)^2]\le1\). Since \(\chi(S_j)=1\) when \(S_j\le\beta\), and \(S_j>\beta\) implies \(S_j-\mathbb E_jS_j\ge\beta-\mu_g=d\), Chebyshev's inequality gives \(\mathbb E_j[\chi(S_j)^2]\ge1-s_g^2/(kd^2)\).
 
-*Interior levels.* Let \(a\le j\le k-1\). By the definition of \(T\) and the substitution \(u'=ku\),
+*Interior levels.* Let \(a\le j\le k-1\). By the definition of \(T\) and the substitution \(u'=ku\), the identity (2.1) holds:
 
 \[
-\sqrt{\alpha_j}\,(f_j+Tf_{j+1})(t)=\frac{(-1)^jQ_j(t)}{\sqrt r}\Bigl[\chi(S_j)-\sqrt{\frac{j+1}{\lambda k}}\int_0^\infty g(u)\,\chi\Bigl(S_j+\frac uk\Bigr)du\Bigr].
-\tag{2.1}
+\begin{aligned}
+&\sqrt{\alpha_j}\,(f_j+Tf_{j+1})(t)\\
+&\quad=\frac{(-1)^jQ_j(t)}{\sqrt r}\Bigl[\chi(S_j)\\
+&\qquad-\sqrt{\frac{j+1}{\lambda k}}\int_0^\infty g(u)\\
+&\qquad\quad\cdot\chi\Bigl(S_j+\frac uk\Bigr)du\Bigr].
+\end{aligned}
 \]
 
-Both terms in the bracket lie in \([0,1]\): the first because \(0\le\chi\le1\), the second because it is at most \(\sqrt{(j+1)/(\lambda k)}\int g=\sqrt{(j+1)/k}\le1\). So the bracket has absolute value at most \(1\) everywhere. On the event \(S_j\le\beta-B_g/k\), every cut-off in (2.1) equals \(1\): \(S_j\le\beta\), and \(S_j+u/k\le\beta\) for every \(u\) in the support of \(g\). There the bracket equals \(1-\sqrt{(j+1)/k}\). As \(j+1\ge a+1>k-r\), we have \(0\le1-\sqrt{(j+1)/k}\le1-\sqrt{1-r/k}\le r/k\). For \(k\ge2B_g/d\), the complementary event \(S_j>\beta-B_g/k\) implies \(S_j-\mathbb E_jS_j\ge d-B_g/k\ge d/2\), and has \(\mathbb P_j\)-probability at most \(4s_g^2/(kd^2)\). Hence
+Both terms in the bracket lie in \([0,1]\): the first because \(0\le\chi\le1\), the second because it is at most \(\sqrt{(j+1)/(\lambda k)}\int g=\sqrt{(j+1)/k}\le1\). So the bracket has absolute value at most \(1\) everywhere. On the event \(S_j\le\beta-B_g/k\), every cut-off in (2.1) equals \(1\): \(S_j\le\beta\), and \(S_j+u/k\le\beta\) for every \(u\) in the support of \(g\). There the bracket equals \(1-\sqrt{(j+1)/k}\). As \(j+1\ge a+1>k-r\), we have \(0\le1-\sqrt{(j+1)/k}\), which is at most \(1-\sqrt{1-r/k}\le r/k\). For \(k\ge2B_g/d\), the complementary event \(S_j>\beta-B_g/k\) implies \(S_j-\mathbb E_jS_j\ge d-B_g/k\ge d/2\), and has \(\mathbb P_j\)-probability at most \(4s_g^2/(kd^2)\). Hence
 
 \[
-\alpha_j\|f_j+Tf_{j+1}\|^2=\frac1r\,\mathbb E_j[\text{bracket}^2]\le\frac1r\Bigl(\Bigl(\frac rk\Bigr)^2+\frac{4s_g^2}{kd^2}\Bigr),
+\begin{aligned}
+&\alpha_j\|f_j+Tf_{j+1}\|^2=\frac1r\,\mathbb E_j[\text{bracket}^2]\\
+&\quad \le\frac1r\Bigl(\Bigl(\frac rk\Bigr)^2+\frac{4s_g^2}{kd^2}\Bigr),
+\end{aligned}
 \]
 
 and the \(r-1\) interior levels contribute at most \((r/k)^2+4s_g^2/(kd^2)\) to \(v/\lambda\).
@@ -112,12 +153,22 @@ The comparison of the two measures in (2.1) needs no estimate: the probability i
 *The two ends.* At the top level \(j=k\), \(f_{k+1}=0\) and \(\alpha_k\|f_k\|^2\le1/r\). At \(j=a-1\), \(f_{a-1}=0\) and
 
 \[
-\sqrt{\alpha_{a-1}}\,Tf_a=\frac{(-1)^aQ_{a-1}}{\sqrt r}\sqrt{\frac a{\lambda k}}\int_0^\infty g(u)\,\chi\Bigl(S_{a-1}+\frac uk\Bigr)du,
+\begin{aligned}
+&\sqrt{\alpha_{a-1}}\,Tf_a=\frac{(-1)^aQ_{a-1}}{\sqrt r}\sqrt{\frac a{\lambda k}}\\
+&\qquad\cdot\int_0^\infty g(u)\,\chi\Bigl(S_{a-1}+\frac uk\Bigr)du,
+\end{aligned}
 \]
 
 whose squared norm is at most \(\frac1r\cdot\frac a{\lambda k}\cdot\lambda\le\frac1r\). For \(j<a-1\) both \(f_j\) and \(f_{j+1}\) vanish. Adding the contributions proves the bound for \(v/\lambda\). As \(k\to\infty\), \(r\to\infty\) and \(r/k\to0\). \(\square\)
 
-When \(\lambda<\beta\) one may take \(g\) supported in \((0,\beta)\); then all cut-offs equal \(1\) on the supports, \(w=1\), and \(v/\lambda=r^{-1}\bigl(\sum_{j=a}^{k-1}(1-\sqrt{(j+1)/k})^2+1+a/k\bigr)\) exactly (Exercise 6.3). For \(k=10^4\) this is \(0.0199\), against the bound \(2/r+(r/k)^2=0.0201\); for \(k=10^6\) it is \(0.001999\).
+When \(\lambda<\beta\) one may take \(g\) supported in \((0,\beta)\); then all cut-offs equal \(1\) on the supports, \(w=1\), and, exactly (Exercise 6.3),
+\[
+\begin{aligned}
+&v/\lambda=r^{-1}\Bigl(\sum_{j=a}^{k-1}\bigl(1-\sqrt{(j+1)/k}\bigr)^2\\
+&\qquad+1+a/k\Bigr).
+\end{aligned}
+\]
+For \(k=10^4\) this is \(0.0199\), against the bound \(2/r+(r/k)^2=0.0201\); for \(k=10^6\) it is \(0.001999\).
 
 ## 3. Proof of the weights proposition and of the theorem
 
@@ -136,12 +187,17 @@ W_X(m)=\frac{Z(m)^2}w\ge0 .
 Proposition 2.1 of the previous lesson, applied to this fixed family, gives as \(X\to\infty\):
 
 \[
-\mathbb E_XW_X\to1,\quad\mathbb E_X(W_XV_J)\to\lambda,\quad\limsup\mathbb E_X(W_XV_I)\le\frac vw\le\varepsilon,\quad\limsup\mathbb E_X(W_XV_J^2)\le C_*=K_\lambda,
+\begin{aligned}
+&\mathbb E_XW_X\to1,\quad\mathbb E_X(W_XV_J)\\
+&\quad \to\lambda,\quad\limsup\mathbb E_X(W_XV_I)\\
+&\quad \le\frac vw\le\varepsilon,\quad\limsup\mathbb E_X(W_XV_J^2)\\
+&\quad \le C_*=K_\lambda,
+\end{aligned}
 \]
 
 and \(\mathbb E_XW_X^2=\mathbb E_XZ^4/w^2=O_{\lambda,\varepsilon}(1)\). \(\square\)
 
-**Theorem 3.1** (OpenAI, 2026). For every \(C>0\) there are \(c(C)>0\) and \(N_0(C)\) such that \(\#\{1\le n\le N:p_{n+1}-p_n>C\log p_n\}\ge c(C)N\) for all \(N\ge N_0(C)\). Consequently the indices at which \(p_n/n\) increases have positive lower density.
+**Theorem 3.1** (OpenAI, 2026). For every \(C>0\) there are \(c(C)>0\) and \(N_0(C)\) such that at least \(c(C)N\) indices \(n\) with \(1\le n\le N\) satisfy \(p_{n+1}-p_n>C\log p_n\), for all \(N\ge N_0(C)\). Consequently the indices at which \(p_n/n\) increases have positive lower density.
 
 **Proof.** Section 4 of the first lesson deduces the theorem and its corollary from its Proposition 4.1, proved above. \(\square\)
 
@@ -165,7 +221,11 @@ The theorem gives a positive proportion \(c(C)\) of gaps exceeding \(C\log p\), 
 
 Earlier unconditional results counted intervals rather than gaps, or reached only thresholds below the average spacing for prime-start counts [BLZ]. Tao showed that thresholds below \(1/4\) can be reached with known results, and that the question for a threshold is equivalent to a definite drop in the density of prime-free intervals between two lengths [Tao-MO]. The adjacent-interval method of the first lesson supplies such a drop through the weights.
 
-The extreme end of the distribution is the subject of the work of Ford, Green, Konyagin, Maynard and Tao [FGKMT], which produces single gaps of size at least a constant times \(\log p\,\log\log p\,\log\log\log\log p/\log\log\log p\). The small end is the subject of the Goldston–Pintz–Yıldırım and Maynard–Tao theorems on bounded gaps, whose weights detect many primes at once, where the weights here suppress them.
+The extreme end of the distribution is the subject of the work of Ford, Green, Konyagin, Maynard and Tao [FGKMT], which produces single gaps of size at least a constant times
+\[
+\frac{\log p\,\log\log p\,\log\log\log\log p}{\log\log\log p}.
+\]
+The small end is the subject of the Goldston–Pintz–Yıldırım and Maynard–Tao theorems on bounded gaps, whose weights detect many primes at once, where the weights here suppress them.
 
 ## 6. Exercises
 
@@ -185,7 +245,7 @@ The extreme end of the distribution is the subject of the work of Ford, Green, K
 
 ## 7. Solutions
 
-**6.1.** Write \(g=\bigl(g\sqrt u\bigr)\cdot u^{-1/2}\). Cauchy–Schwarz gives \(\lambda=(\int_a^bg)^2\le\int_a^bu\,g^2\cdot\int_a^bu^{-1}du=\mu_g\log(b/a)\).
+**6.1.** Write \(g=\bigl(g\sqrt u\bigr)\cdot u^{-1/2}\). Cauchy–Schwarz gives \(\lambda=(\int_a^bg)^2\), which is at most \(\int_a^bu\,g^2\cdot\int_a^bu^{-1}du=\mu_g\log(b/a)\).
 
 **6.2.** The function \(x\mapsto2/x+x^2/k^2\) has derivative \(-2/x^2+2x/k^2\), which vanishes at \(x=k^{2/3}\), where the value is \(3k^{-2/3}\). In the proof, \(r\) enters only through the two end levels (each at most \(1/r\)) and through \(1-\sqrt{(j+1)/k}\le r/k\); both tend to \(0\) when \(r\to\infty\) and \(r/k\to0\).
 

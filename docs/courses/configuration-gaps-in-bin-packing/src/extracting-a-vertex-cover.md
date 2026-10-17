@@ -12,11 +12,20 @@ We use the notation of [Coordinates, cells and items](coordinates-cells-and-item
 
 For a label \(v\) let \(\mathcal M_v\) be the set of good tuples of kind M of label \(v\) in the packing. Each \(M\in\mathcal M_v\) has a row baseline \(b(M)\), a completion \(h(M)\leq b(M)\) and an interval \([h(M),b(M))\). Let \(x_v^+\) and \(x_v^-\) be the numbers of tuples in \(\mathcal M_v\) whose global item is \(U^+\), respectively \(U^-\), of length one. Distinct tuples use distinct items, so the stocks give
 \[
-\sum_vx_v^+\leq dk,\qquad\sum_vx_v^-\leq d(n-k),\qquad\sum_v(x_v^++x_v^-)\leq dn.\tag{1.1}
+\begin{gathered}
+\sum_vx_v^+\leq dk,\\
+\sum_vx_v^-\leq d(n-k),\\
+\sum_v(x_v^++x_v^-)\leq dn.
+\end{gathered}\tag{1.1}
 \]
 For a real \(a\) put
 \[
-A_v(a)=\#\{M\in\mathcal M_v:b(M)\leq a\},\quad C_v(a)=\#\{M\in\mathcal M_v:h(M)\leq a\},\quad I_v(a)=\#\{M\in\mathcal M_v:a\in[h(M),b(M))\}.
+\begin{aligned}
+&A_v(a)\\
+&\quad =\#\{M\in\mathcal M_v:b(M)\leq a\},\quad C_v(a)\\
+&\quad =\#\{M\in\mathcal M_v:h(M)\leq a\},\quad I_v(a)\\
+&\quad =\#\{M\in\mathcal M_v:a\in[h(M),b(M))\}.
+\end{aligned}
 \]
 By the prefix identity (5.1) of the first lesson,
 \[
@@ -24,18 +33,19 @@ C_v(a)=A_v(a)+I_v(a).\tag{1.2}
 \]
 Recall that \(B_v(a)\) counts the members of the baseline multiset \(\mathcal B_v\) at most \(a\); it is defined by the instance, not by the packing.
 
-**Lemma 1.1 (prefix bounds).** For every label \(v\) and every real \(a\),
+**Lemma 1.1 (prefix bounds).** For every label \(v\) and every real \(a\), the bounds (1.3) and (1.4) hold:
 \[
-C_v(a)\geq\#\{\text{deadlines of label }v\text{ at most }a\}-3K,\tag{1.3}
-\]
-\[
-A_v(a)\leq B_v(a)+3K-\xi,\tag{1.4}
+\begin{aligned}
+&C_v(a)\geq\#\{\text{deadlines of label }v\\
+&\qquad\text{at most }a\}-3K,\\
+&A_v(a)\leq B_v(a)+3K-\xi,
+\end{aligned}
 \]
 where \(\xi\geq0\) is the number of good tuples of kind G whose key has label \(v\) and baseline greater than \(a\) and whose row has baseline at most \(a\).
 
 *Proof.* (1.3) A deadline is an anchor of subclass \(Z\), which occurs only in tuples of kind M. Of the deadlines of label \(v\) at most \(a\), all but fewer than \(3K\) lie in good tuples, which then belong to \(\mathcal M_v\) and fit, so \(h\leq z\leq a\) (Lemma 4.1(a) of the second lesson). Different deadlines lie in different tuples.
 
-(1.4) The tree rows of label \(v\) with baseline at most \(a\) number exactly the tree part of \(B_v(a)\). For the job rows, let \(N'\) be the number of positions \(r\in\mathcal R_v\) with \(b_r\leq a\); there are \(2dN'\) job rows of label \(v\) with baseline at most \(a\), and \(B_v(a)\) contains \(dN'\) job baselines. The \(dN'\) keys of label \(v\) at these positions lie, all but fewer than \(3K\), in good tuples of kind G, whose rows have label \(v\) and a position not later than the key (Lemma 4.1(b) of the second lesson), hence baseline at most \(a\). The \(\xi\) tuples of the statement use further such rows, with keys at later positions. All these tuples are distinct and use distinct rows, so at least \(dN'-3K+\xi\) job rows of label \(v\) with baseline at most \(a\) are used in tuples of kind G, and at most \(2dN'-(dN'-3K+\xi)=dN'+3K-\xi\) remain for \(\mathcal M_v\). Adding the tree rows gives (1.4). \(\square\)
+(1.4) The tree rows of label \(v\) with baseline at most \(a\) number exactly the tree part of \(B_v(a)\). For the job rows, let \(N'\) be the number of positions \(r\in\mathcal R_v\) with \(b_r\leq a\); there are \(2dN'\) job rows of label \(v\) with baseline at most \(a\), and \(B_v(a)\) contains \(dN'\) job baselines. The \(dN'\) keys of label \(v\) at these positions lie, all but fewer than \(3K\), in good tuples of kind G, whose rows have label \(v\) and a position not later than the key (Lemma 4.1(b) of the second lesson), hence baseline at most \(a\). The \(\xi\) tuples of the statement use further such rows, with keys at later positions. All these tuples are distinct and use distinct rows, so at least \(dN'-3K+\xi\) job rows of label \(v\) with baseline at most \(a\) are used in tuples of kind G, and at most \(2dN'-(dN'-3K+\xi)\), that is, \(dN'+3K-\xi\), remain for \(\mathcal M_v\). Adding the tree rows gives (1.4). \(\square\)
 
 **Lemma 1.2 (coverage).** For every label \(v\) and every point \(a\) of a test interval of \(v\),
 \[
@@ -44,8 +54,13 @@ I_v(a)\geq d-6K .
 
 *Proof.* There are \(B_v(a)+d\) deadlines of label \(v\) at most \(a\), by (5.2) of the third lesson. By (1.2), (1.3) and (1.4) with \(\xi\geq0\),
 \[
-I_v(a)=C_v(a)-A_v(a)\geq(B_v(a)+d-3K)-(B_v(a)+3K)=d-6K.\qquad\square
+\begin{aligned}
+&I_v(a)=C_v(a)-A_v(a)\\
+&\quad \geq(B_v(a)+d-3K)\\
+&\quad -(B_v(a)+3K)=d-6K.
+\end{aligned}
 \]
+\(\square\)
 
 ## 2. Every vertex pays for one side
 
@@ -55,7 +70,10 @@ I_v(a)=C_v(a)-A_v(a)\geq(B_v(a)+d-3K)-(B_v(a)+3K)=d-6K.\qquad\square
 
 *Marks.* For every tuple \(M\in\mathcal M_v\) whose global item has length \(0\) and whose local item has positive length \(\lambda_\ell\), the interval of \(M\) has length at most \(\lambda_\ell+\Delta\) (Corollary 4.2(a) of the second lesson) and therefore meets at most one cell of depth \(\ell\), over both trees (Lemma 3.1(c) of the third lesson). If it meets one, mark the corresponding vertex of \(T^+\) or of \(T^-\). Let \(\mathcal A^+,\mathcal A^-\) be the sets of marked vertices. Different tuples use different local items, and label \(v\) has exactly \(p_\ell\) local items of length \(\lambda_\ell\); so
 \[
-|\mathcal A^+\cap V_\ell(T^+)|+|\mathcal A^-\cap V_\ell(T^-)|\leq p_\ell\qquad(1\leq\ell\leq L).
+\begin{gathered}
+|\mathcal A^+\cap V_\ell(T^+)|+|\mathcal A^-\cap V_\ell(T^-)|\leq p_\ell\\
+(1\leq\ell\leq L).
+\end{gathered}
 \]
 
 *Every leaf is reached.* Let \(y\) be a leaf of \(T^+\). The point \(a_y\) lies in a test interval, so by Lemma 1.2 at least \(d-6K\) intervals of \(\mathcal M_v\) contain it. An interval with a global item \(U^-\) belongs to a minus row and lies in \((2,5]\); one with a length-one \(U^+\) is one of at most \(x_v^+<d-6K\). So some interval containing \(a_y\) has a global item of length \(0\). If its local item also had length \(0\), the interval would be empty or a job test interval (Corollary 4.2(b) of the second lesson), and job intervals are disjoint from leaf cells. So its local item has some length \(\lambda_\ell>0\), the interval meets the cell of depth \(\ell\) that contains \(a_y\), which is the cell of the ancestor of \(y\) of depth \(\ell\) (Lemma 3.1(c) of the third lesson), and that ancestor is in \(\mathcal A^+\). It lies on the complete path to \(y\). The same argument applies to the leaves of \(T^-\), using \(x_v^-<d-6K\).
@@ -81,7 +99,10 @@ L_{v,r}\geq d-x_v^+-9K .
 
 *Comparison.* By (1.2), (1.3) with the \(B_v(a)+d\) deadlines at most \(a\), and (1.4),
 \[
-B_v(a)+d-3K\leq C_v(a)=A_v(a)+I_v(a)\leq B_v(a)+3K-\xi+x_v^++u,
+\begin{aligned}
+&B_v(a)+d-3K\leq C_v(a)=A_v(a)\\
+&\quad +I_v(a)\leq B_v(a)+3K-\xi+x_v^++u,
+\end{aligned}
 \]
 that is,
 \[
@@ -90,8 +111,12 @@ u-\xi\geq d-x_v^+-6K.\tag{3.1}
 
 *Counting the keys at \(r\).* At least \(d-3K\) of the \(d\) keys at \(r\) lie in good tuples of kind G. Exactly \(\xi\) of these use rows of earlier positions; all the others use rows of position \(r\) itself (Lemma 4.1(b) of the second lesson). At most \(d-u\) short rows of position \(r\) are available to them, the other \(u\) being in \(\mathcal M_v\). So at least \(d-3K-\xi-(d-u)\) of them use long rows of position \(r\):
 \[
-L_{v,r}\geq u-\xi-3K\geq d-x_v^+-9K\qquad\text{by (3.1)}.\qquad\square
+\begin{gathered}
+L_{v,r}\geq u-\xi-3K\geq d-x_v^+-9K\\
+\text{by (3.1)}.
+\end{gathered}
 \]
+\(\square\)
 
 ## 4. A vertex cover of the right size
 
@@ -103,7 +128,10 @@ L_{v,r}\geq u-\xi-3K\geq d-x_v^+-9K\qquad\text{by (3.1)}.\qquad\square
 
 *Capacity.* A tuple counted by \(L_{v,(e,j)}\) has a long row at its key's position, so its resource is a permit of \(e\) or belongs to an earlier edge (Lemma 4.1(b) of the second lesson). Summing over both endpoints and all \(j\),
 \[
-\sum_{v\in\{v_1,v_2\}}\sum_{j=1}^RL_{v,(e,j)}\leq dR+3nK.\tag{4.1}
+\begin{aligned}
+&\sum_{v\in\{v_1,v_2\}}\sum_{j=1}^RL_{v,(e,j)}\\
+&\quad \leq dR+3nK.
+\end{aligned}\tag{4.1}
 \]
 
 *Contradiction if both endpoints are outside \(C\).* Then \(x_{v_i}^+\leq d/8\), and by Lemma 3.1 and \(d\geq72K\), every position of \(e\) at \(v_i\) that is not excluded has
@@ -112,13 +140,20 @@ L_{v_i,(e,j)}\geq d-\frac d8-9K\geq\frac{3d}4 .
 \]
 Each endpoint has at least \(R-P\) such positions of \(e\), so the left side of (4.1) is at least \(2(R-P)\frac{3d}4\). With \(R=100(P+nK+1)\),
 \[
-2(R-P)\frac{3d}4-(dR+3nK)=\frac d2(R-3P)-3nK=\frac{97d}2P+(50d-3)nK+50d>0,
+\begin{aligned}
+&2(R-P)\frac{3d}4-(dR+3nK)\\
+&\quad =\frac d2(R-3P)-3nK=\frac{97d}2P\\
+&\quad +(50d-3)nK+50d>0,
+\end{aligned}
 \]
 contradicting (4.1). So every edge has an endpoint in \(C\). \(\square\)
 
 **Lemma 4.2 (size of the cover).**
 \[
-|C|\leq\frac{dk}{d-6K}+\frac{48Kn}d\leq k+\frac{60Kn}d\leq k+\rho n .
+\begin{aligned}
+&|C|\leq\frac{dk}{d-6K}+\frac{48Kn}d\\
+&\quad \leq k+\frac{60Kn}d\leq k+\rho n .
+\end{aligned}
 \]
 
 *Proof.* Let \(V_+=\{v:x_v^+\geq d-6K\}\). Since \(d\geq72K\), \(d-6K>d/8\), so \(V_+\subseteq C\); by (1.1), \(|V_+|(d-6K)\leq\sum_vx_v^+\leq dk\).
@@ -171,7 +206,14 @@ Conversely, suppose \(\mathrm P=\mathrm{NP}\). The language of triples (instance
 
 **6.2.** Show that Lemma 3.1 would fail without the correction \(\xi\): describe how keys at \(r\) matched with rows of earlier positions could otherwise make \(u\) large without producing long matches at \(r\).
 
-**6.3.** Verify the identity \(\frac d2(R-3P)-3nK=\frac{97d}2P+(50d-3)nK+50d\) for \(R=100(P+nK+1)\).
+**6.3.** Verify the identity
+\[
+\begin{aligned}
+&\frac d2(R-3P)-3nK\\
+&\quad=\frac{97d}2P+(50d-3)nK+50d
+\end{aligned}
+\]
+for \(R=100(P+nK+1)\).
 
 **6.4.** For \(K_4\), \(k=2\) and \(\rho=1/8\), show that Lemma 4.2 gives \(|C|\leq2\), while every vertex cover of \(K_4\) has at least three vertices. Which hypothesis of the soundness proposition is then violated?
 
@@ -183,7 +225,7 @@ Conversely, suppose \(\mathrm P=\mathrm{NP}\). The language of triples (instance
 
 **6.2.** A key at \(r\) may take a short or long row of an earlier position. Each such match removes a row from the earlier prefix, so fewer rows there are available to tuples of kind M, \(A_v(a)\) drops by one, and the deadline inequality can then be met with one interval less at \(a\): one short row of position \(r\) fewer is needed in kind M. The term \(-\xi\) in (1.4) records exactly this, and \(L_{v,r}\geq u-\xi-3K\) subtracts these matches from the keys at \(r\).
 
-**6.3.** \(\frac d2(R-3P)=\frac d2(97P+100nK+100)=\frac{97d}2P+50dnK+50d\); subtract \(3nK\).
+**6.3.** \(\frac d2(R-3P)=\frac d2(97P+100nK+100)\), which is \(\frac{97d}2P+50dnK+50d\); subtract \(3nK\).
 
 **6.4.** \(\frac{60Kn}d\leq\frac{\rho n}2=\frac14\), so \(|C|\leq k+\frac14\) and, \(|C|\) being an integer, \(|C|\leq2\). A set of two vertices of \(K_4\) misses the edge between the other two. So no packing into at most \(B+c\) bins exists: the hypothesis of Proposition 4.3 fails.
 

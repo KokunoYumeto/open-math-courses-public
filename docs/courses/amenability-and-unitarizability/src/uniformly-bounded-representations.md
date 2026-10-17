@@ -32,11 +32,14 @@ An inner product \([\cdot,\cdot]\) on \(H\) is *equivalent* to \(\langle\cdot,\c
 
 (b) ⇒ (c). Put \([\xi,\eta]=\langle Q\xi,\eta\rangle\).
 
-(c) ⇒ (b). The form \([\cdot,\cdot]\) is bounded: by the Cauchy–Schwarz inequality for it, \(|[\xi,\eta]|\le[\xi,\xi]^{1/2}[\eta,\eta]^{1/2}\le b\|\xi\|\|\eta\|\). Theorem 3.1 of the Hilbert space lesson gives a bounded \(Q\) with \([\xi,\eta]=\langle Q\xi,\eta\rangle\); it is self-adjoint because \(\langle Q\xi,\xi\rangle=[\xi,\xi]\) is real, and \(a\le Q\le b\). Invariance gives \(\langle\pi(g)^*Q\pi(g)\xi,\eta\rangle=[\pi(g)\xi,\pi(g)\eta]=[\xi,\eta]=\langle Q\xi,\eta\rangle\).
+(c) ⇒ (b). The form \([\cdot,\cdot]\) is bounded: by the Cauchy–Schwarz inequality for it, \(|[\xi,\eta]|\le[\xi,\xi]^{1/2}[\eta,\eta]^{1/2}\le b\|\xi\|\|\eta\|\). Theorem 3.1 of the Hilbert space lesson gives a bounded \(Q\) with \([\xi,\eta]=\langle Q\xi,\eta\rangle\); it is self-adjoint because \(\langle Q\xi,\xi\rangle=[\xi,\xi]\) is real, and \(a\le Q\le b\). Invariance gives \(\langle\pi(g)^*Q\pi(g)\xi,\eta\rangle=[\pi(g)\xi,\pi(g)\eta]\), which is \([\xi,\eta]=\langle Q\xi,\eta\rangle\).
 
 (b) ⇒ (a). First, \(Q\) is invertible: \(a\|\xi\|^2\le\langle Q\xi,\xi\rangle\le\|Q\xi\|\|\xi\|\) gives \(\|Q\xi\|\ge a\|\xi\|\), so \(Q\) is injective with closed range, and the range is dense because its orthogonal complement is \(\ker Q^*=\ker Q=0\). So \(Q\) is a bijection, and \(\|Q^{-1}\|\le1/a\). Let \(S=Q^{1/2}\) be the positive square root (Proposition 8.5(10) of the C\*-algebra lesson). It commutes with \(Q\), hence with \(Q^{-1}\), and \(S\cdot SQ^{-1}=SQ^{-1}\cdot S=1\); so \(S\in GL(H)\). Now \(V(g)=S\pi(g)S^{-1}\) is invertible and
 \[
-V(g)^*V(g)=S^{-1}\pi(g)^*S^2\pi(g)S^{-1}=S^{-1}QS^{-1}=1,
+\begin{aligned}
+V(g)^*V(g)&=S^{-1}\pi(g)^*S^2\pi(g)S^{-1}\\
+&=S^{-1}QS^{-1}=1,
+\end{aligned}
 \]
 so \(V(g)\) is an invertible isometry, that is, a unitary. \(\square\)
 
@@ -54,13 +57,21 @@ This is linear in \(\xi\), conjugate-linear in \(\eta\), and \([\eta,\xi]=\overl
 
 Let \(U:G\to GL(H)\) be a unitary representation. A *bounded operator cocycle* for \(U\) is a map \(D:G\to B(H)\) with \(\sup_g\|D(g)\|<\infty\) and
 \[
-D(gh)=D(g)+U(g)D(h)U(g)^{-1}\qquad(g,h\in G).\tag{2.1}
+\begin{aligned}
+&D(gh)=D(g)\\
+&\quad +U(g)D(h)U(g)^{-1}\\
+&(g,h\in G).
+\end{aligned}\tag{2.1}
 \]
 It is *inner* if there is \(B\in B(H)\) with \(D(g)=B-U(g)BU(g)^{-1}\) for all \(g\).
 
 **Example 2.1.** For every \(T\in B(H)\), the map \(D_T(g)=T-U(g)TU(g)^{-1}\) satisfies (2.1):
 \[
-D_T(g)+U(g)D_T(h)U(g)^{-1}=T-U(g)TU(g)^{-1}+U(g)TU(g)^{-1}-U(gh)TU(gh)^{-1}=D_T(gh).
+\begin{aligned}
+&D_T(g)+U(g)D_T(h)U(g)^{-1}=T\\
+&\quad -U(g)TU(g)^{-1}+U(g)TU(g)^{-1}\\
+&\quad -U(gh)TU(gh)^{-1}=D_T(gh).
+\end{aligned}
 \]
 It is inner, implemented by \(T\). The construction of the course takes direct sums of cocycles \(D_{T_j}\) on spaces \(H_j\) for which \(\sup_{j,g}\|D_{T_j}(g)\|<\infty\) while \(\|T_j\|\) is unbounded. The direct sum of the \(D_{T_j}\) is a bounded cocycle, and the question is whether some other bounded operator implements it.
 
@@ -78,9 +89,12 @@ into the identity plus an operator of norm \(\|D(g)\|\) and a unitary gives the 
 
 Suppose \(S\in GL(H\oplus H)\) makes every \(V(g)=S\pi(g)S^{-1}\) unitary. The closed subspace \(M=H\oplus0\) satisfies \(\pi(g)M\subseteq M\) for every \(g\), hence \(\pi(g)^{-1}M=\pi(g^{-1})M\subseteq M\). So the closed subspace \(SM\) is invariant under every \(V(g)\) and \(V(g)^{-1}=V(g)^*\), and therefore its orthogonal complement is invariant under every \(V(g)\). Thus \(N=S^{-1}((SM)^\perp)\) is a closed subspace, invariant under every \(\pi(g)\), with \(M\cap N=0\) and \(M+N=H\oplus H\), because \(SM\) and \((SM)^\perp\) have these properties and \(S\) is a linear homeomorphism.
 
-Let \(P_1,P_2:H\oplus H\to H\) be the coordinate projections. The restriction \(P_2|_N:N\to H\) is injective, since its kernel is \(M\cap N\), and surjective, since \((0,\eta)=m+n\) with \(m\in M\), \(n\in N\) gives \(P_2n=\eta\). By the inverse mapping theorem it has a bounded inverse, and \(B=P_1(P_2|_N)^{-1}\in B(H)\) satisfies \(N=\{(B\eta,\eta):\eta\in H\}\). Invariance of \(N\) under \(\pi(g)\) says that \(\pi(g)(B\eta,\eta)=(U(g)B\eta+D(g)U(g)\eta,\ U(g)\eta)\) lies in \(N\), that is,
+Let \(P_1,P_2:H\oplus H\to H\) be the coordinate projections. The restriction \(P_2|_N:N\to H\) is injective, since its kernel is \(M\cap N\), and surjective, since \((0,\eta)=m+n\) with \(m\in M\), \(n\in N\) gives \(P_2n=\eta\). By the inverse mapping theorem it has a bounded inverse, and \(B=P_1(P_2|_N)^{-1}\in B(H)\) satisfies \(N=\{(B\eta,\eta):\eta\in H\}\). Invariance of \(N\) under \(\pi(g)\) says that the vector \(\pi(g)(B\eta,\eta)\), which is \((U(g)B\eta+D(g)U(g)\eta,\ U(g)\eta)\), lies in \(N\), that is,
 \[
-U(g)B\eta+D(g)U(g)\eta=BU(g)\eta\qquad(\eta\in H).
+\begin{gathered}
+U(g)B\eta+D(g)U(g)\eta=BU(g)\eta\\
+(\eta\in H).
+\end{gathered}
 \]
 Substituting \(\eta=U(g)^{-1}\zeta\) gives \(D(g)=B-U(g)BU(g)^{-1}\). \(\square\)
 
@@ -92,11 +106,20 @@ The converse holds as well (Exercise 5.2).
 
 **Proof.** Let \(X=G/K\) be the set of left cosets and choose representatives \(s:X\to G\), \(s(x)\in x\), with \(s(K)=e\). For \(g\in G\) and \(x\in X\) put \(c(g,x)=s(gx)^{-1}g\,s(x)\). Since \(g\,s(x)\in gx=s(gx)K\), we have \(c(g,x)\in K\). Directly,
 \[
-c(gh,x)=s(ghx)^{-1}g\,s(hx)\cdot s(hx)^{-1}h\,s(x)=c(g,hx)\,c(h,x),\qquad c(e,x)=e.
+\begin{aligned}
+&c(gh,x)\\
+&\quad =s(ghx)^{-1}g\,s(hx)\cdot s(hx)^{-1}h\,s(x)\\
+&\quad =c(g,hx)\,c(h,x),\\
+&c(e,x)=e.
+\end{aligned}
 \]
-For \(\xi=(\xi_x)_{x\in X}\) in the Hilbert direct sum \(\ell^2(X;E)\) define \(\Pi(g)\xi\) by \((\Pi(g)\xi)_{gx}=\sigma(c(g,x))\xi_x\). As \(x\mapsto gx\) is a bijection of \(X\), \(\|\Pi(g)\xi\|^2=\sum_x\|\sigma(c(g,x))\xi_x\|^2\le|\sigma|^2\|\xi\|^2\). The cocycle identity gives
+For \(\xi=(\xi_x)_{x\in X}\) in the Hilbert direct sum \(\ell^2(X;E)\) define \(\Pi(g)\xi\) by \((\Pi(g)\xi)_{gx}=\sigma(c(g,x))\xi_x\). As \(x\mapsto gx\) is a bijection of \(X\), \(\|\Pi(g)\xi\|^2=\sum_x\|\sigma(c(g,x))\xi_x\|^2\), which is at most \(|\sigma|^2\|\xi\|^2\). The cocycle identity gives
 \[
-(\Pi(g)\Pi(h)\xi)_{ghx}=\sigma(c(g,hx))\sigma(c(h,x))\xi_x=\sigma(c(gh,x))\xi_x=(\Pi(gh)\xi)_{ghx},
+\begin{aligned}
+&(\Pi(g)\Pi(h)\xi)_{ghx}\\
+&\quad =\sigma(c(g,hx))\sigma(c(h,x))\xi_x\\
+&\quad =\sigma(c(gh,x))\xi_x=(\Pi(gh)\xi)_{ghx},
+\end{aligned}
 \]
 and \(\Pi(e)=1\), so \(\Pi\) is a representation with \(|\Pi|\le|\sigma|\).
 
@@ -104,7 +127,10 @@ Let \(j:E\to\ell^2(X;E)\) be the isometric inclusion at the coset \(K\). For \(k
 
 If \(\Pi\) is unitarizable, Proposition 1.1 gives \(Q\) with \(a\le Q\le b\) and \(\Pi(g)^*Q\Pi(g)=Q\). The compression \(Q_K=j^*Qj\) satisfies \(a\le Q_K\le b\), and for \(k\in K\), using \(\Pi(k)j=j\sigma(k)\),
 \[
-\sigma(k)^*Q_K\sigma(k)=j^*\Pi(k)^*Q\Pi(k)j=j^*Qj=Q_K.
+\begin{aligned}
+\sigma(k)^*Q_K\sigma(k)&=j^*\Pi(k)^*Q\Pi(k)j\\
+&=j^*Qj=Q_K.
+\end{aligned}
 \]
 By Proposition 1.1, \(\sigma\) is unitarizable. If \(G\) is countable, \(X\) is countable, and \(\ell^2(X;E)\) is separable when \(E\) is. \(\square\)
 
@@ -132,12 +158,9 @@ By Lemma 3.3 and Lemma 3.1, it suffices to produce, for every countable nonamena
 
 ## 6. Solutions
 
-**5.1.** If \(a\|\xi\|^2\le[\xi,\xi]\le b\|\xi\|^2\) and \([\pi(g)\xi,\pi(g)\xi]=[\xi,\xi]\), then \(a\|\pi(g)\xi\|^2\le[\pi(g)\xi,\pi(g)\xi]=[\xi,\xi]\le b\|\xi\|^2\), so \(\|\pi(g)\|\le(b/a)^{1/2}\) for every \(g\).
+**5.1.** If \(a\|\xi\|^2\le[\xi,\xi]\le b\|\xi\|^2\) and \([\pi(g)\xi,\pi(g)\xi]=[\xi,\xi]\), then \(a\|\pi(g)\xi\|^2\le[\pi(g)\xi,\pi(g)\xi]\), which is \([\xi,\xi]\le b\|\xi\|^2\), so \(\|\pi(g)\|\le(b/a)^{1/2}\) for every \(g\).
 
-**5.2.** Here \(R^{-1}=\begin{pmatrix}1&B\\0&1\end{pmatrix}\), and
-\[
-R\pi(g)R^{-1}=\begin{pmatrix}U(g)&D(g)U(g)-BU(g)\\0&U(g)\end{pmatrix}\begin{pmatrix}1&B\\0&1\end{pmatrix}=\begin{pmatrix}U(g)&U(g)B+D(g)U(g)-BU(g)\\0&U(g)\end{pmatrix}.
-\]
+**5.2.** Here \(R^{-1}=\begin{pmatrix}1&B\\0&1\end{pmatrix}\). The matrix \(R\pi(g)\) has diagonal entries \(U(g)\), lower left entry \(0\) and upper right entry \(D(g)U(g)-BU(g)\); multiplying on the right by \(R^{-1}\) keeps the diagonal and the lower left entry and gives the upper right entry \(U(g)B+D(g)U(g)-BU(g)\).
 Since \(D(g)U(g)=BU(g)-U(g)B\), the upper right entry vanishes.
 
 **5.3.** Put \([\xi,\eta]=\frac1{|G|}\sum_{g\in G}\langle\pi(g)\xi,\pi(g)\eta\rangle\). Replacing \(g\) by \(gh\) permutes the terms, so the form is invariant, and as in the proof of Theorem 1.2, \(|\pi|^{-2}\|\xi\|^2\le[\xi,\xi]\le|\pi|^2\|\xi\|^2\); so \(a=|\pi|^{-2}\), \(b=|\pi|^2\). This is the proof of Theorem 1.2 with the uniform average in place of the mean.

@@ -13,13 +13,20 @@ We use: Fourier inversion on the Schwartz space, Theorem 1.1 of [Fourier transfo
 We keep the setting of Section 4 of the divisor-sums lesson: fixed test functions \(F_r\) of dimensions \(j_r\) and budgets \(\rho_r\) (\(1\le r\le R\)), the coordinate set \(\Gamma=\{(r,\ell)\}\) with \(M=|\Gamma|\), \(\sigma=\sum_r\rho_r\), and \(\delta\in\{0,1\}\) with \(\sigma<1\) if \(\delta=0\) and \(\sigma<1/2\) if \(\delta=1\). In addition we fix a surjection \(\kappa:\Gamma\to\{1,\dots,t\}\), the *pattern*, and write \(\mathcal M_i=\kappa^{-1}(i)\) for its fibres. The shifts are
 
 \[
-b_\gamma=a_{\kappa(\gamma)},\qquad a_1,\dots,a_t\ \text{distinct integers},\qquad |a_i|\le DL^B,
+\begin{gathered}
+b_\gamma=a_{\kappa(\gamma)},\\
+a_1,\dots,a_t\ \text{distinct integers},\\
+|a_i|\le DL^B,
+\end{gathered}
 \]
 
 with fixed \(D>0\), \(B\ge0\). If \(\delta=1\), the mark \(a_0\) is a further integer, different from \(a_1,\dots,a_t\), with \(|a_0|\le DL^B\). Let
 
 \[
-\mathcal H=\{a_1,\dots,a_t\}\ \ (\delta=0),\qquad\mathcal H=\{a_0,a_1,\dots,a_t\}\ \ (\delta=1).
+\begin{gathered}
+\mathcal H=\{a_1,\dots,a_t\}\ \ (\delta=0),\\
+\mathcal H=\{a_0,a_1,\dots,a_t\}\ \ (\delta=1).
+\end{gathered}
 \]
 
 So \(t\) counts the distinct shifts that carry divisor coordinates, while \(M\) counts the coordinates with repetition. Coordinates of one factor may share a shift.
@@ -27,14 +34,21 @@ So \(t\) counts the distinct shifts that carry divisor coordinates, while \(M\) 
 **Theorem 1.1** (correlations of smooth divisor sums). There is a real constant \(\mathcal C\), depending only on the test functions \(F_r\) and the pattern \(\kappa\), and a number \(A\) depending only on \(M\), such that, uniformly in the shifts,
 
 \[
-\mathbb E_X\Bigl[\chi_\delta(m)\prod_{r=1}^RD_{F_r}(m;\mathbf b^{(r)})\Bigr]=L^{-t}\Bigl\{\mathfrak S(\mathcal H)\,\mathcal C+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\}.
+\begin{aligned}
+&\mathbb E_X\Bigl[\chi_\delta(m)\prod_{r=1}^RD_{F_r}(m;\mathbf b^{(r)})\Bigr]\\
+&\quad=L^{-t}\Bigl\{\mathfrak S(\mathcal H)\,\mathcal C\\
+&\qquad+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\}.
+\end{aligned}
 \]
 
-If \(\Gamma=\varnothing\), then \(t=0\) and \(\mathcal C=\prod_rF_r\). If every fibre \(\mathcal M_i\) has at most two elements, then
+If \(\Gamma=\varnothing\), then \(t=0\) and \(\mathcal C=\prod_rF_r\). If every fibre \(\mathcal M_i\) has at most two elements, then the formula (1.1) holds:
 
 \[
-\mathcal C=\int_{[0,\infty)^{P}}\ \prod_{r=1}^Rf_r\bigl(y_{\kappa(r,1)},\dots,y_{\kappa(r,j_r)}\bigr)\prod_{i\in P}dy_i,\qquad f_r=(-1)^{j_r}\partial_1\cdots\partial_{j_r}F_r,
-\tag{1.1}
+\begin{aligned}
+&\mathcal C=\int_{[0,\infty)^{P}}\ \prod_{r=1}^Rf_r\bigl(y_{\kappa(r,1)},\dots,y_{\kappa(r,j_r)}\bigr)\\
+&\qquad\qquad\prod_{i\in P}dy_i,\\
+&f_r=(-1)^{j_r}\partial_1\cdots\partial_{j_r}F_r,
+\end{aligned}
 \]
 
 where \(P\) is the set of \(i\) with \(|\mathcal M_i|=2\), the variable \(y_i\) is set to \(0\) when \(|\mathcal M_i|=1\), and \(f_r=F_r\) for a scalar factor.
@@ -44,13 +58,20 @@ The error term is additive: it remains valid when \(\mathfrak S(\mathcal H)=0\).
 Two special cases show the shape of (1.1). For one test function \(F\) of dimension \(1\) and one shift \(b\),
 
 \[
-\mathbb E_X D_F(m;b)^2=\frac1L\Bigl\{\int_0^\infty F'(y)^2\,dy+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\},
+\begin{aligned}
+&\mathbb E_X D_F(m;b)^2=\frac1L\Bigl\{\int_0^\infty F'(y)^2\,dy\\
+&\qquad+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\},
+\end{aligned}
 \]
 
 the fibre being \(\{(1,1),(2,1)\}\). For two different shifts \(b_1\ne b_2\), each fibre is a singleton and
 
 \[
-\mathbb E_X D_F(m;b_1)D_F(m;b_2)=\frac1{L^2}\Bigl\{\mathfrak S(\{b_1,b_2\})F'(0)^2+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\}.
+\begin{aligned}
+&\mathbb E_X D_F(m;b_1)D_F(m;b_2)\\
+&\quad=\frac1{L^2}\Bigl\{\mathfrak S(\{b_1,b_2\})F'(0)^2\\
+&\qquad+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\}.
+\end{aligned}
 \]
 
 By Proposition 4.2 of the divisor-sums lesson, the left side of Theorem 1.1 equals the density sum \(\mathcal A_\delta\) up to \(O(L^{-A'})\) for every \(A'\). It therefore suffices to prove the formula for \(\mathcal A_\delta\), which is done in Sections 2–6.
@@ -60,14 +81,21 @@ By Proposition 4.2 of the divisor-sums lesson, the left side of Theorem 1.1 equa
 **Lemma 2.1.** Let \(F\) be a test function of dimension \(j\ge1\), and let \(\widetilde F\) be a smooth compactly supported extension of \(F\) to \(\mathbb R^j\). Put
 
 \[
-\Phi(u)=(2\pi)^{-j}\int_{\mathbb R^j}e^{v_1+\dots+v_j}\,\widetilde F(v)\,e^{iu\cdot v}\,dv\qquad(u\in\mathbb R^j).
+\begin{gathered}
+\Phi(u)=(2\pi)^{-j}\int_{\mathbb R^j}e^{v_1+\dots+v_j}\,\widetilde F(v)\,e^{iu\cdot v}\,dv\\
+(u\in\mathbb R^j).
+\end{gathered}
 \]
 
 Then \(\Phi\) is a Schwartz function, and for all \(v\in\mathbb R^j\)
 
 \[
-\widetilde F(v)=\int_{\mathbb R^j}\Phi(u)\,e^{-\sum_\ell(1+iu_\ell)v_\ell}\,du,\qquad
-(-1)^j\partial_1\cdots\partial_j\widetilde F(v)=\int_{\mathbb R^j}\Phi(u)\prod_{\ell=1}^j(1+iu_\ell)\,e^{-\sum_\ell(1+iu_\ell)v_\ell}\,du .
+\begin{aligned}
+&\widetilde F(v)=\int_{\mathbb R^j}\Phi(u)\,e^{-\sum_\ell(1+iu_\ell)v_\ell}\,du,\\
+&(-1)^j\partial_1\cdots\partial_j\widetilde F(v)\\
+&\quad=\int_{\mathbb R^j}\Phi(u)\prod_{\ell=1}^j(1+iu_\ell)\\
+&\qquad\cdot e^{-\sum_\ell(1+iu_\ell)v_\ell}\,du .
+\end{aligned}
 \]
 
 **Proof.** The function \(g(v)=e^{\sum_\ell v_\ell}\widetilde F(v)\) is smooth with compact support, hence Schwartz. In the conventions of the Fourier-inversion theorem cited above, \(\Phi=Gg\), and since the Fourier transform \(F\!f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\) is an automorphism of the Schwartz space with inverse \(G\), \(\Phi\) is Schwartz and \(g=F\!\Phi\), that is, \(g(v)=\int e^{-iu\cdot v}\Phi(u)\,du\). Multiplying by \(e^{-\sum v_\ell}\) gives the first formula. Every function \(u\mapsto\Phi(u)\prod_\ell(1+iu_\ell)\) is integrable, so differentiation under the integral sign is allowed; each \(\partial_\ell\) brings down the factor \(-(1+iu_\ell)\). \(\square\)
@@ -75,14 +103,20 @@ Then \(\Phi\) is a Schwartz function, and for all \(v\in\mathbb R^j\)
 For each positive-dimensional \(F_r\) fix such an extension and its \(\Phi_r\). For \(u=(u_\gamma)_{\gamma\in\Gamma}\in\mathbb R^\Gamma\) put
 
 \[
-w_\gamma=1+iu_\gamma,\qquad z_\gamma=\frac{w_\gamma}L,\qquad z_S=\sum_{\gamma\in S}z_\gamma\ \ (S\subseteq\Gamma),\qquad\Phi(u)=\prod_{r:\,j_r\ge1}\Phi_r\bigl((u_{r,\ell})_\ell\bigr)\prod_{r:\,j_r=0}F_r .
+\begin{gathered}
+w_\gamma=1+iu_\gamma,\qquad z_\gamma=\frac{w_\gamma}L,\\
+z_S=\sum_{\gamma\in S}z_\gamma\ \ (S\subseteq\Gamma),\\
+\Phi(u)=\prod_{r:\,j_r\ge1}\Phi_r\bigl((u_{r,\ell})_\ell\bigr)\prod_{r:\,j_r=0}F_r .
+\end{gathered}
 \]
 
-For squarefree positive integers the first formula of Lemma 2.1 at \(v_\ell=\log d_{r,\ell}/L\ge0\) reads
+For squarefree positive integers the first formula of Lemma 2.1 at \(v_\ell=\log d_{r,\ell}/L\ge0\) takes the form (2.1):
 
 \[
-F_r\Bigl(\Bigl(\frac{\log d_{r,\ell}}L\Bigr)_\ell\Bigr)=\int\Phi_r(u^{(r)})\prod_\ell d_{r,\ell}^{-z_{r,\ell}}\,du^{(r)} .
-\tag{2.1}
+\begin{aligned}
+&F_r\Bigl(\Bigl(\frac{\log d_{r,\ell}}L\Bigr)_\ell\Bigr)\\
+&\quad=\int\Phi_r(u^{(r)})\prod_\ell d_{r,\ell}^{-z_{r,\ell}}\,du^{(r)} .
+\end{aligned}
 \]
 
 ## 3. The density sum as an integral of an Euler product
@@ -90,29 +124,40 @@ F_r\Bigl(\Bigl(\frac{\log d_{r,\ell}}L\Bigr)_\ell\Bigr)=\int\Phi_r(u^{(r)})\prod
 A tuple \(\mathbf d=(d_\gamma)\) of squarefree positive integers is the same as a family \((S_p)_p\), indexed by the primes, of subsets \(S_p=\{\gamma:p\mid d_\gamma\}\subseteq\Gamma\), with only finitely many \(S_p\) nonempty. Compatibility (Definition 4.1 of the divisor-sums lesson) is a condition on each \(S_p\) separately. Call a nonempty \(S\subseteq\Gamma\) *allowed at \(p\)* if the shifts \(b_\gamma\), \(\gamma\in S\), are congruent modulo \(p\) and, when \(\delta=1\), their common residue is not \(a_0\bmod p\). Then \(\mathbf d\) is compatible exactly when every nonempty \(S_p\) is allowed at \(p\), and in that case
 
 \[
-\rho_\delta(\mathbf d)\prod_\gamma\mu(d_\gamma)d_\gamma^{-z_\gamma}=\prod_{p:\,S_p\ne\varnothing}\frac{(-1)^{|S_p|}p^{-z_{S_p}}}{p-\delta}.
-\tag{3.1}
+\begin{aligned}
+&\rho_\delta(\mathbf d)\prod_\gamma\mu(d_\gamma)d_\gamma^{-z_\gamma}\\
+&\quad =\prod_{p:\,S_p\ne\varnothing}\frac{(-1)^{|S_p|}p^{-z_{S_p}}}{p-\delta}.
+\end{aligned}\tag{3.1}
 \]
 
 **Lemma 3.1.** With \(C_M=2(2^M-1)\),
 
 \[
-\sum_{\mathbf d}\rho_\delta(\mathbf d)\prod_\gamma d_\gamma^{-1/L}\le\prod_p\Bigl(1+\frac{C_M}{p^{1+1/L}}\Bigr)\le(1+L)^{C_M}.
+\begin{aligned}
+&\sum_{\mathbf d}\rho_\delta(\mathbf d)\prod_\gamma d_\gamma^{-1/L}\\
+&\quad \le\prod_p\Bigl(1+\frac{C_M}{p^{1+1/L}}\Bigr)\le(1+L)^{C_M}.
+\end{aligned}
 \]
 
-**Proof.** By (3.1) with absolute values, the sum is a sum of products of local terms over finitely supported families \((S_p)\). For nonnegative terms such a sum equals the product over \(p\) of the local sums \(1+\sum_{S\text{ allowed}}p^{-|S|/L}/(p-\delta)\): the partial product over \(p\le P\) is the sum over families supported on the primes \(p\le P\), and both sides increase to their limits as \(P\to\infty\). There are at most \(2^M-1\) allowed sets, each contributing at most \(p^{-1/L}\cdot2/p\), since \(1/(p-\delta)\le2/p\). Finally, \(\log\prod_p(1+C_Mp^{-1-1/L})\le C_M\sum_pp^{-1-1/L}\le C_M\log\zeta(1+1/L)\), because \(\log\zeta(s)=\sum_p\sum_{k\ge1}p^{-ks}/k\ge\sum_pp^{-s}\) for real \(s>1\), and \(\zeta(1+x)\le1+\int_1^\infty y^{-1-x}dy=1+1/x\) for \(x>0\). \(\square\)
+**Proof.** By (3.1) with absolute values, the sum is a sum of products of local terms over finitely supported families \((S_p)\). For nonnegative terms such a sum equals the product over \(p\) of the local sums \(1+\sum_{S\text{ allowed}}p^{-|S|/L}/(p-\delta)\): the partial product over \(p\le P\) is the sum over families supported on the primes \(p\le P\), and both sides increase to their limits as \(P\to\infty\). There are at most \(2^M-1\) allowed sets, each contributing at most \(p^{-1/L}\cdot2/p\), since \(1/(p-\delta)\le2/p\). Finally, \(\log\prod_p(1+C_Mp^{-1-1/L})\) is at most \(C_M\sum_pp^{-1-1/L}\le C_M\log\zeta(1+1/L)\), because \(\log\zeta(s)=\sum_p\sum_{k\ge1}p^{-ks}/k\ge\sum_pp^{-s}\) for real \(s>1\), and \(\zeta(1+x)\le1+\int_1^\infty y^{-1-x}dy=1+1/x\) for \(x>0\). \(\square\)
 
 **Lemma 3.2.** For every \(u\in\mathbb R^\Gamma\), with absolutely convergent sum and product,
 
 \[
-\sum_{\mathbf d}\rho_\delta(\mathbf d)\prod_\gamma\mu(d_\gamma)d_\gamma^{-z_\gamma}=\prod_pP_p(z),\qquad P_p(z)=1+\frac1{p-\delta}\sum_{S\text{ allowed at }p}(-1)^{|S|}p^{-z_S},
+\begin{aligned}
+&\sum_{\mathbf d}\rho_\delta(\mathbf d)\prod_\gamma\mu(d_\gamma)d_\gamma^{-z_\gamma}=\prod_pP_p(z),\\
+&P_p(z)=1\\
+&\quad +\frac1{p-\delta}\sum_{S\text{ allowed at }p}(-1)^{|S|}p^{-z_S},
+\end{aligned}
 \]
 
 and
 
 \[
-\mathcal A_\delta=\int_{\mathbb R^\Gamma}\Phi(u)\prod_pP_p(z)\,du .
-\tag{3.2}
+\begin{aligned}
+&\mathcal A_\delta\\
+&\quad =\int_{\mathbb R^\Gamma}\Phi(u)\prod_pP_p(z)\,du .
+\end{aligned}\tag{3.2}
 \]
 
 **Proof.** Since \(|d^{-z_\gamma}|=d^{-1/L}\), Lemma 3.1 gives absolute convergence of the sum, and of the product in the sense \(\sum_p|P_p(z)-1|<\infty\). The partial product over \(p\le P\) equals, by (3.1), the sum over tuples whose prime factors are all at most \(P\); dominated convergence (with Lemma 3.1) lets \(P\to\infty\). For (3.2), insert (2.1) for each factor into the definition of \(\mathcal A_\delta\); the result is a sum over \(\mathbf d\) of integrals over \(u\). The absolute values have finite total \(\int|\Phi|\cdot(1+L)^{C_M}\), so Fubini's theorem allows the sum to be taken inside. \(\square\)
@@ -122,7 +167,11 @@ and
 Separate from \(P_p\) the part that would be present if all shifts were incongruent modulo \(p\):
 
 \[
-B_p(z)=\prod_{i=1}^t\ \prod_{\varnothing\ne S\subseteq\mathcal M_i}\bigl(1-p^{-1-z_S}\bigr)^{-(-1)^{|S|}},\qquad H_p(z)=\frac{P_p(z)}{B_p(z)} .
+\begin{aligned}
+&B_p(z)\\
+&\quad =\prod_{i=1}^t\ \prod_{\varnothing\ne S\subseteq\mathcal M_i}\bigl(1-p^{-1-z_S}\bigr)^{-(-1)^{|S|}},\\
+&H_p(z)=\frac{P_p(z)}{B_p(z)} .
+\end{aligned}
 \]
 
 For \(\operatorname{Re}z_\gamma\ge0\) we have \(|p^{-1-z_S}|\le1/p\le1/2\), so \(B_p(z)\ne0\).
@@ -131,29 +180,50 @@ For \(\operatorname{Re}z_\gamma\ge0\) we have \(|p^{-1-z_S}|\le1/p\le1/2\), so \
 
 1. \(|P_p(z)|\), \(|B_p(z)|^{\pm1}\) and \(|H_p(z)|\) are at most \(e^{C/p}\);
 2. if the elements of \(\mathcal H\) are pairwise incongruent modulo \(p\), then \(|H_p(z)-1|\le C/p^2\);
-3. \(P_p(0)=\dfrac{p-\nu_p(\mathcal H)}{p-\delta}\), \(B_p(0)=(1-1/p)^t\), and \(H_p(0)=\bigl(1-\nu_p(\mathcal H)/p\bigr)(1-1/p)^{-|\mathcal H|}\) is the factor at \(p\) of \(\mathfrak S(\mathcal H)\);
-4. \(|H_p(z)-H_p(0)|\le C\,\dfrac{\log p}p\,\max_\gamma|z_\gamma|\).
+3. \(P_p(0)=\dfrac{p-\nu_p(\mathcal H)}{p-\delta}\), \(B_p(0)=(1-1/p)^t\), and \(H_p(0)\), which equals \(\bigl(1-\nu_p(\mathcal H)/p\bigr)(1-1/p)^{-|\mathcal H|}\), is the factor at \(p\) of \(\mathfrak S(\mathcal H)\);
+4. \(|H_p(z)-H_p(0)|\) is at most \(C\,\dfrac{\log p}p\,\max_\gamma|z_\gamma|\).
 
 **Proof.** (1) \(|P_p(z)|\le1+2^{M+1}/p\le e^{2^{M+1}/p}\). Each of the at most \(2^M\) factors of \(B_p\) has the form \((1-x)^{\pm1}\) with \(|x|\le1/p\le1/2\), and \(|1-x|\le e^{1/p}\), \(|1-x|^{-1}\le(1-1/p)^{-1}\le e^{2/p}\).
 
 (2) If the elements of \(\mathcal H\) are incongruent modulo \(p\), two coordinates have congruent shifts only when they lie in the same fibre, and no shift \(a_i\) is congruent to \(a_0\). So the allowed sets are exactly the nonempty subsets of the fibres, and
 
 \[
-P_p(z)=1+\frac1{p-\delta}\sum_{i=1}^t\sum_{\varnothing\ne S\subseteq\mathcal M_i}(-1)^{|S|}p^{-z_S}.
+\begin{aligned}
+&P_p(z)=1\\
+&\quad +\frac1{p-\delta}\sum_{i=1}^t\sum_{\varnothing\ne S\subseteq\mathcal M_i}(-1)^{|S|}p^{-z_S}.
+\end{aligned}
 \]
 
-On the other hand \((1-x)^{-(-1)^{|S|}}=1+(-1)^{|S|}x+O(|x|^2)\) for \(|x|\le1/2\), so \(B_p(z)=1+p^{-1}\sum_i\sum_S(-1)^{|S|}p^{-z_S}+O_M(p^{-2})\). Since \(1/(p-\delta)=1/p+O(p^{-2})\), \(P_p-B_p=O_M(p^{-2})\), and dividing by \(B_p\) (part 1) gives the claim.
+On the other hand \((1-x)^{-(-1)^{|S|}}=1+(-1)^{|S|}x+O(|x|^2)\) for \(|x|\le1/2\), so
+\[
+\begin{aligned}
+B_p(z)&=1+p^{-1}\sum_i\sum_S(-1)^{|S|}p^{-z_S}\\
+&\quad+O_M(p^{-2}).
+\end{aligned}
+\]
+Since \(1/(p-\delta)=1/p+O(p^{-2})\), \(P_p-B_p=O_M(p^{-2})\), and dividing by \(B_p\) (part 1) gives the claim.
 
 (3) At \(z=0\) the allowed sets are grouped by the residue class \(c\) of their shifts: for each class \(c\) met by the \(b_\gamma\) (and, if \(\delta=1\), different from the class of \(a_0\)), they are the nonempty subsets of \(\{\gamma:b_\gamma\equiv c\}\), with \(\sum_{S\ne\varnothing}(-1)^{|S|}=-1\). The number of such classes is \(\nu_p(\mathcal H)\) if \(\delta=0\), and \(\nu_p(\mathcal H)-1\) if \(\delta=1\), because then \(\mathcal H\) contains \(a_0\), whose class is excluded. Hence \(P_p(0)=1-(\nu_p(\mathcal H)-\delta)/(p-\delta)\). For \(B_p(0)\), each fibre gives \((1-1/p)^{-\sum_{S\ne\varnothing}(-1)^{|S|}}=1-1/p\). Then \(H_p(0)=(p-\nu_p)\big/\bigl((p-\delta)(1-1/p)^t\bigr)\), which is \((1-\nu_p/p)(1-1/p)^{-t}\) for \(\delta=0\) and \((1-\nu_p/p)(1-1/p)^{-t-1}\) for \(\delta=1\); in both cases the exponent is \(|\mathcal H|\).
 
-(4) For \(\operatorname{Re}w\ge0\), \(|e^{-w}-1|=|\int_0^1we^{-sw}ds|\le|w|\); hence \(|p^{-z_S}-1|\le M\max_\gamma|z_\gamma|\log p\). This gives \(|P_p(z)-P_p(0)|\le2^{M+1}M\max|z_\gamma|\log p/p\). The factors \(x=p^{-1-z_S}\) of \(B_p\) move by at most \(p^{-1}M\max|z_\gamma|\log p\), and \(|(1-x)^{-1}-(1-x')^{-1}|\le4|x-x'|\) for \(|x|,|x'|\le1/2\). Changing the factors of \(B_p^{-1}\) one at a time, each partial product being bounded by part 1, gives \(|B_p(z)^{-1}-B_p(0)^{-1}|\le C\max|z_\gamma|\log p/p\). Finally \(H_p(z)-H_p(0)=(P_p(z)-P_p(0))B_p(z)^{-1}+P_p(0)(B_p(z)^{-1}-B_p(0)^{-1})\). \(\square\)
+(4) For \(\operatorname{Re}w\ge0\), \(|e^{-w}-1|=|\int_0^1we^{-sw}ds|\le|w|\); hence \(|p^{-z_S}-1|\le M\max_\gamma|z_\gamma|\log p\). This shows that \(|P_p(z)-P_p(0)|\) is at most \(2^{M+1}M\max|z_\gamma|\log p/p\). The factors \(x=p^{-1-z_S}\) of \(B_p\) move by at most \(p^{-1}M\max|z_\gamma|\log p\), and \(|(1-x)^{-1}-(1-x')^{-1}|\le4|x-x'|\) for \(|x|,|x'|\le1/2\). Changing the factors of \(B_p^{-1}\) one at a time, each partial product being bounded by part 1, shows that \(|B_p(z)^{-1}-B_p(0)^{-1}|\) is at most \(C\max|z_\gamma|\log p/p\). Finally
+\[
+\begin{aligned}
+&H_p(z)-H_p(0)\\
+&\quad=(P_p(z)-P_p(0))B_p(z)^{-1}\\
+&\qquad+P_p(0)(B_p(z)^{-1}-B_p(0)^{-1}).
+\end{aligned}
+\]
+\(\square\)
 
 ## 5. Comparison with the singular series
 
 **Lemma 5.1.** Put \(Y=2DL^B+L\). There is \(A\), depending only on \(M\), such that uniformly for \(u\in\mathbb R^\Gamma\) with \(\max_\gamma|u_\gamma|\le\sqrt L\),
 
 \[
-\prod_pH_p(z)=\mathfrak S(\mathcal H)+O\bigl(L^{-1/2}(\log L)^A\bigr),\qquad\mathfrak S(\mathcal H)\ll(\log L)^A .
+\begin{gathered}
+\prod_pH_p(z)=\mathfrak S(\mathcal H)+O\bigl(L^{-1/2}(\log L)^A\bigr),\\
+\mathfrak S(\mathcal H)\ll(\log L)^A .
+\end{gathered}
 \]
 
 **Proof.** In this range \(|z_\gamma|\le(1+\sqrt L)/L\le2L^{-1/2}\).
@@ -163,7 +233,12 @@ On the other hand \((1-x)^{-(-1)^{|S|}}=1+(-1)^{|S|}x+O(|x|^2)\) for \(|x|\le1/2
 *Small primes.* By Lemma 4.1(1) and Mertens's estimate, every product of the numbers \(H_p(z)\) or \(H_p(0)\) over a set of primes \(p\le Y\) is at most \(\exp(C\sum_{p\le Y}1/p)\ll(\log Y)^C\). Listing the primes \(p_1<p_2<\dots\le Y\) and changing one factor at a time,
 
 \[
-\prod_{p\le Y}H_p(z)-\prod_{p\le Y}H_p(0)=\sum_k\Bigl(\prod_{p<p_k}H_p(0)\Bigr)\bigl(H_{p_k}(z)-H_{p_k}(0)\bigr)\Bigl(\prod_{p_k<p\le Y}H_p(z)\Bigr).
+\begin{aligned}
+&\prod_{p\le Y}H_p(z)-\prod_{p\le Y}H_p(0)\\
+&\quad=\sum_k\Bigl(\prod_{p<p_k}H_p(0)\Bigr)\\
+&\qquad\cdot\bigl(H_{p_k}(z)-H_{p_k}(0)\bigr)\\
+&\qquad\cdot\Bigl(\prod_{p_k<p\le Y}H_p(z)\Bigr).
+\end{aligned}
 \]
 
 By Lemma 4.1(4) and Mertens's estimate \(\sum_{p\le Y}\log p/p\ll\log Y\), this is \(O\bigl((\log Y)^{2C+1}L^{-1/2}\bigr)\). Since \(Y\ll L^{\max(B,1)}\), \(\log Y\ll\log L\).
@@ -171,7 +246,11 @@ By Lemma 4.1(4) and Mertens's estimate \(\sum_{p\le Y}\log p/p\ll\log Y\), this 
 *Together.* By Lemma 4.1(3), \(\mathfrak S(\mathcal H)=\prod_pH_p(0)\), and
 
 \[
-\prod_pH_p(z)-\mathfrak S(\mathcal H)=\Bigl[\prod_{p\le Y}H_p(z)-\prod_{p\le Y}H_p(0)\Bigr]\prod_{p>Y}H_p(z)+\prod_{p\le Y}H_p(0)\Bigl[\prod_{p>Y}H_p(z)-\prod_{p>Y}H_p(0)\Bigr],
+\begin{aligned}
+&\prod_pH_p(z)-\mathfrak S(\mathcal H)\\
+&\quad =\Bigl[\prod_{p\le Y}H_p(z)-\prod_{p\le Y}H_p(0)\Bigr]\prod_{p>Y}H_p(z)\\
+&\quad +\prod_{p\le Y}H_p(0)\Bigl[\prod_{p>Y}H_p(z)-\prod_{p>Y}H_p(0)\Bigr],
+\end{aligned}
 \]
 
 which is \(O(L^{-1/2}(\log L)^{2C+1})+O((\log L)^C/L)\). The bound for \(\mathfrak S(\mathcal H)\) follows from the same estimates at \(z=0\). \(\square\)
@@ -182,7 +261,7 @@ No division by a local factor of \(\mathfrak S(\mathcal H)\) occurs, so the lemm
 
 **Lemma 6.1.** For \(\operatorname{Re}z>0\) and \(|z|\le1\), \(|\zeta(1+z)-1/z|\le3\). Consequently, for \(|z|\le1/12\), \(\zeta(1+z)=z^{-1}(1+\eta)\) and \(\zeta(1+z)^{-1}=z(1+\eta')\) with \(|\eta|\le3|z|\) and \(|\eta'|\le6|z|\).
 
-**Proof.** By Theorem 5.1 of the zeta lesson with \(s=1+z\), \(\zeta(1+z)-1/z=1-(1+z)\int_1^\infty\{u\}u^{-2-z}du\), and the integral is at most \(\int_1^\infty u^{-2}du=1\) in absolute value. Then \(\eta=z(\zeta(1+z)-1/z)\), \(|\eta|\le3|z|\le1/4\), and \(\eta'=(1+\eta)^{-1}-1\) has \(|\eta'|\le|\eta|/(1-|\eta|)\le2|\eta|\). \(\square\)
+**Proof.** By Theorem 5.1 of the zeta lesson with \(s=1+z\), \(\zeta(1+z)-1/z\) equals \(1-(1+z)\int_1^\infty\{u\}u^{-2-z}du\), and the integral is at most \(\int_1^\infty u^{-2}du=1\) in absolute value. Then \(\eta=z(\zeta(1+z)-1/z)\), \(|\eta|\le3|z|\le1/4\), and \(\eta'=(1+\eta)^{-1}-1\) has \(|\eta'|\le|\eta|/(1-|\eta|)\le2|\eta|\). \(\square\)
 
 For a fibre \(\mathcal M_i\) define
 
@@ -195,7 +274,10 @@ Every sum \(\sum_{\gamma\in S}w_\gamma\) has real part \(|S|\ge1\), so \(|K_i(u)
 **Lemma 6.2.** There is \(L_0\), depending only on \(M\), such that for \(L\ge L_0\) and \(\max_\gamma|u_\gamma|\le\sqrt L\),
 
 \[
-\prod_pB_p(z)=L^{-t}\prod_{i=1}^tK_i(u)\,\bigl(1+O_M(L^{-1/2})\bigr).
+\begin{aligned}
+&\prod_pB_p(z)\\
+&\quad =L^{-t}\prod_{i=1}^tK_i(u)\,\bigl(1+O_M(L^{-1/2})\bigr).
+\end{aligned}
 \]
 
 **Proof.** Each \(z_S\) has real part \(|S|/L>0\), so \(\prod_p(1-p^{-1-z_S})^{-1}=\zeta(1+z_S)\) by the Euler product, with absolute convergence. Hence
@@ -213,13 +295,20 @@ Here \(|z_S|\le2ML^{-1/2}\le1/12\) for \(L\ge L_0\), and by Lemma 6.1 each facto
 *Small frequencies.* For \(\max|u_\gamma|\le\sqrt L\), the products \(\prod_pB_p(z)\) and \(\prod_pH_p(z)\) converge (Lemma 6.2 and Lemma 4.1(2) for large \(p\)), and their product is \(\prod_pP_p(z)\). Lemmas 5.1 and 6.2 give
 
 \[
-\prod_pP_p(z)=L^{-t}\prod_iK_i(u)\Bigl\{\mathfrak S(\mathcal H)+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\},
+\begin{aligned}
+&\prod_pP_p(z)=L^{-t}\prod_iK_i(u)\\
+&\quad\cdot\Bigl\{\mathfrak S(\mathcal H)+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\},
+\end{aligned}
 \]
 
 using \(\mathfrak S(\mathcal H)\ll(\log L)^A\) to absorb the factor \(1+O(L^{-1/2})\). Integrating against \(\Phi\), and using that \(\Phi\prod_iK_i\) is integrable with tails \(\int_{\max|u_\gamma|>\sqrt L}|\Phi\prod K_i|\ll_NL^{-N}\),
 
 \[
-\mathcal A_\delta=L^{-t}\Bigl\{\mathfrak S(\mathcal H)\,\mathcal C+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\},\qquad\mathcal C=\int_{\mathbb R^\Gamma}\Phi(u)\prod_{i=1}^tK_i(u)\,du .
+\begin{aligned}
+&\mathcal A_\delta=L^{-t}\Bigl\{\mathfrak S(\mathcal H)\,\mathcal C\\
+&\qquad+O\bigl(L^{-1/2}(\log L)^A\bigr)\Bigr\},\\
+&\mathcal C=\int_{\mathbb R^\Gamma}\Phi(u)\prod_{i=1}^tK_i(u)\,du .
+\end{aligned}
 \]
 
 The constant is real: the \(F_r\) are real, so \(\Phi_r(-u)=\overline{\Phi_r(u)}\), and \(K_i(-u)=\overline{K_i(u)}\). It does not depend on the shifts. It does not depend on the chosen extensions either: for any admissible set of \(t\) shifts (Exercise 5.2 of the singular-series lesson), \(\mathcal C=\lim_{L\to\infty}L^t\mathcal A_\delta/\mathfrak S(\mathcal H)\), and \(\mathcal A_\delta\) involves only the values of the \(F_r\) on the orthant.
@@ -227,13 +316,19 @@ The constant is real: the \(F_r\) are real, so \(\Phi_r(-u)=\overline{\Phi_r(u)}
 *Fibres of size at most two.* A singleton fibre \(\{\gamma\}\) has \(K_i=w_\gamma\). A fibre \(\{\gamma,\gamma'\}\) has
 
 \[
-K_i=\frac{w_\gamma w_{\gamma'}}{w_\gamma+w_{\gamma'}}=w_\gamma w_{\gamma'}\int_0^\infty e^{-(w_\gamma+w_{\gamma'})y}\,dy,
+\begin{aligned}
+&K_i=\frac{w_\gamma w_{\gamma'}}{w_\gamma+w_{\gamma'}}\\
+&\quad =w_\gamma w_{\gamma'}\int_0^\infty e^{-(w_\gamma+w_{\gamma'})y}\,dy,
+\end{aligned}
 \]
 
 since \(\operatorname{Re}(w_\gamma+w_{\gamma'})=2\). Hence, with \(y_i=0\) for singleton fibres,
 
 \[
-\mathcal C=\int_{\mathbb R^\Gamma}\int_{[0,\infty)^P}\Phi(u)\prod_{\gamma\in\Gamma}w_\gamma e^{-w_\gamma y_{\kappa(\gamma)}}\,dy\,du .
+\begin{aligned}
+\mathcal C&=\int_{\mathbb R^\Gamma}\int_{[0,\infty)^P}\Phi(u)\\
+&\qquad\cdot\prod_{\gamma\in\Gamma}w_\gamma e^{-w_\gamma y_{\kappa(\gamma)}}\,dy\,du .
+\end{aligned}
 \]
 
 The absolute value of the integrand is \(|\Phi(u)|\prod_\gamma|w_\gamma|\,e^{-2\sum_{i\in P}y_i}\), which is integrable. By Fubini's theorem we may integrate over \(u\) first. The \(u\)-integral factors over \(r\), and by Lemma 2.1 the factor of \(r\) is \((-1)^{j_r}\partial_1\cdots\partial_{j_r}\widetilde F_r\) at the point \((y_{\kappa(r,\ell)})_\ell\) of the orthant, where it equals \(f_r\). This is (1.1).
@@ -255,7 +350,10 @@ For \(X=2\cdot10^6\) the direct average \(\mathbb E_X D_F(m;0)D_F(m;2)\) and its
 **Exercise 7.1** (Selberg's upper bound). Let \(0<\rho<1/2\) and let \(F\) be a one-dimensional test function of budget \(\rho\) with \(F(0)=1\). Show that
 
 \[
-\#\{X<p\le2X:p\text{ prime}\}\le\frac XL\Bigl(\int_0^\infty F'(y)^2dy+o(1)\Bigr).
+\begin{aligned}
+&\#\{X<p\le2X:p\text{ prime}\}\\
+&\quad \le\frac XL\Bigl(\int_0^\infty F'(y)^2dy+o(1)\Bigr).
+\end{aligned}
 \]
 
 Deduce that the number of primes in \((X,2X]\) is at most \((2+\varepsilon)X/\log X\) for every \(\varepsilon>0\) and large \(X\).

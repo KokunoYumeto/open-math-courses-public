@@ -40,7 +40,7 @@ In the language of Section 4, the residue class of \(0\) modulo the prime \(1+i\
 
 **Lemma 2.1** (division with remainder). For \(\alpha,\beta\in\mathbb Z[i]\) with \(\beta\ne0\) there are \(\gamma,\rho\in\mathbb Z[i]\) with \(\alpha=\gamma\beta+\rho\) and \(N(\rho)\le N(\beta)/2\).
 
-**Proof.** Write \(\alpha/\beta=x+iy\) with \(x,y\in\mathbb Q\), and choose integers \(m,n\) with \(|x-m|\le\frac12\) and \(|y-n|\le\frac12\). Put \(\gamma=m+ni\) and \(\rho=\alpha-\gamma\beta=\beta(\alpha/\beta-\gamma)\). Then \(N(\rho)=N(\beta)\bigl((x-m)^2+(y-n)^2\bigr)\le N(\beta)/2\). \(\square\)
+**Proof.** Write \(\alpha/\beta=x+iy\) with \(x,y\in\mathbb Q\), and choose integers \(m,n\) with \(|x-m|\le\frac12\) and \(|y-n|\le\frac12\). Put \(\gamma=m+ni\) and \(\rho=\alpha-\gamma\beta=\beta(\alpha/\beta-\gamma)\). Then \(N(\rho)=N(\beta)\bigl((x-m)^2+(y-n)^2\bigr)\), which is at most \(N(\beta)/2\). \(\square\)
 
 So \(\mathbb Z[i]\) is a Euclidean domain for the norm, and therefore a principal ideal domain with unique factorization into Gaussian primes. A Gaussian prime \(\pi\) is a prime element: if \(\pi\) divides a product, it divides a factor. The units are \(\pm1\) and \(\pm i\), because \(uv=1\) forces \(N(u)N(v)=1\), and the only Gaussian integers of norm \(1\) are \(\pm1,\pm i\). Complex conjugation is a ring automorphism of \(\mathbb Z[i]\), so it maps Gaussian primes to Gaussian primes.
 
@@ -53,7 +53,10 @@ So \(\mathbb Z[i]\) is a Euclidean domain for the norm, and therefore a principa
 **Proof.** First, \(-1\) is a square modulo \(p\). By Wilson's theorem \((p-1)!\equiv-1\pmod p\): in the field \(\mathbf F_p\) each element other than \(\pm1\) is paired with its inverse, which is different from it. Pairing \(j\) with \(p-j\),
 
 \[
-(p-1)!\equiv\prod_{j=1}^{(p-1)/2}j\,(-j)=(-1)^{(p-1)/2}\Bigl(\bigl(\tfrac{p-1}2\bigr)!\Bigr)^2\pmod p,
+\begin{aligned}
+&(p-1)!\equiv\prod_{j=1}^{(p-1)/2}j\,(-j)\\
+&\quad =(-1)^{(p-1)/2}\Bigl(\bigl(\tfrac{p-1}2\bigr)!\Bigr)^2\pmod p,
+\end{aligned}
 \]
 
 and \((p-1)/2\) is even. So \(a=((p-1)/2)!\) satisfies \(p\mid a^2+1=(a+i)(a-i)\). The quotients \((a\pm i)/p\) have imaginary part \(\pm1/p\), so \(p\) divides neither factor; hence \(p\) is not a prime element, and \(p=\alpha\beta\) with nonunits \(\alpha,\beta\). From \(N(\alpha)N(\beta)=p^2\) and \(N(\alpha),N(\beta)>1\) we get \(N(\alpha)=p\). Put \(\pi=\alpha\). Lemma 2.2 shows that \(\pi\) and \(\bar\pi\) are Gaussian primes, and \(\pi\bar\pi=N(\pi)=p\).
@@ -97,12 +100,7 @@ This count includes \(v=0\). In \(G_D\), and in every graph on a subset of \(\ma
 
 ## 4. Periodic sieves
 
-Let \(\mathcal P\) be a finite set of rational primes congruent to \(1\) modulo \(4\), and choose for each \(p\in\mathcal P\) a Gaussian prime \(\pi_p\) of norm \(p\) (Proposition 2.3). Put
-
-\[
-\mathcal A(\mathcal P)=\{z\in\mathbb Z[i]:\ \pi_p\nmid z\text{ and }\bar\pi_p\nmid z\text{ for every }p\in\mathcal P\},
-\qquad Q=\prod_{p\in\mathcal P}p.
-\]
+Let \(\mathcal P\) be a finite set of rational primes congruent to \(1\) modulo \(4\), and choose for each \(p\in\mathcal P\) a Gaussian prime \(\pi_p\) of norm \(p\) (Proposition 2.3). Let \(\mathcal A(\mathcal P)\) be the set of \(z\in\mathbb Z[i]\) with \(\pi_p\nmid z\) and \(\bar\pi_p\nmid z\) for every \(p\in\mathcal P\), and put \(Q=\prod_{p\in\mathcal P}p\).
 
 Replacing \(\pi_p\) by an associate, or by \(\bar\pi_p\), does not change this set. The set is **periodic**: if \(v\in Q\,\mathbb Z[i]\), then \(z\in\mathcal A(\mathcal P)\) if and only if \(z+v\in\mathcal A(\mathcal P)\), because \(\pi_p\) and \(\bar\pi_p\) divide \(p\), which divides \(Q\). Exercise 7.4 shows that exactly \(\prod_{p\in\mathcal P}(p-1)^2\) of the \(Q^2\) residues modulo \(Q\) lie in \(\mathcal A(\mathcal P)\).
 
@@ -134,21 +132,19 @@ It is proved in [Zero avoidance and the finite sieve](zero-avoidance-and-the-fin
 
 ## 5. Batches of split primes
 
-The proof of Theorem 4.2 uses the split primes in dyadic intervals. For a real number \(T>1\) put
-
+The proof of Theorem 4.2 uses the split primes in dyadic intervals. For a real number \(T>1\) let \(\mathcal B_T\) be the set of primes \(p\equiv1\pmod4\) with \(T\le p\le2T\), let \(k_T=\#\mathcal B_T\), and, when \(k_T>0\), put
 \[
-\mathcal B_T=\{p\text{ prime}:\ T\le p\le2T,\ p\equiv1\pmod4\},\qquad
-k_T=\#\mathcal B_T,\qquad
-L^*_T=\frac1{k_T}\sum_{p\in\mathcal B_T}\log p,
+L^*_T=\frac1{k_T}\sum_{p\in\mathcal B_T}\log p.
 \]
-
-the last when \(k_T>0\). We call \(\mathcal B_T\) the **batch** at \(T\). Logarithms are natural throughout the course.
+We call \(\mathcal B_T\) the **batch** at \(T\). Logarithms are natural throughout the course.
 
 **Proposition 5.1** (size of a batch). As \(T\to\infty\),
 
 \[
-k_T=\Bigl(\frac12+o(1)\Bigr)\frac{T}{\log T},
-\qquad \log T\le L^*_T\le\log(2T).
+\begin{gathered}
+k_T=\Bigl(\frac12+o(1)\Bigr)\frac{T}{\log T},\\
+\log T\le L^*_T\le\log(2T).
+\end{gathered}
 \]
 
 Moreover \(k_T\log(2T)\le(8\log2)\,T\) for every \(T\ge2\).
@@ -165,7 +161,7 @@ For the last assertion, Chebyshev's bound \(\theta(x)<(2\log2)\,x\) for the sum 
 
 Moreover, the batches \(\mathcal B_{T'}\) for distinct powers \(T'\) of \(B\) are disjoint.
 
-**Proof.** By Proposition 5.1 the sum is at most \((8\log2)\sum_{j\ge1}TB^{-j}=(8\log2)\,T/(B-1)\). If \(T'<T''\) are powers of \(B\), then \(T''\ge BT'>2T'\), so the intervals \([T',2T']\) and \([T'',2T'']\) are disjoint. \(\square\)
+**Proof.** By Proposition 5.1 the sum is at most \((8\log2)\sum_{j\ge1}TB^{-j}\), which is \((8\log2)\,T/(B-1)\). If \(T'<T''\) are powers of \(B\), then \(T''\ge BT'>2T'\), so the intervals \([T',2T']\) and \([T'',2T'']\) are disjoint. \(\square\)
 
 ## 6. The plan of the proof
 
@@ -202,8 +198,11 @@ The tools are Shannon entropy ([Entropy of finite random variables](entropy-of-f
 **7.3.** By Exercise 7.1, \(a+bi\in\mathcal A(\{5\})\) exactly when \(a\not\equiv2b\) and \(a\not\equiv-2b\pmod5\). In the column \(a=0\) this excludes only \(b\equiv0\). In the column \(a=1\) it excludes \(2b\equiv1\) and \(2b\equiv-1\), that is, \(b\equiv3\) and \(b\equiv2\). The walk that runs, for \(k=0,1,2,\dots\), through
 
 \[
-5k+1,\ 5k+2,\ 5k+3,\ 5k+4\ \text{in the column }0,\qquad
-5k+4,\ 5k+5,\ 5k+6\ \text{in the column }1,
+\begin{aligned}
+&5k+1,\ 5k+2,\ 5k+3,\ 5k\\
+&\quad +4\ \text{in the column }0,\\
+&5k+4,\ 5k+5,\ 5k+6\ \text{in the column }1,
+\end{aligned}
 \]
 
 listing the second coordinates, and then returns to the column \(0\) at height \(5(k+1)+1\), uses unit steps, never repeats a point, and avoids every excluded point.

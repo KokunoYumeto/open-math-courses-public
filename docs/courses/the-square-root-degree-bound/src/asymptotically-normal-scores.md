@@ -35,13 +35,20 @@ The proof uses only the normalization \(\mathbb EZ_n^2=1\); no bound on higher m
 
 *Proof.* By additivity it suffices to treat one interval. Let it have finite endpoints \(\alpha\le\beta\). For \(a=0\), the probabilities differ from \(\Phi(\beta)-\Phi(\alpha)\) by at most \(2\delta_n\). For \(a\ge1\) and \(\psi(x)=x^a\), writing \(\psi(z)=\psi(\beta)-\int_z^\beta\psi'(x)\,dx\) for \(z\in(\alpha,\beta]\) and using Fubini's theorem,
 \[
-\mathbb E\bigl[\psi(Z)\mathbf 1_{(\alpha,\beta]}(Z)\bigr]=\psi(\beta)F(\beta)-\psi(\alpha)F(\alpha)-\int_\alpha^\beta\psi'(x)F(x)\,dx
+\begin{aligned}
+&\mathbb E\bigl[\psi(Z)\mathbf 1_{(\alpha,\beta]}(Z)\bigr]=\psi(\beta)F(\beta)\\
+&\quad -\psi(\alpha)F(\alpha)-\int_\alpha^\beta\psi'(x)F(x)\,dx
+\end{aligned}
 \]
 for every random variable \(Z\) with distribution function \(F\). Hence the expectations for \(Z_n\) and \(G\) differ by at most \(\bigl(|\psi(\alpha)|+|\psi(\beta)|+\int_\alpha^\beta|\psi'|\bigr)\delta_n\); the other endpoint conventions add atoms of size at most \(\max(|\alpha|,|\beta|)^a\cdot2\delta_n\). For an unbounded interval, cut it at \(\pm K\). The remaining parts satisfy \(\Pr(|Z_n|>K)\le K^{-2}\) and \(\mathbb E[|Z_n|\mathbf 1_{\{|Z_n|>K\}}]\le K^{-1}\mathbb EZ_n^2=K^{-1}\), uniformly in \(n\). For \(a=2\), the bounded case and \(\mathbb EZ_n^2=1=\mathbb EG^2\) give
 \[
-\mathbb E\bigl[Z_n^2\mathbf 1_{\{|Z_n|>K\}}\bigr]=1-\mathbb E\bigl[Z_n^2\mathbf 1_{\{|Z_n|\le K\}}\bigr]\longrightarrow1-\mathbb E\bigl[G^2\mathbf 1_{\{|G|\le K\}}\bigr]=\mathbb E\bigl[G^2\mathbf 1_{\{|G|>K\}}\bigr],
+\begin{aligned}
+&\mathbb E\bigl[Z_n^2\mathbf 1_{\{|Z_n|>K\}}\bigr]=1\\
+&\quad -\mathbb E\bigl[Z_n^2\mathbf 1_{\{|Z_n|\le K\}}\bigr]\longrightarrow1\\
+&\quad -\mathbb E\bigl[G^2\mathbf 1_{\{|G|\le K\}}\bigr]=\mathbb E\bigl[G^2\mathbf 1_{\{|G|>K\}}\bigr],
+\end{aligned}
 \]
-which is small for large \(K\). The Gaussian tails are small as well. Letting \(n\to\infty\) and then \(K\to\infty\) gives the claim. Finally \(\mathbb E|Z_n|=\mathbb E[Z_n\mathbf 1_{(0,\infty)}(Z_n)]-\mathbb E[Z_n\mathbf 1_{(-\infty,0]}(Z_n)]\). \(\square\)
+which is small for large \(K\). The Gaussian tails are small as well. Letting \(n\to\infty\) and then \(K\to\infty\) gives the claim. Finally \(\mathbb E|Z_n|\) is the difference of \(\mathbb E[Z_n\mathbf 1_{(0,\infty)}(Z_n)]\) and \(\mathbb E[Z_n\mathbf 1_{(-\infty,0]}(Z_n)]\). \(\square\)
 
 **Corollary 2.2** (Product functions). Let \(Z_n\) be as in Lemma 2.1, and let \(\mathbf Z_n=(Z_{n,1},\dots,Z_{n,q})\) consist of independent copies. If \(g(z)=\prod_{k=1}^q\mathbf 1_{J_k}(z_k)z_k^{a_k}\) with finite unions of intervals \(J_k\) and exponents \(a_k\in\{0,1,2\}\), then \(\mathbb Eg(\mathbf Z_n)\to\mathbb Eg(\mathbf G)\), where \(\mathbf G\) has independent standard normal coordinates. The same holds for finite linear combinations of such functions.
 
@@ -51,7 +58,10 @@ which is small for large \(K\). The Gaussian tails are small as well. Letting \(
 
 **Lemma 3.1** (Product portmanteau). Let \(Z_n\) be asymptotically standard normal with mean \(0\) and variance \(1\), let \(\mathbf Z_n\) consist of \(q\) independent copies, \(S_n\) their sum, and \(S_G\) the sum of the coordinates of \(\mathbf G\). If \(E\subseteq\mathbb R^q\) is a Borel set with \(\gamma(\partial E)=0\), then
 \[
-\Pr(\mathbf Z_n\in E)\to\gamma(E),\qquad\mathbb E[S_n\mathbf 1_E(\mathbf Z_n)]\to\mathbb E[S_G\mathbf 1_E(\mathbf G)] .
+\begin{gathered}
+\Pr(\mathbf Z_n\in E)\to\gamma(E),\\
+\mathbb E[S_n\mathbf 1_E(\mathbf Z_n)]\to\mathbb E[S_G\mathbf 1_E(\mathbf G)] .
+\end{gathered}
 \]
 
 *Proof.* Fix \(\varepsilon>0\). Choose \(M\) with \(\gamma(\mathbb R^q\setminus Q)<\varepsilon\) and \(q/M^2<\varepsilon\), where \(Q=[-M,M)^q\); by Chebyshev's inequality \(\Pr(\mathbf Z_n\notin Q)\le q/M^2<\varepsilon\). Cut \(Q\) into half-open cubes ("boxes") of side \(\delta\). As \(\delta\downarrow0\), the union of the boxes whose closures meet \(\partial E\) is contained in the closed \(\sqrt q\,\delta\)-neighbourhood of \(\partial E\cap[-M-1,M+1]^q\), and these neighbourhoods decrease to \(\partial E\cap[-M-1,M+1]^q\), which is \(\gamma\)-null; so we may choose \(\delta\) with \(\gamma(\mathcal B)<\varepsilon\), where \(\mathcal B\) is the union of these boxes. A box whose closure misses \(\partial E\) is connected, so it lies in the interior of \(E\) or in the interior of its complement. Let \(\mathcal I\) be the finite set of boxes inside \(E\). Then \(E\) differs from \(\bigcup\mathcal I\) by a subset of \(\mathcal B\cup(\mathbb R^q\setminus Q)\).
@@ -60,7 +70,10 @@ The probability that \(\mathbf Z_n\) lies in a box is a product of \(q\) interva
 
 For the restricted sums, \(S\) varies by at most \(q\delta\) on a box, so with \(c_b\) the centre of box \(b\),
 \[
-\Bigl|\mathbb E[S_n\mathbf 1_E(\mathbf Z_n)]-\sum_{b\in\mathcal I}S(c_b)\Pr(\mathbf Z_n\in b)\Bigr|\le q\delta+\sqrt q\,\Pr\bigl(\mathbf Z_n\in\mathcal B\cup(\mathbb R^q\setminus Q)\bigr)^{1/2},
+\begin{aligned}
+&\Bigl|\mathbb E[S_n\mathbf 1_E(\mathbf Z_n)]-\sum_{b\in\mathcal I}S(c_b)\Pr(\mathbf Z_n\in b)\Bigr|\\
+&\quad \le q\delta+\sqrt q\,\Pr\bigl(\mathbf Z_n\in\mathcal B\cup(\mathbb R^q\setminus Q)\bigr)^{1/2},
+\end{aligned}
 \]
 using Cauchy–Schwarz and \(\mathbb ES_n^2=q\) for the exceptional part; the same holds for \(\mathbf G\). The sums over \(\mathcal I\) converge, and the right-hand sides are eventually at most \(q\delta+\sqrt{3q\varepsilon}\). As \(\varepsilon\) and then \(\delta\) can be taken small, the claim follows. \(\square\)
 
@@ -68,7 +81,15 @@ using Cauchy–Schwarz and \(\mathbb ES_n^2=q\) for the exceptional part; the sa
 
 **Lemma 4.1.** (a) If \(X_n\) is asymptotically standard normal and \(\mathbb E(Y_n-X_n)^2\to0\), then \(Y_n\) is asymptotically standard normal. (b) If \(X_n\) is asymptotically standard normal and \(c_n\to1\), then \(c_nX_n\) is asymptotically standard normal.
 
-*Proof.* (a) For \(\varepsilon>0\), \(\Pr(Y_n\le x)\le\Pr(X_n\le x+\varepsilon)+\Pr(|Y_n-X_n|>\varepsilon)\le\Phi(x+\varepsilon)+\delta_n+\varepsilon^{-2}\mathbb E(Y_n-X_n)^2\), and similarly from below with \(x-\varepsilon\). Since \(\Phi\) is uniformly continuous, \(\sup_x|\Pr(Y_n\le x)-\Phi(x)|\) is eventually as small as we like. (b) For \(c_n>0\), \(\Pr(c_nX_n\le x)=\Pr(X_n\le x/c_n)\), which is within \(\delta_n\) of \(\Phi(x/c_n)\), and \(\sup_x|\Phi(x/c_n)-\Phi(x)|\to0\) as \(c_n\to1\). \(\square\)
+*Proof.* (a) For \(\varepsilon>0\), 
+\[
+\begin{aligned}
+&\Pr(Y_n\le x)\le\Pr(X_n\le x+\varepsilon)\\
+&\qquad+\Pr(|Y_n-X_n|>\varepsilon)\\
+&\quad\le\Phi(x+\varepsilon)+\delta_n+\varepsilon^{-2}\mathbb E(Y_n-X_n)^2,
+\end{aligned}
+\]
+and similarly from below with \(x-\varepsilon\). Since \(\Phi\) is uniformly continuous, \(\sup_x|\Pr(Y_n\le x)-\Phi(x)|\) is eventually as small as we like. (b) For \(c_n>0\), \(\Pr(c_nX_n\le x)=\Pr(X_n\le x/c_n)\), which is within \(\delta_n\) of \(\Phi(x/c_n)\), and \(\sup_x|\Phi(x/c_n)-\Phi(x)|\to0\) as \(c_n\to1\). \(\square\)
 
 **Lemma 4.2** (Law of large numbers). If \(Y_1,Y_2,\dots\) are independent copies of a bounded random variable with mean \(\mu\), then \(\Pr\bigl(|\frac1K\sum_{b\le K}Y_b-\mu|\ge\varepsilon\bigr)\to0\) as \(K\to\infty\), for every \(\varepsilon>0\).
 

@@ -35,11 +35,18 @@ A graph of degeneracy \(1\) is a forest: in an order with at most one earlier ne
 
 **Proof of Theorem 3.1.** Let \(A=400\,\mathrm e^4\) and \(N_1,N_2,N_3\) be as in Propositions 4.1, 5.1 and 6.1 of [Embedding sparse graphs in random graphs](embedding-sparse-graphs-in-random-graphs.md). Fix
 \[
-M=B=1000,\qquad k=2k_0M(B+1)^2,
+\begin{gathered}
+M=B=1000,\\
+k=2k_0M(B+1)^2,
+\end{gathered}
 \]
 and an absolute integer \(n_0\ge\max\{N_1,N_2,N_3\}\) such that for all \(n\ge n_0\)
 \[
-\frac{8\log n}{\log2}\sqrt n\le n^{2/3},\qquad n^{2/3}\le\frac n4,\qquad2\Bigl\lceil\frac nB\Bigr\rceil\le\frac n{100}.\tag{3.1}
+\begin{gathered}
+\frac{8\log n}{\log2}\sqrt n\le n^{2/3},\\
+n^{2/3}\le\frac n4,\\
+2\Bigl\lceil\frac nB\Bigr\rceil\le\frac n{100}.
+\end{gathered}\tag{3.1}
 \]
 Let \(L=\max\{2A,64,n_0^2\}\). If \(H\) has no edge, take all pieces empty. Otherwise let \(q=q(H;n)>0\) and \(d=\operatorname{degen}(H)\ge1\).
 
@@ -49,7 +56,10 @@ Let \(L=\max\{2A,64,n_0^2\}\). If \(H\) has no edge, take all pieces empty. Othe
 
 Let \(Y_0=\{v:\deg_H(v)>\sqrt n\}\). By (1.2) there, \(|E(H)|\le dn\), so \(|Y_0|\le2dn/\sqrt n=2d\sqrt n\). Starting from \(Y_0\), add one at a time a vertex outside the current set with more than \(2d\) neighbours in it, until no such vertex remains, and call the final set \(Y\). If \(a\) vertices were added, each brought more than \(2d\) edges inside the set, so \(2da\le|E(H[Y])|\le d(|Y_0|+a)\) by (1.2), hence \(a\le|Y_0|\) and
 \[
-|Y|\le2|Y_0|\le4d\sqrt n\le\frac{8\log n}{\log2}\sqrt n\le n^{2/3}.
+\begin{aligned}
+&|Y|\le2|Y_0|\le4d\sqrt n\\
+&\quad \le\frac{8\log n}{\log2}\sqrt n\le n^{2/3}.
+\end{aligned}
 \]
 Every \(w\notin Y\) has \(\deg_H(w)\le\sqrt n\) and \(|N_H(w)\cap Y|\le2d\). Partition \(V(H)\setminus Y\) into \(B\) blocks of at most \(\lceil n/B\rceil\) vertices. Split each initial piece \(P\) as follows.
 
@@ -57,11 +67,14 @@ Every \(w\notin Y\) has \(\deg_H(w)\le\sqrt n\) and \(|N_H(w)\cap Y|\le2d\). Par
 - *Edges of \(P\) outside \(Y\).* First split by the unordered pair of blocks containing the two endpoints (\(B(B+1)/2\) pairs, both endpoints in one block allowed), then apply Lemma 2.1 with \(m=M\). Each resulting graph has degeneracy at most \(s\), maximum degree at most \(\sqrt n\le n^{2/3}\) and at most \(2\lceil n/B\rceil\le n/100\) non-isolated vertices, so its threshold is at most \(r\) by Proposition 5.1.
 - *Edges of \(P\) between \(Y\) and its complement.* First split by the block of the endpoint outside \(Y\). At each outside vertex \(w\), split its at most \(2d\) edges into \(Y\) into \(M\) groups of at most \(\lceil2d/M\rceil=s\) edges, and let piece \(j\) consist of the \(j\)-th groups. Each resulting graph is bipartite between \(Y\) and its complement, lies in \(G_i\in\mathcal D\), has at most \(\lceil n/B\rceil\le n/8\) outside vertices of positive degree, all of degree at most \(s\), and \(|Y|\le n^{2/3}\). By Proposition 4.1 there, its threshold is at most \(32r=64q\).
 
-Every piece has threshold at most \(64q\le Lq\). Their number is at most \(k_0M\bigl(1+\frac{B(B+1)}2+B\bigr)=\frac{k_0M(B+1)(B+2)}2\le k\). The pieces are subgraphs of the copy of \(H\); transported back to \(H\) by the identification, they partition \(E(H)\).
+Every piece has threshold at most \(64q\le Lq\). Their number is at most \(k_0M\bigl(1+\frac{B(B+1)}2+B\bigr)=\frac{k_0M(B+1)(B+2)}2\), which is at most \(k\). The pieces are subgraphs of the copy of \(H\); transported back to \(H\) by the identification, they partition \(E(H)\).
 
 *Bounded degeneracy, \(1\le d<M\).* Lemma 2.1 with \(m=d\) splits \(E(H)\) into \(d\) graphs of degeneracy at most \(1\), that is, forests, and Lemma 2.2 splits each forest into two star forests. Partition \(V(H)\) into \(B\) blocks of at most \(\lceil n/B\rceil\) vertices, and split each star forest by the unordered pair of blocks containing the endpoints of its edges. Each resulting piece \(J\) is a star forest with \(|V_+(J)|\le2\lceil n/B\rceil\le n/100\), so Proposition 6.1 there and (1.1) there give
 \[
-p_{\mathrm c}(J;n)\le2A\,q(J;n)\le2A\,q(H;n)\le Lq.
+\begin{aligned}
+&p_{\mathrm c}(J;n)\le2A\,q(J;n)\\
+&\quad \le2A\,q(H;n)\le Lq.
+\end{aligned}
 \]
 There are at most \(2d\cdot B(B+1)/2\le k\) pieces.
 

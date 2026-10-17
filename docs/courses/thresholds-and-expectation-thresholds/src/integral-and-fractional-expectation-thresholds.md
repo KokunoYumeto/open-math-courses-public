@@ -22,15 +22,22 @@ A family \(\mathcal F\subseteq2^X\), increasing or not, is *\(p\)-small* if it h
 
 ## 2. Maximal truncation
 
-**Lemma 2.1** (maximal truncation). Let \(\lambda\) be a probability mass function on a finite set \(X\), let \(A\subseteq X\), \(m\ge0\) and \(0<d<1\). Call \(u\in[0,1]\) *admissible* if
+**Lemma 2.1** (maximal truncation). Let \(\lambda\) be a probability mass function on a finite set \(X\), let \(A\subseteq X\), \(m\ge0\) and \(0<d<1\). Call \(u\in[0,1]\) *admissible* if the conditions (2.1) hold: every \(x\) with \(\lambda(x)>u\) lies in \(A\), and
 \[
-\{x:\lambda(x)>u\}\subseteq A\qquad\text{and}\qquad\sum_{x\in X}\min\{\lambda(x),u\}\bigl(\mathbf 1_A(x)-(1-d)\bigr)\ge mu.\tag{2.1}
+\begin{aligned}
+&\sum_{x\in X}\min\{\lambda(x),u\}\bigl(\mathbf 1_A(x)-(1-d)\bigr)\\
+&\quad\ge mu.
+\end{aligned}
 \]
 If an admissible \(u\) exists, there is a largest one, \(\varepsilon\), and \(|\{x:\lambda(x)>\varepsilon\}|\le m/d\).
 
 **Proof.** The inclusion in (2.1) holds exactly when \(u\ge u_0=\max(\{\lambda(x):x\notin A\}\cup\{0\})\). Both sides of the inequality in (2.1) are continuous in \(u\). So the admissible set is a closed subset of \([u_0,1]\), compact and by assumption nonempty, and it has a largest element \(\varepsilon\). Let \(R=\{x:\lambda(x)>\varepsilon\}\). If \(\varepsilon=1\), then \(R=\varnothing\). Otherwise let
 \[
-f(u)=\sum_{x\in X}\min\{\lambda(x),u\}\bigl(\mathbf 1_A(x)-(1-d)\bigr)-mu.
+\begin{aligned}
+&f(u)\\
+&\quad =\sum_{x\in X}\min\{\lambda(x),u\}\bigl(\mathbf 1_A(x)-(1-d)\bigr)\\
+&\quad -mu.
+\end{aligned}
 \]
 For \(u\) slightly larger than \(\varepsilon\), namely \(\varepsilon<u<\min(\{1\}\cup\{\lambda(x):x\in R\})\), the terms with \(\lambda(x)\le\varepsilon\) do not change, and each \(x\in R\) contributes \(u(\mathbf 1_A(x)-(1-d))=du\), because \(R\subseteq A\) by admissibility of \(\varepsilon\). So \(f\) has slope \(d|R|-m\) there. If \(d|R|>m\), then \(f(u)>f(\varepsilon)\ge0\) for such \(u\), and \(\{\lambda>u\}\subseteq R\subseteq A\); so \(u\) is admissible, contradicting the maximality of \(\varepsilon\). Hence \(d|R|\le m\). \(\square\)
 
@@ -38,11 +45,18 @@ For \(u\) slightly larger than \(\varepsilon\), namely \(\varepsilon<u<\min(\{1\
 
 **Theorem 3.1** (multiscale selector estimate; OpenAI). Let \(X\) be finite, let \(\mathcal F\) be a nonempty family of nonempty subsets of \(X\), and suppose that \(\mathcal F\) is not \(p\)-small, where \(0<p\le1\). For each \(H\in\mathcal F\) let \(\lambda_H\) be a probability mass function on \(X\) vanishing outside \(H\). Let \(D=256\) and let \(s\ge0\) be an integer with \(p\sum_{i=1}^sD^i\le\frac12\). Colour the elements of \(X\) independently by a random map \(a\colon X\to\{1,\dots,s+1\}\) with
 \[
-\pi_i=\mathbb P(a(x)=i)=D^ip\quad(1\le i\le s),\qquad\pi_{s+1}=1-p\sum_{i=1}^sD^i\ge\tfrac12.\tag{3.1}
+\begin{aligned}
+&\pi_i=\mathbb P(a(x)=i)\\
+&\quad =D^ip\quad(1\le i\le s),\\
+&\pi_{s+1}=1-p\sum_{i=1}^sD^i\ge\tfrac12.
+\end{aligned}\tag{3.1}
 \]
 For a colouring \(v\) let \(A_i(v)=\{x:v(x)\le i\}\). Then with probability at least \(\frac9{10}\) there is \(H\in\mathcal F\) with
 \[
-\lambda_H\bigl(A_i(a)\bigr)\ge1-2^{-i}\qquad(1\le i\le s),\tag{3.2}
+\begin{gathered}
+\lambda_H\bigl(A_i(a)\bigr)\ge1-2^{-i}\\
+(1\le i\le s),
+\end{gathered}\tag{3.2}
 \]
 where \(\lambda_H(A)=\sum_{x\in A}\lambda_H(x)\); for such an \(H\),
 \[
@@ -51,26 +65,39 @@ where \(\lambda_H(A)=\sum_{x\in A}\lambda_H(x)\); for such an \(H\),
 
 The point of (3.2) is that one member \(H\) works at all scales \(i\) simultaneously. The bound (3.3) follows from (3.2): since \(a(x)=\sum_{i=0}^s\mathbf 1\{a(x)>i\}\),
 \[
-\sum_xa(x)\lambda_H(x)=\sum_{i=0}^s\lambda_H\bigl(X\setminus A_i(a)\bigr)=1+\sum_{i=1}^s\bigl(1-\lambda_H(A_i(a))\bigr)\le1+\sum_{i=1}^s2^{-i}\le2.
+\begin{aligned}
+&\sum_xa(x)\lambda_H(x)=\sum_{i=0}^s\lambda_H\bigl(X\setminus A_i(a)\bigr)\\
+&\quad =1+\sum_{i=1}^s\bigl(1-\lambda_H(A_i(a))\bigr)\\
+&\quad \le1+\sum_{i=1}^s2^{-i}\le2.
+\end{aligned}
 \]
 
 **Proof.** If \(s=0\), every element has colour \(1\), (3.2) is empty, and any \(H\in\mathcal F\) works. Let \(s\ge1\) and \(d_i=2^{-i}\). A colouring is *bad* if no \(H\in\mathcal F\) satisfies (3.2); we show \(\mathbb P(a\text{ bad})\le\frac1{10}\).
 
 *Moves.* A *move* of a colouring \(a\) is a colouring \(z\le a\) (pointwise): some elements receive earlier colours. Write
 \[
-U(a,z)=\{x:z(x)<a(x)\},\qquad m_i(a,z)=|A_i(z)\setminus A_i(a)|=|\{x:z(x)\le i<a(x)\}|,\qquad L(a,z)=\sum_x\bigl(a(x)-z(x)\bigr).
+\begin{aligned}
+&U(a,z)=\{x:z(x)<a(x)\},\\
+&m_i(a,z)=|A_i(z)\setminus A_i(a)|\\
+&\quad =|\{x:z(x)\le i<a(x)\}|,\\
+&L(a,z)=\sum_x\bigl(a(x)-z(x)\bigr).
+\end{aligned}
 \]
-The move is *feasible* if there are \(H\in\mathcal F\) and \(\varepsilon_1,\dots,\varepsilon_s\in[0,1]\) such that for every \(i\), with \(R_i=\{x:\lambda_H(x)>\varepsilon_i\}\),
+The move is *feasible* if there are \(H\in\mathcal F\) and \(\varepsilon_1,\dots,\varepsilon_s\in[0,1]\) such that for every \(i\), with \(R_i=\{x:\lambda_H(x)>\varepsilon_i\}\), the conditions (3.4) hold: \(R_i\subseteq A_i(z)\) and
 \[
-R_i\subseteq A_i(z)\qquad\text{and}\qquad\sum_{x\in X}\min\{\lambda_H(x),\varepsilon_i\}\bigl(\mathbf 1_{A_i(z)}(x)-(1-d_i)\bigr)\ge m_i(a,z)\,\varepsilon_i.\tag{3.4}
+\begin{aligned}
+&\sum_{x\in X}\min\{\lambda_H(x),\varepsilon_i\}\\
+&\qquad\cdot\bigl(\mathbf 1_{A_i(z)}(x)-(1-d_i)\bigr)\\
+&\quad\ge m_i(a,z)\,\varepsilon_i.
+\end{aligned}
 \]
 That is, \(\varepsilon_i\) is admissible in the sense of Lemma 2.1 for \(\lambda=\lambda_H\), \(A=A_i(z)\), \(m=m_i(a,z)\) and \(d=d_i\). We say that \(H\) and the \(\varepsilon_i\) *witness* the feasibility.
 
 *If the trivial move is feasible, \(a\) is not bad.* For \(z=a\), \(m_i=0\). Replacing \(\min\{\lambda_H(x),\varepsilon_i\}\) by \(\lambda_H(x)\) in (3.4) adds \((\lambda_H(x)-\varepsilon_i)d_i\ge0\) for each \(x\in R_i\subseteq A_i(a)\), and nothing for other \(x\). So \(\sum_x\lambda_H(x)(\mathbf 1_{A_i(a)}(x)-(1-d_i))\ge0\), that is, \(\lambda_H(A_i(a))\ge1-d_i\), for every \(i\) and the same \(H\).
 
-*Minimal moves cover \(\mathcal F\).* Fix orders on the finite sets of colourings and of members of \(\mathcal F\). For every colouring \(a\) and every \(H_0\in\mathcal F\), choose, among the feasible moves \(z\) of \(a\) with \(U(a,z)\subseteq H_0\), one with \(L(a,z)\) as small as possible, the first in the order among these. Such moves exist: the move that gives colour \(1\) to the elements of \(H_0\) and keeps the other colours is feasible, witnessed by \(H=H_0\) and all \(\varepsilon_i=0\), because \(\{\lambda_{H_0}>0\}\subseteq H_0\subseteq A_i(z)\). The witness of a chosen move need not be \(H_0\). Let \(\mathcal Z(a)\) be the set of chosen moves. Each \(H_0\) contains the changed set of its chosen move, so \(\{U(a,z):z\in\mathcal Z(a)\}\) covers \(\mathcal F\); as \(\mathcal F\) is not \(p\)-small, \(\sum_{z\in\mathcal Z(a)}p^{|U(a,z)|}>\frac12\). Writing \(P(v)=\prod_x\pi_{v(x)}\) for the probability of a colouring \(v\),
+*Minimal moves cover \(\mathcal F\).* Fix orders on the finite sets of colourings and of members of \(\mathcal F\). For every colouring \(a\) and every \(H_0\in\mathcal F\), choose, among the feasible moves \(z\) of \(a\) with \(U(a,z)\subseteq H_0\), one with \(L(a,z)\) as small as possible, the first in the order among these. Such moves exist: the move that gives colour \(1\) to the elements of \(H_0\) and keeps the other colours is feasible, witnessed by \(H=H_0\) and all \(\varepsilon_i=0\), because \(\{\lambda_{H_0}>0\}\subseteq H_0\subseteq A_i(z)\). The witness of a chosen move need not be \(H_0\). Let \(\mathcal Z(a)\) be the set of chosen moves. Each \(H_0\) contains the changed set of its chosen move, so \(\{U(a,z):z\in\mathcal Z(a)\}\) covers \(\mathcal F\); as \(\mathcal F\) is not \(p\)-small, \(\sum_{z\in\mathcal Z(a)}p^{|U(a,z)|}>\frac12\). Writing \(P(v)=\prod_x\pi_{v(x)}\) for the probability of a colouring \(v\), the bound (3.5) holds:
 \[
-\tfrac12\,\mathbb P(a\text{ bad})\le\sum_{a\text{ bad}}P(a)\sum_{z\in\mathcal Z(a)}p^{|U(a,z)|}.\tag{3.5}
+\tfrac12\,\mathbb P(a\text{ bad})\le\sum_{a\text{ bad}}P(a)\sum_{z\in\mathcal Z(a)}p^{|U(a,z)|}.
 \]
 For bad \(a\), every \(z\in\mathcal Z(a)\) has \(U(a,z)\neq\varnothing\), because the trivial move is not feasible.
 
@@ -83,7 +110,11 @@ Group the pairs \((a,z)\) occurring in (3.5) by \(z\) and the profile. In a grou
 
 *Moved elements lie in the sets \(R_i\).* We claim that for every \((a,z)\) of the group,
 \[
-\{x:z(x)=i<a(x)\}\subseteq R_i\qquad(1\le i\le s).\tag{3.7}
+\begin{aligned}
+&\{x:z(x)=i<a(x)\}\\
+&\quad \subseteq R_i\\
+&(1\le i\le s).
+\end{aligned}\tag{3.7}
 \]
 Suppose that \(z(x)=i<a(x)\) and \(x\notin R_i\). Let \(z'\) agree with \(z\) except that \(z'(x)=i+1\). Then \(z'\le a\), and \(U(a,z')\subseteq U(a,z)\subseteq H_0\), where \(z\) was chosen for \(H_0\). The set \(A_i(z')=A_i(z)\setminus\{x\}\), all other \(A_j\) are unchanged, \(m_i(a,z')=m_i(a,z)-1\) and the other \(m_j\) are unchanged. In test \(i\) of (3.4), the inclusion still holds because \(x\notin R_i\); the left side decreases by \(\min\{\lambda_H(x),\varepsilon_i\}\,(d_i+(1-d_i))\le\varepsilon_i\), and the right side decreases by exactly \(\varepsilon_i\). So \(H\) and the same \(\varepsilon_i\) witness the feasibility of \(z'\). But \(L(a,z')=L(a,z)-1\), contradicting the choice of \(z\).
 
@@ -93,13 +124,17 @@ Suppose that \(z(x)=i<a(x)\) and \(x\notin R_i\). Let \(z'\) agree with \(z\) ex
 \]
 where the second factor is a multinomial coefficient. Since \(\binom nk\le(\mathrm en/k)^k\) and by (3.6),
 \[
-\prod_{i=1}^s\binom{|R_i|}{t_i}\le\prod_{i:t_i>0}\Bigl(\frac{\mathrm e\,2^it}{t_i}\Bigr)^{t_i}\le\prod_{i=1}^s\bigl(\mathrm e\,4^i\bigr)^{t_i}.\tag{3.9}
+\begin{aligned}
+&\prod_{i=1}^s\binom{|R_i|}{t_i}\\
+&\quad \le\prod_{i:t_i>0}\Bigl(\frac{\mathrm e\,2^it}{t_i}\Bigr)^{t_i}\\
+&\quad \le\prod_{i=1}^s\bigl(\mathrm e\,4^i\bigr)^{t_i}.
+\end{aligned}\tag{3.9}
 \]
-For the second inequality, put \(\alpha_i=t_i/t\). The weighted arithmetic–geometric mean inequality gives \(\prod_{i:t_i>0}(2^{-i}/\alpha_i)^{\alpha_i}\le\sum_{i:t_i>0}\alpha_i\cdot2^{-i}/\alpha_i\le1\); raising to the power \(t\) gives \(\prod_{i:t_i>0}(t/t_i)^{t_i}\le\prod_i2^{it_i}\).
+For the second inequality, put \(\alpha_i=t_i/t\). The weighted arithmetic–geometric mean inequality gives \(\prod_{i:t_i>0}(2^{-i}/\alpha_i)^{\alpha_i}\le\sum_{i:t_i>0}\alpha_i\cdot2^{-i}/\alpha_i\), which is at most \(1\); raising to the power \(t\) gives \(\prod_{i:t_i>0}(t/t_i)^{t_i}\le\prod_i2^{it_i}\).
 
-Every pair of the group has the same value of \(p^tP(a)\): the colourings \(a\) and \(z\) differ exactly on the moved elements, so
+Every pair of the group has the same value of \(p^tP(a)\): the colourings \(a\) and \(z\) differ exactly on the moved elements, so the identity (3.10) holds:
 \[
-p^tP(a)=P(z)\prod_{i=1}^s\Bigl(\frac p{\pi_i}\Bigr)^{t_i}\prod_{i<h}\pi_h^{n_{ih}}.\tag{3.10}
+p^tP(a)=P(z)\prod_{i=1}^s\Bigl(\frac p{\pi_i}\Bigr)^{t_i}\prod_{i<h}\pi_h^{n_{ih}}.
 \]
 By (3.8)–(3.10), the pairs with given \(z\) and profile contribute at most
 \[
@@ -107,7 +142,11 @@ P(z)\prod_{i=1}^s\Bigl[\Bigl(\frac{\mathrm e\,4^ip}{\pi_i}\Bigr)^{t_i}\binom{t_i
 \]
 to the right side of (3.5). Sum this bound over all profiles with given row sums \(t_1,\dots,t_s\), occurring or not: by the multinomial theorem, row \(i\) gives \((\sum_{h>i}\pi_h)^{t_i}\le1\). Then sum over all colourings \(z\), using \(\sum_zP(z)=1\). Since \(\mathrm e\,4^ip/\pi_i=\mathrm e/64^i\), the right side of (3.5) is at most
 \[
-\sum_{\substack{t_1,\dots,t_s\ge0\\t_1+\dots+t_s>0}}\ \prod_{i=1}^s\Bigl(\frac{\mathrm e}{64^i}\Bigr)^{t_i}\le\sum_{\ell\ge1}\varrho^\ell=\frac\varrho{1-\varrho}<\frac1{20},\qquad\varrho=\sum_{i=1}^s\frac{\mathrm e}{64^i}<\frac{\mathrm e}{63}<\frac1{21},
+\begin{aligned}
+&\sum_{\substack{t_1,\dots,t_s\ge0\\t_1+\dots+t_s>0}}\ \prod_{i=1}^s\Bigl(\frac{\mathrm e}{64^i}\Bigr)^{t_i}\\
+&\quad \le\sum_{\ell\ge1}\varrho^\ell=\frac\varrho{1-\varrho}<\frac1{20},\\
+&\varrho=\sum_{i=1}^s\frac{\mathrm e}{64^i}<\frac{\mathrm e}{63}<\frac1{21},
+\end{aligned}
 \]
 because every product with \(t_1+\dots+t_s=\ell\) appears, with a multinomial coefficient at least \(1\), in the expansion of \(\varrho^\ell\). With (3.5), \(\mathbb P(a\text{ bad})<\frac1{10}\). \(\square\)
 
@@ -115,24 +154,36 @@ because every product with \(t_1+\dots+t_s=\ell\) appears, with a multinomial co
 
 **Proof of Theorem 4.1.** Let \(D=256\), \(B=512\) and \(C=25B^4\). Let \(r\in(0,1]\), and let \(g\colon2^X\to[0,\infty)\) satisfy
 \[
-\sum_{S\subseteq H}g(S)\ge1\quad(H\in\mathcal F),\qquad\sum_{S\subseteq X}g(S)\,r^{|S|}\le\tfrac12.\tag{4.1}
+\begin{gathered}
+\sum_{S\subseteq H}g(S)\ge1\quad(H\in\mathcal F),\\
+\sum_{S\subseteq X}g(S)\,r^{|S|}\le\tfrac12.
+\end{gathered}\tag{4.1}
 \]
 Let \(p=r/C\). We show that \(\mathcal F\) is \(p\)-small. This gives the second statement; since every \(r<q_f(\mathcal F)\) admits such a \(g\), it gives \(q(\mathcal F)\ge q_f(\mathcal F)/C\) (if \(q_f(\mathcal F)=0\) there is nothing to prove).
 
 *Masses from the fractional cover.* The cost in (4.1) contains the term \(g(\varnothing)\), so \(g(\varnothing)\le\frac12\). For \(H\in\mathcal F\) put
 \[
-M_H=\sum_{\varnothing\neq S\subseteq H}g(S)\ge1-g(\varnothing)\ge\tfrac12,\qquad\lambda_H(x)=\frac1{M_H}\sum_{\substack{\varnothing\neq S\subseteq H\\x\in S}}\frac{g(S)}{|S|}.
+\begin{gathered}
+M_H=\sum_{\varnothing\neq S\subseteq H}g(S)\ge1-g(\varnothing)\ge\tfrac12,\\
+\lambda_H(x)=\frac1{M_H}\sum_{\substack{\varnothing\neq S\subseteq H\\x\in S}}\frac{g(S)}{|S|}.
+\end{gathered}
 \]
 Each nonempty \(S\subseteq H\) spreads its weight \(g(S)\) equally over its elements, so \(\lambda_H\) is a probability mass function vanishing outside \(H\). The members of \(\mathcal F\) are nonempty, since \(\varnothing\notin\mathcal F\).
 
 *The selector event.* Suppose that \(\mathcal F\) is not \(p\)-small. Let \(s\) be the largest integer \(\ge0\) with \(p\sum_{i=1}^sD^i\le\frac12\); it exists because the sums are unbounded. Theorem 3.1 gives an event \(\mathcal E\), of probability at least \(\frac9{10}\), on which some \(H\in\mathcal F\) satisfies \(\sum_xa(x)\lambda_H(x)\le2\). Put
 \[
-Y_x=B^{4-a(x)},\qquad Z=\sum_{\varnothing\neq S\subseteq X}g(S)\prod_{x\in S}Y_x\ge0.
+\begin{gathered}
+Y_x=B^{4-a(x)},\\
+Z=\sum_{\varnothing\neq S\subseteq X}g(S)\prod_{x\in S}Y_x\ge0.
+\end{gathered}
 \]
 
 *Lower bound.* On \(\mathcal E\), with \(H\) as above and \(\bar a(S)=|S|^{-1}\sum_{x\in S}a(x)\),
 \[
-\frac1{M_H}\sum_{\varnothing\neq S\subseteq H}g(S)\,\bar a(S)=\sum_xa(x)\lambda_H(x)\le2.
+\begin{aligned}
+&\frac1{M_H}\sum_{\varnothing\neq S\subseteq H}g(S)\,\bar a(S)\\
+&\quad =\sum_xa(x)\lambda_H(x)\le2.
+\end{aligned}
 \]
 Markov's inequality for the probability distribution \(g(S)/M_H\) on the nonempty subsets of \(H\) shows that the sets with \(\bar a(S)\le4\) carry \(g\)-weight at least \(M_H/2\). For each of them \(\prod_{x\in S}Y_x=B^{|S|(4-\bar a(S))}\ge1\). Hence \(Z\ge M_H/2\ge\frac14\) on \(\mathcal E\), and
 \[
@@ -141,11 +192,17 @@ Markov's inequality for the probability distribution \(g(S)/M_H\) on the nonempt
 
 *Upper bound.* By maximality of \(s\), \(\frac12<p\sum_{i=1}^{s+1}D^i\le2pD^{s+1}\), so \(B^{-(s+1)}\le D^{-(s+1)}<4p\). The \(Y_x\) are independent with common mean
 \[
-\mathbb EY_x=B^4\Bigl(p\sum_{i=1}^s\Bigl(\frac DB\Bigr)^i+\pi_{s+1}B^{-(s+1)}\Bigr)\le B^4\Bigl(p\sum_{i\ge1}2^{-i}+4p\Bigr)\le5B^4p=\frac r5,
+\begin{aligned}
+&\mathbb EY_x=B^4\Bigl(p\sum_{i=1}^s\Bigl(\frac DB\Bigr)^i+\pi_{s+1}B^{-(s+1)}\Bigr)\\
+&\quad \le B^4\Bigl(p\sum_{i\ge1}2^{-i}+4p\Bigr)\le5B^4p=\frac r5,
+\end{aligned}
 \]
 also when \(s=0\). A product over a nonempty set \(S\) of distinct independent variables has mean \((\mathbb EY_x)^{|S|}\), and \((r/5)^{|S|}\le r^{|S|}/5\) for \(|S|\ge1\). So
 \[
-\mathbb EZ=\sum_{\varnothing\neq S}g(S)\,(\mathbb EY_x)^{|S|}\le\frac15\sum_{\varnothing\neq S}g(S)\,r^{|S|}\le\frac1{10},\tag{4.3}
+\begin{aligned}
+&\mathbb EZ=\sum_{\varnothing\neq S}g(S)\,(\mathbb EY_x)^{|S|}\\
+&\quad \le\frac15\sum_{\varnothing\neq S}g(S)\,r^{|S|}\le\frac1{10},
+\end{aligned}\tag{4.3}
 \]
 which contradicts (4.2). Hence \(\mathcal F\) is \(p\)-small. \(\square\)
 

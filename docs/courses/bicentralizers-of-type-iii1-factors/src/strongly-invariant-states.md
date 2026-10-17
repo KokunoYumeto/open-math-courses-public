@@ -14,7 +14,7 @@ Let \((U_t)\) be a strongly continuous unitary group on \(H\) and \(\sigma_t(T)=
 
 1. \(\sigma_\mu\circ\sigma_\nu=\sigma_{\mu*\nu}=\sigma_\nu\circ\sigma_\mu\); in particular \(\sigma_\mu\circ\sigma_s=\sigma_{\mu*\delta_s}\).
 2. For every normal functional \(\omega\) on \(B(H)\), \(\omega(\sigma_\mu(T))=\int\omega(\sigma_t(T))\,d\mu(t)\).
-3. If \(f\in L^1(\mathbb R)\), then \(\|\sigma_s(\sigma_f(T))-\sigma_f(T)\|\le\|f(\cdot-s)-f\|_1\|T\|\), so \(s\mapsto\sigma_s(\sigma_f(T))\) is norm continuous.
+3. If \(f\in L^1(\mathbb R)\), then \(\|\sigma_s(\sigma_f(T))-\sigma_f(T)\|\) is at most \(\|f(\cdot-s)-f\|_1\|T\|\), so \(s\mapsto\sigma_s(\sigma_f(T))\) is norm continuous.
 4. If \(s\mapsto\sigma_s(T)\) is norm continuous, then \(\Psi(\sigma_\mu(T))=\int\Psi(\sigma_s(T))\,d\mu(s)\) for every bounded linear functional \(\Psi\) on \(B(H)\).
 
 **Proof.** (1) Test on vectors and use Fubini for the bounded continuous functions \((t,s)\mapsto\langle\sigma_{t+s}(T)h,k\rangle\). (2) A normal functional is \(\sum_n\langle\,\cdot\,h_n,k_n\rangle\) with \(\sum_n\|h_n\|\|k_n\|<\infty\); apply the definition to each term and sum by dominated convergence. (3) By (1), \(\sigma_s(\sigma_f(T))=\sigma_{f(\cdot-s)}(T)\). (4) Fix \(n\). On \([-n,n)\) the function \(s\mapsto\sigma_s(T)\) is uniformly norm continuous. For a partition of \([-n,n)\) into intervals \(I_j\) of length less than \(\delta\), with points \(s_j\in I_j\), the operator \(\int_{[-n,n)}\sigma_s(T)\,d\mu-\sum_j\sigma_{s_j}(T)\mu(I_j)\) has norm at most the oscillation of \(s\mapsto\sigma_s(T)\) over distances \(\delta\), and the part of \(\sigma_\mu(T)\) outside \([-n,n)\) has norm at most \(\|T\|\mu(\{|s|\ge n\})\). Apply \(\Psi\), use the same estimates for the scalar function \(s\mapsto\Psi(\sigma_s(T))\), and let \(\delta\to0\), then \(n\to\infty\). \(\square\)
@@ -31,15 +31,19 @@ Taking \(\mu=\delta_t\) shows that a strongly invariant state is invariant. For 
 2. for every \(\mu\in\mathrm{Prob}(\mathbb R)\), \(\|\alpha_\mu(x_i)-x_i\|\to0\);
 3. there are \(y_i\) in the domain of \(G\) with \(\|y_i-x_i\|\to0\) and \(\|Gy_i\|\to0\).
 
-**Proof.** Let \(C=\sup_i\|x_i\|\). (1)\(\Rightarrow\)(2): \(\|\alpha_\mu(x_i)-x_i\|\le\sup_{|t|\le T}\|\alpha_t(x_i)-x_i\|+2C\mu(\{|t|>T\})\); choose \(T\) large.
+**Proof.** Let \(C=\sup_i\|x_i\|\). (1)\(\Rightarrow\)(2): \(\|\alpha_\mu(x_i)-x_i\|\) is at most the sum of \(\sup_{|t|\le T}\|\alpha_t(x_i)-x_i\|\) and \(2C\mu(\{|t|>T\})\); choose \(T\) large.
 
-(2)\(\Rightarrow\)(3): Let \(g(t)=(2\pi)^{-1/2}e^{-t^2/2}\) and \(g_\varepsilon(t)=\varepsilon g(\varepsilon t)\). For \(f\in L^1\cap C^1\) with \(f'\in L^1\), \(\alpha_f(x)=\int f(t)\alpha_t(x)\,dt\) lies in the domain of \(G\) and \(G\alpha_f(x)=-\alpha_{f'}(x)\): indeed \(h^{-1}(\alpha_h\alpha_f(x)-\alpha_f(x))=\int h^{-1}(f(t-h)-f(t))\alpha_t(x)\,dt\), and \(h^{-1}(f(\cdot-h)-f)\to-f'\) in \(L^1\) by continuity of translation in \(L^1\). Put \(y_i=\alpha_g(x_i)\), so \(\|y_i\|\le C\) and \(Gy_i=-\alpha_{g'}(x_i)\). Then \(\|y_i-x_i\|\to0\) by (2). For \(\varepsilon\in(0,1]\), since the averages commute,
+(2)\(\Rightarrow\)(3): Let \(g(t)=(2\pi)^{-1/2}e^{-t^2/2}\) and \(g_\varepsilon(t)=\varepsilon g(\varepsilon t)\). For \(f\in L^1\cap C^1\) with \(f'\in L^1\), \(\alpha_f(x)=\int f(t)\alpha_t(x)\,dt\) lies in the domain of \(G\) and \(G\alpha_f(x)=-\alpha_{f'}(x)\): indeed \(h^{-1}(\alpha_h\alpha_f(x)-\alpha_f(x))\) equals \(\int h^{-1}(f(t-h)-f(t))\alpha_t(x)\,dt\), and \(h^{-1}(f(\cdot-h)-f)\to-f'\) in \(L^1\) by continuity of translation in \(L^1\). Put \(y_i=\alpha_g(x_i)\), so \(\|y_i\|\le C\) and \(Gy_i=-\alpha_{g'}(x_i)\). Then \(\|y_i-x_i\|\to0\) by (2). For \(\varepsilon\in(0,1]\), since the averages commute,
 \[
-Gy_i-G\alpha_{g_\varepsilon}(y_i)=-\alpha_{g'}(x_i)+\alpha_{g'}\big(\alpha_{g_\varepsilon}(x_i)\big)=-\alpha_{g'}\big(x_i-\alpha_{g_\varepsilon}(x_i)\big).
+\begin{aligned}
+&Gy_i-G\alpha_{g_\varepsilon}(y_i)=-\alpha_{g'}(x_i)\\
+&\quad +\alpha_{g'}\big(\alpha_{g_\varepsilon}(x_i)\big)\\
+&\quad =-\alpha_{g'}\big(x_i-\alpha_{g_\varepsilon}(x_i)\big).
+\end{aligned}
 \]
-So \(\|Gy_i-G\alpha_{g_\varepsilon}(y_i)\|\le\|g'\|_1\|x_i-\alpha_{g_\varepsilon}(x_i)\|\to0\) by (2), while \(\|G\alpha_{g_\varepsilon}(y_i)\|=\|\alpha_{g_\varepsilon'}(y_i)\|\le\|g_\varepsilon'\|_1C=\varepsilon\|g'\|_1C\). Hence \(\limsup_i\|Gy_i\|\le\varepsilon\|g'\|_1C\) for every \(\varepsilon\).
+So \(\|Gy_i-G\alpha_{g_\varepsilon}(y_i)\|\) is at most \(\|g'\|_1\|x_i-\alpha_{g_\varepsilon}(x_i)\|\), which tends to \(0\) by (2), while \(\|G\alpha_{g_\varepsilon}(y_i)\|=\|\alpha_{g_\varepsilon'}(y_i)\|\), which is at most \(\|g_\varepsilon'\|_1C=\varepsilon\|g'\|_1C\). Hence \(\limsup_i\|Gy_i\|\le\varepsilon\|g'\|_1C\) for every \(\varepsilon\).
 
-(3)\(\Rightarrow\)(1): for \(y\) in the domain of \(G\), \(\alpha_t(y)-y=\int_0^t\alpha_s(Gy)\,ds\), so \(\|\alpha_t(y)-y\|\le|t|\|Gy\|\). Hence \(\sup_{|t|\le T}\|\alpha_t(x_i)-x_i\|\le2\|x_i-y_i\|+T\|Gy_i\|\). \(\square\)
+(3)\(\Rightarrow\)(1): for \(y\) in the domain of \(G\), \(\alpha_t(y)-y=\int_0^t\alpha_s(Gy)\,ds\), so \(\|\alpha_t(y)-y\|\le|t|\|Gy\|\). Hence \(\sup_{|t|\le T}\|\alpha_t(x_i)-x_i\|\) is at most \(2\|x_i-y_i\|+T\|Gy_i\|\). \(\square\)
 
 A net satisfying these conditions is called *strongly \(\alpha\)-invariant*.
 
@@ -53,37 +57,51 @@ From now on \(X\) is self-adjoint on \(H\ne0\), \(U_t=e^{itX}\) and \(\sigma_t=\
 
 **Lemma 3.2.** Let \(T=T^*\in B(H)\) with \(\Phi(T)\le0\) for every \(\Phi\in\mathcal E(X)\), and let \(\varepsilon>0\). There is \(\kappa>0\) with the following property. Let \(K\) be a Hilbert space, \(Y\) a self-adjoint operator on \(K\), \(W_s=U_s\otimes e^{-isY}\) on \(H\otimes K\), and \(A\) the self-adjoint generator of \(W\), so that \(W_s=e^{isA}\). Then
 \[
-\langle(T\otimes1)\zeta,\zeta\rangle\le\kappa\|A\zeta\|^2+\varepsilon\|\zeta\|^2\qquad(\zeta\in\operatorname{dom}A).
+\begin{gathered}
+\langle(T\otimes1)\zeta,\zeta\rangle\le\kappa\|A\zeta\|^2+\varepsilon\|\zeta\|^2\\
+(\zeta\in\operatorname{dom}A).
+\end{gathered}
 \]
 
 **Proof.** *Step 1.* There is \(\kappa_0\) with \(\langle Th,h\rangle\le\kappa_0\|(X-\ell)h\|^2+\frac\varepsilon2\|h\|^2\) for all \(\ell\in\mathbb R\) and \(h\in\operatorname{dom}X\). Otherwise there are unit vectors \(h_n\in\operatorname{dom}X\) and \(\ell_n\) with \(\langle Th_n,h_n\rangle>n\|(X-\ell_n)h_n\|^2+\frac\varepsilon2\); then \(\|(X-\ell_n)h_n\|^2<\|T\|/n\), and a weak\(^*\) cluster point \(\Phi\) of \(\omega_{h_n}\) lies in \(\mathcal E(X)\) and has \(\Phi(T)\ge\varepsilon/2\), a contradiction.
 
-*Step 2.* Let \((k_\beta)\) be an orthonormal basis of \(K\). Then \(H\otimes K=\bigoplus_\beta H\otimes k_\beta\) and \(U_s\otimes1\) acts as \(U_s\) on each summand, so its generator \(X\otimes1\) is the direct sum of copies of \(X\). For \(\zeta=\sum_\beta h_\beta\otimes k_\beta\) in its domain and every \(\ell\), Step 1 gives \(\langle(T\otimes1)\zeta,\zeta\rangle=\sum_\beta\langle Th_\beta,h_\beta\rangle\le\kappa_0\|((X-\ell)\otimes1)\zeta\|^2+\frac\varepsilon2\|\zeta\|^2\).
+*Step 2.* Let \((k_\beta)\) be an orthonormal basis of \(K\). Then \(H\otimes K=\bigoplus_\beta H\otimes k_\beta\) and \(U_s\otimes1\) acts as \(U_s\) on each summand, so its generator \(X\otimes1\) is the direct sum of copies of \(X\). For \(\zeta=\sum_\beta h_\beta\otimes k_\beta\) in its domain and every \(\ell\), Step 1 gives \(\langle(T\otimes1)\zeta,\zeta\rangle=\sum_\beta\langle Th_\beta,h_\beta\rangle\), which is at most \(\kappa_0\|((X-\ell)\otimes1)\zeta\|^2+\frac\varepsilon2\|\zeta\|^2\).
 
 *Step 3.* Choose \(\eta>0\) with \(2\kappa_0\eta^2\le\frac\varepsilon2\), let \(I_m=[m\eta,(m+1)\eta)\) for \(m\in\mathbb Z\), \(E_Y\) the spectral measure of \(Y\), and \(P_m=1\otimes E_Y(I_m)\). The \(P_m\) are pairwise orthogonal with sum \(1\), they commute with \(T\otimes1\) and with every \(W_s\), hence with \(A\). On \(E_Y(I_m)K\) the operator \(Y\) restricts to a bounded \(Y_m\) with \(\|Y_m-m\eta\|\le\eta\). Let \(\zeta\in\operatorname{dom}A\) and \(\zeta_m=P_m\zeta\in\operatorname{dom}A\). Since \((U_s\otimes1)\zeta_m=W_s(1\otimes e^{isY_m})\zeta_m\),
 \[
-\frac{(U_s\otimes1)\zeta_m-\zeta_m}{is}=W_s\frac{(1\otimes e^{isY_m})\zeta_m-\zeta_m}{is}+\frac{W_s\zeta_m-\zeta_m}{is}\longrightarrow(1\otimes Y_m)\zeta_m+A\zeta_m\quad(s\to0).
+\begin{aligned}
+&\frac{(U_s\otimes1)\zeta_m-\zeta_m}{is}\\
+&\quad =W_s\frac{(1\otimes e^{isY_m})\zeta_m-\zeta_m}{is}\\
+&\quad +\frac{W_s\zeta_m-\zeta_m}{is}\longrightarrow(1\otimes Y_m)\zeta_m\\
+&\quad +A\zeta_m\quad(s\to0).
+\end{aligned}
 \]
 By Stone's theorem \(\zeta_m\in\operatorname{dom}(X\otimes1)\) and \((X\otimes1)\zeta_m=A\zeta_m+(1\otimes Y_m)\zeta_m\), so \(\|((X-m\eta)\otimes1)\zeta_m\|\le\|A\zeta_m\|+\eta\|\zeta_m\|\). Step 2 with \(\ell=m\eta\) gives
 \[
-\langle(T\otimes1)\zeta_m,\zeta_m\rangle\le2\kappa_0\|A\zeta_m\|^2+(2\kappa_0\eta^2+\tfrac\varepsilon2)\|\zeta_m\|^2\le2\kappa_0\|A\zeta_m\|^2+\varepsilon\|\zeta_m\|^2 .
+\begin{aligned}
+&\langle(T\otimes1)\zeta_m,\zeta_m\rangle\le2\kappa_0\|A\zeta_m\|^2\\
+&\quad +(2\kappa_0\eta^2+\tfrac\varepsilon2)\|\zeta_m\|^2\\
+&\quad \le2\kappa_0\|A\zeta_m\|^2+\varepsilon\|\zeta_m\|^2 .
+\end{aligned}
 \]
 Summing over \(m\), and using \(\langle(T\otimes1)\zeta,\zeta\rangle=\sum_m\langle(T\otimes1)\zeta_m,\zeta_m\rangle\) and \(\|A\zeta\|^2=\sum_m\|A\zeta_m\|^2\), gives the claim with \(\kappa=2\kappa_0\). \(\square\)
 
 **Lemma 3.3.** For positive trace-class operators \(\rho,\rho'\) on \(H\), \(\|\rho^{1/2}-\rho'^{1/2}\|_2^2\le\|\rho-\rho'\|_1\).
 
-**Proof.** Put \(a=\rho^{1/2}\), \(b=\rho'^{1/2}\), let \(P\) be the spectral projection of \(a-b\) for \([0,\infty)\) and \(Q=1-P\), so \(|a-b|=(P-Q)(a-b)=(a-b)(P-Q)\). Since \(a^2-b^2=\frac12\big((a-b)(a+b)+(a+b)(a-b)\big)\) and the trace is cyclic,
+**Proof.** Put \(a=\rho^{1/2}\), \(b=\rho'^{1/2}\), let \(P\) be the spectral projection of \(a-b\) for \([0,\infty)\) and \(Q=1-P\), so \(|a-b|=(P-Q)(a-b)\), which is \((a-b)(P-Q)\). Since \(a^2-b^2\) is half of \((a-b)(a+b)+(a+b)(a-b)\) and the trace is cyclic,
 \[
-\|a^2-b^2\|_1\ge\operatorname{Tr}\big((P-Q)(a^2-b^2)\big)=\operatorname{Tr}\big(|a-b|(a+b)\big)=\operatorname{Tr}\big(|a-b|P(a+b)P\big)+\operatorname{Tr}\big(|a-b|Q(a+b)Q\big).
+\begin{aligned}
+&\|a^2-b^2\|_1\ge\operatorname{Tr}\big((P-Q)(a^2-b^2)\big)\\
+&\quad =\operatorname{Tr}\big(|a-b|(a+b)\big)\\
+&\quad =\operatorname{Tr}\big(|a-b|P(a+b)P\big)\\
+&\quad +\operatorname{Tr}\big(|a-b|Q(a+b)Q\big).
+\end{aligned}
 \]
 On the range of \(P\), \(P(a+b)P\ge P(a-b)P=P|a-b|P\); on the range of \(Q\), \(Q(a+b)Q\ge Q(b-a)Q=Q|a-b|Q\). Since \(\operatorname{Tr}(c^{1/2}dc^{1/2})\ge0\) for \(c,d\ge0\), the right side is at least \(\operatorname{Tr}(|a-b|^2)=\|a-b\|_2^2\). \(\square\)
 
 **Lemma 3.4.** Let \(\Psi\) be a strongly \(\sigma\)-invariant state. There is a net of normal states \(\Psi_i\) with \(\Psi_i\to\Psi\) weak\(^*\) and \(\|\Psi_i\circ\sigma_\mu-\Psi_i\|\to0\) for every \(\mu\in\mathrm{Prob}(\mathbb R)\).
 
-**Proof.** The normal states are weak\(^*\) dense in \(S(B(H))\): if a state \(\Psi_0\) lay outside the weak\(^*\) closure of the convex set of normal states, the separation theorem would give \(T=T^*\) with \(\Psi_0(T)>\sup_{\|h\|=1}\langle Th,h\rangle\), whereas \(T\le(\sup_{\|h\|=1}\langle Th,h\rangle)1\) gives the reverse inequality. Index the net by triples \(i=(\mathcal K,\mathcal F,\varepsilon)\) with \(\mathcal K\subset B(H)\) and \(\mathcal F\subset\mathrm{Prob}(\mathbb R)\) finite and \(\varepsilon>0\). Let
-\[
-W_i=\big\{(\psi-\psi\circ\sigma_\mu)_{\mu\in\mathcal F}:\ \psi\text{ a normal state},\ |\psi(T)-\Psi(T)|\le\varepsilon\ (T\in\mathcal K)\big\}\subset(B(H)_*)^{\mathcal F},
-\]
+**Proof.** The normal states are weak\(^*\) dense in \(S(B(H))\): if a state \(\Psi_0\) lay outside the weak\(^*\) closure of the convex set of normal states, the separation theorem would give \(T=T^*\) with \(\Psi_0(T)>\sup_{\|h\|=1}\langle Th,h\rangle\), whereas \(T\le(\sup_{\|h\|=1}\langle Th,h\rangle)1\) gives the reverse inequality. Index the net by triples \(i=(\mathcal K,\mathcal F,\varepsilon)\) with \(\mathcal K\subset B(H)\) and \(\mathcal F\subset\mathrm{Prob}(\mathbb R)\) finite and \(\varepsilon>0\). Let \(W_i\subset(B(H)_*)^{\mathcal F}\) be the set of the families \((\psi-\psi\circ\sigma_\mu)_{\mu\in\mathcal F}\) with \(\psi\) a normal state satisfying \(|\psi(T)-\Psi(T)|\le\varepsilon\) for \(T\in\mathcal K\),
 a convex set. Take normal states \(\psi_\alpha\to\Psi\) weak\(^*\). For each \(T\), \(\psi_\alpha(\sigma_\mu(T))\to\Psi(\sigma_\mu(T))=\Psi(T)\), so \((\psi_\alpha-\psi_\alpha\circ\sigma_\mu)_\mu\to0\) in the weak topology of the Banach space \((B(H)_*)^{\mathcal F}\), whose dual is \(B(H)^{\mathcal F}\); and these points lie in \(W_i\) eventually. By Mazur's theorem \(0\) is in the norm closure of \(W_i\): there is a normal state \(\Psi_i\) with \(\|\Psi_i-\Psi_i\circ\sigma_\mu\|\le\varepsilon\) for \(\mu\in\mathcal F\) and \(|\Psi_i(T)-\Psi(T)|\le\varepsilon\) for \(T\in\mathcal K\). \(\square\)
 
 **Theorem 3.5** ([Marrakchi, Theorem 3.2]). Every strongly \(\sigma\)-invariant state of \(B(H)\) lies in \(\overline{\operatorname{conv}}\,\mathcal E(X)\). Conversely, every state in \(\overline{\operatorname{conv}}\,\mathcal E(X)\) is strongly \(\sigma\)-invariant.
@@ -94,30 +112,42 @@ Let \(\Psi_i\) be the net of Lemma 3.4, with densities \(\rho_i\), and \(Z_i=\rh
 
 Let \(C\colon H\to\overline H\) be the canonical antiunitary and \(\Theta\colon H\otimes\overline H\to\mathrm{HS}(H)\) the unitary with \(\Theta(h\otimes Ck)=\langle\,\cdot\,,k\rangle h\). Then \(\Theta^{-1}(TZ)=(T\otimes1)\Theta^{-1}Z\), and \(\Theta^{-1}V_t\Theta=U_{-t}\otimes CU_{-t}C^{-1}\). By Stone's theorem \(CU_sC^{-1}=e^{-isY}\) for a self-adjoint \(Y\) on \(\overline H\), so \(\Theta^{-1}V_t\Theta=W_{-t}\) with \(W\) as in Lemma 3.2, and the generator of \(V\) corresponds to \(-A\). With \(\zeta_i=\Theta^{-1}Z_i'\) we get \(\|A\zeta_i\|\to0\), and by Lemma 3.2,
 \[
-\Psi(T)=\lim_i\operatorname{Tr}(\rho_iT)=\lim_i\langle TZ_i,Z_i\rangle_{\mathrm{HS}}=\lim_i\langle(T\otimes1)\zeta_i,\zeta_i\rangle\le\limsup_i\big(\kappa\|A\zeta_i\|^2+\varepsilon\|\zeta_i\|^2\big)=\varepsilon,
+\begin{aligned}
+&\Psi(T)=\lim_i\operatorname{Tr}(\rho_iT)=\lim_i\langle TZ_i,Z_i\rangle_{\mathrm{HS}}\\
+&\quad =\lim_i\langle(T\otimes1)\zeta_i,\zeta_i\rangle\\
+&\quad \le\limsup_i\big(\kappa\|A\zeta_i\|^2+\varepsilon\|\zeta_i\|^2\big)=\varepsilon,
+\end{aligned}
 \]
 a contradiction.
 
-Conversely, the strongly invariant states form a weak\(^*\)-closed convex set, so it suffices to treat \(\Phi\in\mathcal E(X)\), with \(h_i\), \(\ell_i\) as in Definition 3.1. Since \(|e^{itx}-e^{it\ell}|\le|t|\,|x-\ell|\), spectral calculus gives \(\|(U_t-e^{it\ell_i})h_i\|\le|t|\,\|(X-\ell_i)h_i\|\), and so \(\|\omega_{h_i}\circ\sigma_t-\omega_{h_i}\|\le2|t|\,\|(X-\ell_i)h_i\|\), because \(\omega_{h_i}\circ\sigma_t\) is the vector state of \(U_t^*h_i\) and phases do not change vector states. Lemma 2.1 makes \((\omega_{h_i})\) strongly invariant in the sense of (2), and then \(\Phi(\sigma_\mu(T))=\lim_i\omega_{h_i}(\sigma_\mu(T))=\lim_i\omega_{h_i}(T)=\Phi(T)\). \(\square\)
+Conversely, the strongly invariant states form a weak\(^*\)-closed convex set, so it suffices to treat \(\Phi\in\mathcal E(X)\), with \(h_i\), \(\ell_i\) as in Definition 3.1. Since \(|e^{itx}-e^{it\ell}|\le|t|\,|x-\ell|\), spectral calculus gives \(\|(U_t-e^{it\ell_i})h_i\|\le|t|\,\|(X-\ell_i)h_i\|\), and so \(\|\omega_{h_i}\circ\sigma_t-\omega_{h_i}\|\le2|t|\,\|(X-\ell_i)h_i\|\), because \(\omega_{h_i}\circ\sigma_t\) is the vector state of \(U_t^*h_i\) and phases do not change vector states. Lemma 2.1 makes \((\omega_{h_i})\) strongly invariant in the sense of (2), and then \(\Phi(\sigma_\mu(T))=\lim_i\omega_{h_i}(\sigma_\mu(T))\), which is \(\lim_i\omega_{h_i}(T)=\Phi(T)\). \(\square\)
 
 ## 4. Strongly invariant extensions
 
 **Proposition 4.1** ([Marrakchi, Proposition 3.10]). Let \(\mathcal K\subset S(B(H))\) be nonempty, weak\(^*\)-closed, and such that \(\Psi\circ\sigma_\mu\in\mathcal K\) for all \(\Psi\in\mathcal K\) and \(\mu\in\mathrm{Prob}(\mathbb R)\). Then \(\mathcal K\) contains a strongly \(\sigma\)-invariant state.
 
-**Proof.** Take \(\Psi_0\in\mathcal K\), let \(\mu_n\) be the uniform probability measure on \([0,n]\), and \(\Psi_n=\Psi_0\circ\sigma_{\mu_n}\in\mathcal K\). For every \(s\), \(\|\mu_n*\delta_s-\mu_n\|\le2|s|/n\), so by Lemma 1.1(1), \(|\Psi_n(\sigma_s(T))-\Psi_n(T)|\le\frac{2|s|}n\|T\|\). A weak\(^*\) cluster point \(\Psi\in\mathcal K\) of \((\Psi_n)\) is therefore \(\sigma\)-invariant. Let \(f=1_{[0,1]}\) and \(\Psi'=\Psi\circ\sigma_f\in\mathcal K\). For \(T\in B(H)\), \(T'=\sigma_f(T)\) has a norm continuous orbit (Lemma 1.1(3)), so Lemma 1.1(4) and the invariance of \(\Psi\) give \(\Psi(\sigma_\mu(T'))=\int\Psi(\sigma_s(T'))\,d\mu(s)=\Psi(T')\). By Lemma 1.1(1),
+**Proof.** Take \(\Psi_0\in\mathcal K\), let \(\mu_n\) be the uniform probability measure on \([0,n]\), and \(\Psi_n=\Psi_0\circ\sigma_{\mu_n}\in\mathcal K\). For every \(s\), \(\|\mu_n*\delta_s-\mu_n\|\le2|s|/n\), so by Lemma 1.1(1), \(|\Psi_n(\sigma_s(T))-\Psi_n(T)|\le\frac{2|s|}n\|T\|\). A weak\(^*\) cluster point \(\Psi\in\mathcal K\) of \((\Psi_n)\) is therefore \(\sigma\)-invariant. Let \(f=1_{[0,1]}\) and \(\Psi'=\Psi\circ\sigma_f\in\mathcal K\). For \(T\in B(H)\), \(T'=\sigma_f(T)\) has a norm continuous orbit (Lemma 1.1(3)), so Lemma 1.1(4) and the invariance of \(\Psi\) give \(\Psi(\sigma_\mu(T'))=\int\Psi(\sigma_s(T'))\,d\mu(s)\), which is \(\Psi(T')\). By Lemma 1.1(1),
 \[
-\Psi'(\sigma_\mu(T))=\Psi(\sigma_\mu(\sigma_f(T)))=\Psi(\sigma_\mu(T'))=\Psi(T')=\Psi'(T).\qquad\square
+\begin{aligned}
+&\Psi'(\sigma_\mu(T))=\Psi(\sigma_\mu(\sigma_f(T)))\\
+&\quad =\Psi(\sigma_\mu(T'))=\Psi(T')=\Psi'(T).
+\end{aligned}
 \]
+\(\square\)
 
 **Lemma 4.2** ([Marrakchi, Lemma 4.1]). Let \(M\subset B(H)\) be a von Neumann algebra with \(U_tMU_t^*=M\) for all \(t\), and \(C\) the \(C^*\)-algebra generated by \(M\) and \(M'\). Let \(\Phi\) be a state of \(C\) with \(\Phi\circ\sigma_t=\Phi\) on \(C\) for all \(t\), whose restrictions to \(M\) and to \(M'\) are normal. Then some strongly \(\sigma\)-invariant state of \(B(H)\) extends \(\Phi\).
 
 **Proof.** \(U_tM'U_t^*=M'\) as well, so \(\sigma_t(C)=C\). Let \(\mathcal K\) be the set of states of \(B(H)\) extending \(\Phi\); it is nonempty by the Hahn–Banach theorem and weak\(^*\)-closed. By Proposition 4.1 it suffices to show \(\Psi'=\Psi\circ\sigma_\mu\in\mathcal K\) for \(\Psi\in\mathcal K\) and \(\mu\in\mathrm{Prob}(\mathbb R)\).
 
-For \(x\in M\), \(\sigma_\mu(x)\in M\), and as \(\Phi|_M\) is normal, Lemma 1.1(2) gives \(\Psi'(x)=\Phi(\sigma_\mu(x))=\int\Phi(\sigma_t(x))\,d\mu=\Phi(x)\); likewise on \(M'\). Let \(\mathcal A\subset M\) and \(\mathcal B\subset M'\) be the sets of elements with norm continuous orbits. For \(a\in\mathcal A\), \(b\in\mathcal B\), the orbit of \(ab\) is norm continuous and lies in \(C\), so Lemma 1.1(4) gives \(\Psi'(ab)=\int\Psi(\sigma_t(ab))\,d\mu=\int\Phi(\sigma_t(ab))\,d\mu=\Phi(ab)\).
+For \(x\in M\), \(\sigma_\mu(x)\in M\), and as \(\Phi|_M\) is normal, Lemma 1.1(2) gives \(\Psi'(x)=\Phi(\sigma_\mu(x))\), which is \(\int\Phi(\sigma_t(x))\,d\mu=\Phi(x)\); likewise on \(M'\). Let \(\mathcal A\subset M\) and \(\mathcal B\subset M'\) be the sets of elements with norm continuous orbits. For \(a\in\mathcal A\), \(b\in\mathcal B\), the orbit of \(ab\) is norm continuous and lies in \(C\), so Lemma 1.1(4) gives \(\Psi'(ab)=\int\Psi(\sigma_t(ab))\,d\mu\), which is \(\int\Phi(\sigma_t(ab))\,d\mu=\Phi(ab)\).
 
 For \(x\in M\), \(x_n=\sigma_{f_n}(x)\) with \(f_n=n1_{[0,1/n]}\) lies in \(\mathcal A\) (Lemma 1.1(3)), \(\|x_n\|\le\|x\|\), and \(x_n\to x\) \(*\)-strongly, because \(t\mapsto U_txU_t^*h\) is continuous; similarly for \(M'\). Let \(a\in M\), \(b\in M'\) with such approximants \(a_n\in\mathcal A\), \(b_n\in\mathcal B\). For a state \(\chi\) of \(C\) whose restrictions to \(M\) and \(M'\) are normal, put \(\|z\|_\chi=\chi(z^*z)^{1/2}\). Then \(\|a(b-b_n)\|_\chi\le\|a\|\|b-b_n\|_\chi\to0\), and, since \((a-a_n)^*(a-a_n)\in M\) commutes with \(b_n^*b_n\in M'\),
 \[
-\|(a-a_n)b_n\|_\chi^2=\chi\big((a-a_n)^*(a-a_n)\,b_n^*b_n\big)\le\|b_n\|^2\chi\big((a-a_n)^*(a-a_n)\big)\to0 .
+\begin{aligned}
+&\|(a-a_n)b_n\|_\chi^2\\
+&\quad =\chi\big((a-a_n)^*(a-a_n)\,b_n^*b_n\big)\\
+&\quad \le\|b_n\|^2\chi\big((a-a_n)^*(a-a_n)\big)\to0 .
+\end{aligned}
 \]
 So \(\chi(a_nb_n)\to\chi(ab)\) by the Cauchy–Schwarz inequality. Applied to \(\chi=\Phi\) and \(\chi=\Psi'|_C\), this gives \(\Psi'(ab)=\Phi(ab)\). The products \(ab\) span a dense \(*\)-subalgebra of \(C\), so \(\Psi'|_C=\Phi\). \(\square\)
 

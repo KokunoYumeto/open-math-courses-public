@@ -8,11 +8,11 @@ This lesson defines the exponent, proves the lower bound \(\mu\ge2\) and Liouvil
 
 ## 1. The irrationality exponent
 
-**Definition 1.1.** For an irrational real number \(x\), its *irrationality exponent* is
-
+**Definition 1.1.** For an irrational real number \(x\), its *irrationality exponent* \(\mu(x)\) is the supremum of the \(\nu>0\) such that
 \[
-\mu(x)=\sup\Bigl\{\nu>0:\ 0<\Bigl|x-\frac pq\Bigr|<q^{-\nu}\ \text{for infinitely many coprime } p,q\in\mathbb Z,\ q\ge2\Bigr\}.
+0<\Bigl|x-\frac pq\Bigr|<q^{-\nu}
 \]
+for infinitely many coprime \(p,q\in\mathbb Z\) with \(q\ge2\).
 
 The value may be \(+\infty\).
 
@@ -31,9 +31,9 @@ If these hold for every \(\nu>2\), then \(\mu(x)\le2\).
 
 **Proposition 1.4** (Liouville). Let \(x\) be a real algebraic number of degree \(n\ge2\). There is \(c>0\) with \(|x-p/q|\ge c\,q^{-n}\) for all integers \(p\) and \(q\ge1\). Hence \(\mu(x)\le n\).
 
-**Proof.** Let \(f\in\mathbb Z[T]\) be irreducible of degree \(n\) with \(f(x)=0\). If \(|x-p/q|\ge1\) there is nothing to prove with \(c\le1\). Otherwise \(f(p/q)\ne0\) (an irreducible polynomial of degree \(n\ge2\) has no rational root), and \(q^nf(p/q)\) is a nonzero integer, so \(|f(p/q)|\ge q^{-n}\). By the mean value theorem, \(|f(p/q)|=|f(p/q)-f(x)|\le M|x-p/q|\) with \(M=\max_{|t-x|\le1}|f'(t)|\). So \(c=\min(1,1/M)\) works. \(\square\)
+**Proof.** Let \(f\in\mathbb Z[T]\) be irreducible of degree \(n\) with \(f(x)=0\). If \(|x-p/q|\ge1\) there is nothing to prove with \(c\le1\). Otherwise \(f(p/q)\ne0\) (an irreducible polynomial of degree \(n\ge2\) has no rational root), and \(q^nf(p/q)\) is a nonzero integer, so \(|f(p/q)|\ge q^{-n}\). By the mean value theorem, \(|f(p/q)|=|f(p/q)-f(x)|\), which is at most \(M|x-p/q|\) with \(M=\max_{|t-x|\le1}|f'(t)|\). So \(c=\min(1,1/M)\) works. \(\square\)
 
-For instance \(\sum_{k\ge1}10^{-k!}\) has \(\mu=\infty\): its partial sums \(p/q\) with \(q=10^{N!}\) satisfy \(0<|x-p/q|<2\cdot10^{-(N+1)!}=2q^{-(N+1)}\). By Proposition 1.4 it is transcendental. Roth's theorem [Roth] says that \(\mu(x)=2\) for every irrational algebraic \(x\).
+For instance \(\sum_{k\ge1}10^{-k!}\) has \(\mu=\infty\): its partial sums \(p/q\) with \(q=10^{N!}\) satisfy \(0<|x-p/q|<2\cdot10^{-(N+1)!}\), and \(2\cdot10^{-(N+1)!}=2q^{-(N+1)}\). By Proposition 1.4 it is transcendental. Roth's theorem [Roth] says that \(\mu(x)=2\) for every irrational algebraic \(x\).
 
 ## 2. The theorem for \(\pi\)
 
@@ -60,7 +60,11 @@ z\mapsto P(e^z,z+u_1,\dots,z+u_m),
 an entire function of \(z\) depending on parameters \(u_i\). Near \(z=2\pi ij\), write \(z=2\pi ij+\log(1+t)\). Then \(e^z=1+t\) and \(X_i=z+u_i=2\pi ij+u_i+\log(1+t)\). So the Taylor coefficients of these functions at the points \(2\pi ij\) are Taylor coefficients of \(P\) along the *logarithmic curves*
 
 \[
-Y=1+t,\qquad X_i=c_{ji}+u_i+\log(1+t),\qquad c_{ji}=2\pi ij .
+\begin{gathered}
+Y=1+t,\\
+X_i=c_{ji}+u_i+\log(1+t),\\
+c_{ji}=2\pi ij .
+\end{gathered}
 \]
 
 *Arithmetic.* The centres \(2\pi ij\) are transcendental, but if \(p_i/q_i\) are very good approximations of \(\pi\), the nearby centres \(c_{ji}=2ijp_i/q_i\) are Gaussian rationals with denominator \(q_i\). Taylor coefficients at these rational centres, of polynomials with integer coefficients, are Gaussian rationals with controlled denominators, so a nonzero determinant of such coefficients cannot be too small.

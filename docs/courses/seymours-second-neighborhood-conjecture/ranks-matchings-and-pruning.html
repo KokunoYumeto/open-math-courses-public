@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ranks, matchings and pruning</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="blowing-up-by-transitive-tournaments.html">Previous lesson</a><a href="the-extremal-argument-and-its-consequences.html">Next lesson</a><a href="src/ranks-matchings-and-pruning.md">Editable source</a></nav><main><article><h1 id="ranks-matchings-and-pruning">Ranks, matchings and pruning</h1>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ranks, matchings and pruning</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Seymour&#x27;s second neighborhood conjecture)</a><a href="blowing-up-by-transitive-tournaments.html">Previous lesson</a><a href="the-extremal-argument-and-its-consequences.html">Next lesson</a><a href="src/ranks-matchings-and-pruning.md">Editable source</a></nav><main><article><h1 id="ranks-matchings-and-pruning">Ranks, matchings and pruning</h1>
 <p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
 <p>This lesson proves a deletion bound for two families of ordered pairs that may conflict with each other (Theorem 3.1). It is the combinatorial engine of <a href="the-extremal-argument-and-its-consequences.html">The extremal argument and its consequences</a>, and it holds for every finite binary relation: no orientation, transitivity or other assumption is used. The proof bounds a maximum matching in an auxiliary bipartite graph by comparing ranks of four matrices with generic coefficients, and then turns the matching into a vertex cover by König's theorem [Kőn]. The link between matchings and ranks of matrices with indeterminate entries goes back to Edmonds [Edm]. Sections 1 and 2 prove the facts about matchings and generic ranks that are used; Section 3 proves the theorem.</p>
 <h2 id="1-matchings-and-vertex-covers">1. Matchings and vertex covers</h2>
@@ -38,16 +38,17 @@ p\to i\qquad\text{and}\qquad s\to j .
 \]</span>
 For a conflict, call <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> its <em>shared point</em> and <span class="math" data-tex="\((p,s)\)">\((p,s)\)</span> its <em>opposite point</em>, and let
 <span class="math math-display" data-tex="\[
-Z=\{\text{shared points of conflicts}\},\qquad H=\{\text{opposite points of conflicts}\}.
+\begin{gathered}
+Z=\{\text{shared points of conflicts}\},\\
+H=\{\text{opposite points of conflicts}\}.
+\end{gathered}
 \]">\[
-Z=\{\text{shared points of conflicts}\},\qquad H=\{\text{opposite points of conflicts}\}.
+\begin{gathered}
+Z=\{\text{shared points of conflicts}\},\\
+H=\{\text{opposite points of conflicts}\}.
+\end{gathered}
 \]</span></p>
-<p><strong>Theorem 3.1</strong> (Pruning). There are <span class="math" data-tex="\(\mathcal R&#x27;\subseteq\mathcal R\)">\(\mathcal R&#x27;\subseteq\mathcal R\)</span> and <span class="math" data-tex="\(\mathcal C&#x27;\subseteq\mathcal C\)">\(\mathcal C&#x27;\subseteq\mathcal C\)</span> such that no member of <span class="math" data-tex="\(\mathcal R&#x27;\)">\(\mathcal R&#x27;\)</span> conflicts with a member of <span class="math" data-tex="\(\mathcal C&#x27;\)">\(\mathcal C&#x27;\)</span>, every member of <span class="math" data-tex="\(\mathcal R\cup\mathcal C\)">\(\mathcal R\cup\mathcal C\)</span> that conflicts with nothing is kept, and
-<span class="math math-display" data-tex="\[
-|\mathcal R\setminus\mathcal R&#x27;|+|\mathcal C\setminus\mathcal C&#x27;|\le|H|+\bigl|\{z\in Z:z\text{ is covered by no member of }\mathcal R&#x27;\cup\mathcal C&#x27;\}\bigr| . \tag{3.1}
-\]">\[
-|\mathcal R\setminus\mathcal R&#x27;|+|\mathcal C\setminus\mathcal C&#x27;|\le|H|+\bigl|\{z\in Z:z\text{ is covered by no member of }\mathcal R&#x27;\cup\mathcal C&#x27;\}\bigr| . \tag{3.1}
-\]</span></p>
+<p><strong>Theorem 3.1</strong> (Pruning). There are <span class="math" data-tex="\(\mathcal R&#x27;\subseteq\mathcal R\)">\(\mathcal R&#x27;\subseteq\mathcal R\)</span> and <span class="math" data-tex="\(\mathcal C&#x27;\subseteq\mathcal C\)">\(\mathcal C&#x27;\subseteq\mathcal C\)</span> such that no member of <span class="math" data-tex="\(\mathcal R&#x27;\)">\(\mathcal R&#x27;\)</span> conflicts with a member of <span class="math" data-tex="\(\mathcal C&#x27;\)">\(\mathcal C&#x27;\)</span>, every member of <span class="math" data-tex="\(\mathcal R\cup\mathcal C\)">\(\mathcal R\cup\mathcal C\)</span> that conflicts with nothing is kept, and the bound (3.1) holds: <span class="math" data-tex="\(|\mathcal R\setminus\mathcal R&#x27;|+|\mathcal C\setminus\mathcal C&#x27;|\)">\(|\mathcal R\setminus\mathcal R&#x27;|+|\mathcal C\setminus\mathcal C&#x27;|\)</span> is at most <span class="math" data-tex="\(|H|\)">\(|H|\)</span> plus the number of <span class="math" data-tex="\(z\in Z\)">\(z\in Z\)</span> covered by no member of <span class="math" data-tex="\(\mathcal R&#x27;\cup\mathcal C&#x27;\)">\(\mathcal R&#x27;\cup\mathcal C&#x27;\)</span>.</p>
 <p>If there are no conflicts, keeping everything works, because <span class="math" data-tex="\(Z=H=\varnothing\)">\(Z=H=\varnothing\)</span>. The proof occupies the rest of this section.</p>
 <h3 id="3-1-the-auxiliary-graph">3.1. The auxiliary graph</h3>
 <p>Let <span class="math" data-tex="\(Z_L\)">\(Z_L\)</span> and <span class="math" data-tex="\(Z_R\)">\(Z_R\)</span> be two disjoint copies of <span class="math" data-tex="\(Z\)">\(Z\)</span>, with copies <span class="math" data-tex="\(z_L\in Z_L\)">\(z_L\in Z_L\)</span>, <span class="math" data-tex="\(z_R\in Z_R\)">\(z_R\in Z_R\)</span> of <span class="math" data-tex="\(z\in Z\)">\(z\in Z\)</span>. Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be the bipartite graph with left part <span class="math" data-tex="\(\mathcal V_L=\mathcal R\sqcup Z_L\)">\(\mathcal V_L=\mathcal R\sqcup Z_L\)</span> and right part <span class="math" data-tex="\(\mathcal V_R=\mathcal C\sqcup Z_R\)">\(\mathcal V_R=\mathcal C\sqcup Z_R\)</span>, and with three kinds of edges:</p>
@@ -62,10 +63,17 @@ Z=\{\text{shared points of conflicts}\},\qquad H=\{\text{opposite points of conf
 <p><strong>Lemma 3.3.</strong> Suppose <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> has a vertex cover <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(|K|\le|Z|+|H|\)">\(|K|\le|Z|+|H|\)</span> that contains no isolated vertex. Delete the original members lying in <span class="math" data-tex="\(K\)">\(K\)</span>. The remaining families <span class="math" data-tex="\(\mathcal R&#x27;\)">\(\mathcal R&#x27;\)</span>, <span class="math" data-tex="\(\mathcal C&#x27;\)">\(\mathcal C&#x27;\)</span> satisfy the conclusions of Theorem 3.1.</p>
 <p><em>Proof.</em> Every conflict is an edge, and one of its ends was deleted, so no conflict remains. Members without conflicts are isolated (Lemma 3.2), hence not in <span class="math" data-tex="\(K\)">\(K\)</span>, hence kept. Let <span class="math" data-tex="\(q\)">\(q\)</span> be the number of points of <span class="math" data-tex="\(Z\)">\(Z\)</span> covered by no kept member. Each of the other <span class="math" data-tex="\(|Z|-q\)">\(|Z|-q\)</span> points <span class="math" data-tex="\(z\)">\(z\)</span> is covered by a kept member, which is joined by an edge to a copy of <span class="math" data-tex="\(z\)">\(z\)</span>; that member is not in <span class="math" data-tex="\(K\)">\(K\)</span>, so the copy is. Distinct points have distinct copies, so <span class="math" data-tex="\(K\)">\(K\)</span> contains at least <span class="math" data-tex="\(|Z|-q\)">\(|Z|-q\)</span> copies, and the number of deleted members is
 <span class="math math-display" data-tex="\[
-|K\cap(\mathcal R\sqcup\mathcal C)|\le|K|-(|Z|-q)\le|H|+q.\qquad\square
+\begin{aligned}
+&amp;|K\cap(\mathcal R\sqcup\mathcal C)|\le|K|\\
+&amp;\quad -(|Z|-q)\le|H|+q.
+\end{aligned}
 \]">\[
-|K\cap(\mathcal R\sqcup\mathcal C)|\le|K|-(|Z|-q)\le|H|+q.\qquad\square
-\]</span></p>
+\begin{aligned}
+&amp;|K\cap(\mathcal R\sqcup\mathcal C)|\le|K|\\
+&amp;\quad -(|Z|-q)\le|H|+q.
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p>By Theorem 1.2, it remains to prove that every matching of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> has at most <span class="math" data-tex="\(|Z|+|H|\)">\(|Z|+|H|\)</span> edges.</p>
 <h3 id="3-2-a-well-chosen-maximum-matching">3.2. A well-chosen maximum matching</h3>
 <p>Among the maximum matchings of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, choose <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> with the fewest edges between two original vertices. Let <span class="math" data-tex="\(k\)">\(k\)</span> be the number of such edges, let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be the set of edges of <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> between <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> and <span class="math" data-tex="\(Z_R\)">\(Z_R\)</span>, and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> the set between <span class="math" data-tex="\(Z_L\)">\(Z_L\)</span> and <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>; put <span class="math" data-tex="\(\ell=|\alpha|\)">\(\ell=|\alpha|\)</span>, <span class="math" data-tex="\(t=|\beta|\)">\(t=|\beta|\)</span>, so <span class="math" data-tex="\(|\mathcal M|=k+\ell+t\)">\(|\mathcal M|=k+\ell+t\)</span>. Let <span class="math" data-tex="\(\Gamma_\alpha\)">\(\Gamma_\alpha\)</span> be the subgraph formed by <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>, <span class="math" data-tex="\(Z_R\)">\(Z_R\)</span> and the edges between them, and <span class="math" data-tex="\(\Gamma_\beta\)">\(\Gamma_\beta\)</span> the subgraph formed by <span class="math" data-tex="\(Z_L\)">\(Z_L\)</span>, <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> and the edges between them.</p>
@@ -75,15 +83,27 @@ Z=\{\text{shared points of conflicts}\},\qquad H=\{\text{opposite points of conf
 <h3 id="3-3-four-matrices">3.3. Four matrices</h3>
 <p>For every pair <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> with <span class="math" data-tex="\(x\to y\)">\(x\to y\)</span>, introduce two variables <span class="math" data-tex="\(a_{xy}\)">\(a_{xy}\)</span> and <span class="math" data-tex="\(b_{xy}\)">\(b_{xy}\)</span>; put <span class="math" data-tex="\(a_{xy}=b_{xy}=0\)">\(a_{xy}=b_{xy}=0\)</span> when <span class="math" data-tex="\(x\not\to y\)">\(x\not\to y\)</span>. For a real value of each variable, define four matrices
 <span class="math math-display" data-tex="\[
-L\in\mathbb R^{Z\times\mathcal R},\qquad N\in\mathbb R^{\mathcal C\times Z},\qquad B\in\mathbb R^{H\times\mathcal R},\qquad A\in\mathbb R^{\mathcal C\times H}
+\begin{gathered}
+L\in\mathbb R^{Z\times\mathcal R},\qquad N\in\mathbb R^{\mathcal C\times Z},\\
+B\in\mathbb R^{H\times\mathcal R},\qquad A\in\mathbb R^{\mathcal C\times H}
+\end{gathered}
 \]">\[
-L\in\mathbb R^{Z\times\mathcal R},\qquad N\in\mathbb R^{\mathcal C\times Z},\qquad B\in\mathbb R^{H\times\mathcal R},\qquad A\in\mathbb R^{\mathcal C\times H}
+\begin{gathered}
+L\in\mathbb R^{Z\times\mathcal R},\qquad N\in\mathbb R^{\mathcal C\times Z},\\
+B\in\mathbb R^{H\times\mathcal R},\qquad A\in\mathbb R^{\mathcal C\times H}
+\end{gathered}
 \]</span>
 by
 <span class="math math-display" data-tex="\[
-L_{(i,j),(p,j)}=a_{pi},\qquad N_{(i,s),(i,j)}=b_{sj},\qquad B_{(p,s),(p,j)}=b_{sj},\qquad A_{(i,s),(p,s)}=a_{pi},
+\begin{gathered}
+L_{(i,j),(p,j)}=a_{pi},\qquad N_{(i,s),(i,j)}=b_{sj},\\
+B_{(p,s),(p,j)}=b_{sj},\qquad A_{(i,s),(p,s)}=a_{pi},
+\end{gathered}
 \]">\[
-L_{(i,j),(p,j)}=a_{pi},\qquad N_{(i,s),(i,j)}=b_{sj},\qquad B_{(p,s),(p,j)}=b_{sj},\qquad A_{(i,s),(p,s)}=a_{pi},
+\begin{gathered}
+L_{(i,j),(p,j)}=a_{pi},\qquad N_{(i,s),(i,j)}=b_{sj},\\
+B_{(p,s),(p,j)}=b_{sj},\qquad A_{(i,s),(p,s)}=a_{pi},
+\end{gathered}
 \]</span>
 with all entries not of the displayed form equal to <span class="math" data-tex="\(0\)">\(0\)</span>. Thus <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> move the first coordinate forward along an arrow <span class="math" data-tex="\(p\to i\)">\(p\to i\)</span>, and <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> move the second coordinate backward along an arrow <span class="math" data-tex="\(s\to j\)">\(s\to j\)</span>. As linear maps, <span class="math" data-tex="\(L,B\)">\(L,B\)</span> are defined on <span class="math" data-tex="\(\mathbb R^{\mathcal R}\)">\(\mathbb R^{\mathcal R}\)</span> and <span class="math" data-tex="\(N,A\)">\(N,A\)</span> take values in <span class="math" data-tex="\(\mathbb R^{\mathcal C}\)">\(\mathbb R^{\mathcal C}\)</span>.</p>
 <p><strong>Lemma 3.5.</strong> <span class="math" data-tex="\(NL=AB\)">\(NL=AB\)</span> for every choice of values.</p>
@@ -91,19 +111,35 @@ with all entries not of the displayed form equal to <span class="math" data-tex=
 <p><strong>Lemma 3.6.</strong> Suppose that, for some choice of values, <span class="math" data-tex="\(\operatorname{rank}L\ge\ell\)">\(\operatorname{rank}L\ge\ell\)</span>, <span class="math" data-tex="\(\operatorname{rank}N\ge t\)">\(\operatorname{rank}N\ge t\)</span> and <span class="math" data-tex="\(\dim\ker A\ge k\)">\(\dim\ker A\ge k\)</span>. Then <span class="math" data-tex="\(|\mathcal M|\le|Z|+|H|\)">\(|\mathcal M|\le|Z|+|H|\)</span>.</p>
 <p><em>Proof.</em> Using rank–nullity for <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>, and <span class="math" data-tex="\(NL=AB\)">\(NL=AB\)</span>,
 <span class="math math-display" data-tex="\[
-|H|=\dim\ker A+\operatorname{rank}A\ge k+\operatorname{rank}(AB)=k+\operatorname{rank}(NL)\ge k+\operatorname{rank}L-\dim\ker N\ge k+\ell-(|Z|-t),
+\begin{aligned}
+&amp;|H|=\dim\ker A+\operatorname{rank}A\ge k\\
+&amp;\quad +\operatorname{rank}(AB)=k\\
+&amp;\quad +\operatorname{rank}(NL)\ge k+\operatorname{rank}L\\
+&amp;\quad -\dim\ker N\ge k+\ell-(|Z|-t),
+\end{aligned}
 \]">\[
-|H|=\dim\ker A+\operatorname{rank}A\ge k+\operatorname{rank}(AB)=k+\operatorname{rank}(NL)\ge k+\operatorname{rank}L-\dim\ker N\ge k+\ell-(|Z|-t),
+\begin{aligned}
+&amp;|H|=\dim\ker A+\operatorname{rank}A\ge k\\
+&amp;\quad +\operatorname{rank}(AB)=k\\
+&amp;\quad +\operatorname{rank}(NL)\ge k+\operatorname{rank}L\\
+&amp;\quad -\dim\ker N\ge k+\ell-(|Z|-t),
+\end{aligned}
 \]</span>
-because <span class="math" data-tex="\(\operatorname{rank}(NL)=\dim\operatorname{im}L-\dim(\operatorname{im}L\cap\ker N)\)">\(\operatorname{rank}(NL)=\dim\operatorname{im}L-\dim(\operatorname{im}L\cap\ker N)\)</span>. Hence <span class="math" data-tex="\(k+\ell+t\le|Z|+|H|\)">\(k+\ell+t\le|Z|+|H|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+because <span class="math" data-tex="\(\operatorname{rank}(NL)\)">\(\operatorname{rank}(NL)\)</span> equals <span class="math" data-tex="\(\dim\operatorname{im}L-\dim(\operatorname{im}L\cap\ker N)\)">\(\dim\operatorname{im}L-\dim(\operatorname{im}L\cap\ker N)\)</span>. Hence <span class="math" data-tex="\(k+\ell+t\le|Z|+|H|\)">\(k+\ell+t\le|Z|+|H|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <h3 id="3-4-choosing-the-values">3.4. Choosing the values</h3>
 <p>Two families of submatrices are needed.</p>
 <p><em>Supports of <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>.</em> The entry <span class="math" data-tex="\(L_{(i,j),(p,j)}\)">\(L_{(i,j),(p,j)}\)</span> can be nonzero only if <span class="math" data-tex="\(p\to i\)">\(p\to i\)</span>, that is, only if <span class="math" data-tex="\((p,j)\)">\((p,j)\)</span> covers <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>; so <span class="math" data-tex="\(L\)">\(L\)</span> is supported on the edges of <span class="math" data-tex="\(\Gamma_\alpha\)">\(\Gamma_\alpha\)</span>, and by Lemmas 2.1 and 3.4, <span class="math" data-tex="\(\operatorname{rank}L\le\ell\)">\(\operatorname{rank}L\le\ell\)</span> for all values. Grouping rows and columns by their second coordinate makes <span class="math" data-tex="\(L\)">\(L\)</span> block diagonal, and within the block of a fixed <span class="math" data-tex="\(j\)">\(j\)</span> the entry at row <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> and column <span class="math" data-tex="\((p,j)\)">\((p,j)\)</span> is the variable <span class="math" data-tex="\(a_{pi}\)">\(a_{pi}\)</span>, different positions carrying different variables. The edges of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> join vertices in the same block, so the square submatrix of <span class="math" data-tex="\(L\)">\(L\)</span> with the rows and columns matched by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> satisfies Lemma 2.3(b), and its determinant <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is a nonzero polynomial. In the same way, <span class="math" data-tex="\(N^{\mathsf T}\)">\(N^{\mathsf T}\)</span> is supported on the edges of <span class="math" data-tex="\(\Gamma_\beta\)">\(\Gamma_\beta\)</span>, so <span class="math" data-tex="\(\operatorname{rank}N\le t\)">\(\operatorname{rank}N\le t\)</span>; grouping by the first coordinate <span class="math" data-tex="\(i\)">\(i\)</span>, the square submatrix of <span class="math" data-tex="\(N^{\mathsf T}\)">\(N^{\mathsf T}\)</span> on the vertices matched by <span class="math" data-tex="\(\beta\)">\(\beta\)</span> has a nonzero determinant polynomial <span class="math" data-tex="\(\Upsilon\)">\(\Upsilon\)</span>.</p>
 <p><em>Local matrices.</em> For every pair <span class="math" data-tex="\((p,i)\)">\((p,i)\)</span> with <span class="math" data-tex="\(p\to i\)">\(p\to i\)</span>, let <span class="math" data-tex="\(J_p=\{j:(p,j)\in\mathcal R\}\)">\(J_p=\{j:(p,j)\in\mathcal R\}\)</span>, <span class="math" data-tex="\(S_i=\{s:(i,s)\in\mathcal C\}\)">\(S_i=\{s:(i,s)\in\mathcal C\}\)</span>, and
 <span class="math math-display" data-tex="\[
-D^{p,i}=(b_{sj})_{s\in S_i,\,j\in J_p},\qquad T^{p,i}=\{(s,j)\in S_i\times J_p:s\to j\}.
+\begin{gathered}
+D^{p,i}=(b_{sj})_{s\in S_i,\,j\in J_p},\\
+T^{p,i}=\{(s,j)\in S_i\times J_p:s\to j\}.
+\end{gathered}
 \]">\[
-D^{p,i}=(b_{sj})_{s\in S_i,\,j\in J_p},\qquad T^{p,i}=\{(s,j)\in S_i\times J_p:s\to j\}.
+\begin{gathered}
+D^{p,i}=(b_{sj})_{s\in S_i,\,j\in J_p},\\
+T^{p,i}=\{(s,j)\in S_i\times J_p:s\to j\}.
+\end{gathered}
 \]</span>
 The matrix <span class="math" data-tex="\(D^{p,i}\)">\(D^{p,i}\)</span> is supported on <span class="math" data-tex="\(T^{p,i}\)">\(T^{p,i}\)</span>, and its entries at the positions of <span class="math" data-tex="\(T^{p,i}\)">\(T^{p,i}\)</span> are distinct variables, so every real matrix supported on <span class="math" data-tex="\(T^{p,i}\)">\(T^{p,i}\)</span> is a value of <span class="math" data-tex="\(D^{p,i}\)">\(D^{p,i}\)</span>. Let <span class="math" data-tex="\(\rho_{p,i}\)">\(\rho_{p,i}\)</span> be the largest rank of such a matrix, and choose a <span class="math" data-tex="\(\rho_{p,i}\times\rho_{p,i}\)">\(\rho_{p,i}\times\rho_{p,i}\)</span> submatrix whose determinant is nonzero at some value; that determinant <span class="math" data-tex="\(\Delta_{p,i}\)">\(\Delta_{p,i}\)</span> is then a nonzero polynomial (the empty determinant <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(\rho_{p,i}=0\)">\(\rho_{p,i}=0\)</span>).</p>
 <p>The product <span class="math" data-tex="\(\Lambda\,\Upsilon\prod_{p\to i}\Delta_{p,i}\)">\(\Lambda\,\Upsilon\prod_{p\to i}\Delta_{p,i}\)</span> is a nonzero polynomial in all the variables, because a product of nonzero polynomials is nonzero. By Lemma 2.2, we fix real values at which it does not vanish. At these values:</p>

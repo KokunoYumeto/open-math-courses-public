@@ -15,7 +15,10 @@ An *affine function* on \(\mathbb R^e\) is a function \(g(x)=\langle w,x\rangle+
 
 *Proof.* *Strict sign vectors.* Let \(\rho(s,e)\) be the largest number of strict sign vectors realized by \(s\) affine functions on \(\mathbb R^e\) (or on an affine space of dimension \(e\)). Then \(\rho(0,e)=1\) and \(\rho(s,0)\le1\). The set of points with a given strict sign vector is an intersection of open half-spaces, hence convex; call it a *cell*. Add a function \(g\) with zero set \(Z\) to \(s-1\) given functions. A cell \(K\) of the old functions splits into the parts where \(g>0\) and \(g<0\). If both parts are nonempty, a segment in \(K\) joining them meets \(Z\) (by continuity), so \(K\cap Z\) is a nonempty cell of the restrictions of the old functions to \(Z\); distinct cells \(K\) give distinct, disjoint such cells. (Restrictions that are constant on \(Z\) only merge cells and do not increase the count.) Hence \(\rho(s,e)\le\rho(s-1,e)+\rho(s-1,e-1)\), and by induction with Pascal's rule \(\binom{s-1}{j}+\binom{s-1}{j-1}=\binom sj\),
 \[
-\rho(s,e)\le\sum_{j=0}^{e}\binom{s-1}j+\sum_{j=0}^{e-1}\binom{s-1}j=\sum_{j=0}^{e}\binom sj .
+\begin{aligned}
+&\rho(s,e)\le\sum_{j=0}^{e}\binom{s-1}j\\
+&\quad +\sum_{j=0}^{e-1}\binom{s-1}j=\sum_{j=0}^{e}\binom sj .
+\end{aligned}
 \]
 
 *Sign vectors with zeros.* Let a sign vector be realized at a point \(x\), let \(\mathcal Z\) be the set of indices with sign \(0\), and let \(A=\bigcap_{i\in\mathcal Z}\{g_i=0\}\), an affine space containing \(x\). If \(A\) has codimension \(d\), then \(d\) of the equations, with linearly independent normals, already define \(A\), because every other equation of \(\mathcal Z\) is a linear consequence of these on the consistent system; there are at most \(\binom sd\) choices of them. The indices outside \(\mathcal Z\) are exactly those whose functions do not vanish identically on \(A\) (they do not vanish at \(x\)), and their signs form a strict sign vector of their restrictions to \(A\), of dimension \(e-d\); there are at most \(\sum_{j\le e-d}\binom sj\) of these. Summing over \(d\) gives the first bound. Each product satisfies \(\binom sd\binom sj\le(s+1)^{d+j}\le(s+1)^e\), and there are at most \((e+1)^2\) pairs \((d,j)\). Restricting to \(\Omega\) can only remove sign vectors. \(\square\)
@@ -29,7 +32,7 @@ An *affine function* on \(\mathbb R^e\) is a function \(g(x)=\langle w,x\rangle+
 \Pr\bigl(|X-l/2|\ge l/4\bigr)\le2e^{-l/8}.
 \]
 
-*Proof.* For one bit \(\xi\), \(\mathbb E e^{\pm(\xi-1/2)}=\cosh(1/2)\). Comparing the power series term by term, \((2j)!\ge2^jj!\) gives \(\cosh t\le e^{t^2/2}\). By independence, \(\mathbb Ee^{\pm(X-l/2)}=\cosh(1/2)^l\le e^{l/8}\). Markov's inequality gives \(\Pr(\pm(X-l/2)\ge l/4)\le e^{l/8}e^{-l/4}=e^{-l/8}\) for each sign. \(\square\)
+*Proof.* For one bit \(\xi\), \(\mathbb E e^{\pm(\xi-1/2)}=\cosh(1/2)\). Comparing the power series term by term, \((2j)!\ge2^jj!\) gives \(\cosh t\le e^{t^2/2}\). By independence, \(\mathbb Ee^{\pm(X-l/2)}=\cosh(1/2)^l\le e^{l/8}\). Markov's inequality gives \(\Pr(\pm(X-l/2)\ge l/4)\le e^{l/8}e^{-l/4}\), which is \(e^{-l/8}\) for each sign. \(\square\)
 
 ## 3. The finite asymmetric local lemma
 
@@ -39,13 +42,28 @@ An *affine function* on \(\mathbb R^e\) is a function \(g(x)=\langle w,x\rangle+
 \]
 then \(\Pr\bigl(\bigcap_{E\in\mathcal E}E^c\bigr)>0\).
 
-*Proof.* For \(\mathcal S\subseteq\mathcal E\) put \(A_{\mathcal S}=\bigcap_{F\in\mathcal S}F^c\). We prove by induction on \(|\mathcal S|\) that \(\Pr(A_{\mathcal S})>0\) and \(\Pr(E\mid A_{\mathcal S})\le z_E\) for every \(E\notin\mathcal S\). For \(\mathcal S=\varnothing\) this is the hypothesis. Let \(\mathcal S\ne\varnothing\). For \(F\in\mathcal S\), \(\Pr(A_{\mathcal S})=\Pr(A_{\mathcal S\setminus\{F\}})(1-\Pr(F\mid A_{\mathcal S\setminus\{F\}}))\ge\Pr(A_{\mathcal S\setminus\{F\}})(1-z_F)>0\). For \(E\notin\mathcal S\), let \(\mathcal S_1=\mathcal S\cap\Gamma(E)\) and \(\mathcal S_2=\mathcal S\setminus\mathcal S_1\). If \(\mathcal S_1=\varnothing\), independence gives \(\Pr(E\mid A_{\mathcal S})=\Pr(E)\le z_E\). Otherwise list \(\mathcal S_1=\{F_1,\dots,F_m\}\); each set \(\mathcal S_2\cup\{F_1,\dots,F_{i-1}\}\) has fewer than \(|\mathcal S|\) elements, so
+*Proof.* For \(\mathcal S\subseteq\mathcal E\) put \(A_{\mathcal S}=\bigcap_{F\in\mathcal S}F^c\). We prove by induction on \(|\mathcal S|\) that \(\Pr(A_{\mathcal S})>0\) and \(\Pr(E\mid A_{\mathcal S})\le z_E\) for every \(E\notin\mathcal S\). For \(\mathcal S=\varnothing\) this is the hypothesis. Let \(\mathcal S\ne\varnothing\). For \(F\in\mathcal S\),
 \[
-\Pr(A_{\mathcal S_1}\mid A_{\mathcal S_2})=\prod_{i=1}^m\Bigl(1-\Pr\bigl(F_i\bigm|A_{\mathcal S_2\cup\{F_1,\dots,F_{i-1}\}}\bigr)\Bigr)\ge\prod_{F\in\mathcal S_1}(1-z_F),
+\begin{aligned}
+&\Pr(A_{\mathcal S})=\Pr(A_{\mathcal S\setminus\{F\}})\\
+&\qquad\cdot(1-\Pr(F\mid A_{\mathcal S\setminus\{F\}}))\\
+&\quad\ge\Pr(A_{\mathcal S\setminus\{F\}})(1-z_F)>0.
+\end{aligned}
+\]
+For \(E\notin\mathcal S\), let \(\mathcal S_1=\mathcal S\cap\Gamma(E)\) and \(\mathcal S_2=\mathcal S\setminus\mathcal S_1\). If \(\mathcal S_1=\varnothing\), independence gives \(\Pr(E\mid A_{\mathcal S})=\Pr(E)\le z_E\). Otherwise list \(\mathcal S_1=\{F_1,\dots,F_m\}\); each set \(\mathcal S_2\cup\{F_1,\dots,F_{i-1}\}\) has fewer than \(|\mathcal S|\) elements, so
+\[
+\begin{aligned}
+&\Pr(A_{\mathcal S_1}\mid A_{\mathcal S_2})\\
+&\quad=\prod_{i=1}^m\Bigl(1-\Pr\bigl(F_i\bigm|A_{\mathcal S_2\cup\{F_1,\dots,F_{i-1}\}}\bigr)\Bigr)\\
+&\quad\ge\prod_{F\in\mathcal S_1}(1-z_F),
+\end{aligned}
 \]
 and, since \(E\) is independent of the events of \(\mathcal S_2\),
 \[
-\Pr(E\mid A_{\mathcal S})=\frac{\Pr(E\cap A_{\mathcal S_1}\mid A_{\mathcal S_2})}{\Pr(A_{\mathcal S_1}\mid A_{\mathcal S_2})}\le\frac{\Pr(E)}{\prod_{F\in\mathcal S_1}(1-z_F)}\le z_E .
+\begin{aligned}
+&\Pr(E\mid A_{\mathcal S})=\frac{\Pr(E\cap A_{\mathcal S_1}\mid A_{\mathcal S_2})}{\Pr(A_{\mathcal S_1}\mid A_{\mathcal S_2})}\\
+&\quad \le\frac{\Pr(E)}{\prod_{F\in\mathcal S_1}(1-z_F)}\le z_E .
+\end{aligned}
 \]
 Taking \(\mathcal S=\mathcal E\) gives the conclusion. \(\square\)
 
@@ -59,7 +77,10 @@ For a prime \(\ell\) and a positive integer \(a\), let \(v_\ell(a)\) be the expo
 
 *Proof.* Put \(n=k^2\). The number of multiples of \(\ell^a\) in \([m]\) is \(\lfloor m/\ell^a\rfloor\), so \(v_\ell(m!)=\sum_{a\ge1}\lfloor m/\ell^a\rfloor\), and
 \[
-v_\ell\binom{2n}n=\sum_{a\ge1}\Bigl(\Bigl\lfloor\frac{2n}{\ell^a}\Bigr\rfloor-2\Bigl\lfloor\frac n{\ell^a}\Bigr\rfloor\Bigr)\le\lfloor\log_\ell(2n)\rfloor,
+\begin{aligned}
+v_\ell\binom{2n}n&=\sum_{a\ge1}\Bigl(\Bigl\lfloor\frac{2n}{\ell^a}\Bigr\rfloor-2\Bigl\lfloor\frac n{\ell^a}\Bigr\rfloor\Bigr)\\
+&\le\lfloor\log_\ell(2n)\rfloor,
+\end{aligned}
 \]
 because each summand is \(0\) or \(1\) and vanishes when \(\ell^a>2n\). So \(\ell^{v_\ell(\binom{2n}n)}\le2n\). If every prime factor of \(\binom{2n}n\) were at most \(k\), then \(\binom{2n}n\le(2n)^k\). But \(\binom{2n}n\) is the largest of the \(2n+1\) terms of \((1+1)^{2n}\), so \(\binom{2n}n\ge4^n/(2n+1)\), and \(k^2\log4-\log(2k^2+1)>k\log(2k^2)\) for all large \(k\) (the left side grows like \(k^2\), the right like \(k\log k\)). Hence some prime \(P>k\) divides \(\binom{2n}n\), and \(P\le2n\) because it divides \((2n)!\). \(\square\)
 
@@ -75,17 +96,21 @@ because each summand is \(0\) or \(1\) and vanishes when \(\ell^a>2n\). So \(\el
 
 ## 6. Solutions
 
-**5.1.** The two lines cross at one point and divide the plane into four open quadrants, four open half-lines and the crossing point: \(4+4+1=9\) sign vectors, all of \(\{-,0,+\}^2\). The bound is \(\binom20(1+2+1)+\binom21(1+2)+\binom22\cdot1=11\).
+**5.1.** The two lines cross at one point and divide the plane into four open quadrants, four open half-lines and the crossing point: \(4+4+1=9\) sign vectors, all of \(\{-,0,+\}^2\). The bound is \(\binom20(1+2+1)+\binom21(1+2)+\binom22\cdot1\), which is \(11\).
 
-**5.2.** Put \(z_E=1/(\Delta+1)\). Then \(z_E\prod_{F\in\Gamma(E)}(1-z_F)\ge\frac1{\Delta+1}\bigl(1-\frac1{\Delta+1}\bigr)^{\Delta}\ge\frac1{e(\Delta+1)}\ge p\), using \((1-\frac1{\Delta+1})^\Delta\ge e^{-1}\).
+**5.2.** Put \(z_E=1/(\Delta+1)\). Then \(z_E\prod_{F\in\Gamma(E)}(1-z_F)\ge\frac1{\Delta+1}\bigl(1-\frac1{\Delta+1}\bigr)^{\Delta}\), which is at least \(\frac1{e(\Delta+1)}\ge p\), using \((1-\frac1{\Delta+1})^\Delta\ge e^{-1}\).
 
 **5.3.** For \(k=3,\dots,10\) the primes \(5,7,11,11,13,17,19,23\) lie in \((k,2k^2]\). For the inequality \(k^2\log4-\log(2k^2+1)>k\log(2k^2)\): at \(k=3,4,5\) the two sides are about \(9.53>8.67\), \(18.68>13.86\) and \(30.73>19.56\). For \(k\ge6\), using \(2k^2+1\le3k^2\) and \(\log k\le k/2\),
 \[
-k\log(2k^2)+\log(2k^2+1)\le(k+1)\log(3k^2)\le(k+1)(\log3+k)<k^2\log4,
+\begin{aligned}
+&k\log(2k^2)+\log(2k^2+1)\\
+&\quad \le(k+1)\log(3k^2)\\
+&\quad \le(k+1)(\log3+k)<k^2\log4,
+\end{aligned}
 \]
 since \((\log4-1)k^2>(1+\log3)k+\log3\) for \(k\ge6\).
 
-**5.4.** For \(l=8\), \(\Pr(|X-4|\ge2)=2\bigl(\binom80+\binom81+\binom82\bigr)/2^8=74/256\approx0.29\), while \(e^{-4}\approx0.018\). So the exponent \(1/2\) fails.
+**5.4.** For \(l=8\), \(\Pr(|X-4|\ge2)\) equals \(2\bigl(\binom80+\binom81+\binom82\bigr)/2^8\), which is \(74/256\approx0.29\), while \(e^{-4}\approx0.018\). So the exponent \(1/2\) fails.
 
 ## References
 

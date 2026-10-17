@@ -8,20 +8,24 @@ We use: Theorem 1.1 of [The sharp noncommutative bilinear inequality](course:OA-
 
 ## 1. The noncommutative little Grothendieck inequality
 
-**Theorem 1.1** (Haagerup). Let \(T:A\to H\) be a bounded linear map into a Hilbert space. There are states \(f,g\) on \(A\) such that
+**Theorem 1.1** (Haagerup). Let \(T:A\to H\) be a bounded linear map into a Hilbert space. There are states \(f,g\) on \(A\) such that, for every \(x\in A\), the inequality (1.1) holds:
 \[
-\|Tx\|^2\le\|T\|^2\big(f(x^*x)+g(xx^*)\big)\qquad(x\in A).
-\tag{1.1}
+\|Tx\|^2\le\|T\|^2\big(f(x^*x)+g(xx^*)\big).
 \]
-Consequently, for every finite family \(x_1,\dots,x_n\) in \(A\),
+Consequently, for every finite family \(x_1,\dots,x_n\) in \(A\), the inequality (1.2) holds:
 \[
-\sum_j\|Tx_j\|^2\le\|T\|^2\Big(\Big\|\sum_jx_j^*x_j\Big\|+\Big\|\sum_jx_jx_j^*\Big\|\Big).
-\tag{1.2}
+\begin{aligned}
+&\sum_j\|Tx_j\|^2\le\|T\|^2\Big(\Big\|\sum_jx_j^*x_j\Big\|\\
+&\qquad+\Big\|\sum_jx_jx_j^*\Big\|\Big).
+\end{aligned}
 \]
 
 **Proof.** The form \(V(x,y)=\langle Tx,T(y^*)\rangle\) on \(A\times A\) is bilinear: it is linear in \(x\), and \(y\mapsto T(y^*)\) is conjugate linear, entering the conjugate linear slot. Also \(\|V\|\le\|T\|^2\). Theorem 1.1 of the sharp bilinear inequality lesson, with \(B=A\), gives states \(\varphi_1,\varphi_2,\psi_1,\psi_2\) with
 \[
-|V(x,y)|\le\|V\|\big[\varphi_1(x^*x)+\varphi_2(xx^*)\big]^{1/2}\big[\psi_1(y^*y)+\psi_2(yy^*)\big]^{1/2}.
+\begin{aligned}
+&|V(x,y)|\le\|V\|\big[\varphi_1(x^*x)+\varphi_2(xx^*)\big]^{1/2}\\
+&\qquad\cdot\big[\psi_1(y^*y)+\psi_2(yy^*)\big]^{1/2}.
+\end{aligned}
 \]
 Put \(y=x^*\). Then \(V(x,x^*)=\|Tx\|^2\), \(y^*y=xx^*\) and \(yy^*=x^*x\); the inequality \(\sqrt{st}\le\frac12(s+t)\) gives (1.1) with \(f=\frac12(\varphi_1+\psi_2)\) and \(g=\frac12(\varphi_2+\psi_1)\). Summing (1.1) over the family and using \(f(\sum_jx_j^*x_j)\le\|\sum_jx_j^*x_j\|\), and likewise for \(g\), gives (1.2). \(\square\)
 
@@ -33,28 +37,43 @@ For a homomorphism \(\varphi:A\to B(H)\) put \(\varphi^\sharp(a)=\varphi(a^*)^*\
 \]
 For a column \(c=(c_1,\dots,c_h)^T\) the operator \(\varphi_{h,1}(c):H\to H^h\) has adjoint \((\eta_i)\mapsto\sum_i\varphi(c_i)^*\eta_i\), that is,
 \[
-\varphi_{h,1}(c)^*=\varphi^\sharp_{1,h}(c^*),\qquad c^*=(c_1^*,\dots,c_h^*).
-\tag{2.1}
+\begin{gathered}
+\varphi_{h,1}(c)^*=\varphi^\sharp_{1,h}(c^*),\\
+c^*=(c_1^*,\dots,c_h^*).
+\end{gathered}\tag{2.1}
 \]
 
 **Theorem 2.1** (row and column estimate). Every bounded unital homomorphism \(\varphi:A\to B(H)\) satisfies
 \[
-\|\varphi\|_{\rm row}\le\sqrt2\,\|\varphi\|^2,\qquad \|\varphi\|_{\rm col}\le\sqrt2\,\|\varphi\|^2 .
+\begin{gathered}
+\|\varphi\|_{\rm row}\le\sqrt2\,\|\varphi\|^2,\\
+\|\varphi\|_{\rm col}\le\sqrt2\,\|\varphi\|^2 .
+\end{gathered}
 \]
 
 **Proof.** Fix a unit vector \(\xi\in H\) and let \(T:A\to H\), \(T(y)=\varphi(y^*)^*\xi\). It is linear with \(\|T\|\le\|\varphi\|\). Theorem 1.1 gives states \(f,g\) with \(\|T(y)\|^2\le\|\varphi\|^2(f(y^*y)+g(yy^*))\).
 
-Let \(x\in A\) and \(\varepsilon>0\). Put \(h=(xx^*+\varepsilon)^{1/2}\), positive and invertible, and \(v=h^{-1}x\). Then \(vv^*=h^{-1}xx^*h^{-1}=xx^*(xx^*+\varepsilon)^{-1}\le1\), so \(\|v\|\le1\), and \(x=hv\). Hence \(\varphi(x)^*=\varphi(v)^*\varphi(h)^*\) and
+Let \(x\in A\) and \(\varepsilon>0\). Put \(h=(xx^*+\varepsilon)^{1/2}\), positive and invertible, and \(v=h^{-1}x\). Then \(vv^*=h^{-1}xx^*h^{-1}\), which is \(xx^*(xx^*+\varepsilon)^{-1}\le1\), so \(\|v\|\le1\), and \(x=hv\). Hence \(\varphi(x)^*=\varphi(v)^*\varphi(h)^*\) and
 \[
-\|\varphi(x)^*\xi\|\le\|\varphi\|\,\|\varphi(h)^*\xi\|=\|\varphi\|\,\|T(h)\|,
+\begin{aligned}
+\|\varphi(x)^*\xi\|&\le\|\varphi\|\,\|\varphi(h)^*\xi\|\\
+&=\|\varphi\|\,\|T(h)\|,
+\end{aligned}
 \]
 because \(h=h^*\). As \(h^*h=hh^*=xx^*+\varepsilon\),
 \[
-\|\varphi(x)^*\xi\|^2\le\|\varphi\|^4\big(f(xx^*)+g(xx^*)+2\varepsilon\big),
+\begin{aligned}
+&\|\varphi(x)^*\xi\|^2\\
+&\quad \le\|\varphi\|^4\big(f(xx^*)+g(xx^*)+2\varepsilon\big),
+\end{aligned}
 \]
 and \(\varepsilon\) is arbitrary. For a row \(x=(x_1,\dots,x_h)\), the adjoint of \(\varphi_{1,h}(x):H^h\to H\) is \(\xi\mapsto(\varphi(x_j)^*\xi)_j\), so by (1.1) of the first lesson
 \[
-\|\varphi_{1,h}(x)^*\xi\|^2=\sum_j\|\varphi(x_j)^*\xi\|^2\le\|\varphi\|^4(f+g)\Big(\sum_jx_jx_j^*\Big)\le2\|\varphi\|^4\|x\|^2 .
+\begin{aligned}
+&\|\varphi_{1,h}(x)^*\xi\|^2=\sum_j\|\varphi(x_j)^*\xi\|^2\\
+&\quad \le\|\varphi\|^4(f+g)\Big(\sum_jx_jx_j^*\Big)\\
+&\quad \le2\|\varphi\|^4\|x\|^2 .
+\end{aligned}
 \]
 Taking the supremum over \(\xi\) gives \(\|\varphi_{1,h}(x)\|\le\sqrt2\|\varphi\|^2\|x\|\). For columns, apply the row estimate to the bounded unital homomorphism \(\varphi^\sharp\) and use (2.1), with \(\|c^*\|=\|c\|\). \(\square\)
 
@@ -66,7 +85,10 @@ c_{\rm row}=4\sqrt2 .
 
 **Proposition 2.2** (rectangular derivations). Let \(\sigma:A\to B(K)\) and \(\lambda:A\to B(F)\) be representations and \(\Delta\) a bounded rectangular derivation for \(\sigma,\lambda\). Then
 \[
-\|\Delta\|_{\rm row}\le c_{\rm row}\|\Delta\|,\qquad \|\Delta\|_{\rm col}\le c_{\rm row}\|\Delta\|.
+\begin{gathered}
+\|\Delta\|_{\rm row}\le c_{\rm row}\|\Delta\|,\\
+\|\Delta\|_{\rm col}\le c_{\rm row}\|\Delta\|.
+\end{gathered}
 \]
 
 **Proof.** Let \(d=\|\Delta\|>0\) (the case \(\Delta=0\) is trivial). The triangular homomorphism \(\Phi=\Phi_{1/d}\) of Lemma 4.2 of the first lesson is unital, with \(\|\Phi\|\le\beta(1)\le2\). By Theorem 2.1, \(\|\Phi\|_{\rm row},\|\Phi\|_{\rm col}\le\sqrt2\cdot4=c_{\rm row}\). The upper right block of \(\Phi_{p,q}(x)\) is \(d^{-1}\Delta_{p,q}(x)\), and a block of an operator has norm at most that of the operator. Hence \(\|\Delta_{1,h}(x)\|\le c_{\rm row}d\|x\|\) and \(\|\Delta_{h,1}(x)\|\le c_{\rm row}d\|x\|\). \(\square\)
@@ -84,8 +106,12 @@ A set \(\{\xi_1,\dots,\xi_m\}\subseteq H\) is *cyclic* for a homomorphism \(\pi:
 
 Let \(\varepsilon>0\), \(b=(a^*a+\varepsilon1_m)^{1/2}\in M_m(A)\), positive and invertible, and let \(\tilde a\in M_{n+m,m}(A)\) be \(a\) with the \(m\times m\) block \(\sqrt\varepsilon\,1_m\) added below. Then \(\tilde a^*\tilde a=b^2\), so \(\tilde w=\tilde ab^{-1}\) satisfies \(\tilde w^*\tilde w=1_m\); its first \(n\) rows form \(w=ab^{-1}\in M_{n,m}(A)\), with \(\|w\|\le\|\tilde w\|=1\). Put \(\vec\zeta=\pi_m(b)\vec\xi\in H^m\). By Lemma 1.1(1) of the first lesson,
 \[
-\pi_{n+m,m}(\tilde w)\vec\zeta=\pi_{n+m,m}(\tilde a)\vec\xi=(\eta,\sqrt\varepsilon\,\vec\xi),\qquad
-\vec\zeta=\pi_m(\tilde w^*\tilde w)\vec\zeta=\pi_{m,n+m}(\tilde w^*)\pi_{n+m,m}(\tilde w)\vec\zeta .
+\begin{aligned}
+&\pi_{n+m,m}(\tilde w)\vec\zeta=\pi_{n+m,m}(\tilde a)\vec\xi\\
+&\quad =(\eta,\sqrt\varepsilon\,\vec\xi),\\
+&\vec\zeta=\pi_m(\tilde w^*\tilde w)\vec\zeta\\
+&\quad =\pi_{m,n+m}(\tilde w^*)\pi_{n+m,m}(\tilde w)\vec\zeta .
+\end{aligned}
 \]
 The \(m\times(n+m)\) matrix \(\tilde w^*\) has \(m\) rows of norm at most \(1\); an operator with \(m\) row blocks has norm at most \(\sqrt m\) times the largest norm of its row blocks, so \(\|\pi_{m,n+m}(\tilde w^*)\|\le\sqrt m\|\pi\|_{\rm row}\). Therefore
 \[
@@ -93,7 +119,10 @@ The \(m\times(n+m)\) matrix \(\tilde w^*\) has \(m\) rows of norm at most \(1\);
 \]
 Next \(a=wb\) gives \(\pi_n(X)\eta=\pi_{n,m}(Xa)\vec\xi=\pi_{n,m}(Xw)\vec\zeta\). The matrix \(Xw\in M_{n,m}(A)\) has \(m\) columns of norm at most \(\|X\|\), and an operator with \(m\) column blocks has norm at most \(\sqrt m\) times the largest norm of its column blocks; so \(\|\pi_{n,m}(Xw)\|\le\sqrt m\|\pi\|_{\rm col}\|X\|\). Combining,
 \[
-\|\pi_n(X)\eta\|\le m\,\|\pi\|_{\rm row}\|\pi\|_{\rm col}\|X\|\big(\|\eta\|^2+\varepsilon\|\vec\xi\|^2\big)^{1/2},
+\begin{aligned}
+&\|\pi_n(X)\eta\|\le m\,\|\pi\|_{\rm row}\|\pi\|_{\rm col}\|X\|\\
+&\qquad\cdot\big(\|\eta\|^2+\varepsilon\|\vec\xi\|^2\big)^{1/2},
+\end{aligned}
 \]
 and \(\varepsilon\to0\) gives the first inequality. The second is Theorem 2.1. \(\square\)
 
@@ -115,19 +144,28 @@ The bound grows with \(m\). A general bounded homomorphism need not have any fin
 \]
 and \(\Delta\) is implemented by some \(V\in B(K,F)\) with
 \[
-\|V\|\le c_0\|\Delta\|,\qquad c_0=c_{\rm row}=4\sqrt2 .
-\tag{4.1}
+\begin{gathered}
+\|V\|\le c_0\|\Delta\|,\\
+c_0=c_{\rm row}=4\sqrt2 .
+\end{gathered}\tag{4.1}
 \]
 
-**Proof.** Put \(P=\sigma(A)''\), which has the cyclic vector of \(\sigma\). Fix \(h\), \(X\in M_h(A)\) with \(\|X\|\le1\), and a unit vector \(\xi\in K^h\). Lemma 4.1 gives a unit vector \(\zeta\) and a contraction \(v\in M_{h,1}(P)\) with \(v\zeta=\xi\). Let \(\tilde v\in M_h(P)\) have first column \(v\) and zero other columns. The C\*-algebra \(\sigma_h(M_h(A))=M_h(\sigma(A))\) on \(K^h\) has strong closure \(M_h(P)\), so by Kaplansky's density theorem there is a net \(Z_\alpha\) in its unit ball converging strongly to \(\tilde v\). By Proposition 17.1 of the C\*-algebra lesson, applied to the surjective \(*\)-homomorphism \(\sigma_h\) of \(M_h(A)\) onto \(M_h(\sigma(A))\), each \(Z_\alpha=\sigma_h(W_\alpha)\) with \(\|W_\alpha\|\le1\). Let \(w_\alpha\in M_{h,1}(A)\) be the first column of \(W_\alpha\). Then \(\|w_\alpha\|\le1\) and \(\sigma_{h,1}(w_\alpha)\zeta=Z_\alpha(\zeta,0,\dots,0)\to\tilde v(\zeta,0,\dots,0)=\xi\).
+**Proof.** Put \(P=\sigma(A)''\), which has the cyclic vector of \(\sigma\). Fix \(h\), \(X\in M_h(A)\) with \(\|X\|\le1\), and a unit vector \(\xi\in K^h\). Lemma 4.1 gives a unit vector \(\zeta\) and a contraction \(v\in M_{h,1}(P)\) with \(v\zeta=\xi\). Let \(\tilde v\in M_h(P)\) have first column \(v\) and zero other columns. The C\*-algebra \(\sigma_h(M_h(A))=M_h(\sigma(A))\) on \(K^h\) has strong closure \(M_h(P)\), so by Kaplansky's density theorem there is a net \(Z_\alpha\) in its unit ball converging strongly to \(\tilde v\). By Proposition 17.1 of the C\*-algebra lesson, applied to the surjective \(*\)-homomorphism \(\sigma_h\) of \(M_h(A)\) onto \(M_h(\sigma(A))\), each \(Z_\alpha=\sigma_h(W_\alpha)\) with \(\|W_\alpha\|\le1\). Let \(w_\alpha\in M_{h,1}(A)\) be the first column of \(W_\alpha\). Then \(\|w_\alpha\|\le1\) and \(\sigma_{h,1}(w_\alpha)\zeta=Z_\alpha(\zeta,0,\dots,0)\) converges to \(\tilde v(\zeta,0,\dots,0)=\xi\).
 
 Entrywise application of (4.1) of the first lesson gives
 \[
-\Delta_h(X)\sigma_{h,1}(w_\alpha)=\Delta_{h,1}(Xw_\alpha)-\lambda_h(X)\Delta_{h,1}(w_\alpha).
+\begin{aligned}
+&\Delta_h(X)\sigma_{h,1}(w_\alpha)=\Delta_{h,1}(Xw_\alpha)\\
+&\quad -\lambda_h(X)\Delta_{h,1}(w_\alpha).
+\end{aligned}
 \]
 By Proposition 2.2 and \(\|\lambda_h(X)\|\le1\),
 \[
-\|\Delta_h(X)\sigma_{h,1}(w_\alpha)\zeta\|\le c_{\rm row}\|\Delta\|\big(\|Xw_\alpha\|+\|w_\alpha\|\big)\le2c_{\rm row}\|\Delta\|.
+\begin{aligned}
+&\|\Delta_h(X)\sigma_{h,1}(w_\alpha)\zeta\|\\
+&\quad \le c_{\rm row}\|\Delta\|\big(\|Xw_\alpha\|+\|w_\alpha\|\big)\\
+&\quad \le2c_{\rm row}\|\Delta\|.
+\end{aligned}
 \]
 The operator \(\Delta_h(X)\) is bounded, so passing to the limit gives \(\|\Delta_h(X)\xi\|\le2c_{\rm row}\|\Delta\|\). Hence \(\|\Delta\|_{\rm cb}\le2c_{\rm row}\|\Delta\|\), and Theorem 4.3 of the first lesson gives \(V\) with \(\|V\|\le\frac12\|\Delta\|_{\rm cb}\le c_{\rm row}\|\Delta\|\). \(\square\)
 
@@ -151,7 +189,7 @@ Only the domain representation needs a cyclic vector; the output representation 
 
 **Solution 5.3.** \(v_i\) would be scalars, so \(\xi_1=v_1\zeta\) and \(\xi_2=v_2\zeta\) would be parallel, whereas \(e_1\perp e_2\). The algebra \(\mathbb C1\) has no cyclic vector on \(\mathbb C^2\).
 
-**Solution 5.4.** If \(y\in\sigma(A)'\), then \(V-y\) also implements \(\Delta\), so \(\|\Delta(a)\|\le2\|V-y\|\|a\|\); taking the infimum over \(y\) gives the first inequality. For the second, Theorem 4.2 gives an implementing \(V'\) with \(\|V'\|\le c_0\|\Delta\|\). Then \(V-V'\) commutes with \(\sigma(A)\), so \(\operatorname{dist}(V,\sigma(A)')\le\|V-(V-V')\|=\|V'\|\le c_0\|\Delta\|\).
+**Solution 5.4.** If \(y\in\sigma(A)'\), then \(V-y\) also implements \(\Delta\), so \(\|\Delta(a)\|\le2\|V-y\|\|a\|\); taking the infimum over \(y\) gives the first inequality. For the second, Theorem 4.2 gives an implementing \(V'\) with \(\|V'\|\le c_0\|\Delta\|\). Then \(V-V'\) commutes with \(\sigma(A)\), so \(\operatorname{dist}(V,\sigma(A)')\le\|V-(V-V')\|\), which is \(\|V'\|\le c_0\|\Delta\|\).
 
 ## References
 

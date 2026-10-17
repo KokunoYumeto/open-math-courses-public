@@ -10,14 +10,21 @@ We use: Lemmas 1.1, 1.2 and 2.1 of the first lesson; Tychonoff's theorem, [Theor
 
 **Lemma 1.1.** For every \(n\ge1\) and \(a\in K\) there is exactly one \(R_n(a)\in K\) with
 \[
-R_n(a)=\frac an+\Bigl(1-\frac1n\Bigr)TR_n(a).\tag{1.1}
+\begin{aligned}
+&R_n(a)=\frac an\\
+&\quad +\Bigl(1-\frac1n\Bigr)TR_n(a).
+\end{aligned}\tag{1.1}
 \]
 The map \(R_n:K\to K\) is nonexpansive, and for \(a\in K\)
 \[
-\|TR_n(a)-R_n(a)\|\le\frac1n,\qquad\|R_n(a)-a\|\le(n-1)\|Ta-a\|.\tag{1.2}
+\begin{aligned}
+&\|TR_n(a)-R_n(a)\|\le\frac1n,\\
+&\|R_n(a)-a\|\\
+&\quad \le(n-1)\|Ta-a\|.
+\end{aligned}\tag{1.2}
 \]
 
-**Proof.** \(R_1(a)=a\). For \(n>1\), the map \(u\mapsto\frac an+(1-\frac1n)Tu\) sends \(K\) into \(K\) by convexity and has Lipschitz constant \(1-\frac1n<1\); \(K\) is closed in a Banach space, hence complete, and Banach's contraction principle gives exactly one solution. For \(u=R_n(a)\) and \(u'=R_n(a')\), subtracting the two equations gives \(\|u-u'\|\le\frac1n\|a-a'\|+(1-\frac1n)\|u-u'\|\), so \(\|u-u'\|\le\|a-a'\|\). From (1.1), \(Tu-u=\frac1n(Tu-a)\), and \(\|Tu-a\|\le\operatorname{diam}K=1\). Finally \(u-a=(1-\frac1n)(Tu-a)\), so \(\|u-a\|\le(1-\frac1n)(\|Tu-Ta\|+\|Ta-a\|)\le(1-\frac1n)(\|u-a\|+\|Ta-a\|)\), and rearranging gives the second estimate. \(\square\)
+**Proof.** \(R_1(a)=a\). For \(n>1\), the map \(u\mapsto\frac an+(1-\frac1n)Tu\) sends \(K\) into \(K\) by convexity and has Lipschitz constant \(1-\frac1n<1\); \(K\) is closed in a Banach space, hence complete, and Banach's contraction principle gives exactly one solution. For \(u=R_n(a)\) and \(u'=R_n(a')\), subtracting the two equations shows that \(\|u-u'\|\) is at most \(\frac1n\|a-a'\|+(1-\frac1n)\|u-u'\|\), so \(\|u-u'\|\le\|a-a'\|\). From (1.1), \(Tu-u=\frac1n(Tu-a)\), and \(\|Tu-a\|\le\operatorname{diam}K=1\). Finally \(u-a=(1-\frac1n)(Tu-a)\), so \(\|u-a\|\) is at most \((1-\frac1n)(\|Tu-Ta\|+\|Ta-a\|)\), which is at most \((1-\frac1n)(\|u-a\|+\|Ta-a\|)\), and rearranging gives the second estimate. \(\square\)
 
 ## 2. A family of maps with controlled displacement
 
@@ -25,18 +32,29 @@ Let \(\mathcal G\) be the smallest set of maps \(K\to K\) containing the identit
 
 **Lemma 2.1.** Every \(G\in\mathcal G\) is nonexpansive, and there is a constant \(c_G\ge0\) with
 \[
-\|G(a)-a\|\le c_G\|Ta-a\|\qquad(a\in K).\tag{2.1}
+\begin{gathered}
+\|G(a)-a\|\le c_G\|Ta-a\|\\
+(a\in K).
+\end{gathered}\tag{2.1}
 \]
 
 **Proof.** Both properties hold for the identity (\(c=0\)) and for \(R_n\) (\(c=n-1\), by (1.2)), and they are preserved by the two operations. A convex combination \(\sum_r\lambda_rG_r\) is nonexpansive and satisfies (2.1) with \(\sum_r\lambda_rc_{G_r}\). For a composition,
 \[
-\|G_1(G_2(a))-a\|\le\|G_1(G_2(a))-G_1(a)\|+\|G_1(a)-a\|\le\|G_2(a)-a\|+\|G_1(a)-a\|,
+\begin{aligned}
+&\|G_1(G_2(a))-a\|\\
+&\quad \le\|G_1(G_2(a))-G_1(a)\|\\
+&\quad +\|G_1(a)-a\|\le\|G_2(a)-a\|\\
+&\quad +\|G_1(a)-a\|,
+\end{aligned}
 \]
 so \(c_{G_1\circ G_2}=c_{G_1}+c_{G_2}\) works. \(\square\)
 
 For \(m\ge1\) let \(\mathcal H_m=\{R_n\circ G:n\ge m,\ G\in\mathcal G\}\). These sets are nonempty, contained in \(\mathcal G\), decreasing in \(m\), and by (1.2)
 \[
-\|Th(a)-h(a)\|\le\frac1m\qquad(h\in\mathcal H_m,\ a\in K).\tag{2.2}
+\begin{gathered}
+\|Th(a)-h(a)\|\le\frac1m\\
+(h\in\mathcal H_m,\ a\in K).
+\end{gathered}\tag{2.2}
 \]
 Every value of a map in \(\mathcal H_m\) is a \(\frac1m\)-approximate fixed point.
 
@@ -62,7 +80,10 @@ Put \(A_m=\overline{\operatorname{conv}\mathcal H_m}^{\rm pw}\), where the conve
 
 **Proposition 5.1.** \(A\) is a nonempty compact semigroup of nonexpansive maps under composition and contains an idempotent \(P\). There is \(x\in K\) with \(P(x)=x\) such that the nonempty weakly compact set
 \[
-D_x=\bigcap_{m\ge1}B_m,\qquad B_m=\overline{\{h(x):h\in\mathcal H_m\}}^{\rm weak},
+\begin{gathered}
+D_x=\bigcap_{m\ge1}B_m,\\
+B_m=\overline{\{h(x):h\in\mathcal H_m\}}^{\rm weak},
+\end{gathered}
 \]
 satisfies \(x\in\overline{\operatorname{conv}}\,D_x\) (norm closure).
 
@@ -86,7 +107,10 @@ Fix \(x\) as in Proposition 5.1 and a metric \(\varrho\) inducing the weak topol
 
 **Lemma 6.1** (adaptive selection). Let \(\tau>0\). Consider a procedure that, for \(i=1,2,\dots\), first receives an integer \(m_i\ge1\), which may depend on everything chosen before, and then chooses \(G_i\in\mathcal H_{m_i}\). There is a rule for these choices such that, whatever the \(m_i\), after finitely many steps \(M\) some convex combination satisfies
 \[
-\Bigl\|\sum_{i=1}^M\beta_iG_i(x)-x\Bigr\|<\tau,\qquad\beta_i\ge0,\quad\sum_i\beta_i=1.\tag{6.1}
+\begin{gathered}
+\Bigl\|\sum_{i=1}^M\beta_iG_i(x)-x\Bigr\|<\tau,\\
+\beta_i\ge0,\quad\sum_i\beta_i=1.
+\end{gathered}\tag{6.1}
 \]
 
 **Proof.** By Proposition 5.1 choose \(d_1,\dots,d_q\in D_x\) and convex coefficients \(\lambda_r\) with \(\|\sum_r\lambda_rd_r-x\|<\frac\tau2\). At step \(i\), let \(r(i)\in\{1,\dots,q\}\) be congruent to \(i\) modulo \(q\). Since \(d_{r(i)}\in B_{m_i}\), there is \(G_i\in\mathcal H_{m_i}\) with \(\varrho(G_i(x),d_{r(i)})<\frac1i\); choose it. Stop at the first \(M\) for which some convex combination of \(G_1(x),\dots,G_M(x)\) lies within \(\tau\) of \(x\).
@@ -115,7 +139,15 @@ So finitely many fixed maps of \(\mathcal G\) move a common late point \(b_j\) a
 
 **7.2.** \((st)u=u=s(tu)\), so the product is associative; a finite discrete space is compact Hausdorff and every map on it is continuous. \(ss=s\) for both elements. An identity \(e\) would satisfy \(s=se=e\) for every \(s\), impossible with two elements.
 
-**7.3.** \(\|T(a,b)-T(a',b')\|_\infty=\max\{|a-a'|,||a|-|a'||\}=|a-a'|\le\|(a,b)-(a',b')\|_\infty\), and \(T(Q)\subseteq Q\). The fixed points are the points \((a,|a|)\). The midpoint \((0,1)\) of \((-1,1)\) and \((1,1)\) has \(T(0,1)=(0,0)\), at distance \(1\). In Proposition 5.1, every \(h\in\mathcal H_m\) has values that are \(\frac1m\)-approximate fixed points by (2.2), but \(P\) is a pointwise weak limit of convex combinations of such maps, and neither convex combinations nor weak limits preserve the property of being an approximate fixed point. Only the individual values \(G_i(x)\) in Lemma 6.1 are approximate fixed points; the convex combinations return to \(x\).
+**7.3.**
+\[
+\begin{aligned}
+&\|T(a,b)-T(a',b')\|_\infty\\
+&\quad=\max\{|a-a'|,||a|-|a'||\}\\
+&\quad=|a-a'|\le\|(a,b)-(a',b')\|_\infty,
+\end{aligned}
+\]
+and \(T(Q)\subseteq Q\). The fixed points are the points \((a,|a|)\). The midpoint \((0,1)\) of \((-1,1)\) and \((1,1)\) has \(T(0,1)=(0,0)\), at distance \(1\). In Proposition 5.1, every \(h\in\mathcal H_m\) has values that are \(\frac1m\)-approximate fixed points by (2.2), but \(P\) is a pointwise weak limit of convex combinations of such maps, and neither convex combinations nor weak limits preserve the property of being an approximate fixed point. Only the individual values \(G_i(x)\) in Lemma 6.1 are approximate fixed points; the convex combinations return to \(x\).
 
 ## References
 

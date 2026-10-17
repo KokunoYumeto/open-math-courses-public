@@ -27,13 +27,19 @@ A **random time** is a random variable with values in the nonnegative integers t
 **Lemma 1.2** (displacement entropy). Let \(T_0,T_1\) be random times with \(|T_1-T_0|\le n\) almost surely. Then
 
 \[
-H(z_{T_1}-z_{T_0})\le2\log(n+1)+\log(\pi D^2).
+\begin{aligned}
+H(z_{T_1}-z_{T_0})&\le2\log(n+1)\\
+&\quad +\log(\pi D^2).
+\end{aligned}
 \]
 
 The same bound holds for the conditional entropy given any random variable. Moreover, if \(\Phi\) is a homomorphism from \(\mathbb Z[i]\) to a finite abelian group, then
 
 \[
-H(\Phi(z_{T_1}))\ge H(\Phi(z_{T_0}))-H(z_{T_1}-z_{T_0}).
+\begin{aligned}
+&H(\Phi(z_{T_1}))\ge H(\Phi(z_{T_0}))\\
+&\quad -H(z_{T_1}-z_{T_0}).
+\end{aligned}
 \]
 
 **Proof.** The displacement has length at most \(Dn\), so it takes at most \(\pi(Dn+1)^2\le\pi D^2(n+1)^2\) values (Lemma 1.1 and \(D\ge1\)); apply Corollary 1.3 of the entropy lesson, conditionally if needed. For the last claim, \(\Phi(z_{T_0})=\Phi(z_{T_1})-\Phi(z_{T_1}-z_{T_0})\) is determined by \(\Phi(z_{T_1})\) and the displacement, so Corollary 2.4(2) of [Entropy of finite random variables](entropy-of-finite-random-variables.md) applies. \(\square\)
@@ -49,7 +55,10 @@ Let \(E\) be a finite set of points in the plane with at least two elements. Its
 **Theorem 2.2** (many differences). Let \(E\) be a stretch of \(n\ge1\) steps of the walk, and let \(R\), \(W\) be as above, \(A=RW\). Then
 
 \[
-\frac\pi{24}\,n\le A\le D^2n^2\qquad\text{and}\qquad |E-E|\ge\frac{A}{\pi D^2},
+\begin{gathered}
+\frac\pi{24}\,n\le A\le D^2n^2\\
+\text{and}\qquad |E-E|\ge\frac{A}{\pi D^2},
+\end{gathered}
 \]
 
 where \(E-E=\{x-y:x,y\in E\}\).
@@ -63,13 +72,19 @@ where \(E-E=\{x-y:x,y\in E\}\).
 Join the points of the stretch by straight segments in their order. Each point of the resulting polygonal path lies on a segment of length at most \(D\) whose endpoints are in \(E\), so it is within distance \(D/2\) of a point of \(E\). Let \(\alpha:[0,1]\to\mathbb R^2\) be a parametrization of the part of this path between \(p_0\) and \(p_1\), running from \(p_0\) to \(p_1\), and let \(\gamma:[0,1]\to\mathbb R^2\) run along the path from \(p_0\) to \(p_2\). Define
 
 \[
-F(s,u)=\alpha(s)-\gamma(u)\qquad\bigl((s,u)\in[0,1]^2\bigr).
+\begin{gathered}
+F(s,u)=\alpha(s)-\gamma(u)\\
+\bigl((s,u)\in[0,1]^2\bigr).
+\end{gathered}
 \]
 
 Then \(F(1,u)=F(0,u)+a\) and \(F(s,1)=F(s,0)-b\), because \(\alpha(1)-\alpha(0)=a\) and \(\gamma(1)-\gamma(0)=b\). Extend \(F\) to \(\widetilde F:\mathbb R^2\to\mathbb R^2\) by
 
 \[
-\widetilde F(s+m,u+l)=F(s,u)+ma-lb\qquad\bigl((s,u)\in[0,1]^2,\ m,l\in\mathbb Z\bigr).
+\begin{gathered}
+\widetilde F(s+m,u+l)=F(s,u)+ma-lb\\
+\bigl((s,u)\in[0,1]^2,\ m,l\in\mathbb Z\bigr).
+\end{gathered}
 \]
 
 The two relations make this consistent where unit squares meet, and \(\widetilde F\) is continuous, because it is continuous on each closed unit square and these squares form a locally finite closed cover of the plane. Let \(M(s,u)=sa-ub\); this linear map has determinant \(-\det(a,b)\ne0\). The difference \(G=\widetilde F-M\) satisfies \(G(s+m,u+l)=G(s,u)\) for integers \(m,l\), so it is bounded, say \(|G|\le\kappa\).
@@ -87,9 +102,11 @@ where \(\overline B(0,D)\) is the closed disk of radius \(D\) about \(0\).
 *Counting by area.* The half-open parallelogram \(\Pi=\{xa+yb:0\le x,y<1\}\) has area \(A\), and its translates \(\Pi-\lambda\), \(\lambda\in\Lambda\), partition the plane: a point \(xa+yb\) lies in \(\Pi-\lambda\) exactly for \(\lambda=-\lfloor x\rfloor a-\lfloor y\rfloor b\). For each \(d\in E-E\),
 
 \[
-\operatorname{area}\bigl((d+\Lambda+\overline B(0,D))\cap\Pi\bigr)
-\le\sum_{\lambda\in\Lambda}\operatorname{area}\bigl((d+\overline B(0,D))\cap(\Pi-\lambda)\bigr)
-=\operatorname{area}\bigl(d+\overline B(0,D)\bigr)=\pi D^2,
+\begin{aligned}
+&\operatorname{area}\bigl((d+\Lambda+\overline B(0,D))\cap\Pi\bigr)\\
+&\quad \le\sum_{\lambda\in\Lambda}\operatorname{area}\bigl((d+\overline B(0,D))\cap(\Pi-\lambda)\bigr)\\
+&\quad =\operatorname{area}\bigl(d+\overline B(0,D)\bigr)=\pi D^2,
+\end{aligned}
 \]
 
 where we translated the piece \((d+\lambda+\overline B(0,D))\cap\Pi\) by \(-\lambda\). Since the sets on the left cover \(\Pi\), we obtain \(A\le|E-E|\,\pi D^2\). \(\square\)
@@ -117,7 +134,10 @@ A **rectangle** below is a closed rectangle centred at \(0\), in any orientation
 *Step 1: nearby bad vectors have collinear witnesses.* Let \(\sigma,\sigma'\) be bad, with witnesses \(w,w'\), and suppose they differ in \(m\le dr/4\) coordinates. The product \(c\) of the factors \(\pi_{j,\sigma_j}\) over the coordinates where \(\sigma_j=\sigma'_j\) divides both \(\Pi_\sigma\) and \(\Pi_{\sigma'}\), hence \(w\) and \(w'\), and \(N(c)\ge P/(2T)^m\). By Lemma 2.5 of [Walks through Gaussian primes](walks-through-gaussian-primes.md), \(\det(w,w')\) is an integer multiple of \(N(c)\). In coordinates along the axes of \(\mathcal Q\), both vectors have first coordinate at most \(R_1\) and second at most \(W_1\) in absolute value, so \(|\det(w,w')|\le2R_1W_1\le2P^{1-d}\). If the determinant were nonzero, then \(P/(2T)^m\le2P^{1-d}\), so that
 
 \[
-dr\log T\le d\log P\le\log2+m\log(2T)\le\log2+\frac{dr}4\bigl(\log2+\log T\bigr).
+\begin{aligned}
+dr\log T&\le d\log P\le\log2+m\log(2T)\\
+&\le\log2+\frac{dr}4\bigl(\log2+\log T\bigr).
+\end{aligned}
 \]
 
 This gives \(dr\bigl(\tfrac34\log T-\tfrac14\log2\bigr)\le\log2\); but \(\tfrac34\log5-\tfrac14\log2>1\) and \(dr\ge32\). Hence \(\det(w,w')=0\): the witnesses lie on a common line through \(0\). Taking \(\sigma'=\sigma\), all witnesses of a bad vector lie on one line, which we call its **witness line** \(\ell(\sigma)\).
@@ -129,8 +149,10 @@ Over each \(p_j\), at most one of the two factors divides \(v\): if both did, \(
 Suppose \(kv\), with \(k\in\mathbb Z\setminus\{0\}\), is a multiple of \(\Pi_\sigma\). If \(\pi_{j,\sigma_j}\nmid v\), then the prime \(\pi_{j,\sigma_j}\) divides \(k\), so \(p_j\mid k\) by Proposition 2.4(1) of the first lesson. The coordinates with \(\pi_{j,\sigma_j}\mid v\) are those with \(j\in J\) and \(\sigma_j=\varepsilon_j\). Put
 
 \[
-X_j=\begin{cases}\log p_j&\text{if }j\in J\text{ and }\sigma_j=\varepsilon_j,\\ 0&\text{otherwise,}\end{cases}
-\qquad P_\sigma(v)=\exp\Bigl(\sum_jX_j\Bigr).
+\begin{gathered}
+X_j=\begin{cases}\log p_j&\text{if }j\in J\text{ and }\sigma_j=\varepsilon_j,\\ 0&\text{otherwise,}\end{cases}\\
+P_\sigma(v)=\exp\Bigl(\sum_jX_j\Bigr).
+\end{gathered}
 \]
 
 Then \(|k|\ge P/P_\sigma(v)\), so \(|kv|\ge|v|P/P_\sigma(v)\). A point of \(\mathcal Q\) has length at most \(\sqrt{R_1^2+W_1^2}\le\sqrt2R_1\le\sqrt2P^{1-d}\), using \(R_1\le R_1W_1\). Hence a witness on \(\ell\) exists only if
@@ -139,10 +161,14 @@ Then \(|k|\ge P/P_\sigma(v)\), so \(|kv|\ge|v|P/P_\sigma(v)\). A point of \(\mat
 \sum_jX_j\ge\log|v|+d\log P-\tfrac12\log2.
 \]
 
-The \(X_j\) are independent, with values in \([0,\log(2T)]\), and \(\mathbb E\sum_jX_j=\frac12\sum_{j\in J}\log p_j\le\log|v|\). The excess required is \(t=d\log P-\frac12\log2\ge dr\log T-\frac12\log2\ge\frac12dr\log T\). Hoeffding's inequality (Theorem 2.2 of [Concentration and the discrete cube](concentration-and-the-discrete-cube.md)) gives
+The \(X_j\) are independent, with values in \([0,\log(2T)]\), and \(\mathbb E\sum_jX_j=\frac12\sum_{j\in J}\log p_j\le\log|v|\). The excess required is \(t=d\log P-\frac12\log2\), which is at least \(dr\log T-\frac12\log2\ge\frac12dr\log T\). Hoeffding's inequality (Theorem 2.2 of [Concentration and the discrete cube](concentration-and-the-discrete-cube.md)) gives
 
 \[
-\mathbb P(\text{a witness lies on }\ell)\le\exp\Bigl(-\frac{2t^2}{r\log^2(2T)}\Bigr)\le\exp\Bigl(-\frac{d^2r}2\Bigl(\frac{\log T}{\log2T}\Bigr)^2\Bigr)\le e^{-d^2r/8},
+\begin{aligned}
+&\mathbb P(\text{a witness lies on }\ell)\\
+&\quad \le\exp\Bigl(-\frac{2t^2}{r\log^2(2T)}\Bigr)\\
+&\quad \le\exp\Bigl(-\frac{d^2r}2\Bigl(\frac{\log T}{\log2T}\Bigr)^2\Bigr)\le e^{-d^2r/8},
+\end{aligned}
 \]
 
 since \(\log T\ge\frac12\log(2T)\) for \(T\ge2\).
@@ -150,8 +176,11 @@ since \(\log T\ge\frac12\log(2T)\) for \(T\ge2\).
 *Step 3: classes of lines.* The rectangle contains finitely many lattice points, so only finitely many lines \(\ell_1,\dots,\ell_m\) occur as witness lines. Let \(S_l\) be the set of bad sign vectors with witness line \(\ell_l\). These sets partition the bad vectors, each has \(|S_l|\le\mu2^r\) with \(\mu=e^{-d^2r/8}\) by Step 2, and vectors from different sets differ in more than \(dr/4\) coordinates by Step 1. Let \(h=\lfloor dr/10\rfloor\); then \(2h<dr/4\), and \(h\ge dr/20\) because \(dr\ge20\). Apply Corollary 4.4 of [Concentration and the discrete cube](concentration-and-the-discrete-cube.md) with \(\theta=e^{-d^2r/16}\). Here \(\log_2(1/\theta)/r=d^2/(16\log2)\le1\), and \(\log(1+x)\ge x/2\) for \(0\le x\le1\), so
 
 \[
-\Bigl(1+\frac{\log_2(1/\theta)}r\Bigr)^h\ge\exp\Bigl(\frac{hd^2}{32\log2}\Bigr)\ge\exp\Bigl(\frac{d^3r}{640\log2}\Bigr),
-\qquad \frac\theta\mu=e^{d^2r/16}\ge\exp\Bigl(\frac{d^3r}{640\log2}\Bigr).
+\begin{aligned}
+&\Bigl(1+\frac{\log_2(1/\theta)}r\Bigr)^h\ge\exp\Bigl(\frac{hd^2}{32\log2}\Bigr)\\
+&\quad \ge\exp\Bigl(\frac{d^3r}{640\log2}\Bigr),\\
+&\frac\theta\mu=e^{d^2r/16}\ge\exp\Bigl(\frac{d^3r}{640\log2}\Bigr).
+\end{aligned}
 \]
 
 The total number of bad vectors is therefore at most \(2^r\exp\bigl(-d^3r/(640\log2)\bigr)\). \(\square\)
@@ -168,7 +197,7 @@ is injective on \(F\).
 
 **Corollary 3.3** (separating the differences of a stretch). Let \(E\) be a stretch of the walk with \(A=RW\) as in Theorem 2.2. If \(16A\le P^{1-d}\) and \(d,r\) are as in Theorem 3.1, then with probability at least \(1-\exp\bigl(-d^3r/(640\log2)\bigr)\) the reduction modulo the selected factors is injective on \(E-E\).
 
-**Proof.** In the coordinates of Lemma 2.1, \(E\subseteq[0,R]\times[-W,W]\), so \(E-E\subseteq[-R,R]\times[-2W,2W]\) and \((E-E)-(E-E)\subseteq[-4R,4R]\times[-4W,4W]\). This rectangle has \(4R\ge4W\ge1\) and \(4R\cdot4W=16A\). Apply Corollary 3.2 to \(F=E-E\). \(\square\)
+**Proof.** In the coordinates of Lemma 2.1, \(E\subseteq[0,R]\times[-W,W]\), so \(E-E\subseteq[-R,R]\times[-2W,2W]\) and \((E-E)-(E-E)\) is contained in \([-4R,4R]\times[-4W,4W]\). This rectangle has \(4R\ge4W\ge1\) and \(4R\cdot4W=16A\). Apply Corollary 3.2 to \(F=E-E\). \(\square\)
 
 The exponent \(1-d\) cannot be raised to \(1\) or beyond: a rectangle with \(R_1W_1>P\) has area \(4R_1W_1\) larger than four times the covolume \(P\) of the lattice \(\Pi_\sigma\mathbb Z[i]\), so by Minkowski's theorem it contains a nonzero multiple of \(\Pi_\sigma\) for every sign vector (Exercise 4.4).
 
@@ -194,7 +223,7 @@ The exponent \(1-d\) cannot be raised to \(1\) or beyond: a rectangle with \(R_1
 
 **4.4.** The multiples of \(\Pi_\sigma\) form a lattice with basis \(\Pi_\sigma,i\Pi_\sigma\), and its covolume is the determinant \(N(\Pi_\sigma)=P\) of multiplication by \(\Pi_\sigma\) (Lemma 2.5 of the first lesson). The rectangle is convex, symmetric about \(0\), and has area \(4R_1W_1>4P\), so Minkowski's theorem gives a nonzero lattice point in it.
 
-**4.5.** The sign vectors \(0\) and \(1\) select \(2+i\) and \(2-i\). The square contains the witnesses \(2+i\) and \(2-i\), and \(\det(2+i,2-i)=2\cdot(-1)-1\cdot2=-4\ne0\). The two vectors differ in their only coordinate, which is more than \(dr/4=d/4\) coordinates, so Step 1 does not apply to them; nor does Theorem 3.1, since \(d^3r\ge2\) fails for \(r=1\).
+**4.5.** The sign vectors \(0\) and \(1\) select \(2+i\) and \(2-i\). The square contains the witnesses \(2+i\) and \(2-i\), and \(\det(2+i,2-i)=2\cdot(-1)-1\cdot2\), which is \(-4\ne0\). The two vectors differ in their only coordinate, which is more than \(dr/4=d/4\) coordinates, so Step 1 does not apply to them; nor does Theorem 3.1, since \(d^3r\ge2\) fails for \(r=1\).
 
 ## References
 

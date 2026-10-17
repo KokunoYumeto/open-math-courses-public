@@ -12,14 +12,19 @@ All Hilbert spaces and algebras are complex, and inner products are linear in th
 
 For integers \(p,q\ge1\), \(M_{p,q}(A)\) is the space of \(p\times q\) matrices over \(A\), and \(M_n(A)=M_{n,n}(A)\). The algebra \(M_n(A)\) is a C\*-algebra, and \(M_{p,q}(A)\) carries the norm of the corner of \(M_n(A)\), \(n=\max(p,q)\), into which it embeds by adding zero rows or columns. Thus \(\|x\|^2=\|x^*x\|=\|xx^*\|\) for \(x\in M_{p,q}(A)\), where \(x^*\in M_{q,p}(A)\). In particular, for a row \(x=(x_1,\dots,x_h)\) and a column \(y=(y_1,\dots,y_h)^{T}\),
 \[
-\|x\|=\Big\|\sum_jx_jx_j^*\Big\|^{1/2},\qquad \|y\|=\Big\|\sum_jy_j^*y_j\Big\|^{1/2}.
-\tag{1.1}
+\begin{gathered}
+\|x\|=\Big\|\sum_jx_jx_j^*\Big\|^{1/2},\\
+\|y\|=\Big\|\sum_jy_j^*y_j\Big\|^{1/2}.
+\end{gathered}\tag{1.1}
 \]
 
 Let \(K,F\) be Hilbert spaces and \(u:A\to B(K,F)\) linear. Its amplification \(u_{p,q}:M_{p,q}(A)\to B(K^q,F^p)\) applies \(u\) to every entry, and \(u_n=u_{n,n}\). Put
 \[
-\|u\|_{\rm cb}=\sup_n\|u_n\|,\qquad \|u\|_{\rm row}=\sup_h\|u_{1,h}\|,\qquad \|u\|_{\rm col}=\sup_h\|u_{h,1}\|,
-\tag{1.2}
+\begin{gathered}
+\|u\|_{\rm cb}=\sup_n\|u_n\|,\\
+\|u\|_{\rm row}=\sup_h\|u_{1,h}\|,\\
+\|u\|_{\rm col}=\sup_h\|u_{h,1}\|,
+\end{gathered}\tag{1.2}
 \]
 with values in \([0,\infty]\). The map \(u\) is *completely bounded* if \(\|u\|_{\rm cb}<\infty\). Since \(u_{p,q}(x)\) is a corner of \(u_n\) applied to the padded matrix, \(\|u_{p,q}\|\le\|u_n\|\) for \(n\ge p,q\); in particular \(\|u\|_{\rm row},\|u\|_{\rm col}\le\|u\|_{\rm cb}\). For an operator \(T\), \(T^{(n)}\) denotes the diagonal operator with \(n\) copies of \(T\).
 
@@ -35,11 +40,11 @@ with values in \([0,\infty]\). The map \(u\) is *completely bounded* if \(\|u\|_
 
 **Lemma 2.1.** A unital homomorphism \(\pi:A\to B(H)\) with \(\|\pi\|\le1\) is a \(*\)-homomorphism.
 
-**Proof.** Let \(u\in A\) be unitary. Then \(\pi(u)\pi(u^*)=\pi(u^*)\pi(u)=\pi(1)=1\), so \(\pi(u)\) is invertible with inverse \(\pi(u^*)\). For \(\xi\in H\), \(\|\xi\|=\|\pi(u^*)\pi(u)\xi\|\le\|\pi(u)\xi\|\le\|\xi\|\), so \(\pi(u)\) is an invertible isometry, that is, a unitary, and \(\pi(u)^*=\pi(u)^{-1}=\pi(u^*)\). By Proposition 7.3 of the C\*-algebra lesson every \(a\in A\) is a combination \(\sum_jc_ju_j\) of unitaries; then \(\pi(a^*)=\sum_j\bar c_j\pi(u_j^*)=\big(\sum_jc_j\pi(u_j)\big)^*=\pi(a)^*\). \(\square\)
+**Proof.** Let \(u\in A\) be unitary. Then \(\pi(u)\pi(u^*)=\pi(u^*)\pi(u)=\pi(1)=1\), so \(\pi(u)\) is invertible with inverse \(\pi(u^*)\). For \(\xi\in H\), \(\|\xi\|=\|\pi(u^*)\pi(u)\xi\|\le\|\pi(u)\xi\|\le\|\xi\|\), so \(\pi(u)\) is an invertible isometry, that is, a unitary, and \(\pi(u)^*=\pi(u)^{-1}=\pi(u^*)\). By Proposition 7.3 of the C\*-algebra lesson every \(a\in A\) is a combination \(\sum_jc_ju_j\) of unitaries; then \(\pi(a^*)=\sum_j\bar c_j\pi(u_j^*)\), which is \(\big(\sum_jc_j\pi(u_j)\big)^*=\pi(a)^*\). \(\square\)
 
 **Lemma 2.2** (unitary absorption). Let \(\sigma:A\to B(K)\) and \(\rho:A\to B(H)\) be representations and \(V:K\to H\) a bounded invertible operator with \(\rho(a)V=V\sigma(a)\) for all \(a\in A\). Then \(|V|=(V^*V)^{1/2}\) commutes with \(\sigma(A)\), \(W=V|V|^{-1}\) is a unitary of \(K\) onto \(H\), and \(\rho(a)=W\sigma(a)W^*\) for all \(a\).
 
-**Proof.** Apply the identity to \(a^*\) and take adjoints: \(V^*\rho(a)=\sigma(a)V^*\). Hence \(V^*V\sigma(a)=V^*\rho(a)V=\sigma(a)V^*V\). Since \(V\) is invertible, the spectrum of \(V^*V\) lies in \([\|V^{-1}\|^{-2},\|V\|^2]\), so \(|V|\) and \(|V|^{-1}\) are norm limits of polynomials in \(V^*V\) and commute with \(\sigma(A)\). Now \(W^*W=|V|^{-1}V^*V|V|^{-1}=1\) and \(W\) is invertible, so \(W\) is unitary, and \(\rho(a)=V\sigma(a)V^{-1}=W|V|\sigma(a)|V|^{-1}W^*=W\sigma(a)W^*\). \(\square\)
+**Proof.** Apply the identity to \(a^*\) and take adjoints: \(V^*\rho(a)=\sigma(a)V^*\). Hence \(V^*V\sigma(a)=V^*\rho(a)V=\sigma(a)V^*V\). Since \(V\) is invertible, the spectrum of \(V^*V\) lies in \([\|V^{-1}\|^{-2},\|V\|^2]\), so \(|V|\) and \(|V|^{-1}\) are norm limits of polynomials in \(V^*V\) and commute with \(\sigma(A)\). Now \(W^*W=|V|^{-1}V^*V|V|^{-1}=1\) and \(W\) is invertible, so \(W\) is unitary, and \(\rho(a)=V\sigma(a)V^{-1}\), which is \(W|V|\sigma(a)|V|^{-1}W^*=W\sigma(a)W^*\). \(\square\)
 
 ## 3. Paulsen's similarity theorem
 
@@ -49,30 +54,41 @@ with values in \([0,\infty]\). The map \(u\) is *completely bounded* if \(\|u\|_
 
 Conversely let \(\pi\) be completely bounded; we may assume \(H\ne0\). Theorem 4.1 of the factorization lesson, applied with \(V=A\), gives a \(*\)-representation \(\Pi:A\to B(K)\), possibly degenerate, and operators \(V_1,V_2:H\to K\) with
 \[
-\pi(a)=V_1^*\Pi(a)V_2\quad(a\in A),\qquad \|V_1\|\|V_2\|=\|\pi\|_{\rm cb}.
+\begin{gathered}
+\pi(a)=V_1^*\Pi(a)V_2\quad(a\in A),\\
+\|V_1\|\|V_2\|=\|\pi\|_{\rm cb}.
+\end{gathered}
 \]
 The operator \(e=\Pi(1)\) is a projection with \(\Pi(a)=e\Pi(a)e\). Replacing \(K\) by \(eK\), \(\Pi\) by its restriction to \(eK\) and \(V_i\) by \(eV_i\), we keep the factorization, do not increase \(\|V_1\|\|V_2\|\), and obtain a unital \(\Pi\).
 
-Let \(K_0\) be the closed linear span of the vectors \(\Pi(a)V_2\xi\) (\(a\in A\), \(\xi\in H\)), and
-\[
-N=\{k\in K_0:\ V_1^*\Pi(b)k=0\ \text{for all }b\in A\}.
-\]
+Let \(K_0\) be the closed linear span of the vectors \(\Pi(a)V_2\xi\) (\(a\in A\), \(\xi\in H\)), and let \(N\) be the set of vectors \(k\in K_0\) with \(V_1^*\Pi(b)k=0\) for all \(b\in A\).
 Both subspaces are closed and invariant under \(\Pi(A)\): for \(N\), because \(V_1^*\Pi(b)\Pi(c)k=V_1^*\Pi(bc)k\). Invariant subspaces of a \(*\)-representation reduce it, so \(L=K_0\ominus N\) reduces \(\Pi\), and \(\rho(a)=\Pi(a)|_L\) is a representation of \(A\) on \(L\). Write \(P\) for the projection onto \(L\); it commutes with \(\Pi(A)\).
 
-*Claim.* For \(a\in A\) and \(\xi\in H\), \(\Pi(a)V_2\xi-V_2\pi(a)\xi\in N\). Both terms lie in \(K_0\), since \(V_2\xi=\Pi(1)V_2\xi\). For \(b\in A\), \(V_1^*\Pi(b)\big(\Pi(a)V_2\xi-V_2\pi(a)\xi\big)=\pi(ba)\xi-\pi(b)\pi(a)\xi=0\).
+*Claim.* For \(a\in A\) and \(\xi\in H\), \(\Pi(a)V_2\xi-V_2\pi(a)\xi\in N\). Both terms lie in \(K_0\), since \(V_2\xi=\Pi(1)V_2\xi\). For \(b\in A\),
+\[
+\begin{aligned}
+&V_1^*\Pi(b)\big(\Pi(a)V_2\xi-V_2\pi(a)\xi\big)\\
+&\quad=\pi(ba)\xi-\pi(b)\pi(a)\xi=0.
+\end{aligned}
+\]
 
 Define \(S_0:H\to L\) by \(S_0\xi=PV_2\xi\); then \(\|S_0\|\le\|V_2\|\). By the claim, since \(P\) kills \(N\) and commutes with \(\Pi(a)\),
 \[
-\rho(a)S_0\xi=P\Pi(a)V_2\xi=PV_2\pi(a)\xi=S_0\pi(a)\xi .
-\tag{3.1}
+\begin{aligned}
+&\rho(a)S_0\xi=P\Pi(a)V_2\xi\\
+&\quad =PV_2\pi(a)\xi=S_0\pi(a)\xi .
+\end{aligned}\tag{3.1}
 \]
 Taking \(b=1\) in the definition of \(N\) shows that \(V_1^*\) vanishes on \(N\). As \(V_2\xi\in K_0=L\oplus N\), we get \(\xi=\pi(1)\xi=V_1^*V_2\xi=V_1^*S_0\xi\), so \(\|\xi\|\le\|V_1\|\|S_0\xi\|\): \(S_0\) is injective with closed range. By the claim, \(P\Pi(a)V_2\xi=S_0\pi(a)\xi\) lies in the range of \(S_0\); these vectors span a dense subspace of \(PK_0=L\). Hence \(S_0\) is a bounded bijection of \(H\) onto \(L\), with \(\|S_0^{-1}\|\le\|V_1\|\).
 
 Let \(S=|S_0|\in B(H)\), positive and invertible, and \(U=S_0S^{-1}\), a unitary of \(H\) onto \(L\) (as in Lemma 2.2). By (3.1),
 \[
-S\pi(a)S^{-1}=U^*S_0\pi(a)S_0^{-1}U=U^*\rho(a)U,
+\begin{aligned}
+S\pi(a)S^{-1}&=U^*S_0\pi(a)S_0^{-1}U\\
+&=U^*\rho(a)U,
+\end{aligned}
 \]
-a \(*\)-homomorphism, and \(\|S\|\|S^{-1}\|=\|S_0\|\|S_0^{-1}\|\le\|V_1\|\|V_2\|\le\|\pi\|_{\rm cb}\). With the first paragraph, equality holds. \(\square\)
+a \(*\)-homomorphism, and \(\|S\|\|S^{-1}\|=\|S_0\|\|S_0^{-1}\|\), which is at most \(\|V_1\|\|V_2\|\le\|\pi\|_{\rm cb}\). With the first paragraph, equality holds. \(\square\)
 
 In particular a unital homomorphism with \(\|\pi\|_{\rm cb}=1\) is a \(*\)-homomorphism, since then \(\|S\|\|S^{-1}\|=1\) forces \(S\) to be a positive scalar.
 
@@ -80,20 +96,27 @@ In particular a unital homomorphism with \(\|\pi\|_{\rm cb}=1\) is a \(*\)-homom
 
 **Definition 4.1.** Let \(\sigma:A\to B(K)\) and \(\lambda:A\to B(F)\) be representations. A *rectangular derivation* for \(\sigma,\lambda\) is a linear map \(\Delta:A\to B(K,F)\) with
 \[
-\Delta(ab)=\Delta(a)\sigma(b)+\lambda(a)\Delta(b)\qquad(a,b\in A).
-\tag{4.1}
+\begin{aligned}
+&\Delta(ab)=\Delta(a)\sigma(b)\\
+&\quad +\lambda(a)\Delta(b)\\
+&(a,b\in A).
+\end{aligned}\tag{4.1}
 \]
 It is *implemented* by \(V\in B(K,F)\) if
 \[
-\Delta(a)=V\sigma(a)-\lambda(a)V\qquad(a\in A).
-\tag{4.2}
+\begin{gathered}
+\Delta(a)=V\sigma(a)-\lambda(a)V\\
+(a\in A).
+\end{gathered}\tag{4.2}
 \]
 When \(F=K\) and \(\lambda=\sigma\), \(\Delta\) is a *\(\sigma\)-derivation*. For a C\*-algebra \(A\subseteq B(H)\) with \(1_H\in A\) and \(x\in B(H)\), the map \(\operatorname{ad}(x)|_A(a)=xa-ax\) is the derivation implemented by \(x\) for the inclusion representation.
 
-Putting \(a=b=1\) in (4.1) gives \(\Delta(1)=0\). Every \(V\) defines through (4.2) a rectangular derivation, and \(\Delta_n(x)=V^{(n)}\sigma_n(x)-\lambda_n(x)V^{(n)}\) shows \(\|\Delta\|_{\rm cb}\le2\|V\|\). For \(s\ge0\) put
+Putting \(a=b=1\) in (4.1) gives \(\Delta(1)=0\). Every \(V\) defines through (4.2) a rectangular derivation, and \(\Delta_n(x)=V^{(n)}\sigma_n(x)-\lambda_n(x)V^{(n)}\) shows \(\|\Delta\|_{\rm cb}\le2\|V\|\). For \(s\ge0\) define \(\beta(s)\) by (4.3):
 \[
-\beta(s)=\left\|\begin{pmatrix}1&s\\0&1\end{pmatrix}\right\|=\frac{s+\sqrt{s^2+4}}2\le1+s .
-\tag{4.3}
+\begin{aligned}
+\beta(s)&=\left\|\begin{pmatrix}1&s\\0&1\end{pmatrix}\right\|\\
+&=\frac{s+\sqrt{s^2+4}}2\le1+s .
+\end{aligned}
 \]
 The value follows from the characteristic polynomial \(\mu^2-(2+s^2)\mu+1\) of \(\left(\begin{smallmatrix}1&s\\0&1\end{smallmatrix}\right)^{T}\left(\begin{smallmatrix}1&s\\0&1\end{smallmatrix}\right)=\left(\begin{smallmatrix}1&s\\s&1+s^2\end{smallmatrix}\right)\), whose larger root is \(\beta(s)^2\); the inequality is \(\sqrt{s^2+4}\le s+2\).
 
@@ -105,26 +128,38 @@ is a unital homomorphism. After reordering \((F\oplus K)^q\) as \(F^q\oplus K^q\
 
 **Proof.** Multiplicativity is (4.1), and \(\Phi_c(1)=1\) because \(\Delta(1)=0\). The block description is the entrywise definition. For an operator \(T=\left(\begin{smallmatrix}X&Y\\0&Z\end{smallmatrix}\right)\) with \(\|X\|,\|Z\|\le1\) and \(\|Y\|\le s\),
 \[
-\|T(\xi,\eta)\|^2\le(\|\xi\|+s\|\eta\|)^2+\|\eta\|^2=\left\|\begin{pmatrix}1&s\\0&1\end{pmatrix}\begin{pmatrix}\|\xi\|\\\|\eta\|\end{pmatrix}\right\|^2\le\beta(s)^2\big(\|\xi\|^2+\|\eta\|^2\big).
+\begin{aligned}
+&\|T(\xi,\eta)\|^2\le(\|\xi\|+s\|\eta\|)^2+\|\eta\|^2\\
+&\quad=\left\|\begin{pmatrix}1&s\\0&1\end{pmatrix}\begin{pmatrix}\|\xi\|\\\|\eta\|\end{pmatrix}\right\|^2\\
+&\quad\le\beta(s)^2\big(\|\xi\|^2+\|\eta\|^2\big).
+\end{aligned}
 \]
 Apply this to \(x\) in the unit ball of \(M_n(A)\), with \(X=\lambda_n(x)\), \(Z=\sigma_n(x)\) (contractions by Lemma 1.1(2)) and \(Y=c\Delta_n(x)\). \(\square\)
 
 **Theorem 4.3** (implementation). Let \(\Delta\) be a completely bounded rectangular derivation for \(\sigma,\lambda\). Then \(\Delta\) is implemented by some \(V\in B(K,F)\) with \(\|V\|\le\frac12\|\Delta\|_{\rm cb}\).
 
-**Proof.** For \(\Delta=0\) take \(V=0\). Let \(D=\|\Delta\|_{\rm cb}>0\) and \(c>0\). By Lemma 4.2 and Theorem 3.1 there is a positive invertible \(S\) on \(F\oplus K\) with \(\|S\|\|S^{-1}\|\le\beta(cD)\) such that \(S\Phi_c(\cdot)S^{-1}\) preserves adjoints. Put \(Q=S^2\), \(m=\|Q^{-1}\|^{-1}\) and \(M=\|Q\|\), so that \(m\le Q\le M\) and \(M/m=(\|S\|\|S^{-1}\|)^2\le\beta(cD)^2\). The identity \(S\Phi_c(a^*)S^{-1}=(S\Phi_c(a)S^{-1})^*=S^{-1}\Phi_c(a)^*S\) says \(Q\Phi_c(a^*)=\Phi_c(a)^*Q\); with \(a^*\) in place of \(a\),
+**Proof.** For \(\Delta=0\) take \(V=0\). Let \(D=\|\Delta\|_{\rm cb}>0\) and \(c>0\). By Lemma 4.2 and Theorem 3.1 there is a positive invertible \(S\) on \(F\oplus K\) with \(\|S\|\|S^{-1}\|\le\beta(cD)\) such that \(S\Phi_c(\cdot)S^{-1}\) preserves adjoints. Put \(Q=S^2\), \(m=\|Q^{-1}\|^{-1}\) and \(M=\|Q\|\), so that \(m\le Q\le M\) and \(M/m=(\|S\|\|S^{-1}\|)^2\le\beta(cD)^2\). The identity \(S\Phi_c(a^*)S^{-1}=(S\Phi_c(a)S^{-1})^*\), whose right side is \(S^{-1}\Phi_c(a)^*S\), says \(Q\Phi_c(a^*)=\Phi_c(a)^*Q\); with \(a^*\) in place of \(a\), the relations (4.4) hold:
 \[
-Q\Phi_c(a)=\Phi_c(a^*)^*Q,\qquad \Phi_c(a^*)^*=\begin{pmatrix}\lambda(a)&0\\ c\Delta(a^*)^*&\sigma(a)\end{pmatrix}.
-\tag{4.4}
+\begin{gathered}
+Q\Phi_c(a)=\Phi_c(a^*)^*Q,\\
+\Phi_c(a^*)^*=\begin{pmatrix}\lambda(a)&0\\ c\Delta(a^*)^*&\sigma(a)\end{pmatrix}.
+\end{gathered}
 \]
 Write \(Q=(Q_{ij})\) relative to \(F\oplus K\). The upper row of (4.4) reads
 \[
-Q_{11}\lambda(a)=\lambda(a)Q_{11},\qquad cQ_{11}\Delta(a)+Q_{12}\sigma(a)=\lambda(a)Q_{12}.
-\tag{4.5}
+\begin{aligned}
+&Q_{11}\lambda(a)=\lambda(a)Q_{11},\\
+&cQ_{11}\Delta(a)+Q_{12}\sigma(a)\\
+&\quad =\lambda(a)Q_{12}.
+\end{aligned}\tag{4.5}
 \]
-The compression \(Q_{11}\) satisfies \(Q_{11}\ge m\), so it is invertible with \(\|Q_{11}^{-1}\|\le1/m\), and \(Q_{11}^{-1}\) commutes with \(\lambda(A)\). The block \(Q_{12}\) is the off-diagonal block of \(Q-\frac{M+m}2\cdot1\), whose norm is at most \(\frac{M-m}2\); so \(\|Q_{12}\|\le\frac{M-m}2\). Put \(V_c=-c^{-1}Q_{11}^{-1}Q_{12}\). By (4.5), \(\Delta(a)=c^{-1}Q_{11}^{-1}\big(\lambda(a)Q_{12}-Q_{12}\sigma(a)\big)=V_c\sigma(a)-\lambda(a)V_c\), and
+The compression \(Q_{11}\) satisfies \(Q_{11}\ge m\), so it is invertible with \(\|Q_{11}^{-1}\|\le1/m\), and \(Q_{11}^{-1}\) commutes with \(\lambda(A)\). The block \(Q_{12}\) is the off-diagonal block of \(Q-\frac{M+m}2\cdot1\), whose norm is at most \(\frac{M-m}2\); so \(\|Q_{12}\|\le\frac{M-m}2\). Put \(V_c=-c^{-1}Q_{11}^{-1}Q_{12}\). By (4.5), \(\Delta(a)=c^{-1}Q_{11}^{-1}\big(\lambda(a)Q_{12}-Q_{12}\sigma(a)\big)\), which is \(V_c\sigma(a)-\lambda(a)V_c\), and
 \[
-\|V_c\|\le\frac{M-m}{2cm}\le\frac{\beta(cD)^2-1}{2c}=\frac{cD^2+D\sqrt{c^2D^2+4}}4 ,
-\tag{4.6}
+\begin{aligned}
+&\|V_c\|\le\frac{M-m}{2cm}\\
+&\quad \le\frac{\beta(cD)^2-1}{2c}\\
+&\quad =\frac{cD^2+D\sqrt{c^2D^2+4}}4 ,
+\end{aligned}\tag{4.6}
 \]
 using \(\beta(s)^2-1=\frac12\big(s^2+s\sqrt{s^2+4}\big)\). The right side of (4.6) tends to \(D/2\) as \(c\to0\). The operators implementing \(\Delta\) form a set that is closed in the weak operator topology, because (4.2) is linear in \(V\). Its intersections with the closed balls of radius \(D/2+1/j\) are nonempty, compact in the weak operator topology and decreasing in \(j\), so they have a common point \(V\), with \(\|V\|\le D/2\). \(\square\)
 
@@ -152,7 +187,7 @@ The formula involves the completely bounded norm. Whether the norm \(\|\operator
 \]
 Deduce that \(\pi_s\) is not a \(*\)-homomorphism for \(s>0\).
 
-**Exercise 5.3.** Let \(p\in B(H)\) be a projection and \(A=\{\alpha p+\beta(1-p):\alpha,\beta\in\mathbb C\}\). Write \(x\in B(H)\) as \(\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\) relative to \(H=pH\oplus(1-p)H\). Show directly that \(\operatorname{dist}(x,A')=\max(\|b\|,\|c\|)=\frac12\|\operatorname{ad}(x)|_A\|\), and conclude from Corollary 4.5 that here \(\|\operatorname{ad}(x)|_A\|=\|\operatorname{ad}(x)|_A\|_{\rm cb}\).
+**Exercise 5.3.** Let \(p\in B(H)\) be a projection and \(A=\{\alpha p+\beta(1-p):\alpha,\beta\in\mathbb C\}\). Write \(x\in B(H)\) as \(\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\) relative to \(H=pH\oplus(1-p)H\). Show directly that \(\operatorname{dist}(x,A')=\max(\|b\|,\|c\|)\), which is \(\frac12\|\operatorname{ad}(x)|_A\|\), and conclude from Corollary 4.5 that here \(\|\operatorname{ad}(x)|_A\|=\|\operatorname{ad}(x)|_A\|_{\rm cb}\).
 
 **Exercise 5.4.** Let \(A=\mathbb C^2\) act on \(\mathbb C^2\) by diagonal matrices, and \(\Delta=\operatorname{ad}(e_{12})|_A\), where \(e_{12}\) is the matrix unit. Show that \(\|\Delta\|_{\rm cb}=2\) and that every operator implementing \(\Delta\) has norm at least \(1\). So the bound of Theorem 4.3 is attained.
 
@@ -164,11 +199,11 @@ Deduce that \(\pi_s\) is not a \(*\)-homomorphism for \(s>0\).
 
 **Solution 5.2.** \(P_s^2=P_s\), so \(P_s\) and \(1-P_s\) are complementary idempotents and \(\pi_s\) is a unital homomorphism. With \(S=\left(\begin{smallmatrix}1&s\\0&1\end{smallmatrix}\right)\), \(SP_sS^{-1}=\left(\begin{smallmatrix}1&0\\0&0\end{smallmatrix}\right)\) (check \(SP_s=\left(\begin{smallmatrix}1&s\\0&0\end{smallmatrix}\right)=\left(\begin{smallmatrix}1&0\\0&0\end{smallmatrix}\right)S\)), so \(S\pi_s(\cdot)S^{-1}\) is a \(*\)-homomorphism and Lemma 1.1(3) gives \(\|\pi_s\|_{\rm cb}\le\|S\|\|S^{-1}\|=\beta(s)^2\) (\(S^{-1}\) is \(S\) with \(-s\), of the same norm). The unit vector \((1,-1)\) of \(A\) gives \(\pi_s(1,-1)=2P_s-1=\left(\begin{smallmatrix}1&2s\\0&-1\end{smallmatrix}\right)\), whose norm is \(\beta(2s)\) (multiply on the right by the unitary \(\operatorname{diag}(1,-1)\)). For \(s>0\), \(\beta(2s)>1\), so \(\pi_s\) is not contractive, whereas \(*\)-homomorphisms are.
 
-**Solution 5.3.** \(A'\) consists of the operators commuting with \(p\), the block diagonal ones. For block diagonal \(y\), the off-diagonal blocks of \(x-y\) are \(b\) and \(c\), so \(\|x-y\|\ge\max(\|b\|,\|c\|)\), with equality for \(y=\operatorname{diag}(a,d)\). Next, \(\operatorname{ad}(x)(\alpha p+\beta(1-p))=(\alpha-\beta)[x,p]\) and \([x,p]=\left(\begin{smallmatrix}0&-b\\c&0\end{smallmatrix}\right)\) has norm \(\max(\|b\|,\|c\|)\). On the unit ball \(|\alpha|,|\beta|\le1\) the factor \(|\alpha-\beta|\) reaches \(2\). Hence \(\|\operatorname{ad}(x)|_A\|=2\max(\|b\|,\|c\|)=2\operatorname{dist}(x,A')\), which equals \(\|\operatorname{ad}(x)|_A\|_{\rm cb}\) by Corollary 4.5.
+**Solution 5.3.** \(A'\) consists of the operators commuting with \(p\), the block diagonal ones. For block diagonal \(y\), the off-diagonal blocks of \(x-y\) are \(b\) and \(c\), so \(\|x-y\|\ge\max(\|b\|,\|c\|)\), with equality for \(y=\operatorname{diag}(a,d)\). Next, \(\operatorname{ad}(x)(\alpha p+\beta(1-p))=(\alpha-\beta)[x,p]\) and \([x,p]=\left(\begin{smallmatrix}0&-b\\c&0\end{smallmatrix}\right)\) has norm \(\max(\|b\|,\|c\|)\). On the unit ball \(|\alpha|,|\beta|\le1\) the factor \(|\alpha-\beta|\) reaches \(2\). Hence \(\|\operatorname{ad}(x)|_A\|=2\max(\|b\|,\|c\|)\), which is \(2\operatorname{dist}(x,A')\), which equals \(\|\operatorname{ad}(x)|_A\|_{\rm cb}\) by Corollary 4.5.
 
-**Solution 5.4.** \(\Delta(\alpha,\beta)=e_{12}\operatorname{diag}(\alpha,\beta)-\operatorname{diag}(\alpha,\beta)e_{12}=(\beta-\alpha)e_{12}\), so \(\|\Delta\|=2\), attained at \((-1,1)\); and \(\|\Delta\|_{\rm cb}\le2\|e_{12}\|=2\). An operator \(V\) implements \(\Delta\) exactly when \(V-e_{12}\) commutes with the diagonal matrices, that is, is diagonal. Its \((1,2)\) entry is then \(1\), so \(\|V\|\ge1=\frac12\|\Delta\|_{\rm cb}\).
+**Solution 5.4.** \(\Delta(\alpha,\beta)=e_{12}\operatorname{diag}(\alpha,\beta)-\operatorname{diag}(\alpha,\beta)e_{12}\), which is \((\beta-\alpha)e_{12}\), so \(\|\Delta\|=2\), attained at \((-1,1)\); and \(\|\Delta\|_{\rm cb}\le2\|e_{12}\|=2\). An operator \(V\) implements \(\Delta\) exactly when \(V-e_{12}\) commutes with the diagonal matrices, that is, is diagonal. Its \((1,2)\) entry is then \(1\), so \(\|V\|\ge1=\frac12\|\Delta\|_{\rm cb}\).
 
-**Solution 5.5.** As in Lemma 2.2, \(V^*\rho(a)=\sigma(a)V^*\), so \(V^*V\sigma(a)=V^*\rho(a)V=\sigma(a)V^*V\) and \(VV^*\rho(a)=V\sigma(a)V^*=\rho(a)VV^*\). Write \(V=W|V|\). Then \(|V|\) commutes with \(\sigma(A)\), and \(W\sigma(a)|V|=W|V|\sigma(a)=V\sigma(a)=\rho(a)V=\rho(a)W|V|\). So \(W\sigma(a)\) and \(\rho(a)W\) agree on the closure of the range of \(|V|\), which is the initial space \(W^*WK\) of \(W\). This space reduces \(\sigma\) (its projection \(W^*W\) is the support of \(V^*V\in\sigma(A)'\)); on its orthogonal complement both \(W\sigma(a)\) and \(\rho(a)W\) vanish, the first because \(\sigma(a)\) preserves the complement and \(W\) kills it. Hence \(W\sigma(a)=\rho(a)W\).
+**Solution 5.5.** As in Lemma 2.2, \(V^*\rho(a)=\sigma(a)V^*\), so \(V^*V\sigma(a)=V^*\rho(a)V=\sigma(a)V^*V\) and \(VV^*\rho(a)=V\sigma(a)V^*=\rho(a)VV^*\). Write \(V=W|V|\). Then \(|V|\) commutes with \(\sigma(A)\), and \(W\sigma(a)|V|=W|V|\sigma(a)\), which is \(V\sigma(a)=\rho(a)V=\rho(a)W|V|\). So \(W\sigma(a)\) and \(\rho(a)W\) agree on the closure of the range of \(|V|\), which is the initial space \(W^*WK\) of \(W\). This space reduces \(\sigma\) (its projection \(W^*W\) is the support of \(V^*V\in\sigma(A)'\)); on its orthogonal complement both \(W\sigma(a)\) and \(\rho(a)W\) vanish, the first because \(\sigma(a)\) preserves the complement and \(W\) kills it. Hence \(W\sigma(a)=\rho(a)W\).
 
 ## References
 

@@ -14,19 +14,29 @@ Throughout this section \(N\) is a von Neumann algebra with a faithful normal st
 
 Let \(\lambda>0\), \(P=N\otimes M_2(\mathbb C)\), whose elements are matrices \(Y=\sum_{i,j}y_{ij}\otimes e_{ij}\) with \(y_{ij}\in N\), and
 \[
-\theta(Y)=h_1\varphi(y_{11})+h_2\varphi(y_{22}),\qquad h_1=\frac1{1+\lambda},\quad h_2=\frac\lambda{1+\lambda}.
+\begin{gathered}
+\theta(Y)=h_1\varphi(y_{11})+h_2\varphi(y_{22}),\\
+h_1=\frac1{1+\lambda},\quad h_2=\frac\lambda{1+\lambda}.
+\end{gathered}
 \]
 
 **Lemma 1.1.** \(\theta\) is a faithful normal state of \(P\), and for \(y\in N\), \(t\in\mathbb R\) and \(i,j\in\{1,2\}\),
 \[
-\sigma^\theta_t(y\otimes e_{ij})=(h_i/h_j)^{it}\,\sigma_t(y)\otimes e_{ij};\qquad\text{in particular}\qquad\sigma^\theta_t(y\otimes e_{21})=\lambda^{it}\sigma_t(y)\otimes e_{21}.
+\begin{gathered}
+\sigma^\theta_t(y\otimes e_{ij})=(h_i/h_j)^{it}\,\sigma_t(y)\otimes e_{ij};\\
+\text{in particular}\\
+\sigma^\theta_t(y\otimes e_{21})=\lambda^{it}\sigma_t(y)\otimes e_{21}.
+\end{gathered}
 \]
 
 **Proof.** Let \(K\) be the direct sum of four copies \(H_{ij}\) of \(H_\varphi\), indexed by \(i,j\in\{1,2\}\), and let \(P\) act on \(K\) by matrix multiplication: \((Y\eta)_{ij}=\sum_ky_{ik}\eta_{kj}\). This is a faithful normal representation, and its image is a von Neumann algebra. Let \(\Xi\in K\) have components \(\Xi_{ij}=\delta_{ij}h_j^{1/2}\xi_\varphi\). Then \((Y\Xi)_{ij}=h_j^{1/2}y_{ij}\xi_\varphi\), so \(\langle Y\Xi,\Xi\rangle=\sum_ih_i\varphi(y_{ii})=\theta(Y)\). The vectors \(Y\Xi\) fill the dense subspace \(\bigoplus_{i,j}N\xi_\varphi\), and \(Y\Xi=0\) forces every \(y_{ij}\xi_\varphi=0\), hence \(Y=0\). So \(\Xi\) is cyclic and separating, \(\theta\) is a faithful normal state, and \((K,\Xi)\) is its GNS representation.
 
 The Tomita map \(S\colon Y\Xi\mapsto Y^*\Xi\) sends the component \(h_i^{1/2}y_{ji}\xi_\varphi\) in \(H_{ji}\) to the component \(h_j^{1/2}y_{ji}^*\xi_\varphi\) in \(H_{ij}\). So \(S\) is the direct sum, over the ordered pairs \((j,i)\), of the maps \((h_j/h_i)^{1/2}S_\varphi\colon H_{ji}\to H_{ij}\), where \(S_\varphi y\xi_\varphi=y^*\xi_\varphi\). A finite direct sum of closable operators has as closure the direct sum of the closures and as adjoint the direct sum of the adjoints. Hence \(\bar S^*\bar S\) acts on \(H_{ji}\) as \((h_j/h_i)\bar S_\varphi^*\bar S_\varphi=(h_j/h_i)\Delta_\varphi\), and the modular operator of \(\theta\) is \(\Delta_\theta=\bigoplus_{i,j}(h_i/h_j)\Delta_\varphi\), with \((h_i/h_j)\Delta_\varphi\) acting on \(H_{ij}\). By the modular theorem, \(\sigma^\theta_t(Y)\Xi=\Delta_\theta^{it}Y\Xi\). For \(Y=y\otimes e_{ij}\) the vector \(Y\Xi\) is \(h_j^{1/2}y\xi_\varphi\) in \(H_{ij}\), so
 \[
-\Delta_\theta^{it}Y\Xi=(h_i/h_j)^{it}h_j^{1/2}\Delta_\varphi^{it}y\xi_\varphi=(h_i/h_j)^{it}h_j^{1/2}\sigma_t(y)\xi_\varphi\ \text{ in }H_{ij},
+\begin{aligned}
+&\Delta_\theta^{it}Y\Xi=(h_i/h_j)^{it}h_j^{1/2}\Delta_\varphi^{it}y\xi_\varphi\\
+&\quad =(h_i/h_j)^{it}h_j^{1/2}\sigma_t(y)\xi_\varphi\ \text{ in }H_{ij},
+\end{aligned}
 \]
 which is the vector of \((h_i/h_j)^{it}\sigma_t(y)\otimes e_{ij}\). Since \(\Xi\) is separating, this proves the formula. Finally \(h_2/h_1=\lambda\). \(\square\)
 
@@ -36,22 +46,34 @@ which is the vector of \((h_i/h_j)^{it}\sigma_t(y)\otimes e_{ij}\). Since \(\Xi\
 \]
 In the logarithmic parametrization \(\lambda=e^{-s}\),
 \[
-\|\sigma_t(v)-e^{its}v\|_\varphi^2+e^{-s}\big\|(\sigma_t(v)-e^{its}v)^*\big\|_\varphi^2\le512\,(1+|t|)^2\,\|v\|\,\|v\varphi-e^{-s}\varphi v\| .
+\begin{aligned}
+&\|\sigma_t(v)-e^{its}v\|_\varphi^2\\
+&\quad +e^{-s}\big\|(\sigma_t(v)-e^{its}v)^*\big\|_\varphi^2\\
+&\quad \le512\,(1+|t|)^2\,\|v\|\,\|v\varphi-e^{-s}\varphi v\| .
+\end{aligned}
 \]
 
 **Proof.** We may assume \(v\ne0\). Let \(V=v\otimes e_{21}\in P\) and \(Y=\sum_{i,j}y_{ij}\otimes e_{ij}\in P\). Then \(VY=\sum_jvy_{1j}\otimes e_{2j}\) and \(YV=\sum_iy_{i2}v\otimes e_{i1}\), so
 \[
-(V\theta-\theta V)(Y)=\theta(YV)-\theta(VY)=h_1\big(\varphi(y_{12}v)-\lambda\varphi(vy_{12})\big)=h_1(v\varphi-\lambda\varphi v)(y_{12}).
+\begin{aligned}
+&(V\theta-\theta V)(Y)=\theta(YV)-\theta(VY)\\
+&\quad =h_1\big(\varphi(y_{12}v)-\lambda\varphi(vy_{12})\big)\\
+&\quad =h_1(v\varphi-\lambda\varphi v)(y_{12}).
+\end{aligned}
 \]
-Since \(\|y_{12}\|\le\|Y\|\), \(\|[V,\theta]\|\le h_1\varepsilon\). Theorem 6.5 of the ultraproduct lesson, applied to \((P,\theta)\) and \(V\), gives \(\|\sigma^\theta_t(V)-V\|^\sharp_\theta\le16\sqrt2\,(1+|t|)\,\|v\|^{1/2}(h_1\varepsilon)^{1/2}\). By Lemma 1.1, \(\sigma^\theta_t(V)-V=w\otimes e_{21}\). Its squared \(\sharp\)-norm is
+Since \(\|y_{12}\|\le\|Y\|\), \(\|[V,\theta]\|\le h_1\varepsilon\). Theorem 6.5 of the ultraproduct lesson, applied to \((P,\theta)\) and \(V\), shows that \(\|\sigma^\theta_t(V)-V\|^\sharp_\theta\) is at most \(16\sqrt2\,(1+|t|)\,\|v\|^{1/2}(h_1\varepsilon)^{1/2}\). By Lemma 1.1, \(\sigma^\theta_t(V)-V=w\otimes e_{21}\). Its squared \(\sharp\)-norm is
 \[
-\theta(w^*w\otimes e_{11})+\theta(ww^*\otimes e_{22})=h_1\|w\|_\varphi^2+h_2\|w^*\|_\varphi^2=h_1\big(\|w\|_\varphi^2+\lambda\|w^*\|_\varphi^2\big).
+\begin{aligned}
+&\theta(w^*w\otimes e_{11})+\theta(ww^*\otimes e_{22})\\
+&\quad =h_1\|w\|_\varphi^2+h_2\|w^*\|_\varphi^2\\
+&\quad =h_1\big(\|w\|_\varphi^2+\lambda\|w^*\|_\varphi^2\big).
+\end{aligned}
 \]
 Divide by \(h_1\). The second form follows because \(\sigma_t(v)-e^{its}v=e^{its}w\) when \(\lambda=e^{-s}\). \(\square\)
 
 **Corollary 1.3** (modular frequency). For \(v\in N\) and \(s\in\mathbb R\), \(v\varphi=e^{-s}\varphi v\) if and only if \(\sigma_t(v)=e^{its}v\) for all \(t\in\mathbb R\).
 
-**Proof.** If \(v\varphi=e^{-s}\varphi v\), Proposition 1.2 gives \(\sigma_t(v)\xi_\varphi=e^{its}v\xi_\varphi\), and \(\xi_\varphi\) is separating. Conversely, if \(\sigma_t(v)=e^{its}v\) for all \(t\), then \(\Delta_\varphi^{it}v\xi_\varphi=e^{its}v\xi_\varphi\), so \(v\xi_\varphi\) has spectral support \(\{s\}\) for \(\log\Delta_\varphi\). Lemma 1.1 of the modular averaging lesson gives \(\|\varphi v-e^sv\varphi\|\le(1+e^{s/2})\|(e^{\log\Delta_\varphi/2}-e^{s/2})v\xi_\varphi\|=0\), that is \(v\varphi=e^{-s}\varphi v\). \(\square\)
+**Proof.** If \(v\varphi=e^{-s}\varphi v\), Proposition 1.2 gives \(\sigma_t(v)\xi_\varphi=e^{its}v\xi_\varphi\), and \(\xi_\varphi\) is separating. Conversely, if \(\sigma_t(v)=e^{its}v\) for all \(t\), then \(\Delta_\varphi^{it}v\xi_\varphi=e^{its}v\xi_\varphi\), so \(v\xi_\varphi\) has spectral support \(\{s\}\) for \(\log\Delta_\varphi\). Lemma 1.1 of the modular averaging lesson shows that \(\|\varphi v-e^sv\varphi\|\) is at most \((1+e^{s/2})\|(e^{\log\Delta_\varphi/2}-e^{s/2})v\xi_\varphi\|\), which is \(0\), that is \(v\varphi=e^{-s}\varphi v\). \(\square\)
 
 **Corollary 1.4.** Let \((v_n)\) be a bounded sequence in \(N\) with \(\|v_n\varphi-e^{-s}\varphi v_n\|\to0\). Then for every \(T>0\),
 \[
@@ -88,15 +110,27 @@ Put \(\Theta_i(T)=\int uTu^*\,d\mu_i(u)\), a finite convex combination of unitar
 
 (4) First let \(f(x)=\int h(t)e^{itx}dt\) with \(h\in L^1(\mathbb R)\), so that \(f(X)=\int h(t)\Delta^{it}dt\) strongly. Since \(\Delta^{it}u^*=\sigma_t(u^*)\Delta^{it}\),
 \[
-\Theta_i(f(X))=\int h(t)A_i(t)\Delta^{it}\,dt,\qquad A_i(t)=\int u\,\sigma_t(u)^*\,d\mu_i(u).
+\begin{gathered}
+\Theta_i(f(X))=\int h(t)A_i(t)\Delta^{it}\,dt,\\
+A_i(t)=\int u\,\sigma_t(u)^*\,d\mu_i(u).
+\end{gathered}
 \]
 For \(u\in\mathcal U_\delta\) and \(y'\in M'\), \((u\sigma_t(u)^*-1)y'\xi=y'u(\sigma_t(u)-u)^*\xi\), so by Corollary 6.3 of the ultraproduct lesson, applied to \((N,\varphi)\),
 \[
-\|(A_i(t)-1)y'\xi\|\le\|y'\|\sup_{u\in\mathcal U_\delta}\|\sigma_t(u)-u\|^\sharp_\varphi\le2\,C_t^{1/2}\delta^{1/2}\,\|y'\| ,
+\begin{aligned}
+&\|(A_i(t)-1)y'\xi\|\\
+&\quad \le\|y'\|\sup_{u\in\mathcal U_\delta}\|\sigma_t(u)-u\|^\sharp_\varphi\\
+&\quad \le2\,C_t^{1/2}\delta^{1/2}\,\|y'\| ,
+\end{aligned}
 \]
 where \(C_t=8t^2+5|t|+8\). Since \(\|A_i(t)-1\|\le2\) and \(M'\xi\) is dense, \(A_i(t)\to1\) strongly, uniformly for \(|t|\le T\) on each fixed vector, for every \(T\). For \(\eta\in H\), the set \(\{\Delta^{it}\eta:|t|\le T\}\) is norm compact; covering it by finitely many balls of radius \(r\) gives \(\limsup_i\sup_{|t|\le T}\|(A_i(t)-1)\Delta^{it}\eta\|\le2r\) for every \(r>0\). Hence
 \[
-\limsup_i\|(\Theta_i(f(X))-f(X))\eta\|\le\limsup_i\int_{|t|\le T}|h(t)|\,\|(A_i(t)-1)\Delta^{it}\eta\|\,dt+2\|\eta\|\int_{|t|>T}|h|=2\|\eta\|\int_{|t|>T}|h|,
+\begin{aligned}
+&\limsup_i\|(\Theta_i(f(X))-f(X))\eta\|\\
+&\quad\le\limsup_i\int_{|t|\le T}|h(t)|\\
+&\qquad\qquad\cdot\|(A_i(t)-1)\Delta^{it}\eta\|\,dt\\
+&\quad+2\|\eta\|\int_{|t|>T}|h|=2\|\eta\|\int_{|t|>T}|h|,
+\end{aligned}
 \]
 which tends to \(0\) as \(T\to\infty\). So \(\Theta_i(f(X))\to f(X)\) strongly and \(\zeta(f(X))=f(X)\). Such \(f\) include every \(f\in C_c^\infty(\mathbb R)\), whose inverse Fourier transform is integrable, and \(C_c^\infty(\mathbb R)\) is uniformly dense in \(C_0(\mathbb R)\). Both sides of (4) are contractive in \(f\) for the supremum norm, so (4) holds for all \(f\in C_0(\mathbb R)\).
 
@@ -116,23 +150,34 @@ From now on \(N\) is moreover a factor of type III₁ with separable predual, so
 
 **Proof.** Let \(\zeta\) be as in Proposition 3.1, let \((v_{k,n})\) be an admissible \(e^{-s}\)-family with ordinary convergence, \(\|v_{k,n}\|\le c\), and \(\omega\) a free ultrafilter on \(\mathbb N\). Put
 \[
-\Theta_n(T)=\sum_{k=1}^mv_{k,n}\,\zeta(T)\,v_{k,n}^*,\qquad\theta_s(T)=\sigma\text{-weak}\lim_{n\to\omega}\Theta_n(T).
+\begin{gathered}
+\Theta_n(T)=\sum_{k=1}^mv_{k,n}\,\zeta(T)\,v_{k,n}^*,\\
+\theta_s(T)=\sigma\text{-weak}\lim_{n\to\omega}\Theta_n(T).
+\end{gathered}
 \]
-Each \(\Theta_n\) is completely positive with \(\Theta_n(1)=\sum_kv_{k,n}v_{k,n}^*\), of norm at most \(mc^2\). This sequence tends to \(1\) strongly: \(\|(1-\sum_kv_{k,n}v_{k,n}^*)y'\xi\|\le\|y'\|\,\|1-\sum_kv_{k,n}v_{k,n}^*\|_\varphi\to0\) for \(y'\in M'\), and the sequence is bounded. By Lemma 2.1, \(\theta_s\in\mathrm{UCP}(B(H))\).
+Each \(\Theta_n\) is completely positive with \(\Theta_n(1)=\sum_kv_{k,n}v_{k,n}^*\), of norm at most \(mc^2\). This sequence tends to \(1\) strongly: for \(y'\in M'\), \(\|(1-\sum_kv_{k,n}v_{k,n}^*)y'\xi\|\) is at most \(\|y'\|\,\|1-\sum_kv_{k,n}v_{k,n}^*\|_\varphi\), which tends to \(0\), and the sequence is bounded. By Lemma 2.1, \(\theta_s\in\mathrm{UCP}(B(H))\).
 
-(1) \(\Theta_n(e_N)=\sum_kv_{k,n}e_Nv_{k,n}^*=e_N\Theta_n(1)\to e_N\) strongly. (2) \(\Theta_n(a)=\sum_kv_{k,n}E_{\mathrm B}(a)v_{k,n}^*\to\beta^\varphi_{e^{-s}}(E_{\mathrm B}(a))=\gamma_s(E_{\mathrm B}(a))\) strongly. (3) The \(v_{k,n}\) commute with \(T_1,T_2\in N'\), and \(\zeta\) has property (3).
+(1) \(\Theta_n(e_N)=\sum_kv_{k,n}e_Nv_{k,n}^*\), which is \(e_N\Theta_n(1)\to e_N\) strongly. (2) \(\Theta_n(a)=\sum_kv_{k,n}E_{\mathrm B}(a)v_{k,n}^*\) tends strongly to \(\beta^\varphi_{e^{-s}}(E_{\mathrm B}(a))=\gamma_s(E_{\mathrm B}(a))\). (3) The \(v_{k,n}\) commute with \(T_1,T_2\in N'\), and \(\zeta\) has property (3).
 
 (4) Let \(f(x)=\int h(t)e^{itx}dt\) with \(h\in L^1(\mathbb R)\). By Proposition 3.1(4) and \(\Delta^{it}v^*=\sigma_t(v)^*\Delta^{it}\),
 \[
-\Theta_n(f(X))=\sum_kv_{k,n}f(X)v_{k,n}^*=\int h(t)A_n(t)\Delta^{it}\,dt,\qquad A_n(t)=\sum_kv_{k,n}\sigma_t(v_{k,n})^* .
+\begin{aligned}
+&\Theta_n(f(X))=\sum_kv_{k,n}f(X)v_{k,n}^*\\
+&\quad =\int h(t)A_n(t)\Delta^{it}\,dt,\\
+&A_n(t)=\sum_kv_{k,n}\sigma_t(v_{k,n})^* .
+\end{aligned}
 \]
-Now \(A_n(t)-e^{-its}\Theta_n(1)=\sum_kv_{k,n}\big(\sigma_t(v_{k,n})-e^{its}v_{k,n}\big)^*\). For \(y'\in M'\), Corollary 1.4 gives
+Now \(A_n(t)-e^{-its}\Theta_n(1)\) equals \(\sum_kv_{k,n}\big(\sigma_t(v_{k,n})-e^{its}v_{k,n}\big)^*\). For \(y'\in M'\), Corollary 1.4 shows that the supremum over \(|t|\le T\) of \(\big\|\big(A_n(t)-e^{-its}\Theta_n(1)\big)y'\xi\big\|\) is at most
 \[
-\sup_{|t|\le T}\big\|\big(A_n(t)-e^{-its}\Theta_n(1)\big)y'\xi\big\|\le\|y'\|\,c\sum_k\sup_{|t|\le T}\big\|\sigma_t(v_{k,n})-e^{its}v_{k,n}\big\|^\sharp_\varphi\to0 .
+\|y'\|\,c\sum_k\sup_{|t|\le T}\big\|\sigma_t(v_{k,n})-e^{its}v_{k,n}\big\|^\sharp_\varphi,
 \]
-Also \(\|A_n(t)\|\le\|\sum_kv_{k,n}v_{k,n}^*\|^{1/2}\|\sum_k\sigma_t(v_{k,n}v_{k,n}^*)\|^{1/2}\le mc^2\), and \(\Theta_n(1)\to1\) strongly. As in the proof of Proposition 3.1, \(\sup_{|t|\le T}\|(A_n(t)-e^{-its})\Delta^{it}\eta\|\to0\) for every \(\eta\in H\) and \(T>0\), and therefore
+which tends to \(0\).
+Also \(\|A_n(t)\|\) is at most the product of \(\|\sum_kv_{k,n}v_{k,n}^*\|^{1/2}\) and \(\|\sum_k\sigma_t(v_{k,n}v_{k,n}^*)\|^{1/2}\), hence at most \(mc^2\), and \(\Theta_n(1)\to1\) strongly. As in the proof of Proposition 3.1, \(\sup_{|t|\le T}\|(A_n(t)-e^{-its})\Delta^{it}\eta\|\to0\) for every \(\eta\in H\) and \(T>0\), and therefore
 \[
-\Theta_n(f(X))\to\int h(t)e^{-its}\Delta^{it}\,dt=f(X-s)\quad\text{strongly}.
+\begin{aligned}
+&\Theta_n(f(X))\to\int h(t)e^{-its}\Delta^{it}\,dt\\
+&\quad =f(X-s)\quad\text{strongly}.
+\end{aligned}
 \]
 Hence \(\theta_s(f(X))=f(X-s)\) for these \(f\), and by density for all \(f\in C_0(\mathbb R)\).
 
@@ -140,8 +185,12 @@ Hence \(\theta_s(f(X))=f(X-s)\) for these \(f\), and by density for all \(f\in C
 
 By the multiplicative domain theorem, [Completely positive maps, Theorem 4.1(3)](course:foundations-of-von-neumann-algebras/completely-positive-maps#OA-FND-CM-07), properties (4) and (5) give more: \(\theta_s(f(X)^*f(X))=\theta_s(f(X))^*\theta_s(f(X))\), and likewise for \(f(X)f(X)^*\) and for the unitaries \(\Delta^{it}\), so
 \[
-\theta_s(f(X)T)=f(X-s)\theta_s(T),\qquad\theta_s(\Delta^{it}T\Delta^{it'})=e^{-i(t+t')s}\Delta^{it}\theta_s(T)\Delta^{it'}
-\tag{4.1}
+\begin{aligned}
+&\theta_s(f(X)T)\\
+&\quad =f(X-s)\theta_s(T),\\
+&\theta_s(\Delta^{it}T\Delta^{it'})\\
+&\quad =e^{-i(t+t')s}\Delta^{it}\theta_s(T)\Delta^{it'}
+\end{aligned}\tag{4.1}
 \]
 for \(f\in C_0(\mathbb R)\), \(T\in B(H)\) and \(t,t'\in\mathbb R\), and similarly with \(f(X)\) on the right.
 
@@ -151,10 +200,13 @@ The maps \(\theta_s\) depend on the choices made, and the theorem asserts only t
 
 **Corollary 5.1.** Let \(N\) be a factor of type III₁ with separable predual, \(N\subset M\) with a faithful normal conditional expectation, \(M\) with separable predual, and \(s\in\mathbb R\). Let \(\Phi\) be a state of \(B(H)\) such that \(\Phi(y)=\Phi(\rho(y))=\bar\varphi(y)\) for \(y\in M\), \(\Phi(e_N)=1\), and \(\Phi(g(X))=g(s)\) for \(g\in C_0(\mathbb R)\). Then
 \[
-\Phi\big(\gamma_s(a)\rho(b)\big)=\langle a\xi b,\xi\rangle\qquad(a\in\mathrm B,\ b\in M).
+\begin{gathered}
+\Phi\big(\gamma_s(a)\rho(b)\big)=\langle a\xi b,\xi\rangle\\
+(a\in\mathrm B,\ b\in M).
+\end{gathered}
 \]
 
-**Proof.** Let \(\theta_s\) be as in Theorem 4.1 and \(\Phi'=\Phi\circ\theta_s\). For \(y\in M\), \(\Phi'(y)=\bar\varphi(\gamma_s(E_{\mathrm B}(y)))=\bar\varphi(y)\), since \(\gamma_s\) preserves \(\bar\varphi\) on \(\mathrm B\) (Theorem 3.1(3) of the lesson on the relative flow) and \(E_{\mathrm B}\) preserves \(\bar\varphi\). Also \(\Phi'(\rho(y))=\Phi(\rho(y))=\bar\varphi(y)\), \(\Phi'(e_N)=\Phi(e_N)=1\), and for \(g\in C_0(\mathbb R)\), \(\Phi'(g(X))=\Phi(g(X-s))=g(0)\), because \(x\mapsto g(x-s)\) lies in \(C_0(\mathbb R)\). By Theorem 5.1 of the previous lesson, \(\Phi'(a\rho(b))=\langle a\xi b,\xi\rangle\) for \(a\in\mathrm B\) and \(b\in M\). By Theorem 4.1(2),(3), \(\Phi'(a\rho(b))=\Phi(\theta_s(a)\rho(b))=\Phi(\gamma_s(a)\rho(b))\), because \(E_{\mathrm B}(a)=a\). \(\square\)
+**Proof.** Let \(\theta_s\) be as in Theorem 4.1 and \(\Phi'=\Phi\circ\theta_s\). For \(y\in M\), \(\Phi'(y)=\bar\varphi(\gamma_s(E_{\mathrm B}(y)))=\bar\varphi(y)\), since \(\gamma_s\) preserves \(\bar\varphi\) on \(\mathrm B\) (Theorem 3.1(3) of the lesson on the relative flow) and \(E_{\mathrm B}\) preserves \(\bar\varphi\). Also \(\Phi'(\rho(y))=\Phi(\rho(y))=\bar\varphi(y)\), \(\Phi'(e_N)=\Phi(e_N)=1\), and for \(g\in C_0(\mathbb R)\), \(\Phi'(g(X))=\Phi(g(X-s))=g(0)\), because \(x\mapsto g(x-s)\) lies in \(C_0(\mathbb R)\). By Theorem 5.1 of the previous lesson, \(\Phi'(a\rho(b))=\langle a\xi b,\xi\rangle\) for \(a\in\mathrm B\) and \(b\in M\). By Theorem 4.1(2),(3), \(\Phi'(a\rho(b))=\Phi(\theta_s(a)\rho(b))\), which is \(\Phi(\gamma_s(a)\rho(b))\), because \(E_{\mathrm B}(a)=a\). \(\square\)
 
 ## 6. Exercises
 
@@ -164,17 +216,17 @@ The maps \(\theta_s\) depend on the choices made, and the theorem asserts only t
 
 **Exercise 6.3.** Let \(N\) be a factor of type III₁ with separable predual. Show that \(\zeta(x)=\varphi(x)1\) for \(x\in N\), and that \(\Phi(x)=\varphi(x)\) for \(x\in N\) whenever \(\Phi\) is a state with \(\Phi\circ\zeta=\Phi\).
 
-**Exercise 6.4.** In the setting of Section 1, let \(v\in N\), \(s\in\mathbb R\) and \(d>0\), and suppose that \(v\xi_\varphi\) has spectral support in \([s-d,s+d]\) for \(\log\Delta_\varphi\). Show that \(\|v\varphi-e^{-s}\varphi v\|\le(1+e^{-s/2})(e^{d/2}-1)\|v\|_\varphi\). Compare with Proposition 1.2.
+**Exercise 6.4.** In the setting of Section 1, let \(v\in N\), \(s\in\mathbb R\) and \(d>0\), and suppose that \(v\xi_\varphi\) has spectral support in \([s-d,s+d]\) for \(\log\Delta_\varphi\). Show that \(\|v\varphi-e^{-s}\varphi v\|\) is at most \((1+e^{-s/2})(e^{d/2}-1)\|v\|_\varphi\). Compare with Proposition 1.2.
 
 ## 7. Solutions
 
-**6.1.** With \(\operatorname{Tr}(e_{12}A)=A_{21}\): \((e_{12}\varphi)(y)=\varphi(ye_{12})=\operatorname{Tr}(e_{12}ky)=k_2y_{21}\) and \((\varphi e_{12})(y)=\operatorname{Tr}(ke_{12}y)=k_1y_{21}\). So \(e_{12}\varphi=(k_2/k_1)\varphi e_{12}\), that is \(s=\log(k_1/k_2)\). On the other hand \(\sigma_t(e_{12})=k_1^{it}k_2^{-it}e_{12}=e^{its}e_{12}\).
+**6.1.** With \(\operatorname{Tr}(e_{12}A)=A_{21}\): \((e_{12}\varphi)(y)=\varphi(ye_{12})\), which is \(\operatorname{Tr}(e_{12}ky)=k_2y_{21}\) and \((\varphi e_{12})(y)=\operatorname{Tr}(ke_{12}y)=k_1y_{21}\). So \(e_{12}\varphi=(k_2/k_1)\varphi e_{12}\), that is \(s=\log(k_1/k_2)\). On the other hand \(\sigma_t(e_{12})=k_1^{it}k_2^{-it}e_{12}=e^{its}e_{12}\).
 
-**6.2.** Composition of unital completely positive maps is unital completely positive. (1) and (3) are clear. For \(a\in M\), \(\theta_s(\theta_{s'}(a))=\gamma_s(E_{\mathrm B}(\gamma_{s'}(E_{\mathrm B}(a))))=\gamma_{s+s'}(E_{\mathrm B}(a))\), because \(\gamma_{s'}(E_{\mathrm B}(a))\in\mathrm B\). For \(f\in C_0(\mathbb R)\), \(\theta_s(\theta_{s'}(f(X)))=\theta_s(g(X))\) with \(g(x)=f(x-s')\), which is \(g(X-s)=f(X-s-s')\).
+**6.2.** Composition of unital completely positive maps is unital completely positive. (1) and (3) are clear. For \(a\in M\), \(\theta_s(\theta_{s'}(a))=\gamma_s(E_{\mathrm B}(\gamma_{s'}(E_{\mathrm B}(a))))\), which is \(\gamma_{s+s'}(E_{\mathrm B}(a))\), because \(\gamma_{s'}(E_{\mathrm B}(a))\in\mathrm B\). For \(f\in C_0(\mathbb R)\), \(\theta_s(\theta_{s'}(f(X)))=\theta_s(g(X))\) with \(g(x)=f(x-s')\), which is \(g(X-s)=f(X-s-s')\).
 
 **6.3.** By Corollary 2.6 of the first lesson, \(E_{\mathrm B}(x)=\varphi(x)1\) for \(x\in N\), and \(\zeta(x)=E_{\mathrm B}(x)\). Then \(\Phi(x)=\Phi(\zeta(x))=\varphi(x)\).
 
-**6.4.** By Lemma 1.1 of the modular averaging lesson, \(\|\varphi v-e^sv\varphi\|\le(1+e^{s/2})\|(e^{\log\Delta_\varphi/2}-e^{s/2})v\xi_\varphi\|\). For \(|x-s|\le d\), \(|e^{x/2}-e^{s/2}|=e^{s/2}|e^{(x-s)/2}-1|\le e^{s/2}(e^{d/2}-1)\), so the right side is at most \((1+e^{s/2})e^{s/2}(e^{d/2}-1)\|v\|_\varphi\). Multiplying by \(e^{-s}\) gives \(\|v\varphi-e^{-s}\varphi v\|\le(1+e^{-s/2})(e^{d/2}-1)\|v\|_\varphi\). Spectral localization therefore controls the twisted commutator linearly in \(e^{d/2}-1\), while Proposition 1.2 recovers localization from a small twisted commutator only with a square root.
+**6.4.** By Lemma 1.1 of the modular averaging lesson, \(\|\varphi v-e^sv\varphi\|\) is at most \((1+e^{s/2})\|(e^{\log\Delta_\varphi/2}-e^{s/2})v\xi_\varphi\|\). For \(|x-s|\le d\), \(|e^{x/2}-e^{s/2}|=e^{s/2}|e^{(x-s)/2}-1|\), which is at most \(e^{s/2}(e^{d/2}-1)\), so the right side is at most \((1+e^{s/2})e^{s/2}(e^{d/2}-1)\|v\|_\varphi\). Multiplying by \(e^{-s}\) shows that \(\|v\varphi-e^{-s}\varphi v\|\) is at most \((1+e^{-s/2})(e^{d/2}-1)\|v\|_\varphi\). Spectral localization therefore controls the twisted commutator linearly in \(e^{d/2}-1\), while Proposition 1.2 recovers localization from a small twisted commutator only with a square root.
 
 ## References
 

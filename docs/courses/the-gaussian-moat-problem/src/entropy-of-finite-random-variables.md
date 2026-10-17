@@ -31,7 +31,10 @@ with equality exactly when \(p=q\).
 **Proof.** Use \(\log t\le t-1\), with equality only at \(t=1\). Summing over \(x\) with \(p(x)>0\),
 
 \[
-\sum_xp(x)\log\frac{q(x)}{p(x)}\le\sum_{p(x)>0}\bigl(q(x)-p(x)\bigr)\le1-1=0.
+\begin{aligned}
+&\sum_xp(x)\log\frac{q(x)}{p(x)}\\
+&\quad \le\sum_{p(x)>0}\bigl(q(x)-p(x)\bigr)\le1-1=0.
+\end{aligned}
 \]
 
 Equality forces \(q(x)=p(x)\) wherever \(p(x)>0\); since both laws have total mass one, \(q\) then vanishes elsewhere. \(\square\)
@@ -47,7 +50,10 @@ For finite random variables \(X\) and \(Y\), the pair \((X,Y)\) is again a finit
 **Definition 2.1.** The **conditional entropy** of \(X\) given \(Y\) is
 
 \[
-H(X\mid Y)=\sum_y\mathbb P(Y=y)\,H(X\mid Y=y),
+\begin{aligned}
+&H(X\mid Y)\\
+&\quad =\sum_y\mathbb P(Y=y)\,H(X\mid Y=y),
+\end{aligned}
 \]
 
 summed over the values of positive probability. Conditioning on several variables means conditioning on the tuple they form.
@@ -55,29 +61,35 @@ summed over the values of positive probability. Conditioning on several variable
 **Proposition 2.2** (chain rule). \(H(X,Y)=H(Y)+H(X\mid Y)\). More generally,
 
 \[
-H(X_1,\dots,X_n\mid Z)=\sum_{j=1}^nH(X_j\mid X_1,\dots,X_{j-1},Z).
+\begin{aligned}
+&H(X_1,\dots,X_n\mid Z)\\
+&\quad =\sum_{j=1}^nH(X_j\mid X_1,\dots,X_{j-1},Z).
+\end{aligned}
 \]
 
-**Proof.** With \(p(x,y)=\mathbb P(X=x,Y=y)\) and \(p(y)=\mathbb P(Y=y)\), we have \(\log p(x,y)=\log p(y)+\log\bigl(p(x,y)/p(y)\bigr)\); multiply by \(-p(x,y)\) and sum. The general form follows by applying the first one conditionally on each value of \(Z\) and inducting on \(n\). \(\square\)
+**Proof.** With \(p(x,y)=\mathbb P(X=x,Y=y)\) and \(p(y)=\mathbb P(Y=y)\), the logarithm \(\log p(x,y)\) is the sum of \(\log p(y)\) and \(\log\bigl(p(x,y)/p(y)\bigr)\); multiply by \(-p(x,y)\) and sum. The general form follows by applying the first one conditionally on each value of \(Z\) and inducting on \(n\). \(\square\)
 
 **Proposition 2.3** (conditioning does not increase entropy). \(H(X\mid Y,Z)\le H(X\mid Z)\). In particular \(H(X\mid Y)\le H(X)\), with equality exactly when \(X\) and \(Y\) are independent.
 
 **Proof.** Fix \(Z=z\) and work in the conditional probability space; it suffices to treat the case without \(Z\). With \(p(x)\) the law of \(X\),
 
 \[
-H(X)-H(X\mid Y)=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(x)p(y)},
+\begin{aligned}
+&H(X)-H(X\mid Y)\\
+&\quad =\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(x)p(y)},
+\end{aligned}
 \]
 
 which is nonnegative by Lemma 1.2, applied to the joint law and the product law \(p(x)p(y)\). Equality holds exactly when these laws agree. \(\square\)
 
 **Corollary 2.4.** The following hold for finite random variables.
 
-1. (Subadditivity) \(H(X_1,\dots,X_n\mid Z)\le\sum_jH(X_j\mid Z)\).
+1. (Subadditivity) \(H(X_1,\dots,X_n\mid Z)\) is at most \(\sum_jH(X_j\mid Z)\).
 2. (Determined variables) If \(X=f(Y)\) almost surely, then \(H(X\mid Y)=0\) and \(H(X\mid W)\le H(Y\mid W)\) for every \(W\). If \(X\) is determined by \((Y,Z)\), then \(H(X)\le H(Y)+H(Z)\).
-3. (Cost of conditioning) \(H(X\mid Y)\ge H(X)-H(Y)\), and more generally \(H(X\mid Y,Z)\ge H(X\mid Z)-H(Y\mid Z)\).
+3. (Cost of conditioning) \(H(X\mid Y)\ge H(X)-H(Y)\), and more generally \(H(X\mid Y,Z)\) is at least \(H(X\mid Z)-H(Y\mid Z)\).
 4. (Equivalent conditions) If \(Y\) and \(Y'\) determine each other, then \(H(X\mid Y)=H(X\mid Y')\). If \(Y'\) is determined by \(Y\), then \(H(X\mid Y)\le H(X\mid Y')\).
 
-**Proof.** (1) Combine the chain rule with Proposition 2.3. (2) Given \(Y=y\), the variable \(X\) is constant. By the chain rule \(H(X\mid W)\le H(X,Y\mid W)=H(Y\mid W)+H(X\mid Y,W)=H(Y\mid W)\). If \(X\) is determined by \((Y,Z)\), then \(H(X)\le H(Y,Z)\le H(Y)+H(Z)\). (3) \(H(X\mid Z)\le H(X,Y\mid Z)=H(Y\mid Z)+H(X\mid Y,Z)\). (4) The events \(\{Y=y\}\) and \(\{Y'=y'\}\) coincide for corresponding values, so the conditional laws agree. If \(Y'=g(Y)\), then \(H(X\mid Y)=H(X\mid Y,Y')\le H(X\mid Y')\) by the first part and Proposition 2.3. \(\square\)
+**Proof.** (1) Combine the chain rule with Proposition 2.3. (2) Given \(Y=y\), the variable \(X\) is constant. By the chain rule \(H(X\mid W)\le H(X,Y\mid W)\), which is \(H(Y\mid W)+H(X\mid Y,W)=H(Y\mid W)\). If \(X\) is determined by \((Y,Z)\), then \(H(X)\le H(Y,Z)\le H(Y)+H(Z)\). (3) \(H(X\mid Z)\le H(X,Y\mid Z)\), which is \(H(Y\mid Z)+H(X\mid Y,Z)\). (4) The events \(\{Y=y\}\) and \(\{Y'=y'\}\) coincide for corresponding values, so the conditional laws agree. If \(Y'=g(Y)\), then \(H(X\mid Y)=H(X\mid Y,Y')\le H(X\mid Y')\) by the first part and Proposition 2.3. \(\square\)
 
 **Proposition 2.5** (independent blocks). If \(X_1,\dots,X_n\) are conditionally independent given \(Z\), then \(H(X_1,\dots,X_n\mid Z)=\sum_jH(X_j\mid Z)\).
 
@@ -93,9 +105,9 @@ I(X;Y\mid Z)=H(X\mid Z)-H(X\mid Y,Z).
 
 Without \(Z\) we write \(I(X;Y)=H(X)-H(X\mid Y)\).
 
-By Proposition 2.3 it is nonnegative. The chain rule gives the symmetric form \(I(X;Y\mid Z)=H(X\mid Z)+H(Y\mid Z)-H(X,Y\mid Z)\), so \(I(X;Y\mid Z)=I(Y;X\mid Z)\le\min\{H(X\mid Z),H(Y\mid Z)\}\).
+By Proposition 2.3 it is nonnegative. The chain rule gives the symmetric form: \(I(X;Y\mid Z)\) is \(H(X\mid Z)+H(Y\mid Z)\) minus \(H(X,Y\mid Z)\), so \(I(X;Y\mid Z)=I(Y;X\mid Z)\), which is at most \(\min\{H(X\mid Z),H(Y\mid Z)\}\).
 
-**Proposition 3.2** (chain rule for information). \(I(X;Y,W\mid Z)=I(X;Y\mid Z)+I(X;W\mid Y,Z)\).
+**Proposition 3.2** (chain rule for information). The information \(I(X;Y,W\mid Z)\) is the sum of \(I(X;Y\mid Z)\) and \(I(X;W\mid Y,Z)\).
 
 **Proof.** Both sides equal \(H(X\mid Z)-H(X\mid Y,W,Z)\): add and subtract \(H(X\mid Y,Z)\). \(\square\)
 
@@ -108,10 +120,13 @@ I(A;B\mid C,S)\le I(A;B\mid C)+H(S).
 **Proof.** Expand \(I(A;B,S\mid C)\) by Proposition 3.2 in the two possible orders:
 
 \[
-I(A;S\mid C)+I(A;B\mid C,S)=I(A;B\mid C)+I(A;S\mid B,C).
+\begin{aligned}
+&I(A;S\mid C)+I(A;B\mid C,S)\\
+&\quad =I(A;B\mid C)+I(A;S\mid B,C).
+\end{aligned}
 \]
 
-Hence \(I(A;B\mid C,S)\le I(A;B\mid C)+I(A;S\mid B,C)\), and \(I(A;S\mid B,C)\le H(S\mid B,C)\le H(S)\). \(\square\)
+Hence \(I(A;B\mid C,S)\) is at most \(I(A;B\mid C)+I(A;S\mid B,C)\), and \(I(A;S\mid B,C)\le H(S\mid B,C)\le H(S)\). \(\square\)
 
 **Lemma 3.4** (repeated observations). Let \(X,O,P\) be finite random variables, and let \(P_1,\dots,P_m\) be random variables that are conditionally independent given \((X,O)\), such that each triple \((X,O,P_a)\) has the same law as \((X,O,P)\). Then
 
@@ -122,8 +137,12 @@ I(X;P_1,\dots,P_m\mid O)\le m\,I(X;P\mid O).
 **Proof.** By Definition 3.1 in its symmetric form, Proposition 2.5 and subadditivity,
 
 \[
-I(X;P_1,\dots,P_m\mid O)=H(P_1,\dots,P_m\mid O)-\sum_{a=1}^mH(P_a\mid X,O)
-\le\sum_{a=1}^m\bigl(H(P_a\mid O)-H(P_a\mid X,O)\bigr).
+\begin{aligned}
+&I(X;P_1,\dots,P_m\mid O)\\
+&\quad =H(P_1,\dots,P_m\mid O)\\
+&\quad -\sum_{a=1}^mH(P_a\mid X,O)\\
+&\quad \le\sum_{a=1}^m\bigl(H(P_a\mid O)-H(P_a\mid X,O)\bigr).
+\end{aligned}
 \]
 
 Each summand equals \(I(X;P\mid O)\), because it depends only on the law of \((X,O,P_a)\). \(\square\)
@@ -133,7 +152,10 @@ Each summand equals \(I(X;P\mid O)\), because it depends only on the law of \((X
 The **binary entropy** is
 
 \[
-h(u)=-u\log u-(1-u)\log(1-u)\qquad(0\le u\le1),
+\begin{gathered}
+h(u)=-u\log u-(1-u)\log(1-u)\\
+(0\le u\le1),
+\end{gathered}
 \]
 
 the entropy of a variable taking two values with probabilities \(u\) and \(1-u\). It is continuous, symmetric about \(\tfrac12\), and concave, since \(h''(u)=-1/(u(1-u))<0\) on \((0,1)\). It increases on \([0,\tfrac12]\), where \(h'(u)=\log((1-u)/u)\ge0\). Moreover
@@ -164,7 +186,10 @@ D(p\Vert q)=\sum_xp(x)\log\frac{p(x)}{q(x)},
 with the value \(+\infty\) if \(q(x)=0<p(x)\) for some \(x\). The **total variation distance** is
 
 \[
-\operatorname{TV}(p,q)=\frac12\sum_x|p(x)-q(x)|=\max_A\bigl(p(A)-q(A)\bigr),
+\begin{aligned}
+&\operatorname{TV}(p,q)=\frac12\sum_x|p(x)-q(x)|\\
+&\quad =\max_A\bigl(p(A)-q(A)\bigr),
+\end{aligned}
 \]
 
 the maximum being attained at \(A=\{x:p(x)>q(x)\}\).
@@ -176,7 +201,7 @@ D(p\Vert u)=\log a-H(p).
 \tag{5.1}
 \]
 
-If \(f\) is a map, the image laws satisfy \(\operatorname{TV}(f_*p,f_*q)\le\operatorname{TV}(p,q)\), because \(f_*p(A)-f_*q(A)=p(f^{-1}A)-q(f^{-1}A)\). For mixtures with the same weights, the triangle inequality gives \(\operatorname{TV}\bigl(\sum_j\lambda_jp_j,\sum_j\lambda_jq_j\bigr)\le\sum_j\lambda_j\operatorname{TV}(p_j,q_j)\).
+If \(f\) is a map, the image laws satisfy \(\operatorname{TV}(f_*p,f_*q)\le\operatorname{TV}(p,q)\), because \(f_*p(A)-f_*q(A)=p(f^{-1}A)-q(f^{-1}A)\). For mixtures with the same weights, the triangle inequality shows that \(\operatorname{TV}\bigl(\sum_j\lambda_jp_j,\sum_j\lambda_jq_j\bigr)\) is at most \(\sum_j\lambda_j\operatorname{TV}(p_j,q_j)\).
 
 **Lemma 5.2** (log-sum inequality). For nonnegative numbers \(a_1,\dots,a_n\) and \(b_1,\dots,b_n\) with \(b_j>0\) wherever \(a_j>0\), and \(a=\sum a_j\), \(b=\sum b_j>0\),
 
@@ -195,13 +220,19 @@ D(p\Vert q)\ge2\operatorname{TV}(p,q)^2.
 **Proof.** We may assume \(D(p\Vert q)<\infty\). Let \(A=\{x:p(x)>q(x)\}\), \(u=p(A)\) and \(v=q(A)\), so that \(\operatorname{TV}(p,q)=u-v\). Lemma 5.2, applied separately to the terms with \(x\in A\) and with \(x\notin A\), gives
 
 \[
-D(p\Vert q)\ge u\log\frac uv+(1-u)\log\frac{1-u}{1-v}=:d(u,v).
+\begin{aligned}
+&D(p\Vert q)\ge u\log\frac uv\\
+&\quad +(1-u)\log\frac{1-u}{1-v}=:d(u,v).
+\end{aligned}
 \]
 
 If \(v\in\{0,1\}\), finiteness forces \(u=v\) and there is nothing to prove. For fixed \(v\in(0,1)\), put \(\varphi(u)=d(u,v)-2(u-v)^2\) on \([0,1]\). Then \(\varphi(v)=0\), \(\varphi'(u)=\log\frac uv-\log\frac{1-u}{1-v}-4(u-v)\) vanishes at \(u=v\), and
 
 \[
-\varphi''(u)=\frac1{u(1-u)}-4\ge0\qquad(0<u<1).
+\begin{gathered}
+\varphi''(u)=\frac1{u(1-u)}-4\ge0\\
+(0<u<1).
+\end{gathered}
 \]
 
 So \(\varphi\) is convex on \((0,1)\) with a critical point at \(v\), hence \(\varphi\ge0\) there, and by continuity on \([0,1]\). \(\square\)
@@ -221,7 +252,10 @@ So \(\varphi\) is convex on \((0,1)\) with a critical point at \(v\), hence \(\v
 **Proof.** Let \(\varepsilon'=\operatorname{TV}(p,q)\), take the coupling of Lemma 5.4, and let \(\beta\) indicate the event \(U\ne\widetilde U\). By the chain rule,
 
 \[
-H(U)\le H(U,\widetilde U)=H(\widetilde U)+H(U\mid\widetilde U)\le H(\widetilde U)+H(\beta)+H(U\mid\widetilde U,\beta).
+\begin{aligned}
+H(U)&\le H(U,\widetilde U)=H(\widetilde U)+H(U\mid\widetilde U)\\
+&\le H(\widetilde U)+H(\beta)+H(U\mid\widetilde U,\beta).
+\end{aligned}
 \]
 
 Given \(\beta=0\), \(U\) is determined by \(\widetilde U\); given \(\beta=1\), its conditional entropy is at most \(\log a\). So \(H(U\mid\widetilde U,\beta)\le\varepsilon'\log a\), and \(H(\beta)=h(\varepsilon')\le h(\varepsilon)\), since \(h\) increases on \([0,\frac12]\). Exchange the roles of \(p\) and \(q\). \(\square\)
@@ -229,7 +263,10 @@ Given \(\beta=0\), \(U\) is determined by \(\widetilde U\); given \(\beta=1\), i
 **Corollary 5.6** (continuity of conditional entropy). Let \((X,Y)\) and \((\widetilde X,\widetilde Y)\) be pairs whose joint laws, on a product set with at most \(a\) elements, have total variation at most \(\varepsilon\le\frac12\). Then
 
 \[
-|H(X\mid Y)-H(\widetilde X\mid\widetilde Y)|\le2h(\varepsilon)+2\varepsilon\log a.
+\begin{aligned}
+&|H(X\mid Y)-H(\widetilde X\mid\widetilde Y)|\\
+&\quad \le2h(\varepsilon)+2\varepsilon\log a.
+\end{aligned}
 \]
 
 **Proof.** Write \(H(X\mid Y)=H(X,Y)-H(Y)\). The laws of \(Y\) and \(\widetilde Y\) are images of the joint laws, so their total variation is at most \(\varepsilon\); they live on a set with at most \(a\) elements. Apply Lemma 5.5 twice. \(\square\)
@@ -253,7 +290,11 @@ Then
 **Proof.** Let \(\beta\) indicate the event in the definition of \(\rho\). It is a function of \((X,Y)\), so
 
 \[
-H(X\mid Y)\le H(X,\beta\mid Y)=H(\beta\mid Y)+H(X\mid\beta,Y)\le h(\rho)+\rho\log b+(1-\rho)\log a.
+\begin{aligned}
+&H(X\mid Y)\le H(X,\beta\mid Y)\\
+&\quad =H(\beta\mid Y)+H(X\mid\beta,Y)\\
+&\quad \le h(\rho)+\rho\log b+(1-\rho)\log a.
+\end{aligned}
 \]
 
 Indeed \(H(\beta\mid Y)\le H(\beta)=h(\rho)\). On the event \(\beta=1\), with \(Y\) known, \(X\) lies in the set \(\mathcal L(Y)\) with at most \(b\) elements, so the part of \(H(X\mid\beta,Y)\) coming from \(\beta=1\) is at most \(\rho\log b\); the part from \(\beta=0\) is at most \((1-\rho)\log a\). Rearrange. \(\square\)
@@ -275,7 +316,10 @@ where each \(\Phi(c)\) is computed in the original experiment. This is an averag
 Let \(Y\) be a finite random variable, let \(\mathcal I\) be a finite index set, and for each \(c\in\mathcal I\) let \(\psi_c\) be a function on the values of \(Y\), with values in a set \(G_c\) of \(a_c\) elements. Let \(c_1,\dots,c_N\) be auxiliary random indices in \(\mathcal I\), independent of \(Y\), and put
 
 \[
-f(s)=\mathbb E\,H\bigl(\psi_{c_1}(Y),\dots,\psi_{c_s}(Y)\bigr)\qquad(0\le s\le N),
+\begin{gathered}
+f(s)=\mathbb E\,H\bigl(\psi_{c_1}(Y),\dots,\psi_{c_s}(Y)\bigr)\\
+(0\le s\le N),
+\end{gathered}
 \]
 
 in the sense of Convention 7.1, with \(f(0)=0\). The sequence of indices is **exchangeable** if the law of \((c_{\sigma(1)},\dots,c_{\sigma(N)})\) is the same for every permutation \(\sigma\) of \(\{1,\dots,N\}\).
@@ -283,19 +327,29 @@ in the sense of Convention 7.1, with \(f(0)=0\). The sequence of indices is **ex
 **Proposition 7.2** (concavity in the number of coordinates). If the index sequence is exchangeable, then
 
 \[
-f(s+1)-f(s)=\mathbb E\,H\bigl(\psi_{c_{s+1}}(Y)\mid\psi_{c_1}(Y),\dots,\psi_{c_s}(Y)\bigr),
+\begin{aligned}
+&f(s+1)-f(s)\\
+&\quad=\mathbb E\,H\bigl(\psi_{c_{s+1}}(Y)\mid\\
+&\qquad\psi_{c_1}(Y),\dots,\psi_{c_s}(Y)\bigr),
+\end{aligned}
 \]
 
 and these increments do not increase with \(s\). Consequently, for \(1\le s\le N\),
 
 \[
-f(s+1)-f(s)\le\frac{f(s)}s\quad(s<N),\qquad f(1)\ge\frac{f(s)}s.
+\begin{gathered}
+f(s+1)-f(s)\le\frac{f(s)}s\quad(s<N),\\
+f(1)\ge\frac{f(s)}s.
+\end{gathered}
 \]
 
 **Proof.** The formula for the increment is the chain rule, applied for fixed indices and then averaged. Write \(\Psi_s\) for the tuple \((\psi_{c_1}(Y),\dots,\psi_{c_s}(Y))\). For fixed indices, Proposition 2.3 gives
 
 \[
-H\bigl(\psi_{c_{s+2}}(Y)\mid\Psi_{s+1}\bigr)\le H\bigl(\psi_{c_{s+2}}(Y)\mid\Psi_s\bigr).
+\begin{aligned}
+&H\bigl(\psi_{c_{s+2}}(Y)\mid\Psi_{s+1}\bigr)\\
+&\quad \le H\bigl(\psi_{c_{s+2}}(Y)\mid\Psi_s\bigr).
+\end{aligned}
 \]
 
 By exchangeability, \((c_1,\dots,c_s,c_{s+2})\) has the same law as \((c_1,\dots,c_s,c_{s+1})\), so the average of the right side is \(f(s+1)-f(s)\); the average of the left side is \(f(s+2)-f(s+1)\). For the consequences, \(f(s)\) is the sum of the first \(s\) increments, each at least \(f(s+1)-f(s)\) and at most \(f(1)\). \(\square\)
@@ -305,13 +359,19 @@ For uniformly chosen subsets of coordinates this is a form of Han's inequality; 
 **Proposition 7.3** (one shared conditioning cost). Suppose that each index \(c_j\) is uniformly distributed on \(\mathcal I\), and put \(\overline L=\frac1{|\mathcal I|}\sum_{c\in\mathcal I}\log a_c\). Let \(1\le s\le N\), and let \(\mathcal H\) be a finite random variable, defined on the same space as \(Y\) and independent of the indices. If
 
 \[
-f(s)\ge(1-\varepsilon)\,s\,\overline L\qquad\text{and}\qquad H(\mathcal H)\le\kappa\,s\,\overline L,
+\begin{gathered}
+f(s)\ge(1-\varepsilon)\,s\,\overline L\\
+\text{and}\qquad H(\mathcal H)\le\kappa\,s\,\overline L,
+\end{gathered}
 \]
 
 then
 
 \[
-\frac1{|\mathcal I|}\sum_{c\in\mathcal I}\bigl[\log a_c-H(\psi_c(Y)\mid\mathcal H)\bigr]\le(\varepsilon+\kappa)\,\overline L.
+\begin{aligned}
+&\frac1{|\mathcal I|}\sum_{c\in\mathcal I}\bigl[\log a_c-H(\psi_c(Y)\mid\mathcal H)\bigr]\\
+&\quad \le(\varepsilon+\kappa)\,\overline L.
+\end{aligned}
 \]
 
 No independence between \(Y\) and \(\mathcal H\) is assumed.
@@ -319,7 +379,10 @@ No independence between \(Y\) and \(\mathcal H\) is assumed.
 **Proof.** For fixed indices, Corollary 2.4(3) and subadditivity give
 
 \[
-H(\Psi_s)-H(\mathcal H)\le H(\Psi_s\mid\mathcal H)\le\sum_{j=1}^sH\bigl(\psi_{c_j}(Y)\mid\mathcal H\bigr).
+\begin{aligned}
+&H(\Psi_s)-H(\mathcal H)\le H(\Psi_s\mid\mathcal H)\\
+&\quad \le\sum_{j=1}^sH\bigl(\psi_{c_j}(Y)\mid\mathcal H\bigr).
+\end{aligned}
 \]
 
 Average over the indices. Since each \(c_j\) is uniform on \(\mathcal I\), the right side averages to \(s\) times the mean of \(H(\psi_c(Y)\mid\mathcal H)\) over \(c\in\mathcal I\). The left side averages to at least \((1-\varepsilon-\kappa)s\overline L\). Divide by \(s\) and subtract from \(\overline L\), the mean of \(\log a_c\). \(\square\)
@@ -346,25 +409,30 @@ The point of Proposition 7.3 is the single payment \(H(\mathcal H)\). If separat
 
 ## 9. Solutions
 
-**8.1.** \(h(\frac14)=\frac14\log4+\frac34\log\frac43=\log4-\frac34\log3\approx0.562\). The uniform law on \(a\) values has entropy \(\log a\). The function \(h\) is concave with \(h(0)=0\) and \(h(\frac12)=\log2\), so on \([0,\frac12]\) it lies above the chord \(u\mapsto2u\log2\).
+**8.1.** \(h(\frac14)=\frac14\log4+\frac34\log\frac43\), which is \(\log4-\frac34\log3\approx0.562\). The uniform law on \(a\) values has entropy \(\log a\). The function \(h\) is concave with \(h(0)=0\) and \(h(\frac12)=\log2\), so on \([0,\frac12]\) it lies above the chord \(u\mapsto2u\log2\).
 
 **8.2.** \(H(X\mid Y)=0\) exactly when each conditional law \(\mathbb P(X=\cdot\mid Y=y)\) of positive weight is a point mass, that is, when \(X=g(Y)\) almost surely for the function \(g\) assigning to \(y\) that point.
 
 **8.3.** Both sides equal \(\sum_{x,y}p(x,y)\log\bigl(p(x,y)/(p(x)p(y))\bigr)\), as in the proof of Proposition 2.3.
 
-**8.4.** Let \(Y\) be a fair coin, and let \(X=0\) if \(Y=0\), while \(X\) is a fair coin if \(Y=1\). Then \(\mathbb P(X=0)=\frac34\), so \(H(X)=h(\frac14)\approx0.562<\log2=H(X\mid Y=1)\). Proposition 2.3 concerns the average \(H(X\mid Y)=\frac12\log2\approx0.347\), which is smaller than \(H(X)\).
+**8.4.** Let \(Y\) be a fair coin, and let \(X=0\) if \(Y=0\), while \(X\) is a fair coin if \(Y=1\). Then \(\mathbb P(X=0)=\frac34\), so \(H(X)=h(\frac14)\approx0.562\), which is less than \(\log2=H(X\mid Y=1)\). Proposition 2.3 concerns the average \(H(X\mid Y)=\frac12\log2\approx0.347\), which is smaller than \(H(X)\).
 
-**8.5.** Take \(\mathcal L(y)=\{g(y)\}\) and \(b=1\). Then \(\rho=1-\varepsilon\), and Lemma 6.1 gives \(H(X\mid Y)\le\log a-(1-\varepsilon)\log a+h(1-\varepsilon)=\varepsilon\log a+h(\varepsilon)\).
+**8.5.** Take \(\mathcal L(y)=\{g(y)\}\) and \(b=1\). Then \(\rho=1-\varepsilon\), and Lemma 6.1 shows that \(H(X\mid Y)\) is at most \(\log a-(1-\varepsilon)\log a+h(1-\varepsilon)\), which is \(\varepsilon\log a+h(\varepsilon)\).
 
 **8.6.** Any one coordinate is uniform on \(\mathbf F_p\), and any two determine \(y\) and are jointly uniform on \(\mathbf F_p^2\); all three together still determine only \(y\). So \(f(0)=0\), \(f(1)=\log p\), \(f(2)=f(3)=2\log p\). The increments \(\log p,\log p,0\) do not increase.
 
 **8.7.** With \(u=\frac12+t\),
 
 \[
-d(u,\tfrac12)=\log2-h(u)=u\log(2u)+(1-u)\log(2(1-u))=\tfrac12\bigl[(1+2t)\log(1+2t)+(1-2t)\log(1-2t)\bigr].
+\begin{aligned}
+&d(u,\tfrac12)=\log2-h(u)\\
+&\quad=u\log(2u)+(1-u)\log(2(1-u))\\
+&\quad=\tfrac12\bigl[(1+2t)\log(1+2t)\\
+&\qquad+(1-2t)\log(1-2t)\bigr].
+\end{aligned}
 \]
 
-Since \((1+x)\log(1+x)+(1-x)\log(1-x)=x^2+O(x^4)\), this is \(2t^2+O(t^4)\), while \(\operatorname{TV}=t\). So no constant larger than \(2\) works for small \(t\).
+Since the sum of \((1+x)\log(1+x)\) and \((1-x)\log(1-x)\) is \(x^2+O(x^4)\), this is \(2t^2+O(t^4)\), while \(\operatorname{TV}=t\). So no constant larger than \(2\) works for small \(t\).
 
 ## References
 

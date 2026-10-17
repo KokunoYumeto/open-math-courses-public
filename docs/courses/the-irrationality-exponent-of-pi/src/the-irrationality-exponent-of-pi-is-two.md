@@ -11,21 +11,31 @@ We use Proposition 5.1 of the determinant lesson, Theorem 1.1 of [Interpolation 
 **Lemma 1.1.** For every real \(\nu>2\) there are positive rationals \(\theta,A,B,C\) with
 
 \[
-0<\theta<A<B<1,\qquad\nu(A-\theta)>1-\theta,\qquad C>1,\qquad B<1/C,\qquad B<C\theta<1,
-\tag{1.1}
+\begin{gathered}
+0<\theta<A<B<1,\\
+\nu(A-\theta)>1-\theta,\\
+C>1,\qquad B<1/C,\\
+B<C\theta<1,
+\end{gathered}\tag{1.1}
 \]
 
 and then a rational \(0<\eta<1\) with
 
 \[
-g=\nu\bigl(A(1-\eta)-\theta\bigr)-(1-\theta)>0 .
-\tag{1.2}
+\begin{aligned}
+g&=\nu\bigl(A(1-\eta)-\theta\bigr)\\
+&\quad -(1-\theta)>0 .
+\end{aligned}\tag{1.2}
 \]
 
 **Proof.** Choose a rational \(b\) with \(1/2<b<1-1/\nu\), possible since \(\nu>2\). For a small rational \(\delta>0\) put \(\theta=1-\delta\) and \(A=1-b\delta\). Then \(0<\theta<A<1\), and
 
 \[
-\nu(A-\theta)-(1-\theta)=\bigl(\nu(1-b)-1\bigr)\delta>0,\qquad\theta-A^2=(2b-1)\delta-b^2\delta^2>0
+\begin{aligned}
+&\nu(A-\theta)-(1-\theta)\\
+&\quad =\bigl(\nu(1-b)-1\bigr)\delta>0,\\
+&\theta-A^2=(2b-1)\delta-b^2\delta^2>0
+\end{aligned}
 \]
 
 for \(\delta\) small. So \(A/\theta<1/A\); choose a rational \(C\) strictly between them. Then \(C>A/\theta>1\), and \(C\theta<\theta/A<1\). Since \(A<1/C\) and \(A<C\theta\), we can choose a rational \(B\) with \(A<B<\min(1/C,C\theta)\). Finally (1.2) holds at \(\eta=0\) by the first inequality, hence for small rational \(\eta>0\). \(\square\)
@@ -48,41 +58,59 @@ Fix \(\theta,A,B,C,\eta,g\) by Lemma 1.1 and put \(\varepsilon_0=\min(g/2,1/2)\)
 *The dimension.* For an integer \(m\ge1\) put
 
 \[
-K=\lfloor C^m\rfloor,\qquad w_0=B^{-m},\qquad v_0=2K\theta^mw_0 .
+\begin{gathered}
+K=\lfloor C^m\rfloor,\qquad w_0=B^{-m},\\
+v_0=2K\theta^mw_0 .
+\end{gathered}
 \]
 
 These are positive rationals (and \(K\ge1\) is an integer), and they satisfy the hypotheses of the interpolation theorem:
 
 \[
-K\theta^m\le(C\theta)^m<1,\qquad K\frac{w_0}{v_0}\theta^m=\frac12<1 .
+\begin{gathered}
+K\theta^m\le(C\theta)^m<1,\\
+K\frac{w_0}{v_0}\theta^m=\frac12<1 .
+\end{gathered}
 \]
 
 As \(m\to\infty\),
 
 \[
-\frac K{w_0}\le(CB)^m\to0,\qquad v_0\ge2(C^m-1)\theta^mB^{-m}\sim2\Bigl(\frac{C\theta}B\Bigr)^m\to\infty,\qquad\frac m{v_0}\to0,
+\begin{aligned}
+&\frac K{w_0}\le(CB)^m\to0,\\
+&v_0\ge2(C^m-1)\theta^mB^{-m}\\
+&\quad \sim2\Bigl(\frac{C\theta}B\Bigr)^m\to\infty,\\
+&\frac m{v_0}\to0,
+\end{aligned}
 \]
 
 and the quantity \(\mathcal L\) of the determinant lesson, with these data, is
 
 \[
-\mathcal L=\frac{\eta^2K\theta^m}{(m+1)v_0A^m}=\frac{\eta^2}{2(m+1)}\Bigl(\frac BA\Bigr)^m\to\infty .
+\begin{aligned}
+\mathcal L&=\frac{\eta^2K\theta^m}{(m+1)v_0A^m}\\
+&=\frac{\eta^2}{2(m+1)}\Bigl(\frac BA\Bigr)^m\to\infty .
+\end{aligned}
 \]
 
 Fix \(m\) so large that
 
 \[
-\frac{\Lambda F_0m+2\log2}{v_0}+\frac{100K}{w_0}<\frac{\varepsilon_0}3,\qquad c\mathcal L>2,
-\tag{2.2}
+\begin{aligned}
+&\frac{\Lambda F_0m+2\log2}{v_0}\\
+&\quad +\frac{100K}{w_0}<\frac{\varepsilon_0}3,\\
+&c\mathcal L>2,
+\end{aligned}\tag{2.2}
 \]
 
 and fix the resulting \(K,w_0,v_0\).
 
-*The approximations.* Now choose solutions \(p_1/q_1,\dots,p_m/q_m\) of (2.1), one after the other, with \(q_i\) so large that \(w_i=\lceil\log q_i\rceil\) exceeds the threshold of the interpolation theorem (which depends only on the fixed data and on \(w_1,\dots,w_{i-1}\)), and also so large that
-
+*The approximations.* Now choose solutions \(p_1/q_1,\dots,p_m/q_m\) of (2.1), one after the other, with \(q_i\) so large that \(w_i=\lceil\log q_i\rceil\) exceeds the threshold of the interpolation theorem (which depends only on the fixed data and on \(w_1,\dots,w_{i-1}\)), and also so large that, with \(w_*=\min_iw_i\), the inequality (2.3) holds:
 \[
-\Lambda\sum_{i=1}^m\frac1{w_i}+\frac{\theta+\log4+\log(2K)+\nu+\log(200K)}{w_*}<\frac{\varepsilon_0}3,\qquad w_*=\min_iw_i;
-\tag{2.3}
+\begin{aligned}
+&\Lambda\sum_{i=1}^m\frac1{w_i}+\frac1{w_*}\bigl(\theta+\log4+\log(2K)\\
+&\qquad+\nu+\log(200K)\bigr)<\frac{\varepsilon_0}3;
+\end{aligned}
 \]
 
 for this it suffices that every \(w_i\) exceeds a bound depending only on \(m,K,\theta,\nu,\varepsilon_0\), since \(\sum_i1/w_i\le m/w_*\). This is possible because (2.1) has solutions with arbitrarily large \(q\). For large \(q_i\) also \(p_i\ne0\), since \(p_i/q_i\) is close to \(\pi\).
@@ -90,7 +118,12 @@ for this it suffices that every \(w_i\) exceeds a bound depending only on \(m,K,
 *The contradiction.* The errors of the determinant lesson add up to
 
 \[
-E_{\mathrm{ar}}+E_{\mathrm{an}}=\frac\nu{F_0}+\frac{\Lambda F_0m+2\log2}{v_0}+\frac{100K}{w_0}+\Lambda\sum_i\frac1{w_i}+\frac{\theta+\log4+\log(2K)+\nu+\log(200K)}{w_*}<\varepsilon_0,
+\begin{aligned}
+&E_{\mathrm{ar}}+E_{\mathrm{an}}=\frac\nu{F_0}+\frac{\Lambda F_0m+2\log2}{v_0}\\
+&\quad+\frac{100K}{w_0}+\Lambda\sum_i\frac1{w_i}\\
+&\quad+\frac1{w_*}\bigl(\theta+\log4+\log(2K)\\
+&\qquad+\nu+\log(200K)\bigr)<\varepsilon_0,
+\end{aligned}
 \]
 
 by the choice of \(F_0\), (2.2) and (2.3). Hence \(E_{\mathrm{ar}}+E_{\mathrm{an}}<g\), and \(c\mathcal L>2>1+E_{\mathrm{ar}}+E_{\mathrm{an}}\), while \(g>0\). All the hypotheses of the determinant lesson hold, and its Proposition 5.1 says that this is impossible. So (2.1) has solutions only with bounded \(q\), which is the first claim.
@@ -122,14 +155,19 @@ The proof gives no value of \(Q(\nu)\): the approximations \(p_i/q_i\) are assum
 *Convergence for \(a>\max\{1,b\}\).* Choose \(\epsilon>0\) with \(a>\max\{1,b\}+b\epsilon\). Theorem 2.1 with \(\nu=2+\epsilon\) gives \(|q\pi-p|>q^{-1-\epsilon}\) for \(q\ge Q\); for the finitely many \(q<Q\), \(\|q\pi\|>0\) by irrationality. So there is \(c_\epsilon>0\) with \(\|q\pi\|\ge c_\epsilon q^{-1-\epsilon}\) for all \(q\ge1\). Lemma 3.1 with \(\kappa=2+\epsilon\) and \(d=c_\epsilon(2K)^{-1-\epsilon}\) gives
 
 \[
-\sum_{K\le q<2K}\frac1{q^a\|q\pi\|^b}\le\frac{2}{K^ad^b}\sum_{j=1}^Kj^{-b}\ll_{a,b,\epsilon}
-\begin{cases}K^{1-a+b\epsilon},&0<b<1,\\K^{1-a+\epsilon}\log(2K),&b=1,\\K^{b-a+b\epsilon},&b>1.\end{cases}
+\begin{aligned}
+&\sum_{K\le q<2K}\frac1{q^a\|q\pi\|^b}\le\frac{2}{K^ad^b}\sum_{j=1}^Kj^{-b}\\
+&\quad\ll_{a,b,\epsilon}\begin{cases}K^{1-a+b\epsilon},&0<b<1,\\K^{1-a+\epsilon}\log(2K),&b=1,\\K^{b-a+b\epsilon},&b>1.\end{cases}
+\end{aligned}
 \]
 
 Every exponent is negative, so summing over \(K=1,2,4,\dots\) shows \(\sum_{q\ge1}q^{-a}\|q\pi\|^{-b}<\infty\). For a positive integer \(n\), let \(q\) be a nearest integer to \(n/\pi\), so \(|n-q\pi|\le\pi/2\). Only \(n=1\) has \(q=0\). For \(q\ge1\), the \(n\) with this \(q\) lie in an interval of length \(\pi<4\), so there are at most four, each with \(n\ge\pi(q-\frac12)\ge\pi q/2\) and, by concavity of \(\sin\) on \([0,\pi/2]\),
 
 \[
-|\sin n|=|\sin(n-q\pi)|\ge\frac2\pi|n-q\pi|\ge\frac2\pi\|q\pi\| .
+\begin{aligned}
+&|\sin n|=|\sin(n-q\pi)|\\
+&\quad \ge\frac2\pi|n-q\pi|\ge\frac2\pi\|q\pi\| .
+\end{aligned}
 \]
 
 So the terms with a given \(q\ge1\) add up to at most \(4(2/\pi)^a(\pi/2)^bq^{-a}\|q\pi\|^{-b}\), and the series converges.
@@ -137,7 +175,10 @@ So the terms with a given \(q\ge1\) add up to at most \(4(2/\pi)^a(\pi/2)^bq^{-a
 *Divergence otherwise.* If \(a\le1\), the series dominates \(\sum n^{-a}=\infty\). Let \(1<a\le b\). By Dirichlet's theorem there are infinitely many fractions \(p/q\) with \(q\ge1\) and \(|\pi-p/q|<1/q^2\); for them \(p\to\infty\), \(p\le(\pi+1)q\) eventually, and \(|\sin p|=|\sin(p-q\pi)|\le|p-q\pi|<1/q\). Hence
 
 \[
-\frac1{p^a|\sin p|^b}>p^{-a}q^b\ge(\pi+1)^{-b}p^{b-a}\ge(\pi+1)^{-b}
+\begin{aligned}
+&\frac1{p^a|\sin p|^b}>p^{-a}q^b\\
+&\quad \ge(\pi+1)^{-b}p^{b-a}\ge(\pi+1)^{-b}
+\end{aligned}
 \]
 
 for infinitely many \(p\), and the terms do not tend to zero. \(\square\)
@@ -156,7 +197,7 @@ The classical case \(a=3\), \(b=2\) needs only \(\mu(\pi)<5/2\) [Alekseyev, Meib
 
 ## 5. Solutions
 
-**4.1.** Take \(b=3/5\), which lies between \(1/2\) and \(1-1/3\), and \(\delta=1/10\): \(\theta=9/10\), \(A=47/50\). Then \(\nu(A-\theta)-(1-\theta)=3\cdot\frac1{25}-\frac1{10}=\frac1{50}>0\) and \(\theta-A^2=0.9-0.8836>0\), so \(A/\theta\approx1.0444<1/A\approx1.0638\). Take \(C=21/20\); then \(C\theta=0.945\) and \(1/C\approx0.9524\), and \(B=377/400=0.9425\) satisfies \(A<B<\min(1/C,C\theta)\). The three ratios are \(CB=0.989625<1\), \(C\theta/B\approx1.00265>1\) and \(B/A\approx1.00266>1\). For (1.2) take \(\eta=1/200\): \(A(1-\eta)=0.9353\) and \(g=3\cdot0.0353-0.1=0.0059>0\) (the larger value \(\eta=1/100\) gives \(g<0\)). So \(K/w_0\le(0.989625)^m\to0\), \(v_0\sim2(1.00265)^m\to\infty\), and \(\mathcal L\sim\eta^2(1.00266)^m/(2(m+1))\to\infty\), all slowly: with \(\eta=1/200\) and \(c=(\log2)/4\), the condition \(c\mathcal L>2\) first holds at \(m=8582\).
+**4.1.** Take \(b=3/5\), which lies between \(1/2\) and \(1-1/3\), and \(\delta=1/10\): \(\theta=9/10\), \(A=47/50\). Then \(\nu(A-\theta)-(1-\theta)=3\cdot\frac1{25}-\frac1{10}\), which is \(\frac1{50}>0\), and \(\theta-A^2=0.9-0.8836>0\), so \(A/\theta\approx1.0444<1/A\approx1.0638\). Take \(C=21/20\); then \(C\theta=0.945\) and \(1/C\approx0.9524\), and \(B=377/400=0.9425\) satisfies \(A<B<\min(1/C,C\theta)\). The three ratios are \(CB=0.989625<1\), \(C\theta/B\approx1.00265>1\) and \(B/A\approx1.00266>1\). For (1.2) take \(\eta=1/200\): \(A(1-\eta)=0.9353\) and \(g=3\cdot0.0353-0.1=0.0059>0\) (the larger value \(\eta=1/100\) gives \(g<0\)). So \(K/w_0\le(0.989625)^m\to0\), \(v_0\sim2(1.00265)^m\to\infty\), and \(\mathcal L\sim\eta^2(1.00266)^m/(2(m+1))\to\infty\), all slowly: with \(\eta=1/200\) and \(c=(\log2)/4\), the condition \(c\mathcal L>2\) first holds at \(m=8582\).
 
 **4.2.** For \(q\ge Q(2+\epsilon)\), \(\|q\pi\|=\min_p|q\pi-p|\ge q^{-1-\epsilon}\); the finitely many smaller \(q\) have \(\|q\pi\|>0\). By Dirichlet's theorem \(\|q\pi\|<1/q\) infinitely often, so \(-1\) cannot be replaced by a larger exponent.
 

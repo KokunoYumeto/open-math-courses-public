@@ -14,14 +14,25 @@ We use: from [Supports, radial contact and the Mazur–Ulam theorem](supports-ra
 
 A *chord configuration* consists of real Banach spaces \(X,Y\), a surjective isometry \(f:S_X\to S_Y\) with defect bound
 \[
-|D_q(a,c)|\le M\qquad(a,c\in S_X,\ 0\le q\le1)\tag{1.1}
+\begin{gathered}
+|D_q(a,c)|\le M\\
+(a,c\in S_X,\ 0\le q\le1)
+\end{gathered}\tag{1.1}
 \]
 for a number \(M>0\), a number \(0<t<1\), a point \(y\in S_X\) with \(b=f(y)\), directions \(v\in S_X\), \(w\in S_Y\), and positive numbers \(p,r,s,u\) such that
 \[
-x=ty+pv\in S_X,\quad z=ty-rv\in S_X,\quad f(x)=tb+sw,\quad f(z)=tb-uw,\tag{1.2}
+\begin{aligned}
+x&=ty+pv\in S_X,\quad z\\
+&=ty-rv\in S_X,\quad f(x)\\
+&=tb+sw,\quad f(z)\\
+&=tb-uw,
+\end{aligned}\tag{1.2}
 \]
 \[
-s-p=r-u=M,\qquad d:=p+r=s+u\le2.\tag{1.3}
+\begin{gathered}
+s-p=r-u=M,\\
+d:=p+r=s+u\le2.
+\end{gathered}\tag{1.3}
 \]
 Proposition 5.1 of the lesson on aligned chords produces one from an attained defect. Put
 \[
@@ -37,22 +48,37 @@ Then \(A,B>0\) and \(A+B=\frac{p+u}d=1-\frac Md<1\); in particular \(A,B<1\). Mo
 
 **Lemma 2.1.** In a chord configuration put
 \[
-h=\min\Bigl\{\frac ts,\frac\epsilon u\Bigr\},\qquad\theta=\frac{hs}p,\qquad K=\frac{\|\frac ruv+hy\|-\|\frac psv+hy\|}{\frac ru-\frac ps}.
+\begin{gathered}
+h=\min\Bigl\{\frac ts,\frac\epsilon u\Bigr\},\qquad \theta=\frac{hs}p,\\
+K=\frac{\|\frac ruv+hy\|-\|\frac psv+hy\|}{\frac ru-\frac ps}.
+\end{gathered}
 \]
 Then \(v+\theta y\neq0\), and every support \(\varphi\) at \(v+\theta y\) satisfies
 \[
-\frac\epsilon p\le\varphi(v)\le K,\qquad\text{where }K\le1-B\text{ if }B\le\epsilon,\quad K\le B\text{ if }B>\epsilon.\tag{2.1}
+\begin{aligned}
+&\frac\epsilon p\le\varphi(v)\le K,\\
+&\text{where }K\le1-B\text{ if }B\\
+&\quad \le\epsilon,\quad K\le B\text{ if }B>\epsilon.
+\end{aligned}\tag{2.1}
 \]
 
 **Proof.** *The bound on \(K\).* The radius \(t-sh\) lies in \([0,t]\) because \(h\le t/s\), and
 \[
-\Delta_x:=D_{t-sh}(x,y)=\|sw+shb\|-\|pv+shy\|=s\Bigl(\|w+hb\|-\Bigl\|\tfrac psv+hy\Bigr\|\Bigr).
+\begin{aligned}
+&\Delta_x:=D_{t-sh}(x,y)\\
+&\quad =\|sw+shb\|-\|pv+shy\|\\
+&\quad =s\Bigl(\|w+hb\|-\Bigl\|\tfrac psv+hy\Bigr\|\Bigr).
+\end{aligned}
 \]
 The radius \(t+uh\) lies in \([t,1]\) because \(h\le\epsilon/u\), and
 \[
-\Delta_z:=-D_{t+uh}(z,y)=\|rv+uhy\|-\|uw+uhb\|=u\Bigl(\Bigl\|\tfrac ruv+hy\Bigr\|-\|w+hb\|\Bigr).
+\begin{aligned}
+&\Delta_z:=-D_{t+uh}(z,y)\\
+&\quad =\|rv+uhy\|-\|uw+uhb\|\\
+&\quad =u\Bigl(\Bigl\|\tfrac ruv+hy\Bigr\|-\|w+hb\|\Bigr).
+\end{aligned}
 \]
-Both are at most \(M\) by (1.1). The common term \(\|w+hb\|\) cancels in \(u\Delta_x+s\Delta_z=su\bigl(\frac ru-\frac ps\bigr)K=(sr-up)K\), and \(sr-up=(p+M)(u+M)-up=M(p+u+M)=Md\). So
+Both are at most \(M\) by (1.1). The common term \(\|w+hb\|\) cancels in \(u\Delta_x+s\Delta_z=su\bigl(\frac ru-\frac ps\bigr)K\), which is \((sr-up)K\), and \(sr-up=(p+M)(u+M)-up\), which is \(M(p+u+M)=Md\). So
 \[
 MK=\frac{u\Delta_x+s\Delta_z}d.
 \]
@@ -64,7 +90,10 @@ The inequality \(\frac ts\le\frac\epsilon u\) means \(tu\le(1-t)s\), that is \(t
 
 *The lower bound.* Put \(\beta=t/p\), so \(0<\theta\le\beta\), and note \(p(v+\beta y)=x\). A support \(\psi\) at \(v+\beta y\) is a support at \(x\), so \(1=\psi(x)=p\psi(v)+t\psi(y)\le p\psi(v)+t\), that is \(\psi(v)\ge\epsilon/p\). If \(\theta=\beta\), apply this to \(\psi=\varphi\). If \(\theta<\beta\), take any support \(\psi\) at \(v+\beta y\). The two support properties give \(\varphi(v+\theta y)\ge\psi(v+\theta y)\) and \(\psi(v+\beta y)\ge\varphi(v+\beta y)\), that is
 \[
-\theta\bigl(\psi(y)-\varphi(y)\bigr)\le\varphi(v)-\psi(v)\le\beta\bigl(\psi(y)-\varphi(y)\bigr).
+\begin{aligned}
+&\theta\bigl(\psi(y)-\varphi(y)\bigr)\le\varphi(v)\\
+&\quad -\psi(v)\le\beta\bigl(\psi(y)-\varphi(y)\bigr).
+\end{aligned}
 \]
 As \(\theta<\beta\), this forces \(\psi(y)-\varphi(y)\ge0\), and then \(\varphi(v)\ge\psi(v)\ge\epsilon/p\). \(\square\)
 
@@ -78,7 +107,10 @@ As \(\theta<\beta\), this forces \(\psi(y)-\varphi(y)\ge0\), and then \(\varphi(
 \]
 Let \(L\) be a support at \(v\) and \(j=L(y)\); let \(\varphi\) be a support at \(v+\theta y\). By (2.1), \(B\ge\varphi(v)\); moreover \(\varphi(y)\le1\) and \(\|v+\theta y\|\ge L(v+\theta y)=1+\theta j\), so
 \[
-B\ge\varphi(v)=\|v+\theta y\|-\theta\varphi(y)\ge(1+\theta j)-\theta.\tag{3.2}
+\begin{aligned}
+&B\ge\varphi(v)=\|v+\theta y\|\\
+&\quad -\theta\varphi(y)\ge(1+\theta j)-\theta.
+\end{aligned}\tag{3.2}
 \]
 Equality throughout (3.2) is impossible: it would give \(\|v+\theta y\|=L(v+\theta y)\), so \(L\) would be a support at \(v+\theta y\), and (2.1) would give \(1=L(v)\le B<1\). So \(B>1-\theta(1-j)\), that is
 \[
@@ -88,7 +120,7 @@ and \(j<0\). Since \(L\) was arbitrary, every support at \(v\) is negative on \(
 
 **Lemma 3.2.** Let \(a,e\) be vectors in a real normed space, \(a\neq0\), such that every support at \(a\) is strictly negative on \(e\). Then \(\|a+\eta e\|<\|a\|\) for all sufficiently small \(\eta>0\).
 
-**Proof.** Otherwise there are \(\eta_n\downarrow0\) with \(\|a+\eta_ne\|\ge\|a\|\). Let \(V\) be the span of \(a\) and \(e\), and choose supports \(L_n\) at \(a+\eta_ne\) in the dual of \(V\) (the Hahn–Banach theorem in \(V\)). Then \(\|a\|\le\|a+\eta_ne\|=L_n(a)+\eta_nL_n(e)\le\|a\|+\eta_nL_n(e)\), so \(L_n(e)\ge0\). The unit ball of the dual of the finite-dimensional space \(V\) is compact, so a subsequence converges to some \(L\) with \(\|L\|\le1\), \(L(e)\ge0\) and \(L(a)=\lim_n\bigl(\|a+\eta_ne\|-\eta_nL_n(e)\bigr)=\|a\|\). An extension of \(L\) to the whole space with the same norm is a support at \(a\) that is not negative on \(e\), a contradiction. \(\square\)
+**Proof.** Otherwise there are \(\eta_n\downarrow0\) with \(\|a+\eta_ne\|\ge\|a\|\). Let \(V\) be the span of \(a\) and \(e\), and choose supports \(L_n\) at \(a+\eta_ne\) in the dual of \(V\) (the Hahn–Banach theorem in \(V\)). Then \(\|a\|\le\|a+\eta_ne\|\), which is \(L_n(a)+\eta_nL_n(e)\le\|a\|+\eta_nL_n(e)\), so \(L_n(e)\ge0\). The unit ball of the dual of the finite-dimensional space \(V\) is compact, so a subsequence converges to some \(L\) with \(\|L\|\le1\), \(L(e)\ge0\) and \(L(a)=\lim_n\bigl(\|a+\eta_ne\|-\eta_nL_n(e)\bigr)\), which is \(\|a\|\). An extension of \(L\) to the whole space with the same norm is a support at \(a\) that is not negative on \(e\), a contradiction. \(\square\)
 
 **Lemma 3.3.** In a chord configuration, \(A\le\epsilon\) and \(B\le\epsilon\).
 
@@ -96,9 +128,13 @@ and \(j<0\). Since \(L\) was arbitrary, every support at \(v\) is negative on \(
 
 Now let \(0<\eta<t\). The defect at the radius \(t-\eta\) satisfies, by (1.1),
 \[
-\|sw+\eta b\|-\|pv+\eta y\|=D_{t-\eta}(x,y)\le M=s-p.\tag{3.3}
+\begin{aligned}
+&\|sw+\eta b\|-\|pv+\eta y\|\\
+&\quad =D_{t-\eta}(x,y)\\
+&\quad \le M=s-p.
+\end{aligned}\tag{3.3}
 \]
-A support \(L\) at \(w\) gives \(\|sw+\eta b\|\ge L(sw+\eta b)=s+\eta L(b)>s\). By Lemma 3.2 with \(a=pv\) and \(e=y\) (the supports at \(pv\) are those at \(v\)), \(\|pv+\eta y\|<p\) for small \(\eta>0\). For such \(\eta\) the left side of (3.3) exceeds \(s-p\), a contradiction. \(\square\)
+A support \(L\) at \(w\) gives \(\|sw+\eta b\|\ge L(sw+\eta b)\), which is \(s+\eta L(b)>s\). By Lemma 3.2 with \(a=pv\) and \(e=y\) (the supports at \(pv\) are those at \(v\)), \(\|pv+\eta y\|<p\) for small \(\eta>0\). For such \(\eta\) the left side of (3.3) exceeds \(s-p\), a contradiction. \(\square\)
 
 ## 4. No chord configuration exists
 
@@ -106,19 +142,32 @@ A support \(L\) at \(w\) gives \(\|sw+\eta b\|\ge L(sw+\eta b)=s+\eta L(b)>s\). 
 
 **Proof.** By Lemma 3.3, applied to a configuration and to its inverse, \(A\le\epsilon\) and \(B\le\epsilon\). Lemma 2.1 with \(B\le\epsilon\) gives \(\frac\epsilon p\le1-B\), that is \(\epsilon\le dA(1-B)\); for the inverse configuration, where \(B'=A\le\epsilon\) and \(p'=u\), it gives \(\epsilon\le dB(1-A)\). The smaller of \(A(1-B)\) and \(B(1-A)\) is less than \(\frac14\): if \(A\le B\), then \(2A\le A+B<1\) and \(A(1-B)\le A(1-A)<\frac14\), and symmetrically otherwise. Since \(d\le2\), we get \(\epsilon<\frac12\), so \(\epsilon<t\). Hence \(A\le\epsilon<t\) and \(1-B\ge1-\epsilon=t\), that is
 \[
-p<td,\qquad r=d-p>\epsilon d,\qquad s=d-u\ge td,\qquad u\le\epsilon d,
+\begin{gathered}
+p<td,\qquad r=d-p>\epsilon d,\\
+s=d-u\ge td,\qquad u\le\epsilon d,
+\end{gathered}
 \]
 and therefore
 \[
-\frac pt<d<\frac r\epsilon,\qquad\frac u\epsilon\le d\le\frac st.\tag{4.1}
+\begin{gathered}
+\frac pt<d<\frac r\epsilon,\\
+\frac u\epsilon\le d\le\frac st.
+\end{gathered}\tag{4.1}
 \]
 Consider the convex functions \(F(\lambda)=\|y+\lambda v\|\) and \(G(\lambda)=\|b+\lambda w\|\). We have \(F(0)=G(0)=1\), and \(F(\frac pt)=\frac1t\|ty+pv\|=\frac1t\) and \(G(\frac st)=\frac1t\). By the monotonicity of secant slopes and (4.1),
 \[
-F\Bigl(\frac r\epsilon\Bigr)\ge1+\frac{r/\epsilon}{p/t}\Bigl(\frac1t-1\Bigr)>1+\Bigl(\frac1t-1\Bigr)=\frac1t,
+\begin{aligned}
+&F\Bigl(\frac r\epsilon\Bigr)\ge1+\frac{r/\epsilon}{p/t}\Bigl(\frac1t-1\Bigr)\\
+&\quad >1+\Bigl(\frac1t-1\Bigr)=\frac1t,
+\end{aligned}
 \]
 while \(\frac u\epsilon\in[0,\frac st]\) and convexity give \(G(\frac u\epsilon)\le\max\{G(0),G(\frac st)\}=\frac1t\). But \(f\) preserves the distance between \(y\) and \(z\):
 \[
-\epsilon F\Bigl(\frac r\epsilon\Bigr)=\|\epsilon y+rv\|=\|y-z\|=\|f(y)-f(z)\|=\|\epsilon b+uw\|=\epsilon G\Bigl(\frac u\epsilon\Bigr),
+\begin{aligned}
+&\epsilon F\Bigl(\frac r\epsilon\Bigr)=\|\epsilon y+rv\|\\
+&\quad =\|y-z\|=\|f(y)-f(z)\|\\
+&\quad =\|\epsilon b+uw\|=\epsilon G\Bigl(\frac u\epsilon\Bigr),
+\end{aligned}
 \]
 a contradiction. \(\square\)
 

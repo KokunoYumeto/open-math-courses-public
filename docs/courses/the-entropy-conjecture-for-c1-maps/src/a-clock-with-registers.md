@@ -14,15 +14,21 @@ We measure tangent vectors of \(\Sigma\) by the **round metric**: a tangent vect
 \[
 \frac{2|\dot w|}{1+|w|^2}=\frac{2|\dot z|/|z|^2}{(|z|^2+1)/|z|^2}=\frac{2|\dot z|}{1+|z|^2},
 \]
-so the formula is the same in both charts and defines a continuous norm on every tangent space, including at \(\infty\). On \(\mathbb R\times\Sigma\) we use the product norm \(\|(\dot t,\xi)\|=(\dot t^2+\|\xi\|^2)^{1/2}\). For a \(C^1\) map \(\Psi\) between such spaces, \(\|D\Psi(x)\|\) denotes the operator norm of its derivative at \(x\) with respect to these norms. By the chain rule (Lebl, Theorem 8.3.7, applied in charts) \(D(\Psi_2\circ\Psi_1)(x)=D\Psi_2(\Psi_1x)\,D\Psi_1(x)\), hence
+so the formula is the same in both charts and defines a continuous norm on every tangent space, including at \(\infty\). On \(\mathbb R\times\Sigma\) we use the product norm \(\|(\dot t,\xi)\|=(\dot t^2+\|\xi\|^2)^{1/2}\). For a \(C^1\) map \(\Psi\) between such spaces, \(\|D\Psi(x)\|\) denotes the operator norm of its derivative at \(x\) with respect to these norms. By the chain rule (Lebl, Theorem 8.3.7, applied in charts) \(D(\Psi_2\circ\Psi_1)(x)=D\Psi_2(\Psi_1x)\,D\Psi_1(x)\), hence the inequality (1.1) holds:
 \[
-\|D(\Psi_2\circ\Psi_1)(x)\|\leq\|D\Psi_2(\Psi_1x)\|\,\|D\Psi_1(x)\|.\tag{1.1}
+\begin{aligned}
+&\|D(\Psi_2\circ\Psi_1)(x)\|\\
+&\quad\leq\|D\Psi_2(\Psi_1x)\|\,\|D\Psi_1(x)\|.
+\end{aligned}
 \]
 On a compact subset of a chart domain these norms are comparable with the Euclidean norms of coordinate velocities: the factor \(2/(1+|z|^2)\) is bounded above and below by positive constants there.
 
 Fix an integer \(q\geq2\) (the construction below works with \(q=2\)). The manifold of the counterexample is
 \[
-M=(\mathbb R/100\mathbb Z)\times\Sigma\times\Sigma^q,\qquad\text{coordinates }(t,z,v_1,\ldots,v_q),
+\begin{gathered}
+M=(\mathbb R/100\mathbb Z)\times\Sigma\times\Sigma^q,\\
+\text{coordinates }(t,z,v_1,\ldots,v_q),
+\end{gathered}
 \]
 a compact smooth manifold of dimension \(2q+3\). We use \(t\) also for a real lift of the clock.
 
@@ -38,13 +44,19 @@ a compact smooth manifold of dimension \(2q+3\). We use \(t\) also for a real li
 
 *Proof.* Let \(\eta\) be a cutoff for \(([-1,1],(-2,2))\) on \(\mathbb R\), and on \([0,100]\) put
 \[
-b(t)=\eta(t-50)\,\frac{(t-50)^2}4+1-\eta(t-50).
+\begin{aligned}
+b(t)&=\eta(t-50)\,\frac{(t-50)^2}4\\
+&\quad +1-\eta(t-50).
+\end{aligned}
 \]
 Near \(t=0\) and \(t=100\) we have \(\eta(t-50)=0\), so \(b=1\) there and the \(100\)-periodic extension is smooth. Write \(x=t-50\). If \(|x|\geq2\), then \(\eta(x)=0\) and \(b=1\); this is (ii). If \(|x|\leq2\), then \(b\) is a convex combination of \(x^2/4\in[0,1]\) and \(1\), so \(b\in[0,1]\). If \(\eta(x)<1\) then \(b\geq1-\eta(x)>0\); if \(\eta(x)=1\) then \(b=x^2/4\), which vanishes only at \(x=0\); this gives (i). For (iii) put \(y=50-t\in[0,50]\); we need \(b\leq y\). If \(y\leq1\), then \(\eta=1\) and \(b=y^2/4\leq y\). If \(1\leq y\leq2\), then \(b\leq\max\{y^2/4,1\}\leq y\). If \(y\geq2\), then \(b=1\leq y\). \(\square\)
 
 Let \(e:\Sigma\to[0,1]\) be a cutoff for \((\{|z|\geq\tfrac34\}\cup\{\infty\},\ \{|z|>\tfrac12\}\cup\{\infty\})\); thus \(e=0\) on \(\{|z|\leq\tfrac12\}\) and \(e=1\) on \(\{|z|\geq\tfrac34\}\cup\{\infty\}\). The **clock increment** is
 \[
-h(t,z)=b(t)+(1-b(t))\,e(z).\tag{2.1}
+\begin{aligned}
+&h(t,z)\\
+&\quad =b(t)+(1-b(t))\,e(z).
+\end{aligned}\tag{2.1}
 \]
 It is smooth and \(100\)-periodic in \(t\), and \(0\leq h\leq1\), \(h\geq b\), with \(h=1\) whenever \(b(t)=1\) or \(e(z)=1\). The clock can therefore slow down only near \(t\equiv50\), and only while \(|z|<\tfrac34\).
 
@@ -53,10 +65,7 @@ It is smooth and \(100\)-periodic in \(t\), and \(0\leq h\leq1\), \(h\geq b\), w
 Fix the following smooth functions.
 
 1. \(\alpha:\mathbb R\to[0,1]\), a cutoff for \(([9,11],(8,12))\): the **preparation** window.
-2. \(\beta_1,\ldots,\beta_q:\mathbb R\to[0,1]\), the **readout** windows, with supports in open intervals \(J_\ell\subset(74,80)\) of length less than one, such that
-\[
-\text{for every }t\in[76,77]\text{ some }\ell\text{ has }\beta_\ell(t)=1.\tag{3.1}
-\]
+2. \(\beta_1,\ldots,\beta_q:\mathbb R\to[0,1]\), the **readout** windows, with supports in open intervals \(J_\ell\subset(74,80)\) of length less than one, such that condition (3.1) holds: for every \(t\in[76,77]\) some \(\ell\) has \(\beta_\ell(t)=1\).
 For \(q=2\) take \(J_1=(75.9,76.6)\), \(J_2=(76.4,77.1)\) and let \(\beta_\ell\) be a cutoff for \(([76,76.5],J_1)\), respectively \(([76.5,77],J_2)\). For larger \(q\) put \(\beta_\ell=0\) for \(\ell\geq3\) (or use a finer cover). Write \(\bar\beta_\ell(t)=\sum_{k\in\mathbb Z}\beta_\ell(t-100k)\) for the \(100\)-periodization; its translates have disjoint supports, so \(0\leq\bar\beta_\ell\leq1\).
 3. \(\chi:\Sigma\to[0,1]\), a cutoff for \((\{\tfrac12\leq|z|\leq1\},\{\tfrac14<|z|<2\})\); it vanishes near \(0\) and near \(\infty\).
 
@@ -65,9 +74,12 @@ In the formulas below the functions \(\beta_\ell\) on the real line, and not the
 The constant \(L\) is chosen in Section 4, depending only on \(h\). Once it is fixed, choose:
 
 4. A smooth \(p:[0,\infty)\to[0,3]\) with \(p(r)=r\) for \(0\leq r\leq1\), \(p\) nondecreasing on \([0,3L]\), and \(p(r)=0\) for all large \(r\). To construct it, let \(\psi\) be a cutoff on \(\mathbb R\) for \(((-\infty,1],(-\infty,2))\), put \(p_0(r)=\int_0^r\psi\), which equals \(r\) on \([0,1]\), is nondecreasing and is at most \(2\); let \(\phi\) be a cutoff for \(([0,3L],(-1,3L+1))\) and put \(p=\phi\,p_0\).
-5. The **saturation** \(S:\Sigma\to\mathbb C\),
+5. The **saturation** \(S:\Sigma\to\mathbb C\) is given by (3.2):
 \[
-S(v)=p(|v|)\frac v{|v|}\quad(0<|v|<\infty),\qquad S(0)=S(\infty)=0.\tag{3.2}
+\begin{gathered}
+S(v)=p(|v|)\frac v{|v|}\quad(0<|v|<\infty),\\
+S(0)=S(\infty)=0.
+\end{gathered}
 \]
 It equals \(v\) on the closed unit disc (so it is smooth near \(0\)), it is smooth where \(0<|v|<\infty\), and it vanishes for \(|v|\geq3L+1\) (so it is smooth near \(\infty\)). Moreover \(|S|\leq3\).
 6. A smooth \(100\)-periodic **gain** \(a:\mathbb R\to[0,L]\) with \(a=0\) on \([2,5]\) and \(a=L\) on \([7,90]\): \(L\) times the periodization of a cutoff for \(([7,90],(6,96))\).
@@ -76,11 +88,19 @@ It equals \(v\) on the closed unit disc (so it is smooth near \(0\)), it is smoo
 
 To predict later clock readings, we drop the readout additions and use the smooth map
 \[
-G:\mathbb R\times\Sigma\to\mathbb R\times\Sigma,\qquad G(t,z)=(t+h(t,z),\,z^2),\qquad T_m=\mathrm{pr}_1\circ G^m\quad(m\geq1).\tag{4.1}
+\begin{gathered}
+G:\mathbb R\times\Sigma\to\mathbb R\times\Sigma,\\
+G(t,z)=(t+h(t,z),\,z^2),\\
+T_m=\mathrm{pr}_1\circ G^m\quad(m\geq1).
+\end{gathered}\tag{4.1}
 \]
 Here the clock is a real number, not a reading modulo \(100\). Since \(h\) is \(100\)-periodic, \(G\) commutes with \((t,z)\mapsto(t+100,z)\), and so does the continuous function \(x\mapsto\|DG(x)\|\). On the compact set \([0,100]\times\Sigma\) it is bounded (Lebl, Theorem 7.5.6); hence there is \(B\geq1\) with \(\|DG\|\leq B\) everywhere. By (1.1), and because the projection \(\mathrm{pr}_1\) has derivative of norm at most one,
 \[
-\|D(G^m)\|\leq B^m,\qquad\|DT_m\|\leq B^m\qquad(m\geq1).\tag{4.2}
+\begin{gathered}
+\|D(G^m)\|\leq B^m,\\
+\|DT_m\|\leq B^m\\
+(m\geq1).
+\end{gathered}\tag{4.2}
 \]
 Fix the **gain**
 \[
@@ -90,19 +110,23 @@ The bound \(L>B\) will control the derivatives of the predicted clock readings a
 
 ## 5. The inputs and the map
 
-For \(k\geq1\) let \(\Phi_k(z)=\chi(z)\,(z/|z|)^k\) for \(z\in\mathbb C\setminus\{0\}\), and \(\Phi_k(0)=\Phi_k(\infty)=0\); these are smooth complex functions on \(\Sigma\), vanishing near both poles. For \(1\leq\ell\leq q\), \(t\in\mathbb R\) and \(z\in\Sigma\) define the **input**
+For \(k\geq1\) let \(\Phi_k(z)=\chi(z)\,(z/|z|)^k\) for \(z\in\mathbb C\setminus\{0\}\), and \(\Phi_k(0)=\Phi_k(\infty)=0\); these are smooth complex functions on \(\Sigma\), vanishing near both poles. For \(1\leq\ell\leq q\), \(t\in\mathbb R\) and \(z\in\Sigma\) define the **input** by (5.1):
 \[
-U^\circ_\ell(t,z)=\frac{\alpha(t)}{10}\sum_{m=1}^{\infty}L^{1-m}\,\beta_\ell\bigl(T_m(t,z)\bigr)\,\Phi_{2^{m+1}}(z),\tag{5.1}
+\begin{aligned}
+U^\circ_\ell(t,z)&=\frac{\alpha(t)}{10}\sum_{m=1}^{\infty}L^{1-m}\,\beta_\ell\bigl(T_m(t,z)\bigr)\\
+&\qquad\cdot\Phi_{2^{m+1}}(z),
+\end{aligned}
 \]
 and let \(U_\ell(t,z)=\sum_{k\in\mathbb Z}U^\circ_\ell(t-100k,z)\) be its \(100\)-periodization. Since \(\alpha\) is supported in \((8,12)\), at most one translate is nonzero at any \(t\), and \(U_\ell=U^\circ_\ell\) for \(0\leq t<100\). The index \(m\) counts iterates of \(G\), not clock units.
 
-**Definition 5.1 (the map).** Define \(f:M\to M\), \(f(t,z,v_1,\ldots,v_q)=(t',z',v_1',\ldots,v_q')\), by
+**Definition 5.1 (the map).** Define \(f:M\to M\), \(f(t,z,v_1,\ldots,v_q)=(t',z',v_1',\ldots,v_q')\), by (5.2):
 \[
 \begin{aligned}
 t'&=t+h(t,z)\pmod{100},\\
-z'&=z^2+20\sum_{\ell=1}^q\bar\beta_\ell(t)\,S(v_\ell)\quad(z\neq\infty),\qquad z'=\infty\quad(z=\infty),\\
-v_\ell'&=a(t)\,S(v_\ell)+U_\ell(t,z)\qquad(1\leq\ell\leq q).
-\end{aligned}\tag{5.2}
+z'&=z^2+20\sum_{\ell=1}^q\bar\beta_\ell(t)\,S(v_\ell)\quad(z\neq\infty),\\
+z'&=\infty\quad(z=\infty),\\
+v_\ell'&=a(t)\,S(v_\ell)+U_\ell(t,z)\quad(1\leq\ell\leq q).
+\end{aligned}
 \]
 All right-hand sides use the old state. Every register output is a complex number, in the affine chart. When the clock reading lies in \([2,5]\) modulo \(100\), both \(a(t)\) and \(U_\ell(t,z)\) vanish, so **every register is reset to zero**, whatever its value was.
 
@@ -114,33 +138,56 @@ All right-hand sides use the old state. Every register output is a complex numbe
 
 *Proof.* *Angular factors.* The support of \(\chi\) lies in the compact annulus \(A=\{\tfrac14\leq|z|\leq2\}\), on which \(u(z)=z/|z|\) is smooth; let \(c_u\) and \(c_\chi\) be the maxima of \(\|Du\|\) and \(\|D\chi\|\) on \(A\) (norms from the round metric on the source and the modulus on \(\mathbb C\)). Since \(D(u^k)=k\,u^{k-1}Du\) and \(|u|=1\),
 \[
-|\Phi_k|\leq1,\qquad\|D\Phi_k\|\leq c_\chi+k\,c_u\leq C_\chi(1+k)\tag{6.1}
+\begin{aligned}
+&|\Phi_k|\leq1,\\
+&\|D\Phi_k\|\leq c_\chi\\
+&\quad +k\,c_u\leq C_\chi(1+k)
+\end{aligned}\tag{6.1}
 \]
 with \(C_\chi=\max\{c_\chi,c_u\}\), independent of \(k\).
 
 *Summands.* The \(m\)-th summand of (5.1),
 \[
-F_{\ell,m}(t,z)=\frac{L^{1-m}}{10}\,\alpha(t)\,\beta_\ell\bigl(T_m(t,z)\bigr)\,\Phi_{2^{m+1}}(z),
+\begin{aligned}
+&F_{\ell,m}(t,z)\\
+&\quad =\frac{L^{1-m}}{10}\,\alpha(t)\,\beta_\ell\bigl(T_m(t,z)\bigr)\,\Phi_{2^{m+1}}(z),
+\end{aligned}
 \]
-is smooth on \(\mathbb R\times\Sigma\). By the product rule its derivative is the sum of three terms, in which respectively \(\alpha\), \(\beta_\ell\circ T_m\) and \(\Phi_{2^{m+1}}\) are differentiated. With \(c_\alpha=\max|\alpha'|\), \(c_\beta=\max_\ell\max|\beta_\ell'|\), (4.2) and (6.1),
+is smooth on \(\mathbb R\times\Sigma\). By the product rule its derivative is the sum of three terms, in which respectively \(\alpha\), \(\beta_\ell\circ T_m\) and \(\Phi_{2^{m+1}}\) are differentiated. With \(c_\alpha=\max|\alpha'|\), \(c_\beta=\max_\ell\max|\beta_\ell'|\), (4.2) and (6.1), the bound (6.2) holds:
 \[
-|F_{\ell,m}|+\|DF_{\ell,m}\|\leq C\,L^{1-m}\bigl(1+B^m+2^{m+1}\bigr)\tag{6.2}
+\begin{aligned}
+&|F_{\ell,m}|+\|DF_{\ell,m}\|\\
+&\quad\leq C\,L^{1-m}\bigl(1+B^m+2^{m+1}\bigr)
+\end{aligned}
 \]
 for a constant \(C\) independent of \(\ell\) and \(m\). By (4.3) the three series \(\sum L^{1-m}\), \(\sum L(B/L)^m\) and \(\sum 2L(2/L)^m\) converge. Hence the series \(\sum_mF_{\ell,m}\) and \(\sum_mDF_{\ell,m}\) converge uniformly on \(\mathbb R\times\Sigma\): their tails are bounded by tails of a convergent numerical series.
 
-*Differentiability of the sum.* Let \(K\) be a compact coordinate box inside a chart \((t,x_1,x_2)\) of \(\mathbb R\times\Sigma\) (with \(x_1+ix_2=z\) or \(=w\)). On \(K\) the coordinate partial derivatives of a function are bounded by a constant \(c_K\) times the norm of its derivative, so the series of partial derivatives \(\sum_m\partial_jF_{\ell,m}\) converge uniformly on \(K\). On each coordinate segment in \(K\), Lebl's Theorem 6.2.10 shows that the partial derivative \(\partial_jU^\circ_\ell\) exists and equals \(\sum_m\partial_jF_{\ell,m}\). This limit is continuous: if \(g_N\to g\) uniformly with \(g_N\) continuous, then \(|g(x)-g(y)|\leq|g(x)-g_N(x)|+|g_N(x)-g_N(y)|+|g_N(y)-g(y)|\), and the outer terms are uniformly small. By Lebl's Proposition 8.4.6, \(U^\circ_\ell\) is continuously differentiable on the interior of \(K\). Such boxes cover \(\mathbb R\times\Sigma\), so \(U^\circ_\ell\) is \(C^1\).
+*Differentiability of the sum.* Let \(K\) be a compact coordinate box inside a chart \((t,x_1,x_2)\) of \(\mathbb R\times\Sigma\) (with \(x_1+ix_2=z\) or \(=w\)). On \(K\) the coordinate partial derivatives of a function are bounded by a constant \(c_K\) times the norm of its derivative, so the series of partial derivatives \(\sum_m\partial_jF_{\ell,m}\) converge uniformly on \(K\). On each coordinate segment in \(K\), Lebl's Theorem 6.2.10 shows that the partial derivative \(\partial_jU^\circ_\ell\) exists and equals \(\sum_m\partial_jF_{\ell,m}\). This limit is continuous: if \(g_N\to g\) uniformly with \(g_N\) continuous, then
+\[
+\begin{aligned}
+&|g(x)-g(y)|\leq|g(x)-g_N(x)|\\
+&\quad+|g_N(x)-g_N(y)|+|g_N(y)-g(y)|,
+\end{aligned}
+\]
+and the outer terms are uniformly small. By Lebl's Proposition 8.4.6, \(U^\circ_\ell\) is continuously differentiable on the interior of \(K\). Such boxes cover \(\mathbb R\times\Sigma\), so \(U^\circ_\ell\) is \(C^1\).
 
 Nothing in this argument depends on a *selected* prediction time: at a point where \(\beta_\ell(T_m)=0\) for all \(m\), every summand and its derivative vanish, and uniform convergence of the tails gives continuity even if nearby points have nonzero summands with indices tending to infinity.
 
 *Periodization and bound.* \(U^\circ_\ell\) vanishes, with its derivative, unless \(t\in(8,12)\). The translates \(U^\circ_\ell(\cdot-100k,\cdot)\) have disjoint supports and only one of them is nonzero near any point, so \(U_\ell\) is \(C^1\) and descends to \((\mathbb R/100\mathbb Z)\times\Sigma\). Since \(\alpha,\beta_\ell,|\Phi_k|\leq1\),
 \[
-|U_\ell|\leq\frac1{10}\sum_{m\geq1}L^{1-m}=\frac{L}{10(L-1)}<\frac15,\tag{6.3}
+\begin{aligned}
+|U_\ell|&\leq\frac1{10}\sum_{m\geq1}L^{1-m}\\
+&=\frac{L}{10(L-1)}<\frac15,
+\end{aligned}\tag{6.3}
 \]
 using \(L>2\).
 
 *The map.* The clock component of (5.2) is smooth and well defined modulo \(100\). Each register component is \(C^1\), with values in the disc of radius \(3L+\tfrac15\) of the affine chart; this includes source values \(v_\ell=\infty\), because \(S\) is smooth and vanishes near \(\infty\). The main component is smooth at every finite \(z\). Near \(z=\infty\) put \(C_0(t,\mathbf v)=20\sum_\ell\bar\beta_\ell(t)S(v_\ell)\), a smooth function with \(|C_0|\leq60q\). In the coordinate \(w=1/z\) at the source and \(w'=1/z'\) at the target,
 \[
-w'=\frac1{w^{-2}+C_0}=\frac{w^2}{1+C_0\,w^2}.\tag{6.4}
+\begin{aligned}
+w'&=\frac1{w^{-2}+C_0}\\
+&=\frac{w^2}{1+C_0\,w^2}.
+\end{aligned}\tag{6.4}
 \]
 For \(|w|<(120q)^{-1/2}\) the denominator has modulus at least \(1-60q|w|^2>\tfrac12\), uniformly in \(t\) and the registers, so (6.4) extends smoothly to \(w=0\) with value \(0\), which is \(z'=\infty\). Hence \(f\) is \(C^1\). \(\square\)
 

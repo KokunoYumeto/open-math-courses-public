@@ -14,7 +14,10 @@ Each node \(v\) carries a map \(G_v\in\mathcal G\) and the point \(y_v=G_v(x)\in
 
 If points \(H_v\in K\) are given at the children of a node \(u\), its *output* is
 \[
-H_u=G_u\Bigl(\sum_{\hat v=u}\alpha_vH_v\Bigr)\in K.\tag{1.1}
+\begin{aligned}
+&H_u\\
+&\quad =G_u\Bigl(\sum_{\hat v=u}\alpha_vH_v\Bigr)\in K.
+\end{aligned}\tag{1.1}
 \]
 For points \((H_v)_{v\in L_k}\) prescribed on one level, let \(\Phi_k((H_v)_{v\in L_k})\) be the root output obtained by applying (1.1) at all levels above \(L_k\); the maps of the nodes of \(L_k\) are not applied. So \(\Phi_0(H_r)=H_r\).
 
@@ -22,7 +25,10 @@ For points \((H_v)_{v\in L_k}\) prescribed on one level, let \(\Phi_k((H_v)_{v\i
 
 (b) For outputs \((H_v)\) and \((H'_v)\) prescribed on \(L_k\),
 \[
-\bigl\|\Phi_k((H_v))-\Phi_k((H'_v))\bigr\|\le\sum_{v\in L_k}W_v\|H_v-H'_v\|.\tag{1.2}
+\begin{aligned}
+&\bigl\|\Phi_k((H_v))-\Phi_k((H'_v))\bigr\|\\
+&\quad \le\sum_{v\in L_k}W_v\|H_v-H'_v\|.
+\end{aligned}\tag{1.2}
 \]
 
 **Proof.** (a) The weights of the children of \(u\) sum to \(1\), so the path weights of the children of \(u\) sum to \(W_u\); induction on the level. (b) At a node \(u\), since \(G_u\) is nonexpansive, the difference of the outputs is at most \(\sum_{\hat v=u}\alpha_v\|H_v-H'_v\|\). Induction up the tree multiplies the weights along each path. \(\square\)
@@ -31,23 +37,28 @@ In particular, changing only the output at \(v\in L_k\) changes the root output 
 
 ## 2. Predicted root outputs
 
-The tree is built level by level, and the nodes of a level \(k\ge1\) are chosen one at a time as *candidates*: parent by parent from left to right, and for each parent in the order of selection. Some candidates are later discarded. When a candidate \(v\) of level \(k\) is about to be chosen, all levels above \(k\) are complete, with their maps and weights. Let \(I_v\) be the list of the candidates of level \(k\) selected before \(v\), retained or discarded; for \(h\in I_v\) we know its point \(y_h\) and its parent \(\hat h\in L_{k-1}\). Put
+The tree is built level by level, and the nodes of a level \(k\ge1\) are chosen one at a time as *candidates*: parent by parent from left to right, and for each parent in the order of selection. Some candidates are later discarded. When a candidate \(v\) of level \(k\) is about to be chosen, all levels above \(k\) are complete, with their maps and weights. Let \(I_v\) be the list of the candidates of level \(k\) selected before \(v\), retained or discarded; for \(h\in I_v\) we know its point \(y_h\) and its parent \(\hat h\in L_{k-1}\). Let \(\Theta_v\) be the set of families \((\theta_h)_{h\in I_v}\) with \(\theta_h\ge0\) and \(\sum_{h\in I_v,\ \hat h=p}\theta_h\le1\) for every \(p\in L_{k-1}\),
+a compact subset of a finite-dimensional space (a single point if \(I_v\) is empty). For \(b\in K\), \(\theta\in\Theta_v\) and \(p\in L_{k-1}\) define \(a_{v,p}(b;\theta)\) and \(Q_v(b;\theta)\) by (2.1):
 \[
-\Theta_v=\Bigl\{(\theta_h)_{h\in I_v}:\theta_h\ge0,\ \sum_{h\in I_v,\ \hat h=p}\theta_h\le1\ \text{ for every }p\in L_{k-1}\Bigr\},
-\]
-a compact subset of a finite-dimensional space (a single point if \(I_v\) is empty). For \(b\in K\), \(\theta\in\Theta_v\) and \(p\in L_{k-1}\) put
-\[
-a_{v,p}(b;\theta)=b+\sum_{h\in I_v,\ \hat h=p}\theta_h(y_h-b),\qquad Q_v(b;\theta)=\Phi_{k-1}\Bigl(\bigl(G_p(a_{v,p}(b;\theta))\bigr)_{p\in L_{k-1}}\Bigr).\tag{2.1}
+\begin{aligned}
+&a_{v,p}(b;\theta)=b+\sum_{h\in I_v,\ \hat h=p}\theta_h(y_h-b),\\
+&Q_v(b;\theta)\\
+&\quad=\Phi_{k-1}\Bigl(\bigl(G_p(a_{v,p}(b;\theta))\bigr)_{p\in L_{k-1}}\Bigr).
+\end{aligned}
 \]
 Each \(a_{v,p}(b;\theta)\) is a convex combination of \(b\) and points \(y_h\), so it lies in \(K\). The point \(Q_v(b;\theta)\) is the root output when, below each parent \(p\), the earlier candidates \(h\) have outputs \(y_h\) and weights \(\theta_h\), and all other children of \(p\) have the common output \(b\). It involves only the levels above \(k\), which are complete.
 
 **Lemma 2.1.** \(\|Q_v(b;\theta)-Q_v(b;\eta)\|\le\sum_{h\in I_v}|\theta_h-\eta_h|\) for all \(b\in K\) and \(\theta,\eta\in\Theta_v\).
 
-**Proof.** \(\|a_{v,p}(b;\theta)-a_{v,p}(b;\eta)\|\le\sum_{\hat h=p}|\theta_h-\eta_h|\,\|y_h-b\|\le\sum_{\hat h=p}|\theta_h-\eta_h|\), since \(\operatorname{diam}K=1\). Apply the nonexpansive maps \(G_p\) and (1.2), with \(W_p\le1\). \(\square\)
+**Proof.** \(\|a_{v,p}(b;\theta)-a_{v,p}(b;\eta)\|\) is at most \(\sum_{\hat h=p}|\theta_h-\eta_h|\,\|y_h-b\|\), which is at most \(\sum_{\hat h=p}|\theta_h-\eta_h|\), since \(\operatorname{diam}K=1\). Apply the nonexpansive maps \(G_p\) and (1.2), with \(W_p\le1\). \(\square\)
 
 For \(\theta\in\Theta_v\) let
 \[
-Z_v(\theta)=\lim_{j\to\mathcal U}Q_v(b_j;\theta)\quad\text{(weak limit in }K\text{)},\qquad E_v=\{z_1,\dots,z_k\}\cup Z_v(\Theta_v).
+\begin{aligned}
+&Z_v(\theta)\\
+&\quad =\lim_{j\to\mathcal U}Q_v(b_j;\theta)\quad\text{(weak limit in }K\text{)},\\
+&E_v=\{z_1,\dots,z_k\}\cup Z_v(\Theta_v).
+\end{aligned}
 \]
 
 **Lemma 2.2.** \(\|Z_v(\theta)-Z_v(\eta)\|\le\sum_{h\in I_v}|\theta_h-\eta_h|\). Hence \(Z_v\) is norm continuous and \(E_v\) is a nonempty norm-compact subset of \(K\), determined before \(v\) is chosen.
@@ -68,7 +79,12 @@ The weak limit is taken of points already computed; no weak limit is passed thro
 \]
 (c) every nonroot node \(v\) satisfies
 \[
-\sum_{p\prec v}\|G_p(y_v)-y_v\|\le e_v,\qquad f_v(y_v-z)\ge1-e_v\quad(z\in E_v),\tag{3.2}
+\begin{aligned}
+&\sum_{p\prec v}\|G_p(y_v)-y_v\|\\
+&\quad \le e_v,\\
+&f_v(y_v-z)\ge1\\
+&\quad -e_v\quad(z\in E_v),
+\end{aligned}\tag{3.2}
 \]
 where \(E_v\) is the set of Section 2, formed from the candidates selected before \(v\).
 
@@ -76,7 +92,10 @@ where \(E_v\) is the set of Section 2, formed from the candidates selected befor
 
 Suppose the levels \(L_0,\dots,L_{k-1}\) are complete and \(\tau_{k-1}\) is defined. Treat the parents \(u\in L_{k-1}\) from left to right. For \(u\), run the adaptive selection of Lemma 6.1 of the second lesson with tolerance \(\tau_{k-1}\); its successive choices are the candidates for the children of \(u\). Before each choice we prescribe the precision as follows. Let \(v\) be the next candidate, with its number \(e_v\). Form \(I_v\), \(\Theta_v\), \(Q_v\) and \(E_v\) as in Section 2. By Lemma 3.3 of the first lesson, there is \(\delta_v>0\) such that every \(y\in K\) with \(\|Ty-y\|\le\delta_v\) has \(f\in X^*\), \(\|f\|\le1\), with \(f(y-z)\ge1-e_v\) for all \(z\in E_v\). The ancestors of \(v\) are fixed, so \(C_v=\sum_{p\prec v}c_{G_p}\) is a finite number (Lemma 2.1 of the second lesson, \(c_{\mathrm{Id}}=0\)). Prescribe an integer \(m\) with \(\frac1m<\delta_v\) and \(\frac{C_v}m\le e_v\). The selection then chooses \(G_v\in\mathcal H_m\), and \(y_v=G_v(x)\) satisfies \(\|Ty_v-y_v\|\le\frac1m\) by (2.2) of the second lesson. Hence
 \[
-\sum_{p\prec v}\|G_p(y_v)-y_v\|\le\sum_{p\prec v}c_{G_p}\|Ty_v-y_v\|\le\frac{C_v}m\le e_v,
+\begin{aligned}
+&\sum_{p\prec v}\|G_p(y_v)-y_v\|\\
+&\quad \le\sum_{p\prec v}c_{G_p}\|Ty_v-y_v\|\le\frac{C_v}m\le e_v,
+\end{aligned}
 \]
 and there is \(f_v\) as in (3.2); choose it.
 
@@ -95,7 +114,10 @@ When the level \(L_k\) is complete, every retained \(v\in L_k\) determines \(\th
 
 **Proof.** For \(p\in L_{k-1}\),
 \[
-\sum_{\hat h=p}\alpha_h\widetilde H^{v,b}_h=\sum_{\hat h=p,\ h<_kv}\alpha_hy_h+\Bigl(1-\sum_{\hat h=p,\ h<_kv}\alpha_h\Bigr)b=a_{v,p}(b;\theta^v),
+\begin{aligned}
+&\sum_{\hat h=p}\alpha_h\widetilde H^{v,b}_h=\sum_{\hat h=p,\ h<_kv}\alpha_hy_h\\
+&\quad +\Bigl(1-\sum_{\hat h=p,\ h<_kv}\alpha_h\Bigr)b=a_{v,p}(b;\theta^v),
+\end{aligned}
 \]
 because the weights of the children of \(p\) sum to \(1\) and the discarded candidates have \(\theta^v_h=0\). Applying \(G_p\) and then the evaluation above level \(k-1\) gives \(Q_v(b;\theta^v)\). \(\square\)
 
@@ -105,7 +127,7 @@ In a parent group before that of \(v\), every child has its point \(y_h\); in th
 
 **Exercise 5.1** (easy). Show that the order of the children within a parent group and the order of the parent groups are both used in Lemma 4.1, and describe the ideal cutoff when \(v\) is the first node of \(L_k\) and when it is the last.
 
-**Exercise 5.2** (easy). Show that \(\tau_k\le2^{-k-1}e_v\) for every \(v\in L_1\cup\dots\cup L_k\), and that \(\sum_{d\ge k}\tau_d\le2^{-k}\min\{e_u:u\in L_1\cup\dots\cup L_k\}\).
+**Exercise 5.2** (easy). Show that \(\tau_k\le2^{-k-1}e_v\) for every \(v\in L_1\cup\dots\cup L_k\), and that \(\sum_{d\ge k}\tau_d\) is at most \(2^{-k}\) times the least \(e_u\) with \(u\in L_1\cup\dots\cup L_k\).
 
 **Exercise 5.3** (medium). Explain why the functional \(f_v\) cannot simply be chosen after the weights of the siblings of \(v\) are fixed: which property of the adaptive selection would be lost?
 

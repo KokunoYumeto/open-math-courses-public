@@ -26,7 +26,7 @@ For a normal \(z\in M\), the *distribution* of \(z\) is the Borel probability me
 
 **Lemma 1.2** (Haar generators). Let \(y\in M\) be self-adjoint, and suppose its distribution function \(F(t)=\mu_y((-\infty,t])\) is continuous and strictly increasing on an interval \([a,b]\) with \(\mu_y([a,b])=1\). Then \(h=e^{2\pi iF(y)}\) is a Haar unitary and \(W^*(h)=W^*(y)\).
 
-**Proof.** Put \(w=F(y)\in W^*(y)\). Since \(F\) restricts to an increasing bijection \([a,b]\to[0,1]\), for \(s\in[0,1]\) we have \(\mu_w([0,s])=\mu_y(\{t:F(t)\le s\})=F(F^{-1}(s))=s\): \(w\) has the uniform distribution on \([0,1]\). Hence \(\tau(h^k)=\int_0^1e^{2\pi iks}\,ds=0\) for \(k\ne0\), and \(h\in W^*(y)\). Conversely, let \(\theta(e^{2\pi is})=s\) for \(s\in[0,1)\). By Lemma 1.1, \(\theta(h)\) is the function \(x\mapsto x\,1_{[0,1)}(x)\) of \(w\), which equals \(w\) because \(1_{\{1\}}(w)=0\); so \(w\in W^*(h)\). Finally, \(1_{\mathbb R\setminus[a,b]}(y)=0\), and \(F^{-1}\circ F\) is the identity on \([a,b]\), so \(y=(F^{-1}\circ F)(y)=F^{-1}(w)\in W^*(h)\) by Lemma 1.1. \(\square\)
+**Proof.** Put \(w=F(y)\in W^*(y)\). Since \(F\) restricts to an increasing bijection \([a,b]\to[0,1]\), for \(s\in[0,1]\) we have \(\mu_w([0,s])=\mu_y(\{t:F(t)\le s\})\), which is \(F(F^{-1}(s))=s\): \(w\) has the uniform distribution on \([0,1]\). Hence \(\tau(h^k)=\int_0^1e^{2\pi iks}\,ds=0\) for \(k\ne0\), and \(h\in W^*(y)\). Conversely, let \(\theta(e^{2\pi is})=s\) for \(s\in[0,1)\). By Lemma 1.1, \(\theta(h)\) is the function \(x\mapsto x\,1_{[0,1)}(x)\) of \(w\), which equals \(w\) because \(1_{\{1\}}(w)=0\); so \(w\in W^*(h)\). Finally, \(1_{\mathbb R\setminus[a,b]}(y)=0\), and \(F^{-1}\circ F\) is the identity on \([a,b]\), so \(y=(F^{-1}\circ F)(y)=F^{-1}(w)\in W^*(h)\) by Lemma 1.1. \(\square\)
 
 **Lemma 1.3** (free group factors from free generators). Let \(y_1,\ldots,y_m\in M\) be such that the von Neumann algebras \(W^*(y_j)\) form a free family that generates \(M\), and \(W^*(y_j)=W^*(h_j)\) for Haar unitaries \(h_j\). Then there is a trace-preserving normal \(*\)-isomorphism \(L(\mathbb F_m)\to M\) with \(\lambda(x_j)\mapsto h_j\).
 
@@ -44,7 +44,16 @@ Let \(\sigma\) be the image of the probability measure \(\frac2\pi\sin^2\phi\,d\
 4. The distribution function of \(\sigma\) is continuous and strictly increasing on \([-2,2]\).
 5. The image of \(\sigma\) under \(t\mapsto t^2\) is the measure \(\nu\) on \([0,4]\) with \(\int g\,d\nu=\Lambda(g)\), the limit law of the third lesson; it has no atoms and its distribution function is continuous and strictly increasing on \([0,4]\).
 
-**Proof.** (1) Induction, using \(\sin((n+2)\phi)+\sin(n\phi)=2\cos\phi\,\sin((n+1)\phi)\). (2) \(\int U_nU_k\,d\sigma=\frac2\pi\int_0^\pi\sin((n+1)\phi)\sin((k+1)\phi)\,d\phi=\delta_{nk}\). (3) By (2), \(\int U_n\,d\sigma=\int U_nU_0\,d\sigma=\delta_{n0}\). (4) The function \(\phi\mapsto2\cos\phi\) is a decreasing homeomorphism of \([0,\pi]\) onto \([-2,2]\), and \(\sin^2\phi>0\) on \((0,\pi)\). (5) For continuous \(g\), the substitutions \(\phi=\frac\pi2-\vartheta\) and \(\phi=\frac\pi2+\vartheta\) on the two halves of \([0,\pi]\) give \(\int g(t^2)\,d\sigma(t)=\frac2\pi\int_0^\pi g(4\cos^2\phi)\sin^2\phi\,d\phi=\frac4\pi\int_0^{\pi/2}g(4\sin^2\vartheta)\cos^2\vartheta\,d\vartheta=\Lambda(g)\). As in (4), \(\vartheta\mapsto4\sin^2\vartheta\) is an increasing homeomorphism of \([0,\frac\pi2]\) onto \([0,4]\) and \(\cos^2\vartheta>0\) on \([0,\frac\pi2)\). \(\square\)
+**Proof.** (1) Induction, using that \(\sin((n+2)\phi)+\sin(n\phi)\) equals \(2\cos\phi\,\sin((n+1)\phi)\). (2) \(\int U_nU_k\,d\sigma\) equals \(\frac2\pi\int_0^\pi\sin((n+1)\phi)\sin((k+1)\phi)\,d\phi\), which is \(\delta_{nk}\). (3) By (2), \(\int U_n\,d\sigma=\int U_nU_0\,d\sigma=\delta_{n0}\). (4) The function \(\phi\mapsto2\cos\phi\) is a decreasing homeomorphism of \([0,\pi]\) onto \([-2,2]\), and \(\sin^2\phi>0\) on \((0,\pi)\). (5) For continuous \(g\), the substitutions \(\phi=\frac\pi2-\vartheta\) and \(\phi=\frac\pi2+\vartheta\) on the two halves of \([0,\pi]\) give
+\[
+\begin{aligned}
+&\int g(t^2)\,d\sigma(t)\\
+&\quad=\frac2\pi\int_0^\pi g(4\cos^2\phi)\sin^2\phi\,d\phi\\
+&\quad=\frac4\pi\int_0^{\pi/2}g(4\sin^2\vartheta)\cos^2\vartheta\,d\vartheta\\
+&\quad=\Lambda(g).
+\end{aligned}
+\]
+As in (4), \(\vartheta\mapsto4\sin^2\vartheta\) is an increasing homeomorphism of \([0,\frac\pi2]\) onto \([0,4]\) and \(\cos^2\vartheta>0\) on \([0,\frac\pi2)\). \(\square\)
 
 By Lemma 2.1(5) and Lemma 3.1 of the third lesson, \(\int t^{2r}\,d\sigma=\mathrm{Cat}_r\); the odd moments vanish because \(\phi\mapsto\pi-\phi\) changes the sign of \(2\cos\phi\) and preserves \(\sin^2\phi\).
 
@@ -66,17 +75,20 @@ Let \(X=L+L^*\). Then \(\omega(p(X))=\int p\,d\sigma\) for every polynomial \(p\
 
 **Proof.** *Step 1.* If \(\eta\in K\) and \(L^*\eta=0\), then \(U_n(X)\eta=L^n\eta\) for all \(n\ge0\). This holds for \(n=0,1\). By (a) with \(d=1\), \(L^*L=1\), so \(L^*L^{n}\eta=L^{n-1}\eta\) for \(n\ge1\), and inductively
 \[
-U_{n+1}(X)\eta=(L+L^*)L^n\eta-L^{n-1}\eta=L^{n+1}\eta .
+\begin{aligned}
+&U_{n+1}(X)\eta=(L+L^*)L^n\eta\\
+&\quad -L^{n-1}\eta=L^{n+1}\eta .
+\end{aligned}
 \]
-*Step 2.* By (b) and Step 1, \(\omega(U_n(X))=\langle L^n\xi,\xi\rangle=\langle L^{n-1}\xi,L^*\xi\rangle=0\) for \(n\ge1\). Writing \(t^k=\sum_na_nU_n(t)\), we get \(\omega(X^k)=a_0=\int t^k\,d\sigma\) by Lemma 2.1(3). In particular the centred polynomials in \(X\) are the linear combinations of the \(U_n(X)\), \(n\ge1\).
+*Step 2.* By (b) and Step 1, \(\omega(U_n(X))=\langle L^n\xi,\xi\rangle\), which is \(\langle L^{n-1}\xi,L^*\xi\rangle=0\) for \(n\ge1\). Writing \(t^k=\sum_na_nU_n(t)\), we get \(\omega(X^k)=a_0=\int t^k\,d\sigma\) by Lemma 2.1(3). In particular the centred polynomials in \(X\) are the linear combinations of the \(U_n(X)\), \(n\ge1\).
 
-*Step 3.* Let \(z_1\cdots z_r\) be a product whose factors are alternately centred polynomials in \(X\) and centred elements of \(\mathcal D\). By Step 2 and multilinearity we may assume that each polynomial factor is \(U_n(X)\) for some \(n\ge1\). Put \(\eta_{r+1}=\xi\) and \(\eta_k=z_k\eta_{k+1}\). We show by downward induction on \(k\) that \(L^*\eta_{k+1}=0\) whenever \(z_k\) is a polynomial factor, and \(L^*\eta_k=0\) whenever \(z_k\in\mathcal D\). If \(z_k=d\in\mathcal D\), then either \(\eta_{k+1}=\xi\) and \(L^*d\xi=0\) by (c), or \(z_{k+1}=U_n(X)\) and \(\eta_{k+1}=L^n\eta_{k+2}\) by Step 1, so that \(L^*\eta_k=(L^*dL)L^{n-1}\eta_{k+2}=\omega(d)L^{n-1}\eta_{k+2}=0\) by (a). If \(z_k\) is a polynomial factor, then \(\eta_{k+1}\) is \(\xi\), or \(d\eta_{k+2}\) with \(z_{k+1}=d\); in both cases \(L^*\eta_{k+1}=0\) by (b) and the case just treated. Consequently, by Step 1, \(\eta_k=L^n\eta_{k+1}\) whenever \(z_k=U_n(X)\).
+*Step 3.* Let \(z_1\cdots z_r\) be a product whose factors are alternately centred polynomials in \(X\) and centred elements of \(\mathcal D\). By Step 2 and multilinearity we may assume that each polynomial factor is \(U_n(X)\) for some \(n\ge1\). Put \(\eta_{r+1}=\xi\) and \(\eta_k=z_k\eta_{k+1}\). We show by downward induction on \(k\) that \(L^*\eta_{k+1}=0\) whenever \(z_k\) is a polynomial factor, and \(L^*\eta_k=0\) whenever \(z_k\in\mathcal D\). If \(z_k=d\in\mathcal D\), then either \(\eta_{k+1}=\xi\) and \(L^*d\xi=0\) by (c), or \(z_{k+1}=U_n(X)\) and \(\eta_{k+1}=L^n\eta_{k+2}\) by Step 1, so that \(L^*\eta_k=(L^*dL)L^{n-1}\eta_{k+2}\), which is \(\omega(d)L^{n-1}\eta_{k+2}=0\) by (a). If \(z_k\) is a polynomial factor, then \(\eta_{k+1}\) is \(\xi\), or \(d\eta_{k+2}\) with \(z_{k+1}=d\); in both cases \(L^*\eta_{k+1}=0\) by (b) and the case just treated. Consequently, by Step 1, \(\eta_k=L^n\eta_{k+1}\) whenever \(z_k=U_n(X)\).
 
 Now \(\omega(z_1\cdots z_r)=\langle\eta_1,\xi\rangle\). If \(z_1=U_n(X)\), this is \(\langle L^{n-1}\eta_2,L^*\xi\rangle=0\). If \(z_1=d\) and \(r=1\), it is \(\omega(d)=0\). If \(z_1=d\) and \(r\ge2\), then \(\eta_2=L^n\eta_3\) and \(\langle dL^n\eta_3,\xi\rangle=\langle L^{n-1}\eta_3,L^*d^*\xi\rangle=0\) by (c). \(\square\)
 
 ## 4. Free semicircular families
 
-Let \(H\) be a Hilbert space. Its *full Fock space* is \(\mathcal F(H)=\mathbb C\Omega\oplus\bigoplus_{k\ge1}H^{\otimes k}\), with the unit vector \(\Omega\). For \(e\in H\), the *creation operator* \(\ell(e)\) maps \(\Omega\) to \(e\) and \(\eta_1\otimes\cdots\otimes\eta_k\) to \(e\otimes\eta_1\otimes\cdots\otimes\eta_k\). It is bounded with \(\|\ell(e)\|=\|e\|\), its adjoint satisfies \(\ell(e)^*\Omega=0\) and \(\ell(e)^*(\eta_1\otimes\cdots\otimes\eta_k)=\langle\eta_1,e\rangle\,\eta_2\otimes\cdots\otimes\eta_k\) (with \(\Omega\) for \(k=1\)), and
+Let \(H\) be a Hilbert space. Its *full Fock space* is \(\mathcal F(H)=\mathbb C\Omega\oplus\bigoplus_{k\ge1}H^{\otimes k}\), with the unit vector \(\Omega\). For \(e\in H\), the *creation operator* \(\ell(e)\) maps \(\Omega\) to \(e\) and \(\eta_1\otimes\cdots\otimes\eta_k\) to \(e\otimes\eta_1\otimes\cdots\otimes\eta_k\). It is bounded with \(\|\ell(e)\|=\|e\|\), its adjoint satisfies \(\ell(e)^*\Omega=0\) and sends \(\eta_1\otimes\cdots\otimes\eta_k\) to \(\langle\eta_1,e\rangle\,\eta_2\otimes\cdots\otimes\eta_k\) (with \(\Omega\) for \(k=1\)), and
 \[
 \ell(e)^*\ell(e')=\langle e',e\rangle1 .
 \]
@@ -92,7 +104,11 @@ Put \(s(e)=\ell(e)+\ell(e)^*\), a self-adjoint operator of norm at most \(2\|e\|
 
 (2) Fix \(\eta\in\mathcal F(H)\) and define \(T\colon\mathcal F(K_0)\to\mathcal F(H)\) by \(T\Omega=g'\otimes\eta\) and \(T\zeta=\zeta\otimes g'\otimes\eta\) for tensors \(\zeta\) of vectors in \(K_0\); it is bounded, with \(\|T\zeta\|=\|\zeta\|\|g'\|\|\eta\|\). For \(e\in K_0\), \(\ell(e)T=T\ell(e)\) on \(\mathcal F(K_0)\), and \(\ell(e)^*T=T\ell(e)^*\): on tensors of positive length both sides remove the first factor, and \(\ell(e)^*T\Omega=\langle g',e\rangle\eta=0=T\ell(e)^*\Omega\). Hence \(bT=Tb\) on \(\mathcal F(K_0)\) for \(b\) in the \(*\)-algebra generated by the \(s(e)\), \(e\in K_0\), and, by strong limits of bounded nets (Kaplansky's density theorem), for \(b\in\mathcal S(K_0)\). Write \(b\Omega=\varphi(b)\Omega+\zeta_+\) with \(\zeta_+\) orthogonal to \(\Omega\) in \(\mathcal F(K_0)\). Then
 \[
-\ell(g)^*b\,\ell(g')\eta=\ell(g)^*bT\Omega=\ell(g)^*T(b\Omega)=\varphi(b)\,\ell(g)^*(g'\otimes\eta)+\ell(g)^*(\zeta_+\otimes g'\otimes\eta)=\varphi(b)\langle g',g\rangle\eta,
+\begin{aligned}
+&\ell(g)^*b\,\ell(g')\eta=\ell(g)^*bT\Omega\\
+&\quad =\ell(g)^*T(b\Omega)=\varphi(b)\,\ell(g)^*(g'\otimes\eta)\\
+&\quad +\ell(g)^*(\zeta_+\otimes g'\otimes\eta)=\varphi(b)\langle g',g\rangle\eta,
+\end{aligned}
 \]
 because every tensor in \(\zeta_+\) begins with a vector of \(K_0\perp g\).
 
@@ -130,11 +146,19 @@ We call \(\mathcal S\) the *semicircular algebra* of the basis \(e_1,\ldots,e_m\
 
 **5.1.** Substitute \(t=2\cos\phi\): \(dt=-2\sin\phi\,d\phi\) and \(\sqrt{4-t^2}=2\sin\phi\) on \([0,\pi]\), so \(\frac1{2\pi}\sqrt{4-t^2}\,dt\) becomes \(\frac2\pi\sin^2\phi\,d\phi\).
 
-**5.2.** Write \(\ell=\ell(e)\), \(\ell'=\ell(e')\). In \(s(e)^4\Omega\), only the words that never apply an annihilation to \(\Omega\) and end at \(\Omega\) contribute: \(\ell^*\ell^*\ell\ell\) and \(\ell^*\ell\ell^*\ell\), so \(\varphi(s(e)^4)=2=\mathrm{Cat}_2\). Similarly \(\varphi(s(e)^2s(e')^2)=\langle s(e')^2\Omega,s(e)^2\Omega\rangle=\langle e'\otimes e'+\Omega,e\otimes e+\Omega\rangle=1\), and \(\varphi(s(e)s(e')s(e)s(e'))=\langle s(e)s(e')\Omega,s(e')s(e)\Omega\rangle=\langle e\otimes e',e'\otimes e\rangle=0\), as freeness predicts (Exercise 5.1 of the first lesson).
+**5.2.** Write \(\ell=\ell(e)\), \(\ell'=\ell(e')\). In \(s(e)^4\Omega\), only the words that never apply an annihilation to \(\Omega\) and end at \(\Omega\) contribute: \(\ell^*\ell^*\ell\ell\) and \(\ell^*\ell\ell^*\ell\), so \(\varphi(s(e)^4)=2=\mathrm{Cat}_2\). Similarly \(\varphi(s(e)^2s(e')^2)=\langle s(e')^2\Omega,s(e)^2\Omega\rangle\), which is \(\langle e'\otimes e'+\Omega,e\otimes e+\Omega\rangle=1\), and \(\varphi(s(e)s(e')s(e)s(e'))\) equals \(\langle s(e)s(e')\Omega,s(e')s(e)\Omega\rangle\), which is \(\langle e\otimes e',e'\otimes e\rangle=0\), as freeness predicts (Exercise 5.1 of the first lesson).
 
-**5.3.** If \(\ell(e_1)\in\mathcal S\), then, \(\varphi\) being tracial on \(\mathcal S\), \(1=\varphi(\ell(e_1)^*\ell(e_1))=\varphi(\ell(e_1)\ell(e_1)^*)=\|\ell(e_1)^*\Omega\|^2=0\), a contradiction. Since \(s(e_1)-is(ie_1)=2\ell(e_1)\), the operator \(\ell(e_1)\) lies in \(\mathcal S(H)\), and the same computation shows that \(\varphi\) is not tracial on \(\mathcal S(H)\).
+**5.3.** If \(\ell(e_1)\in\mathcal S\), then, \(\varphi\) being tracial on \(\mathcal S\), \(1=\varphi(\ell(e_1)^*\ell(e_1))\), which is \(\varphi(\ell(e_1)\ell(e_1)^*)=\|\ell(e_1)^*\Omega\|^2=0\), a contradiction. Since \(s(e_1)-is(ie_1)=2\ell(e_1)\), the operator \(\ell(e_1)\) lies in \(\mathcal S(H)\), and the same computation shows that \(\varphi\) is not tracial on \(\mathcal S(H)\).
 
-**5.4.** \(\ell(\cdot)\) is linear and \(\ell(\cdot)^*\) conjugate linear, so \(\ell(\frac{e+ie'}{\sqrt2})+\ell(\frac{e-ie'}{\sqrt2})^*=\frac1{\sqrt2}\big(\ell(e)+i\ell(e')+\ell(e)^*+i\ell(e')^*\big)=\frac1{\sqrt2}(s(e)+is(e'))\). Also \(\langle e+ie',e-ie'\rangle=1+i\cdot i=0\) and both vectors have norm \(\sqrt2\).
+**5.4.** \(\ell(\cdot)\) is linear and \(\ell(\cdot)^*\) conjugate linear, so
+\[
+\begin{aligned}
+&\ell\big(\tfrac{e+ie'}{\sqrt2}\big)+\ell\big(\tfrac{e-ie'}{\sqrt2}\big)^*\\
+&\quad=\tfrac1{\sqrt2}\big(\ell(e)+i\ell(e')+\ell(e)^*+i\ell(e')^*\big)\\
+&\quad=\tfrac1{\sqrt2}(s(e)+is(e')).
+\end{aligned}
+\]
+Also \(\langle e+ie',e-ie'\rangle=1+i\cdot i=0\) and both vectors have norm \(\sqrt2\).
 
 ## References
 

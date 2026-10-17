@@ -10,26 +10,38 @@ We use the standard form and the results (B3)–(B6) listed in [Ultraproducts an
 
 Let \(M\) be a von Neumann algebra with a faithful normal state \(\varphi\), \(H=L^2(M)\) its standard Hilbert space, \(\xi\) the vector of \(\varphi\) in the natural cone, \(\sigma_t=\sigma^\varphi_t\), and
 \[
-D=\log\Delta,\qquad U_t=e^{itD}=\Delta^{it},\qquad L(a)h=ah,\qquad R(a)h=ha=Ja^*Jh .
+\begin{gathered}
+D=\log\Delta,\qquad U_t=e^{itD}=\Delta^{it},\\
+L(a)h=ah,\qquad R(a)h=ha=Ja^*Jh .
+\end{gathered}
 \]
 \(L\) is a representation and \(R\) an anti-representation of \(M\), and their ranges commute. Inner products are linear in the first variable. For a closed set \(K\subset\mathbb R\), a vector \(h\) has *\(D\)-spectral support in \(K\)* if \(1_K(D)h=h\). We have
 \[
-U_t(a\xi)=\sigma_t(a)\xi,\qquad e^{D/2}a\xi=\xi a,\qquad\|a^*\xi\|=\|\xi a\| .
-\tag{1.1}
+\begin{gathered}
+U_t(a\xi)=\sigma_t(a)\xi,\\
+e^{D/2}a\xi=\xi a,\\
+\|a^*\xi\|=\|\xi a\| .
+\end{gathered}\tag{1.1}
 \]
 Indeed \(a\xi\) lies in the domain of \(S=J\Delta^{1/2}\), so \(\Delta^{1/2}a\xi=JSa\xi=Ja^*\xi=Ja^*J\xi=\xi a\), and \(\|a^*\xi\|=\|Ja^*\xi\|\).
 
 **Lemma 1.1** (spectral localization controls the predual). For \(w\in M\) and \(s\in\mathbb R\),
 \[
-\|\varphi w-e^sw\varphi\|\le(1+e^{s/2})\,\|(e^{D/2}-e^{s/2})w\xi\| .
+\begin{aligned}
+&\|\varphi w-e^sw\varphi\|\\
+&\quad \le(1+e^{s/2})\,\|(e^{D/2}-e^{s/2})w\xi\| .
+\end{aligned}
 \]
 If \((w_n)\) is bounded and \(w_n\xi\) has \(D\)-spectral support in \([s-d_n,s+d_n]\) with \(d_n\to0\), then \(\|\varphi w_n-e^sw_n\varphi\|\to0\).
 
 **Proof.** Put \(c=e^{s/2}\) and \(\eta=\xi w-cw\xi=(e^{D/2}-c)w\xi\). Since \(J(\xi w)=w^*\xi\) and \(J(w\xi)=\xi w^*\), we get \(J\eta=w^*\xi-c\,\xi w^*\). For \(y\in M\),
 \[
-(\varphi w)(y)=\varphi(wy)=\langle y\xi,w^*\xi\rangle=c\langle y\xi,\xi w^*\rangle+\langle y\xi,J\eta\rangle .
+\begin{aligned}
+&(\varphi w)(y)=\varphi(wy)=\langle y\xi,w^*\xi\rangle\\
+&\quad =c\langle y\xi,\xi w^*\rangle+\langle y\xi,J\eta\rangle .
+\end{aligned}
 \]
-Since \(R(w^*)^*=R(w)\) commutes with \(L(y)\), \(\langle y\xi,\xi w^*\rangle=\langle y(\xi w),\xi\rangle=c\,\varphi(yw)+\langle y\eta,\xi\rangle\). Hence \(|\varphi(wy)-c^2\varphi(yw)|\le(1+c)\|\eta\|\,\|y\|\), and \(c^2\varphi(yw)=e^s(w\varphi)(y)\). The last statement follows from \(\|(e^{D/2}-c)w_n\xi\|\le\sup_{|u-s|\le d_n}|e^{u/2}-c|\,\|w_n\xi\|\). \(\square\)
+Since \(R(w^*)^*=R(w)\) commutes with \(L(y)\), \(\langle y\xi,\xi w^*\rangle=\langle y(\xi w),\xi\rangle\), which is \(c\,\varphi(yw)+\langle y\eta,\xi\rangle\). Hence \(|\varphi(wy)-c^2\varphi(yw)|\le(1+c)\|\eta\|\,\|y\|\), and \(c^2\varphi(yw)=e^s(w\varphi)(y)\). The last statement follows because \(\|(e^{D/2}-c)w_n\xi\|\) is at most \(\sup_{|u-s|\le d_n}|e^{u/2}-c|\,\|w_n\xi\|\). \(\square\)
 
 **Lemma 1.2** (smooth spectral localization). Let \(f\in C_c^\infty(\mathbb R)\) and \(g\in L^1(\mathbb R)\) with \(f(u)=\int g(t)e^{itu}\,dt\). For \(y\in M\), \(y_f=\int g(t)\sigma_t(y)\,dt\) lies in \(M\), \(\|y_f\|\le\|g\|_1\|y\|\), and \(y_f\xi=f(D)y\xi\). If \(a\in M\) and \(a\xi\) has compact \(D\)-spectral support, there is \(a^\flat\in M\) with \(a\xi=\xi a^\flat\).
 
@@ -47,7 +59,10 @@ From now on we assume that \(\varphi\) is *ergodic*: \(M_\varphi=\mathbb C1\).
 
 **Lemma 2.2.** For \(y\in M\) and \(\psi\in M_*\),
 \[
-\int\sigma_t(y)\xi\,d\mu_k(t)\to\varphi(y)\xi\ \text{ in }H,\qquad\int\psi\circ\sigma_{-t}\,d\mu_k(t)\to\psi(1)\varphi\ \text{ in }M_* .
+\begin{gathered}
+\int\sigma_t(y)\xi\,d\mu_k(t)\to\varphi(y)\xi\ \text{ in }H,\\
+\int\psi\circ\sigma_{-t}\,d\mu_k(t)\to\psi(1)\varphi\ \text{ in }M_* .
+\end{gathered}
 \]
 
 **Proof.** Put \(Y_k=\int\sigma_t(y)\,d\mu_k(t)\in M\); then \(\|Y_k\|\le\|y\|\), and \(Y_k\xi\) converges in norm by Lemma 2.1. For fixed \(u\), \(\|\sigma_u(Y_k)-Y_k\|\le|u|\,\|y\|/k\). If \(Y\) is a \(\sigma\)-weak cluster point of \((Y_k)\), then \(\sigma_u(Y)=Y\) for all \(u\), so \(Y\in M_\varphi\), and \(Y=\varphi(Y)1=\varphi(y)1\), since \(\varphi(Y_k)=\varphi(y)\). The norm limit of \(Y_k\xi\) is the weak limit along the corresponding subnet, \(\varphi(y)\xi\).
@@ -62,7 +77,10 @@ This is a positive normalized linear functional, invariant under translations (t
 
 **Lemma 2.3** (operator averaging). For \(S\in B(H)\) let \(P(S)\in B(H)\) be defined by \(\langle P(S)h,k\rangle=m_t\langle U_t^*SU_th,k\rangle\). Then \(P\) is a positive unital contraction, \(P(S)\) commutes with every spectral projection of \(D\), and
 \[
-P(L(a))=\varphi(a)1\quad(a\in M),\qquad\|t\mapsto SU_th\|_{\mathrm{av}}^2=\langle P(S^*S)h,h\rangle .
+\begin{gathered}
+P(L(a))=\varphi(a)1\quad(a\in M),\\
+\|t\mapsto SU_th\|_{\mathrm{av}}^2=\langle P(S^*S)h,h\rangle .
+\end{gathered}
 \]
 
 **Proof.** The form is bounded by \(\|S\|\|h\|\|k\|\), and positivity and \(P(1)=1\) are clear. Translation invariance of \(m\) gives \(U_u^*P(S)U_u=P(S)\), so \(P(S)\) commutes with the unitary group \(U\) and hence with the spectral projections of \(D\). Since \(U_t^*L(a)U_t=L(\sigma_{-t}(a))\), \(P(L(a))\) is the weak operator limit along \(\omega\) of \(L(Y_k)\), \(Y_k=\int\sigma_{-t}(a)\,d\mu_k(t)\); the \(\sigma\)-weak limit \(Y\) of \(Y_k\) along \(\omega\) is \(\sigma\)-invariant, as in Lemma 2.2, hence \(Y=\varphi(a)1\). The last identity is the definition of \(P(S^*S)\). \(\square\)
@@ -73,26 +91,34 @@ P(L(a))=\varphi(a)1\quad(a\in M),\qquad\|t\mapsto SU_th\|_{\mathrm{av}}^2=\langl
 \[
 \limsup_{n\to\infty}m_t\|TU_th_n\|^2>0,
 \]
-then there are a subsequence \((n_j)\), elements \(v_j\in M\), and constants \(C_*<\infty\), \(\eta>0\) with
-\[
-\|v_j\|\le C_*,\qquad\|Tv_j\xi\|\ge\eta,\qquad v_j\xi\ \text{has \(D\)-spectral support in }[s-4\delta_{n_j},s+4\delta_{n_j}] .
-\]
+then there are a subsequence \((n_j)\), elements \(v_j\in M\), and constants \(C_*<\infty\), \(\eta>0\) with \(\|v_j\|\le C_*\), \(\|Tv_j\xi\|\ge\eta\), and \(D\)-spectral support of \(v_j\xi\) in \([s-4\delta_{n_j},s+4\delta_{n_j}]\).
 
 **Proof.** *Filters.* Choose \(f_0\in C_c^\infty(\mathbb R)\) with \(0\le f_0\le1\), \(f_0=1\) on \([-1,1]\) and support in \([-2,2]\), and \(g_0\in L^1\) with \(f_0(u)=\int g_0(t)e^{itu}\,dt\). For \(\rho>0\) put \(f_\rho(u)=f_0((u-s)/\rho)\) and \(g_\rho(t)=\rho e^{-ist}g_0(\rho t)\). The substitution \(t\mapsto t/\rho\) gives \(f_\rho(u)=\int g_\rho(t)e^{itu}\,dt\) and \(\|g_\rho\|_1=\|g_0\|_1=:C_1\). By Lemma 1.2, \(\mathcal F_\rho(x)=\int g_\rho(t)\sigma_t(x)\,dt\) satisfies
 \[
-\mathcal F_\rho(x)\in M,\qquad\|\mathcal F_\rho(x)\|\le C_1\|x\|,\qquad\mathcal F_\rho(x)\xi=f_\rho(D)x\xi ,
+\begin{gathered}
+\mathcal F_\rho(x)\in M,\qquad \|\mathcal F_\rho(x)\|\le C_1\|x\|,\\
+\mathcal F_\rho(x)\xi=f_\rho(D)x\xi ,
+\end{gathered}
 \]
 and \(\mathcal F_\rho(x)\xi\) has spectral support in \([s-2\rho,s+2\rho]\).
 
-*Bounded representatives.* Passing to a subsequence, there is \(\gamma>0\) with \(m_t\|TU_th_n\|^2\ge4\gamma\) for all \(n\). Choose \(x_n\in M\) with \(x_n\xi\) close to \(h_n\). Since \(f_{\delta_n}(D)\) is a contraction fixing \(h_n\), the vectors \(\mathcal F_{\delta_n}(x_n)\xi=f_{\delta_n}(D)x_n\xi\) are at least as close to \(h_n\). Normalizing, we obtain \(y_n\in M\) with \(\|y_n\xi\|=1\), \(\|y_n\xi-h_n\|\to0\), and spectral support in \([s-d_n,s+d_n]\), \(d_n=2\delta_n\). Since \(\big|\|t\mapsto TU_ty_n\xi\|_{\mathrm{av}}-\|t\mapsto TU_th_n\|_{\mathrm{av}}\big|\le\|T\|\|y_n\xi-h_n\|\), we may assume \(m_t\|TU_ty_n\xi\|^2\ge2\gamma\) and \(d_n\le1\) for all \(n\). By (1.1),
+*Bounded representatives.* Passing to a subsequence, there is \(\gamma>0\) with \(m_t\|TU_th_n\|^2\ge4\gamma\) for all \(n\). Choose \(x_n\in M\) with \(x_n\xi\) close to \(h_n\). Since \(f_{\delta_n}(D)\) is a contraction fixing \(h_n\), the vectors \(\mathcal F_{\delta_n}(x_n)\xi=f_{\delta_n}(D)x_n\xi\) are at least as close to \(h_n\). Normalizing, we obtain \(y_n\in M\) with \(\|y_n\xi\|=1\), \(\|y_n\xi-h_n\|\to0\), and spectral support in \([s-d_n,s+d_n]\), \(d_n=2\delta_n\). Since the averages \(\|t\mapsto TU_ty_n\xi\|_{\mathrm{av}}\) and \(\|t\mapsto TU_th_n\|_{\mathrm{av}}\) differ by at most \(\|T\|\|y_n\xi-h_n\|\), we may assume \(m_t\|TU_ty_n\xi\|^2\ge2\gamma\) and \(d_n\le1\) for all \(n\). By (1.1),
 \[
-\varphi(y_n^*y_n)=1,\qquad\varphi(y_ny_n^*)=\|e^{D/2}y_n\xi\|^2\le e^{s+1}.
+\begin{gathered}
+\varphi(y_n^*y_n)=1,\\
+\varphi(y_ny_n^*)=\|e^{D/2}y_n\xi\|^2\le e^{s+1}.
+\end{gathered}
 \]
 No bound on \(\|y_n\|\) is available.
 
 *Averaging with \(n\) fixed.* Fix \(n\), write \(y=y_n\) and \(z_t=\sigma_t(y)\), and put
 \[
-A_k=\int z_t^*z_t\,d\mu_k(t),\qquad B_k=\int z_tz_t^*\,d\mu_k(t),\qquad\psi(x)=\varphi(y^*xy),\qquad\psi_k=\int\psi\circ\sigma_{-t}\,d\mu_k(t).
+\begin{gathered}
+A_k=\int z_t^*z_t\,d\mu_k(t),\\
+B_k=\int z_tz_t^*\,d\mu_k(t),\\
+\psi(x)=\varphi(y^*xy),\\
+\psi_k=\int\psi\circ\sigma_{-t}\,d\mu_k(t).
+\end{gathered}
 \]
 Then \(\psi\) is a normal state and \(\psi_k(x)=\int\varphi(z_t^*xz_t)\,d\mu_k(t)\), since \(\varphi\circ\sigma_t=\varphi\). By Lemma 2.2, \(A_k\xi\to\xi\) and \(\|\psi_k-\varphi\|\to0\); so \(\varphi(A_k^2)=\|A_k\xi\|^2\to1\). Also \(\|B_k\|\le\|y\|^2\) and \(\varphi(B_k)=\varphi(yy^*)\le e^{s+1}\), so \(\psi_k(B_k)\le\varphi(B_k)+\|\psi_k-\varphi\|\|y\|^2\). For all large \(k\),
 \[
@@ -102,7 +128,11 @@ Since \(m_t\|Tz_t\xi\|^2=m_t\|TU_ty\xi\|^2\ge2\gamma\), the set of \(k\) with \(
 
 *Discretization.* The map \(t\mapsto z_t\) is bounded and \(*\)-strongly continuous, so \(t\mapsto\|Tz_t\xi\|^2\) and \((t,u)\mapsto\varphi(z_t^*z_tz_u^*z_u)\), \((t,u)\mapsto\varphi(z_t^*z_uz_u^*z_t)\) are continuous. Their integrals over \([-k,k]\), resp. \([-k,k]^2\), against \(\mu_k\), resp. \(\mu_k\otimes\mu_k\), are \(\int\|Tz_t\xi\|^2d\mu_k\), \(\varphi(A_k^2)\) and \(\psi_k(B_k)\). Riemann sums for a fine partition of \([-k,k]\) give times \(t_i\) and weights \(p_i\ge0\), \(\sum_ip_i=1\), such that with \(z_i=\sigma_{t_i}(y)\), \(A=\sum_ip_iz_i^*z_i\) and \(B=\sum_ip_iz_iz_i^*\),
 \[
-\sum_ip_i\|Tz_i\xi\|^2\ge\gamma,\qquad\varphi(A^2)+\sum_ip_i\varphi(z_i^*Bz_i)\le C:=4+e^{s+1}.
+\begin{aligned}
+&\sum_ip_i\|Tz_i\xi\|^2\ge\gamma,\\
+&\varphi(A^2)+\sum_ip_i\varphi(z_i^*Bz_i)\\
+&\quad \le C:=4+e^{s+1}.
+\end{aligned}
 \]
 The constants \(\gamma\) and \(C\) do not depend on \(n\).
 
@@ -110,20 +140,31 @@ The constants \(\gamma\) and \(C\) do not depend on \(n\).
 \[
 \mathbb E\|Tz\xi\|^2=\sum_ip_i\|Tz_i\xi\|^2\ge\gamma .
 \]
-Expanding \((z^*z)^2=\sum_{i,j,k,l}\sqrt{p_ip_jp_kp_l}\,\overline{\epsilon_i}\epsilon_j\overline{\epsilon_k}\epsilon_l\,z_i^*z_jz_k^*z_l\), the expectation of the product of phases is \(1\) when \((i,k)\) is a rearrangement of \((j,l)\), that is when \(i=j,k=l\) or \(i=l,k=j\), and \(0\) otherwise; the two cases overlap exactly when all four indices agree. Hence
+Expanding \((z^*z)^2\) as the sum of \(\sqrt{p_ip_jp_kp_l}\,\overline{\epsilon_i}\epsilon_j\overline{\epsilon_k}\epsilon_l\,z_i^*z_jz_k^*z_l\) over \(i,j,k,l\), the expectation of the product of phases is \(1\) when \((i,k)\) is a rearrangement of \((j,l)\), that is when \(i=j,k=l\) or \(i=l,k=j\), and \(0\) otherwise; the two cases overlap exactly when all four indices agree. Hence
 \[
-\mathbb E(z^*z)^2=A^2+\sum_ip_iz_i^*Bz_i-\sum_ip_i^2(z_i^*z_i)^2\le A^2+\sum_ip_iz_i^*Bz_i ,
+\begin{aligned}
+&\mathbb E(z^*z)^2=A^2+\sum_ip_iz_i^*Bz_i\\
+&\quad -\sum_ip_i^2(z_i^*z_i)^2\le A^2+\sum_ip_iz_i^*Bz_i ,
+\end{aligned}
 \]
 and \(\mathbb E\varphi((z^*z)^2)\le C\).
 
 *Truncation.* For \(K>0\) let \(z=u|z|\) be the polar decomposition and \(z^{[K]}=u\min(|z|,K)\), so \(\|z^{[K]}\|\le K\). Then \(z-z^{[K]}=u(|z|-K)_+\), and since \((r-K)_+^2\le r^4/K^2\) for \(r\ge0\),
 \[
-\mathbb E\|(z-z^{[K]})\xi\|^2=\mathbb E\varphi((|z|-K)_+^2)\le K^{-2}\mathbb E\varphi(|z|^4)\le CK^{-2}.
+\begin{aligned}
+&\mathbb E\|(z-z^{[K]})\xi\|^2=\mathbb E\varphi((|z|-K)_+^2)\\
+&\quad \le K^{-2}\mathbb E\varphi(|z|^4)\le CK^{-2}.
+\end{aligned}
 \]
 
 *Restoring the band.* Put \(v=\mathcal F_{d_n}(z^{[K]})\). Then \(\|v\|\le C_1K\), \(v\xi=f_{d_n}(D)z^{[K]}\xi\) has spectral support in \([s-2d_n,s+2d_n]\), and since \(f_{d_n}(D)\) fixes \(z\xi\) and is a contraction, \(\|v\xi-z\xi\|\le\|(z^{[K]}-z)\xi\|\). By Minkowski's inequality for square-integrable random vectors,
 \[
-\big(\mathbb E\|Tv\xi\|^2\big)^{1/2}\ge\big(\mathbb E\|Tz\xi\|^2\big)^{1/2}-\|T\|\big(\mathbb E\|(v-z)\xi\|^2\big)^{1/2}\ge\sqrt\gamma-\|T\|\sqrt C/K .
+\begin{aligned}
+&\big(\mathbb E\|Tv\xi\|^2\big)^{1/2}\\
+&\quad \ge\big(\mathbb E\|Tz\xi\|^2\big)^{1/2}\\
+&\quad -\|T\|\big(\mathbb E\|(v-z)\xi\|^2\big)^{1/2}\\
+&\quad \ge\sqrt\gamma-\|T\|\sqrt C/K .
+\end{aligned}
 \]
 The hypothesis forces \(T\ne0\). Fix \(K=2\|T\|\sqrt{C/\gamma}\), independent of \(n\); then \(\mathbb E\|Tv\xi\|^2\ge\gamma/4\).
 
@@ -137,7 +178,14 @@ The averaging time \(k\) and the finite family \((z_i)\) depend on \(n\), but th
 
 **Exercise 4.2.** Show that if \(M_\varphi=\mathbb C1\), then the fixed vectors of \(U\) are the multiples of \(\xi\). (Use Lemma 2.2.)
 
-**Exercise 4.3.** Verify the identity \(\mathbb E(z^*z)^2=A^2+\sum_ip_iz_i^*Bz_i-\sum_ip_i^2(z_i^*z_i)^2\) for two indices by direct expansion.
+**Exercise 4.3.** Verify the identity
+\[
+\begin{aligned}
+&\mathbb E(z^*z)^2=A^2+\sum_ip_iz_i^*Bz_i\\
+&\qquad-\sum_ip_i^2(z_i^*z_i)^2
+\end{aligned}
+\]
+for two indices by direct expansion.
 
 **Exercise 4.4.** Show that \((r-K)_+^2\le r^4/K^2\) for all \(r\ge0\) and \(K>0\).
 
@@ -147,7 +195,30 @@ The averaging time \(k\) and the finite family \((z_i)\) depend on \(n\), but th
 
 **4.2.** If \(U_t\eta=\eta\) for all \(t\), approximate \(\eta\) by \(y\xi\), \(y\in M\). By Lemma 2.1 and Lemma 2.2, \(\eta=P\eta\) is the limit of \(Py\xi=\lim_k\int\sigma_t(y)\xi\,d\mu_k=\varphi(y)\xi\), a multiple of \(\xi\).
 
-**4.3.** With \(z=a\epsilon_1z_1+b\epsilon_2z_2\), \(a=\sqrt{p_1}\), \(b=\sqrt{p_2}\), the terms of \((z^*z)^2\) surviving the expectation are \(a^4(z_1^*z_1)^2+b^4(z_2^*z_2)^2+a^2b^2(z_1^*z_1z_2^*z_2+z_2^*z_2z_1^*z_1+z_1^*z_2z_2^*z_1+z_2^*z_1z_1^*z_2)\). The right side equals \(A^2=p_1^2(z_1^*z_1)^2+p_2^2(z_2^*z_2)^2+p_1p_2(z_1^*z_1z_2^*z_2+z_2^*z_2z_1^*z_1)\), plus \(\sum_ip_iz_i^*Bz_i=p_1^2(z_1^*z_1)^2+p_1p_2z_1^*z_2z_2^*z_1+p_2p_1z_2^*z_1z_1^*z_2+p_2^2(z_2^*z_2)^2\), minus \(p_1^2(z_1^*z_1)^2+p_2^2(z_2^*z_2)^2\). They agree.
+**4.3.** With \(z=a\epsilon_1z_1+b\epsilon_2z_2\), \(a=\sqrt{p_1}\), \(b=\sqrt{p_2}\), the terms of \((z^*z)^2\) surviving the expectation are
+\[
+\begin{aligned}
+&a^4(z_1^*z_1)^2+b^4(z_2^*z_2)^2\\
+&\quad+a^2b^2(z_1^*z_1z_2^*z_2+z_2^*z_2z_1^*z_1\\
+&\qquad+z_1^*z_2z_2^*z_1+z_2^*z_1z_1^*z_2).
+\end{aligned}
+\]
+The right side equals
+\[
+\begin{aligned}
+&A^2=p_1^2(z_1^*z_1)^2+p_2^2(z_2^*z_2)^2\\
+&\quad+p_1p_2(z_1^*z_1z_2^*z_2+z_2^*z_2z_1^*z_1),
+\end{aligned}
+\]
+plus
+\[
+\begin{aligned}
+&\sum_ip_iz_i^*Bz_i\\
+&\quad=p_1^2(z_1^*z_1)^2+p_1p_2z_1^*z_2z_2^*z_1\\
+&\qquad+p_2p_1z_2^*z_1z_1^*z_2+p_2^2(z_2^*z_2)^2,
+\end{aligned}
+\]
+minus \(p_1^2(z_1^*z_1)^2+p_2^2(z_2^*z_2)^2\). They agree.
 
 **4.4.** If \(r\le K\), the left side is \(0\). If \(r>K\), then \((r-K)^2\le r^2\le r^4/K^2\).
 

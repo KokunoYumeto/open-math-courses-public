@@ -10,7 +10,10 @@ We use: Theorem 3.2 of [Ultraproducts and the asymptotic centralizer](course:typ
 
 A *tracial von Neumann algebra* \((M,\tau)\) is a von Neumann algebra \(M\) with a faithful normal tracial state \(\tau\). Put
 \[
-\|x\|_2=\tau(x^*x)^{1/2},\qquad \|x\|_1=\tau(|x|),\qquad \langle a,b\rangle=\tau(b^*a),
+\begin{gathered}
+\|x\|_2=\tau(x^*x)^{1/2},\\
+\|x\|_1=\tau(|x|),\qquad \langle a,b\rangle=\tau(b^*a),
+\end{gathered}
 \]
 and let \(L^2(M)\) be the completion of \(M\) for \(\|\cdot\|_2\); \(M\) acts on it by left multiplication, and \(\|x\|\) denotes the operator norm. A *II₁ factor* is a factor with a faithful normal tracial state and no nonzero abelian projection. For a subset \(S\subseteq M\), \(W^*(S)\) is the smallest von Neumann subalgebra of \(M\) containing \(S\) and \(1\); \(C^*(S)\) is the smallest unital C\*-subalgebra containing \(S\).
 
@@ -22,13 +25,17 @@ and let \(L^2(M)\) be the completion of \(M\) for \(\|\cdot\|_2\); \(M\) acts on
 
 **Proof.** (1) The first inequality is the Cauchy–Schwarz inequality for the positive form \((a,b)\mapsto\tau(b^*a)\), applied to \(a\) and \(b^*\). For the second, \(a^*a\le\|a\|^21\) gives \(\|ab\|_2^2=\tau(b^*a^*ab)\le\|a\|^2\tau(b^*b)\), and \(\|bc\|_2=\|c^*b^*\|_2\le\|c\|\,\|b^*\|_2=\|c\|\,\|b\|_2\) because \(\tau(bb^*)=\tau(b^*b)\).
 
-(2) Write \(b=w|b|\) with \(w\in M\) a partial isometry and \(w^*w|b|=|b|\). Traciality gives \(\tau(ab)=\tau(|b|^{1/2}aw|b|^{1/2})\). The functional \(x\mapsto\tau(|b|^{1/2}x|b|^{1/2})\) is positive with norm \(\tau(|b|)\), so \(|\tau(ab)|\le\|aw\|\,\tau(|b|)\le\|a\|\,\|b\|_1\). The choice \(d=w^*\) gives \(\tau(w^*b)=\tau(|b|)\), so the maximum is attained. Finally \(\|abc\|_1=\max_{\|d\|\le1}|\tau((cda)b)|\le\|a\|\,\|c\|\,\|b\|_1\).
+(2) Write \(b=w|b|\) with \(w\in M\) a partial isometry and \(w^*w|b|=|b|\). Traciality gives \(\tau(ab)=\tau(|b|^{1/2}aw|b|^{1/2})\). The functional \(x\mapsto\tau(|b|^{1/2}x|b|^{1/2})\) is positive with norm \(\tau(|b|)\), so \(|\tau(ab)|\le\|aw\|\,\tau(|b|)\le\|a\|\,\|b\|_1\). The choice \(d=w^*\) gives \(\tau(w^*b)=\tau(|b|)\), so the maximum is attained. Finally \(\|abc\|_1=\max_{\|d\|\le1}|\tau((cda)b)|\), which is at most \(\|a\|\,\|c\|\,\|b\|_1\).
 
-(3) By (1), \(\tau(|b|)=\tau(|b|\cdot1)\le\||b|\|_2\|1\|_2=\|b\|_2\). If \(b=bq\), then \(b^*b=qb^*bq\); \(|b|\) is a norm limit of polynomials in \(b^*b\) without constant term, so \(|b|=|b|q\), and \(\tau(|b|)=\tau(|b|q)\le\|b\|_2\|q\|_2=\tau(q)^{1/2}\|b\|_2\). \(\square\)
+(3) By (1), \(\tau(|b|)=\tau(|b|\cdot1)\le\||b|\|_2\|1\|_2=\|b\|_2\). If \(b=bq\), then \(b^*b=qb^*bq\); \(|b|\) is a norm limit of polynomials in \(b^*b\) without constant term, so \(|b|=|b|q\), and \(\tau(|b|)=\tau(|b|q)\), which is at most \(\|b\|_2\|q\|_2=\tau(q)^{1/2}\|b\|_2\). \(\square\)
 
 By (1), products and adjoints are continuous for \(\|\cdot\|_2\) on bounded sets: if \(\sup_i\|x_i\|\) and \(\sup_i\|y_i\|\) are finite, \(x_i\to x\) and \(y_i\to y\) in \(2\)-norm, then
 \[
-\|x_iy_i-xy\|_2\le\|x_i\|\,\|y_i-y\|_2+\|x_i-x\|_2\,\|y\|,\qquad\|x_i^*-x^*\|_2=\|x_i-x\|_2 .
+\begin{aligned}
+&\|x_iy_i-xy\|_2\le\|x_i\|\,\|y_i-y\|_2\\
+&\quad +\|x_i-x\|_2\,\|y\|,\\
+&\|x_i^*-x^*\|_2=\|x_i-x\|_2 .
+\end{aligned}
 \]
 Hence a product of finitely many bounded letters depends continuously on the letters, and so does its trace. A \(2\)-norm limit of a bounded net of unitaries (projections) is a unitary (projection). The closed unit ball of \(M\) is complete for \(\|\cdot\|_2\) (Lemma 1.4 of the ultraproduct lesson, where \(\|x\|^\sharp=\sqrt2\|x\|_2\) for a trace).
 
@@ -46,9 +53,13 @@ h_m=\sum_{k=0}^{2^m-1}k2^{-m}p_{m,k}.
 \]
 Then \(h_{m+1}-h_m=\sum_k2^{-m-1}p_{m+1,2k+1}\), so \(0\le h_{m+1}-h_m\le2^{-m-1}e\), and \(h_m\) converges in norm to a self-adjoint \(x\in Ae\) with \(0\le x\le e\). For a continuous \(g\) on \([0,1]\) with \(g(0)=0\), \(g(h_m)=\sum_kg(k2^{-m})p_{m,k}\) because the \(p_{m,k}\) are orthogonal projections, so
 \[
-\tau(g(x))=\lim_m\tau(g(h_m))=\lim_m\sum_{k=0}^{2^m-1}g(k2^{-m})2^{-m}s=s\int_0^1g(r)\,dr .
+\begin{aligned}
+&\tau(g(x))=\lim_m\tau(g(h_m))\\
+&\quad =\lim_m\sum_{k=0}^{2^m-1}g(k2^{-m})2^{-m}s\\
+&\quad =s\int_0^1g(r)\,dr .
+\end{aligned}
 \]
-Let \(h=\exp(2\pi ix)e\), the functional calculus of \(r\mapsto e^{2\pi ir}\) in the corner \(eMe\) (with unit \(e\)). Then \(h\) is a unitary of \(eMe\), and for \(j\ne0\), \(h^j-e\) is \(g_j(x)\) with \(g_j(r)=e^{2\pi ijr}-1\), so \(\tau(h^j)=\tau(e)+s\int_0^1(e^{2\pi ijr}-1)\,dr=s-s=0\). \(\square\)
+Let \(h=\exp(2\pi ix)e\), the functional calculus of \(r\mapsto e^{2\pi ir}\) in the corner \(eMe\) (with unit \(e\)). Then \(h\) is a unitary of \(eMe\), and for \(j\ne0\), \(h^j-e\) is \(g_j(x)\) with \(g_j(r)=e^{2\pi ijr}-1\), so \(\tau(h^j)=\tau(e)+s\int_0^1(e^{2\pi ijr}-1)\,dr\), which is \(s-s=0\). \(\square\)
 
 **Lemma 2.3.** In a factor \(Q\) with a faithful tracial state \(\tau\), two projections \(e,f\) with \(\tau(e)=\tau(f)\) are equivalent: there is \(v\in Q\) with \(v^*v=e\), \(vv^*=f\).
 
@@ -87,7 +98,10 @@ Conversely assume (3.1). The Laurent polynomials in \(t\) are norm dense in \(C^
 
 **Proof.** For \(t^*\), (3.1) for \(t^*\) is (3.1) for \(t\) with the exponents negated. Put \(v=atb\) and consider a word \(d_0v^{n_1}d_1\cdots v^{n_j}d_j\) as in (3.1). For \(n>0\) and \(n<0\) respectively,
 \[
-v^n=at(ba)t(ba)\cdots(ba)tb,\qquad v^{n}=b^*t^*(a^*b^*)t^*\cdots(a^*b^*)t^*a^*,
+\begin{gathered}
+v^n=at(ba)t(ba)\cdots(ba)tb,\\
+v^{n}=b^*t^*(a^*b^*)t^*\cdots(a^*b^*)t^*a^*,
+\end{gathered}
 \]
 with \(|n|\) letters \(t^{\pm1}\). Substituting, the word becomes \(e_0t^{\sigma_1}e_1t^{\sigma_2}\cdots t^{\sigma_N}e_N\) with \(\sigma_r=\pm1\) and \(e_r\in D\). Inside one power all letters have the same sign. A separator between letters of opposite signs therefore sits at a junction of \(v^{n_i}\) and \(v^{n_{i+1}}\), and equals \(bd_ib^*\) (from \(t\) to \(t^*\)) or \(a^*d_ia\) (from \(t^*\) to \(t\)); it is centred, since \(\tau(bd_ib^*)=\tau(d_i)=0\). Write every separator between letters of equal sign as \(\tau(e_r)1+e_r^\circ\) and expand. In each resulting word, the letters joined by scalar separators combine into a power \(t^m\) with \(m\ne0\), because they have equal signs, and successive powers are separated by centred elements of \(D\). The outer letters \(e_0,e_N\) lie in \(D\). By (3.1) for \(t\), every term has trace \(0\). Thus (3.1) holds for \(v\). With \(j=1\) and \(d_0=d_1=1\) it says \(\tau(v^n)=0\) for \(n\ne0\), so \(v\) is a Haar unitary, and Lemma 3.2 shows that \(v\) is free from \(D\). \(\square\)
 
@@ -103,7 +117,10 @@ Fix a free ultrafilter \(\omega\) on \(\mathbb N\) and tracial von Neumann algeb
 
 **Proof.** Let \((b_n)\) be a bounded representing sequence with \(b_n\in N_n\), and \(b_n=w_n|b_n|\) its polar decompositions in \(N_n\). Since \(\tau_n(w_n^*w_n)=\tau_n(w_nw_n^*)\), Lemma 2.3 gives \(y_n\in N_n\) with \(y_n^*y_n=1-w_n^*w_n\) and \(y_ny_n^*=1-w_nw_n^*\). Then \(U_n=w_n+y_n\) is a unitary (the cross terms vanish because \(w_n^*(1-w_nw_n^*)=0\) and \(w_n(1-w_n^*w_n)=0\)), and \(U_n|b_n|=b_n\) because \(w_n^*w_n\) is the support of \(|b_n|\). Hence \(b_n-U_n=U_n(|b_n|-1)\). For \(r\ge0\), \(|\sqrt r-1|\le|r-1|\), so functional calculus gives
 \[
-\|b_n-U_n\|_2=\||b_n|-1\|_2\le\|b_n^*b_n-1\|_2 .
+\begin{aligned}
+&\|b_n-U_n\|_2=\||b_n|-1\|_2\\
+&\quad \le\|b_n^*b_n-1\|_2 .
+\end{aligned}
 \]
 The right side tends to \(\|U^*U-1\|_2=0\) along \(\omega\), so \((U_n)\) represents \(U\). \(\square\)
 

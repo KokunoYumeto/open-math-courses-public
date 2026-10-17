@@ -74,13 +74,13 @@ If \(\mathcal I\) is nonzero on every irreducible component of \(X\) and \(X\) i
 
 1. \(D^r(D^s(\mathcal I))=D^{r+s}(\mathcal I)\), and \(\mathcal I\subset D(\mathcal I)\subset D^2(\mathcal I)\subset\cdots\).
 2. \(D^r(\mathcal I\mathcal J)\subset\sum_{i=0}^rD^i(\mathcal I)D^{r-i}(\mathcal J)\).
-3. If \(m=\operatorname{maxord}\mathcal I<\infty\), then \(D^m(\mathcal I)=\mathcal O_X\), and for \(r<m\), \(\operatorname{cosupp}(D^r\mathcal I,m-r)=\operatorname{cosupp}(\mathcal I,m)\).
+3. If \(m=\operatorname{maxord}\mathcal I<\infty\), then \(D^m(\mathcal I)=\mathcal O_X\), and for \(r<m\), \(\operatorname{cosupp}(D^r\mathcal I,m-r)\) equals \(\operatorname{cosupp}(\mathcal I,m)\).
 4. If \(h:Y\to X\) is smooth, then \(D(h^{-1}\mathcal I\cdot\mathcal O_Y)=h^{-1}D(\mathcal I)\cdot\mathcal O_Y\), and \(\operatorname{ord}_y(h^{-1}\mathcal I\cdot\mathcal O_Y)=\operatorname{ord}_{h(y)}\mathcal I\) for every \(y\in Y\).
 5. If \(k\subset k'\) is a field extension and \(\mathcal I'\) is the pull-back of \(\mathcal I\) to \(X'=X\times_kk'\), then \(D(\mathcal I')\) is the pull-back of \(D(\mathcal I)\), and \(\operatorname{ord}_{x'}\mathcal I'=\operatorname{ord}_x\mathcal I\) for \(x'\) over \(x\).
 
-**Proof.** (1) is the definition; the inclusions were noted after Definition 2.4. (2) follows from the Leibniz rule by induction on \(r\). (3) At every point some element of \(\mathcal I\) has order \(\le m\), so by Proposition 2.3 some \(\partial^\alpha f\) with \(|\alpha|\le m\) is a unit there. For the cosupports, \(\operatorname{cosupp}(D^r\mathcal I,m-r)=V(D^{m-r-1}D^r\mathcal I)=V(D^{m-1}\mathcal I)\) by Corollary 2.5 and (1).
+**Proof.** (1) is the definition; the inclusions were noted after Definition 2.4. (2) follows from the Leibniz rule by induction on \(r\). (3) At every point some element of \(\mathcal I\) has order \(\le m\), so by Proposition 2.3 some \(\partial^\alpha f\) with \(|\alpha|\le m\) is a unit there. For the cosupports, \(\operatorname{cosupp}(D^r\mathcal I,m-r)=V(D^{m-r-1}D^r\mathcal I)\), which is \(V(D^{m-1}\mathcal I)\) by Corollary 2.5 and (1).
 
-(4) The question is local. By [Smooth morphisms](course:AG-FSE/AG-FSE-05), Theorem 4.1, near any point \(Y\) has an étale map to \(\mathbf A^d_X\) over \(X\); together with a coordinate system \(z\) on \(X\), the pulled-back functions \(h^*z_i\) and the \(d\) affine coordinates \(u_l\) form a coordinate system on \(Y\). For \(f\) on \(X\), the corresponding derivations satisfy \(\partial_{h^*z_i}(h^*f)=h^*(\partial_if)\) and \(\partial_{u_l}(h^*f)=0\). This gives the first claim. For the second, \(\operatorname{cosupp}(h^{-1}\mathcal I\cdot\mathcal O_Y,m)=V(D^{m-1}(h^{-1}\mathcal I\cdot\mathcal O_Y))=h^{-1}V(D^{m-1}\mathcal I)\) for every \(m\).
+(4) The question is local. By [Smooth morphisms](course:AG-FSE/AG-FSE-05), Theorem 4.1, near any point \(Y\) has an étale map to \(\mathbf A^d_X\) over \(X\); together with a coordinate system \(z\) on \(X\), the pulled-back functions \(h^*z_i\) and the \(d\) affine coordinates \(u_l\) form a coordinate system on \(Y\). For \(f\) on \(X\), the corresponding derivations satisfy \(\partial_{h^*z_i}(h^*f)=h^*(\partial_if)\) and \(\partial_{u_l}(h^*f)=0\). This gives the first claim. For the second, \(\operatorname{cosupp}(h^{-1}\mathcal I\cdot\mathcal O_Y,m)\) equals \(V(D^{m-1}(h^{-1}\mathcal I\cdot\mathcal O_Y))\), which is \(h^{-1}V(D^{m-1}\mathcal I)\), for every \(m\).
 
 (5) A coordinate system on \(X\) remains one on \(X'\), and its derivations are the base changes, so the generators \(\partial^\alpha f\) correspond. The orders agree by Corollary 2.5, since \(V(D^{m-1}\mathcal I')\) is the inverse image of \(V(D^{m-1}\mathcal I)\). \(\square\)
 
@@ -94,14 +94,17 @@ A closed subscheme \(Z\) of a smooth scheme \(X\) is a *smooth centre* if it is 
 
 1. If \(r\ge2\), then \(\pi^{-1}(U)\) is covered by the opens \(U_j\), \(1\le j\le r\), where \(z_j\) generates the pulled-back ideal of \(Z\). On \(U_j\) the functions
 \[
-y_i=z_i/z_j\ (i\le r,\ i\ne j),\qquad y_j=z_j,\qquad y_i=z_i\ (i>r)
+\begin{gathered}
+y_i=z_i/z_j\ (i\le r,\ i\ne j),\\
+y_j=z_j,\qquad y_i=z_i\ (i>r)
+\end{gathered}
 \]
 form a coordinate system, and \(F\cap U_j=V(y_j)\).
 2. If \(r=1\), then \(\pi\) is an isomorphism over \(U\) and \(F\cap U=Z\cap U\).
 
 In particular \(B_ZX\) is smooth and \(F\) is a smooth divisor whose components lie over the components of \(Z\).
 
-**Proof.** Since \(z:U\to\mathbf A^N\) is étale, hence flat, and \(Z\cap U\) is the inverse image of the linear subspace \(L=V(z_1,\ldots,z_r)\), blowing up commutes with this base change: \(B_{Z\cap U}U=U\times_{\mathbf A^N}B_L\mathbf A^N\) ([Stacks, Tag 0805](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-flat-base-change-blowing-up)). By [Stacks, Tags 0804](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-blowing-up-affine) and [0BIQ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-blowup-regular-sequence), \(B_L\mathbf A^N\) is covered by the spectra of \(k[z_1,\ldots,z_N][y_i:i\le r,i\ne j]/(z_jy_i-z_i)\), which are polynomial rings in the variables listed in (1), with the pulled-back ideal of \(L\) generated by \(z_j=y_j\). The base change of these charts to \(U\) is étale over them, so the pulled-back functions form coordinate systems. For \(r=1\), \(Z\cap U\) is an effective Cartier divisor and the blow-up is an isomorphism ([Stacks, Tag 0807](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-blow-up-effective-Cartier-divisor)). \(\square\)
+**Proof.** Since \(z:U\to\mathbf A^N\) is étale, hence flat, and \(Z\cap U\) is the inverse image of the linear subspace \(L=V(z_1,\ldots,z_r)\), blowing up commutes with this base change: \(B_{Z\cap U}U=U\times_{\mathbf A^N}B_L\mathbf A^N\) ([Stacks, Tag 0805](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-flat-base-change-blowing-up)). By [Stacks, Tags 0804](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-blowing-up-affine) and [0BIQ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-blowup-regular-sequence), \(B_L\mathbf A^N\) is covered by the spectra of the quotients of \(k[z_1,\ldots,z_N][y_i:i\le r,i\ne j]\) by \((z_jy_i-z_i)\), which are polynomial rings in the variables listed in (1), with the pulled-back ideal of \(L\) generated by \(z_j=y_j\). The base change of these charts to \(U\) is étale over them, so the pulled-back functions form coordinate systems. For \(r=1\), \(Z\cap U\) is an effective Cartier divisor and the blow-up is an isomorphism ([Stacks, Tag 0807](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-blow-up-effective-Cartier-divisor)). \(\square\)
 
 A blow-up whose centre is a union of components of codimension one is *trivial*: \(\pi\) is an isomorphism, but the exceptional divisor is \(F=Z\). The morphism \(\pi\) of a trivial blow-up does not determine \(Z\), and every later construction records the centre together with the morphism.
 
@@ -130,18 +133,41 @@ Consequently the multiplicity of \(\pi^{-1}\mathcal I\cdot\mathcal O_{B_ZX}\) al
 **Definition 4.2 (birational transform).** Let \(\pi:B_ZX\to X\) be the blow-up of a smooth centre with components \(Z_j\) and exceptional components \(F_j\) over them. For an ideal sheaf \(\mathcal I\) with \(m_j=\operatorname{ord}_{Z_j}\mathcal I<\infty\), the *birational transform* is
 
 \[
-\pi^{-1}_*\mathcal I=\mathcal O_{B_ZX}\Bigl(\sum_jm_jF_j\Bigr)\cdot\pi^{-1}\mathcal I\cdot\mathcal O_{B_ZX}.
+\begin{aligned}
+&\pi^{-1}_*\mathcal I\\
+&\quad =\mathcal O_{B_ZX}\Bigl(\sum_jm_jF_j\Bigr)\cdot\pi^{-1}\mathcal I\cdot\mathcal O_{B_ZX}.
+\end{aligned}
 \]
 
 A *marked ideal* is a pair \((\mathcal I,m)\) with \(m\in\mathbf N\). Its *cosupport* is \(\operatorname{cosupp}(\mathcal I,m)\), as in Corollary 2.5. If \(\operatorname{ord}_Z\mathcal I\ge m\), the *birational transform* of \((\mathcal I,m)\) is
 
 \[
-\pi^{-1}_*(\mathcal I,m)=\bigl(\mathcal O_{B_ZX}(mF)\cdot\pi^{-1}\mathcal I\cdot\mathcal O_{B_ZX},\ m\bigr).
+\begin{aligned}
+&\pi^{-1}_*(\mathcal I,m)\\
+&\quad =\bigl(\mathcal O_{B_ZX}(mF)\cdot\pi^{-1}\mathcal I\cdot\mathcal O_{B_ZX},\ m\bigr).
+\end{aligned}
 \]
 
-By Lemma 4.1 both are ideal sheaves, and the unmarked transform does not contain any \(F_j\) in its cosupport \(\operatorname{cosupp}(\cdot,1)\). In a chart, \(\pi^{-1}_*(f,m)=y_j^{-m}f(y_1y_j,\ldots,y_j,\ldots,y_ry_j,y_{r+1},\ldots,y_N)\). This formula depends on the coordinates only up to a unit, so it computes ideals but not individual functions. For a trivial blow-up (\(r=1\)) the scheme does not change, but \(\pi^{-1}_*(\mathcal I,m)=\mathcal O_X(mZ)\mathcal I\) has order \(m\) less along \(Z\).
+By Lemma 4.1 both are ideal sheaves, and the unmarked transform does not contain any \(F_j\) in its cosupport \(\operatorname{cosupp}(\cdot,1)\). In a chart,
+\[
+\begin{aligned}
+&\pi^{-1}_*(f,m)=y_j^{-m}f(y_1y_j,\ldots,y_j,\ldots,\\
+&\qquad y_ry_j,y_{r+1},\ldots,y_N).
+\end{aligned}
+\]
+This formula depends on the coordinates only up to a unit, so it computes ideals but not individual functions. For a trivial blow-up (\(r=1\)) the scheme does not change, but \(\pi^{-1}_*(\mathcal I,m)=\mathcal O_X(mZ)\mathcal I\) has order \(m\) less along \(Z\).
 
-Marked ideals multiply by \((\mathcal I_1,m_1)(\mathcal I_2,m_2)=(\mathcal I_1\mathcal I_2,m_1+m_2)\) and add, for equal markings, by \((\mathcal I_1,m)+(\mathcal I_2,m)=(\mathcal I_1+\mathcal I_2,m)\). Birational transforms respect both operations whenever they are defined. The cosupports satisfy \(\operatorname{cosupp}(\mathcal I_1+\mathcal I_2,m)=\operatorname{cosupp}(\mathcal I_1,m)\cap\operatorname{cosupp}(\mathcal I_2,m)\), \(\operatorname{cosupp}(\mathcal I^c,mc)=\operatorname{cosupp}(\mathcal I,m)\), and \(\operatorname{cosupp}(\mathcal I_1\mathcal I_2,m_1+m_2)\supset\operatorname{cosupp}(\mathcal I_1,m_1)\cap\operatorname{cosupp}(\mathcal I_2,m_2)\). These follow from \(\operatorname{ord}_x(\mathcal I_1+\mathcal I_2)=\min(\operatorname{ord}_x\mathcal I_1,\operatorname{ord}_x\mathcal I_2)\) and \(\operatorname{ord}_x(\mathcal I_1\mathcal I_2)=\operatorname{ord}_x\mathcal I_1+\operatorname{ord}_x\mathcal I_2\); the latter holds because \(\operatorname{ord}_x(fg)=\operatorname{ord}_xf+\operatorname{ord}_xg\) in the regular local ring \(\mathcal O_{X,x}\), whose graded ring is a polynomial ring ([Regular local rings](course:AG-CA/AG-CA-14), Theorem 1.1).
+Marked ideals multiply by \((\mathcal I_1,m_1)(\mathcal I_2,m_2)=(\mathcal I_1\mathcal I_2,m_1+m_2)\) and add, for equal markings, by \((\mathcal I_1,m)+(\mathcal I_2,m)=(\mathcal I_1+\mathcal I_2,m)\). Birational transforms respect both operations whenever they are defined. The cosupports satisfy
+\[
+\begin{aligned}
+&\operatorname{cosupp}(\mathcal I_1+\mathcal I_2,m)\\
+&\quad=\operatorname{cosupp}(\mathcal I_1,m)\cap\operatorname{cosupp}(\mathcal I_2,m),\\
+&\operatorname{cosupp}(\mathcal I^c,mc)=\operatorname{cosupp}(\mathcal I,m),\\
+&\operatorname{cosupp}(\mathcal I_1\mathcal I_2,m_1+m_2)\\
+&\quad\supset\operatorname{cosupp}(\mathcal I_1,m_1)\cap\operatorname{cosupp}(\mathcal I_2,m_2).
+\end{aligned}
+\]
+These follow from \(\operatorname{ord}_x(\mathcal I_1+\mathcal I_2)=\min(\operatorname{ord}_x\mathcal I_1,\operatorname{ord}_x\mathcal I_2)\) and \(\operatorname{ord}_x(\mathcal I_1\mathcal I_2)=\operatorname{ord}_x\mathcal I_1+\operatorname{ord}_x\mathcal I_2\); the latter holds because \(\operatorname{ord}_x(fg)=\operatorname{ord}_xf+\operatorname{ord}_xg\) in the regular local ring \(\mathcal O_{X,x}\), whose graded ring is a polynomial ring ([Regular local rings](course:AG-CA/AG-CA-14), Theorem 1.1).
 
 **Lemma 4.3 (the maximal order does not increase).** If \(\operatorname{ord}_Z\mathcal I=\operatorname{maxord}\mathcal I=m<\infty\), then \(\operatorname{maxord}\pi^{-1}_*\mathcal I\le m\).
 
@@ -152,7 +178,10 @@ First, some \(a_\alpha\) is a unit at \(p\). Proposition 2.3 gives \(\alpha\) wi
 Let \(q\in U_j\) (for \(r=1\) read \(U_1=U\) and ignore the fibre variables). Write \(y'=(y_i)_{i\le r,\,i\ne j}\) for the fibre coordinates. Then \(f'=y_j^{-m}\pi^*f=\sum_\beta y'^{\beta'}\pi^*a_\beta\), where \(\beta'\) is \(\beta\) with its \(j\)-th entry removed; \(\beta\mapsto\beta'\) is injective on \(\{|\beta|=m\}\). Among the \(\beta\) with \(a_\beta(p)\ne0\), choose one, \(\gamma\), with \(|\gamma'|\) maximal. The derivations \(\partial/\partial y_i\) with \(i\ne j\) preserve the ideal \((y_j)\) of \(F\cap U_j\) and induce the coordinate derivations of \(F\cap U_j\cong(Z\cap U)\times\mathbf A^{r-1}\) for the coordinates \(y'\) and \(z_{r+1},\ldots,z_N\). Functions pulled back from \(Z\) are killed by the \(\partial/\partial y_i\), \(i\le r\), \(i\ne j\). Therefore
 
 \[
-\bigl(\partial_{y'}^{\gamma'}f'\bigr)\big|_F=\gamma'!\,a_\gamma|_Z+\sum_{\beta'>\gamma'}\frac{\beta'!}{(\beta'-\gamma')!}\,y'^{\beta'-\gamma'}a_\beta|_Z,
+\begin{aligned}
+&\bigl(\partial_{y'}^{\gamma'}f'\bigr)\big|_F=\gamma'!\,a_\gamma|_Z\\
+&\quad +\sum_{\beta'>\gamma'}\frac{\beta'!}{(\beta'-\gamma')!}\,y'^{\beta'-\gamma'}a_\beta|_Z,
+\end{aligned}
 \]
 
 where \(\beta'>\gamma'\) means \(\beta'\ge\gamma'\) componentwise and \(\beta'\ne\gamma'\). Each such \(\beta\) has \(|\beta'|>|\gamma'|\), so \(a_\beta(p)=0\) by the choice of \(\gamma\). Evaluating at \(q\), which lies over \(p\), gives \(\gamma'!\,a_\gamma(p)\ne0\). So \(\partial_{y'}^{\gamma'}f'\) is a unit at \(q\), and by Lemma 2.2, \(\operatorname{ord}_qf'\le|\gamma'|\le m\). Since \(f'\in\pi^{-1}_*\mathcal I\), the claim follows. \(\square\)

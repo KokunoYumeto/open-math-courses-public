@@ -30,7 +30,14 @@ Let \(X\) be a space. For open \(W\subset X\) let \(C^q(W;A)\) be the singular c
 
 *Surjectivity in (2).* A section \(s\in\Gamma(W,\mathcal C^q)\) is given by an open cover \((W_a)\) of \(W\) and cochains \(c_a\in C^q(W_a;A)\) whose germ at every point \(y\in W_a\) is \(s_y\). Choose \((V_b)\) as in Lemma 1.2 and enumerate it. For a simplex \(\sigma\) of \(W\) contained in some \(V_b\), let \(b(\sigma)\) be the first such index and put \(c(\sigma)=c_{a(b(\sigma))}(\sigma)\); put \(c(\sigma)=0\) if \(\sigma\) lies in no \(V_b\). We show that the germ of \(c\) at every \(x\in W\) is \(s_x\). Let \(O\) be a neighbourhood of \(x\) meeting only finitely many \(V_b\), and shrink it to avoid the closures of those that do not contain \(x\) in their closure; let \(F\) be the finite set of the remaining indices. For \(b\in F\), \(x\) lies in \(\overline{V_b}\subset W_{a(b)}\), so all the cochains \(c_{a(b)}\), \(b\in F\), are defined near \(x\) and have the germ \(s_x\) there; choose a neighbourhood \(O''\) of \(x\) on whose simplices they all agree. Choose \(b_0\) with \(x\in V_{b_0}\); then \(b_0\in F\). Put \(O'=O\cap O''\cap V_{b_0}\). A simplex \(\sigma\) in \(O'\) lies in \(V_{b_0}\), so \(b(\sigma)\) is defined, and \(V_{b(\sigma)}\) meets \(O\), so \(b(\sigma)\in F\); hence \(c(\sigma)=c_{a(b(\sigma))}(\sigma)=c_{a(b_0)}(\sigma)\). So \(c\) agrees with \(c_{a(b_0)}\) near \(x\), and its germ is \(s_x\).
 
-*Kernel, flasqueness, quasi-isomorphism.* A cochain maps to zero in \(\Gamma(W,\mathcal C^q)\) exactly when all its germs vanish, that is, when it is locally zero. If \(W'\subset W\) is open and \(t\in\Gamma(W',\mathcal C^q)\), lift \(t\) to a cochain on \(W'\) by surjectivity for \(W'\), extend it by zero to the simplices of \(W\) not in \(W'\), and map it to \(\Gamma(W,\mathcal C^q)\): the result restricts to \(t\). So \(\mathcal C^q\) is flasque. The short exact sequence \(0\to N^\bullet(W)\to C^\bullet(W;A)\to\Gamma(W,\mathcal C^\bullet)\to0\) and Lemma 1.1 give the quasi-isomorphism.
+*Kernel, flasqueness, quasi-isomorphism.* A cochain maps to zero in \(\Gamma(W,\mathcal C^q)\) exactly when all its germs vanish, that is, when it is locally zero. If \(W'\subset W\) is open and \(t\in\Gamma(W',\mathcal C^q)\), lift \(t\) to a cochain on \(W'\) by surjectivity for \(W'\), extend it by zero to the simplices of \(W\) not in \(W'\), and map it to \(\Gamma(W,\mathcal C^q)\): the result restricts to \(t\). So \(\mathcal C^q\) is flasque. The short exact sequence
+\[
+\begin{aligned}
+&0\to N^\bullet(W)\to C^\bullet(W;A)\\
+&\quad\to\Gamma(W,\mathcal C^\bullet)\to0
+\end{aligned}
+\]
+and Lemma 1.1 give the quasi-isomorphism.
 
 *(3).* The restriction of \(\mathcal C^\bullet\) to \(W\) is a resolution of \(A_W\) by flasque sheaves, which have no higher cohomology [Injective modules and bounded-below derived functors, Proposition 1.3]. By Theorem 4.1(4) there, \(\Gamma(W,\mathcal C^\bullet)\) computes \(H^q(W,A_W)\); combine with (2). All maps used are restrictions or are induced by the coefficient homomorphism, which gives the naturality. \(\square\)
 
@@ -38,11 +45,22 @@ Let \(X\) be a space. For open \(W\subset X\) let \(C^q(W;A)\) be the singular c
 
 For a closed set \(Z\subset M\) and a sheaf \(F\), let \(\Gamma_Z(M,F)\) be the sections of \(F\) over \(M\) with support in \(Z\), and \(H^q_Z(M,F)\) its derived functors.
 
-**Lemma 2.1.** If \(F\) is flasque, then \(0\to\Gamma_Z(M,F)\to\Gamma(M,F)\to\Gamma(M\setminus Z,F)\to0\) is exact and \(H^q_Z(M,F)=0\) for \(q>0\).
+**Lemma 2.1.** If \(F\) is flasque, then
+\[
+\begin{aligned}
+&0\to\Gamma_Z(M,F)\to\Gamma(M,F)\\
+&\quad\to\Gamma(M\setminus Z,F)\to0
+\end{aligned}
+\]
+is exact and \(H^q_Z(M,F)=0\) for \(q>0\).
 
 **Proof.** A section vanishing on \(M\setminus Z\) is exactly a section supported in \(Z\), and restriction is surjective because \(F\) is flasque. The localization sequence (2.2) gives the exact sequence
 \[
-0\to H^0_Z(M,F)\to H^0(M,F)\to H^0(M\setminus Z,F)\to H^1_Z(M,F)\to H^1(M,F)\to\cdots .
+\begin{aligned}
+0&\to H^0_Z(M,F)\to H^0(M,F)\\
+&\to H^0(M\setminus Z,F)\to H^1_Z(M,F)\\
+&\to H^1(M,F)\to\cdots .
+\end{aligned}
 \]
 Restrictions of flasque sheaves are flasque, so \(H^q(M,F)=H^q(M\setminus Z,F)=0\) for \(q>0\). Hence \(H^1_Z(M,F)\) is the cokernel of the surjective restriction, which is zero, and \(H^q_Z(M,F)\) lies between \(H^{q-1}(M\setminus Z,F)=0\) and \(H^q(M,F)=0\) for \(q\geq2\). \(\square\)
 
@@ -54,9 +72,19 @@ These isomorphisms are natural in \(Z\) (for \(Z\subset Z'\)) and in \(A\), and 
 
 **Proof.** A cochain vanishing on all simplices in the open set \(M\setminus Z\) has zero germ at every point of \(M\setminus Z\), so its section is supported in \(Z\). This gives a map from the short exact sequence of the pair,
 \[
-0\to C^\bullet(M,M\setminus Z;A)\to C^\bullet(M;A)\to C^\bullet(M\setminus Z;A)\to0,
+\begin{aligned}
+0&\to C^\bullet(M,M\setminus Z;A)\to C^\bullet(M;A)\\
+&\to C^\bullet(M\setminus Z;A)\to0,
+\end{aligned}
 \]
-to the sequence \(0\to\Gamma_Z(M,\mathcal C^\bullet)\to\Gamma(M,\mathcal C^\bullet)\to\Gamma(M\setminus Z,\mathcal C^\bullet)\to0\), which is exact by Lemma 2.1. The middle and right maps are quasi-isomorphisms by Theorem 1.3(2), so the five lemma, applied to the long exact sequences, shows that the left map is one. By Lemma 2.1 the flasque resolution \(\mathcal C^\bullet\) consists of \(\Gamma_Z\)-acyclic sheaves, so by [Injective modules and bounded-below derived functors, Theorem 4.1(4)] \(\Gamma_Z(M,\mathcal C^\bullet)\) computes \(H^q_Z(M,A_M)\). The maps used are inclusions and restrictions, which gives the naturality and compatibility. A map of short exact sequences of complexes commutes with their connecting maps. Finally, the localization sequence (2.2) may be computed with \(\mathcal C^\bullet\): choose an injective resolution \(A_M\to I^\bullet\); by Lemma 3.2 and Theorem 3.3 of [Injective modules and bounded-below derived functors](course:derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors) there is a map of complexes \(\mathcal C^\bullet\to I^\bullet\) compatible with the augmentations. It maps the exact sequence of Lemma 2.1 for \(\mathcal C^\bullet\) to that for \(I^\bullet\), and induces isomorphisms on the cohomology of all three terms, since both resolutions compute the three derived functors. \(\square\)
+to the sequence
+\[
+\begin{aligned}
+&0\to\Gamma_Z(M,\mathcal C^\bullet)\to\Gamma(M,\mathcal C^\bullet)\\
+&\quad\to\Gamma(M\setminus Z,\mathcal C^\bullet)\to0,
+\end{aligned}
+\]
+which is exact by Lemma 2.1. The middle and right maps are quasi-isomorphisms by Theorem 1.3(2), so the five lemma, applied to the long exact sequences, shows that the left map is one. By Lemma 2.1 the flasque resolution \(\mathcal C^\bullet\) consists of \(\Gamma_Z\)-acyclic sheaves, so by [Injective modules and bounded-below derived functors, Theorem 4.1(4)] \(\Gamma_Z(M,\mathcal C^\bullet)\) computes \(H^q_Z(M,A_M)\). The maps used are inclusions and restrictions, which gives the naturality and compatibility. A map of short exact sequences of complexes commutes with their connecting maps. Finally, the localization sequence (2.2) may be computed with \(\mathcal C^\bullet\): choose an injective resolution \(A_M\to I^\bullet\); by Lemma 3.2 and Theorem 3.3 of [Injective modules and bounded-below derived functors](course:derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors) there is a map of complexes \(\mathcal C^\bullet\to I^\bullet\) compatible with the augmentations. It maps the exact sequence of Lemma 2.1 for \(\mathcal C^\bullet\) to that for \(I^\bullet\), and induces isomorphisms on the cohomology of all three terms, since both resolutions compute the three derived functors. \(\square\)
 
 ## 3. Compact supports
 
@@ -84,7 +112,11 @@ in particular \(H^q(T,j_!A_M)\cong H^q_c(M;A)\).
 
 *The limit.* The localization sequence (2.2) for the closed set \(K\subset T\) reads
 \[
-\cdots\to H^q_K(T,G)\to H^q(T,G)\to H^q(T\setminus K,G)\to H^{q+1}_K(T,G)\to\cdots .
+\begin{aligned}
+\cdots&\to H^q_K(T,G)\to H^q(T,G)\\
+&\to H^q(T\setminus K,G)\\
+&\to H^{q+1}_K(T,G)\to\cdots .
+\end{aligned}
 \]
 Pass to the direct limit over the compact sets \(K\subset M\); it is exact. The open sets \(T\setminus K\) are cofinal among the open neighbourhoods of \(Z\): if \(U\supset Z\) is open, then \(T\setminus U\) is compact and contained in \(M\). By the Stacks lemma recalled above, \(\varinjlim_KH^q(T\setminus K,G)=H^q(Z,G|_Z)=0\), since \(T\) is Hausdorff and \(Z\) is compact. Hence \(\varinjlim_KH^q_K(T,G)\to H^q(T,G)\) is an isomorphism, and by excision and Proposition 3.1 the left side is \(H^q_c(M,F)\). The last assertion follows from Corollary 3.2. \(\square\)
 
@@ -96,7 +128,7 @@ Pass to the direct limit over the compact sets \(K\subset M\); it is exact. The 
 
 **Corollary 5.2 (duality).** Let \(\Lambda\) be a commutative ring that is injective as a module over itself, for example \(\mathbf Z/m\), and let \(M\) be a \(\Lambda\)-oriented \(n\)-manifold, for example a complex manifold of complex dimension \(n/2\) with its canonical orientation.
 
-1. \(H^q(M,\Lambda_M)\cong\operatorname{Hom}_\Lambda\bigl(H^{n-q}_c(M,\Lambda_M),\Lambda\bigr)\) for every \(q\).
+1. \(H^q(M,\Lambda_M)\) is isomorphic to \(\operatorname{Hom}_\Lambda\bigl(H^{n-q}_c(M,\Lambda_M),\Lambda\bigr)\) for every \(q\).
 2. If \(M\) is connected, \(H^n_c(M,\Lambda_M)\cong\Lambda\).
 3. For \(\Lambda=\mathbf Z/m\): if \(H^{n-q}_c(M,\Lambda_M)\) is finite, then \(H^q(M,\Lambda_M)\) is finite of the same order.
 4. If \(j:M\to T\) is an open embedding into a compact Hausdorff space, \(H^{n-q}_c(M,\Lambda_M)\) may be replaced by \(H^{n-q}(T,j_!\Lambda_M)\) in (1)–(3).
@@ -110,13 +142,20 @@ Every connecting map in this section is formed in the same way. For a short exac
 **Proposition 6.1 (Mayer–Vietoris).** Let \(M=U\cup V\) with \(U,V\) open. For a flasque sheaf \(I\) the sequence
 
 \[
-0\to\Gamma(M,I)\to\Gamma(U,I)\oplus\Gamma(V,I)\to\Gamma(U\cap V,I)\to0,\qquad s\mapsto(s|_U,s|_V),\quad(s,t)\mapsto t|_{U\cap V}-s|_{U\cap V},
+\begin{aligned}
+&0\to\Gamma(M,I)\to\Gamma(U,I)\oplus\Gamma(V,I)\\
+&\quad\to\Gamma(U\cap V,I)\to0,
+\end{aligned}
 \]
-
-is exact. For a sheaf \(F\) with a flasque resolution \(F\to I^\bullet\), the cohomology sequence of these sequences is a long exact sequence
+with the maps \(s\mapsto(s|_U,s|_V)\) and \((s,t)\mapsto t|_{U\cap V}-s|_{U\cap V}\), is exact. For a sheaf \(F\) with a flasque resolution \(F\to I^\bullet\), the cohomology sequence of these sequences is a long exact sequence
 
 \[
-\cdots\to H^q(M,F)\to H^q(U,F)\oplus H^q(V,F)\to H^q(U\cap V,F)\xrightarrow{\ \delta_{MV}\ }H^{q+1}(M,F)\to\cdots,
+\begin{aligned}
+&\cdots\to H^q(M,F)\\
+&\quad \to H^q(U,F)\oplus H^q(V,F)\\
+&\quad \to H^q(U\cap V,F)\\
+&\quad \xrightarrow{\ \delta_{MV}\ }H^{q+1}(M,F)\to\cdots,
+\end{aligned}
 \]
 
 the **Mayer–Vietoris sequence**, which does not depend on the flasque resolution. For \(F=A_M\) the isomorphisms of Theorem 1.3(3) carry it to the Mayer–Vietoris sequence of singular cohomology formed with the same maps on cochains, connecting maps included.
@@ -124,7 +163,11 @@ the **Mayer–Vietoris sequence**, which does not depend on the flasque resoluti
 **Proof.** Exactness on the left and in the middle is the sheaf property. Given \(t\in\Gamma(U\cap V,I)\), extend it to \(\tilde t\in\Gamma(V,I)\), since \(I\) is flasque; then \((0,\tilde t)\) maps to \(t\). Restrictions of flasque sheaves are flasque, so \(I^\bullet\) computes the cohomology of \(F\) on all four open sets. For a second flasque resolution, compare both with an injective resolution \(F\to J^\bullet\): by Lemma 3.2 and Theorem 3.3 of [Injective modules and bounded-below derived functors](course:derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors) there are maps of complexes \(I^\bullet\to J^\bullet\) compatible with the augmentations; they map one family of short exact sequences to the other and induce isomorphisms on the cohomology over each open set, so they identify the long exact sequences. For \(F=A_M\), let \(C^\bullet_{\mathcal U}(M;A)\) be the cochains on the simplices contained in \(U\) or in \(V\). Such a cochain defines sections of \(\mathcal C^\bullet\) over \(U\) and over \(V\) that agree on \(U\cap V\), hence a section over \(M\). This gives a map of short exact sequences from
 
 \[
-0\to C^\bullet_{\mathcal U}(M;A)\to C^\bullet(U;A)\oplus C^\bullet(V;A)\to C^\bullet(U\cap V;A)\to0
+\begin{aligned}
+0&\to C^\bullet_{\mathcal U}(M;A)\\
+&\to C^\bullet(U;A)\oplus C^\bullet(V;A)\\
+&\to C^\bullet(U\cap V;A)\to0
+\end{aligned}
 \]
 
 to the sequence above for \(I=\mathcal C^\bullet\). Its components on \(U\), \(V\) and \(U\cap V\) are quasi-isomorphisms by Theorem 1.3(2), hence so is the first by the five lemma, and the restriction \(C^\bullet(M;A)\to C^\bullet_{\mathcal U}(M;A)\) is a quasi-isomorphism by the small-cochain argument in Lemma 1.1. The cohomology sequence of the displayed sequence is the singular Mayer–Vietoris sequence, and a map of short exact sequences commutes with the connecting maps. \(\square\)
@@ -140,7 +183,10 @@ to the sequence above for \(I=\mathcal C^\bullet\). Its components on \(U\), \(V
 **Proposition 6.3 (the exponential sequence and the winding number).** Let \(\mathcal O\) be the sheaf of holomorphic functions on \(M=\mathbf C\setminus\{0\}\), and
 
 \[
-0\to\mathbf Z\to\mathcal O\xrightarrow{\ e\ }\mathcal O^*\to1,\qquad e(f)=\exp(2\pi if),
+\begin{gathered}
+0\to\mathbf Z\to\mathcal O\xrightarrow{\ e\ }\mathcal O^*\to1,\\
+e(f)=\exp(2\pi if),
+\end{gathered}
 \]
 
 the exponential sequence. Let \(\delta(z)\in H^1(M,\mathbf Z)\cong H^1(M;\mathbf Z)\) be the image of the coordinate function \(z\) under its connecting map and Theorem 1.3(3), and let \(\gamma(s)=e^{2\pi is}\), \(0\leq s\leq1\), be the counterclockwise unit circle. Then
@@ -151,14 +197,14 @@ the exponential sequence. Let \(\delta(z)\in H^1(M,\mathbf Z)\cong H^1(M;\mathbf
 
 **Proof.** The sequence is exact: the kernel of \(e\) consists of the locally constant integer functions, and \(e\) is surjective on stalks because a nowhere zero holomorphic function on a disc has a holomorphic logarithm [Lebl, Corollary 4.3.4]. Let \(U=M\setminus(-\infty,0)\) and \(V=M\setminus(0,\infty)\). Both are simply connected (star-shaped about \(1\) and \(-1\)), so \(z\) has holomorphic logarithms \(L_U\) on \(U\) and \(L_V\) on \(V\) [Lebl, Corollary 4.3.4], normalized by \(L_U(1)=0\) and \(L_V(-1)=i\pi\). Their imaginary parts are continuous arguments on the connected sets \(U\) and \(V\); two continuous arguments on a connected set differ by a constant multiple of \(2\pi\), so \(\operatorname{Im}L_U\) takes values in \((-\pi,\pi)\) and \(\operatorname{Im}L_V\) in \((0,2\pi)\). Put \(b_U=L_U/2\pi i\) and \(b_V=L_V/2\pi i\), so that \(e(b_U)=z\) and \(e(b_V)=z\). The intersection \(U\cap V\) is the union of the open upper and lower half planes \(H_+\) and \(H_-\). On \(H_+\) the two arguments agree; on \(H_-\), \(\operatorname{Im}L_V=\operatorname{Im}L_U+2\pi\). Hence \(g=b_U-b_V\) is \(0\) on \(H_+\) and \(-1\) on \(H_-\), and \(\delta(z)=\delta_{MV}(g)\) by Lemma 6.2.
 
-By Proposition 6.1 we compute \(\delta_{MV}(g)\) with singular cochains. The pair \((0,q)\in C^0(U;\mathbf Z)\oplus C^0(V;\mathbf Z)\), where \(q\) is \(g\) on \(U\cap V\) and \(0\) on the negative real axis, lifts \(g\). So \(\delta_{MV}(g)\) is represented by the cocycle on small simplices that is \(\delta0=0\) on simplices in \(U\) and \(\delta q\) on simplices in \(V\). The loop \(\gamma\) is homologous to \(\gamma_1+\gamma_2+\gamma_3\), the restrictions of \(\gamma\) to \([0,\tfrac14]\), \([\tfrac14,\tfrac34]\), \([\tfrac34,1]\), reparametrized (as in the solution of Exercise 6.2 of [Orientations and fundamental classes](orientations-and-fundamental-classes.md#6-exercises)). Here \(\gamma_1\) and \(\gamma_3\) lie in \(U\), and \(\gamma_2\), which runs from \(i\) through \(-1\) to \(-i\), lies in \(V\). Therefore \(\langle\delta(z),[\gamma]\rangle=(\delta q)(\gamma_2)=q(-i)-q(i)=-1\). \(\square\)
+By Proposition 6.1 we compute \(\delta_{MV}(g)\) with singular cochains. The pair \((0,q)\in C^0(U;\mathbf Z)\oplus C^0(V;\mathbf Z)\), where \(q\) is \(g\) on \(U\cap V\) and \(0\) on the negative real axis, lifts \(g\). So \(\delta_{MV}(g)\) is represented by the cocycle on small simplices that is \(\delta0=0\) on simplices in \(U\) and \(\delta q\) on simplices in \(V\). The loop \(\gamma\) is homologous to \(\gamma_1+\gamma_2+\gamma_3\), the restrictions of \(\gamma\) to \([0,\tfrac14]\), \([\tfrac14,\tfrac34]\), \([\tfrac34,1]\), reparametrized (as in the solution of Exercise 6.2 of [Orientations and fundamental classes](orientations-and-fundamental-classes.md#6-exercises)). Here \(\gamma_1\) and \(\gamma_3\) lie in \(U\), and \(\gamma_2\), which runs from \(i\) through \(-1\) to \(-i\), lies in \(V\). Therefore \(\langle\delta(z),[\gamma]\rangle=(\delta q)(\gamma_2)\), which is \(q(-i)-q(i)=-1\). \(\square\)
 
 So the connecting map is the negative of the monodromy: continuing \(\log z/2\pi i\) once counterclockwise around \(\gamma\) increases it by \(1\).
 
 **Corollary 6.4 (the Kummer class of \(z\)).** Let \(n\geq1\), let \(\mu_n\subset\mathbf C^*\) be the group of \(n\)-th roots of unity, and let \(\kappa(z)\in H^1(\mathbf C\setminus\{0\},\mu_n)\) be the image of \(z\) under the connecting map of the Kummer sequence \(1\to\mu_n\to\mathcal O^*\xrightarrow{f\mapsto f^n}\mathcal O^*\to1\). Identify the singular groups with \(\mu_n\) coefficients with \(\operatorname{Hom}(H_1(\mathbf C\setminus\{0\}),\mu_n)\) and \(\operatorname{Hom}(H_2(\mathbf C,\mathbf C\setminus\{0\}),\mu_n)\) by the universal coefficient sequence (the homology groups below these degrees are free). Then:
 
 1. \(\langle\kappa(z),[\gamma]\rangle=e^{-2\pi i/n}\);
-2. the connecting map \(\partial:H^1(\mathbf C\setminus\{0\},\mu_n)\to H^2_{\{0\}}(\mathbf C,\mu_n)\) of the localization sequence, followed by the isomorphism \(H^2_{\{0\}}(\mathbf C,\mu_n)\cong H^2(\mathbf C,\mathbf C\setminus\{0\};\mu_n)\) of Theorem 2.2, satisfies \(\langle\partial\kappa(z),o_2\rangle=e^{-2\pi i/n}\), where \(o_2\) is the standard generator of \(H_2(\mathbf C,\mathbf C\setminus\{0\};\mathbf Z)\), which is the complex orientation of \(\mathbf C\) at \(0\).
+2. the connecting map \(\partial\) from \(H^1(\mathbf C\setminus\{0\},\mu_n)\) to \(H^2_{\{0\}}(\mathbf C,\mu_n)\) of the localization sequence, followed by the isomorphism \(H^2_{\{0\}}(\mathbf C,\mu_n)\cong H^2(\mathbf C,\mathbf C\setminus\{0\};\mu_n)\) of Theorem 2.2, satisfies \(\langle\partial\kappa(z),o_2\rangle=e^{-2\pi i/n}\), where \(o_2\) is the standard generator of \(H_2(\mathbf C,\mathbf C\setminus\{0\};\mathbf Z)\), which is the complex orientation of \(\mathbf C\) at \(0\).
 
 **Proof.** (1) The Kummer sequence is exact, since a nowhere zero holomorphic function on a disc has holomorphic \(n\)-th roots [Lebl, Corollary 4.3.5]. The maps \(k\mapsto e^{2\pi ik/n}\) from \(\mathbf Z\) to \(\mu_n\), \(f\mapsto e^{2\pi if/n}\) from \(\mathcal O\) to \(\mathcal O^*\), and the identity of \(\mathcal O^*\) form a map from the exponential sequence to the Kummer sequence, because \((e^{2\pi if/n})^n=e^{2\pi if}\). Connecting maps are natural for maps of short exact sequences, so \(\kappa(z)\) is the image of \(\delta(z)\) under \(k\mapsto e^{2\pi ik/n}\), and Proposition 6.3 gives (1). (2) By Theorem 2.2, \(\partial\) is the connecting map of the pair \((\mathbf C,\mathbf C\setminus\{0\})\). For a cocycle \(a\) on \(\mathbf C\setminus\{0\}\), extended by zero to a cochain \(\tilde a\) on \(\mathbf C\), it sends \([a]\) to the class of \(\delta\tilde a\), and \((\delta\tilde a)(c)=\tilde a(\partial c)=a(\partial c)\) for a relative cycle \(c\). Take \(c=\tau_2\), which represents \(o_2\). By Exercise 6.2 of [Orientations and fundamental classes](orientations-and-fundamental-classes.md#6-exercises), \(\partial\tau_2\) is homologous in \(\mathbf C\setminus\{0\}\) to \(\gamma\), so \(\langle\partial\kappa(z),o_2\rangle=\langle\kappa(z),[\gamma]\rangle\). The complex orientation of \(\mathbf C\) is the standard orientation of \(\mathbf R^2\) [Orientations and fundamental classes, Corollary 3.5](orientations-and-fundamental-classes.md#3-orientations-from-charts). \(\square\)
 

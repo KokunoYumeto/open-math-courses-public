@@ -29,10 +29,12 @@ For \(G^*\): it commutes with \(L_D\), and \([G^*,L_x]=-[G,L_{x^*}]^*\) with \(x
 
 Fix \(s\in A_0\) with \(s=s^*=s^{-1}\) and \(\tau(s)=0\). Then \(s\in B^\circ\), \(\|s\|_2=1\), and \(s^{\otimes k}\otimes v\in J_k\) for \(v\in B\).
 
-**Lemma 2.1** (propagation). For every \(k\ge1\) and \(v\in B\),
+**Lemma 2.1** (propagation). For every \(k\ge1\) and \(v\in B\), the bound (2.1) holds:
 \[
-\big\|B_k(s^{\otimes k}\otimes v)-s^{\otimes k}\otimes B_0v\big\|\le2c_0\varepsilon\|v\|_2 .
-\tag{2.1}
+\begin{aligned}
+&\big\|B_k(s^{\otimes k}\otimes v)-s^{\otimes k}\otimes B_0v\big\|\\
+&\quad\le2c_0\varepsilon\|v\|_2 .
+\end{aligned}
 \]
 The same holds with \(B_k^*\) and \(B_0^*\) in place of \(B_k\) and \(B_0\).
 
@@ -40,64 +42,95 @@ The same holds with \(B_k^*\) and \(B_0^*\) in place of \(B_k\) and \(B_0\).
 \[
 y=qvb-qB_0v .
 \]
-Then \(qy=y\), and \(\|y\|_2=\|(R_b-G)(qv)\|_2\le c_0\varepsilon\|qv\|_2=c_0\varepsilon\sqrt a\,\|v\|_2\), because \(\|q\otimes v\|=\|q\|_2\|v\|_2\).
+Then \(qy=y\), and \(\|y\|_2=\|(R_b-G)(qv)\|_2\), which is at most \(c_0\varepsilon\|qv\|_2=c_0\varepsilon\sqrt a\,\|v\|_2\), because \(\|q\otimes v\|=\|q\|_2\|v\|_2\).
 
 Let \(z\) be a Haar unitary of the corner \(qDq\) and \(x_n=a^{-1/2}z^n\) for \(n\ge1\). Then \(x_n\in D^\circ\), \(\|x_n\|_2=1\), \(x_n^*x_n=x_nx_n^*=a^{-1}q\), \(x_nq=x_n\), and \(x_n\to0\), \(x_n^*\to0\) weakly in \(E\), since the \(z^j\), \(j\in\mathbb Z\), are orthogonal of norm \(\sqrt a\). The vector
 \[
-\xi_n=(sx_n)^kv=1\otimes x_n^{\otimes k}\otimes(s^{\otimes k}\otimes v)\in\mathcal H_k
+\begin{aligned}
+&\xi_n=(sx_n)^kv\\
+&\quad =1\otimes x_n^{\otimes k}\otimes(s^{\otimes k}\otimes v)\in\mathcal H_k
+\end{aligned}
 \]
 has norm \(\|v\|_2\) and lies in \(Hr\), because its last \(D\)-letter satisfies \(x_n=x_nq\) and \(qvr=qv\). With \(A_n=(sx_n)^{k-1}s\),
 \[
-\xi_nb-(sx_n)^kB_0v=A_nx_n(qvb-qB_0v)=A_nx_ny .
+\begin{aligned}
+&\xi_nb-(sx_n)^kB_0v\\
+&\quad =A_nx_n(qvb-qB_0v)=A_nx_ny .
+\end{aligned}
 \]
 By Lemma 1.1, \(\|G\xi_n-\xi_nb\|\le c_0\varepsilon\|v\|_2\), hence
 \[
-\|G\xi_n-(sx_n)^kB_0v\|\le c_0\varepsilon\|v\|_2+\|A_nx_ny\|_2 .
-\tag{2.2}
+\begin{aligned}
+&\|G\xi_n-(sx_n)^kB_0v\|\\
+&\quad \le c_0\varepsilon\|v\|_2+\|A_nx_ny\|_2 .
+\end{aligned}\tag{2.2}
 \]
 By Theorem 7.1 of the previous lesson, \(G\xi_n=1\otimes x_n^{\otimes k}\otimes B_k(s^{\otimes k}\otimes v)\), while \((sx_n)^kB_0v=1\otimes x_n^{\otimes k}\otimes(s^{\otimes k}\otimes B_0v)\). Since \(\|1\|_2=\|x_n\|_2=1\), the left side of (2.2) equals \(\|B_k(s^{\otimes k}\otimes v)-s^{\otimes k}\otimes B_0v\|\) for every \(n\).
 
 It remains to show \(\limsup_n\|A_nx_ny\|_2\le c_0\varepsilon\|v\|_2\). By Lemma 4.1 of the previous lesson, \(H=E\otimes\mathcal F\) with \(\mathcal F=\bigoplus_l(E^\circ)^{\otimes l}\otimes J_l\), and left multiplication by elements of \(D\) acts on the first factor. Let \(P_{\rm sc}\) be the projection onto \(\mathbb C1\otimes\mathcal F\). Then
 \[
-P_{\rm sc}(x_ny)=1\otimes(\ell_n\otimes I_{\mathcal F})y,\qquad \ell_n(\eta)=\langle x_n\eta,1\rangle=\langle\eta,x_n^*\rangle,\quad\|\ell_n\|=1 .
+\begin{gathered}
+P_{\rm sc}(x_ny)=1\otimes(\ell_n\otimes I_{\mathcal F})y,\\
+\ell_n(\eta)=\langle x_n\eta,1\rangle=\langle\eta,x_n^*\rangle,\quad\|\ell_n\|=1 .
+\end{gathered}
 \]
 Since \(x_n^*\to0\) weakly, \((\ell_n\otimes I)y\to0\) for finite sums of elementary tensors \(y\), and by uniform boundedness for every \(y\); so \(\|P_{\rm sc}(x_ny)\|\to0\). On \((1-P_{\rm sc})H=E^\circ\otimes\mathcal F\), the closed span of the words beginning with a centred \(D\)-letter, left multiplication by \(A_n\) prefixes the alternating word \(sx_ns\cdots x_ns\), whose letters have \(L^2\)-norm \(1\); by Theorem 1.3 of the free words lesson it acts isometrically there. On \(P_{\rm sc}H\) we use \(\|L_{A_n}\|\le\|A_n\|\le\|x_n\|^{k-1}=a^{-(k-1)/2}\). As \(qy=y\), \(\|x_ny\|_2^2=\langle x_n^*x_ny,y\rangle=a^{-1}\|y\|_2^2\). Therefore
 \[
-\|A_nx_ny\|_2\le\|(1-P_{\rm sc})x_ny\|_2+a^{-(k-1)/2}\|P_{\rm sc}x_ny\|_2\le a^{-1/2}\|y\|_2+a^{-(k-1)/2}\|P_{\rm sc}x_ny\|_2,
+\begin{aligned}
+&\|A_nx_ny\|_2\le\|(1-P_{\rm sc})x_ny\|_2\\
+&\quad +a^{-(k-1)/2}\|P_{\rm sc}x_ny\|_2\le a^{-1/2}\|y\|_2\\
+&\quad +a^{-(k-1)/2}\|P_{\rm sc}x_ny\|_2,
+\end{aligned}
 \]
-and \(\limsup_n\|A_nx_ny\|_2\le a^{-1/2}\|y\|_2\le c_0\varepsilon\|v\|_2\). The numbers \(q,k,v,b,y\) are fixed while \(n\to\infty\), so the large factor \(a^{-(k-1)/2}\) does no harm. This proves (2.1) for bounded \(v\); both sides are continuous in \(v\in B\), and \(A_0\) is dense in \(B\). For the adjoints, apply the same argument to \(G^*\), using Lemma 1.1 for \(G^*\) and the second identity of Theorem 7.1 of the previous lesson. \(\square\)
+and \(\limsup_n\|A_nx_ny\|_2\le a^{-1/2}\|y\|_2\), which is at most \(c_0\varepsilon\|v\|_2\). The numbers \(q,k,v,b,y\) are fixed while \(n\to\infty\), so the large factor \(a^{-(k-1)/2}\) does no harm. This proves (2.1) for bounded \(v\); both sides are continuous in \(v\in B\), and \(A_0\) is dense in \(B\). For the adjoints, apply the same argument to \(G^*\), using Lemma 1.1 for \(G^*\) and the second identity of Theorem 7.1 of the previous lesson. \(\square\)
 
 ## 3. Copies along the word levels and a compressed commutator
 
 Choose a projection \(e\in D\) with \(\tau(e)=t\) and a projection \(p\in D\) with \(e\le p\) and \(\tau(p)=\frac12\); this is possible because \(t\le\frac12\). Put
 \[
-d=2p-1,\qquad w=ds,\qquad u=2t .
-\tag{3.1}
+\begin{gathered}
+d=2p-1,\\
+w=ds,\qquad u=2t .
+\end{gathered}\tag{3.1}
 \]
-Then \(d\in D\) is a self-adjoint unitary with \(\tau(d)=0\), and \(w^{-1}=sd\). For \(k\ge0\) define
+Then \(d\in D\) is a self-adjoint unitary with \(\tau(d)=0\), and \(w^{-1}=sd\). For \(k\ge0\) define \(U_k:B\to eH\) by (3.2):
 \[
-U_k:B\to eH,\qquad U_kv=t^{-1/2}e\,(sd)^kv=(t^{-1/2}e)\otimes d^{\otimes k}\otimes(s^{\otimes k}\otimes v)\in\mathcal H_k .
-\tag{3.2}
+\begin{aligned}
+&U_kv=t^{-1/2}e\,(sd)^kv\\
+&\quad=(t^{-1/2}e)\otimes d^{\otimes k}\otimes(s^{\otimes k}\otimes v)\in\mathcal H_k .
+\end{aligned}
 \]
 Each \(U_k\) is an isometry, since \(\|t^{-1/2}e\|_2=\|d\|_2=\|s\|_2=1\), and the ranges lie in different levels, hence are orthogonal. Let \(\mathcal K\) be the closed span of the ranges, \(\iota:\mathcal K\to H\) the inclusion, and identify \(\mathcal K\) with \(\ell^2(\mathbb N_0)\otimes B\) through the \(U_k\), where \(\mathbb N_0=\{0,1,2,\dots\}\). Let \(J=I\otimes B_0\) on \(\mathcal K\).
 
 **Lemma 3.1** (compressed commutator). For every \(h\in e\mathcal Le\),
 \[
-\big\|[J,\iota^*L_h\iota]\big\|\le(1+4c_0)\,\varepsilon\,\|h\| .
-\tag{3.3}
+\begin{aligned}
+&\big\|[J,\iota^*L_h\iota]\big\|\\
+&\quad \le(1+4c_0)\,\varepsilon\,\|h\| .
+\end{aligned}\tag{3.3}
 \]
 
 **Proof.** By Theorem 7.1 of the previous lesson, with \(d_0=t^{-1/2}e\) and the repeated letter \(d\in E^\circ\), and by Lemma 2.1,
 \[
-\|GU_kv-U_kB_0v\|_2=\|B_k(s^{\otimes k}\otimes v)-s^{\otimes k}\otimes B_0v\|\le2c_0\varepsilon\|v\|_2
+\begin{aligned}
+&\|GU_kv-U_kB_0v\|_2\\
+&\quad =\|B_k(s^{\otimes k}\otimes v)-s^{\otimes k}\otimes B_0v\|\\
+&\quad \le2c_0\varepsilon\|v\|_2
+\end{aligned}
 \]
 for \(k\ge1\), and \(GU_0v=U_0B_0v\). The error vectors for different \(k\) lie in different levels, so their squared norms add on finite sums \(\sum_kU_kv_k\). Hence, with the same argument for \(G^*\),
 \[
-R=G\iota-\iota J,\quad R'=G^*\iota-\iota J^*,\qquad \|R\|\le2c_0\varepsilon,\quad\|R'\|\le2c_0\varepsilon .
+\begin{gathered}
+R=G\iota-\iota J,\quad R'=G^*\iota-\iota J^*,\\
+\|R\|\le2c_0\varepsilon,\quad\|R'\|\le2c_0\varepsilon .
+\end{gathered}
 \]
 Taking adjoints in the second identity gives \(\iota^*G=J\iota^*+R'^*\). With \(T_h=\iota^*L_h\iota\),
 \[
-\iota^*[G,L_h]\iota=\iota^*GL_h\iota-\iota^*L_hG\iota=[J,T_h]+R'^*L_h\iota-\iota^*L_hR .
+\begin{aligned}
+&\iota^*[G,L_h]\iota=\iota^*GL_h\iota-\iota^*L_hG\iota\\
+&\quad =[J,T_h]+R'^*L_h\iota-\iota^*L_hR .
+\end{aligned}
 \]
 The left side has norm at most \(\varepsilon\|h\|\) by (1.1) of the previous lesson, and the last two terms have norms at most \(2c_0\varepsilon\|h\|\) each. \(\square\)
 
@@ -113,13 +146,13 @@ The left side has norm at most \(\varepsilon\|h\|\) by (1.1) of the previous les
 
 ## 5. Solutions
 
-**Solution 4.1.** For bounded \(\xi\in Hr'\), \(\|\xi v\|_2^2=\tau(v^*\xi^*\xi v)=\tau(\xi^*\xi vv^*)=\tau(r'\xi^*\xi r')=\|\xi\|_2^2\), using \(\xi=\xi r'\). It maps into \(Hr\) because \(v=vr\). Right multiplication by \(v^*\) maps \(Hr\) back, and \(\xi vv^*=\xi r'=\xi\), \(\eta v^*v=\eta r=\eta\). Extend by continuity.
+**Solution 4.1.** For bounded \(\xi\in Hr'\), \(\|\xi v\|_2^2=\tau(v^*\xi^*\xi v)\), which is \(\tau(\xi^*\xi vv^*)=\tau(r'\xi^*\xi r')=\|\xi\|_2^2\), using \(\xi=\xi r'\). It maps into \(Hr\) because \(v=vr\). Right multiplication by \(v^*\) maps \(Hr\) back, and \(\xi vv^*=\xi r'=\xi\), \(\eta v^*v=\eta r=\eta\). Extend by continuity.
 
 **Solution 4.2.** \(1-e\) is a projection of trace \(1-t\ge\frac12-t\ge0\) in the II\(_1\) factor \(D\), so it has a subprojection \(p'\) of trace \(\frac12-t\) (Corollary 2.4 of the Haar unitary lesson applied in the corner). Put \(p=e+p'\). Then \(d^2=4p-4p+1=1\), \(d^*=d\), and \(\tau(d)=2\cdot\frac12-1=0\).
 
 **Solution 4.3.** \(\langle U_kv,U_jv'\rangle=t^{-1}\tau\big(v'^*(ds)^je(sd)^kv\big)\), and \(e=t1+e^\circ\) with \(e^\circ\in D^\circ\). In the term with \(e^\circ\), the letters between \(v'^*\) and \(v\) form the alternating word \(d\,s\cdots d\,s\,e^\circ\,s\,d\cdots s\,d\) of centred letters; writing \(v'^*\) and \(v\) as scalar plus centred parts turns the product into a combination of centred alternating words, so its trace is \(0\). The scalar term is \(t\,\tau(v'^*(ds)^j(sd)^kv)\). If \(k=j\), \((ds)^j(sd)^j=1\) and the term equals \(t\,\tau(v'^*v)\), so \(\langle U_kv,U_kv'\rangle=\tau(v'^*v)=\langle v,v'\rangle\). If \(k>j\), it equals \(t\,\tau(v'^*(sd)^{k-j}v)\); merge \(v'^*s\in A_0\) into one letter, \(v'^*s=\tau(v'^*s)1+(v'^*s)^\circ\), and centre \(v\): every resulting product is a centred alternating word containing at least one letter \(d\), so the trace is \(0\). The case \(k<j\) is the complex conjugate.
 
-**Solution 4.4.** \(x_ny=x_nq\otimes f=x_n\otimes f\) and \(x_n\) is centred, so \(P_{\rm sc}(x_ny)=\tau(x_n)1\otimes f=0\), and \(x_ny\in E^\circ\otimes\mathcal F\). On this space \(L_{A_n}\) is isometric, so \(\|A_nx_ny\|_2=\|x_n\|_2\|f\|=\|f\|=a^{-1/2}\|y\|_2\).
+**Solution 4.4.** \(x_ny=x_nq\otimes f=x_n\otimes f\) and \(x_n\) is centred, so \(P_{\rm sc}(x_ny)=\tau(x_n)1\otimes f=0\), and \(x_ny\in E^\circ\otimes\mathcal F\). On this space \(L_{A_n}\) is isometric, so \(\|A_nx_ny\|_2=\|x_n\|_2\|f\|\), which is \(\|f\|=a^{-1/2}\|y\|_2\).
 
 ## References
 

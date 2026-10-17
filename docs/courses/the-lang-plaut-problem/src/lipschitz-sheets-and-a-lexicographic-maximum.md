@@ -11,16 +11,25 @@ We use from the core course [Measure and Integration](https://kokunoyumeto.githu
 Let \(\Omega\subseteq\mathbb R^2\) be open and \(F:\Omega\to\mathbb R^k\) Lipschitz with constant \(D\). Write \(F_x=\partial F/\partial x\) and \(F_y=\partial F/\partial y\), the two columns of the derivative where \(F\) is differentiable. At such a point the difference quotients \((F(p+he_1)-F(p))/h\) have norm at most \(D\), so \(\|F_x\|,\|F_y\|\le D\). The columns are measurable, as pointwise limits of difference quotients on the conegligible set of differentiability points. For a set \(E\) of finite positive area and an integrable \(h\) on it, write \(\langle h\rangle_E=|E|^{-1}\int_Eh\), where \(|E|\) is the area. Let \(Q(p,l)\) be the closed square of side \(l\) centred at \(p\).
 
 **Lemma 1.1** (good points). For almost every \(p\in\Omega\), \(F\) is differentiable at \(p\) and, with \(u=F_x(p)\) and \(v=F_y(p)\),
+the limit (1.1) holds:
 \[
-\lim_{l\to0}\bigl\langle\|F_x-u\|^2+\|F_y-v\|^2\bigr\rangle_{Q(p,l)}=0.\tag{1.1}
+\begin{aligned}
+&\lim_{l\to0}\bigl\langle\|F_x-u\|^2\\
+&\qquad+\|F_y-v\|^2\bigr\rangle_{Q(p,l)}=0.
+\end{aligned}
 \]
 We call such points *good*.
 
 **Proof.** By Rademacher's theorem, \(F\) is differentiable almost everywhere in \(\Omega\). Extend the \(2k\) coordinates of \(F_x\) and \(F_y\) by \(0\) to the rest of \(\mathbb R^2\); they are bounded and measurable, hence locally integrable. By Lebesgue's differentiation theorem, applied to each coordinate, almost every \(p\in\Omega\) satisfies \(\mu(B(p,\delta))^{-1}\int_{B(p,\delta)}\|F_x-u\|\to0\) and the same for \(F_y\) and \(v\). Since \(\|F_x-u\|\le2D\), \(\|F_x-u\|^2\le2D\|F_x-u\|\). Finally \(Q(p,l)\subseteq B(p,l)\), whose area is \(\pi l^2=\pi|Q(p,l)|\), so averages of a nonnegative function over \(Q(p,l)\) are at most \(\pi\) times its averages over \(B(p,l)\). \(\square\)
 
 **Lemma 1.2** (line integrals). For almost every \(y\), the following holds. Let \(I\) be a bounded open interval with \(I\times\{y\}\subseteq\Omega\), with closure \([a,b]\). Then \(x\mapsto F(x,y)\) extends continuously to \([a,b]\), the extension is \(D\)-Lipschitz, and
+the relations (1.2) hold:
 \[
-F(b,y)-F(a,y)=\int_a^bF_x(x,y)\,dx,\qquad\|F(b,y)-F(a,y)\|\le(b-a)^{1/2}\Bigl(\int_a^b\|F_x(x,y)\|^2dx\Bigr)^{1/2}.\tag{1.2}
+\begin{aligned}
+&F(b,y)-F(a,y)=\int_a^bF_x(x,y)\,dx,\\
+&\|F(b,y)-F(a,y)\|\\
+&\quad\le(b-a)^{1/2}\Bigl(\int_a^b\|F_x(x,y)\|^2dx\Bigr)^{1/2}.
+\end{aligned}
 \]
 The same holds for vertical segments, with \(F_y\).
 
@@ -30,7 +39,11 @@ The same holds for vertical segments, with \(F_y\).
 
 Suppose that \(f:S\to\mathbb R^k\) is a bi-Lipschitz embedding. Dividing \(f\) by its scale, we may assume that for some \(D\ge1\)
 \[
-\|z-z'\|\le\|f(z)-f(z')\|\le D\|z-z'\|\qquad(z,z'\in S).\tag{2.1}
+\begin{aligned}
+&\|z-z'\|\le\|f(z)-f(z')\|\\
+&\quad \le D\|z-z'\|\\
+&(z,z'\in S).
+\end{aligned}\tag{2.1}
 \]
 For a finitely supported sequence \(w\) as in Section 2 of [Doubling spaces and coloured strips](doubling-spaces-and-coloured-strips.md) with nonempty \(\Omega_w\), the *sheet* \(F_w:\Omega_w\to\mathbb R^k\), \(F_w(p)=f(p,w)\), is \(D\)-Lipschitz, because \(\|(p,w)-(p',w)\|=\|p-p'\|\). Let \(K\) be the closure in \([0,D^2]^2\) of the set of pairs
 \[
@@ -38,7 +51,10 @@ For a finitely supported sequence \(w\) as in Section 2 of [Doubling spaces and 
 \]
 where \(F\) runs over all sheets and \(p\) over the good points of \(F\) (Lemma 1.1). The sheet of \(w=0\) is defined on the whole plane and has good points, so \(K\) is a nonempty compact set. Put
 \[
-A=\max\{s:(s,t)\in K\},\qquad B=\max\{t:(A,t)\in K\}.\tag{2.2}
+\begin{gathered}
+A=\max\{s:(s,t)\in K\},\\
+B=\max\{t:(A,t)\in K\}.
+\end{gathered}\tag{2.2}
 \]
 So \((A,B)\in K\), and \(\|F_x(p)\|^2\le A\) at every good point of every sheet. The numbers \(A,B\) and the set \(K\) depend only on \(f\).
 
@@ -60,10 +76,14 @@ Part (b) is the form used: if the mean of the first coordinate approaches its la
 
 **Lemma 4.1** (variance). Let \(G\) be a bounded measurable \(\mathbb R^k\)-valued function on a set \(E\) of finite positive area, and \(a\in\mathbb R^k\). Then, with averages over \(E\),
 \[
-\bigl\langle\|G-a\|^2\bigr\rangle=\bigl\langle\|G\|^2\bigr\rangle-\|a\|^2-2\bigl\langle a,\langle G\rangle-a\bigr\rangle\le\bigl\langle\|G\|^2\bigr\rangle-\|a\|^2+2\|a\|\,\|\langle G\rangle-a\|.
+\begin{aligned}
+&\bigl\langle\|G-a\|^2\bigr\rangle=\bigl\langle\|G\|^2\bigr\rangle-\|a\|^2\\
+&\quad -2\bigl\langle a,\langle G\rangle-a\bigr\rangle\le\bigl\langle\|G\|^2\bigr\rangle-\|a\|^2\\
+&\quad +2\|a\|\,\|\langle G\rangle-a\|.
+\end{aligned}
 \]
 
-**Proof.** Average \(\|G-a\|^2=\|G\|^2-2\langle G,a\rangle+\|a\|^2\) and write \(-2\langle\langle G\rangle,a\rangle+\|a\|^2=-\|a\|^2-2\langle a,\langle G\rangle-a\rangle\). The inequality is Cauchy–Schwarz. \(\square\)
+**Proof.** Average \(\|G-a\|^2=\|G\|^2-2\langle G,a\rangle+\|a\|^2\) and write \(-2\langle\langle G\rangle,a\rangle+\|a\|^2\) as \(-\|a\|^2-2\langle a,\langle G\rangle-a\rangle\). The inequality is Cauchy–Schwarz. \(\square\)
 
 So a field whose mean squared length is at most about \(\|a\|^2\), and whose mean is close to \(a\), is close to \(a\) in mean square. In the next lesson the bound on the mean squared length comes from the maximality of \(A\), or from Lemma 3.1(b), and the closeness of the mean comes from Lemma 1.2.
 
@@ -85,7 +105,7 @@ So a field whose mean squared length is at most about \(\|a\|^2\), and whose mea
 
 **5.3.** \(K=\{(1,0),(0,1)\}\): (2.2) gives \((1,0)\), while maximizing the second coordinate first gives \((0,1)\).
 
-**5.4.** By Lemma 4.1, \(\langle\|G-a\|^2\rangle\le A-\|a\|^2+2\|a\|\gamma\le\eta+2\|a\|\gamma\).
+**5.4.** By Lemma 4.1, \(\langle\|G-a\|^2\rangle\le A-\|a\|^2+2\|a\|\gamma\), which is at most \(\eta+2\|a\|\gamma\).
 
 ## References
 

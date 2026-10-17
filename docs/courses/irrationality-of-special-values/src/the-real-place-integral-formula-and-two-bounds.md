@@ -13,12 +13,16 @@ For a list \(y=(y_1,\dots,y_n)\) write \(V(y)=\prod_{i<j}(y_j-y_i)\) and \(\math
 **Lemma 1.1** (Andréief). Let \(\mu\) be a measure, and \(f_0,\dots,f_{n-1}\), \(g_0,\dots,g_{n-1}\) functions with all products \(f_rg_k\) integrable. Then
 
 \[
-\int\!\!\cdots\!\!\int\det[f_r(y_i)]_{r,i}\,\det[g_k(y_i)]_{k,i}\,d\mu(y_1)\cdots d\mu(y_n)=n!\,\det\Bigl[\int f_rg_k\,d\mu\Bigr]_{r,k},
+\begin{aligned}
+&\int\!\!\cdots\!\!\int\det[f_r(y_i)]_{r,i}\,\det[g_k(y_i)]_{k,i}\\
+&\qquad d\mu(y_1)\cdots d\mu(y_n)\\
+&\quad=n!\,\det\Bigl[\int f_rg_k\,d\mu\Bigr]_{r,k},
+\end{aligned}
 \]
 
 whenever the left integrand is integrable.
 
-**Proof.** Expand the first determinant as \(\sum_\sigma\operatorname{sgn}\sigma\prod_if_{\sigma(i)}(y_i)\). In the term of \(\sigma\), relabel the integration variables by \(y_i=y'_{\sigma(i)}\). The product becomes \(\prod_rf_r(y'_r)\), the second determinant becomes \(\operatorname{sgn}\sigma\cdot\det[g_k(y'_r)]_{k,r}\) (its columns are permuted), and the product measure is unchanged. So each of the \(n!\) terms equals \(\int\prod_rf_r(y_r)\det[g_k(y_r)]_{k,r}\,d\mu^n\). Expanding this determinant as \(\sum_\tau\operatorname{sgn}\tau\prod_rg_{\tau(r)}(y_r)\) and integrating each product gives \(\sum_\tau\operatorname{sgn}\tau\prod_r\int f_rg_{\tau(r)}\,d\mu=\det[\int f_rg_k\,d\mu]\). \(\square\)
+**Proof.** Expand the first determinant as \(\sum_\sigma\operatorname{sgn}\sigma\prod_if_{\sigma(i)}(y_i)\). In the term of \(\sigma\), relabel the integration variables by \(y_i=y'_{\sigma(i)}\). The product becomes \(\prod_rf_r(y'_r)\), the second determinant becomes \(\operatorname{sgn}\sigma\cdot\det[g_k(y'_r)]_{k,r}\) (its columns are permuted), and the product measure is unchanged. So each of the \(n!\) terms equals \(\int\prod_rf_r(y_r)\det[g_k(y_r)]_{k,r}\,d\mu^n\). Expanding this determinant as \(\sum_\tau\operatorname{sgn}\tau\prod_rg_{\tau(r)}(y_r)\) and integrating each product gives \(\sum_\tau\operatorname{sgn}\tau\prod_r\int f_rg_{\tau(r)}\,d\mu\), which is \(\det[\int f_rg_k\,d\mu]\). \(\square\)
 
 **Lemma 1.2** (Cauchy's double alternant). For numbers with \(t_is_j\ne1\),
 
@@ -37,20 +41,35 @@ whenever the left integrand is integrable.
 On \((-1,1)\) let \(d\mu(t)=|t|\,dt/f(t)\), with \(f(t)=\sqrt{1-t^2}\), as in the rows lesson; its mass is \(2\). For \(0\le r,k<n\) put
 
 \[
-A_r(t)=P_r(t)-\frac32\,\mathbf 1_{\{t>0\}}\,\frac{f(t)}t\,D_r(t),\qquad\psi_k(s)=s^{b+k}(1-s)^q.
+\begin{gathered}
+A_r(t)=P_r(t)-\frac32\,\mathbf 1_{\{t>0\}}\,\frac{f(t)}t\,D_r(t),\\
+\psi_k(s)=s^{b+k}(1-s)^q.
+\end{gathered}
 \]
 
-Then \(M(P_r,\psi_k)-\frac32Z(D_r,\psi_k)=\int_{-1}^1\int_0^1A_r(t)\,\psi_k(s)\,(1-ts)^{-1}\,ds\,d\mu(t)\): on \((0,1)\) the measure \(\mu\) has density \(t/f\), and \(\frac{t}{f}\cdot\frac ftD_r=D_r\) turns the \(Z\) integral into this form. The function \(A_r\) is bounded (the limit at \(t=0\) exists, since \(D_r(t)/t\) is a polynomial), and \(\iint(1-|t|s)^{-1}\,ds\,d\mu(t)<\infty\) (Lemma 5.1 of the rows lesson). So every integral below converges absolutely.
+Then
+\[
+\begin{aligned}
+&M(P_r,\psi_k)-\frac32Z(D_r,\psi_k)\\
+&\quad=\int_{-1}^1\int_0^1A_r(t)\,\psi_k(s)\\
+&\qquad\cdot(1-ts)^{-1}\,ds\,d\mu(t).
+\end{aligned}
+\]
+Indeed, on \((0,1)\) the measure \(\mu\) has density \(t/f\), and \(\frac{t}{f}\cdot\frac ftD_r=D_r\) turns the \(Z\) integral into this form. The function \(A_r\) is bounded (the limit at \(t=0\) exists, since \(D_r(t)/t\) is a polynomial), and \(\iint(1-|t|s)^{-1}\,ds\,d\mu(t)<\infty\) (Lemma 5.1 of the rows lesson). So every integral below converges absolutely.
 
 **Proposition 2.1** (integral formula).
 
 \[
-\Delta_N=\frac1{(n!)^2}\int_{(-1,1)^n}\int_{(0,1)^n}\mathcal R\cdot\frac{V(t)\,V(s)^2}{\prod_{i,j}(1-t_is_j)}\prod_js_j^b(1-s_j)^q\prod_it_i^{C-1}(1-t_i)^h\;ds\,d\mu^n(t),
+\begin{aligned}
+&\Delta_N=\frac1{(n!)^2}\int_{(-1,1)^n}\int_{(0,1)^n}\mathcal R\\
+&\qquad\cdot\frac{V(t)\,V(s)^2}{\prod_{i,j}(1-t_is_j)}\prod_js_j^b(1-s_j)^q\\
+&\qquad\cdot\prod_it_i^{C-1}(1-t_i)^h\;ds\,d\mu^n(t),
+\end{aligned}
 \]
 
 where \(\mathcal R=\det[A_r(t_i)]_{r,i}\big/\prod_it_i^{C-1}(1-t_i)^h\).
 
-**Proof.** The entry \((r,k)\) of \(\Delta_N\) is \(\int A_r\phi_k\,d\mu\) with \(\phi_k(t)=\int_0^1\psi_k(s)(1-ts)^{-1}\,ds\). Lemma 1.1 in \(t\) gives \(\Delta_N=\frac1{n!}\int\det[A_r(t_i)]\det[\phi_k(t_i)]\,d\mu^n(t)\). For fixed \(t\), \(\det[\phi_k(t_i)]_{i,k}=\det[\int_0^1(1-t_is)^{-1}\psi_k(s)\,ds]\), and Lemma 1.1 in \(s\) gives \(\frac1{n!}\int\det[(1-t_is_j)^{-1}]_{i,j}\det[\psi_k(s_j)]_{j,k}\,ds\). Lemma 1.2 evaluates the first factor, and \(\det[\psi_k(s_j)]=\prod_js_j^b(1-s_j)^q\,V(s)\). Fubini's theorem applies by the absolute convergence noted above. \(\square\)
+**Proof.** The entry \((r,k)\) of \(\Delta_N\) is \(\int A_r\phi_k\,d\mu\) with \(\phi_k(t)=\int_0^1\psi_k(s)(1-ts)^{-1}\,ds\). Lemma 1.1 in \(t\) gives \(\Delta_N=\frac1{n!}\int\det[A_r(t_i)]\det[\phi_k(t_i)]\,d\mu^n(t)\). For fixed \(t\), \(\det[\phi_k(t_i)]_{i,k}\) equals \(\det[\int_0^1(1-t_is)^{-1}\psi_k(s)\,ds]\), and Lemma 1.1 in \(s\) gives \(\frac1{n!}\int\det[(1-t_is_j)^{-1}]_{i,j}\det[\psi_k(s_j)]_{j,k}\,ds\). Lemma 1.2 evaluates the first factor, and \(\det[\psi_k(s_j)]=\prod_js_j^b(1-s_j)^q\,V(s)\). Fubini's theorem applies by the absolute convergence noted above. \(\square\)
 
 **Two sheets.** Use the coordinate \(x_i=t_i/(1+f(t_i))\in(-1,1)\), so that \(t_i=2x_i/(1+x_i^2)\) and
 
@@ -58,12 +77,13 @@ where \(\mathcal R=\det[A_r(t_i)]_{r,i}\big/\prod_it_i^{C-1}(1-t_i)^h\).
 d\mu(t_i)=\frac{4|x_i|}{(1+x_i^2)^2}\,dx_i.
 \]
 
-By (3.1) of the rows lesson, with \(w=x\), \(R_r=(1-t)^ht^{C-1}x^{r-g}\) and \(R_r^*=(1-t)^ht^{C-1}x^{g-r}\). On \(t<0\) the row is \(P_r=(R_r+R_r^*)/2\); on \(t>0\) it is \(P_r-\frac32\frac ftD_r=\frac{5R_r-R_r^*}4\), since \(\frac ftD_r=\frac{R^*_r-R_r}2\). Hence
-
+By (3.1) of the rows lesson, with \(w=x\), \(R_r=(1-t)^ht^{C-1}x^{r-g}\) and \(R_r^*=(1-t)^ht^{C-1}x^{g-r}\). On \(t<0\) the row is \(P_r=(R_r+R_r^*)/2\); on \(t>0\) it is \(P_r-\frac32\frac ftD_r=\frac{5R_r-R_r^*}4\), since \(\frac ftD_r=\frac{R^*_r-R_r}2\). Hence, in the notation (2.1),
 \[
-\mathcal R=\mathcal R_n(x):=\det\bigl[\xi_{\mathrm f}(x_i)\,x_i^{\,g-r}+\xi_{\mathrm n}(x_i)\,x_i^{\,r-g}\bigr]_{r,i},\qquad
-(\xi_{\mathrm f},\xi_{\mathrm n})=\begin{cases}(\tfrac12,\tfrac12),&x<0,\\ (-\tfrac14,\tfrac54),&x>0.\end{cases}
-\tag{2.1}
+\begin{aligned}
+&\mathcal R=\mathcal R_n(x):=\det\bigl[\xi_{\mathrm f}(x_i)\,x_i^{\,g-r}\\
+&\qquad+\xi_{\mathrm n}(x_i)\,x_i^{\,r-g}\bigr]_{r,i},\\
+&(\xi_{\mathrm f},\xi_{\mathrm n})=\begin{cases}(\tfrac12,\tfrac12),&x<0,\\ (-\tfrac14,\tfrac54),&x>0.\end{cases}
+\end{aligned}
 \]
 
 The two terms are the evaluations on the "far" sheet \(1/x_i\) and the "near" sheet \(x_i\) of the Laurent monomials \(z^{r-g}\). Put
@@ -86,7 +106,10 @@ so that \(0<D_*<n\).
 There is a function \(h_*\), holomorphic on a neighbourhood of the closed unit disk, with
 
 \[
-h_*(x_i)=c_i\,x_i^{D_*},\quad c_i=\begin{cases}1,&x_i<0,\\-5,&x_i>0,\end{cases}\qquad\sup_{|z|\le1}|h_*(z)|\le K_0n,\quad K_0=10e^{12}.
+\begin{gathered}
+h_*(x_i)=c_i\,x_i^{D_*},\quad c_i=\begin{cases}1,&x_i<0,\\-5,&x_i>0,\end{cases}\\
+\sup_{|z|\le1}|h_*(z)|\le K_0n,\quad K_0=10e^{12}.
+\end{gathered}
 \]
 
 The neighbourhood may depend on the points; the bound does not.
@@ -96,14 +119,19 @@ The neighbourhood may depend on the points; the bound does not.
 *\(F\) on the imaginary axis.* For one factor and \(u>0\), \(\log\bigl|\frac{iu-x}{1-ixu}\bigr|=\frac12\log\frac{u^2+x^2}{1+x^2u^2}\), whose derivative with respect to \(\log u\) is
 
 \[
-\frac{(1-x^4)u^2}{(u^2+x^2)(1+x^2u^2)}=\frac{1-x^4}{1+x^4+x^2(u^2+u^{-2})}\le\frac{1-x^2}{1+x^2},
+\begin{aligned}
+&\frac{(1-x^4)u^2}{(u^2+x^2)(1+x^2u^2)}\\
+&\quad =\frac{1-x^4}{1+x^4+x^2(u^2+u^{-2})}\le\frac{1-x^2}{1+x^2},
+\end{aligned}
 \]
 
-using \(u^2+u^{-2}\ge2\). The logarithm vanishes at \(u=1\), so for \(0<u\le1\) integration gives \(|B(iu)|\ge u^{\sum_i(1-x_i^2)/(1+x_i^2)}\ge u^{D_*}\), by (3.1). For \(1\le u\le1+2/n\) each factor has modulus at least \(1\), since \((u^2+x^2)-(1+x^2u^2)=(u^2-1)(1-x^2)\ge0\). As \(B\) has real coefficients, the same holds at \(-iu\). Hence
+using \(u^2+u^{-2}\ge2\). The logarithm vanishes at \(u=1\), so for \(0<u\le1\) integration gives \(|B(iu)|\ge u^{\sum_i(1-x_i^2)/(1+x_i^2)}\ge u^{D_*}\), by (3.1). For \(1\le u\le1+2/n\) each factor has modulus at least \(1\), since \((u^2+x^2)-(1+x^2u^2)\) equals \((u^2-1)(1-x^2)\ge0\). As \(B\) has real coefficients, the same holds at \(-iu\). Hence
 
 \[
-|F(iu)|\le e^2\qquad(|u|\le1+2/n),
-\tag{3.2}
+\begin{gathered}
+|F(iu)|\le e^2\\
+(|u|\le1+2/n),
+\end{gathered}\tag{3.2}
 \]
 
 using \(F(0)=0\), \(u^{D_*}/|B(iu)|\le1\) for \(|u|\le1\), and \((1+2/n)^{D_*}\le e^2\).
@@ -111,15 +139,22 @@ using \(F(0)=0\), \(u^{D_*}/|B(iu)|\le1\) for \(|u|\le1\), and \((1+2/n)^{D_*}\l
 *The glued function.* Let \(\Gamma\) be the segment from \(-i(1+2/n)\) to \(i(1+2/n)\), oriented upwards, and \(\mathcal C(z)=\frac1{2\pi i}\int_\Gamma\frac{6F(w)}{w-z}\,dw\) for \(z\notin\Gamma\). Define
 
 \[
-h_*(z)=c_-z^{D_*}-B(z)\mathcal C(z)\ \ (\operatorname{Re}z<0),\qquad h_*(z)=c_+z^{D_*}-B(z)\mathcal C(z)\ \ (\operatorname{Re}z>0),
+\begin{gathered}
+h_*(z)=c_-z^{D_*}-B(z)\mathcal C(z)\ \ (\operatorname{Re}z<0),\\
+h_*(z)=c_+z^{D_*}-B(z)\mathcal C(z)\ \ (\operatorname{Re}z>0),
+\end{gathered}
 \]
 
-with \(c_-=1\), \(c_+=-5\). The density \(F\) is holomorphic near every point of \(\Gamma\): its poles are the nonzero real numbers \(x_i\). Moving a short piece of \(\Gamma\) to the left changes \(\mathcal C\) by the integral over a closed positively oriented curve around \(z\), so by Cauchy's integral formula the continuation of \(\mathcal C\) from the left minus the continuation from the right equals \(6F\) near the segment. The two definitions of \(h_*\) therefore differ across \(\Gamma\) by \((c_--c_+)z^{D_*}-6B(z)F(z)=6z^{D_*}-6z^{D_*}=0\), and \(h_*\) extends holomorphically across the interior of \(\Gamma\), including its two crossings of the unit circle at \(\pm i\). The poles \(1/x_i\) of \(B\) and the endpoints of \(\Gamma\) lie outside the closed unit disk, so \(h_*\) is holomorphic on a neighbourhood of the closed disk. At \(x_i\), \(B(x_i)=0\) and \(\mathcal C\) is regular, so \(h_*(x_i)=c_\pm x_i^{D_*}\) with the sign of \(x_i\).
+with \(c_-=1\), \(c_+=-5\). The density \(F\) is holomorphic near every point of \(\Gamma\): its poles are the nonzero real numbers \(x_i\). Moving a short piece of \(\Gamma\) to the left changes \(\mathcal C\) by the integral over a closed positively oriented curve around \(z\), so by Cauchy's integral formula the continuation of \(\mathcal C\) from the left minus the continuation from the right equals \(6F\) near the segment. The two definitions of \(h_*\) therefore differ across \(\Gamma\) by \((c_--c_+)z^{D_*}-6B(z)F(z)\), which is \(6z^{D_*}-6z^{D_*}=0\), and \(h_*\) extends holomorphically across the interior of \(\Gamma\), including its two crossings of the unit circle at \(\pm i\). The poles \(1/x_i\) of \(B\) and the endpoints of \(\Gamma\) lie outside the closed unit disk, so \(h_*\) is holomorphic on a neighbourhood of the closed disk. At \(x_i\), \(B(x_i)=0\) and \(\mathcal C\) is regular, so \(h_*(x_i)=c_\pm x_i^{D_*}\) with the sign of \(x_i\).
 
 *The bound.* Near \(\pm i\), in the disks of radius \(\frac14\), we have \(|w|,|w-x_i|,|1-x_iw|\ge\frac34\), so \(F\) has no zeros or poles there and
 
 \[
-\Bigl|\frac{F'(w)}{F(w)}\Bigr|=\Bigl|\frac{D_*}w-\sum_i\Bigl(\frac1{w-x_i}+\frac{x_i}{1-x_iw}\Bigr)\Bigr|\le\frac43D_*+\frac83n<4n.
+\begin{aligned}
+&\Bigl|\frac{F'(w)}{F(w)}\Bigr|\\
+&\quad =\Bigl|\frac{D_*}w-\sum_i\Bigl(\frac1{w-x_i}+\frac{x_i}{1-x_iw}\Bigr)\Bigr|\\
+&\quad \le\frac43D_*+\frac83n<4n.
+\end{aligned}
 \]
 
 As \(|F(\pm i)|=1\), integrating along segments gives \(|F(w)|\le e^{12}\) when \(|w\mp i|\le3/n\).
@@ -139,14 +174,17 @@ where \(1/x=(1/x_1,\dots,1/x_n)\).
 **Proof.** Factor the far-sheet weight out of each column: with \(c_i=\xi_{\mathrm n}(x_i)/\xi_{\mathrm f}(x_i)\), which is \(1\) for \(x_i<0\) and \(-5\) for \(x_i>0\),
 
 \[
-\xi_{\mathrm f}x^{g-r}+\xi_{\mathrm n}x^{r-g}=\xi_{\mathrm f}\,x^{g-(n-1)}\bigl(x^{n-1-r}+c\,x^{D_*}x^r\bigr).
+\begin{aligned}
+&\xi_{\mathrm f}x^{g-r}+\xi_{\mathrm n}x^{r-g}\\
+&\quad =\xi_{\mathrm f}\,x^{g-(n-1)}\bigl(x^{n-1-r}+c\,x^{D_*}x^r\bigr).
+\end{aligned}
 \]
 
-So \(\mathcal R_n(x)=\prod_i\xi_{\mathrm f}(x_i)x_i^{g-(n-1)}\cdot\det\bigl[x_i^{n-1-r}+h_*(x_i)x_i^r\bigr]\), with \(h_*\) from Lemma 3.1.
+So \(\mathcal R_n(x)\) is the product of \(\prod_i\xi_{\mathrm f}(x_i)x_i^{g-(n-1)}\) and \(\det\bigl[x_i^{n-1-r}+h_*(x_i)x_i^r\bigr]\), with \(h_*\) from Lemma 3.1.
 
 Let \(H^2\) be the space of power series \(u=\sum_{m\ge0}u_mz^m\) with \(\sum|u_m|^2<\infty\), with inner product \(\langle u,v\rangle=\sum u_m\bar v_m\). For \(u\) holomorphic on a neighbourhood of the closed disk, \(\|u\|^2=\frac1{2\pi}\int_0^{2\pi}|u(e^{i\theta})|^2d\theta\) by Parseval's identity. For real \(y\) with \(|y|<1\), the function \(k_y(z)=1/(1-yz)=\sum y^mz^m\) satisfies \(\langle u,k_y\rangle=u(y)\). Multiplication by \(h_*\) has operator norm at most \(\sup_{|z|\le1}|h_*|\), by the boundary formula.
 
-Let \(Q(z)=\prod_i(1-x_iz)\) and \(\mathcal H_Q=\{v/Q:\ v\text{ a polynomial of degree}<n\}\), an \(n\)-dimensional subspace of \(H^2\) (the zeros \(1/x_i\) of \(Q\) lie outside the closed disk). It contains the \(n\) functions \(k_{x_i}\), which are linearly independent because their poles are distinct; so they form a basis. Let \(\Pi_Q\) be the orthogonal projection onto \(\mathcal H_Q\). Then \((\Pi_Qu)(x_i)=\langle\Pi_Qu,k_{x_i}\rangle=\langle u,k_{x_i}\rangle=u(x_i)\).
+Let \(Q(z)=\prod_i(1-x_iz)\) and let \(\mathcal H_Q\) be the space of the quotients \(v/Q\) with \(v\) a polynomial of degree less than \(n\), an \(n\)-dimensional subspace of \(H^2\) (the zeros \(1/x_i\) of \(Q\) lie outside the closed disk). It contains the \(n\) functions \(k_{x_i}\), which are linearly independent because their poles are distinct; so they form a basis. Let \(\Pi_Q\) be the orthogonal projection onto \(\mathcal H_Q\). Then \((\Pi_Qu)(x_i)=\langle\Pi_Qu,k_{x_i}\rangle\), which is \(\langle u,k_{x_i}\rangle=u(x_i)\).
 
 Define \(R(v/Q)=\tilde v/Q\) with \(\tilde v(z)=z^{n-1}v(1/z)\). It is a linear involution of \(\mathcal H_Q\) and an isometry, since \(|\tilde v(e^{i\theta})|=|v(e^{-i\theta})|\) and \(|Q(e^{i\theta})|=|Q(e^{-i\theta})|\) (real coefficients). Put \(J=\Pi_QM_{h_*}\) on \(\mathcal H_Q\) and \(L=I+JR\); then \(\|L\|\le1+K_0n\). Let \(\mathcal E:\mathcal H_Q\to\mathbb C^n\) send \(v/Q\) to \((v(x_i))_i\); note \(\mathcal E(u)_i=Q(x_i)u(x_i)\). Since \(LR=R+J\) and projection preserves values at the \(x_i\),
 
@@ -161,28 +199,43 @@ In the basis \(z^r/Q\) (\(0\le r<n\)) of \(\mathcal H_Q\), \(\mathcal E\) has th
 **Proposition 5.1.** For every list of distinct nonzero real numbers in \((-1,1)\),
 
 \[
-|\mathcal R_n(x)|\le\Bigl(\frac32\Bigr)^nn^{n/2}\,2^{-\binom n2}\prod_i(1+x_i^2)^{(n-1)/2}|x_i|^{g-(n-1)}.
+\begin{aligned}
+&|\mathcal R_n(x)|\le\Bigl(\frac32\Bigr)^nn^{n/2}\,2^{-\binom n2}\\
+&\qquad\cdot\prod_i(1+x_i^2)^{(n-1)/2}|x_i|^{g-(n-1)}.
+\end{aligned}
 \]
 
 **Proof.** Expand \(\mathcal R_n\) by choosing one of the two sheets in each column. For a choice \(z_i\in\{x_i,1/x_i\}\), the determinant \(\det[z_i^{\,r-g}]\) has absolute value \(\mathcal V(z)\prod_i|z_i|^{-g}\). Write \(z_i=\tan\phi_i\) with \(|\phi_i|<\pi/2\). Then \(z_j-z_i=\sin(\phi_j-\phi_i)/(\cos\phi_i\cos\phi_j)\), so
 
 \[
-\mathcal V(z)=\prod_i(1+z_i^2)^{(n-1)/2}\prod_{i<j}|\sin(\phi_j-\phi_i)|=\prod_i(1+z_i^2)^{(n-1)/2}\,2^{-\binom n2}\,\bigl|V(e^{2i\phi_1},\dots,e^{2i\phi_n})\bigr|,
+\begin{aligned}
+&\mathcal V(z)=\prod_i(1+z_i^2)^{(n-1)/2}\\
+&\qquad\cdot\prod_{i<j}|\sin(\phi_j-\phi_i)|\\
+&\quad=\prod_i(1+z_i^2)^{(n-1)/2}\,2^{-\binom n2}\\
+&\qquad\cdot\bigl|V(e^{2i\phi_1},\dots,e^{2i\phi_n})\bigr|,
+\end{aligned}
 \]
 
-and Lemma 1.3 bounds the last Vandermonde by \(n^{n/2}\), its columns having norm \(\sqrt n\). The ratio of the remaining weight on the far sheet to that on the near sheet is \(|x|^{g}(1+x^{-2})^{(n-1)/2}\big/\bigl(|x|^{-g}(1+x^2)^{(n-1)/2}\bigr)=|x|^{-D_*}\ge1\), so every choice is bounded by the far-sheet weights. The coefficients satisfy \(\sum|\prod\xi|\le\prod_i(|\xi_{\mathrm f}(x_i)|+|\xi_{\mathrm n}(x_i)|)\le(3/2)^n\). \(\square\)
+and Lemma 1.3 bounds the last Vandermonde by \(n^{n/2}\), its columns having norm \(\sqrt n\). The ratio of the remaining weight on the far sheet to that on the near sheet is \(|x|^{g}(1+x^{-2})^{(n-1)/2}\) divided by \(|x|^{-g}(1+x^2)^{(n-1)/2}\), which is \(|x|^{-D_*}\ge1\), so every choice is bounded by the far-sheet weights. The coefficients satisfy \(\sum|\prod\xi|\le\prod_i(|\xi_{\mathrm f}(x_i)|+|\xi_{\mathrm n}(x_i)|)\), which is at most \((3/2)^n\). \(\square\)
 
 ## 6. Reduction to a supremum
 
 Put \(t_i=2x_i/(1+x_i^2)\) and
 
 \[
-\mathcal J_n(x,s)=\frac{\mathcal V(t)\,\mathcal V(s)^2}{\prod_{i,j}(1-t_is_j)}\prod_js_j^b(1-s_j)^q\prod_i|t_i|^{C-1}(1-t_i)^h,
+\begin{aligned}
+&\mathcal J_n(x,s)=\frac{\mathcal V(t)\,\mathcal V(s)^2}{\prod_{i,j}(1-t_is_j)}\\
+&\qquad\cdot\prod_js_j^b(1-s_j)^q\\
+&\qquad\cdot\prod_i|t_i|^{C-1}(1-t_i)^h,
+\end{aligned}
 \]
 
 \[
-\mathcal I_{2,n}=\mathcal J_n\,\mathcal V(1/x)\prod_i|x_i|^g,\qquad
-\mathcal I_{1,n}=\mathcal J_n\,2^{-\binom n2}\prod_i(1+x_i^2)^{(n-1)/2}|x_i|^{g-(n-1)}.
+\begin{aligned}
+&\mathcal I_{2,n}=\mathcal J_n\,\mathcal V(1/x)\prod_i|x_i|^g,\\
+&\mathcal I_{1,n}=\mathcal J_n\,2^{-\binom n2}\\
+&\qquad\cdot\prod_i(1+x_i^2)^{(n-1)/2}|x_i|^{g-(n-1)}.
+\end{aligned}
 \]
 
 Let \(\Omega_2\) be the set of configurations with distinct nonzero \(x_i\) satisfying (3.1), and \(\Omega_1\) its complement among such configurations.
@@ -196,7 +249,11 @@ Let \(\Omega_2\) be the set of configurations with distinct nonzero \(x_i\) sati
 and consequently
 
 \[
-\frac{\log|\Delta_N|}{n^2}-\frac12\log2\le\max_{\kappa}\sup_{\Omega_\kappa}\Bigl(\frac{\log\mathcal I_{\kappa,n}}{n^2}-\frac12\log2\Bigr)+O\Bigl(\frac{\log(n+2)}n\Bigr).
+\begin{aligned}
+&\frac{\log|\Delta_N|}{n^2}-\frac12\log2\\
+&\quad \le\max_{\kappa}\sup_{\Omega_\kappa}\Bigl(\frac{\log\mathcal I_{\kappa,n}}{n^2}-\frac12\log2\Bigr)\\
+&\quad +O\Bigl(\frac{\log(n+2)}n\Bigr).
+\end{aligned}
 \]
 
 **Proof.** In Proposition 2.1 all denominators are positive. On \(\Omega_2\) use Proposition 4.1, on \(\Omega_1\) Proposition 5.1; both cases together cover the domain up to a set of measure zero (repeated or zero \(x_i\), and boundary points). The measure \(ds\,d\mu^n(t)\) has total mass \(2^n\). For the logarithmic form, \(\log(2^nK_n)=O(n\log n)\) and \(-2\log n!\le0\). \(\square\)
@@ -217,7 +274,16 @@ The index \(\kappa\) is the exponent of the \(x\)-Vandermonde after substituting
 
 ## 8. Solutions
 
-**7.1.** \(\frac1{(1-t_1s_1)(1-t_2s_2)}-\frac1{(1-t_1s_2)(1-t_2s_1)}\) has numerator \((1-t_1s_2)(1-t_2s_1)-(1-t_1s_1)(1-t_2s_2)=t_1s_1+t_2s_2-t_1s_2-t_2s_1=(t_2-t_1)(s_2-s_1)\), and the denominator is \(\prod_{i,j}(1-t_is_j)\).
+**7.1.** \(\frac1{(1-t_1s_1)(1-t_2s_2)}-\frac1{(1-t_1s_2)(1-t_2s_1)}\) has numerator
+\[
+\begin{aligned}
+&(1-t_1s_2)(1-t_2s_1)\\
+&\quad-(1-t_1s_1)(1-t_2s_2)\\
+&\quad=t_1s_1+t_2s_2-t_1s_2-t_2s_1\\
+&\quad=(t_2-t_1)(s_2-s_1),
+\end{aligned}
+\]
+and the denominator is \(\prod_{i,j}(1-t_is_j)\).
 
 **7.2.** \(dt/dx=2(1-x^2)/(1+x^2)^2\), \(f=(1-x^2)/(1+x^2)\) and \(|t|=2|x|/(1+x^2)\), so \(|t|\,dt/f=4|x|\,dx/(1+x^2)^2\).
 
@@ -225,7 +291,7 @@ The index \(\kappa\) is the exponent of the \(x\)-Vandermonde after substituting
 
 **7.4.** In an orthonormal basis the columns of the matrix of \(L\) are the images of the basis vectors, each of norm at most \(\|L\|\).
 
-**7.5.** \(\int_{-1}^1\frac{4|x|}{(1+x^2)^2}dx=2\int_0^1\frac{4x}{(1+x^2)^2}dx=2\bigl[-\tfrac2{1+x^2}\bigr]_0^1=2\).
+**7.5.** \(\int_{-1}^1\frac{4|x|}{(1+x^2)^2}dx=2\int_0^1\frac{4x}{(1+x^2)^2}dx\), which is \(2\bigl[-\tfrac2{1+x^2}\bigr]_0^1=2\).
 
 ## References
 

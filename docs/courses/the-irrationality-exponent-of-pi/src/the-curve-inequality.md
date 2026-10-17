@@ -17,15 +17,20 @@ We use Theorem 3.1 and the frame (1.1) of [Weighted multiplicity estimates](weig
 Fix integers \(m,K\ge1\) and positive rational numbers \(w_0,v_0,\theta\) with
 
 \[
-0<\theta<1,\qquad K\theta^m<1,\qquad K\frac{w_0}{v_0}\theta^m<1 .
-\tag{1.1}
+\begin{gathered}
+0<\theta<1,\qquad K\theta^m<1,\\
+K\frac{w_0}{v_0}\theta^m<1 .
+\end{gathered}\tag{1.1}
 \]
 
 Choose a positive rational \(\sigma\) so small that
 
 \[
-(1+3\sigma)^{m+1}K\frac{w_0}{v_0}\theta^m<1,\qquad(1+3\sigma)^mK\theta^m<1,\qquad(1+\sigma)\theta<1,
-\tag{1.2}
+\begin{gathered}
+(1+3\sigma)^{m+1}K\frac{w_0}{v_0}\theta^m<1,\\
+(1+3\sigma)^mK\theta^m<1,\\
+(1+\sigma)\theta<1,
+\end{gathered}\tag{1.2}
 \]
 
 and put \(L_0=m+2\) and \(C_*=\max_{1\le k\le m}k!\,(L_0/\sigma)^k\). For positive rational *degree weights* \(w_1,\dots,w_m\) we always set the *order weights*
@@ -52,7 +57,11 @@ The thresholds do not depend on the points \(a_j\). This is what will allow the 
 The *centres* are points \(a_j=(1,c_{j1},\dots,c_{jm})\in\mathbb C^{m+1}\), \(0\le j<K\), such that for each \(i\) the numbers \(c_{0i},\dots,c_{K-1,i}\) are pairwise distinct. At \(a_j\), the completed local ring of \(\mathbb C^{m+1}\) is \(\mathbb C[[Y-1,X-c_j]]\), and
 
 \[
-t=Y-1,\qquad u_i=X_i-c_{ji}-\log(1+t),\qquad\log(1+t)=\sum_{n\ge1}\frac{(-1)^{n+1}t^n}n,
+\begin{gathered}
+t=Y-1,\\
+u_i=X_i-c_{ji}-\log(1+t),\\
+\log(1+t)=\sum_{n\ge1}\frac{(-1)^{n+1}t^n}n,
+\end{gathered}
 \]
 
 form a regular system of parameters, hence formal coordinates. The *\(V\)-weight* of \(t^su^\beta\) is \(v_0s+\sum_iv_i\beta_i\), and a series has *\(V\)-order* at least \(T\) if all monomials in its expansion have \(V\)-weight at least \(T\).
@@ -64,13 +73,20 @@ Let \(C\subseteq\mathbb C^{m+1}\) be a curve. Its closure in \(\mathbf P^{m+1}\)
 **Definition 2.1.** The *\(W\)-degree* of \(C\) is
 
 \[
-\deg_WC=\sum_{P\in\widetilde C}M_P,\qquad M_P=\max\Bigl\{0,-\frac{\operatorname{ord}_PY}{w_0},-\frac{\operatorname{ord}_PX_1}{w_1},\dots,-\frac{\operatorname{ord}_PX_m}{w_m}\Bigr\},
+\begin{aligned}
+&\deg_WC=\sum_{P\in\widetilde C}M_P,\\
+&M_P=\max\Bigl\{0,-\frac{\operatorname{ord}_PY}{w_0},-\frac{\operatorname{ord}_PX_1}{w_1},\\
+&\qquad\dots,-\frac{\operatorname{ord}_PX_m}{w_m}\Bigr\},
+\end{aligned}
 \]
 
 with the convention \(\operatorname{ord}_P0=+\infty\). Only the finitely many points over infinity contribute. For a branch \(P\) at a centre \(a_j\), the morphism \(\widetilde C\to\mathbb C^{m+1}\) induces \(\mathbb C[[t,u]]\to\mathbb C[[s]]\), and the *contact* of \(P\) is
 
 \[
-h_P=\min\Bigl\{\frac{\operatorname{ord}_Pt}{v_0},\frac{\operatorname{ord}_Pu_1}{v_1},\dots,\frac{\operatorname{ord}_Pu_m}{v_m}\Bigr\}.
+\begin{aligned}
+&h_P=\min\Bigl\{\frac{\operatorname{ord}_Pt}{v_0},\frac{\operatorname{ord}_Pu_1}{v_1},\\
+&\qquad\dots,\frac{\operatorname{ord}_Pu_m}{v_m}\Bigr\}.
+\end{aligned}
 \]
 
 All these orders are positive, since \(t\) and the \(u_i\) vanish at \(a_j\). They are not all infinite: otherwise \(Y\) and the \(X_i\) would be constant on the branch, hence on \(C\). So \(0<h_P<\infty\). For branches at other points put \(h_P=0\).
@@ -80,7 +96,7 @@ All these orders are positive, since \(t\) and the \(u_i\) vanish at \(a_j\). Th
 1. If \(F\) is a polynomial of \(W\)-degree at most \(N\), then \(F|_C\), as a rational function on \(\widetilde C\), has total pole order at most \(N\deg_WC\).
 2. If a series in \(\mathbb C[[t,u]]\) has \(V\)-order at least \(T\) at \(a_j\), its image in \(\mathbb C[[s]]\) at a branch \(P\) at \(a_j\) has order at least \(Th_P\).
 
-**Proof.** (1) At \(P\), a monomial \(Y^hX^\alpha\) has order \(h\operatorname{ord}_PY+\sum\alpha_i\operatorname{ord}_PX_i\ge-(w_0h+\sum w_i\alpha_i)M_P\ge-NM_P\), and the order of a sum is at least the minimum. (2) A monomial \(t^su^\beta\) has order \(s\operatorname{ord}_Pt+\sum\beta_i\operatorname{ord}_Pu_i\ge(v_0s+\sum v_i\beta_i)h_P\ge Th_P\). The image of the series is the \(s\)-adically convergent sum of the images of its monomials, since \(h_P>0\) and the weights of the monomials tend to infinity. \(\square\)
+**Proof.** (1) At \(P\), a monomial \(Y^hX^\alpha\) has order \(h\operatorname{ord}_PY+\sum\alpha_i\operatorname{ord}_PX_i\), which is at least \(-(w_0h+\sum w_i\alpha_i)M_P\ge-NM_P\), and the order of a sum is at least the minimum. (2) A monomial \(t^su^\beta\) has order \(s\operatorname{ord}_Pt+\sum\beta_i\operatorname{ord}_Pu_i\), which is at least \((v_0s+\sum v_i\beta_i)h_P\ge Th_P\). The image of the series is the \(s\)-adically convergent sum of the images of its monomials, since \(h_P>0\) and the weights of the monomials tend to infinity. \(\square\)
 
 ## 3. Auxiliary polynomials
 
@@ -90,7 +106,7 @@ All these orders are positive, since \(t\) and the \(u_i\) vanish at \(a_j\). Th
 
 **Lemma 3.2.** For every sufficiently large \(N\) there is a nonzero polynomial \(F_N(Y,X)\) of \(W\)-degree at most \(N\) whose expansion at every centre \(a_j\) has \(V\)-order at least \((1+3\sigma)N\).
 
-**Proof.** The coefficients of \(F_N\) are unknowns; their number is the count of exponents \((h,\alpha)\) with \(w_0h+\sum w_i\alpha_i\le N\). Each condition "the coefficient of \(t^su^\beta\) at \(a_j\) vanishes" is linear in them, and there are \(K\) times the number of \((s,\beta)\) with \(v_0s+\sum v_i\beta_i<(1+3\sigma)N\). By Lemma 3.1, the ratio of the number of conditions to the number of unknowns tends to \(K(1+3\sigma)^{m+1}\prod_aw_a/\prod_av_a=K(1+3\sigma)^{m+1}(w_0/v_0)\theta^m<1\), by (1.2). For large \(N\) there are more unknowns than conditions. \(\square\)
+**Proof.** The coefficients of \(F_N\) are unknowns; their number is the count of exponents \((h,\alpha)\) with \(w_0h+\sum w_i\alpha_i\le N\). Each condition "the coefficient of \(t^su^\beta\) at \(a_j\) vanishes" is linear in them, and there are \(K\) times the number of \((s,\beta)\) with \(v_0s+\sum v_i\beta_i<(1+3\sigma)N\). By Lemma 3.1, the ratio of the number of conditions to the number of unknowns tends to \(K(1+3\sigma)^{m+1}\prod_aw_a/\prod_av_a\), which is \(K(1+3\sigma)^{m+1}(w_0/v_0)\theta^m<1\), by (1.2). For large \(N\) there are more unknowns than conditions. \(\square\)
 
 The commuting frame (1.1) of the multiplicity lesson,
 
@@ -101,8 +117,10 @@ D_0=Y\partial_Y+\sum_{i=1}^m\partial_{X_i},\qquad D_i=\partial_{X_i},
 on \(U=\{Y\ne0\}\), maps polynomials of \(W\)-degree at most \(N\) to polynomials of \(W\)-degree at most \(N\): \(D_0(Y^hX^\alpha)=hY^hX^\alpha+\sum_i\alpha_iY^hX^{\alpha-e_i}\). In the formal coordinates at a centre, \(D_0t=Y=1+t\), \(D_0u_i=1-D_0t/(1+t)=0\), \(D_it=0\) and \(D_iu_l=\delta_{il}\), so
 
 \[
-D_0=(1+t)\partial_t,\qquad D_i=\partial_{u_i}.
-\tag{3.1}
+\begin{gathered}
+D_0=(1+t)\partial_t,\\
+D_i=\partial_{u_i}.
+\end{gathered}\tag{3.1}
 \]
 
 Hence \(D_a\) lowers the \(V\)-order by at most \(v_a\). Give \(D_a\) the *cost* \(v_a\), and \(D^\gamma\) the cost \(\sum_av_a\gamma_a\).
@@ -123,7 +141,10 @@ the sum running over all branches of \(C\) at the centres.
 *Step 1: derivatives vanish on \(C\).* Take \(F_N\) from Lemma 3.2, \(N\) large. If \(\gamma\) has cost at most \(\sigma N\), the polynomial \(D^\gamma F_N\) has \(W\)-degree at most \(N\) and \(V\)-order at least \((1+2\sigma)N\) at every centre. Suppose \(D^\gamma F_N|_C\ne0\). By Lemma 2.2 its zeros at the branches over the centres have total order at least \((1+2\sigma)N\sum_Ph_P\), which exceeds \(N\deg_WC\) (if \(\deg_WC>0\) because \((1+2\sigma)/(1+\sigma)>1\), and if \(\deg_WC=0\) because \(\sum h_P>0\)), while its poles have total order at most \(N\deg_WC\). This contradicts the equality of the numbers of zeros and poles. So
 
 \[
-D^\gamma F_N\big|_C=0\qquad\text{for every }\gamma\text{ of cost at most }\sigma N .
+\begin{gathered}
+D^\gamma F_N\big|_C=0\\
+\text{for every }\gamma\text{ of cost at most }\sigma N .
+\end{gathered}
 \]
 
 *Step 2: a persistent component.* Put \(\delta=\sigma N/L_0\), and for \(0\le r\le L_0\) let \(V_r\subseteq U\) be the common zero set of the \(D^\gamma F_N\) of cost at most \(r\delta\). These form a decreasing chain, and \(C^\circ=C\cap U\), which is nonempty since \(C\) meets a centre, lies in \(V_{L_0}\). Choose an irreducible component \(Z_{L_0}\supseteq C^\circ\) of \(V_{L_0}\), and successively irreducible components \(Z_{r}\supseteq Z_{r+1}\) of \(V_r\). Each \(Z_r\) contains a curve and lies in the hypersurface \(V(F_N)\cap U\), so \(1\le\dim Z_r\le m\). A chain of \(L_0+1=m+3\) irreducible closed sets with dimensions in \([1,m]\) has two equal neighbours: \(Z_{r+1}=Z_r=:Z\) for some \(r\). Let \(k\) be the codimension of \(Z\) in \(\mathbb C^{m+1}\), \(1\le k\le m\).
@@ -131,8 +152,10 @@ D^\gamma F_N\big|_C=0\qquad\text{for every }\gamma\text{ of cost at most }\sigma
 *Step 3: comparison of normal bases.* The polynomials \(f=D^\gamma F_N\), cost\((\gamma)\le r\delta\), have \(W\)-degree at most \(N\), and \(Z\) is an irreducible component of their common zero set in \(U\). For \(\gamma'\) of cost less than \(\delta\), \(D^{\gamma'}f=D^{\gamma+\gamma'}F_N\) has cost at most \((r+1)\delta\), so it vanishes on \(V_{r+1}\supseteq Z\). Theorem 3.1 of the multiplicity lesson, with degree weights \(W\), costs \(V\) and \(\varepsilon=\sigma/L_0\), gives
 
 \[
-\prod_{a\in A}w_a\le k!\,(L_0/\sigma)^k\prod_{b\in B}v_b\le C_*\prod_{b\in B}v_b
-\tag{4.2}
+\begin{aligned}
+\prod_{a\in A}w_a&\le k!\,(L_0/\sigma)^k\prod_{b\in B}v_b\\
+&\le C_*\prod_{b\in B}v_b
+\end{aligned}\tag{4.2}
 \]
 
 for every coordinate normal basis \(A\) and every frame normal basis \(B\) of \(Z\) (index \(0\) standing for \(Y\), resp. \(D_0\)).
@@ -151,7 +174,7 @@ If instead every \(\partial_{X_i}\) is tangent to \(Z\) at general points, then 
 
 Since \(C^\circ\subseteq Z\) meets a centre, where \(Y=1\), we get \(Y=1\) on \(C\).
 
-*Step 5: the fibre \(Y=1\).* Now \(C\subseteq\{Y=1\}\cong\mathbb C^m\), with coordinates \(X_i\), degree weights \(w_i\) and order weights \(v_i\) in \(u_i=X_i-c_{ji}\) (since \(\log Y=0\) on the fibre). On \(C\), \(t=0\), so \(h_P=\min_i\operatorname{ord}_P(X_i-c_{ji})/v_i\), and \(Y\) contributes nothing to \(\deg_WC\). As in Lemma 3.2, the ratio of conditions to unknowns for a polynomial \(G_N(X)\) of weighted degree at most \(N\) and order at least \((1+3\sigma)N\) at the \(K\) points \(c_j\) tends to \(K(1+3\sigma)^m\prod_iw_i/\prod_iv_i=K(1+3\sigma)^m\theta^m<1\), so such a nonzero \(G_N\) exists for large \(N\). Its partial derivatives \(\partial_X^\gamma G_N\) of cost \(\sum v_i\gamma_i\le\sigma N\) have weighted degree at most \(N\) and order at least \((1+2\sigma)N\) at the points; the argument of Step 1 shows that they vanish on \(C\).
+*Step 5: the fibre \(Y=1\).* Now \(C\subseteq\{Y=1\}\cong\mathbb C^m\), with coordinates \(X_i\), degree weights \(w_i\) and order weights \(v_i\) in \(u_i=X_i-c_{ji}\) (since \(\log Y=0\) on the fibre). On \(C\), \(t=0\), so \(h_P=\min_i\operatorname{ord}_P(X_i-c_{ji})/v_i\), and \(Y\) contributes nothing to \(\deg_WC\). As in Lemma 3.2, the ratio of conditions to unknowns for a polynomial \(G_N(X)\) of weighted degree at most \(N\) and order at least \((1+3\sigma)N\) at the \(K\) points \(c_j\) tends to \(K(1+3\sigma)^m\prod_iw_i/\prod_iv_i\), which is \(K(1+3\sigma)^m\theta^m<1\), so such a nonzero \(G_N\) exists for large \(N\). Its partial derivatives \(\partial_X^\gamma G_N\) of cost \(\sum v_i\gamma_i\le\sigma N\) have weighted degree at most \(N\) and order at least \((1+2\sigma)N\) at the points; the argument of Step 1 shows that they vanish on \(C\).
 
 If \(m=1\), the fibre is a line, \(C\) is that line, and the nonzero polynomial \(G_N\) cannot vanish on it. Let \(m\ge2\). Define \(U_r\subseteq\{Y=1\}\) as the common zero set of the \(\partial_X^\gamma G_N\) of cost at most \(r\delta\), and choose as in Step 2 a persistent component \(Z'\supseteq C\), with \(1\le\dim Z'\le m-1\). Theorem 3.1 of the multiplicity lesson, now for the frame \(\partial_{X_1},\dots,\partial_{X_m}\) with costs \(v_i\), gives (4.2) for the normal bases of \(Z'\) in the fibre. Here coordinate and frame normal bases are the same index sets. There is only one: if \(A\ne B\) were normal bases, then, naming them so that the largest index of \(A\triangle B\) lies in \(A\), (1.3) would contradict (4.2). Let \(A\) be the unique normal basis and \(i\in A\). The vectors \(\partial_{X_l}\), \(l\ne i\), do not span the normal space at general points (otherwise there would be a normal basis without \(i\)); they span \(\ker dX_i\), so \(T_xZ'\subseteq\ker dX_i\) at general points, and \(X_i\) is constant on \(Z'\). Since the \(c_{ji}\), \(0\le j<K\), are distinct, \(Z'\supseteq C\) contains at most one centre.
 
@@ -177,7 +200,7 @@ The two halves of the proof use the two kinds of weights differently. Off the fi
 
 ## 6. Solutions
 
-**5.1.** On \(C\), \(X_1=\lambda(Y-1)\), so \(t\) is a coordinate on the branch at \((1,0)\), with \(\operatorname{ord}t=1\), and \(u_1=\lambda t-\log(1+t)=(\lambda-1)t+t^2/2-\dots\) has order \(1\) if \(\lambda\ne1\) and \(2\) if \(\lambda=1\). So \(h_P=\min(1/v_0,1/v_1)\) or \(\min(1/v_0,2/v_1)\). At the point at infinity of \(\widetilde C\cong\mathbf P^1\), \(Y\) and \(X_1\) have simple poles (if \(\lambda\ne0\)), so \(\deg_WC=\max(1/w_0,1/w_1)\). Inequality (4.1) reads \(\max(1/w_0,1/w_1)\ge(1+\sigma)h_P\). For separated weights \(w_1\) is very large, so \(h_P\le2/v_1=2\theta/w_1\) is tiny and (4.1) holds with room to spare.
+**5.1.** On \(C\), \(X_1=\lambda(Y-1)\), so \(t\) is a coordinate on the branch at \((1,0)\), with \(\operatorname{ord}t=1\), and \(u_1=\lambda t-\log(1+t)\), which is \((\lambda-1)t+t^2/2-\dots\), has order \(1\) if \(\lambda\ne1\) and \(2\) if \(\lambda=1\). So \(h_P=\min(1/v_0,1/v_1)\) or \(\min(1/v_0,2/v_1)\). At the point at infinity of \(\widetilde C\cong\mathbf P^1\), \(Y\) and \(X_1\) have simple poles (if \(\lambda\ne0\)), so \(\deg_WC=\max(1/w_0,1/w_1)\). Inequality (4.1) reads \(\max(1/w_0,1/w_1)\ge(1+\sigma)h_P\). For separated weights \(w_1\) is very large, so \(h_P\le2/v_1=2\theta/w_1\) is tiny and (4.1) holds with room to spare.
 
 **5.2.** If \(u_1\) vanished identically on a branch of an algebraic curve through \((1,0)\), then \(dX_1=dY/Y\) on that curve, and the residue argument of Step 4 shows that \(Y\) is constant, so \(Y=1\) and then \(X_1=\log Y=0\): the "curve" is a point.
 

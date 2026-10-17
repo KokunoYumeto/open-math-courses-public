@@ -56,7 +56,11 @@ Proposition 1.3(4) produces on \(Y\) an ordered divisor with more members than t
 **Lemma 2.1.** Let \((X,\mathcal I,E)\) be a triple with \(E=(E^1,\ldots,E^s)\), and let \(E^+\) be obtained from \(E\) by inserting empty members at arbitrary positions, the member \(E^i\) moving to the position \(\varphi(i)\) for an increasing map \(\varphi\). Then
 
 \[
-\mathcal B^{\rm ord}_m(X,\mathcal I,E^+)=\mathcal B^{\rm ord}_m(X,\mathcal I,E),\qquad \mathcal B^{\rm mord}_m(X,\mathcal I,m,E^+)=\mathcal B^{\rm mord}_m(X,\mathcal I,m,E),
+\begin{aligned}
+&\mathcal B^{\rm ord}_m(X,\mathcal I,E^+)=\mathcal B^{\rm ord}_m(X,\mathcal I,E),\\
+&\mathcal B^{\rm mord}_m(X,\mathcal I,m,E^+)\\
+&\quad =\mathcal B^{\rm mord}_m(X,\mathcal I,m,E),
+\end{aligned}
 \]
 
 that is, the two sequences have the same centres. Along them, the transforms of \(E^+\) are obtained from the transforms of \(E\) by inserting empty members at the positions outside the image of \(\varphi\); the members created during the sequences are appended at the end of both. The same holds for the functors \(\mathcal B^{\rm dis}_{m,j}\) of [Order reduction for ideals, Lemma 2.1](order-reduction-for-ideals.md#2-moving-the-high-order-locus-off-a-divisor), with \(j\) replaced by \(\varphi(j)\).
@@ -103,7 +107,10 @@ The support of \(\Pi_{r,i+1}^*F_{i+1}\) is the strict transform of \(F_{i+1}\) t
 (4) Let \(h:Y\to X\) be smooth, with induced \(h':Y'\to X'\). By Proposition 1.3(4) the first part on \(Y\) is the pull-back of the first part on \(X\) with empty blow-ups deleted, and \(E^{\rm sep}_Y\) is \(h'^{-1}E^{\rm sep}_X\) followed by empty members. The ideal on \(Y'\) is \(h'^*\Pi_{\rm sep}^*\mathcal I\). By Lemma 2.1,
 
 \[
-\mathcal B^{\rm mord}_1\bigl(Y',h'^*\Pi_{\rm sep}^*\mathcal I,1,E^{\rm sep}_Y\bigr)=\mathcal B^{\rm mord}_1\bigl(Y',h'^*\Pi_{\rm sep}^*\mathcal I,1,h'^{-1}E^{\rm sep}_X\bigr),
+\begin{aligned}
+&\mathcal B^{\rm mord}_1\bigl(Y',h'^*\Pi_{\rm sep}^*\mathcal I,1,E^{\rm sep}_Y\bigr)\\
+&\quad =\mathcal B^{\rm mord}_1\bigl(Y',h'^*\Pi_{\rm sep}^*\mathcal I,1,h'^{-1}E^{\rm sep}_X\bigr),
+\end{aligned}
 \]
 
 and by Corollary 3.2 of the previous lesson this is \(h'^*\mathcal B^{\rm mord}_1(X',\Pi_{\rm sep}^*\mathcal I,1,E^{\rm sep}_X)\) with its empty blow-ups deleted. Concatenating the two parts gives the claim. Change of field is the same.
@@ -186,7 +193,12 @@ We call the step \(j\) the *distinguished step*, and write \(R_P(X)=X_j\) and \(
 *Comparison.* Choose closed immersions \(Q_1\subset\mathbf A^a\) and \(Q_2\subset\mathbf A^b\), and let \(i_1:U'\to\mathbf A^a\) and \(i_2:U'\to\mathbf A^b\) be the composite closed immersions. Since \(U'\) is not smooth, its image is not the whole affine space in any of the closed immersions into \(\mathbf A^a\), \(\mathbf A^b\) and \(\mathbf A^{a+b}\) used below, so all of them are embeddings, these spaces being irreducible; \(U'\subset Q_1\) and \(U'\subset Q_2\) are embeddings by Lemma 4.4(1). By Lemma 4.4(1), (2), (2), then (3) with Lemma 4.5, then (2), (2), (1),
 
 \[
-R_{P_1}(X)|_{U'}=R_{Q_1}(U')=R_{\mathbf A^a}(U')=R_{\mathbf A^{a+b}}\bigl(U',(i_1,0)\bigr)\cong R_{\mathbf A^{a+b}}\bigl(U',(0,i_2)\bigr)=R_{\mathbf A^b}(U')=R_{Q_2}(U')=R_{P_2}(X)|_{U'},
+\begin{aligned}
+&R_{P_1}(X)|_{U'}=R_{Q_1}(U')=R_{\mathbf A^a}(U')\\
+&\quad =R_{\mathbf A^{a+b}}\bigl(U',(i_1,0)\bigr)\\
+&\quad \cong R_{\mathbf A^{a+b}}\bigl(U',(0,i_2)\bigr)=R_{\mathbf A^b}(U')\\
+&\quad =R_{Q_2}(U')=R_{P_2}(X)|_{U'},
+\end{aligned}
 \]
 
 where \(R_{\mathbf A^{a+b}}(U',\iota)\) denotes the construction for the embedding \(\iota\). Every identification is over \(U'\); for the middle one this holds because \(\sigma\circ(i_1,0)=(0,i_2)\). \(\square\)
@@ -248,7 +260,7 @@ This is the form in which resolution is used to compare the étale and singular 
 
 **Exercise 6.4.** For \(X=V(xy)\subset\mathbf A^2\), show that \(\mathcal B^{\rm pri}(\mathbf A^2,(xy),\emptyset)\) begins with the blow-up of the origin, followed by the blow-up of the two points \(p_1,p_2\) where the strict transforms \(L_1',L_2'\) of the axes meet the exceptional curve \(F\), followed by the blow-up of the strict transforms \(L_1''\sqcup L_2''\), and that this third step is the distinguished one.
 
-*Solution.* By Lemma 2.1, \(\mathcal B^{\rm pri}(\mathbf A^2,(xy),\emptyset)=\mathcal B^{\rm mord}_1(\mathbf A^2,(xy),1,\emptyset)\). Step 1 of [Order reduction for marked ideals, Theorem 2.1](order-reduction-for-marked-ideals.md#2-the-construction) first applies \(\mathcal B^{\rm ord}_2\) to \((xy)\), of maximal order \(2\) at the origin. Its tuned ideal is \(W_4((xy))=(x^2y^2)+xy\,(x,y)^2+(x,y)^4=(x,y)^4\). On the MC-hypersurface \(H=V(x-y)\), with coordinate \(t\), the restriction is \((t^4)\) with marking \(4\); its order reduction blows up the origin of \(H\), a trivial blow-up after which the marked transform is \(t^{-4}(t^4)=\mathcal O\), as in [Order reduction for ideals, Example 4.1](order-reduction-for-ideals.md#4-an-example). Pushed forward, this is the blow-up of the origin of \(\mathbf A^2\). The non-monomial part becomes the unmarked transform \(\mathcal O(2F)\pi^*(xy)\), the ideal of \(L_1'\sqcup L_2'\), of maximal order \(1\) (Lemma 1.2(3) of the previous lesson). The next round applies \(\mathcal B^{\rm ord}_1\) to it with \(E=(F)\). Its Step A is \(\mathcal B^{\rm dis}_{1,1}\): no component of \(F\) lies in the cosupport \(L_1'\sqcup L_2'\), and the second part pushes forward \(\mathcal B^{\rm mord}_1(F,\mathcal I_{\{p_1,p_2\}},1,\emptyset)\), which is the blow-up of \(\{p_1,p_2\}\) by Lemmas 2.1 and 4.1. In Step B the curve \(L_1'\sqcup L_2'\) is an MC-hypersurface, because \(MC\) of an ideal of maximal order \(1\) is the ideal itself; its strict transform is \(L_1''\sqcup L_2''\), and \(\mathcal B^{\rm dis}_{1,0}\) blows up the components of it contained in the cosupport, that is, all of \(L_1''\sqcup L_2''\), a trivial blow-up after which the ideal is \(\mathcal O\). This centre contains the generic points of the strict transform of \(X\), while the first two lie over the origin, so it is the distinguished step, and \(R(X)=L_1''\sqcup L_2''\).
+*Solution.* By Lemma 2.1, \(\mathcal B^{\rm pri}(\mathbf A^2,(xy),\emptyset)=\mathcal B^{\rm mord}_1(\mathbf A^2,(xy),1,\emptyset)\). Step 1 of [Order reduction for marked ideals, Theorem 2.1](order-reduction-for-marked-ideals.md#2-the-construction) first applies \(\mathcal B^{\rm ord}_2\) to \((xy)\), of maximal order \(2\) at the origin. Its tuned ideal \(W_4((xy))\) is \((x^2y^2)+xy\,(x,y)^2+(x,y)^4\), that is, \((x,y)^4\). On the MC-hypersurface \(H=V(x-y)\), with coordinate \(t\), the restriction is \((t^4)\) with marking \(4\); its order reduction blows up the origin of \(H\), a trivial blow-up after which the marked transform is \(t^{-4}(t^4)=\mathcal O\), as in [Order reduction for ideals, Example 4.1](order-reduction-for-ideals.md#4-an-example). Pushed forward, this is the blow-up of the origin of \(\mathbf A^2\). The non-monomial part becomes the unmarked transform \(\mathcal O(2F)\pi^*(xy)\), the ideal of \(L_1'\sqcup L_2'\), of maximal order \(1\) (Lemma 1.2(3) of the previous lesson). The next round applies \(\mathcal B^{\rm ord}_1\) to it with \(E=(F)\). Its Step A is \(\mathcal B^{\rm dis}_{1,1}\): no component of \(F\) lies in the cosupport \(L_1'\sqcup L_2'\), and the second part pushes forward \(\mathcal B^{\rm mord}_1(F,\mathcal I_{\{p_1,p_2\}},1,\emptyset)\), which is the blow-up of \(\{p_1,p_2\}\) by Lemmas 2.1 and 4.1. In Step B the curve \(L_1'\sqcup L_2'\) is an MC-hypersurface, because \(MC\) of an ideal of maximal order \(1\) is the ideal itself; its strict transform is \(L_1''\sqcup L_2''\), and \(\mathcal B^{\rm dis}_{1,0}\) blows up the components of it contained in the cosupport, that is, all of \(L_1''\sqcup L_2''\), a trivial blow-up after which the ideal is \(\mathcal O\). This centre contains the generic points of the strict transform of \(X\), while the first two lie over the origin, so it is the distinguished step, and \(R(X)=L_1''\sqcup L_2''\).
 
 ## References
 

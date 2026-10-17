@@ -18,13 +18,13 @@ Let \((X,\mathcal I,E)\) be a triple, \(E=(E^1,\ldots,E^s)\). Call the irreducib
 
 1. \(N(\mathcal I)\) is an ideal sheaf, nonzero on every component of \(X\), whose order along every component of \(E\) is \(0\), and \(\mathcal I=M(\mathcal I)N(\mathcal I)\).
 2. For a smooth morphism \(h:Y\to X\), \(M(h^*\mathcal I)=h^*M(\mathcal I)\) and \(N(h^*\mathcal I)=h^*N(\mathcal I)\), the components of \(h^{-1}E\) being the components of the \(h^{-1}(C)\). The same holds for change of field.
-3. Let \(\pi\) be a blow-up of order \(\ge m\) for \((X,\mathcal I,m,E)\) whose centre \(Z\) has \(\operatorname{ord}_ZN(\mathcal I)=e\) at each generic point. Then \(N(\pi^{-1}_*(\mathcal I,m))=\pi^{-1}_*N(\mathcal I)\), the unmarked transform, and \(M(\pi^{-1}_*(\mathcal I,m))=\mathcal O(mF)\,\pi^*M(\mathcal I)\cdot\mathcal O(-eF)\).
+3. Let \(\pi\) be a blow-up of order \(\ge m\) for \((X,\mathcal I,m,E)\) whose centre \(Z\) has \(\operatorname{ord}_ZN(\mathcal I)=e\) at each generic point. Then \(N(\pi^{-1}_*(\mathcal I,m))=\pi^{-1}_*N(\mathcal I)\), the unmarked transform, and \(M(\pi^{-1}_*(\mathcal I,m))\) equals \(\mathcal O(mF)\,\pi^*M(\mathcal I)\cdot\mathcal O(-eF)\).
 
 **Proof.** (1) Locally \(X\) is factorial ([Regular local rings](course:AG-CA/AG-CA-14), Theorem 5.3), and \(\mathcal I\subset\mathcal O(-a_CC)\) for each \(C\) by [Smooth blow-ups and transforms of ideals, Lemma 4.1](smooth-blowups-and-transforms-of-ideals.md#4-transforms-of-ideals-and-of-marked-ideals). Since the \(C\) are distinct prime divisors, \(\bigcap_C\mathcal O(-a_CC)=\mathcal O(-\sum a_CC)\), so \(N(\mathcal I)\) is an ideal. Orders add, so \(\operatorname{ord}_CN(\mathcal I)=a_C-a_C=0\).
 
 (2) A component \(C'\) of \(h^{-1}(C)\) maps onto a dense open subset of \(C\), so its generic point maps to that of \(C\), and \(\operatorname{ord}_{C'}h^*\mathcal I=a_C\) by [Smooth blow-ups and transforms of ideals, Proposition 2.6(4)](smooth-blowups-and-transforms-of-ideals.md#2-order-of-vanishing-and-derivative-ideals).
 
-(3) Write \(\pi^{-1}_*(\mathcal I,m)=\mathcal O(mF)\pi^*M\cdot\pi^*N=\bigl(\mathcal O((m-e)F)\pi^*M\bigr)\cdot\bigl(\mathcal O(eF)\pi^*N\bigr)\). The second factor is the unmarked transform \(\pi^{-1}_*N\); by Lemma 4.1 of the first lesson its order along each component of \(F\) is \(0\). If a component \(C\) of \(E\) is a component of \(Z\), its strict transform is empty. Otherwise \(\pi\) is an isomorphism at the generic point of \(C\), and the order of the second factor along the strict transform of \(C\) is \(\operatorname{ord}_CN=0\). The first factor is supported on the total transform of \(E\), and it is an ideal because the product is and the second factor has order \(0\) along all components. So the decomposition of the transform is as stated. \(\square\)
+(3) Write \(\pi^{-1}_*(\mathcal I,m)=\mathcal O(mF)\pi^*M\cdot\pi^*N\), which is \(\bigl(\mathcal O((m-e)F)\pi^*M\bigr)\cdot\bigl(\mathcal O(eF)\pi^*N\bigr)\). The second factor is the unmarked transform \(\pi^{-1}_*N\); by Lemma 4.1 of the first lesson its order along each component of \(F\) is \(0\). If a component \(C\) of \(E\) is a component of \(Z\), its strict transform is empty. Otherwise \(\pi\) is an isomorphism at the generic point of \(C\), and the order of the second factor along the strict transform of \(C\) is \(\operatorname{ord}_CN=0\). The first factor is supported on the total transform of \(E\), and it is an ideal because the product is and the second factor has order \(0\) along all components. So the decomposition of the transform is as stated. \(\square\)
 
 Characterizing the monomial part componentwise is what makes Lemma 1.2(2) hold for smooth morphisms that are not surjective; a single coefficient per member \(E^i\) would change when an open subset misses the component on which the minimum is attained.
 
@@ -37,13 +37,19 @@ Characterizing the monomial part componentwise is what makes Lemma 1.2(2) hold f
 *Step 2: separate the non-monomial part from the high-order locus.* For \(t=m-1,m-2,\ldots,1\) in turn, put \(\mathcal K_t=N(\mathcal I)^m+\mathcal I^t\) and apply \(\mathcal B^{\rm ord}_{mt}\) to \((X,\mathcal K_t,E)\). Before the round for \(t\), the order of \(N(\mathcal I)\) is \(\le t\) at every point of \(\operatorname{cosupp}(\mathcal I,m)\): for \(t=m-1\) by Step 1, and for smaller \(t\) by the previous round. Then \(\operatorname{maxord}\mathcal K_t\le mt\): at points of \(\operatorname{cosupp}(\mathcal I,m)\) because \(\operatorname{ord}\mathcal K_t\le m\operatorname{ord}N\le mt\), and elsewhere because \(\operatorname{ord}\mathcal K_t\le t\operatorname{ord}\mathcal I\le t(m-1)\). Moreover
 
 \[
-\operatorname{cosupp}(\mathcal K_t,mt)=\operatorname{cosupp}(N(\mathcal I),t)\cap\operatorname{cosupp}(\mathcal I,m).
+\begin{aligned}
+&\operatorname{cosupp}(\mathcal K_t,mt)\\
+&\quad =\operatorname{cosupp}(N(\mathcal I),t)\cap\operatorname{cosupp}(\mathcal I,m).
+\end{aligned}
 \]
 
 A centre \(Z\) of \(\mathcal B^{\rm ord}_{mt}\) therefore has \(\operatorname{ord}_Z\mathcal I\ge m\) and \(\operatorname{ord}_ZN(\mathcal I)=t\), the latter because the order of \(N\) on \(\operatorname{cosupp}(\mathcal I,m)\) is \(\le t\). So the blow-up is of order \(\ge m\) for \((\mathcal I,m)\). Its unmarked transform of \(\mathcal K_t\) is
 
 \[
-\mathcal O(mtF)\pi^*\mathcal K_t=\bigl(\mathcal O(tF)\pi^*N\bigr)^m+\bigl(\mathcal O(mF)\pi^*\mathcal I\bigr)^t=N(\mathcal I_1)^m+\mathcal I_1^{\,t},
+\begin{aligned}
+&\mathcal O(mtF)\pi^*\mathcal K_t=\bigl(\mathcal O(tF)\pi^*N\bigr)^m\\
+&\quad +\bigl(\mathcal O(mF)\pi^*\mathcal I\bigr)^t=N(\mathcal I_1)^m+\mathcal I_1^{\,t},
+\end{aligned}
 \]
 
 by Lemma 1.2(3), where \(\mathcal I_1=\pi^{-1}_*(\mathcal I,m)\). So the transforms of \(\mathcal K_t\) along \(\mathcal B^{\rm ord}_{mt}\) are the ideals \(\mathcal K_t\) recomputed from the transforms of \((\mathcal I,m)\), and the bound on the order of \(N\) along the cosupport persists: points of the new cosupport lie over the old one, where \(N\) is being blown up along centres of order \(t=\operatorname{maxord}\) of \(N\) on a neighbourhood \(\{\operatorname{ord}N\le t\}\) of the cosupport, so Lemma 4.3 of the first lesson applies there. At the end of the round, \(\operatorname{maxord}\mathcal K_t<mt\), that is, \(\operatorname{cosupp}(N(\mathcal I),t)\cap\operatorname{cosupp}(\mathcal I,m)=\emptyset\). After the round \(t=1\), \(N(\mathcal I)\) has no zero on \(\operatorname{cosupp}(\mathcal I,m)\). Let \(V=X\setminus V(N(\mathcal I))\), an open neighbourhood of the cosupport, on which \(\mathcal I=M(\mathcal I)\). All further centres lie in the cosupport, so we may work on \(V\).
@@ -61,7 +67,10 @@ Let \(r\ge2\), assume \((*_{r-1})\), and consider one round, blowing up a stratu
 *Preservation of \((*_{r-1})\).* Suppose the new stratum has size \(s'=1+|A'|+|B'|\le r-1\). Write \(\{C_1,\ldots,C_r\}=A'\sqcup C^{\rm rest}\) with \(|C^{\rm rest}|=r-|A'|\ge2\) (as \(|A'|\le s'-1\le r-2\)). Split \(C^{\rm rest}=\{c\}\sqcup C^{\rm rest}_2\). Then
 
 \[
-v+m=\Bigl(\sum_{A'}a+\sum_{B'}a+a_c\Bigr)+\Bigl(\sum_{A'}a+\sum_{C^{\rm rest}_2}a\Bigr).
+\begin{aligned}
+v+m&=\Bigl(\sum_{A'}a+\sum_{B'}a+a_c\Bigr)\\
+&\quad +\Bigl(\sum_{A'}a+\sum_{C^{\rm rest}_2}a\Bigr).
+\end{aligned}
 \]
 
 The first bracket is the value of the stratum \(A'\cup B'\cup\{c\}\) through \(z\), of size \(s'\le r-1\); the second is the value of \(A'\cup C_2^{\rm rest}\), of size \(r-1\). By \((*_{r-1})\) both are \(<m\), so \(v<m\). Strata not involving \(G\) are strict transforms of old strata, with the same values.
@@ -76,7 +85,7 @@ The first bracket is the value of the stratum \(A'\cup B'\cup\{c\}\) through \(z
 
 **Proposition 3.1.** Let \(j:Y\to X\) be a closed embedding of smooth schemes of dimension \(\le n\), and \(\mathcal O_X/\mathcal I=j_*(\mathcal O_Y/\mathcal J)\) with \(\mathcal J\) nonzero on every component of \(Y\). Then \(\mathcal B^{\rm mord}_1(X,\mathcal I,1,\emptyset)=j_*\mathcal B^{\rm mord}_1(Y,\mathcal J,1,\emptyset)\).
 
-**Proof.** Both sides are blow-up sequence functors in the triple, commute with surjective local isomorphisms, and are defined on disjoint unions by running the pieces simultaneously (Remark 3.3 of the second lesson). So it suffices to prove the identity on the members of an open cover, taken together as one disconnected scheme. Cover \(X\) by opens on which coordinates adapted to \(Y\) give a chain \(Y=Y_0\subset Y_1\subset\cdots\subset Y_c=X\), each a smooth hypersurface in the next. Let \(\mathcal J_k\) be the ideal on \(Y_k\) with \(\mathcal O_{Y_k}/\mathcal J_k\) the push-forward of \(\mathcal O_Y/\mathcal J\); it contains the ideal of \(Y\) in \(Y_k\), so it is nonzero on every component of \(Y_k\) and has maximal order \(1\) when \(k>0\). For one hypersurface step, Theorem 2.1 gives \(\mathcal B^{\rm mord}_1(Y_{k+1},\mathcal J_{k+1},1,\emptyset)=\mathcal B^{\rm ord}_1(Y_{k+1},\mathcal J_{k+1},\emptyset)\), and [Order reduction for ideals, Theorem 3.1](order-reduction-for-ideals.md#3-order-reduction-for-ideals-in-dimension-n) identifies this with the push-forward of \(\mathcal B^{\rm mord}_1(Y_k,\mathcal J_k,1,\emptyset)\). Composing the push-forwards along the chain gives the claim. \(\square\)
+**Proof.** Both sides are blow-up sequence functors in the triple, commute with surjective local isomorphisms, and are defined on disjoint unions by running the pieces simultaneously (Remark 3.3 of the second lesson). So it suffices to prove the identity on the members of an open cover, taken together as one disconnected scheme. Cover \(X\) by opens on which coordinates adapted to \(Y\) give a chain \(Y=Y_0\subset Y_1\subset\cdots\subset Y_c=X\), each a smooth hypersurface in the next. Let \(\mathcal J_k\) be the ideal on \(Y_k\) with \(\mathcal O_{Y_k}/\mathcal J_k\) the push-forward of \(\mathcal O_Y/\mathcal J\); it contains the ideal of \(Y\) in \(Y_k\), so it is nonzero on every component of \(Y_k\) and has maximal order \(1\) when \(k>0\). For one hypersurface step, Theorem 2.1 shows that \(\mathcal B^{\rm mord}_1(Y_{k+1},\mathcal J_{k+1},1,\emptyset)\) equals \(\mathcal B^{\rm ord}_1(Y_{k+1},\mathcal J_{k+1},\emptyset)\), and [Order reduction for ideals, Theorem 3.1](order-reduction-for-ideals.md#3-order-reduction-for-ideals-in-dimension-n) identifies this with the push-forward of \(\mathcal B^{\rm mord}_1(Y_k,\mathcal J_k,1,\emptyset)\). Composing the push-forwards along the chain gives the claim. \(\square\)
 
 **Corollary 3.2.** Theorems 4.1 and 4.2 of [Blow-up sequences and the main theorems](blow-up-sequences-and-the-main-theorems.md#4-the-theorems-of-the-course) hold in every dimension, including the statements (1) and (2) of Theorem 4.2, with functoriality for smooth morphisms between triples of arbitrary dimensions.
 

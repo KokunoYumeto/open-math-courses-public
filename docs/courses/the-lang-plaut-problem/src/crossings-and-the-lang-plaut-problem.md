@@ -26,13 +26,20 @@ the values of \(h_i\) on the horizontal segment of \(P\) at height \(y_i\) lie w
 
 **Proof.** In the row of colour \(i\), \(G_H^x-F_x=(F_i-F)_x\) almost everywhere, so \(\mathcal E\ge n^2\|(F_i-F)_x\|^2\) there. The row has area \(|P|/N\), so the average of \(n^2\|(F_i-F)_x\|^2\) over it is at most \(N\varepsilon_n\). By Fubini's theorem this average is the average over the heights \(y\) in the row of
 \[
-\Phi(y)=\frac1{Nnr}\int n^2\|(F_i-F)_x(x,y)\|^2\,dx,
+\begin{aligned}
+&\Phi(y)\\
+&\quad =\frac1{Nnr}\int n^2\|(F_i-F)_x(x,y)\|^2\,dx,
+\end{aligned}
 \]
 the integral along the horizontal segment of \(P\) at height \(y\). By Markov's inequality, \(\Phi(y)\le2N\varepsilon_n\) on a set of heights of positive measure (of full measure if \(\varepsilon_n=0\)). Choose \(y_i\) in it for which Lemma 1.2 of [Lipschitz sheets and a lexicographic maximum](lipschitz-sheets-and-a-lexicographic-maximum.md) applies to \(F_i-F\) at height \(y_i\); this excludes a null set of heights. The segment lies in the open row, inside \(\Omega_w\cap U_{j,i}\). For two points of it, at distance at most \(Nnr\), (1.2) of that lesson gives
 \[
-\|h_i(b)-h_i(a)\|\le\frac1r(Nnr)^{1/2}\Bigl(\frac{Nnr\cdot2N\varepsilon_n}{n^2}\Bigr)^{1/2}=N\sqrt{2N\varepsilon_n}.
+\begin{aligned}
+&\|h_i(b)-h_i(a)\|\\
+&\quad \le\frac1r(Nnr)^{1/2}\Bigl(\frac{Nnr\cdot2N\varepsilon_n}{n^2}\Bigr)^{1/2}\\
+&\quad =N\sqrt{2N\varepsilon_n}.
+\end{aligned}
 \]
-In the column of colour \(i\), \(G_V^y-F_y=(F_i-F)_y\) almost everywhere and \(\mathcal E\ge\|(F_i-F)_y\|^2\); in the same way there is \(x_i\) with \(\frac1{Nr}\int\|(F_i-F)_y(x_i,y)\|^2dy\le2N\varepsilon_n\) along the vertical segment of \(P\), whose length is \(Nr\), and then \(\|h_i(b)-h_i(a)\|\le\frac1r(Nr)^{1/2}(Nr\cdot2N\varepsilon_n)^{1/2}=N\sqrt{2N\varepsilon_n}\) for two of its points. \(\square\)
+In the column of colour \(i\), \(G_V^y-F_y=(F_i-F)_y\) almost everywhere and \(\mathcal E\ge\|(F_i-F)_y\|^2\); in the same way there is \(x_i\) with \(\frac1{Nr}\int\|(F_i-F)_y(x_i,y)\|^2dy\le2N\varepsilon_n\) along the vertical segment of \(P\), whose length is \(Nr\), and then \(\|h_i(b)-h_i(a)\|\) is at most \(\frac1r(Nr)^{1/2}(Nr\cdot2N\varepsilon_n)^{1/2}\), which is \(N\sqrt{2N\varepsilon_n}\), for two of its points. \(\square\)
 
 The factor \(n^2\) in the horizontal energy is exactly what compensates for the horizontal segments being \(n\) times longer than the vertical ones.
 

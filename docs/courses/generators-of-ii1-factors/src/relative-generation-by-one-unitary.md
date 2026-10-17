@@ -17,11 +17,18 @@ Let \(\mathbb F\) be a free group with a free basis \(\mathcal S\), let \(\mathc
 
 **Proof.** For \(\gamma\in\mathcal L\) let \(B_\gamma\) be the orthogonal projection onto the closed span of the \(\delta_g\) with \(g\) a reduced word beginning with \(\gamma\). These projections are mutually orthogonal. If a reduced word \(g\) does not begin with \(\gamma^{-1}\), then \(\gamma g\) is reduced and begins with \(\gamma\); this includes \(g=e\). Hence \(\lambda(\gamma)(1-B_{\gamma^{-1}})\) maps into the range of \(B_\gamma\). Split \(\lambda(\gamma)=\lambda(\gamma)(1-B_{\gamma^{-1}})+\lambda(\gamma)B_{\gamma^{-1}}\). For \(\eta\in\ell^2(\mathbb F)\), orthogonality of the ranges gives
 \[
-\Bigl\|\sum_\gamma b_\gamma\lambda(\gamma)(1-B_{\gamma^{-1}})\eta\Bigr\|^2=\sum_\gamma|b_\gamma|^2\|(1-B_{\gamma^{-1}})\eta\|^2\le\Bigl(\sum_\gamma|b_\gamma|^2\Bigr)\|\eta\|^2 ,
+\begin{aligned}
+&\Bigl\|\sum_\gamma b_\gamma\lambda(\gamma)(1-B_{\gamma^{-1}})\eta\Bigr\|^2\\
+&\quad =\sum_\gamma|b_\gamma|^2\|(1-B_{\gamma^{-1}})\eta\|^2\\
+&\quad \le\Bigl(\sum_\gamma|b_\gamma|^2\Bigr)\|\eta\|^2 ,
+\end{aligned}
 \]
 and the Cauchy–Schwarz inequality, with \(\sum_\gamma\|B_{\gamma^{-1}}\eta\|^2\le\|\eta\|^2\), gives
 \[
-\Bigl\|\sum_\gamma b_\gamma\lambda(\gamma)B_{\gamma^{-1}}\eta\Bigr\|\le\sum_\gamma|b_\gamma|\,\|B_{\gamma^{-1}}\eta\|\le\Bigl(\sum_\gamma|b_\gamma|^2\Bigr)^{1/2}\|\eta\| .
+\begin{aligned}
+&\Bigl\|\sum_\gamma b_\gamma\lambda(\gamma)B_{\gamma^{-1}}\eta\Bigr\|\le\sum_\gamma|b_\gamma|\,\|B_{\gamma^{-1}}\eta\|\\
+&\quad \le\Bigl(\sum_\gamma|b_\gamma|^2\Bigr)^{1/2}\|\eta\| .
+\end{aligned}
 \]
 Adding the two bounds proves the lemma. \(\square\)
 
@@ -29,7 +36,10 @@ Adding the two bounds proves the lemma. \(\square\)
 
 For an element \(f=\sum_gf(g)g\) of the group algebra \(\mathbb C[\mathbb F]\) write \(|f|=\sum_g|f(g)|g\), and write \(f\le f'\) for elements with real coefficients if \(f(g)\le f'(g)\) for every \(g\). Identify \(f\) with the vector \(\sum_gf(g)\delta_g=\lambda(f)\delta_e\) of \(\ell^2(\mathbb F)\). Then
 \[
-|ff'|\le|f|\,|f'|,\qquad\text{and}\qquad\|f\|_{\ell^2}\le\|f'\|_{\ell^2}\ \text{ if }\ |f|\le f' ,
+\begin{gathered}
+|ff'|\le|f|\,|f'|,\qquad \text{and}\\
+\|f\|_{\ell^2}\le\|f'\|_{\ell^2}\ \text{ if }\ |f|\le f' ,
+\end{gathered}
 \]
 the first because \((ff')(g)=\sum_{ab=g}f(a)f'(b)\).
 
@@ -46,14 +56,22 @@ Throughout this section \(P\subseteq M\) is an irreducible inclusion of II₁ fa
 
 **Proposition 3.1.** Let \(u,z\) be unitaries of \(M\), \(\xi\in M\), \(0<\alpha<1/2\) and \(\ell\ge1\). There are a unitary \(\tilde u\in M\) and unitaries \(\tilde t_0,\dots,\tilde t_\ell\in P\) such that \(\tilde W=\tilde t_0\prod_{k=1}^\ell(\tilde u\tilde t_k)\) satisfies
 \[
-\|\tilde u-u\|_2\le\frac{\alpha}{\sqrt{2\ell}}+\frac1\ell,\qquad\Bigl|\tau(\xi^*\tilde W)-\frac\alpha2\tau(\xi^*z)\Bigr|\le\|\xi\|_2\,\frac{4\alpha^2}{1-2\alpha}+\frac1\ell .
+\begin{aligned}
+&\|\tilde u-u\|_2\le\frac{\alpha}{\sqrt{2\ell}}+\frac1\ell,\\
+&\Bigl|\tau(\xi^*\tilde W)-\frac\alpha2\tau(\xi^*z)\Bigr|\\
+&\quad \le\|\xi\|_2\,\frac{4\alpha^2}{1-2\alpha}+\frac1\ell .
+\end{aligned}
 \]
 
 The proof occupies the rest of this section. Fix \(u,z,\xi,\alpha,\ell\).
 
 *Free letters.* Let \(D_0=C^*(u,z,\xi)\subseteq M^\omega\), a norm-separable unital C\*-algebra. By Corollary 4.4 of the second lesson and the remark after it, there are Haar unitaries \(t_0,\dots,t_\ell\in P^\omega\), each with a representing sequence of unitaries of \(P\), such that \(t_j\) is free from \(D_j=C^*(D_0,t_0,\dots,t_{j-1})\). Put
 \[
-s_1=t_0,\qquad s_{j+1}=ut_j\ (1\le j\le\ell),\qquad g_k=s_1s_2\cdots s_k\ (1\le k\le\ell+1),\qquad W=g_{\ell+1}=t_0\prod_{k=1}^\ell(ut_k).
+\begin{gathered}
+s_1=t_0,\qquad s_{j+1}=ut_j\ (1\le j\le\ell),\\
+g_k=s_1s_2\cdots s_k\ (1\le k\le\ell+1),\\
+W=g_{\ell+1}=t_0\prod_{k=1}^\ell(ut_k).
+\end{gathered}
 \]
 Then \(s_1,\dots,s_j\in D_j\), and \(g_k\) is the part of \(W\) that precedes the \(k\)th occurrence of \(u\).
 
@@ -70,13 +88,19 @@ Then \(s_1,\dots,s_j\in D_j\), and \(g_k\) is the part of \(W\) that precedes th
 
 (d) A reduced word \(g=T_{p_1}^{a_1}\cdots T_{p_r}^{a_r}\ne e\), with successive labels distinct and \(a_i\ne0\), maps to
 \[
-\Phi(g)=p_1y^{a_1}(p_1^{-1}p_2)y^{a_2}\cdots(p_{r-1}^{-1}p_r)y^{a_r}p_r^{-1}.
+\begin{aligned}
+&\Phi(g)\\
+&\quad =p_1y^{a_1}(p_1^{-1}p_2)y^{a_2}\cdots(p_{r-1}^{-1}p_r)y^{a_r}p_r^{-1}.
+\end{aligned}
 \]
 The interior letters \(p_i^{-1}p_{i+1}\) are elements of \(G\setminus\{e\}\), centred by (b), and the outer letters lie in \(D_\ell\). By (c) and (3.1) of the first lesson, \(\tau(\Phi(g))=0\). For \(g\ne h\) in \(F_S\), \(\langle\Phi(g),\Phi(h)\rangle=\tau(\Phi(h^{-1}g))=0\), and \(\|\Phi(g)\|_2=1\). So \(\Phi\) maps the basis of \(\ell^2(F_S)\) to an orthonormal family. \(\square\)
 
 *The perturbation.* Put \(\operatorname{Im}(b)=(b-b^*)/(2i)\) and
 \[
-h=\frac\alpha\ell\sum_{j=1}^\ell\operatorname{Im}(g_j^{-1}yg_j),\qquad u'=e^{ih}u,\qquad W'=t_0\prod_{k=1}^\ell(u't_k).
+\begin{gathered}
+h=\frac\alpha\ell\sum_{j=1}^\ell\operatorname{Im}(g_j^{-1}yg_j),\\
+u'=e^{ih}u,\qquad W'=t_0\prod_{k=1}^\ell(u't_k).
+\end{gathered}
 \]
 Here \(h=h^*\) and \(\|h\|\le\alpha\). The elements \(g_j^{-1}\), \(1\le j\le\ell\), are distinct, so by Lemma 3.2(d) the \(2\ell\) unitaries \(Y_{g_j^{-1}}=g_j^{-1}yg_j\) and their inverses are orthonormal. Hence \(\|\sum_j\operatorname{Im}(Y_{g_j^{-1}})\|_2^2=2\ell/4\), and
 \[
@@ -91,24 +115,34 @@ W'=\Bigl(\prod_{k=1}^\ell e^{iH_k}\Bigr)W .
 \]
 Indeed, \(t_0\prod_{k\le m}(u't_k)=\bigl(\prod_{k\le m}e^{iH_k}\bigr)g_{m+1}\) for \(m=0\) because \(g_1=t_0\), and if it holds for \(m\), then
 \[
-t_0\prod_{k\le m+1}(u't_k)=\Bigl(\prod_{k\le m}e^{iH_k}\Bigr)g_{m+1}e^{ih}ut_{m+1}=\Bigl(\prod_{k\le m+1}e^{iH_k}\Bigr)g_{m+1}ut_{m+1},
+\begin{aligned}
+&t_0\prod_{k\le m+1}(u't_k)\\
+&\quad =\Bigl(\prod_{k\le m}e^{iH_k}\Bigr)g_{m+1}e^{ih}ut_{m+1}\\
+&\quad =\Bigl(\prod_{k\le m+1}e^{iH_k}\Bigr)g_{m+1}ut_{m+1},
+\end{aligned}
 \]
 using \(g_{m+1}e^{ih}=e^{iH_{m+1}}g_{m+1}\) and \(g_{m+1}ut_{m+1}=g_{m+2}\). With \(p_{kj}=g_kg_j^{-1}\) and \(c=\alpha/(2\ell)\),
 \[
-iH_k=\frac{\alpha}{\ell}\sum_{j=1}^\ell i\operatorname{Im}(Y_{p_{kj}})=c\sum_{j=1}^\ell\bigl(Y_{p_{kj}}-Y_{p_{kj}}^{-1}\bigr).
-\tag{3.3}
+\begin{aligned}
+iH_k&=\frac{\alpha}{\ell}\sum_{j=1}^\ell i\operatorname{Im}(Y_{p_{kj}})\\
+&=c\sum_{j=1}^\ell\bigl(Y_{p_{kj}}-Y_{p_{kj}}^{-1}\bigr).
+\end{aligned}\tag{3.3}
 \]
 
 *Multiplicities.* Let \(S=\{p_{kj}:1\le k,j\le\ell\}\) and \(n_p=\#\{(k,j):p_{kj}=p\}\). The diagonal gives \(p_{kk}=e\), so \(n_e=\ell\). For \(k\ne j\), the word \(p_{kj}=s_1\cdots s_ks_j^{-1}\cdots s_1^{-1}\) is reduced, because its only junction of a positive and a negative letter is \(s_ks_j^{-1}\) with \(k\ne j\). Its maximal initial segment of positive letters, \(s_1\cdots s_k\), determines \(k\), and its final segment determines \(j\). So the off-diagonal pairs give \(\ell(\ell-1)\) distinct elements \(\ne e\), and
 \[
-\sum_{p\in S}n_p^2=\ell^2+\ell(\ell-1)=2\ell^2-\ell .
-\tag{3.4}
+\begin{aligned}
+\sum_{p\in S}n_p^2&=\ell^2+\ell(\ell-1)\\
+&=2\ell^2-\ell .
+\end{aligned}\tag{3.4}
 \]
 
 *The first-order term.* Put \(C_1=\sum_{k=1}^\ell iH_k=c\sum_{p\in S}n_p(Y_p-Y_p^{-1})\). We show
 \[
-\tau\bigl(\xi^*(1+C_1)W\bigr)=\frac\alpha2\tau(\xi^*z).
-\tag{3.5}
+\begin{aligned}
+&\tau\bigl(\xi^*(1+C_1)W\bigr)\\
+&\quad =\frac\alpha2\tau(\xi^*z).
+\end{aligned}\tag{3.5}
 \]
 First, \(\tau(\xi^*W)=0\) by (3.1) of the first lesson for \(W\) and \(D_\ell\), with one power of \(W\) and outer letters \(\xi^*\in D_\ell\) and \(1\). Next, \(Y_eW=yW=z\), so the \(n_e=\ell\) diagonal terms contribute \(c\ell\,\tau(\xi^*z)=\frac\alpha2\tau(\xi^*z)\). For \(p\ne e\),
 \[
@@ -118,36 +152,57 @@ because the interior letter \(p^{-1}\) is centred. For every \(p\in G\), \(\tau(
 
 *The remainder.* Expanding each exponential in (3.2) and grouping by total degree,
 \[
-\prod_{k=1}^\ell e^{iH_k}=\sum_{d\ge0}C_d,\qquad C_d=\sum_{m_1+\dots+m_\ell=d}\frac{(iH_1)^{m_1}\cdots(iH_\ell)^{m_\ell}}{m_1!\cdots m_\ell!};
+\begin{gathered}
+\prod_{k=1}^\ell e^{iH_k}=\sum_{d\ge0}C_d,\\
+C_d=\sum_{m_1+\dots+m_\ell=d}\frac{(iH_1)^{m_1}\cdots(iH_\ell)^{m_\ell}}{m_1!\cdots m_\ell!};
+\end{gathered}
 \]
 the grouping is legitimate because \(\sum_d\|C_d\|\le\prod_k\sum_m\|H_k\|^m/m!\le e^{\ell\alpha}\). The terms \(C_0=1\) and \(C_1\) are as above. We show
 \[
-\Bigl\|\prod_{k=1}^\ell e^{iH_k}-1-C_1\Bigr\|_2\le\frac{4\alpha^2}{1-2\alpha}.
-\tag{3.6}
+\begin{aligned}
+&\Bigl\|\prod_{k=1}^\ell e^{iH_k}-1-C_1\Bigr\|_2\\
+&\quad \le\frac{4\alpha^2}{1-2\alpha}.
+\end{aligned}\tag{3.6}
 \]
 In \(\mathbb C[F_S]\), with \(\Phi\) from Lemma 3.2(d), put
 \[
-B_k=c\sum_{j=1}^\ell\bigl(T_{p_{kj}}-T_{p_{kj}}^{-1}\bigr),\qquad A_k=c\sum_{j=1}^\ell\bigl(T_{p_{kj}}+T_{p_{kj}}^{-1}\bigr),\qquad A=\sum_kA_k=c\sum_{p\in S}n_p\bigl(T_p+T_p^{-1}\bigr).
+\begin{gathered}
+B_k=c\sum_{j=1}^\ell\bigl(T_{p_{kj}}-T_{p_{kj}}^{-1}\bigr),\\
+A_k=c\sum_{j=1}^\ell\bigl(T_{p_{kj}}+T_{p_{kj}}^{-1}\bigr),\\
+A=\sum_kA_k=c\sum_{p\in S}n_p\bigl(T_p+T_p^{-1}\bigr).
+\end{gathered}
 \]
 Then \(\Phi(B_k)=iH_k\) by (3.3), \(|B_k|\le A_k\), and \(C_d=\Phi(\mathcal C_d)\) with \(\mathcal C_d=\sum B_1^{m_1}\cdots B_\ell^{m_\ell}/(m_1!\cdots m_\ell!)\). By Lemma 3.2(d) and Lemma 2.1,
 \[
-\|C_d\|_2=\|\mathcal C_d\|_{\ell^2}\le\|A^d\|_{\ell^2}=\|\lambda(A)^d\delta_e\|\le\|\lambda(A)\|^d .
+\begin{aligned}
+&\|C_d\|_2=\|\mathcal C_d\|_{\ell^2}\le\|A^d\|_{\ell^2}\\
+&\quad =\|\lambda(A)^d\delta_e\|\le\|\lambda(A)\|^d .
+\end{aligned}
 \]
 Lemma 1.1, for the free group \(F_S\) with \(b_{T_p}=b_{T_p^{-1}}=cn_p\), and (3.4) give
 \[
-\|\lambda(A)\|\le2\Bigl(2c^2\sum_{p\in S}n_p^2\Bigr)^{1/2}=\frac{\alpha}{\ell}\bigl(4\ell^2-2\ell\bigr)^{1/2}\le2\alpha<1 .
+\begin{aligned}
+&\|\lambda(A)\|\le2\Bigl(2c^2\sum_{p\in S}n_p^2\Bigr)^{1/2}\\
+&\quad =\frac{\alpha}{\ell}\bigl(4\ell^2-2\ell\bigr)^{1/2}\le2\alpha<1 .
+\end{aligned}
 \]
 So \(\|C_d\|_2\le(2\alpha)^d\). The series \(\sum_dC_d\) converges in operator norm, hence in \(2\)-norm, and (3.6) follows from \(\sum_{d\ge2}(2\alpha)^d=4\alpha^2/(1-2\alpha)\). Only the coefficient isometry of Lemma 3.2(d) relates \(\mathbb C[F_S]\) to \(M^\omega\); no comparison of operator norms between the two is needed.
 
-*The correlation in the ultrapower.* By (3.2), (3.5), (3.6), Lemma 1.1(1) of the first lesson and \(\|xW\|_2=\|x\|_2\),
+*The correlation in the ultrapower.* By (3.2), (3.5), (3.6), Lemma 1.1(1) of the first lesson and \(\|xW\|_2=\|x\|_2\), the bound (3.7) holds:
 \[
-\Bigl|\tau(\xi^*W')-\frac\alpha2\tau(\xi^*z)\Bigr|=\Bigl|\tau\Bigl(\xi^*\Bigl(\prod_ke^{iH_k}-1-C_1\Bigr)W\Bigr)\Bigr|\le\|\xi\|_2\frac{4\alpha^2}{1-2\alpha}.
-\tag{3.7}
+\begin{aligned}
+&\Bigl|\tau(\xi^*W')-\frac\alpha2\tau(\xi^*z)\Bigr|\\
+&\quad=\Bigl|\tau\Bigl(\xi^*\Bigl(\prod_ke^{iH_k}-1-C_1\Bigr)W\Bigr)\Bigr|\\
+&\quad\le\|\xi\|_2\frac{4\alpha^2}{1-2\alpha}.
+\end{aligned}
 \]
 
 *Choosing one coordinate.* Let \(t_{j,n}\in\mathcal U(P)\) represent \(t_j\), and use the constant sequences for \(u,z,\xi\). Define \(g_{k,n},W_n,y_n,h_n,u_n',W_n'\) by the formulas above. They are bounded sequences that represent \(g_k,W,y,h,u',W'\): the quotient map is a \(*\)-homomorphism, and the exponential series converges uniformly because \(\|h_n\|\le\alpha\). Each \(h_n\) is self-adjoint, so \(u_n'\) is a unitary of \(M\). Moreover
 \[
-\lim_\omega\|h_n\|_2=\|h\|_2=\frac\alpha{\sqrt{2\ell}},\qquad\lim_\omega\tau(\xi^*W_n')=\tau(\xi^*W'),
+\begin{gathered}
+\lim_\omega\|h_n\|_2=\|h\|_2=\frac\alpha{\sqrt{2\ell}},\\
+\lim_\omega\tau(\xi^*W_n')=\tau(\xi^*W'),
+\end{gathered}
 \]
 and \(\|u_n'-u\|_2=\|e^{ih_n}-1\|_2\le\|h_n\|_2\), by \(|e^{ir}-1|\le|r|\) and functional calculus. The sets of \(n\) with \(\|h_n\|_2<\alpha/\sqrt{2\ell}+1/\ell\) and with \(|\tau(\xi^*W_n')-\tau(\xi^*W')|<1/\ell\) belong to \(\omega\); choose \(n\) in both. Then \(\tilde u=u_n'\) and \(\tilde t_j=t_{j,n}\) satisfy the proposition, by (3.7). This completes the proof of Proposition 3.1. \(\square\)
 
@@ -155,7 +210,11 @@ and \(\|u_n'-u\|_2=\|e^{ih_n}-1\|_2\le\|h_n\|_2\), by \(|e^{ir}-1|\le|r|\) and f
 
 For a unitary \(u\in M\) write \(N_u=W^*(P\cup\{u\})\) and \(e_u\) for the orthogonal projection of \(L^2(M)\) onto \(L^2(N_u)\). For \(\xi\in L^2(M)\) put
 \[
-f_\xi(u)=\|e_u\xi\|_2,\qquad d_\xi(u)=\operatorname{dist}\bigl(\xi,L^2(N_u)\bigr)=\bigl(\|\xi\|_2^2-f_\xi(u)^2\bigr)^{1/2}.
+\begin{aligned}
+&f_\xi(u)=\|e_u\xi\|_2,\\
+&d_\xi(u)=\operatorname{dist}\bigl(\xi,L^2(N_u)\bigr)\\
+&\quad =\bigl(\|\xi\|_2^2-f_\xi(u)^2\bigr)^{1/2}.
+\end{aligned}
 \]
 The unitary group \(\mathcal U(M)\) carries the metric \(d(u,v)=\|u-v\|_2\).
 
@@ -181,15 +240,21 @@ For fixed \(b\), \(u\mapsto b(u)\) is \(d\)-continuous: by Lemma 1.1(1) of the f
 \]
 is a dense \(G_\delta\) subset of \((\mathcal U(M),d)\).
 
-**Proof.** Let \((\eta_j)\) be dense in \(L^2(M)\) (Lemma 4.1). By Lemma 4.3, applied to each \(f_{\eta_j}\) on the complete space \(\mathcal U(M)\), and the Baire category theorem, there is a dense \(G_\delta\) set \(\mathcal C\) at whose points every \(f_{\eta_j}\) is continuous. By the Lipschitz bound of Lemma 4.2, every \(f_\xi\) is continuous at every point of \(\mathcal C\): for \(u\in\mathcal C\) and \(v\in\mathcal U(M)\), \(|f_\xi(v)-f_\xi(u)|\le2\|\xi-\eta_j\|_2+|f_{\eta_j}(v)-f_{\eta_j}(u)|\).
+**Proof.** Let \((\eta_j)\) be dense in \(L^2(M)\) (Lemma 4.1). By Lemma 4.3, applied to each \(f_{\eta_j}\) on the complete space \(\mathcal U(M)\), and the Baire category theorem, there is a dense \(G_\delta\) set \(\mathcal C\) at whose points every \(f_{\eta_j}\) is continuous. By the Lipschitz bound of Lemma 4.2, every \(f_\xi\) is continuous at every point of \(\mathcal C\): for \(u\in\mathcal C\) and \(v\in\mathcal U(M)\), \(|f_\xi(v)-f_\xi(u)|\) is at most \(2\|\xi-\eta_j\|_2+|f_{\eta_j}(v)-f_{\eta_j}(u)|\).
 
 Let \(u\in\mathcal C\) and suppose \(N_u\ne M\). The unitaries span \(M\), so there is a unitary \(z\notin N_u\). Put \(\xi=z-E_{N_u}(z)\in M\) and \(s=\|\xi\|_2>0\). Since \(E_{N_u}\) is the restriction of \(e_u\), \(e_u\xi=0\) and \(f_\xi(u)=0\); and \(\tau(\xi^*z)=\tau(\xi^*\xi)=s^2\) because \(\xi\perp E_{N_u}(z)\). Fix \(0<\alpha<\min(1/4,s/32)\). For each \(\ell\ge1\), Proposition 3.1 gives a unitary \(u_\ell\) and a unitary \(W_\ell=t_{0,\ell}\prod_k(u_\ell t_{k,\ell})\in N_{u_\ell}\) with
 \[
-\|u_\ell-u\|_2\le\frac{\alpha}{\sqrt{2\ell}}+\frac1\ell,\qquad\Bigl|\tau(\xi^*W_\ell)-\frac{\alpha s^2}2\Bigr|\le\frac{4s\alpha^2}{1-2\alpha}+\frac1\ell .
+\begin{gathered}
+\|u_\ell-u\|_2\le\frac{\alpha}{\sqrt{2\ell}}+\frac1\ell,\\
+\Bigl|\tau(\xi^*W_\ell)-\frac{\alpha s^2}2\Bigr|\le\frac{4s\alpha^2}{1-2\alpha}+\frac1\ell .
+\end{gathered}
 \]
 Since \(\alpha<1/4\) and \(\alpha<s/32\), \(4s\alpha^2/(1-2\alpha)<8s\alpha^2<\alpha s^2/4\), so \(|\tau(\xi^*W_\ell)|\ge\alpha s^2/4-1/\ell\ge\alpha s^2/8\) for large \(\ell\). On the other hand \(\|W_\ell\|_2=1\) and \(W_\ell\in N_{u_\ell}\), so
 \[
-|\tau(\xi^*W_\ell)|=|\langle W_\ell,\xi\rangle|=|\langle W_\ell,e_{u_\ell}\xi\rangle|\le f_\xi(u_\ell).
+\begin{aligned}
+&|\tau(\xi^*W_\ell)|=|\langle W_\ell,\xi\rangle|\\
+&\quad =|\langle W_\ell,e_{u_\ell}\xi\rangle|\le f_\xi(u_\ell).
+\end{aligned}
 \]
 As \(u_\ell\to u\), continuity at \(u\) gives \(f_\xi(u_\ell)\to f_\xi(u)=0\), a contradiction. So \(\mathcal C\subseteq\mathcal G\), and \(\mathcal G\) is dense.
 

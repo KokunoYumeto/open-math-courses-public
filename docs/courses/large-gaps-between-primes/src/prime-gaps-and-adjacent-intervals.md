@@ -16,21 +16,28 @@ We use the prime number theorem in the forms \(\theta(x)=\sum_{p\le x}\log p\sim
 \frac1N\sum_{n\le N}\frac{d_n}{\log p_n}\longrightarrow1 .
 \]
 
-**Proof.** The gaps telescope: \(\sum_{n\le N}d_n=p_{N+1}-2\). The prime number theorem gives \(N=\pi(p_N)\sim p_N/\log p_N\), hence \(p_N\sim N\log p_N\), and \(\log p_N=\log N+\log\log p_N+o(1)\sim\log N\). So \(p_N\sim N\log N\), and the same holds for \(p_{N+1}\).
+**Proof.** The gaps telescope: \(\sum_{n\le N}d_n=p_{N+1}-2\). The prime number theorem gives \(N=\pi(p_N)\sim p_N/\log p_N\), hence \(p_N\sim N\log p_N\), and \(\log p_N=\log N+\log\log p_N+o(1)\), so \(\log p_N\sim\log N\). So \(p_N\sim N\log N\), and the same holds for \(p_{N+1}\).
 
 Lower bound: \(\log p_n\le\log p_N\) for \(n\le N\), so the sum is at least \((p_{N+1}-2)/\log p_N\sim N\).
 
-Upper bound: put \(N'=\lfloor N/(\log N)^2\rfloor\). The terms with \(n\le N'\) contribute at most \(\sum_{n\le N'}d_n/\log2\le p_{N'+1}/\log2=O(N'\log N)=o(N)\). For \(N'<n\le N\) we have \(\log p_n\ge\log p_{N'}\ge\log N'\ge\log N-3\log\log N\) for large \(N\), so these terms contribute at most \(p_{N+1}/(\log N-3\log\log N)\sim N\). \(\square\)
+Upper bound: put \(N'=\lfloor N/(\log N)^2\rfloor\). The terms with \(n\le N'\) contribute at most \(\sum_{n\le N'}d_n/\log2\le p_{N'+1}/\log2\), which is \(O(N'\log N)=o(N)\). For \(N'<n\le N\) we have \(\log p_n\ge\log p_{N'}\ge\log N'\), which is at least \(\log N-3\log\log N\) for large \(N\), so these terms contribute at most \(p_{N+1}/(\log N-3\log\log N)\sim N\). \(\square\)
 
 **Corollary 1.2.** For every \(C>0\),
 
 \[
-\limsup_{N\to\infty}\frac1N\#\{n\le N:d_n>C\log p_n\}\le\frac1C .
+\begin{aligned}
+&\limsup_{N\to\infty}\frac1N\#\{n\le N:d_n>C\log p_n\}\\
+&\quad \le\frac1C .
+\end{aligned}
 \]
 
 **Proof.** Each such \(n\) contributes more than \(C\) to the sum in Proposition 1.1, and the other terms are nonnegative. \(\square\)
 
-Corollary 1.2 bounds the proportion of large gaps from above. A lower bound is much harder: the average of Proposition 1.1 could in principle come from a sparse set of enormous gaps. The record gaps are indeed far larger than the average. Westzynthius showed that \(d_n/\log p_n\) is unbounded, and the methods of Erdős, Rankin, Ford, Green, Konyagin, Maynard and Tao give gaps of size at least a constant times \(\log p\,\log\log p\,\log\log\log\log p/\log\log\log p\) for infinitely many \(n\) [FGKMT]. Such results concern single gaps, not their frequency.
+Corollary 1.2 bounds the proportion of large gaps from above. A lower bound is much harder: the average of Proposition 1.1 could in principle come from a sparse set of enormous gaps. The record gaps are indeed far larger than the average. Westzynthius showed that \(d_n/\log p_n\) is unbounded, and the methods of Erdős, Rankin, Ford, Green, Konyagin, Maynard and Tao give gaps of size at least a constant times
+\[
+\frac{\log p\,\log\log p\,\log\log\log\log p}{\log\log\log p}
+\]
+for infinitely many \(n\) [FGKMT]. Such results concern single gaps, not their frequency.
 
 The primes below \(2.5\cdot10^7\) give the following proportions of \(n\) with \(d_n>C\log p_n\), next to the exponential prediction \(e^{-C}\) of Cramér's random model:
 
@@ -44,7 +51,10 @@ The primes below \(2.5\cdot10^7\) give the following proportions of \(n\) with \
 **Theorem 2.1** (OpenAI, 2026). For every real \(C>0\) there are constants \(c(C)>0\) and \(N_0(C)\) such that for every integer \(N\ge N_0(C)\),
 
 \[
-\#\{1\le n\le N:\ p_{n+1}-p_n>C\log p_n\}\ \ge\ c(C)\,N .
+\begin{aligned}
+&\#\{1\le n\le N:\ p_{n+1}-p_n>C\log p_n\}\\\
+&\quad \ge\ c(C)\,N .
+\end{aligned}
 \]
 
 The statement concerns every long initial segment of the sequence of primes, with each gap counted once. In the language of densities: the set of \(n\) with \(d_n>C\log p_n\) has positive lower asymptotic density, where the lower density of a set \(A\) of positive integers is \(\liminf_{N\to\infty}|A\cap[1,N]|/N\).
@@ -62,7 +72,11 @@ Among the first \(1\,565\,926\) indices, the proportion with \(p_n/n<p_{n+1}/(n+
 Throughout the course \(X\) is an integer tending to infinity, \(\lambda>0\) is fixed, and
 
 \[
-L=\log X,\qquad h=\lfloor\lambda L\rfloor,\qquad J=\{1,\dots,h\},\qquad I=\{h+1,\dots,2h\}.
+\begin{gathered}
+L=\log X,\qquad h=\lfloor\lambda L\rfloor,\\
+J=\{1,\dots,h\},\\
+I=\{h+1,\dots,2h\}.
+\end{gathered}
 \]
 
 The average over the integers \(m\) with \(X<m\le2X\) is written \(\mathbb E_XA=X^{-1}\sum_{X<m\le2X}A(m)\). Put \(\vartheta(n)=\log n\) if \(n\) is prime and \(\vartheta(n)=0\) otherwise, and for \(B=I\) or \(B=J\)
@@ -94,8 +108,10 @@ The lemma asks for many \(m\) with a prime in the first interval and none in the
 
 \[
 \begin{aligned}
-&\mathbb E_XW_X\to1,&&\mathbb E_X(W_XV_J)\to\lambda,\\
-&\limsup_{X\to\infty}\mathbb E_X(W_XV_I)\le\varepsilon,&&\limsup_{X\to\infty}\mathbb E_X(W_XV_J^2)\le K_\lambda,\\
+&\mathbb E_XW_X\to1,\\
+&\mathbb E_X(W_XV_J)\to\lambda,\\
+&\limsup_{X\to\infty}\mathbb E_X(W_XV_I)\le\varepsilon,\\
+&\limsup_{X\to\infty}\mathbb E_X(W_XV_J^2)\le K_\lambda,\\
 &\mathbb E_XW_X^2=O_{\lambda,\varepsilon}(1).
 \end{aligned}
 \]
@@ -107,13 +123,19 @@ The proof occupies the rest of the course and ends in [Cancellation between adja
 **Proof of Theorem 2.1 from Proposition 4.1.** Fix \(C>0\) and put \(\lambda=C+1\). Let \(K=K_\lambda\), choose \(\varepsilon=\lambda^2/(2K)\), and fix the weights given by Proposition 4.1. There are \(M<\infty\) and \(X_1\) with \(\mathbb E_XW_X^2\le M\) for \(X\ge X_1\). Let
 
 \[
-A_X=\{m:V_J(m)>0\},\qquad B_X=\{m:V_I(m)>0\}.
+\begin{gathered}
+A_X=\{m:V_J(m)>0\},\\
+B_X=\{m:V_I(m)>0\}.
+\end{gathered}
 \]
 
 Since \(V_J\) vanishes outside \(A_X\), the Cauchy–Schwarz inequality for the nonnegative weight \(W_X\) gives
 
 \[
-\bigl(\mathbb E_X(W_XV_J)\bigr)^2=\bigl(\mathbb E_X(W_X\mathbf 1_{A_X}V_J)\bigr)^2\le\mathbb E_X(W_X\mathbf 1_{A_X})\,\mathbb E_X(W_XV_J^2).
+\begin{aligned}
+&\bigl(\mathbb E_X(W_XV_J)\bigr)^2=\bigl(\mathbb E_X(W_X\mathbf 1_{A_X}V_J)\bigr)^2\\
+&\quad \le\mathbb E_X(W_X\mathbf 1_{A_X})\,\mathbb E_X(W_XV_J^2).
+\end{aligned}
 \]
 
 For large \(X\) the left side is positive, because it tends to \(\lambda^2\); so the last factor is positive and
@@ -125,19 +147,28 @@ For large \(X\) the left side is positive, because it tends to \(\lambda^2\); so
 By (3.1), \(\mathbf 1_{B_X}\le V_I\), so \(\mathbb E_X(W_X\mathbf 1_{B_X})\le\mathbb E_X(W_XV_I)\) and
 
 \[
-\liminf_{X\to\infty}\mathbb E_X(W_X\mathbf 1_{A_X\setminus B_X})\ge\frac{\lambda^2}K-\varepsilon=\frac{\lambda^2}{2K}=:\Delta>0 .
+\begin{aligned}
+&\liminf_{X\to\infty}\mathbb E_X(W_X\mathbf 1_{A_X\setminus B_X})\ge\frac{\lambda^2}K\\
+&\quad -\varepsilon=\frac{\lambda^2}{2K}=:\Delta>0 .
+\end{aligned}
 \]
 
-A second use of Cauchy–Schwarz gives \(\bigl(\mathbb E_X(W_X\mathbf 1_{A_X\setminus B_X})\bigr)^2\le\mathbb E_XW_X^2\cdot|A_X\setminus B_X|/X\). Hence, for all large \(X\),
+A second use of Cauchy–Schwarz shows that \(\bigl(\mathbb E_X(W_X\mathbf 1_{A_X\setminus B_X})\bigr)^2\) is at most \(\mathbb E_XW_X^2\cdot|A_X\setminus B_X|/X\). Hence, for all large \(X\),
 
 \[
-\frac{|A_X\setminus B_X|}X\ge\frac{(\Delta/2)^2}M=\frac{\Delta^2}{4M}=:\delta>0 .
+\begin{aligned}
+&\frac{|A_X\setminus B_X|}X\ge\frac{(\Delta/2)^2}M\\
+&\quad =\frac{\Delta^2}{4M}=:\delta>0 .
+\end{aligned}
 \]
 
 The integers in \(A_X\setminus B_X\) are exactly the starts in Lemma 3.1, which gives at least \(\delta X/h\) distinct primes \(p\in(X,2X+h]\) with \(p^+-p>h\). For these primes \(\log p\le L+\log3\), while \(h\ge\lambda L-1\), so
 
 \[
-h-C\log p\ge(\lambda-C)L-1-C\log3=L-1-C\log3>0
+\begin{aligned}
+&h-C\log p\ge(\lambda-C)L-1\\
+&\quad -C\log3=L-1-C\log3>0
+\end{aligned}
 \]
 
 for large \(X\). Each of them therefore begins a gap longer than \(C\log p\).
@@ -167,7 +198,10 @@ with smooth functions \(F\) supported where \(\sum_s\log d_s/L\) is small. A div
 **Exercise 6.1.** Show that for every \(C>1\),
 
 \[
-\liminf_{N\to\infty}\frac1N\#\{n\le N:d_n\le C\log p_n\}\ge1-\frac1C .
+\begin{aligned}
+&\liminf_{N\to\infty}\frac1N\#\{n\le N:d_n\le C\log p_n\}\\
+&\quad \ge1-\frac1C .
+\end{aligned}
 \]
 
 **Exercise 6.2.** Let \(p<p^+\) be consecutive primes with \(p^+-p=G\). Count the integers \(m\) such that \((m,m+h]\) contains a prime and \((m+h,m+2h]\) contains none, and such that the last prime in \((m,m+h]\) is \(p\). Show that the count is \(h\) when \(G>2h\), and \(G-h\) when \(h<G\le2h\).

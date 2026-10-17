@@ -16,19 +16,29 @@ A *stochastic matrix* \(A=(a_{ij})_{i,j\in[n]}\) has nonnegative entries and row
 
 The *Markov chain* with initial law \(\pi\) and transitions \(A\) is the random sequence \(X_0,X_1,\dots\) in \([n]\) with
 \[
-\mathbb P(X_0=i_0,X_1=i_1,\dots,X_s=i_s)=\pi_{i_0}a_{i_0i_1}\cdots a_{i_{s-1}i_s};
+\begin{aligned}
+&\mathbb P(X_0=i_0,X_1=i_1,\dots,X_s=i_s)\\
+&\quad =\pi_{i_0}a_{i_0i_1}\cdots a_{i_{s-1}i_s};
+\end{aligned}
 \]
 these numbers are consistent in \(s\) because the rows of \(A\) sum to \(1\). Expectations of functions of \((X_0,\dots,X_s)\) are finite sums. Summing over intermediate states, \(\mathbb P(X_r=i,X_{r+s}=j)=(\pi A^r)_i(A^s)_{ij}\). If \(\pi\) is stationary, then \(\pi A^r=\pi\), so each \(X_r\) has law \(\pi\) and
 \[
-\mathbb P(X_r=i,X_{r+s}=j)=\pi_i(A^s)_{ij}\qquad(r,s\ge0):\tag{1.1}
+\begin{aligned}
+&\mathbb P(X_r=i,X_{r+s}=j)\\
+&\quad =\pi_i(A^s)_{ij}\\
+&(r,s\ge0):
+\end{aligned}\tag{1.1}
 \]
 the pair \((X_r,X_{r+s})\) has the law of \((X_0,X_s)\).
 
 ## 2. The definition
 
-**Definition 2.1** (Mendel–Naor). A metric space \((X,d)\) has *metric Markov cotype two with constant \(C\)* if for all \(n,t\ge1\), every probability vector \(\pi\) on \([n]\), every stochastic matrix \(A\) reversible with respect to \(\pi\), and all \(x_1,\dots,x_n\in X\), there are \(y_1,\dots,y_n\in X\) with
+**Definition 2.1** (Mendel–Naor). A metric space \((X,d)\) has *metric Markov cotype two with constant \(C\)* if for all \(n,t\ge1\), every probability vector \(\pi\) on \([n]\), every stochastic matrix \(A\) reversible with respect to \(\pi\), and all \(x_1,\dots,x_n\in X\), there are \(y_1,\dots,y_n\in X\) satisfying the inequality (2.1):
 \[
-\sum_i\pi_i\,d(x_i,y_i)^2+t\sum_{i,j}\pi_ia_{ij}\,d(y_i,y_j)^2\le C^2\sum_{i,j}\pi_i\Bigl(\frac1t\sum_{s=1}^tA^s\Bigr)_{ij}d(x_i,x_j)^2.\tag{2.1}
+\begin{aligned}
+&\sum_i\pi_i\,d(x_i,y_i)^2+t\sum_{i,j}\pi_ia_{ij}\,d(y_i,y_j)^2\\
+&\quad\le C^2\sum_{i,j}\pi_i\Bigl(\frac1t\sum_{s=1}^tA^s\Bigr)_{ij}d(x_i,x_j)^2.
+\end{aligned}
 \]
 The least such \(C\) is \(N_2(X)\).
 
@@ -50,21 +60,30 @@ The proof in the third lesson controls the displacement at a random geometric ti
 \]
 If \(S\) is a random time independent of the chain with \(\mathbb P(S=s)=pq^s\), the left side is \(\mathbb E\,d(x_{X_S},x_{X_0})^2\).
 
-**Proof.** *Subadditivity.* For \(r,s\ge0\), \(d(x_{X_{r+s}},x_{X_0})\le d(x_{X_{r+s}},x_{X_r})+d(x_{X_r},x_{X_0})\). Taking the square root of the mean square of both sides and using Minkowski's inequality and (1.1) for the pair \((X_r,X_{r+s})\),
+**Proof.** *Subadditivity.* For \(r,s\ge0\), \(d(x_{X_{r+s}},x_{X_0})\) is at most \(d(x_{X_{r+s}},x_{X_r})+d(x_{X_r},x_{X_0})\). Taking the square root of the mean square of both sides and using Minkowski's inequality and (1.1) for the pair \((X_r,X_{r+s})\),
 \[
-\sqrt{D(r+s)}\le\sqrt{D(s)}+\sqrt{D(r)}.\tag{3.2}
+\begin{aligned}
+&\sqrt{D(r+s)}\\
+&\quad \le\sqrt{D(s)}+\sqrt{D(r)}.
+\end{aligned}\tag{3.2}
 \]
 
 *The time \(t\).* By (3.2) and \((a+b)^2\le2a^2+2b^2\), \(D(t)\le2D(r)+2D(t-r)\) for \(1\le r\le t\). Averaging over \(r\) and using \(D(0)=0\),
 \[
-D(t)\le\frac2t\sum_{r=1}^tD(r)+\frac2t\sum_{r=0}^{t-1}D(r)\le4W.
+\begin{aligned}
+&D(t)\le\frac2t\sum_{r=1}^tD(r)\\
+&\quad +\frac2t\sum_{r=0}^{t-1}D(r)\le4W.
+\end{aligned}
 \]
 
-*All times.* Write \(s=jt+r\) with \(j\ge0\) and \(0\le r<t\). Applying (3.2) \(j\) times, \(\sqrt{D(s)}\le j\sqrt{D(t)}+\sqrt{D(r)}\), so \(D(s)\le2j^2D(t)+2D(r)\le8j^2W+2D(r)\).
+*All times.* Write \(s=jt+r\) with \(j\ge0\) and \(0\le r<t\). Applying (3.2) \(j\) times, \(\sqrt{D(s)}\le j\sqrt{D(t)}+\sqrt{D(r)}\), so \(D(s)\le2j^2D(t)+2D(r)\), which is at most \(8j^2W+2D(r)\).
 
 *The geometric weights.* Let \(J(s)=\lfloor s/t\rfloor\) and \(R(s)=s-tJ(s)\). Since \(\sum_spq^ss=\frac qp=t\) and \(\sum_spq^ss(s-1)=\frac{2q^2}{p^2}=2t^2\),
 \[
-\sum_spq^sJ(s)^2\le\frac1{t^2}\sum_spq^ss^2=\frac{2t^2+t}{t^2}\le3.
+\begin{aligned}
+\sum_spq^sJ(s)^2&\le\frac1{t^2}\sum_spq^ss^2\\
+&=\frac{2t^2+t}{t^2}\le3.
+\end{aligned}
 \]
 For \(0\le r<t\), \(\sum_{s:R(s)=r}pq^s=\frac{pq^r}{1-q^t}\le2p\le\frac2t\), because \(q^t=(1+\frac1t)^{-t}\le\frac12\). Hence \(\sum_spq^sD(R(s))\le\frac2t\sum_{r=0}^{t-1}D(r)\le2W\). Altogether
 \[

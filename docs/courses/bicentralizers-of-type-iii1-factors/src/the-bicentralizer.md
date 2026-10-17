@@ -12,13 +12,13 @@ Let \(M\) be a countably decomposable von Neumann algebra and \(\varphi\) a fait
 
 **Definition 1.1.** The *asymptotic centralizer* of \(\varphi\) is
 \[
-\mathrm{AC}(M,\varphi)=\{(x_n)\in\ell^\infty(M):\ \|[x_n,\varphi]\|\to0\},
+\begin{aligned}
+&\mathrm{AC}(M,\varphi)\\
+&\quad =\{(x_n)\in\ell^\infty(M):\ \|[x_n,\varphi]\|\to0\},
+\end{aligned}
 \]
-and the *bicentralizer* is
-\[
-\mathrm B(M,\varphi)=\{a\in M:\ \|[a,x_n]\|_\varphi\to0\ \text{ for every }(x_n)\in\mathrm{AC}(M,\varphi)\}.
-\]
-For a free ultrafilter \(\omega\) put \(\mathrm B_\omega(M,\varphi)=\{a\in M:\lim_\omega\|[a,x_n]\|_\varphi=0\ \text{for every }(x_n)\in A_{\varphi,\omega}\}\).
+and the *bicentralizer* \(\mathrm B(M,\varphi)\) is the set of \(a\in M\) with \(\|[a,x_n]\|_\varphi\to0\) for every \((x_n)\in\mathrm{AC}(M,\varphi)\).
+For a free ultrafilter \(\omega\) let \(\mathrm B_\omega(M,\varphi)\) be the set of \(a\in M\) with \(\lim_\omega\|[a,x_n]\|_\varphi=0\) for every \((x_n)\in A_{\varphi,\omega}\).
 
 Here \([a,x]=ax-xa\), and \([x,\varphi]=x\varphi-\varphi x\) in the bimodule notation of the previous lesson.
 
@@ -53,23 +53,33 @@ the relative commutant being taken inside \(M^\omega\). In (4), the condition \(
 
 **Proof.** By Proposition 1.3, \(\mathrm B(M,\varphi)\) is the set of constants commuting with the self-adjoint set \(M_{\varphi,\omega}\subset M^\omega\), so it is a unital \(*\)-subalgebra. If \(a_i\in\mathrm B(M,\varphi)\) is a bounded net converging \(\sigma\)-weakly to \(a\in M\), then \(a_i\to a\) \(\sigma\)-weakly in \(M^\omega\), because the constant embedding is normal; the commutant of \(M_{\varphi,\omega}\) in \(M^\omega\) is \(\sigma\)-weakly closed, so \(a\in\mathrm B(M,\varphi)\). By Kaplansky's density theorem (B2), the unit ball of the \(\sigma\)-weak closure of a \(*\)-algebra is the strong closure of its unit ball, so \(\mathrm B(M,\varphi)\) is \(\sigma\)-weakly closed. Central elements commute with everything, so they lie in \(\mathrm B(M,\varphi)\). A constant \(x\in M_\varphi\) gives \((x)\in\mathrm{AC}(M,\varphi)\), so every \(a\in\mathrm B(M,\varphi)\) satisfies \(\|[a,x]\|_\varphi=0\), that is \([a,x]=0\); hence \(\mathrm B(M,\varphi)\subset(M_\varphi)'\cap M\).
 
-Since \(\varphi\circ\sigma_t^\varphi=\varphi\), for \(x,y\in M\) we have \((\sigma_t^\varphi(x)\varphi)(y)=\varphi(y\sigma_t^\varphi(x))=(x\varphi)(\sigma^\varphi_{-t}(y))\), and similarly on the other side; so \(\|[\sigma_t^\varphi(x),\varphi]\|=\|[x,\varphi]\|\), and \(\mathrm{AC}(M,\varphi)\) is invariant under \(\sigma_t^\varphi\) applied termwise. If \(a\in\mathrm B(M,\varphi)\) and \((x_n)\in\mathrm{AC}(M,\varphi)\), then
+Since \(\varphi\circ\sigma_t^\varphi=\varphi\), for \(x,y\in M\) we have \((\sigma_t^\varphi(x)\varphi)(y)=\varphi(y\sigma_t^\varphi(x))\), which is \((x\varphi)(\sigma^\varphi_{-t}(y))\), and similarly on the other side; so \(\|[\sigma_t^\varphi(x),\varphi]\|=\|[x,\varphi]\|\), and \(\mathrm{AC}(M,\varphi)\) is invariant under \(\sigma_t^\varphi\) applied termwise. If \(a\in\mathrm B(M,\varphi)\) and \((x_n)\in\mathrm{AC}(M,\varphi)\), then
 \[
-\|[\sigma_t^\varphi(a),x_n]\|_\varphi=\|\sigma_t^\varphi([a,\sigma_{-t}^\varphi(x_n)])\|_\varphi=\|[a,\sigma^\varphi_{-t}(x_n)]\|_\varphi\to0 .
+\begin{aligned}
+&\|[\sigma_t^\varphi(a),x_n]\|_\varphi=\|\sigma_t^\varphi([a,\sigma_{-t}^\varphi(x_n)])\|_\varphi\\
+&\quad =\|[a,\sigma^\varphi_{-t}(x_n)]\|_\varphi\to0 .
+\end{aligned}
 \]
 So \(\mathrm B(M,\varphi)\) is invariant under \(\sigma^\varphi\), and §ME-01 of the modular expectation lesson gives a \(\varphi\)-preserving faithful normal conditional expectation onto it, unique by §ME-08 there. \(\square\)
 
 Write \(\mathrm B=\mathrm B(M,\varphi)\), \(\varphi_{\mathrm B}=\varphi|_{\mathrm B}\), and \(E\) for the expectation of Theorem 2.1. Since \(E\) is a \(\mathrm B\)-bimodule map with \(\varphi\circ E=\varphi\),
 \[
-\varphi(yb)=\varphi_{\mathrm B}(E(y)b),\qquad\varphi(by)=\varphi_{\mathrm B}(bE(y))\qquad(y\in M,\ b\in\mathrm B).
-\tag{2.1}
+\begin{gathered}
+\varphi(yb)=\varphi_{\mathrm B}(E(y)b),\\
+\varphi(by)=\varphi_{\mathrm B}(bE(y))\\
+(y\in M,\ b\in\mathrm B).
+\end{gathered}\tag{2.1}
 \]
 
 **Proposition 2.2** (Houdayer–Isono). \(\mathrm B(\mathrm B,\varphi_{\mathrm B})=\mathrm B\).
 
 **Proof.** Always \(\mathrm B(\mathrm B,\varphi_{\mathrm B})\subset\mathrm B\). Let \((x_n)\in\mathrm{AC}(\mathrm B,\varphi_{\mathrm B})\). By (2.1), for \(y\in M\),
 \[
-[x_n,\varphi](y)=\varphi(yx_n)-\varphi(x_ny)=\varphi_{\mathrm B}(E(y)x_n-x_nE(y))=[x_n,\varphi_{\mathrm B}](E(y)),
+\begin{aligned}
+[x_n,\varphi](y)&=\varphi(yx_n)-\varphi(x_ny)\\
+&=\varphi_{\mathrm B}(E(y)x_n-x_nE(y))\\
+&=[x_n,\varphi_{\mathrm B}](E(y)),
+\end{aligned}
 \]
 so \(\|[x_n,\varphi]\|\le\|[x_n,\varphi_{\mathrm B}]\|\to0\), and \((x_n)\in\mathrm{AC}(M,\varphi)\). Every \(a\in\mathrm B\) therefore satisfies \(\|[a,x_n]\|_{\varphi_{\mathrm B}}=\|[a,x_n]\|_\varphi\to0\). So \(\mathrm B\subset\mathrm B(\mathrm B,\varphi_{\mathrm B})\). \(\square\)
 
@@ -87,7 +97,7 @@ Consequently the centralizer of \(\varphi_{\mathrm B}\) in \(\mathrm B\) is \(\m
 
 **Proof.** Let \(a\in\mathrm B\cap M_\varphi\) and fix a free ultrafilter \(\omega\). The constant sequence \(a\) belongs to \(A_{\varphi,\omega}\), so its class lies in \(M_{\varphi,\omega}\); by Proposition 1.3 it commutes with \(M_{\varphi,\omega}\), so it lies in the centre of \(M_{\varphi,\omega}\), which is \(\mathbb C1\) by Theorem 3.1 of the previous lesson. Thus \(a-c\in I_\omega\) for a scalar \(c\); for a constant sequence this means \(\|a-c\|_\varphi=0\), so \(a=c\).
 
-If \(b\in\mathrm B\) satisfies \([b,\varphi_{\mathrm B}]=0\), then by (2.1), \(\varphi(yb)=\varphi_{\mathrm B}(E(y)b)=\varphi_{\mathrm B}(bE(y))=\varphi(by)\) for all \(y\in M\), so \(b\in M_\varphi\) by (B6), and \(b\) is a scalar. A central element \(z\) of \(\mathrm B\) satisfies \([z,\varphi_{\mathrm B}]=0\), so it is a scalar. The remaining statements are Lemma 2.3 and Proposition 2.2. \(\square\)
+If \(b\in\mathrm B\) satisfies \([b,\varphi_{\mathrm B}]=0\), then by (2.1), \(\varphi(yb)=\varphi_{\mathrm B}(E(y)b)\), which is \(\varphi_{\mathrm B}(bE(y))=\varphi(by)\) for all \(y\in M\), so \(b\in M_\varphi\) by (B6), and \(b\) is a scalar. A central element \(z\) of \(\mathrm B\) satisfies \([z,\varphi_{\mathrm B}]=0\), so it is a scalar. The remaining statements are Lemma 2.3 and Proposition 2.2. \(\square\)
 
 Connes' bicentralizer problem asks whether \(\mathrm B(M,\varphi)=\mathbb C1\) for every type III₁ factor with separable predual. Theorem 3.1 reduces it to the question whether a *self-bicentralizing* factor, one with \(\mathrm B(M,\varphi)=M\), must be \(\mathbb C1\). For such a factor the centralizer of \(\varphi\) is trivial, so \(\varphi\) is ergodic for its modular group.
 

@@ -6,13 +6,20 @@ The Johnson–Lindenstrauss lemma places any \(n\) points of a Hilbert space int
 
 All spaces are real. For a measure space \((X,\mu)\), \(L_p(\mu)\) is the space of classes of measurable functions with \(\|x\|_p=(\int|x|^p\,d\mu)^{1/p}<\infty\), and \(\ell_p^d\) is \(\mathbb R^d\) with \(\|y\|_p=(\sum_a|y_a|^p)^{1/p}\). For \(1\le p<\infty\), an integer \(n\ge2\) and \(D\ge1\), let \(d_p(n,D)\) be the least integer \(d\) such that for every \(n\)-point subset \(\{x_1,\dots,x_n\}\) of every space \(L_p(\mu)\) there are \(y_1,\dots,y_n\in\ell_p^d\) and \(s>0\) with
 \[
-s\|x_i-x_j\|_p\le\|y_i-y_j\|_p\le Ds\|x_i-x_j\|_p\qquad(1\le i,j\le n).\tag{0.1}
+\begin{aligned}
+&s\|x_i-x_j\|_p\le\|y_i-y_j\|_p\\
+&\quad \le Ds\|x_i-x_j\|_p\\
+&(1\le i,j\le n).
+\end{aligned}\tag{0.1}
 \]
 The images are arbitrary points; no linear map is required.
 
 **Theorem 5.1** (OpenAI 2026). Let \(1<p<\infty\), \(p\neq2\), and \(\gamma(p)=2-p\) for \(p<2\), \(\gamma(p)=1-\frac2p\) for \(p>2\). For every \(D>1\) there is \(C_{p,D}<\infty\) such that for every \(n\ge2\)
 \[
-\frac{\log n}{\log(1+2D)}\le d_p(n,D)\le\exp\bigl(C_{p,D}(\log n)^{\gamma(p)}\bigr),
+\begin{aligned}
+&\frac{\log n}{\log(1+2D)}\le d_p(n,D)\\
+&\quad \le\exp\bigl(C_{p,D}(\log n)^{\gamma(p)}\bigr),
+\end{aligned}
 \]
 while for \(D=1\) and \(n\ge9\)
 \[
@@ -49,15 +56,12 @@ This lesson proves everything in Theorem 5.1 except the upper bound for \(D>1\):
 
 **Proposition 2.1** (Ball's bound). Let \(1\le p<\infty\). Every \(n\)-point subset of an \(L_p\) space embeds isometrically into \(\ell_p^{N}\), \(N=\binom n2\).
 
-**Proof.** Let \(x_1,\dots,x_n\in L_p(\mu)\) be distinct, fix representatives, and let \(E\) be the set of pairs \(i<j\), so \(|E|=N\). Put \(q(t)=\bigl(|x_i(t)-x_j(t)|^p\bigr)_{ij\in E}\), \(s(t)=\sum_{e\in E}q_e(t)\) and \(S=\int s\,d\mu\), so \(0<S<\infty\). Let
-\[
-\mathcal K=\Bigl\{\bigl(|z_i-z_j|^p\bigr)_{ij\in E}:z\in\mathbb R^n,\ z_n=0,\ \sum_{ij\in E}|z_i-z_j|^p=1\Bigr\}.
-\]
+**Proof.** Let \(x_1,\dots,x_n\in L_p(\mu)\) be distinct, fix representatives, and let \(E\) be the set of pairs \(i<j\), so \(|E|=N\). Put \(q(t)=\bigl(|x_i(t)-x_j(t)|^p\bigr)_{ij\in E}\), \(s(t)=\sum_{e\in E}q_e(t)\) and \(S=\int s\,d\mu\), so \(0<S<\infty\). Let \(\mathcal K\) be the set of the vectors \(\bigl(|z_i-z_j|^p\bigr)_{ij\in E}\) with \(z\in\mathbb R^n\), \(z_n=0\) and \(\sum_{ij\in E}|z_i-z_j|^p=1\).
 It is compact, since its parameters \(z\) form a closed set with \(|z_i|=|z_i-z_n|\le1\), and it lies in the affine hyperplane where the coordinates add up to \(1\). Where \(s(t)>0\), the vector \(q(t)/s(t)\) lies in \(\mathcal K\) (take \(z_i=(x_i(t)-x_n(t))/s(t)^{1/p}\)). By Lemma 1.4, applied to the probability measure \(s\,d\mu/S\) on \(\{s>0\}\) and the compact convex hull of \(\mathcal K\) (Lemma 1.2),
 \[
 \frac1S\int q\,d\mu=\int_{\{s>0\}}\frac{q}{s}\,\frac{s\,d\mu}S\in\operatorname{conv}\mathcal K .
 \]
-By Lemma 1.1, with \(k=N-1\), this vector is \(\sum_{a=1}^N\theta_a\bigl(|z^{(a)}_i-z^{(a)}_j|^p\bigr)_{ij}\) for some \(z^{(a)}\) and convex weights \(\theta_a\). The points \(y_i=\bigl((S\theta_a)^{1/p}z^{(a)}_i\bigr)_{a=1}^N\in\ell_p^N\) satisfy \(\|y_i-y_j\|_p^p=S\sum_a\theta_a|z^{(a)}_i-z^{(a)}_j|^p=\int|x_i-x_j|^p\,d\mu\). \(\square\)
+By Lemma 1.1, with \(k=N-1\), this vector is \(\sum_{a=1}^N\theta_a\bigl(|z^{(a)}_i-z^{(a)}_j|^p\bigr)_{ij}\) for some \(z^{(a)}\) and convex weights \(\theta_a\). The points \(y_i=\bigl((S\theta_a)^{1/p}z^{(a)}_i\bigr)_{a=1}^N\in\ell_p^N\) satisfy \(\|y_i-y_j\|_p^p=S\sum_a\theta_a|z^{(a)}_i-z^{(a)}_j|^p\), which is \(\int|x_i-x_j|^p\,d\mu\). \(\square\)
 
 In particular, for the upper bound of Theorem 5.1 we may assume that the points lie in some \(\ell_p^m\).
 
@@ -69,7 +73,13 @@ In particular, for the upper bound of Theorem 5.1 we may assume that the points 
 
 ## 4. Exact embeddings need quadratically many coordinates
 
-For real \(a,b\) let \(\Delta_p(a,b)=|a+b|^p+|a-b|^p-2|a|^p-2|b|^p\).
+For real \(a,b\) let
+\[
+\begin{aligned}
+\Delta_p(a,b)&=|a+b|^p+|a-b|^p\\
+&\quad-2|a|^p-2|b|^p.
+\end{aligned}
+\]
 
 **Lemma 4.1.** Let \(1<p<\infty\), \(p\neq2\). If \(ab=0\), then \(\Delta_p(a,b)=0\); if \(ab\neq0\), then \(\Delta_p(a,b)\) is nonzero and has the sign of \(p-2\).
 
@@ -91,9 +101,9 @@ if and only if \(u\) and \(w\) have disjoint supports.
 
 **Proof.** Let \(k=\lfloor\frac{n-1}4\rfloor\ge2\). In \(\ell_p^{k^2}\), with coordinates indexed by \(\{1,\dots,k\}^2\), let \(r_i\) be the indicator of row \(i\) and \(c_j\) that of column \(j\), and consider the \(4k+1\le n\) points \(\mathcal X=\{0\}\cup\{\pm r_i\}\cup\{\pm c_j\}\), completed by further distinct points to an \(n\)-point set. Suppose that \(\mathcal X\) embeds with distortion \(1\) into \(\ell_p^d\); after translation and rescaling, the embedding \(f\) is an isometry with \(f(0)=0\).
 
-*Antipodes.* For \(x\in\mathcal X\), the vectors \(f(x)\) and \(-f(-x)\) both have norm \(\|x\|_p\), and their sum has norm \(\|f(x)-f(-x)\|_p=\|x-(-x)\|_p=2\|x\|_p\). By Lemma 4.3, \(f(-x)=-f(x)\).
+*Antipodes.* For \(x\in\mathcal X\), the vectors \(f(x)\) and \(-f(-x)\) both have norm \(\|x\|_p\), and their sum has norm \(\|f(x)-f(-x)\|_p=\|x-(-x)\|_p\), which is \(2\|x\|_p\). By Lemma 4.3, \(f(-x)=-f(x)\).
 
-*Supports.* For \(x,y\in\mathcal X\), \(\|f(x)+f(y)\|_p=\|f(x)-f(-y)\|_p=\|x+y\|_p\) and \(\|f(x)-f(y)\|_p=\|x-y\|_p\). So the expression of Lemma 4.2 for \(f(x),f(y)\) equals the one for \(x,y\). Different rows have disjoint supports, hence so do \(f(r_i)\) and \(f(r_{i'})\), and the same holds for columns. A row and a column meet in one coordinate, and their expression equals \((2k-2+2^p)+(2k-2)-4k=2^p-4\neq0\); hence the supports of \(f(r_i)\) and \(f(c_j)\) meet for every \(i,j\). A coordinate lies in at most one row support and at most one column support, so it accounts for at most one of these \(k^2\) intersections, and \(d\ge k^2\). \(\square\)
+*Supports.* For \(x,y\in\mathcal X\), \(\|f(x)+f(y)\|_p=\|f(x)-f(-y)\|_p\), which is \(\|x+y\|_p\), and \(\|f(x)-f(y)\|_p=\|x-y\|_p\). So the expression of Lemma 4.2 for \(f(x),f(y)\) equals the one for \(x,y\). Different rows have disjoint supports, hence so do \(f(r_i)\) and \(f(r_{i'})\), and the same holds for columns. A row and a column meet in one coordinate, and their expression equals \((2k-2+2^p)+(2k-2)-4k\), which is \(2^p-4\neq0\); hence the supports of \(f(r_i)\) and \(f(c_j)\) meet for every \(i,j\). A coordinate lies in at most one row support and at most one column support, so it accounts for at most one of these \(k^2\) intersections, and \(d\ge k^2\). \(\square\)
 
 For \(p=2\) every \(n\) points lie isometrically in \(\ell_2^{n-1}\), and Lemma 4.1 fails because \(\Delta_2\equiv0\).
 

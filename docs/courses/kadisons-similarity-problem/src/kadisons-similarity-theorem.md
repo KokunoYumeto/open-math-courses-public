@@ -8,7 +8,7 @@ Here \(C=3C_{\rm fac}+2<6308\) is the constant of (0.1) in [The uniform commutat
 
 ## 1. Every derivation is completely bounded
 
-**Lemma 1.1.** Let \(\sigma:A\to B(K)\) be a representation and \(V\in B(K)\). Put \(P=\sigma(A)''\). Then \(g_P(V)=\sup\{\|V\sigma(a)-\sigma(a)V\|:a\in A,\ \|a\|\le1\}\).
+**Lemma 1.1.** Let \(\sigma:A\to B(K)\) be a representation and \(V\in B(K)\). Put \(P=\sigma(A)''\). Then \(g_P(V)\) equals the supremum of \(\|V\sigma(a)-\sigma(a)V\|\) over \(a\in A\) with \(\|a\|\le1\).
 
 **Proof.** By Proposition 17.1 of the C\*-algebra lesson, the unit ball of \(\sigma(A)\) is the image of the unit ball of \(A\). By Kaplansky's density theorem it is strongly dense in the unit ball of \(P\), and \(x\mapsto\|Vx-xV\|\) is lower semicontinuous for the strong operator topology. \(\square\)
 
@@ -20,11 +20,18 @@ and \(\Delta\) is implemented by an operator \(V\in B(K,F)\) with \(\|V\|\le\fra
 
 **Proof.** First let \(F=K\) and \(\lambda=\sigma\). Decompose \(K\) into an orthogonal family \((K_i)_{i\in I}\) of cyclic subspaces reducing \(\sigma\): take a maximal orthogonal family of such subspaces, by Zorn's lemma; a nonzero vector orthogonal to all of them would generate another one. Let \(q_i\) be the projection onto \(K_i\) and \(\sigma_i=\sigma|_{K_i}\). The map \(a\mapsto\Delta(a)|_{K_i}\) is a rectangular derivation for the cyclic representation \(\sigma_i\) and for \(\sigma\), so Theorem 4.2 of the cyclic estimates lesson gives \(V_i:K_i\to K\) with \(\Delta(a)|_{K_i}=V_i\sigma_i(a)-\sigma(a)V_i\). For a finite set \(\Phi\subseteq I\) put \(q_\Phi=\sum_{i\in\Phi}q_i\) and \(V_\Phi=\sum_{i\in\Phi}V_iq_i\in B(K)\). Since \(q_i\) commutes with \(\sigma(A)\),
 \[
-V_\Phi\sigma(a)-\sigma(a)V_\Phi=\sum_{i\in\Phi}\big(V_i\sigma_i(a)-\sigma(a)V_i\big)q_i=\Delta(a)q_\Phi .
+\begin{aligned}
+&V_\Phi\sigma(a)-\sigma(a)V_\Phi\\
+&\quad =\sum_{i\in\Phi}\big(V_i\sigma_i(a)-\sigma(a)V_i\big)q_i\\
+&\quad =\Delta(a)q_\Phi .
+\end{aligned}
 \]
 Hence \(\|V_\Phi\sigma(a)-\sigma(a)V_\Phi\|\le\|\Delta\|\|a\|\), and by Lemma 1.1 \(g_P(V_\Phi)\le\|\Delta\|\) for \(P=\sigma(A)''\); the norms \(\|V_i\|\) play no role. The uniform commutator estimate, Theorem 3.1 of the previous lesson, gives for \(X\in M_h(A)\)
 \[
-\|\Delta_h(X)q_\Phi^{(h)}\|=\|[V_\Phi^{(h)},\sigma_h(X)]\|\le C\|\Delta\|\,\|\sigma_h(X)\|\le C\|\Delta\|\,\|X\| .
+\begin{aligned}
+&\|\Delta_h(X)q_\Phi^{(h)}\|=\|[V_\Phi^{(h)},\sigma_h(X)]\|\\
+&\quad \le C\|\Delta\|\,\|\sigma_h(X)\|\le C\|\Delta\|\,\|X\| .
+\end{aligned}
 \]
 As \(\Phi\) increases, \(q_\Phi\to1\) strongly, so \(\|\Delta_h(X)\|\le C\|\Delta\|\|X\|\). This proves \(\|\Delta\|_{\rm cb}\le C\|\Delta\|\), and Theorem 4.3 of the first lesson gives \(V\) with \(\|V\|\le\frac12\|\Delta\|_{\rm cb}\le\frac C2\|\Delta\|\).
 
@@ -42,7 +49,10 @@ and there is a positive invertible \(S\in B(H)\) with \(\|S\|\|S^{-1}\|\le\|\pi\
 
 **Proof.** We verify the hypothesis of Theorem 5.1 of the lesson on inner derivations with \(k=C\). Let \(\rho:A\to B(K)\) be a representation, \(t\in B(K)\) self-adjoint, and \(\Delta_t(a)=t\rho(a)-\rho(a)t\). Put \(P=\rho(A)''\). By Lemma 1.1, \(g_P(t)=\|\Delta_t\|\). For \(X\in M_h(A)\), Theorem 3.1 of the previous lesson gives
 \[
-\|(\Delta_t)_h(X)\|=\|[t^{(h)},\rho_h(X)]\|\le C\,g_P(t)\,\|\rho_h(X)\|\le C\|\Delta_t\|\,\|X\| .
+\begin{aligned}
+&\|(\Delta_t)_h(X)\|=\|[t^{(h)},\rho_h(X)]\|\\
+&\quad \le C\,g_P(t)\,\|\rho_h(X)\|\le C\|\Delta_t\|\,\|X\| .
+\end{aligned}
 \]
 So \(\|\Delta_t\|_{\rm cb}\le C\|\Delta_t\|\), and Theorem 5.1 there gives the conclusion. \(\square\)
 
@@ -50,33 +60,39 @@ For a unital homomorphism, \(\|\pi\|\ge1\) unless \(H=0\), so the bound is meani
 
 Pisier defines the *similarity degree* \(d(A)\) of \(A\) as the infimum of the numbers \(\alpha\) for which some constant \(K_\alpha\) satisfies \(\|\pi\|_{\rm cb}\le K_\alpha\|\pi\|^\alpha\) for every bounded unital homomorphism \(\pi\) of \(A\) [Pisier-degree]. Theorem 2.1 says
 \[
-d(A)\le2C\qquad\text{for every unital C\*-algebra }A .
+\begin{gathered}
+d(A)\le2C\\
+\text{for every unital C\*-algebra }A .
+\end{gathered}
 \]
 
 ## 3. Universal hyperreflexivity
 
-For a von Neumann algebra \(M\subseteq B(H)\) with \(1_H\in M\) and \(T\in B(H)\), put
-\[
-\alpha_M(T)=\sup\{\|(1-e)Te\|:\ e\in M'\text{ a projection}\}.
-\]
-The ranges of the projections of \(M'\) are exactly the closed subspaces invariant under \(M\), which are automatically reducing. For \(m\in M\) and a projection \(e\in M'\), \((1-e)me=m(1-e)e=0\), so \(\|(1-e)Te\|=\|(1-e)(T-m)e\|\le\|T-m\|\); hence \(\alpha_M(T)\le\operatorname{dist}(T,M)\). The algebra \(M\) is *hyperreflexive* if conversely \(\operatorname{dist}(T,M)\le K\alpha_M(T)\) for some constant \(K\) and all \(T\).
+For a von Neumann algebra \(M\subseteq B(H)\) with \(1_H\in M\) and \(T\in B(H)\), let \(\alpha_M(T)\) be the supremum of \(\|(1-e)Te\|\) over the projections \(e\in M'\).
+The ranges of the projections of \(M'\) are exactly the closed subspaces invariant under \(M\), which are automatically reducing. For \(m\in M\) and a projection \(e\in M'\), \((1-e)me=m(1-e)e=0\), so \(\|(1-e)Te\|=\|(1-e)(T-m)e\|\), which is at most \(\|T-m\|\); hence \(\alpha_M(T)\le\operatorname{dist}(T,M)\). The algebra \(M\) is *hyperreflexive* if conversely \(\operatorname{dist}(T,M)\le K\alpha_M(T)\) for some constant \(K\) and all \(T\).
 
 **Theorem 3.1** (universal hyperreflexivity). For every Hilbert space \(H\), every von Neumann algebra \(M\subseteq B(H)\) with \(1_H\in M\) and every \(T\in B(H)\),
 \[
 \alpha_M(T)\le\operatorname{dist}(T,M)\le2C\,\alpha_M(T).
 \]
 
-**Proof.** Put \(P=M'\), so \(P'=M\). Let \(\alpha=\alpha_M(T)\). For a projection \(e\in P\), \([T,e]=(1-e)Te-eT(1-e)\), and the two terms map \(eH\) into \((1-e)H\) and \((1-e)H\) into \(eH\), so \(\|[T,e]\|=\max(\|(1-e)Te\|,\|eT(1-e)\|)\le\alpha\), using also the projection \(1-e\in P\).
+**Proof.** Put \(P=M'\), so \(P'=M\). Let \(\alpha=\alpha_M(T)\). For a projection \(e\in P\), \([T,e]=(1-e)Te-eT(1-e)\), and the two terms map \(eH\) into \((1-e)H\) and \((1-e)H\) into \(eH\), so \(\|[T,e]\|\) is the larger of \(\|(1-e)Te\|\) and \(\|eT(1-e)\|\), hence at most \(\alpha\), using also the projection \(1-e\in P\).
 
 Let \(a\in P\) be self-adjoint with \(\|a\|\le1\), and \(E_s=\mathbf 1_{(s,\infty)}(a)\in P\) for \(s\in\mathbb R\). For \(\xi,\eta\in H\), let \(\mu\) be the complex spectral measure with \(\langle f(a)\xi,\eta\rangle=\int f\,d\mu\) for bounded Borel \(f\), concentrated on \([-1,1]\). Since \(\int_{-1}^1\mathbf 1_{(s,\infty)}(\lambda)\,ds=\lambda+1\) for \(\lambda\in[-1,1]\), Fubini's theorem gives \(\langle(a+1)\xi,\eta\rangle=\int_{-1}^1\langle E_s\xi,\eta\rangle\,ds\), and the same with \(T\xi\) or \(T^*\eta\) in place of \(\xi\) or \(\eta\). Hence
 \[
-\langle[T,a]\xi,\eta\rangle=\langle(a+1)\xi,T^*\eta\rangle-\langle(a+1)T\xi,\eta\rangle=\int_{-1}^1\langle[T,E_s]\xi,\eta\rangle\,ds,
+\begin{aligned}
+&\langle[T,a]\xi,\eta\rangle=\langle(a+1)\xi,T^*\eta\rangle\\
+&\quad -\langle(a+1)T\xi,\eta\rangle=\int_{-1}^1\langle[T,E_s]\xi,\eta\rangle\,ds,
+\end{aligned}
 \]
 and \(\|[T,a]\|\le2\alpha\). A contraction of \(P\) is \(a_1+ia_2\) with self-adjoint contractions \(a_1,a_2\in P\), so \(g_P(T)\le4\alpha\). By Arveson's distance formula, Corollary 4.5 of the first lesson, and the uniform commutator estimate,
 \[
-2\operatorname{dist}(T,M)=2\operatorname{dist}(T,P')=\|\operatorname{ad}(T)|_P\|_{\rm cb}\le C\,g_P(T)\le4C\alpha .
-\qquad\square
+\begin{aligned}
+&2\operatorname{dist}(T,M)=2\operatorname{dist}(T,P')\\
+&\quad =\|\operatorname{ad}(T)|_P\|_{\rm cb}\le C\,g_P(T)\le4C\alpha .
+\end{aligned}
 \]
+\(\square\)
 
 ## 4. Remarks
 
@@ -84,7 +100,7 @@ Before [OpenAI-288], the similarity property was known for nuclear C\*-algebras 
 
 ## 5. Exercises
 
-**Exercise 5.1.** Let \(A\subseteq B(K)\) be a C\*-algebra with \(1_K\in A\). Show that \(\operatorname{dist}(V,A')\le\frac C2\sup\{\|Va-aV\|:a\in A,\ \|a\|\le1\}\) for every \(V\in B(K)\).
+**Exercise 5.1.** Let \(A\subseteq B(K)\) be a C\*-algebra with \(1_K\in A\). Show that, for every \(V\in B(K)\), \(\operatorname{dist}(V,A')\) is at most \(\frac C2\) times the supremum of \(\|Va-aV\|\) over \(a\in A\) with \(\|a\|\le1\).
 
 **Exercise 5.2.** Let \(M=\mathbb C1\subseteq B(H)\). Show that \(\alpha_M(T)\) is the supremum of \(\|(1-e)Te\|\) over all projections \(e\) of \(B(H)\), and that \(\alpha_M(T)=0\) exactly when \(T\) is a scalar.
 

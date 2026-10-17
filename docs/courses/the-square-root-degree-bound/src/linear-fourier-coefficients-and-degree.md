@@ -15,7 +15,10 @@ The proof does not build \(f\) directly. It builds finite *observations* of inde
 
 Let \(X\) be uniform on \(\{-1,1\}^n\). For \(S\subseteq[n]=\{1,\dots,n\}\) the *character* \(\chi_S(x)=\prod_{i\in S}x_i\) has \(\chi_\varnothing=1\). For \(f:\{-1,1\}^n\to\mathbb R\) put
 \[
-\widehat f(S)=\mathbb E[f(X)\chi_S(X)],\qquad\deg f=\max\{|S|:\widehat f(S)\ne0\},
+\begin{gathered}
+\widehat f(S)=\mathbb E[f(X)\chi_S(X)],\\
+\deg f=\max\{|S|:\widehat f(S)\ne0\},
+\end{gathered}
 \]
 with \(\deg f=0\) for constants.
 
@@ -31,14 +34,17 @@ So \(\deg f\) is the degree of the unique multilinear polynomial representing \(
 
 ## 2. The linear bound
 
-For \(f:\{-1,1\}^n\to\{-1,1\}\) and \(i\in[n]\), let \(x^{i\to\pm1}\) be \(x\) with the \(i\)-th coordinate set to \(\pm1\), and define the derivative \(D_if(x)=\frac12\bigl(f(x^{i\to1})-f(x^{i\to-1})\bigr)\in\{-1,0,1\}\). The *influence* \(\operatorname{Inf}_i(f)=\Pr(D_if(X)\ne0)\) is the probability that flipping the \(i\)-th coordinate changes \(f\), and \(I(f)=\sum_i\operatorname{Inf}_i(f)\) is the total influence.
+For \(f:\{-1,1\}^n\to\{-1,1\}\) and \(i\in[n]\), let \(x^{i\to\pm1}\) be \(x\) with the \(i\)-th coordinate set to \(\pm1\), and define the derivative \(D_if(x)=\frac12\bigl(f(x^{i\to1})-f(x^{i\to-1})\bigr)\), which lies in \(\{-1,0,1\}\). The *influence* \(\operatorname{Inf}_i(f)=\Pr(D_if(X)\ne0)\) is the probability that flipping the \(i\)-th coordinate changes \(f\), and \(I(f)=\sum_i\operatorname{Inf}_i(f)\) is the total influence.
 
 **Proposition 2.1** (Nisan–Szegedy). For every \(f:\{-1,1\}^n\to\{-1,1\}\),
 \[
-\sum_{i=1}^n|\widehat f(\{i\})|\le I(f)=\sum_S|S|\,\widehat f(S)^2\le\deg f .
+\begin{aligned}
+&\sum_{i=1}^n|\widehat f(\{i\})|\le I(f)\\
+&\quad =\sum_S|S|\,\widehat f(S)^2\le\deg f .
+\end{aligned}
 \]
 
-*Proof.* From the expansion, \(D_if=\sum_{S\ni i}\widehat f(S)\chi_{S\setminus\{i\}}\), so \(\mathbb E[D_if]=\widehat f(\{i\})\) and, by Parseval, \(\mathbb E[(D_if)^2]=\sum_{S\ni i}\widehat f(S)^2\). Since \(D_if\in\{-1,0,1\}\), \(|\widehat f(\{i\})|\le\mathbb E|D_if|=\mathbb E[(D_if)^2]=\operatorname{Inf}_i(f)\). Summing over \(i\) gives \(I(f)=\sum_S|S|\widehat f(S)^2\le\deg f\sum_S\widehat f(S)^2=\deg f\), as \(\mathbb E f^2=1\). \(\square\)
+*Proof.* From the expansion, \(D_if=\sum_{S\ni i}\widehat f(S)\chi_{S\setminus\{i\}}\), so \(\mathbb E[D_if]=\widehat f(\{i\})\) and, by Parseval, \(\mathbb E[(D_if)^2]=\sum_{S\ni i}\widehat f(S)^2\). Since \(D_if\in\{-1,0,1\}\), \(|\widehat f(\{i\})|\le\mathbb E|D_if|\), which is \(\mathbb E[(D_if)^2]=\operatorname{Inf}_i(f)\). Summing over \(i\) gives \(I(f)=\sum_S|S|\widehat f(S)^2\), which is at most \(\deg f\sum_S\widehat f(S)^2=\deg f\), as \(\mathbb E f^2=1\). \(\square\)
 
 So the correlation with the input sum is always at most linear in the degree; the theorem shows that the square root is not the right scale.
 
@@ -56,7 +62,7 @@ here conditional expectation is the elementary one on the finite partition of th
 
 (c) For an observation \(F\), the Boolean function \(f=\operatorname{sign}(T_F)\), with \(\operatorname{sign}0=1\), satisfies \(\deg f\le D\) and \(\sum_i\widehat f(\{i\})=\mathbb E|T_F|\).
 
-*Proof.* (a) A function of \(F\) is \(\sum_ag(a)\mathbf 1_{\{F=a\}}\), a finite combination; use Lemma 1.1(c). (b) A function of the tuple is a combination of products \(\prod_k\mathbf 1_{\{F_k=a_k\}}\), whose degree is at most \(\sum_kD_k\) by Lemma 1.1(c). The block sum \(H_k\) and \(F_k\) are independent of the other blocks, so \(\mathbb E[H_k\mid F_1,\dots,F_r]=\mathbb E[H_k\mid F_k]=T_k\). For a function \(Q\) of the tuple, the level sets of \(Q\) are unions of those of the tuple, and averaging over a union (the tower property) gives the last identity. (c) \(f\) is a function of \(F\), and \(\sum_i\widehat f(\{i\})=\mathbb E[fH_N]=\mathbb E[f\,\mathbb E[H_N\mid F]]=\mathbb E[\operatorname{sign}(T_F)T_F]=\mathbb E|T_F|\). \(\square\)
+*Proof.* (a) A function of \(F\) is \(\sum_ag(a)\mathbf 1_{\{F=a\}}\), a finite combination; use Lemma 1.1(c). (b) A function of the tuple is a combination of products \(\prod_k\mathbf 1_{\{F_k=a_k\}}\), whose degree is at most \(\sum_kD_k\) by Lemma 1.1(c). The block sum \(H_k\) and \(F_k\) are independent of the other blocks, so \(\mathbb E[H_k\mid F_1,\dots,F_r]=\mathbb E[H_k\mid F_k]=T_k\). For a function \(Q\) of the tuple, the level sets of \(Q\) are unions of those of the tuple, and averaging over a union (the tower property) gives the last identity. (c) \(f\) is a function of \(F\), and \(\sum_i\widehat f(\{i\})=\mathbb E[fH_N]=\mathbb E[f\,\mathbb E[H_N\mid F]]\), which is \(\mathbb E[\operatorname{sign}(T_F)T_F]=\mathbb E|T_F|\). \(\square\)
 
 **Corollary 3.2.** If for some observation \(\mathbb E|T_F|>C\sqrt D\), where \(D\) is a cell degree bound, then the theorem holds for \(C\) with \(f=\operatorname{sign}(T_F)\), which is nonconstant because its signed correlation \(\mathbb E|T_F|\) is positive.
 
@@ -78,7 +84,7 @@ By Cauchy–Schwarz, \(\mathbb E|T_F|\le\sqrt{v(F)}\); the strategy is to make \
 
 **4.1.** \(\operatorname{maj}_3=\frac12(x_1+x_2+x_3)-\frac12x_1x_2x_3\): this agrees with the sign of \(x_1+x_2+x_3\) on all eight points. The degree is \(3\) and \(\sum_i\widehat{\operatorname{maj}_3}(\{i\})=3/2\), below \(\sqrt3\approx1.73=\sqrt{\deg}\).
 
-**4.2.** \(\sum_i\widehat f(\{i\})=\mathbb E[fH_n]\le(\mathbb Ef^2)^{1/2}(\mathbb EH_n^2)^{1/2}=\sqrt n\). Equality in Cauchy–Schwarz would need \(f\) proportional to \(H_n\), which takes values in \(\{-1,1\}\) only for \(n=1\).
+**4.2.** \(\sum_i\widehat f(\{i\})=\mathbb E[fH_n]\), which is at most \((\mathbb Ef^2)^{1/2}(\mathbb EH_n^2)^{1/2}=\sqrt n\). Equality in Cauchy–Schwarz would need \(f\) proportional to \(H_n\), which takes values in \(\{-1,1\}\) only for \(n=1\).
 
 **4.3.** The only nonzero coefficient is \(\widehat f([n])=1\), so the linear sum is \(0\), \(I(f)=n\) (every flip changes the parity) and \(\deg f=n\).
 

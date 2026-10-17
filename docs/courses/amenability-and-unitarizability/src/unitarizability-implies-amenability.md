@@ -14,24 +14,43 @@ We use: from [Uniformly bounded representations](uniformly-bounded-representatio
 
 Let \(G\) be a countable group and \(k\ge1\). On \(\mathcal H_k=\ell^2(G;\mathbb C^k)\) let \((U_k(g)\xi)(x)=\xi(g^{-1}x)\), let \(\iota_x:\mathbb C^k\to\mathcal H_k\) be the inclusion at \(x\) and \(q_x=\iota_x^*\). For \(F\in B(\mathcal H_k)\) put \(F[x,y]=q_xF\iota_y\), a \(k\times k\) matrix, and
 \[
-\operatorname{row}_e(F)=q_eF:\mathcal H_k\to\mathbb C^k,\qquad\operatorname{col}_e(F)=F\iota_e:\mathbb C^k\to\mathcal H_k.
+\begin{gathered}
+\operatorname{row}_e(F)=q_eF:\mathcal H_k\to\mathbb C^k,\\
+\operatorname{col}_e(F)=F\iota_e:\mathbb C^k\to\mathcal H_k.
+\end{gathered}
 \]
 Let \(U_k(G)'\) be the set of bounded operators commuting with every \(U_k(g)\). Since \(U_k(g)\iota_y=\iota_{gy}\) and \(q_xU_k(x)=q_e\), every \(F\in U_k(G)'\) satisfies
 \[
-F[x,y]=q_xFU_k(x)\iota_{x^{-1}y}=q_xU_k(x)F\iota_{x^{-1}y}=F[e,x^{-1}y].\tag{1.1}
+\begin{aligned}
+F[x,y]&=q_xFU_k(x)\iota_{x^{-1}y}\\
+&=q_xU_k(x)F\iota_{x^{-1}y}\\
+&=F[e,x^{-1}y].
+\end{aligned}\tag{1.1}
 \]
 Two Hilbert–Schmidt computations are used. If \(R:\mathcal H_k\to\mathbb C^k\) is bounded, then, with the orthonormal bases \((\iota_se_b)\) of \(\mathcal H_k\) and \((e_a)\) of \(\mathbb C^k\),
 \[
-\sum_{s\in G}\|R\iota_s\|_{\rm HS}^2=\sum_{s,b}\sum_a|\langle\iota_se_b,R^*e_a\rangle|^2=\sum_a\|R^*e_a\|^2\le k\|R\|^2.\tag{1.2}
+\begin{aligned}
+&\sum_{s\in G}\|R\iota_s\|_{\rm HS}^2\\
+&\quad =\sum_{s,b}\sum_a|\langle\iota_se_b,R^*e_a\rangle|^2\\
+&\quad =\sum_a\|R^*e_a\|^2\\
+&\quad \le k\|R\|^2.
+\end{aligned}\tag{1.2}
 \]
 If \(L:\mathbb C^k\to\mathcal H_k\) is bounded, then
 \[
-\sum_{x\in G}\|q_xL\|_{\rm HS}^2=\sum_b\sum_x\|q_xLe_b\|^2=\sum_b\|Le_b\|^2\le k\|L\|^2.\tag{1.3}
+\begin{aligned}
+&\sum_{x\in G}\|q_xL\|_{\rm HS}^2\\
+&\quad =\sum_b\sum_x\|q_xLe_b\|^2\\
+&\quad =\sum_b\|Le_b\|^2\le k\|L\|^2.
+\end{aligned}\tag{1.3}
 \]
 
 **Lemma 1.1.** Let \(A,T\in B(\mathcal H_k)\) with \(A\in U_k(G)'\), write \(A[x,y]=W(x^{-1}y)\) and \(E=\sum_s\|W(s)\|_{\rm HS}^2\), and suppose that \(\|\operatorname{row}_e(T)\|\le K\) and \(\|\operatorname{col}_e(A-T)\|\le K\). Then every \(C\in U_k(G)'\) satisfies
 \[
-E\le4k\bigl(K+\|T-C\|\bigr)^2,\qquad\text{hence}\qquad\inf_{C\in U_k(G)'}\|T-C\|\ge\frac12\sqrt{\frac Ek}-K.
+\begin{gathered}
+E\le4k\bigl(K+\|T-C\|\bigr)^2,\qquad \text{hence}\\
+\inf_{C\in U_k(G)'}\|T-C\|\ge\frac12\sqrt{\frac Ek}-K.
+\end{gathered}
 \]
 
 **Proof.** Put \(B=T-C\), \(h=K+\|B\|\) and \(Q(s)=C[e,s]\), so \(C[x,y]=Q(x^{-1}y)\) by (1.1). The row \(\operatorname{row}_e(C)=\operatorname{row}_e(T)-\operatorname{row}_e(B)\) has norm at most \(h\), and its blocks are \(q_eC\iota_s=Q(s)\); by (1.2), \(\sum_s\|Q(s)\|_{\rm HS}^2\le kh^2\). The column \(\operatorname{col}_e(A-C)=\operatorname{col}_e(A-T)+\operatorname{col}_e(B)\) has norm at most \(h\), and its blocks are \((A-C)[x,e]=W(x^{-1})-Q(x^{-1})\); by (1.3) and the bijection \(x\mapsto x^{-1}\), \(\sum_s\|W(s)-Q(s)\|_{\rm HS}^2\le kh^2\). The triangle inequality for square-summable families of matrices in the Hilbert–Schmidt norm gives \(\sqrt E\le2\sqrt k\,h\). \(\square\)
@@ -40,7 +59,11 @@ E\le4k\bigl(K+\|T-C\|\bigr)^2,\qquad\text{hence}\qquad\inf_{C\in U_k(G)'}\|T-C\|
 
 **Proposition 2.1.** Let \(G\) be countable. For \(j\in\mathbb N\) let \(k_j\ge1\), \(\mathcal H_j=\ell^2(G;\mathbb C^{k_j})\) with the representation \(U_j\) as above, and \(A_j,T_j\in B(\mathcal H_j)\) with \(A_j\in U_j(G)'\), \(A_j[x,y]=W_j(x^{-1}y)\) and \(E_j=\sum_s\|W_j(s)\|_{\rm HS}^2\). Suppose that one constant \(K\) satisfies
 \[
-\|\operatorname{row}_e(T_j)\|\le K,\qquad\|\operatorname{col}_e(A_j-T_j)\|\le K,\qquad\|T_j-U_j(g)T_jU_j(g)^{-1}\|\le K
+\begin{gathered}
+\|\operatorname{row}_e(T_j)\|\le K,\\
+\|\operatorname{col}_e(A_j-T_j)\|\le K,\\
+\|T_j-U_j(g)T_jU_j(g)^{-1}\|\le K
+\end{gathered}
 \]
 for all \(j\) and \(g\), and that \(E_j/k_j\to\infty\). Then \(G\) has a representation on a separable Hilbert space with \(\sup_g\|\pi(g)\|\le1+K\) that is not unitarizable. No bound on \(\|T_j\|\) or \(\|A_j\|\) is needed.
 
@@ -48,7 +71,10 @@ for all \(j\) and \(g\), and that \(E_j/k_j\to\infty\). Then \(G\) has a represe
 
 Suppose \(\pi\) were unitarizable. By Proposition 2.2 of the first lesson there is \(B\in B(\mathcal H)\) with \(D(g)=B-U(g)BU(g)^{-1}\). Let \(I_j:\mathcal H_j\to\mathcal H\) be the inclusion and \(B_j=I_j^*BI_j\), so \(\|B_j\|\le\|B\|\). Since \(U(g)I_j=I_jU_j(g)\) and \(I_j^*U(g)=U_j(g)I_j^*\), compressing gives \(D_j(g)=B_j-U_j(g)B_jU_j(g)^{-1}\). Comparing with the definition of \(D_j\), the operator \(C_j=T_j-B_j\) commutes with every \(U_j(g)\). Lemma 1.1 with \(C=C_j\) gives
 \[
-E_j\le4k_j\bigl(K+\|B_j\|\bigr)^2\le4k_j\bigl(K+\|B\|\bigr)^2
+\begin{aligned}
+E_j&\le4k_j\bigl(K+\|B_j\|\bigr)^2\\
+&\le4k_j\bigl(K+\|B\|\bigr)^2
+\end{aligned}
 \]
 for every \(j\), contradicting \(E_j/k_j\to\infty\). \(\square\)
 
@@ -60,7 +86,10 @@ Each \(D_j\) separately is inner, implemented by \(T_j\). Lemma 1.1 shows that e
 
 **Proof.** Choose \(S\), \(d\ge2\) and \(\rho<1\) by Lemma 1.2 of the lesson on contracting averages. For \(\ell\ge1\) let \(n_\ell=d^\ell\ge2\), \(r_\ell=\lceil n_\ell\rho^\ell\rceil\), let \(s_1,\dots,s_{n_\ell}\) be the products of the words of length \(\ell\) in \(S\), and let \(a_\ell\) be the assignment of Proposition 3.2 of that lesson. With \(n=n_\ell\) and \(r=r_\ell\) choose \(k_\ell=\lceil2r_\ell\log(2n_\ell)\rceil\) and unit vectors \(v_1,\dots,v_{n_\ell}\in\mathbb C^{k_\ell}\) by Proposition 1.5 of the lesson on frames, and form the operators \(A_\ell=T_{\mathbf1}\) and \(T_\ell=T_{a_\ell}\) on \(\mathcal H_\ell=\ell^2(G;\mathbb C^{k_\ell})\) as in Section 3 of that lesson. By its Corollary 3.1 and Proposition 3.2,
 \[
-\|q_eT_\ell\|\le100,\qquad\|(A_\ell-T_\ell)\iota_e\|\le100,\qquad\|T_\ell-U_\ell(g)T_\ell U_\ell(g)^{-1}\|\le100,
+\begin{gathered}
+\|q_eT_\ell\|\le100,\qquad \|(A_\ell-T_\ell)\iota_e\|\le100,\\
+\|T_\ell-U_\ell(g)T_\ell U_\ell(g)^{-1}\|\le100,
+\end{gathered}
 \]
 and \(A_\ell\) commutes with \(U_\ell\). By its Lemma 3.3 the kernel \(W_\ell\) of \(A_\ell\) has energy \(E_\ell\ge n_\ell\). Moreover
 \[
@@ -96,7 +125,11 @@ By Theorem 4.1, every nonamenable discrete group has such representations \(\pi\
 
 **Proof.** (a) The series converges absolutely in norm. For \(f,f'\in\ell^1(G)\), absolute convergence allows rearrangement:
 \[
-T_\pi(f*f')=\sum_g\sum_hf(h)f'(h^{-1}g)\pi(g)=\sum_h\sum_{k}f(h)f'(k)\pi(h)\pi(k)=T_\pi(f)T_\pi(f'),
+\begin{aligned}
+&T_\pi(f*f')=\sum_g\sum_hf(h)f'(h^{-1}g)\pi(g)\\
+&\quad =\sum_h\sum_{k}f(h)f'(k)\pi(h)\pi(k)\\
+&\quad =T_\pi(f)T_\pi(f'),
+\end{aligned}
 \]
 and \(T_\pi(\delta_e)=1\).
 

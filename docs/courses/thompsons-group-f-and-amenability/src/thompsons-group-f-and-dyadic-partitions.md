@@ -24,14 +24,16 @@ An element of \(F\) has positive slopes, so it is increasing, and \(g(0)=0\), \(
 
 **Proof.** The identity lies in \(F\). Let \(g\in F\) be as in Definition 1.1. By Lemma 1.2 the points \(y_k=g(x_k)\) are dyadic, and \(0=y_0<y_1<\dots<y_m=1\). On \([y_{k-1},y_k]\) the inverse is \(g^{-1}(y)=2^{-q_k}(y-b_k)\), affine with slope \(2^{-q_k}\). So \(g^{-1}\in F\), and \(g^{-1}\) maps dyadic rationals to dyadic rationals by Lemma 1.2 applied to \(g^{-1}\).
 
-Let \(h\in F\) have breakpoints \(z_0<\dots<z_l\). The finite set \(P=\{x_0,\dots,x_m\}\cup\{g^{-1}(z_0),\dots,g^{-1}(z_l)\}\) consists of dyadic rationals and contains \(0\) and \(1\). Let \(p<p'\) be consecutive points of \(P\). Then \(g\) is affine on \([p,p']\) with slope a power of \(2\), because no \(x_k\) lies strictly between \(p\) and \(p'\). The interval \(g([p,p'])=[g(p),g(p')]\) contains no \(z_j\) in its interior, because \(z_j=g(g^{-1}(z_j))\) and \(g^{-1}(z_j)\in P\); so \(h\) is affine on it with slope a power of \(2\). Hence \(h\circ g\) is affine on \([p,p']\) with slope a power of \(2\), and \(h\circ g\in F\).
+Let \(h\in F\) have breakpoints \(z_0<\dots<z_l\). The finite set \(P\) of the points \(x_0,\dots,x_m\) and \(g^{-1}(z_0),\dots,g^{-1}(z_l)\) consists of dyadic rationals and contains \(0\) and \(1\). Let \(p<p'\) be consecutive points of \(P\). Then \(g\) is affine on \([p,p']\) with slope a power of \(2\), because no \(x_k\) lies strictly between \(p\) and \(p'\). The interval \(g([p,p'])=[g(p),g(p')]\) contains no \(z_j\) in its interior, because \(z_j=g(g^{-1}(z_j))\) and \(g^{-1}(z_j)\in P\); so \(h\) is affine on it with slope a power of \(2\). Hence \(h\circ g\) is affine on \([p,p']\) with slope a power of \(2\), and \(h\circ g\in F\).
 
 An element of \(F\) is determined by a finite list of breakpoints and slopes, since \(g(0)=0\) and \(g\) is affine between consecutive breakpoints. There are countably many finite lists of dyadic rationals and integers, so \(F\) is countable. \(\square\)
 
 **Example 1.4.** The functions
 \[
-A(x)=\begin{cases}x/2,&0\le x\le\frac12,\\ x-\frac14,&\frac12\le x\le\frac34,\\ 2x-1,&\frac34\le x\le1,\end{cases}\qquad
+\begin{gathered}
+A(x)=\begin{cases}x/2,&0\le x\le\frac12,\\ x-\frac14,&\frac12\le x\le\frac34,\\ 2x-1,&\frac34\le x\le1,\end{cases}\\
 B(x)=\begin{cases}x,&0\le x\le\frac12,\\ \frac x2+\frac14,&\frac12\le x\le\frac34,\\ x-\frac18,&\frac34\le x\le\frac78,\\ 2x-1,&\frac78\le x\le1\end{cases}
+\end{gathered}
 \]
 agree at the common endpoints of their pieces, so they are continuous, increasing and onto \([0,1]\); they belong to \(F\). Exercise 6.1 shows \(AB\neq BA\).
 
@@ -67,17 +69,25 @@ T_I=\{s_I^{-1}(K):K\in T,\ K\subseteq I\}.
 
 **Proof.** Write \(I=[k2^{-r},(k+1)2^{-r}]\) and \(J=[l2^{-s},(l+1)2^{-s}]\), so \(s_I(x)=(k+x)2^{-r}\).
 
-(a) We have \(s_I(J)=[(k2^s+l)2^{-r-s},(k2^s+l+1)2^{-r-s}]\) with \(0\le k2^s+l<2^{r+s}\), a dyadic interval of level \(r+s\), contained in \(s_I([0,1])=I\). The map \(s_I\circ s_J\) is increasing and affine and carries \([0,1]\) onto \(I\cdot J\); an increasing affine map is determined by the image of \([0,1]\), so \(s_I\circ s_J=s_{I\cdot J}\).
+(a) The interval \(s_I(J)\) has endpoints \((k2^s+l)2^{-r-s}\) and \((k2^s+l+1)2^{-r-s}\) with \(0\le k2^s+l<2^{r+s}\), so it is a dyadic interval of level \(r+s\), contained in \(s_I([0,1])=I\). The map \(s_I\circ s_J\) is increasing and affine and carries \([0,1]\) onto \(I\cdot J\); an increasing affine map is determined by the image of \([0,1]\), so \(s_I\circ s_J=s_{I\cdot J}\).
 
 (b) Let \(K\subseteq I\) be a cell of \(T\), of level \(t\) and left endpoint \(m2^{-t}\). Since \(K\subseteq I\), we have \(t\ge r\) and \(k2^{t-r}\le m<(k+1)2^{t-r}\). Then
 \[
-s_I^{-1}(K)=\bigl[(m-k2^{t-r})2^{-(t-r)},\ (m-k2^{t-r}+1)2^{-(t-r)}\bigr]
+\begin{aligned}
+&s_I^{-1}(K)=\bigl[(m-k2^{t-r})2^{-(t-r)},\\
+&\qquad(m-k2^{t-r}+1)2^{-(t-r)}\bigr]
+\end{aligned}
 \]
 is a dyadic interval of level \(t-r\). The cells of \(T\) contained in \(I\) have union \(I\) and disjoint interiors, and \(s_I^{-1}\) is a homeomorphism of \(I\) onto \([0,1]\); so their images have union \([0,1]\) and disjoint interiors. If \(I\neq[0,1]\), some cell of \(T\) is not contained in \(I\), since the cells cover \([0,1]\); so \(|T_I|<|T|\).
 
 (c) By (a), \(I\cdot J\subseteq I\). A cell \(s_I^{-1}(K)\) of \(T_I\) lies in \(J\) exactly when \(K\subseteq s_I(J)=I\cdot J\). The union of these cells is \(s_I^{-1}\) of the union of the cells of \(T\) contained in \(I\cdot J\), which is \(s_I^{-1}(I\cdot J)=J\); so \(T_I\) respects \(J\). Finally
 \[
-(T_I)_J=\{s_J^{-1}s_I^{-1}(K):K\in T,\ K\subseteq I\cdot J\}=\{s_{I\cdot J}^{-1}(K):K\in T,\ K\subseteq I\cdot J\}=T_{I\cdot J}
+\begin{aligned}
+&(T_I)_J\\
+&\quad =\{s_J^{-1}s_I^{-1}(K):K\in T,\ K\subseteq I\cdot J\}\\
+&\quad =\{s_{I\cdot J}^{-1}(K):K\in T,\ K\subseteq I\cdot J\}\\
+&\quad =T_{I\cdot J}
+\end{aligned}
 \]
 by (a). \(\square\)
 
@@ -91,7 +101,10 @@ Consequently, for every finite set \(K\subseteq F\) and every finite set \(\math
 
 **Proof.** Write \(g(x)=2^{q_k}x+b_k\) on \([x_{k-1},x_k]\) as in Lemma 1.2. Choose \(n_g\) such that for \(n\ge n_g\): (i) every \(x_k\) is an integer multiple of \(2^{-n}\); (ii) \(n\ge q_k\) for every \(k\); (iii) every \(b_k\) is an integer multiple of \(2^{q_k-n}\). This is possible because the \(x_k\) and \(b_k\) are dyadic, and each condition, once true for \(n\), stays true for larger \(n\). Fix \(n\ge n_g\) and a cell \(K=[m2^{-n},(m+1)2^{-n}]\) of \(T^{(n)}\). By (i), \(K\subseteq[x_{k-1},x_k]\) for some \(k\), and
 \[
-g(K)=\bigl[(m+b_k2^{n-q_k})2^{-(n-q_k)},\ (m+b_k2^{n-q_k}+1)2^{-(n-q_k)}\bigr].
+\begin{aligned}
+&g(K)=\bigl[(m+b_k2^{n-q_k})2^{-(n-q_k)},\\
+&\qquad(m+b_k2^{n-q_k}+1)2^{-(n-q_k)}\bigr].
+\end{aligned}
 \]
 By (ii) and (iii), \(n-q_k\ge0\) and \(m+b_k2^{n-q_k}\) is an integer. Since \(g(K)\subseteq[0,1]\), it is a dyadic interval of length \(2^{q_k-n}\le2^{c-n}\). The images of the cells of \(T^{(n)}\) cover \([0,1]\) and have disjoint interiors because \(g\) is a homeomorphism.
 

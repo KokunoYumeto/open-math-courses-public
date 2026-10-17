@@ -10,14 +10,18 @@ We use the notation \(\mu_\rho\) of [Random sets, covers and expectation thresho
 
 **Definition 1.1.** An *indexed family* on a finite set \(X\) consists of a finite index set \(B\), *labels* \(A_b\subseteq X\) for \(b\in B\), and *weights* \(\nu_b>0\) with \(\sum_b\nu_b=1\). Different indices may carry the same label, and labels may be empty. We write \(c\sim\nu\) for a random index with \(\mathbb P(c=b)=\nu_b\). For \(a>0\), the family is *\(a\)-spread* if
 \[
-\mathbb P_{c\sim\nu}(J\subseteq A_c)\le a^{|J|}\qquad\text{for every nonempty }J\subseteq X.\tag{1.1}
+\begin{aligned}
+&\mathbb P_{c\sim\nu}(J\subseteq A_c)\le a^{|J|}\\
+&\text{for every nonempty }J\\
+&\quad \subseteq X.
+\end{aligned}\tag{1.1}
 \]
 
 For \(0<a<1\), the product law \(\mu_a\), indexed by all subsets of \(X\), satisfies \(\mu_a(J\subseteq W)=a^{|J|}\); so it is \(a\)-spread, with equality. A spread law behaves like a product law as far as containing a fixed set is concerned, although all its sets may have the same size:
 
 **Lemma 1.2.** Let \(1\le k\le N=|X|\), and let \(\nu\) be the uniform law on the \(k\)-element subsets of \(X\). Then \(\nu\) is \(\frac kN\)-spread.
 
-**Proof.** For \(|J|=j\le k\), \(\mathbb P(J\subseteq A)=\binom{N-j}{k-j}\big/\binom Nk=\prod_{i=0}^{j-1}\frac{k-i}{N-i}\le\bigl(\frac kN\bigr)^j\), since \(\frac{k-i}{N-i}\le\frac kN\) when \(k\le N\). For \(j>k\) the probability is \(0\). \(\square\)
+**Proof.** For \(|J|=j\le k\), \(\mathbb P(J\subseteq A)=\binom{N-j}{k-j}\big/\binom Nk\), which is \(\prod_{i=0}^{j-1}\frac{k-i}{N-i}\le\bigl(\frac kN\bigr)^j\), since \(\frac{k-i}{N-i}\le\frac kN\) when \(k\le N\). For \(j>k\) the probability is \(0\). \(\square\)
 
 **Lemma 1.3** (overlaps). Let the family be \(a\)-spread, let \(b\in B\) with \(|A_b|\le m\), and let \(c\sim\nu\). For every integer \(0\le r\le m\),
 \[
@@ -31,9 +35,12 @@ For \(0<a<1\), the product law \(\mu_a\), indexed by all subsets of \(X\), satis
 Fix an indexed family on \(X\) and a number \(0<\rho<1\). Given a set \(W\subseteq X\), the *transition* is the following random experiment.
 
 1. Draw a *source* \(c\sim\nu\), and put \(Y=W\cup A_c\).
-2. Draw a *target* \(b\in B\) with conditional probabilities
+2. Draw a *target* \(b\in B\) with conditional probabilities (2.1):
 \[
-\pi_Y(b)=\frac{\nu_b\,\rho^{-|A_b|}\,\mathbf 1\{A_b\subseteq Y\}}{Z(Y)},\qquad Z(Y)=\sum_{d\in B}\nu_d\,\rho^{-|A_d|}\,\mathbf 1\{A_d\subseteq Y\}.\tag{2.1}
+\begin{gathered}
+\pi_Y(b)=\frac{\nu_b\,\rho^{-|A_b|}\,\mathbf 1\{A_b\subseteq Y\}}{Z(Y)},\\
+Z(Y)=\sum_{d\in B}\nu_d\,\rho^{-|A_d|}\,\mathbf 1\{A_d\subseteq Y\}.
+\end{gathered}
 \]
 3. Record the *fragment* \(T=A_b\setminus W\).
 
@@ -50,13 +57,17 @@ The first inclusion keeps fragments spread: a fragment lies inside the source, a
 
 The posterior interpretation of (2.1) appears when \(W\) is random. Let \(W\sim\mu_\rho\) be independent of the source. Then \(Y\) is a random set in which a member of the family has been *planted*, and the target is a fresh sample of the planted index given \(Y\):
 
-**Lemma 2.2** (planting). Let \(W\sim\mu_\rho\) be independent of \(c\sim\nu\), and \(Y=W\cup A_c\). For all \(y\subseteq X\) and \(d\in B\),
+**Lemma 2.2** (planting). Let \(W\sim\mu_\rho\) be independent of \(c\sim\nu\), and \(Y=W\cup A_c\). For all \(y\subseteq X\) and \(d\in B\), the identities (2.2) hold:
 \[
-\mathbb P(c=d,\ Y=y)=\nu_d\,\rho^{-|A_d|}\,\mathbf 1\{A_d\subseteq y\}\,\mu_\rho(y),\qquad\mathbb P(Y=y)=Z(y)\,\mu_\rho(y).\tag{2.2}
+\begin{aligned}
+&\mathbb P(c=d,\ Y=y)\\
+&\quad=\nu_d\,\rho^{-|A_d|}\,\mathbf 1\{A_d\subseteq y\}\,\mu_\rho(y),\\
+&\mathbb P(Y=y)=Z(y)\,\mu_\rho(y).
+\end{aligned}
 \]
 Hence the conditional law of the source given \(Y=y\) is \(\pi_y\), and, given \(Y\), the source and the target are independent with this common law. Moreover \(\mathbb P(Z(Y)<\theta)\le\theta\) for every \(\theta>0\).
 
-**Proof.** For fixed \(d\), the equality \(W\cup A_d=y\) holds exactly when \(A_d\subseteq y\) and \(W\setminus A_d=y\setminus A_d\), while \(W\cap A_d\) is arbitrary. So its probability is \(\rho^{|y|-|A_d|}(1-\rho)^{|X\setminus y|}=\rho^{-|A_d|}\mu_\rho(y)\) when \(A_d\subseteq y\), and \(0\) otherwise. Multiplying by \(\nu_d\) and summing over \(d\) gives (2.2). Dividing, the conditional law of \(c\) given \(Y=y\) is \(\pi_y\); the target is drawn from \(\pi_Y\) independently of \(c\) given \(Y\). Finally \(\mathbb P(Z(Y)<\theta)=\sum_y\mu_\rho(y)Z(y)\mathbf 1\{Z(y)<\theta\}\le\theta\). \(\square\)
+**Proof.** For fixed \(d\), the equality \(W\cup A_d=y\) holds exactly when \(A_d\subseteq y\) and \(W\setminus A_d=y\setminus A_d\), while \(W\cap A_d\) is arbitrary. So its probability is \(\rho^{|y|-|A_d|}(1-\rho)^{|X\setminus y|}=\rho^{-|A_d|}\mu_\rho(y)\) when \(A_d\subseteq y\), and \(0\) otherwise. Multiplying by \(\nu_d\) and summing over \(d\) gives (2.2). Dividing, the conditional law of \(c\) given \(Y=y\) is \(\pi_y\); the target is drawn from \(\pi_Y\) independently of \(c\) given \(Y\). Finally \(\mathbb P(Z(Y)<\theta)\) equals \(\sum_y\mu_\rho(y)Z(y)\mathbf 1\{Z(y)<\theta\}\), which is at most \(\theta\). \(\square\)
 
 For a fixed set \(W\), only the source is guaranteed to have law \(\nu\); the target can have a different law (Exercise 4.4).
 
@@ -67,7 +78,11 @@ For a fixed set \(W\), only the source is guaranteed to have law \(\nu\); the ta
 1. \(\mathbb P(\text{local failure})\le\mathrm e^{-9m}\);
 2. for every \(b\in B\) and every function \(f\ge0\) of \(W\) that depends only on \(W\setminus A_b\),
 \[
-\mathbb E\bigl[\mathbf 1\{\text{target}=b,\ Z(Y)\ge\mathrm e^{-10m}\}\,f(W)\bigr]\le\mathrm e^{11m}\,\nu_b\,\mathbb Ef(W).
+\begin{aligned}
+&\mathbb E\bigl[\mathbf 1\{\text{target}=b,\\
+&\qquad Z(Y)\ge\mathrm e^{-10m}\}\,f(W)\bigr]\\
+&\quad\le\mathrm e^{11m}\,\nu_b\,\mathbb Ef(W).
+\end{aligned}
 \]
 
 Part 2 compares the event that the target is \(b\) with an event of probability \(\nu_b\) independent of the coordinates of \(W\) outside \(A_b\): up to the factor \(\mathrm e^{11m}\), conditioning on it does not distort those coordinates. In [Covering a probability tree](covering-a-probability-tree.md), \(f\) is computed from the part of a tree below the arc labelled \(A_b\).
@@ -76,17 +91,30 @@ Part 2 compares the event that the target is \(b\) with an event of probability 
 
 (1) If the target \(b\) has \(|T|>m/2\), then \(|A_c\cap A_b|\ge|T|>m/2\) by Lemma 2.1(1). Hence
 \[
-\mathbb P\bigl(Z(Y)\ge\theta,\ |T|>\tfrac m2\bigr)\le\theta^{-1}\sum_{b,c}\nu_b\,\nu_c\,\rho^{-|A_b\cap A_c|}\,\mathbf 1\bigl\{|A_b\cap A_c|>\tfrac m2\bigr\}.
+\begin{aligned}
+&\mathbb P\bigl(Z(Y)\ge\theta,\ |T|>\tfrac m2\bigr)\\
+&\quad\le\theta^{-1}\sum_{b,c}\nu_b\,\nu_c\,\rho^{-|A_b\cap A_c|}\\
+&\qquad\cdot\mathbf 1\bigl\{|A_b\cap A_c|>\tfrac m2\bigr\}.
+\end{aligned}
 \]
 For fixed \(b\), Lemma 1.3 bounds the sum over \(c\) by \(\sum_{r>m/2}\binom mr(a/\rho)^r\le2^m\mathrm e^{-25m}\), because \(a/\rho\le\mathrm e^{-50}\) and \(r>m/2\). Summing over \(b\) with the weights \(\nu_b\), and adding \(\mathbb P(Z(Y)<\theta)\le\theta\) from Lemma 2.2,
 \[
-\mathbb P(\text{local failure})\le\mathrm e^{-10m}+\mathrm e^{10m}\,2^m\,\mathrm e^{-25m}=\mathrm e^{-9m}\bigl(\mathrm e^{-m}+\mathrm e^{-(6-\log2)m}\bigr)\le\mathrm e^{-9m},
+\begin{aligned}
+&\mathbb P(\text{local failure})\\
+&\quad \le\mathrm e^{-10m}+\mathrm e^{10m}\,2^m\,\mathrm e^{-25m}\\
+&\quad =\mathrm e^{-9m}\bigl(\mathrm e^{-m}+\mathrm e^{-(6-\log2)m}\bigr)\le\mathrm e^{-9m},
+\end{aligned}
 \]
 since \(m\ge1\) and \(\mathrm e^{-1}+\mathrm e^{-(6-\log2)}<1\).
 
 (2) The function \(f(W)\) depends only on \(W\setminus A_b\), and the event \(A_b\setminus A_c\subseteq W\) only on \(W\cap A_b\); under \(\mu_\rho\) they are independent. Hence
 \[
-\mathbb E\bigl[\mathbf 1\{\text{target}=b,\ Z(Y)\ge\theta\}f(W)\bigr]\le\theta^{-1}\nu_b\sum_c\nu_c\,\rho^{-|A_b|}\,\mathbb E\bigl[\mathbf 1\{A_b\setminus A_c\subseteq W\}f(W)\bigr]=\theta^{-1}\nu_b\,\mathbb Ef(W)\sum_c\nu_c\,\rho^{-|A_b\cap A_c|}.
+\begin{aligned}
+&\mathbb E\bigl[\mathbf 1\{\text{target}=b,\ Z(Y)\ge\theta\}f(W)\bigr]\\
+&\quad\le\theta^{-1}\nu_b\sum_c\nu_c\,\rho^{-|A_b|}\\
+&\qquad\cdot\mathbb E\bigl[\mathbf 1\{A_b\setminus A_c\subseteq W\}f(W)\bigr]\\
+&\quad=\theta^{-1}\nu_b\,\mathbb Ef(W)\sum_c\nu_c\,\rho^{-|A_b\cap A_c|}.
+\end{aligned}
 \]
 By Lemma 1.3 the last sum is at most \(\sum_{r=0}^m\binom mr(a/\rho)^r=(1+a/\rho)^m\le\mathrm e^m\). \(\square\)
 
@@ -106,7 +134,7 @@ By Lemma 1.3 the last sum is at most \(\sum_{r=0}^m\binom mr(a/\rho)^r=(1+a/\rho
 
 **4.2.** The source and the target are always the single index, \(Y=W\cup A\), \(Z(Y)=\rho^{-m}\ge1\), and \(T=A\setminus W\) contains each element of \(A\) independently with probability \(1-\rho\). The family is \(a\)-spread only for \(a\ge1\), because \(J=A\) gives \(\mathbb P(A\subseteq A)=1\); so \(a\le\mathrm e^{-50}\rho\) fails. Indeed \(|T|>m/2\) has probability close to \(1\) when \(\rho\) is small.
 
-**4.3.** It is used in the equality \(\mathbb E[\mathbf 1\{A_b\setminus A_c\subseteq W\}f(W)]=\rho^{|A_b\setminus A_c|}\,\mathbb Ef(W)\), which needs independence of the two factors. The event involves only the elements of \(A_b\setminus A_c\subseteq A_b\).
+**4.3.** It is used in the equality of \(\mathbb E[\mathbf 1\{A_b\setminus A_c\subseteq W\}f(W)]\) and \(\rho^{|A_b\setminus A_c|}\,\mathbb Ef(W)\), which needs independence of the two factors. The event involves only the elements of \(A_b\setminus A_c\subseteq A_b\).
 
 **4.4.** By Lemma 2.2, given \(Y\) the target has the same conditional law as the source; averaging over \(Y\), it has the law of the source, which is \(\nu\). For a fixed \(W\), let \(X=\{1,2\}\), \(A_1=\{1\}\), \(A_2=\{2\}\), \(\nu_1=\nu_2=\frac12\) and \(W=\{1\}\). If the source is \(1\), then \(Y=\{1\}\) and the target is \(1\). If the source is \(2\), then \(Y=\{1,2\}\), \(Z(Y)=\rho^{-1}\), and the target is \(1\) or \(2\) with probability \(\frac12\) each. So the target is \(1\) with probability \(\frac34\).
 

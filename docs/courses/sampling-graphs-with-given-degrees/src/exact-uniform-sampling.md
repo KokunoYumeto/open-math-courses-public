@@ -18,7 +18,7 @@ r=\frac{\pi-(1-\delta)p}{\delta}
 \]
 is a probability measure and \((1-\delta)p+\delta r=\pi\). If \((1-\delta)p(x)>\pi(x)\) for some \(x\), no probability measure \(r\) satisfies \((1-\delta)p+\delta r=\pi\).
 
-**Proof.** The hypothesis gives \(r\ge0\), and \(\sum r=(1-(1-\delta))/\delta=1\); the identity is the definition of \(r\). Conversely, \((1-\delta)p(x)+\delta r(x)\ge(1-\delta)p(x)>\pi(x)\) for every probability measure \(r\). \(\square\)
+**Proof.** The hypothesis gives \(r\ge0\), and \(\sum r=(1-(1-\delta))/\delta=1\); the identity is the definition of \(r\). Conversely, \((1-\delta)p(x)+\delta r(x)\ge(1-\delta)p(x)\), which is greater than \(\pi(x)\) for every probability measure \(r\). \(\square\)
 
 So the sampler needs a law \(p\) that it can sample from quickly and that satisfies \((1-\delta)p\le\pi_d\), and an exact description of \(r\) on the rare branch.
 
@@ -26,7 +26,11 @@ So the sampler needs a law \(p\) that it can sample from quickly and that satisf
 
 For \(n\ge4\) let
 \[
-B=\binom n2,\qquad q=12\binom n4,\qquad D=4B+10,\qquad\delta=2^{-D},\qquad t=\bigl\lceil\gamma_0^{-1}(B+2D+2)\bigr\rceil ,
+\begin{gathered}
+B=\binom n2,\qquad q=12\binom n4,\\
+D=4B+10,\qquad \delta=2^{-D},\\
+t=\bigl\lceil\gamma_0^{-1}(B+2D+2)\bigr\rceil ,
+\end{gathered}
 \]
 and let \(M=|\Omega_d|\le2^B\). All these numbers except \(M\) are computed from \(n\) in polynomial time, and \(D=O(n^2)\), \(t=O(n^8)\). Let \(G_0\in\Omega_d\) be the graph of the greedy prescription of Lemma 3.1 of [The switch chain](the-switch-chain.md), and let
 \[
@@ -38,12 +42,19 @@ be the law of the chain after \(t\) steps from \(G_0\).
 
 **Proof.** If \(M=1\), then \(p_G=1\). Let \(M>1\). By the mixing theorem, the eigenvalues of \(P_d\) on functions with mean zero lie in \([0,1-\gamma_0]\), so Lemma 1.1 of [The switch chain](the-switch-chain.md) gives
 \[
-\|p-\pi_d\|_{\mathrm{TV}}\le\tfrac12\sqrt M\,\mathrm e^{-\gamma_0t}\le\tfrac12\,2^{B/2}\,\mathrm e^{-(B+2D+2)}\le2^{-2D}=\delta^2,
+\begin{aligned}
+&\|p-\pi_d\|_{\mathrm{TV}}\le\tfrac12\sqrt M\,\mathrm e^{-\gamma_0t}\\
+&\quad \le\tfrac12\,2^{B/2}\,\mathrm e^{-(B+2D+2)}\le2^{-2D}=\delta^2,
+\end{aligned}
 \]
 where the last step uses \(2<\mathrm e\) (Exercise 5.3). Hence \(p_G\le\frac1M+\delta^2\) for every \(G\). Since \(D\ge B\), we have \(\delta\le2^{-B}\le\frac1M\), so \((1-\delta)\delta^2\le\delta^2\le\frac{\delta}M\) and
 \[
-(1-\delta)p_G\le\frac{1-\delta}M+(1-\delta)\delta^2\le\frac{1-\delta}M+\frac\delta M=\frac1M .\qquad\square
+\begin{aligned}
+&(1-\delta)p_G\le\frac{1-\delta}M+(1-\delta)\delta^2\\
+&\quad \le\frac{1-\delta}M+\frac\delta M=\frac1M .
+\end{aligned}
 \]
+\(\square\)
 
 ## 3. The law of the chain in integers
 
@@ -52,7 +63,7 @@ where the last step uses \(2<\mathrm e\) (Exercise 5.3). Hence \(p_G\le\frac1M+\
 p_G=\frac{a^{(t)}_G}{q^t}.
 \]
 
-**Proof.** Lemma 2.1 of [The switch chain](the-switch-chain.md) gives \(qP_d(G,G')=1\) for switch neighbours and \(0\) for other \(G'\neq G\); the diagonal entry of a row of \(P_d\) is \(1\) minus the others, so \(A(G,G)=q-\#\{\text{switch neighbours of }G\}\), an integer, and it is nonnegative because \(P_d(G,G)\ge0\). Induction on \(s\) gives integrality and \(\sum_Ga^{(s)}_G=q^s\), and \(a^{(s)}=q^s\,P_d^s(G_0,\cdot)\). \(\square\)
+**Proof.** Lemma 2.1 of [The switch chain](the-switch-chain.md) gives \(qP_d(G,G')=1\) for switch neighbours and \(0\) for other \(G'\neq G\); the diagonal entry of a row of \(P_d\) is \(1\) minus the others, so \(A(G,G)\) is \(q\) minus the number of switch neighbours of \(G\), an integer, and it is nonnegative because \(P_d(G,G)\ge0\). Induction on \(s\) gives integrality and \(\sum_Ga^{(s)}_G=q^s\), and \(a^{(s)}=q^s\,P_d^s(G_0,\cdot)\). \(\square\)
 
 In particular every entry of \(a^{(s)}\) is at most \(q^s\) and has \(O(s\log q)\) bits.
 
@@ -69,7 +80,11 @@ In particular every entry of \(a^{(s)}\) is at most \(q^s\) and has \(O(s\log q)
 2. Read \(D\) fresh random bits. If they are not all zero, run \(t\) steps of \(P_d\) from \(G_0\) and output the final graph.
 3. If all \(D\) bits are zero: list the \(2^B\) graphs on \(\{1,\dots,n\}\), keep those with degree vector \(d\) (this computes \(M\)), compute \(a=a^{(t)}\) by Lemma 3.1, form the integers
 \[
-w_G=2^Dq^t-M(2^D-1)\,a_G\qquad(G\in\Omega_d),\tag{4.1}
+\begin{aligned}
+&w_G=2^Dq^t\\
+&\quad -M(2^D-1)\,a_G\\
+&(G\in\Omega_d),
+\end{aligned}\tag{4.1}
 \]
 draw a uniform integer \(y\in\{0,\dots,Mq^t-1\}\), and output the graph \(G\) whose interval in the list of cumulative sums of the \(w_G\) contains \(y\).
 
@@ -77,7 +92,10 @@ draw a uniform integer \(y\in\{0,\dots,Mq^t-1\}\), and output the graph \(G\) wh
 
 **Proof.** *Correctness.* For \(n<4\) this is clear. For \(n\ge4\), the branch of step 2 is taken with probability \(1-\delta\) and outputs a graph with law \(p\). On the branch of step 3, the weights (4.1) satisfy
 \[
-\frac{w_G}{Mq^t}=\frac{2^D}M-(2^D-1)p_G=\frac{\frac1M-(1-\delta)p_G}{\delta},
+\begin{aligned}
+\frac{w_G}{Mq^t}&=\frac{2^D}M-(2^D-1)p_G\\
+&=\frac{\frac1M-(1-\delta)p_G}{\delta},
+\end{aligned}
 \]
 which is nonnegative by Lemma 2.1, and \(\sum_Gw_G=Mq^t\) because \(\sum_Ga_G=q^t\). So step 3 outputs a graph with law \(r=(\pi_d-(1-\delta)p)/\delta\), and by Lemma 1.1 the output of the sampler has law \((1-\delta)p+\delta r=\pi_d\).
 

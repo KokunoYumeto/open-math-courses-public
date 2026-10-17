@@ -12,13 +12,18 @@ We use: Corollary 2.6 and Theorem 2.3 of [The relative bicentralizer](the-relati
 
 Throughout, \(N\) is a factor of type III₁ with separable predual, \(N\subset M\) with the same unit, \(M\) with separable predual, \(E\colon M\to N\) a faithful normal conditional expectation, \(\varphi\) a faithful normal state on \(N\) and \(\bar\varphi=\varphi\circ E\). Let \(\mathcal H=L^2(M,\bar\varphi)\) with cyclic and separating vector \(\Omega\) (the vector \(\xi\) of the previous lessons), modular operator \(\Delta\), \(\mathcal X=\log\Delta\), \(\sigma_t=\sigma^{\bar\varphi}_t\), \(\rho(b)=Jb^*J\), and \(e_N\) the Jones projection. Elements of \(M\) act on \(\mathcal H\) on the left. Write \(\mathrm B=\mathrm B(N\subset M,\varphi)\), \(E_{\mathrm B}\) for its \(\bar\varphi\)-preserving expectation, and \(\gamma_s=\gamma^\varphi_s\) for the relative bicentralizer flow. For each \(q\in\mathbb R\) we fix a map \(\theta_q\) as in Theorem 4.1 of the lesson on spectral shift maps. Two consequences of the first lesson are used constantly: by its Corollary 2.6,
 \[
-E(b)=\bar\varphi(b)1\quad(b\in\mathrm B),\qquad E_{\mathrm B}(x)=\varphi(x)1\quad(x\in N),
-\tag{1.1}
+\begin{gathered}
+E(b)=\bar\varphi(b)1\quad(b\in\mathrm B),\\
+E_{\mathrm B}(x)=\varphi(x)1\quad(x\in N),
+\end{gathered}\tag{1.1}
 \]
 and therefore, by Theorem 4.1(2) of the lesson on spectral shift maps,
 \[
-\theta_q(x)=\gamma_q(E_{\mathrm B}(x))=\varphi(x)1\qquad(x\in N,\ q\in\mathbb R).
-\tag{1.2}
+\begin{aligned}
+&\theta_q(x)=\gamma_q(E_{\mathrm B}(x))\\
+&\quad =\varphi(x)1\\
+&(x\in N,\ q\in\mathbb R).
+\end{aligned}\tag{1.2}
 \]
 
 Let \(H\) be the closure of \(N\Omega\) and \(K\) the closure of \(\mathrm B\Omega\) in \(\mathcal H\). Since \(\sigma_t(N)=N\) and \(\sigma_t(\mathrm B)=\mathrm B\) (formula (1.1) and Theorem 2.3 of the first lesson), and \(\Delta^{it}y\Omega=\sigma_t(y)\Omega\), the unitaries \(\Delta^{it}\) leave \(H\) and \(K\) invariant. Let \(X\) be the self-adjoint generator of the restriction of \(\Delta^{it}\) to \(H\), so that \(e^{itX}x\Omega=\sigma_t(x)\Omega\) for \(x\in N\), and write \(\Delta_K^{it}\) for the restriction of \(\Delta^{it}\) to \(K\).
@@ -31,14 +36,21 @@ Let \(H\) be the closure of \(N\Omega\) and \(K\) the closure of \(\mathrm B\Ome
 
 **Proposition 2.2.** The maps
 \[
-R(x\Omega\otimes a\Omega)=xa\Omega,\qquad L(x\Omega\otimes a\Omega)=ax\Omega\qquad(x\in N,\ a\in\mathrm B)
+\begin{gathered}
+R(x\Omega\otimes a\Omega)=xa\Omega,\\
+L(x\Omega\otimes a\Omega)=ax\Omega\qquad (x\in N,\ a\in\mathrm B)
+\end{gathered}
 \]
 extend to isometries \(R,L\colon H\otimes K\to\mathcal H\).
 
 **Proof.** The vector \(x\Omega\) determines \(x\), because \(\Omega\) is separating, so both formulas are bilinear in \((x\Omega,a\Omega)\) and define linear maps on the algebraic tensor product \(N\Omega\odot\mathrm B\Omega\), which is dense in \(H\otimes K\). For \(x,y\in N\) and \(a,b\in\mathrm B\), \(E_{\mathrm B}\) is \(\mathrm B\)-bimodular and \(E\) is \(N\)-bimodular, so by (1.1)
 \[
-\langle xa\Omega,yb\Omega\rangle=\bar\varphi\big(b^*E_{\mathrm B}(y^*x)a\big)=\varphi(y^*x)\bar\varphi(b^*a),\qquad
-\langle ax\Omega,by\Omega\rangle=\varphi\big(y^*E(b^*a)x\big)=\varphi(y^*x)\bar\varphi(b^*a).
+\begin{aligned}
+&\langle xa\Omega,yb\Omega\rangle=\bar\varphi\big(b^*E_{\mathrm B}(y^*x)a\big)\\
+&\quad =\varphi(y^*x)\bar\varphi(b^*a),\\
+&\langle ax\Omega,by\Omega\rangle=\varphi\big(y^*E(b^*a)x\big)\\
+&\quad =\varphi(y^*x)\bar\varphi(b^*a).
+\end{aligned}
 \]
 Both equal \(\langle x\Omega\otimes a\Omega,y\Omega\otimes b\Omega\rangle\). By sesquilinearity both maps preserve inner products on the algebraic tensor product, and they extend by continuity. \(\square\)
 
@@ -48,26 +60,35 @@ U=L^*R,\qquad D=\exp(iX\otimes Y),
 \]
 where \(D\) is defined by the joint spectral measure of the commuting self-adjoint operators \(X\otimes1\) and \(1\otimes Y\). By Lemma 1.1, \(D\) commutes with \(1\otimes\Delta_K^{it}\) and with \(e^{itX}\otimes1\). Since \(L\) is isometric,
 \[
-\langle U(x\Omega\otimes a\Omega),y\Omega\otimes b\Omega\rangle=\langle xa\Omega,by\Omega\rangle=\bar\varphi(y^*b^*xa)\qquad(x,y\in N,\ a,b\in\mathrm B).
-\tag{2.1}
+\begin{aligned}
+&\langle U(x\Omega\otimes a\Omega),y\Omega\otimes b\Omega\rangle\\
+&\quad =\langle xa\Omega,by\Omega\rangle\\
+&\quad =\bar\varphi(y^*b^*xa)\\
+&(x,y\in N,\ a,b\in\mathrm B).
+\end{aligned}\tag{2.1}
 \]
 Moreover, for \(\zeta\in K\),
 \[
-\langle U(x\Omega\otimes\zeta),y\Omega\otimes b\Omega\rangle=\langle\zeta,E_{\mathrm B}(x^*by)\Omega\rangle .
-\tag{2.2}
+\begin{aligned}
+&\langle U(x\Omega\otimes\zeta),y\Omega\otimes b\Omega\rangle\\
+&\quad =\langle\zeta,E_{\mathrm B}(x^*by)\Omega\rangle .
+\end{aligned}\tag{2.2}
 \]
-Indeed, for \(\zeta=a\Omega\), (2.1) and the bimodule property of \(E_{\mathrm B}\) give \(\bar\varphi(y^*b^*xa)=\bar\varphi(E_{\mathrm B}(y^*b^*x)a)=\langle a\Omega,E_{\mathrm B}(x^*by)\Omega\rangle\); both sides of (2.2) are continuous in \(\zeta\).
+Indeed, for \(\zeta=a\Omega\), (2.1) and the bimodule property of \(E_{\mathrm B}\) give \(\bar\varphi(y^*b^*xa)=\bar\varphi(E_{\mathrm B}(y^*b^*x)a)\), which is \(\langle a\Omega,E_{\mathrm B}(x^*by)\Omega\rangle\); both sides of (2.2) are continuous in \(\zeta\).
 
 **Proposition 2.3** (exact eigenoperators). Let \(x\in N\) and \(h\in\mathbb R\) with \(\sigma_t(x)=e^{ith}x\) for all \(t\). Then \(U(x\Omega\otimes\zeta)=x\Omega\otimes W_h\zeta=D(x\Omega\otimes\zeta)\) for every \(\zeta\in K\).
 
-**Proof.** By Corollary 1.3 of the lesson on spectral shift maps, \(x\varphi=e^{-h}\varphi x\), and by Theorem 3.1(2) of the lesson on the relative flow, \(xa=\beta^\varphi_{e^{-h}}(a)x=\gamma_h(a)x\) for \(a\in\mathrm B\). Hence \(R(x\Omega\otimes a\Omega)=\gamma_h(a)x\Omega=L(x\Omega\otimes W_ha\Omega)\), and since \(L^*L=1\), \(U(x\Omega\otimes a\Omega)=x\Omega\otimes W_ha\Omega\). Both sides are continuous in \(\zeta\in K\). Finally \(e^{itX}x\Omega=e^{ith}x\Omega\), so \(x\Omega\) is an eigenvector of \(X\) for the eigenvalue \(h\), and \(D(x\Omega\otimes\zeta)=x\Omega\otimes e^{ihY}\zeta\). \(\square\)
+**Proof.** By Corollary 1.3 of the lesson on spectral shift maps, \(x\varphi=e^{-h}\varphi x\), and by Theorem 3.1(2) of the lesson on the relative flow, \(xa=\beta^\varphi_{e^{-h}}(a)x=\gamma_h(a)x\) for \(a\in\mathrm B\). Hence \(R(x\Omega\otimes a\Omega)=\gamma_h(a)x\Omega\), which is \(L(x\Omega\otimes W_ha\Omega)\), and since \(L^*L=1\), \(U(x\Omega\otimes a\Omega)=x\Omega\otimes W_ha\Omega\). Both sides are continuous in \(\zeta\in K\). Finally \(e^{itX}x\Omega=e^{ith}x\Omega\), so \(x\Omega\) is an eigenvector of \(X\) for the eigenvalue \(h\), and \(D(x\Omega\otimes\zeta)=x\Omega\otimes e^{ihY}\zeta\). \(\square\)
 
 ## 3. Words
 
-For \(n\ge1\) we work on \(H^{\otimes n}\otimes K\). Let \(X_j\), \(U_j\), \(D_j\) denote \(X\), \(U\), \(D\) acting on the \(j\)-th copy of \(H\) (together with \(K\) for \(U_j,D_j\)), and \(W_s\) act on \(K\). Put \(S_n=\sum_{j=1}^nX_j\), the total modular generator on \(H^{\otimes n}\). For real numbers \(d_0,\ldots,d_n\) define
+For \(n\ge1\) we work on \(H^{\otimes n}\otimes K\). Let \(X_j\), \(U_j\), \(D_j\) denote \(X\), \(U\), \(D\) acting on the \(j\)-th copy of \(H\) (together with \(K\) for \(U_j,D_j\)), and \(W_s\) act on \(K\). Put \(S_n=\sum_{j=1}^nX_j\), the total modular generator on \(H^{\otimes n}\). For real numbers \(d_0,\ldots,d_n\) define \(C\), \(D_{\mathrm{all}}\) and \(d\) by (3.1):
 \[
-C=W_{d_n}U_nW_{d_{n-1}}U_{n-1}\cdots W_{d_1}U_1W_{d_0},\qquad D_{\mathrm{all}}=W_d\exp(iS_n\otimes Y),\qquad d=\sum_{j=0}^nd_j .
-\tag{3.1}
+\begin{gathered}
+C=W_{d_n}U_nW_{d_{n-1}}U_{n-1}\cdots W_{d_1}U_1W_{d_0},\\
+D_{\mathrm{all}}=W_d\exp(iS_n\otimes Y),\\
+d=\sum_{j=0}^nd_j .
+\end{gathered}
 \]
 
 **Lemma 3.1.** The operators \(D_j\) commute with each other and with every \(W_s\), and \(D_n\cdots D_1=\exp(iS_n\otimes Y)\). Consequently, replacing every \(U_j\) in \(C\) by \(D_j\) gives \(D_{\mathrm{all}}\). The word \(C\) is a contraction.
@@ -76,18 +97,28 @@ C=W_{d_n}U_nW_{d_{n-1}}U_{n-1}\cdots W_{d_1}U_1W_{d_0},\qquad D_{\mathrm{all}}=W
 
 For \(x,y\in N\) define \(U_{x,y}\in B(K)\) by \(\langle U_{x,y}\zeta,\zeta'\rangle=\langle U(x\Omega\otimes\zeta),y\Omega\otimes\zeta'\rangle\). By (2.2),
 \[
-U_{x,y}^*b\Omega=E_{\mathrm B}(x^*by)\Omega\qquad(b\in\mathrm B).
-\tag{3.2}
+\begin{gathered}
+U_{x,y}^*b\Omega=E_{\mathrm B}(x^*by)\Omega\\
+(b\in\mathrm B).
+\end{gathered}\tag{3.2}
 \]
 
 **Lemma 3.2** (matrix coefficients of words). For \(x_j,y_j\in N\) and \(\zeta,\zeta'\in K\),
 \[
-\Big\langle C\Big(\bigotimes_jx_j\Omega\otimes\zeta\Big),\bigotimes_jy_j\Omega\otimes\zeta'\Big\rangle=\big\langle W_{d_n}U_{x_n,y_n}W_{d_{n-1}}\cdots U_{x_1,y_1}W_{d_0}\zeta,\zeta'\big\rangle .
+\begin{aligned}
+&\Big\langle C\Big(\bigotimes_jx_j\Omega\otimes\zeta\Big),\bigotimes_jy_j\Omega\otimes\zeta'\Big\rangle\\
+&\quad =\big\langle W_{d_n}U_{x_n,y_n}W_{d_{n-1}}\cdots U_{x_1,y_1}W_{d_0}\zeta,\zeta'\big\rangle .
+\end{aligned}
 \]
 
 **Proof.** For an operator \(A\) on \(H\otimes K\) and \(x,y\in H\) let \(A_{x,y}\in B(K)\) be given by \(\langle A_{x,y}\zeta,\zeta'\rangle=\langle A(x\otimes\zeta),y\otimes\zeta'\rangle\). If \((e_k)\) is an orthonormal basis of \(H\), then \(A(x\otimes\zeta)=\sum_ke_k\otimes A_{x,e_k}\zeta\). We prove by induction on \(n\) that for operators \(A_j\) acting on the \(j\)-th copy of \(H\) and on \(K\), and \(B_j\in B(K)\),
 \[
-\big\langle B_nA_n\cdots B_1A_1B_0\big(\textstyle\bigotimes_jx_j\otimes\zeta\big),\bigotimes_jy_j\otimes\zeta'\big\rangle=\big\langle B_n(A_n)_{x_n,y_n}\cdots B_1(A_1)_{x_1,y_1}B_0\zeta,\zeta'\big\rangle .
+\begin{aligned}
+&\big\langle B_nA_n\cdots B_1A_1B_0\big(\textstyle\bigotimes_jx_j\otimes\zeta\big),\\
+&\qquad\textstyle\bigotimes_jy_j\otimes\zeta'\big\rangle\\
+&\quad=\big\langle B_n(A_n)_{x_n,y_n}\cdots\\
+&\qquad\cdots B_1(A_1)_{x_1,y_1}B_0\zeta,\zeta'\big\rangle .
+\end{aligned}
 \]
 For \(n=1\) this is the definition. For the inductive step write \(B_1A_1B_0(x_1\otimes\zeta)=\sum_ke_k\otimes\zeta_k\) with \(\zeta_k=B_1(A_1)_{x_1,e_k}B_0\zeta\). The remaining operators do not act on the first copy of \(H\), so the left side equals \(\sum_k\langle e_k,y_1\rangle\) times the corresponding expression for \(n-1\) positions with \(\zeta_k\) in place of \(\zeta\). By the inductive hypothesis and \(\sum_k\langle e_k,y_1\rangle\zeta_k=B_1(A_1)_{x_1,y_1}B_0\zeta\), the formula follows. Apply it with \(A_j=U_j\), \(B_j=W_{d_j}\). \(\square\)
 
@@ -95,7 +126,10 @@ For \(n=1\) this is the definition. For the inductive step write \(B_1A_1B_0(x_1
 
 Fix \(n\ge1\) and \(d_0,\ldots,d_n\in\mathbb R\). For \(T\in B(\mathcal H)\) and label tuples \(\mathbf x=(x_1,\ldots,x_n)\), \(\mathbf y=(y_1,\ldots,y_n)\) in \(N^n\), define operators \(T_j=T_j^{\mathbf x,\mathbf y}\) backwards by
 \[
-T_n=\theta_{-d_n}(T),\qquad T_{j-1}=\theta_{-d_{j-1}}\big(y_j^*T_jx_j\big)\quad(j=n,\ldots,1),
+\begin{gathered}
+T_n=\theta_{-d_n}(T),\\
+T_{j-1}=\theta_{-d_{j-1}}\big(y_j^*T_jx_j\big)\quad(j=n,\ldots,1),
+\end{gathered}
 \]
 and put \(\kappa_T(\mathbf x,\mathbf y)=\langle T_0\Omega,\Omega\rangle\). Write \(\mathbf x\Omega=\bigotimes_jx_j\Omega\in H^{\otimes n}\).
 
@@ -106,19 +140,24 @@ and put \(\kappa_T(\mathbf x,\mathbf y)=\langle T_0\Omega,\Omega\rangle\). Write
 3. \(Z(f(\mathcal X))=f(S_n+d)\) for \(f\in C_0(\mathbb R)\);
 4. for \(b\in\mathrm B\), \(a\in\mathrm B\) entire analytic for \(\sigma\), \(a_+=\sigma_{i/2}(a)\), and \(\xi,\xi'\in H^{\otimes n}\),
 \[
-\langle Z(b^*\rho(a_+))\xi,\xi'\rangle=\langle C(\xi\otimes a\Omega),\xi'\otimes b\Omega\rangle .
+\begin{aligned}
+&\langle Z(b^*\rho(a_+))\xi,\xi'\rangle\\
+&\quad =\langle C(\xi\otimes a\Omega),\xi'\otimes b\Omega\rangle .
+\end{aligned}
 \]
 
 The map \(Z\) depends on \(n\), on \(d_0,\ldots,d_n\) and on the chosen maps \(\theta_q\); it need not be normal. The proof occupies the rest of this section.
 
 **Construction.** *Positivity.* Let \(\mathbf x^1,\ldots,\mathbf x^p\in N^n\), \(m\ge1\) and \(\mathbf T=(T_{kl})\in M_m(B(\mathcal H))\) positive. Consider operator matrices indexed by pairs \((k,\beta)\), \(1\le k\le m\), \(1\le\beta\le p\). Put \(\mathbf T^{(n)}=\big(\theta_{-d_n}(T_{kl})\big)_{(k,\beta),(l,\alpha)}\), and recursively
 \[
-\mathbf T^{(j-1)}=\theta_{-d_{j-1}}^{(mp)}\big(\mathbf X_j^*\mathbf T^{(j)}\mathbf X_j\big),\qquad\mathbf X_j=\operatorname{diag}\big(x_j^\alpha\big)_{(l,\alpha)},
+\begin{gathered}
+\mathbf T^{(j-1)}=\theta_{-d_{j-1}}^{(mp)}\big(\mathbf X_j^*\mathbf T^{(j)}\mathbf X_j\big),\\
+\mathbf X_j=\operatorname{diag}\big(x_j^\alpha\big)_{(l,\alpha)},
+\end{gathered}
 \]
-where \(\theta^{(mp)}\) applies \(\theta\) entrywise. The entry \(((k,\beta),(l,\alpha))\) of \(\mathbf T^{(0)}\) is \((T_{kl})_0^{\mathbf x^\alpha,\mathbf x^\beta}\). The matrix \(\mathbf T^{(n)}\) is positive: for vectors \(w_{(l,\alpha)}\), its quadratic form is that of the positive matrix \(\theta^{(m)}_{-d_n}(\mathbf T)\) at the vectors \(\sum_\alpha w_{(l,\alpha)}\). Conjugation and the completely positive maps \(\theta\) preserve positivity, so \(\mathbf T^{(0)}\ge0\), and therefore, for scalars \(c_{l\alpha}\),
+where \(\theta^{(mp)}\) applies \(\theta\) entrywise. The entry \(((k,\beta),(l,\alpha))\) of \(\mathbf T^{(0)}\) is \((T_{kl})_0^{\mathbf x^\alpha,\mathbf x^\beta}\). The matrix \(\mathbf T^{(n)}\) is positive: for vectors \(w_{(l,\alpha)}\), its quadratic form is that of the positive matrix \(\theta^{(m)}_{-d_n}(\mathbf T)\) at the vectors \(\sum_\alpha w_{(l,\alpha)}\). Conjugation and the completely positive maps \(\theta\) preserve positivity, so \(\mathbf T^{(0)}\ge0\), and therefore, for scalars \(c_{l\alpha}\), the inequality (4.1) holds:
 \[
 \sum_{k,l}\sum_{\alpha,\beta}\overline{c_{k\beta}}\,c_{l\alpha}\,\kappa_{T_{kl}}(\mathbf x^\alpha,\mathbf x^\beta)\ \ge\ 0 .
-\tag{4.1}
 \]
 
 *The Gram kernel.* For \(T=1\), \(T_n=1\) and by (1.2) \(T_{j-1}=\theta_{-d_{j-1}}(y_j^*T_jx_j)\) is a scalar multiple of \(1\) at every step, so \(\kappa_1(\mathbf x,\mathbf y)=\prod_j\varphi(y_j^*x_j)=\langle\mathbf x\Omega,\mathbf y\Omega\rangle\).
@@ -127,15 +166,21 @@ where \(\theta^{(mp)}\) applies \(\theta\) entrywise. The entry \(((k,\beta),(l,
 
 **Proof of (1).** Let \(a\in M\). Then \(T_n=\theta_{-d_n}(a)=\gamma_{-d_n}(E_{\mathrm B}(a))\in\mathrm B\) and \(\bar\varphi(T_n)=\bar\varphi(a)\). If \(T_j\in\mathrm B\), then \(T_{j-1}=\gamma_{-d_{j-1}}(E_{\mathrm B}(y_j^*T_jx_j))\in\mathrm B\), and by (1.1)
 \[
-\bar\varphi(T_{j-1})=\bar\varphi(y_j^*T_jx_j)=\varphi\big(y_j^*E(T_j)x_j\big)=\bar\varphi(T_j)\,\varphi(y_j^*x_j).
+\begin{aligned}
+&\bar\varphi(T_{j-1})=\bar\varphi(y_j^*T_jx_j)\\
+&\quad =\varphi\big(y_j^*E(T_j)x_j\big)=\bar\varphi(T_j)\,\varphi(y_j^*x_j).
+\end{aligned}
 \]
 Hence \(\kappa_a(\mathbf x,\mathbf y)=\bar\varphi(T_0)=\bar\varphi(a)\prod_j\varphi(y_j^*x_j)\), that is \(Z(a)=\bar\varphi(a)1\). For \(\rho(c)\), \(c\in M\): \(\rho(c)\) commutes with \(N\), and by Theorem 4.1(3) of the lesson on spectral shift maps \(\theta_q(T\rho(c))=\theta_q(T)\rho(c)\). Inductively \(T_j=\big(\prod_{i>j}\varphi(y_i^*x_i)\big)\rho(c)\), using (1.2), and \(\langle\rho(c)\Omega,\Omega\rangle=\bar\varphi(c)\). For \(e_N\), which commutes with \(N\) and is fixed by every \(\theta_q\), the same computation with Theorem 4.1(3) gives \(T_0=\prod_j\varphi(y_j^*x_j)\,e_N\), and \(e_N\Omega=\Omega\).
 
 **Proof of (2).** By formula (4.1) of the lesson on spectral shift maps, \(\theta_{-q}(T\Delta^{it})=e^{itq}\theta_{-q}(T)\Delta^{it}\). Put \(T=\Delta^{it}\). Then \(T_n=e^{itd_n}\Delta^{it}\). If \(T_j=c_j\Delta^{it}\) with \(c_j\in\mathbb C\), then \(y_j^*T_jx_j=c_jy_j^*\sigma_t(x_j)\Delta^{it}\), and by (1.2)
 \[
-T_{j-1}=c_je^{itd_{j-1}}\theta_{-d_{j-1}}\big(y_j^*\sigma_t(x_j)\big)\Delta^{it}=c_je^{itd_{j-1}}\varphi\big(y_j^*\sigma_t(x_j)\big)\Delta^{it}.
+\begin{aligned}
+T_{j-1}&=c_je^{itd_{j-1}}\theta_{-d_{j-1}}\big(y_j^*\sigma_t(x_j)\big)\Delta^{it}\\
+&=c_je^{itd_{j-1}}\varphi\big(y_j^*\sigma_t(x_j)\big)\Delta^{it}.
+\end{aligned}
 \]
-Since \(\Delta^{it}\Omega=\Omega\), \(\kappa_{\Delta^{it}}(\mathbf x,\mathbf y)=e^{itd}\prod_j\varphi(y_j^*\sigma_t(x_j))=e^{itd}\prod_j\langle e^{itX}x_j\Omega,y_j\Omega\rangle=\langle e^{it(S_n+d)}\mathbf x\Omega,\mathbf y\Omega\rangle\).
+Since \(\Delta^{it}\Omega=\Omega\), \(\kappa_{\Delta^{it}}(\mathbf x,\mathbf y)=e^{itd}\prod_j\varphi(y_j^*\sigma_t(x_j))\), which is \(e^{itd}\prod_j\langle e^{itX}x_j\Omega,y_j\Omega\rangle\), which is \(\langle e^{it(S_n+d)}\mathbf x\Omega,\mathbf y\Omega\rangle\).
 
 **Proof of (3).** A nonnormal map need not preserve the integral \(f(\mathcal X)=\int h(t)\Delta^{it}dt\), so (2) does not imply (3) directly. We show that the states \(\langle Z(\cdot)\xi,\xi\rangle\) see only a bounded part of the spectrum of \(\mathcal X\) when \(\xi\) has band-limited labels.
 
@@ -143,13 +188,13 @@ Since \(\Delta^{it}\Omega=\Omega\), \(\kappa_{\Delta^{it}}(\mathbf x,\mathbf y)=
 
 **Lemma 4.2** (spectral transfer). If \(x\) is band-limited with bound \(L\) and \(J\) is an open interval, then \(xE_{\mathcal X}(J)\mathcal H\subset E_{\mathcal X}(J^L)\mathcal H\). In particular \(x\Omega\in E_{\mathcal X}([-L,L])\mathcal H\).
 
-**Proof.** Let \(a,b\in L^1(\mathbb R)\) and write \(\hat a(\mathcal X)=\int a(r)\Delta^{ir}dr\), \(\hat b(\mathcal X)=\int b(r)\Delta^{ir}dr\). For vectors \(\eta,\zeta\), the function \(G(\alpha,\beta)=\langle\Delta^{i\alpha}y\Delta^{i\beta}\eta,\zeta\rangle\) is bounded and continuous, and \(\Delta^{ir}\sigma_t(y)\Delta^{ir'}=\Delta^{i(r+t)}y\Delta^{i(r'-t)}\). By Fubini's theorem and the substitution \(\alpha=r+t\), \(\beta=r'-t\),
-\[
-\langle\hat a(\mathcal X)x\hat b(\mathcal X)\eta,\zeta\rangle=\iiint a(r)b(r')k(t)G(r+t,r'-t)\,dt\,dr\,dr'=\iint c(\alpha,\beta)G(\alpha,\beta)\,d\alpha\,d\beta,
-\]
+**Proof.** Let \(a,b\in L^1(\mathbb R)\) and write \(\hat a(\mathcal X)=\int a(r)\Delta^{ir}dr\), \(\hat b(\mathcal X)=\int b(r)\Delta^{ir}dr\). For vectors \(\eta,\zeta\), the function \(G(\alpha,\beta)=\langle\Delta^{i\alpha}y\Delta^{i\beta}\eta,\zeta\rangle\) is bounded and continuous, and \(\Delta^{ir}\sigma_t(y)\Delta^{ir'}=\Delta^{i(r+t)}y\Delta^{i(r'-t)}\). By Fubini's theorem and the substitution \(\alpha=r+t\), \(\beta=r'-t\), the inner product \(\langle\hat a(\mathcal X)x\hat b(\mathcal X)\eta,\zeta\rangle\) is the integral of \(a(r)b(r')k(t)G(r+t,r'-t)\) over \((t,r,r')\in\mathbb R^3\), which equals \(\iint c(\alpha,\beta)G(\alpha,\beta)\,d\alpha\,d\beta\),
 with \(c(\alpha,\beta)=\int a(\alpha-t)b(\beta+t)k(t)\,dt\), an element of \(L^1(\mathbb R^2)\). Its transform is
 \[
-\hat c(u,v)=\iint c(\alpha,\beta)e^{iu\alpha+iv\beta}d\alpha\,d\beta=\hat a(u)\,\hat b(v)\,\hat k(u-v).
+\begin{aligned}
+\hat c(u,v)&=\iint c(\alpha,\beta)e^{iu\alpha+iv\beta}d\alpha\,d\beta\\
+&=\hat a(u)\,\hat b(v)\,\hat k(u-v).
+\end{aligned}
 \]
 Suppose \(\hat a(u)\hat b(v)=0\) whenever \(|u-v|\le L\). Then \(\hat c\equiv0\). For almost every \(\beta\), \(c(\cdot,\beta)\in L^1\), and \(F(u,\beta)=\int c(\alpha,\beta)e^{iu\alpha}d\alpha\) is continuous in \(u\); for each \(u\), \(\beta\mapsto F(u,\beta)\) is integrable with vanishing Fourier transform, hence zero almost everywhere by Fourier uniqueness. Taking \(u\) rational and using continuity, \(F(\cdot,\beta)\equiv0\) for almost every \(\beta\), so \(c=0\) almost everywhere by Fourier uniqueness again. Hence \(\hat a(\mathcal X)x\hat b(\mathcal X)=0\).
 
@@ -159,8 +204,10 @@ Band-limited elements of \(N\) give dense vectors in \(H\): choose \(f_1\in C_c^
 
 *The multiplicative domain.* By formula (4.1) of the lesson on spectral shift maps, for \(g\in C_0(\mathbb R)\) and \(T\in B(\mathcal H)\),
 \[
-\theta_{-q}(Tg(\mathcal X))=\theta_{-q}(T)\,g(\mathcal X+q).
-\tag{4.2}
+\begin{aligned}
+&\theta_{-q}(Tg(\mathcal X))\\
+&\quad =\theta_{-q}(T)\,g(\mathcal X+q).
+\end{aligned}\tag{4.2}
 \]
 Say that an operator \(T\) *annihilates* an open interval \(I\) if \(TE_{\mathcal X}(I)=0\). If \(T\) annihilates \(I\), then \(Tg(\mathcal X)=0\) for \(g\in C_c(I)\), so by (4.2) \(\theta_{-q}(T)g(\mathcal X+q)=0\); the ranges of the operators \(g(\mathcal X+q)\), \(g\in C_c(I)\), span a dense subspace of \(E_{\mathcal X}(I-q)\mathcal H\), so \(\theta_{-q}(T)\) annihilates \(I-q\). If \(T\) annihilates \(I=(c-r,c+r)\), \(x\) is band-limited with bound \(L<r\), and \(y\in M\), then \(y^*Tx\) annihilates \(I'=(c-r+L,c+r-L)\): every open interval \(J\) with \(\overline J\subset I'\) has \(J^L\subset I\), so Lemma 4.2 gives \(y^*TxE_{\mathcal X}(J)=y^*TE_{\mathcal X}(J^L)xE_{\mathcal X}(J)=0\), and an increasing sequence of such \(J\) exhausts \(I'\).
 
@@ -168,13 +215,17 @@ Say that an operator \(T\) *annihilates* an open interval \(I\) if \(TE_{\mathca
 
 *Conclusion.* Let \(\xi=\sum_\alpha c_\alpha\mathbf x^\alpha\Omega\in V_{\mathrm{bl}}\) and \(\Phi_\xi(T)=\langle Z(T)\xi,\xi\rangle\), a positive functional. With \(P_R=E_{\mathcal X}([-R,R])\), we have shown \(\Phi_\xi(1-P_R)=0\), so \(\Phi_\xi(T)=\Phi_\xi(P_RTP_R)\) for all \(T\) by the Cauchy–Schwarz inequality. By Lemma 4.2 each \(x_j^\alpha\Omega\) lies in the spectral subspace of \(X\) for an interval \([-L_j^\alpha,L_j^\alpha]\), so \(\xi\) lies in the spectral subspace of \(S_n+d\) for \([-R,R]\). Let \(f\in C_0(\mathbb R)\) and \(\varepsilon>0\). By the Stone–Weierstrass theorem there is a finite linear combination \(g\) of the functions \(u\mapsto e^{itu}\) with \(|f-g|\le\varepsilon\) on \([-R,R]\). Then
 \[
-|\Phi_\xi(f(\mathcal X))-\Phi_\xi(g(\mathcal X))|=|\Phi_\xi(P_R(f-g)(\mathcal X)P_R)|\le\varepsilon\|\xi\|^2,\qquad|\langle(f-g)(S_n+d)\xi,\xi\rangle|\le\varepsilon\|\xi\|^2,
+\begin{aligned}
+&|\Phi_\xi(f(\mathcal X))-\Phi_\xi(g(\mathcal X))|\\
+&\quad =|\Phi_\xi(P_R(f-g)(\mathcal X)P_R)|\le\varepsilon\|\xi\|^2,\\
+&|\langle(f-g)(S_n+d)\xi,\xi\rangle|\le\varepsilon\|\xi\|^2,
+\end{aligned}
 \]
 and \(\Phi_\xi(g(\mathcal X))=\langle g(S_n+d)\xi,\xi\rangle\) by (2). Hence \(\langle Z(f(\mathcal X))\xi,\xi\rangle=\langle f(S_n+d)\xi,\xi\rangle\) on \(V_{\mathrm{bl}}\); polarization and continuity give (3).
 
 **Proof of (4).** By (1.1) of the lesson on binormal states, \(\rho(a_+)\Omega=a\Omega\). Let \(\mathbf x,\mathbf y\) be label tuples, and define \(c_n=\gamma_{-d_n}(b^*)\) and \(c_{j-1}=\gamma_{-d_{j-1}}(E_{\mathrm B}(y_j^*c_jx_j))\), elements of \(\mathrm B\). For \(T=b^*\rho(a_+)\), Theorem 4.1(2),(3) of the lesson on spectral shift maps give \(T_n=\theta_{-d_n}(b^*)\rho(a_+)=c_n\rho(a_+)\), and, since \(\rho(a_+)\) commutes with \(N\), inductively \(T_{j-1}=\theta_{-d_{j-1}}(y_j^*c_jx_j)\rho(a_+)=c_{j-1}\rho(a_+)\). Hence \(\kappa_T(\mathbf x,\mathbf y)=\langle c_0\rho(a_+)\Omega,\Omega\rangle=\bar\varphi(c_0a)\).
 
-On the other side, Lemma 3.2 gives \(\langle C(\mathbf x\Omega\otimes a\Omega),\mathbf y\Omega\otimes b\Omega\rangle=\langle a\Omega,W_{-d_0}U^*_{x_1,y_1}\cdots U^*_{x_n,y_n}W_{-d_n}b\Omega\rangle\). Now \(W_{-d_n}b\Omega=\gamma_{-d_n}(b)\Omega=c_n^*\Omega\), and if the vector at some stage is \(c_j^*\Omega\), then (3.2) gives \(U^*_{x_j,y_j}c_j^*\Omega=E_{\mathrm B}(x_j^*c_j^*y_j)\Omega=E_{\mathrm B}(y_j^*c_jx_j)^*\Omega\), and \(W_{-d_{j-1}}\) turns it into \(c_{j-1}^*\Omega\). The result is \(\langle a\Omega,c_0^*\Omega\rangle=\bar\varphi(c_0a)\). Both sides of (4) are bounded sesquilinear forms in \((\xi,\xi')\) that agree on simple tensors, so they agree everywhere. \(\square\)
+On the other side, Lemma 3.2 shows that \(\langle C(\mathbf x\Omega\otimes a\Omega),\mathbf y\Omega\otimes b\Omega\rangle\) equals \(\langle a\Omega,W_{-d_0}U^*_{x_1,y_1}\cdots U^*_{x_n,y_n}W_{-d_n}b\Omega\rangle\). Now \(W_{-d_n}b\Omega=\gamma_{-d_n}(b)\Omega=c_n^*\Omega\), and if the vector at some stage is \(c_j^*\Omega\), then (3.2) gives \(U^*_{x_j,y_j}c_j^*\Omega=E_{\mathrm B}(x_j^*c_j^*y_j)\Omega\), which is \(E_{\mathrm B}(y_j^*c_jx_j)^*\Omega\), and \(W_{-d_{j-1}}\) turns it into \(c_{j-1}^*\Omega\). The result is \(\langle a\Omega,c_0^*\Omega\rangle=\bar\varphi(c_0a)\). Both sides of (4) are bounded sesquilinear forms in \((\xi,\xi')\) that agree on simple tensors, so they agree everywhere. \(\square\)
 
 Statement (4) is the bridge to the binormal identity: for \(b=a\), its left side is the value at \(a^*\rho(a_+)\) of a state with the marginals of \(\bar\varphi\), and the binormal identity evaluates such values as \(\|a\Omega\|^2\).
 
@@ -184,7 +235,7 @@ Statement (4) is the bridge to the binormal identity: for \(b=a\), its left side
 
 **Exercise 5.2.** Show that \(U\) commutes with \(e^{itX}\otimes\Delta_K^{it}\) for every \(t\in\mathbb R\).
 
-**Exercise 5.3.** Let \(n=1\) and \(d_0=d_1=0\). Show that \(\langle Z(a\rho(c))x\Omega,y\Omega\rangle=\langle E_{\mathrm B}(y^*E_{\mathrm B}(a)x)\rho(c)\Omega,\Omega\rangle\) for \(a,c\in M\) and \(x,y\in N\), and deduce \(Z(a)=\bar\varphi(a)1\) directly.
+**Exercise 5.3.** Let \(n=1\) and \(d_0=d_1=0\). Show that \(\langle Z(a\rho(c))x\Omega,y\Omega\rangle\) equals \(\langle E_{\mathrm B}(y^*E_{\mathrm B}(a)x)\rho(c)\Omega,\Omega\rangle\) for \(a,c\in M\) and \(x,y\in N\), and deduce \(Z(a)=\bar\varphi(a)1\) directly.
 
 **Exercise 5.4.** Let \(x\in M\) be band-limited with bound \(L\). Show that \(x^*\) is band-limited with bound \(L\), and that \(E_{\mathcal X}(J')xE_{\mathcal X}(J)=0\) whenever \(J,J'\) are Borel sets at distance greater than \(L\).
 
@@ -192,9 +243,9 @@ Statement (4) is the bridge to the binormal identity: for \(b=a\), its left side
 
 **5.1.** The range of an isometry is closed, and \(R\) maps the dense subspace \(N\Omega\odot\mathrm B\Omega\) onto the span of \(N\mathrm B\Omega\); so \(R(H\otimes K)\) is the closure of that span. It contains \(R(\Omega\otimes\Omega)=\Omega\). For \(y\in N\), \(yR(x\Omega\otimes a\Omega)=yxa\Omega=R(yx\Omega\otimes a\Omega)\), so the range is invariant under \(y\) by continuity. In the same way \(L(H\otimes K)\) is the closure of the span of \(\mathrm BN\Omega\), contains \(\Omega\), and is invariant under left multiplication by \(\mathrm B\), because \(bL(x\Omega\otimes a\Omega)=L(x\Omega\otimes ba\Omega)\).
 
-**5.2.** By (2.1), \(\langle U(e^{itX}x\Omega\otimes\Delta_K^{it}a\Omega),y\Omega\otimes b\Omega\rangle=\bar\varphi(y^*b^*\sigma_t(x)\sigma_t(a))\). Since \(\bar\varphi\circ\sigma_t=\bar\varphi\), this equals \(\bar\varphi(\sigma_{-t}(y)^*\sigma_{-t}(b)^*xa)=\langle U(x\Omega\otimes a\Omega),e^{-itX}y\Omega\otimes\Delta_K^{-it}b\Omega\rangle\).
+**5.2.** By (2.1), \(\langle U(e^{itX}x\Omega\otimes\Delta_K^{it}a\Omega),y\Omega\otimes b\Omega\rangle\) equals \(\bar\varphi(y^*b^*\sigma_t(x)\sigma_t(a))\). Since \(\bar\varphi\circ\sigma_t=\bar\varphi\), this equals \(\bar\varphi(\sigma_{-t}(y)^*\sigma_{-t}(b)^*xa)\), which is \(\langle U(x\Omega\otimes a\Omega),e^{-itX}y\Omega\otimes\Delta_K^{-it}b\Omega\rangle\).
 
-**5.3.** Here \(\theta_0(a)=\gamma_0(E_{\mathrm B}(a))=E_{\mathrm B}(a)\) for \(a\in M\), and \(\theta_0\) is a right module map over \(\rho(M)\). For \(T=a\rho(c)\): \(T_1=\theta_0(a)\rho(c)=E_{\mathrm B}(a)\rho(c)\), and since \(\rho(c)\) commutes with \(N\), \(T_0=\theta_0(y^*E_{\mathrm B}(a)x)\rho(c)=E_{\mathrm B}(y^*E_{\mathrm B}(a)x)\rho(c)\). This is the formula. For \(c=1\) it gives \(\bar\varphi(y^*E_{\mathrm B}(a)x)=\varphi\big(y^*E(E_{\mathrm B}(a))x\big)=\bar\varphi(a)\varphi(y^*x)\) by (1.1), which is \(\langle\bar\varphi(a)x\Omega,y\Omega\rangle\).
+**5.3.** Here \(\theta_0(a)=\gamma_0(E_{\mathrm B}(a))=E_{\mathrm B}(a)\) for \(a\in M\), and \(\theta_0\) is a right module map over \(\rho(M)\). For \(T=a\rho(c)\): \(T_1=\theta_0(a)\rho(c)=E_{\mathrm B}(a)\rho(c)\), and since \(\rho(c)\) commutes with \(N\), \(T_0=\theta_0(y^*E_{\mathrm B}(a)x)\rho(c)\), which is \(E_{\mathrm B}(y^*E_{\mathrm B}(a)x)\rho(c)\). This is the formula. For \(c=1\) it gives \(\bar\varphi(y^*E_{\mathrm B}(a)x)=\varphi\big(y^*E(E_{\mathrm B}(a))x\big)\), which is \(\bar\varphi(a)\varphi(y^*x)\) by (1.1), which is \(\langle\bar\varphi(a)x\Omega,y\Omega\rangle\).
 
 **5.4.** \(x^*=\int\overline{k(t)}\sigma_t(y^*)dt\) and \(\widehat{\bar k}(u)=\overline{\hat k(-u)}\) vanishes for \(|u|>L\). Let \(J,J'\) be Borel sets at distance \(L+3\delta\) with \(\delta>0\), and let \(J_\delta,J'_\delta\) be their open \(\delta\)-neighbourhoods, at distance at least \(L+\delta\). The first part of the proof of Lemma 4.2, with \(\hat a_m\in C_c^\infty(J'_\delta)\) and \(\hat b_m\in C_c^\infty(J_\delta)\) increasing to the indicator functions, gives \(E_{\mathcal X}(J'_\delta)xE_{\mathcal X}(J_\delta)=0\). Multiply by \(E_{\mathcal X}(J')\) on the left and \(E_{\mathcal X}(J)\) on the right.
 

@@ -6,7 +6,10 @@ Throughout this lesson, \((A_1,\ldots,A_n,C)\) is a freely generating Haar \((n+
 
 Fix \(h_1,\ldots,h_n\in\mathbb R^{(\Gamma)}\). This lesson constructs trace-preserving automorphisms \(\beta_t\) of \(M\), \(t\in\mathbb R\), that fix \(S\) and move the generators along the differential equation
 \[
-\frac d{dt}A_j(t)=i\,s_t(h_j)A_j(t),\qquad s_t(k)=\sum_{g}k(g)A_g(t)SA_g(t)^* ,
+\begin{gathered}
+\frac d{dt}A_j(t)=i\,s_t(h_j)A_j(t),\\
+s_t(k)=\sum_{g}k(g)A_g(t)SA_g(t)^* ,
+\end{gathered}
 \]
 where \(A_g(t)\) is the value of \(g\) at \(A(t)=(A_1(t),\ldots,A_n(t))\). The main result, Theorem 6.2, adds two estimates: \(\beta_t\) moves \(A_j\) by at most \(3\pi|t|\|h_j\|_{\ell^2}\) in operator norm, and it moves the value \(A_w\) of a word \(w\) to within \(3\pi|t|\|D_w-\delta_e\|_{\ell^2}\) of \(e^{itS}A_w\), where \(D\) is the cocycle of Section 1.
 
@@ -18,7 +21,10 @@ We use: from [Free independence and Haar tuples](free-independence-and-haar-tupl
 
 **Lemma 1.1.** There is exactly one map \(D\colon\Gamma\to\mathbb R^{(\Gamma)}\), \(g\mapsto D_g\), with
 \[
-D_{x_j}=h_j\quad(1\le j\le n),\qquad D_{gb}=D_g+\lambda(g)D_b\quad(g,b\in\Gamma).
+\begin{gathered}
+D_{x_j}=h_j\quad(1\le j\le n),\\
+D_{gb}=D_g+\lambda(g)D_b\quad(g,b\in\Gamma).
+\end{gathered}
 \]
 It satisfies \(D_e=0\), \(D_{g^{-1}}=-\lambda(g^{-1})D_g\), and \(D_{y_1y_2\cdots y_r}=\sum_{k=1}^r\lambda(y_1\cdots y_{k-1})D_{y_k}\) for all \(y_1,\ldots,y_r\in\Gamma\).
 
@@ -34,13 +40,19 @@ The *degree* of a monomial is its number of symbols. Its *label* is the element 
 
 The \(a_j\) are unitaries of \(\mathcal P\); let \(a_g\) be the value of \(g\in\Gamma\) at \((a_1,\ldots,a_n)\) (Lemma 2.1 of the first lesson), represented by the reduced word of \(g\). Put
 \[
-z_g=a_gza_g^*,\qquad \sigma(k)=\sum_gk(g)z_g\quad(k\in\mathbb R^{(\Gamma)}).
+\begin{gathered}
+z_g=a_gza_g^*,\\
+\sigma(k)=\sum_gk(g)z_g\quad(k\in\mathbb R^{(\Gamma)}).
+\end{gathered}
 \]
 Each \(\sigma(k)\) is self-adjoint, and \(a_g\sigma(k)a_g^*=\sum_bk(b)z_{gb}=\sigma(\lambda(g)k)\).
 
 **Lemma 2.1.** There is exactly one linear map \(\delta\colon\mathcal P\to\mathcal P\) with \(\delta(pq)=\delta(p)q+p\,\delta(q)\) and
 \[
-\delta z=0,\qquad \delta a_j=i\sigma(h_j)a_j,\qquad \delta a_j^*=-ia_j^*\sigma(h_j).
+\begin{gathered}
+\delta z=0,\qquad \delta a_j=i\sigma(h_j)a_j,\\
+\delta a_j^*=-ia_j^*\sigma(h_j).
+\end{gathered}
 \]
 It satisfies \(\delta(p^*)=\delta(p)^*\), and for every \(g\in\Gamma\)
 \[
@@ -50,15 +62,30 @@ For a monomial \(m\), \(\delta m\) is a linear combination of monomials with the
 
 **Proof.** Let \(\mathcal P[\varepsilon]=\mathcal P\oplus\varepsilon\mathcal P\) with \(\varepsilon\) central and \(\varepsilon^2=0\). Put \(d_j=i\sigma(h_j)a_j\) and \(d_j^\sharp=-ia_j^*\sigma(h_j)\). The unital homomorphism from the free algebra to \(\mathcal P[\varepsilon]\) with \(a_j\mapsto a_j+\varepsilon d_j\), \(a_j^*\mapsto a_j^*+\varepsilon d_j^\sharp\) and \(z\mapsto z\) vanishes on the defining relations:
 \[
-(a_j^*+\varepsilon d_j^\sharp)(a_j+\varepsilon d_j)=1+\varepsilon\big(ia_j^*\sigma(h_j)a_j-ia_j^*\sigma(h_j)a_j\big)=1,
+\begin{aligned}
+&(a_j^*+\varepsilon d_j^\sharp)(a_j+\varepsilon d_j)=1\\
+&\quad +\varepsilon\big(ia_j^*\sigma(h_j)a_j-ia_j^*\sigma(h_j)a_j\big)\\
+&\quad =1,
+\end{aligned}
 \]
-and similarly \((a_j+\varepsilon d_j)(a_j^*+\varepsilon d_j^\sharp)=1+\varepsilon(i\sigma(h_j)-i\sigma(h_j))=1\). So it induces a unital homomorphism \(\Theta\colon\mathcal P\to\mathcal P[\varepsilon]\). Write \(\Theta(p)=p_0+\varepsilon\,\delta(p)\). The map \(p\mapsto p_0\) is a unital homomorphism \(\mathcal P\to\mathcal P\) fixing the generators, hence the identity, and multiplicativity of \(\Theta\) is the product rule for \(\delta\). A map with the product rule is determined by its values on the generators, which gives uniqueness.
+and similarly
+\[
+\begin{aligned}
+&(a_j+\varepsilon d_j)(a_j^*+\varepsilon d_j^\sharp)\\
+&\quad=1+\varepsilon\big(i\sigma(h_j)-i\sigma(h_j)\big)=1.
+\end{aligned}
+\]
+So it induces a unital homomorphism \(\Theta\colon\mathcal P\to\mathcal P[\varepsilon]\). Write \(\Theta(p)=p_0+\varepsilon\,\delta(p)\). The map \(p\mapsto p_0\) is a unital homomorphism \(\mathcal P\to\mathcal P\) fixing the generators, hence the identity, and multiplicativity of \(\Theta\) is the product rule for \(\delta\). A map with the product rule is determined by its values on the generators, which gives uniqueness.
 
 The set of \(p\) with \(\delta(p^*)=\delta(p)^*\) is closed under sums, products and adjoints, since \(\delta((pq)^*)=\delta(q^*)p^*+q^*\delta(p^*)\). It contains the generators: \(\delta(a_j)^*=-ia_j^*\sigma(h_j)=\delta(a_j^*)\), and \(\delta z=0\). So it is \(\mathcal P\).
 
-The set of \(g\in\Gamma\) with \(\delta a_g=i\sigma(D_g)a_g\) contains \(e\) (\(\delta1=0\) by the product rule) and every \(x_j\). It contains \(x_j^{-1}\): \(\delta a_j^*=-ia_j^*\sigma(h_j)a_ja_j^*=-i\sigma(\lambda(x_j^{-1})h_j)a_j^*=i\sigma(D_{x_j^{-1}})a_{x_j^{-1}}\). It is closed under products: if it contains \(g\) and \(b\), then
+The set of \(g\in\Gamma\) with \(\delta a_g=i\sigma(D_g)a_g\) contains \(e\) (\(\delta1=0\) by the product rule) and every \(x_j\). It contains \(x_j^{-1}\): \(\delta a_j^*=-ia_j^*\sigma(h_j)a_ja_j^*\), which is \(-i\sigma(\lambda(x_j^{-1})h_j)a_j^*=i\sigma(D_{x_j^{-1}})a_{x_j^{-1}}\). It is closed under products: if it contains \(g\) and \(b\), then
 \[
-\delta(a_ga_b)=i\sigma(D_g)a_ga_b+ia_g\sigma(D_b)a_g^*a_ga_b=i\sigma\big(D_g+\lambda(g)D_b\big)a_{gb}=i\sigma(D_{gb})a_{gb}.
+\begin{aligned}
+&\delta(a_ga_b)\\
+&\quad =i\sigma(D_g)a_ga_b+ia_g\sigma(D_b)a_g^*a_ga_b\\
+&\quad =i\sigma\big(D_g+\lambda(g)D_b\big)a_{gb}=i\sigma(D_{gb})a_{gb}.
+\end{aligned}
 \]
 So it is \(\Gamma\). Then \(\delta(a_g^*)=\delta(a_g)^*=-ia_g^*\sigma(D_g)\), and the product rule gives \(\delta z_g=i\sigma(D_g)z_g-iz_g\sigma(D_g)\).
 
@@ -74,11 +101,17 @@ Let \(\mathrm{ev}_0\colon\mathcal P\to M\) be the unital \(*\)-homomorphism with
 
 Let the label of \(m\) be \(e\). Write \(m=w_0zw_1z\cdots zw_q\) with words \(w_l\) in the group symbols, and let \(g_l\in\Gamma\) be the value of \(w_l\), so \(w_l=a_{g_l}\) in \(\mathcal P\). Since \(a_gz=a_gza_g^*a_g=z_ga_g\) in \(\mathcal P\), moving the group symbols to the right gives
 \[
-m=z_{g_0}z_{g_0g_1}\cdots z_{g_0\cdots g_{q-1}}\,a_{g_0\cdots g_q}=z_{g_0}z_{g_0g_1}\cdots z_{g_0\cdots g_{q-1}},
+\begin{aligned}
+m&=z_{g_0}z_{g_0g_1}\cdots z_{g_0\cdots g_{q-1}}\,a_{g_0\cdots g_q}\\
+&=z_{g_0}z_{g_0g_1}\cdots z_{g_0\cdots g_{q-1}},
+\end{aligned}
 \]
 because \(g_0\cdots g_q\) is the label \(e\). So \(m=F(z_b:b\in I)\) for a finite set \(I\subseteq\Gamma\) and a noncommutative monomial \(F\) in variables \(Z_b\), \(b\in I\). By the product rule, \(\delta m\) is the sum, over the occurrences of a variable \(Z_b\) in \(F\), of \(F(z)\) with that occurrence replaced by \(\delta z_b=i[\sigma(D_b),z_b]\). Applying \(\mathrm{ev}_0\), the summand \(D_b(b)S_b\) of \(s(D_b)\) commutes with \(S_b\), so
 \[
-\mathrm{ev}_0(\delta z_b)=i[Y_b,S_b],\qquad Y_b=\sum_{c\ne b}D_b(c)S_c\in W^*(S_c:c\ne b).
+\begin{gathered}
+\mathrm{ev}_0(\delta z_b)=i[Y_b,S_b],\\
+Y_b=\sum_{c\ne b}D_b(c)S_c\in W^*(S_c:c\ne b).
+\end{gathered}
 \]
 Fix \(b\in I\) and put \(U_u=e^{iuY_b}\) for \(u\in\mathbb R\), a unitary of \(W^*(S_c:c\ne b)\). Let \(f_b(u)\) be the trace of \(F(S)\) with every occurrence of \(S_b\) replaced by \(U_uS_bU_u^*\) and the other variables \(S_c\) left alone. By Lemma 3.1 of the first lesson, \(W^*(S_b)\) and \(W^*(S_c:c\ne b)\) are free, so Lemma 1.3 of that lesson shows that \(f_b\) is constant. The map \(u\mapsto U_uS_bU_u^*\) is norm-differentiable with derivative \(i[Y_b,S_b]\) at \(u=0\), so by the product rule \(0=f_b'(0)\) is the trace of the sum over the occurrences of \(Z_b\) of \(F(S)\) with that occurrence replaced by \(i[Y_b,S_b]\). Summing over \(b\in I\) gives \(\tau(\mathrm{ev}_0(\delta m))=\sum_bf_b'(0)=0\).
 
@@ -95,11 +128,14 @@ The conjugations by \(U_u\) are used only to compute a derivative at the initial
 
 **Proof.** (1) The continuous maps \(X\colon[t_0-\delta,t_0+\delta]\to\bar B(x_0,1)\) form a complete metric space for the supremum distance. The map \(\Phi(X)(t)=x_0+\int_{t_0}^tV(X(s))\,ds\) sends it to itself, since \(\|\Phi(X)(t)-x_0\|\le\delta K\le1\), and it is a contraction with constant \(\delta L\le\frac12\). Its fixed point is continuously differentiable with \(X'=V(X)\), by the fundamental theorem of calculus (Lemma 0.1 of the lesson on Cauchy's theorem).
 
-(2) Let \(X,Y\) be solutions on an interval \(I\) with \(X(t_1)=Y(t_1)\). The set where they agree is closed in \(I\). Let \(X(t_2)=Y(t_2)\). On a closed interval \(J\ni t_2\) of length at most \(1/(2L')\), where \(L'\) is a Lipschitz constant of \(V\) on a bounded set containing \(X(J)\cup Y(J)\), we have \(X(t)-Y(t)=\int_{t_2}^t(V(X(s))-V(Y(s)))\,ds\), so \(\sup_J\|X-Y\|\le\frac12\sup_J\|X-Y\|\), and \(X=Y\) on \(J\). So the set is also open in \(I\), and it is \(I\). \(\square\)
+(2) Let \(X,Y\) be solutions on an interval \(I\) with \(X(t_1)=Y(t_1)\). The set where they agree is closed in \(I\). Let \(X(t_2)=Y(t_2)\). On a closed interval \(J\ni t_2\) of length at most \(1/(2L')\), where \(L'\) is a Lipschitz constant of \(V\) on a bounded set containing \(X(J)\cup Y(J)\), the difference \(X(t)-Y(t)\) is \(\int_{t_2}^t(V(X(s))-V(Y(s)))\,ds\), so \(\sup_J\|X-Y\|\le\frac12\sup_J\|X-Y\|\), and \(X=Y\) on \(J\). So the set is also open in \(I\), and it is \(I\). \(\square\)
 
 Let \(B\subseteq M\) be a norm-closed unital \(*\)-subalgebra containing \(S\). For \(X=(X_1,\ldots,X_n)\in B^n\) let \(X_g\) be the value at \(X\) of the reduced word of \(g\), with \(x_j^{-1}\) evaluated as \(X_j^*\); this is a polynomial in the \(X_j\) and \(X_j^*\), and it agrees with the group evaluation when the \(X_j\) are unitary. Put
 \[
-H_j(X)=\sum_gh_j(g)X_gSX_g^*,\qquad V_j(X)=iH_j(X)X_j .
+\begin{gathered}
+H_j(X)=\sum_gh_j(g)X_gSX_g^*,\\
+V_j(X)=iH_j(X)X_j .
+\end{gathered}
 \]
 Each \(H_j(X)\) is self-adjoint, for every \(X\). We regard \(B^n\), with the maximum of the coordinate norms, as a real Banach space. \(V=(V_1,\ldots,V_n)\) is a finite sum of products of coordinates, their adjoints and \(S\), so it is Lipschitz on every bounded set.
 
@@ -109,7 +145,11 @@ Each \(H_j(X)\) is self-adjoint, for every \(X\). We regard \(B^n\), with the ma
 
 Along a solution, the product rule gives
 \[
-\frac d{dt}(X_j^*X_j)=(iH_j(X)X_j)^*X_j+X_j^*\,iH_j(X)X_j=-iX_j^*H_j(X)X_j+iX_j^*H_j(X)X_j=0,
+\begin{aligned}
+&\frac d{dt}(X_j^*X_j)=(iH_j(X)X_j)^*X_j\\
+&\quad +X_j^*\,iH_j(X)X_j=-iX_j^*H_j(X)X_j\\
+&\quad +iX_j^*H_j(X)X_j=0,
+\end{aligned}
 \]
 so a solution that starts at a unitary tuple satisfies \(X_j^*X_j=1\) throughout. Then \(X_jX_j^*\) is a projection and \(\tau(1-X_jX_j^*)=1-\tau(X_j^*X_j)=0\), so \(X_jX_j^*=1\) because \(\tau\) is faithful: \(X_j\) stays unitary.
 
@@ -128,12 +168,18 @@ Let \(B=C^*(A_1,\ldots,A_n,S)\) be the norm-closed \(*\)-algebra generated by th
 
 *Bounds.* Let \(\ell\) be the largest length \(|b|\) of an element \(b\) in the support of some \(h_j\) (\(\ell=0\) if all \(h_j\) vanish), \(J=2\ell+1\), \(B_1=\max(1,\max_j\sum_b|h_j(b)|)\) and \(R=\max(1,\|S\|)\). Represent \(p\) by a linear combination of monomials of degree at most \(l\ge1\) whose coefficients have absolute values summing to \(b_0\). The image of \(a_j\) under \(\delta\) is \(i\sum_bh_j(b)a_bza_b^*a_j\), with \(a_b\) and \(a_b^*\) written as reduced words: a combination of monomials of degree at most \(2\ell+2\) with absolute coefficient sum at most \(B_1\); the same holds for \(a_j^*\), and \(\delta z=0\). Hence \(\delta\) maps a combination of monomials of degree at most \(l'\) with absolute coefficient sum \(b'\) to one of degree at most \(l'+J\) with absolute coefficient sum at most \(l'B_1b'\). By induction, \(\delta^rp\) is represented by monomials of degree at most \(l+rJ\) with absolute coefficient sum at most \(b_0B_1^r\prod_{v=0}^{r-1}(l+vJ)\). A monomial of degree \(d\) evaluates at time \(t\) to an operator of norm at most \(R^d\), since the group letters are unitary. Using \(l+vJ\le(l+J)(v+1)\), we get for all \(t\in\mathbb R\) and \(r\ge0\)
 \[
-\|\mathrm{ev}_t(\delta^rp)\|\le b_0R^l\,c^r\,r!,\qquad c=B_1R^J(l+J).
+\begin{gathered}
+\|\mathrm{ev}_t(\delta^rp)\|\le b_0R^l\,c^r\,r!,\\
+c=B_1R^J(l+J).
+\end{gathered}
 \]
 
 *Analyticity.* Let \(f(t)=\tau(\mathrm{ev}_t(p))\). Since \(\tau\) is a bounded linear functional, \(f\) is infinitely differentiable with \(f^{(r)}(t)=\tau(\mathrm{ev}_t(\delta^rp))\), so \(|f^{(r)}(t)|\le b_0R^lc^rr!\). Let \(t_0\in\mathbb R\) be a point where \(f^{(r)}(t_0)=0\) for all \(r\ge1\). Taylor's theorem, applied to the real and imaginary parts of \(f\) on the interval between \(t_0\) and \(t_0+u\), gives
 \[
-|f(t_0+u)-f(t_0)|\le2\,b_0R^l(c|u|)^{r+1}\qquad(r\ge0),
+\begin{gathered}
+|f(t_0+u)-f(t_0)|\le2\,b_0R^l(c|u|)^{r+1}\\
+(r\ge0),
+\end{gathered}
 \]
 which tends to \(0\) as \(r\to\infty\) when \(|u|<1/c\). So \(f\) is constant on \((t_0-1/c,t_0+1/c)\), and all its derivatives of order \(\ge1\) vanish there. By Lemma 3.1, \(t_0=0\) is such a point. Moving in steps of \(1/(2c)\) in both directions shows that \(f\) is constant on \(\mathbb R\). \(\square\)
 
@@ -149,24 +195,31 @@ The constant \(c\) depends on \(p\) and on the \(h_j\); no common radius is need
 
 1. \(\beta_0=\mathrm{id}\), \(\beta_s\beta_t=\beta_{s+t}\), \(\beta_t(S)=S\) and \(\beta_t(C)=C\).
 2. \(\beta_t\) maps \(B=C^*(A_1,\ldots,A_n,S)\) onto itself, and \(t\mapsto\beta_t(b)\) is norm-continuous for every \(b\in B\).
-3. \(A_j(t)=\beta_t(A_j)\) is norm-differentiable in \(t\), with \(A_j'(t)=i\,s_t(h_j)A_j(t)\), where \(s_t(k)=\sum_gk(g)A_g(t)SA_g(t)^*=\beta_t(s(k))\).
+3. \(A_j(t)=\beta_t(A_j)\) is norm-differentiable in \(t\), with \(A_j'(t)=i\,s_t(h_j)A_j(t)\), where \(s_t(k)=\sum_gk(g)A_g(t)SA_g(t)^*\), which is \(\beta_t(s(k))\).
 4. For all \(t\in\mathbb R\), \(1\le j\le n\) and \(w\in\Gamma\),
 \[
-\|\beta_t(A_j)-A_j\|\le|t|K\|h_j\|_{\ell^2},\qquad \|\beta_t(A_w)-e^{itS}A_w\|\le|t|K\|D_w-\delta_e\|_{\ell^2}.
+\begin{aligned}
+&\|\beta_t(A_j)-A_j\|\le|t|K\|h_j\|_{\ell^2},\\
+&\|\beta_t(A_w)-e^{itS}A_w\|\\
+&\quad \le|t|K\|D_w-\delta_e\|_{\ell^2}.
+\end{aligned}
 \]
 In particular \(\|\beta_1(A_w)-CA_w\|\le K\|D_w-\delta_e\|_{\ell^2}\).
 
 **Proof.** Let \(A(t)\) and \(\mathrm{ev}_t\) be as in Section 5, and fix \(t\).
 
-*An isometric \(*\)-homomorphism.* If \(\mathrm{ev}_0(p)=0\), then by Lemma 5.1 \(\tau(\mathrm{ev}_t(p)^*\mathrm{ev}_t(p))=\tau(\mathrm{ev}_t(p^*p))=\tau(\mathrm{ev}_0(p^*p))=0\), so \(\mathrm{ev}_t(p)=0\). Hence \(\varphi_t(\mathrm{ev}_0(p))=\mathrm{ev}_t(p)\) is a well-defined unital \(*\)-homomorphism from the dense \(*\)-subalgebra \(\mathrm{ev}_0(\mathcal P)\) of \(B\) into \(B\). By Lemma 5.1 applied to \((p^*p)^k\) and by Lemma 6.1, \(\|\varphi_t(b)\|=\|b\|\). So \(\varphi_t\) extends to an isometric \(*\)-homomorphism \(\varphi_t\colon B\to B\) with \(\tau\circ\varphi_t=\tau\). Its range is closed and contains the polynomials in \(A_1(t),\ldots,A_n(t),S\), so it is \(B_t=C^*(A_1(t),\ldots,A_n(t),S)\).
+*An isometric \(*\)-homomorphism.* If \(\mathrm{ev}_0(p)=0\), then by Lemma 5.1 \(\tau(\mathrm{ev}_t(p)^*\mathrm{ev}_t(p))=\tau(\mathrm{ev}_t(p^*p))\), which is \(\tau(\mathrm{ev}_0(p^*p))=0\), so \(\mathrm{ev}_t(p)=0\). Hence \(\varphi_t(\mathrm{ev}_0(p))=\mathrm{ev}_t(p)\) is a well-defined unital \(*\)-homomorphism from the dense \(*\)-subalgebra \(\mathrm{ev}_0(\mathcal P)\) of \(B\) into \(B\). By Lemma 5.1 applied to \((p^*p)^k\) and by Lemma 6.1, \(\|\varphi_t(b)\|=\|b\|\). So \(\varphi_t\) extends to an isometric \(*\)-homomorphism \(\varphi_t\colon B\to B\) with \(\tau\circ\varphi_t=\tau\). Its range is closed and contains the polynomials in \(A_1(t),\ldots,A_n(t),S\), so it is \(B_t=C^*(A_1(t),\ldots,A_n(t),S)\).
 
 *Surjectivity.* Apply Lemma 4.2 inside \(B_t\) to the initial tuple \(A(t)\). Its solution \(Y\) is also a solution in \(M\), and so is \(u\mapsto A(t+u)\); both start at \(A(t)\), so \(Y(u)=A(t+u)\) by uniqueness (Lemma 4.2 with \(B=M\)). At \(u=-t\) this gives \(A_j=Y_j(-t)\in B_t\). Since also \(S\in B_t\), we get \(B\subseteq B_t\subseteq B\). So \(\varphi_t\) is a \(*\)-automorphism of \(B\) fixing \(S\).
 
 *Normal extension.* \(W^*(B)\) contains the \(A_j\) and \(C=e^{iS}\), so \(W^*(B)=M\), and \(B\Omega\) is dense in \(L^2(M)\) by Lemma 1.4 of the first lesson. The map \(b\Omega\mapsto\varphi_t(b)\Omega\) (\(b\in B\)) is well defined and isometric, because \(\|\varphi_t(b)\|_2^2=\tau(\varphi_t(b^*b))=\|b\|_2^2\), and its range \(B\Omega\) is dense; it extends to a unitary \(U_t\) of \(L^2(M)\) with \(U_t\Omega=\Omega\). For \(b,c\in B\),
 \[
-U_tL_bU_t^*\,\varphi_t(c)\Omega=U_t(bc)\Omega=\varphi_t(b)\varphi_t(c)\Omega,
+\begin{aligned}
+&U_tL_bU_t^*\,\varphi_t(c)\Omega=U_t(bc)\Omega\\
+&\quad =\varphi_t(b)\varphi_t(c)\Omega,
+\end{aligned}
 \]
-so \(U_tL_bU_t^*=L_{\varphi_t(b)}\). Hence \(\operatorname{Ad}U_t\) maps the von Neumann algebra generated by \(L_B\), which is \(L_M\), onto itself, and \(\beta_t=L^{-1}\circ\operatorname{Ad}U_t\circ L\) is a normal \(*\)-automorphism of \(M\) extending \(\varphi_t\). It preserves the trace: \(\tau(\beta_t(x))=\langle U_tL_xU_t^*\Omega,\Omega\rangle=\langle L_x\Omega,\Omega\rangle=\tau(x)\). Two normal \(*\)-homomorphisms that agree on \(B\) agree on \(M\), by Lemma 1.4 of the first lesson, so \(\beta_t\) is the only normal extension of \(\varphi_t\). As \(\beta_t\) is isometric and fixes \(S\), it fixes \(C=\sum_k(iS)^k/k!\).
+so \(U_tL_bU_t^*=L_{\varphi_t(b)}\). Hence \(\operatorname{Ad}U_t\) maps the von Neumann algebra generated by \(L_B\), which is \(L_M\), onto itself, and \(\beta_t=L^{-1}\circ\operatorname{Ad}U_t\circ L\) is a normal \(*\)-automorphism of \(M\) extending \(\varphi_t\). It preserves the trace: \(\tau(\beta_t(x))=\langle U_tL_xU_t^*\Omega,\Omega\rangle\), which is \(\langle L_x\Omega,\Omega\rangle=\tau(x)\). Two normal \(*\)-homomorphisms that agree on \(B\) agree on \(M\), by Lemma 1.4 of the first lesson, so \(\beta_t\) is the only normal extension of \(\varphi_t\). As \(\beta_t\) is isometric and fixes \(S\), it fixes \(C=\sum_k(iS)^k/k!\).
 
 *Group law and continuity.* Fix \(s\). The path \(t\mapsto\varphi_s(A(t))\) is continuously differentiable, because \(\varphi_s\) is bounded and linear, and it solves \(X'=V(X)\), because \(\varphi_s\) is a \(*\)-homomorphism fixing \(S\). It starts at \(\varphi_s(A)=A(s)\), as does \(t\mapsto A(s+t)\), so \(\varphi_s(A_j(t))=A_j(s+t)\). Thus \(\varphi_s\varphi_t\) and \(\varphi_{s+t}\) agree on the generators of \(B\), hence on \(B\), and \(\beta_s\beta_t=\beta_{s+t}\) by uniqueness of normal extensions; \(\beta_0=\mathrm{id}\) since \(A(0)=A\). For \(b=\mathrm{ev}_0(p)\), \(t\mapsto\beta_t(b)=\mathrm{ev}_t(p)\) is norm-continuous by Lemma 5.1; since the \(\beta_t\) are isometric on \(B\), continuity passes to the closure \(B\). This proves (1) and (2).
 
@@ -178,7 +231,11 @@ so \(U_tL_bU_t^*=L_{\varphi_t(b)}\). Hence \(\operatorname{Ad}U_t\) maps the von
 \]
 The function \(t\mapsto e^{-itS}\) is norm-differentiable with derivative \(-iSe^{-itS}\), since \(\|e^{-iuS}-1+iuS\|\le\sum_{k\ge2}|u|^k\|S\|^k/k!\). Since \(s_t(\delta_e)=S\) commutes with \(e^{-itS}\),
 \[
-\frac d{dt}\big(e^{-itS}A_w(t)\big)=ie^{-itS}\big(s_t(D_w)-S\big)A_w(t)=ie^{-itS}\,s_t(D_w-\delta_e)\,A_w(t),
+\begin{aligned}
+&\frac d{dt}\big(e^{-itS}A_w(t)\big)\\
+&\quad =ie^{-itS}\big(s_t(D_w)-S\big)A_w(t)\\
+&\quad =ie^{-itS}\,s_t(D_w-\delta_e)\,A_w(t),
+\end{aligned}
 \]
 of norm at most \(K\|D_w-\delta_e\|_{\ell^2}\). Integrating from \(0\) to \(t\) and multiplying by the unitary \(e^{itS}\) gives the second bound, and \(e^{iS}=C\). \(\square\)
 
@@ -196,7 +253,10 @@ of norm at most \(K\|D_w-\delta_e\|_{\ell^2}\). Integrating from \(0\) to \(t\) 
 
 **7.1.** By Lemma 1.1, \(D_{x_1}=h\), \(D_{x_2}=0\), \(D_{x_1^{-1}}=-\lambda(x_1^{-1})h\), and
 \[
-D_w=D_{x_1}+\lambda(x_1)D_{x_2}+\lambda(x_1x_2)D_{x_1^{-1}}=h-\lambda(x_1x_2x_1^{-1})h .
+\begin{aligned}
+D_w&=D_{x_1}+\lambda(x_1)D_{x_2}+\lambda(x_1x_2)D_{x_1^{-1}}\\
+&=h-\lambda(x_1x_2x_1^{-1})h .
+\end{aligned}
 \]
 
 **7.2.** The constant path \(A(t)=A\) solves the equation, since \(V=0\). So \(\mathrm{ev}_t=\mathrm{ev}_0\), \(\varphi_t=\mathrm{id}_B\), and \(\beta_t=\mathrm{id}\) by uniqueness of normal extensions.

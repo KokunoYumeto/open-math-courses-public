@@ -20,7 +20,13 @@ Fix a free ultrafilter \(\mathcal U\) on \(\mathbb N\).
 
 (a) \(\lim_{\mathcal U}\) is linear, and \(\lim_{\mathcal U}a_n\le\lim_{\mathcal U}b_n\) whenever \(\{n:a_n\le b_n\}\in\mathcal U\);
 
-(b) if \(\phi:\mathbb R^k\to\mathbb R\) is continuous and \(a^{(1)},\dots,a^{(k)}\) are bounded sequences, then \(\lim_{\mathcal U}\phi(a^{(1)}_n,\dots,a^{(k)}_n)=\phi(\lim_{\mathcal U}a^{(1)}_n,\dots,\lim_{\mathcal U}a^{(k)}_n)\);
+(b) if \(\phi:\mathbb R^k\to\mathbb R\) is continuous and \(a^{(1)},\dots,a^{(k)}\) are bounded sequences, then
+\[
+\begin{aligned}
+&\lim_{\mathcal U}\phi(a^{(1)}_n,\dots,a^{(k)}_n)\\
+&\quad=\phi(\lim_{\mathcal U}a^{(1)}_n,\dots,\lim_{\mathcal U}a^{(k)}_n);
+\end{aligned}
+\]
 
 (c) if \(a_n\to L\) in the usual sense, then \(\lim_{\mathcal U}a_n=L\).
 
@@ -44,16 +50,22 @@ Let \(\widehat{Q_X}\) be the completion of \(Q_X\), a Banach space containing \(
 
 ## 3. Attaining the defect
 
-**Proposition 3.1** (attainment). Let \(X,Y\) be nonzero real normed spaces and \(f:S_X\to S_Y\) a surjective isometry with defect \(M>0\). There are nonzero real Banach spaces \(\widehat X,\widehat Y\), a surjective isometry \(F:S_{\widehat X}\to S_{\widehat Y}\), vectors \(x_0,y\in S_{\widehat X}\) and \(0<t<1\) such that
+**Proposition 3.1** (attainment). Let \(X,Y\) be nonzero real normed spaces and \(f:S_X\to S_Y\) a surjective isometry with defect \(M>0\). There are nonzero real Banach spaces \(\widehat X,\widehat Y\), a surjective isometry \(F:S_{\widehat X}\to S_{\widehat Y}\), vectors \(x_0,y\in S_{\widehat X}\) and \(0<t<1\) such that the conditions (3.1) hold: \(|D^F_q(a,c)|\le M\) for \(a,c\in S_{\widehat X}\) and \(0\le q\le1\), and
 \[
-|D^F_q(a,c)|\le M\quad(a,c\in S_{\widehat X},\ 0\le q\le1),\qquad D^F_t(x_0,y)=\|F(x_0)-tF(y)\|-\|x_0-ty\|=M.\tag{3.1}
+\begin{aligned}
+&D^F_t(x_0,y)=\|F(x_0)-tF(y)\|\\
+&\qquad-\|x_0-ty\|=M.
+\end{aligned}
 \]
 
 **Proof.** Choose \(x_n,y_n\in S_X\) and \(q_n\in[0,1]\) with \(|D_{q_n}(x_n,y_n)|\to M\). Passing to a subsequence, all \(D_{q_n}(x_n,y_n)\) have the same sign. If the sign is negative, replace \(f\) by \(f^{-1}\) and \((x_n,y_n)\) by \((f(x_n),f(y_n))\); by Lemma 4.1(a) of the first lesson this changes the sign of the defects and keeps \(M\). So \(D_{q_n}(x_n,y_n)\to M\). Passing to a further subsequence, \(q_n\to t\in[0,1]\), and since \(D_q\) is \(2\)-Lipschitz in \(q\), \(D_t(x_n,y_n)\to M\). From \(|D_t|\le2\min(t,1-t)\) we get \(\frac M2\le t\le1-\frac M2\), so \(0<t<1\).
 
 Form \(Q_X\) and \(Q_Y\). For unit vectors \([a_n]\in Q_X\) with \(\|a_n\|=1\) (Lemma 2.1) put \(F_0([a_n])=[f(a_n)]\). Since \(\lim_{\mathcal U}\|f(a_n)-f(a'_n)\|=\lim_{\mathcal U}\|a_n-a'_n\|\), this is well defined and an isometry of \(S_{Q_X}\) into \(S_{Q_Y}\); the same construction with \(f^{-1}\) gives its inverse, so \(F_0\) is surjective. For unit vectors \([a_n],[c_n]\) and \(q\in[0,1]\), Lemma 1.2(a),(b) gives
 \[
-\|F_0[a_n]-qF_0[c_n]\|-\|[a_n]-q[c_n]\|=\lim_{\mathcal U}D_q(a_n,c_n)\in[-M,M].
+\begin{aligned}
+&\|F_0[a_n]-qF_0[c_n]\|-\|[a_n]-q[c_n]\|\\
+&\quad =\lim_{\mathcal U}D_q(a_n,c_n)\in[-M,M].
+\end{aligned}
 \]
 For \(a=[x_n]\) and \(c=[y_n]\) the value at \(q=t\) is \(\lim_{\mathcal U}D_t(x_n,y_n)=M\) by Lemma 1.2(c).
 
@@ -61,10 +73,7 @@ Let \(\widehat X,\widehat Y\) be the completions of \(Q_X,Q_Y\); they are nonzer
 
 ## 4. The measure of noncompactness
 
-For a bounded nonempty subset \(H\) of a normed space, *Kuratowski's measure of noncompactness* is
-\[
-\chi(H)=\inf\{\delta>0:H\text{ is covered by finitely many sets of diameter at most }\delta\}.
-\]
+For a bounded nonempty subset \(H\) of a normed space, *Kuratowski's measure of noncompactness* \(\chi(H)\) is the infimum of the \(\delta>0\) such that \(H\) is covered by finitely many sets of diameter at most \(\delta\).
 It is monotone in \(H\), and \(\chi(H)=0\) exactly when \(H\) is totally bounded. Write \(\overline{\operatorname{conv}}\,H\) for the closed convex hull.
 
 **Lemma 4.1.** Let \(H\) be bounded and nonempty.
@@ -75,7 +84,11 @@ It is monotone in \(H\), and \(\chi(H)=0\) exactly when \(H\) is totally bounded
 
 **Proof.** (a) The closures of the sets of a cover of \(H\) cover \(\overline H\) and have the same diameters; monotonicity gives the reverse inequality. For the convex hull, cover \(H\) by nonempty sets \(H_1,\dots,H_N\) of diameter at most \(\delta\), and let \(R\) bound the norms of the points of \(H\). Each \(\operatorname{conv}H_i\) has diameter at most \(\delta\): for convex combinations \(x=\sum_j\alpha_jh_j\) and \(x'=\sum_k\beta_kh'_k\) of points of \(H_i\), \(x-x'=\sum_{j,k}\alpha_j\beta_k(h_j-h'_k)\). Grouping the terms of a convex combination according to a choice of the set \(H_i\) containing each point, every point of \(\operatorname{conv}H\) has the form \(\sum_{i=1}^N\lambda_iz_i\) with \(z_i\in\operatorname{conv}H_i\) and \((\lambda_i)\) in the simplex \(\Delta=\{\lambda\in\mathbb R^N:\lambda_i\ge0,\sum_i\lambda_i=1\}\). Given \(\eta>0\), partition \(\Delta\), a compact set, into finitely many pieces \(P_1,\dots,P_m\) of \(\ell^1\)-diameter at most \(\eta\), and let \(A_\alpha\) be the set of sums \(\sum_i\lambda_iz_i\) with \(\lambda\in P_\alpha\) and \(z_i\in\operatorname{conv}H_i\). The sets \(A_\alpha\) cover \(\operatorname{conv}H\), and for two sums in one \(A_\alpha\),
 \[
-\Bigl\|\sum_i\lambda_iz_i-\sum_i\lambda'_iz'_i\Bigr\|\le\Bigl\|\sum_i\lambda_i(z_i-z'_i)\Bigr\|+\Bigl\|\sum_i(\lambda_i-\lambda'_i)z'_i\Bigr\|\le\delta+R\eta.
+\begin{aligned}
+&\Bigl\|\sum_i\lambda_iz_i-\sum_i\lambda'_iz'_i\Bigr\|\\
+&\quad \le\Bigl\|\sum_i\lambda_i(z_i-z'_i)\Bigr\|\\
+&\quad +\Bigl\|\sum_i(\lambda_i-\lambda'_i)z'_i\Bigr\|\le\delta+R\eta.
+\end{aligned}
 \]
 So \(\chi(\operatorname{conv}H)\le\delta+R\eta\); letting \(\eta\to0\) and \(\delta\downarrow\chi(H)\) gives \(\chi(\operatorname{conv}H)\le\chi(H)\), and monotonicity gives equality. The closed convex hull is the closure of the convex hull.
 
@@ -91,7 +104,10 @@ So \(\chi(\operatorname{conv}H)\le\delta+R\eta\); letting \(\eta\to0\) and \(\de
 \]
 The denominator is positive because \(g(x)\in K\), so the \(\lambda_i\) are continuous functions with values in the simplex \(\Delta\subseteq\mathbb R^N\). The map \(a\mapsto\bigl(\lambda_i(\sum_ja_jP_j)\bigr)_i\) is a continuous self-map of the compact convex set \(\Delta\) (the points \(\sum_ja_jP_j\) lie in \(K\) by convexity). By Brouwer's theorem it has a fixed point \(a\). For \(x=\sum_ja_jP_j\) we have \(a_i=\lambda_i(x)\), and since \(\lambda_i(x)>0\) only when \(\|P_i-g(x)\|<\delta\),
 \[
-\|x-g(x)\|=\Bigl\|\sum_i\lambda_i(x)\bigl(P_i-g(x)\bigr)\Bigr\|<\delta.
+\begin{aligned}
+&\|x-g(x)\|\\
+&\quad =\Bigl\|\sum_i\lambda_i(x)\bigl(P_i-g(x)\bigr)\Bigr\|<\delta.
+\end{aligned}
 \]
 Applying this with \(\delta=1/k\) gives points \(x_k\in K\) with \(\|x_k-g(x_k)\|<1/k\); a limit point \(x\) of \((x_k)\) in \(K\) satisfies \(g(x)=x\) by continuity. \(\square\)
 

@@ -19,7 +19,10 @@ We use: Lemma 2.1 of [Free independence and Haar tuples](free-independence-and-h
 
 Put
 \[
-a=x_1,\qquad b_j=x_2^{\,j}x_3x_2^{-j},\qquad p_0=e,\qquad p_j=(ab_1)(ab_2)\cdots(ab_j)\quad(j\ge1),
+\begin{gathered}
+a=x_1,\qquad b_j=x_2^{\,j}x_3x_2^{-j},\qquad p_0=e,\\
+p_j=(ab_1)(ab_2)\cdots(ab_j)\quad(j\ge1),
+\end{gathered}
 \]
 and, for \(m\ge1\),
 \[
@@ -41,7 +44,12 @@ a nonempty reduced word, because all exponents are nonzero and adjacent powers a
 
 (iv) *The prefixes.* On the free group on \(U_1,\ldots,U_m\), let \(\varphi(U_j)=U_1U_2\cdots U_j\), \(\psi(U_1)=U_1\) and \(\psi(U_j)=U_{j-1}^{-1}U_j\) for \(j\ge2\). Then
 \[
-\psi\varphi(U_j)=U_1(U_1^{-1}U_2)\cdots(U_{j-1}^{-1}U_j)=U_j,\qquad \varphi\psi(U_j)=(U_1\cdots U_{j-1})^{-1}(U_1\cdots U_j)=U_j,
+\begin{aligned}
+&\psi\varphi(U_j)\\
+&\quad =U_1(U_1^{-1}U_2)\cdots(U_{j-1}^{-1}U_j)=U_j,\\
+&\varphi\psi(U_j)=(U_1\cdots U_{j-1})^{-1}(U_1\cdots U_j)\\
+&\quad =U_j,
+\end{aligned}
 \]
 so \(\varphi\) is an automorphism and \(P_j\mapsto U_1\cdots U_j\) is injective. Composing the injective maps of (iv), (iii) and (ii) sends \(P_j\) to \(p_j\). \(\square\)
 
@@ -53,7 +61,10 @@ so \(\varphi\) is an automorphism and \(P_j\mapsto U_1\cdots U_j\) is injective.
 
 Let \(\tau_\Gamma(x)=\langle x\delta_e,\delta_e\rangle\) be the trace of \(L(\Gamma)\), so \(\tau_\Gamma(\lambda(g))\) is \(1\) for \(g=e\) and \(0\) otherwise. Put \(Q_m=T_mT_m^*\), a positive operator with \(\|Q_m\|\le(m+1)^2\). Let \(\rho_m\) be the spectral measure of the vector \(\delta_e\) for \(Q_m\), a probability measure on \([0,\infty)\) with \(\int f\,d\rho_m=\langle f(Q_m)\delta_e,\delta_e\rangle=\tau_\Gamma(f(Q_m))\) for bounded Borel functions \(f\), and let \(\mu_m\) be its image under \(x\mapsto x/m\). Then
 \[
-\int x^r\,d\mu_m=m^{-r}\tau_\Gamma(Q_m^r)\quad(r\ge0),\qquad \mu_m([0,d])=\tau_\Gamma\big(1_{[0,dm]}(Q_m)\big)\quad(d\ge0).
+\begin{gathered}
+\int x^r\,d\mu_m=m^{-r}\tau_\Gamma(Q_m^r)\quad(r\ge0),\\
+\mu_m([0,d])=\tau_\Gamma\big(1_{[0,dm]}(Q_m)\big)\quad(d\ge0).
+\end{gathered}
 \]
 
 A *perfect matching* of \(\{1,\ldots,2r\}\) is a partition into \(r\) blocks of two elements. It is *noncrossing* if there are no blocks \(\{s_1,s_1'\}\) and \(\{s_2,s_2'\}\) with \(s_1<s_2<s_1'<s_2'\). In a noncrossing perfect matching, the positions strictly between the two elements of a block are matched among themselves, so their number is even and every block joins an odd position with an even one.
@@ -70,14 +81,22 @@ Conversely, let the word represent \(e\). Deleting adjacent inverse pairs as lon
 
 *Reflection.* There are \(\binom{2r}{r}\) sequences in \(\{\pm1\}^{2r}\) with total \(0\). If such a sequence has a negative partial sum, let \(s_0\) be the first position where the partial sum is \(-1\), and change the signs of \(\varepsilon_{s_0+1},\ldots,\varepsilon_{2r}\); the result has total \(-2\). This is a bijection onto the sequences with total \(-2\): each of those reaches \(-1\), and the same operation reverses it. There are \(\binom{2r}{r-1}\) such sequences. So the number of Dyck sequences is
 \[
-\binom{2r}{r}-\binom{2r}{r-1}=\frac{(2r)!}{r!\,r!}-\frac{(2r)!}{(r-1)!\,(r+1)!}=\frac{(2r)!}{r!\,(r+1)!}.\qquad\square
+\begin{aligned}
+&\binom{2r}{r}-\binom{2r}{r-1}=\frac{(2r)!}{r!\,r!}\\
+&\quad -\frac{(2r)!}{(r-1)!\,(r+1)!}\\
+&\quad =\frac{(2r)!}{r!\,(r+1)!}.
+\end{aligned}
 \]
+\(\square\)
 
-**Lemma 2.3.** For every \(r\ge0\), \(\tau_\Gamma(Q_m^r)=\mathrm{Cat}_r\,m(m-1)\cdots(m-r+1)+E_{m,r}\) with \(0\le E_{m,r}\le c_rm^{r-1}\), where \(c_r\) depends only on \(r\). Consequently \(\int x^r\,d\mu_m\to\mathrm{Cat}_r\) as \(m\to\infty\).
+**Lemma 2.3.** For every \(r\ge0\), \(\tau_\Gamma(Q_m^r)\) is the sum of \(\mathrm{Cat}_r\,m(m-1)\cdots(m-r+1)\) and a number \(E_{m,r}\) with \(0\le E_{m,r}\le c_rm^{r-1}\), where \(c_r\) depends only on \(r\). Consequently \(\int x^r\,d\mu_m\to\mathrm{Cat}_r\) as \(m\to\infty\).
 
-**Proof.** For \(r=0\) both sides are \(1\). Let \(r\ge1\) and \(V_i=\lambda(p_i)\). Expanding,
+**Proof.** For \(r=0\) both sides are \(1\). Let \(r\ge1\) and \(V_i=\lambda(p_i)\). Expanding, with all indices in \(\{0,\ldots,m\}\),
 \[
-\tau_\Gamma(Q_m^r)=\sum_{i_1,\ldots,i_{2r}\in\{0,\ldots,m\}}\tau_\Gamma\big(V_{i_1}V_{i_2}^*V_{i_3}V_{i_4}^*\cdots V_{i_{2r-1}}V_{i_{2r}}^*\big).
+\begin{aligned}
+&\tau_\Gamma(Q_m^r)=\sum_{i_1,\ldots,i_{2r}}\tau_\Gamma\big(V_{i_1}V_{i_2}^*V_{i_3}V_{i_4}^*\cdots\\
+&\qquad\qquad\cdots V_{i_{2r-1}}V_{i_{2r}}^*\big).
+\end{aligned}
 \]
 The summand is \(1\) if \(p_{i_1}p_{i_2}^{-1}\cdots p_{i_{2r}}^{-1}=e\) and \(0\) otherwise. By Lemma 1.1, this happens exactly when the word \(\omega(i)=P_{i_1}P_{i_2}^{-1}\cdots P_{i_{2r}}^{-1}\), in which the symbols \(P_0\) are omitted, represents \(e\) in the free group on \(P_1,\ldots,P_m\). Fix an index sequence \(i\) with summand \(1\), and let \(k\) be the number of distinct nonzero indices in it.
 
@@ -101,53 +120,83 @@ For a continuous function \(\varphi\) on \([0,4]\) put
 
 **Proof.** Let \(W_k=\int_0^{\pi/2}\sin^k\theta\,d\theta\). Integration by parts gives \(W_k=\frac{k-1}kW_{k-2}\) for \(k\ge2\), and \(W_0=\frac\pi2\), so \(W_{2r}=\frac\pi2\cdot\frac{(2r)!}{4^r(r!)^2}\). Since \(\cos^2=1-\sin^2\),
 \[
-\int_0^{\pi/2}\sin^{2r}\theta\cos^2\theta\,d\theta=W_{2r}-W_{2r+2}=\frac{W_{2r}}{2r+2},
+\begin{aligned}
+&\int_0^{\pi/2}\sin^{2r}\theta\cos^2\theta\,d\theta=W_{2r}\\
+&\quad -W_{2r+2}=\frac{W_{2r}}{2r+2},
+\end{aligned}
 \]
 and
 \[
-\Lambda(x^r)=\frac{4^{r+1}}\pi\cdot\frac{W_{2r}}{2r+2}=\frac{4^{r+1}}\pi\cdot\frac\pi2\cdot\frac{(2r)!}{4^r(r!)^2\,(2r+2)}=\frac{(2r)!}{r!\,(r+1)!}.\qquad\square
+\begin{aligned}
+&\Lambda(x^r)=\frac{4^{r+1}}\pi\cdot\frac{W_{2r}}{2r+2}\\
+&\quad =\frac{4^{r+1}}\pi\cdot\frac\pi2\cdot\frac{(2r)!}{4^r(r!)^2\,(2r+2)}\\
+&\quad =\frac{(2r)!}{r!\,(r+1)!}.
+\end{aligned}
 \]
+\(\square\)
 
 **Lemma 3.2.** For every bounded continuous \(\varphi\colon[0,\infty)\to\mathbb R\), \(\int\varphi\,d\mu_m\to\Lambda(\varphi|_{[0,4]})\) as \(m\to\infty\).
 
-**Proof.** Let \(\varepsilon>0\) and \(c=\sup|\varphi|\). By the Weierstrass approximation theorem there is a real polynomial \(q\) with \(|\varphi-q|\le\varepsilon\) on \([0,5]\). Let \(N\) be its degree and \(C_q\) the sum of the absolute values of its coefficients. For \(x\ge5\), \(|\varphi(x)-q(x)|\le c+C_qx^N\le(c+C_q)x^{N+s}5^{-s}\) for every \(s\ge0\). Hence
+**Proof.** Let \(\varepsilon>0\) and \(c=\sup|\varphi|\). By the Weierstrass approximation theorem there is a real polynomial \(q\) with \(|\varphi-q|\le\varepsilon\) on \([0,5]\). Let \(N\) be its degree and \(C_q\) the sum of the absolute values of its coefficients. For \(x\ge5\), \(|\varphi(x)-q(x)|\le c+C_qx^N\), which is at most \((c+C_q)x^{N+s}5^{-s}\) for every \(s\ge0\). Hence
 \[
-\Big|\int\varphi\,d\mu_m-\int q\,d\mu_m\Big|\le\varepsilon+(c+C_q)5^{-s}\int x^{N+s}\,d\mu_m .
+\begin{aligned}
+&\Big|\int\varphi\,d\mu_m-\int q\,d\mu_m\Big|\le\varepsilon\\
+&\quad +(c+C_q)5^{-s}\int x^{N+s}\,d\mu_m .
+\end{aligned}
 \]
 By Lemma 2.3 and Lemma 3.1, \(\int q\,d\mu_m\to\Lambda(q)\) and \(\int x^{N+s}\,d\mu_m\to\mathrm{Cat}_{N+s}\le4^{N+s}\), the last because \(\Lambda(x^{N+s})\le4^{N+s}\). Also \(|\Lambda(\varphi)-\Lambda(q)|\le\varepsilon\). Therefore
 \[
-\limsup_m\Big|\int\varphi\,d\mu_m-\Lambda(\varphi)\Big|\le2\varepsilon+(c+C_q)4^N(4/5)^s .
+\begin{aligned}
+&\limsup_m\Big|\int\varphi\,d\mu_m-\Lambda(\varphi)\Big|\\
+&\quad \le2\varepsilon+(c+C_q)4^N(4/5)^s .
+\end{aligned}
 \]
 Let \(s\to\infty\), then \(\varepsilon\to0\). \(\square\)
 
 **Corollary 3.3.** For every \(\kappa>0\) there are \(d>0\) and \(m_0\) with \(\mu_m([0,d])<\kappa\) for all \(m\ge m_0\).
 
-**Proof.** Choose \(d\in(0,1]\) with \(\frac4\pi\arcsin\sqrt{d/2}<\kappa\). Let \(\varphi\) be \(1\) on \([0,d]\), \(0\) on \([2d,\infty)\) and linear in between. Then \(\mu_m([0,d])\le\int\varphi\,d\mu_m\), and \(\Lambda(\varphi)\le\frac4\pi\cdot\big|\{\theta\in[0,\tfrac\pi2]:4\sin^2\theta\le2d\}\big|=\frac4\pi\arcsin\sqrt{d/2}<\kappa\), using \(\cos^2\le1\). By Lemma 3.2, \(\int\varphi\,d\mu_m<\kappa\) for all large \(m\). \(\square\)
+**Proof.** Choose \(d\in(0,1]\) with \(\frac4\pi\arcsin\sqrt{d/2}<\kappa\). Let \(\varphi\) be \(1\) on \([0,d]\), \(0\) on \([2d,\infty)\) and linear in between. Then \(\mu_m([0,d])\le\int\varphi\,d\mu_m\), and \(\Lambda(\varphi)\le\frac4\pi\cdot\big|\{\theta\in[0,\tfrac\pi2]:4\sin^2\theta\le2d\}\big|\), which is \(\frac4\pi\arcsin\sqrt{d/2}<\kappa\), using \(\cos^2\le1\). By Lemma 3.2, \(\int\varphi\,d\mu_m<\kappa\) for all large \(m\). \(\square\)
 
 ## 4. Cutoff inversion
 
 **Proof of Theorem 4.1.** Let \(\eta>0\). By Corollary 3.3 choose \(d>0\) and then \(m\) such that
 \[
-\mu_m([0,d])<\frac{\eta^2}8\qquad\text{and}\qquad\frac1{dm}<\frac{\eta^2}{16}.
+\begin{gathered}
+\mu_m([0,d])<\frac{\eta^2}8\\
+\text{and}\qquad \frac1{dm}<\frac{\eta^2}{16}.
+\end{gathered}
 \]
 Let \(f\) be the bounded Borel function with \(f(x)=1/x\) for \(x>dm\) and \(f(x)=0\) for \(x\le dm\), and put
 \[
 E=1_{(dm,\infty)}(Q_m),\qquad R=f(Q_m).
 \]
-By the Borel functional calculus, \(R\ge0\), \(\|R\|\le1/(dm)\), \(Q_mR=E\) (because \(xf(x)=1_{(dm,\infty)}(x)\)) and \(RQ_mR=R\) (because \(xf(x)^2=f(x)\)). Also \(\langle(1-E)\delta_e,\delta_e\rangle=\tau_\Gamma(1_{[0,dm]}(Q_m))=\mu_m([0,d])\). Let \(h^0=T_m^*R\,\delta_e\in\ell^2(\Gamma)\). Then
+By the Borel functional calculus, \(R\ge0\), \(\|R\|\le1/(dm)\), \(Q_mR=E\) (because \(xf(x)=1_{(dm,\infty)}(x)\)) and \(RQ_mR=R\) (because \(xf(x)^2=f(x)\)). Also \(\langle(1-E)\delta_e,\delta_e\rangle=\tau_\Gamma(1_{[0,dm]}(Q_m))\), which is \(\mu_m([0,d])\). Let \(h^0=T_m^*R\,\delta_e\in\ell^2(\Gamma)\). Then
 \[
-T_mh^0=Q_mR\,\delta_e=E\delta_e,\qquad \|T_mh^0-\delta_e\|^2=\langle(1-E)\delta_e,\delta_e\rangle<\frac{\eta^2}8,
+\begin{gathered}
+T_mh^0=Q_mR\,\delta_e=E\delta_e,\\
+\|T_mh^0-\delta_e\|^2=\langle(1-E)\delta_e,\delta_e\rangle<\frac{\eta^2}8,
+\end{gathered}
 \]
 \[
-\|h^0\|^2=\langle RQ_mR\,\delta_e,\delta_e\rangle=\langle R\,\delta_e,\delta_e\rangle\le\frac1{dm}<\frac{\eta^2}{16}.
+\begin{aligned}
+&\|h^0\|^2=\langle RQ_mR\,\delta_e,\delta_e\rangle\\
+&\quad =\langle R\,\delta_e,\delta_e\rangle\le\frac1{dm}<\frac{\eta^2}{16}.
+\end{aligned}
 \]
 *Real coefficients.* Let \(J\) be the coefficientwise complex conjugation of \(\ell^2(\Gamma)\). It is isometric, fixes \(\delta_e\), and commutes with every \(\lambda(g)\), hence with \(T_m\). The real part \(h^1=\frac12(h^0+Jh^0)\) satisfies \(\|h^1\|\le\|h^0\|<\eta/4\) and
 \[
-\|T_mh^1-\delta_e\|=\tfrac12\big\|(T_mh^0-\delta_e)+J(T_mh^0-\delta_e)\big\|\le\|T_mh^0-\delta_e\|<\eta/\sqrt8 .
+\begin{aligned}
+&\|T_mh^1-\delta_e\|\\
+&\quad =\tfrac12\big\|(T_mh^0-\delta_e)+J(T_mh^0-\delta_e)\big\|\\
+&\quad \le\|T_mh^0-\delta_e\|<\eta/\sqrt8 .
+\end{aligned}
 \]
 *Finite support.* The finitely supported real vectors are dense in the real vectors of \(\ell^2(\Gamma)\); choose \(h\in\mathbb R^{(\Gamma)}\) with \(\|h-h^1\|<\eta/(4(m+1))\). Since \(\|T_m\|\le m+1\),
 \[
-\|h\|<\frac\eta4+\frac\eta{4(m+1)}<\eta,\qquad \|T_mh-\delta_e\|<\frac\eta4+\frac\eta{\sqrt8}<\eta .
+\begin{gathered}
+\|h\|<\frac\eta4+\frac\eta{4(m+1)}<\eta,\\
+\|T_mh-\delta_e\|<\frac\eta4+\frac\eta{\sqrt8}<\eta .
+\end{gathered}
 \]
 By Lemma 1.2, \(w=w_m\) satisfies \(D^h_w=T_mh\), which proves the theorem. \(\square\)
 
@@ -167,9 +216,9 @@ The order of the choices matters: first \(d\), then \(m\), then the finitely sup
 
 **5.1.** By Lemma 1.1 of the previous lesson, \(D^h_w=\sum_k\lambda(y_1\cdots y_{k-1})D^h_{y_k}\) over the letters \(y_k\) of the reduced word. Letters \(x_j^{\pm1}\) with \(j\ge2\) contribute \(0\); a letter \(x_1\) contributes a translate of \(h\), and a letter \(x_1^{-1}\) contributes minus a translate of \(h\). Translates have norm \(\|h\|\), so \(\|D^h_w\|\le N\|h\|\). If \(\|h\|<\eta\) and \(\|D^h_w-\delta_e\|<\eta\), then \(1-\eta<\|D^h_w\|<N\eta\).
 
-**5.2.** \(\tau_\Gamma(Q_m)=\sum_{i,i'}\tau_\Gamma(\lambda(p_ip_{i'}^{-1}))\) counts the pairs with \(p_i=p_{i'}\), that is \(i=i'\): \(m+1\). For \(Q_m^2\), the word \(P_{i_1}P_{i_2}^{-1}P_{i_3}P_{i_4}^{-1}\) (with \(P_0\) omitted) represents \(e\) exactly when \(i_1=i_2\) and \(i_3=i_4\), or \(i_2=i_3\) and \(i_1=i_4\). Both conditions clearly give \(e\). Conversely, if the word represents \(e\), the exponent sum of every \(P_c\) is \(0\), so the nonzero entries of \(\{i_1,i_3\}\) and of \(\{i_2,i_4\}\) agree as multisets; as both multisets have two elements, \(\{i_1,i_3\}=\{i_2,i_4\}\), which is one of the two conditions. The two families have \((m+1)^2\) members each and \(m+1\) in common, so \(\tau_\Gamma(Q_m^2)=2(m+1)^2-(m+1)=(m+1)(2m+1)\). This agrees with Lemma 2.3: \(\mathrm{Cat}_2\,m(m-1)=2m^2-2m\), with an error of order \(m\).
+**5.2.** \(\tau_\Gamma(Q_m)=\sum_{i,i'}\tau_\Gamma(\lambda(p_ip_{i'}^{-1}))\) counts the pairs with \(p_i=p_{i'}\), that is \(i=i'\): \(m+1\). For \(Q_m^2\), the word \(P_{i_1}P_{i_2}^{-1}P_{i_3}P_{i_4}^{-1}\) (with \(P_0\) omitted) represents \(e\) exactly when \(i_1=i_2\) and \(i_3=i_4\), or \(i_2=i_3\) and \(i_1=i_4\). Both conditions clearly give \(e\). Conversely, if the word represents \(e\), the exponent sum of every \(P_c\) is \(0\), so the nonzero entries of \(\{i_1,i_3\}\) and of \(\{i_2,i_4\}\) agree as multisets; as both multisets have two elements, \(\{i_1,i_3\}=\{i_2,i_4\}\), which is one of the two conditions. The two families have \((m+1)^2\) members each and \(m+1\) in common, so \(\tau_\Gamma(Q_m^2)=2(m+1)^2-(m+1)\), which is \((m+1)(2m+1)\). This agrees with Lemma 2.3: \(\mathrm{Cat}_2\,m(m-1)=2m^2-2m\), with an error of order \(m\).
 
-**5.3.** For \(0<\epsilon<\pi/2\) substitute \(x=4\sin^2\theta\) on \([\epsilon,\pi/2]\): \(dx=8\sin\theta\cos\theta\,d\theta\) and \(\sqrt{(4-x)/x}=\cos\theta/\sin\theta\), so \(\frac1{2\pi}\varphi(x)\sqrt{(4-x)/x}\,dx=\frac4\pi\varphi(4\sin^2\theta)\cos^2\theta\,d\theta\). Let \(\epsilon\to0\).
+**5.3.** For \(0<\epsilon<\pi/2\) substitute \(x=4\sin^2\theta\) on \([\epsilon,\pi/2]\): \(dx=8\sin\theta\cos\theta\,d\theta\) and \(\sqrt{(4-x)/x}=\cos\theta/\sin\theta\), so \(\frac1{2\pi}\varphi(x)\sqrt{(4-x)/x}\,dx\) becomes \(\frac4\pi\varphi(4\sin^2\theta)\cos^2\theta\,d\theta\). Let \(\epsilon\to0\).
 
 **5.4.** In a noncrossing matching of \(\{1,\ldots,2r\}\) the partner of \(1\) is an even position \(2j+2\), \(0\le j\le r-1\); the \(2j\) positions inside and the \(2r-2j-2\) positions outside carry independent noncrossing matchings, and every such choice gives a noncrossing matching.
 

@@ -20,16 +20,21 @@ Matrix subalgebras, matrix units diagonalizing a state, the induced expectations
 
 **Lemma 1.1** (amplified inclusions). Let \(\mathcal M\) be a von Neumann algebra, \(G\subset\mathcal M\) a matrix subalgebra with matrix units \((g_{ab})\) diagonalizing a state \(\psi_G\) with weights \(k_a\), \(M_1=G'\cap\mathcal M\), and \(N_1\subset M_1\) a von Neumann subalgebra with a faithful normal conditional expectation \(E_1\colon M_1\to N_1\). Then \(\mathcal E=E_1\circ E_G\) is a faithful normal conditional expectation of \(\mathcal M\) onto \(N_1\). Let \(\chi\) be a faithful normal state on \(N_1\), \(\theta=\chi\circ\mathcal E\), \(\bar\chi_1=\chi\circ E_1\), and \(\mathrm B_1=\mathrm B(N_1\subset M_1,\chi)\) with its \(\bar\chi_1\)-preserving expectation \(E_{\mathrm B_1}\). Then
 \[
-\mathrm B(N_1\subset\mathcal M,\chi)=\Big\{\sum_{a,b}g_{ab}b_{ab}:\ b_{ab}\in\mathrm B_1\Big\},
+\begin{aligned}
+&\mathrm B(N_1\subset\mathcal M,\chi)\\
+&\quad =\Big\{\sum_{a,b}g_{ab}b_{ab}:\ b_{ab}\in\mathrm B_1\Big\},
+\end{aligned}
 \]
 and its \(\theta\)-preserving expectation is \(\sum_{a,b}g_{ab}z_{ab}\mapsto\sum_{a,b}g_{ab}E_{\mathrm B_1}(z_{ab})\) (coefficients \(z_{ab}\in M_1\) as in Lemma 1.1(1) of the previous lesson).
 
 **Proof.** \(E_G\) is a faithful normal conditional expectation onto \(M_1\supset N_1\), so \(\mathcal E\) is one onto \(N_1\). For \(y\in M_1\), \(E_G(g_{cd}y)=\psi_G(g_{cd})y\), so \(\theta(g_{cd}y)=\delta_{cd}k_c\bar\chi_1(y)\). For \(v=\sum g_{ab}v_{ab}\) and \(w=\sum g_{ab}w_{ab}\) with coefficients in \(M_1\), \(v^*w=\sum_{a,b,d}g_{bd}v_{ab}^*w_{ad}\), hence
 \[
-\theta(v^*w)=\sum_{a,b}k_b\,\bar\chi_1(v_{ab}^*w_{ab}) .
-\tag{1.1}
+\begin{aligned}
+&\theta(v^*w)\\
+&\quad =\sum_{a,b}k_b\,\bar\chi_1(v_{ab}^*w_{ab}) .
+\end{aligned}\tag{1.1}
 \]
-For \(x\in N_1\) and \(a=\sum g_{ab}a_{ab}\), \([a,x]=\sum g_{ab}[a_{ab},x]\), so by (1.1) \(\|[a,x_n]\|_\theta\to0\) exactly when \(\|[a_{ab},x_n]\|_{\bar\chi_1}\to0\) for all \(a,b\). By Definition 2.1 of the first lesson this gives the description of \(\mathrm B(N_1\subset\mathcal M,\chi)\). By the remark after Theorem 2.3 of the first lesson, the \(\theta\)-preserving expectation of \(z\) is the unique \(z'\) in the relative bicentralizer with \(\theta(b^*(z-z'))=0\) for all \(b\) in it. For \(z'=\sum g_{ab}E_{\mathrm B_1}(z_{ab})\) and \(b=\sum g_{ab}b_{ab}\), (1.1) gives \(\theta(b^*(z-z'))=\sum_{a,b}k_b\bar\chi_1\big(b_{ab}^*(z_{ab}-E_{\mathrm B_1}(z_{ab}))\big)=0\). \(\square\)
+For \(x\in N_1\) and \(a=\sum g_{ab}a_{ab}\), \([a,x]=\sum g_{ab}[a_{ab},x]\), so by (1.1) \(\|[a,x_n]\|_\theta\to0\) exactly when \(\|[a_{ab},x_n]\|_{\bar\chi_1}\to0\) for all \(a,b\). By Definition 2.1 of the first lesson this gives the description of \(\mathrm B(N_1\subset\mathcal M,\chi)\). By the remark after Theorem 2.3 of the first lesson, the \(\theta\)-preserving expectation of \(z\) is the unique \(z'\) in the relative bicentralizer with \(\theta(b^*(z-z'))=0\) for all \(b\) in it. For \(z'=\sum g_{ab}E_{\mathrm B_1}(z_{ab})\) and \(b=\sum g_{ab}b_{ab}\), (1.1) shows that \(\theta(b^*(z-z'))\) equals \(\sum_{a,b}k_b\bar\chi_1\big(b_{ab}^*(z_{ab}-E_{\mathrm B_1}(z_{ab}))\big)\), which is \(0\). \(\square\)
 
 **Lemma 1.2** (\(E^\sharp\) in matrix coordinates). Let \(R\subset N\) be a matrix subalgebra with matrix units \((r_{ij})_{i,j=1}^k\). Let \(E^\sharp\) be the expectation of \(M\) onto \(\mathrm B^\sharp(N\subset M)\) and \(E^\sharp_R\) that of \(M_R\) onto \(\mathrm B^\sharp(N_R\subset M_R)\) (Proposition 4.2 of the lesson on the relative flow, for the inclusions with \(E\) and with \(E|_{M_R}\)). Then \(E^\sharp\big(\sum_{i,j}r_{ij}x_{ij}\big)=\sum_{i,j}r_{ij}E^\sharp_R(x_{ij})\) for \(x_{ij}\in M_R\).
 
@@ -40,9 +45,9 @@ For \(x\in N_1\) and \(a=\sum g_{ab}a_{ab}\), \([a,x]=\sum g_{ab}[a_{ab},x]\), s
 1. \(\|S_\rho(y)\|\le\|\rho\|\,\|y\|\).
 2. If \(\psi\) is a faithful normal state on \(N\) with \(\psi\circ E_G=\psi\), then \(G\) is globally invariant under \(\sigma^\psi\), and \(S_{\psi|L}(y)=E^\psi_G(y)\), where \(E^\psi_G\) is the \(\psi\)-preserving conditional expectation of \(N\) onto \(G\).
 
-**Proof.** (1) For unit vectors \(c,d\in\mathbb C^k\) let \(r_c=\sum_bc_bg_{b1}\). Then \(r_c^*r_c=g_{11}\), so \(\|r_c\|=1\), and \(r_d^*yr_c=g_{11}\sum_{a,b}\bar d_ac_by_{ab}\). The map \(y'\mapsto g_{11}y'\) is a \(*\)-homomorphism on \(G'\cap N\), injective because \(g_{11}y'=0\) gives \(g_{ll}y'=g_{l1}g_{11}y'g_{1l}=0\) for all \(l\); so it is isometric, and \(\|\sum\bar d_ac_by_{ab}\|\le\|y\|\). Identifying \(G\) with \(M_k(\mathbb C)\), the matrix of \(S_\rho(y)\) is \((\rho(y_{ab}))\), and \(|\sum_{a,b}\bar d_a\rho(y_{ab})c_b|=|\rho(\sum\bar d_ac_by_{ab})|\le\|\rho\|\|y\|\). Take the supremum over \(c,d\).
+**Proof.** (1) For unit vectors \(c,d\in\mathbb C^k\) let \(r_c=\sum_bc_bg_{b1}\). Then \(r_c^*r_c=g_{11}\), so \(\|r_c\|=1\), and \(r_d^*yr_c=g_{11}\sum_{a,b}\bar d_ac_by_{ab}\). The map \(y'\mapsto g_{11}y'\) is a \(*\)-homomorphism on \(G'\cap N\), injective because \(g_{11}y'=0\) gives \(g_{ll}y'=g_{l1}g_{11}y'g_{1l}=0\) for all \(l\); so it is isometric, and \(\|\sum\bar d_ac_by_{ab}\|\le\|y\|\). Identifying \(G\) with \(M_k(\mathbb C)\), the matrix of \(S_\rho(y)\) is \((\rho(y_{ab}))\), and \(|\sum_{a,b}\bar d_a\rho(y_{ab})c_b|=|\rho(\sum\bar d_ac_by_{ab})|\), which is at most \(\|\rho\|\|y\|\). Take the supremum over \(c,d\).
 
-(2) Invariance is Lemma 1.2 of the previous lesson, which with the modular expectation theorem gives \(E^\psi_G\); it is characterized by \(E^\psi_G(y)\in G\) and \(\psi(g(y-E^\psi_G(y)))=0\) for \(g\in G\). By Lemma 1.1(3) of the previous lesson, \(\psi(g_{cd}y)=\sum_b\psi(g_{cb}y_{db})=\sum_b\psi_G(g_{cb})\psi(y_{db})=k_c\psi(y_{dc})\), and the same computation gives \(\psi(g_{cd}S_\psi(y))=k_c\psi(y_{dc})\). \(\square\)
+(2) Invariance is Lemma 1.2 of the previous lesson, which with the modular expectation theorem gives \(E^\psi_G\); it is characterized by \(E^\psi_G(y)\in G\) and \(\psi(g(y-E^\psi_G(y)))=0\) for \(g\in G\). By Lemma 1.1(3) of the previous lesson, \(\psi(g_{cd}y)=\sum_b\psi(g_{cb}y_{db})\), which is \(\sum_b\psi_G(g_{cb})\psi(y_{db})=k_c\psi(y_{dc})\), and the same computation gives \(\psi(g_{cd}S_\psi(y))=k_c\psi(y_{dc})\). \(\square\)
 
 ## 2. One step
 
@@ -59,15 +64,22 @@ By Lemma 1.2 of the first lesson, \(Q\subset\mathcal M^\omega\) is a II₁ facto
 
 *Step 2: a dyadic matrix algebra.* By Lemma 5.1 of the previous lesson there are, for \(j\ge1\), integers \(p_j\), unital \(*\)-homomorphisms \(\Theta_j\colon M_{2^{p_j}}(\mathbb C)\to Q\) and unitaries \(c_j\) with \(\|U-U_j\|_\tau\le1/j\), where \(U_j=\Theta_j(c_j)\). Let \(\Omega\) be the cyclic and separating vector of \(\theta^\omega\) in \(L^2(\mathcal M^\omega,\theta^\omega)\), and \(D_j=U_j-U\). Then \(\|D_j\|\le2\) and \(\|D_j\Omega\|=\|D_j\|_\tau\to0\). For \(y'\) in the commutant of \(\mathcal M^\omega\), \(\|D_jy'\Omega\|=\|y'D_j\Omega\|\to0\); these vectors are dense and the \(D_j\) are bounded, so \(D_j\eta\to0\) for every vector \(\eta\), in particular \(\|D_jz\|_{\theta^\omega}\to0\). Unitaries \(W\in Q\) satisfy \(\|aW^*\|_{\theta^\omega}=\|a\|_{\theta^\omega}\), and
 \[
-\|zD_j^*\|^2_{\theta^\omega}=\theta^\omega(D_jz^*zD_j^*)=\theta^\omega(z^*zD_j^*D_j)=\langle D_j^*D_j\Omega,z^*z\Omega\rangle\le2\|z\|^2\|D_j\Omega\|\to0 .
+\begin{aligned}
+&\|zD_j^*\|^2_{\theta^\omega}=\theta^\omega(D_jz^*zD_j^*)\\
+&\quad =\theta^\omega(z^*zD_j^*D_j)=\langle D_j^*D_j\Omega,z^*z\Omega\rangle\\
+&\quad \le2\|z\|^2\|D_j\Omega\|\to0 .
+\end{aligned}
 \]
 Since \(U_jzU_j^*-UzU^*=D_jzU_j^*+UzD_j^*\), we get \(\|U_jzU_j^*-UzU^*\|_{\theta^\omega}\to0\). Fix \(j\) with \(\|U_jzU_j^*-z\|_{\theta^\omega}\ge\frac34\|z\|_\theta\), and write \(p,\Theta,c\) for \(p_j,\Theta_j,c_j\).
 
 *Step 3: lifting.* Proposition 4.4 of the previous lesson, for \(N_1\) and \(\chi\), gives unital \(*\)-homomorphisms \(\theta_m\colon M_{2^p}(\mathbb C)\to N_1\) such that \((\theta_m(a))_m\in A_{\chi,\omega}(N_1)\) represents \(\Theta(a)\). Let \(T_m=\theta_m(M_{2^p}(\mathbb C))\), with matrix units \(\theta_m(\varepsilon_{ab})\), and \(u_m=\theta_m(c)\). By Lemma 1.2 of the first lesson the class of \((u_m)\) in \(\mathcal M^\omega\) is \(U_j\), so by the norm formula after Lemma 1.4 there,
 \[
-\lim_\omega\|u_mzu_m^*-z\|_\theta=\|U_jzU_j^*-z\|_{\theta^\omega}\ge\tfrac34\|z\|_\theta .
+\begin{aligned}
+&\lim_\omega\|u_mzu_m^*-z\|_\theta\\
+&\quad =\|U_jzU_j^*-z\|_{\theta^\omega}\ge\tfrac34\|z\|_\theta .
+\end{aligned}
 \]
-By Lemma 1.1(4) of the previous lesson, with equal weights, \(\|\chi\circ E_{T_m}-\chi\|\le2^p\max_{a,b}\|[\theta_m(\varepsilon_{ab}),\chi]\|\to_\omega0\). Put \(\varepsilon'=\min\big(\varepsilon,\varepsilon/(2\|z\|^2)\big)\) and choose \(m\) with \(\|u_mzu_m^*-z\|_\theta\ge\frac12\|z\|_\theta\) and \(\|\chi\circ E_{T_m}-\chi\|\le\varepsilon'\). Let \(T=T_m\) and \(u=u_m\). This gives the first half of (1).
+By Lemma 1.1(4) of the previous lesson, with equal weights, \(\|\chi\circ E_{T_m}-\chi\|\) is at most \(2^p\max_{a,b}\|[\theta_m(\varepsilon_{ab}),\chi]\|\), which tends to \(0\) along \(\omega\). Put \(\varepsilon'=\min\big(\varepsilon,\varepsilon/(2\|z\|^2)\big)\) and choose \(m\) with \(\|u_mzu_m^*-z\|_\theta\ge\frac12\|z\|_\theta\) and \(\|\chi\circ E_{T_m}-\chi\|\le\varepsilon'\). Let \(T=T_m\) and \(u=u_m\). This gives the first half of (1).
 
 The expectation \(E_T\) commutes with \(E_1\) and \(E_G\) (Lemma 1.1(5),(6) of the previous lesson), so \(\theta\circ E_T=(\chi\circ E_T)\circ E_1\circ E_G\) and \(\|\theta\circ E_T-\theta\|\le\varepsilon'\). Put \(\theta_T=\theta\circ E_T\). Then \(\theta_T\circ E_T=\theta_T\), and Lemma 1.3 of the previous lesson gives
 \[
@@ -75,55 +87,89 @@ The expectation \(E_T\) commutes with \(E_1\) and \(E_G\) (Lemma 1.1(5),(6) of t
 \]
 For \(y\in\mathcal M\), \(|\,\|y\|^2_{\theta_T}-\|y\|^2_\theta|\le\|y\|^2\varepsilon'\); with \(\|uzu^*-z\|\le2\|z\|\) this gives
 \[
-\|E_T(z)\|^2_{\theta_T}\le\|z\|_\theta^2+\|z\|^2\varepsilon'-\tfrac14\big(\tfrac14\|z\|^2_\theta-4\|z\|^2\varepsilon'\big)=\tfrac{15}{16}\|z\|^2_\theta+2\|z\|^2\varepsilon',
+\begin{aligned}
+&\|E_T(z)\|^2_{\theta_T}\le\|z\|_\theta^2+\|z\|^2\varepsilon'\\
+&\quad -\tfrac14\big(\tfrac14\|z\|^2_\theta-4\|z\|^2\varepsilon'\big)\\
+&\quad =\tfrac{15}{16}\|z\|^2_\theta+2\|z\|^2\varepsilon',
+\end{aligned}
 \]
 which is (2).
 
 *Step 4: the eigen part.* Let \(N_2=T'\cap N_1\) and \(\chi'\) the restriction of \(\chi\circ E_T\) to \(N_2\). Then \(\chi'\) is a faithful normal state, since \(E_T\) is faithful, and \(N_2\) is a factor of type III₁ with separable predual. Proposition 3.1 of the previous lesson in \(N_2\), with \(\lambda=\mu\) and \(\delta=\mu\varepsilon/4\), gives \(F^\mu\subset N_2\) carrying \(\omega_\mu\) with \(\|\chi'\circ E_{F^\mu}-\chi'\|\le\varepsilon/2\) on \(N_2\). With \(N_3=F^{\mu\prime}\cap N_2\) and \(\chi''\) the restriction of \(\chi'\circ E_{F^\mu}\) to \(N_3\), the same proposition with \(\lambda=\nu\) gives \(F^\nu\subset N_3\) carrying \(\omega_\nu\) with \(\|\chi''\circ E_{F^\nu}-\chi''\|\le\varepsilon/2\). For \(y\in N_1\), \(E_T(y)\in N_2\), and \(E_T\), \(E_{F^\mu}\) commute, so
 \[
-(\chi\circ E_T\circ E_{F^\mu}-\chi\circ E_T)(y)=(\chi'\circ E_{F^\mu}-\chi')(E_T(y)),
+\begin{aligned}
+&(\chi\circ E_T\circ E_{F^\mu}-\chi\circ E_T)(y)\\
+&\quad =(\chi'\circ E_{F^\mu}-\chi')(E_T(y)),
+\end{aligned}
 \]
-whose modulus is at most \(\frac\varepsilon2\|y\|\). In the same way, since \(E_T\circ E_{F^\mu}\) maps \(N_1\) into \(N_3\), \(\|\chi\circ E_T\circ E_{F^\mu}\circ E_{F^\nu}-\chi\circ E_T\circ E_{F^\mu}\|\le\varepsilon/2\). As \(E_K=E_{F^\mu}\circ E_{F^\nu}\), this gives the second half of (1). \(\square\)
+whose modulus is at most \(\frac\varepsilon2\|y\|\). In the same way, since \(E_T\circ E_{F^\mu}\) maps \(N_1\) into \(N_3\), the functionals \(\chi\circ E_T\circ E_{F^\mu}\circ E_{F^\nu}\) and \(\chi\circ E_T\circ E_{F^\mu}\) differ in norm by at most \(\varepsilon/2\). As \(E_K=E_{F^\mu}\circ E_{F^\nu}\), this gives the second half of (1). \(\square\)
 
 ## 3. The construction
 
 Fix a faithful normal state \(\varphi\) on \(N\) and a number \(0<\eta\le1\). By (B1) of the lesson on full factors, the unit balls of \(M\) and of \(N\) contain sequences \((a_j)_{j\ge1}\) and \((b_j)_{j\ge1}\) that are dense for the \(*\)-strong topology. Fix a sequence \(k(0),k(1),\ldots\) of positive integers in which every positive integer occurs infinitely often, and put
 \[
-x_{2m}=a_{k(m)}\in M,\qquad x_{2m+1}=b_{k(m)}\in N\qquad(m\ge0).
+\begin{gathered}
+x_{2m}=a_{k(m)}\in M,\\
+x_{2m+1}=b_{k(m)}\in N\qquad (m\ge0).
+\end{gathered}
 \]
 
 **Theorem 3.1.** There are mutually commuting matrix subalgebras \(T_1,F^\mu_1,F^\nu_1,T_2,F^\mu_2,F^\nu_2,\ldots\) of \(N\), with \(T_n\cong M_{2^{p_n}}(\mathbb C)\) carrying \(\tau\), \(F^\mu_n\) carrying \(\omega_\mu\) and \(F^\nu_n\) carrying \(\omega_\nu\), with the following properties. Put
 \[
-G_n=F^\mu_n\vee F^\nu_n,\quad F_n=T_n\vee G_n,\quad R_n=F_1\vee\cdots\vee F_n,\quad T^{(n)}=T_1\vee\cdots\vee T_n,\quad G^{(n)}=G_1\vee\cdots\vee G_n,
+\begin{aligned}
+G_n&=F^\mu_n\vee F^\nu_n,\quad F_n=T_n\vee G_n,\quad R_n\\
+&=F_1\vee\cdots\vee F_n,\quad T^{(n)}\\
+&=T_1\vee\cdots\vee T_n,\quad G^{(n)}\\
+&=G_1\vee\cdots\vee G_n,
+\end{aligned}
 \]
 with \(R_0=T^{(0)}=G^{(0)}=\mathbb C1\), \(N_n=R_n'\cap N\), \(M_n=R_n'\cap M\), and \(\varphi_n=\bar\varphi\circ E_{R_n}\). Define \(y_n=E_{T^{(n)}}(x_n)\) and
 \[
-z_{2m}=y_{2m}-E^\sharp(y_{2m}),\qquad z_{2m+1}=y_{2m+1}-S_{\varphi|N_{2m+1}}(y_{2m+1}),
+\begin{gathered}
+z_{2m}=y_{2m}-E^\sharp(y_{2m}),\\
+z_{2m+1}=y_{2m+1}-S_{\varphi|N_{2m+1}}(y_{2m+1}),
+\end{gathered}
 \]
 where \(S\) is the slice of Lemma 1.3 for \(G=G^{(n)}\) and \(L=N_n\). Then \(\|z_n\|\le2\) and, for every \(n\ge0\),
 
 1. \(\|\varphi_n\circ E_{T_{n+1}}-\varphi_n\|\le\eta2^{-n-2}\) and \(\|\varphi_{n+1}-\varphi_n\circ E_{T_{n+1}}\|\le\eta2^{-n-2}\); in particular \(\|\varphi_{n+1}-\varphi_n\|\le\eta2^{-n-1}\);
-2. \(\|E_{T_{n+1}}(z_n)\|^2_{\varphi_n\circ E_{T_{n+1}}}\le\frac{15}{16}\|z_n\|^2_{\varphi_n}+\eta2^{-n-2}\).
+2. \(\|E_{T_{n+1}}(z_n)\|^2_{\varphi_n\circ E_{T_{n+1}}}\) is at most \(\frac{15}{16}\|z_n\|^2_{\varphi_n}+\eta2^{-n-2}\).
 
 **Proof.** We construct \(T_{n+1},F^\mu_{n+1},F^\nu_{n+1}\) by induction, assuming the earlier ones constructed, so that \(R_n\) is a matrix subalgebra of \(N\) with the product state (Lemma 1.1(5) of the previous lesson), and \(E_{R_n}=E_{T^{(n)}}\circ E_{G^{(n)}}\).
 
 *The stage inclusion.* Let \(\mathcal M=T^{(n)\prime}\cap M\), \(G=G^{(n)}\subset\mathcal M\), \(M_1=G'\cap\mathcal M=M_n\), \(N_1=N_n\), \(E_1=E|_{M_n}\) and \(\chi=\varphi|_{N_n}\). For \(w\in\mathcal M\), \(E_{R_n}(w)=E_G(w)\in M_n\), so
 \[
-\varphi_n(w)=\varphi(E(E_G(w)))=\chi(E_1(E_G(w))):
+\begin{aligned}
+&\varphi_n(w)=\varphi(E(E_G(w)))\\
+&\quad =\chi(E_1(E_G(w))):
+\end{aligned}
 \]
 on \(\mathcal M\), \(\varphi_n\) is the state \(\theta\) of Lemma 1.1 and Proposition 2.1. Also \(\varphi_n\) and \(\varphi\) agree on \(N_n\).
 
 *The target.* \(E_{T^{(n)}}\) maps \(M\) into \(\mathcal M\) and \(N\) into \(T^{(n)\prime}\cap N\), so \(y_n=\sum_{a,b}g_{ab}y_{ab}\) with \(y_{ab}\in M_n\), and \(y_{ab}\in N_n\) when \(n\) is odd. In the matrix units of \(R_n\), the coefficients of \(y_n\) are \(y_{ab}\) on the diagonal of \(T^{(n)}\), so Lemma 1.2 gives \(E^\sharp(y_n)=\sum g_{ab}E^\sharp_n(y_{ab})\), with \(E^\sharp_n\) the expectation onto \(\mathrm B^\sharp(N_n\subset M_n)\). Hence
 \[
-z_n=\sum_{a,b}g_{ab}\big(y_{ab}-E^\sharp_n(y_{ab})\big)\ (n\text{ even}),\qquad z_n=\sum_{a,b}g_{ab}\big(y_{ab}-\chi(y_{ab})1\big)\ (n\text{ odd}).
+\begin{gathered}
+z_n=\sum_{a,b}g_{ab}\big(y_{ab}-E^\sharp_n(y_{ab})\big)\ (n\text{ even}),\\
+z_n=\sum_{a,b}g_{ab}\big(y_{ab}-\chi(y_{ab})1\big)\ (n\text{ odd}).
+\end{gathered}
 \]
 The norm bound \(\|z_n\|\le2\) follows from \(\|y_n\|\le1\), \(\|E^\sharp(y_n)\|\le1\) and Lemma 1.3(1). Let \(\mathrm B_n=\mathrm B(N_n\subset M_n,\chi)\). For even \(n\), \(E_{\mathrm B_n}\circ E^\sharp_n=E_{\mathrm B_n}\) (Proposition 4.2 of the lesson on the relative flow), so \(E_{\mathrm B_n}(y_{ab}-E^\sharp_n(y_{ab}))=0\). For odd \(n\), Corollary 2.6 of the first lesson for the factor \(N_n\) gives \(E_{\mathrm B_n}(y_{ab})=\chi(y_{ab})1\). In both cases Lemma 1.1 gives \(E_{\mathcal B}(z_n)=0\) for \(\mathcal B=\mathrm B(N_n\subset\mathcal M,\chi)\).
 
 *The step.* Proposition 2.1 with \(\varepsilon=\eta2^{-n-2}\) gives \(T_{n+1}\), \(F^\mu_{n+1}\), \(F^\nu_{n+1}\) inside \(N_n\), so they commute with \(R_n\). Statement (2) is Proposition 2.1(2), because \(E_{T_{n+1}}\) maps \(\mathcal M\) into itself and \(\varphi_n=\theta\) there. For (1), let \(x\in M\) and \(w=E_{R_n}(E(x))\in N_n\), so \(\|w\|\le\|x\|\). Since \(E\), \(E_{R_n}\), \(E_{T_{n+1}}\) and \(E_{G_{n+1}}\) commute and \(\varphi_n=\varphi\circ E\circ E_{R_n}\),
 \[
-\varphi_n(E_{T_{n+1}}(x))-\varphi_n(x)=(\chi\circ E_{T_{n+1}}-\chi)(w),
+\begin{aligned}
+&\varphi_n(E_{T_{n+1}}(x))-\varphi_n(x)\\
+&\quad =(\chi\circ E_{T_{n+1}}-\chi)(w),
+\end{aligned}
 \]
-and likewise \(\varphi_n(E_{T_{n+1}}E_{G_{n+1}}(x))-\varphi_n(E_{T_{n+1}}(x))=(\chi\circ E_{T_{n+1}}\circ E_{G_{n+1}}-\chi\circ E_{T_{n+1}})(w)\). As \(\varphi_{n+1}=\bar\varphi\circ E_{R_n}\circ E_{F_{n+1}}=\varphi_n\circ E_{T_{n+1}}\circ E_{G_{n+1}}\), Proposition 2.1(1) gives (1). \(\square\)
+and likewise
+\[
+\begin{aligned}
+&\varphi_n(E_{T_{n+1}}E_{G_{n+1}}(x))-\varphi_n(E_{T_{n+1}}(x))\\
+&\quad=(\chi\circ E_{T_{n+1}}\circ E_{G_{n+1}}-\chi\circ E_{T_{n+1}})(w).
+\end{aligned}
+\]
+As \(\varphi_{n+1}=\bar\varphi\circ E_{R_n}\circ E_{F_{n+1}}\), which is \(\varphi_n\circ E_{T_{n+1}}\circ E_{G_{n+1}}\), Proposition 2.1(1) gives (1). \(\square\)
 
 **Lemma 3.2** (the limit state). In the situation of Theorem 3.1, \(\varphi_n\) converges in norm to a faithful normal state \(\bar\psi\) on \(M\), with \(\|\bar\psi-\varphi_n\|\le\eta2^{-n}\); in particular \(\|\bar\psi-\bar\varphi\|\le\eta\). Moreover \(\bar\psi=\psi\circ E\) with \(\psi=\bar\psi|_N\), and \(\bar\psi\circ E_S=\bar\psi\) for \(S=R_n,F_n,T_n,F^\mu_n,F^\nu_n,G_n,T^{(n)},G^{(n)}\).
 
@@ -131,7 +177,10 @@ and likewise \(\varphi_n(E_{T_{n+1}}E_{G_{n+1}}(x))-\varphi_n(E_{T_{n+1}}(x))=(\
 
 *Faithfulness.* Let \(s\) be the support of \(\bar\psi\); then \(\bar\psi(y^*y)=0\) if and only if \(ys=0\), since \(\bar\psi=\bar\psi s=s\bar\psi\) and \(\bar\psi\) is faithful on \(sMs\). Fix \(n\) and let \((r_{ij})\) be the matrix units of \(R_n\), with weights \(h_i\). Then
 \[
-0=\bar\psi(1-s)=\bar\psi(E_{R_n}(1-s))=\sum_{i,j}h_i\,\bar\psi\big(((1-s)r_{ij})^*(1-s)r_{ij}\big),
+\begin{aligned}
+0&=\bar\psi(1-s)=\bar\psi(E_{R_n}(1-s))\\
+&=\sum_{i,j}h_i\,\bar\psi\big(((1-s)r_{ij})^*(1-s)r_{ij}\big),
+\end{aligned}
 \]
 so \((1-s)r_{ij}s=0\), that is \(r_{ij}s=sr_{ij}s\), for all \(i,j\); taking adjoints with \(i,j\) exchanged, \(sr_{ij}=sr_{ij}s\). Hence \(s\in R_n'\cap M\), so \(E_{R_n}(s)=s\) and \(\varphi_n(s)=\bar\varphi(s)\) for every \(n\). In the limit \(\bar\varphi(s)=\bar\psi(s)=1\), and \(s=1\) because \(\bar\varphi\) is faithful. \(\square\)
 
@@ -149,8 +198,10 @@ Keep the situation of Theorem 3.1 and Lemma 3.2, and let \(T\), \(G\) and \(P\) 
 
 The norm bounds of Theorem 3.1 transfer to \(\bar\psi\). For \(y\in M\) and normal states \(\rho,\rho'\), \(|\,\|y\|^2_\rho-\|y\|^2_{\rho'}|\le\|y\|^2\|\rho-\rho'\|\). By Lemma 3.2, Theorem 3.1(1) and \(\eta\le1\), \(\|\bar\psi-\varphi_n\|\le2^{-n}\) and \(\|\bar\psi-\varphi_n\circ E_{T_{n+1}}\|\le2^{1-n}\). Since \(\|z_n\|\le2\), Theorem 3.1(2) gives
 \[
-\|E_{T_{n+1}}(z_n)\|^2_{\bar\psi}\le\tfrac{15}{16}\|z_n\|^2_{\bar\psi}+2^{4-n}.
-\tag{4.1}
+\begin{aligned}
+&\|E_{T_{n+1}}(z_n)\|^2_{\bar\psi}\\
+&\quad \le\tfrac{15}{16}\|z_n\|^2_{\bar\psi}+2^{4-n}.
+\end{aligned}\tag{4.1}
 \]
 
 **Lemma 4.2** (targets converge). Let \(w\in T'\cap M\) and \(n_1<n_2<\cdots\) with \(\|z_{n_k}-w\|_{\bar\psi}\to0\). Then \(w=0\).
@@ -163,7 +214,10 @@ For every \(w\) in the unit ball of \(M\) there are even indices \(n_1<n_2<\cdot
 
 **Proof.** Let \(x\in T'\cap M\), \(x\ne0\). For a unitary \(u\) of some \(T_n\), \(E^\sharp(x)=E^\sharp(uxu^*)=uE^\sharp(x)u^*\), because \(T\subset N\subset\mathrm B^\sharp\); so \(E^\sharp(x)\in T'\cap M\). Hence \(w=(x-E^\sharp(x))/(2\|x\|)\) lies in the unit ball of \(T'\cap M\) and \(E^\sharp(w)=0\). Choose even \(n_k\) with \(x_{n_k}\to w\) \(*\)-strongly. Since \(w\in T^{(n)\prime}\cap M\), Lemma 4.1(3) gives \(\|y_{n_k}-w\|_{\bar\psi}=\|E_{T^{(n_k)}}(x_{n_k}-w)\|_{\bar\psi}\to0\), and then
 \[
-\|z_{n_k}-w\|_{\bar\psi}\le\|y_{n_k}-w\|_{\bar\psi}+\|E^\sharp(y_{n_k}-w)\|_{\bar\psi}\to0 .
+\begin{aligned}
+&\|z_{n_k}-w\|_{\bar\psi}\le\|y_{n_k}-w\|_{\bar\psi}\\
+&\quad +\|E^\sharp(y_{n_k}-w)\|_{\bar\psi}\to0 .
+\end{aligned}
 \]
 By Lemma 4.2, \(w=0\), so \(x=E^\sharp(x)\in\mathrm B^\sharp\). \(\square\)
 
@@ -171,9 +225,13 @@ By Lemma 4.2, \(w=0\), so \(x=E^\sharp(x)\in\mathrm B^\sharp\). \(\square\)
 
 **Proof.** Each \(G_n\) commutes with \(T_n\) and with every other \(F_j\), so \(G\subset T'\cap N\). Conversely, let \(x\in T'\cap N\), \(x\ne0\). By Lemma 4.1(2) and the modular expectation theorem there is a \(\psi\)-preserving conditional expectation \(E^\psi_G\) of \(N\) onto \(G\). Then \(w=(x-E^\psi_G(x))/(2\|x\|)\) lies in the unit ball of \(T'\cap N\), and \(E^\psi_G(w)=0\). Choose odd \(n_k\) with \(x_{n_k}\to w\) \(*\)-strongly; as before \(\|y_{n_k}-w\|_\psi\to0\). For odd \(n\), Lemma 1.3, applied to \(G^{(n)}\), \(L=N_n\) and \(\psi\) (\(\psi\circ E_{G^{(n)}}=\psi\) by Lemma 3.2), gives
 \[
-z_n=y_n-E^\psi_{G^{(n)}}(y_n)+S_{(\psi-\varphi)|N_n}(y_n),\qquad\|S_{(\psi-\varphi)|N_n}(y_n)\|\le\|(\psi-\varphi_n)|_{N_n}\|\le2^{-n},
+\begin{aligned}
+&z_n=y_n-E^\psi_{G^{(n)}}(y_n)\\
+&\quad +S_{(\psi-\varphi)|N_n}(y_n),\qquad\|S_{(\psi-\varphi)|N_n}(y_n)\|\\
+&\quad \le\|(\psi-\varphi_n)|_{N_n}\|\le2^{-n},
+\end{aligned}
 \]
-because \(\varphi\) and \(\varphi_n\) agree on \(N_n\). The expectation \(E^\psi_{G^{(n)}}\circ E^\psi_G\) is \(\psi\)-preserving onto \(G^{(n)}\), so it equals \(E^\psi_{G^{(n)}}\); hence \(E^\psi_{G^{(n)}}(w)=0\) and \(\|E^\psi_{G^{(n)}}(y_n)\|_\psi=\|E^\psi_{G^{(n)}}(y_n-w)\|_\psi\le\|y_n-w\|_\psi\). Therefore \(\|z_{n_k}-w\|_\psi\to0\), and Lemma 4.2 gives \(w=0\), that is \(x=E^\psi_G(x)\in G\). \(\square\)
+because \(\varphi\) and \(\varphi_n\) agree on \(N_n\). The expectation \(E^\psi_{G^{(n)}}\circ E^\psi_G\) is \(\psi\)-preserving onto \(G^{(n)}\), so it equals \(E^\psi_{G^{(n)}}\); hence \(E^\psi_{G^{(n)}}(w)=0\) and \(\|E^\psi_{G^{(n)}}(y_n)\|_\psi=\|E^\psi_{G^{(n)}}(y_n-w)\|_\psi\), which is at most \(\|y_n-w\|_\psi\). Therefore \(\|z_{n_k}-w\|_\psi\to0\), and Lemma 4.2 gives \(w=0\), that is \(x=E^\psi_G(x)\in G\). \(\square\)
 
 **Lemma 4.5** (exchangeability). \(G_\psi'\cap G=\mathbb C1\).
 
@@ -185,11 +243,19 @@ Since the two systems commute, \(s_{jj'}^*=s_{jj'}\), \(s_{jj'}^2=\sum_{\alpha,\
 
 Let \(x\in G_\psi'\cap G\) with \(\psi(x)=0\), and \(x_k=E^\psi_{G^{(k)}}(x)\), defined by Lemma 1.3(2). In \(L^2(N,\psi)\), with vector \(\xi_\psi\), \(x_k\xi_\psi\) is the orthogonal projection of \(x\xi_\psi\) onto the closure \(H_k\) of \(G^{(k)}\xi_\psi\). The subspaces \(H_k\) increase, and their union is dense in the closure of \(G\xi_\psi\), because \(\bigcup_kG^{(k)}\) is a unital \(*\)-algebra whose strong closure is \(G\) (double commutant theorem). Hence \(\|x-x_k\|_\psi\to0\). Also \(\psi(x_k)=\psi(x)=0\). Put \(y_k=\pi_kx_k\pi_k^*\). Since \(\pi_k\) commutes with \(x\) and lies in \(N_\psi\),
 \[
-\|x-y_k\|_\psi=\|\pi_k(x-x_k)\pi_k^*\|_\psi=\|x-x_k\|_\psi\to0,\qquad\psi(y_k)=\psi(x_k)=0 .
+\begin{aligned}
+&\|x-y_k\|_\psi=\|\pi_k(x-x_k)\pi_k^*\|_\psi\\
+&\quad =\|x-x_k\|_\psi\to0,\\
+&\psi(y_k)=\psi(x_k)=0 .
+\end{aligned}
 \]
 By Lemma 4.1(1), \(\psi(x_k^*y_k)=\psi(x_k^*)\psi(y_k)=0\). Hence
 \[
-\|x\|_\psi^2=|\psi(x^*x)-\psi(x_k^*y_k)|\le\|x-x_k\|_\psi\|x\|_\psi+\|x_k\|_\psi\|x-y_k\|_\psi\to0,
+\begin{aligned}
+&\|x\|_\psi^2=|\psi(x^*x)-\psi(x_k^*y_k)|\\
+&\quad \le\|x-x_k\|_\psi\|x\|_\psi\\
+&\quad +\|x_k\|_\psi\|x-y_k\|_\psi\to0,
+\end{aligned}
 \]
 and \(x=0\). For general \(x\in G_\psi'\cap G\) apply this to \(x-\psi(x)1\). \(\square\)
 
@@ -252,9 +318,12 @@ For \(M=N\) the construction gives a classical theorem of Haagerup [Haagerup, Th
 
 **6.4.** Using that the two systems commute,
 \[
-s\,g^{(j)}_{\gamma\delta}=\sum_{\alpha,\beta}g^{(j)}_{\alpha\beta}g^{(j)}_{\gamma\delta}g^{(j')}_{\beta\alpha}=\sum_\alpha g^{(j)}_{\alpha\delta}g^{(j')}_{\gamma\alpha},
-\qquad
-s\,g^{(j)}_{\gamma\delta}\,s=\sum_{\alpha,\epsilon,\zeta}g^{(j)}_{\alpha\delta}g^{(j)}_{\epsilon\zeta}\,g^{(j')}_{\gamma\alpha}g^{(j')}_{\zeta\epsilon}=\sum_\alpha g^{(j)}_{\alpha\alpha}g^{(j')}_{\gamma\delta}=g^{(j')}_{\gamma\delta},
+\begin{aligned}
+&s\,g^{(j)}_{\gamma\delta}=\sum_{\alpha,\beta}g^{(j)}_{\alpha\beta}g^{(j)}_{\gamma\delta}g^{(j')}_{\beta\alpha}\\
+&\quad =\sum_\alpha g^{(j)}_{\alpha\delta}g^{(j')}_{\gamma\alpha},\\
+&s\,g^{(j)}_{\gamma\delta}\,s=\sum_{\alpha,\epsilon,\zeta}g^{(j)}_{\alpha\delta}g^{(j)}_{\epsilon\zeta}\,g^{(j')}_{\gamma\alpha}g^{(j')}_{\zeta\epsilon}\\
+&\quad =\sum_\alpha g^{(j)}_{\alpha\alpha}g^{(j')}_{\gamma\delta}=g^{(j')}_{\gamma\delta},
+\end{aligned}
 \]
 since \(g^{(j)}_{\alpha\delta}g^{(j)}_{\epsilon\zeta}=\delta_{\delta\epsilon}g^{(j)}_{\alpha\zeta}\) and \(g^{(j')}_{\gamma\alpha}g^{(j')}_{\zeta\epsilon}=\delta_{\alpha\zeta}g^{(j')}_{\gamma\epsilon}\).
 

@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-Fix a graph \(H\), and let the random graph \(G(n,p)\) on the vertex set \([n]=\{1,\dots,n\}\) contain each possible edge independently with probability \(p\). How large must \(p\) be for \(G(n,p)\) to contain a copy of \(H\) with probability at least \(\frac12\)? There is an easy lower bound. If some subgraph \(F\) of \(H\) has fewer than \(\frac12\) copies in expectation, then \(F\), and with it \(H\), appears with probability less than \(\frac12\). The least \(p\) at which no subgraph is excluded in this way is the *expectation threshold* \(p_{\mathrm E}(n,H)\). In 2006 Kahn and Kalai conjectured that this first-moment obstruction is the only one up to a logarithmic factor: the containment threshold \(p_{\mathrm c}(n,H)\) is at most \(Kp_{\mathrm E}(n,H)\log n\) for a universal constant \(K\), whatever the graph \(H\) [KK]. This course presents the proof of the conjecture by OpenAI (2026) [OpenAI-KK2], in the sharper form \(p_{\mathrm c}(n,H)\le2048\,\mathrm e^{50}p_{\mathrm E}(n,H)\,(1+\log_2e(H))\), and three further results of OpenAI on expectation thresholds: integral and fractional expectation thresholds agree up to a constant factor, Talagrand's discrete convexity conjecture holds, and every graph splits into a bounded number of pieces that appear at a constant multiple of its integral expectation threshold.
+Fix a graph \(H\), and let the random graph \(G(n,p)\) on the vertex set \([n]=\{1,\dots,n\}\) contain each possible edge independently with probability \(p\). How large must \(p\) be for \(G(n,p)\) to contain a copy of \(H\) with probability at least \(\frac12\)? There is an easy lower bound. If some subgraph \(F\) of \(H\) has fewer than \(\frac12\) copies in expectation, then \(F\), and with it \(H\), appears with probability less than \(\frac12\). The least \(p\) at which no subgraph is excluded in this way is the *expectation threshold* \(p_{\mathrm E}(n,H)\). In 2006 Kahn and Kalai conjectured that this first-moment obstruction is the only one up to a logarithmic factor: the containment threshold \(p_{\mathrm c}(n,H)\) is at most \(Kp_{\mathrm E}(n,H)\log n\) for a universal constant \(K\), whatever the graph \(H\) [KK]. This course presents the proof of the conjecture by OpenAI (2026) [OpenAI-KK2], in the sharper form stating that \(p_{\mathrm c}(n,H)\) is at most \(2048\,\mathrm e^{50}p_{\mathrm E}(n,H)\,(1+\log_2e(H))\), and three further results of OpenAI on expectation thresholds: integral and fractional expectation thresholds agree up to a constant factor, Talagrand's discrete convexity conjecture holds, and every graph splits into a bounded number of pieces that appear at a constant multiple of its integral expectation threshold.
 
 This lesson sets up the language: random subsets of a finite set, increasing families and their thresholds, covers and expectation thresholds, the counting of copies of graphs, and the example of perfect matchings, which shows that a logarithmic factor cannot be avoided. Section 5 states the second Kahn–Kalai conjecture and describes the plan of the course.
 
@@ -12,13 +12,16 @@ Throughout, \(\log\) is the natural logarithm, \(\log_2\) the logarithm to base 
 
 Let \(X\) be a finite set. For \(0\le p\le1\), \(\mu_p\) denotes the law of a random subset \(W\subseteq X\) that contains each element independently with probability \(p\):
 \[
-\mu_p(W=Y)=p^{|Y|}(1-p)^{|X\setminus Y|}\qquad(Y\subseteq X).
+\begin{gathered}
+\mu_p(W=Y)=p^{|Y|}(1-p)^{|X\setminus Y|}\\
+(Y\subseteq X).
+\end{gathered}
 \]
 A family \(\mathcal F\) of subsets of \(X\) is *increasing* if \(A\in\mathcal F\) and \(A\subseteq A'\subseteq X\) imply \(A'\in\mathcal F\). It is *nontrivial* if \(\varnothing\neq\mathcal F\neq2^X\); an increasing family is nontrivial exactly when \(X\in\mathcal F\) and \(\varnothing\notin\mathcal F\). Write \(\mu_p(\mathcal F)=\mathbb P_{W\sim\mu_p}(W\in\mathcal F)\).
 
 **Lemma 1.1** (monotone coupling). Let \((U_x)_{x\in X}\) be independent random variables, each uniform on \([0,1]\), and let \(W_p=\{x:U_x\le p\}\). Then \(W_p\) has law \(\mu_p\), and \(W_p\subseteq W_{p'}\) for \(p\le p'\). Consequently, for an increasing family \(\mathcal F\), the function \(p\mapsto\mu_p(\mathcal F)\) is a nondecreasing polynomial; if \(\mathcal F\) is nontrivial, it is strictly increasing on \([0,1]\), with \(\mu_0(\mathcal F)=0\) and \(\mu_1(\mathcal F)=1\).
 
-**Proof.** The events \(\{x\in W_p\}=\{U_x\le p\}\) are independent and have probability \(p\), and \(U_x\le p\le p'\) gives \(W_p\subseteq W_{p'}\). For increasing \(\mathcal F\) this gives \(\{W_p\in\mathcal F\}\subseteq\{W_{p'}\in\mathcal F\}\), and \(\mu_p(\mathcal F)=\sum_{Y\in\mathcal F}p^{|Y|}(1-p)^{|X\setminus Y|}\) is a polynomial. Let \(\mathcal F\) be nontrivial and \(0\le p<p'\le1\). The event that \(p<U_x\le p'\) for every \(x\) has probability \((p'-p)^{|X|}>0\), and on it \(W_p=\varnothing\notin\mathcal F\) and \(W_{p'}=X\in\mathcal F\). Hence \(\mu_{p'}(\mathcal F)-\mu_p(\mathcal F)=\mathbb P(W_p\notin\mathcal F,\ W_{p'}\in\mathcal F)>0\). Finally \(\mu_0\) and \(\mu_1\) are concentrated on \(\varnothing\) and \(X\). \(\square\)
+**Proof.** The events \(\{x\in W_p\}=\{U_x\le p\}\) are independent and have probability \(p\), and \(U_x\le p\le p'\) gives \(W_p\subseteq W_{p'}\). For increasing \(\mathcal F\) this gives \(\{W_p\in\mathcal F\}\subseteq\{W_{p'}\in\mathcal F\}\), and \(\mu_p(\mathcal F)=\sum_{Y\in\mathcal F}p^{|Y|}(1-p)^{|X\setminus Y|}\) is a polynomial. Let \(\mathcal F\) be nontrivial and \(0\le p<p'\le1\). The event that \(p<U_x\le p'\) for every \(x\) has probability \((p'-p)^{|X|}>0\), and on it \(W_p=\varnothing\notin\mathcal F\) and \(W_{p'}=X\in\mathcal F\). Hence \(\mu_{p'}(\mathcal F)-\mu_p(\mathcal F)\), which is \(\mathbb P(W_p\notin\mathcal F,\ W_{p'}\in\mathcal F)\), is positive. Finally \(\mu_0\) and \(\mu_1\) are concentrated on \(\varnothing\) and \(X\). \(\square\)
 
 By continuity and Lemma 1.1, a nontrivial increasing family has a unique number \(p_{\mathrm c}(\mathcal F)\in(0,1)\) with \(\mu_{p_{\mathrm c}(\mathcal F)}(\mathcal F)=\frac12\), its *threshold*. Equivalently \(p_{\mathrm c}(\mathcal F)=\min\{p:\mu_p(\mathcal F)\ge\frac12\}\), and \(\mu_p(\mathcal F)>\frac12\) for every \(p>p_{\mathrm c}(\mathcal F)\).
 
@@ -34,10 +37,7 @@ Let \(\mathcal F\) be a nontrivial increasing family on \(X\). A *cover* of \(\m
 
 **Proof.** If \(W\in\mathcal F\) then \(\sum_{S\subseteq W}g(S)\ge1\). So \(\mathbf 1\{W\in\mathcal F\}\le\sum_Sg(S)\mathbf 1\{S\subseteq W\}\); take expectations, using \(\mathbb P(S\subseteq W)=p^{|S|}\). \(\square\)
 
-The *expectation threshold* and the *fractional expectation threshold* of \(\mathcal F\) are
-\[
-q(\mathcal F)=\sup\{p\in[0,1]:c_p(\mathcal G)\le\tfrac12\text{ for some cover }\mathcal G\},\qquad q_f(\mathcal F)=\sup\{p\in[0,1]:c_p(g)\le\tfrac12\text{ for some fractional cover }g\}.
-\]
+The *expectation threshold* \(q(\mathcal F)\) is the supremum of the \(p\in[0,1]\) with \(c_p(\mathcal G)\le\tfrac12\) for some cover \(\mathcal G\), and the *fractional expectation threshold* \(q_f(\mathcal F)\) is the supremum of the \(p\in[0,1]\) with \(c_p(g)\le\tfrac12\) for some fractional cover \(g\).
 Both sets contain \(p=0\): the family \(\mathcal F\) is a cover of itself, and \(c_0(\mathcal F)=0\) because \(\varnothing\notin\mathcal F\). Costs are nondecreasing in \(p\), so both sets are intervals starting at \(0\); Exercise 6.4 shows that they are closed.
 
 **Proposition 2.2.** \(q(\mathcal F)\le q_f(\mathcal F)\le p_{\mathrm c}(\mathcal F)\).
@@ -54,27 +54,21 @@ The *Kahn–Kalai conjecture* in its abstract form asserted that \(p_{\mathrm c}
 
 ## 3. Copies of graphs
 
-All graphs are finite and simple. For graphs \(G\) and \(F\), \(N(G,F)\) is the number of subgraphs of \(G\) isomorphic to \(F\). These are *ordinary* copies: the vertices of a copy may span further edges of \(G\). The random graph \(G(n,p)\) has vertex set \([n]\), and its edge set has law \(\mu_p\) on \(X=\binom{[n]}2\), the set of \(2\)-element subsets of \([n]\). For a graph \(H\) with at least one edge and at most \(n\) vertices, the *containment threshold* and the *expectation threshold* are
-\[
-p_{\mathrm c}(n,H)=\inf\bigl\{p\in[0,1]:\mathbb P\bigl(N(G(n,p),H)>0\bigr)\ge\tfrac12\bigr\},
-\]
-\[
-p_{\mathrm E}(n,H)=\inf\bigl\{p\in[0,1]:\mathbb E\,N(G(n,p),F)\ge\tfrac12\text{ for every subgraph }F\text{ of }H\bigr\}.
-\]
+All graphs are finite and simple. For graphs \(G\) and \(F\), \(N(G,F)\) is the number of subgraphs of \(G\) isomorphic to \(F\). These are *ordinary* copies: the vertices of a copy may span further edges of \(G\). The random graph \(G(n,p)\) has vertex set \([n]\), and its edge set has law \(\mu_p\) on \(X=\binom{[n]}2\), the set of \(2\)-element subsets of \([n]\). For a graph \(H\) with at least one edge and at most \(n\) vertices, the *containment threshold* \(p_{\mathrm c}(n,H)\) is the infimum of the \(p\in[0,1]\) with \(\mathbb P\bigl(N(G(n,p),H)>0\bigr)\ge\tfrac12\), and the *expectation threshold* \(p_{\mathrm E}(n,H)\) is the infimum of the \(p\in[0,1]\) with \(\mathbb E\,N(G(n,p),F)\ge\tfrac12\) for every subgraph \(F\) of \(H\).
 
 A graph without isolated vertices is determined by its edge set, and we identify the two. A *copy* of such a graph \(F\) *on* \([n]\) is a set \(S\subseteq X\) of edges whose graph, on the vertices covered by \(S\), is isomorphic to \(F\). Write \(M(F)=N(K_n,F)\) for the number of copies of \(F\) on \([n]\), and \(M(I,F)=N(I,F)\); for the empty graph, \(M(\varnothing)=M(I,\varnothing)=1\). For integers \(0\le v\le n\), \((n)_v=n(n-1)\cdots(n-v+1)\).
 
 **Lemma 3.1** (counting copies). Let \(F\) and \(I\) be graphs without isolated vertices and with at most \(n\) vertices.
 
 1. \(M(F)=(n)_{v(F)}/|\operatorname{Aut}F|\), where \(\operatorname{Aut}F\) is the group of permutations of \(V(F)\) preserving adjacency.
-2. For every graph \(F'\) with at most \(n\) vertices, isolated vertices allowed, \(\mathbb E\,N(G(n,p),F')=N(K_n,F')\,p^{e(F')}\).
+2. For every graph \(F'\) with at most \(n\) vertices, isolated vertices allowed, \(\mathbb E\,N(G(n,p),F')\) equals \(N(K_n,F')\,p^{e(F')}\).
 3. Suppose \(I\) has a subgraph isomorphic to \(F\), let \(\mathbf I\) be a uniformly random copy of \(I\) on \([n]\), and let \(F_0\) be a copy of \(F\) on \([n]\). Then \(\mathbb P(F_0\subseteq\mathbf I)=M(I,F)/M(F)\); in particular this probability does not depend on the choice of \(F_0\).
 
 **Proof.** (1) Each of the \((n)_{v(F)}\) injective maps \(\varphi\colon V(F)\to[n]\) gives the copy \(\varphi(F)=\{\varphi(x)\varphi(y):xy\in E(F)\}\), and every copy arises in this way. Since \(F\) has no isolated vertices, the edge set \(\varphi(F)\) determines the vertex set \(\varphi(V(F))\). So if \(\varphi(F)=\psi(F)\), then \(\alpha=\psi^{-1}\circ\varphi\) is a bijection of \(V(F)\) mapping edges to edges, hence an automorphism, and \(\varphi=\psi\circ\alpha\); conversely every \(\psi\circ\alpha\) with \(\alpha\in\operatorname{Aut}F\) gives the copy \(\psi(F)\). Each copy therefore arises from exactly \(|\operatorname{Aut}F|\) maps.
 
 (2) Each of the \(N(K_n,F')\) copies of \(F'\) in \(K_n\) has \(e(F')\) edges and lies in \(G(n,p)\) with probability \(p^{e(F')}\); use linearity of expectation.
 
-(3) A permutation \(\pi\) of \([n]\) maps copies to copies, and the uniform law of \(\mathbf I\) is invariant under \(\pi\). Any two copies of \(F\) are related by a permutation of \([n]\): compose an isomorphism between them with any bijection between the complements of their vertex sets. Hence \(\mathbb P(\pi F_0\subseteq\mathbf I)=\mathbb P(F_0\subseteq\pi^{-1}\mathbf I)=\mathbb P(F_0\subseteq\mathbf I)\) is the same for all copies \(F_0\). The sum of these \(M(F)\) equal probabilities is the expected number of copies of \(F\) contained in \(\mathbf I\), which is \(M(I,F)\) because \(\mathbf I\) is isomorphic to \(I\). \(\square\)
+(3) A permutation \(\pi\) of \([n]\) maps copies to copies, and the uniform law of \(\mathbf I\) is invariant under \(\pi\). Any two copies of \(F\) are related by a permutation of \([n]\): compose an isomorphism between them with any bijection between the complements of their vertex sets. Hence \(\mathbb P(\pi F_0\subseteq\mathbf I)=\mathbb P(F_0\subseteq\pi^{-1}\mathbf I)\), which equals \(\mathbb P(F_0\subseteq\mathbf I)\); so this probability is the same for all copies \(F_0\). The sum of these \(M(F)\) equal probabilities is the expected number of copies of \(F\) contained in \(\mathbf I\), which is \(M(I,F)\) because \(\mathbf I\) is isomorphic to \(I\). \(\square\)
 
 **Lemma 3.2** (basic properties). Let \(H\) have at least one edge and at most \(n\) vertices.
 
@@ -95,7 +89,10 @@ Kahn and Kalai normalize with expected count \(1\) instead of \(\frac12\). By Le
 
 **Proposition 3.3.** With \(\mathcal F_H\) as in the proof of Lemma 3.2,
 \[
-p_{\mathrm E}(n,H)\le q(\mathcal F_H)\le q_f(\mathcal F_H)\le p_{\mathrm c}(n,H).
+\begin{aligned}
+&p_{\mathrm E}(n,H)\le q(\mathcal F_H)\\
+&\quad \le q_f(\mathcal F_H)\le p_{\mathrm c}(n,H).
+\end{aligned}
 \]
 
 **Proof.** Let \(p<p_{\mathrm E}(n,H)\). By Lemma 3.2(2) there is a nonempty \(S\subseteq E(H)\) with \(M(S)p^{|S|}<\frac12\). The copies of \(S\) on \([n]\) form a cover of \(\mathcal F_H\), since every copy of \(H\) contains a copy of \(S\), and the cost of this cover at \(p\) is \(M(S)p^{|S|}<\frac12\). Hence \(q(\mathcal F_H)\ge p\). The remaining inequalities are Proposition 2.2. \(\square\)
@@ -106,7 +103,7 @@ So the theorem of Park and Pham bounds \(p_{\mathrm c}(n,H)\) in terms of \(q(\m
 
 **Lemma 4.1.** \((n)_m\ge(n/\mathrm e)^m\) for all integers \(0\le m\le n\).
 
-**Proof.** Since \(\log\) is increasing, \(\log(n-i)\ge\int_{n-i-1}^{n-i}\log x\,dx\) for \(0\le i\le m-1\). Hence \(\log\,(n)_m\ge\int_{n-m}^n\log x\,dx=n\log n-(n-m)\log(n-m)-m\ge m\log n-m\), where \(0\log0=0\). \(\square\)
+**Proof.** Since \(\log\) is increasing, \(\log(n-i)\ge\int_{n-i-1}^{n-i}\log x\,dx\) for \(0\le i\le m-1\). Hence \(\log\,(n)_m\ge\int_{n-m}^n\log x\,dx\), which is \(n\log n-(n-m)\log(n-m)-m\), which is at least \(m\log n-m\), where \(0\log0=0\). \(\square\)
 
 Let \(n\) be even and \(\mathrm{PM}_n\) the perfect matching on \(n\) vertices: \(n/2\) disjoint edges.
 
@@ -116,17 +113,25 @@ Let \(n\) be even and \(\mathrm{PM}_n\) the perfect matching on \(n\) vertices: 
 \[
 M(jK_2)\Bigl(\frac{\mathrm e^2}n\Bigr)^j\ge\frac{(n/\mathrm e)^{2j}\,\mathrm e^{2j}}{2^j\,(n/2)^j\,n^j}=1,
 \]
-so every condition of Lemma 3.2(2) holds at \(p=\mathrm e^2/n\) when \(\mathrm e^2/n\le1\); when \(\mathrm e^2/n>1\) the upper bound is trivial. For the lower bound take \(j=n/2\): \(M(\mathrm{PM}_n)=(n-1)(n-3)\cdots3\cdot1\le n^{n/2}\), and \(M(\mathrm{PM}_n)\,p^{n/2}\ge\frac12\) forces \(p\ge(2n^{n/2})^{-2/n}=2^{-2/n}/n\ge1/(2n)\). \(\square\)
+so every condition of Lemma 3.2(2) holds at \(p=\mathrm e^2/n\) when \(\mathrm e^2/n\le1\); when \(\mathrm e^2/n>1\) the upper bound is trivial. For the lower bound take \(j=n/2\): \(M(\mathrm{PM}_n)=(n-1)(n-3)\cdots3\cdot1\), which is at most \(n^{n/2}\), and \(M(\mathrm{PM}_n)\,p^{n/2}\ge\frac12\) forces \(p\ge(2n^{n/2})^{-2/n}=2^{-2/n}/n\ge1/(2n)\). \(\square\)
 
 **Proposition 4.3** (isolated vertices). For every \(n\ge16\), the graph \(G(n,\frac{\log n}{3n})\) has an isolated vertex with probability greater than \(\frac12\). Consequently \(p_{\mathrm c}(n,\mathrm{PM}_n)>\frac{\log n}{3n}\) for every even \(n\ge16\).
 
 **Proof.** Let \(p=\frac{\log n}{3n}\) and let \(Z\) be the number of isolated vertices of \(G(n,p)\). A vertex is isolated when its \(n-1\) potential edges are absent, and two given vertices are both isolated when \(2n-3\) potential edges are absent. Hence \(\mathbb EZ=n(1-p)^{n-1}\) and \(\mathbb E[Z(Z-1)]=n(n-1)(1-p)^{2n-3}\), so
 \[
-\operatorname{Var}Z=\mathbb EZ+n(n-1)(1-p)^{2n-3}-n^2(1-p)^{2n-2}\le\mathbb EZ+n^2(1-p)^{2n-3}p=\mathbb EZ+(\mathbb EZ)^2\,\frac p{1-p}.
+\begin{aligned}
+\operatorname{Var}Z&=\mathbb EZ+n(n-1)(1-p)^{2n-3}\\
+&\quad -n^2(1-p)^{2n-2}\le\mathbb EZ\\
+&\quad +n^2(1-p)^{2n-3}p=\mathbb EZ\\
+&\quad +(\mathbb EZ)^2\,\frac p{1-p}.
+\end{aligned}
 \]
-By Chebyshev's inequality, \(\mathbb P(Z=0)\le\mathbb P(|Z-\mathbb EZ|\ge\mathbb EZ)\le\frac1{\mathbb EZ}+\frac p{1-p}\). For \(0\le p\le\frac12\), \(\log(1-p)\ge-p-p^2\): the difference vanishes at \(0\) and has derivative \(\frac{p(1-2p)}{1-p}\ge0\). Hence \((1-p)^{n-1}\ge\mathrm e^{-n(p+p^2)}=n^{-(1+p)/3}\ge n^{-1/2}\), so \(\mathbb EZ\ge\sqrt n\). With \(\frac p{1-p}\le2p\) and \(n\ge16\),
+By Chebyshev's inequality, \(\mathbb P(Z=0)\le\mathbb P(|Z-\mathbb EZ|\ge\mathbb EZ)\), which is at most \(\frac1{\mathbb EZ}+\frac p{1-p}\). For \(0\le p\le\frac12\), \(\log(1-p)\ge-p-p^2\): the difference vanishes at \(0\) and has derivative \(\frac{p(1-2p)}{1-p}\ge0\). Hence \((1-p)^{n-1}\ge\mathrm e^{-n(p+p^2)}\), which is \(n^{-(1+p)/3}\ge n^{-1/2}\), so \(\mathbb EZ\ge\sqrt n\). With \(\frac p{1-p}\le2p\) and \(n\ge16\),
 \[
-\mathbb P(Z=0)\le\frac1{\sqrt n}+\frac{2\log n}{3n}\le\frac14+\frac{2\log16}{48}<\frac12,
+\begin{aligned}
+&\mathbb P(Z=0)\le\frac1{\sqrt n}+\frac{2\log n}{3n}\\
+&\quad \le\frac14+\frac{2\log16}{48}<\frac12,
+\end{aligned}
 \]
 because \(\frac{\log x}x\) decreases for \(x\ge\mathrm e\).
 
@@ -136,7 +141,7 @@ The logarithm persists even if \(p_{\mathrm E}\) is replaced by the larger thres
 
 **Proposition 4.4.** For every even \(n\ge2\), \(q(\mathcal F_{\mathrm{PM}_n})\le q_f(\mathcal F_{\mathrm{PM}_n})\le\mathrm e^2/n\).
 
-**Proof.** Let \(A\) be a uniformly random perfect matching on \([n]\), a random member of \(\mathcal F_{\mathrm{PM}_n}\). A nonempty set \(J\) of edges lies in \(A\) only if \(J\) is a matching, say with \(j\) edges, and then \(\mathbb P(J\subseteq A)=1/((n-1)(n-3)\cdots(n-2j+1))\), the number of perfect matchings of the other \(n-2j\) vertices divided by the number of all perfect matchings. The product of all \(n/2\) factors \(n-1,n-3,\dots,1\) is \(n!/(2^{n/2}(n/2)!)\ge(n/\mathrm e)^n/(2^{n/2}(n/2)^{n/2})=(n/\mathrm e^2)^{n/2}\), by Lemma 4.1 with \(m=n\) and \((n/2)!\le(n/2)^{n/2}\). The \(j\) largest factors have geometric mean at least the geometric mean of all of them, so \(\mathbb P(J\subseteq A)\le(\mathrm e^2/n)^j\). Proposition 2.3 gives the claim. \(\square\)
+**Proof.** Let \(A\) be a uniformly random perfect matching on \([n]\), a random member of \(\mathcal F_{\mathrm{PM}_n}\). A nonempty set \(J\) of edges lies in \(A\) only if \(J\) is a matching, say with \(j\) edges, and then \(\mathbb P(J\subseteq A)\) is \(1/((n-1)(n-3)\cdots(n-2j+1))\), the number of perfect matchings of the other \(n-2j\) vertices divided by the number of all perfect matchings. The product of all \(n/2\) factors \(n-1,n-3,\dots,1\) is \(n!/(2^{n/2}(n/2)!)\), which is at least \((n/\mathrm e)^n/(2^{n/2}(n/2)^{n/2})\), that is, \((n/\mathrm e^2)^{n/2}\), by Lemma 4.1 with \(m=n\) and \((n/2)!\le(n/2)^{n/2}\). The \(j\) largest factors have geometric mean at least the geometric mean of all of them, so \(\mathbb P(J\subseteq A)\le(\mathrm e^2/n)^j\). Proposition 2.3 gives the claim. \(\square\)
 
 Together, Propositions 3.3, 4.2, 4.3 and 4.4 give, for even \(n\ge16\),
 \[
@@ -148,7 +153,10 @@ a comparison of the containment threshold with any of the three expectation thre
 
 **Theorem 5.1** (OpenAI 2026; the second Kahn–Kalai conjecture). For every \(n\ge2\) and every graph \(H\) with \(h\ge1\) edges and at most \(n\) vertices,
 \[
-p_{\mathrm c}(n,H)\le\min\bigl\{1,\ 2048\,\mathrm e^{50}\,p_{\mathrm E}(n,H)\,(1+\log_2h)\bigr\},
+\begin{aligned}
+&p_{\mathrm c}(n,H)\le\min\bigl\{1,\\
+&\qquad2048\,\mathrm e^{50}\,p_{\mathrm E}(n,H)\,(1+\log_2h)\bigr\},
+\end{aligned}
 \]
 and consequently \(p_{\mathrm c}(n,H)\le6144\,\mathrm e^{50}\,p_{\mathrm E}(n,H)\log_2n\).
 

@@ -19,7 +19,10 @@ We use Lemmas 2.1, 2.2 and 4.1 of [Biased Fourier analysis and hypercontractivit
 
 **Lemma 1.1.** Let \(r+1\le m\le n\), \(B\) uniform among the \(m\)-subsets of \([n]\), and \(k=\frac{\sigma\log m}{64}\). For every hypergraph property \(f\),
 \[
-\sum_{S\subseteq E_{n,r}}\mathbb P_B\bigl(1\le|S\cap F_B|\le k\bigr)\,\widehat f(S)^2\le m^{-1/4}\,\frac{rm}n\,I_p(f).
+\begin{aligned}
+&\sum_{S\subseteq E_{n,r}}\mathbb P_B\bigl(1\le|S\cap F_B|\le k\bigr)\,\widehat f(S)^2\\
+&\quad \le m^{-1/4}\,\frac{rm}n\,I_p(f).
+\end{aligned}
 \]
 
 **Proof.** Fix \(B\) and an assignment \(y\) of the edges disjoint from \(B\). The permutations supported on \(B\) fix every such edge, so \(f_y\) is invariant under them. An edge with \(j\ge1\) vertices in \(B\) has an orbit of size \(\binom mj\ge m\), since \(1\le j\le r<m\): its part outside \(B\) is fixed and its part inside can be any \(j\)-subset of \(B\). So \(I_e(f_y)\le I(f_y)/m\) on \(F_B\), and Lemma 4.1 of [Biased Fourier analysis and hypercontractivity](biased-fourier-analysis-and-hypercontractivity.md) applies to \(f_y\). Average over \(y\) with Lemma 1.1 of [Vertex blocks and graph properties](vertex-blocks-and-graph-properties.md), and then over \(B\), using \(\mathbb P(e\in F_B)\le rm/n\) by a union bound over the \(r\) vertices of \(e\). \(\square\)
@@ -31,18 +34,25 @@ We use Lemmas 2.1, 2.2 and 4.1 of [Biased Fourier analysis and hypercontractivit
 \mathbb P_B\bigl(1\le|S\cap F_B|\le k\bigr)\ge\frac m{2n}.
 \]
 
-**Proof.** Let \(s=|S|\), \(V=\bigcup_{e\in S}e\) and \(v=|V|\). Since \(s\le\binom vr\le v^r\), the average degree is \(\frac{rs}v\le rs^{(r-1)/r}\le rL^{(r-1)/r}=k\); choose \(u\in V\) with \(1\le d_S(u)\le k\). As in Lemma 3.1 of [Vertex blocks and graph properties](vertex-blocks-and-graph-properties.md), \(\mathbb P(B\cap V=\{u\})\ge\frac mn\bigl(1-(v-1)\frac{m-1}{n-1}\bigr)\ge\frac m{2n}\), using \(v\le rs\le rL\). On this event the edges of \(S\) meeting \(B\) are those containing \(u\), so \(|S\cap F_B|=d_S(u)\in[1,k]\). \(\square\)
+**Proof.** Let \(s=|S|\), \(V=\bigcup_{e\in S}e\) and \(v=|V|\). Since \(s\le\binom vr\le v^r\), the average degree is \(\frac{rs}v\le rs^{(r-1)/r}\le rL^{(r-1)/r}=k\); choose \(u\in V\) with \(1\le d_S(u)\le k\). As in Lemma 3.1 of [Vertex blocks and graph properties](vertex-blocks-and-graph-properties.md), \(\mathbb P(B\cap V=\{u\})\ge\frac mn\bigl(1-(v-1)\frac{m-1}{n-1}\bigr)\), which is at least \(\frac m{2n}\), using \(v\le rs\le rL\). On this event the edges of \(S\) meeting \(B\) are those containing \(u\), so \(|S\cap F_B|=d_S(u)\in[1,k]\). \(\square\)
 
 Combining the two lemmas, whenever both apply,
 \[
-\sum_{1\le|S|\le L}\widehat f(S)^2\le2r\,m^{-1/4}I_p(f).\tag{2.1}
+\begin{aligned}
+&\sum_{1\le|S|\le L}\widehat f(S)^2\\
+&\quad \le2r\,m^{-1/4}I_p(f).
+\end{aligned}\tag{2.1}
 \]
 
 ## 3. The theorem
 
 **Proof of Theorem 3.1.** Choose an integer \(N_r>r\) such that for all \(n\ge N_r\) and \(m=\lfloor\sqrt n\rfloor\):
 \[
-m\ge r+1,\qquad\log m\ge\tfrac13\log n,\qquad r(\log n)^\alpha n^{-1/2}\le\tfrac12,\qquad m^{-1/4}(\log n)^\alpha\le1;
+\begin{gathered}
+m\ge r+1,\qquad \log m\ge\tfrac13\log n,\\
+r(\log n)^\alpha n^{-1/2}\le\tfrac12,\\
+m^{-1/4}(\log n)^\alpha\le1;
+\end{gathered}
 \]
 this is possible because every power of \(\log n\) grows more slowly than every positive power of \(n\). Let \(n\ge N_r\), \(k=\frac{\sigma\log m}{64}\) and \(L=(k/r)^\alpha\). Since \(k/r\le\log n\) and \(\frac{m-1}{n-1}\le n^{-1/2}\), Lemma 2.1 applies, and (2.1) gives
 \[
@@ -50,9 +60,14 @@ this is possible because every power of \(\log n\) grows more slowly than every 
 \]
 By Lemma 2.1 of [Biased Fourier analysis and hypercontractivity](biased-fourier-analysis-and-hypercontractivity.md),
 \[
-\sum_{|S|>L}\widehat f(S)^2\le\frac1L\sum_S|S|\widehat f(S)^2=\frac{\sigma^2}LI_p(f),\qquad\frac{\sigma^2}L=\frac{(64r)^\alpha\sigma^{2-\alpha}}{(\log m)^\alpha}\le\frac{(192r)^\alpha}{(\log n)^\alpha},
+\begin{aligned}
+&\sum_{|S|>L}\widehat f(S)^2\le\frac1L\sum_S|S|\widehat f(S)^2\\
+&\quad =\frac{\sigma^2}LI_p(f),\\
+&\frac{\sigma^2}L=\frac{(64r)^\alpha\sigma^{2-\alpha}}{(\log m)^\alpha}\\
+&\quad \le\frac{(192r)^\alpha}{(\log n)^\alpha},
+\end{aligned}
 \]
-because \(2-\alpha=\frac{r-2}{r-1}>0\) and \(\sigma\le1\). Adding, \(\operatorname{Var}_p(f)\le\frac{2r+(192r)^\alpha}{(\log n)^\alpha}I_p(f)\). For \(r\le n<N_r\), \(\operatorname{Var}_p(f)\le\sigma^2I_p(f)\le\frac14I_p(f)\le\frac{(\log N_r)^\alpha}{4(\log n)^\alpha}I_p(f)\). So \(C_r=\max\{2r+(192r)^\alpha,\frac14(\log N_r)^\alpha\}\) works. \(\square\)
+because \(2-\alpha=\frac{r-2}{r-1}>0\) and \(\sigma\le1\). Adding, \(\operatorname{Var}_p(f)\le\frac{2r+(192r)^\alpha}{(\log n)^\alpha}I_p(f)\). For \(r\le n<N_r\), \(\operatorname{Var}_p(f)\le\sigma^2I_p(f)\), which is at most \(\frac14I_p(f)\le\frac{(\log N_r)^\alpha}{4(\log n)^\alpha}I_p(f)\). So \(C_r=\max\{2r+(192r)^\alpha,\frac14(\log N_r)^\alpha\}\) works. \(\square\)
 
 **Proof of Corollary 3.2.** Let \(q(p)=\mathbb E_pf\). By the Margulis–Russo formula (Lemma 2.2 of [Biased Fourier analysis and hypercontractivity](biased-fourier-analysis-and-hypercontractivity.md)), \(q'(p)=I_p(f)\). The complete hypergraph has the property and the empty one does not, so \(0<q(p)<1\) for \(0<p<1\). By Theorem 3.1, \(\frac{d}{dp}\log\frac q{1-q}=\frac{q'}{q(1-q)}\ge\frac{(\log n)^\alpha}{C_r}\), so \(q\) is strictly increasing, the quantiles are unique, and integrating from \(p_\varepsilon\) to \(p_{1-\varepsilon}\) gives \(2\log\frac{1-\varepsilon}\varepsilon\ge\frac{(\log n)^\alpha}{C_r}(p_{1-\varepsilon}-p_\varepsilon)\). \(\square\)
 

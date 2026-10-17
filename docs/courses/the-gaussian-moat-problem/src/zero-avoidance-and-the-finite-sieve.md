@@ -17,13 +17,19 @@ Fix \(D\ge1\) and the constants of Section 1 of [A common sampling schedule](a-c
 For a time \(t\), let \(X'_T(t)=F_{\mathcal C_T}(z_t)\) be the vector of residues of \(z_t\) modulo the factors selected for the batch \(T\), and \(O'_T(t)\) the vector of residues modulo the factors selected for all smaller batches. Write \(X'_T=X'_T(t_*)\) and \(O'_T=O'_T(t_*)\). For an integer \(L\ge1\), the **increment word** of length \(L\) at time \(t\) is
 
 \[
-W_L(t)=\bigl(z_{t+1}-z_t,\ z_{t+2}-z_{t+1},\ \dots,\ z_{t+L}-z_{t+L-1}\bigr).
+\begin{aligned}
+&W_L(t)=\bigl(z_{t+1}-z_t,\ z_{t+2}-z_{t+1},\\
+&\qquad\dots,\ z_{t+L}-z_{t+L-1}\bigr).
+\end{aligned}
 \]
 
 Each letter is a nonzero lattice vector of length at most \(D\), so it takes at most \(K_D\) values. We use the dyadic lengths
 
 \[
-L_T=2^{\lfloor\log_2(T^{2/5})\rfloor},\qquad \tfrac12T^{2/5}<L_T\le T^{2/5}.
+\begin{gathered}
+L_T=2^{\lfloor\log_2(T^{2/5})\rfloor},\\
+\tfrac12T^{2/5}<L_T\le T^{2/5}.
+\end{gathered}
 \]
 
 ## 2. The information cost of one batch
@@ -37,14 +43,19 @@ L_T=2^{\lfloor\log_2(T^{2/5})\rfloor},\qquad \tfrac12T^{2/5}<L_T\le T^{2/5}.
 **Proof.** Fix the batch and write \(L=L_T\), \(q=q_T\), \(p\) for primes of the batch, and \(A_0=A_0(T)\) for the first checkpoint of Section 5 of the schedule lesson. Put
 
 \[
-X=X'_T(A_0),\qquad O=O'_T(A_0),\qquad s=z_{t_*}-z_{A_0},\qquad W=W_L(t_*).
+\begin{gathered}
+X=X'_T(A_0),\qquad O=O'_T(A_0),\\
+s=z_{t_*}-z_{A_0},\qquad W=W_L(t_*).
+\end{gathered}
 \]
 
 *Step 1: the residues at \(A_0\) are uncertain.* For fixed \(\mathcal C\), Corollary 2.4(3) of the entropy lesson gives \(H(X\mid O)\ge H(X)-H(O)\). The variable \(O\) takes at most \(\prod_{T'<T}(2T')^{q_{T'}}\) values, and \(q_{T'}\le k_{T'}\), so Proposition 4.3 of the schedule lesson gives \(H(O)\le e_0c_0T\le e_0qL_*\). The average of \(H(X)\) over \(\mathcal C_T\) is the profile \(f_{z_{A_0}}(q)\), which is at least \((1-e_0)qL_*\) by Proposition 4.2 there, since \(A_0\) comes after the top band of the batch's window. Hence
 
 \[
-\mathbb E_{\mathcal C}\,H(X\mid O)\ge(1-2e_0)\,qL_*.
-\tag{2.1}
+\begin{aligned}
+&\mathbb E_{\mathcal C}\,H(X\mid O)\\
+&\quad \ge(1-2e_0)\,qL_*.
+\end{aligned}\tag{2.1}
 \]
 
 By Lemma 5.1 of the schedule lesson, \(s\) lies in the set \(\mathcal D_0\), so
@@ -61,30 +72,37 @@ The time-0 run, and with it the law of \(s\), does not depend on \(\mathcal C\).
 For a selected factor \(\pi\) (one of the factors in \(\mathcal C_T\)), say that a residue \(x\in\mathbb Z[i]/(\pi)\) **passes** the package \(P_a\) if
 
 \[
-x+s_a+\sum_{h<l}W^{(a)}_h\not\equiv0\pmod\pi\qquad\text{for }l=0,1,\dots,L-1,
+\begin{gathered}
+x+s_a+\sum_{h<l}W^{(a)}_h\not\equiv0\pmod\pi\\
+\text{for }l=0,1,\dots,L-1,
+\end{gathered}
 \]
 
 where \(W^{(a)}_h\) is the \(h\)-th letter, counted from \(0\). Let \(\mathcal L_\pi(P)\) be the set of residues that pass every package. In the original experiment, \(X_\pi+s+\sum_{h<l}W_h\) is the residue of \(z_{t_*+l}\), which is nonzero because the walk avoids the zero class of \(\pi\). Since \((X,P_a)\) has the law of \((X,(s,W))\), the true coordinate \(X_\pi\) passes every package almost surely: \(X_\pi\in\mathcal L_\pi(P)\). For each value of \((O,P)\), the conditional values of \(X\) therefore lie in the product of the sets \(\mathcal L_\pi(P)\), and
 
 \[
-H(X\mid O,P)\le\mathbb E\sum_{\pi\in\mathcal C_T}\log|\mathcal L_\pi(P)|.
-\tag{2.3}
+\begin{aligned}
+&H(X\mid O,P)\\
+&\quad \le\mathbb E\sum_{\pi\in\mathcal C_T}\log|\mathcal L_\pi(P)|.
+\end{aligned}\tag{2.3}
 \]
 
-*Step 3: the packages are mixtures of continuations.* For an integer \(a\ge0\), let \(\kappa_a\) be the law of \((z_{t_*}-z_a,W_L(t_*))\) in the continuation experiment from the exact start \(A_0=a\). The variables \(O\) and \(X\) are functions of the walk position at time \(A_0\), and after \(A_0\) the schedule uses fresh randomness. Hence, for every value \(\omega\) of \((O,X)\) of positive probability,
-
+*Step 3: the packages are mixtures of continuations.* For an integer \(a\ge0\), let \(\kappa_a\) be the law of \((z_{t_*}-z_a,W_L(t_*))\) in the continuation experiment from the exact start \(A_0=a\). The variables \(O\) and \(X\) are functions of the walk position at time \(A_0\), and after \(A_0\) the schedule uses fresh randomness. Hence, for every value \(\omega\) of \((O,X)\) of positive probability, the identity (2.4) holds:
 \[
-\mathbb P\bigl((s,W)\in\cdot\mid(O,X)=\omega\bigr)=\sum_a\mathbb P\bigl(A_0=a\mid(O,X)=\omega\bigr)\,\kappa_a.
-\tag{2.4}
+\begin{aligned}
+&\mathbb P\bigl((s,W)\in\cdot\mid(O,X)=\omega\bigr)\\
+&\quad=\sum_a\mathbb P\bigl(A_0=a\mid(O,X)=\omega\bigr)\,\kappa_a.
+\end{aligned}
 \]
 
-Call a selected factor \(\pi\) **favorable** for the value \(\omega\) if, for the posterior law \(\mu_\omega=\mathbb P(A_0=\cdot\mid(O,X)=\omega)\), the set \(G\) of exact starts \(a\) at which the terminal residue law \(b_{0,a,\pi}\) has \((\tau_0,\beta_0)\)-coverage has \(\mu_\omega(G)\ge\frac12\). Let \(\chi(a,\pi)\) indicate that \(b_{0,a,\pi}\) fails this coverage. An unfavorable factor has posterior failure probability above \(\frac12\), so its indicator is at most twice that probability. By the tower property and Proposition 6.1 of the schedule lesson (at most a fraction \(\eta_0\) of the signed coordinates fail at each exact start),
-
+Call a selected factor \(\pi\) **favorable** for the value \(\omega\) if, for the posterior law \(\mu_\omega=\mathbb P(A_0=\cdot\mid(O,X)=\omega)\), the set \(G\) of exact starts \(a\) at which the terminal residue law \(b_{0,a,\pi}\) has \((\tau_0,\beta_0)\)-coverage has \(\mu_\omega(G)\ge\frac12\). Let \(\chi(a,\pi)\) indicate that \(b_{0,a,\pi}\) fails this coverage. An unfavorable factor has posterior failure probability above \(\frac12\), so its indicator is at most twice that probability. By the tower property and Proposition 6.1 of the schedule lesson (at most a fraction \(\eta_0\) of the signed coordinates fail at each exact start), the bound (2.5) holds:
 \[
-\mathbb E_{\mathcal C}\,\mathbb E\,\#\{\text{unfavorable }\pi\in\mathcal C_T\}
-\le2\,\mathbb E_{\mathcal C}\,\mathbb E\sum_{\pi\in\mathcal C_T}\chi(A_0,\pi)
-=2\,\mathbb E_{A_0}\,\mathbb E_{\mathcal C}\sum_{\pi\in\mathcal C_T}\chi(A_0,\pi)\le2\eta_0q.
-\tag{2.5}
+\begin{aligned}
+&\mathbb E_{\mathcal C}\,\mathbb E\,\#\{\text{unfavorable }\pi\in\mathcal C_T\}\\
+&\quad\le2\,\mathbb E_{\mathcal C}\,\mathbb E\sum_{\pi\in\mathcal C_T}\chi(A_0,\pi)\\
+&\quad=2\,\mathbb E_{A_0}\,\mathbb E_{\mathcal C}\sum_{\pi\in\mathcal C_T}\chi(A_0,\pi)\\
+&\quad\le2\eta_0q.
+\end{aligned}
 \]
 
 Here we used that \(A_0\) is independent of \(\mathcal C\), and that a uniform signed subset of size \(q\) contains each signed coordinate with probability \(q/(2k_T)\).
@@ -106,7 +124,10 @@ All summands are nonnegative, and \(u_x<\frac14\) makes the summand larger than 
 *Step 5: a short word tests \(L\) disjoint possibilities.* Fix a candidate \(x\) with \(u_x\ge\frac14\), and an offset \(0\le l<L\). Say that a package **hits** \(x\) at \(l\) if \(x+s_a+\sum_{h<l}W^{(a)}_h\equiv0\pmod\pi\). For \((s,W)\) drawn from \(\kappa_a\), this means \(z_{t_*+l}-z_a\equiv-x\pmod\pi\), an event about the time \(t_*+l\). By Lemma 3.2 of the schedule lesson, at every \(a\in G\) counted by \(u_x\),
 
 \[
-\kappa_a(\text{hit at }l)\ge\kappa_a(\text{hit at }0)-T_+^{-9}\ge\frac{\tau_0}p-T_+^{-9}\ge\frac{\tau_0}{2p},
+\begin{aligned}
+&\kappa_a(\text{hit at }l)\ge\kappa_a(\text{hit at }0)\\
+&\quad -T_+^{-9}\ge\frac{\tau_0}p-T_+^{-9}\ge\frac{\tau_0}{2p},
+\end{aligned}
 \]
 
 since \(l<L\le T_+\) and \(p\le2T\le2T_+\). By (2.4), a package hits \(x\) at \(l\) with conditional probability at least \(u_x\tau_0/(2p)\ge\tau_0/(8p)\), given \((O,X)=\omega\).
@@ -116,38 +137,59 @@ For one package, the hits at different offsets are disjoint events. Indeed, ever
 *Step 6: the lists are short.* The packages are conditionally independent given \((O,X)=\omega\). So for a favorable \(\pi\),
 
 \[
-\mathbb E\bigl[|\mathcal L_\pi(P)|\ \big|\ (O,X)=\omega\bigr]\le4p^{1-\beta_0}+p\Bigl(1-\frac L{32p}\Bigr)^m\le4p^{1-\beta_0}+p\exp\Bigl(-\frac{Lm}{32p}\Bigr)\le5p^{1-\beta_0}.
+\begin{aligned}
+&\mathbb E\bigl[|\mathcal L_\pi(P)|\ \big|\ (O,X)=\omega\bigr]\\
+&\quad\le4p^{1-\beta_0}+p\Bigl(1-\frac L{32p}\Bigr)^m\\
+&\quad\le4p^{1-\beta_0}+p\exp\Bigl(-\frac{Lm}{32p}\Bigr)\\
+&\quad\le5p^{1-\beta_0}.
+\end{aligned}
 \]
 
 For the last inequality, \(Lm/(32p)\ge K_0T\log T/(64T)=2\log T\), so \(p\exp(-Lm/(32p))\le2T\cdot T^{-2}\le p^{1-\beta_0}\). By Jensen's inequality, the conditional expectation of \(\log|\mathcal L_\pi(P)|\) is at most \((1-\beta_0)\log p+\log5\) for a favorable \(\pi\), and it is at most \(\log p\) in any case. With (2.3) and (2.5), and \(\mathbb E_{\mathcal C}\sum_{\pi\in\mathcal C_T}\log p=qL_*\),
 
 \[
-\mathbb E_{\mathcal C}\,H(X\mid O,P)\le(1-\beta_0)qL_*+q\log5+2\eta_0q\,\beta_0\log(2T)\le\Bigl(1-\frac{\beta_0}2\Bigr)qL_*,
+\begin{aligned}
+&\mathbb E_{\mathcal C}\,H(X\mid O,P)\le(1-\beta_0)qL_*+q\log5\\
+&\quad +2\eta_0q\,\beta_0\log(2T)\le\Bigl(1-\frac{\beta_0}2\Bigr)qL_*,
+\end{aligned}
 \]
 
 for large \(M\), because \(\eta_0=\frac1{100}\), \(\log(2T)\le2L_*\) and \(\log5/L_*\to0\). Together with (2.1) and \(e_0=\beta_0/50\),
 
 \[
-\mathbb E_{\mathcal C}\,I(X;P\mid O)\ge\Bigl(\frac{\beta_0}2-2e_0\Bigr)qL_*\ge\frac{\beta_0}3\,qL_*.
-\tag{2.6}
+\begin{aligned}
+&\mathbb E_{\mathcal C}\,I(X;P\mid O)\\
+&\quad \ge\Bigl(\frac{\beta_0}2-2e_0\Bigr)qL_*\\
+&\quad \ge\frac{\beta_0}3\,qL_*.
+\end{aligned}\tag{2.6}
 \]
 
 *Step 7: moving the information to the final time.* Fix \(\mathcal C\). By Lemma 3.4 of the entropy lesson, \(I(X;P\mid O)\le m\,I(X;s,W\mid O)\). By the chain rule for information,
 
 \[
-I(X;s,W\mid O)=I(X;s\mid O)+I(X;W\mid O,s),\qquad I(X;s\mid O)\le H(s).
+\begin{aligned}
+&I(X;s,W\mid O)=I(X;s\mid O)\\
+&\quad +I(X;W\mid O,s),\\
+&I(X;s\mid O)\le H(s).
+\end{aligned}
 \]
 
-Given \(s\), the residue vectors at \(A_0\) and at \(t_*\) determine each other: \(X'_T=X+F_{\mathcal C_T}(s)\) and \(O'_T=O+(\text{residues of }s)\). By Corollary 2.4(4) of the entropy lesson, \(I(X;W\mid O,s)=I(X'_T;W\mid O'_T,s)\), and Lemma 3.3 there gives \(I(X'_T;W\mid O'_T,s)\le I(X'_T;W\mid O'_T)+H(s)\). Hence
+Given \(s\), the residue vectors at \(A_0\) and at \(t_*\) determine each other: \(X'_T=X+F_{\mathcal C_T}(s)\) and \(O'_T=O+(\text{residues of }s)\). By Corollary 2.4(4) of the entropy lesson, \(I(X;W\mid O,s)=I(X'_T;W\mid O'_T,s)\), and Lemma 3.3 there shows that \(I(X'_T;W\mid O'_T,s)\) is at most \(I(X'_T;W\mid O'_T)+H(s)\). Hence
 
 \[
-I(X;P\mid O)\le m\bigl(I(X'_T;W\mid O'_T)+2H(s)\bigr).
+\begin{aligned}
+&I(X;P\mid O)\\
+&\quad \le m\bigl(I(X'_T;W\mid O'_T)+2H(s)\bigr).
+\end{aligned}
 \]
 
 Average over \(\mathcal C\), and use (2.6), (2.2), \(qL_*\ge c_0T\) and \(m\le2K_0(T/L)\log T\):
 
 \[
-\mathbb E_{\mathcal C}\,I(X'_T;W\mid O'_T)\ge\frac{\beta_0c_0}{6K_0}\cdot\frac L{\log T}-2T^{1/4}\ge\frac{\beta_0c_0}{12K_0}\cdot\frac L{\log T},
+\begin{aligned}
+&\mathbb E_{\mathcal C}\,I(X'_T;W\mid O'_T)\ge\frac{\beta_0c_0}{6K_0}\cdot\frac L{\log T}\\
+&\quad -2T^{1/4}\ge\frac{\beta_0c_0}{12K_0}\cdot\frac L{\log T},
+\end{aligned}
 \]
 
 the last step for large \(M\), because \(L/\log T\ge T^{2/5}/(2\log T)\) is much larger than \(T^{1/4}\). Divide by \(L\). \(\square\)
@@ -159,7 +201,10 @@ The variables on the left of Proposition 2.1 are those of the run from time \(0\
 **Lemma 3.1** (telescoping budget). For large \(M\) and every value of \(\mathcal C\),
 
 \[
-\sum_T\frac{I\bigl(X'_T;W_{L_T}(t_*)\mid O'_T\bigr)}{L_T}\le\log K_D+\frac1M,
+\begin{aligned}
+&\sum_T\frac{I\bigl(X'_T;W_{L_T}(t_*)\mid O'_T\bigr)}{L_T}\\
+&\quad \le\log K_D+\frac1M,
+\end{aligned}
 \]
 
 the sum running over all batches.
@@ -167,7 +212,10 @@ the sum running over all batches.
 **Proof.** List the batches as \(T_1<T_2<\dots<T_n\), and write \(L_j=L_{T_j}\). These lengths are powers of \(2\) and increase with \(j\), so \(L_j\) divides \(L_{j+1}\). For a time \(t\), let \(Q_j(t)\) be the vector of residues of \(z_t\) modulo the factors selected for the batches \(T_1,\dots,T_j\), with \(Q_0\) empty. Then \(O'_{T_j}=Q_{j-1}(t_*)\) and \((O'_{T_j},X'_{T_j})=Q_j(t_*)\). Put
 
 \[
-a_j=\frac{H\bigl(W_{L_j}(t_*)\mid Q_{j-1}(t_*)\bigr)}{L_j},\qquad b_j=\frac{H\bigl(W_{L_j}(t_*)\mid Q_j(t_*)\bigr)}{L_j},
+\begin{gathered}
+a_j=\frac{H\bigl(W_{L_j}(t_*)\mid Q_{j-1}(t_*)\bigr)}{L_j},\\
+b_j=\frac{H\bigl(W_{L_j}(t_*)\mid Q_j(t_*)\bigr)}{L_j},
+\end{gathered}
 \]
 
 so that the \(j\)-th term of the sum is \(a_j-b_j\).
@@ -175,13 +223,21 @@ so that the \(j\)-th term of the sum is \(a_j-b_j\).
 *Blocks.* Split \(W_{L_{j+1}}(t_*)\) into the \(r=L_{j+1}/L_j\) consecutive blocks \(W_{L_j}(t_*+iL_j)\), \(0\le i<r\). The residue vector \(Q_j(t_*+iL_j)\) is determined by \(Q_j(t_*)\) and the earlier blocks, since \(z_{t_*+iL_j}-z_{t_*}\) is the sum of their letters. The chain rule and Corollary 2.4(4) of the entropy lesson give
 
 \[
-H\bigl(W_{L_{j+1}}(t_*)\mid Q_j(t_*)\bigr)\le\sum_{i=0}^{r-1}H\bigl(W_{L_j}(t_*+iL_j)\mid Q_j(t_*+iL_j)\bigr).
+\begin{aligned}
+&H\bigl(W_{L_{j+1}}(t_*)\mid Q_j(t_*)\bigr)\\
+&\quad\le\sum_{i=0}^{r-1}H\bigl(W_{L_j}(t_*+iL_j)\mid\\
+&\qquad\qquad Q_j(t_*+iL_j)\bigr).
+\end{aligned}
 \]
 
 *Almost invariance.* The pair \((W_{L_j}(t),Q_j(t))\) is a fixed function of the time \(t\). Since \(iL_j<L_{j+1}\le T_+^{2/5}\le T_+\), Lemma 3.2 of the schedule lesson shows that its laws at \(t_*+iL_j\) and at \(t_*\) differ by at most \(T_+^{-9}\) in total variation. The pair takes at most \(K_D^{L_j}\prod_T(2T)^{q_T}\) values, and by Lemma 5.2 of the first lesson the logarithm of this number is at most \(T_+\log K_D+(16\log2)T_+\). Corollary 5.6 of the entropy lesson, with \(h(u)\le u\log(e/u)\), gives
 
 \[
-H\bigl(W_{L_j}(t_*+iL_j)\mid Q_j(t_*+iL_j)\bigr)\le H\bigl(W_{L_j}(t_*)\mid Q_j(t_*)\bigr)+\epsilon_M,\qquad \epsilon_M=T_+^{-7},
+\begin{aligned}
+&H\bigl(W_{L_j}(t_*+iL_j)\mid Q_j(t_*+iL_j)\bigr)\\
+&\quad \le H\bigl(W_{L_j}(t_*)\mid Q_j(t_*)\bigr)+\epsilon_M,\\
+&\epsilon_M=T_+^{-7},
+\end{aligned}
 \]
 
 for large \(M\). Dividing by \(L_{j+1}=rL_j\), we get \(a_{j+1}\le b_j+\epsilon_M\).
@@ -189,7 +245,10 @@ for large \(M\). Dividing by \(L_{j+1}=rL_j\), we get \(a_{j+1}\le b_j+\epsilon_
 *Telescoping.* Hence
 
 \[
-\sum_{j=1}^n(a_j-b_j)=a_1-b_n+\sum_{j=1}^{n-1}(a_{j+1}-b_j)\le a_1+n\epsilon_M.
+\begin{aligned}
+&\sum_{j=1}^n(a_j-b_j)=a_1-b_n\\
+&\quad +\sum_{j=1}^{n-1}(a_{j+1}-b_j)\le a_1+n\epsilon_M.
+\end{aligned}
 \]
 
 Each letter takes at most \(K_D\) values, so \(a_1\le\log K_D\). The number of batches is \(n\le X_M\le T_+\), so \(n\epsilon_M\le T_+^{-6}\le1/M\). \(\square\)
@@ -203,8 +262,10 @@ The telescoping argument is related to Tao's entropy decrement argument [Tao 201
 **Proof.** Let \(M\) be large, and suppose that an infinite \(D\)-walk lies in \(\mathcal A(\mathcal P_M)\). Average Lemma 3.1 over \(\mathcal C\) and apply Proposition 2.1 to each batch:
 
 \[
-c_1\sum_T\frac1{\log T}\le\log K_D+1.
-\tag{4.1}
+\begin{aligned}
+&c_1\sum_T\frac1{\log T}\\
+&\quad \le\log K_D+1.
+\end{aligned}\tag{4.1}
 \]
 
 The window \([X_m,1.05X_m]\) contains at least \(0.05X_m/\log B-1\ge0.04X_m/\log B\) batches for large \(M\) (Exercise 7.3 of the schedule lesson), and each contributes \(1/\log T\ge1/(1.05X_m)\). So each window contributes at least \(0.038/\log B\), and the at least \(M/2\) windows contribute at least \(0.019M/\log B\). For
@@ -246,10 +307,14 @@ The theorem concerns a fixed step bound. It says nothing about walks whose permi
 **5.4.** For a value \(y\) with \(\mathbb P(Y=y)>0\) and a set \(E\),
 
 \[
-\mathbb P(\tau_1\in E,Y=y)=\sum_{a:f(a)=y}\mathbb P(\tau_0=a)\,\mathbb P(\tau_1\in E\mid\tau_0=a),
+\begin{aligned}
+&\mathbb P(\tau_1\in E,Y=y)\\
+&\quad=\sum_{a:f(a)=y}\mathbb P(\tau_0=a)\\
+&\qquad\cdot\mathbb P(\tau_1\in E\mid\tau_0=a),
+\end{aligned}
 \]
 
-because the event \(\{Y=y\}\) is the union of the events \(\{\tau_0=a\}\) with \(f(a)=y\). Divide by \(\mathbb P(Y=y)\), and note that \(\mathbb P(\tau_0=a)/\mathbb P(Y=y)=\mathbb P(\tau_0=a\mid Y=y)\) for these \(a\) and vanishes for the others.
+because the event \(\{Y=y\}\) is the union of the events \(\{\tau_0=a\}\) with \(f(a)=y\). Divide by \(\mathbb P(Y=y)\), and note that \(\mathbb P(\tau_0=a)/\mathbb P(Y=y)\) equals \(\mathbb P(\tau_0=a\mid Y=y)\) for these \(a\), while \(\mathbb P(\tau_0=a\mid Y=y)\) vanishes for the others.
 
 **5.5.** For \(m\) in \([\lceil M/2\rceil,M]\) there are at least \(M/2\) windows. The window \(m\) contains at least \(0.05X_m/\log B-1\) batches, which is at least \(0.04X_m/\log B\) once \(X_m\ge100\log B\); each has \(\log T\le1.05X_m\). So the window contributes at least \(0.04/(1.05\log B)\ge0.038/\log B\), and the total is at least \((M/2)(0.038/\log B)=0.019M/\log B\).
 

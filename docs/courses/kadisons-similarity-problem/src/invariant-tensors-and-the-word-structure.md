@@ -16,13 +16,15 @@ The restriction of \(\tau\) to each \(D_j\) is its normalized trace, the only tr
 
 **Theorem 1.1** (free corner estimate). Let \(t=1/N\) for an integer \(N\ge2\), let \(G\in B(H)\) commute with \(L_D=\{L_d:d\in D\}\), and let \(\varepsilon\ge0\) be such that
 \[
-\|[G,L_x]\|\le\varepsilon\|x\|\qquad(x\in e\mathcal Le,\ e\in D\text{ a projection with }\tau(e)=t).
-\tag{1.1}
+\|[G,L_x]\|\le\varepsilon\|x\|\tag{1.1}
 \]
+for every projection \(e\in D\) with \(\tau(e)=t\) and every \(x\in e\mathcal Le\).
 If \(s=s^*=s^{-1}\in A_0\) and \(\tau(s)=0\), then
 \[
-\big\|P_B[G,L_s]|_B\big\|\le c_1\varepsilon,\qquad c_1=3\pi^2(1+4c_0),
-\tag{1.2}
+\begin{gathered}
+\big\|P_B[G,L_s]|_B\big\|\le c_1\varepsilon,\\
+c_1=3\pi^2(1+4c_0),
+\end{gathered}\tag{1.2}
 \]
 with \(c_0=4\sqrt2\) the constant of Theorem 4.2 of [Row, column and cyclic estimates](row-column-and-cyclic-estimates.md). (The preprint [OpenAI-288] states the estimate with the larger constant \(6\pi^2(1+4c_0)\) and a larger \(c_0\); the size of the constant plays no role.)
 
@@ -34,7 +36,10 @@ The proof occupies this lesson and the next two and ends in Section 4 of [The Ha
 
 **Proof.** By Theorem 1.3 of the free words lesson, \(H\ominus E\) is spanned by the words containing at least one letter from \(A_0^\circ\). Group the letters of such a word as \(d\,m\,d'\), where \(d\) is the part before the first \(A_0\)-letter and \(d'\) the part after the last one (each a centred \(D\)-letter or absent), and \(m\) starts and ends with an \(A_0\)-letter. Writing an arbitrary element of \(D\) as scalar plus centred part, the map \(d\otimes m\otimes d'\mapsto dmd'\) gives a unitary
 \[
-H\ominus E\cong E\otimes\mathcal V\otimes E,\qquad \mathcal V=\bigoplus_{n\ge1}B^\circ\otimes(E^\circ\otimes B^\circ)^{\otimes(n-1)},
+\begin{gathered}
+H\ominus E\cong E\otimes\mathcal V\otimes E,\\
+\mathcal V=\bigoplus_{n\ge1}B^\circ\otimes(E^\circ\otimes B^\circ)^{\otimes(n-1)},
+\end{gathered}
 \]
 by the inner product formula of Lemma 1.2 there; left multiplication by \(D\) acts on the first factor and right multiplication on the last.
 
@@ -44,10 +49,14 @@ Let \(z\in D'\cap\mathcal L\) and let \(E_D\) be the trace-preserving conditiona
 
 ## 3. Symmetrization
 
-For a unitary \(u\in D\), Proposition 3.1 of the free words lesson, with \(\alpha_1=\operatorname{Ad}u\) on \(D\) and \(\alpha_2=\mathrm{id}\) on \(A_0\), gives a trace-preserving automorphism \(\theta_u\) of \(\mathcal L\) and a unitary \(W_u\) on \(H\) with
+For a unitary \(u\in D\), Proposition 3.1 of the free words lesson, with \(\alpha_1=\operatorname{Ad}u\) on \(D\) and \(\alpha_2=\mathrm{id}\) on \(A_0\), gives a trace-preserving automorphism \(\theta_u\) of \(\mathcal L\) and a unitary \(W_u\) on \(H\) satisfying (3.1):
 \[
-W_uL_xW_u^*=L_{\theta_u(x)},\qquad W_u\xi=\xi\ \ (\xi\in B),\qquad W_u(x_1\otimes\cdots\otimes x_n)=\theta_u(x_1)\otimes\cdots\otimes\theta_u(x_n).
-\tag{3.1}
+\begin{aligned}
+&W_uL_xW_u^*=L_{\theta_u(x)},\\
+&W_u\xi=\xi\quad(\xi\in B),\\
+&W_u(x_1\otimes\cdots\otimes x_n)\\
+&\quad=\theta_u(x_1)\otimes\cdots\otimes\theta_u(x_n).
+\end{aligned}
 \]
 Here \(\theta_u=\operatorname{Ad}u\) on \(D\) and \(\theta_u=\mathrm{id}\) on \(A_0\); also \(W_uW_{u'}=W_{uu'}\).
 
@@ -59,7 +68,10 @@ Let \(\mathcal S\) be the set of operators \(Y\) with \(\|Y\|\le\|G\|\) that com
 
 The operators \(W_u\) fix \(B\) pointwise and commute with \(L_s\) (as \(\theta_u(s)=s\)). So for \(\xi,\eta\in B\),
 \[
-\langle[W_uGW_u^*,L_s]\xi,\eta\rangle=\langle W_u[G,L_s]W_u^*\xi,\eta\rangle=\langle[G,L_s]\xi,\eta\rangle,
+\begin{aligned}
+&\langle[W_uGW_u^*,L_s]\xi,\eta\rangle\\
+&\quad =\langle W_u[G,L_s]W_u^*\xi,\eta\rangle=\langle[G,L_s]\xi,\eta\rangle,
+\end{aligned}
 \]
 and this identity passes to the averages and to \(\widetilde G\): the compression \(P_B[\,\cdot\,,L_s]|_B\) takes the same value on \(G\) and on \(\widetilde G\). Finally \([G^*,L_x]=-[G,L_{x^*}]^*\), and \(x^*\in e\mathcal Le\) when \(x\in e\mathcal Le\). \(\square\)
 
@@ -80,7 +92,7 @@ The elementary tensor \(d_0\otimes d_1\otimes\cdots\otimes d_k\otimes(a_1\otimes
 
 ## 5. Invariant multilinear forms on matrices
 
-For a permutation \(\pi\) of \(\{1,\dots,p\}\) let \(P_\pi\) be the operator on \((\mathbb C^m)^{\otimes p}\) with \(P_\pi(w_1\otimes\cdots\otimes w_p)=w_{\pi^{-1}(1)}\otimes\cdots\otimes w_{\pi^{-1}(p)}\).
+For a permutation \(\pi\) of \(\{1,\dots,p\}\) let \(P_\pi\) be the operator on \((\mathbb C^m)^{\otimes p}\) that sends \(w_1\otimes\cdots\otimes w_p\) to \(w_{\pi^{-1}(1)}\otimes\cdots\otimes w_{\pi^{-1}(p)}\).
 
 **Lemma 5.1.** The linear span of \(\{u^{\otimes p}:u\in U(m)\}\) in \(\operatorname{End}((\mathbb C^m)^{\otimes p})\) equals the linear span of \(\{g^{\otimes p}:g\in GL_m(\mathbb C)\}\).
 
@@ -88,18 +100,20 @@ For a permutation \(\pi\) of \(\{1,\dots,p\}\) let \(P_\pi\) be the operator on 
 
 **Corollary 5.2.** The operators on \((\mathbb C^m)^{\otimes p}\) commuting with every \(u^{\otimes p}\), \(u\in U(m)\), are the linear combinations of the \(P_\pi\). If \(m\ge p\), the \(P_\pi\) are linearly independent.
 
-**Proof.** By Lemma 5.1 these are the operators commuting with every \(g^{\otimes p}\), \(g\in GL_m(\mathbb C)\), which by Schur–Weyl duality form the algebra spanned by the \(P_\pi\). If \(m\ge p\), the vectors \(P_\pi(e_1\otimes\cdots\otimes e_p)=e_{\pi^{-1}(1)}\otimes\cdots\otimes e_{\pi^{-1}(p)}\) are distinct basis vectors. \(\square\)
+**Proof.** By Lemma 5.1 these are the operators commuting with every \(g^{\otimes p}\), \(g\in GL_m(\mathbb C)\), which by Schur–Weyl duality form the algebra spanned by the \(P_\pi\). If \(m\ge p\), the vectors \(P_\pi(e_1\otimes\cdots\otimes e_p)\), which equal \(e_{\pi^{-1}(1)}\otimes\cdots\otimes e_{\pi^{-1}(p)}\), are distinct basis vectors. \(\square\)
 
-Let \(\operatorname{tr}\) be the normalized trace on \(M_m(\mathbb C)\). For \(\pi\in S_p\) define the *cycle-trace form*
+Let \(\operatorname{tr}\) be the normalized trace on \(M_m(\mathbb C)\). For \(\pi\in S_p\) define the *cycle-trace form* \(\Phi_\pi\) by (5.1):
 \[
-\Phi_\pi(v_1,\dots,v_p)=\prod_{(i_1\,i_2\,\cdots\,i_r)}\operatorname{tr}(v_{i_1}v_{i_2}\cdots v_{i_r}),
-\tag{5.1}
+\begin{aligned}
+&\Phi_\pi(v_1,\dots,v_p)\\
+&\quad=\prod_{(i_1\,i_2\,\cdots\,i_r)}\operatorname{tr}(v_{i_1}v_{i_2}\cdots v_{i_r}),
+\end{aligned}
 \]
 the product over the cycles of \(\pi\), each written with \(\pi(i_s)=i_{s+1}\) and \(\pi(i_r)=i_1\). By the cyclicity of the trace the factor does not depend on where a cycle starts. Let \(c(\pi)\) be the number of cycles.
 
 **Proposition 5.3.** Let \(m\ge p\) and let \(F:M_m(\mathbb C)^p\to\mathbb C\) be multilinear with \(F(uv_1u^*,\dots,uv_pu^*)=F(v_1,\dots,v_p)\) for all unitaries \(u\). Then \(F=\sum_{\pi\in S_p}\lambda_\pi\Phi_\pi\) with unique coefficients \(\lambda_\pi\).
 
-**Proof.** Identify \(M_m(\mathbb C)^{\otimes p}\) with \(\operatorname{End}((\mathbb C^m)^{\otimes p})\). The trace pairing is nondegenerate, so \(F(v_1,\dots,v_p)=\operatorname{Tr}(Y\,v_1\otimes\cdots\otimes v_p)\) for a unique \(Y\). Invariance says \(\operatorname{Tr}(Yu^{\otimes p}Xu^{*\otimes p})=\operatorname{Tr}(YX)\) for all \(X\), that is, \(Y\) commutes with every \(u^{\otimes p}\); by Corollary 5.2, \(Y=\sum_\pi c_\pi P_\pi\). A direct computation in the tensor basis gives \(\operatorname{Tr}(P_\pi\,v_1\otimes\cdots\otimes v_p)=m^{c(\pi)}\Phi_{\pi^{-1}}(v_1,\dots,v_p)\): the trace is a sum over indices \(k_1,\dots,k_p\) of \(\prod_l(v_l)_{k_l,k_{\pi^{-1}(l)}}\), which factors along the cycles of \(\pi^{-1}\). So \(F\) is a combination of cycle-trace forms. Uniqueness follows from Lemma 5.4. \(\square\)
+**Proof.** Identify \(M_m(\mathbb C)^{\otimes p}\) with \(\operatorname{End}((\mathbb C^m)^{\otimes p})\). The trace pairing is nondegenerate, so \(F(v_1,\dots,v_p)=\operatorname{Tr}(Y\,v_1\otimes\cdots\otimes v_p)\) for a unique \(Y\). Invariance says \(\operatorname{Tr}(Yu^{\otimes p}Xu^{*\otimes p})=\operatorname{Tr}(YX)\) for all \(X\), that is, \(Y\) commutes with every \(u^{\otimes p}\); by Corollary 5.2, \(Y=\sum_\pi c_\pi P_\pi\). A direct computation in the tensor basis shows that \(\operatorname{Tr}(P_\pi\,v_1\otimes\cdots\otimes v_p)\) equals \(m^{c(\pi)}\Phi_{\pi^{-1}}(v_1,\dots,v_p)\): the trace is a sum over indices \(k_1,\dots,k_p\) of \(\prod_l(v_l)_{k_l,k_{\pi^{-1}(l)}}\), which factors along the cycles of \(\pi^{-1}\). So \(F\) is a combination of cycle-trace forms. Uniqueness follows from Lemma 5.4. \(\square\)
 
 **Lemma 5.4** (evaluation on matrix units). Let \(m\ge p\), \(\pi\in S_p\) and \(v_i=e_{i,\pi(i)}\) (\(1\le i\le p\)), matrix units of \(M_m(\mathbb C)\). Then \(\Phi_\rho(v_1,\dots,v_p)=m^{-c(\pi)}\) if \(\rho=\pi\), and \(0\) if \(\rho\ne\pi\).
 
@@ -109,46 +123,67 @@ the product over the cycles of \(\pi\), each written with \(\pi(i_s)=i_{s+1}\) a
 
 **Theorem 6.1.** Let \(k,l\ge0\) and let \(Y:E\otimes(E^\circ)^{\otimes k}\to E\otimes(E^\circ)^{\otimes l}\) be bounded, with
 \[
-Y(\lambda(d)\otimes I)=(\lambda(d)\otimes I)Y\quad(d\in D),\qquad YC_u^{\otimes(k+1)}=C_u^{\otimes(l+1)}Y\quad\Big(u\in\bigcup_j\mathcal U(D_j)\Big).
+\begin{aligned}
+&Y(\lambda(d)\otimes I)=(\lambda(d)\otimes I)Y\quad(d\in D),\\
+&YC_u^{\otimes(k+1)}\\
+&\quad =C_u^{\otimes(l+1)}Y\quad\Big(u\in\bigcup_j\mathcal U(D_j)\Big).
+\end{aligned}
 \]
 If \(k\ne l\), then \(Y=0\). If \(k=l\), there are scalars \(a_\sigma\) (\(\sigma\in S_k\)) with
 \[
-Y=I_E\otimes\sum_{\sigma\in S_k}a_\sigma U_\sigma,\qquad U_\sigma(\xi_1\otimes\cdots\otimes\xi_k)=\xi_{\sigma^{-1}(1)}\otimes\cdots\otimes\xi_{\sigma^{-1}(k)}.
+\begin{aligned}
+&Y=I_E\otimes\sum_{\sigma\in S_k}a_\sigma U_\sigma,\\
+&U_\sigma(\xi_1\otimes\cdots\otimes\xi_k)\\
+&\quad =\xi_{\sigma^{-1}(1)}\otimes\cdots\otimes\xi_{\sigma^{-1}(k)}.
+\end{aligned}
 \]
 
 **Proof.** For \(x\in D\) put \(x^\circ=x-\tau(x)1\). For \(a,x_1,\dots,x_k,z_1,\dots,z_l\in D\) define
 \[
-F(a,x,z)=\big\langle Y(1\otimes x_1^\circ\otimes\cdots\otimes x_k^\circ),\ a^*\otimes(z_1^*)^\circ\otimes\cdots\otimes(z_l^*)^\circ\big\rangle .
+\begin{aligned}
+&F(a,x,z)=\big\langle Y(1\otimes x_1^\circ\otimes\cdots\otimes x_k^\circ),\\
+&\qquad a^*\otimes(z_1^*)^\circ\otimes\cdots\otimes(z_l^*)^\circ\big\rangle .
+\end{aligned}
 \]
 It is complex multilinear, since \(a\mapsto a^*\) and \(z\mapsto(z^*)^\circ\) are conjugate linear and enter the conjugate linear slot. Note \(F(a,x,z)=F(a,x^\circ,z^\circ)\).
 
 *Step 1: an endpoint bound.* Fix the tail letters. The operator \(T\) on \(E\) with \(\langle T\xi,\eta\rangle=\langle Y(\xi\otimes x^\circ),\eta\otimes(z^*)^\circ\rangle\) commutes with left multiplication by \(D\), so by the commutation theorem \(T=R_b\) for some \(b\in D\) with \(\|b\|=\|T\|\le\|Y\|\prod_i\|x_i\|_2\prod_j\|z_j\|_2\). Hence \(F(a,x,z)=\langle b,a^*\rangle=\tau(ab)\), and the duality between \(D\) and \(L^1(D)\) gives
 \[
-|F(a,x,z)|\le\|Y\|\,\|a\|_1\prod_{i=1}^k\|x_i\|_2\prod_{j=1}^l\|z_j\|_2 .
+\begin{aligned}
+&|F(a,x,z)|\le\|Y\|\,\|a\|_1\\
+&\qquad\cdot\prod_{i=1}^k\|x_i\|_2\prod_{j=1}^l\|z_j\|_2 .
+\end{aligned}
 \tag{6.1}
 \]
-The same slice gives, for bounded \(c,d\in D\), \(\langle Y(d\otimes x^\circ),c\otimes(z^*)^\circ\rangle=\langle db,c\rangle=\tau(c^*db)=F(c^*d,x,z)\).
+The same slice gives, for bounded \(c,d\in D\), \(\langle Y(d\otimes x^\circ),c\otimes(z^*)^\circ\rangle=\langle db,c\rangle\), which is \(\tau(c^*db)=F(c^*d,x,z)\).
 
 *Step 2: finite stages.* Put \(p=1+k+l\) and restrict all variables to a stage \(D_j\cong M_m(\mathbb C)\) with \(m\ge p\). Since \(C_u\) is unitary, fixes \(1\) and commutes with centring, the intertwining hypothesis gives \(F(uau^*,ux_iu^*,uz_ju^*)=F(a,x,z)\) for \(u\in\mathcal U(D_j)\). Proposition 5.3 gives \(F|_{D_j^p}=\sum_\pi\lambda_{\pi,j}\Phi_\pi\), where we list the variables as \((a,x_1,\dots,x_k,z_1,\dots,z_l)\) and the traces are those of \(\tau\). The forms \(\Phi_\pi\) on \(D_{j+1}\) restrict to the same forms on \(D_j\), because \(\tau\) restricts to normalized traces; uniqueness in Proposition 5.3 shows that \(\lambda_\pi=\lambda_{\pi,j}\) does not depend on \(j\) once \(m_j\ge p\).
 
 *Step 3: long cycles vanish.* Take matrix units \(v\) as in Lemma 5.4 in a stage of size \(m\ge p\). Then \(F(v)=\lambda_\pi m^{-c(\pi)}\). Every matrix unit has \(\|e_{il}\|_1=1/m\) and \(\|e_{il}\|_2=m^{-1/2}\), so (6.1) gives \(|\lambda_\pi|m^{-c(\pi)}\le\|Y\|m^{-1-(k+l)/2}\). Letting \(m\to\infty\),
 \[
-\lambda_\pi=0\qquad\text{unless}\qquad c(\pi)\ge1+\tfrac{k+l}2 .
-\tag{6.2}
+\begin{gathered}
+\lambda_\pi=0\\
+\text{unless}\qquad c(\pi)\ge1+\tfrac{k+l}2 .
+\end{gathered}\tag{6.2}
 \]
 
-*Step 4: centred tails.* Let the \(k+l\) tail variables be centred. A form \(\Phi_\pi\) in which some tail variable forms a cycle by itself vanishes. If no tail variable is alone and the cycle of the first variable \(a\) has length \(r\), the other cycles contain the remaining \(k+l-(r-1)\) tail variables in groups of at least two, so \(c(\pi)\le1+\frac{k+l-r+1}2\). By (6.2), \(r=1\) and all tail cycles have length two. Hence, for all \(a\) and centred tails in \(\bigcup_jD_j\),
+*Step 4: centred tails.* Let the \(k+l\) tail variables be centred. A form \(\Phi_\pi\) in which some tail variable forms a cycle by itself vanishes. If no tail variable is alone and the cycle of the first variable \(a\) has length \(r\), the other cycles contain the remaining \(k+l-(r-1)\) tail variables in groups of at least two, so \(c(\pi)\le1+\frac{k+l-r+1}2\). By (6.2), \(r=1\) and all tail cycles have length two. Hence, for all \(a\) and centred tails in \(\bigcup_jD_j\), the identity (6.3) holds:
 \[
-F(a,x,z)=\tau(a)\sum_{\mathcal P}\lambda_{\mathcal P}\prod_{\{i,i'\}\in\mathcal P}\tau(y_iy_{i'}),
-\tag{6.3}
+\begin{aligned}
+&F(a,x,z)\\
+&\quad=\tau(a)\sum_{\mathcal P}\lambda_{\mathcal P}\prod_{\{i,i'\}\in\mathcal P}\tau(y_iy_{i'}),
+\end{aligned}
 \]
-where \(\mathcal P\) runs over the pairings of the tail slots and \((y_1,\dots,y_{k+l})=(x_1,\dots,x_k,z_1,\dots,z_l)\); there are no pairings when \(k+l\) is odd. With \(a=c^*d\) and the conjugate linear involution \(\mathcal J\xi=\xi^*\) of \(E\), the coefficient \(\langle Y(d\otimes\xi_1\otimes\cdots\otimes\xi_k),c\otimes w_1\otimes\cdots\otimes w_l\rangle\), with \(\xi_i=x_i^\circ\) and \(w_j=(z_j^*)^\circ\), equals \(\langle d,c\rangle\sum_{\mathcal P}\lambda_{\mathcal P}\prod_{\mathcal P}\beta\), where \(\beta=\langle\xi_i,\mathcal J\xi_{i'}\rangle\) for a pair of source slots, \(\beta=\langle\xi_i,w_j\rangle\) for a source slot \(i\) and a test slot \(j\), and \(\beta=\langle\mathcal Jw_j,w_{j'}\rangle\) for a pair of test slots. Both sides are continuous in each \(L^2\)-variable, so the formula holds for all \(d,c\in E\) and all \(\xi_i,w_j\in E^\circ\).
+where \(\mathcal P\) runs over the pairings of the tail slots and \((y_1,\dots,y_{k+l})=(x_1,\dots,x_k,z_1,\dots,z_l)\); there are no pairings when \(k+l\) is odd. With \(a=c^*d\) and the conjugate linear involution \(\mathcal J\xi=\xi^*\) of \(E\), the inner product of \(Y(d\otimes\xi_1\otimes\cdots\otimes\xi_k)\) and \(c\otimes w_1\otimes\cdots\otimes w_l\), with \(\xi_i=x_i^\circ\) and \(w_j=(z_j^*)^\circ\), equals \(\langle d,c\rangle\sum_{\mathcal P}\lambda_{\mathcal P}\prod_{\mathcal P}\beta\), where \(\beta=\langle\xi_i,\mathcal J\xi_{i'}\rangle\) for a pair of source slots, \(\beta=\langle\xi_i,w_j\rangle\) for a source slot \(i\) and a test slot \(j\), and \(\beta=\langle\mathcal Jw_j,w_{j'}\rangle\) for a pair of test slots. Both sides are continuous in each \(L^2\)-variable, so the formula holds for all \(d,c\in E\) and all \(\xi_i,w_j\in E^\circ\).
 
 *Step 5: no pairs within one side.* Let \(v\in D\) be a Haar unitary and \(h_n=(v^n+v^{-n})/\sqrt2\) for \(n\ge1\): these are self-adjoint, centred, and orthonormal, with \(\mathcal Jh_n=h_n\) and \(\tau(h_nh_{n'})=\delta_{nn'}\). Fix a pairing \(\mathcal P\) with \(r_s\) pairs of source slots and \(r_t\) pairs of test slots, and give each pair its own infinite set of indices \(n\), disjoint from the others. For a pair of a source and a test slot, put one fixed \(h_n\) of its set in both slots. For a pair of source slots, sum the source tensor over \(M\) members of its set, with the same \(h_n\) in both slots; do this independently for all such pairs, and build the test tensor in the same way. Take \(d=c=1\). In the formula of Step 4, a pairing \(\mathcal P'\ne\mathcal P\) has a pair whose two slots carry members of different sets, so its product vanishes; the pairing \(\mathcal P\) contributes \(\lambda_{\mathcal P}\) for each of the \(M^{r_s+r_t}\) terms. The source summands are orthonormal, and so are the test summands, so the two tensors have norms \(M^{r_s/2}\) and \(M^{r_t/2}\). Boundedness of \(Y\) gives \(|\lambda_{\mathcal P}|M^{r_s+r_t}\le\|Y\|M^{(r_s+r_t)/2}\), and \(M\to\infty\) gives \(\lambda_{\mathcal P}=0\) whenever \(r_s+r_t>0\).
 
 *Step 6: conclusion.* The surviving pairings join every source slot with a test slot, which requires \(k=l\); if \(k\ne l\), all coefficients vanish and \(Y=0\). If \(k=l\), these pairings are \(\{(i,\sigma(i))\}\) for \(\sigma\in S_k\), and with \(a_\sigma=\lambda_{\mathcal P}\) the coefficient is
 \[
-\langle d,c\rangle\sum_\sigma a_\sigma\prod_{i=1}^k\langle\xi_i,w_{\sigma(i)}\rangle=\Big\langle\Big(I_E\otimes\sum_\sigma a_\sigma U_\sigma\Big)(d\otimes\xi),\,c\otimes w\Big\rangle .
+\begin{aligned}
+&\langle d,c\rangle\sum_\sigma a_\sigma\prod_{i=1}^k\langle\xi_i,w_{\sigma(i)}\rangle\\
+&\quad =\Big\langle\Big(I_E\otimes\sum_\sigma a_\sigma U_\sigma\Big)(d\otimes\xi),\,c\otimes w\Big\rangle .
+\end{aligned}
 \]
 Elementary tensors are total, which proves the identity. \(\square\)
 
@@ -156,20 +191,31 @@ Elementary tensors are total, which proves the identity. \(\square\)
 
 **Theorem 7.1** (word structure). The operator \(G\) maps every level \(\mathcal H_k\) into itself. There are operators \(B_k\in B(J_k)\) with \(\|B_k\|\le\|G\|\) such that, for every \(d_0\in E\), every \(x\in E^\circ\) and every \(\alpha\in J_k\),
 \[
-G(d_0\otimes x^{\otimes k}\otimes\alpha)=d_0\otimes x^{\otimes k}\otimes B_k\alpha,\qquad G^*(d_0\otimes x^{\otimes k}\otimes\alpha)=d_0\otimes x^{\otimes k}\otimes B_k^*\alpha .
-\tag{7.1}
+\begin{aligned}
+&G(d_0\otimes x^{\otimes k}\otimes\alpha)\\
+&\quad =d_0\otimes x^{\otimes k}\otimes B_k\alpha,\\
+&G^*(d_0\otimes x^{\otimes k}\otimes\alpha)\\
+&\quad =d_0\otimes x^{\otimes k}\otimes B_k^*\alpha .
+\end{aligned}\tag{7.1}
 \]
 In particular \(G|_{\mathcal H_0}=I_E\otimes B_0\), \(G\) maps \(B=1\otimes B\subseteq\mathcal H_0\) into itself, and \(G|_B=B_0\).
 
 **Proof.** Let \(P_k\) be the projection onto \(\mathcal H_k\); it commutes with \(L_D\) and with every \(W_u\) (Lemma 4.1). For \(\alpha\in J_k\) and \(\beta\in J_l\) define \(Y_{\alpha,\beta}:E\otimes(E^\circ)^{\otimes k}\to E\otimes(E^\circ)^{\otimes l}\) by
 \[
-\langle Y_{\alpha,\beta}\xi,\eta\rangle=\langle P_lGP_k(\xi\otimes\alpha),\eta\otimes\beta\rangle,\qquad \|Y_{\alpha,\beta}\|\le\|G\|\,\|\alpha\|\,\|\beta\| .
+\begin{gathered}
+\langle Y_{\alpha,\beta}\xi,\eta\rangle=\langle P_lGP_k(\xi\otimes\alpha),\eta\otimes\beta\rangle,\\
+\|Y_{\alpha,\beta}\|\le\|G\|\,\|\alpha\|\,\|\beta\| .
+\end{gathered}
 \]
 By Lemma 4.1 it satisfies the hypotheses of Theorem 6.1. For \(k\ne l\) all these slices vanish, so \(P_lGP_k=0\) and the levels reduce \(G\). For \(k=l\), \(Y_{\alpha,\beta}=I_E\otimes\sum_\sigma a_\sigma(\alpha,\beta)U_\sigma\).
 
-Fix a unit vector \(h\in E^\circ\), let \(V_k\alpha=1\otimes h^{\otimes k}\otimes\alpha\), an isometry of \(J_k\) into \(\mathcal H_k\), and put \(B_k=V_k^*GV_k\); then \(\|B_k\|\le\|G\|\) and \(\langle B_k\alpha,\beta\rangle=\langle Y_{\alpha,\beta}(1\otimes h^{\otimes k}),1\otimes h^{\otimes k}\rangle=\sum_\sigma a_\sigma(\alpha,\beta)\), because every \(U_\sigma\) fixes \(h^{\otimes k}\). For \(d_0\in E\), \(x\in E^\circ\) and \(\eta\in E\otimes(E^\circ)^{\otimes k}\),
+Fix a unit vector \(h\in E^\circ\), let \(V_k\alpha=1\otimes h^{\otimes k}\otimes\alpha\), an isometry of \(J_k\) into \(\mathcal H_k\), and put \(B_k=V_k^*GV_k\); then \(\|B_k\|\le\|G\|\) and \(\langle B_k\alpha,\beta\rangle=\langle Y_{\alpha,\beta}(1\otimes h^{\otimes k}),1\otimes h^{\otimes k}\rangle\), which is \(\sum_\sigma a_\sigma(\alpha,\beta)\), because every \(U_\sigma\) fixes \(h^{\otimes k}\). For \(d_0\in E\), \(x\in E^\circ\) and \(\eta\in E\otimes(E^\circ)^{\otimes k}\),
 \[
-\langle G(d_0\otimes x^{\otimes k}\otimes\alpha),\eta\otimes\beta\rangle=\Big(\sum_\sigma a_\sigma(\alpha,\beta)\Big)\langle d_0\otimes x^{\otimes k},\eta\rangle=\langle d_0\otimes x^{\otimes k}\otimes B_k\alpha,\eta\otimes\beta\rangle,
+\begin{aligned}
+&\langle G(d_0\otimes x^{\otimes k}\otimes\alpha),\eta\otimes\beta\rangle\\
+&\quad =\Big(\sum_\sigma a_\sigma(\alpha,\beta)\Big)\langle d_0\otimes x^{\otimes k},\eta\rangle\\
+&\quad =\langle d_0\otimes x^{\otimes k}\otimes B_k\alpha,\eta\otimes\beta\rangle,
+\end{aligned}
 \]
 again because \(U_\sigma x^{\otimes k}=x^{\otimes k}\). Such vectors \(\eta\otimes\beta\) are total in \(\mathcal H_k\), and \(G\) preserves \(\mathcal H_k\), which proves the first identity in (7.1). The operator \(G^*\) also commutes with \(L_D\) and every \(W_u\), so the same argument applies to it, with \(V_k^*G^*V_k=B_k^*\). At level zero, \(J_0=B\) and (7.1) reads \(G(d_0\otimes\alpha)=d_0\otimes B_0\alpha\). \(\square\)
 
@@ -191,11 +237,11 @@ again because \(U_\sigma x^{\otimes k}=x^{\otimes k}\). Such vectors \(\eta\otim
 
 ## 9. Solutions
 
-**Solution 8.1.** The permutations of \(\{1,2\}\) are the identity, with two cycles, and the transposition, with one; so \(\Phi_{\rm id}=\operatorname{tr}(v_1)\operatorname{tr}(v_2)\) and \(\Phi_{(12)}=\operatorname{tr}(v_1v_2)\). Write \(F(v_1,v_2)=\operatorname{Tr}(Y\,v_1\otimes v_2)\) with \(Y\) commuting with all \(u\otimes u\). For \(m\ge2\) this commutant is spanned by \(1\) and the flip \(P_{(12)}\) (Corollary 5.2), and \(\operatorname{Tr}(v_1\otimes v_2)=m^2\operatorname{tr}(v_1)\operatorname{tr}(v_2)\), \(\operatorname{Tr}(P_{(12)}\,v_1\otimes v_2)=\operatorname{Tr}(v_1v_2)=m\operatorname{tr}(v_1v_2)\); the last identity is the computation \(\sum_{k,l}(v_1)_{kl}(v_2)_{lk}\).
+**Solution 8.1.** The permutations of \(\{1,2\}\) are the identity, with two cycles, and the transposition, with one; so \(\Phi_{\rm id}=\operatorname{tr}(v_1)\operatorname{tr}(v_2)\) and \(\Phi_{(12)}=\operatorname{tr}(v_1v_2)\). Write \(F(v_1,v_2)=\operatorname{Tr}(Y\,v_1\otimes v_2)\) with \(Y\) commuting with all \(u\otimes u\). For \(m\ge2\) this commutant is spanned by \(1\) and the flip \(P_{(12)}\) (Corollary 5.2), and \(\operatorname{Tr}(v_1\otimes v_2)=m^2\operatorname{tr}(v_1)\operatorname{tr}(v_2)\), \(\operatorname{Tr}(P_{(12)}\,v_1\otimes v_2)=\operatorname{Tr}(v_1v_2)\), which is \(m\operatorname{tr}(v_1v_2)\); the last identity is the computation \(\sum_{k,l}(v_1)_{kl}(v_2)_{lk}\).
 
 **Solution 8.2.** The operator is \(3!\) times the projection onto the antisymmetric tensors. An antisymmetric tensor in \((\mathbb C^2)^{\otimes3}\) is zero: its coefficient on \(e_{i_1}\otimes e_{i_2}\otimes e_{i_3}\) changes sign under exchanging two positions, and two of the three indices coincide.
 
-**Solution 8.3.** \(h_n^*=h_n\). Since \(\tau(v^k)=0\) for \(k\ne0\), \(\tau(h_n)=0\) and \(\tau(h_nh_{n'})=\frac12\tau(v^{n+n'}+v^{n-n'}+v^{n'-n}+v^{-n-n'})=\delta_{nn'}\) for \(n,n'\ge1\); and \(\langle h_n,h_{n'}\rangle=\tau(h_{n'}h_n)\).
+**Solution 8.3.** \(h_n^*=h_n\). Since \(\tau(v^k)=0\) for \(k\ne0\), \(\tau(h_n)=0\) and, for \(n,n'\ge1\), \(\tau(h_nh_{n'})\) is half the trace of \(v^{n+n'}+v^{n-n'}+v^{n'-n}+v^{-n-n'}\), which is \(\delta_{nn'}\); and \(\langle h_n,h_{n'}\rangle=\tau(h_{n'}h_n)\).
 
 **Solution 8.4.** \(\lambda(d)\otimes I\) acts on the first factor, which \(I_E\otimes U_\sigma\) leaves alone; and \(C_u^{\otimes(k+1)}=C_u\otimes C_u^{\otimes k}\) commutes with \(I_E\otimes U_\sigma\) because a permutation of tensor factors commutes with applying the same operator to every factor.
 

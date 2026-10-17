@@ -16,7 +16,7 @@ Throughout, \(k\) is an algebraically closed field and \(X\) is a projective \(k
 
 **Lemma 1.2** (finite pullback). Let \(f:X\to Y\) be a finite morphism of proper \(k\)-schemes and \(M\) ample on \(Y\). Then \(f^*M\) is ample.
 
-**Proof.** For coherent \(F\) on \(X\), the sheaf \(f_*F\) is coherent and, \(f\) being affine, \(H^q(X,F\otimes f^*M^n)=H^q(Y,f_*F\otimes M^n)\) by the projection formula. The right side vanishes for \(q>0\) and \(n\gg0\). \(\square\)
+**Proof.** For coherent \(F\) on \(X\), the sheaf \(f_*F\) is coherent and, \(f\) being affine, \(H^q(X,F\otimes f^*M^n)\) equals \(H^q(Y,f_*F\otimes M^n)\) by the projection formula. The right side vanishes for \(q>0\) and \(n\gg0\). \(\square\)
 
 **Lemma 1.3** (globally generated and positive on curves). Let \(L\) be a globally generated invertible sheaf on a proper \(k\)-scheme \(X\) with \(\deg(L|_C)>0\) for every curve \(C\subseteq X\). Then \(L\) is ample.
 
@@ -43,20 +43,31 @@ For the converse we prove, by induction on \(n\ge0\), the statement: *for every 
 *Step 3: a power of \(L\) has a nonzero section.* Choose a very ample \(H\) such that \(L\otimes H\) is also very ample: for instance \(H=\mathcal O_X(m)\) with \(m\) large enough that \(L(m)\) is globally generated, using that a globally generated bundle tensored with a very ample one is very ample. Choose nonzero sections \(a\in H^0(X,L\otimes H)\) and \(b\in H^0(X,H)\), with zero schemes \(A\) and \(B\). Since \(X\) is integral, multiplication by \(a\) and by \(b\) is injective, and \(A,B\) are proper closed subschemes. For every integer \(m\) there are exact sequences
 
 \[
-0\to L^{m-1}\otimes H^{-1}\xrightarrow{\,a\,}L^m\to L^m|_A\to0,\qquad
-0\to L^{m-1}\otimes H^{-1}\xrightarrow{\,b\,}L^{m-1}\to L^{m-1}|_B\to0 .
+\begin{aligned}
+&0\to L^{m-1}\otimes H^{-1}\xrightarrow{\,a\,}L^m\\
+&\qquad\to L^m|_A\to0,\\
+&0\to L^{m-1}\otimes H^{-1}\xrightarrow{\,b\,}L^{m-1}\\
+&\qquad\to L^{m-1}|_B\to0 .
+\end{aligned}
 \]
 
 By Step 2 and Serre vanishing, \(H^i(A,L^m|_A)=H^i(B,L^m|_B)=0\) for \(i\ge1\) and \(m\ge m_1\). The two long exact sequences then give, for \(i\ge2\) and \(m>m_1\),
 
 \[
-H^i(X,L^m)\cong H^i(X,L^{m-1}\otimes H^{-1})\cong H^i(X,L^{m-1}).
+\begin{aligned}
+H^i(X,L^m)&\cong H^i(X,L^{m-1}\otimes H^{-1})\\
+&\cong H^i(X,L^{m-1}).
+\end{aligned}
 \]
 
 So \(h^i(L^m)=\dim H^i(X,L^m)\) is independent of \(m\ge m_1\) for each \(i\ge2\), and there is a constant \(c\) with
 
 \[
-\chi(L^m)=h^0(L^m)-h^1(L^m)+\sum_{i\ge2}(-1)^ih^i(L^m)\le h^0(L^m)+c\qquad(m\ge m_1).
+\begin{aligned}
+&\chi(L^m)=h^0(L^m)-h^1(L^m)\\
+&\quad +\sum_{i\ge2}(-1)^ih^i(L^m)\le h^0(L^m)+c\\
+&(m\ge m_1).
+\end{aligned}
 \]
 
 The polynomial \(\chi(L^m)\) has degree at most \(n\), and its coefficient of \(m^n\) is \((L^n\cdot X)/n!\): in \(\chi(L^{n_1+\dots+n_n})\) the coefficient of \(n_1\cdots n_n\) is \(n!\) times that coefficient. By hypothesis \((L^n\cdot X)>0\), so \(\chi(L^m)\to\infty\), hence \(h^0(L^m)\to\infty\). Fix \(m_0\ge1\) and a nonzero \(s\in H^0(X,L^{m_0})\).
@@ -67,10 +78,14 @@ The polynomial \(\chi(L^m)\) has degree at most \(n\), and its coefficient of \(
 0\to M^{m-1}\xrightarrow{\,s\,}M^m\to M^m|_D\to0
 \]
 
-and \(H^1(D,M^m|_D)=0\) for \(m\ge m_2\), we get the exact sequence
+and \(H^1(D,M^m|_D)=0\) for \(m\ge m_2\), we get, for these \(m\), the exact sequence
 
 \[
-H^0(X,M^m)\to H^0(D,M^m|_D)\to H^1(X,M^{m-1})\to H^1(X,M^m)\to0\qquad(m\ge m_2).
+\begin{aligned}
+&H^0(X,M^m)\to H^0(D,M^m|_D)\\
+&\quad\to H^1(X,M^{m-1})\\
+&\quad\to H^1(X,M^m)\to0.
+\end{aligned}
 \]
 
 So \(h^1(M^m)\le h^1(M^{m-1})\), and the nonincreasing sequence of nonnegative integers \(h^1(M^m)\) is constant for \(m\ge m_3\). For such \(m\), the surjection \(H^1(M^{m-1})\to H^1(M^m)\) between spaces of the same finite dimension is injective, and therefore \(H^0(X,M^m)\to H^0(D,M^m|_D)\) is surjective. Enlarging \(m\), we may also assume that \(M^m|_D\) is globally generated (Serre's theorem for the ample \(M|_D\)). Then the sections of \(M^m\) generate its fibres at every point of \(D\), by lifting generating sections from \(D\); and at every point outside \(D\) the section \(s^m\) does not vanish. So \(M^m\) is globally generated.
@@ -99,7 +114,7 @@ Step 3 uses only the top self-intersection \((L^n\cdot X)\), while Step 5 uses o
 
 **3.1.** The only integral subvarieties to test are the positive-dimensional \(V\subseteq\mathbf P^n\). If \(a>0\), \(\mathcal O(a)\) is very ample and Theorem 3.4 of the previous lesson applies. If \(a\le0\), a line \(\ell\) has \((\mathcal O(a)\cdot\ell)=a\le0\).
 
-**3.2.** For an integral \(W\subseteq X\) of dimension \(d\ge1\), \(f(W)\) is integral of dimension \(d\), since a finite morphism has finite fibres, and \((f^*M^d\cdot W)=[k(W):k(f(W))]\,(M^d\cdot f(W))>0\).
+**3.2.** For an integral \(W\subseteq X\) of dimension \(d\ge1\), \(f(W)\) is integral of dimension \(d\), since a finite morphism has finite fibres, and \((f^*M^d\cdot W)\) equals \([k(W):k(f(W))]\,(M^d\cdot f(W))>0\).
 
 **3.3.** For an integral curve \(C\subseteq X\) put \(c=(\mathcal O(1,0)\cdot C)\) and \(d=(\mathcal O(0,1)\cdot C)\). Both bundles are globally generated, so some section does not vanish identically on \(C\), and Corollary 2.5 of the previous lesson gives \(c,d\ge0\); and \(c+d=(\mathcal O(1,1)\cdot C)>0\) because \(\mathcal O(1,1)\) is very ample. By multilinearity \((\mathcal O(a,b)\cdot C)=ac+bd\), and \((\mathcal O(a,b)^2)=2ab\) (Exercise 5.1 of the previous lesson). If \(a,b>0\), all these numbers are positive and Theorem 2.1 applies. If \(a\le0\), the curve \(C=\mathbf P^1\times\{q\}\) has \(c=1\), \(d=0\) and degree \(a\le0\); similarly if \(b\le0\).
 

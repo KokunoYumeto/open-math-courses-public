@@ -10,14 +10,19 @@ We use: Lemma 1.1, Lemma 2.2 and Theorem 3.1 of [Completely bounded homomorphism
 
 Throughout this section and the next three, \(B\subseteq B(H)\) is a C\*-algebra with \(1_H\in B\). For a self-adjoint \(t\in B(H)\) define \(\delta_t,r_t:B\to B(H)\) by
 \[
-\delta_t(x)=tx-xt,\qquad r_t(x)=e^{-t}xe^{t}.
-\tag{1.1}
+\begin{gathered}
+\delta_t(x)=tx-xt,\\
+r_t(x)=e^{-t}xe^{t}.
+\end{gathered}\tag{1.1}
 \]
 The map \(r_t\) is a unital homomorphism, \((\delta_t)_n(X)=[t^{(n)},X]\) and \((r_t)_n(X)=e^{-t^{(n)}}Xe^{t^{(n)}}\) for \(X\in M_n(B)\); hence \(\|r_t\|_{\rm cb}\le\|e^{-t}\|\|e^{t}\|\), and \(\|r_t\|\ge1\) because \(r_t(1)=1\). The inequality can be strict (Exercise 6.1). The first lemma brings every similarity of the inclusion into a form where it is an equality.
 
 **Lemma 1.1** (exponential form of a similarity). Let \(T\in B(H)\) be invertible and \(r(x)=T^{-1}xT\) for \(x\in B\). There are a self-adjoint \(t\in B(H)\) and a unitary \(U\in B(H)\) with
 \[
-r(x)=U^*r_t(x)U\quad(x\in B),\qquad \|r\|_{\rm cb}=\|e^{t}\|\,\|e^{-t}\| .
+\begin{gathered}
+r(x)=U^*r_t(x)U\quad(x\in B),\\
+\|r\|_{\rm cb}=\|e^{t}\|\,\|e^{-t}\| .
+\end{gathered}
 \]
 In particular \(\|r_t\|=\|r\|\) and \(\|r_t\|_{\rm cb}=\|r\|_{\rm cb}\).
 
@@ -34,9 +39,12 @@ In particular \(\|r_t\|=\|r\|\) and \(\|r_t\|_{\rm cb}=\|r\|_{\rm cb}\).
 
 The power series of the exponentials give \(f(\theta)=a+\theta(at-ta)+R(\theta)\) with \(\|R(\theta)\|\le C\theta^2\) for \(0\le\theta\le1\), where \(C\) depends only on \(\|t\|\). The operator \(Y=(at-ta)a^*=ata^*-t\) is self-adjoint, and \(1+\theta Y=(a+\theta(at-ta))a^*\). For a unit vector \(\xi\),
 \[
-1+\theta\langle Y\xi,\xi\rangle\le\|a+\theta(at-ta)\|\le c_+^{\theta}+C\theta^2,
+\begin{aligned}
+1+\theta\langle Y\xi,\xi\rangle&\le\|a+\theta(at-ta)\|\\
+&\le c_+^{\theta}+C\theta^2,
+\end{aligned}
 \]
-so \(\langle Y\xi,\xi\rangle\le(c_+^{\theta}-1)/\theta+C\theta\), and \(\theta\downarrow0\) gives \(\langle Y\xi,\xi\rangle\le\log c_+\). The same argument for the unitary \(a^*\) gives \(\langle Y'\eta,\eta\rangle\le\log c_-\) for \(Y'=a^*ta-t\) and every unit vector \(\eta\). Since \(-Y=t-ata^*=aY'a^*\), we get \(-\langle Y\xi,\xi\rangle=\langle Y'a^*\xi,a^*\xi\rangle\le\log c_-\). So the spectrum of the self-adjoint \(Y\) lies in \([-\log c_-,\log c_+]\), and \(\|ta-at\|=\|Ya\|=\|Y\|\le\log\max(c_+,c_-)\). \(\square\)
+so \(\langle Y\xi,\xi\rangle\le(c_+^{\theta}-1)/\theta+C\theta\), and \(\theta\downarrow0\) gives \(\langle Y\xi,\xi\rangle\le\log c_+\). The same argument for the unitary \(a^*\) gives \(\langle Y'\eta,\eta\rangle\le\log c_-\) for \(Y'=a^*ta-t\) and every unit vector \(\eta\). Since \(-Y=t-ata^*=aY'a^*\), we get \(-\langle Y\xi,\xi\rangle=\langle Y'a^*\xi,a^*\xi\rangle\le\log c_-\). So the spectrum of the self-adjoint \(Y\) lies in \([-\log c_-,\log c_+]\), and \(\|ta-at\|=\|Ya\|\), which is \(\|Y\|\le\log\max(c_+,c_-)\). \(\square\)
 
 **Corollary 2.2.** For every self-adjoint \(t\in B(H)\), \(\|\delta_t\|\le2\log\|r_t\|\).
 
@@ -52,8 +60,12 @@ so \(\langle Y\xi,\xi\rangle\le(c_+^{\theta}-1)/\theta+C\theta\), and \(\theta\d
 \]
 Fix \(n\) and \(X\in M_n(B)\), and write \(t_n=t^{(n)}\). The function \(\tau\mapsto e^{-\tau t_n}Xe^{\tau t_n}\) is norm differentiable with derivative \(-e^{-\tau t_n}[t_n,X]e^{\tau t_n}\), so
 \[
-(r_t)_n(X)-X=-\int_0^1e^{-\tau t_n}(\delta_t)_n(X)\,e^{\tau t_n}\,d\tau,\qquad
-\|(r_t)_n(X)\|\le\|X\|+\|(\delta_t)_n(X)\|\int_0^1c^{\tau}d\tau .
+\begin{aligned}
+&(r_t)_n(X)-X\\
+&\quad =-\int_0^1e^{-\tau t_n}(\delta_t)_n(X)\,e^{\tau t_n}\,d\tau,\\
+&\|(r_t)_n(X)\|\le\|X\|\\
+&\quad +\|(\delta_t)_n(X)\|\int_0^1c^{\tau}d\tau .
+\end{aligned}
 \]
 Since \(\int_0^1c^{\tau}d\tau=(c-1)/\log c\), taking the supremum over \(n\) and the unit ball of \(M_n(B)\) gives \(c\le1+\|\delta_t\|_{\rm cb}(c-1)/\log c\). Divide by \((c-1)/\log c>0\). \(\square\)
 
@@ -66,8 +78,12 @@ Since \(\int_0^1c^{\tau}d\tau=(c-1)/\log c\), taking the supremum over \(n\) and
 
 **Proof.** Lemma 1.1 gives a self-adjoint \(t\) with \(\|r_t\|=\|r\|\) and \(\|r_t\|_{\rm cb}=\|r\|_{\rm cb}=\|e^{t}\|\|e^{-t}\|\). By Lemma 3.1, the hypothesis and Corollary 2.2,
 \[
-\log\|r\|_{\rm cb}\le\|\delta_t\|_{\rm cb}\le k\|\delta_t\|\le2k\log\|r\| .\qquad\square
+\begin{aligned}
+&\log\|r\|_{\rm cb}\le\|\delta_t\|_{\rm cb}\\
+&\quad \le k\|\delta_t\|\le2k\log\|r\| .
+\end{aligned}
 \]
+\(\square\)
 
 Kirchberg's original statement has the weaker bound \(\exp(k(1+\|r\|))\), obtained from the Cauchy estimate for \(f'(0)\) in place of the three-lines bound [Kirchberg, Proposition 1].
 
@@ -109,7 +125,7 @@ The hypothesis concerns inner derivations only, and only through a single consta
 
 **Solution 6.3.** Conjugation by \(e^{-t}\) multiplies the \((i,j)\) entry by \(e^{-t_i+t_j}\), with \((t_1,t_2)=(s,-s)\). So \(e^{-t}ae^{t}=\left(\begin{smallmatrix}0&e^{-2s}\\e^{2s}&0\end{smallmatrix}\right)\) and, as \(a^*=a\), the same for \(a^*\); both have norm \(e^{2s}\). Next \(ta-at=\left(\begin{smallmatrix}0&2s\\-2s&0\end{smallmatrix}\right)\), of norm \(2s=\log e^{2s}\).
 
-**Solution 6.4.** As in 6.3, \(r_t\) multiplies the off-diagonal entries by \(e^{-2s}\) and \(e^{2s}\) and fixes the diagonal ones. So \(\|r_t\|\ge\|r_t(e_{21})\|=e^{2s}\), while \(\|r_t\|_{\rm cb}\le\|e^{-t}\|\|e^{t}\|=e^{s}e^{s}=e^{2s}\); hence both equal \(e^{2s}\). The derivation \(\delta_t\) kills the diagonal entries and multiplies \(x_{12}\) by \(2s\), \(x_{21}\) by \(-2s\), so \(\|\delta_t(x)\|=2s\max(|x_{12}|,|x_{21}|)\le2s\|x\|\), with equality at \(x=e_{12}\). By Arveson's distance formula, Corollary 4.5 of the first lesson, \(\|\delta_t\|_{\rm cb}=2\operatorname{dist}(t,B')=2\operatorname{dist}(t,\mathbb C1)=2s\), the last distance being attained at \(0\) because \(\|t-\lambda\|\ge\max(|s-\lambda|,|s+\lambda|)\ge s\). Here \(\|r_t\|_{\rm cb}=\|e^{t}\|\|e^{-t}\|\), and \(\log\|r_t\|_{\rm cb}=2s=\|\delta_t\|_{\rm cb}\).
+**Solution 6.4.** As in 6.3, \(r_t\) multiplies the off-diagonal entries by \(e^{-2s}\) and \(e^{2s}\) and fixes the diagonal ones. So \(\|r_t\|\ge\|r_t(e_{21})\|=e^{2s}\), while \(\|r_t\|_{\rm cb}\le\|e^{-t}\|\|e^{t}\|=e^{s}e^{s}=e^{2s}\); hence both equal \(e^{2s}\). The derivation \(\delta_t\) kills the diagonal entries and multiplies \(x_{12}\) by \(2s\), \(x_{21}\) by \(-2s\), so \(\|\delta_t(x)\|=2s\max(|x_{12}|,|x_{21}|)\le2s\|x\|\), with equality at \(x=e_{12}\). By Arveson's distance formula, Corollary 4.5 of the first lesson, \(\|\delta_t\|_{\rm cb}=2\operatorname{dist}(t,B')\), which is \(2\operatorname{dist}(t,\mathbb C1)=2s\), the last distance being attained at \(0\) because \(\|t-\lambda\|\ge\max(|s-\lambda|,|s+\lambda|)\ge s\). Here \(\|r_t\|_{\rm cb}=\|e^{t}\|\|e^{-t}\|\), and \(\log\|r_t\|_{\rm cb}=2s=\|\delta_t\|_{\rm cb}\).
 
 ## References
 

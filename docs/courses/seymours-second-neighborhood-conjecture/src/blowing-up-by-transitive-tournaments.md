@@ -4,11 +4,18 @@
 
 [Second out-neighborhoods and minimal counterexamples](second-out-neighborhoods-and-minimal-counterexamples.md) showed that a minimal counterexample \(D\) to the second neighborhood conjecture satisfies the *subset deficit*
 \[
-\bigl|F^2(S)\setminus F(S)\bigr|<\bigl|F(S)\setminus S\bigr|\qquad(\varnothing\ne S\subsetneq V(D)) \tag{0.1}
+\begin{aligned}
+&\bigl|F^2(S)\setminus F(S)\bigr|\\
+&\quad <\bigl|F(S)\setminus S\bigr|\\
+&(\varnothing\ne S\subsetneq V(D))
+\end{aligned}\tag{0.1}
 \]
 (Proposition 3.3 there), and that every vertex of \(D\) has an in-neighbor. This lesson converts (0.1) into a cleaner inequality that involves \(U\), \(F(U)\) and \(F^2(U)\) symmetrically:
 \[
-|U|+|F^2(U)|<2|F(U)|\qquad(\varnothing\ne U\subsetneq V(G)). \tag{0.2}
+\begin{gathered}
+|U|+|F^2(U)|<2|F(U)|\\
+(\varnothing\ne U\subsetneq V(G)).
+\end{gathered}\tag{0.2}
 \]
 In words, the three numbers \(|U|\), \(|F(U)|\), \(|F^2(U)|\) form a strictly concave sequence. The graph \(G\) is obtained from \(D\) by replacing every vertex with a large transitive tournament. The point of the construction is that a deficit of one unit in (0.1) is multiplied by the block size \(m\), while the transitive tournaments cost at most one unit per vertex of \(D\). OpenAI notes that the same product appears in the work of Brantner, Brockman, Kay and Snively [BBKS]; here it is needed for all nonempty proper sets of vertices.
 
@@ -24,15 +31,30 @@ Notation: \(D\) is an oriented graph on \(n\ge1\) vertices, \(F=F_D\) is its ima
 
 Inside one block, the arcs form the transitive tournament on \([m]\). Its image operator is
 \[
-f(T)=\{b\in[m]:a<b\text{ for some }a\in T\}\qquad(T\subseteq[m]).
+\begin{aligned}
+&f(T)\\
+&\quad =\{b\in[m]:a<b\text{ for some }a\in T\}\\
+&(T\subseteq[m]).
+\end{aligned}
 \]
 
 **Lemma 1.3.** For every \(T\subseteq[m]\),
 \[
-|T|-|f(T)|\le1,\qquad f^2(T)\subseteq f(T),\qquad |T|-2|f(T)|+|f^2(T)|\le1 .
+\begin{gathered}
+|T|-|f(T)|\le1,\qquad f^2(T)\subseteq f(T),\\
+|T|-2|f(T)|+|f^2(T)|\le1 .
+\end{gathered}
 \]
 
-*Proof.* For \(T=\varnothing\) all three quantities vanish. Otherwise let \(a\) be the least element of \(T\). Then \(f(T)=\{a+1,\dots,m\}\) and \(T\subseteq\{a,\dots,m\}\), so \(|T|\le m-a+1=|f(T)|+1\). Next, \(f^2(T)=f(\{a+1,\dots,m\})\) equals \(\{a+2,\dots,m\}\) if \(a<m\) and is empty if \(a=m\); in both cases it lies in \(f(T)\). If \(a<m\), then \(|T|-2|f(T)|+|f^2(T)|\le(m-a+1)-2(m-a)+(m-a-1)=0\). If \(a=m\), then \(T=\{m\}\) and the quantity equals \(1\). \(\square\)
+*Proof.* For \(T=\varnothing\) all three quantities vanish. Otherwise let \(a\) be the least element of \(T\). Then \(f(T)=\{a+1,\dots,m\}\) and \(T\subseteq\{a,\dots,m\}\), so \(|T|\le m-a+1=|f(T)|+1\). Next, \(f^2(T)=f(\{a+1,\dots,m\})\) equals \(\{a+2,\dots,m\}\) if \(a<m\) and is empty if \(a=m\); in both cases it lies in \(f(T)\). If \(a<m\), then
+\[
+\begin{aligned}
+&|T|-2|f(T)|+|f^2(T)|\\
+&\quad\le(m-a+1)-2(m-a)\\
+&\qquad+(m-a-1)=0.
+\end{aligned}
+\]
+If \(a=m\), then \(T=\{m\}\) and the quantity equals \(1\). \(\square\)
 
 ## 2. Images in the product
 
@@ -44,10 +66,16 @@ be the *support* of \(U\). Thus \(|U|=\sum_{v\in S}|T_v|\).
 
 **Lemma 2.1.** The first and second images of \(U\) in \(G\) satisfy
 \[
-F_G(U)=\bigl(F(S)\times[m]\bigr)\cup\bigcup_{v\in S\setminus F(S)}\{v\}\times f(T_v),
+\begin{aligned}
+F_G(U)&=\bigl(F(S)\times[m]\bigr)\\
+&\quad\cup\bigcup_{v\in S\setminus F(S)}\{v\}\times f(T_v),
+\end{aligned}
 \]
 \[
-F_G^2(U)\subseteq\bigl((F(S)\cup F^2(S))\times[m]\bigr)\cup\bigcup_{v\in S}\{v\}\times f^2(T_v).
+\begin{aligned}
+F_G^2(U)&\subseteq\bigl((F(S)\cup F^2(S))\times[m]\bigr)\\
+&\quad\cup\bigcup_{v\in S}\{v\}\times f^2(T_v).
+\end{aligned}
 \]
 
 *Proof.* An arc leaving \((v,a)\in U\) is either external, ending in a block of \(F(\{v\})\subseteq F(S)\), or internal, ending in \(\{v\}\times f(\{a\})\). Conversely, every vertex of a block of \(w\in F(S)\) is the head of an external arc from \(U\): if \(v\in S\) and \(v\to w\), then \((v,a)\to(w,b)\) for \(a\in T_v\) and every \(b\). Hence \(F_G(U)\) is the union of the blocks of \(F(S)\) and of the sets \(\{v\}\times f(T_v)\), \(v\in S\); those with \(v\in F(S)\) lie in full blocks already.
@@ -56,7 +84,11 @@ For the second image, consider a walk \(x\to y\to z\) in \(G\) with \(x\in U\) i
 
 **Proposition 2.2.** For every \(U\subseteq V(G)\) with support \(S\),
 \[
-|U|-2|F_G(U)|+|F_G^2(U)|\le m\Bigl(\bigl|F^2(S)\setminus F(S)\bigr|-\bigl|F(S)\setminus S\bigr|\Bigr)+|S\setminus F(S)| .
+\begin{aligned}
+&|U|-2|F_G(U)|+|F_G^2(U)|\\
+&\quad \le m\Bigl(\bigl|F^2(S)\setminus F(S)\bigr|-\bigl|F(S)\setminus S\bigr|\Bigr)\\
+&\quad +|S\setminus F(S)| .
+\end{aligned}
 \]
 
 *Proof.* Put \(H_0=F(S)\cup F^2(S)\), so \(|H_0|=|F(S)|+|F^2(S)\setminus F(S)|\). By Lemma 2.1, the sets \(F(S)\times[m]\) and \(\{v\}\times f(T_v)\) for \(v\in S\setminus F(S)\) are disjoint, so
@@ -69,33 +101,56 @@ In the bound for \(F_G^2(U)\) in Lemma 2.1, the sets \(\{v\}\times f^2(T_v)\) wi
 \]
 Finally \(|T_v|\le m\) gives \(|U|\le m|S\cap F(S)|+\sum_{v\in S\setminus F(S)}|T_v|\). Adding the three estimates, with the second multiplied by \(-2\),
 \[
-|U|-2|F_G(U)|+|F_G^2(U)|\le m\bigl(|H_0|-2|F(S)|+|S\cap F(S)|\bigr)+\sum_{v\in S\setminus F(S)}\bigl(|T_v|-2|f(T_v)|+|f^2(T_v)|\bigr).
+\begin{aligned}
+&|U|-2|F_G(U)|+|F_G^2(U)|\\
+&\quad \le m\bigl(|H_0|-2|F(S)|+|S\cap F(S)|\bigr)\\
+&\quad +\sum_{v\in S\setminus F(S)}\bigl(|T_v|-2|f(T_v)|+|f^2(T_v)|\bigr).
+\end{aligned}
 \]
-Each term of the last sum is at most \(1\) by Lemma 1.3. The bracket equals \(|F^2(S)\setminus F(S)|-|F(S)|+|S\cap F(S)|=|F^2(S)\setminus F(S)|-|F(S)\setminus S|\). \(\square\)
+Each term of the last sum is at most \(1\) by Lemma 1.3. The bracket equals
+\[
+\begin{aligned}
+&|F^2(S)\setminus F(S)|-|F(S)|+|S\cap F(S)|\\
+&\quad=|F^2(S)\setminus F(S)|-|F(S)\setminus S|.
+\end{aligned}
+\]
+\(\square\)
 
 ## 3. Strictly concave growth
 
 **Theorem 3.1.** Let \(D\) be an oriented graph on \(n\ge1\) vertices in which every vertex has an in-neighbor and which satisfies the subset deficit (0.1). Let \(m>n\) be an integer and \(G=D[T_m]\). Then \(G\) is a nonempty oriented graph in which every vertex has an in-neighbor, and
 \[
-|U|+|F_G^2(U)|<2|F_G(U)|\qquad\text{for every }\varnothing\ne U\subsetneq V(G).
+\begin{gathered}
+|U|+|F_G^2(U)|<2|F_G(U)|\\
+\text{for every }\varnothing\ne U\subsetneq V(G).
+\end{gathered}
 \]
 
 *Proof.* The first claims are Lemma 1.2. Let \(\varnothing\ne U\subsetneq V(G)\) have support \(S\ne\varnothing\).
 
 If \(S\ne V(D)\), then (0.1) says that \(|F^2(S)\setminus F(S)|-|F(S)\setminus S|\) is a negative integer, hence at most \(-1\). Proposition 2.2 and \(|S\setminus F(S)|\le n\) give
 \[
-|U|-2|F_G(U)|+|F_G^2(U)|\le-m+n<0 .
+\begin{aligned}
+&|U|-2|F_G(U)|+|F_G^2(U)|\\
+&\quad \le-m+n<0 .
+\end{aligned}
 \]
 
 If \(S=V(D)\), then \(F(S)=V(D)\) because every vertex of \(D\) has an in-neighbor, so \(F_G(U)\) contains every block by Lemma 2.1, that is, \(F_G(U)=V(G)\). Then \(F_G^2(U)=F_G(V(G))=V(G)\) by Lemma 1.2, and
 \[
-|U|-2|F_G(U)|+|F_G^2(U)|=|U|-|V(G)|<0
+\begin{aligned}
+&|U|-2|F_G(U)|+|F_G^2(U)|\\
+&\quad =|U|-|V(G)|<0
+\end{aligned}
 \]
 because \(U\) is a proper subset. \(\square\)
 
 **Corollary 3.2** (Reduction). If some nonempty finite oriented graph has no vertex \(v\) with \(|N_1^+(v)|\le|N_2^+(v)|\), then there is a nonempty finite oriented graph \(G\) in which every vertex has an in-neighbor and
 \[
-|U|+|F_G^2(U)|<2|F_G(U)|\qquad\text{for every }\varnothing\ne U\subsetneq V(G). \tag{3.1}
+\begin{gathered}
+|U|+|F_G^2(U)|<2|F_G(U)|\\
+\text{for every }\varnothing\ne U\subsetneq V(G).
+\end{gathered}\tag{3.1}
 \]
 
 *Proof.* Take a minimal counterexample \(D\). By Proposition 3.3 of [Second out-neighborhoods and minimal counterexamples](second-out-neighborhoods-and-minimal-counterexamples.md), every vertex of \(D\) has an in-neighbor and \(D\) satisfies (0.1). Apply Theorem 3.1 with \(m=|V(D)|+1\). \(\square\)
@@ -104,9 +159,12 @@ because \(U\) is a proper subset. \(\square\)
 
 For \(U=V(G)\) in a graph in which every vertex has an in-neighbor, all three numbers \(|U|,|F_G(U)|,|F_G^2(U)|\) equal \(|V(G)|\), so (3.1) can only be required for proper subsets. The next example shows that (3.1) is a strong condition even in small graphs.
 
-**Example 3.3.** Let \(D\) be the directed triangle on \(\mathbb Z/3\), \(m\ge2\), \(G=D[T_m]\), and \(U=\{0\}\times[m]\). By Lemma 2.1, \(F_G(U)=(\{0\}\times\{2,\dots,m\})\cup(\{1\}\times[m])\) has \(2m-1\) elements. The formula for \(F_G\) in Lemma 2.1, applied to the set \(F_G(U)\), whose support is \(\{0,1\}\) with \(F(\{0,1\})=\{1,2\}\) and \(T_0=\{2,\dots,m\}\), gives
+**Example 3.3.** Let \(D\) be the directed triangle on \(\mathbb Z/3\), \(m\ge2\), \(G=D[T_m]\), and \(U=\{0\}\times[m]\). By Lemma 2.1, \(F_G(U)\), which is \((\{0\}\times\{2,\dots,m\})\cup(\{1\}\times[m])\), has \(2m-1\) elements. The formula for \(F_G\) in Lemma 2.1, applied to the set \(F_G(U)\), whose support is \(\{0,1\}\) with \(F(\{0,1\})=\{1,2\}\) and \(T_0=\{2,\dots,m\}\), gives
 \[
-F_G^2(U)=(\{0\}\times\{3,\dots,m\})\cup(\{1,2\}\times[m]),
+\begin{aligned}
+F_G^2(U)&=(\{0\}\times\{3,\dots,m\})\\
+&\quad\cup(\{1,2\}\times[m]),
+\end{aligned}
 \]
 with \(3m-2\) elements. Hence \(|U|+|F_G^2(U)|=4m-2=2|F_G(U)|\), and (3.1) fails. This is consistent with Theorem 3.1, because the directed triangle does not satisfy (0.1) (Exercise 4.2 of the previous lesson).
 
@@ -124,13 +182,16 @@ with \(3m-2\) elements. Hence \(|U|+|F_G^2(U)|=4m-2=2|F_G(U)|\), and (3.1) fails
 
 **4.1.** From the proof of Lemma 1.3, if the least element \(a\) of \(T\) satisfies \(a<m\), the quantity is at most \(|T|-(m-a)-1\le0\), and for \(T=\varnothing\) it is \(0\). The only remaining case is \(T=\{m\}\), where it equals \(1\).
 
-**4.2.** The out-neighbors of \((v,a)\) are the blocks of \(N_1^+(v)\) and \(\{v\}\times\{a+1,\dots,m\}\). A walk of length two from \((v,a)\) ends in a block of \(F^2(\{v\})\) (two external arcs), in a block of \(N_1^+(v)\) (one external arc), or in \(\{v\}\times\{a+2,\dots,m\}\) (no external arc). The last two sets consist of out-neighbors of \((v,a)\), and every vertex of a block of \(F^2(\{v\})\) is reached by two external arcs. Since \(v\notin F^2(\{v\})\) (Lemma 1.1 of the previous lesson), \(N_2^+((v,a))=(F^2(\{v\})\setminus N_1^+(v))\times[m]=N_2^+(v)\times[m]\). Hence
+**4.2.** The out-neighbors of \((v,a)\) are the blocks of \(N_1^+(v)\) and \(\{v\}\times\{a+1,\dots,m\}\). A walk of length two from \((v,a)\) ends in a block of \(F^2(\{v\})\) (two external arcs), in a block of \(N_1^+(v)\) (one external arc), or in \(\{v\}\times\{a+2,\dots,m\}\) (no external arc). The last two sets consist of out-neighbors of \((v,a)\), and every vertex of a block of \(F^2(\{v\})\) is reached by two external arcs. Since \(v\notin F^2(\{v\})\) (Lemma 1.1 of the previous lesson), \(N_2^+((v,a))=(F^2(\{v\})\setminus N_1^+(v))\times[m]\), which is \(N_2^+(v)\times[m]\). Hence
 \[
-|N_1^+((v,a))|-|N_2^+((v,a))|=m\bigl(d^+(v)-|N_2^+(v)|\bigr)+(m-a).
+\begin{aligned}
+&|N_1^+((v,a))|-|N_2^+((v,a))|\\
+&\quad =m\bigl(d^+(v)-|N_2^+(v)|\bigr)+(m-a).
+\end{aligned}
 \]
 If \(D\) is a counterexample, the bracket is at least \(1\) and the difference is positive for every \((v,a)\). If some \(v\) has \(d^+(v)\le|N_2^+(v)|\), the vertex \((v,m)\) has a difference at most \(0\).
 
-**4.3.** \(F_G(\{(0,1)\})=(\{0\}\times\{2,\dots,m\})\cup(\{1\}\times[m])\) has \(2m-1\) elements, and \(F_G^2(\{(0,1)\})=F_G(F_G(U))\) is the set computed in Example 3.3, with \(3m-2\) elements. Then \(1+(3m-2)=3m-1<4m-2\) because \(m\ge2\).
+**4.3.** The set \(F_G(\{(0,1)\})\), which is \((\{0\}\times\{2,\dots,m\})\cup(\{1\}\times[m])\), has \(2m-1\) elements, and \(F_G^2(\{(0,1)\})=F_G(F_G(U))\) is the set computed in Example 3.3, with \(3m-2\) elements. Then \(1+(3m-2)=3m-1<4m-2\) because \(m\ge2\).
 
 **4.4.** An oriented graph has no loops, so a graph with one vertex has a vertex without in-neighbors; hence \(n\ge2\). For a vertex \(v\), the set \(S=\{v\}\) is nonempty and proper. Since \(v\notin F(\{v\})\), we have \(|F(S)\setminus S|=|N_1^+(v)|\), and \(F^2(S)\setminus F(S)=N_2^+(v)\) by Lemma 1.1 of [Second out-neighborhoods and minimal counterexamples](second-out-neighborhoods-and-minimal-counterexamples.md). Thus (0.1) for \(S=\{v\}\) says \(|N_2^+(v)|<|N_1^+(v)|\), for every vertex \(v\).
 

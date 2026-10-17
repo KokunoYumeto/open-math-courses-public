@@ -21,7 +21,10 @@ For a polynomial \(f\) of degree \(d\), its *leading form* is its homogeneous pa
 **Theorem 1.2** (Macaulay). Let \(F\) be a field and \(f_1,\dots,f_n\in F[x_1,\dots,x_n]\) of degrees \(d_1,\dots,d_n\ge1\), with leading forms \(\varphi_1,\dots,\varphi_n\). If the \(\varphi_i\) have no common zero other than \(0\) over an algebraic closure of \(F\), then
 
 \[
-\dim_FF[x_1,\dots,x_n]/(f_1,\dots,f_n)=d_1\cdots d_n .
+\begin{aligned}
+&\dim_FF[x_1,\dots,x_n]/(f_1,\dots,f_n)\\
+&\quad =d_1\cdots d_n .
+\end{aligned}
 \]
 
 **Proof.** Write \(R=F[x_1,\dots,x_n]\), graded by degree, with irrelevant ideal \(\mathfrak m=(x_1,\dots,x_n)\).
@@ -31,7 +34,10 @@ For a polynomial \(f\) of degree \(d\), its *leading form* is its homogeneous pa
 *Hilbert series.* For a graded module \(M\) with finite-dimensional pieces and a homogeneous nonzerodivisor \(\varphi\) of degree \(e\), the sequence \(0\to M(-e)\xrightarrow\varphi M\to M/\varphi M\to0\) gives \(H_{M/\varphi M}(t)=(1-t^e)H_M(t)\) for the Hilbert series \(H_M(t)=\sum_j\dim M_j\,t^j\). Starting from \(H_R=(1-t)^{-n}\),
 
 \[
-H_{R/(\varphi)}(t)=\prod_{i=1}^n\frac{1-t^{d_i}}{1-t}=\prod_{i=1}^n(1+t+\dots+t^{d_i-1}),
+\begin{aligned}
+&H_{R/(\varphi)}(t)=\prod_{i=1}^n\frac{1-t^{d_i}}{1-t}\\
+&\quad =\prod_{i=1}^n(1+t+\dots+t^{d_i-1}),
+\end{aligned}
 \]
 
 so \(\dim_FR/(\varphi)=H_{R/(\varphi)}(1)=d_1\cdots d_n\).
@@ -43,19 +49,28 @@ so \(\dim_FR/(\varphi)=H_{R/(\varphi)}(1)=d_1\cdots d_n\).
 **Lemma 1.3** (a deformation with no zeros at infinity). Let \(g_1,\dots,g_n\in k[x_1,\dots,x_n]\) with \(\deg g_i\le d_i\), \(d_i\ge1\), and put
 
 \[
-G_i=(1-t)\,g_i+t\,(x_i^{d_i}-1)\in k[t][x_1,\dots,x_n].
+\begin{aligned}
+&G_i=(1-t)\,g_i\\
+&\quad +t\,(x_i^{d_i}-1)\in k[t][x_1,\dots,x_n].
+\end{aligned}
 \]
 
 Over the field \(K=k(t)\), each \(G_i\) has degree exactly \(d_i\), and
 
 \[
-\dim_KK[x_1,\dots,x_n]/(G_1,\dots,G_n)=d_1\cdots d_n .
+\begin{aligned}
+&\dim_KK[x_1,\dots,x_n]/(G_1,\dots,G_n)\\
+&\quad =d_1\cdots d_n .
+\end{aligned}
 \]
 
 **Proof.** The coefficient of \(x_i^{d_i}\) in \(G_i\) is \(t\) plus \((1-t)\) times a constant, a nonzero element of \(K\); so \(\deg G_i=d_i\), with leading form \(\varphi_i=(1-t)g_i^{[d_i]}+t\,x_i^{d_i}\), where \(g_i^{[d_i]}\) is the degree-\(d_i\) part of \(g_i\) (possibly zero). Put \(N_0=\sum_i(d_i-1)+1\) and consider the \(K\)-linear map
 
 \[
-\bigoplus_iK[x]_{N_0-d_i}\to K[x]_{N_0},\qquad(a_i)\mapsto\sum_ia_i\varphi_i ,
+\begin{gathered}
+\bigoplus_iK[x]_{N_0-d_i}\to K[x]_{N_0},\\
+(a_i)\mapsto\sum_ia_i\varphi_i ,
+\end{gathered}
 \]
 
 between spaces of homogeneous polynomials. Its matrix in the monomial bases has entries in \(k[t]\). At \(t=1\) it becomes \((a_i)\mapsto\sum_ia_ix_i^{d_i}\), which is surjective: a monomial of degree \(N_0\) has some exponent \(e_i\ge d_i\). So some maximal minor is a polynomial in \(t\) that is nonzero at \(t=1\), hence nonzero in \(K\), and the map is surjective over \(K\). Thus \((\varphi_1,\dots,\varphi_n)\) contains every monomial of degree \(N_0\), and the \(\varphi_i\) have no common zero except \(0\) over \(\overline K\). Theorem 1.2 applies. \(\square\)
@@ -107,7 +122,10 @@ The right side lies in the \(L\)-th power of the maximal ideal, and \(\widehat B
 *Counting over the generic point.* Inverting \(t\), which is exact, \(\Psi\) induces a surjection
 
 \[
-k((t))[x]/(G_1,\dots,G_n)\longrightarrow\prod_j\widehat B_j[t^{-1}]\cong\prod_jk((t))^{\mu_{P_j}},
+\begin{aligned}
+&k((t))[x]/(G_1,\dots,G_n)\\
+&\quad \longrightarrow\prod_j\widehat B_j[t^{-1}]\cong\prod_jk((t))^{\mu_{P_j}},
+\end{aligned}
 \]
 
 by Proposition 2.1. The left side is \(K[x]/(G)\otimes_Kk((t))\) with \(K=k(t)\subset k((t))\), of dimension \(d_1\cdots d_n\) by Lemma 1.3. Hence \(\sum_j\mu_{P_j}\le d_1\cdots d_n\). \(\square\)

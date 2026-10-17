@@ -12,32 +12,60 @@ For an open cover \(\mathcal U\) of \(X\) and an abelian group \(G\), small coch
 
 ## 1. The cap product
 
-For a singular \(k\)-simplex \(\sigma:\Delta^k\to X\) and \(0\leq l\leq k\), write \(\sigma|[v_0,\ldots,v_l]\) and \(\sigma|[v_l,\ldots,v_k]\) for its front \(l\)-face and back \((k-l)\)-face. For a cochain \(\varphi\in C^l(X;R)\) define
+For a singular \(k\)-simplex \(\sigma:\Delta^k\to X\) and \(0\leq l\leq k\), write \(\sigma|[v_0,\ldots,v_l]\) and \(\sigma|[v_l,\ldots,v_k]\) for its front \(l\)-face and back \((k-l)\)-face. For a cochain \(\varphi\in C^l(X;R)\) define \(\sigma\frown\varphi\in C_{k-l}(X;R)\) by (1.1):
 
 \[
-\sigma\frown\varphi=\varphi\bigl(\sigma|[v_0,\ldots,v_l]\bigr)\ \sigma|[v_l,\ldots,v_k]\ \in C_{k-l}(X;R),
-\tag{1.1}
+\begin{aligned}
+\sigma\frown\varphi&=\varphi\bigl(\sigma|[v_0,\ldots,v_l]\bigr)\\
+&\qquad\cdot\sigma|[v_l,\ldots,v_k],
+\end{aligned}
 \]
 
-extended \(R\)-linearly to chains. Then
+extended \(R\)-linearly to chains. Then the boundary formula (1.2) holds:
 
 \[
-\partial(\sigma\frown\varphi)=(-1)^l\bigl(\partial\sigma\frown\varphi-\sigma\frown\delta\varphi\bigr).
-\tag{1.2}
+\begin{aligned}
+&\partial(\sigma\frown\varphi)\\
+&\quad=(-1)^l\bigl(\partial\sigma\frown\varphi-\sigma\frown\delta\varphi\bigr).
+\end{aligned}
 \]
 
 **Proof of (1.2).** Write \(\sigma_{\hat\imath}\) for the \(i\)-th face of \(\sigma\) and \(F=\varphi(\sigma|[v_0,\ldots,v_l])\). The front \(l\)-face of \(\sigma_{\hat\imath}\) is \(\sigma|[v_0,\ldots,\hat v_i,\ldots,v_{l+1}]\) with back face \(\sigma|[v_{l+1},\ldots,v_k]\) if \(i\leq l\), and is \(\sigma|[v_0,\ldots,v_l]\) with back face \(\sigma|[v_l,\ldots,\hat v_i,\ldots,v_k]\) if \(i>l\). Hence
 \[
-\partial\sigma\frown\varphi=\sum_{i=0}^{l}(-1)^i\varphi\bigl(\sigma|[v_0,\ldots,\hat v_i,\ldots,v_{l+1}]\bigr)\,\sigma|[v_{l+1},\ldots,v_k]
-+\sum_{i=l+1}^{k}(-1)^iF\,\sigma|[v_l,\ldots,\hat v_i,\ldots,v_k].
+\begin{aligned}
+&\partial\sigma\frown\varphi\\
+&\quad=\sum_{i=0}^{l}(-1)^i\varphi\bigl(\sigma|[v_0,\ldots,\hat v_i,\ldots,v_{l+1}]\bigr)\\
+&\qquad\quad\cdot\sigma|[v_{l+1},\ldots,v_k]\\
+&\qquad+\sum_{i=l+1}^{k}(-1)^iF\,\sigma|[v_l,\ldots,\hat v_i,\ldots,v_k].
+\end{aligned}
 \]
-By definition of the coboundary, the first sum is \(\sigma\frown\delta\varphi-(-1)^{l+1}F\,\sigma|[v_{l+1},\ldots,v_k]\). Since \(\partial(\sigma|[v_l,\ldots,v_k])=\sigma|[v_{l+1},\ldots,v_k]+\sum_{i>l}(-1)^{i-l}\sigma|[v_l,\ldots,\hat v_i,\ldots,v_k]\), the second sum is \((-1)^lF\bigl(\partial(\sigma|[v_l,\ldots,v_k])-\sigma|[v_{l+1},\ldots,v_k]\bigr)=(-1)^l\partial(\sigma\frown\varphi)-(-1)^lF\,\sigma|[v_{l+1},\ldots,v_k]\). Adding, the terms with \(\sigma|[v_{l+1},\ldots,v_k]\) cancel and \(\partial\sigma\frown\varphi=\sigma\frown\delta\varphi+(-1)^l\partial(\sigma\frown\varphi)\), which is (1.2). \(\square\)
+By definition of the coboundary, the first sum is \(\sigma\frown\delta\varphi-(-1)^{l+1}F\,\sigma|[v_{l+1},\ldots,v_k]\). Since
+\[
+\begin{aligned}
+&\partial(\sigma|[v_l,\ldots,v_k])=\sigma|[v_{l+1},\ldots,v_k]\\
+&\quad+\sum_{i>l}(-1)^{i-l}\sigma|[v_l,\ldots,\hat v_i,\ldots,v_k],
+\end{aligned}
+\]
+the second sum is
+\[
+\begin{aligned}
+&(-1)^lF\bigl(\partial(\sigma|[v_l,\ldots,v_k])\\
+&\qquad-\sigma|[v_{l+1},\ldots,v_k]\bigr)\\
+&\quad=(-1)^l\partial(\sigma\frown\varphi)\\
+&\qquad-(-1)^lF\,\sigma|[v_{l+1},\ldots,v_k].
+\end{aligned}
+\]
+Adding, the terms with \(\sigma|[v_{l+1},\ldots,v_k]\) cancel and \(\partial\sigma\frown\varphi=\sigma\frown\delta\varphi+(-1)^l\partial(\sigma\frown\varphi)\), which is (1.2). \(\square\)
 
 Hence the cap product of a cycle and a cocycle is a cycle; of a boundary and a cocycle, or a cycle and a coboundary, is a boundary. So (1.1) induces \(H_k(X;R)\times H^l(X;R)\to H_{k-l}(X;R)\). Relative versions: if \(A\subset X\), a chain in \(A\) capped with any cochain is a chain in \(A\), since faces of a simplex in \(A\) lie in \(A\); and a chain in \(A\) capped with a cochain vanishing on simplices in \(A\) is zero. So (1.1) induces
 
 \[
-H_k(X,A)\times H^l(X)\to H_{k-l}(X,A),\qquad H_k(X,A)\times H^l(X,A)\to H_{k-l}(X).
-\tag{1.3}
+\begin{aligned}
+&H_k(X,A)\times H^l(X)\\
+&\quad \to H_{k-l}(X,A),\\
+&H_k(X,A)\times H^l(X,A)\\
+&\quad \to H_{k-l}(X).
+\end{aligned}\tag{1.3}
 \]
 
 More generally, if \(\mathcal A\) is a set of subspaces of \(X\), a chain \(c\) whose boundary is a sum of chains in members of \(\mathcal A\), capped with a cocycle vanishing on all simplices contained in members of \(\mathcal A\), is a cycle, and its homology class changes by a boundary when the cocycle changes by the coboundary of a cochain with the same vanishing property; both follow from (1.2) in the same way.
@@ -45,7 +73,7 @@ More generally, if \(\mathcal A\) is a set of subspaces of \(X\), a chain \(c\) 
 **Proposition 1.1.**
 
 1. (Naturality) For \(f:X\to Y\), \(f_*(\alpha)\frown\varphi=f_*(\alpha\frown f^*\varphi)\), in all the versions (1.3) with \(f(A)\subset B\).
-2. (Relation to the cup product) \(\psi(\alpha\frown\varphi)=(\varphi\smile\psi)(\alpha)\) for \(\alpha\in H_{k+l}\), \(\varphi\in H^k\), \(\psi\in H^l\), where \((\varphi\smile\psi)(\sigma)=\varphi(\sigma|[v_0..v_k])\psi(\sigma|[v_k..v_{k+l}])\).
+2. (Relation to the cup product) \(\psi(\alpha\frown\varphi)=(\varphi\smile\psi)(\alpha)\) for \(\alpha\in H_{k+l}\), \(\varphi\in H^k\), \(\psi\in H^l\), where \((\varphi\smile\psi)(\sigma)\) is the product of \(\varphi(\sigma|[v_0..v_k])\) and \(\psi(\sigma|[v_k..v_{k+l}])\).
 
 **Proof.** Both identities hold already for chains and cochains, directly from the definitions: in (1), faces of \(f\circ\sigma\) are \(f\) composed with faces of \(\sigma\); in (2), both sides evaluate \(\varphi\) on the front \(k\)-face and \(\psi\) on the back \(l\)-face of each simplex. \(\square\)
 
@@ -64,29 +92,69 @@ If \(M\) is compact, \(K=M\) is cofinal and \(H^i_c(M)=H^i(M)\).
 **Proposition 2.3 (Mayer–Vietoris for compact supports).** For open \(U,V\subset M\) there is a long exact sequence
 
 \[
-\cdots\to H^i_c(U\cap V)\to H^i_c(U)\oplus H^i_c(V)\to H^i_c(U\cup V)\xrightarrow{\ \delta\ }H^{i+1}_c(U\cap V)\to\cdots,
-\tag{2.1}
+\begin{aligned}
+&\cdots\to H^i_c(U\cap V)\\
+&\quad \to H^i_c(U)\oplus H^i_c(V)\\
+&\quad \to H^i_c(U\cup V)\\
+&\quad \xrightarrow{\ \delta\ }H^{i+1}_c(U\cap V)\to\cdots,
+\end{aligned}\tag{2.1}
 \]
 
 whose first map is \(\varphi\mapsto(\varphi,-\varphi)\) and whose second is the sum of the extensions by zero.
 
 **Proof.** *A finite stage.* Let \(K\subset U\) and \(L\subset V\) be compact and put \(P=M\setminus K\), \(Q=M\setminus L\), so that \(P\cup Q=M\setminus(K\cap L)\) and \(P\cap Q=M\setminus(K\cup L)\). Write \(C=C_\bullet(M;R)\) and \(C^\bullet(M,X)=\operatorname{Hom}(C/C_\bullet(X),R)\) for the cochains vanishing on simplices in \(X\). The sequence of chain complexes
 \[
-0\to C/C_\bullet(P\cap Q)\xrightarrow{c\mapsto(c,c)}C/C_\bullet(P)\oplus C/C_\bullet(Q)\xrightarrow{(a,b)\mapsto a-b}C/\bigl(C_\bullet(P)+C_\bullet(Q)\bigr)\to0
+\begin{aligned}
+0&\to C/C_\bullet(P\cap Q)\\
+&\xrightarrow{c\mapsto(c,c)}C/C_\bullet(P)\oplus C/C_\bullet(Q)\\
+&\xrightarrow{(a,b)\mapsto a-b}C/\bigl(C_\bullet(P)+C_\bullet(Q)\bigr)\to0
+\end{aligned}
 \]
-is exact, and each term is free on a set of simplices, so it splits in each degree and remains exact after applying \(\operatorname{Hom}(-,R)\):
+is exact, and each term is free on a set of simplices, so it splits in each degree and remains exact after applying \(\operatorname{Hom}(-,R)\), which gives the exact sequence (2.2):
 \[
-0\to C^\bullet(M,P\cup Q)'\xrightarrow{\psi\mapsto(\psi,-\psi)}C^\bullet(M,P)\oplus C^\bullet(M,Q)\xrightarrow{(a,b)\mapsto a+b}C^\bullet(M,P\cap Q)\to0,
-\tag{2.2}
+\begin{aligned}
+&0\to C^\bullet(M,P\cup Q)'\\
+&\quad\xrightarrow{\psi\mapsto(\psi,-\psi)}C^\bullet(M,P)\oplus C^\bullet(M,Q)\\
+&\quad\xrightarrow{(a,b)\mapsto a+b}C^\bullet(M,P\cap Q)\to0,
+\end{aligned}
 \]
-where \(C^\bullet(M,P\cup Q)'\) consists of the cochains vanishing on all simplices contained in \(P\) or in \(Q\). It contains \(C^\bullet(M,P\cup Q)\), and the inclusion is a quasi-isomorphism: the short exact sequences \(0\to C^\bullet(M,P\cup Q)\to C^\bullet(M)\to C^\bullet(P\cup Q)\to0\) and \(0\to C^\bullet(M,P\cup Q)'\to C^\bullet(M)\to\operatorname{Hom}(C_\bullet(P)+C_\bullet(Q),R)\to0\) (both split, as above) map to each other with the identity in the middle and, on the right, the restriction to cochains on simplices contained in \(P\) or \(Q\), which is a quasi-isomorphism by the small-cochain argument above; the five lemma applies to their long exact sequences. So (2.2) gives the long exact sequence
+where \(C^\bullet(M,P\cup Q)'\) consists of the cochains vanishing on all simplices contained in \(P\) or in \(Q\). It contains \(C^\bullet(M,P\cup Q)\), and the inclusion is a quasi-isomorphism: the short exact sequences
 \[
-\cdots\to H^i(M,M\setminus(K\cap L))\to H^i(M,M\setminus K)\oplus H^i(M,M\setminus L)\to H^i(M,M\setminus(K\cup L))\xrightarrow{\delta}H^{i+1}(M,M\setminus(K\cap L))\to\cdots .
-\tag{2.3}
+\begin{aligned}
+&0\to C^\bullet(M,P\cup Q)\to C^\bullet(M)\\
+&\qquad\to C^\bullet(P\cup Q)\to0
+\end{aligned}
 \]
-Its connecting map is computed as follows: for a cocycle \(\varphi\in C^i(M,M\setminus(K\cup L))\), choose \(a\in C^i(M,P)\), \(b\in C^i(M,Q)\) with \(a+b=\varphi\); then \(\delta a=-\delta b\) vanishes on simplices contained in \(P\) or in \(Q\), and \(\delta[\varphi]\) is the class of \(\delta a\) in \(H^{i+1}(C^\bullet(M,P\cup Q)')=H^{i+1}(M,M\setminus(K\cap L))\). A choice is \(a(\sigma)=\varphi(\sigma)\) for \(\sigma\not\subset P\) and \(a(\sigma)=0\) for \(\sigma\subset P\): then \(b=\varphi-a\) vanishes on simplices in \(Q\), because a simplex in \(P\cap Q\) has \(\varphi(\sigma)=0\).
+and
+\[
+\begin{aligned}
+&0\to C^\bullet(M,P\cup Q)'\to C^\bullet(M)\\
+&\qquad\to\operatorname{Hom}(C_\bullet(P)+C_\bullet(Q),R)\to0
+\end{aligned}
+\]
+(both split, as above) map to each other with the identity in the middle and, on the right, the restriction to cochains on simplices contained in \(P\) or \(Q\), which is a quasi-isomorphism by the small-cochain argument above; the five lemma applies to their long exact sequences. So (2.2) gives the long exact sequence (2.3):
+\[
+\begin{aligned}
+&\cdots\to H^i(M,M\setminus(K\cap L))\\
+&\quad\to H^i(M,M\setminus K)\oplus H^i(M,M\setminus L)\\
+&\quad\to H^i(M,M\setminus(K\cup L))\\
+&\quad\xrightarrow{\delta}H^{i+1}(M,M\setminus(K\cap L))\to\cdots .
+\end{aligned}
+\]
+Its connecting map is computed as follows: for a cocycle \(\varphi\in C^i(M,M\setminus(K\cup L))\), choose \(a\in C^i(M,P)\), \(b\in C^i(M,Q)\) with \(a+b=\varphi\); then \(\delta a=-\delta b\) vanishes on simplices contained in \(P\) or in \(Q\), and \(\delta[\varphi]\) is the class of \(\delta a\) in \(H^{i+1}(C^\bullet(M,P\cup Q)')\), which is \(H^{i+1}(M,M\setminus(K\cap L))\). A choice is \(a(\sigma)=\varphi(\sigma)\) for \(\sigma\not\subset P\) and \(a(\sigma)=0\) for \(\sigma\subset P\): then \(b=\varphi-a\) vanishes on simplices in \(Q\), because a simplex in \(P\cap Q\) has \(\varphi(\sigma)=0\).
 
-*The limit.* By excision, \(H^i(M,M\setminus(K\cap L))=H^i(U\cap V,(U\cap V)\setminus(K\cap L))\), \(H^i(M,M\setminus K)=H^i(U,U\setminus K)\), \(H^i(M,M\setminus L)=H^i(V,V\setminus L)\), and \(H^i(M,M\setminus(K\cup L))=H^i(U\cup V,(U\cup V)\setminus(K\cup L))\), and under these identifications the first two maps of (2.3) are those of (2.1). As \(K\) and \(L\) range over compact subsets of \(U\) and \(V\), the sets \(K\cap L\) are cofinal among compact subsets of \(U\cap V\) (take \(K=L\)), and the sets \(K\cup L\) among compact subsets of \(U\cup V\) (a compact subset of \(U\cup V\) is the union of a compact subset of \(U\) and one of \(V\): each point has a compact neighbourhood inside \(U\) or inside \(V\), and finitely many cover). The sequences (2.3) are natural in \((K,L)\), and direct limits of exact sequences over directed sets are exact, so passing to the limit gives (2.1). \(\square\)
+*The limit.* By excision,
+\[
+\begin{aligned}
+&H^i(M,M\setminus(K\cap L))\\
+&\quad=H^i(U\cap V,(U\cap V)\setminus(K\cap L)),\\
+&H^i(M,M\setminus K)=H^i(U,U\setminus K),\\
+&H^i(M,M\setminus L)=H^i(V,V\setminus L),\\
+&H^i(M,M\setminus(K\cup L))\\
+&\quad=H^i(U\cup V,(U\cup V)\setminus(K\cup L)),
+\end{aligned}
+\]
+and under these identifications the first two maps of (2.3) are those of (2.1). As \(K\) and \(L\) range over compact subsets of \(U\) and \(V\), the sets \(K\cap L\) are cofinal among compact subsets of \(U\cap V\) (take \(K=L\)), and the sets \(K\cup L\) among compact subsets of \(U\cup V\) (a compact subset of \(U\cup V\) is the union of a compact subset of \(U\) and one of \(V\): each point has a compact neighbourhood inside \(U\) or inside \(V\), and finitely many cover). The sequences (2.3) are natural in \((K,L)\), and direct limits of exact sequences over directed sets are exact, so passing to the limit gives (2.1). \(\square\)
 
 **Proposition 2.4.** If \(M=\bigcup_\nu U_\nu\) is an increasing union of open sets, then \(H^i_c(M)=\varinjlim_\nu H^i_c(U_\nu)\).
 
@@ -97,25 +165,41 @@ Its connecting map is computed as follows: for a cocycle \(\varphi\in C^i(M,M\se
 Let \(M\) be an \(R\)-oriented \(n\)-manifold, with classes \(\mu_K\in H_n(M,M\setminus K)\) from [Orientations and fundamental classes, Theorem 4.1](orientations-and-fundamental-classes.md#4-classes-on-compact-subsets). For compact \(K\subset L\), the restriction of \(\mu_L\) is \(\mu_K\), by uniqueness. Define
 
 \[
-D_K:H^k(M,M\setminus K)\to H_{n-k}(M),\qquad D_K(\varphi)=\mu_K\frown\varphi,
-\tag{3.1}
+\begin{aligned}
+&D_K:H^k(M,M\setminus K)\\
+&\quad \to H_{n-k}(M),\\
+&D_K(\varphi)=\mu_K\frown\varphi,
+\end{aligned}\tag{3.1}
 \]
 
-using the second pairing of (1.3). For \(K\subset L\), naturality of the cap product (Proposition 1.1) applied to the identity of \(M\), viewed as a map of pairs \((M,M\setminus L)\to(M,M\setminus K)\), gives \(D_L(\varphi|_L)=\mu_L\frown\varphi|_L=\mu_K\frown\varphi=D_K(\varphi)\). So the \(D_K\) induce the **duality map**
+using the second pairing of (1.3). For \(K\subset L\), naturality of the cap product (Proposition 1.1) applied to the identity of \(M\), viewed as a map of pairs \((M,M\setminus L)\to(M,M\setminus K)\), gives \(D_L(\varphi|_L)=\mu_L\frown\varphi|_L=\mu_K\frown\varphi\), which is \(D_K(\varphi)\). So the \(D_K\) induce the **duality map**
 
 \[
-D_M:H^k_c(M;R)\longrightarrow H_{n-k}(M;R).
-\tag{3.2}
+\begin{aligned}
+&D_M:H^k_c(M;R)\\
+&\quad \longrightarrow H_{n-k}(M;R).
+\end{aligned}\tag{3.2}
 \]
 
 **Proposition 3.1.** For an open subset \(U\subset M\), with the induced orientation, the square formed by \(D_U\), \(D_M\), extension by zero \(H^k_c(U)\to H^k_c(M)\) and the map \(H_{n-k}(U)\to H_{n-k}(M)\) induced by inclusion commutes.
 
 **Proof.** For compact \(K\subset U\), the class \(\mu_K\) of \(U\) maps to the class \(\mu_K\) of \(M\) under the excision isomorphism \(H_n(U,U\setminus K)\cong H_n(M,M\setminus K)\), since both restrict to the same local orientations. Naturality of the cap product for the inclusion \((U,U\setminus K)\to(M,M\setminus K)\) gives the claim. \(\square\)
 
-We use the homology Mayer–Vietoris sequence of an open cover \(\{U,V\}\) of \(U\cup V\) in the form coming from the short exact sequence \(0\to C_\bullet(U\cap V)\to C_\bullet(U)\oplus C_\bullet(V)\to C_\bullet(U)+C_\bullet(V)\to0\), with maps \(x\mapsto(x,-x)\) and \((y,z)\mapsto y+z\), and the small-chain theorem [Fomberg, Proposition 1.25]:
+We use the homology Mayer–Vietoris sequence of an open cover \(\{U,V\}\) of \(U\cup V\) in the form coming from the short exact sequence
+\[
+\begin{aligned}
+&0\to C_\bullet(U\cap V)\to C_\bullet(U)\oplus C_\bullet(V)\\
+&\qquad\to C_\bullet(U)+C_\bullet(V)\to0,
+\end{aligned}
+\]
+with maps \(x\mapsto(x,-x)\) and \((y,z)\mapsto y+z\), and the small-chain theorem [Fomberg, Proposition 1.25]:
 
 \[
-\cdots\to H_{j}(U\cap V)\to H_{j}(U)\oplus H_{j}(V)\to H_{j}(U\cup V)\xrightarrow{\ \partial\ }H_{j-1}(U\cap V)\to\cdots .
+\begin{aligned}
+&\cdots\to H_{j}(U\cap V)\\
+&\quad \to H_{j}(U)\oplus H_{j}(V)\to H_{j}(U\cup V)\\
+&\quad \xrightarrow{\ \partial\ }H_{j-1}(U\cap V)\to\cdots .
+\end{aligned}
 \]
 
 Its connecting map sends the class of a cycle \(z=z_U+z_V\), with \(z_U\) a chain in \(U\) and \(z_V\) a chain in \(V\), to the class of \(\partial z_U\), a cycle in \(U\cap V\).
@@ -141,11 +225,17 @@ with chains carried by the indicated sets. Then:
 
 *The cohomology side.* Take \(a(\sigma)=\varphi(\sigma)\) for \(\sigma\not\subset M\setminus K\) and \(a(\sigma)=0\) otherwise, as in the proof of Proposition 2.3; then \(\delta[\varphi]\) is represented by \(\delta a\), which vanishes on simplices contained in \(M\setminus K\) or in \(M\setminus L\). Since \(\partial\alpha_{U\cap V}\) is a sum of chains in these two sets, the general form of (1.3) shows that \(\alpha_{U\cap V}\frown\delta a\) is a cycle representing \(D_{K\cap L}(\delta[\varphi])\): an honest representative of \(\delta[\varphi]\) differs from \(\delta a\) by the coboundary of a cochain vanishing on simplices in \(M\setminus K\) or \(M\setminus L\), which changes the cap product by a boundary. By (1.2),
 \[
-\alpha_{U\cap V}\frown\delta a=\partial\alpha_{U\cap V}\frown a-(-1)^i\,\partial(\alpha_{U\cap V}\frown a),
+\begin{aligned}
+&\alpha_{U\cap V}\frown\delta a=\partial\alpha_{U\cap V}\frown a\\
+&\quad -(-1)^i\,\partial(\alpha_{U\cap V}\frown a),
+\end{aligned}
 \]
-and \(\alpha_{U\cap V}\frown a\) is a chain in \(U\cap V\). Now \(\partial\alpha_{U\cap V}\frown a=(\partial\alpha-\partial\alpha_{U\setminus L}-\partial\alpha_{V\setminus K})\frown a\). The simplices of \(\partial\alpha\) and of \(\partial\alpha_{V\setminus K}\) lie in \(M\setminus K\), and so do their front faces, on which \(a\) vanishes; so these terms are zero. The front faces \(\tau\) of the simplices of \(\partial\alpha_{U\setminus L}\) lie in \(M\setminus L\), and there \(a(\tau)=\varphi(\tau)\): if \(\tau\not\subset M\setminus K\) this is the definition, and if \(\tau\subset M\setminus K\) then \(\tau\subset M\setminus(K\cup L)\), where both vanish. Hence \(\partial\alpha_{U\cap V}\frown a=-\partial\alpha_{U\setminus L}\frown\varphi\), and in \(H_{n-i-1}(U\cap V)\)
+and \(\alpha_{U\cap V}\frown a\) is a chain in \(U\cap V\). Now \(\partial\alpha_{U\cap V}\frown a\) equals \((\partial\alpha-\partial\alpha_{U\setminus L}-\partial\alpha_{V\setminus K})\frown a\). The simplices of \(\partial\alpha\) and of \(\partial\alpha_{V\setminus K}\) lie in \(M\setminus K\), and so do their front faces, on which \(a\) vanishes; so these terms are zero. The front faces \(\tau\) of the simplices of \(\partial\alpha_{U\setminus L}\) lie in \(M\setminus L\), and there \(a(\tau)=\varphi(\tau)\): if \(\tau\not\subset M\setminus K\) this is the definition, and if \(\tau\subset M\setminus K\) then \(\tau\subset M\setminus(K\cup L)\), where both vanish. Hence \(\partial\alpha_{U\cap V}\frown a=-\partial\alpha_{U\setminus L}\frown\varphi\), and in \(H_{n-i-1}(U\cap V)\)
 \[
-D_{K\cap L}(\delta[\varphi])=-[\partial\alpha_{U\setminus L}\frown\varphi]=(-1)^{i+1}[\partial z_U]=(-1)^{i+1}\,\partial D_{K\cup L}[\varphi].
+\begin{aligned}
+&D_{K\cap L}(\delta[\varphi])=-[\partial\alpha_{U\setminus L}\frown\varphi]\\
+&\quad =(-1)^{i+1}[\partial z_U]=(-1)^{i+1}\,\partial D_{K\cup L}[\varphi].
+\end{aligned}
 \]
 Passing to the direct limit over \(K\) and \(L\) proves the proposition. \(\square\)
 

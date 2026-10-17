@@ -56,7 +56,11 @@ By Proposition 3.1 of the previous lesson, \(v\) is unitary and the kernel proje
 \]
 with \(vw^*\) unitary and \(w|\gamma|w^*\ge0\) with zero kernel projection; by Lemma 7.1 of the double commutant lesson this is the polar decomposition, so \(\pi(v)=vw^*\) and \(\pi(|\gamma|)=w|\gamma|w^*\). For every noncommutative polynomial \(P\), using that \(\pi\) and conjugation by \(w^*\) preserve the trace,
 \[
-\varphi(P(v,v^*,|\gamma|))=\varphi\big(P(vw^*,wv^*,w|\gamma|w^*)\big)=\varphi\big(P(w^*v,v^*w,|\gamma|)\big).
+\begin{aligned}
+&\varphi(P(v,v^*,|\gamma|))\\
+&\quad =\varphi\big(P(vw^*,wv^*,w|\gamma|w^*)\big)\\
+&\quad =\varphi\big(P(w^*v,v^*w,|\gamma|)\big).
+\end{aligned}
 \]
 So \((v,|\gamma|)\) has the same joint distribution as \((w^*v,|\gamma|)\).
 
@@ -64,11 +68,7 @@ The algebras \(\mathcal S_{\{3,4\}}=W^*(\gamma)\), which contains \(v\) and \(|\
 
 The last lesson uses the theorem in the following form.
 
-**Corollary 3.2.** Let \(X_1,\ldots,X_r\) be the semicircular matrices of pairwise disjoint quadruples \((j_1^l,j_2^l,j_3^l,j_4^l)\) of indices, \(\gamma_l\) their circular entries with polar decompositions \(\gamma_l=v_l|\gamma_l|\), and \(J\) a set of indices disjoint from the quadruples. Then the von Neumann algebras
-\[
-\mathcal S_J,\qquad W^*(s_{j_1^l}),\quad W^*(s_{j_2^l}),\quad W^*(v_l),\quad W^*(|\gamma_l|)\qquad(1\le l\le r)
-\]
-form a free family, and \(v_1,\ldots,v_r\) are Haar unitaries.
+**Corollary 3.2.** Let \(X_1,\ldots,X_r\) be the semicircular matrices of pairwise disjoint quadruples \((j_1^l,j_2^l,j_3^l,j_4^l)\) of indices, \(\gamma_l\) their circular entries with polar decompositions \(\gamma_l=v_l|\gamma_l|\), and \(J\) a set of indices disjoint from the quadruples. Then the von Neumann algebras \(\mathcal S_J\), \(W^*(s_{j_1^l})\), \(W^*(s_{j_2^l})\), \(W^*(v_l)\) and \(W^*(|\gamma_l|)\) for \(1\le l\le r\) form a free family, and \(v_1,\ldots,v_r\) are Haar unitaries.
 
 **Proof.** The algebras \(\mathcal S_J\), \(\mathcal S_{\{j_1^l\}}\), \(\mathcal S_{\{j_2^l\}}\) and \(\mathcal S_{\{j_3^l,j_4^l\}}=W^*(\gamma_l)\) are attached to disjoint sets of indices and form a free family. By Theorem 3.1, inside each \(W^*(\gamma_l)\) the algebras \(W^*(v_l)\) and \(W^*(|\gamma_l|)\) are free. Lemma 3.1 of the lesson on the Fock space (associativity) gives the claim. \(\square\)
 

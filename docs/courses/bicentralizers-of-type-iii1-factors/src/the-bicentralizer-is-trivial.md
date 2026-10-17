@@ -16,7 +16,10 @@ We use all earlier lessons of this course: [Asymptotic centralizers of type III�
 
 *Type III.* Suppose \(e\in B\) is a nonzero finite projection. Then \(eBe\) is a finite von Neumann algebra ([Projections and types of von Neumann algebras, Lemma 6.2](course:foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras#OA-FND-TY-09)) whose centre \(eZ(B)=\mathbb Ce\) is trivial (CR8 of [All projection corners](course:OA-FLOW/OA-FLOW-CR#OA-FLOW.CR.2)), so its center-valued trace is a faithful normal tracial state \(\tau\). If \(e\ne1\), let \(\chi=\psi((1-e)\,\cdot\,(1-e))/\psi(1-e)\) on \((1-e)B(1-e)\), and put
 \[
-\theta(y)=\tfrac12\tau(eye)+\tfrac12\chi\big((1-e)y(1-e)\big)\qquad(y\in B);
+\begin{gathered}
+\theta(y)=\tfrac12\tau(eye)+\tfrac12\chi\big((1-e)y(1-e)\big)\\
+(y\in B);
+\end{gathered}
 \]
 if \(e=1\) put \(\theta=\tau\). Then \(\theta\) is a faithful normal state: \(\theta(y^*y)=0\) forces \(ye=0\) and \(y(1-e)=0\). Also \(\theta(ey)=\frac12\tau(eye)=\theta(ye)\), so \(e\in B_\theta\) by (B6), and \(e\) is fixed by \(\sigma^\theta\). By (MG9) the restriction of \(\sigma^\theta\) to \(eBe\) is the modular group of \(\theta|_{eBe}=\frac12\tau\), a trace, whose modular group is trivial (MG-5). The trivial action has spectrum \(\{0\}\), so by (CS3), \(\Gamma(\sigma^\theta)\subset\{0\}\). But \(B\) is a factor, and (MG10) gives \(\Gamma(\sigma^\theta)=\Gamma(\sigma^\psi)=\mathbb R\). This contradiction shows that \(B\) has no nonzero finite projection.
 
@@ -32,35 +35,54 @@ Let \(N\) be a von Neumann algebra, \(\theta\) a faithful normal state, and \(\x
 
 **Proof.** Let \(\kappa=\mu^{-1}\), \(c=(1+\kappa)^{-1}\), \(R=M_2(N)\) acting on \(K=M_2(H)\) by left matrix multiplication, and
 \[
-\Theta(X)=c\,\theta(X_{11})+c\kappa\,\theta(X_{22}),\qquad\Omega=\begin{pmatrix}\sqrt c\,\xi&0\\0&\sqrt{c\kappa}\,\xi\end{pmatrix}.
+\begin{gathered}
+\Theta(X)=c\,\theta(X_{11})+c\kappa\,\theta(X_{22}),\\
+\Omega=\begin{pmatrix}\sqrt c\,\xi&0\\0&\sqrt{c\kappa}\,\xi\end{pmatrix}.
+\end{gathered}
 \]
 Then \(\Theta\) is a faithful normal state of \(R\) and \(\langle X\Omega,\Omega\rangle=\Theta(X)\); \(\Omega\) is cyclic and separating. The argument of (B4), applied to the cone vectors \(\sqrt c\,\xi\) and \(\sqrt{c\kappa}\,\xi\) of \(c\theta\) and \(c\kappa\theta\), shows that the modular conjugation of \(\Omega\) is \(\mathcal J\), \((\mathcal J\eta)_{ij}=J\eta_{ji}\). In the standard form of \(R\) built from \(\Theta\) on its GNS space \(K\) ([The positive cone of a standard representation, SF-05](course:OA-MOD/OA-MOD-SF#OA-MOD-SF-05)), whose conjugation is \(\mathcal J\), the vector of \(\Theta\) is \(\Omega\), and for a unitary \(U\in R\) the vector of \(U\Theta U^*\) is \(U\mathcal JU\mathcal J\Omega=U\Omega U^*\), where \(\zeta X=\mathcal JX^*\mathcal J\zeta\). By the inequalities (CR18) of CR-6 and by \(\|U\Omega U^*-\Omega\|=\|U\Omega-\Omega U\|\),
 \[
-\|U\Omega-\Omega U\|^2\le\|U\Theta U^*-\Theta\|=\|U\Theta-\Theta U\|\le2\|U\Omega-\Omega U\| .
-\tag{2.1}
+\begin{aligned}
+&\|U\Omega-\Omega U\|^2\\
+&\quad \le\|U\Theta U^*-\Theta\|\\
+&\quad =\|U\Theta-\Theta U\|\\
+&\quad \le2\|U\Omega-\Omega U\| .
+\end{aligned}\tag{2.1}
 \]
-Let \(\mathcal A\) (respectively \(\mathcal A_v\)) be the set of bounded sequences \((X_n)\) in \(R\) with \(\|X_n\Theta-\Theta X_n\|\to0\) (respectively \(\|X_n\Omega-\Omega X_n\|\to0\)). Both are unital \(C^*\)-subalgebras of \(\ell^\infty(R)\): for \(\mathcal A\) see Lemma 1.2 of the bicentralizer lesson; for \(\mathcal A_v\), \(XY\Omega-\Omega XY=X(Y\Omega-\Omega Y)+(X\Omega-\Omega X)Y\) and \(\mathcal J(X\Omega-\Omega X)=\Omega X^*-X^*\Omega\). By (2.1) they have the same unitaries, and a unital \(C^*\)-algebra is spanned by its unitaries; so \(\mathcal A=\mathcal A_v\).
+Let \(\mathcal A\) (respectively \(\mathcal A_v\)) be the set of bounded sequences \((X_n)\) in \(R\) with \(\|X_n\Theta-\Theta X_n\|\to0\) (respectively \(\|X_n\Omega-\Omega X_n\|\to0\)). Both are unital \(C^*\)-subalgebras of \(\ell^\infty(R)\): for \(\mathcal A\) see Lemma 1.2 of the bicentralizer lesson; for \(\mathcal A_v\), \(XY\Omega-\Omega XY\) equals \(X(Y\Omega-\Omega Y)+(X\Omega-\Omega X)Y\) and \(\mathcal J(X\Omega-\Omega X)=\Omega X^*-X^*\Omega\). By (2.1) they have the same unitaries, and a unital \(C^*\)-algebra is spanned by its unitaries; so \(\mathcal A=\mathcal A_v\).
 
 Let \(W_n\in R\) have the single nonzero entry \((W_n)_{12}=b_n\). For \(X\in R\), \(\Theta(XW_n)=c\kappa\,\theta(X_{21}b_n)\) and \(\Theta(W_nX)=c\,\theta(b_nX_{21})\), so
 \[
-\|W_n\Theta-\Theta W_n\|=c\,\|\kappa\,b_n\theta-\theta b_n\|=c\kappa\,\|b_n\theta-\mu\theta b_n\|\to0 ,
+\begin{aligned}
+&\|W_n\Theta-\Theta W_n\|=c\,\|\kappa\,b_n\theta-\theta b_n\|\\
+&\quad =c\kappa\,\|b_n\theta-\mu\theta b_n\|\to0 ,
+\end{aligned}
 \]
-and \((W_n)\in\mathcal A=\mathcal A_v\). The only nonzero entry of \(W_n\Omega\) is \((1,2)\), equal to \(\sqrt{c\kappa}\,b_n\xi\); that of \(\Omega W_n=\mathcal JW_n^*\mathcal J\Omega\) is also \((1,2)\), equal to \(J(b_n^*\sqrt c\,\xi)=\sqrt c\,\xi b_n\). Hence \(\sqrt c\,\|\mu^{-1/2}b_n\xi-\xi b_n\|=\|W_n\Omega-\Omega W_n\|\to0\). \(\square\)
+and \((W_n)\in\mathcal A=\mathcal A_v\). The only nonzero entry of \(W_n\Omega\) is \((1,2)\), equal to \(\sqrt{c\kappa}\,b_n\xi\); that of \(\Omega W_n=\mathcal JW_n^*\mathcal J\Omega\) is also \((1,2)\), equal to \(J(b_n^*\sqrt c\,\xi)=\sqrt c\,\xi b_n\). Hence \(\sqrt c\,\|\mu^{-1/2}b_n\xi-\xi b_n\|\) equals \(\|W_n\Omega-\Omega W_n\|\), which tends to \(0\). \(\square\)
 
 ## 3. Central eigen-isometries
 
 **Definition 3.1.** A countably decomposable factor \(N\) has *central eigen-isometries* if for every faithful normal state \(\theta\) on \(N\) and every \(\mu\ge1\) there is a sequence \((b_n)\) in \(N\) with
 \[
-\|b_n\|\le1,\qquad b_n^*b_n\to1\text{ strongly},\qquad\|b_n\theta-\mu\theta b_n\|\to0,\qquad b_na-ab_n\to0\ *\text{-strongly for every }a\in N .
+\begin{aligned}
+&\|b_n\|\le1,\\
+&b_n^*b_n\to1\text{ strongly},\\
+&\|b_n\theta-\mu\theta b_n\|\to0,\\
+&b_na-ab_n\\
+&\quad \to0\ *\text{-strongly for every }a\in N .
+\end{aligned}
 \]
 
 **Lemma 3.2.** Let \(N\) be a type III₁ factor with separable predual and \(\psi\) a faithful normal state. Suppose that for every \(\mu\ge1\) a sequence with the four properties of Definition 3.1 exists for \(\theta=\psi\). Then \(N\) has central eigen-isometries; indeed the same sequence works for every \(\theta\).
 
 **Proof.** Let \(\theta\) be a faithful normal state, \((b_n)\) a sequence for \(\psi\) and \(\mu\), and \(\varepsilon>0\). By (HC1) there is a unitary \(u\) with \(\|u\psi u^*-\theta\|<\varepsilon\). Then
 \[
-\|b_n\theta-\mu\theta b_n\|\le(1+\mu)\varepsilon+\|b_n\,u\psi u^*-\mu\,u\psi u^*\,b_n\|,
+\begin{aligned}
+&\|b_n\theta-\mu\theta b_n\|\le(1+\mu)\varepsilon\\
+&\quad +\|b_n\,u\psi u^*-\mu\,u\psi u^*\,b_n\|,
+\end{aligned}
 \]
-and \(b_n\,u\psi u^*-\mu\,u\psi u^*\,b_n=u\big(z_n\psi-\mu\psi z_n\big)u^*\) with \(z_n=u^*b_nu\). Write \(z_n=b_n+u^*(b_nu-ub_n)\). For \(w\in N\) and the vector \(\xi_\psi\) of \(\psi\), \(\|w\psi\|=\sup_{\|y\|\le1}|\langle w\xi_\psi,y^*\xi_\psi\rangle|\le\|w\xi_\psi\|\) and \(\|\psi w\|\le\|w^*\xi_\psi\|\). Since \(b_nu-ub_n\to0\) \(*\)-strongly, \(\limsup_n\|z_n\psi-\mu\psi z_n\|\le\limsup_n\|b_n\psi-\mu\psi b_n\|=0\). So \(\limsup_n\|b_n\theta-\mu\theta b_n\|\le(1+\mu)\varepsilon\) for every \(\varepsilon\). \(\square\)
+and \(b_n\,u\psi u^*-\mu\,u\psi u^*\,b_n\) equals \(u\big(z_n\psi-\mu\psi z_n\big)u^*\) with \(z_n=u^*b_nu\). Write \(z_n=b_n+u^*(b_nu-ub_n)\). For \(w\in N\) and the vector \(\xi_\psi\) of \(\psi\), \(\|w\psi\|=\sup_{\|y\|\le1}|\langle w\xi_\psi,y^*\xi_\psi\rangle|\le\|w\xi_\psi\|\) and \(\|\psi w\|\le\|w^*\xi_\psi\|\). Since \(b_nu-ub_n\to0\) \(*\)-strongly, \(\limsup_n\|z_n\psi-\mu\psi z_n\|\) is at most \(\limsup_n\|b_n\psi-\mu\psi b_n\|=0\). So \(\limsup_n\|b_n\theta-\mu\theta b_n\|\le(1+\mu)\varepsilon\) for every \(\varepsilon\). \(\square\)
 
 **Proposition 3.3.** Let \(M\) be a type III₁ factor with separable predual, \(\varphi\) a faithful normal state, \(\mathrm B=\mathrm B(M,\varphi)\ne\mathbb C1\) and \(\psi=\varphi|_{\mathrm B}\). Then \(\mathrm B\) is a type III₁ factor with separable predual, \(\mathrm B(\mathrm B,\psi)=\mathrm B\), and \(\mathrm B\) has central eigen-isometries.
 
@@ -68,24 +90,30 @@ and \(b_n\,u\psi u^*-\mu\,u\psi u^*\,b_n=u\big(z_n\psi-\mu\psi z_n\big)u^*\) wit
 
 ## 4. Absorption
 
-In this section \(N\) is a countably decomposable factor with central eigen-isometries, in standard form \((N,H,J,P)\); \(\theta\) is a faithful normal state with vector \(\xi\in P\), \(\Delta=\Delta_\theta\), and \(\rho(d)\zeta=\zeta d\), so \(\rho(N)=N'\). Let \(C\subset B(H)\) be the \(C^*\)-algebra generated by \(N\) and \(N'\); the products \(c\rho(d)\) span a dense \(*\)-subalgebra. By (FS.1), \(\xi d=\Delta^{1/2}d\xi\), \(J\log\Delta\,J=-\log\Delta\), and \(N\xi\) is a core for \(\Delta^{1/2}\), since \(S=J\Delta^{1/2}\) is the closure of \(d\xi\mapsto d^*\xi\). Let
+In this section \(N\) is a countably decomposable factor with central eigen-isometries, in standard form \((N,H,J,P)\); \(\theta\) is a faithful normal state with vector \(\xi\in P\), \(\Delta=\Delta_\theta\), and \(\rho(d)\zeta=\zeta d\), so \(\rho(N)=N'\). Let \(C\subset B(H)\) be the \(C^*\)-algebra generated by \(N\) and \(N'\); the products \(c\rho(d)\) span a dense \(*\)-subalgebra. By (FS.1), \(\xi d=\Delta^{1/2}d\xi\), \(J\log\Delta\,J=-\log\Delta\), and \(N\xi\) is a core for \(\Delta^{1/2}\), since \(S=J\Delta^{1/2}\) is the closure of \(d\xi\mapsto d^*\xi\). For \(\varepsilon>0\) let \(\mathcal C_\varepsilon\) be the set of the states \(\omega_{a\xi}\) with \(a\in N\), \(\|a\xi\|=1\) and \(\|a\xi-\xi a\|\le\varepsilon\), and let
 \[
-\mathcal C=\bigcap_{\varepsilon>0}\overline{\{\omega_{a\xi}:\ a\in N,\ \|a\xi\|=1,\ \|a\xi-\xi a\|\le\varepsilon\}}^{\,w^*}\subset S(B(H)).
+\mathcal C=\bigcap_{\varepsilon>0}\overline{\mathcal C_\varepsilon}^{\,w^*}\subset S(B(H)).
 \]
 
 **Lemma 4.1.** Let \(\zeta\) be a unit vector in the domain of \(\log\Delta\) and \(\ell\in\mathbb R\) with \(\|(\log\Delta-\ell)\zeta\|\le\varepsilon_1\le\frac1{10}\), and let \(F\) be a finite subset of the unit ball of \(N\). There is \(a\in N\) with \(\|a\xi\|=1\), \(\|a\xi-\xi a\|\le15\varepsilon_1\), and \(|\omega_{a\xi}(c\rho(d))-\omega_\zeta(c\rho(d))|\le45\varepsilon_1\) for all \(c,d\in F\).
 
 **Proof.** *Case \(\ell\ge0\).* Let \(\zeta'=1_{[\ell-1,\ell+1]}(\log\Delta)\zeta\). Then \(\|\zeta-\zeta'\|\le\varepsilon_1\), \(\zeta'\) is in the domain of \(\Delta^{1/2}\), and since \(|e^{t/2}-e^{\ell/2}|\le\frac12e^{(\ell+1)/2}|t-\ell|\) for \(|t-\ell|\le1\), \(\|(\Delta^{1/2}-e^{\ell/2})\zeta'\|\le\frac12e^{(\ell+1)/2}\varepsilon_1\). As \(N\xi\) is a core, choose \(y\in N\) with \(\|y\xi-\zeta'\|\le\varepsilon_1\) and \(\|\xi y-\Delta^{1/2}\zeta'\|=\|\Delta^{1/2}(y\xi-\zeta')\|\le\varepsilon_1\). Then \(\|y\xi-\zeta\|\le2\varepsilon_1\) and
 \[
-e^{-\ell/2}\|\xi y-e^{\ell/2}y\xi\|\le e^{-\ell/2}\varepsilon_1+\tfrac12e^{1/2}\varepsilon_1+\varepsilon_1\le3\varepsilon_1 .
+\begin{aligned}
+&e^{-\ell/2}\|\xi y-e^{\ell/2}y\xi\|\le e^{-\ell/2}\varepsilon_1\\
+&\quad +\tfrac12e^{1/2}\varepsilon_1+\varepsilon_1\le3\varepsilon_1 .
+\end{aligned}
 \]
 Let \(\mu=e^\ell\ge1\) and \((b_n)\) as in Definition 3.1 for \(\theta\) and \(\mu\). By Lemma 2.1, \(\|\xi b_n-\mu^{-1/2}b_n\xi\|\to0\). Put \(a_n=b_ny\). Since \((b_n\xi)y=b_n(\xi y)\) and \(\mu^{-1/2}e^{\ell/2}=1\),
 \[
-a_n\xi-\xi a_n=\mu^{-1/2}b_n\big(e^{\ell/2}y\xi-\xi y\big)-\big(\xi b_n-\mu^{-1/2}b_n\xi\big)y ,
+\begin{aligned}
+a_n\xi-\xi a_n&=\mu^{-1/2}b_n\big(e^{\ell/2}y\xi-\xi y\big)\\
+&\quad -\big(\xi b_n-\mu^{-1/2}b_n\xi\big)y ,
+\end{aligned}
 \]
-so \(\limsup_n\|a_n\xi-\xi a_n\|\le3\varepsilon_1\). Next, \(\rho(d)a_n\xi=b_n(y\xi d)\), so \(\omega_{a_n\xi}(c\rho(d))=\langle b_n^*cb_n(y\xi d),y\xi\rangle\). Since \(b_n^*cb_n-c=b_n^*(cb_n-b_nc)+(b_n^*b_n-1)c\to0\) weakly, \(\omega_{a_n\xi}(c\rho(d))\to\omega_{y\xi}(c\rho(d))\), and \(\|a_n\xi\|\to\|y\xi\|\in[1-2\varepsilon_1,1+2\varepsilon_1]\). Fix \(n\) so large that \(\|a_n\xi-\xi a_n\|\le4\varepsilon_1\), \(r=\|a_n\xi\|\in[1-3\varepsilon_1,1+3\varepsilon_1]\) and \(|\omega_{a_n\xi}(c\rho(d))-\omega_{y\xi}(c\rho(d))|\le\varepsilon_1\) for \(c,d\in F\), and put \(a=a_n/r\). Then \(\|a\xi-\xi a\|\le4\varepsilon_1/0.7\le6\varepsilon_1\). For vectors \(u,v\) and \(\|T\|\le1\), \(|\omega_u(T)-\omega_v(T)|\le(\|u\|+\|v\|)\|u-v\|\), and \(|\omega_{u/r}(T)-\omega_u(T)|\le|1-r^2|\) when \(\|u\|=r\). With \(T=c\rho(d)\), the three differences \(\omega_{a\xi}-\omega_{a_n\xi}\), \(\omega_{a_n\xi}-\omega_{y\xi}\), \(\omega_{y\xi}-\omega_\zeta\) are at most \(7\varepsilon_1\), \(\varepsilon_1\) and \(5\varepsilon_1\), so \(|\omega_{a\xi}(T)-\omega_\zeta(T)|\le13\varepsilon_1\).
+so \(\limsup_n\|a_n\xi-\xi a_n\|\le3\varepsilon_1\). Next, \(\rho(d)a_n\xi=b_n(y\xi d)\), so \(\omega_{a_n\xi}(c\rho(d))=\langle b_n^*cb_n(y\xi d),y\xi\rangle\). Since \(b_n^*cb_n-c\) equals \(b_n^*(cb_n-b_nc)+(b_n^*b_n-1)c\), which tends to \(0\) weakly, \(\omega_{a_n\xi}(c\rho(d))\to\omega_{y\xi}(c\rho(d))\), and \(\|a_n\xi\|\to\|y\xi\|\in[1-2\varepsilon_1,1+2\varepsilon_1]\). Fix \(n\) so large that \(\|a_n\xi-\xi a_n\|\le4\varepsilon_1\), \(r=\|a_n\xi\|\in[1-3\varepsilon_1,1+3\varepsilon_1]\) and \(|\omega_{a_n\xi}(c\rho(d))-\omega_{y\xi}(c\rho(d))|\le\varepsilon_1\) for \(c,d\in F\), and put \(a=a_n/r\). Then \(\|a\xi-\xi a\|\le4\varepsilon_1/0.7\le6\varepsilon_1\). For vectors \(u,v\) and \(\|T\|\le1\), \(|\omega_u(T)-\omega_v(T)|\le(\|u\|+\|v\|)\|u-v\|\), and \(|\omega_{u/r}(T)-\omega_u(T)|\le|1-r^2|\) when \(\|u\|=r\). With \(T=c\rho(d)\), the three differences \(\omega_{a\xi}-\omega_{a_n\xi}\), \(\omega_{a_n\xi}-\omega_{y\xi}\), \(\omega_{y\xi}-\omega_\zeta\) are at most \(7\varepsilon_1\), \(\varepsilon_1\) and \(5\varepsilon_1\), so \(|\omega_{a\xi}(T)-\omega_\zeta(T)|\le13\varepsilon_1\).
 
-*Case \(\ell<0\).* The vector \(J\zeta\) satisfies \(\|(\log\Delta+\ell)J\zeta\|=\|(\log\Delta-\ell)\zeta\|\le\varepsilon_1\), and \(\omega_{Jw}(c\rho(d))=\omega_w(d\rho(c))\) for every vector \(w\), because \(J\big(c\rho(d)\big)^*J=d\rho(c)\). The first case, applied to \(J\zeta\), \(-\ell\) and \(F\), gives \(\tilde a\) with \(\|\tilde a\xi\|=1\), \(\|\tilde a\xi-\xi\tilde a\|\le6\varepsilon_1\) and \(|\omega_{\tilde a\xi}(d\rho(c))-\omega_\zeta(c\rho(d))|\le13\varepsilon_1\). By (1.1) of Haagerup's criterion lesson, \(v=\tilde a^*\xi=J(\xi\tilde a)\), \(\|v\|=\|\xi\tilde a\|\in[1-6\varepsilon_1,1+6\varepsilon_1]\), and \(\|\tilde a^*\xi-\xi\tilde a^*\|=\|\tilde a\xi-\xi\tilde a\|\). Now \(\omega_v(c\rho(d))=\omega_{\xi\tilde a}(d\rho(c))\), which differs from \(\omega_{\tilde a\xi}(d\rho(c))\) by at most \((2+6\varepsilon_1)6\varepsilon_1\le16\varepsilon_1\). Put \(a=\tilde a^*/\|v\|\). Then \(\|a\xi-\xi a\|\le6\varepsilon_1/0.4=15\varepsilon_1\), and, as \(|1-\|v\|^2|\le16\varepsilon_1\), \(|\omega_{a\xi}(c\rho(d))-\omega_\zeta(c\rho(d))|\le16\varepsilon_1+16\varepsilon_1+13\varepsilon_1=45\varepsilon_1\). \(\square\)
+*Case \(\ell<0\).* The vector \(J\zeta\) satisfies \(\|(\log\Delta+\ell)J\zeta\|=\|(\log\Delta-\ell)\zeta\|\le\varepsilon_1\), and \(\omega_{Jw}(c\rho(d))=\omega_w(d\rho(c))\) for every vector \(w\), because \(J\big(c\rho(d)\big)^*J=d\rho(c)\). The first case, applied to \(J\zeta\), \(-\ell\) and \(F\), gives \(\tilde a\) with \(\|\tilde a\xi\|=1\), \(\|\tilde a\xi-\xi\tilde a\|\le6\varepsilon_1\) and \(|\omega_{\tilde a\xi}(d\rho(c))-\omega_\zeta(c\rho(d))|\le13\varepsilon_1\). By (1.1) of Haagerup's criterion lesson, \(v=\tilde a^*\xi=J(\xi\tilde a)\), \(\|v\|=\|\xi\tilde a\|\in[1-6\varepsilon_1,1+6\varepsilon_1]\), and \(\|\tilde a^*\xi-\xi\tilde a^*\|=\|\tilde a\xi-\xi\tilde a\|\). Now \(\omega_v(c\rho(d))=\omega_{\xi\tilde a}(d\rho(c))\), which differs from \(\omega_{\tilde a\xi}(d\rho(c))\) by at most \((2+6\varepsilon_1)6\varepsilon_1\le16\varepsilon_1\). Put \(a=\tilde a^*/\|v\|\). Then \(\|a\xi-\xi a\|\le6\varepsilon_1/0.4=15\varepsilon_1\), and, as \(|1-\|v\|^2|\le16\varepsilon_1\), \(|\omega_{a\xi}(c\rho(d))-\omega_\zeta(c\rho(d))|\) is at most \(16\varepsilon_1+16\varepsilon_1+13\varepsilon_1=45\varepsilon_1\). \(\square\)
 
 **Lemma 4.2** (absorption; after [Marrakchi, Lemma 4.2]). For every \(\Psi_0\in\overline{\operatorname{conv}}\,\mathcal E(\log\Delta)\) there is \(\Psi'\in\overline{\operatorname{conv}}\,\mathcal C\) with \(\Psi'|_C=\Psi_0|_C\).
 
@@ -99,7 +127,10 @@ so \(\limsup_n\|a_n\xi-\xi a_n\|\le3\varepsilon_1\). Next, \(\rho(d)a_n\xi=b_n(y
 
 *A binormal state.* By Theorem 5.1 of the tensor product lesson the product map \(N\odot N'\to B(H)\) is injective, so the norm of \(B(H)\) is a \(C^*\)-norm on \(N\odot N'\), and by Theorem 4.4 there it dominates the minimal norm. The product of the normal states \(\theta\) on \(N\) and \(\omega_\xi|_{N'}\) on \(N'\) is a state of \(N\otimes_{\min}N'\) (Theorem 2.2 there: it is a vector state in a tensor product of representations), so it extends by continuity to a state \(\Phi\) of \(C\) with
 \[
-\Phi(c\rho(d))=\theta(c)\,\langle\rho(d)\xi,\xi\rangle=\theta(c)\theta(d)\qquad(c,d\in N),
+\begin{gathered}
+\Phi(c\rho(d))=\theta(c)\,\langle\rho(d)\xi,\xi\rangle=\theta(c)\theta(d)\\
+(c,d\in N),
+\end{gathered}
 \]
 using \(\langle\xi d,\xi\rangle=\langle J d^*\xi,\xi\rangle=\langle d\xi,\xi\rangle\). Its restrictions to \(N\) and \(N'\) are normal. With \(U_t=\Delta^{it}\), (FS.2) and \(J\Delta^{it}=\Delta^{it}J\) give \(U_tNU_t^*=N\) and \(U_t\rho(d)U_t^*=\rho(\sigma^\theta_t(d))\); since \(\theta\circ\sigma^\theta_t=\theta\), \(\Phi\) is invariant under \(\sigma_t=\operatorname{Ad}U_t\).
 
@@ -107,13 +138,20 @@ using \(\langle\xi d,\xi\rangle=\langle J d^*\xi,\xi\rangle=\langle d\xi,\xi\ran
 
 *Evaluation.* Let \(T_1=(x-\rho(x^*))^*(x-\rho(x^*))\) and \(T_2=\rho(x^*)^*\rho(x^*)=\rho(x^*x)\), both in \(C\). Since \(\rho(x^*)^*=\rho(x)\) commutes with \(x\),
 \[
-T_1=x^*x-x^*\rho(x^*)-x\rho(x)+\rho(x^*x),\qquad\Phi(T_1)=1-\theta(x^*)^2-\theta(x)^2+1=2,\qquad\Phi(T_2)=1 .
+\begin{gathered}
+T_1=x^*x-x^*\rho(x^*)-x\rho(x)+\rho(x^*x),\\
+\Phi(T_1)=1-\theta(x^*)^2-\theta(x)^2+1=2,\\
+\Phi(T_2)=1 .
+\end{gathered}
 \]
-So \(\Psi'(T_1-T_2)=1\). The function \(\Phi''\mapsto\Phi''(T_1-T_2)\) is affine and weak\(^*\) continuous, so some \(\Phi''\in\mathcal C\) has \(\Phi''(T_1-T_2)>\frac34\). Let \(\varepsilon'>0\) with \(2\varepsilon'^2\le\delta\). By the definition of \(\mathcal C\) there is \(a\in N\) with \(\|a\xi\|=1\), \(\|a\xi-\xi a\|\le\varepsilon'\) and \(|\omega_{a\xi}(T_k)-\Phi''(T_k)|<\frac18\) for \(k=1,2\). Now \((x-\rho(x^*))a\xi=xa\xi-a\xi x^*=xa\xi-ax\xi\), because \(\xi x^*=x\xi\), and \(\rho(x^*)a\xi=a\xi x^*=ax\xi\). Hence
+So \(\Psi'(T_1-T_2)=1\). The function \(\Phi''\mapsto\Phi''(T_1-T_2)\) is affine and weak\(^*\) continuous, so some \(\Phi''\in\mathcal C\) has \(\Phi''(T_1-T_2)>\frac34\). Let \(\varepsilon'>0\) with \(2\varepsilon'^2\le\delta\). By the definition of \(\mathcal C\) there is \(a\in N\) with \(\|a\xi\|=1\), \(\|a\xi-\xi a\|\le\varepsilon'\) and \(|\omega_{a\xi}(T_k)-\Phi''(T_k)|<\frac18\) for \(k=1,2\). Now \((x-\rho(x^*))a\xi=xa\xi-a\xi x^*\), which is \(xa\xi-ax\xi\), because \(\xi x^*=x\xi\), and \(\rho(x^*)a\xi=a\xi x^*=ax\xi\). Hence
 \[
-\|xa-ax\|_\theta^2-\|ax\|_\theta^2=\omega_{a\xi}(T_1)-\omega_{a\xi}(T_2)>\tfrac12 .
+\begin{aligned}
+&\|xa-ax\|_\theta^2-\|ax\|_\theta^2\\
+&\quad =\omega_{a\xi}(T_1)-\omega_{a\xi}(T_2)>\tfrac12 .
+\end{aligned}
 \]
-Therefore \(\|a\|_\theta^2+\|ax\|_\theta^2=1+\|ax\|_\theta^2<1+2\|ax\|_\theta^2<2\|xa-ax\|_\theta^2\), and \(\|a\xi-\xi a\|^2\le\varepsilon'^2<2\varepsilon'^2\|xa-ax\|_\theta^2\le\delta\|xa-ax\|_\theta^2\). This is Haagerup's condition with constant \(2\). Theorem 5.2 of Haagerup's criterion lesson applies, since \(N\) is a countably decomposable factor of type III. \(\square\)
+Therefore \(\|a\|_\theta^2+\|ax\|_\theta^2=1+\|ax\|_\theta^2\), which is less than \(1+2\|ax\|_\theta^2<2\|xa-ax\|_\theta^2\), and \(\|a\xi-\xi a\|^2\le\varepsilon'^2\), which is less than \(2\varepsilon'^2\|xa-ax\|_\theta^2\le\delta\|xa-ax\|_\theta^2\). This is Haagerup's condition with constant \(2\). Theorem 5.2 of Haagerup's criterion lesson applies, since \(N\) is a countably decomposable factor of type III. \(\square\)
 
 ## 6. The bicentralizer theorem
 
@@ -139,9 +177,9 @@ In the language of the earlier lessons: every element of \(M\) that asymptotical
 
 ## 8. Solutions
 
-**7.1.** Evaluate at \(b_n^*\): \((b_n\tau)(b_n^*)=\tau(b_n^*b_n)\) and \((\tau b_n)(b_n^*)=\tau(b_nb_n^*)=\tau(b_n^*b_n)\). So \(|1-\mu|\,\tau(b_n^*b_n)\le\|b_n\tau-\mu\tau b_n\|\,\|b_n\|\to0\), while \(\tau(b_n^*b_n)\to1\) by normality. Hence \(\mu=1\). A II₁ factor is not of type III, and it has central eigen-isometries only in the trivial sense \(\mu=1\); Definition 3.1 asks for all \(\mu\ge1\).
+**7.1.** Evaluate at \(b_n^*\): \((b_n\tau)(b_n^*)=\tau(b_n^*b_n)\) and \((\tau b_n)(b_n^*)=\tau(b_nb_n^*)=\tau(b_n^*b_n)\). So \(|1-\mu|\,\tau(b_n^*b_n)\) is at most \(\|b_n\tau-\mu\tau b_n\|\,\|b_n\|\), which tends to \(0\), while \(\tau(b_n^*b_n)\to1\) by normality. Hence \(\mu=1\). A II₁ factor is not of type III, and it has central eigen-isometries only in the trivial sense \(\mu=1\); Definition 3.1 asks for all \(\mu\ge1\).
 
-**7.2.** Lemma 1.1 of the modular averaging lesson gives, for \(w\in N\) and real \(s\), \(\|\theta w-e^sw\theta\|\le(1+e^{s/2})\|(\Delta^{1/2}-e^{s/2})w\xi\|\). Take \(s=-\log\mu\) and \(w=b_n\): \(\Delta^{1/2}b_n\xi=\xi b_n\) and \(e^{s/2}=\mu^{-1/2}\), so \(\|\theta b_n-\mu^{-1}b_n\theta\|\to0\), which is \(\|b_n\theta-\mu\theta b_n\|\to0\) after multiplying by \(\mu\).
+**7.2.** Lemma 1.1 of the modular averaging lesson shows that, for \(w\in N\) and real \(s\), \(\|\theta w-e^sw\theta\|\) is at most \((1+e^{s/2})\|(\Delta^{1/2}-e^{s/2})w\xi\|\). Take \(s=-\log\mu\) and \(w=b_n\): \(\Delta^{1/2}b_n\xi=\xi b_n\) and \(e^{s/2}=\mu^{-1/2}\), so \(\|\theta b_n-\mu^{-1}b_n\theta\|\to0\), which is \(\|b_n\theta-\mu\theta b_n\|\to0\) after multiplying by \(\mu\).
 
 **7.3.** Pass between \(v_n\) and \(b_n=v_n^*\) with \(\mu=\lambda^{-1}\), as in the proof of Proposition 3.3: adjoints exchange \(v_nv_n^*\) and \(b_n^*b_n\), preserve \(*\)-strong convergence, and \(\|b_n\theta-\mu\theta b_n\|=\mu\|v_n\theta-\lambda\theta v_n\|\).
 

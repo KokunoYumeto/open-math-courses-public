@@ -38,10 +38,13 @@ The divisors \(E\) play no role in this definition. A blow-up sequence of order 
 
 (2) Restricting \(h\) to opens, we may take \(X^0=X\). Let \((X_i,\mathcal I_i)\) be a blow-up sequence of order \(m\) with centres \(Z_i\). Apply [Derivative ideals under blowing up, Theorem 3.1](derivative-ideals-under-blowing-up.md#3-the-basic-inclusion) with \(j=m-1\): the sequence is of order \(\ge1\) for \((\mathcal J_0,1)=(MC(\mathcal I),1)\), and the transforms satisfy \(\mathcal J_i\subset D^{m-1}(\mathcal I_i)\) and \(\operatorname{ord}_{Z_i}\mathcal J_i\ge1\). We prove by induction on \(i\) that \(H_i\) is smooth, \(\mathcal O_{X_i}(-H_i)\subset\mathcal J_i\) and \(Z_i\subset H_i\).
 
-For \(i=0\), \(\mathcal O(-H)\subset MC(\mathcal I)=\mathcal J_0\) because the local equations of \(H\) are sections of \(MC(\mathcal I)\). Suppose \(H_i\) is smooth and \(\mathcal O(-H_i)\subset\mathcal J_i\). The order of \(\mathcal O(-H_i)\) along \(Z_i\) is at least that of \(\mathcal J_i\), hence \(\ge1\): \(Z_i\subset H_i\). The local equation of the smooth hypersurface \(H_i\) has order exactly \(1\) along each component of \(Z_i\). Over a component of \(Z_i\) of codimension \(\ge2\), the strict transform \(B_{Z_i}H_i\) is smooth and \(\pi_i^*\mathcal O(-H_i)=\mathcal O(-H_{i+1}-F_{i+1})\) there. A component of \(Z_i\) that equals a component \(H''\) of \(H_i\) is blown up trivially, its strict transform is empty, and \(\pi_i^*\mathcal O(-H_i)=\mathcal O(-H_i)=\mathcal O(-(H_i-H'')-F_{i+1})\) near it. In both cases \(H_{i+1}\) is smooth and
+For \(i=0\), \(\mathcal O(-H)\subset MC(\mathcal I)=\mathcal J_0\) because the local equations of \(H\) are sections of \(MC(\mathcal I)\). Suppose \(H_i\) is smooth and \(\mathcal O(-H_i)\subset\mathcal J_i\). The order of \(\mathcal O(-H_i)\) along \(Z_i\) is at least that of \(\mathcal J_i\), hence \(\ge1\): \(Z_i\subset H_i\). The local equation of the smooth hypersurface \(H_i\) has order exactly \(1\) along each component of \(Z_i\). Over a component of \(Z_i\) of codimension \(\ge2\), the strict transform \(B_{Z_i}H_i\) is smooth and \(\pi_i^*\mathcal O(-H_i)=\mathcal O(-H_{i+1}-F_{i+1})\) there. A component of \(Z_i\) that equals a component \(H''\) of \(H_i\) is blown up trivially, its strict transform is empty, and \(\pi_i^*\mathcal O(-H_i)=\mathcal O(-H_i)\), which is \(\mathcal O(-(H_i-H'')-F_{i+1})\) near it. In both cases \(H_{i+1}\) is smooth and
 
 \[
-\mathcal O(-H_{i+1})=(\pi_i)^{-1}_*\bigl(\mathcal O(-H_i),1\bigr)\subset(\pi_i)^{-1}_*(\mathcal J_i,1)=\mathcal J_{i+1}.
+\begin{aligned}
+&\mathcal O(-H_{i+1})=(\pi_i)^{-1}_*\bigl(\mathcal O(-H_i),1\bigr)\\
+&\quad\subset(\pi_i)^{-1}_*(\mathcal J_i,1)=\mathcal J_{i+1}.
+\end{aligned}
 \]
 
 This proves (2).
@@ -49,7 +52,10 @@ This proves (2).
 (3) We add to the induction the claim that \(\mathcal I_i|_{H_i}\) is nonzero on every component of \(H_i\); it holds for \(i=0\) by assumption. The centre contains no component \(H'\) of \(H_i\): otherwise \(\operatorname{ord}_{H'}\mathcal I_i\ge m\ge1\), so every section of \(\mathcal I_i\) vanishes on \(H'\) and \(\mathcal I_i|_{H'}=0\). By [Smooth blow-ups and transforms of ideals, Lemma 4.4](smooth-blowups-and-transforms-of-ideals.md#4-transforms-of-ideals-and-of-marked-ideals), applied to the hypersurface \(H_i\) and the centre \(Z_i\), we get \(\operatorname{ord}_{Z_i}(\mathcal I_i|_{H_i})\ge m\) and
 
 \[
-(\pi_i|_{H_{i+1}})^{-1}_*\bigl(\mathcal I_i|_{H_i},m\bigr)=\bigl((\pi_i)^{-1}_*(\mathcal I_i,m)\bigr)\big|_{H_{i+1}}=\mathcal I_{i+1}|_{H_{i+1}},
+\begin{aligned}
+&(\pi_i|_{H_{i+1}})^{-1}_*\bigl(\mathcal I_i|_{H_i},m\bigr)\\
+&\quad=\bigl((\pi_i)^{-1}_*(\mathcal I_i,m)\bigr)\big|_{H_{i+1}}=\mathcal I_{i+1}|_{H_{i+1}},
+\end{aligned}
 \]
 
 using that the order-\(m\) transform of \(\mathcal I_i\) is the marked transform (Lemma 2.3 of [Blow-up sequences and the main theorems](blow-up-sequences-and-the-main-theorems.md#2-triples-and-the-blow-ups-they-allow)). The transform of an ideal that is nonzero on every component of \(H_i\), under the blow-up of a centre containing no component, is nonzero on every component of \(H_{i+1}\). This completes the induction and proves (3).
@@ -68,24 +74,34 @@ In positive characteristic this fails in general: there are hypersurface singula
 
 Going down says that every allowed blow-up for \(\mathcal I\) is allowed for \((\mathcal I|_H,m)\). The converse is false: the restriction can demand blow-ups that are not of order \(m\) for \(\mathcal I\).
 
-**Example 3.1.** Let \(\mathcal I=(xy-z^n)\) on \(\mathbf A^3\), \(n\ge2\). The order is \(2\) at the origin and \(\le1\) elsewhere, since at \((a,b,c)\ne0\) on the surface one of \(x,y\) has a nonzero coefficient \(b\) or \(a\) in the linear part. Here \(MC(\mathcal I)=D(\mathcal I)=(xy-z^n,y,x,nz^{n-1})=(x,y,z^{n-1})\), so \(H=V(x)\) is an MC-hypersurface. But \(\mathcal I|_H=(z^n)\) on \(H\cong\mathbf A^2_{y,z}\) has order \(n\ge2\) along the whole line \(z=0\), and blowing up that line is not a blow-up of order \(2\) for \(\mathcal I\), whose order along the line is \(1\). For the MC-hypersurface \(H_g=V(x-y)\), however, \(\mathcal I|_{H_g}=(x^2-z^n)\) on \(H_g\cong\mathbf A^2_{x,z}\), which again has an isolated point of order \(2\).
+**Example 3.1.** Let \(\mathcal I=(xy-z^n)\) on \(\mathbf A^3\), \(n\ge2\). The order is \(2\) at the origin and \(\le1\) elsewhere, since at \((a,b,c)\ne0\) on the surface one of \(x,y\) has a nonzero coefficient \(b\) or \(a\) in the linear part. Here \(MC(\mathcal I)=D(\mathcal I)\), which is \((xy-z^n,y,x,nz^{n-1})=(x,y,z^{n-1})\), so \(H=V(x)\) is an MC-hypersurface. But \(\mathcal I|_H=(z^n)\) on \(H\cong\mathbf A^2_{y,z}\) has order \(n\ge2\) along the whole line \(z=0\), and blowing up that line is not a blow-up of order \(2\) for \(\mathcal I\), whose order along the line is \(1\). For the MC-hypersurface \(H_g=V(x-y)\), however, \(\mathcal I|_{H_g}=(x^2-z^n)\) on \(H_g\cong\mathbf A^2_{x,z}\), which again has an isolated point of order \(2\).
 
 **Example 3.2.** Even a well-chosen hypersurface can fail after blow-ups. Let \(\mathcal I=(x^3+xy^5+z^4)\) on \(\mathbf A^3\), of order \(3\) at the origin. Then \(D(\mathcal I)\ni3x^2+y^5,\ 5xy^4,\ 4z^3\), and \(D^2(\mathcal I)\ni6x,\ 5y^4,\ 12z^2\), so \(h=x+y^4+z^2\in MC(\mathcal I)\) has order \(1\), and \(H=V(h)\) is an MC-hypersurface. Blow up the origin and use the chart \(x=x_1y,\ z=z_1y\):
 
 \[
-\pi^*(x^3+xy^5+z^4)=y^3\bigl(x_1^3+x_1y^3+yz_1^4\bigr),\qquad \pi^*h=y\bigl(x_1+y^3+yz_1^2\bigr).
+\begin{aligned}
+&\pi^*(x^3+xy^5+z^4)\\
+&\quad=y^3\bigl(x_1^3+x_1y^3+yz_1^4\bigr),\\
+&\pi^*h=y\bigl(x_1+y^3+yz_1^2\bigr).
+\end{aligned}
 \]
 
 The transform \(\mathcal I_1=(x_1^3+x_1y^3+yz_1^4)\) still has order \(3\) at the origin of the chart. Blow it up, chart \(x_1=x_2y,\ z_1=z_2y\):
 
 \[
-\mathcal I_2=(x_2^3+x_2y+y^2z_2^4),\qquad H_2=V\bigl(x_2+y^2+y^2z_2^2\bigr).
+\begin{gathered}
+\mathcal I_2=(x_2^3+x_2y+y^2z_2^4),\\
+H_2=V\bigl(x_2+y^2+y^2z_2^2\bigr).
+\end{gathered}
 \]
 
 Now \(\mathcal I_2\) has order \(2\) at the origin (from \(x_2y\)), and \(\operatorname{maxord}\mathcal I_2\le2\) on this chart: the order of reduction is complete there. But on \(H_2\), where \(x_2=-y^2(1+z_2^2)\),
 
 \[
-\mathcal I_2|_{H_2}=\bigl(-y^6(1+z_2^2)^3-y^3(1+z_2^2)+y^2z_2^4\bigr),
+\begin{aligned}
+&\mathcal I_2|_{H_2}=\bigl(-y^6(1+z_2^2)^3\\
+&\qquad-y^3(1+z_2^2)+y^2z_2^4\bigr),
+\end{aligned}
 \]
 
 which has order \(3\) at the origin. So the marked restriction \((H_2,\mathcal I_2|_{H_2},3)\) still has a point of order \(\ge3\), and order reduction for it would require further blow-ups that are not blow-ups of order \(3\) for \(\mathcal I_2\).
@@ -96,7 +112,7 @@ The next lesson identifies ideals for which the converse holds: the restriction 
 
 **Exercise 4.1.** For \(\mathcal I=(x^2+y^2+z^2)\) on \(\mathbf A^3\), compute \(MC(\mathcal I)\) and determine the MC-hypersurfaces through the origin. Check that Theorem 2.3(3) applies to each of them.
 
-*Solution.* The order is \(2\) at the origin and \(\le1\) elsewhere, so \(m=2\) and \(MC(\mathcal I)=D(\mathcal I)=(x^2+y^2+z^2,2x,2y,2z)=(x,y,z)\), the ideal of the origin. Every function vanishing at the origin lies in it, so every smooth surface through the origin is, near the origin, an MC-hypersurface. The restriction of \(\mathcal I\) to such a surface \(H\) is nonzero: otherwise \(H\) would be contained in the cone \(V(x^2+y^2+z^2)\), which is irreducible of dimension \(2\) and singular at the origin, so \(H\) would equal the cone near the origin, contradicting smoothness of \(H\).
+*Solution.* The order is \(2\) at the origin and \(\le1\) elsewhere, so \(m=2\) and \(MC(\mathcal I)=D(\mathcal I)\), which is \((x^2+y^2+z^2,2x,2y,2z)=(x,y,z)\), the ideal of the origin. Every function vanishing at the origin lies in it, so every smooth surface through the origin is, near the origin, an MC-hypersurface. The restriction of \(\mathcal I\) to such a surface \(H\) is nonzero: otherwise \(H\) would be contained in the cone \(V(x^2+y^2+z^2)\), which is irreducible of dimension \(2\) and singular at the origin, so \(H\) would equal the cone near the origin, contradicting smoothness of \(H\).
 
 **Exercise 4.2.** Let \(\mathcal I=(x^m)\) on \(\mathbf A^2\). Show that \(H=V(x)\) is a hypersurface of maximal contact in the sense of Definition 2.1, as Theorem 2.3(2) predicts, but that the going-down statement Theorem 2.3(3) does not apply. What does the restriction \((H,\mathcal I|_H,m)\) look like?
 
@@ -104,7 +120,7 @@ The next lesson identifies ideals for which the converse holds: the restriction 
 
 **Exercise 4.3.** In Example 3.2, verify that \(\pi^*h=y(x_1+y^3+yz_1^2)\) and that the strict transform \(H_1\) passes through the centre of the second blow-up, as Theorem 2.3(2) predicts.
 
-*Solution.* \(\pi^*(x+y^4+z^2)=x_1y+y^4+z_1^2y^2=y(x_1+y^3+yz_1^2)\). The second centre is the origin of the chart, where \(x_1+y^3+yz_1^2\) vanishes.
+*Solution.* \(\pi^*(x+y^4+z^2)=x_1y+y^4+z_1^2y^2\), which is \(y(x_1+y^3+yz_1^2)\). The second centre is the origin of the chart, where \(x_1+y^3+yz_1^2\) vanishes.
 
 ## References
 

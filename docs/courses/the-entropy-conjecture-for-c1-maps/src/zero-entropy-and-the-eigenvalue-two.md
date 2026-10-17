@@ -10,7 +10,10 @@ From [Topological entropy and attraction](topological-entropy-and-attraction.md)
 
 Recall the compact forward invariant sets
 \[
-Z_0=\{(50\bmod100,\,0,\,\mathbf v):\mathbf v\in\Sigma^q\},\qquad Z_\infty=\{(t,\,\infty,\,0,\ldots,0):t\in\mathbb R/100\mathbb Z\}
+\begin{gathered}
+Z_0=\{(50\bmod100,\,0,\,\mathbf v):\mathbf v\in\Sigma^q\},\\
+Z_\infty=\{(t,\,\infty,\,0,\ldots,0):t\in\mathbb R/100\mathbb Z\}
+\end{gathered}
 \]
 of [Every orbit is attracted](every-orbit-is-attracted.md), and the formulas \(f(50,0,\mathbf v)=(50,0,LS(v_1),\ldots,LS(v_q))\) and \(f(t,\infty,0,\ldots,0)=(t+1,\infty,0,\ldots,0)\) from Section 1 there.
 
@@ -18,7 +21,10 @@ of [Every orbit is attracted](every-orbit-is-attracted.md), and the formulas \(f
 
 *Proof.* *The set \(Z_0\).* Let \(T=LS:\Sigma\to\Sigma\). It is continuous, because \(S\) is continuous with values in \(\mathbb C\subseteq\Sigma\). Since \(|S|\leq3\), \(T(\Sigma)\subseteq D_{3L}=\{|v|\leq3L\}\). For \(0<r\leq3L\) we have \(S(re^{i\theta})=p(r)e^{i\theta}\), and \(T(0)=0\); so
 \[
-T(re^{i\theta})=R(r)e^{i\theta}\quad(0\leq r\leq3L),\qquad R(r)=L\,p(r).
+\begin{gathered}
+T(re^{i\theta})=R(r)e^{i\theta}\quad(0\leq r\leq3L),\\
+R(r)=L\,p(r).
+\end{gathered}
 \]
 The function \(R:[0,3L]\to[0,3L]\) is continuous and nondecreasing (because \(p\) is nondecreasing on \([0,3L]\) and \(0\leq p\leq3\)), and \(R(0)=0\). By Lemma 4.1 of the first lesson, \(T^{\times q}\) has zero entropy for the maximum metric on \(\Sigma^q\).
 
@@ -32,7 +38,10 @@ The map \(\kappa:\Sigma^q\to Z_0\), \(\kappa(\mathbf v)=(50,0,\mathbf v)\), is a
 
 Let \(g:\Sigma\to\Sigma\) be the squaring map, \(g(z)=z^2\) for finite \(z\) and \(g(\infty)=\infty\); in the chart \(w=1/z\) it reads \(w\mapsto w^2\), so \(g\) is smooth. Define
 \[
-i(z)=(0,z,0,\ldots,0),\qquad j(z)=(1,z,0,\ldots,0),\qquad \pi(t,z,\mathbf v)=z .
+\begin{gathered}
+i(z)=(0,z,0,\ldots,0),\\
+j(z)=(1,z,0,\ldots,0),\qquad \pi(t,z,\mathbf v)=z .
+\end{gathered}
 \]
 These are continuous maps \(i,j:\Sigma\to M\) and \(\pi:M\to\Sigma\), with \(\pi\circ i=\mathrm{id}_\Sigma\).
 
@@ -52,10 +61,14 @@ is an isomorphism; by Theorem 4.1 there, \(\rho_x[\Sigma]=\mu_x\).
 
 **Proposition 3.1.** \(g_*[\Sigma]=2[\Sigma]\) in \(H_2(\Sigma;\mathbb R)\).
 
-*Proof.* *Local degrees.* In the chart \(z\), \(g\) is the map \(z\mapsto z^2\) of \(\mathbb C=\mathbb R^2\), whose real derivative at \(p\) is the real form of multiplication by \(2p\). By Lemma 3.4 of the orientation lesson (with \(d=1\)) its determinant is \(|2p|^2\), which equals \(4\) at \(p=\pm1\). Proposition 3.2 of the orientation lesson, applied at \(p=1\) and at \(p=-1\), both with \(g(p)=1\), gives open discs \(B_+\) about \(1\) and \(B_-\) about \(-1\) with \(g(x)\neq1\) for \(x\in B_\pm\setminus\{\pm1\}\), such that
+*Proof.* *Local degrees.* In the chart \(z\), \(g\) is the map \(z\mapsto z^2\) of \(\mathbb C=\mathbb R^2\), whose real derivative at \(p\) is the real form of multiplication by \(2p\). By Lemma 3.4 of the orientation lesson (with \(d=1\)) its determinant is \(|2p|^2\), which equals \(4\) at \(p=\pm1\). Proposition 3.2 of the orientation lesson, applied at \(p=1\) and at \(p=-1\), both with \(g(p)=1\), gives open discs \(B_+\) about \(1\) and \(B_-\) about \(-1\) with \(g(x)\neq1\) for \(x\in B_\pm\setminus\{\pm1\}\), such that (3.1) holds: the map
 \[
-g_*:H_2(B_\pm,B_\pm\setminus\{\pm1\})\longrightarrow H_2(\mathbb C,\mathbb C\setminus1)\quad\text{sends }\mu^{\rm std}_{\pm1}\text{ to }\mu^{\rm std}_1 .\tag{3.1}
+\begin{aligned}
+&g_*:H_2(B_\pm,B_\pm\setminus\{\pm1\})\\
+&\quad\longrightarrow H_2(\mathbb C,\mathbb C\setminus1)
+\end{aligned}
 \]
+sends \(\mu^{\rm std}_{\pm1}\) to \(\mu^{\rm std}_1\).
 Here \(\mu^{\rm std}_{\pm1}\) denotes the class in \(H_2(B_\pm,B_\pm\setminus\{\pm1\})\) that the inclusion into \((\mathbb C,\mathbb C\setminus\{\pm1\})\) carries to \(\mu^{\rm std}_{\pm1}\); this inclusion is an excision isomorphism. The proof of that proposition allows any smaller radius, so we take both radii less than one; then \(B_+\cap B_-=\emptyset\), \(-1\notin B_+\) and \(1\notin B_-\).
 
 *Restriction to the preimage.* Let \(P=\{1,-1\}=g^{-1}(1)\). Since \(g(\Sigma\setminus P)\subseteq\Sigma\setminus1\), the map \(g\) is a map of pairs \((\Sigma,\Sigma\setminus P)\to(\Sigma,\Sigma\setminus1)\). As maps of pairs \((\Sigma,\emptyset)\to(\Sigma,\Sigma\setminus1)\), the identity followed by \(g\) equals \(g\) followed by the identity; by functoriality
@@ -66,7 +79,10 @@ where \(\rho_P:H_2(\Sigma)\to H_2(\Sigma,\Sigma\setminus P)\) is induced by the 
 
 *Splitting.* Let \(U=B_+\cup B_-\). The closed set \(\Sigma\setminus U\) lies in the open set \(\Sigma\setminus P\), so excision [Fomberg, Theorem 1.23] shows that the inclusion induces an isomorphism \(e:H_2(U,U\setminus P)\to H_2(\Sigma,\Sigma\setminus P)\). A singular simplex in \(U\) has connected image, so it lies in \(B_+\) or in \(B_-\); the same holds in \(U\setminus P\). Hence the relative chain complex of \((U,U\setminus P)\) is the direct sum of those of \((B_+,B_+\setminus1)\) and \((B_-,B_-\setminus\{-1\})\), and
 \[
-H_2(U,U\setminus P)=H_2(B_+,B_+\setminus1)\oplus H_2(B_-,B_-\setminus\{-1\}),
+\begin{aligned}
+H_2(U,U\setminus P)&=H_2(B_+,B_+\setminus1)\\
+&\quad\oplus H_2(B_-,B_-\setminus\{-1\}),
+\end{aligned}
 \]
 the summands being included by the inclusions of pairs. Write \(e^{-1}\rho_P[\Sigma]=(a_+,a_-)\).
 
@@ -74,7 +90,10 @@ the summands being included by the inclusions of pairs. Write \(e^{-1}\rho_P[\Si
 
 *Conclusion.* By functoriality, \(g_*\circ e\) restricted to the summand of \(B_\pm\) is the map induced by \(g|_{B_\pm}:(B_\pm,B_\pm\setminus\{\pm1\})\to(\Sigma,\Sigma\setminus1)\), which is \(\varepsilon_1\) composed with the map in (3.1). Therefore
 \[
-g_*\rho_P[\Sigma]=\varepsilon_1(\mu^{\rm std}_1)+\varepsilon_1(\mu^{\rm std}_1)=2\mu_1=\rho_1(2[\Sigma]).
+\begin{aligned}
+g_*\rho_P[\Sigma]&=\varepsilon_1(\mu^{\rm std}_1)+\varepsilon_1(\mu^{\rm std}_1)\\
+&=2\mu_1=\rho_1(2[\Sigma]).
+\end{aligned}
 \]
 With (3.2) this gives \(\rho_1(g_*[\Sigma])=\rho_1(2[\Sigma])\), and \(\rho_1\) is injective. \(\square\)
 
@@ -86,7 +105,10 @@ The same argument shows that \(z\mapsto z^k\) multiplies \([\Sigma]\) by \(k\) f
 
 *Proof.* By Lemma 2.1, homotopy invariance and functoriality,
 \[
-f_*\alpha=(f\circ i)_*[\Sigma]=(i\circ g)_*[\Sigma]=i_*\bigl(g_*[\Sigma]\bigr)=i_*(2[\Sigma])=2\alpha,
+\begin{aligned}
+&f_*\alpha=(f\circ i)_*[\Sigma]=(i\circ g)_*[\Sigma]\\
+&\quad =i_*\bigl(g_*[\Sigma]\bigr)=i_*(2[\Sigma])=2\alpha,
+\end{aligned}
 \]
 using Proposition 3.1. Since \(\pi\circ i=\mathrm{id}_\Sigma\), \(\pi_*\alpha=[\Sigma]\neq0\), so \(\alpha\neq0\). \(\square\)
 

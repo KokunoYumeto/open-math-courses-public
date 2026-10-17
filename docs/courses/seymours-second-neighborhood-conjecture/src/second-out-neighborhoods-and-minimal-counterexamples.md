@@ -12,10 +12,7 @@ The proof has three parts. This lesson shows that a counterexample with the fewe
 
 An *oriented graph* \(D\) consists of a finite vertex set \(V(D)\) and a set \(A(D)\) of *arcs*, which are ordered pairs \((x,y)\) of distinct vertices, such that \((x,y)\) and \((y,x)\) are never both arcs. We write \(x\to y\) when \((x,y)\in A(D)\). Thus an oriented graph has no loops and no pair of opposite arcs; a *tournament* is an oriented graph in which every pair of distinct vertices is joined by an arc in one direction.
 
-For a set \(S\subseteq V(D)\), the *image* of \(S\) is
-\[
-F(S)=F_D(S)=\{y\in V(D):x\to y\text{ for some }x\in S\},
-\]
+For a set \(S\subseteq V(D)\), the *image* of \(S\) is the set \(F(S)=F_D(S)\) of the vertices \(y\) such that \(x\to y\) for some \(x\in S\),
 and \(F^2(S)=F(F(S))\) is the set of endpoints of directed walks of length two starting in \(S\). The image operator is monotone, \(F(S\cup T)=F(S)\cup F(T)\), and \(F(\varnothing)=\varnothing\). Note that \(F(S)\) may meet \(S\).
 
 For a vertex \(v\), the *first out-neighborhood* is \(N_1^+(v)=F(\{v\})\), and the *second out-neighborhood* \(N_2^+(v)\) is the set of vertices at directed distance exactly two from \(v\): the vertices \(w\ne v\) with \(w\notin N_1^+(v)\) for which some \(u\) satisfies \(v\to u\to w\). The *out-degree* and *in-degree* of \(v\) are \(d^+(v)=|N_1^+(v)|\) and \(d^-(v)=|\{u:u\to v\}|\). A vertex with out-degree \(0\) is a *sink*.
@@ -61,7 +58,10 @@ For a minimal counterexample, the defining inequality \(|N_1^+(v)|>|N_2^+(v)|\) 
 
 Throughout this section \(D\) is a minimal counterexample, \(F=F_D\), and \(S\) is a fixed set with \(\varnothing\ne S\subsetneq V(D)\). Put
 \[
-I=F(S)\cap S,\qquad E=F(S)\setminus S,\qquad g(T)=\bigl|F(T)\setminus(I\cup T)\bigr|\quad(T\subseteq E).
+\begin{gathered}
+I=F(S)\cap S,\qquad E=F(S)\setminus S,\\
+g(T)=\bigl|F(T)\setminus(I\cup T)\bigr|\quad(T\subseteq E).
+\end{gathered}
 \]
 Since \(D\) is strongly connected (Lemma 2.3), some arc leaves \(S\), so \(E\ne\varnothing\). Note that \(I\subseteq S\), \(E\cap S=\varnothing\), and \(g(\varnothing)=0\).
 
@@ -69,14 +69,21 @@ For \(T\subsetneq E\), let \(D_T\) be the oriented graph obtained from \(D\) by 
 
 **Lemma 3.1.** Let \(T\subsetneq E\). There is a vertex \(v\in S\) such that \(Q=F(\{v\})\cap(E\setminus T)\) is nonempty and
 \[
-g(T\cup Q)-g(T)\le|Q|+|N_2^+(v)|-|N_1^+(v)|\le|Q|-1 .
+\begin{aligned}
+&g(T\cup Q)-g(T)\le|Q|+|N_2^+(v)|\\
+&\quad -|N_1^+(v)|\le|Q|-1 .
+\end{aligned}
 \]
 
 *Proof.* The graph \(D_T\) has the same vertices as \(D\) and fewer arcs, so it is not a counterexample: some vertex \(v\) satisfies \(|N_{1,T}^+(v)|\le|N_{2,T}^+(v)|\).
 
-*The vertex \(v\) has lost out-neighbors.* Suppose that \(N_{1,T}^+(v)=N_1^+(v)\). Deleting arcs only removes walks, so \(F_T^2(\{v\})\subseteq F^2(\{v\})\), and Lemma 1.1 gives \(N_{2,T}^+(v)\subseteq N_2^+(v)\). Then \(|N_1^+(v)|=|N_{1,T}^+(v)|\le|N_{2,T}^+(v)|\le|N_2^+(v)|\), contrary to \(D\) being a counterexample. Hence \(v\) is the tail of a deleted arc, so \(v\in S\), and the out-neighbors it loses are exactly the vertices of \(Q=F(\{v\})\cap(E\setminus T)\), which is therefore nonempty. Since \(v\in S\), we have \(F(\{v\})\subseteq F(S)=I\cup T\cup(E\setminus T)\), so
+*The vertex \(v\) has lost out-neighbors.* Suppose that \(N_{1,T}^+(v)=N_1^+(v)\). Deleting arcs only removes walks, so \(F_T^2(\{v\})\subseteq F^2(\{v\})\), and Lemma 1.1 gives \(N_{2,T}^+(v)\subseteq N_2^+(v)\). Then \(|N_1^+(v)|=|N_{1,T}^+(v)|\), which is at most \(|N_{2,T}^+(v)|\le|N_2^+(v)|\), contrary to \(D\) being a counterexample. Hence \(v\) is the tail of a deleted arc, so \(v\in S\), and the out-neighbors it loses are exactly the vertices of \(Q=F(\{v\})\cap(E\setminus T)\), which is therefore nonempty. Since \(v\in S\), we have \(F(\{v\})\subseteq F(S)=I\cup T\cup(E\setminus T)\), so
 \[
-N_1^+(v)\subseteq I\cup T\cup Q,\qquad N_{1,T}^+(v)=N_1^+(v)\setminus Q\subseteq I\cup T. \tag{3.1}
+\begin{aligned}
+&N_1^+(v)\subseteq I\cup T\cup Q,\\
+&N_{1,T}^+(v)=N_1^+(v)\setminus Q\\
+&\quad \subseteq I\cup T.
+\end{aligned}\tag{3.1}
 \]
 
 *Where the walks of \(D_T\) end.* Let \(v\to u\to w\) be a walk in \(D_T\). By (3.1), \(u\in I\cup T\). If \(u\in I\subseteq S\), the arc \(u\to w\) survived the deletion, so \(w\in F(S)\setminus(E\setminus T)=I\cup T\). If \(u\in T\), then \(w\in F(T)\). Therefore
@@ -94,34 +101,53 @@ Every \(c\in C\) is the end of a walk \(v\to q\to c\) in \(D\) with \(q\in Q\), 
 
 Combining the two counts with the choice of \(v\),
 \[
-|N_1^+(v)|-|Q|=|N_{1,T}^+(v)|\le|N_{2,T}^+(v)|\le|N_2^+(v)|-|C|+|Q\cap F(T)|. \tag{3.3}
+\begin{aligned}
+&|N_1^+(v)|-|Q|\\
+&\quad =|N_{1,T}^+(v)|\le|N_{2,T}^+(v)|\\
+&\quad \le|N_2^+(v)|-|C|\\
+&\quad +|Q\cap F(T)|.
+\end{aligned}\tag{3.3}
 \]
 
 *The increment of \(g\).* Since \(F(T\cup Q)=F(T)\cup F(Q)\),
 \[
-F(T\cup Q)\setminus(I\cup T\cup Q)=\Bigl(\bigl(F(T)\setminus(I\cup T)\bigr)\setminus Q\Bigr)\cup C,
+\begin{aligned}
+&F(T\cup Q)\setminus(I\cup T\cup Q)\\
+&\quad =\Bigl(\bigl(F(T)\setminus(I\cup T)\bigr)\setminus Q\Bigr)\cup C,
+\end{aligned}
 \]
 and the two sets on the right are disjoint, because \(C\) avoids \(F(T)\). The set removed from \(F(T)\setminus(I\cup T)\) is \(Q\cap F(T)\), since \(Q\) avoids \(I\cup T\). Therefore
 \[
 g(T\cup Q)-g(T)=|C|-|Q\cap F(T)|,
 \]
-and (3.3) gives \(g(T\cup Q)-g(T)\le|Q|+|N_2^+(v)|-|N_1^+(v)|\). The last quantity is at most \(|Q|-1\) because \(|N_2^+(v)|<|N_1^+(v)|\) are integers. \(\square\)
+and (3.3) shows that \(g(T\cup Q)-g(T)\) is at most \(|Q|+|N_2^+(v)|-|N_1^+(v)|\). The last quantity is at most \(|Q|-1\) because \(|N_2^+(v)|<|N_1^+(v)|\) are integers. \(\square\)
 
 **Proposition 3.2.** With \(S\), \(I\), \(E\) and \(g\) as above, \(g(E)\le|E|-1\).
 
 *Proof.* Put \(T_0=\varnothing\). While \(T_k\ne E\), Lemma 3.1 supplies a nonempty \(Q_k\subseteq E\setminus T_k\) with \(g(T_k\cup Q_k)-g(T_k)\le|Q_k|-1\); set \(T_{k+1}=T_k\cup Q_k\). Each step is applied to the graph \(D_{T_k}\) obtained from the original \(D\), so Lemma 3.1 applies every time. The sets \(T_k\) strictly increase inside the finite set \(E\), so the process reaches \(T_r=E\) after \(r\ge1\) steps, because \(E\ne\varnothing\). Summing the increments and using \(g(\varnothing)=0\),
 \[
-g(E)\le\sum_{k<r}\bigl(|Q_k|-1\bigr)=|E|-r\le|E|-1.\qquad\square
+\begin{aligned}
+&g(E)\le\sum_{k<r}\bigl(|Q_k|-1\bigr)\\
+&\quad =|E|-r\le|E|-1.
+\end{aligned}
 \]
+\(\square\)
 
 **Proposition 3.3** (Subset deficit). Let \(D\) be a minimal counterexample. Then every vertex of \(D\) has an in-neighbor, and
 \[
-\bigl|F^2(S)\setminus F(S)\bigr|<\bigl|F(S)\setminus S\bigr|\qquad\text{for every }\varnothing\ne S\subsetneq V(D).
+\begin{gathered}
+\bigl|F^2(S)\setminus F(S)\bigr|<\bigl|F(S)\setminus S\bigr|\\
+\text{for every }\varnothing\ne S\subsetneq V(D).
+\end{gathered}
 \]
 
 *Proof.* The first claim is Lemma 2.3. For the inequality, use the notation of this section. Since \(F(S)=I\cup E\) and \(F(I)\subseteq F(S)\) (because \(I\subseteq S\)),
 \[
-F^2(S)\setminus F(S)=\bigl(F(I)\cup F(E)\bigr)\setminus(I\cup E)=F(E)\setminus(I\cup E),
+\begin{aligned}
+&F^2(S)\setminus F(S)\\
+&\quad =\bigl(F(I)\cup F(E)\bigr)\setminus(I\cup E)\\
+&\quad =F(E)\setminus(I\cup E),
+\end{aligned}
 \]
 whose size is \(g(E)\). Proposition 3.2 gives \(g(E)<|E|=|F(S)\setminus S|\). \(\square\)
 

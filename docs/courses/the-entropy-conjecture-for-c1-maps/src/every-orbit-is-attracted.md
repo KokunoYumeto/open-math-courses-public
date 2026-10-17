@@ -6,10 +6,12 @@ This lesson proves that every orbit of the map \(f:M\to M\) of [A clock with reg
 
 ## 1. Two invariant sets
 
-Write \(\mathbf v=(v_1,\ldots,v_q)\) and
+Write \(\mathbf v=(v_1,\ldots,v_q)\) and define the sets (1.1):
 \[
-Z_0=\{(50\bmod100,\,0,\,\mathbf v):\mathbf v\in\Sigma^q\},\qquad
-Z_\infty=\{(t,\,\infty,\,0,\ldots,0):t\in\mathbb R/100\mathbb Z\}.\tag{1.1}
+\begin{aligned}
+Z_0&=\{(50\bmod100,\,0,\,\mathbf v):\mathbf v\in\Sigma^q\},\\
+Z_\infty&=\{(t,\,\infty,\,0,\ldots,0):t\in\mathbb R/100\mathbb Z\}.
+\end{aligned}
 \]
 Both are compact. They are forward invariant: on \(Z_0\) we have \(h(50,0)=b(50)=0\), the readout coefficients \(\bar\beta_\ell(50)\) and the inputs (which contain the factor \(\alpha(50)=0\)) vanish, and \(a(50)=L\), so \(f(50,0,\mathbf v)=(50,0,LS(v_1),\ldots,LS(v_q))\). On \(Z_\infty\) the main coordinate stays at \(\infty\), the clock advances by \(h(t,\infty)=1\) (as \(e(\infty)=1\)), and the inputs vanish because \(\Phi_k(\infty)=0\), so zero registers stay zero.
 
@@ -33,7 +35,10 @@ All compatible metrics on the compact space \(M\) are uniformly equivalent ([Top
 
 From now until the end of Section 5 we assume that \((t_n)\) is unbounded, so \(t_n\to\infty\), and that \(z_0\) is finite. Then every \(z_n\) is finite, since (5.2) adds finite numbers to \(z^2\). For an integer \(k\) with \(100k>t_0\) put
 \[
-N_k=\min\{n\geq0:t_n\geq100k\},\qquad N_{k+1}=\min\{n\geq0:t_n\geq100(k+1)\}.
+\begin{gathered}
+N_k=\min\{n\geq0:t_n\geq100k\},\\
+N_{k+1}=\min\{n\geq0:t_n\geq100(k+1)\}.
+\end{gathered}
 \]
 By (1.2), \(0\leq t_{N_k}-100k<1\). The indices \(N_k\leq n<N_{k+1}\) form a **complete passage**. Within it we use the translated readings \(s_n=t_n-100k\in[0,100)\), at which the periodic data of (5.2) may be evaluated directly; for instance \(\bar\beta_\ell(t_n)=\beta_\ell(s_n)\). Put
 \[
@@ -63,37 +68,57 @@ the **preparation indices** of the passage. Every period after the first one met
 
 Fix a complete passage. The predictions of (5.1) are computed with the map \(G\), which ignores the readouts; after a readout the actual main coordinate differs from the predicted one. Only the clocks have to agree, and they do, because the clock moves by exactly one throughout the readout region.
 
-**Lemma 4.1 (clock prediction).** For each \(\ell\) there is at most one index \(j\) in the passage with \(\beta_\ell(s_j)>0\). If there is one, then for every \(i\in I\) and every \(m\geq1\),
+**Lemma 4.1 (clock prediction).** For each \(\ell\) there is at most one index \(j\) in the passage with \(\beta_\ell(s_j)>0\). If there is one, then for every \(i\in I\) and every \(m\geq1\) the identity (4.1) holds:
 \[
-\beta_\ell\bigl(T_m(s_i,z_i)\bigr)=\begin{cases}\beta_\ell(s_j),&m=j-i,\\0,&m\neq j-i.\end{cases}\tag{4.1}
+\begin{aligned}
+&\beta_\ell\bigl(T_m(s_i,z_i)\bigr)\\
+&\quad=\begin{cases}\beta_\ell(s_j),&m=j-i,\\0,&m\neq j-i.\end{cases}
+\end{aligned}
 \]
 Here \(\beta_\ell\) is the function on \(\mathbb R\), not its periodization.
 
 *Proof.* Fix \(i\in I\); then \(s_i\in(8,12)\). Let \(r_{70}\) and \(r_{82}\) be the first indices after \(i\) with \(s\geq70\) and \(s\geq82\); they lie in the passage. For \(i\leq n<r_{70}\) the readings are below \(70\), so no readout occurs and \((s_{n+1},z_{n+1})=G(s_n,z_n)\). Hence \(G^{n-i}(s_i,z_i)=(s_n,z_n)\) and \(T_{n-i}(s_i,z_i)=s_n\) for \(i<n\leq r_{70}\). From \(r_{70}\) on, both the actual and the predicted clocks lie in \([70,82)\) until they reach \(82\), and there both advance by exactly one per step, whatever their main coordinates are. Starting from equal values at \(r_{70}\), they stay equal:
 \[
-T_{n-i}(s_i,z_i)=s_n\qquad(i<n\leq r_{82}).\tag{4.2}
+\begin{gathered}
+T_{n-i}(s_i,z_i)=s_n\\
+(i<n\leq r_{82}).
+\end{gathered}\tag{4.2}
 \]
 After that the predicted clock is at least \(82\) and nondecreasing, so it never returns to the support of \(\beta_\ell\), which lies in \((74,80)\). Before \(r_{70}\) the predictions are below \(70\). So \(\beta_\ell(T_m(s_i,z_i))\) can be nonzero only for \(r_{70}\leq i+m<r_{82}\), and there it equals \(\beta_\ell(s_{i+m})\).
 
 The support of \(\beta_\ell\) lies in an interval \(J_\ell\) of length less than one. If \(\beta_\ell(s_j)>0\), then \(s_j\in J_\ell\) and \(s_{j+1}=s_j+1\) lies beyond \(J_\ell\); by monotonicity no later reading meets \(J_\ell\). Hence at most one index \(j\) has \(\beta_\ell(s_j)>0\), and (4.1) follows from the previous paragraph. \(\square\)
 
-**Lemma 4.2 (registers are linear until read).** Let \(j\) be an index of the passage and \(\ell\) a channel with \(\beta_\ell(s_j)>0\). Then \(|v_{j,\ell}|\leq\tfrac12\), so \(S(v_{j,\ell})=v_{j,\ell}\), and
+**Lemma 4.2 (registers are linear until read).** Let \(j\) be an index of the passage and \(\ell\) a channel with \(\beta_\ell(s_j)>0\). Then \(|v_{j,\ell}|\leq\tfrac12\), so \(S(v_{j,\ell})=v_{j,\ell}\), and the formula (4.3) holds:
 \[
-v_{j,\ell}=\frac{\beta_\ell(s_j)}{10}\sum_{i\in I}\alpha(s_i)\,\chi(z_i)\Bigl(\frac{z_i}{|z_i|}\Bigr)^{2^{j-i+1}}.\tag{4.3}
+\begin{aligned}
+v_{j,\ell}&=\frac{\beta_\ell(s_j)}{10}\sum_{i\in I}\alpha(s_i)\,\chi(z_i)\\
+&\qquad\cdot\Bigl(\frac{z_i}{|z_i|}\Bigr)^{2^{j-i+1}}.
+\end{aligned}
 \]
 No alignment of the phases of the summands is assumed.
 
 *Proof.* The phases are defined because \(z_i\neq0,\infty\) for \(i\in I\) (Lemma 3.1(d)). For \(i\in I\) put
 \[
-c_i=\frac{\beta_\ell(s_j)}{10}\,\alpha(s_i)\,\chi(z_i)\Bigl(\frac{z_i}{|z_i|}\Bigr)^{2^{j-i+1}},\qquad|c_i|\leq\tfrac1{10}.
+\begin{gathered}
+c_i=\frac{\beta_\ell(s_j)}{10}\,\alpha(s_i)\,\chi(z_i)\Bigl(\frac{z_i}{|z_i|}\Bigr)^{2^{j-i+1}},\\
+|c_i|\leq\tfrac1{10}.
+\end{gathered}
 \]
 By Lemma 4.1, only the term \(m=j-i\) survives in (5.1), so the input at a preparation index is exactly
 \[
-U_\ell(s_i,z_i)=L^{1+i-j}c_i\qquad(i\in I).\tag{4.4}
+\begin{gathered}
+U_\ell(s_i,z_i)=L^{1+i-j}c_i\\
+(i\in I).
+\end{gathered}\tag{4.4}
 \]
 Let \(i_0=\min I\), and for \(i_0\leq u\leq j\) define the candidate values
 \[
-w_u=L^{u-j}\sum_{i\in I,\ i<u}c_i,\qquad\text{so that}\qquad|w_u|\leq\frac{|I|}{10}L^{u-j}\leq\frac4{10}<\frac12.\tag{4.5}
+\begin{aligned}
+&w_u=L^{u-j}\sum_{i\in I,\ i<u}c_i,\\
+&\text{so that}\\
+&|w_u|\leq\frac{|I|}{10}L^{u-j}\\
+&\quad \leq\frac4{10}<\frac12.
+\end{aligned}\tag{4.5}
 \]
 By Lemma 3.1(a), \(v_{i_0,\ell}=0=w_{i_0}\). For \(i_0\leq u<j\) the reading \(s_u\) lies in \((8,80)\subseteq[7,90]\), so the gain is \(a(s_u)=L\); the input is zero unless \(u\in I\), and then it is given by (4.4). Hence
 \[
@@ -107,7 +132,10 @@ The induction concerns only the register read at \(j\). Another register may alr
 
 **Lemma 5.1 (escape in one passage).** In a complete passage with finite main coordinate, let \(i_0=\min I\). For \(i_0\leq n<N_{k+1}\),
 \[
-z_n\neq0,\qquad|z_{n+1}|\geq|z_n|^2,\qquad\frac{z_{n+1}}{|z_{n+1}|}=\Bigl(\frac{z_n}{|z_n|}\Bigr)^2.\tag{5.1}
+\begin{gathered}
+z_n\neq0,\qquad |z_{n+1}|\geq|z_n|^2,\\
+\frac{z_{n+1}}{|z_{n+1}|}=\Bigl(\frac{z_n}{|z_n|}\Bigr)^2.
+\end{gathered}\tag{5.1}
 \]
 Moreover some index \(N\) with \(i_0\leq N<N_{k+1}\) has \(|z_N|>1\).
 
@@ -117,9 +145,12 @@ We go through the readout indices in order. Let \(j\) be one, and suppose \(z_j\
 \[
 \Bigl(\frac{z_i}{|z_i|}\Bigr)^{2^{j-i+1}}=\bigl(\theta^{2^{i-i_0}}\bigr)^{2^{j-i+1}}=\theta^{2^{j-i_0+1}},
 \]
-the phase of \(z_j^2\). Lemma 4.2 applies to each channel \(\ell\) with \(\beta_\ell(s_j)>0\); the other channels have coefficient \(\beta_\ell(s_j)=0\) in the main update. Therefore the main update at \(j\) is exactly
+the phase of \(z_j^2\). Lemma 4.2 applies to each channel \(\ell\) with \(\beta_\ell(s_j)>0\); the other channels have coefficient \(\beta_\ell(s_j)=0\) in the main update. Therefore the main update at \(j\) is exactly the formula (5.2):
 \[
-z_{j+1}=\Bigl(|z_j|^2+2\sum_{\ell=1}^q\beta_\ell(s_j)^2\sum_{i\in I}\alpha(s_i)\chi(z_i)\Bigr)\theta^{2^{j-i_0+1}}.\tag{5.2}
+\begin{aligned}
+z_{j+1}&=\Bigl(|z_j|^2+2\sum_{\ell=1}^q\beta_\ell(s_j)^2\\
+&\qquad\cdot\sum_{i\in I}\alpha(s_i)\chi(z_i)\Bigr)\theta^{2^{j-i_0+1}}.
+\end{aligned}
 \]
 (One factor \(\beta_\ell(s_j)\) comes from the readout in the main update and the other from the input; \(20\cdot\frac1{10}=2\).) All added coefficients are nonnegative and \(|z_j|^2>0\). This gives (5.1) at \(j\), with phase \(\theta^{2^{j+1-i_0}}\). Between readouts the coordinate squares exactly. Induction proves (5.1) throughout the passage, including steps at which several channels are read at once and successive readouts of different channels.
 
@@ -147,7 +178,7 @@ The convergence is pointwise in the initial point; no uniform time of approach i
 
 **7.1.** Compute \(f\) on \(Z_0\) and on \(Z_\infty\), and check that both sets are forward invariant.
 
-**7.2.** Show that the convergence in Theorem 1.1 is not uniform in the initial point. Use the metric \(d=\max\{d_{\mathrm{clock}},d_\Sigma(z,z'),d_\Sigma(v_1,v_1'),\ldots,d_\Sigma(v_q,v_q')\}\), where \(d_{\mathrm{clock}}\) is the distance in \(\mathbb R/100\mathbb Z\) and \(d_\Sigma\) is a compatible metric on \(\Sigma\), and put \(\varepsilon=\min\{\tfrac1{10},d_\Sigma(0,\infty)\}\). Show that for every \(N\) there are \(x\in M\) and \(n\geq N\) with \(d(f^nx,Z_0\cup Z_\infty)\geq\varepsilon\). (Start with the clock at \(50+\delta\), the main coordinate \(0\) and zero registers.)
+**7.2.** Show that the convergence in Theorem 1.1 is not uniform in the initial point. Use the metric \(d\) that is the maximum of \(d_{\mathrm{clock}}\), \(d_\Sigma(z,z')\) and \(d_\Sigma(v_1,v_1'),\ldots,d_\Sigma(v_q,v_q')\), where \(d_{\mathrm{clock}}\) is the distance in \(\mathbb R/100\mathbb Z\) and \(d_\Sigma\) is a compatible metric on \(\Sigma\), and put \(\varepsilon=\min\{\tfrac1{10},d_\Sigma(0,\infty)\}\). Show that for every \(N\) there are \(x\in M\) and \(n\geq N\) with \(d(f^nx,Z_0\cup Z_\infty)\geq\varepsilon\). (Start with the clock at \(50+\delta\), the main coordinate \(0\) and zero registers.)
 
 **7.3.** In (5.2), why can a readout never decrease \(|z|\)? Which two properties of the construction are used?
 

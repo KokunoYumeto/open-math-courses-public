@@ -8,9 +8,12 @@ The previous lesson, [Coordinates, cells and items](coordinates-cells-and-items.
 
 For a collection of items let \(N_s\) be the number of items of subclass \(s\) and \(N_r\) the number of items of role \(r\). Consider the following ten homogeneous linear equations in these counts: the five *role equations*
 \[
-5N_r-\sum_sN_s=0\qquad(r=X,A,U,D,F,\ \text{in this order}),
+\begin{gathered}
+5N_r-\sum_sN_s=0\\
+(r=X,A,U,D,F,\ \text{in this order}),
+\end{gathered}
 \]
-where \(\sum_s\) runs over all thirteen subclasses, followed by the five *pattern equations*
+where \(\sum_s\) runs over all thirteen subclasses, followed by the five *pattern equations* (1.1):
 \[
 \begin{aligned}
 N_{T^+}+N_{T^-}-N_{F^{\mathrm T}}&=0,\\
@@ -18,15 +21,24 @@ N_Z-N_{F^{\mathrm T}}-N_{F^{\mathrm M}}&=0,\\
 N_{U^+}+N_{U^-}-N_{F^{\mathrm T}}-N_{F^{\mathrm M}}&=0,\\
 N_{D^{\mathrm M}}-N_{F^{\mathrm T}}-N_{F^{\mathrm M}}&=0,\\
 N_{T^-}-N_{U^-}&=0.
-\end{aligned}\tag{1.1}
+\end{aligned}
 \]
 Number them \(j=0,\ldots,9\) in the order given, and let \(\delta_j(i)\) be the coefficient that one item \(i\) contributes to the left side of equation \(j\); it depends only on the subclass of \(i\). An item of role \(r\) contributes \(4\) to its own role equation and \(-1\) to the other four; its contributions to (1.1) lie in \(\{-1,0,1\}\). The *primary score* of an item is the integer
 \[
-p(i)=\sum_{j=0}^9100^j\delta_j(i),\qquad|p(i)|\leq4\sum_{j=0}^9100^j<P_0=100^{11}.
+\begin{gathered}
+p(i)=\sum_{j=0}^9100^j\delta_j(i),\\
+|p(i)|\leq4\sum_{j=0}^9100^j<P_0=100^{11}.
+\end{gathered}
 \]
 For a label \(v\) put \(Q_v=3^v\). The *secondary score* is \(q(i)=Q_v\) for a row or a local auxiliary of label \(v\), \(q(i)=-2Q_v\) for an anchor of label \(v\), and \(q(i)=0\) for global auxiliaries and flags. The *size* of item \(i\) is
 \[
-a_i=\frac15+\gamma p(i)+\mu q(i)+\nu w(i),\qquad\gamma=\frac1{1000P_0},\quad\mu=\frac\gamma{1000Q_n},\quad\nu=\frac\mu{1000}.\tag{1.2}
+\begin{aligned}
+&a_i=\frac15+\gamma p(i)\\
+&\quad +\mu q(i)+\nu w(i),\\
+&\gamma=\frac1{1000P_0},\quad\mu\\
+&\quad =\frac\gamma{1000Q_n},\quad\nu\\
+&\quad =\frac\mu{1000}.
+\end{aligned}\tag{1.2}
 \]
 The output of the reduction is the list of these sizes, one for each item; roles, labels and coordinates are only used to analyse it.
 
@@ -42,7 +54,10 @@ The output of the reduction is the list of these sizes, one for each item; roles
 
 *Proof.* (a) Since \(|p(i)|<P_0\), \(|q(i)|\leq2Q_n\) and \(|w(i)|\leq6\) (Lemma 5.1 of the previous lesson),
 \[
-\Bigl|a_i-\frac15\Bigr|<\frac1{1000}+\frac2{10^6P_0}+\frac6{10^9P_0Q_n}<\frac1{30},
+\begin{aligned}
+&\Bigl|a_i-\frac15\Bigr|<\frac1{1000}+\frac2{10^6P_0}\\
+&\quad +\frac6{10^9P_0Q_n}<\frac1{30},
+\end{aligned}
 \]
 so \(a_i\in(\frac16,\frac7{30})\). Six items would exceed one.
 
@@ -78,7 +93,10 @@ in every table tuple of the packing.
 
 *Conservation over label prefixes.* Fix \(h\in\{0,\ldots,n\}\), put \(S=\{1,\ldots,h\}\), and let \(r\in\{X,D\}\). Let \(O_A(S)\) and \(O_r(S)\) be the numbers of anchors, respectively items of role \(r\), with label in \(S\) that lie outside table tuples, and let \(E_r(S)\) be the number of table tuples whose role-\(r\) item has label in \(S\) and whose anchor has label outside \(S\). There are \(N_S=\sum_{v\in S}(t_v+2J_v)\) anchors and as many items of role \(r\) with label in \(S\). The table tuples whose anchor is in \(S\) number \(N_S-O_A(S)\), and by (3.1) their role-\(r\) item is in \(S\). The table tuples whose role-\(r\) item is in \(S\) number \(N_S-O_r(S)\); they are those with anchor in \(S\) and the \(E_r(S)\) others. Hence
 \[
-E_r(S)=O_A(S)-O_r(S)\leq O_A(S)<K.\tag{3.2}
+\begin{aligned}
+E_r(S)&=O_A(S)-O_r(S)\\
+&\leq O_A(S)<K.
+\end{aligned}\tag{3.2}
 \]
 
 *Anchors of label \(v\).* An anchor of label \(v\) outside good tuples is (i) outside table tuples (fewer than \(K\) items in all), or (ii) in a table tuple whose row has a different, hence smaller, label, or (iii) in a table tuple whose local item has a smaller label. The tuples in (ii) are counted by \(E_X(\{1,\ldots,v-1\})<K\), those in (iii) by \(E_D(\{1,\ldots,v-1\})<K\). So there are fewer than \(3K\). \(\square\)
@@ -91,13 +109,20 @@ The point of the conservation identity is that the loss at a vertex is bounded i
 
 (a) A good tuple of kind M, with row baseline \(b\), deadline \(z\), global item \(U\) and local item \(D\), fits if and only if its completion
 \[
-h=b-\Delta\,\mathbf 1\{\text{the row is short}\}-\operatorname{len}(U)-\operatorname{len}(D)
+\begin{aligned}
+h&=b-\Delta\,\mathbf 1\{\text{the row is short}\}\\
+&\quad -\operatorname{len}(U)-\operatorname{len}(D)
+\end{aligned}
 \]
 satisfies \(h\leq z\). Always \(h\leq b\).
 
-(b) A good tuple of kind G, with key at position \(r=(e,j)\), row at position \(r'\) and edge resource belonging to edge \(f\), fits if and only if
+(b) A good tuple of kind G, with key at position \(r=(e,j)\), row at position \(r'\) and edge resource belonging to edge \(f\), fits if and only if (4.1) holds:
 \[
-b_{r'}-b_r+\beta_f-\beta_e+\Delta\bigl(\mathbf 1\{\text{nonpermit}\}-\mathbf 1\{\text{the row is short}\}\bigr)\leq0.\tag{4.1}
+\begin{aligned}
+&b_{r'}-b_r+\beta_f-\beta_e\\
+&\quad+\Delta\bigl(\mathbf 1\{\text{nonpermit}\}\\
+&\qquad-\mathbf 1\{\text{the row is short}\}\bigr)\leq0.
+\end{aligned}
 \]
 If it fits, then \(r'\leq r\) and \(f\leq e\). If it fits and the row is a long row at position \(r\), its resource is a permit of edge \(e\) or belongs to an earlier edge. If \(r'=r\) and \(f=e\), it fits exactly when the row is short or the resource is a permit.
 

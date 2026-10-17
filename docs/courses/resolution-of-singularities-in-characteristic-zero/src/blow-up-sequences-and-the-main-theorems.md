@@ -11,7 +11,10 @@ We use [Smooth blow-ups and transforms of ideals](smooth-blowups-and-transforms-
 **Definition 1.1.** A *blow-up sequence* of length \(r\) starting with a scheme \(X\) is a chain
 
 \[
-X_r\xrightarrow{\ \pi_{r-1}\ }X_{r-1}\longrightarrow\cdots\longrightarrow X_1\xrightarrow{\ \pi_0\ }X_0=X
+\begin{aligned}
+&X_r\xrightarrow{\ \pi_{r-1}\ }X_{r-1}\longrightarrow\cdots\\
+&\quad \longrightarrow X_1\xrightarrow{\ \pi_0\ }X_0=X
+\end{aligned}
 \]
 
 together with closed subschemes \(Z_i\subset X_i\), the *centres*, such that \(\pi_i:X_{i+1}=B_{Z_i}X_i\to X_i\) is the blow-up, with exceptional divisor \(F_{i+1}\subset X_{i+1}\). Write \(\Pi_{ij}=\pi_j\circ\cdots\circ\pi_{i-1}:X_i\to X_j\) and \(\Pi_i=\Pi_{i0}\). The sequence is *smooth* if every \(Z_i\) is a smooth centre; then every \(X_i\) is smooth by [Smooth blow-ups and transforms of ideals, Proposition 3.1](smooth-blowups-and-transforms-of-ideals.md#3-blowing-up-a-smooth-centre). Trivial and empty blow-ups are allowed.
@@ -46,7 +49,10 @@ A *blow-up sequence of order* \(m\) starting with \((X,\mathcal I,E)\), and a *b
 **Lemma 2.4 (transforms commute with smooth pull-back).** Let \(h:Y\to X\) be a smooth morphism of smooth schemes and \(Z\subset X\) a smooth centre with \(\operatorname{ord}_Z\mathcal I\ge m\). Let \(Z_Y=h^{-1}(Z)\) and \(h_1:B_{Z_Y}Y=B_ZX\times_XY\to B_ZX\). Then \(Z_Y\) is a smooth centre, \(\operatorname{ord}_{Z_Y}h^*\mathcal I\ge m\), with equality at the generic points of \(Z_Y\) lying over generic points of \(Z\) where \(\mathcal I\) has order \(m\), and
 
 \[
-(\pi_Y)^{-1}_*(h^*\mathcal I,m)=h_1^*\,\pi^{-1}_*(\mathcal I,m),\qquad (\pi_Y)^{-1}_*h^*\mathcal I=h_1^*\,\pi^{-1}_*\mathcal I.
+\begin{gathered}
+(\pi_Y)^{-1}_*(h^*\mathcal I,m)=h_1^*\,\pi^{-1}_*(\mathcal I,m),\\
+(\pi_Y)^{-1}_*h^*\mathcal I=h_1^*\,\pi^{-1}_*\mathcal I.
+\end{gathered}
 \]
 
 If \(Z\) has snc with \(E\), then \(Z_Y\) has snc with \(h^{-1}E\), and \(\pi_Y^{-1}{}_{\rm tot}(h^{-1}E)=h_1^{-1}\pi^{-1}_{\rm tot}E\).
@@ -78,7 +84,7 @@ Theorems 4.1 and 4.2 are the inductive core. They are proved together by inducti
 **Theorem 4.2 (order reduction for marked ideals).** For every \(m\ge1\) there is a blow-up sequence functor \(\mathcal B^{\rm mord}_m\) of order \(\ge m\), defined on all marked triples \((X,\mathcal I,m,E)\), such that \(\operatorname{maxord}\mathcal I_r<m\) at its end, and which commutes with smooth morphisms and with change of field. Moreover:
 
 1. if \(m=\operatorname{maxord}\mathcal I\), then \(\mathcal B^{\rm mord}_m(X,\mathcal I,m,\emptyset)=\mathcal B^{\rm ord}_m(X,\mathcal I,\emptyset)\);
-2. for a closed embedding \(j:Y\to X\) of smooth schemes and ideals with \(\mathcal O_X/\mathcal I=j_*(\mathcal O_Y/\mathcal J)\), \(\mathcal J\) nonzero on every component of \(Y\), \(\mathcal B^{\rm mord}_1(X,\mathcal I,1,\emptyset)=j_*\mathcal B^{\rm mord}_1(Y,\mathcal J,1,\emptyset)\).
+2. for a closed embedding \(j:Y\to X\) of smooth schemes and ideals with \(\mathcal O_X/\mathcal I=j_*(\mathcal O_Y/\mathcal J)\), \(\mathcal J\) nonzero on every component of \(Y\), \(\mathcal B^{\rm mord}_1(X,\mathcal I,1,\emptyset)\) equals \(j_*\mathcal B^{\rm mord}_1(Y,\mathcal J,1,\emptyset)\).
 
 The induction runs: Theorem 4.2 in dimensions \(<n\) implies Theorem 4.1 in dimension \(n\), which implies Theorem 4.2 in dimension \(n\). In dimension \(0\) every triple has \(\mathcal I=\mathcal O_X\) and both functors are empty sequences.
 

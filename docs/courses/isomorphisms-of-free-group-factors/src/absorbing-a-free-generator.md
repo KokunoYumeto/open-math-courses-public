@@ -16,17 +16,27 @@ Let \((M,\tau)\) be a von Neumann algebra with a faithful normal tracial state a
 
 **Proposition 1.1.** Let \(n\ge3\) and let \((A_1,\ldots,A_n,C)\) be a freely generating Haar tuple in \(M\). For every \(\varepsilon>0\) there are a trace-preserving normal automorphism \(\alpha\) of \(M\) and a word \(w\in\Gamma\) such that, with \(A_j'=\alpha(A_j)\) and \(C'=\alpha(C)\),
 \[
-\max_{1\le j\le n}\|A_j'-A_j\|<\varepsilon,\qquad \|A'_w-C\|<\varepsilon,\qquad C'=CA_w^* .
+\begin{gathered}
+\max_{1\le j\le n}\|A_j'-A_j\|<\varepsilon,\\
+\|A'_w-C\|<\varepsilon,\qquad C'=CA_w^* .
+\end{gathered}
 \]
 The tuple \((A_1',\ldots,A_n',C')\) is again a freely generating Haar tuple.
 
 **Proof.** Let \(K=3\pi\) and \(\eta=\varepsilon/(2K)\). Theorem 4.1 of the third lesson gives \(w\in\Gamma\) and \(h\in\mathbb R^{(\Gamma)}\) with \(\|h\|_{\ell^2}<\eta\) and \(\|D^h_w-\delta_e\|_{\ell^2}<\eta\), where \(D^h\) is the cocycle with generator values \(h_1=h\), \(h_2=\cdots=h_n=0\). Let \(\beta=\beta_1\) be the time-one automorphism of Theorem 6.2 of the second lesson for these generator values. It is trace-preserving and normal, fixes \(C\), and
 \[
-\max_j\|\beta(A_j)-A_j\|\le K\|h\|_{\ell^2}<\varepsilon,\qquad \|\beta(A_w)-CA_w\|\le K\|D^h_w-\delta_e\|_{\ell^2}<\varepsilon .
+\begin{gathered}
+\max_j\|\beta(A_j)-A_j\|\le K\|h\|_{\ell^2}<\varepsilon,\\
+\|\beta(A_w)-CA_w\|\le K\|D^h_w-\delta_e\|_{\ell^2}<\varepsilon .
+\end{gathered}
 \]
 The endomorphism \(\theta\) of \(\mathbb F_{n+1}\) that fixes every \(x_j\) and sends \(c\) to \(cw\) is an automorphism: it fixes \(w\), so the endomorphism that fixes every \(x_j\) and sends \(c\) to \(cw^{-1}\) is its inverse. By Corollary 2.5(2) of the first lesson there is a trace-preserving normal automorphism \(\gamma\) of \(M\) with \(\gamma(A_j)=A_j\) and \(\gamma(C)=CA_w\). Put \(\alpha=\gamma^{-1}\circ\beta\). Since \(\gamma\) fixes every \(A_j\) and hence \(A_w\),
 \[
-\alpha(A_j)-A_j=\gamma^{-1}\big(\beta(A_j)-A_j\big),\qquad \alpha(A_w)-C=\gamma^{-1}\big(\beta(A_w)-\gamma(C)\big)=\gamma^{-1}\big(\beta(A_w)-CA_w\big),
+\begin{aligned}
+&\alpha(A_j)-A_j=\gamma^{-1}\big(\beta(A_j)-A_j\big),\\
+&\alpha(A_w)-C=\gamma^{-1}\big(\beta(A_w)-\gamma(C)\big)\\
+&\quad =\gamma^{-1}\big(\beta(A_w)-CA_w\big),
+\end{aligned}
 \]
 and automorphisms are isometric, which gives the two estimates. Finally \(C'=\gamma^{-1}(\beta(C))=\gamma^{-1}(C)=CA_w^*\), because \(\gamma(CA_w^*)=CA_wA_w^*=C\), and the image of a freely generating Haar tuple under \(\alpha\) is one again (Corollary 2.5(4) of the first lesson). \(\square\)
 
@@ -40,7 +50,10 @@ A *word polynomial* in \(d\) variables is a finite linear combination \(F=\sum_\
 
 **Proof.** Write \(v=y_1\cdots y_r\) and telescope:
 \[
-U_v-V_v=\sum_{k=1}^rU_{y_1}\cdots U_{y_{k-1}}\big(U_{y_k}-V_{y_k}\big)V_{y_{k+1}}\cdots V_{y_r}.
+\begin{aligned}
+&U_v-V_v=\sum_{k=1}^rU_{y_1}\cdots U_{y_{k-1}}\\
+&\qquad\cdot\big(U_{y_k}-V_{y_k}\big)V_{y_{k+1}}\cdots V_{y_r}.
+\end{aligned}
 \]
 Multiplication by unitaries on either side preserves both norms, and \(\|U_j^*-V_j^*\|_2=\|U_j-V_j\|_2\) by the trace property. \(\square\)
 
@@ -60,14 +73,19 @@ This is possible because the word algebra of a freely generating Haar tuple is d
 
 (c) Apply Proposition 1.1 to \((A^{(k-1)},C^{(k-1)})\) and \(\varepsilon_k\), obtaining \(\alpha_k\) and \(w_k\in\Gamma\), and put \(A^{(k)}_j=\alpha_k(A^{(k-1)}_j)\), \(C^{(k)}=\alpha_k(C^{(k-1)})\). Then \((A^{(k)},C^{(k)})\) is a freely generating Haar tuple, and
 \[
-\max_j\|A^{(k)}_j-A^{(k-1)}_j\|<\varepsilon_k,\qquad \|A^{(k)}_{w_k}-C^{(k-1)}\|<\varepsilon_k .
-\tag{3.1}
+\begin{gathered}
+\max_j\|A^{(k)}_j-A^{(k-1)}_j\|<\varepsilon_k,\\
+\|A^{(k)}_{w_k}-C^{(k-1)}\|<\varepsilon_k .
+\end{gathered}\tag{3.1}
 \]
 
 (d) Let \(G_{j,k}\) be the word polynomial in \(n\) variables obtained from \(F_{j,k}\) by replacing the letter for the last variable by the reduced word of \(w_k\), and its inverse by the reduced word of \(w_k^{-1}\); so \(G_{j,k}(X)=F_{j,k}(X,X_{w_k})\). The \((n+1)\)-tuples \((A^{(k)},A^{(k)}_{w_k})\) and \((A^{(k-1)},C^{(k-1)})\) are at \(d_2\)-distance less than \(\varepsilon_k\) by (3.1), since \(\|\cdot\|_2\le\|\cdot\|\). By Lemma 2.1 and (a),
 \[
-\big\|G_{j,k}(A^{(k)})-y_j\big\|_2\le H_k\varepsilon_k+2^{-k}<2\cdot2^{-k}\qquad(1\le j\le k).
-\tag{3.2}
+\begin{aligned}
+&\big\|G_{j,k}(A^{(k)})-y_j\big\|_2\\
+&\quad \le H_k\varepsilon_k+2^{-k}<2\cdot2^{-k}\\
+&(1\le j\le k).
+\end{aligned}\tag{3.2}
 \]
 The word \(A^{(k)}_{w_k}\) is used here as a single unitary entry of \(F_{j,k}\), so the length of \(w_k\) does not enter this estimate.
 
@@ -77,7 +95,10 @@ The budget \(r_k\) is chosen after \(w_k\) is known, so a long word \(w_k\) only
 
 *Convergence.* For \(\ell>k\) we have \(\varepsilon_\ell<r_{\ell-1}/2\le2^{-(\ell-k)}r_k\). By (3.1), for \(p>k\),
 \[
-\max_j\|A^{(p)}_j-A^{(k)}_j\|<\sum_{\ell=k+1}^p2^{-(\ell-k)}r_k<r_k .
+\begin{aligned}
+&\max_j\|A^{(p)}_j-A^{(k)}_j\|\\
+&\quad <\sum_{\ell=k+1}^p2^{-(\ell-k)}r_k<r_k .
+\end{aligned}
 \]
 Since \(r_k\le2^{-k}\), each sequence \((A^{(k)}_j)_k\) converges in operator norm to a unitary \(A^{(\infty)}_j\), and
 \[
@@ -88,9 +109,12 @@ Since \(r_k\le2^{-k}\), each sequence \((A^{(k)}_j)_k\) converges in operator no
 
 *Generation.* Let \(N=W^*(A^{(\infty)}_1,\ldots,A^{(\infty)}_n)\). For \(j\le k\), (3.2), Lemma 2.1, (3.3) and the choice of \(r_k\) give
 \[
-\big\|G_{j,k}(A^{(\infty)})-y_j\big\|_2\le L_kr_k+2\cdot2^{-k}<3\cdot2^{-k}.
+\begin{aligned}
+&\big\|G_{j,k}(A^{(\infty)})-y_j\big\|_2\le L_kr_k\\
+&\quad +2\cdot2^{-k}<3\cdot2^{-k}.
+\end{aligned}
 \]
-Let \(E\colon M\to N\) be the trace-preserving conditional expectation (Theorem 9.1 of the lesson on integration for a trace; \(\tau\) is finite). For \(x\in M\) and \(y\in N\), \(\langle x\Omega-E(x)\Omega,y\Omega\rangle=\tau(xy^*)-\tau(E(x)y^*)=0\) by (9.1) there, so \(E(x)\Omega\) is the orthogonal projection of \(x\Omega\) onto the closure \(\mathcal K\) of \(N\Omega\). Since \(G_{j,k}(A^{(\infty)})\in N\), the distance from \(y_j\Omega\) to \(\mathcal K\) is less than \(3\cdot2^{-k}\) for every \(k\ge j\), so \(y_j\Omega\in\mathcal K\). The \(y_j\Omega\) are dense, so \(\mathcal K=L^2(M)\). Hence \(E(x)\Omega=x\Omega\), that is \(E(x)=x\in N\), for every \(x\in M\): \(N=M\).
+Let \(E\colon M\to N\) be the trace-preserving conditional expectation (Theorem 9.1 of the lesson on integration for a trace; \(\tau\) is finite). For \(x\in M\) and \(y\in N\), \(\langle x\Omega-E(x)\Omega,y\Omega\rangle\) equals \(\tau(xy^*)-\tau(E(x)y^*)\), which is \(0\) by (9.1) there, so \(E(x)\Omega\) is the orthogonal projection of \(x\Omega\) onto the closure \(\mathcal K\) of \(N\Omega\). Since \(G_{j,k}(A^{(\infty)})\in N\), the distance from \(y_j\Omega\) to \(\mathcal K\) is less than \(3\cdot2^{-k}\) for every \(k\ge j\), so \(y_j\Omega\in\mathcal K\). The \(y_j\Omega\) are dense, so \(\mathcal K=L^2(M)\). Hence \(E(x)\Omega=x\Omega\), that is \(E(x)=x\in N\), for every \(x\in M\): \(N=M\).
 
 Thus \(A^{(\infty)}\) is a freely generating Haar \(n\)-tuple in \(M=L(\mathbb F_{n+1})\), and Lemma 2.4 of the first lesson gives a unital normal trace-preserving \(*\)-isomorphism \(L(\mathbb F_n)\to L(\mathbb F_{n+1})\) with \(\lambda(x_j)\mapsto A^{(\infty)}_j\). \(\square\)
 
@@ -120,7 +144,12 @@ This course takes another route, through the integer case of that formula, which
 
 **5.1.** Proposition 1.1, applied at stage \(k\) to the tuple \((A^{(k-1)},C^{(k-1)})\), gives \(C^{(k)}=C^{(k-1)}(A^{(k-1)}_{w_k})^*\). Hence
 \[
-1=|\tau(C^{(k)})-1|\le\|C^{(k)}-1\|=\|C^{(k-1)}-A^{(k-1)}_{w_k}\|\le\|C^{(k-1)}-A^{(k)}_{w_k}\|+\|A^{(k)}_{w_k}-A^{(k-1)}_{w_k}\|<\varepsilon_k+|w_k|\varepsilon_k,
+\begin{aligned}
+&1=|\tau(C^{(k)})-1|\le\|C^{(k)}-1\|\\
+&\quad =\|C^{(k-1)}-A^{(k-1)}_{w_k}\|\\
+&\quad \le\|C^{(k-1)}-A^{(k)}_{w_k}\|\\
+&\quad +\|A^{(k)}_{w_k}-A^{(k-1)}_{w_k}\|<\varepsilon_k+|w_k|\varepsilon_k,
+\end{aligned}
 \]
 by (3.1) and Lemma 2.1.
 

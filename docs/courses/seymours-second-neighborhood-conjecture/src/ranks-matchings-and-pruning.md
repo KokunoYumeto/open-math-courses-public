@@ -60,13 +60,13 @@ p\to i\qquad\text{and}\qquad s\to j .
 \]
 For a conflict, call \((i,j)\) its *shared point* and \((p,s)\) its *opposite point*, and let
 \[
-Z=\{\text{shared points of conflicts}\},\qquad H=\{\text{opposite points of conflicts}\}.
+\begin{gathered}
+Z=\{\text{shared points of conflicts}\},\\
+H=\{\text{opposite points of conflicts}\}.
+\end{gathered}
 \]
 
-**Theorem 3.1** (Pruning). There are \(\mathcal R'\subseteq\mathcal R\) and \(\mathcal C'\subseteq\mathcal C\) such that no member of \(\mathcal R'\) conflicts with a member of \(\mathcal C'\), every member of \(\mathcal R\cup\mathcal C\) that conflicts with nothing is kept, and
-\[
-|\mathcal R\setminus\mathcal R'|+|\mathcal C\setminus\mathcal C'|\le|H|+\bigl|\{z\in Z:z\text{ is covered by no member of }\mathcal R'\cup\mathcal C'\}\bigr| . \tag{3.1}
-\]
+**Theorem 3.1** (Pruning). There are \(\mathcal R'\subseteq\mathcal R\) and \(\mathcal C'\subseteq\mathcal C\) such that no member of \(\mathcal R'\) conflicts with a member of \(\mathcal C'\), every member of \(\mathcal R\cup\mathcal C\) that conflicts with nothing is kept, and the bound (3.1) holds: \(|\mathcal R\setminus\mathcal R'|+|\mathcal C\setminus\mathcal C'|\) is at most \(|H|\) plus the number of \(z\in Z\) covered by no member of \(\mathcal R'\cup\mathcal C'\).
 
 If there are no conflicts, keeping everything works, because \(Z=H=\varnothing\). The proof occupies the rest of this section.
 
@@ -88,8 +88,12 @@ There are no edges between \(Z_L\) and \(Z_R\). A conflict between \(r=(p,j)\) a
 
 *Proof.* Every conflict is an edge, and one of its ends was deleted, so no conflict remains. Members without conflicts are isolated (Lemma 3.2), hence not in \(K\), hence kept. Let \(q\) be the number of points of \(Z\) covered by no kept member. Each of the other \(|Z|-q\) points \(z\) is covered by a kept member, which is joined by an edge to a copy of \(z\); that member is not in \(K\), so the copy is. Distinct points have distinct copies, so \(K\) contains at least \(|Z|-q\) copies, and the number of deleted members is
 \[
-|K\cap(\mathcal R\sqcup\mathcal C)|\le|K|-(|Z|-q)\le|H|+q.\qquad\square
+\begin{aligned}
+&|K\cap(\mathcal R\sqcup\mathcal C)|\le|K|\\
+&\quad -(|Z|-q)\le|H|+q.
+\end{aligned}
 \]
+\(\square\)
 
 By Theorem 1.2, it remains to prove that every matching of \(\Gamma\) has at most \(|Z|+|H|\) edges.
 
@@ -107,11 +111,17 @@ Let \(R_\alpha\subseteq\mathcal R\) and \(C_\beta\subseteq\mathcal C\) be the or
 
 For every pair \((x,y)\) with \(x\to y\), introduce two variables \(a_{xy}\) and \(b_{xy}\); put \(a_{xy}=b_{xy}=0\) when \(x\not\to y\). For a real value of each variable, define four matrices
 \[
-L\in\mathbb R^{Z\times\mathcal R},\qquad N\in\mathbb R^{\mathcal C\times Z},\qquad B\in\mathbb R^{H\times\mathcal R},\qquad A\in\mathbb R^{\mathcal C\times H}
+\begin{gathered}
+L\in\mathbb R^{Z\times\mathcal R},\qquad N\in\mathbb R^{\mathcal C\times Z},\\
+B\in\mathbb R^{H\times\mathcal R},\qquad A\in\mathbb R^{\mathcal C\times H}
+\end{gathered}
 \]
 by
 \[
-L_{(i,j),(p,j)}=a_{pi},\qquad N_{(i,s),(i,j)}=b_{sj},\qquad B_{(p,s),(p,j)}=b_{sj},\qquad A_{(i,s),(p,s)}=a_{pi},
+\begin{gathered}
+L_{(i,j),(p,j)}=a_{pi},\qquad N_{(i,s),(i,j)}=b_{sj},\\
+B_{(p,s),(p,j)}=b_{sj},\qquad A_{(i,s),(p,s)}=a_{pi},
+\end{gathered}
 \]
 with all entries not of the displayed form equal to \(0\). Thus \(L\) and \(A\) move the first coordinate forward along an arrow \(p\to i\), and \(N\) and \(B\) move the second coordinate backward along an arrow \(s\to j\). As linear maps, \(L,B\) are defined on \(\mathbb R^{\mathcal R}\) and \(N,A\) take values in \(\mathbb R^{\mathcal C}\).
 
@@ -123,9 +133,14 @@ with all entries not of the displayed form equal to \(0\). Thus \(L\) and \(A\) 
 
 *Proof.* Using rank–nullity for \(A\) and \(N\), and \(NL=AB\),
 \[
-|H|=\dim\ker A+\operatorname{rank}A\ge k+\operatorname{rank}(AB)=k+\operatorname{rank}(NL)\ge k+\operatorname{rank}L-\dim\ker N\ge k+\ell-(|Z|-t),
+\begin{aligned}
+&|H|=\dim\ker A+\operatorname{rank}A\ge k\\
+&\quad +\operatorname{rank}(AB)=k\\
+&\quad +\operatorname{rank}(NL)\ge k+\operatorname{rank}L\\
+&\quad -\dim\ker N\ge k+\ell-(|Z|-t),
+\end{aligned}
 \]
-because \(\operatorname{rank}(NL)=\dim\operatorname{im}L-\dim(\operatorname{im}L\cap\ker N)\). Hence \(k+\ell+t\le|Z|+|H|\). \(\square\)
+because \(\operatorname{rank}(NL)\) equals \(\dim\operatorname{im}L-\dim(\operatorname{im}L\cap\ker N)\). Hence \(k+\ell+t\le|Z|+|H|\). \(\square\)
 
 ### 3.4. Choosing the values
 
@@ -135,7 +150,10 @@ Two families of submatrices are needed.
 
 *Local matrices.* For every pair \((p,i)\) with \(p\to i\), let \(J_p=\{j:(p,j)\in\mathcal R\}\), \(S_i=\{s:(i,s)\in\mathcal C\}\), and
 \[
-D^{p,i}=(b_{sj})_{s\in S_i,\,j\in J_p},\qquad T^{p,i}=\{(s,j)\in S_i\times J_p:s\to j\}.
+\begin{gathered}
+D^{p,i}=(b_{sj})_{s\in S_i,\,j\in J_p},\\
+T^{p,i}=\{(s,j)\in S_i\times J_p:s\to j\}.
+\end{gathered}
 \]
 The matrix \(D^{p,i}\) is supported on \(T^{p,i}\), and its entries at the positions of \(T^{p,i}\) are distinct variables, so every real matrix supported on \(T^{p,i}\) is a value of \(D^{p,i}\). Let \(\rho_{p,i}\) be the largest rank of such a matrix, and choose a \(\rho_{p,i}\times\rho_{p,i}\) submatrix whose determinant is nonzero at some value; that determinant \(\Delta_{p,i}\) is then a nonzero polynomial (the empty determinant \(1\) if \(\rho_{p,i}=0\)).
 

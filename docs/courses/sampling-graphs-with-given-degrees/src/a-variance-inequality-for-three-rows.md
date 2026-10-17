@@ -14,9 +14,13 @@ All functions are real. For a random variable \(X\) on a finite probability spac
 
 Let \(U\) and \(W\) be finite sets, and fix nonnegative integers \(\mu_1,\mu_2,\mu_3\) with sum \(|U|\) and \(\nu_1,\nu_2,\nu_3\) with sum \(|W|\). Let \(\Omega_0\) be the set of pairs consisting of an ordered partition \((U_1,U_2,U_3)\) of \(U\) with \(|U_i|=\mu_i\) and an ordered partition \((W_1,W_2,W_3)\) of \(W\) with \(|W_i|=\nu_i\), with the uniform measure. Thus the two partitions are independent and uniform.
 
-**Lemma 1.1** (fixed blocks). For \(i=1,2,3\) let \(g_i\) be a real function on \(\Omega_0\) that depends only on \((U_i,W_i)\). Then
+**Lemma 1.1** (fixed blocks). For \(i=1,2,3\) let \(g_i\) be a real function on \(\Omega_0\) that depends only on \((U_i,W_i)\). Then the inequality (1.1) holds:
 \[
-\operatorname{Var}(g_1+g_2+g_3)\le2\bigl(\operatorname{Var}g_1+\operatorname{Var}g_2+\operatorname{Var}g_3\bigr).\tag{1.1}
+\begin{aligned}
+&\operatorname{Var}(g_1+g_2+g_3)\\
+&\quad\le2\bigl(\operatorname{Var}g_1+\operatorname{Var}g_2\\
+&\qquad+\operatorname{Var}g_3\bigr).
+\end{aligned}
 \]
 
 **Proof.** Replacing \(g_i\) by \(g_i-\mathbb Eg_i\), we may assume that each \(g_i\) has mean zero. A permutation \(\tau\) of \(U\), or of \(W\), acts on \(\Omega_0\) by applying it to every block, and on functions by \((T_\tau f)(\omega)=f(\tau\omega)\). Let
@@ -25,7 +29,10 @@ J=\sum_\tau(I-T_\tau),
 \]
 summed over the transpositions \(\tau\) of two elements of \(U\) and of two elements of \(W\). Each \(T_\tau\) comes from a measure-preserving involution of \(\Omega_0\), so it is self-adjoint and orthogonal, and \(\mathbb E(f-T_\tau f)^2=2\langle f,(I-T_\tau)f\rangle\). Hence
 \[
-\langle f,Jf\rangle=\tfrac12\sum_\tau\mathbb E(f-T_\tau f)^2,\tag{1.2}
+\begin{aligned}
+&\langle f,Jf\rangle\\
+&\quad =\tfrac12\sum_\tau\mathbb E(f-T_\tau f)^2,
+\end{aligned}\tag{1.2}
 \]
 and \(J\succeq0\). A function in the kernel of \(J\) is invariant under all transpositions, hence under all permutations of \(U\) and of \(W\). These permutations act transitively on \(\Omega_0\), so the kernel of \(J\) consists of the constants.
 
@@ -33,7 +40,10 @@ Let \(\mathcal F_i\) be the space of functions of \((U_i,W_i)\). If \(f\in\mathc
 
 Fix a transposition \(\tau\). If it exchanges two labels in the same block, it changes no block; otherwise it changes exactly two of the blocks of its set. So at every \(\omega\) at most two of the three numbers \(g_{i,\lambda}(\omega)-g_{i,\lambda}(\tau\omega)\) are nonzero, and pointwise
 \[
-\Bigl(\sum_i\bigl(g_{i,\lambda}-T_\tau g_{i,\lambda}\bigr)\Bigr)^2\le2\sum_i\bigl(g_{i,\lambda}-T_\tau g_{i,\lambda}\bigr)^2 .
+\begin{aligned}
+&\Bigl(\sum_i\bigl(g_{i,\lambda}-T_\tau g_{i,\lambda}\bigr)\Bigr)^2\\
+&\quad \le2\sum_i\bigl(g_{i,\lambda}-T_\tau g_{i,\lambda}\bigr)^2 .
+\end{aligned}
 \]
 Take expectations and sum over \(\tau\). By (1.2), applied to the eigenfunctions \(\sum_ig_{i,\lambda}\) and \(g_{i,\lambda}\), this says
 \[
@@ -57,32 +67,43 @@ Y_{s-1}\le Y_s\le Y_{s-1}+1 .
 
 **Proof.** All the weights are positive. Write \(\pi_s(y)=\mathbb P(Y_s=y)\). For \(0\le y\le s-1\),
 \[
-\frac{\pi_s(y)}{\pi_{s-1}(y)}=c\,\frac{w_\beta(s-y)}{w_\beta(s-1-y)}=\frac{c}{(s-y)(s-y+\beta)}
+\begin{aligned}
+&\frac{\pi_s(y)}{\pi_{s-1}(y)}=c\,\frac{w_\beta(s-y)}{w_\beta(s-1-y)}\\
+&\quad =\frac{c}{(s-y)(s-y+\beta)}
+\end{aligned}
 \]
 with a constant \(c>0\), and this is nondecreasing in \(y\). So the law of \(Y_s\) conditioned on \(\{Y_s\le s-1\}\) is the law of \(Y=Y_{s-1}\) reweighted by a positive nondecreasing function \(\psi\). For a nondecreasing function \(\varphi\) and an independent copy \(Y'\) of \(Y\),
 \[
-\mathbb E[\psi(Y)\varphi(Y)]-\mathbb E[\psi(Y)]\,\mathbb E[\varphi(Y)]=\tfrac12\mathbb E\bigl[(\psi(Y)-\psi(Y'))(\varphi(Y)-\varphi(Y'))\bigr]\ge0,
+\begin{aligned}
+&\mathbb E[\psi(Y)\varphi(Y)]-\mathbb E[\psi(Y)]\,\mathbb E[\varphi(Y)]\\
+&\quad=\tfrac12\mathbb E\bigl[(\psi(Y)-\psi(Y'))\\
+&\qquad\cdot(\varphi(Y)-\varphi(Y'))\bigr]\ge0,
+\end{aligned}
 \]
 so the reweighting does not decrease the expectation of \(\varphi\). With \(\varphi=\mathbf 1_{[y,\infty)}\) this gives \(\mathbb P(Y_s\ge y\mid Y_s\le s-1)\ge\mathbb P(Y_{s-1}\ge y)\). For \(y\le s\),
 \[
-\mathbb P(Y_s\ge y)=(1-\pi_s(s))\,\mathbb P(Y_s\ge y\mid Y_s\le s-1)+\pi_s(s)\ge\mathbb P(Y_{s-1}\ge y),
+\begin{aligned}
+&\mathbb P(Y_s\ge y)\\
+&\quad =(1-\pi_s(s))\,\mathbb P(Y_s\ge y\mid Y_s\le s-1)\\
+&\quad +\pi_s(s)\ge\mathbb P(Y_{s-1}\ge y),
+\end{aligned}
 \]
 and for \(y>s\) both sides vanish. So \(Y_s\) stochastically dominates \(Y_{s-1}\).
 
 The variable \(s-Y_s\) has the same kind of law with \(\alpha\) and \(\beta\) exchanged. Hence \(s-Y_s\) dominates \(s-1-Y_{s-1}\), that is, \(Y_{s-1}+1\) dominates \(Y_s\). Let \(Q_s(u)=\min\{y:\mathbb P(Y_s\le y)\ge u\}\) for \(0<u<1\). If \(X'\) dominates \(X\), the quantile function of \(X'\) is at least that of \(X\), and the quantile function of \(Y_{s-1}+1\) is \(Q_{s-1}+1\). Taking one uniform random variable \(u\) and setting \(Y_{s-1}=Q_{s-1}(u)\) and \(Y_s=Q_s(u)\) gives the coupling. \(\square\)
 
-**Proposition 2.2** (random block sizes). Let \(m,\alpha_1,\alpha_2,\alpha_3\ge0\) be integers, and let \(x=(x_1,x_2,x_3)\) be a random triple of nonnegative integers with \(x_1+x_2+x_3=m\) and
-\[
-\mathbb P(x)\ \text{proportional to}\ w_{\alpha_1}(x_1)\,w_{\alpha_2}(x_2)\,w_{\alpha_3}(x_3).
-\]
+**Proposition 2.2** (random block sizes). Let \(m,\alpha_1,\alpha_2,\alpha_3\ge0\) be integers, and let \(x=(x_1,x_2,x_3)\) be a random triple of nonnegative integers with \(x_1+x_2+x_3=m\) and with \(\mathbb P(x)\) proportional to \(w_{\alpha_1}(x_1)\,w_{\alpha_2}(x_2)\,w_{\alpha_3}(x_3)\).
 For real functions \(b_1,b_2,b_3\) on \(\{0,\dots,m\}\),
 \[
-\operatorname{Var}\Bigl(\sum_{i=1}^3b_i(x_i)\Bigr)\le2\sum_{i=1}^3\operatorname{Var}\bigl(b_i(x_i)\bigr).\tag{2.1}
+\begin{aligned}
+&\operatorname{Var}\Bigl(\sum_{i=1}^3b_i(x_i)\Bigr)\\
+&\quad \le2\sum_{i=1}^3\operatorname{Var}\bigl(b_i(x_i)\bigr).
+\end{aligned}\tag{2.1}
 \]
 
-**Proof.** If \(m=0\), then \(x\) is constant. Let \(m\ge1\); then each \(x_i\) takes every value in \(\{0,\dots,m\}\) with positive probability. Let \(\mathcal H\) be the space of triples \(b=(b_1,b_2,b_3)\) of functions on \(\{0,\dots,m\}\) with \(\mathbb Eb_i(x_i)=0\), normed by \(\|b\|^2=\sum_i\mathbb Eb_i(x_i)^2\), and let \(Ab=\sum_ib_i(x_i)\). It suffices to show that every eigenvalue \(\lambda\) of the self-adjoint operator \(A^*A\) on \(\mathcal H\) is at most \(2\), because \(\|Ab\|^2\le\lambda_{\max}\|b\|^2\). Since \(\mathbb E[b_i(x_i)F]=\mathbb E\bigl[b_i(x_i)\,\mathbb E[F\mid x_i]\bigr]\), an eigenvector \(b\neq0\) satisfies
+**Proof.** If \(m=0\), then \(x\) is constant. Let \(m\ge1\); then each \(x_i\) takes every value in \(\{0,\dots,m\}\) with positive probability. Let \(\mathcal H\) be the space of triples \(b=(b_1,b_2,b_3)\) of functions on \(\{0,\dots,m\}\) with \(\mathbb Eb_i(x_i)=0\), normed by \(\|b\|^2=\sum_i\mathbb Eb_i(x_i)^2\), and let \(Ab=\sum_ib_i(x_i)\). It suffices to show that every eigenvalue \(\lambda\) of the self-adjoint operator \(A^*A\) on \(\mathcal H\) is at most \(2\), because \(\|Ab\|^2\le\lambda_{\max}\|b\|^2\). Since \(\mathbb E[b_i(x_i)F]=\mathbb E\bigl[b_i(x_i)\,\mathbb E[F\mid x_i]\bigr]\), an eigenvector \(b\neq0\) satisfies, for \(i=1,2,3\) and \(0\le t\le m\), the equations (2.2):
 \[
-\lambda\,b_i(t)=\mathbb E\Bigl[\sum_{j=1}^3b_j(x_j)\Bigm|x_i=t\Bigr]\qquad(i=1,2,3,\ 0\le t\le m).\tag{2.2}
+\lambda\,b_i(t)=\mathbb E\Bigl[\sum_{j=1}^3b_j(x_j)\Bigm|x_i=t\Bigr].
 \]
 Let \(M\) be the largest of the numbers \(|b_i(t+1)-b_i(t)|\) with \(1\le i\le3\) and \(0\le t<m\). If \(M=0\), each \(b_i\) is constant, hence zero; so \(M>0\).
 
@@ -101,17 +122,26 @@ Choosing \(i\) and \(t\) with \(|b_i(t+1)-b_i(t)|=M\) gives \(|\lambda-1|\le1\),
 
 **Proof.** A column with sum \(0\) or \(3\) is the same in every such matrix; let \(c_3\) be the number of columns with sum \(3\). Let \(U\) be the set of columns with sum \(1\) and \(W\) the set of columns with sum \(2\). Assign each column of \(U\) to the row of its one and each column of \(W\) to the row of its zero, and let \(U_i\) and \(W_i\) be the columns assigned to row \(i\). Row \(i\) is determined by \((U_i,W_i)\): its ones are the columns in \(U_i\), in \(W\setminus W_i\) and of sum \(3\). Conversely, ordered partitions \((U_1,U_2,U_3)\) of \(U\) and \((W_1,W_2,W_3)\) of \(W\) define a matrix with the given column sums, and its row sums \(|U_i|+|W|-|W_i|+c_3\) are right exactly when
 \[
-|U_i|=|W_i|+\delta_i,\qquad \delta_i=\rho_i-|W|-c_3 .\tag{3.1}
+\begin{gathered}
+|U_i|=|W_i|+\delta_i,\\
+\delta_i=\rho_i-|W|-c_3 .
+\end{gathered}\tag{3.1}
 \]
 So \(S\) corresponds to a uniformly random pair of ordered partitions satisfying (3.1).
 
-Let \(k_i=|W_i|\) and \(k=(k_1,k_2,k_3)\). Given \(k\), the pair of partitions is uniform among those with block sizes \((k_i+\delta_i)_i\) and \((k_i)_i\), so the two partitions are independent and uniform, and Lemma 1.1, applied to \(g_i=f_i(S_i)\), gives
+Let \(k_i=|W_i|\) and \(k=(k_1,k_2,k_3)\). Given \(k\), the pair of partitions is uniform among those with block sizes \((k_i+\delta_i)_i\) and \((k_i)_i\), so the two partitions are independent and uniform, and Lemma 1.1, applied to \(g_i=f_i(S_i)\), gives the inequality (3.2):
 \[
-\operatorname{Var}\Bigl(\sum_if_i(S_i)\Bigm|k\Bigr)\le2\sum_i\operatorname{Var}\bigl(f_i(S_i)\bigm|k\bigr).\tag{3.2}
+\begin{aligned}
+&\operatorname{Var}\Bigl(\sum_if_i(S_i)\Bigm|k\Bigr)\\
+&\quad\le2\sum_i\operatorname{Var}\bigl(f_i(S_i)\bigm|k\bigr).
+\end{aligned}
 \]
-Counting the pairs of partitions, \(\mathbb P(k)\) is proportional to \(\prod_i\bigl[k_i!\,(k_i+\delta_i)!\bigr]^{-1}\) on the set of \(k\) with \(k_i\ge0\), \(k_i+\delta_i\ge0\) and \(\sum_ik_i=|W|\). (Then \(\sum_i(k_i+\delta_i)=|U|\) holds automatically, because \(\sum_i\rho_i=|U|+2|W|+3c_3\).) Put \(l_i=\max(0,-\delta_i)\), \(x_i=k_i-l_i\), \(\alpha_i=|\delta_i|\) and \(m=|W|-\sum_il_i\). The constraints become \(x_i\ge0\) and \(\sum_ix_i=m\), and \(k_i!\,(k_i+\delta_i)!=x_i!\,(x_i+\alpha_i)!\) in both cases \(\delta_i\ge0\) and \(\delta_i<0\). So \(x\) has the law of Proposition 2.2. Given \(k\), the sets \(U_i\) and \(W_i\) are uniform subsets of \(U\) and \(W\) of sizes \(k_i+\delta_i\) and \(k_i\), so \(\mathbb E[f_i(S_i)\mid k]\) is a function \(b_i(x_i)\) of \(x_i\) alone. By Proposition 2.2,
+Counting the pairs of partitions, \(\mathbb P(k)\) is proportional to \(\prod_i\bigl[k_i!\,(k_i+\delta_i)!\bigr]^{-1}\) on the set of \(k\) with \(k_i\ge0\), \(k_i+\delta_i\ge0\) and \(\sum_ik_i=|W|\). (Then \(\sum_i(k_i+\delta_i)=|U|\) holds automatically, because \(\sum_i\rho_i=|U|+2|W|+3c_3\).) Put \(l_i=\max(0,-\delta_i)\), \(x_i=k_i-l_i\), \(\alpha_i=|\delta_i|\) and \(m=|W|-\sum_il_i\). The constraints become \(x_i\ge0\) and \(\sum_ix_i=m\), and \(k_i!\,(k_i+\delta_i)!=x_i!\,(x_i+\alpha_i)!\) in both cases \(\delta_i\ge0\) and \(\delta_i<0\). So \(x\) has the law of Proposition 2.2. Given \(k\), the sets \(U_i\) and \(W_i\) are uniform subsets of \(U\) and \(W\) of sizes \(k_i+\delta_i\) and \(k_i\), so \(\mathbb E[f_i(S_i)\mid k]\) is a function \(b_i(x_i)\) of \(x_i\) alone. By Proposition 2.2, the inequality (3.3) holds:
 \[
-\operatorname{Var}\Bigl(\sum_i\mathbb E[f_i(S_i)\mid k]\Bigr)\le2\sum_i\operatorname{Var}\bigl(\mathbb E[f_i(S_i)\mid k]\bigr).\tag{3.3}
+\begin{aligned}
+&\operatorname{Var}\Bigl(\sum_i\mathbb E[f_i(S_i)\mid k]\Bigr)\\
+&\quad\le2\sum_i\operatorname{Var}\bigl(\mathbb E[f_i(S_i)\mid k]\bigr).
+\end{aligned}
 \]
 Since \(\operatorname{Var}X=\mathbb E\operatorname{Var}(X\mid k)+\operatorname{Var}\mathbb E[X\mid k]\) for every random variable \(X\), adding the average of (3.2) over \(k\) to (3.3) gives the theorem. \(\square\)
 
@@ -132,17 +162,23 @@ We return to the graphs of [The switch chain](the-switch-chain.md): \(V=\{1,\dot
 | 2 | a path | entry \(s_t-1\) in row \(t\) (column sum 1) | \(d_t-1\) |
 | 3 | a triangle | none | \(d_t-2\) |
 
-For \(e=1\) the extra column marks the two ends of the edge, and for \(e=2\) it marks the middle vertex of the path. The row sums in the table follow from \(d_t=s_t+(\text{number of neighbours of }t\text{ outside }T)\), and the column sum of a column \(w\notin T\) is the fixed number \(|N(w)\cap T|\). Conversely, every binary matrix with these margins comes from exactly one graph of the cell: the extra column gives the edges inside \(T\), the other columns give the edges between \(T\) and \(V\setminus T\), the edges inside \(V\setminus T\) are those of the cell, and the row and column sums give every vertex its prescribed degree. Hence the cell with its uniform measure is the space of a uniformly random binary matrix with prescribed margins, as in Theorem 3.1. Let \(S_t\) denote row \(t\), including its extra entry.
+For \(e=1\) the extra column marks the two ends of the edge, and for \(e=2\) it marks the middle vertex of the path. The row sums in the table follow from the fact that \(d_t\) is \(s_t\) plus the number of neighbours of \(t\) outside \(T\), and the column sum of a column \(w\notin T\) is the fixed number \(|N(w)\cap T|\). Conversely, every binary matrix with these margins comes from exactly one graph of the cell: the extra column gives the edges inside \(T\), the other columns give the edges between \(T\) and \(V\setminus T\), the edges inside \(V\setminus T\) are those of the cell, and the row and column sums give every vertex its prescribed degree. Hence the cell with its uniform measure is the space of a uniformly random binary matrix with prescribed margins, as in Theorem 3.1. Let \(S_t\) denote row \(t\), including its extra entry.
 
 *The three resamplings.* Let \(t\in T\) and \(a=T\setminus\{t\}\). We show that on the cell \(E_a\) is the conditional expectation given \(S_t\). Inside the cell, the \(a\)-fiber of a graph is determined by the neighbours of \(t\) outside \(T\): these give \(s_t=d_t-|N(t)\setminus T|\); the edge inside \(a\) is present exactly when \(e-s_t=1\); a vertex \(w\notin T\) has \(|N(w)\cap T|-[tw\text{ is an edge}]\) neighbours in \(a\); the vertex \(t\) has \(s_t\) of them; and the edges with no endpoint in \(a\) are those inside \(V\setminus T\) together with the edges from \(t\) to \(V\setminus T\). Conversely, the \(a\)-fiber determines the edges from \(t\) to \(V\setminus T\), and with them \(s_t\) and the extra entry of \(S_t\). So the \(a\)-fibers inside the cell are exactly the sets on which \(S_t\) is constant, and \(E_a=\mathbb E[\,\cdot\mid S_t]\) there.
 
 *The inequality.* Let \(f\) be a function on the cell with mean zero, and put \(P_tf=\mathbb E[f\mid S_t]\) and \(\beta=\sum_t\|P_tf\|^2\). The functions \(P_tf\) have mean zero and depend on single rows, so Theorem 3.1 gives \(\|\sum_tP_tf\|^2\le2\beta\). Since each \(P_t\) is an orthogonal projection,
 \[
-\beta=\Bigl\langle f,\sum_tP_tf\Bigr\rangle\le\|f\|\,\Bigl\|\sum_tP_tf\Bigr\|\le\|f\|\sqrt{2\beta},
+\begin{aligned}
+\beta&=\Bigl\langle f,\sum_tP_tf\Bigr\rangle\\
+&\le\|f\|\,\Bigl\|\sum_tP_tf\Bigr\|\le\|f\|\sqrt{2\beta},
+\end{aligned}
 \]
 so \(\beta\le2\|f\|^2\) and
 \[
-\langle f,H_Tf\rangle=\sum_t\langle f,(I-P_t)f\rangle=3\|f\|^2-\beta\ge\|f\|^2 .
+\begin{aligned}
+&\langle f,H_Tf\rangle=\sum_t\langle f,(I-P_t)f\rangle\\
+&\quad =3\|f\|^2-\beta\ge\|f\|^2 .
+\end{aligned}
 \]
 So on the cell \(H_T\) kills the constants and is at least the identity on the functions with mean zero. Both subspaces are invariant under the self-adjoint operator \(H_T\), and on each of them \(H_T^2-H_T=H_T(H_T-I)\succeq0\). \(\square\)
 

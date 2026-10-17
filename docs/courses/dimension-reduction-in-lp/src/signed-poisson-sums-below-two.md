@@ -16,7 +16,10 @@ For every \((r,t)\), \(v(r,t)=(v_e(r,t))_e\) lies in \(V\): it is the normalized
 
 **Lemma 1.1.** For every pair \(e\) and \(a>0\), \(\nu(|v_e|>a)=a^{-p}\). More generally, for every Borel \(\phi\colon(0,\infty)\to[0,\infty]\),
 \[
-\int_{\{v_e\neq0\}}\phi(|v_e|)\,d\nu=p\int_0^\infty\phi(u)\,u^{-p-1}\,du .\tag{1.1}
+\begin{aligned}
+&\int_{\{v_e\neq0\}}\phi(|v_e|)\,d\nu\\
+&\quad =p\int_0^\infty\phi(u)\,u^{-p-1}\,du .
+\end{aligned}\tag{1.1}
 \]
 In particular \(\nu(\max_e|v_e|>a)\le|E|a^{-p}\).
 
@@ -34,7 +37,7 @@ where \(N\) has the Poisson law of mean \(M\), the \(\omega_j\) have law \(\nu|_
 
 **Lemma 2.1** (splitting). If \(R=R_1\cup R_2\) is a disjoint union, the signed Poisson sum of \(h\) on \(R\) has the law of the sum of independent signed Poisson sums of \(h\) on \(R_1\) and on \(R_2\).
 
-**Proof.** Let \(N_1\) and \(N_2\) count the \(j\le N\) with \(\omega_j\in R_1\) and \(\omega_j\in R_2\), and \(p_k=\nu(R_k)/M\). Then \(\mathbb Es^{N_1}t^{N_2}=\mathbb E(sp_1+tp_2)^N=e^{\nu(R_1)(s-1)}e^{\nu(R_2)(t-1)}\), so \(N_1,N_2\) are independent Poisson variables of means \(\nu(R_1),\nu(R_2)\). Given \(N_1\) and \(N_2\), the points in \(R_k\) are independent with law \(\nu|_{R_k}/\nu(R_k)\), independent of the other part and of the signs. \(\square\)
+**Proof.** Let \(N_1\) and \(N_2\) count the \(j\le N\) with \(\omega_j\in R_1\) and \(\omega_j\in R_2\), and \(p_k=\nu(R_k)/M\). Then \(\mathbb Es^{N_1}t^{N_2}=\mathbb E(sp_1+tp_2)^N\), which is \(e^{\nu(R_1)(s-1)}e^{\nu(R_2)(t-1)}\), so \(N_1,N_2\) are independent Poisson variables of means \(\nu(R_1),\nu(R_2)\). Given \(N_1\) and \(N_2\), the points in \(R_k\) are independent with law \(\nu|_{R_k}/\nu(R_k)\), independent of the other part and of the signs. \(\square\)
 
 **Lemma 2.2** (formulas). For a real \(h\) and its signed Poisson sum \(S\) on a region \(R\) of finite measure,
 \[
@@ -48,7 +51,10 @@ If \(h\) is bounded on \(R\), then also \(\mathbb Ee^{\theta S}=\exp\bigl(\int_R
 
 Let \(1<p<2\). Sample \(v\) on the region \(\{\|v\|_\infty>1\}\), of measure at most \(|E|\), and, independently, on each region \(A_k=\{2^{-k-1}<\|v\|_\infty\le2^{-k}\}\), \(k\ge0\), of measure at most \(|E|2^{p(k+1)}\); let \(Y^{(\infty)}\) and \(Y^{(k)}\) be these signed Poisson sums, all with values in \(V\). The \(Y^{(k)}\) are independent and centered, and for each pair \(e\)
 \[
-\sum_{k\ge0}\mathbb E|Y^{(k)}_e|^2=\int_{\{0<\|v\|_\infty\le1\}}|v_e|^2\,d\nu\le\int_{\{0<|v_e|\le1\}}|v_e|^2\,d\nu=\frac p{2-p},
+\begin{aligned}
+&\sum_{k\ge0}\mathbb E|Y^{(k)}_e|^2=\int_{\{0<\|v\|_\infty\le1\}}|v_e|^2\,d\nu\\
+&\quad \le\int_{\{0<|v_e|\le1\}}|v_e|^2\,d\nu=\frac p{2-p},
+\end{aligned}
 \]
 by Lemma 2.2 and (1.1). So \(\sum_kY^{(k)}\) converges in mean square, and
 \[
@@ -58,7 +64,10 @@ almost surely, \(V\) being closed.
 
 **Lemma 3.1** (one law for all pairs; OpenAI). For every pair \(e\) and real \(\theta\),
 \[
-\mathbb Ee^{i\theta Y_e}=\exp\Bigl(p\int_0^\infty\bigl(\cos(\theta u)-1\bigr)u^{-p-1}\,du\Bigr).
+\begin{aligned}
+&\mathbb Ee^{i\theta Y_e}\\
+&\quad =\exp\Bigl(p\int_0^\infty\bigl(\cos(\theta u)-1\bigr)u^{-p-1}\,du\Bigr).
+\end{aligned}
 \]
 Hence all \(Y_e\) have the same law \(\mu_p\), which depends only on \(p\).
 
@@ -68,9 +77,12 @@ Hence all \(Y_e\) have the same law \(\mu_p\), which depends only on \(p\).
 
 **Proof.** Fix \(e\) and \(a\ge1\). Let \(B\) be the signed Poisson sum of \(v_e\) on \(\{|v_e|>a\}\), a region of measure \(a^{-p}\), and let \(S\), independent of \(B\), be the mean-square limit of independent signed Poisson sums of \(v_e\) on the regions \(\{2^{-k-1}a<|v_e|\le2^{-k}a\}\), \(k\ge0\). As in Lemma 3.1, \(B+S\) has the characteristic function of \(Y_e\), so it has law \(\mu_p\). By Lemma 2.2 and (1.1), \(\mathbb ES^2=\int_{\{0<|v_e|\le a\}}v_e^2\,d\nu=\frac p{2-p}a^{2-p}\). If \(N_a\) is the number of terms of \(B\), then
 \[
-\mathbb P(|B+S|>a)\le\mathbb P(N_a\ge1)+\mathbb P(|S|>a)\le a^{-p}+\frac p{2-p}a^{-p}
+\begin{aligned}
+&\mathbb P(|B+S|>a)\le\mathbb P(N_a\ge1)\\
+&\quad +\mathbb P(|S|>a)\le a^{-p}+\frac p{2-p}a^{-p}
+\end{aligned}
 \]
-by Chebyshev's inequality. Conversely, on the event \(N_a=1\), let \(\pm u\) be the single term, with \(u>a\). For each value \(s\) of \(S\), at least one of \(|s+u|\) and \(|s-u|\) exceeds \(a\), and the sign is uniform and independent of \(S\) and \(u\); so \(\mathbb P(|B+S|>a)\ge\frac12\mathbb P(N_a=1)=\frac12a^{-p}e^{-a^{-p}}\ge\frac1{2e}a^{-p}\). \(\square\)
+by Chebyshev's inequality. Conversely, on the event \(N_a=1\), let \(\pm u\) be the single term, with \(u>a\). For each value \(s\) of \(S\), at least one of \(|s+u|\) and \(|s-u|\) exceeds \(a\), and the sign is uniform and independent of \(S\) and \(u\); so \(\mathbb P(|B+S|>a)\ge\frac12\mathbb P(N_a=1)\), which is \(\frac12a^{-p}e^{-a^{-p}}\ge\frac1{2e}a^{-p}\). \(\square\)
 
 ## 4. Clipping and projection
 
@@ -82,14 +94,20 @@ Then \(F\in V\) and \(\|F\|_\infty\le HT\).
 
 **Lemma 4.1.** For every pair \(e\) and every \(T>1\),
 \[
-\mathbb E|Y_e-F_e|\le C_pHT^{1-p},\qquad\sum_e\sigma_e\,\mathbb E|F_e|^2\le C_pT^{2-p}.
+\begin{gathered}
+\mathbb E|Y_e-F_e|\le C_pHT^{1-p},\\
+\sum_e\sigma_e\,\mathbb E|F_e|^2\le C_pT^{2-p}.
+\end{gathered}
 \]
 
-**Proof.** Since \(Y\in V\), \(Y=PY\), so \(Y-F=P(Y-[Y]_T)\) and \(|Y_e-F_e|\le\sum_f|P_{ef}|(|Y_f|-T)_+\). By Lemma 3.2, \(\mathbb E(|Y_f|-T)_+=\int_T^\infty\mathbb P(|Y_f|>s)\,ds\le C_pT^{1-p}\), and the row sums of \(P\) are at most \(H\). For the second bound, \(P\) does not increase \(\|\cdot\|_{2,\sigma}\), so \(\sum_e\sigma_e|F_e|^2\le\sum_e\sigma_e\min\{|Y_e|,T\}^2\) pointwise, and \(\mathbb E\min\{|Y_e|,T\}^2=\int_0^T2s\,\mathbb P(|Y_e|>s)\,ds\le1+C_p\int_1^T2s^{1-p}\,ds\le C_pT^{2-p}\). \(\square\)
+**Proof.** Since \(Y\in V\), \(Y=PY\), so \(Y-F=P(Y-[Y]_T)\) and \(|Y_e-F_e|\le\sum_f|P_{ef}|(|Y_f|-T)_+\). By Lemma 3.2, \(\mathbb E(|Y_f|-T)_+=\int_T^\infty\mathbb P(|Y_f|>s)\,ds\), which is at most \(C_pT^{1-p}\), and the row sums of \(P\) are at most \(H\). For the second bound, \(P\) does not increase \(\|\cdot\|_{2,\sigma}\), so \(\sum_e\sigma_e|F_e|^2\le\sum_e\sigma_e\min\{|Y_e|,T\}^2\) pointwise, and \(\mathbb E\min\{|Y_e|,T\}^2=\int_0^T2s\,\mathbb P(|Y_e|>s)\,ds\), which is at most \(1+C_p\int_1^T2s^{1-p}\,ds\le C_pT^{2-p}\). \(\square\)
 
 **Proposition 4.2** (OpenAI). Let \(1<p<2\) and \(0<\eta<\frac16\). There are \(A\ge1\) and \(n_0\), depending only on \(p\) and \(\eta\), such that for \(n\ge n_0\), with
 \[
-T=\exp\bigl(AH^{2-p}\bigr),\qquad K=HT,\qquad b=\int\min\{|y|,T/H\}^p\,d\mu_p(y),
+\begin{gathered}
+T=\exp\bigl(AH^{2-p}\bigr),\qquad K=HT,\\
+b=\int\min\{|y|,T/H\}^p\,d\mu_p(y),
+\end{gathered}
 \]
 we have \(b\ge1\), \(\log K\le C_{p,\eta}(\log n)^{2-p}\), and for every \(n\) distinct points of every \(\ell_p^m\) and every \(\lambda\), the gradient \(F\) above satisfies (3.1) of [Weighted moments and sampling](weighted-moments-and-sampling.md).
 
@@ -99,13 +117,20 @@ b=\int_0^ap\,t^{p-1}\,\mathbb P(|Y_e|>t)\,dt\ge p\,c_p\log a .
 \]
 The function \(h_a\) is \(pa^{p-1}\)-Lipschitz, so by Lemma 4.1
 \[
-\bigl|\mathbb Eh_a(F_e)-b\bigr|\le pa^{p-1}C_pHT^{1-p}=C_pH^{2-p}\qquad(e\in E).
+\begin{aligned}
+&\bigl|\mathbb Eh_a(F_e)-b\bigr|\\
+&\quad \le pa^{p-1}C_pHT^{1-p}=C_pH^{2-p}\\
+&(e\in E).
+\end{aligned}
 \]
 Since \(p<2\), \(0\le|t|^p-h_a(t)\le a^{p-2}t^2\) for all real \(t\), so by Lemma 4.1
 \[
-\sum_e\sigma_e\,\mathbb E\bigl(|F_e|^p-h_a(F_e)\bigr)\le a^{p-2}C_pT^{2-p}=C_pH^{2-p}.
+\begin{aligned}
+&\sum_e\sigma_e\,\mathbb E\bigl(|F_e|^p-h_a(F_e)\bigr)\\
+&\quad \le a^{p-2}C_pT^{2-p}=C_pH^{2-p}.
+\end{aligned}
 \]
-Together, \(\sum_e\sigma_e\bigl|\mathbb E|F_e|^p-b\bigr|\le C_pH^{2-p}\). Now \(\log a=AH^{2-p}-\log H\ge\frac A2H^{2-p}\) for large \(n\), because \(H\to\infty\) and \(\log H\) is small compared with \(H^{2-p}\); so \(b\ge\frac{pc_pA}2H^{2-p}\ge1\) and \(a\ge2\) for \(n\ge n_0\). Choosing \(A\ge4C_p/(\eta pc_p)\) gives \(\sum_e\sigma_e|\mathbb E|F_e|^p-b|\le\frac12\eta b\), hence (3.1) since \(\lambda\le2\sigma\). Finally \(\log K=\log H+AH^{2-p}\le C_{p,\eta}(\log n)^{2-p}\). The numbers \(b\) and \(K\) depend only on \(p\), \(\eta\) and \(n\). \(\square\)
+Together, \(\sum_e\sigma_e\bigl|\mathbb E|F_e|^p-b\bigr|\le C_pH^{2-p}\). Now \(\log a=AH^{2-p}-\log H\ge\frac A2H^{2-p}\) for large \(n\), because \(H\to\infty\) and \(\log H\) is small compared with \(H^{2-p}\); so \(b\ge\frac{pc_pA}2H^{2-p}\ge1\) and \(a\ge2\) for \(n\ge n_0\). Choosing \(A\ge4C_p/(\eta pc_p)\) gives \(\sum_e\sigma_e|\mathbb E|F_e|^p-b|\le\frac12\eta b\), hence (3.1) since \(\lambda\le2\sigma\). Finally \(\log K=\log H+AH^{2-p}\), which is at most \(C_{p,\eta}(\log n)^{2-p}\). The numbers \(b\) and \(K\) depend only on \(p\), \(\eta\) and \(n\). \(\square\)
 
 By Proposition 4.1 of [Weighted moments and sampling](weighted-moments-and-sampling.md), this proves the upper bound \(d_p(n,D)\le\exp\bigl(C_{p,D}(\log n)^{2-p}\bigr)\) of Theorem 5.1 of [Finite subsets of L_p](finite-subsets-of-lp.md) for \(1<p<2\).
 
@@ -123,7 +148,7 @@ By Proposition 4.1 of [Weighted moments and sampling](weighted-moments-and-sampl
 
 **5.1.** With one coordinate, \(|g_e(1)|=1\), so \(\nu(|v_e|>a)=\int_a^\infty pr^{-p-1}\,dr=a^{-p}\).
 
-**5.2.** By Lemma 3.2, \(\mathbb E|Y_e|^2=\int_0^\infty2s\,\mathbb P(|Y_e|>s)\,ds\ge c_p\int_1^\infty2s^{1-p}\,ds=\infty\).
+**5.2.** By Lemma 3.2, \(\mathbb E|Y_e|^2=\int_0^\infty2s\,\mathbb P(|Y_e|>s)\,ds\), which is at least \(c_p\int_1^\infty2s^{1-p}\,ds=\infty\).
 
 **5.3.** For \(\theta\neq0\), substitute \(u'=|\theta|u\) in \(p\int_0^\infty(\cos(\theta u)-1)u^{-p-1}\,du\): it becomes \(-|\theta|^p\,p\int_0^\infty(1-\cos u')u'^{-p-1}\,du'\). The integral converges at \(0\) because \(1-\cos u'\le u'^2/2\) and \(p<2\), and at infinity because \(p>0\); it is positive.
 

@@ -11,23 +11,31 @@ We use Theorem 1.1 and Lemma 3.1 of the interpolation lesson, Lemma 3.1 (lattice
 Fix \(\nu>2\), integers \(m,K\ge1\), and positive rationals \(w_0,v_0,\theta\) as in Theorem 1.1 of the interpolation lesson. Suppose that for \(1\le i\le m\) there are integers \(p_i\ne0\), \(q_i\ge2\) with
 
 \[
-\Bigl|\pi-\frac{p_i}{q_i}\Bigr|\le q_i^{-\nu},\qquad w_i=\lceil\log q_i\rceil,\qquad r_i=\frac{2\mathrm ip_i}{q_i},
-\tag{1.1}
+\begin{gathered}
+\Bigl|\pi-\frac{p_i}{q_i}\Bigr|\le q_i^{-\nu},\\
+w_i=\lceil\log q_i\rceil,\\
+r_i=\frac{2\mathrm ip_i}{q_i},
+\end{gathered}\tag{1.1}
 \]
 
 such that the integers \(w_1,\dots,w_m\) exceed the thresholds of that theorem. Put \(w_*=\min_iw_i\ge1\), \(w\alpha=\sum_iw_i\alpha_i\) for \(\alpha\in\mathbb N^m\), and take the centres \(c_{ji}=jr_i\), \(0\le j<K\); they are distinct in \(j\) because \(r_i\ne0\). Fix \(F_0>2/\theta\) and put
 
 \[
-T_i=\Bigl\lceil\frac{F_0w_i}{v_0}\Bigr\rceil,\qquad G_i(t)=\sum_{1\le k<T_i}\frac{(-1)^{k+1}t^k}k .
+\begin{gathered}
+T_i=\Bigl\lceil\frac{F_0w_i}{v_0}\Bigr\rceil,\\
+G_i(t)=\sum_{1\le k<T_i}\frac{(-1)^{k+1}t^k}k .
+\end{gathered}
 \]
 
 The first omitted term of \(\log(1+t)\) has \(V\)-weight \(v_0T_i\ge F_0w_i>w_i/\theta=v_i\), so by Lemma 3.1 of the interpolation lesson, replacing \(\log(1+t)\) by \(G_i(t)\) in (1.1) of that lesson preserves the surjectivity.
 
-**The matrix.** Its columns are indexed by the monomials \(P=Y^hX^\alpha\) with \(w_0h+w\alpha\le H\), and its rows by the triples \(\rho=(j,s,\beta)\) with \(0\le j<K\), \(s\in\mathbb N\), \(\beta\in\mathbb N^m\) and \(v_0s+w\beta/\theta<H\). The entry is the coefficient of \(t^su^\beta\) in
+**The matrix.** Its columns are indexed by the monomials \(P=Y^hX^\alpha\) with \(w_0h+w\alpha\le H\), and its rows by the triples \(\rho=(j,s,\beta)\) with \(0\le j<K\), \(s\in\mathbb N\), \(\beta\in\mathbb N^m\) and \(v_0s+w\beta/\theta<H\). The entry is the coefficient of \(t^su^\beta\) in the expression (1.2):
 
 \[
-P\bigl(1+t,\,jr_1+G_1(t)+u_1,\,\dots,\,jr_m+G_m(t)+u_m\bigr).
-\tag{1.2}
+\begin{aligned}
+&P\bigl(1+t,\,jr_1+G_1(t)+u_1,\,\dots,\\
+&\qquad jr_m+G_m(t)+u_m\bigr).
+\end{aligned}
 \]
 
 For \(H\) a sufficiently large multiple of the integer \(R\) of the interpolation theorem, this matrix has independent rows, so it has a nonzero square minor \(\Delta_H\) using all the rows. Let \(M=M_H\) be the number of rows and
@@ -42,7 +50,7 @@ By the lattice-count lemma, \(M\sim K\theta^mH^{m+1}/\bigl((m+1)!\,v_0\prod_iw_i
 
 **Lemma 2.1.** For every \(n\ge1\), \(\log\operatorname{lcm}(1,\dots,n)\le4n\log2\).
 
-**Proof.** Let \(\psi(N)=\log\operatorname{lcm}(1,\dots,N)=\sum_{p^k\le N}\log p\). For \(\ell\ge1\), Legendre's formula gives \(v_p\binom{2\ell}\ell=\sum_{k\ge1}\bigl(\lfloor2\ell/p^k\rfloor-2\lfloor\ell/p^k\rfloor\bigr)\), a sum of terms equal to \(0\) or \(1\), and the term is \(1\) whenever \(\ell<p^k\le2\ell\). So \(\psi(2\ell)-\psi(\ell)\le\log\binom{2\ell}\ell\le2\ell\log2\). Summing over \(\ell=2^0,\dots,2^{r-1}\) gives \(\psi(2^r)\le2^{r+1}\log2\). For \(2^{r-1}<n\le2^r\), \(\psi(n)\le\psi(2^r)\le2^{r+1}\log2<4n\log2\). \(\square\)
+**Proof.** Let \(\psi(N)=\log\operatorname{lcm}(1,\dots,N)\), which is \(\sum_{p^k\le N}\log p\). For \(\ell\ge1\), Legendre's formula gives \(v_p\binom{2\ell}\ell=\sum_{k\ge1}\bigl(\lfloor2\ell/p^k\rfloor-2\lfloor\ell/p^k\rfloor\bigr)\), a sum of terms equal to \(0\) or \(1\), and the term is \(1\) whenever \(\ell<p^k\le2\ell\). So \(\psi(2\ell)-\psi(\ell)\le\log\binom{2\ell}\ell\le2\ell\log2\). Summing over \(\ell=2^0,\dots,2^{r-1}\) gives \(\psi(2^r)\le2^{r+1}\log2\). For \(2^{r-1}<n\le2^r\), \(\psi(n)\le\psi(2^r)\le2^{r+1}\log2<4n\log2\). \(\square\)
 
 **Proposition 2.2** (arithmetic lower bound). With \(\Lambda=4\log2\) and
 
@@ -59,19 +67,29 @@ every minor \(\Delta_H\) chosen above satisfies
 **Proof.** Let \(L_i=\operatorname{lcm}(1,\dots,T_i-1)\) (\(L_i=1\) if \(T_i=1\)) and \(D_H=\prod_iL_i^{\lfloor H/w_i\rfloor}\). Multiply the column of \(Y^hX^\alpha\) by \(\prod_iq_i^{\alpha_i}\) and the row of \((j,s,\beta)\) by \(\prod_iq_i^{-\beta_i}\). Expanding (1.2), the scaled entry is \(0\) unless \(\alpha\ge\beta\) componentwise, and then equals
 
 \[
-\prod_i\binom{\alpha_i}{\beta_i}\ [t^s]\,(1+t)^h\prod_i\bigl(q_i(jr_i+G_i(t))\bigr)^{\alpha_i-\beta_i}.
+\begin{aligned}
+&\prod_i\binom{\alpha_i}{\beta_i}\ [t^s]\,(1+t)^h\\
+&\qquad\cdot\prod_i\bigl(q_i(jr_i+G_i(t))\bigr)^{\alpha_i-\beta_i}.
+\end{aligned}
 \]
 
 Here \(q_ijr_i=2\mathrm ijp_i\in\mathbb Z[\mathrm i]\) and \(q_iG_i(t)\) has coefficients in \(L_i^{-1}\mathbb Z\). So the denominator of the entry divides \(\prod_iL_i^{\alpha_i}\), which divides \(D_H\) because \(w_i\alpha_i\le H\). Multiplying the scaled square submatrix by \(D_H\) gives a matrix over \(\mathbb Z[\mathrm i]\) with nonzero determinant, of absolute value at least \(1\). Therefore
 
 \[
-\log|\Delta_H|\ge-M\log D_H-\sum_{\text{columns}}\sum_i\alpha_i\log q_i+\sum_{\text{rows}}\sum_i\beta_i\log q_i .
+\begin{aligned}
+&\log|\Delta_H|\ge-M\log D_H\\
+&\quad -\sum_{\text{columns}}\sum_i\alpha_i\log q_i\\
+&\quad +\sum_{\text{rows}}\sum_i\beta_i\log q_i .
+\end{aligned}
 \]
 
 Since \(\log q_i\le w_i\), each column has \(\sum_i\alpha_i\log q_i\le w\alpha\le H\). Since \(\log q_i>w_i-1\) and \(\sum_i\beta_i\le w\beta/w_*<\theta H/w_*\), the row sum is at least \(MH\bar b-MH\theta/w_*\). Finally, by Lemma 2.1 and \(T_i\le F_0w_i/v_0+1\),
 
 \[
-\frac{\log D_H}H\le\sum_i\frac{\Lambda T_i}{w_i}\le\frac{\Lambda F_0m}{v_0}+\Lambda\sum_i\frac1{w_i}.
+\begin{aligned}
+&\frac{\log D_H}H\le\sum_i\frac{\Lambda T_i}{w_i}\\
+&\quad \le\frac{\Lambda F_0m}{v_0}+\Lambda\sum_i\frac1{w_i}.
+\end{aligned}
 \]
 
 Dividing by \(MH\) gives the claim. \(\square\)
@@ -81,8 +99,11 @@ Dividing by \(MH\) gives the claim. \(\square\)
 For \(a\in\mathbb N^m\) and a column \(P\) define the entire function
 
 \[
-f_{a,P}(z)=[u^a]\,P(e^z,z+u_1,\dots,z+u_m),\qquad
-f_{a,Y^hX^\alpha}(z)=\binom\alpha a\,e^{hz}z^{|\alpha|-|a|}\ \ (a\le\alpha),\ \ 0\ \text{otherwise}.
+\begin{aligned}
+&f_{a,P}(z)=[u^a]\,P(e^z,z+u_1,\dots,z+u_m),\\
+&f_{a,Y^hX^\alpha}(z)\\
+&\quad=\begin{cases}\binom\alpha a\,e^{hz}z^{|\alpha|-|a|},&a\le\alpha,\\0&\text{otherwise}.\end{cases}
+\end{aligned}
 \]
 
 Only indices with \(wa\le H\) occur.
@@ -96,13 +117,21 @@ Q_H=(\lfloor H\rfloor+1)^{2m}(\lfloor H/v_0\rfloor+1)
 *test rows* \(\bigl([t^\ell]f_{a,P}(j\omega+\log(1+t))\bigr)_P\) with \(a\ge\beta\), \(wa\le H\) and \(0\le\ell\le s\). Each coefficient \(\xi\) attached to an index \(a\) satisfies
 
 \[
-\log|\xi|\le-\nu\,w(a-\beta)+HE_{\mathrm{tr}},\qquad E_{\mathrm{tr}}=\frac\nu{F_0}+\frac{\log2}{v_0}+\frac{\log4+\log(2K)+\nu}{w_*}.
+\begin{aligned}
+&\log|\xi|\le-\nu\,w(a-\beta)+HE_{\mathrm{tr}},\\
+&E_{\mathrm{tr}}=\frac\nu{F_0}+\frac{\log2}{v_0}\\
+&\quad +\frac{\log4+\log(2K)+\nu}{w_*}.
+\end{aligned}
 \]
 
 **Proof.** Put \(\epsilon_i=jr_i-j\omega=2\mathrm ij(p_i/q_i-\pi)\) and \(\tau_i(t)=G_i(t)-\log(1+t)\). With \(z=j\omega+\log(1+t)\) we have \(e^z=1+t\) and \(jr_i+G_i(t)+u_i=z+u_i+\epsilon_i+\tau_i(t)\). Expanding \(P(e^z,z+v)=\sum_af_{a,P}(z)v^a\) with \(v=u+\epsilon+\tau(t)\), and \(v^a\) by the binomial theorem, the coefficient of \(t^su^\beta\) is
 
 \[
-\sum_{a\ge\beta}\binom a\beta\sum_{0\le d\le a-\beta}\binom{a-\beta}d\epsilon^{a-\beta-d}\sum_{k=0}^s\Bigl([t^k]\prod_i\tau_i(t)^{d_i}\Bigr)\,[t^{s-k}]f_{a,P}\bigl(j\omega+\log(1+t)\bigr),
+\begin{aligned}
+&\sum_{a\ge\beta}\binom a\beta\sum_{0\le d\le a-\beta}\binom{a-\beta}d\epsilon^{a-\beta-d}\\
+&\quad\cdot\sum_{k=0}^s\Bigl([t^k]\prod_i\tau_i(t)^{d_i}\Bigr)\\
+&\qquad\cdot[t^{s-k}]f_{a,P}\bigl(j\omega+\log(1+t)\bigr),
+\end{aligned}
 \]
 
 with multi-index notation. The scalars do not depend on \(P\).
@@ -116,7 +145,10 @@ The series \(\prod_i\tau_i^{d_i}\) has order at least \(\sum_id_iT_i\); so a non
 On \(|t|=1/2\), \(|\tau_i(t)|\le\sum_{k\ge T_i}2^{-k}/k\le1\), so Cauchy's estimate bounds the coefficient \([t^k]\prod\tau_i^{d_i}\) by \(2^k\le2^s<2^{H/v_0}\). From (1.1), \(|\epsilon_i|\le2Kq_i^{-\nu}\le2Ke^\nu e^{-\nu w_i}\), since \(q_i>e^{w_i-1}\). So
 
 \[
-|\epsilon^{a-\beta-d}|\le(2Ke^\nu)^{|a|}e^{-\nu w(a-\beta)}e^{\nu wd}\le e^{H(\log(2K)+\nu)/w_*}\,e^{-\nu w(a-\beta)}\,e^{\nu H/F_0},
+\begin{aligned}
+&|\epsilon^{a-\beta-d}|\le(2Ke^\nu)^{|a|}e^{-\nu w(a-\beta)}e^{\nu wd}\\
+&\quad \le e^{H(\log(2K)+\nu)/w_*}\,e^{-\nu w(a-\beta)}\,e^{\nu H/F_0},
+\end{aligned}
 \]
 
 using \(|a|\le wa/w_*\le H/w_*\). Moreover \(\binom a\beta\binom{a-\beta}d\le4^{|a|}\le e^{H\log4/w_*}\). Multiplying these bounds gives the estimate for \(\xi\). For the count: every coordinate of \(a\) and of \(d\) is at most \(H\) (as \(w_i\ge1\)), and \(0\le k\le s<H/v_0\). \(\square\)
@@ -132,10 +164,13 @@ E_{\mathrm{hol}}=\frac{100K}{w_0}+\frac{\log2}{v_0}+\frac{\log(200K)}{w_*},
 there is \(\rho_H\to0\), independent of the choices, with
 
 \[
-|\det T|\le\exp\Bigl\{-c\sum_an_a^2+MH(E_{\mathrm{hol}}+\rho_H)\Bigr\}.
+\begin{aligned}
+&|\det T|\le\exp\Bigl\{-c\sum_an_a^2\\
+&\qquad+MH(E_{\mathrm{hol}}+\rho_H)\Bigr\}.
+\end{aligned}
 \]
 
-**Proof.** Put \(R_0=100K\). For a column \(P=Y^hX^\alpha\) and \(|z|\le R_0\), \(|f_{a,P}(z)|\le2^{|\alpha|}e^{hR_0}R_0^{|\alpha|}\le\mathcal D_H:=\exp\{H(R_0/w_0+\log(2R_0)/w_*)\}\), because \(h\le H/w_0\) and \(|\alpha|\le H/w_*\). Expand \(f_{a,P}(z)=\sum_{e\ge0}c_{a,e,P}(z/R_0)^e\); Cauchy's estimate gives \(|c_{a,e,P}|\le\mathcal D_H\). A test row with centre \(j\) and order \(\ell\) evaluates \(P\mapsto[t^\ell]f_{a,P}(j\omega+\log(1+t))\). On \(|t|=1/2\), \(|j\omega+\log(1+t)|\le2\pi(K-1)+\log2<50K=R_0/2\), so
+**Proof.** Put \(R_0=100K\). For a column \(P=Y^hX^\alpha\) and \(|z|\le R_0\), \(|f_{a,P}(z)|\le2^{|\alpha|}e^{hR_0}R_0^{|\alpha|}\), which is at most \(\mathcal D_H:=\exp\{H(R_0/w_0+\log(2R_0)/w_*)\}\), because \(h\le H/w_0\) and \(|\alpha|\le H/w_*\). Expand \(f_{a,P}(z)=\sum_{e\ge0}c_{a,e,P}(z/R_0)^e\); Cauchy's estimate gives \(|c_{a,e,P}|\le\mathcal D_H\). A test row with centre \(j\) and order \(\ell\) evaluates \(P\mapsto[t^\ell]f_{a,P}(j\omega+\log(1+t))\). On \(|t|=1/2\), \(|j\omega+\log(1+t)|\le2\pi(K-1)+\log2\), which is less than \(50K=R_0/2\), so
 
 \[
 \Bigl|[t^\ell]\Bigl(\frac{j\omega+\log(1+t)}{R_0}\Bigr)^e\Bigr|\le2^\ell2^{-e}.
@@ -144,10 +179,13 @@ there is \(\rho_H\to0\), independent of the choices, with
 Expand \(\det T\) by multilinearity in the rows, writing each test row as \(\sum_e\bigl([t^\ell]{}(\cdots)^e\bigr)\,(c_{a,e,P})_P\). The terms are indexed by a choice of a degree \(e_\rho\) for every row; each is a product of scalars times the determinant of the matrix with rows \((c_{a_\rho,e_\rho,P})_P\), of modulus at most \(M!\,\mathcal D_H^M\). The expansion converges absolutely, by the factors \(2^{-e}\). If two rows have the same pair \((a,e)\), their coefficient rows coincide and the term vanishes. So in a nonzero term the degrees within each group of rows with the same \(a\) are distinct, and \(\sum_\rho e_\rho\ge\sum_a\binom{n_a}2\). Using half of the decay for this and summing the other half freely,
 
 \[
-|\det T|\le M!\,\mathcal D_H^M\,2^{\sum_\rho\ell_\rho}\,2^{-\frac12\sum_a\binom{n_a}2}\,(1-2^{-1/2})^{-M}.
+\begin{aligned}
+&|\det T|\le M!\,\mathcal D_H^M\,2^{\sum_\rho\ell_\rho}\\
+&\qquad\cdot2^{-\frac12\sum_a\binom{n_a}2}\,(1-2^{-1/2})^{-M}.
+\end{aligned}
 \]
 
-Here \(\sum_\rho\ell_\rho\le\sum_\rho s_\rho\le MH/v_0\), and \(\frac12\sum_a\binom{n_a}2=\frac14\sum_an_a^2-\frac M4\). Taking logarithms gives the claim with \(\rho_H=\bigl(\log M+\frac14\log2-\log(1-2^{-1/2})\bigr)/H\), which tends to \(0\) because \(M\) grows polynomially in \(H\). \(\square\)
+Here \(\sum_\rho\ell_\rho\le\sum_\rho s_\rho\le MH/v_0\), and \(\frac12\sum_a\binom{n_a}2=\frac14\sum_an_a^2-\frac M4\). Taking logarithms gives the claim with \(\rho_H\) equal to \(\bigl(\log M+\frac14\log2-\log(1-2^{-1/2})\bigr)/H\), which tends to \(0\) because \(M\) grows polynomially in \(H\). \(\square\)
 
 ## 5. Two incompatible bounds
 
@@ -156,36 +194,61 @@ Put \(E_{\mathrm{an}}=E_{\mathrm{tr}}+E_{\mathrm{hol}}\).
 **Proposition 5.1** (determinant comparison). Let \(0<A<1\), \(0<\eta<1\), and
 
 \[
-g=\nu\bigl(A(1-\eta)-\theta\bigr)-(1-\theta),\qquad\mathcal L=\frac{\eta^2K\theta^m}{(m+1)v_0A^m}.
+\begin{gathered}
+g=\nu\bigl(A(1-\eta)-\theta\bigr)-(1-\theta),\\
+\mathcal L=\frac{\eta^2K\theta^m}{(m+1)v_0A^m}.
+\end{gathered}
 \]
 
 If
 
 \[
-g>0,\qquad E_{\mathrm{ar}}+E_{\mathrm{an}}<g,\qquad c\mathcal L>1+E_{\mathrm{ar}}+E_{\mathrm{an}},
-\tag{5.1}
+\begin{gathered}
+g>0,\qquad E_{\mathrm{ar}}+E_{\mathrm{an}}<g,\\
+c\mathcal L>1+E_{\mathrm{ar}}+E_{\mathrm{an}},
+\end{gathered}\tag{5.1}
 \]
 
 then the approximations (1.1) cannot exist together with the hypotheses of Section 1.
 
 **Proof.** Let \(D_A(H)=\#\{a\in\mathbb N^m:wa\le AH\}\) and \(\mathcal L_H=\eta^2M/(HD_A(H))\). The lattice counts give \(D_A(H)\sim(AH)^m/(m!\prod_iw_i)\), and with the asymptotics of \(M\), \(\mathcal L_H\to\mathcal L\).
 
-Expand \(\Delta_H\) by the row translations of Lemma 3.1, using multilinearity: it becomes a sum of at most \(Q_H^M\) terms, each a product of coefficients \(\xi_\rho\) times a determinant \(\det T\) as in Lemma 4.1. For a term with indices \(a_\rho\), the coefficients contribute at most \(\exp\{-\nu\sum_\rho w(a_\rho-\beta_\rho)+MHE_{\mathrm{tr}}\}=\exp\{-\nu\sum_\rho wa_\rho+\nu MH\bar b+MHE_{\mathrm{tr}}\}\).
+Expand \(\Delta_H\) by the row translations of Lemma 3.1, using multilinearity: it becomes a sum of at most \(Q_H^M\) terms, each a product of coefficients \(\xi_\rho\) times a determinant \(\det T\) as in Lemma 4.1. For a term with indices \(a_\rho\), the coefficients contribute at most
+\[
+\begin{aligned}
+&\exp\{-\nu\sum_\rho w(a_\rho-\beta_\rho)+MHE_{\mathrm{tr}}\}\\
+&\quad=\exp\{-\nu\sum_\rho wa_\rho+\nu MH\bar b\\
+&\qquad+MHE_{\mathrm{tr}}\}.
+\end{aligned}
+\]
 
 *If at least \(\eta M\) rows have \(wa_\rho\le AH\):* these rows have at most \(D_A(H)\) distinct indices, so Cauchy–Schwarz gives \(\sum_an_a^2\ge(\eta M)^2/D_A(H)=MH\mathcal L_H\). The coefficient exponent \(-\nu\sum w(a_\rho-\beta_\rho)\) is nonpositive. So the term is at most \(\exp\{MH(-c\mathcal L_H+E_{\mathrm{an}}+\rho_H)\}\).
 
-*Otherwise* more than \((1-\eta)M\) rows have \(wa_\rho>AH\), so \(\sum_\rho wa_\rho\ge(1-\eta)AMH\). Discarding the nonpositive collision term, the term is at most \(\exp\{MH(-\nu(A(1-\eta)-\bar b)+E_{\mathrm{an}}+\rho_H)\}\).
+*Otherwise* more than \((1-\eta)M\) rows have \(wa_\rho>AH\), so \(\sum_\rho wa_\rho\ge(1-\eta)AMH\). Discarding the nonpositive collision term, the term is at most
+\[
+\begin{aligned}
+&\exp\{MH(-\nu(A(1-\eta)-\bar b)\\
+&\qquad+E_{\mathrm{an}}+\rho_H)\}.
+\end{aligned}
+\]
 
 Summing the absolute values of all terms,
 
 \[
-\frac{\log|\Delta_H|}{MH}\le E_{\mathrm{an}}+\varepsilon_H+\max\bigl\{-c\mathcal L_H,\,-\nu(A(1-\eta)-\bar b)\bigr\},\qquad\varepsilon_H=\rho_H+\frac{\log Q_H}H\to0 .
+\begin{aligned}
+&\frac{\log|\Delta_H|}{MH}\le E_{\mathrm{an}}+\varepsilon_H\\
+&\quad +\max\bigl\{-c\mathcal L_H,\,-\nu(A(1-\eta)-\bar b)\bigr\},\\
+&\varepsilon_H=\rho_H+\frac{\log Q_H}H\to0 .
+\end{aligned}
 \]
 
-Compare with Proposition 2.2. In the first alternative, \(c\mathcal L_H>1+E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H\ge(1-\bar b)+E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H\) for large \(H\), by (5.1) and \(\mathcal L_H\to\mathcal L\). In the second, since \(\bar b\le\theta\) and \(\nu>1\),
+Compare with Proposition 2.2. In the first alternative, \(c\mathcal L_H>1+E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H\), which is at least \((1-\bar b)+E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H\) for large \(H\), by (5.1) and \(\mathcal L_H\to\mathcal L\). In the second, since \(\bar b\le\theta\) and \(\nu>1\),
 
 \[
-\nu\bigl(A(1-\eta)-\bar b\bigr)-(1-\bar b)=\nu A(1-\eta)-1-(\nu-1)\bar b\ge g>E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H
+\begin{aligned}
+&\nu\bigl(A(1-\eta)-\bar b\bigr)-(1-\bar b)=\nu A(1-\eta)\\
+&\quad -1-(\nu-1)\bar b\ge g>E_{\mathrm{ar}}+E_{\mathrm{an}}+\varepsilon_H
+\end{aligned}
 \]
 
 for large \(H\). In both cases \(\log|\Delta_H|/(MH)<-(1-\bar b)-E_{\mathrm{ar}}\), contradicting Proposition 2.2. \(\square\)
@@ -206,7 +269,7 @@ The two alternatives explain the two requirements on the parameters. The collisi
 
 **6.1.** \(\binom{2\ell}\ell\le\sum_k\binom{2\ell}k=4^\ell\). The prime powers \(p^k\in(\ell,2\ell]\) each contribute \(\log p\) to \(\log\binom{2\ell}\ell\), and the other contributions are nonnegative.
 
-**6.2.** \(P(e^z,z+u)=e^z(z+u)^3\), so \(f_{1,P}(z)=3e^zz^2\). On \(|z|\le R_0\), \(|f|\le3e^{R_0}R_0^2\le2^3e^{R_0}R_0^3=\exp\{R_0+3\log(2R_0)\}\le\exp\{H(R_0/w_0+\log(2R_0)/w_1)\}\), since \(H/w_0\ge1\) and \(H/w_1\ge3\).
+**6.2.** \(P(e^z,z+u)=e^z(z+u)^3\), so \(f_{1,P}(z)=3e^zz^2\). On \(|z|\le R_0\), \(|f|\le3e^{R_0}R_0^2\le2^3e^{R_0}R_0^3\), which is \(\exp\{R_0+3\log(2R_0)\}\), which is at most \(\exp\{H(R_0/w_0+\log(2R_0)/w_1)\}\), since \(H/w_0\ge1\) and \(H/w_1\ge3\).
 
 **6.3.** With one index, \(n_a=M\), so \(\sum n_a^2=M^2\). The bound is \(e^{-cM^2+MH(E_{\mathrm{hol}}+\rho_H)}\), and \(cM^2\) dominates \(MH\) when \(M/H\to\infty\). In the proof, \(M\asymp H^{m+1}\) while the number of indices \(a\) is only \(\asymp H^m\), so the rows must share indices massively.
 

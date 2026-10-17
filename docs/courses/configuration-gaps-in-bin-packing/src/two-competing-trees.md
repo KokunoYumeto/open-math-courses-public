@@ -14,14 +14,15 @@ A *rooted tree* is a finite tree with a distinguished vertex, its root. The *dep
 
 (a) every leaf of \(T^+\) and of \(T^-\) has depth \(L\);
 
-(b) for each \(\sigma\in\{+,-\}\) the tree \(T^\sigma\) has a marking \(\mathcal M^\sigma\) with
-\[
-|\mathcal M^\sigma\cap V_\ell(T^\sigma)|\leq p_\ell\quad(1\leq\ell\leq L),\qquad|\mathcal M^\sigma\cap\pi|\geq d\quad\text{for every complete path }\pi\text{ of }T^\sigma;\tag{1.1}
-\]
+(b) for each \(\sigma\in\{+,-\}\) the tree \(T^\sigma\) has a marking \(\mathcal M^\sigma\) satisfying (1.1): \(|\mathcal M^\sigma\cap V_\ell(T^\sigma)|\leq p_\ell\) for \(1\leq\ell\leq L\), and \(|\mathcal M^\sigma\cap\pi|\geq d\) for every complete path \(\pi\) of \(T^\sigma\);
 
 (c) if \(\mathcal A^+\) and \(\mathcal A^-\) are markings of \(T^+\) and \(T^-\) with
 \[
-|\mathcal A^+\cap V_\ell(T^+)|+|\mathcal A^-\cap V_\ell(T^-)|\leq p_\ell\qquad(1\leq\ell\leq L),\tag{1.2}
+\begin{aligned}
+&|\mathcal A^+\cap V_\ell(T^+)|\\
+&\quad +|\mathcal A^-\cap V_\ell(T^-)|\leq p_\ell\\
+&(1\leq\ell\leq L),
+\end{aligned}\tag{1.2}
 \]
 then \(\mathcal A^+\) misses some complete path of \(T^+\) or \(\mathcal A^-\) misses some complete path of \(T^-\).
 
@@ -35,7 +36,10 @@ We build one tree \(\mathcal T\), with some vertices coloured red or blue, by \(
 
 *Phase \(a\).* Start with a single root, at depth \(h_0=0\). At the start of phase \(a\) (\(1\leq a\leq2d-1\)), let \(u_1,\ldots,u_N\) be the current leaves, all of depth \(h_{a-1}\), numbered in any fixed way, and put \(h_a=h_{a-1}+N\). The phase owns the depths \(h_{a-1}+1,\ldots,h_a\), with quotas
 \[
-p_{h_{a-1}+i}=2^{i-1}\qquad(1\leq i\leq N).\tag{2.1}
+\begin{gathered}
+p_{h_{a-1}+i}=2^{i-1}\\
+(1\leq i\leq N).
+\end{gathered}\tag{2.1}
 \]
 For each \(i\) attach to \(u_i\) exactly \(M_i=2^i\) paths with \(i\) edges, the *spines* of \(u_i\); they share \(u_i\) and are otherwise disjoint. Their endpoints have depth \(h_{a-1}+i\); colour \(2^{i-1}\) of them red and \(2^{i-1}\) blue. If \(i<N\), attach to each spine endpoint
 \[
@@ -69,7 +73,12 @@ The vertex reached is a leaf of the tree at the end of phase \(a\), that is, one
 
 Since \(2d-1\) coloured vertices include at least \(d\) of one colour, every complete path of \(\mathcal T\) belongs to at least one of the families
 \[
-\mathcal P^+=\{\pi:\pi\text{ has at least }d\text{ red vertices}\},\qquad\mathcal P^-=\{\pi:\pi\text{ has at least }d\text{ blue vertices}\}.
+\begin{aligned}
+&\mathcal P^+\\
+&\quad =\{\pi:\pi\text{ has at least }d\text{ red vertices}\},\\
+&\mathcal P^-\\
+&\quad =\{\pi:\pi\text{ has at least }d\text{ blue vertices}\}.
+\end{aligned}
 \]
 Both families are nonempty: at every phase start one may choose a spine with a red endpoint (or a blue one) and continue to the end of the phase.
 
@@ -91,7 +100,10 @@ Lemma 3.2 gives (a) and (b) of Lemma 1.1. For (c), suppose that \(\mathcal A^+\)
 \]
 Since \(\varphi^\pm\) preserve depth,
 \[
-|\mathcal A\cap V_\ell(\mathcal T)|\leq|\mathcal A^+\cap V_\ell(T^+)|+|\mathcal A^-\cap V_\ell(T^-)|\leq p_\ell,
+\begin{aligned}
+&|\mathcal A\cap V_\ell(\mathcal T)|\leq|\mathcal A^+\cap V_\ell(T^+)|\\
+&\quad +|\mathcal A^-\cap V_\ell(T^-)|\leq p_\ell,
+\end{aligned}
 \]
 and \(\mathcal A\) consists of vertices of positive depth. By Lemma 2.1 some complete path \(\pi\) of \(\mathcal T\) avoids \(\mathcal A\). The path \(\pi\) lies in \(\mathcal P^+\) or in \(\mathcal P^-\), say in \(\mathcal P^+\). Its copy is a complete path of \(T^+\) (Lemma 3.2(a)), hence contains a vertex of \(\mathcal A^+\), whose image lies on \(\pi\) and in \(\mathcal A\). This contradicts the choice of \(\pi\). The case \(\pi\in\mathcal P^-\) is the same. \(\square\)
 

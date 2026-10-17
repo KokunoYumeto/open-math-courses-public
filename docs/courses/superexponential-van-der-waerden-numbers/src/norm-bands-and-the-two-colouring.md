@@ -8,7 +8,10 @@ The outer colouring \(c_0\) of [A balanced colouring and the dichotomy](a-balanc
 
 For \(n\in G\) let
 \[
-f(n)=\|q\tilde y(n)\|_2^2,\qquad\kappa(n)=\Bigl((V(y_i(n)))_{i=1}^D,\ \lfloor f(n)\rfloor\Bigr),
+\begin{gathered}
+f(n)=\|q\tilde y(n)\|_2^2,\\
+\kappa(n)=\Bigl((V(y_i(n)))_{i=1}^D,\ \lfloor f(n)\rfloor\Bigr),
+\end{gathered}
 \]
 and let \(\mathcal K\) be the finite set of keys \(\kappa(n)\), \(n\in G\).
 
@@ -18,7 +21,10 @@ and let \(\mathcal K\) be the finite set of keys \(\kappa(n)\), \(n\in G\).
 
 *Separation.* For \(j\ne j'\), \(\lambda(n_j-n_{j'})\) is a nonzero residue modulo \(q^D\), because the terms are distinct and \(\gcd(\lambda,q)=1\). Let \(z\) be an integer representative, \(a\le D-1\) the largest integer with \(q^a\mid z\) (independent of the representative), and \(z=q^au\) with \(q\nmid u\). In coordinate \(a+1\), \(y_{a+1}(n_j)-y_{a+1}(n_{j'})=u/q\bmod1\), at circle distance at least \(1/q\) from \(0\). Hence
 \[
-\|q\tilde y(n_j)-q\tilde y(n_{j'})\|_2\ge1\qquad(j\ne j'). \tag{1.1}
+\begin{gathered}
+\|q\tilde y(n_j)-q\tilde y(n_{j'})\|_2\ge1\\
+(j\ne j').
+\end{gathered}\tag{1.1}
 \]
 
 *Bands.* Let \(z_0\) be the point of \(\ell\) nearest to the origin and \(e\) a unit vector along \(\ell\), so the points of \(\ell\) are \(z_0+se\) with \(\|z_0+se\|^2=s^2+C'\), \(C'=\|z_0\|^2\). For an integer \(m\ge0\), the band \(m\le s^2+C'<m+1\) meets the half-line \(s\ge0\) in a set contained in the interval between \(\sqrt{\max\{0,m-C'\}}\) and \(\sqrt{m+1-C'}\), of length at most \(1\) because \((\sqrt v-\sqrt u)^2\le v-u\) for \(0\le u\le v\); likewise for \(s\le0\). By (1.1), an interval of length at most \(1\) contains at most two of the points, so the key occurs at most four times. \(\square\)
@@ -29,11 +35,15 @@ A progression is *affine* if \(\tilde y(n_j)\) is affine in \(j\) as a sequence 
 
 **Lemma 2.1** (Few signatures). The number \(T_{\mathrm{aff}}\) of signatures of affine progressions satisfies
 \[
-T_{\mathrm{aff}}\le CT_{\mathrm{glob}}\bigl(k(Dq^2+2)\bigr)^3,\qquad\log\max\{1,T_{\mathrm{aff}}\}=O(k^{9/10}\log k)=o(pk),
+\begin{aligned}
+&T_{\mathrm{aff}}\le CT_{\mathrm{glob}}\bigl(k(Dq^2+2)\bigr)^3,\\
+&\log\max\{1,T_{\mathrm{aff}}\}=O(k^{9/10}\log k)\\
+&\quad =o(pk),
+\end{aligned}
 \]
 for an absolute constant \(C\).
 
-*Proof.* If \(\tilde y(n_j)=A+jB\), then \(f(n_j)=\theta_0+\theta_1j+\theta_2j^2\) with \(\theta_0=q^2\|A\|^2\), \(\theta_1=2q^2\langle A,B\rangle\), \(\theta_2=q^2\|B\|^2\), and \(0\le f(n_j)\le Dq^2/4\). With \(B_*=\lfloor Dq^2/4\rfloor+1\), the word \((\lfloor f(n_j)\rfloor)_j\) is determined by the signs of \(\theta_0+\theta_1j+\theta_2j^2-b\) for \(j<k\) and \(0\le b\le B_*\): at most \(k(Dq^2+2)\) affine functions of \((\theta_0,\theta_1,\theta_2)\). By Corollary 1.2 of [Arrangements, tails and the local lemma](arrangements-tails-and-the-local-lemma.md) at most \(16(k(Dq^2+2)+1)^3\) such words occur. The label word determines the boxes and, as \(c_*\) is fixed, the colours \(c_0(n_j)\); with the band word it determines the signature. Finally \(\log T_{\mathrm{glob}}=O(k^{3/10}\log k)\), \(\log(Dq^2+2)\le2\log q+O(\log k)\), and \(\log q\le\frac{ck}D\log k+\log(2k^2)=O(k^{9/10}\log k)\), while \(pk=k^{19/20}\). \(\square\)
+*Proof.* If \(\tilde y(n_j)=A+jB\), then \(f(n_j)=\theta_0+\theta_1j+\theta_2j^2\) with \(\theta_0=q^2\|A\|^2\), \(\theta_1=2q^2\langle A,B\rangle\), \(\theta_2=q^2\|B\|^2\), and \(0\le f(n_j)\le Dq^2/4\). With \(B_*=\lfloor Dq^2/4\rfloor+1\), the word \((\lfloor f(n_j)\rfloor)_j\) is determined by the signs of \(\theta_0+\theta_1j+\theta_2j^2-b\) for \(j<k\) and \(0\le b\le B_*\): at most \(k(Dq^2+2)\) affine functions of \((\theta_0,\theta_1,\theta_2)\). By Corollary 1.2 of [Arrangements, tails and the local lemma](arrangements-tails-and-the-local-lemma.md) at most \(16(k(Dq^2+2)+1)^3\) such words occur. The label word determines the boxes and, as \(c_*\) is fixed, the colours \(c_0(n_j)\); with the band word it determines the signature. Finally \(\log T_{\mathrm{glob}}=O(k^{3/10}\log k)\), \(\log(Dq^2+2)\le2\log q+O(\log k)\), and \(\log q\le\frac{ck}D\log k+\log(2k^2)\), which is \(O(k^{9/10}\log k)\), while \(pk=k^{19/20}\). \(\square\)
 
 ## 3. The cyclic two-colouring
 
@@ -43,13 +53,20 @@ for an absolute constant \(C\).
 
 *Progressions rich in both outer colours.* Suppose each outer colour occurs at least \(\gamma k\) times, and fix a target colour \(b\). Every position with \(c_0=1-b\) needs \(E_\kappa=1\) at its key; by Lemma 1.1 these positions carry at least \(\gamma k/4\) distinct keys, determined before sampling. So the progression has colour \(b\) everywhere with probability at most \(p^{\gamma k/4}\) (and probability \(0\) if a key also needs the value \(0\)). There are fewer than \(q^{2D}\) pairs \((n_0,d)\), so the probability that some such progression is monochromatic is at most
 \[
-2q^{2D}p^{\gamma k/4}\le\exp\Bigl(\bigl(2c-\tfrac{\gamma}{80}\bigr)k\log k+2D\log(2k^2)+\log2\Bigr)=o(1),
+\begin{aligned}
+&2q^{2D}p^{\gamma k/4}\\
+&\quad\le\exp\Bigl(\bigl(2c-\tfrac{\gamma}{80}\bigr)k\log k\\
+&\qquad+2D\log(2k^2)+\log2\Bigr)=o(1),
+\end{aligned}
 \]
 using (2.1) of [Coordinates, meshes and label counts](coordinates-meshes-and-label-counts.md) and \(2c-\gamma/80=-21/200000<0\).
 
 *Affine progressions.* Fix a signature and a target colour \(b\). Monochromaticity prescribes \(E_{\kappa_j}=b-c_j\bmod2\) for every entry \((c_j,\kappa_j)\). If these prescriptions are consistent and involve \(s\) distinct keys, \(u\) of them prescribed \(1\), the probability is \(p^u(1-p)^{s-u}\le(1-p)^s\le(1-p)^{k/4}\), as \(s\ge k/4\) by Lemma 1.1. Progressions with the same signature give the same event. Hence the probability that some affine progression is monochromatic is at most
 \[
-2T_{\mathrm{aff}}(1-p)^{k/4}\le2\max\{1,T_{\mathrm{aff}}\}e^{-pk/4}=\exp\bigl(-pk/4+o(pk)\bigr)=o(1).
+\begin{aligned}
+&2T_{\mathrm{aff}}(1-p)^{k/4}\le2\max\{1,T_{\mathrm{aff}}\}e^{-pk/4}\\
+&\quad =\exp\bigl(-pk/4+o(pk)\bigr)=o(1).
+\end{aligned}
 \]
 
 By Theorem 4.1 of [A balanced colouring and the dichotomy](a-balanced-colouring-and-the-dichotomy.md), every progression is rich in both outer colours or affine. For large \(k\) the two probabilities sum to less than \(1\), so some choice of the bits gives the required colouring. All thresholds are absolute, uniformly over the primes \(P\) allowed in the choice of \(q\), and \(N=q^D\ge k^{ck}\). \(\square\)
@@ -65,7 +82,10 @@ W_r(k)>k^{ck\lfloor\log_2r\rfloor},\qquad c=10^{-5}.
 
 **Corollary 4.2.**
 \[
-\lim_{k\to\infty}\ \inf_{r\ge2}\frac{\log W_r(k)}{k\log r}=\infty,\qquad\lim_{r\to\infty}\ \inf_{k\ge3}\frac{\log W_r(k)}{\log r}=\infty .
+\begin{gathered}
+\lim_{k\to\infty}\ \inf_{r\ge2}\frac{\log W_r(k)}{k\log r}=\infty,\\
+\lim_{r\to\infty}\ \inf_{k\ge3}\frac{\log W_r(k)}{\log r}=\infty .
+\end{gathered}
 \]
 In particular \(W_r(k)^{1/k}\to\infty\) for every fixed \(r\ge2\), which answers Erdős's question, and \(W_r(k)/r^A\to\infty\) as \(r\to\infty\) for every fixed \(k\ge3\) and \(A>0\).
 

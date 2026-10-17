@@ -21,16 +21,13 @@ Let \(\Omega\) be a finite set with the uniform probability measure \(\pi\), and
 \|P^t(x,\cdot)-\pi\|_{\mathrm{TV}}\le\tfrac12\sqrt{|\Omega|}\,\mathrm e^{-\gamma t}.
 \]
 
-**Proof.** Let \(u_t(y)=|\Omega|P^t(x,y)\), the density of \(P^t(x,\cdot)\) with respect to \(\pi\). By symmetry \(u_t=P^tu_0\), where \(u_0=|\Omega|\mathbf 1_{\{x\}}\), and \(u_0-1\) has mean zero and \(\|u_0-1\|^2=\mathbb E_\pi u_0^2-1=|\Omega|-1\). Hence \(\|u_t-1\|\le(1-\gamma)^t\sqrt{|\Omega|}\le\mathrm e^{-\gamma t}\sqrt{|\Omega|}\), and \(\|P^t(x,\cdot)-\pi\|_{\mathrm{TV}}=\frac12\mathbb E_\pi|u_t-1|\le\frac12\|u_t-1\|\) by the Cauchy–Schwarz inequality. \(\square\)
+**Proof.** Let \(u_t(y)=|\Omega|P^t(x,y)\), the density of \(P^t(x,\cdot)\) with respect to \(\pi\). By symmetry \(u_t=P^tu_0\), where \(u_0=|\Omega|\mathbf 1_{\{x\}}\), and \(u_0-1\) has mean zero and \(\|u_0-1\|^2=\mathbb E_\pi u_0^2-1=|\Omega|-1\). Hence \(\|u_t-1\|\le(1-\gamma)^t\sqrt{|\Omega|}\le\mathrm e^{-\gamma t}\sqrt{|\Omega|}\), and \(\|P^t(x,\cdot)-\pi\|_{\mathrm{TV}}=\frac12\mathbb E_\pi|u_t-1|\), which is at most \(\frac12\|u_t-1\|\) by the Cauchy–Schwarz inequality. \(\square\)
 
 ## 2. The switch chain
 
 Let \(n\ge4\), \(V=\{1,\dots,n\}\), and let \(d=(d_1,\dots,d_n)\) be *graphical*: the set \(\Omega_d\) of simple graphs on \(V\) in which vertex \(i\) has degree \(d_i\) is nonempty. Let \(\pi_d\) be the uniform measure on \(\Omega_d\). A *switch* replaces two edges \(\{u,v\},\{x,y\}\) with four distinct endpoints by a different perfect matching of \(\{u,v,x,y\}\), say \(\{u,x\},\{v,y\}\), provided both new edges are absent. It preserves simplicity and all degrees, and its reverse is again a switch. Two graphs related by a switch are *switch neighbours*.
 
-The chain \(P_d\) does the following. With probability \(\frac12\) it stays. Otherwise it chooses a four-element set \(S\subseteq V\) uniformly and one of the six ordered pairs \((F,F')\) of different perfect matchings of \(S\) uniformly; if both edges of \(F\) are present and both edges of \(F'\) are absent, it replaces \(F\) by \(F'\), and otherwise it stays. Let \(L\) be the *Laplacian of the switch graph*,
-\[
-(Lf)(G)=\sum_{G'\text{ switch neighbour of }G}\bigl(f(G)-f(G')\bigr).\tag{2.1}
-\]
+The chain \(P_d\) does the following. With probability \(\frac12\) it stays. Otherwise it chooses a four-element set \(S\subseteq V\) uniformly and one of the six ordered pairs \((F,F')\) of different perfect matchings of \(S\) uniformly; if both edges of \(F\) are present and both edges of \(F'\) are absent, it replaces \(F\) by \(F'\), and otherwise it stays. Let \(L\) be the *Laplacian of the switch graph*, defined by (2.1): \((Lf)(G)\) is the sum of \(f(G)-f(G')\) over the switch neighbours \(G'\) of \(G\).
 
 **Lemma 2.1.** For switch neighbours \(G\neq G'\), \(P_d(G,G')=\bigl[12\binom n4\bigr]^{-1}\), and \(P_d(G,G')=0\) for other \(G'\neq G\). Hence \(P_d\) is symmetric,
 \[
@@ -72,7 +69,7 @@ The proof occupies [A variance inequality for three rows](a-variance-inequality-
 
 **Lemma 5.1.** If \(H^2\succeq H\), then the kernel of \(H\) consists of the constants, and \(\operatorname{Var}_{\pi_d}(f)\le\langle f,Hf\rangle\) for every \(f\).
 
-**Proof.** \(\langle f,Hf\rangle=\sum_a\|h_af\|^2\) vanishes only if \(f\) is constant on every pair fiber. A switch \(\{uv,xy\}\to\{ux,vy\}\) exchanges the two singletons \(v,x\) in a fiber of the pair \(\{u,y\}\): before the switch \(v\sim u\) and \(x\sim y\), afterwards \(v\sim y\) and \(x\sim u\), and nothing else changes. So such an \(f\) takes the same value at switch neighbours, and it is constant by Lemma 3.1. For an eigenvalue \(\lambda\) of \(H\), \(\lambda^2\ge\lambda\) and \(\lambda\ge0\), so \(\lambda=0\) or \(\lambda\ge1\). The functions with mean zero are orthogonal to the kernel, so all eigenvalues of \(H\) on them are at least \(1\), and \(\langle f,Hf\rangle=\langle f-\mathbb Ef,H(f-\mathbb Ef)\rangle\ge\|f-\mathbb Ef\|^2\). \(\square\)
+**Proof.** \(\langle f,Hf\rangle=\sum_a\|h_af\|^2\) vanishes only if \(f\) is constant on every pair fiber. A switch \(\{uv,xy\}\to\{ux,vy\}\) exchanges the two singletons \(v,x\) in a fiber of the pair \(\{u,y\}\): before the switch \(v\sim u\) and \(x\sim y\), afterwards \(v\sim y\) and \(x\sim u\), and nothing else changes. So such an \(f\) takes the same value at switch neighbours, and it is constant by Lemma 3.1. For an eigenvalue \(\lambda\) of \(H\), \(\lambda^2\ge\lambda\) and \(\lambda\ge0\), so \(\lambda=0\) or \(\lambda\ge1\). The functions with mean zero are orthogonal to the kernel, so all eigenvalues of \(H\) on them are at least \(1\), and \(\langle f,Hf\rangle=\langle f-\mathbb Ef,H(f-\mathbb Ef)\rangle\), which is at least \(\|f-\mathbb Ef\|^2\). \(\square\)
 
 For a pair \(a\), define \(J_a\) on each \(a\)-fiber by \(J_a=\sum_{k<l}(I-\tau_{kl})\), where \(k,l\) run over its singletons and \(\tau_{kl}\) exchanges their assignments.
 
@@ -80,9 +77,12 @@ For a pair \(a\), define \(J_a\) on each \(a\)-fiber by \(J_a=\sum_{k<l}(I-\tau_
 
 This is the fiberwise comparison that Carstens and Kleer used for bipartite switch and Curveball chains [CK], with its own constant.
 
-**Proof.** Fix an \(a\)-fiber with \(N\) singletons and identify it with the \(q\)-subsets of the singletons (Lemma 4.1). Draw \(S_0\) uniformly and, independently, a uniformly random permutation \(\sigma\) of the singletons. Whatever \(S_0\) is, \(\sigma S_0\) is uniformly distributed, so \(S_0\) and \(\sigma S_0\) are independent copies, and \(\operatorname{Var}(f)=\frac12\mathbb E\bigl(f(S_0)-f(\sigma S_0)\bigr)^2\). Every permutation of \(N\) symbols is a product of at most \(N\) transpositions; fix such a product \(t_N\cdots t_1\) for each \(\sigma\), using identity factors where needed, and put \(S_m=t_m\cdots t_1S_0\). Given \(\sigma\), each \(S_m\) is the image of the uniform set \(S_0\) under a fixed permutation, hence uniform. By the Cauchy–Schwarz inequality \(\bigl(f(S_0)-f(S_N)\bigr)^2\le N\sum_m\bigl(f(S_{m-1})-f(S_m)\bigr)^2\), and the \(m\)-th term has expectation at most \(\sum_{k<l}\mathbb E(f-\tau_{kl}f)^2\). Therefore
+**Proof.** Fix an \(a\)-fiber with \(N\) singletons and identify it with the \(q\)-subsets of the singletons (Lemma 4.1). Draw \(S_0\) uniformly and, independently, a uniformly random permutation \(\sigma\) of the singletons. Whatever \(S_0\) is, \(\sigma S_0\) is uniformly distributed, so \(S_0\) and \(\sigma S_0\) are independent copies, and \(\operatorname{Var}(f)=\frac12\mathbb E\bigl(f(S_0)-f(\sigma S_0)\bigr)^2\). Every permutation of \(N\) symbols is a product of at most \(N\) transpositions; fix such a product \(t_N\cdots t_1\) for each \(\sigma\), using identity factors where needed, and put \(S_m=t_m\cdots t_1S_0\). Given \(\sigma\), each \(S_m\) is the image of the uniform set \(S_0\) under a fixed permutation, hence uniform. By the Cauchy–Schwarz inequality, \(\bigl(f(S_0)-f(S_N)\bigr)^2\) is at most \(N\sum_m\bigl(f(S_{m-1})-f(S_m)\bigr)^2\), and the \(m\)-th term has expectation at most \(\sum_{k<l}\mathbb E(f-\tau_{kl}f)^2\). Therefore
 \[
-\operatorname{Var}(f)\le\frac{N^2}2\sum_{k<l}\mathbb E\bigl(f-\tau_{kl}f\bigr)^2=N^2\Bigl\langle f,\sum_{k<l}(I-\tau_{kl})f\Bigr\rangle,
+\begin{aligned}
+&\operatorname{Var}(f)\le\frac{N^2}2\sum_{k<l}\mathbb E\bigl(f-\tau_{kl}f\bigr)^2\\
+&\quad =N^2\Bigl\langle f,\sum_{k<l}(I-\tau_{kl})f\Bigr\rangle,
+\end{aligned}
 \]
 since \(\mathbb E(f-\tau f)^2=2\langle f,(I-\tau)f\rangle\) for an involution \(\tau\) preserving the measure. With \(N\le n\) and averaging over the fibers, \(h_a\preceq n^2J_a\).
 
@@ -94,7 +94,7 @@ A switch \(\{uv,xy\}\to\{ux,vy\}\) toggles the four-cycle \(u,v,y,x\). By the pr
 
 Here \(t_{\mathrm{mix}}(d)\) is the least \(t\) with \(\max_G\|P_d^t(G,\cdot)-\pi_d\|_{\mathrm{TV}}\le\frac14\).
 
-**Proof of Proposition 5.3.** Lemmas 5.1 and 5.2 give \(\operatorname{Var}(f)\le\langle f,Hf\rangle\le2n^2\langle f,Lf\rangle\). If \(|\Omega_d|=1\), the mixing time is \(0\). Otherwise, by (2.2), for \(f\) with mean zero, \(\langle f,(I-P_d)f\rangle=\langle f,Lf\rangle/(12\binom n4)\ge\gamma_0\|f\|^2\), so the eigenvalues of \(P_d\) on mean-zero functions lie in \([0,1-\gamma_0]\) (Lemma 2.1). By Lemma 1.1, the total variation distance is at most \(\frac14\) once \(t\ge\gamma_0^{-1}\bigl(\log2+\frac12\log|\Omega_d|\bigr)\). There are at most \(2^{\binom n2}\) graphs on \(V\), so \(\log2+\frac12\log|\Omega_d|\le(1+\frac{n(n-1)}4)\log2\le n^2\), and \(\gamma_0^{-1}=24n^2\binom n4=n^3(n-1)(n-2)(n-3)\le n^6\). Hence \(t_{\mathrm{mix}}(d)\le n^8+1\le2n^8\). \(\square\)
+**Proof of Proposition 5.3.** Lemmas 5.1 and 5.2 give \(\operatorname{Var}(f)\le\langle f,Hf\rangle\le2n^2\langle f,Lf\rangle\). If \(|\Omega_d|=1\), the mixing time is \(0\). Otherwise, by (2.2), for \(f\) with mean zero, \(\langle f,(I-P_d)f\rangle=\langle f,Lf\rangle/(12\binom n4)\), which is at least \(\gamma_0\|f\|^2\), so the eigenvalues of \(P_d\) on mean-zero functions lie in \([0,1-\gamma_0]\) (Lemma 2.1). By Lemma 1.1, the total variation distance is at most \(\frac14\) once \(t\ge\gamma_0^{-1}\bigl(\log2+\frac12\log|\Omega_d|\bigr)\). There are at most \(2^{\binom n2}\) graphs on \(V\), so \(\log2+\frac12\log|\Omega_d|\le(1+\frac{n(n-1)}4)\log2\), which is at most \(n^2\), and \(\gamma_0^{-1}=24n^2\binom n4\), which is \(n^3(n-1)(n-2)(n-3)\le n^6\). Hence \(t_{\mathrm{mix}}(d)\le n^8+1\le2n^8\). \(\square\)
 
 Theorem 5.4 follows from Proposition 5.3 and Theorem 4.2, which is Theorem 3.3 of [Disjoint pair resamplings](disjoint-pair-resamplings.md).
 
@@ -106,7 +106,14 @@ Theorem 5.4 follows from Proposition 5.3 and Theorem 4.2, which is Theorem 3.3 o
 
 **Exercise 6.3** (medium). Run the greedy prescription of Lemma 3.1 on \(d=(2,2,2,2)\) and on \(d=(3,1,1,1)\).
 
-**Exercise 6.4** (medium). Show that \(\langle f,Lf\rangle=\frac1{2|\Omega_d|}\sum_{G}\sum_{G'}\bigl(f(G)-f(G')\bigr)^2\), the inner sum running over the switch neighbours of \(G\), and deduce that \(L\succeq0\).
+**Exercise 6.4** (medium). Show that
+\[
+\begin{aligned}
+&\langle f,Lf\rangle\\
+&\quad=\frac1{2|\Omega_d|}\sum_{G}\sum_{G'}\bigl(f(G)-f(G')\bigr)^2,
+\end{aligned}
+\]
+the inner sum running over the switch neighbours of \(G\), and deduce that \(L\succeq0\).
 
 ## 7. Solutions
 
@@ -116,7 +123,7 @@ Theorem 5.4 follows from Proposition 5.3 and Theorem 4.2, which is Theorem 3.3 o
 
 **6.3.** For \((2,2,2,2)\): vertex \(1\) joins the two vertices of largest residual degree among \(2,3,4\) (all equal), namely \(2\) and \(3\), leaving residual degrees \(1,1,2\) at \(2,3,4\); vertex \(2\) joins \(4\), leaving residual degrees \(1,1\) at \(3,4\); vertex \(3\) joins \(4\). The result is the four-cycle \(1,2,4,3\). For \((3,1,1,1)\), vertex \(1\) joins \(2,3,4\), giving the star.
 
-**6.4.** Expanding \(\langle f,Lf\rangle=\frac1{|\Omega_d|}\sum_Gf(G)\sum_{G'}(f(G)-f(G'))\) as a sum over ordered pairs of switch neighbours, and averaging it with the same sum in which the two graphs of each pair are interchanged, gives the formula; a sum of squares is nonnegative.
+**6.4.** Expanding \(\langle f,Lf\rangle\), which is \(\frac1{|\Omega_d|}\sum_Gf(G)\sum_{G'}(f(G)-f(G'))\), as a sum over ordered pairs of switch neighbours, and averaging it with the same sum in which the two graphs of each pair are interchanged, gives the formula; a sum of squares is nonnegative.
 
 ## References
 

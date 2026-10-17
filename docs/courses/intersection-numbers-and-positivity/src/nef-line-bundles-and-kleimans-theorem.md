@@ -7,7 +7,10 @@ A line bundle is *nef* (numerically effective) if its degree on every curve is n
 We use [Intersection numbers of line bundles](intersection-numbers-of-line-bundles.md) and [The Nakai–Moishezon criterion](the-nakai-moishezon-criterion.md). Throughout, \(k\) is an algebraically closed field and \(X\) is a projective \(k\)-scheme. In this lesson we write the group of invertible sheaves additively: \(L+M\) means \(L\otimes M\), \(mL\) means \(L^m\) for \(m\in\mathbb Z\). Intersection numbers are multilinear, so for integers \(a,b\),
 
 \[
-((aL+bM)^d\cdot V)=\sum_{i=0}^d\binom di a^ib^{d-i}(L^i\cdot M^{d-i}\cdot V).
+\begin{aligned}
+&((aL+bM)^d\cdot V)\\
+&\quad =\sum_{i=0}^d\binom di a^ib^{d-i}(L^i\cdot M^{d-i}\cdot V).
+\end{aligned}
 \]
 
 ## 1. Nef line bundles
@@ -39,7 +42,10 @@ In particular \((L^d\cdot V)\ge0\).
 *Step 1: the terms with \(i<d\).* Let \(0\le i\le d-1\). Choose \(p\ge1\) with \(pA\) very ample. Applying Proposition 3.5 of the intersection-number lesson \(d-i\) times,
 
 \[
-p^{d-i}(L^i\cdot A^{d-i}\cdot X)=(L^i\cdot(pA)^{d-i}\cdot X)=\sum_jm_j\,(L^i\cdot W_j)
+\begin{aligned}
+p^{d-i}(L^i\cdot A^{d-i}\cdot X)&=(L^i\cdot(pA)^{d-i}\cdot X)\\
+&=\sum_jm_j\,(L^i\cdot W_j)
+\end{aligned}
 \]
 
 with integers \(m_j\ge1\) and integral \(W_j\subseteq X\) of dimension \(i\). For \(i\ge1\), each \((L^i\cdot W_j)\ge0\) by the inductive hypothesis; for \(i=0\), each term is \(\chi(\mathcal O_{W_j})\ge1\) for a point \(W_j\). So \((L^i\cdot A^{d-i}\cdot X)\ge0\) for \(i<d\), and \((A^d\cdot X)>0\).
@@ -47,7 +53,10 @@ with integers \(m_j\ge1\) and integral \(W_j\subseteq X\) of dimension \(i\). Fo
 *Step 2: the polynomial \(P\).* Define
 
 \[
-P(t)=\sum_{i=0}^d\binom di t^{d-i}(L^i\cdot A^{d-i}\cdot X),\qquad t\in\mathbb R,
+\begin{gathered}
+P(t)=\sum_{i=0}^d\binom di t^{d-i}(L^i\cdot A^{d-i}\cdot X),\\
+t\in\mathbb R,
+\end{gathered}
 \]
 
 so that \(q^dP(p/q)=((qL+pA)^d\cdot X)\) for integers \(p,q\ge1\). Its leading coefficient \((A^d\cdot X)\) is positive. We claim \(P(t)>0\) for all \(t>0\); then \((L^d\cdot X)=P(0)=\lim_{t\to0^+}P(t)\ge0\), which is the case \(i=d\).
@@ -55,7 +64,11 @@ so that \(q^dP(p/q)=((qL+pA)^d\cdot X)\) for integers \(p,q\ge1\). Its leading c
 *Step 3: ampleness above the last zero.* For a rational \(t=p/q>0\) with \(P(t)>0\), the bundle \(D=qL+pA\) is ample. Indeed, by the Nakai–Moishezon criterion it suffices to check \((D^{e}\cdot W)>0\) for integral \(W\subseteq X\) of dimension \(e\ge1\). For \(W=X\) this is \(q^dP(t)>0\). For \(W\ne X\), \(e<d\), and
 
 \[
-(D^e\cdot W)=\sum_{i=0}^e\binom ei q^ip^{e-i}(L^i\cdot A^{e-i}\cdot W)\ge p^e(A^e\cdot W)>0,
+\begin{aligned}
+&(D^e\cdot W)\\
+&\quad =\sum_{i=0}^e\binom ei q^ip^{e-i}(L^i\cdot A^{e-i}\cdot W)\\
+&\quad \ge p^e(A^e\cdot W)>0,
+\end{aligned}
 \]
 
 since every term is nonnegative by the inductive hypothesis applied to \(W\).
@@ -63,13 +76,20 @@ since every term is nonnegative by the inductive hypothesis applied to \(W\).
 *Step 4: \(P\) has no positive zero.* Suppose \(P(t)\le0\) for some \(t>0\). Since \(P(t)\to\infty\), the number \(s=\sup\{t>0:P(t)\le0\}\) is finite and positive, \(P(s)\le0\) by continuity, and \(P(t)>0\) for \(t>s\). Let \(t=p/q>s\) be rational. By Step 3, \(D=qL+pA\) is ample; choose \(r\ge1\) with \(rD\) very ample. By multilinearity
 
 \[
-q^{d}P(t)=(D^{d-1}\cdot qL\cdot X)+(D^{d-1}\cdot pA\cdot X).
+\begin{aligned}
+&q^{d}P(t)=(D^{d-1}\cdot qL\cdot X)\\
+&\quad +(D^{d-1}\cdot pA\cdot X).
+\end{aligned}
 \]
 
-For the first term, Proposition 3.5 of the intersection-number lesson applied \(d-1\) times to the very ample \(rD\) gives \(r^{d-1}(D^{d-1}\cdot L\cdot X)=\sum_jm_j\deg(L|_{C_j})\ge0\), with curves \(C_j\) and \(m_j\ge1\), because \(L\) is nef. For the second term, expand \(D^{d-1}=(qL+pA)^{d-1}\):
+For the first term, Proposition 3.5 of the intersection-number lesson applied \(d-1\) times to the very ample \(rD\) shows that \(r^{d-1}(D^{d-1}\cdot L\cdot X)\) equals \(\sum_jm_j\deg(L|_{C_j})\ge0\), with curves \(C_j\) and \(m_j\ge1\), because \(L\) is nef. For the second term, expand \(D^{d-1}=(qL+pA)^{d-1}\):
 
 \[
-(D^{d-1}\cdot A\cdot X)=\sum_{i=0}^{d-1}\binom{d-1}iq^ip^{d-1-i}(L^i\cdot A^{d-i}\cdot X)\ge p^{d-1}(A^d\cdot X),
+\begin{aligned}
+&(D^{d-1}\cdot A\cdot X)\\
+&\quad =\sum_{i=0}^{d-1}\binom{d-1}iq^ip^{d-1-i}(L^i\cdot A^{d-i}\cdot X)\\
+&\quad \ge p^{d-1}(A^d\cdot X),
+\end{aligned}
 \]
 
 by Step 1. Hence \(q^dP(t)\ge p^d(A^d\cdot X)\), that is, \(P(t)\ge t^d(A^d\cdot X)\) for every rational \(t>s\). Letting \(t\) decrease to \(s\), continuity gives \(P(s)\ge s^d(A^d\cdot X)>0\), a contradiction. \(\square\)
@@ -81,7 +101,10 @@ by Step 1. Hence \(q^dP(t)\ge p^d(A^d\cdot X)\), that is, \(P(t)\ge t^d(A^d\cdot
 **Proof.** For integral \(V\) of dimension \(e\ge1\),
 
 \[
-((L+A)^e\cdot V)=\sum_{i=0}^e\binom ei(L^i\cdot A^{e-i}\cdot V)\ge(A^e\cdot V)>0
+\begin{aligned}
+((L+A)^e\cdot V)&=\sum_{i=0}^e\binom ei(L^i\cdot A^{e-i}\cdot V)\\
+&\ge(A^e\cdot V)>0
+\end{aligned}
 \]
 
 by Theorem 2.1, and the Nakai–Moishezon criterion applies. The general case follows because \(aL\) is nef and \(bA\) is ample. \(\square\)
@@ -112,13 +135,13 @@ In words: if a rational positive multiple of \(L\) is a positive rational combin
 
 ## 5. Solutions
 
-**4.1.** With the notation of Exercise 3.3 of the previous lesson, \((\mathcal O(a,b)\cdot C)=ac+bd\) with \(c,d\ge0\) for every curve, and the rulings realize \((c,d)=(1,0),(0,1)\). So \(\mathcal O(a,b)\) is nef if and only if \(a,b\ge0\). Then \(m\mathcal O(a,b)+\mathcal O(1,1)=\mathcal O(ma+1,mb+1)\) is ample for all \(m\ge1\) exactly when \(a,b\ge0\).
+**4.1.** With the notation of Exercise 3.3 of the previous lesson, \((\mathcal O(a,b)\cdot C)=ac+bd\) with \(c,d\ge0\) for every curve, and the rulings realize \((c,d)=(1,0),(0,1)\). So \(\mathcal O(a,b)\) is nef if and only if \(a,b\ge0\). Then \(m\mathcal O(a,b)+\mathcal O(1,1)\), which is \(\mathcal O(ma+1,mb+1)\), is ample for all \(m\ge1\) exactly when \(a,b\ge0\).
 
 **4.2.** Step 1 gives \((L\cdot A)\ge0\): for very ample \(pA\), \((L\cdot pA)=\sum m_j\deg(L|_{C_j})\ge0\). With \(P(t)=(L^2)+2t(L\cdot A)+t^2(A^2)\), Steps 3 and 4 show \(P(t)>0\) for \(t>0\), so \((L^2)=P(0)\ge0\). Step 4 here reads: if \(D=qL+pA\) is ample, then \((D\cdot L)\ge0\) because \(L\) is nef and \(rD\) is very ample.
 
 **4.3.** Nefness is Proposition 1.2(3). If \(f\) maps a curve \(C\) to a point, then \(\deg(f^*A|_C)=0\) by Proposition 3.1 of the intersection-number lesson, and \(f^*A\) is not ample. If \(f\) is finite, \(f^*A\) is ample by Lemma 1.2 of the previous lesson.
 
-**4.4.** The integral subvarieties of positive dimension are \(Y\) and the curves. First, \(((2H-E)^2)=4(H^2)-4(H\cdot E)+(E^2)=3>0\). For a curve \(C\ne E\), the image of \(C\) in \(\mathbf P^2\) is a curve, so \((H\cdot C)>0\) by Proposition 3.1 of the intersection-number lesson, while \(((H-E)\cdot C)\ge0\) because \(H-E\) is globally generated; hence \(((2H-E)\cdot C)>0\). Finally \(((2H-E)\cdot E)=2\cdot0-(-1)=1>0\). So \(2H-E\) is ample. For \(a\ge2\), \(aH-E=(2H-E)+(a-2)H\) is ample plus nef, hence ample by Corollary 3.1.
+**4.4.** The integral subvarieties of positive dimension are \(Y\) and the curves. First, \(((2H-E)^2)\) equals \(4(H^2)-4(H\cdot E)+(E^2)\), which is \(3>0\). For a curve \(C\ne E\), the image of \(C\) in \(\mathbf P^2\) is a curve, so \((H\cdot C)>0\) by Proposition 3.1 of the intersection-number lesson, while \(((H-E)\cdot C)\ge0\) because \(H-E\) is globally generated; hence \(((2H-E)\cdot C)>0\). Finally \(((2H-E)\cdot E)=2\cdot0-(-1)=1>0\). So \(2H-E\) is ample. For \(a\ge2\), \(aH-E=(2H-E)+(a-2)H\) is ample plus nef, hence ample by Corollary 3.1.
 
 **4.5.** For a curve \(C\ne E\), the canonical section of \(\mathcal O_Y(E)\) does not vanish identically on \(C\), so its restriction is a nonzero section of \(L|_C\) and \(\deg(L|_C)\ge0\) by Corollary 2.5 of the intersection-number lesson. On \(E\), \(\deg(L|_E)=(E^2)=-1\) by the given value, and \((L^2)=(E^2)=-1<0\).
 

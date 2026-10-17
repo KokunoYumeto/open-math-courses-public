@@ -22,11 +22,18 @@ In the cyclic group \(\mathbb Z/N\mathbb Z\), a *\(k\)-term progression* is a se
 
 **Theorem 2.1** (Van der Waerden). Define \(F(r,1)=1\) and \(F(r,2)=r+1\) for every integer \(r\ge1\). For \(k\ge3\) and \(r\ge1\), define
 \[
-m_0=1,\qquad m_{t+1}=2m_tF\bigl(r^{m_t},k-1\bigr)\quad(0\le t<r),\qquad F(r,k)=m_r .
+\begin{gathered}
+m_0=1,\\
+m_{t+1}=2m_tF\bigl(r^{m_t},k-1\bigr)\quad(0\le t<r),\\
+F(r,k)=m_r .
+\end{gathered}
 \]
 Then \(W_r(k)\le F(r,k)<\infty\) for all positive integers \(r,k\). Moreover
 \[
-W_r(1)=1,\qquad W_r(2)=r+1,\qquad W_1(k)=k .
+\begin{gathered}
+W_r(1)=1,\qquad W_r(2)=r+1,\\
+W_1(k)=k .
+\end{gathered}
 \]
 
 *Proof.* The recursion defines \(F(r,k)\) for all \(r\) once \(F(\cdot,k-1)\) is known, so all values are finite positive integers. A one-term progression is a single point, so \(W_r(1)=1\). Among \(r+1\) points coloured with \(r\) colours two have the same colour and form a two-term progression, while an injective colouring of \([r]\) has none; so \(W_r(2)=r+1\). With one colour, \([k]\) is itself a progression and \([k-1]\) contains none of length \(k\); so \(W_1(k)=k\).
@@ -37,11 +44,20 @@ A *focus with \(t\) colours* in a coloured interval is a point \(f\) together wi
 
 *Claim: for \(0\le t\le r\), every avoiding \(r\)-colouring of an interval of length \(m_t\) has a focus with \(t\) colours.* For \(t=0\) take the single point of an interval of length \(1\). Suppose the claim holds for \(t<r\); put \(m=m_t\), \(B=F(r^m,k-1)\), so \(m_{t+1}=2mB\), and let \(\chi\) be an avoiding colouring of \([2mB]\). Cut \([2mB]\) into \(2B\) consecutive blocks of length \(m\), and give block \(j\) its word \(w_j=(\chi((j-1)m+1),\dots,\chi(jm))\), one of at most \(r^m\) words. By the induction hypothesis on \(k-1\), applied to the colouring \(j\mapsto w_j\) of the first \(B\) block indices, there are \(b,\Delta\ge1\) with
 \[
-w_b=w_{b+\Delta}=\dots=w_{b+(k-2)\Delta},\qquad b+(k-2)\Delta\le B .
+\begin{gathered}
+w_b=w_{b+\Delta}=\dots=w_{b+(k-2)\Delta},\\
+b+(k-2)\Delta\le B .
+\end{gathered}
 \]
 As \(k-2\ge1\), \(\Delta\le B-1\), so \(q=b+(k-1)\Delta\le2B-1\) is the index of a block. The common word is an avoiding colouring of \([m]\) (it is a copy of block \(b\)), so by the claim for \(t\) it has a focus \(f\) with differences \(d_1,\dots,d_t\) and colours \(a_1,\dots,a_t\); let \(a_0\) be the colour of \(f\), different from all \(a_i\). Put \(f'=(q-1)m+f\). For \(1\le s\le k-1\),
 \[
-f'-s(m\Delta+d_i)=\bigl(b+(k-1-s)\Delta-1\bigr)m+(f-sd_i),\qquad f'-sm\Delta=\bigl(b+(k-1-s)\Delta-1\bigr)m+f .
+\begin{aligned}
+&f'-s(m\Delta+d_i)\\
+&\quad =\bigl(b+(k-1-s)\Delta-1\bigr)m\\
+&\quad +(f-sd_i),\\
+&f'-sm\Delta\\
+&\quad =\bigl(b+(k-1-s)\Delta-1\bigr)m+f .
+\end{aligned}
 \]
 These are points of the matching blocks \(b+(k-1-s)\Delta\), at positions \(f-sd_i\) and \(f\), so they have the colours \(a_i\) and \(a_0\). Hence \(f'\) is a focus with the \(t+1\) colours \(a_0,a_1,\dots,a_t\), with differences \(m\Delta,m\Delta+d_1,\dots,m\Delta+d_t\). This proves the claim.
 
@@ -55,7 +71,10 @@ The bound \(F(r,k)\) grows extremely fast; the question addressed in this course
 
 *Proof.* Colour \(0\le n<N^m\), with base-\(N\) digits \(n=\sum_{i=0}^{m-1}n_iN^i\), by the vector \((C(n_0),\dots,C(n_{m-1}))\in\{0,1\}^m\), a digit being read as a residue modulo \(N\). Suppose \(a,a+d,\dots,a+(k-1)d\) is a monochromatic progression in \([0,N^m)\) with \(d\ge1\). Then \(d<N^m\), so there is a largest \(i\le m-1\) with \(N^i\mid d\); put \(e=d/N^i\), so \(N\nmid e\). Since \(je\) is an integer,
 \[
-\Bigl\lfloor\frac{a+jd}{N^i}\Bigr\rfloor=\Bigl\lfloor\frac a{N^i}\Bigr\rfloor+je\qquad(0\le j<k),
+\begin{gathered}
+\Bigl\lfloor\frac{a+jd}{N^i}\Bigr\rfloor=\Bigl\lfloor\frac a{N^i}\Bigr\rfloor+je\\
+(0\le j<k),
+\end{gathered}
 \]
 and reducing modulo \(N\) shows that the \(i\)-th digits form a progression of \(\mathbb Z/N\mathbb Z\) with step \(e\not\equiv0\). Monochromaticity would make \(C\) constant on it. Shifting \([0,N^m)\) to \([N^m]\) gives a colouring with \(2^m\) colours and no monochromatic \(k\)-term progression. For \(r\ge2\) take \(m=\lfloor\log_2r\rfloor\), so \(2^m\le r\). \(\square\)
 
@@ -70,11 +89,14 @@ W_r(k)>\exp\Bigl(\frac{(\log r)^2}{64\log2}\Bigr).
 \[
 \Bigl(\epsilon(x_0),\dots,\epsilon(x_{s-1}),\ \textstyle\sum_ix_i^2\Bigr).
 \]
-There are at most \(2^s(1+s(b-1)^2)\le2^s(s+1)b^2\le r^{1/4}\cdot r^{1/4}\cdot r^{1/2}=r\) colours, using \(s+1\le2^s\le r^{1/4}\) and \(b^2\le r^{1/2}\).
+There are at most \(2^s(1+s(b-1)^2)\le2^s(s+1)b^2\), which is at most \(r^{1/4}\cdot r^{1/4}\cdot r^{1/2}=r\) colours, using \(s+1\le2^s\le r^{1/4}\) and \(b^2\le r^{1/2}\).
 
 Suppose three equally spaced integers with digit vectors \(x,y,z\) have one colour. Then \(\sum_i(x_i-2y_i+z_i)b^i=0\). For each \(i\), the digits \(x_i,y_i,z_i\) lie in one half, of diameter at most \(\lceil b/2\rceil-1\), so \(|x_i-2y_i+z_i|\le2(\lceil b/2\rceil-1)<b\). Reading the equation modulo \(b\) shows that the coefficient of \(b^0\) is divisible by \(b\), hence zero; dividing by \(b\) and repeating gives \(x+z=2y\). Equal colours also give \(\|x\|^2=\|y\|^2=\|z\|^2\), so
 \[
-\|x-z\|^2=2\|x\|^2+2\|z\|^2-\|x+z\|^2=2\|x\|^2+2\|z\|^2-4\|y\|^2=0,
+\begin{aligned}
+&\|x-z\|^2=2\|x\|^2+2\|z\|^2-\|x+z\|^2\\
+&\quad =2\|x\|^2+2\|z\|^2-4\|y\|^2=0,
+\end{aligned}
 \]
 and the three integers coincide. So no progression with positive step and at least three terms is monochromatic, and \(W_r(k)>b^s\).
 

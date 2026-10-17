@@ -4,21 +4,25 @@
 
 By Corollary 3.2 of [Blowing up by transitive tournaments](blowing-up-by-transitive-tournaments.md), a counterexample to the second neighborhood conjecture would produce a nonempty finite oriented graph \(G\) in which every vertex has an in-neighbor and
 \[
-|U|+|F^2(U)|<2|F(U)|\qquad(\varnothing\ne U\subsetneq V(G)). \tag{0.1}
+\begin{gathered}
+|U|+|F^2(U)|<2|F(U)|\\
+(\varnothing\ne U\subsetneq V(G)).
+\end{gathered}\tag{0.1}
 \]
 This lesson shows that no such graph exists (Theorem 2.1), which proves the conjecture (Theorem 3.1). The argument works with sets of ordered pairs of vertices. Applying \(F\) to the first coordinates of a set of pairs, column by column, turns (0.1) into an inequality for the whole set; applying \(F\) to the second coordinates, row by row, gives a second one. An extremal choice of two sets of pairs, together with the pruning theorem of [Ranks, matchings and pruning](ranks-matchings-and-pruning.md), then yields a contradiction. Sections 4 and 5 derive weighted forms of the theorem and consequences for directed triangles.
 
 ## 1. Sets of pairs
 
-Let \(G\) be a nonempty finite oriented graph with vertex set \(X\) and image operator \(F\). For \(S\subseteq X\times X\) define
-\[
-F_1S=\{(i,j):(p,j)\in S\text{ and }p\to i\text{ for some }p\},\qquad F_2S=\{(i,j):(i,s)\in S\text{ and }s\to j\text{ for some }s\},
-\]
+Let \(G\) be a nonempty finite oriented graph with vertex set \(X\) and image operator \(F\). For \(S\subseteq X\times X\) define \(F_1S\) as the set of pairs \((i,j)\) such that \((p,j)\in S\) and \(p\to i\) for some \(p\), and \(F_2S\) as the set of pairs \((i,j)\) such that \((i,s)\in S\) and \(s\to j\) for some \(s\),
 and \(F_1^2=F_1\circ F_1\), \(F_2^2=F_2\circ F_2\). The *column* of \(S\) at \(j\) is \(S^{(j)}=\{p:(p,j)\in S\}\), and the *row* of \(S\) at \(i\) is \(S_{(i)}=\{s:(i,s)\in S\}\). Let \(\Delta=\{(v,v):v\in X\}\).
 
 **Lemma 1.1.** For every \(S\subseteq X\times X\) and \(i,j\in X\),
 \[
-(F_1S)^{(j)}=F(S^{(j)}),\quad(F_1^2S)^{(j)}=F^2(S^{(j)}),\quad(F_2S)_{(i)}=F(S_{(i)}),\quad(F_2^2S)_{(i)}=F^2(S_{(i)}).
+\begin{aligned}
+&(F_1S)^{(j)}=F(S^{(j)}),\quad(F_1^2S)^{(j)}\\
+&\quad =F^2(S^{(j)}),\quad(F_2S)_{(i)}\\
+&\quad =F(S_{(i)}),\quad(F_2^2S)_{(i)}=F^2(S_{(i)}).
+\end{aligned}
 \]
 
 *Proof.* By definition, \(i\in(F_1S)^{(j)}\) if and only if \(p\to i\) for some \(p\in S^{(j)}\), that is, \(i\in F(S^{(j)})\). Applying this twice gives the second identity, and the last two are proved in the same way with rows. \(\square\)
@@ -39,33 +43,44 @@ In the language of [Ranks, matchings and pruning](ranks-matchings-and-pruning.md
 
 *Proof.* Suppose \(G\) is such a graph, with vertex set \(X\). For a compatible pair \((P,Q)\) put
 \[
-M(P,Q)=|P|+|Q|,\qquad d(P,Q)=|X|^2-|F_1P|-|F_2Q| .
+\begin{gathered}
+M(P,Q)=|P|+|Q|,\\
+d(P,Q)=|X|^2-|F_1P|-|F_2Q| .
+\end{gathered}
 \]
 By compatibility, \(d(P,Q)\) is the number of points of \(X\times X\) lying in neither \(F_1P\) nor \(F_2Q\). Among the compatible pairs with \(\Delta\subseteq P\cap Q\), which exist by Lemma 1.2 and are finite in number, choose one for which \(M+d\) is as large as possible, and write \(M=M(P,Q)\), \(d=d(P,Q)\).
 
 *Step 1: the strict inequalities for \(P\) and \(Q\).* By Lemma 1.3, (0.1) applies to every column of \(P\) and every row of \(Q\). Summing over the columns and using Lemma 1.1, and doing the same with rows,
 \[
-|P|+|F_1^2P|<2|F_1P|,\qquad|Q|+|F_2^2Q|<2|F_2Q| . \tag{2.1}
+\begin{gathered}
+|P|+|F_1^2P|<2|F_1P|,\\
+|Q|+|F_2^2Q|<2|F_2Q| .
+\end{gathered}\tag{2.1}
 \]
 The inequalities are strict because \(X\ne\varnothing\).
 
 *Step 2: two large families.* Let
 \[
-\mathcal R=(X\times X)\setminus F_2^2Q,\qquad\mathcal C=(X\times X)\setminus F_1^2P .
+\begin{gathered}
+\mathcal R=(X\times X)\setminus F_2^2Q,\\
+\mathcal C=(X\times X)\setminus F_1^2P .
+\end{gathered}
 \]
 By (2.1),
 \[
-|\mathcal R|+|\mathcal C|=2|X|^2-|F_2^2Q|-|F_1^2P|>2|X|^2+M-2|F_1P|-2|F_2Q|=M+2d . \tag{2.2}
+\begin{aligned}
+&|\mathcal R|+|\mathcal C|=2|X|^2\\
+&\quad -|F_2^2Q|-|F_1^2P|\\
+&\quad >2|X|^2+M-2|F_1P|\\
+&\quad -2|F_2Q|=M+2d .
+\end{aligned}\tag{2.2}
 \]
 
 *Step 3: the diagonal survives and conflicts with nothing.* If \((v,v)\in F_2^2Q\), there are \(s\) with \(s\to v\) and \((v,s)\in F_2Q\); but \((s,s)\in P\) and \(s\to v\) give \((v,s)\in F_1P\), contrary to compatibility. Hence \(\Delta\subseteq\mathcal R\), and symmetrically \(\Delta\subseteq\mathcal C\): if \((v,v)\in F_1^2P\), there is \(p\to v\) with \((p,v)\in F_1P\), while \((p,p)\in Q\) gives \((p,v)\in F_2Q\).
 
 Regard \(\mathcal R\) as left members and \(\mathcal C\) as right members. Suppose the left member \((v,v)\) conflicts with a right member \((i,s)\), so \(v\to i\) and \(s\to v\). Starting from \((s,s)\in P\), the arc \(s\to v\) gives \((v,s)\in F_1P\), and then \(v\to i\) gives \((i,s)\in F_1^2P\), contrary to \((i,s)\in\mathcal C\). Suppose a left member \((p,j)\) conflicts with the right member \((v,v)\), so \(p\to v\) and \(v\to j\). Starting from \((p,p)\in Q\), we get \((p,v)\in F_2Q\) and then \((p,j)\in F_2^2Q\), contrary to \((p,j)\in\mathcal R\). Hence every diagonal member, on either side, conflicts with nothing.
 
-*Step 4: the opposite points are uncovered.* Let \((p,j)\in\mathcal R\) and \((i,s)\in\mathcal C\) conflict, so \(p\to i\) and \(s\to j\), with opposite point \((p,s)\). If \((p,s)\in F_1P\), choose \((u,s)\in P\) with \(u\to p\); then \(u\to p\to i\) puts \((i,s)\) into \(F_1^2P\), which is impossible. If \((p,s)\in F_2Q\), choose \((p,t)\in Q\) with \(t\to s\); then \(t\to s\to j\) puts \((p,j)\) into \(F_2^2Q\), which is impossible. Therefore the set \(H\) of opposite points satisfies
-\[
-H\subseteq(X\times X)\setminus(F_1P\cup F_2Q),\qquad|H|\le d . \tag{2.3}
-\]
+*Step 4: the opposite points are uncovered.* Let \((p,j)\in\mathcal R\) and \((i,s)\in\mathcal C\) conflict, so \(p\to i\) and \(s\to j\), with opposite point \((p,s)\). If \((p,s)\in F_1P\), choose \((u,s)\in P\) with \(u\to p\); then \(u\to p\to i\) puts \((i,s)\) into \(F_1^2P\), which is impossible. If \((p,s)\in F_2Q\), choose \((p,t)\in Q\) with \(t\to s\); then \(t\to s\to j\) puts \((p,j)\) into \(F_2^2Q\), which is impossible. Therefore the set \(H\) of opposite points satisfies (2.3): \(H\subseteq(X\times X)\setminus(F_1P\cup F_2Q)\) and \(|H|\le d\).
 
 *Step 5: pruning gives a better pair.* Theorem 3.1 of [Ranks, matchings and pruning](ranks-matchings-and-pruning.md) gives \(P'\subseteq\mathcal R\) and \(Q'\subseteq\mathcal C\) without conflicts between them, keeping every member that conflicts with nothing, such that the number of deleted members is at most \(|H|\) plus the number of shared points covered by no member of \(P'\cup Q'\). By Step 3, \(\Delta\subseteq P'\cap Q'\), and \((P',Q')\) is compatible. A point is covered by a member of \(P'\) exactly when it lies in \(F_1P'\), and by a member of \(Q'\) exactly when it lies in \(F_2Q'\); so at most \(d'=d(P',Q')\) points are covered by no member of \(P'\cup Q'\). With (2.3),
 \[
@@ -73,7 +88,10 @@ H\subseteq(X\times X)\setminus(F_1P\cup F_2Q),\qquad|H|\le d . \tag{2.3}
 \]
 Using (2.2),
 \[
-M(P',Q')+d'\ge|\mathcal R|+|\mathcal C|-(d+d')+d'>M+2d-d=M+d,
+\begin{aligned}
+&M(P',Q')+d'\ge|\mathcal R|+|\mathcal C|-(d+d')\\
+&\quad +d'>M+2d-d=M+d,
+\end{aligned}
 \]
 contradicting the choice of \((P,Q)\). \(\square\)
 
@@ -89,10 +107,7 @@ The quantity \(d\) is what makes the argument close: the uncovered shared points
 
 Seacrest showed that the conjecture is equivalent to versions with weights on arcs and on vertices [Sea12], as recounted in [OpenAI-SN]. With Theorem 3.1 established, these versions hold; we derive them directly from Theorem 3.1. For a function \(\eta\) on vertices and a set \(S\), write \(\eta(S)=\sum_{x\in S}\eta(x)\).
 
-**Theorem 4.1** (Arc weights). Let \(D\) be a nonempty finite oriented graph and \(w:A(D)\to[0,\infty)\); put \(w(xy)=0\) when \((x,y)\) is not an arc. For vertices \(v,s\) let
-\[
-\beta_v(s)=\max\Bigl(\{0\}\cup\{w(us)-w(vs):u\in V(D),\ v\to u\to s\}\Bigr).
-\]
+**Theorem 4.1** (Arc weights). Let \(D\) be a nonempty finite oriented graph and \(w:A(D)\to[0,\infty)\); put \(w(xy)=0\) when \((x,y)\) is not an arc. For vertices \(v,s\) let \(\beta_v(s)\) be the largest of \(0\) and the numbers \(w(us)-w(vs)\) with \(u\in V(D)\) and \(v\to u\to s\).
 Then some vertex \(v\) satisfies
 \[
 \sum_{s\in V(D)}\beta_v(s)\ge\sum_{u\in N_1^+(v)}w(vu).
@@ -104,9 +119,13 @@ Arcs of weight \(0\) are arcs of \(D\) and are used in the definition of \(\beta
 
 Fix a vertex \((v,l)\). Its out-neighbors are the \((u,k)\) with \(v\to u\) and \(k\le w(vu)\), so \(|N_1^+((v,l))|=\sum_{u\in N_1^+(v)}w(vu)\). A walk \((v,l)\to(u,k)\to(s,k')\) exists exactly when \(v\to u\to s\), \(w(vu)\ge1\) and \(k'\le w(us)\). Let \(m_v(s)\) be the largest \(w(us)\) over the \(u\) with \(v\to u\to s\) and \(w(vu)\ge1\), and \(m_v(s)=0\) if there is no such \(u\). The walks of length two from \((v,l)\) end at the \((s,k')\) with \(k'\le m_v(s)\); none of them is in the block of \(v\), because \(D\) has no walk \(v\to u\to v\). Among these, \((s,k')\) is an out-neighbor exactly when \(v\to s\) and \(k'\le w(vs)\). Hence
 \[
-|N_2^+((v,l))|=\sum_s\max\bigl(0,\,m_v(s)-w(vs)\bigr)\le\sum_s\beta_v(s),
+\begin{aligned}
+&|N_2^+((v,l))|\\
+&\quad =\sum_s\max\bigl(0,\,m_v(s)-w(vs)\bigr)\\
+&\quad \le\sum_s\beta_v(s),
+\end{aligned}
 \]
-because a positive term \(m_v(s)-w(vs)\) equals \(w(us)-w(vs)\) for some \(u\) with \(v\to u\to s\). Theorem 3.1 applied to \(D^w\) gives a vertex \((v,l)\) with \(\sum_uw(vu)=|N_1^+((v,l))|\le|N_2^+((v,l))|\le\sum_s\beta_v(s)\).
+because a positive term \(m_v(s)-w(vs)\) equals \(w(us)-w(vs)\) for some \(u\) with \(v\to u\to s\). Theorem 3.1 applied to \(D^w\) gives a vertex \((v,l)\) with \(\sum_uw(vu)=|N_1^+((v,l))|\), which is at most \(|N_2^+((v,l))|\le\sum_s\beta_v(s)\).
 
 *Rational weights.* Multiplying all weights by a positive integer \(c\) multiplies both sides by \(c\), so the integer case applies.
 
@@ -122,13 +141,19 @@ The next statement asks for one weighting that works at every vertex simultaneou
 
 *Proof.* Let \(\Sigma=\{\eta\ge0:\sum_v\eta_v=1\}\), \(K=\{\mathsf M\eta:\eta\in\Sigma\}\) and \(O=[0,\infty)^V\), and suppose \(K\cap O=\varnothing\). The set \(K-O=\{y-z:y\in K,\,z\in O\}\) is convex. It is closed: if \(y_k-z_k\to x\) with \(y_k\in K\), a subsequence of \(y_k\) converges to some \(y\in K\) because \(K\) is compact, so \(z_k\to y-x\in O\), and \(x=y-(y-x)\). It does not contain \(0\). A closed nonempty set has a point \(\omega\) of least Euclidean norm (minimize over its intersection with a large closed ball), and \(\omega\ne0\). For \(x\in K-O\) and \(0<\lambda\le1\), the point \(\omega+\lambda(x-\omega)\) lies in \(K-O\), so
 \[
-0\le|\omega+\lambda(x-\omega)|^2-|\omega|^2=2\lambda\,\omega\cdot(x-\omega)+\lambda^2|x-\omega|^2 ;
+\begin{aligned}
+0&\le|\omega+\lambda(x-\omega)|^2-|\omega|^2\\
+&=2\lambda\,\omega\cdot(x-\omega)+\lambda^2|x-\omega|^2 ;
+\end{aligned}
 \]
 dividing by \(\lambda\) and letting \(\lambda\to0\) gives \(\omega\cdot x\ge|\omega|^2>0\). Taking \(x=y-te_v\) with \(y\in K\) and \(t\ge0\) gives \(\omega\cdot y\ge t\,\omega_v+|\omega|^2\) for all \(t\ge0\), so \(\omega_v\le0\) for every \(v\); and \(t=0\) gives \(\omega\cdot y>0\). Put \(\xi=-\omega\ge0\). For \(y=\mathsf Me_v\in K\), \((\mathsf M^{\mathsf T}\xi)_v=\xi\cdot\mathsf Me_v<0\), for every \(v\). This contradicts the hypothesis. \(\square\)
 
 **Corollary 4.4** (A balanced weighting). Every nonempty finite oriented graph \(D\) has a weighting \(\eta:V(D)\to[0,\infty)\) with \(\eta(V(D))=1\) such that
 \[
-\eta(N_1^+(v))\le\eta(N_2^+(v))\qquad\text{for every }v\in V(D).
+\begin{gathered}
+\eta(N_1^+(v))\le\eta(N_2^+(v))\\
+\text{for every }v\in V(D).
+\end{gathered}
 \]
 
 *Proof.* Let \(\mathsf M_D\) have entry \(1\) at \((v,s)\) if \(s\in N_2^+(v)\), entry \(-1\) if \(s\in N_1^+(v)\), and \(0\) otherwise; then \((\mathsf M_D\eta)_v=\eta(N_2^+(v))-\eta(N_1^+(v))\). Let \(\overleftarrow D\) be \(D\) with every arc reversed. The directed distance from \(v\) to \(s\) in \(\overleftarrow D\) equals the distance from \(s\) to \(v\) in \(D\), so \(\mathsf M_{\overleftarrow D}=\mathsf M_D^{\mathsf T}\). If some \(\xi\ge0\) satisfied \((\mathsf M_D^{\mathsf T}\xi)_v<0\) for every \(v\), then \(\xi(N_2^+(v))<\xi(N_1^+(v))\) would hold in \(\overleftarrow D\) at every vertex, contradicting Corollary 4.2 for \(\overleftarrow D\). Lemma 4.3 therefore gives the weighting. \(\square\)
@@ -145,10 +170,13 @@ be the set of vertices not adjacent to \(v\). Since \(D\) is oriented, \(n-1=d^+
 
 **Corollary 5.1.** If \(D\) is a nonempty finite oriented graph of order \(n\) without directed triangles, some vertex \(v\) satisfies
 \[
-d^+(v)\le|Z(v)|\qquad\text{and}\qquad n-1\ge2d^+(v)+d^-(v).
+\begin{gathered}
+d^+(v)\le|Z(v)|\qquad \text{and}\\
+n-1\ge2d^+(v)+d^-(v).
+\end{gathered}
 \]
 
-*Proof.* Let \(w\in N_2^+(v)\), reached by \(v\to u\to w\). By definition \(w\ne v\) and \(w\notin N_1^+(v)\), and \(w\notin N_1^-(v)\), since \(w\to v\) would close a directed triangle. Hence \(N_2^+(v)\subseteq Z(v)\) for every \(v\). Theorem 3.1 gives a vertex with \(d^+(v)\le|N_2^+(v)|\le|Z(v)|\), and then \(n-1=d^+(v)+d^-(v)+|Z(v)|\ge2d^+(v)+d^-(v)\). \(\square\)
+*Proof.* Let \(w\in N_2^+(v)\), reached by \(v\to u\to w\). By definition \(w\ne v\) and \(w\notin N_1^+(v)\), and \(w\notin N_1^-(v)\), since \(w\to v\) would close a directed triangle. Hence \(N_2^+(v)\subseteq Z(v)\) for every \(v\). Theorem 3.1 gives a vertex with \(d^+(v)\le|N_2^+(v)|\le|Z(v)|\), and then \(n-1=d^+(v)+d^-(v)+|Z(v)|\), which is at least \(2d^+(v)+d^-(v)\). \(\square\)
 
 **Corollary 5.2.** If an oriented graph \(D\) of order \(n\ge1\) satisfies \(\delta^+(D)\ge n/3\) and \(\delta^-(D)\ge n/3\), then \(D\) contains a directed triangle.
 

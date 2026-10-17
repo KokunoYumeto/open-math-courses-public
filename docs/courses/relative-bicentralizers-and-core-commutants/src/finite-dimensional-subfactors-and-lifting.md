@@ -16,19 +16,26 @@ Throughout, \(M\) is a von Neumann algebra and we use the bimodule notation of t
 
 A *matrix subalgebra* of \(M\) is a \(*\)-subalgebra \(F\) containing \(1_M\) and spanned by a *system of matrix units* \((f_{ij})_{i,j=1}^k\): elements with
 \[
-f_{ij}f_{kl}=\delta_{jk}f_{il},\qquad f_{ij}^*=f_{ji},\qquad\sum_if_{ii}=1,\qquad f_{11}\ne0 .
+\begin{gathered}
+f_{ij}f_{kl}=\delta_{jk}f_{il},\qquad f_{ij}^*=f_{ji},\\
+\sum_if_{ii}=1,\qquad f_{11}\ne0 .
+\end{gathered}
 \]
 Then every \(f_{ii}\ne0\) (because \(f_{1i}f_{ii}f_{i1}=f_{11}\)), the \(f_{ij}\) are linearly independent, and \(F\cong M_k(\mathbb C)\). Let \(\psi_F\) be a faithful state on \(F\). We say that the matrix units *diagonalize* \(\psi_F\), with *weights* \(h_1,\ldots,h_k\), if \(\psi_F(f_{ij})=\delta_{ij}h_i\); then \(h_i>0\) and \(\sum_ih_i=1\). In this lesson and the next, every matrix subalgebra comes with matrix units diagonalizing its state. For \(F=M_2(\mathbb C)\) and \(0<\lambda\), the state \(\omega_\lambda\) is the one with weights
 \[
-h_1=\frac\lambda{1+\lambda},\qquad h_2=\frac1{1+\lambda},
-\tag{1.1}
+\begin{gathered}
+h_1=\frac\lambda{1+\lambda},\\
+h_2=\frac1{1+\lambda},
+\end{gathered}\tag{1.1}
 \]
 and the normalized trace \(\tau\) of \(M_k(\mathbb C)\) has all weights equal to \(1/k\).
 
 Put
 \[
-E_F(x)=\sum_{i,j}h_i\,f_{ji}\,x\,f_{ij}\qquad(x\in M),
-\tag{1.2}
+\begin{gathered}
+E_F(x)=\sum_{i,j}h_i\,f_{ji}\,x\,f_{ij}\\
+(x\in M),
+\end{gathered}\tag{1.2}
 \]
 and, for \(x\in M\) and indices \(a,b\),
 \[
@@ -43,18 +50,24 @@ x_{ab}=\sum_lf_{la}\,x\,f_{bl}.
 3. For \(\rho\in M_*\) the following are equivalent: (a) \(\rho\circ E_F=\rho\); (b) \(f_{ij}\rho=(h_j/h_i)\,\rho f_{ij}\) for all \(i,j\). In this case \(\rho(ac)=\psi_F(a)\rho(c)\) for \(a\in F\) and \(c\in F'\cap M\).
 4. For every \(\rho\in M_*\),
 \[
-\|\rho\circ E_F-\rho\|\le k\max_{i,j}\big\|f_{ij}\rho-(h_j/h_i)\,\rho f_{ij}\big\| .
+\begin{aligned}
+&\|\rho\circ E_F-\rho\|\\
+&\quad \le k\max_{i,j}\big\|f_{ij}\rho-(h_j/h_i)\,\rho f_{ij}\big\| .
+\end{aligned}
 \]
-5. If \(G\subset F'\cap M\) is a matrix subalgebra with matrix units \((g_{ab})\) diagonalizing \(\psi_G\), then \(F\vee G\) is a matrix subalgebra with matrix units \((f_{ij}g_{ab})\), which diagonalize the product state \(\psi_F\otimes\psi_G\), \((\psi_F\otimes\psi_G)(f_{ij}g_{ab})=\psi_F(f_{ij})\psi_G(g_{ab})\); and \(E_{F\vee G}=E_F\circ E_G=E_G\circ E_F\).
+5. If \(G\subset F'\cap M\) is a matrix subalgebra with matrix units \((g_{ab})\) diagonalizing \(\psi_G\), then \(F\vee G\) is a matrix subalgebra with matrix units \((f_{ij}g_{ab})\), which diagonalize the product state \(\psi_F\otimes\psi_G\), whose value at \(f_{ij}g_{ab}\) is \(\psi_F(f_{ij})\psi_G(g_{ab})\); and \(E_{F\vee G}=E_F\circ E_G=E_G\circ E_F\).
 6. If \(N\subset M\) is a von Neumann subalgebra containing \(F\) and \(E\colon M\to N\) is a conditional expectation, then \(E\circ E_F=E_F\circ E\), and \(E_F\) maps \(N\) onto \(F'\cap N\).
 
-**Proof.** (1) For \(x\in M\) and the \(x_{ab}\) of (1.3), \(f_{cd}x_{ab}=f_{ca}xf_{bd}=x_{ab}f_{cd}\), so \(x_{ab}\in F'\cap M\); and \(\sum_{a,b}f_{ab}x_{ab}=\sum_{a,b,l}f_{ab}f_{la}xf_{bl}=\sum_{a,b}f_{aa}xf_{bb}=x\). If \(\sum_{c,d}f_{cd}y_{cd}=0\) with \(y_{cd}\in F'\cap M\), then \(0=\sum_lf_{la}\big(\sum_{c,d}f_{cd}y_{cd}\big)f_{bl}=\sum_lf_{ll}y_{ab}=y_{ab}\).
+**Proof.** (1) For \(x\in M\) and the \(x_{ab}\) of (1.3), \(f_{cd}x_{ab}=f_{ca}xf_{bd}=x_{ab}f_{cd}\), so \(x_{ab}\in F'\cap M\); and \(\sum_{a,b}f_{ab}x_{ab}=\sum_{a,b,l}f_{ab}f_{la}xf_{bl}\), which is \(\sum_{a,b}f_{aa}xf_{bb}=x\). If \(\sum_{c,d}f_{cd}y_{cd}=0\) with \(y_{cd}\in F'\cap M\), then \(0=\sum_lf_{la}\big(\sum_{c,d}f_{cd}y_{cd}\big)f_{bl}\), which is \(\sum_lf_{ll}y_{ab}=y_{ab}\).
 
 (2) By (1.3), \(\sum_jf_{ji}xf_{ij}=x_{ii}\), so \(E_F(x)=\sum_ih_ix_{ii}\in F'\cap M\). For \(c\in F'\cap M\), \(c_{ab}=\delta_{ab}c\), so \(E_F(c)=c\); and \(E_F(cxd)=cE_F(x)d\) for \(c,d\in F'\cap M\), directly from (1.2). The map is positive, unital and normal, being a finite sum of maps \(x\mapsto f_{ji}xf_{ij}\) with positive coefficients. If \(x\ge0\) and \(E_F(x)=0\), every term \(h_if_{ji}xf_{ij}\) vanishes, so \(x^{1/2}f_{ij}=0\) for all \(i,j\), and \(x^{1/2}=x^{1/2}\sum_jf_{jj}=0\). Finally \(f_{ji}f_{ab}f_{ij}=\delta_{ia}\delta_{bi}f_{jj}\) gives \(E_F(f_{ab})=\delta_{ab}h_a1=\psi_F(f_{ab})1\).
 
 (3) Write \(x=\sum_{a,b}f_{ab}x_{ab}\). Then \(xf_{ij}=\sum_af_{aj}x_{ai}\) and \(f_{ij}x=\sum_bf_{ib}x_{jb}\), so by (2)
 \[
-E_F(xf_{ij})=h_jx_{ji},\qquad E_F(f_{ij}x)=h_ix_{ji}.
+\begin{gathered}
+E_F(xf_{ij})=h_jx_{ji},\\
+E_F(f_{ij}x)=h_ix_{ji}.
+\end{gathered}
 \]
 If \(\rho=\rho\circ E_F\), then \((f_{ij}\rho)(x)=\rho(xf_{ij})=h_j\rho(x_{ji})\) and \((\rho f_{ij})(x)=\rho(f_{ij}x)=h_i\rho(x_{ji})\), which is (b). Conversely, assume (b). With \((a\rho b)(x)=\rho(bxa)\), the definition (1.2) reads \(\rho\circ E_F=\sum_{i,j}h_i\,f_{ij}\rho f_{ji}\), and (b) gives \(f_{ij}\rho f_{ji}=(h_j/h_i)\rho f_{ij}f_{ji}=(h_j/h_i)\rho f_{ii}\). Hence
 \[
@@ -70,7 +83,10 @@ and each term has norm at most \(h_i\delta\). Summing over \(j\) and then over \
 
 (5) The \(g_{ab}\) commute with the \(f_{ij}\), so the products \(f_{ij}g_{ab}\) satisfy the relations of matrix units indexed by pairs \((i,a)\), and \(f_{11}g_{11}\ne0\): otherwise \(f_{j1}f_{11}g_{11}f_{1j}=f_{jj}g_{11}=0\) for all \(j\) and \(g_{11}=0\). The formula (1.2) for \(F\vee G\) with the weights \(h_ik_a\) of the product state is
 \[
-E_{F\vee G}(x)=\sum_{i,j,a,b}h_ik_a\,f_{ji}g_{ba}\,x\,g_{ab}f_{ij}=E_F(E_G(x)),
+\begin{aligned}
+E_{F\vee G}(x)&=\sum_{i,j,a,b}h_ik_a\,f_{ji}g_{ba}\,x\,g_{ab}f_{ij}\\
+&=E_F(E_G(x)),
+\end{aligned}
 \]
 and since the \(f\)'s and \(g\)'s commute, the same sum equals \(E_G(E_F(x))\).
 
@@ -92,7 +108,7 @@ Consequently \(\sigma^\rho_t(F)=F\) and \(\sigma^\rho_t(F'\cap M)=F'\cap M\); if
 \]
 where \(\|y\|_\rho=\rho(y^*y)^{1/2}\).
 
-**Proof.** By Lemma 1.1(3), with equal weights, \(f_{ij}\rho=\rho f_{ij}\), so \(a\rho=\rho a\) for every \(a\in T\). For \(c\in T'\cap M\), bimodularity and \(\rho\circ E_T=\rho\) give \(\rho(c^*(z-E_T(z)))=\rho(c^*E_T(z)-c^*E_T(z))=0\). With \(c=E_T(z)\) this gives \(\|z\|^2_\rho=\|E_T(z)\|^2_\rho+\|w\|^2_\rho\) for \(w=z-E_T(z)\). Since \(E_T(z)\) commutes with \(u\), \(uzu^*-z=uwu^*-w\). Finally \(\|uwu^*\|^2_\rho=\rho(uw^*wu^*)=\rho(w^*wu^*u)=\|w\|^2_\rho\), because \(u\rho=\rho u\). So \(\|uzu^*-z\|_\rho\le2\|w\|_\rho\). \(\square\)
+**Proof.** By Lemma 1.1(3), with equal weights, \(f_{ij}\rho=\rho f_{ij}\), so \(a\rho=\rho a\) for every \(a\in T\). For \(c\in T'\cap M\), bimodularity and \(\rho\circ E_T=\rho\) give \(\rho(c^*(z-E_T(z)))\) equals \(\rho(c^*E_T(z)-c^*E_T(z))\), which is \(0\). With \(c=E_T(z)\) this gives \(\|z\|^2_\rho=\|E_T(z)\|^2_\rho+\|w\|^2_\rho\) for \(w=z-E_T(z)\). Since \(E_T(z)\) commutes with \(u\), \(uzu^*-z=uwu^*-w\). Finally \(\|uwu^*\|^2_\rho=\rho(uw^*wu^*)\), which is \(\rho(w^*wu^*u)=\|w\|^2_\rho\), because \(u\rho=\rho u\). So \(\|uzu^*-z\|_\rho\le2\|w\|_\rho\). \(\square\)
 
 ## 2. Partial isometries in factors of type III
 
@@ -104,7 +120,10 @@ In this section \(N\) is a countably decomposable factor of type III with a fait
 
 **Lemma 2.2** (completing a partial isometry). Let \(p,q\in N\) be nonzero projections, \(v\in N\) a partial isometry with \(v^*v\le p\) and \(vv^*\le q\), and \(\eta>0\). There is a partial isometry \(x\in N\) with \(x^*x=p\), \(xx^*=q\) and
 \[
-\|x-v\|_\varphi+\|(x-v)^*\|_\varphi\le4\big(\varphi(p-v^*v)+\varphi(q-vv^*)+\eta\big)^{1/2}.
+\begin{aligned}
+&\|x-v\|_\varphi+\|(x-v)^*\|_\varphi\\
+&\quad \le4\big(\varphi(p-v^*v)+\varphi(q-vv^*)+\eta\big)^{1/2}.
+\end{aligned}
 \]
 
 **Proof.** Put \(p_0=p-v^*v\) and \(q_0=q-vv^*\), projections. From \(v^*v\le p\) and \(vv^*\le q\) we get \(vp=v\) and \(qv=v\), hence \(vp_0=0\) and \(v^*q_0=0\).
@@ -115,8 +134,12 @@ In this section \(N\) is a countably decomposable factor of type III with a fait
 
 *Exactly one defect zero.* Suppose \(p_0=0\ne q_0\). Then \(v^*v=p\ne0\). Lemma 2.1 in \(N\), for the normal positive functional \(r\mapsto\varphi(r)+\varphi(vrv^*)\), gives a nonzero projection \(r\le p\) with \(\varphi(r)+\varphi(vrv^*)\le\eta\). The partial isometry \(v'=v(p-r)\) has \(v'^*v'=p-r\) and \(v'v'^*=vv^*-vrv^*\), so its defects are \(r\ne0\) and \(q_0+vrv^*\ne0\). The first case gives \(x=v'+s\) with \(x^*x=p\), \(xx^*=q\), \(s^*s=r\) and \(ss^*=q_0+vrv^*\). Now \(x-v=s-vr\), so
 \[
-\|x-v\|_\varphi\le\varphi(r)^{1/2}+\varphi(rv^*vr)^{1/2}\le2\eta^{1/2},\qquad
-\|(x-v)^*\|_\varphi\le\varphi(q_0+vrv^*)^{1/2}+\varphi(vrv^*)^{1/2}\le(\varphi(q_0)+\eta)^{1/2}+\eta^{1/2},
+\begin{aligned}
+&\|x-v\|_\varphi\le\varphi(r)^{1/2}+\varphi(rv^*vr)^{1/2}\\
+&\quad \le2\eta^{1/2},\\
+&\|(x-v)^*\|_\varphi\le\varphi(q_0+vrv^*)^{1/2}\\
+&\quad +\varphi(vrv^*)^{1/2}\le(\varphi(q_0)+\eta)^{1/2}+\eta^{1/2},
+\end{aligned}
 \]
 and the sum is at most \(4(\varphi(q_0)+\eta)^{1/2}\). If \(q_0=0\ne p_0\), apply this case to \(v^*\), with \(p\) and \(q\) exchanged, and take the adjoint of the result. \(\square\)
 
@@ -124,32 +147,44 @@ and the sum is at most \(4(\varphi(q_0)+\eta)^{1/2}\). If \(q_0=0\ne p_0\), appl
 
 **Proposition 3.1.** Let \(N\) be a factor of type III₁ with separable predual, \(\varphi\) a faithful normal state on \(N\), \(\lambda>0\) and \(\delta>0\). There are a projection \(e\in N\) and a partial isometry \(x\in N\) with
 \[
-x^*x=1-e,\qquad xx^*=e,\qquad\|[e,\varphi]\|\le\delta,\qquad\|x\varphi-\lambda\varphi x\|\le\delta .
+\begin{gathered}
+x^*x=1-e,\qquad xx^*=e,\\
+\|[e,\varphi]\|\le\delta,\qquad \|x\varphi-\lambda\varphi x\|\le\delta .
+\end{gathered}
 \]
 The elements \(f_{11}=1-e\), \(f_{22}=e\), \(f_{21}=x\), \(f_{12}=x^*\) are matrix units of a matrix subalgebra \(F\cong M_2(\mathbb C)\) of \(N\), which diagonalize \(\omega_\lambda\), and
 \[
 \|\varphi\circ E_F-\varphi\|\le2\max(1,\lambda^{-1})\,\delta .
 \]
 
-**Proof.** Let \(0<\varepsilon<\min(1,\lambda)/(2(1+\lambda))\). By Lemma 2.1 of the asymptotic centralizer lesson there is a projection \(e\) with \(\|[e,\varphi]\|<\varepsilon\) and \(|\varphi(e)-1/(1+\lambda)|<\varepsilon\). Then \(\varphi(e)>1/(2(1+\lambda))\) and \(\varphi(1-e)>\lambda/(1+\lambda)-\varepsilon>\lambda/(2(1+\lambda))\), so \(e\) and \(1-e\) are nonzero.
+**Proof.** Let \(0<\varepsilon<\min(1,\lambda)/(2(1+\lambda))\). By Lemma 2.1 of the asymptotic centralizer lesson there is a projection \(e\) with \(\|[e,\varphi]\|<\varepsilon\) and \(|\varphi(e)-1/(1+\lambda)|<\varepsilon\). Then \(\varphi(e)>1/(2(1+\lambda))\) and \(\varphi(1-e)>\lambda/(1+\lambda)-\varepsilon\), which is greater than \(\lambda/(2(1+\lambda))\), so \(e\) and \(1-e\) are nonzero.
 
 Apply Lemma 2.2 of the asymptotic centralizer lesson to the projections \(p=1-e\), \(q=e\), the states \(\chi_1=(1-e)\varphi(1-e)/\varphi(1-e)\), \(\chi_2=e\varphi e/\varphi(e)\) (so \(\chi_1(p)=\chi_2(q)=1\)), and \(\varepsilon\). It gives a partial isometry \(v\) with \(v^*v\le1-e\), \(vv^*\le e\), \(\chi_1(1-e-v^*v)\le\varepsilon\), \(\chi_2(e-vv^*)\le\varepsilon\) and \(\|v\chi_1-\chi_2v\|\le6\sqrt\varepsilon\).
 
 Since \(v=vp\), \(v\varphi-v(p\varphi p)=vp\varphi(1-p)\), and \(p\varphi(1-p)=[p,\varphi](1-p)\); so \(\|v\varphi-v(p\varphi p)\|\le\|[p,\varphi]\|=\|[e,\varphi]\|\). Likewise \(\|\varphi v-(q\varphi q)v\|\le\|[e,\varphi]\|\). Further,
 \[
-v(p\varphi p)-\lambda(q\varphi q)v=\varphi(p)\big(v\chi_1-\chi_2v\big)+\big(\varphi(p)-\lambda\varphi(q)\big)\chi_2v ,
+\begin{aligned}
+&v(p\varphi p)-\lambda(q\varphi q)v=\varphi(p)\big(v\chi_1-\chi_2v\big)\\
+&\quad +\big(\varphi(p)-\lambda\varphi(q)\big)\chi_2v ,
+\end{aligned}
 \]
-and \(|\varphi(p)-\lambda\varphi(q)|=|1-(1+\lambda)\varphi(e)|<(1+\lambda)\varepsilon\). Altogether
+and \(|\varphi(p)-\lambda\varphi(q)|=|1-(1+\lambda)\varphi(e)|\), which is less than \((1+\lambda)\varepsilon\). Altogether
 \[
-\|v\varphi-\lambda\varphi v\|\le(1+\lambda)\varepsilon+6\sqrt\varepsilon+(1+\lambda)\varepsilon\le(2\lambda+8)\sqrt\varepsilon .
+\begin{aligned}
+&\|v\varphi-\lambda\varphi v\|\le(1+\lambda)\varepsilon+6\sqrt\varepsilon\\
+&\quad +(1+\lambda)\varepsilon\le(2\lambda+8)\sqrt\varepsilon .
+\end{aligned}
 \]
 Lemma 2.2 of this lesson, with \(\eta=\varepsilon\), gives a partial isometry \(x\) with \(x^*x=1-e\), \(xx^*=e\), and \(\|x-v\|_\varphi+\|(x-v)^*\|_\varphi\le4(3\varepsilon)^{1/2}\), because \(\varphi(p-v^*v)=\varphi(p)\chi_1(p-v^*v)\le\varepsilon\) and likewise for \(q\). By Lemma 1.1(b),(c) of the ultraproduct lesson, \(\|(x-v)\varphi\|\le\|x-v\|_\varphi\) and \(\|\varphi(x-v)\|\le\|(x-v)^*\|_\varphi\), so
 \[
-\|x\varphi-\lambda\varphi x\|\le(2\lambda+8)\sqrt\varepsilon+4\sqrt3\max(1,\lambda)\sqrt\varepsilon .
+\begin{aligned}
+&\|x\varphi-\lambda\varphi x\|\le(2\lambda+8)\sqrt\varepsilon\\
+&\quad +4\sqrt3\max(1,\lambda)\sqrt\varepsilon .
+\end{aligned}
 \]
 Choosing \(\varepsilon\) small makes this and \(\|[e,\varphi]\|<\varepsilon\) at most \(\delta\).
 
-The relations of matrix units follow from \(x^*x=1-e\), \(xx^*=e\). The weights of \(\omega_\lambda\) in (1.1) have \(h_1/h_2=\lambda\). For Lemma 1.1(4) we need the four quantities \(\|f_{ij}\varphi-(h_j/h_i)\varphi f_{ij}\|\): for \(f_{11},f_{22}\) they are \(\|[e,\varphi]\|\le\delta\); for \(f_{21}=x\) it is \(\|x\varphi-\lambda\varphi x\|\le\delta\); for \(f_{12}=x^*\) it is \(\|x^*\varphi-\lambda^{-1}\varphi x^*\|=\lambda^{-1}\|(\varphi x-\lambda x\varphi)^*\|\le\lambda^{-1}\delta\), since \((a\varphi)^*=\varphi a^*\). Lemma 1.1(4) with \(k=2\) finishes the proof. \(\square\)
+The relations of matrix units follow from \(x^*x=1-e\), \(xx^*=e\). The weights of \(\omega_\lambda\) in (1.1) have \(h_1/h_2=\lambda\). For Lemma 1.1(4) we need the four quantities \(\|f_{ij}\varphi-(h_j/h_i)\varphi f_{ij}\|\): for \(f_{11},f_{22}\) they are \(\|[e,\varphi]\|\le\delta\); for \(f_{21}=x\) it is \(\|x\varphi-\lambda\varphi x\|\le\delta\); for \(f_{12}=x^*\) it is \(\|x^*\varphi-\lambda^{-1}\varphi x^*\|=\lambda^{-1}\|(\varphi x-\lambda x\varphi)^*\|\), which is at most \(\lambda^{-1}\delta\), since \((a\varphi)^*=\varphi a^*\). Lemma 1.1(4) with \(k=2\) finishes the proof. \(\square\)
 
 ## 4. Lifting from the asymptotic centralizer
 
@@ -167,19 +202,31 @@ In this section \(N\) is a countably decomposable factor of type III with a fait
 
 **Proof.** Let \((y_m)\in A\) represent \(V\). Then \(y_m'=q_my_mp_m\) represents \(QVP=V\), where \(P=V^*V\), \(Q=VV^*\), and \(a_m=y_m'^*y_m'\in p_mNp_m\) is positive and represents \(P\); so \((a_m-p_m)\in\mathcal I_\omega\). Let \(h(t)=t^{-1/2}1_{[1/4,\infty)}(t)\) for \(t\ge0\), and \(w_m=y_m'h(a_m)\). As in the previous proof, \(h(a_m)=a_mk(a_m)\) with \(k(t)=t^{-3/2}1_{[1/4,\infty)}(t)\), so \(h(a_m)=p_mh(a_m)p_m\). Then
 \[
-w_m^*w_m=h(a_m)a_mh(a_m)=1_{[1/4,\infty)}(a_m)=:p_m'\le p_m ,
+\begin{aligned}
+&w_m^*w_m=h(a_m)a_mh(a_m)\\
+&\quad =1_{[1/4,\infty)}(a_m)=:p_m'\le p_m ,
+\end{aligned}
 \]
 so \(w_m\) is a partial isometry, and \(q_m'=w_mw_m^*\le q_m\) because \(q_mw_m=w_m\).
 
 For \(t\ge0\) one checks \(1_{[0,1/4)}(t)\le\frac43|t-1|\) and \(|h(t)-1|\le2|t-1|\). Since \(p_m\) commutes with \(a_m\) and \(p_m(a_m-1)p_m=a_m-p_m\), the functional calculus gives
 \[
-(p_m-p_m')^2=p_m1_{[0,1/4)}(a_m)^2p_m\le\tfrac{16}9(a_m-p_m)^2,\qquad(h(a_m)-p_m)^2=p_m(h-1)^2(a_m)p_m\le4(a_m-p_m)^2 .
+\begin{aligned}
+&(p_m-p_m')^2=p_m1_{[0,1/4)}(a_m)^2p_m\\
+&\quad \le\tfrac{16}9(a_m-p_m)^2,\\
+&(h(a_m)-p_m)^2=p_m(h-1)^2(a_m)p_m\\
+&\quad \le4(a_m-p_m)^2 .
+\end{aligned}
 \]
 Applying \(\varphi\), the self-adjoint sequences \((p_m-p_m')\) and \((h(a_m)-p_m)\) lie in \(\mathcal I_\omega\). Hence \(w_m-y_m'=y_m'(h(a_m)-p_m)\) defines an element of \(\mathcal I_\omega\), \((w_m)\in A\) represents \(V\), and \((q_m')\) represents \(VV^*=Q\); so \((q_m-q_m')\in\mathcal I_\omega\) and \(\lim_\omega\varphi(q_m-q_m')=0\). Also \(\lim_\omega\varphi(p_m-p_m')=0\).
 
 Since \(V\ne0\), \(\lim_\omega\varphi(p_m)=\tau(P)>0\) and \(\lim_\omega\varphi(q_m)=\tau(Q)>0\), so \(W=\{m:p_m\ne0,\ q_m\ne0\}\in\omega\). For \(m\in W\), Lemma 2.2 with \(\eta=1/m\) gives a partial isometry \(x_m\) with \(x_m^*x_m=p_m\), \(x_mx_m^*=q_m\) and
 \[
-\|x_m-w_m\|_\varphi+\|(x_m-w_m)^*\|_\varphi\le4\big(\varphi(p_m-p_m')+\varphi(q_m-q_m')+1/m\big)^{1/2}\to_\omega0 .
+\begin{aligned}
+&\|x_m-w_m\|_\varphi+\|(x_m-w_m)^*\|_\varphi\\
+&\quad\le4\big(\varphi(p_m-p_m')+\varphi(q_m-q_m')\\
+&\qquad\quad+1/m\big)^{1/2}\to_\omega0 .
+\end{aligned}
 \]
 For \(m\notin W\) put \(x_m=0\). Then \((x_m-w_m)\in\mathcal I_\omega\), so \((x_m)\in A\) represents \(V\). \(\square\)
 
@@ -193,7 +240,7 @@ For \(m\notin W\) put \(x_m=0\). Then \((x_m-w_m)\in\mathcal I_\omega\), so \((x
 
 **Proof.** *Finite spectrum.* Choose \(K\) with \(2\pi/K\le\delta/2\), and let \(e_l=1_{\Delta_l}(U)\) for the arcs \(\Delta_l=\{e^{i\theta}:2\pi l/K\le\theta<2\pi(l+1)/K\}\), \(0\le l<K\). By the Borel functional calculus of the normal operator \(U\) (Theorem 8.1 of the spectral theorem lesson) the \(e_l\) are mutually orthogonal projections with sum \(1\), they commute with every operator commuting with \(U\) and \(U^*\), hence lie in \(Q''=Q\), and \(U_1=\sum_le^{2\pi il/K}e_l\) satisfies \(\|U-U_1\|\le2\pi/K\), because \(|z-e^{2\pi il/K}|\le2\pi/K\) on \(\Delta_l\).
 
-*Dyadic traces.* Choose \(p\) with \(K2^{-p}\le\delta^2/16\). For each \(l\) choose a projection \(f_l\le e_l\) with \(\tau(f_l)=2^{-p}\lfloor2^p\tau(e_l)\rfloor\): by Corollary 2.4 of the lesson on Haar unitaries there is a projection of this trace, and by (B8) of the ultraproduct lesson it is equivalent to a subprojection of \(e_l\), which has the same trace. Put \(r=1-\sum_lf_l\), a projection with \(\tau(r)=\sum_l(\tau(e_l)-\tau(f_l))\le K2^{-p}\), and \(U_2=\sum_le^{2\pi il/K}f_l+r\). Then \(U_1-U_2=\sum_l(e^{2\pi il/K}-1)(e_l-f_l)\), a combination of orthogonal projections with coefficients of modulus at most \(2\), so \(\|U_1-U_2\|_\tau\le2\tau(r)^{1/2}\le\delta/2\). Hence \(\|U-U_2\|_\tau\le\|U-U_1\|+\|U_1-U_2\|_\tau\le\delta\).
+*Dyadic traces.* Choose \(p\) with \(K2^{-p}\le\delta^2/16\). For each \(l\) choose a projection \(f_l\le e_l\) with \(\tau(f_l)=2^{-p}\lfloor2^p\tau(e_l)\rfloor\): by Corollary 2.4 of the lesson on Haar unitaries there is a projection of this trace, and by (B8) of the ultraproduct lesson it is equivalent to a subprojection of \(e_l\), which has the same trace. Put \(r=1-\sum_lf_l\), a projection with \(\tau(r)=\sum_l(\tau(e_l)-\tau(f_l))\le K2^{-p}\), and \(U_2=\sum_le^{2\pi il/K}f_l+r\). Then \(U_1-U_2=\sum_l(e^{2\pi il/K}-1)(e_l-f_l)\), a combination of orthogonal projections with coefficients of modulus at most \(2\), so \(\|U_1-U_2\|_\tau\le2\tau(r)^{1/2}\le\delta/2\). Hence \(\|U-U_2\|_\tau\le\|U-U_1\|+\|U_1-U_2\|_\tau\), which is at most \(\delta\).
 
 *A matrix subalgebra.* The projections \(f_0,\ldots,f_{K-1},r\) add up to \(1\) and have traces in \(2^{-p}\mathbb Z\). Splitting each of them, by the same two facts, into projections of trace exactly \(2^{-p}\), we obtain mutually orthogonal projections \(g_1,\ldots,g_{2^p}\) of trace \(2^{-p}\) with sum \(1\), such that each \(f_l\) and \(r\) is a sum of some of them. By Lemma 2.3 of the lesson on Haar unitaries there are \(w_i\in Q\) with \(w_i^*w_i=g_1\), \(w_iw_i^*=g_i\) (\(w_1=g_1\)). The elements \(w_iw_j^*\) are matrix units with \(\sum_iw_iw_i^*=1\), and \(\Theta(\varepsilon_{ij})=w_iw_j^*\) defines a unital \(*\)-homomorphism. The unitary \(U_2\) is \(\Theta(c)\) for the diagonal unitary \(c\) whose \(i\)-th entry is \(e^{2\pi il/K}\) if \(g_i\le f_l\), and \(1\) if \(g_i\le r\). \(\square\)
 
@@ -211,9 +258,9 @@ For \(m\notin W\) put \(x_m=0\). Then \((x_m-w_m)\in\mathcal I_\omega\), so \((x
 
 ## 7. Solutions
 
-**6.1.** With weights \(h_1=\lambda/(1+\lambda)\), \(h_2=1/(1+\lambda)\), \(F'\cap M=\mathbb C1\) and \(E_F(x)=\sum_{i,j}h_ie_{ji}xe_{ij}=(h_1x_{11}+h_2x_{22})1=\omega_\lambda(x)1\). For \(x=(x_{ab})\), \((e_{21}\omega_\lambda)(x)=\omega_\lambda(xe_{21})=h_1x_{12}\) and \((\omega_\lambda e_{21})(x)=\omega_\lambda(e_{21}x)=h_2x_{12}\); so \(e_{21}\omega_\lambda=(h_1/h_2)\,\omega_\lambda e_{21}=\lambda\,\omega_\lambda e_{21}\), which is (b) for \((i,j)=(2,1)\).
+**6.1.** With weights \(h_1=\lambda/(1+\lambda)\), \(h_2=1/(1+\lambda)\), \(F'\cap M=\mathbb C1\) and \(E_F(x)=\sum_{i,j}h_ie_{ji}xe_{ij}\), which is \((h_1x_{11}+h_2x_{22})1=\omega_\lambda(x)1\). For \(x=(x_{ab})\), \((e_{21}\omega_\lambda)(x)=\omega_\lambda(xe_{21})=h_1x_{12}\) and \((\omega_\lambda e_{21})(x)=\omega_\lambda(e_{21}x)=h_2x_{12}\); so \(e_{21}\omega_\lambda=(h_1/h_2)\,\omega_\lambda e_{21}=\lambda\,\omega_\lambda e_{21}\), which is (b) for \((i,j)=(2,1)\).
 
-**6.2.** Here \(E_F(x)=\tau(x)1\), so \(\rho\circ E_F=\tau\) and \(\|\rho\circ E_F-\rho\|=\|\tau-\omega_\lambda\|=|h_1-\tfrac12|+|h_2-\tfrac12|=\frac{|1-\lambda|}{1+\lambda}\). For \(e_{12}\): \([e_{12},\rho](x)=\rho(xe_{12})-\rho(e_{12}x)=(h_2-h_1)x_{21}\), of norm \(|h_2-h_1|=\frac{|1-\lambda|}{1+\lambda}\); the same holds for \(e_{21}\), and the diagonal units commute with \(\rho\). So the maximum is \(\frac{|1-\lambda|}{1+\lambda}\), and Lemma 1.1(4) gives the bound \(2\frac{|1-\lambda|}{1+\lambda}\), twice the true value.
+**6.2.** Here \(E_F(x)=\tau(x)1\), so \(\rho\circ E_F=\tau\) and \(\|\rho\circ E_F-\rho\|=\|\tau-\omega_\lambda\|\), which is \(|h_1-\tfrac12|+|h_2-\tfrac12|=\frac{|1-\lambda|}{1+\lambda}\). For \(e_{12}\): \([e_{12},\rho](x)=\rho(xe_{12})-\rho(e_{12}x)\), which is \((h_2-h_1)x_{21}\), of norm \(|h_2-h_1|=\frac{|1-\lambda|}{1+\lambda}\); the same holds for \(e_{21}\), and the diagonal units commute with \(\rho\). So the maximum is \(\frac{|1-\lambda|}{1+\lambda}\), and Lemma 1.1(4) gives the bound \(2\frac{|1-\lambda|}{1+\lambda}\), twice the true value.
 
 **6.3.** \(x^*x=1\) makes \(x\) an isometry of \(\mathbb C^2\), hence unitary, so \(xx^*=1\ne e_{11}\). In \(M_2(\mathbb C)\) projections of different trace are not equivalent; Lemma 2.2 uses that all nonzero projections of a type III factor are equivalent.
 
@@ -221,7 +268,12 @@ For \(m\notin W\) put \(x_m=0\). Then \((x_m-w_m)\in\mathcal I_\omega\), so \((x
 
 **6.5.** A unitary in a finite-dimensional \(*\)-subalgebra has finite spectrum, so \(U=\sum_lz_lq_l\) with distinct \(z_l\) of modulus \(1\) and nonzero orthogonal projections \(q_l\) adding up to \(1\). Put \(t_l=\tau(q_l)>0\), so that \(\tau(U^j)=\sum_lz_l^jt_l\). Expanding the square,
 \[
-\frac1J\sum_{j=0}^{J-1}\Big|\sum_lz_l^jt_l\Big|^2=\sum_{l,l'}t_lt_{l'}\,\frac1J\sum_{j=0}^{J-1}(z_l\bar z_{l'})^j\longrightarrow\sum_lt_l^2>0\qquad(J\to\infty),
+\begin{aligned}
+&\frac1J\sum_{j=0}^{J-1}\Big|\sum_lz_l^jt_l\Big|^2\\
+&\quad =\sum_{l,l'}t_lt_{l'}\,\frac1J\sum_{j=0}^{J-1}(z_l\bar z_{l'})^j\\
+&\quad \longrightarrow\sum_lt_l^2>0\\
+&(J\to\infty),
+\end{aligned}
 \]
 because \(\frac1J\sum_{j<J}z^j=\frac{1-z^J}{J(1-z)}\to0\) for \(|z|=1\), \(z\ne1\). For a Haar unitary the left side equals \(\frac1J|\tau(U^0)|^2=\frac1J\to0\), a contradiction.
 

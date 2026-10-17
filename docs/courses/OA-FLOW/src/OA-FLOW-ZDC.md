@@ -253,6 +253,95 @@ The center of \(R\) is \(L^\infty(\Omega)\), and \(\chi\) induces \(f\mapsto f\c
 
 Finally, [CDEC1](OA-FLOW-CDEC.md#cdec-1) supplies a normal absorption isomorphism \(M\bar\otimes B(\ell^2\mathbb Z)\cong M\), using a filling family of isometries and full bounded matrix arrays. Composing it with (ZDC18), with inverse the reverse composition of the normal inverses, proves the existence theorem with \(N=R,\alpha=\chi,\tau=\tau_0\). Its roof is exactly the negative logarithm of (ZDC27)'s central density.
 
+<a id="zdc-strip"></a>
+## 4A. Recovering the trace by averaging over a strip
+
+The coefficient trace can be read directly from a strip of positive height. Retain the product trace and return automorphism of Sections 3–4:
+\[
+ \mathcal T=(e^{-s}\,ds)\bar\otimes k,\qquad
+ k\beta=k_{e^{-r}},\qquad r\ge\delta>0.
+\]
+For a constant width \(d>0\), define on the whole of \(D_+\)
+\[
+ k^{[d]}(x)=\frac1d\,
+       \mathcal T(1_{[0,d)}\otimes x).
+ \tag{ZDC-SA1}
+\]
+Then
+\[
+ k^{[d]}=c_d k,\qquad
+ c_d=\frac{1-e^{-d}}{d}>0,\qquad
+ k(x)=\frac{\mathcal T(1_{[0,d)}\otimes x)}{1-e^{-d}}.
+ \tag{ZDC-SA2}
+\]
+In particular the last expression is independent of \(d\), and
+\[
+ k^{[d]}\beta=(k^{[d]})_{e^{-r}}
+       \le e^{-\delta}k^{[d]}.
+ \tag{ZDC-SA3}
+\]
+When \(0<d\le\delta\), the averaging strip lies inside the suspension domain \(0\le s<r(\omega)\) for every retained base point. No value of a trace at the single height zero is needed.
+
+**Proof.** The full-cone product formula (ZDC13) gives
+\[
+ \mathcal T(1_{[0,d)}\otimes x)
+      =\left(\int_0^d e^{-s}\,ds\right)k(x)
+      =(1-e^{-d})k(x).
+\]
+The scalar is finite and strictly positive, so this equality also covers \(k(x)=\infty\). Thus the averaging functional is a faithful normal semifinite trace: each of these properties follows from multiplication of \(k\) by the positive scalar \(c_d\). In particular its finite left ideal is exactly \(\mathfrak n_k\); semifiniteness is not inferred merely by restricting \(\mathcal T\) to constant fields. Multiplying (ZDC24) by \(c_d\) proves (ZDC-SA3) on every positive element.
+
+The same recovery permits any bounded Borel profile \(f\ge0\) with
+\(0<I_f=\int e^{-s}f(s)\,ds<\infty\):
+\[
+ k(x)=I_f^{-1}\mathcal T(f\otimes x).
+ \tag{ZDC-SA4}
+\]
+This follows directly from (ZDC13), including infinite values. It also shows why dividing by the ordinary length of a strip gives \(c_d k\), whereas dividing by its exponential mass gives \(k\). Both normalizations give the same central return density. \(\square\)
+
+There is a useful distinction when the width depends on the central base. Let \(h\) be any finite strictly positive measurable central function, and put
+\[
+ p_h(s,\omega)=1_{[0,h(\omega))}(s),\qquad
+ b_h=1-e^{-h},\qquad
+ a_h=\frac{1-e^{-h}}{h}.
+ \tag{ZDC-SA5}
+\]
+Both \(b_h\) and \(a_h\) are bounded, strictly positive central elements; neither need be bounded below. For the central projection \(p_h\in L^\infty(\mathbb R)\bar\otimes Z(D)\), nonnegative Tonelli in the full-cone product formula gives
+\[
+ \mathcal T\bigl(p_h(1\otimes x)\bigr)=k(b_hx)
+       \qquad(x\in D_+).
+ \tag{ZDC-SA6}
+\]
+To verify the formula without assuming a choice of fiber traces, first take \(h\) to be a nonnegative countably valued simple central function. Split the center into its level projections. Formula (ZDC13) gives the claimed equality on each piece, and normality sums the nonnegative terms. For general \(h\), choose nonnegative simple central functions \(h_j\uparrow h\). Then \(p_{h_j}\uparrow p_h\) and \(1-e^{-h_j}\uparrow1-e^{-h}\). Normality of both traces proves (ZDC-SA6) for every \(x\in D_+\), with infinite values allowed.
+
+Define the average over variable widths by bounded truncation:
+\[
+ \bar k_h(x)=\sup_{n\ge1}
+       \mathcal T\bigl(p_h(1\otimes\min(h^{-1},n)x)\bigr)
+       =k(a_hx).
+ \tag{ZDC-SA7}
+\]
+The equality follows from (ZDC-SA6) and monotone convergence, since
+\(b_h\min(h^{-1},n)\uparrow a_h\). Every argument of \(\mathcal T\) in this definition is bounded and positive. Thus no unbounded product has been submitted to a weight whose domain is the bounded algebra. Central density calculus makes \(\bar k_h=k_{a_h}\) normal and faithful. If \(p_i\uparrow1\) are finite-\(k\) projections, then
+\(\bar k_h(p_i)\le k(p_i)<\infty\), since \(a_h\le1\). These projections prove semifiniteness. Its exact finite ideal is \(\{y\in D:k(a_hy^*y)<\infty\}\).
+
+The normalization can be undone without assuming a positive lower bound for \(a_h\):
+\[
+ k(x)=\sup_{n\ge1}\bar k_h\bigl(\min(a_h^{-1},n)x\bigr).
+ \tag{ZDC-SA8}
+\]
+Here the integrand becomes \(k(\min(1,na_h)x)\), and the central factors increase to one. Normality gives the equality, including infinity.
+
+For variable widths, the return density generally changes. The covariance and iterated central perturbation formulas (ZDC7) give
+\[
+ \bar k_h\beta
+   =(k\beta)_{\beta^{-1}(a_h)}
+   =k_{e^{-r}\beta^{-1}(a_h)}
+   =(\bar k_h)_{q_h},\qquad
+ q_h=e^{-r}\frac{\beta^{-1}(a_h)}{a_h}.
+ \tag{ZDC-SA9}
+\]
+The quotient is a finite strictly positive central affiliated function; bounded spectral cuts give all the equalities on the full positive cone, as in Section 1. For constant \(h=d\), the quotient of the two \(a_h\) factors is one and (ZDC-SA3) is recovered. More generally, \(\beta(a_h)=a_h\) suffices. Without that condition the bound for the original density \(e^{-r}\) alone does not establish the same bound for \(q_h\); the change of averaging width must be included. Thus a fixed short strip supplies both an explicit coefficient trace and its stated uniform contraction.
+
 <a id="zdc-5"></a>
 ## 5. A contracting automorphism gives a normal suspension
 

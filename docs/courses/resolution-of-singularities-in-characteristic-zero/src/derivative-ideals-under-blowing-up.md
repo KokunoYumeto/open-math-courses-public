@@ -18,14 +18,18 @@ with \(D^j(\mathcal I)\) as in [Smooth blow-ups and transforms of ideals, Defini
 
 **Lemma 1.2.** For \(0\le j<m\), \(\operatorname{cosupp}(D^j\mathcal I,m-j)=\operatorname{cosupp}(\mathcal I,m)\). If \(Z\) is a closed subset with \(\operatorname{ord}_Z\mathcal I\ge m\), then \(\operatorname{ord}_ZD^j(\mathcal I)\ge m-j\).
 
-**Proof.** By Corollary 2.5 and Proposition 2.6(1) of the first lesson, \(\operatorname{cosupp}(D^j\mathcal I,m-j)=V(D^{m-j-1}D^j\mathcal I)=V(D^{m-1}\mathcal I)=\operatorname{cosupp}(\mathcal I,m)\). The second statement applies this at the generic points of \(Z\). \(\square\)
+**Proof.** By Corollary 2.5 and Proposition 2.6(1) of the first lesson, \(\operatorname{cosupp}(D^j\mathcal I,m-j)=V(D^{m-j-1}D^j\mathcal I)\), which is \(V(D^{m-1}\mathcal I)=\operatorname{cosupp}(\mathcal I,m)\). The second statement applies this at the generic points of \(Z\). \(\square\)
 
 ## 2. Chart formulas
 
 Let \(\pi:B_ZX\to X\) be the blow-up of a smooth centre and \(f\) a function near a closed point \(p\in Z\) with \(\operatorname{ord}_Zf\ge m\). Take coordinates \(z\) centred at \(p\) with \(Z=V(z_1,\ldots,z_r)\), and a chart \(U_j\) with coordinates \(y\) as in [Smooth blow-ups and transforms of ideals, Proposition 3.1](smooth-blowups-and-transforms-of-ideals.md#3-blowing-up-a-smooth-centre). Write \(\partial_l\) for the derivations of \(z\) and \(\partial/\partial y_i\) for those of \(y\). On \(U_j\) the pulled-back coordinates are polynomials in \(y\):
 
 \[
-\pi^*z_l=\varphi_l(y),\qquad \varphi_l=y_ly_j\ (l\le r,\ l\ne j),\quad \varphi_j=y_j,\quad \varphi_l=y_l\ (l>r).
+\begin{aligned}
+&\pi^*z_l=\varphi_l(y),\\
+&\varphi_l=y_ly_j\ (l\le r,\ l\ne j),\quad \varphi_j\\
+&\quad =y_j,\quad \varphi_l=y_l\ (l>r).
+\end{aligned}
 \]
 
 Put \(F=\pi^*f\) and \(G=y_j^{-m}F\), a function on \(U_j\) by Lemma 4.1 of the first lesson; \(G\) represents \(\pi^{-1}_*(f,m)\). Each \(\partial_lf\) has order \(\ge m-1\) along \(Z\) by Lemma 2.2 there, so \(\pi^{-1}_*(\partial_lf,m-1)\) is represented by \(y_j^{-(m-1)}\pi^*(\partial_lf)\).
@@ -34,10 +38,12 @@ Put \(F=\pi^*f\) and \(G=y_j^{-m}F\), a function on \(U_j\) by Lemma 4.1 of the 
 
 \[
 \begin{aligned}
-\pi^{-1}_*(\partial_if,\,m-1)&=\frac{\partial G}{\partial y_i}&&(i\le r,\ i\ne j),\\
-\pi^{-1}_*(\partial_if,\,m-1)&=y_j\frac{\partial G}{\partial y_i}&&(i>r),\\
-\pi^{-1}_*(\partial_jf,\,m-1)&=y_j\frac{\partial G}{\partial y_j}-\sum_{l\le r,\ l\ne j}y_l\frac{\partial G}{\partial y_l}+mG,\\
-\pi^{-1}_*(z_i\partial_if,\,m-1)&=y_j\cdot y_i\frac{\partial G}{\partial y_i}&&(i\le r,\ i\ne j).
+&\pi^{-1}_*(\partial_if,\,m-1)=\frac{\partial G}{\partial y_i}\quad(i\le r,\ i\ne j),\\
+&\pi^{-1}_*(\partial_if,\,m-1)=y_j\frac{\partial G}{\partial y_i}\quad(i>r),\\
+&\pi^{-1}_*(\partial_jf,\,m-1)=y_j\frac{\partial G}{\partial y_j}\\
+&\qquad-\sum_{l\le r,\ l\ne j}y_l\frac{\partial G}{\partial y_l}+mG,\\
+&\pi^{-1}_*(z_i\partial_if,\,m-1)=y_j\cdot y_i\frac{\partial G}{\partial y_i}\\
+&\qquad(i\le r,\ i\ne j).
 \end{aligned}
 \]
 
@@ -46,18 +52,28 @@ For \(r=1\) (a trivial blow-up, \(y=z\), \(G=z_1^{-m}f\)) the formulas read \(\p
 **Proof.** Pulling back \(df=\sum_l\partial_lf\,dz_l\) gives \(dF=\sum_l\pi^*(\partial_lf)\,d\varphi_l\), and \(d\varphi_l=\sum_i(\partial\varphi_l/\partial y_i)\,dy_i\). Comparing coefficients of \(dy_i\) in the basis \(dy\):
 
 \[
-\frac{\partial F}{\partial y_i}=y_j\,\pi^*(\partial_if)\ (i\le r,\,i\ne j),\qquad
-\frac{\partial F}{\partial y_i}=\pi^*(\partial_if)\ (i>r),\qquad
+\begin{gathered}
+\frac{\partial F}{\partial y_i}=y_j\,\pi^*(\partial_if)\ (i\le r,\,i\ne j),\\
+\frac{\partial F}{\partial y_i}=\pi^*(\partial_if)\ (i>r),\\
 \frac{\partial F}{\partial y_j}=\sum_{l\le r,\,l\ne j}y_l\,\pi^*(\partial_lf)+\pi^*(\partial_jf).
+\end{gathered}
 \]
 
-Since \(G=y_j^{-m}F\), we have \(\partial G/\partial y_i=y_j^{-m}\partial F/\partial y_i\) for \(i\ne j\) and \(y_j\,\partial G/\partial y_j=-mG+y_j^{-(m-1)}\partial F/\partial y_j\). The first two formulas follow by multiplying by \(y_j^{-(m-1)}\). For the third, \(y_j^{-(m-1)}\partial F/\partial y_j=\sum_ly_l\,\pi^{-1}_*(\partial_lf,m-1)+\pi^{-1}_*(\partial_jf,m-1)\), and the first formula rewrites \(\pi^{-1}_*(\partial_lf,m-1)\) as \(\partial G/\partial y_l\). The fourth follows from the first, since \(\pi^*z_i=y_iy_j\). The case \(r=1\) is the same computation with \(F=f\). \(\square\)
+Since \(G=y_j^{-m}F\), we have \(\partial G/\partial y_i=y_j^{-m}\partial F/\partial y_i\) for \(i\ne j\) and \(y_j\,\partial G/\partial y_j=-mG+y_j^{-(m-1)}\partial F/\partial y_j\). The first two formulas follow by multiplying by \(y_j^{-(m-1)}\). For the third,
+\[
+\begin{aligned}
+&y_j^{-(m-1)}\partial F/\partial y_j\\
+&\quad=\sum_ly_l\,\pi^{-1}_*(\partial_lf,m-1)\\
+&\qquad+\pi^{-1}_*(\partial_jf,m-1),
+\end{aligned}
+\]
+and the first formula rewrites \(\pi^{-1}_*(\partial_lf,m-1)\) as \(\partial G/\partial y_l\). The fourth follows from the first, since \(\pi^*z_i=y_iy_j\). The case \(r=1\) is the same computation with \(F=f\). \(\square\)
 
 Every right-hand side lies in the ideal \(D(G)\) generated by \(G\) and its derivatives. The formulas for \(\partial/\partial y_i\) with \(i\le r\) are the ones without a factor \(y_j\); they will matter for the logarithmic version in [Logarithmic derivatives and going up](logarithmic-derivatives-and-going-up.md).
 
 ## 3. The basic inclusion
 
-**Theorem 3.1.** Let \((X_r,\mathcal I_r,m)\to\cdots\to(X_0,\mathcal I_0,m)=(X,\mathcal I,m)\) be a smooth blow-up sequence of order \(\ge m\) (with any snc divisors carried along), and \(0\le j\le m\). Define marked ideals \((\mathcal J_i,m-j)\) by \(\mathcal J_0=D^j(\mathcal I)\) and \((\mathcal J_{i+1},m-j)=(\pi_i)^{-1}_*(\mathcal J_i,m-j)\). Then each step is a blow-up of order \(\ge m-j\) for \((X_i,\mathcal J_i,m-j)\), so the \(\mathcal J_i\) are defined, and
+**Theorem 3.1.** Let \((X_r,\mathcal I_r,m)\to\cdots\to(X_0,\mathcal I_0,m)\), with \((X_0,\mathcal I_0,m)=(X,\mathcal I,m)\), be a smooth blow-up sequence of order \(\ge m\) (with any snc divisors carried along), and \(0\le j\le m\). Define marked ideals \((\mathcal J_i,m-j)\) by \(\mathcal J_0=D^j(\mathcal I)\) and \((\mathcal J_{i+1},m-j)=(\pi_i)^{-1}_*(\mathcal J_i,m-j)\). Then each step is a blow-up of order \(\ge m-j\) for \((X_i,\mathcal J_i,m-j)\), so the \(\mathcal J_i\) are defined, and
 
 \[
 \mathcal J_i\subset D^j(\mathcal I_i)\qquad\text{for every }i.
@@ -68,7 +84,12 @@ In the notation of transforms along the sequence, \(\Pi^{-1}_*\bigl(D^j(\mathcal
 **Proof.** *One blow-up.* Let \(\pi\) be one blow-up with \(\operatorname{ord}_Z\mathcal I\ge m\). We show \(\pi^{-1}_*(D^j\mathcal I,m-j)\subset D^j(\pi^{-1}_*(\mathcal I,m))\) by induction on \(j\). For \(j=0\) there is nothing to prove. For \(j=1\), the ideal \(D(\mathcal I)\) is generated near \(p\) by the \(f\in\mathcal I\) and the \(\partial_lf\), so its transform with marking \(m-1\) is generated by \(\pi^{-1}_*(f,m-1)=y_jG\) and by the \(\pi^{-1}_*(\partial_lf,m-1)\). By Proposition 2.1 all lie in \(D(G)\subset D(\pi^{-1}_*(\mathcal I,m))\). Away from the charts over such \(p\) the blow-up is an isomorphism and the claim is clear. For \(j\ge2\), the marked ideal \((D^{j-1}\mathcal I,m-j+1)\) has order \(\ge m-j+1\) along \(Z\) by Lemma 1.2, so the case \(j=1\) applies to it:
 
 \[
-\pi^{-1}_*(D^j\mathcal I,m-j)\subset D\bigl(\pi^{-1}_*(D^{j-1}\mathcal I,m-j+1)\bigr)\subset D\bigl(D^{j-1}\pi^{-1}_*(\mathcal I,m)\bigr)=D^j\bigl(\pi^{-1}_*(\mathcal I,m)\bigr),
+\begin{aligned}
+&\pi^{-1}_*(D^j\mathcal I,m-j)\\
+&\quad \subset D\bigl(\pi^{-1}_*(D^{j-1}\mathcal I,m-j+1)\bigr)\\
+&\quad \subset D\bigl(D^{j-1}\pi^{-1}_*(\mathcal I,m)\bigr)\\
+&\quad =D^j\bigl(\pi^{-1}_*(\mathcal I,m)\bigr),
+\end{aligned}
 \]
 
 using the induction hypothesis and the fact that \(D\) preserves inclusions.
@@ -76,7 +97,11 @@ using the induction hypothesis and the fact that \(D\) preserves inclusions.
 *The sequence.* By induction on \(i\), assume \(\mathcal J_i\subset D^j(\mathcal I_i)\). The centre \(Z_i\) has \(\operatorname{ord}_{Z_i}\mathcal I_i\ge m\), hence \(\operatorname{ord}_{Z_i}D^j(\mathcal I_i)\ge m-j\) by Lemma 1.2, hence \(\operatorname{ord}_{Z_i}\mathcal J_i\ge m-j\). So \(\pi_i\) is a blow-up of order \(\ge m-j\) for \((X_i,\mathcal J_i,m-j)\), and
 
 \[
-\mathcal J_{i+1}=(\pi_i)^{-1}_*(\mathcal J_i,m-j)\subset(\pi_i)^{-1}_*(D^j\mathcal I_i,m-j)\subset D^j\bigl((\pi_i)^{-1}_*(\mathcal I_i,m)\bigr)=D^j(\mathcal I_{i+1}),
+\begin{aligned}
+&\mathcal J_{i+1}=(\pi_i)^{-1}_*(\mathcal J_i,m-j)\\
+&\quad \subset(\pi_i)^{-1}_*(D^j\mathcal I_i,m-j)\\
+&\quad \subset D^j\bigl((\pi_i)^{-1}_*(\mathcal I_i,m)\bigr)=D^j(\mathcal I_{i+1}),
+\end{aligned}
 \]
 
 using that transforms preserve inclusions and the one-blow-up case. \(\square\)
@@ -89,7 +114,7 @@ using that transforms preserve inclusions and the one-blow-up case. \(\square\)
 
 **Proof.** At a centre \(Z_i\) the transforms \(\mathcal J^{(j)}_i\) of the factors satisfy \(\operatorname{ord}_{Z_i}\mathcal J_i^{(j)}\ge m-j\) (Theorem 3.1), so the transform of \((P,w)\) is defined at each step and equals the product of the transforms of the factors, which is contained in \(\prod_j(D^j\mathcal I_i)^{c_j}\). Lowering the marking from \(w\) to \(s\) multiplies by \(\mathcal O(-(w-s)F_{i+1})\) at each step, so \(\Pi^{-1}_*(P,s)\subset\Pi^{-1}_*(P,w)\), and every centre has order \(\ge w\ge s\) for the transform of \((P,s)\). \(\square\)
 
-**Example 3.3 (the inclusion can be strict).** Let \(f=x^2-y^3\) on \(\mathbf A^2\), \(m=2\), and blow up the origin. On the chart \(x=x_1y\), \(G=x_1^2-y\), so \(D(G)=\mathcal O\). On the other hand \(D(f)=(x^2-y^3,2x,3y^2)=(x,y^2)\), and \(\pi^{-1}_*(D(f),1)=y^{-1}(x_1y,y^2)=(x_1,y)\neq\mathcal O\).
+**Example 3.3 (the inclusion can be strict).** Let \(f=x^2-y^3\) on \(\mathbf A^2\), \(m=2\), and blow up the origin. On the chart \(x=x_1y\), \(G=x_1^2-y\), so \(D(G)=\mathcal O\). On the other hand \(D(f)=(x^2-y^3,2x,3y^2)=(x,y^2)\), and \(\pi^{-1}_*(D(f),1)=y^{-1}(x_1y,y^2)\), which is \((x_1,y)\neq\mathcal O\).
 
 ## 4. Exercises
 
@@ -99,7 +124,7 @@ using that transforms preserve inclusions and the one-blow-up case. \(\square\)
 
 **Exercise 4.2.** Show that for a trivial blow-up with centre \(Z=V(z_1)\) and \(\mathcal I=(z_1^m g)\), Theorem 3.1 gives \(\pi^{-1}_*(D\mathcal I,m-1)\subset D(g)\), and compute both sides for \(g=z_1+z_2^2\).
 
-*Solution.* \(\pi^{-1}_*(\mathcal I,m)=(g)\). For \(g=z_1+z_2^2\): \(D\mathcal I\) is generated by \(z_1^mg\), \(mz_1^{m-1}g+z_1^m\) and \(2z_1^mz_2\). Multiplying by \(z_1^{-(m-1)}\) gives \(z_1g\), \((m+1)z_1+mz_2^2\) and \(2z_1z_2\). They generate \(\mathcal J=((m+1)z_1+mz_2^2,\ z_2^3)\): indeed \((m+1)z_1z_2-z_2\bigl((m+1)z_1+mz_2^2\bigr)=-mz_2^3\), and modulo the first generator \(z_1\equiv-\tfrac m{m+1}z_2^2\), so \(z_1z_2\) and \(z_1g\) lie in \(\mathcal J\). The right side is \(D(g)=(g,1,2z_2)=\mathcal O\). The inclusion is strict.
+*Solution.* \(\pi^{-1}_*(\mathcal I,m)=(g)\). For \(g=z_1+z_2^2\): \(D\mathcal I\) is generated by \(z_1^mg\), \(mz_1^{m-1}g+z_1^m\) and \(2z_1^mz_2\). Multiplying by \(z_1^{-(m-1)}\) gives \(z_1g\), \((m+1)z_1+mz_2^2\) and \(2z_1z_2\). They generate \(\mathcal J=((m+1)z_1+mz_2^2,\ z_2^3)\): indeed \(z_2\bigl((m+1)z_1+mz_2^2\bigr)\) subtracted from \((m+1)z_1z_2\) gives \(-mz_2^3\), and modulo the first generator \(z_1\equiv-\tfrac m{m+1}z_2^2\), so \(z_1z_2\) and \(z_1g\) lie in \(\mathcal J\). The right side is \(D(g)=(g,1,2z_2)=\mathcal O\). The inclusion is strict.
 
 **Exercise 4.3.** Let \(\mathcal I=(x^3+y^4)\) on \(\mathbf A^2\), \(m=3\), and blow up the origin. On the chart \(x=x_1y\), compute \(\pi^{-1}_*(D^2\mathcal I,1)\) and \(D^2(\pi^{-1}_*(\mathcal I,3))\), and check Theorem 3.1.
 

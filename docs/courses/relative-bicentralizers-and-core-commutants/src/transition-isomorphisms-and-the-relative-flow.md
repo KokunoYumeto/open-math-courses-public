@@ -10,8 +10,10 @@ We use: [The relative bicentralizer](the-relative-bicentralizer.md) (all of Sect
 
 Throughout this lesson \(N\) is a factor of type III₁ with separable predual, \(N\subset M\) with the same unit, \(M\) countably decomposable, \(E\colon M\to N\) a faithful normal conditional expectation, and \(\omega\) a free ultrafilter. For faithful normal states \(\varphi,\psi,\chi\) on \(N\) we write \(\bar\varphi=\varphi\circ E\), and so on, and \(\mathrm B(\varphi)=\mathrm B(N\subset M,\varphi)\). The notation \(M^\omega\), \(\pi\), \(N_{\varphi,\omega}\subset M^\omega\), \(\mathcal G_\varphi\), \(\mathcal U_\delta\) is that of the previous lesson. For a unitary \(u\in N\), \(u\bar\varphi u^*=(u\varphi u^*)\circ E\) because \(E\) is \(N\)-bimodular, so
 \[
-\|u\bar\varphi u^*-\bar\psi\|_{M_*}=\|u\varphi u^*-\psi\|_{N_*}
-\tag{1.1}
+\begin{aligned}
+&\|u\bar\varphi u^*-\bar\psi\|_{M_*}\\
+&\quad =\|u\varphi u^*-\psi\|_{N_*}
+\end{aligned}\tag{1.1}
 \]
 by the argument of Lemma 1.1 of the previous lesson. Likewise \(\|v\bar\varphi-\lambda\bar\varphi v\|_{M_*}=\|v\varphi-\lambda\varphi v\|_{N_*}\) for \(v\in N\) and \(\lambda>0\). In particular, by Lemma 1.2 of the asymptotic centralizer lesson applied in \(M\) to \(\bar\varphi\), a bounded sequence \((v_n)\) in \(N\) with \(\lim_\omega\|v_n\varphi-\lambda\varphi v_n\|=0\) lies in \(N_\omega\) and its class \(V\) satisfies \(V\bar\varphi^\omega=\lambda\bar\varphi^\omega V\).
 
@@ -21,7 +23,11 @@ Write \(\tau\) for the trace of the II₁ factor \(N_{\varphi,\omega}\); it is t
 
 **Proof.** The inclusion \(N_{\varphi,\omega}\subset M^\omega\) is normal, so \(\rho(Z)=\bar\varphi^\omega(xZ)\) is a normal functional on \(N_{\varphi,\omega}\). For \(Z_1,Z_2\in N_{\varphi,\omega}\), \(Z_2\) commutes with \(\bar\varphi^\omega\) and with \(x\) (Lemma 1.2 and Proposition 2.2 of the previous lesson), so
 \[
-\rho(Z_1Z_2)=(Z_2\bar\varphi^\omega)(xZ_1)=(\bar\varphi^\omega Z_2)(xZ_1)=\bar\varphi^\omega(Z_2xZ_1)=\bar\varphi^\omega(xZ_2Z_1)=\rho(Z_2Z_1).
+\begin{aligned}
+&\rho(Z_1Z_2)=(Z_2\bar\varphi^\omega)(xZ_1)\\
+&\quad =(\bar\varphi^\omega Z_2)(xZ_1)=\bar\varphi^\omega(Z_2xZ_1)\\
+&\quad =\bar\varphi^\omega(xZ_2Z_1)=\rho(Z_2Z_1).
+\end{aligned}
 \]
 We may assume \(x=x^*\), so \(\rho\) is self-adjoint. Let \(\rho=\rho_+-\rho_-\) be its decomposition into normal positive functionals with \(\|\rho\|=\|\rho_+\|+\|\rho_-\|\). For a unitary \(U\in N_{\varphi,\omega}\), \(\rho_\pm\circ\operatorname{Ad}U\) is another such decomposition of \(\rho\circ\operatorname{Ad}U=\rho\), so by uniqueness \(\rho_\pm\) are invariant under \(\operatorname{Ad}U\), hence tracial. By (B8) a normal tracial positive functional on a II₁ factor is a multiple of \(\tau\), so \(\rho=\rho(1)\tau=\bar\varphi(x)\tau\). \(\square\)
 
@@ -35,8 +41,10 @@ A sequence of unitaries \(u_n\in N\) with \(\|u_n\varphi u_n^*-\psi\|\to0\) is a
 \]
 For every bounded sequence \((a_n)\) in \(N\) with \(\|a_n\varphi-\psi a_n\|\to0\) and every \(x\in\mathrm B(\varphi)\),
 \[
-a_nx-\beta_{\psi,\varphi}(x)a_n\to0\quad*\text{-strongly}.
-\tag{2.1}
+\begin{aligned}
+&a_nx-\beta_{\psi,\varphi}(x)a_n\\
+&\quad \to0\quad*\text{-strongly}.
+\end{aligned}\tag{2.1}
 \]
 
 **Proof.** Fix \(\omega\). By (1.1) and Lemma 1.3 of the asymptotic centralizer lesson (in \(M\), for the states \(\bar\varphi,\bar\psi\)), \(U=\pi(u_n)\) is a unitary of \(M^\omega\) with \(U\bar\varphi^\omega U^*=\bar\psi^\omega\). If \((w_n)\) is another \((\psi,\varphi)\)-sequence with class \(W\), then \((w_n^*u_n)\in A_{\varphi,\omega}(N)\) by Lemma 1.2(2) of the flow lesson applied in \(N\), so \(W^*U\in N_{\varphi,\omega}\) commutes with \(x\in\mathrm B(\varphi)\) (Proposition 2.2 of the previous lesson), that is,
@@ -52,15 +60,24 @@ For \(s(n)\to\infty\), \((u_{s(n)})\) is again a \((\psi,\varphi)\)-sequence. He
 
 *Intertwining.* Put \(c_n=u_n^*a_n\). Since \(u_n^*\psi-\varphi u_n^*=u_n^*(\psi-u_n\varphi u_n^*)\),
 \[
-\|[c_n,\varphi]\|\le\|a_n\varphi-\psi a_n\|+\|a_n\|\,\|\psi-u_n\varphi u_n^*\|\to0 ,
+\begin{aligned}
+&\|[c_n,\varphi]\|\le\|a_n\varphi-\psi a_n\|\\
+&\quad +\|a_n\|\,\|\psi-u_n\varphi u_n^*\|\to0 ,
+\end{aligned}
 \]
 so \((c_n)\in\mathrm{AC}(N,\varphi)\). Write \(a_nx-\beta_{\psi,\varphi}(x)a_n=u_nz_n\) with
 \[
-z_n=(c_nx-xc_n)+(x-u_n^*\beta_{\psi,\varphi}(x)u_n)c_n .
+\begin{aligned}
+&z_n=(c_nx-xc_n)\\
+&\quad +(x-u_n^*\beta_{\psi,\varphi}(x)u_n)c_n .
+\end{aligned}
 \]
 The first term tends to \(0\) \(*\)-strongly, because \(x,x^*\in\mathrm B(\varphi)\). For the second, \(e_n=\beta_{\psi,\varphi}(x)-u_nxu_n^*\to0\) \(*\)-strongly, and by (1.1)
 \[
-\|u_n^*e_nu_n\|^2_{\bar\varphi}=(u_n\bar\varphi u_n^*)(e_n^*e_n)\le\bar\psi(e_n^*e_n)+\|e_n\|^2\|u_n\varphi u_n^*-\psi\|\to0 ,
+\begin{aligned}
+&\|u_n^*e_nu_n\|^2_{\bar\varphi}=(u_n\bar\varphi u_n^*)(e_n^*e_n)\\
+&\quad \le\bar\psi(e_n^*e_n)+\|e_n\|^2\|u_n\varphi u_n^*-\psi\|\to0 ,
+\end{aligned}
 \]
 likewise for the adjoint; so \(u_n^*e_nu_n\to0\) \(*\)-strongly, and its product with \((c_n)\in A_{\bar\varphi,\omega}(M)\) tends to \(0\) \(*\)-strongly along every \(\omega\), because \(I_\omega\) is an ideal of \(A_{\bar\varphi,\omega}(M)\) (Theorem 5.1(5) of the ultraproduct lesson). Hence \(z_n\to0\) \(*\)-strongly. Finally, \((u_n)\in N_\omega\) for every \(\omega\) (Lemma 1.3 of the asymptotic centralizer lesson, with (1.1)), so \((u_nz_n)\in I_\omega\) for every \(\omega\), that is, \(u_nz_n\to0\) \(*\)-strongly. \(\square\)
 
@@ -72,7 +89,11 @@ likewise for the adjoint; so \(u_n^*e_nu_n\to0\) \(*\)-strongly, and its product
 
 Let \(\lambda>0\). A finite family of bounded sequences \((v_{k,n})_n\) in \(N\), \(1\le k\le m\), is an *admissible \(\lambda\)-family along \(\omega\)* for \(\varphi\) if
 \[
-\lim_\omega\|v_{k,n}\varphi-\lambda\varphi v_{k,n}\|=0\quad(1\le k\le m),\qquad\lim_\omega\Big\|1-\sum_kv_{k,n}v_{k,n}^*\Big\|^\sharp_{\varphi}=0 .
+\begin{aligned}
+&\lim_\omega\|v_{k,n}\varphi-\lambda\varphi v_{k,n}\|\\
+&\quad =0\quad(1\le k\le m),\\
+&\lim_\omega\Big\|1-\sum_kv_{k,n}v_{k,n}^*\Big\|^\sharp_{\varphi}=0 .
+\end{aligned}
 \]
 The classes \(V_k\in M^\omega\) satisfy \(V_k\bar\varphi^\omega=\lambda\bar\varphi^\omega V_k\) and \(\sum_kV_kV_k^*=1\) (Section 1 and Lemma 1.1 of the previous lesson). By Proposition 4.1 of the asymptotic centralizer lesson applied to \((N,\varphi)\), admissible \(\lambda\)-families exist with ordinary convergence; for \(\lambda\le1\) one sequence suffices.
 
@@ -88,8 +109,12 @@ The classes \(V_k\in M^\omega\) satisfy \(V_k\bar\varphi^\omega=\lambda\bar\varp
 
 **Proof.** (1) Let \((v_{k,n})\), \((w_{l,n})\) be admissible \(\lambda\)-families along \(\omega\), with classes \(V_k,W_l\). By Lemma 1.2(1) of the flow lesson in \(N\), \((w_{l,n}^*v_{k,n})_n\in A_{\varphi,\omega}(N)\), so \(W_l^*V_k\in N_{\varphi,\omega}\) commutes with \(x\in\mathrm B(\varphi)\), and
 \[
-\sum_kV_kxV_k^*=\sum_{k,l}W_lW_l^*V_kxV_k^*=\sum_{k,l}W_lxW_l^*V_kV_k^*=\sum_lW_lxW_l^* .
-\tag{3.1}
+\begin{aligned}
+&\sum_kV_kxV_k^*\\
+&\quad =\sum_{k,l}W_lW_l^*V_kxV_k^*\\
+&\quad =\sum_{k,l}W_lxW_l^*V_kV_k^*\\
+&\quad =\sum_lW_lxW_l^* .
+\end{aligned}\tag{3.1}
 \]
 For a family with ordinary convergence and \(s(n)\to\infty\), the reparametrized family is admissible along every \(\omega\); by (3.1) and Lemma 1.1 of the flow lesson, \(\sum_kv_{k,n}xv_{k,n}^*\) converges \(*\)-strongly to an element \(\beta^\varphi_\lambda(x)\in M\), equal to \(\sum_kV_kxV_k^*\) in every \(M^\omega\); by (3.1) every admissible family gives the same element.
 
@@ -99,28 +124,42 @@ v_k^*yv_l\varphi\approx\lambda v_k^*y\varphi v_l\approx\lambda v_k^*\varphi yv_l
 \]
 with errors at most \(\|v_k\|\|y\|\,\|v_l\varphi-\lambda\varphi v_l\|\), \(\lambda\|v_k\|\|v_l\|\,\|[y,\varphi]\|\) and \(\|y\|\|v_l\|\,\|\lambda v_k^*\varphi-\varphi v_k^*\|\), where \(\|\lambda v_k^*\varphi-\varphi v_k^*\|=\|v_k\varphi-\lambda\varphi v_k\|\) by taking adjoints in \(N_*\). So \(x\) commutes with \(V_k^*YV_l\), and
 \[
-\beta^\varphi_\lambda(x)Y=\sum_{k,l}V_kxV_k^*YV_lV_l^*=\sum_{k,l}V_kV_k^*YV_lxV_l^*=Y\beta^\varphi_\lambda(x).
+\begin{aligned}
+&\beta^\varphi_\lambda(x)Y=\sum_{k,l}V_kxV_k^*YV_lV_l^*\\
+&\quad =\sum_{k,l}V_kV_k^*YV_lxV_l^*=Y\beta^\varphi_\lambda(x).
+\end{aligned}
 \]
-By Proposition 2.2 of the previous lesson, \(\beta_\lambda^\varphi(x)\in\mathrm B(\varphi)\). With \(Y=1\), \(V_k^*V_l\in N_{\varphi,\omega}\) commutes with \(x\), so \(\beta^\varphi_\lambda(x)\beta^\varphi_\lambda(y)=\sum_{k,l}V_kxV_k^*V_lyV_l^*=\sum_{k,l}V_kV_k^*V_lxyV_l^*=\beta^\varphi_\lambda(xy)\). The map is linear, \(*\)-preserving, and unital since \(\sum_kV_kV_k^*=1\).
+By Proposition 2.2 of the previous lesson, \(\beta_\lambda^\varphi(x)\in\mathrm B(\varphi)\). With \(Y=1\), \(V_k^*V_l\in N_{\varphi,\omega}\) commutes with \(x\), so \(\beta^\varphi_\lambda(x)\beta^\varphi_\lambda(y)=\sum_{k,l}V_kxV_k^*V_lyV_l^*\), which is \(\sum_{k,l}V_kV_k^*V_lxyV_l^*=\beta^\varphi_\lambda(xy)\). The map is linear, \(*\)-preserving, and unital since \(\sum_kV_kV_k^*=1\).
 
-(3) The constant sequence \(1\) is an admissible \(1\)-family, so \(\beta^\varphi_1=\mathrm{id}\). If \((v_{k,n})\) is admissible for \(\lambda\) and \((w_{l,n})\) for \(\mu\), then \((v_{k,n}w_{l,n})\) is admissible for \(\lambda\mu\), since \(\|vw\varphi-\lambda\mu\varphi vw\|\le\|v\|\,\|w\varphi-\mu\varphi w\|+\mu\|v\varphi-\lambda\varphi v\|\,\|w\|\) and \(\sum_{k,l}V_kW_lW_l^*V_k^*=1\); hence \(\beta^\varphi_{\lambda\mu}=\beta^\varphi_\lambda\beta^\varphi_\mu\), and \(\beta^\varphi_\lambda\) is an automorphism with inverse \(\beta^\varphi_{1/\lambda}\). For state preservation, \(V_k^*V_k\in N_{\varphi,\omega}\) and Lemma 1.1 give
+(3) The constant sequence \(1\) is an admissible \(1\)-family, so \(\beta^\varphi_1=\mathrm{id}\). If \((v_{k,n})\) is admissible for \(\lambda\) and \((w_{l,n})\) for \(\mu\), then \((v_{k,n}w_{l,n})\) is admissible for \(\lambda\mu\), since \(\|vw\varphi-\lambda\mu\varphi vw\|\) is bounded by the sum of \(\|v\|\,\|w\varphi-\mu\varphi w\|\) and \(\mu\|v\varphi-\lambda\varphi v\|\,\|w\|\), and \(\sum_{k,l}V_kW_lW_l^*V_k^*=1\); hence \(\beta^\varphi_{\lambda\mu}=\beta^\varphi_\lambda\beta^\varphi_\mu\), and \(\beta^\varphi_\lambda\) is an automorphism with inverse \(\beta^\varphi_{1/\lambda}\). For state preservation, \(V_k^*V_k\in N_{\varphi,\omega}\) and Lemma 1.1 give
 \[
-\bar\varphi^\omega(V_kxV_k^*)=(\bar\varphi^\omega V_k)(xV_k^*)=\lambda^{-1}\bar\varphi^\omega(xV_k^*V_k)=\lambda^{-1}\bar\varphi(x)\tau(V_k^*V_k)=\bar\varphi(x)\bar\varphi^\omega(V_kV_k^*),
+\begin{aligned}
+&\bar\varphi^\omega(V_kxV_k^*)=(\bar\varphi^\omega V_k)(xV_k^*)\\
+&\quad =\lambda^{-1}\bar\varphi^\omega(xV_k^*V_k)=\lambda^{-1}\bar\varphi(x)\tau(V_k^*V_k)\\
+&\quad =\bar\varphi(x)\bar\varphi^\omega(V_kV_k^*),
+\end{aligned}
 \]
 using \(\bar\varphi^\omega(V_k^*V_k)=(V_k\bar\varphi^\omega)(V_k^*)=\lambda\bar\varphi^\omega(V_kV_k^*)\). Summing over \(k\), \(\bar\varphi(\beta^\varphi_\lambda(x))=\bar\varphi(x)\).
 
-(2) Let \(W=\pi(w_n)\). By Lemma 1.2(1) of the flow lesson in \(N\), \(V_k^*W\in N_{\varphi,\omega}\), so \(Wx=\sum_kV_kV_k^*Wx=\sum_kV_kxV_k^*W=\beta^\varphi_\lambda(x)W\) in every \(M^\omega\); hence \(w_nx-\beta^\varphi_\lambda(x)w_n\to0\) \(*\)-strongly along every \(\omega\), so \(*\)-strongly. The last assertion is the case of a constant sequence.
+(2) Let \(W=\pi(w_n)\). By Lemma 1.2(1) of the flow lesson in \(N\), \(V_k^*W\in N_{\varphi,\omega}\), so \(Wx=\sum_kV_kV_k^*Wx\), which is \(\sum_kV_kxV_k^*W=\beta^\varphi_\lambda(x)W\) in every \(M^\omega\); hence \(w_nx-\beta^\varphi_\lambda(x)w_n\to0\) \(*\)-strongly along every \(\omega\), so \(*\)-strongly. The last assertion is the case of a constant sequence.
 
 (4) Let \(\lambda_j\to1\), \(\lambda_j\le1\). For each \(j\) take a single sequence \((v_{j,n})_n\) from Proposition 4.1 of the asymptotic centralizer lesson (with \(m=1\)) and choose \(n(j)\) so that \(w_j=v_{j,n(j)}\) satisfies \(\|w_j\varphi-\lambda_j\varphi w_j\|<1/j\), \(\|1-w_jw_j^*\|^\sharp_\varphi<1/j\) and \(\|w_jxw_j^*-\beta^\varphi_{\lambda_j}(x)\|^\sharp_{\bar\varphi}<1/j\). Then \(\|[w_j,\varphi]\|\le1/j+(1-\lambda_j)\|w_j\|\to0\), so along every \(\omega\) the class \(W\) lies in \(N_{\varphi,\omega}\) with \(WW^*=1\), and \(WxW^*=xWW^*=x\). Hence \(\beta^\varphi_{\lambda_j}(x)\to x\) \(*\)-strongly. For \(\lambda_j\ge1\), \(\|\beta^\varphi_{\lambda_j}(x)-x\|_{\bar\varphi}=\|x-\beta^\varphi_{1/\lambda_j}(x)\|_{\bar\varphi}\to0\), because \(\bar\varphi\)-preserving automorphisms preserve \(\|\cdot\|_{\bar\varphi}\). The \(\bar\varphi\)-preserving automorphisms \(\beta^\varphi_\lambda\) are implemented on \(L^2(\mathrm B(\varphi),\bar\varphi)\) by unitaries \(U_\lambda\) with \(U_\lambda x\bar\xi=\beta^\varphi_\lambda(x)\bar\xi\); these converge strongly to \(1\), which is continuity in the \(u\)-topology.
 
-(5) If \((v_{k,n})\) is admissible for \(\varphi\) and \((u_n)\) is a \((\psi,\varphi)\)-sequence, then \((u_nv_{k,n}u_n^*)\) is admissible for \(\psi\), because \(\|uvu^*\psi-\lambda\psi uvu^*\|\le\|v\varphi-\lambda\varphi v\|+(1+\lambda)\|v\|\,\|u\varphi u^*-\psi\|\). In \(M^\omega\),
+(5) If \((v_{k,n})\) is admissible for \(\varphi\) and \((u_n)\) is a \((\psi,\varphi)\)-sequence, then \((u_nv_{k,n}u_n^*)\) is admissible for \(\psi\), because \(\|uvu^*\psi-\lambda\psi uvu^*\|\) is at most the sum of \(\|v\varphi-\lambda\varphi v\|\) and \((1+\lambda)\|v\|\,\|u\varphi u^*-\psi\|\). In \(M^\omega\),
 \[
-\beta^\psi_\lambda(\beta_{\psi,\varphi}(x))=\sum_kUV_kU^*\,UxU^*\,UV_k^*U^*=U\beta^\varphi_\lambda(x)U^*=\beta_{\psi,\varphi}(\beta^\varphi_\lambda(x)).
+\begin{aligned}
+&\beta^\psi_\lambda(\beta_{\psi,\varphi}(x))\\
+&\quad =\sum_kUV_kU^*\,UxU^*\,UV_k^*U^*\\
+&\quad =U\beta^\varphi_\lambda(x)U^*=\beta_{\psi,\varphi}(\beta^\varphi_\lambda(x)).
+\end{aligned}
 \]
 
 (6) By (1.1) of the previous lesson, \(\sigma^{\bar\varphi}_t\) restricts to \(\sigma^\varphi_t\) on \(N\), and \(\varphi\circ\sigma_t^\varphi=\varphi\) gives \(\|\sigma^\varphi_t(v)\varphi-\lambda\varphi\sigma^\varphi_t(v)\|=\|v\varphi-\lambda\varphi v\|\) and \(\|\sigma^\varphi_t(y)\|^\sharp_\varphi=\|y\|^\sharp_\varphi\). So if \((v_{k,n})\) is admissible with ordinary convergence, so is \((\sigma^\varphi_t(v_{k,n}))\). The normal automorphism \(\sigma^{\bar\varphi}_t\) preserves \(*\)-strong convergence of bounded sequences (it preserves \(\|\cdot\|^\sharp_{\bar\varphi}\)), so applying it to the convergence in (1),
 \[
-\sum_k\sigma^\varphi_t(v_{k,n})\,\sigma^{\bar\varphi}_t(x)\,\sigma^\varphi_t(v_{k,n})^*\to\sigma^{\bar\varphi}_t(\beta^\varphi_\lambda(x))\quad*\text{-strongly}.
+\begin{aligned}
+&\sum_k\sigma^\varphi_t(v_{k,n})\,\sigma^{\bar\varphi}_t(x)\,\sigma^\varphi_t(v_{k,n})^*\\
+&\quad \to\sigma^{\bar\varphi}_t(\beta^\varphi_\lambda(x))\quad*\text{-strongly}.
+\end{aligned}
 \]
 Since \(\sigma^{\bar\varphi}_t(x)\in\mathrm B(\varphi)\) (Theorem 2.3 of the previous lesson), the left side converges to \(\beta^\varphi_\lambda(\sigma^{\bar\varphi}_t(x))\) by (1).
 
@@ -155,23 +194,34 @@ Let \(R\subset N\) be a subfactor isomorphic to \(M_k(\mathbb C)\), with matrix 
 
 **Proposition 5.1.** For every faithful normal state \(\chi_1\) on \(N_1\),
 \[
-\mathrm B(N\subset M,\tau_R\otimes\chi_1)=1\otimes\mathrm B(N_1\subset M_1,\chi_1),
-\qquad
-\mathrm B^\sharp(N\subset M)=R\otimes\mathrm B^\sharp(N_1\subset M_1).
+\begin{aligned}
+&\mathrm B(N\subset M,\tau_R\otimes\chi_1)\\
+&\quad =1\otimes\mathrm B(N_1\subset M_1,\chi_1),\\
+&\mathrm B^\sharp(N\subset M)=R\otimes\mathrm B^\sharp(N_1\subset M_1).
+\end{aligned}
 \]
 
 **Proof.** Write \(\chi=\tau_R\otimes\chi_1\). For \(x=\sum_{i,j}e_{ij}\otimes x_{ij}\in N\) and \(z=\sum_{a,b}e_{ab}\otimes z_{ab}\),
 \[
-[x,\chi](z)=\frac1k\sum_{i,j}\big(\chi_1(z_{ji}x_{ij})-\chi_1(x_{ij}z_{ji})\big)=\frac1k\sum_{i,j}[x_{ij},\chi_1](z_{ji}),
+\begin{aligned}
+[x,\chi](z)&=\frac1k\sum_{i,j}\big(\chi_1(z_{ji}x_{ij})-\chi_1(x_{ij}z_{ji})\big)\\
+&=\frac1k\sum_{i,j}[x_{ij},\chi_1](z_{ji}),
+\end{aligned}
 \]
-so \(\frac1k\max_{i,j}\|[x_{ij},\chi_1]\|\le\|[x,\chi]\|\le\frac1k\sum_{i,j}\|[x_{ij},\chi_1]\|\). Hence a bounded sequence in \(N\) lies in \(\mathrm{AC}(N,\chi)\) exactly when all its matrix entries lie in \(\mathrm{AC}(N_1,\chi_1)\). In particular the constant sequences \(e_{ij}\otimes1\) lie in \(\mathrm{AC}(N,\chi)\), so every \(a\in\mathrm B(N\subset M,\chi)\) commutes with \(R\) and has the form \(1\otimes a_1\), \(a_1\in M_1\). For such \(a\) and \(x_n=\sum e_{ij}\otimes x_{ij,n}\),
+so \(\frac1k\max_{i,j}\|[x_{ij},\chi_1]\|\le\|[x,\chi]\|\), which is at most \(\frac1k\sum_{i,j}\|[x_{ij},\chi_1]\|\). Hence a bounded sequence in \(N\) lies in \(\mathrm{AC}(N,\chi)\) exactly when all its matrix entries lie in \(\mathrm{AC}(N_1,\chi_1)\). In particular the constant sequences \(e_{ij}\otimes1\) lie in \(\mathrm{AC}(N,\chi)\), so every \(a\in\mathrm B(N\subset M,\chi)\) commutes with \(R\) and has the form \(1\otimes a_1\), \(a_1\in M_1\). For such \(a\) and \(x_n=\sum e_{ij}\otimes x_{ij,n}\),
 \[
 \|[1\otimes a_1,x_n]\|^2_{\bar\chi}=\frac1k\sum_{i,j}\|[a_1,x_{ij,n}]\|^2_{\bar\chi_1},
 \]
 which tends to \(0\) for every \((x_n)\in\mathrm{AC}(N,\chi)\) exactly when \(a_1\in\mathrm B(N_1\subset M_1,\chi_1)\). This proves the first identity. By Theorem 4.1, applied to both inclusions,
 \[
-\mathrm B^\sharp(N\subset M)=N\vee(1\otimes\mathrm B(N_1\subset M_1,\chi_1))=R\otimes\big(N_1\vee\mathrm B(N_1\subset M_1,\chi_1)\big)=R\otimes\mathrm B^\sharp(N_1\subset M_1).\qquad\square
+\begin{aligned}
+&\mathrm B^\sharp(N\subset M)\\
+&\quad =N\vee(1\otimes\mathrm B(N_1\subset M_1,\chi_1))\\
+&\quad =R\otimes\big(N_1\vee\mathrm B(N_1\subset M_1,\chi_1)\big)\\
+&\quad =R\otimes\mathrm B^\sharp(N_1\subset M_1).
+\end{aligned}
 \]
+\(\square\)
 
 ## 6. Exercises
 

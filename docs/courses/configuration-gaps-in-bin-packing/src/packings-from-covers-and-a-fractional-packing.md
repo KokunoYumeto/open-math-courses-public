@@ -26,7 +26,11 @@ Fix a vertex \(v\) and a state, *selected* or *unselected*. The construction fix
 
 The baselines of the rows of kind M are the tree baselines and \(d\) copies of \(b_r\) for every position \(r\), whether the rows are long or short: this is the multiset \(\mathcal B_v\). By (5.1) of the first lesson, Lemma 1.1 and the deadline count (5.2) of the third lesson,
 \[
-\#\{h\leq a\}=B_v(a)+\#\{[h,b)\ni a\}\geq B_v(a)+d\,\mathbf 1\{a\in\mathcal I_v\}=\#\{\text{deadlines of label }v\text{ at most }a\}
+\begin{aligned}
+&\#\{h\leq a\}=B_v(a)+\#\{[h,b)\ni a\}\\
+&\quad \geq B_v(a)+d\,\mathbf 1\{a\in\mathcal I_v\}\\
+&\quad =\#\{\text{deadlines of label }v\text{ at most }a\}
+\end{aligned}
 \]
 for every real \(a\). By Lemma 5.2 (matching by sorting) of the first lesson there is a bijection from the rows of kind M to the deadlines of label \(v\) with \(h\leq z\) for each row. Attach the deadlines accordingly.
 
@@ -75,7 +79,7 @@ This proves part (a) of the graph-to-packing reduction (Theorem 4.1 of the first
 
 *Pools.* Group the unlabelled items into *pools*: for each species of the table above, the set of all items of that species (the four kinds of \(U^\pm\), the permits and the nonpermits of each edge, and the three kinds of flags). Items in one pool have the same subclass and coordinate and no label, hence the same size. For \(n=4\), \(k=2\) every pool is nonempty: the length-one pools have \(dk=d(n-k)=2d\) items, and the other pools have at least \(dR\) or \(4d\) items.
 
-*Demands.* Take both states at every vertex with weight \(\frac12\). The weighted demand for a pool equals its size. For length-one items \(U^+\): \(4\cdot\frac d2=2d=dk\); for \(U^-\): \(4\cdot\frac d2=2d=d(n-k)\). For length-zero items \(U^+\): \(\sum_v(t_{v,+}+J_v-\frac d2)=\sum_v(t_{v,+}+J_v)-2d\), the stock; similarly for \(U^-\). The permits of an edge \(e\) are demanded \(dR\) times by each endpoint in its unselected state, so \(2\cdot\frac12dR=dR\); likewise the nonpermits. The flags have the same demand in both states, equal to their stock.
+*Demands.* Take both states at every vertex with weight \(\frac12\). The weighted demand for a pool equals its size. For length-one items \(U^+\): \(4\cdot\frac d2=2d=dk\); for \(U^-\): \(4\cdot\frac d2=2d=d(n-k)\). For length-zero items \(U^+\): \(\sum_v(t_{v,+}+J_v-\frac d2)\), which is \(\sum_v(t_{v,+}+J_v)-2d\), the stock; similarly for \(U^-\). The permits of an edge \(e\) are demanded \(dR\) times by each endpoint in its unselected state, so \(2\cdot\frac12dR=dR\); likewise the nonpermits. The flags have the same demand in both states, equal to their stock.
 
 *Columns.* For each vertex \(v\), each state and each of its templates \(b\), let \(i^X_b,i^A_b,i^D_b\) be its labelled items, \(\mathcal U_b\) the pool of its global species and \(\mathcal F_b\) the pool of its flag. For every pair \((u,f)\in\mathcal U_b\times\mathcal F_b\) give the individual configuration \(\{i^X_b,i^A_b,u,i^D_b,f\}\) the weight
 \[

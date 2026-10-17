@@ -13,7 +13,11 @@ We use the Möbius function and the identity \(\sum_{d\mid n}\mu(d)=[n=1]\), Lem
 **Definition 1.2.** For a test function \(F\) of dimension \(j\), an integer \(m\) and integer shifts \(\mathbf b=(b_1,\dots,b_j)\) with all \(m+b_i\ge1\),
 
 \[
-D_F(m;\mathbf b)=\sum_{d_1\mid m+b_1}\cdots\sum_{d_j\mid m+b_j}\mu(d_1)\cdots\mu(d_j)\,F\Bigl(\frac{\log d_1}L,\dots,\frac{\log d_j}L\Bigr),
+\begin{aligned}
+&D_F(m;\mathbf b)=\sum_{d_1\mid m+b_1}\cdots\sum_{d_j\mid m+b_j}\\
+&\qquad\mu(d_1)\cdots\mu(d_j)\\
+&\qquad\cdot F\Bigl(\frac{\log d_1}L,\dots,\frac{\log d_j}L\Bigr),
+\end{aligned}
 \]
 
 the sums running over positive divisors. For \(j=0\), \(D_F=F\).
@@ -27,10 +31,13 @@ The budget gives an exact rule for a coordinate whose shifted integer is a large
 **Lemma 1.3** (a prime coordinate). Let \(F\) have dimension \(j\ge1\) and budget \(\rho\), and suppose \(m+b_j\) is a prime with \(\log(m+b_j)/L>\rho\). Then
 
 \[
-D_F(m;b_1,\dots,b_j)=D_{F(\cdot,0)}(m;b_1,\dots,b_{j-1}),
+\begin{aligned}
+&D_F(m;b_1,\dots,b_j)\\
+&\quad =D_{F(\cdot,0)}(m;b_1,\dots,b_{j-1}),
+\end{aligned}
 \]
 
-where \(F(\cdot,0)(v_1,\dots,v_{j-1})=F(v_1,\dots,v_{j-1},0)\) is a test function of dimension \(j-1\) and budget \(\rho\).
+where \(F(\cdot,0)\) is the function \((v_1,\dots,v_{j-1})\mapsto F(v_1,\dots,v_{j-1},0)\), a test function of dimension \(j-1\) and budget \(\rho\).
 
 **Proof.** The divisors of the prime \(m+b_j\) are \(1\) and \(m+b_j\). A term with \(d_j=m+b_j\) evaluates \(F\) at a point of the orthant whose last coordinate exceeds \(\rho\), so the coordinate sum exceeds \(\rho\) and the term vanishes. The terms with \(d_j=1\) form the right side. The restriction \(F(\cdot,0)\) is smooth, compactly supported after the same extension, and vanishes when \(v_1+\dots+v_{j-1}>\rho\). \(\square\)
 
@@ -43,10 +50,13 @@ where \(F(\cdot,0)(v_1,\dots,v_{j-1})=F(v_1,\dots,v_{j-1},0)\) is a test functio
 **Lemma 2.2.** For every \(T\ge1\) there is \(C_T\) such that for \(Q\ge3\)
 
 \[
-\sum_{q\le Q}\frac{\mu^2(q)T^{\omega(q)}}q\le\prod_{p\le Q}\Bigl(1+\frac Tp\Bigr)\le C_T(\log Q)^T .
+\begin{aligned}
+\sum_{q\le Q}\frac{\mu^2(q)T^{\omega(q)}}q&\le\prod_{p\le Q}\Bigl(1+\frac Tp\Bigr)\\
+&\le C_T(\log Q)^T .
+\end{aligned}
 \]
 
-**Proof.** Every squarefree \(q\le Q\) is a product of distinct primes \(p\le Q\), and \(\mu^2(q)T^{\omega(q)}/q\) is the product of \(T/p\) over those primes; so the sum is at most the expanded product. Then \(\log\prod_{p\le Q}(1+T/p)\le T\sum_{p\le Q}1/p=T\log\log Q+O(T)\) by Mertens's estimate. \(\square\)
+**Proof.** Every squarefree \(q\le Q\) is a product of distinct primes \(p\le Q\), and \(\mu^2(q)T^{\omega(q)}/q\) is the product of \(T/p\) over those primes; so the sum is at most the expanded product. Then \(\log\prod_{p\le Q}(1+T/p)\le T\sum_{p\le Q}1/p\), which is \(T\log\log Q+O(T)\) by Mertens's estimate. \(\square\)
 
 **Lemma 2.3.** For squarefree \(q\), \(q/\varphi(q)=\prod_{p\mid q}p/(p-1)\le2^{\omega(q)}\).
 
@@ -57,25 +67,38 @@ where \(F(\cdot,0)(v_1,\dots,v_{j-1})=F(v_1,\dots,v_{j-1},0)\) is a test functio
 Fix \(D>0\) and \(B\ge0\), and put \(H_X=DL^B\). For \(q\ge1\) define
 
 \[
-E_X(q)=\max_{\substack{a\in\mathbb Z\\|a|\le H_X}}\ \max_{(c,q)=1}\ \Bigl|\sum_{\substack{X+a<n\le2X+a\\n\equiv c\ (\mathrm{mod}\ q)}}\vartheta(n)-\frac X{\varphi(q)}\Bigr| .
+\begin{aligned}
+&E_X(q)=\max_{\substack{a\in\mathbb Z\\|a|\le H_X}}\ \max_{(c,q)=1}\\
+&\qquad\Bigl|\sum_{\substack{X+a<n\le2X+a\\n\equiv c\ (\mathrm{mod}\ q)}}\vartheta(n)-\frac X{\varphi(q)}\Bigr| .
+\end{aligned}
 \]
 
 **Proposition 3.1.** Fix \(0\le\sigma<1/2\), \(K\ge1\) and \(A>0\). Then
 
 \[
-\sum_{q\le X^\sigma}\mu^2(q)\,K^{\omega(q)}\,E_X(q)\ll_{\sigma,K,A,D,B}XL^{-A}.
+\begin{aligned}
+&\sum_{q\le X^\sigma}\mu^2(q)\,K^{\omega(q)}\,E_X(q)\\
+&\quad \ll_{\sigma,K,A,D,B}XL^{-A}.
+\end{aligned}
 \]
 
 **Proof.** *Step 1: reduction to fixed cutoffs.* Write \(\theta(y;q,c)=\sum_{p\le y,\ p\equiv c}\log p\) and
 
 \[
-E_\theta(x,q)=\max_{0\le y\le x}\ \max_{(c,q)=1}\Bigl|\theta(y;q,c)-\frac y{\varphi(q)}\Bigr|,
+\begin{aligned}
+&E_\theta(x,q)\\
+&\quad =\max_{0\le y\le x}\ \max_{(c,q)=1}\Bigl|\theta(y;q,c)-\frac y{\varphi(q)}\Bigr|,
+\end{aligned}
 \]
 
 as in (0.1) of the Bombieri–Vinogradov lesson. For large \(X\) we have \(H_X\le X\), so for \(|a|\le H_X\) both endpoints \(X+a\) and \(2X+a\) lie in \([0,3X]\). The sum in the definition of \(E_X(q)\) equals \(\theta(2X+a;q,c)-\theta(X+a;q,c)\), and
 
 \[
-\theta(2X+a;q,c)-\theta(X+a;q,c)-\frac X{\varphi(q)}=\Bigl[\theta(2X+a;q,c)-\frac{2X+a}{\varphi(q)}\Bigr]-\Bigl[\theta(X+a;q,c)-\frac{X+a}{\varphi(q)}\Bigr].
+\begin{aligned}
+&\theta(2X+a;q,c)-\theta(X+a;q,c)-\frac X{\varphi(q)}\\
+&\quad =\Bigl[\theta(2X+a;q,c)-\frac{2X+a}{\varphi(q)}\Bigr]\\
+&\quad -\Bigl[\theta(X+a;q,c)-\frac{X+a}{\varphi(q)}\Bigr].
+\end{aligned}
 \]
 
 Hence \(E_X(q)\le2E_\theta(3X,q)\). Corollary 4.1 of the Bombieri–Vinogradov lesson, (4.2), states that for every \(A_0>0\), \(\sum_{q\le Q}E_\theta(x,q)\ll_{A_0}x(\log x)^{-A_0}\) whenever \(1\le Q\le\sqrt x/(\log x)^{A_0+3}\). Since \(\sigma<1/2\), the choice \(x=3X\), \(Q=X^\sigma\) is admissible for large \(X\), and
@@ -88,17 +111,23 @@ Hence \(E_X(q)\le2E_\theta(3X,q)\). Corollary 4.1 of the Bombieri–Vinogradov l
 *Step 2: a trivial bound.* Let \(q\le X^\sigma\) be squarefree. An interval of length \(X\) contains at most \(X/q+1\le2X/q\) integers of one residue class, each with \(\vartheta(n)\le\log(3X)\le2L\). By Lemma 2.3, \(X/\varphi(q)\le2^{\omega(q)}X/q\). Hence
 
 \[
-E_X(q)\le\frac Xq\bigl(4L+2^{\omega(q)}\bigr)\le\frac{5L\,2^{\omega(q)}X}q .
-\tag{3.2}
+\begin{aligned}
+E_X(q)&\le\frac Xq\bigl(4L+2^{\omega(q)}\bigr)\\
+&\le\frac{5L\,2^{\omega(q)}X}q .
+\end{aligned}\tag{3.2}
 \]
 
 *Step 3: Cauchy–Schwarz.* For nonnegative numbers \(E_X(q)\),
 
 \[
-\Bigl(\sum_{q\le X^\sigma}\mu^2(q)K^{\omega(q)}E_X(q)\Bigr)^2\le\sum_{q\le X^\sigma}E_X(q)\cdot\sum_{q\le X^\sigma}\mu^2(q)K^{2\omega(q)}E_X(q).
+\begin{aligned}
+&\Bigl(\sum_{q\le X^\sigma}\mu^2(q)K^{\omega(q)}E_X(q)\Bigr)^2\\
+&\quad\le\sum_{q\le X^\sigma}E_X(q)\\
+&\qquad\cdot\sum_{q\le X^\sigma}\mu^2(q)K^{2\omega(q)}E_X(q).
+\end{aligned}
 \]
 
-By (3.2) and Lemma 2.2 with \(T=2K^2\), the second factor is at most \(5LX\sum_{q\le X^\sigma}\mu^2(q)(2K^2)^{\omega(q)}/q\ll_KXL^{1+2K^2}\). With (3.1) for \(A_0=2A+1+2K^2\), the product is \(\ll X^2L^{-2A}\). \(\square\)
+By (3.2) and Lemma 2.2 with \(T=2K^2\), the second factor is at most \(5LX\sum_{q\le X^\sigma}\mu^2(q)(2K^2)^{\omega(q)}/q\), and this is \(\ll_KXL^{1+2K^2}\). With (3.1) for \(A_0=2A+1+2K^2\), the product is \(\ll X^2L^{-2A}\). \(\square\)
 
 ## 4. The exact density sum
 
@@ -114,16 +143,13 @@ The shifts may vary with \(X\): integers \(b_\gamma\) for \(\gamma\in\Gamma\) wi
 \chi_\delta(m)=\begin{cases}1,&\delta=0,\\\vartheta(m+a_0),&\delta=1.\end{cases}
 \]
 
-**Definition 4.1.** For a tuple \(\mathbf d=(d_\gamma)_{\gamma\in\Gamma}\) of squarefree positive integers, let \(q=\operatorname{lcm}(d_\gamma)\), with \(q=1\) if \(M=0\). The tuple is *compatible* if for every prime \(p\mid q\) the shifts \(b_\gamma\) with \(p\mid d_\gamma\) are all congruent modulo \(p\), and, when \(\delta=1\), their common residue differs from \(a_0\) modulo \(p\). Put
+**Definition 4.1.** For a tuple \(\mathbf d=(d_\gamma)_{\gamma\in\Gamma}\) of squarefree positive integers, let \(q=\operatorname{lcm}(d_\gamma)\), with \(q=1\) if \(M=0\). The tuple is *compatible* if for every prime \(p\mid q\) the shifts \(b_\gamma\) with \(p\mid d_\gamma\) are all congruent modulo \(p\), and, when \(\delta=1\), their common residue differs from \(a_0\) modulo \(p\). Put \(\rho_\delta(\mathbf d)=\prod_{p\mid q}(p-\delta)^{-1}\) if \(\mathbf d\) is compatible and \(\rho_\delta(\mathbf d)=0\) otherwise, and define the *density sum*
 
 \[
-\rho_\delta(\mathbf d)=\begin{cases}\prod_{p\mid q}(p-\delta)^{-1},&\mathbf d\text{ compatible},\\0,&\text{otherwise},\end{cases}
-\]
-
-and define the *density sum*
-
-\[
-\mathcal A_\delta=\sum_{\mathbf d}\rho_\delta(\mathbf d)\prod_{\gamma\in\Gamma}\mu(d_\gamma)\prod_{r=1}^RF_r\Bigl(\Bigl(\frac{\log d_{r,\ell}}L\Bigr)_{\ell=1}^{j_r}\Bigr),
+\begin{aligned}
+&\mathcal A_\delta=\sum_{\mathbf d}\rho_\delta(\mathbf d)\prod_{\gamma\in\Gamma}\mu(d_\gamma)\\
+&\qquad\cdot\prod_{r=1}^RF_r\Bigl(\Bigl(\frac{\log d_{r,\ell}}L\Bigr)_{\ell=1}^{j_r}\Bigr),
+\end{aligned}
 \]
 
 the sum over all tuples of squarefree positive integers. Empty products are \(1\).
@@ -138,7 +164,10 @@ q\le\prod_{\gamma}d_\gamma\le X^\sigma .
 **Proposition 4.2** (density sums). For every \(A>0\), uniformly in the shifts allowed above,
 
 \[
-\mathbb E_X\Bigl[\chi_\delta(m)\prod_{r=1}^RD_{F_r}(m;\mathbf b^{(r)})\Bigr]=\mathcal A_\delta+O_A(L^{-A}).
+\begin{aligned}
+&\mathbb E_X\Bigl[\chi_\delta(m)\prod_{r=1}^RD_{F_r}(m;\mathbf b^{(r)})\Bigr]\\
+&\quad =\mathcal A_\delta+O_A(L^{-A}).
+\end{aligned}
 \]
 
 For \(\delta=0\) and \(M\ge1\) the error is at most a constant times \(X^{\sigma-1}(1+L)^{M-1}\prod_r\|F_r\|_\infty\). For \(\delta=0\) and \(M=0\) both sides equal \(\prod_rF_r\). The implied constants depend only on the fixed data.
@@ -154,7 +183,10 @@ For \(\delta=0\) and \(M\ge1\) the error is at most a constant times \(X^{\sigma
 For the errors, group the tuples by \(q\). A tuple of squarefree integers with least common multiple \(q\) is determined by choosing, for each prime \(p\mid q\), the nonempty set of coordinates \(\gamma\) with \(p\mid d_\gamma\); so at most \((2^M)^{\omega(q)}\) tuples have a given \(q\). The total error is therefore at most
 
 \[
-\frac{\prod_r\|F_r\|_\infty}X\sum_{q\le X^\sigma}\mu^2(q)(2^M)^{\omega(q)}E_X(q)\ll_AL^{-A}
+\begin{aligned}
+&\frac{\prod_r\|F_r\|_\infty}X\sum_{q\le X^\sigma}\mu^2(q)(2^M)^{\omega(q)}E_X(q)\\
+&\quad \ll_AL^{-A}
+\end{aligned}
 \]
 
 by Proposition 3.1 with \(K=2^M\). For \(M=0\) the same argument applies with \(q=1\). \(\square\)
@@ -167,7 +199,13 @@ The proposition separates the two sources of difficulty. The density sum \(\math
 
 **Exercise 5.2.** Show that the number of pairs of positive integers with \(d_1d_2\le Y\) is \(Y\log Y+O(Y)\), so Lemma 2.1 is sharp up to a constant factor for \(M=2\).
 
-**Exercise 5.3.** For \(M=1\) and \(\delta=0\), show directly that \(\mathbb E_XD_F(m;b)=\sum_{d}\mu(d)F(\log d/L)/d+O(X^{\rho-1}\|F\|_\infty)\).
+**Exercise 5.3.** For \(M=1\) and \(\delta=0\), show directly that
+\[
+\begin{aligned}
+\mathbb E_XD_F(m;b)&=\sum_{d}\mu(d)F(\log d/L)/d\\
+&\quad+O(X^{\rho-1}\|F\|_\infty).
+\end{aligned}
+\]
 
 **Exercise 5.4.** Show that \(\mathbb E_X\vartheta(m+a)=1+O_A(L^{-A})\) uniformly for \(|a|\le DL^B\).
 
@@ -179,9 +217,16 @@ The proposition separates the two sources of difficulty. The density sum \(\math
 
 **5.1.** The squarefree divisors \(d>1\) of \(m+b\) have a prime factor \(>X^\rho\), so \(\log d/L>\rho\) and \(F(\log d/L)=0\); only \(d=1\) contributes \(\mu(1)F(0)=1\). For \(m+b=p\le X^\rho\) the divisors are \(1\) and \(p\), giving \(F(0)-F(\log p/L)\).
 
-**5.2.** The count is \(\sum_{d_1\le Y}\lfloor Y/d_1\rfloor=Y\sum_{d\le Y}1/d+O(Y)=Y\log Y+O(Y)\).
+**5.2.** The count is \(\sum_{d_1\le Y}\lfloor Y/d_1\rfloor=Y\sum_{d\le Y}1/d+O(Y)\), which is \(Y\log Y+O(Y)\).
 
-**5.3.** \(\mathbb E_XD_F(m;b)=\sum_{d\le X^\rho}\mu(d)F(\log d/L)\,X^{-1}\#\{X<m\le2X:d\mid m+b\}\), and the count is \(X/d+\eta\) with \(|\eta|\le1\); the errors add up to at most \(X^{\rho-1}\|F\|_\infty\).
+**5.3.**
+\[
+\begin{aligned}
+&\mathbb E_XD_F(m;b)=\sum_{d\le X^\rho}\mu(d)F(\log d/L)\\
+&\qquad\cdot X^{-1}\#\{X<m\le2X:d\mid m+b\},
+\end{aligned}
+\]
+and the count is \(X/d+\eta\) with \(|\eta|\le1\); the errors add up to at most \(X^{\rho-1}\|F\|_\infty\).
 
 **5.4.** This is Proposition 4.2 with \(R=1\), \(j_1=0\), \(F_1=1\) and \(\delta=1\): the density sum is \(1\). Directly, the sum of \(\vartheta(n)\) over \((X+a,2X+a]\) is \(X+O(E_X(1))\), and \(E_X(1)\ll XL^{-A}\) by Proposition 3.1.
 

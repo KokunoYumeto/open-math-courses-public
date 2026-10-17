@@ -14,7 +14,12 @@ Put \(\Delta a_k(x)=a_k(\theta x)-a_k(x)\) for \(k\in\mathbb Z\).
 
 **Lemma 1.1.** For \(k\in I_m\),
 \[
-a^+_k(\theta x)-a^+_k(x)=D-DN_m1_{\{T_m=N_m-1\}}(x),\qquad a^-_k(\theta x)-a^-_k(x)=-\big(a^+_k(\theta x)-a^+_k(x)\big).
+\begin{aligned}
+&a^+_k(\theta x)-a^+_k(x)=D\\
+&\quad -DN_m1_{\{T_m=N_m-1\}}(x),\\
+&a^-_k(\theta x)-a^-_k(x)\\
+&\quad =-\big(a^+_k(\theta x)-a^+_k(x)\big).
+\end{aligned}
 \]
 Both differences vanish for \(k=0\).
 
@@ -22,17 +27,27 @@ Both differences vanish for \(k=0\).
 
 For \(x\in X_*\) only finitely many \(m\) satisfy \(T_m(x)=N_m-1\), so
 \[
-C(x)=D+D\sum_{m\ge1:\ T_m(x)=N_m-1}N_m|I_m|<\infty .
+\begin{aligned}
+&C(x)=D\\
+&\quad +D\sum_{m\ge1:\ T_m(x)=N_m-1}N_m|I_m|<\infty .
+\end{aligned}
 \]
 
 **Lemma 1.2** (two-ended drift). For \(x\in X_*\) and all integers \(n,q\ge1\),
 \[
-\sum_{k=0}^{n-1}\Delta a_k(x)\ge Dn-C(x),\qquad\sum_{k=-q}^{-1}\Delta a_k(x)\le-Dq+C(x).
+\begin{gathered}
+\sum_{k=0}^{n-1}\Delta a_k(x)\ge Dn-C(x),\\
+\sum_{k=-q}^{-1}\Delta a_k(x)\le-Dq+C(x).
+\end{gathered}
 \]
 
 **Proof.** For \(k\ge0\), \(\Delta a_k=a^+_k(\theta x)-a^+_k(x)\). By Lemma 1.1, grouping the indices \(1\le k<n\) by blocks,
 \[
-\sum_{k=0}^{n-1}\Delta a_k(x)=D(n-1)-D\sum_{m:\ T_m(x)=N_m-1}N_m\,\big|I_m\cap[1,n)\big|\ge D(n-1)-\big(C(x)-D\big).
+\begin{aligned}
+&\sum_{k=0}^{n-1}\Delta a_k(x)=D(n-1)\\
+&\quad -D\sum_{m:\ T_m(x)=N_m-1}N_m\,\big|I_m\cap[1,n)\big|\\
+&\quad \ge D(n-1)-\big(C(x)-D\big).
+\end{aligned}
 \]
 For \(k=-k'-1\le-1\), \(\Delta a_k=a^-_{k'}(\theta x)-a^-_{k'}(x)=-\Delta a_{k'}(x)\) with \(k'\ge0\). So the second sum is minus the first one with \(n=q\). \(\square\)
 
@@ -42,11 +57,18 @@ So along \(\theta\) the logarithmic weights increase at the right end of the int
 
 We look for an operator \(V\) with \((Vf)(\theta x)=V_xf(x)\), where \(V_xe_j=b_j(x)e_{j-1}\) with \(b_j(x)\ge0\). On a basis vector \(e_j\) of the fibre over \(x\), the two compositions \(SV\) and \(VS\) end in the fibre over \(\theta x\):
 \[
-S_{\theta x}V_xe_j=b_j(x)\beta_{j-1}(\theta x)e_j,\qquad V_xS_xe_j=\beta_j(x)b_{j+1}(x)e_j .
+\begin{gathered}
+S_{\theta x}V_xe_j=b_j(x)\beta_{j-1}(\theta x)e_j,\\
+V_xS_xe_j=\beta_j(x)b_{j+1}(x)e_j .
+\end{gathered}
 \]
 So \(V\) commutes with \(S\) exactly when
 \[
-b_{j+1}(x)\beta_j(x)=b_j(x)\beta_{j-1}(\theta x)\qquad(x\in X,\ j\in\mathbb Z).\tag{2.1}
+\begin{aligned}
+&b_{j+1}(x)\beta_j(x)\\
+&\quad =b_j(x)\beta_{j-1}(\theta x)\\
+&(x\in X,\ j\in\mathbb Z).
+\end{aligned}\tag{2.1}
 \]
 
 The base transformation is essential here. If \(\theta x\) were replaced by \(x\), (2.1) would force \(b_{j+1}/b_j=e^{a_j(x)-a_{j-1}(x)}\ge e^c\) for \(j\ge1\), by Proposition 3.1(1) of the previous lesson. Nonzero coefficients would then grow exponentially, and no bounded nonzero operator of this form could commute with a single fibre \(S_x\). Along \(\theta\), Lemma 1.2 reverses this growth at both ends.
@@ -59,17 +81,28 @@ This determines \(\tilde b_j(x)>0\) for all \(j\), forward and backward from \(j
 
 **Lemma 2.1.** For \(x\in X_*\) and \(n,q\ge1\),
 \[
-\log\tilde b_n(x)\le-(D-c)n+C(x)+4Dn^{1/3},\qquad\log\tilde b_{-q}(x)\le-(D-c)q+C(x)+4Dq^{1/3}.
+\begin{aligned}
+&\log\tilde b_n(x)\le-(D-c)n\\
+&\quad +C(x)+4Dn^{1/3},\\
+&\log\tilde b_{-q}(x)\le-(D-c)q\\
+&\quad +C(x)+4Dq^{1/3}.
+\end{aligned}
 \]
 In particular \(\tilde b_j(x)\to0\) as \(j\to+\infty\) and as \(j\to-\infty\).
 
 **Proof.** The recursion gives \(\log\tilde b_{j+1}-\log\tilde b_j=a_j(x)-a_{j-1}(\theta x)\). Summing over \(0\le j\le n-1\) and shifting the index in the second sum,
 \[
-\log\tilde b_n(x)=-\sum_{k=0}^{n-1}\Delta a_k(x)+a_{n-1}(\theta x)-a_{-1}(\theta x).
+\begin{aligned}
+&\log\tilde b_n(x)=-\sum_{k=0}^{n-1}\Delta a_k(x)\\
+&\quad +a_{n-1}(\theta x)-a_{-1}(\theta x).
+\end{aligned}
 \]
 Summing over \(-q\le j\le-1\) in the same way,
 \[
-\log\tilde b_{-q}(x)=\sum_{k=-q}^{-1}\Delta a_k(x)+a_{-q-1}(\theta x)-a_{-1}(\theta x).
+\begin{aligned}
+&\log\tilde b_{-q}(x)=\sum_{k=-q}^{-1}\Delta a_k(x)\\
+&\quad +a_{-q-1}(\theta x)-a_{-1}(\theta x).
+\end{aligned}
 \]
 Here \(a_{-1}=c\), \(a_{n-1}=a^+_{n-1}\) and \(a_{-q-1}=a^-_q\). By Proposition 3.1(2) of the previous lesson, \(a^+_{n-1}(\theta x)-c\le c(n-1)+4D(n-1)^{1/3}\) (also for \(n=1\)) and \(a^-_q(\theta x)-c\le cq+4Dq^{1/3}\). Combine with Lemma 1.2. As \(D-c=90>0\), both bounds tend to \(-\infty\). \(\square\)
 
@@ -81,7 +114,10 @@ Then \(0\le b_j\le1\), all \(b_j\) are positive on \(X_*\), and (2.1) holds for 
 
 Let \(V_x\) be the operator \(V_xe_j=b_j(x)e_{j-1}\) on \(K\); it maps the basis to an orthogonal family, so \(\|V_x\|=\sup_jb_j(x)\le1\). Define
 \[
-(Vf)(y)=V_{\theta^{-1}y}\,f(\theta^{-1}y),\qquad\text{that is,}\qquad(Vf)(\theta x,j-1)=b_j(x)f(x,j).
+\begin{gathered}
+(Vf)(y)=V_{\theta^{-1}y}\,f(\theta^{-1}y),\qquad \text{that is,}\\
+(Vf)(\theta x,j-1)=b_j(x)f(x,j).
+\end{gathered}
 \]
 
 **Proposition 2.2.** \(V\) is a well-defined operator on \(H_0\) with \(\|V\|\le1\), and \(VS=SV\). For \(x\in X_*\) and \(h\in\mathbb Z\),
@@ -91,7 +127,10 @@ Let \(V_x\) be the operator \(V_xe_j=b_j(x)e_{j-1}\) on \(K\); it maps the basis
 
 **Proof.** Since \(\theta\) maps null sets to null sets (Lemma 1.1(2) of the previous lesson), \(Vf\) does not depend on the representative of \(f\), and its coordinates are measurable because \(\theta^{-1}\) is. For a nonnegative measurable \(F\) on \(X\), \(\int F\circ\theta^{-1}d\mu=\int F\,d\mu\): for indicators this is \(\mu(\theta E)=\mu(E)\), and simple functions and monotone convergence give the general case. Hence
 \[
-\|Vf\|^2=\int\|V_{\theta^{-1}y}f(\theta^{-1}y)\|^2d\mu(y)=\int\|V_xf(x)\|^2d\mu(x)\le\|f\|^2 .
+\begin{aligned}
+&\|Vf\|^2=\int\|V_{\theta^{-1}y}f(\theta^{-1}y)\|^2d\mu(y)\\
+&\quad =\int\|V_xf(x)\|^2d\mu(x)\le\|f\|^2 .
+\end{aligned}
 \]
 For commutation, \((SVf)(\theta x)=S_{\theta x}V_xf(x)\) and \((VSf)(\theta x)=V_xS_xf(x)\). The operators \(S_{\theta x}V_x\) and \(V_xS_x\) agree on the basis by (2.1), so they are equal. This gives \(SVf=VSf\) at almost every point \(\theta x\), hence almost everywhere.
 
@@ -103,7 +142,10 @@ For \(x\in X_*\) all \(b_j(x)\) are positive. Then \(V_xK_{\ge h}\subseteq K_{\g
 
 **Lemma 3.1** (strict descent). Let \((Y,\nu)\) be a probability space and \(\theta:Y\to Y\) a bijection such that \(\theta\) and \(\theta^{-1}\) are measurable and preserve \(\nu\), and which is ergodic: \(\nu(E\,\triangle\,\theta^{-1}E)=0\) implies \(\nu(E)\in\{0,1\}\). Let \(s:Y\to\mathbb Z\cup\{\pm\infty\}\) be measurable, and suppose that for almost every \(y\),
 \[
-s(y)=-\infty\ \Longrightarrow\ s(\theta y)=-\infty,\qquad s(y)\in\mathbb Z\ \Longrightarrow\ s(\theta y)\le s(y)-1 .
+\begin{gathered}
+s(y)=-\infty\ \Longrightarrow\ s(\theta y)=-\infty,\\
+s(y)\in\mathbb Z\ \Longrightarrow\ s(\theta y)\le s(y)-1 .
+\end{gathered}
 \]
 Then \(s=-\infty\) almost everywhere or \(s=+\infty\) almost everywhere.
 
@@ -121,22 +163,28 @@ A finite label that drops by at least one at every step would have to lose all o
 
 **Proposition 4.1.** Let \(L\subseteq H_0\) be a closed subspace invariant under \(S\), under \(V\), and under every scalar multiplier \(M_g\), \(g\in L^\infty(X,\mu)\). Then \(L=\{0\}\) or \(L=H_0\).
 
-**Proof.** *A field of projections.* The set of scalar multipliers is closed under adjoints, since \(M_g^*=M_{\bar g}\). By Proposition 2.1(5) of the double commutant lesson, the projection \(P\) onto \(L\) commutes with every \(M_g\). Theorem 2.2 of the previous lesson gives a measurable field \(x\mapsto P_x\), whose values are orthogonal projections outside a null set, with \((Pf)(x)=P_xf(x)\) almost everywhere for every \(f\in H_0\). In particular
-\[
-L=\{f\in H_0:Pf=f\}=\{f\in H_0:f(x)\in\operatorname{ran}P_x\text{ for almost every }x\}.\tag{4.1}
-\]
+**Proof.** *A field of projections.* The set of scalar multipliers is closed under adjoints, since \(M_g^*=M_{\bar g}\). By Proposition 2.1(5) of the double commutant lesson, the projection \(P\) onto \(L\) commutes with every \(M_g\). Theorem 2.2 of the previous lesson gives a measurable field \(x\mapsto P_x\), whose values are orthogonal projections outside a null set, with \((Pf)(x)=P_xf(x)\) almost everywhere for every \(f\in H_0\). In particular, the description (4.1) holds: \(L\) consists of the \(f\in H_0\) with \(Pf=f\), that is, of the \(f\in H_0\) with \(f(x)\in\operatorname{ran}P_x\) for almost every \(x\).
 
 *Fibre identities.* Invariance means \((1-P)SP=0\) and \((1-P)VP=0\). Fix \(j\), and let \(g=P(1\otimes e_j)\); then \(g(x)=P_xe_j\) outside a null set \(N_j\). First, \(((1-P)Sg)(x)=(1-P_x)S_xP_xe_j\) almost everywhere, so
 \[
-(1-P_x)S_xP_xe_j=0\quad\text{for almost every }x.
+\begin{aligned}
+&(1-P_x)S_xP_xe_j\\
+&\quad =0\quad\text{for almost every }x.
+\end{aligned}
 \]
 Second, \((Vg)(y)=V_{\theta^{-1}y}P_{\theta^{-1}y}e_j\) for \(y\notin\theta N_j\), a null set. Since \(((1-P)Vg)(y)=(1-P_y)(Vg)(y)\) almost everywhere, \((1-P_y)V_{\theta^{-1}y}P_{\theta^{-1}y}e_j=0\) for almost every \(y\). Writing \(y=\theta x\) and using that \(\theta^{-1}\) preserves null sets,
 \[
-(1-P_{\theta x})V_xP_xe_j=0\quad\text{for almost every }x.
+\begin{aligned}
+&(1-P_{\theta x})V_xP_xe_j\\
+&\quad =0\quad\text{for almost every }x.
+\end{aligned}
 \]
 These are countably many conditions. Let \(X_0\) be a conull set of points of \(X_*\) at which \(P_x\) and \(P_{\theta x}\) are projections and both identities hold for every \(j\); by boundedness they then hold on all of \(K\). The set \(X_1=\bigcap_{n\in\mathbb Z}\theta^nX_0\) is conull and \(\theta X_1=X_1\). For \(x\in X_1\),
 \[
-S_x(\operatorname{ran}P_x)\subseteq\operatorname{ran}P_x,\qquad V_x(\operatorname{ran}P_x)\subseteq\operatorname{ran}P_{\theta x}.\tag{4.2}
+\begin{gathered}
+S_x(\operatorname{ran}P_x)\subseteq\operatorname{ran}P_x,\\
+V_x(\operatorname{ran}P_x)\subseteq\operatorname{ran}P_{\theta x}.
+\end{gathered}\tag{4.2}
 \]
 
 *Tail labels.* For \(x\in X_1\), \(\operatorname{ran}P_x\) is a closed \(S_x\)-invariant subspace. By Proposition 3.1(4) of the previous lesson, \(\operatorname{ran}P_x=K_{\ge s(x)}\) for exactly one \(s(x)\in\mathbb Z\cup\{\pm\infty\}\). Put \(s=+\infty\) off \(X_1\). For \(j\in\mathbb Z\), a tail \(K_{\ge s}\) contains \(e_j\) exactly when \(s\le j\), and a projection \(Q\) fixes a unit vector \(e\) exactly when \(\langle Qe,e\rangle=1\). So
@@ -170,7 +218,7 @@ So the hyperinvariant subspace problem has a negative answer, and so does the tr
 
 **Many invariant subspaces.** The theorem concerns hyperinvariant subspaces only. The closed subspaces invariant under \(S\) and the scalar multipliers can be listed completely.
 
-**Proposition 6.1.** For a measurable \(\sigma:X\to\mathbb Z\cup\{\pm\infty\}\), let \(L_\sigma=\{f\in H_0:f(x)\in K_{\ge\sigma(x)}\text{ for almost every }x\}\). The closed subspaces of \(H_0\) invariant under \(S\) and all scalar multipliers are exactly the subspaces \(L_\sigma\). Such an \(L_\sigma\) is invariant under \(V\) only if \(L_\sigma=\{0\}\) or \(L_\sigma=H_0\).
+**Proposition 6.1.** For a measurable \(\sigma:X\to\mathbb Z\cup\{\pm\infty\}\), let \(L_\sigma\) be the set of \(f\in H_0\) with \(f(x)\in K_{\ge\sigma(x)}\) for almost every \(x\). The closed subspaces of \(H_0\) invariant under \(S\) and all scalar multipliers are exactly the subspaces \(L_\sigma\). Such an \(L_\sigma\) is invariant under \(V\) only if \(L_\sigma=\{0\}\) or \(L_\sigma=H_0\).
 
 **Proof.** Let \(P^\sigma_x\) be the projection onto \(K_{\ge\sigma(x)}\). Its matrix entries \(\langle P^\sigma_xe_i,e_j\rangle=\delta_{ij}1_{\{\sigma\le i\}}(x)\) are measurable, so it is a measurable field of projections. Its decomposable operator \(P^\sigma\) is a projection with range \(L_\sigma\) (Lemma 2.1 of the previous lesson), so \(L_\sigma\) is closed. \(P^\sigma\) commutes with every \(M_g\). Since \(S_xK_{\ge\sigma(x)}\subseteq K_{\ge\sigma(x)}\), the field of \((1-P^\sigma)SP^\sigma\) vanishes, so \(L_\sigma\) is \(S\)-invariant. Conversely, let \(L\) be a closed subspace invariant under \(S\) and the multipliers. The parts of the proof of Proposition 4.1 that concern \(S\) and the multipliers (the field of projections, the identity \((1-P_x)S_xP_x=0\), and the tail labels) do not use \(V\). They give a measurable label \(s\) with \(\operatorname{ran}P_x=K_{\ge s(x)}\) almost everywhere, and (4.1) says \(L=L_s\). The last statement is Proposition 4.1. \(\square\)
 
@@ -178,7 +226,11 @@ For instance, for \(h\in\mathbb Z\) the subspace \(L_h\) of fields with values i
 
 **The polar decomposition.** Let \(U\) be the unitary \((Uf)(x,j)=f(x,j-1)\) of \(H_0\), and \(|S|\) the multiplication operator \((|S|f)(x,j)=\beta_j(x)f(x,j)\). Then \(S=U|S|\), with \(|S|\ge0\) injective, and \(S^*S=|S|^2\). The operators
 \[
-A_n=U^{-n}|S|U^n,\qquad(A_nf)(x,j)=\beta_{j+n}(x)f(x,j)\qquad(n\in\mathbb Z),
+\begin{gathered}
+A_n=U^{-n}|S|U^n,\\
+(A_nf)(x,j)=\beta_{j+n}(x)f(x,j)\\
+(n\in\mathbb Z),
+\end{gathered}
 \]
 are commuting positive multiplication operators. For a set \(\mathcal F\) of self-adjoint operators, \(W^*(\mathcal F)=\mathcal F''\) is the von Neumann algebra it generates (Definition 2.3 of the double commutant lesson). A nonzero projection \(p\) in an abelian von Neumann algebra is *minimal* if the only projections \(q\le p\) in the algebra are \(0\) and \(p\).
 
@@ -191,7 +243,7 @@ are commuting positive multiplication operators. For a set \(\mathcal F\) of sel
 
 *The algebra of a partition.* For \(p_v\) as above, let \(\mathcal D\) be the set of strongly convergent sums \(\sum_vc_vp_v\) with bounded \(c_v\). An operator commutes with all \(p_v\) if and only if it is block diagonal, \(R=\sum_vp_vRp_v\). Every element of \(\mathcal D\) commutes with every block diagonal operator. Conversely, an operator commuting with all block diagonal operators commutes with the projections \(p_v\) and with all operators on each block \(p_vH_0\), so it is a scalar \(c_v\) on each block. Hence \(\mathcal D=\{p_v:v\}''\), a von Neumann algebra.
 
-(1) For fixed \(j\) and \(n\in F\), \(\beta_{j+n}(x)\) is constant if \(j+n\in\{-1,0\}\), and otherwise it is a function of one residue \(T_m(x)\). By (1.1) of the previous lesson, finitely many residues are functions of the one with the largest level. So for fixed \(j\) the tuple \(t(x,j)=(\beta_{j+n}(x))_{n\in F}\) takes finitely many values, each on a finite union of residue classes, a set of positive measure. Over all \(j\) the tuple takes countably many values \(v\). Let \(p_v\) be multiplication by the indicator of \(\{t=v\}\): these are mutually orthogonal nonzero projections with \(\sum_vp_v=1\), and \(A_n=\sum_vv_np_v\). With \(f=1_{\{\lambda\}}\), the diagonal calculus gives \(1_{\{\lambda\}}(A_n)=\sum_{v:v_n=\lambda}p_v\in W^*(A_n:n\in F)\), and
+(1) For fixed \(j\) and \(n\in F\), \(\beta_{j+n}(x)\) is constant if \(j+n\in\{-1,0\}\), and otherwise it is a function of one residue \(T_m(x)\). By (1.1) of the previous lesson, finitely many residues are functions of the one with the largest level. So for fixed \(j\) the tuple \(t(x,j)=(\beta_{j+n}(x))_{n\in F}\) takes finitely many values, each on a finite union of residue classes, a set of positive measure. Over all \(j\) the tuple takes countably many values \(v\). Let \(p_v\) be multiplication by the indicator of \(\{t=v\}\): these are mutually orthogonal nonzero projections with \(\sum_vp_v=1\), and \(A_n=\sum_vv_np_v\). With \(f=1_{\{\lambda\}}\), the diagonal calculus gives \(1_{\{\lambda\}}(A_n)=\sum_{v:v_n=\lambda}p_v\), an element of \(W^*(A_n:n\in F)\), and
 \[
 p_v=\prod_{n\in F}1_{\{v_n\}}(A_n)\in W^*(A_n:n\in F).
 \]
@@ -207,7 +259,10 @@ is multiplication by the indicator of \(X\times\{r\}\). Next fix \(m\ge1\) and \
 
 *All of \(\mathcal L\).* Let \(R\in W'\). For \(\xi,\eta\in H_0\) the function \(\psi=\xi\,\overline{R^*\eta}-(R\xi)\,\bar\eta\) is integrable, and
 \[
-\langle Rm_{1_E}\xi,\eta\rangle-\langle m_{1_E}R\xi,\eta\rangle=\int_E\psi\,d(\mu\otimes\#)
+\begin{aligned}
+&\langle Rm_{1_E}\xi,\eta\rangle-\langle m_{1_E}R\xi,\eta\rangle\\
+&\quad =\int_E\psi\,d(\mu\otimes\#)
+\end{aligned}
 \]
 for every measurable \(E\). This vanishes for every rectangle, and so, by dominated convergence, also for \(X\times\mathbb Z\), a countable disjoint union of rectangles. The rectangles, together with \(\varnothing\) and \(X\times\mathbb Z\), form a family closed under finite intersections. Applying the uniqueness lemma for measures to the positive and negative parts of the real and imaginary parts of \(\psi\), \(\int_E\psi=0\) for every \(E\) in the sigma-algebra generated by the rectangles. That sigma-algebra contains \(A\times\{r\}\) for every \(A\in\Sigma\) and \(r\in\mathbb Z\), so it contains every measurable subset of \(X\times\mathbb Z\). Thus \(R\) commutes with every \(m_{1_E}\), hence with every multiplication by a simple function, hence, by norm density, with every \(m_g\). So \(W'\subseteq\mathcal L'=\mathcal L\), and \(W=W''\supseteq\mathcal L'=\mathcal L\).
 

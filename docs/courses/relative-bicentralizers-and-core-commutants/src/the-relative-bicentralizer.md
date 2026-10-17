@@ -16,25 +16,31 @@ Throughout, \(M\) is a countably decomposable von Neumann algebra, \(N\subset M\
 \]
 a faithful normal state on \(M\). We work in the GNS space \(H=L^2(M,\bar\varphi)\) with cyclic and separating vector \(\bar\xi\), write \(\|x\|_{\bar\varphi}=\|x\bar\xi\|\) and \(\|x\|^\sharp_{\bar\varphi}=(\|x\|_{\bar\varphi}^2+\|x^*\|_{\bar\varphi}^2)^{1/2}\), and use the bimodule notation \((x\psi)(y)=\psi(yx)\), \((\psi x)(y)=\psi(xy)\), \([x,\psi]=x\psi-\psi x\) of the ultraproduct lesson. Since \(E\) is a \(\bar\varphi\)-preserving contractive retraction onto \(N\), the modular expectation theorem gives
 \[
-\sigma^{\bar\varphi}_t(N)=N,\qquad\sigma^{\bar\varphi}_t|_N=\sigma^\varphi_t,\qquad E\circ\sigma_t^{\bar\varphi}=\sigma^\varphi_t\circ E\qquad(t\in\mathbb R).
-\tag{1.1}
+\begin{gathered}
+\sigma^{\bar\varphi}_t(N)=N,\\
+\sigma^{\bar\varphi}_t|_N=\sigma^\varphi_t,\\
+E\circ\sigma_t^{\bar\varphi}=\sigma^\varphi_t\circ E\\
+(t\in\mathbb R).
+\end{gathered}\tag{1.1}
 \]
-Write \(\mathcal U(N)\) for the unitary group of \(N\),
-\[
-\mathrm{AC}(N,\varphi)=\{(x_n)\in\ell^\infty(N):\ \|[x_n,\varphi]\|\to0\},\qquad
-A_{\varphi,\omega}(N)=\{(x_n)\in\ell^\infty(N):\ \lim_{n\to\omega}\|[x_n,\varphi]\|=0\},
-\]
+Write \(\mathcal U(N)\) for the unitary group of \(N\), \(\mathrm{AC}(N,\varphi)\) for the set of sequences \((x_n)\in\ell^\infty(N)\) with \(\|[x_n,\varphi]\|\to0\), \(A_{\varphi,\omega}(N)\) for the set of those with \(\lim_{n\to\omega}\|[x_n,\varphi]\|=0\),
 and \(\mathcal U_\delta=\{u\in\mathcal U(N):\ \|[u,\varphi]\|<\delta\}\) for \(\delta>0\). Here \(\|[x,\varphi]\|\) is the norm in \(N_*\). By (1.1) of the asymptotic centralizer lesson, \(\|[u,\varphi]\|=\|u\varphi u^*-\varphi\|\) for a unitary \(u\).
 
 **Lemma 1.1.** For \(x\in N\),
 \[
-\|[x,\bar\varphi]\|_{M_*}=\|[x,\varphi]\|_{N_*},\qquad\|x\|_{\bar\varphi}=\|x\|_\varphi,\qquad \|x\|^\sharp_{\bar\varphi}=\|x\|^\sharp_\varphi .
+\begin{gathered}
+\|[x,\bar\varphi]\|_{M_*}=\|[x,\varphi]\|_{N_*},\\
+\|x\|_{\bar\varphi}=\|x\|_\varphi,\qquad \|x\|^\sharp_{\bar\varphi}=\|x\|^\sharp_\varphi .
+\end{gathered}
 \]
 Consequently \(\mathrm{AC}(N,\varphi)\subset\mathrm{AC}(M,\bar\varphi)\), \(A_{\varphi,\omega}(N)\subset A_{\bar\varphi,\omega}(M)\), and a bounded sequence in \(N\) tends to \(0\) \(*\)-strongly along \(\omega\) as a sequence in \(N\) exactly when it does so as a sequence in \(M\).
 
 **Proof.** Since \(E\) is \(N\)-bimodular, for \(y\in M\)
 \[
-[x,\bar\varphi](y)=\varphi(E(yx)-E(xy))=\varphi(E(y)x-xE(y))=[x,\varphi](E(y)).
+\begin{aligned}
+&[x,\bar\varphi](y)=\varphi(E(yx)-E(xy))\\
+&\quad =\varphi(E(y)x-xE(y))=[x,\varphi](E(y)).
+\end{aligned}
 \]
 \(E\) maps the unit ball of \(M\) onto the unit ball of \(N\) (it is contractive and fixes \(N\)), so the two norms agree. Also \(\|x\|^2_{\bar\varphi}=\varphi(E(x^*x))=\varphi(x^*x)\). The last assertion is Lemma 1.3 of the ultraproduct lesson, applied in \(N\) with \(\varphi\) and in \(M\) with \(\bar\varphi\). \(\square\)
 
@@ -42,7 +48,7 @@ Write \(I_\omega\), \(N_\omega\) and \(M^\omega=N_\omega/I_\omega\) for the Ocne
 
 **Lemma 1.2.** The inclusion \(A_{\varphi,\omega}(N)\subset A_{\bar\varphi,\omega}(M)\subset N_\omega\) induces an injective normal unital \(*\)-homomorphism \(N_{\varphi,\omega}\to M^\omega\) with \(\bar\varphi^\omega\circ\iota=\tau_{\varphi,\omega}\). Every element of its image commutes with \(\bar\varphi^\omega\). If \(N\) is a factor of type III₁ with separable predual, \(N_{\varphi,\omega}\) is a factor of type II₁.
 
-**Proof.** \(A_{\bar\varphi,\omega}(M)\subset N_\omega\) by Lemma 1.1(1) of the asymptotic centralizer lesson, and the first inclusion is Lemma 1.1. The kernel of \(A_{\varphi,\omega}(N)\to M^\omega\) is \(A_{\varphi,\omega}(N)\cap I_\omega=I_\omega(N)\) by Lemma 1.1, so the induced map \(\iota\) is injective, and \(\bar\varphi^\omega(\iota[x_n])=\lim_\omega\bar\varphi(x_n)=\lim_\omega\varphi(x_n)\). If \(a_i\uparrow a\) in \(N_{\varphi,\omega}\), then \(Z=\sup_i\iota(a_i)\le\iota(a)\) and \(\bar\varphi^\omega(\iota(a)-Z)=\tau_{\varphi,\omega}(a)-\lim_i\tau_{\varphi,\omega}(a_i)=0\), so \(Z=\iota(a)\) by faithfulness: \(\iota\) is normal. Commutation with \(\bar\varphi^\omega\) is Lemma 1.1(2) of the asymptotic centralizer lesson, applied in \(M\) with \(\bar\varphi\). The last statement is Theorem 3.1 of that lesson applied to \((N,\varphi)\). \(\square\)
+**Proof.** \(A_{\bar\varphi,\omega}(M)\subset N_\omega\) by Lemma 1.1(1) of the asymptotic centralizer lesson, and the first inclusion is Lemma 1.1. The kernel of \(A_{\varphi,\omega}(N)\to M^\omega\) is \(A_{\varphi,\omega}(N)\cap I_\omega=I_\omega(N)\) by Lemma 1.1, so the induced map \(\iota\) is injective, and \(\bar\varphi^\omega(\iota[x_n])=\lim_\omega\bar\varphi(x_n)=\lim_\omega\varphi(x_n)\). If \(a_i\uparrow a\) in \(N_{\varphi,\omega}\), then \(Z=\sup_i\iota(a_i)\le\iota(a)\) and \(\bar\varphi^\omega(\iota(a)-Z)=\tau_{\varphi,\omega}(a)-\lim_i\tau_{\varphi,\omega}(a_i)\), which is \(0\), so \(Z=\iota(a)\) by faithfulness: \(\iota\) is normal. Commutation with \(\bar\varphi^\omega\) is Lemma 1.1(2) of the asymptotic centralizer lesson, applied in \(M\) with \(\bar\varphi\). The last statement is Theorem 3.1 of that lesson applied to \((N,\varphi)\). \(\square\)
 
 We identify \(N_{\varphi,\omega}\) with its image in \(M^\omega\).
 
@@ -54,16 +60,13 @@ Let \(\mathcal G_\varphi\) be the set of classes \(\pi(u_n)\) of sequences \((u_
 
 **Lemma 1.4** (the canonical expectation). For \(X=\pi(x_n)\in M^\omega\) the \(\sigma\)-weak limit \(E_\omega(X)=\lim_{n\to\omega}x_n\) exists in \(M\) and depends only on \(X\). The map \(E_\omega\colon M^\omega\to M\) is a faithful normal conditional expectation onto \(M\), with \(\bar\varphi\circ E_\omega=\bar\varphi^\omega\) and \(E_\omega(aXb)=aE_\omega(X)b\) for \(a,b\in M\).
 
-**Proof.** Bounded sets of \(M\) are \(\sigma\)-weakly compact, so the limit along \(\omega\) exists. A sequence in \(I_\omega\) tends to \(0\) strongly along \(\omega\), hence \(\sigma\)-weakly, so \(E_\omega\) is well defined; it is linear, unital and \(M\)-bimodular, and it is the identity on constants. If \(X\ge0\), write \(X=Y^*Y\) with \(Y=\pi(y_n)\); then \(X=\pi(y_n^*y_n)\) and \(E_\omega(X)=\lim_\omega y_n^*y_n\ge0\). By \(\sigma\)-weak continuity of \(\bar\varphi\), \(\bar\varphi(E_\omega(X))=\lim_\omega\bar\varphi(x_n)=\bar\varphi^\omega(X)\). If \(X\ge0\) and \(E_\omega(X)=0\), then \(\bar\varphi^\omega(X)=0\) and \(X=0\). If \(X_i\uparrow X\), then \(E_\omega(X_i)\uparrow Z\le E_\omega(X)\) and \(\bar\varphi(E_\omega(X)-Z)=\bar\varphi^\omega(X)-\lim_i\bar\varphi^\omega(X_i)=0\) by normality of \(\bar\varphi^\omega\), so \(Z=E_\omega(X)\). \(\square\)
+**Proof.** Bounded sets of \(M\) are \(\sigma\)-weakly compact, so the limit along \(\omega\) exists. A sequence in \(I_\omega\) tends to \(0\) strongly along \(\omega\), hence \(\sigma\)-weakly, so \(E_\omega\) is well defined; it is linear, unital and \(M\)-bimodular, and it is the identity on constants. If \(X\ge0\), write \(X=Y^*Y\) with \(Y=\pi(y_n)\); then \(X=\pi(y_n^*y_n)\) and \(E_\omega(X)=\lim_\omega y_n^*y_n\ge0\). By \(\sigma\)-weak continuity of \(\bar\varphi\), \(\bar\varphi(E_\omega(X))=\lim_\omega\bar\varphi(x_n)=\bar\varphi^\omega(X)\). If \(X\ge0\) and \(E_\omega(X)=0\), then \(\bar\varphi^\omega(X)=0\) and \(X=0\). If \(X_i\uparrow X\), then \(E_\omega(X_i)\uparrow Z\le E_\omega(X)\) and \(\bar\varphi(E_\omega(X)-Z)=\bar\varphi^\omega(X)-\lim_i\bar\varphi^\omega(X_i)\), which is \(0\) by normality of \(\bar\varphi^\omega\), so \(Z=E_\omega(X)\). \(\square\)
 
 For \(X=\pi(x_n)\) we have \(\|X\|_{\bar\varphi^\omega}=\lim_\omega\|x_n\|_{\bar\varphi}\), by the definition of \(\bar\varphi^\omega\) and multiplicativity of \(\pi\); in particular \(\langle X,Y\rangle_{\bar\varphi^\omega}=\bar\varphi^\omega(Y^*X)=\lim_\omega\bar\varphi(y_n^*x_n)\).
 
 ## 2. The relative bicentralizer
 
-**Definition 2.1.** The *relative bicentralizer* of \(\varphi\) is
-\[
-\mathrm B(N\subset M,\varphi)=\{a\in M:\ \|[a,x_n]\|_{\bar\varphi}\to0\ \text{ for every }(x_n)\in\mathrm{AC}(N,\varphi)\}.
-\]
+**Definition 2.1.** The *relative bicentralizer* \(\mathrm B(N\subset M,\varphi)\) of \(\varphi\) is the set of \(a\in M\) with \(\|[a,x_n]\|_{\bar\varphi}\to0\) for every \((x_n)\in\mathrm{AC}(N,\varphi)\).
 
 By Lemma 1.3 of the ultraproduct lesson, the condition says that \([a,x_n]\to0\) strongly; it does not depend on the faithful normal state used to measure it, so \(\mathrm B(N\subset M,\varphi)\) does not depend on \(E\). For \(N=M\) and \(E=\mathrm{id}\) it is the bicentralizer \(\mathrm B(M,\varphi)\).
 
@@ -86,7 +89,11 @@ So \(\mathrm B(N\subset M,\varphi)=(N_{\varphi,\omega})'\cap M\), the relative c
 
 **Theorem 2.3.** \(\mathrm B=\mathrm B(N\subset M,\varphi)\) is a von Neumann subalgebra of \(M\), and
 \[
-N'\cap M\subset\mathrm B\subset(N_\varphi)'\cap M,\qquad\sigma_t^{\bar\varphi}(\mathrm B)=\mathrm B\ (t\in\mathbb R),\qquad\mathrm B\cap N=\mathrm B(N,\varphi).
+\begin{gathered}
+N'\cap M\subset\mathrm B\subset(N_\varphi)'\cap M,\\
+\sigma_t^{\bar\varphi}(\mathrm B)=\mathrm B\ (t\in\mathbb R),\\
+\mathrm B\cap N=\mathrm B(N,\varphi).
+\end{gathered}
 \]
 There is a unique \(\bar\varphi\)-preserving normal conditional expectation \(E_{\mathrm B}\) of \(M\) onto \(\mathrm B\); it is faithful.
 
@@ -94,7 +101,10 @@ There is a unique \(\bar\varphi\)-preserving normal conditional expectation \(E_
 
 By (1.1) and \(\varphi\circ\sigma^\varphi_t=\varphi\), \(\|[\sigma_t^{\varphi}(x),\varphi]\|=\|[x,\varphi]\|\) for \(x\in N\), so \(\mathrm{AC}(N,\varphi)\) is invariant under \(\sigma^\varphi_t\) termwise. For \(a\in\mathrm B\) and \((x_n)\in\mathrm{AC}(N,\varphi)\),
 \[
-\|[\sigma_t^{\bar\varphi}(a),x_n]\|_{\bar\varphi}=\|\sigma_t^{\bar\varphi}([a,\sigma^{\varphi}_{-t}(x_n)])\|_{\bar\varphi}=\|[a,\sigma^\varphi_{-t}(x_n)]\|_{\bar\varphi}\to0,
+\begin{aligned}
+&\|[\sigma_t^{\bar\varphi}(a),x_n]\|_{\bar\varphi}=\|\sigma_t^{\bar\varphi}([a,\sigma^{\varphi}_{-t}(x_n)])\|_{\bar\varphi}\\
+&\quad =\|[a,\sigma^\varphi_{-t}(x_n)]\|_{\bar\varphi}\to0,
+\end{aligned}
 \]
 since \(\bar\varphi\circ\sigma^{\bar\varphi}_t=\bar\varphi\). So \(\mathrm B\) is \(\sigma^{\bar\varphi}\)-invariant, and the modular expectation theorem gives a unique \(\bar\varphi\)-preserving contractive retraction onto \(\mathrm B\), which is a faithful normal conditional expectation. Finally, for \(a\in N\), \(\|[a,x_n]\|_{\bar\varphi}=\|[a,x_n]\|_\varphi\) by Lemma 1.1, which gives \(\mathrm B\cap N=\mathrm B(N,\varphi)\). \(\square\)
 
@@ -108,18 +118,29 @@ Since \(E_{\mathrm B}\) is \(\mathrm B\)-bimodular and \(\bar\varphi\)-preservin
 
 **Proof.** Let \(a\in\mathrm B(N\subset M,\varphi)\) and \((x_n)\in\mathrm{AC}(N,\varphi)\). Since \(E\) is \(N\)-bimodular, \([E(a),x_n]=E([a,x_n])\), and the Schwarz inequality \(E(z)^*E(z)\le E(z^*z)\) gives
 \[
-\|[E(a),x_n]\|_\varphi^2=\varphi(E([a,x_n])^*E([a,x_n]))\le\bar\varphi([a,x_n]^*[a,x_n])=\|[a,x_n]\|^2_{\bar\varphi}\to0 .\qquad\square
+\begin{aligned}
+&\|[E(a),x_n]\|_\varphi^2\\
+&\quad =\varphi(E([a,x_n])^*E([a,x_n]))\\
+&\quad \le\bar\varphi([a,x_n]^*[a,x_n])=\|[a,x_n]\|^2_{\bar\varphi}\to0 .
+\end{aligned}
 \]
+\(\square\)
 
 **Corollary 2.6.** Suppose \(N\) is a factor of type III₁ with separable predual, and write \(\mathrm B=\mathrm B(N\subset M,\varphi)\). Then
 \[
-E(b)=\bar\varphi(b)1\quad(b\in\mathrm B),\qquad E_{\mathrm B}(x)=\varphi(x)1\quad(x\in N),
+\begin{gathered}
+E(b)=\bar\varphi(b)1\quad(b\in\mathrm B),\\
+E_{\mathrm B}(x)=\varphi(x)1\quad(x\in N),
+\end{gathered}
 \]
 and consequently \(\bar\varphi(xb)=\bar\varphi(bx)=\varphi(x)\bar\varphi(b)\) for \(x\in N\), \(b\in\mathrm B\).
 
 **Proof.** By Proposition 2.5 and Theorem 6.1 of the trivial bicentralizer lesson, \(E(b)\in\mathrm B(N,\varphi)=\mathbb C1\), and the scalar is \(\varphi(E(b))=\bar\varphi(b)\). For \(x\in N\) and \(b\in\mathrm B\), bimodularity of \(E\) gives
 \[
-\bar\varphi(xb)=\varphi(xE(b))=\varphi(x)\bar\varphi(b),\qquad\bar\varphi(bx)=\varphi(E(b)x)=\bar\varphi(b)\varphi(x).
+\begin{gathered}
+\bar\varphi(xb)=\varphi(xE(b))=\varphi(x)\bar\varphi(b),\\
+\bar\varphi(bx)=\varphi(E(b)x)=\bar\varphi(b)\varphi(x).
+\end{gathered}
 \]
 The second identity, with \(b^*\) in place of \(b\), says \(\langle x,b\rangle_{\bar\varphi}=\langle\varphi(x)1,b\rangle_{\bar\varphi}\) for all \(b\in\mathrm B\); since \(\varphi(x)1\in\mathrm B\), this is \(E_{\mathrm B}(x)=\varphi(x)1\). \(\square\)
 
@@ -142,23 +163,26 @@ Write \(F_\varphi\) for the \(\bar\varphi^\omega\)-preserving conditional expect
 
 **Lemma 3.2** (uniformity). Let \(X=\pi(x_n)\in M^\omega\). Then \(X\in Q_\varphi\) if and only if for every \(\varepsilon>0\) there are \(\delta>0\) and \(A\in\omega\) such that
 \[
-\|ux_nu^*-x_n\|_{\bar\varphi}\le\varepsilon\qquad(n\in A,\ u\in\mathcal U_\delta).
+\begin{gathered}
+\|ux_nu^*-x_n\|_{\bar\varphi}\le\varepsilon\\
+(n\in A,\ u\in\mathcal U_\delta).
+\end{gathered}
 \]
 
-**Proof.** Suppose the condition holds and let \(U=\pi(u_n)\in\mathcal G_\varphi\), with unitaries \(u_n\) and \(\lim_\omega\|[u_n,\varphi]\|=0\). Given \(\varepsilon\), with \(\delta,A\) as in the condition, the set of \(n\in A\) with \(u_n\in\mathcal U_\delta\) belongs to \(\omega\), so \(\|UXU^*-X\|_{\bar\varphi^\omega}=\lim_\omega\|u_nx_nu_n^*-x_n\|_{\bar\varphi}\le\varepsilon\). Hence \(UXU^*=X\), and \(X\in Q_\varphi\) by Lemma 1.3.
+**Proof.** Suppose the condition holds and let \(U=\pi(u_n)\in\mathcal G_\varphi\), with unitaries \(u_n\) and \(\lim_\omega\|[u_n,\varphi]\|=0\). Given \(\varepsilon\), with \(\delta,A\) as in the condition, the set of \(n\in A\) with \(u_n\in\mathcal U_\delta\) belongs to \(\omega\), so \(\|UXU^*-X\|_{\bar\varphi^\omega}\), which equals \(\lim_\omega\|u_nx_nu_n^*-x_n\|_{\bar\varphi}\), is at most \(\varepsilon\). Hence \(UXU^*=X\), and \(X\in Q_\varphi\) by Lemma 1.3.
 
-Conversely suppose the condition fails for some \(\varepsilon\). For each \(k\) the set
-\[
-B_k=\{n:\ \text{some }u\in\mathcal U_{1/k}\text{ has }\|ux_nu^*-x_n\|_{\bar\varphi}>\varepsilon\}
-\]
+Conversely suppose the condition fails for some \(\varepsilon\). For each \(k\) the set \(B_k\) of the \(n\) for which some \(u\in\mathcal U_{1/k}\) has \(\|ux_nu^*-x_n\|_{\bar\varphi}>\varepsilon\)
 belongs to \(\omega\) (otherwise its complement would serve as \(A\) with \(\delta=1/k\)), and \(B_1\supset B_2\supset\cdots\). For \(n\in B_1\) let \(k(n)\) be the largest \(k\le n\) with \(n\in B_k\), and choose \(u_n\in\mathcal U_{1/k(n)}\) with \(\|u_nx_nu_n^*-x_n\|_{\bar\varphi}>\varepsilon\); for \(n\notin B_1\) put \(u_n=1\). For every \(K\), \(\{n:k(n)\ge K\}\supset B_K\cap\{n\ge K\}\in\omega\), so \(\lim_\omega\|[u_n,\varphi]\|=0\), and \(U=\pi(u_n)\in\mathcal G_\varphi\). But \(\|UXU^*-X\|_{\bar\varphi^\omega}\ge\varepsilon\) because \(B_1\in\omega\), so \(X\notin Q_\varphi\). \(\square\)
 
 For \(x\in M\) and \(\delta>0\) let \(K_\delta(x)\) be the \(\sigma\)-weakly closed convex hull in \(M\) of \(\{uxu^*:u\in\mathcal U_\delta\}\). As in the proof of Lemma 3.1, \(K_\delta(x)\) has a unique element \(y_\delta(x)\) of minimal \(\|\cdot\|_{\bar\varphi}\)-norm. We use the elementary estimate, valid for a unitary \(v\in N\) and \(w\in M\):
 \[
-\|wv^*\|^2_{\bar\varphi}=\bar\varphi(vw^*wv^*)=(v^*\bar\varphi v)(w^*w)\le\|w\|^2_{\bar\varphi}+\|w\|^2\,\|[v,\varphi]\| ,
-\tag{3.1}
+\begin{aligned}
+&\|wv^*\|^2_{\bar\varphi}=\bar\varphi(vw^*wv^*)\\
+&\quad =(v^*\bar\varphi v)(w^*w)\\
+&\quad \le\|w\|^2_{\bar\varphi}+\|w\|^2\,\|[v,\varphi]\| ,
+\end{aligned}\tag{3.1}
 \]
-because \(\|v^*\bar\varphi v-\bar\varphi\|=\|\bar\varphi-v\bar\varphi v^*\|=\|[v,\bar\varphi]\|=\|[v,\varphi]\|\) by Lemma 1.1; the same bound holds for \(\|wv\|^2_{\bar\varphi}\). Also \(\|vw\|_{\bar\varphi}=\|w\|_{\bar\varphi}\).
+because \(\|v^*\bar\varphi v-\bar\varphi\|=\|\bar\varphi-v\bar\varphi v^*\|\), which is \(\|[v,\bar\varphi]\|=\|[v,\varphi]\|\) by Lemma 1.1; the same bound holds for \(\|wv\|^2_{\bar\varphi}\). Also \(\|vw\|_{\bar\varphi}=\|w\|_{\bar\varphi}\).
 
 **Proposition 3.3.** For every \(x\in M\) and \(\delta>0\), \(y_\delta(x)\in\mathrm B(N\subset M,\varphi)\).
 
@@ -166,13 +190,19 @@ because \(\|v^*\bar\varphi v-\bar\varphi\|=\|\bar\varphi-v\bar\varphi v^*\|=\|[v
 
 For \(w\in K_\delta(x)\), \((w+y)/2\in K_\delta(x)\), so the parallelogram law gives
 \[
-\|w-y\|^2_{\bar\varphi}=2\|w\|^2_{\bar\varphi}+2m^2-4\|(w+y)/2\|^2_{\bar\varphi}\le2\|w\|^2_{\bar\varphi}-2m^2 .
-\tag{3.2}
+\begin{aligned}
+&\|w-y\|^2_{\bar\varphi}=2\|w\|^2_{\bar\varphi}\\
+&\quad +2m^2-4\|(w+y)/2\|^2_{\bar\varphi}\\
+&\quad \le2\|w\|^2_{\bar\varphi}-2m^2 .
+\end{aligned}\tag{3.2}
 \]
 
-Let \((v_n)\) be unitaries of \(N\) with \(\theta_n=\|[v_n,\varphi]\|\to0\). For \(n\) with \(\theta_n<\delta-\eta_1\) let \(k(n)\) be the largest \(k\le n\) with \(\theta_n<\delta-\eta_k\); then \(k(n)\to\infty\). Put \(z_n=z^{(k(n))}\). If \(u\in\mathcal U_{\eta_{k(n)}}\), then \(\|[v_nu,\varphi]\|\le\theta_n+\|[u,\varphi]\|<\delta\) by Lemma 1.1(d) of the ultraproduct lesson, so \(v_nz_nv_n^*\in C_\delta\subset K_\delta(x)\). By (3.1), \(\|v_nz_nv_n^*\|^2_{\bar\varphi}\le\|z_n\|^2_{\bar\varphi}+\|x\|^2\theta_n\to m^2\), so (3.2) gives \(\|v_nz_nv_n^*-y\|_{\bar\varphi}\to0\). Also by (3.1), \(\|v_n(y-z_n)v_n^*\|^2_{\bar\varphi}\le\|y-z_n\|^2_{\bar\varphi}+4\|x\|^2\theta_n\to0\). Hence \(\|v_nyv_n^*-y\|_{\bar\varphi}\to0\), and again by (3.1)
+Let \((v_n)\) be unitaries of \(N\) with \(\theta_n=\|[v_n,\varphi]\|\to0\). For \(n\) with \(\theta_n<\delta-\eta_1\) let \(k(n)\) be the largest \(k\le n\) with \(\theta_n<\delta-\eta_k\); then \(k(n)\to\infty\). Put \(z_n=z^{(k(n))}\). If \(u\in\mathcal U_{\eta_{k(n)}}\), then \(\|[v_nu,\varphi]\|\le\theta_n+\|[u,\varphi]\|<\delta\) by Lemma 1.1(d) of the ultraproduct lesson, so \(v_nz_nv_n^*\in C_\delta\subset K_\delta(x)\). By (3.1), \(\|v_nz_nv_n^*\|^2_{\bar\varphi}\le\|z_n\|^2_{\bar\varphi}+\|x\|^2\theta_n\to m^2\), so (3.2) gives \(\|v_nz_nv_n^*-y\|_{\bar\varphi}\to0\). Also by (3.1), \(\|v_n(y-z_n)v_n^*\|^2_{\bar\varphi}\) is at most \(\|y-z_n\|^2_{\bar\varphi}+4\|x\|^2\theta_n\), which tends to \(0\). Hence \(\|v_nyv_n^*-y\|_{\bar\varphi}\to0\), and again by (3.1)
 \[
-\|[v_n,y]\|^2_{\bar\varphi}=\|(v_nyv_n^*-y)v_n\|^2_{\bar\varphi}\le\|v_nyv_n^*-y\|^2_{\bar\varphi}+4\|x\|^2\theta_n\to0 .
+\begin{aligned}
+&\|[v_n,y]\|^2_{\bar\varphi}=\|(v_nyv_n^*-y)v_n\|^2_{\bar\varphi}\\
+&\quad \le\|v_nyv_n^*-y\|^2_{\bar\varphi}+4\|x\|^2\theta_n\to0 .
+\end{aligned}
 \]
 This holds for every unitary sequence in \(\mathrm{AC}(N,\varphi)\), hence, by the four-unitary decomposition used in Proposition 2.2, for every sequence in \(\mathrm{AC}(N,\varphi)\). So \(y\in\mathrm B(N\subset M,\varphi)\). \(\square\)
 
@@ -182,12 +212,15 @@ This holds for every unitary sequence in \(\mathrm{AC}(N,\varphi)\), hence, by t
 2. \(E_{\mathrm B}=E_\omega\circ F_\varphi|_M\).
 3. For every \(\delta>0\), every finite set \(S\subset M\) and every \(\varepsilon>0\) there is a probability measure \(\mu\) on \(\mathcal U_\delta\) with finite support such that
 \[
-\Big\|\int uxu^*\,d\mu(u)-E_{\mathrm B}(x)\Big\|^\sharp_{\bar\varphi}<\varepsilon\qquad(x\in S).
+\begin{gathered}
+\Big\|\int uxu^*\,d\mu(u)-E_{\mathrm B}(x)\Big\|^\sharp_{\bar\varphi}<\varepsilon\\
+(x\in S).
+\end{gathered}
 \]
 4. In particular \(E_{\mathrm B}(x)\in K_\delta(x)\) for every \(x\in M\) and \(\delta>0\).
 5. If \(z\in M\) and \(E_{\mathrm B}(z)=0\), then \(F_\varphi(z)=0\), and there is \(U\in\mathcal G_\varphi\) with \(\|UzU^*-z\|_{\bar\varphi^\omega}\ge\|z\|_{\bar\varphi}\).
 
-**Proof.** (1) Let \(X=\pi(x_n)\in Q_\varphi\), \(a=E_\omega(X)\), and \(\varepsilon>0\); take \(\delta,A\) from Lemma 3.2. For \(u\in\mathcal U_\delta\), \(uau^*-a\) is the \(\sigma\)-weak limit along \(\omega\) of \(ux_nu^*-x_n\), and the map \(y\mapsto y\bar\xi\) is \(\sigma\)-weak to weak continuous, so \(\|uau^*-a\|_{\bar\varphi}\le\lim_\omega\|ux_nu^*-x_n\|_{\bar\varphi}\le\varepsilon\). Since \(u^*\in\mathcal U_\delta\) whenever \(u\in\mathcal U_\delta\), Proposition 2.2(4) gives \(a\in\mathrm B\).
+**Proof.** (1) Let \(X=\pi(x_n)\in Q_\varphi\), \(a=E_\omega(X)\), and \(\varepsilon>0\); take \(\delta,A\) from Lemma 3.2. For \(u\in\mathcal U_\delta\), \(uau^*-a\) is the \(\sigma\)-weak limit along \(\omega\) of \(ux_nu^*-x_n\), and the map \(y\mapsto y\bar\xi\) is \(\sigma\)-weak to weak continuous, so \(\|uau^*-a\|_{\bar\varphi}\le\lim_\omega\|ux_nu^*-x_n\|_{\bar\varphi}\), which is at most \(\varepsilon\). Since \(u^*\in\mathcal U_\delta\) whenever \(u\in\mathcal U_\delta\), Proposition 2.2(4) gives \(a\in\mathrm B\).
 
 (2) The map \(E_\omega\circ F_\varphi|_M\) takes values in \(\mathrm B\) by (1), and is the identity on \(\mathrm B\subset Q_\varphi\). It is a positive unital \(\mathrm B\)-bimodular map, hence a contractive retraction onto \(\mathrm B\), and \(\bar\varphi\circ E_\omega\circ F_\varphi=\bar\varphi^\omega\circ F_\varphi=\bar\varphi^\omega\) restricts to \(\bar\varphi\) on \(M\). By the uniqueness in the modular expectation theorem it equals \(E_{\mathrm B}\).
 

@@ -14,10 +14,14 @@ We keep the setting of the previous lessons: \(N\) a factor of type III₁ with 
 
 **Proposition 1.1.** \(L^2(A)=R(H\otimes K)=L(H\otimes K)\). For \(y\in N\), \(b\in\mathrm B\) and \(t\in\mathbb R\), acting on \(L^2(A)\),
 \[
-L^*yL=D(y\otimes1)D^*,\qquad L^*bL=1\otimes b,\qquad L^*\Delta^{it}L=e^{itX}\otimes\Delta_K^{it}.
+\begin{gathered}
+L^*yL=D(y\otimes1)D^*,\\
+L^*bL=1\otimes b,\\
+L^*\Delta^{it}L=e^{itX}\otimes\Delta_K^{it}.
+\end{gathered}
 \]
 
-**Proof.** By Corollary 1.2 of the previous lesson, \(R\) and \(L\) have the same range \(\mathcal R\). It is the closure of the span of \(N\mathrm B\Omega\), hence invariant under left multiplication by \(N\), and the closure of the span of \(\mathrm BN\Omega\), hence invariant under \(\mathrm B\). The orthogonal projection onto \(\mathcal R\) therefore commutes with the self-adjoint sets \(N\) and \(\mathrm B\), hence with \(A\), so \(\mathcal R\) is \(A\)-invariant. It contains \(\Omega\), so \(L^2(A)\subset\mathcal R\), and \(\mathcal R\subset L^2(A)\) because \(\mathrm BN\Omega\subset A\Omega\). The first two formulas are Exercise 3.1 of the previous lesson. For the third, \(\Delta^{it}ax\Omega=\sigma_t(a)\sigma_t(x)\Omega=L(e^{itX}x\Omega\otimes\Delta_K^{it}a\Omega)\). \(\square\)
+**Proof.** By Corollary 1.2 of the previous lesson, \(R\) and \(L\) have the same range \(\mathcal R\). It is the closure of the span of \(N\mathrm B\Omega\), hence invariant under left multiplication by \(N\), and the closure of the span of \(\mathrm BN\Omega\), hence invariant under \(\mathrm B\). The orthogonal projection onto \(\mathcal R\) therefore commutes with the self-adjoint sets \(N\) and \(\mathrm B\), hence with \(A\), so \(\mathcal R\) is \(A\)-invariant. It contains \(\Omega\), so \(L^2(A)\subset\mathcal R\), and \(\mathcal R\subset L^2(A)\) because \(\mathrm BN\Omega\subset A\Omega\). The first two formulas are Exercise 3.1 of the previous lesson. For the third, \(\Delta^{it}ax\Omega=\sigma_t(a)\sigma_t(x)\Omega\), which is \(L(e^{itX}x\Omega\otimes\Delta_K^{it}a\Omega)\). \(\square\)
 
 So, in the coordinates given by \(L\), the left action of \(\mathrm B\) is \(1\otimes\mathrm B\), and the left action of \(N\) is \(N\otimes1\) conjugated by \(D\). On an eigenvector of \(X\) for the value \(h\), \(D\) acts as \(1\otimes W_h\), which is the relation \(xa=\gamma_h(a)x\) for eigenoperators.
 
@@ -25,18 +29,28 @@ So, in the coordinates given by \(L\), the left action of \(\mathrm B\) is \(1\o
 
 Let \(c(M)\) be the continuous core of \(M\) in its regular realization on \(L^2(\mathbb R)\otimes\mathcal H=L^2(\mathbb R,\mathcal H)\):
 \[
-(\pi(x)f)(s)=\sigma_{-s}(x)f(s),\qquad(\lambda(t)f)(s)=f(s-t),\qquad c(M)=\{\pi(M),\lambda(\mathbb R)\}''.
+\begin{gathered}
+(\pi(x)f)(s)=\sigma_{-s}(x)f(s),\\
+(\lambda(t)f)(s)=f(s-t),\\
+c(M)=\{\pi(M),\lambda(\mathbb R)\}''.
+\end{gathered}
 \]
 For a von Neumann subalgebra \(Q\subset M\) with \(\sigma_t(Q)=Q\) for all \(t\), put \(Q\rtimes\mathbb R=\{\pi(Q),\lambda(\mathbb R)\}''\subset c(M)\). This is the regular crossed product of \(Q\) built on its representation on \(\mathcal H\). By NR-4, for any faithful normal representation of \(Q\), the assignment \(\pi(x)\mapsto\pi'(x)\), \(\lambda(t)\mapsto\lambda'(t)\) extends to a normal \(*\)-isomorphism onto the regular crossed product built on that representation. If \(Q\) leaves a closed subspace \(\mathcal K\subset\mathcal H\) invariant, with \(\Delta^{it}\mathcal K=\mathcal K\) and \(Q\) acting faithfully on \(\mathcal K\), then restriction to \(L^2(\mathbb R,\mathcal K)\) is such an isomorphism: it is a normal \(*\)-homomorphism that agrees with the isomorphism of NR-4 on the generators. Changing the faithful normal state on \(N\) changes \(c(M)\) by an isomorphism that is the identity on \(\pi(M)\), so relative commutants of subalgebras of \(M\) in \(c(M)\) do not depend on the state; we use the state \(\bar\varphi\) throughout.
 
 **Lemma 2.1.** Let \(Q_1\subset Q_2\subset M\) be \(\sigma\)-invariant von Neumann subalgebras. Then
 \[
-Q_1\rtimes\mathbb R=(Q_2\rtimes\mathbb R)\cap\big(B(L^2(\mathbb R))\mathbin{\bar\otimes}Q_1\big).
+\begin{aligned}
+&Q_1\rtimes\mathbb R\\
+&\quad =(Q_2\rtimes\mathbb R)\cap\big(B(L^2(\mathbb R))\mathbin{\bar\otimes}Q_1\big).
+\end{aligned}
 \]
 
 **Proof.** Apply the commutant theorem (CCM2) to \(Q\subset B(\mathcal H)\), \(G=\mathbb R\), the action \(\sigma|_Q\) and its implementation \(U_s=\Delta^{is}\). It gives \((Q\rtimes\mathbb R)'=\{1\otimes Q',\rho_s\}''\) with \((\rho_sf)(t)=\Delta^{is}f(t+s)\). Since \((1\otimes Q')'=B(L^2(\mathbb R))\mathbin{\bar\otimes}Q\) (commutant of an amplification), the bicommutant theorem gives
 \[
-Q\rtimes\mathbb R=\big(B(L^2(\mathbb R))\mathbin{\bar\otimes}Q\big)\cap\{\rho_s:s\in\mathbb R\}' ,
+\begin{aligned}
+&Q\rtimes\mathbb R\\
+&\quad =\big(B(L^2(\mathbb R))\mathbin{\bar\otimes}Q\big)\cap\{\rho_s:s\in\mathbb R\}' ,
+\end{aligned}
 \]
 with the same unitaries \(\rho_s\) for \(Q_1\) and \(Q_2\). Intersect. \(\square\)
 
@@ -47,7 +61,11 @@ Q_0'\cap c(M)=(Q_0'\cap M)\rtimes\mathbb R .
 
 **Proof.** For \(q\in Q_0\), \(\pi(q)=1\otimes q\). The algebra \(Q_1=Q_0'\cap M\) is \(\sigma\)-invariant, because \(\sigma_t(Q_1)=\sigma_t(Q_0)'\cap M=Q_1\). Its crossed product commutes with \(\pi(Q_0)\): the operators \(\pi(x)\), \(x\in Q_1\), take values \(\sigma_{-s}(x)\in Q_1\), and \(\lambda(t)\) commutes with constant operators. Conversely, since \(c(M)\subset B(L^2(\mathbb R))\mathbin{\bar\otimes}M=(1\otimes M')'\),
 \[
-Q_0'\cap c(M)\subset(1\otimes M')'\cap(1\otimes Q_0)'=\big(1\otimes(M'\vee Q_0)\big)'=B(L^2(\mathbb R))\mathbin{\bar\otimes}(M\cap Q_0'),
+\begin{aligned}
+&Q_0'\cap c(M)\subset(1\otimes M')'\cap(1\otimes Q_0)'\\
+&\quad =\big(1\otimes(M'\vee Q_0)\big)'\\
+&\quad =B(L^2(\mathbb R))\mathbin{\bar\otimes}(M\cap Q_0'),
+\end{aligned}
 \]
 and Lemma 2.1 with \(Q_2=M\) gives \(Q_0'\cap c(M)\subset Q_1\rtimes\mathbb R\). \(\square\)
 
@@ -55,18 +73,28 @@ and Lemma 2.1 with \(Q_2=M\) gives \(Q_0'\cap c(M)\subset Q_1\rtimes\mathbb R\).
 
 The subspace \(L^2(\mathbb R,K)\) is invariant under \(\mathrm B\rtimes\mathbb R\), and restriction to it is faithful. Conjugating by the unitary \((Vf)(u)=\Delta^{iu}f(u)\) of \(L^2(\mathbb R,K)\), as in Section 4 of the lesson on binormal states, gives the faithful normal *twisted regular representation* \(\pi_0\) of \(\mathrm B\rtimes\mathbb R\) on \(L^2(\mathbb R)\otimes K\):
 \[
-\pi_0(\pi(b))=1\otimes b,\qquad\pi_0(\lambda(t))=l(t)\otimes\Delta_K^{it}\qquad(b\in\mathrm B,\ t\in\mathbb R),
+\begin{gathered}
+\pi_0(\pi(b))=1\otimes b,\\
+\pi_0(\lambda(t))=l(t)\otimes\Delta_K^{it}\\
+(b\in\mathrm B,\ t\in\mathbb R),
+\end{gathered}
 \]
-where \(l(t)\) is translation by \(t\) on \(L^2(\mathbb R)\). Indeed \((V\pi(b)V^*f)(u)=\Delta^{iu}\sigma_{-u}(b)\Delta^{-iu}f(u)=bf(u)\) and \((V\lambda(t)V^*f)(u)=\Delta^{iu}\Delta^{-i(u-t)}f(u-t)=\Delta^{it}f(u-t)\). Let \(\mathcal U\) be multiplication by the variable on \(L^2(\mathbb R)\), \(M_s=e^{-is\mathcal U}\), and let \(\mathcal G\) be the self-adjoint operator \(\mathcal U\otimes1-1\otimes Y\) on \(L^2(\mathbb R)\otimes K\), defined by the joint spectral measure of the commuting operators \(\mathcal U\otimes1\) and \(1\otimes Y\). Then \(e^{-is\mathcal G}=M_s\otimes W_s\).
+where \(l(t)\) is translation by \(t\) on \(L^2(\mathbb R)\). Indeed \((V\pi(b)V^*f)(u)=\Delta^{iu}\sigma_{-u}(b)\Delta^{-iu}f(u)\), which is \(bf(u)\) and \((V\lambda(t)V^*f)(u)=\Delta^{iu}\Delta^{-i(u-t)}f(u-t)\), which is \(\Delta^{it}f(u-t)\). Let \(\mathcal U\) be multiplication by the variable on \(L^2(\mathbb R)\), \(M_s=e^{-is\mathcal U}\), and let \(\mathcal G\) be the self-adjoint operator \(\mathcal U\otimes1-1\otimes Y\) on \(L^2(\mathbb R)\otimes K\), defined by the joint spectral measure of the commuting operators \(\mathcal U\otimes1\) and \(1\otimes Y\). Then \(e^{-is\mathcal G}=M_s\otimes W_s\).
 
 **Lemma 3.1.** For every \(s\), \(\operatorname{Ad}(M_s\otimes W_s)\) maps \(\pi_0(\mathrm B\rtimes\mathbb R)\) onto itself, and \(\gamma^c_s=\pi_0^{-1}\circ\operatorname{Ad}(M_s\otimes W_s)\circ\pi_0\) is a continuous action of \(\mathbb R\) on \(\mathrm B\rtimes\mathbb R\) by normal automorphisms with
 \[
-\gamma^c_s(\pi(b))=\pi(\gamma_s(b)),\qquad\gamma^c_s(\lambda(t))=e^{-ist}\lambda(t).
+\begin{gathered}
+\gamma^c_s(\pi(b))=\pi(\gamma_s(b)),\\
+\gamma^c_s(\lambda(t))=e^{-ist}\lambda(t).
+\end{gathered}
 \]
 
-**Proof.** Since \(W_sbW_s^*=\gamma_s(b)\) on \(K\) (both sides map \(a\Omega\) to \(\gamma_s(b)a\Omega\)), \((M_s\otimes W_s)(1\otimes b)(M_s\otimes W_s)^*=1\otimes\gamma_s(b)\). Since \(W_s\) commutes with \(\Delta_K^{it}\) (Lemma 1.1 of the lesson on the two relative products) and \((M_sl(t)M_s^*f)(u)=e^{-isu}e^{is(u-t)}f(u-t)\),
+**Proof.** Since \(W_sbW_s^*=\gamma_s(b)\) on \(K\) (both sides map \(a\Omega\) to \(\gamma_s(b)a\Omega\)), \((M_s\otimes W_s)(1\otimes b)(M_s\otimes W_s)^*\) equals \(1\otimes\gamma_s(b)\). Since \(W_s\) commutes with \(\Delta_K^{it}\) (Lemma 1.1 of the lesson on the two relative products) and \((M_sl(t)M_s^*f)(u)=e^{-isu}e^{is(u-t)}f(u-t)\),
 \[
-(M_s\otimes W_s)(l(t)\otimes\Delta_K^{it})(M_s\otimes W_s)^*=e^{-ist}\,l(t)\otimes\Delta_K^{it}.
+\begin{aligned}
+&(M_s\otimes W_s)(l(t)\otimes\Delta_K^{it})(M_s\otimes W_s)^*\\
+&\quad =e^{-ist}\,l(t)\otimes\Delta_K^{it}.
+\end{aligned}
 \]
 So the normal automorphism \(\operatorname{Ad}(M_s\otimes W_s)\) of \(B(L^2(\mathbb R)\otimes K)\) maps the generators of \(\pi_0(\mathrm B\rtimes\mathbb R)\) to generators, and its inverse does the same. It is a group in \(s\) and pointwise \(\sigma\)-weakly continuous, because \(s\mapsto M_s\otimes W_s\) is a strongly continuous unitary group. \(\square\)
 
@@ -78,17 +106,28 @@ The action \(\gamma^c\) extends the relative bicentralizer flow from \(\mathrm B
 
 **Proof.** *A faithful representation of \(A\rtimes\mathbb R\).* The algebra \(A\rtimes\mathbb R\subset c(M)\) contains \(\pi(N)\) and \(\mathrm B\rtimes\mathbb R\). Restrict it to \(L^2(\mathbb R,L^2(A))\), conjugate by \((Vf)(u)=\Delta^{iu}f(u)\) as above, and transport \(L^2(A)\) to \(H\otimes K\) by \(L\). By Section 2 and Proposition 1.1 this gives a faithful normal representation \(\Pi_1\) of \(A\rtimes\mathbb R\) on \(L^2(\mathbb R)\otimes H\otimes K\) with
 \[
-\Pi_1(\pi(y))=1\otimes D(y\otimes1)D^*,\qquad\Pi_1(\pi(b))=1\otimes1\otimes b,\qquad\Pi_1(\lambda(t))=l(t)\otimes e^{itX}\otimes\Delta_K^{it}.
+\begin{gathered}
+\Pi_1(\pi(y))=1\otimes D(y\otimes1)D^*,\\
+\Pi_1(\pi(b))=1\otimes1\otimes b,\\
+\Pi_1(\lambda(t))=l(t)\otimes e^{itX}\otimes\Delta_K^{it}.
+\end{gathered}
 \]
 Let \(\Pi=\operatorname{Ad}(1\otimes D^*)\circ\Pi_1\). Since \(D\) commutes with \(e^{itX}\otimes\Delta_K^{it}\), \(\Pi(\pi(y))=1\otimes y\otimes1\), \(\Pi(\lambda(t))=\Pi_1(\lambda(t))\), and \(\Pi(\pi(b))=(1\otimes D^*)(1\otimes1\otimes b)(1\otimes D)\).
 
 *Comparison with \(\pi_0\).* Write \(\tilde\pi_0(z)\) for \(\pi_0(z)\) acting on the factors \(L^2(\mathbb R)\) and \(K\) of \(L^2(\mathbb R)\otimes H\otimes K\), and the identity on \(H\). Let \(\mathcal V=\exp(i\,\mathcal U\otimes X\otimes1)\). On the spectral subspace of \(X\) for a value \(h\), \(\mathcal V\) acts as \(e^{ih\mathcal U}\) on \(L^2(\mathbb R)\), and \(e^{ih\mathcal U}l(t)e^{-ih\mathcal U}=e^{iht}l(t)\). By the joint spectral calculus,
 \[
-\mathcal V\big(l(t)\otimes1\otimes\Delta_K^{it}\big)\mathcal V^*=l(t)\otimes e^{itX}\otimes\Delta_K^{it},\qquad\mathcal V(1\otimes1\otimes b)\mathcal V^*=1\otimes1\otimes b .
+\begin{aligned}
+&\mathcal V\big(l(t)\otimes1\otimes\Delta_K^{it}\big)\mathcal V^*\\
+&\quad =l(t)\otimes e^{itX}\otimes\Delta_K^{it},\\
+&\mathcal V(1\otimes1\otimes b)\mathcal V^*=1\otimes1\otimes b .
+\end{aligned}
 \]
 So the normal \(*\)-homomorphisms \(\Pi_1\) and \(\operatorname{Ad}\mathcal V\circ\tilde\pi_0\) of \(\mathrm B\rtimes\mathbb R\) agree on its generators, hence everywhere. Therefore, for \(z\in\mathrm B\rtimes\mathbb R\),
 \[
-\Pi(z)=\mathcal W\,\tilde\pi_0(z)\,\mathcal W^*,\qquad\mathcal W=(1\otimes D^*)\mathcal V .
+\begin{gathered}
+\Pi(z)=\mathcal W\,\tilde\pi_0(z)\,\mathcal W^*,\\
+\mathcal W=(1\otimes D^*)\mathcal V .
+\end{gathered}
 \]
 All of \(\mathcal U\otimes1\otimes1\), \(1\otimes X\otimes1\) and \(1\otimes1\otimes Y\) commute, and \(\mathcal W\) is the function \(e^{ix(u-y)}\) of them; that is, \(\mathcal W=\exp(iX\otimes\mathcal G)\), a function of \(X\) acting on \(H\) and of \(\mathcal G\) acting on \(L^2(\mathbb R)\otimes K\).
 
@@ -111,7 +150,7 @@ Then \(P'\cap c(M)=N'\cap c(M)\).
 
 *Step 1.* The algebra \(P_\varphi\) is fixed by \(\sigma\), because \(\sigma\) restricts to \(\sigma^\varphi\) on \(N\). By Lemma 2.2 and hypothesis (1), \(z\in(P_\varphi'\cap M)\rtimes\mathbb R\subset\mathrm B\rtimes\mathbb R\), using Lemma 2.1.
 
-*Step 2.* Let \(s\in S\) and \(v_k\) as in (2). By Corollary 1.3 of the lesson on spectral shift maps, \(v_k\varphi=e^{-s}\varphi v_k\), so by Theorem 3.1(2) of the lesson on the relative flow, \(v_kb=\gamma_s(b)v_k\) for \(b\in\mathrm B\). Also \(\pi(v_k)\lambda(t)=\lambda(t)\pi(\sigma_{-t}(v_k))=e^{-its}\lambda(t)\pi(v_k)\). Define the normal map \(\Psi_s(w)=\sum_k\pi(v_k)w\pi(v_k)^*\) on \(c(M)\), the sum converging strongly. For each generator \(g\) of \(\mathrm B\rtimes\mathbb R\), that is \(g=\pi(b)\) or \(g=\lambda(t)\), the two relations give \(\pi(v_k)g=\gamma^c_s(g)\pi(v_k)\), hence \(\Psi_s(gw)=\gamma^c_s(g)\Psi_s(w)\) for all \(w\in c(M)\). By induction \(\Psi_s(g_1\cdots g_r)=\gamma^c_s(g_1\cdots g_r)\Psi_s(1)=\gamma^c_s(g_1\cdots g_r)\) for products of generators. The normal maps \(\Psi_s\) and \(\gamma^c_s\) therefore agree on the \(\sigma\)-weakly dense \(*\)-algebra spanned by such products, hence on \(\mathrm B\rtimes\mathbb R\).
+*Step 2.* Let \(s\in S\) and \(v_k\) as in (2). By Corollary 1.3 of the lesson on spectral shift maps, \(v_k\varphi=e^{-s}\varphi v_k\), so by Theorem 3.1(2) of the lesson on the relative flow, \(v_kb=\gamma_s(b)v_k\) for \(b\in\mathrm B\). Also \(\pi(v_k)\lambda(t)=\lambda(t)\pi(\sigma_{-t}(v_k))\), which is \(e^{-its}\lambda(t)\pi(v_k)\). Define the normal map \(\Psi_s(w)=\sum_k\pi(v_k)w\pi(v_k)^*\) on \(c(M)\), the sum converging strongly. For each generator \(g\) of \(\mathrm B\rtimes\mathbb R\), that is \(g=\pi(b)\) or \(g=\lambda(t)\), the two relations give \(\pi(v_k)g=\gamma^c_s(g)\pi(v_k)\), hence \(\Psi_s(gw)=\gamma^c_s(g)\Psi_s(w)\) for all \(w\in c(M)\). By induction \(\Psi_s(g_1\cdots g_r)=\gamma^c_s(g_1\cdots g_r)\Psi_s(1)\), which is \(\gamma^c_s(g_1\cdots g_r)\) for products of generators. The normal maps \(\Psi_s\) and \(\gamma^c_s\) therefore agree on the \(\sigma\)-weakly dense \(*\)-algebra spanned by such products, hence on \(\mathrm B\rtimes\mathbb R\).
 
 *Step 3.* Since \(z\) commutes with every \(\pi(v_k)\), \(\Psi_s(z)=z\sum_k\pi(v_kv_k^*)=z\). So \(\gamma^c_s(z)=z\) for \(s\in S\). The map \(s\mapsto\gamma^c_s(z)\) is \(\sigma\)-weakly continuous and \(S\) is dense, so \(z\) is \(\gamma^c\)-fixed. By Theorem 4.1, \(z\in N'\cap c(M)\). \(\square\)
 
@@ -123,7 +162,15 @@ Hypothesis (1) forces \(P_\varphi'\cap N\subset\mathrm B\cap N=\mathrm B(N,\varp
 \[
 L^*AL\subset(N'\otimes1)'=N\mathbin{\bar\otimes}B(K).
 \]
-For \(y\in P_\varphi\), \(\sigma_v(y)=y\), so \(L^*yL=y\otimes1\). Let \(w\in A\) commute with \(P_\varphi\). Then \(L^*wL\) lies in \((N'\otimes1)'\cap(P_\varphi\otimes1)'=\big((N'\vee P_\varphi)\otimes1\big)'=(N\cap P_\varphi')\mathbin{\bar\otimes}B(K)=1\otimes B(K)\), by the commutant of an amplification. Write \(L^*wL=1\otimes T\). Then \(w\Omega=wL(\Omega\otimes\Omega)=L(\Omega\otimes T\Omega)=T\Omega\in K\). If \(e_{\mathrm B}\) denotes the projection onto \(K\), then \(E_{\mathrm B}(w)\Omega=e_{\mathrm B}w\Omega=w\Omega\), and since \(\Omega\) is separating, \(w=E_{\mathrm B}(w)\in\mathrm B\). \(\square\)
+For \(y\in P_\varphi\), \(\sigma_v(y)=y\), so \(L^*yL=y\otimes1\). Let \(w\in A\) commute with \(P_\varphi\). Then \(L^*wL\) lies in
+\[
+\begin{aligned}
+&(N'\otimes1)'\cap(P_\varphi\otimes1)'\\
+&\quad=\big((N'\vee P_\varphi)\otimes1\big)'\\
+&\quad=(N\cap P_\varphi')\mathbin{\bar\otimes}B(K)=1\otimes B(K),
+\end{aligned}
+\]
+by the commutant of an amplification. Write \(L^*wL=1\otimes T\). Then \(w\Omega=wL(\Omega\otimes\Omega)\), which is \(L(\Omega\otimes T\Omega)=T\Omega\in K\). If \(e_{\mathrm B}\) denotes the projection onto \(K\), then \(E_{\mathrm B}(w)\Omega=e_{\mathrm B}w\Omega=w\Omega\), and since \(\Omega\) is separating, \(w=E_{\mathrm B}(w)\in\mathrm B\). \(\square\)
 
 The main theorem of [OAI] asserts that every expected inclusion with separable preduals admits an amenable \(P\subset N\) with a faithful normal conditional expectation and \(P'\cap c(M)=N'\cap c(M)\). For factors \(N\) of type III₁, [OAI] obtains \(P\) from Theorem 4.1, the reverse inclusion quoted above, and Marrakchi's characterization of this property through the weak Dixmier property of \(N\subset c(M)\) [M1, Theorem D]. Theorem 5.1 and Proposition 5.2 give a direct route: it suffices to construct, for some faithful normal state \(\varphi\) of \(N\), an amenable \(\sigma^\varphi\)-invariant \(P\subset N\) with \(P_\varphi'\cap N=\mathbb C\), \(P_\varphi'\cap M\subset N\vee\mathrm B\), and the rows of hypothesis (2).
 

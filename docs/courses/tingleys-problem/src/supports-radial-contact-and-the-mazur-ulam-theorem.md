@@ -22,7 +22,15 @@ We say that \(v,w\in S_X\) *share a support* if some \(\varphi\) with \(\|\varph
 
 **Lemma 1.2** (supports and secants). Let \(a,b\in X\) and \(F(\lambda)=\|a+\lambda b\|\) for real \(\lambda\). Then \(F\) is convex. If \(\varphi\) is a support at \(a+\lambda_0b\), then \(F(\lambda)\ge F(\lambda_0)+(\lambda-\lambda_0)\varphi(b)\) for all \(\lambda\). Consequently \(\varphi(b)\le\frac{F(\lambda)-F(\lambda_0)}{\lambda-\lambda_0}\) for \(\lambda>\lambda_0\), and \(\varphi(b)\ge\frac{F(\lambda_0)-F(\lambda)}{\lambda_0-\lambda}\) for \(\lambda<\lambda_0\).
 
-**Proof.** Convexity follows from the triangle inequality. Moreover \(F(\lambda)\ge\varphi(a+\lambda b)=\varphi(a+\lambda_0b)+(\lambda-\lambda_0)\varphi(b)=F(\lambda_0)+(\lambda-\lambda_0)\varphi(b)\). \(\square\)
+**Proof.** Convexity follows from the triangle inequality. Moreover
+\[
+\begin{aligned}
+F(\lambda)&\ge\varphi(a+\lambda b)\\
+&=\varphi(a+\lambda_0b)+(\lambda-\lambda_0)\varphi(b)\\
+&=F(\lambda_0)+(\lambda-\lambda_0)\varphi(b).
+\end{aligned}
+\]
+\(\square\)
 
 For a convex function \(F\) on an interval we also use the monotonicity of secant slopes: if \(\lambda_1<\lambda_2<\lambda_3\), then \(\frac{F(\lambda_2)-F(\lambda_1)}{\lambda_2-\lambda_1}\le\frac{F(\lambda_3)-F(\lambda_1)}{\lambda_3-\lambda_1}\le\frac{F(\lambda_3)-F(\lambda_2)}{\lambda_3-\lambda_2}\), which follows from writing \(\lambda_2\) as a convex combination of \(\lambda_1\) and \(\lambda_3\).
 
@@ -36,15 +44,27 @@ For a convex function \(F\) on an interval we also use the monotonicity of secan
 
 **Theorem 3.1** (Mazur–Ulam). Let \(E,E'\) be real normed spaces and \(F:E\to E'\) a surjective isometry. Then \(x\mapsto F(x)-F(0)\) is real-linear.
 
-**Proof.** *Isometries fixing two points fix their midpoint.* Let \(a,c\in E\), \(m=\frac12(a+c)\), and let \(\mathcal G\) be the set of surjective isometries \(H:E\to E\) with \(H(a)=a\) and \(H(c)=c\). For \(H\in\mathcal G\), \(\|H(m)-m\|\le\|H(m)-H(a)\|+\|a-m\|=\|a-c\|\), so \(\lambda=\sup_{H\in\mathcal G}\|H(m)-m\|\) is finite. The reflection \(\psi(x)=2m-x\) is a surjective isometry exchanging \(a\) and \(c\) and fixing \(m\). For \(H\in\mathcal G\), the map \(H^\sharp=\psi H^{-1}\psi H\) is a surjective isometry with \(H^\sharp(a)=\psi H^{-1}(c)=a\) and likewise \(H^\sharp(c)=c\), and
+**Proof.** *Isometries fixing two points fix their midpoint.* Let \(a,c\in E\), \(m=\frac12(a+c)\), and let \(\mathcal G\) be the set of surjective isometries \(H:E\to E\) with \(H(a)=a\) and \(H(c)=c\). For \(H\in\mathcal G\),
 \[
-\|H^\sharp(m)-m\|=\|H^{-1}\psi H(m)-m\|=\|\psi H(m)-H(m)\|=2\|H(m)-m\|,
+\begin{aligned}
+&\|H(m)-m\|\\
+&\quad\le\|H(m)-H(a)\|+\|a-m\|\\
+&\quad=\|a-c\|,
+\end{aligned}
+\]
+so \(\lambda=\sup_{H\in\mathcal G}\|H(m)-m\|\) is finite. The reflection \(\psi(x)=2m-x\) is a surjective isometry exchanging \(a\) and \(c\) and fixing \(m\). For \(H\in\mathcal G\), the map \(H^\sharp=\psi H^{-1}\psi H\) is a surjective isometry with \(H^\sharp(a)=\psi H^{-1}(c)=a\) and likewise \(H^\sharp(c)=c\), and
+\[
+\begin{aligned}
+\|H^\sharp(m)-m\|&=\|H^{-1}\psi H(m)-m\|\\
+&=\|\psi H(m)-H(m)\|\\
+&=2\|H(m)-m\|,
+\end{aligned}
 \]
 using that \(\psi\) and \(H\) are isometries and \(\psi(m)=m\). So \(2\|H(m)-m\|\le\lambda\) for every \(H\in\mathcal G\), whence \(2\lambda\le\lambda\) and \(\lambda=0\).
 
 *Surjective isometries preserve midpoints.* Let \(m'=\frac12(F(a)+F(c))\) and \(\psi'(y)=2m'-y\) on \(E'\). The map \(H=\psi F^{-1}\psi'F\) is a surjective isometry of \(E\) with \(H(a)=\psi F^{-1}(F(c))=a\) and \(H(c)=c\), so \(H(m)=m\), that is \(\psi'(F(m))=F(\psi(m))=F(m)\), and \(F(m)=m'\).
 
-*Linearity.* \(G(x)=F(x)-F(0)\) is a surjective isometry with \(G(0)=0\) that preserves midpoints. Taking \(c=0\) gives \(G(a/2)=G(a)/2\), and then \(G(a+c)=2G(\frac12(a+c))=G(a)+G(c)\). An additive map is \(\mathbb Q\)-linear, and a continuous \(\mathbb Q\)-linear map between real normed spaces is \(\mathbb R\)-linear. \(\square\)
+*Linearity.* \(G(x)=F(x)-F(0)\) is a surjective isometry with \(G(0)=0\) that preserves midpoints. Taking \(c=0\) gives \(G(a/2)=G(a)/2\), and then \(G(a+c)=2G(\frac12(a+c))\), which is \(G(a)+G(c)\). An additive map is \(\mathbb Q\)-linear, and a continuous \(\mathbb Q\)-linear map between real normed spaces is \(\mathbb R\)-linear. \(\square\)
 
 The reflection argument is due to Väisälä, building on Vogt; see the note [Ni].
 
@@ -52,7 +72,10 @@ The reflection argument is due to Väisälä, building on Vogt; see the note [Ni
 
 Let \(X,Y\) be real normed spaces and \(f:S_X\to S_Y\) a surjective isometry. For \(x,y\in S_X\) and \(0\le q\le1\) put
 \[
-D_q(x,y)=\|f(x)-qf(y)\|-\|x-qy\|,\qquad M=\sup_{x,y\in S_X,\ 0\le q\le1}|D_q(x,y)|.
+\begin{gathered}
+D_q(x,y)=\|f(x)-qf(y)\|-\|x-qy\|,\\
+M=\sup_{x,y\in S_X,\ 0\le q\le1}|D_q(x,y)|.
+\end{gathered}
 \]
 We call \(M\) the *defect* of \(f\). The number \(D_q(x,y)\) is the error of the radial map \(T\) on the pair \(x,qy\).
 
@@ -60,13 +83,16 @@ We call \(M\) the *defect* of \(f\). The number \(D_q(x,y)\) is the error of the
 
 (b) \(q\mapsto D_q(x,y)\) is \(2\)-Lipschitz, \(D_0(x,y)=D_1(x,y)=0\), and \(|D_q(x,y)|\le2\min(q,1-q)\). In particular \(0\le M\le1\).
 
-**Proof.** (a) An isometry is injective, so \(f\) is bijective, and \(D^{f^{-1}}_q(f(x),f(y))=\|x-qy\|-\|f(x)-qf(y)\|\). (b) Each of \(q\mapsto\|f(x)-qf(y)\|\) and \(q\mapsto\|x-qy\|\) is \(1\)-Lipschitz because \(\|f(y)\|=\|y\|=1\). At \(q=0\) both norms are \(1\), and at \(q=1\) they are equal because \(f\) is an isometry. \(\square\)
+**Proof.** (a) An isometry is injective, so \(f\) is bijective, and \(D^{f^{-1}}_q(f(x),f(y))\) equals \(\|x-qy\|-\|f(x)-qf(y)\|\). (b) Each of \(q\mapsto\|f(x)-qf(y)\|\) and \(q\mapsto\|x-qy\|\) is \(1\)-Lipschitz because \(\|f(y)\|=\|y\|=1\). At \(q=0\) both norms are \(1\), and at \(q=1\) they are equal because \(f\) is an isometry. \(\square\)
 
 **Proposition 4.2** (reduction). If \(X,Y\) are real normed spaces and \(f:S_X\to S_Y\) is a surjective isometry with defect \(M=0\), then the radial map \(T\) is a surjective real-linear isometry \(X\to Y\) extending \(f\), and it is the only linear map extending \(f\).
 
 **Proof.** Let \(a=\alpha x\) and \(c=\beta y\) with \(x,y\in S_X\) and \(\alpha\ge\beta>0\), and put \(q=\beta/\alpha\in(0,1]\). Then
 \[
-\|T(a)-T(c)\|=\alpha\|f(x)-qf(y)\|=\alpha\|x-qy\|=\|a-c\|,
+\begin{aligned}
+&\|T(a)-T(c)\|=\alpha\|f(x)-qf(y)\|\\
+&\quad =\alpha\|x-qy\|=\|a-c\|,
+\end{aligned}
 \]
 and exchanging \(a\) and \(c\) covers \(\beta>\alpha\). Also \(\|T(a)-T(0)\|=\|a\|\). So \(T\) is an isometry. For \(b\in Y\setminus\{0\}\), surjectivity of \(f\) gives \(y\in S_X\) with \(f(y)=b/\|b\|\), and \(T(\|b\|y)=b\). By the Mazur–Ulam theorem, \(T=T-T(0)\) is real-linear. A linear map extending \(f\) sends \(\lambda x\), \(\lambda>0\), \(x\in S_X\), to \(\lambda f(x)\), so it equals \(T\). \(\square\)
 
@@ -84,13 +110,13 @@ So Tingley's problem for Banach spaces reduces to the statement that every surje
 
 ## 6. Solutions
 
-**5.1.** \(\|T(\alpha x)\|=\alpha\|f(x)\|=\alpha\), and \(\|T(\alpha x)-T(\alpha y)\|=\alpha\|f(x)-f(y)\|=\alpha\|x-y\|\).
+**5.1.** \(\|T(\alpha x)\|=\alpha\|f(x)\|=\alpha\), and \(\|T(\alpha x)-T(\alpha y)\|=\alpha\|f(x)-f(y)\|\), which is \(\alpha\|x-y\|\).
 
 **5.2.** \(|\bar z-\bar w|=|z-w|\), and \(f\) is a bijection of the circle. Its radial extension is \(z\mapsto\bar z\), which is real-linear, and \(\overline{iz}=-i\bar z\neq i\bar z\) for \(z\neq0\).
 
-**5.3.** Translations are surjective isometries that are not linear. For \(\gamma(t)=(t,|t|)\), \(\|\gamma(t)-\gamma(s)\|_\infty=\max(|t-s|,||t|-|s||)=|t-s|\), so \(\gamma\) is an isometry onto its image, but \(\gamma(0)=0\) and \(\gamma(1)+\gamma(-1)=(0,2)\neq2\gamma(0)\), so \(\gamma\) is not affine. The Mazur–Ulam theorem needs surjectivity onto a normed space.
+**5.3.** Translations are surjective isometries that are not linear. For \(\gamma(t)=(t,|t|)\), the distance \(\|\gamma(t)-\gamma(s)\|_\infty\) is the larger of \(|t-s|\) and \(||t|-|s||\), that is, \(|t-s|\), so \(\gamma\) is an isometry onto its image, but \(\gamma(0)=0\) and \(\gamma(1)+\gamma(-1)=(0,2)\neq2\gamma(0)\), so \(\gamma\) is not affine. The Mazur–Ulam theorem needs surjectivity onto a normed space.
 
-**5.4.** Suppose \(F(\lambda_n)\ge F(0)\) for some \(\lambda_n\downarrow0\). On \(V=\operatorname{span}\{a,b\}\) choose supports \(L_n\) at \(a+\lambda_nb\) (Corollary 2.3 of the Banach space lesson in \(V\)). Then \(F(0)\le F(\lambda_n)=L_n(a)+\lambda_nL_n(b)\le F(0)+\lambda_nL_n(b)\), so \(L_n(b)\ge0\). The unit ball of \(V^*\) is compact, so a subsequence converges to \(L\) with \(\|L\|\le1\), \(L(b)\ge0\), and \(L(a)=\lim(F(\lambda_n)-\lambda_nL_n(b))=F(0)=\|a\|\). Extending \(L\) to \(X\) with the same norm gives a support at \(a\) that is not negative on \(b\), a contradiction.
+**5.4.** Suppose \(F(\lambda_n)\ge F(0)\) for some \(\lambda_n\downarrow0\). On \(V=\operatorname{span}\{a,b\}\) choose supports \(L_n\) at \(a+\lambda_nb\) (Corollary 2.3 of the Banach space lesson in \(V\)). Then \(F(0)\le F(\lambda_n)=L_n(a)+\lambda_nL_n(b)\), which is at most \(F(0)+\lambda_nL_n(b)\), so \(L_n(b)\ge0\). The unit ball of \(V^*\) is compact, so a subsequence converges to \(L\) with \(\|L\|\le1\), \(L(b)\ge0\), and \(L(a)=\lim(F(\lambda_n)-\lambda_nL_n(b))\), which is \(F(0)=\|a\|\). Extending \(L\) to \(X\) with the same norm gives a support at \(a\) that is not negative on \(b\), a contradiction.
 
 ## References
 

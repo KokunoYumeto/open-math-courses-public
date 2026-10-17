@@ -24,22 +24,52 @@ Let \(G\) be a connected graph on \(n\ge2\) vertices without loops (parallel edg
 
 *Heat-kernel formula.* With \(A=C^{1/2}BM^{-1/2}\) we have \(A^{\mathsf T}A=S\), \(Ae^{-tS}A^{\mathsf T}=C^{1/2}BK_tB^{\mathsf T}C^{1/2}\), and the image of \(A\) is that of \(C^{1/2}B\). By Lemma 1.1, the substitution \(t=2s\), and \(K_{2s}=K_sMK_s=\sum_v\mu_vK_s\mathbf e_v\mathbf e_v^{\mathsf T}K_s\),
 \[
-Q=2\int_0^\infty\sum_v\mu_v\bigl(C^{1/2}BK_s\mathbf e_v\bigr)\bigl(C^{1/2}BK_s\mathbf e_v\bigr)^{\mathsf T}ds,\qquad w^{\mathsf T}|Q|w\le2\sum_v\mu_v\int_0^\infty\bigl(w^{\mathsf T}C^{1/2}|Bh_s|\bigr)^2ds,
+\begin{aligned}
+&Q=2\int_0^\infty\sum_v\mu_v\bigl(C^{1/2}BK_s\mathbf e_v\bigr)\\
+&\qquad\cdot\bigl(C^{1/2}BK_s\mathbf e_v\bigr)^{\mathsf T}ds,\\
+&w^{\mathsf T}|Q|w\\
+&\quad\le2\sum_v\mu_v\int_0^\infty\bigl(w^{\mathsf T}C^{1/2}|Bh_s|\bigr)^2ds,
+\end{aligned}
 \]
 where \(h_s=K_s\mathbf e_v\) depends on \(v\).
 
-*Entropy.* For a vector \(h\) with positive entries let \(\mathcal I(h)=\sum_{e=(i\to j)}c_e\bigl(h_i-h_j\bigr)\bigl(\log h_i-\log h_j\bigr)=h^{\mathsf T}L\log h\ge0\). Since \(\frac d{ds}h_s=-M^{-1}Lh_s\) and \(\mathbf 1^{\mathsf T}L=0\),
+*Entropy.* For a vector \(h\) with positive entries let
 \[
-\frac d{ds}\sum_i\mu_ih_s(i)\log h_s(i)=-\sum_i(Lh_s)_i\bigl(\log h_s(i)+1\bigr)=-\mathcal I(h_s)\qquad(s>0).
+\begin{aligned}
+\mathcal I(h)&=\sum_{e=(i\to j)}c_e\bigl(h_i-h_j\bigr)\\
+&\qquad\cdot\bigl(\log h_i-\log h_j\bigr)\\
+&=h^{\mathsf T}L\log h\ge0.
+\end{aligned}
+\]
+Since \(\frac d{ds}h_s=-M^{-1}Lh_s\) and \(\mathbf 1^{\mathsf T}L=0\),
+\[
+\begin{aligned}
+&\frac d{ds}\sum_i\mu_ih_s(i)\log h_s(i)\\
+&\quad =-\sum_i(Lh_s)_i\bigl(\log h_s(i)+1\bigr)\\
+&\quad =-\mathcal I(h_s)\\
+&(s>0).
+\end{aligned}
 \]
 As \(s\to0\) the entropy tends to \(\mu_v\cdot\mu_v^{-1}\log\mu_v^{-1}=\log(1/\mu_v)\) (with \(0\log0=0\)), and as \(s\to\infty\) it tends to \(0\). So \(\int_0^\infty\mathcal I(h_s)\,ds=\log(1/\mu_v)\).
 
-*Cauchy–Schwarz.* For \(a,b>0\), \(\frac{a-b}{\log a-\log b}=\int_0^1a^ub^{1-u}\,du\le\frac{a+b}2\) (read as \(a\) when \(a=b\)). Hence, for each edge \(e=(i\to j)\), \(\sqrt{c_e}|h_i-h_j|\le\sqrt{c_e(h_i-h_j)(\log h_i-\log h_j)}\sqrt{(h_i+h_j)/2}\), and by the Cauchy–Schwarz inequality
+*Cauchy–Schwarz.* For \(a,b>0\), \(\frac{a-b}{\log a-\log b}=\int_0^1a^ub^{1-u}\,du\le\frac{a+b}2\) (read as \(a\) when \(a=b\)). Hence, for each edge \(e=(i\to j)\),
 \[
-\bigl(w^{\mathsf T}C^{1/2}|Bh_s|\bigr)^2\le\mathcal I(h_s)\sum_{e=(i\to j)}w_e^2\frac{h_s(i)+h_s(j)}2=\mathcal I(h_s)\,|w|^2\sum_i\mu_ih_s(i)=\mathcal I(h_s)\,|w|^2 .
+\begin{aligned}
+&\sqrt{c_e}|h_i-h_j|\\
+&\quad\le\sqrt{c_e(h_i-h_j)(\log h_i-\log h_j)}\\
+&\qquad\cdot\sqrt{(h_i+h_j)/2},
+\end{aligned}
+\]
+and by the Cauchy–Schwarz inequality
+\[
+\begin{aligned}
+&\bigl(w^{\mathsf T}C^{1/2}|Bh_s|\bigr)^2\\
+&\quad \le\mathcal I(h_s)\sum_{e=(i\to j)}w_e^2\frac{h_s(i)+h_s(j)}2\\
+&\quad =\mathcal I(h_s)\,|w|^2\sum_i\mu_ih_s(i)=\mathcal I(h_s)\,|w|^2 .
+\end{aligned}
 \]
 
-*Conclusion.* Combining, \(w^{\mathsf T}|Q|w\le2|w|^2\sum_v\mu_v\log(1/\mu_v)\le2|w|^2\log n\), since the entropy of a probability vector on \(n\) points is at most \(\log n\). \(\square\)
+*Conclusion.* Combining, \(w^{\mathsf T}|Q|w\le2|w|^2\sum_v\mu_v\log(1/\mu_v)\), which is at most \(2|w|^2\log n\), since the entropy of a probability vector on \(n\) points is at most \(\log n\). \(\square\)
 
 ## 2. A projection with small row sums
 
@@ -52,11 +82,18 @@ H=4\log(2n).
 
 **Proof.** Let \(D_\sigma=\operatorname{diag}(\sqrt{\sigma_e})\). The map \(D_\sigma\) is an isometry from \((\mathbb R^E,\|\cdot\|_{2,\sigma})\) to Euclidean space, so \(Q(\sigma)=D_\sigma P(\sigma)D_\sigma^{-1}\) is the Euclidean orthogonal projection onto \(D_\sigma V\). Since \(V\) is the image of \(\operatorname{diag}(\delta_e^{-1})B\) for the incidence matrix \(B\) of the complete graph on the \(n\) points, \(D_\sigma V\) is the image of \(C_\sigma^{1/2}B\) with \(C_\sigma=\operatorname{diag}(\sigma_e/\delta_e^2)\). From \(Q(\sigma)_{ef}=\sqrt{\sigma_e}P(\sigma)_{ef}/\sqrt{\sigma_f}\) we get \(\bigl(|Q(\sigma)|\sqrt\sigma\bigr)_e=\sqrt{\sigma_e}R_e(\sigma)\), so Lemma 1.3 and \(|\sqrt\sigma|=1\) give
 \[
-\sum_e\sigma_eR_e(\sigma)^2=\bigl|\,|Q(\sigma)|\sqrt\sigma\,\bigr|^2\le(2\log n)^2 .\tag{2.1}
+\begin{aligned}
+&\sum_e\sigma_eR_e(\sigma)^2\\
+&\quad =\bigl|\,|Q(\sigma)|\sqrt\sigma\,\bigr|^2\\
+&\quad \le(2\log n)^2 .
+\end{aligned}\tag{2.1}
 \]
 The set \(\Sigma=\{\sigma:\sum_e\sigma_e=1,\ \sigma_e\ge\lambda_e/2\}\) is compact, convex and nonempty. On \(\Sigma\), \(P(\sigma)\) depends continuously on \(\sigma\): if the columns of a matrix \(Y\) form a basis of \(V\), then \(P(\sigma)=Y\bigl(Y^{\mathsf T}D_\sigma^2Y\bigr)^{-1}Y^{\mathsf T}D_\sigma^2\). Let
 \[
-u_e(\sigma)=\frac{\sigma_eR_e(\sigma)^2}{2(2\log n)^2},\qquad\Phi_e(\sigma)=u_e(\sigma)+\Bigl(1-\sum_fu_f(\sigma)\Bigr)\lambda_e .
+\begin{gathered}
+u_e(\sigma)=\frac{\sigma_eR_e(\sigma)^2}{2(2\log n)^2},\\
+\Phi_e(\sigma)=u_e(\sigma)+\Bigl(1-\sum_fu_f(\sigma)\Bigr)\lambda_e .
+\end{gathered}
 \]
 By (2.1), \(\sum_fu_f\le\frac12\), so \(\Phi\) is a continuous map of \(\Sigma\) into itself. By Brouwer's theorem for compact convex sets (Corollary 1.2 of [Lebesgue's covering theorem and the dimension of cubes](course:index-theory-of-elliptic-operators/lebesgue-s-covering-theorem-and-the-dimension-of-cubes#1-fixed-points-on-compact-convex-sets)), \(\Phi\) has a fixed point \(\sigma\). There \(u_e(\sigma)\le\Phi_e(\sigma)=\sigma_e\), and since \(\sigma_e>0\), \(R_e(\sigma)\le2\sqrt2\log n\le H\). The remaining statements follow because the largest absolute row sum is the norm on \(\ell_\infty\), and orthogonal projections do not increase the norm. \(\square\)
 

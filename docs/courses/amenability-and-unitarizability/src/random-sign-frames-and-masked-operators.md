@@ -26,15 +26,21 @@ Let \(\Omega=\{-1,1\}^N\) with the uniform probability \(\Pr(E)=|E|/2^N\) and th
 
 **Proof.** Let \(L\) be the real operator norm, so \(L=\sup|w^{\mathsf T}Mz|\) over real unit vectors \(w,z\). Given such \(w,z\), choose net points with \(\|w-w_0\|\le\frac14\) and \(\|z-z_0\|\le\frac14\). Then
 \[
-|w^{\mathsf T}Mz|\le|w_0^{\mathsf T}Mz_0|+|(w-w_0)^{\mathsf T}Mz|+|w_0^{\mathsf T}M(z-z_0)|\le5+\tfrac L4+\tfrac L4,
+\begin{aligned}
+&|w^{\mathsf T}Mz|\le|w_0^{\mathsf T}Mz_0|+|(w-w_0)^{\mathsf T}Mz|\\
+&\quad +|w_0^{\mathsf T}M(z-z_0)|\le5+\tfrac L4+\tfrac L4,
+\end{aligned}
 \]
-so \(L\le5+\frac L2\) and \(L\le10\). For the second statement, write a complex vector as \(u+iv\) with real \(u,v\); then \(\|M(u+iv)\|^2=\|Mu\|^2+\|Mv\|^2\le L^2(\|u\|^2+\|v\|^2)=L^2\|u+iv\|^2\), and real vectors show that the complex norm is not smaller. \(\square\)
+so \(L\le5+\frac L2\) and \(L\le10\). For the second statement, write a complex vector as \(u+iv\) with real \(u,v\); then \(\|M(u+iv)\|^2=\|Mu\|^2+\|Mv\|^2\), which is at most \(L^2(\|u\|^2+\|v\|^2)=L^2\|u+iv\|^2\), and real vectors show that the complex norm is not smaller. \(\square\)
 
 For unit vectors \(v_1,\dots,v_n\in\mathbb C^k\) and \(J\subseteq[n]=\{1,\dots,n\}\), the *synthesis operator* is \(V_J:\ell^2(J)\to\mathbb C^k\), \(V_Jz=\sum_{i\in J}z_iv_i\).
 
 **Proposition 1.5** (frames). Let \(n\ge2\) and \(r\ge1\) be integers and put
 \[
-p=\min(2r,n),\qquad k=\lceil2r\log(2n)\rceil,\tag{1.1}
+\begin{gathered}
+p=\min(2r,n),\\
+k=\lceil2r\log(2n)\rceil,
+\end{gathered}\tag{1.1}
 \]
 with the natural logarithm. There are unit vectors \(v_1,\dots,v_n\in\mathbb C^k\) with \(\|V_J\|\le10\) for every \(J\subseteq[n]\) with \(|J|\le p\).
 
@@ -44,7 +50,10 @@ X=w_0^{\mathsf T}V_Jz_0=\sum_{a=1}^k\sum_{j=1}^p\frac{w_{0,a}z_{0,j}}{\sqrt k}\,
 \]
 is a sum of distinct signs whose coefficients have squared sum \(\frac1k\|w_0\|^2\|z_0\|^2=\frac1k\), so \(\Pr(|X|>5)\le2e^{-25k/2}\) by Lemma 1.2. There are at most \(n^p\) sets \(J\) with \(|J|=p\) and at most \(9^k9^p\) pairs \((w_0,z_0)\). So the probability that \(|w_0^{\mathsf T}V_Jz_0|>5\) for some such \(J,w_0,z_0\) is at most \(2n^p9^{k+p}e^{-25k/2}\). Since \(n\ge2\), \(\log(2n)\ge\log4>1\); hence \(k\ge2r\log(2n)\ge p\log n\) and \(k\ge2r\ge p\). The logarithm of the bound is therefore at most
 \[
-\log2+k+2k\log9-\tfrac{25}2k=\log2-\bigl(\tfrac{23}2-2\log9\bigr)k<\log2-7<0,
+\begin{aligned}
+&\log2+k+2k\log9-\tfrac{25}2k=\log2\\
+&\quad -\bigl(\tfrac{23}2-2\log9\bigr)k<\log2-7<0,
+\end{aligned}
 \]
 because \(2\log9<4.4\) and \(k\ge1\). So some \(\omega\in\Omega\) avoids all these events. For it, every \(V_J\) with \(|J|=p\) satisfies the hypothesis of Lemma 1.4 and has norm at most \(10\). If \(|J|<p\), then \(J\) lies in some \(J'\) with \(|J'|=p\), as \(p\le n\), and \(V_J\) is the restriction of \(V_{J'}\) to the coordinate subspace \(\ell^2(J)\); so \(\|V_J\|\le10\) as well. \(\square\)
 
@@ -54,11 +63,18 @@ The dimension \(k\) cannot be much smaller than \(p\) (Exercise 4.2).
 
 Let \(G\) be a countable group, \(s_1,\dots,s_n\in G\) a list in which repetitions are allowed, \(v_1,\dots,v_n\in\mathbb C^k\) unit vectors, \(P_i=v_iv_i^*\) the projection onto \(\mathbb Cv_i\), and \(\mathcal H=\ell^2(G;\mathbb C^k)\). For a function \(c:G\times[n]\to\mathbb C\) with \(|c|\le1\), the *masked operator* is
 \[
-(T_c\xi)(x)=\sum_{i=1}^nc(x,i)\,P_i\,\xi(xs_i)\qquad(\xi\in\mathcal H,\ x\in G).\tag{2.1}
+\begin{aligned}
+&(T_c\xi)(x)\\
+&\quad =\sum_{i=1}^nc(x,i)\,P_i\,\xi(xs_i)\\
+&(\xi\in\mathcal H,\ x\in G).
+\end{aligned}\tag{2.1}
 \]
 The \(i\)-th term is the composite of the unitary \(\xi\mapsto\xi(\cdot\,s_i)\), the pointwise projection \(P_i\) and multiplication by \(c(\cdot,i)\), so it has norm at most \(1\), and \(\|T_c\|\le n\). Put
 \[
-\mathcal R_x=\{i:c(x,i)\neq0\},\qquad\mathcal C_y=\{i:c(ys_i^{-1},i)\neq0\},
+\begin{gathered}
+\mathcal R_x=\{i:c(x,i)\neq0\},\\
+\mathcal C_y=\{i:c(ys_i^{-1},i)\neq0\},
+\end{gathered}
 \]
 the labels of the edges of \(c\) at the row \(x\) and at the column \(y\).
 
@@ -66,17 +82,27 @@ the labels of the edges of \(c\) at the row \(x\) and at the column \(y\).
 
 **Proof.** Let \(E_c=\{(x,i):c(x,i)\neq0\}\), a countable set, and define \(F:\mathcal H\to\ell^2(E_c)\), \(M_c:\ell^2(E_c)\to\ell^2(E_c)\) and \(S:\ell^2(E_c)\to\mathcal H\) by
 \[
-(F\xi)(x,i)=v_i^*\xi(xs_i),\qquad(M_c\alpha)(x,i)=c(x,i)\alpha(x,i),\qquad(S\alpha)(x)=\sum_{i\in\mathcal R_x}\alpha(x,i)\,v_i.
+\begin{gathered}
+(F\xi)(x,i)=v_i^*\xi(xs_i),\\
+(M_c\alpha)(x,i)=c(x,i)\alpha(x,i),\\
+(S\alpha)(x)=\sum_{i\in\mathcal R_x}\alpha(x,i)\,v_i.
+\end{gathered}
 \]
 The map \((x,i)\mapsto(xs_i,i)\) is a bijection of \(G\times[n]\), and \((x,i)\in E_c\) exactly when \(i\in\mathcal C_{xs_i}\). Regrouping by \(y=xs_i\),
 \[
-\|F\xi\|^2=\sum_{y\in G}\sum_{i\in\mathcal C_y}|v_i^*\xi(y)|^2=\sum_y\|V_{\mathcal C_y}^*\xi(y)\|^2\le b_0^2\|\xi\|^2,
+\begin{aligned}
+&\|F\xi\|^2=\sum_{y\in G}\sum_{i\in\mathcal C_y}|v_i^*\xi(y)|^2\\
+&\quad =\sum_y\|V_{\mathcal C_y}^*\xi(y)\|^2\le b_0^2\|\xi\|^2,
+\end{aligned}
 \]
 since \(V_J^*u=(v_i^*u)_{i\in J}\) and \(\|V_J^*\|=\|V_J\|\). Since \(E_c\) is the disjoint union of the sets \(\{x\}\times\mathcal R_x\),
 \[
-\|S\alpha\|^2=\sum_x\bigl\|V_{\mathcal R_x}\bigl(\alpha(x,i)\bigr)_{i\in\mathcal R_x}\bigr\|^2\le b_0^2\sum_x\sum_{i\in\mathcal R_x}|\alpha(x,i)|^2=b_0^2\|\alpha\|^2.
+\begin{aligned}
+&\|S\alpha\|^2=\sum_x\bigl\|V_{\mathcal R_x}\bigl(\alpha(x,i)\bigr)_{i\in\mathcal R_x}\bigr\|^2\\
+&\quad \le b_0^2\sum_x\sum_{i\in\mathcal R_x}|\alpha(x,i)|^2=b_0^2\|\alpha\|^2.
+\end{aligned}
 \]
-So \(\|F\|,\|S\|\le b_0\) and \(\|M_c\|\le1\). Finally \((SM_cF\xi)(x)=\sum_{i\in\mathcal R_x}c(x,i)v_iv_i^*\xi(xs_i)=(T_c\xi)(x)\), so \(\|T_c\|\le b_0^2\). \(\square\)
+So \(\|F\|,\|S\|\le b_0\) and \(\|M_c\|\le1\). Finally \((SM_cF\xi)(x)=\sum_{i\in\mathcal R_x}c(x,i)v_iv_i^*\xi(xs_i)\), which is \((T_c\xi)(x)\), so \(\|T_c\|\le b_0^2\). \(\square\)
 
 Two labels \(i\neq j\) with \(s_i=s_j\) give two edges from \(x\) to the same column; they are different coordinates of \(\ell^2(E_c)\), and the counts \(|\mathcal R_x|\), \(|\mathcal C_y|\) count them separately. The proof uses only that a fixed label \(i\) and a column \(y\) determine the row \(ys_i^{-1}\).
 
@@ -84,11 +110,19 @@ Two labels \(i\neq j\) with \(s_i=s_j\) give two edges from \(x\) to the same co
 
 Fix integers \(n\ge2\) and \(r\ge1\), let \(p\), \(k\) and \(v_1,\dots,v_n\) be as in Proposition 1.5, and let \(G\), \(s_i\), \(P_i\), \(\mathcal H\) be as in Section 2. Suppose \(a:G\times[n]\to\{0,1\}\) satisfies
 \[
-\#\{i:a(x,i)=1\}\le r\quad(x\in G),\qquad\#\{i:a(ys_i^{-1},i)=0\}\le r\quad(y\in G),\tag{3.1}
+\begin{aligned}
+&\#\{i:a(x,i)=1\}\\
+&\quad \le r\quad(x\in G),\\
+&\#\{i:a(ys_i^{-1},i)=0\}\\
+&\quad \le r\quad(y\in G),
+\end{aligned}\tag{3.1}
 \]
 as the assignment of Proposition 3.2 of the previous lesson does. Put
 \[
-A=T_{\mathbf1},\qquad T=T_a,\qquad(U(g)\xi)(x)=\xi(g^{-1}x),
+\begin{gathered}
+A=T_{\mathbf1},\qquad T=T_a,\\
+(U(g)\xi)(x)=\xi(g^{-1}x),
+\end{gathered}
 \]
 where \(\mathbf1(x,i)=1\). For \(y\in G\) let \(\iota_y:\mathbb C^k\to\mathcal H\) be the inclusion at the coordinate \(y\) and \(q_y=\iota_y^*\) the evaluation at \(y\).
 
@@ -107,11 +141,18 @@ Since \(\iota_{x_0}\) is isometric, \(\|q_{x_0}T\|=\|T_{c_{\rm r}}\|\); since \(
 
 **Proof.** \(U(g)\) is unitary since left multiplication by \(g\) permutes \(G\), and \(U(g)U(h)=U(gh)\). For a mask \(c\), substituting in (2.1),
 \[
-(U(g)T_cU(g)^{-1}\xi)(x)=(T_cU(g)^{-1}\xi)(g^{-1}x)=\sum_ic(g^{-1}x,i)P_i\,\xi(xs_i),
+\begin{aligned}
+&(U(g)T_cU(g)^{-1}\xi)(x)\\
+&\quad =(T_cU(g)^{-1}\xi)(g^{-1}x)\\
+&\quad =\sum_ic(g^{-1}x,i)P_i\,\xi(xs_i),
+\end{aligned}
 \]
 so \(U(g)T_cU(g)^{-1}=T_{c(g^{-1}\cdot,\cdot)}\). With \(c=\mathbf1\) this shows \(U(g)AU(g)^{-1}=A\). With \(c=a\) it shows \(T-U(g)TU(g)^{-1}=T_{c_g}\) for
 \[
-c_g(x,i)=a(x,i)-a(g^{-1}x,i)\in\{-1,0,1\}.
+\begin{aligned}
+&c_g(x,i)=a(x,i)\\
+&\quad -a(g^{-1}x,i)\in\{-1,0,1\}.
+\end{aligned}
 \]
 At a row \(x\), the labels with \(c_g(x,i)\neq0\) lie in \(\{i:a(x,i)=1\}\cup\{i:a(g^{-1}x,i)=1\}\), which has at most \(2r\) elements by (3.1), and at most \(n\). At a column \(y\), put \(Z_y=\{i:a(ys_i^{-1},i)=0\}\), so \(|Z_y|\le r\). The labels with \(c_g(ys_i^{-1},i)\neq0\) are those with \(a(ys_i^{-1},i)\neq a(g^{-1}ys_i^{-1},i)\); as \(a\) takes only the values \(0\) and \(1\), they form \(Z_y\mathbin\triangle Z_{g^{-1}y}\), with at most \(2r\) elements, and at most \(n\). So all these sets have at most \(p=\min(2r,n)\) elements, and Lemma 2.1 gives \(\|T_{c_g}\|\le100\). \(\square\)
 
@@ -122,7 +163,7 @@ For an operator \(F\) on \(\mathcal H\) write \(F[x,y]=q_xF\iota_y\) for its \(k
 \sum_{s\in G}\|W(s)\|_{\rm HS}^2=\sum_{i,j:\,s_i=s_j}|\langle v_i,v_j\rangle|^2\ge n.
 \]
 
-**Proof.** For \(u\in\mathbb C^k\), \((A\iota_yu)(x)=\sum_iP_i(\iota_yu)(xs_i)=\sum_{i:xs_i=y}P_iu\), which is \(W(x^{-1}y)u\). Next \(\|W(s)\|_{\rm HS}^2=\sum_{i,j:s_i=s_j=s}\operatorname{Tr}(P_iP_j)\) and \(\operatorname{Tr}(P_iP_j)=\operatorname{Tr}(v_iv_i^*v_jv_j^*)=|\langle v_i,v_j\rangle|^2\ge0\). Summing over \(s\) gives the formula. The terms with \(i=j\) equal \(1\), and the others are nonnegative. \(\square\)
+**Proof.** For \(u\in\mathbb C^k\), \((A\iota_yu)(x)=\sum_iP_i(\iota_yu)(xs_i)\), which is \(\sum_{i:xs_i=y}P_iu\), which is \(W(x^{-1}y)u\). Next \(\|W(s)\|_{\rm HS}^2=\sum_{i,j:s_i=s_j=s}\operatorname{Tr}(P_iP_j)\) and \(\operatorname{Tr}(P_iP_j)=\operatorname{Tr}(v_iv_i^*v_jv_j^*)\), which is \(|\langle v_i,v_j\rangle|^2\ge0\). Summing over \(s\) gives the formula. The terms with \(i=j\) equal \(1\), and the others are nonnegative. \(\square\)
 
 Coincidences \(s_i=s_j\) among the products can only increase this energy, because the weights are positive.
 
@@ -140,7 +181,7 @@ Coincidences \(s_i=s_j\) among the products can only increase this energy, becau
 
 **4.1.** As \(t\to0\), \(\cosh t=1+\frac{t^2}2+O(t^4)\) and \(e^{\gamma t^2}=1+\gamma t^2+O(t^4)\); the inequality forces \(\frac12\le\gamma\).
 
-**4.2.** For \(|J|=p\) we have \(\operatorname{Tr}(V_JV_J^*)=\operatorname{Tr}(V_J^*V_J)=\sum_{i\in J}\|v_i\|^2=p\), while \(V_JV_J^*\) is a positive \(k\times k\) matrix of norm \(\|V_J\|^2\le b_0^2\), so its trace is at most \(kb_0^2\). Hence \(p\le kb_0^2\).
+**4.2.** For \(|J|=p\) we have \(\operatorname{Tr}(V_JV_J^*)=\operatorname{Tr}(V_J^*V_J)\), which is \(\sum_{i\in J}\|v_i\|^2=p\), while \(V_JV_J^*\) is a positive \(k\times k\) matrix of norm \(\|V_J\|^2\le b_0^2\), so its trace is at most \(kb_0^2\). Hence \(p\le kb_0^2\).
 
 **4.3.** \(U(g)AU(g)^{-1}=T_{\mathbf1(g^{-1}\cdot,\cdot)}=T_{\mathbf1}=A\) by the computation in the proof of Proposition 3.2. For \(G=\mathbb Z\), \(n=1\), \(s_1=0\), \(k=1\), \(v_1=1\) and \(a(x,1)=1\) exactly for \(x=0\): \(T\) is the projection onto the coordinate \(0\), and \(U(1)TU(1)^{-1}\) is the projection onto the coordinate \(1\).
 

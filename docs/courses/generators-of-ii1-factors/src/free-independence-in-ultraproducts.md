@@ -16,20 +16,26 @@ An *irreducible inclusion* \(Q\subseteq M\) consists of a tracial von Neumann al
 
 **Lemma 1.2** (local quantization). Let \(Q\subseteq M\) be irreducible, \(p\in Q\) a nonzero projection, \(Y\subseteq M\) finite and \(\alpha>0\). There is a nonzero projection \(q\in pQp\) with
 \[
-\|qyq-c_yq\|_1\le\alpha\,\tau(q)\qquad(y\in Y),\qquad c_y=\frac{\tau(pyp)}{\tau(p)} .
+\begin{gathered}
+\|qyq-c_yq\|_1\le\alpha\,\tau(q)\\
+(y\in Y),\qquad c_y=\frac{\tau(pyp)}{\tau(p)} .
+\end{gathered}
 \]
 
 **Proof.** By Lemma 1.1, \(B=pQp\) is a II₁ factor in \((pMp,\tau_p)\) with \(B'\cap pMp=\mathbb Cp\), whose trace-preserving expectation is \(x\mapsto\tau_p(x)p\). Theorem 55.7 of the quantization lesson, applied to the elements \(pyp\), gives a nonzero projection \(q\in B\) with \(\|q(pyp)q-\tau_p(pyp)q\|_{2,\tau_p}<\alpha\,\tau_p(q)^{1/2}\) for \(y\in Y\). Here \(q(pyp)q=qyq\) and \(\tau_p(pyp)=c_y\). The element \(z=qyq-c_yq\) satisfies \(z=zq\), so Lemma 1.1(3) of the first lesson gives
 \[
-\|z\|_1\le\tau(q)^{1/2}\|z\|_2=\tau(q)^{1/2}\tau(p)^{1/2}\|z\|_{2,\tau_p}<\tau(q)^{1/2}\tau(p)^{1/2}\,\alpha\,\tau(q)^{1/2}\tau(p)^{-1/2}=\alpha\,\tau(q).\qquad\square
+\begin{aligned}
+&\|z\|_1\le\tau(q)^{1/2}\|z\|_2\\
+&\quad =\tau(q)^{1/2}\tau(p)^{1/2}\|z\|_{2,\tau_p}\\
+&\quad <\tau(q)^{1/2}\tau(p)^{1/2}\,\alpha\,\tau(q)^{1/2}\tau(p)^{-1/2}\\
+&\quad =\alpha\,\tau(q).
+\end{aligned}
 \]
+\(\square\)
 
 ## 2. Words in a normal partial isometry
 
-A *normal partial isometry* is a \(v\in M\) with \(v^*v=vv^*\); this projection is its *support* \(e_v\), and \(v=e_vv=ve_v\). Write \(v^{(1)}=v\) and \(v^{(-1)}=v^*\). For a set \(F\subseteq M\) and \(k\ge1\), let \(W_k(F,v)\) be the set of words
-\[
-x_0v^{(s_1)}x_1v^{(s_2)}x_2\cdots v^{(s_k)}x_k,\qquad s_i\in\{1,-1\},\quad x_1,\dots,x_{k-1}\in F,\quad x_0,x_k\in F\cup\{1\},
-\]
+A *normal partial isometry* is a \(v\in M\) with \(v^*v=vv^*\); this projection is its *support* \(e_v\), and \(v=e_vv=ve_v\). Write \(v^{(1)}=v\) and \(v^{(-1)}=v^*\). For a set \(F\subseteq M\) and \(k\ge1\), let \(W_k(F,v)\) be the set of words \(x_0v^{(s_1)}x_1v^{(s_2)}x_2\cdots v^{(s_k)}x_k\) with \(s_i\in\{1,-1\}\), \(x_1,\dots,x_{k-1}\in F\) and \(x_0,x_k\in F\cup\{1\}\),
 and \(W(F,v)=\bigcup_{k\ge1}W_k(F,v)\). The interior letters come from \(F\); the outer letters may be \(1\).
 
 For normal partial isometries write \(v\preceq v'\) if \(v=v'e_v\).
@@ -42,7 +48,7 @@ For normal partial isometries write \(v\preceq v'\) if \(v=v'e_v\).
 
 **Proof.** (1) If \(v=v'e_v\), then \(e_v=v^*v=e_ve_{v'}e_v\), so \(e_v(1-e_{v'})e_v=0\), i.e. \(e_v\le e_{v'}\). Reflexivity is \(v=ve_v\). If \(v\preceq v'\preceq v\), the supports are equal and \(v=v'e_{v'}=v'\). If \(v=v'e_v\) and \(v'=v''e_{v'}\), then \(v=v''e_{v'}e_v=v''e_v\). Finally \(v'-v=v'(e_{v'}-e_v)\), whose squared \(2\)-norm is \(\tau((e_{v'}-e_v)e_{v'}(e_{v'}-e_v))=\tau(e_{v'}-e_v)\).
 
-(2) We have \(w=fw=wf\), \(v=e_vv=ve_v\) and \(e_vf=0\). Hence \(v^*w=v^*e_vfw=0\), and similarly \(w^*v=vw^*=wv^*=0\). So \((v+w)^*(v+w)=e_v+f=(v+w)(v+w)^*\), and \((v+w)e_v=v\).
+(2) We have \(w=fw=wf\), \(v=e_vv=ve_v\) and \(e_vf=0\). Hence \(v^*w=v^*e_vfw=0\), and similarly \(w^*v=vw^*=wv^*=0\). So \((v+w)^*(v+w)=e_v+f\), which is \((v+w)(v+w)^*\), and \((v+w)e_v=v\).
 
 (3) Let \(s=\sup_{v\in\mathcal C}\tau(e_v)\). Choose \(v_1\preceq v_2\preceq\cdots\) in \(\mathcal C\) with \(\tau(e_{v_r})\to s\); this is possible because \(\mathcal C\) is totally ordered. By (1), \((v_r)\) is Cauchy for \(\|\cdot\|_2\), and it converges to some \(v\) in the unit ball of \(Q\). Products are \(2\)-norm continuous on bounded sets, so \(v^*v=vv^*=\lim e_{v_r}\), a projection of trace \(s\). Let \(v'\in\mathcal C\). If \(v'\preceq v_r\) for some \(r\), then \(v'=v_{r'}e_{v'}\) for all \(r'\ge r\), and in the limit \(v'=ve_{v'}\). Otherwise \(v_r\preceq v'\) for every \(r\), so \(\tau(e_{v'})=s\), \(\|v'-v_r\|_2^2=\tau(e_{v'}-e_{v_r})\to0\), and \(v'=v\). In both cases \(v'\preceq v\). \(\square\)
 
@@ -52,33 +58,42 @@ A word is a product of boundedly many letters; by the continuity remarks of the 
 
 **Theorem 3.1.** Let \(Q\subseteq M\) be irreducible, \(F\subseteq M\) a finite set of centred elements, \(n\ge1\) and \(\varepsilon>0\). There is a normal partial isometry \(v\in Q\) with \(\tau(e_v)>1/4\) and
 \[
-|\tau(y)|\le\varepsilon\qquad\text{for all }y\in W_k(F,v),\ 1\le k\le n .
+\begin{gathered}
+|\tau(y)|\le\varepsilon\\
+\text{for all }y\in W_k(F,v),\ 1\le k\le n .
+\end{gathered}
 \]
 
 **Proof.** *Normalization.* Let \(c=\max(1,\max_{x\in F}\|x\|)\). A word of \(W_k(F,v)\) with \(k\le n\) has at most \(n+1\) letters from \(F\), so it is \(c^j\) times a word of \(W_k(c^{-1}F,v)\) with \(j\le n+1\). Replacing \(F\) by \(c^{-1}F\) and \(\varepsilon\) by \(c^{-n-1}\varepsilon\), we may assume \(\|x\|\le1\) for \(x\in F\). Put \(\varepsilon_0=\delta\) and \(\varepsilon_k=2^{k+1}\varepsilon_{k-1}\), with \(\delta>0\) chosen so that \(\varepsilon_n\le\varepsilon\). Then \(\delta\le\varepsilon_k/4\) for \(k\ge1\), and \(\varepsilon_{k-2}\le\varepsilon_k/32\) for \(k\ge2\).
 
-*A maximal piece.* Let \(\mathcal W\) be the set of normal partial isometries \(v\in Q\) with
-\[
-|\tau(y)|\le\varepsilon_k\,\tau(e_v)\qquad(y\in W_k(F,v),\ 1\le k\le n).
-\tag{3.1}
-\]
+*A maximal piece.* Let \(\mathcal W\) be the set of normal partial isometries \(v\in Q\) with the bounds (3.1): \(|\tau(y)|\le\varepsilon_k\,\tau(e_v)\) for \(y\in W_k(F,v)\) and \(1\le k\le n\).
 It contains \(0\). By Lemma 2.1(3) and the continuity of traces of words, every chain in \(\mathcal W\) has an upper bound in \(\mathcal W\). By Zorn's lemma, \(\mathcal W\) has a maximal element \(v\). It suffices to prove \(\tau(e_v)>1/4\): then every word in the statement has \(|\tau(y)|\le\varepsilon_k\tau(e_v)\le\varepsilon\). Suppose instead that \(\tau(e_v)\le1/4\). Put \(e=e_v\) and \(p=1-e\); then \(\tau(e)/\tau(p)\le1/3\). We construct \(u\in\mathcal W\) with \(v\preceq u\ne v\), which contradicts maximality.
 
 *Segments.* For a word \(y=x_0v^{(s_1)}x_1\cdots v^{(s_k)}x_k\) in \(W_k(F,v)\), \(k\le n\), and positions \(1\le i<j\le k\), put
 \[
-\pi_i=x_0v^{(s_1)}\cdots v^{(s_{i-1})}x_{i-1},\qquad \sigma_i=x_iv^{(s_{i+1})}\cdots v^{(s_k)}x_k,\qquad \mu_{ij}=x_iv^{(s_{i+1})}\cdots v^{(s_{j-1})}x_{j-1},
+\begin{gathered}
+\pi_i=x_0v^{(s_1)}\cdots v^{(s_{i-1})}x_{i-1},\\
+\sigma_i=x_iv^{(s_{i+1})}\cdots v^{(s_k)}x_k,\\
+\mu_{ij}=x_iv^{(s_{i+1})}\cdots v^{(s_{j-1})}x_{j-1},
+\end{gathered}
 \]
 the prefix before the \(i\)th position, the suffix after it, and the middle between positions \(i\) and \(j\); \(\pi_1=x_0\), \(\sigma_k=x_k\) and \(\mu_{i,i+1}=x_i\). All of them have norm at most \(1\). Let \(\mathcal A\) be the finite set of all middles \(\mu_{ij}\) and \(\mathcal B\) the finite set of all products \(\sigma_i\pi_i\), over all such words and positions. A middle \(\mu_{ij}\) has outer letters \(x_i,x_{j-1}\in F\), because they are interior letters of \(y\). So either \(\mu_{ij}=x_i\) is centred, or \(\mu_{ij}\in W_{j-i-1}(F,v)\).
 
 *The new piece.* Lemma 1.2, applied to \(p\), \(Y=\mathcal A\) and \(\alpha=2^{-n-2}\delta\), gives a nonzero projection \(q\in pQp\) with
 \[
-\|qaq-c_aq\|_1\le\alpha\,\tau(q),\qquad c_a=\tau(pap)/\tau(p)\qquad(a\in\mathcal A).
-\tag{3.2}
+\begin{gathered}
+\|qaq-c_aq\|_1\le\alpha\,\tau(q),\\
+c_a=\tau(pap)/\tau(p)\\
+(a\in\mathcal A).
+\end{gathered}\tag{3.2}
 \]
 Let \(h\) be a Haar unitary of \(qQq\) (Corollary 2.4 of the first lesson). By Lemma 2.5 there, there is \(m\ge1\) with
 \[
-|\tau(h^{m}b)|\le\beta,\quad|\tau(h^{-m}b)|\le\beta\quad(b\in\mathcal B),\qquad\beta=\frac{\delta\,\tau(q)}{4n}.
-\tag{3.3}
+\begin{aligned}
+&|\tau(h^{m}b)|\le\beta,\quad|\tau(h^{-m}b)|\\
+&\quad \le\beta\quad(b\in\mathcal B),\\
+&\beta=\frac{\delta\,\tau(q)}{4n}.
+\end{aligned}\tag{3.3}
 \]
 Put \(w=h^m\), a unitary of \(qQq\) with \(w^{(-1)}=w^*=h^{-m}\), and \(u=v+w\). By Lemma 2.1(2), \(u\) is a normal partial isometry of \(Q\) with support \(e+q\), \(v\preceq u\) and \(u\ne v\).
 
@@ -90,7 +105,11 @@ Put \(w=h^m\), a unitary of \(qQq\) with \(w^{(-1)}=w^*=h^{-m}\), and \(u=v+w\).
 
 \(|S|\ge2\): let \(i<j\) be the two smallest elements of \(S\). Then \(y_S=\pi_iw^{(s_i)}\mu_{ij}w^{(s_j)}c\), where \(c\) is a product of letters of norm at most \(1\). By traciality and Lemma 1.1(2) of the first lesson, using \(w^{(s)}=w^{(s)}q=qw^{(s)}\),
 \[
-|\tau(y_S)|=|\tau(w^{(s_i)}\mu_{ij}w^{(s_j)}\,c\pi_i)|\le\|w^{(s_i)}q\mu_{ij}qw^{(s_j)}\|_1\le\|q\mu_{ij}q\|_1\le(|c_{\mu_{ij}}|+\alpha)\,\tau(q)
+\begin{aligned}
+&|\tau(y_S)|=|\tau(w^{(s_i)}\mu_{ij}w^{(s_j)}\,c\pi_i)|\\
+&\quad \le\|w^{(s_i)}q\mu_{ij}qw^{(s_j)}\|_1\\
+&\quad \le\|q\mu_{ij}q\|_1\le(|c_{\mu_{ij}}|+\alpha)\,\tau(q)
+\end{aligned}
 \]
 by (3.2). To bound \(c_\mu\) for \(\mu=\mu_{ij}\), let \(r=j-i-1\). By traciality, \(\tau(p\mu p)=\tau(\mu p)=\tau(\mu)-\tau(\mu e)\), and \(\tau(\mu e)=\tau(\mu vv^*)=\tau(v^*\mu v)\). The word \(v^*\mu v=1\cdot v^{(-1)}x_i\cdots x_{j-1}v^{(1)}\cdot1\) lies in \(W_{r+2}(F,v)\), and \(r+2=j-i+1\le k\le n\). Moreover \(\tau(\mu)=0\) if \(r=0\), and \(|\tau(\mu)|\le\varepsilon_r\tau(e)\) if \(r\ge1\). Hence
 \[
@@ -100,7 +119,11 @@ If \((i,j)=(1,k)\), which happens for the single set \(S=\{1,k\}\) when \(k\ge2\
 
 Adding up and using \(\delta/2\le\varepsilon_k/8\),
 \[
-|\tau(y)|\le\varepsilon_k\tau(e)+\Bigl(\frac{11}{32}+\frac13+\frac18\Bigr)\varepsilon_k\tau(q)<\varepsilon_k\bigl(\tau(e)+\tau(q)\bigr)=\varepsilon_k\,\tau(e_u).
+\begin{aligned}
+&|\tau(y)|\le\varepsilon_k\tau(e)\\
+&\quad +\Bigl(\frac{11}{32}+\frac13+\frac18\Bigr)\varepsilon_k\tau(q)\\
+&\quad <\varepsilon_k\bigl(\tau(e)+\tau(q)\bigr)=\varepsilon_k\,\tau(e_u).
+\end{aligned}
 \]
 For \(k=1\) only the first two cases occur, and the same bound holds. Thus \(u\in\mathcal W\), the desired contradiction. \(\square\)
 
@@ -118,8 +141,10 @@ The class \(w\) is a normal partial isometry in \(f\mathbf Qf\) with \(\tau(e_w)
 
 **Theorem 4.2** (Popa's free independence). Let \(X\subseteq\mathbf M\) be a countable set of centred elements. There is a Haar unitary \(u\in\mathbf Q\), with a representing sequence of unitaries \(u_n\in Q_n\), such that
 \[
-\tau(x_0u^{m_1}x_1u^{m_2}\cdots u^{m_j}x_j)=0
-\tag{4.1}
+\begin{aligned}
+&\tau(x_0u^{m_1}x_1u^{m_2}\cdots u^{m_j}x_j)\\
+&\quad =0
+\end{aligned}\tag{4.1}
 \]
 for every \(j\ge1\), all \(m_1,\dots,m_j\in\mathbb Z\setminus\{0\}\), all \(x_1,\dots,x_{j-1}\in X\) and all \(x_0,x_j\in X\cup\{1\}\).
 
@@ -129,19 +154,33 @@ For a normal partial isometry \(v\in\mathbf M\), call a word of \(W(Y,v)\) or a 
 
 We construct, for \(m=0,1,2,\dots\), normal partial isometries \(v_{m,n}\in Q_n\) with classes \(v_m\) such that
 \[
-\text{(i) }\tau(1-e_{v_m})\le(3/4)^m,\qquad\text{(ii) }\tau(y)=0\text{ for every }y\in W(Y,v_m),
+\begin{gathered}
+\text{(i) }\tau(1-e_{v_m})\le(3/4)^m,\\
+\text{(ii) }\tau(y)=0\text{ for every }y\in W(Y,v_m),
+\end{gathered}
 \]
 and \(v_{m+1,n}=v_{m,n}+w_{m,n}\) with \(w_{m,n}\in(1-e_{v_{m,n}})Q_n(1-e_{v_{m,n}})\) normal partial isometries. Start with \(v_{0,n}=0\).
 
 Given \(v=v_m\), let \(f_n=1-e_{v_{m,n}}\) and \(f=1-e_v\). If \(\tau(f)=0\), put \(v_{m+1,n}=v_{m,n}\). Otherwise let \(X'\subseteq f\mathbf Mf\) consist of the elements \(faf\) with \(a\) a middle, and the elements \(g-\tau(g)\tau(f)^{-1}f\) with \(g=fbaf\), \(a\) a prefix and \(b\) a suffix. It is countable. Its elements are centred: for a middle \(a\), \(\tau(faf)=\tau(a)-\tau(ae)\) with \(e=e_v\); here \(\tau(a)=0\) because \(a\) is a letter of \(Y\) or a word of \(W(Y,v)\), and \(\tau(ae)=\tau(v^*av)=0\) because \(v^*av\) is a word of \(W(Y,v)\) whose interior letters are the letters of \(a\). Lemma 4.1 gives normal partial isometries \(w_n=w_{m,n}\in f_nQ_nf_n\) with class \(w\), \(\tau(e_w)\ge\tau(f)/4\) and \(\tau(z)=0\) for all \(z\in W(X',w)\). Put \(v_{m+1,n}=v_{m,n}+w_n\); by Lemma 2.1(2) at each \(n\), these are normal partial isometries, and \(v_{m+1}=v+w\) has support \(e+e_w\). Then (i) holds: \(\tau(1-e_{v_{m+1}})=\tau(f)-\tau(e_w)\le\frac34\tau(f)\).
 
-For (ii), take \(y=x_0(v+w)^{(s_1)}x_1\cdots(v+w)^{(s_k)}x_k\in W_k(Y,v+w)\) and expand it as \(\sum_Sy_S\) as in the proof of Theorem 3.1. The term \(y_\emptyset\) lies in \(W(Y,v)\) and has trace \(0\). For \(S=\{i_1<\dots<i_\ell\}\) nonempty,
+For (ii), take
+\[
+\begin{aligned}
+&y=x_0(v+w)^{(s_1)}x_1\cdots\\
+&\qquad\cdots(v+w)^{(s_k)}x_k\in W_k(Y,v+w)
+\end{aligned}
+\]
+and expand it as \(\sum_Sy_S\) as in the proof of Theorem 3.1. The term \(y_\emptyset\) lies in \(W(Y,v)\) and has trace \(0\). For \(S=\{i_1<\dots<i_\ell\}\) nonempty,
 \[
 y_S=a_0w^{(s_{i_1})}a_1w^{(s_{i_2})}\cdots a_{\ell-1}w^{(s_{i_\ell})}a_\ell ,
 \]
 where \(a_0\) is a prefix, \(a_\ell\) a suffix and \(a_1,\dots,a_{\ell-1}\) are middles, because the letters adjacent to a position are interior letters of \(y\). Since \(w=fwf\) and \(\tau\) is a trace,
 \[
-\tau(y_S)=\tau\bigl(w^{(s_{i_1})}(fa_1f)w^{(s_{i_2})}\cdots(fa_{\ell-1}f)w^{(s_{i_\ell})}g\bigr),\qquad g=fa_\ell a_0f .
+\begin{aligned}
+&\tau(y_S)=\tau\bigl(w^{(s_{i_1})}(fa_1f)w^{(s_{i_2})}\cdots\\
+&\qquad\cdots(fa_{\ell-1}f)w^{(s_{i_\ell})}g\bigr),\\
+&g=fa_\ell a_0f .
+\end{aligned}
 \]
 Write \(g=\tau(g)\tau(f)^{-1}f+g^\circ\) with \(g^\circ\in X'\), and use \(w^{(s)}f=w^{(s)}\). Then \(\tau(y_S)\) is a multiple of the trace of a word of \(W(X',w)\) with outer letters \(1\), plus the trace of a word of \(W(X',w)\) with last letter \(g^\circ\). Both vanish. This proves (ii) for \(v_{m+1}\).
 

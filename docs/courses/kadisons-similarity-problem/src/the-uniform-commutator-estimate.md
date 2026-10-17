@@ -10,8 +10,12 @@ In other words, the inner derivation \(x\mapsto Yx-xY\) of \(P\) is completely b
 
 We use: Proposition 4.1 of [Matrix commutators in finite factors](matrix-commutators-in-finite-factors.md) and its notation \(g_P\); Proposition 2.2 of [Row, column and cyclic estimates](row-column-and-cyclic-estimates.md), with \(c_{\rm row}=4\sqrt2\); the commutation theorem and the normality of the standard representation, [Theorem 3.1 of Integration for a trace](course:traces-and-noncommutative-integration/integration-for-a-trace-the-commutation-theorem-and-applications#3-the-commutation-theorem); from [Projections and types of von Neumann algebras](course:foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras#OA-FND-TY-08), Proposition 18.2 (if a von Neumann algebra has a separating vector, every positive normal functional on it is a vector functional), [Corollary 7.3](course:foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras#OA-FND-TY-10) (the types of factors), [Corollary 10.4](course:foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras#OA-FND-TY-14) (type I factors are \(B(L)\)) and [Corollary 13.5](course:foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras#OA-FND-TY-17) (a properly infinite projection is a sum of countably many mutually orthogonal projections equivalent to it); the central decomposition, [Theorem 4.1, Lemma 3.1 and Fact 1.1 of The central decomposition and the types of the fibres](course:measurable-fields-and-direct-integrals/the-central-decomposition-and-the-types-of-the-fibres#4-the-central-decomposition); and Kaplansky's density theorem, [Theorem 7.1](course:foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences#OA-FND-KD-07), which applies to \(*\)-algebras that are not norm closed; and a left-invariant Haar probability measure on a compact group, Theorem 8.3 of [Haar measure on locally compact groups](course:harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups#OA-FND-HM-05). Set
 \[
-C_{\rm fac}=3c_1+2,\qquad C=3C_{\rm fac}+2,\qquad c_1=3\pi^2(1+4c_0),\ c_0=4\sqrt2 .
-\tag{0.1}
+\begin{aligned}
+&C_{\rm fac}=3c_1+2,\\
+&C=3C_{\rm fac}+2,\\
+&c_1=3\pi^2(1+4c_0),\ c_0\\
+&\quad =4\sqrt2 .
+\end{aligned}\tag{0.1}
 \]
 Numerically \(c_1<700\), \(C_{\rm fac}<2102\) and \(C<6308\). Note \(C_{\rm fac}\ge1+2c_{\rm row}\) and \(C_{\rm fac}\ge2\).
 
@@ -28,15 +32,22 @@ Numerically \(c_1<700\), \(C_{\rm fac}<2102\) and \(C<6308\). Note \(C_{\rm fac}
 
 *Properly infinite.* By Corollary 13.5 of the projections lesson, \(1=\sum_ne_n\) with mutually orthogonal \(e_n\sim1\); this gives isometries \(v_1,\dots,v_h\in P\) with orthogonal ranges. The row \(V=(v_1\ \cdots\ v_h):K^h\to K\) satisfies \(V^*V=I\). The map \(\Delta(x)=Yx-xY\) is a rectangular derivation of \(P\) for the identity representation on both sides, with \(\|\Delta\|=\delta\). Proposition 2.2 of the cyclic estimates lesson, applied to the row \(V\) and the column \(V^*\), gives
 \[
-\|YV-VY^{(h)}\|\le c_{\rm row}\delta,\qquad\|Y^{(h)}V^*-V^*Y\|\le c_{\rm row}\delta .
+\begin{gathered}
+\|YV-VY^{(h)}\|\le c_{\rm row}\delta,\\
+\|Y^{(h)}V^*-V^*Y\|\le c_{\rm row}\delta .
+\end{gathered}
 \]
 For \(X\in M_h(P)\), \(VXV^*\in P\) has norm \(\|X\|\), and
 \[
-[Y,VXV^*]=(YV-VY^{(h)})XV^*+V[Y^{(h)},X]V^*+VX(Y^{(h)}V^*-V^*Y).
+\begin{aligned}
+[Y,VXV^*]&=(YV-VY^{(h)})XV^*\\
+&\quad +V[Y^{(h)},X]V^*\\
+&\quad +VX(Y^{(h)}V^*-V^*Y).
+\end{aligned}
 \]
-Since \(V^*V=I\), \(\|V[Y^{(h)},X]V^*\|=\|[Y^{(h)},X]\|\). Therefore \(\|[Y^{(h)},X]\|\le(1+2c_{\rm row})\delta\|X\|\le C_{\rm fac}\delta\|X\|\).
+Since \(V^*V=I\), \(\|V[Y^{(h)},X]V^*\|=\|[Y^{(h)},X]\|\). Therefore \(\|[Y^{(h)},X]\|\le(1+2c_{\rm row})\delta\|X\|\), which is at most \(C_{\rm fac}\delta\|X\|\).
 
-*Finite type I.* \(P\cong M_n(\mathbb C)\) has a compact unitary group. Let \(Y_0=\int_{\mathcal U(P)}uYu^*\,du\), with Haar probability measure. Then \(Y_0\in P'\) and \(\|Y-Y_0\|\le\sup_u\|uYu^*-Y\|=\sup_u\|[u,Y]\|\le\delta\). Since \([Y^{(h)},X]=[(Y-Y_0)^{(h)},X]\), the commutator has norm at most \(2\delta\|X\|\le C_{\rm fac}\delta\|X\|\). \(\square\)
+*Finite type I.* \(P\cong M_n(\mathbb C)\) has a compact unitary group. Let \(Y_0=\int_{\mathcal U(P)}uYu^*\,du\), with Haar probability measure. Then \(Y_0\in P'\) and \(\|Y-Y_0\|\le\sup_u\|uYu^*-Y\|\), which is \(\sup_u\|[u,Y]\|\le\delta\). Since \([Y^{(h)},X]=[(Y-Y_0)^{(h)},X]\), the commutator has norm at most \(2\delta\|X\|\le C_{\rm fac}\delta\|X\|\). \(\square\)
 
 ## 2. The central decomposition
 
@@ -49,8 +60,10 @@ Since \(V^*V=I\), \(\|V[Y^{(h)},X]V^*\|=\|[Y^{(h)},X]\|\). Therefore \(\|[Y^{(h)
 
 Take the central decomposition of Theorem 4.1 of the central decomposition lesson: \(K=\int^\oplus K(t)\,d\mu(t)\) with separable fibres, and \(P=\int^\oplus M(t)\) with every \(M(t)\) a factor; the centre is the diagonal algebra, so \(Y_1\), which commutes with it, is decomposable, \(Y_1=\int^\oplus Y_1(t)\) (Fact 1.1(f) there). We show
 \[
-g_{M(t)}(Y_1(t))\le3\delta\qquad\text{for almost every }t.
-\tag{2.1}
+\begin{gathered}
+g_{M(t)}(Y_1(t))\le3\delta\\
+\text{for almost every }t.
+\end{gathered}\tag{2.1}
 \]
 Lemma 3.1 of the central decomposition lesson gives a countable unital \(*\)-algebra \(\mathcal Q\subseteq P\) over \(\mathbb Q(i)\), fields \(\beta_b\) representing \(b\in\mathcal Q\), and a null set \(N\) such that for \(t\notin N\) the map \(b\mapsto\beta_b(t)\) is a unital \(*\)-homomorphism of \(\mathbb Q(i)\)-algebras whose image has complex span strongly dense in \(M(t)\). Enlarging \(N\), we may assume \(\|\beta_b(t)\|\le\|b\|\) for \(t\notin N\) and \(b\in\mathcal Q\) (Fact 1.2(b) there).
 
@@ -62,12 +75,14 @@ Each \(M(t)\) is a factor on a separable space, so Proposition 1.1 gives \(\|[Y_
 
 **Theorem 3.1** (uniform commutator estimate). For every Hilbert space \(K\), every von Neumann algebra \(P\subseteq B(K)\) with \(1_K\in P\), every \(Y\in B(K)\), every \(h\ge1\) and every \(X\in M_h(P)\),
 \[
-\|[Y^{(h)},X]\|\le C\,g_P(Y)\,\|X\| .
-\tag{3.1}
+\begin{aligned}
+&\|[Y^{(h)},X]\|\\
+&\quad \le C\,g_P(Y)\,\|X\| .
+\end{aligned}\tag{3.1}
 \]
 Equivalently, the derivation \(x\mapsto Yx-xY\) of \(P\) into \(B(K)\) has completely bounded norm at most \(C\) times its norm.
 
-**Proof.** Fix \(h\), \(X\in M_h(P)\) and a unit vector \(\xi=(\xi_1,\dots,\xi_h)\in K^h\). Let \(A_X\subseteq P\) be the unital C\*-algebra generated by the entries of \(X\). The C\*-algebra generated by \(A_X\) and \(Y\) is norm separable, so the closed span \(K_0\) of its images of \(\xi_1,\dots,\xi_h\) is a separable subspace reducing \(A_X\) and \(Y\). Let \(\sigma(a)=a|_{K_0}\) for \(a\in A_X\), \(Y_0=Y|_{K_0}\) and \(P_0=\sigma(A_X)''\subseteq B(K_0)\). For \(a\in A_X\), \(\|[Y_0,\sigma(a)]\|\le g_P(Y)\|a\|\). Every \(b\in\sigma(A_X)\) is \(\sigma(a)\) with \(\|a\|=\|b\|\) (Proposition 17.1 of [C\*-algebras, continuous functional calculus, automatic continuity and positive cones](course:foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones#OA-FND-CF-29)), so \(\|[Y_0,b]\|\le g_P(Y)\|b\|\), and by Kaplansky's density theorem \(g_{P_0}(Y_0)\le g_P(Y)\). Proposition 2.1 applied to \(P_0\) and \(\sigma_h(X)\) gives \(\|[Y_0^{(h)},\sigma_h(X)]\|\le Cg_P(Y)\|\sigma_h(X)\|\le Cg_P(Y)\|X\|\). Since \(K_0\) reduces all operators involved and contains every \(\xi_i\), \([Y^{(h)},X]\xi=[Y_0^{(h)},\sigma_h(X)]\xi\). Take the supremum over \(\xi\). \(\square\)
+**Proof.** Fix \(h\), \(X\in M_h(P)\) and a unit vector \(\xi=(\xi_1,\dots,\xi_h)\in K^h\). Let \(A_X\subseteq P\) be the unital C\*-algebra generated by the entries of \(X\). The C\*-algebra generated by \(A_X\) and \(Y\) is norm separable, so the closed span \(K_0\) of its images of \(\xi_1,\dots,\xi_h\) is a separable subspace reducing \(A_X\) and \(Y\). Let \(\sigma(a)=a|_{K_0}\) for \(a\in A_X\), \(Y_0=Y|_{K_0}\) and \(P_0=\sigma(A_X)''\subseteq B(K_0)\). For \(a\in A_X\), \(\|[Y_0,\sigma(a)]\|\le g_P(Y)\|a\|\). Every \(b\in\sigma(A_X)\) is \(\sigma(a)\) with \(\|a\|=\|b\|\) (Proposition 17.1 of [C\*-algebras, continuous functional calculus, automatic continuity and positive cones](course:foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones#OA-FND-CF-29)), so \(\|[Y_0,b]\|\le g_P(Y)\|b\|\), and by Kaplansky's density theorem \(g_{P_0}(Y_0)\le g_P(Y)\). Proposition 2.1 applied to \(P_0\) and \(\sigma_h(X)\) gives \(\|[Y_0^{(h)},\sigma_h(X)]\|\le Cg_P(Y)\|\sigma_h(X)\|\), which is at most \(Cg_P(Y)\|X\|\). Since \(K_0\) reduces all operators involved and contains every \(\xi_i\), \([Y^{(h)},X]\xi=[Y_0^{(h)},\sigma_h(X)]\xi\). Take the supremum over \(\xi\). \(\square\)
 
 Combined with Arveson's distance formula, Corollary 4.5 of [Completely bounded homomorphisms and similarity](completely-bounded-homomorphisms-and-similarity.md), Theorem 3.1 says: for every von Neumann algebra \(P\subseteq B(K)\) and every \(Y\in B(K)\),
 \[
@@ -94,7 +109,7 @@ A C\*-algebra \(A\subseteq B(K)\) has the same commutant and, by Kaplansky's den
 
 **Solution 4.3.** \(P'=1\otimes M_k(\mathbb C)\). For \(Y=a\otimes b\), the Haar average of \(uau^*\) over \(U(n)\) commutes with all unitaries, so it is a scalar, which equals \(\operatorname{tr}(a)\) by taking traces; hence \(Y_0=\operatorname{tr}(a)1\otimes b\). Extend linearly.
 
-**Solution 4.4.** \(\Theta(y)^*\Theta(y)=(1+y^*y)^{-1/2}y^*y(1+y^*y)^{-1/2}=f(y^*y)\) with \(f(x)=x/(1+x)\), whose values on the spectrum of \(y^*y\) are at most \(\|y\|^2/(1+\|y\|^2)<1\). For \(\|c\|<1\), \(\Theta(c(1-c^*c)^{-1/2})=c(1-c^*c)^{-1/2}(1+(1-c^*c)^{-1/2}c^*c(1-c^*c)^{-1/2})^{-1/2}=c(1-c^*c)^{-1/2}(1-c^*c)^{1/2}=c\), all functions of \(c^*c\) commuting; the other composition is checked in the same way with \(y^*y\).
+**Solution 4.4.** \(\Theta(y)^*\Theta(y)\) equals \((1+y^*y)^{-1/2}y^*y(1+y^*y)^{-1/2}\), that is, \(f(y^*y)\) with \(f(x)=x/(1+x)\), whose values on the spectrum of \(y^*y\) are at most \(\|y\|^2/(1+\|y\|^2)<1\). For \(\|c\|<1\), put \(z=c(1-c^*c)^{-1/2}\). All functions of \(c^*c\) commute, so \(z^*z=c^*c(1-c^*c)^{-1}\) and \(1+z^*z=(1-c^*c)^{-1}\), hence \(\Theta(z)=z(1-c^*c)^{1/2}=c\); the other composition is checked in the same way with \(y^*y\).
 
 ## References
 

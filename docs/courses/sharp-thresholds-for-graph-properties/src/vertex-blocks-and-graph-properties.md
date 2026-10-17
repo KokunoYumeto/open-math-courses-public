@@ -22,7 +22,11 @@ We use Lemmas 2.1, 2.2 and 4.1 and the notation of [Biased Fourier analysis and 
 
 **Lemma 1.1** (averaging over a restriction). Let \(F\subseteq E_n\), \(H=E_n\setminus F\), and for \(y\in\{0,1\}^H\) let \(f_y(x)=f(x,y)\) on \(\{0,1\}^F\). If \(y\) has the product law, then for every \(k>0\)
 \[
-\mathbb E_y\sum_{A\subseteq F,\ 1\le|A|\le k}\widehat{f_y}(A)^2=\sum_{S\subseteq E_n,\ 1\le|S\cap F|\le k}\widehat f(S)^2,\qquad\mathbb E_yI(f_y)=\sum_{e\in F}I_e(f).
+\begin{aligned}
+&\mathbb E_y\sum_{A\subseteq F,\ 1\le|A|\le k}\widehat{f_y}(A)^2\\
+&\quad =\sum_{S\subseteq E_n,\ 1\le|S\cap F|\le k}\widehat f(S)^2,\\
+&\mathbb E_yI(f_y)=\sum_{e\in F}I_e(f).
+\end{aligned}
 \]
 
 **Proof.** Integrating the expansion of \(f\) over \(x\) against \(\chi_A\) gives \(\widehat{f_y}(A)=\sum_{D\subseteq H}\widehat f(A\cup D)\chi_D(y)\), and orthonormality in \(y\) gives \(\mathbb E_y\widehat{f_y}(A)^2=\sum_D\widehat f(A\cup D)^2\); sum over \(A\). For \(e\in F\), the pivotal event of \(f_y\) at \(e\) is that of \(f\) with the coordinates in \(H\) fixed to \(y\), so \(\mathbb E_yI_e(f_y)=I_e(f)\). \(\square\)
@@ -33,7 +37,10 @@ From now on \(f\) is invariant under vertex permutations. For \(B\subseteq[n]\),
 
 **Proposition 2.1** (the block estimate). Let \(3\le m\le n\), \(B\) uniform among the \(m\)-element subsets of \([n]\), and \(k=\frac{\sigma\log m}{64}\). Then
 \[
-\sum_{S\subseteq E_n}\mathbb P_B\bigl(1\le|S\cap F_B|\le k\bigr)\,\widehat f(S)^2\le\frac{2m}n\,m^{-1/4}I(f).
+\begin{aligned}
+&\sum_{S\subseteq E_n}\mathbb P_B\bigl(1\le|S\cap F_B|\le k\bigr)\,\widehat f(S)^2\\
+&\quad \le\frac{2m}n\,m^{-1/4}I(f).
+\end{aligned}
 \]
 
 **Proof.** Fix \(B\) and \(y\in\{0,1\}^{E_n\setminus F_B}\). A permutation of \([n]\) supported on \(B\) fixes every edge disjoint from \(B\), hence fixes \(y\), so \(f_y\) is invariant under all such permutations; the product measure is invariant too, so influences of \(f_y\) are constant on orbits. The orbits on \(F_B\) are the \(\binom m2\) edges inside \(B\), and for each \(w\notin B\) the \(m\) edges \(\{u,w\}\), \(u\in B\); all have at least \(m\) elements since \(m\ge3\). Hence \(I_e(f_y)\le I(f_y)/m\) for \(e\in F_B\), and Lemma 4.1 of [Biased Fourier analysis and hypercontractivity](biased-fourier-analysis-and-hypercontractivity.md) gives \(\sum_{1\le|A|\le k}\widehat{f_y}(A)^2\le m^{-1/4}I(f_y)\). Averaging over \(y\) with Lemma 1.1,
@@ -51,7 +58,10 @@ Average over \(B\): each endpoint of an edge lies in \(B\) with probability \(m/
 
 **Proof.** If \(k^2/2<1\), the sum is empty. Fix \(S\) with \(1\le s=|S|\le k^2/2\), regarded as a graph; let \(V\) be the set of vertices it touches, \(v=|V|\). Since \(s\le\binom v2<v^2/2\), the average degree on \(V\) is \(2s/v<\sqrt{2s}\le k\); choose \(u\in V\) of degree \(d_S(u)\le2s/v\), so \(1\le d_S(u)\le k\), and note \(v\le2s\le k^2\). For uniform \(B\), \(\mathbb P(u\in B)=m/n\), and given \(u\in B\) each other vertex lies in \(B\) with probability \(\frac{m-1}{n-1}\); so
 \[
-\mathbb P\bigl(B\cap V=\{u\}\bigr)\ge\frac mn\Bigl(1-(v-1)\frac{m-1}{n-1}\Bigr).
+\begin{aligned}
+&\mathbb P\bigl(B\cap V=\{u\}\bigr)\\
+&\quad \ge\frac mn\Bigl(1-(v-1)\frac{m-1}{n-1}\Bigr).
+\end{aligned}
 \]
 On this event \(S\cap F_B\) consists of the \(d_S(u)\) edges of \(S\) at \(u\), so \(1\le|S\cap F_B|\le k\). Now \(k\le t\), \(\frac{m-1}{n-1}\le\frac1{\sqrt n+1}\le n^{-1/2}\), and \((v-1)n^{-1/2}\le t^2e^{-t/2}\le256e^{-8}<\frac12\), since \(t^2e^{-t/2}\) decreases for \(t\ge4\). Hence \(\mathbb P_B(1\le|S\cap F_B|\le k)\ge\frac m{2n}\) for each such \(S\). Inserting this in Proposition 2.1 (the vertex \(u\) may depend on \(S\), as the probability bound is used for each nonnegative term separately) gives the claim. \(\square\)
 
@@ -59,7 +69,10 @@ On this event \(S\cap F_B\) consists of the \(d_S(u)\) edges of \(S\) at \(u\), 
 
 **Proof of Theorem 4.1.** If \(n<e^{16}\), Lemma 2.1 of [Biased Fourier analysis and hypercontractivity](biased-fourier-analysis-and-hypercontractivity.md) gives \(\operatorname{Var}(f)\le\sigma^2I(f)\le\frac14I(f)\le\frac{64}{(\log n)^2}I(f)\). Let \(t=\log n\ge16\), with \(m\) and \(k\) as in Lemma 3.1. By the same Lemma 2.1,
 \[
-\sum_{|S|>k^2/2}\widehat f(S)^2\le\frac2{k^2}\sum_S|S|\widehat f(S)^2=\frac{2\sigma^2}{k^2}I(f),
+\begin{aligned}
+\sum_{|S|>k^2/2}\widehat f(S)^2&\le\frac2{k^2}\sum_S|S|\widehat f(S)^2\\
+&=\frac{2\sigma^2}{k^2}I(f),
+\end{aligned}
 \]
 so with Lemma 3.1 and (1.1) of that lesson, \(\operatorname{Var}(f)\le\bigl(4m^{-1/4}+\frac{2\sigma^2}{k^2}\bigr)I(f)\). The bias cancels: \(\frac{2\sigma^2}{k^2}=\frac{8192}{(\log m)^2}\). Since \(m\ge\sqrt n-1\ge\sqrt n/2\), \(\log m\ge\frac t2-\log2\ge\frac t3\), so \(\frac{2\sigma^2}{k^2}\le\frac{73728}{t^2}\). Also \(4m^{-1/4}\le4\cdot2^{1/4}e^{-t/8}\), and \(t^2e^{-t/8}\) decreases for \(t\ge16\), so \(4m^{-1/4}t^2\le4\cdot2^{1/4}\cdot256e^{-2}<256\). Altogether \(\operatorname{Var}(f)\le\frac{73728+256}{t^2}I(f)\le\frac{2^{17}}{t^2}I(f)\). \(\square\)
 
@@ -69,7 +82,10 @@ No monotonicity was used, and the bound holds uniformly in \(p\), including \(p\
 
 **Proof of Theorem 5.1.** Let \(f=\mathbf 1_{\mathcal P}\) and \(\mu(p)=\mathbb E_pf\). By Lemma 2.2 of [Biased Fourier analysis and hypercontractivity](biased-fourier-analysis-and-hypercontractivity.md), \(\mu'(p)=I_p(f)\), and \(\operatorname{Var}_p(f)=\mu(1-\mu)\) since \(f\) is Boolean. Theorem 4.1 gives, with \(C_0=2^{17}\),
 \[
-\mu'(p)\ge\frac{(\log n)^2}{C_0}\,\mu(p)\bigl(1-\mu(p)\bigr)\qquad(0<p<1).
+\begin{gathered}
+\mu'(p)\ge\frac{(\log n)^2}{C_0}\,\mu(p)\bigl(1-\mu(p)\bigr)\\
+(0<p<1).
+\end{gathered}
 \]
 As \(\mathcal P\) is increasing and nontrivial, it contains the complete graph and not the empty graph, so \(0<\mu(p)<1\) for \(0<p<1\), with \(\mu(0)=0\) and \(\mu(1)=1\); so \(\mu\) is strictly increasing and each \(p_a\) is the unique solution of \(\mu(p_a)=a\). Dividing,
 \[
@@ -97,7 +113,7 @@ Integrating from the median \(p_*=p_{1/2}\) instead gives \(\mu(p_*-s)\le\bigl(1
 
 **6.3.** \(\operatorname{Var}_p=p(1-p)\) and \(I_p=1\), so the ratio is \(\sigma^2\), not small. \(\mu_p=p\), so \(p_{1-\varepsilon}-p_\varepsilon=1-2\varepsilon\).
 
-**6.4.** \(\mathbb P(B\cap V=\{u\})=\mathbb P(u\in B)\,\mathbb P(\text{no other vertex of }V\text{ in }B\mid u\in B)\), and by the union bound the last probability is at least \(1-(v-1)\frac{m-1}{n-1}\).
+**6.4.** The probability \(\mathbb P(B\cap V=\{u\})\) is the product of \(\mathbb P(u\in B)\) and the conditional probability, given \(u\in B\), that no other vertex of \(V\) lies in \(B\), and by the union bound the last probability is at least \(1-(v-1)\frac{m-1}{n-1}\).
 
 ## References
 

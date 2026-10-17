@@ -19,7 +19,10 @@ Fix \(\tau=1/8\) and an integer \(k\ge1\). For \(j\ge1\) let
 **Data 1.1.** A *family* consists of a real number \(f_0\) and, for \(1\le j\le k\), real symmetric functions \(f_j\in C_c^\infty(\Omega_j)\). Put \(f_{k+1}=0\). For \(j\ge1\) define on \([0,\infty)^j\)
 
 \[
-F_j(v)=\int_{s_1\ge v_1,\dots,s_j\ge v_j}f_j(s)\,ds,\qquad F_0=f_0,\qquad F_{k+1}=0,
+\begin{gathered}
+F_j(v)=\int_{s_1\ge v_1,\dots,s_j\ge v_j}f_j(s)\,ds,\\
+F_0=f_0,\qquad F_{k+1}=0,
+\end{gathered}
 \]
 
 and for \(j\ge0\) the function of \(j\) variables (a number when \(j=0\))
@@ -40,24 +43,33 @@ Norms \(\|\cdot\|\) are \(L^2\) norms on \((0,\infty)^j\), and the absolute valu
 
 (2) The support of \(f_j\) is a compact subset of \(\Omega_j\subset(0,\infty)^j\), so all its coordinates are bounded below by a positive number.
 
-(3) \(F_{j+1}(v,0)=\int_{s\ge v}\int_0^\infty f_{j+1}(s,u)\,du\,ds=\int_{s\ge v}(Tf_{j+1})(s)\,ds\). If \((t,u)\) lies in the support of \(f_{j+1}\), then \(t_1+\dots+t_j<\tau-u<\tau\) and the coordinates of \(t\) are bounded below; so \(Tf_{j+1}\in C_c^\infty(\Omega_j)\) for \(j\ge1\), and it is symmetric. Part (1) applied to \(f_j+Tf_{j+1}\) proves the claims. \(\square\)
+(3) \(F_{j+1}(v,0)=\int_{s\ge v}\int_0^\infty f_{j+1}(s,u)\,du\,ds\), which is \(\int_{s\ge v}(Tf_{j+1})(s)\,ds\). If \((t,u)\) lies in the support of \(f_{j+1}\), then \(t_1+\dots+t_j<\tau-u<\tau\) and the coordinates of \(t\) are bounded below; so \(Tf_{j+1}\in C_c^\infty(\Omega_j)\) for \(j\ge1\), and it is symmetric. Part (1) applied to \(f_j+Tf_{j+1}\) proves the claims. \(\square\)
 
 ## 2. The signed sum and its moments
 
 For a set \(S\subseteq I\) with \(j\) elements write \(D_{F_j}(m;S)\) for \(D_{F_j}(m;s_1,\dots,s_j)\) with the elements of \(S\) in any order; by symmetry of \(F_j\) the order does not matter. Define
 
 \[
-Z(m)=\sum_{j=0}^k\ \sum_{\substack{S\subseteq I\\|S|=j}}D_{F_j}(m;S),\qquad\alpha_j=\frac{\lambda^j}{j!},
+\begin{gathered}
+Z(m)=\sum_{j=0}^k\ \sum_{\substack{S\subseteq I\\|S|=j}}D_{F_j}(m;S),\\
+\alpha_j=\frac{\lambda^j}{j!},
+\end{gathered}
 \]
 
 \[
-w=\sum_{j=0}^k\alpha_j\|f_j\|^2,\qquad v=\lambda\sum_{j=0}^k\alpha_j\|f_j+Tf_{j+1}\|^2 .
+\begin{gathered}
+w=\sum_{j=0}^k\alpha_j\|f_j\|^2,\\
+v=\lambda\sum_{j=0}^k\alpha_j\|f_j+Tf_{j+1}\|^2 .
+\end{gathered}
 \]
 
 Fix also a real \(G\in C_c^\infty(\mathbb R)\) with \(G(0)=1\) and \(G(u)=0\) for \(u\ge\tau\), and put
 
 \[
-c_G=\int_0^\infty G'(u)^2\,du,\qquad C_*=\lambda+\lambda^2c_G^2 .
+\begin{gathered}
+c_G=\int_0^\infty G'(u)^2\,du,\\
+C_*=\lambda+\lambda^2c_G^2 .
+\end{gathered}
 \]
 
 The restriction of \(G\) to \([0,\infty)\) is a one-dimensional test function of budget \(\tau\).
@@ -65,7 +77,10 @@ The restriction of \(G\) to \([0,\infty)\) is a one-dimensional test function of
 **Proposition 2.1** (moments of the square). Hold \(\lambda\), \(k\), the family \((f_j)\) and \(G\) fixed. As \(X\to\infty\):
 
 \[
-\mathbb E_XZ^2\to w,\qquad\mathbb E_XZ^4=O(1),\qquad\mathbb E_X(Z^2V_J)\to\lambda w,\qquad\mathbb E_X(Z^2V_I)\to v,
+\begin{gathered}
+\mathbb E_XZ^2\to w,\qquad \mathbb E_XZ^4=O(1),\\
+\mathbb E_X(Z^2V_J)\to\lambda w,\qquad \mathbb E_X(Z^2V_I)\to v,
+\end{gathered}
 \]
 
 and
@@ -83,7 +98,10 @@ The proof is in Section 4. The formulas show how the two prime counts see the we
 **Lemma 3.1** (deletion). Let \(a\in I\) and suppose \(m+a\) is a prime with \(m>X\). Then
 
 \[
-Z(m)=\sum_{j=0}^k\ \sum_{\substack{U\subseteq I\setminus\{a\}\\|U|=j}}D_{\widetilde F_j}(m;U),\qquad\widetilde F_j=F_j+F_{j+1}(\cdot,0).
+\begin{gathered}
+Z(m)=\sum_{j=0}^k\ \sum_{\substack{U\subseteq I\setminus\{a\}\\|U|=j}}D_{\widetilde F_j}(m;U),\\
+\widetilde F_j=F_j+F_{j+1}(\cdot,0).
+\end{gathered}
 \]
 
 **Proof.** Split the subsets \(S\) in the definition of \(Z\) according to whether they contain \(a\). Those not containing \(a\) are the sets \(U\subseteq I\setminus\{a\}\) with \(|U|\le k\), each contributing \(D_{F_{|U|}}(m;U)\). A set containing \(a\) is \(U\cup\{a\}\) with \(U\subseteq I\setminus\{a\}\) and \(|U|\le k-1\). List \(a\) last. Since \(\log(m+a)/L>1>\tau\), Lemma 1.3 of [Divisor sums and primes in progressions](divisor-sums-and-primes-in-progressions.md) gives \(D_{F_{|U|+1}}(m;U\cup\{a\})=D_{F_{|U|+1}(\cdot,0)}(m;U)\). Each \(U\) therefore occurs once with \(F_{|U|}\) and once with \(F_{|U|+1}(\cdot,0)\), the latter being \(0\) when \(|U|=k\). Adding gives \(D_{\widetilde F_{|U|}}(m;U)\). \(\square\)
@@ -101,14 +119,27 @@ All shifts below lie in \(\{1,\dots,2h\}\), so \(|a|\le2\lambda L\): Theorem 1.1
 | \(\mathbb E_XZ^4\) | 4 | \(4\tau=1/2<1\) | none |
 | detector, off-diagonal | 6 | \(6\tau=3/4<1\) | none |
 
-*Counting.* For fixed \(j\), Corollary 4.2 of the singular-series lesson gives \(\sum_{S\subseteq I,\,|S|=j}\mathfrak S(S)=\frac1{j!}\sum\mathfrak S(\{a_1,\dots,a_j\})=\frac{h^j}{j!}(1+o(1))\), the second sum over ordered distinct tuples. Since \(h/L\to\lambda\),
+*Counting.* For fixed \(j\), Corollary 4.2 of the singular-series lesson gives
+\[
+\begin{aligned}
+\sum_{S\subseteq I,\,|S|=j}\mathfrak S(S)&=\frac1{j!}\sum\mathfrak S(\{a_1,\dots,a_j\})\\
+&=\frac{h^j}{j!}(1+o(1)),
+\end{aligned}
+\]
+the second sum over ordered distinct tuples. Since \(h/L\to\lambda\),
 
 \[
-L^{-j}\sum_{|S|=j}\mathfrak S(S)\to\alpha_j,\qquad L^{-j-1}\sum_{b\in J}\sum_{|S|=j}\mathfrak S(S\cup\{b\})\to\lambda\alpha_j,
+\begin{gathered}
+L^{-j}\sum_{|S|=j}\mathfrak S(S)\to\alpha_j,\\
+L^{-j-1}\sum_{b\in J}\sum_{|S|=j}\mathfrak S(S\cup\{b\})\to\lambda\alpha_j,
+\end{gathered}
 \]
 
 \[
-L^{-j-1}\sum_{a\in I}\sum_{\substack{U\subseteq I\setminus\{a\}\\|U|=j}}\mathfrak S(U\cup\{a\})\to\lambda\alpha_j,\qquad L^{-j-2}\sum_{\substack{b,c\in J\\b\ne c}}\sum_{|S|=j}\mathfrak S(S\cup\{b,c\})\to\lambda^2\alpha_j .
+\begin{gathered}
+L^{-j-1}\sum_{a\in I}\sum_{\substack{U\subseteq I\setminus\{a\}\\|U|=j}}\mathfrak S(U\cup\{a\})\to\lambda\alpha_j,\\
+L^{-j-2}\sum_{\substack{b,c\in J\\b\ne c}}\sum_{|S|=j}\mathfrak S(S\cup\{b,c\})\to\lambda^2\alpha_j .
+\end{gathered}
 \]
 
 In the last three sums every tuple of shifts is automatically distinct, because \(I\) and \(J\) are disjoint.
@@ -118,17 +149,40 @@ In the last three sums every tuple of shifts is automatically distinct, because 
 *The second moment.* Expand \(Z^2=\sum_{S,T}D_{F_{|S|}}(m;S)D_{F_{|T|}}(m;T)\). For a pair \((S,T)\), the distinct shifts are \(S\cup T\); those in \(S\cap T\) form fibres of two coordinates, those in \(S\triangle T\) singleton fibres. By (1.1) of the correlations lesson, the constant is an integral of \(f_{|S|}f_{|T|}\) with the variable of every singleton fibre set to \(0\). If \(S\ne T\), some shift lies in exactly one of them, and the corresponding \(f\) vanishes there by Lemma 1.2(2): the constant is \(0\). If \(S=T\) has \(j\) elements, listed in the same order in both factors, the constant is \(\int f_j^2=\|f_j\|^2\) (and \(f_0^2\) for \(j=0\)). Hence
 
 \[
-\mathbb E_XZ^2=\sum_{j=0}^k\|f_j\|^2L^{-j}\sum_{|S|=j}\mathfrak S(S)+o(1)\to\sum_j\alpha_j\|f_j\|^2=w .
+\begin{aligned}
+&\mathbb E_XZ^2=\sum_{j=0}^k\|f_j\|^2L^{-j}\sum_{|S|=j}\mathfrak S(S)\\
+&\quad +o(1)\to\sum_j\alpha_j\|f_j\|^2=w .
+\end{aligned}
 \]
 
-*The fourth moment.* For a quadruple \((S_1,\dots,S_4)\) with union \(U\), \(|U|=t\), Theorem 1.1 of the correlations lesson gives \(L^{-t}(\mathfrak S(U)\mathcal C+o(1))\), where \(\mathcal C\) depends only on the shape; here fibres may have up to four elements and only the finiteness of \(\mathcal C\) is used. At most \(15^t\) quadruples have a given union, since each element of \(U\) lies in a nonempty subset of the four sets. Hence \(|\mathbb E_XZ^4|\ll\sum_{t\le4k}15^tL^{-t}\sum_{|U|=t}\mathfrak S(U)+o(1)=O(1)\).
+*The fourth moment.* For a quadruple \((S_1,\dots,S_4)\) with union \(U\), \(|U|=t\), Theorem 1.1 of the correlations lesson gives \(L^{-t}(\mathfrak S(U)\mathcal C+o(1))\), where \(\mathcal C\) depends only on the shape; here fibres may have up to four elements and only the finiteness of \(\mathcal C\) is used. At most \(15^t\) quadruples have a given union, since each element of \(U\) lies in a nonempty subset of the four sets. Hence
+\[
+\begin{aligned}
+&|\mathbb E_XZ^4|\\
+&\quad\ll\sum_{t\le4k}15^tL^{-t}\sum_{|U|=t}\mathfrak S(U)+o(1)\\
+&\quad=O(1).
+\end{aligned}
+\]
 
-*A prime in \(J\).* \(\mathbb E_X(Z^2V_J)=L^{-1}\sum_{b\in J}\sum_{S,T}\mathbb E_X[\vartheta(m+b)D_{F_{|S|}}(m;S)D_{F_{|T|}}(m;T)]\). The mark \(b\) differs from all shifts in \(I\). The constant of each term is the same as in the second moment (the mark does not enter \(\mathcal C\)), and the singular series is \(\mathfrak S(S\cup T\cup\{b\})\). Only \(S=T\) survives, and the counting gives \(\sum_j\|f_j\|^2\lambda\alpha_j=\lambda w\).
+*A prime in \(J\).*
+\[
+\begin{aligned}
+&\mathbb E_X(Z^2V_J)\\
+&\quad=L^{-1}\sum_{b\in J}\sum_{S,T}\mathbb E_X[\vartheta(m+b)\\
+&\qquad\cdot D_{F_{|S|}}(m;S)D_{F_{|T|}}(m;T)].
+\end{aligned}
+\]
+The mark \(b\) differs from all shifts in \(I\). The constant of each term is the same as in the second moment (the mark does not enter \(\mathcal C\)), and the singular series is \(\mathfrak S(S\cup T\cup\{b\})\). Only \(S=T\) survives, and the counting gives \(\sum_j\|f_j\|^2\lambda\alpha_j=\lambda w\).
 
-*A prime in \(I\).* \(\mathbb E_X(Z^2V_I)=L^{-1}\sum_{a\in I}\mathbb E_X[\vartheta(m+a)Z(m)^2]\). Where \(\vartheta(m+a)\ne0\), Lemma 3.1 rewrites \(Z(m)\); so
+*A prime in \(I\).* \(\mathbb E_X(Z^2V_I)\) equals \(L^{-1}\sum_{a\in I}\mathbb E_X[\vartheta(m+a)Z(m)^2]\). Where \(\vartheta(m+a)\ne0\), Lemma 3.1 rewrites \(Z(m)\); so
 
 \[
-\mathbb E_X[\vartheta(m+a)Z(m)^2]=\sum_{U,U'\subseteq I\setminus\{a\}}\mathbb E_X\bigl[\vartheta(m+a)D_{\widetilde F_{|U|}}(m;U)D_{\widetilde F_{|U'|}}(m;U')\bigr].
+\begin{aligned}
+&\mathbb E_X[\vartheta(m+a)Z(m)^2]\\
+&\quad=\sum_{U,U'\subseteq I\setminus\{a\}}\mathbb E_X\bigl[\vartheta(m+a)\\
+&\qquad\cdot D_{\widetilde F_{|U|}}(m;U)\\
+&\qquad\cdot D_{\widetilde F_{|U'|}}(m;U')\bigr].
+\end{aligned}
 \]
 
 These are marked moments with mark \(a\) and test functions \(\widetilde F_j\) of budget \(\tau\). By Lemma 1.2(3), the signed mixed derivative of \(\widetilde F_j\) is \(f_j+Tf_{j+1}\), which vanishes near the coordinate faces for \(j\ge1\). As in the second moment, only \(U=U'\) survives, with constant \(\|f_j+Tf_{j+1}\|^2\) for \(|U|=j\ge1\) and \(|f_0+Tf_1|^2\) for \(U=\varnothing\). The counting gives \(\sum_j\|f_j+Tf_{j+1}\|^2\lambda\alpha_j=v\).
@@ -136,20 +190,31 @@ These are marked moments with mark \(a\) and test functions \(\widetilde F_j\) o
 *The detector.* Put \(q_X=\log(2X+2h)/L\to1\). For \(b\in J\) and \(X<m\le2X\):
 
 \[
-\frac{\vartheta(m+b)}L\le q_X\,D_G(m;b)^2,\qquad\Bigl(\frac{\vartheta(m+b)}L\Bigr)^2\le q_X\frac{\vartheta(m+b)}L .
+\begin{gathered}
+\frac{\vartheta(m+b)}L\le q_X\,D_G(m;b)^2,\\
+\Bigl(\frac{\vartheta(m+b)}L\Bigr)^2\le q_X\frac{\vartheta(m+b)}L .
+\end{gathered}
 \]
 
-The left sides vanish unless \(m+b\) is prime, and the right sides are nonnegative. If \(m+b\) is prime, \(\vartheta(m+b)/L\le q_X\), and \(D_G(m;b)=G(0)-G(\log(m+b)/L)=1\) because \(\log(m+b)/L>1>\tau\). Expanding the square of \(V_J=L^{-1}\sum_{b\in J}\vartheta(m+b)\) into diagonal and off-diagonal terms and multiplying by \(Z^2\ge0\),
+The left sides vanish unless \(m+b\) is prime, and the right sides are nonnegative. If \(m+b\) is prime, \(\vartheta(m+b)/L\le q_X\), and \(D_G(m;b)=G(0)-G(\log(m+b)/L)\), which is \(1\) because \(\log(m+b)/L>1>\tau\). Expanding the square of \(V_J=L^{-1}\sum_{b\in J}\vartheta(m+b)\) into diagonal and off-diagonal terms and multiplying by \(Z^2\ge0\),
 
 \[
-\mathbb E_X(Z^2V_J^2)\le q_X\,\mathbb E_X(Z^2V_J)+q_X^2\sum_{\substack{b,c\in J\\b\ne c}}\mathbb E_X\bigl[Z^2D_G(m;b)^2D_G(m;c)^2\bigr].
+\begin{aligned}
+&\mathbb E_X(Z^2V_J^2)\le q_X\,\mathbb E_X(Z^2V_J)\\
+&\quad+q_X^2\sum_{\substack{b,c\in J\\b\ne c}}\mathbb E_X\bigl[Z^2D_G(m;b)^2\\
+&\qquad\cdot D_G(m;c)^2\bigr].
+\end{aligned}
 \]
 
 An off-diagonal term is a sum of unmarked moments of six factors. The shifts \(b\) and \(c\) lie outside \(I\) and each carries a fibre of two coordinates, one from each copy of \(D_G\). By (1.1) each such fibre contributes \(\int_0^\infty(-G'(y))^2dy=c_G\), and the subsets \(S,T\) from \(Z^2\) must again coincide. The constant for \(S=T\) of size \(j\) is \(c_G^2\|f_j\|^2\), and \(t=j+2\). The counting gives \(\sum_jc_G^2\|f_j\|^2\lambda^2\alpha_j=\lambda^2c_G^2w\). Together with \(\mathbb E_X(Z^2V_J)\to\lambda w\),
 
 \[
-\limsup_{X\to\infty}\mathbb E_X(Z^2V_J^2)\le\lambda w+\lambda^2c_G^2w=C_*w .\qquad\square
+\begin{aligned}
+&\limsup_{X\to\infty}\mathbb E_X(Z^2V_J^2)\le\lambda w\\
+&\quad +\lambda^2c_G^2w=C_*w .
+\end{aligned}
 \]
+\(\square\)
 
 The detector bound uses two primes in \(J\) only through the majorants \(D_G^2\), so no asymptotic formula with two prime marks is needed. Its constant does not depend on the family because the coefficients of \(w\) in both terms are \(\lambda\) and \(\lambda^2c_G^2\), whatever the \(f_j\) are.
 

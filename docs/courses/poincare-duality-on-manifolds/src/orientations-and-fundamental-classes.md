@@ -63,7 +63,11 @@ Restricting \(\mu_D\) shows that every smaller compact neighbourhood of the poin
 **Transport along paths.** Call a compact set \(D\subset M\) a **convex chart set** if it lies in the domain of a chart \(\varphi\) with \(\varphi(D)\) convex; a closed chart ball, the preimage of a closed ball, is one. For such \(D\) and \(y\in D\), the restriction \(r^D_y:H_n(M,M\setminus D)\to H_n(M,M\setminus y)\) is an isomorphism by Lemma 1.2(1). For a path \(\gamma:[a,b]\to M\) with image in the interior of a convex chart set \(D\), put
 
 \[
-T^D_\gamma=r^D_{\gamma(b)}\circ\bigl(r^D_{\gamma(a)}\bigr)^{-1}:H_n(M,M\setminus\gamma(a))\longrightarrow H_n(M,M\setminus\gamma(b)).
+\begin{aligned}
+&T^D_\gamma\\
+&\quad =r^D_{\gamma(b)}\circ\bigl(r^D_{\gamma(a)}\bigr)^{-1}:H_n(M,M\setminus\gamma(a))\\
+&\quad \longrightarrow H_n(M,M\setminus\gamma(b)).
+\end{aligned}
 \]
 
 Two rules follow from the definition. (a) If \(D'\subset D\) are convex chart sets and \(\gamma([a,b])\subset\operatorname{int}D'\), then \(T^{D'}_\gamma=T^D_\gamma\), because \(r^D_y\) is \(r^{D'}_y\) composed with the restriction from \(D\) to \(D'\). (b) If \(a<c<b\), then \(T^D_{\gamma|[a,b]}=T^D_{\gamma|[c,b]}\circ T^D_{\gamma|[a,c]}\), since \(r^D_{\gamma(c)}\) and its inverse cancel.
@@ -71,7 +75,11 @@ Two rules follow from the definition. (a) If \(D'\subset D\) are convex chart se
 **Lemma 2.4 (transport).** Let \(\gamma:[0,1]\to M\) be a path. There are \(0=s_0<s_1<\cdots<s_k=1\) and convex chart sets \(D_1,\ldots,D_k\) with \(\gamma([s_{j-1},s_j])\subset\operatorname{int}D_j\), and the isomorphism
 
 \[
-T_\gamma=T^{D_k}_{\gamma|[s_{k-1},s_k]}\circ\cdots\circ T^{D_1}_{\gamma|[s_0,s_1]}:H_n(M,M\setminus\gamma(0))\longrightarrow H_n(M,M\setminus\gamma(1))
+\begin{aligned}
+&T_\gamma=T^{D_k}_{\gamma|[s_{k-1},s_k]}\circ\cdots\circ T^{D_1}_{\gamma|[s_0,s_1]}:\\
+&\quad H_n(M,M\setminus\gamma(0))\\
+&\qquad\longrightarrow H_n(M,M\setminus\gamma(1))
+\end{aligned}
 \]
 
 does not depend on these choices. It satisfies \(T_{\gamma\cdot\delta}=T_\delta\circ T_\gamma\) for paths with \(\gamma(1)=\delta(0)\), and \(T_{\bar\gamma}=T_\gamma^{-1}\) for the reversed path \(\bar\gamma(s)=\gamma(1-s)\). Every locally consistent family satisfies \(T_\gamma(\mu_{\gamma(0)})=\mu_{\gamma(1)}\).
@@ -100,13 +108,26 @@ For \(R=\mathbf Z\), \(T_\gamma\) is an automorphism of \(\mathbf Z\), so it is 
 
 **Proposition 3.2 (local degree).** Let \(W\subset\mathbf R^m\) be open, \(f:W\to\mathbf R^m\) continuous, and \(p\in W\) a point at which \(f\) is differentiable with invertible derivative \(A=Df(p)\); put \(q=f(p)\). Then \(f(x)\neq q\) for all \(x\neq p\) in a small open ball \(B\) about \(p\), and the induced map \(f_*:H_m(B,B\setminus p)\to H_m(\mathbf R^m,\mathbf R^m\setminus q)\) sends \(\mu^{\rm std}_p\) to \(\mu^{\rm std}_q\) if \(\det A>0\).
 
-**Proof.** Put \(c=\min_{|u|=1}|Au|>0\) and \(\eta(s)=\sup_{0<|h|\leq s}|f(p+h)-q-Ah|/|h|\), which tends to \(0\) as \(s\to0\) by differentiability. Choose \(\varepsilon>0\) such that \(\eta(\varepsilon)<c\) and the closed ball of radius \(\varepsilon\) about \(p\) lies in \(W\), and let \(B\) be the open ball of radius \(\varepsilon\) about \(p\). For \(x\in B\) and \(0<t\leq1\) define
+**Proof.** Put \(c=\min_{|u|=1}|Au|>0\) and
 \[
-F_t(x)=q+\frac{f\bigl(p+t(x-p)\bigr)-q}{t},\qquad F_0(x)=q+A(x-p).
+\eta(s)=\sup_{0<|h|\leq s}\frac{|f(p+h)-q-Ah|}{|h|},
 \]
-Then \(|F_t(x)-F_0(x)|\leq\eta\bigl(t|x-p|\bigr)|x-p|\leq\eta(t\varepsilon)\,\varepsilon\), which tends to \(0\) uniformly in \(x\) as \(t\to0\); so \(F\) is continuous on \(B\times[0,1]\). For \(x\neq p\), \(|F_t(x)-q|\geq\bigl(c-\eta(\varepsilon)\bigr)|x-p|>0\), including \(t=0\) and \(t=1\). So \(F\) is a homotopy of maps of pairs \((B,B\setminus p)\to(\mathbf R^m,\mathbf R^m\setminus q)\) from the affine map \(L(x)=q+A(x-p)\) to \(f\); in particular \(f(x)\neq q\) for \(x\neq p\) in \(B\). Hence \(f_*=L_*\). Now \(L=T_q\circ A\circ T_{-p}\), and by Lemma 3.1 each factor preserves the standard orientation when \(\det A>0\). Under the excision isomorphism \(H_m(B,B\setminus p)\cong H_m(\mathbf R^m,\mathbf R^m\setminus p)\) the class \(\mu^{\rm std}_p\) corresponds to itself, which proves the claim. \(\square\)
+which tends to \(0\) as \(s\to0\) by differentiability. Choose \(\varepsilon>0\) such that \(\eta(\varepsilon)<c\) and the closed ball of radius \(\varepsilon\) about \(p\) lies in \(W\), and let \(B\) be the open ball of radius \(\varepsilon\) about \(p\). For \(x\in B\) and \(0<t\leq1\) define
+\[
+\begin{gathered}
+F_t(x)=q+\frac{f\bigl(p+t(x-p)\bigr)-q}{t},\\
+F_0(x)=q+A(x-p).
+\end{gathered}
+\]
+Then \(|F_t(x)-F_0(x)|\) is at most \(\eta\bigl(t|x-p|\bigr)|x-p|\leq\eta(t\varepsilon)\,\varepsilon\), which tends to \(0\) uniformly in \(x\) as \(t\to0\); so \(F\) is continuous on \(B\times[0,1]\). For \(x\neq p\), \(|F_t(x)-q|\geq\bigl(c-\eta(\varepsilon)\bigr)|x-p|>0\), including \(t=0\) and \(t=1\). So \(F\) is a homotopy of maps of pairs \((B,B\setminus p)\to(\mathbf R^m,\mathbf R^m\setminus q)\) from the affine map \(L(x)=q+A(x-p)\) to \(f\); in particular \(f(x)\neq q\) for \(x\neq p\) in \(B\). Hence \(f_*=L_*\). Now \(L=T_q\circ A\circ T_{-p}\), and by Lemma 3.1 each factor preserves the standard orientation when \(\det A>0\). Under the excision isomorphism \(H_m(B,B\setminus p)\cong H_m(\mathbf R^m,\mathbf R^m\setminus p)\) the class \(\mu^{\rm std}_p\) corresponds to itself, which proves the claim. \(\square\)
 
-**Corollary 3.3.** Let \(M\) be an \(n\)-manifold with an atlas of charts \(\varphi_\alpha:U_\alpha\to\mathbf R^n\) whose coordinate changes \(\varphi_\beta\circ\varphi_\alpha^{-1}\) are differentiable with positive Jacobian determinant at every point. Then \(M\) has a unique orientation \(\mu\) such that each chart maps \(\mu_x\) to \(\mu^{\rm std}_{\varphi_\alpha(x)}\) under \(H_n(M,M\setminus x)\cong H_n(U_\alpha,U_\alpha\setminus x)\cong H_n(\varphi_\alpha(U_\alpha),\varphi_\alpha(U_\alpha)\setminus\varphi_\alpha(x))\).
+**Corollary 3.3.** Let \(M\) be an \(n\)-manifold with an atlas of charts \(\varphi_\alpha:U_\alpha\to\mathbf R^n\) whose coordinate changes \(\varphi_\beta\circ\varphi_\alpha^{-1}\) are differentiable with positive Jacobian determinant at every point. Then \(M\) has a unique orientation \(\mu\) such that each chart maps \(\mu_x\) to \(\mu^{\rm std}_{\varphi_\alpha(x)}\) under the isomorphisms
+\[
+\begin{aligned}
+&H_n(M,M\setminus x)\cong H_n(U_\alpha,U_\alpha\setminus x)\\
+&\quad\cong H_n(\varphi_\alpha(U_\alpha),\varphi_\alpha(U_\alpha)\setminus\varphi_\alpha(x)).
+\end{aligned}
+\]
 
 **Proof.** Define \(\mu_x\) by one chart containing \(x\). For a second chart, Proposition 3.2 applied to the coordinate change at \(\varphi_\alpha(x)\) shows that both charts give the same class, since the local homology map of a homeomorphism agrees with that of its restriction to a small ball. The family is locally consistent because \(\mu^{\rm std}\) is and charts are homeomorphisms. Uniqueness is clear. \(\square\)
 
@@ -120,21 +141,39 @@ Then \(|F_t(x)-F_0(x)|\leq\eta\bigl(t|x-p|\bigr)|x-p|\leq\eta(t\varepsilon)\,\va
 
 The same argument shows that a holomorphic map with invertible complex derivative at a point, for example the analytic map of an étale morphism of complex varieties, sends the complex orientation at that point to the complex orientation at its image: in charts this is Proposition 3.2 with Lemma 3.4.
 
-**Affine simplices.** For an affine \(N\)-simplex in \(\mathbf R^N\) with vertices \(v_0,\ldots,v_N\), we use the singular simplex \(\sigma:\Delta^N\to\mathbf R^N\) that is affine and sends the \(i\)-th vertex of \(\Delta^N\) to \(v_i\). Since \(v_j-v_0=(v_1-v_0)+(v_2-v_1)+\cdots+(v_j-v_{j-1})\), the determinant of the vectors \(v_1-v_0,\ldots,v_N-v_0\) equals the determinant of the consecutive differences \(v_1-v_0,v_2-v_1,\ldots,v_N-v_{N-1}\). For \(\tau_N\) the consecutive differences are \(e_1,e_2-e_1,\ldots,e_N-e_{N-1}\), with determinant \(1\).
+**Affine simplices.** For an affine \(N\)-simplex in \(\mathbf R^N\) with vertices \(v_0,\ldots,v_N\), we use the singular simplex \(\sigma:\Delta^N\to\mathbf R^N\) that is affine and sends the \(i\)-th vertex of \(\Delta^N\) to \(v_i\). Since
+\[
+\begin{aligned}
+v_j-v_0&=(v_1-v_0)+(v_2-v_1)\\
+&\quad+\cdots+(v_j-v_{j-1}),
+\end{aligned}
+\]
+the determinant of the vectors \(v_1-v_0,\ldots,v_N-v_0\) equals the determinant of the consecutive differences \(v_1-v_0,v_2-v_1,\ldots,v_N-v_{N-1}\). For \(\tau_N\) the consecutive differences are \(e_1,e_2-e_1,\ldots,e_N-e_{N-1}\), with determinant \(1\).
 
 **Lemma 3.6.** Let \(\sigma\) be the affine simplex with vertices \(v_0,\ldots,v_N\), with image \(S\), and let \(p\) be an interior point of \(S\). Then \([\sigma]=\varepsilon\,\mu^{\rm std}_p\) in \(H_N(\mathbf R^N,\mathbf R^N\setminus p;\mathbf Z)\), where \(\varepsilon\) is the sign of \(\det(v_1-v_0,\ldots,v_N-v_0)\).
 
 **Proof.** First let \(\varepsilon=1\). The affine map \(L\) with \(L(w_i)=v_i\) satisfies \(L\circ\tau_N=\sigma\), since affine maps that agree on vertices agree. Its linear part \(A\) sends \(e_i=w_i-w_0\) to \(v_i-v_0\), so \(\det A>0\), and \(L=T_b\circ A\), where \(b=L(0)\) is the barycentre of \(S\). By Lemma 3.1, \([\sigma]=L_*o_N=L_*\mu^{\rm std}_0=\mu^{\rm std}_b\) in \(H_N(\mathbf R^N,\mathbf R^N\setminus b)\). Let \(C\subset\operatorname{int}S\) be a compact convex neighbourhood of the segment from \(b\) to \(p\), for example its closed \(r\)-neighbourhood for small \(r\). The boundary of \(\sigma\) lies in \(\partial S\), outside \(C\), so \(\sigma\) defines a class in \(H_N(\mathbf R^N,\mathbf R^N\setminus C)\) with image \(\mu^{\rm std}_b\) at \(b\). By Lemma 2.2 and Lemma 1.2(1) it is the class of \(\mu^{\rm std}\) on \(C\), so its image at \(p\) is \(\mu^{\rm std}_p\).
 
-If \(\varepsilon=-1\), let \(\sigma'\) be the affine simplex with \(v_0\) and \(v_1\) exchanged. Writing \(u_i=v_i-v_0\), its determinant is \(\det(-u_1,u_2-u_1,\ldots,u_N-u_1)=\det(-u_1,u_2,\ldots,u_N)=-\det(u_1,\ldots,u_N)>0\), so \([\sigma']=\mu^{\rm std}_p\) by the first case. Let \(L'\) be the affine map that exchanges \(v_0\) and \(v_1\) and fixes the other vertices; then \(L'\circ\sigma=\sigma'\), and \(L'\) fixes \(b\) and has determinant \(-1\). Let \(r\) be the orthogonal reflection in a hyperplane through \(b\). Then \(L'\circ r^{-1}\) has positive determinant and fixes \(b\), so by Lemma 3.1 (after translating \(b\) to \(0\)) \(L'_*=r_*\) on \(H_N(\mathbf R^N,\mathbf R^N\setminus b)\). The long exact sequence identifies this group with \(\tilde H_{N-1}\) of a sphere about \(b\), compatibly with \(r\), which restricts to a reflection of the sphere, of degree \(-1\) [Fomberg, Proposition 1.35(4)]. So \([\sigma']=-[\sigma]\) at \(b\), and at \(p\) by the argument with \(C\) above. Hence \([\sigma]=-\mu^{\rm std}_p\). \(\square\)
+If \(\varepsilon=-1\), let \(\sigma'\) be the affine simplex with \(v_0\) and \(v_1\) exchanged. Writing \(u_i=v_i-v_0\), its determinant is
+\[
+\begin{aligned}
+&\det(-u_1,u_2-u_1,\ldots,u_N-u_1)\\
+&\quad=\det(-u_1,u_2,\ldots,u_N)\\
+&\quad=-\det(u_1,\ldots,u_N)>0,
+\end{aligned}
+\]
+so \([\sigma']=\mu^{\rm std}_p\) by the first case. Let \(L'\) be the affine map that exchanges \(v_0\) and \(v_1\) and fixes the other vertices; then \(L'\circ\sigma=\sigma'\), and \(L'\) fixes \(b\) and has determinant \(-1\). Let \(r\) be the orthogonal reflection in a hyperplane through \(b\). Then \(L'\circ r^{-1}\) has positive determinant and fixes \(b\), so by Lemma 3.1 (after translating \(b\) to \(0\)) \(L'_*=r_*\) on \(H_N(\mathbf R^N,\mathbf R^N\setminus b)\). The long exact sequence identifies this group with \(\tilde H_{N-1}\) of a sphere about \(b\), compatibly with \(r\), which restricts to a reflection of the sphere, of degree \(-1\) [Fomberg, Proposition 1.35(4)]. So \([\sigma']=-[\sigma]\) at \(b\), and at \(p\) by the argument with \(C\) above. Hence \([\sigma]=-\mu^{\rm std}_p\). \(\square\)
 
 **Products.** For spaces \(X,Y\), open \(A\subset X\), \(B\subset Y\) and relative cycles \(c\) of \((X,A)\) and \(d\) of \((Y,B)\) with coefficients in \(R\), the chain \(S(c\otimes d)\) is a relative cycle of \((X\times Y,A\times Y\cup X\times B)\); its class is the **cross product** \([c]\times[d]\). By the properties of \(S\) recalled at the start, this is a well-defined bilinear map
 
 \[
-H_i(X,A)\otimes_RH_j(Y,B)\longrightarrow H_{i+j}(X\times Y,A\times Y\cup X\times B),
+\begin{aligned}
+&H_i(X,A)\otimes_RH_j(Y,B)\\
+&\quad \longrightarrow H_{i+j}(X\times Y,A\times Y\cup X\times B),
+\end{aligned}
 \]
 
-natural for maps of pairs. For manifolds and compact \(K\subset M\), \(L\subset N\) we have \((M\setminus K)\times N\cup M\times(N\setminus L)=(M\times N)\setminus(K\times L)\), so it maps \(H_i(M,M\setminus K)\otimes H_j(N,N\setminus L)\) to \(H_{i+j}(M\times N,(M\times N)\setminus(K\times L))\).
+natural for maps of pairs. For manifolds and compact \(K\subset M\), \(L\subset N\), the union of \((M\setminus K)\times N\) and \(M\times(N\setminus L)\) is \((M\times N)\setminus(K\times L)\), so it maps \(H_i(M,M\setminus K)\otimes H_j(N,N\setminus L)\) to \(H_{i+j}(M\times N,(M\times N)\setminus(K\times L))\).
 
 The shuffle map of [Thom classes and Euler classes, Section 4] sends \(c\otimes d\), for affine \(c:\Delta^p\to X\) and \(d:\Delta^q\to Y\) in Euclidean spaces, to a signed sum over the lattice paths from \((0,0)\) to \((p,q)\): the path through the vertices \((i_0,j_0),\ldots,(i_{p+q},j_{p+q})\) of \(\Delta^p\times\Delta^q\) contributes the affine simplex with vertices \((c(e_{i_l}),d(e_{j_l}))\), with the sign \(\varepsilon\) of the permutation that puts its \(p\) horizontal steps before its \(q\) vertical steps. These simplices cover \(c(\Delta^p)\times d(\Delta^q)\), and their interiors are disjoint. Indeed, in the coordinates \(1\geq s_1\geq\cdots\geq s_p\geq0\) on \(\Delta^p\) and \(1\geq t_1\geq\cdots\geq t_q\geq0\) on \(\Delta^q\) (\(s_i\) is the sum of the barycentric coordinates of the vertices \(i,\ldots,p\)), a lattice path corresponds to an interleaving of the two chains of inequalities, its simplex is the set of points satisfying the interleaved chain, every point satisfies at least one interleaved chain, and a point at which all \(p+q\) coordinates are distinct, and lie strictly between \(0\) and \(1\), satisfies exactly one, strictly.
 
@@ -146,7 +185,14 @@ The point \(0\), the product of the barycentres, lies in the interior of \(P\). 
 
 **Proposition 3.8 (product orientations).** Let \(\mu\) and \(\nu\) be \(R\)-orientations of manifolds \(M\) and \(N\) of dimensions \(m\) and \(k\). Then \(M\times N\) is an \((m+k)\)-manifold, and \((x,y)\mapsto\mu_x\times\nu_y\) is an \(R\)-orientation of it, the **product orientation**. If \(\mu\) and \(\nu\) come from atlases as in Corollary 3.3, the product orientation is the orientation of the product atlas. In particular the complex orientation of a product of complex manifolds is the product of their complex orientations.
 
-**Proof.** \(M\times N\) is Hausdorff and second countable, and products of charts are charts. *Generators.* Choose charts \(\varphi,\psi\) about \(x,y\), composed with translations so that \(\varphi(x)=0\) and \(\psi(y)=0\). By excision and naturality of the cross product, \(\times:H_m(M,M\setminus x)\otimes H_k(N,N\setminus y)\to H_{m+k}(M\times N,(M\times N)\setminus(x,y))\) is identified with the cross product for \((\mathbf R^m,\mathbf R^m\setminus0)\) and \((\mathbf R^k,\mathbf R^k\setminus0)\). By Lemma 1.2(2) the generators are \(\mu_x=u\,o_m\) and \(\nu_y=u'\,o_k\) with units \(u,u'\in R\), so \(\mu_x\times\nu_y=uu'\,o_{m+k}\) by Lemma 3.7, a generator. *Local consistency.* If \(D\) and \(E\) are compact neighbourhoods of \(x\) and \(y\) with classes \(\mu_D,\nu_E\) as in Definition 2.1, then \(D\times E\) is a compact neighbourhood of \((x,y)\), and by naturality \(\mu_D\times\nu_E\) has image \(\mu_{x'}\times\nu_{y'}\) at every \((x',y')\in D\times E\). *Atlases.* For charts \(\varphi\), \(\psi\) of the two atlases, translation (Lemma 3.1, applied factorwise) and Lemma 3.7 show that \(\varphi\times\psi\) maps \(\mu_x\times\nu_y\) to \(\mu^{\rm std}\) at \((\varphi(x),\psi(y))\); the coordinate changes of the product atlas have Jacobian determinant the product of two positive determinants, and Corollary 3.3 applies. *Complex manifolds.* Products of holomorphic charts are holomorphic, and the identification \(\mathbf C^a\times\mathbf C^b=\mathbf C^{a+b}\) of Lemma 3.4 is the identification \(\mathbf R^{2a}\times\mathbf R^{2b}=\mathbf R^{2a+2b}\) in the listed order. \(\square\)
+**Proof.** \(M\times N\) is Hausdorff and second countable, and products of charts are charts. *Generators.* Choose charts \(\varphi,\psi\) about \(x,y\), composed with translations so that \(\varphi(x)=0\) and \(\psi(y)=0\). By excision and naturality of the cross product,
+\[
+\begin{aligned}
+&\times:H_m(M,M\setminus x)\otimes H_k(N,N\setminus y)\\
+&\quad\to H_{m+k}(M\times N,(M\times N)\setminus(x,y))
+\end{aligned}
+\]
+is identified with the cross product for \((\mathbf R^m,\mathbf R^m\setminus0)\) and \((\mathbf R^k,\mathbf R^k\setminus0)\). By Lemma 1.2(2) the generators are \(\mu_x=u\,o_m\) and \(\nu_y=u'\,o_k\) with units \(u,u'\in R\), so \(\mu_x\times\nu_y=uu'\,o_{m+k}\) by Lemma 3.7, a generator. *Local consistency.* If \(D\) and \(E\) are compact neighbourhoods of \(x\) and \(y\) with classes \(\mu_D,\nu_E\) as in Definition 2.1, then \(D\times E\) is a compact neighbourhood of \((x,y)\), and by naturality \(\mu_D\times\nu_E\) has image \(\mu_{x'}\times\nu_{y'}\) at every \((x',y')\in D\times E\). *Atlases.* For charts \(\varphi\), \(\psi\) of the two atlases, translation (Lemma 3.1, applied factorwise) and Lemma 3.7 show that \(\varphi\times\psi\) maps \(\mu_x\times\nu_y\) to \(\mu^{\rm std}\) at \((\varphi(x),\psi(y))\); the coordinate changes of the product atlas have Jacobian determinant the product of two positive determinants, and Corollary 3.3 applies. *Complex manifolds.* Products of holomorphic charts are holomorphic, and the identification \(\mathbf C^a\times\mathbf C^b=\mathbf C^{a+b}\) of Lemma 3.4 is the identification \(\mathbf R^{2a}\times\mathbf R^{2b}=\mathbf R^{2a+2b}\) in the listed order. \(\square\)
 
 ## 4. Classes on compact subsets
 
@@ -158,14 +204,22 @@ The point \(0\), the product of the barycentres, lies in the interior of \(P\). 
 **Proof.** *The Mayer–Vietoris sequence for complements.* Let \(A,B\subset M\) be compact. Put \(U=M\setminus A\), \(V=M\setminus B\), so that \(U\cup V=M\setminus(A\cap B)\) and \(U\cap V=M\setminus(A\cup B)\). The sequence of chain complexes
 
 \[
-0\to C(M)/C(U\cap V)\to C(M)/C(U)\oplus C(M)/C(V)\to C(M)/\bigl(C(U)+C(V)\bigr)\to0,
+\begin{aligned}
+0&\to C(M)/C(U\cap V)\\
+&\to C(M)/C(U)\oplus C(M)/C(V)\\
+&\to C(M)/\bigl(C(U)+C(V)\bigr)\to0,
+\end{aligned}
 \]
 
-with maps \(c\mapsto(c,c)\) and \((a,b)\mapsto a-b\), is exact. The inclusion \(C(U)+C(V)\to C(U\cup V)\) of the chains subordinate to the cover \(\{U,V\}\) of \(U\cup V\) is a chain homotopy equivalence [Fomberg, Proposition 1.25], so by the five lemma \(C(M)/(C(U)+C(V))\to C(M)/C(U\cup V)\) induces isomorphisms in homology. The long exact homology sequence is
+with maps \(c\mapsto(c,c)\) and \((a,b)\mapsto a-b\), is exact. The inclusion \(C(U)+C(V)\to C(U\cup V)\) of the chains subordinate to the cover \(\{U,V\}\) of \(U\cup V\) is a chain homotopy equivalence [Fomberg, Proposition 1.25], so by the five lemma the natural map from \(C(M)/(C(U)+C(V))\) to \(C(M)/C(U\cup V)\) induces isomorphisms in homology. The long exact homology sequence (4.1) is
 
 \[
-\cdots\to H_{i+1}(M,M\setminus(A\cap B))\to H_i(M,M\setminus(A\cup B))\to H_i(M,M\setminus A)\oplus H_i(M,M\setminus B)\to H_i(M,M\setminus(A\cap B))\to\cdots,
-\tag{4.1}
+\begin{aligned}
+&\cdots\to H_{i+1}(M,M\setminus(A\cap B))\\
+&\quad\to H_i(M,M\setminus(A\cup B))\\
+&\quad\to H_i(M,M\setminus A)\oplus H_i(M,M\setminus B)\\
+&\quad\to H_i(M,M\setminus(A\cap B))\to\cdots,
+\end{aligned}
 \]
 
 natural in \(A\) and \(B\).
@@ -193,14 +247,24 @@ Every class \(\alpha\in H_n(M)\) defines a locally consistent family \(x\mapsto\
 **Proof.** Let \(\alpha\in H_i(M)\) be represented by a cycle \(z\), carried by a compact set \(E\), and choose an open \(U\supset E\) with compact closure; put \(V=M\setminus\overline U\), which is open, and nonempty because \(M\) is not compact. Since \(U\) and \(V\) are disjoint, \(H_i(U\cup V,V)=H_i(U)\). Consider the exact sequence of the triple \((M,U\cup V,V)\):
 
 \[
-H_{i+1}(M,U\cup V)\longrightarrow H_i(U\cup V,V)\longrightarrow H_i(M,V).
+\begin{aligned}
+H_{i+1}(M,U\cup V)&\longrightarrow H_i(U\cup V,V)\\
+&\longrightarrow H_i(M,V).
+\end{aligned}
 \]
 
 Here \(U\cup V=M\setminus\partial U\) with \(\partial U=\overline U\setminus U\) compact, so the first group vanishes for \(i\geq n\) by Theorem 4.1(1), and \(H_i(M,V)=H_i(M,M\setminus\overline U)\). Hence \(H_i(U)\to H_i(M,M\setminus\overline U)\) is injective for \(i\geq n\). For \(i>n\) the target vanishes, so the class of \(z\) in \(H_i(U)\) is zero, and so is \(\alpha\). For \(i=n\), the image of the class of \(z\) is determined, by Theorem 4.1(1), by its values \(\alpha_x\) at the points of \(\overline U\). The family \(x\mapsto\alpha_x\) on \(M\) vanishes at every point outside \(E\), since there \(z\) is a chain in \(M\setminus x\); such points exist, so the family vanishes everywhere. Hence the class of \(z\) in \(H_n(U)\) is zero, and \(\alpha=0\). \(\square\)
 
 For a class \(a\in H^i(X,A;R)\) and \(\alpha\in H_i(X,A;R)\), write \(\langle a,\alpha\rangle\in R\) for the Kronecker pairing, the value of a representing cocycle on a representing relative cycle.
 
-**Corollary 5.3 (products).** Let \(\mu,\nu\) be \(R\)-orientations of manifolds \(M,N\) of dimensions \(m,k\), give \(M\times N\) the product orientation, and let \(K\subset M\), \(L\subset N\) be compact. Then \((\mu\times\nu)_{K\times L}=\mu_K\times\nu_L\). For \(a\in H^m(M,M\setminus K;R)\) and \(b\in H^k(N,N\setminus L;R)\), the external product \(a\times b\in H^{m+k}(M\times N,(M\times N)\setminus(K\times L);R)\) satisfies
+**Corollary 5.3 (products).** Let \(\mu,\nu\) be \(R\)-orientations of manifolds \(M,N\) of dimensions \(m,k\), give \(M\times N\) the product orientation, and let \(K\subset M\), \(L\subset N\) be compact. Then \((\mu\times\nu)_{K\times L}=\mu_K\times\nu_L\). For \(a\in H^m(M,M\setminus K;R)\) and \(b\in H^k(N,N\setminus L;R)\), the external product
+\[
+\begin{aligned}
+&a\times b\in H^{m+k}\bigl(M\times N,\\
+&\qquad(M\times N)\setminus(K\times L);R\bigr)
+\end{aligned}
+\]
+satisfies
 
 \[
 \langle a\times b,\mu_K\times\nu_L\rangle=\langle a,\mu_K\rangle\,\langle b,\nu_L\rangle .
@@ -211,10 +275,14 @@ In particular, for closed \(M\) and \(N\), \([M\times N]=[M]\times[N]\) and \(\l
 **Proof.** Both classes restrict to \(\mu_x\times\nu_y\) at every \((x,y)\in K\times L\), by naturality of the cross product, so they are equal by Theorem 4.1(2). For the pairing, let \(a,b\) be represented by relative cocycles and \(\mu_K,\nu_L\) by relative cycles \(c,d\). The cochain of \(a\times b\) is \((a\otimes b)\circ A\), where \((a\otimes b)(c'\otimes d')=a(c')b(d')\) when the degrees match and zero otherwise. Lemma 4.1 of [Thom classes and Euler classes](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/DG-CHAR/thom-classes-and-euler-classes.md#2-making-singular-chains-small) gives a homotopy \(h\) with \(\partial h+h\partial=1-AS\) on the tensor complex, preserving products of subspaces. Hence
 
 \[
-(a\times b)\bigl(S(c\otimes d)\bigr)=(a\otimes b)(c\otimes d)-(a\otimes b)\bigl(\partial h(c\otimes d)\bigr)-(a\otimes b)\bigl(h\partial(c\otimes d)\bigr).
+\begin{aligned}
+&(a\times b)\bigl(S(c\otimes d)\bigr)=(a\otimes b)(c\otimes d)\\
+&\quad -(a\otimes b)\bigl(\partial h(c\otimes d)\bigr)\\
+&\quad -(a\otimes b)\bigl(h\partial(c\otimes d)\bigr).
+\end{aligned}
 \]
 
-The second term vanishes because \((a\otimes b)\circ\partial=\delta a\otimes b\pm a\otimes\delta b=0\) for cocycles. In the third, \(\partial(c\otimes d)\) lies in \(C_\bullet(M\setminus K)\otimes C_\bullet(N)+C_\bullet(M)\otimes C_\bullet(N\setminus L)\), which \(h\) preserves and on which \(a\otimes b\) vanishes. So the left side is \(a(c)b(d)\). \(\square\)
+The second term vanishes because \((a\otimes b)\circ\partial=\delta a\otimes b\pm a\otimes\delta b=0\) for cocycles. In the third, \(\partial(c\otimes d)\) lies in the sum of \(C_\bullet(M\setminus K)\otimes C_\bullet(N)\) and \(C_\bullet(M)\otimes C_\bullet(N\setminus L)\), which \(h\) preserves and on which \(a\otimes b\) vanishes. So the left side is \(a(c)b(d)\). \(\square\)
 
 ## 6. Exercises
 

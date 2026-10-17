@@ -4,7 +4,15 @@
 
 On an oriented \(n\)-dimensional manifold, cohomology with compact supports in degree \(k\) is isomorphic to homology in degree \(n-k\), by capping with the orientation classes. For a closed manifold this says that cohomology and homology are mirror images of each other around the middle dimension. The proof is local-to-global: the statement is checked on \(\mathbf R^n\), and the Mayer–Vietoris sequences and direct limits of the previous lesson propagate it to every manifold. This lesson proves the theorem for every commutative coefficient ring, in particular for the finite rings \(\mathbf Z/m\), and derives four consequences: the nondegeneracy of the cup product pairing over a field, the duality between ordinary and compactly supported cohomology over \(\mathbf Z/m\), the vanishing of the cohomology of an \(n\)-manifold above degree \(n\), and the integration map on compactly supported cohomology in the top degree, with its point classes and its behaviour under open embeddings, orientation-preserving homeomorphisms and products.
 
-We use [Orientations and fundamental classes](orientations-and-fundamental-classes.md) and [Cap products and cohomology with compact supports](cap-products-and-cohomology-with-compact-supports.md). From [Thom classes and Euler classes](course:DG-CHAR/DG-CHAR-06) we use the universal coefficient sequence, Theorem 5.2: for a chain complex \(K\) of free abelian groups and an abelian group \(G\) there is a natural exact sequence \(0\to\operatorname{Ext}(H_{m-1}(K),G)\to H^m(\operatorname{Hom}(K,G))\to\operatorname{Hom}(H_m(K),G)\to0\), whose second map evaluates cocycles on cycles.
+We use [Orientations and fundamental classes](orientations-and-fundamental-classes.md) and [Cap products and cohomology with compact supports](cap-products-and-cohomology-with-compact-supports.md). From [Thom classes and Euler classes](course:DG-CHAR/DG-CHAR-06) we use the universal coefficient sequence, Theorem 5.2: for a chain complex \(K\) of free abelian groups and an abelian group \(G\) there is a natural exact sequence
+\[
+\begin{aligned}
+&0\to\operatorname{Ext}(H_{m-1}(K),G)\\
+&\quad\to H^m(\operatorname{Hom}(K,G))\\
+&\quad\to\operatorname{Hom}(H_m(K),G)\to0,
+\end{aligned}
+\]
+whose second map evaluates cocycles on cycles.
 
 Basic references are [Hatcher] and [Miller].
 
@@ -53,12 +61,12 @@ Every complex manifold is canonically oriented ([Orientations and fundamental cl
 **Corollary 2.3 (self-injective coefficients).** Let \(\Lambda\) be a commutative ring that is injective as a module over itself, and \(M\) a \(\Lambda\)-oriented \(n\)-manifold. Then for every \(k\):
 
 1. evaluation \(H^k(M;\Lambda)\to\operatorname{Hom}_\Lambda(H_k(M;\Lambda),\Lambda)\) is an isomorphism;
-2. the map \(H^k(M;\Lambda)\to\operatorname{Hom}_\Lambda\bigl(H^{n-k}_c(M;\Lambda),\Lambda\bigr)\), \(\varphi\mapsto\bigl(\psi\mapsto\varphi(D_M\psi)\bigr)\), is an isomorphism; on a class \(\psi\) represented on \((M,M\setminus K)\), the value is \((\psi\smile\varphi)(\mu_K)\);
+2. the map from \(H^k(M;\Lambda)\) to \(\operatorname{Hom}_\Lambda\bigl(H^{n-k}_c(M;\Lambda),\Lambda\bigr)\) given by \(\varphi\mapsto\bigl(\psi\mapsto\varphi(D_M\psi)\bigr)\) is an isomorphism; on a class \(\psi\) represented on \((M,M\setminus K)\), the value is \((\psi\smile\varphi)(\mu_K)\);
 3. if \(\Lambda=\mathbf Z/m\) and \(H^{n-k}_c(M;\Lambda)\) is finite, then \(H^k(M;\Lambda)\) is finite of the same order.
 
 The ring \(\mathbf Z/m\) is injective over itself: [Poincaré duality for curves, Lemma 3.1](course:ag-etale-cohomology/poincare-duality-for-curves) proves this with Baer's criterion, which is Lemma 2.1 of [Injective modules and bounded-below derived functors](course:derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors).
 
-**Proof.** (1) The chain complex \(C_\bullet(M;\Lambda)=C_\bullet(M)\otimes\Lambda\) consists of free \(\Lambda\)-modules, and \(C^\bullet(M;\Lambda)=\operatorname{Hom}_{\mathbf Z}(C_\bullet(M),\Lambda)=\operatorname{Hom}_\Lambda(C_\bullet(M;\Lambda),\Lambda)\). Since \(\Lambda\) is injective, \(\operatorname{Hom}_\Lambda(-,\Lambda)\) is exact and commutes with taking homology. (2) Compose (1) with the isomorphism \(D_M\) of Theorem 1.1; the formula for the value is Proposition 1.1(2) of the previous lesson. (3) A finite \(\mathbf Z/m\)-module is a finite direct sum of cyclic groups \(\mathbf Z/d\) with \(d\mid m\), and \(\operatorname{Hom}(\mathbf Z/d,\mathbf Z/m)\cong\mathbf Z/d\); so the dual of a finite module has the same order. Apply (2). \(\square\)
+**Proof.** (1) The chain complex \(C_\bullet(M;\Lambda)=C_\bullet(M)\otimes\Lambda\) consists of free \(\Lambda\)-modules, and \(C^\bullet(M;\Lambda)=\operatorname{Hom}_{\mathbf Z}(C_\bullet(M),\Lambda)\), which is \(\operatorname{Hom}_\Lambda(C_\bullet(M;\Lambda),\Lambda)\). Since \(\Lambda\) is injective, \(\operatorname{Hom}_\Lambda(-,\Lambda)\) is exact and commutes with taking homology. (2) Compose (1) with the isomorphism \(D_M\) of Theorem 1.1; the formula for the value is Proposition 1.1(2) of the previous lesson. (3) A finite \(\mathbf Z/m\)-module is a finite direct sum of cyclic groups \(\mathbf Z/d\) with \(d\mid m\), and \(\operatorname{Hom}(\mathbf Z/d,\mathbf Z/m)\cong\mathbf Z/d\); so the dual of a finite module has the same order. Apply (2). \(\square\)
 
 **Corollary 2.4 (dimension).** Let \(M\) be an \(n\)-manifold. Then \(H_i(M;\mathbf Z)=0\) for \(i>n\) and \(H_n(M;\mathbf Z)\) is free abelian. Consequently \(H^i(M;A)=0\) for \(i>n\) and every abelian group \(A\).
 
@@ -90,7 +98,11 @@ For smooth manifolds, Poincaré duality with compact supports and every commutat
 
 *Solution.* \(M\) deformation retracts onto \(S^1\), so \(H_0=H_1=\mathbf Z\) and \(H_2=0\). Cover \(S^1\) by open arcs \(A\), \(B\) whose intersection is the disjoint union of two arcs \(A_1\), \(A_2\), and put \(U=A\times\mathbf R\), \(V=B\times\mathbf R\). Then \(U\), \(V\), \(A_1\times\mathbf R\) and \(A_2\times\mathbf R\) are homeomorphic to \(\mathbf R^2\), so by Example 2.2 of the previous lesson their compactly supported cohomology is \(\mathbf Z\) in degree \(2\) and zero otherwise; orient them by restricting an orientation of \(M\). Extension by zero from an open subset homeomorphic to \(\mathbf R^2\) into another such set is an isomorphism on \(H^2_c\): by Proposition 3.1 of the previous lesson and Lemma 1.2(3) it corresponds to the isomorphism \(H_0(\mathbf R^2)\to H_0(\mathbf R^2)\). So the compact-support Mayer–Vietoris sequence (2.1) reads
 \[
-0\to H^1_c(M)\to H^2_c(U\cap V)=\mathbf Z^2\xrightarrow{\ (a,b)\mapsto(a+b,\,-a-b)\ }H^2_c(U)\oplus H^2_c(V)=\mathbf Z^2\to H^2_c(M)\to0,
+\begin{aligned}
+0&\to H^1_c(M)\to H^2_c(U\cap V)=\mathbf Z^2\\
+&\xrightarrow{\ (a,b)\mapsto(a+b,\,-a-b)\ }H^2_c(U)\oplus H^2_c(V)\\
+&=\mathbf Z^2\to H^2_c(M)\to0,
+\end{aligned}
 \]
 and \(H^0_c(M)=0\). The middle map has kernel and cokernel \(\mathbf Z\), so \(H^1_c(M)\cong H^2_c(M)\cong\mathbf Z\). Duality pairs \(H^2_c\) with \(H_0\) and \(H^1_c\) with \(H_1\).
 

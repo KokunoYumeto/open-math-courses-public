@@ -19,20 +19,29 @@ We use the leading layer, Proposition 4.1 of [Denominators at the odd primes](de
 Underlined rows are the rows of scale \(N=1\): \(\underline P_r\) and \(\underline D_r\) are formed with
 
 \[
-n_0=48,\quad b_0=7,\quad q_0=g_0=4,\quad h_0=2,\quad L_0=59,\quad C_0=63,\quad H_0=65,
+\begin{aligned}
+&n_0=48,\quad b_0=7,\quad q_0=g_0\\
+&\quad =4,\quad h_0=2,\quad L_0=59,\quad C_0\\
+&\quad =63,\quad H_0=65,
+\end{aligned}
 \]
 
-for \(0\le r\le48\); the **auxiliary row** \(r=48\) is defined by the same formulas (3.1) of the rows lesson, although it is not a row of the scale-one determinant. For \(0\le r\le48\) and \(0\le k<48\) put
-
+for \(0\le r\le48\); the **auxiliary row** \(r=48\) is defined by the same formulas (3.1) of the rows lesson, although it is not a row of the scale-one determinant. For \(0\le r\le48\) and \(0\le k<48\) define \(\mathcal B(r,k)\) by (1.1):
 \[
-\mathcal B(r,k)=\sum_{j=0}^4(-1)^j\binom4j\Bigl\{M^0(\underline P_r,7+k+j)-\frac32Z^0(\underline D_r,7+k+j)\Bigr\},
-\tag{1.1}
+\begin{aligned}
+&\mathcal B(r,k)=\sum_{j=0}^4(-1)^j\binom4j\\
+&\qquad\cdot\Bigl\{M^0(\underline P_r,7+k+j)\\
+&\qquad\quad-\frac32Z^0(\underline D_r,7+k+j)\Bigr\},
+\end{aligned}
 \]
 
 a fixed rational \(49\times48\) matrix, and
 
 \[
-\mathcal B_0=\bigl(\mathcal B(r,k)\bigr)_{0\le r,k<48},\qquad\mathcal B_1=\bigl(\mathcal B(r+1,k)\bigr)_{0\le r,k<48}.
+\begin{gathered}
+\mathcal B_0=\bigl(\mathcal B(r,k)\bigr)_{0\le r,k<48},\\
+\mathcal B_1=\bigl(\mathcal B(r+1,k)\bigr)_{0\le r,k<48}.
+\end{gathered}
 \]
 
 **Proposition 1.2** (the fixed certificate). \(\det\mathcal B_0\ne0\), \(\det(\mathcal B_0+\mathcal B_1)\ne0\) and \(\det(\mathcal B_0-\mathcal B_1)\ne0\).
@@ -41,42 +50,51 @@ Section 5 gives the finite computation proving Proposition 1.2. Sections 2–4 s
 
 ## 2. Two palindromic bases
 
-Let \(p\) be an odd prime and work over \(\mathbf F_p\). The space
+Let \(p\) be an odd prime and work over \(\mathbf F_p\). The space \(\mathcal P_p\) of palindromic polynomials, the \(Q\in\mathbf F_p[w]\) with \(\deg Q\le2p-2\) and \(w^{2p-2}Q(1/w)=Q(w)\), has dimension \(p\): the coefficients of \(w^0,\dots,w^{p-1}\) determine the rest. For \(0\le\ell,i<p\) put
 
 \[
-\mathcal P_p=\{Q\in\mathbf F_p[w]:\ \deg Q\le2p-2,\ w^{2p-2}Q(1/w)=Q(w)\}
-\]
-
-of palindromic polynomials has dimension \(p\): the coefficients of \(w^0,\dots,w^{p-1}\) determine the rest. For \(0\le\ell,i<p\) put
-
-\[
-U_\ell(w)=(2w)^\ell(1+w^2)^{p-1-\ell},\qquad Q_i(w)=w^i\sum_{j=0}^{p-1-i}w^{2j}.
+\begin{gathered}
+U_\ell(w)=(2w)^\ell(1+w^2)^{p-1-\ell},\\
+Q_i(w)=w^i\sum_{j=0}^{p-1-i}w^{2j}.
+\end{gathered}
 \]
 
 Both lie in \(\mathcal P_p\), and their lowest terms are \(2^\ell w^\ell\) and \(w^i\). By triangularity each family is a basis, and the matrix \(\mathbf a=(a_{\ell i})\) defined by \(Q_i=\sum_\ell a_{\ell i}U_\ell\) satisfies
 
 \[
-a_{\ell i}=0\ (\ell<i),\qquad a_{ii}=2^{-i},\qquad\det\mathbf a=2^{-p(p-1)/2}\ne0.
-\tag{2.1}
+\begin{gathered}
+a_{\ell i}=0\ (\ell<i),\\
+a_{ii}=2^{-i},\\
+\det\mathbf a=2^{-p(p-1)/2}\ne0.
+\end{gathered}\tag{2.1}
 \]
 
 Let \(Q'_0=0\) and \(Q'_i=Q_{p-i}\) for \(1\le i<p\), and write \(Q'_i=\sum_\ell b_{\ell i}U_\ell\). Then
 
 \[
-\mathbf b=\mathbf a\Pi,\qquad \Pi e_0=0,\quad \Pi e_i=e_{p-i}\ (1\le i<p).
-\tag{2.2}
+\begin{aligned}
+&\mathbf b=\mathbf a\Pi,\\
+&\Pi e_0=0,\quad \Pi e_i\\
+&\quad =e_{p-i}\ (1\le i<p).
+\end{aligned}\tag{2.2}
 \]
 
 **Lemma 2.1.** With \(t=2w/(1+w^2)\), \(f=(1-w^2)/(1+w^2)\) and \(E(t)=(1-t^2)^{(p-1)/2}\), for \(0\le i<p\),
 
 \[
-E(t)\,w^i=\sum_{\ell=0}^{p-1}t^\ell\bigl(a_{\ell i}+b_{\ell i}\,w^p\bigr)\qquad\text{in }\mathbf F_p(w).
+\begin{gathered}
+E(t)\,w^i=\sum_{\ell=0}^{p-1}t^\ell\bigl(a_{\ell i}+b_{\ell i}\,w^p\bigr)\\
+\text{in }\mathbf F_p(w).
+\end{gathered}
 \]
 
 **Proof.** As rational functions, \(Q_i=w^i(1-w^{2(p-i)})/(1-w^2)\) and \(Q'_i=w^{p-i}(1-w^{2i})/(1-w^2)\) (the latter also for \(i=0\)). Hence
 
 \[
-Q_i+w^pQ'_i=w^i\frac{1-w^{2p}}{1-w^2}=w^i\sum_{j=0}^{p-1}w^{2j}=w^i(1-w^2)^{p-1},
+\begin{aligned}
+&Q_i+w^pQ'_i=w^i\frac{1-w^{2p}}{1-w^2}\\
+&\quad =w^i\sum_{j=0}^{p-1}w^{2j}=w^i(1-w^2)^{p-1},
+\end{aligned}
 \]
 
 because \(\binom{p-1}j\equiv(-1)^j\pmod p\). Divide by \((1+w^2)^{p-1}\): the right side becomes \(w^if^{p-1}=w^iE(t)\), since \(1-t^2=f^2\). On the left, \(U_\ell/(1+w^2)^{p-1}=t^\ell\), so the expansions in the basis \(U_\ell\) give the claim. \(\square\)
@@ -88,14 +106,22 @@ Now take the scale \(N=p\), so \(n=48p\), \(C=63p\), \(h=2p\) and \(g=4p\). Writ
 **Lemma 3.1** (Frobenius row identities). Over \(\mathbf F_p\), for \(r=pr_0+i\),
 
 \[
-tP_r(t)E(t)=\sum_{\ell=0}^{p-1}t^\ell\,t'\bigl(a_{\ell i}\underline P_{r_0}(t')+b_{\ell i}\underline P_{r_0+1}(t')\bigr),\qquad
-D_r(t)=\sum_{\ell=0}^{p-1}t^\ell\bigl(a_{\ell i}\underline D_{r_0}(t')+b_{\ell i}\underline D_{r_0+1}(t')\bigr).
+\begin{aligned}
+&tP_r(t)E(t)\\
+&\quad =\sum_{\ell=0}^{p-1}t^\ell\,t'\bigl(a_{\ell i}\underline P_{r_0}(t')+b_{\ell i}\underline P_{r_0+1}(t')\bigr),\\
+&D_r(t)\\
+&\quad =\sum_{\ell=0}^{p-1}t^\ell\bigl(a_{\ell i}\underline D_{r_0}(t')+b_{\ell i}\underline D_{r_0+1}(t')\bigr).
+\end{aligned}
 \]
 
 **Proof.** In characteristic \(p\), \((1-t)^{2p}=(1-t')^2\), \(t^{63p}=t'^{63}\) and \(w^{pr_0-4p}=w'^{r_0-4}\). So, with \(\underline R_j(t,w)=(1-t)^2t^{62}w^{j-4}\),
 
 \[
-tR_rE(t)=(1-t')^2t'^{63}w'^{r_0-4}\,E(t)w^i=\sum_\ell t^\ell\,t'\bigl(a_{\ell i}\underline R_{r_0}(t',w')+b_{\ell i}\underline R_{r_0+1}(t',w')\bigr)
+\begin{aligned}
+&tR_rE(t)=(1-t')^2t'^{63}w'^{r_0-4}\,E(t)w^i\\
+&\quad=\sum_\ell t^\ell\,t'\bigl(a_{\ell i}\underline R_{r_0}(t',w')\\
+&\qquad+b_{\ell i}\underline R_{r_0+1}(t',w')\bigr)
+\end{aligned}
 \]
 
 by Lemma 2.1; the factor \(w'\) in the second term produces the successor row \(r_0+1\le48\). Now separate the two parts with respect to the involution \(w\mapsto1/w\), which fixes \(t\) and \(t'\) and negates \(f\) and \(f'\). The field \(\mathbf F_p(w)\) is the direct sum of the fixed field \(\mathbf F_p(t)\) and \(f'\,\mathbf F_p(t)\), since \(f'\ne0\) is anti-invariant and the extension has degree two. From \(R_r=P_r-(f/t)D_r\) and \(fE=f^p=f'\) we get \(tR_rE=tP_rE-f'D_r\), and likewise \(t'\underline R_j=t'\underline P_j-f'\underline D_j\). Comparing invariant parts gives the first identity; comparing anti-invariant parts and cancelling \(-f'\) gives the second. Both are identities of polynomials in \(t\), as the map \(\mathbf F_p[t]\to\mathbf F_p(w)\) is injective. \(\square\)
@@ -107,14 +133,21 @@ The auxiliary row is needed only for \(r_0=47\); its polynomials have lowest deg
 Fix \(p>260\) with \(p\nmid\operatorname{den}G\). Then \(p>2\sqrt{65p}=2\sqrt H\), so Proposition 4.1 of [Denominators at the odd primes](denominators-at-the-odd-primes.md) applies with this \(p\) and \(N=p\). Every polynomial has a unique expression \(\sum_\ell t^\ell A_\ell(t^p)\); by Lemma 3.1 the extracted vectors of that proposition are
 
 \[
-P'_u=[t'^u]\bigl(a_{\ell i}\underline P_{r_0}+b_{\ell i}\underline P_{r_0+1}\bigr),\qquad D'_u=[t'^u]\bigl(a_{\ell i}\underline D_{r_0}+b_{\ell i}\underline D_{r_0+1}\bigr),
+\begin{gathered}
+P'_u=[t'^u]\bigl(a_{\ell i}\underline P_{r_0}+b_{\ell i}\underline P_{r_0+1}\bigr),\\
+D'_u=[t'^u]\bigl(a_{\ell i}\underline D_{r_0}+b_{\ell i}\underline D_{r_0+1}\bigr),
+\end{gathered}
 \]
 
-with \(P'_{-1}=0\). Therefore, for a raw column \(j=kp+\ell\),
-
+with \(P'_{-1}=0\). Therefore, for a raw column \(j=kp+\ell\), the congruence (4.1) holds modulo \(p\):
 \[
-p^2F_{kp+\ell}(pr_0+i)\equiv a_{\ell i}\Bigl\{M^0(\underline P_{r_0},k)-\frac32Z^0(\underline D_{r_0},k)\Bigr\}+b_{\ell i}\Bigl\{M^0(\underline P_{r_0+1},k)-\frac32Z^0(\underline D_{r_0+1},k)\Bigr\}\pmod p.
-\tag{4.1}
+\begin{aligned}
+&p^2F_{kp+\ell}(pr_0+i)\\
+&\quad\equiv a_{\ell i}\Bigl\{M^0(\underline P_{r_0},k)\\
+&\qquad\quad-\frac32Z^0(\underline D_{r_0},k)\Bigr\}\\
+&\quad+b_{\ell i}\Bigl\{M^0(\underline P_{r_0+1},k)\\
+&\qquad\quad-\frac32Z^0(\underline D_{r_0+1},k)\Bigr\}.
+\end{aligned}
 \]
 
 The base arrays have denominators with prime factors at most \(65\), so their reductions exist.
@@ -134,14 +167,19 @@ a_{\ell i}\,\mathcal B(r_0,k_0)+b_{\ell i}\,\mathcal B(r_0+1,k_0).
 **The determinant.** Order rows by \((i,r_0)\) and columns by \((\ell,k_0)\). The reduction of the scaled \(48p\times48p\) matrix \(p^2\mathcal F_p\) of \(\Delta_p\) is then
 
 \[
-\mathcal L_p=\mathbf a^T\otimes\mathcal B_0+\mathbf b^T\otimes\mathcal B_1=\bigl(I_p\otimes\mathcal B_0+\Pi^T\otimes\mathcal B_1\bigr)\bigl(\mathbf a^T\otimes I_{48}\bigr),
+\begin{aligned}
+&\mathcal L_p=\mathbf a^T\otimes\mathcal B_0+\mathbf b^T\otimes\mathcal B_1\\
+&\quad =\bigl(I_p\otimes\mathcal B_0+\Pi^T\otimes\mathcal B_1\bigr)\bigl(\mathbf a^T\otimes I_{48}\bigr),
+\end{aligned}
 \]
 
-using \(\mathbf b^T=\Pi^T\mathbf a^T\) and the mixed product rule for Kronecker products. The matrix \(\Pi\) is symmetric. It has the eigenvector \(e_0\) with eigenvalue \(0\), and for each of the \((p-1)/2\) pairs \(\{i,p-i\}\) the eigenvectors \(e_i+e_{p-i}\) (eigenvalue \(1\)) and \(e_i-e_{p-i}\) (eigenvalue \(-1\)); these form a basis because \(2\) is invertible. Conjugating the first factor by this change of basis on the \(p\)-dimensional factor gives a block diagonal matrix, and
-
+using \(\mathbf b^T=\Pi^T\mathbf a^T\) and the mixed product rule for Kronecker products. The matrix \(\Pi\) is symmetric. It has the eigenvector \(e_0\) with eigenvalue \(0\), and for each of the \((p-1)/2\) pairs \(\{i,p-i\}\) the eigenvectors \(e_i+e_{p-i}\) (eigenvalue \(1\)) and \(e_i-e_{p-i}\) (eigenvalue \(-1\)); these form a basis because \(2\) is invertible. Conjugating the first factor by this change of basis on the \(p\)-dimensional factor gives a block diagonal matrix, and the identity (4.2) holds:
 \[
-\det\mathcal L_p=(\det\mathbf a)^{48}\,\det\mathcal B_0\,\det(\mathcal B_0+\mathcal B_1)^{(p-1)/2}\det(\mathcal B_0-\mathcal B_1)^{(p-1)/2}
-\tag{4.2}
+\begin{aligned}
+&\det\mathcal L_p=(\det\mathbf a)^{48}\,\det\mathcal B_0\\
+&\quad\cdot\det(\mathcal B_0+\mathcal B_1)^{(p-1)/2}\\
+&\quad\cdot\det(\mathcal B_0-\mathcal B_1)^{(p-1)/2}
+\end{aligned}
 \]
 
 over \(\mathbf F_p\). Returning to the original orders of rows and columns changes at most the sign.
@@ -153,7 +191,7 @@ over \(\mathbf F_p\). Returning to the original orders of rows and columns chang
 The entries of (1.1) are produced by the following rational arithmetic, which uses only denominators with prime factors at most \(65\).
 
 1. *Moments.* \(m_0=2\), \(m_i=0\) for odd \(i\), and \(m_i=i\,m_{i-2}/(i+1)\) for even \(2\le i\le64\).
-2. *Boundary arrays.* \(k^-_0=0\), \(k^-_1=2\), \(k^+_0=k^+_1=0\), and \(k^-_d=\bigl((d-1)k^-_{d-2}+m_{d-2}+m_{d-1}\bigr)/d\) for \(2\le d\le64\), \(k^+_d=\bigl((d-2)k^+_{d-2}+2/(d-1)\bigr)/(d-1)\) for \(2\le d\le58\).
+2. *Boundary arrays.* \(k^-_0=0\), \(k^-_1=2\), \(k^+_0=k^+_1=0\), and, for \(2\le d\le64\), \(dk^-_d\) equals \((d-1)k^-_{d-2}+m_{d-2}+m_{d-1}\), while for \(2\le d\le58\), \((d-1)k^+_d\) equals \((d-2)k^+_{d-2}+2/(d-1)\).
 3. *The array \(M^0\).* For \(0\le i\le64\), \(0\le j\le58\): \(Y_{i0}=k^-_i\), \(Y_{0j}=k^+_j\), and \(Y_{ij}=Y_{i-1,j-1}-m_{i-1}/j\) for \(i,j\ge1\). Then \(Y_{ij}=M^0(i,j)\).
 4. *The array \(\frac32Z^0\).* With \(B^{(d)}_i=\sum_{u\le i}u^{-d}\): \(J_{ii}=-\frac32B^{(2)}_i\) and \(J_{ij}=\frac32(B^{(1)}_i-B^{(1)}_j)/(i-j)\) for \(i\ne j\).
 5. *Rows.* Put \(E_0=t^{62}\), \(E_1=t^{61}\), \(I_0=0\), \(I_1=t^{62}\), and \(S_m=2S_{m-1}/t-S_{m-2}\) for \(2\le m\le44\) and \(S=E,I\); thus \(E_m=t^{62}T_m(1/t)\) and \(I_m=t^{62}U_{m-1}(1/t)\). For \(0\le r\le48\) let \(u=|r-4|\), \(y_r=(1-t)^2E_u\) and \(z_r=\operatorname{sgn}(r-4)(1-t)^2I_u\); these are \(\underline P_r\) and \(\underline D_r\).

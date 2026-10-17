@@ -52,9 +52,12 @@ From now on in this course, \(K\), \(T\), \(Y\) are as in Lemma 2.1 (under the h
 
 **Proof.** First, \(K=\overline{\operatorname{conv}}\,T(K)\): the right side is a nonempty closed convex subset of \(K\), and \(T\) maps it into \(T(K)\), which lies in it; minimality applies. For \(z\in K\) put
 \[
-s(z)=\sup_{w\in K}\|z-w\|,\qquad r(z)=\limsup_j\|z-u_j\|.
+\begin{gathered}
+s(z)=\sup_{w\in K}\|z-w\|,\\
+r(z)=\limsup_j\|z-u_j\|.
+\end{gathered}
 \]
-Both are convex and \(1\)-Lipschitz. The function \(w\mapsto\|Tz-w\|\) is convex and continuous, so its supremum over \(K=\overline{\operatorname{conv}}\,T(K)\) equals its supremum over \(T(K)\), and \(s(Tz)=\sup_{w\in K}\|Tz-Tw\|\le s(z)\). Also \(r(Tz)\le\limsup_j(\|Tz-Tu_j\|+\|Tu_j-u_j\|)\le r(z)\). Hence every nonempty sublevel set \(\{s\le c\}\) or \(\{r\le c\}\) is a closed convex subset of \(K\) mapped into itself by \(T\). If \(s\) or \(r\) took two values \(c_1<c_2\), the sublevel set at \(c_1\) would be a nonempty proper such subset, contradicting minimality. So \(s\) and \(r\) are constant. The supremum of \(s\) is \(\operatorname{diam}K=1\), so \(s\equiv1\); let \(r\equiv R\le1\).
+Both are convex and \(1\)-Lipschitz. The function \(w\mapsto\|Tz-w\|\) is convex and continuous, so its supremum over \(K=\overline{\operatorname{conv}}\,T(K)\) equals its supremum over \(T(K)\), and \(s(Tz)=\sup_{w\in K}\|Tz-Tw\|\le s(z)\). Also \(r(Tz)\) is at most \(\limsup_j(\|Tz-Tu_j\|+\|Tu_j-u_j\|)\), which is at most \(r(z)\). Hence every nonempty sublevel set \(\{s\le c\}\) or \(\{r\le c\}\) is a closed convex subset of \(K\) mapped into itself by \(T\). If \(s\) or \(r\) took two values \(c_1<c_2\), the sublevel set at \(c_1\) would be a nonempty proper such subset, contradicting minimality. So \(s\) and \(r\) are constant. The supremum of \(s\) is \(\operatorname{diam}K=1\), so \(s\equiv1\); let \(r\equiv R\le1\).
 
 Let \(a=\lim_{j\to\mathcal U}u_j\) weakly (Lemma 1.2). For \(z\in K\) and \(\eta>0\), all large \(j\) satisfy \(\|z-u_j\|\le R+\eta\); the ball \(\{w:\|z-w\|\le R+\eta\}\) is weakly closed (Mazur) and contains \(u_j\) for \(j\) in a cofinite set, so it contains \(a\). Hence \(1=s(a)\le R\), and \(R=1\). Every subsequence of \((u_j)\) is again an approximate fixed point sequence, so its \(\limsup_j\|u_j-z\|\) is \(1\) too. As \(\|u_j-z\|\le1\), this means \(\|u_j-z\|\to1\). \(\square\)
 
@@ -91,9 +94,9 @@ The minimal invariant set method goes back to Kirk, with the normal structure id
 
 ## 6. Solutions
 
-**5.1.** \(T_n\) maps \(K\) into \(K\) by convexity and is a contraction with constant \(1-\frac1n\); \(K\) is complete, so \(T_n\) has a fixed point \(y_n\). Then \(\|Ty_n-y_n\|=\|Ty_n-T_ny_n\|=\frac1n\|Ty_n-w\|\le\frac1n\).
+**5.1.** \(T_n\) maps \(K\) into \(K\) by convexity and is a contraction with constant \(1-\frac1n\); \(K\) is complete, so \(T_n\) has a fixed point \(y_n\). Then \(\|Ty_n-y_n\|=\|Ty_n-T_ny_n\|\), which is \(\frac1n\|Ty_n-w\|\le\frac1n\).
 
-**5.2.** For \(z\in D'\), the parallelogram law gives \(\|a-z\|^2=\frac12\|u-z\|^2+\frac12\|w-z\|^2-\frac14\|u-w\|^2\le\Delta^2-\frac14\|u-w\|^2\). With \(\|u-w\|>\frac\Delta2\), \(\sup_z\|a-z\|^2\le\Delta^2-\frac{\Delta^2}{16}<\Delta^2\).
+**5.2.** For \(z\in D'\), the parallelogram law shows that \(\|a-z\|^2\) equals \(\frac12\|u-z\|^2+\frac12\|w-z\|^2-\frac14\|u-w\|^2\), which is at most \(\Delta^2-\frac14\|u-w\|^2\). With \(\|u-w\|>\frac\Delta2\), \(\sup_z\|a-z\|^2\le\Delta^2-\frac{\Delta^2}{16}<\Delta^2\).
 
 **5.3.** \(C\) is an intersection of closed half-spaces with the closed set \(c_0\), and is bounded by \(1\). \(F(x)\) is a null sequence with entries in \([0,1]\), and \(\|F(x)-F(y)\|_\infty=\|x-y\|_\infty\). A fixed point would satisfy \(x_1=1\) and \(x_{i+1}=x_i\), so \(x=(1,1,\dots)\notin c_0\). The space \(c_0\) is not reflexive: Lemma 1.1 fails, and indeed \(C\) is not weakly compact.
 

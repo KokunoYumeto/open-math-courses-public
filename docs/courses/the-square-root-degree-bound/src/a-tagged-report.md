@@ -8,7 +8,7 @@ This lesson proves the main theorem of [Linear Fourier coefficients and degree](
 
 **Lemma 1.1** (Boolean readout). If there are finite observations with positive cell degree bounds \(D\) and arbitrarily large ratios \(v(F)/D\), the theorem holds.
 
-*Proof.* Fix \(C>0\) and choose \(F\) with \(v=v(F)>4C^2D\). Take \(M\) independent copies on disjoint blocks, with scores \(T_1,\dots,T_M\), and \(f=\operatorname{sign}(T_1+\dots+T_M)\). By Lemma 3.1 of the first lesson, \(\deg f\le MD\) and \(\sum_i\widehat f(\{i\})=\mathbb E|T_1+\dots+T_M|=\sqrt{Mv}\,\mathbb E|Z_M|\) with \(Z_M=(T_1+\dots+T_M)/\sqrt{Mv}\). By Theorem 1.1 and Lemma 2.1 of [Asymptotically normal scores](asymptotically-normal-scores.md), \(\mathbb E|Z_M|\to\sqrt{2/\pi}>1/2\), so for large \(M\) the sum exceeds \(\frac12\sqrt{Mv}>C\sqrt{MD}\ge C\sqrt{\deg f}\); it is positive, so \(f\) is not constant. \(\square\)
+*Proof.* Fix \(C>0\) and choose \(F\) with \(v=v(F)>4C^2D\). Take \(M\) independent copies on disjoint blocks, with scores \(T_1,\dots,T_M\), and \(f=\operatorname{sign}(T_1+\dots+T_M)\). By Lemma 3.1 of the first lesson, \(\deg f\le MD\) and \(\sum_i\widehat f(\{i\})=\mathbb E|T_1+\dots+T_M|\), which is \(\sqrt{Mv}\,\mathbb E|Z_M|\) with \(Z_M=(T_1+\dots+T_M)/\sqrt{Mv}\). By Theorem 1.1 and Lemma 2.1 of [Asymptotically normal scores](asymptotically-normal-scores.md), \(\mathbb E|Z_M|\to\sqrt{2/\pi}>1/2\), so for large \(M\) the sum exceeds \(\frac12\sqrt{Mv}>C\sqrt{MD}\ge C\sqrt{\deg f}\); it is positive, so \(f\) is not constant. \(\square\)
 
 A *rule* on \(r\) real inputs is a measurable map \(\mathcal W\) from \(\mathbb R^r\) to some set of output labels. Its *coordinate cost* is at most \(d\) if, on every product of finite subsets of \(\mathbb R\), the indicator of each output label is a finite linear combination of functions each depending on at most \(d\) coordinates.
 
@@ -30,7 +30,11 @@ Revealing \(d\) of \(r=d+1\) inputs retains variance exactly \(d\). The criterio
 
 Let \(m\ge3\), let \(I_1,\dots,I_m\) be intervals, and let \(\iota:\mathbb R\to\{1,\dots,m\}\) be a *selector* with finitely many cut points, so that each \(U_i=\{t:\iota(t)=i\}\) is a finite union of intervals; all endpoint conventions are fixed. Write the inputs as \((u,z_1,\dots,z_m)\), their sum as \(L=u+\sum_jz_j\), and
 \[
-B=\{z_j\in I_j\text{ for all }j\},\qquad P=\{z_j\in I_j\text{ for all }j\ne\iota(u)\},\qquad A=P\setminus B .
+\begin{gathered}
+B=\{z_j\in I_j\text{ for all }j\},\\
+P=\{z_j\in I_j\text{ for all }j\ne\iota(u)\},\\
+A=P\setminus B .
+\end{gathered}
 \]
 So \(A\) is the event that the selected input \(z_{\iota(u)}\) alone fails its test, and \(A\), \(B\), \(P^c\) partition the inputs. The *refined report* \(\mathcal W\) reports:
 
@@ -42,7 +46,10 @@ So \(A\) is the event that the selected input \(z_{\iota(u)}\) alone fails its t
 
 **Lemma 2.1** (Cost of the refined report). On every product of finite input alphabets, \(\mathcal W\) has finitely many values and coordinate cost at most \(m\). The key identity is
 \[
-\mathbf 1_A=\sum_{i=1}^m\mathbf 1_{U_i}(u)\prod_{j\ne i}\mathbf 1_{I_j}(z_j)-\prod_{j=1}^m\mathbf 1_{I_j}(z_j). \tag{2.1}
+\begin{aligned}
+\mathbf 1_A&=\sum_{i=1}^m\mathbf 1_{U_i}(u)\prod_{j\ne i}\mathbf 1_{I_j}(z_j)\\
+&\quad -\prod_{j=1}^m\mathbf 1_{I_j}(z_j).
+\end{aligned}\tag{2.1}
 \]
 
 *Proof.* The first sum is \(\mathbf 1_P\), as exactly one \(i\) has \(u\in U_i\); subtracting \(\mathbf 1_B\le\mathbf 1_P\) gives \(\mathbf 1_A\). Each product involves \(m\) coordinates: \(u\) and \(m-1\) leaves, or the \(m\) leaves. An attained \(B\) report fixes the \(m\) leaves and is the product of their value tests. An attained \(P^c\) report fixes \(u\), \(i=\iota(u)\) and the other \(m-1\) leaves, one of which fails its test; so it forces \(P^c\) whatever \(z_i\) is, and its indicator depends on these \(m\) coordinates. Unattained labels have zero indicator. \(\square\)
@@ -54,13 +61,24 @@ The indicator of \(A\) depends on all \(m+1\) inputs, but (2.1) writes it as a c
 \operatorname{Var}\bigl(\mathbb E[L\mid\mathcal W]\bigr)\ge m+\Delta_b .
 \]
 
-*Proof.* Predict \(L\) by \(b\) on \(A\), by \(\sum_jz_j\) on \(B\), and by \(u+\sum_{j\ne\iota(u)}z_j\) on \(P^c\); this is a function of the report. On \(B\) the error is \(u\), and \(B\) is independent of \(u\), so this part contributes \(\mathbb E[\mathbf 1_Bu^2]=\Pr(B)\). For each \(i\), the event \(E_i=P^c\cap\{u\in U_i\}\) depends only on \(u\) and the leaves other than \(z_i\), so the error \(z_i\) contributes \(\mathbb E[\mathbf 1_{E_i}z_i^2]=\Pr(E_i)\). The total squared error is \(\Pr(A^c)+\mathbb E[\mathbf 1_A(L-b)^2]=1-\Delta_b\). The conditional expectation, the orthogonal projection onto functions of the report, has at most this error, so \(\operatorname{Var}(\mathbb E[L\mid\mathcal W])=\operatorname{Var}(L)-\mathbb E(L-\mathbb E[L\mid\mathcal W])^2\ge(m+1)-(1-\Delta_b)\). \(\square\)
+*Proof.* Predict \(L\) by \(b\) on \(A\), by \(\sum_jz_j\) on \(B\), and by \(u+\sum_{j\ne\iota(u)}z_j\) on \(P^c\); this is a function of the report. On \(B\) the error is \(u\), and \(B\) is independent of \(u\), so this part contributes \(\mathbb E[\mathbf 1_Bu^2]=\Pr(B)\). For each \(i\), the event \(E_i=P^c\cap\{u\in U_i\}\) depends only on \(u\) and the leaves other than \(z_i\), so the error \(z_i\) contributes \(\mathbb E[\mathbf 1_{E_i}z_i^2]=\Pr(E_i)\). The total squared error is \(\Pr(A^c)+\mathbb E[\mathbf 1_A(L-b)^2]=1-\Delta_b\). The conditional expectation, the orthogonal projection onto functions of the report, has at most this error, so 
+\[
+\begin{aligned}
+&\operatorname{Var}(\mathbb E[L\mid\mathcal W])\\
+&\quad=\operatorname{Var}(L)-\mathbb E(L-\mathbb E[L\mid\mathcal W])^2\\
+&\quad\ge(m+1)-(1-\Delta_b).
+\end{aligned}
+\]
+\(\square\)
 
 ## 3. Gaussian intervals
 
 **Lemma 3.1** (Gaussian design). There are an odd \(m\ge3\), closed intervals \(I_1,\dots,I_m\) and a selector \(\iota\) with finitely many cut points such that, for independent standard normal inputs, with \(\beta_j=\Pr(z_j\in I_j)\), conditional means \(\mu_j\) and variances \(s_j^2\) on \(I_j\),
 \[
-p_*=\prod_j\beta_j>0,\qquad S=\sum_js_j^2<\tfrac14,\qquad b=\sum_j\mu_j-1,
+\begin{gathered}
+p_*=\prod_j\beta_j>0,\\
+S=\sum_js_j^2<\tfrac14,\qquad b=\sum_j\mu_j-1,
+\end{gathered}
 \]
 the deficit satisfies
 \[
@@ -69,7 +87,11 @@ d_A=\mathbb E\bigl[\mathbf 1_A(1-(L-b)^2)\bigr]>\tfrac34p_* .
 
 *Proof.* *An exact identity.* Fix \(u=t\) and \(i=\iota(t)\). Given \(u=t\), the event \(P\) has probability \(p_*/\beta_i\), restricts the leaves \(j\ne i\) to their intervals and leaves \(z_i\) free; then \(L-b\) has mean \(1+t-\mu_i\) and variance \(1+\sum_{j\ne i}s_j^2\). So, with \(\phi\) the normal density,
 \[
-\mathbb E\bigl[\mathbf 1_P(1-(L-b)^2)\bigr]=-p_*J,\qquad J=\int_{\mathbb R}\Bigl((1+t-\mu_{\iota(t)})^2+\sum_{j\ne\iota(t)}s_j^2\Bigr)\frac{\phi(t)}{\beta_{\iota(t)}}\,dt .
+\begin{aligned}
+&\mathbb E\bigl[\mathbf 1_P(1-(L-b)^2)\bigr]=-p_*J,\\
+&J=\int_{\mathbb R}\Bigl((1+t-\mu_{\iota(t)})^2+\sum_{j\ne\iota(t)}s_j^2\Bigr)\\
+&\qquad\cdot\frac{\phi(t)}{\beta_{\iota(t)}}\,dt .
+\end{aligned}
 \]
 On \(B\), with \(u\) free, \(L-b\) has mean \(1\) and variance \(1+S\), so \(\mathbb E[\mathbf 1_B(1-(L-b)^2)]=-p_*(1+S)\). As \(\mathbf 1_A=\mathbf 1_P-\mathbf 1_B\),
 \[
@@ -80,13 +102,23 @@ d_A=p_*(1+S-J). \tag{3.1}
 
 For \(|t|\le R\), the spacing gives \(|1+t-\mu_{\iota(t)}|\le\frac R{m-1}+h\) and \(|a_{\iota(t)}|+h\le|t|+2\) for large \(m\), so \(\phi(t)/\beta_{\iota(t)}\le\frac1{2h}e^{2|t|+2}\le\frac{e^2}{2h}e^{2R}\), and the central part of \(J\) is at most
 \[
-\frac{e^2R}he^{2R}\Bigl(\bigl(\tfrac R{m-1}+h\bigr)^2+mh^2\Bigr)=O\bigl(R(R^2+1)e^{2R}m^{-1/2}\bigr)\longrightarrow0,
+\begin{aligned}
+&\frac{e^2R}he^{2R}\Bigl(\bigl(\tfrac R{m-1}+h\bigr)^2+mh^2\Bigr)\\
+&\quad =O\bigl(R(R^2+1)e^{2R}m^{-1/2}\bigr)\longrightarrow0,
+\end{aligned}
 \]
-since \(e^{2R}=e^{2\sqrt{8\log m}}\) grows more slowly than every power of \(m\). For \(|t|>R\), the selected interval has \(\beta\ge2h\phi(2)\), the numerator is \(O(1+t^2)\), and \(\int_{|t|>R}(1+t^2)\phi(t)\,dt=O((R+1)e^{-R^2/2})=O((R+1)m^{-4})\), so the tail part is \(O((R+1)m^{-5/2})\to0\). Also \(S\le mh^2=m^{-2}\). For large odd \(m\), \(J<\frac14\) and \(S<\frac14\), and (3.1) gives \(d_A>\frac34p_*\). \(\square\)
+since \(e^{2R}=e^{2\sqrt{8\log m}}\) grows more slowly than every power of \(m\). For \(|t|>R\), the selected interval has \(\beta\ge2h\phi(2)\), the numerator is \(O(1+t^2)\), and \(\int_{|t|>R}(1+t^2)\phi(t)\,dt\) is \(O((R+1)e^{-R^2/2})\), that is, \(O((R+1)m^{-4})\), so the tail part is \(O((R+1)m^{-5/2})\to0\). Also \(S\le mh^2=m^{-2}\). For large odd \(m\), \(J<\frac14\) and \(S<\frac14\), and (3.1) gives \(d_A>\frac34p_*\). \(\square\)
 
 The limit is reached only for very large \(m\). For \(|t|\le R\), \(\phi(t)/\beta_{\iota(t)}\) is close to \(e^{t+1/2}/(2h)\), the squared mismatch \((1+t-\mu_{\iota(t)})^2\) averages about \(R^2/(3(m-1)^2)\) over a selector cell, and \(S\) is close to \(mh^2/3\). So to leading order \(J\approx(R^2+1)e^{R+1/2}/(6\sqrt m)\), which is below \(\frac14\) only when \(\log m\) exceeds about \(54\).
 
-Since \(d_A=\Pr(A)\bigl(1-\operatorname{Var}(L\mid A)-(\mathbb E[L\mid A]-b)^2\bigr)>0\), the sum varies by less than one unit on \(A\): this is the variance saved by the tag.
+Since
+\[
+\begin{aligned}
+d_A&=\Pr(A)\bigl(1-\operatorname{Var}(L\mid A)\\
+&\qquad-(\mathbb E[L\mid A]-b)^2\bigr)>0,
+\end{aligned}
+\]
+the sum varies by less than one unit on \(A\): this is the variance saved by the tag.
 
 ## 4. Transfer and the theorem
 
@@ -111,13 +143,20 @@ The dimension and the number of copies used are finite but grow extremely fast; 
 
 **The coarse report.** Replace the report on \(B\) by a single mark: \(\mathcal O\) reports \(X\) on \(A\), \(Y\) on \(B\), and \((O,u,\iota(u),(z_j)_{j\ne\iota(u)})\) on \(P^c\).
 
-**Proposition 5.1.** \(\mathcal O\) has coordinate cost at most \(m\). For independent centered variance-one inputs with finitely many values and constants \(b_0,b_1\), with \(g_{b_0,b_1}=\mathbf 1_A(1-(L-b_0)^2)+\mathbf 1_B(1-(L-b_1)^2)\),
+**Proposition 5.1.** \(\mathcal O\) has coordinate cost at most \(m\). For independent centered variance-one inputs with finitely many values and constants \(b_0,b_1\), with \(g_{b_0,b_1}\) the sum of \(\mathbf 1_A(1-(L-b_0)^2)\) and \(\mathbf 1_B(1-(L-b_1)^2)\),
 \[
 \operatorname{Var}\bigl(\mathbb E[L\mid\mathcal O]\bigr)\ge m+\mathbb Eg_{b_0,b_1}.
 \]
 For Gaussian inputs and the design of Lemma 3.1, \(\mathbb Eg_{b,M_\mu}=p_*(1-J)>\frac34p_*\), where \(M_\mu=\sum_j\mu_j\). Hence the coarse report also satisfies the amplification criterion with \((r,d,\eta)=(m+1,m,p_*/2)\).
 
-*Proof.* The cost is as in Lemma 2.1; the \(Y\) indicator depends on the leaves only. Predict by \(b_0\) on \(X\), by \(b_1\) on \(Y\), and by \(u+\sum_{j\ne\iota(u)}z_j\) on ordinary reports; the error is \(\Pr(P^c)+\mathbb E[\mathbf 1_A(L-b_0)^2]+\mathbb E[\mathbf 1_B(L-b_1)^2]=1-\mathbb Eg_{b_0,b_1}\), and the variance bound follows as in Lemma 2.2. For Gaussian inputs, on \(B\) the variable \(L-M_\mu\) has mean \(0\) and variance \(1+S\), so \(\mathbb E[\mathbf 1_B(1-(L-M_\mu)^2)]=-p_*S\), and \(\mathbb Eg_{b,M_\mu}=d_A-p_*S=p_*(1-J)\) by (3.1). The transfer is as in Lemma 4.1. \(\square\)
+*Proof.* The cost is as in Lemma 2.1; the \(Y\) indicator depends on the leaves only. Predict by \(b_0\) on \(X\), by \(b_1\) on \(Y\), and by \(u+\sum_{j\ne\iota(u)}z_j\) on ordinary reports; the error is 
+\[
+\begin{aligned}
+&\Pr(P^c)+\mathbb E[\mathbf 1_A(L-b_0)^2]\\
+&\quad+\mathbb E[\mathbf 1_B(L-b_1)^2]=1-\mathbb Eg_{b_0,b_1},
+\end{aligned}
+\]
+and the variance bound follows as in Lemma 2.2. For Gaussian inputs, on \(B\) the variable \(L-M_\mu\) has mean \(0\) and variance \(1+S\), so \(\mathbb E[\mathbf 1_B(1-(L-M_\mu)^2)]=-p_*S\), and \(\mathbb Eg_{b,M_\mu}=d_A-p_*S=p_*(1-J)\) by (3.1). The transfer is as in Lemma 4.1. \(\square\)
 
 The coarse report loses \(p_*S\) against the refined one: merging the \(B\) reports leaves the small leaf variance \(S\) unobserved.
 
@@ -125,11 +164,15 @@ The coarse report loses \(p_*S\) against the refined one: merging the \(B\) repo
 
 **Proposition 5.2.** \(\mathcal O_+\) has \(q+1\) inputs and coordinate cost at most \(q\). For independent centered variance-one inputs with \(p=\Pr(A)>0\) and \(c=\mathbb E[L\mid A]\),
 \[
-\operatorname{Var}\bigl(\mathbb E[L+w\mid\mathcal O_+]\bigr)=q+p\bigl(1-\operatorname{Var}(L\mid A)\bigr)=q+\Delta_b+p(c-b)^2 .
+\begin{aligned}
+&\operatorname{Var}\bigl(\mathbb E[L+w\mid\mathcal O_+]\bigr)=q\\
+&\quad +p\bigl(1-\operatorname{Var}(L\mid A)\bigr)=q\\
+&\quad +\Delta_b+p(c-b)^2 .
+\end{aligned}
 \]
 Hence \(\mathcal O_+\) satisfies the amplification criterion with \((r,d,\eta)=(m+2,m+1,p_*/2)\).
 
-*Proof.* An off output fixes the \(q\) original inputs and ignores \(w\); an on output has indicator \(\mathbf 1_A(\mathbf z)\mathbf 1_{\{w=w_0\}}\), which by (2.1) is a combination of functions of \(m+1=q\) inputs. The conditional mean of \(L+w\) is \(L\) off \(A\) and \(c+w\) on \(A\), so its second moment is \(\mathbb E[\mathbf 1_{A^c}L^2]+p(c^2+1)=q-p\operatorname{Var}(L\mid A)+p\); and \(\Delta_b=p-p\bigl(\operatorname{Var}(L\mid A)+(c-b)^2\bigr)\). For asymptotically normal finite-valued inputs, Lemma 4.1 gives \(\Delta_b>p_*/2\) for large \(n\), hence \(p>0\) and a variance above \(q+p_*/2\). \(\square\)
+*Proof.* An off output fixes the \(q\) original inputs and ignores \(w\); an on output has indicator \(\mathbf 1_A(\mathbf z)\mathbf 1_{\{w=w_0\}}\), which by (2.1) is a combination of functions of \(m+1=q\) inputs. The conditional mean of \(L+w\) is \(L\) off \(A\) and \(c+w\) on \(A\), so its second moment \(\mathbb E[\mathbf 1_{A^c}L^2]+p(c^2+1)\) equals \(q-p\operatorname{Var}(L\mid A)+p\); and \(\Delta_b=p-p\bigl(\operatorname{Var}(L\mid A)+(c-b)^2\bigr)\). For asymptotically normal finite-valued inputs, Lemma 4.1 gives \(\Delta_b>p_*/2\) for large \(n\), hence \(p>0\) and a variance above \(q+p_*/2\). \(\square\)
 
 ## 6. Exercises
 

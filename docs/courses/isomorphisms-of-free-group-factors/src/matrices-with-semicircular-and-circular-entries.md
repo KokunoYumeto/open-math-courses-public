@@ -12,13 +12,19 @@ Let \(e_1,\ldots,e_m\) be an orthonormal basis of a Hilbert space \(H\), \(s_j=s
 
 Let \(E_{pq}\) (\(p,q\in\{1,2\}\)) be the matrix units of \(M_2(\mathbb C)\). The algebra \(M_2(\mathcal S)\) of \(2\times2\) matrices over \(\mathcal S\) acts on \(\mathbb C^2\otimes\mathcal F(H)\), and
 \[
-\psi(T)=\tfrac12\big(\varphi(T_{11})+\varphi(T_{22})\big)\qquad(T=(T_{pq})\in M_2(\mathcal S))
+\begin{gathered}
+\psi(T)=\tfrac12\big(\varphi(T_{11})+\varphi(T_{22})\big)\\
+(T=(T_{pq})\in M_2(\mathcal S))
+\end{gathered}
 \]
 is a faithful normal tracial state on it. To write \(\psi\) as a vector state, let \(\varepsilon_1,\varepsilon_2\) be the standard basis of \(\mathbb C^2\), let operators \(T\) on \(\mathbb C^2\otimes\mathcal F(H)\) act on \(K=\mathbb C^2\otimes\mathcal F(H)\otimes\mathbb C^2\) as \(T\otimes1\), and put \(\xi=\frac1{\sqrt2}(\varepsilon_1\otimes\Omega\otimes\varepsilon_1+\varepsilon_2\otimes\Omega\otimes\varepsilon_2)\). Then \(\langle(T\otimes1)\xi,\xi\rangle=\psi(T)\).
 
 For distinct indices \(j_1,j_2,j_3,j_4\) put
 \[
-\gamma=\tfrac1{\sqrt2}\big(s_{j_3}+is_{j_4}\big),\qquad X=\frac1{\sqrt2}\begin{pmatrix}s_{j_1}&\gamma\\ \gamma^*&s_{j_2}\end{pmatrix}\in M_2(\mathcal S).
+\begin{gathered}
+\gamma=\tfrac1{\sqrt2}\big(s_{j_3}+is_{j_4}\big),\\
+X=\frac1{\sqrt2}\begin{pmatrix}s_{j_1}&\gamma\\ \gamma^*&s_{j_2}\end{pmatrix}\in M_2(\mathcal S).
+\end{gathered}
 \]
 We call \(\gamma\) the *circular element* of the pair \((j_3,j_4)\) and \(X\) the *semicircular matrix* of the quadruple \((j_1,j_2,j_3,j_4)\).
 
@@ -34,7 +40,11 @@ an operator on \(K\). Its adjoint is \(\frac1{\sqrt2}\sum_{p,q}E_{qp}\otimes\ell
 
 (a) Let \(d=\sum_{k,l}E_{kl}\otimes b_{kl}\) with \(b_{kl}\in\mathcal S_J\subseteq\mathcal S(K_0)\). By Lemma 4.1(2) of the previous lesson, \(\ell(g_{pq})^*b_{kl}\ell(g_{p'q'})=\varphi(b_{kl})\langle g_{p'q'},g_{pq}\rangle1\), which vanishes unless \((p',q')=(p,q)\). Hence
 \[
-L^*(d\otimes1)L=\frac12\sum_{p,q,k,l}\varphi(b_{kl})\,E_{qp}E_{kl}E_{pq}\otimes1\otimes1=\frac12\sum_{p,q}\varphi(b_{pp})E_{qq}\otimes1\otimes1=\psi(d)\,1 .
+\begin{aligned}
+&L^*(d\otimes1)L\\
+&\quad =\frac12\sum_{p,q,k,l}\varphi(b_{kl})\,E_{qp}E_{kl}E_{pq}\otimes1\otimes1\\
+&\quad =\frac12\sum_{p,q}\varphi(b_{pp})E_{qq}\otimes1\otimes1=\psi(d)\,1 .
+\end{aligned}
 \]
 (b) \(L^*\xi=0\), because \(\ell(g)^*\Omega=0\).
 
@@ -60,11 +70,17 @@ By Theorem 3.2 there, \(\psi(X^k)=\int t^k\,d\sigma\) for all \(k\), and the pol
 
 For \(\gamma^*\gamma\), consider \(Y=\begin{pmatrix}0&\gamma\\ \gamma^*&0\end{pmatrix}\in M_2(\mathcal S)\) and \(L_Y=E_{12}\otimes\ell(f)\otimes1+E_{21}\otimes\ell(g)\otimes1\). Then \(L_Y+L_Y^*=Y\otimes1\), and
 \[
-L_Y^*L_Y=E_{22}\otimes\ell(f)^*\ell(f)\otimes1+E_{11}\otimes\ell(g)^*\ell(g)\otimes1=1,
+\begin{aligned}
+&L_Y^*L_Y=E_{22}\otimes\ell(f)^*\ell(f)\otimes1\\
+&\quad +E_{11}\otimes\ell(g)^*\ell(g)\otimes1=1,
+\end{aligned}
 \]
 the cross terms vanishing because \(E_{21}E_{21}=E_{12}E_{12}=0\). Also \(L_Y^*\xi=0\). Theorem 3.2 of the previous lesson, with \(\mathcal D=\mathbb C1\), gives \(\psi(Y^k)=\int t^k\,d\sigma\). Now \(Y^{2r}=\operatorname{diag}((\gamma\gamma^*)^r,(\gamma^*\gamma)^r)\), and \(\varphi((\gamma\gamma^*)^r)=\varphi((\gamma^*\gamma)^r)\) because \(\varphi\) is tracial, so
 \[
-\varphi((\gamma^*\gamma)^r)=\psi(Y^{2r})=\int t^{2r}\,d\sigma(t)=\Lambda(x^r)
+\begin{aligned}
+&\varphi((\gamma^*\gamma)^r)=\psi(Y^{2r})\\
+&\quad =\int t^{2r}\,d\sigma(t)=\Lambda(x^r)
+\end{aligned}
 \]
 by Lemma 2.1(5) of the previous lesson. The distribution of \(\gamma^*\gamma\) lives on \([0,\|\gamma\|^2]\subseteq[0,4]\), as does \(\nu\), and the two have the same moments; as in the proof of Theorem 2.1 they are equal.
 
@@ -88,7 +104,7 @@ The distribution of \(|\gamma|\) has density \(\frac1\pi\sqrt{4-t^2}\) on \([0,2
 
 **4.2.** With \(\gamma=\ell(f)+\ell(g)^*\): \(\gamma\Omega=f\) and \(\gamma^*\gamma\Omega=\gamma^*f=g\otimes f+\Omega\), while \(\gamma^*\Omega=g\) and \(\gamma\gamma^*\Omega=f\otimes g+\Omega\). These differ.
 
-**4.3.** For continuous \(f\), \(\varphi(f(|\gamma|))=\int f(\sqrt x)\,d\nu(x)=\frac4\pi\int_0^{\pi/2}f(2\sin\vartheta)\cos^2\vartheta\,d\vartheta\). Substitute \(t=2\sin\vartheta\): \(dt=2\cos\vartheta\,d\vartheta\) and \(\cos\vartheta=\frac12\sqrt{4-t^2}\), so the integrand becomes \(\frac1\pi f(t)\sqrt{4-t^2}\,dt\).
+**4.3.** For continuous \(f\), \(\varphi(f(|\gamma|))=\int f(\sqrt x)\,d\nu(x)\), which is \(\frac4\pi\int_0^{\pi/2}f(2\sin\vartheta)\cos^2\vartheta\,d\vartheta\). Substitute \(t=2\sin\vartheta\): \(dt=2\cos\vartheta\,d\vartheta\) and \(\cos\vartheta=\frac12\sqrt{4-t^2}\), so the integrand becomes \(\frac1\pi f(t)\sqrt{4-t^2}\,dt\).
 
 **4.4.** \(W^*(X)\) and \(M_2(\mathcal S_J)\) are free (Theorem 2.1) and \(U\in M_2(\mathcal S_J)\) is unitary, so Lemma 1.3 of the first lesson applies. Since \(U\) is diagonal, \((UXU^*)_{12}=U_{11}X_{12}(U^*)_{22}=\frac1{\sqrt2}\gamma u^*\).
 

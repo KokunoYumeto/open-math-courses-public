@@ -54,22 +54,37 @@ We think of \((x,i)\in G\times[n]\) as an edge from the *row* \(x\) to the *colu
 
 **Lemma 3.1** (edge count). For finite \(U,V\subseteq G\),
 \[
-\#\{(x,i)\in U\times[n]:xs_i\in V\}\le n\rho^\ell\sqrt{|U|\,|V|}.
+\begin{aligned}
+&\#\{(x,i)\in U\times[n]:xs_i\in V\}\\
+&\quad \le n\rho^\ell\sqrt{|U|\,|V|}.
+\end{aligned}
 \]
 
 **Proof.** Since \(R_{s_i}=R_{t_1}\cdots R_{t_\ell}\) for \(w_i=(t_1,\dots,t_\ell)\), expanding the product gives \(\sum_{i=1}^nR_{s_i}=\bigl(\sum_{t\in S}R_t\bigr)^\ell=(dA_S)^\ell\), of norm at most \(n\rho^\ell\). The left side of the claim is
 \[
-\sum_{i=1}^n\sum_{x\in U}\mathbf1_V(xs_i)=\Bigl\langle\sum_{i=1}^nR_{s_i}\mathbf1_V,\ \mathbf1_U\Bigr\rangle\le n\rho^\ell\,\|\mathbf1_V\|\,\|\mathbf1_U\|.\qquad\square
+\begin{aligned}
+\sum_{i=1}^n\sum_{x\in U}\mathbf1_V(xs_i)&=\Bigl\langle\sum_{i=1}^nR_{s_i}\mathbf1_V,\ \mathbf1_U\Bigr\rangle\\
+&\le n\rho^\ell\,\|\mathbf1_V\|\,\|\mathbf1_U\|.
+\end{aligned}
 \]
+\(\square\)
 
 **Proposition 3.2** (sparse assignment). There is a function \(a:G\times[n]\to\{0,1\}\) with
 \[
-\#\{i:a(x,i)=1\}\le r\quad(x\in G),\qquad\#\{i:a(ys_i^{-1},i)=0\}\le r\quad(y\in G).\tag{3.1}
+\begin{aligned}
+&\#\{i:a(x,i)=1\}\\
+&\quad \le r\quad(x\in G),\\
+&\#\{i:a(ys_i^{-1},i)=0\}\\
+&\quad \le r\quad(y\in G).
+\end{aligned}\tag{3.1}
 \]
 
 **Proof.** Give every row and every column \(r\) *slots*: let \(Y=\{\mathrm{row},\mathrm{col}\}\times G\times[r]\), and for an edge \((x,i)\) let \(N(x,i)\) consist of the \(r\) slots \((\mathrm{row},x,q)\) of its row and the \(r\) slots \((\mathrm{col},xs_i,q)\) of its column. Let \(F\subseteq G\times[n]\) be finite, with set of rows \(U\) and set of columns \(V\). Then \(|N(F)|=r(|U|+|V|)\), while Lemma 3.1 gives
 \[
-|F|\le n\rho^\ell\sqrt{|U|\,|V|}\le r\cdot\tfrac12(|U|+|V|)\le|N(F)|.
+\begin{aligned}
+&|F|\le n\rho^\ell\sqrt{|U|\,|V|}\\
+&\quad \le r\cdot\tfrac12(|U|+|V|)\le|N(F)|.
+\end{aligned}
 \]
 The set \(G\times[n]\) is countable, so Lemma 2.2 gives an injective \(\varphi\) on \(G\times[n]\) with \(\varphi(x,i)\in N(x,i)\). Put \(a(x,i)=1\) if \(\varphi(x,i)\) is a row slot and \(a(x,i)=0\) if it is a column slot. The edges \((x,i)\) with \(a(x,i)=1\) are sent injectively into the \(r\) slots of the row \(x\). The edges ending at a column \(y\) are the pairs \((ys_i^{-1},i)\), one for each \(i\in[n]\), and those with \(a(ys_i^{-1},i)=0\) are sent injectively into the \(r\) slots of the column \(y\). This proves (3.1). \(\square\)
 

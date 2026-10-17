@@ -13,8 +13,12 @@ We use Section 1, Definition 2.1 and Lemma 3.1 of [Markov chains and metric Mark
 ## 1. The new points
 
 Fix \(n,t\ge1\), a stochastic matrix \(A\) on \([n]\) with a stationary probability vector \(\pi\), and \(x_1,\dots,x_n\in\ell_1\). If all \(x_i\) are equal, put \(y_i=x_i\); both sides of the cotype inequality vanish. Otherwise take \(\mathcal B\), \(w\), \(z_i\) and \(T\) from Lemma 1.1 of [Cuts and a flat cubic](cuts-and-a-flat-cubic.md), let \(p=\frac1{t+1}\), \(q=1-p\), and
+define \(h_i\) and \(y_i\) by (1.1):
 \[
-h_i=p\sum_{s=0}^\infty q^s\sum_j(A^s)_{ij}\,z_j\in Q,\qquad y_i=T(\Phi(h_i))\in\ell_1.\tag{1.1}
+\begin{gathered}
+h_i=p\sum_{s=0}^\infty q^s\sum_j(A^s)_{ij}\,z_j\in Q,\\
+y_i=T(\Phi(h_i))\in\ell_1.
+\end{gathered}
 \]
 The weights \(pq^s(A^s)_{ij}\) are nonnegative with total \(1\), so \(h_i\) is a convex combination of binary vectors and lies in \(Q=[0,1]^{\mathcal B}\). Separating the term \(s=0\),
 \[
@@ -28,14 +32,21 @@ Let \(\Sigma=\{\mathsf a,\mathsf d\}\times[n]\) (alive or dead, with an index). 
 
 By induction on \(m\), using \(\pi A=\pi\), \(\mathbb P(\omega_m=(\mathsf a,i))=q^m\pi_i\). Since \(\Phi(z_i)=z_i\) and dead states do not move,
 \[
-\mathbb E\|\Phi(M_{m+1})-\Phi(M_m)\|_{1,w}^2=q^m\sum_i\pi_i\Bigl(p\,\|z_i-\Phi(h_i)\|_{1,w}^2+q\sum_ja_{ij}\|\Phi(h_j)-\Phi(h_i)\|_{1,w}^2\Bigr).
+\begin{aligned}
+&\mathbb E\|\Phi(M_{m+1})-\Phi(M_m)\|_{1,w}^2\\
+&\quad=q^m\sum_i\pi_i\Bigl(p\,\|z_i-\Phi(h_i)\|_{1,w}^2\\
+&\qquad+q\sum_ja_{ij}\|\Phi(h_j)-\Phi(h_i)\|_{1,w}^2\Bigr).
+\end{aligned}
 \]
 
 **Lemma 2.1** (the jump identity). With
 \[
-B=\sum_i\pi_i\|z_i-\Phi(h_i)\|_{1,w}^2,\qquad E_A=\sum_{i,j}\pi_ia_{ij}\|\Phi(h_i)-\Phi(h_j)\|_{1,w}^2,
+\begin{gathered}
+B=\sum_i\pi_i\|z_i-\Phi(h_i)\|_{1,w}^2,\\
+E_A=\sum_{i,j}\pi_ia_{ij}\|\Phi(h_i)-\Phi(h_j)\|_{1,w}^2,
+\end{gathered}
 \]
-one has \(\sum_{m=0}^\infty\mathbb E\|\Phi(M_{m+1})-\Phi(M_m)\|_{1,w}^2=B+tE_A\).
+the sum over \(m\ge0\) of \(\mathbb E\|\Phi(M_{m+1})-\Phi(M_m)\|_{1,w}^2\) equals \(B+tE_A\).
 
 **Proof.** Sum the display over \(m\): \(\sum_mq^m(pB+qE_A)=B+\frac qpE_A\), and \(\frac qp=t\). \(\square\)
 
@@ -48,21 +59,30 @@ B+tE_A\le108\sum_{s=0}^\infty pq^s\,D(s).
 
 **Proof.** By Lemma 3.1 of [Cuts and a flat cubic](cuts-and-a-flat-cubic.md), for every \(L\),
 \[
-\sum_{m=0}^{L-1}\mathbb E\|\Phi(M_{m+1})-\Phi(M_m)\|_{1,w}^2\le108\,\mathbb E\|M_L-e\|_H^4.
+\begin{aligned}
+&\sum_{m=0}^{L-1}\mathbb E\|\Phi(M_{m+1})-\Phi(M_m)\|_{1,w}^2\\
+&\quad \le108\,\mathbb E\|M_L-e\|_H^4.
+\end{aligned}
 \]
-At time \(L\), the chain is dead at index \(j\) after starting at \(i\) with probability \(\sum_{s<L}pq^s\pi_i(A^s)_{ij}\), and then \(\|M_L-e\|_H^4=\|z_j-z_i\|_H^4=\|x_j-x_i\|_1^2\) by (1.1) of that lesson. It is alive with probability \(q^L\), and \(\|M_L-e\|_H^4\le(\sum_Bw_B)^2\) always. Hence \(\mathbb E\|M_L-e\|_H^4\le\sum_{s<L}pq^sD(s)+q^L(\sum_Bw_B)^2\). Let \(L\to\infty\) and use Lemma 2.1. \(\square\)
+At time \(L\), the chain is dead at index \(j\) after starting at \(i\) with probability \(\sum_{s<L}pq^s\pi_i(A^s)_{ij}\), and then \(\|M_L-e\|_H^4=\|z_j-z_i\|_H^4=\|x_j-x_i\|_1^2\) by (1.1) of that lesson. It is alive with probability \(q^L\), and \(\|M_L-e\|_H^4\le(\sum_Bw_B)^2\) always. Hence \(\mathbb E\|M_L-e\|_H^4\) is at most \(\sum_{s<L}pq^sD(s)+q^L(\sum_Bw_B)^2\). Let \(L\to\infty\) and use Lemma 2.1. \(\square\)
 
 ## 3. The theorem
 
 **Proof of Theorem 3.1.** Lemma 1.1 of [Cuts and a flat cubic](cuts-and-a-flat-cubic.md) gives \(T(z_i)=x_i\) and \(\|T(u)-T(u')\|_1\le\|u-u'\|_{1,w}\), so
 \[
-\|x_i-y_i\|_1\le\|z_i-\Phi(h_i)\|_{1,w},\qquad\|y_i-y_j\|_1\le\|\Phi(h_i)-\Phi(h_j)\|_{1,w}.
+\begin{gathered}
+\|x_i-y_i\|_1\le\|z_i-\Phi(h_i)\|_{1,w},\\
+\|y_i-y_j\|_1\le\|\Phi(h_i)-\Phi(h_j)\|_{1,w}.
+\end{gathered}
 \]
 Therefore, by Lemma 2.2 and Lemma 3.1 of [Markov chains and metric Markov cotype](markov-chains-and-metric-markov-cotype.md) (applied to the stationary chain with transitions \(A\) and initial law \(\pi\)),
 \[
-\sum_i\pi_i\|x_i-y_i\|_1^2+t\sum_{i,j}\pi_ia_{ij}\|y_i-y_j\|_1^2\le B+tE_A\le108\cdot28\,W,
+\begin{aligned}
+&\sum_i\pi_i\|x_i-y_i\|_1^2+t\sum_{i,j}\pi_ia_{ij}\|y_i-y_j\|_1^2\\
+&\quad \le B+tE_A\le108\cdot28\,W,
+\end{aligned}
 \]
-where \(W=\frac1t\sum_{s=1}^tD(s)=\sum_{i,j}\pi_i\bigl(\frac1t\sum_{s=1}^tA^s\bigr)_{ij}\|x_i-x_j\|_1^2\). This is the cotype inequality with \(C^2=3024=(12\sqrt{21})^2\). \(\square\)
+where \(W=\frac1t\sum_{s=1}^tD(s)\), which is \(\sum_{i,j}\pi_i\bigl(\frac1t\sum_{s=1}^tA^s\bigr)_{ij}\|x_i-x_j\|_1^2\). This is the cotype inequality with \(C^2=3024=(12\sqrt{21})^2\). \(\square\)
 
 Reversibility was not used, only \(\pi A=\pi\).
 
@@ -78,7 +98,10 @@ In particular the points \(y_i\) do not depend on the cut representation.
 
 **Proof.** Fix a coordinate \(k\). As in the proof of Lemma 1.1 of [Cuts and a flat cubic](cuts-and-a-flat-cubic.md), \(x_j(k)=v(k)+\sum_Bz_j(B)b_B(k)\), where the \(B\) with \(b_B(k)>0\) are the nested sets \(\{j:x_j(k)\ge\alpha\}\) for the thresholds \(\alpha\) between consecutive values. The median of three numbers is at least \(\alpha\) exactly when at least two of them are; hence
 \[
-\operatorname{med}(x_{J_1},x_{J_2},x_{J_3})(k)=v(k)+\sum_Bb_B(k)\,\mathbf 1\bigl[\#\{a:J_a\in B\}\ge2\bigr].
+\begin{aligned}
+&\operatorname{med}(x_{J_1},x_{J_2},x_{J_3})(k)=v(k)\\
+&\quad +\sum_Bb_B(k)\,\mathbf 1\bigl[\#\{a:J_a\in B\}\ge2\bigr].
+\end{aligned}
 \]
 Each \(J_a\) lies in \(B\) with probability \(\sum_jG_{ij}z_j(B)=h_i(B)\), independently, so the indicator has expectation \(\phi(h_i(B))\) (Section 2 of that lesson). The expectation is a finite average, and \(v+\sum_Bb_B\,\phi(h_i(B))=T(\Phi(h_i))=y_i\). \(\square\)
 
@@ -108,7 +131,7 @@ So the new point at \(i\) is obtained by running three independent walks from \(
 
 **6.2.** Since \(A^2=I\), \(G=\frac p{1-q^2}I+\frac{pq}{1-q^2}A\), so \(G_{11}=G_{22}=\frac{t+1}{2t+1}\) and \(G_{12}=G_{21}=\frac t{2t+1}\). There is one cut, \(B=\{2\}\), with weight \(1\); \(z_1=0\), \(z_2=1\) and \(T(u)=u\). Hence \(h_1=\frac12-\epsilon\) and \(h_2=\frac12+\epsilon\) with \(\epsilon=\frac1{2(2t+1)}\), and since \(\phi(\frac12+r)=\frac12+\frac32r-2r^3\), \(y_1=1-y_2=\frac12-\frac32\epsilon+2\epsilon^3\). The left side of the cotype inequality is \(y_1^2+t(y_2-y_1)^2\le\frac14+9t\epsilon^2\le\frac14+\frac9{16t}\), while \(W\ge\frac12\), so the right side is at least \(1512\).
 
-**6.3.** For \(m=0\) it is the initial law. Alive states at time \(m+1\) come only from alive states at time \(m\), so \(\mathbb P(\omega_{m+1}=(\mathsf a,j))=\sum_iq^m\pi_i\,qa_{ij}=q^{m+1}(\pi A)_j=q^{m+1}\pi_j\).
+**6.3.** For \(m=0\) it is the initial law. Alive states at time \(m+1\) come only from alive states at time \(m\), so \(\mathbb P(\omega_{m+1}=(\mathsf a,j))=\sum_iq^m\pi_i\,qa_{ij}\), which is \(q^{m+1}(\pi A)_j=q^{m+1}\pi_j\).
 
 **6.4.** On the real line the coordinatewise median is the median, and Proposition 4.1 applies. If the endpoint data equal \(0\) with probability \(g\) and \(1\) with probability \(1-g\), the median of three is \(1\) exactly when at least two equal \(1\), so the expected median is \(\phi(1-g)=3(1-g)^2-2(1-g)^3\).
 

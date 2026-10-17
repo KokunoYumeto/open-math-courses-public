@@ -4,7 +4,10 @@
 
 A metric space \((X,d)\) is *doubling with constant at most \(\lambda\)* if every ball of radius \(t\) in \(X\) is covered by at most \(\lambda\) balls of radius \(t/2\) with centres in \(X\). Every subset of a Euclidean space \(\mathbb R^k\) is doubling (Proposition 1.2), with a constant depending on \(k\). A map \(f:X\to\mathbb R^k\) is a *bi-Lipschitz embedding with distortion at most \(D\)* if for some scale \(a>0\)
 \[
-a\,d(x,y)\le\|f(x)-f(y)\|\le Da\,d(x,y)\qquad(x,y\in X).
+\begin{gathered}
+a\,d(x,y)\le\|f(x)-f(y)\|\le Da\,d(x,y)\\
+(x,y\in X).
+\end{gathered}
 \]
 A bi-Lipschitz image of a doubling space is again doubling (Exercise 5.3). Lang and Plaut asked in 2001 whether, conversely, every doubling subset of Hilbert space admits a bi-Lipschitz embedding into some \(\mathbb R^k\), for some finite \(k\) and \(D\); Gupta, Krauthgamer and Lee asked the same question in connection with dimension reduction in algorithms. Assouad proved that every doubling space embeds bi-Lipschitzly into some \(\mathbb R^k\) after the distance \(d\) is replaced by \(d^\alpha\), for any \(0<\alpha<1\) [Assouad], and Naor and Neiman showed that for \(\alpha\) close to \(1\) the dimension \(k\) can be bounded in terms of the doubling constant alone [NN]; the distortion still depends on \(\alpha\). For subsets of \(L_p\) with \(p>2\), Lafforgue and Naor found doubling sets with no such embedding [LN]. OpenAI answered the Hilbert space question negatively in September 2026 [OpenAI-L]:
 
@@ -20,7 +23,7 @@ Balls are open unless said otherwise: \(B(x,t)=\{y:d(x,y)<t\}\).
 
 **Lemma 1.1** (packing). If \(z_1,\dots,z_N\in\mathbb R^k\) lie in a closed ball of radius \(R\) and \(\|z_i-z_m\|\ge s>0\) for \(i\neq m\), then \(N\le(1+2R/s)^k\).
 
-**Proof.** Let the closed ball have centre \(c\). The open balls \(B(z_i,s/2)\) are pairwise disjoint, by the triangle inequality, and contained in \(B(c,R+s/2)\). By translation invariance and scaling, \(\mu(B(z_i,s/2))=(s/2)^k\mu(B(0,1))\) and \(\mu(B(c,R+s/2))=(R+s/2)^k\mu(B(0,1))\), so \(N(s/2)^k\le(R+s/2)^k\). \(\square\)
+**Proof.** Let the closed ball have centre \(c\). The open balls \(B(z_i,s/2)\) are pairwise disjoint, by the triangle inequality, and contained in \(B(c,R+s/2)\). By translation invariance and scaling, \(\mu(B(z_i,s/2))=(s/2)^k\mu(B(0,1))\) and \(\mu(B(c,R+s/2))\) equals \((R+s/2)^k\mu(B(0,1))\), so \(N(s/2)^k\le(R+s/2)^k\). \(\square\)
 
 **Proposition 1.2.** Every subset \(X\) of \(\mathbb R^k\) is doubling with constant at most \(5^k\).
 
@@ -38,7 +41,10 @@ At level \(j\), colour the horizontal strip \(\{(x,y):qr_j<y<(q+1)r_j\}\), \(q\i
 
 Let \(S\subseteq\mathcal H\) be the set of points \((p,w)\) with \(p\in\mathbb R^2\) and \(w=(w_j)_{j\ge1}\) such that \(w_j\neq0\) for only finitely many \(j\), and for each \(j\)
 \[
-w_j=0\quad\text{or}\quad w_j=r_je_{j,i}\ \text{ for some }i\text{ with }p\in U_{j,i}.
+\begin{aligned}
+&w_j=0\quad\text{or}\quad w_j\\
+&\quad =r_je_{j,i}\ \text{ for some }i\text{ with }p\in U_{j,i}.
+\end{aligned}
 \]
 The value \(w_j=0\) is always allowed, also on the boundaries of the strips. The distance on \(S\) is \(\|z-z'\|\), the norm of \(\mathcal H\). Distinct values of one coordinate \(w_j\) differ by \(r_j\) or by \(\sqrt2\,r_j\), so they have distance at least \(r_j\).
 
@@ -54,7 +60,12 @@ The value \(w_j=0\) is always allowed, also on the boundaries of the strips. The
 
 *Fine levels.* For \(z,z'\in Z\),
 \[
-\sum_{r_j\le t/64}\|w_j-w'_j\|^2\le2\sum_{r_j\le t/64}r_j^2\le\frac2{1-10^{-6}}\Bigl(\frac t{64}\Bigr)^2<\Bigl(\frac t{32}\Bigr)^2.\tag{3.1}
+\begin{aligned}
+&\sum_{r_j\le t/64}\|w_j-w'_j\|^2\\
+&\quad \le2\sum_{r_j\le t/64}r_j^2\\
+&\quad \le\frac2{1-10^{-6}}\Bigl(\frac t{64}\Bigr)^2\\
+&\quad <\Bigl(\frac t{32}\Bigr)^2.
+\end{aligned}\tag{3.1}
 \]
 
 *Grouping.* Cut the square of side \(2t\) containing the base points into \(16^2\) cells of side \(t/8\), with the boundaries assigned to one cell each, and group the points of \(Z\) by their cell and their intermediate coordinate (if there is an intermediate level). There are at most \(76800\) nonempty groups. Two points of one group agree at the coarse and intermediate levels, their base points are at distance at most \(\sqrt2\,t/8\), and by (3.1) the rest contributes less than \((t/32)^2\) to the squared distance; so their distance is less than
@@ -69,7 +80,10 @@ The doubling constant is uniform although the number of colours \(N_j\) is unbou
 
 For a sequence \(w\) as above, with \(w_j=r_je_{j,i_j}\) at its nonzero levels, let
 \[
-\Omega_w=\{p\in\mathbb R^2:(p,w)\in S\}=\bigcap_{j:\,w_j\neq0}U_{j,i_j},
+\begin{aligned}
+\Omega_w&=\{p\in\mathbb R^2:(p,w)\in S\}\\
+&=\bigcap_{j:\,w_j\neq0}U_{j,i_j},
+\end{aligned}
 \]
 an open set (the plane if \(w=0\)). Over \(\Omega_w\), the points \((p,w)\) form a copy of \(\Omega_w\): \(\|(p,w)-(p',w)\|=\|p-p'\|\). The proof of the theorem looks at an embedding on these copies, which the next lesson calls *sheets*. Adding one coordinate \(r_je_{j,i}\) at a level \(j\) where \(w_j=0\) moves a point by exactly \(r_j\), and two different such additions at the same level and the same base point give points at distance \(\sqrt2\,r_j\); the domain of the new sheet is \(\Omega_w\cap U_{j,i}\), which contains both the horizontal and the vertical strips of colour \(i\) inside \(\Omega_w\).
 
@@ -89,7 +103,7 @@ an open set (the plane if \(w=0\)). Over \(\Omega_w\), the points \((p,w)\) form
 
 **5.2.** The ball \((x-t,x+t)\) is covered by the three intervals of radius \(t/2\) centred at \(x-t/2\), \(x\) and \(x+t/2\); the endpoints \(x\pm t\) are not in the ball.
 
-**5.3.** We may take the scale \(a=1\). Let \(y=f(x)\) and \(t>0\). The preimage \(E\) of \(B_{f(X)}(y,t)\) lies in \(B_X(x,t)\), since \(d(x,x')\le\|f(x)-f(x')\|<t\). By \(m\) halvings, \(B_X(x,t)\) is covered by at most \(\lambda^m\) balls of radius \(2^{-m}t\). For each one meeting \(E\), choose \(x_0\) in it and in \(E\); every other point \(x'\) of \(E\) in it has \(\|f(x')-f(x_0)\|\le D\,d(x',x_0)<2^{1-m}Dt\le t/2\). So the balls \(B_{f(X)}(f(x_0),t/2)\) cover.
+**5.3.** We may take the scale \(a=1\). Let \(y=f(x)\) and \(t>0\). The preimage \(E\) of \(B_{f(X)}(y,t)\) lies in \(B_X(x,t)\), since \(d(x,x')\le\|f(x)-f(x')\|<t\). By \(m\) halvings, \(B_X(x,t)\) is covered by at most \(\lambda^m\) balls of radius \(2^{-m}t\). For each one meeting \(E\), choose \(x_0\) in it and in \(E\); every other point \(x'\) of \(E\) in it has \(\|f(x')-f(x_0)\|\le D\,d(x',x_0)\), which is less than \(2^{1-m}Dt\le t/2\). So the balls \(B_{f(X)}(f(x_0),t/2)\) cover.
 
 **5.4.** \(2t/r<128\), so \(\lfloor2t/r\rfloor\le127\). And \(2/(1-10^{-6})<2/(1/2)=4\), so \(\frac2{1-10^{-6}}(t/64)^2<4(t/64)^2=(t/32)^2\).
 

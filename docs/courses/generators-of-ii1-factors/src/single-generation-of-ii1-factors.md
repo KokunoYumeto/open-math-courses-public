@@ -45,11 +45,19 @@ M=W^*(a,b,\operatorname{Re}u,\operatorname{Im}u).\qquad\square
 
 **Proof.** Let \(N=W^*(a_1,a_2,a_3,a_4)\) with \(a_i=a_i^*\), choose \(C>\|a_1\|+\|a_2\|\), and put
 \[
-A=\begin{pmatrix}a_1&0\\0&a_2+C\end{pmatrix},\qquad B=\begin{pmatrix}a_3&1\\1&a_4\end{pmatrix},\qquad Q=W^*(A,B).
+\begin{gathered}
+A=\begin{pmatrix}a_1&0\\0&a_2+C\end{pmatrix},\\
+B=\begin{pmatrix}a_3&1\\1&a_4\end{pmatrix},\qquad Q=W^*(A,B).
+\end{gathered}
 \]
 Let \(E_{ij}\) be the matrix units of \(M_2(N)\). The two diagonal blocks of \(A\) have spectra in \([-\|a_1\|,\|a_1\|]\) and \([C-\|a_2\|,C+\|a_2\|]\), which are separated by any \(\lambda\) with \(\|a_1\|<\lambda<C-\|a_2\|\). Since \(A\) acts on the two summands separately, its spectral projection for \((-\infty,\lambda)\) is \(E_{11}\). So \(E_{11},E_{22}=1-E_{11}\in Q\), \(E_{12}=E_{11}BE_{22}\in Q\) and \(E_{21}=E_{12}^*\in Q\). The corner \(E_{11}QE_{11}\) contains
 \[
-E_{11}AE_{11}=\begin{pmatrix}a_1&0\\0&0\end{pmatrix},\quad E_{12}AE_{21}-CE_{11}=\begin{pmatrix}a_2&0\\0&0\end{pmatrix},\quad E_{11}BE_{11}=\begin{pmatrix}a_3&0\\0&0\end{pmatrix},\quad E_{12}BE_{21}=\begin{pmatrix}a_4&0\\0&0\end{pmatrix}.
+\begin{aligned}
+E_{11}AE_{11}&=\begin{pmatrix}a_1&0\\0&0\end{pmatrix},\\
+E_{12}AE_{21}-CE_{11}&=\begin{pmatrix}a_2&0\\0&0\end{pmatrix},\\
+E_{11}BE_{11}&=\begin{pmatrix}a_3&0\\0&0\end{pmatrix},\\
+E_{12}BE_{21}&=\begin{pmatrix}a_4&0\\0&0\end{pmatrix}.
+\end{aligned}
 \]
 The map \(x\mapsto\begin{pmatrix}x&0\\0&0\end{pmatrix}\) is a normal \(*\)-isomorphism of \(N\) onto \(E_{11}M_2(N)E_{11}\), and \(E_{11}QE_{11}\) is a von Neumann algebra on that corner containing the images of \(a_1,\dots,a_4\). So it contains the image of \(N\). Every matrix is \(\sum_{i,j}E_{i1}\begin{pmatrix}x_{ij}&0\\0&0\end{pmatrix}E_{1j}\), so \(Q=M_2(N)\). \(\square\)
 
@@ -61,13 +69,20 @@ The map \(x\mapsto\begin{pmatrix}x&0\\0&0\end{pmatrix}\) is a normal \(*\)-isomo
 
 By Lemma 2.3 of the first lesson there is \(v\in M\) with \(v^*v=p\) and \(vv^*=1-p\). Then \(f_{11}=p\), \(f_{12}=v^*\), \(f_{21}=v\), \(f_{22}=1-p\) are matrix units in \(M\): \(f_{ij}f_{kl}=\delta_{jk}f_{il}\), \(f_{ij}^*=f_{ji}\), \(f_{11}+f_{22}=1\). The map
 \[
-\Phi\colon M_2(N)\to M,\qquad\Phi\bigl((b_{ij})\bigr)=\sum_{i,j}f_{i1}b_{ij}f_{1j}=b_{11}+b_{12}v^*+vb_{21}+vb_{22}v^*
+\begin{aligned}
+&\Phi\colon M_2(N)\to M,\\
+&\Phi\bigl((b_{ij})\bigr)=\sum_{i,j}f_{i1}b_{ij}f_{1j}=b_{11}\\
+&\quad +b_{12}v^*+vb_{21}+vb_{22}v^*
+\end{aligned}
 \]
 is a unital \(*\)-isomorphism. It is multiplicative and \(*\)-preserving by the matrix unit relations and \(b_{ij}=pb_{ij}p\); it is injective because \(f_{1i}\Phi((b_{kl}))f_{j1}=b_{ij}\); and it is onto, because every \(m\in M\) equals \(\sum_{i,j}f_{i1}(f_{1i}mf_{j1})f_{1j}\) with \(f_{1i}mf_{j1}\in pMp\). As a \(*\)-isomorphism of von Neumann algebras it is normal.
 
 Proposition 3.1 for \(N\) and Lemma 4.1 give self-adjoint \(A,B\in M_2(N)\) with \(W^*(A,B)=M_2(N)\). Put \(x=\Phi(A)+i\Phi(B)\). Its real and imaginary parts are \(\Phi(A)\) and \(\Phi(B)\), so
 \[
-W^*(x)=W^*\bigl(\Phi(A),\Phi(B)\bigr)=\Phi\bigl(M_2(N)\bigr)=M .
+\begin{aligned}
+W^*(x)&=W^*\bigl(\Phi(A),\Phi(B)\bigr)\\
+&=\Phi\bigl(M_2(N)\bigr)=M .
+\end{aligned}
 \]
 Conversely, if \(M=W^*(x)\), then \(M=W^*(\operatorname{Re}x,\operatorname{Im}x)\). \(\square\)
 

@@ -17,10 +17,17 @@ We use the monomial integrals of Proposition 2.3 of [Small linear forms and Apé
 Throughout, \(N\) is a positive integer, and we put
 
 \[
-n=48N,\quad a=11N,\quad b=7N,\quad g=q=4N,\quad h=2N,
+\begin{aligned}
+n&=48N,\quad a=11N,\quad b\\
+&=7N,\quad g=q=4N,\quad h=2N,
+\end{aligned}
 \]
 \[
-L=n+a=n+b+q=59N,\quad C=L+g=63N,\quad H=C+h=65N,\quad A=a+2g=19N.
+\begin{aligned}
+L&=n+a=n+b+q=59N,\quad C\\
+&=L+g=63N,\quad H=C+h\\
+&=65N,\quad A=a+2g=19N.
+\end{aligned}
 \]
 
 The determinants will have size \(n\). The numbers \(b\) and \(q\) describe the columns, \(g\), \(h\) and \(C\) the rows, \(L\) is the order of agreement that cancels \(\zeta(2)\), and all row polynomials will have their monomials in degrees \(A\) to \(H-1\). Every one of these quantities is a fixed multiple of \(N\); the arithmetic of later lessons depends on these exact ratios.
@@ -38,10 +45,13 @@ They have integer coefficients; \(T_d\) and \(U_d\) have degree \(d\) for \(d\ge
 **Lemma 2.1.** For every complex \(w\ne0\) and every \(d\ge0\), with \(x=(w+w^{-1})/2\),
 
 \[
-T_d(x)=\frac{w^d+w^{-d}}2,\qquad U_{d-1}(x)\,\frac{w-w^{-1}}2=\frac{w^d-w^{-d}}2.
+\begin{gathered}
+T_d(x)=\frac{w^d+w^{-d}}2,\\
+U_{d-1}(x)\,\frac{w-w^{-1}}2=\frac{w^d-w^{-d}}2.
+\end{gathered}
 \]
 
-**Proof.** Both right sides satisfy the recurrence in \(d\), because \((w+w^{-1})(w^d\pm w^{-d})=(w^{d+1}\pm w^{-d-1})+(w^{d-1}\pm w^{-(d-1)})\), and they agree with the left sides for \(d=0,1\). \(\square\)
+**Proof.** Both right sides satisfy the recurrence in \(d\), because \((w+w^{-1})(w^d\pm w^{-d})\) is the sum of \(w^{d+1}\pm w^{-d-1}\) and \(w^{d-1}\pm w^{-(d-1)}\), and they agree with the left sides for \(d=0,1\). \(\square\)
 
 Write \(f(t)=\sqrt{1-t^2}\), with the positive root for \(-1<t<1\); near \(t=0\) it is the power series with \(f(0)=1\). Put
 
@@ -52,8 +62,12 @@ w=\frac t{1+f}.
 Using \(f^2+t^2=1\) one checks \(1+w^2=2/(1+f)\), and then
 
 \[
-t=\frac{2w}{1+w^2},\qquad f=\frac{1-w^2}{1+w^2},\qquad \frac{w+w^{-1}}2=\frac1t,\qquad\frac{w^{-1}-w}2=\frac ft.
-\tag{2.1}
+\begin{gathered}
+t=\frac{2w}{1+w^2},\\
+f=\frac{1-w^2}{1+w^2},\\
+\frac{w+w^{-1}}2=\frac1t,\\
+\frac{w^{-1}-w}2=\frac ft.
+\end{gathered}\tag{2.1}
 \]
 
 As a power series, \(w=t/2+O(t^3)\). The substitution \(w\mapsto w^{-1}\), which we write as a star, fixes \(t\) and changes the sign of \(f\), by (2.1).
@@ -61,8 +75,10 @@ As a power series, \(w=t/2+O(t^3)\). The substitution \(w\mapsto w^{-1}\), which
 Finally recall the binomial series
 
 \[
-\frac1{f(t)}=\sum_{l\ge0}c_lt^{2l},\qquad c_l=\frac1{4^l}\binom{2l}l,
-\tag{2.2}
+\begin{gathered}
+\frac1{f(t)}=\sum_{l\ge0}c_lt^{2l},\\
+c_l=\frac1{4^l}\binom{2l}l,
+\end{gathered}\tag{2.2}
 \]
 
 valid for \(|t|<1\). We write \(c_z=0\) when \(z\) is not a nonnegative integer.
@@ -72,28 +88,40 @@ valid for \(|t|<1\). We write \(c_z=0\) when \(z\) is not a nonnegative integer.
 For \(0\le r<n\) put \(d=|r-g|\) and
 
 \[
-R_r=(1-t)^ht^{C-1}w^{r-g},\qquad P_r=\frac{R_r+R_r^*}2,\qquad D_r=\frac{t\,(R_r^*-R_r)}{2f}.
-\tag{3.1}
+\begin{gathered}
+R_r=(1-t)^ht^{C-1}w^{r-g},\\
+P_r=\frac{R_r+R_r^*}2,\\
+D_r=\frac{t\,(R_r^*-R_r)}{2f}.
+\end{gathered}\tag{3.1}
 \]
 
 **Proposition 3.1** (the rows are integer polynomials). For \(0\le r<n\),
 
 \[
-P_r=(1-t)^ht^{C-1}T_d(1/t),\qquad D_r=\operatorname{sgn}(r-g)\,(1-t)^ht^{C-1}U_{d-1}(1/t).
+\begin{gathered}
+P_r=(1-t)^ht^{C-1}T_d(1/t),\\
+D_r=\operatorname{sgn}(r-g)\,(1-t)^ht^{C-1}U_{d-1}(1/t).
+\end{gathered}
 \]
 
 These are polynomials with integer coefficients, \(D_g=0\), and their monomials lie in the degrees
 
 \[
-\operatorname{supp}P_r\subseteq\{A,\dots,H-1\},\qquad\operatorname{supp}D_r\subseteq\{A+1,\dots,H-1\}.
+\begin{gathered}
+\operatorname{supp}P_r\subseteq\{A,\dots,H-1\},\\
+\operatorname{supp}D_r\subseteq\{A+1,\dots,H-1\}.
+\end{gathered}
 \]
 
-**Proof.** By (2.1) and Lemma 2.1, \((w^{r-g}+w^{g-r})/2=T_d(1/t)\). For \(r\ge g\), \((w^{g-r}-w^{r-g})/2=(w^{-d}-w^d)/2=U_{d-1}(1/t)\cdot(w^{-1}-w)/2=U_{d-1}(1/t)\,f/t\); for \(r<g\) the sign is reversed. This gives both formulas. The polynomial \(t^{C-1}T_d(1/t)\) has monomials in degrees \(C-1-d\) to \(C-1\), and \(t^{C-1}U_{d-1}(1/t)\) in degrees \(C-d\) to \(C-1\). Since \(0\le r\le n-1\) and \(g\le n-1-g\), we have \(d\le n-1-g\), so \(C-1-d\ge C-n+g=A\). Multiplication by \((1-t)^h\) raises the top degree to \(C-1+h=H-1\). \(\square\)
+**Proof.** By (2.1) and Lemma 2.1, \((w^{r-g}+w^{g-r})/2=T_d(1/t)\). For \(r\ge g\), \((w^{g-r}-w^{r-g})/2=(w^{-d}-w^d)/2\), which is \(U_{d-1}(1/t)\cdot(w^{-1}-w)/2\), which is \(U_{d-1}(1/t)\,f/t\); for \(r<g\) the sign is reversed. This gives both formulas. The polynomial \(t^{C-1}T_d(1/t)\) has monomials in degrees \(C-1-d\) to \(C-1\), and \(t^{C-1}U_{d-1}(1/t)\) in degrees \(C-d\) to \(C-1\). Since \(0\le r\le n-1\) and \(g\le n-1-g\), we have \(d\le n-1-g\), so \(C-1-d\ge C-n+g=A\). Multiplication by \((1-t)^h\) raises the top degree to \(C-1+h=H-1\). \(\square\)
 
 **Lemma 3.2** (Taylor contact). As power series in \(t\),
 
 \[
-\frac{tP_r}f-D_r=\frac{tR_r}f=O\bigl(t^{C+r-g}\bigr)=O(t^L).
+\begin{aligned}
+&\frac{tP_r}f-D_r=\frac{tR_r}f\\
+&\quad =O\bigl(t^{C+r-g}\bigr)=O(t^L).
+\end{aligned}
 \]
 
 **Proof.** The first equality is (3.1). Since \(w=\frac t2(1+O(t^2))\), every integer power satisfies \(w^{r-g}=(t/2)^{r-g}(1+O(t^2))\), so \(tR_r/f\) starts in degree \(1+(C-1)+(r-g)\). As \(r\ge0\), this is at least \(C-g=L\). \(\square\)
@@ -103,7 +131,10 @@ These are polynomials with integer coefficients, \(D_g=0\), and their monomials 
 On \((-1,1)\) consider the measure \(d\mu(t)=|t|\,dt/f(t)\), of total mass \(2\), and its moments
 
 \[
-m_i=\int_{-1}^1t^i\,d\mu(t)\qquad(i\ge0),\qquad m_{-1}=0.
+\begin{gathered}
+m_i=\int_{-1}^1t^i\,d\mu(t)\\
+(i\ge0),\qquad m_{-1}=0.
+\end{gathered}
 \]
 
 **Lemma 4.1.** \(m_i=0\) for odd \(i\), and \(m_i=2/((i+1)c_{i/2})\) for even \(i\). Equivalently \(m_0=2\) and \((i+1)m_i=i\,m_{i-2}\) for \(i\ge1\). In particular \(m_i\to0\).
@@ -111,7 +142,11 @@ m_i=\int_{-1}^1t^i\,d\mu(t)\qquad(i\ge0),\qquad m_{-1}=0.
 **Proof.** For odd \(i\) the integrand is odd. For \(i\ge1\), integration by parts on \((0,1)\), with \(t(1-t^2)^{-1/2}=-\frac d{dt}\sqrt{1-t^2}\), gives
 
 \[
-\int_0^1\frac{t^{i+1}}{\sqrt{1-t^2}}\,dt=i\int_0^1t^{i-1}\sqrt{1-t^2}\,dt=i\int_0^1\frac{t^{i-1}}{\sqrt{1-t^2}}\,dt-i\int_0^1\frac{t^{i+1}}{\sqrt{1-t^2}}\,dt,
+\begin{aligned}
+\int_0^1\frac{t^{i+1}}{\sqrt{1-t^2}}\,dt&=i\int_0^1t^{i-1}\sqrt{1-t^2}\,dt\\
+&=i\int_0^1\frac{t^{i-1}}{\sqrt{1-t^2}}\,dt\\
+&\quad -i\int_0^1\frac{t^{i+1}}{\sqrt{1-t^2}}\,dt,
+\end{aligned}
 \]
 
 which is the recurrence; \(m_0=2\int_0^1t(1-t^2)^{-1/2}dt=2\). The closed form satisfies the same recurrence because \(c_l/c_{l-1}=(2l-1)/(2l)\). Finally \(c_l\ge1/(2\sqrt l)\) for \(l\ge1\), by induction from the same ratio, so \(m_i\to0\). \(\square\)
@@ -121,8 +156,10 @@ which is the recurrence; \(m_0=2\int_0^1t(1-t^2)^{-1/2}dt=2\). The closed form s
 For integers \(i,j\ge0\) define
 
 \[
-M(i,j)=\int_{-1}^1\int_0^1\frac{t^is^j}{1-ts}\,ds\,d\mu(t),\qquad
+\begin{gathered}
+M(i,j)=\int_{-1}^1\int_0^1\frac{t^is^j}{1-ts}\,ds\,d\mu(t),\\
 Z(i,j)=\int_0^1\int_0^1\frac{t^is^j}{1-ts}\,ds\,dt,
+\end{gathered}
 \]
 
 and extend both bilinearly to polynomial arguments: for polynomials \(P(t)\) and \(S(s)\), \(M(P,S)=\sum_{i,j}[t^i]P\,[s^j]S\,M(i,j)\), where \([t^i]P\) is the coefficient of \(t^i\).
@@ -130,7 +167,10 @@ and extend both bilinearly to polynomial arguments: for polynomials \(P(t)\) and
 **Lemma 5.1** (convergence and series). Both integrals converge absolutely, and
 
 \[
-M(i,j)=\sum_{u\ge0}\frac{m_{i+u}}{j+u+1},\qquad M(i,j)-M(i+1,j+1)=\frac{m_i}{j+1}.
+\begin{gathered}
+M(i,j)=\sum_{u\ge0}\frac{m_{i+u}}{j+u+1},\\
+M(i,j)-M(i+1,j+1)=\frac{m_i}{j+1}.
+\end{gathered}
 \]
 
 **Proof.** For \(0<v<1\), \(\int_0^1ds/(1-vs)=-\log(1-v)/v\), and \(-\log(1-v)/\sqrt{1-v^2}\) is integrable on \((0,1)\). Hence \(\iint(1-|t|s)^{-1}\,ds\,d\mu(t)<\infty\), and this dominates \(|t^is^j/(1-ts)|\) as well as every partial sum of \(\sum_u|t|^us^u\). Expanding \(1/(1-ts)=\sum_u(ts)^u\) and integrating termwise (dominated convergence) gives the series, and the second identity follows by comparing the series term by term. The assertion for \(Z\) is Proposition 2.3 of the first lesson. \(\square\)
@@ -140,7 +180,10 @@ Write \(K^-_d=M(d,0)\) and \(K^+_d=M(0,d)\) for the moments on the two boundary 
 **Lemma 5.2** (boundary recurrences). For \(d\ge2\),
 
 \[
-dK^-_d=(d-1)K^-_{d-2}+m_{d-2}+m_{d-1},\qquad (d-1)K^+_d=(d-2)K^+_{d-2}+\frac2{d-1},
+\begin{gathered}
+dK^-_d=(d-1)K^-_{d-2}+m_{d-2}+m_{d-1},\\
+(d-1)K^+_d=(d-2)K^+_{d-2}+\frac2{d-1},
+\end{gathered}
 \]
 
 and \(K^-_1=2\).
@@ -148,13 +191,22 @@ and \(K^-_1=2\).
 **Proof.** By Lemma 4.1, \(m_{k}=\frac k{k+1}m_{k-2}\) for every \(k\ge1\). For the first recurrence, the series of Lemma 5.1 gives
 
 \[
-dK^-_d-(d-1)K^-_{d-2}=\sum_{u\ge0}\frac{d\,m_{d+u}-(d-1)m_{d+u-2}}{u+1}=\sum_{u\ge0}\frac{m_{d+u-2}}{d+u+1}=\sum_{u\ge0}\bigl(m_{d+u-2}-m_{d+u}\bigr),
+\begin{aligned}
+&dK^-_d-(d-1)K^-_{d-2}\\
+&\quad =\sum_{u\ge0}\frac{d\,m_{d+u}-(d-1)m_{d+u-2}}{u+1}\\
+&\quad =\sum_{u\ge0}\frac{m_{d+u-2}}{d+u+1}\\
+&\quad =\sum_{u\ge0}\bigl(m_{d+u-2}-m_{d+u}\bigr),
+\end{aligned}
 \]
 
 where both steps use \(m_{d+u}=\frac{d+u}{d+u+1}m_{d+u-2}\). The last sum telescopes to \(m_{d-2}+m_{d-1}\), since \(m_v\to0\). The same computation with \(d=1\), without the term \((d-1)K^-_{d-2}\), gives \(K^-_1=m_{-1}+m_0=2\). For the second recurrence, shift the series of \(K^+_d\) by two:
 
 \[
-(d-1)K^+_d-(d-2)K^+_{d-2}=\sum_{u\ge2}\frac{(d-1)m_{u-2}-(d-2)m_u}{d+u-1}-(d-2)\Bigl(\frac{m_0}{d-1}+\frac{m_1}d\Bigr).
+\begin{aligned}
+&(d-1)K^+_d-(d-2)K^+_{d-2}\\
+&\quad =\sum_{u\ge2}\frac{(d-1)m_{u-2}-(d-2)m_u}{d+u-1}\\
+&\quad -(d-2)\Bigl(\frac{m_0}{d-1}+\frac{m_1}d\Bigr).
+\end{aligned}
 \]
 
 Each summand equals \(m_{u-2}/(u+1)=m_{u-2}-m_u\), so the sum is \(m_0+m_1=2\), and the subtracted term is \(2(d-2)/(d-1)\). The difference \(2-2(d-2)/(d-1)\) is \(2/(d-1)\). \(\square\)
@@ -162,18 +214,25 @@ Each summand equals \(m_{u-2}/(u+1)=m_{u-2}-m_u\), so the sum is \(m_0+m_1=2\), 
 **Lemma 5.3** (the two transcendental starting values).
 
 \[
-K^-_0=K^+_0=M(0,0)=4G,\qquad K^+_1=M(0,1)=\frac{\pi^2}4=\frac32\zeta(2).
+\begin{gathered}
+K^-_0=K^+_0=M(0,0)=4G,\\
+K^+_1=M(0,1)=\frac{\pi^2}4=\frac32\zeta(2).
+\end{gathered}
 \]
 
-**Proof.** Integrating in \(s\), \(M(0,0)=\int_{-1}^1(|t|/f)(-\log(1-t)/t)\,dt\). Splitting the interval and substituting \(t\mapsto-t\) on the negative half gives \(\int_0^1\log\frac{1+t}{1-t}\,\frac{dt}{\sqrt{1-t^2}}\). With \(t=\sin\theta\) and \(\frac{1+\sin\theta}{1-\sin\theta}=\tan^2(\frac\pi4+\frac\theta2)\), this becomes \(4\int_{\pi/4}^{\pi/2}\log\tan\phi\,d\phi=-4\int_0^{\pi/4}\log\tan v\,dv\). Finally, with \(x=\tan v\) and the geometric series of \(1/(1+x^2)\),
+**Proof.** Integrating in \(s\), \(M(0,0)=\int_{-1}^1(|t|/f)(-\log(1-t)/t)\,dt\). Splitting the interval and substituting \(t\mapsto-t\) on the negative half gives \(\int_0^1\log\frac{1+t}{1-t}\,\frac{dt}{\sqrt{1-t^2}}\). With \(t=\sin\theta\) and \(\frac{1+\sin\theta}{1-\sin\theta}=\tan^2(\frac\pi4+\frac\theta2)\), this becomes \(4\int_{\pi/4}^{\pi/2}\log\tan\phi\,d\phi\), which is \(-4\int_0^{\pi/4}\log\tan v\,dv\). Finally, with \(x=\tan v\) and the geometric series of \(1/(1+x^2)\),
 
 \[
-\int_0^{\pi/4}\log\tan v\,dv=\int_0^1\frac{\log x}{1+x^2}\,dx=\sum_{k\ge0}(-1)^k\int_0^1x^{2k}\log x\,dx=-\sum_{k\ge0}\frac{(-1)^k}{(2k+1)^2}=-G;
+\begin{aligned}
+&\int_0^{\pi/4}\log\tan v\,dv=\int_0^1\frac{\log x}{1+x^2}\,dx\\
+&\quad =\sum_{k\ge0}(-1)^k\int_0^1x^{2k}\log x\,dx\\
+&\quad =-\sum_{k\ge0}\frac{(-1)^k}{(2k+1)^2}=-G;
+\end{aligned}
 \]
 
 termwise integration is justified because the partial sums of the alternating series are bounded by \(1\) in absolute value.
 
-For the second value, Lemma 5.1, Lemma 4.1 and \((2k+1)c_k=2(k+1)c_{k+1}\) give \(K^+_1=\sum_{k\ge0}m_{2k}/(2k+2)=\sum_{k\ge1}1/(2k^2c_k)\). The function \(y=(\arcsin x)^2\) satisfies \((1-x^2)y''-xy'=2\) with \(y(0)=y'(0)=0\). Substituting \(y=\sum_ka_kx^{2k}\) gives \(a_1=1\) and \((2k+2)(2k+1)a_{k+1}=4k^2a_k\), whose solution is \(a_k=1/(2k^2c_k)\); the series has radius of convergence \(1\) and, by uniqueness of the analytic solution of this initial value problem on \((-1,1)\), equals \((\arcsin x)^2\) there. Its coefficients are positive, so letting \(x\uparrow1\) gives \(\sum_k a_k=(\pi/2)^2\) by monotone convergence.
+For the second value, Lemma 5.1, Lemma 4.1 and \((2k+1)c_k=2(k+1)c_{k+1}\) give \(K^+_1=\sum_{k\ge0}m_{2k}/(2k+2)\), which is \(\sum_{k\ge1}1/(2k^2c_k)\). The function \(y=(\arcsin x)^2\) satisfies \((1-x^2)y''-xy'=2\) with \(y(0)=y'(0)=0\). Substituting \(y=\sum_ka_kx^{2k}\) gives \(a_1=1\) and \((2k+2)(2k+1)a_{k+1}=4k^2a_k\), whose solution is \(a_k=1/(2k^2c_k)\); the series has radius of convergence \(1\) and, by uniqueness of the analytic solution of this initial value problem on \((-1,1)\), equals \((\arcsin x)^2\) there. Its coefficients are positive, so letting \(x\uparrow1\) gives \(\sum_k a_k=(\pi/2)^2\) by monotone convergence.
 
 It remains to show \(\zeta(2)=\pi^2/6\). For \(0<\rho<1\) and \(0<x<\pi\),
 
@@ -189,14 +248,13 @@ The other moments follow from the recurrences. Let \(k^-_d\) and \(k^+_d\) be th
 k^-_0=k^+_0=k^+_1=0,\qquad k^-_1=2,
 \]
 
-and define \(M^0(i,j)\) by **diagonal reduction**:
-
+and define \(M^0(i,j)\) by **diagonal reduction**, the rule (5.1): for \(i\ge j\),
 \[
-M^0(i,j)=\begin{cases}
-k^-_{i-j}-\displaystyle\sum_{k=1}^j\frac{m_{i-j+k-1}}k,&i\ge j,\\[8pt]
-k^+_{j-i}-\displaystyle\sum_{k=j-i+1}^j\frac{m_{k-(j-i)-1}}k,&i<j.
-\end{cases}
-\tag{5.1}
+M^0(i,j)=k^-_{i-j}-\sum_{k=1}^j\frac{m_{i-j+k-1}}k,
+\]
+and for \(i<j\),
+\[
+M^0(i,j)=k^+_{j-i}-\sum_{k=j-i+1}^j\frac{m_{k-(j-i)-1}}k.
 \]
 
 With \(B^{(d)}_i=\sum_{k=1}^ik^{-d}\) and \(B^{(d)}_0=0\), put
@@ -208,7 +266,11 @@ Z^0(i,j)=\begin{cases}-B^{(2)}_i,&i=j,\\[2pt] \dfrac{B^{(1)}_i-B^{(1)}_j}{i-j},&
 **Proposition 5.4** (decomposition of the moments). For all \(i,j\ge0\),
 
 \[
-M(i,j)=M^0(i,j)+4G\,c_{(i-j)/2}+\frac32\zeta(2)\,c_{(j-i-1)/2},\qquad Z(i,j)=Z^0(i,j)+[i=j]\,\zeta(2),
+\begin{aligned}
+&M(i,j)=M^0(i,j)+4G\,c_{(i-j)/2}\\
+&\quad +\frac32\zeta(2)\,c_{(j-i-1)/2},\\
+&Z(i,j)=Z^0(i,j)+[i=j]\,\zeta(2),
+\end{aligned}
 \]
 
 where \([i=j]\) is \(1\) if \(i=j\) and \(0\) otherwise.
@@ -218,7 +280,11 @@ where \([i=j]\) is \(1\) if \(i=j\) and \(0\) otherwise.
 For the valuation estimates of the next lessons we record the boundary arrays explicitly. Put
 
 \[
-H^*_z=\begin{cases}c_{z/2},&z\ge0\text{ even},\\ \dfrac1{z\,c_{(z-1)/2}},&z\ge1\text{ odd},\end{cases}\qquad\text{so that}\qquad\frac{H^*_{z+2}}{H^*_z}=\frac{z+1}{z+2}.
+H^*_z=\begin{cases}c_{z/2},&z\ge0\text{ even},\\ \dfrac1{z\,c_{(z-1)/2}},&z\ge1\text{ odd},\end{cases}
+\]
+so that
+\[
+\frac{H^*_{z+2}}{H^*_z}=\frac{z+1}{z+2}.
 \]
 
 **Proposition 5.5** (explicit boundary arrays). For \(u\ge0\),
@@ -226,11 +292,13 @@ H^*_z=\begin{cases}c_{z/2},&z\ge0\text{ even},\\ \dfrac1{z\,c_{(z-1)/2}},&z\ge1\
 \[
 k^-_u=\begin{cases}H^*_u\displaystyle\sum_{\substack{2\le z\le u\\ z\text{ even}}}\frac2{z^2(H^*_z)^2},&u\text{ even},\\[10pt]
 H^*_u\displaystyle\sum_{\substack{1\le z\le u\\ z\text{ odd}}}\frac2z,&u\text{ odd},\end{cases}
-\qquad
+\]
+and
+\[
 k^+_{u+1}=H^*_u\sum_{\substack{1\le z\le u\\ z\equiv u\ (2)}}\frac2{z^2H^*_z}.
 \]
 
-**Proof.** The ratio \(H^*_{z+2}/H^*_z\) follows from \(c_{l+1}/c_l=(2l+1)/(2l+2)\) in both parities. Dividing \(dk^-_d=(d-1)k^-_{d-2}+m_{d-2}+m_{d-1}\) by \(dH^*_d\) gives \(k^-_d/H^*_d=k^-_{d-2}/H^*_{d-2}+(m_{d-2}+m_{d-1})/(dH^*_d)\). By Lemma 4.1 the increment is \(2/(d^2(H^*_d)^2)\) for even \(d\) (only \(m_{d-2}\) survives) and \(2/d\) for odd \(d\) (only \(m_{d-1}\) survives). Summing from \(k^-_0/H^*_0=0\), respectively \(k^-_1/H^*_1=2\), gives the formula for \(k^-\). Similarly, with \(u=d-1\), dividing the plus recurrence by \(uH^*_u\) gives \(k^+_{u+1}/H^*_u=k^+_{u-1}/H^*_{u-2}+2/(u^2H^*_u)\), started from \(k^+_1=0\) and \(k^+_2=2=2/(1^2H^*_1)\). \(\square\)
+**Proof.** The ratio \(H^*_{z+2}/H^*_z\) follows from \(c_{l+1}/c_l=(2l+1)/(2l+2)\) in both parities. Dividing \(dk^-_d=(d-1)k^-_{d-2}+m_{d-2}+m_{d-1}\) by \(dH^*_d\) shows that \(k^-_d/H^*_d\) equals \(k^-_{d-2}/H^*_{d-2}\) plus the increment \((m_{d-2}+m_{d-1})/(dH^*_d)\). By Lemma 4.1 the increment is \(2/(d^2(H^*_d)^2)\) for even \(d\) (only \(m_{d-2}\) survives) and \(2/d\) for odd \(d\) (only \(m_{d-1}\) survives). Summing from \(k^-_0/H^*_0=0\), respectively \(k^-_1/H^*_1=2\), gives the formula for \(k^-\). Similarly, with \(u=d-1\), dividing the plus recurrence by \(uH^*_u\) gives \(k^+_{u+1}/H^*_u=k^+_{u-1}/H^*_{u-2}+2/(u^2H^*_u)\), started from \(k^+_1=0\) and \(k^+_2=2=2/(1^2H^*_1)\). \(\square\)
 
 ## 6. The determinant and the cancellation of \(\zeta(2)\)
 
@@ -240,17 +308,22 @@ For \(0\le r<n\) and an integer \(j\ge0\), the **raw entry** is
 F_j(r)=M(P_r,j)-\frac32\,Z(D_r,j),
 \]
 
-where \(j\) stands for the monomial \(s^j\). The **filtered entries** use the polynomials \(s^{b+k}(1-s)^q\), \(0\le k<n\), and the determinant studied in this course is
-
+where \(j\) stands for the monomial \(s^j\). The **filtered entries** use the polynomials \(s^{b+k}(1-s)^q\), \(0\le k<n\), and the determinant studied in this course is (6.1):
 \[
-\Delta_N=\det_{0\le r,k<n}\Bigl(M\bigl(P_r,s^{b+k}(1-s)^q\bigr)-\frac32Z\bigl(D_r,s^{b+k}(1-s)^q\bigr)\Bigr).
-\tag{6.1}
+\begin{aligned}
+&\Delta_N\\
+&\quad=\det_{0\le r,k<n}\Bigl(M\bigl(P_r,s^{b+k}(1-s)^q\bigr)\\
+&\qquad-\frac32Z\bigl(D_r,s^{b+k}(1-s)^q\bigr)\Bigr).
+\end{aligned}
 \]
 
 Expanding \((1-s)^q\), the matrix in (6.1) is \(\mathcal F\mathcal T\), where \(\mathcal F\) is the \(n\times(n+q)\) matrix of raw columns \(F_j\), \(b\le j<L\), and \(\mathcal T\) is the integer matrix
 
 \[
-\mathcal T_{j,k}=(-1)^{j-b-k}\binom q{j-b-k}\qquad(b\le j<L,\ 0\le k<n).
+\begin{gathered}
+\mathcal T_{j,k}=(-1)^{j-b-k}\binom q{j-b-k}\\
+(b\le j<L,\ 0\le k<n).
+\end{gathered}
 \]
 
 Indeed the raw indices used are \(j=b+k+v\) with \(0\le v\le q\), which range over \(b\le j\le b+n-1+q=L-1\).
@@ -258,7 +331,11 @@ Indeed the raw indices used are \(j=b+k+v\) with \(0\le v\le q\), which range ov
 **Proposition 6.1** (rationality). For \(b\le j<L\), every raw entry \(F_j(r)\) lies in \(\mathbb Q+\mathbb QG\). More precisely,
 
 \[
-F_j(r)=\sum_i[t^i]P_r\bigl(M^0(i,j)+4G\,c_{(i-j)/2}\bigr)-\frac32\sum_i[t^i]D_r\,Z^0(i,j).
+\begin{aligned}
+&F_j(r)\\
+&\quad =\sum_i[t^i]P_r\bigl(M^0(i,j)+4G\,c_{(i-j)/2}\bigr)\\
+&\quad -\frac32\sum_i[t^i]D_r\,Z^0(i,j).
+\end{aligned}
 \]
 
 Consequently, if \(G\) is rational, then \(\Delta_N\) is rational for every \(N\).
@@ -266,7 +343,10 @@ Consequently, if \(G\) is rational, then \(\Delta_N\) is rational for every \(N\
 **Proof.** By Proposition 5.4, the coefficient of \(\zeta(2)\) in \(F_j(r)\) is
 
 \[
-\frac32\Bigl(\sum_i[t^i]P_r\,c_{(j-i-1)/2}-[t^j]D_r\Bigr)=\frac32\,[t^j]\Bigl(\frac{tP_r}f-D_r\Bigr),
+\begin{aligned}
+&\frac32\Bigl(\sum_i[t^i]P_r\,c_{(j-i-1)/2}-[t^j]D_r\Bigr)\\
+&\quad =\frac32\,[t^j]\Bigl(\frac{tP_r}f-D_r\Bigr),
+\end{aligned}
 \]
 
 because \(t/f=\sum_lc_lt^{2l+1}\) by (2.2), so that \([t^j]{}(tP_r/f)=\sum_i[t^i]P_r\,c_{(j-1-i)/2}\). By Lemma 3.2 this coefficient vanishes for \(j<L\). The remaining terms are the displayed ones, and \(\Delta_N\) is a polynomial with integer coefficients in the entries of \(\mathcal F\). \(\square\)

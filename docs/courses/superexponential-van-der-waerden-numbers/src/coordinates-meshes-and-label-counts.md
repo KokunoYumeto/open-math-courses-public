@@ -10,7 +10,13 @@ Throughout, \(k\) is an integer larger than an absolute threshold, logarithms ar
 
 Set
 \[
-c=10^{-5},\quad\delta=\tfrac1{10},\quad\gamma=\tfrac1{100},\quad D=\lceil k^{1/10}\rceil,\quad M=\lceil k^{1/2}\rceil,\quad h_0=D^2,\quad p=k^{-1/20},\quad H=k^{-2},\quad\eta=\frac1{1000D},
+\begin{aligned}
+c&=10^{-5},\quad\delta=\tfrac1{10},\quad\gamma\\
+&=\tfrac1{100},\quad D=\lceil k^{1/10}\rceil,\quad M\\
+&=\lceil k^{1/2}\rceil,\quad h_0=D^2,\quad p\\
+&=k^{-1/20},\quad H=k^{-2},\quad\eta\\
+&=\frac1{1000D},
+\end{aligned}
 \]
 with \(k\) so large that \(h_0<2M<k\), and the integer *dilation*
 \[
@@ -25,15 +31,29 @@ with \(k\) so large that \(h_0<2M<k\), and the integer *dilation*
 
 By Lemma 4.1 of [Arrangements, tails and the local lemma](arrangements-tails-and-the-local-lemma.md), choose a prime \(P\) with \(k<P\le2k^2\), and let \(q\) be the least power of \(P\) with \(q\ge k^{ck/D}\). Then
 \[
-k^{ck/D}\le q\le2k^2k^{ck/D},\qquad ck\log k\le D\log q\le ck\log k+D\log(2k^2). \tag{2.1}
+\begin{aligned}
+&k^{ck/D}\le q\\
+&\quad \le2k^2k^{ck/D},\\
+&ck\log k\le D\log q\\
+&\quad \le ck\log k\\
+&\quad +D\log(2k^2).
+\end{aligned}\tag{2.1}
 \]
 Since \(h_0<k<P\), \(\gcd(\lambda,q)=1\). Put
 \[
-H_x=H/\lambda,\qquad\alpha=q^{-(D+1)},\qquad N=q^D,\qquad G=\mathbb Z/N\mathbb Z .
+\begin{gathered}
+H_x=H/\lambda,\qquad \alpha=q^{-(D+1)},\\
+N=q^D,\qquad G=\mathbb Z/N\mathbb Z .
+\end{gathered}
 \]
 The following orders of magnitude are used repeatedly:
 \[
-D=O(k^{1/10}),\quad M=O(k^{1/2}),\quad\log\lambda=O(k^{1/5}\log k),\quad\log q=O(k^{9/10}\log k). \tag{2.2}
+\begin{aligned}
+D&=O(k^{1/10}),\quad M\\
+&=O(k^{1/2}),\quad\log\lambda\\
+&=O(k^{1/5}\log k),\quad\log q\\
+&=O(k^{9/10}\log k).
+\end{aligned}\tag{2.2}
 \]
 
 A *progression* of \(G\) is a sequence \(n_j=n_0+jd\) (\(0\le j<k\)) with \(d\ne0\). Every nonzero element of \(G\) has order a power of \(P\), hence at least \(P>k\), so the \(k\) terms are distinct.
@@ -50,21 +70,34 @@ are well defined on \(G\) because \(q^i\mid N\). Write \(x(n)=(x_i(n))_i\), \(y(
 
 *The adaptive mesh* \(V\) becomes finer near the cut. Put
 \[
-R=\log\Bigl(1+\frac1{2\alpha}\Bigr),\qquad m=\lceil k^2R\rceil,\qquad a_\ell=\alpha\bigl(e^{\ell R/m}-1\bigr)\quad(0\le\ell\le m),
+\begin{gathered}
+R=\log\Bigl(1+\frac1{2\alpha}\Bigr),\qquad m=\lceil k^2R\rceil,\\
+a_\ell=\alpha\bigl(e^{\ell R/m}-1\bigr)\quad(0\le\ell\le m),
+\end{gathered}
 \]
 so \(a_0=0\) and \(a_m=1/2\). The \(2m\) intervals
 \[
-[-\tfrac12+a_\ell,-\tfrac12+a_{\ell+1}),\qquad[\tfrac12-a_{\ell+1},\tfrac12-a_\ell)\qquad(0\le\ell<m)
+\begin{aligned}
+&[-\tfrac12+a_\ell,-\tfrac12+a_{\ell+1}),\\
+&[\tfrac12-a_{\ell+1},\tfrac12-a_\ell)\\
+&(0\le\ell<m)
+\end{aligned}
 \]
 partition \([-1/2,1/2)\); we use the same names for their images in \(\mathbb T\). For \(X,Y\in\mathbb T\), \(U(X)\) and \(V(Y)\) denote the intervals containing them. The *label* of \((X,Y)\in\mathbb T^D\times\mathbb T^D\) and of \(n\in G\) are
 \[
-L(X,Y)=\bigl((U(X_i))_{i=1}^D,(V(Y_i))_{i=1}^D\bigr),\qquad L(n)=L(x(n),y(n)),
+\begin{gathered}
+L(X,Y)=\bigl((U(X_i))_{i=1}^D,(V(Y_i))_{i=1}^D\bigr),\\
+L(n)=L(x(n),y(n)),
+\end{gathered}
 \]
 elements of the finite set \(\mathcal L=U^D\times V^D\). A label specifies the intervals themselves, including their positions.
 
 **Lemma 3.1** (Widths). For every \(I\in V\) and every \(Y\) in the closure of \(I\),
 \[
-\tfrac14H\bigl(\rho(Y)+\alpha\bigr)\le|I|\le2H\bigl(\rho(Y)+\alpha\bigr)\le2H .
+\begin{aligned}
+&\tfrac14H\bigl(\rho(Y)+\alpha\bigr)\le|I|\\
+&\quad \le2H\bigl(\rho(Y)+\alpha\bigr)\le2H .
+\end{aligned}
 \]
 Moreover \(|V|=2m=O(k^3\log k)\).
 
@@ -76,7 +109,10 @@ Moreover \(|V|=2m=O(k^3\log k)\).
 
 Near the cut the mesh is extremely fine. For counting along rotating coordinates we ignore it within distance \(\eta\) of the cut, through the *truncated output*
 \[
-V_\eta(Y)=V(Y)\ \text{if }\rho(Y)\ge\eta,\qquad V_\eta(Y)=*\ \text{if }\rho(Y)<\eta,
+\begin{gathered}
+V_\eta(Y)=V(Y)\ \text{if }\rho(Y)\ge\eta,\\
+V_\eta(Y)=*\ \text{if }\rho(Y)<\eta,
+\end{gathered}
 \]
 where \(*\) is a new symbol.
 
@@ -88,7 +124,10 @@ where \(*\) is a new symbol.
 
 **Lemma 4.1** (Global label words). The number \(T_{\mathrm{glob}}\) of words \((L(n_j))_{0\le j<k}\) over all progressions of \(G\) satisfies
 \[
-\log T_{\mathrm{glob}}=O\bigl(D(\log k+\log\lambda)\bigr)=O(k^{3/10}\log k)=o(M).
+\begin{aligned}
+&\log T_{\mathrm{glob}}=O\bigl(D(\log k+\log\lambda)\bigr)\\
+&\quad =O(k^{3/10}\log k)=o(M).
+\end{aligned}
 \]
 
 *Proof.* Fix one coordinate circle with a partition having \(F\) endpoints (the cut included), represented by numbers \(\tau\in[0,1)\), and let \(a,b\in[0,1)\) be a start and a step. For \(0\le j<k\), \(a+jb\in[0,k)\), and the interval containing \(a+jb\bmod1\) is determined by the signs of \(a+jb-(\tau+z)\) for all endpoints \(\tau\) and integers \(-1\le z\le k\). These are at most \(3k^2F\) affine functions of \((a,b)\), so by Corollary 1.2 of [Arrangements, tails and the local lemma](arrangements-tails-and-the-local-lemma.md) at most \(9(3k^2F+1)^2\) scalar words occur. Letting the starts and steps of the \(2D\) coordinates vary independently only enlarges the count. With \(F=|U|+|V|=k^2\lambda+O(k^3\log k)\), \(\log F=O(\log k+\log\lambda)\), and \(T_{\mathrm{glob}}\le[9(3k^2F+1)^2]^{2D}\). The orders of magnitude follow from (2.2) and \(M\ge k^{1/2}\). \(\square\)
@@ -97,7 +136,11 @@ For the local patterns fix an integer \(h\) with \(h_0<h\le2M\) and a vector \(t
 
 **Definition 4.2** (Eligible patterns). For \(x,y\in\mathbb T^D\) and \(u,v\in\mathbb R^D\), form
 \[
-X_z=x+\frac zh(t+u),\qquad Y_z=y+\frac zh(\lambda t+v)\qquad(0\le z<h)\quad\text{in }\mathbb T^D .
+\begin{gathered}
+X_z=x+\frac zh(t+u),\\
+Y_z=y+\frac zh(\lambda t+v)\\
+(0\le z<h)\quad\text{in }\mathbb T^D .
+\end{gathered}
 \]
 A position \(z\) is *regular* if \(\rho(Y_{z,i})\ge\eta\) in every rotating coordinate. Record \(L(X_z,Y_z)\) at regular positions and \(*\) at the others. The resulting word in \((\mathcal L\cup\{*\})^h\) is an *eligible pattern for \(h,t\)* if it has a realization with:
 
@@ -111,7 +154,10 @@ Different realizations of one word give the same pattern. The relative bound in 
 
 *Proof.* Fix \(t\) and a position \(z_0\) at which the pattern equals \(\beta\); it is regular. In each scalar coordinate, write the value at \(z_0\) as a real number \(a\) in the interval prescribed by \(\beta\), and let \(b\) be the drift, \(u_i\) or \(v_i\). At a position \(z\) an unreduced value is
 \[
-a+\tau_z+\frac{z-z_0}hb,\qquad\tau_z=\frac{(z-z_0)t_i}h\ \text{or}\ \frac{(z-z_0)\lambda t_i}h,
+\begin{gathered}
+a+\tau_z+\frac{z-z_0}hb,\\
+\tau_z=\frac{(z-z_0)t_i}h\ \text{or}\ \frac{(z-z_0)\lambda t_i}h,
+\end{gathered}
 \]
 with \(\tau_z\) fixed once \(t,z_0,z,i\) are. We keep only the constraints on \(a,b\) at the anchor, which can only enlarge the count.
 
@@ -123,8 +169,12 @@ with \(\tau_z\) fixed once \(t,z_0,z,i\) are. We keep only the constraints on \(
 
 In every case the breakpoint lifts are fixed before \(a,b\) vary, and comparing \(a+\tau_z+(z-z_0)b/h\) with them gives at most \(16004Dh\) affine functions of \((a,b)\) over all \(z<h\). Their signs determine the scalar outputs at all positions, including the values at breakpoints. By Corollary 1.2 of [Arrangements, tails and the local lemma](arrangements-tails-and-the-local-lemma.md), at most \(9(16004Dh+1)^2\le C_0(Dh)^2\) scalar output sequences occur, for an absolute \(C_0\). The outputs of all \(2D\) coordinates, with truncation in the rotating ones, determine the pattern: a position is \(*\) exactly when some rotating output is \(*\), and otherwise the outputs form its label. With \(h^D\) choices of \(t\) and \(h\) of \(z_0\), the number of pairs is at most
 \[
-h^{D+1}\bigl[C_0(Dh)^2\bigr]^{2D}=C_0^{2D}D^{4D}h^{5D+1}\le(CDh)^{6D}.\qquad\square
+\begin{aligned}
+&h^{D+1}\bigl[C_0(Dh)^2\bigr]^{2D}\\
+&\quad =C_0^{2D}D^{4D}h^{5D+1}\le(CDh)^{6D}.
+\end{aligned}
 \]
+\(\square\)
 
 ## 5. Exercises
 
