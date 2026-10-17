@@ -7,15 +7,15 @@ covector. The proof includes clean phases with excess, the exact order
 shift, a construction of the amplitude, and every differentiated
 symbol remainder.
 
-The free human source for the Fourier-testing method and its
-normalization is [Lars Hörmander, *Fourier integral operators. I*,
-Section 3.2](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
-especially Theorem 3.2.4 and its parameter version, printed pages
-149–154. Here the clean critical-family calculation is supplied by
-the earlier programme's complete stationary-phase proof. The
-amplitude construction below uses the proved symbol summation
-theorem. Neither a citation nor the definition of an oscillatory
-class is substituted for the intrinsic proof.
+Lars Hörmander, [*Fourier integral operators. I*, Section 3.2](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
+develops the transverse Fourier-testing method and its normalization.
+Theorem 3.2.4 and its parameter formulas (3.2.23)–(3.2.24) appear on
+printed page 153, with the symbol argument continuing on page 154.
+An exact [free PDF copy](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6118-11511_2006_Article_BF02392052.pdf)
+is available from the Yau Mathematical Sciences Center archive.
+The clean critical-family calculation below uses the programme's
+stationary-phase and quotient-density results. The amplitude construction
+uses support-preserving symbol summation on one fixed cone.
 
 ## F0. Inputs, orders and support conventions
 
@@ -37,6 +37,11 @@ The exact earlier programme inputs are:
   compact partitions and fibre integration;
 - U001's linked finite-dimensional inverse theorem, compact
   integration and Fourier inversion proofs.
+
+The elementary analysis reference guide
+distinguishes linked human proofs from programme arguments in the U001
+inputs. Those human works retain their own terms and are not included
+in this CC0 reading.
 
 Let \(x\in\mathbb R^n\), \(n\ge1\), and
 \(\theta\in\mathbb R^N\setminus0\), \(N\ge1\). A real phase
@@ -780,6 +785,27 @@ Choose a nonzero compact smooth \(g(\tau)\)
 and an amplitude \(c(x,t)\), supported at \(t\ge1\)
 and compactly in \(x\). Set
 \(a(x,t,s)=c(x,t)g'(s/t)\).
+
+For a concrete choice at any real order \(\mu\), take a compact smooth
+\(\psi\) with \(\psi(0)=1\), and a smooth cutoff \(\chi\) such that
+\[
+ \begin{gathered}
+  \chi(t)=0\quad(t\le1),\qquad \chi(t)=1\quad(t\ge2),\\
+  c(x,t)=\psi(x)\chi(t)t^\mu\quad(t>0).
+ \end{gathered}
+\]
+These functions are supplied by the finite smooth cutoff construction.
+The derivative \(g'\) is not identically zero: otherwise the fundamental
+theorem would make \(g\) constant, and compact support would make it zero.
+Choose \(\tau_0\) with \(g'(\tau_0)\ne0\). On the critical set,
+\[
+ |a(0,t,t\tau_0)|=|g'(\tau_0)|t^\mu\quad(t\ge2).
+\]
+The amplitude is therefore nonzero on the critical set and is not in
+\(S^{\mu-\varepsilon}\) there for any \(\varepsilon>0\), since
+\(|(t,t\tau_0)|\) is a fixed positive multiple of \(t\).
+
+
 On the support, \(s/t\) is bounded, so every
 frequency derivative has its ordinary inverse
 power of \(t\); this has the same symbol order
@@ -794,12 +820,32 @@ the amplitude on the critical fibre need not
 vanish. The cancellation is the fibre integral,
 as required by (F30). \(\square\)
 
-## Scope and remaining work
+## Analytic scope and normalization {#scope-and-remaining-work}
 
-The proofs above concern ordinary symbols, real phases, finite-rank components, and local conic germs with all orders and remainders retained. They do not assert a global Maslov trivialization, the full global principal symbol sequence, or Fourier-integral composition. Those remain separate original course obligations.
+The results concern ordinary symbols, real phases and local conic germs,
+with compact normalized phase support and all differentiated remainders.
+Finite-rank bundle coefficients are handled componentwise in a fixed
+frame. The smooth-remainder absorption uses a bounded-frequency amplitude
+inside the same phase domain. The assertion is about a microlocally cut
+off distribution; it does not prescribe its values in untested directions.
 
-*Written by GPT-6 Astra (OpenAI), Ultra, 4 October 2026.
-Original exposition: CC0 to the extent rights exist.
-No human-source prose, figure or original PDF is
-redistributed. Linked earlier programme components
-retain their own authorship, licences and notices.*
+Every excess uses the fixed prefactor in (F2). If another clean-phase
+representation uses the prefactor \((2\pi)^{-(n+2N-2e)/4}\) and amplitude
+\(a_{\rm alt}\), its amplitude in (F2) is
+\[
+ a=(2\pi)^{e/2}a_{\rm alt}.
+\]
+This factor changes no symbol order, but it must be retained when
+comparing leading fibre coefficients. Global Maslov data and composition
+of Fourier integral operators require their additional geometric and
+analytic arguments.
+
+The [homogeneous symbol transport reading](../../20261004-free-canonical-composition/homogeneous-symbol-transport.html)
+treats symbol pullbacks by general homogeneous maps and the corresponding
+symbol-space topology.
+
+Programme phase-representation exposition and examples: GPT-6 Astra
+(OpenAI), Ultra. Explicit sharp-order cancellation example, normalization
+comparison, source notes and editorial text: GPT-6.1 Sol (OpenAI), Ultra.
+Independent programme text: CC0 to the extent rights exist. Linked human
+works and earlier programme components retain their own terms.

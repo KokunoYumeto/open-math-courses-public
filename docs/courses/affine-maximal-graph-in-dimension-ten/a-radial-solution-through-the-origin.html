@@ -1,0 +1,206 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A radial solution through the origin</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A smooth affine maximal graph in dimension ten)</a><a href="graphs-over-a-convex-profile.html">Previous lesson</a><a href="an-invariant-box-and-the-entire-graph.html">Next lesson</a><a href="src/a-radial-solution-through-the-origin.md">Editable source</a></nav><main><article><h1 id="a-radial-solution-through-the-origin">A radial solution through the origin</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><a href="graphs-over-a-convex-profile.html">Graphs over a convex profile</a> reduced the affine maximal equation for <span class="math" data-tex="\(\sqrt{F(x)^2+t^2}\)">\(\sqrt{F(x)^2+t^2}\)</span> to the radial system
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y^{m-1}y&#x27;&amp;=r^{m-1}FP^{-\gamma},\\
+(y^{m-1}P&#x27;)&#x27;&amp;=-k\,r^{m-1}P^{1-\gamma},\qquad F&#x27;=y,
+\end{aligned}
+\]">\[
+\begin{aligned}
+y^{m-1}y&#x27;&amp;=r^{m-1}FP^{-\gamma},\\
+(y^{m-1}P&#x27;)&#x27;&amp;=-k\,r^{m-1}P^{1-\gamma},\qquad F&#x27;=y,
+\end{aligned}
+\]</span>
+for profiles <span class="math" data-tex="\(F,P\)">\(F,P\)</span> of radial functions, with <span class="math" data-tex="\(k=m+2\)">\(k=m+2\)</span> and <span class="math" data-tex="\(\gamma=\frac{m+3}{m+2}\)">\(\gamma=\frac{m+3}{m+2}\)</span>. The system divides by powers of <span class="math" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-tex="\(y=F&#x27;\)">\(y=F&#x27;\)</span> vanishes at <span class="math" data-tex="\(r=0\)">\(r=0\)</span> for a smooth radial <span class="math" data-tex="\(F\)">\(F\)</span>. This lesson constructs a solution with <span class="math" data-tex="\(F(0)=P(0)=1\)">\(F(0)=P(0)=1\)</span> that is smooth as a function of <span class="math" data-tex="\(x\)">\(x\)</span> near the origin, following OpenAI [OpenAI-AM, Section 3]. The idea is to integrate the system once from <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, to write it in the variable <span class="math" data-tex="\(s=r^2/2\)">\(s=r^2/2\)</span>, and to solve the resulting integral equations with the contraction mapping principle.</p>
+<p>Throughout, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>. Results of the core courses Real Analysis I and II are cited from the text of Lebl [Lebl] by number.</p>
+<h2 id="1-the-fixed-point-problem">1. The fixed-point problem</h2>
+<p>Fix <span class="math" data-tex="\(\delta\in(0,1]\)">\(\delta\in(0,1]\)</span>. Let <span class="math" data-tex="\(X=C([-\delta,\delta])^2\)">\(X=C([-\delta,\delta])^2\)</span>, the pairs <span class="math" data-tex="\((f,p)\)">\((f,p)\)</span> of continuous functions, with the norm <span class="math" data-tex="\(\|(f,p)\|=\max(\|f\|_\infty,\|p\|_\infty)\)">\(\|(f,p)\|=\max(\|f\|_\infty,\|p\|_\infty)\)</span>. It is complete: a Cauchy sequence has Cauchy components, which converge uniformly [Lebl, Proposition 7.4.5]. The set
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal K=\bigl\{(f,p)\in X:{}&amp;\|f-1\|_\infty\le\tfrac12,\\
+&amp;\|p-1\|_\infty\le\tfrac12\bigr\}
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal K=\bigl\{(f,p)\in X:{}&amp;\|f-1\|_\infty\le\tfrac12,\\
+&amp;\|p-1\|_\infty\le\tfrac12\bigr\}
+\end{aligned}
+\]</span>
+is closed in <span class="math" data-tex="\(X\)">\(X\)</span>, hence complete [Lebl, Proposition 7.4.6]. For <span class="math" data-tex="\((f,p)\in\mathcal K\)">\((f,p)\in\mathcal K\)</span> and <span class="math" data-tex="\(s\in[-\delta,\delta]\)">\(s\in[-\delta,\delta]\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q(s)&amp;=m\int_0^1v^{m-1}f(v^2s)\,p(v^2s)^{-\gamma}\,dv,\\
+j(s)&amp;=\int_0^1v^{m-1}p(v^2s)^{1-\gamma}\,dv ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q(s)&amp;=m\int_0^1v^{m-1}f(v^2s)\,p(v^2s)^{-\gamma}\,dv,\\
+j(s)&amp;=\int_0^1v^{m-1}p(v^2s)^{1-\gamma}\,dv ,
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(q=Q^{1/m}\)">\(q=Q^{1/m}\)</span>,
+and define <span class="math" data-tex="\(T(f,p)=(\tilde f,\tilde p)\)">\(T(f,p)=(\tilde f,\tilde p)\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tilde f(s)&amp;=1+\int_0^sq(a)\,da,\\
+\tilde p(s)&amp;=1-k\int_0^sj(a)\,q(a)^{1-m}\,da .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tilde f(s)&amp;=1+\int_0^sq(a)\,da,\\
+\tilde p(s)&amp;=1-k\int_0^sj(a)\,q(a)^{1-m}\,da .
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(v\in[0,1]\)">\(v\in[0,1]\)</span> the point <span class="math" data-tex="\(v^2s\)">\(v^2s\)</span> lies in <span class="math" data-tex="\([-\delta,\delta]\)">\([-\delta,\delta]\)</span>, so the integrands are defined.</p>
+<p><strong>Lemma 1.1</strong> (bounds). For <span class="math" data-tex="\((f,p)\in\mathcal K\)">\((f,p)\in\mathcal K\)</span>, the functions <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are continuous on <span class="math" data-tex="\([-\delta,\delta]\)">\([-\delta,\delta]\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda\le q\le\Lambda,\\
+\tfrac1m(\tfrac32)^{1-\gamma}\le j\le\tfrac1m2^{\gamma-1},\\
+\lambda=\bigl(\tfrac12(\tfrac32)^{-\gamma}\bigr)^{1/m},\qquad\Lambda=\bigl(\tfrac32\,2^\gamma\bigr)^{1/m}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\lambda\le q\le\Lambda,\\
+\tfrac1m(\tfrac32)^{1-\gamma}\le j\le\tfrac1m2^{\gamma-1},\\
+\lambda=\bigl(\tfrac12(\tfrac32)^{-\gamma}\bigr)^{1/m},\qquad\Lambda=\bigl(\tfrac32\,2^\gamma\bigr)^{1/m}.
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> The integrands are continuous on <span class="math" data-tex="\([0,1]\times[-\delta,\delta]\)">\([0,1]\times[-\delta,\delta]\)</span>, so <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are continuous [Lebl, Proposition 7.5.12]. Since <span class="math" data-tex="\(f,p\)">\(f,p\)</span> take values in <span class="math" data-tex="\([\frac12,\frac32]\)">\([\frac12,\frac32]\)</span> and <span class="math" data-tex="\(a\mapsto a^{-\gamma}\)">\(a\mapsto a^{-\gamma}\)</span> is decreasing, <span class="math" data-tex="\(\frac12(\frac32)^{-\gamma}\le fp^{-\gamma}\le\frac32\,2^\gamma\)">\(\frac12(\frac32)^{-\gamma}\le fp^{-\gamma}\le\frac32\,2^\gamma\)</span>; as <span class="math" data-tex="\(m\int_0^1v^{m-1}dv=1\)">\(m\int_0^1v^{m-1}dv=1\)</span>, <span class="math" data-tex="\(Q\)">\(Q\)</span> lies between the same bounds, and <span class="math" data-tex="\(q=Q^{1/m}\)">\(q=Q^{1/m}\)</span> between <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Since <span class="math" data-tex="\(1-\gamma&lt;0\)">\(1-\gamma&lt;0\)</span>, <span class="math" data-tex="\(p^{1-\gamma}\)">\(p^{1-\gamma}\)</span> lies between <span class="math" data-tex="\((\frac32)^{1-\gamma}\)">\((\frac32)^{1-\gamma}\)</span> and <span class="math" data-tex="\(2^{\gamma-1}\)">\(2^{\gamma-1}\)</span>, and <span class="math" data-tex="\(\int_0^1v^{m-1}dv=\frac1m\)">\(\int_0^1v^{m-1}dv=\frac1m\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2</strong> (contraction). There are constants <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span>, depending only on <span class="math" data-tex="\(m\)">\(m\)</span>, such that for every <span class="math" data-tex="\(\delta\in(0,1]\)">\(\delta\in(0,1]\)</span> and all <span class="math" data-tex="\((f,p),(\hat f,\hat p)\in\mathcal K\)">\((f,p),(\hat f,\hat p)\in\mathcal K\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|T(f,p)-(1,1)\|\le M\delta,\\
+&amp;\|T(f,p)-T(\hat f,\hat p)\|\\
+&amp;\quad\le L\delta\,\|(f,p)-(\hat f,\hat p)\| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|T(f,p)-(1,1)\|\le M\delta,\\
+&amp;\|T(f,p)-T(\hat f,\hat p)\|\\
+&amp;\quad\le L\delta\,\|(f,p)-(\hat f,\hat p)\| .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> By Lemma 1.1, <span class="math" data-tex="\(|\tilde f(s)-1|\le\Lambda|s|\)">\(|\tilde f(s)-1|\le\Lambda|s|\)</span> and <span class="math" data-tex="\(|\tilde p(s)-1|\le\frac km2^{\gamma-1}\lambda^{1-m}|s|\)">\(|\tilde p(s)-1|\le\frac km2^{\gamma-1}\lambda^{1-m}|s|\)</span>, which gives the first bound with <span class="math" data-tex="\(M=\max(\Lambda,\frac km2^{\gamma-1}\lambda^{1-m})\)">\(M=\max(\Lambda,\frac km2^{\gamma-1}\lambda^{1-m})\)</span>.</p>
+<p>For the second, write <span class="math" data-tex="\(\Delta=\|(f,p)-(\hat f,\hat p)\|\)">\(\Delta=\|(f,p)-(\hat f,\hat p)\|\)</span>. On <span class="math" data-tex="\([\frac12,\frac32]\)">\([\frac12,\frac32]\)</span> the derivatives of <span class="math" data-tex="\(a\mapsto a^{-\gamma}\)">\(a\mapsto a^{-\gamma}\)</span> and <span class="math" data-tex="\(a\mapsto a^{1-\gamma}\)">\(a\mapsto a^{1-\gamma}\)</span> are bounded in absolute value by <span class="math" data-tex="\(c_1=\gamma2^{\gamma+1}\)">\(c_1=\gamma2^{\gamma+1}\)</span> and <span class="math" data-tex="\(c_2=(\gamma-1)2^\gamma\)">\(c_2=(\gamma-1)2^\gamma\)</span>, so by the mean value theorem [Lebl, Theorem 4.2.4] these functions are Lipschitz there with those constants. Hence, at every point,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|fp^{-\gamma}-\hat f\hat p^{-\gamma}|\\
+&amp;\quad\le|f-\hat f|\,p^{-\gamma}+\hat f\,|p^{-\gamma}-\hat p^{-\gamma}|\\
+&amp;\quad\le\bigl(2^\gamma+\tfrac32c_1\bigr)\Delta ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|fp^{-\gamma}-\hat f\hat p^{-\gamma}|\\
+&amp;\quad\le|f-\hat f|\,p^{-\gamma}+\hat f\,|p^{-\gamma}-\hat p^{-\gamma}|\\
+&amp;\quad\le\bigl(2^\gamma+\tfrac32c_1\bigr)\Delta ,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(|Q-\hat Q|\le(2^\gamma+\frac32c_1)\Delta\)">\(|Q-\hat Q|\le(2^\gamma+\frac32c_1)\Delta\)</span>, and <span class="math" data-tex="\(|j-\hat j|\le\frac{c_2}m\Delta\)">\(|j-\hat j|\le\frac{c_2}m\Delta\)</span>. The functions <span class="math" data-tex="\(b\mapsto b^{1/m}\)">\(b\mapsto b^{1/m}\)</span> on <span class="math" data-tex="\([\lambda^m,\Lambda^m]\)">\([\lambda^m,\Lambda^m]\)</span> and <span class="math" data-tex="\(b\mapsto b^{1-m}\)">\(b\mapsto b^{1-m}\)</span> on <span class="math" data-tex="\([\lambda,\Lambda]\)">\([\lambda,\Lambda]\)</span> are Lipschitz, again by the mean value theorem, and products of bounded Lipschitz functions are Lipschitz. So <span class="math" data-tex="\(|q-\hat q|\le c_3\Delta\)">\(|q-\hat q|\le c_3\Delta\)</span> and <span class="math" data-tex="\(|jq^{1-m}-\hat j\hat q^{1-m}|\le c_4\Delta\)">\(|jq^{1-m}-\hat j\hat q^{1-m}|\le c_4\Delta\)</span> with constants depending only on <span class="math" data-tex="\(m\)">\(m\)</span>. Integrating over an interval of length <span class="math" data-tex="\(|s|\le\delta\)">\(|s|\le\delta\)</span> gives the second bound with <span class="math" data-tex="\(L=\max(c_3,kc_4)\)">\(L=\max(c_3,kc_4)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.3.</strong> Choose <span class="math" data-tex="\(\delta\in(0,1]\)">\(\delta\in(0,1]\)</span> with <span class="math" data-tex="\(M\delta\le\frac12\)">\(M\delta\le\frac12\)</span> and <span class="math" data-tex="\(L\delta\le\frac12\)">\(L\delta\le\frac12\)</span>. Then <span class="math" data-tex="\(T\)">\(T\)</span> maps <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> into itself and has exactly one fixed point <span class="math" data-tex="\((f,p)\in\mathcal K\)">\((f,p)\in\mathcal K\)</span>. The functions <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> are smooth on <span class="math" data-tex="\((-\delta,\delta)\)">\((-\delta,\delta)\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f&#x27;=q,\qquad p&#x27;=-k\,j\,q^{1-m},\\
+f(0)=p(0)=1,\\
+f&#x27;(0)=1,\qquad p&#x27;(0)=-\frac km .
+\end{gathered}
+\]">\[
+\begin{gathered}
+f&#x27;=q,\qquad p&#x27;=-k\,j\,q^{1-m},\\
+f(0)=p(0)=1,\\
+f&#x27;(0)=1,\qquad p&#x27;(0)=-\frac km .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> The functions <span class="math" data-tex="\(\tilde f,\tilde p\)">\(\tilde f,\tilde p\)</span> are continuous, and the first bound of Lemma 1.2 gives <span class="math" data-tex="\(T(\mathcal K)\subseteq\mathcal K\)">\(T(\mathcal K)\subseteq\mathcal K\)</span>. The second makes <span class="math" data-tex="\(T\)">\(T\)</span> a contraction with constant <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>, so the contraction mapping principle [Lebl, Theorem 7.6.2] gives a unique fixed point.</p>
+<p>At the fixed point, <span class="math" data-tex="\(f=1+\int_0^sq\)">\(f=1+\int_0^sq\)</span> and <span class="math" data-tex="\(p=1-k\int_0^sjq^{1-m}\)">\(p=1-k\int_0^sjq^{1-m}\)</span> with continuous integrands, so by the fundamental theorem of calculus [Lebl, Theorem 5.3.3] <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> are continuously differentiable with the stated derivatives.</p>
+<p><em>Smoothness.</em> Suppose <span class="math" data-tex="\(f,p\in C^\ell((-\delta,\delta))\)">\(f,p\in C^\ell((-\delta,\delta))\)</span> for some <span class="math" data-tex="\(\ell\ge1\)">\(\ell\ge1\)</span>, and fix <span class="math" data-tex="\(\delta&#x27;&lt;\delta\)">\(\delta&#x27;&lt;\delta\)</span>. The integrand <span class="math" data-tex="\(v^{m-1}f(v^2s)p(v^2s)^{-\gamma}\)">\(v^{m-1}f(v^2s)p(v^2s)^{-\gamma}\)</span> has partial derivatives in <span class="math" data-tex="\(s\)">\(s\)</span> up to order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, continuous on <span class="math" data-tex="\([0,1]\times[-\delta&#x27;,\delta&#x27;]\)">\([0,1]\times[-\delta&#x27;,\delta&#x27;]\)</span>: by the chain rule <span class="math" data-tex="\(\partial_s^i[f(v^2s)]=v^{2i}f^{(i)}(v^2s)\)">\(\partial_s^i[f(v^2s)]=v^{2i}f^{(i)}(v^2s)\)</span>, and <span class="math" data-tex="\(p\ge\frac12\)">\(p\ge\frac12\)</span>. Differentiating under the integral sign <span class="math" data-tex="\(\ell\)">\(\ell\)</span> times [Lebl, Theorem 9.1.1], <span class="math" data-tex="\(Q\in C^\ell([-\delta&#x27;,\delta&#x27;])\)">\(Q\in C^\ell([-\delta&#x27;,\delta&#x27;])\)</span>, and <span class="math" data-tex="\(q=Q^{1/m}\in C^\ell\)">\(q=Q^{1/m}\in C^\ell\)</span> because <span class="math" data-tex="\(Q\ge\lambda^m&gt;0\)">\(Q\ge\lambda^m&gt;0\)</span>. In the same way <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(q^{1-m}\)">\(q^{1-m}\)</span> are of class <span class="math" data-tex="\(C^\ell\)">\(C^\ell\)</span>. So <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> and <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> are of class <span class="math" data-tex="\(C^\ell\)">\(C^\ell\)</span> on <span class="math" data-tex="\((-\delta&#x27;,\delta&#x27;)\)">\((-\delta&#x27;,\delta&#x27;)\)</span>, and <span class="math" data-tex="\(f,p\in C^{\ell+1}\)">\(f,p\in C^{\ell+1}\)</span> there. As <span class="math" data-tex="\(\delta&#x27;&lt;\delta\)">\(\delta&#x27;&lt;\delta\)</span> is arbitrary, induction gives <span class="math" data-tex="\(f,p\in C^\infty((-\delta,\delta))\)">\(f,p\in C^\infty((-\delta,\delta))\)</span>.</p>
+<p><em>Values at <span class="math" data-tex="\(0\)">\(0\)</span>.</em> <span class="math" data-tex="\(Q(0)=m\int_0^1v^{m-1}f(0)p(0)^{-\gamma}\,dv=1\)">\(Q(0)=m\int_0^1v^{m-1}f(0)p(0)^{-\gamma}\,dv=1\)</span>, so <span class="math" data-tex="\(f&#x27;(0)=q(0)=1\)">\(f&#x27;(0)=q(0)=1\)</span>; and <span class="math" data-tex="\(j(0)=\frac1m\)">\(j(0)=\frac1m\)</span>, so <span class="math" data-tex="\(p&#x27;(0)=-\frac km\)">\(p&#x27;(0)=-\frac km\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-radial-functions">2. The radial functions</h2>
+<p><strong>Proposition 2.1</strong> (OpenAI). Let <span class="math" data-tex="\((f,p)\)">\((f,p)\)</span> be the fixed point of Proposition 1.3, <span class="math" data-tex="\(\varepsilon=\sqrt{2\delta}\)">\(\varepsilon=\sqrt{2\delta}\)</span>, and on the ball <span class="math" data-tex="\(B=\{x\in\mathbb R^m:|x|&lt;\varepsilon\}\)">\(B=\{x\in\mathbb R^m:|x|&lt;\varepsilon\}\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(x)=f\bigl(\tfrac12|x|^2\bigr),\\
+P(x)=p\bigl(\tfrac12|x|^2\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+F(x)=f\bigl(\tfrac12|x|^2\bigr),\\
+P(x)=p\bigl(\tfrac12|x|^2\bigr).
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(F,P\in C^\infty(B)\)">\(F,P\in C^\infty(B)\)</span> are positive, <span class="math" data-tex="\(F(0)=P(0)=1\)">\(F(0)=P(0)=1\)</span>,
+<span class="math math-display" data-tex="\[
+D^2F(0)=I,\qquad D^2P(0)=-\frac kmI ,
+\]">\[
+D^2F(0)=I,\qquad D^2P(0)=-\frac kmI ,
+\]</span>
+and <span class="math" data-tex="\(D^2F(x)\)">\(D^2F(x)\)</span> is positive definite for every <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span>. Their profiles satisfy, for <span class="math" data-tex="\(0&lt;r&lt;\varepsilon\)">\(0&lt;r&lt;\varepsilon\)</span> and with <span class="math" data-tex="\(y=F&#x27;\)">\(y=F&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+y&gt;0,\qquad y&#x27;&gt;0,\qquad P&#x27;&lt;0,
+\]">\[
+y&gt;0,\qquad y&#x27;&gt;0,\qquad P&#x27;&lt;0,
+\]</span>
+and the radial system.</p>
+<p><em>Proof.</em> The map <span class="math" data-tex="\(x\mapsto\frac12|x|^2\)">\(x\mapsto\frac12|x|^2\)</span> is smooth with values in <span class="math" data-tex="\([0,\delta)\)">\([0,\delta)\)</span>, so <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> are smooth, and they take values in <span class="math" data-tex="\([\frac12,\frac32]\)">\([\frac12,\frac32]\)</span>. With <span class="math" data-tex="\(s=\frac12|x|^2\)">\(s=\frac12|x|^2\)</span>, <span class="math" data-tex="\(\partial_iF=f&#x27;(s)x_i\)">\(\partial_iF=f&#x27;(s)x_i\)</span> and <span class="math" data-tex="\(\partial_{ij}F=f&#x27;&#x27;(s)x_ix_j+f&#x27;(s)\delta_{ij}\)">\(\partial_{ij}F=f&#x27;&#x27;(s)x_ix_j+f&#x27;(s)\delta_{ij}\)</span>, so <span class="math" data-tex="\(D^2F(0)=f&#x27;(0)I=I\)">\(D^2F(0)=f&#x27;(0)I=I\)</span>, and in the same way <span class="math" data-tex="\(D^2P(0)=p&#x27;(0)I\)">\(D^2P(0)=p&#x27;(0)I\)</span>.</p>
+<p>The profile of <span class="math" data-tex="\(F\)">\(F\)</span> is <span class="math" data-tex="\(F(r)=f(r^2/2)\)">\(F(r)=f(r^2/2)\)</span>, so <span class="math" data-tex="\(y(r)=rf&#x27;(r^2/2)=rq(r^2/2)&gt;0\)">\(y(r)=rf&#x27;(r^2/2)=rq(r^2/2)&gt;0\)</span> for <span class="math" data-tex="\(0&lt;r&lt;\varepsilon\)">\(0&lt;r&lt;\varepsilon\)</span>. Fix such <span class="math" data-tex="\(r\)">\(r\)</span> and put <span class="math" data-tex="\(s=r^2/2\)">\(s=r^2/2\)</span>. Since <span class="math" data-tex="\(f(v^2s)=F(rv)\)">\(f(v^2s)=F(rv)\)</span> and <span class="math" data-tex="\(p(v^2s)=P(rv)\)">\(p(v^2s)=P(rv)\)</span>, the substitution <span class="math" data-tex="\(\rho=rv\)">\(\rho=rv\)</span> [Lebl, Theorem 5.3.5] gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y(r)^m&amp;=r^mQ(s)\\
+&amp;=m\int_0^r\rho^{m-1}F(\rho)P(\rho)^{-\gamma}\,d\rho,\\
+r^mj(s)&amp;=\int_0^r\rho^{m-1}P(\rho)^{1-\gamma}\,d\rho .
+\end{aligned}
+\]">\[
+\begin{aligned}
+y(r)^m&amp;=r^mQ(s)\\
+&amp;=m\int_0^r\rho^{m-1}F(\rho)P(\rho)^{-\gamma}\,d\rho,\\
+r^mj(s)&amp;=\int_0^r\rho^{m-1}P(\rho)^{1-\gamma}\,d\rho .
+\end{aligned}
+\]</span>
+Moreover <span class="math" data-tex="\(P&#x27;(r)=rp&#x27;(s)=-krj(s)q(s)^{1-m}\)">\(P&#x27;(r)=rp&#x27;(s)=-krj(s)q(s)^{1-m}\)</span>, and <span class="math" data-tex="\(y^{m-1}=r^{m-1}q(s)^{m-1}\)">\(y^{m-1}=r^{m-1}q(s)^{m-1}\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y^{m-1}P&#x27;&amp;=-kr^mj(s)\\
+&amp;=-k\int_0^r\rho^{m-1}P(\rho)^{1-\gamma}\,d\rho .
+\end{aligned}
+\]">\[
+\begin{aligned}
+y^{m-1}P&#x27;&amp;=-kr^mj(s)\\
+&amp;=-k\int_0^r\rho^{m-1}P(\rho)^{1-\gamma}\,d\rho .
+\end{aligned}
+\]</span>
+Differentiating both integral identities [Lebl, Theorem 5.3.3] gives <span class="math" data-tex="\(my^{m-1}y&#x27;=mr^{m-1}FP^{-\gamma}\)">\(my^{m-1}y&#x27;=mr^{m-1}FP^{-\gamma}\)</span> and <span class="math" data-tex="\((y^{m-1}P&#x27;)&#x27;=-kr^{m-1}P^{1-\gamma}\)">\((y^{m-1}P&#x27;)&#x27;=-kr^{m-1}P^{1-\gamma}\)</span>, which is the radial system. The first identity shows <span class="math" data-tex="\(y&#x27;&gt;0\)">\(y&#x27;&gt;0\)</span>, and the last integral shows <span class="math" data-tex="\(P&#x27;&lt;0\)">\(P&#x27;&lt;0\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;|x|&lt;\varepsilon\)">\(0&lt;|x|&lt;\varepsilon\)</span>, the eigenvalues of <span class="math" data-tex="\(D^2F(x)\)">\(D^2F(x)\)</span> are <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span> and <span class="math" data-tex="\(y/r\)">\(y/r\)</span> by Lemma 3.1 of <a href="graphs-over-a-convex-profile.html">Graphs over a convex profile</a>, both positive; at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, <span class="math" data-tex="\(D^2F(0)=I\)">\(D^2F(0)=I\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1</strong> (easy). Show that <span class="math" data-tex="\(f&#x27;&#x27;(0)=\dfrac{m+\gamma k}{m(m+2)}\)">\(f&#x27;&#x27;(0)=\dfrac{m+\gamma k}{m(m+2)}\)</span>. For <span class="math" data-tex="\(m=9\)">\(m=9\)</span> deduce <span class="math" data-tex="\(f&#x27;&#x27;(0)=\frac7{33}\)">\(f&#x27;&#x27;(0)=\frac7{33}\)</span> and
+<span class="math math-display" data-tex="\[
+F(r)=1+\tfrac12r^2+\tfrac7{264}r^4+O(r^6).
+\]">\[
+F(r)=1+\tfrac12r^2+\tfrac7{264}r^4+O(r^6).
+\]</span></p>
+<p><strong>3.2</strong> (easy). Show that <span class="math" data-tex="\(|a^{-\gamma}-b^{-\gamma}|\le\gamma2^{\gamma+1}|a-b|\)">\(|a^{-\gamma}-b^{-\gamma}|\le\gamma2^{\gamma+1}|a-b|\)</span> for <span class="math" data-tex="\(a,b\in[\frac12,\frac32]\)">\(a,b\in[\frac12,\frac32]\)</span>.</p>
+<p><strong>3.3</strong> (medium). Let <span class="math" data-tex="\(F,P\)">\(F,P\)</span> be positive radial functions of class <span class="math" data-tex="\(C^2\)">\(C^2\)</span> on a ball around <span class="math" data-tex="\(0\)">\(0\)</span> in <span class="math" data-tex="\(\mathbb R^m\)">\(\mathbb R^m\)</span>, <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, whose profiles satisfy the radial system on <span class="math" data-tex="\((0,\varepsilon)\)">\((0,\varepsilon)\)</span> with <span class="math" data-tex="\(y=F&#x27;&gt;0\)">\(y=F&#x27;&gt;0\)</span> there. Show that <span class="math" data-tex="\(y(r)^m=m\int_0^r\rho^{m-1}FP^{-\gamma}\,d\rho\)">\(y(r)^m=m\int_0^r\rho^{m-1}FP^{-\gamma}\,d\rho\)</span>. (So the integral form used above is forced by the radial system.)</p>
+<p><strong>3.4</strong> (medium). Let <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, so <span class="math" data-tex="\(k=3\)">\(k=3\)</span> and <span class="math" data-tex="\(\gamma=\frac43\)">\(\gamma=\frac43\)</span>, and suppose the solution of Proposition 2.1 extends to a solution of the radial system on an interval <span class="math" data-tex="\((0,R)\)">\((0,R)\)</span> with <span class="math" data-tex="\(F,P,y&gt;0\)">\(F,P,y&gt;0\)</span>. Show that <span class="math" data-tex="\(R\le\sqrt{2/3}\)">\(R\le\sqrt{2/3}\)</span>. So in two variables this construction does not produce an entire solution, in accordance with the theorem of Trudinger and Wang quoted in <a href="the-affine-maximal-equation.html">The affine maximal equation</a>.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> Differentiating under the integral sign at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q&#x27;(0)&amp;=m\int_0^1v^{m+1}\bigl(f&#x27;(0)-\gamma p&#x27;(0)\bigr)\,dv\\
+&amp;=\frac{m}{m+2}\Bigl(1+\frac{\gamma k}m\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q&#x27;(0)&amp;=m\int_0^1v^{m+1}\bigl(f&#x27;(0)-\gamma p&#x27;(0)\bigr)\,dv\\
+&amp;=\frac{m}{m+2}\Bigl(1+\frac{\gamma k}m\Bigr).
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(Q=q^m\)">\(Q=q^m\)</span> and <span class="math" data-tex="\(q(0)=1\)">\(q(0)=1\)</span>, <span class="math" data-tex="\(q&#x27;(0)=Q&#x27;(0)/m=\frac{m+\gamma k}{m(m+2)}\)">\(q&#x27;(0)=Q&#x27;(0)/m=\frac{m+\gamma k}{m(m+2)}\)</span>, and <span class="math" data-tex="\(f&#x27;&#x27;=q&#x27;\)">\(f&#x27;&#x27;=q&#x27;\)</span>. For <span class="math" data-tex="\(m=9\)">\(m=9\)</span>, <span class="math" data-tex="\(\gamma k=12\)">\(\gamma k=12\)</span> and <span class="math" data-tex="\(f&#x27;&#x27;(0)=\frac{21}{99}=\frac7{33}\)">\(f&#x27;&#x27;(0)=\frac{21}{99}=\frac7{33}\)</span>. By Taylor's theorem <span class="math" data-tex="\(f(s)=1+s+\frac7{66}s^2+O(s^3)\)">\(f(s)=1+s+\frac7{66}s^2+O(s^3)\)</span>, and <span class="math" data-tex="\(s=r^2/2\)">\(s=r^2/2\)</span> gives the expansion.</p>
+<p><strong>3.2.</strong> The derivative of <span class="math" data-tex="\(a^{-\gamma}\)">\(a^{-\gamma}\)</span> is <span class="math" data-tex="\(-\gamma a^{-\gamma-1}\)">\(-\gamma a^{-\gamma-1}\)</span>, of absolute value at most <span class="math" data-tex="\(\gamma2^{\gamma+1}\)">\(\gamma2^{\gamma+1}\)</span> on <span class="math" data-tex="\([\frac12,\frac32]\)">\([\frac12,\frac32]\)</span>; apply the mean value theorem.</p>
+<p><strong>3.3.</strong> A radial function of class <span class="math" data-tex="\(C^1\)">\(C^1\)</span> has <span class="math" data-tex="\(\nabla F(0)=0\)">\(\nabla F(0)=0\)</span> (its gradient at <span class="math" data-tex="\(0\)">\(0\)</span> is invariant under all rotations), so <span class="math" data-tex="\(y(r)\to0\)">\(y(r)\to0\)</span> as <span class="math" data-tex="\(r\to0\)">\(r\to0\)</span>. On <span class="math" data-tex="\((0,\varepsilon)\)">\((0,\varepsilon)\)</span>, <span class="math" data-tex="\((y^m)&#x27;=my^{m-1}y&#x27;=mr^{m-1}FP^{-\gamma}\)">\((y^m)&#x27;=my^{m-1}y&#x27;=mr^{m-1}FP^{-\gamma}\)</span>. Integrate over <span class="math" data-tex="\([r_0,r]\)">\([r_0,r]\)</span> and let <span class="math" data-tex="\(r_0\to0\)">\(r_0\to0\)</span>.</p>
+<p><strong>3.4.</strong> For <span class="math" data-tex="\(m=1\)">\(m=1\)</span> the factor <span class="math" data-tex="\(y^{m-1}\)">\(y^{m-1}\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, and the second equation reads <span class="math" data-tex="\(P&#x27;&#x27;=-3P^{-1/3}&lt;0\)">\(P&#x27;&#x27;=-3P^{-1/3}&lt;0\)</span>. Near <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(P&#x27;(r)=rp&#x27;(r^2/2)\)">\(P&#x27;(r)=rp&#x27;(r^2/2)\)</span>, so <span class="math" data-tex="\(P&#x27;(0)=0\)">\(P&#x27;(0)=0\)</span>, and <span class="math" data-tex="\(P&#x27;(r)=\int_0^rP&#x27;&#x27;&lt;0\)">\(P&#x27;(r)=\int_0^rP&#x27;&#x27;&lt;0\)</span> for <span class="math" data-tex="\(0&lt;r&lt;R\)">\(0&lt;r&lt;R\)</span>. Hence <span class="math" data-tex="\(P\le1\)">\(P\le1\)</span> on <span class="math" data-tex="\([0,R)\)">\([0,R)\)</span>, so <span class="math" data-tex="\(P^{-1/3}\ge1\)">\(P^{-1/3}\ge1\)</span> and <span class="math" data-tex="\(P&#x27;&#x27;\le-3\)">\(P&#x27;&#x27;\le-3\)</span>. Integrating twice from <span class="math" data-tex="\(0\)">\(0\)</span> gives <span class="math" data-tex="\(P&#x27;(r)\le-3r\)">\(P&#x27;(r)\le-3r\)</span> and <span class="math" data-tex="\(P(r)\le1-\frac32r^2\)">\(P(r)\le1-\frac32r^2\)</span> for <span class="math" data-tex="\(0&lt;r&lt;R\)">\(0&lt;r&lt;R\)</span>. If <span class="math" data-tex="\(R&gt;\sqrt{2/3}\)">\(R&gt;\sqrt{2/3}\)</span>, this gives <span class="math" data-tex="\(P(\sqrt{2/3})\le0\)">\(P(\sqrt{2/3})\le0\)</span>, contradicting <span class="math" data-tex="\(P&gt;0\)">\(P&gt;0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-AM] OpenAI, <em>A Smooth Nonquadratic Entire Affine Maximal Graph in Dimension Ten</em>, OpenAI Math Release preprint, 5 October 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Smooth-Nonquadratic-Affine-Maximal-Graph-in-Dimension-Ten-October-5-2026</li>
+<li>[Lebl] J. Lebl, <em>Basic Analysis I and II</em>, version 6.3; the text of the core courses <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C10">Real Analysis I</a> and <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C20">Real Analysis II</a>. https://www.jirka.org/ra/</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

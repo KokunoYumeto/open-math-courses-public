@@ -1,4 +1,4 @@
-"""Exact finite checks for WS5--WS32; the analytic proof is in the lesson."""
+"""Exact finite checks for WS5--WS38; the analytic proof is in the lesson."""
 from pathlib import Path
 import json,hashlib
 import sympy as s
@@ -61,6 +61,19 @@ forcing=-s.diff(v,x,2)-Rr(v)
 for j in range(4):
     terms=sum(s.binomial(j,h)*(s.diff(a+x,x,h)*s.diff(v,x,j-h,t,2)+s.diff(1+x*x,x,h)*s.diff(v,x,j-h,t)+s.diff(x,x,h)*s.diff(v,x,j-h)) for h in range(j+1))
     equal('ordinary normal recurrence, order '+str(j),s.diff(v,x,j+2)+terms+s.diff(forcing,x,j),0)
+
+T,T0,tau,rr,yy,xx,eta=s.symbols('T T0 tau rr yy xx eta',real=True)
+b=s.Matrix([tau*rr+T*xx,tau*yy+T*eta]);xi=s.Matrix([xx,eta])
+Ha=tau*(rr*xx+yy*eta)+T*tau*tau
+char=xx*xx+eta*eta-tau*tau
+equal('reachability dot product with characteristic remainder',(b.dot(xi)-Ha),T*char)
+equal('vertex cone identity including exact characteristic remainder',(b-T0*xi).dot(b-T0*xi)-T0*T0*tau*tau,b.dot(b)-2*T0*b.dot(xi)+T0*T0*char)
+equal('simultaneous normal reflection preserves H',Ha.subs({rr:-rr,xx:-xx},simultaneous=True),Ha)
+equal('H is constant in physical time on the characteristic set',s.diff(Ha,T)-xx/tau*s.diff(Ha,rr)-eta/tau*s.diff(Ha,yy),-char)
+theta=s.symbols('theta',real=True)
+equal('exact covector figure threshold',Ha.subs({tau:1,rr:Q(1,2),yy:0,xx:s.cos(theta),eta:s.sin(theta)}),T+s.cos(theta)/2)
+equal('strict boundary excludes the vertex-cone inequality',(-T0*xi).dot(-T0*xi)-T0*T0*tau*tau,T0*T0*char)
+
 result={'schema':'AN04-wave-parameter-smoothing-exact-checks/v1','total_cases':len(checks),
         'exact_algebraic_checks':len(checks),'numerical_checks':0,'all_passed':True,
         'analytic_proof_established_by_these_checks':False,'checks':checks}

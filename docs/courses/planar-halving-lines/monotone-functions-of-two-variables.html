@@ -1,0 +1,139 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Monotone functions of two variables</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A power saving for planar halving lines)</a><a href="limiting-measures.html">Previous lesson</a><a href="independent-gradients-and-tangent-directions.html">Next lesson</a><a href="src/monotone-functions-of-two-variables.md">Editable source</a></nav><main><article><h1 id="monotone-functions-of-two-variables">Monotone functions of two variables</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>By Proposition 3.3 of <a href="rank-coordinates.html">Rank coordinates</a>, in the chart given by two windows every other rank coordinate is a function that is monotone in each of the two variables. Such functions are differentiable almost everywhere: Saks proved this in the plane, and Chabrillac and Crouzeix stated it in all dimensions [BBL, Theorem 1(f) and Section 3]. This lesson proves it, following OpenAI's argument [OpenAI-HL, Section 4]: monotonicity bounds oscillations by increments, a covering argument makes the increments linear in the scale at almost every point, and Rademacher's theorem applies on the pieces where this happens. The lesson also proves that a map of the plane has a null set of critical values, among the points where it is differentiable, without any further regularity. Both statements are used in <a href="independent-gradients-and-tangent-directions.html">Independent gradients and tangent directions</a>.</p>
+<p>From the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a> we use: Lipschitz functions on subsets of <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> extend to Lipschitz functions on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> [Fremlin, 262B(b)]; Rademacher's theorem, that a Lipschitz function on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> is differentiable almost everywhere [Fremlin, 262Q]; and Lebesgue's density theorem, that almost every point of a measurable set <span class="math" data-tex="\(E\)">\(E\)</span> satisfies <span class="math" data-tex="\(|E\cap B(x,\delta)|/|B(x,\delta)|\to1\)">\(|E\cap B(x,\delta)|/|B(x,\delta)|\to1\)</span> [Fremlin, 261D(b)]. Here <span class="math" data-tex="\(|\cdot|\)">\(|\cdot|\)</span> is Lebesgue measure, or outer measure for arbitrary sets.</p>
+<h2 id="1-a-covering-lemma">1. A covering lemma</h2>
+<p>For a norm on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, a <em>ball</em> is a closed set <span class="math" data-tex="\(B(x,r)=\{y:\|y-x\|\le r\}\)">\(B(x,r)=\{y:\|y-x\|\le r\}\)</span>, and <span class="math" data-tex="\(5B\)">\(5B\)</span> is <span class="math" data-tex="\(B(x,5r)\)">\(B(x,5r)\)</span>. We use the Euclidean norm, and the maximum norm, whose balls are the squares <span class="math" data-tex="\(Q_r(x)=x+[-r,r]^2\)">\(Q_r(x)=x+[-r,r]^2\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (five times covering). Let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be a family of balls of one norm with radii at most <span class="math" data-tex="\(r_0&lt;\infty\)">\(r_0&lt;\infty\)</span>. There is a countable disjoint subfamily <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> such that every ball of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> lies in <span class="math" data-tex="\(5B&#x27;\)">\(5B&#x27;\)</span> for some <span class="math" data-tex="\(B&#x27;\in\mathcal G\)">\(B&#x27;\in\mathcal G\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\mathcal F_k\)">\(\mathcal F_k\)</span> be the balls with radius in <span class="math" data-tex="\((2^{-k-1}r_0,2^{-k}r_0]\)">\((2^{-k-1}r_0,2^{-k}r_0]\)</span>. Choose inductively a maximal disjoint subfamily <span class="math" data-tex="\(\mathcal G_k\)">\(\mathcal G_k\)</span> of the balls of <span class="math" data-tex="\(\mathcal F_k\)">\(\mathcal F_k\)</span> disjoint from all balls in <span class="math" data-tex="\(\mathcal G_0\cup\dots\cup\mathcal G_{k-1}\)">\(\mathcal G_0\cup\dots\cup\mathcal G_{k-1}\)</span>; it is countable, since disjoint balls of radius at least <span class="math" data-tex="\(2^{-k-1}r_0\)">\(2^{-k-1}r_0\)</span> contain disjoint balls of rational centers. A ball <span class="math" data-tex="\(B\in\mathcal F_k\)">\(B\in\mathcal F_k\)</span> meets some ball <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> of <span class="math" data-tex="\(\mathcal G_0\cup\dots\cup\mathcal G_k\)">\(\mathcal G_0\cup\dots\cup\mathcal G_k\)</span>, by maximality; the radius of <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> exceeds half the radius of <span class="math" data-tex="\(B\)">\(B\)</span>, so <span class="math" data-tex="\(B\subseteq5B&#x27;\)">\(B\subseteq5B&#x27;\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-monotone-functions">2. Monotone functions</h2>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be a bounded function on an open rectangle <span class="math" data-tex="\(\Omega\subseteq\mathbb R^2\)">\(\Omega\subseteq\mathbb R^2\)</span> which is monotone in each variable, nondecreasing or nonincreasing, the kind fixed for each variable. Reflecting a variable, we may assume <span class="math" data-tex="\(f\)">\(f\)</span> nondecreasing in both. Write <span class="math" data-tex="\(u\le w\)">\(u\le w\)</span> when <span class="math" data-tex="\(u_1\le w_1\)">\(u_1\le w_1\)</span> and <span class="math" data-tex="\(u_2\le w_2\)">\(u_2\le w_2\)</span>; then <span class="math" data-tex="\(f(u)\le f(w)\)">\(f(u)\le f(w)\)</span> for <span class="math" data-tex="\(u\le w\)">\(u\le w\)</span>. Let <span class="math" data-tex="\(\|f\|=\sup|f|\)">\(\|f\|=\sup|f|\)</span>.</p>
+<p>For <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with <span class="math" data-tex="\(Q_{2r}(x)\subseteq\Omega\)">\(Q_{2r}(x)\subseteq\Omega\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta(x,r)&amp;=f(x+(r,r))-f(x-(r,r))\\
+&amp;\ge0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta(x,r)&amp;=f(x+(r,r))-f(x-(r,r))\\
+&amp;\ge0 .
+\end{aligned}
+\]</span>
+Every point of <span class="math" data-tex="\(Q_r(x)\)">\(Q_r(x)\)</span> lies between <span class="math" data-tex="\(x-(r,r)\)">\(x-(r,r)\)</span> and <span class="math" data-tex="\(x+(r,r)\)">\(x+(r,r)\)</span>, so the oscillation of <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(Q_r(x)\)">\(Q_r(x)\)</span> is at most <span class="math" data-tex="\(\Delta(x,r)\)">\(\Delta(x,r)\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For almost every <span class="math" data-tex="\(x\in\Omega\)">\(x\in\Omega\)</span> there are <span class="math" data-tex="\(m_x,r_x&gt;0\)">\(m_x,r_x&gt;0\)</span> with <span class="math" data-tex="\(\Delta(x,r)\le m_xr\)">\(\Delta(x,r)\le m_xr\)</span> for <span class="math" data-tex="\(0&lt;r&lt;r_x\)">\(0&lt;r&lt;r_x\)</span>.</p>
+<p><em>Proof.</em> <em>Increments.</em> Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H(x,r)&amp;=\int_{x_2-2r}^{x_2+2r}\bigl(f(x_1+2r,y)\\
+&amp;\qquad\quad-f(x_1-2r,y)\bigr)\,dy,\\
+V(x,r)&amp;=\int_{x_1-2r}^{x_1+2r}\bigl(f(t,x_2+2r)\\
+&amp;\qquad\quad-f(t,x_2-2r)\bigr)\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+H(x,r)&amp;=\int_{x_2-2r}^{x_2+2r}\bigl(f(x_1+2r,y)\\
+&amp;\qquad\quad-f(x_1-2r,y)\bigr)\,dy,\\
+V(x,r)&amp;=\int_{x_1-2r}^{x_1+2r}\bigl(f(t,x_2+2r)\\
+&amp;\qquad\quad-f(t,x_2-2r)\bigr)\,dt .
+\end{aligned}
+\]</span>
+The integrands are monotone in one variable, hence Borel, and nonnegative. For <span class="math" data-tex="\(u\)">\(u\)</span> in the square <span class="math" data-tex="\(x+[-2r,-r]^2\)">\(x+[-2r,-r]^2\)</span> of area <span class="math" data-tex="\(r^2\)">\(r^2\)</span>, monotonicity gives <span class="math" data-tex="\(u\le x-(r,r)\)">\(u\le x-(r,r)\)</span> and <span class="math" data-tex="\(u+(3r,3r)\ge x+(r,r)\)">\(u+(3r,3r)\ge x+(r,r)\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta(x,r)\le{}&amp;\bigl(f(u_1+3r,u_2)\\
+&amp;\quad-f(u_1,u_2)\bigr)\\
+&amp;+\bigl(f(u_1+3r,u_2+3r)\\
+&amp;\quad-f(u_1+3r,u_2)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta(x,r)\le{}&amp;\bigl(f(u_1+3r,u_2)\\
+&amp;\quad-f(u_1,u_2)\bigr)\\
+&amp;+\bigl(f(u_1+3r,u_2+3r)\\
+&amp;\quad-f(u_1+3r,u_2)\bigr).
+\end{aligned}
+\]</span>
+In the first bracket <span class="math" data-tex="\(u_1\ge x_1-2r\)">\(u_1\ge x_1-2r\)</span> and <span class="math" data-tex="\(u_1+3r\le x_1+2r\)">\(u_1+3r\le x_1+2r\)</span>, so it is at most <span class="math" data-tex="\(f(x_1+2r,u_2)-f(x_1-2r,u_2)\)">\(f(x_1+2r,u_2)-f(x_1-2r,u_2)\)</span>; integrating over <span class="math" data-tex="\(u\)">\(u\)</span> gives at most <span class="math" data-tex="\(rH(x,r)\)">\(rH(x,r)\)</span>. The second bracket is at most <span class="math" data-tex="\(f(u_1+3r,x_2+2r)\)">\(f(u_1+3r,x_2+2r)\)</span> minus <span class="math" data-tex="\(f(u_1+3r,x_2-2r)\)">\(f(u_1+3r,x_2-2r)\)</span>, and integrates to at most <span class="math" data-tex="\(rV(x,r)\)">\(rV(x,r)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+r\Delta(x,r)\le H(x,r)+V(x,r).
+\]">\[
+r\Delta(x,r)\le H(x,r)+V(x,r).
+\]</span></p>
+<p><em>Disjoint squares.</em> Let <span class="math" data-tex="\(Q_{2r_i}(x_i)\)">\(Q_{2r_i}(x_i)\)</span> be disjoint squares in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. For a fixed <span class="math" data-tex="\(y\)">\(y\)</span>, the horizontal intervals <span class="math" data-tex="\([x_{i,1}-2r_i,x_{i,1}+2r_i]\)">\([x_{i,1}-2r_i,x_{i,1}+2r_i]\)</span> of those squares whose vertical range contains <span class="math" data-tex="\(y\)">\(y\)</span> are disjoint, so the corresponding increments of the nondecreasing function <span class="math" data-tex="\(f(\cdot,y)\)">\(f(\cdot,y)\)</span> add up to at most <span class="math" data-tex="\(2\|f\|\)">\(2\|f\|\)</span>. Integrating over <span class="math" data-tex="\(y\)">\(y\)</span> in the bounded vertical range <span class="math" data-tex="\(h\)">\(h\)</span> of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, <span class="math" data-tex="\(\sum_iH(x_i,r_i)\le2\|f\|\,h\)">\(\sum_iH(x_i,r_i)\le2\|f\|\,h\)</span>; similarly <span class="math" data-tex="\(\sum_iV(x_i,r_i)\le2\|f\|\,w\)">\(\sum_iV(x_i,r_i)\le2\|f\|\,w\)</span>, with <span class="math" data-tex="\(w\)">\(w\)</span> the width of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p><em>Covering.</em> For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> let <span class="math" data-tex="\(E_m\)">\(E_m\)</span> be the set of <span class="math" data-tex="\(x\in\Omega\)">\(x\in\Omega\)</span> for which <span class="math" data-tex="\(H(x,r)+V(x,r)&gt;mr^2\)">\(H(x,r)+V(x,r)&gt;mr^2\)</span> for arbitrarily small <span class="math" data-tex="\(r\)">\(r\)</span>. Applying Lemma 1.1 to the squares <span class="math" data-tex="\(Q_{2r}(x)\subseteq\Omega\)">\(Q_{2r}(x)\subseteq\Omega\)</span>, <span class="math" data-tex="\(x\in E_m\)">\(x\in E_m\)</span>, with this property and <span class="math" data-tex="\(r\le1\)">\(r\le1\)</span>, gives disjoint squares <span class="math" data-tex="\(Q_{2r_i}(x_i)\)">\(Q_{2r_i}(x_i)\)</span> whose fivefold enlargements cover <span class="math" data-tex="\(E_m\)">\(E_m\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|E_m|&amp;\le\sum_i(20r_i)^2\\
+&amp;&lt;\frac{400}m\sum_i\bigl(H(x_i,r_i)+V(x_i,r_i)\bigr)\\
+&amp;\le\frac{800\|f\|(h+w)}m .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|E_m|&amp;\le\sum_i(20r_i)^2\\
+&amp;&lt;\frac{400}m\sum_i\bigl(H(x_i,r_i)+V(x_i,r_i)\bigr)\\
+&amp;\le\frac{800\|f\|(h+w)}m .
+\end{aligned}
+\]</span>
+The points outside <span class="math" data-tex="\(\bigcap_mE_m\)">\(\bigcap_mE_m\)</span>, a null set, have <span class="math" data-tex="\(H+V\le m_xr^2\)">\(H+V\le m_xr^2\)</span> for all small <span class="math" data-tex="\(r\)">\(r\)</span>, hence <span class="math" data-tex="\(\Delta(x,r)\le m_xr\)">\(\Delta(x,r)\le m_xr\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2</strong> (Saks; Chabrillac–Crouzeix). A bounded Borel function on an open rectangle in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> which is monotone in each variable is differentiable at almost every point.</p>
+<p><em>Proof.</em> Assume <span class="math" data-tex="\(f\)">\(f\)</span> nondecreasing in both variables, as above. For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> let <span class="math" data-tex="\(E_m\)">\(E_m\)</span> be the set of points <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(Q_{2/m}(x)\subseteq\Omega\)">\(Q_{2/m}(x)\subseteq\Omega\)</span> and <span class="math" data-tex="\(\Delta(x,r)\le mr\)">\(\Delta(x,r)\le mr\)</span> for every rational <span class="math" data-tex="\(r\in(0,1/m)\)">\(r\in(0,1/m)\)</span>. It is a Borel set, as a countable intersection of conditions on Borel functions of <span class="math" data-tex="\(x\)">\(x\)</span>. By Lemma 2.1, the union of the <span class="math" data-tex="\(E_m\)">\(E_m\)</span> contains almost every point of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p><em>Lipschitz pieces.</em> Let <span class="math" data-tex="\(x\in E_m\)">\(x\in E_m\)</span> and <span class="math" data-tex="\(y\in\Omega\)">\(y\in\Omega\)</span> with <span class="math" data-tex="\(\rho=\max(|y_1-x_1|,|y_2-x_2|)\)">\(\rho=\max(|y_1-x_1|,|y_2-x_2|)\)</span>. If <span class="math" data-tex="\(\rho&lt;1/m\)">\(\rho&lt;1/m\)</span>, choose rational <span class="math" data-tex="\(r\in[\rho,1/m)\)">\(r\in[\rho,1/m)\)</span> close to <span class="math" data-tex="\(\rho\)">\(\rho\)</span>: <span class="math" data-tex="\(|f(y)-f(x)|\le\Delta(x,r)\le mr\)">\(|f(y)-f(x)|\le\Delta(x,r)\le mr\)</span>, so <span class="math" data-tex="\(|f(y)-f(x)|\le m\rho\)">\(|f(y)-f(x)|\le m\rho\)</span>. If <span class="math" data-tex="\(\rho\ge1/m\)">\(\rho\ge1/m\)</span>, <span class="math" data-tex="\(|f(y)-f(x)|\le2\|f\|\le2\|f\|m\rho\)">\(|f(y)-f(x)|\le2\|f\|\le2\|f\|m\rho\)</span>. So the restriction of <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(E_m\)">\(E_m\)</span> is Lipschitz, and it extends to a Lipschitz function <span class="math" data-tex="\(g_m\)">\(g_m\)</span> on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> [Fremlin, 262B(b)], which is differentiable almost everywhere [Fremlin, 262Q].</p>
+<p><em>Squeezing.</em> Let <span class="math" data-tex="\(x\in E_m\)">\(x\in E_m\)</span> be a point where <span class="math" data-tex="\(g_m\)">\(g_m\)</span> is differentiable and where <span class="math" data-tex="\(E_m\)">\(E_m\)</span> has density one [Fremlin, 261D(b)]; almost every point of <span class="math" data-tex="\(E_m\)">\(E_m\)</span> is such. Let <span class="math" data-tex="\(\eta\in(0,\frac12)\)">\(\eta\in(0,\frac12)\)</span>. For small <span class="math" data-tex="\(v\)">\(v\)</span>, the square <span class="math" data-tex="\(y+[-\eta|v|,0]^2\)">\(y+[-\eta|v|,0]^2\)</span>, with <span class="math" data-tex="\(y=x+v\)">\(y=x+v\)</span>, lies in <span class="math" data-tex="\(B(x,2|v|)\)">\(B(x,2|v|)\)</span> and has area <span class="math" data-tex="\(\eta^2|v|^2\)">\(\eta^2|v|^2\)</span>, a fixed fraction of the area of that ball; by density one it meets <span class="math" data-tex="\(E_m\)">\(E_m\)</span> once <span class="math" data-tex="\(|v|\)">\(|v|\)</span> is small. So there are points <span class="math" data-tex="\(y^\pm\in E_m\)">\(y^\pm\in E_m\)</span> with <span class="math" data-tex="\(y^-\le y\le y^+\)">\(y^-\le y\le y^+\)</span> and <span class="math" data-tex="\(|y^\pm-y|\le\sqrt2\,\eta|v|\)">\(|y^\pm-y|\le\sqrt2\,\eta|v|\)</span>. By monotonicity and <span class="math" data-tex="\(f=g_m\)">\(f=g_m\)</span> on <span class="math" data-tex="\(E_m\)">\(E_m\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;g_m(y^-)\le f(y)\le g_m(y^+),\\
+&amp;g_m(y^\pm)=g_m(x)\\
+&amp;\qquad+Dg_m(x)(y^\pm-x)+o(|v|),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;g_m(y^-)\le f(y)\le g_m(y^+),\\
+&amp;g_m(y^\pm)=g_m(x)\\
+&amp;\qquad+Dg_m(x)(y^\pm-x)+o(|v|),
+\end{aligned}
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|f(x+v)-f(x)-Dg_m(x)v|\\
+&amp;\quad\le\sqrt2\,\eta\,\|Dg_m(x)\|\,|v|+o(|v|).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|f(x+v)-f(x)-Dg_m(x)v|\\
+&amp;\quad\le\sqrt2\,\eta\,\|Dg_m(x)\|\,|v|+o(|v|).
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is arbitrary, <span class="math" data-tex="\(f\)">\(f\)</span> is differentiable at <span class="math" data-tex="\(x\)">\(x\)</span> with derivative <span class="math" data-tex="\(Dg_m(x)\)">\(Dg_m(x)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-critical-images">3. Critical images</h2>
+<p><strong>Lemma 3.1</strong> (critical images). Let <span class="math" data-tex="\(\Omega\subseteq\mathbb R^2\)">\(\Omega\subseteq\mathbb R^2\)</span> be open and <span class="math" data-tex="\(F:\Omega\to\mathbb R^2\)">\(F:\Omega\to\mathbb R^2\)</span> any map. Let <span class="math" data-tex="\(S\)">\(S\)</span> be the set of points where <span class="math" data-tex="\(F\)">\(F\)</span> is differentiable with <span class="math" data-tex="\(\operatorname{rank}DF(x)&lt;2\)">\(\operatorname{rank}DF(x)&lt;2\)</span>. Then <span class="math" data-tex="\(F(S)\)">\(F(S)\)</span> has outer measure zero, so it lies in a Borel null set.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(\rho,m\ge1\)">\(\rho,m\ge1\)</span> and let <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> be the set of <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span> with <span class="math" data-tex="\(|x|&lt;\rho\)">\(|x|&lt;\rho\)</span> and <span class="math" data-tex="\(\|DF(x)\|\le m\)">\(\|DF(x)\|\le m\)</span>. Fix <span class="math" data-tex="\(\epsilon\in(0,1)\)">\(\epsilon\in(0,1)\)</span>. For each <span class="math" data-tex="\(x\in S&#x27;\)">\(x\in S&#x27;\)</span> there are arbitrarily small <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span> with <span class="math" data-tex="\(B(x,5r)\subseteq\Omega\)">\(B(x,5r)\subseteq\Omega\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|F(y)-F(x)-DF(x)(y-x)|\\
+&amp;\quad\le\epsilon|y-x|
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|F(y)-F(x)-DF(x)(y-x)|\\
+&amp;\quad\le\epsilon|y-x|
+\end{aligned}
+\]</span>
+for <span class="math" data-tex="\(y\in B(x,5r)\)">\(y\in B(x,5r)\)</span>. Lemma 1.1, for Euclidean balls, gives disjoint balls <span class="math" data-tex="\(B(x_i,r_i)\)">\(B(x_i,r_i)\)</span> of this kind whose fivefold enlargements cover <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>. They lie in <span class="math" data-tex="\(B(0,\rho+1)\)">\(B(0,\rho+1)\)</span>, so <span class="math" data-tex="\(\sum_i\pi r_i^2\le\pi(\rho+1)^2\)">\(\sum_i\pi r_i^2\le\pi(\rho+1)^2\)</span>. Since <span class="math" data-tex="\(DF(x_i)\)">\(DF(x_i)\)</span> has rank at most one, <span class="math" data-tex="\(DF(x_i)(B(0,5r_i))\)">\(DF(x_i)(B(0,5r_i))\)</span> lies in a segment of length <span class="math" data-tex="\(10mr_i\)">\(10mr_i\)</span>, and <span class="math" data-tex="\(F(B(x_i,5r_i))\)">\(F(B(x_i,5r_i))\)</span> lies in the <span class="math" data-tex="\(5\epsilon r_i\)">\(5\epsilon r_i\)</span>-neighbourhood of a translate of it, whose area is at most <span class="math" data-tex="\((100m\epsilon+25\pi\epsilon^2)r_i^2\)">\((100m\epsilon+25\pi\epsilon^2)r_i^2\)</span>. So the outer measure of <span class="math" data-tex="\(F(S&#x27;)\)">\(F(S&#x27;)\)</span> is at most <span class="math" data-tex="\((100m\epsilon+25\pi\epsilon^2)(\rho+1)^2\)">\((100m\epsilon+25\pi\epsilon^2)(\rho+1)^2\)</span>, for every <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Take the union over <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the easy part of Sard's theorem, but without any continuity of <span class="math" data-tex="\(F\)">\(F\)</span> away from the point: only differentiability at the points of <span class="math" data-tex="\(S\)">\(S\)</span> is used. In the course, <span class="math" data-tex="\(F\)">\(F\)</span> is a pair of limits of rank coordinates, known to be differentiable almost everywhere but not continuous.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Show that <span class="math" data-tex="\(f(x,y)=\mathbf 1_{x+y&gt;0}\)">\(f(x,y)=\mathbf 1_{x+y&gt;0}\)</span> is monotone in each variable, find where it is not differentiable, and check that this set is null.</p>
+<p><strong>4.2</strong> (medium). Show that Theorem 2.2 fails for functions monotone in one variable only: give a bounded Borel function on the square, nondecreasing in <span class="math" data-tex="\(x\)">\(x\)</span>, that is differentiable nowhere.</p>
+<p><strong>4.3</strong> (easy). For <span class="math" data-tex="\(F(x,y)=(x,x^2)\)">\(F(x,y)=(x,x^2)\)</span>, describe <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(F(S)\)">\(F(S)\)</span> in Lemma 3.1.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> Increasing <span class="math" data-tex="\(x\)">\(x\)</span> or <span class="math" data-tex="\(y\)">\(y\)</span> can only turn <span class="math" data-tex="\(x+y&gt;0\)">\(x+y&gt;0\)</span> from false to true. Off the line <span class="math" data-tex="\(x+y=0\)">\(x+y=0\)</span> the function is locally constant, hence differentiable; on the line it jumps. The line is null.</p>
+<p><strong>4.2.</strong> Let <span class="math" data-tex="\(f(x,y)=x+\mathbf 1_{y\in\mathbb Q}\)">\(f(x,y)=x+\mathbf 1_{y\in\mathbb Q}\)</span>. For each fixed <span class="math" data-tex="\(y\)">\(y\)</span> it is increasing in <span class="math" data-tex="\(x\)">\(x\)</span>, but at every point it is discontinuous in <span class="math" data-tex="\(y\)">\(y\)</span>, hence not differentiable.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(DF=\begin{pmatrix}1&amp;0\\2x&amp;0\end{pmatrix}\)">\(DF=\begin{pmatrix}1&amp;0\\2x&amp;0\end{pmatrix}\)</span> has rank one everywhere, so <span class="math" data-tex="\(S=\mathbb R^2\)">\(S=\mathbb R^2\)</span>, and <span class="math" data-tex="\(F(S)\)">\(F(S)\)</span> is the parabola <span class="math" data-tex="\(\{(x,x^2)\}\)">\(\{(x,x^2)\}\)</span>, a null set.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[BBL] J. M. Borwein, J. V. Burke and A. S. Lewis, <em>Differentiability of cone-monotone functions on separable Banach space</em>, Proceedings of the American Mathematical Society 132 (2004), 1067–1076; Theorem 1(f) states the theorem for <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, with its history in Section 3. https://sites.math.washington.edu/~burke/papers/reprints/46-cone-monotone.pdf</li>
+<li>[Fremlin] D. H. Fremlin, <em>Measure Theory</em>, Volume 2, 261D(b) (density points), 262B(b) (Lipschitz extensions), 262Q (Rademacher's theorem); the text of the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>. https://www1.essex.ac.uk/maths/people/fremlin/mt.htm</li>
+<li>[OpenAI-HL] OpenAI, <em>A power saving for planar halving lines</em>, OpenAI Math Release preprint, 25 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/A-power-saving-for-planar-halving-lines-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

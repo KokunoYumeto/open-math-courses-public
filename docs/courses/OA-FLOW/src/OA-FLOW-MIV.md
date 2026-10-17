@@ -1,4 +1,4 @@
-# Modular spectra and periods from the center flow
+# Modular spectra, periods and almost-periodic states
 
 *Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
@@ -1133,6 +1133,909 @@ In this example one explicit detector is \(J=\mathbb Q\cap[1,2]\). Every nonempt
 
 *Figure 3.* Left: numerical samples of the continuous scalar function in (MIV13.e), with \(r=t/(2\pi)\) and \(1\le c\le2\). The marked zero curves satisfy \(rc\in\mathbb Z\). At each nonzero fixed \(r\), a whole interval of \(c\)-values has a positive lower bound, which forces the unrestricted sum to be infinite; rational indices already suffice. Right: the exact quantifier structure of the rational-interval selection in (MIV13.b). It selects countably many finite sets of indices, whose union preserves all rational threshold tests and therefore the entire extended dispersion function. The diagram records logical steps and assigns no geometry or cardinality scale to the tensor-index set. Proofs and limitations are in Sections 11–13. [Vector figure](../assets/uncountable-product-times/uncountable-product-times.svg), [renderer](../assets/uncountable-product-times/render.py), [formulas and sample data](../assets/uncountable-product-times/data.json).
 
+<a id="miv-almost-periodic-action"></a>
+## 14. From an almost-periodic state to a compact modular action
+
+Here \(M\) may be any von Neumann algebra carrying a faithful normal **state** \(\varphi\). No factoriality or separability assumption is made in Sections 14–16. In its faithful normal GNS representation write \(\Omega=\Lambda_\varphi(1)\), \(S=J\Delta^{1/2}\), and \(\sigma_t^\varphi(x)=\Delta^{it}x\Delta^{-it}\). We call the state *almost periodic* when
+\[
+ H_\varphi=\bigoplus_{\lambda\in E}H_\lambda,\qquad
+ H_\lambda=\ker(\Delta-\lambda),\qquad
+ E=\{\lambda>0:H_\lambda\ne0\}.
+ \tag{MIV14.a}
+\]
+Thus the eigenspaces span the whole Hilbert space; discreteness of the set of eigenvalues is not assumed. The zero spectral subspace is absent because the state is faithful. Put
+\[
+ \Gamma=\langle E\rangle\subset\mathbb R_{>0},
+ \qquad K=\widehat{\Gamma_{\mathrm d}},
+ \qquad \iota(t)(\gamma)=\gamma^{it}.
+ \tag{MIV14.b}
+\]
+The subscript gives \(\Gamma\) the discrete topology, even if it is dense as a subgroup of the positive reals.
+
+The earlier inputs are the [faithful normal GNS and closed involution](OA-FLOW-WR.md#wr-3), [modular implementation](OA-FLOW-MW.md#mw-4), [compact product theorem](OA-FLOW-CF.md#oa-flow.cf.4), [uniform character approximation](OA-FLOW-CF.md#oa-flow.cf.5), [H3's Pontryagin duality](OA-FLOW-HARMONIC-LATE.md#l138-h3), and [Haar and vector integration](OA-FLOW-L24.md#oa-flow.grp.haarconventions). We give the extension and the Fourier argument explicitly.
+
+The group \(K\) is the closed subgroup of \(\mathbb T^\Gamma\) specified by \(k(1)=1\) and \(k(\gamma\delta)=k(\gamma)k(\delta)\), hence compact Hausdorff. Its continuous characters are \(k\mapsto k(\gamma)\), by H3. The image of \(\iota\) is dense. Indeed, if its closed subgroup \(L\) were proper, a nontrivial character of the compact quotient \(K/L\) would separate a nonidentity coset from the identity, by H3 applied to that quotient. Pulling this character back would give some \(\gamma\ne1\) with \(\gamma^{it}=1\) for every \(t\). Choosing \(t=\pi/\log\gamma\) contradicts this.
+
+Define a unitary on the entire Hilbert sum by
+\[
+ U_k\big|_{H_\lambda}=k(\lambda)1_{H_\lambda}.
+ \tag{MIV14.c}
+\]
+This representation is strongly continuous. For a fixed vector first discard a tail of arbitrarily small squared norm outside finitely many eigenspaces. On the finite sum, continuity follows from finitely many coordinates \(k(\lambda)\); the discarded tail changes by at most twice its norm. The same argument applies to \(U_k^*\). Moreover \(U_{\iota(t)}=\Delta^{it}\).
+
+Given \(k\in K\), choose a net \(\iota(t_i)\to k\). For every \(x\in M\), the bounded operators \(\Delta^{it_i}x\Delta^{-it_i}\) converge strongly-star to \(U_kxU_k^*\), so that limit is in the strongly closed algebra \(M\). Applying the same argument to \(k^{-1}\) proves equality of the conjugated algebra with \(M\). Consequently
+\[
+ \alpha_k(x)=U_kxU_k^*,\qquad
+ \alpha_{\iota(t)}=\sigma_t^\varphi
+ \tag{MIV14.d}
+\]
+defines a point ultraweakly continuous action by normal automorphisms. Here bounded strong-star convergence implies ultraweak convergence by the [concrete predual estimate](OA-FLOW-CP.md#oa-flow.cp.4). Since \(\Omega\in H_1\), \(U_k\Omega=\Omega\), and \(\varphi\alpha_k=\varphi\). The action is faithful: if \(\alpha_k=\mathrm{id}\), then \(U_kx\Omega=x\Omega\) for all \(x\), hence \(U_k=1\); it follows that \(k=1\) on the generating set \(E\) and therefore on \(\Gamma\).
+
+Normalize Haar measure on \(K\) to mass one and write \(e_\gamma(k)=k(\gamma)\). Distinct such characters are orthogonal: translating their Haar integral by an element where their quotient is not one forces that integral to vanish. They span a uniformly dense subalgebra of \(C(K)\), since they contain constants, are closed under conjugation, and separate points. CF5 and the Radon density statement in L24 therefore give the complete Fourier unitary
+\[
+ L^2(K,H_\varphi)=\bigoplus_{\gamma\in\Gamma}e_\gamma H_\varphi.
+ \tag{MIV14.e}
+\]
+This assertion uses Hilbert sums and finite subsets, not a presumed enumeration of \(\Gamma\).
+
+For \(\eta\in\Gamma\), let
+\[
+ M_\eta=\{a\in M:\alpha_k(a)=k(\eta)a\text{ for every }k\in K\}.
+\]
+An element \(a\in M_\eta\) satisfies \(\Delta^{it}a\Omega=\eta^{it}a\Omega\). For every rational \(t\), the spectral measure of \(a\Omega\) is supported where \(\lambda^{it}=\eta^{it}\); the intersection of these countably many sets is \(\{\eta\}\). Indeed, for \(\log\lambda-\log\eta\ne0\), a sufficiently small nonzero rational \(t\) makes its product with \(t\) lie strictly between \(-2\pi\) and \(2\pi\) and differ from zero. The spectral theorem therefore gives \(\Delta^{1/2}a\Omega=\eta^{1/2}a\Omega\). Since the state is finite, both \(a\Omega\) and \(a^*\Omega\) belong to the original Tomita domain, and \(Sa\Omega=a^*\Omega\). Taking norms in \(S=J\Delta^{1/2}\) yields the key identity
+\[
+ \varphi(aa^*)=\eta\,\varphi(a^*a)
+ \qquad(a\in M_\eta).
+ \tag{MIV14.f}
+\]
+No trace or crossed-product assertion has been used to obtain this identity.
+
+<a id="miv-almost-periodic-trace"></a>
+## 15. A semifinite trace from weighted Fourier diagonals
+
+Form the actual regular crossed product \(N=M\rtimes_\alpha K\) on \(L^2(K,H_\varphi)\):
+\[
+ [\pi(x)\xi](k)=\alpha_{k^{-1}}(x)\xi(k),\qquad
+ [\lambda_h\xi](k)=\xi(h^{-1}k).
+ \tag{MIV15.a}
+\]
+The faithful normal coefficient representation and regular-algebra construction are the [normal regular representation theorem](OA-FLOW-NR.md#oa-flow.nr.3). For \(\gamma\in\Gamma\), Haar integration gives
+\[
+ p_\gamma=\int_K k(\gamma)\lambda_k\,dk
+          =|e_\gamma\rangle\langle e_\gamma|\otimes1\in N.
+ \tag{MIV15.b}
+\]
+The equality follows by applying the integral to each Fourier summand and using character orthogonality. In particular the \(p_\gamma\) are orthogonal and their finite sums increase strongly to one.
+
+For \(A\in N\), denote by \(A_{\gamma\delta}\in B(H_\varphi)\) its matrix entry between \(e_\delta H_\varphi\) and \(e_\gamma H_\varphi\). In fact
+\[
+ A_{\gamma\delta}\in M_{\delta/\gamma}.
+ \tag{MIV15.c}
+\]
+To check this on generators, define the ultraweak integral
+\[
+ E_\eta(x)=\int_K\overline{k(\eta)}\,\alpha_k(x)\,dk.
+\]
+A Haar substitution shows \(\alpha_h(E_\eta(x))=h(\eta)E_\eta(x)\), and direct Fourier integration gives
+\[
+ [\pi(x)\lambda_h]_{\gamma\delta}
+   =\overline{h(\delta)}\,E_{\delta/\gamma}(x).
+\]
+Finite linear combinations of \(\pi(x)\lambda_h\) form a unital star algebra, by covariance, and are ultraweakly dense in \(N\), by the [bicommutant density theorem](OA-FLOW-BD.md#oa-flow.bd.1). Matrix-entry maps are normal and \(M_{\delta/\gamma}\) is ultraweakly closed. This proves (MIV15.c) for all \(A\).
+
+For \(X\in N_+\), define
+\[
+ \tau(X)=\sum_{\gamma\in\Gamma}
+                \gamma\,\varphi(X_{\gamma\gamma}),
+ \qquad
+ \sum_{\gamma\in\Gamma}b_\gamma
+   :=\sup_{F\subset\Gamma\ {\rm finite}}\sum_{\gamma\in F}b_\gamma
+ \quad(b_\gamma\ge0).
+ \tag{MIV15.d}
+\]
+Each summand is a positive normal functional, so this formula is an additive homogeneous normal weight, with infinite values permitted. Normality follows directly by interchanging the two suprema, over finite \(F\) and an increasing bounded net of positive operators. It is faithful: if \(\tau(X)=0\), faithfulness of \(\varphi\) makes every \(X_{\gamma\gamma}=0\). Then \(X^{1/2}(e_\gamma\otimes\xi)=0\) for every \(\gamma,\xi\); their dense span forces \(X=0\).
+
+The weight is a trace on the **whole** positive cone. For any bounded \(A\in N\), positivity and strong convergence of the finite Fourier projections give
+\[
+ \begin{aligned}
+ \tau(A^*A)
+   &=\sum_{\delta,\gamma}\delta\,
+                    \varphi(A_{\gamma\delta}^*A_{\gamma\delta})\\
+   &=\sum_{\gamma,\delta}\gamma\,
+                    \varphi(A_{\gamma\delta}A_{\gamma\delta}^*)
+     =\tau(AA^*).
+ \end{aligned}
+ \tag{MIV15.e}
+\]
+The middle equality is (MIV14.f) with \(\eta=\delta/\gamma\). Interchanging the sums is legitimate even for an uncountable index set and infinite values: both iterated sums are the supremum over all finite subsets of \(\Gamma\times\Gamma\). The outside equalities use normality of \(\varphi\) on the increasing finite sums of positive matrix products. Thus this is not a calculation restricted to finite matrices. In particular, applying (MIV15.e) to \(A=uX^{1/2}\) proves \(\tau(uXu^*)=\tau(X)\) for every unitary \(u\in N\).
+
+For finite \(F\), let \(p_F=\sum_{\gamma\in F}p_\gamma\). Then
+\[
+ \tau(p_F)=\sum_{\gamma\in F}\gamma<\infty.
+ \tag{MIV15.f}
+\]
+For any \(X\in N_+\), the positive elements \(X^{1/2}p_FX^{1/2}\) increase to \(X\), and (MIV15.e) gives
+\[
+ \tau(X^{1/2}p_FX^{1/2})
+ =\tau(p_FXp_F)\le\|X\|\tau(p_F)<\infty.
+\]
+This proves semifiniteness directly from positive approximants dominated by \(X\). Thus \(N\) is semifinite, with the specified faithful normal semifinite trace \(\tau\).
+
+There is also a concrete finite corner. By (MIV15.c), \(A_{11}\in M_1=M_\varphi\), where equality with the centralizer follows from the density of \(\iota(\mathbb R)\). Conversely, for \(x\in M_\varphi\), \(\pi(x)\) is constant in \(k\), and its \(11\)-entry is \(x\). Matrix entries and constant inclusion are inverse normal maps, so
+\[
+ p_1Np_1\cong M_\varphi,\qquad
+ \tau\big|_{p_1Np_1}=\varphi\big|_{M_\varphi}.
+ \tag{MIV15.g}
+\]
+This corner need not be a factor or have full central support in \(N\).
+
+<a id="miv-almost-periodic-recovery"></a>
+## 16. Exact dual scaling and recovery of the original algebra
+
+Use the negative dual-action convention of [normal biduality](OA-FLOW-ND.md#nd-construction):
+\[
+ \theta_\eta(\pi(x))=\pi(x),\qquad
+ \theta_\eta(\lambda_k)=\overline{k(\eta)}\lambda_k
+ \quad(\eta\in\Gamma).
+ \tag{MIV16.a}
+\]
+It is implemented on the regular Hilbert space by multiplication by \(\overline{k(\eta)}\). Denote that unitary by \(V_\eta\). It sends \(e_\gamma\xi\) to \(e_{\gamma/\eta}\xi\), hence
+\[
+ \theta_\eta(p_\gamma)=p_{\gamma/\eta},\qquad
+ (\theta_\eta(X))_{\gamma\gamma}=X_{\gamma\eta,\gamma\eta}.
+\]
+Reindexing the nonnegative sum in (MIV15.d), with no finiteness hypothesis on \(X\), gives
+\[
+ \tau\theta_\eta(X)
+ =\sum_{\gamma}\gamma\,\varphi(X_{\gamma\eta,\gamma\eta})
+ =\eta^{-1}\tau(X),\qquad X\in N_+.
+ \tag{MIV16.b}
+\]
+Thus the scaling is the inverse of the positive eigenvalue label for this negative dual convention.
+
+Let \(j:N\to P=N\rtimes_\theta\Gamma\) be the regular coefficient inclusion, and let \(\ell_\eta\) be the second implementing unitaries. All hypotheses of the earlier [full normal biduality theorem](OA-FLOW-ND.md#nd-construction) now hold: \(K\) is locally compact abelian, \(\alpha\) is point ultraweakly continuous, and its dual is exactly \(\Gamma_{\mathrm d}\). That theorem, including its [normal inverse](OA-FLOW-ND.md#nd-inverse), gives
+\[
+ \Phi:P\xrightarrow{\ \cong\ }M\bar\otimes B(L^2K)
+ \tag{MIV16.c}
+\]
+with
+\[
+ \begin{aligned}
+ [\Phi(j(\pi(x)))\xi](k)&=\alpha_{k^{-1}}(x)\xi(k),\\
+ \Phi(j(\lambda_h))&=1\otimes L_h,\\
+ \Phi(\ell_\eta)&=1\otimes M_{\overline{e_\eta}}.
+ \end{aligned}
+ \tag{MIV16.d}
+\]
+The theorem proves onto normality and injectivity by Fourier transform, shear, and the two full multiplier commutants; covariance alone is not the justification for (MIV16.c).
+
+The original algebra is recovered without a countability assumption. Since \(p_1=\int_K\lambda_k\,dk\), normality and (MIV16.d) give
+\[
+ \Phi(j(p_1))=1\otimes|e_1\rangle\langle e_1|,
+ \qquad j(p_1)Pj(p_1)\cong M.
+ \tag{MIV16.e}
+\]
+The normal map from \(M\) onto this corner is explicitly
+\(x\mapsto\Phi^{-1}(x\otimes|e_1\rangle\langle e_1|)\);
+its inverse is compression of \(\Phi\) to the constant Fourier vector. Notice the distinction between \(p_1Np_1=M_\varphi\) in the first crossing and \(j(p_1)Pj(p_1)=M\) after the second.
+
+If \(M\) has separable predual, its state GNS space is separable. To see this, choose a norm-dense sequence in the predual unit ball. Its evaluations metrize the ultraweak topology of the unit ball of \(M\): finite coordinate approximation and the uniform operator bound control every other predual functional. That ball is compact by the [dual-ball compactness proof](OA-FLOW-ST12.md#oa-flow.st.1), hence has a countable dense set \(\{x_n\}\), obtained by finite \(1/m\)-nets. If a vector is orthogonal to every \(x_n\Omega\), the normal vector functional \(x\mapsto\langle x\Omega,\xi\rangle\) vanishes on the entire unit ball and then on \(M\). Cyclicity forces \(\xi=0\). Thus the closed span of the \(x_n\Omega\) is all of \(H_\varphi\).
+
+Consequently \(E\), and then \(\Gamma\), are countable: distinct nonzero eigenspaces supply orthogonal unit vectors, and disjoint balls of radius \(1/3\) around such vectors must meet distinct elements of a fixed countable dense set. If in addition \(M\) is type III, [proper infiniteness and the countable amplification isomorphism](OA-FLOW-CDEC.md#cdec-2) turn (MIV16.c) into \(P\cong M\). Neither countability nor this last absorption is needed for the exact corner recovery (MIV16.e). No uniqueness of the pair \((N,\theta)\) under changing the almost-periodic state is asserted.
+
+<a id="miv-almost-periodic-examples"></a>
+## 17. Examples and solved checks for the compact construction
+
+**A tracial state.** If \(\varphi\) is tracial, \(\Delta=1\), so \(E=\Gamma=\{1\}\), \(K\) is trivial, \(N=M\), and (MIV15.d) gives \(\tau=\varphi\). Both crossings and the recovery map are the identity.
+
+**A matrix factor with a nonfactor coefficient algebra.** Take
+\[
+ M=M_2(\mathbb C),\qquad
+ \varphi(x)=\operatorname{Tr}(Dx),\qquad
+ D=\operatorname{diag}(2/3,1/3).
+\]
+Here \(\Delta\) has eigenvalues \(1,2,1/2\), \(\Gamma=2^{\mathbb Z}\), and \(K=\mathbb T\). If \(z=k(2)\), the compact action is
+\(\alpha_z=\operatorname{Ad}\operatorname{diag}(z,1)\).
+Index the Fourier coordinates by \(e_{2^n}\), \(n\in\mathbb Z\). The operator \(\pi(E_{12})\) sends coordinate \((n,2)\) to \((n-1,1)\). Therefore the two-dimensional spaces
+\[
+ Q_j=\operatorname{span}\{e_{2^j}\otimes\varepsilon_1,\,
+                           e_{2^{j+1}}\otimes\varepsilon_2\},
+ \qquad j\in\mathbb Z,
+ \tag{MIV17.a}
+\]
+are reducing and mutually orthogonal in the faithful defining matrix representation. We use that representation here through the [normal representation-independence isomorphism](OA-FLOW-NR.md#oa-flow.nr.4); the Fourier-entry formulas and the state values are unchanged. They exhaust that regular space. Their projections belong to \(N\), as sums of \(p_{2^j}\pi(E_{11})\) and \(p_{2^{j+1}}\pi(E_{22})\); the two compressed diagonals and \(\pi(E_{12})\) give all matrix units in each block. Bounded strong sums of these blocks consequently identify
+\[
+ N\cong\prod_{j\in\mathbb Z}M_2(\mathbb C),\qquad
+ \tau((X_j)_j)=\sum_{j\in\mathbb Z}
+                       \frac{2^{j+1}}3\operatorname{Tr}_2(X_j).
+ \tag{MIV17.b}
+\]
+Here \(\operatorname{Tr}_2\) is the unnormalized matrix trace. Indeed the two minimal projections of block \(j\) have values
+\(2^j(2/3)\) and \(2^{j+1}(1/3)\), which agree. The action \(\theta_2\) moves block \(j\) to block \(j-1\), so it divides this trace by two. This proves explicitly that \(M\) being a factor does not make \(N\) a factor. Also \(p_1Np_1\cong\mathbb C^2\), while \(j(p_1)Pj(p_1)\cong M_2(\mathbb C)\).
+
+**Why the diagonal weights cannot be omitted.** In the same example choose
+\(A=\pi(E_{12})p_{2^n}\). Then \(A^*A=p_{2^n}\pi(E_{22})\) and
+\(AA^*=p_{2^{n-1}}\pi(E_{11})\). The unweighted sum
+\(\sum_\gamma\varphi(X_{\gamma\gamma})\) takes values \(1/3\) and \(2/3\) on these two projections, so is not tracial. The weight in (MIV15.d) gives \(2^n/3\) to both.
+
+**The earlier product states are almost periodic.** For any product of faithful finite matrix states considered in Sections 8–13, the finite-tensor matrix vectors diagonalize each finite tensor modular operator. Their eigenvalues are finite products of the density ratios. The remaining tensor factors carry their state vectors, whose modular eigenvalue is one. These finite excitations span the product GNS space densely, including for an unrestricted index set. The modular implementation proved in the product construction therefore yields (MIV14.a), and Sections 14–16 apply to those products. In particular the example (MIV13.f) has an almost-periodic state with exact period group \(\{0\}\). Almost periodicity is not the existence of a nonzero common period: finite combinations of eigenvectors approximate each GNS vector, although the eigenvalues can have incompatible logarithms.
+
+
+![Weighted Fourier diagonals, the exact matrix-state trace check, and the centralizer and full-algebra corners.](../assets/almost-periodic-core/weighted-diagonals.svg)
+
+*Figure 4.* The upper left is the single-entry identity (MIV14.f) used in the full trace proof (MIV15.e); the upper right checks it on the matrix state of Section 17. The lower row distinguishes the first corner (MIV15.g) from the second corner (MIV16.e). The arrow labelled \(\Phi\) is the whole normal isomorphism (MIV16.c). The trace scaling uses the negative dual convention (MIV16.a). [Editable vector source](../assets/almost-periodic-core/weighted-diagonals.svg) and [component terms](../assets/almost-periodic-core/TERMS.md).
+
+<a id="miv-extremal-core"></a>
+## 18. Factorial centralizers give factorial discrete cores
+
+Retain the specified faithful normal almost-periodic state of Sections 14–16 and suppose now that
+\[
+ F=M_\varphi
+\]
+is a factor. We call this an *extremal almost-periodic state*. This also makes \(M\) a factor. Indeed, for \(z\in Z(M)\), one has \(\varphi(zx)=\varphi(xz)\) for all \(x\in M\). The finite ideals of a state are all of \(M\), so the [centralizer test CZ0](OA-FLOW-CZ.md#oa-flow.cz.0) gives \(z\in F\). Thus \(Z(M)\subseteq Z(F)=\mathbb C1\).
+
+We prove that its discrete core \(N=M\rtimes_\alpha K\) is a semifinite factor and that, when \(M\) is type III, \(N\) is type II\(_\infty\). We impose no countability condition. The projection facts used below are the full [central-support and comparison proof PC2](OA-FLOW-PC.md#oa-flow.pc.2), [centers of corners PC4](OA-FLOW-PC.md#oa-flow.pc.4), and [orthogonal sums PC1](OA-FLOW-PC.md#oa-flow.pc.1).
+
+First the actual modular eigenvalues already form a group:
+\[
+ E=\{\eta\in\Gamma:M_\eta\ne0\}=\Gamma.
+ \tag{MIV18.a}
+\]
+For the first equality, the Fourier projection \(E_\eta\) from Section 15 satisfies
+\[
+ E_\eta(x)\Omega
+   =\int_K\overline{k(\eta)}\,U_kx\Omega\,dk
+   =P_{H_\eta}x\Omega.
+ \tag{MIV18.b}
+\]
+Character orthogonality proves the last equality on each eigenspace, then on the whole Hilbert space by boundedness. If \(H_\eta\ne0\), cyclicity supplies \(x\) for which this projection is nonzero. Conversely a nonzero \(a\in M_\eta\) has \(a\Omega\ne0\) by faithfulness and is an \(\eta\)-eigenvector, as in (MIV14.f). For parameters outside \(E\), the right side of (MIV18.b) is zero; thus there are no additional nonzero algebraic eigenspaces.
+
+We use the following consequence of factoriality:
+\[
+ e,f\in F\text{ nonzero projections},\quad M_\eta\ne0
+ \quad\Longrightarrow\quad fM_\eta e\ne0.
+ \tag{MIV18.c}
+\]
+If \(fM_\eta e=0\), the right \(F\)-module property says \(fa\) annihilates \(FeH_\varphi\) for every \(a\in M_\eta\). That space has dense linear span because the central support of \(e\) in \(F\) is one, by PC2. Hence \(fa=0\). Replacing \(a\) by \(xa\), \(x\in F\), shows \(fxa=0\) for every \(x\). For any vector \(\xi\), the vector \(a\xi\) is consequently orthogonal to the dense span \(FfH_\varphi\), so \(a=0\). This contradicts \(M_\eta\ne0\).
+
+To prove closure under multiplication, choose nonzero \(a\in M_\eta\) and \(b\in M_\zeta\). The range support
+\[
+ q=s(bb^*)
+\]
+is nonzero and in \(F\), since \(\alpha\) fixes \(bb^*\) and preserves its spectral projections. There is \(c\in F\) with \(acb\ne0\). Otherwise \(ac\) would annihilate the closure of \(bH_\varphi=qH_\varphi\) for every \(c\), hence \(a\) would vanish on the dense span \(FqH_\varphi\). This would force \(a=0\). Now \(acb\in M_{\eta\zeta}\). Taking adjoints gives closure under inversion, and \(1\in M_1\). Thus \(E\) is a subgroup; its generated group \(\Gamma\) is \(E\) itself. This proves (MIV18.a).
+
+Every Fourier corner has the normal identification
+\[
+ p_\gamma Np_\gamma\cong F,\qquad
+ \tau(p_\gamma)=\gamma.
+ \tag{MIV18.d}
+\]
+Indeed its only matrix entry belongs to \(M_1=F\), and every element of \(F\) is supplied by the constant coefficient \(\pi(x)\). This is the proof of (MIV15.g) at coordinate \(\gamma\).
+
+Let \(z\in Z(N)\). By (MIV18.d), there are scalars \(c_\gamma\) with
+\(zp_\gamma=c_\gamma p_\gamma\). For each \(\gamma\), (MIV18.a) supplies a nonzero
+\(a\in M_{\gamma^{-1}}\). The operator
+\[
+ b=p_\gamma\pi(a)p_1
+\]
+has its \((\gamma,1)\)-entry equal to \(a\), hence is nonzero. Commutation with \(z\) gives
+\(c_\gamma b=zb=bz=c_1b\), so \(c_\gamma=c_1\). The Fourier projections sum strongly to one; consequently \(z=c_1 1\). Thus \(N\) is a factor. In particular \(p_1\ne0\) has full central support. Semifiniteness and the exact trace are already proved in Section 15.
+
+Suppose in addition that \(M\) is type III. Then \(\Gamma\ne\{1\}\). For otherwise (MIV14.a) gives \(\Delta=1\), and (MIV14.f) for every \(a\in M\) would make the faithful state \(\varphi\) tracial. A faithful finite trace makes every projection finite: for \(v^*v=e\), \(vv^*\le e\), equality of the finite traces of the two supports gives \(\varphi(e-vv^*)=0\), hence \(vv^*=e\). This contradicts the type III hypothesis.
+
+The factor \(N\) has no minimal projection. If \(q\ne0\) were minimal, semifiniteness would supply a nonzero finite-trace positive element below \(q\). Such an element is a positive scalar multiple of \(q\), so
+\[
+ 0<\tau(q)<\infty.
+\]
+All minimal projections in a factor are equivalent: their central supports are one, and a nonzero bridge between their corners, supplied by PC2, has a polar partial isometry whose initial and final supports must be those whole minimal projections. For every \(\eta\in\Gamma\), \(\theta_\eta(q)\) is minimal and therefore equivalent to \(q\). Traciality and (MIV16.b) would imply
+\[
+ \tau(q)=\tau(\theta_\eta(q))=\eta^{-1}\tau(q).
+\]
+Thus every \(\eta\) would be one, contrary to the preceding paragraph. There is no nonzero abelian projection either: PC4 makes each nonzero corner of this factor a factor, so an abelian corner would be the scalars and its unit would be minimal.
+
+Finally the unit of \(N\) is infinite. Choose \(a>1\) in the nontrivial subgroup \(\Gamma\). For \(n\ge1\), comparison of \(p_1\) and \(p_{a^n}\) in the factor \(N\) gives
+\[
+ p_1\precsim p_{a^n}.
+ \tag{MIV18.e}
+\]
+The other comparison \(p_{a^n}\precsim p_1\) is impossible because their finite traces are \(a^n>1\) and \(1\). Choose partial isometries \(v_n\) with
+\[
+ v_n^*v_n=p_1,\qquad q_n=v_nv_n^*\le p_{a^n}.
+\]
+The \(q_n\) are orthogonal. PC1's strong-star sum construction gives
+\[
+ q=\sum_{n\ge1}q_n,\qquad
+ w=\sum_{n\ge1}v_{n+1}v_n^*,\qquad
+ w^*w=q,\quad ww^*=q-q_1<q.
+ \tag{MIV18.f}
+\]
+Thus \(q\) is infinite. The operator \(w+(1-q)\) witnesses infiniteness of the unit. We have exhibited a semifinite factor with infinite unit and no nonzero abelian projection, which is precisely a type II\(_\infty\) factor. Its trace still satisfies \(\tau\theta_\eta=\eta^{-1}\tau\) on every positive element.
+
+<a id="miv-extremal-spectrum"></a>
+## 19. The modular type and the periodic integer decomposition
+
+Under the hypotheses of Section 18, every nonzero fixed corner contains every modular eigenvalue. More precisely, for \(0\ne e\in F\), (MIV18.c) gives a nonzero element of \(eM_\eta e\) for each \(\eta\in\Gamma\). It is an eigenoperator of the reduced modular action, with frequency \(\log\eta\).
+
+We spell out the spectral conclusion. The complete pure-point decomposition of \(\log\Delta\) implies
+\[
+ \operatorname{Sp}(\log\Delta)=\overline{\log\Gamma}.
+ \tag{MIV19.a}
+\]
+A real point outside that closure has a positive distance from all its eigenvalues, so the diagonal reciprocal of \(\log\Delta-r\) is bounded and has range in its full domain. Conversely every neighborhood of a point in the closure contains an eigenvalue and hence a nonzero spectral projection; the spectral support criterion in [MG1](OA-FLOW-MG.md#oa-flow.mg.1) puts that point in the spectrum. Thus the statement concerns the entire operator, including accumulation points.
+
+The action-spectrum identity (MIV2.c) identifies the full action spectrum with (MIV19.a). A reduced action has spectrum contained in the full action spectrum: every integrable filter annihilating the whole algebra also annihilates its invariant corner, so its annihilator ideal is larger and its hull smaller. On the other hand, a nonzero eigenoperator of frequency \(\log\eta\) forces every annihilating filter to have Fourier transform zero there. The reduced spectrum is closed and contains every \(\log\eta\). Hence
+\[
+ \operatorname{Sp}\bigl((\sigma^\varphi)^e\bigr)
+       =\overline{\log\Gamma}\quad(0\ne e\in F),
+ \qquad
+ \Gamma_{\!C}(\sigma^\varphi)=\overline{\log\Gamma}.
+ \tag{MIV19.b}
+\]
+Here \(\Gamma_{\!C}\) denotes the Connes spectrum, the intersection over these fixed corners; it is distinguished from the multiplicative eigenvalue group \(\Gamma\).
+
+The arbitrary-factor, all-weight identity (MIV2.h), proved in Section 2, now gives
+\[
+ S(M)\cap(0,\infty)=\exp\bigl(\overline{\log\Gamma}\bigr).
+ \tag{MIV19.c}
+\]
+If \(M\) is type III, Section 3 puts zero in every modular spectrum. Section 18 excludes \(\Gamma=\{1\}\). The elementary classification of closed subgroups of the line used in Section 4 leaves exactly two possibilities:
+\[
+ \begin{array}{c|c|c}
+ \overline{\log\Gamma}&S(M)&\text{type of }M\\ \hline
+ a\mathbb Z,\ a>0&\{0\}\cup e^{a\mathbb Z}
+     &\mathrm{III}_{e^{-a}}\\
+ \mathbb R&[0,\infty)&\mathrm{III}_1.
+ \end{array}
+ \tag{MIV19.d}
+\]
+For completeness, a nonzero closed subgroup of \(\mathbb R\) either has arbitrarily small positive elements, whose integer multiples approximate every real number, or its positive elements have a strictly positive infimum \(a\). Closedness then puts \(a\) in the subgroup, and division with remainder shows it is \(a\mathbb Z\). This proves the dichotomy without a countability assumption. In particular, an extremal almost-periodic state cannot occur on a type III\(_0\) factor.
+
+In the first case \(\log\Gamma=a\mathbb Z\), not just a dense proper subset of that discrete group: each point of \(a\mathbb Z\) is isolated and belongs to the closure of \(\log\Gamma\), hence belongs to \(\log\Gamma\) itself. Set
+\[
+ \lambda=e^{-a},\qquad P=2\pi/a,\qquad \beta=\theta_{\lambda^{-1}}.
+ \tag{MIV19.e}
+\]
+Faithfulness of the compact action in Section 14 shows that \(\sigma_t^\varphi=\mathrm{id}\) exactly when \(\gamma^{it}=1\) for every \(\gamma\in\Gamma\). Thus \(P\) is its least positive period. The coefficient algebra is the type II\(_\infty\) factor of Section 18 and
+\[
+ \tau\beta=\lambda\tau.
+ \tag{MIV19.f}
+\]
+The inverse eigenvalue label in the definition of \(\beta\) fixes this contraction sign.
+
+The group isomorphism \(\mathbb Z\to\Gamma\), \(n\mapsto\lambda^{-n}\), identifies the regular action \(\theta\) with the powers of \(\beta\). Relabeling the orthonormal counting basis by this bijection is an onto unitary; it identifies both regular coefficient fields and left translations. Therefore
+\[
+ N\rtimes_\beta\mathbb Z
+   \cong N\rtimes_\theta\Gamma
+   \cong M\bar\otimes B(\ell^2\Gamma)
+   \cong M.
+ \tag{MIV19.g}
+\]
+The middle isomorphism is (MIV16.c). The final one uses the countable infinite group \(\Gamma\), the proper infiniteness of the type III algebra \(M\), and the full normal amplification maps of [CDEC1–2](OA-FLOW-CDEC.md#cdec-1). Separability of \(M_*\) is not required: only this scalar Fourier coordinate is countable. The coefficient action and its trace were constructed directly from the specified state.
+
+**The finite centralizer and a generating isometry.** The same periodic state also gives a presentation before passing to the semifinite core. There is an isometry \(s\in M_\lambda\) such that, with \(e=ss^*\),
+\[
+ s^*s=1,\qquad \varphi(e)=\lambda,\qquad
+ sFs^*=eFe,\qquad
+ M=W^*(F,s).
+ \tag{MIV19.h}
+\]
+To construct \(s\), choose a maximal family of nonzero partial isometries in \(M_\lambda\) with mutually orthogonal initial supports and mutually orthogonal final supports. The existence argument is the chain-union maximality principle [PC0](OA-FLOW-PC.md#oa-flow.pc.0). Polar parts remain in \(M_\lambda\): uniqueness of polar decomposition under \(\sigma_t^\varphi\) sends the polar part of \(x\) to \(\lambda^{it}\) times itself, while both support projections are fixed. Thus (MIV18.c) supplies a polar part between any two nonzero projections of \(F\).
+
+The chosen family is countable, because its nonzero initial projections have strictly positive values under the finite faithful state. Its strong-star sum \(s\) is a partial isometry in \(M_\lambda\), by PC1 and normality of the compact action. Write \(p=s^*s\), \(q=ss^*\). The identity (MIV14.f) gives
+\(\varphi(q)=\lambda\varphi(p)\le\lambda<1\), so \(q\ne1\). If \(p\ne1\), the nonzero space \((1-q)M_\lambda(1-p)\) would supply a further polar partial isometry, contradicting maximality. Hence \(p=1\), \(q=e\), and \(\varphi(e)=\lambda\).
+
+The map
+\[
+ \rho:F\longrightarrow eFe,\qquad \rho(x)=sxs^*
+ \tag{MIV19.i}
+\]
+has normal inverse \(y\mapsto s^*ys\): the character factors cancel to make both images fixed, and \(s^*s=1\), \(ss^*=e\) give both inverse identities. Applied to \(sx^{1/2}\), (MIV14.f) also gives
+\[
+ \varphi(\rho(x))=\lambda\varphi(x)\qquad(x\in F_+).
+ \tag{MIV19.j}
+\]
+All values here are finite because \(\varphi\) is a state.
+
+For \(n\ge0\) and \(x\in M_{\lambda^n}\), one has \(xs^{*n}\in F\) and
+\(x=(xs^{*n})s^n\). Taking adjoints gives the corresponding formula for negative \(n\). Therefore every spectral subspace lies in \(W^*(F,s)\). These subspaces span \(M\) ultraweakly. Indeed, if a normal functional \(\omega\) annihilates their span, all Fourier coefficients of the continuous function \(k\mapsto\omega(\alpha_k(x))\) vanish for every \(x\). Approximate its complex conjugate uniformly by character polynomials, using Section 14. Its squared Haar integral is then zero. Continuity and positivity of Haar measure on nonempty open sets force the function to be identically zero, in particular \(\omega(x)=0\). Separation by the predual proves the asserted ultraweak density, and hence the last equality of (MIV19.h).
+
+**Three checks on the conclusion.** The matrix-state example of Section 17 has \(M=M_2\) and \(F=\mathbb C^2\); its nonfactor discrete core does not satisfy the factorial-centralizer hypothesis. A tracial state on a II\(_1\) factor does have factorial centralizer, but has \(\Gamma=\{1\}\) and \(N=M\); the type III assumption is what excluded this finite case. Finally, replacing \(\beta\) in (MIV19.e) by \(\theta_\lambda\) expands the trace by \(\lambda^{-1}\). It reverses the chosen integer generator and does not give the contraction formula (MIV19.f).
+
+![Nonzero Fourier links force a common central scalar, and a shift of orthogonal equivalent projections proves infiniteness.](../assets/almost-periodic-core/factor-corners.svg)
+
+*Figure 5.* In the upper row, a nonzero element of \(M_{\gamma^{-1}}\) supplies the \((\gamma,1)\)-entry used after (MIV18.d); it forces the scalars of a central operator on those two corners to agree. The lower row is the exact shift (MIV18.f), with \(q_n\le p_{a^n}\); the orange projection is omitted by the range of \(w\). All boxes are schematic. [Editable vector source](../assets/almost-periodic-core/factor-corners.svg) and [component terms](../assets/almost-periodic-core/TERMS.md).
+
+<a id="miv-tensor-times"></a>
+## 20. Inner modular times under a finite tensor product
+
+Let \(A,B\) be nonzero factors, without a separability or sigma-finiteness assumption. Their inner-time groups satisfy
+\[
+ T(A\bar\otimes B)=T(A)\cap T(B).
+ \tag{MIV20.a}
+\]
+Here the reference weights may take the value infinity at the identity. Such faithful normal semifinite weights \(\phi,\psi\) exist by [FR1](OA-FLOW-FR.md#oa-flow.fr.1). The complete [tensor-weight construction TG4](../../OA-MOD/OA-MOD-TG.html#oa-mod-tg-04), equations (TG.18)–(TG.21), supplies a faithful normal semifinite weight \(\phi\otimes\psi\), its full tensor Tomita graph, and
+\[
+ \sigma_t^{\phi\otimes\psi}
+       =\sigma_t^\phi\bar\otimes\sigma_t^\psi.
+ \tag{MIV20.b}
+\]
+In particular this identity is on the whole spatial algebra, not just on elementary tensors.
+
+We use the earlier programme's finite-factor slice lemma: if \(\alpha\bar\otimes\beta\) is inner on a tensor product of factors, each component automorphism is inner. Its proof does not impose countability. A nonzero vector slice \(a\) of an implementing unitary lies in the first factor and satisfies \(ax=\alpha(x)a\). Both \(a^*a\) and \(aa^*\) are central, and their common norm is \(\|a\|^2>0\); thus \(a/\|a\|\) is an implementing unitary. Applying the lemma after the Hilbert-space flip gives the assertion on the second factor.
+
+If \(t\in T(A\bar\otimes B)\), apply that lemma to (MIV20.b) to obtain \(t\in T(A)\cap T(B)\). Conversely, if \(u\in A\) and \(v\in B\) implement the two time maps, then \(u\otimes v\) implements their tensor product, proving the reverse inclusion. The weight independence established at (MIV5.a) makes this calculation intrinsic.
+
+We also record explicitly its invariance under a normal isomorphism \(\Theta:A\to B\). Transport a weight by \(\widetilde\phi=\phi\Theta^{-1}\). The map
+\[
+ \Lambda_\phi(x)\longmapsto\Lambda_{\widetilde\phi}(\Theta(x))
+ \tag{MIV20.c}
+\]
+preserves the GNS inner products, has dense range by surjectivity, and carries the entire finite-star involution to the corresponding one. Its unitary extension therefore intertwines their closures and polar data. Hence
+\(\sigma_t^{\widetilde\phi}=\Theta\sigma_t^\phi\Theta^{-1}\).
+An inner implementer transports by \(\Theta\), and the inverse isomorphism gives the converse. Thus \(T(A)=T(B)\).
+
+<a id="miv-periodic-realization"></a>
+## 21. Realizing an inner time by a periodic product state
+
+Return to the product of faithful finite matrix states in Sections 11–12. The index set \(I\) is arbitrary. Fix \(P>0\) and set
+\[
+ \lambda=\exp(-2\pi/P)\in(0,1).
+ \tag{MIV21.a}
+\]
+The following three conditions are equivalent:
+
+1. \(P\in T(M)\).
+2. There is a faithful normal state \(\psi\) on this same algebra with \(\sigma_P^\psi=\mathrm{id}\).
+3. There are strictly positive probability lists \(q_{i,j}\), diagonal in the original matrix coordinates, with
+\[
+ \frac{q_{i,j}}{q_{i,k}}\in\lambda^{\mathbb Z},\qquad
+ \sum_{i\in I}\left(1-\sum_j\sqrt{p_{i,j}q_{i,j}}\right)<\infty.
+ \tag{MIV21.b}
+\]
+The product of these new matrix states is represented normally and faithfully on \(M\), and it may be chosen as \(\psi\) in condition 2.
+
+We prove all the assertions, including the normal equivalence implicit in the last sentence. This is a change of reference state with the same local matrix algebras. It does not say that the original state \(\varphi\) has period \(P\), or that \(P\) is the least positive period of \(\psi\).
+
+**Rounding the logarithmic eigenvalues.** Suppose condition 1. For each \(i\), write
+\[
+ z_i=\sum_jp_{i,j}^{\,1+iP},\qquad
+ \zeta_i=
+ \begin{cases}z_i/|z_i|,&z_i\ne0,\\1,&z_i=0,\end{cases}
+ \qquad
+ \vartheta_{i,j}=\operatorname{Arg}
+       \bigl(\overline{\zeta_i}\,e^{iP\log p_{i,j}}\bigr)\in[-\pi,\pi).
+ \tag{MIV21.c}
+\]
+At the negative real axis use the endpoint \(-\pi\). No continuity of this choice in \(P\) is needed. Define
+\[
+ \widetilde q_{i,j}=p_{i,j}e^{-\vartheta_{i,j}/P},
+ \qquad Z_i=\sum_j\widetilde q_{i,j},\qquad
+ q_{i,j}=\widetilde q_{i,j}/Z_i.
+ \tag{MIV21.d}
+\]
+All entries are strictly positive. Multiplying the logarithmic ratio of two entries by \(P\) gives an integer multiple of \(2\pi\), because the phase \(\zeta_i\) cancels. Normalization does not change ratios. Thus the lattice condition in (MIV21.b) holds.
+
+Here is the summable estimate that prevents the state change from leaving the representation. Put
+\[
+ h_i=1-\sum_j\sqrt{p_{i,j}q_{i,j}},
+ \qquad
+ C_P=\frac{\pi^2e^{\pi/P}}{4P^2}.
+\]
+Then
+\[
+ 0\le h_i\le C_P(1-|z_i|),\qquad
+ e^{-2\pi/P}\le\frac{q_{i,j}}{p_{i,j}}\le e^{2\pi/P}.
+ \tag{MIV21.e}
+\]
+The second assertion follows from \(e^{-\pi/P}\le Z_i\le e^{\pi/P}\) and the same bounds on \(\widetilde q_{i,j}/p_{i,j}\).
+
+For the first, suppress \(i\), and regard \(a=(\sqrt{p_j})_j\) and \(b=(\sqrt{\widetilde q_j})_j\) as Euclidean vectors. For \(|\vartheta|\le\pi\),
+\[
+ |\vartheta|\le\frac{\pi}{2}|e^{i\vartheta}-1|,
+ \qquad
+ |e^{-\vartheta/(2P)}-1|
+        \le\frac{e^{\pi/(2P)}}{2P}|\vartheta|.
+ \tag{MIV21.f}
+\]
+The first inequality follows from concavity of sine on \([0,\pi/2]\); the second is the integral estimate for the real exponential. The choice of \(\zeta\) gives, including when \(z=0\),
+\[
+ \sum_jp_j|e^{i\vartheta_j}-1|^2
+       =2-2\operatorname{Re}(\overline\zeta z)=2(1-|z|).
+\]
+Consequently
+\[
+ \|a-b\|^2
+ \le\frac{\pi^2e^{\pi/P}}{8P^2}(1-|z|).
+\]
+Since \(\|a\|=1\), the reverse triangle inequality yields
+\[
+ \left\|a-\frac b{\|b\|}\right\|
+ \le\|a-b\|+|\,\|b\|-1\,|\le2\|a-b\|.
+\]
+The normalized vector \(b/\|b\|\) is \((\sqrt{q_j})_j\). Its squared distance from \(a\) is \(2h_i\), proving (MIV21.e). Nonnegativity of \(h_i\) follows from Cauchy–Schwarz. Formula (MIV12.b) now proves the summability in (MIV21.b).
+
+If \(|z_i|=1\), the displayed sum of nonnegative phase defects is zero. Every \(p_{i,j}\) is positive, so all \(\vartheta_{i,j}=0\) and \(q_{i,j}=p_{i,j}\). Thus this construction changes only countably many legs: Section 12 shows that the summable family \(1-|z_i|\) has countable support. The proof and its finite-subset estimates do not require an enumeration of \(I\).
+
+**The full unitary change of product representation.** Now suppose any lists satisfy (MIV21.b), and put
+\[
+ Q_i=\operatorname{diag}(q_{i,1},\ldots,q_{i,d_i}),\qquad
+ c_i=\operatorname{Tr}(D_i^{1/2}Q_i^{1/2})=1-h_i\in(0,1].
+\]
+For a finite \(F\subset I\), the vector in the original pointed Hilbert product
+\[
+ \Xi_F=\bigotimes_{i\in F}Q_i^{1/2}
+           \ \otimes\!\bigotimes_{i\notin F}D_i^{1/2}
+\]
+has norm one. For \(F\subset E\), direct inner products give
+\[
+ \|\Xi_E-\Xi_F\|^2
+       =2\left(1-\prod_{i\in E\setminus F}c_i\right)
+       \le2\sum_{i\notin F}h_i.
+ \tag{MIV21.g}
+\]
+The last tail tends to zero by the finite-subset argument of Section 12. Two arbitrary large finite sets can be compared through their union, so this is a Cauchy net. Let its norm-one limit be \(\Xi\). For every \(x\) in a finite local algebra, its vector functional at \(\Xi_F\), once \(F\) contains that algebra's indices, is the product of the \(Q_i\)-states. Passing to the limit gives the same identity at \(\Xi\).
+
+Let \(H_Q,\Omega_Q\) be the pointed Hilbert product constructed from \(Q_i^{1/2}\). On the dense local cyclic span define
+\[
+ V(x\Omega_Q)=x\Xi.
+ \tag{MIV21.h}
+\]
+The just-proved product-state identity, applied to \(y^*x\), preserves every inner product. Thus (MIV21.h) is well-defined and extends to an isometry. It intertwines each local matrix action.
+
+This isometry is onto. For finite \(F\), the bounded local matrix
+\[
+ b_F=\bigotimes_{i\in F}D_i^{1/2}Q_i^{-1/2}
+\]
+is defined because all entries are positive. For fixed \(F\), apply \(b_F\) to the net \(\Xi_E\) with \(E\supset F\). The resulting vectors have the original reference vectors on \(F\), the new ones on \(E\setminus F\), and the original ones elsewhere. They have norm one. Taking limits shows
+\[
+ \|b_F\Xi\|=1,\qquad
+ \langle b_F\Xi,\Omega\rangle
+       =\lim_{E\supset F}\prod_{i\in E\setminus F}c_i,\qquad
+ \|b_F\Xi-\Omega\|^2\le2\sum_{i\notin F}h_i.
+ \tag{MIV21.i}
+\]
+Thus \(\Omega\) is in the closed range of \(V\). That range is invariant under each local matrix and its adjoint, by the intertwining relation. The original local orbit of \(\Omega\) is dense, so the range is the whole Hilbert space.
+
+It follows that \(V\) conjugates the generated product algebra for \(Q_i\) onto \(M\), fixing every local matrix operator. The faithful product-state theorem makes the vector state at \(\Omega_Q\) faithful. Its transport to \(\Xi\) is therefore a faithful normal state \(\psi\) on \(M\). In particular, a norm limit of vectors has not been used by itself to assert faithfulness.
+
+By the complete product modular theorem, the new modular action on leg \(i\) is
+\[
+ \sigma_t^\psi(x)=Q_i^{it}xQ_i^{-it}.
+\]
+The lattice condition makes \(Q_i^{iP}\) scalar, because \(P\log\lambda=-2\pi\). Thus \(\sigma_P^\psi\) fixes every local matrix and hence the whole algebra by normality. This proves condition 2 from condition 3. Finally condition 2 implies condition 1 by the weight-independence argument (MIV5.a), since the identity automorphism is inner. All three conditions and the claimed representation have now been proved.
+
+<a id="miv-absorption-periods"></a>
+## 22. Tensor absorption gives a precise modular-time obstruction
+
+For \(0<\lambda<1\), let \(R_\lambda\) denote the countable identical two-level product with density
+\[
+ D_\lambda=\frac1{1+\lambda}
+       \begin{pmatrix}1&0\\0&\lambda\end{pmatrix}.
+ \tag{MIV22.a}
+\]
+The product construction makes it a nonzero factor with a faithful normal product state. Put
+\[
+ P_\lambda=\frac{2\pi}{|\log\lambda|}.
+\]
+For one leg, the squared modulus in (MIV8.c) satisfies
+\[
+ 1-|z(t)|^2
+     =\frac{2\lambda}{(1+\lambda)^2}
+                       \bigl(1-\cos(t\log\lambda)\bigr).
+ \tag{MIV22.b}
+\]
+This follows by expanding the squared modulus of the sum of its two eigenvalue phases. Its identical defect repeats in every leg. Therefore (MIV8.d) gives
+\[
+ T(R_\lambda)=P_\lambda\mathbb Z.
+ \tag{MIV22.c}
+\]
+No isomorphism classification of these factors is an input to this calculation.
+
+For an arbitrary nonzero factor \(A\), define the positive-parameter absorption set
+\[
+ \rho_{\rm abs}(A)=
+ \{\lambda\in(0,1):A\bar\otimes R_\lambda
+                              \cong R_\lambda\}.
+ \tag{MIV22.d}
+\]
+The symbol \(\cong\) here means a normal von Neumann algebra isomorphism. This is the tensor-absorption definition on the open parameter interval used in the historical \(\rho\) invariant. It is distinct from the corner endomorphism \(\rho\) in (MIV19.i).
+
+Sections 20 and (MIV22.c) prove the full necessary condition
+\[
+ \boxed{\quad
+ \lambda\in\rho_{\rm abs}(A)
+       \ \Longrightarrow\
+       P_\lambda\in T(A).
+ \quad}
+ \tag{MIV22.e}
+\]
+Indeed an isomorphism in (MIV22.d) gives
+\[
+ T(A)\cap P_\lambda\mathbb Z=P_\lambda\mathbb Z,
+\]
+and in particular contains \(P_\lambda\). Conversely, this last equality of groups follows from \(P_\lambda\in T(A)\), since \(T(A)\) is a subgroup. Equality of these groups alone does not construct the algebra isomorphism in (MIV22.d).
+
+For the matrix products of Section 21, membership \(P_\lambda\in T(M)\) has the additional, proved meaning that \(M\) has a normally equivalent product presentation whose density ratios all lie in \(\lambda^{\mathbb Z}\). Thus the explicit state change supplies the periodic presentation in this comparison. The absorption set itself remains defined by the actual isomorphism, not by that presentation or by a modular period of one originally chosen state. Endpoints \(0\) and \(1\) are outside (MIV22.d), so no reciprocal-log formula at those endpoints is intended.
+
+**Solved check 1: tensoring two identical-state products.** Let \(0<\lambda,\eta<1\). Equation (MIV20.a) gives
+\[
+ T(R_\lambda\bar\otimes R_\eta)
+       =P_\lambda\mathbb Z\cap P_\eta\mathbb Z.
+ \tag{MIV22.f}
+\]
+If \(P_\lambda/P_\eta\) is irrational, a nonzero common element would make this ratio a quotient of integers, so the intersection is \(\{0\}\). If \(P_\lambda/P_\eta=a/b\) in lowest positive integer terms, then \(bP_\lambda=aP_\eta\) and the intersection is
+\((bP_\lambda)\mathbb Z\): the equation \(mP_\lambda=nP_\eta\) forces \(m=bk,n=ak\). This computes the inner-time group, without asserting an isomorphism classification from it.
+
+**Solved check 2: the period of the old state can disappear.** Use the product in Section 10 with one two-level density ratio \(\eta\), followed by infinitely many density ratios \(\lambda\), where \(\log\eta/\log\lambda\) is irrational. Its original state has no nonzero exact period, because a nonzero common period would make that logarithmic ratio rational. Its inner-time group is nevertheless \(P_\lambda\mathbb Z\), since the first leg contributes only one finite summand. For \(P=P_\lambda\), the rounding construction in Section 21 leaves every tail leg unchanged and changes only the first probability list. The resulting faithful normal state on the same factor has exact period \(P_\lambda\); the unchanged tail makes this its least positive period.
+
+**Solved check 3: absorption cannot turn a missing time into an inner one.** If \(T(A)=\{0\}\), (MIV22.e) gives \(\rho_{\rm abs}(A)=\varnothing\), because every \(P_\lambda\) is positive. More generally, if \(T(A)=P\mathbb Z\) for \(P>0\), the only possible parameters in (MIV22.d) are
+\[
+ \lambda=\exp\!\left(-\frac{2\pi}{nP}\right),
+ \qquad n=1,2,\ldots.
+ \tag{MIV22.g}
+\]
+This list follows by solving \(P_\lambda=nP\). It is a necessary list; it does not promote every listed parameter to an absorption isomorphism.
+
+
+![Logarithmic rounding, summable square-root overlaps, and the onto change of product representation.](../assets/almost-periodic-core/periodic-state.svg)
+
+*Figure 6.* Equations (MIV21.c)–(MIV21.f) control the single-leg change. The finite-subset limits (MIV21.g)–(MIV21.i) produce the onto unitary \(V\), which fixes all local matrix algebras. The lower line records only the implication proved in (MIV22.e). The boxes display formulas and logical steps, with no geometric or cardinality scale. [Editable vector source](../assets/almost-periodic-core/periodic-state.svg) and [component terms](../assets/almost-periodic-core/TERMS.md).
+
+<a id="miv-product-relation"></a>
+## 23. A probability-space model of the complete product representation
+
+Return to the countable faithful finite-matrix product of Section 8. Write \(A_n=\{1,\ldots,d_n\}\) and \(X=\prod_{n\ge1}A_n\). For a finite set \(I\) of coordinates and a word \(u\in A_I=\prod_{n\in I}A_n\), put
+\[
+ p_I(u)=\prod_{n\in I}p_{n,u_n}.
+ \tag{MIV23.a}
+\]
+Words label eigenvalue occurrences: two different words remain different even when their probabilities coincide. Let \(\mu\) be the probability measure whose cylinder masses are \(p_I(u)\).
+
+Here is a construction of the measure and the approximation facts we will use. Give \(X\) the metric \(\sum_n2^{-n}1_{\{x_n\ne y_n\}}\). It is compact. Indeed, if an open cover had no finite subcover, one could successively choose a nested cylinder of each length still having no finite subcover; their unique common point belongs to a member of the cover, which contains one of those cylinders, a contradiction. A continuous function is uniformly approximated by functions constant on sufficiently long cylinders: use a finite cover by cylinders on which its oscillation is small, and refine to a common length. The finite sums
+\(\sum_{u\in A_{[1,m]}}p_{[1,m]}(u)f(u)\) therefore define a bounded positive functional, of norm one, on this dense cylinder algebra and hence on \(C(X)\). [HR-02](OA-FLOW-HR.md#hr-02) gives its unique Radon probability measure. The same construction on any complementary set of coordinates, followed by uniqueness on the cylinder algebra, proves the finite-head/tail product formula and independence of disjoint finite coordinate sets.
+
+By [HR-03](OA-FLOW-HR.md#hr-03), cylinder functions are dense in \(L^q(\mu)\) for \(1\le q<\infty\). In particular, measurable sets can be approximated in symmetric-difference measure by finite unions of cylinders: first approximate their indicators in \(L^1\) by cylinder functions, truncate to \([0,1]\), and threshold at \(1/2\). The symmetric difference is bounded by twice the \(L^1\) error. We work with Borel representatives; completion changes none of the assertions below.
+
+Define the tail relation and its source-counting measure by
+\[
+ \begin{split}
+ \mathcal R&=\{(y,x)\in X^2:y_n=x_n\text{ for all sufficiently large }n\},\\
+ \nu(E)&=\int_X\#\{y:(y,x)\in E\}\,d\mu(x).
+ \end{split}
+ \tag{MIV23.b}
+\]
+The subsets \(\mathcal R_m=\{(y,x):y_n=x_n\ (n>m)\}\) increase to \(\mathcal R\) and have finite measure \(\prod_{n\le m}d_n\). More explicitly, each is a finite disjoint union of graphs
+\[
+ G_{u,v}=\{(u z,v z):z\in X_{>m}\},\qquad
+ \nu|_{G_{u,v}}=p_{[1,m]}(v)\,\mu_{>m}.
+ \tag{MIV23.c}
+\]
+These formulas construct \(\nu\) consistently, show countable additivity, and make it sigma-finite. On this relation set
+\[
+ \delta(y,x)=\prod_{n:y_n\ne x_n}\frac{p_{n,y_n}}{p_{n,x_n}}.
+ \tag{MIV23.d}
+\]
+The product is finite. The prefix replacement \(T(vz)=uz\) satisfies
+\[
+ \mu(T E)=\frac{p_{[1,m]}(u)}{p_{[1,m]}(v)}\,\mu(E)
+ \quad(E\subseteq[v]\text{ measurable}).
+ \tag{MIV23.e}
+\]
+This follows first on cylinders and then on all Borel sets from the product formula just constructed. It also holds after completion. Thus a null set in either coordinate has zero \(\nu\)-measure: use the countably many graphs \(G_{u,v}\). This fact makes all the following multipliers independent of the chosen representatives.
+
+For a matrix \(a\) in the first \(m\) legs, define a kernel
+\[
+ F_a(y,x)=
+ \begin{cases}
+ a_{u,v},&y=uz,\ x=vz,\\
+ 0,&(y,x)\notin\mathcal R_m.
+ \end{cases}
+ \tag{MIV23.f}
+\]
+Its squared norm is
+\[
+ \|F_a\|_{L^2(\nu)}^2
+ =\sum_{u,v}p_{[1,m]}(v)|a_{u,v}|^2
+ =\varphi(a^*a)=\|a\Omega\|^2.
+ \tag{MIV23.g}
+\]
+Replacing \(a\) by \(a\otimes1\) leaves its kernel unchanged. Polarization therefore makes \(a\Omega\mapsto F_a\) an isometry on the union of all local matrix GNS spaces.
+
+It is onto after completion. On each graph in (MIV23.c), cylinder functions of \(z\) are dense in its \(L^2\) space. A kernel equal to such a function on that graph and zero elsewhere is the kernel of a matrix on a longer head: use the matrix unit \(e_{u,v}\) and a diagonal matrix on the extra coordinates. Finite graph sums are dense on \(\mathcal R_m\); truncation to the increasing sets \(\mathcal R_m\) is dense on \(\mathcal R\). Thus
+\[
+ H_\varphi=L^2(\mathcal R,\nu),\qquad
+ \Omega=1_{\{y=x\}}
+ \tag{MIV23.h}
+\]
+under this unitary identification. The left action of a local matrix changes the first coordinate:
+\[
+ (a\xi)(y,x)=
+   \sum_{w\in A_{[1,m]}}a_{y_{[1,m]},w}
+                  \xi(wy_{>m},x).
+ \tag{MIV23.i}
+\]
+On each source fiber this is an orthogonal sum of copies of the matrix action, so its norm is at most \(\|a\|\). The formula agrees with multiplication of local kernels and therefore represents precisely the original product algebra \(M\).
+
+The complete product modular theorem used in Section 8 now has a particularly concrete form:
+\[
+ (\Delta_\varphi^{it}\xi)(y,x)=\delta(y,x)^{it}\xi(y,x),
+ \qquad
+ \log\Delta_\varphi=\text{multiplication by }\log\delta .
+ \tag{MIV23.j}
+\]
+Indeed, the first equality holds on every \(F_a\), by the local matrix formula (MIV8.b), and both sides are unitaries. Density gives it on the whole Hilbert space for every \(t\). Uniqueness in the full spectral calculus gives the generator, with domain
+\(\{\xi:\int|\log\delta|^2|\xi|^2\,d\nu<\infty\}\).
+Thus this model identifies the complete operator, including its domain.
+
+Let \(D\) be the von Neumann algebra generated by the local diagonal matrices. In this representation
+\[
+ D=\{\,\xi(y,x)\mapsto f(y)\xi(y,x):f\in L^\infty(X,\mu)\,\}.
+ \tag{MIV23.k}
+\]
+To see the closure assertion, approximate a bounded \(f\) in \(L^2(\mu)\) by uniformly bounded cylinder functions, using truncation, and choose a subsequence whose squared errors are summable. Chebyshev's inequality and the estimate of the measure of a union of error sets show convergence almost everywhere: each fixed error threshold fails only finitely often outside a null set. Nonsingularity on the countable graph cover then gives convergence \(\nu\)-almost everywhere in the first coordinate. Dominated convergence against \(|\xi|^2\) proves strong convergence of the multipliers. The representation of \(L^\infty(X,\mu)\) is faithful, since the diagonal \(\{y=x\}\) has measure \(\mu\), and normal by monotone convergence. Its range is strongly closed, which proves (MIV23.k).
+
+Finally \(D\) is maximal abelian in \(M\). If \(a\in M\) commutes with \(D\), the product-state expectation \(E_m(a)\) commutes with every diagonal matrix in the first \(m\) legs, by its bimodule property. A finite matrix commuting with those diagonal projections is diagonal. Hence \(E_m(a)\in D\). Section 8's strong* convergence \(E_m(a)\to a\) gives \(a\in D\). Formula (MIV23.j), or the local action and normality, also shows
+\[
+ D\subseteq M_\varphi,\qquad Z(M_\varphi)\subseteq D.
+ \tag{MIV23.l}
+\]
+For the second inclusion an element central in \(M_\varphi\) commutes with \(D\) and belongs to \(M\), so maximal abelianness applies.
+
+<a id="miv-corner-ratios"></a>
+## 24. Ratios that survive every positive corner
+
+For measurable \(B\subseteq X\) with \(\mu(B)>0\), let
+\[
+ \mathcal R_B=\mathcal R\cap(B\times B),\qquad e_B=1_B\in D.
+\]
+The GNS Hilbert space of \(\varphi|_{e_BMe_B}\) identifies with
+\(L^2(\mathcal R_B,\nu)\). To verify this exactly, multiplication by \(1_B(x)\) commutes with every local left matrix action in (MIV23.i), and it takes \(\Omega\) to \(e_B\Omega\). Consequently
+\[
+ e_Bae_B\Omega\longleftrightarrow
+       1_B(y)1_B(x)F_a(y,x).
+ \tag{MIV24.a}
+\]
+The right side, as \(a\) runs through local matrices, is dense in \(L^2(\mathcal R_B,\nu)\), because it is the orthogonal projection of a dense family onto that subspace. This is precisely the corner GNS norm, without a normalization factor. Normalizing the corner state instead divides every GNS vector by \(\sqrt{\mu(B)}\) and leaves its modular group unchanged.
+
+Since \(e_B\in M_\varphi\), [MG-2](OA-FLOW-MG.md#oa-flow.mg.2) identifies the corner modular group with the restriction of \(\sigma^\varphi\). The unitary multiplication by \(\delta^{it}\) preserves \(\mathcal R_B\), fixes its diagonal cyclic vector and implements that restriction on the dense family (MIV24.a). It is therefore the corner modular unitary group. [MG-1](OA-FLOW-MG.md#oa-flow.mg.1) gives
+\[
+ \operatorname{Sp}(\sigma^\varphi|_{e_BMe_B})
+   =\operatorname{essran}_{\mathcal R_B,\nu}(\log\delta).
+ \tag{MIV24.b}
+\]
+Here essential range means the set of real \(s\) for which every open interval about \(s\) has inverse image of positive measure. For multiplication by a real function this is its full operator spectrum: the spectral projections are multiplication by the corresponding indicator functions, and MG-1's spectral-support criterion applies.
+
+We can now identify the intrinsic positive modular spectrum:
+\[
+ \boxed{\quad
+ S_+(M)=
+ \left\{r>0:
+  \nu\{(y,x)\in\mathcal R_B:|\delta(y,x)-r|<\epsilon\}>0
+  \text{ for every }\mu(B)>0,\ \epsilon>0
+ \right\}.
+ \quad}
+ \tag{MIV24.c}
+\]
+For completeness, the intersection over diagonal corners really suffices. Put \(F=M_\varphi\). The [central fixed-corner theorem](OA-FLOW-GCC.md#gcc-intersection) states that
+\(\Gamma(\sigma^\varphi)\) is the intersection of the action spectra over nonzero projections of \(Z(F)\); its definition uses all nonzero projections of \(F\). By (MIV23.l),
+\[
+ \bigcap_{0\ne e\in\operatorname{Proj}(F)}
+       \operatorname{Sp}(\sigma^e)
+ \ \subseteq\
+ \bigcap_{\mu(B)>0}\operatorname{Sp}(\sigma^{e_B})
+ \ \subseteq\
+ \bigcap_{0\ne z\in\operatorname{Proj}(Z(F))}
+       \operatorname{Sp}(\sigma^z).
+ \tag{MIV24.d}
+\]
+The outer intersections are equal, so all three agree. GCC uses the negative Fourier convention; replacing its real frequency label by its negative gives the same intersection identities in the positive convention used here. Combining (MIV24.b), (MIV24.d), and the arbitrary-factor identity (MIV2.h) proves (MIV24.c). Exponential is a bijection from the real line onto the positive half-line, so it commutes with these intersections; neighborhoods correspond under logarithm. The product is a factor by Section 8.
+
+There is a useful equivalent formulation. For every such \(B\) and every open neighborhood \(V\) of \(r\), there is a prefix replacement \(T(vz)=uz\) restricted to a measurable domain \(E\subseteq B\) of positive measure, with \(T(E)\subseteq B\), and
+\[
+ \frac{\mu(T E')}{\mu(E')}=
+ \frac{p_{[1,m]}(u)}{p_{[1,m]}(v)}\in V
+ \quad\text{whenever }E'\subseteq E,\ \mu(E')>0.
+ \tag{MIV24.e}
+\]
+Indeed, \(\mathcal R\) has a countable graph cover. A set of positive \(\nu\)-measure in (MIV24.c) has positive measure on one graph. Its source set supplies \(E\), and the derivative on that graph is constant by (MIV23.e). Conversely the graph of such a restriction has positive \(\nu\)-measure. This proves the formulation without a measurable-selection theorem.
+
+The criterion also holds after deleting any finite prefix. Fix a prefix word \(w\) of length \(k\), of strictly positive probability, and apply (MIV24.c) to \(B=[w]\times B_{\rm tail}\). Both coordinates of every arrow in this corner have the same first \(k\) entries. Its derivative is exactly the tail derivative, and the source measure is \(p_{[1,k]}(w)\) times the tail source measure. Hence every positive tail set has the same corner-ratio property whenever \(r\in S_+(M)\).
+
+<a id="miv-block-ratios"></a>
+## 25. Disjoint finite blocks detect every nonunit positive modular value
+
+For \(0<r<1\), consider the following finite-block condition. There are pairwise disjoint finite sets \(I_j\subseteq\mathbb N\), disjoint subsets \(U_j,V_j\subseteq A_{I_j}\), and bijections \(\tau_j:U_j\to V_j\), such that
+\[
+ \sum_{j=1}^\infty p_{I_j}(U_j)=\infty,\qquad
+ \max_{u\in U_j}
+       \left|\frac{p_{I_j}(\tau_j u)}{p_{I_j}(u)}-r\right|
+       \longrightarrow0.
+ \tag{MIV25.a}
+\]
+Empty pairs can be omitted. Here \(p_I(U)=\sum_{u\in U}p_I(u)\), with word multiplicities retained as in (MIV23.a). This is the finite-matrix form of the asymptotic ratio condition. Its nonunit positive part is exactly
+\[
+ \boxed{\qquad
+       r\in S_+(M)\quad\Longleftrightarrow\quad
+       \text{condition (MIV25.a)},\qquad 0<r<1.
+       \qquad}
+ \tag{MIV25.b}
+\]
+
+**From blocks to corners.** Fix a neighborhood of \(r\) and choose
+\(0<a<r<b<1\) inside it. Discard finitely many pairs so that every derivative lies in \([a,b]\). Write \(d_j=p_{I_j}(U_j)\), \(e_j=p_{I_j}(V_j)\). Then
+\[
+ a d_j\le e_j\le b d_j,\qquad d_j+e_j\le1.
+ \tag{MIV25.c}
+\]
+Given any finite prefix, only finitely many of the pairwise disjoint nonempty \(I_j\) meet it. Remove those too; the remaining sum of \(d_j\)'s still diverges.
+
+Choose a finite ordered collection of the remaining blocks with \(\sum_jd_j\ge1\). On their union define a partial bijection \(T\) as follows. Find the first block whose word lies in \(U_j\cup V_j\). The domain consists of points for which this first word lies in \(U_j\); replace it by \(\tau_j u\) and leave all other coordinates fixed. The image has its first active word in \(V_j\). These cases are disjoint, and reversing that replacement gives the inverse. The derivative on each case lies in \([a,b]\). By independence the domain \(E\) has measure
+\[
+ \begin{split}
+ \mu(E)
+ &=\sum_jd_j\prod_{i<j}(1-d_i-e_i)\\
+ &\ge\frac{1}{1+b}
+       \left(1-\prod_j(1-d_j-e_j)\right)
+ \ge \frac{1-e^{-1}}{1+b}=:c>0.
+ \end{split}
+ \tag{MIV25.d}
+\]
+The middle inequality uses \(d_j+e_j\le(1+b)d_j\) and the finite telescoping product identity. The last uses \(1-s\le e^{-s}\) for \(0\le s\le1\) and \(\sum_j(d_j+e_j)\ge1\); if one factor is zero the same bound is immediate. Thus the grouped domain has a fixed positive mass, however far out the blocks are chosen.
+
+Let \(B\) have positive measure. For any \(\eta>0\) there is a prefix cylinder \(C\) with
+\[
+ \mu(C\setminus B)<\eta\mu(C).
+ \tag{MIV25.e}
+\]
+To prove this, approximate \(B\) by a nonempty finite union \(H\) of equal-length cylinders with \(\mu(H\setminus B)<\eta\mu(H)\), using Section 23's set approximation and choosing its error small compared with \(\mu(B)\). If every constituent cylinder had complement fraction at least \(\eta\), summing would contradict this inequality. One constituent is the required \(C\).
+
+Choose the preceding grouped map beyond the length of \(C\). It preserves \(C\), and \(\mu(C\cap E)=\mu(C)\mu(E)\ge c\mu(C)\). Restrict its domain further to points in \(B\) whose images are also in \(B\). The first exclusion costs at most \(\eta\mu(C)\). For the second, (MIV23.e) on the finitely many disjoint graph pieces gives
+\[
+ \mu\{x\in C\cap E:T x\notin B\}
+       \le a^{-1}\mu(C\setminus B)
+       <a^{-1}\eta\mu(C).
+ \tag{MIV25.f}
+\]
+Take \(\eta<c/(1+a^{-1})\). A positive-measure domain remains inside \(B\), with its image inside \(B\) and derivative in \([a,b]\). Its graph proves (MIV24.c). Since the initial neighborhood was arbitrary, \(r\in S_+(M)\).
+
+**From corners to blocks.** Suppose \(r\in S_+(M)\). Fix a starting coordinate \(k\) and an interval \([a,b]\) with \(0<a<r<b<1\). We construct matchings on successive finite tails \((k,m]\). A matching consists of disjoint word sets and pairs \(u\mapsto v\) with
+\[
+ a\le p_{(k,m]}(v)/p_{(k,m]}(u)\le b.
+ \tag{MIV25.g}
+\]
+At each stage extend all previous pairs to the next coordinate by pairing \(u j\) with \(v j\) for every new letter \(j\). Their probability ratios are unchanged. Among the remaining words add admissible pairs greedily until no pair can be added. This terminates because there are finitely many words; both words of each added pair are removed from the remainder.
+
+Let \(B_m\) be the tail cylinder set of unmatched words. The construction gives \(B_{m+1}\subseteq B_m\). If \(B_\infty=\bigcap_mB_m\) had positive measure, the last paragraph of Section 24 would supply \(x,y\in B_\infty\), agreeing after some finite coordinate \(m\), with derivative in \((a,b)\). Take \(m>k\) large enough to contain every coordinate where they differ. Their \((k,m]\)-words are both unmatched at that stage. They are distinct because their probability ratio is below one. Thus they form an admissible pair that the maximal matching left unused, a contradiction.
+
+Consequently \(\mu(B_m)\downarrow0\). At some finite stage the total matched mass exceeds \(1/2\). If \(U\) is its domain word set and \(V\) its image, then
+\[
+ p_{(k,m]}(U)+p_{(k,m]}(V)>\tfrac12,\qquad
+ p_{(k,m]}(V)\le b\,p_{(k,m]}(U),
+\]
+so
+\[
+ p_{(k,m]}(U)>\frac{1}{2(1+b)}>\frac14.
+ \tag{MIV25.h}
+\]
+Now take intervals \([a_j,b_j]\subset(0,1)\) containing \(r\) in their interiors and shrinking to \(r\). Start at \(k=0\), obtain one finite block as above, then start beyond its last coordinate and repeat with the next interval. This produces successive disjoint blocks, every domain of probability greater than \(1/4\), and uniformly convergent ratios. Both requirements in (MIV25.a) follow. This completes the proof of (MIV25.b).
+
+**Inversion and the endpoints.** The equivalence extends to \(r>1\) by inversion. Reversing a block bijection replaces each ratio by its reciprocal. When the original ratios converge to a positive finite \(r\), its image mass is bounded below by a fixed positive multiple of its domain mass, so divergence is preserved. On relation graphs, (MIV23.e) shows that reversing an arrow takes a positive-measure subset to a positive-measure subset, and reciprocal neighborhoods correspond. Formula (MIV24.c) therefore has the same inversion property.
+
+The values \(0\) and \(1\) have different roles. Every positive corner contains its diagonal, of measure \(\mu(B)>0\), with derivative one. Hence (MIV24.c) always contains \(1\). A disjoint-word matching cannot use the identity pair, and a finite matrix algebra need have no sequence of disjoint nontrivial coordinate blocks at all. For example, take \(d_1=2\) and \(d_n=1\) for \(n>1\). Then \(M=M_2(\mathbb C)\), \(S_+(M)=\{1\}\), but the divergent block condition at \(r=1\) is impossible: at most one nonempty paired block can contain the only nontrivial coordinate. Zero has no logarithm, and the lower derivative bound \(a>0\) is essential in (MIV25.f). Thus (MIV25.b) states its exact nonunit positive scope. For a type III factor the separate zero conclusion follows from Section 3, which concerns the full modular spectra of every faithful n.s.f. weight.
+
+**A constant two-level product.** Let every density be \(\operatorname{diag}(1,\lambda)/(1+\lambda)\), where \(0<\lambda<1\). For each integer \(h\ge1\), divide the coordinates into successive blocks of length \(h\). Pair the all-first-letter word with the all-second-letter word. The derivative is exactly \(\lambda^h\), and each domain has the same positive probability \((1+\lambda)^{-h}\), so the block condition gives \(\lambda^h\in S_+(M)\). Inversion gives every negative power, and \(1\) was just proved. Conversely every relation derivative belongs to \(\lambda^{\mathbb Z}\). Its logarithmic values form the closed discrete set \((\log\lambda)\mathbb Z\), so (MIV24.c), already with \(B=X\), excludes every other positive value. We have proved
+\[
+ S_+(M)=\lambda^{\mathbb Z}.
+ \tag{MIV25.i}
+\]
+This computes the intrinsic intersection, rather than just the spectrum of the specified product state.
+
+![Finite-word ratios, a uniformly positive grouped domain, and restriction to a positive corner.](../assets/almost-periodic-core/block-ratios.svg)
+
+*Figure 7.* The upper row is the exact prefix replacement in (MIV23.e), with the tail unchanged. The lower row records the two estimates (MIV25.d) and (MIV25.f) that leave a positive domain inside any corner \(B\). It is a diagram of maps and bounds, without a geometric probability scale. [Editable vector source](../assets/almost-periodic-core/block-ratios.svg) and [component terms](../assets/almost-periodic-core/TERMS.md).
+
+
+
 <a id="miv-reading"></a>
 ## Further reading
 
@@ -1141,3 +2044,9 @@ M. Takesaki, *Theory of Operator Algebras II*, Chapter XII, §1, Definition 1.5 
 The distinction between an individual modular spectrum and their intersection is developed in [The full weight spectral identity](OA-FLOW-MG.md#oa-flow.mg.1). The [arbitrary-cardinal cocycle intersection](OA-FLOW-L120.md#ci-intersection) is the step that makes the present all-weight theorem independent of a separable-predual restriction. [Zero in every modular spectrum](OA-FLOW-MT.md#mt-1) explains the type III zero term. The examples retain separate calculations of kernel, eigenfrequency group, and modular intersection so that these invariants are not conflated.
 
 For the original infinite-product setting, see H. Araki and E. J. Woods, [A Classification of Factors](https://ems.press/journals/prims/articles/2441), available as a [free article PDF](https://ems.press/content/serial-article-files/41616?nt=1). Sections 8–10 use the complete product construction and innerness arguments already proved in the programme and give the summability and exact-period calculations explicitly.
+
+An early discrete modular construction under isolated-spectrum and centralizer-center hypotheses is H. Araki, [Structure of Some von Neumann Algebras with Isolated Discrete Modular Spectrum](https://ems.press/journals/prims/articles/2630), with a [free article PDF](https://ems.press/content/serial-article-files/41734?nt=1). Sections 14–19 construct the compact modular extension and its weighted-diagonal trace for every specified faithful normal almost-periodic state. They prove dual reconstruction and its corner interpretation, then determine factoriality, modular type, and the periodic finite-centralizer presentation under the factorial-centralizer hypothesis.
+
+A. Connes, [Une classification des facteurs de type III](https://www.numdam.org/item/ASENS_1973_4_6_2_133_0/), Theorems 1.3.4, 1.3.7 and 3.6.2, treats tensorial modular times, periodic product presentations and their relation to the absorption invariant. Sections 20–22 prove the tensor formula, give a quantitative state construction, and establish the absorption obstruction with the parameter \(P_\lambda=2\pi/|\log\lambda|\).
+
+The finite-word condition in Section 25 is Definition 3.2 of Araki–Woods, printed pp. 61–62, with eigenvalue occurrences represented by words. The nonunit positive comparison is the block-ratio/modular-spectrum equivalence in Connes, Theorem 3.6.1, printed pp. 203–205. Sections 23–25 prove that comparison here through the full product GNS representation, diagonal corners and explicit finite matchings.

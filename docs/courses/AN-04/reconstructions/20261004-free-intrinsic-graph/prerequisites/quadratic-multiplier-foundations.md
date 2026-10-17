@@ -23,7 +23,7 @@ The finite-dimensional compactness, algebra and differential inputs are
 the exact earlier proofs named in that companion's F0 contract.
 Smooth cutoffs are [U001 P14.3](../../20261004-free-stationary-phase/exponential-prerequisite-completions.md#p14-3-exponential-decay-and-the-flat-cutoff-function).
 Compact and affine substitution, with every determinant, is
-[U001 P21.3–P21.4](../../20261004-free-stationary-phase/change-of-variables-prerequisite-completions.md#p21-3-the-full-compact-jordan-change-of-variables-theorem).
+U001 P21.3–P21.4.
 M8 proves compatibility of these integrals with the Lebesgue integrals.
 
 ## 1. Positive forms and coordinate maps

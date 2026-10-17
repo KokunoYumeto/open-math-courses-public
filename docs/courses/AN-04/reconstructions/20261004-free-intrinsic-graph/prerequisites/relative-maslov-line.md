@@ -6,8 +6,10 @@ directly from Lagrangian planes, including where their intersections change
 dimension. It then identifies the resulting global line with the line
 defined by nondegenerate phase charts.
 
-Original programme exposition and examples: GPT-6 Astra (OpenAI), Ultra,
-4 October 2026; CC0. Linked earlier components retain their own licences.
+Original programme exposition and examples: GPT-6 Astra (OpenAI), Ultra.
+Rank-change trivialization calculation and source notes: GPT-6.1 Sol
+(OpenAI), Ultra. Independent programme text: CC0 to the extent rights
+exist. Linked human works and earlier components retain their own terms.
 
 ## M0. Exact inputs and the sign convention
 
@@ -40,6 +42,11 @@ rotating-line example have their complete earlier
 [P13–P16 proofs](../../20261004-free-stationary-phase/exponential-prerequisite-completions.md).
 We will give the additional symplectic reduction and signature
 comparison proofs here.
+
+The elementary analysis reference guide
+distinguishes linked human proofs from programme arguments in the U001
+inputs. Those human works retain their own terms and are not included
+in this CC0 reading.
 
 The sign in (M1) fixes the signed index below. Replacing \(\omega\)
 by \(-\omega\) preserves the set of Lagrangian planes but reverses
@@ -607,7 +614,9 @@ The \(N\) term in (M21) is essential. \(\square\)
 For \(n=N=1\), take
 \(\phi_a(x,\theta)=x\theta-a\theta^2/2\) and fixed tests
 \(J_1=1,J_2=-1\), for \(|a|<1/2\).
-Check (M18) at \(a=0\) and on either side.
+Check (M18) at \(a=0\) and on either side. Determine whether the
+canonical trivializations on the constant-intersection pieces join
+continuously across \(a=0\).
 
 **Solution.** Both full matrices
 \(Q_i=\begin{pmatrix}-J_i&1\\1&-a\end{pmatrix}\)
@@ -619,23 +628,61 @@ for \(a=0\), \(L=V\) and \(k=1\).
 The fibre Hessian \(C=-a\) changes signature and kernel,
 while the full test Hessians remain nonsingular.
 This explicitly checks the mechanism behind M4.
+For \(a\ne0\), write \(L=\{\xi=x/a\}\). Formula (M7) gives
+\(\tau(V,L;\mu_{J_i})=\operatorname{sgn}(J_i-1/a)\).
+Both tests therefore have the same triple signature:
+\[
+ \tau(V,L;\mu_{J_i})=
+ \begin{cases}
+  1,&-1/2<a<0,\\
+  0,&a=0,\\
+  -1,&0<a<1/2,
+ \end{cases}
+ \qquad i=1,2.
+\]
+At \(a=0\) the reduced space is zero, which explains the middle value.
+Their difference is zero throughout, as required by (M18).
+
+The fixed common transversal \(\mu_{J_1}\) gives one evaluation chart
+over the whole interval by M5. Let \(f_a\) be the smooth flat section
+specified by \(f_a(\mu_{J_1})=1\). On each constant-intersection piece,
+the canonical trivialization (M24) sends it to
+\[
+ T_a(f_a)=
+ \begin{cases}
+  e^{\pi i/4},&-1/2<a<0,\\
+  1,&a=0,\\
+  e^{-\pi i/4},&0<a<1/2.
+ \end{cases}
+\]
+The one-sided limits differ, so these stratum trivializations do not
+join continuously. The line itself is smooth and is trivial over this
+interval in the fixed evaluation chart. Thus constancy of the
+four-plane index does not imply continuity of an individual triple
+signature or of (M24) through a change of intersection dimension.
+
 This quadratic generating family is used for linear algebra;
 it is not asserted to be homogeneous of degree one. \(\square\)
 
-## Free source and remaining scope
+## Human source and geometric scope {#free-source-and-remaining-scope}
 
-The freely readable human source is Lars Hörmander,
-[*Fourier integral operators. I*](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
-Section 3.3, especially the common-transversal description
-(3.3.9), the reduced forms (3.3.15)–(3.3.18), and the
-constant-intersection trivialization. M1–M7 supply the complete
-linear-algebra and bundle proofs used here. The source's
-phase-equivalence prerequisite, sheaf and cohomology arguments,
-and external bibliography are not imported.
+Lars Hörmander, [*Fourier integral operators. I*, Section 3.3](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
+gives the common-transversal description in Theorem 3.3.3 and formula
+(3.3.9), printed page 158. The reduced forms (3.3.15)–(3.3.18) and
+the constant-intersection trivialization in Theorem 3.3.4 appear on
+printed pages 161–163. An exact [free PDF copy](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6118-11511_2006_Article_BF02392052.pdf)
+is available from the Yau Mathematical Sciences Center archive.
+M1–M7 give the linear-algebra and bundle proofs used here, with the
+sign convention in (M1). The source's phase-equivalence prerequisite,
+sheaf and cohomology arguments, and external bibliography are not
+inputs to those proofs.
 
-This component does not claim a classification of the fundamental
-group of the Lagrangian Grassmannian or a general cohomology theorem.
 The relative line and its identification with the phase transition
-line have been constructed directly. The global principal-symbol
-map, its density factors, the tangent receiver's analytic
-identification and the full course remain separate proof obligations.
+line are constructed directly. These results concern the geometric
+line, its symplectic and positive-dilation functoriality, and its flat
+trivialization when the intersection dimension is constant. They do
+not assert a classification of the fundamental group of the Lagrangian
+Grassmannian or a general cohomology theorem. The
+[global principal-symbol reading](global-principal-symbol.html)
+combines this line with critical half-densities and the analytic
+principal-symbol map.

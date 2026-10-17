@@ -1,12 +1,27 @@
 # Exponentials, circle coordinates and the Gaussian branch
 
-Prerequisite companion. It follows Jiří Lebl's freely accessible *Basic Analysis*, version 6.3, [author edition](https://www.jirka.org/ra/). Original text: public domain (CC0).
-The exact sources are §§2.6.4, 3.3.2, 5.4, 11.1 and 11.4.
-Complete programme proofs are retained through exact statement and proof
-locators. The additions below supply the exercises and intermediate steps
-actually needed by Q1–Q9, the Gaussian example and the smooth cutoffs in the
-full stationary-phase lesson. No general complex identity theorem, improper
-integration theorem, area formula or arc-length theorem is assumed here.
+This companion constructs the real and complex exponentials, their
+derivatives and product laws, circle coordinates, and the smooth square
+root on the right half-plane. It supplies the algebra, convergence and
+branch calculations used in Gaussian regularization and stationary phase.
+
+Mathematical source: Jiří Lebl, *Basic Analysis* (the theorem numbering
+follows version 6.3), freely available in the [author edition](https://www.jirka.org/ra/).
+The relevant parts are [Mertens' theorem, §2.6](https://www.jirka.org/ra/html/sec_moreonseries.html),
+[the intermediate value theorem, §3.3](https://www.jirka.org/ra/html/sec_minmaxint.html),
+[real logarithms and exponentials, §5.4](https://www.jirka.org/ra/html/sec_logandexp.html),
+[complex arithmetic, §11.1](https://www.jirka.org/ra/html/sec_complexnums.html),
+and [complex exponentials and trigonometry, §11.4](https://www.jirka.org/ra/html/sec_complexexp.html).
+The human-proof reference guide
+identifies the external statements and proofs, which retain their own
+terms. The programme proof index gives the exact local
+arguments and inputs. Human text is separate from this independent
+programme exposition.
+
+Independent programme text: CC0 to the extent rights exist. Uniform
+Gaussian-factor estimate, nonuniform example and source notes:
+GPT-6.1 Sol (OpenAI), Ultra. Earlier programme components retain their
+own terms.
 
 The earlier topology, differential and compact-integral chains supply the
 ordered complete real field, finite-dimensional Euclidean spaces, derivatives,
@@ -83,8 +98,7 @@ inequality bounds every such tail by the corresponding real tail. Hence
 Also, a convergent series has terms tending to zero: subtract successive
 partial sums. A convergent complex sequence is bounded by P6.1.
 
-Retain the complete proof of Mertens' theorem, Lebl Theorem 2.6.5
-(`sec_moreonseries.html`, proof `sec_moreonseries-6-5`). It works for complex
+The [human Mertens theorem and proof](https://www.jirka.org/ra/html/sec_moreonseries.html#sec_moreonseries-6-5) is Lebl Theorem 2.6.5. It works for complex
 \(a_n,b_n\) without an order on those numbers. All comparisons in that
 proof concern their nonnegative moduli. To make this extension explicit, set
 \(A_m=\sum_{j=0}^m a_j\), \(B_m=\sum_{j=0}^m b_j\), and suppose
@@ -121,7 +135,7 @@ sequences have the same limit and that the root lies strictly between the
 endpoints. Thus no root-existence assertion is taken from an exercise.
 If a target equals an endpoint value, that endpoint itself supplies the value.
 
-Retain Proposition 5.4.1(i)–(iv) and its proof: define
+The [logarithm proof](https://www.jirka.org/ra/html/sec_logandexp.html#sec_logandexp-3-5) in Proposition 5.4.1(i)–(iv) starts with
 \[
  L(x)=\int_1^x t^{-1}\,dt\quad(x>0).
 \]
@@ -144,7 +158,7 @@ The unused rational-power assertion (v) is not imported here. \(\square\)
 
 ### P14.2. Global inverse and all required real derivatives
 
-Retain Proposition 5.4.2(i)–(iv) and its uniqueness proof. The preceding
+The [real exponential proof](https://www.jirka.org/ra/html/sec_logandexp.html#sec_logandexp-4-5) is Proposition 5.4.2(i)–(iv), including uniqueness. The preceding
 bijection defines \(E=L^{-1}:\mathbb R\to(0,\infty)\). The source
 uses its one-dimensional inverse theorem; the already proved programme
 inverse theorem P3 supplies that exact derivative as well. At each positive
@@ -191,7 +205,8 @@ More generally, choosing \(2N>m\) gives
 \(r^m e^{-cr^2}\leq N!c^{-N}r^{m-2N}\to0\) as \(r\to\infty\).
 The negative integer-power limit follows from P6.0 and the real product laws.
 These bounds justify the polynomial times Gaussian boundary limits used in
-Q2 and E1; existence of their improper integrals is still an F0-INT question.
+Q2 and E1. The [absolute-integral and Gaussian-majorant reading](global-integral-prerequisite-completions.html)
+supplies the improper-integral statements.
 
 Define \(\rho(t)=e^{-1/t}\) for \(t>0\), and \(\rho(t)=0\) for
 \(t\leq0\), as in Exercise 5.4.11. Repeated differentiation on \(t>0\)
@@ -272,10 +287,9 @@ for power \(n\) by \(z+w\), group equal monomials and use
 \(\binom n{j-1}+\binom n j=\binom{n+1}j\), which follows by putting
 the factorial fractions over their common denominator. The endpoint
 coefficients are 1 and the induction starts at \(n=0\).
-Consequently \(e^{z+w}=e^ze^w\). This uses the human Cauchy-product proof
-already in the programme; it supplies the law of exponents without importing
-the complex identity theorem used by the alternative proof of Proposition
-11.4.1. No claim about that identity theorem's proof closure is made.
+Consequently \(e^{z+w}=e^ze^w\). The finite binomial identity and the
+complex Mertens estimate in P13.2 prove the law of exponents directly
+from the absolutely convergent series.
 
 Conjugation commutes with each finite sum and with limits by P13.1, giving
 \(\overline{e^z}=e^{\bar z}\). Also \(e^ze^{-z}=e^0=1\), so
@@ -339,8 +353,7 @@ difference divided by \(2i\). This completes Exercise 11.4.7.
 
 ### P16.2. Existence of the first zero and the period
 
-Keep the first-zero argument of Proposition 11.4.2, making its supremum step
-explicit. Let
+The [trigonometric proof in Proposition 11.4.2](https://www.jirka.org/ra/html/sec_complexexp.html#sec_complexexp-4-6) uses the first positive zero of cosine. Define
 \[
  S=\{y>0:\cos t>0\text{ for every }0\leq t<y\}.
 \]
@@ -449,10 +462,78 @@ Indeed the root itself tends to
 \(\sqrt{|\lambda|/h}(1-i\operatorname{sgn}\lambda)/\sqrt2\),
 whose nonzero reciprocal is the displayed value. This establishes the exact
 phase used in Q6, rather than treating a choice of branch as a convention
-with unproved consequences. Polar-coordinate integration remains a separate
-F0-COV dependency. \(\square\)
+with unproved consequences. The change-of-variables reading
+proves polar-coordinate substitution and its exhaustion limits. \(\square\)
 
-The selected exponential and trigonometric arguments above do not establish
-global or multidimensional integration, a change-of-variables theorem, or
-closure of the full stationary-phase lesson. Those tasks remain explicit in
-the main ledger.
+**Example: uniform Gaussian factors away from a zero eigenvalue.**
+For \(h>0\), \(\varepsilon>0\) and real \(\lambda\ne0\), define
+\[
+ \begin{gathered}
+ F_\varepsilon(\lambda)=(\varepsilon-i\lambda/h)^{-1/2},\\
+ F_0(\lambda)=\sqrt{h/|\lambda|}\,
+             e^{i\pi\operatorname{sgn}(\lambda)/4}.
+ \end{gathered}
+\]
+Use the positive-real-part root for \(F_\varepsilon\). The modulus laws
+and \(s(z)^2=z\) give
+\[
+ \begin{aligned}
+ |F_\varepsilon(\lambda)|
+     &=(\varepsilon^2+\lambda^2/h^2)^{-1/4},\\
+ |F_\varepsilon(\lambda)|&\leq\sqrt{h/|\lambda|}.
+ \end{aligned}
+\]
+Put \(s_\varepsilon=s(\varepsilon-i\lambda/h)\) and
+\(s_0=\sqrt{|\lambda|/h}\,e^{-i\pi\operatorname{sgn}(\lambda)/4}\).
+Both have positive real part, and
+\[
+ \begin{gathered}
+ s_\varepsilon^2-s_0^2=\varepsilon,\qquad
+ |s_\varepsilon|\geq|s_0|,\\
+ |s_\varepsilon+s_0|
+ \geq\operatorname{Re}(s_\varepsilon+s_0)
+ \geq |s_0|/\sqrt2.
+ \end{gathered}
+\]
+The last inequality uses
+\(\operatorname{Re}s_0=|s_0|/\sqrt2\). In particular all denominators
+in the rationalization are nonzero. Since \(F_\varepsilon=1/s_\varepsilon\)
+and \(F_0=1/s_0\),
+\[
+ F_\varepsilon-F_0
+   =-\frac{\varepsilon}
+     {s_\varepsilon s_0(s_\varepsilon+s_0)}.
+\]
+Taking moduli proves the explicit error bound
+\[
+ |F_\varepsilon(\lambda)-F_0(\lambda)|
+ \leq\sqrt2\,\varepsilon
+              \left(\frac h{|\lambda|}\right)^{3/2}.
+\]
+Thus the boundary limit is uniform for \(|\lambda|\geq\delta>0\).
+It is also uniform jointly over \(0<h\leq h_0\) on that set, with
+error at most \(\sqrt2\,\varepsilon(h_0/\delta)^{3/2}\).
+
+The restriction away from zero matters. For any fixed \(h>0\), choose
+\(\lambda=\varepsilon h\). The same modulus formula gives
+\[
+ \begin{gathered}
+ |F_0(\varepsilon h)|=\varepsilon^{-1/2},\qquad
+ |F_\varepsilon(\varepsilon h)|=2^{-1/4}\varepsilon^{-1/2},\\
+ |F_\varepsilon(\varepsilon h)-F_0(\varepsilon h)|
+ \geq (1-2^{-1/4})\varepsilon^{-1/2}\longrightarrow\infty.
+ \end{gathered}
+\]
+The second line is the reverse triangle inequality. Positive real powers
+are those of P14.2, so \(1-2^{-1/4}>0\). This proves failure of uniform
+convergence over positive \(\lambda\) near zero. The scalar calculation
+applies to each eigenvalue factor in the regularized quadratic Gaussian.
+\(\square\)
+
+The [quadratic Gaussian reading](quadratic-stationary-phase.html)
+uses these constructions for its path differentiation, Gaussian Fourier
+transform and signed regularization factors. Its parameter estimates
+keep the normalized oscillatory integral separate from the rapidly
+varying phase. The [stationary-phase and critical-manifold reading](stationary-phase-and-critical-manifolds.html)
+uses the same exponential and cutoff functions in local coordinate and
+localization arguments.

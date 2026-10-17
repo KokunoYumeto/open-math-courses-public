@@ -1,0 +1,280 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Graphs over a convex profile</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A smooth affine maximal graph in dimension ten)</a><a href="the-affine-maximal-equation.html">Previous lesson</a><a href="a-radial-solution-through-the-origin.html">Next lesson</a><a href="src/graphs-over-a-convex-profile.md">Editable source</a></nav><main><article><h1 id="graphs-over-a-convex-profile">Graphs over a convex profile</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The example <span class="math" data-tex="\(u_0=\sqrt{|x|^9+t^2}\)">\(u_0=\sqrt{|x|^9+t^2}\)</span> of <a href="the-affine-maximal-equation.html">The affine maximal equation</a> has the form <span class="math" data-tex="\(\sqrt{F(x)^2+t^2}\)">\(\sqrt{F(x)^2+t^2}\)</span>. This lesson computes the Hessian of such functions and shows, following OpenAI [OpenAI-AM, Section 2], that the affine maximal equation for them follows from two second-order equations for <span class="math" data-tex="\(F\)">\(F\)</span> and an auxiliary function <span class="math" data-tex="\(P\)">\(P\)</span> of one variable fewer. For radial <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> these become ordinary differential equations.</p>
+<p>Throughout, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, the variables are <span class="math" data-tex="\((x,t)\in\mathbb R^m\times\mathbb R\)">\((x,t)\in\mathbb R^m\times\mathbb R\)</span>, so <span class="math" data-tex="\(n=m+1\)">\(n=m+1\)</span>, and
+<span class="math math-display" data-tex="\[
+k=m+2,\qquad\gamma=\frac{m+3}{m+2} .
+\]">\[
+k=m+2,\qquad\gamma=\frac{m+3}{m+2} .
+\]</span>
+For a function <span class="math" data-tex="\(F\)">\(F\)</span> on an open set <span class="math" data-tex="\(\Omega\subseteq\mathbb R^m\)">\(\Omega\subseteq\mathbb R^m\)</span> write <span class="math" data-tex="\(H=D^2F\)">\(H=D^2F\)</span> for its Hessian in <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(F_i,F_{ij}\)">\(F_i,F_{ij}\)</span> for its partial derivatives.</p>
+<h2 id="1-the-hessian-and-its-determinant">1. The Hessian and its determinant</h2>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(F\in C^2(\Omega)\)">\(F\in C^2(\Omega)\)</span> be positive and <span class="math" data-tex="\(u(x,t)=\sqrt{F(x)^2+t^2}\)">\(u(x,t)=\sqrt{F(x)^2+t^2}\)</span> on <span class="math" data-tex="\(\Omega\times\mathbb R\)">\(\Omega\times\mathbb R\)</span>. As a quadratic form in <span class="math" data-tex="\((\xi,\tau)\in\mathbb R^m\times\mathbb R\)">\((\xi,\tau)\in\mathbb R^m\times\mathbb R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D^2u(\xi,\tau)={}&amp;\frac Fu\,\xi^{\mathsf T}H\xi\\
+&amp;+\frac{F^2}{u^3}\Bigl(\tau-\frac tF\nabla F\cdot\xi\Bigr)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+D^2u(\xi,\tau)={}&amp;\frac Fu\,\xi^{\mathsf T}H\xi\\
+&amp;+\frac{F^2}{u^3}\Bigl(\tau-\frac tF\nabla F\cdot\xi\Bigr)^2 .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Differentiating <span class="math" data-tex="\(u^2=F^2+t^2\)">\(u^2=F^2+t^2\)</span>: <span class="math" data-tex="\(u_t=t/u\)">\(u_t=t/u\)</span> and <span class="math" data-tex="\(u_i=FF_i/u\)">\(u_i=FF_i/u\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_{tt}&amp;=\frac1u-\frac{t^2}{u^3}=\frac{F^2}{u^3},\\
+u_{it}&amp;=-\frac{tFF_i}{u^3},\\
+u_{ij}&amp;=\frac{F_iF_j+FF_{ij}}u-\frac{F^2F_iF_j}{u^3}\\
+&amp;=\frac Fu F_{ij}+\frac{t^2}{u^3}F_iF_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+u_{tt}&amp;=\frac1u-\frac{t^2}{u^3}=\frac{F^2}{u^3},\\
+u_{it}&amp;=-\frac{tFF_i}{u^3},\\
+u_{ij}&amp;=\frac{F_iF_j+FF_{ij}}u-\frac{F^2F_iF_j}{u^3}\\
+&amp;=\frac Fu F_{ij}+\frac{t^2}{u^3}F_iF_j .
+\end{aligned}
+\]</span>
+Expanding <span class="math" data-tex="\(\frac{F^2}{u^3}(\tau-\frac tF\nabla F\cdot\xi)^2\)">\(\frac{F^2}{u^3}(\tau-\frac tF\nabla F\cdot\xi)^2\)</span> gives <span class="math" data-tex="\(\frac{F^2}{u^3}\tau^2-\frac{2tF}{u^3}\tau\,\nabla F\cdot\xi+\frac{t^2}{u^3}(\nabla F\cdot\xi)^2\)">\(\frac{F^2}{u^3}\tau^2-\frac{2tF}{u^3}\tau\,\nabla F\cdot\xi+\frac{t^2}{u^3}(\nabla F\cdot\xi)^2\)</span>, which together with <span class="math" data-tex="\(\frac Fu\xi^{\mathsf T}H\xi\)">\(\frac Fu\xi^{\mathsf T}H\xi\)</span> has exactly these coefficients. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.2.</strong> In the situation of Lemma 1.1, put <span class="math" data-tex="\(\zeta=t/F\)">\(\zeta=t/F\)</span> and
+<span class="math math-display" data-tex="\[
+X_i=e_i+\zeta F_i\,e_t\quad(1\le i\le m),\qquad e_t ,
+\]">\[
+X_i=e_i+\zeta F_i\,e_t\quad(1\le i\le m),\qquad e_t ,
+\]</span>
+where <span class="math" data-tex="\(e_1,\dots,e_m,e_t\)">\(e_1,\dots,e_m,e_t\)</span> is the standard basis. In the basis <span class="math" data-tex="\(X_1,\dots,X_m,e_t\)">\(X_1,\dots,X_m,e_t\)</span> the form <span class="math" data-tex="\(D^2u\)">\(D^2u\)</span> is block diagonal, with blocks <span class="math" data-tex="\(\frac FuH\)">\(\frac FuH\)</span> and <span class="math" data-tex="\(\frac{F^2}{u^3}\)">\(\frac{F^2}{u^3}\)</span>. If <span class="math" data-tex="\(H&gt;0\)">\(H&gt;0\)</span>, then <span class="math" data-tex="\(D^2u&gt;0\)">\(D^2u&gt;0\)</span>, and in all cases
+<span class="math math-display" data-tex="\[
+\det D^2u=F^{m+2}u^{-(m+3)}\det H .
+\]">\[
+\det D^2u=F^{m+2}u^{-(m+3)}\det H .
+\]</span></p>
+<p><em>Proof.</em> The linear form <span class="math" data-tex="\(\tau-\zeta\nabla F\cdot\xi\)">\(\tau-\zeta\nabla F\cdot\xi\)</span> vanishes on each <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and equals <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(e_t\)">\(e_t\)</span>, and <span class="math" data-tex="\(\xi^{\mathsf T}H\xi\)">\(\xi^{\mathsf T}H\xi\)</span> only sees the <span class="math" data-tex="\(\mathbb R^m\)">\(\mathbb R^m\)</span> component, which is <span class="math" data-tex="\(e_i\)">\(e_i\)</span> for <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> for <span class="math" data-tex="\(e_t\)">\(e_t\)</span>. This gives the blocks. The matrix <span class="math" data-tex="\(S\)">\(S\)</span> with columns <span class="math" data-tex="\(X_1,\dots,X_m,e_t\)">\(X_1,\dots,X_m,e_t\)</span> is triangular with ones on the diagonal, so <span class="math" data-tex="\(\det S=1\)">\(\det S=1\)</span> and <span class="math" data-tex="\(\det D^2u=\det(S^{\mathsf T}D^2uS)\)">\(\det D^2u=\det(S^{\mathsf T}D^2uS)\)</span>, which is <span class="math" data-tex="\((F/u)^m\det H\cdot F^2/u^3\)">\((F/u)^m\det H\cdot F^2/u^3\)</span>. If <span class="math" data-tex="\(H&gt;0\)">\(H&gt;0\)</span>, both blocks are positive definite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.3.</strong> If <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> are square matrices of the same size, with <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> invertible, then <span class="math" data-tex="\(\operatorname{tr}\bigl((S^{\mathsf T}MS)^{-1}S^{\mathsf T}NS\bigr)=\operatorname{tr}(M^{-1}N)\)">\(\operatorname{tr}\bigl((S^{\mathsf T}MS)^{-1}S^{\mathsf T}NS\bigr)=\operatorname{tr}(M^{-1}N)\)</span>.</p>
+<p><em>Proof.</em> The left side is <span class="math" data-tex="\(\operatorname{tr}(S^{-1}M^{-1}NS)\)">\(\operatorname{tr}(S^{-1}M^{-1}NS)\)</span>, and the trace is invariant under conjugation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-reduction">2. The reduction</h2>
+<p><strong>Proposition 2.1</strong> (OpenAI). Let <span class="math" data-tex="\(F\in C^4(\Omega)\)">\(F\in C^4(\Omega)\)</span> and <span class="math" data-tex="\(P\in C^2(\Omega)\)">\(P\in C^2(\Omega)\)</span> be positive, with <span class="math" data-tex="\(H=D^2F&gt;0\)">\(H=D^2F&gt;0\)</span>, and suppose
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\det H=FP^{-\gamma},\\
+\operatorname{tr}(H^{-1}D^2P)+k\frac PF=0
+\end{gathered}
+\]">\[
+\begin{gathered}
+\det H=FP^{-\gamma},\\
+\operatorname{tr}(H^{-1}D^2P)+k\frac PF=0
+\end{gathered}
+\]</span>
+on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Then <span class="math" data-tex="\(u(x,t)=\sqrt{F(x)^2+t^2}\)">\(u(x,t)=\sqrt{F(x)^2+t^2}\)</span> has positive definite Hessian on <span class="math" data-tex="\(\Omega\times\mathbb R\)">\(\Omega\times\mathbb R\)</span> and solves the affine maximal equation there, in <span class="math" data-tex="\(n=m+1\)">\(n=m+1\)</span> variables.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(D^2u&gt;0\)">\(D^2u&gt;0\)</span> by Corollary 1.2, and <span class="math" data-tex="\(u\in C^4\)">\(u\in C^4\)</span>.</p>
+<p><em>The function <span class="math" data-tex="\(w\)">\(w\)</span>.</em> By Corollary 1.2 and the first equation, <span class="math" data-tex="\(\det D^2u=F^{m+3}u^{-(m+3)}P^{-\gamma}\)">\(\det D^2u=F^{m+3}u^{-(m+3)}P^{-\gamma}\)</span>. Since <span class="math" data-tex="\(\gamma\cdot\frac{m+2}{m+3}=1\)">\(\gamma\cdot\frac{m+2}{m+3}=1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+w&amp;=(\det D^2u)^{-\frac{m+2}{m+3}}\\
+&amp;=\Bigl(\frac uF\Bigr)^{m+2}P=P\,h(\zeta),
+\end{aligned}
+\]">\[
+\begin{aligned}
+w&amp;=(\det D^2u)^{-\frac{m+2}{m+3}}\\
+&amp;=\Bigl(\frac uF\Bigr)^{m+2}P=P\,h(\zeta),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(h(\zeta)=(1+\zeta^2)^{k/2}\)">\(h(\zeta)=(1+\zeta^2)^{k/2}\)</span>, because <span class="math" data-tex="\(u/F=\sqrt{1+\zeta^2}\)">\(u/F=\sqrt{1+\zeta^2}\)</span>.</p>
+<p><em>Second derivatives of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>.</em> From <span class="math" data-tex="\(\zeta=t/F\)">\(\zeta=t/F\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\zeta_i&amp;=-\frac{tF_i}{F^2},\qquad\zeta_t=\frac1F,\qquad\zeta_{tt}=0,\\
+\zeta_{it}&amp;=-\frac{F_i}{F^2},\\
+\zeta_{ij}&amp;=-\frac{tF_{ij}}{F^2}+\frac{2tF_iF_j}{F^3} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\zeta_i&amp;=-\frac{tF_i}{F^2},\qquad\zeta_t=\frac1F,\qquad\zeta_{tt}=0,\\
+\zeta_{it}&amp;=-\frac{F_i}{F^2},\\
+\zeta_{ij}&amp;=-\frac{tF_{ij}}{F^2}+\frac{2tF_iF_j}{F^3} .
+\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(d\zeta(X_i)=\zeta_i+\zeta F_i\zeta_t=0\)">\(d\zeta(X_i)=\zeta_i+\zeta F_i\zeta_t=0\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D^2\zeta(X_i,X_j)&amp;=\zeta_{ij}+\zeta F_j\zeta_{it}+\zeta F_i\zeta_{jt}\\
+&amp;=-\frac\zeta FF_{ij} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+D^2\zeta(X_i,X_j)&amp;=\zeta_{ij}+\zeta F_j\zeta_{it}+\zeta F_i\zeta_{jt}\\
+&amp;=-\frac\zeta FF_{ij} .
+\end{aligned}
+\]</span></p>
+<p><em>Second derivatives of <span class="math" data-tex="\(w\)">\(w\)</span>.</em> As quadratic forms,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;D^2(Ph(\zeta))=h\,D^2P+Ph&#x27;D^2\zeta\\
+&amp;\quad+h&#x27;(dP\otimes d\zeta+d\zeta\otimes dP)\\
+&amp;\quad+Ph&#x27;&#x27;\,d\zeta\otimes d\zeta .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;D^2(Ph(\zeta))=h\,D^2P+Ph&#x27;D^2\zeta\\
+&amp;\quad+h&#x27;(dP\otimes d\zeta+d\zeta\otimes dP)\\
+&amp;\quad+Ph&#x27;&#x27;\,d\zeta\otimes d\zeta .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(P\)">\(P\)</span> does not depend on <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(D^2P(X_i,X_j)=P_{ij}\)">\(D^2P(X_i,X_j)=P_{ij}\)</span> and <span class="math" data-tex="\(dP(e_t)=0\)">\(dP(e_t)=0\)</span>, <span class="math" data-tex="\(D^2P(e_t,e_t)=0\)">\(D^2P(e_t,e_t)=0\)</span>. With <span class="math" data-tex="\(d\zeta(X_i)=0\)">\(d\zeta(X_i)=0\)</span> this gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D^2w(X_i,X_j)=hP_{ij}-\frac PF\zeta h&#x27;F_{ij},\\
+D^2w(e_t,e_t)=\frac P{F^2}h&#x27;&#x27; .
+\end{gathered}
+\]">\[
+\begin{gathered}
+D^2w(X_i,X_j)=hP_{ij}-\frac PF\zeta h&#x27;F_{ij},\\
+D^2w(e_t,e_t)=\frac P{F^2}h&#x27;&#x27; .
+\end{gathered}
+\]</span></p>
+<p><em>The trace.</em> By Lemma 1.3, <span class="math" data-tex="\(\operatorname{tr}((D^2u)^{-1}D^2w)\)">\(\operatorname{tr}((D^2u)^{-1}D^2w)\)</span> can be computed in the basis of Corollary 1.2. There <span class="math" data-tex="\(D^2u\)">\(D^2u\)</span> is block diagonal, so only the diagonal blocks of <span class="math" data-tex="\(D^2w\)">\(D^2w\)</span> enter:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{tr}\bigl((D^2u)^{-1}D^2w\bigr)\\
+&amp;\quad=\frac uF\Bigl(h\operatorname{tr}(H^{-1}D^2P)\\
+&amp;\qquad\quad-m\frac PF\zeta h&#x27;\Bigr)+\frac{u^3}{F^2}\cdot\frac{Ph&#x27;&#x27;}{F^2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{tr}\bigl((D^2u)^{-1}D^2w\bigr)\\
+&amp;\quad=\frac uF\Bigl(h\operatorname{tr}(H^{-1}D^2P)\\
+&amp;\qquad\quad-m\frac PF\zeta h&#x27;\Bigr)+\frac{u^3}{F^2}\cdot\frac{Ph&#x27;&#x27;}{F^2}.
+\end{aligned}
+\]</span>
+Multiplying by <span class="math" data-tex="\(F/u\)">\(F/u\)</span> and using <span class="math" data-tex="\(u^2/F^2=1+\zeta^2\)">\(u^2/F^2=1+\zeta^2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac Fu\operatorname{tr}\bigl((D^2u)^{-1}D^2w\bigr)\\
+&amp;\quad=h\operatorname{tr}(H^{-1}D^2P)\\
+&amp;\qquad+\frac PF\bigl((1+\zeta^2)h&#x27;&#x27;-m\zeta h&#x27;\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac Fu\operatorname{tr}\bigl((D^2u)^{-1}D^2w\bigr)\\
+&amp;\quad=h\operatorname{tr}(H^{-1}D^2P)\\
+&amp;\qquad+\frac PF\bigl((1+\zeta^2)h&#x27;&#x27;-m\zeta h&#x27;\bigr).
+\end{aligned}
+\]</span></p>
+<p><em>The function <span class="math" data-tex="\(h\)">\(h\)</span>.</em> With
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h&#x27;&amp;=k\zeta(1+\zeta^2)^{k/2-1},\\
+h&#x27;&#x27;&amp;=k(1+\zeta^2)^{k/2-1}\\
+&amp;\quad+k(k-2)\zeta^2(1+\zeta^2)^{k/2-2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+h&#x27;&amp;=k\zeta(1+\zeta^2)^{k/2-1},\\
+h&#x27;&#x27;&amp;=k(1+\zeta^2)^{k/2-1}\\
+&amp;\quad+k(k-2)\zeta^2(1+\zeta^2)^{k/2-2},
+\end{aligned}
+\]</span>
+one finds
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(1+\zeta^2)h&#x27;&#x27;-m\zeta h&#x27;\\
+&amp;\quad=k(1+\zeta^2)^{\frac k2-1}\\
+&amp;\qquad\times\bigl(1+(k-1-m)\zeta^2\bigr)=kh,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(1+\zeta^2)h&#x27;&#x27;-m\zeta h&#x27;\\
+&amp;\quad=k(1+\zeta^2)^{\frac k2-1}\\
+&amp;\qquad\times\bigl(1+(k-1-m)\zeta^2\bigr)=kh,
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(k-1-m=1\)">\(k-1-m=1\)</span>. Hence <span class="math" data-tex="\(\frac Fu\operatorname{tr}((D^2u)^{-1}D^2w)\)">\(\frac Fu\operatorname{tr}((D^2u)^{-1}D^2w)\)</span> equals <span class="math" data-tex="\(h\bigl(\operatorname{tr}(H^{-1}D^2P)+kP/F\bigr)\)">\(h\bigl(\operatorname{tr}(H^{-1}D^2P)+kP/F\bigr)\)</span>, which is <span class="math" data-tex="\(0\)">\(0\)</span> by the second equation. Finally
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{i,j}U^{ij}\partial_{ij}w\\
+&amp;\quad=\det(D^2u)\operatorname{tr}\bigl((D^2u)^{-1}D^2w\bigr)\\
+&amp;\quad=0 .\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{i,j}U^{ij}\partial_{ij}w\\
+&amp;\quad=\det(D^2u)\operatorname{tr}\bigl((D^2u)^{-1}D^2w\bigr)\\
+&amp;\quad=0 .\qquad\square
+\end{aligned}
+\]</span></p>
+<p><strong>Remark 2.2.</strong> The computation also gives a converse. For a positive <span class="math" data-tex="\(F\in C^4(\Omega)\)">\(F\in C^4(\Omega)\)</span> with <span class="math" data-tex="\(D^2F&gt;0\)">\(D^2F&gt;0\)</span>, define <span class="math" data-tex="\(P=(F/\det D^2F)^{1/\gamma}\)">\(P=(F/\det D^2F)^{1/\gamma}\)</span>, so that the first equation holds. The steps above are identities, so <span class="math" data-tex="\(u=\sqrt{F^2+t^2}\)">\(u=\sqrt{F^2+t^2}\)</span> solves the affine maximal equation exactly when <span class="math" data-tex="\(\operatorname{tr}(H^{-1}D^2P)+kP/F=0\)">\(\operatorname{tr}(H^{-1}D^2P)+kP/F=0\)</span>.</p>
+<h2 id="3-radial-profiles">3. Radial profiles</h2>
+<p>A function on a set of the form <span class="math" data-tex="\(\{a&lt;|x|&lt;b\}\)">\(\{a&lt;|x|&lt;b\}\)</span> is <em>radial</em> if it depends only on <span class="math" data-tex="\(r=|x|\)">\(r=|x|\)</span>; its <em>profile</em> is the function of <span class="math" data-tex="\(r\)">\(r\)</span>, written with the same letter.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(0\le a&lt;b\)">\(0\le a&lt;b\)</span>, <span class="math" data-tex="\(F\in C^2((a,b))\)">\(F\in C^2((a,b))\)</span>, and <span class="math" data-tex="\(F(x)=F(|x|)\)">\(F(x)=F(|x|)\)</span> on <span class="math" data-tex="\(\{a&lt;|x|&lt;b\}\subseteq\mathbb R^m\)">\(\{a&lt;|x|&lt;b\}\subseteq\mathbb R^m\)</span>, <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>. With <span class="math" data-tex="\(y=F&#x27;\)">\(y=F&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D^2F(x)={}&amp;y&#x27;(r)\frac{xx^{\mathsf T}}{r^2}\\
+&amp;+\frac{y(r)}r\Bigl(I-\frac{xx^{\mathsf T}}{r^2}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+D^2F(x)={}&amp;y&#x27;(r)\frac{xx^{\mathsf T}}{r^2}\\
+&amp;+\frac{y(r)}r\Bigl(I-\frac{xx^{\mathsf T}}{r^2}\Bigr).
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(x\)">\(x\)</span> is an eigenvector with eigenvalue <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span>, and every vector orthogonal to <span class="math" data-tex="\(x\)">\(x\)</span> is an eigenvector with eigenvalue <span class="math" data-tex="\(y/r\)">\(y/r\)</span>. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span> the Hessian is <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\partial_iF=F&#x27;(r)x_i/r\)">\(\partial_iF=F&#x27;(r)x_i/r\)</span>, and <span class="math" data-tex="\(\partial_j(x_i/r)=\delta_{ij}/r-x_ix_j/r^3\)">\(\partial_j(x_i/r)=\delta_{ij}/r-x_ix_j/r^3\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_{ij}F={}&amp;F&#x27;&#x27;\frac{x_ix_j}{r^2}\\
+&amp;+F&#x27;\Bigl(\frac{\delta_{ij}}r-\frac{x_ix_j}{r^3}\Bigr).\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_{ij}F={}&amp;F&#x27;&#x27;\frac{x_ix_j}{r^2}\\
+&amp;+F&#x27;\Bigl(\frac{\delta_{ij}}r-\frac{x_ix_j}{r^3}\Bigr).\qquad\square
+\end{aligned}
+\]</span></p>
+<p><strong>Corollary 3.2</strong> (the radial system). Let <span class="math" data-tex="\(F,P\)">\(F,P\)</span> be positive radial functions on <span class="math" data-tex="\(\{a&lt;|x|&lt;b\}\)">\(\{a&lt;|x|&lt;b\}\)</span>, with profiles of class <span class="math" data-tex="\(C^2\)">\(C^2\)</span>, and suppose <span class="math" data-tex="\(y=F&#x27;&gt;0\)">\(y=F&#x27;&gt;0\)</span> and <span class="math" data-tex="\(y&#x27;&gt;0\)">\(y&#x27;&gt;0\)</span>. Then <span class="math" data-tex="\(H=D^2F&gt;0\)">\(H=D^2F&gt;0\)</span>, and the two equations of Proposition 2.1 hold on <span class="math" data-tex="\(\{a&lt;|x|&lt;b\}\)">\(\{a&lt;|x|&lt;b\}\)</span> if and only if, on <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y^{m-1}y&#x27;&amp;=r^{m-1}FP^{-\gamma},\\
+(y^{m-1}P&#x27;)&#x27;&amp;=-k\,r^{m-1}P^{1-\gamma},\qquad F&#x27;=y .
+\end{aligned}
+\]">\[
+\begin{aligned}
+y^{m-1}y&#x27;&amp;=r^{m-1}FP^{-\gamma},\\
+(y^{m-1}P&#x27;)&#x27;&amp;=-k\,r^{m-1}P^{1-\gamma},\qquad F&#x27;=y .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> By Lemma 3.1, <span class="math" data-tex="\(H\)">\(H\)</span> has eigenvalues <span class="math" data-tex="\(y&#x27;&gt;0\)">\(y&#x27;&gt;0\)</span> and <span class="math" data-tex="\(y/r&gt;0\)">\(y/r&gt;0\)</span>, so <span class="math" data-tex="\(H&gt;0\)">\(H&gt;0\)</span> and <span class="math" data-tex="\(\det H=y&#x27;(y/r)^{m-1}\)">\(\det H=y&#x27;(y/r)^{m-1}\)</span>. The Hessian of <span class="math" data-tex="\(P\)">\(P\)</span> has the same eigenvectors, with eigenvalues <span class="math" data-tex="\(P&#x27;&#x27;\)">\(P&#x27;&#x27;\)</span> and <span class="math" data-tex="\(P&#x27;/r\)">\(P&#x27;/r\)</span>, so <span class="math" data-tex="\(\operatorname{tr}(H^{-1}D^2P)=P&#x27;&#x27;/y&#x27;+(m-1)P&#x27;/y\)">\(\operatorname{tr}(H^{-1}D^2P)=P&#x27;&#x27;/y&#x27;+(m-1)P&#x27;/y\)</span>. The first equation of Proposition 2.1 is <span class="math" data-tex="\(y&#x27;(y/r)^{m-1}=FP^{-\gamma}\)">\(y&#x27;(y/r)^{m-1}=FP^{-\gamma}\)</span>, the first line above. Multiplying the second equation, <span class="math" data-tex="\(P&#x27;&#x27;/y&#x27;+(m-1)P&#x27;/y+kP/F=0\)">\(P&#x27;&#x27;/y&#x27;+(m-1)P&#x27;/y+kP/F=0\)</span>, by <span class="math" data-tex="\(y&#x27;y^{m-1}&gt;0\)">\(y&#x27;y^{m-1}&gt;0\)</span> gives
+<span class="math math-display" data-tex="\[
+(y^{m-1}P&#x27;)&#x27;+kP\,\frac{y^{m-1}y&#x27;}F=0 ,
+\]">\[
+(y^{m-1}P&#x27;)&#x27;+kP\,\frac{y^{m-1}y&#x27;}F=0 ,
+\]</span>
+and by the first line <span class="math" data-tex="\(y^{m-1}y&#x27;/F=r^{m-1}P^{-\gamma}\)">\(y^{m-1}y&#x27;/F=r^{m-1}P^{-\gamma}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The radial system is singular at <span class="math" data-tex="\(r=0\)">\(r=0\)</span>: there <span class="math" data-tex="\(y=F&#x27;(0)=0\)">\(y=F&#x27;(0)=0\)</span> for a smooth radial <span class="math" data-tex="\(F\)">\(F\)</span>, and the equations divide by powers of <span class="math" data-tex="\(y\)">\(y\)</span>. <a href="a-radial-solution-through-the-origin.html">A radial solution through the origin</a> constructs a solution that is smooth in <span class="math" data-tex="\(x\)">\(x\)</span> at the origin.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Show that at the points with <span class="math" data-tex="\(t=0\)">\(t=0\)</span> the Hessian of <span class="math" data-tex="\(u=\sqrt{F^2+t^2}\)">\(u=\sqrt{F^2+t^2}\)</span> is the block matrix with blocks <span class="math" data-tex="\(D^2F(x)\)">\(D^2F(x)\)</span> and <span class="math" data-tex="\(1/F(x)\)">\(1/F(x)\)</span>.</p>
+<p><strong>4.2</strong> (medium). Let <span class="math" data-tex="\(m=9\)">\(m=9\)</span>. Show that the profiles <span class="math" data-tex="\(F(r)=r^{9/2}\)">\(F(r)=r^{9/2}\)</span> and <span class="math" data-tex="\(P(r)=cr^{-33/2}\)">\(P(r)=cr^{-33/2}\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> given by <span class="math" data-tex="\(c^{12/11}=4/\bigl(63\,(9/2)^8\bigr)\)">\(c^{12/11}=4/\bigl(63\,(9/2)^8\bigr)\)</span>, solve the radial system for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Deduce that <span class="math" data-tex="\(u_0(x,t)=\sqrt{|x|^9+t^2}\)">\(u_0(x,t)=\sqrt{|x|^9+t^2}\)</span> solves the affine maximal equation on <span class="math" data-tex="\(\{x\ne0\}\)">\(\{x\ne0\}\)</span>, and show that its Hessian at a point <span class="math" data-tex="\((0,t)\)">\((0,t)\)</span>, <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, is singular.</p>
+<p><strong>4.3</strong> (medium). For <span class="math" data-tex="\(h(\zeta)=(1+\zeta^2)^{k/2}\)">\(h(\zeta)=(1+\zeta^2)^{k/2}\)</span> with any <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, compute <span class="math" data-tex="\((1+\zeta^2)h&#x27;&#x27;-m\zeta h&#x27;\)">\((1+\zeta^2)h&#x27;&#x27;-m\zeta h&#x27;\)</span>, and show that it equals <span class="math" data-tex="\(kh\)">\(kh\)</span> for all <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> only when <span class="math" data-tex="\(k=m+2\)">\(k=m+2\)</span>.</p>
+<p><strong>4.4</strong> (easy). For a radial <span class="math" data-tex="\(F\)">\(F\)</span> as in Lemma 3.1, show that <span class="math" data-tex="\(\Delta F=F&#x27;&#x27;+(m-1)F&#x27;/r\)">\(\Delta F=F&#x27;&#x27;+(m-1)F&#x27;/r\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, <span class="math" data-tex="\(u=F\)">\(u=F\)</span> and <span class="math" data-tex="\(\zeta=0\)">\(\zeta=0\)</span>, so Lemma 1.1 gives <span class="math" data-tex="\(D^2u(\xi,\tau)=\xi^{\mathsf T}H\xi+\tau^2/F\)">\(D^2u(\xi,\tau)=\xi^{\mathsf T}H\xi+\tau^2/F\)</span>.</p>
+<p><strong>4.2.</strong> Here <span class="math" data-tex="\(y=\frac92r^{7/2}\)">\(y=\frac92r^{7/2}\)</span> and <span class="math" data-tex="\(y&#x27;=\frac{63}4r^{5/2}\)">\(y&#x27;=\frac{63}4r^{5/2}\)</span>, so <span class="math" data-tex="\(y^8y&#x27;=(\frac92)^8\frac{63}4r^{61/2}\)">\(y^8y&#x27;=(\frac92)^8\frac{63}4r^{61/2}\)</span>, while <span class="math" data-tex="\(r^8FP^{-12/11}=c^{-12/11}r^{8+9/2+18}\)">\(r^8FP^{-12/11}=c^{-12/11}r^{8+9/2+18}\)</span>, which is <span class="math" data-tex="\(c^{-12/11}r^{61/2}\)">\(c^{-12/11}r^{61/2}\)</span>. The first equation holds because <span class="math" data-tex="\(c^{-12/11}=\frac{63}4(\frac92)^8\)">\(c^{-12/11}=\frac{63}4(\frac92)^8\)</span>. Next <span class="math" data-tex="\(P&#x27;=-\frac{33}2cr^{-35/2}\)">\(P&#x27;=-\frac{33}2cr^{-35/2}\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(y^8P&#x27;)&#x27;&amp;=-\tfrac{33}2\cdot\tfrac{21}2\bigl(\tfrac92\bigr)^8c\,r^{19/2},\\
+-11r^8P^{-1/11}&amp;=-11c^{-1/11}r^{19/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+(y^8P&#x27;)&#x27;&amp;=-\tfrac{33}2\cdot\tfrac{21}2\bigl(\tfrac92\bigr)^8c\,r^{19/2},\\
+-11r^8P^{-1/11}&amp;=-11c^{-1/11}r^{19/2}.
+\end{aligned}
+\]</span>
+These agree when <span class="math" data-tex="\(c^{12/11}=11/\bigl(\frac{33}2\cdot\frac{21}2(\frac92)^8\bigr)\)">\(c^{12/11}=11/\bigl(\frac{33}2\cdot\frac{21}2(\frac92)^8\bigr)\)</span>, that is <span class="math" data-tex="\(c^{12/11}=4/\bigl(63(\frac92)^8\bigr)\)">\(c^{12/11}=4/\bigl(63(\frac92)^8\bigr)\)</span>, the same condition. On <span class="math" data-tex="\(\Omega=\mathbb R^9\setminus\{0\}\)">\(\Omega=\mathbb R^9\setminus\{0\}\)</span> the functions <span class="math" data-tex="\(F=|x|^{9/2}\)">\(F=|x|^{9/2}\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> are smooth and positive with <span class="math" data-tex="\(y,y&#x27;&gt;0\)">\(y,y&#x27;&gt;0\)</span>, so Corollary 3.2 and Proposition 2.1 apply, and <span class="math" data-tex="\(u_0=\sqrt{F^2+t^2}\)">\(u_0=\sqrt{F^2+t^2}\)</span> solves the equation on <span class="math" data-tex="\(\Omega\times\mathbb R\)">\(\Omega\times\mathbb R\)</span>. Near <span class="math" data-tex="\((0,t)\)">\((0,t)\)</span> with <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, write <span class="math" data-tex="\(u_0=\sqrt{G+t^2}\)">\(u_0=\sqrt{G+t^2}\)</span> with <span class="math" data-tex="\(G=|x|^9\)">\(G=|x|^9\)</span>, a function of class <span class="math" data-tex="\(C^8\)">\(C^8\)</span> with <span class="math" data-tex="\(G(0)=0\)">\(G(0)=0\)</span>, <span class="math" data-tex="\(\nabla G(0)=0\)">\(\nabla G(0)=0\)</span> and <span class="math" data-tex="\(D^2G(0)=0\)">\(D^2G(0)=0\)</span>. The <span class="math" data-tex="\(x\)">\(x\)</span>-block of <span class="math" data-tex="\(D^2u_0\)">\(D^2u_0\)</span> is <span class="math" data-tex="\(D^2G/(2u_0)-\nabla G\nabla G^{\mathsf T}/(4u_0^3)\)">\(D^2G/(2u_0)-\nabla G\nabla G^{\mathsf T}/(4u_0^3)\)</span>, which vanishes at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>; so <span class="math" data-tex="\(D^2u_0(0,t)\)">\(D^2u_0(0,t)\)</span> is singular.</p>
+<p><strong>4.3.</strong> As in the proof of Proposition 2.1, <span class="math" data-tex="\((1+\zeta^2)h&#x27;&#x27;-m\zeta h&#x27;\)">\((1+\zeta^2)h&#x27;&#x27;-m\zeta h&#x27;\)</span> equals <span class="math" data-tex="\(k(1+\zeta^2)^{k/2-1}(1+(k-1-m)\zeta^2)\)">\(k(1+\zeta^2)^{k/2-1}(1+(k-1-m)\zeta^2)\)</span>. Dividing by <span class="math" data-tex="\(k(1+\zeta^2)^{k/2-1}\)">\(k(1+\zeta^2)^{k/2-1}\)</span>, equality with <span class="math" data-tex="\(kh\)">\(kh\)</span> means <span class="math" data-tex="\(1+(k-1-m)\zeta^2=1+\zeta^2\)">\(1+(k-1-m)\zeta^2=1+\zeta^2\)</span> for all <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, that is <span class="math" data-tex="\(k=m+2\)">\(k=m+2\)</span>.</p>
+<p><strong>4.4.</strong> The trace of the matrix in Lemma 3.1 is <span class="math" data-tex="\(y&#x27;+(m-1)y/r\)">\(y&#x27;+(m-1)y/r\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-AM] OpenAI, <em>A Smooth Nonquadratic Entire Affine Maximal Graph in Dimension Ten</em>, OpenAI Math Release preprint, 5 October 2026, Section 2. https://github.com/openai/math/tree/main/preprints/Smooth-Nonquadratic-Affine-Maximal-Graph-in-Dimension-Ten-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,0 +1,174 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Limiting measures</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A power saving for planar halving lines)</a><a href="rank-coordinates.html">Previous lesson</a><a href="monotone-functions-of-two-variables.html">Next lesson</a><a href="src/limiting-measures.md">Editable source</a></nav><main><article><h1 id="limiting-measures">Limiting measures</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Along the extremal sequence of <a href="from-packing-to-a-power-saving.html">From packing to a power saving</a>, each configuration carries the labels of <a href="rank-coordinates.html">Rank coordinates</a>. This lesson records the configurations by four kinds of measures on the label cube <span class="math" data-tex="\(Z\)">\(Z\)</span>, for vertices, participating vertices of a window, edges with their times, and crossings between two windows, and passes to weak limits. Three relations among the limits drive the rest of the course [OpenAI-HL, Section 3]: edge mass is controlled by vertex mass (Lemma 2.1); given its label, the time of an edge has a nonatomic distribution (Lemma 3.1); and every positive part of edge mass is seen by crossings between disjoint windows, whose projections to their own rank coordinates are at most planar Lebesgue measure (Lemma 4.1).</p>
+<p>Notation from the extremal sequence: <span class="math" data-tex="\(N,a,R\)">\(N,a,R\)</span>, <span class="math" data-tex="\(E_*=Ra^2\)">\(E_*=Ra^2\)</span>, <span class="math" data-tex="\(M=aN\)">\(M=aN\)</span>, with <span class="math" data-tex="\(E_*^3\ge\xi_0^3a^2N^4\)">\(E_*^3\ge\xi_0^3a^2N^4\)</span> and <span class="math" data-tex="\(E_*/M\to\infty\)">\(E_*/M\to\infty\)</span>. Measures, weak convergence and conditional measures are as in <a href="measures-on-compact-metric-spaces.html">Measures on compact metric spaces</a>.</p>
+<h2 id="1-the-measures-and-their-limits">1. The measures and their limits</h2>
+<p>In each configuration, a vertex <span class="math" data-tex="\(q\)">\(q\)</span> has the label <span class="math" data-tex="\(z(q)\in Z\)">\(z(q)\in Z\)</span>. A vertex <em>participates</em> in a window <span class="math" data-tex="\(J\)">\(J\)</span> if it is an endpoint of an edge of <span class="math" data-tex="\(J\)">\(J\)</span>; there are <span class="math" data-tex="\(S_J\)">\(S_J\)</span> such vertices. An edge <span class="math" data-tex="\(e\)">\(e\)</span> has a <em>left endpoint</em> <span class="math" data-tex="\(q_e\)">\(q_e\)</span> (Lemma 3.1 of <a href="chains-crossings-and-deys-bound.html">Chains, crossings and Dey's bound</a>) and a <em>time</em> <span class="math" data-tex="\(t_e\)">\(t_e\)</span>, the time of its batch. Define, for windows <span class="math" data-tex="\(J\)">\(J\)</span> and disjoint windows <span class="math" data-tex="\(I,J\)">\(I,J\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Measure</th>
+<th>Mass of one object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vertex</td>
+<td><span class="math" data-tex="\(\mu^{(n)}\)">\(\mu^{(n)}\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span>, at <span class="math" data-tex="\(z(q)\)">\(z(q)\)</span></td>
+<td><span class="math" data-tex="\(N^{-1}\)">\(N^{-1}\)</span></td>
+</tr>
+<tr>
+<td>vertex participating in <span class="math" data-tex="\(J\)">\(J\)</span></td>
+<td><span class="math" data-tex="\(\mu_J^{(n)}\)">\(\mu_J^{(n)}\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span>, at <span class="math" data-tex="\(z(q)\)">\(z(q)\)</span></td>
+<td><span class="math" data-tex="\(N^{-1}\)">\(N^{-1}\)</span></td>
+</tr>
+<tr>
+<td>edge</td>
+<td><span class="math" data-tex="\(\nu^{(n)}\)">\(\nu^{(n)}\)</span> on <span class="math" data-tex="\(Z\times[0,1]\)">\(Z\times[0,1]\)</span>, at <span class="math" data-tex="\((z(q_e),t_e)\)">\((z(q_e),t_e)\)</span></td>
+<td><span class="math" data-tex="\(E_*^{-1}\)">\(E_*^{-1}\)</span></td>
+</tr>
+<tr>
+<td>crossing of an <span class="math" data-tex="\(I\)">\(I\)</span>-edge and a <span class="math" data-tex="\(J\)">\(J\)</span>-edge</td>
+<td><span class="math" data-tex="\(\sigma_{IJ}^{(n)}\)">\(\sigma_{IJ}^{(n)}\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span>, at the label of the point</td>
+<td><span class="math" data-tex="\(M^{-2}\)">\(M^{-2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The masses are bounded: <span class="math" data-tex="\(\mu^{(n)}\)">\(\mu^{(n)}\)</span> and <span class="math" data-tex="\(\nu^{(n)}\)">\(\nu^{(n)}\)</span> are probability measures, <span class="math" data-tex="\(\mu_J^{(n)}\le\mu^{(n)}\)">\(\mu_J^{(n)}\le\mu^{(n)}\)</span>, and <span class="math" data-tex="\(\sigma_{IJ}^{(n)}(Z)\le1\)">\(\sigma_{IJ}^{(n)}(Z)\le1\)</span> because crossings of <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> occupy different pairs of grid slots (proof of Proposition 4.1 of <a href="rank-coordinates.html">Rank coordinates</a>). There are countably many windows. By Theorem 3.2 of <a href="measures-on-compact-metric-spaces.html">Measures on compact metric spaces</a> we pass to a subsequence along which all these measures converge weakly; their limits are <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, <span class="math" data-tex="\(\mu_J\)">\(\mu_J\)</span>, <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and <span class="math" data-tex="\(\sigma_{IJ}\)">\(\sigma_{IJ}\)</span>. Inequalities between measures survive weak limits, by testing with continuous functions and Lemma 1.1 there; so <span class="math" data-tex="\(\mu_J\le\mu\)">\(\mu_J\le\mu\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s_J=\mu_J(Z)=\lim\frac{S_J}N,\\
+\lambda=\pi_*\nu,\qquad\lambda_J(F)=\nu(F\times J),
+\end{gathered}
+\]">\[
+\begin{gathered}
+s_J=\mu_J(Z)=\lim\frac{S_J}N,\\
+\lambda=\pi_*\nu,\qquad\lambda_J(F)=\nu(F\times J),
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\pi:Z\times[0,1]\to Z\)">\(\pi:Z\times[0,1]\to Z\)</span> is the projection and <span class="math" data-tex="\(F\subseteq Z\)">\(F\subseteq Z\)</span> is Borel. Then <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(\lambda_J\)">\(\lambda_J\)</span> count edges by their left endpoints, with edge weights; <span class="math" data-tex="\(\lambda_J\)">\(\lambda_J\)</span> is additive over disjoint windows.</p>
+<p><strong>Lemma 1.1.</strong> (a) The image of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on the time coordinate is Lebesgue measure on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Every window satisfies <span class="math" data-tex="\(\lambda_J(Z)=|J|\)">\(\lambda_J(Z)=|J|\)</span>, and <span class="math" data-tex="\(\nu^{(n)}(\cdot\times J)\to\nu(\cdot\times J)\)">\(\nu^{(n)}(\cdot\times J)\to\nu(\cdot\times J)\)</span> weakly on <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p>(b) There are probability measures <span class="math" data-tex="\(h_z\)">\(h_z\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, Borel in <span class="math" data-tex="\(z\)">\(z\)</span>, with <span class="math" data-tex="\(\lambda_J(F)=\int_Fh_z(J)\,d\lambda(z)\)">\(\lambda_J(F)=\int_Fh_z(J)\,d\lambda(z)\)</span> for all Borel <span class="math" data-tex="\(F\)">\(F\)</span> and windows <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>(c) For disjoint windows <span class="math" data-tex="\(I,J\)">\(I,J\)</span>, the image of <span class="math" data-tex="\(\sigma_{IJ}\)">\(\sigma_{IJ}\)</span> under <span class="math" data-tex="\(z\mapsto(z_I,z_J)\)">\(z\mapsto(z_I,z_J)\)</span> is at most Lebesgue measure on <span class="math" data-tex="\([0,1]^2\)">\([0,1]^2\)</span>.</p>
+<p>(d) For every <span class="math" data-tex="\(\delta=2^{-m}\)">\(\delta=2^{-m}\)</span> and <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>, at most <span class="math" data-tex="\(C_1u^{-4/3}\)">\(C_1u^{-4/3}\)</span> windows of length <span class="math" data-tex="\(\delta\)">\(\delta\)</span> have <span class="math" data-tex="\(s_J&gt;u\)">\(s_J&gt;u\)</span>, where <span class="math" data-tex="\(C_1\)">\(C_1\)</span> is the constant of Theorem 6.1 of <a href="chains-crossings-and-deys-bound.html">Chains, crossings and Dey's bound</a>.</p>
+<p><em>Proof.</em> (a) Each batch has <span class="math" data-tex="\(a^2\)">\(a^2\)</span> edges, so the time image of <span class="math" data-tex="\(\nu^{(n)}\)">\(\nu^{(n)}\)</span> is <span class="math" data-tex="\(R^{-1}\sum_i\delta_{(i-1/2)/R}\)">\(R^{-1}\sum_i\delta_{(i-1/2)/R}\)</span>, which converges weakly to Lebesgue measure. Window endpoints are therefore null for the time image of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, and Lemma 2.1(b) of <a href="measures-on-compact-metric-spaces.html">Measures on compact metric spaces</a> gives the convergence of the restrictions and of their masses.</p>
+<p>(b) This is Proposition 5.1 there.</p>
+<p>(c) By Proposition 4.1 of <a href="rank-coordinates.html">Rank coordinates</a>, for continuous <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span> on the square, <span class="math" data-tex="\(\int f(z_I,z_J)\,d\sigma_{IJ}^{(n)}\)">\(\int f(z_I,z_J)\,d\sigma_{IJ}^{(n)}\)</span> is at most a Riemann sum of <span class="math" data-tex="\(f\)">\(f\)</span> plus <span class="math" data-tex="\(\omega_f(3/M)\)">\(\omega_f(3/M)\)</span>; in the limit it is at most <span class="math" data-tex="\(\int f\)">\(\int f\)</span>. By Lemma 1.1 there this extends from continuous functions to all Borel sets.</p>
+<p>(d) In each configuration, the windows of length <span class="math" data-tex="\(\delta\)">\(\delta\)</span> cover step-disjoint intervals of the sweep. A participating vertex of <span class="math" data-tex="\(J\)">\(J\)</span> changes membership during the interval covered by <span class="math" data-tex="\(J\)">\(J\)</span>, so a window with <span class="math" data-tex="\(S_J&gt;uN\)">\(S_J&gt;uN\)</span> covers an interval of activity at least <span class="math" data-tex="\(\lceil uN\rceil\)">\(\lceil uN\rceil\)</span>. By Theorem 6.1 there are at most <span class="math" data-tex="\(C_1(N/\lceil uN\rceil)^{4/3}\le C_1u^{-4/3}\)">\(C_1(N/\lceil uN\rceil)^{4/3}\le C_1u^{-4/3}\)</span> of them (for <span class="math" data-tex="\(u\le1\)">\(u\le1\)</span>; for <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span> there are none, since <span class="math" data-tex="\(S_J\le N\)">\(S_J\le N\)</span>). A window with <span class="math" data-tex="\(s_J&gt;u\)">\(s_J&gt;u\)</span> has <span class="math" data-tex="\(S_J&gt;uN\)">\(S_J&gt;uN\)</span> in all late configurations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-edge-mass-and-vertex-mass">2. Edge mass and vertex mass</h2>
+<p><strong>Lemma 2.1.</strong> There is a constant <span class="math" data-tex="\(C\)">\(C\)</span>, depending only on <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span>, such that for every window <span class="math" data-tex="\(J\)">\(J\)</span> and every Borel <span class="math" data-tex="\(F\subseteq Z\)">\(F\subseteq Z\)</span>,
+<span class="math math-display" data-tex="\[
+\lambda_J(F)^3\le C\,s_J^3\,\mu_J(F).
+\]">\[
+\lambda_J(F)^3\le C\,s_J^3\,\mu_J(F).
+\]</span>
+In particular <span class="math" data-tex="\(\lambda(F)^3\le C\mu(F)\)">\(\lambda(F)^3\le C\mu(F)\)</span>, and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is absolutely continuous with respect to <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. The same holds when the labels <span class="math" data-tex="\(z(q)\)">\(z(q)\)</span> are replaced by labels <span class="math" data-tex="\(\tilde z(q)\)">\(\tilde z(q)\)</span> in any compact metric space, with the measures defined in the same way and a further subsequence along which they converge.</p>
+<p><em>Proof.</em> For a set <span class="math" data-tex="\(U\)">\(U\)</span> of labels, let <span class="math" data-tex="\(e(U)\)">\(e(U)\)</span> be the number of edges of <span class="math" data-tex="\(J\)">\(J\)</span> whose left endpoint has its label in <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(m(U)\)">\(m(U)\)</span> the number of these left endpoints. By Corollary 6.3 of <a href="chains-crossings-and-deys-bound.html">Chains, crossings and Dey's bound</a>,
+<span class="math math-display" data-tex="\[
+e(U)^3\le4608\,a^2m(U)S_J^3+13824\,S_J^3 .
+\]">\[
+e(U)^3\le4608\,a^2m(U)S_J^3+13824\,S_J^3 .
+\]</span>
+Divide by <span class="math" data-tex="\(E_*^3\ge\xi_0^3a^2N^4\)">\(E_*^3\ge\xi_0^3a^2N^4\)</span> and use <span class="math" data-tex="\(S_J\le N\)">\(S_J\le N\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Bigl(\frac{e(U)}{E_*}\Bigr)^3\le{}&amp;\frac{4608}{\xi_0^3}\,\frac{m(U)}N\Bigl(\frac{S_J}N\Bigr)^3\\
+&amp;+\frac{13824}{\xi_0^3}\,\frac1{a^2N}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Bigl(\frac{e(U)}{E_*}\Bigr)^3\le{}&amp;\frac{4608}{\xi_0^3}\,\frac{m(U)}N\Bigl(\frac{S_J}N\Bigr)^3\\
+&amp;+\frac{13824}{\xi_0^3}\,\frac1{a^2N}.
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(e(U)/E_*=\nu^{(n)}(U\times J)\)">\(e(U)/E_*=\nu^{(n)}(U\times J)\)</span> and <span class="math" data-tex="\(m(U)/N\le\mu_J^{(n)}(U)\)">\(m(U)/N\le\mu_J^{(n)}(U)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be compact, <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, and <span class="math" data-tex="\(U\)">\(U\)</span> the open <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-neighbourhood of <span class="math" data-tex="\(F\)">\(F\)</span>. Since the boundary of <span class="math" data-tex="\(J\)">\(J\)</span> is null for the time image of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, Lemma 2.1 of <a href="measures-on-compact-metric-spaces.html">Measures on compact metric spaces</a> gives <span class="math" data-tex="\(\liminf\nu^{(n)}(U\times J)\ge\nu(U\times J)\)">\(\liminf\nu^{(n)}(U\times J)\ge\nu(U\times J)\)</span>, which is at least <span class="math" data-tex="\(\lambda_J(F)\)">\(\lambda_J(F)\)</span>, while <span class="math" data-tex="\(\limsup\mu_J^{(n)}(U)\)">\(\limsup\mu_J^{(n)}(U)\)</span> is at most <span class="math" data-tex="\(\limsup\mu_J^{(n)}(F^{[\rho]})\le\mu_J(F^{[\rho]})\)">\(\limsup\mu_J^{(n)}(F^{[\rho]})\le\mu_J(F^{[\rho]})\)</span>, and the term <span class="math" data-tex="\(13824\,\xi_0^{-3}/(a^2N)\)">\(13824\,\xi_0^{-3}/(a^2N)\)</span> tends to zero, since <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>. So <span class="math" data-tex="\(\lambda_J(F)^3\le Cs_J^3\mu_J(F^{[\rho]})\)">\(\lambda_J(F)^3\le Cs_J^3\mu_J(F^{[\rho]})\)</span> with <span class="math" data-tex="\(C=4608\,\xi_0^{-3}\)">\(C=4608\,\xi_0^{-3}\)</span>, and letting <span class="math" data-tex="\(\rho\to0\)">\(\rho\to0\)</span> gives the inequality for compact <span class="math" data-tex="\(F\)">\(F\)</span>. Both sides are inner regular (Lemma 1.1 there), which gives it for Borel <span class="math" data-tex="\(F\)">\(F\)</span>. The window <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> has <span class="math" data-tex="\(s=\mu(Z)=1\)">\(s=\mu(Z)=1\)</span>. The proof never used the nature of the labels. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-no-atoms-in-conditional-time">3. No atoms in conditional time</h2>
+<p><strong>Lemma 3.1.</strong> For <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-almost every <span class="math" data-tex="\(z\)">\(z\)</span>, the probability measure <span class="math" data-tex="\(h_z\)">\(h_z\)</span> has no atoms.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span> and a partition of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> into the windows of length <span class="math" data-tex="\(\delta=2^{-m}\)">\(\delta=2^{-m}\)</span>. Let <span class="math" data-tex="\(A_J=\{z:h_z(J)&gt;\beta\}\)">\(A_J=\{z:h_z(J)&gt;\beta\}\)</span>, a Borel set. Since <span class="math" data-tex="\(\sum_Jh_z(J)=1\)">\(\sum_Jh_z(J)=1\)</span>, each <span class="math" data-tex="\(z\)">\(z\)</span> lies in fewer than <span class="math" data-tex="\(1/\beta\)">\(1/\beta\)</span> of the sets <span class="math" data-tex="\(A_J\)">\(A_J\)</span>, so
+<span class="math math-display" data-tex="\[
+\sum_J\mu_J(A_J)\le\sum_J\mu(A_J)\le\frac1\beta .
+\]">\[
+\sum_J\mu_J(A_J)\le\sum_J\mu(A_J)\le\frac1\beta .
+\]</span>
+Fix <span class="math" data-tex="\(M_0\ge1\)">\(M_0\ge1\)</span>. By Lemma 1.1(d), at most <span class="math" data-tex="\(C_1M_0^{-4/3}\delta^{-1}\)">\(C_1M_0^{-4/3}\delta^{-1}\)</span> windows have <span class="math" data-tex="\(s_J&gt;M_0\delta^{3/4}\)">\(s_J&gt;M_0\delta^{3/4}\)</span>, and each has <span class="math" data-tex="\(\lambda_J(Z)=\delta\)">\(\lambda_J(Z)=\delta\)</span>; they contribute at most <span class="math" data-tex="\(C_1M_0^{-4/3}\)">\(C_1M_0^{-4/3}\)</span> to <span class="math" data-tex="\(\sum_J\lambda_J(A_J)\)">\(\sum_J\lambda_J(A_J)\)</span>. For the other windows, Lemma 2.1 and Hölder's inequality over at most <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span> windows give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_J\lambda_J(A_J)\\
+&amp;\quad\le C^{1/3}M_0\delta^{3/4}\sum_J\mu_J(A_J)^{1/3}\\
+&amp;\quad\le C^{1/3}M_0\delta^{3/4-2/3}\Bigl(\sum_J\mu_J(A_J)\Bigr)^{1/3}\\
+&amp;\quad\le C^{1/3}M_0\beta^{-1/3}\delta^{1/12}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_J\lambda_J(A_J)\\
+&amp;\quad\le C^{1/3}M_0\delta^{3/4}\sum_J\mu_J(A_J)^{1/3}\\
+&amp;\quad\le C^{1/3}M_0\delta^{3/4-2/3}\Bigl(\sum_J\mu_J(A_J)\Bigr)^{1/3}\\
+&amp;\quad\le C^{1/3}M_0\beta^{-1/3}\delta^{1/12}.
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(f_m(z)=\sum_Jh_z(J)\mathbf 1_{A_J}(z)\)">\(f_m(z)=\sum_Jh_z(J)\mathbf 1_{A_J}(z)\)</span>, over the windows of length <span class="math" data-tex="\(2^{-m}\)">\(2^{-m}\)</span>, this shows
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int f_m\,d\lambda&amp;=\sum_J\lambda_J(A_J)\le C_1M_0^{-4/3}\\
+&amp;\quad+C^{1/3}M_0\beta^{-1/3}2^{-m/12}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int f_m\,d\lambda&amp;=\sum_J\lambda_J(A_J)\le C_1M_0^{-4/3}\\
+&amp;\quad+C^{1/3}M_0\beta^{-1/3}2^{-m/12}.
+\end{aligned}
+\]</span>
+Letting <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span> and then <span class="math" data-tex="\(M_0\to\infty\)">\(M_0\to\infty\)</span>, <span class="math" data-tex="\(\int f_m\,d\lambda\to0\)">\(\int f_m\,d\lambda\to0\)</span>. If <span class="math" data-tex="\(h_z\)">\(h_z\)</span> has an atom of mass greater than <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, the window of length <span class="math" data-tex="\(2^{-m}\)">\(2^{-m}\)</span> containing it has <span class="math" data-tex="\(h_z(J)&gt;\beta\)">\(h_z(J)&gt;\beta\)</span>, so <span class="math" data-tex="\(f_m(z)&gt;\beta\)">\(f_m(z)&gt;\beta\)</span> for every <span class="math" data-tex="\(m\)">\(m\)</span>. By Fatou's lemma, such <span class="math" data-tex="\(z\)">\(z\)</span> form a <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-null set. Take <span class="math" data-tex="\(\beta=1/k\)">\(\beta=1/k\)</span> for all <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-edge-mass-sees-crossings">4. Edge mass sees crossings</h2>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be a window, and let <span class="math" data-tex="\(F\subseteq Z\)">\(F\subseteq Z\)</span> be a Borel set with <span class="math" data-tex="\(\sigma_{IJ}(F)=0\)">\(\sigma_{IJ}(F)=0\)</span> for all disjoint windows <span class="math" data-tex="\(I,J\subseteq K\)">\(I,J\subseteq K\)</span>. Then <span class="math" data-tex="\(\lambda_K(F)=0\)">\(\lambda_K(F)=0\)</span>.</p>
+<p><em>Proof.</em> By inner regularity we may take <span class="math" data-tex="\(F\)">\(F\)</span> compact. Fix a resolution <span class="math" data-tex="\(\delta=2^{-m}\le|K|\)">\(\delta=2^{-m}\le|K|\)</span>, and let <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> be the windows of length <span class="math" data-tex="\(\delta\)">\(\delta\)</span> inside <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(s_J\le\delta^{2/3}\)">\(s_J\le\delta^{2/3}\)</span>. By Lemma 1.1(d) the other windows of length <span class="math" data-tex="\(\delta\)">\(\delta\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span> number at most <span class="math" data-tex="\(C_1\delta^{-8/9}\)">\(C_1\delta^{-8/9}\)</span>, so they carry <span class="math" data-tex="\(\lambda_K\)">\(\lambda_K\)</span>-mass at most <span class="math" data-tex="\(C_1\delta^{1/9}\)">\(C_1\delta^{1/9}\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>. In configuration <span class="math" data-tex="\(n\)">\(n\)</span>, <em>retain</em> the edges of the windows in <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> whose left endpoint has its label in the open <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-neighbourhood of <span class="math" data-tex="\(F\)">\(F\)</span> and whose label oscillation <span class="math" data-tex="\(\operatorname{osc}_ez\)">\(\operatorname{osc}_ez\)</span> is at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Their number <span class="math" data-tex="\(e\)">\(e\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\liminf\frac e{E_*}\ge\lambda_K(F)-C_1\delta^{1/9},
+\]">\[
+\liminf\frac e{E_*}\ge\lambda_K(F)-C_1\delta^{1/9},
+\]</span>
+by the lower bound for open sets in each window, as in the proof of Lemma 2.1, and because at most <span class="math" data-tex="\(2M/\rho=o(E_*)\)">\(2M/\rho=o(E_*)\)</span> edges have oscillation above <span class="math" data-tex="\(\rho\)">\(\rho\)</span> (Section 6 of <a href="rank-coordinates.html">Rank coordinates</a>).</p>
+<p>The retained edges form a straight-line drawing on at most <span class="math" data-tex="\(N\)">\(N\)</span> vertices, so by Lemma 5.1 of <a href="chains-crossings-and-deys-bound.html">Chains, crossings and Dey's bound</a>, with all vertices designated,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Bigl(\frac e{E_*}\Bigr)^3&amp;\le\frac{2304\,N^2\operatorname{cr}+13824\,N^3}{E_*^3}\\
+&amp;\le\frac{2304}{\xi_0^3}\,\frac{\operatorname{cr}}{M^2}+\frac{13824}{\xi_0^3}\,\frac1{a^2N},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Bigl(\frac e{E_*}\Bigr)^3&amp;\le\frac{2304\,N^2\operatorname{cr}+13824\,N^3}{E_*^3}\\
+&amp;\le\frac{2304}{\xi_0^3}\,\frac{\operatorname{cr}}{M^2}+\frac{13824}{\xi_0^3}\,\frac1{a^2N},
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\operatorname{cr}\)">\(\operatorname{cr}\)</span> counts crossing pairs of retained edges. A crossing point of a retained edge lies within <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of the label of its left endpoint, so its label lies in the closed set <span class="math" data-tex="\(F^{[2\rho]}\)">\(F^{[2\rho]}\)</span>. Crossings between retained edges of different windows <span class="math" data-tex="\(I\ne J\)">\(I\ne J\)</span> in <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> therefore number at most <span class="math" data-tex="\(M^2\sigma_{IJ}^{(n)}(F^{[2\rho]})\)">\(M^2\sigma_{IJ}^{(n)}(F^{[2\rho]})\)</span>, and the <span class="math" data-tex="\(\limsup\)">\(\limsup\)</span> of their normalized number is at most <span class="math" data-tex="\(\sigma_{IJ}(F^{[2\rho]})\)">\(\sigma_{IJ}(F^{[2\rho]})\)</span>. Crossings within one window <span class="math" data-tex="\(J\)">\(J\)</span> number at most <span class="math" data-tex="\(2a^2S_J^2\)">\(2a^2S_J^2\)</span>, so after division by <span class="math" data-tex="\(M^2=a^2N^2\)">\(M^2=a^2N^2\)</span> their total has <span class="math" data-tex="\(\limsup\)">\(\limsup\)</span> at most <span class="math" data-tex="\(2\sum_{J\in\mathcal W}s_J^2\le2\delta^{-1}\delta^{4/3}=2\delta^{1/3}\)">\(2\sum_{J\in\mathcal W}s_J^2\le2\delta^{-1}\delta^{4/3}=2\delta^{1/3}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl(\lambda_K(F)-C_1\delta^{1/9}\bigr)_+^3\\
+&amp;\quad\le\frac{2304}{\xi_0^3}\Bigl(\sum_{\{I,J\}}\sigma_{IJ}(F^{[2\rho]})\\
+&amp;\qquad\qquad+2\delta^{1/3}\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl(\lambda_K(F)-C_1\delta^{1/9}\bigr)_+^3\\
+&amp;\quad\le\frac{2304}{\xi_0^3}\Bigl(\sum_{\{I,J\}}\sigma_{IJ}(F^{[2\rho]})\\
+&amp;\qquad\qquad+2\delta^{1/3}\Bigr),
+\end{aligned}
+\]</span>
+the sum over unordered pairs of distinct windows of <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span>. As <span class="math" data-tex="\(\rho\to0\)">\(\rho\to0\)</span>, <span class="math" data-tex="\(F^{[2\rho]}\)">\(F^{[2\rho]}\)</span> decreases to <span class="math" data-tex="\(F\)">\(F\)</span>, and the sum tends to <span class="math" data-tex="\(0\)">\(0\)</span>. Then let <span class="math" data-tex="\(\delta\to0\)">\(\delta\to0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equivalently, <span class="math" data-tex="\(\lambda_K\)">\(\lambda_K\)</span> is absolutely continuous with respect to every finite measure <span class="math" data-tex="\(\sum c_{IJ}\sigma_{IJ}\)">\(\sum c_{IJ}\sigma_{IJ}\)</span> with all coefficients <span class="math" data-tex="\(c_{IJ}&gt;0\)">\(c_{IJ}&gt;0\)</span>, over disjoint windows <span class="math" data-tex="\(I,J\subseteq K\)">\(I,J\subseteq K\)</span>.</p>
+<h2 id="5-summary">5. Summary</h2>
+<p>The limits retain three features of the extremal configurations, which are the inputs of the following lessons: two separated rank coordinates parametrize the plane (Proposition 3.2 of <a href="rank-coordinates.html">Rank coordinates</a>); conditional time has no atoms (Lemma 3.1); and every positive part of edge mass is detected by a crossing measure whose projection to its own rank coordinates is at most planar Lebesgue measure (Lemmas 1.1(c) and 4.1).</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). Show that <span class="math" data-tex="\(\sum_J\lambda_J=\lambda\)">\(\sum_J\lambda_J=\lambda\)</span> over the windows of any partition of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> into dyadic windows, and that <span class="math" data-tex="\(\int h_z(J)\,d\lambda(z)=|J|\)">\(\int h_z(J)\,d\lambda(z)=|J|\)</span>.</p>
+<p><strong>6.2</strong> (medium). Lemma 2.1 measures edges by their left endpoints. Explain why the proof would fail if each edge were recorded at its midpoint instead, and why it would still work with right endpoints.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> The windows of the partition are disjoint with union <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, so <span class="math" data-tex="\(\sum_J\nu(F\times J)=\nu(F\times[0,1])=\lambda(F)\)">\(\sum_J\nu(F\times J)=\nu(F\times[0,1])=\lambda(F)\)</span>. Taking <span class="math" data-tex="\(F=Z\)">\(F=Z\)</span> in Lemma 1.1(b) gives <span class="math" data-tex="\(\int h_z(J)\,d\lambda=\lambda_J(Z)=|J|\)">\(\int h_z(J)\,d\lambda=\lambda_J(Z)=|J|\)</span>.</p>
+<p><strong>6.2.</strong> The proof bounds the number of edges whose recorded point has its label in <span class="math" data-tex="\(U\)">\(U\)</span> by the crossing inequality with designated endpoints, which needs a set of vertices, the recorded endpoints, of size controlled by the vertex measure <span class="math" data-tex="\(\mu_J(U)\)">\(\mu_J(U)\)</span>. Midpoints are not vertices, and their labels are not controlled by <span class="math" data-tex="\(\mu_J\)">\(\mu_J\)</span>. Right endpoints are vertices, and Corollary 6.3 of <a href="chains-crossings-and-deys-bound.html">Chains, crossings and Dey's bound</a> holds with right endpoints designated, by the same proof.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-HL] OpenAI, <em>A power saving for planar halving lines</em>, OpenAI Math Release preprint, 25 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/A-power-saving-for-planar-halving-lines-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

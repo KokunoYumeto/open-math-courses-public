@@ -1,0 +1,136 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The simplex value</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Projection bodies and products of simplices)</a><a href="projection-bodies-of-polytopes.html">Previous lesson</a><a href="a-product-of-two-simplices.html">Next lesson</a><a href="src/the-simplex-value.md">Editable source</a></nav><main><article><h1 id="the-simplex-value">The simplex value</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson computes <span class="math" data-tex="\(R_d\)">\(R_d\)</span> for simplices, following OpenAI [OpenAI-PB, Section 3]. By Cauchy's formula (Proposition 2.3 of <a href="projection-bodies-of-polytopes.html">Projection bodies of polytopes</a>), the projection body of the standard simplex is the sum of <span class="math" data-tex="\(d+1\)">\(d+1\)</span> segments. Up to a translation and a factor, it is the unit cube plus one diagonal segment, and its volume follows from a fibre count. All simplices of one dimension have the same value, by affine invariance.</p>
+<p>Throughout, <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>, <span class="math" data-tex="\(e_1,\dots,e_d\)">\(e_1,\dots,e_d\)</span> is the standard basis, <span class="math" data-tex="\(w=e_1+\dots+e_d\)">\(w=e_1+\dots+e_d\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_d=\{x\in\mathbb R^d:{}&amp;x_i\ge0,\\
+&amp;x_1+\dots+x_d\le1\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+T_d=\{x\in\mathbb R^d:{}&amp;x_i\ge0,\\
+&amp;x_1+\dots+x_d\le1\}.
+\end{aligned}
+\]</span>
+Measure-theoretic facts are cited from the text of Fremlin [Fremlin] by number.</p>
+<h2 id="1-volume-and-facets-of-the-simplex">1. Volume and facets of the simplex</h2>
+<p><strong>Lemma 1.1.</strong> <span class="math" data-tex="\(|T_d|=1/d!\)">\(|T_d|=1/d!\)</span>, and the <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-dimensional simplex <span class="math" data-tex="\(\{x\in\mathbb R^{d-1}:x_i\ge0,\ \sum x_i\le1\}\)">\(\{x\in\mathbb R^{d-1}:x_i\ge0,\ \sum x_i\le1\}\)</span> has volume <span class="math" data-tex="\(1/(d-1)!\)">\(1/(d-1)!\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(T_1=[0,1]\)">\(T_1=[0,1]\)</span>. For <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>, the section of <span class="math" data-tex="\(T_d\)">\(T_d\)</span> at <span class="math" data-tex="\(x_d=t\in[0,1]\)">\(x_d=t\in[0,1]\)</span> is <span class="math" data-tex="\((1-t)T_{d-1}\)">\((1-t)T_{d-1}\)</span>, of volume <span class="math" data-tex="\((1-t)^{d-1}|T_{d-1}|\)">\((1-t)^{d-1}|T_{d-1}|\)</span> [Fremlin, 263A]. By Fubini's theorem [Fremlin, 251N and 252B], <span class="math" data-tex="\(|T_d|=|T_{d-1}|\int_0^1(1-t)^{d-1}dt=|T_{d-1}|/d\)">\(|T_d|=|T_{d-1}|\int_0^1(1-t)^{d-1}dt=|T_{d-1}|/d\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2.</strong> <span class="math" data-tex="\(T_d\)">\(T_d\)</span> is a polytope in the sense of <a href="projection-bodies-of-polytopes.html">Projection bodies of polytopes</a>, with <span class="math" data-tex="\(d+1\)">\(d+1\)</span> facets:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F_i=T_d\cap\{x_i=0\}\quad(1\le i\le d),\\
+F_0=T_d\cap\{x_1+\dots+x_d=1\}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+F_i=T_d\cap\{x_i=0\}\quad(1\le i\le d),\\
+F_0=T_d\cap\{x_1+\dots+x_d=1\}.
+\end{gathered}
+\]</span>
+The outward unit normal of <span class="math" data-tex="\(F_i\)">\(F_i\)</span> is <span class="math" data-tex="\(-e_i\)">\(-e_i\)</span> and its area is <span class="math" data-tex="\(1/(d-1)!\)">\(1/(d-1)!\)</span>; the outward unit normal of <span class="math" data-tex="\(F_0\)">\(F_0\)</span> is <span class="math" data-tex="\(w/\sqrt d\)">\(w/\sqrt d\)</span> and its area is <span class="math" data-tex="\(\sqrt d/(d-1)!\)">\(\sqrt d/(d-1)!\)</span>. So the vectors <span class="math" data-tex="\(s_ja_j\)">\(s_ja_j\)</span> are
+<span class="math math-display" data-tex="\[
+-\frac{e_i}{(d-1)!}\quad(1\le i\le d),\qquad\frac w{(d-1)!}.
+\]">\[
+-\frac{e_i}{(d-1)!}\quad(1\le i\le d),\qquad\frac w{(d-1)!}.
+\]</span></p>
+<p><em>Proof.</em> The inequalities are <span class="math" data-tex="\(\langle-e_i,x\rangle\le0\)">\(\langle-e_i,x\rangle\le0\)</span> and <span class="math" data-tex="\(\langle w/\sqrt d,x\rangle\le1/\sqrt d\)">\(\langle w/\sqrt d,x\rangle\le1/\sqrt d\)</span>. Each <span class="math" data-tex="\(F_i\)">\(F_i\)</span> is a copy of the <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-dimensional simplex in the coordinate hyperplane, of area <span class="math" data-tex="\(1/(d-1)!\)">\(1/(d-1)!\)</span> by Lemma 1.1. None of the inequalities can be omitted: each set <span class="math" data-tex="\(F_j\)">\(F_j\)</span> contains a relatively open subset of its hyperplane, hence a point outside the other hyperplanes, where the other inequalities are strict; moving from it a little in the direction of the outward normal violates inequality <span class="math" data-tex="\(j\)">\(j\)</span> only. The projection of <span class="math" data-tex="\(F_0\)">\(F_0\)</span> along <span class="math" data-tex="\(e_d\)">\(e_d\)</span> onto the hyperplane <span class="math" data-tex="\(\{x_d=0\}\)">\(\{x_d=0\}\)</span> is the <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-dimensional simplex. By Lemma 2.2 of <a href="projection-bodies-of-polytopes.html">Projection bodies of polytopes</a>, its area <span class="math" data-tex="\(1/(d-1)!\)">\(1/(d-1)!\)</span> equals the area of <span class="math" data-tex="\(F_0\)">\(F_0\)</span> times <span class="math" data-tex="\(|\langle w/\sqrt d,e_d\rangle|=1/\sqrt d\)">\(|\langle w/\sqrt d,e_d\rangle|=1/\sqrt d\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-projection-body-of-the-simplex">2. The projection body of the simplex</h2>
+<p>By Proposition 2.3 of <a href="projection-bodies-of-polytopes.html">Projection bodies of polytopes</a> and Lemma 1.2,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Pi T_d=\frac1{(d-1)!}\Bigl(&amp;\sum_{i=1}^d\bigl[-\tfrac{e_i}2,\tfrac{e_i}2\bigr]\\
+&amp;+\bigl[-\tfrac w2,\tfrac w2\bigr]\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Pi T_d=\frac1{(d-1)!}\Bigl(&amp;\sum_{i=1}^d\bigl[-\tfrac{e_i}2,\tfrac{e_i}2\bigr]\\
+&amp;+\bigl[-\tfrac w2,\tfrac w2\bigr]\Bigr),
+\end{aligned}
+\]</span>
+because a segment <span class="math" data-tex="\([-\frac v2,\frac v2]\)">\([-\frac v2,\frac v2]\)</span> does not change when <span class="math" data-tex="\(v\)">\(v\)</span> is replaced by <span class="math" data-tex="\(-v\)">\(-v\)</span>. Since <span class="math" data-tex="\([-\frac v2,\frac v2]=[0,v]-\frac v2\)">\([-\frac v2,\frac v2]=[0,v]-\frac v2\)</span>, this is a translate of
+<span class="math math-display" data-tex="\[
+\frac1{(d-1)!}\bigl(Q+[0,w]\bigr),\qquad Q=[0,1]^d .
+\]">\[
+\frac1{(d-1)!}\bigl(Q+[0,w]\bigr),\qquad Q=[0,1]^d .
+\]</span></p>
+<p><strong>Lemma 2.1</strong> (extrusion). Let <span class="math" data-tex="\(C\subseteq\mathbb R^d\)">\(C\subseteq\mathbb R^d\)</span> be compact and convex and <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. Then, with <span class="math" data-tex="\(\pi_v\)">\(\pi_v\)</span> the orthogonal projection onto <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span>,
+<span class="math math-display" data-tex="\[
+|C+[0,v]|=|C|+|v|\operatorname{vol}_{d-1}(\pi_v[C]).
+\]">\[
+|C+[0,v]|=|C|+|v|\operatorname{vol}_{d-1}(\pi_v[C]).
+\]</span></p>
+<p><em>Proof.</em> After an orthogonal change of coordinates [Fremlin, 263A], <span class="math" data-tex="\(v=|v|e_d\)">\(v=|v|e_d\)</span>. For <span class="math" data-tex="\(y\in\mathbb R^{d-1}\)">\(y\in\mathbb R^{d-1}\)</span> let <span class="math" data-tex="\(C_y=\{t:(y,t)\in C\}\)">\(C_y=\{t:(y,t)\in C\}\)</span>, a compact interval or empty. A point <span class="math" data-tex="\((y,t)\)">\((y,t)\)</span> lies in <span class="math" data-tex="\(C+[0,v]\)">\(C+[0,v]\)</span> exactly when <span class="math" data-tex="\(t=t&#x27;+\theta|v|\)">\(t=t&#x27;+\theta|v|\)</span> with <span class="math" data-tex="\(t&#x27;\in C_y\)">\(t&#x27;\in C_y\)</span> and <span class="math" data-tex="\(\theta\in[0,1]\)">\(\theta\in[0,1]\)</span>, since adding a multiple of <span class="math" data-tex="\(v\)">\(v\)</span> does not change <span class="math" data-tex="\(y\)">\(y\)</span>. So the fibre of <span class="math" data-tex="\(C+[0,v]\)">\(C+[0,v]\)</span> over <span class="math" data-tex="\(y\)">\(y\)</span> is <span class="math" data-tex="\(C_y+[0,|v|]\)">\(C_y+[0,|v|]\)</span>, of length <span class="math" data-tex="\(|C_y|+|v|\)">\(|C_y|+|v|\)</span> when <span class="math" data-tex="\(C_y\)">\(C_y\)</span> is nonempty, that is, when <span class="math" data-tex="\(y\in\pi_v[C]\)">\(y\in\pi_v[C]\)</span>, and empty otherwise. Fubini's theorem [Fremlin, 251N and 252B] gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|C+[0,v]|\\
+&amp;\quad=\int\bigl(|C_y|+|v|\,\mathbf 1_{\pi_v[C]}(y)\bigr)\,dy\\
+&amp;\quad=|C|+|v|\operatorname{vol}_{d-1}(\pi_v[C]).\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|C+[0,v]|\\
+&amp;\quad=\int\bigl(|C_y|+|v|\,\mathbf 1_{\pi_v[C]}(y)\bigr)\,dy\\
+&amp;\quad=|C|+|v|\operatorname{vol}_{d-1}(\pi_v[C]).\qquad\square
+\end{aligned}
+\]</span></p>
+<p><strong>Proposition 2.2</strong> (OpenAI). For <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\Pi T_d|=\frac{d+1}{((d-1)!)^d},\\
+R_d(T_d)=c_d=\frac{(d+1)\,d^d}{d!} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\Pi T_d|=\frac{d+1}{((d-1)!)^d},\\
+R_d(T_d)=c_d=\frac{(d+1)\,d^d}{d!} .
+\end{gathered}
+\]</span>
+Every <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional simplex has the same value <span class="math" data-tex="\(c_d\)">\(c_d\)</span>.</p>
+<p><em>Proof.</em> By Lemma 2.1 with <span class="math" data-tex="\(C=Q\)">\(C=Q\)</span> and <span class="math" data-tex="\(v=w\)">\(v=w\)</span>, and by Proposition 2.3 of <a href="projection-bodies-of-polytopes.html">Projection bodies of polytopes</a> with homogeneity,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|Q+[0,w]|&amp;=1+|w|\operatorname{vol}_{d-1}(\pi_w[Q])\\
+&amp;=1+h_{\Pi Q}(w).
+\end{aligned}
+\]">\[
+\begin{aligned}
+|Q+[0,w]|&amp;=1+|w|\operatorname{vol}_{d-1}(\pi_w[Q])\\
+&amp;=1+h_{\Pi Q}(w).
+\end{aligned}
+\]</span> The cube has two facets with normals <span class="math" data-tex="\(\pm e_i\)">\(\pm e_i\)</span> and area <span class="math" data-tex="\(1\)">\(1\)</span> for each <span class="math" data-tex="\(i\)">\(i\)</span>, so <span class="math" data-tex="\(h_{\Pi Q}(w)=\frac12\sum_i2|\langle e_i,w\rangle|=d\)">\(h_{\Pi Q}(w)=\frac12\sum_i2|\langle e_i,w\rangle|=d\)</span>, and <span class="math" data-tex="\(|Q+[0,w]|=d+1\)">\(|Q+[0,w]|=d+1\)</span>. Scaling by <span class="math" data-tex="\(1/(d-1)!\)">\(1/(d-1)!\)</span> multiplies volume by <span class="math" data-tex="\(((d-1)!)^{-d}\)">\(((d-1)!)^{-d}\)</span> [Fremlin, 263A], and translation does not change it [Fremlin, 134A]. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_d(T_d)&amp;=\frac{d+1}{((d-1)!)^d}\,(d!)^{d-1}\\
+&amp;=\frac{(d+1)\,d^{d-1}}{(d-1)!}=\frac{(d+1)\,d^d}{d!}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+R_d(T_d)&amp;=\frac{d+1}{((d-1)!)^d}\,(d!)^{d-1}\\
+&amp;=\frac{(d+1)\,d^{d-1}}{(d-1)!}=\frac{(d+1)\,d^d}{d!}.
+\end{aligned}
+\]</span>
+A <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional simplex, the convex hull of <span class="math" data-tex="\(d+1\)">\(d+1\)</span> affinely independent points <span class="math" data-tex="\(p_0,\dots,p_d\)">\(p_0,\dots,p_d\)</span>, is <span class="math" data-tex="\(LT_d+p_0\)">\(LT_d+p_0\)</span> with <span class="math" data-tex="\(L\)">\(L\)</span> the matrix of columns <span class="math" data-tex="\(p_i-p_0\)">\(p_i-p_0\)</span>. Proposition 3.1 of <a href="projection-bodies-of-polytopes.html">Projection bodies of polytopes</a> gives <span class="math" data-tex="\(R_d(LT_d+p_0)=R_d(T_d)\)">\(R_d(LT_d+p_0)=R_d(T_d)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The first values are <span class="math" data-tex="\(c_2=6\)">\(c_2=6\)</span>, <span class="math" data-tex="\(c_3=18\)">\(c_3=18\)</span>, <span class="math" data-tex="\(c_4=\frac{160}3\)">\(c_4=\frac{160}3\)</span> and <span class="math" data-tex="\(c_{10}=\frac{17\,187\,500}{567}\approx30\,313.5\)">\(c_{10}=\frac{17\,187\,500}{567}\approx30\,313.5\)</span>. In dimension three the bound <span class="math" data-tex="\(R_3\le18\)">\(R_3\le18\)</span> holds for all convex bodies [CFLXX, Theorem 1.2].</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1</strong> (easy). Draw <span class="math" data-tex="\(\Pi T_2\)">\(\Pi T_2\)</span>: show that it is a hexagon of area <span class="math" data-tex="\(3\)">\(3\)</span>, and that <span class="math" data-tex="\(R_2(T_2)=6\)">\(R_2(T_2)=6\)</span>.</p>
+<p><strong>3.2</strong> (medium). Prove the volume formula for zonotopes: for vectors <span class="math" data-tex="\(g_1,\dots,g_k\in\mathbb R^d\)">\(g_1,\dots,g_k\in\mathbb R^d\)</span>,
+<span class="math math-display" data-tex="\[
+\Bigl|\sum_{i=1}^k[0,g_i]\Bigr|=\sum_{S}|\det(g_i)_{i\in S}|,
+\]">\[
+\Bigl|\sum_{i=1}^k[0,g_i]\Bigr|=\sum_{S}|\det(g_i)_{i\in S}|,
+\]</span>
+the sum over the <span class="math" data-tex="\(d\)">\(d\)</span>-element subsets <span class="math" data-tex="\(S\)">\(S\)</span> of <span class="math" data-tex="\(\{1,\dots,k\}\)">\(\{1,\dots,k\}\)</span>. Use it to recompute <span class="math" data-tex="\(|Q+[0,w]|=d+1\)">\(|Q+[0,w]|=d+1\)</span>.</p>
+<p><strong>3.3</strong> (easy). Show that <span class="math" data-tex="\(c_d&lt;(d+1)e^d\)">\(c_d&lt;(d+1)e^d\)</span>.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> <span class="math" data-tex="\(\Pi T_2=[-\frac{e_1}2,\frac{e_1}2]+[-\frac{e_2}2,\frac{e_2}2]+[-\frac w2,\frac w2]\)">\(\Pi T_2=[-\frac{e_1}2,\frac{e_1}2]+[-\frac{e_2}2,\frac{e_2}2]+[-\frac w2,\frac w2]\)</span>, the hexagon with vertices <span class="math" data-tex="\(\pm(1,1)\)">\(\pm(1,1)\)</span>, <span class="math" data-tex="\(\pm(1,0)\)">\(\pm(1,0)\)</span> and <span class="math" data-tex="\(\pm(0,1)\)">\(\pm(0,1)\)</span>; as a translate of <span class="math" data-tex="\([0,1]^2+[0,(1,1)]\)">\([0,1]^2+[0,(1,1)]\)</span>, its area is <span class="math" data-tex="\(3\)">\(3\)</span> by Proposition 2.2. With <span class="math" data-tex="\(|T_2|=\frac12\)">\(|T_2|=\frac12\)</span>, <span class="math" data-tex="\(R_2(T_2)=3/\frac12=6\)">\(R_2(T_2)=3/\frac12=6\)</span>.</p>
+<p><strong>3.2.</strong> Induction on <span class="math" data-tex="\(d\)">\(d\)</span>, and for fixed <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(k\)">\(k\)</span>. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span> both sides are <span class="math" data-tex="\(\sum_i|g_i|\)">\(\sum_i|g_i|\)</span>. For <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span> and <span class="math" data-tex="\(k&lt;d\)">\(k&lt;d\)</span> both sides are <span class="math" data-tex="\(0\)">\(0\)</span> (the zonotope lies in a proper subspace, and there are no <span class="math" data-tex="\(d\)">\(d\)</span>-element subsets); a generator <span class="math" data-tex="\(g_k=0\)">\(g_k=0\)</span> changes neither side. Let <span class="math" data-tex="\(Z=\sum_{i&lt;k}[0,g_i]\)">\(Z=\sum_{i&lt;k}[0,g_i]\)</span> and <span class="math" data-tex="\(g=g_k\ne0\)">\(g=g_k\ne0\)</span>. By Lemma 2.1, <span class="math" data-tex="\(|Z+[0,g]|=|Z|+|g|\operatorname{vol}_{d-1}(\pi_g[Z])\)">\(|Z+[0,g]|=|Z|+|g|\operatorname{vol}_{d-1}(\pi_g[Z])\)</span>, and <span class="math" data-tex="\(\pi_g[Z]=\sum_{i&lt;k}[0,\pi_gg_i]\)">\(\pi_g[Z]=\sum_{i&lt;k}[0,\pi_gg_i]\)</span> is a zonotope in <span class="math" data-tex="\(g^\perp\)">\(g^\perp\)</span>. By induction in dimension <span class="math" data-tex="\(d-1\)">\(d-1\)</span> (on <span class="math" data-tex="\(g^\perp\)">\(g^\perp\)</span> with an orthonormal basis), <span class="math" data-tex="\(\operatorname{vol}_{d-1}(\pi_g[Z])\)">\(\operatorname{vol}_{d-1}(\pi_g[Z])\)</span> is the sum of <span class="math" data-tex="\(|\det|\)">\(|\det|\)</span> of the <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-element families <span class="math" data-tex="\(\pi_gg_i\)">\(\pi_gg_i\)</span>, <span class="math" data-tex="\(i\in S&#x27;\subseteq\{1,\dots,k-1\}\)">\(i\in S&#x27;\subseteq\{1,\dots,k-1\}\)</span>. For such a family, <span class="math" data-tex="\(|g|\,|\det_{g^\perp}(\pi_gg_i)_{i\in S&#x27;}|=|\det((g_i)_{i\in S&#x27;},g)|\)">\(|g|\,|\det_{g^\perp}(\pi_gg_i)_{i\in S&#x27;}|=|\det((g_i)_{i\in S&#x27;},g)|\)</span>, since subtracting multiples of <span class="math" data-tex="\(g\)">\(g\)</span> does not change the determinant. The <span class="math" data-tex="\(d\)">\(d\)</span>-element subsets <span class="math" data-tex="\(S\)">\(S\)</span> containing <span class="math" data-tex="\(k\)">\(k\)</span> are exactly <span class="math" data-tex="\(S&#x27;\cup\{k\}\)">\(S&#x27;\cup\{k\}\)</span>, and those not containing <span class="math" data-tex="\(k\)">\(k\)</span> are counted in <span class="math" data-tex="\(|Z|\)">\(|Z|\)</span>. For <span class="math" data-tex="\(g_i=e_i\)">\(g_i=e_i\)</span> and <span class="math" data-tex="\(g_{d+1}=w\)">\(g_{d+1}=w\)</span>, the <span class="math" data-tex="\(d\)">\(d\)</span>-subsets are <span class="math" data-tex="\(\{e_1,\dots,e_d\}\)">\(\{e_1,\dots,e_d\}\)</span>, with determinant <span class="math" data-tex="\(1\)">\(1\)</span>, and the <span class="math" data-tex="\(d\)">\(d\)</span> sets in which <span class="math" data-tex="\(w\)">\(w\)</span> replaces one <span class="math" data-tex="\(e_j\)">\(e_j\)</span>, each with determinant <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>; the sum is <span class="math" data-tex="\(d+1\)">\(d+1\)</span>.</p>
+<p><strong>3.3.</strong> The term <span class="math" data-tex="\(d^d/d!\)">\(d^d/d!\)</span> is one of the positive terms of <span class="math" data-tex="\(e^d=\sum_kd^k/k!\)">\(e^d=\sum_kd^k/k!\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-PB] OpenAI, <em>A product counterexample to the simplex maximum for projection-body volume</em>, OpenAI Math Release preprint, 24 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/A-product-counterexample-to-the-simplex-maximum-for-projection-body-volume-September-24-2026</li>
+<li>[CFLXX] S. Chen, Y. Feng, Y. Li, D. Xi and L. Xu, <em>Petty's conjectured projection inequality in dimension three</em>, preprint, 2026, MathSciDoc 2608.23001. https://archive.ymsc.tsinghua.edu.cn/pacm_download/741/12780-pettyinequality.pdf</li>
+<li>[Fremlin] D. H. Fremlin, <em>Measure Theory</em>, Volumes 1 and 2, 134A, 251N, 252B, 263A; the text of the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>. https://www1.essex.ac.uk/maths/people/fremlin/mt.htm</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

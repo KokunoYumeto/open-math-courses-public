@@ -25,7 +25,7 @@ and measurable multipliers with
 parts. Smooth cutoffs are constructed in
 [U001 P14.3](../../20261004-free-stationary-phase/exponential-prerequisite-completions.md#p14-3-exponential-decay-and-the-flat-cutoff-function).
 The chart integrals below use the complete compact substitution proof
-[U001 P21.3–P21.4](../../20261004-free-stationary-phase/change-of-variables-prerequisite-completions.md#p21-3-the-full-compact-jordan-change-of-variables-theorem).
+U001 P21.3–P21.4.
 M8 identifies these continuous compact integrals with Lebesgue integrals.
 
 All dimensions here satisfy \(n\geq1\). For \(n=0\) there is one point,

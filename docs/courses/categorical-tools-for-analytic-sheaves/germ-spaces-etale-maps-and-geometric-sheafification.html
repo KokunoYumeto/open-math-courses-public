@@ -1,0 +1,230 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Germ spaces, étalé maps and geometric sheafification</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="germ-spaces-étalé-maps-and-geometric-sheafification">Germ spaces, étalé maps and geometric sheafification</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).</em></p>
+<p>A sheaf records sections on open sets; a local homeomorphism records how their germs fit together as a topological space. The topology is essential. A collection of stalks without that topology does not determine which families are sections, and a local homeomorphism need not be a covering map.</p>
+<p>Throughout, <span class="math" data-tex="\(X\)">\(X\)</span> is an arbitrary topological space. No separation, connectedness or path hypothesis is imposed. All sets and covers belong to fixed universes. Sheaves have values in sets and satisfy the empty-cover axiom, so their value on the empty open is a singleton. Maps of spaces over <span class="math" data-tex="\(X\)">\(X\)</span> are continuous maps commuting with the projections. Write <span class="math" data-tex="\(\operatorname{Top}/X\)">\(\operatorname{Top}/X\)</span> for that category and <span class="math" data-tex="\(\operatorname{Et}(X)\)">\(\operatorname{Et}(X)\)</span> for its full subcategory of local homeomorphisms. Here a local homeomorphism need not be surjective.</p>
+<p>The point-free construction for general coefficient categories is in <span class="unlinked">Associated sheaves with general coefficients, Sections 2–4</span>. The present construction supplies a concrete topological model for set-valued sheaves. <a href="locally-constant-module-sheaves-and-transition-maps.html#1-constant-sheaves-and-their-actual-fibres">Locally constant module sheaves</a> treats its separate module structure and transition maps.</p>
+<h2 id="1-the-topology-on-the-germs-of-a-presheaf">1. The topology on the germs of a presheaf</h2>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be a presheaf. A germ at <span class="math" data-tex="\(x\)">\(x\)</span> is an equivalence class <span class="math" data-tex="\([s]_x\)">\([s]_x\)</span>, where <span class="math" data-tex="\(s\in P(U)\)">\(s\in P(U)\)</span> and <span class="math" data-tex="\(x\in U\)">\(x\in U\)</span>. Two representatives are equivalent when their restrictions agree on some open neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span> contained in both domains. Reflexivity and symmetry follow directly; intersecting two such neighborhoods proves transitivity. Restricting representatives defines the same class. Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+E(P)=\coprod_{x\in X}P_x,\\
+p_P([s]_x)=x.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+E(P)=\coprod_{x\in X}P_x,\\
+p_P([s]_x)=x.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>For each <span class="math" data-tex="\(s\in P(U)\)">\(s\in P(U)\)</span>, define a map and its image by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\widehat s:U\longrightarrow E(P),\\
+x\longmapsto[s]_x,\\
+[s,U]=\widehat s(U).
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\widehat s:U\longrightarrow E(P),\\
+x\longmapsto[s]_x,\\
+[s,U]=\widehat s(U).
+\end{gathered}
+\tag{1.2}
+\]</span></p>
+<p><strong>Proposition 1.1.</strong> The sets <span class="math" data-tex="\([s,U]\)">\([s,U]\)</span> form a basis of a topology on <span class="math" data-tex="\(E(P)\)">\(E(P)\)</span>. Each restriction <span class="math" data-tex="\(p_P:[s,U]\to U\)">\(p_P:[s,U]\to U\)</span> is a homeomorphism, and <span class="math" data-tex="\(p_P\)">\(p_P\)</span> is a local homeomorphism.</p>
+<p><strong>Proof.</strong> Every germ has a representative, so these sets cover. If a germ lies in <span class="math" data-tex="\([s,U]\cap[t,V]\)">\([s,U]\cap[t,V]\)</span>, the equality of its representatives supplies an open neighborhood <span class="math" data-tex="\(W\subset U\cap V\)">\(W\subset U\cap V\)</span> on which <span class="math" data-tex="\(s|_W=t|_W\)">\(s|_W=t|_W\)</span>. The basic set <span class="math" data-tex="\([s|_W,W]\)">\([s|_W,W]\)</span> contains that germ and is contained in the intersection. This proves the basis axiom, including the case in which the intersection is empty.</p>
+<p>The projection restricts bijectively on <span class="math" data-tex="\([s,U]\)">\([s,U]\)</span>, with inverse <span class="math" data-tex="\(\widehat s\)">\(\widehat s\)</span>. The inverse image under <span class="math" data-tex="\(\widehat s\)">\(\widehat s\)</span> of any basic set <span class="math" data-tex="\([t,V]\)">\([t,V]\)</span> is the set of points in <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span> where the two germs agree. This is open, since each such equality holds on a smaller neighborhood. Thus <span class="math" data-tex="\(\widehat s\)">\(\widehat s\)</span> is continuous. Also <span class="math" data-tex="\(p_P^{-1}(V)\)">\(p_P^{-1}(V)\)</span> is the union of the basic sets <span class="math" data-tex="\([s|_{U\cap V},U\cap V]\)">\([s|_{U\cap V},U\cap V]\)</span>, so <span class="math" data-tex="\(p_P\)">\(p_P\)</span> is continuous. Every open subset of <span class="math" data-tex="\([s,U]\)">\([s,U]\)</span> is a union of intersections with basic sets; its projection is open by the same neighborhood calculation. Hence the displayed bijection is a homeomorphism. These charts cover <span class="math" data-tex="\(E(P)\)">\(E(P)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A presheaf map <span class="math" data-tex="\(b:P\to Q\)">\(b:P\to Q\)</span> induces
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+E(b)([s]_x)=[b_U(s)]_x.
+\tag{1.3}
+\]">\[
+E(b)([s]_x)=[b_U(s)]_x.
+\tag{1.3}
+\]</span></p>
+<p>Naturality of <span class="math" data-tex="\(b\)">\(b\)</span> makes this independent of representatives. On each chart it is the continuous map <span class="math" data-tex="\(\widehat{b_U(s)}\circ p_P\)">\(\widehat{b_U(s)}\circ p_P\)</span>, so it is continuous on their open cover. Identities and compositions are respected at every germ. This defines a functor <span class="math" data-tex="\(E:\operatorname{PSh}(X)\to\operatorname{Et}(X)\)">\(E:\operatorname{PSh}(X)\to\operatorname{Et}(X)\)</span>, and also a functor into <span class="math" data-tex="\(\operatorname{Top}/X\)">\(\operatorname{Top}/X\)</span>.</p>
+<h2 id="2-sections-recover-the-entire-étalé-space">2. Sections recover the entire étalé space</h2>
+<p>For any continuous <span class="math" data-tex="\(q:T\to X\)">\(q:T\to X\)</span>, let <span class="math" data-tex="\(\Gamma_X(T)(U)\)">\(\Gamma_X(T)(U)\)</span> be the continuous maps <span class="math" data-tex="\(t:U\to T\)">\(t:U\to T\)</span> satisfying <span class="math" data-tex="\(qt=1_U\)">\(qt=1_U\)</span>. Restrictions restrict maps. Compatible sections glue uniquely as functions; the glued function is continuous because continuity can be checked on an open cover. Thus <span class="math" data-tex="\(\Gamma_X(T)\)">\(\Gamma_X(T)\)</span> is a sheaf, even when <span class="math" data-tex="\(q\)">\(q\)</span> is not a local homeomorphism. Composition with a map over <span class="math" data-tex="\(X\)">\(X\)</span> makes <span class="math" data-tex="\(\Gamma_X\)">\(\Gamma_X\)</span> functorial.</p>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-tex="\(q\)">\(q\)</span> is a local homeomorphism, every section <span class="math" data-tex="\(t:U\to T\)">\(t:U\to T\)</span> has open image. Every map between two local homeomorphisms over <span class="math" data-tex="\(X\)">\(X\)</span> is itself a local homeomorphism.</p>
+<p><strong>Proof.</strong> Around <span class="math" data-tex="\(t(x)\)">\(t(x)\)</span>, choose a chart <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(q\)">\(q\)</span>. Shrink to an open <span class="math" data-tex="\(V\subset U\)">\(V\subset U\)</span> containing <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(t(V)\subset W\)">\(t(V)\subset W\)</span>. Then <span class="math" data-tex="\(t|_V=(q|_W)^{-1}|_V\)">\(t|_V=(q|_W)^{-1}|_V\)</span>, and <span class="math" data-tex="\(t(V)=(q|_W)^{-1}(V)\)">\(t(V)=(q|_W)^{-1}(V)\)</span> is open in <span class="math" data-tex="\(T\)">\(T\)</span>. These images cover <span class="math" data-tex="\(t(U)\)">\(t(U)\)</span>.</p>
+<p>For a map <span class="math" data-tex="\(h:T\to T&#x27;\)">\(h:T\to T&#x27;\)</span> over <span class="math" data-tex="\(X\)">\(X\)</span>, choose charts around <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(h(z)\)">\(h(z)\)</span>. Intersect the first with the inverse image of the second. Its projection is still open, and in these charts <span class="math" data-tex="\(h\)">\(h\)</span> is the identity on that open subset of <span class="math" data-tex="\(X\)">\(X\)</span>. It is a homeomorphism onto an open subset of the second chart. Such neighborhoods cover <span class="math" data-tex="\(T\)">\(T\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> If <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span> is a local homeomorphism, evaluation is a natural homeomorphism over <span class="math" data-tex="\(X\)">\(X\)</span>:
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\epsilon_T:E(\Gamma_X(T))\longrightarrow T,\\
+[t]_x\longmapsto t(x).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\epsilon_T:E(\Gamma_X(T))\longrightarrow T,\\
+[t]_x\longmapsto t(x).
+\end{gathered}
+\tag{2.1}
+\]</span></p>
+<p><strong>Proof.</strong> Equal germs give equal values. Conversely, two sections with the same value at <span class="math" data-tex="\(x\)">\(x\)</span> take values in a common chart after shrinking around <span class="math" data-tex="\(x\)">\(x\)</span>; there both are its inverse, so their germs agree. Every <span class="math" data-tex="\(z\in T\)">\(z\in T\)</span> is the value of the inverse of a chart at <span class="math" data-tex="\(q(z)\)">\(q(z)\)</span>. Thus evaluation is bijective. On a basic set <span class="math" data-tex="\([t,U]\)">\([t,U]\)</span>, it is the section <span class="math" data-tex="\(t\)">\(t\)</span> composed with its projection. This is continuous and, by Lemma 2.1, a homeomorphism onto the open image <span class="math" data-tex="\(t(U)\)">\(t(U)\)</span>. Evaluation is therefore a homeomorphism. For <span class="math" data-tex="\(h:T\to T&#x27;\)">\(h:T\to T&#x27;\)</span>, both <span class="math" data-tex="\(\epsilon_{T&#x27;}E(\Gamma_X h)\)">\(\epsilon_{T&#x27;}E(\Gamma_X h)\)</span> and <span class="math" data-tex="\(h\epsilon_T\)">\(h\epsilon_T\)</span> send <span class="math" data-tex="\([t]_x\)">\([t]_x\)</span> to <span class="math" data-tex="\(h(t(x))\)">\(h(t(x))\)</span>, proving naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a natural presheaf map
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\eta_P:P\longrightarrow\Gamma_X(E(P)),\\
+s\longmapsto\widehat s.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\eta_P:P\longrightarrow\Gamma_X(E(P)),\\
+s\longmapsto\widehat s.
+\end{gathered}
+\tag{2.2}
+\]</span></p>
+<p><strong>Theorem 2.3.</strong> The map <span class="math" data-tex="\(\eta_P\)">\(\eta_P\)</span> is an isomorphism exactly when <span class="math" data-tex="\(P\)">\(P\)</span> is a sheaf. Consequently <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(\Gamma_X\)">\(\Gamma_X\)</span> restrict to mutually inverse equivalences between sheaves on <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(\operatorname{Et}(X)\)">\(\operatorname{Et}(X)\)</span>, with all their morphisms.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(P\)">\(P\)</span> is a sheaf. Two sections with the same germs agree on a neighborhood of every point; separation then makes them equal. This proves injectivity on every open, including the empty open by its sheaf axiom. A continuous section <span class="math" data-tex="\(\sigma:U\to E(P)\)">\(\sigma:U\to E(P)\)</span> locally has image in a chart <span class="math" data-tex="\([s,V]\)">\([s,V]\)</span>. Since it is a section of <span class="math" data-tex="\(p_P\)">\(p_P\)</span>, on that smaller domain it is exactly <span class="math" data-tex="\(\widehat s\)">\(\widehat s\)</span>. On overlaps these local representatives have equal germs, so separation makes their restrictions equal. Gluing gives <span class="math" data-tex="\(s\in P(U)\)">\(s\in P(U)\)</span> with <span class="math" data-tex="\(\sigma=\widehat s\)">\(\sigma=\widehat s\)</span>. The empty domain uses its unique section. Thus <span class="math" data-tex="\(\eta_P\)">\(\eta_P\)</span> is an isomorphism. Conversely, its target is a sheaf, so an isomorphic presheaf is a sheaf.</p>
+<p>The natural isomorphisms (2.1) and (2.2) give the equivalence. Explicitly, a map of sheaves gives (1.3); a map of their germ spaces gives the map on sections, transported by (2.2). These operations are inverse because both act on a germ by the value of its represented local section. No bijectivity condition is imposed on a morphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-adjunction-and-the-associated-sheaf">3. The adjunction and the associated sheaf</h2>
+<p><strong>Theorem 3.1.</strong> For every presheaf <span class="math" data-tex="\(P\)">\(P\)</span> and every space <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span>, there is a natural bijection
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\operatorname{Top}/X}(E(P),T)\\
+\simeq\operatorname{Nat}(P,\Gamma_X(T)).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\operatorname{Top}/X}(E(P),T)\\
+\simeq\operatorname{Nat}(P,\Gamma_X(T)).
+\end{gathered}
+\tag{3.1}
+\]</span></p>
+<p><strong>Proof.</strong> A map <span class="math" data-tex="\(k:E(P)\to T\)">\(k:E(P)\to T\)</span> sends <span class="math" data-tex="\(s\in P(U)\)">\(s\in P(U)\)</span> to the continuous section <span class="math" data-tex="\(k\widehat s\)">\(k\widehat s\)</span>. This commutes with restrictions. Conversely, for <span class="math" data-tex="\(\alpha:P\to\Gamma_X(T)\)">\(\alpha:P\to\Gamma_X(T)\)</span>, put
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+k_\alpha([s]_x)=\alpha_U(s)(x).
+\tag{3.2}
+\]">\[
+k_\alpha([s]_x)=\alpha_U(s)(x).
+\tag{3.2}
+\]</span></p>
+<p>If two representatives agree after restriction, naturality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> makes their sections agree there, so this is well defined. On <span class="math" data-tex="\([s,U]\)">\([s,U]\)</span>, the map is <span class="math" data-tex="\(\alpha_U(s)\circ p_P\)">\(\alpha_U(s)\circ p_P\)</span>, hence continuous. The charts are an open cover, so the whole map is continuous and lies over <span class="math" data-tex="\(X\)">\(X\)</span>. Applying the two constructions consecutively returns the original map or transformation at every germ or section. Their formulas commute with composition in both variables, proving naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The unit is (2.2); the counit for an arbitrary <span class="math" data-tex="\(T\)">\(T\)</span> is still evaluation (2.1), which need not be invertible. The two triangle identities can be checked without any abstract adjunction theorem. The composite <span class="math" data-tex="\(\epsilon_{E(P)}E(\eta_P)\)">\(\epsilon_{E(P)}E(\eta_P)\)</span> sends <span class="math" data-tex="\([s]_x\)">\([s]_x\)</span> to <span class="math" data-tex="\(\widehat s(x)=[s]_x\)">\(\widehat s(x)=[s]_x\)</span>. The composite <span class="math" data-tex="\(\Gamma_X(\epsilon_T)\eta_{\Gamma_X(T)}\)">\(\Gamma_X(\epsilon_T)\eta_{\Gamma_X(T)}\)</span> sends a section <span class="math" data-tex="\(t\)">\(t\)</span> to the section <span class="math" data-tex="\(x\mapsto t(x)\)">\(x\mapsto t(x)\)</span>. Both are identities.</p>
+<p><strong>Corollary 3.2.</strong> The associated sheaf of <span class="math" data-tex="\(P\)">\(P\)</span> is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+aP=\Gamma_X(E(P)).
+\tag{3.3}
+\]">\[
+aP=\Gamma_X(E(P)).
+\tag{3.3}
+\]</span></p>
+<p><strong>Proof.</strong> For a sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, use its isomorphism <span class="math" data-tex="\(F\simeq\Gamma_X(E(F))\)">\(F\simeq\Gamma_X(E(F))\)</span>, then (3.1) and the equivalence of Theorem 2.3. These give a bijection from sheaf maps <span class="math" data-tex="\(aP\to F\)">\(aP\to F\)</span> to presheaf maps <span class="math" data-tex="\(P\to F\)">\(P\to F\)</span>. Its map is restriction along <span class="math" data-tex="\(\eta_P\)">\(\eta_P\)</span>, by the explicit constructions in (3.1). Therefore extensions exist and are unique, which is the sheafification universal property. The formulas respect maps of <span class="math" data-tex="\(P\)">\(P\)</span>. In particular this is canonically isomorphic, with its unit, to any other associated-sheaf construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Its stalks are exactly the original stalks. More precisely, evaluation and its inverse are
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+(aP)_x\longrightarrow P_x,\quad[\sigma]_x\longmapsto\sigma(x),\\\\
+P_x\longrightarrow(aP)_x,\quad[s]_x\longmapsto[\widehat s]_x.
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+(aP)_x\longrightarrow P_x,\quad[\sigma]_x\longmapsto\sigma(x),\\\\
+P_x\longrightarrow(aP)_x,\quad[s]_x\longmapsto[\widehat s]_x.
+\end{gathered}
+\tag{3.4}
+\]</span></p>
+<p>Evaluation is independent of a section representative. Around <span class="math" data-tex="\(x\)">\(x\)</span>, a section <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> lies in one chart and equals the corresponding <span class="math" data-tex="\(\widehat s\)">\(\widehat s\)</span>. This proves that the two maps are inverse, and that their definition commutes with presheaf maps. The second is the stalk map of the unit.</p>
+<p><strong>Corollary 3.3.</strong> A morphism of sheaves is an isomorphism exactly when all its stalk maps are bijective.</p>
+<p><strong>Proof.</strong> Under the equivalence it is a map of local homeomorphisms, hence an open map by Lemma 2.1. Stalkwise bijectivity says precisely that this map is a bijection on the underlying disjoint unions of fibres. A continuous open bijection is a homeomorphism: the inverse image under its inverse of an open set is its open image. The equivalence then gives an inverse sheaf map. The converse follows by taking germs of an inverse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-pulling-back-the-actual-germ-space">4. Pulling back the actual germ space</h2>
+<p>Let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> be continuous and <span class="math" data-tex="\(F\)">\(F\)</span> a sheaf on <span class="math" data-tex="\(Y\)">\(Y\)</span>. The projection below is a local homeomorphism:
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+f^*E(F)=X\times_Y E(F)\longrightarrow X.
+\tag{4.1}
+\]">\[
+f^*E(F)=X\times_Y E(F)\longrightarrow X.
+\tag{4.1}
+\]</span></p>
+<p>Indeed, the pullback of a chart over <span class="math" data-tex="\(U\subset Y\)">\(U\subset Y\)</span> is a chart over <span class="math" data-tex="\(f^{-1}U\)">\(f^{-1}U\)</span>. Let <span class="math" data-tex="\(L_fF=\Gamma_X(f^*E(F))\)">\(L_fF=\Gamma_X(f^*E(F))\)</span>. For <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, put <span class="math" data-tex="\((f_*G)(U)=G(f^{-1}U)\)">\((f_*G)(U)=G(f^{-1}U)\)</span>; the sheaf axiom follows by pulling back an open cover.</p>
+<p><strong>Theorem 4.1.</strong> The functor <span class="math" data-tex="\(L_f\)">\(L_f\)</span> is left adjoint to <span class="math" data-tex="\(f_*\)">\(f_*\)</span>, and hence is the usual sheaf inverse image, with its actual stalk identification
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+(L_fF)_x\simeq F_{f(x)}.
+\tag{4.2}
+\]">\[
+(L_fF)_x\simeq F_{f(x)}.
+\tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> A sheaf map <span class="math" data-tex="\(L_fF\to G\)">\(L_fF\to G\)</span> is, by Theorem 2.3, a map <span class="math" data-tex="\(k:f^*E(F)\to E(G)\)">\(k:f^*E(F)\to E(G)\)</span> over <span class="math" data-tex="\(X\)">\(X\)</span>. For <span class="math" data-tex="\(s\in F(U)\)">\(s\in F(U)\)</span>, send <span class="math" data-tex="\(s\)">\(s\)</span> to the section on <span class="math" data-tex="\(f^{-1}U\)">\(f^{-1}U\)</span> whose germ at <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(k(x,[s]_{f(x)})\)">\(k(x,[s]_{f(x)})\)</span>. It is continuous, since it is the composite of <span class="math" data-tex="\(k\)">\(k\)</span> with the pullback of <span class="math" data-tex="\(\widehat s\)">\(\widehat s\)</span>. It therefore corresponds to a unique element of <span class="math" data-tex="\(G(f^{-1}U)\)">\(G(f^{-1}U)\)</span>. This gives a map <span class="math" data-tex="\(F\to f_*G\)">\(F\to f_*G\)</span>, natural under restrictions.</p>
+<p>Conversely, for <span class="math" data-tex="\(b:F\to f_*G\)">\(b:F\to f_*G\)</span>, define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+k_b(x,[s]_{f(x)})=[b_U(s)]_x.
+\tag{4.3}
+\]">\[
+k_b(x,[s]_{f(x)})=[b_U(s)]_x.
+\tag{4.3}
+\]</span></p>
+<p>If representatives agree near <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>, their images agree on the inverse image of that neighborhood, so the formula is well defined. On each pullback chart it is the section associated to <span class="math" data-tex="\(b_U(s)\)">\(b_U(s)\)</span>, hence continuous. These charts cover. The two assignments are inverse by their germ formulas, and commute with maps of <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span>. This proves the adjunction. By (3.4) and Theorem 2.2, the stalk of the section sheaf of a local homeomorphism is its fibre. The fibre of (4.1) at <span class="math" data-tex="\(x\)">\(x\)</span> is exactly <span class="math" data-tex="\(F_{f(x)}\)">\(F_{f(x)}\)</span>, giving (4.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For comparison with the presheaf formula, define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+H(V)=\mathop{\operatorname{colim}}_{\substack{U\text{ open in }Y\\\\f(V)\subset U}}F(U),
+\tag{4.4}
+\]">\[
+H(V)=\mathop{\operatorname{colim}}_{\substack{U\text{ open in }Y\\\\f(V)\subset U}}F(U),
+\tag{4.4}
+\]</span></p>
+<p>with arrows given by restriction to smaller neighborhoods of <span class="math" data-tex="\(f(V)\)">\(f(V)\)</span>. This index is nonempty and directed by intersection. For <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span>, the same representatives define the restriction to <span class="math" data-tex="\(H(W)\)">\(H(W)\)</span>. A representative <span class="math" data-tex="\(s\in F(U)\)">\(s\in F(U)\)</span> gives the section <span class="math" data-tex="\(x\mapsto(x,[s]_{f(x)})\)">\(x\mapsto(x,[s]_{f(x)})\)</span> of (4.1), hence a map <span class="math" data-tex="\(H\to L_fF\)">\(H\to L_fF\)</span>. Every section of (4.1) is locally of this form, since its second coordinate lies in a germ chart near each point. Two such representatives with the same value at <span class="math" data-tex="\(x\)">\(x\)</span> agree on a smaller neighborhood of <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>, and therefore agree in <span class="math" data-tex="\(H(W)\)">\(H(W)\)</span> after shrinking <span class="math" data-tex="\(W\)">\(W\)</span> around <span class="math" data-tex="\(x\)">\(x\)</span>. These two observations prove surjectivity and injectivity of <span class="math" data-tex="\(H_x\to F_{f(x)}\)">\(H_x\to F_{f(x)}\)</span>, respectively. Formula (3.4) and Corollary 3.3 now identify <span class="math" data-tex="\(aH\simeq L_fF\)">\(aH\simeq L_fF\)</span>, with this very comparison map. No openness assumption on <span class="math" data-tex="\(f\)">\(f\)</span> was used.</p>
+<p>Pulling back twice and pulling back along a composite identify the same triples of points. In charts their identification is a homeomorphism. Thus these are the usual coherent inverse-image comparisons, not just unrelated stalkwise bijections.</p>
+<h2 id="5-finite-limits-and-the-limits-that-need-étalification">5. Finite limits and the limits that need étalification</h2>
+<p><strong>Proposition 5.1.</strong> Finite limits of local homeomorphisms over <span class="math" data-tex="\(X\)">\(X\)</span> are their ordinary limits in <span class="math" data-tex="\(\operatorname{Top}/X\)">\(\operatorname{Top}/X\)</span>. They correspond to finite limits of sheaves. Consequently stalks preserve finite limits.</p>
+<p><strong>Proof.</strong> The terminal object is <span class="math" data-tex="\(X\to X\)">\(X\to X\)</span>. A fibre product is locally a common open subset of two charts, so is a local homeomorphism. A section of it is exactly a pair of sections with the prescribed equality. For parallel maps <span class="math" data-tex="\(h,k:T\rightrightarrows T&#x27;\)">\(h,k:T\rightrightarrows T&#x27;\)</span> over <span class="math" data-tex="\(X\)">\(X\)</span>, their equality locus is open: near a point where they agree, put both images into the same chart of <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>; equality of their projections then forces equality of the maps there. This open subspace of <span class="math" data-tex="\(T\)">\(T\)</span> is the ordinary equalizer, and its sections are exactly the equalizer of the section maps. Finite products and equalizers construct every finite limit, by imposing all diagram equations on the finite product. These constructions establish the claimed correspondence. Fibres preserve these finite products and equalizers as sets, proving the stalk assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an arbitrary <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span>, call <span class="math" data-tex="\(E(\Gamma_X(T))\to T\)">\(E(\Gamma_X(T))\to T\)</span> its <strong>étalification</strong>. Every map from a local homeomorphism <span class="math" data-tex="\(A\to X\)">\(A\to X\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span> factors uniquely through this evaluation map. In fact, apply (3.1) to the sheaf <span class="math" data-tex="\(\Gamma_X(A)\)">\(\Gamma_X(A)\)</span>, use <span class="math" data-tex="\(E(\Gamma_X(A))\simeq A\)">\(E(\Gamma_X(A))\simeq A\)</span>, and then use the sheaf/étalé equivalence to obtain
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\operatorname{Et}(X)}\bigl(A,E(\Gamma_X(T))\bigr)\\
+\simeq\operatorname{Hom}_{\operatorname{Top}/X}(A,T).
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\operatorname{Et}(X)}\bigl(A,E(\Gamma_X(T))\bigr)\\
+\simeq\operatorname{Hom}_{\operatorname{Top}/X}(A,T).
+\end{gathered}
+\tag{5.1}
+\]</span></p>
+<p>The formulas in Section 3 show that the map in (5.1) is composition with evaluation. Thus étalification is right adjoint to the full inclusion <span class="math" data-tex="\(\operatorname{Et}(X)\subset\operatorname{Top}/X\)">\(\operatorname{Et}(X)\subset\operatorname{Top}/X\)</span>.</p>
+<p>An arbitrary small diagram in <span class="math" data-tex="\(\operatorname{Top}/X\)">\(\operatorname{Top}/X\)</span> has a limit: take the subspace of the product consisting of tuples with a common base point and satisfying all diagram equations; for the empty diagram use <span class="math" data-tex="\(X\)">\(X\)</span>. Its usual projections have the universal property by the product and subspace topologies. For a diagram of local homeomorphisms, étalify this ordinary limit. Equation (5.1) says its maps from <span class="math" data-tex="\(A\)">\(A\)</span> are exactly the compatible cones from <span class="math" data-tex="\(A\)">\(A\)</span> to the original diagram. This is its limit in <span class="math" data-tex="\(\operatorname{Et}(X)\)">\(\operatorname{Et}(X)\)</span>, and hence in sheaves. The ordinary infinite product may fail to be a local homeomorphism; étalification cannot in general be omitted.</p>
+<h2 id="6-which-étalé-spaces-are-coverings">6. Which étalé spaces are coverings?</h2>
+<p>For a set <span class="math" data-tex="\(S\)">\(S\)</span>, let <span class="math" data-tex="\(S_X(U)\)">\(S_X(U)\)</span> be the locally constant functions <span class="math" data-tex="\(U\to S\)">\(U\to S\)</span>, where <span class="math" data-tex="\(S\)">\(S\)</span> is discrete. Such functions glue uniquely and locally constantly, so <span class="math" data-tex="\(S_X\)">\(S_X\)</span> is a sheaf. Evaluation identifies its stalk at <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(S\)">\(S\)</span>: every representative is constant near <span class="math" data-tex="\(x\)">\(x\)</span>, and every value has a constant representative. Its germ charts are the local graphs of these functions. They give a natural homeomorphism
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+E(S_X)\simeq X\times S,
+\tag{6.1}
+\]">\[
+E(S_X)\simeq X\times S,
+\tag{6.1}
+\]</span></p>
+<p>because charts of constant sections are <span class="math" data-tex="\(U\times\{s\}\)">\(U\times\{s\}\)</span>, which form the product basis, and locally constant graphs are their unions.</p>
+<p>Say a sheaf is locally constant if it is isomorphic to <span class="math" data-tex="\(S_U\)">\(S_U\)</span> on members of an open cover, with the set <span class="math" data-tex="\(S\)">\(S\)</span> allowed to vary. A map is a covering here if every base point has a neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> over which it is <span class="math" data-tex="\(U\times S\to U\)">\(U\times S\to U\)</span> for a discrete set <span class="math" data-tex="\(S\)">\(S\)</span>; empty fibres are allowed. If one's definition requires surjectivity, add that every stalk is nonempty.</p>
+<p><strong>Theorem 6.1.</strong> A sheaf is locally constant exactly when its germ space is a covering in this sense.</p>
+<p><strong>Proof.</strong> Restricting a germ space to <span class="math" data-tex="\(p^{-1}U\)">\(p^{-1}U\)</span> is the germ space of the restricted sheaf, since representatives can be shrunk inside <span class="math" data-tex="\(U\)">\(U\)</span>; their chart topologies coincide. Formula (6.1) therefore sends each constant-sheaf trivialization to a covering trivialization. Conversely the sheaf of sections of <span class="math" data-tex="\(U\times S\to U\)">\(U\times S\to U\)</span> is precisely <span class="math" data-tex="\(S_U\)">\(S_U\)</span>: sections are maps <span class="math" data-tex="\(x\mapsto(x,t(x))\)">\(x\mapsto(x,t(x))\)</span>, continuous exactly when the discrete-valued <span class="math" data-tex="\(t\)">\(t\)</span> is locally constant. Apply the equivalence on every trivializing open. These arguments identify all maps as well as the objects. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The local-homeomorphism condition chooses a chart around one point of the total space. A covering chart must work for the entire fibre simultaneously. Neither constant infinite fibre cardinality nor the Hausdorff property supplies this stronger requirement, as Exercise 4 shows.</p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-foundation-an-explicit-two-point-germ-space">Exercise 1 (foundation: an explicit two-point germ space)</h3>
+<p>Let <span class="math" data-tex="\(X=\{0,1\}\)">\(X=\{0,1\}\)</span> have opens <span class="math" data-tex="\(\varnothing,\{1\},X\)">\(\varnothing,\{1\},X\)</span>. Describe all sheaves using a function <span class="math" data-tex="\(r:A\to B\)">\(r:A\to B\)</span>. Give their germ spaces, every open subset of those spaces, and all their morphisms.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(F(X)=A\)">\(F(X)=A\)</span>, <span class="math" data-tex="\(F(\{1\})=B\)">\(F(\{1\})=B\)</span>, <span class="math" data-tex="\(F(\varnothing)=\{*\}\)">\(F(\varnothing)=\{*\}\)</span>, with restriction <span class="math" data-tex="\(r\)">\(r\)</span> and the unique empty restrictions. Every cover of <span class="math" data-tex="\(X\)">\(X\)</span> contains <span class="math" data-tex="\(X\)">\(X\)</span>, and every nonempty cover of <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span> contains <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>. Its compatible families therefore have exactly their specified section as glue. The empty cover has the unique empty section. Thus every <span class="math" data-tex="\(r\)">\(r\)</span> gives a sheaf, and every sheaf gives exactly this data.</p>
+<p>The smallest neighborhoods give <span class="math" data-tex="\(F_0=A\)">\(F_0=A\)</span>, <span class="math" data-tex="\(F_1=B\)">\(F_1=B\)</span>. Write the points as <span class="math" data-tex="\(a_0,b_1\)">\(a_0,b_1\)</span>. The basic sets are <span class="math" data-tex="\(\{a_0,r(a)_1\}\)">\(\{a_0,r(a)_1\}\)</span> and <span class="math" data-tex="\(\{b_1\}\)">\(\{b_1\}\)</span>. Hence an arbitrary subset, written <span class="math" data-tex="\(A&#x27;_0\amalg B&#x27;_1\)">\(A&#x27;_0\amalg B&#x27;_1\)</span>, is open exactly when <span class="math" data-tex="\(r(A&#x27;)\subset B&#x27;\)">\(r(A&#x27;)\subset B&#x27;\)</span>: necessity follows from a basic neighborhood of each <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, and sufficiency follows by taking the union of these basic sets and the remaining <span class="math" data-tex="\(b_1\)">\(b_1\)</span> singletons. The projection of each two-point chart is a homeomorphism to <span class="math" data-tex="\(X\)">\(X\)</span>; each singleton chart maps to <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>.</p>
+<p>A sheaf map is a pair <span class="math" data-tex="\(u:A\to A&#x27;\)">\(u:A\to A&#x27;\)</span>, <span class="math" data-tex="\(v:B\to B&#x27;\)">\(v:B\to B&#x27;\)</span> with <span class="math" data-tex="\(vr=r&#x27;u\)">\(vr=r&#x27;u\)</span>. It gives a map over <span class="math" data-tex="\(X\)">\(X\)</span> by these two fibre maps. Conversely a continuous map over <span class="math" data-tex="\(X\)">\(X\)</span> must send the basic neighborhood of <span class="math" data-tex="\(u(a)_0\)">\(u(a)_0\)</span> back to an open neighborhood of <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, forcing <span class="math" data-tex="\(v(r(a))=r&#x27;(u(a))\)">\(v(r(a))=r&#x27;(u(a))\)</span>. This proves the same commuting-square condition directly from topology.</p>
+<h3 id="exercise-2-intermediate-hausdorff-bases-can-have-non-hausdorff-germ-spaces">Exercise 2 (intermediate: Hausdorff bases can have non-Hausdorff germ spaces)</h3>
+<p>For a sheaf <span class="math" data-tex="\(F\)">\(F\)</span> on a Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span>, prove that <span class="math" data-tex="\(E(F)\)">\(E(F)\)</span> is Hausdorff exactly when every germ-equality locus of two sections on a common open is closed in that open. Apply the criterion to the sheaf of continuous real functions on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(E(F)\)">\(E(F)\)</span> is Hausdorff, its diagonal is closed: two unequal points have disjoint neighborhoods, whose product misses the diagonal. For sections <span class="math" data-tex="\(s,t\in F(U)\)">\(s,t\in F(U)\)</span>, the continuous map <span class="math" data-tex="\(x\mapsto(\widehat s(x),\widehat t(x))\)">\(x\mapsto(\widehat s(x),\widehat t(x))\)</span> pulls this diagonal back to their germ-equality locus. Thus it is closed in <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>Conversely, points over distinct base points have disjoint inverse images of base neighborhoods. For unequal germs over the same <span class="math" data-tex="\(x\)">\(x\)</span>, choose section representatives on a common open <span class="math" data-tex="\(U\)">\(U\)</span>. The closed equality locus misses <span class="math" data-tex="\(x\)">\(x\)</span>, so on an open neighborhood <span class="math" data-tex="\(V\subset U\)">\(V\subset U\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> it is empty. The two chart images over <span class="math" data-tex="\(V\)">\(V\)</span> are disjoint, since their intersection would be an equality at the same base point. They separate the two germs. This proves the criterion.</p>
+<p>Continuous functions form a sheaf by gluing functions and checking continuity on the open cover. Take <span class="math" data-tex="\(s(x)=0\)">\(s(x)=0\)</span> and <span class="math" data-tex="\(t(x)=\max(x,0)\)">\(t(x)=\max(x,0)\)</span>. Their germs agree exactly for <span class="math" data-tex="\(x&lt;0\)">\(x&lt;0\)</span>: at <span class="math" data-tex="\(0\)">\(0\)</span> every neighborhood contains positive points where the functions differ. The equality locus <span class="math" data-tex="\((-\infty,0)\)">\((-\infty,0)\)</span> is not closed in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. The two germs at <span class="math" data-tex="\(0\)">\(0\)</span> cannot be separated, since any pair of their chart neighborhoods intersects over negative points sufficiently close to <span class="math" data-tex="\(0\)">\(0\)</span>. Thus the germ space is not Hausdorff.</p>
+<h3 id="exercise-3-advanced-infinitely-many-germ-equalities-need-not-share-a-neighborhood">Exercise 3 (advanced: infinitely many germ equalities need not share a neighborhood)</h3>
+<p>Let <span class="math" data-tex="\(X=\{0\}\cup\{1/n:n\ge1\}\subset\mathbb R\)">\(X=\{0\}\cup\{1/n:n\ge1\}\subset\mathbb R\)</span>, and let <span class="math" data-tex="\(F_n=\{0,1\}_X\)">\(F_n=\{0,1\}_X\)</span> for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Show that the natural map from the stalk of the product sheaf to the product of the stalks at <span class="math" data-tex="\(0\)">\(0\)</span> is surjective but not injective. Explain why the ordinary product of their germ spaces is not étalé.</p>
+<p><strong>Solution.</strong> Products of sheaves are computed on opens: compatible tuples glue coordinate by coordinate, uniquely. Each singleton <span class="math" data-tex="\(\{1/n\}\)">\(\{1/n\}\)</span> is both open and closed in <span class="math" data-tex="\(X\)">\(X\)</span>. Its characteristic function <span class="math" data-tex="\(s_n:X\to\{0,1\}\)">\(s_n:X\to\{0,1\}\)</span> is therefore locally constant. Every <span class="math" data-tex="\(s_n\)">\(s_n\)</span> is zero on a neighborhood of <span class="math" data-tex="\(0\)">\(0\)</span>, but there is no common neighborhood of <span class="math" data-tex="\(0\)">\(0\)</span> on which all are zero. Hence the germ of the tuple <span class="math" data-tex="\((s_n)_n\)">\((s_n)_n\)</span> differs from the zero tuple's germ, while each of its coordinate germs equals zero. This proves noninjectivity. Every tuple of stalk values is represented by its tuple of globally constant functions, proving surjectivity.</p>
+<p>By (6.1), the ordinary fibre product of all the germ spaces is <span class="math" data-tex="\(X\times\{0,1\}^{\mathbb N}\)">\(X\times\{0,1\}^{\mathbb N}\)</span>, with the product topology on the second factor. Its fibre over <span class="math" data-tex="\(0\)">\(0\)</span> has no isolated point: a basic product neighborhood fixes only finitely many coordinates, and one may change another. A fibre of a local homeomorphism is discrete, since each chart meets it in just one point. Thus this product is not a local homeomorphism. Its étalification is the germ space of the product sheaf, and evaluation has exactly the failure of fibrewise injectivity just exhibited. Finite-limit preservation from Proposition 5.1 gives no assertion for this product.</p>
+<h3 id="exercise-4-synthesis-constant-cardinality-without-a-covering">Exercise 4 (synthesis: constant cardinality without a covering)</h3>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be the topological disjoint union of countably many copies of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and one copy of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, with each component projected to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> by its usual inclusion. Prove that the projection is a surjective local homeomorphism between Hausdorff spaces, has countably infinite fibres everywhere, and is not a covering. Deduce a sheaf with constant stalk cardinality which is not locally constant.</p>
+<p><strong>Solution.</strong> Each component is open and maps homeomorphically onto an open subset of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, so the projection is a local homeomorphism. The full copies make it surjective. Distinct components are disjoint open sets; within one component the usual Hausdorff neighborhoods separate points. Thus the disjoint union is Hausdorff. Every nonpositive point has one preimage in each full copy, while a positive point has one additional preimage. Both fibres are countably infinite.</p>
+<p>Suppose an evenly covered neighborhood of <span class="math" data-tex="\(0\)">\(0\)</span> existed. Restrict it to a connected open interval <span class="math" data-tex="\(V\)">\(V\)</span> around <span class="math" data-tex="\(0\)">\(0\)</span>. Each sheet over <span class="math" data-tex="\(V\)">\(V\)</span> is connected because it is homeomorphic to <span class="math" data-tex="\(V\)">\(V\)</span>. A connected subset of this disjoint union lies in a single component: meeting one component and its open complement would disconnect it. Every sheet has a point over <span class="math" data-tex="\(0\)">\(0\)</span>, so it must lie in a full copy of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, not in the extra positive component. Consequently their union cannot cover the points of that component lying over positive points of <span class="math" data-tex="\(V\)">\(V\)</span>. This contradicts the covering property.</p>
+<p>Take <span class="math" data-tex="\(F=\Gamma_{\mathbb R}(E)\)">\(F=\Gamma_{\mathbb R}(E)\)</span>. Its stalks are the fibres by Theorem 2.2 and (3.4), so all have the same countably infinite cardinality. Its germ space is <span class="math" data-tex="\(E\)">\(E\)</span>. Theorem 6.1 and the proved failure of a covering imply that <span class="math" data-tex="\(F\)">\(F\)</span> is not locally constant. No finiteness hypothesis can be silently replaced by a cardinality assertion here.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Tom Leinster, <a href="https://www.maths.ed.ac.uk/~tl/sheaves.pdf"><em>Sheaves do not belong to algebraic geometry</em></a>, 4 April 2007, describes the presheaf/space adjunction and its restriction to sheaves and étalé spaces. The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/007X">Sheafification, Section 6.17</a>, gives the locally represented germ-family construction and its universal property. The proofs above give the topology, both inverse comparisons and the distinctions needed for arbitrary spaces.</p>
+</main></body></html>

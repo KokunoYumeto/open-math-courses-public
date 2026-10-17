@@ -329,6 +329,73 @@ Finally, every locally AFD algebra is injective by Finite approximation gives in
 
 **The finite obstruction to one compression.** On \(M_m\), \(m>1\), the ucp map \(T(x)=\operatorname{tr}_m(x)1\) cannot be \(v^*xv\) for one \(v\in M_m\). Unitality would make \(v\) an isometry, hence a unitary in finite dimension. Unitary conjugation preserves the rank of a minimal projection, whereas \(T\) sends it to \(m^{-1}1\), of full rank. Proper infiniteness is essential to the single-compression assertion.
 
+**Rank correction and the trace \(2\)-norm.** For comparable distinct projections \(f,g\), their difference, up to sign, is a nonzero projection. Consequently
+
+
+\[
+\begin{aligned}
+\|f-g\|&=1,\\
+\|f-g\|_2^2&=\tau(|f-g|).
+\end{aligned}
+\tag{SMA.15}
+\]
+
+
+The first estimate displayed on p.212 in the source's proof of Lemma 1.7 omits the subscript \(2\). It must be read as a trace \(2\)-norm estimate. The following example realizes the obstruction inside the actual expectation and rank-adjustment construction.
+
+In the tracial infinite product \(R\), take commuting unital matrix factors \(M_N\) and \(M_2\), with \(N=512\). Write \(E_{ij}\) for the first factor's matrix units and let \(q\) be a rank-one projection in the second. Set
+
+
+\[
+\begin{aligned}
+p&=\sum_{i=1}^{255}E_{ii},\\
+a&=E_{256,256},\qquad b=E_{257,257},\\
+e&=p\otimes1+(a+b)\otimes q.
+\end{aligned}
+\tag{SMA.16}
+\]
+
+
+The product trace gives \(\tau(e)=1/2\). Thus \(e\) and \(1-e\) are equivalent by finite projection comparison and are the diagonals of a unital \(M_2\) subfactor. Let \(P=M_N\otimes1\). Its trace-preserving expectation sends \(e\) to
+
+
+\[
+\begin{aligned}
+h&=\left(p+\tfrac12(a+b)\right)\otimes1,\\
+\|h-e\|_2^2&=\frac{2}{N}\,\frac14\\
+&=\frac1{1024}.
+\end{aligned}
+\tag{SMA.17}
+\]
+
+
+This is also uniform approximation with tolerance \(\delta=1/32\) on the unit ball of \(\mathbb Ce\), the coefficient space obtained by taking \(V=\{0\}\) in the retention lemma. Spectral rounding gives
+
+
+\[
+f=1_{[1/2,1]}(h)=(p+a+b)\otimes1.
+\]
+
+
+Its matrix rank is \(257\). The required rank is \(256\); take \(g=(p+a)\otimes1\). Then \(g\le f\), \(\tau(g)=\tau(e)=1/2\), and \(f-g=b\otimes1\). Therefore
+
+
+\[
+\begin{aligned}
+\|f-g\|_2&=\frac1{\sqrt{512}},\\
+\|f-g\|&=1,\\
+2\delta^{1/4}&=2^{-1/4}<1.
+\end{aligned}
+\tag{SMA.18}
+\]
+
+
+Every comparable rank correction from \(257\) to \(256\) has the same operator-norm obstruction. Choosing the other threshold convention instead gives rank \(255\), with the same obstruction on enlargement. This changes neither the retention theorem nor its trace \(2\)-norm proof in Section 07; it identifies the norm in which that proof works.
+
+![Spectral rounding and rank adjustment in the first matrix factor; the grouped columns have multiplicities 255, 1, 1 and 255.](assets/central-rank-norms.svg)
+
+The diagram records first-factor coefficients of \(h,f,g\); its column widths are schematic. The projection \(e\) in (SMA.16) also uses the second factor. The red block has trace \(1/512\) but operator norm one.
+
 **An unbounded approximating sequence.** In \(L^\infty[0,1]\) with the integration state, \(x_n=n1_{[0,n^{-4}]}\) has \(\|x_n\|=n\) but \(\|x_n\|_\varphi^\#=1/n\). Moreover, for \(\zeta(t)=t^{-3/8}\in L^2[0,1]\),
 
 

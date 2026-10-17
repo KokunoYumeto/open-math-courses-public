@@ -1,0 +1,293 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>An invariant box and the entire graph</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A smooth affine maximal graph in dimension ten)</a><a href="a-radial-solution-through-the-origin.html">Previous lesson</a><a href="src/an-invariant-box-and-the-entire-graph.md">Editable source</a></nav><main><article><h1 id="an-invariant-box-and-the-entire-graph">An invariant box and the entire graph</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><a href="a-radial-solution-through-the-origin.html">A radial solution through the origin</a> produced a solution of the radial system near <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. This lesson shows that in the dimension <span class="math" data-tex="\(m=9\)">\(m=9\)</span>, that is for graphs in ten variables, the solution exists for all <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with <span class="math" data-tex="\(F,P&gt;0\)">\(F,P&gt;0\)</span>, and proves Theorem A of <a href="the-affine-maximal-equation.html">The affine maximal equation</a>, following OpenAI [OpenAI-AM, Section 4]. The danger is that <span class="math" data-tex="\(P\)">\(P\)</span> reaches <span class="math" data-tex="\(0\)">\(0\)</span> at a finite radius, as it does when <span class="math" data-tex="\(m=1\)">\(m=1\)</span> (Exercise 3.4 of <a href="a-radial-solution-through-the-origin.html">A radial solution through the origin</a>). It is excluded by following three logarithmic derivatives, which satisfy an autonomous system and stay in a box whose upper corner comes from the singular profile <span class="math" data-tex="\(r^{9/2}\)">\(r^{9/2}\)</span>.</p>
+<p>Section 1 collects the facts on ordinary differential equations that are used, with proofs. Results of the core courses Real Analysis I and II are cited from the text of Lebl [Lebl] by number.</p>
+<h2 id="1-solutions-of-ordinary-differential-equations">1. Solutions of ordinary differential equations</h2>
+<p>Let <span class="math" data-tex="\(U\subseteq\mathbb R\times\mathbb R^N\)">\(U\subseteq\mathbb R\times\mathbb R^N\)</span> be open and <span class="math" data-tex="\(G:U\to\mathbb R^N\)">\(G:U\to\mathbb R^N\)</span> continuously differentiable. A <em>solution</em> on an interval <span class="math" data-tex="\(I\)">\(I\)</span> is a continuously differentiable <span class="math" data-tex="\(Y:I\to\mathbb R^N\)">\(Y:I\to\mathbb R^N\)</span> with <span class="math" data-tex="\((r,Y(r))\in U\)">\((r,Y(r))\in U\)</span> and <span class="math" data-tex="\(Y&#x27;(r)=G(r,Y(r))\)">\(Y&#x27;(r)=G(r,Y(r))\)</span> for <span class="math" data-tex="\(r\in I\)">\(r\in I\)</span>; at an endpoint of <span class="math" data-tex="\(I\)">\(I\)</span> that belongs to <span class="math" data-tex="\(I\)">\(I\)</span> the derivative is one-sided. Integrals of vector-valued functions are taken componentwise, and <span class="math" data-tex="\(|\cdot|\)">\(|\cdot|\)</span> is the Euclidean norm.</p>
+<p><strong>Lemma 1.1</strong> (local existence and uniqueness). For <span class="math" data-tex="\((r_0,Y_0)\in U\)">\((r_0,Y_0)\in U\)</span> there are <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> and a solution on <span class="math" data-tex="\([r_0-h,r_0+h]\)">\([r_0-h,r_0+h]\)</span> with <span class="math" data-tex="\(Y(r_0)=Y_0\)">\(Y(r_0)=Y_0\)</span>. Two solutions on an interval <span class="math" data-tex="\(I\)">\(I\)</span> that agree at one point agree on <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><em>Proof.</em> Choose <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span> with <span class="math" data-tex="\(C=[r_0-a,r_0+a]\times\bar B(Y_0,b)\subseteq U\)">\(C=[r_0-a,r_0+a]\times\bar B(Y_0,b)\subseteq U\)</span>. On the compact set <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\(|G|\le M_G\)">\(|G|\le M_G\)</span> and the derivative of <span class="math" data-tex="\(G\)">\(G\)</span> in <span class="math" data-tex="\(Y\)">\(Y\)</span> has norm at most some <span class="math" data-tex="\(L\)">\(L\)</span>. As <span class="math" data-tex="\(\bar B(Y_0,b)\)">\(\bar B(Y_0,b)\)</span> is convex, with <span class="math" data-tex="\(Z_\theta=Z+\theta(Y-Z)\)">\(Z_\theta=Z+\theta(Y-Z)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;G(r,Y)-G(r,Z)\\
+&amp;\quad=\int_0^1D_YG(r,Z_\theta)(Y-Z)\,d\theta ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;G(r,Y)-G(r,Z)\\
+&amp;\quad=\int_0^1D_YG(r,Z_\theta)(Y-Z)\,d\theta ,
+\end{aligned}
+\]</span>
+which gives <span class="math" data-tex="\(|G(r,Y)-G(r,Z)|\le L|Y-Z|\)">\(|G(r,Y)-G(r,Z)|\le L|Y-Z|\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>. Let <span class="math" data-tex="\(h=\min\bigl(a,\,b/(M_G+1),\,1/(2L+1)\bigr)\)">\(h=\min\bigl(a,\,b/(M_G+1),\,1/(2L+1)\bigr)\)</span> and let <span class="math" data-tex="\(E\)">\(E\)</span> be the set of continuous <span class="math" data-tex="\(Y:[r_0-h,r_0+h]\to\bar B(Y_0,b)\)">\(Y:[r_0-h,r_0+h]\to\bar B(Y_0,b)\)</span> with the supremum norm, a complete metric space [Lebl, Propositions 7.4.5 and 7.4.6]. The map
+<span class="math math-display" data-tex="\[
+T(Y)(r)=Y_0+\int_{r_0}^rG(\rho,Y(\rho))\,d\rho
+\]">\[
+T(Y)(r)=Y_0+\int_{r_0}^rG(\rho,Y(\rho))\,d\rho
+\]</span>
+sends <span class="math" data-tex="\(E\)">\(E\)</span> to itself, since <span class="math" data-tex="\(|T(Y)(r)-Y_0|\le hM_G\le b\)">\(|T(Y)(r)-Y_0|\le hM_G\le b\)</span>, and <span class="math" data-tex="\(\|T(Y)-T(Z)\|\le hL\|Y-Z\|\)">\(\|T(Y)-T(Z)\|\le hL\|Y-Z\|\)</span>, which is at most <span class="math" data-tex="\(\frac12\|Y-Z\|\)">\(\frac12\|Y-Z\|\)</span>. Its fixed point [Lebl, Theorem 7.6.2] is a solution, by the fundamental theorem of calculus [Lebl, Theorem 5.3.3].</p>
+<p>For uniqueness, let <span class="math" data-tex="\(Y,\hat Y\)">\(Y,\hat Y\)</span> be solutions on <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(S=\{r\in I:Y(r)=\hat Y(r)\}\)">\(S=\{r\in I:Y(r)=\hat Y(r)\}\)</span>, which is nonempty and closed in <span class="math" data-tex="\(I\)">\(I\)</span>. If <span class="math" data-tex="\(r_1\in S\)">\(r_1\in S\)</span>, apply the construction at <span class="math" data-tex="\((r_1,Y(r_1))\)">\((r_1,Y(r_1))\)</span>, with constants <span class="math" data-tex="\(h_1,b_1\)">\(h_1,b_1\)</span>. By continuity there is <span class="math" data-tex="\(h&#x27;\in(0,h_1]\)">\(h&#x27;\in(0,h_1]\)</span> such that on <span class="math" data-tex="\(J=I\cap[r_1-h&#x27;,r_1+h&#x27;]\)">\(J=I\cap[r_1-h&#x27;,r_1+h&#x27;]\)</span> both <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(\hat Y\)">\(\hat Y\)</span> stay within <span class="math" data-tex="\(b_1\)">\(b_1\)</span> of <span class="math" data-tex="\(Y(r_1)\)">\(Y(r_1)\)</span>. Both satisfy <span class="math" data-tex="\(Y(r)=Y(r_1)+\int_{r_1}^rG(\rho,Y(\rho))\,d\rho\)">\(Y(r)=Y(r_1)+\int_{r_1}^rG(\rho,Y(\rho))\,d\rho\)</span> on <span class="math" data-tex="\(J\)">\(J\)</span> [Lebl, Theorem 5.3.1], so both are fixed points of the corresponding contraction on the continuous maps <span class="math" data-tex="\(J\to\bar B(Y(r_1),b_1)\)">\(J\to\bar B(Y(r_1),b_1)\)</span>, and they agree on <span class="math" data-tex="\(J\)">\(J\)</span>. So <span class="math" data-tex="\(S\)">\(S\)</span> is open in <span class="math" data-tex="\(I\)">\(I\)</span>, and <span class="math" data-tex="\(S=I\)">\(S=I\)</span> because <span class="math" data-tex="\(I\)">\(I\)</span> is connected. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2</strong> (maximal solutions). For <span class="math" data-tex="\((r_0,Y_0)\in U\)">\((r_0,Y_0)\in U\)</span> there is a solution <span class="math" data-tex="\(Y\)">\(Y\)</span> on an open interval <span class="math" data-tex="\((\alpha,\omega)\ni r_0\)">\((\alpha,\omega)\ni r_0\)</span> with <span class="math" data-tex="\(Y(r_0)=Y_0\)">\(Y(r_0)=Y_0\)</span> of which every solution through <span class="math" data-tex="\((r_0,Y_0)\)">\((r_0,Y_0)\)</span> is a restriction. If <span class="math" data-tex="\(\omega&lt;\infty\)">\(\omega&lt;\infty\)</span> and <span class="math" data-tex="\(\mathcal C\subseteq U\)">\(\mathcal C\subseteq U\)</span> is compact, there is no <span class="math" data-tex="\(r_1&lt;\omega\)">\(r_1&lt;\omega\)</span> with <span class="math" data-tex="\((r,Y(r))\in\mathcal C\)">\((r,Y(r))\in\mathcal C\)</span> for all <span class="math" data-tex="\(r\in[r_1,\omega)\)">\(r\in[r_1,\omega)\)</span>.</p>
+<p><em>Proof.</em> By Lemma 1.1 all solutions through <span class="math" data-tex="\((r_0,Y_0)\)">\((r_0,Y_0)\)</span> agree where their intervals overlap, so together they define a solution on the union <span class="math" data-tex="\(I^*\)">\(I^*\)</span> of their intervals. If <span class="math" data-tex="\(I^*\)">\(I^*\)</span> contained its supremum <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, Lemma 1.1 at <span class="math" data-tex="\((\omega,Y(\omega))\)">\((\omega,Y(\omega))\)</span> and uniqueness would give a solution on a longer interval; so <span class="math" data-tex="\(I^*\)">\(I^*\)</span> is open on the right, and likewise on the left.</p>
+<p>Suppose <span class="math" data-tex="\(\omega&lt;\infty\)">\(\omega&lt;\infty\)</span> and <span class="math" data-tex="\((r,Y(r))\in\mathcal C\)">\((r,Y(r))\in\mathcal C\)</span> for <span class="math" data-tex="\(r\in[r_1,\omega)\)">\(r\in[r_1,\omega)\)</span>. Then <span class="math" data-tex="\(|Y&#x27;|\le\max_{\mathcal C}|G|\)">\(|Y&#x27;|\le\max_{\mathcal C}|G|\)</span> there, so <span class="math" data-tex="\(Y\)">\(Y\)</span> is Lipschitz on <span class="math" data-tex="\([r_1,\omega)\)">\([r_1,\omega)\)</span> and <span class="math" data-tex="\(Y(r)\)">\(Y(r)\)</span> has a limit <span class="math" data-tex="\(Y_\omega\)">\(Y_\omega\)</span> as <span class="math" data-tex="\(r\to\omega\)">\(r\to\omega\)</span>, with <span class="math" data-tex="\((\omega,Y_\omega)\in\mathcal C\subseteq U\)">\((\omega,Y_\omega)\in\mathcal C\subseteq U\)</span>. Setting <span class="math" data-tex="\(Y(\omega)=Y_\omega\)">\(Y(\omega)=Y_\omega\)</span>, the identity <span class="math" data-tex="\(Y(r)=Y(r_1)+\int_{r_1}^rG(\rho,Y(\rho))\,d\rho\)">\(Y(r)=Y(r_1)+\int_{r_1}^rG(\rho,Y(\rho))\,d\rho\)</span> extends to <span class="math" data-tex="\(r=\omega\)">\(r=\omega\)</span>, so <span class="math" data-tex="\(Y\)">\(Y\)</span> is a solution on <span class="math" data-tex="\((\alpha,\omega]\)">\((\alpha,\omega]\)</span>. Lemma 1.1 at <span class="math" data-tex="\((\omega,Y_\omega)\)">\((\omega,Y_\omega)\)</span> gives a solution on <span class="math" data-tex="\([\omega-h,\omega+h]\)">\([\omega-h,\omega+h]\)</span>, which agrees with <span class="math" data-tex="\(Y\)">\(Y\)</span> on <span class="math" data-tex="\([\omega-h,\omega]\)">\([\omega-h,\omega]\)</span>; joined with <span class="math" data-tex="\(Y\)">\(Y\)</span> it is a solution on <span class="math" data-tex="\((\alpha,\omega+h)\)">\((\alpha,\omega+h)\)</span>, contradicting the first part. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.3.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is smooth, every solution is smooth.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(Y\in C^\ell\)">\(Y\in C^\ell\)</span>, then <span class="math" data-tex="\(r\mapsto G(r,Y(r))\)">\(r\mapsto G(r,Y(r))\)</span> is of class <span class="math" data-tex="\(C^\ell\)">\(C^\ell\)</span>, so <span class="math" data-tex="\(Y&#x27;\in C^\ell\)">\(Y&#x27;\in C^\ell\)</span> and <span class="math" data-tex="\(Y\in C^{\ell+1}\)">\(Y\in C^{\ell+1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-radial-system-as-a-regular-system">2. The radial system as a regular system</h2>
+<p>From here on
+<span class="math math-display" data-tex="\[
+m=9,\qquad k=11,\qquad\gamma=\tfrac{12}{11} .
+\]">\[
+m=9,\qquad k=11,\qquad\gamma=\tfrac{12}{11} .
+\]</span>
+On the open set <span class="math" data-tex="\(U\subseteq\mathbb R\times\mathbb R^4\)">\(U\subseteq\mathbb R\times\mathbb R^4\)</span> of the points <span class="math" data-tex="\((r,F,P,y,Z)\)">\((r,F,P,y,Z)\)</span> with <span class="math" data-tex="\(r,F,P,y&gt;0\)">\(r,F,P,y&gt;0\)</span> define the smooth map
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G(r,F,P,y,Z)=(y,\ Z,\ g,\ G_4),\\
+g=\frac{r^8FP^{-12/11}}{y^8},\\
+G_4=-8\frac gyZ-\frac{11r^8P^{-1/11}}{y^8} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+G(r,F,P,y,Z)=(y,\ Z,\ g,\ G_4),\\
+g=\frac{r^8FP^{-12/11}}{y^8},\\
+G_4=-8\frac gyZ-\frac{11r^8P^{-1/11}}{y^8} .
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(F,P\)">\(F,P\)</span> be profiles of class <span class="math" data-tex="\(C^2\)">\(C^2\)</span> on an interval <span class="math" data-tex="\((a,b)\subseteq(0,\infty)\)">\((a,b)\subseteq(0,\infty)\)</span> with <span class="math" data-tex="\(F,P,y&gt;0\)">\(F,P,y&gt;0\)</span>, where <span class="math" data-tex="\(y=F&#x27;\)">\(y=F&#x27;\)</span>. They solve the radial system of <a href="graphs-over-a-convex-profile.html">Graphs over a convex profile</a> if and only if <span class="math" data-tex="\(Y=(F,P,y,P&#x27;)\)">\(Y=(F,P,y,P&#x27;)\)</span> solves <span class="math" data-tex="\(Y&#x27;=G(r,Y)\)">\(Y&#x27;=G(r,Y)\)</span>.</p>
+<p><em>Proof.</em> The first radial equation, <span class="math" data-tex="\(y^8y&#x27;=r^8FP^{-12/11}\)">\(y^8y&#x27;=r^8FP^{-12/11}\)</span>, says <span class="math" data-tex="\(y&#x27;=g\)">\(y&#x27;=g\)</span>. Expanding the second, <span class="math" data-tex="\(8y^7y&#x27;P&#x27;+y^8P&#x27;&#x27;=-11r^8P^{-1/11}\)">\(8y^7y&#x27;P&#x27;+y^8P&#x27;&#x27;=-11r^8P^{-1/11}\)</span>; given <span class="math" data-tex="\(y&#x27;=g\)">\(y&#x27;=g\)</span>, it says <span class="math" data-tex="\(P&#x27;&#x27;=-8\frac gyP&#x27;-11r^8P^{-1/11}/y^8\)">\(P&#x27;&#x27;=-8\frac gyP&#x27;-11r^8P^{-1/11}/y^8\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(F,P\)">\(F,P\)</span> be the solution of Proposition 2.1 of <a href="a-radial-solution-through-the-origin.html">A radial solution through the origin</a>, on <span class="math" data-tex="\(0&lt;r&lt;\varepsilon\)">\(0&lt;r&lt;\varepsilon\)</span>. Fix <span class="math" data-tex="\(r_1\in(0,\varepsilon)\)">\(r_1\in(0,\varepsilon)\)</span> and let <span class="math" data-tex="\(Y=(F,P,y,Z)\)">\(Y=(F,P,y,Z)\)</span> be the maximal solution of <span class="math" data-tex="\(Y&#x27;=G(r,Y)\)">\(Y&#x27;=G(r,Y)\)</span> through <span class="math" data-tex="\((r_1,(F,P,F&#x27;,P&#x27;)(r_1))\)">\((r_1,(F,P,F&#x27;,P&#x27;)(r_1))\)</span>, on <span class="math" data-tex="\((\alpha,\omega)\)">\((\alpha,\omega)\)</span> (Lemma 1.2). By Lemma 2.1 the local solution is a solution through the same point, so it is a restriction of <span class="math" data-tex="\(Y\)">\(Y\)</span>; as solutions stay in <span class="math" data-tex="\(U\)">\(U\)</span>, where <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. Thus the local solution extends to <span class="math" data-tex="\((0,\omega)\)">\((0,\omega)\)</span>, with <span class="math" data-tex="\(F,P,y&gt;0\)">\(F,P,y&gt;0\)</span>, <span class="math" data-tex="\(Z=P&#x27;\)">\(Z=P&#x27;\)</span>, and <span class="math" data-tex="\(y&#x27;=g&gt;0\)">\(y&#x27;=g&gt;0\)</span>; it is smooth by Lemma 1.3. It remains to show <span class="math" data-tex="\(\omega=\infty\)">\(\omega=\infty\)</span>.</p>
+<h2 id="3-logarithmic-derivatives">3. Logarithmic derivatives</h2>
+<p>On <span class="math" data-tex="\((0,\omega)\)">\((0,\omega)\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=\frac{ry}F,\qquad B=\frac{ry&#x27;}y,\\
+C=-\frac{rP&#x27;}P,\qquad D=\frac CB ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+A=\frac{ry}F,\qquad B=\frac{ry&#x27;}y,\\
+C=-\frac{rP&#x27;}P,\qquad D=\frac CB ,
+\end{gathered}
+\]</span>
+which is possible because <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>. A dot denotes <span class="math" data-tex="\(r\,\frac d{dr}\)">\(r\,\frac d{dr}\)</span>, the derivative with respect to <span class="math" data-tex="\(\log r\)">\(\log r\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (OpenAI). On <span class="math" data-tex="\((0,\omega)\)">\((0,\omega)\)</span>, <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\dot A&amp;=A(1+B-A),\\
+\dot B&amp;=B\bigl(9+A+\tfrac{12}{11}BD-9B\bigr),\\
+\dot D&amp;=(11-D)A-8D+BD\bigl(1-\tfrac D{11}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\dot A&amp;=A(1+B-A),\\
+\dot B&amp;=B\bigl(9+A+\tfrac{12}{11}BD-9B\bigr),\\
+\dot D&amp;=(11-D)A-8D+BD\bigl(1-\tfrac D{11}\bigr).
+\end{aligned}
+\]</span>
+Moreover <span class="math" data-tex="\((A,B,D)\to(0,1,0)\)">\((A,B,D)\to(0,1,0)\)</span> as <span class="math" data-tex="\(r\to0\)">\(r\to0\)</span>, and <span class="math" data-tex="\(A,B,D&gt;0\)">\(A,B,D&gt;0\)</span> for all sufficiently small <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>.</p>
+<p><em>Proof.</em> The computation is the same for every <span class="math" data-tex="\(m\)">\(m\)</span>, with <span class="math" data-tex="\(k=m+2\)">\(k=m+2\)</span> and <span class="math" data-tex="\(\gamma=\frac{m+3}{m+2}\)">\(\gamma=\frac{m+3}{m+2}\)</span>. Positivity of <span class="math" data-tex="\(F,y,y&#x27;\)">\(F,y,y&#x27;\)</span> gives <span class="math" data-tex="\(A,B&gt;0\)">\(A,B&gt;0\)</span>. By the first radial equation,
+<span class="math math-display" data-tex="\[
+B=\frac{r^mFP^{-\gamma}}{y^m},\qquad AB=\frac{r^{m+1}P^{-\gamma}}{y^{m-1}} .
+\]">\[
+B=\frac{r^mFP^{-\gamma}}{y^m},\qquad AB=\frac{r^{m+1}P^{-\gamma}}{y^{m-1}} .
+\]</span>
+Taking <span class="math" data-tex="\(r\frac d{dr}\log\)">\(r\frac d{dr}\log\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> and of <span class="math" data-tex="\(B\)">\(B\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\dot A&amp;=A\Bigl(1+\frac{ry&#x27;}y-\frac{rF&#x27;}F\Bigr)\\
+&amp;=A(1+B-A),\\
+\dot B&amp;=B\Bigl(m+\frac{rF&#x27;}F-\gamma\frac{rP&#x27;}P-m\frac{ry&#x27;}y\Bigr)\\
+&amp;=B(m+A+\gamma C-mB).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\dot A&amp;=A\Bigl(1+\frac{ry&#x27;}y-\frac{rF&#x27;}F\Bigr)\\
+&amp;=A(1+B-A),\\
+\dot B&amp;=B\Bigl(m+\frac{rF&#x27;}F-\gamma\frac{rP&#x27;}P-m\frac{ry&#x27;}y\Bigr)\\
+&amp;=B(m+A+\gamma C-mB).
+\end{aligned}
+\]</span>
+Next <span class="math" data-tex="\(\dot C=C+C^2-r^2P&#x27;&#x27;/P\)">\(\dot C=C+C^2-r^2P&#x27;&#x27;/P\)</span>, and the second radial equation gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P&#x27;&#x27;={}&amp;-(m-1)\frac{y&#x27;}yP&#x27;\\
+&amp;-\frac{kr^{m-1}P^{1-\gamma}}{y^{m-1}},
+\end{aligned}
+\]">\[
+\begin{aligned}
+P&#x27;&#x27;={}&amp;-(m-1)\frac{y&#x27;}yP&#x27;\\
+&amp;-\frac{kr^{m-1}P^{1-\gamma}}{y^{m-1}},
+\end{aligned}
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+-\frac{r^2P&#x27;&#x27;}P=-(m-1)BC+kAB,\\
+\dot C=C\bigl(1+C-(m-1)B\bigr)+kAB .
+\end{gathered}
+\]">\[
+\begin{gathered}
+-\frac{r^2P&#x27;&#x27;}P=-(m-1)BC+kAB,\\
+\dot C=C\bigl(1+C-(m-1)B\bigr)+kAB .
+\end{gathered}
+\]</span>
+With <span class="math" data-tex="\(C=BD\)">\(C=BD\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\dot D&amp;=\frac{\dot C}B-D\frac{\dot B}B\\
+&amp;=(k-D)A-(m-1)D\\
+&amp;\quad+BD\bigl(1+(1-\gamma)D\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\dot D&amp;=\frac{\dot C}B-D\frac{\dot B}B\\
+&amp;=(k-D)A-(m-1)D\\
+&amp;\quad+BD\bigl(1+(1-\gamma)D\bigr),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(m=9\)">\(m=9\)</span>, <span class="math" data-tex="\(k=11\)">\(k=11\)</span>, <span class="math" data-tex="\(\gamma=\frac{12}{11}\)">\(\gamma=\frac{12}{11}\)</span> give the stated system.</p>
+<p>Near <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, Proposition 1.3 of <a href="a-radial-solution-through-the-origin.html">A radial solution through the origin</a> gives, with <span class="math" data-tex="\(s=r^2/2\)">\(s=r^2/2\)</span>, <span class="math" data-tex="\(F=f(s)=1+O(r^2)\)">\(F=f(s)=1+O(r^2)\)</span>, <span class="math" data-tex="\(y=rq(s)=r+O(r^3)\)">\(y=rq(s)=r+O(r^3)\)</span>, <span class="math" data-tex="\(y&#x27;=q(s)+r^2q&#x27;(s)=1+O(r^2)\)">\(y&#x27;=q(s)+r^2q&#x27;(s)=1+O(r^2)\)</span>, <span class="math" data-tex="\(P=1+O(r^2)\)">\(P=1+O(r^2)\)</span> and <span class="math" data-tex="\(P&#x27;=rp&#x27;(s)=-\frac{11}9r+O(r^3)\)">\(P&#x27;=rp&#x27;(s)=-\frac{11}9r+O(r^3)\)</span>. Hence <span class="math" data-tex="\(A=r^2+O(r^4)\)">\(A=r^2+O(r^4)\)</span>, <span class="math" data-tex="\(B=1+O(r^2)\)">\(B=1+O(r^2)\)</span> and <span class="math" data-tex="\(C=\frac{11}9r^2+O(r^4)\)">\(C=\frac{11}9r^2+O(r^4)\)</span>, so <span class="math" data-tex="\((A,B,D)\to(0,1,0)\)">\((A,B,D)\to(0,1,0)\)</span>. Since <span class="math" data-tex="\(P&#x27;&lt;0\)">\(P&#x27;&lt;0\)</span> for small <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> are positive there. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-invariant-box">4. The invariant box</h2>
+<p>Write <span class="math" data-tex="\(V=(V_1,V_2,V_3)\)">\(V=(V_1,V_2,V_3)\)</span> for the right side of the system in Lemma 3.1, a polynomial vector field on <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, and let
+<span class="math math-display" data-tex="\[
+\mathcal B=[0,\tfrac92]\times[0,\tfrac72]\times[0,\tfrac{33}7].
+\]">\[
+\mathcal B=[0,\tfrac92]\times[0,\tfrac72]\times[0,\tfrac{33}7].
+\]</span></p>
+<p><strong>Lemma 4.1</strong> (OpenAI). (a) <span class="math" data-tex="\(V(\frac92,\frac72,\frac{33}7)=0\)">\(V(\frac92,\frac72,\frac{33}7)=0\)</span>.</p>
+<p>(b) On the faces of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+V_1(\tfrac92,B,D)&amp;=\tfrac92\bigl(B-\tfrac72\bigr)\le0,\\
+V_2(A,\tfrac72,D)&amp;=\tfrac72\bigl(A+\tfrac{42}{11}D-\tfrac{45}2\bigr)\le0,\\
+V_3(A,B,\tfrac{33}7)&amp;=\tfrac{44}7A-\tfrac{264}7+\tfrac{132}{49}B\le0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+V_1(\tfrac92,B,D)&amp;=\tfrac92\bigl(B-\tfrac72\bigr)\le0,\\
+V_2(A,\tfrac72,D)&amp;=\tfrac72\bigl(A+\tfrac{42}{11}D-\tfrac{45}2\bigr)\le0,\\
+V_3(A,B,\tfrac{33}7)&amp;=\tfrac{44}7A-\tfrac{264}7+\tfrac{132}{49}B\le0,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(V_1=0\)">\(V_1=0\)</span> where <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, <span class="math" data-tex="\(V_2=0\)">\(V_2=0\)</span> where <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, <span class="math" data-tex="\(V_3=11A\ge0\)">\(V_3=11A\ge0\)</span> where <span class="math" data-tex="\(D=0\)">\(D=0\)</span>, for <span class="math" data-tex="\((A,B,D)\in\mathcal B\)">\((A,B,D)\in\mathcal B\)</span>.</p>
+<p>(c) If <span class="math" data-tex="\(z:[s_0,s_1)\to\mathbb R^3\)">\(z:[s_0,s_1)\to\mathbb R^3\)</span>, with <span class="math" data-tex="\(s_1\le\infty\)">\(s_1\le\infty\)</span>, is continuously differentiable with <span class="math" data-tex="\(\dot z=V(z)\)">\(\dot z=V(z)\)</span> and <span class="math" data-tex="\(z(s_0)\in\mathcal B\)">\(z(s_0)\in\mathcal B\)</span>, then <span class="math" data-tex="\(z(s)\in\mathcal B\)">\(z(s)\in\mathcal B\)</span> for all <span class="math" data-tex="\(s\in[s_0,s_1)\)">\(s\in[s_0,s_1)\)</span>.</p>
+<p><em>Proof.</em> (a) and the face formulas are direct substitutions; for instance <span class="math" data-tex="\(V_2(\frac92,\frac72,\frac{33}7)=\frac72(\frac92+18-\frac{45}2)=0\)">\(V_2(\frac92,\frac72,\frac{33}7)=\frac72(\frac92+18-\frac{45}2)=0\)</span>. On the box, <span class="math" data-tex="\(B\le\frac72\)">\(B\le\frac72\)</span> gives the first inequality, <span class="math" data-tex="\(A\le\frac92\)">\(A\le\frac92\)</span> and <span class="math" data-tex="\(D\le\frac{33}7\)">\(D\le\frac{33}7\)</span> give <span class="math" data-tex="\(A+\frac{42}{11}D\le\frac92+18=\frac{45}2\)">\(A+\frac{42}{11}D\le\frac92+18=\frac{45}2\)</span>, and <span class="math" data-tex="\(A\le\frac92\)">\(A\le\frac92\)</span>, <span class="math" data-tex="\(B\le\frac72\)">\(B\le\frac72\)</span> give <span class="math" data-tex="\(\frac{44}7A+\frac{132}{49}B\le\frac{198}7+\frac{66}7=\frac{264}7\)">\(\frac{44}7A+\frac{132}{49}B\le\frac{198}7+\frac{66}7=\frac{264}7\)</span>.</p>
+<p>(c) Let <span class="math" data-tex="\(\Pi z\)">\(\Pi z\)</span> be the point of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> obtained by clamping each coordinate of <span class="math" data-tex="\(z\)">\(z\)</span> to its interval. For every <span class="math" data-tex="\(z\in\mathbb R^3\)">\(z\in\mathbb R^3\)</span>,
+<span class="math math-display" data-tex="\[
+(z-\Pi z)\cdot V(\Pi z)\le0 .
+\]">\[
+(z-\Pi z)\cdot V(\Pi z)\le0 .
+\]</span>
+Indeed, the coordinates in which <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(\Pi z\)">\(\Pi z\)</span> differ are those where <span class="math" data-tex="\(z\)">\(z\)</span> lies above or below the interval; for such a coordinate <span class="math" data-tex="\(\Pi z\)">\(\Pi z\)</span> lies on the corresponding upper or lower face, where by (b) the component of <span class="math" data-tex="\(V\)">\(V\)</span> is <span class="math" data-tex="\(\le0\)">\(\le0\)</span> on an upper face and <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span> on a lower face, opposite in sign to <span class="math" data-tex="\(z_i-(\Pi z)_i\)">\(z_i-(\Pi z)_i\)</span>. The function <span class="math" data-tex="\(\Delta(z)=|z-\Pi z|^2\)">\(\Delta(z)=|z-\Pi z|^2\)</span> is continuously differentiable with gradient <span class="math" data-tex="\(2(z-\Pi z)\)">\(2(z-\Pi z)\)</span>, since in each coordinate it is the squared distance to an interval.</p>
+<p>Let <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> be the set of points within distance <span class="math" data-tex="\(1\)">\(1\)</span> of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, a compact convex set; on it <span class="math" data-tex="\(|V(z)-V(z&#x27;)|\le L_V|z-z&#x27;|\)">\(|V(z)-V(z&#x27;)|\le L_V|z-z&#x27;|\)</span> for some <span class="math" data-tex="\(L_V\)">\(L_V\)</span>, by the mean value inequality for the polynomial <span class="math" data-tex="\(V\)">\(V\)</span>. Suppose <span class="math" data-tex="\(z\)">\(z\)</span> leaves <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, and let <span class="math" data-tex="\(s_*\)">\(s_*\)</span> be the supremum of the <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(z([s_0,s])\subseteq\mathcal B\)">\(z([s_0,s])\subseteq\mathcal B\)</span>; then <span class="math" data-tex="\(s_*&lt;s_1\)">\(s_*&lt;s_1\)</span> and <span class="math" data-tex="\(z(s_*)\in\mathcal B\)">\(z(s_*)\in\mathcal B\)</span>. Choose <span class="math" data-tex="\(s_2\in(s_*,s_1)\)">\(s_2\in(s_*,s_1)\)</span> with <span class="math" data-tex="\(z([s_*,s_2])\subseteq\mathcal N\)">\(z([s_*,s_2])\subseteq\mathcal N\)</span>. For <span class="math" data-tex="\(s\)">\(s\)</span> in that interval, with <span class="math" data-tex="\(z=z(s)\)">\(z=z(s)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac d{ds}\Delta(z)&amp;=2(z-\Pi z)\cdot V(\Pi z)\\
+&amp;\quad+2(z-\Pi z)\cdot\bigl(V(z)-V(\Pi z)\bigr)\\
+&amp;\le2L_V\Delta(z),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac d{ds}\Delta(z)&amp;=2(z-\Pi z)\cdot V(\Pi z)\\
+&amp;\quad+2(z-\Pi z)\cdot\bigl(V(z)-V(\Pi z)\bigr)\\
+&amp;\le2L_V\Delta(z),
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(e^{-2L_V(s-s_*)}\Delta(z(s))\)">\(e^{-2L_V(s-s_*)}\Delta(z(s))\)</span> is nonincreasing and vanishes at <span class="math" data-tex="\(s_*\)">\(s_*\)</span>. Hence <span class="math" data-tex="\(z(s)\in\mathcal B\)">\(z(s)\in\mathcal B\)</span> on <span class="math" data-tex="\([s_*,s_2]\)">\([s_*,s_2]\)</span>, contradicting the choice of <span class="math" data-tex="\(s_*\)">\(s_*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-entire-solution-and-the-proof-of-theorem-a">5. The entire solution and the proof of Theorem A</h2>
+<p><strong>Proposition 5.1</strong> (OpenAI). <span class="math" data-tex="\(\omega=\infty\)">\(\omega=\infty\)</span>: the radial solution exists for all <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, with <span class="math" data-tex="\(F,P,y,y&#x27;&gt;0\)">\(F,P,y,y&#x27;&gt;0\)</span>.</p>
+<p><em>Proof.</em> By Lemma 3.1 there is <span class="math" data-tex="\(r_0\in(0,\varepsilon)\)">\(r_0\in(0,\varepsilon)\)</span> with <span class="math" data-tex="\((A,B,D)(r_0)\in\mathcal B\)">\((A,B,D)(r_0)\in\mathcal B\)</span>. The curve <span class="math" data-tex="\(s\mapsto(A,B,D)(e^s)\)">\(s\mapsto(A,B,D)(e^s)\)</span> satisfies <span class="math" data-tex="\(\dot z=V(z)\)">\(\dot z=V(z)\)</span>, so by Lemma 4.1 it stays in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> for <span class="math" data-tex="\(r_0\le r&lt;\omega\)">\(r_0\le r&lt;\omega\)</span>. Suppose <span class="math" data-tex="\(\omega&lt;\infty\)">\(\omega&lt;\infty\)</span>. For <span class="math" data-tex="\(r_0\le r&lt;\omega\)">\(r_0\le r&lt;\omega\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\le A\le\tfrac92,\qquad0\le B\le\tfrac72,\\
+0\le C=BD\le\tfrac{33}2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+0\le A\le\tfrac92,\qquad0\le B\le\tfrac72,\\
+0\le C=BD\le\tfrac{33}2 .
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(r\frac d{dr}\log F=A\)">\(r\frac d{dr}\log F=A\)</span>, <span class="math" data-tex="\(r\frac d{dr}\log y=B\)">\(r\frac d{dr}\log y=B\)</span> and <span class="math" data-tex="\(r\frac d{dr}\log P=-C\)">\(r\frac d{dr}\log P=-C\)</span>, integration from <span class="math" data-tex="\(r_0\)">\(r_0\)</span> to <span class="math" data-tex="\(r\)">\(r\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(r_0)\le F(r)\le F(r_0)(\omega/r_0)^{9/2},\\
+y(r_0)\le y(r)\le y(r_0)(\omega/r_0)^{7/2},\\
+P(r_0)(r_0/\omega)^{33/2}\le P(r)\le P(r_0),
+\end{gathered}
+\]">\[
+\begin{gathered}
+F(r_0)\le F(r)\le F(r_0)(\omega/r_0)^{9/2},\\
+y(r_0)\le y(r)\le y(r_0)(\omega/r_0)^{7/2},\\
+P(r_0)(r_0/\omega)^{33/2}\le P(r)\le P(r_0),
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(|P&#x27;(r)|=CP/r\le\frac{33}2P(r_0)/r_0\)">\(|P&#x27;(r)|=CP/r\le\frac{33}2P(r_0)/r_0\)</span>. So <span class="math" data-tex="\((r,F,P,y,P&#x27;)\)">\((r,F,P,y,P&#x27;)\)</span> stays in a compact box contained in <span class="math" data-tex="\(U\)">\(U\)</span>, as all its lower bounds for <span class="math" data-tex="\(r,F,P,y\)">\(r,F,P,y\)</span> are positive. This contradicts Lemma 1.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Theorem A.</em> Let <span class="math" data-tex="\(F,P\)">\(F,P\)</span> be the radial functions on <span class="math" data-tex="\(\mathbb R^9\)">\(\mathbb R^9\)</span> with the profiles of Proposition 5.1. On the ball <span class="math" data-tex="\(|x|&lt;\varepsilon\)">\(|x|&lt;\varepsilon\)</span> they coincide with the smooth functions of Proposition 2.1 of <a href="a-radial-solution-through-the-origin.html">A radial solution through the origin</a>, and on <span class="math" data-tex="\(\mathbb R^9\setminus\{0\}\)">\(\mathbb R^9\setminus\{0\}\)</span> they are compositions of smooth maps; so they are smooth and positive on <span class="math" data-tex="\(\mathbb R^9\)">\(\mathbb R^9\)</span>. Their Hessian <span class="math" data-tex="\(D^2F\)">\(D^2F\)</span> is positive definite: for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> its eigenvalues are <span class="math" data-tex="\(y&#x27;&gt;0\)">\(y&#x27;&gt;0\)</span> and <span class="math" data-tex="\(y/r&gt;0\)">\(y/r&gt;0\)</span> (Lemma 3.1 of <a href="graphs-over-a-convex-profile.html">Graphs over a convex profile</a>), and <span class="math" data-tex="\(D^2F(0)=I\)">\(D^2F(0)=I\)</span>. By Lemma 2.1 and Corollary 3.2 of <a href="graphs-over-a-convex-profile.html">Graphs over a convex profile</a>, the two equations
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\det D^2F=FP^{-12/11},\\
+\operatorname{tr}\bigl((D^2F)^{-1}D^2P\bigr)+11\frac PF=0
+\end{gathered}
+\]">\[
+\begin{gathered}
+\det D^2F=FP^{-12/11},\\
+\operatorname{tr}\bigl((D^2F)^{-1}D^2P\bigr)+11\frac PF=0
+\end{gathered}
+\]</span>
+hold on <span class="math" data-tex="\(\mathbb R^9\setminus\{0\}\)">\(\mathbb R^9\setminus\{0\}\)</span>; both sides are continuous on <span class="math" data-tex="\(\mathbb R^9\)">\(\mathbb R^9\)</span>, so they hold at <span class="math" data-tex="\(0\)">\(0\)</span> as well. Proposition 2.1 of <a href="graphs-over-a-convex-profile.html">Graphs over a convex profile</a> shows that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u(x,t)=\sqrt{F(x)^2+t^2},\\
+(x,t)\in\mathbb R^9\times\mathbb R ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+u(x,t)=\sqrt{F(x)^2+t^2},\\
+(x,t)\in\mathbb R^9\times\mathbb R ,
+\end{gathered}
+\]</span>
+is smooth, has positive definite Hessian everywhere, and solves the affine maximal equation on <span class="math" data-tex="\(\mathbb R^{10}\)">\(\mathbb R^{10}\)</span>. Finally <span class="math" data-tex="\(u(0,t)=\sqrt{1+t^2}\)">\(u(0,t)=\sqrt{1+t^2}\)</span>, whose second derivative <span class="math" data-tex="\((1+t^2)^{-3/2}\)">\((1+t^2)^{-3/2}\)</span> is not constant, while the restriction of a polynomial of degree at most two to the line <span class="math" data-tex="\(x=0\)">\(x=0\)</span> has constant second derivative. So <span class="math" data-tex="\(u\)">\(u\)</span> is not a polynomial of degree at most two. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). Check that <span class="math" data-tex="\(V(\frac92,\frac72,\frac{33}7)=0\)">\(V(\frac92,\frac72,\frac{33}7)=0\)</span> for all three components.</p>
+<p><strong>6.2</strong> (medium). For the singular profiles <span class="math" data-tex="\(F=r^{9/2}\)">\(F=r^{9/2}\)</span>, <span class="math" data-tex="\(P=cr^{-33/2}\)">\(P=cr^{-33/2}\)</span> of Exercise 4.2 of <a href="graphs-over-a-convex-profile.html">Graphs over a convex profile</a>, show that <span class="math" data-tex="\(A,B,C,D\)">\(A,B,C,D\)</span> are the constants <span class="math" data-tex="\(\frac92,\frac72,\frac{33}2,\frac{33}7\)">\(\frac92,\frac72,\frac{33}2,\frac{33}7\)</span>. So the upper corner of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is the constant value of <span class="math" data-tex="\((A,B,D)\)">\((A,B,D)\)</span> along the singular example <span class="math" data-tex="\(u_0\)">\(u_0\)</span> of <a href="the-affine-maximal-equation.html">The affine maximal equation</a>.</p>
+<p><strong>6.3</strong> (medium). Show that <span class="math" data-tex="\((0,1,0)\)">\((0,1,0)\)</span> is a zero of <span class="math" data-tex="\(V\)">\(V\)</span>, and that the matrix of derivatives of <span class="math" data-tex="\(V\)">\(V\)</span> there has eigenvalues <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(-9\)">\(-9\)</span> and <span class="math" data-tex="\(-7\)">\(-7\)</span>. Relate the eigenvalue <span class="math" data-tex="\(2\)">\(2\)</span> to the behaviour <span class="math" data-tex="\(A=r^2+O(r^4)\)">\(A=r^2+O(r^4)\)</span> found in Lemma 3.1.</p>
+<p><strong>6.4</strong> (medium). Show that for <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>
+<span class="math math-display" data-tex="\[
+F(1)+y(1)(r-1)\le F(r)\le F(1)\,r^{9/2},
+\]">\[
+F(1)+y(1)(r-1)\le F(r)\le F(1)\,r^{9/2},
+\]</span>
+so the solution <span class="math" data-tex="\(u\)">\(u\)</span> of Theorem A grows at least linearly and at most like <span class="math" data-tex="\(|x|^{9/2}\)">\(|x|^{9/2}\)</span> in the <span class="math" data-tex="\(x\)">\(x\)</span> directions.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> At the corner,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+V_1&amp;=\tfrac92\bigl(1+\tfrac72-\tfrac92\bigr)=0,\\
+V_2&amp;=\tfrac72\bigl(9+\tfrac92+\tfrac{12}{11}\cdot\tfrac72\cdot\tfrac{33}7-\tfrac{63}2\bigr)\\
+&amp;=\tfrac72\bigl(\tfrac{27}2+18-\tfrac{63}2\bigr)=0,\\
+V_3&amp;=\tfrac{44}7\cdot\tfrac92-\tfrac{264}7+\tfrac72\cdot\tfrac{33}7\cdot\tfrac47\\
+&amp;=\tfrac{198-264+66}7=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+V_1&amp;=\tfrac92\bigl(1+\tfrac72-\tfrac92\bigr)=0,\\
+V_2&amp;=\tfrac72\bigl(9+\tfrac92+\tfrac{12}{11}\cdot\tfrac72\cdot\tfrac{33}7-\tfrac{63}2\bigr)\\
+&amp;=\tfrac72\bigl(\tfrac{27}2+18-\tfrac{63}2\bigr)=0,\\
+V_3&amp;=\tfrac{44}7\cdot\tfrac92-\tfrac{264}7+\tfrac72\cdot\tfrac{33}7\cdot\tfrac47\\
+&amp;=\tfrac{198-264+66}7=0 .
+\end{aligned}
+\]</span></p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(y=\frac92r^{7/2}\)">\(y=\frac92r^{7/2}\)</span> and <span class="math" data-tex="\(y&#x27;=\frac{63}4r^{5/2}\)">\(y&#x27;=\frac{63}4r^{5/2}\)</span> give <span class="math" data-tex="\(A=ry/F=\frac92\)">\(A=ry/F=\frac92\)</span> and <span class="math" data-tex="\(B=ry&#x27;/y=\frac72\)">\(B=ry&#x27;/y=\frac72\)</span>; <span class="math" data-tex="\(P&#x27;=-\frac{33}2P/r\)">\(P&#x27;=-\frac{33}2P/r\)</span> gives <span class="math" data-tex="\(C=\frac{33}2\)">\(C=\frac{33}2\)</span>, and <span class="math" data-tex="\(D=C/B=\frac{33}7\)">\(D=C/B=\frac{33}7\)</span>.</p>
+<p><strong>6.3.</strong> At <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, <span class="math" data-tex="\(B=1\)">\(B=1\)</span>, <span class="math" data-tex="\(D=0\)">\(D=0\)</span>: <span class="math" data-tex="\(V_1=0\)">\(V_1=0\)</span>, <span class="math" data-tex="\(V_2=1\cdot(9-9)=0\)">\(V_2=1\cdot(9-9)=0\)</span>, <span class="math" data-tex="\(V_3=0\)">\(V_3=0\)</span>. The derivatives there are <span class="math" data-tex="\(\partial_AV_1=1+B-2A=2\)">\(\partial_AV_1=1+B-2A=2\)</span>, <span class="math" data-tex="\(\partial_BV_1=\partial_DV_1=0\)">\(\partial_BV_1=\partial_DV_1=0\)</span>; <span class="math" data-tex="\(\partial_AV_2=B=1\)">\(\partial_AV_2=B=1\)</span>, <span class="math" data-tex="\(\partial_BV_2=9+A+\frac{24}{11}BD-18B=-9\)">\(\partial_BV_2=9+A+\frac{24}{11}BD-18B=-9\)</span>, <span class="math" data-tex="\(\partial_DV_2=\frac{12}{11}B^2=\frac{12}{11}\)">\(\partial_DV_2=\frac{12}{11}B^2=\frac{12}{11}\)</span>; <span class="math" data-tex="\(\partial_AV_3=11-D=11\)">\(\partial_AV_3=11-D=11\)</span>, <span class="math" data-tex="\(\partial_BV_3=D(1-\frac D{11})=0\)">\(\partial_BV_3=D(1-\frac D{11})=0\)</span>, <span class="math" data-tex="\(\partial_DV_3=-A-8+B(1-\frac{2D}{11})=-7\)">\(\partial_DV_3=-A-8+B(1-\frac{2D}{11})=-7\)</span>. The matrix
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}2&amp;0&amp;0\\1&amp;-9&amp;\tfrac{12}{11}\\11&amp;0&amp;-7\end{pmatrix}
+\]">\[
+\begin{pmatrix}2&amp;0&amp;0\\1&amp;-9&amp;\tfrac{12}{11}\\11&amp;0&amp;-7\end{pmatrix}
+\]</span>
+has characteristic polynomial <span class="math" data-tex="\((2-\lambda)(-9-\lambda)(-7-\lambda)\)">\((2-\lambda)(-9-\lambda)(-7-\lambda)\)</span>, by expanding along the first row. The solution leaves <span class="math" data-tex="\((0,1,0)\)">\((0,1,0)\)</span> as <span class="math" data-tex="\(\log r\)">\(\log r\)</span> increases, along the direction of the eigenvalue <span class="math" data-tex="\(2\)">\(2\)</span>: <span class="math" data-tex="\(A\)">\(A\)</span> grows like <span class="math" data-tex="\(e^{2\log r}=r^2\)">\(e^{2\log r}=r^2\)</span>.</p>
+<p><strong>6.4.</strong> Since <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span> is increasing, so <span class="math" data-tex="\(F(r)=F(1)+\int_1^ry\)">\(F(r)=F(1)+\int_1^ry\)</span>, which is at least <span class="math" data-tex="\(F(1)+y(1)(r-1)\)">\(F(1)+y(1)(r-1)\)</span>. Since <span class="math" data-tex="\(r\frac d{dr}\log F=A\le\frac92\)">\(r\frac d{dr}\log F=A\le\frac92\)</span> on <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span> (the solution stays in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> for <span class="math" data-tex="\(r\ge r_0\)">\(r\ge r_0\)</span>, and <span class="math" data-tex="\(r_0\)">\(r_0\)</span> may be taken below <span class="math" data-tex="\(1\)">\(1\)</span>), <span class="math" data-tex="\(\log F(r)-\log F(1)\le\frac92\log r\)">\(\log F(r)-\log F(1)\le\frac92\log r\)</span>. The function <span class="math" data-tex="\(u\)">\(u\)</span> satisfies <span class="math" data-tex="\(F(|x|)\le u(x,t)\le F(|x|)+|t|\)">\(F(|x|)\le u(x,t)\le F(|x|)+|t|\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-AM] OpenAI, <em>A Smooth Nonquadratic Entire Affine Maximal Graph in Dimension Ten</em>, OpenAI Math Release preprint, 5 October 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Smooth-Nonquadratic-Affine-Maximal-Graph-in-Dimension-Ten-October-5-2026</li>
+<li>[Lebl] J. Lebl, <em>Basic Analysis I and II</em>, version 6.3; the text of the core courses <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C10">Real Analysis I</a> and <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C20">Real Analysis II</a>. https://www.jirka.org/ra/</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

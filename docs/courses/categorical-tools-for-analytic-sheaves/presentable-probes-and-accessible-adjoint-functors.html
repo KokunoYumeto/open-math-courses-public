@@ -1,0 +1,435 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Presentable probes and accessible adjoint functors</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="presentable-probes-and-accessible-adjoint-functors">Presentable probes and accessible adjoint functors</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).</em></p>
+<p>Small presentable objects can control a category without being projective or arising from one generator. We first recover the category from its presentable probes and construct all its limits. We then obtain the two adjoint criteria: preservation of colimits gives a right adjoint, while preservation of limits together with accessibility gives a left adjoint. The converse accessibility assertion for right adjoints requires a cardinal bound, not preservation of ordinary filtered colimits.</p>
+<p>Use fixed universes, set-indexed choice, locally small categories and small diagrams. An enlargement contains their object and arrow data, so chosen universal objects can be selected there. Cardinals below are small, infinite and regular. A diagram is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small when its entire set of arrows has cardinality below <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>; it is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered when every such diagram into it has a cocone. In particular a filtered index is nonempty. An object <span class="math" data-tex="\(a\)">\(a\)</span> is <strong><span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable</strong> if the canonical map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_{i}\operatorname{Hom}(a,x_i)\\
+\longrightarrow\operatorname{Hom}(a,\operatorname{colim}_{i}x_i),\\
+[i,u]\longmapsto c_i u
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_{i}\operatorname{Hom}(a,x_i)\\
+\longrightarrow\operatorname{Hom}(a,\operatorname{colim}_{i}x_i),\\
+[i,u]\longmapsto c_i u
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>is bijective for every small <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered diagram with colimit legs <span class="math" data-tex="\(c_i\)">\(c_i\)</span>. This is the property called <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-accessibility of an object in <a href="cardinal-ind-presentations-and-their-realization.html">Cardinal Ind presentations</a>. A category is <strong>locally <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable</strong> if it has all small colimits and a small family of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable objects such that every object is a small <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered colimit of that family. A functor is <strong>accessible</strong> if it preserves small <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-filtered colimits for some regular <span class="math" data-tex="\(\tau\)">\(\tau\)</span>.</p>
+<p>We use the elementary category and universe conventions of <span class="unlinked">Universes and small categories</span>. The <a href="accessible-objects-from-a-single-generator.html#1-hypotheses-comparisons-and-cardinal-parameters">single-generator accessibility theorem</a> supplies additional concrete bounds under its stronger hypotheses; those hypotheses are not imposed here. The <a href="solution-sets-and-universal-representations.html#2-a-small-solution-set-is-enough">solution-set construction</a> and <span class="unlinked">extension from representables</span> give related universal constructions. All cardinal, density and adjoint steps needed below are proved here. Basic reference: [Riehl].</p>
+<h2 id="1-the-set-comparison-and-small-colimits-of-probes">1. The set comparison and small colimits of probes</h2>
+<p><strong>Lemma 1.1.</strong> In sets, <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered colimits commute with <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small limits, through the canonical comparison.</p>
+<p><strong>Proof.</strong> A filtered colimit of sets consists of represented elements modulo eventual equality: two elements have the same class exactly when their images agree at some common receiving stage. Indeed the usual colimit quotient is generated by the diagram arrows. A finite zigzag of such generating identifications can be put over one stage, and its parallel maps can be equalized there. This proves the eventual-equality description.</p>
+<p>A <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered category also admits a cocone on any graph with fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> vertices and edges. First receive all its objects using the discrete diagram. At the common receiver, compare, for every edge, its two induced arrows from the edge source. A formal star with two parallel arrows for each such pair is a <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small category: it has no nonidentity composites. A cocone on that star equalizes all the pairs at once. The resulting maps give the required graph cocone. This argument includes finite graphs when <span class="math" data-tex="\(\kappa=\omega\)">\(\kappa=\omega\)</span>.</p>
+<p>For a diagram with directions <span class="math" data-tex="\(I\)">\(I\)</span>, <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered, and <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small, consider a compatible <span class="math" data-tex="\(J\)">\(J\)</span>-tuple of classes in the <span class="math" data-tex="\(I\)">\(I\)</span>-colimits. Choose one representative per object of <span class="math" data-tex="\(J\)">\(J\)</span>. There are fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> representatives; a cocone puts them all at one stage. Each <span class="math" data-tex="\(J\)">\(J\)</span>-arrow equation holds eventually. Choose a witness for each equation and put all these witnesses, their witnessing maps and the original representative stage in a graph of fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> edges. The preceding argument gives a cocone at which the tuple satisfies every equation. It represents an element of the limit at that stage, proving surjectivity.</p>
+<p>For injectivity, two represented compatible tuples whose coordinates have equal colimit classes have fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> eventual-equality witnesses. A common cocone for those witnesses equates the tuples at a single stage. Thus their classes in the colimit of limits coincide. These constructions concern exactly the map that takes a tuple to its coordinate classes. If <span class="math" data-tex="\(J\)">\(J\)</span> is empty, both limits are singleton sets, and the colimit of singleton sets is a singleton because <span class="math" data-tex="\(I\)">\(I\)</span> is nonempty and connected. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.2.</strong> A colimit of a <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small diagram of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable objects is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable. The same holds for a colimit specified by a directed graph with fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> vertices and edges.</p>
+<p><strong>Proof.</strong> Maps out of a colimit are compatible families of maps out of its objects. Apply Lemma 1.1 to interchange that limit with the filtered colimit in (1.1). The resulting composite is the actual comparison on each colimit leg, so it proves presentability. For a graph, compatibility is the equalizer of two maps between the product indexed by its vertices and the product indexed by its edges. Both products have fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> factors. The same proof applies, even when the free category on the graph has infinitely many paths. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A retract of a <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable object is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable. To see this, let <span class="math" data-tex="\(r:a\to b\)">\(r:a\to b\)</span>, <span class="math" data-tex="\(s:b\to a\)">\(s:b\to a\)</span> satisfy <span class="math" data-tex="\(rs=1_b\)">\(rs=1_b\)</span>. Precomposition makes <span class="math" data-tex="\(\operatorname{Hom}(b,-)\)">\(\operatorname{Hom}(b,-)\)</span> a retract of <span class="math" data-tex="\(\operatorname{Hom}(a,-)\)">\(\operatorname{Hom}(a,-)\)</span>, naturally in the target. Its comparison (1.1) is the corresponding retract of the invertible comparison for <span class="math" data-tex="\(a\)">\(a\)</span>. If <span class="math" data-tex="\(i,p\)">\(i,p\)</span> are the inclusion and retraction on the source, and <span class="math" data-tex="\(i&#x27;,p&#x27;\)">\(i&#x27;,p&#x27;\)</span> those on the target, an inverse for this retract is <span class="math" data-tex="\(p\,\chi_a^{-1}i&#x27;\)">\(p\,\chi_a^{-1}i&#x27;\)</span>; the commuting squares and <span class="math" data-tex="\(pi=p&#x27;i&#x27;=1\)">\(pi=p&#x27;i&#x27;=1\)</span> verify both inverse identities.</p>
+<h2 id="2-a-genuinely-small-full-category-of-presentable-objects">2. A genuinely small full category of presentable objects</h2>
+<p>Fix a locally <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable category <span class="math" data-tex="\(C\)">\(C\)</span> and a small presenting family <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> The <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable objects have a small set of isomorphism representatives. A full subcategory <span class="math" data-tex="\(B\)">\(B\)</span> on such representatives has all <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small colimits, and they are its colimits in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(b\)">\(b\)</span> is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable, express <span class="math" data-tex="\(b=\operatorname{colim}_i a_i\)">\(b=\operatorname{colim}_i a_i\)</span> with <span class="math" data-tex="\(a_i\in A\)">\(a_i\in A\)</span> and a <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered index. The identity of <span class="math" data-tex="\(b\)">\(b\)</span> factors as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+b\xrightarrow{s}a_i\xrightarrow{r}b,\qquad rs=1_b.
+\tag{2.1}
+\]">\[
+b\xrightarrow{s}a_i\xrightarrow{r}b,\qquad rs=1_b.
+\tag{2.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(b\)">\(b\)</span> is a retract of a presenting object. For each <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, there is only a small set of idempotents in <span class="math" data-tex="\(\operatorname{Hom}(a,a)\)">\(\operatorname{Hom}(a,a)\)</span>. Each such idempotent <span class="math" data-tex="\(e\)">\(e\)</span> splits in <span class="math" data-tex="\(C\)">\(C\)</span>: take the coequalizer <span class="math" data-tex="\(q:a\to b\)">\(q:a\to b\)</span> of <span class="math" data-tex="\(1_a,e\)">\(1_a,e\)</span>. Since <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>, there is <span class="math" data-tex="\(j:b\to a\)">\(j:b\to a\)</span> with <span class="math" data-tex="\(jq=e\)">\(jq=e\)</span>. Then <span class="math" data-tex="\(qjq=qe=q\)">\(qjq=qe=q\)</span>, and the epimorphism <span class="math" data-tex="\(q\)">\(q\)</span> gives <span class="math" data-tex="\(qj=1_b\)">\(qj=1_b\)</span>. A coequalizer is epic because maps agreeing after it agree by its universal uniqueness.</p>
+<p>Two splittings of the same idempotent give isomorphic retracts: the maps between them are <span class="math" data-tex="\(r&#x27;j\)">\(r&#x27;j\)</span> and <span class="math" data-tex="\(rj&#x27;\)">\(rj&#x27;\)</span>, whose composites are identities using <span class="math" data-tex="\(jr=j&#x27;r&#x27;=e\)">\(jr=j&#x27;r&#x27;=e\)</span>. Consequently a chosen splitting for every idempotent on every member of <span class="math" data-tex="\(A\)">\(A\)</span> is a small representative family for all <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable objects. Its full category is small because it has small Hom sets and a small object set. Retract presentability was proved in Section 1.</p>
+<p>A <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small colimit of objects of <span class="math" data-tex="\(B\)">\(B\)</span>, taken in <span class="math" data-tex="\(C\)">\(C\)</span>, is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable by Corollary 1.2. Transport its cocone to a representative in <span class="math" data-tex="\(B\)">\(B\)</span>. Fullness makes that cocone a colimit in <span class="math" data-tex="\(B\)">\(B\)</span> too, and the transported cone remains the specified colimit in <span class="math" data-tex="\(C\)">\(C\)</span>. This includes the initial object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(Y:C\to\operatorname{Set}^{B^{op}}\)">\(Y:C\to\operatorname{Set}^{B^{op}}\)</span> for restricted Yoneda:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+Y(c)(b)=\operatorname{Hom}_C(b,c).
+\tag{2.2}
+\]">\[
+Y(c)(b)=\operatorname{Hom}_C(b,c).
+\tag{2.2}
+\]</span>
+<p><strong>Proposition 2.2.</strong> The functor <span class="math" data-tex="\(Y\)">\(Y\)</span> is fully faithful. For each <span class="math" data-tex="\(c\)">\(c\)</span>, the category <span class="math" data-tex="\(B\downarrow c\)">\(B\downarrow c\)</span>, retaining every arrow between its presentations, is small and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered, and its canonical diagram has colimit <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p><strong>Proof.</strong> For full faithfulness, choose a <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered presentation <span class="math" data-tex="\(c=\operatorname{colim}_i a_i\)">\(c=\operatorname{colim}_i a_i\)</span> by presenting objects, replacing each by its representative in <span class="math" data-tex="\(B\)">\(B\)</span>. A natural transformation <span class="math" data-tex="\(\alpha:Y(c)\to Y(d)\)">\(\alpha:Y(c)\to Y(d)\)</span> sends its legs <span class="math" data-tex="\(c_i:a_i\to c\)">\(c_i:a_i\to c\)</span> to a compatible family <span class="math" data-tex="\(d_i:a_i\to d\)">\(d_i:a_i\to d\)</span>. The colimit gives a unique <span class="math" data-tex="\(h:c\to d\)">\(h:c\to d\)</span> with <span class="math" data-tex="\(hc_i=d_i\)">\(hc_i=d_i\)</span>. Any <span class="math" data-tex="\(t:b\to c\)">\(t:b\to c\)</span>, with <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, factors as <span class="math" data-tex="\(c_i u\)">\(c_i u\)</span>, because <span class="math" data-tex="\(b\)">\(b\)</span> is presentable. Naturality gives <span class="math" data-tex="\(\alpha_b(t)=d_i u=ht\)">\(\alpha_b(t)=d_i u=ht\)</span>. Thus <span class="math" data-tex="\(\alpha=Y(h)\)">\(\alpha=Y(h)\)</span>, and the colimit legs also prove uniqueness.</p>
+<p>Objects of <span class="math" data-tex="\(B\downarrow c\)">\(B\downarrow c\)</span> form the small tagged union of the sets <span class="math" data-tex="\(\operatorname{Hom}(b,c)\)">\(\operatorname{Hom}(b,c)\)</span>; its arrows are a small tagged union of subsets of the Hom sets in <span class="math" data-tex="\(B\)">\(B\)</span>. A <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small diagram in this comma category has an underlying colimit <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> by Lemma 2.1. Its compatible maps to <span class="math" data-tex="\(c\)">\(c\)</span> give <span class="math" data-tex="\(b\to c\)">\(b\to c\)</span>, hence a cocone in the comma category. The empty diagram uses the initial object of <span class="math" data-tex="\(B\)">\(B\)</span>, so this index is nonempty.</p>
+<p>Finally a cocone from this whole comma diagram to <span class="math" data-tex="\(d\)">\(d\)</span> restricts to a cocone on the chosen presentation <span class="math" data-tex="\(a_i\to c\)">\(a_i\to c\)</span>, giving <span class="math" data-tex="\(h:c\to d\)">\(h:c\to d\)</span>. Every <span class="math" data-tex="\(b\to c\)">\(b\to c\)</span> factors through one of those legs, and the corresponding factor is an arrow of the full comma category. Cocone compatibility forces its component to be <span class="math" data-tex="\(h\)">\(h\)</span> composed with <span class="math" data-tex="\(b\to c\)">\(b\to c\)</span>. This proves the canonical colimit claim, including every arrow of the index. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(B\)">\(B\)</span> detects isomorphisms: if every <span class="math" data-tex="\(\operatorname{Hom}(b,f)\)">\(\operatorname{Hom}(b,f)\)</span> is bijective, <span class="math" data-tex="\(Y(f)\)">\(Y(f)\)</span> has a natural inverse given by the inverse component functions. Full faithfulness lifts that inverse and both its identities to <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<h2 id="3-the-essential-image-constructs-all-limits">3. The essential image constructs all limits</h2>
+<p>Call a presheaf <span class="math" data-tex="\(P:B^{op}\to\operatorname{Set}\)">\(P:B^{op}\to\operatorname{Set}\)</span> <strong><span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-continuous</strong> here if it sends every <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small colimit cone of <span class="math" data-tex="\(B\)">\(B\)</span> to a limit cone of sets. The direction is contravariant.</p>
+<p><strong>Theorem 3.1.</strong> The essential image of <span class="math" data-tex="\(Y\)">\(Y\)</span> consists exactly of these presheaves.</p>
+<p><strong>Proof.</strong> A represented restriction <span class="math" data-tex="\(Y(c)\)">\(Y(c)\)</span> has this property by the universal property of every such colimit in <span class="math" data-tex="\(C\)">\(C\)</span>. Conversely, form the category <span class="math" data-tex="\(E_P\)">\(E_P\)</span> whose objects are <span class="math" data-tex="\((b,x)\)">\((b,x)\)</span> with <span class="math" data-tex="\(x\in P(b)\)">\(x\in P(b)\)</span>, and whose arrows <span class="math" data-tex="\((b,x)\to(b&#x27;,x&#x27;)\)">\((b,x)\to(b&#x27;,x&#x27;)\)</span> are <span class="math" data-tex="\(u:b\to b&#x27;\)">\(u:b\to b&#x27;\)</span> satisfying <span class="math" data-tex="\(P(u)(x&#x27;)=x\)">\(P(u)(x&#x27;)=x\)</span>. This is small for the same tagged-union reason as <span class="math" data-tex="\(B\downarrow c\)">\(B\downarrow c\)</span>.</p>
+<p>It is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered. For a <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small diagram of these elements, take the colimit <span class="math" data-tex="\(b\)">\(b\)</span> of its underlying diagram in <span class="math" data-tex="\(B\)">\(B\)</span>. The compatible elements give, by <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-continuity, one <span class="math" data-tex="\(x\in P(b)\)">\(x\in P(b)\)</span> restricting to all of them. Its colimit legs give a cocone in <span class="math" data-tex="\(E_P\)">\(E_P\)</span>. For the empty diagram, continuity gives a unique element of <span class="math" data-tex="\(P(0)\)">\(P(0)\)</span>, so <span class="math" data-tex="\(E_P\)">\(E_P\)</span> is nonempty.</p>
+<p>There is a canonical presheaf map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{(b,x)\in E_P}Y(b)\longrightarrow P.
+\tag{3.1}
+\]">\[
+\operatorname{colim}_{(b,x)\in E_P}Y(b)\longrightarrow P.
+\tag{3.1}
+\]</span>
+<p>At <span class="math" data-tex="\(a\in B\)">\(a\in B\)</span>, it sends the representative <span class="math" data-tex="\(u:a\to b\)">\(u:a\to b\)</span>, at <span class="math" data-tex="\((b,x)\)">\((b,x)\)</span>, to <span class="math" data-tex="\(P(u)(x)\)">\(P(u)(x)\)</span>. It is surjective: <span class="math" data-tex="\(t\in P(a)\)">\(t\in P(a)\)</span> is represented by <span class="math" data-tex="\(1_a\)">\(1_a\)</span> at <span class="math" data-tex="\((a,t)\)">\((a,t)\)</span>. If <span class="math" data-tex="\(u:a\to b\)">\(u:a\to b\)</span> and <span class="math" data-tex="\(v:a\to b&#x27;\)">\(v:a\to b&#x27;\)</span> give the same <span class="math" data-tex="\(t\)">\(t\)</span>, the object <span class="math" data-tex="\((a,t)\)">\((a,t)\)</span> has arrows <span class="math" data-tex="\(u,v\)">\(u,v\)</span> to their two element objects. Both classes therefore equal the class of <span class="math" data-tex="\(1_a\)">\(1_a\)</span> at <span class="math" data-tex="\((a,t)\)">\((a,t)\)</span>. This proves injectivity. Precomposition in <span class="math" data-tex="\(a\)">\(a\)</span> commutes with the formula, proving that (3.1) is a natural isomorphism.</p>
+<p>Now take <span class="math" data-tex="\(c_P=\operatorname{colim}_{(b,x)\in E_P}b\)">\(c_P=\operatorname{colim}_{(b,x)\in E_P}b\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>. Every <span class="math" data-tex="\(a\in B\)">\(a\in B\)</span> is presentable and <span class="math" data-tex="\(E_P\)">\(E_P\)</span> is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered, so</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_C(a,c_P)\\
+\simeq\operatorname{colim}_{(b,x)\in E_P}\operatorname{Hom}_C(a,b)\\
+\simeq P(a).
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_C(a,c_P)\\
+\simeq\operatorname{colim}_{(b,x)\in E_P}\operatorname{Hom}_C(a,b)\\
+\simeq P(a).
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>These are the actual colimit-leg and element-evaluation maps, natural in <span class="math" data-tex="\(a\)">\(a\)</span>. Thus <span class="math" data-tex="\(Y(c_P)\simeq P\)">\(Y(c_P)\simeq P\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> Every locally presentable category has all small limits.</p>
+<p><strong>Proof.</strong> For a small diagram <span class="math" data-tex="\((c_j)\)">\((c_j)\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>, take the pointwise presheaf limit <span class="math" data-tex="\(P=\lim_jY(c_j)\)">\(P=\lim_jY(c_j)\)</span>. Limits of sets commute with limits of sets: both iterated limits are the same tuples satisfying both families of arrow equations. Hence <span class="math" data-tex="\(P\)">\(P\)</span> still sends <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small colimits in <span class="math" data-tex="\(B\)">\(B\)</span> to limits. By Theorem 3.1 it is <span class="math" data-tex="\(Y(c)\)">\(Y(c)\)</span> for some <span class="math" data-tex="\(c\)">\(c\)</span>. For any <span class="math" data-tex="\(z\)">\(z\)</span>, full faithfulness gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_C(z,c)\\
+\simeq\operatorname{Nat}(Y(z),\lim_jY(c_j))\\
+\simeq\lim_j\operatorname{Hom}_C(z,c_j).
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_C(z,c)\\
+\simeq\operatorname{Nat}(Y(z),\lim_jY(c_j))\\
+\simeq\lim_j\operatorname{Hom}_C(z,c_j).
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>The projections and their unique cone factors are exactly the ones supplied by this bijection. Thus <span class="math" data-tex="\(c\)">\(c\)</span> is the limit. The empty diagram gives the terminal object by the same argument. No assertion about the number of epimorphic quotients is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-raising-the-regular-cardinal-and-bounding-individual-objects">4. Raising the regular cardinal and bounding individual objects</h2>
+<p><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(C\)">\(C\)</span> is locally <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable and <span class="math" data-tex="\(\lambda\ge\kappa\)">\(\lambda\ge\kappa\)</span> is regular, then <span class="math" data-tex="\(C\)">\(C\)</span> is locally <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-presentable. Every object of <span class="math" data-tex="\(C\)">\(C\)</span> is <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable for some regular <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p><strong>Proof.</strong> A <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-filtered category is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered, so every <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable object is <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-presentable through the very same comparison (1.1). Take the colimits of all graphs with fewer than <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> vertices and edges labelled by the small category <span class="math" data-tex="\(B\)">\(B\)</span>. Up to relabelling their vertices and edges by ordinals below <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, these are a small set of graphs. A vertex label is an object of <span class="math" data-tex="\(B\)">\(B\)</span>, and an edge label is an appropriate <span class="math" data-tex="\(B\)">\(B\)</span>-arrow. Their chosen colimits consequently form a small family <span class="math" data-tex="\(S_\lambda\)">\(S_\lambda\)</span>. Corollary 1.2 makes every member <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-presentable.</p>
+<p>For <span class="math" data-tex="\(c=\operatorname{colim}_{i\in I}a_i\)">\(c=\operatorname{colim}_{i\in I}a_i\)</span>, use a small presenting diagram valued in <span class="math" data-tex="\(B\)">\(B\)</span>. Let <span class="math" data-tex="\(J\)">\(J\)</span> run over subgraphs of its underlying object-arrow graph having fewer than <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> vertices and edges and containing both endpoints of every selected edge. Empty subgraphs are allowed. Inclusion makes this a small <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-filtered poset: a union of fewer than <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> such graphs is another one, by regularity. It need not be a subcategory closed under composites.</p>
+<p>For each graph <span class="math" data-tex="\(J\)">\(J\)</span>, form its graph colimit <span class="math" data-tex="\(c_J\)">\(c_J\)</span>. Inclusions give canonical maps <span class="math" data-tex="\(c_J\to c_{J&#x27;}\)">\(c_J\to c_{J&#x27;}\)</span>; uniqueness on their vertex legs proves identities and composition. A compatible cocone from these <span class="math" data-tex="\(c_J\)">\(c_J\)</span> is exactly one map from each <span class="math" data-tex="\(a_i\)">\(a_i\)</span> satisfying every original <span class="math" data-tex="\(I\)">\(I\)</span>-arrow equation. To see both directions, use a one-vertex subgraph to recover each component and a one-edge subgraph to recover each equation; conversely the components give the unique compatible factor from each graph colimit. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+c\simeq\operatorname{colim}_{J}c_J.
+\tag{4.1}
+\]">\[
+c\simeq\operatorname{colim}_{J}c_J.
+\tag{4.1}
+\]</span>
+<p>Every <span class="math" data-tex="\(c_J\)">\(c_J\)</span> is isomorphic to a member of <span class="math" data-tex="\(S_\lambda\)">\(S_\lambda\)</span>. Transporting the entire diagram by chosen such isomorphisms retains its colimit and its <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-filtered index. This proves local <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-presentability, including <span class="math" data-tex="\(\lambda=\kappa=\omega\)">\(\lambda=\kappa=\omega\)</span>; finite graphs suffice even though their freely generated categories can have infinitely many paths.</p>
+<p>For the final assertion, keep one small presenting category <span class="math" data-tex="\(I\)">\(I\)</span> for <span class="math" data-tex="\(c\)">\(c\)</span>. Choose a small regular <span class="math" data-tex="\(\mu\ge\kappa\)">\(\mu\ge\kappa\)</span> larger than its entire arrow set. Its objects <span class="math" data-tex="\(a_i\)">\(a_i\)</span> are <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable, and Corollary 1.2 applied to that <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-small diagram makes <span class="math" data-tex="\(c\)">\(c\)</span> <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable. Such a regular cardinal exists inside the fixed universe by taking a sufficiently large successor cardinal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus a small family of objects has a common presentability bound: take a regular cardinal above the union of the small set of their bounds. Increasing a bound preserves presentability, since a more highly filtered diagram satisfies the earlier filtering condition.</p>
+<p>The graph argument also works if the initial small presentable family expresses each object as an arbitrary small colimit rather than a filtered one. Taking <span class="math" data-tex="\(\lambda=\kappa\)">\(\lambda=\kappa\)</span> and replacing that family by its <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small graph colimits supplies the filtered presentations in our definition. Thus the two common colimit-generation formulations give the same locally presentable categories.</p>
+<h2 id="5-from-a-real-solution-set-to-a-left-adjoint">5. From a real solution set to a left adjoint</h2>
+<p>We give the needed initial-object argument explicitly. A family in a category is <strong>weakly initial</strong> if every object receives at least one map from a member of the family.</p>
+<p><strong>Lemma 5.1 (Freyd).</strong> A complete locally small category with a small weakly initial family has an initial object.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be the full small subcategory on the family, and <span class="math" data-tex="\(i=\lim_{d\in D}d\)">\(i=\lim_{d\in D}d\)</span>, with projections <span class="math" data-tex="\(p_d\)">\(p_d\)</span>. For an object <span class="math" data-tex="\(x\)">\(x\)</span>, choose <span class="math" data-tex="\(h:d\to x\)">\(h:d\to x\)</span> and set <span class="math" data-tex="\(\ell_x=hp_d\)">\(\ell_x=hp_d\)</span>. This does not depend on the choice. Given <span class="math" data-tex="\(h:d\to x\)">\(h:d\to x\)</span> and <span class="math" data-tex="\(h&#x27;:d&#x27;\to x\)">\(h&#x27;:d&#x27;\to x\)</span>, their pullback receives a map from a family member <span class="math" data-tex="\(d&#x27;&#x27;\)">\(d&#x27;&#x27;\)</span>. The resulting arrows <span class="math" data-tex="\(d&#x27;&#x27;\to d,d&#x27;&#x27;\to d&#x27;\)">\(d&#x27;&#x27;\to d,d&#x27;&#x27;\to d&#x27;\)</span> lie in the full <span class="math" data-tex="\(D\)">\(D\)</span>; the limit equations and the pullback equation equate the two composites from <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>For <span class="math" data-tex="\(f:x\to y\)">\(f:x\to y\)</span>, the choice <span class="math" data-tex="\(fh:d\to y\)">\(fh:d\to y\)</span> shows <span class="math" data-tex="\(f\ell_x=\ell_y\)">\(f\ell_x=\ell_y\)</span>. At a family object <span class="math" data-tex="\(d\)">\(d\)</span>, using <span class="math" data-tex="\(1_d\)">\(1_d\)</span> shows <span class="math" data-tex="\(\ell_d=p_d\)">\(\ell_d=p_d\)</span>. Naturality at every projection <span class="math" data-tex="\(p_d:i\to d\)">\(p_d:i\to d\)</span> now gives <span class="math" data-tex="\(p_d\ell_i=p_d\)">\(p_d\ell_i=p_d\)</span>. Limit projections jointly determine a map, hence <span class="math" data-tex="\(\ell_i=1_i\)">\(\ell_i=1_i\)</span>. For any <span class="math" data-tex="\(v:i\to x\)">\(v:i\to x\)</span>, naturality gives <span class="math" data-tex="\(v=v\ell_i=\ell_x\)">\(v=v\ell_i=\ell_x\)</span>. Thus there is exactly one such map and <span class="math" data-tex="\(i\)">\(i\)</span> is initial. Completeness includes a terminal object, so its weakly initial family cannot be empty. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2.</strong> Let <span class="math" data-tex="\(G:C\to D\)">\(G:C\to D\)</span> be a functor between locally presentable categories. If <span class="math" data-tex="\(G\)">\(G\)</span> is accessible and preserves all small limits, it has a left adjoint.</p>
+<p><strong>Proof: the solution set.</strong> Fix <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>. Choose a regular <span class="math" data-tex="\(\mu\)">\(\mu\)</span> at least the local-presentability bounds for <span class="math" data-tex="\(C,D\)">\(C,D\)</span>, the bound for accessibility of <span class="math" data-tex="\(G\)">\(G\)</span>, and an individual presentability bound for <span class="math" data-tex="\(d\)">\(d\)</span>. Theorem 4.1 makes <span class="math" data-tex="\(C\)">\(C\)</span> locally <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable, and <span class="math" data-tex="\(G\)">\(G\)</span> preserves <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-filtered colimits. Let <span class="math" data-tex="\(B_\mu\)">\(B_\mu\)</span> be its small full presentable category. The family</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\{(b,u):b\in B_\mu,\quad u:d\to G(b)\}
+\tag{5.1}
+\]">\[
+\{(b,u):b\in B_\mu,\quad u:d\to G(b)\}
+\tag{5.1}
+\]</span>
+<p>is small in <span class="math" data-tex="\(d\downarrow G\)">\(d\downarrow G\)</span>, including all such arrows <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>For <span class="math" data-tex="\(v:d\to G(c)\)">\(v:d\to G(c)\)</span>, write <span class="math" data-tex="\(c=\operatorname{colim}_j b_j\)">\(c=\operatorname{colim}_j b_j\)</span> as a <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-filtered presentation. Since <span class="math" data-tex="\(G\)">\(G\)</span> preserves that colimit and <span class="math" data-tex="\(d\)">\(d\)</span> is <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable, there are <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(u:d\to G(b_j)\)">\(u:d\to G(b_j)\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+v=G(c_j)u.
+\tag{5.2}
+\]">\[
+v=G(c_j)u.
+\tag{5.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(c_j\)">\(c_j\)</span> is an actual comma arrow from a member of (5.1) to <span class="math" data-tex="\((c,v)\)">\((c,v)\)</span>. This is a weakly initial family, not merely a bound on possible object names.</p>
+<p>The comma category is locally small. It is complete: take the limit of its underlying <span class="math" data-tex="\(C\)">\(C\)</span>-diagram. Limit preservation by <span class="math" data-tex="\(G\)">\(G\)</span> turns the compatible maps from <span class="math" data-tex="\(d\)">\(d\)</span> into a unique map <span class="math" data-tex="\(d\to G(\lim c_j)\)">\(d\to G(\lim c_j)\)</span>. The same cone uniqueness proves the comma limit property, including the empty diagram. Lemma 5.1 gives an initial object <span class="math" data-tex="\((L(d),\eta_d)\)">\((L(d),\eta_d)\)</span>.</p>
+<p><strong>Proof: arrows and the natural bijection.</strong> For <span class="math" data-tex="\(a:d\to d&#x27;\)">\(a:d\to d&#x27;\)</span>, define <span class="math" data-tex="\(L(a)\)">\(L(a)\)</span> as the unique map satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+G(L(a))\eta_d=\eta_{d&#x27;}a.
+\tag{5.3}
+\]">\[
+G(L(a))\eta_d=\eta_{d&#x27;}a.
+\tag{5.3}
+\]</span>
+<p>Initiality gives it by viewing the right side as a comma object. Identity and composite maps satisfy exactly the same equation, so <span class="math" data-tex="\(L\)">\(L\)</span> is a functor. For every <span class="math" data-tex="\(c\)">\(c\)</span>, initiality supplies the inverse of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_C(L(d),c)\\
+\longrightarrow\operatorname{Hom}_D(d,G(c)),\\
+h\longmapsto G(h)\eta_d.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_C(L(d),c)\\
+\longrightarrow\operatorname{Hom}_D(d,G(c)),\\
+h\longmapsto G(h)\eta_d.
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>Postcomposition proves naturality in <span class="math" data-tex="\(c\)">\(c\)</span>, and (5.3) proves naturality in <span class="math" data-tex="\(d\)">\(d\)</span>. This is the adjunction <span class="math" data-tex="\(L\dashv G\)">\(L\dashv G\)</span>.</p>
+<p>Its counit <span class="math" data-tex="\(\epsilon_c:L(G(c))\to c\)">\(\epsilon_c:L(G(c))\to c\)</span> is defined by <span class="math" data-tex="\(G(\epsilon_c)\eta_{G(c)}=1_{G(c)}\)">\(G(\epsilon_c)\eta_{G(c)}=1_{G(c)}\)</span>. This is one triangle identity; naturality follows from uniqueness in (5.4). For the other, naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> at <span class="math" data-tex="\(\eta_d:d\to G(L(d))\)">\(\eta_d:d\to G(L(d))\)</span> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+G(\epsilon_{L(d)}L(\eta_d))\eta_d\\
+=G(\epsilon_{L(d)})\eta_{G(L(d))}\eta_d\\
+=\eta_d.
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+G(\epsilon_{L(d)}L(\eta_d))\eta_d\\
+=G(\epsilon_{L(d)})\eta_{G(L(d))}\eta_d\\
+=\eta_d.
+\end{gathered}
+\tag{5.5}
+\]</span>
+<p>The injectivity of (5.4) makes <span class="math" data-tex="\(\epsilon_{L(d)}L(\eta_d)=1_{L(d)}\)">\(\epsilon_{L(d)}L(\eta_d)=1_{L(d)}\)</span>. Hence both actual unit and counit maps satisfy their triangle identities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-every-right-adjoint-has-an-accessibility-bound">6. Every right adjoint has an accessibility bound</h2>
+<p><strong>Theorem 6.1.</strong> A functor <span class="math" data-tex="\(G:C\to D\)">\(G:C\to D\)</span> between locally presentable categories has a left adjoint exactly when it preserves all small limits and is accessible.</p>
+<p><strong>Proof.</strong> Sufficiency is Theorem 5.2. Suppose <span class="math" data-tex="\(L\dashv G\)">\(L\dashv G\)</span>. For a limit cone in <span class="math" data-tex="\(C\)">\(C\)</span>, the natural adjunction and the Hom universal property give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_D(d,G(\lim_i c_i))\\
+\simeq\operatorname{Hom}_C(Ld,\lim_i c_i)\\
+\simeq\lim_i\operatorname{Hom}_D(d,Gc_i).
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_D(d,G(\lim_i c_i))\\
+\simeq\operatorname{Hom}_C(Ld,\lim_i c_i)\\
+\simeq\lim_i\operatorname{Hom}_D(d,Gc_i).
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>These maps compose with the actual cone legs. For all <span class="math" data-tex="\(d\)">\(d\)</span>, this is exactly the limit universal property, so <span class="math" data-tex="\(G\)">\(G\)</span> preserves limits.</p>
+<p>Choose a small full presenting category <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable probes in <span class="math" data-tex="\(D\)">\(D\)</span>. The objects <span class="math" data-tex="\(L(b)\)">\(L(b)\)</span>, for <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, have a common presentability bound <span class="math" data-tex="\(\mu\)">\(\mu\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>, by Theorem 4.1. Increase it to at least <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Each <span class="math" data-tex="\(b\)">\(b\)</span> is also <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable. For a small <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-filtered diagram <span class="math" data-tex="\((c_i)\)">\((c_i)\)</span>, let <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> be the canonical comparison below. On applying <span class="math" data-tex="\(\operatorname{Hom}_D(b,-)\)">\(\operatorname{Hom}_D(b,-)\)</span>, it becomes the composite</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_D(b,\operatorname{colim}_i Gc_i)\\
+\simeq\operatorname{colim}_i\operatorname{Hom}_D(b,Gc_i)\\
+\simeq\operatorname{colim}_i\operatorname{Hom}_C(Lb,c_i)\\
+\simeq\operatorname{Hom}_C(Lb,\operatorname{colim}_i c_i)\\
+\simeq\operatorname{Hom}_D(b,G(\operatorname{colim}_i c_i)).
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_D(b,\operatorname{colim}_i Gc_i)\\
+\simeq\operatorname{colim}_i\operatorname{Hom}_D(b,Gc_i)\\
+\simeq\operatorname{colim}_i\operatorname{Hom}_C(Lb,c_i)\\
+\simeq\operatorname{Hom}_C(Lb,\operatorname{colim}_i c_i)\\
+\simeq\operatorname{Hom}_D(b,G(\operatorname{colim}_i c_i)).
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>Every step is natural and uses the original colimit legs. Hence it is precisely <span class="math" data-tex="\(\operatorname{Hom}_D(b,\gamma)\)">\(\operatorname{Hom}_D(b,\gamma)\)</span>, where</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\gamma:\operatorname{colim}_i Gc_i\\
+\longrightarrow G(\operatorname{colim}_i c_i).
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+\gamma:\operatorname{colim}_i Gc_i\\
+\longrightarrow G(\operatorname{colim}_i c_i).
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>All these tested maps are bijective. The conservative presentable probes from Proposition 2.2 make <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> invertible. Thus <span class="math" data-tex="\(G\)">\(G\)</span> is accessible. The bound depends on the objects <span class="math" data-tex="\(L(b)\)">\(L(b)\)</span>; it need not be the original local-presentability bound of either category. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-colimit-preservation-gives-the-other-adjoint">7. Colimit preservation gives the other adjoint</h2>
+<p><strong>Theorem 7.1.</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be locally presentable and <span class="math" data-tex="\(D\)">\(D\)</span> locally small. A functor <span class="math" data-tex="\(F:C\to D\)">\(F:C\to D\)</span> has a right adjoint exactly when it preserves every small colimit. No local-presentability hypothesis on <span class="math" data-tex="\(D\)">\(D\)</span> is required.</p>
+<p><strong>Proof: construction.</strong> Use the small full category <span class="math" data-tex="\(B\)">\(B\)</span> of presentable objects from Section 2. For <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+P_d(b)=\operatorname{Hom}_D(F(b),d).
+\tag{7.1}
+\]">\[
+P_d(b)=\operatorname{Hom}_D(F(b),d).
+\tag{7.1}
+\]</span>
+<p>Its restriction maps are precomposition with <span class="math" data-tex="\(F\)">\(F\)</span>, and maps <span class="math" data-tex="\(d\to d&#x27;\)">\(d\to d&#x27;\)</span> act by postcomposition. Local smallness makes it a small-valued presheaf. If <span class="math" data-tex="\(F\)">\(F\)</span> preserves colimits, <span class="math" data-tex="\(P_d\)">\(P_d\)</span> sends every <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small colimit in <span class="math" data-tex="\(B\)">\(B\)</span> to a limit of sets. Theorem 3.1 gives an object <span class="math" data-tex="\(R(d)\)">\(R(d)\)</span> and natural identifications</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_C(b,R(d))\simeq P_d(b).
+\tag{7.2}
+\]">\[
+\operatorname{Hom}_C(b,R(d))\simeq P_d(b).
+\tag{7.2}
+\]</span>
+<p>Postcomposition <span class="math" data-tex="\(P_d\to P_{d&#x27;}\)">\(P_d\to P_{d&#x27;}\)</span> lifts by full faithfulness to <span class="math" data-tex="\(R(d)\to R(d&#x27;)\)">\(R(d)\to R(d&#x27;)\)</span>. Identities and compositions lift to their identities and compositions, so this defines a functor <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>For arbitrary <span class="math" data-tex="\(c\)">\(c\)</span>, use its full small density presentation <span class="math" data-tex="\(B\downarrow c\)">\(B\downarrow c\)</span> from Proposition 2.2. Colimit uniqueness and (7.2) give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_C(c,R(d))\\
+\simeq\lim_{(b\to c)}\operatorname{Hom}_C(b,R(d))\\
+\simeq\lim_{(b\to c)}\operatorname{Hom}_D(Fb,d)\\
+\simeq\operatorname{Hom}_D(Fc,d).
+\end{gathered}
+\tag{7.3}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_C(c,R(d))\\
+\simeq\lim_{(b\to c)}\operatorname{Hom}_C(b,R(d))\\
+\simeq\lim_{(b\to c)}\operatorname{Hom}_D(Fb,d)\\
+\simeq\operatorname{Hom}_D(Fc,d).
+\end{gathered}
+\tag{7.3}
+\]</span>
+<p>Here the last comparison uses the actual image under <span class="math" data-tex="\(F\)">\(F\)</span> of that density colimit.</p>
+<p>Its forward map has a useful explicit description. The maps <span class="math" data-tex="\(F(b)\to d\)">\(F(b)\to d\)</span> corresponding to all <span class="math" data-tex="\(b\to R(d)\)">\(b\to R(d)\)</span> form a compatible family. Since <span class="math" data-tex="\(F\)">\(F\)</span> preserves their density colimit, they induce</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.4); horizontal scroll when needed" data-tex="\[
+\epsilon_d:F(R(d))\longrightarrow d.
+\tag{7.4}
+\]">\[
+\epsilon_d:F(R(d))\longrightarrow d.
+\tag{7.4}
+\]</span>
+<p>For <span class="math" data-tex="\(h:c\to R(d)\)">\(h:c\to R(d)\)</span>, the corresponding arrow is <span class="math" data-tex="\(\epsilon_dF(h)\)">\(\epsilon_dF(h)\)</span>. Checking this on every leg <span class="math" data-tex="\(F(b)\to F(c)\)">\(F(b)\to F(c)\)</span> proves it agrees with (7.3). This formula gives naturality in <span class="math" data-tex="\(c\)">\(c\)</span>. The definition of <span class="math" data-tex="\(R\)">\(R\)</span> by postcomposition gives naturality in <span class="math" data-tex="\(d\)">\(d\)</span>, first on the presentable legs and then by colimit uniqueness. Thus (7.3) is the natural adjunction bijection <span class="math" data-tex="\(F\dashv R\)">\(F\dashv R\)</span>.</p>
+<p>Its unit <span class="math" data-tex="\(c\to R(Fc)\)">\(c\to R(Fc)\)</span> corresponds to <span class="math" data-tex="\(1_{Fc}\)">\(1_{Fc}\)</span>. The counit is (7.4). The first inverse-bijection identity gives <span class="math" data-tex="\(\epsilon_{Fc}F(\eta_c)=1_{Fc}\)">\(\epsilon_{Fc}F(\eta_c)=1_{Fc}\)</span>. Naturality of the counit gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\epsilon_dF(R(\epsilon_d)\eta_{R(d)})\\
+=\epsilon_d\epsilon_{F(R(d))}F(\eta_{R(d)})\\
+=\epsilon_d.
+\end{gathered}
+\tag{7.5}
+\]">\[
+\begin{gathered}
+\epsilon_dF(R(\epsilon_d)\eta_{R(d)})\\
+=\epsilon_d\epsilon_{F(R(d))}F(\eta_{R(d)})\\
+=\epsilon_d.
+\end{gathered}
+\tag{7.5}
+\]</span>
+<p>The injectivity of (7.3), with <span class="math" data-tex="\(c=R(d)\)">\(c=R(d)\)</span>, yields <span class="math" data-tex="\(R(\epsilon_d)\eta_{R(d)}=1_{R(d)}\)">\(R(\epsilon_d)\eta_{R(d)}=1_{R(d)}\)</span>, the second triangle identity.</p>
+<p><strong>Proof: necessity.</strong> If <span class="math" data-tex="\(F\dashv R\)">\(F\dashv R\)</span> and <span class="math" data-tex="\(c=\operatorname{colim}_i c_i\)">\(c=\operatorname{colim}_i c_i\)</span>, then for every <span class="math" data-tex="\(d\)">\(d\)</span></p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.6); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_D(Fc,d)\\
+\simeq\operatorname{Hom}_C(c,Rd)\\
+\simeq\lim_i\operatorname{Hom}_C(c_i,Rd)\\
+\simeq\lim_i\operatorname{Hom}_D(Fc_i,d).
+\end{gathered}
+\tag{7.6}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_D(Fc,d)\\
+\simeq\operatorname{Hom}_C(c,Rd)\\
+\simeq\lim_i\operatorname{Hom}_C(c_i,Rd)\\
+\simeq\lim_i\operatorname{Hom}_D(Fc_i,d).
+\end{gathered}
+\tag{7.6}
+\]</span>
+<p>The bijection is given by restriction to the image colimit legs. It proves that <span class="math" data-tex="\(Fc\)">\(Fc\)</span> with those legs is the colimit of the <span class="math" data-tex="\(Fc_i\)">\(Fc_i\)</span>, including the empty diagram. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 7.2.</strong> For a locally presentable <span class="math" data-tex="\(C\)">\(C\)</span>, a covariant functor <span class="math" data-tex="\(H:C\to\operatorname{Set}\)">\(H:C\to\operatorname{Set}\)</span> is corepresentable exactly when it preserves all small limits and is accessible. A contravariant <span class="math" data-tex="\(K:C^{op}\to\operatorname{Set}\)">\(K:C^{op}\to\operatorname{Set}\)</span> is representable exactly when it sends all small colimits of <span class="math" data-tex="\(C\)">\(C\)</span> to limits of sets.</p>
+<p><strong>Proof.</strong> In the first case Theorem 6.1 gives <span class="math" data-tex="\(L\dashv H\)">\(L\dashv H\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.7); horizontal scroll when needed" data-tex="\[
+H(c)\simeq\operatorname{Hom}_C(L(1),c),
+\tag{7.7}
+\]">\[
+H(c)\simeq\operatorname{Hom}_C(L(1),c),
+\tag{7.7}
+\]</span>
+<p>by applying the adjunction to the singleton set. Conversely a corepresented functor preserves limits by the Hom universal property, and is accessible by the individual object rank in Theorem 4.1.</p>
+<p>For the second case, regard <span class="math" data-tex="\(K^{op}\)">\(K^{op}\)</span> as a functor <span class="math" data-tex="\(C\to\operatorname{Set}^{op}\)">\(C\to\operatorname{Set}^{op}\)</span>. Its colimit preservation is the stated hypothesis. The category <span class="math" data-tex="\(\operatorname{Set}^{op}\)">\(\operatorname{Set}^{op}\)</span> is locally small, so Theorem 7.1 supplies a right adjoint <span class="math" data-tex="\(R\)">\(R\)</span>, even though local presentability of this opposite category was not assumed. Apply the adjunction with target <span class="math" data-tex="\(1\)">\(1\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.8); horizontal scroll when needed" data-tex="\[
+K(c)\simeq\operatorname{Hom}_C(c,R(1)).
+\tag{7.8}
+\]">\[
+K(c)\simeq\operatorname{Hom}_C(c,R(1)).
+\tag{7.8}
+\]</span>
+<p>All identifications are natural. The converse is the contravariant Hom universal property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-foundation-the-exact-bound-for-a-power">Exercise 1 (foundation: the exact bound for a power)</h3>
+<p>For an infinite regular <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, determine which sets <span class="math" data-tex="\(A\)">\(A\)</span> are <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-presentable in sets. Determine exactly when <span class="math" data-tex="\(X\mapsto X^A\)">\(X\mapsto X^A\)</span> preserves <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-filtered colimits, and give its left adjoint with unit and counit.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(|A|&lt;\lambda\)">\(|A|&lt;\lambda\)</span>, then <span class="math" data-tex="\(\operatorname{Hom}(A,-)\)">\(\operatorname{Hom}(A,-)\)</span> is a product of <span class="math" data-tex="\(|A|\)">\(|A|\)</span> copies of the identity functor. Lemma 1.1 makes its comparison with every <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-filtered colimit bijective. This includes <span class="math" data-tex="\(A=\varnothing\)">\(A=\varnothing\)</span>, using the empty-limit case.</p>
+<p>If <span class="math" data-tex="\(|A|\ge\lambda\)">\(|A|\ge\lambda\)</span>, let <span class="math" data-tex="\(S\)">\(S\)</span> range over all subsets of <span class="math" data-tex="\(A\)">\(A\)</span> of size below <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, with inclusions. Regularity makes this poset <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-filtered, and its union is <span class="math" data-tex="\(A\)">\(A\)</span>. The identity <span class="math" data-tex="\(A\to A\)">\(A\to A\)</span> is not in the image of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{S\subset A,\ |S|&lt;\lambda}S^A
+\longrightarrow A^A.
+\tag{8.1}
+\]">\[
+\operatorname{colim}_{S\subset A,\ |S|&lt;\lambda}S^A
+\longrightarrow A^A.
+\tag{8.1}
+\]</span>
+<p>Every represented function has image in one such <span class="math" data-tex="\(S\)">\(S\)</span>, whereas the identity has image <span class="math" data-tex="\(A\)">\(A\)</span>. Thus exactly the sets of size below <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> are <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-presentable, and exactly for these sets does the power functor preserve <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-filtered colimits.</p>
+<p>Currying gives <span class="math" data-tex="\(\operatorname{Hom}(A\times B,X)\simeq\operatorname{Hom}(B,X^A)\)">\(\operatorname{Hom}(A\times B,X)\simeq\operatorname{Hom}(B,X^A)\)</span>: a map <span class="math" data-tex="\(h\)">\(h\)</span> goes to <span class="math" data-tex="\(b\mapsto(a\mapsto h(a,b))\)">\(b\mapsto(a\mapsto h(a,b))\)</span>, and evaluation reverses this. These formulas are natural. The unit sends <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(a\mapsto(a,b)\)">\(a\mapsto(a,b)\)</span>, and the counit sends <span class="math" data-tex="\((a,f)\)">\((a,f)\)</span> to <span class="math" data-tex="\(f(a)\)">\(f(a)\)</span>; substitution verifies both triangle identities. An infinite <span class="math" data-tex="\(A\)">\(A\)</span> therefore gives a right adjoint which is accessible but not finitary. Sets are locally finitely presentable because every set is the filtered union of its finite subsets, whose presentability was just proved.</p>
+<h3 id="exercise-2-standard-rational-hom-is-not-finitary">Exercise 2 (standard: rational Hom is not finitary)</h3>
+<p>Prove that <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb Z}(\mathbb Q,-):\operatorname{Ab}\to\operatorname{Ab}\)">\(\operatorname{Hom}_{\mathbb Z}(\mathbb Q,-):\operatorname{Ab}\to\operatorname{Ab}\)</span> preserves <span class="math" data-tex="\(\aleph_1\)">\(\aleph_1\)</span>-filtered colimits but fails to preserve an explicit ordinary filtered colimit. Specify its left adjoint.</p>
+<p><strong>Solution.</strong> We use the full module tensor–Hom adjunction in <a href="ring-actions-and-tensor-hom-in-abelian-categories.html">Ring actions and tensor–Hom</a>. Its specialization gives the left adjoint <span class="math" data-tex="\(\mathbb Q\otimes_{\mathbb Z}-\)">\(\mathbb Q\otimes_{\mathbb Z}-\)</span>, with the natural correspondence sending <span class="math" data-tex="\(f(q\otimes b)\)">\(f(q\otimes b)\)</span> to <span class="math" data-tex="\(b\mapsto(q\mapsto f(q\otimes b))\)">\(b\mapsto(q\mapsto f(q\otimes b))\)</span>. The balanced tensor relations make the reverse map well defined.</p>
+<p>Filtered colimits of abelian groups have their filtered colimit sets as underlying sets. Given two representatives, receive them at a common stage to define their sum; eventual equality proves independence of the stage. Inverses and zero are defined at their stages, and a common receiving stage verifies each group identity. Compatible group homomorphisms then give the unique homomorphism out, proving the universal property and the assertion about underlying sets.</p>
+<p>Present <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> as the sequential colimit of copies of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, whose map from stage <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(n+1\)">\(n+1\)</span> multiplies by <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, with leg <span class="math" data-tex="\(k\mapsto k/n!\)">\(k\mapsto k/n!\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. These legs identify the increasing subgroups <span class="math" data-tex="\((1/n!)\mathbb Z\)">\((1/n!)\mathbb Z\)</span> with union <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, so this is its colimit. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathbb Z}(\mathbb Q,A)\\
+\simeq\{(a_n)_{n\ge1}:a_n=(n+1)a_{n+1}\}.
+\end{gathered}
+\tag{8.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathbb Z}(\mathbb Q,A)\\
+\simeq\{(a_n)_{n\ge1}:a_n=(n+1)a_{n+1}\}.
+\end{gathered}
+\tag{8.2}
+\]</span>
+<p>This is a countable limit of the underlying sets of <span class="math" data-tex="\(A\)">\(A\)</span>, with the actual compatibility equations. Lemma 1.1 interchanges it with any <span class="math" data-tex="\(\aleph_1\)">\(\aleph_1\)</span>-filtered colimit. The resulting bijections respect addition, so the group-valued functor preserves these colimits.</p>
+<p>For failure at <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, let <span class="math" data-tex="\(B_n=\mathbb Z[1/n!]\)">\(B_n=\mathbb Z[1/n!]\)</span>, with inclusions. Their union is <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Choose a prime <span class="math" data-tex="\(p\)">\(p\)</span> not dividing <span class="math" data-tex="\(n!\)">\(n!\)</span>, for instance a prime divisor of <span class="math" data-tex="\(n!+1\)">\(n!+1\)</span>. A nonzero element of <span class="math" data-tex="\(B_n\)">\(B_n\)</span> cannot be divisible by <span class="math" data-tex="\(p^k\)">\(p^k\)</span> inside <span class="math" data-tex="\(B_n\)">\(B_n\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>: its denominator has no factor <span class="math" data-tex="\(p\)">\(p\)</span>, and its numerator has only finitely many such factors. Every element in the image of a map <span class="math" data-tex="\(\mathbb Q\to B_n\)">\(\mathbb Q\to B_n\)</span> is divisible by every <span class="math" data-tex="\(p^k\)">\(p^k\)</span>, since its preimage is. Hence every such map is zero.</p>
+<p>But <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb Z}(\mathbb Q,\mathbb Q)\simeq\mathbb Q\)">\(\operatorname{Hom}_{\mathbb Z}(\mathbb Q,\mathbb Q)\simeq\mathbb Q\)</span>, by multiplication by the value at <span class="math" data-tex="\(1\)">\(1\)</span>. Additivity and unique divisibility give <span class="math" data-tex="\(h(m/n)=(m/n)h(1)\)">\(h(m/n)=(m/n)h(1)\)</span>; every rational value at <span class="math" data-tex="\(1\)">\(1\)</span> defines such a map. The ordinary filtered comparison is thus <span class="math" data-tex="\(0\to\mathbb Q\)">\(0\to\mathbb Q\)</span>, and is not surjective. This is compatible with accessibility at the larger bound.</p>
+<h3 id="exercise-3-advanced-a-mixed-torsion-and-power-adjoint">Exercise 3 (advanced: a mixed torsion-and-power adjoint)</h3>
+<p>Fix <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> and define <span class="math" data-tex="\(F(A)=A[n]\times A^{\mathbb N}\)">\(F(A)=A[n]\times A^{\mathbb N}\)</span>, where <span class="math" data-tex="\(A[n]=\{a:na=0\}\)">\(A[n]=\{a:na=0\}\)</span>. Construct its left adjoint, unit and counit. Prove it is <span class="math" data-tex="\(\aleph_1\)">\(\aleph_1\)</span>-accessible but not finitary.</p>
+<p><strong>Solution.</strong> The left adjoint is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+L(B)=(B/nB)\oplus\bigoplus_{j\in\mathbb N}B.
+\tag{8.3}
+\]">\[
+L(B)=(B/nB)\oplus\bigoplus_{j\in\mathbb N}B.
+\tag{8.3}
+\]</span>
+<p>A map <span class="math" data-tex="\(B\to A[n]\)">\(B\to A[n]\)</span> is exactly a map <span class="math" data-tex="\(B/nB\to A\)">\(B/nB\to A\)</span>: it kills <span class="math" data-tex="\(nB\)">\(nB\)</span>, and conversely the image of such a quotient map is annihilated by <span class="math" data-tex="\(n\)">\(n\)</span>. A map <span class="math" data-tex="\(B\to A^{\mathbb N}\)">\(B\to A^{\mathbb N}\)</span> is exactly a family of maps <span class="math" data-tex="\(B\to A\)">\(B\to A\)</span>, equivalently a map from the direct sum of its labelled copies. The coproduct of the quotient summand with these copies therefore gives a natural bijection <span class="math" data-tex="\(\operatorname{Hom}(L(B),A)\simeq\operatorname{Hom}(B,F(A))\)">\(\operatorname{Hom}(L(B),A)\simeq\operatorname{Hom}(B,F(A))\)</span>.</p>
+<p>Let <span class="math" data-tex="\(i_0:B/nB\to L(B)\)">\(i_0:B/nB\to L(B)\)</span> and <span class="math" data-tex="\(i_j:B\to L(B)\)">\(i_j:B\to L(B)\)</span> denote the summand inclusions. The unit is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+b\longmapsto\\
+\bigl(i_0([b]),(i_j(b))_{j\in\mathbb N}\bigr).
+\end{gathered}
+\tag{8.4}
+\]">\[
+\begin{gathered}
+b\longmapsto\\
+\bigl(i_0([b]),(i_j(b))_{j\in\mathbb N}\bigr).
+\end{gathered}
+\tag{8.4}
+\]</span>
+<p>Its first component is indeed annihilated by <span class="math" data-tex="\(n\)">\(n\)</span>. For <span class="math" data-tex="\(z=(a,(x_j))\in F(A)\)">\(z=(a,(x_j))\in F(A)\)</span>, the counit on the first summand <span class="math" data-tex="\(F(A)/nF(A)\)">\(F(A)/nF(A)\)</span> sends <span class="math" data-tex="\([z]\)">\([z]\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span>. This is well defined because the first component of <span class="math" data-tex="\(nz&#x27;\)">\(nz&#x27;\)</span> is zero. On the copy of <span class="math" data-tex="\(F(A)\)">\(F(A)\)</span> labelled <span class="math" data-tex="\(j\)">\(j\)</span>, it sends <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(x_j\)">\(x_j\)</span>. These maps uniquely give a homomorphism from the direct sum to <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>For the triangle on <span class="math" data-tex="\(L(B)\)">\(L(B)\)</span>, evaluate on the first summand and each labelled copy: the first gives <span class="math" data-tex="\(i_0([b])\)">\(i_0([b])\)</span>, and the <span class="math" data-tex="\(j\)">\(j\)</span>-th gives <span class="math" data-tex="\(i_j(b)\)">\(i_j(b)\)</span>. Thus the composite is the identity. For the triangle on <span class="math" data-tex="\(F(A)\)">\(F(A)\)</span>, its first coordinate recovers <span class="math" data-tex="\(a\)">\(a\)</span>, and its <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate recovers <span class="math" data-tex="\(x_j\)">\(x_j\)</span>. This verifies the other identity.</p>
+<p>The functor <span class="math" data-tex="\(A[n]\)">\(A[n]\)</span> is the equalizer of multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> and zero. Along with the countable power, the expression for <span class="math" data-tex="\(F\)">\(F\)</span> is a countable limit of underlying sets. The filtered-group construction in Exercise 2 and Lemma 1.1 prove preservation of <span class="math" data-tex="\(\aleph_1\)">\(\aleph_1\)</span>-filtered colimits, with the resulting maps homomorphisms.</p>
+<p>Let <span class="math" data-tex="\(A_m=\bigoplus_{j=1}^m\mathbb Z\)">\(A_m=\bigoplus_{j=1}^m\mathbb Z\)</span>, with the usual inclusions and union <span class="math" data-tex="\(A=\bigoplus_{j\ge1}\mathbb Z\)">\(A=\bigoplus_{j\ge1}\mathbb Z\)</span>. Their <span class="math" data-tex="\(n\)">\(n\)</span>-torsion is zero. The element <span class="math" data-tex="\((e_j)_{j\ge1}\in A^{\mathbb N}\)">\((e_j)_{j\ge1}\in A^{\mathbb N}\)</span>, with <span class="math" data-tex="\(e_j\)">\(e_j\)</span> its <span class="math" data-tex="\(j\)">\(j\)</span>-th basis vector, belongs to no <span class="math" data-tex="\(A_m^{\mathbb N}\)">\(A_m^{\mathbb N}\)</span>. It is therefore absent from the image of the filtered comparison for <span class="math" data-tex="\(F\)">\(F\)</span>. Hence this right adjoint is not finitary.</p>
+<h3 id="exercise-4-synthesis-an-accessible-inclusion-with-the-other-adjoint">Exercise 4 (synthesis: an accessible inclusion with the other adjoint)</h3>
+<p>Let <span class="math" data-tex="\(\operatorname{Tor}\)">\(\operatorname{Tor}\)</span> be the full category of torsion abelian groups. Prove it is locally finitely presentable, and that its inclusion into abelian groups is accessible and has a right adjoint, but has no left adjoint.</p>
+<p><strong>Solution.</strong> Arbitrary direct sums of torsion groups are torsion, since each element has finite support and the orders of its finitely many components have a common finite multiple. Quotients of torsion groups are torsion. The usual coproduct-and-relations construction of an abelian-group colimit consequently stays in <span class="math" data-tex="\(\operatorname{Tor}\)">\(\operatorname{Tor}\)</span>, and its ambient universal property gives every small colimit there.</p>
+<p>Every torsion group is the filtered union of its finite subgroups. The subgroup generated by finitely many elements of orders <span class="math" data-tex="\(m_1,\ldots,m_k\)">\(m_1,\ldots,m_k\)</span> is an image of the finite group <span class="math" data-tex="\(\prod_i\mathbb Z/m_i\)">\(\prod_i\mathbb Z/m_i\)</span>, hence finite. These finite subgroups receive finite families by taking the subgroup they generate. Finite groups have a small set of isomorphism types, since their addition tables are tables on finite sets.</p>
+<p>A finite abelian group is finitely presentable with respect to filtered colimits in <span class="math" data-tex="\(\operatorname{Tor}\)">\(\operatorname{Tor}\)</span>. For a map into such a colimit, choose stage representatives for each of its finitely many elements. A common stage, enlarged once more for its finitely many addition and zero equations, makes those representatives a homomorphism. Two such represented homomorphisms which agree in the colimit agree at a common later stage, using finitely many equality witnesses. This proves both parts of its Hom comparison. Thus the stated small finite family gives local finite presentability. Filtered colimits are created by the inclusion, so the inclusion is accessible.</p>
+<p>For an abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, its subgroup <span class="math" data-tex="\(t(A)\)">\(t(A)\)</span> of finite-order elements is functorial: sums and inverses of such elements have finite order, and homomorphisms send them to finite-order elements. Any map from a torsion group into <span class="math" data-tex="\(A\)">\(A\)</span> has image in <span class="math" data-tex="\(t(A)\)">\(t(A)\)</span>, uniquely. This is the natural adjunction</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\operatorname{Ab}}(T,A)\\
+\simeq\operatorname{Hom}_{\operatorname{Tor}}(T,t(A)).
+\end{gathered}
+\tag{8.5}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\operatorname{Ab}}(T,A)\\
+\simeq\operatorname{Hom}_{\operatorname{Tor}}(T,t(A)).
+\end{gathered}
+\tag{8.5}
+\]</span>
+<p>Thus inclusion has right adjoint <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>The product of torsion groups <span class="math" data-tex="\(T_j\)">\(T_j\)</span> inside <span class="math" data-tex="\(\operatorname{Tor}\)">\(\operatorname{Tor}\)</span> is <span class="math" data-tex="\(t(\prod_j T_j)\)">\(t(\prod_j T_j)\)</span>. Indeed a map from a torsion group into the ambient product has torsion image, so uniquely factors through this subgroup. For <span class="math" data-tex="\(T_j=\mathbb Z/p^j\)">\(T_j=\mathbb Z/p^j\)</span> and <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, the ambient product has the element <span class="math" data-tex="\((1\bmod p^j)_j\)">\((1\bmod p^j)_j\)</span> of infinite order: any positive annihilating integer would be divisible by every <span class="math" data-tex="\(p^j\)">\(p^j\)</span>. Hence its torsion subgroup is a proper subgroup. The inclusion fails to preserve this product, and therefore cannot be a right adjoint, or equivalently cannot have a left adjoint. Accessibility alone does not imply the limit-preservation clause of Theorem 6.1.</p>
+<h2 id="references">References</h2>
+<p><strong>[Riehl]</strong> Emily Riehl, <em>Category Theory in Context</em>, Dover Publications, 2016. <a href="https://emilyriehl.github.io/files/context.pdf">Author-hosted full text</a>, Section 4.7, especially the locally presentable adjoint criteria. The presentable-probe, cardinal and solution-set constructions above supply the proofs used in this lesson.</p>
+</main></body></html>

@@ -1,0 +1,55 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "planar-halving-lines",
+  "title": "A power saving for planar halving lines",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-17",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's theorem (2026) that n points in the plane with no three on a line have at most C n^(4/3 - eps) halving lines, for an absolute eps > 0: the first improvement of Dey's exponent 4/3. The same bound holds for the switches of a rank sweep, uniformly in the rank, and a set of n points with no three on a line has at most C n (k+1)^(1/3 - eps0) k-sets. The course proves Dey's bound through convex and concave chains and a crossing inequality with designated endpoints, and reduces the theorem to a packing estimate by an induction over blocks of the sweep. The packing estimate is proved by contradiction: smoothed rank coordinates; weak limits of measures and conditional measures without atoms; almost-everywhere differentiability of functions monotone in each of two variables; independent gradients and tangent directions; compactness for homeomorphisms monotone along three families of parallel lines; a zoom with radial comparison; a spatial measure with disk exponent 32/17 > 7/4; and a count of boundary activity through three strips and tokens. The k-set bound follows by duality, random sampling below a lower envelope and the moment bound of Clarkson and Shor.",
+  "prerequisites": [
+    "real analysis in one and several variables: core courses Real Analysis I and II (Lebl, Basic Analysis I and II, version 6.3)",
+    "measure theory: core course Measure and Integration (Fremlin, Measure Theory, Volumes 1 and 2): the monotone class theorem (136B), the Radon-Nikodym theorem (232E), the Lebesgue decomposition (232I), density points (261D(b)), Lipschitz extensions (262B(b)) and Rademacher's theorem (262Q)",
+    "the Riesz representation theorem: Theorem 2.2 of the programme's lesson Haar measure on locally compact groups (course AN-01), used in the fourth lesson",
+    "Brouwer's fixed-point theorem: Theorem 30.1 of the core course Algebraic Topology, used in the ninth lesson",
+    "planar graphs with v >= 3 vertices have at most 3v - 6 edges: Theorem 5.34 of the core course Applied Combinatorics (Keller and Trotter), used in the second lesson",
+    "a nonzero polynomial does not vanish on a nonempty open set: Lemma 3.1 of the programme's lesson Drawings and crossing numbers (course crossing-numbers-of-complete-graphs), used in the first lesson"
+  ],
+  "lessons": [
+    "halving-lines-and-rank-sweeps",
+    "chains-crossings-and-deys-bound",
+    "from-packing-to-a-power-saving",
+    "measures-on-compact-metric-spaces",
+    "rank-coordinates",
+    "limiting-measures",
+    "monotone-functions-of-two-variables",
+    "independent-gradients-and-tangent-directions",
+    "three-transverse-foliations",
+    "the-zoom-at-a-rank-point",
+    "a-spatial-measure",
+    "boundary-activity",
+    "levels-and-k-sets"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "reading": "The manuscript 'A power saving for planar halving lines' (OpenAI, 25 Sep 2026; build/main.tex and the sections introduction, finite, recurrence, rank-limits, differentiability, zoom, spatial and boundary, 106 kB of TeX; local library copy openai-math-20261006) was read in full on 17 Oct 2026, and every step was derived again while the lessons were written. No error affecting a statement was found. Changes of form in the course: (1) the transfers of the window K_0 with exactly one endpoint in the region B number at most 2N, since each token enters B at most once and leaves it at most once (twelfth lesson, Section 2); the manuscript bounds them by 4N through the four side levels of B. (2) The two facts of planar topology are proved from Brouwer's fixed-point theorem (ninth lesson, Lemmas 1.1 and 1.2): paths joining opposite sides of a parallelogram meet, where the manuscript cites Pascoletti and Zanolin, Lemma 2.11, and a map within delta of plus or minus the identity on a disk covers the concentric disk of radius smaller by delta, which replaces the manuscript's use of the Jordan curve theorem for the convergence of the inverse maps. (3) Background the manuscript cites is proved in the lessons: regularity and weak compactness of finite Borel measures on compact metric spaces, Blaschke selection for Hausdorff limits, and conditional measures by a dyadic Radon-Nikodym construction (fourth lesson; the manuscript cites the disintegration theorem in Viana's notes on Rokhlin's theorem, Example 2 and Theorem 3), and the five-times covering lemma (seventh lesson). The Radon-Nikodym theorem, the Lebesgue decomposition and Rademacher's theorem are taken from the core course Measure and Integration. (4) Corollary C is derived by random sampling below a lower envelope and the moment bound of Clarkson and Shor, both proved in the last lesson, following the second route in the paper of Agarwal, Aronov, Chan and Sharir (proof of Theorem 3.1); the manuscript uses Matoušek's shallow cutting lemma in their form (Lemma 3.2). Attributions checked: Erdős, Lovász, Simmons and Straus 1973 (the paper's PDF on the Rényi Institute's Erdős pages); Dey's bound and its convex-chain argument through O'Rourke's column arXiv:cs/9810021; the theorem of Saks and of Chabrillac and Crouzeix through Borwein, Burke and Lewis, Theorem 1(f) and Section 3 (Burke's page); Artstein-Avidan and Slomka, arXiv:1604.01762; Agarwal, Aronov, Chan and Sharir, Lemma 3.2 and the proof of Theorem 3.1 (Chan's page); the crossing inequality of Ajtai, Chvátal, Newborn and Szemerédi and of Leighton, and the imbalanced argument of Pach, Solymosi and Tardos, as attributed in the manuscript.",
+    "exact_checks": "Python with exact rational arithmetic (plan/checks_20261017/halving_lines_check.py, output halving_lines_check.out, 17 Oct 2026; rerun after the layout edits): 93,332 checks, 0 problems. On random generic configurations with integer coordinates: the step and switch structure of rank sweeps and Lemma 2.2 of the first lesson (halving pairs are the middle switches); Exercises 4.1 to 4.4 of the first lesson, including a six-point configuration with six halving pairs; activity and endpoint distance, greedy batches against exact optimisation, exchange edges, the convex and concave token chains with their crossing counts, and the crossing inequality with designated endpoints on random straight-line drawings (second lesson); the restriction lemma and the arithmetic of the induction (third lesson); the opposite-sides lemma on random polygonal paths (ninth lesson); the exponent arithmetic of the eleventh and twelfth lessons and the three-strip lemma on random instances in floating point; duality, the k-set count against S_k + S_{n-k} + 2 by brute force, the cells below a lower envelope and the inequality (1 - 1/x)^x >= 1/4 (last lesson).",
+    "lint": "gp_lint.py (scratch): headings, provenance line, banned wording, balanced TeX delimiters, sibling links; 0 problems.",
+    "layout": "Tested on 17 Oct 2026 with the site's MathJax at 375 px against the 328 px text column (288 px in lists) before staging: 63 formulas of the first draft were rewritten (displays set on several lines, long inline formulas split by words, conditions moved into the text). Measured in the staged reader on 17 Oct 2026: the thirteen lessons have 265, 361, 206, 345, 316, 236, 202, 409, 261, 211, 253, 236 and 264 formulas (3,565 in all), 0 rendering errors, 0 formulas wider than the column, no sideways page scroll; the table in the sixth lesson wraps within the column."
+  },
+  "open_obligations": [
+    "The OpenAI repository has a Lean entry for this problem (lean/docs/183.md); it and the Lean files were not read, and the course does not depend on them.",
+    "The proof gives no numerical value of eps or of the constants; the course does not compute one.",
+    "The lessons were written and checked by one model in one session; they have not been checked by a second reader."
+  ],
+  "free_sources": [
+    "OpenAI, A power saving for planar halving lines (OpenAI Math Release preprint, 25 Sep 2026), https://github.com/openai/math/tree/main/preprints/A-power-saving-for-planar-halving-lines-September-25-2026",
+    "P. Erdős, L. Lovász, A. Simmons and E. G. Straus, Dissection graphs of planar point sets, in A Survey of Combinatorial Theory, North-Holland, 1973, 139-149, https://users.renyi.hu/~p_erdos/1973-07.pdf",
+    "J. O'Rourke, Computational Geometry Column 32, arXiv:cs/9810021",
+    "K. Keller and W. T. Trotter, Applied Combinatorics, open textbook (core course Applied Combinatorics), https://www.appliedcombinatorics.org/",
+    "D. H. Fremlin, Measure Theory, Volumes 1 and 2 (core course Measure and Integration), https://www1.essex.ac.uk/maths/people/fremlin/mt.htm",
+    "J. M. Borwein, J. V. Burke and A. S. Lewis, Differentiability of cone-monotone functions on separable Banach space, Proceedings of the American Mathematical Society 132 (2004), 1067-1076, https://sites.math.washington.edu/~burke/papers/reprints/46-cone-monotone.pdf",
+    "S. Artstein-Avidan and B. A. Slomka, The fundamental theorems of affine and projective geometry revisited, Communications in Contemporary Mathematics 19 (2017); arXiv:1604.01762",
+    "P. K. Agarwal, B. Aronov, T. M. Chan and M. Sharir, On levels in arrangements of lines, segments, planes, and triangles, Discrete & Computational Geometry 19 (1998), 315-331, https://tmc.web.engr.illinois.edu/kset.pdf"
+  ]
+}

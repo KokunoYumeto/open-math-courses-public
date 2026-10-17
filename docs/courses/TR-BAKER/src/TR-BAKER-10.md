@@ -12453,7 +12453,797 @@ figure](../figure_sources/yu_coefficient_transfer.py). Human source
 for the two constants: equations (1.9)–(1.13), (1.28)–(1.30) of
 [Yu's freely accessible paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).*
 
-## 59. Exercises with solutions
+## 59. Congruence selection and a larger analytic disc
+
+A congruence between the unit parts of two monomials gives extra
+precision for their quotient. Selecting many such monomials costs a
+finite index. The useful balance is between that index and the enlarged
+disc on which the auxiliary function is normal. We keep the polynomial
+indices separate from the monomial exponents throughout the selection.
+
+### Selecting the monomials
+
+Let L be a finite extension of \(\mathbb Q_p\), with ring of integers
+\(\mathcal O_L\), uniformizer \(\pi\), ramification index e and
+residue field of cardinality \(p^f\). Use \(v_p(p)=1\), so that
+\(v_p(\pi)=1/e\). For an integer \(j\ge1\), write
+\(U_j=1+\pi^j\mathcal O_L\).
+
+**Theorem 10.176 (congruence selection with all polynomial indices).**
+Let \(u_1,\ldots,u_r\in U_j\), let \(S\subset\mathbb Z^r\)
+be finite and nonempty, and let E be a finite nonempty set of auxiliary
+indices. For an integer \(m\ge0\), put
+
+\[
+H_m=\operatorname{im}\left(\mathbb Z^r\longrightarrow U_j/U_{j+m},
+      \quad\lambda\longmapsto\prod_{i=1}^ru_i^{\lambda_i}\right),
+\qquad h_m=|H_m|.
+\tag{10.659}
+\]
+
+There is a nonempty \(S_0\subset S\) such that
+
+\[
+h_m\le p^{fm},\qquad
+|S_0|\ge\left\lceil\frac{|S|}{h_m}\right\rceil,
+\qquad |E\times S_0|\ge\frac{|E\times S|}{p^{fm}},
+\tag{10.660}
+\]
+
+and, for every \(\lambda,\mu\in S_0\),
+
+\[
+v_p\left(\prod_i u_i^{\lambda_i-\mu_i}-1\right)
+\ge\frac{j+m}{e}.
+\tag{10.661}
+\]
+
+Every \(\lambda^0\in S_0\) supplies the full reference fibre
+\(E\times\{\lambda^0\}\). Moreover, let q be an integer prime
+to p, with \(q\ge2\). Restrict \(S_0\) to any nonempty class
+\(a+q\mathbb Z^r\), and replace \(\lambda=a+q\mu\) by
+\(\mu\). The displayed congruence remains true for the differences
+of the new exponents, with the same units, j and m. This remains true
+after every finite sequence of such restrictions and divisions.
+
+**Proof.** For \(s\ge1\), the map
+
+\[
+U_s/U_{s+1}\longrightarrow\mathcal O_L/\pi\mathcal O_L,
+\qquad 1+\pi^s a\longmapsto a\pmod\pi
+\tag{10.662}
+\]
+
+is an isomorphism of groups, where the target is additive. It is
+induced by the surjective map on \(U_s\) with kernel \(U_{s+1}\), and the
+product of two representatives introduces only the extra term
+\(\pi^{2s}ab\), which lies in \(\pi^{s+1}\mathcal O_L\).
+Multiplying the successive indices proves
+\(|U_j/U_{j+m}|=p^{fm}\), including m=0. Negative exponents are
+allowed because every \(U_s\) is a group: the inverse identity is
+\((1+x)^{-1}-1=-x/(1+x)\).
+
+The monomial map is therefore a homomorphism with at most \(p^{fm}\)
+values. One of its fibres on S has at least \(\lceil|S|/h_m\rceil\)
+elements. Choose that fibre as \(S_0\). Equal images mean exactly
+that the quotient belongs to \(U_{j+m}\). The selection is independent
+of E, so every auxiliary index remains available and the reference
+fibre has the asserted form.
+
+For the final assertion, let two retained exponents be
+\(a+q\mu,a+q\nu\). Put \(w=\prod_i u_i^{\mu_i-\nu_i}\in U_j\).
+The original congruence says \(w^q\in U_{j+m}\). But
+
+\[
+w^q-1=(w-1)(1+w+\cdots+w^{q-1}),
+\qquad 1+w+\cdots+w^{q-1}\equiv q\pmod\pi.
+\tag{10.663}
+\]
+
+The second factor is a unit, giving \(v_p(w^q-1)=v_p(w-1)\).
+Thus \(w\in U_{j+m}\). Induction proves persistence through every
+subsequent restriction and division. \(\square\)
+
+In particular, E can be
+\(\{0,\ldots,D_{-1}\}\times\{0,\ldots,D_0\}\), while S
+already satisfies a prescribed residue-phase condition. The phase
+subclasses of \(S_0\) are intersections with the original subclasses;
+their number cannot increase. The selected coefficient set retains
+both complete polynomial-index intervals.
+
+For a concrete example, take \(L=\mathbb Q_3\),
+\(u_1=10,u_2=19,j=2,m=1\), and
+\(S=\{0,\ldots,5\}^2\). Since
+
+\[
+10^{\lambda_1}19^{\lambda_2}
+\equiv1+9(\lambda_1+2\lambda_2)\pmod{27},
+\tag{10.664}
+\]
+
+there are three classes of twelve exponents each. The zero class
+contains the three even-coordinate exponents \((0,0),(2,2),(4,4)\).
+Division of those coordinates by two gives
+\((0,0),(1,1),(2,2)\), whose monomials are still one modulo 27.
+
+### Choosing the congruence level
+
+Let \(t=f\ln p\), and let A be a positive real number. For a positive
+integer r put \(\rho=t/r\) and
+
+\[
+\chi(x)=(A+x)\exp(-\rho x),\qquad x_0=1/\rho-A.
+\tag{10.665}
+\]
+
+The quantity \(p^{fm}(A+m)^{-r}=\chi(m)^{-r}\) combines
+the worst-case index loss with r powers of the analytic gain.
+
+**Lemma 10.177 (integer optimization with explicit rounding losses).**
+Suppose \(A\ge A_0\) and \(x_0>3/5\). Choose m by
+
+\[
+\begin{cases}
+m=1,&3/5<x_0\le1,\\
+m=k,&x_0>1,\quad k=\lfloor x_0\rfloor,
+       \quad x_0-k\le 1/\rho-1/(\exp\rho-1),\\
+m=k+1,&\text{otherwise}.
+\end{cases}
+\tag{10.666}
+\]
+
+This m maximizes \(\chi\) among the positive integers. For each
+row in the following table it also satisfies
+
+\[
+A+m<\varsigma_1\frac r t,\qquad
+\chi(m)>\frac{\chi(x_0)}{\varsigma_2}.
+\tag{10.667}
+\]
+
+| \(A_0\) | \(\varsigma_1\) | \(\varsigma_2\) |
+| ---: | ---: | ---: |
+| \(3/2\) | \(1.2133\) | \(1.0202\) |
+| \(3/4\) | \(1.3128\) | \(1.0415\) |
+| \(1/2\) | \(1.3701\) | \(1.0568\) |
+| \(2\) | \(1.176\) | \(1.014\) |
+
+Consequently, throughout the same ranges,
+
+\[
+\frac{p^{fm}}{(A+m)^r}
+<\varsigma_2^r\left(\frac{\mathrm e t}{r}\right)^r p^{-fA}.
+\tag{10.668}
+\]
+
+**Proof.** Differentiation gives
+\(\chi'(x)=\exp(-\rho x)(1-\rho(A+x))\).
+If \(x_0\le1\), the greatest value at a positive integer is at one.
+Otherwise it suffices to compare k and k+1. Their quotient is
+\(\exp(-\rho)(A+k+1)/(A+k)\), and comparison with one gives
+exactly the threshold in the statement. The threshold is between zero
+and one. Positivity follows from \(\exp\rho>1+\rho\).
+For \(\rho\ge1\) the upper bound is immediate; for
+\(0<\rho<1\), the power series gives
+\(\exp\rho<1/(1-\rho)\), which gives the upper bound as well.
+
+For \(x_0>1\), write \(x_0=k+v\), and define
+
+\[
+z(y)=\frac y{\exp y-1},\qquad
+H(y)=y+z(y)=\frac y{1-\exp(-y)},\qquad
+F(y)=z(y)\exp(1-z(y)).
+\tag{10.669}
+\]
+
+The relative values at k and k+1 are
+\(\exp(\rho v)(1-\rho v)\) and
+\(\exp(-\rho(1-v))(1+\rho(1-v))\), respectively.
+The first decreases in v and the second increases. Their maximum
+therefore has its least value at their intersection, where it is
+\(F(\rho)\). If m=k, then \(\rho(A+m)\le1\). If m=k+1,
+the threshold gives \(\rho(A+m)\le H(\rho)\).
+Since \(\rho<1/(A+1)\le1/(A_0+1)\), it follows that
+
+\[
+\rho(A+m)\le H(1/(A_0+1)),\qquad
+\frac{\chi(m)}{\chi(x_0)}\ge F(1/(A_0+1)).
+\tag{10.670}
+\]
+
+Here H increases, z decreases from one to zero, and F decreases.
+For H the derivative has the sign of \(\exp y-1-y>0\).
+For z it has the sign of \(\exp y(1-y)-1<0\).
+Finally \(z\exp(1-z)\) increases for \(0<z<1\).
+These derivative tests prove all the required monotonicity statements.
+
+When \(3/5<x_0\le1\), m=1 and
+\(\rho(A+1)<(A_0+1)/(A_0+3/5)\). Also
+
+\[
+\frac{\chi(1)}{\chi(x_0)}
+=\exp(-c)(1+c),\qquad
+c=\rho(1-x_0)<\frac{2/5}{A_0+3/5}.
+\tag{10.671}
+\]
+
+The function \((1+c)\exp(-c)\) decreases for c nonnegative.
+Thus both alternatives are reduced to four fixed endpoints.
+The following decimals are rational upper or lower endpoints with
+denominator \(10^{12}\):
+
+| \(A_0\) | Upper bound for H | Lower bound for F | Lower bound for the forced ratio |
+| ---: | ---: | ---: | ---: |
+| \(3/2\) | \(1.213297912688\) | \(0.980242084353\) | \(0.984006473362\) |
+| \(3/4\) | \(1.312778225605\) | \(0.960181882841\) | \(0.963883250822\) |
+| \(1/2\) | \(1.370098893207\) | \(0.946280756540\) | \(0.947923538725\) |
+| \(2\) | \(1.175908824386\) | \(0.986228202757\) | \(0.989312214415\) |
+
+To verify these without a numerical exponential, for \(0\le y\le1\)
+use
+
+\[
+E_{64}(y)=\sum_{i=0}^{64}\frac{y^i}{i!}
+\le\exp y\le E_{64}(y)+\frac{y^{65}}{65!}\frac1{1-y/66}.
+\tag{10.672}
+\]
+
+The upper tail follows by bounding every subsequent term ratio by
+y/66. These rational bounds enclose z. Evaluate
+\(z\exp(1-z)\) at its lower z endpoint, using its proved
+monotonicity, and round down; evaluate H with the upper z endpoint
+and round up. For the forced ratio divide \(1+c\) by an upper
+bound for \(\exp c\). This gives exactly the displayed endpoints.
+Each H endpoint is strictly below \(\varsigma_1\); each lower
+ratio is strictly above \(1/\varsigma_2\), as multiplication of
+positive rational denominators verifies. The other height bounds
+are \(25/21,35/27,15/11,15/13\), respectively, and are also
+strictly below \(\varsigma_1\). The [exact calculation](../figure_sources/yu_congruence_clusters.py)
+records all rational gaps. The monotonicity argument supplies every
+allowed A and \(\rho\), rather than a finite sampling of them.
+
+Finally,
+\(\chi(x_0)=\rho^{-1}\exp(-1+\rho A)\).
+Raising its strict reciprocal comparison to the rth power, and using
+\(\rho r=f\ln p\), proves the last assertion. \(\square\)
+
+The four rows apply to the local radii used earlier. For
+\(A=e\vartheta\), cases I and II of Theorem 10.152 have
+\(A\ge3/2\); case III has \(A\ge3/4\); case IV has
+\(A\ge1/2\); and case V has \(A\ge2\).
+Indeed \(e\vartheta=P/2\) outside the unramified odd-prime case,
+while in that case \(\vartheta=(p-2)/(p-1)\).
+The inequalities defining P give \(P\ge3\) at three,
+\(P\ge5\) at a ramified five, \(P\ge1\) at an odd prime
+at least seven, and \(P\ge4\) at two.
+
+### Normality and divided derivatives
+
+The next statement includes a perturbation of the logarithmic
+frequencies. This permits the coefficient relation to be imposed
+without losing the enlarged disc.
+
+**Theorem 10.178 (normality from a congruence class).** Use a class
+\(S_0\) from Theorem 10.176 and a reference
+\(\lambda^0\in S_0\). Suppose
+\(j/e>1/(p-1)\), and put
+
+\[
+\gamma_\lambda=\ln\left(\prod_i u_i^{\lambda_i-\lambda_i^0}\right).
+\tag{10.673}
+\]
+
+Let \(N\ge0\) be rational with
+\(N<(j+m)/e-1/(p-1)\), and let
+\(\epsilon_\lambda\in\mathbb C_p\) satisfy
+\(v_p(\epsilon_\lambda)>N+1/(p-1)\).
+Let \(P_\lambda\in\mathbb C_p[z]\) have degree at most D
+and all coefficients of valuation at least \(-C\), where
+\(D\in\mathbb Z_{\ge0}\), \(C\in\mathbb Q_{\ge0}\).
+Take coefficients \(c_\lambda\in\mathbb C_p\), not all zero,
+and set \(\beta=\min_\lambda v_p(c_\lambda)\). Then
+
+\[
+f(z)=\sum_{\lambda\in S_0}c_\lambda P_\lambda(z)
+                 \exp\bigl(z(\gamma_\lambda+\epsilon_\lambda)\bigr)
+\tag{10.674}
+\]
+
+converges on \(|z|_p\le p^N\). Choose \(\omega,\xi\in\mathbb C_p\)
+with \(v_p(\omega)=-N\) and \(v_p(\xi)=C+DN-\beta\).
+The function \(\xi f(\omega z)\) is normal on the unit disc:
+its power-series coefficients are integral and tend to zero. Moreover,
+for every \(a\in\mathbb C_p\) with \(v_p(a)\ge0\) and
+every integer \(k\ge0\),
+
+\[
+v_p\left(\frac{f^{(k)}(a)}{k!}\right)
+\ge\beta-C-DN+kN.
+\tag{10.675}
+\]
+
+**Proof.** The required scalar valuations are rational. Indeed, a
+nonzero element of \(\mathbb C_p\) has an algebraic approximation
+close enough to have the same valuation; that approximation lies in a
+finite extension of \(\mathbb Q_p\). Roots of integral powers of p
+therefore supply \(\omega\) and \(\xi\).
+The deep-unit logarithm law of
+[Proposition 9.3](../TR-BAKER-09.html#3-the-exponential-and-the-logarithm) gives
+\(v_p(\gamma_\lambda)\ge(j+m)/e\). Therefore
+\(v_p(\omega(\gamma_\lambda+\epsilon_\lambda))>1/(p-1)\).
+For any w of valuation greater than \(1/(p-1)\), the coefficients
+of \(\exp(wz)\) satisfy
+
+\[
+v_p(w^s/s!)\ge s\bigl(v_p(w)-1/(p-1)\bigr),
+\tag{10.676}
+\]
+
+and tend to infinity. Here
+\(v_p(s!)=\sum_{i\ge1}\lfloor s/p^i\rfloor\le s/(p-1)\),
+as proved in
+[Section 3 of Lesson 9](../TR-BAKER-09.html#3-the-exponential-and-the-logarithm).
+Thus each rescaled exponential is normal.
+Every coefficient of \(P_\lambda(\omega z)\) has valuation at
+least \(-C-DN\). Multiplication by \(\xi c_\lambda\)
+makes all coefficients integral. Finite sums and multiplication by
+polynomials preserve convergence and this coefficient bound, proving
+normality and the asserted convergence of f.
+
+For a normal series \(F(z)=\sum_s A_sz^s\), the kth divided
+derivative at an integral point b is
+\(\sum_{s\ge k}A_s\binom sk b^{s-k}\).
+This series converges and every summand is integral. Apply this to
+\(F(z)=\xi f(\omega z)\) at \(b=a/\omega\), which is integral
+because N is nonnegative. The chain rule gives
+\(F^{(k)}(a/\omega)=\xi\omega^k f^{(k)}(a)\).
+Taking valuations gives precisely the displayed divided-derivative
+bound. \(\square\)
+
+**Corollary 10.179 (prepared polynomial factors).** For each coefficient
+index, choose integers \(k\ge1,\ell\ge1,t_0\ge0,I\ge0,a\in\mathbb Z\)
+with \(k\ell\le D\), and any finite list of integers
+\(\gamma_i,t_i\), with \(t_i\ge0\). With
+\(V(k)=\operatorname{lcm}(1,\ldots,k)\), let
+
+\[
+P(z)=\frac{V(k)^{t_0}}{t_0!}
+ \left(\frac d{dz}\right)^{t_0}
+ \bigl(\Delta(q^{-I}z+a;k)^\ell\bigr)
+ \prod_i\Delta(\gamma_i;t_i).
+\tag{10.677}
+\]
+
+These factors satisfy Theorem 10.178 with \(C=D/(p-1)\).
+Thus its normalizing scalar can be chosen with valuation
+\(D(N+1/(p-1))-\beta\). The same coefficient bound holds
+when the derivative is taken before the affine substitution.
+
+**Proof.** The numerator of
+\(\Delta(q^{-I}z+a;k)^\ell\) has integral p-adic coefficients,
+since q is prime to p. Its denominator is \((k!)^\ell\), of
+valuation at most \(k\ell/(p-1)\le D/(p-1)\).
+Divided differentiation sends \(z^s\) to
+\(\binom{s}{t_0}z^{s-t_0}\), so it preserves this coefficient
+bound. The factor \(V(k)^{t_0}\) is an integer, as is every
+\(\Delta(\gamma_i;t_i)\). For a negative integer \(\gamma_i\),
+the latter assertion follows either from a zero factor or from
+\(\Delta(-b;t)=(-1)^t\binom{b-1}{t}\) when \(b>t\).
+Finally, the chain-rule difference between the two derivative
+conventions is a power of q, which is a p-adic unit. The degree remains
+at most D, so Theorem 10.178 applies. \(\square\)
+
+In the parameters of Lemma 10.177, take
+\(j=\lceil e(\vartheta+1/(p-1))\rceil\) and
+\(N=(m+e\vartheta)/(e(1+\tau))\), with any positive rational
+\(\tau\) for which N is rational. Then
+\(N<(j+m)/e-1/(p-1)\). Theorems 10.176 and 10.178 therefore
+give the enlarged disc and preserve it at every prime-to-p descent
+stage. Corollary 10.179 gives the full normalization of the prepared
+polynomial factors. Global height and product-formula estimates
+continue to use their original coefficient field and degree.
+
+![Congruence classes of monomials and the integer-depth rounding efficiency](../figures/yu-congruence-clusters.png)
+
+*Figure 10.52. Left: the 36 exponents in
+\(\{0,\ldots,5\}^2\), colored by \(\lambda_1+2\lambda_2\pmod3\).
+Each class has twelve points. The circled exponents
+\((0,0),(2,2),(4,4)\) contract to \((0,0),(1,1),(2,2)\), with
+the same quotient precision modulo 27. Theorem 10.176 proves the
+selection and its persistence, including every auxiliary polynomial
+index. Right: the scalar rounding efficiency for \(A=1/2\).
+The dashed line is the uniform bound \(1/1.0568\); the curve
+illustrates Lemma 10.177 and does not supply its infinite-parameter
+proof. Theorems 10.178–10.179 turn the retained congruence into a
+normal-function and divided-derivative estimate. [Reproducible exact
+calculation and figure](../figure_sources/yu_congruence_clusters.py).
+Human-source context: Sections 2, 10 and 11 of
+[Yu's free 1999 paper](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf).*
+
+## 60. Projecting the selected auxiliary function
+
+The congruence selection concerns a monomial, rather than each of its
+individual factors. We now impose the original coefficient relation on
+that monomial and carry the resulting precision through interpolation.
+The cost of selecting the monomials must also remain in the global
+coefficient count.
+
+### The original coefficient relation
+
+Let K be a number field, let its chosen completion at p have ramification
+index e, and write \(v_p(p)=1\). Take local units
+\(a_1,\ldots,a_n\in K^*\), integers
+\(b_1,\ldots,b_n\) with \(b_n\ne0\), and put
+\(\Xi=\prod_j a_j^{b_j}\). Let \(P=p^\kappa\),
+\(\kappa\in\mathbb Z_{\ge0}\), and let \(\zeta\) be a root of unity of
+order G prime to p in the completion. Suppose integers \(c_j\)
+make \(u_j=a_j^P\zeta^{c_j}\) deep units:
+\(v_p(u_j-1)>1/(p-1)\). Set \(z_j=\log u_j\).
+For integers \(A_{ij}\), let
+\(L_i(Z)=\sum_j A_{ij}Z_j\), \(1\le i\le r\).
+Choose a prime \(q\ne p\) and \(\nu\in\mathbb Z_{\ge0}\), and set
+\(w_i=\exp(q^{-\nu}L_i(z))\). These exponentials lie in the
+chosen completion, by its completeness and the logarithmic convergence
+estimates of Lesson 9. Suppose \(w_i\in U_j\), with
+\(j/e>1/(p-1)\), and select \(S_0\) as in Theorem 10.176.
+
+**Theorem 10.180 (the coefficient relation on a selected class).**
+Suppose \(V=v_p(\Xi-1)>1/(p-1)\) is finite. Then
+
+\[
+\sum_j c_jb_j\equiv0\pmod G,\qquad
+\mathcal L:=\sum_j b_jz_j=P\log\Xi,\qquad
+v_p(\mathcal L)=\kappa+V.
+\tag{10.681}
+\]
+
+Fix \(\lambda^0\in S_0\), write \(d_i=\lambda_i-\lambda_i^0\),
+and let
+
+\[
+\begin{aligned}
+M_i(Z)&=L_i(Z)-\frac{A_{in}}{b_n}\sum_jb_jZ_j,\\
+\gamma_\lambda&=\sum_i d_iq^{-\nu}L_i(z)
+ =\log\left(\prod_iw_i^{d_i}\right),\\
+\epsilon_\lambda&=-\frac{\mathcal L}{q^\nu b_n}
+                         \sum_i d_iA_{in},\qquad
+H=\kappa+V-v_p(b_n).
+\end{aligned}
+\tag{10.682}
+\]
+
+The coefficient of \(Z_n\) in every \(M_i\) is zero, and
+
+\[
+q^{-\nu}\sum_i d_iM_i(z)
+ =\gamma_\lambda+\epsilon_\lambda,\qquad
+v_p(\gamma_\lambda)\ge\frac{j+m}{e},\qquad
+v_p(\epsilon_\lambda)\ge H.
+\tag{10.683}
+\]
+
+Consequently, whenever \(N\ge0\) is rational and
+
+\[
+N<\frac{j+m}{e}-\frac1{p-1},\qquad H>N+\frac1{p-1},
+\tag{10.684}
+\]
+
+the projected frequencies satisfy Theorem 10.178 on the whole closed
+disc \(|y|_p\le p^N\). This conclusion holds for every retained
+auxiliary polynomial index. It persists through every prime-to-p
+restriction and exponent division of Theorem 10.176.
+
+**Proof.** The identity
+\(\prod_j u_j^{b_j}=\Xi^P\zeta^{\sum_jc_jb_j}\)
+shows that the displayed root of unity reduces to one. Reduction is
+injective on roots of unity of order prime to p: if \(t^G=1\) and
+\(v_p(t-1)>0\), the factorization of \(t^G-1\) has second
+factor congruent to the p-adic unit G, forcing \(t=1\).
+This proves the phase congruence. All remaining factors are on the
+deep-unit disc. The logarithm product and power laws in Propositions
+9.3–9.4 therefore give \(\mathcal L=P\log\Xi\), with the
+stated exact valuation.
+
+The definition of \(M_i\) cancels its last coefficient exactly.
+Summing its identity with coefficients \(q^{-\nu}d_i\) gives the
+displayed perturbation. The exponential and logarithm are inverse on
+this disc, so their product law identifies \(\gamma_\lambda\)
+with the logarithm of the quotient monomial. Theorem 10.176 gives its
+valuation at least \((j+m)/e\). The sum \(\sum_i d_iA_{in}\)
+is an integer and q is a p-adic unit. Thus the perturbation has valuation
+at least H, including a zero perturbation. The two strict disc conditions
+are precisely those of Theorem 10.178. Its proof applies to the finite sum
+over all auxiliary indices as well as over the exponent indices.
+
+For a restriction \(\lambda=a+q\mu\) and corresponding reference
+\(\lambda^0=a+q\mu^0\), both differences divide by q. Thus the
+new \(\gamma\) and \(\epsilon\) are the old ones divided by q;
+their valuations are unchanged. Iteration proves the last assertion.
+No new global field or replacement coefficient relation has been used.
+\(\square\)
+
+In a contradiction argument with \(V\ge U\), a bound
+\(\log|b_n|\le h\) gives
+\(H\ge\kappa+U-h/\log p\). Indeed
+\(p^{v_p(b_n)}\le|b_n|\). This makes the strict perturbation
+condition explicit. In applications to Theorem 10.152 the original
+minimum-valuation choice of \(b_n\) is retained.
+
+### The error and its ordinary derivatives
+
+**Lemma 10.181 (Taylor precision of the projection error).**
+Use the frequencies of Theorem 10.180 and a positive rational N
+satisfying its two disc conditions. Let \(P_\lambda\) have degree at
+most D and coefficients of valuation at least \(-C\), with
+\(D\ge0\) integral and \(C\ge0\) rational. For a finite nonzero
+coefficient vector \(c=(c_\lambda)\), put
+\(\beta=\min_\lambda v_p(c_\lambda)\), and define
+
+\[
+\Phi(y)=\sum_\lambda c_\lambda P_\lambda(y)
+                 \exp(y\gamma_\lambda),\qquad
+f(y)=\sum_\lambda c_\lambda P_\lambda(y)
+                 \exp(y(\gamma_\lambda+\epsilon_\lambda)).
+\tag{10.685}
+\]
+
+Both functions have the normality conclusion of Theorem 10.178.
+For every integral \(a\in\mathbb C_p\) and every \(t\ge0\),
+
+\[
+v_p\left(\frac{(f-\Phi)^{(t)}(a)}{t!}\right)
+\ge\beta-C+H+\max\{0,(t-D-1)N\}.
+\tag{10.686}
+\]
+
+If the \(P_\lambda\) are the prepared factors in (10.92), they
+are p-integral at every \(a\in\mathbb Z_p\). For these factors the
+sharper order-zero error is
+
+\[
+v_p(f(a)-\Phi(a))\ge\beta+H
+                       \qquad(a\in\mathbb Z_p).
+\tag{10.687}
+\]
+
+**Proof.** Normality follows from Theorem 10.178, first with zero
+perturbations and then with the actual perturbations. Write
+\(\sigma=(j+m)/e\) and \(L=\min\{\sigma,H\}>N+1/(p-1)\).
+For one summand, consider
+\(E(y)=\exp((\gamma+\epsilon)y)-\exp(\gamma y)\).
+At an integral a, \(v_p(E(a))\ge H\). For \(l\ge1\),
+
+\[
+\frac{E^{(l)}(a)}{l!}
+=\frac{\exp(\gamma a)}{l!}
+ \left[\gamma^l(\exp(\epsilon a)-1)
+ +\exp(\epsilon a)\sum_{h=1}^l
+           \binom lh\gamma^{l-h}\epsilon^h\right].
+\tag{10.688}
+\]
+
+The bracket has valuation at least \(H+(l-1)L\).
+The factorial identity of Lesson 9 gives
+\(v_p(l!)=(l-s_p(l))/(p-1)\le(l-1)/(p-1)\), where
+\(s_p(l)\ge1\) is the base-p digit sum. Therefore the displayed
+divided derivative has valuation at least \(H+(l-1)N\).
+All divided derivatives of \(P_\lambda\) at an integral point
+have valuation at least \(-C\), since their Taylor coefficients
+are sums of integral binomial multiples of its coefficients. They
+vanish above D. In the divided product rule the remaining exponential
+order is at least \(t-D\). The bounds for orders zero and positive
+orders consequently give the asserted maximum. Multiplication by the
+coefficients and summation give the result.
+
+For a prepared factor, the integer-valued Taylor proof in Lemma 10.28,
+extended to \(\mathbb Z_p\) in Lemma 10.36, gives
+\(v_p(P_\lambda(a))\ge0\). Its exponential error has valuation at
+least H, by Proposition 9.3. This proves the last bound. \(\square\)
+
+### Interpolation on the enlarged disc
+
+**Theorem 10.182 (selected-support extrapolation with every jet cost).**
+Use the full prepared family (10.92) on the selected support, with
+\(k,L\ge1\), \(D=kL\), coefficient minimum \(\beta\), and the
+actual selected derivations of Lemma 10.23. Let the unprojected and
+projected functions be \(\Phi(y;\boldsymbol t)\) and
+\(f(y;\boldsymbol t)\) from Theorem 10.180. Suppose N is positive
+and rational and satisfies that theorem's two strict disc conditions.
+Put
+
+\[
+\begin{aligned}
+C_0&=\max\{v_p(V(k)),v_p(b_n)\},\qquad
+\Gamma=D\left(N+\frac1{p-1}\right)-\beta,\\
+M_0&=\max\{B,C_0\},\qquad V(k)=\operatorname{lcm}(1,\ldots,k).
+\end{aligned}
+\tag{10.689}
+\]
+
+Take one of the full or q-deleted integer node sets E of Theorem 10.34.
+Let \(n_E=|E|\), let B be its separation bound, and let
+\(\eta_E=0\) for the full interval and \(\eta_E=1\) for the
+q-deleted interval. Suppose \(\mu\ge1\),
+\(|\boldsymbol t|+\mu-1\le T\), and
+\(\Phi(s;\boldsymbol t')=0\) at every node for every
+\(|\boldsymbol t'|\le T\). Then, for every
+\(x\in\mathbb Z_p\subset\mathbb Q_p\), both f and \(\Phi\)
+have valuation at least
+
+\[
+\min\left\{n_E\mu N-\Gamma,\quad
+\beta+H-\eta_E\mu B-(\mu-1)M_0\right\}.
+\tag{10.690}
+\]
+
+In particular, under the counterhypothesis \(V\ge U\), the budget
+
+\[
+\kappa+U+D\left(N+\frac1{p-1}\right)
+\ge n_E\mu N+(\eta_E+1)\mu M_0
+\tag{10.691}
+\]
+
+gives
+
+\[
+v_p(f(x;\boldsymbol t)),\ v_p(\Phi(x;\boldsymbol t))
+\ge n_E\mu N-D\left(N+\frac1{p-1}\right)+\beta.
+\tag{10.692}
+\]
+
+The strict perturbation condition must still hold. A sufficient version
+under this counterhypothesis is
+\(\kappa+U-v_p(b_n)>N+1/(p-1)\).
+
+**Proof.** At a node, Lemma 10.181's prepared-factor estimate and the
+assumed zeros give
+\(v_p(f(s;\boldsymbol t'))\ge\beta+H\).
+Each individual projected slope has valuation greater than \(1/(p-1)\):
+the unprojected slope has that property by its definition from the deep
+\(z_j\), and its correction has valuation at least H. Thus Lemma
+10.38 applies with exactly the selected directions, yielding
+\(v_p(f_l(s;\boldsymbol t))\ge\beta+H-lC_0\) for
+\(0\le l<\mu\).
+
+Theorem 10.178 and Corollary 10.179 supply a scalar \(\xi\) of
+valuation \(\Gamma\) for which \(F(Z)=\xi f(\omega Z;\boldsymbol t)\)
+is normal, where \(v_p(\omega)=-N\).
+At the scaled node \(s/\omega\), its weighted jet precision is
+\(\Gamma+\beta+H-lC_0\), by the chain rule. Apply Theorem
+10.39 with \(\rho=1/\omega\), \(\theta=N\), and its
+node indicator equal to \(\eta_E\); subtracting \(\Gamma\)
+gives the displayed minimum for f. The prepared projection error at x
+is at least \(\beta+H\), which is no smaller than the second entry
+of that minimum. The same minimum therefore applies to \(\Phi\).
+
+Finally \(H\ge\kappa+U-v_p(b_n)\), while
+
+\[
+v_p(b_n)+\eta_E\mu B+(\mu-1)M_0
+\le(\eta_E+1)\mu M_0.
+\tag{10.693}
+\]
+
+The budget makes the second entry of the minimum at least the first.
+This proves the last conclusion. In this proof only the combined
+monomial frequencies need the enlarged precision; the ordinary jet
+identity uses the original individual slopes on their original disc.
+\(\square\)
+
+### Columns and heights after the selection
+
+Retain the global monomial and height setting of Theorems 10.63–10.65.
+Let the exponent lattice have covolume \(\Delta\), let the original
+coordinate box have full widths \(D_1,\ldots,D_r>0\), and put
+\(\mathcal V=\prod_iD_i\). Let the phase map have
+\(H_{\mathrm{ph}}\) distinct possible values, as in Lemma 10.67.
+Let \(h_m\) be the actual finite
+unit-quotient image order in Theorem 10.176.
+
+**Proposition 10.183 (the selected coefficient surplus and height).**
+The successive closed-box, phase and unit-congruence selections give a
+support \(S_0\) and \(N_c=kL|S_0|\) columns satisfying
+
+\[
+N_c\ge kL\left\lceil
+ \frac{\left\lceil(\lfloor\mathcal V/\Delta\rfloor+1)/H_{\mathrm{ph}}\right\rceil}
+      {h_m}\right\rceil
+>\frac{kL\mathcal V}{\Delta H_{\mathrm{ph}}h_m}.
+\tag{10.694}
+\]
+
+Let \(S\ge1,T\ge0\), \(s_0=\lfloor S\rfloor\),
+\(t_0=\lfloor T\rfloor\), and count the whole prepared system by
+
+\[
+M=(2s_0+1)\binom{t_0+r}{r}.
+\tag{10.695}
+\]
+
+If \(kL\mathcal V/(\Delta H_{\mathrm{ph}}h_m)\ge c_*M\), with
+\(c_*>1\), there is a nonzero integral coefficient vector giving
+all these zeros. For its actual row field \(E_0\), of degree
+\(d_0\), put \(L_\alpha=\sum_iD_i h(\alpha_i)\).
+With the complete scalar bound \(\mathcal B_0^*(s_0,t_0)\) of
+Corollary 10.64 it can be chosen with
+
+\[
+\begin{aligned}
+h_2(c)\le{}&\frac12\log(N_cd_0)+(d_0-1)P L_\alpha\\
+&+\frac1{c_*-1}\left[
+ \frac12\log N_c+\log\mathcal B_0^*(s_0,t_0)
+ +\frac{Ps_0(s_0+1)}{2s_0+1}L_\alpha\right].
+\end{aligned}
+\tag{10.696}
+\]
+
+An actual generator tower or discriminant may replace the corresponding
+upper bound as in Theorem 10.63. Every auxiliary pair
+\(0\le a<k,1\le\ell\le L\) remains available at every selected
+exponent; the resulting Laurent polynomial is nonzero.
+
+**Proof.** Theorem 10.66 supplies
+\(\lfloor\mathcal V/\Delta\rfloor+1\) lattice points.
+Lemma 10.67 retains at least the inner ceiling, and Theorem 10.176
+retains at least its quotient ceiling. Since
+\(\lfloor\mathcal V/\Delta\rfloor+1>\mathcal V/\Delta\),
+the displayed strict comparison follows. The auxiliary pairs are
+independent of both selections, so their full factor is kL.
+
+There are \(2s_0+1\) nodes and \(\binom{t_0+r}{r}\) indices of
+total degree at most \(t_0\), by the divider count already proved
+in Theorem 10.32. Keep this entire list of M rows, including redundant
+or zero rows, rather than changing its average by a nonuniform deletion.
+The assumed inequality gives \(N_c>c_*M>M\).
+The integral Siegel proof in Theorem 10.63 therefore applies.
+
+The new support is a subset of the old box. After centering at one of
+its own points it has the same full-width bounds, so (10.173) still
+bounds the generator and both torus heights. The actual row field is
+generated by the new normalized monomials: the zero-derivative row at
+\(s=1,a=0,\ell=1\) contains \((k+1)W_\lambda\), and the
+reference monomial is one. This is the exact field-recovery argument
+of Theorem 10.63 and requires the retained full auxiliary product.
+It uses no ambient-degree replacement. Applying (10.174) to this full
+row list, and using \(M/(N_c-M)<1/(c_*-1)\), proves the height
+bound. The mean torus term is unchanged because each integer node has
+the same full index list; \(\sum_{s=-s_0}^{s_0}|s|=s_0(s_0+1)\).
+Finally Lemma 10.29 gives an independent binomial polynomial family
+for each of the distinct Laurent monomials. The nonzero coefficient
+vector therefore gives a nonzero Laurent polynomial. \(\square\)
+
+The factor \(h_m\le p^{fm}\) in the column condition is essential.
+Lemma 10.177 controls how that finite-index cost trades against the
+larger analytic radius. A parameter choice for a final logarithmic
+estimate must satisfy both this coefficient inequality and the strict
+analytic and arithmetic comparisons in the zero induction.
+
+
+![Selected monomials, projected logarithmic precision and the global column surplus](../figures/yu-cluster-projection.png)
+
+*Figure 10.53. Take \(p=3\), \(u_1=10\),
+\(u_2=3281/500\), and \(\Xi=u_1^3u_2=1+3^8\).
+Upper left: the selected quotient class modulo 27 consists of the twelve
+points in \(\{0,3\}\times\{0,\ldots,5\}\). Each retains all
+four polynomial indices. The circled points have quotient \(\Xi\)
+and equal projected frequency. Upper right: the individual logarithm
+valuations are exactly two and three; the selected quotients have
+proved minimum three, attained at \((3,0)\). The relation has exact
+valuation eight. The dashed threshold \(N+1/(p-1)=5/2\) is strictly
+below both the quotient minimum and the perturbation precision, giving
+normality at \(N=2\). Below: selection leaves 48 of the original
+144 columns, against eighteen full prepared rows. The uniform
+normalization cost is ten and the output precision is eight, with
+interpolation budget \(18=10+8\). Theorems 10.180–10.182 and
+Proposition 10.183 prove the mechanism; Solution 74 verifies the exact
+rational example and its integral kernel. [Reproducible figure and
+exact calculation](../figure_sources/yu_cluster_projection.py).
+Human-source context: Sections 10–11 of
+[Yu's freely accessible 1999 paper](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf).*
+
+## 61. Exercises with solutions
 
 1. **Easy.** Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.
 2. **Medium.** Derive (10.34) from (10.22), including the maximum in \(H\).
@@ -12653,6 +13443,46 @@ the scalar inequality can be weak although Theorem 10.175 is strict.
 In the model of Figure 10.51, express both branches in terms of
 \(z=\varepsilon r\), and show that \(z\ge0\) alone does not
 specify the allowable parameter interval.
+
+73. **Hard: the congruence cost and the analytic gain.** (a) For
+\(u_1=10,u_2=19\) in \(\mathbb Q_3\), with j=2,m=1,
+compute the unit-product homomorphism on \(\{0,\ldots,5\}^2\).
+Give its three fibres and the even-coordinate contraction of the zero
+fibre. Explain why the entire set of auxiliary polynomial indices E
+must be retained independently of that homomorphism. (b) Derive the
+rounding threshold of Lemma 10.177 and the bound on
+\(p^{fm}(A+m)^{-r}\). In the \(A_0=1/2\) row, verify both
+the rational gap between \(1.3701\) and its H endpoint and the
+gap between its F endpoint and \(1/1.0568\). Explain why endpoint
+calculations alone are insufficient. (c) In Corollary 10.179 take
+\(p=3,q=2,I=1,a=1,k=\ell=2,t_0=1\), with an empty product
+of the other prepared factors. Compute P exactly, including its
+coefficient valuations. Use N=2 and \(c_\lambda=1\) on the zero
+congruence fibre, with zero perturbations, to compare the uniform
+normalizing valuation with the sharper termwise one. Compute f(0),
+and explain the original field degree used in a later global height
+argument.
+
+74. **Advanced: selection, projection and a complete input budget.**
+At three take \(a_1=10\), \(a_2=3281/500\),
+\((b_1,b_2)=(3,1)\), \(P=1\), \(q=2\),
+\(\nu=0\), and \(L_1(Z)=Z_1,L_2(Z)=Z_2\).
+(a) Determine the exact valuations of \(a_1-1,a_2-1,\Xi-1\),
+and all quotient classes modulo 27 on \(\{0,\ldots,5\}^2\).
+For the class containing zero, find the projected frequency and explain
+why the closed disc with \(N=2\) is allowed even though the first
+individual logarithm has valuation two.
+(b) Take \(k=L=2\), the full nodes \(-1,0,1\), and every
+prepared index of total degree at most two. Count the columns and the
+whole row list, prove that a nonzero integral kernel exists, and identify
+its row field. Explain how the actual count improves the height row
+factor to \(3/5\). Verify one primitive integral kernel using the
+reproducible exact calculation supplied with Figure 10.53.
+(c) Take \(\mu=3\) and base prepared index zero. Determine
+\(B,C_0,\Gamma\) and the output precision from Theorem 10.182.
+Explain which equalities in the numerical budget are harmless and which
+disc inequalities must be strict. Finally derive the growing Taylor
+precision in Lemma 10.181 directly from its exponential difference.
 
 **Solution 1.** Put \(q_i=v(\alpha_i)\). If \(b_1q_1\ne b_2q_2\), the ultrametric inequality gives the exact valuation \(\min(b_1q_1,b_2q_2)\), so no cancellation estimate is needed. If they are equal, choose \(\pi=p^{1/e}\) in an algebraic extension and set \(\epsilon_i=\alpha_i\pi^{-e q_i}\). The exponents \(e q_i\) are integers, the \(\epsilon_i\) are units, and
 
@@ -14150,6 +14980,169 @@ scalar bound is 20. The parameter condition is exactly
 Only a bounded subinterval of that positive interval is drawn; the
 proof, rather than the plot, supplies every allowable value.
 
+**Solution 73.** (a) Modulo 27 the monomial is
+\(1+9(\lambda_1+2\lambda_2)\). For \(\lambda_1\) congruent
+to zero, one or two modulo three, the allowed \(\lambda_2\)
+in the zero fibre are respectively congruent to zero, one or two.
+Thus that fibre consists of the four pairs in each of
+\(\{0,3\}^2,\{1,4\}^2,\{2,5\}^2\). More generally, the fibre with image b is exactly
+\(S_b=\{(x,y):0\le x,y\le5,\ y\equiv x-b\pmod3\}\)
+for b=0,1,2. The other two fibres are obtained by assigning the
+indicated residue to \(\lambda_1+2\lambda_2\); for each fixed first coordinate there
+are exactly two possible second coordinates in each fibre. Every
+fibre therefore has twelve points. Its even-even zero part is
+\(\{(0,0),(2,2),(4,4)\}\), which contracts to
+\(\{(0,0),(1,1),(2,2)\}\). The new monomials are
+\(190^a\), with \(a=0,1,2\), and are still one modulo 27.
+
+The finite quotient has three possible monomial images, independent
+of E. Selecting one image therefore retains E in full. Fixing an
+auxiliary index as part of the equivalence relation would multiply
+the possible number of classes by \(|E|\) and would prevent a
+selected class from containing \(E\times\{\lambda^0\}\) when
+\(|E|>1\). That is a different selection and has a different
+counting cost.
+
+(b) For \(x_0=k+v>1\), comparison of
+\(\chi(k+1)/\chi(k)=\exp(-\rho)(A+k+1)/(A+k)\) with one
+gives \(v\ge1/\rho-1/(\exp\rho-1)\) for choosing k+1;
+at equality either choice has the same value. The continuous maximum
+is \(\rho^{-1}\exp(-1+\rho A)\), so
+\(\chi(m)>\chi(x_0)/\varsigma_2\) gives
+
+\[
+\frac{p^{fm}}{(A+m)^r}
+<\varsigma_2^r\rho^r\exp(r-\rho Ar)
+=\varsigma_2^r(\mathrm e t/r)^r p^{-fA}.
+\tag{10.678}
+\]
+
+The two requested positive gaps are exactly
+
+\[
+\frac{13701}{10000}-\frac{1370098893207}{10^{12}}
+=\frac{1106793}{10^{12}},\qquad
+\frac{47314037827}{50000000000}-\frac{1250}{1321}
+=\frac{1843969467}{66050000000000}.
+\tag{10.679}
+\]
+
+Finite endpoint calculations certify these numbers only. The derivative
+comparisons for H, z and F, the decreasing forced-ratio function, and
+the increase/decrease of the two rounding alternatives prove that
+these endpoints cover every allowed A and \(\rho\).
+
+(c) We have
+\(\Delta(z/2+1;2)=(z^2+10z+24)/8\) and \(V(2)=2\).
+After squaring, differentiating and multiplying by two,
+
+\[
+P(z)=\frac{(z^2+10z+24)(z+5)}8
+=\frac{z^3+15z^2+74z+120}{8}.
+\tag{10.680}
+\]
+
+The coefficient valuations, in increasing powers of z, are
+\((1,0,1,0)\), so all coefficients are integral. The uniform
+choice uses D=4 and \(C=D/(p-1)=2\). At N=2 and \(\beta=0\)
+it gives a normalizing scalar of valuation \(4(2+1/2)=10\).
+Using the actual degree three and coefficient bound C=0 instead,
+Theorem 10.178 gives the sharper termwise sufficient valuation six.
+For every exponent in the zero fibre, the logarithmic frequency has
+valuation at least three, so both applications have
+\(2<3-1/(3-1)\) as required. Since every exponential equals one
+at zero and the fibre has twelve terms,
+\(f(0)=12P(0)=180\), with valuation two.
+The normalization concerns a single p-adic norm. A global height or
+product-formula estimate continues to use the actual original
+coefficient field and its degree; the choice of the local scalar
+does not replace either of them.
+
+**Solution 74.** (a) The three differences are
+\(9,2781/500=27\cdot103/500\), and
+\(\Xi-1=3^8\), because
+\(10^3(3281/500)=6562=1+3^8\). Their valuations are
+therefore two, three and eight. Modulo 27 the monomial is
+\(1+9\lambda_1\); the three classes are distinguished by
+\(\lambda_1\pmod3\), with twelve points each. The zero class is
+\(S_0=\{0,3\}\times\{0,\ldots,5\}\).
+Take the reference \((0,0)\). With \(z_i=\log a_i\),
+the original and projected frequencies are
+
+\[
+\gamma_\lambda=\lambda_1z_1+\lambda_2z_2,\qquad
+\epsilon_\lambda=-\lambda_2\log\Xi,\qquad
+\gamma_\lambda+\epsilon_\lambda
+ =(\lambda_1-3\lambda_2)z_1.
+\tag{10.697}
+\]
+
+Every quotient frequency has valuation at least three. This lower bound
+is attained at \((3,0)\), since \(v_3(3\log10)=3\).
+The perturbations have valuation at least eight. Here \(j=2,m=1,e=1\),
+so \(2<3-1/2\) and \(8>2+1/2\) are both strict.
+These are the combined-frequency conditions. An assumption that each
+individual slope had valuation greater than \(5/2\) would fail for
+\(z_1\); Theorems 10.180 and 10.182 do not make that assumption.
+The circled pair in the figure has difference \((3,1)\): its original
+quotient is \(\Xi\), and its projected frequency is zero.
+
+(b) There are four polynomial indices at each of twelve exponents,
+hence 48 columns. The six indices
+\((t_0,t_1)=(0,0),(0,1),(0,2),(1,0),(1,1),(2,0)\)
+at each of three nodes give 18 rows. Every row entry is the rational number
+
+\[
+\frac{2^{t_0}}{t_0!}
+ \left[\frac{d^{t_0}}{dy^{t_0}}
+  \left(\frac{(y+a+1)(y+a+2)}2\right)^\ell\right]_{y=s}
+ \Delta(\lambda_1-3\lambda_2;t_1)
+ \left(10^{\lambda_1}(3281/500)^{\lambda_2}\right)^s.
+\tag{10.698}
+\]
+
+Here \(a=0,1\), \(\ell=1,2\), \(s=-1,0,1\), and
+\(\lambda\in S_0\). Thus the row field is \(\mathbb Q\),
+and its discriminant cost is zero. Elimination of an 18-by-48 rational
+matrix gives a nonzero rational kernel because there can be at most
+18 pivot columns. Clearing denominators and then dividing the common
+integer gcd gives a primitive integral vector. Its coefficient minimum
+at three is zero. The exact program builds this full matrix, produces
+one such vector, and substitutes it into all eighteen original rational
+equations; every sum is exactly zero. The row factor in (10.174) is
+\(18/(48-18)=3/5\). This uses the actual finite counts. The
+volume-only bound in Proposition 10.183 is smaller: its column
+lower bound is \(4\cdot25/3=100/3\), which still exceeds
+\((11/6)18=33\).
+
+(c) Distinct nodes have nonzero differences one or two, so B is zero.
+Also \(V(2)=2\) and \(b_n=1\), so \(C_0=M_0=0\).
+The uniform degree bound is \(D=4\), and the primitive coefficient
+vector has \(\beta=0\). Therefore
+
+\[
+\Gamma=4(2+1/2)=10,\qquad
+H+4(2+1/2)=8+10=18=3\cdot3\cdot2,
+\qquad v_3(f(x;0)),v_3(\Phi(x;0))\ge8.
+\tag{10.699}
+\]
+
+The equality of the two sides of the sufficient interpolation budget
+is permitted. The normality hypotheses remain the two strict
+inequalities verified in (a). No global height comparison or final
+logarithmic bound is inferred from this local example.
+
+For the last assertion, let l be the exponential Taylor order. At order
+zero its error has valuation at least H. At positive order l, the
+binomial expansion in Lemma 10.181 has at least one perturbation in
+every term outside the first difference. It gives
+\(H+(l-1)L-v_p(l!)\ge H+(l-1)N\), because
+\(L>N+1/(p-1)\) and \(v_p(l!)\le(l-1)/(p-1)\).
+Multiplication by a polynomial of degree D leaves exponential order
+at least \(t-D\) in an ordinary divided derivative of order t.
+Thus its lower bound is
+\(\beta-C+H+\max\{0,(t-D-1)N\}\), as asserted.
+
 ## References
 
 - Yann Bugeaud and Michel Laurent, *Minoration effective de la distance p-adique entre puissances de nombres algébriques*, Journal of Number Theory 61 (1996), 311–342. [Author-hosted full text](https://irma.math.unistra.fr/~bugeaud/travaux/logpadicdef.ps).
@@ -14162,3 +15155,5 @@ proof, rather than the plot, supplies every allowable value.
 - Kunrui Yu, *Linear forms in p-adic logarithms II*, Compositio Mathematica 74 (1990), 15–113. [Free Numdam full text](https://www.numdam.org/item/CM_1990__74_1_15_0.pdf).
 
 - N. Costa Pereira, *Elementary estimates for the Chebyshev function \(\psi(x)\) and for the Möbius function \(M(x)\)*, Acta Arithmetica 52 (1989), 307–337. [Free publisher full text](https://www.impan.pl/shop/en/publication/transaction/download/product/106154).
+
+- Kunrui Yu, *p-adic logarithmic forms and group varieties II*, Acta Arithmetica 89 (1999), 337–378. [Free publisher full text](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf).
