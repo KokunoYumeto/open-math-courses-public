@@ -2,11 +2,11 @@
 
 These are selected foundation sections from **Metric and topological foundations**, programme lesson AN03-P003. They retain the section and equation numbers of that earlier lesson. The selection and introductory note were prepared by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026.
 
-The original course-writing task and OpenAI Codex credits, dedication and history are retained in [the original title page](notices/TITLE_PAGE.md), [history](notices/HISTORY.md) and [rights notice](notices/RIGHTS.md). This independently written programme selection carries **CC0 1.0 Universal**. The [CC0 dedication](https://creativecommons.org/publicdomain/zero/1.0/) gives the terms.
+Foundation contribution: the AN-03 programme and OpenAI Codex. This independently written selection is dedicated to **CC0 1.0 Universal**. See the [title page](notices/TITLE_PAGE.md), [reading scope](notices/HISTORY.md), [rights notice](notices/RIGHTS.md) and [CC0 dedication](https://creativecommons.org/publicdomain/zero/1.0/) for titles, contributors and terms.
 
-The original notice files describe the original course edition. [Selection history](SELECTION_HISTORY.md) describes these excerpts.
+The [selection information](SELECTION_HISTORY.md) identifies the included foundation sections.
 
-The mathematical entry is natural-number arithmetic with induction, ordinary set theory and countable choice. The real-field construction is in [the scalar foundations](metric-foundation-bridges.md#12-real-numbers-and-finite-dimensional-topology); complex arithmetic and finite algebra are in [the algebra foundations](stable-prerequisite-bridges.md#10-full-finite-linear-algebra-foundations); integration is in [the measure foundations](banach-foundation-bridges.md#15-0-constructing-the-measure-without-importing-a-convergence-theorem).
+The mathematical entry is natural-number arithmetic with induction, ordinary set theory and countable choice. The real-field construction is in [the scalar foundations](metric-foundation-bridges.md#12-real-numbers-and-finite-dimensional-topology); complex arithmetic and finite algebra are in [the algebra foundations](stable-prerequisite-bridges.md#10-full-finite-linear-algebra-foundations); integration is in [the measure foundations](banach-foundation-bridges.md#150-constructing-the-measure-without-importing-a-convergence-theorem).
 
 This selection supplies: The real field; Euclidean norm and compactness; continuous extrema and intermediate values; derivatives, integrals, exponential and trigonometric functions; smooth compact cutoffs.
 

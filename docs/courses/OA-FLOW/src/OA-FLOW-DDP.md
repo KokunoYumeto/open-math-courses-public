@@ -715,9 +715,244 @@ has \(v^*v=e,\ vv^*=f\), and conjugates \(eFe\) onto \(fFf\) by the displayed co
 
 The diagram records the actual suspension, not a numerical model of a type III factor. Its coordinate is \(r\in[0,L)\), its wrap integer is \(n_s(r)\), and the weighting identity is exactly \(e^r\lambda^{n_s(r)}=e^{-s}e^{u_s(r)}\). The lower proof chain keeps the two cardinal-cover equalities before comparison. The proof locators are [Section 3](#dd-cardinality) and [Section 6](#dd-discrete-stability). Human-source context is Takesaki, *Theory of Operator Algebras II*, XII.2.1–3, printed 380–384; the new suspension reduction here uses the complete current [CST proof](OA-FLOW-CST.md#cst-1). The bands and cardinal comparison are proved in Sections 3 and 6. Original figure: CC0.
 
+<a id="dd-periodic-state-comparison"></a>
+## 10. Comparing two inner homogeneous periodic states
+
+A faithful normal state \(\varphi\) on a factor is **inner homogeneous** when
+\[
+                         M_\varphi'\cap M=\mathbb C1.
+ \tag{DDP38}
+\]
+For a periodic state this is equivalent to factoriality of \(F=M_\varphi\). Indeed, the Fourier argument proving (MIV34.f) uses only periodicity: a homogeneous polar partial isometry commuting with \(F\) has equal initial and final supports, so the state Tomita identity excludes every nonzero degree. Thus \(F'\cap M=Z(F)\). Conversely, inner homogeneity implies ordinary homogeneity because every conjugation by a unitary in \(F\) preserves \(\varphi\), by [CZ0](OA-FLOW-CZ.md#oa-flow.cz.0). The common fixed algebra of these conjugations is \(F'\cap M\).
+
+Throughout this section the modular groups are nontrivial. A trace, whose modular group is the identity at every time, has no least positive period and is excluded. Let \(\varphi,\psi\) be inner homogeneous periodic states on the same factor \(M\). Their least positive periods agree. Here is the invariant argument, including its type hypothesis. For either state, [MIV33](OA-FLOW-MIV.md#miv-homogeneous-linking) proves that all integer degrees occur, and that the complete state Hilbert space is their orthogonal sum. If its least period is \(P\) and \(\lambda=e^{-2\pi/P}\), [MIV19](OA-FLOW-MIV.md#miv-extremal-spectrum) therefore gives
+\[
+               S_+(M)=\lambda^{\mathbb Z},\qquad 0<\lambda<1.
+ \tag{DDP39}
+\]
+If \(M\) had a nonzero finite projection, the trace construction in [L18.6](OA-FLOW-L18.md#l18-6) would give a faithful normal semifinite trace on this factor, and [MG5](OA-FLOW-MG.md#oa-flow.mg.5) would give \(S_+(M)=\{1\}\), a contradiction. Hence \(M\) is type III; [MIV3](OA-FLOW-MIV.md#miv-3) supplies zero in its complete spectral intersection. Thus \(S(M)=\{0\}\cup\lambda^{\mathbb Z}\). The largest element below one in \(S_+(M)\) determines \(\lambda\), and then \(P\), independently of the state. In particular both centralizers are type \(\mathrm{II}_1\) factors, and Section 2 applies to this \(M\).
+
+Set \(v_t=(D\psi:D\varphi)_t\), with the actual normalization of [BC4](OA-FLOW-BC.md#oa-flow.bc.4). At the common period, its modular intertwining formula makes \(v_P\) central, hence scalar. There is a unique
+\[
+        a\in(\lambda,1]\quad\hbox{such that}\quad v_P=a^{-iP}.
+ \tag{DDP40}
+\]
+The interval \(\log a\in(\log\lambda,0]\) parametrizes the unit circle once, because \(P|\log\lambda|=2\pi\). By the chain and scalar laws of BC4–5,
+\((D(a\psi):D\varphi)_P=a^{iP}v_P=1\).
+Consequently the finite balanced weight
+\[
+ \chi\!\begin{pmatrix}x_{11}&x_{12}\\x_{21}&x_{22}\end{pmatrix}
+                    =\varphi(x_{11})+a\psi(x_{22})
+          \quad\text{on }B=M_2(M)
+ \tag{DDP41}
+\]
+has period \(P\) on the entire algebra. Indeed its two diagonal actions are the modular actions of \(\varphi\) and \(\psi\), and its lower-left matrix unit is fixed at \(P\) by the displayed normalized derivative. These corners and the scalar matrix units generate \(B\).
+
+The factor \(B\) has the same type and \(S\)-invariant as \(M\). The amplification argument of [CDEC2](OA-FLOW-CDEC.md#cdec-2) makes \(B\) type III. Its faithful normal state \(\chi/(1+a)\) makes it countably decomposable. [PC8](OA-FLOW-PC.md#oa-flow.pc.8) identifies it normally with its nonzero corner \(e_{11}Be_{11}\cong M\). Weight transport preserves the complete modular spectra, as in [MIV30](OA-FLOW-MIV.md#miv-corner-invariants). Thus Section 2, in its unrestricted form, proves that
+\(Q=B_\chi\) is a finite factor.
+
+Put \(p_0=e_{11}\), \(q_0=e_{22}\). They belong to \(Q\) and have \(\chi\)-values \(1,a\). The normalized center-valued trace of this finite factor is scalar, with
+\[
+                    T_Q(p_0)=\frac1{1+a},\qquad
+                    T_Q(q_0)=\frac a{1+a}.
+ \tag{DDP42}
+\]
+The normalization follows by applying the finite normal trace \(\chi\) to \(T_Q\); the identity \(\chi T_Q=\chi\) was proved from central tiles in MIV33. Finite-algebra comparison [FCT7](OA-FLOW-FCT.md#fct-7) gives a partial isometry
+\(V\in p_0Qq_0\) with \(V^*V=q_0\). Write \(V=ue_{12}\). Then \(u^*u=1\), and \(VV^*=pe_{11}\) for \(p=uu^*\in M_\varphi\).
+
+The centralizer identity in CZ0 applies to every matrix here, because \(\chi\) is finite. For \(x\ge0\), apply it to \(V\) and \((xe_{22})V^*\). It gives
+\[
+ \begin{gathered}
+     \varphi(uxu^*)=\chi\bigl(V(xe_{22})V^*\bigr)
+                  =\chi(xe_{22})=a\psi(x),\\
+     u^*u=1,\qquad p=uu^*\in M_\varphi,\qquad\varphi(p)=a,\\
+       \psi(x)=\varphi_p(uxu^*),\qquad
+       \varphi_p=\varphi|_{pMp}/\varphi(p).
+ \end{gathered}
+ \tag{DDP43}
+\]
+Linearity extends the equality to all \(x\in M\). Conjugation by \(u\) is a normal isomorphism \(M\to pMp\), with normal inverse \(y\mapsto u^*yu\), and it preserves the indicated normalized states. Interchanging \(\varphi\) and \(\psi\) gives the reverse corner representation as well. The argument uses finite traces on the balanced centralizer; it imposes no separable-predual assumption.
+
+There is a precise test for unitary equivalence:
+\[
+ \begin{aligned}
+ \psi=\varphi\circ\operatorname{Ad}z
+          \text{ for some }z\in\mathcal U(M)
+ &\ \Longleftrightarrow\ a=1\\
+ &\ \Longleftrightarrow\
+      \sigma_P^{\,\varphi\oplus\psi}=\mathrm{id}.
+ \end{aligned}
+ \tag{DDP44}
+\]
+If \(a=1\), (DDP43) has \(\varphi(p)=1\), so faithfulness gives \(p=1\) and \(u\) is unitary. Conversely the exact inner derivative [GDA8](OA-FLOW-GDA.md#gda-8) gives
+\(v_P=z^*\sigma_P^\varphi(z)=1\); (DDP40) then gives \(a=1\).
+Finally BC4 says that the modular action of the unscaled balanced weight is the identity at \(P\) exactly when \(v_P=1\). If so, \(P\) is its least positive period, since restriction to either diagonal corner already has that least period. Equal periods of the two original states alone do not imply their unitary equivalence.
+
+<a id="dd-state-corner-classes"></a>
+## 11. Centralizer corners and the full set of unitary state classes
+
+Fix one of the states \(\varphi\) of Section 10, with \(F=M_\varphi\) and \(\tau=\varphi|_F\). For every nonzero projection \(p\in F\), PC8 gives an isometry \(u_p\in M\) with \(u_pu_p^*=p\). Define a state on the original \(M\) by
+\[
+                    \psi_p(x)=\frac{\varphi(u_pxu_p^*)}{\tau(p)}.
+ \tag{DDP45}
+\]
+It is faithful and normal. [CZ5](OA-FLOW-CZ.md#oa-flow.cz.5) identifies the modular action of the normalized corner state with the restriction of \(\sigma^\varphi\), so \(P\) is a period. The corner is normally isomorphic to \(M\), hence has the same \(S\)-invariant; Section 2 shows that its least period is exactly \(P\). Its centralizer is \(pFp\), a factor by PC4. Transport by \(u_p\) therefore makes \(\psi_p\) an inner homogeneous periodic state. If \(u'_p\) is another isometry onto \(p\), then \(u_p^*u'_p\) is unitary and \(u'_p=u_p(u_p^*u'_p)\). Thus the unitary class of \(\psi_p\) does not depend on this choice.
+
+We will need the scaling identity on every positive element of a homogeneous corner. Suppose
+\(v\in X_n=\{x:\sigma_t^\varphi(x)=\lambda^{int}x\}\)
+is a partial isometry with initial projection \(p\) and final projection \(q\) in \(F\). Then
+\[
+       \varphi(vxv^*)=\lambda^n\varphi(x)
+                       \quad(x\in(pMp)_+).
+ \tag{DDP46}
+\]
+To prove this beyond the fixed algebra, let \(E\) be the \(\varphi\)-preserving circle expectation. Character cancellation gives
+\(E(vxv^*)=vE(x)v^*\), and \(E(x)\in pFp\).
+The element \(vE(x)^{1/2}\) has degree \(n\), so the state Tomita identity gives
+\[
+ \varphi(vE(x)v^*)=\lambda^n\varphi(E(x)^{1/2}pE(x)^{1/2})
+                 =\lambda^n\varphi(E(x)).
+\]
+Now use \(\varphi E=\varphi\) on both sides. This proves (DDP46), for either sign of \(n\); linearity also gives it on all of \(pMp\).
+
+For any two nonzero projections \(p,q\in F\),
+\[
+ \boxed{\quad
+     \psi_q=\psi_p\circ\operatorname{Ad}z
+            \text{ for some }z\in\mathcal U(M)
+       \quad\Longleftrightarrow\quad
+                      \frac{\tau(q)}{\tau(p)}\in\lambda^{\mathbb Z}.
+       \quad}
+ \tag{DDP47}
+\]
+For sufficiency, suppose \(\tau(q)=\lambda^n\tau(p)\).
+The full support criterion (MIV34.h), now with scalar center, supplies
+\(v\in X_n\) with \(v^*v=p\) and \(vv^*=q\). Put
+\[
+                         z=u_p^*v^*u_q .
+ \tag{DDP48}
+\]
+Both \(z^*z\) and \(zz^*\) are \(1\). If \(y=u_qxu_q^*\) with \(x\ge0\), then \(y\in qMq\), and (DDP46) for \(v^*\) gives
+\[
+ \psi_p(zxz^*)=\frac{\varphi(v^*yv)}{\tau(p)}
+             =\frac{\lambda^{-n}\varphi(y)}{\tau(p)}
+             =\frac{\varphi(y)}{\tau(q)}
+             =\psi_q(x).
+\]
+This proves the whole-state equality.
+
+Conversely, suppose \(\psi_q=\psi_p\operatorname{Ad}z\).
+The partial isometry \(c=u_pzu_q^*\) has \(c^*c=q\), \(cc^*=p\), and conjugation by \(c\) is a state-preserving isomorphism from
+\((qMq,\varphi_q)\) onto \((pMp,\varphi_p)\). Modular covariance and CZ5 imply that \(c^*\sigma_t^\varphi(c)\) commutes with every element of \(qMq\). It is a unitary in that corner: both support projections are fixed. Since the corner is a factor, there is a continuous scalar function \(\zeta_t\in\mathbb T\) with
+\[
+                  \sigma_t^\varphi(c)=\zeta_t c .
+ \tag{DDP49}
+\]
+The group law gives \(\zeta_{s+t}=\zeta_s\zeta_t\). Choose a continuous argument for \(\zeta_t\) on a sufficiently small interval, with values in \((-\pi/3,\pi/3)\). The group law makes this argument locally additive: the possible error is a multiple of \(2\pi\), while the displayed bound makes that error smaller than \(\pi\) in modulus. Subdivision, rational approximation and continuity make the argument \(rt\) there; subdivision of any real \(t\) into that interval then gives \(\zeta_t=e^{irt}\) everywhere. Evaluating at \(P\) puts \(rP\) in \(2\pi\mathbb Z\). Thus \(c\in X_m\) for an integer \(m\). Applying the state Tomita identity to \(c\) yields
+\(\tau(p)=\lambda^m\tau(q)\), which is (DDP47). All projections used here are nonzero, so the normalizations and ratios are defined.
+
+Every trace value in \((0,1]\) occurs on a projection of \(F\). We include the construction to specify the range exactly. The finite factor \(F\) has no abelian projections. The halving argument of [FCT3](OA-FLOW-FCT.md#fct-3), applied recursively in its corners, gives decreasing projections \(r_0=1,r_1,r_2,\ldots\) such that \(r_n\) and \(r_{n-1}-r_n\) are equivalent and
+\(\tau(r_n)=2^{-n}\).
+Put \(d_n=r_{n-1}-r_n\). These projections are orthogonal, have traces \(2^{-n}\), and sum to \(1\): normality gives zero trace, hence zero projection, for the limiting residual. For a binary expansion \(b=\sum_{n\ge1}\varepsilon_n2^{-n}\), \(0\le b\le1\), set
+\[
+                  p_b=\sum_{\varepsilon_n=1}d_n,\qquad
+                              \tau(p_b)=b .
+ \tag{DDP50}
+\]
+The orthogonal sum is a strong projection sum. For \(b=1\) one may take all digits equal to one. The value \(b=0\) gives the zero projection and does not define a state in (DDP45).
+
+Section 10 makes every inner homogeneous periodic state on \(M\) a state of the form (DDP45), up to the displayed normal corner identification. Formula (DDP47) then proves that its **unitary equivalence class** is specified by exactly one number
+\[
+                              b\in(\lambda,1].
+ \tag{DDP51}
+\]
+Indeed multiplication of a positive trace value by an integral power of \(\lambda\) brings it into this interval. Two values in the interval cannot have ratio \(\lambda^n\) unless \(n=0\). Equation (DDP50) supplies every value, and (DDP47) proves both existence and uniqueness of the resulting classes. The endpoint \(\lambda\) is represented by \(1\), not by a second class: the degree-one isometry has range trace \(\lambda\), and (DDP46) makes its normalized corner state equal to \(\varphi\). The scalar \(a\) obtained from the normalized derivative in (DDP40) is precisely the representative (DDP51) for \(\psi\). This is a classification of these states under inner conjugation on a fixed factor, not a classification of factors.
+
+<a id="dd-finite-presentation-uniqueness"></a>
+## 12. Isomorphism of the factors through finite corner presentations
+
+Let \((M_i,\varphi_i)\), \(i=1,2\), be factors with nontrivial inner homogeneous periodic states. Write
+\[
+ F_i=(M_i)_{\varphi_i},\quad \tau_i=\varphi_i|_{F_i},\quad
+ s_i^*s_i=1,\quad e_i=s_is_i^*,\quad
+ \rho_i(x)=s_ixs_i^* .
+\]
+The \(s_i\)'s are the degree-one isometries of MIV33, and the \(F_i\)'s are finite factors. Their parameters \(\lambda_i\in(0,1)\) are those of Section 10.
+
+The following criterion compares the underlying factors, without requiring the isomorphism to preserve the chosen states. They are normally isomorphic if and only if:
+
+1. \(\lambda_1=\lambda_2=:\lambda\);
+2. there is a nonzero projection \(p\in F_1\), with
+   \(a=\tau_1(p)\in(\lambda,1]\), and a normal isomorphism
+\[
+              J:F_2\longrightarrow pF_1p,\qquad
+                           \tau_1J=a\tau_2;
+ \tag{DDP52}
+\]
+3. for a degree-one isometry \(t_p\) in the algebra \(pM_1p\) with its normalized state \((\varphi_1)_p\), put
+   \(f_p=t_pt_p^*\) and \(\rho_p(x)=t_pxt_p^*\).
+   There is a partial isometry \(w\in pF_1p\) satisfying
+\[
+ \begin{gathered}
+       w^*w=f_p,\qquad ww^*=J(e_2),\\
+       J(\rho_2(x))=w\rho_p(J(x))w^*
+                                      \quad(x\in F_2).
+ \end{gathered}
+ \tag{DDP53}
+\]
+Here \(t_p^*t_p=p\), the unit of its corner algebra. Such a \(t_p\) exists for every nonzero \(p\): Section 11 gives the normalized corner state the same least period and a factorial centralizer, so MIV33 applies. Any choice of \(t_p\) may be used in the criterion, with the corresponding intertwiner \(w\).
+
+For necessity, let \(B:M_2\to M_1\) be a normal isomorphism, and put
+\(\psi=\varphi_2\circ B^{-1}\).
+It is an inner homogeneous periodic state. The intrinsic spectral calculation (DDP39) gives equality of the parameters. Apply Section 10 to \(\varphi_1,\psi\). It produces an isometry \(u\in M_1\), a projection \(p=uu^*\in F_1\), and \(a=\tau_1(p)\in(\lambda,1]\), with
+\(\varphi_1(uxu^*)=a\psi(x)\).
+Thus
+\[
+                   \Phi=\operatorname{Ad}u\circ B:
+                  (M_2,\varphi_2)\longrightarrow
+                  (pM_1p,(\varphi_1)_p)
+\]
+is a normal state-preserving isomorphism. Its restriction \(J\) to the centralizers has exactly (DDP52). Apply the necessary direction of [MIV35](OA-FLOW-MIV.md#miv-homogeneous-recognition), with target generator \(t_p\). It gives
+\(w=\Phi(s_2)t_p^*\) and exactly the supports and intertwining identity in (DDP53).
+
+For sufficiency, (DDP52) is trace preservation after normalizing the trace of the corner. The periods agree, and (DDP53) is the complete state-preserving recognition criterion MIV35. Its onto GNS construction therefore yields a normal isomorphism
+\[
+ \begin{aligned}
+ \Phi:(M_2,\varphi_2)&\longrightarrow(pM_1p,(\varphi_1)_p),\\
+ \Phi|_{F_2}&=J,\qquad \Phi(s_2)=wt_p .
+ \end{aligned}
+ \tag{DDP54}
+\]
+This is a map of the full von Neumann algebras, with a normal inverse, not just a map on algebraic generators. Choose an isometry \(u_p\in M_1\) onto \(p\), by PC8. Then
+\[
+                  x\longmapsto u_p^*\Phi(x)u_p
+                                  \quad(M_2\longrightarrow M_1)
+ \tag{DDP55}
+\]
+and its evident inverse give the required normal isomorphism. The choice of \(u_p\) is not asserted to preserve the original state \(\varphi_1\).
+
+The same argument describes **automorphism orbits of states** more precisely. Fix \((M,\varphi)\) and a state
+\(\psi(x)=\varphi_p(uxu^*)\) as in (DDP43). There is an automorphism \(\gamma\) of \(M\) with \(\psi=\varphi\circ\gamma\) if and only if there is a state-preserving normal isomorphism
+\[
+                         (M,\varphi)\longrightarrow(pMp,\varphi_p).
+\]
+If \(\gamma\) exists, the latter map is \(\operatorname{Ad}u\circ\gamma^{-1}\). Conversely, if it is \(\Gamma\), take
+\(\gamma=\Gamma^{-1}\circ\operatorname{Ad}u\).
+MIV35 makes this an exact finite-coefficient criterion: a trace-preserving map from \(F\) to \(pFp\), with the trace on the latter normalized, must intertwine the corner endomorphisms by a partial isometry with the two prescribed range projections. Formula (DDP51) alone classifies inner orbits and does not identify these larger automorphism orbits.
+
+The finite coefficient need not be carried onto the original uncut coefficient algebra. The projection \(p\) and the partial isometry \(w\) are actual parts of (DDP52)–(DDP53). This is the finite-corner form of uniqueness. The strict conjugacy of the infinite trace-scaling automorphisms in Section 7 is a different presentation of the factors and has its own proved comparison and cocycle-removal steps.
+
+![The normalized derivative fixes the corner mass; a balanced finite centralizer constructs the corner state; support comparisons identify the half-open interval of inner state classes.](../assets/almost-periodic-core/periodic-state-comparison.svg)
+
+*Figure 2.* The upper comparison uses the exact traces (DDP42). The scalar \(a\) remains the mass of the range projection in (DDP43), not a dimension ratio of Hilbert spaces. The lower row distinguishes the inner-state criterion (DDP47) from the finite-coefficient recognition criterion (DDP52)–(DDP55). [Editable vector source](../assets/almost-periodic-core/periodic-state-comparison.svg) and [component terms](../assets/almost-periodic-core/TERMS.md).
+
+
+
 <a id="dd-reading"></a>
 ## Further reading
 
 M. Takesaki, *Theory of Operator Algebras II*, Theorems XII.2.1–2.2, Definition XII.2.3 and Exercises XII.2.1–5, printed pp. 380–384, treat discrete decomposition, generalized traces and periodic-state centralizers. The complete proofs above retain arbitrary factor cardinality: Sections 1 and 3 justify the corner and projection comparisons, Section 4 gives the normal recognition for the specified weight, and Section 5 proves the converse and full core-center period. Sections 6 and 6A prove discrete cocycle stability on arbitrary traced algebras through a continuous suspension and a direct counting-weight construction; Sections 7–8 apply it to uniqueness and prove the state consequences.
 
 The complementary earlier treatments are [discrete-decomposition existence](OA-FLOW-DD.md#oa-flow.dd.0), [recognition for a given periodic weight](OA-FLOW-GT.md#oa-flow.gt.4), and [continuous trace-scaling cocycle stability](OA-FLOW-CST.md#cst-5).
+
+The comparison of periodic states and finite centralizer presentations is developed in Masamichi Takesaki, [*The structure of a von Neumann algebra with a homogeneous periodic state*](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6154-11511_2006_Article_BF02392037.pdf), Acta Mathematica 131 (1973), 79–121, Section 4, especially Theorems 4.12 and 4.14 and Corollaries 4.15–4.16. Sections 10–12 above use the unrestricted centralizer theorem, finite balanced-weight comparison and the full state-preserving recognition proved in MIV35.

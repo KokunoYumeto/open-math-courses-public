@@ -6,7 +6,7 @@ A sheaf can have fibres that look harmless while failing to form a flat family. 
 
 We begin with relations between free modules and with the especially transparent case of an Artinian base. For a coherent sheaf on projective space, the problem then becomes a sequence of finite module problems, one for each sufficiently large graded degree. Regularity supplies a uniform comparison with the fibres. Noetherianity makes the accumulated equations finite. This proves Mumford's theorem without assuming the existence of a Hilbert or Quot scheme.
 
-The prerequisites are flatness, tensor products, Nakayama's lemma, Fitting ideals, projective sheafification, generic flatness, and the regularity theorem proved in *Regularity and bounded families*. One cohomology input is used explicitly: a finitely presented sheaf flat over a base, with proper support on a morphism of finite presentation, has a perfect derived pushforward compatible with arbitrary base change [Stacks, Tag 0A1H]. Locally on the base, this means that a finite complex of finite free modules computes its cohomology after every base change. We explain the elementary consequences needed here, and list this prerequisite at the end.
+The prerequisites are flatness, tensor products, Nakayama's lemma, Fitting ideals, projective sheafification, generic flatness, and the regularity theorem proved in *Regularity and bounded families*. One cohomology input is used explicitly: a finitely presented sheaf flat over a base, with proper support on a morphism of finite presentation, has a perfect derived pushforward compatible with arbitrary base change; the full arbitrary-base proof is Perfect tensor pushforwards over an arbitrary base in *Moduli stacks are algebraic*. Locally on the base, this means that a finite complex of finite free modules computes its cohomology after every base change. We explain the elementary consequences needed here, and list this prerequisite at the end.
 
 ## 1 The functor asks for flatness after pullback
 
@@ -83,9 +83,11 @@ R\otimes_A B\longrightarrow B^{(I)}\longrightarrow M\otimes_A B\longrightarrow0.
 If \(J_MB=0\), the first map is zero and \(M\otimes_A B=B^{(I)}\), so it is flat. For the converse, suppose \(M_B=M\otimes_A B\) is flat, and put \(N=\ker(B^{(I)}\to M_B)\). The ideal \(\mathfrak mB\) is still nilpotent. Modulo this ideal the displayed surjection is an isomorphism, by the original choice of basis. Flatness makes
 
 \[
+\begin{gathered}
 0\longrightarrow N/(\mathfrak mB)N
-\longrightarrow (B/\mathfrak mB)^{(I)}
-\longrightarrow M_B/(\mathfrak mB)M_B\longrightarrow0
+\longrightarrow (B/\mathfrak mB)^{(I)}\\
+\longrightarrow M_B/(\mathfrak mB)M_B\longrightarrow0.
+\end{gathered}
 \]
 
 exact. Hence \(N=(\mathfrak mB)N\), and nilpotence gives \(N=0\). Every relation in \(R\) therefore has every coefficient zero in \(B\), which is exactly \(J_MB=0\). We have proved the universal property for an arbitrary module.
@@ -135,8 +137,10 @@ for every \(A\)-algebra \(B\). Each graded piece \(M_m\) is a finite, hence fini
 **Lemma 5.1.** Only finitely many polynomials \(P_{F_s}\) occur for \(s\in S\). There is an integer \(N\) such that for every \(s\in S\) and \(m\geq N\),
 
 \[
-M_m\otimes_A\kappa(s)\simeq H^0(\mathbb P^n_s,F_s(m)),
-\qquad H^i(F_s(m))=0\quad(i>0).
+\begin{gathered}
+M_m\otimes_A\kappa(s)\simeq H^0(\mathbb P^n_s,F_s(m)),\\
+H^i(F_s(m))=0\quad(i>0).
+\end{gathered}
 \]
 
 The isomorphism is the natural map from a graded piece to sections.
@@ -155,8 +159,10 @@ Both range over finite sets. The uniform regularity theorem in *Regularity and b
 Choose \(N\) larger than these bounds and than all shifts in the graded presentation. For \(m\geq N\), the two kernel sequences give an exact sequence
 
 \[
-H^0(L_{1,s}(m))\longrightarrow H^0(L_{0,s}(m))
+\begin{gathered}
+H^0(L_{1,s}(m))\longrightarrow H^0(L_{0,s}(m))\\
 \longrightarrow H^0(F_s(m))\longrightarrow0,
+\end{gathered}
 \]
 
 because \(H^1(K_s(m))=H^1(K_{1,s}(m))=0\). The first two terms are exactly the graded free modules in degree \(m\), tensored with \(\kappa(s)\). Right exactness identifies their cokernel with \(M_m\otimes_A\kappa(s)\). This proves the natural isomorphism. The uniform bound on \(F_s\) gives the higher vanishing. \(\square\)
@@ -292,25 +298,36 @@ There is a broader theorem, but its conclusion should be distinguished from a fi
 
 For a finite type \(X\to S\) and a finite type sheaf \(F\), **purity relative to \(S\)** has the following formulation. For each \(s\), pass to the henselization \(S^h=\operatorname{Spec}\mathcal O_{S,s}^h\). Every associated point of the restriction of \(F\) to any fibre over \(S^h\) must have a specialization in its closed fibre \(X_s\). Equivalently, associated points cannot escape the closed fibre in an elementary étale neighbourhood. This is [Stacks, Tag 05J4]; it is relative purity, distinct from the usual assertion that a single sheaf has all associated points of one fixed dimension.
 
-**Theorem 8.1 (Raynaud–Gruson, stated).** If \(X\to S\) is of finite presentation and \(F\) is finitely presented and pure relative to \(S\), then \(\operatorname{Flat}_F\) is represented by a monomorphism of finite presentation \(S'\to S\). In particular this conclusion holds when \(X\to S\) is proper and of finite presentation. The same assertions for flattening \(X\) itself use \(F=\mathcal O_X\).
+**Theorem 8.1 (Raynaud–Gruson).** If \(X\to S\) is of finite presentation and \(F\) is finitely presented and pure relative to \(S\), then \(\operatorname{Flat}_F\) is represented by a monomorphism of finite presentation \(S'\to S\). In particular this conclusion holds when \(X\to S\) is proper and of finite presentation. The same assertions for flattening \(X\) itself use \(F=\mathcal O_X\).
 
-The precise locators are [Stacks, Tags 05UG and 05UH], with purity of sheaves with proper support in Tag 05K3. We do not prove the general theorem here. Its monomorphism conclusion alone does not assert that it is the disjoint union of a finite collection of locally closed immersions. Theorem 6.1 proves that stronger description in the projective Noetherian situation.
+**Proof.** The full purity-based construction, for schemes and algebraic spaces, is Universal flattening for a pure finitely presented module in *Moduli stacks are algebraic*, A.12.7. In its notation, $F_n$ tests flatness in dimensions at least $n$; $F_0$ is exactly the functor $\operatorname{Flat}_F$ used here. The theorem represents every such stratum by a monomorphism of finite presentation. Over a scheme base its proof constructs a scheme, by complete dévissage and finite fibrewise charts, and glues the local schemes using separated quasi-finite descent. Thus it gives the stated $S'\to S$, with no Noetherian hypothesis.
+
+For the proper case, purity can be seen directly. After any change of base, the closure of a fibre-associated point is closed in the proper source. Its image is closed and contains the image of that point, hence every specialization of that image. In particular it meets the required closed fibre. This excludes an impurity after every base change. The same argument applies to a sheaf with proper support, using the closed subscheme defined by its annihilator. Finally take $F=\mathcal O_X$ for the assertion about the morphism itself. $\square$
+
+The historical comparison locators are [Stacks, Tags 05UG–05UH and 05K3]. A monomorphism of finite presentation alone need not be a finite disjoint union of locally closed immersions. Theorem 6.1 proves that additional description in the projective Noetherian situation.
 
 There is also a local theorem that isolates flatness near a chosen point. Its condition concerns specified points after base change, rather than every point of the base-changed scheme.
 
-**Theorem 8.2 (henselian local flattening, stated).** Let \(A\to B\) be a local homomorphism of local rings, with \(A\) henselian and \(B\) essentially of finite type over \(A\). Let \(M\) be a finite \(B\)-module. There is an ideal \(I\subset A\) such that, for every local homomorphism \(A\to A'\) of local rings, setting \(B'=B\otimes_A A'\) and \(M'=M\otimes_A A'\), one has
+**Theorem 8.2 (henselian local flattening).** Let \(A\to B\) be a local homomorphism of local rings, with \(A\) henselian and \(B\) essentially of finite type over \(A\). Let \(M\) be a finite \(B\)-module. There is an ideal \(I\subset A\) such that, for every local homomorphism \(A\to A'\) of local rings, setting \(B'=B\otimes_A A'\) and \(M'=M\otimes_A A'\), one has
 
 \[
-I A'=0
-\quad\Longleftrightarrow\quad
-M'_{\mathfrak q}\text{ is flat over }A'
-\text{ for every }\mathfrak q\in
+\begin{gathered}
+I A'=0\quad\Longleftrightarrow\\
+M'_{\mathfrak q}\text{ is flat over }A'\\
+\text{for every }\mathfrak q\in
 V(\mathfrak m_{A'}B'+\mathfrak m_B B').
+\end{gathered}
 \]
 
-Equivalently, \(A/I\) corepresents this flatness functor on local \(A\)-algebras with local structure maps. If \(B\) is essentially of finite presentation over \(A\) and \(M\) is finitely presented over \(B\), then \(I\) is finitely generated. This is [Stacks, Tag 05PG]. The two finiteness assertions have different hypotheses; neither the closed-fibre point condition nor the henselian assumption may be dropped from this statement.
+Equivalently, \(A/I\) corepresents this flatness functor on local \(A\)-algebras with local structure maps. If \(B\) is essentially of finite presentation over \(A\) and \(M\) is finitely presented over \(B\), then \(I\) is finitely generated. The two finiteness assertions have different hypotheses; neither the closed-fibre point condition nor the henselian assumption may be dropped.
 
-Without the finiteness and purity hypotheses, a universal flattening can fail to exist. Here is the mechanism of [Stacks, Tag 0FJ1], with a proof for schemes. Let \(A=k[x,y]\), \(X=S=\operatorname{Spec}A\), and let the quasi-coherent sheaf correspond to
+**Proof.** Apply The ideal representing local flatness over a henselian base in *Moduli stacks are algebraic*. Its marked local-flatness functor tests precisely the primes containing both displayed maximal-ideal extensions. Its complete dévissage proof works for a finite module over an essentially finite-type local algebra, retaining relations even when there are infinitely many of them. Henselian sections return its pointed étale dévissage to the given ring $A$. Induction makes the successive cokernel flat; a projective-module coefficient ideal then represents injectivity of the remaining map. This produces $I$ for every local test algebra, not only for quotient algebras.
+
+Here is also why the stronger hypotheses give finite generation. Write $I$ as the directed union of its finitely generated subideals $I_\lambda$. The local algebras $A/I_\lambda$ have colimit $A/I$. Under essential finite presentation of $B$ and finite presentation of $M$, the marked local-flatness functor preserves these local filtered colimits, as proved in the same theorem's local-limit prerequisite. Its true value at $A/I$ therefore already occurs at some $A/I_\lambda$. The representing condition forces $I\subset I_\lambda$, and the reverse containment is automatic. Hence $I=I_\lambda$. Without those presentation hypotheses, the existence proof gives an ideal but does not assert that it is finitely generated. $\square$
+
+The exact Stacks comparison is Tag 05PG.
+
+Without the finiteness and purity hypotheses, a universal flattening can fail to exist. Here is the mechanism of [Stacks, Tag 0FJ1], first for schemes and then for arbitrary algebraic-space representatives. Let \(A=k[x,y]\), \(X=S=\operatorname{Spec}A\), and let the quasi-coherent sheaf correspond to
 
 \[
 M=A[x^{-1}]/(y).
@@ -324,7 +341,41 @@ M\otimes_A\widehat A=\widehat A[x^{-1}]/(y)
 
 is nonzero and is killed by \(y\). It is not flat: tensoring the injection \(\widehat A\xrightarrow{y}\widehat A\) would give a zero map on this nonzero module.
 
-If a scheme represented the flattening functor, the compatible maps \(\operatorname{Spec}A_j\to S'\) would all take their sole point to one point of \(S'\). They lie in a common affine neighbourhood \(U\) of that point. Compatible homomorphisms \(\Gamma(U,\mathcal O_U)\to A_j\) give a homomorphism to \(\lim A_j=\widehat A\), hence an \(S\)-map \(\operatorname{Spec}\widehat A\to S'\). That would make the last module flat, a contradiction. This rules out a representing scheme. The stronger exclusion of algebraic spaces is part of the cited example, using the corresponding formal lifting property.
+If a scheme represented the flattening functor, the compatible maps \(\operatorname{Spec}A_j\to S'\) would all take their sole point to one point of \(S'\). They lie in a common affine neighbourhood \(U\) of that point. Compatible homomorphisms \(\Gamma(U,\mathcal O_U)\to A_j\) give a homomorphism to \(\lim A_j=\widehat A\), hence an \(S\)-map \(\operatorname{Spec}\widehat A\to S'\). That would make the last module flat, a contradiction. This rules out a representing scheme. The following étale-lifting argument proves the stronger algebraic-space exclusion.
+
+### Failure of algebraic-space representability
+
+The same example excludes every algebraic-space representative, even one with no finite-presentation hypothesis. Suppose an algebraic space \(Z\to S\) represented \(\operatorname{Flat}_M\). The flat zero modules over all \(A_j\) give compatible maps
+
+\[
+z_j:\operatorname{Spec}A_j\longrightarrow Z.
+\]
+
+Their closed point is the same point \(z:\operatorname{Spec}k\to Z\). Choose an étale scheme atlas \(W\to Z\). The fibre \(W\times_Z\operatorname{Spec}k\) has a point with residue field \(k'\) finite separable over \(k\), because it is a nonempty étale \(k\)-scheme. We do not assume that it has a \(k\)-point. Let \(w:\operatorname{Spec}k'\to W\) be this point, and set
+
+\[
+A'_j=k'[x,y]/(x,y)^j.
+\]
+
+The base-changed maps \(z_j\) lift uniquely to \(W\), starting from \(w\). Indeed \(\operatorname{Spec}k'\subset\operatorname{Spec}A'_j\) is a nilpotent closed immersion, so the formal étaleness theorem applies. Its scheme proof is Infinitesimal lifting and invariance under thickenings, Theorem 4.1: apply it to the representable étale base change of \(W\to Z\) along \(z_j\). Uniqueness makes the lifts compatible for all \(j\).
+
+All these Artinian schemes have the sole image point \(w\), so their maps factor through a single affine neighbourhood \(V\subset W\) of that point. Compatible ring homomorphisms now give
+
+\[
+\Gamma(V,\mathcal O_V)\longrightarrow
+\varprojlim_j A'_j=k'[[x,y]].
+\]
+
+Thus there is a map \(\operatorname{Spec}k'[[x,y]]\to V\to Z\) over \(S\). Its compatibility with the given map to \(S=\operatorname{Spec}k[x,y]\) follows from the compatible maps on all quotients; the power-series ring is separated for the \((x,y)\)-adic topology.
+
+Representation would make
+
+\[
+k'[[x,y]][x^{-1}]/(y)
+\]
+
+flat over \(k'[[x,y]]\). This module is nonzero, since it maps to \(k'((x))\), and multiplication by \(y\) kills it. The same tensor test with the injective map given by multiplication by \(y\) disproves flatness. This contradiction proves the algebraic-space assertion. The argument used finite presentation of the **étale chart**, which is part of being étale, and imposed none on the proposed representative \(Z\).
+
 
 ## 9 Exercises
 
@@ -356,9 +407,9 @@ If a scheme represented the flattening functor, the compatible maps \(\operatorn
 
 ## What this lesson does not prove
 
-We use generic flatness [Stacks, Tag 051R], Serre generation and vanishing for ample twists [Stacks, Tag 01XO and Lemmas in that section], and the projective sheafification correspondence. We also use the exact proper flat cohomology theorem in Tag 0A1H: for a morphism of finite presentation, a bounded complex of finitely presented sheaves flat over the base with proper support, tensored with a perfect sheaf complex, has perfect derived pushforward compatible with arbitrary base change. Here the sheaf complex is one sheaf and the perfect factor is \(\mathcal O\); Lemmas 4.1 and 4.2 prove the consequences used in the construction. The regularity input is proved in *Regularity and bounded families*.
+We use generic flatness [Stacks, Tag 051R], Serre generation and vanishing for ample twists [Stacks, Tag 01XO and Lemmas in that section], and the projective sheafification correspondence. The exact arbitrary-base cohomology theorem is proved in Perfect tensor pushforwards over an arbitrary base, with Tag 0A1H as its Stacks comparison: for a morphism of finite presentation, a bounded complex of finitely presented sheaves flat over the base with proper support, tensored with a perfect sheaf complex, has perfect derived pushforward compatible with arbitrary base change. Here the sheaf complex is one sheaf and the perfect factor is \(\mathcal O\); Lemmas 4.1 and 4.2 prove the consequences used in the construction. The regularity input is proved in *Regularity and bounded families*.
 
-The general Raynaud–Gruson representability theorem is stated with its hypotheses in Theorem 8.1, using Tags 05UG–05UH and the purity definition in Tag 05J4. Theorem 8.2 is the henselian local theorem [Stacks, Tag 05PG]; its proof is outside this lesson. We prove the nonrepresentability example for schemes; its algebraic-space extension is imported from Tag 0FJ1. These inputs do not replace the Artinian, determinantal, or projective flattening proofs, which are given here in full.
+Theorems 8.1–8.2 apply the complete earlier programme proofs of purity-based universal flattening and marked henselian local flattening, with their exact hypotheses. Section 8 proves the nonrepresentability example for both schemes and algebraic spaces. The Artinian, determinantal and projective flattening arguments are given here independently; none assumes the existence of a Hilbert or Quot space.
 
 ## References
 
@@ -366,3 +417,5 @@ The general Raynaud–Gruson representability theorem is stated with its hypothe
 - [Stacks] *Divisors*, [Fitting stratification](https://stacks.math.columbia.edu/tag/05P9), Tag 05P9; *Derived Categories of Schemes*, [proper flat cohomology and arbitrary base change](https://stacks.math.columbia.edu/tag/0A1H), Tag 0A1H.
 - [Nitsure] N. Nitsure, [Construction of Hilbert and Quot Schemes](https://arxiv.org/abs/math/0504590), 2005, Sections 3–4, especially Lemmas 3.1–3.2 and Theorem 4.3.
 - [Raynaud–Gruson] M. Raynaud and L. Gruson, *Critères de platitude et de projectivité. Techniques de « platification » d'un module*, Inventiones Mathematicae 13 (1971), 1–89. The relative-purity formulation used here is the one in the cited Stacks tags.
+
+Linked programme proofs retain their own component licences. In particular, *Moduli stacks are algebraic* is distributed as a GNU FDL 1.2-or-later chapter with separately identified CC0 passages. This lesson's independently written text is dedicated to CC0.

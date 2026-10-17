@@ -28,9 +28,14 @@ There is also a useful formulation starting with a flat family of closed subsche
 Define
 
 \[
-\operatorname{Div}_{X/S}(T)
-=\{D\subset X_T:\ D\text{ is a relative effective Cartier divisor}\}.
-\tag{1.1}
+\begin{gathered}
+\operatorname{Div}_{X/S}(T)=\\
+\left\{\begin{array}{l}
+D\subset X_T:\\
+D\text{ is a relative effective}\\
+\text{Cartier divisor}
+\end{array}\right\}.
+\end{gathered}\tag{1.1}
 \]
 
 Divisors here are closed subschemes, so no choice of an equation or its scalar is part of the datum.
@@ -51,9 +56,10 @@ These constructions are inverse and commute with pullback. They prove representa
 The natural **Abel map** is the map of sheaves
 
 \[
-a:\operatorname{Div}_{X/S}\longrightarrow\operatorname{Pic}_{X/S},
-\qquad D\longmapsto[\mathcal O_{X_T}(D)].
-\tag{1.3}
+\begin{gathered}
+a:\operatorname{Div}_{X/S}\longrightarrow\operatorname{Pic}_{X/S},\\
+D\longmapsto[\mathcal O_{X_T}(D)].
+\end{gathered}\tag{1.3}
 \]
 
 For now its target is a sheaf, not an assumed scheme.
@@ -65,9 +71,10 @@ We need a parameter module that still works when the dimension of sections jumps
 **Lemma 2.1.** Let \(f:X\to S\) be proper and finitely presented, and let \(F\) be a finitely presented quasi-coherent sheaf flat over \(S\). There is a finitely presented quasi-coherent module \(Q_F\) such that, for every \(g:T\to S\) and every quasi-coherent \(N\) on \(T\),
 
 \[
-\mathcal Hom_T(g^*Q_F,N)
+\begin{gathered}
+\mathcal Hom_T(g^*Q_F,N)\\
 \simeq (f_T)_*(F_T\otimes f_T^*N).
-\tag{2.1}
+\end{gathered}\tag{2.1}
 \]
 
 It is unique with this universal isomorphism, and its formation commutes with every base change. If \(S\) is locally Noetherian, \(Q_F\) is coherent.
@@ -139,11 +146,14 @@ We use the precise proper-flat cohomology theorem for geometrically reduced conn
 Let \(L\) be invertible on \(X\). Its **complete relative linear system** is
 
 \[
-\operatorname{LinSys}_L(T)=
-\{D\in\operatorname{Div}_{X/S}(T):
-\mathcal O_{X_T}(D)\simeq L_T\otimes f_T^*N
-\text{ for some invertible }N\text{ on }T\}.
-\tag{3.2}
+\begin{gathered}
+\operatorname{LinSys}_L(T)=\\
+\left\{\begin{array}{l}
+D\in\operatorname{Div}_{X/S}(T):\\
+\mathcal O_{X_T}(D)\simeq L_T\otimes f_T^*N\\
+\text{for some invertible }N\text{ on }T
+\end{array}\right\}.
+\end{gathered}\tag{3.2}
 \]
 
 **Theorem 3.1 (complete linear systems).** With these hypotheses, \(\operatorname{LinSys}_L\) is represented by \(\mathbb P(Q_L)\), where \(Q_L\) is the finitely presented module of Lemma 2.1. This is also the fibre product of the Abel map with the Picard class defined by \(L\). If \(S\) is locally Noetherian the module is coherent. If \(f_*L=V\) is locally free and commutes with every base change, the linear system is \(\mathbb P(V^\vee)\).
@@ -215,9 +225,10 @@ The argument isolates the role of integral fibres: a nonzero section has a regul
 Call a fibre line bundle \(L_t\) **positive** here if it is globally generated, has a nonzero section, and
 
 \[
-H^i(X_t,L_t(n))=0
-\quad\text{for every }i>0\text{ and }n\geq0.
-\tag{5.1}
+\begin{gathered}
+H^i(X_t,L_t(n))=0\\
+\text{for every }i>0\text{ and }n\geq0.
+\end{gathered}\tag{5.1}
 \]
 
 This is a sufficient positivity condition for the construction, not a definition of ampleness. Its all-twists condition makes tensoring with \(\mathcal O_X(1)\) preserve positivity. Global generation also persists because \(\mathcal O_X(1)\) is globally generated.
@@ -227,8 +238,10 @@ Let \(P_+\subset\operatorname{Pic}_{X/S}\) be the subfunctor of classes with pos
 **Lemma 5.1.** The inclusion \(P_+\to\operatorname{Pic}_{X/S}\) is represented by open immersions. Write \(\xi=[\mathcal O_X(1)]\). The open subfunctors
 
 \[
-P_+-m\xi=\{\lambda:\lambda+m\xi\in P_+\},\qquad m\geq0,
-\tag{5.2}
+\begin{gathered}
+P_+-m\xi=\{\lambda:\lambda+m\xi\in P_+\},\\
+m\geq0,
+\end{gathered}\tag{5.2}
 \]
 
 cover the Picard sheaf on every test scheme.
@@ -253,9 +266,10 @@ Finally take any \(\lambda\in\operatorname{Pic}_{X/S}(T)\) and \(t\in T\). After
 For a positive bundle \(L\) over a test scheme, Lemma 2.1 now gives
 
 \[
-V=f_*L\text{ locally free of positive rank},
-\qquad \operatorname{LinSys}_L=\mathbb P(V^\vee).
-\tag{5.4}
+\begin{gathered}
+V=f_*L\text{ locally free of positive rank},\\
+\operatorname{LinSys}_L=\mathbb P(V^\vee).
+\end{gathered}\tag{5.4}
 \]
 
 In particular the latter is smooth, proper and surjective over the test scheme.
@@ -413,10 +427,10 @@ This example says nothing like \(\operatorname{Pic}(Z)=\mathbb Z\) for every hyp
 For a smooth projective geometrically connected curve, the relative divisor scheme of degree \(d\) is its symmetric power, as proved in *Hilbert and Quot schemes*. A pointed curve has a universal normalized bundle on its Picard scheme. For \(d\geq0\) with \(d>2g-2\), Serre duality and Riemann–Roch give
 
 \[
-\operatorname{Sym}^d C
-\simeq\mathbb P_{\operatorname{Pic}^d_C}(V^\vee),
-\qquad \operatorname{rank}V=d+1-g.
-\tag{9.2}
+\begin{gathered}
+\operatorname{Sym}^d C\simeq\mathbb P_{\operatorname{Pic}^d_C}(V^\vee),\\
+\operatorname{rank}V=d+1-g.
+\end{gathered}\tag{9.2}
 \]
 
 For a curve without a point, the same statement holds after an étale cover supplying a representative of the universal class. The global conclusion can be a Brauer–Severi fibration.
@@ -452,7 +466,7 @@ The tensor group law on the target transports to the elliptic group law with ori
 
 ### Why the historical erratum matters
 
-The existence theorem uses geometric integrality, not just properness, flatness and (3.1). The broader scheme-existence conjecture in FGA 232, Remark 5.2, was explicitly withdrawn in its erratum, p. 303. That erratum also adds the algebraically closed residue-field qualification to the complete-local-base remark. Modern algebraic-space representability under proper flat finite presentation and (3.1) [Stacks, Tag 0D2C] is a different conclusion and is consistent with these corrections.
+The existence theorem uses geometric integrality, not just properness, flatness and (3.1). The broader scheme-existence conjecture in FGA 232, Remark 5.2, was explicitly withdrawn in its erratum, p. 303. That erratum also adds the algebraically closed residue-field qualification to the complete-local-base remark. The full algebraic-space theorem under proper flat finite presentation and the universal condition (3.1) is proved in Moduli stacks are algebraic, Theorem 7.3. It rigidifies the algebraic stack of line bundles after an fppf cover supplying a section, and then descends its algebraic-space coordinates. This is a different conclusion from scheme representability and is consistent with the historical corrections; its Stacks comparison is Tag 0D2C.
 
 One mechanism is visible already in our proof. On a reducible fibre a nonzero section need not be regular. Regular sections form an open inside the projective parameter scheme, and that open need not be proper. The relation projections then lose the properness needed in Theorem 7.1. The historical nonexistence of a Picard scheme in some such cases means failure of representation by a scheme; it does not assert failure of the applicable modern algebraic-space theorem. The general reductions and finiteness results of FGA 232 §6 and FGA 236 require their own additional arguments.
 
@@ -497,7 +511,7 @@ The foundational results used are these precise ones:
 - Proper morphisms with finite fibres are finite [Tag 02LS]; finite monomorphisms are closed immersions [Tag 03BB]. Projective schemes and their Proj quotient-line property are used in convention (0.1).
 - *Hilbert and Quot schemes* proves fixed-polynomial projective Hilbert representability; its proper-support open construction gives Hilbert schemes for quasi-projective ambient schemes. *The Picard functor and the Picard scheme of a curve* proves the sheaf comparison and injection of the raw relative quotient under (3.1), and the all-characteristic symmetric-power statement comes from *Hilbert and Quot schemes*. The Hilbert-polynomial dimension and leading-coefficient facts come from *Castelnuovo–Mumford regularity and boundedness*.
 
-The general algebraic-space theorem [Stacks, Tag 0D2C] is stated only to delineate the boundary of the scheme theorem; it is not used in the proof. The reductions of FGA 232 §6, component finiteness and the theorem of the base are not proved here. Nor do we assert that a universal line bundle exists without a section, or that the Picard scheme is smooth in arbitrary dimension.
+The general algebraic-space theorem is Moduli stacks are algebraic, Theorem 7.3, with its complete scalar-rigidification and section-removal proof. It delineates the boundary of the scheme theorem and is not used in our projective quotient construction. The reductions of FGA 232 §6, component finiteness and the theorem of the base are not proved here. Nor do we assert that a universal line bundle exists without a section, or that the Picard scheme is smooth in arbitrary dimension.
 
 ## References
 
@@ -506,3 +520,5 @@ The general algebraic-space theorem [Stacks, Tag 0D2C] is stated only to delinea
 - Nitsure, *Construction of Hilbert and Quot Schemes*, §6, especially Theorem 6.8. [Author's exposition](https://arxiv.org/abs/math/0504590).
 - The Stacks project, *Divisors*, *More on Morphisms*, *Derived Categories of Schemes*, and *Quot and Hilbert Spaces*, cited by the tags above and read in the AI Integrated Stacks Project edition. [Relative Cartier divisors](https://stacks.math.columbia.edu/tag/062Y), [Picard algebraic spaces](https://stacks.math.columbia.edu/tag/0D2C).
 - AI Integrated Stacks Project, *Moduli*, the sections on relative effective Cartier divisors, complete linear systems and the positive Picard locus; labels `section-relative-effective-Cartier-divisors`, `theorem-complete-linear-system`, `section-positive-picard-locus`, `remark-classical-positive-divisor-quotient` and `remark-corrected-picard-existence-boundary`.
+
+Linked programme proofs retain their own component licences. In particular, *Moduli stacks are algebraic* is distributed as a GNU FDL 1.2-or-later chapter with separately identified CC0 passages. This lesson's independently written text is dedicated to CC0.

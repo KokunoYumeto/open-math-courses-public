@@ -1,0 +1,199 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>No linear matrix inequality describes the cone</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A nonspectrahedral hyperbolicity cone)</a><a href="a-positive-map-and-a-hyperbolic-polynomial.html">Previous lesson</a><a href="angular-slices-of-the-cone.html">Next lesson</a><a href="src/no-linear-matrix-inequality-describes-the-cone.md">Editable source</a></nav><main><article><h1 id="no-linear-matrix-inequality-describes-the-cone">No linear matrix inequality describes the cone</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the second half of Theorem A of <span class="unlinked">Hyperbolic polynomials and spectrahedral cones</span>. Suppose some linear matrix inequality <span class="math" data-tex="\(L(X,Z,y)\succeq0\)">\(L(X,Z,y)\succeq0\)</span> of finite size describes the hyperbolicity cone <span class="math" data-tex="\(K\)">\(K\)</span>. The slices of <a href="a-positive-map-and-a-hyperbolic-polynomial.html">A positive map and a hyperbolic polynomial</a> force <span class="math" data-tex="\(L\)">\(L\)</span>, after a normalization and a limit, into a Schur-complement form. Letting <span class="math" data-tex="\(X^{-1}\)">\(X^{-1}\)</span> and <span class="math" data-tex="\(Z^{-1}\)">\(Z^{-1}\)</span> tend to rank-one projections turns it into an identity between the Choi–Lam form and the norms of certain matrices. Differentiating that identity produces a nonzero bilinear form whose square lies below <span class="math" data-tex="\(b\)">\(b\)</span>, which <a href="the-choi-lam-form.html">The Choi–Lam form</a> excludes. The proof follows OpenAI [OpenAI-NS, Sections 4 to 6]. It never compares the determinant of the pencil with <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Throughout, <span class="math" data-tex="\(\|\cdot\|_{\mathrm{op}}\)">\(\|\cdot\|_{\mathrm{op}}\)</span> is the operator norm for the Euclidean norms, and for <span class="math" data-tex="\(u\in\mathbf R^4\)">\(u\in\mathbf R^4\)</span> we write <span class="math" data-tex="\(u=(u_0,u&#x27;)\)">\(u=(u_0,u&#x27;)\)</span> with <span class="math" data-tex="\(u&#x27;\in\mathbf R^3\)">\(u&#x27;\in\mathbf R^3\)</span>.</p>
+<h2 id="1-a-pencil-gives-a-schur-complement-inequality">1. A pencil gives a Schur-complement inequality</h2>
+<p><strong>Proposition 4.1</strong> (OpenAI). Suppose <span class="math" data-tex="\(K=\{x:L(x)\succeq0\}\)">\(K=\{x:L(x)\succeq0\}\)</span> for a linear map <span class="math" data-tex="\(L:\mathbb S^4\times\mathbb S^4\times\mathbf R^3\to\mathbb S^N\)">\(L:\mathbb S^4\times\mathbb S^4\times\mathbf R^3\to\mathbb S^N\)</span>. Then there are integers <span class="math" data-tex="\(a,c\ge1\)">\(a,c\ge1\)</span>, unital positive linear maps <span class="math" data-tex="\(D:\mathbb S^4\to\mathbb S^a\)">\(D:\mathbb S^4\to\mathbb S^a\)</span> and <span class="math" data-tex="\(E:\mathbb S^4\to\mathbb S^c\)">\(E:\mathbb S^4\to\mathbb S^c\)</span>, and a linear map <span class="math" data-tex="\(B:\mathbf R^3\to\mathbf R^{a\times c}\)">\(B:\mathbf R^3\to\mathbf R^{a\times c}\)</span> such that for all <span class="math" data-tex="\(X\succ0\)">\(X\succ0\)</span>, <span class="math" data-tex="\(Z\in\mathbb S^4\)">\(Z\in\mathbb S^4\)</span> and <span class="math" data-tex="\(y\in\mathbf R^3\)">\(y\in\mathbf R^3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;Z\succeq\Phi_y(X^{-1})\\
+&amp;\quad\iff E(Z)\succeq B(y)^{\mathsf T}D(X)^{-1}B(y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;Z\succeq\Phi_y(X^{-1})\\
+&amp;\quad\iff E(Z)\succeq B(y)^{\mathsf T}D(X)^{-1}B(y).
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(L(X,Z,y)=L_1(X)+L_2(Z)+L_3(y)\)">\(L(X,Z,y)=L_1(X)+L_2(Z)+L_3(y)\)</span>.</p>
+<p><em>Removing a common kernel.</em> Since <span class="math" data-tex="\(e\)">\(e\)</span> is an interior point of <span class="math" data-tex="\(K\)">\(K\)</span> (Proposition 3.3), for every <span class="math" data-tex="\(x\)">\(x\)</span> there is <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> with <span class="math" data-tex="\(e\pm\varepsilon x\in K\)">\(e\pm\varepsilon x\in K\)</span>, so <span class="math" data-tex="\(L(e)\pm\varepsilon L(x)\succeq0\)">\(L(e)\pm\varepsilon L(x)\succeq0\)</span>, and <span class="math" data-tex="\(\ker L(e)\subseteq\ker L(x)\)">\(\ker L(e)\subseteq\ker L(x)\)</span> by Lemma 1.3(6) of the first lesson. A symmetric matrix maps into the orthogonal complement of its kernel. So in an orthonormal basis adapted to <span class="math" data-tex="\(V\oplus\ker L(e)\)">\(V\oplus\ker L(e)\)</span>, <span class="math" data-tex="\(V=\ker L(e)^\perp\)">\(V=\ker L(e)^\perp\)</span>, every <span class="math" data-tex="\(L(x)\)">\(L(x)\)</span> is block diagonal with lower block <span class="math" data-tex="\(0\)">\(0\)</span>, and replacing <span class="math" data-tex="\(L(x)\)">\(L(x)\)</span> by its upper block <span class="math" data-tex="\(L_V(x)\)">\(L_V(x)\)</span> does not change the set <span class="math" data-tex="\(\{x:L(x)\succeq0\}\)">\(\{x:L(x)\succeq0\}\)</span>. Moreover <span class="math" data-tex="\(L_V(e)\succ0\)">\(L_V(e)\succ0\)</span>. The space <span class="math" data-tex="\(V\)">\(V\)</span> is nonzero: otherwise <span class="math" data-tex="\(L=0\)">\(L=0\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span> would be the whole space, while <span class="math" data-tex="\((-I_4,I_4,0)\notin K\)">\((-I_4,I_4,0)\notin K\)</span> by Proposition 3.3. We may therefore assume <span class="math" data-tex="\(L(e)\succ0\)">\(L(e)\succ0\)</span>.</p>
+<p><em>Splitting off a block.</em> By the second slice of Proposition 3.3, <span class="math" data-tex="\((X,0,0)\in K\)">\((X,0,0)\in K\)</span> and <span class="math" data-tex="\((0,Z,0)\in K\)">\((0,Z,0)\in K\)</span> whenever <span class="math" data-tex="\(X,Z\succeq0\)">\(X,Z\succeq0\)</span>; so <span class="math" data-tex="\(L_1\)">\(L_1\)</span> and <span class="math" data-tex="\(L_2\)">\(L_2\)</span> are positive maps. Let <span class="math" data-tex="\(U=\ker L_1(I_4)\)">\(U=\ker L_1(I_4)\)</span>. For every <span class="math" data-tex="\(X\in\mathbb S^4\)">\(X\in\mathbb S^4\)</span> and small <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, <span class="math" data-tex="\(I_4\pm\varepsilon X\succeq0\)">\(I_4\pm\varepsilon X\succeq0\)</span>, so <span class="math" data-tex="\(L_1(I_4)\pm\varepsilon L_1(X)\succeq0\)">\(L_1(I_4)\pm\varepsilon L_1(X)\succeq0\)</span>, and <span class="math" data-tex="\(U\subseteq\ker L_1(X)\)">\(U\subseteq\ker L_1(X)\)</span>. In an orthonormal basis adapted to <span class="math" data-tex="\(U^\perp\oplus U\)">\(U^\perp\oplus U\)</span>,
+<span class="math math-display" data-tex="\[
+L_1(X)=\begin{pmatrix}D(X)&amp;0\\0&amp;0\end{pmatrix}.
+\]">\[
+L_1(X)=\begin{pmatrix}D(X)&amp;0\\0&amp;0\end{pmatrix}.
+\]</span>
+Both summands are nonzero. If <span class="math" data-tex="\(U^\perp=0\)">\(U^\perp=0\)</span>, then <span class="math" data-tex="\(L_1=0\)">\(L_1=0\)</span> and <span class="math" data-tex="\(L(-I_4,I_4,0)=L_2(I_4)\succeq0\)">\(L(-I_4,I_4,0)=L_2(I_4)\succeq0\)</span>, so <span class="math" data-tex="\((-I_4,I_4,0)\in K\)">\((-I_4,I_4,0)\in K\)</span>, which is false. If <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, then <span class="math" data-tex="\(L_1(I_4)\succ0\)">\(L_1(I_4)\succ0\)</span>, so <span class="math" data-tex="\(L_1(I_4)-\varepsilon L_2(I_4)\succ0\)">\(L_1(I_4)-\varepsilon L_2(I_4)\succ0\)</span> for small <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and <span class="math" data-tex="\((I_4,-\varepsilon I_4,0)\in K\)">\((I_4,-\varepsilon I_4,0)\in K\)</span>, which is false. Let <span class="math" data-tex="\(a=\dim U^\perp\)">\(a=\dim U^\perp\)</span>, <span class="math" data-tex="\(c=\dim U\)">\(c=\dim U\)</span>, and let <span class="math" data-tex="\(E(Z)\)">\(E(Z)\)</span> be the lower diagonal block of <span class="math" data-tex="\(L_2(Z)\)">\(L_2(Z)\)</span>. The maps <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> are positive, as compressions of positive maps. <span class="math" data-tex="\(D(I_4)\succ0\)">\(D(I_4)\succ0\)</span> by the choice of <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(E(I_4)\succ0\)">\(E(I_4)\succ0\)</span> because it is the compression of <span class="math" data-tex="\(L(e)=L_1(I_4)+L_2(I_4)\succ0\)">\(L(e)=L_1(I_4)+L_2(I_4)\succ0\)</span> to <span class="math" data-tex="\(U\)">\(U\)</span>. Replacing <span class="math" data-tex="\(L\)">\(L\)</span> by <span class="math" data-tex="\(S^{\mathsf T}LS\)">\(S^{\mathsf T}LS\)</span> with <span class="math" data-tex="\(S=\operatorname{diag}(D(I_4)^{-1/2},E(I_4)^{-1/2})\)">\(S=\operatorname{diag}(D(I_4)^{-1/2},E(I_4)^{-1/2})\)</span> does not change the described set (Lemma 1.3(4) of the first lesson) and makes <span class="math" data-tex="\(D(I_4)=I_a\)">\(D(I_4)=I_a\)</span> and <span class="math" data-tex="\(E(I_4)=I_c\)">\(E(I_4)=I_c\)</span>. Write
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_2(Z)&amp;=\begin{pmatrix}F(Z)&amp;C(Z)\\ C(Z)^{\mathsf T}&amp;E(Z)\end{pmatrix},\\
+L_3(y)&amp;=\begin{pmatrix}A(y)&amp;B(y)\\ B(y)^{\mathsf T}&amp;G(y)\end{pmatrix}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+L_2(Z)&amp;=\begin{pmatrix}F(Z)&amp;C(Z)\\ C(Z)^{\mathsf T}&amp;E(Z)\end{pmatrix},\\
+L_3(y)&amp;=\begin{pmatrix}A(y)&amp;B(y)\\ B(y)^{\mathsf T}&amp;G(y)\end{pmatrix}.
+\end{aligned}
+\]</span></p>
+<p><em>The block <span class="math" data-tex="\(G\)">\(G\)</span> vanishes.</em> Fix <span class="math" data-tex="\(y\)">\(y\)</span> and put <span class="math" data-tex="\(Z_0=\Phi_y(I_4)\)">\(Z_0=\Phi_y(I_4)\)</span>. For every real <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(\Phi_{sy}(I_4)=s^2Z_0\)">\(\Phi_{sy}(I_4)=s^2Z_0\)</span>, so <span class="math" data-tex="\((I_4,s^2Z_0,sy)\in K\)">\((I_4,s^2Z_0,sy)\in K\)</span> by the first slice of Proposition 3.3. The lower block of <span class="math" data-tex="\(L(I_4,s^2Z_0,sy)\)">\(L(I_4,s^2Z_0,sy)\)</span> is <span class="math" data-tex="\(s^2E(Z_0)+sG(y)\)">\(s^2E(Z_0)+sG(y)\)</span>, and it is positive semidefinite, as a compression of a positive semidefinite matrix. Dividing by <span class="math" data-tex="\(|s|\)">\(|s|\)</span> and letting <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span> through positive and through negative values gives <span class="math" data-tex="\(G(y)\succeq0\)">\(G(y)\succeq0\)</span> and <span class="math" data-tex="\(-G(y)\succeq0\)">\(-G(y)\succeq0\)</span>, so <span class="math" data-tex="\(G(y)=0\)">\(G(y)=0\)</span>.</p>
+<p><em>Rescaling.</em> Let <span class="math" data-tex="\(X\succ0\)">\(X\succ0\)</span>, <span class="math" data-tex="\(Z\in\mathbb S^4\)">\(Z\in\mathbb S^4\)</span>, <span class="math" data-tex="\(y\in\mathbf R^3\)">\(y\in\mathbf R^3\)</span> and <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>. Conjugating <span class="math" data-tex="\(L(X,s^2Z,sy)\)">\(L(X,s^2Z,sy)\)</span> by <span class="math" data-tex="\(\operatorname{diag}(I_a,s^{-1}I_c)\)">\(\operatorname{diag}(I_a,s^{-1}I_c)\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M_s&amp;=\begin{pmatrix}D_s&amp;B_s\\ B_s^{\mathsf T}&amp;E(Z)\end{pmatrix},\\
+D_s&amp;=D(X)+sA(y)+s^2F(Z),\\
+B_s&amp;=B(y)+sC(Z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+M_s&amp;=\begin{pmatrix}D_s&amp;B_s\\ B_s^{\mathsf T}&amp;E(Z)\end{pmatrix},\\
+D_s&amp;=D(X)+sA(y)+s^2F(Z),\\
+B_s&amp;=B(y)+sC(Z).
+\end{aligned}
+\]</span>
+As <span class="math" data-tex="\(\Phi_{sy}=s^2\Phi_y\)">\(\Phi_{sy}=s^2\Phi_y\)</span>, the first slice gives <span class="math" data-tex="\((X,s^2Z,sy)\in K\)">\((X,s^2Z,sy)\in K\)</span> if and only if <span class="math" data-tex="\(Z\succeq\Phi_y(X^{-1})\)">\(Z\succeq\Phi_y(X^{-1})\)</span>. Hence, for every <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+M_s\succeq0\iff Z\succeq\Phi_y(X^{-1}).
+\]">\[
+M_s\succeq0\iff Z\succeq\Phi_y(X^{-1}).
+\]</span>
+As <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>, <span class="math" data-tex="\(M_s\)">\(M_s\)</span> tends to
+<span class="math math-display" data-tex="\[
+M=\begin{pmatrix}D(X)&amp;B(y)\\B(y)^{\mathsf T}&amp;E(Z)\end{pmatrix}.
+\]">\[
+M=\begin{pmatrix}D(X)&amp;B(y)\\B(y)^{\mathsf T}&amp;E(Z)\end{pmatrix}.
+\]</span>
+If <span class="math" data-tex="\(Z\succeq\Phi_y(X^{-1})\)">\(Z\succeq\Phi_y(X^{-1})\)</span>, all <span class="math" data-tex="\(M_s\)">\(M_s\)</span> are positive semidefinite, and so is their limit <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><em>The converse.</em> Suppose <span class="math" data-tex="\(M\succeq0\)">\(M\succeq0\)</span>. Since <span class="math" data-tex="\(X\succeq\lambda_{\min}(X)I_4\)">\(X\succeq\lambda_{\min}(X)I_4\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> is positive and unital, <span class="math" data-tex="\(D(X)\succeq\lambda_{\min}(X)I_a\succ0\)">\(D(X)\succeq\lambda_{\min}(X)I_a\succ0\)</span>. For <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, the matrix <span class="math" data-tex="\(M+\operatorname{diag}(0,\delta I_c)\)">\(M+\operatorname{diag}(0,\delta I_c)\)</span>, which is the limit matrix for <span class="math" data-tex="\(Z+\delta I_4\)">\(Z+\delta I_4\)</span>, is positive definite: on a vector <span class="math" data-tex="\((w_1,w_2)\ne0\)">\((w_1,w_2)\ne0\)</span> its quadratic form is at least <span class="math" data-tex="\(\delta\|w_2\|^2\)">\(\delta\|w_2\|^2\)</span>, and equals <span class="math" data-tex="\(w_1^{\mathsf T}D(X)w_1&gt;0\)">\(w_1^{\mathsf T}D(X)w_1&gt;0\)</span> when <span class="math" data-tex="\(w_2=0\)">\(w_2=0\)</span>. Positive definite matrices form an open set, so the matrices <span class="math" data-tex="\(M_s\)">\(M_s\)</span> formed with <span class="math" data-tex="\(Z+\delta I_4\)">\(Z+\delta I_4\)</span> are positive definite for small <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>, and the equivalence for <span class="math" data-tex="\(M_s\)">\(M_s\)</span> gives <span class="math" data-tex="\(Z+\delta I_4\succeq\Phi_y(X^{-1})\)">\(Z+\delta I_4\succeq\Phi_y(X^{-1})\)</span>. Letting <span class="math" data-tex="\(\delta\to0\)">\(\delta\to0\)</span> gives <span class="math" data-tex="\(Z\succeq\Phi_y(X^{-1})\)">\(Z\succeq\Phi_y(X^{-1})\)</span>.</p>
+<p>So <span class="math" data-tex="\(Z\succeq\Phi_y(X^{-1})\)">\(Z\succeq\Phi_y(X^{-1})\)</span> if and only if <span class="math" data-tex="\(M\succeq0\)">\(M\succeq0\)</span>, and by the Schur complement, Lemma 1.3(5) of the first lesson with <span class="math" data-tex="\(P=D(X)\succ0\)">\(P=D(X)\succ0\)</span>, if and only if <span class="math" data-tex="\(E(Z)\succeq B(y)^{\mathsf T}D(X)^{-1}B(y)\)">\(E(Z)\succeq B(y)^{\mathsf T}D(X)^{-1}B(y)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-rank-one-limits-and-a-norm-identity">2. Rank-one limits and a norm identity</h2>
+<p>For unit vectors <span class="math" data-tex="\(u,v\in\mathbf R^4\)">\(u,v\in\mathbf R^4\)</span> let <span class="math" data-tex="\(P(v)\)">\(P(v)\)</span> be the orthogonal projection of <span class="math" data-tex="\(\mathbf R^a\)">\(\mathbf R^a\)</span> onto <span class="math" data-tex="\(\ker D(I_4-vv^{\mathsf T})\)">\(\ker D(I_4-vv^{\mathsf T})\)</span>, and <span class="math" data-tex="\(R(u)\)">\(R(u)\)</span> that of <span class="math" data-tex="\(\mathbf R^c\)">\(\mathbf R^c\)</span> onto <span class="math" data-tex="\(\ker E(I_4-uu^{\mathsf T})\)">\(\ker E(I_4-uu^{\mathsf T})\)</span>.</p>
+<p><strong>Lemma 4.2.</strong> If <span class="math" data-tex="\(H\in\mathbb S^n\)">\(H\in\mathbb S^n\)</span> is positive semidefinite, then <span class="math" data-tex="\([I+(t-1)H]^{-1/2}\)">\([I+(t-1)H]^{-1/2}\)</span> tends, as <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>, in operator norm to the orthogonal projection onto <span class="math" data-tex="\(\ker H\)">\(\ker H\)</span>.</p>
+<p><em>Proof.</em> In an orthonormal basis of eigenvectors of <span class="math" data-tex="\(H\)">\(H\)</span>, with eigenvalues <span class="math" data-tex="\(\mu\ge0\)">\(\mu\ge0\)</span>, the matrix is diagonal with entries <span class="math" data-tex="\((1+(t-1)\mu)^{-1/2}\)">\((1+(t-1)\mu)^{-1/2}\)</span>, which equal <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span> and tend to <span class="math" data-tex="\(0\)">\(0\)</span> for <span class="math" data-tex="\(\mu&gt;0\)">\(\mu&gt;0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.3</strong> (OpenAI). Under the conclusion of Proposition 4.1, for all unit vectors <span class="math" data-tex="\(u,v\in\mathbf R^4\)">\(u,v\in\mathbf R^4\)</span> and all <span class="math" data-tex="\(y\in\mathbf R^3\)">\(y\in\mathbf R^3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;b(v_0u&#x27;-u_0v&#x27;,\,y)\\
+&amp;\quad=\bigl\|P(v)B(y)R(u)\bigr\|_{\mathrm{op}}^2 .
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+&amp;b(v_0u&#x27;-u_0v&#x27;,\,y)\\
+&amp;\quad=\bigl\|P(v)B(y)R(u)\bigr\|_{\mathrm{op}}^2 .
+\end{aligned}
+\tag{4.3}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> put <span class="math" data-tex="\(X_t=vv^{\mathsf T}+t(I-vv^{\mathsf T})\)">\(X_t=vv^{\mathsf T}+t(I-vv^{\mathsf T})\)</span> and <span class="math" data-tex="\(Z_t=uu^{\mathsf T}+t(I-uu^{\mathsf T})\)">\(Z_t=uu^{\mathsf T}+t(I-uu^{\mathsf T})\)</span>. Their eigenvalues are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>, so <span class="math" data-tex="\(X_t,Z_t\succeq I\)">\(X_t,Z_t\succeq I\)</span>, and positivity and unitality give <span class="math" data-tex="\(D(X_t)\succeq I_a\)">\(D(X_t)\succeq I_a\)</span> and <span class="math" data-tex="\(E(Z_t)\succeq I_c\)">\(E(Z_t)\succeq I_c\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_t&amp;=Z_t^{-1/2}\,\Phi_y(X_t^{-1})\,Z_t^{-1/2}\succeq0,\\
+C_t&amp;=D(X_t)^{-1/2}\,B(y)\,E(Z_t)^{-1/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+A_t&amp;=Z_t^{-1/2}\,\Phi_y(X_t^{-1})\,Z_t^{-1/2}\succeq0,\\
+C_t&amp;=D(X_t)^{-1/2}\,B(y)\,E(Z_t)^{-1/2}.
+\end{aligned}
+\]</span>
+For real <span class="math" data-tex="\(r\)">\(r\)</span>, congruence by <span class="math" data-tex="\(Z_t^{-1/2}\)">\(Z_t^{-1/2}\)</span> and Lemma 1.3(3) of the first lesson give: <span class="math" data-tex="\(rZ_t\succeq\Phi_y(X_t^{-1})\)">\(rZ_t\succeq\Phi_y(X_t^{-1})\)</span> if and only if <span class="math" data-tex="\(r\ge\lambda_{\max}(A_t)\)">\(r\ge\lambda_{\max}(A_t)\)</span>. Congruence by <span class="math" data-tex="\(E(Z_t)^{-1/2}\)">\(E(Z_t)^{-1/2}\)</span> and Lemma 1.3(7) give: <span class="math" data-tex="\(E(rZ_t)\succeq B(y)^{\mathsf T}D(X_t)^{-1}B(y)\)">\(E(rZ_t)\succeq B(y)^{\mathsf T}D(X_t)^{-1}B(y)\)</span> if and only if <span class="math" data-tex="\(r\ge\|C_t\|_{\mathrm{op}}^2\)">\(r\ge\|C_t\|_{\mathrm{op}}^2\)</span>. By the equivalence of Proposition 4.1 for <span class="math" data-tex="\((X_t,rZ_t,y)\)">\((X_t,rZ_t,y)\)</span>, these two sets of <span class="math" data-tex="\(r\)">\(r\)</span> coincide, so
+<span class="math math-display" data-tex="\[
+\lambda_{\max}(A_t)=\|C_t\|_{\mathrm{op}}^2 .
+\]">\[
+\lambda_{\max}(A_t)=\|C_t\|_{\mathrm{op}}^2 .
+\]</span>
+Let <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>. Since <span class="math" data-tex="\(X_t^{-1}=vv^{\mathsf T}+t^{-1}(I-vv^{\mathsf T})\)">\(X_t^{-1}=vv^{\mathsf T}+t^{-1}(I-vv^{\mathsf T})\)</span> and <span class="math" data-tex="\(Z_t^{-1/2}=uu^{\mathsf T}+t^{-1/2}(I-uu^{\mathsf T})\)">\(Z_t^{-1/2}=uu^{\mathsf T}+t^{-1/2}(I-uu^{\mathsf T})\)</span>,
+<span class="math math-display" data-tex="\[
+A_t\to uu^{\mathsf T}\,\Phi_y(vv^{\mathsf T})\,uu^{\mathsf T}=\alpha\,uu^{\mathsf T}
+\]">\[
+A_t\to uu^{\mathsf T}\,\Phi_y(vv^{\mathsf T})\,uu^{\mathsf T}=\alpha\,uu^{\mathsf T}
+\]</span>
+with <span class="math" data-tex="\(\alpha=u^{\mathsf T}\Phi_y(vv^{\mathsf T})u\ge0\)">\(\alpha=u^{\mathsf T}\Phi_y(vv^{\mathsf T})u\ge0\)</span>, and <span class="math" data-tex="\(\lambda_{\max}(A_t)\to\alpha\)">\(\lambda_{\max}(A_t)\to\alpha\)</span> by the continuity in Lemma 1.3(3). On the other side, unitality gives <span class="math" data-tex="\(D(X_t)=I_a+(t-1)D(I-vv^{\mathsf T})\)">\(D(X_t)=I_a+(t-1)D(I-vv^{\mathsf T})\)</span> and <span class="math" data-tex="\(E(Z_t)=I_c+(t-1)E(I-uu^{\mathsf T})\)">\(E(Z_t)=I_c+(t-1)E(I-uu^{\mathsf T})\)</span>, with <span class="math" data-tex="\(D(I-vv^{\mathsf T})\succeq0\)">\(D(I-vv^{\mathsf T})\succeq0\)</span> and <span class="math" data-tex="\(E(I-uu^{\mathsf T})\succeq0\)">\(E(I-uu^{\mathsf T})\succeq0\)</span>. By Lemma 4.2, <span class="math" data-tex="\(D(X_t)^{-1/2}\to P(v)\)">\(D(X_t)^{-1/2}\to P(v)\)</span> and <span class="math" data-tex="\(E(Z_t)^{-1/2}\to R(u)\)">\(E(Z_t)^{-1/2}\to R(u)\)</span>, so <span class="math" data-tex="\(C_t\to P(v)B(y)R(u)\)">\(C_t\to P(v)B(y)R(u)\)</span>, and <span class="math" data-tex="\(\|C_t\|_{\mathrm{op}}^2\)">\(\|C_t\|_{\mathrm{op}}^2\)</span> tends to the right side of (4.3). By Lemma 3.1 of the previous lesson, <span class="math" data-tex="\(\alpha=b(v_0u&#x27;-u_0v&#x27;,y)\)">\(\alpha=b(v_0u&#x27;-u_0v&#x27;,y)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At <span class="math" data-tex="\(u=v\)">\(u=v\)</span> the left side of (4.3) is <span class="math" data-tex="\(b(0,y)=0\)">\(b(0,y)=0\)</span>, so for every <span class="math" data-tex="\(y\in\mathbf R^3\)">\(y\in\mathbf R^3\)</span>
+<span class="math math-display" data-tex="\[
+P(v)B(y)R(v)=0 .
+\tag{4.4}
+\]">\[
+P(v)B(y)R(v)=0 .
+\tag{4.4}
+\]</span></p>
+<h2 id="3-the-tangent-obstruction">3. The tangent obstruction</h2>
+<p><em>Proof of Theorem A.</em> Proposition 3.2 of the previous lesson proves that <span class="math" data-tex="\(p\)">\(p\)</span> is homogeneous of degree <span class="math" data-tex="\(20\)">\(20\)</span>, with <span class="math" data-tex="\(p(e)=1\)">\(p(e)=1\)</span>, and hyperbolic with respect to <span class="math" data-tex="\(e\)">\(e\)</span>. Suppose <span class="math" data-tex="\(K\)">\(K\)</span> is described by a linear matrix inequality of some finite size, and let <span class="math" data-tex="\(D,E,B\)">\(D,E,B\)</span> be given by Proposition 4.1.</p>
+<p><em>A point where <span class="math" data-tex="\(R\)">\(R\)</span> is smooth.</em> Let <span class="math" data-tex="\(S^3\)">\(S^3\)</span> be the unit sphere of <span class="math" data-tex="\(\mathbf R^4\)">\(\mathbf R^4\)</span> and <span class="math" data-tex="\(\Omega=\{u\in S^3:u_0\ne0\}\)">\(\Omega=\{u\in S^3:u_0\ne0\}\)</span>. The matrices <span class="math" data-tex="\(A(u)=E(I-uu^{\mathsf T})\)">\(A(u)=E(I-uu^{\mathsf T})\)</span>, <span class="math" data-tex="\(u\in\Omega\)">\(u\in\Omega\)</span>, have finitely many possible ranks; let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be the largest, attained at some <span class="math" data-tex="\(v\in\Omega\)">\(v\in\Omega\)</span>. If <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>, then <span class="math" data-tex="\(R(u)=I\)">\(R(u)=I\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. If <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, choose <span class="math" data-tex="\(\rho\)">\(\rho\)</span> linearly independent columns of <span class="math" data-tex="\(A(v)\)">\(A(v)\)</span>, and let <span class="math" data-tex="\(W(u)\)">\(W(u)\)</span> be the matrix formed by the same columns of <span class="math" data-tex="\(A(u)\)">\(A(u)\)</span>. A <span class="math" data-tex="\(\rho\times\rho\)">\(\rho\times\rho\)</span> minor of <span class="math" data-tex="\(W\)">\(W\)</span> is nonzero at <span class="math" data-tex="\(v\)">\(v\)</span>, hence on a neighbourhood <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> of <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(\mathbf R^4\)">\(\mathbf R^4\)</span>. For <span class="math" data-tex="\(u\in\mathcal U\cap\Omega\)">\(u\in\mathcal U\cap\Omega\)</span>, the columns of <span class="math" data-tex="\(W(u)\)">\(W(u)\)</span> are independent and lie in the range of <span class="math" data-tex="\(A(u)\)">\(A(u)\)</span>, which has dimension at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; so they span it. As <span class="math" data-tex="\(A(u)\)">\(A(u)\)</span> is symmetric, its kernel is the orthogonal complement of its range, and for <span class="math" data-tex="\(u\in\mathcal U\cap\Omega\)">\(u\in\mathcal U\cap\Omega\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(u)&amp;=I-W(W^{\mathsf T}W)^{-1}W^{\mathsf T},\\
+W&amp;=W(u).
+\end{aligned}
+\]">\[
+\begin{aligned}
+R(u)&amp;=I-W(W^{\mathsf T}W)^{-1}W^{\mathsf T},\\
+W&amp;=W(u).
+\end{aligned}
+\]</span>
+The right side is a smooth function of <span class="math" data-tex="\(u\in\mathcal U\)">\(u\in\mathcal U\)</span>; write <span class="math" data-tex="\(dR_v\)">\(dR_v\)</span> for its differential at <span class="math" data-tex="\(v\)">\(v\)</span>, a linear map from <span class="math" data-tex="\(\mathbf R^4\)">\(\mathbf R^4\)</span> to matrices.</p>
+<p><em>Differentiating the identity.</em> For <span class="math" data-tex="\(h=(h_0,h&#x27;)\in v^\perp\)">\(h=(h_0,h&#x27;)\in v^\perp\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Jh&amp;=v_0h&#x27;-h_0v&#x27;,\\
+u_s&amp;=\frac{v+sh}{\sqrt{1+s^2\|h\|^2}} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+Jh&amp;=v_0h&#x27;-h_0v&#x27;,\\
+u_s&amp;=\frac{v+sh}{\sqrt{1+s^2\|h\|^2}} .
+\end{aligned}
+\]</span>
+For small <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(u_s\in\mathcal U\cap\Omega\)">\(u_s\in\mathcal U\cap\Omega\)</span>, and
+<span class="math math-display" data-tex="\[
+v_0u_s&#x27;-(u_s)_0v&#x27;=\frac{s\,Jh}{\sqrt{1+s^2\|h\|^2}} .
+\]">\[
+v_0u_s&#x27;-(u_s)_0v&#x27;=\frac{s\,Jh}{\sqrt{1+s^2\|h\|^2}} .
+\]</span>
+By (4.3) at the pair <span class="math" data-tex="\((u_s,v)\)">\((u_s,v)\)</span>, (4.4) and the homogeneity of <span class="math" data-tex="\(b\)">\(b\)</span> of degree <span class="math" data-tex="\(2\)">\(2\)</span> in its first argument, for <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{b(Jh,y)}{1+s^2\|h\|^2}\\
+&amp;\quad=\Bigl\|P(v)B(y)\,\frac{R(u_s)-R(v)}{s}\Bigr\|_{\mathrm{op}}^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{b(Jh,y)}{1+s^2\|h\|^2}\\
+&amp;\quad=\Bigl\|P(v)B(y)\,\frac{R(u_s)-R(v)}{s}\Bigr\|_{\mathrm{op}}^2 .
+\end{aligned}
+\]</span>
+As <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>, the difference quotient tends to <span class="math" data-tex="\(dR_v(h)\)">\(dR_v(h)\)</span>, since <span class="math" data-tex="\(u_s\)">\(u_s\)</span> has velocity <span class="math" data-tex="\(h\)">\(h\)</span> at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. Therefore, for all <span class="math" data-tex="\(h\in v^\perp\)">\(h\in v^\perp\)</span> and <span class="math" data-tex="\(y\in\mathbf R^3\)">\(y\in\mathbf R^3\)</span>,
+<span class="math math-display" data-tex="\[
+b(Jh,y)=\bigl\|P(v)B(y)\,dR_v(h)\bigr\|_{\mathrm{op}}^2 .
+\]">\[
+b(Jh,y)=\bigl\|P(v)B(y)\,dR_v(h)\bigr\|_{\mathrm{op}}^2 .
+\]</span>
+We call this the <em>tangent identity</em>.</p>
+<p><em>The contradiction.</em> The linear map <span class="math" data-tex="\(J:v^\perp\to\mathbf R^3\)">\(J:v^\perp\to\mathbf R^3\)</span> is an isomorphism: if <span class="math" data-tex="\(Jh=0\)">\(Jh=0\)</span>, then <span class="math" data-tex="\(h&#x27;=(h_0/v_0)v&#x27;\)">\(h&#x27;=(h_0/v_0)v&#x27;\)</span>, because <span class="math" data-tex="\(v_0\ne0\)">\(v_0\ne0\)</span>, so <span class="math" data-tex="\(h=(h_0/v_0)v\)">\(h=(h_0/v_0)v\)</span>, and <span class="math" data-tex="\(h\perp v\)">\(h\perp v\)</span> forces <span class="math" data-tex="\(h=0\)">\(h=0\)</span>; both spaces have dimension <span class="math" data-tex="\(3\)">\(3\)</span>. The matrix
+<span class="math math-display" data-tex="\[
+F(z,y)=P(v)B(y)\,dR_v(J^{-1}z),
+\]">\[
+F(z,y)=P(v)B(y)\,dR_v(J^{-1}z),
+\]</span>
+defined for <span class="math" data-tex="\(z,y\in\mathbf R^3\)">\(z,y\in\mathbf R^3\)</span>, depends bilinearly on <span class="math" data-tex="\((z,y)\)">\((z,y)\)</span>. In orthonormal bases each entry <span class="math" data-tex="\(\ell_{ij}(z,y)\)">\(\ell_{ij}(z,y)\)</span> is a bilinear form, and by the tangent identity with <span class="math" data-tex="\(z=Jh\)">\(z=Jh\)</span>,
+<span class="math math-display" data-tex="\[
+\ell_{ij}(z,y)^2\le\|F(z,y)\|_{\mathrm{op}}^2=b(z,y).
+\]">\[
+\ell_{ij}(z,y)^2\le\|F(z,y)\|_{\mathrm{op}}^2=b(z,y).
+\]</span>
+By Lemma 2.3 of <a href="the-choi-lam-form.html">The Choi–Lam form</a>, every <span class="math" data-tex="\(\ell_{ij}\)">\(\ell_{ij}\)</span> vanishes, so <span class="math" data-tex="\(F=0\)">\(F=0\)</span>, and the tangent identity gives <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, contradicting <span class="math" data-tex="\(b(e_1,e_1)=1\)">\(b(e_1,e_1)=1\)</span>. Hence no linear matrix inequality describes <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses four properties of the construction: the two slices of the cone, the positivity of <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span>, the rank-one identity of Lemma 3.1, and the absence of dominated bilinear squares below <span class="math" data-tex="\(b\)">\(b\)</span>. Replacing <span class="math" data-tex="\(b\)">\(b\)</span> by a form that dominates a nonzero bilinear square breaks only the last step (Exercise 4.3).</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Where does the proof use that <span class="math" data-tex="\(v_0\ne0\)">\(v_0\ne0\)</span>? What goes wrong at a point <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(v_0=0\)">\(v_0=0\)</span>?</p>
+<p><strong>4.2</strong> (medium). For <span class="math" data-tex="\(H\succeq0\)">\(H\succeq0\)</span> with least positive eigenvalue <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, show that the distance in operator norm between <span class="math" data-tex="\([I+(t-1)H]^{-1/2}\)">\([I+(t-1)H]^{-1/2}\)</span> and the projection onto <span class="math" data-tex="\(\ker H\)">\(\ker H\)</span> is <span class="math" data-tex="\((1+(t-1)\mu)^{-1/2}\)">\((1+(t-1)\mu)^{-1/2}\)</span>.</p>
+<p><strong>4.3</strong> (medium). Replace <span class="math" data-tex="\(Q(y)\)">\(Q(y)\)</span> by <span class="math" data-tex="\(\|y\|^2I_3\)">\(\|y\|^2I_3\)</span>, so that <span class="math" data-tex="\(b\)">\(b\)</span> becomes <span class="math" data-tex="\(\|z\|^2\|y\|^2\)">\(\|z\|^2\|y\|^2\)</span>. Show that <span class="math" data-tex="\(\ell(z,y)=z_1y_1\)">\(\ell(z,y)=z_1y_1\)</span> satisfies <span class="math" data-tex="\(\ell^2\le\|z\|^2\|y\|^2\)">\(\ell^2\le\|z\|^2\|y\|^2\)</span>, so that the last step of the proof fails for the modified polynomial.</p>
+<p><strong>4.4</strong> (easy). Show that conjugating a pencil <span class="math" data-tex="\(L\)">\(L\)</span> by a fixed invertible matrix <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(x\mapsto S^{\mathsf T}L(x)S\)">\(x\mapsto S^{\mathsf T}L(x)S\)</span>, does not change the set <span class="math" data-tex="\(\{x:L(x)\succeq0\}\)">\(\{x:L(x)\succeq0\}\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> Only in showing that <span class="math" data-tex="\(J\)">\(J\)</span> is injective. If <span class="math" data-tex="\(v_0=0\)">\(v_0=0\)</span>, then <span class="math" data-tex="\(\|v&#x27;\|=1\)">\(\|v&#x27;\|=1\)</span> and <span class="math" data-tex="\(Jh=-h_0v&#x27;\)">\(Jh=-h_0v&#x27;\)</span> for <span class="math" data-tex="\(h\in v^\perp\)">\(h\in v^\perp\)</span>. So <span class="math" data-tex="\(J\)">\(J\)</span> maps <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span> onto the line <span class="math" data-tex="\(\mathbf Rv&#x27;\)">\(\mathbf Rv&#x27;\)</span>, its kernel consists of the vectors <span class="math" data-tex="\((0,w)\)">\((0,w)\)</span> with <span class="math" data-tex="\(w\perp v&#x27;\)">\(w\perp v&#x27;\)</span>, and the tangent identity controls <span class="math" data-tex="\(b(z,y)\)">\(b(z,y)\)</span> only for <span class="math" data-tex="\(z\)">\(z\)</span> in the line <span class="math" data-tex="\(\mathbf Rv&#x27;\)">\(\mathbf Rv&#x27;\)</span>.</p>
+<p><strong>4.2.</strong> In an eigenbasis the difference is diagonal with entries <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\(\ker H\)">\(\ker H\)</span> and <span class="math" data-tex="\((1+(t-1)\mu&#x27;)^{-1/2}\)">\((1+(t-1)\mu&#x27;)^{-1/2}\)</span> for the positive eigenvalues <span class="math" data-tex="\(\mu&#x27;\)">\(\mu&#x27;\)</span>; the largest is at <span class="math" data-tex="\(\mu&#x27;=\mu\)">\(\mu&#x27;=\mu\)</span>.</p>
+<p><strong>4.3.</strong> By the Cauchy–Schwarz inequality, <span class="math" data-tex="\(z_1^2y_1^2\le\|z\|^2\|y\|^2\)">\(z_1^2y_1^2\le\|z\|^2\|y\|^2\)</span>. In the proof, the entries <span class="math" data-tex="\(\ell_{ij}\)">\(\ell_{ij}\)</span> need not vanish, so no contradiction arises.</p>
+<p><strong>4.4.</strong> <span class="math" data-tex="\(S^{\mathsf T}L(x)S\succeq0\)">\(S^{\mathsf T}L(x)S\succeq0\)</span> if and only if <span class="math" data-tex="\(L(x)\succeq0\)">\(L(x)\succeq0\)</span>, by Lemma 1.3(4) of the first lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-NS] OpenAI, <em>A nonspectrahedral hyperbolicity cone</em>, OpenAI Math Release preprint, 24 September 2026, Sections 4–6. https://github.com/openai/math/tree/main/preprints/A-Nonspectrahedral-Hyperbolicity-Cone-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

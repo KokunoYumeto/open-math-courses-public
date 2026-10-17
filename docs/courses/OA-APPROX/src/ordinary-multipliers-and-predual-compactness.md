@@ -30,6 +30,14 @@ N_\infty=\{a:aI_\infty\subset I_\infty,\ I_\infty a\subset I_\infty\}.
 \]
 The bounded strong* description makes \(I_\infty\) independent of \(\varphi\). It is a norm-closed self-adjoint algebra, and \(N_\infty\) is a unital \(C^*\)-algebra with \(I_\infty\) as a closed two-sided ideal. The coordinate central projections supported at one index identify it with the abstract multiplier algebra of \(I_\infty\), exactly as in the [ultrafilter proof](multiplier-ultraproducts-and-normal-embeddings.md#proposition-1-1). The proof uses coordinate support identities, rather than a supposed norm approximate identity of finite-coordinate projections.
 
+Here is the complete ordinary-algebra argument. Products and adjoints of uniformly bounded strong*-null sequences remain strong*-null: apply the products and their adjoints to each fixed vector, using the common operator bounds. A uniform-norm limit of null sequences is null by the triangle inequality. Thus \(I_\infty\) is a closed self-adjoint algebra. If \(a,b\) normalize it on both sides, then so do \(a+b\), \(ab\) and \(a^*\); for the adjoint use \((a^*z)^*=z^*a\) and \((za^*)^*=az^*\). Uniform-norm limits preserve these conditions because the ideal is closed. This proves that \(N_\infty\) is a unital \(C^*\)-algebra and that \(I_\infty\) is its two-sided ideal. The identity is the constant identity sequence; every other constant operator also normalizes the null algebra by bounded strong* continuity of its two multiplication maps.
+
+For clarity, let \(e_n\) be the sequence equal to one only in coordinate \(n\). It belongs to \(I_\infty\), is central there, and \(e_nI_\infty\) is a copy of the unital algebra \(M\). For a double centralizer \((L,R)\) of \(I_\infty\), its module identities give
+\[
+L(e_n)=e_nL(e_n),\qquad R(e_n)=R(e_n)e_n.
+\]
+The mixed identity gives \(e_nL(e_n)=R(e_n)e_n\). Thus these are the same supported sequence, with a coordinate \(a_n\) bounded by the multiplier norm. For every \(z\in I_\infty\), the identities with \(e_n\) give \((Lz)_n=a_nz_n\) and \((Rz)_n=z_na_n\). Consequently \(a\) normalizes the ideal and recovers both centralizers. Conversely a normalizing bounded sequence gives those centralizers. Their norms are at most \(\sup_n\|a_n\|\), and testing the unit \(e_n\) in each coordinate gives the reverse bound. The correspondence is an isometric *-isomorphism. It requires no norm convergence of finite sums of the \(e_n\).
+
 **Theorem 1.1.** A bounded sequence \(a=(a_n)\) belongs to \(N_\infty\) if and only if, for every \(\varepsilon>0\), there are \(\delta>0\) and \(N\) such that
 \[
 n\ge N,\quad\|x\|\le1,\quad\|x\|_\#<\delta
@@ -58,6 +66,13 @@ For the equivalence with (5), let \(C=\sup_n\|a_n\|\). The estimates
 \tag{7}
 \]
 are automatic. The remaining square seminorms of the two products are \(\|xa_n\|_\varphi\) and, after replacing \(x\) by \(x^*\), \(\|xa_n^*\|_\varphi\). Thus (5), (7) and the symmetric formula give (4) after adjusting constants. The converse follows by applying (4) to \(a\) and its adjoint. Adjoint sequences are multipliers because (3) is self-adjoint.
+
+The constants in the adjoint comparison can be chosen uniformly. Suppose (5) is smaller than \(\eta\), both for \(x\) and for \(x^*\), whenever \(\|x\|_\#<d\). The two automatic bounds and these two tests give
+\[
+\|a_nx\|_\#+\|xa_n\|_\#
+\le 2C\|x\|_\#+\sqrt2\eta.
+\]
+Given a desired \(\varepsilon\), take \(\eta=\varepsilon/(4\sqrt2)\) and then shrink \(d\) to at most \(\varepsilon/(8\max(1,C))\). This makes the last bound less than \(\varepsilon\). Conversely, apply the symmetric test to \(x\) and \(x^*\): each of \(\|xa_n\|_\varphi\) and \(\|xa_n^*\|_\varphi\) is bounded by \(\sqrt2\) times one of those output symmetric seminorms. This proves the equivalence with all adjoint directions explicitly.
 
 Finally each fixed multiplication map preserves bounded strong* convergence, so for the finite initial set one can take a common positive modulus. Its minimum with the tail modulus works for all indices. \(\square\)
 
@@ -105,6 +120,8 @@ x\longmapsto a_n^*xa_n,\qquad x\longmapsto a_nxa_n^*
 \]
 uniformly strong*-continuous at zero on the unit ball. To check the first, first make \(xa_n\) small with the common multiplier modulus, and then multiply on the left by \(a_n^*\), using its common modulus after rescaling the intermediate norm bound. The second is identical. Finite initial maps were included in Theorem 1.1.
 
+Uniformity in this composition concerns the same small input for all indices. To make the first quadratic output small, choose a common positive modulus for left multiplication by \(a_n^*\) on contraction inputs. Divide \(xa_n\) by \(D=\max(1,C)\), so the intermediate input has norm at most one. Then use the common right-multiplication modulus to make its symmetric seminorm smaller than that first chosen modulus. The final bound is multiplied only by the fixed \(D\). Use \(a_n\) and \(xa_n^*\) for the second map. Every threshold is chosen before the index \(n\); no pointwise continuity in \(n\) is substituted for this common modulus.
+
 For \(K\), Lemma 2.1 gives a common small symmetric-seminorm test making every \(\psi\in K\) small. The operators in (10) have norm at most \(C^2\); rescale that test and compose its modulus with the preceding uniform continuity. This yields (8) for each orbit union in condition 3. Both unions are bounded by \(C^2\sup_{\psi\in K}\|\psi\|\). Lemma 2.1 proves their relative weak compactness.
 
 **Proof of 3 implies 2.** Use \(K=\{\varphi\}\).
@@ -126,6 +143,8 @@ Apply the common functional test to \(x^*x\). By (9),
 Both are uniformly small when \(\|x\|_\#\) is small. This gives (5) and hence membership.
 
 Finally, testing compact \(K\) suffices because the weak closure of a relatively compact set is compact and contains that set. \(\square\)
+
+The normality of the transformed functionals in (9) also follows directly from the full coefficient-series predual: left and right multiplication by a fixed bounded operator carry each normal vector coefficient to another one, with its coefficient norm sum multiplied by at most \(\|a_n\|^2\). Positivity of \(F_n(\varphi),G_n(\varphi)\) follows by testing positive operators. In the implication from condition 2, their uniform smallness applied to the positive contraction \(x^*x\) therefore bounds both nonnegative quantities in (12); taking square roots gives precisely the two right-adjoint tests. The boundedness condition needed for Lemma 2.1 is automatic from \(\|F_n\|,\|G_n\|\le C^2\).
 
 The two positive orbit families encode the two adjoint directions that a nontracial multiplier requires. The last condition transfers relative compactness of a set of functionals, rather than specifying the limit of an individually moving functional.
 
@@ -152,6 +171,8 @@ a_np_n=a_n,\qquad
 \]
 So \(a\notin N_\infty\). The omitted adjoint direction is essential. The symmetric test (4), or the two right-multiplication tests (5), retains both required adjoint directions.
 
+The example's state is faithful and normal for explicit reasons. Its summable positive vector series has value one on the identity and is normal by finite-head and bounded-tail convergence on every increasing positive net. If a positive operator has zero state value, each diagonal coefficient is zero; its positive square root then vanishes on every basis vector and hence everywhere. The projections \(p_n\) and their adjoints tend strongly to zero because every fixed \(\ell^2\) vector has coordinates tending to zero. Thus the null input in (15) is intrinsic strong*-null, independently of the displayed state formula.
+
 ## 5. Weakly-null functionals need not stay weakly null
 
 Take the Bernoulli probability space
@@ -173,6 +194,8 @@ F_n(\psi_n)(1)=G_n(\psi_n)(1)
 \tag{17}
 \]
 Neither transformed sequence is weakly null. Thus multiplier membership does not imply that every weakly null sequence of normal functionals remains weakly null under the two transformations, even in a finite commutative algebra. Theorem 3.1 asserts relative compactness, which permits nonzero weak cluster points.
+
+In this commutative trace algebra, for a bounded sequence with bound \(C\), both multiplication seminorms satisfy \(\|a_nz_n\|_2,\|z_na_n\|_2\le C\|z_n\|_2\); the adjoint directions obey the same estimate. This proves membership for every such sequence directly. The Bernoulli \(\psi_n\) test every element of the full dual \((M_*)^*=M\), by the exact \(L^1\) predual proved in PC09, so they are Banach-weakly null. Their union with zero is weakly compact: an open cover has one member containing zero and hence all sufficiently late terms, leaving only finitely many uncovered terms. Theorem 3.1 therefore supplies relative compactness of the full orbit unions and of their diagonal subsets, and PC02 supplies weakly convergent subsequences. The fixed value \(1/2\) at the identity rules out zero as any such diagonal weak limit.
 
 The orbit union in the compactness criterion also needs its weak closure. For \(M=\mathbb C\), \(a_n=1/n\) and \(K=\{\varphi\}\), the orbit is
 \[

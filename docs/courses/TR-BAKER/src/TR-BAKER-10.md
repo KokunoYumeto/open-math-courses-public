@@ -13243,7 +13243,1911 @@ exact calculation](../figure_sources/yu_cluster_projection.py).
 Human-source context: Sections 10–11 of
 [Yu's freely accessible 1999 paper](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf).*
 
-## 61. Exercises with solutions
+## 61. Constructing the auxiliary function at the second scale
+
+We now choose the size of the selected support explicitly. Its defining
+inequality contains the actual unit-congruence index. Optimizing that
+index against the analytic radius removes the factor involving a large
+power of the rank. We keep the global residue index, the saturation
+index, the polynomial indices and the integer floors throughout.
+
+### Parameters and the selected support
+
+Use a field case of Theorem 10.152. Write
+\(t=f\log p\), \(P=p^\kappa\),
+\(\ell_d=\max\{1,\log d\}\), and let \(\vartheta\) have
+its earlier value. Thus \(t>1\),
+\(A_0=e\vartheta\ge1/2\), and \(A_0\le P\).
+Let \(3\le r\le n\), and suppose
+
+\[
+\frac r t>A_0+\frac35.
+\tag{10.700}
+\]
+
+For independent local units \(\alpha_1,\ldots,\alpha_r\), take
+weights \(\sigma_i\ge h(\alpha_i)>0\). Put
+\(\Omega_r=\prod_i\sigma_i\), let J be their q-primary
+saturation index, and let \(\delta_r\) be their saturated residue
+index. Thus \(J=q^\nu\) for an integer \(\nu\ge0\), the
+exponent lattice has covolume \(1/J\), and its phase map has
+\((p^f-1)/(q^u\delta_r)\) possible values. The saturation and
+phase constructions are those of Sections 8, 18 and 25.
+
+Choose \(m,\zeta_1,\zeta_2\) by Lemma 10.177, using its row
+for the current field case. Set
+
+\[
+\begin{aligned}
+\tau&=\frac{10^{-26}}{2n},\qquad N=\frac{m+A_0}{e(1+\tau)},\\
+\mathcal R_r&=\max\left\{\frac{p^f}{\delta_r},
+                  \left(\frac{\mathrm e}{r}\right)^rt^{r+1}\right\},\\
+A_r&=\max\{4+\log((r+1)d),e,t\}.
+\end{aligned}
+\tag{10.701}
+\]
+
+Here \(\mathrm e=\exp(1)\). It is distinct from the ramification
+index e. Take a real \(h\ge(r+1)t\), and put
+\(H=h+\log J\). The following constants will be used:
+
+| Field cases | \(c_0\) | \(c_1\) | \(c_3\) | \(c_4\) | a |
+|---|---:|---:|---:|---:|---:|
+| I.1, I.2, II | \(27/10\) | \(7/10\) | \(6/5\) | 14 | 7 |
+| III.1, III.2 | \(27/10\) | \(7/10\) | \(8/5\) | 14 | 7 |
+| IV | \(27/10\) | \(7/10\) | 3 | 14 | 7 |
+| V | \(27/10\) | \(41/50\) | \(3/5\) | 6 | 13 |
+
+Define the positive real parameters
+
+\[
+\begin{aligned}
+c_2&=\frac{a}{q^2\zeta_2},\quad g_S=c_3q(r+1)^2d,\quad
+K_S=\frac{101}{100}\left(2+\frac1{g_S}\right),\\
+S&=\frac{c_3q(r+1)dH}{t},\\
+\mathcal D&=K_Sc_0c_1c_4\frac N\vartheta
+ (\zeta_2c_2q\mathrm e P)^r\frac{(r+1)^r}{r!}\\
+&\qquad{}\times\frac{d^{r+1}\ell_d\Omega_r}{q^uJ}
+ \mathcal R_rA_r(1+\tau)^r,\\
+T&=\frac{q(r+1)\mathcal D}{c_1eNt},\qquad
+D_i=\frac{\mathcal D}{c_1c_2rPd\sigma_i}\quad(1\le i\le r).
+\end{aligned}
+\tag{10.702}
+\]
+
+The polynomial parameters are integers. More precisely, put
+
+\[
+k=\lfloor H\rfloor,\qquad
+X=\frac{S\mathcal D}{c_1c_4(N/\vartheta)dA_r k},\qquad
+L=\lfloor X\rfloor+1,\qquad D_{\mathrm a}=kL.
+\tag{10.703}
+\]
+
+The degree \(D_{\mathrm a}\) of a prepared polynomial is not the
+real scale \(\mathcal D\).
+
+**Theorem 10.184 (a selected kernel with explicit second-scale parameters).**
+For these parameters,
+
+\[
+T>101r^2,\qquad X>58,\qquad S\ge g_S.
+\tag{10.704}
+\]
+
+The closed-box, phase and unit-congruence selections of Proposition
+10.183 give \(N_c=kL|S_0|\) coefficients, with every polynomial
+pair retained, such that
+
+\[
+N_c>c_0(2\lfloor S\rfloor+1)
+                  \binom{\lfloor T\rfloor+r}{r}.
+\tag{10.705}
+\]
+
+In particular there is a nonzero global-integral coefficient vector
+whose unprojected prepared values vanish at every integer
+\(|s|\le S\) and every prepared index \(|\boldsymbol t|\le T\).
+The Laurent polynomial is nonzero, and its coefficients satisfy the
+actual row-field and height conclusions of Proposition 10.183.
+
+**Proof.** First we establish the quantitative bounds that justify
+the floors. The saturation estimate (10.55), applied to the q-primary
+index J, gives
+
+\[
+\Omega_r\ge
+\frac{w_KJr^r}{\rho\,d^{r+1}\ell_d\,r!\mathrm e^r},
+\qquad
+\rho=\begin{cases}17,&d=1,\\58,&d\ge2.\end{cases}
+\tag{10.706}
+\]
+
+The weights dominate the individual heights, and the full saturation
+index dominates its q-primary part, so every factor has the indicated
+direction. Also \(w_K\ge q^u\), \(\mathcal R_r>1\), and
+\(K_S>2\). Substitution in \(\mathcal D\) yields
+
+\[
+\mathcal D>
+\frac{2c_0c_1c_4}{\rho}\frac N\vartheta
+(c_2qP)^r\frac{r^r(r+1)^r}{(r!)^2}A_r.
+\tag{10.707}
+\]
+
+The elementary inequalities
+\(r!/r^r\le2^{1-r}\) and \((1+1/r)^r\ge2\)
+follow from the consecutive-ratio and binomial proofs used in Theorem
+10.152. Together they imply
+
+\[
+\frac{r^r(r+1)^{r+1}}{(r!)^2}
+\ge(r+1)2^{2r-1}.
+\tag{10.708}
+\]
+
+Each row of the parameter table has
+\(c_0\ge2,c_3\ge1/3,c_4\ge6,c_2q>3\).
+For the last assertion, at odd p use
+\(2\zeta_2\le2(1.0568)<7/3\); at two use
+\(3\zeta_2=3.042<13/3\).
+Using \(A_r\ge t\), \(A_0=e\vartheta\le P\),
+and \(P\ge1\), the preceding bound on \(\mathcal D\) gives
+
+\[
+T>\frac{12}{29}(r+1)12^r>101r^2.
+\tag{10.709}
+\]
+
+Indeed the first expression divided by \(r^2\) increases for
+\(r\ge3\): its consecutive ratio is
+\(12(r+2)r^2/(r+1)^3>1\). At three the required comparison is
+\(82944/29>909\), an exact integer comparison after multiplication
+by 29.
+
+Since \(k\le H\), the definitions of S and X give
+\(X\ge c_3q(r+1)\mathcal D/(c_1c_4(N/\vartheta)A_rt)\).
+Use the lower bound for \(\mathcal D\), the factorial comparison,
+and \(r/t>A_0+3/5\). It follows that
+
+\[
+X>\frac{c_0c_3q}{\rho}(A_0+3/5)
+             \frac{r+1}{r}(4c_2qP)^r
+\ge\frac{8448}{145}>58.
+\tag{10.710}
+\]
+
+For the numerical lower bound use \(A_0\ge1/2\) and the table's
+lower bounds just proved. The function \((r+1)12^r/r\) increases
+for \(r\ge3\), so its least value is at three. Finally
+\(h\ge(r+1)t\) gives \(S\ge g_S\), and k is a positive integer.
+
+For the row count, \(T>101r^2\) implies
+
+\[
+\binom{\lfloor T\rfloor+r}{r}
+\le\frac{(T+r)^r}{r!}
+<\frac{101}{100}\frac{T^r}{r!}.
+\tag{10.711}
+\]
+
+To see the last inequality without approximating a logarithm, bound
+\(\binom rj(r/T)^j\) by \((r^2/T)^j\) and sum the geometric
+series. Its sum is less than \(101/100\).
+
+Let \(V=\prod_iD_i\), and let \(h_m\) denote the actual
+unit-quotient image order. Proposition 10.183 gives
+\(N_c>kLJV/(H_{\mathrm{ph}}h_m)\), where
+\(H_{\mathrm{ph}}=(p^f-1)/(q^u\delta_r)\).
+Since \(L>X\),
+
+\[
+kL>\frac{S\mathcal D}{c_1c_4(N/\vartheta)dA_r}.
+\tag{10.712}
+\]
+
+Divide this column lower bound by
+\((2S+1)(101/100)T^r/r!\), and substitute T and the widths.
+The powers of \(\mathcal D\) cancel except for one. To obtain a
+ratio at least \(c_0\), it is sufficient that
+
+\[
+\mathcal D\ge
+\frac{101}{100}(2+1/S)c_0c_1c_4\frac N\vartheta
+\frac{(c_2qr(r+1)P)^r}{r!\,t^r}
+ d^{r+1}\Omega_r A_r\frac{H_{\mathrm{ph}}}{J}
+ \frac{h_m}{(eN)^r}.
+\tag{10.713}
+\]
+
+Lemma 10.177 and \(eN=(m+A_0)/(1+\tau)\) give
+
+\[
+\frac{h_m}{(eN)^r}
+\le(1+\tau)^r\frac{p^{fm}}{(m+A_0)^r}
+<(1+\tau)^r\zeta_2^r
+       \left(\frac{\mathrm e t}{r}\right)^rp^{-fA_0}.
+\tag{10.714}
+\]
+
+Now \(S\ge g_S\), \(\ell_d\ge1\), and
+\(\mathcal R_r\ge p^f/\delta_r>
+((p^f-1)/\delta_r)p^{-fA_0}\). The asserted sufficient bound
+therefore follows from the definition of \(\mathcal D\).
+This proves the strict coefficient surplus. Proposition 10.183
+provides the integral vector, its height bound and the nonzero
+polynomial. Every field and residue index used in that proposition
+has been retained. \(\square\)
+
+**Corollary 10.185 (the exact cost of the polynomial rounding).**
+The integer degree of this kernel satisfies
+
+\[
+\frac{S\mathcal D}{c_1c_4(N/\vartheta)dA_r}
+<D_{\mathrm a}
+<\frac{59}{58}\frac{S\mathcal D}
+                     {c_1c_4(N/\vartheta)dA_r}.
+\tag{10.715}
+\]
+
+The complete normalizing valuation in Theorem 10.182 may consequently
+be bounded above by
+
+\[
+\frac{59}{58}\frac{S\mathcal D}{c_1c_4dA_r}
+ \left(\vartheta+\frac{\vartheta}{N(p-1)}\right)-\beta.
+\tag{10.716}
+\]
+
+**Proof.** The lower bound is \(kL>kX\). The upper bound follows
+from \(L\le X+1\) and \(X>58\). Multiply by
+\(N+1/(p-1)\) and subtract the coefficient minimum \(\beta\)
+to obtain the second assertion. This is the normalization of the
+combined monomials, justified by Theorem 10.180; it makes no enlarged
+disc assumption on an individual basis logarithm. \(\square\)
+
+### The value of the counterhypothesis scale
+
+**Proposition 10.186 (comparison with the stated second constant).**
+For the above kernel define the positive real number
+
+\[
+U_r=\frac{q^{r+1}S\mathcal D}{et}.
+\tag{10.717}
+\]
+
+Use the exact \(C_2\) formula of Section 58 at rank r, with the
+same field and the actual residue index \(\delta_r\). Then
+
+\[
+eU_r<C_2(r,d,p,\boldsymbol\alpha)\,h\Omega_r.
+\tag{10.718}
+\]
+
+This statement compares the parameter sizes. It does not assume, or
+assert by itself, the valuation inequality \(v_p(\Xi-1)<U_r\).
+
+**Proof.** Substitution of S and \(\mathcal D\), followed by
+\(\zeta_2c_2q^2=a\), gives
+
+\[
+eU_r=K_Sc_0c_1c_3c_4q^2\frac N\vartheta(1+\tau)^r
+ (a\mathrm e P)^r\frac{(r+1)^{r+1}}{r!}
+ \frac{d^{r+2}\ell_d\Omega_r}{q^uJt^2}
+ \mathcal R_r A_r H.
+\tag{10.719}
+\]
+
+The other rounding bound of Lemma 10.177 is
+\(m+A_0<\zeta_1r/t\). Hence
+\(N/\vartheta<\zeta_1r/(A_0t(1+\tau))\).
+Also \(H/J\le h\): \(\log J\le J-1\) and \(h>1\)
+give \(h+\log J\le hJ\). Thus
+
+\[
+eU_r<\frac{F_r}{P}(a\mathrm e P)^r
+ \frac{(r+1)^{r+1}}{(r-1)!}
+ \frac{d^{r+2}\ell_d}{q^ut^3}
+ \mathcal R_r A_r h\Omega_r,
+\qquad
+F_r=K_S\zeta_1c_0c_1c_3c_4q^2
+                  \frac P{A_0}(1+\tau)^{r-1}.
+\tag{10.720}
+\]
+
+For \(r\le n\), the binomial argument in (10.451) gives
+\((1+\tau)^{r-1}<1+10^{-26}\). The lower bounds for \(g_S\)
+in the seven field cases are respectively
+
+\[
+\frac{384}{5},\quad\frac{192}{5},\quad\frac{384}{5},\quad
+\frac{512}{5},\quad\frac{256}{5},\quad192,\quad90.
+\tag{10.721}
+\]
+
+At two the positive-radius regime has \(r\ge4\), since
+\(f\ge2,A_0\ge2,t\ge\log4>4/3\). For the other cases
+\(r\ge3\) is already an assumption. Outside case III,
+\(P/A_0=2\). In case III it equals
+\(1/\vartheta=(p-1)/(p-2)\). Substitution of these rational
+bounds and the parameter table shows
+
+\[
+F_r<c^{(2)}
+\tag{10.722}
+\]
+
+in each case, with the factor \(1/\vartheta\) retained on both
+sides in case III. Here are convenient integer upper bounds, obtained
+by substituting the displayed rational constants in the formula for
+\(F_r\). In the two case-III rows the common factor
+\(1/\vartheta\) is divided out in both columns.
+
+| Field case | Strict upper bound for \(F_r\) | Stated coefficient |
+|---|---:|---:|
+| I.1 | 627 | 1438 |
+| I.2 | 631 | 648 |
+| II | 627 | 690 |
+| III.1 | 452 | 495 |
+| III.2 | 454 | 557 |
+| IV | 1763 | 2418 |
+| V | 343 | 406 |
+
+For example the I.2 entry is the exact rational comparison
+
+\[
+\frac{101}{100}\left(2+\frac5{192}\right)
+\frac{12133}{10000}\frac{27}{10}\frac7{10}
+\frac65\,14\cdot4\cdot2\,(1+10^{-26})<631<648.
+\tag{10.723}
+\]
+
+The other rows use the same multiplication with their displayed
+constants. The [editable calculation](../figure_sources/yu_second_scale.py)
+records the exact rational differences as well as these upper bounds.
+This is a finite comparison of rational constants; the preceding monotonicity and
+small-\(\tau\) arguments cover all ranks, degrees, primes and
+ramification indices. The remaining expression is exactly the
+displayed \(C_2\) formula. \(\square\)
+
+### Comparing two ranks
+
+**Lemma 10.187 (the rank factor of the second estimate).** Put
+
+\[
+F(j)=\frac{(j+1)^{j+1}}{(j-1)!}\quad(j\ge1).
+\tag{10.724}
+\]
+
+Then \(F(j+1)/F(j)>\mathrm e\). In particular, define
+\(\Gamma_2=a\mathrm e^2Pd/q\). Suppose the weights of a
+rank-r representation of an original n-base form satisfy
+
+\[
+\Omega_r\le\Gamma_2^{n-r}
+ \frac{\mathcal R_n(\boldsymbol a)}
+      {\mathcal R_r(\boldsymbol\alpha)}
+ \prod_{j=1}^nh(a_j).
+\tag{10.725}
+\]
+
+For every \(3\le r\le n\) in the positive-radius regime,
+the scale from Proposition 10.186 then satisfies
+
+\[
+eU_r<C_2(n,d,p,\boldsymbol a)\,h\prod_{j=1}^nh(a_j).
+\tag{10.726}
+\]
+
+All residue indices in these formulas are those of their indicated
+families. They need not be equal.
+
+**Proof.** Direct division gives
+
+\[
+\frac{F(j+1)}{F(j)}
+=\frac{j+2}{j}\left(1+\frac1{j+1}\right)^{j+1}.
+\tag{10.727}
+\]
+
+For \(x>0\), integrating \(1/(1+t)>1/(1+x)\) from zero to x
+gives \(\log(1+x)>x/(1+x)\). The logarithm of the displayed
+ratio is consequently greater than
+\(2/(j+2)+(j+1)/(j+2)>1\).
+This proves the first assertion without a limiting factorial formula.
+
+Insert the assumed weight product in Proposition 10.186. Its
+\(\mathcal R_r\) cancels exactly, and \(A_r\le A_n\).
+After division by the desired rank-n expression the remaining
+rank factor is bounded by
+
+\[
+\left(\frac{\mathrm e}{q}\right)^{n-r}
+                 \frac{F(r)}{F(n)}\le1.
+\tag{10.728}
+\]
+
+For \(r<n\) it is strictly smaller than \(q^{r-n}\), by the
+first assertion. At \(r=n\) it equals one, and Proposition 10.186
+already supplies the strict comparison. This proves the claim.
+The assertion is conditional on the displayed weight allowance;
+preserving that allowance in a multiplicity argument is a separate
+mathematical requirement. \(\square\)
+
+![Seven uniform prefactor comparisons and the proved lower bound for the jet parameter divided by the square of the rank.](../figures/yu-second-scale.png)
+
+*Figure 10.54.* On the left, Proposition 10.186 bounds the auxiliary
+scale below the stated coefficient in every field case. The common
+case-III factor cancels before forming either ratio. On the right,
+Theorem 10.184 bounds \(T/r^2\) above the threshold needed to count
+all prepared rows; the consecutive-ratio proof covers every
+\(r\ge3\), while the plotted ranks are samples. These comparisons
+concern the constructed support and its parameters. They do not assert
+the global valuation estimate. The constant being compared is the one
+in [Yu's freely accessible 2013 paper, p. 320](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).
+
+## 62. Small optimizer cases and the first analytic step
+
+The second-scale construction requires a positive optimizer. We first
+prove that the first estimate already handles the complementary regime
+for every list of at least three bases. We also settle almost all
+two-base cases by exact comparisons. We then verify the first analytic
+input for the new construction, retaining the original distinguished
+coefficient and all ordinary derivative costs.
+
+### When the first constant suffices
+
+Keep the original independent bases, integer coefficients and field
+cases of Theorem 10.152, and the exact constants and coefficient
+parameters of Section 58. Write \(A_0=e\vartheta\), with e
+the ramification index.
+
+**Theorem 10.188 (the small-optimizer regime).** Suppose \(n\ge3\).
+The second estimate
+
+\[
+\operatorname{ord}_{\mathfrak p}(\Xi-1)
+<C_2\mathsf h_2\prod_{j=1}^n h(a_j)
+\tag{10.736}
+\]
+
+holds in each of the following ranges:
+
+- outside case III, \(n\le(6/5)Pt\);
+- in case III, \(n\le(\vartheta+3/5)t\).
+
+In particular it holds whenever \(n/t-A_0\le3/5\).
+
+**Proof.** The cancellation (10.648) is valid without the restriction
+\(n\le Pt\). Outside III, put \(y=n/(Pt)\). It becomes
+
+\[
+\frac{C_2}{C_1}
+=\frac{c^{(2)}}c\frac{\mathrm e}{2}
+ \left(\frac{\mathrm e}{2y}\right)^{n-1}.
+\tag{10.737}
+\]
+
+All five relevant rows have
+\(c^{(2)}/c\ge2418/2680=1209/1340\). The fractions in
+Section 58 prove this by cross-multiplication; the other rows are
+\(1438/939,648/636,690/505,406/206\).
+If \(y\le6/5\), then \(\mathrm e>27/10\) gives
+\(\mathrm e/(2y)>9/8>1\). Since \(n-1\ge2\),
+
+\[
+\frac{C_2}{C_1}
+>\frac{1209}{1340}\frac{27}{20}\left(\frac98\right)^2
+>\frac32.
+\tag{10.738}
+\]
+
+In III write \(c^{(2)}=c_*/\vartheta\), where
+\(c_*=495\) or 557, and put \(z=n/t\).
+Here \(\mathfrak a=7/\vartheta\), \(P=1\), and
+\(3/4\le\vartheta<1\). The same exact cancellation gives
+
+\[
+\frac{C_2}{C_1}
+=\frac{c_*}c\,\mathrm e
+ \left(\frac{\mathrm e\vartheta}{z}\right)^{n-1}.
+\tag{10.739}
+\]
+
+The function \(v/(v+3/5)\) increases for positive v: its
+derivative is \((3/5)/(v+3/5)^2>0\). Thus the assumed
+\(z\le\vartheta+3/5\) gives
+\(\mathrm e\vartheta/z>(27/10)(3/4)/(27/20)=3/2\).
+Also \(c_*/c\ge495/1794\), including the III.2 row
+\(557/1790\). Consequently
+
+\[
+\frac{C_2}{C_1}
+>\frac{495}{1794}\frac{27}{10}\left(\frac32\right)^2
+=\frac{8019}{4784}>\frac32.
+\tag{10.740}
+\]
+
+The two final rational comparisons are reproduced in the editable
+calculation for Figure 10.55. Lemma 10.172 now gives
+\(C_1\mathsf h<C_2\mathsf h_2\), and Theorem 10.152 proves
+the claim.
+
+Finally \(A_0=P/2\) outside III, and \(P\ge1\). Therefore
+\(A_0+3/5\le(6/5)P\), since \(3/5\le(7/10)P\).
+In III, \(e=P=1\), so \(A_0=\vartheta\).
+This proves the last assertion, including equality at the optimizer
+threshold. \(\square\)
+
+**Theorem 10.189 (the remaining two-base comparisons).** For \(n=2\)
+the second estimate also follows from Theorem 10.152 in every field
+case except possibly
+
+\[
+p=5,\qquad e=f=1,\qquad d>1.
+\tag{10.741}
+\]
+
+This exception identifies the part not settled by this comparison;
+it is not an exception asserted for Yu's second estimate itself.
+In that family the same conclusion holds whenever
+\(\mathsf h_2\ge G_1(2,d)\).
+
+**Proof.** Theorem 10.173 applies if \(2\le Pt\).
+Otherwise \(P=1\): if \(P>1\), it is an integer prime
+power at least two and \(t>1\). At two this also contradicts
+\(P\ge4\). Thus p is odd, \(f=1\), and \(p<\exp2<9\).
+The possible primes are three, five and seven. At three,
+\(P\ge3\), so only five and seven remain.
+The defining inequality \(2e<P(p-1)\) gives \(e=1\)
+at five, and \(e=1\) or two at seven.
+
+At seven, \(\log7>19/10\). In case III,
+\(\vartheta=5/6\), so the rank-two form of the preceding
+identity gives
+
+\[
+\frac{C_2}{C_1}
+>\frac{495}{1794}\left(\frac{27}{10}\right)^2
+ \frac56\frac{19}{20}>\frac32.
+\tag{10.742}
+\]
+
+In IV, necessarily \(e=2\) here, it instead gives
+
+\[
+\frac{C_2}{C_1}
+>\frac{1209}{1340}\left(\frac{27}{20}\right)^2
+ \frac{19}{20}>\frac32.
+\tag{10.743}
+\]
+
+These strict rational comparisons and Lemma 10.172 settle seven.
+
+At five, consider first \(d=1\), the III.2 row. A slightly
+sharper comparison of the coefficient parameters suffices:
+
+\[
+\mathsf h<\frac{11}{8}\mathsf h_2,\qquad
+\frac{C_2}{C_1}>\frac{603231}{438550}>\frac{11}{8}.
+\tag{10.744}
+\]
+
+To prove the first inequality, set
+\(a_0=2+\log7\) and \(x=2a_0+146/25\).
+The parameters in Sections 47 and 58 give
+
+\[
+\frac{G_1(2,1)}3=x+\log x,
+\qquad
+\frac{G_2(2,1)}3=2a_0+\frac{83}{25}+\log3.
+\tag{10.745}
+\]
+
+Using \(19/10<\log7<2\), we have \(x<346/25\).
+Also \(\exp(27/10)>(27/10)^2(1+7/10+49/200)>346/25\),
+so \(\log x<27/10\). Hence
+
+\[
+\frac{G_1(2,1)}3<\frac{827}{50},\qquad
+\frac{G_2(2,1)}3>\frac{303}{25},\qquad
+\frac{11}{8}\frac{303}{25}-\frac{827}{50}=\frac18>0.
+\tag{10.746}
+\]
+
+All other entries of the coefficient maxima agree and
+\(\mathsf h_2>0\), proving the coefficient inequality.
+For the second inequality use \(\mathrm e>19/7\),
+\(\log5>8/5\), and \(\vartheta=3/4\) in the exact
+rank-two quotient. This gives
+
+\[
+\frac{C_2}{C_1}
+>\frac{557}{1790}\left(\frac{19}{7}\right)^2
+ \frac34\frac45=\frac{603231}{438550}.
+\tag{10.747}
+\]
+
+Here its difference from \(11/8\) is
+\(899/1754200>0\). Combining the two comparisons with
+Theorem 10.152 settles the rational field at five.
+
+We justify all elementary logarithm bounds just used. The exponential
+series through degree six gives
+\(\mathrm e>1957/720>19/7>27/10\). Its sum through degree
+five is \(163/60\); the remaining terms have first term
+\(1/720\) and subsequent ratios at most \(1/7\), giving
+
+\[
+\mathrm e<\frac{163}{60}+\frac7{4320}
+=\frac{11743}{4320}<\frac{87}{32}<\frac{11}{4}.
+\tag{10.748}
+\]
+
+Now \(\exp(19/10)=\mathrm e^2/\exp(1/10)
+<(11/4)^2/(11/10)=55/8<7\), proving
+\(\log7>19/10\); \(\mathrm e^2>7\) proves its upper
+bound. Similarly
+\(\exp(2/5)>1+2/5+2/25+4/375=559/375\). Therefore
+
+\[
+\exp(8/5)
+<\frac{(87/32)^2}{559/375}<5,
+\tag{10.749}
+\]
+
+where the last rational comparison is
+\(7569\cdot375<5\cdot1024\cdot559\).
+Thus \(\log5>8/5\). Finally \(\log3>1\) follows from
+\(\mathrm e<3\). These estimates prove every numerical
+inequality used above. The case \(p=5,e=f=1,d>1\) has
+not been inferred from the rational-field calculation. For its stated
+height subcase, all the entries in \(\mathsf h\) are at most
+\(\mathsf h_2\), because only the G entry differs. Moreover
+
+\[
+\frac{C_2}{C_1}
+>\frac{495}{1794}\left(\frac{19}{7}\right)^2
+ \frac34\frac45>1.
+\tag{10.750}
+\]
+
+Theorem 10.152 therefore proves the estimate in that subcase as well.
+\(\square\)
+
+### The complete first local input budget
+
+Return to the parameters and the actual kernel of Theorem 10.184.
+Suppose its original integer coefficient vector is nonzero and the
+distinguished \(b_n\ne0\) has minimum p-adic valuation.
+Take the height parameter to satisfy
+
+\[
+h\ge\max\{G_2(r,d),(r+1)t,\log B_\dagger\},
+\qquad B_\dagger=\min_{b_j\ne0}|b_j|.
+\tag{10.751}
+\]
+
+These conditions hold with the original \(\mathsf h_2\) when
+\(r\le n\), since \(G_2(j,d)\) increases with j.
+Put \(s_0=\lfloor S\rfloor\),
+\(\mu=\lfloor T/(q(r+1))\rfloor+1\), and
+
+\[
+B=\lfloor\log_p(2s_0)\rfloor,\qquad
+C_0=\max\{v_p(V(k)),v_p(b_n)\},\qquad M_0=\max\{B,C_0\}.
+\tag{10.752}
+\]
+
+**Theorem 10.190 (uniform first-step analytic budget).** With these
+parameters,
+
+\[
+\begin{aligned}
+\mu\bigl((2s_0+1)N+M_0\bigr)
+&<\frac{437}{2016}U_r<\frac14U_r,\\
+\kappa+U_r-v_p(b_n)&>N+\frac1{p-1}.
+\end{aligned}
+\tag{10.753}
+\]
+
+Consequently the actual initial zeros of Theorem 10.184 meet the full
+input budget (10.691). Under the counterhypothesis
+\(v_p(\Xi-1)\ge U_r\), every prepared index
+\(|\boldsymbol t|\le T-\mu+1\) satisfies, for every
+\(x\in\mathbb Z_p\),
+
+\[
+v_p(\Phi(x;\boldsymbol t))
+\ge(2s_0+1)\mu N
+ -D_{\mathrm a}\left(N+\frac1{p-1}\right)+\beta.
+\tag{10.754}
+\]
+
+This is a local analytic precision bound. Concluding that an algebraic
+value is zero still requires the strict global arithmetic comparison.
+
+**Proof.** First we control all jet costs by the original height
+parameter. The constants give \(c_3\le3,q\le3,t>1\), so
+\(2S<18(r+1)dH\). Also
+\(a_0^{(2)}>3\),
+\(a_1^{(2)}+\log(r+1)>1\), and hence
+
+\[
+H\ge h\ge G_2(r,d)
+>(r+1)(3r+\log d+1)\ge40.
+\tag{10.755}
+\]
+
+For \(H\ge2\), \(\log H<H/2\): its difference has
+positive derivative after two and is positive at two.
+Furthermore \(\log18<3\) and \(\log(r+1)\le r\).
+Thus
+
+\[
+\log(2S)
+<\frac H2+3+r+\log d<H.
+\tag{10.756}
+\]
+
+Indeed
+\((r+1)(3r+\log d+1)/2>3+r+\log d\): its left
+minus right is at least \(5r-1>0\) for \(r\ge3\),
+after keeping the nonnegative coefficient of \(\log d\).
+The logarithm bounds follow respectively from
+\((27/10)^3>18\) and \(\log(1+r)\le r\), proved by
+integrating \((1+x)^{-1}\le1\).
+
+The minimum-valuation coefficient hypothesis gives
+\(v_p(b_n)\le\log B_\dagger/\log p\le h/\log p\).
+This uses the original integers, not newly chosen rational
+coefficients. Also \(v_p(V(k))=\lfloor\log_p k\rfloor\),
+by the proved least-common-multiple formula. Since \(k\le H\)
+and \(\log H<H\), all costs obey
+
+\[
+M_0\le\frac H{\log p}.
+\tag{10.757}
+\]
+
+The local degree inequality \(d\ge ef\),
+\(c_3\ge3/5\), \(q\ge2\), \(r+1\ge4\),
+and \(A_0\ge1/2\) give
+
+\[
+\frac{SN}{H/\log p}
+=c_3q(r+1)\frac d f\,N
+\ge c_3q(r+1)\frac{m+A_0}{1+\tau}
+>\frac{18}{5}>3.
+\tag{10.758}
+\]
+
+Here \(m\ge1\) and \(0<\tau<1\).
+It follows that \(M_0<SN/3\) and \(SN>12\), the
+latter because \(H/\log p\ge(r+1)f\ge4\).
+Also \(S\ge g_S\ge(3/5)\cdot2\cdot16>16\).
+
+By Theorem 10.184, \(T>101r^2\). For \(r\ge3\),
+\(q\le3\) gives
+\(q(r+1)/T<3(r+1)/(101r^2)\le4/303<1/75\).
+The monotonic decrease of \((r+1)/r^2\) follows by
+differentiation, or multiplication of consecutive positive integers.
+Consequently
+
+\[
+\mu<\frac{76}{75}\frac T{q(r+1)}.
+\tag{10.759}
+\]
+
+Put \(W=STN/(q(r+1))\). From \(S>16\) and the
+jet bound,
+
+\[
+\mu\bigl((2s_0+1)N+M_0\bigr)
+<\frac{76}{75}\left(2+\frac1{16}+\frac13\right)W
+=\frac{437}{180}W.
+\tag{10.760}
+\]
+
+On the other hand, substitution of T and \(U_r\) gives the
+exact identity \(U_r=c_1q^{r+1}W\). Every row has
+\(c_1\ge7/10\); hence \(U_r\ge(56/5)W\).
+Division proves the first bound, since
+\(437/2016<1/4\).
+
+For strict normality, the identity
+\(U_r/(SN)=c_1q^rT/(r+1)>1\) follows from
+\(T>101r^2\), \(c_1\ge7/10\), and \(r\ge3\).
+Meanwhile \(N<SN/16\),
+\(1/(p-1)\le1<SN/12\), and \(v_p(b_n)<SN/3\).
+Their sum is less than \((23/48)SN<SN<U_r\).
+Since \(\kappa\ge0\), the asserted strict inequality follows.
+
+For the other strict disc inequality, use the phase and depth
+construction of Theorem 10.180. Its deep units lie in \(U_j\)
+with integer \(j\ge A_0+e/(p-1)\). Therefore
+
+\[
+N=\frac{m+A_0}{e(1+\tau)}
+<\frac{j+m}{e}-\frac1{p-1}.
+\tag{10.761}
+\]
+
+All hypotheses of Theorem 10.182 now hold for the full integer node
+set, with \(\eta_E=0\). The budget just proved is stronger
+than (10.691), whose left side also has the nonnegative terms
+\(\kappa+D_{\mathrm a}(N+1/(p-1))\).
+Theorem 10.184 supplies every required initial prepared zero, and
+\(|\boldsymbol t|+\mu-1\le T\) by assumption.
+Equation (10.692) proves the stated precision. \(\square\)
+
+![Exact positive gaps for the small-optimizer and two-base comparisons, and the fraction of the counterhypothesis scale needed by the first local input.](../figures/yu-second-closure.png)
+
+*Figure 10.55.* Left: the rational differences in Theorems 10.188
+and 10.189 are strictly positive. The comparison uses height ratio
+\(3/2\) in the first four bars and \(11/8\) in the rational
+five-adic case; the logarithmic vertical scale makes its small
+positive gap visible. Right: Theorem 10.190 bounds the full first
+local input by \((437/2016)U_r<U_r/4\), uniformly in all its
+parameters. Solution 76 computes the smaller cost for the actual
+four-base support of Solution 75 with a unit distinguished
+coefficient. Neither bar is a sampled prime-ideal valuation.
+[Editable exact calculation and figure](../figure_sources/yu_second_closure.py).
+Human-source context: the two estimates in Section 1.1 and the
+coefficient parameters in Section 1.3 of
+[Yu's freely accessible paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).
+
+## 63. The second-scale multiplicity stop and its height profile
+
+The second-scale construction has its own polynomial degree and analytic
+radius. We verify the degree comparisons with these parameters before
+using the multiplicity theorem. The resulting height-product estimate
+has enough room to preserve the second constant through a reduction in
+rank. Its one-base endpoint follows from the elementary valuation
+estimate.
+
+### Degree and allocation inequalities
+
+Retain the parameters of Theorem 10.184, including its independent
+\(r\ge3\) bases and \(h\ge(r+1)t\). Write
+\(A=A_r\), \(x=\log J\), and \(\lambda=59/58\). Set
+
+\[
+c_5=\begin{cases}27/50,&q=2,\\4/5,&q=3,\end{cases}
+\qquad \eta=1-\frac{c_5}{r+1},\qquad Q=q\eta^{r+1}.
+\tag{10.766}
+\]
+
+Choose any nonnegative integer I such that
+
+\[
+E=Q^I>\exp(5(A+x)),\qquad
+\bar S=q\eta^{-(r+1)I}S,\qquad
+\bar T=\eta^{(r+1)I+1}T.
+\tag{10.767}
+\]
+
+Use the coordinate-degree bounds
+
+\[
+\mathsf D_0=D_{\mathrm a}=kL,\qquad
+\mathsf D_j=2Jq^{-I}D_j\quad(1\le j\le r),
+\tag{10.768}
+\]
+
+and the integer allocations
+
+\[
+S_0=\lfloor\bar S/3\rfloor,\quad
+S_j=\lfloor2\bar S/(3r)\rfloor\ (1\le j\le r),\qquad
+T_j=\lfloor\bar T/(r+1)\rfloor\ (0\le j\le r).
+\tag{10.769}
+\]
+
+**Theorem 10.191 (degree comparisons at the second-scale stop).**
+These allocations satisfy (10.67), with total budgets
+\(\lfloor\bar S\rfloor,\lfloor\bar T\rfloor\). Moreover,
+
+\[
+\mathsf D_0>20\mathsf D_j\quad(1\le j\le r),\qquad
+\mathsf D_0>4\bar T,\qquad \mathsf D_0>4r.
+\tag{10.770}
+\]
+
+For the allocation ratios \(\mathcal R_0,\mathcal R_{m,J},
+\mathcal R_r\) defined in (10.267), with the present parameters,
+
+\[
+\mathcal R_0>\frac{32}{11},\qquad
+\mathcal R_{m,J}>\frac{2^{20}}{29}\ (1\le m<r),\qquad
+\mathcal R_r>31.
+\tag{10.771}
+\]
+
+In particular every allocation and coordinate-degree hypothesis of
+Theorem 10.25 holds.
+
+**Proof.** We use \(\mathrm e=\exp(1)\), reserving e for
+ramification. The established bounds give
+
+\[
+\begin{gathered}
+A\ge4+\log((r+1)d)>5,\quad t>1,\quad
+H=h+x\ge(r+1)t>r+1,\\
+c_3\ge3/5,\quad c_2q>3,\quad 6\le c_4\le14,\quad
+A_0=e\vartheta\ge1/2,\quad \vartheta\le2,\quad d\ge e,\\
+eNt<\frac{\zeta_1r}{1+\tau},\quad
+\zeta_1<7/5,\quad \zeta_2<11/10,\quad
+K_S<21/10,\quad \lambda<11/10,\quad c_0<3.
+\end{gathered}
+\tag{10.772}
+\]
+
+The bounds for \(\zeta_1,\zeta_2\) are those of Lemma
+10.177, and \(K_S<21/10\) follows from \(g_S>16\).
+The field-case definition of \(\vartheta\) gives its displayed
+upper bound, as in Theorem 10.100. Also \(2<\mathrm e<3\)
+and \(\ell_d\le d\).
+
+We have \(\eta\ge4/5\). The derivative argument in Theorem
+10.100 shows that \((1-c/y)^y\) increases for \(y>c\).
+Consequently
+
+\[
+Q\ge\begin{cases}2(173/200)^4>1,&q=2,\\
+3(4/5)^4>1,&q=3.\end{cases}
+\tag{10.773}
+\]
+
+On the other hand,
+\(q\eta^{2(r+1)}<q\exp(-2c_5)<1\). For the last
+comparison, the first three exponential terms give
+\(\exp(27/25)>2\) and \(\exp(8/5)>3\).
+It follows that
+
+\[
+\eta^{-(r+1)I}>E,\qquad
+q^I/J>E/J>\exp(5A),\qquad E/J>\exp(5A).
+\tag{10.774}
+\]
+
+In particular a finite I with the required property exists. These
+facts concern the size of a stopping depth; they do not assert that
+the auxiliary function has acquired its required zeros.
+
+For an individual non-torsion base, Theorem 10.18 gives
+\(\sigma_j\ge2/(58\mathrm e d^2\ell_d)\), hence
+\(d\sigma_j>1/(87d^2)\). The lower bound in Corollary
+10.185 and the definitions of S and \(\mathsf D_j\) give
+
+\[
+\begin{aligned}
+\frac{\mathsf D_0}{\mathsf D_j}
+&>\frac{c_3c_2q r(r+1)PH\vartheta}{2c_4NtA}
+                 d\sigma_j\frac{q^I}{J}\\
+&>\frac9{392}(r+1)^2d\sigma_j\frac{\exp(5A)}A.
+\end{aligned}
+\tag{10.775}
+\]
+
+In the second line use \(eNt<\zeta_1r\),
+\(e\vartheta\ge1/2\), \(P\ge1\), and \(H>r+1\).
+Since \(\exp(3A)/A\) increases for \(A\ge5\),
+
+\[
+\frac{\exp(5A)}A
+>256(r+1)^2d^2\frac{2^{15}}5.
+\tag{10.776}
+\]
+
+Thus the degree ratio is greater than
+\(9\cdot256^2\cdot2^{15}/(392\cdot87\cdot5)>20\),
+where \((r+1)^4\ge4^4=256\) was used.
+Similarly,
+
+\[
+\frac{\mathsf D_0}{\bar T}
+>\frac{c_3A_0H}{c_4A}\eta^{-(r+1)I-1}
+>\frac3{35}\frac{2^{25}}5>4.
+\tag{10.777}
+\]
+
+Here \(H>4\), and \(\exp(5A)/A\) increases for
+\(A\ge5\). Finally \(k=\lfloor H\rfloor\ge r+1\)
+and \(L>X>58\), so \(\mathsf D_0>58(r+1)>4r\).
+These inequalities imply
+\(\mathsf D_0>\max_j\mathsf D_j\) and
+\(\mathsf D_0>\bar T+r\ge T_r+r\).
+
+The integer allocations are nonincreasing and have sums at most their
+specified integer budgets. Their floors satisfy
+
+\[
+S_0+1>\bar S/3,\quad S_j+1>2\bar S/(3r),\quad
+\binom{T_j+b}{b}>\frac{(\bar T/(r+1))^b}{b!}\quad(b\ge1).
+\tag{10.778}
+\]
+
+For the last inequality, each factor \(T_j+l\), \(l\ge1\),
+is greater than \(\bar T/(r+1)\). Put
+
+\[
+B_0=\frac{q^2\eta c_4dA}{3\lambda A_0t}.
+\tag{10.779}
+\]
+
+Direct cancellation using the upper bound for \(\mathsf D_0\)
+gives \(\mathcal R_0>B_0\). Since
+\(d/A_0\ge1/2\), \(A\ge t\), \(q\ge2\),
+\(\eta\ge4/5\), \(c_4\ge6\), and
+\(\lambda<11/10\), we have \(B_0>32/11\).
+
+For every \(1\le m<r\) and m-element coordinate subset J',
+the same cancellation yields
+
+\[
+\mathcal R_{m,J'}>
+\frac{2B_0}{r}\frac{\prod_{j\in J'}\sigma_j}{((m+1)!)^2}
+\left(\frac{\eta c_2qrPd}{2eNt}\frac EJ\right)^m.
+\tag{10.780}
+\]
+
+The bracket is greater than \((6/7)d\exp(5A)\).
+Each selected family is independent, so Theorem 10.18 applies to it:
+
+\[
+\prod_{j\in J'}\sigma_j
+\ge\frac{m^m}{29m!\mathrm e^m d^{m+1}\ell_d}.
+\tag{10.781}
+\]
+
+Using \(B_0>2\), \(m^m\ge m!\), \(\mathrm e<3\)
+and
+\((2/7)\exp(5A)>2^{21}(r+1)^2d^2\), we obtain
+
+\[
+\mathcal R_{m,J'}>
+\frac4{29}(2^{21})^m
+\frac{(r+1)^{2m}}{r((m+1)!)^2}
+\frac{d^{2m-1}}{\ell_d}
+\ge\frac4{29}\frac{(2^{21})^m}{(m+1)^3}
+\ge\frac{2^{20}}{29}.
+\tag{10.782}
+\]
+
+Indeed the exponential estimate follows by splitting its exponent into
+\(2A+3A\), using \(A\ge4+\log((r+1)d)\) and \(A>5\).
+For the middle inequality, \(d^{2m-1}\ge\ell_d\),
+\((m+1)!\le(m+1)^{m+1}\), and
+\((r+1)^{2m}/r\) increases for \(r\ge m+1\).
+The final expression increases with m: its consecutive ratio is at
+least \(2^{21}(2/3)^3>1\).
+
+It remains to treat the full-rank allocation. Keep the entire formula
+for \(\mathcal D\) in Theorem 10.184. Cancellation now gives
+
+\[
+\begin{aligned}
+\mathcal R_r>{}&
+\frac{2q q^uJ^{1-r}\eta^r}
+ {3r\lambda(r+1)!K_Sc_0\ell_d\mathcal R_r(\boldsymbol\alpha)}
+ q^{rI}\eta^{(r-1)(r+1)I}\\
+&\quad{}\times
+\left(\frac{r}{2eNt\zeta_2\mathrm e(r+1)(1+\tau)}\right)^r.
+\end{aligned}
+\tag{10.783}
+\]
+
+The \(\mathcal R_r\) on the left is the allocation ratio;
+\(\mathcal R_r(\boldsymbol\alpha)\) on the right is the
+residue maximum of Theorem 10.184. For that maximum,
+
+\[
+\mathcal R_r(\boldsymbol\alpha)\le\exp(A)A.
+\tag{10.784}
+\]
+
+Its first entry is at most \(p^f=\exp t\); for the second,
+\((\mathrm et/r)^r\le\exp t\) follows from
+\(\log(t/r)\le t/r-1\), and \(t\le A\).
+Also
+\(q^{rI}\eta^{(r-1)(r+1)I}=q^IE^{r-1}>E^r\), so
+\(J^{1-r}E^r>\exp(5rA)\).
+Using the strict bounds already proved,
+
+\[
+\frac{2q q^u}{3\lambda K_Sc_0}>\frac16,\qquad
+\frac{\eta}{2\zeta_1\zeta_2\mathrm e}>\frac1{12},
+\tag{10.785}
+\]
+
+we conclude that
+
+\[
+\mathcal R_r>
+\frac{\exp((5r-1)A)}
+ {6r(r+1)![12(r+1)]^r\ell_d A}
+>\frac{16^{4r}}{6r12^r}>31.
+\tag{10.786}
+\]
+
+For the second inequality use \(\exp((r-1)A)>A\),
+\(\exp(4rA)>[16(r+1)d]^{4r}\),
+\((r+1)!\le(r+1)^{r+1}\), and \(\ell_d\le d\).
+The last expression increases for \(r\ge3\), since its
+consecutive ratio is \((16^4/12)r/(r+1)>1\); its value at
+three exceeds 31 by an integer comparison. This proves all assertions.
+\(\square\)
+
+### The height product after a reduction in rank
+
+**Corollary 10.192 (the second height profile at a multiplicity stop).**
+Suppose the contracted prepared family with the parameters of Theorem
+10.191 is nonzero and vanishes at every integer \(|s|\le\bar S\)
+through total prepared order \(\bar T\). Suppose its independent
+bases and selected Euler directions give the hyperplane W of Theorem
+10.25, with a nonzero vector \(\boldsymbol B\).
+Then there are \(1\le m<r\) and independent integral vectors
+\(u_1,\ldots,u_m\), whose rational span contains \(\boldsymbol B\).
+Put \(\beta_i=\prod_j\alpha_j^{u_{ij}}\) and
+\(R_i=\sum_j\sigma_j|u_{ij}|\). These are independent local
+units in the original field, with \(h(\beta_i)\le R_i\), and
+
+\[
+\prod_{i=1}^mR_i
+<10^{-6}\Gamma_2^{r-m}
+\frac{\mathcal R_r(\boldsymbol\alpha)}
+     {\mathcal R_m(\boldsymbol\beta)}\Omega_r,
+\qquad \Gamma_2=a\mathrm e^2Pd/q.
+\tag{10.787}
+\]
+
+Here a is the case constant in Theorem 10.184, and each residue maximum
+uses its indicated family and its own saturated residue index. At
+rank one use the actual residue order of the base.
+
+**Proof.** Proposition 10.31 converts the stipulated prepared zeros to
+ordinary W-jets, and clears the Laurent monomial with the coordinate
+degree bounds of Theorem 10.191. That theorem verifies every allocation
+and degree hypothesis of Theorem 10.25. As in the proof of Corollary
+10.101, both multiplicity alternatives imply
+
+\[
+(S_m+1)\binom{T_m+m}{m}\prod_{i=1}^m R_i
+\le(m+1)!r^m D_{\mathrm a}
+\left(\frac{2Jq^{-I}\mathcal D}{c_1c_2rPd}\right)^m.
+\tag{10.788}
+\]
+
+Corollary 10.26 proves the independence, field and height assertions.
+If an initial multiplicative relation is expressed in the rational
+span of \(\boldsymbol B\), clearing denominators and killing its
+root-of-unity factor gives the same identity in the new bases, as in
+(10.271).
+
+Let \(\mathcal Q\) be the product on the left of the claimed bound
+divided by \(\Gamma_2^{r-m}(\mathcal R_r/\mathcal R_m)\Omega_r\).
+
+Bound the denominator in the multiplicity output strictly below by
+\((2\bar S/(3r))(\bar T/(r+1))^m/m!\), since each floor
+plus one strictly exceeds the unrounded quotient. Insert the upper
+bound for \(D_{\mathrm a}\) from Corollary 10.185, and divide by the desired
+profile. Exact substitution of \(S,T,\mathcal D,\Gamma_2\)
+gives the following upper bound for the normalized quotient:
+
+\[
+\begin{aligned}
+\mathcal Q <{}&\frac{3r}{2q}\frac{(m+1)!m!}{r!}
+ \lambda K_Sc_0\,(r+1)^r\mathrm e^{-r}
+ \frac{\ell_d\mathcal R_m}{q^u}(1+\tau)^{r-m}\\
+&\quad{}\times
+\left(\frac{2\zeta_1\zeta_2r\mathrm e^2}{\eta}\right)^m
+ J^{m-1}\frac{\eta^{(r+1)I}}{E^m}.
+\end{aligned}
+\tag{10.789}
+\]
+
+For clarity, the final inequality used the bound from Lemma 10.177
+\(eNt<\zeta_1r/(1+\tau)\). Before that bound its bracket is
+\(2\zeta_2 eNt\mathrm e^2/\eta\), and the power of
+\(1+\tau\) is r. This retains the distinction between
+ramification e and Euler's number \(\mathrm e\).
+Both factorials from the multiplicity output and binomial count
+remain visible.
+
+For every integer \(m\ge1\),
+\(\mathcal R_m\le p^ft\le\exp(A)A\). Indeed its first
+entry is at most \(p^f\), while
+\((\mathrm et/m)^m\le\exp t\) follows from
+\(\log(t/m)\le t/m-1\). Multiplication by t treats its
+second entry. Also the integral bound for \(\log(r!)\) gives
+
+\[
+\frac{(r+1)^r}{r!\mathrm e^r}
+\le\exp\left(r\log(1+1/r)-1\right)<1.
+\tag{10.790}
+\]
+
+Equation (10.451) bounds \((1+\tau)^{r-m}\) by \(101/100\).
+Also \(g_S>16\), hence \(K_S<21/10\).
+The other bounds are \(\lambda<11/10\), \(c_0<3\), and \(q\ge2\).
+Thus the remaining constant factor is less than
+\((3/4)(11/10)(21/10)3(101/100)<6\).
+Furthermore \(\zeta_1<7/5,\zeta_2<11/10,\mathrm e<3\)
+and \(\eta\ge4/5\) give
+\(2\zeta_1\zeta_2\mathrm e^2/\eta<693/20<35\).
+
+From \(q\eta^{2(r+1)}<1\) we have
+\(\eta^{(r+1)I}<E^{-1}\). The stopping inequality therefore
+implies
+
+\[
+J^{m-1}\frac{\eta^{(r+1)I}}{E^m}
+<\exp(-5(m+1)A)J^{-4m-6}
+\le\exp(-5(m+1)A).
+\tag{10.791}
+\]
+
+Consequently
+
+\[
+\mathcal Q
+<6r(m+1)!m!\,\ell_d A\,(35r)^m
+ \exp(-(5m+4)A).
+\tag{10.792}
+\]
+
+Set \(V=(r+1)d\). Since \(A\ge4+\log V>5\),
+\(y\exp(-(5m+4)y)\) decreases for \(y\ge5\).
+The elementary inequalities \(4+\log V\le5V\) and
+\(\ell_d\le d\) bound the last display above by
+
+\[
+30\cdot35^m\exp(-20m-16)
+\frac{r^{m+1}(m+1)!m!}{(r+1)^{5m+3}d^{5m+2}}.
+\tag{10.793}
+\]
+
+Here \(m<r\), so
+\((m+1)!m!\le(m+1)^{2m+1}\le r^{2m+1}\).
+The last fraction is strictly smaller than one.
+Finally \(\mathrm e>2\), \(35/2^{20}<1\), and \(m\ge1\)
+give
+
+\[
+\mathcal Q
+<\frac{30}{2^{16}}\left(\frac{35}{2^{20}}\right)^m
+\le\frac{1050}{2^{36}}<10^{-6}.
+\tag{10.794}
+\]
+
+The last comparison is the integer inequality
+\(1050\cdot10^6<2^{36}\). This proves the asserted product bound. In particular the
+stronger allowance of Theorem 10.187 survives this multiplicity output,
+including its actual change of residue index. \(\square\)
+
+The conclusion is conditional on the stated prepared zeros. The degree
+and height-product arguments establish what those zeros imply; their
+arithmetic production remains a separate step.
+
+### The one-base endpoint of the second height profile
+
+**Proposition 10.193 (one base with the stronger rank allowance).**
+Use the original independent n-base setting, \(n\ge2\), and
+the exact \(C_2\) constant in (10.642). Write
+\(a=a^{(2)}\), \(c_*=c^{(2)}\),
+\(\Gamma_2=a\mathrm e^2Pd/q\),
+\(F(n)=(n+1)^{n+1}/(n-1)!\), and
+\(\Omega_n=\prod_jh(a_j)\).
+Suppose a rank-one integral-form representation satisfies the weighted
+conditions in (10.277), with its product allowance replaced by
+
+\[
+\sigma\le\Gamma_2^{n-1}
+ \frac{\mathcal R_n(\boldsymbol a)}{\mathcal R_1(\beta)}\Omega_n.
+\tag{10.795}
+\]
+
+Here \(\beta\) is its non-torsion unit base, \(g\) is the
+actual residue order of \(\beta\), and
+\(\mathcal R_1(\beta)=\max\{p^f/\delta(\beta),\mathrm et^2\}\),
+with \(\delta(\beta)=(p^f-1)/g\). In particular
+\(\mathcal R_1>g\). Let the original height parameter h obey
+\(h\ge\max\{\log B_\dagger,(n+1)t\}\). Then
+
+\[
+\operatorname{ord}_{\mathfrak p}(\Xi-1)
+<\frac1{3000}C_2h\Omega_n.
+\tag{10.796}
+\]
+
+**Proof.** Clear the rational coefficient of the one independent integral
+form exactly as in (10.454). Its numerator divides every original nonzero
+integer coefficient, so its absolute value is at most
+\(B_\dagger\). Kill the q-primary torsion by a positive power;
+the difference valuation cannot decrease. The elementary residue-order
+bound of Theorem 10.21, including signed powers, therefore yields
+
+\[
+\operatorname{ord}_{\mathfrak p}(\Xi-1)
+\le\frac d t\bigl(2h+2eg\sigma\bigr).
+\tag{10.797}
+\]
+
+This is the elementary estimate proved in (10.454); no newly chosen rational
+coefficient is substituted for the original height parameter.
+
+Put \(\mathcal T=C_2h\Omega_n\). The height-product estimate (10.55),
+with saturation index at least one and \(w_K\ge q^u\), gives
+
+\[
+\Omega_n\ge\frac{q^u n^n}
+ {\rho d^{n+1}\ell_d n!\mathrm e^n},\qquad \rho\le58.
+\tag{10.798}
+\]
+
+Also \(\mathcal R_n A_n/t^2\ge1/n\). If \(t\le n\),
+use \(\mathcal R_n\ge1,A_n\ge t\). If \(t>n\), the
+second entry of the residue maximum gives
+\(\mathcal R_nA_n/t^2\ge(\mathrm et/n)^n>1/n\).
+Substituting the full C2 formula therefore proves
+
+\[
+\mathcal T\ge
+\frac{c_*a^nP^{n-1}F(n)n^{n-1}}{\rho n!}\frac{dh}{t}
+\ge9261\frac{dh}{t}.
+\tag{10.799}
+\]
+
+Indeed \(c_*\ge406,a\ge7,P\ge1,F(n)\ge F(2)=27\),
+and \(n!\le n^{n-1}\). The exact last coefficient is
+\(406\cdot49\cdot27/58=9261\).
+Thus the first summand in the elementary bound is less than
+\(\mathcal T/4000\), since \(8000<9261\).
+
+For the second summand use the stipulated profile and
+\(g/\mathcal R_1<1\). Exact cancellation against the full
+target gives the strict normalized upper bound
+
+\[
+\frac{2e q^u\mathrm e^{n-2}t^2}
+ {c_*a q^{n-1}d^2F(n)\ell_d A_nh}.
+\tag{10.800}
+\]
+
+The cyclotomic local-degree argument in Theorem 10.73 gives \(e q^u\le2d\).
+Also \(A_n\ge t,h\ge(n+1)t\). The expression is therefore
+at most
+
+\[
+\frac{4\mathrm e^{n-2}}
+ {c_*a q^{n-1}dF(n)\ell_d(n+1)}
+\le\frac4{406\cdot7\cdot2\cdot27\cdot3}<\frac1{100000}.
+\tag{10.801}
+\]
+
+For this last comparison, Theorem 10.187 proves
+\(F(n)\ge27\mathrm e^{n-2}\); all other factors have their
+displayed elementary lower bounds. The exact final integer comparison
+is \(400000<460404\). Adding the two contributions gives
+\(1/4000+1/100000=13/50000<1/3000\), proving the assertion. \(\square\)
+
+![Multiplicity allocation bounds, the conditional reduction in rank, and the one-base valuation budget](../figures/yu-second-rank-stop.png)
+
+*Figure 10.56. Left: proved uniform lower bounds for the three allocation
+ratios in Theorem 10.191, on a logarithmic scale. All exceed the required
+threshold one. Right: Corollary 10.192 uses prepared zeros as an explicit
+hypothesis and produces a smaller independent family with its actual
+residue index and the stronger height allowance. Below: the two
+rank-one contributions, each divided by \(C_2h\Omega_n\), have sum
+less than 260 in units of \(10^{-6}\); the target is \(1000/3\)
+in the same units. Proposition 10.193 proves the inequality, and
+Solution 77 checks the algebra and exact endpoints. These are proved
+bounds, not sampled field parameters. [Reproducible figure and exact
+endpoint calculation](../figure_sources/yu_second_rank_stop.py).
+Human-source context: the multiplicity method in Section 6 of
+[Yu's freely accessible 2013 paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).*
+
+## 64. Coefficient heights and the first second-scale zero extension
+
+The selected auxiliary function already vanishes on its initial integer
+interval. We estimate the height of its coefficients by averaging over
+the entire set of prepared equations. A positive generating series
+then bounds each individual value. The resulting strict comparison
+extends the zeros to an interval q times as large.
+
+Retain all parameters of Theorem 10.184 and the original integer
+representation (10.218). The distinguished nonzero coefficient has
+minimum p-adic valuation. Throughout this section assume
+
+\[
+h\ge\max\left\{G_2(r,d),(r+1)t,\log B_\dagger,
+                   \log\frac{R_{\max}}{dW(d)}\right\}.
+\tag{10.806}
+\]
+
+Here \(W(d)\) is (10.222), and the original coefficients define
+\(R_{\max}\) and \(B_\dagger\). In particular these hypotheses
+hold for the original second height parameter when \(r\le n\).
+Write \(Z=S\mathcal D/d\), \(\lambda=59/58\),
+\(H=h+\log J\), and \(y=1/(r+1)\).
+
+### An individual scalar and its complete-simplex average
+
+**Lemma 10.194 (the second-scale generating remainder).** At any
+contraction depth \(I\ge0\), let \(\Omega_j\) be the actual
+nonnegative integer maxima of the Euler arguments, and set
+
+\[
+\begin{aligned}
+m_I&=\sum_{j=1}^{r-1}\Omega_j+r-2,\\
+a_E&=H+1+\log W(d),\qquad a=\max\{107H/103,a_E\},\\
+E_I&=(m_I+1)[-\log(1-\exp(-a_E))].
+\end{aligned}
+\tag{10.807}
+\]
+
+For every nonnegative integer additive order u and Euler order v,
+
+\[
+u\log V(k)+\log\binom{m_I+v}{v}\le a(u+v)+E_I,
+\qquad
+\frac{E_I}{Z}<\frac{q^{-I}}{79}+\frac{r-1}{999Z}.
+\tag{10.808}
+\]
+
+Consequently, at real radius R and total order at most O, the logarithm
+of each prepared scalar is at most
+
+\[
+D_{\mathrm a}\log(q^{-I}R+2k)-L\log(k!)+aO+E_I.
+\tag{10.809}
+\]
+
+At the initial full composition rows, the mean scalar logarithm is at most
+
+\[
+D_{\mathrm a}\log(S+2k)-L\log(k!)+C_rTH+E_0,
+\qquad
+C_r=\frac{r+4/103}{r+1}+\frac{3(r-1)}{8(r+1)^2}
+\le1-\frac{483}{824(r+1)}<1.
+\tag{10.810}
+\]
+
+**Proof.** Theorem 10.112 gives \(\log V(k)<107k/103\le107H/103\).
+The positive series proved in Theorem 10.115 gives, for \(0<z<1\),
+
+\[
+\binom{m_I+v}{v}z^v\le(1-z)^{-m_I-1}.
+\tag{10.811}
+\]
+
+Use \(z=\exp(-a_E)\). The Euler contribution is at most
+\(a_Ev+E_I\), while the lcm contribution is at most
+\((107H/103)u\). Both coefficients are at most a, proving the
+first inequality.
+For the remainder, Lemma 10.84, including its full-width contraction,
+gives
+
+\[
+\frac{m_I+1}{Z}\le
+\frac{q^{-I}(r-1)tW(d)\exp H}
+ {c_1c_2c_3qP(r+1)H}+\frac{r-1}{Z}.
+\tag{10.812}
+\]
+
+There is no extra factor \(1/r\) after the r widths are summed.
+The definition of \(a_E\) gives \(W(d)\exp(H-a_E)=1/\mathrm e\).
+Also \(H>40\) by (10.755), hence \(z<1/1000\).
+Integration gives \(-\log(1-z)\le z/(1-z)\), and
+\(t/H\le1/(r+1)\). Therefore
+
+\[
+\frac{E_I}{Z}<\frac{1000}{999}
+ \frac{q^{-I}(r-1)}{\mathrm e c_1c_2c_3qP(r+1)^2}
+ +\frac{r-1}{999Z}.
+\tag{10.813}
+\]
+
+Substitution in the second-scale table gives the following lower bounds
+for \(c_1c_2c_3qP\), in cases I/II, III, IV and V respectively:
+
+\[
+\frac{44100}{5101},\qquad\frac{7840}{2083},\qquad
+\frac{18375}{2642},\qquad\frac{328}{39}.
+\tag{10.814}
+\]
+
+They all exceed \(15/4\). Here use \(P\ge3\) in I/II,
+\(P\ge1\) in III/IV, and \(P\ge4\) in V; these follow
+from (10.641). Since \((r-1)/(r+1)^2\le1/8\) and
+\(1/\mathrm e<3/8\), the first remainder coefficient is less
+than \(25/1998<1/79\). This proves the individual bound at
+every depth and order.
+
+In Theorem 10.92 the additive radius is \(q^{-I}R+2k-1\).
+Its binomial coefficient satisfies
+\(\binom{D_{\mathrm a}}u (q^{-I}R+2k-1)^{D_{\mathrm a}-u}
+\le(q^{-I}R+2k)^{D_{\mathrm a}}\).
+This proves the asserted scalar bound and retains \(-L\log(k!)\).
+
+For the mean, retain the separate lcm and Euler coefficients just proved.
+We next show \(a_E/H<1+3/[8(r+1)]\).
+Every second-table \(a_0^{(2)}>39/10\) and
+\(a_1^{(2)}\ge71/100\). Since \(r\ge3\) and
+\(\log4>4/3\),
+
+\[
+G_2(r,d)>(r+1)(40/3+\log d).
+\tag{10.815}
+\]
+
+For \(d\ge2\), the tangent bound in Lemma 10.106 proves
+\(1+\log W(d)<5+(\log d)/3\).
+This is at most \((3/8)(40/3+\log d)\).
+For \(d=1\), that lemma proves \(1+\log W(1)<2\),
+which gives the stronger conclusion. All logarithm estimates used
+here were proved by positive series in Sections 36 and 40.
+
+At each node keep all \(\binom{\lfloor T\rfloor+r}{r}\)
+indices, including zero rows. Permuting the r derivative coordinates
+and their slack shows that their exact coordinate means are
+\(\lfloor T\rfloor/(r+1)\). The mean additive order is thus
+\(\lfloor T\rfloor/(r+1)\), and the mean Euler order is
+\((r-1)\lfloor T\rfloor/(r+1)\).
+Apply the separate lcm bound and the Euler series with \(a_E\).
+The resulting mean derivative contribution is at most \(C_rTH+E_0\).
+Zero rows can be given the same positive majorant. Finally direct
+subtraction gives
+
+\[
+1-C_r=\frac{483r+1101}{824(r+1)^2}
+      \ge\frac{483}{824(r+1)}.
+\tag{10.816}
+\]
+
+This proves the mean estimate. \(\square\)
+
+### The number of columns and the coefficient vector
+
+**Lemma 10.195 (second-scale logarithmic column bounds).** Set
+
+\[
+b_r=1500\,12^{r-3},\qquad
+\varepsilon_r=\frac{8r+15}{9(r+1)b_r},\qquad
+e_0=\frac1{79}+\frac1{71928\cdot1500}.
+\tag{10.817}
+\]
+
+For the actual selected number of columns \(N_c\) and any
+\(1\le d_0\le d\),
+
+\[
+\mathcal D>b_r A_r,\quad
+\frac{\log(N_cd_0)}Z<\varepsilon_r\le\frac{13}{18000},
+\quad \frac{E_0}Z<e_0.
+\tag{10.818}
+\]
+
+The remainder is the one defined in Lemma 10.194.
+
+**Proof.** The height-product substitution in Theorem 10.184 gives
+
+\[
+\frac{\mathcal D}{A_r}>
+\frac{2c_0c_1c_4}{58}\frac N\vartheta
+(c_2qP)^r\frac{r^r(r+1)^r}{(r!)^2}.
+\tag{10.819}
+\]
+
+Here \(N/\vartheta>99/100\), since
+\(N/\vartheta=(m+A_0)/(A_0(1+\tau))\), \(m\ge1\)
+and \(\tau<1/100\). At \(r=3\) the factorial factor is
+48. In I/II, III, IV and V, the resulting rational lower bounds are
+respectively
+
+\[
+\frac{181946699550000000}{3849142313729},\quad
+\frac{431281065600000}{262099267823},\quad
+\frac{105293228906250}{66850775669},\quad
+\frac{6927360000}{63713}.
+\tag{10.820}
+\]
+
+Each exceeds 1500. The consecutive factorial-factor ratio exceeds
+four by (10.282), and \(c_2qP>3\). Induction proves the
+first bound for all \(r\ge3\).
+
+The singleton height estimate used in Lemma 10.105 gives
+\(d\sigma_i>1/(87d^2)\). Every lattice coordinate is in
+\(J^{-1}\mathbb Z\). Counting coordinates in the original box,
+before either selection, and using \(c_1c_2rP>1\), gives
+\(|S_0|<(88Jd^2\mathcal D)^r\).
+Corollary 10.185 implies \(D_{\mathrm a}<S\mathcal D\):
+use \(\vartheta/N<101/100\), \(c_1c_4>4\) and \(A_r>5\).
+Consequently, writing \(x=\log J\),
+
+\[
+\log(N_cd_0)<\log S+(r+1)\log\mathcal D
+                  +(2r+1)\log d+rx+r\log88.
+\tag{10.821}
+\]
+
+Let \(S_*=(9/5)(r+1)^2d\). The table gives \(S\ge S_*\).
+Both \(S_*\) and \(5b_r\) exceed \(\mathrm e\), on whose
+right \(\log z/z\) decreases. Also
+\(\log S_*<2A_r\), \(\log88<5<A_r\),
+\(\log d<A_r\), and \(\log(5b_r)<3r\).
+For the last comparison, \((27/10)^9>7500\) proves
+\(\log7500<9\), and \((27/10)^3>12\) proves \(\log12<3\).
+The bound \(\mathrm e>27/10\) was proved earlier.
+Dividing the four corresponding groups of terms by Z gives
+
+\[
+\begin{aligned}
+\frac{\log S}Z&<\frac{10}{9(r+1)^2b_r},\\
+\frac{(r+1)\log\mathcal D}Z&<\frac{r}{3(r+1)b_r},\\
+\frac{(2r+1)\log d+r\log88}Z
+ &<\frac{5(3r+1)}{9(r+1)^2b_r},\\
+\frac{rx}Z&<\frac{5r}{9(r+1)b_r}.
+\end{aligned}
+\tag{10.822}
+\]
+
+For the last line use the exact formula for S, \(x/H\le1\),
+\(c_3q\ge9/5\), \(\mathcal D>b_rA_r\), and \(A_r\ge t\).
+Their sum is \(\varepsilon_r\). Its prefactor
+\(8+7/(r+1)\) decreases, while \(b_r\) increases, so its
+maximum is \(13/18000\) at three.
+Finally \(Z>9(r+1)^2b_r\). Thus
+\((r-1)/(999Z)<1/(71928b_r)\), and Lemma 10.194 gives
+the stated remainder. \(\square\)
+
+**Proposition 10.196 (the initial coefficient height at the second scale).**
+The integral kernel in Theorem 10.184 can be chosen so that
+
+\[
+\begin{aligned}
+\frac{h_2(c)}Z<&\ \frac{\varepsilon_r}{2}
+ +\frac1{c_1c_2c_3q(r+1)^2}\\
+&+\frac{10}{17}\left[
+ \frac{\varepsilon_r}{2}
+ +\frac{\lambda\vartheta}{c_1c_4N}
+ +\frac{C_r}{c_1c_3eN}+e_0
+ +\frac1{2c_1c_2}\left(1+\frac1{2g_S+1}\right)\right].
+\end{aligned}
+\tag{10.823}
+\]
+
+Here e in \(eN\) is the ramification index.
+
+**Proof.** Apply the weighted integral Siegel argument of Proposition
+10.183 to its full row list, using the mean scalar bound of Lemma
+10.194 in the row sum. Its proof is a sum of individual row heights,
+so replacing their common maximum by their proved mean is valid.
+The coefficient surplus is \(c_0=27/10\), whence the row ratio
+is smaller than \(1/(c_0-1)=10/17\).
+
+For the additive part, integration gives
+\(\log(k!)\ge k\log k-k+1\). Also \(k>39H/40\),
+\(c_3q\le6\) and \(t>1\), so
+
+\[
+\frac{S+2k}{k}<7(r+1)d,
+\qquad
+\log\frac{\mathrm e(S+2k)}k<A_r.
+\tag{10.824}
+\]
+
+Indeed \(2\le(r+1)d/2\) and
+\((40/39)6+1/2<7\); then \(1+\log7<4\).
+Corollary 10.185 bounds the normalized additive term by
+\(\lambda\vartheta/(c_1c_4N)\).
+Direct substitution of S and T gives
+\(TH/Z=1/(c_1c_3eN)\).
+The coefficient-field generator term from Corollary 10.65 is at most
+\((d_0-1)/(c_1c_2S)\), which is smaller than
+\(1/[c_1c_2c_3q(r+1)^2]\).
+The full-width mean torus term is precisely the one displayed; its
+factor is \(1/(2c_1c_2)\).
+Use Lemma 10.195 for both logarithmic column terms and the remainder.
+This proves the bound while retaining every initial zero and the
+nonzero polynomial. \(\square\)
+
+### The first extension gives exact algebraic zeros
+
+**Theorem 10.197 (the complete first integer extension).** Choose the
+kernel as in Proposition 10.196. Set
+\(c_5=27/50\) at \(q=2\) and \(c_5=4/5\) at \(q=3\),
+and put \(\eta=1-c_5/(r+1)\). Under the counterhypothesis
+\(v_p(\Xi-1)\ge U_r\),
+
+\[
+\Phi(s;\boldsymbol t)=0
+\quad\text{for every integer }|s|\le qS
+\quad\text{and every }|\boldsymbol t|\le\eta T.
+\tag{10.825}
+\]
+
+**Proof.** Put \(\mu=\lfloor c_5T/(r+1)\rfloor+1\) and
+\(s_0=\lfloor S\rfloor\). Since \(T>101r^2\),
+
+\[
+\mu<\frac{101}{100}\frac{c_5T}{r+1}.
+\tag{10.826}
+\]
+
+For example, the relative rounding error is smaller than
+\(4/[(27/50)\,101\cdot9]<1/100\); the ratio
+\((r+1)/r^2\) decreases. The proof of Theorem 10.190 gives
+\(M_0<SN/3\), \(S>16\), and strict normality on the enlarged disc.
+Consequently
+
+\[
+\frac{\mu[(2s_0+1)N+M_0]}{U_r}
+<\frac{101}{100}\frac{115}{48}
+                      \frac{c_5}{c_1q^r}<\frac14.
+\tag{10.827}
+\]
+
+For \(q=2\) and \(q=3\) the respective upper bounds, already
+using only \(r\ge3,c_1\ge7/10\), are
+\(20907/89600\) and \(2323/22680\).
+The exact floor inequality
+\(\lfloor\eta T\rfloor+\mu-1\le\lfloor T\rfloor\)
+supplies every required input jet. Theorem 10.182 therefore yields
+
+\[
+v_p(\Phi(s;\boldsymbol t))-\beta
+\ge(2s_0+1)\mu N-D_{\mathrm a}(N+1/(p-1)).
+\tag{10.828}
+\]
+
+Write \(\mathcal Z=Zd/(et)\). We compare both terms with this
+same scale. Let \(d_*\) be the least field degree in the case,
+put \(\gamma=c_3qd_*\), and retain \(y=1/(r+1)\).
+Since \(S\ge\gamma/y^2\), the positive analytic term is strictly
+greater than
+
+\[
+\mathcal Z\,\mathcal L(y),\qquad
+\mathcal L(y)=\frac{2c_5q}{c_1}
+                    \left(1-\frac{y^2}{2\gamma}\right).
+\tag{10.829}
+\]
+
+Suppose a target value is nonzero. It belongs to the original field K:
+these are integer nodes at depth zero, so Theorem 10.55 applies.
+Theorem 10.92 uses its actual degree d and local degrees e,f, and its
+q-denominator exponent is zero.
+The torus term divided by Z is at most \(q/(c_1c_2)\).
+For the scalar at radius \(qS\), Lemma 10.194 and the factorial
+estimate above give an additive contribution at most
+\(\lambda\vartheta B_q/(c_1c_4N)\), where
+\(B_2=57/50\), \(B_3=61/50\).
+Indeed \(qS+2k\le q(S+2k)\), \(A_r>5\),
+\(\log2<7/10\), and \(\log3<11/10\).
+
+Moreover
+
+\[
+\frac{a\eta}{H}
+\le\frac{107}{103}-(c_5-3/8)y,
+\qquad C_r\le1-\frac{483}{824}y.
+\tag{10.830}
+\]
+
+The first follows from
+\(a/H\le107/103+3y/8\) and multiplication by \(1-c_5y\);
+discarding its negative quadratic term only increases the bound.
+All second-scale rows satisfy \(c_1c_2c_3q>2\), as follows
+by direct substitution: the four products are
+\(14700/5101,7840/2083,18375/2642,82/39\).
+Combining Proposition 10.196 and the additional
+\((\log N_c)/2\) in Theorem 10.92 now bounds the arithmetic
+bracket, with its normalizing loss added, by
+\(\mathcal Z\mathcal A(y,A_0)\), where
+
+\[
+\begin{aligned}
+K&=\frac{107}{103}+\frac{10}{17},\quad
+\Delta=c_5-\frac38+\frac{10}{17}\frac{483}{824},\quad
+B=\lambda(B_q+10/17),\\
+\mathcal A(y,A_0)&=
+\frac{q}{c_1c_2}
++\frac{10}{17}\frac1{2c_1c_2}
+                         \left(1+\frac{y^2}{2\gamma}\right)
++\frac{y^2}{2}+\frac{22}{17}\frac{13}{18000}
++\frac{27}{17}e_0+\mathcal N\\
+&\quad+\frac{101}{100c_1}
+       \frac{BA_0/c_4+(K-\Delta y)/c_3}{1+A_0}.
+\end{aligned}
+\tag{10.831}
+\]
+
+The displayed rational factor follows from
+\(eN=(m+A_0)/(1+\tau)>(1+A_0)/(101/100)\).
+It is not a substitution of \(\vartheta\) for N.
+
+Here are the remaining case data, including an upper bound \(\mathcal N\)
+for the normalizing loss divided by \(\mathcal Z\).
+Set \(\xi=101/100\).
+
+| Case | \(d_*\) | Lower bound \(a_*\) for \(A_0\) | \(\mathcal N\) |
+|---|---:|---:|---:|
+| I.1 | 2 | \(3/2\) | \(\lambda(3/2+\xi/2)/(c_1c_4)\) |
+| I.2 | 1 | \(3/2\) | \(\lambda(3/2+\xi/2)/(c_1c_4)\) |
+| II | 2 | \(5/2\) | \(\lambda(5/4+\xi/4)/(c_1c_4)\) |
+| III.1 | 2 | \(3/4\) | \(\lambda\xi/(c_1c_4)\) |
+| III.2 | 1 | \(3/4\) | \(\lambda\xi/(c_1c_4)\) |
+| IV | 2 | \(1/2\) | \(\lambda(7/6+\xi/6)/(c_1c_4)\) |
+| V | 2 | 2 | \(\lambda(1+\xi/2)/(c_1c_4)\) |
+
+To prove the normalizing bounds, Corollary 10.185, \(A_r\ge t\),
+\(d\ge ef\), and \(eN>A_0/\xi\) give
+
+\[
+\frac{D_{\mathrm a}(N+1/(p-1))}{\mathcal Z}
+<\frac{\lambda}{c_1c_4}
+       \left(\frac\vartheta f+\frac\xi{f(p-1)}\right).
+\tag{10.832}
+\]
+
+Use the bounds for \(\vartheta\) in Section 36. In III,
+\(\vartheta+1/(p-1)=1\); in V, \(f\ge2\).
+The lower bounds for \(A_0\) follow from (10.641) and its
+unramified case. This proves every entry in the table.
+
+It remains to verify the strict comparison uniformly, rather than
+by sampling ranks. For fixed y the last fraction defining
+\(\mathcal A\) is fractional linear in \(A_0\). It lies
+between its value at \(a_*\) and its limit at infinity.
+For each of these two bounds,
+\(\mathcal L-\mathcal A\) is a concave quadratic in y.
+Its minimum on \([0,1/4]\) is therefore at an endpoint: subtracting
+the line joining the endpoint values gives a nonnegative multiple
+of \(y(1/4-y)\). Thus four exact rational comparisons per case
+prove the assertion for every rank and every admissible \(A_0\).
+Substituting the tables gives these strict lower bounds for the gap:
+
+| Case | \(\mathcal L-\mathcal A\) greater than |
+|---|---:|
+| I.1 | \(27/500\) |
+| I.2 | \(41/1000\) |
+| II | \(3/10\) |
+| III.1 | \(93/1000\) |
+| III.2 | \(93/1000\) |
+| IV | \(91/250\) |
+| V | \(4/3\) |
+
+All exceed \(1/25\). The [exact rational calculation](../figure_sources/yu_second_initial_height.py)
+records the four differences in each case. We have therefore bounded
+the same hypothetical nonzero value strictly above and strictly below
+incompatible quantities. It must be zero. Additive orders exceeding
+\(D_{\mathrm a}\) vanish by degree, so the conclusion covers the
+whole stated cutoff. \(\square\)
+
+The theorem supplies the first enlarged integer block. Further integer
+extensions, fractional values and support contraction retain their own
+field and denominator costs.
+
+![The initial height budget and the proved positive gaps for the first integer extension in all seven field cases.](../figures/yu-second-initial-height.png)
+
+*Figure 10.57.* The left panel shows the complete-simplex coefficient
+\(C_r\) and its proved upper envelope; the displayed ranks are samples
+of a bound proved for all ranks. The right panel shows the smaller of
+the four exact endpoint gaps in each field case. Fractional linearity
+in \(A_0\) and concavity in \(1/(r+1)\) make these endpoint
+checks uniform. The dashed line is the common proved margin \(1/25\).
+Theorem 10.197 gives exact zeros at integer nodes through \(qS\),
+at total order at most \(\eta T\); it does not assert fractional
+zeros. [Reproducible calculation and figure](../figure_sources/yu_second_initial_height.py).
+Human-source context: the selected-support induction in Section 11 of
+[Yu's freely accessible 1999 paper](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf)
+and the second constants in Section 1.1 of his
+[freely accessible 2013 paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).
+
+## 65. Exercises with solutions
 
 1. **Easy.** Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.
 2. **Medium.** Derive (10.34) from (10.22), including the maximum in \(H\).
@@ -13483,6 +15387,60 @@ reproducible exact calculation supplied with Figure 10.53.
 Explain which equalities in the numerical budget are harmless and which
 disc inequalities must be strict. Finally derive the growing Taylor
 precision in Lemma 10.181 directly from its exponential difference.
+
+75. **Second-scale support and its exact integer floors (hard).**
+Over \(K=\mathbb Q\), take \(p=3\), the four independent
+bases \(2,5,7,11\), weights equal to their logarithmic heights,
+and \(h=150\). Use the parameters of Theorem 10.184.
+Determine the optimizing depth, all four integer side lengths,
+the selected congruence class modulo 81, and the integers
+\(k,L,D_{\mathrm a},\lfloor S\rfloor,\lfloor T\rfloor\).
+Count the columns and the full prepared rows exactly and prove their
+required surplus. Check also the first full-node local input budget
+of Theorem 10.182 when the original distinguished coefficient is a
+3-adic unit. Give a reproducible rational calculation and state
+precisely which assertion about the full valuation estimate remains
+outside this finite check.
+
+76. **Closing the small optimizer and retaining the first input (hard).**
+**(a)** At eleven take the independent rational bases \(2,3,5\).
+Prove, using elementary exponential bounds, that Theorem 10.188
+applies while the numerical range \(n\le Pt\) in Theorem 10.173
+does not. **(b)** At five take two independent rational units. Derive the
+strict \(11/8\) comparison of their coefficient parameters and
+the exact remaining constant gap. Explain why the same calculation
+does not settle all higher-degree fields unramified at five.
+**(c)** For the four-base support of Solution 75, with original
+\(b_n=B_\dagger=1\), check the additional height condition of
+Theorem 10.190 and bound its first local input cost as a fraction
+of \(U_r\). Keep the actual \(\mu,B,C_0\). Distinguish this
+analytic calculation from a proof of an algebraic zero.
+
+**Exercise 77 (degree allocations and the second rank allowance; intermediate).**
+Use the parameters of Theorems 10.184 and 10.191.
+**(a)** Derive the exact unrounded lower expressions for the rank-zero
+and intermediate allocation ratios. Explain why the polynomial degree
+is \(kL\), rather than \(\mathcal D\), and check the factor
+\(((m+1)!)^2\).
+**(b)** Verify the final universal bounds
+\(2^{20}/29>8\), \(1050/2^{36}<10^{-6}\), and explain which
+conclusion still requires prepared zeros at the stopping depth.
+**(c)** For the rank-one argument, prove the inequality
+\(\mathcal R_nA_n/t^2\ge1/n\) in both ranges of t. Recover the
+number 9261 and compare the two elementary contributions with
+\(C_2h\Omega_n/3000\).
+
+**Exercise 78 (complete averages and exact zeros; advanced).**
+For the second-scale parameters of Section 64:
+(a) derive the coefficient \(C_r\) by averaging the additive,
+Euler and slack coordinates, and prove its stated deficit from one;
+(b) explain why using the Euler parameter \(a_E\) in the remainder
+allows the lcm coefficient \(107/103\) to be kept separately;
+(c) in case I.2, at \(y=1/4,A_0=3/2\), evaluate the analytic
+and arithmetic bounds in Theorem 10.197 and prove their difference
+exceeds \(41/1000\); (d) prove the floor inequality that supplies
+all ordinary input jets, and identify the two additional costs that
+prevent this integer argument from proving a fractional extension by itself.
 
 **Solution 1.** Put \(q_i=v(\alpha_i)\). If \(b_1q_1\ne b_2q_2\), the ultrametric inequality gives the exact valuation \(\min(b_1q_1,b_2q_2)\), so no cancellation estimate is needed. If they are equal, choose \(\pi=p^{1/e}\) in an algebraic extension and set \(\epsilon_i=\alpha_i\pi^{-e q_i}\). The exponents \(e q_i\) are integers, the \(\epsilon_i\) are units, and
 
@@ -15142,6 +17100,355 @@ Multiplication by a polynomial of degree D leaves exponential order
 at least \(t-D\) in an ordinary divided derivative of order t.
 Thus its lower bound is
 \(\beta-C+H+\max\{0,(t-D-1)N\}\), as asserted.
+
+**Solution 75.** Here \(n=r=4,d=e=f=1,P=3,q=2,u=1\),
+\(\vartheta=3/2\), and \(J=\delta_r=1\). Unique
+factorization proves independence of the four bases and shows that
+their exponent lattice is already saturated: a rational power lying
+in the subgroup has integer valuations at the four indicated primes.
+Their heights are respectively \(\log2,\log5,\log7,\log11\).
+
+The real optimizer of Lemma 10.177 is
+\(x_0=4/\log3-3/2\), between two and three. To compare the
+two adjacent integers, the quotient of the objective at three by its
+value at two is \((9/7)^4/3<1\). Thus the maximizing depth
+is \(m=2\), and
+
+\[
+N=\frac{7/2}{1+10^{-26}/8},\qquad
+A_r=4+\log5,\qquad \mathcal R_r=3.
+\tag{10.729}
+\]
+
+The last identity follows by bounding
+\((\mathrm e/4)^4(\log3)^5<3\). All these comparisons can
+be made with rational intervals, as described below. The deep units
+are \(-8,-125,343,-1331\). They belong to \(1+9\mathbb Z_3\)
+and, modulo 81, have the form \(1+9c_i\) with
+
+\[
+(c_1,c_2,c_3,c_4)\equiv(8,4,2,5)\pmod9.
+\tag{10.730}
+\]
+
+Consequently the actual unit-quotient image has order nine: the first
+coordinate already generates \(\mathbb Z/9\mathbb Z\).
+The phase map is trivial. Substitution in Theorem 10.184 gives the
+following integer quantities, with every floor fixed by the rational
+intervals in the editable calculation:
+
+| Quantity | Exact value |
+|---|---:|
+| \(\lfloor D_1\rfloor+1\) | 9530854280 |
+| \(\lfloor D_2\rfloor+1\) | 4104715517 |
+| \(\lfloor D_3\rfloor+1\) | 3394958794 |
+| \(\lfloor D_4\rfloor+1\) | 2755034737 |
+| k | 150 |
+| L | 8105949489 |
+| \(D_{\mathrm a}=kL\) | 1215892423350 |
+| \(\lfloor S\rfloor\) | 1638 |
+| \(\lfloor T\rfloor\) | 353654158504 |
+
+Here is an exact way to count the selected columns without traversing
+the box. A side containing the integers \(0,\ldots,a_i-1\)
+contains \(\lfloor a_i/9\rfloor+1\) integers in residue j
+when \(j<a_i\bmod9\), and \(\lfloor a_i/9\rfloor\)
+otherwise. Start with the residue count vector \((1,0,\ldots,0)\)
+and convolve successively with these four nine-entry vectors, placing
+residue j of side i at \(c_i j\bmod9\). This is simply
+partitioning all sums according to their residue, so it counts each
+box point once. The classes \(1,3,6,8\) have the largest size,
+
+\[
+|S_0|=40656872678227694342770670245800232365.
+\tag{10.731}
+\]
+
+All other classes have one fewer point. Select class one and reference
+\((8,0,0,0)\), since \(8\cdot8\equiv1\pmod9\).
+Every one of the \(kL\) polynomial pairs is retained. The exact
+column count and the full row count are therefore
+
+\[
+\begin{aligned}
+N_c&=49434383446562676057514515798469784690272951722750,\\
+M&=2135896855592220094737330490491655575834866435515.
+\end{aligned}
+\tag{10.732}
+\]
+
+Direct integer multiplication gives \(10N_c>27M\), the claimed
+\(c_0=27/10\) surplus. Theorem 10.184 then supplies a nonzero
+global-integral kernel for every one of these original equations;
+this count does not discard any row to improve a height average.
+
+For the first full-node input take
+\(\mu=\lfloor T/10\rfloor+1=35365415851\), and all
+\(2\lfloor S\rfloor+1=3277\) integer nodes. Their separation
+bound is \(B=\lfloor\log_3(3276)\rfloor=7\), since
+\(3^7\le3276<3^8\). The polynomial jet loss is
+\(C_0=v_3V(k)=\lfloor\log_3 150\rfloor=4\), by
+the proved least-common-multiple formula for \(V(k)\).
+For a 3-adic unit distinguished coefficient this gives
+\(M_0=\max\{B,C_0\}=7\). With \(U=32S\mathcal D/t\),
+the sufficient inequality in Theorem 10.182 is
+
+\[
+1+U+D_{\mathrm a}(N+1/2)
+\ge3277\mu N+7\mu.
+\tag{10.733}
+\]
+
+Under the counterhypothesis \(v_3(\Xi-1)\ge U\), the strict
+normality hypothesis is also valid. The exact interval calculation
+bounds left minus right strictly
+above \(10^{15}\). It also gives \(1+U>N+1/2\), as
+required for the strict normality inequality. Here the node set
+contains all its nodes, so \(\eta_E=0\). This verifies this
+first local input budget, including the degree, node and jet costs.
+It does not check every later stage of a global zero induction or
+the preservation of the weight allowance in Lemma 10.187. In
+particular it does not by itself prove the full second valuation
+estimate.
+
+For completeness, the rational enclosures used in this solution have
+an elementary derivation. For \(1\le x\le2\) put
+\(z=(x-1)/(x+1)\), so \(0\le z\le1/3\). Integrating
+the geometric series for \(2/(1-z^2)\) gives
+
+\[
+0\le\log x-2\sum_{j=0}^{63}\frac{z^{2j+1}}{2j+1}
+\le\frac{2z^{129}}{129(1-z^2)}.
+\tag{10.734}
+\]
+
+Indeed each remaining denominator is at least 129 and the
+remaining powers form a geometric series. Reduce an integer a to
+\(a=2^k x\), with \(1\le x<2\), and add k copies
+of the enclosure for \(\log2\). Similarly the exponential
+series and its consecutive-term ratios give
+
+\[
+0<\mathrm e-\sum_{j=0}^{64}\frac1{j!}
+<\frac{1}{65!}\frac1{1-1/66}.
+\tag{10.735}
+\]
+
+Every arithmetic operation is rounded outwards to multiples of
+\(10^{-36}\); multiplication takes the four endpoint products
+and division inverts a positive interval before multiplying.
+Thus interval inclusion is preserved by induction through every
+operation. The [editable calculation](../figure_sources/yu_second_scale.py)
+checks that the two endpoints of each interval have the same floor,
+performs the nine-residue convolution with integers, and verifies
+the exact inequalities stated above. No sampled floating-point
+values are used for these certificates. \(\square\)
+
+**Solution 76.** (a) Over \(\mathbb Q\) at eleven,
+\(n=3,P=e=f=1\), \(t=\log11\), and
+\(\vartheta=9/10\). The three distinct prime valuations
+prove independence of the bases. The exponential bounds already
+proved give
+
+\[
+\exp2<9<11<\left(\frac{27}{10}\right)^3<\exp3.
+\tag{10.762}
+\]
+
+Thus \(2<t<3\), so \(n>Pt\). But
+\(3/t<3/2=\vartheta+3/5\), as required by Theorem 10.188.
+Equivalently the real optimizer \(3/t-9/10\) is less than
+\(3/5\). The theorem proves the second valuation estimate for
+every original integer coefficient vector with its stipulated
+minimum-valuation ordering, not merely for a sample choice.
+
+(b) In III.2 at five, \(\vartheta=3/4\), and the height
+parameters use
+\(a_0=2+\log7\), \(a_1=a_2=146/25\),
+and \(a_1^{(2)}=83/25\). The elementary bounds of Theorem
+10.189 give \(G_1/3<827/50\),
+\(G_2/3>303/25\), and therefore
+
+\[
+\frac{11}{8}G_2-G_1>\frac38>0,
+\qquad
+\frac{C_2}{C_1}-\frac{11}{8}>
+\frac{899}{1754200}>0.
+\tag{10.763}
+\]
+
+The identical other entries of the two maxima preserve the
+\(11/8\) comparison for \(\mathsf h,\mathsf h_2\).
+This proves the full second estimate over \(\mathbb Q\)
+at five. The III.1 constants are different:
+\(c=1794,c_*=495,a_1=4.71\), and
+\(a_1^{(2)}=1.99\). Substituting the III.2 constants in that
+row would change the theorem being proved. No higher-degree
+conclusion follows from the rational-field comparison alone.
+
+(c) For \(n=r=4,d=1,p=3\), the relevant row is I.2.
+Since \(\log21<4\) and \(\log5<2\),
+
+\[
+G_2(4,1)=5\bigl(4(2+\log21)+2.76+\log5\bigr)<145<150.
+\tag{10.764}
+\]
+
+Also \(5\log3<150\), since \(\log3<2\), and
+\(\log B_\dagger=0\). Thus the stated h meets every
+additional hypothesis. Retain the exact integers from Solution 75:
+\(s_0=1638\), \(\mu=35365415851\),
+\(B=7,C_0=4,M_0=7\), and
+\(N=(7/2)/(1+10^{-26}/8)\). The cost fraction is exactly
+
+\[
+\frac{35365415851\,(3277N+7)}{32S\mathcal D/\log3}.
+\tag{10.765}
+\]
+
+The rational logarithm intervals proved in Solution 75, with outward
+rounding through this expression, put it strictly between
+\(8/100\) and \(9/100\). The [editable calculation](../figure_sources/yu_second_closure.py)
+records its rational endpoints. The all-rank theorem also bounds
+it by \(437/2016<1/4\). The original kernel supplies the
+initial prepared zeros, so Theorem 10.190 yields the stated local
+valuation precision at every \(x\in\mathbb Z_3\) under its
+counterhypothesis. To force an algebraic value to vanish one must
+still compare this precision strictly with its global height and
+the actual degree of its value field. A large local lower bound
+alone is not that comparison. \(\square\)
+
+**Solution 77.** **(a)** Write
+\(D_* = S\mathcal D/(c_1c_4(N/\vartheta)dA)\). Corollary
+10.185 gives \(D_*<kL<\lambda D_*\). The powers of the
+prepared polynomial have degree at most \(kL\); replacing this
+integer by \(\mathcal D\) would not be justified by its definition.
+The strict floor inequalities give
+
+\[
+\frac{(\bar S/3)(\bar T/(r+1))}{\lambda D_*}
+=\frac{q^2\eta c_4dA}{3\lambda e\vartheta t}=B_0.
+\tag{10.802}
+\]
+
+For an m-element subset J', divide
+\((2\bar S/(3r))(\bar T/(r+1))^{m+1}/(m+1)!\)
+by \((m+1)!\lambda D_*\prod_{j\in J'}(2Jq^{-I}D_j)\).
+The result is
+
+\[
+\frac{2B_0}{r}\frac{\prod_{j\in J'}\sigma_j}{((m+1)!)^2}
+\left(\frac{\eta c_2qrPd}{2eNt}\frac EJ\right)^m.
+\tag{10.803}
+\]
+
+One factorial comes from the binomial product; the other comes from
+the coordinate-degree side of the multiplicity inequality. Neither can
+be dropped during the cancellation.
+
+**(b)** The first comparison is \(1048576>232\). For the second,
+\(1050\cdot10^6=1050000000<68719476736=2^{36}\).
+The consecutive-ratio proof in Theorem 10.191 applies to all intermediate
+ranks, and the factor \(35/2^{20}<1\) in Corollary 10.192 applies
+to all output ranks. Thus these endpoint computations are supported by
+uniform monotonicity proofs. The degree inequalities hold from the
+parameters alone. The production of lower-rank bases with the asserted
+height product also requires the nonzero polynomial and prepared zeros
+stipulated in Corollary 10.192.
+
+**(c)** If \(t\le n\), use \(\mathcal R_n\ge1\) and
+\(A_n\ge t\), giving \(\mathcal R_nA_n/t^2\ge1/t\ge1/n\).
+If \(t>n\), use the second entry of the maximum:
+
+\[
+\frac{\mathcal R_nA_n}{t^2}
+\ge\left(\frac{\mathrm et}{n}\right)^n>1>1/n.
+\tag{10.804}
+\]
+
+The height-product lower bound (10.55) and the exact formula for
+\(C_2\) then give \(\mathcal T=C_2h\Omega_n\ge9261dh/t\),
+since \(406\cdot49\cdot27/58=9261\). The logarithmic contribution
+\(2dh/t\) is less than \(\mathcal T/4000\), as
+\(8000<9261\). For the height contribution use the actual residue
+order \(g<\mathcal R_1\), the second rank allowance and
+\(eq^u\le2d\). Its ratio to \(\mathcal T\) is less than
+
+\[
+\frac4{406\cdot7\cdot2\cdot27\cdot3}
+=\frac4{460404}<\frac1{100000}.
+\tag{10.805}
+\]
+
+The sum is therefore less than
+\(1/4000+1/100000=13/50000<1/3000\); the final comparison is
+\(39000<50000\). All coefficient-height inputs concern the original
+integer coefficients, as required in Proposition 10.193.
+\(\square\)
+
+**Solution 78.** (a) Put \(t_0=\lfloor T\rfloor\). The additive
+coordinate, the \(r-1\) Euler coordinates, and the slack are
+\(r+1\) symmetric nonnegative coordinates summing to \(t_0\).
+Their means are each \(t_0/(r+1)\). This remains true for the
+full equation list because its zero rows have been retained. The
+mean lcm contribution is at most \((107/103)Ht_0/(r+1)\);
+the mean Euler contribution is at most
+\((1+3/[8(r+1)])H(r-1)t_0/(r+1)+E_0\).
+Adding, and using \(t_0\le T\), gives
+
+\[
+C_r=\frac{r+4/103}{r+1}+\frac{3(r-1)}{8(r+1)^2},
+\qquad
+1-C_r=\frac{483r+1101}{824(r+1)^2}.
+\tag{10.833}
+\]
+
+Subtracting \(483/[824(r+1)]\) from the deficit leaves
+\(618/[824(r+1)^2]>0\). Deleting zero rows before this
+average would destroy the permutation argument.
+
+(b) With \(z=\exp(-a_E)\), positivity of the binomial series
+bounds the Euler logarithm by \(a_Ev+E_0\), independently
+of the additive order. The additive lcm logarithm is bounded by
+\((107H/103)u\). A single larger coefficient a suffices for
+individual values; the separate coefficients give the smaller
+mean in part (a). Replacing the Euler remainder by the smaller
+remainder at \(\exp(-a)\) while keeping coefficient \(a_E\)
+would not be justified.
+
+(c) Here \(q=2,c_1=7/10,c_3=6/5,c_4=14\),
+\(c_2=8750/5101\), \(c_5=27/50\), and \(\gamma=12/5\).
+Use the exact \(e_0\), \(\varepsilon=13/18000\), and
+\(\mathcal N=\lambda(3/2+101/200)/(c_1c_4)\)
+from the theorem. Rational substitution gives
+
+\[
+\mathcal L=\frac{3411}{1120},\qquad
+\mathcal A=\frac{47193470266316287}{15709515479280000},
+\qquad
+\mathcal L-\mathcal A
+=\frac{650420179955213}{15709515479280000}.
+\tag{10.834}
+\]
+
+To compare the last fraction with \(41/1000\), multiply
+its positive denominator by 41 and its numerator by 1000.
+Their difference is \(6330045304733000>0\).
+The other three endpoint differences, and the concavity reduction,
+are necessary for the uniform case-I.2 conclusion; a single
+rank-three computation alone would not prove it.
+
+(d) For real \(x,z\), writing each as its integer part plus
+a number in \([0,1)\) gives
+\(\lfloor x\rfloor+\lfloor z\rfloor\le\lfloor x+z\rfloor\).
+Apply this with \(x=\eta T\), \(z=(1-\eta)T\).
+Since \(\mu-1=\lfloor(1-\eta)T\rfloor\), every target
+of order at most \(\lfloor\eta T\rfloor\) has all ordinary
+jets through \(\mu-1\) among the original prepared equations.
+At a fractional node, the scalar q-denominator in (10.243) may
+be nonzero, and the consistent torus roots may generate a larger
+global value field. Both costs belong in (10.244). Neither has
+been bounded by this depth-zero integer calculation.
 
 ## References
 

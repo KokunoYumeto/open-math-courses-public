@@ -4,7 +4,7 @@
 
 A quotient can change infinitesimally even when its source stays fixed. Its kernel records that change: moving a relation produces an element of the quotient. This gives the tangent space of Quot. Over a thicker base, the same relations may fail to fit together, and that failure is an extension class.
 
-We construct the class and prove its exact lifting criterion. For a regular embedding, equations lift locally, so the remaining obstruction is the failure of the local lifts to agree. That failure lies in the first cohomology of the normal bundle. We then turn this obstruction space into a bound on the number of local equations of the Hilbert scheme. Applications distinguish a possible obstruction space from an obstruction that actually occurs: a line on a smooth quartic surface has a nonzero obstruction space and still gives a reduced isolated point. For a smooth cubic surface, a separate intersection calculation counts its 27 lines.
+We construct the class and prove its exact lifting criterion. For a regular embedding, equations lift locally, so the remaining obstruction is the failure of the local lifts to agree. That failure lies in the first cohomology of the normal bundle. We then turn this obstruction space into a bound on the number of local equations of the Hilbert scheme. Applications distinguish a possible obstruction space from an obstruction that actually occurs: a line on a smooth quartic surface has a nonzero obstruction space and still gives a reduced isolated point. For a smooth cubic surface, a separate intersection calculation counts its 27 lines. Finite algebras and explicit degenerations then prove smoothness and irreducibility of every Hilbert scheme of points on a smooth surface. A contrasting cubic-surface construction gives a generically nonreduced component: we prove both its dimension bound and its persistent extra tangent direction.
 
 We use the representing schemes constructed in *Hilbert and Quot schemes*, the deformation conventions in *Formal moduli and Schlessinger's theorem*, and the affine-cover cohomology methods of *Deformations of rings and schemes and the naive cotangent complex*. Coherent Ext means Ext in the category of sheaves of modules, not just the sections of sheaf Ext. This distinction matters in the obstruction calculation.
 
@@ -396,12 +396,322 @@ The chart in *Hilbert and Quot schemes* with quotient basis \(1,x\) writes \(x^2
 
 For a smooth plane conic \(C\), its ideal is \(\mathcal O_{\mathbb P^2}(-2)\), and its normal bundle is \(\mathcal O_C(2)\). After algebraic closure \(C\simeq\mathbb P^1\), and \(\mathcal O_C(1)=\mathcal O_{\mathbb P^1}(2)\); hence \(N=\mathcal O_{\mathbb P^1}(4)\). It has five sections and zero first cohomology. The Hilbert scheme is smooth of dimension five at \(C\). If a conic over \(k\) has no \(k\)-rational point, the cohomology calculation still follows by field extension and faithful flatness; its parameter point as a subscheme is nevertheless a \(k\)-point of the Hilbert scheme.
 
-For context we state two precisely delimited inputs without reproducing their proofs.
+### Finite algebras in two variables
 
-- **Fogarty's theorem.** If \(X\) is a smooth irreducible quasi-projective surface over an algebraically closed field, \(\operatorname{Hilb}^d(X)\) is smooth and irreducible of dimension \(2d\). Fogarty proved this in 1968. Theorem 3.1 of José Bertin's lecture notes *The punctual Hilbert scheme: an introduction* states that for a smooth connected surface over an algebraically closed field this Hilbert scheme is connected and smooth of dimension \(2d\), and the notes reproduce Fogarty's proof. The proof identifies the unique component containing reduced configurations. For the quasi-projective version, the Hilbert–Chow map on the reduced Hilbert scheme over \(\operatorname{Sym}^d X\) is proper, with connected fibres (Proposition 2.27 of the notes). Thus the Hilbert scheme is connected. The tangent bound (3.3) of the notes applies at every point. The component containing distinct configurations has dimension \(2d\), so this bound makes the whole Hilbert scheme smooth at all its points and prevents intersection with any other component. This component is both open and closed; connectedness makes it the whole scheme. This argument includes every characteristic; the notes prove the linearized-determinant lemma used to construct the Hilbert–Chow map when \(d!\) is invertible in the base field, and leave the general case as Exercise 2.9.
-- **Mumford's example.** In characteristic zero, \(\operatorname{Hilb}^{14t-23}(\mathbb P^3)\) has a generically nonreduced component whose general member is a smooth curve of degree 14 and genus 24. In *Further pathologies in algebraic geometry*, Section II, pp. 643–647, Mumford constructs curves in the class \(4H+2L\) on a smooth cubic surface, where \(H\) is the hyperplane class and \(L\) a line. The relevant reduced family has dimension 56, while the general tangent space has dimension 57. The discrepancy is proved to persist at the generic point. We use this as a warning, not as a proof that every nonzero \(H^1(N)\) makes a Hilbert scheme nonreduced.
+The regular-embedding criterion does not cover every finite subscheme of a surface. For example, the ideal \((x,y)^2\) needs three generators at its support. Nevertheless its Hilbert point is smooth. The reason is specific to a two-dimensional ambient space: the tangent space has dimension exactly twice the length, even when the subscheme is not a complete intersection.
 
-For \(d=2\), the surface assertion also follows from the explicit local charts proved in *Hilbert and Quot schemes*. For higher \(d\), arbitrary finite subschemes of a surface need not be regular embeddings, so the vanishing criterion of Section 3 alone is not a proof of Fogarty's theorem.
+**Lemma 7.1.** Let \(k\) be algebraically closed, \(R=k[x,y]\), and \(B=R/I\) have finite positive dimension \(n\) over \(k\). Then
+
+\[
+\dim_k\operatorname{Hom}_R(I,B)=2n.
+\tag{7.2}
+\]
+
+**Proof.** We first supply the homological facts needed for this calculation. At a closed point \((a,b)\), the Koszul complex on \(x-a,y-b\) is a finite free resolution of its residue field. Its dual has cohomology \(k\) in degree two and zero in all other degrees. Any finite-length \(R\)-module has a composition series with these residue fields as factors. Splicing the two-term free resolutions through a short exact sequence gives another free resolution of length at most two: lift the free generators of the quotient to the middle module, use the direct sum with the free generators of the submodule, and repeat on the kernels. This is the horseshoe construction, and the short exact sequences of kernels prove its exactness. Thus every finite-length module \(M\) has a finite free resolution of length at most two.
+
+The long exact Ext sequence along the same composition series shows
+
+\[
+\begin{gathered}
+\operatorname{Ext}^i_R(M,R)=0\quad(i\ne2),\\
+\dim_k\operatorname{Ext}^2_R(M,R)=\dim_k M.
+\end{gathered}
+\tag{7.3}
+\]
+
+Indeed the functor \(\operatorname{Ext}^2_R(-,R)\) is exact, with arrows reversed, on finite-length modules: the adjacent groups \(\operatorname{Ext}^1\) and \(\operatorname{Ext}^3\) vanish. Each residue-field factor contributes one dimension.
+
+Choose a finite free resolution \(F_2\to F_1\to F_0\to B\), and put \(D=\operatorname{Ext}^2_R(B,R)\). Every \(r\in I\) annihilates \(D\). To see this, multiplication by \(r\) on the resolution lifts the zero map on \(B\). It is null-homotopic: starting in degree zero, lift its image into the next free module, and continue along the exact resolution. Applying \(\operatorname{Hom}_R(-,R)\) makes the induced map on cohomology zero. The scalar action through the first argument is the usual scalar action through the second argument because \(R\) is commutative. Therefore \(D\otimes_R B=D\).
+
+The last cokernel of a complex commutes with tensor product. Since \(F_i\) is finite free, the dual complex tensored with \(B\) is exactly \(\operatorname{Hom}_R(F_\bullet,B)\). Its last cokernel is therefore the last cokernel \(D\) of the dual complex, tensored with \(B\):
+
+\[
+\operatorname{Ext}^2_R(B,B)=D\otimes_R B=D.
+\tag{7.4}
+\]
+
+In particular this group has dimension \(n\). Also \(\operatorname{Hom}_R(B,B)=B\). The alternating sum of the ranks of the resolution is zero, because tensoring it with the fraction field of \(R\) resolves the zero module. Taking the Euler characteristic of \(\operatorname{Hom}_R(F_\bullet,B)\) consequently gives
+
+\[
+n-\dim_k\operatorname{Ext}^1_R(B,B)+n=0.
+\]
+
+Finally apply \(\operatorname{Hom}_R(-,B)\) to \(0\to I\to R\to B\to0\). The map \(\operatorname{Hom}_R(B,B)\to\operatorname{Hom}_R(R,B)\) is an isomorphism: both identify a map with the image of \(1\). Since \(R\) is free, the next connecting map identifies \(\operatorname{Hom}_R(I,B)\) with \(\operatorname{Ext}^1_R(B,B)\). Its dimension is therefore \(2n\). No division by an integer, or assumption that \(B\) is a complete intersection, entered the argument. \(\square\)
+
+The tangent dimension alone does not yet prove smoothness: one must also obtain the required local dimension. We do this by constructing families leading to distinct points.
+
+### Staircases and families of distinct points
+
+A monomial ideal of finite colength has a staircase of monomials outside it. Choose integers
+
+\[
+\begin{gathered}
+\lambda_0\ge\lambda_1\ge\cdots\ge\lambda_{s-1}>0,\\
+\lambda_s=0.
+\end{gathered}
+\tag{7.5}
+\]
+
+The staircase \(\mathcal B_\lambda\) contains, for each \(0\le j<s\), the \(\lambda_j\) monomials \(y^j,xy^j,\ldots,x^{\lambda_j-1}y^j\). The associated ideal \(I_\lambda\) is generated by \(x^{\lambda_j}y^j\), for \(0\le j\le s\), and its colength is \(n=\sum_{j<s}\lambda_j\).
+
+**Lemma 7.2.** Every such monomial subscheme is a flat limit of \(n\) distinct points of the affine plane.
+
+**Proof.** Choose distinct constants \(a_0,\ldots,a_{\lambda_0-1}\) and distinct constants \(b_0,\ldots,b_{s-1}\) in \(k\). In \(k[t,x,y]\), set
+
+\[
+\begin{aligned}
+P_m(t,x)&=\prod_{i=0}^{m-1}(x-ta_i),\\
+Q_j(t,y)&=\prod_{\ell=0}^{j-1}(y-tb_\ell),\\
+G_j(t,x,y)&=P_{\lambda_j}(t,x)Q_j(t,y).
+\end{aligned}
+\tag{7.6}
+\]
+
+Here \(0\le j\le s\), and an empty product is one. At \(t=0\) these generators give exactly \(I_\lambda\). Each \(G_j\) has leading term \(x^{\lambda_j}y^j\), and all its other terms have smaller total degree in \(x,y\). Replacing a monomial divisible by that leading term with the remaining terms therefore terminates. The quotient by all the \(G_j\) is generated over \(k[t]\) by the \(n\) monomials in \(\mathcal B_\lambda\).
+
+Over \(k(t)\), the generators vanish at the distinct points
+
+\[
+(ta_i,tb_j)\qquad\text{with }0\le i<\lambda_j,
+\tag{7.7}
+\]
+
+one row for each \(0\le j<s\).
+
+For a point in row \(j\), a generator \(G_\ell\) with \(\ell>j\) vanishes by a \(y\)-factor. If \(\ell\le j\), then \(\lambda_j\le\lambda_\ell\), and it vanishes by an \(x\)-factor. Evaluation thus gives a surjection from the generic quotient onto \(k(t)^n\). The previously obtained \(n\) generators must be a basis over \(k(t)\). Any \(k[t]\)-linear relation between their classes is then zero after passage to \(k(t)\), so all its polynomial coefficients are zero. They form a free \(k[t]\)-basis. This proves flatness and constant length. The same evaluation argument after any specialization \(t=c\ne0\) identifies that fibre with the \(n\) distinct points (7.7). \(\square\)
+
+For instance \(\lambda=(3,2)\) gives the ideal \((x^3,x^2y,y^2)\), with basis \(1,x,x^2,y,xy\). Its special fibre is supported at one point; the five basis monomials are not five distinct support points. Formula (7.6) separates it into three points on one horizontal line and two on a second line. It also makes sense in characteristic two: only distinct choices of the constants are required.
+
+**Lemma 7.3.** Every finite subscheme of \(\mathbb A^2_k\) has a flat one-parameter degeneration to a monomial subscheme of the same length. Away from zero the family consists of coordinate rescalings of the original subscheme.
+
+**Proof.** We recall the finite algebra behind this degeneration. Order monomials first by total degree, then lexicographically. The leading monomials of the elements of \(I\) generate a monomial ideal with finitely many minimal generators. In two variables, finiteness follows by listing their \(x\)-exponents increasingly: their \(y\)-exponents must then strictly decrease. Choose polynomials with those leading monomials. Division by them leaves no nonzero remainder for an element of \(I\), since such a remainder would itself have a leading monomial in the leading ideal but divisible by none of its generators. The chosen polynomials are therefore a finite Gröbner basis.
+
+There are finitely many pairs of basis polynomials. Their leading-term cancellation polynomials reduce to zero by division. Choose positive integer weights \((u,v)\) that reproduce every monomial comparison in these finitely many polynomials and division calculations. Such weights exist: for the degree-lexicographic order, weights \((N+1,N)\) work for any prescribed finite set once \(N\) is large enough. The same reductions show that the weighted leading ideal is the same monomial ideal. Here is the cancellation argument: in an expression \(f=\sum h_i g_i\), choose the largest weighted leading monomial of a summand. If the contributions at that monomial cancel, replace their differences by the corresponding leading-term cancellation polynomials and their recorded reductions. This decreases the largest monomial, or the number of terms at that monomial. Repetition shows that the leading monomial of any nonzero \(f\in I\) is divisible by one of the chosen leading monomials. Thus no extra weighted initial relation has been assumed.
+
+Give \(B=R/I\) the filtration \(F_dB\) consisting of images of polynomials of weight at most \(d\), and form
+
+\[
+\mathcal R=\bigoplus_{d\ge0}F_dB\,t^d\ \subset B[t].
+\tag{7.8}
+\]
+
+It is an algebra over \(k[t]\), generated by \(xt^u,yt^v\). Choose a \(k\)-basis of \(B\) adapted to the increasing filtration, and let \(d_i\) be the first filtration degree of its \(i\)-th vector \(e_i\). Then \(e_i t^{d_i}\) form a free \(k[t]\)-basis of \(\mathcal R\): in each graded degree, precisely the vectors with \(d_i\le d\) form a basis of \(F_dB\). Consequently \(\mathcal R\) is finite free of rank \(n\). The quotient by \(t\) is \(\operatorname{gr}_F B\), which is the quotient by the weighted leading ideal just computed. Inverting \(t\) gives \(B[t,t^{-1}]\). The surjection \(k[t,X,Y]\to\mathcal R\), given by \(X\mapsto xt^u\), \(Y\mapsto yt^v\), realizes the required finite flat family inside \(\mathbb A^2\times\mathbb A^1\). Its fibre at \(c\ne0\) is the original subscheme rescaled by \((x,y)\mapsto(c^u x,c^v y)\). \(\square\)
+
+### Smoothness and irreducibility on a surface
+
+**Theorem 7.4 (Fogarty).** Let \(X\) be a smooth irreducible quasi-projective surface over an algebraically closed field. For every integer \(n\ge0\), the scheme \(\operatorname{Hilb}^n(X)\) is smooth and irreducible of dimension \(2n\).
+
+**Proof.** The case \(n=0\) is \(\operatorname{Spec}k\). Suppose \(n>0\), and first take \(X=\mathbb A^2\). By Section 1 and Lemma 7.1 the tangent space has dimension \(2n\) at every closed Hilbert point.
+
+The open locus \(U_n\) of distinct points is irreducible of dimension \(2n\). Indeed the open subscheme of ordered distinct tuples in \((\mathbb A^2)^n\) is irreducible of that dimension, and forgetting the ordering is finite étale and surjective onto \(U_n\). This assertion is valid even when the characteristic divides \(n!\): ordering the distinct points of a finite étale family is a torsor under the constant étale group \(\mathfrak S_n\), with no averaging operation. Let \(W\) be the closure of \(U_n\), with its reduced structure.
+
+Every monomial point belongs to \(W\) by Lemma 7.2. Its local dimension is at least \(2n\), because the irreducible closed subscheme \(W\) has that dimension. Its embedding dimension is \(2n\) by Lemma 7.1. The local ring is therefore regular; over the algebraically closed field this Hilbert point is smooth. In particular it lies on only one irreducible component.
+
+Now degenerate an arbitrary Hilbert point to a monomial point by Lemma 7.3. The inverse image of the smooth locus is an open subset of \(\mathbb A^1\) containing zero. It contains a nonzero point, whose Hilbert fibre is isomorphic, by coordinate rescaling, to the original subscheme. Hence the original Hilbert point is smooth too. This proves smoothness everywhere: a nonempty closed nonsmooth locus in a finite-type \(k\)-scheme would contain a closed point.
+
+In a smooth finite-type scheme the irreducible components are disjoint and open as well as closed. Here every component has dimension \(2n\), so the irreducible closed subset \(W\) of that dimension is a component. The degeneration in Lemma 7.3 has connected parameter space, so its original point lies on the same component as its monomial limit. Every such limit lies on \(W\), and regularity there excludes a second component through it. It follows that the entire Hilbert scheme is \(W\). Its dimension is \(2n\).
+
+We explain carefully how to return from the affine plane to \(X\). Let \(Z\subset X\) be finite of length \(n\). Quasi-projectivity supplies an affine neighbourhood \(V\) of its finite support: embed \(X\) into projective space and choose a sufficiently high-degree hypersurface containing the boundary and avoiding those finitely many points. Its complement is affine. At each support point choose two cotangent coordinates and two prescribed coordinate values, with distinct pairs of values for distinct support points. The Chinese remainder theorem for the squares of their maximal ideals gives global functions \(f,g\in\Gamma(V,\mathcal O_V)\) with these values and cotangent classes. The resulting map \(h=(f,g):V\to\mathbb A^2\) is étale near the support; shrink to that open neighbourhood. On each local Artin component of \(Z\), the map induced by \(h\) is surjective: the étale map has identical residue field and induces an isomorphism of completed local rings. The distinct images of the support points then show that \(h|_Z\) is a closed immersion.
+
+Consider the open locus \(H_h\subset\operatorname{Hilb}^n(V)\) where this restriction is a closed immersion. To justify openness, the map from any universal finite family to \(\mathbb A^2\) is finite: its graph is closed and the projection from the product with that finite family is finite. Failure of the map on structure sheaves to be surjective is the support of a finite module, with support finite over the parameter scheme. Its image in the parameter scheme is closed. Off that image the restriction is a closed immersion. Taking the image family thus defines
+
+\[
+h_*:H_h\longrightarrow\operatorname{Hilb}^n(\mathbb A^2).
+\tag{7.9}
+\]
+
+This map is étale. Here is its infinitesimal lifting test. For any surjection of affine base rings \(A'\to A\) with nilpotent kernel, let \(D'\subset\mathbb A^2_{A'}\) be the given image family and let the specified lift over \(A\) be \(Z_A\subset V_A\). It is a section of the étale morphism \(V\times_{\mathbb A^2}D'\to D'\) over the nilpotent closed subscheme \(D_A\). Formal étaleness extends that section uniquely to \(D'\). Since the morphism is separated, its section is closed; it gives exactly the required closed subscheme of \(V_{A'}\), isomorphic to \(D'\). This proves existence and uniqueness of the lift. The schemes in (7.9) are locally of finite type over \(k\), so their morphism is locally of finite presentation. The formal étale criterion therefore proves the assertion. Both the lifting property of an étale map and the converse with local finite presentation are proved in Infinitesimal lifting and the invariance of étale morphisms under thickenings, Theorem 4.1.
+
+It follows from (7.9) and the affine-plane case that \(\operatorname{Hilb}^n(X)\) is smooth of dimension \(2n\) near \(Z\). To check irreducibility, observe also that étale maps are open. Every neighbourhood of \(Z\) in \(H_h\) has open image containing \(h_*Z\), and therefore meets the dense distinct-point locus of the irreducible plane Hilbert scheme. Its preimage is a reduced finite subscheme of \(V\), because it is isomorphic to its image. Thus every neighbourhood of \(Z\) meets the distinct-point locus on \(X\).
+
+The latter locus is irreducible, being the image of the ordered distinct-point open subset of \(X^n\). It is dense by the preceding argument. Its closure is therefore the whole Hilbert scheme, proving irreducibility. This completes the argument in every characteristic. \(\square\)
+
+The tangent calculation and the degeneration do different jobs. Equation (7.2) controls the possible local embedding dimension; the families (7.6) and (7.8) place every plane subscheme on the component containing distinct configurations. Neither a nonzero obstruction space nor the tangent dimension alone could supply that component argument. Fogarty's original theorem and Bertin's exposition, Section 3.1, provide the historical context for this surface phenomenon.
+
+
+### A nonreduced family of space curves
+
+We now turn from a smooth parameter space to a component with nilpotents at its generic point. Throughout this example, \(k\) is algebraically closed of characteristic zero. Mumford's example concerns smooth connected curves of degree \(14\) and genus \(24\) in \(\mathbb P^3\). Write \(\mathcal H\) for the curve Hilbert scheme. The two relevant dimensions are
+
+\[
+\dim W=56,\qquad
+\dim T_{[C]}\mathcal H=57
+\tag{7.10}
+\]
+
+at general members of a component \(W\). Establishing both dimensions is essential: an isolated tangent calculation would not show that \(W\) is a component, or that it is generically nonreduced.
+
+We use cohomology of line bundles on projective space, the Serre duality and adjunction proved in Dualizing sheaves and Serre duality for projective schemes, Sections 2–5, and the Hilbert tangent formula already proved in Section 1. The family arguments use Base change and the Grothendieck complex, Theorem 3.2 and Corollary 4.1 and Semicontinuity and Grauert's theorem, Theorem 3.1. In particular a fibrewise trivial line bundle on a projective-line bundle is pulled back from its base: its first fibre cohomology is zero, its direct image is a line bundle compatible with base change, and evaluation is an isomorphism on fibres and hence everywhere. For a line bundle \(M\) on a smooth connected curve, we will also use
+
+\[
+\chi(M)=\deg M+1-g.
+\tag{7.11}
+\]
+
+Here this Euler-characteristic formula can be obtained directly. A nonzero rational section writes \(M=\mathcal O_C(D)\); adding one point to a divisor changes the Euler characteristic by one, by the exact sequence with its one-dimensional residue-field quotient. Adding and subtracting the finitely many points of \(D\) proves (7.11). Serre duality then gives \(\deg\omega_C=2g-2\). If a smooth curve is a Cartier divisor on a surface smooth along it, the conormal sequence and its determinant give
+
+\[
+\omega_C=(\omega_S\otimes\mathcal O_S(C))|_C.
+\tag{7.12}
+\]
+
+Thus the adjunction calculations below retain the actual line bundles, rather than inferring their classes from numerical dimensions.
+
+#### Residual curves in a pencil of quartics
+
+**Lemma 7.5.** A smooth connected curve \(C\subset\mathbb P^3\) of degree \(14\) and genus \(24\) is not contained in a plane or a quadric. If it is not contained in a cubic, it lies on a pencil of quartics with no fixed surface component. The residual curve in the intersection of two independent members is a plane conic, possibly reducible or nonreduced. A general member of that pencil is smooth at every point of \(C\).
+
+**Proof.** A smooth plane curve of degree \(14\) has genus \(78\), by plane adjunction. On a smooth quadric, the two ruling classes give a curve class \((a,b)\), with degree \(a+b\) and genus \((a-1)(b-1)\). The prescribed degree and genus would give \(a+b=14\), \(ab=37\), which has no integral solution.
+
+We include the cone case. In characteristic zero a singular irreducible quadric is a cone; its vertex blow-up is the ruled surface
+\(\mathbb P_{\mathbb P^1}(\mathcal O\oplus\mathcal O(2))\).
+Let \(E\) be its contracted section and \(f\) a ruling fibre. Its two local bundle charts show that the normal bundle of \(E\) is \(\mathcal O_{\mathbb P^1}(-2)\), so
+
+\[
+\begin{gathered}
+E^2=-2,\quad E\cdot f=1,\quad f^2=0,\\
+H=E+2f.
+\end{gathered}
+\]
+
+For completeness the contraction is given by the sections with coordinates \([a s^2:a st:a t^2:b]\); it maps onto the cone and contracts precisely \(E\). A line bundle on the ruled surface has a constant fibre degree, because its fibre Euler characteristic is locally constant in this flat projective family. Subtract that multiple of the tautological line bundle. The resulting bundle is trivial on every fibre; cohomology and base change makes its direct image a line bundle on \(\mathbb P^1\), and evaluation from its pullback is an isomorphism, since this is so on every fibre. Thus every line bundle is a combination of the tautological class and a pullback from \(\mathbb P^1\). Since \(\operatorname{Pic}(\mathbb P^1)=\mathbb Z\), the Picard group of the ruled surface is generated by \(E,f\). The canonical class is \(-2E-4f\): restriction to a fibre determines the coefficient \(-2\), and adjunction on \(E\simeq\mathbb P^1\) determines the other coefficient. The strict transform \(\widetilde C\) of a smooth curve is isomorphic to \(C\). Indeed the ideal of the vertex restricts either to the unit ideal or to the invertible ideal of one point on the smooth curve, so the universal property of the blow-up gives this strict-transform lift. Write \(\widetilde C=aE+14f\), using \(H\cdot\widetilde C=14\). Adjunction gives
+
+\[
+g(C)=36-(a-7)^2.
+\]
+
+It cannot equal \(24\). A reducible or nonreduced quadric has plane support components; an integral curve in it would be planar. This excludes all quadrics.
+
+Since \(\deg\omega_C(-4)=46-56<0\), Serre duality and (7.11) give \(h^0(\mathcal O_C(4))=33\). There are \(35\) quartic forms on \(\mathbb P^3\), so \(h^0(\mathcal I_C(4))\ge2\). If \(C\) lies on no cubic, every nonzero quartic containing it is irreducible: a proper factor has degree at most three and would have to contain the integral curve. Two independent quartics therefore have no common surface component. Let \(D=F\cap G\) be their complete intersection, of degree \(16\).
+
+We spell out the residual construction and its duality. In \(\mathcal O_D\), put \(J=\mathcal I_C/\mathcal I_D\), and define \(Q\) by
+\(\mathcal I_Q/\mathcal I_D=\operatorname{Ann}_{\mathcal O_D}(J)\).
+Both \(D\) and \(C\) are Cohen–Macaulay of dimension one. The duality functor \(\operatorname{Hom}_{\mathcal O_D}(-,\mathcal O_D)\) is exact and double dualization is the identity on their maximal Cohen–Macaulay modules. One can verify these assertions in the ambient regular local ring: Auslander–Buchsbaum gives a length-two finite free resolution, its dual has only degree-two cohomology, and dualizing this resolution again recovers the module. The Koszul resolution of the two quartic equations identifies this ambient degree-two Ext with Hom over \(\mathcal O_D\); it also makes the next Ext group zero. These are the local resolution and change-of-rings arguments of the two linked duality sections. Applying them to \(0\to J\to\mathcal O_D\to\mathcal O_C\to0\) shows that \(\mathcal O_Q\) is Cohen–Macaulay and that taking the annihilator a second time returns \(J\). Thus there are no embedded points in the residual curve.
+
+The complete-intersection adjunction is \(\omega_D=\mathcal O_D(4)\). The same duality identifies
+
+\[
+0\to\mathcal I_D
+\to\mathcal I_Q
+\to\omega_C(-4)
+\to0.
+\tag{7.13}
+\]
+
+Explicitly its last term is \(\operatorname{Hom}_D(\mathcal O_C,\omega_D)\otimes\mathcal O_D(-4)\); the Hom is the dualizing sheaf of \(C\), as follows either from closed-immersion adjunction or its representing property. Since a double occurrence of the degree-\(14\) component in a degree-\(16\) complete intersection is impossible, \(D\) has multiplicity one along \(C\). At every other generic point the residual curve retains the full multiplicity of \(D\). Hence its degree is \(16-14=2\), and its cycle is the residual part of the cycle of \(D\).
+
+Twist (7.13) by one. The Koszul sequence
+
+\[
+0\longrightarrow\mathcal O(-7)
+\longrightarrow\mathcal O(-3)^2
+\longrightarrow\mathcal I_D(1)\longrightarrow0
+\]
+
+and projective-space cohomology give \(H^0(\mathcal I_D(1))=H^1(\mathcal I_D(1))=0\). On the other hand, the absence of a cubic equation injects the \(20\) cubic forms into \(H^0(\mathcal O_C(3))\). Since \(\chi(\mathcal O_C(3))=19\), its first cohomology is nonzero. Serre duality gives \(H^0(\omega_C(-3))\ne0\). Sequence (7.13) therefore gives a nonzero linear equation for \(Q\). A pure degree-two curve in a plane is a conic: its plane ideal is an unmixed height-one ideal in the factorial polynomial ring, hence is generated by a quadratic form. This includes two lines and a double line.
+
+It remains to find a quartic smooth along \(C\). At a point of \(C\), the multiplicity of \(D\) is at most \(1+2=3\), from its smooth curve component and the residual plane conic. Both quartics cannot be singular there. If they were, intersect with a general plane through that point. The resulting zero-dimensional intersection would have length at least four: modulo the cube of the maximal ideal of a regular two-dimensional local ring there are one constant, two linear and three quadratic classes, and two equations of order at least two kill at most two of the quadratic classes. This contradicts the multiplicity bound. At the general point of \(C\), the gradients of \(F,G\) are independent, because the intersection has multiplicity one along \(C\). Their failure to be independent occurs at only finitely many points of this proper integral curve. At each such point they are not both zero, so at most one member of the pencil is singular there. Excluding those finitely many parameters gives a quartic smooth everywhere along \(C\). \(\square\)
+
+The use of duality in (7.13) supplies a genuine residual scheme. Counting the degrees of set-theoretic components alone would miss embedded or multiple structure and would not justify the conic assertion.
+
+#### A bound on all nearby families
+
+**Lemma 7.6.** In the locus of smooth connected degree-\(14\), genus-\(24\) curves that lie on no singular cubic, every irreducible family has dimension at most \(56\).
+
+**Proof.** Separate curves on smooth cubics from curves on no cubic. For a smooth cubic \(S\), adjunction gives \(\omega_S=\mathcal O_S(-1)\). A curve \(C\subset S\) has
+\(\mathcal N_{C/S}=\omega_C(1)\).
+Its degree is \(46+14=60\); Serre duality gives zero first cohomology, and (7.11) gives \(h^0=37\). The relative Hilbert tangent formula bounds each family on a fixed \(S\) by \(37\). Smooth cubic surfaces form an open subset of \(\mathbb P^{19}\), so the corresponding flag families have dimension at most \(19+37=56\). Their images in the curve Hilbert scheme have no greater dimension.
+
+Now let \(C\) lie on no cubic. By Lemma 7.5 it lies on a quartic smooth along it and containing a plane conic. Plane conics vary in dimension \(3+5=8\). For a fixed conic \(Q\), restriction of quartic forms to \(Q\) is surjective onto a space of dimension nine: restrict first to its plane, then use
+\(0\to\mathcal O_{\mathbb P^2}(2)\to\mathcal O_{\mathbb P^2}(4)\to\mathcal O_Q(4)\to0\).
+Thus the quartics through \(Q\) form \(\mathbb P^{25}\). The incidence of quartics and conics has dimension \(8+25=33\), so quartics containing a conic vary in dimension at most \(33\).
+
+Fix one of these quartics \(F\) that is smooth along \(C\). The curve is an effective Cartier divisor on \(F\): it is Cartier near its support by smoothness, and its ideal is the unit ideal away from that support. Quartic adjunction gives \(\omega_F=\mathcal O_F\), even if \(F\) is singular elsewhere. Consequently
+
+\[
+\mathcal N_{C/F}=\mathcal O_C(C)=\omega_C,
+\qquad h^0(\mathcal N_{C/F})=24.
+\]
+
+Every fibre of the flag space of these pairs \((C,F)\) over its quartic parameter therefore has dimension at most \(24\), by the tangent formula. The flag space has dimension at most \(33+24=57\). Over each noncubic \(C\), however, the choices of quartic smooth along \(C\) form a nonempty open subset of \(\mathbb P H^0(\mathcal I_C(4))\), of dimension at least one. Every such quartic contains a residual conic after a second independent quartic is chosen. Forgetting \(F\) therefore lowers the dimension by at least one. The resulting curve families have dimension at most \(56\).
+
+Both cases prove the bound. All spaces used here are finite-type Hilbert or flag loci. The dimension estimates are the fibre-dimension inequality applied to these loci, and tangent dimension bounds actual local dimension; neither an assumed expected dimension nor generic smoothness of the flag map is being used. \(\square\)
+
+#### The cubic-surface family and its extra tangent direction
+
+**Theorem 7.7 (Mumford).** The Hilbert scheme \(\operatorname{Hilb}^{14t-23}(\mathbb P^3_k)\) has a generically nonreduced irreducible component of dimension \(56\). A dense family of its members consists of smooth curves
+
+\[
+C\in|D|,\qquad D=4H+2L,
+\tag{7.14}
+\]
+
+where \(S\subset\mathbb P^3\) is a smooth cubic surface, \(H\) its hyperplane class and \(L\subset S\) a line. Their Hilbert tangent spaces have dimension \(57\).
+
+**Proof.** The line calculation of Section 5 gives \(L^2=-1\). Also \(H^2=3\) and \(H\cdot L=1\). Hence
+
+\[
+\begin{gathered}
+D\cdot H=14,\qquad D^2=60,\\
+(D-H)\cdot D=46.
+\end{gathered}
+\tag{7.15}
+\]
+
+The cubic restriction sequence gives \(H^1(S,\mathcal O_S(mH))=0\) for every integer \(m\), and \(h^0(\mathcal O_S(4H))=35-4=31\). Write \(A_j=\mathcal O_S(4H+jL)\), for \(j=0,1,2\), so \(A_2=\mathcal O_S(D)\). Add the line twice, using
+
+\[
+\begin{aligned}
+0&\to A_0\to A_1\to\mathcal O_L(3)\to0,\\
+0&\to A_1\to A_2\to\mathcal O_L(2)\to0.
+\end{aligned}
+\tag{7.16}
+\]
+
+The line cohomology shows that both first cohomology groups remain zero and that \(h^0(\mathcal O_S(D))=31+4+3=38\). Thus \(|D|\) has dimension \(37\).
+
+We verify the existence of the required smooth connected members. The line bundle \(\mathcal O_S(H+L)\) is globally generated. Away from \(L\), multiply generating hyperplane sections by the section cutting out \(L\); on \(L\), the sequence with quotient \(\mathcal O_L\) is surjective on sections because \(H^1(\mathcal O_S(H))=0\). Since
+\(D=2H+2(H+L)\), its line bundle is very ample: the tensor product of a very ample line bundle and a globally generated line bundle is very ample, by taking the graph of their two maps and the Segre embedding. In its projective embedding, hyperplanes tangent at some point of \(S\) form a proper closed subset of the dual projective space. Indeed hyperplanes containing the tangent plane at a fixed point have codimension three, and that point varies in dimension two. General hyperplane sections are therefore smooth.
+
+They are connected as well. From the two sequences obtained by subtracting \(L\) successively from \(-4H\), the quotients on \(L\) are \(\mathcal O_L(-4)\) and \(\mathcal O_L(-3)\). Their sections vanish, and \(H^1(\mathcal O_S(-4H))=0\); thus \(H^1(\mathcal O_S(-D))=0\). The divisor sequence gives \(H^0(C,\mathcal O_C)=k\). A smooth curve with that property is connected and hence integral. Adjunction and (7.15) give \(\deg\omega_C=46\), so its genus is \(24\).
+
+The pairs \((S,L)\) form a nonempty irreducible parameter space of dimension \(19\): lines vary in the four-dimensional Grassmannian, cubics through a fixed line form \(\mathbb P^{15}\), and smoothness cuts out a nonempty open subset. For example a Fermat cubic contains a line over the algebraically closed field. The spaces \(|4H+2L|\) form a projective bundle of relative dimension \(37\), by the vanishing in (7.16) and cohomology and base change. Its smooth connected curve locus is nonempty and open. It is irreducible of dimension \(56\).
+
+Its map to the curve Hilbert scheme has zero-dimensional fibres. A curve of degree \(14\) is contained in at most one irreducible cubic: two distinct ones intersect in degree nine. Lemma 7.5 rules out a reducible cubic containing it. On the same smooth cubic, the equality \(2L\sim2L'\) would force \(L=L'\), since intersecting with \(L\) gives \(-2\) on one side and a nonnegative number on the other for distinct lines. Thus the curve determines its cubic and its line. Let \(W\) be the closure of this family in the Hilbert scheme, with its reduced structure. It is irreducible of dimension \(56\).
+
+The locus of curves contained in a singular cubic is closed: it is the proper image of the closed incidence with the projective discriminant of singular cubics. Our curves are not in it, by uniqueness of their smooth cubic. Restrict also to the open locus of smooth connected curves. Lemma 7.6 bounds all components in this neighbourhood by \(56\), so \(W\) is itself an irreducible component, not a subfamily inside a larger one.
+
+Finally compute its Hilbert tangent dimension. Put \(N=\mathcal N_{C/\mathbb P^3}\), and write \(\mathcal O_C(3)=\mathcal O_C(3H)\) for the hyperplane twist. The normal sequence is
+
+\[
+0\to\mathcal O_C(D)\to N
+\to\mathcal O_C(3)\to0.
+\tag{7.17}
+\]
+
+Serre duality and adjunction identify \(H^1(\mathcal O_C(D))\) with the dual of \(H^0(\mathcal O_C(-H))\), which is zero. Formula (7.11) therefore gives \(h^0(\mathcal O_C(D))=60+1-24=37\). Further,
+
+\[
+\omega_C(-3H)=\mathcal O_C(2L).
+\]
+
+The sequence \(0\to\mathcal O_S(-4H)\to\mathcal O_S(2L)\to\mathcal O_C(2L)\to0\) identifies their section spaces, since the first sheaf has zero zeroth and first cohomology. The only effective divisor in \(|2L|\) is \(2L\): intersection with \(L\) is negative, forcing \(L\) as a component, and the same argument forces it a second time. Thus \(h^0(\mathcal O_C(2L))=1\). Its Euler characteristic is \(42+1-24=19\). It follows that
+
+\[
+\begin{aligned}
+h^1(\mathcal O_C(3H))&=1,\\
+h^0(\mathcal O_C(3H))&=20,\\
+h^0(N)&=37+20=57.
+\end{aligned}
+\tag{7.18}
+\]
+
+Sequence (7.17) also gives \(h^1(\mathcal N_{C/\mathbb P^3})=1\). The tangent formula now gives (7.10) on a dense constructible family in \(W\).
+
+Suppose the Hilbert scheme were reduced at the generic point of \(W\). After shrinking around that point and avoiding the other components, it would be a reduced irreducible finite-type scheme. Over a characteristic-zero field such a scheme has a nonempty smooth open subset: its function field is separably generated, so smoothness holds at its generic point and then on a neighbourhood. That open subset would have tangent dimension \(56\). It must meet the dense family just constructed, where the tangent dimension is \(57\), a contradiction. The Hilbert scheme is therefore nonreduced at the generic point of \(W\). \(\square\)
+
+The conclusion uses an actual component bound and a tangent excess persisting on a dense family. It does not assert that every nonzero \(H^1(\mathcal N)\) produces an obstruction, or that every excess tangent at one closed point produces a generically nonreduced component. This is the distinction between the cubic-surface family and the isolated quartic-surface line discussed earlier. The construction is due to Mumford, *Further pathologies in algebraic geometry*, Section II, pp. 643–647.
+
 
 ## 8 Exercises
 
@@ -414,6 +724,16 @@ For \(d=2\), the surface assertion also follows from the explicit local charts p
 4. **Intermediate.** Prove that a smooth plane conic gives a smooth Hilbert point of dimension five. Include a conic that becomes \(\mathbb P^1\) only after extending the field.
 
 5. **Advanced.** For the small extension (2.1), construct the canonical obstruction class to a flat quotient lift. Prove both directions of its vanishing criterion, describe the set of lifts when it vanishes, and explain why replacing global Ext by \(H^1(\mathcal Hom)\) without a local-lift hypothesis is invalid.
+
+6. **Advanced.** Let \(I=(x^2,xy,y^2)\subset k[x,y]\), so \(B=k[x,y]/I\) has length three. Compute \(\operatorname{Hom}(I,B)\) directly from the two syzygies, and identify all its six parameters. Prove that
+
+\[
+k[t,x,y]/(x(x-t),xy,y(y-t))
+\]
+
+is free over \(k[t]\), and describe every nonzero fibre. Explain why the special subscheme is not a regular embedding even though its Hilbert point is smooth.
+
+7. **Advanced.** On a smooth cubic surface with line \(L\), replace \(4H+2L\) by \(D'=5H+2L\), and take a general smooth connected member \(C'\). Compute its degree and genus, the dimension of \(|D'|\), and both cohomology dimensions of \(\mathcal N_{C'/\mathbb P^3}\). Show that its Hilbert point is smooth, even though the normal obstruction space has dimension five. Explain why this does not contradict Theorem 7.7.
 
 ## 9 Solutions
 
@@ -449,9 +769,42 @@ Subtracting two splittings gives exactly a map \(K_A\to G\otimes J\), and every 
 
 Finally a global Ext class can fail to split even on an affine open, where higher cohomology of its coherent Hom sheaf is zero. For an algebraic illustration, on \(\operatorname{Spec}k[x]\) take the modules \(K=G=k[x]/(x)\). The resolution \(0\to k[x]\xrightarrow{x}k[x]\to K\to0\) gives \(\operatorname{Ext}^1(K,G)=k\), although \(H^1(\mathcal Hom(K,G))=0\). This example distinguishes the two groups; it does not claim that these particular modules occur as the kernel and quotient of a specified Hilbert point. When local quotient lifts do exist, local splittings put the obstruction in the \(H^1\) subgroup, exactly as in Section 3.
 
+**6.** The generators \(x^2,xy,y^2\) have syzygies \(y e_0-x e_1\) and \(y e_1-x e_2\). They generate all relations: comparing the coefficient of the largest power of \(x\), or simply cancelling successively among the three monomial generators, reduces every relation to these two. Write their proposed images in \(B\) as \(u_i=\alpha_i+\beta_i x+\gamma_i y\). Since \((x,y)^2B=0\), the two syzygies become
+
+\[
+\alpha_0y-\alpha_1x=0,
+\qquad \alpha_1y-\alpha_2x=0.
+\]
+
+The basis \(1,x,y\) shows that all three \(\alpha_i\) vanish. The six coefficients \(\beta_i,\gamma_i\) are unrestricted, proving the tangent dimension is six. The family has generators (7.6) for \(\lambda=(2,1)\), with both lists of constants beginning \(0,1\). Reducing \(x^2\) to \(tx\), \(y^2\) to \(ty\), and \(xy\) to zero shows that \(1,x,y\) generate the quotient. At \(t=c\ne0\), evaluation at \((0,0),(c,0),(0,c)\) makes them a basis; the determinant of that evaluation matrix is \(c^2\ne0\). Passing to \(k(t)\) proves that a polynomial relation between these three classes is zero, hence that they form a free \(k[t]\)-basis. The nonzero fibres are exactly those three reduced points, in every characteristic. At the origin \(I/\mathfrak m I\) has the three independent degree-two classes, so the ideal cannot be generated by a regular sequence of length two. Theorem 7.4 nevertheless makes its Hilbert point smooth of dimension six.
+
+**7.** Put \(N'=\mathcal N_{C'/\mathbb P^3}\). The same intersection calculation gives
+
+\[
+\begin{gathered}
+(D')^2=91,\qquad H\cdot D'=17,\\
+2g(C')-2=(D'-H)\cdot D'=74.
+\end{gathered}
+\]
+
+Thus \(\deg C'=17\) and \(g(C')=38\). The two line sequences now have quotients \(\mathcal O_L(4)\) and \(\mathcal O_L(3)\). Since \(h^0(\mathcal O_S(5H))=56-10=46\), they give \(h^0(\mathcal O_S(D'))=46+5+4=55\), with zero first cohomology. The complete linear system has dimension \(54\). Its general member is smooth and connected by the same very-ampleness and negative-divisor arguments as in Theorem 7.7.
+
+The inner normal bundle has degree \(91\), zero first cohomology and \(54\) sections. For the outer normal term, adjunction gives \(\omega_{C'}(-3H)=\mathcal O_{C'}(H+2L)\). The section space of the latter equals that of \(\mathcal O_S(H+2L)\), by the sequence with kernel \(\mathcal O_S(-4H)\). Adding \(L\) to \(H\) gives a quotient \(\mathcal O_L\), hence five sections and zero first cohomology. Adding it a second time gives \(\mathcal O_L(-1)\), which has neither zeroth nor first cohomology. The Euler characteristic of \(\mathcal O_{C'}(3H)\) is \(51+1-38=14\). Therefore
+
+\[
+\begin{aligned}
+h^1(\mathcal O_{C'}(3H))&=5,\\
+h^0(\mathcal O_{C'}(3H))&=19,\\
+h^0(N')&=54+19=73,\\
+h^1(N')&=5.
+\end{aligned}
+\]
+
+The flags consisting of a smooth cubic, a line and such a curve form an irreducible family of dimension \(19+54=73\). A curve of degree \(17>9\) determines its cubic, and the line is unique by the same negative-intersection argument. The image therefore has dimension \(73\). Its closure passes through \([C']\), so local dimension there is at least \(73\), while the tangent computation bounds it above by \(73\). The local ring is regular, and over the algebraically closed field the Hilbert scheme is smooth at \([C']\). The five-dimensional obstruction space does not force any nonzero obstruction. Here the cubic family already fills the tangent dimension; for \(4H+2L\) it was one dimension smaller.
+
 ## What this lesson does not prove
 
-The tangent formula, the complete Ext obstruction and its lifting torsor, the regular-embedding gluing obstruction, the dimension estimate, the normal calculations and the 27-line count are proved here.
+The tangent formula, the complete Ext obstruction and its lifting torsor, the regular-embedding gluing obstruction, the dimension estimate, the normal calculations, the 27-line count, Fogarty's surface theorem and Mumford's nonreduced component are proved here.
 
 We use these foundational results with their indicated hypotheses:
 
@@ -462,7 +815,7 @@ We use these foundational results with their indicated hypotheses:
 - Line-bundle cohomology on projective space [Stacks, Tag 01XT], \(\operatorname{Pic}(\mathbb P^1)=\mathbb Z\) [Stacks, Tag 0BXJ], and finite-dimensional coherent cohomology on a proper scheme over a field [Stacks, Tag 02O6]. Section 2 explains how the last fact implies the needed Hom and Ext finiteness.
 - Chern-class additivity and the splitting principle [Stacks, Tags 02UI and 02UL], and the formula identifying the top Chern class with the cycle of a regular section's zero scheme of the expected codimension [Stacks, Tag 0FA9]. Section 6 proves the Grassmannian integral it needs rather than importing the number 27.
 
-Fogarty's general theorem and Mumford's generically nonreduced example are the two stated external geometric results in Section 7. Their full proofs are not supplied here. The local complete-intersection criterion does not encompass arbitrary finite subschemes of a smooth surface.
+Theorem 7.4 proves the full smooth-surface assertion, including its component argument and arbitrary characteristic. Theorem 7.7 proves Mumford's generically nonreduced component in characteristic zero: its residual-conic argument and flag dimensions are part of the proof. The cohomology, closed-immersion duality and adjunction it uses have exact earlier programme proofs linked at the start of that construction.
 
 ## References
 

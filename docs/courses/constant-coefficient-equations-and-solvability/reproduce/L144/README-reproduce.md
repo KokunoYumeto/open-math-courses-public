@@ -15,7 +15,7 @@ steps are part of the proof.
 
 Earlier written inputs are L043 Lemma 1.1 on Hilbert representation, the linked
 Lebesgue foundations, L140 UE2 on PSH smoothing, and L141 D5 on ball-mean
-monotonicity. Later weighted extension theorems remain separate work.
+monotonicity. Weighted extension theorems use additional inputs.
 
 Run with Python containing Matplotlib, NumPy and SciPy:
 
@@ -33,10 +33,10 @@ norm ratio. The finite integration radius is labelled; its exact full limit
 is `4 log(2)-2`. Both figures include proof locators and a human-source credit.
 The SVG output uses a fixed identifier salt and omits generated dates.
 
-The check script writes `independent-example-checks144.json`. Its24 Gaussian,
+The check script writes `independent-example-checks144.json`. Its 24 Gaussian,
 disk, Levi eigenvalue, ellipse and finite-data checks supplement the complete
 exact arguments. Numerical quadrature is not used to establish existence or
-replace a proof. No TeX process, browser profile or worker is required.
+replace a proof.
 
 Human scholarly source: Lars Hörmander, *The Analysis of Linear Partial
 Differential Operators II*, §15.1, Theorems 15.1.1–15.1.2, printed pp. 271–274,
@@ -45,5 +45,4 @@ expositions and artwork are original. Protected source pages, procurement
 records, private reading scripts and private task state are excluded.
 
 Original material is CC0 1.0; see `LICENSE.txt`. DejaVu Sans is used under the
-separately retained font license. This lesson does not assert that the entire
-AN-02 course or all of its proof prerequisites are closed.
+separately retained font license.

@@ -1,0 +1,235 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A finite semidefinite lift</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A nonspectrahedral hyperbolicity cone)</a><a href="angular-slices-of-the-cone.html">Previous lesson</a><a href="src/a-finite-semidefinite-lift.md">Editable source</a></nav><main><article><h1 id="a-finite-semidefinite-lift">A finite semidefinite lift</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><a href="angular-slices-of-the-cone.html">Angular slices of the cone</a> describes each slice of the cone <span class="math" data-tex="\(K\)">\(K\)</span> by the matrix inequality <span class="math" data-tex="\(L_\theta\succeq0\)">\(L_\theta\succeq0\)</span> of size <span class="math" data-tex="\(20\)">\(20\)</span>, whose coefficients are trigonometric polynomials in the angle <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. This lesson removes the angle. A linear functional on trigonometric polynomials, constrained by one positive semidefinite matrix of size <span class="math" data-tex="\(100\)">\(100\)</span>, plays the part of an unknown angle: evaluation at an angle is always feasible, and a matching identity of degree two shows that every feasible functional certifies membership in <span class="math" data-tex="\(K\)">\(K\)</span>. The <span class="math" data-tex="\(307\)">\(307\)</span> coordinates of the functional that are not fixed by the point give the auxiliary variables of Theorem C. The proof follows OpenAI [OpenAI-LIFT, Sections 3 and 4]; the use of a finite matrix to encode positivity against a space of test functions is the idea of moment relaxations in polynomial optimization.</p>
+<p>Throughout, <span class="math" data-tex="\(c,s,w,d(\theta),k,Y_\theta,U(\theta),V_0,F_\theta,B(r),J_u\)">\(c,s,w,d(\theta),k,Y_\theta,U(\theta),V_0,F_\theta,B(r),J_u\)</span> and <span class="math" data-tex="\(L_\theta\)">\(L_\theta\)</span> are as in the previous lesson, and <span class="math" data-tex="\(Q(y,z)=\frac12\bigl(Q(y+z)-Q(y)-Q(z)\bigr)\)">\(Q(y,z)=\frac12\bigl(Q(y+z)-Q(y)-Q(z)\bigr)\)</span> is the symmetric bilinear form with <span class="math" data-tex="\(Q(y,y)=Q(y)\)">\(Q(y,y)=Q(y)\)</span>.</p>
+<h2 id="1-a-degree-two-matching-identity">1. A degree-two matching identity</h2>
+<p>A <em>trigonometric polynomial of degree at most <span class="math" data-tex="\(j\)">\(j\)</span></em> is a linear combination of <span class="math" data-tex="\(e^{i\ell\theta}\)">\(e^{i\ell\theta}\)</span>, <span class="math" data-tex="\(-j\le\ell\le j\)">\(-j\le\ell\le j\)</span>; the real ones form the space <span class="math" data-tex="\(\mathcal T_j\)">\(\mathcal T_j\)</span> with basis <span class="math" data-tex="\(1,\cos\theta,\sin\theta,\dots,\cos j\theta,\sin j\theta\)">\(1,\cos\theta,\sin\theta,\dots,\cos j\theta,\sin j\theta\)</span>, of dimension <span class="math" data-tex="\(2j+1\)">\(2j+1\)</span>. For <span class="math" data-tex="\(S\in\mathbb S^3\)">\(S\in\mathbb S^3\)</span> and <span class="math" data-tex="\(F,H\in\mathbf C^{3\times2}\)">\(F,H\in\mathbf C^{3\times2}\)</span> put
+<span class="math math-display" data-tex="\[
+\langle F,H\rangle_S=\operatorname{Re}\operatorname{tr}(F^*SH)=\operatorname{tr}\bigl(\widetilde F^{\mathsf T}S\widetilde H\bigr),
+\]">\[
+\langle F,H\rangle_S=\operatorname{Re}\operatorname{tr}(F^*SH)=\operatorname{tr}\bigl(\widetilde F^{\mathsf T}S\widetilde H\bigr),
+\]</span>
+a symmetric real bilinear form; the second expression follows column by column from <span class="math" data-tex="\(\operatorname{Re}\bigl((a-ib)^{\mathsf T}S(c+id)\bigr)=a^{\mathsf T}Sc+b^{\mathsf T}Sd\)">\(\operatorname{Re}\bigl((a-ib)^{\mathsf T}S(c+id)\bigr)=a^{\mathsf T}Sc+b^{\mathsf T}Sd\)</span>. Polarizing Lemma 5.1 of the previous lesson within one plane gives, for <span class="math" data-tex="\(F_i=F_\theta(\eta_i,\xi_i)\)">\(F_i=F_\theta(\eta_i,\xi_i)\)</span> and <span class="math" data-tex="\(Y_i=Y_\theta(\eta_i,\xi_i)\)">\(Y_i=Y_\theta(\eta_i,\xi_i)\)</span>,
+<span class="math math-display" data-tex="\[
+\langle F_1,F_2\rangle_S=\operatorname{tr}\bigl(SQ(Y_1,Y_2)\bigr).
+\]">\[
+\langle F_1,F_2\rangle_S=\operatorname{tr}\bigl(SQ(Y_1,Y_2)\bigr).
+\]</span>
+We call this the <em>polarized identity</em>. Indeed <span class="math" data-tex="\(\langle F,H\rangle_S=\operatorname{tr}\bigl(S\operatorname{Re}(HF^*)\bigr)\)">\(\langle F,H\rangle_S=\operatorname{tr}\bigl(S\operatorname{Re}(HF^*)\bigr)\)</span>, the matrix <span class="math" data-tex="\(\operatorname{Re}(HF^*)\)">\(\operatorname{Re}(HF^*)\)</span> is the transpose of <span class="math" data-tex="\(\operatorname{Re}(FH^*)\)">\(\operatorname{Re}(FH^*)\)</span>, and the symmetric part of <span class="math" data-tex="\(\operatorname{Re}(F_1F_2^*)\)">\(\operatorname{Re}(F_1F_2^*)\)</span> is <span class="math" data-tex="\(Q(Y_1,Y_2)\)">\(Q(Y_1,Y_2)\)</span> by Lemma 5.1.</p>
+<p><strong>Lemma 6.1</strong> (OpenAI). Let <span class="math" data-tex="\(S\in\mathbb S^3\)">\(S\in\mathbb S^3\)</span>, possibly indefinite, and <span class="math" data-tex="\(z\in\mathbf R^3\)">\(z\in\mathbf R^3\)</span> with <span class="math" data-tex="\((z_1,z_2)\ne(0,0)\)">\((z_1,z_2)\ne(0,0)\)</span>. There is a matrix <span class="math" data-tex="\(C(\theta)\in\mathbf C^{3\times2}\)">\(C(\theta)\in\mathbf C^{3\times2}\)</span> whose entries are trigonometric polynomials of degree at most <span class="math" data-tex="\(2\)">\(2\)</span> such that for all <span class="math" data-tex="\(\theta,\eta,\xi\in\mathbf R\)">\(\theta,\eta,\xi\in\mathbf R\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widetilde C(\theta)\widetilde C(\theta)^{\mathsf T}&amp;=Q(z),\\
+\bigl\langle F_\theta(\eta,\xi),C(\theta)\bigr\rangle_S&amp;=\operatorname{tr}\bigl(SQ(Y_\theta(\eta,\xi),z)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\widetilde C(\theta)\widetilde C(\theta)^{\mathsf T}&amp;=Q(z),\\
+\bigl\langle F_\theta(\eta,\xi),C(\theta)\bigr\rangle_S&amp;=\operatorname{tr}\bigl(SQ(Y_\theta(\eta,\xi),z)\bigr).
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(z=\tau d(\alpha)+\rho k\)">\(z=\tau d(\alpha)+\rho k\)</span> with <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>, and put <span class="math" data-tex="\(w_0=e^{i\alpha}\)">\(w_0=e^{i\alpha}\)</span>, <span class="math" data-tex="\(R_0=\tau U(\alpha)+\rho V_0\)">\(R_0=\tau U(\alpha)+\rho V_0\)</span> and <span class="math" data-tex="\(N=SR_0\)">\(N=SR_0\)</span>. By Lemma 5.1, <span class="math" data-tex="\(\widetilde R_0\widetilde R_0^{\mathsf T}=Q(z)\)">\(\widetilde R_0\widetilde R_0^{\mathsf T}=Q(z)\)</span>. We take <span class="math" data-tex="\(C(\theta)=R_0M(\theta)\)">\(C(\theta)=R_0M(\theta)\)</span> with a unitary <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix <span class="math" data-tex="\(M(\theta)\)">\(M(\theta)\)</span>; then <span class="math" data-tex="\(\widetilde C\widetilde C^{\mathsf T}=\operatorname{Re}(R_0MM^*R_0^*)=Q(z)\)">\(\widetilde C\widetilde C^{\mathsf T}=\operatorname{Re}(R_0MM^*R_0^*)=Q(z)\)</span>, the first identity.</p>
+<p><em>The pairing with <span class="math" data-tex="\(V_0\)">\(V_0\)</span>.</em> Write <span class="math" data-tex="\(N_1,N_2,N_3\)">\(N_1,N_2,N_3\)</span> for the rows of <span class="math" data-tex="\(N\)">\(N\)</span>, and for a row <span class="math" data-tex="\(x=(x_+,x_-)\)">\(x=(x_+,x_-)\)</span> write <span class="math" data-tex="\(x^M=xM\)">\(x^M=xM\)</span>. Put <span class="math" data-tex="\(v=N_3-iN_2\)">\(v=N_3-iN_2\)</span>. The two rows of <span class="math" data-tex="\(V_0^*\)">\(V_0^*\)</span> are both <span class="math" data-tex="\((0,-i,1)/\sqrt2\)">\((0,-i,1)/\sqrt2\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sqrt2\,\langle V_0,C\rangle_S&amp;=\operatorname{Re}\bigl(v^M_++v^M_-\bigr)\\
+&amp;=\operatorname{Re}\bigl(v^M_++\overline{v^M_-}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sqrt2\,\langle V_0,C\rangle_S&amp;=\operatorname{Re}\bigl(v^M_++v^M_-\bigr)\\
+&amp;=\operatorname{Re}\bigl(v^M_++\overline{v^M_-}\bigr).
+\end{aligned}
+\]</span></p>
+<p><em>The pairing with <span class="math" data-tex="\(U\)">\(U\)</span>.</em> Put <span class="math" data-tex="\(m=N_3+iN_2\)">\(m=N_3+iN_2\)</span> and <span class="math" data-tex="\(n=N_1\)">\(n=N_1\)</span>. Using <span class="math" data-tex="\(s=(w-\bar w)/2i\)">\(s=(w-\bar w)/2i\)</span> and <span class="math" data-tex="\(c=(w+\bar w)/2\)">\(c=(w+\bar w)/2\)</span> in the rows of <span class="math" data-tex="\(U(\theta)^*\)">\(U(\theta)^*\)</span>, a direct expansion gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sqrt2\,\langle U(\theta),C\rangle_S\\
+&amp;\quad=\operatorname{Re}\Bigl[\tfrac{w^3}2\bigl(v^M_+-\overline{v^M_-}\bigr)\\
+&amp;\qquad+w\bigl(\tfrac12m^M_+-n^M_+\\
+&amp;\qquad\quad-\tfrac12\overline{m^M_-}-\overline{n^M_-}\bigr)\Bigr],
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sqrt2\,\langle U(\theta),C\rangle_S\\
+&amp;\quad=\operatorname{Re}\Bigl[\tfrac{w^3}2\bigl(v^M_+-\overline{v^M_-}\bigr)\\
+&amp;\qquad+w\bigl(\tfrac12m^M_+-n^M_+\\
+&amp;\qquad\quad-\tfrac12\overline{m^M_-}-\overline{n^M_-}\bigr)\Bigr],
+\end{aligned}
+\]</span>
+where the terms with negative powers of <span class="math" data-tex="\(w\)">\(w\)</span> were replaced by their complex conjugates inside the real part.</p>
+<p><em>Choosing <span class="math" data-tex="\(M\)">\(M\)</span>.</em> Write <span class="math" data-tex="\(M=\bigl(\begin{smallmatrix}a&amp;b\\-\bar b&amp;\bar a\end{smallmatrix}\bigr)\)">\(M=\bigl(\begin{smallmatrix}a&amp;b\\-\bar b&amp;\bar a\end{smallmatrix}\bigr)\)</span>, unitary when <span class="math" data-tex="\(|a|^2+|b|^2=1\)">\(|a|^2+|b|^2=1\)</span>. For a row <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\((xM)_+=x_+a-x_-\bar b\)">\((xM)_+=x_+a-x_-\bar b\)</span> and <span class="math" data-tex="\(\overline{(xM)_-}=\bar x_+\bar b+\bar x_-a\)">\(\overline{(xM)_-}=\bar x_+\bar b+\bar x_-a\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g&amp;=v_++\overline{v_-},\quad h=v_+-\overline{v_-},\\
+\kappa(\theta)&amp;=(w_0/w)^2,\quad\delta=|g|^2+|h|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+g&amp;=v_++\overline{v_-},\quad h=v_+-\overline{v_-},\\
+\kappa(\theta)&amp;=(w_0/w)^2,\quad\delta=|g|^2+|h|^2 .
+\end{aligned}
+\]</span>
+Then <span class="math" data-tex="\(v^M_++\overline{v^M_-}=ga+\bar h\bar b\)">\(v^M_++\overline{v^M_-}=ga+\bar h\bar b\)</span> and <span class="math" data-tex="\(v^M_+-\overline{v^M_-}=ha-\bar g\bar b\)">\(v^M_+-\overline{v^M_-}=ha-\bar g\bar b\)</span>. We require
+<span class="math math-display" data-tex="\[
+ga+\bar h\bar b=g,\qquad ha-\bar g\bar b=h\kappa .
+\]">\[
+ga+\bar h\bar b=g,\qquad ha-\bar g\bar b=h\kappa .
+\]</span>
+If <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, the coefficient matrix <span class="math" data-tex="\(\bigl(\begin{smallmatrix}g&amp;\bar h\\h&amp;-\bar g\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}g&amp;\bar h\\h&amp;-\bar g\end{smallmatrix}\bigr)\)</span> has orthogonal columns of squared length <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and the solution is
+<span class="math math-display" data-tex="\[
+a=\frac{|g|^2+|h|^2\kappa}\delta,\qquad\bar b=\frac{gh(1-\kappa)}\delta .
+\]">\[
+a=\frac{|g|^2+|h|^2\kappa}\delta,\qquad\bar b=\frac{gh(1-\kappa)}\delta .
+\]</span>
+Since <span class="math" data-tex="\(|\kappa|=1\)">\(|\kappa|=1\)</span>, the right side <span class="math" data-tex="\((g,h\kappa)\)">\((g,h\kappa)\)</span> has squared length <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, so <span class="math" data-tex="\(|a|^2+|b|^2=1\)">\(|a|^2+|b|^2=1\)</span>. If <span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span>, then <span class="math" data-tex="\(g=h=0\)">\(g=h=0\)</span>, and <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(b=0\)">\(b=0\)</span> satisfy the requirement. In both cases <span class="math" data-tex="\(M(\alpha)=I\)">\(M(\alpha)=I\)</span>, because <span class="math" data-tex="\(\kappa(\alpha)=1\)">\(\kappa(\alpha)=1\)</span>, and <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(\bar b\)">\(\bar b\)</span> contain only the frequencies <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(-2\)">\(-2\)</span>. Hence <span class="math" data-tex="\(C=R_0M\)">\(C=R_0M\)</span> has degree at most <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(C(\alpha)=R_0\)">\(C(\alpha)=R_0\)</span>.</p>
+<p><em>Frequencies.</em> With this choice, <span class="math" data-tex="\(\sqrt2\langle V_0,C\rangle_S=\operatorname{Re}g\)">\(\sqrt2\langle V_0,C\rangle_S=\operatorname{Re}g\)</span> is constant. In the pairing with <span class="math" data-tex="\(U\)">\(U\)</span>, the first term is <span class="math" data-tex="\(\frac12w^3h\kappa=\frac12hw_0^2w\)">\(\frac12w^3h\kappa=\frac12hw_0^2w\)</span>, of frequency <span class="math" data-tex="\(1\)">\(1\)</span>. In the second, each of <span class="math" data-tex="\(m^M_+\)">\(m^M_+\)</span>, <span class="math" data-tex="\(n^M_+\)">\(n^M_+\)</span>, <span class="math" data-tex="\(\overline{m^M_-}\)">\(\overline{m^M_-}\)</span>, <span class="math" data-tex="\(\overline{n^M_-}\)">\(\overline{n^M_-}\)</span> is a combination of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(\bar b\)">\(\bar b\)</span>, with frequencies <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(-2\)">\(-2\)</span>, so after multiplication by <span class="math" data-tex="\(w\)">\(w\)</span> only the frequencies <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> remain. So <span class="math" data-tex="\(P(\theta)=\langle U(\theta),C(\theta)\rangle_S\)">\(P(\theta)=\langle U(\theta),C(\theta)\rangle_S\)</span> is a real combination of <span class="math" data-tex="\(\cos\theta\)">\(\cos\theta\)</span> and <span class="math" data-tex="\(\sin\theta\)">\(\sin\theta\)</span>, and so is <span class="math" data-tex="\(T(\theta)=\operatorname{tr}(SQ(d(\theta),z))\)">\(T(\theta)=\operatorname{tr}(SQ(d(\theta),z))\)</span>, which is linear in <span class="math" data-tex="\(d(\theta)\)">\(d(\theta)\)</span>.</p>
+<p><em>Identifying the pairings.</em> By the polarized identity on the plane of angle <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, <span class="math" data-tex="\(\langle V_0,R_0\rangle_S=\operatorname{tr}(SQ(k,z))\)">\(\langle V_0,R_0\rangle_S=\operatorname{tr}(SQ(k,z))\)</span> and <span class="math" data-tex="\(\langle U(\alpha),R_0\rangle_S=\operatorname{tr}(SQ(d(\alpha),z))\)">\(\langle U(\alpha),R_0\rangle_S=\operatorname{tr}(SQ(d(\alpha),z))\)</span>. The pairing with <span class="math" data-tex="\(V_0\)">\(V_0\)</span> is constant, and at <span class="math" data-tex="\(\theta=\alpha\)">\(\theta=\alpha\)</span>, where <span class="math" data-tex="\(C(\alpha)=R_0\)">\(C(\alpha)=R_0\)</span>, it equals <span class="math" data-tex="\(\operatorname{tr}(SQ(k,z))\)">\(\operatorname{tr}(SQ(k,z))\)</span>. For the pairing with <span class="math" data-tex="\(U\)">\(U\)</span>, <span class="math" data-tex="\(P(\alpha)=T(\alpha)\)">\(P(\alpha)=T(\alpha)\)</span>, and a real combination of <span class="math" data-tex="\(\cos\theta\)">\(\cos\theta\)</span> and <span class="math" data-tex="\(\sin\theta\)">\(\sin\theta\)</span> is determined by its value and its derivative at one point, so it suffices to show <span class="math" data-tex="\(P&#x27;(\alpha)=T&#x27;(\alpha)\)">\(P&#x27;(\alpha)=T&#x27;(\alpha)\)</span>. Differentiating <span class="math" data-tex="\(\langle C,C\rangle_S=\operatorname{tr}(SQ(z))\)">\(\langle C,C\rangle_S=\operatorname{tr}(SQ(z))\)</span>, which is constant, gives <span class="math" data-tex="\(\langle R_0,C&#x27;(\alpha)\rangle_S=0\)">\(\langle R_0,C&#x27;(\alpha)\rangle_S=0\)</span>; the constancy of <span class="math" data-tex="\(\langle V_0,C\rangle_S\)">\(\langle V_0,C\rangle_S\)</span> gives <span class="math" data-tex="\(\langle V_0,C&#x27;(\alpha)\rangle_S=0\)">\(\langle V_0,C&#x27;(\alpha)\rangle_S=0\)</span>. As <span class="math" data-tex="\(R_0=\tau U(\alpha)+\rho V_0\)">\(R_0=\tau U(\alpha)+\rho V_0\)</span> with <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>, <span class="math" data-tex="\(\langle U(\alpha),C&#x27;(\alpha)\rangle_S=0\)">\(\langle U(\alpha),C&#x27;(\alpha)\rangle_S=0\)</span>. The polarized identity with <span class="math" data-tex="\(F_1=F_2=F_\theta(\tau,\rho)\)">\(F_1=F_2=F_\theta(\tau,\rho)\)</span> reads
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle\tau U(\theta)+\rho V_0,\tau U(\theta)+\rho V_0\rangle_S\\
+&amp;\quad=\operatorname{tr}\bigl(SQ(\tau d(\theta)+\rho k)\bigr);
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle\tau U(\theta)+\rho V_0,\tau U(\theta)+\rho V_0\rangle_S\\
+&amp;\quad=\operatorname{tr}\bigl(SQ(\tau d(\theta)+\rho k)\bigr);
+\end{aligned}
+\]</span>
+differentiating at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and dividing by <span class="math" data-tex="\(2\tau\)">\(2\tau\)</span> gives <span class="math" data-tex="\(\langle U&#x27;(\alpha),R_0\rangle_S=\operatorname{tr}(SQ(d&#x27;(\alpha),z))\)">\(\langle U&#x27;(\alpha),R_0\rangle_S=\operatorname{tr}(SQ(d&#x27;(\alpha),z))\)</span>, which is <span class="math" data-tex="\(T&#x27;(\alpha)\)">\(T&#x27;(\alpha)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P&#x27;(\alpha)&amp;=\langle U&#x27;(\alpha),R_0\rangle_S\\
+&amp;\quad+\langle U(\alpha),C&#x27;(\alpha)\rangle_S,
+\end{aligned}
+\]">\[
+\begin{aligned}
+P&#x27;(\alpha)&amp;=\langle U&#x27;(\alpha),R_0\rangle_S\\
+&amp;\quad+\langle U(\alpha),C&#x27;(\alpha)\rangle_S,
+\end{aligned}
+\]</span>
+which equals <span class="math" data-tex="\(T&#x27;(\alpha)\)">\(T&#x27;(\alpha)\)</span>. The second identity follows by linearity in <span class="math" data-tex="\((\eta,\xi)\)">\((\eta,\xi)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-finite-matrix-condition">2. The finite matrix condition</h2>
+<p>Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the space of real functions of <span class="math" data-tex="\((\theta,\mathcal X,\mathcal Z,\eta,\xi)\)">\((\theta,\mathcal X,\mathcal Z,\eta,\xi)\)</span> that are linear in the <span class="math" data-tex="\(22\)">\(22\)</span> coordinates of <span class="math" data-tex="\((\mathcal X,\mathcal Z,\eta,\xi)\in\mathbb S^4\times\mathbb S^4\times\mathbf R^2\)">\((\mathcal X,\mathcal Z,\eta,\xi)\in\mathbb S^4\times\mathbb S^4\times\mathbf R^2\)</span>, with coefficients in <span class="math" data-tex="\(\mathcal T_7\)">\(\mathcal T_7\)</span>. It has dimension <span class="math" data-tex="\(22\cdot15=330\)">\(22\cdot15=330\)</span>. For a linear functional <span class="math" data-tex="\(\Lambda:\mathcal E\to\mathbf R\)">\(\Lambda:\mathcal E\to\mathbf R\)</span>, applied entrywise to vectors and matrices, and a point <span class="math" data-tex="\((X,Z,y)\)">\((X,Z,y)\)</span>, consider the <em>output equations</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Lambda(\mathcal X)=X,\qquad\Lambda(\mathcal Z)=Z,\\
+&amp;\Lambda\bigl(Y_\theta(\eta,\xi)\bigr)=y,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Lambda(\mathcal X)=X,\qquad\Lambda(\mathcal Z)=Z,\\
+&amp;\Lambda\bigl(Y_\theta(\eta,\xi)\bigr)=y,
+\end{aligned}
+\]</span>
+the last meaning <span class="math" data-tex="\(\Lambda(\eta\cos\theta)=y_1\)">\(\Lambda(\eta\cos\theta)=y_1\)</span>, <span class="math" data-tex="\(\Lambda(\eta\sin\theta)=y_2\)">\(\Lambda(\eta\sin\theta)=y_2\)</span>, <span class="math" data-tex="\(\Lambda(\xi)=y_3\)">\(\Lambda(\xi)=y_3\)</span>, and the <em>moment condition</em>: for all <span class="math" data-tex="\(q\in(\mathcal T_2)^{20}\)">\(q\in(\mathcal T_2)^{20}\)</span>,
+<span class="math math-display" data-tex="\[
+\Lambda\bigl(q(\theta)^{\mathsf T}L_\theta\,q(\theta)\bigr)\ge0,
+\]">\[
+\Lambda\bigl(q(\theta)^{\mathsf T}L_\theta\,q(\theta)\bigr)\ge0,
+\]</span>
+where <span class="math" data-tex="\(L_\theta=L_\theta(\mathcal X,\mathcal Z,\eta,\xi)\)">\(L_\theta=L_\theta(\mathcal X,\mathcal Z,\eta,\xi)\)</span>.
+The argument of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> lies in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>: the entries of <span class="math" data-tex="\(L_\theta\)">\(L_\theta\)</span> are linear in the <span class="math" data-tex="\(22\)">\(22\)</span> coordinates with coefficients of degree at most <span class="math" data-tex="\(3\)">\(3\)</span>, and the entries of <span class="math" data-tex="\(q\)">\(q\)</span> have degree at most <span class="math" data-tex="\(2\)">\(2\)</span>. With <span class="math" data-tex="\(f_1=1\)">\(f_1=1\)</span>, <span class="math" data-tex="\(f_2=\cos\theta\)">\(f_2=\cos\theta\)</span>, <span class="math" data-tex="\(f_3=\sin\theta\)">\(f_3=\sin\theta\)</span>, <span class="math" data-tex="\(f_4=\cos2\theta\)">\(f_4=\cos2\theta\)</span> and <span class="math" data-tex="\(f_5=\sin2\theta\)">\(f_5=\sin2\theta\)</span>, define <span class="math" data-tex="\(H(\Lambda)\in\mathbb S^{100}\)">\(H(\Lambda)\in\mathbb S^{100}\)</span>, with rows and columns indexed by pairs <span class="math" data-tex="\((i,a)\)">\((i,a)\)</span>, <span class="math" data-tex="\(1\le i\le20\)">\(1\le i\le20\)</span>, <span class="math" data-tex="\(1\le a\le5\)">\(1\le a\le5\)</span>, by
+<span class="math math-display" data-tex="\[
+H(\Lambda)_{(i,a),(j,b)}=\Lambda\bigl(f_af_b\,(L_\theta)_{ij}\bigr).
+\]">\[
+H(\Lambda)_{(i,a),(j,b)}=\Lambda\bigl(f_af_b\,(L_\theta)_{ij}\bigr).
+\]</span>
+If <span class="math" data-tex="\(q_i=\sum_at_{i,a}f_a\)">\(q_i=\sum_at_{i,a}f_a\)</span>, then <span class="math" data-tex="\(\Lambda(q^{\mathsf T}L_\theta q)=t^{\mathsf T}H(\Lambda)t\)">\(\Lambda(q^{\mathsf T}L_\theta q)=t^{\mathsf T}H(\Lambda)t\)</span>. So the moment condition is equivalent to <span class="math" data-tex="\(H(\Lambda)\succeq0\)">\(H(\Lambda)\succeq0\)</span>, a matrix whose entries are linear in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p><strong>Proposition 6.2</strong> (OpenAI). For <span class="math" data-tex="\((X,Z,y)\in\mathbb S^4\times\mathbb S^4\times\mathbf R^3\)">\((X,Z,y)\in\mathbb S^4\times\mathbb S^4\times\mathbf R^3\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\((X,Z,y)\in K\)">\((X,Z,y)\in K\)</span>;</li>
+<li>some linear functional <span class="math" data-tex="\(\Lambda:\mathcal E\to\mathbf R\)">\(\Lambda:\mathcal E\to\mathbf R\)</span> satisfies the output equations and <span class="math" data-tex="\(H(\Lambda)\succeq0\)">\(H(\Lambda)\succeq0\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) implies (2): choose <span class="math" data-tex="\(\theta_0,\eta_0,\xi_0\)">\(\theta_0,\eta_0,\xi_0\)</span> with <span class="math" data-tex="\(y=Y_{\theta_0}(\eta_0,\xi_0)\)">\(y=Y_{\theta_0}(\eta_0,\xi_0)\)</span>, and let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be evaluation at <span class="math" data-tex="\((\theta_0,X,Z,\eta_0,\xi_0)\)">\((\theta_0,X,Z,\eta_0,\xi_0)\)</span>. The output equations hold, and with <span class="math" data-tex="\(G_0=L_{\theta_0}(X,Z,\eta_0,\xi_0)\)">\(G_0=L_{\theta_0}(X,Z,\eta_0,\xi_0)\)</span>, which is positive semidefinite by Proposition 5.3 of the previous lesson, <span class="math" data-tex="\(\Lambda(q^{\mathsf T}L_\theta q)=q(\theta_0)^{\mathsf T}G_0\,q(\theta_0)\ge0\)">\(\Lambda(q^{\mathsf T}L_\theta q)=q(\theta_0)^{\mathsf T}G_0\,q(\theta_0)\ge0\)</span>. This includes singular <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>(2) implies (1). <em>Step 1.</em> A constant <span class="math" data-tex="\(q\)">\(q\)</span> supported in the first block of four gives <span class="math" data-tex="\(\Lambda(a^{\mathsf T}\mathcal Xa)=a^{\mathsf T}Xa\ge0\)">\(\Lambda(a^{\mathsf T}\mathcal Xa)=a^{\mathsf T}Xa\ge0\)</span> for <span class="math" data-tex="\(a\in\mathbf R^4\)">\(a\in\mathbf R^4\)</span>; so <span class="math" data-tex="\(X\succeq0\)">\(X\succeq0\)</span>.</p>
+<p><em>Step 2: a family of scalar inequalities.</em> Let <span class="math" data-tex="\(u\in\mathbf R^4\)">\(u\in\mathbf R^4\)</span>, <span class="math" data-tex="\(D\in\mathbb S^4\)">\(D\in\mathbb S^4\)</span> and <span class="math" data-tex="\(z\in\mathbf R^3\)">\(z\in\mathbf R^3\)</span> with <span class="math" data-tex="\((z_1,z_2)\ne(0,0)\)">\((z_1,z_2)\ne(0,0)\)</span>. Apply Lemma 6.1 with <span class="math" data-tex="\(S=J_uDJ_u^{\mathsf T}\)">\(S=J_uDJ_u^{\mathsf T}\)</span>, and let <span class="math" data-tex="\(b_1(\theta),\dots,b_4(\theta)\)">\(b_1(\theta),\dots,b_4(\theta)\)</span> be the columns of <span class="math" data-tex="\(\widetilde C(\theta)\)">\(\widetilde C(\theta)\)</span>; their entries lie in <span class="math" data-tex="\(\mathcal T_2\)">\(\mathcal T_2\)</span>. Take the vector <span class="math" data-tex="\(q\in(\mathcal T_2)^{20}\)">\(q\in(\mathcal T_2)^{20}\)</span> with the five blocks
+<span class="math math-display" data-tex="\[
+q=\bigl(-DJ_u^{\mathsf T}b_1,\dots,-DJ_u^{\mathsf T}b_4,u\bigr).
+\]">\[
+q=\bigl(-DJ_u^{\mathsf T}b_1,\dots,-DJ_u^{\mathsf T}b_4,u\bigr).
+\]</span>
+Let <span class="math" data-tex="\(r_j\)">\(r_j\)</span> be the columns of <span class="math" data-tex="\(\widetilde F_\theta(\eta,\xi)\)">\(\widetilde F_\theta(\eta,\xi)\)</span>. Since <span class="math" data-tex="\(B(r_j)u=J_u^{\mathsf T}r_j\)">\(B(r_j)u=J_u^{\mathsf T}r_j\)</span>, the diagonal blocks and the cross terms of <span class="math" data-tex="\(q^{\mathsf T}L_\theta q\)">\(q^{\mathsf T}L_\theta q\)</span> are, by the two identities of Lemma 6.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\textstyle\sum_jb_j^{\mathsf T}J_uD\mathcal XDJ_u^{\mathsf T}b_j\\
+&amp;\quad=\operatorname{tr}\bigl(J_uD\mathcal XDJ_u^{\mathsf T}Q(z)\bigr),\\
+&amp;\textstyle-2\sum_jb_j^{\mathsf T}J_uDJ_u^{\mathsf T}r_j\\
+&amp;\quad=-2\bigl\langle C,F_\theta(\eta,\xi)\bigr\rangle_S\\
+&amp;\quad=-2\operatorname{tr}\bigl(SQ(Y_\theta(\eta,\xi),z)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\textstyle\sum_jb_j^{\mathsf T}J_uD\mathcal XDJ_u^{\mathsf T}b_j\\
+&amp;\quad=\operatorname{tr}\bigl(J_uD\mathcal XDJ_u^{\mathsf T}Q(z)\bigr),\\
+&amp;\textstyle-2\sum_jb_j^{\mathsf T}J_uDJ_u^{\mathsf T}r_j\\
+&amp;\quad=-2\bigl\langle C,F_\theta(\eta,\xi)\bigr\rangle_S\\
+&amp;\quad=-2\operatorname{tr}\bigl(SQ(Y_\theta(\eta,\xi),z)\bigr),
+\end{aligned}
+\]</span>
+and the last block contributes <span class="math" data-tex="\(u^{\mathsf T}\mathcal Zu\)">\(u^{\mathsf T}\mathcal Zu\)</span>. The angle has disappeared from the coefficient of <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>, and the cross term is linear in <span class="math" data-tex="\(Y_\theta(\eta,\xi)\)">\(Y_\theta(\eta,\xi)\)</span>. Applying <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and the output equations,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;u^{\mathsf T}Zu+\operatorname{tr}\bigl(J_uDXDJ_u^{\mathsf T}Q(z)\bigr)\\
+&amp;\quad-2\operatorname{tr}\bigl(J_uDJ_u^{\mathsf T}Q(y,z)\bigr)\ge0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;u^{\mathsf T}Zu+\operatorname{tr}\bigl(J_uDXDJ_u^{\mathsf T}Q(z)\bigr)\\
+&amp;\quad-2\operatorname{tr}\bigl(J_uDJ_u^{\mathsf T}Q(y,z)\bigr)\ge0 .
+\end{aligned}
+\]</span>
+We call this the <em>test inequality</em>. Its left side is a polynomial in <span class="math" data-tex="\(z\)">\(z\)</span>, so it holds for all <span class="math" data-tex="\(z\in\mathbf R^3\)">\(z\in\mathbf R^3\)</span> by continuity, for all <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><em>Step 3: the range condition.</em> Fix <span class="math" data-tex="\(\theta_0,\eta_0,\xi_0\)">\(\theta_0,\eta_0,\xi_0\)</span> with <span class="math" data-tex="\(y=Y_{\theta_0}(\eta_0,\xi_0)\)">\(y=Y_{\theta_0}(\eta_0,\xi_0)\)</span>, let <span class="math" data-tex="\(r_j\)">\(r_j\)</span> be the columns of <span class="math" data-tex="\(\widetilde F_{\theta_0}(\eta_0,\xi_0)\)">\(\widetilde F_{\theta_0}(\eta_0,\xi_0)\)</span> and <span class="math" data-tex="\(B_j=B(r_j)\)">\(B_j=B(r_j)\)</span>. For <span class="math" data-tex="\(v\in\ker X\)">\(v\in\ker X\)</span> and <span class="math" data-tex="\(t\in\mathbf R\)">\(t\in\mathbf R\)</span>, take <span class="math" data-tex="\(D=t\,vv^{\mathsf T}\)">\(D=t\,vv^{\mathsf T}\)</span> and <span class="math" data-tex="\(z=y\)">\(z=y\)</span> in the test inequality. Since <span class="math" data-tex="\(DXD=0\)">\(DXD=0\)</span>, for all real <span class="math" data-tex="\(t\)">\(t\)</span>
+<span class="math math-display" data-tex="\[
+u^{\mathsf T}Zu-2t\,(J_uv)^{\mathsf T}Q(y)(J_uv)\ge0 ,
+\]">\[
+u^{\mathsf T}Zu-2t\,(J_uv)^{\mathsf T}Q(y)(J_uv)\ge0 ,
+\]</span>
+so <span class="math" data-tex="\((J_uv)^{\mathsf T}Q(y)(J_uv)=0\)">\((J_uv)^{\mathsf T}Q(y)(J_uv)=0\)</span>. By Lemma 5.1, <span class="math" data-tex="\(Q(y)=\sum_jr_jr_j^{\mathsf T}\)">\(Q(y)=\sum_jr_jr_j^{\mathsf T}\)</span>, so <span class="math" data-tex="\(\sum_j(v^{\mathsf T}J_u^{\mathsf T}r_j)^2=\sum_j(v^{\mathsf T}B_ju)^2=0\)">\(\sum_j(v^{\mathsf T}J_u^{\mathsf T}r_j)^2=\sum_j(v^{\mathsf T}B_ju)^2=0\)</span>. As <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\in\ker X\)">\(v\in\ker X\)</span> are arbitrary, the range of every <span class="math" data-tex="\(B_j\)">\(B_j\)</span> is orthogonal to <span class="math" data-tex="\(\ker X\)">\(\ker X\)</span>, that is, contained in the range of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><em>Step 4: positivity of the slice pencil.</em> Let <span class="math" data-tex="\(X^\dagger\)">\(X^\dagger\)</span> be the symmetric matrix that inverts <span class="math" data-tex="\(X\)">\(X\)</span> on its range and vanishes on <span class="math" data-tex="\(\ker X\)">\(\ker X\)</span>; then <span class="math" data-tex="\(X^\dagger XX^\dagger=X^\dagger\)">\(X^\dagger XX^\dagger=X^\dagger\)</span>, and <span class="math" data-tex="\(XX^\dagger B_j=B_j\)">\(XX^\dagger B_j=B_j\)</span> by Step 3. Taking <span class="math" data-tex="\(D=X^\dagger\)">\(D=X^\dagger\)</span> and <span class="math" data-tex="\(z=y\)">\(z=y\)</span> in the test inequality, and using the second statement of Lemma 5.2 of the previous lesson, gives for all <span class="math" data-tex="\(u\)">\(u\)</span>
+<span class="math math-display" data-tex="\[
+u^{\mathsf T}Zu-u^{\mathsf T}\Phi_y(X^\dagger)u\ge0 ,
+\]">\[
+u^{\mathsf T}Zu-u^{\mathsf T}\Phi_y(X^\dagger)u\ge0 ,
+\]</span>
+so, by its first statement,
+<span class="math math-display" data-tex="\[
+Z\succeq\sum_jB_j^{\mathsf T}X^\dagger B_j .
+\]">\[
+Z\succeq\sum_jB_j^{\mathsf T}X^\dagger B_j .
+\]</span>
+For <span class="math" data-tex="\(a_1,\dots,a_4,u\in\mathbf R^4\)">\(a_1,\dots,a_4,u\in\mathbf R^4\)</span>, completing the square gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\textstyle\sum_ja_j^{\mathsf T}Xa_j+2\sum_ja_j^{\mathsf T}B_ju+u^{\mathsf T}Zu\\
+&amp;\quad=\textstyle\sum_j(a_j+X^\dagger B_ju)^{\mathsf T}X(a_j+X^\dagger B_ju)\\
+&amp;\qquad+u^{\mathsf T}\bigl(Z-\textstyle\sum_jB_j^{\mathsf T}X^\dagger B_j\bigr)u\ge0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\textstyle\sum_ja_j^{\mathsf T}Xa_j+2\sum_ja_j^{\mathsf T}B_ju+u^{\mathsf T}Zu\\
+&amp;\quad=\textstyle\sum_j(a_j+X^\dagger B_ju)^{\mathsf T}X(a_j+X^\dagger B_ju)\\
+&amp;\qquad+u^{\mathsf T}\bigl(Z-\textstyle\sum_jB_j^{\mathsf T}X^\dagger B_j\bigr)u\ge0,
+\end{aligned}
+\]</span>
+where the cross terms agree because <span class="math" data-tex="\(XX^\dagger B_j=B_j\)">\(XX^\dagger B_j=B_j\)</span>. The left side is the quadratic form of <span class="math" data-tex="\(L_{\theta_0}(X,Z,\eta_0,\xi_0)\)">\(L_{\theta_0}(X,Z,\eta_0,\xi_0)\)</span>, which is therefore positive semidefinite, and Proposition 5.3 gives <span class="math" data-tex="\((X,Z,y)\in K\)">\((X,Z,y)\in K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The converse uses an arbitrary feasible functional: <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> need not be an evaluation or an integral against a measure, and no closure of the projected set is taken.</p>
+<h2 id="3-proof-of-theorem-c">3. Proof of Theorem C</h2>
+<p>Take as coordinates of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> its values on the basis of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> formed by the products of the <span class="math" data-tex="\(22\)">\(22\)</span> coordinate functions with <span class="math" data-tex="\(1,\cos\theta,\sin\theta,\dots,\cos7\theta,\sin7\theta\)">\(1,\cos\theta,\sin\theta,\dots,\cos7\theta,\sin7\theta\)</span>: <span class="math" data-tex="\(330\)">\(330\)</span> numbers. The output equations prescribe exactly <span class="math" data-tex="\(23\)">\(23\)</span> of them, namely <span class="math" data-tex="\(\Lambda(\mathcal X_{ij})\)">\(\Lambda(\mathcal X_{ij})\)</span> and <span class="math" data-tex="\(\Lambda(\mathcal Z_{ij})\)">\(\Lambda(\mathcal Z_{ij})\)</span> for <span class="math" data-tex="\(i\le j\)">\(i\le j\)</span>, and <span class="math" data-tex="\(\Lambda(\eta\cos\theta)\)">\(\Lambda(\eta\cos\theta)\)</span>, <span class="math" data-tex="\(\Lambda(\eta\sin\theta)\)">\(\Lambda(\eta\sin\theta)\)</span>, <span class="math" data-tex="\(\Lambda(\xi)\)">\(\Lambda(\xi)\)</span>, and they are distinct basis coordinates. Substitute the entries of <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> for these coordinates in <span class="math" data-tex="\(H(\Lambda)\)">\(H(\Lambda)\)</span>, and let the other <span class="math" data-tex="\(330-23=307\)">\(330-23=307\)</span> coordinates be the auxiliary variables <span class="math" data-tex="\(v\)">\(v\)</span>. The result is a fixed linear pencil <span class="math" data-tex="\(\sum_\nu x_\nu A_\nu+\sum_jv_jG_j\)">\(\sum_\nu x_\nu A_\nu+\sum_jv_jG_j\)</span> of size <span class="math" data-tex="\(5\cdot20=100\)">\(5\cdot20=100\)</span>, with no constant term, and by Proposition 6.2 the set of <span class="math" data-tex="\(x\)">\(x\)</span> for which some <span class="math" data-tex="\(v\)">\(v\)</span> makes it positive semidefinite is exactly <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Theorem A excludes affine representations in the original coordinates as well. If a cone <span class="math" data-tex="\(K\ni0\)">\(K\ni0\)</span> equals <span class="math" data-tex="\(\{x:A_0+L(x)\succeq0\}\)">\(\{x:A_0+L(x)\succeq0\}\)</span> with <span class="math" data-tex="\(L\)">\(L\)</span> linear, then <span class="math" data-tex="\(A_0\succeq0\)">\(A_0\succeq0\)</span>; for <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span> and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(tx\in K\)">\(tx\in K\)</span> gives <span class="math" data-tex="\(A_0/t+L(x)\succeq0\)">\(A_0/t+L(x)\succeq0\)</span>, and <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span> gives <span class="math" data-tex="\(L(x)\succeq0\)">\(L(x)\succeq0\)</span>; conversely <span class="math" data-tex="\(L(x)\succeq0\)">\(L(x)\succeq0\)</span> implies <span class="math" data-tex="\(A_0+L(x)\succeq0\)">\(A_0+L(x)\succeq0\)</span>. So <span class="math" data-tex="\(K=\{L\succeq0\}\)">\(K=\{L\succeq0\}\)</span>, which Theorem A excludes. The sizes <span class="math" data-tex="\(100\)">\(100\)</span> and <span class="math" data-tex="\(307\)">\(307\)</span> in Theorem C are not claimed to be the least possible.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>6.1</strong> (easy). Check <span class="math" data-tex="\(\dim\mathcal T_7=15\)">\(\dim\mathcal T_7=15\)</span>, <span class="math" data-tex="\(\dim\mathcal E=330\)">\(\dim\mathcal E=330\)</span>, and that the entries of <span class="math" data-tex="\(L_\theta\)">\(L_\theta\)</span>, multiplied by two entries of a vector in <span class="math" data-tex="\((\mathcal T_2)^{20}\)">\((\mathcal T_2)^{20}\)</span>, lie in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>.</p>
+<p><strong>6.2</strong> (medium). Show that a convex combination of evaluation functionals at points <span class="math" data-tex="\((\theta_m,X,Z,\eta_m,\xi_m)\)">\((\theta_m,X,Z,\eta_m,\xi_m)\)</span> with <span class="math" data-tex="\(Y_{\theta_m}(\eta_m,\xi_m)=y\)">\(Y_{\theta_m}(\eta_m,\xi_m)=y\)</span> for all <span class="math" data-tex="\(m\)">\(m\)</span> is feasible when <span class="math" data-tex="\((X,Z,y)\in K\)">\((X,Z,y)\in K\)</span>. Why does Proposition 6.2 not need every feasible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> to be of this form?</p>
+<p><strong>6.3</strong> (medium). In Lemma 6.1, suppose <span class="math" data-tex="\(S=0\)">\(S=0\)</span>. Show that <span class="math" data-tex="\(g=h=0\)">\(g=h=0\)</span>, that <span class="math" data-tex="\(C(\theta)=R_0\)">\(C(\theta)=R_0\)</span> for all <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, and that both identities hold trivially.</p>
+<p><strong>6.4</strong> (easy). In Step 3, explain why the coefficient of <span class="math" data-tex="\(t\)">\(t\)</span> must vanish in an inequality <span class="math" data-tex="\(A-2tB\ge0\)">\(A-2tB\ge0\)</span> that holds for all real <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(\mathcal T_7\)">\(\mathcal T_7\)</span> has the basis <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\cos\ell\theta,\sin\ell\theta\)">\(\cos\ell\theta,\sin\ell\theta\)</span> for <span class="math" data-tex="\(1\le\ell\le7\)">\(1\le\ell\le7\)</span>: <span class="math" data-tex="\(15\)">\(15\)</span> functions; <span class="math" data-tex="\(22\cdot15=330\)">\(22\cdot15=330\)</span>. The entries of <span class="math" data-tex="\(L_\theta\)">\(L_\theta\)</span> are linear in the coordinates with coefficients of degree at most <span class="math" data-tex="\(3\)">\(3\)</span>, and a product of two trigonometric polynomials of degrees at most <span class="math" data-tex="\(2\)">\(2\)</span> has degree at most <span class="math" data-tex="\(4\)">\(4\)</span>; the total degree is at most <span class="math" data-tex="\(7\)">\(7\)</span>.</p>
+<p><strong>6.2.</strong> Each evaluation functional satisfies the output equations and gives <span class="math" data-tex="\(\Lambda(q^{\mathsf T}L_\theta q)=q(\theta_m)^{\mathsf T}L_{\theta_m}q(\theta_m)\ge0\)">\(\Lambda(q^{\mathsf T}L_\theta q)=q(\theta_m)^{\mathsf T}L_{\theta_m}q(\theta_m)\ge0\)</span> by Proposition 5.3, and both conditions are preserved by convex combinations. Proposition 6.2 derives membership in <span class="math" data-tex="\(K\)">\(K\)</span> from the test inequalities alone, which every feasible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> satisfies; it never represents <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p><strong>6.3.</strong> If <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, then <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, so <span class="math" data-tex="\(v=0\)">\(v=0\)</span> and <span class="math" data-tex="\(g=h=0\)">\(g=h=0\)</span>; hence <span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span>, <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, <span class="math" data-tex="\(M=I\)">\(M=I\)</span> and <span class="math" data-tex="\(C=R_0\)">\(C=R_0\)</span>. The Gram identity is Lemma 5.1, and both sides of the pairing identity vanish.</p>
+<p><strong>6.4.</strong> If <span class="math" data-tex="\(B\ne0\)">\(B\ne0\)</span>, take <span class="math" data-tex="\(t\)">\(t\)</span> of the sign of <span class="math" data-tex="\(B\)">\(B\)</span> and large: <span class="math" data-tex="\(A-2tB&lt;0\)">\(A-2tB&lt;0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-LIFT] OpenAI, <em>An exact semidefinite lift of a nonspectrahedral hyperbolicity cone</em>, OpenAI Math Release preprint, 5 October 2026, Sections 3 and 4. https://github.com/openai/math/tree/main/preprints/An-Exact-Semidefinite-Lift-of-a-Nonspectrahedral-Hyperbolicity-Cone-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

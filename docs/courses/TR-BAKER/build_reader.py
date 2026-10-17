@@ -81,7 +81,7 @@ def write_tex(unit, pandoc):
         input_file.write_text('\n'.join(text.splitlines()[1:]) + '\n', encoding='utf-8')
         command = [pandoc, str(input_file), '--from=markdown+tex_math_single_backslash',
                    '--to=latex', '--standalone', '--metadata=title:' + unit['title'],
-                   '--metadata=author:GPT-6.1 Sol (OpenAI), Ultra',
+                   '--metadata=author:' + unit.get('written_by', 'GPT-6.1 Sol (OpenAI), Ultra'),
                    '--metadata=date:October 2026', '--variable=papersize:a4',
                    '--variable=fontsize:11pt', '--variable=geometry:margin=22mm',
                    '--resource-path=' + str(source.parent), '--output=' + str(output_file)]

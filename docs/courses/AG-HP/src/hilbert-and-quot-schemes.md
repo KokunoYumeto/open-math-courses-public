@@ -6,7 +6,7 @@ A sheaf quotient can be recovered from enough of its sections, provided the mean
 
 We give the construction over a Noetherian base with a coherent source, allowing that source and its module of sections to be nonflat. The test schemes are arbitrary. We then construct finite-point Hilbert schemes by explicit algebra charts and calculate the two-point scheme of the affine plane.
 
-The prerequisites are the representability and Plücker proofs in *Grassmannians*, the uniform kernel theorem in *Regularity and bounded families*, and the projective flattening theorem in *Flattening stratifications*. We also use the proper flat cohomology input [Stacks, Tag 0A1H], with its arbitrary-base consequences proved in the latter lesson, and the Noetherian discrete-valuation criterion for properness [Stacks, Tag 0208]. The corrected partial-coefficient strengthening discussed in the regularity lesson is not needed for the construction.
+The prerequisites are the representability and Plücker proofs in *Grassmannians*, the uniform kernel theorem in *Regularity and bounded families*, and the projective flattening theorem in *Flattening stratifications*. We also use the arbitrary-base perfect pushforward theorem, with its elementary cohomology consequences proved in the latter lesson, and the Noetherian discrete-valuation criterion for properness [Stacks, Tag 0208]. The corrected partial-coefficient strengthening discussed in the regularity lesson is not needed for the construction.
 
 ## 1 Quotients and their families
 
@@ -21,9 +21,14 @@ where \(G\) is finitely presented, flat over \(T\), and has support proper over 
 The Hilbert functor is the special case \(E=\mathcal O_X\). A submodule \(I\subset\mathcal O_{X_T}\) is an ideal, and its quotient is \(\mathcal O_Z\) for the corresponding closed subscheme \(Z\subset X_T\). Thus
 
 \[
-\operatorname{Hilb}_{X/S}(T)=
-\{Z\subset X_T\text{ closed}\mid Z\to T
-\text{ is proper, flat and of finite presentation}\}.
+\begin{gathered}
+\operatorname{Hilb}_{X/S}(T)=\\
+\left\{\begin{array}{l}
+Z\subset X_T\text{ closed}:\\
+Z\to T\text{ is proper, flat}\\
+\text{and of finite presentation}
+\end{array}\right\}.
+\end{gathered}
 \]
 
 This identification respects arbitrary base change. It also explains why a Hilbert family consists of embedded subschemes, rather than abstract schemes with an embedding chosen up to an unrelated isomorphism.
@@ -182,6 +187,49 @@ The proof shows precisely where three different hypotheses enter: regularity giv
 
 Flatness of \(X\to S\) is not needed for this corollary. It is the members \(Z\to T\) of the Hilbert functor that must be flat.
 
+### Arbitrary bases and proper algebraic spaces
+
+The Noetherian hypothesis in the construction above can be removed from properness. In the following theorem, a line bundle ample on a morphism of algebraic spaces has its usual meaning: the morphism is representable by schemes, and the bundle is relatively ample after every scheme base change. The base space itself need not be a scheme or Noetherian.
+
+**Theorem 4.3.** Let \(X\to S\) be proper and of finite presentation, let \(E\) be a finitely presented quasi-coherent sheaf, and let \(L\) be ample on \(X/S\). For every numerical polynomial \(P\), the functor \(\operatorname{Quot}^{P,L}_{E/X/S}\) is an algebraic space proper over \(S\). Its formation commutes with every base change. After an étale affine base change on \(S\), it is a projective scheme.
+
+**Proof.** The general Quot space, including its arbitrary-base-change property and separatedness, is Moduli stacks are algebraic, Theorem 6.2. The Hilbert polynomial of a flat finitely presented quotient with proper support is locally constant. This follows from the finite-projective cohomology complex for its twists: the first \(\dim\mathbf P^N+1\) Euler characteristics determine the polynomial on each projective chart. The fixed-polynomial condition therefore defines an open and closed subspace. We can also obtain that subspace directly from the local construction below, without first assuming its algebraicity.
+
+Pass to an étale affine chart \(\operatorname{Spec}R\to S\). Representability in the ampleness hypothesis makes \(X_R\) a scheme. The ample embedding theorem gives an immersion
+
+\[
+i:X_R\longrightarrow\mathbf P^N_R,
+\qquad i^*\mathcal O(1)=L^{\otimes d},\quad d>0.
+\]
+
+Properness of \(X_R\) makes this a closed immersion: its graph is closed because the target is separated, so the immersion is proper. It is of finite presentation. Indeed both schemes are of finite presentation over \(R\); a map between finitely presented algebras over one ring is finitely presented, by adjoining the finitely many equations for the images of its generators, and the resulting local assertion applies on the standard affine charts.
+
+Changing from \(L\) to \(L^{\otimes d}\) replaces \(P(t)\) by \(Q(t)=P(dt)\). This preserves the functor exactly. On a geometric fibre, if \(R_G(t)\) is the polynomial for \(G\) with respect to \(L\), its polynomial for \(L^{\otimes d}\) is \(R_G(dt)\). Equality \(R_G(dt)=P(dt)\) is equivalent to \(R_G=P\), because substitution by a positive integer is injective on \(\mathbf Q[t]\). This argument concerns integer Euler characteristics and works in every characteristic.
+
+Closed-immersion pushforward gives, on every parameter scheme, a natural identification
+
+\[
+\operatorname{Quot}^{P,L}_{E/X_R/R}
+\simeq
+\operatorname{Quot}^{Q,\mathcal O(1)}_{i_*E/\mathbf P^N_R/R}.
+\]
+
+For completeness, the ideal of \(X_R\) annihilates \(i_*E\), and hence annihilates every quotient of it. Such a quotient is uniquely the pushforward of a sheaf on \(X_R\). Its finite presentation, relative flatness and proper support have the same meaning before and after pushforward; this is checked on affine charts of the closed immersion. Conversely pushforward is exact and preserves these properties. Quotient equivalence is equality of kernels, so the two constructions are inverse. They commute with all pullbacks, and the projection formula identifies their Hilbert polynomials. The sheaf \(i_*E\) is finitely presented: on an affine chart, a finite presentation over a finitely presented quotient ring is a finite presentation over the original ring.
+
+Now descend only \(i_*E\) on the fixed projective space. Write \(R\) as the directed union of its finitely generated \(\mathbf Z\)-subalgebras. On the finitely many standard affine charts of \(\mathbf P^N_R\), choose finite module presentations. The overlaps and triple overlaps are principal localizations of those charts. The gluing isomorphisms, their inverses and their cocycle identities are specified by finitely many images of generators and finitely many relations. All coefficients and denominators belong to a common finitely generated subalgebra \(R_0\); enlarge it to a later stage so that all these finitely many identities hold. Thus there is a finitely presented sheaf \(E_0\) on \(\mathbf P^N_{R_0}\) whose pullback is \(i_*E\). This argument does not require the maps \(R_0\to R\) to be flat.
+
+The ring \(R_0\) is Noetherian. Theorem 4.1 constructs the projective scheme
+
+\[
+Q_0=\operatorname{Quot}^{Q,\mathcal O(1)}
+_{E_0/\mathbf P^N_{R_0}/R_0}.
+\]
+
+Its base change to \(R\) represents the required functor on **every** \(R\)-scheme: the pulled-back source sheaves agree, and finite presentation, flatness over the parameter scheme, support and the fibre polynomial are the same conditions. No new uniform regularity estimate over \(R\) is needed. Hence the fixed-polynomial space over our affine chart is projective and in particular proper.
+
+These local identifications agree on overlaps by their common functor, giving the specified subspace of the general Quot space. Properness is étale local on the base. One can see its closedness assertion directly: after any base change, the inverse image of the image of a closed subset is its image after the étale surjective base change, by the residue-field tensor-product argument. That image is closed on the covering, and an étale surjection has the quotient topology. Universal closedness therefore descends; finite type and separatedness descend too. This proves properness over arbitrary \(S\). Finally, restriction of the functor to any new base is exactly the same Quot functor for the pulled-back data, proving the base-change assertion. \(\square\)
+
+
 ## 5 Finite points on affine schemes
 
 For separated \(X\to S\), let \(\operatorname{Hilb}^d_{X/S}\) classify closed subschemes \(Z\subset X_T\) finite locally free of degree \(d\) over \(T\). For projective \(X\), it is the Hilbert functor of constant polynomial \(d\): a proper finitely presented family with zero-dimensional fibres is finite, and its flat finite algebra is locally free of rank \(d\).
@@ -202,8 +250,10 @@ Choose \(d\) monomials \(m_1=1,m_2,\ldots,m_d\) from this finite set. For any fi
 On this basis open, multiplication by \(z_i\) is a \(d\)-by-\(d\) matrix \(Z_i\). The quotient algebra is specified by the equations
 
 \[
-[Z_i,Z_j]=0,\qquad f_a(Z_1,\ldots,Z_n)=0,
-\qquad m_j(Z_1,\ldots,Z_n)e_1=e_j.
+\begin{gathered}
+[Z_i,Z_j]=0,\qquad f_a(Z_1,\ldots,Z_n)=0,\\
+m_j(Z_1,\ldots,Z_n)e_1=e_j.
+\end{gathered}
 \]
 
 They are finitely many polynomial equations in the matrix entries. Conversely, matrices satisfying these equations give an action of \(C_B\) on \(B^d\), and the map
@@ -243,8 +293,10 @@ y^2=a'+b'y,\qquad x=c'+d'y.
 The overlap of the charts is \(d\ne0\). Substituting \(x=(y-c)/d\) and expanding gives
 
 \[
-a'=d^2a-c^2-bcd,\qquad b'=2c+bd,
-\qquad c'=-c/d,\qquad d'=1/d.
+\begin{gathered}
+a'=d^2a-c^2-bcd,\\
+b'=2c+bd,\qquad c'=-c/d,\qquad d'=1/d.
+\end{gathered}
 \]
 
 These changes are inverse to the analogous changes with primed variables. They are valid in every characteristic, including characteristic two. Both charts are smooth affine four-spaces, so the glued scheme is smooth of dimension four. \(\square\)
@@ -293,9 +345,11 @@ k[[a_{i,j}\mid 1\leq j\leq d_i]].
 On the symmetric quotient, take an ordered tuple representing \(D\). Its stabilizer is \(\prod_i\mathfrak S_{d_i}\). Completion of the invariant affine quotient ring is the invariants of the product of completed local rings at its orbit: the coordinate ring upstairs is finite over the invariant ring, completion is flat over that invariant ring, and invariants are the kernel of the finite list of maps \(b\mapsto\sigma b-b\). Flat completion preserves this kernel. The group permutes the orbit factors transitively, leaving the invariants of one factor under its stabilizer. This gives
 
 \[
-\widehat{\mathcal O}_{\operatorname{Sym}^d C,D}
-=k[[u_{i,1},\ldots,u_{i,d_i}]]^{\prod_i\mathfrak S_{d_i}}
+\begin{gathered}
+\widehat{\mathcal O}_{\operatorname{Sym}^d C,D}\\
+=k[[u_{i,1},\ldots,u_{i,d_i}]]^{\prod_i\mathfrak S_{d_i}}\\
 =k[[e_{i,1},\ldots,e_{i,d_i}]],
+\end{gathered}
 \]
 
 where \(e_{i,j}\) is the \(j\)-th elementary symmetric polynomial in the \(i\)-th cluster. The final equality holds in every characteristic: apply the fundamental theorem of symmetric polynomials to each homogeneous degree of a symmetric series and pass to completion. Its weighted-degree topology agrees with the power-series topology, since all the weights \(j\) are positive. No averaging by the order of the group is used.
@@ -396,7 +450,7 @@ Indeed, after inverting \(h\) it is the ideal of the two graphs. Its quotient is
 B\longrightarrow\operatorname{Hilb}^2_S.
 \]
 
-For a general separated surface, existence of the geometric categorical quotient \(Q=B/\mathfrak S_2\) as a separated algebraic space, and finiteness of \(B\to Q\), are the finite-group case of Keel–Mori, *Quotients by groupoids*, Corollary 1.2 and Lemma 6.3. Algebraicity of the Hilbert functor is [Stacks, Tag 0D01]. For a quasi-projective surface the quotient may instead be constructed from invariant affine neighbourhoods of finite orbits, exactly as in Section 7. The invariant family descends to a morphism \(q:Q\to\operatorname{Hilb}^2_S\).
+For a general separated surface, existence of the geometric categorical quotient \(Q=B/\mathfrak S_2\) as a separated algebraic space, and finiteness of \(B\to Q\), are the finite-group case of Keel–Mori, *Quotients by groupoids*, Corollary 1.2 and Lemma 6.3. Algebraicity of the Hilbert functor is proved in Moduli stacks are algebraic, Corollary 6.3. For a quasi-projective surface the quotient may instead be constructed from invariant affine neighbourhoods of finite orbits, exactly as in Section 7. The invariant family descends to a morphism \(q:Q\to\operatorname{Hilb}^2_S\).
 
 We identify its completed local rings explicitly. In the affine-plane blow-up chart set
 
@@ -476,8 +530,10 @@ For a general divisor \(\sum d_i p_i\), idempotents lift across nilpotent ideals
 **Solution.** In the open where \(1,x\) is a basis, a quotient has unique relations \(x^2=a+bx\) and \(y=c+dx\), with \(a,b,c,d\) arbitrary. These relations conversely give the free algebra \(R[x]/(x^2-bx-a)\) and a surjection from \(R[x,y]\). Thus this open is \(\mathbb A^4\). There is a second \(\mathbb A^4\) where \(1,y\) is a basis. They cover: on a field fibre, if neither \(x\) nor \(y\) is independent from \(1\), both are scalars and cannot generate a two-dimensional algebra. The first basis changes to the second exactly when \(d\) is invertible, since its determinant is \(d\). Substitution yields
 
 \[
-a'=d^2a-c^2-bcd,\qquad b'=2c+bd,
-\qquad c'=-c/d,\qquad d'=1/d.
+\begin{gathered}
+a'=d^2a-c^2-bcd,\\
+b'=2c+bd,\qquad c'=-c/d,\qquad d'=1/d.
+\end{gathered}
 \]
 
 The corresponding formula with primes inverted returns \(a,b,c,d\), so these identify the two basis opens. Smoothness and dimension four hold on both charts and hence globally. In characteristic two only the summand \(2c\) vanishes; the chart and its invertible transition remain valid.
@@ -505,8 +561,8 @@ The uniform regularity, projective flattening, Grassmannian representation and P
 - The Noetherian discrete-valuation criterion for properness is [Stacks, Tag 0208]. We use it only for the finite-type separated morphism over a Noetherian base obtained above.
 - Artin–Tate [Stacks, Tag 00IS], flatness and faithful flatness of Noetherian completion [Stacks, Tags 00MB–00MC], and the étale open-immersion criteria [Stacks, Tags 02GV, 02LC and 05W5] are commutative-algebra and descent inputs. The effect of completion on the invariant rings and its use in the curve and surface morphisms were explained above.
 - A smooth separated finite-type curve has affine neighbourhoods of finite sets: an irreducible regular curve is affine or projective, and removing a closed point from the latter is affine [Stacks, Tag 0A27]. Also \(\operatorname{Pic}(\mathbb P^n_k)=\mathbb Z\) for \(n\geq1\) [Stacks, Tag 0BXJ]. The relative fibrewise Cartier criterion is [Stacks, Tag 062Y].
-- For a separated finitely presented morphism \(X\to S\) and a quasi-coherent source \(E\), the Quot functor above is an algebraic space [Stacks, Tag 09TU]; if \(E\) is finitely presented, it is locally of finite presentation over \(S\). The Hilbert functor is an algebraic space locally of finite presentation [Stacks, Tag 0D01]. These are Artin-style algebraicity theorems. Our projective scheme construction is independent of their proofs; the general surface example uses the Hilbert-space statement.
-- More generally, let \(X\to S\) be a proper morphism of finite presentation of algebraic spaces, let \(E\) be finitely presented, and let \(L\) be relatively ample. For a fixed polynomial \(P\), the algebraic space \(\operatorname{Quot}^{P,L}_{E/X/S}\) is proper over \(S\) [Stacks, Tag 0DPC]. The base need not be Noetherian. This general statement is imported; Theorem 4.1 proves properness directly for the projective Noetherian scheme setting used in our construction.
+- For a separated finitely presented morphism \(X\to S\) and an arbitrary quasi-coherent source \(E\), the general Quot functor is an algebraic space; when \(E\) is finitely presented, it is locally of finite presentation. The Hilbert functor is a separated algebraic space locally of finite presentation. These are proved in Moduli stacks are algebraic, Theorem 6.2 and Corollary 6.3, including all parameter schemes and proper-support conditions. Their Stacks comparisons are Tags 09TU and 0D01. The projective construction in Theorem 4.1 does not use these general algebraicity results; the general surface example does use the Hilbert-space theorem.
+- More generally, let \(X\to S\) be a proper morphism of finite presentation of algebraic spaces, let \(E\) be finitely presented, and let \(L\) be relatively ample. For a fixed polynomial \(P\), the algebraic space \(\operatorname{Quot}^{P,L}_{E/X/S}\) is proper over \(S\) [Stacks, Tag 0DPC]. The base need not be Noetherian. Theorem 4.3 proves this general properness statement, by projective embedding, exact polynomial rescaling and finite-presentation descent to a Noetherian coefficient ring. Theorem 4.1 supplies the projective scheme used in that proof.
 - For a finite group acting on a separated finite-type scheme over a field, the geometric categorical quotient exists as a separated algebraic space and its quotient morphism is finite. This is the finite-group specialization of Keel–Mori, *Quotients by groupoids*, Corollary 1.2 and Lemma 6.3. Only existence outside the affine-neighbourhood situation is imported in Proposition 9.1; the identification with the two-point Hilbert space is proved here.
 - The compactified twisted-cubic component and the other component, with the dimensions and intersection stated in Section 10, are Heinrich–Skjelnes–Stevens, *The space of twisted cubics*, Proposition A.1 and Remark A.2. We do not reproduce their boundary classification. The cubic-surface degree and tangent assertion is proved in the later tangent–obstruction lesson.
 
@@ -519,3 +575,5 @@ The fixed-polynomial projectivity theorem has been proved with a possibly nonfla
 - The Stacks project: [Quot and Hilbert spaces](https://stacks.math.columbia.edu/tag/082L), particularly Tags 09TU and 0D01; [properness criterion](https://stacks.math.columbia.edu/tag/0208); [relative Cartier criterion](https://stacks.math.columbia.edu/tag/062Y). The tagged results are read in the AI Integrated Stacks Project edition.
 - Keel and Mori, *Quotients by groupoids*, Corollary 1.2, Proposition 5.1 and Lemma 6.3. [Author's paper](https://arxiv.org/abs/alg-geom/9508012).
 - Heinrich, Skjelnes and Stevens, *The space of twisted cubics*, Épijournal de Géométrie Algébrique **5** (2021), Article 10, Appendix A. [Published paper](https://epiga.episciences.org/7539).
+
+Linked programme proofs retain their own component licences. In particular, *Moduli stacks are algebraic* is distributed as a GNU FDL 1.2-or-later chapter with separately identified CC0 passages. This lesson's independently written text is dedicated to CC0.

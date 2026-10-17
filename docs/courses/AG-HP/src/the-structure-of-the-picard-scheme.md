@@ -19,8 +19,10 @@ Write $P=\operatorname{Pic}_{X/k}$ for the scheme representing the fppf Picard s
 Condition (1.1) holds universally. Indeed, choose a finite affine covering of $X$. Since $X$ is separated, its finite intersections are affine, and the Čech complex computes coherent cohomology. For any $k$-algebra $A$, tensoring that complex with $A$ is exact on cohomology because $A$ is flat over $k$. Thus
 
 $$
-H^i(X_A,\mathcal O_{X_A})=H^i(X,\mathcal O_X)\otimes_k A,
-\qquad H^0(X_A,\mathcal O_{X_A})=A. \tag{1.2}
+\begin{gathered}
+H^i(X_A,\mathcal O_{X_A})=H^i(X,\mathcal O_X)\otimes_k A,\\
+H^0(X_A,\mathcal O_{X_A})=A.
+\end{gathered} \tag{1.2}
 $$
 
 The same argument works with coefficients in any $k$-vector space. Consequently the presheaf
@@ -51,18 +53,20 @@ $$
 The underlying topological spaces of $X_D$ and $X$ are identical. Their sheaves of units fit into a split exact sequence of abelian sheaves on the Zariski site of $X$:
 
 $$
-0\longrightarrow \mathcal O_X
+0\to \mathcal O_X
 \xrightarrow{a\mapsto 1+\epsilon a}
 \mathcal O_{X_D}^{\times}
-\longrightarrow \mathcal O_X^{\times}
-\longrightarrow 1. \tag{2.2}
+\to \mathcal O_X^{\times}
+\to 1. \tag{2.2}
 $$
 
 The multiplication rule $(1+\epsilon a)(1+\epsilon b)=1+\epsilon(a+b)$ identifies the kernel with the additive sheaf $\mathcal O_X$. Constants provide the splitting. Since first cohomology of units classifies line bundles, taking cohomology gives
 
 $$
-\ker\bigl(\operatorname{Pic}(X_D)\to\operatorname{Pic}(X)\bigr)
-\simeq H^1(X,\mathcal O_X). \tag{2.3}
+\begin{gathered}
+\ker\bigl(\operatorname{Pic}(X_D)\to\operatorname{Pic}(X)\bigr)\\
+\simeq H^1(X,\mathcal O_X).
+\end{gathered} \tag{2.3}
 $$
 
 The resulting map to (2.1) is injective by (1.3), since $\operatorname{Pic}(D)=0$. It is surjective if $k$ is algebraically closed, by (1.4).
@@ -90,25 +94,27 @@ The tangent dimension depends on $X$, not on the chosen bundle.
 A small extension of local Artin $k$-algebras with residue field $k$ is a surjection
 
 $$
-0\longrightarrow J\longrightarrow A'\longrightarrow A\longrightarrow 0,
-\qquad \mathfrak m_{A'}J=0. \tag{3.1}
+\begin{gathered}
+0\longrightarrow J\longrightarrow A'\longrightarrow A\longrightarrow 0,\\
+\mathfrak m_{A'}J=0.
+\end{gathered} \tag{3.1}
 $$
 
 The ideal $J$ is a finite-dimensional $k$-vector space and $J^2=0$. We deform a bundle on the fixed schemes $X_{A'}\to X_A$; we are not simultaneously deforming $X$. There is an exact sequence
 
 $$
-0\longrightarrow \mathcal O_X\otimes_k J
-\xrightarrow{u\mapsto 1+u}
-\mathcal O_{X_{A'}}^{\times}
-\longrightarrow \mathcal O_{X_A}^{\times}
-\longrightarrow 1. \tag{3.2}
+\begin{gathered}
+0\to \mathcal O_X\otimes_k J
+\xrightarrow{u\mapsto 1+u}\mathcal O_{X_{A'}}^{\times}\\
+\longrightarrow \mathcal O_{X_A}^{\times}\longrightarrow 1.
+\end{gathered} \tag{3.2}
 $$
 
 Exactness on the right is local: a lift of an invertible element remains invertible across a nilpotent ideal. Cohomology gives a connecting map
 
 $$
 \delta_{A'/A}:\operatorname{Pic}(X_A)
-\longrightarrow H^2(X,\mathcal O_X)\otimes_k J. \tag{3.3}
+\to H^2(X,\mathcal O_X)\otimes_k J. \tag{3.3}
 $$
 
 **Theorem 3.1.** A line bundle $L_A$ on $X_A$ lifts to a line bundle on $X_{A'}$ if and only if $\delta_{A'/A}(L_A)=0$. If it lifts, its isomorphism classes of lifts form a torsor under $H^1(X,\mathcal O_X)\otimes_k J$. For lifts equipped with an identification of their reduction with $L_A$, the automorphisms inducing the identity on $L_A$ are the additive group $J$.
@@ -116,12 +122,13 @@ $$
 **Proof.** The relevant part of the cohomology sequence is
 
 $$
-H^0(\mathcal O_{X_{A'}}^{\times})\longrightarrow
-H^0(\mathcal O_{X_A}^{\times})\longrightarrow
-H^1(\mathcal O_X\otimes J)\longrightarrow
-\operatorname{Pic}(X_{A'})\longrightarrow
-\operatorname{Pic}(X_A)\xrightarrow{\delta_{A'/A}}
-H^2(\mathcal O_X\otimes J). \tag{3.4}
+\begin{aligned}
+H^0(\mathcal O_{X_{A'}}^{\times})&\longrightarrow H^0(\mathcal O_{X_A}^{\times})\\
+&\longrightarrow H^1(\mathcal O_X\otimes J)\\
+&\longrightarrow\operatorname{Pic}(X_{A'})\\
+&\longrightarrow\operatorname{Pic}(X_A)\\
+&\xrightarrow{\delta_{A'/A}}H^2(\mathcal O_X\otimes J).
+\end{aligned} \tag{3.4}
 $$
 
 By (1.2), the first arrow is $A'^{\times}\to A^{\times}$, which is surjective. Thus $H^1(\mathcal O_X\otimes J)$ injects into $\operatorname{Pic}(X_{A'})$ and is exactly the kernel of the reduction map. Exactness proves the lifting criterion. If one lift exists, tensoring by the elements of this kernel acts freely and transitively on all lifts. Cohomology with vector-space coefficients gives $H^i(\mathcal O_X\otimes J)=H^i(\mathcal O_X)\otimes J$.
@@ -133,9 +140,10 @@ Here is the obstruction as a cocycle, including the choices. Choose a finite aff
 Choose transitions $g_{ij}\in\mathcal O_{X_A}^{\times}(U_i\cap U_j)$, with $g_{ji}=g_{ij}^{-1}$, and arbitrary lifts $\widetilde g_{ij}$ to $X_{A'}$, again with inverse transitions. On a triple intersection write
 
 $$
-\widetilde g_{ij}\widetilde g_{jk}\widetilde g_{ki}
-=1+c_{ijk},\qquad c_{ijk}\in(\mathcal O_X\otimes J)(U_i\cap U_j\cap U_k).
-\tag{3.5}
+\begin{gathered}
+\widetilde g_{ij}\widetilde g_{jk}\widetilde g_{ki}=1+c_{ijk},\\
+c_{ijk}\in(\mathcal O_X\otimes J)(U_i\cap U_j\cap U_k).
+\end{gathered} \tag{3.5}
 $$
 
 On quadruple intersections associativity and commutativity give
@@ -160,7 +168,7 @@ This proves formal smoothness on local Artin tests at the identity. The finite-t
 
 Translation carries the identity to each $\bar k$-point of $P$. Consequently $P$ is smooth at all closed points. The smooth locus is open, and any nonempty closed subset of a scheme locally of finite type over an algebraically closed field has a closed point. The nonsmooth locus is therefore empty. Descent gives smoothness over $k$. ∎
 
-The characteristic-zero criterion has a different mechanism. Its essential input is the characteristic-zero differential criterion: a scheme locally of finite type over a characteristic-zero field with locally free sheaf of Kähler differentials is smooth [Stacks, Tag 04QN]. We now prove that a group scheme satisfies that hypothesis.
+The characteristic-zero criterion has a different mechanism. Its algebraic ingredient is the characteristic-zero differential criterion: a scheme locally of finite type over a characteristic-zero field with locally free sheaf of Kähler differentials is smooth. The derivation and regular-parameter proof is Lie algebras and smoothness of group schemes, Lemmas 4.1–4.2. We now prove that a group scheme satisfies that hypothesis.
 
 **Lemma 4.2.** If $G$ is a group scheme over a field $k$, with identity $e$, then
 
@@ -171,9 +179,10 @@ $$
 **Proof.** The map
 
 $$
-G\times G\longrightarrow G\times G,
-\qquad (g,h)\longmapsto(gh,h)
-\tag{4.2}
+\begin{gathered}
+G\times G\longrightarrow G\times G,\\
+(g,h)\longmapsto(gh,h).
+\end{gathered} \tag{4.2}
 $$
 
 is an isomorphism over the second factor, with inverse $(a,h)\mapsto(ah^{-1},h)$. Relative differentials over that factor are the pullback of $\Omega_{G/k}$ from the first factor. Pull the resulting differential isomorphism back along $h\mapsto(e,h)$. On one side its first-coordinate map is $h\mapsto h$, and on the other it is the constant map $h\mapsto e$. This gives exactly (4.1). This argument does not assume that $G$ is reduced or smooth. ∎
@@ -185,19 +194,21 @@ is an isomorphism over the second factor, with inverse $(a,h)\mapsto(ah^{-1},h)$
 The proof deliberately specifies the algebraic input. In positive characteristic locally free differentials do not imply smoothness. For example $\mu_p$ in characteristic $p$ has coordinate ring
 
 $$
-k[z,z^{-1}]/(z^p-1)=k[u]/(u^p),\qquad u=z-1.
-\tag{4.3}
+\begin{gathered}
+k[z,z^{-1}]/(z^p-1)=k[u]/(u^p),\\
+u=z-1.
+\end{gathered} \tag{4.3}
 $$
 
 Its sheaf of differentials is freely generated by $du$ because $d(u^p)=0$, yet its underlying scheme is nonreduced and zero-dimensional. Its tangent space at the identity has dimension one. This is exactly the phenomenon that the characteristic-zero criterion excludes.
 
 ## 5. The identity component and the dimension bound
 
-Let $P^0$ be the connected component containing the identity, with its canonical group-scheme structure. We use the general group-scheme theorem [Stacks, Tag 0B7R]: for a group scheme locally of finite type over a field, the identity component is a closed, quasi-compact, geometrically irreducible subgroup scheme. In particular it is of finite type. It is also open here. Indeed a locally Noetherian scheme is locally connected: each Noetherian open has finitely many connected components, which are open. A connected neighbourhood of the identity lies in its connected component, and the same reasoning at every point makes that component open.
+Let $P^0$ be the connected component containing the identity, with its canonical group-scheme structure. We use Group schemes over a field, Theorem 2.3: for a group scheme locally of finite type over a field, the identity component is a closed, quasi-compact, geometrically irreducible subgroup scheme. In particular it is of finite type. It is also open here. Indeed a locally Noetherian scheme is locally connected: each Noetherian open has finitely many connected components, which are open. A connected neighbourhood of the identity lies in its connected component, and the same reasoning at every point makes that component open.
 
 Hence $P^0$ is open and closed in $P$. Its formation commutes with field extension: its base change is geometrically connected and open and closed, contains the identity, and therefore is precisely the identity component after base change. This is also the assertion of Kleiman, Proposition 5.3.
 
-The superscript $0$ retains the whole scheme structure. It does not mean the reduction $(P^0)_{\mathrm{red}}$. Over a perfect field the reduction of a finite-type group scheme is a smooth subgroup scheme: products of reduced schemes remain reduced, so multiplication restricts to the reduction, and generic smoothness followed by translations makes that reduced group smooth. Over an imperfect field, neither this product argument nor this smoothness assertion is automatic. Our dimension and tangent arguments use $P^0$, with its possible nilpotents, over every field.
+The superscript $0$ retains the whole scheme structure. It does not mean the reduction $(P^0)_{\mathrm{red}}$. Over a perfect field the reduction of a finite-type group scheme is a smooth subgroup scheme, by Group schemes over a field, Proposition 4.1 and Lie algebras and smoothness of group schemes, Theorem 5.1: products of reduced schemes remain reduced, so multiplication restricts to the reduction, and generic smoothness followed by translations makes that reduced group smooth. Over an imperfect field, neither this product argument nor this smoothness assertion is automatic. Our dimension and tangent arguments use $P^0$, with its possible nilpotents, over every field.
 
 **Theorem 5.1.** Under (1.1),
 
@@ -212,9 +223,11 @@ and equality holds if and only if $P^0$ is smooth over $k$. Equivalently, equali
 For completeness, the local algebra inequality can be seen directly. Lift a basis of $\mathfrak m_R/\mathfrak m_R^2$ to $t$ elements of $R$. They give a surjective map
 
 $$
-\bar k[[x_1,\ldots,x_t]]\longrightarrow \widehat R,
-\qquad \widehat R=\bar k[[x_1,\ldots,x_t]]/I,
-\quad I\subset(x_1,\ldots,x_t)^2. \tag{5.2}
+\begin{gathered}
+\bar k[[x_1,\ldots,x_t]]\longrightarrow \widehat R,\\
+\widehat R=\bar k[[x_1,\ldots,x_t]]/I,\\
+I\subset(x_1,\ldots,x_t)^2.
+\end{gathered} \tag{5.2}
 $$
 
 Surjectivity follows by successively approximating any element modulo powers of the maximal ideal; completeness then takes the limit. The condition on $I$ follows from the chosen tangent basis. Thus $d=\dim\widehat R\leq t$. If $d=t$, then $I=0$: the power-series ring is a regular local domain of dimension $t$, and its quotient by any nonzero ideal has dimension at most $t-1$. Therefore $R$ is regular. Over an algebraically closed field, regularity of a finite-type scheme at a closed point is equivalent to smoothness there. Translation gives smoothness on all of $P$ as in Theorem 4.1, and faithful-flat descent gives smoothness over the original $k$.
@@ -251,14 +264,13 @@ Here is the exact finiteness theorem used in this lesson.
 
 **Finiteness input (the theorem of the base).** For every proper scheme $X$ over an algebraically closed field, $\operatorname{Pic}(X)/P^0(k)$ is a finitely generated abelian group. More generally, for a proper morphism $X\to S$ with $S$ Noetherian, the ranks and the orders of the torsion subgroups of the geometric-fibre Néron–Severi groups are bounded by a single integer. We use [AI Integrated Stacks Project, moduli.tex, [theorem-picard-neron-severi-uniform-bounds](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/moduli.html#moduli-theorem-picard-neron-severi-uniform-bounds)], whose displayed quotient is by $P^0$, together with its first statement, item (vi) of Grothendieck's [complement to FGA, Exposé 236](https://www.numdam.org/item/SB_1961-1962__7__303_1/). The proof of the bounds in this generality is due to Kleiman (1971); see Kleiman, *The Picard scheme*, Corollary 6.17 and Remark 6.19. This theorem is stated here, not reproved.
 
-There is an arithmetic distinction when $k$ is not algebraically closed. Define
+There is an arithmetic distinction when $k$ is not algebraically closed. View actual line-bundle classes as a subgroup of $P(k)$ by (1.3), and define
 
 $$
-\operatorname{Pic}^0(X)=
-\{L\in\operatorname{Pic}(X):[L]\in P^0(k)\},
-\qquad
-\operatorname{NS}_{\mathrm{arith}}(X)=
-\operatorname{Pic}(X)/\operatorname{Pic}^0(X). \tag{6.3}
+\begin{gathered}
+\operatorname{Pic}^0(X)=\operatorname{Pic}(X)\cap P^0(k),\\
+\operatorname{NS}_{\mathrm{arith}}(X)=\operatorname{Pic}(X)/\operatorname{Pic}^0(X).
+\end{gathered} \tag{6.3}
 $$
 
 The actual-bundle group $\operatorname{Pic}(X)$ injects into $P(k)$ by (1.3). Its pullback to $P(\bar k)$ is injective too, because equality of two $k$-points of a scheme can be checked faithfully flatly. Formation of $P^0$ commutes with field extension. It follows that (6.3) injects into (6.2). Thus the arithmetic group is finitely generated as a subgroup of a finitely generated abelian group, but it need not equal the geometric group. A real conic has only even degrees of actual real line bundles, while its geometric Néron–Severi group is $\mathbb Z$.
@@ -289,8 +301,10 @@ The quotient in (7.2) can be étale even when $P^\tau$ itself is nonreduced. Nil
 For numerical equivalence, work geometrically. An invertible sheaf $L$ on a proper $X/\bar k$ is numerically trivial if
 
 $$
-\deg(\nu^*L)=0 \quad\text{for every integral curve }C\subset X,
-\tag{7.3}
+\begin{gathered}
+\deg(\nu^*L)=0\\
+\text{for every integral curve }C\subset X.
+\end{gathered} \tag{7.3}
 $$
 
 where $\nu:\widetilde C\to C\hookrightarrow X$ is its normalization. Degrees can also be defined by Euler characteristics on $C$; the zero-degree condition is unchanged by normalization.
@@ -302,10 +316,12 @@ If $L^{\otimes n}$ is algebraically trivial, then $n\deg(\nu^*L)=0$; the integer
 We use the converse as a second precise finiteness input: for every proper $X$ over an algebraically closed field,
 
 $$
-L\text{ is numerically trivial}
-\quad\Longleftrightarrow\quad
-L^{\otimes n}\text{ is algebraically trivial for some }n\geq1.
-\tag{7.4}
+\begin{gathered}
+L\text{ is numerically trivial}\\
+\Longleftrightarrow\\
+\text{there is }n\geq1\text{ such that}\\
+L^{\otimes n}\text{ is algebraically trivial}.
+\end{gathered} \tag{7.4}
 $$
 
 It is stated in [AI Integrated Stacks Project, moduli.tex, [theorem-picard-tau-numerical-criteria](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/moduli.html#moduli-theorem-picard-tau-numerical-criteria)] and, for every proper scheme over a field, in item (viii) of Grothendieck's complement to FGA, Exposé 236. For projective $X$, Kleiman, *The Picard scheme*, Theorem 6.3 gives the equivalent numerical, boundedness, and Euler-characteristic formulations; Remark 6.14 explains the extension to proper $X$. We have proved the forward implication from torsion of the component class to numerical triviality, and import the converse in the direction from numerical triviality to torsion of the component class.
@@ -322,7 +338,7 @@ Equation (7.4) concerns the whole numerical subgroup. It does not make every num
 
 The curve construction in the preceding two lessons proves that the degree-$d$ subschemes are open and closed, geometrically integral, and proper. Here is the properness mechanism again. For $d\geq0$ with $d>2g-2$, the Abel map $\operatorname{Sym}^d C\to\operatorname{Pic}^d_{C/k}$ is surjective on every geometric fibre and has projective-space fibres by Riemann–Roch and Serre duality. The symmetric power is proper. For any base change, the image of the inverse image of a closed subset is its image under the Picard structure map, by surjectivity; that image is closed because the symmetric power is proper. Finite type and separatedness of the degree piece therefore make it proper. Geometric translation carries this assertion to every degree, in particular degree zero.
 
-The degree-zero piece is geometrically integral, contains the identity, and is therefore exactly $P^0$. A smooth proper geometrically connected group scheme over a field is an abelian variety and is projective; we use this projectivity theorem [Stacks, Tag 0BFA]. Thus $P^0$ is a smooth projective group scheme of dimension $g$.
+The degree-zero piece is geometrically integral, contains the identity, and is therefore exactly $P^0$. A smooth proper geometrically connected group scheme over a field is geometrically integral, by the connected-group theorem above, and hence is an abelian variety. Its projectivity is proved in Abelian varieties, Proposition 1.2. Thus $P^0$ is a smooth projective group scheme of dimension $g$.
 
 Over $\bar k$, degree is surjective because there are points of degree one. Each degree piece is one component. The component group is consequently $\mathbb Z$, whose torsion subgroup is zero. This proves the remaining assertions, including equality of the subgroup schemes by (7.1) and base-change descent. ∎
 
@@ -341,23 +357,24 @@ On $C\times\{d\}$, their degrees are $1$ and $0$, while on $\{c\}\times D$ they 
 
 ### Abelian varieties
 
-For an abelian variety $A/k$, the duality theorem states that
+**Theorem 8.2 (the dual abelian variety).** For an abelian variety $A/k$,
 
 $$
 A^\vee=\operatorname{Pic}^0_{A/k}
 \tag{8.2}
 $$
 
-is an abelian variety of dimension $\dim A$. Rigidification at the identity gives a normalized Poincaré bundle on $A\times A^\vee$, trivial on both identity slices. We use this duality theorem as a stated input, with locator [AI Integrated Stacks Project, moduli.tex, [theorem-dual-abelian-scheme](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/moduli.html#moduli-theorem-dual-abelian-scheme)], specialized to a field; the historical dual-abelian-scheme discussion occurs in FGA, Exposé 236, Theorem 3.3(iii). This is stronger than the vanishing criterion of Theorem 4.1: for abelian varieties of dimension at least two, $H^2(A,\mathcal O_A)$ need not vanish, yet their Picard schemes are smooth.
+is an abelian variety of dimension $\dim A$. Rigidification at the identity gives a normalized Poincaré bundle on $A\times A^\vee$, trivial on both identity slices. The complete proof over an arbitrary field is Abelian varieties, Theorem 6.15 and Proposition 6.17. Those results use the projective Picard construction of the preceding lesson and the tangent calculation of Proposition 2.1. Their cohomology bialgebra calculation bounds $h^1(A,\mathcal O_A)$ by $\dim A$; an ample bundle produces a finite translation map into the Picard identity component and forces equality. The resulting smooth proper identity component is the dual variety. Rigidification at the origin constructs the universal bundle on every parameter scheme, including nonreduced ones. These arguments do not use the Néron–Severi finiteness or numerical converse of Sections 6–7. The relative historical theorem is in FGA, Exposé 236, Theorem 3.3(iii). This is stronger than the vanishing criterion of Theorem 4.1: for abelian varieties of dimension at least two, $H^2(A,\mathcal O_A)$ need not vanish, yet their Picard schemes are smooth.
 
 ### Enriques surfaces
 
 For an Enriques surface over an algebraically closed field of characteristic different from two, the classification input is
 
 $$
-h^1(\mathcal O_X)=h^2(\mathcal O_X)=0,
-\qquad \operatorname{Pic}^\tau_{X/k}\simeq(\mathbb Z/2\mathbb Z)_k,
-\tag{8.3}
+\begin{gathered}
+h^1(\mathcal O_X)=h^2(\mathcal O_X)=0,\\
+\operatorname{Pic}^\tau_{X/k}\simeq(\mathbb Z/2\mathbb Z)_k.
+\end{gathered} \tag{8.3}
 $$
 
 with nonzero class the canonical bundle. See Liedtke, *Arithmetic Moduli and Lifting of Enriques Surfaces*, Section 1, especially Definition 1.2 and the following Picard-scheme description. We state this classification without proof. Our own results then imply $P^0=\operatorname{Spec}k$, and hence $P^\tau/P^0=(\mathbb Z/2\mathbb Z)_k$. The canonical bundle is numerically trivial but not algebraically trivial.
@@ -366,14 +383,147 @@ In characteristic two, the same source identifies $P^\tau$ for singular and supe
 
 ### Igusa's nonreduced example
 
-There is also a smooth projective surface in characteristic two for which
+Igusa's [*On some problems in abstract algebraic geometry*](https://pmc.ncbi.nlm.nih.gov/articles/PMC534315/) exhibits the characteristic-two phenomenon
 
 $$
 \dim\operatorname{Pic}^0_{X/k}=1,
 \qquad h^1(X,\mathcal O_X)=2. \tag{8.4}
 $$
 
-This is Igusa's example in [*On some problems in abstract algebraic geometry*](https://pmc.ncbi.nlm.nih.gov/articles/PMC534315/), Proceedings of the National Academy of Sciences 41 (1955), pp. 964–967; the precise numerical statement we use is verified in Kleiman, *The Picard scheme*, Remark 5.15. The construction is an input, not a construction supplied here. Theorem 5.1 proves immediately from (8.4) that the identity component is not smooth. Over the perfect ground field of the example, a reduced finite-type group scheme would be smooth, so this component is nonreduced. A point-set description of line bundles cannot recover its additional tangent direction.
+These values are also recorded in Kleiman, *The Picard scheme*, Remark 5.15. We now realize them by an explicit smooth projective quotient. The calculation will distinguish a finite étale covering of surfaces from the infinitesimal kernel of its pullback on Picard schemes.
+
+#### The surface and its elliptic fibration
+
+Work over an algebraically closed field $k$ of characteristic two. Let $E$ and $F$ be two copies of the plane cubic
+
+$$
+\begin{gathered}
+Y^2Z+XYZ=X^3+Z^3,\\
+O=[0:1:0].
+\end{gathered} \tag{8.5}
+$$
+
+On $Z=1$, the two partial derivatives are $y+x^2$ and $x$. Their simultaneous zero is not on the curve. At $O$, the derivative with respect to $Z$ is nonzero. Thus the cubic is smooth. It is integral: distinct positive-degree plane components would intersect, producing a singular point. The projective-space sequence for a cubic gives $h^1(\mathcal O_E)=1$, and similarly for $F$.
+
+The degree-one Abel construction identifies a smooth genus-one curve with its degree-zero Picard scheme after choosing $O$. Indeed a degree-one bundle has one section and no first cohomology; its unique effective divisor is one point. Cohomology and base change makes this inverse a morphism in families. Thus $P\mapsto\mathcal O(P-O)$ gives the group law. A vertical line cuts out $P+(x,y+x)+O$, while the line at infinity cuts out $3O$. Consequently inversion on the affine part is
+
+$$
+-(x,y)=(x,y+x).
+$$
+
+In particular $a=(0,1)$ is a nonidentity point of order two on $E$.
+
+On $Y=E\times F$ let the constant group $G=(\mathbb Z/2\mathbb Z)_k$ act by
+
+$$
+\sigma(u,v)=(u+a,-v). \tag{8.6}
+$$
+
+This action is schematically free. Equality $u+a=u$ on any test scheme would imply that its map to $E$ makes $a=0$, by cancellation in the group scheme. The two distinct constant sections $a$ and $0$ have empty equalizer. The quotient therefore has a finite étale torsor map
+
+$$
+q:Y\longrightarrow X=Y/G. \tag{8.7}
+$$
+
+Here both scheme existence and étaleness follow from Quotients and torsors, Theorem 5.2 and Corollary 4.4. Every finite orbit in a projective variety lies in an affine open: choose a hyperplane missing its finitely many points. These results apply without requiring the group order to be invertible in $k$.
+
+We also need projectivity of $X$. The following construction supplies it. Choose a very ample bundle $L$ on $Y$ and replace it by $M=L\otimes\sigma^*L$. Permuting the two factors gives $M$ a $G$-linearization. Its section ring $R$ is finitely generated, and $Y=\operatorname{Proj}R$. For each of finitely many homogeneous algebra generators $r_i$, the coefficients of
+
+$$
+\prod_{g\in G}(T-g r_i)
+$$
+
+are invariant. Let $C_0$ be the graded $k$-algebra generated by these coefficients. The monic equations make $R$ finite over the Noetherian ring $C_0$. Hence its submodule $C=R^G$ is finite over $C_0$, and is itself a finitely generated graded algebra.
+
+Invariant homogeneous sections cover $Y$ by their nonvanishing loci. To see this, choose a section $s$ nonzero at every point of a prescribed finite orbit and use $\prod_g g s$. On such an invariant open, localization in this invariant section commutes with taking invariants, and its degree-zero invariant ring is $C_{(f)}$. The affine quotient charts are consequently exactly those of $\operatorname{Proj}C$. They identify the sheaf quotient $X$ with $\operatorname{Proj}C$, which is projective over $k$; one may take a Veronese subring to obtain a projective embedding. This argument is valid in characteristic two and uses no averaging operator.
+
+Smoothness descends through the étale covering (8.7), and integrality follows from the integral covering variety. Thus $X$ is a smooth projective integral surface. The same quotient construction on $E$ gives a smooth projective curve
+
+$$
+r:E\longrightarrow B=E/\langle a\rangle,
+$$
+
+with $r$ finite étale of degree two. A nonzero invariant differential on $E$ is translation invariant and nowhere vanishing, so descends to a nowhere-vanishing differential on $B$. Thus $\omega_B\simeq\mathcal O_B$ and Serre duality gives $h^1(\mathcal O_B)=1$. In particular $B$ has genus one.
+
+The map $Y\to B$ factors through $f:X\to B$. Pulling $f$ back along the torsor $r$ gives $E\times F\to E$: a choice of a lift in $E$ chooses a representative of the diagonal orbit. Thus $f$ is a smooth proper family of genus-one curves. The fixed origin $O_F$ gives a section $s:B\to X$, by descending $E\times\{O_F\}$.
+
+#### Coherent cohomology of the quotient
+
+On the étale cover $E\to B$, the bundles $f_*\mathcal O_X$ and $R^1f_*\mathcal O_X$ become, respectively,
+
+$$
+\mathcal O_E,
+\qquad H^1(F,\mathcal O_F)\otimes_k\mathcal O_E.
+$$
+
+This is the affine Čech calculation for a product, and is compatible with flat base change. The first descent datum is trivial. On the second, the nonidentity deck transformation acts by inversion on $H^1(F,\mathcal O_F)$.
+
+That inversion acts by $-1$ can be checked without a characteristic-zero comparison. The product Čech complex gives
+
+$$
+H^1(F\times F,\mathcal O)
+\simeq H^1(F,\mathcal O_F)\oplus H^1(F,\mathcal O_F).
+$$
+
+Pullback by addition has the two identity components, as restriction to its two axes shows. Pull back again by $v\mapsto(v,-v)$. Addition becomes the constant map, so $1+[-1]^*=0$ on $H^1$. In characteristic two this makes the descent action the identity. Therefore
+
+$$
+f_*\mathcal O_X=\mathcal O_B,
+\qquad R^1f_*\mathcal O_X=\mathcal O_B. \tag{8.8}
+$$
+
+The low-degree exact sequence of the Leray spectral sequence, Theorem 4.1 now reads
+
+$$
+\begin{gathered}
+0\longrightarrow H^1(B,\mathcal O_B)
+\longrightarrow H^1(X,\mathcal O_X)\\
+\longrightarrow H^0(B,\mathcal O_B)
+\longrightarrow H^2(B,\mathcal O_B)=0.
+\end{gathered} \tag{8.9}
+$$
+
+Both outside nonzero spaces have dimension one. This proves $h^1(X,\mathcal O_X)=2$. Notice that taking invariants of $H^1(Y,\mathcal O_Y)$ would not by itself justify this calculation: invariants under a group of order two are not exact in characteristic two.
+
+#### The dimension of the Picard component
+
+We first describe $\operatorname{Pic}^0_{Y/k}$. Pullback from the factors and restriction to the two origin slices give homomorphisms
+
+$$
+\begin{gathered}
+j:\operatorname{Pic}^0_{E/k}\times\operatorname{Pic}^0_{F/k}
+\longrightarrow\operatorname{Pic}^0_{Y/k},\\
+\rho:\operatorname{Pic}^0_{Y/k}
+\longrightarrow\operatorname{Pic}^0_{E/k}\times\operatorname{Pic}^0_{F/k},\\
+\rho j=1.
+\end{gathered} \tag{8.10}
+$$
+
+The source of $j$ is proper, and $j$ is a monomorphism because it has the left inverse $\rho$. Thus it is a closed immersion. The product Čech calculation gives $h^1(Y,\mathcal O_Y)=2$. Theorem 5.1 bounds the dimension of its Picard identity component above by two, while the closed immersion $j$ bounds it below by two. The equality criterion makes that component smooth. It is irreducible, and the closed image of $j$ has its full dimension, so its image has the whole support. Smoothness makes the target reduced; a closed subscheme with that support must be the entire target. Hence $j$ is an isomorphism.
+
+Under (8.10), $\sigma^*$ acts by $(1,[-1])$. Translation acts trivially on degree-zero classes on $E$: the divisor $[P-a]-[-a]$ has the same genus-one group sum as $[P]-[O]$. The equality holds as a scheme morphism, since these smooth Picard curves are reduced and their geometric points are dense. Inversion on $F$ gives inversion on its degree-zero Picard scheme by the same divisor calculation. The fixed subgroup of $\sigma^*$ is therefore
+
+$$
+\operatorname{Pic}^0_{E/k}
+\times\operatorname{Pic}^0_{F/k}[2]. \tag{8.11}
+$$
+
+Its dimension is one. Indeed, under the genus-one Abel isomorphism, the second factor's $[2]$-kernel is the fixed scheme of $(x,y)\mapsto(x,y+x)$. On the affine chart its support has $x=0$, hence $y=1$; its only other possible point is $O$. It is a zero-dimensional closed subscheme of a proper curve, and is finite. This conclusion keeps its possible nilpotents.
+
+Pullback $q^*:\operatorname{Pic}_{X/k}\to\operatorname{Pic}_{Y/k}$ has finite kernel, in fact
+
+$$
+\ker(q^*)\simeq\mu_2. \tag{8.12}
+$$
+
+To prove this as an equality of fppf sheaves, work locally on a parameter scheme $T$ so that a class in the kernel is a line bundle whose pullback to $Y_T$ is trivial. A descent datum on that trivial bundle is an invertible scalar for each element of $G$. All such scalars come from $T$, since $H^0(Y_T,\mathcal O)=H^0(T,\mathcal O_T)$, locally on $T$, by (1.2). The cocycle condition is precisely a character $G_T\to\mathbb G_{m,T}$, determined by a unit $u$ with $u^2=1$. Changing the trivialization multiplies by a base unit and does not change the character. Conversely every such character descends the trivial bundle. These constructions are inverse and commute with base change, proving (8.12), including nonreduced $T$.
+
+The homomorphism $q^*$ sends $P^0=\operatorname{Pic}^0_{X/k}$ into the fixed subgroup (8.11), since $q\sigma=q$. Its fibres are translates of its finite kernel, so they are zero-dimensional. The finite-type dimension theorem consequently gives $\dim P^0\leq1$. On the other hand $f^*:\operatorname{Pic}^0_{B/k}\to P^0$ has the left inverse $s^*$ furnished by the section of $f$. It embeds a one-dimensional proper Picard curve, so $\dim P^0\geq1$. Thus $\dim P^0=1$, proving (8.4).
+
+Finally Proposition 2.1 gives $\dim T_0P=2$. Theorem 5.1 proves that $P^0$ is not smooth. A reduced finite-type group scheme over the perfect field $k$ is smooth, so $P^0$ is nonreduced. The finite étale nature of $q$ is fully compatible with its infinitesimal pullback kernel $\mu_2$; the two assertions concern different morphisms.
+
+There are also two independent global one-forms on $X$. The invariant forms from $E$ and $F$ form a basis on $Y$; translation fixes the first, and inversion acts by $-1=1$ on the second. Étale descent therefore gives a basis of $\Omega^1_{X/k}$. In particular $h^0(X,\Omega^1_{X/k})=2$ and $\omega_X\simeq\mathcal O_X$.
+
 
 ## 9. Exercises
 
@@ -386,6 +536,8 @@ This is Igusa's example in [*On some problems in abstract algebraic geometry*](h
 **Exercise 4.** Starting from $T_0P=H^1(X,\mathcal O_X)$, prove $\dim P^0\leq h^1(X,\mathcal O_X)$. Prove the equality criterion and identify exactly where passage to an algebraic closure is useful.
 
 **Exercise 5.** For a smooth projective geometrically connected curve $C/k$, prove that a line bundle is geometrically numerically trivial exactly when it has degree zero. Deduce $\operatorname{Pic}^\tau_{C/k}=\operatorname{Pic}^0_{C/k}$ as subgroup schemes. Explain what changes if $C$ has no rational point.
+
+**Exercise 6.** For the quotient (8.7), use the unit $1+\epsilon$ over $D=k[\epsilon]/(\epsilon^2)$ as the descent scalar for $\sigma$ on the trivial bundle on $Y_D$. Show that it descends to a nonzero tangent class in the kernel of $q^*:H^1(X,\mathcal O_X)\to H^1(Y,\mathcal O_Y)$. Explain why étaleness of $q$ does not force this map to be injective. Compute $h^0(X,\Omega^1_X)$ and $h^2(X,\mathcal O_X)$.
 
 ## 10. Complete solutions
 
@@ -412,17 +564,21 @@ Thus $p_g=0$ implies $H^2(X,\mathcal O_X)=0$, and Theorem 4.1 applies. Geometric
 
 Without a rational point, every geometric degree piece still exists, but some $k$-points of the Picard sheaf need not be represented by actual line bundles, and some integer degrees may have no actual $k$-line bundle. Degree zero remains exactly the identity component geometrically, and the equality of subgroup schemes remains valid. On a real nonsplit conic, actual real bundles have even degree, but the geometric degree group is $\mathbb Z$ and the Jacobian is trivial.
 
+**Solution 6.** In characteristic two $(1+\epsilon)^2=1$, so the scalar satisfies the descent cocycle condition for the order-two generator. The descended bundle reduces to the trivial bundle and its pullback to $Y_D$ is trivial by construction. If the descended bundle were trivial, its linearization upstairs could be changed to the identity by an invertible global function on $Y_D$. Every such function is a unit of $D$, by (1.2); $\sigma$ fixes those units, so a change of trivialization leaves the scalar $1+\epsilon$ unchanged. It therefore cannot become $1$. This gives a nonzero tangent class with zero pullback, precisely the tangent direction of the subgroup $\mu_2$ in (8.12).
+
+Finite étale pullback is faithfully flat for sheaves but need not be injective on higher coherent cohomology. In particular there is no averaging retraction when its degree is zero in $k$. The two invariant one-forms of the construction descend to a basis of $\Omega^1_X$, so $h^0(X,\Omega^1_X)=2$ and $\omega_X=\mathcal O_X$. Projective Serre duality gives $h^2(X,\mathcal O_X)=h^0(X,\omega_X)=1$, since $X$ is integral and proper. Thus the nonreduced Picard component does not contradict the $H^2=0$ smoothness criterion.
+
 ## 11. What this lesson does not prove
 
-The following are exact inputs, rather than omitted steps in the central deformation proofs.
+The deformation and quotient calculations above use the following foundations. The general proper-scheme finiteness and Enriques classification statements have the separate scopes specified below.
 
 - **General proper-scheme representability.** Murre's result (II.15), as stated in Kleiman, Corollary 4.18.3 and the following discussion, supplies the locally finite-type Picard group scheme for arbitrary proper $X/k$. The preceding lesson proves the projective geometrically integral case and arbitrary base change in that setting.
 - **Cohomology and descent foundations.** Affine acyclicity and separated affine Čech computation are [Stacks, Tags 01XD and 01KP]; proper-support finiteness is [Stacks, Tag 02O6]. The preceding Picard-functor lesson supplies the injections, equality of étale and fppf sheaves, and rigidification theorem. Étale-local Artin rings with separably closed residue field are strictly henselian, so étale covers have sections; descent of smoothness and the local Artin smoothness criterion are standard infinitesimal foundations, with the latter [Stacks, Tag 02HX].
-- **Characteristic-zero algebra.** The criterion that a locally finite-type scheme over a characteristic-zero field with locally free differentials is smooth is [Stacks, Tag 04QN]. Lemma 4.2 proves the group-scheme differential trivialization, and Theorem 4.3 deduces Cartier's theorem from that criterion.
-- **Identity components and local algebra.** The canonical closed, quasi-compact, geometrically irreducible identity subgroup is [Stacks, Tag 0B7R]; its finite-type and base-change properties also occur in Kleiman, Proposition 5.3. Completion preserves dimension; a power-series ring is a regular local domain; a nonzero ideal in it lowers dimension. The corresponding local-algebra ingredients were used in the Hilbert–Quot dimension bound. Generic smoothness for reduced finite-type schemes over a perfect field is the input used only for the reduction comment and the nonreduced-example deduction.
+- **Characteristic-zero algebra.** The criterion that a locally finite-type scheme over a characteristic-zero field with locally free differentials is smooth is proved by derivations and induction in Lie algebras and smoothness of group schemes, Lemmas 4.1–4.2. Lemma 4.2 proves the group-scheme differential trivialization, and Theorem 4.3 deduces Cartier's theorem from that criterion.
+- **Identity components and local algebra.** The canonical closed, quasi-compact, geometrically irreducible identity subgroup is proved in Group schemes over a field, Theorems 2.2–2.3; its finite-type and base-change properties also occur in Kleiman, Proposition 5.3. Completion preserves dimension; a power-series ring is a regular local domain; a nonzero ideal in it lowers dimension. The corresponding local-algebra ingredients were used in the Hilbert–Quot dimension bound. Reduced-group smoothness over a perfect field is proved in Lie algebras and smoothness of group schemes, Theorem 5.1.
 - **Finiteness and numerical characterization.** The theorem of the base is the exact statement in Section 6, with [AI Integrated Stacks Project, moduli.tex, [theorem-picard-neron-severi-uniform-bounds](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/moduli.html#moduli-theorem-picard-neron-severi-uniform-bounds)], item (vi) of Grothendieck's complement to FGA, Exposé 236, and Kleiman, Corollary 6.17 and Remark 6.19, as references. The converse numerical implication (7.4) is [AI Integrated Stacks Project, moduli.tex, [theorem-picard-tau-numerical-criteria](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/moduli.html#moduli-theorem-picard-tau-numerical-criteria)], item (viii) of the same complement, and Kleiman, Theorem 6.3 with Remark 6.14. No reduction sketch is claimed as a proof of these inputs.
-- **Curve and abelian-variety foundations.** Riemann–Roch and Serre duality, including (10.1), are imported cohomological prerequisites. The full Abel construction, connected degree pieces, and properness argument belong to the preceding two lessons. Projectivity of an abelian variety is [Stacks, Tag 0BFA]. Dual abelian varieties and the normalized Poincaré bundle are the stated theorem [AI Integrated Stacks Project, moduli.tex, [theorem-dual-abelian-scheme](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/moduli.html#moduli-theorem-dual-abelian-scheme)], specialized to a field.
-- **Special surfaces.** The Enriques classification statements are Liedtke, *Arithmetic Moduli and Lifting of Enriques Surfaces*, Section 1. Igusa's existence and the values in (8.4) are the example recorded in Kleiman, Remark 5.15, with the original 1955 article identified there. Their surface constructions are not supplied here.
+- **Curve and abelian-variety foundations.** Riemann–Roch and Serre duality, including (10.1), are imported cohomological prerequisites. The full Abel construction, connected degree pieces, and properness argument belong to the preceding two lessons. Projectivity is Abelian varieties, Proposition 1.2. The dual variety and its normalized Poincaré bundle are proved there in Theorem 6.15 and Proposition 6.17, using only the earlier Picard existence and tangent results from this course.
+- **Special surfaces.** The Enriques classification statements are Liedtke, *Arithmetic Moduli and Lifting of Enriques Surfaces*, Section 1. The quotient construction in Section 8 proves the characteristic-two values (8.4) and nonreducedness directly. Its finite quotient is supplied by Quotients and torsors, Corollary 4.4 and Theorem 5.2; its projectivity, coherent cohomology and full Picard pullback kernel are established in the construction. The Enriques surface classification is not proved here.
 
 ## 12. Sources and historical placement
 

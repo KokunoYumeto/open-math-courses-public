@@ -1,0 +1,178 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A weighted determinant in a biquadratic field</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Uniform exclusion of Landau–Siegel zeros)</a><a href="interpolation-on-a-projected-integer-box.html">Previous lesson</a><a href="two-bounds-for-the-determinant.html">Next lesson</a><a href="src/a-weighted-determinant-in-a-biquadratic-field.md">Editable source</a></nav><main><article><h1 id="a-weighted-determinant-in-a-biquadratic-field">A weighted determinant in a biquadratic field</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson builds the determinant on which the proof of Theorem A rests. Its rows are the vectors <span class="math" data-tex="\(\bigl(\theta_n^{\alpha_1}\sigma(\theta_n)^{\alpha_2}\sigma\tau(\theta_n)^{\alpha_3}\bigr)_n\)">\(\bigl(\theta_n^{\alpha_1}\sigma(\theta_n)^{\alpha_2}\sigma\tau(\theta_n)^{\alpha_3}\bigr)_n\)</span> attached to the biquadratic field <span class="math" data-tex="\(\mathbf Q(\sqrt d,\sqrt2)\)">\(\mathbf Q(\sqrt d,\sqrt2)\)</span>. The interpolation theorem of <a href="interpolation-on-a-projected-integer-box.html">Interpolation on a projected integer box</a> shows that enough of them span. Choosing them in the order of the weight <span class="math" data-tex="\(\alpha_1+H\alpha_2+H\alpha_3\)">\(\alpha_1+H\alpha_2+H\alpha_3\)</span> puts most of the total degree into the first exponent, the one on which the Frobenius congruence of <a href="two-bounds-for-the-determinant.html">Two bounds for the determinant</a> acts. The construction follows OpenAI [OpenAI-LS, Section 4]. Determinants of this kind, formed from values of monomials instead of auxiliary functions, are the <em>interpolation determinants</em> of Laurent [Laurent].</p>
+<h2 id="1-the-field-and-the-ring">1. The field and the ring</h2>
+<p>Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(q=|D|\)">\(q=|D|\)</span> be as in <a href="real-zeros-and-the-prime-bias.html">Real zeros and the prime bias</a>. Let <span class="math" data-tex="\(d\)">\(d\)</span> be the squarefree integer with <span class="math" data-tex="\(\mathbf Q(\sqrt D)=\mathbf Q(\sqrt d)\)">\(\mathbf Q(\sqrt D)=\mathbf Q(\sqrt d)\)</span>: <span class="math" data-tex="\(d=D\)">\(d=D\)</span> if <span class="math" data-tex="\(D\equiv1\pmod4\)">\(D\equiv1\pmod4\)</span> and <span class="math" data-tex="\(d=D/4\)">\(d=D/4\)</span> otherwise. Then <span class="math" data-tex="\(d\ne1\)">\(d\ne1\)</span>, <span class="math" data-tex="\(|d|\le q\)">\(|d|\le q\)</span>, and every odd prime <span class="math" data-tex="\(p\nmid q\)">\(p\nmid q\)</span> satisfies <span class="math" data-tex="\(p\nmid d\)">\(p\nmid d\)</span> and
+<span class="math math-display" data-tex="\[
+\chi(p)=\Bigl(\frac Dp\Bigr)=\Bigl(\frac dp\Bigr),
+\]">\[
+\chi(p)=\Bigl(\frac Dp\Bigr)=\Bigl(\frac dp\Bigr),
+\]</span>
+the Legendre symbol: the Kronecker symbol is the Legendre symbol at odd primes <a href="../NT-DIRL/NT-DIRL-01.html#4-real-characters-and-quadratic-discriminants">Dirichlet characters, Section 4</a>, and <span class="math" data-tex="\((4/p)=1\)">\((4/p)=1\)</span>.</p>
+<p>Assume <span class="math" data-tex="\(d\ne2\)">\(d\ne2\)</span>, that is <span class="math" data-tex="\(q\ne8\)">\(q\ne8\)</span>. Fix complex numbers <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(a^2=d\)">\(a^2=d\)</span> and <span class="math" data-tex="\(b^2=2\)">\(b^2=2\)</span>, and put
+<span class="math math-display" data-tex="\[
+K=\mathbf Q(a,b)\subset\mathbf C,\qquad\mathcal R=\mathbf Z[a,b].
+\]">\[
+K=\mathbf Q(a,b)\subset\mathbf C,\qquad\mathcal R=\mathbf Z[a,b].
+\]</span></p>
+<p><strong>Lemma 3.1.</strong> The numbers <span class="math" data-tex="\(1,a,b,ab\)">\(1,a,b,ab\)</span> are linearly independent over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Every element of <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> has a unique expression <span class="math" data-tex="\(z_1+z_2a+z_3b+z_4ab\)">\(z_1+z_2a+z_3b+z_4ab\)</span> with <span class="math" data-tex="\(z_i\in\mathbf Z\)">\(z_i\in\mathbf Z\)</span>, and every element of <span class="math" data-tex="\(K\)">\(K\)</span> a unique expression with <span class="math" data-tex="\(z_i\in\mathbf Q\)">\(z_i\in\mathbf Q\)</span>. The maps <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> defined by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sigma(a)&amp;=-a,&amp;\sigma(b)&amp;=b,\\
+\tau(a)&amp;=a,&amp;\tau(b)&amp;=-b
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sigma(a)&amp;=-a,&amp;\sigma(b)&amp;=b,\\
+\tau(a)&amp;=a,&amp;\tau(b)&amp;=-b
+\end{aligned}
+\]</span>
+extend to commuting field automorphisms of <span class="math" data-tex="\(K\)">\(K\)</span> that preserve <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>, and <span class="math" data-tex="\(1,\sigma,\tau,\sigma\tau\)">\(1,\sigma,\tau,\sigma\tau\)</span> are four different automorphisms.</p>
+<p><em>Proof.</em> Suppose <span class="math" data-tex="\(x_1+x_2a+x_3b+x_4ab=0\)">\(x_1+x_2a+x_3b+x_4ab=0\)</span> with rational <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. If <span class="math" data-tex="\(x_2+x_4b\ne0\)">\(x_2+x_4b\ne0\)</span>, then <span class="math" data-tex="\(a=-(x_1+x_3b)/(x_2+x_4b)\)">\(a=-(x_1+x_3b)/(x_2+x_4b)\)</span> lies in <span class="math" data-tex="\(\mathbf Q(b)=\{u+vb:u,v\in\mathbf Q\}\)">\(\mathbf Q(b)=\{u+vb:u,v\in\mathbf Q\}\)</span>. But <span class="math" data-tex="\((u+vb)^2=u^2+2v^2+2uvb\)">\((u+vb)^2=u^2+2v^2+2uvb\)</span> equals <span class="math" data-tex="\(d\)">\(d\)</span> only if <span class="math" data-tex="\(uv=0\)">\(uv=0\)</span>, and then <span class="math" data-tex="\(d=u^2\)">\(d=u^2\)</span> or <span class="math" data-tex="\(d=2v^2\)">\(d=2v^2\)</span>, impossible for a squarefree <span class="math" data-tex="\(d\ne1,2\)">\(d\ne1,2\)</span>. Hence <span class="math" data-tex="\(x_2+x_4b=0\)">\(x_2+x_4b=0\)</span>, so <span class="math" data-tex="\(x_2=x_4=0\)">\(x_2=x_4=0\)</span> because <span class="math" data-tex="\(b\)">\(b\)</span> is irrational, and then <span class="math" data-tex="\(x_1=x_3=0\)">\(x_1=x_3=0\)</span>. Since <span class="math" data-tex="\(a^2\)">\(a^2\)</span>, <span class="math" data-tex="\(b^2\)">\(b^2\)</span> and <span class="math" data-tex="\((ab)^2=2d\)">\((ab)^2=2d\)</span> are integers, products of <span class="math" data-tex="\(1,a,b,ab\)">\(1,a,b,ab\)</span> are integer combinations of them. So <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> is their <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-span, and their <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-span is a ring of dimension <span class="math" data-tex="\(4\)">\(4\)</span> over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> without zero divisors, hence a field, which is <span class="math" data-tex="\(K\)">\(K\)</span>. Define <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on coordinates by changing the signs of the coordinates of <span class="math" data-tex="\(a,ab\)">\(a,ab\)</span>, respectively of <span class="math" data-tex="\(b,ab\)">\(b,ab\)</span>. They are bijective and <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-linear, and multiplicative because the rules <span class="math" data-tex="\(a^2=d\)">\(a^2=d\)</span>, <span class="math" data-tex="\(b^2=2\)">\(b^2=2\)</span>, <span class="math" data-tex="\(ab=ba\)">\(ab=ba\)</span> are unchanged when <span class="math" data-tex="\(a\)">\(a\)</span> or <span class="math" data-tex="\(b\)">\(b\)</span> changes sign. They commute and are different from each other, from <span class="math" data-tex="\(\sigma\tau\)">\(\sigma\tau\)</span> and from the identity, by their effect on <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span> put
+<span class="math math-display" data-tex="\[
+\operatorname{Nm}(z)=z\,\sigma(z)\,\tau(z)\,\sigma\tau(z).
+\]">\[
+\operatorname{Nm}(z)=z\,\sigma(z)\,\tau(z)\,\sigma\tau(z).
+\]</span></p>
+<p><strong>Lemma 3.2.</strong> <span class="math" data-tex="\(\operatorname{Nm}\)">\(\operatorname{Nm}\)</span> is multiplicative. For <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span>, <span class="math" data-tex="\(\operatorname{Nm}(z)\in\mathbf Q\)">\(\operatorname{Nm}(z)\in\mathbf Q\)</span>, and <span class="math" data-tex="\(\operatorname{Nm}(z)\in\mathbf Z\)">\(\operatorname{Nm}(z)\in\mathbf Z\)</span> when <span class="math" data-tex="\(z\in\mathcal R\)">\(z\in\mathcal R\)</span>. If <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, then <span class="math" data-tex="\(\operatorname{Nm}(z)\ne0\)">\(\operatorname{Nm}(z)\ne0\)</span>.</p>
+<p><em>Proof.</em> Multiplicativity is clear. Since <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> commute and are involutions, each of them permutes the four factors of <span class="math" data-tex="\(\operatorname{Nm}(z)\)">\(\operatorname{Nm}(z)\)</span>, which is therefore fixed by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. An element fixed by both has zero coordinates at <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(ab\)">\(ab\)</span>, so it is rational, and an integer if it lies in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>. Automorphisms are injective, so the factors of <span class="math" data-tex="\(\operatorname{Nm}(z)\)">\(\operatorname{Nm}(z)\)</span> are nonzero when <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-points-and-the-rows">2. The points and the rows</h2>
+<p>Fix integers <span class="math" data-tex="\(1\le H\le N\)">\(1\le H\le N\)</span> and put
+<span class="math math-display" data-tex="\[
+U=N^{4/3},\qquad M=N^4=U^3 .
+\]">\[
+U=N^{4/3},\qquad M=N^4=U^3 .
+\]</span>
+For <span class="math" data-tex="\(n\in E_N=\{0,\dots,N-1\}^4\)">\(n\in E_N=\{0,\dots,N-1\}^4\)</span> let <span class="math" data-tex="\(\theta_n=n_1+n_2a+n_3b+n_4ab\in\mathcal R\)">\(\theta_n=n_1+n_2a+n_3b+n_4ab\in\mathcal R\)</span>. The matrix
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}1&amp;a&amp;b&amp;ab\\1&amp;-a&amp;b&amp;-ab\\1&amp;-a&amp;-b&amp;ab\end{pmatrix}
+\]">\[
+A=\begin{pmatrix}1&amp;a&amp;b&amp;ab\\1&amp;-a&amp;b&amp;-ab\\1&amp;-a&amp;-b&amp;ab\end{pmatrix}
+\]</span>
+satisfies <span class="math" data-tex="\(An=(\theta_n,\sigma(\theta_n),\sigma\tau(\theta_n))\)">\(An=(\theta_n,\sigma(\theta_n),\sigma\tau(\theta_n))\)</span>, by the definition of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on coordinates.</p>
+<p><strong>Lemma 3.3.</strong> The map <span class="math" data-tex="\(A:\mathbf C^4\to\mathbf C^3\)">\(A:\mathbf C^4\to\mathbf C^3\)</span> is surjective, and its kernel is spanned by <span class="math" data-tex="\(c=(ab,b,-a,-1)\)">\(c=(ab,b,-a,-1)\)</span>, whose four coordinates are linearly independent over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<p><em>Proof.</em> Multiplying out, the three rows of <span class="math" data-tex="\(A\)">\(A\)</span> applied to <span class="math" data-tex="\(c\)">\(c\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;ab+ab-ab-ab=0,\\
+&amp;ab-ab-ab+ab=0,\\
+&amp;ab-ab+ab-ab=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;ab+ab-ab-ab=0,\\
+&amp;ab-ab-ab+ab=0,\\
+&amp;ab-ab+ab-ab=0 .
+\end{aligned}
+\]</span>
+The minor formed by the first three columns is <span class="math" data-tex="\(4ab\ne0\)">\(4ab\ne0\)</span>, so <span class="math" data-tex="\(A\)">\(A\)</span> has rank <span class="math" data-tex="\(3\)">\(3\)</span> and its kernel is the line <span class="math" data-tex="\(\mathbf Cc\)">\(\mathbf Cc\)</span>. The coordinates of <span class="math" data-tex="\(c\)">\(c\)</span> are <span class="math" data-tex="\(\pm\)">\(\pm\)</span> the numbers <span class="math" data-tex="\(1,a,b,ab\)">\(1,a,b,ab\)</span> in another order, linearly independent by Lemma 3.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\alpha\in\mathbf Z_{\ge0}^3\)">\(\alpha\in\mathbf Z_{\ge0}^3\)</span> put
+<span class="math math-display" data-tex="\[
+R_\alpha=\bigl(\theta_n^{\alpha_1}\sigma(\theta_n)^{\alpha_2}\sigma\tau(\theta_n)^{\alpha_3}\bigr)_{n\in E_N},
+\]">\[
+R_\alpha=\bigl(\theta_n^{\alpha_1}\sigma(\theta_n)^{\alpha_2}\sigma\tau(\theta_n)^{\alpha_3}\bigr)_{n\in E_N},
+\]</span>
+an element of <span class="math" data-tex="\(\mathcal R^{E_N}\)">\(\mathcal R^{E_N}\)</span>, with <span class="math" data-tex="\(z^0=1\)">\(z^0=1\)</span>, including <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. Thus <span class="math" data-tex="\(R_\alpha=((An)^\alpha)_{n\in E_N}\)">\(R_\alpha=((An)^\alpha)_{n\in E_N}\)</span>, in the notation of Corollary 2.6. Define the <em>weight</em>
+<span class="math math-display" data-tex="\[
+w(\alpha)=\alpha_1+H\alpha_2+H\alpha_3 .
+\]">\[
+w(\alpha)=\alpha_1+H\alpha_2+H\alpha_3 .
+\]</span>
+Each weight is taken by finitely many <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Fix a total order <span class="math" data-tex="\(\prec\)">\(\prec\)</span> on <span class="math" data-tex="\(\mathbf Z_{\ge0}^3\)">\(\mathbf Z_{\ge0}^3\)</span> with <span class="math" data-tex="\(\alpha\prec\alpha&#x27;\)">\(\alpha\prec\alpha&#x27;\)</span> whenever <span class="math" data-tex="\(w(\alpha)&lt;w(\alpha&#x27;)\)">\(w(\alpha)&lt;w(\alpha&#x27;)\)</span>, breaking ties by any fixed rule. Go through the indices in this order, and <em>retain</em> <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> when <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span> is not in the <span class="math" data-tex="\(K\)">\(K\)</span>-linear span of the rows <span class="math" data-tex="\(R_\beta\)">\(R_\beta\)</span> of the indices <span class="math" data-tex="\(\beta\prec\alpha\)">\(\beta\prec\alpha\)</span> retained before. Let <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> be the set of retained indices.</p>
+<p><strong>Lemma 3.4.</strong> Put <span class="math" data-tex="\(W_0=96H^{2/3}U\)">\(W_0=96H^{2/3}U\)</span>.</p>
+<ol>
+<li>For every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span> lies in the <span class="math" data-tex="\(K\)">\(K\)</span>-span of the rows <span class="math" data-tex="\(R_\beta\)">\(R_\beta\)</span>, <span class="math" data-tex="\(\beta\in\mathcal P\)">\(\beta\in\mathcal P\)</span>, <span class="math" data-tex="\(\beta\preceq\alpha\)">\(\beta\preceq\alpha\)</span>.</li>
+<li><span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> has exactly <span class="math" data-tex="\(M\)">\(M\)</span> elements, and <span class="math" data-tex="\(w(\alpha)\le W_0\)">\(w(\alpha)\le W_0\)</span> for every <span class="math" data-tex="\(\alpha\in\mathcal P\)">\(\alpha\in\mathcal P\)</span>.</li>
+<li>The determinant <span class="math" data-tex="\(\Delta=\det(R_\alpha)_{\alpha\in\mathcal P}\)">\(\Delta=\det(R_\alpha)_{\alpha\in\mathcal P}\)</span>, with the rows in increasing order and the columns in a fixed order of <span class="math" data-tex="\(E_N\)">\(E_N\)</span>, is a nonzero element of <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>.</li>
+</ol>
+<p><em>Proof.</em> Part 1 holds by the selection rule: either <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is retained, or <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span> is a combination of earlier retained rows. The retained rows are linearly independent over <span class="math" data-tex="\(K\)">\(K\)</span>, so there are at most <span class="math" data-tex="\(M\)">\(M\)</span> of them. By Lemma 3.3, Corollary 2.6 applies to <span class="math" data-tex="\(A\)">\(A\)</span>: the rows <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span> with <span class="math" data-tex="\(\alpha_j\le T_j\)">\(\alpha_j\le T_j\)</span> span <span class="math" data-tex="\(\mathbf C^{E_N}\)">\(\mathbf C^{E_N}\)</span>. The rank of a matrix with entries in <span class="math" data-tex="\(K\)">\(K\)</span> is the size of its largest nonzero minor, the same over <span class="math" data-tex="\(K\)">\(K\)</span> and over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>; so these rows span <span class="math" data-tex="\(K^{E_N}\)">\(K^{E_N}\)</span>. Each of them has weight at most
+<span class="math math-display" data-tex="\[
+T_1+HT_2+HT_3=3\cdot32H^{2/3}U=W_0 .
+\]">\[
+T_1+HT_2+HT_3=3\cdot32H^{2/3}U=W_0 .
+\]</span>
+By part 1, once all indices of weight at most <span class="math" data-tex="\(W_0\)">\(W_0\)</span> have been considered, the retained rows span <span class="math" data-tex="\(K^{E_N}\)">\(K^{E_N}\)</span>. So <span class="math" data-tex="\(M\)">\(M\)</span> rows have been retained by then, and no later row is retained. The entries of <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span> lie in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>, so <span class="math" data-tex="\(\Delta\in\mathcal R\)">\(\Delta\in\mathcal R\)</span>, and <span class="math" data-tex="\(\Delta\ne0\)">\(\Delta\ne0\)</span> because its rows are linearly independent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-where-the-degree-lies">3. Where the degree lies</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+S_1=\sum_{\alpha\in\mathcal P}\alpha_1,\qquad S_2=\sum_{\alpha\in\mathcal P}(\alpha_2+\alpha_3).
+\]">\[
+S_1=\sum_{\alpha\in\mathcal P}\alpha_1,\qquad S_2=\sum_{\alpha\in\mathcal P}(\alpha_2+\alpha_3).
+\]</span></p>
+<p><strong>Lemma 3.5</strong> (OpenAI). Let <span class="math" data-tex="\(c_0=(4\cdot97^2)^{-1}\)">\(c_0=(4\cdot97^2)^{-1}\)</span> and <span class="math" data-tex="\(C_0=192\)">\(C_0=192\)</span>. If <span class="math" data-tex="\(1\le H\le N\)">\(1\le H\le N\)</span> and <span class="math" data-tex="\(H^{2/3}N^{4/3}\ge2\cdot97^2\)">\(H^{2/3}N^{4/3}\ge2\cdot97^2\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S_1&amp;\ge c_0MH^{2/3}U,\\
+S_2&amp;\le C_0MH^{-1/3}U .
+\end{aligned}
+\]">\[
+\begin{aligned}
+S_1&amp;\ge c_0MH^{2/3}U,\\
+S_2&amp;\le C_0MH^{-1/3}U .
+\end{aligned}
+\]</span>
+In particular <span class="math" data-tex="\(S_2\le(C_0/c_0)S_1/H\)">\(S_2\le(C_0/c_0)S_1/H\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(\alpha\in\mathcal P\)">\(\alpha\in\mathcal P\)</span>, <span class="math" data-tex="\(H\alpha_2\le w(\alpha)\le W_0\)">\(H\alpha_2\le w(\alpha)\le W_0\)</span>, so <span class="math" data-tex="\(\alpha_2\le B:=96H^{-1/3}U\)">\(\alpha_2\le B:=96H^{-1/3}U\)</span>, and likewise <span class="math" data-tex="\(\alpha_3\le B\)">\(\alpha_3\le B\)</span>. Hence <span class="math" data-tex="\(S_2\le2BM=C_0MH^{-1/3}U\)">\(S_2\le2BM=C_0MH^{-1/3}U\)</span>.</p>
+<p>For a fixed value of <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span>, at most <span class="math" data-tex="\(Q_0=(\lfloor B\rfloor+1)^2\)">\(Q_0=(\lfloor B\rfloor+1)^2\)</span> retained indices have that first coordinate. As <span class="math" data-tex="\(H\le N\)">\(H\le N\)</span>, <span class="math" data-tex="\(H^{-1/3}U\ge N^{-1/3}N^{4/3}\ge1\)">\(H^{-1/3}U\ge N^{-1/3}N^{4/3}\ge1\)</span>, so <span class="math" data-tex="\(\lfloor B\rfloor+1\le97H^{-1/3}U\)">\(\lfloor B\rfloor+1\le97H^{-1/3}U\)</span> and
+<span class="math math-display" data-tex="\[
+Q_0\le97^2H^{-2/3}U^2 .
+\]">\[
+Q_0\le97^2H^{-2/3}U^2 .
+\]</span>
+List the first coordinates of the retained indices as <span class="math" data-tex="\(b_1\le\dots\le b_M\)">\(b_1\le\dots\le b_M\)</span>. The values <span class="math" data-tex="\(0,\dots,j-1\)">\(0,\dots,j-1\)</span> occupy at most <span class="math" data-tex="\(jQ_0\)">\(jQ_0\)</span> places, so <span class="math" data-tex="\(b_i\ge\lfloor(i-1)/Q_0\rfloor\)">\(b_i\ge\lfloor(i-1)/Q_0\rfloor\)</span>. Write <span class="math" data-tex="\(M=kQ_0+r\)">\(M=kQ_0+r\)</span> with <span class="math" data-tex="\(0\le r&lt;Q_0\)">\(0\le r&lt;Q_0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S_1&amp;\ge\sum_{i=1}^M\Bigl\lfloor\frac{i-1}{Q_0}\Bigr\rfloor=Q_0\frac{k(k-1)}2+kr\\
+&amp;=\frac{M^2}{2Q_0}-\frac M2+\frac{r(Q_0-r)}{2Q_0}\\
+&amp;\ge\frac{M^2}{2Q_0}-\frac M2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+S_1&amp;\ge\sum_{i=1}^M\Bigl\lfloor\frac{i-1}{Q_0}\Bigr\rfloor=Q_0\frac{k(k-1)}2+kr\\
+&amp;=\frac{M^2}{2Q_0}-\frac M2+\frac{r(Q_0-r)}{2Q_0}\\
+&amp;\ge\frac{M^2}{2Q_0}-\frac M2 .
+\end{aligned}
+\]</span>
+The hypothesis gives <span class="math" data-tex="\(M=U^3\ge2\cdot97^2H^{-2/3}U^2\ge2Q_0\)">\(M=U^3\ge2\cdot97^2H^{-2/3}U^2\ge2Q_0\)</span>, so <span class="math" data-tex="\(\frac M2\le\frac{M^2}{4Q_0}\)">\(\frac M2\le\frac{M^2}{4Q_0}\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S_1\ge\frac{M^2}{4Q_0}&amp;\ge\frac{U^3\,M}{4\cdot97^2H^{-2/3}U^2}\\
+&amp;=c_0MH^{2/3}U .
+\end{aligned}
+\]">\[
+\begin{aligned}
+S_1\ge\frac{M^2}{4Q_0}&amp;\ge\frac{U^3\,M}{4\cdot97^2H^{-2/3}U^2}\\
+&amp;=c_0MH^{2/3}U .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constants do not depend on <span class="math" data-tex="\(d\)">\(d\)</span> or on the tie-breaking rule. For <span class="math" data-tex="\(N=2\)">\(N=2\)</span> and <span class="math" data-tex="\(d=5\)">\(d=5\)</span>, a computation with exact arithmetic in <span class="math" data-tex="\(K\)">\(K\)</span>, breaking ties by the smaller value of <span class="math" data-tex="\(\alpha_2+\alpha_3\)">\(\alpha_2+\alpha_3\)</span> and then of <span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span>, gives <span class="math" data-tex="\((S_1,S_2)=(22,14)\)">\((S_1,S_2)=(22,14)\)</span>, <span class="math" data-tex="\((40,8)\)">\((40,8)\)</span> and <span class="math" data-tex="\((45,7)\)">\((45,7)\)</span> for <span class="math" data-tex="\(H=2,3,5\)">\(H=2,3,5\)</span>. The share of the second exponent sum falls as <span class="math" data-tex="\(H\)">\(H\)</span> grows.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>3.1</strong> (easy). Show that the sixteen points <span class="math" data-tex="\(An\)">\(An\)</span>, <span class="math" data-tex="\(n\in E_2\)">\(n\in E_2\)</span>, are pairwise distinct, and more generally that <span class="math" data-tex="\(n\mapsto An\)">\(n\mapsto An\)</span> is injective on <span class="math" data-tex="\(\mathbf Z^4\)">\(\mathbf Z^4\)</span>.</p>
+<p><strong>3.2</strong> (medium). Suppose <span class="math" data-tex="\(H\ge M\)">\(H\ge M\)</span>. Show that <span class="math" data-tex="\(\mathcal P=\{(j,0,0):0\le j&lt;M\}\)">\(\mathcal P=\{(j,0,0):0\le j&lt;M\}\)</span>, that <span class="math" data-tex="\(S_2=0\)">\(S_2=0\)</span>, and that <span class="math" data-tex="\(\Delta=\pm\prod_{n&lt;n&#x27;}(\theta_{n&#x27;}-\theta_n)\)">\(\Delta=\pm\prod_{n&lt;n&#x27;}(\theta_{n&#x27;}-\theta_n)\)</span> for a suitable order of <span class="math" data-tex="\(E_N\)">\(E_N\)</span>.</p>
+<p><strong>3.3</strong> (easy). Compute <span class="math" data-tex="\(\operatorname{Nm}(z_1+z_2a)\)">\(\operatorname{Nm}(z_1+z_2a)\)</span> for <span class="math" data-tex="\(z_1,z_2\in\mathbf Z\)">\(z_1,z_2\in\mathbf Z\)</span>, and show that <span class="math" data-tex="\(\operatorname{Nm}(b)=4\)">\(\operatorname{Nm}(b)=4\)</span>.</p>
+<p><strong>3.4</strong> (easy). In Lemma 3.5, check the identity <span class="math" data-tex="\(Q_0\frac{k(k-1)}2+kr=\frac{M^2}{2Q_0}-\frac M2+\frac{r(Q_0-r)}{2Q_0}\)">\(Q_0\frac{k(k-1)}2+kr=\frac{M^2}{2Q_0}-\frac M2+\frac{r(Q_0-r)}{2Q_0}\)</span> for <span class="math" data-tex="\(M=kQ_0+r\)">\(M=kQ_0+r\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>3.1.</strong> If <span class="math" data-tex="\(An=An&#x27;\)">\(An=An&#x27;\)</span>, the first coordinates give <span class="math" data-tex="\(\theta_n=\theta_{n&#x27;}\)">\(\theta_n=\theta_{n&#x27;}\)</span>, and Lemma 3.1 gives <span class="math" data-tex="\(n=n&#x27;\)">\(n=n&#x27;\)</span>.</p>
+<p><strong>3.2.</strong> The indices <span class="math" data-tex="\((j,0,0)\)">\((j,0,0)\)</span> with <span class="math" data-tex="\(j&lt;M\)">\(j&lt;M\)</span> have weight <span class="math" data-tex="\(j&lt;H\)">\(j&lt;H\)</span>, while every index with <span class="math" data-tex="\(\alpha_2+\alpha_3\ge1\)">\(\alpha_2+\alpha_3\ge1\)</span> has weight at least <span class="math" data-tex="\(H\)">\(H\)</span>. So these <span class="math" data-tex="\(M\)">\(M\)</span> indices come first, in increasing order of <span class="math" data-tex="\(j\)">\(j\)</span>. Their rows form the Vandermonde matrix <span class="math" data-tex="\((\theta_n^j)\)">\((\theta_n^j)\)</span>, whose determinant <span class="math" data-tex="\(\prod_{n&lt;n&#x27;}(\theta_{n&#x27;}-\theta_n)\)">\(\prod_{n&lt;n&#x27;}(\theta_{n&#x27;}-\theta_n)\)</span> is nonzero by Exercise 3.1. So all of them are retained, and <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> is complete with <span class="math" data-tex="\(M\)">\(M\)</span> elements.</p>
+<p><strong>3.3.</strong> Since <span class="math" data-tex="\(\tau\)">\(\tau\)</span> fixes <span class="math" data-tex="\(z_1\pm z_2a\)">\(z_1\pm z_2a\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Nm}(z_1+z_2a)&amp;=(z_1+z_2a)^2(z_1-z_2a)^2\\
+&amp;=(z_1^2-dz_2^2)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Nm}(z_1+z_2a)&amp;=(z_1+z_2a)^2(z_1-z_2a)^2\\
+&amp;=(z_1^2-dz_2^2)^2 .
+\end{aligned}
+\]</span>
+And <span class="math" data-tex="\(\operatorname{Nm}(b)=b\cdot b\cdot(-b)\cdot(-b)=b^4=4\)">\(\operatorname{Nm}(b)=b\cdot b\cdot(-b)\cdot(-b)=b^4=4\)</span>.</p>
+<p><strong>3.4.</strong> Expand <span class="math" data-tex="\(\frac{(kQ_0+r)^2}{2Q_0}=\frac{k^2Q_0}2+kr+\frac{r^2}{2Q_0}\)">\(\frac{(kQ_0+r)^2}{2Q_0}=\frac{k^2Q_0}2+kr+\frac{r^2}{2Q_0}\)</span> and subtract <span class="math" data-tex="\(\frac{kQ_0+r}2\)">\(\frac{kQ_0+r}2\)</span>; adding <span class="math" data-tex="\(\frac{r(Q_0-r)}{2Q_0}=\frac r2-\frac{r^2}{2Q_0}\)">\(\frac{r(Q_0-r)}{2Q_0}=\frac r2-\frac{r^2}{2Q_0}\)</span> leaves <span class="math" data-tex="\(\frac{k^2Q_0}2-\frac{kQ_0}2+kr\)">\(\frac{k^2Q_0}2-\frac{kQ_0}2+kr\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-LS] OpenAI, <em>Uniform exclusion of Landau–Siegel zeros</em>, OpenAI Math Release preprint, 1 October 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Uniform-exclusion-of-Landau-Siegel-zeros-October-1-2026</li>
+<li>[Laurent] M. Laurent, <em>Sur quelques résultats récents de transcendance</em>, Astérisque 198–200 (1991), 209–230. https://www.numdam.org/item/AST_1991__198-199-200__209_0/</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

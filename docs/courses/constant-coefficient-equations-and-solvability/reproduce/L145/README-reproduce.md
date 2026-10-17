@@ -39,7 +39,6 @@ radial quadratures verify the annular error norm, integer-dimensional radial
 integrals, finite polynomial data, direct-extension bounds and the growth
 example. These checks supplement the complete exact proofs; they do not
 establish extension, replace the trace argument or close the whole course.
-No TeX process, browser profile, worker or backup copy is required.
 
 Human source: Lars Hörmander, *The Analysis of Linear Partial Differential
 Operators II*, §15.1, Theorem 15.1.3 and Corollary 15.1.4, printed pp. 274–276;
@@ -48,5 +47,4 @@ examples, solutions and artwork are original. Protected book pages, private
 reading scripts, private task state and procurement records are excluded.
 
 Original material is CC0 1.0; see `LICENSE.txt`. DejaVu Sans retains the
-separately included font license. Remaining analytic-functional and weighted
-Fourier targets and the entire assigned course retain their own proof scope.
+separately included font license.

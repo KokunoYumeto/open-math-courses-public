@@ -1,0 +1,256 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Two bounds for the determinant</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Uniform exclusion of Landau–Siegel zeros)</a><a href="a-weighted-determinant-in-a-biquadratic-field.html">Previous lesson</a><a href="src/two-bounds-for-the-determinant.md">Editable source</a></nav><main><article><h1 id="two-bounds-for-the-determinant">Two bounds for the determinant</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The determinant <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> of <a href="a-weighted-determinant-in-a-biquadratic-field.html">A weighted determinant in a biquadratic field</a> is a nonzero element of <span class="math" data-tex="\(\mathcal R=\mathbf Z[a,b]\)">\(\mathcal R=\mathbf Z[a,b]\)</span>, so its norm is a nonzero integer. This lesson bounds that integer from above by Hadamard's inequality and from below by its divisibility at the primes <span class="math" data-tex="\(p&gt;H\)">\(p&gt;H\)</span> with <span class="math" data-tex="\(\chi(p)=-1\)">\(\chi(p)=-1\)</span>, and compares the two bounds to prove Theorem A. The argument follows OpenAI [OpenAI-LS, Sections 5 and 6].</p>
+<p>The notation is that of the previous lesson: <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(d\ne2\)">\(d\ne2\)</span>, <span class="math" data-tex="\(K=\mathbf Q(a,b)\)">\(K=\mathbf Q(a,b)\)</span>, <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, <span class="math" data-tex="\(\operatorname{Nm}\)">\(\operatorname{Nm}\)</span>, integers <span class="math" data-tex="\(1\le H\le N\)">\(1\le H\le N\)</span>, <span class="math" data-tex="\(U=N^{4/3}\)">\(U=N^{4/3}\)</span>, <span class="math" data-tex="\(M=N^4\)">\(M=N^4\)</span>, the retained set <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, the determinant <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, and the sums <span class="math" data-tex="\(S_1\)">\(S_1\)</span>, <span class="math" data-tex="\(S_2\)">\(S_2\)</span>. As in <a href="real-zeros-and-the-prime-bias.html">Real zeros and the prime bias</a>, <span class="math" data-tex="\(\ell=\log q\)">\(\ell=\log q\)</span>.</p>
+<h2 id="1-the-archimedean-bound">1. The Archimedean bound</h2>
+<p><strong>Lemma 4.1.</strong> For every <span class="math" data-tex="\(n\in E_N\)">\(n\in E_N\)</span> and every <span class="math" data-tex="\(g\in\{1,\sigma,\tau,\sigma\tau\}\)">\(g\in\{1,\sigma,\tau,\sigma\tau\}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|g(\theta_n)|&amp;\le(N-1)(1+\sqrt{|d|})(1+\sqrt2)\\
+&amp;&lt;8N\sqrt q .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|g(\theta_n)|&amp;\le(N-1)(1+\sqrt{|d|})(1+\sqrt2)\\
+&amp;&lt;8N\sqrt q .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(g(\theta_n)=n_1\pm n_2a\pm n_3b\pm n_4ab\)">\(g(\theta_n)=n_1\pm n_2a\pm n_3b\pm n_4ab\)</span> with <span class="math" data-tex="\(0\le n_i\le N-1\)">\(0\le n_i\le N-1\)</span>, <span class="math" data-tex="\(|a|=\sqrt{|d|}\)">\(|a|=\sqrt{|d|}\)</span> and <span class="math" data-tex="\(|b|=\sqrt2\)">\(|b|=\sqrt2\)</span>. The triangle inequality gives the first bound, as
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;1+\sqrt{|d|}+\sqrt2+\sqrt{2|d|}\\
+&amp;\quad=(1+\sqrt{|d|})(1+\sqrt2).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;1+\sqrt{|d|}+\sqrt2+\sqrt{2|d|}\\
+&amp;\quad=(1+\sqrt{|d|})(1+\sqrt2).
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(1\le|d|\le q\)">\(1\le|d|\le q\)</span>, <span class="math" data-tex="\(1+\sqrt{|d|}\le2\sqrt q\)">\(1+\sqrt{|d|}\le2\sqrt q\)</span>, and <span class="math" data-tex="\(2(1+\sqrt2)&lt;8\)">\(2(1+\sqrt2)&lt;8\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.2.</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac14\log|\operatorname{Nm}(\Delta)|\\
+&amp;\quad\le\frac M2\log M+(S_1+S_2)\log N\\
+&amp;\qquad+(S_1+S_2)\Bigl(\frac12\ell+\log8\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac14\log|\operatorname{Nm}(\Delta)|\\
+&amp;\quad\le\frac M2\log M+(S_1+S_2)\log N\\
+&amp;\qquad+(S_1+S_2)\Bigl(\frac12\ell+\log8\Bigr).
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(g\in\{1,\sigma,\tau,\sigma\tau\}\)">\(g\in\{1,\sigma,\tau,\sigma\tau\}\)</span>. As <span class="math" data-tex="\(g\)">\(g\)</span> is a ring homomorphism and a determinant is a polynomial in the entries, <span class="math" data-tex="\(g(\Delta)\)">\(g(\Delta)\)</span> is the determinant of the rows <span class="math" data-tex="\(g(R_\alpha)\)">\(g(R_\alpha)\)</span>, <span class="math" data-tex="\(\alpha\in\mathcal P\)">\(\alpha\in\mathcal P\)</span>. The entries of <span class="math" data-tex="\(g(R_\alpha)\)">\(g(R_\alpha)\)</span> are
+<span class="math math-display" data-tex="\[
+g(\theta_n)^{\alpha_1}\,g\sigma(\theta_n)^{\alpha_2}\,g\sigma\tau(\theta_n)^{\alpha_3},
+\]">\[
+g(\theta_n)^{\alpha_1}\,g\sigma(\theta_n)^{\alpha_2}\,g\sigma\tau(\theta_n)^{\alpha_3},
+\]</span>
+and <span class="math" data-tex="\(g\sigma,g\sigma\tau\in\{1,\sigma,\tau,\sigma\tau\}\)">\(g\sigma,g\sigma\tau\in\{1,\sigma,\tau,\sigma\tau\}\)</span>. By Lemma 4.1 every entry has absolute value at most <span class="math" data-tex="\((8N\sqrt q)^{\alpha_1+\alpha_2+\alpha_3}\)">\((8N\sqrt q)^{\alpha_1+\alpha_2+\alpha_3}\)</span>, so the row has Euclidean norm at most <span class="math" data-tex="\(\sqrt M(8N\sqrt q)^{\alpha_1+\alpha_2+\alpha_3}\)">\(\sqrt M(8N\sqrt q)^{\alpha_1+\alpha_2+\alpha_3}\)</span>. Hadamard's inequality, Lemma 1.3 of <a href="../irrationality-of-special-values/the-real-place-integral-formula-and-two-bounds.html#1-three-determinant-identities">The real-place integral formula and two bounds</a>, applied to the transposed matrix, gives
+<span class="math math-display" data-tex="\[
+|g(\Delta)|\le M^{M/2}(8N\sqrt q)^{S_1+S_2}.
+\]">\[
+|g(\Delta)|\le M^{M/2}(8N\sqrt q)^{S_1+S_2}.
+\]</span>
+Multiply over the four values of <span class="math" data-tex="\(g\)">\(g\)</span>, take logarithms and divide by <span class="math" data-tex="\(4\)">\(4\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-frobenius-congruence">2. The Frobenius congruence</h2>
+<p><strong>Lemma 4.3.</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be an odd prime with <span class="math" data-tex="\(p\nmid q\)">\(p\nmid q\)</span>, and let <span class="math" data-tex="\(g_p\)">\(g_p\)</span> be the automorphism of <span class="math" data-tex="\(K\)">\(K\)</span> with
+<span class="math math-display" data-tex="\[
+g_p(a)=\Bigl(\frac dp\Bigr)a,\qquad g_p(b)=\Bigl(\frac2p\Bigr)b .
+\]">\[
+g_p(a)=\Bigl(\frac dp\Bigr)a,\qquad g_p(b)=\Bigl(\frac2p\Bigr)b .
+\]</span>
+Then <span class="math" data-tex="\(\theta^p\equiv g_p(\theta)\pmod{p\mathcal R}\)">\(\theta^p\equiv g_p(\theta)\pmod{p\mathcal R}\)</span> for every <span class="math" data-tex="\(\theta\in\mathcal R\)">\(\theta\in\mathcal R\)</span>. If <span class="math" data-tex="\(\chi(p)=-1\)">\(\chi(p)=-1\)</span>, then <span class="math" data-tex="\(g_p=\sigma\)">\(g_p=\sigma\)</span> when <span class="math" data-tex="\((2/p)=1\)">\((2/p)=1\)</span>, and <span class="math" data-tex="\(g_p=\sigma\tau\)">\(g_p=\sigma\tau\)</span> when <span class="math" data-tex="\((2/p)=-1\)">\((2/p)=-1\)</span>.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(p\nmid2d\)">\(p\nmid2d\)</span>, Euler's criterion <a href="../NT-DIRL/NT-DIRL-01.html#4-real-characters-and-quadratic-discriminants">Dirichlet characters, Section 4</a> gives <span class="math" data-tex="\(d^{(p-1)/2}\equiv(d/p)\)">\(d^{(p-1)/2}\equiv(d/p)\)</span> and <span class="math" data-tex="\(2^{(p-1)/2}\equiv(2/p)\)">\(2^{(p-1)/2}\equiv(2/p)\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Hence, in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a^p&amp;=a\,d^{(p-1)/2}\equiv\Bigl(\frac dp\Bigr)a,\\
+b^p&amp;=b\,2^{(p-1)/2}\equiv\Bigl(\frac2p\Bigr)b
+\end{aligned}
+\]">\[
+\begin{aligned}
+a^p&amp;=a\,d^{(p-1)/2}\equiv\Bigl(\frac dp\Bigr)a,\\
+b^p&amp;=b\,2^{(p-1)/2}\equiv\Bigl(\frac2p\Bigr)b
+\end{aligned}
+\]</span>
+modulo <span class="math" data-tex="\(p\mathcal R\)">\(p\mathcal R\)</span>. The ring <span class="math" data-tex="\(\mathcal R/p\mathcal R\)">\(\mathcal R/p\mathcal R\)</span> is commutative of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, so <span class="math" data-tex="\(x\mapsto x^p\)">\(x\mapsto x^p\)</span> is a ring homomorphism of it: the binomial coefficients <span class="math" data-tex="\(\binom pk\)">\(\binom pk\)</span>, <span class="math" data-tex="\(0&lt;k&lt;p\)">\(0&lt;k&lt;p\)</span>, are divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. It fixes the classes of integers, by Fermat's little theorem. For <span class="math" data-tex="\(\theta=z_1+z_2a+z_3b+z_4ab\)">\(\theta=z_1+z_2a+z_3b+z_4ab\)</span> it follows that
+<span class="math math-display" data-tex="\[
+\theta^p\equiv z_1+z_2a^p+z_3b^p+z_4a^pb^p\equiv g_p(\theta).
+\]">\[
+\theta^p\equiv z_1+z_2a^p+z_3b^p+z_4a^pb^p\equiv g_p(\theta).
+\]</span>
+If <span class="math" data-tex="\(\chi(p)=-1\)">\(\chi(p)=-1\)</span>, then <span class="math" data-tex="\((d/p)=\chi(p)=-1\)">\((d/p)=\chi(p)=-1\)</span> by Section 1 of the previous lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Call a prime <span class="math" data-tex="\(p\)">\(p\)</span> <em>admissible</em> if <span class="math" data-tex="\(p&gt;H\)">\(p&gt;H\)</span>, <span class="math" data-tex="\(p\nmid2q\)">\(p\nmid2q\)</span> and <span class="math" data-tex="\(\chi(p)=-1\)">\(\chi(p)=-1\)</span>.</p>
+<h2 id="3-divisibility">3. Divisibility</h2>
+<p><strong>Proposition 4.4</strong> (OpenAI). For every admissible prime <span class="math" data-tex="\(p\)">\(p\)</span>,
+<span class="math math-display" data-tex="\[
+\Delta\in p^{E_p}\mathcal R,\qquad E_p=\sum_{\alpha\in\mathcal P}\Bigl\lfloor\frac{\alpha_1}p\Bigr\rfloor .
+\]">\[
+\Delta\in p^{E_p}\mathcal R,\qquad E_p=\sum_{\alpha\in\mathcal P}\Bigl\lfloor\frac{\alpha_1}p\Bigr\rfloor .
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(j=2\)">\(j=2\)</span> if <span class="math" data-tex="\(g_p=\sigma\)">\(g_p=\sigma\)</span> and <span class="math" data-tex="\(j=3\)">\(j=3\)</span> if <span class="math" data-tex="\(g_p=\sigma\tau\)">\(g_p=\sigma\tau\)</span>, and let <span class="math" data-tex="\(e_1,e_2,e_3\)">\(e_1,e_2,e_3\)</span> be the unit vectors of <span class="math" data-tex="\(\mathbf Z^3\)">\(\mathbf Z^3\)</span>. For <span class="math" data-tex="\(\alpha\in\mathcal P\)">\(\alpha\in\mathcal P\)</span> write <span class="math" data-tex="\(\alpha_1=kp+r\)">\(\alpha_1=kp+r\)</span> with <span class="math" data-tex="\(0\le r&lt;p\)">\(0\le r&lt;p\)</span>, and let <span class="math" data-tex="\(\widetilde R_\alpha\)">\(\widetilde R_\alpha\)</span> be the vector whose entry at <span class="math" data-tex="\(n\in E_N\)">\(n\in E_N\)</span> is
+<span class="math math-display" data-tex="\[
+\theta_n^r\bigl(\theta_n^p-g_p(\theta_n)\bigr)^k\,\sigma(\theta_n)^{\alpha_2}\,\sigma\tau(\theta_n)^{\alpha_3}.
+\]">\[
+\theta_n^r\bigl(\theta_n^p-g_p(\theta_n)\bigr)^k\,\sigma(\theta_n)^{\alpha_2}\,\sigma\tau(\theta_n)^{\alpha_3}.
+\]</span>
+Expanding the power by the binomial theorem, and using that <span class="math" data-tex="\(g_p(\theta_n)\)">\(g_p(\theta_n)\)</span> is the conjugate raised to the exponent <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widetilde R_\alpha={}&amp;R_\alpha\\
+&amp;+\sum_{m=1}^k(-1)^m\binom kmR_{\alpha-pme_1+me_j}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\widetilde R_\alpha={}&amp;R_\alpha\\
+&amp;+\sum_{m=1}^k(-1)^m\binom kmR_{\alpha-pme_1+me_j}.
+\end{aligned}
+\]</span>
+The index <span class="math" data-tex="\(\alpha-pme_1+me_j\)">\(\alpha-pme_1+me_j\)</span> has weight <span class="math" data-tex="\(w(\alpha)-m(p-H)&lt;w(\alpha)\)">\(w(\alpha)-m(p-H)&lt;w(\alpha)\)</span>, because <span class="math" data-tex="\(p&gt;H\)">\(p&gt;H\)</span>. So it precedes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and by part 1 of Lemma 3.4 its row is a <span class="math" data-tex="\(K\)">\(K\)</span>-linear combination of retained rows preceding <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Thus the matrix with rows <span class="math" data-tex="\(\widetilde R_\alpha\)">\(\widetilde R_\alpha\)</span>, <span class="math" data-tex="\(\alpha\in\mathcal P\)">\(\alpha\in\mathcal P\)</span> in increasing order, is <span class="math" data-tex="\(L\)">\(L\)</span> times the matrix with rows <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span>, for a lower triangular matrix <span class="math" data-tex="\(L\)">\(L\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span> with diagonal entries <span class="math" data-tex="\(1\)">\(1\)</span>, and
+<span class="math math-display" data-tex="\[
+\det\bigl(\widetilde R_\alpha\bigr)_{\alpha\in\mathcal P}=\Delta .
+\]">\[
+\det\bigl(\widetilde R_\alpha\bigr)_{\alpha\in\mathcal P}=\Delta .
+\]</span>
+On the other hand <span class="math" data-tex="\(\theta_n^p-g_p(\theta_n)\in p\mathcal R\)">\(\theta_n^p-g_p(\theta_n)\in p\mathcal R\)</span> by Lemma 4.3, so every entry of <span class="math" data-tex="\(\widetilde R_\alpha\)">\(\widetilde R_\alpha\)</span> lies in <span class="math" data-tex="\(p^k\mathcal R\)">\(p^k\mathcal R\)</span>, with <span class="math" data-tex="\(k=\lfloor\alpha_1/p\rfloor\)">\(k=\lfloor\alpha_1/p\rfloor\)</span>. Dividing each row by its power of <span class="math" data-tex="\(p\)">\(p\)</span> leaves a matrix over <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>, whose determinant lies in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>. Hence <span class="math" data-tex="\(\Delta\in p^{E_p}\mathcal R\)">\(\Delta\in p^{E_p}\mathcal R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The entries of <span class="math" data-tex="\(L\)">\(L\)</span> need not lie in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>; the divisibility comes from the entries of the rows <span class="math" data-tex="\(\widetilde R_\alpha\)">\(\widetilde R_\alpha\)</span> alone.</p>
+<p><strong>Corollary 4.5.</strong> Let <span class="math" data-tex="\(\mathcal A_U\)">\(\mathcal A_U\)</span> be the set of admissible primes <span class="math" data-tex="\(p\le U\)">\(p\le U\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac14\log|\operatorname{Nm}(\Delta)|\ge\sum_{p\in\mathcal A_U}E_p\log p\\
+&amp;\quad\ge S_1\sum_{p\in\mathcal A_U}\frac{\log p}p-1.39\,MU .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac14\log|\operatorname{Nm}(\Delta)|\ge\sum_{p\in\mathcal A_U}E_p\log p\\
+&amp;\quad\ge S_1\sum_{p\in\mathcal A_U}\frac{\log p}p-1.39\,MU .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(\Delta=p^{E_p}\rho_p\)">\(\Delta=p^{E_p}\rho_p\)</span> with <span class="math" data-tex="\(\rho_p\in\mathcal R\)">\(\rho_p\in\mathcal R\)</span>. Then <span class="math" data-tex="\(\operatorname{Nm}(\Delta)=p^{4E_p}\operatorname{Nm}(\rho_p)\)">\(\operatorname{Nm}(\Delta)=p^{4E_p}\operatorname{Nm}(\rho_p)\)</span> with <span class="math" data-tex="\(\operatorname{Nm}(\rho_p)\in\mathbf Z\)">\(\operatorname{Nm}(\rho_p)\in\mathbf Z\)</span>, by Lemma 3.2. So <span class="math" data-tex="\(p^{4E_p}\)">\(p^{4E_p}\)</span> divides the nonzero integer <span class="math" data-tex="\(\operatorname{Nm}(\Delta)\)">\(\operatorname{Nm}(\Delta)\)</span> for every admissible <span class="math" data-tex="\(p\)">\(p\)</span>, and so does the product of these coprime prime powers over <span class="math" data-tex="\(p\le U\)">\(p\le U\)</span>. This gives the first inequality. For the second, <span class="math" data-tex="\(\lfloor x\rfloor\ge x-1\)">\(\lfloor x\rfloor\ge x-1\)</span> gives <span class="math" data-tex="\(E_p\ge S_1/p-M\)">\(E_p\ge S_1/p-M\)</span>, and Chebyshev's bound <span class="math" data-tex="\(\sum_{p\le U}\log p&lt;(2\log2)U\)">\(\sum_{p\le U}\log p&lt;(2\log2)U\)</span>, Theorem 2.1 of <a href="../NT-ZETA/NT-ZETA-02.html#2-a-binomial-coefficient-measures-primes">Counting primes by elementary means: Chebyshev and Mertens</a>, gives the rest, as <span class="math" data-tex="\(2\log2&lt;1.39\)">\(2\log2&lt;1.39\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-proof-of-theorem-a">4. Proof of Theorem A</h2>
+<p>Suppose Theorem A is false. By Corollary 1.6 of <a href="real-zeros-and-the-prime-bias.html">Real zeros and the prime bias</a> there are primitive nonprincipal real characters of conductors <span class="math" data-tex="\(q\to\infty\)">\(q\to\infty\)</span> with real zeros <span class="math" data-tex="\(\beta\)">\(\beta\)</span> such that <span class="math" data-tex="\(\delta=(1-\beta)\ell\to0\)">\(\delta=(1-\beta)\ell\to0\)</span>. Fix
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H&amp;=\frac{12C_0}{c_0}=12\cdot192\cdot4\cdot97^2\\
+&amp;=86{,}713{,}344,
+\end{aligned}
+\]">\[
+\begin{aligned}
+H&amp;=\frac{12C_0}{c_0}=12\cdot192\cdot4\cdot97^2\\
+&amp;=86{,}713{,}344,
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(c_0,C_0\)">\(c_0,C_0\)</span> from Lemma 3.5, and for each character of the sequence put <span class="math" data-tex="\(N=\lceil q^{55}\rceil\)">\(N=\lceil q^{55}\rceil\)</span>. For all large <span class="math" data-tex="\(q\)">\(q\)</span> in the sequence, <span class="math" data-tex="\(q\ne8\)">\(q\ne8\)</span>, <span class="math" data-tex="\(N\ge H\)">\(N\ge H\)</span>, <span class="math" data-tex="\(H^{2/3}N^{4/3}\ge2\cdot97^2\)">\(H^{2/3}N^{4/3}\ge2\cdot97^2\)</span> and <span class="math" data-tex="\(U\ge3\)">\(U\ge3\)</span>. Then all results of the last three lessons apply, and Lemma 3.5 gives
+<span class="math math-display" data-tex="\[
+\rho:=\frac{S_2}{S_1}\le\frac1{12} .
+\]">\[
+\rho:=\frac{S_2}{S_1}\le\frac1{12} .
+\]</span></p>
+<p>The primes of <span class="math" data-tex="\(\mathcal A_U\)">\(\mathcal A_U\)</span> are those counted in Corollary 1.4 with <span class="math" data-tex="\(X=U\)">\(X=U\)</span>. Corollaries 1.4 and 4.5 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac14\log|\operatorname{Nm}(\Delta)|\\
+&amp;\quad\ge S_1\log U-4S_1\ell-\frac{3S_1\delta(\log U)^2}{\ell}\\
+&amp;\qquad-S_1(\log H+2c_M)-1.39\,MU .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac14\log|\operatorname{Nm}(\Delta)|\\
+&amp;\quad\ge S_1\log U-4S_1\ell-\frac{3S_1\delta(\log U)^2}{\ell}\\
+&amp;\qquad-S_1(\log H+2c_M)-1.39\,MU .
+\end{aligned}
+\]</span>
+Proposition 4.2, with <span class="math" data-tex="\(\log N=\frac34\log U\)">\(\log N=\frac34\log U\)</span> and <span class="math" data-tex="\(\log M=3\log U\)">\(\log M=3\log U\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac14\log|\operatorname{Nm}(\Delta)|\le\frac32M\log U\\
+&amp;\quad+S_1(1+\rho)\Bigl(\frac34\log U+\frac12\ell+\log8\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac14\log|\operatorname{Nm}(\Delta)|\le\frac32M\log U\\
+&amp;\quad+S_1(1+\rho)\Bigl(\frac34\log U+\frac12\ell+\log8\Bigr).
+\end{aligned}
+\]</span>
+Combine the two bounds and divide by <span class="math" data-tex="\(S_1\log U&gt;0\)">\(S_1\log U&gt;0\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1\le{}&amp;\frac34(1+\rho)+\Bigl(4+\frac{1+\rho}2\Bigr)\frac\ell{\log U}\\
+&amp;+\frac{3\delta\log U}{\ell}\\
+&amp;+\frac{(1+\rho)\log8+\log H+2c_M}{\log U}\\
+&amp;+\frac{1.39\,MU}{S_1\log U}+\frac{3M}{2S_1} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+1\le{}&amp;\frac34(1+\rho)+\Bigl(4+\frac{1+\rho}2\Bigr)\frac\ell{\log U}\\
+&amp;+\frac{3\delta\log U}{\ell}\\
+&amp;+\frac{(1+\rho)\log8+\log H+2c_M}{\log U}\\
+&amp;+\frac{1.39\,MU}{S_1\log U}+\frac{3M}{2S_1} .
+\end{aligned}
+\]</span>
+The terms on the right are bounded as follows.</p>
+<ol>
+<li><span class="math" data-tex="\(\frac34(1+\rho)\le\frac34\cdot\frac{13}{12}=\frac{13}{16}\)">\(\frac34(1+\rho)\le\frac34\cdot\frac{13}{12}=\frac{13}{16}\)</span>.</li>
+<li>Since <span class="math" data-tex="\(N\ge q^{55}\)">\(N\ge q^{55}\)</span>, <span class="math" data-tex="\(\log U=\frac43\log N\ge\frac{220}3\ell\)">\(\log U=\frac43\log N\ge\frac{220}3\ell\)</span>, so the second term is at most <span class="math" data-tex="\(\frac{109}{24}\cdot\frac3{220}=\frac{109}{1760}&lt;\frac1{16}\)">\(\frac{109}{24}\cdot\frac3{220}=\frac{109}{1760}&lt;\frac1{16}\)</span>.</li>
+<li>Since <span class="math" data-tex="\(N\le2q^{55}\)">\(N\le2q^{55}\)</span> and <span class="math" data-tex="\(\ell&gt;1\)">\(\ell&gt;1\)</span>, <span class="math" data-tex="\(\log U\le\frac43(55\ell+\log2)\le75\ell\)">\(\log U\le\frac43(55\ell+\log2)\le75\ell\)</span>, so the third term is at most <span class="math" data-tex="\(225\delta\)">\(225\delta\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span>.</li>
+<li>The fourth term tends to <span class="math" data-tex="\(0\)">\(0\)</span>, because <span class="math" data-tex="\(H\)">\(H\)</span> is fixed and <span class="math" data-tex="\(\log U\to\infty\)">\(\log U\to\infty\)</span>.</li>
+<li>By Lemma 3.5, <span class="math" data-tex="\(S_1\ge c_0MH^{2/3}U\)">\(S_1\ge c_0MH^{2/3}U\)</span>, so the last two terms are at most <span class="math" data-tex="\(\frac{1.39}{c_0H^{2/3}\log U}\)">\(\frac{1.39}{c_0H^{2/3}\log U}\)</span> and <span class="math" data-tex="\(\frac3{2c_0H^{2/3}U}\)">\(\frac3{2c_0H^{2/3}U}\)</span>, which tend to <span class="math" data-tex="\(0\)">\(0\)</span>.</li>
+</ol>
+<p>Letting <span class="math" data-tex="\(q\to\infty\)">\(q\to\infty\)</span> along the sequence gives
+<span class="math math-display" data-tex="\[
+1\le\frac{13}{16}+\frac{109}{1760}&lt;\frac{13}{16}+\frac1{16}=\frac78,
+\]">\[
+1\le\frac{13}{16}+\frac{109}{1760}&lt;\frac{13}{16}+\frac1{16}=\frac78,
+\]</span>
+a contradiction. This proves Theorem A. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Banks [Banks] arranges the proof so that it gives an explicit constant: <span class="math" data-tex="\(c=3.0\cdot10^{-3}\)">\(c=3.0\cdot10^{-3}\)</span> for <span class="math" data-tex="\(q\ge10^{10}\)">\(q\ge10^{10}\)</span>.</p>
+<h2 id="5-a-zero-free-region-without-exception">5. A zero-free region without exception</h2>
+<p><strong>Corollary B.</strong> There is an absolute constant <span class="math" data-tex="\(c_B&gt;0\)">\(c_B&gt;0\)</span> such that, for every modulus <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span>, no Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-function <span class="math" data-tex="\(L(s,\chi)\)">\(L(s,\chi)\)</span> with <span class="math" data-tex="\(\chi\)">\(\chi\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span> vanishes in the region
+<span class="math math-display" data-tex="\[
+\operatorname{Re}s\ge1-\frac{c_B}{\log(q(|\operatorname{Im}s|+2))} .
+\]">\[
+\operatorname{Re}s\ge1-\frac{c_B}{\log(q(|\operatorname{Im}s|+2))} .
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(c\)">\(c\)</span> be the constant of Theorem 5.1 of <span class="unlinked">Zero-free regions and the exceptional zero</span>, let <span class="math" data-tex="\(c_A\)">\(c_A\)</span> be the constant of Theorem A, and put <span class="math" data-tex="\(c_B=\min(c,c_A)\)">\(c_B=\min(c,c_A)\)</span>. By that theorem, the only possible zero of <span class="math" data-tex="\(\prod_{\chi\bmod q}L(s,\chi)\)">\(\prod_{\chi\bmod q}L(s,\chi)\)</span> in the region with constant <span class="math" data-tex="\(c\)">\(c\)</span> is a simple real zero <span class="math" data-tex="\(\beta_1&lt;1\)">\(\beta_1&lt;1\)</span> of one real nonprincipal character <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span>; the proof there takes <span class="math" data-tex="\(c&lt;\log2\)">\(c&lt;\log2\)</span>, so the region lies in <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span> and <span class="math" data-tex="\(\beta_1&gt;0\)">\(\beta_1&gt;0\)</span>. The character <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span> is induced by a primitive real nonprincipal character <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span> of conductor <span class="math" data-tex="\(q^*\mid q\)">\(q^*\mid q\)</span>, <span class="math" data-tex="\(q^*\ge3\)">\(q^*\ge3\)</span>. By (3.3) of <a href="../NT-DIRL/NT-DIRL-05.html#3-where-the-zeros-can-be">The functional equation of Dirichlet L-functions</a>, <span class="math" data-tex="\(L(s,\chi_1)\)">\(L(s,\chi_1)\)</span> is <span class="math" data-tex="\(L(s,\chi^*)\)">\(L(s,\chi^*)\)</span> times finite Euler factors whose zeros lie on <span class="math" data-tex="\(\operatorname{Re}s=0\)">\(\operatorname{Re}s=0\)</span>. So <span class="math" data-tex="\(L(\beta_1,\chi^*)=0\)">\(L(\beta_1,\chi^*)=0\)</span>, and Theorem A gives
+<span class="math math-display" data-tex="\[
+1-\beta_1\ge\frac{c_A}{\log q^*}\ge\frac{c_A}{\log q}&gt;\frac{c_B}{\log(2q)} .
+\]">\[
+1-\beta_1\ge\frac{c_A}{\log q^*}\ge\frac{c_A}{\log q}&gt;\frac{c_B}{\log(2q)} .
+\]</span>
+Thus <span class="math" data-tex="\(\beta_1\)">\(\beta_1\)</span> lies outside the region with constant <span class="math" data-tex="\(c_B\)">\(c_B\)</span>, which is contained in the region with constant <span class="math" data-tex="\(c\)">\(c\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-why-a-real-zero-is-needed">6. Why a real zero is needed</h2>
+<p>The two bounds hold for every <span class="math" data-tex="\(d\ne1,2\)">\(d\ne1,2\)</span> and all <span class="math" data-tex="\(1\le H\le N\)">\(1\le H\le N\)</span>; only the distribution of the primes forced by a real zero close to <span class="math" data-tex="\(1\)">\(1\)</span> makes them incompatible. Fix <span class="math" data-tex="\(d\ne1,2\)">\(d\ne1,2\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span>, and let <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>, so that <span class="math" data-tex="\(\ell/\log U\to0\)">\(\ell/\log U\to0\)</span>.</p>
+<p>For odd <span class="math" data-tex="\(p\nmid q\)">\(p\nmid q\)</span>, the pair <span class="math" data-tex="\(\bigl((d/p),(2/p)\bigr)=\bigl(\chi(p),\chi_8(p)\bigr)\)">\(\bigl((d/p),(2/p)\bigr)=\bigl(\chi(p),\chi_8(p)\bigr)\)</span>, with <span class="math" data-tex="\(\chi_8\)">\(\chi_8\)</span> as in (4.3) of <a href="../NT-DIRL/NT-DIRL-01.html#4-real-characters-and-quadratic-discriminants">Dirichlet characters</a>, depends only on <span class="math" data-tex="\(p\)">\(p\)</span> modulo <span class="math" data-tex="\(8q\)">\(8q\)</span>. The map <span class="math" data-tex="\(u\mapsto(\chi(u),\chi_8(u))\)">\(u\mapsto(\chi(u),\chi_8(u))\)</span> is a homomorphism from the units modulo <span class="math" data-tex="\(8q\)">\(8q\)</span> onto <span class="math" data-tex="\(\{\pm1\}^2\)">\(\{\pm1\}^2\)</span>: its image is not contained in a subgroup of order <span class="math" data-tex="\(2\)">\(2\)</span>, because <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and <span class="math" data-tex="\(\chi_8\)">\(\chi_8\)</span> are nonprincipal and different, having the conductors <span class="math" data-tex="\(q\ne8\)">\(q\ne8\)</span> and <span class="math" data-tex="\(8\)">\(8\)</span>. So each sign pair occurs for a quarter of the residue classes. By Theorem 4.2 of <a href="../NT-DIRL/NT-DIRL-02.html#4-from-nonvanishing-to-primes">Dirichlet's theorem on primes in arithmetic progressions</a>, the primes up to <span class="math" data-tex="\(U\)">\(U\)</span> of each sign pair carry the mass <span class="math" data-tex="\(\frac14\log U+O_{q}(1)\)">\(\frac14\log U+O_{q}(1)\)</span>. Proposition 4.4 applies to the two pairs with <span class="math" data-tex="\((d/p)=-1\)">\((d/p)=-1\)</span>, and by Exercise 4.2 its conclusion also holds when <span class="math" data-tex="\((d/p)=(2/p)=1\)">\((d/p)=(2/p)=1\)</span>. If the argument of Corollary 4.5 uses the primes of all three pairs, its lower bound has leading term <span class="math" data-tex="\(\frac34S_1\log U\)">\(\frac34S_1\log U\)</span>, while the upper bound of Proposition 4.2 has leading term <span class="math" data-tex="\(\frac34(S_1+S_2)\log U\)">\(\frac34(S_1+S_2)\log U\)</span>. They differ by <span class="math" data-tex="\(\frac34S_2\log U\ge0\)">\(\frac34S_2\log U\ge0\)</span>: no contradiction, as must be the case.</p>
+<p>At the primes with <span class="math" data-tex="\((d/p)=1\)">\((d/p)=1\)</span> and <span class="math" data-tex="\((2/p)=-1\)">\((2/p)=-1\)</span>, <span class="math" data-tex="\(\theta^p\equiv\tau(\theta)\)">\(\theta^p\equiv\tau(\theta)\)</span>, and <span class="math" data-tex="\(\tau(\theta_n)\)">\(\tau(\theta_n)\)</span> is not one of the three conjugates in the rows. The divisibility can then fail. For <span class="math" data-tex="\(d=-1\)">\(d=-1\)</span>, <span class="math" data-tex="\(N=2\)">\(N=2\)</span>, <span class="math" data-tex="\(H=3\)">\(H=3\)</span> and the tie-breaking rule of Section 3 of the previous lesson, a computation with exact arithmetic in <span class="math" data-tex="\(K\)">\(K\)</span> gives <span class="math" data-tex="\(E_5=3\)">\(E_5=3\)</span>, while <span class="math" data-tex="\(5\)">\(5\)</span> does not divide <span class="math" data-tex="\(\operatorname{Nm}(\Delta)\)">\(\operatorname{Nm}(\Delta)\)</span>. The condition <span class="math" data-tex="\(p&gt;H\)">\(p&gt;H\)</span> cannot be dropped either: for <span class="math" data-tex="\(d=5\)">\(d=5\)</span>, <span class="math" data-tex="\(N=2\)">\(N=2\)</span>, <span class="math" data-tex="\(H=3\)">\(H=3\)</span> and <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, where <span class="math" data-tex="\((5/3)=-1\)">\((5/3)=-1\)</span>, the same computation gives <span class="math" data-tex="\(E_3=9\)">\(E_3=9\)</span>, while <span class="math" data-tex="\(3^{20}\)">\(3^{20}\)</span> is the exact power of <span class="math" data-tex="\(3\)">\(3\)</span> dividing <span class="math" data-tex="\(\operatorname{Nm}(\Delta)\)">\(\operatorname{Nm}(\Delta)\)</span>, less than <span class="math" data-tex="\(3^{36}\)">\(3^{36}\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>4.1</strong> (easy). Let <span class="math" data-tex="\(d=5\)">\(d=5\)</span> and <span class="math" data-tex="\(p=3\)">\(p=3\)</span>. Compute <span class="math" data-tex="\((1+a)^3\)">\((1+a)^3\)</span> in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> and check that <span class="math" data-tex="\((1+a)^3\equiv1-a\pmod{3\mathcal R}\)">\((1+a)^3\equiv1-a\pmod{3\mathcal R}\)</span>, as Lemma 4.3 predicts.</p>
+<p><strong>4.2</strong> (medium). Let <span class="math" data-tex="\(p\)">\(p\)</span> be an odd prime with <span class="math" data-tex="\(p\nmid q\)">\(p\nmid q\)</span> and <span class="math" data-tex="\((d/p)=(2/p)=1\)">\((d/p)=(2/p)=1\)</span>. Show that <span class="math" data-tex="\(\Delta\in p^{E_p}\mathcal R\)">\(\Delta\in p^{E_p}\mathcal R\)</span> for every <span class="math" data-tex="\(H\ge1\)">\(H\ge1\)</span>, without the condition <span class="math" data-tex="\(p&gt;H\)">\(p&gt;H\)</span>.</p>
+<p><strong>4.3</strong> (medium). Replace <span class="math" data-tex="\(K\)">\(K\)</span> by <span class="math" data-tex="\(\mathbf Q(\sqrt d)\)">\(\mathbf Q(\sqrt d)\)</span>: take <span class="math" data-tex="\(n\in\{0,\dots,N-1\}^2\)">\(n\in\{0,\dots,N-1\}^2\)</span>, <span class="math" data-tex="\(\theta_n=n_1+n_2a\)">\(\theta_n=n_1+n_2a\)</span>, and rows <span class="math" data-tex="\(\bigl(\theta_n^{\alpha_1}\sigma(\theta_n)^{\alpha_2}\bigr)_n\)">\(\bigl(\theta_n^{\alpha_1}\sigma(\theta_n)^{\alpha_2}\bigr)_n\)</span>. With <span class="math" data-tex="\(M=N^2\)">\(M=N^2\)</span> rows chosen in the same way, the natural scale is <span class="math" data-tex="\(U=N\)">\(U=N\)</span>. Explain why the comparison of the two bounds then gives no contradiction, and what the adjunction of <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> changes.</p>
+<p><strong>4.4</strong> (easy). Check that <span class="math" data-tex="\(12\cdot192\cdot4\cdot97^2=86{,}713{,}344\)">\(12\cdot192\cdot4\cdot97^2=86{,}713{,}344\)</span>, that <span class="math" data-tex="\(\frac{109}{24}\cdot\frac3{220}=\frac{109}{1760}&lt;\frac1{16}\)">\(\frac{109}{24}\cdot\frac3{220}=\frac{109}{1760}&lt;\frac1{16}\)</span>, and that <span class="math" data-tex="\(\frac43(55+\log2)\le75\)">\(\frac43(55+\log2)\le75\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>4.1.</strong> In <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(1+a)^3&amp;=1+3a+3a^2+a^3\\
+&amp;=1+3a+15+5a=16+8a\\
+&amp;\equiv1+2a\equiv1-a\pmod3 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+(1+a)^3&amp;=1+3a+3a^2+a^3\\
+&amp;=1+3a+15+5a=16+8a\\
+&amp;\equiv1+2a\equiv1-a\pmod3 .
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\((5/3)=-1\)">\((5/3)=-1\)</span> and <span class="math" data-tex="\((2/3)=-1\)">\((2/3)=-1\)</span>, so <span class="math" data-tex="\(g_3=\sigma\tau\)">\(g_3=\sigma\tau\)</span>, and <span class="math" data-tex="\(\sigma\tau(1+a)=1-a\)">\(\sigma\tau(1+a)=1-a\)</span>.</p>
+<p><strong>4.2.</strong> Here <span class="math" data-tex="\(g_p\)">\(g_p\)</span> is the identity, so <span class="math" data-tex="\(\theta^p\equiv\theta\pmod{p\mathcal R}\)">\(\theta^p\equiv\theta\pmod{p\mathcal R}\)</span>. Replace the first factor <span class="math" data-tex="\(\theta_n^{\alpha_1}\)">\(\theta_n^{\alpha_1}\)</span> by <span class="math" data-tex="\(\theta_n^r(\theta_n^p-\theta_n)^k\)">\(\theta_n^r(\theta_n^p-\theta_n)^k\)</span>. The expansion gives <span class="math" data-tex="\(R_\alpha+\sum_{m\ge1}(-1)^m\binom kmR_{\alpha-(p-1)me_1}\)">\(R_\alpha+\sum_{m\ge1}(-1)^m\binom kmR_{\alpha-(p-1)me_1}\)</span>, and these indices have weight <span class="math" data-tex="\(w(\alpha)-(p-1)m&lt;w(\alpha)\)">\(w(\alpha)-(p-1)m&lt;w(\alpha)\)</span> for every <span class="math" data-tex="\(H\)">\(H\)</span>. The rest of the proof of Proposition 4.4 is unchanged.</p>
+<p><strong>4.3.</strong> The upper bound has main term <span class="math" data-tex="\((S_1+S_2)\log N\)">\((S_1+S_2)\log N\)</span> and the lower bound <span class="math" data-tex="\(S_1\log U\)">\(S_1\log U\)</span>, and <span class="math" data-tex="\(\log N=\log U\)">\(\log N=\log U\)</span>: the two main terms agree up to <span class="math" data-tex="\(S_2\log U\ge0\)">\(S_2\log U\ge0\)</span>, even if all primes up to <span class="math" data-tex="\(U\)">\(U\)</span> were admissible. With <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> adjoined, there are four coordinates <span class="math" data-tex="\(n_1,\dots,n_4\)">\(n_1,\dots,n_4\)</span> but only three conjugates in the rows. Then <span class="math" data-tex="\(M=N^4=U^3\)">\(M=N^4=U^3\)</span>, so <span class="math" data-tex="\(\log N=\frac34\log U\)">\(\log N=\frac34\log U\)</span>, and this gap of <span class="math" data-tex="\(\frac14\log U\)">\(\frac14\log U\)</span> per unit of degree is what Theorem A uses.</p>
+<p><strong>4.4.</strong> <span class="math" data-tex="\(12\cdot192=2304\)">\(12\cdot192=2304\)</span>, <span class="math" data-tex="\(4\cdot97^2=37636\)">\(4\cdot97^2=37636\)</span>, and <span class="math" data-tex="\(2304\cdot37636=86{,}713{,}344\)">\(2304\cdot37636=86{,}713{,}344\)</span>. Next <span class="math" data-tex="\(\frac{109\cdot3}{24\cdot220}=\frac{327}{5280}=\frac{109}{1760}\)">\(\frac{109\cdot3}{24\cdot220}=\frac{327}{5280}=\frac{109}{1760}\)</span>, and <span class="math" data-tex="\(109\cdot16=1744&lt;1760\)">\(109\cdot16=1744&lt;1760\)</span>. Finally <span class="math" data-tex="\(\frac43(55+0.7)=74.27\le75\)">\(\frac43(55+0.7)=74.27\le75\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-LS] OpenAI, <em>Uniform exclusion of Landau–Siegel zeros</em>, OpenAI Math Release preprint, 1 October 2026, Sections 5 and 6. https://github.com/openai/math/tree/main/preprints/Uniform-exclusion-of-Landau-Siegel-zeros-October-1-2026</li>
+<li>[Banks] W. D. Banks, <em>On the OpenAI proof that Landau–Siegel zeros do not exist</em>, arXiv:2610.15483, October 2026. https://arxiv.org/abs/2610.15483</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

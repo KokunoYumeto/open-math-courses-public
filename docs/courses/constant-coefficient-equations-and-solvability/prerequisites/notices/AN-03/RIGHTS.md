@@ -1,15 +1,5 @@
-# Rights and licenses
+# Rights and licences
 
-These notices accompany the independently written AN-03 supporting proofs supplied with this course.
+The original AN-03 programme exposition supplied with these readings is dedicated to [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/), to the extent rights exist. Cited human works retain their own terms. Mathematical statements, hypotheses, source credits and component identities appear in the readings.
 
-The supplied programme text is dedicated under CC0 1.0 Universal, to the extent rights are held. The dedication applies to the programme exposition, not to cited human works.
-
-Each component retains its title, selected sections, full mathematical statements, proofs and source credits.
-
-Cited human works retain their own rights. Their source files, scans and prose are not included in these independent programme components.
-
-See the component title, edition history and CC0 dedication for credits and terms.
-
-The mathematical credits accompanying each reading identify its antecedents. Software, fonts and any separately identified human adaptations retain their own notices.
-
-[CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
+Software, fonts and the separate FSF licence document retain their supplied notices. See the component titles and mathematical scope for the current selection.

@@ -1,0 +1,218 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A positive map and a hyperbolic polynomial</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A nonspectrahedral hyperbolicity cone)</a><a href="the-choi-lam-form.html">Previous lesson</a><a href="no-linear-matrix-inequality-describes-the-cone.html">Next lesson</a><a href="src/a-positive-map-and-a-hyperbolic-polynomial.md">Editable source</a></nav><main><article><h1 id="a-positive-map-and-a-hyperbolic-polynomial">A positive map and a hyperbolic polynomial</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the first half of Theorem A of <span class="unlinked">Hyperbolic polynomials and spectrahedral cones</span>: the polynomial <span class="math" data-tex="\(p\)">\(p\)</span> defined there is hyperbolic with respect to <span class="math" data-tex="\(e=(I_4,I_4,0)\)">\(e=(I_4,I_4,0)\)</span>. It also describes two slices of its closed hyperbolicity cone <span class="math" data-tex="\(K\)">\(K\)</span>, which are what the last lesson uses, and proves Corollary B. The key is that <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> is a <em>positive map</em>: it sends positive semidefinite matrices to positive semidefinite matrices, because the Choi–Lam form of <a href="the-choi-lam-form.html">The Choi–Lam form</a> is nonnegative. The proofs follow OpenAI [OpenAI-NS, Sections 3 and 7].</p>
+<h2 id="1-the-positive-map">1. The positive map</h2>
+<p>A linear map <span class="math" data-tex="\(\Psi:\mathbb S^n\to\mathbb S^k\)">\(\Psi:\mathbb S^n\to\mathbb S^k\)</span> is <em>positive</em> if <span class="math" data-tex="\(T\succeq0\)">\(T\succeq0\)</span> implies <span class="math" data-tex="\(\Psi(T)\succeq0\)">\(\Psi(T)\succeq0\)</span>. It then preserves the order: <span class="math" data-tex="\(T\preceq T&#x27;\)">\(T\preceq T&#x27;\)</span> implies <span class="math" data-tex="\(\Psi(T)\preceq\Psi(T&#x27;)\)">\(\Psi(T)\preceq\Psi(T&#x27;)\)</span>. It is <em>unital</em> if <span class="math" data-tex="\(\Psi(I_n)=I_k\)">\(\Psi(I_n)=I_k\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\in\mathbf R^4\)">\(u\in\mathbf R^4\)</span> write <span class="math" data-tex="\(u=(u_0,u&#x27;)\)">\(u=(u_0,u&#x27;)\)</span> with <span class="math" data-tex="\(u_0\in\mathbf R\)">\(u_0\in\mathbf R\)</span> and <span class="math" data-tex="\(u&#x27;\in\mathbf R^3\)">\(u&#x27;\in\mathbf R^3\)</span>, matching the blocks in the definition of <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> For <span class="math" data-tex="\(u,v\in\mathbf R^4\)">\(u,v\in\mathbf R^4\)</span> and <span class="math" data-tex="\(y\in\mathbf R^3\)">\(y\in\mathbf R^3\)</span>,
+<span class="math math-display" data-tex="\[
+u^{\mathsf T}\Phi_y(vv^{\mathsf T})u=b(v_0u&#x27;-u_0v&#x27;,\,y).
+\]">\[
+u^{\mathsf T}\Phi_y(vv^{\mathsf T})u=b(v_0u&#x27;-u_0v&#x27;,\,y).
+\]</span>
+Consequently <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> is a positive map, and <span class="math" data-tex="\(\Phi_{sy}=s^2\Phi_y\)">\(\Phi_{sy}=s^2\Phi_y\)</span> for <span class="math" data-tex="\(s\in\mathbf R\)">\(s\in\mathbf R\)</span>; in particular <span class="math" data-tex="\(\Phi_0=0\)">\(\Phi_0=0\)</span> and <span class="math" data-tex="\(\Phi_{-y}=\Phi_y\)">\(\Phi_{-y}=\Phi_y\)</span>.</p>
+<p><em>Proof.</em> The matrix <span class="math" data-tex="\(vv^{\mathsf T}\)">\(vv^{\mathsf T}\)</span> has blocks <span class="math" data-tex="\(a=v_0^2\)">\(a=v_0^2\)</span>, <span class="math" data-tex="\(r=v_0v&#x27;\)">\(r=v_0v&#x27;\)</span>, <span class="math" data-tex="\(T=v&#x27;v&#x27;^{\mathsf T}\)">\(T=v&#x27;v&#x27;^{\mathsf T}\)</span>. By the definition of <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u^{\mathsf T}\Phi_y(vv^{\mathsf T})u={}&amp;u_0^2\,v&#x27;^{\mathsf T}Q(y)v&#x27;\\
+&amp;-2u_0v_0\,u&#x27;^{\mathsf T}Q(y)v&#x27;\\
+&amp;+v_0^2\,u&#x27;^{\mathsf T}Q(y)u&#x27; ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+u^{\mathsf T}\Phi_y(vv^{\mathsf T})u={}&amp;u_0^2\,v&#x27;^{\mathsf T}Q(y)v&#x27;\\
+&amp;-2u_0v_0\,u&#x27;^{\mathsf T}Q(y)v&#x27;\\
+&amp;+v_0^2\,u&#x27;^{\mathsf T}Q(y)u&#x27; ,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(\operatorname{tr}(Q(y)v&#x27;v&#x27;^{\mathsf T})=v&#x27;^{\mathsf T}Q(y)v&#x27;\)">\(\operatorname{tr}(Q(y)v&#x27;v&#x27;^{\mathsf T})=v&#x27;^{\mathsf T}Q(y)v&#x27;\)</span>. This is <span class="math" data-tex="\(w^{\mathsf T}Q(y)w=b(w,y)\)">\(w^{\mathsf T}Q(y)w=b(w,y)\)</span> with <span class="math" data-tex="\(w=v_0u&#x27;-u_0v&#x27;\)">\(w=v_0u&#x27;-u_0v&#x27;\)</span>. By Lemma 2.2 of the previous lesson it is nonnegative, so <span class="math" data-tex="\(\Phi_y(vv^{\mathsf T})\succeq0\)">\(\Phi_y(vv^{\mathsf T})\succeq0\)</span>. Every positive semidefinite matrix is a sum of matrices <span class="math" data-tex="\(vv^{\mathsf T}\)">\(vv^{\mathsf T}\)</span> (Lemma 1.3(1) of the first lesson), and <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> is linear. Finally <span class="math" data-tex="\(Q(sy)=s^2Q(y)\)">\(Q(sy)=s^2Q(y)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Through this identity, nonnegative biquadratic forms correspond to positive maps; the correspondence is classical.</p>
+<h2 id="2-hyperbolicity">2. Hyperbolicity</h2>
+<p><strong>Proposition 3.2</strong> (OpenAI). The polynomial <span class="math" data-tex="\(p\)">\(p\)</span> is homogeneous of degree <span class="math" data-tex="\(20\)">\(20\)</span> on the <span class="math" data-tex="\(23\)">\(23\)</span>-dimensional space <span class="math" data-tex="\(\mathbb S^4\times\mathbb S^4\times\mathbf R^3\)">\(\mathbb S^4\times\mathbb S^4\times\mathbf R^3\)</span>, <span class="math" data-tex="\(p(e)=1\)">\(p(e)=1\)</span>, and <span class="math" data-tex="\(p\)">\(p\)</span> is hyperbolic with respect to <span class="math" data-tex="\(e\)">\(e\)</span>. For invertible <span class="math" data-tex="\(X\)">\(X\)</span>, real or complex, the <em>inverse formula</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p(X,Z,y)={}&amp;(\det X)^4\\
+&amp;\cdot\det\bigl(Z-\Phi_y(X^{-1})\bigr)
+\end{aligned}
+\]">\[
+\begin{aligned}
+p(X,Z,y)={}&amp;(\det X)^4\\
+&amp;\cdot\det\bigl(Z-\Phi_y(X^{-1})\bigr)
+\end{aligned}
+\]</span>
+holds.</p>
+<p><em>Proof.</em> The adjugate of <span class="math" data-tex="\(X\)">\(X\)</span> has entries of degree <span class="math" data-tex="\(3\)">\(3\)</span> in <span class="math" data-tex="\(X\)">\(X\)</span>, and <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> is quadratic in <span class="math" data-tex="\(y\)">\(y\)</span>, so every entry of <span class="math" data-tex="\((\det X)Z-\Phi_y(\operatorname{adj}X)\)">\((\det X)Z-\Phi_y(\operatorname{adj}X)\)</span> is homogeneous of degree <span class="math" data-tex="\(5\)">\(5\)</span>, and its determinant is homogeneous of degree <span class="math" data-tex="\(20\)">\(20\)</span>. Since <span class="math" data-tex="\(\Phi_0=0\)">\(\Phi_0=0\)</span>, <span class="math" data-tex="\(p(e)=\det I_4=1\)">\(p(e)=\det I_4=1\)</span>. Extend <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> complex linearly to complex symmetric matrices. For invertible <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(\operatorname{adj}X=(\det X)X^{-1}\)">\(\operatorname{adj}X=(\det X)X^{-1}\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(\det X)Z-\Phi_y(\operatorname{adj}X)\\
+&amp;\quad=(\det X)\bigl(Z-\Phi_y(X^{-1})\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(\det X)Z-\Phi_y(\operatorname{adj}X)\\
+&amp;\quad=(\det X)\bigl(Z-\Phi_y(X^{-1})\bigr),
+\end{aligned}
+\]</span>
+and the inverse formula follows.</p>
+<p>Fix real <span class="math" data-tex="\(X,Z,y\)">\(X,Z,y\)</span> and <span class="math" data-tex="\(t=\alpha+i\eta\)">\(t=\alpha+i\eta\)</span> with <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. Diagonalize <span class="math" data-tex="\(X=\sum_k\xi_ku_ku_k^{\mathsf T}\)">\(X=\sum_k\xi_ku_ku_k^{\mathsf T}\)</span> with an orthonormal basis. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(tI-X)^{-1}&amp;=\sum_k\frac{u_ku_k^{\mathsf T}}{t-\xi_k},\\
+\operatorname{Im}(tI-X)^{-1}&amp;=-\sum_k\frac{\eta\,u_ku_k^{\mathsf T}}{|t-\xi_k|^2}\prec0 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+(tI-X)^{-1}&amp;=\sum_k\frac{u_ku_k^{\mathsf T}}{t-\xi_k},\\
+\operatorname{Im}(tI-X)^{-1}&amp;=-\sum_k\frac{\eta\,u_ku_k^{\mathsf T}}{|t-\xi_k|^2}\prec0 ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\operatorname{Im}\)">\(\operatorname{Im}\)</span> is taken entrywise. The map <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> commutes with taking entrywise real and imaginary parts, as it has real coefficients. So the matrix
+<span class="math math-display" data-tex="\[
+H=tI-Z-\Phi_y\bigl((tI-X)^{-1}\bigr)
+\]">\[
+H=tI-Z-\Phi_y\bigl((tI-X)^{-1}\bigr)
+\]</span>
+has <span class="math" data-tex="\(\operatorname{Im}H=\eta I-\Phi_y\bigl(\operatorname{Im}(tI-X)^{-1}\bigr)\succeq\eta I\)">\(\operatorname{Im}H=\eta I-\Phi_y\bigl(\operatorname{Im}(tI-X)^{-1}\bigr)\succeq\eta I\)</span>, since <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> maps the positive definite matrix <span class="math" data-tex="\(-\operatorname{Im}(tI-X)^{-1}\)">\(-\operatorname{Im}(tI-X)^{-1}\)</span> to a positive semidefinite one. Here <span class="math" data-tex="\(\operatorname{Im}H\)">\(\operatorname{Im}H\)</span> is real symmetric. If <span class="math" data-tex="\(Hw=0\)">\(Hw=0\)</span> for a nonzero <span class="math" data-tex="\(w\in\mathbf C^4\)">\(w\in\mathbf C^4\)</span>, then <span class="math" data-tex="\(w^*Hw=0\)">\(w^*Hw=0\)</span>; but <span class="math" data-tex="\(H=\operatorname{Re}H+i\operatorname{Im}H\)">\(H=\operatorname{Re}H+i\operatorname{Im}H\)</span> with real symmetric parts, so <span class="math" data-tex="\(\operatorname{Im}(w^*Hw)=w^*(\operatorname{Im}H)w\ge\eta\|w\|^2&gt;0\)">\(\operatorname{Im}(w^*Hw)=w^*(\operatorname{Im}H)w\ge\eta\|w\|^2&gt;0\)</span>. So <span class="math" data-tex="\(H\)">\(H\)</span> is invertible. Since <span class="math" data-tex="\(\Phi_{-y}=\Phi_y\)">\(\Phi_{-y}=\Phi_y\)</span>, the inverse formula at the invertible matrix <span class="math" data-tex="\(tI-X\)">\(tI-X\)</span> gives, with <span class="math" data-tex="\(x=(X,Z,y)\)">\(x=(X,Z,y)\)</span>,
+<span class="math math-display" data-tex="\[
+p(te-x)=\det(tI-X)^4\det H\ne0 .
+\]">\[
+p(te-x)=\det(tI-X)^4\det H\ne0 .
+\]</span>
+So the polynomial <span class="math" data-tex="\(t\mapsto p(te-(X,Z,y))\)">\(t\mapsto p(te-(X,Z,y))\)</span> has no root with <span class="math" data-tex="\(\operatorname{Im}t&gt;0\)">\(\operatorname{Im}t&gt;0\)</span>. Its coefficients are real, so it has none with <span class="math" data-tex="\(\operatorname{Im}t&lt;0\)">\(\operatorname{Im}t&lt;0\)</span> either. It has degree <span class="math" data-tex="\(20\)">\(20\)</span> with leading coefficient <span class="math" data-tex="\(p(e)=1\)">\(p(e)=1\)</span>, so all its roots are real. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-two-slices-of-the-cone">3. Two slices of the cone</h2>
+<p><strong>Proposition 3.3</strong> (OpenAI). Let <span class="math" data-tex="\(K=\Lambda_+(p,e)\)">\(K=\Lambda_+(p,e)\)</span>, and let <span class="math" data-tex="\(X,Z\in\mathbb S^4\)">\(X,Z\in\mathbb S^4\)</span> and <span class="math" data-tex="\(y\in\mathbf R^3\)">\(y\in\mathbf R^3\)</span>.</p>
+<ol>
+<li>If <span class="math" data-tex="\(X\succ0\)">\(X\succ0\)</span>, then <span class="math" data-tex="\((X,Z,y)\in K\)">\((X,Z,y)\in K\)</span> if and only if <span class="math" data-tex="\(Z\succeq\Phi_y(X^{-1})\)">\(Z\succeq\Phi_y(X^{-1})\)</span>.</li>
+<li><span class="math" data-tex="\((X,Z,0)\in K\)">\((X,Z,0)\in K\)</span> if and only if <span class="math" data-tex="\(X\succeq0\)">\(X\succeq0\)</span> and <span class="math" data-tex="\(Z\succeq0\)">\(Z\succeq0\)</span>.</li>
+</ol>
+<p>Moreover, <span class="math" data-tex="\(e\)">\(e\)</span> is an interior point of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><em>Proof.</em> By Lemma 1.1(3) of the first lesson, <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span> if and only if <span class="math" data-tex="\(p(x+te)\ne0\)">\(p(x+te)\ne0\)</span> for every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(X\succ0\)">\(X\succ0\)</span>, and for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> put
+<span class="math math-display" data-tex="\[
+F(t)=Z+tI-\Phi_y\bigl((X+tI)^{-1}\bigr).
+\]">\[
+F(t)=Z+tI-\Phi_y\bigl((X+tI)^{-1}\bigr).
+\]</span>
+By the inverse formula, with <span class="math" data-tex="\(x=(X,Z,y)\)">\(x=(X,Z,y)\)</span>,
+<span class="math math-display" data-tex="\[
+p(x+te)=\det(X+tI)^4\det F(t),
+\]">\[
+p(x+te)=\det(X+tI)^4\det F(t),
+\]</span>
+and <span class="math" data-tex="\(\det(X+tI)&gt;0\)">\(\det(X+tI)&gt;0\)</span>. If <span class="math" data-tex="\(F(0)\succeq0\)">\(F(0)\succeq0\)</span>, then for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, since <span class="math" data-tex="\(X^{-1}\succeq(X+tI)^{-1}\)">\(X^{-1}\succeq(X+tI)^{-1}\)</span> and <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> preserves the order,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(t)&amp;=F(0)+tI\\
+&amp;\quad+\Phi_y\bigl(X^{-1}-(X+tI)^{-1}\bigr)\\
+&amp;\succeq tI\succ0 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+F(t)&amp;=F(0)+tI\\
+&amp;\quad+\Phi_y\bigl(X^{-1}-(X+tI)^{-1}\bigr)\\
+&amp;\succeq tI\succ0 ,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(p((X,Z,y)+te)\ne0\)">\(p((X,Z,y)+te)\ne0\)</span> and <span class="math" data-tex="\((X,Z,y)\in K\)">\((X,Z,y)\in K\)</span>. Here <span class="math" data-tex="\(X^{-1}\succeq(X+tI)^{-1}\)">\(X^{-1}\succeq(X+tI)^{-1}\)</span> because the two matrices are diagonal in the same orthonormal basis, with entries <span class="math" data-tex="\(1/\xi_k\ge1/(\xi_k+t)\)">\(1/\xi_k\ge1/(\xi_k+t)\)</span>. Conversely, suppose <span class="math" data-tex="\(F(0)\)">\(F(0)\)</span> has a negative eigenvalue. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(0\preceq(X+tI)^{-1}\preceq t^{-1}I\)">\(0\preceq(X+tI)^{-1}\preceq t^{-1}I\)</span>, so <span class="math" data-tex="\(0\preceq\Phi_y((X+tI)^{-1})\preceq t^{-1}\Phi_y(I)\)">\(0\preceq\Phi_y((X+tI)^{-1})\preceq t^{-1}\Phi_y(I)\)</span>, and <span class="math" data-tex="\(F(t)\succ0\)">\(F(t)\succ0\)</span> for large <span class="math" data-tex="\(t\)">\(t\)</span>. The least eigenvalue of <span class="math" data-tex="\(F(t)\)">\(F(t)\)</span> depends continuously on <span class="math" data-tex="\(t\)">\(t\)</span> (Lemma 1.3(3) of the first lesson, applied to <span class="math" data-tex="\(-F(t)\)">\(-F(t)\)</span>), so it vanishes at some <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. There <span class="math" data-tex="\(\det F(t)=0\)">\(\det F(t)=0\)</span>, so <span class="math" data-tex="\(p((X,Z,y)+te)=0\)">\(p((X,Z,y)+te)=0\)</span> for some <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, and <span class="math" data-tex="\((X,Z,y)\notin K\)">\((X,Z,y)\notin K\)</span>. This proves the first statement; note that <span class="math" data-tex="\(Z\succeq\Phi_y(X^{-1})\)">\(Z\succeq\Phi_y(X^{-1})\)</span> means <span class="math" data-tex="\(F(0)\succeq0\)">\(F(0)\succeq0\)</span>.</p>
+<p>For <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, <span class="math" data-tex="\(\Phi_0=0\)">\(\Phi_0=0\)</span> gives, directly from the definition and also for singular matrices,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;p\bigl(te-(X,Z,0)\bigr)\\
+&amp;\quad=\det(tI-X)^4\det(tI-Z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;p\bigl(te-(X,Z,0)\bigr)\\
+&amp;\quad=\det(tI-X)^4\det(tI-Z).
+\end{aligned}
+\]</span>
+Its roots are the eigenvalues of <span class="math" data-tex="\(X\)">\(X\)</span>, each four times, and those of <span class="math" data-tex="\(Z\)">\(Z\)</span>. They are all nonnegative exactly when <span class="math" data-tex="\(X\succeq0\)">\(X\succeq0\)</span> and <span class="math" data-tex="\(Z\succeq0\)">\(Z\succeq0\)</span>.</p>
+<p>Finally, the set of <span class="math" data-tex="\((X,Z,y)\)">\((X,Z,y)\)</span> with <span class="math" data-tex="\(X\succ0\)">\(X\succ0\)</span> and <span class="math" data-tex="\(Z-\Phi_y(X^{-1})\succ0\)">\(Z-\Phi_y(X^{-1})\succ0\)</span> is open, contains <span class="math" data-tex="\(e\)">\(e\)</span>, and lies in <span class="math" data-tex="\(K\)">\(K\)</span> by the first statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The first slice is the bridge to the Choi–Lam form. A pencil describing <span class="math" data-tex="\(K\)">\(K\)</span> would describe in particular the inequality <span class="math" data-tex="\(Z\succeq\Phi_y(X^{-1})\)">\(Z\succeq\Phi_y(X^{-1})\)</span>, and the rank-one identity of Lemma 3.1 would bring <span class="math" data-tex="\(b\)">\(b\)</span> into the pencil. The last lesson makes this precise.</p>
+<h2 id="4-a-factor-of-degree-four">4. A factor of degree four</h2>
+<p>The matrices <span class="math" data-tex="\(K_i\in\mathbf R^{4\times4}\)">\(K_i\in\mathbf R^{4\times4}\)</span> below are not related to the cone <span class="math" data-tex="\(K\)">\(K\)</span>. For the standard unit vectors <span class="math" data-tex="\(e_i\)">\(e_i\)</span> of <span class="math" data-tex="\(\mathbf R^3\)">\(\mathbf R^3\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_i&amp;=\begin{pmatrix}0&amp;e_i^{\mathsf T}\\ -e_i&amp;0\end{pmatrix}\in\mathbf R^{4\times4},\\
+C&amp;=\begin{pmatrix}K_1&amp;K_2&amp;K_3\end{pmatrix}\in\mathbf R^{4\times12}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+K_i&amp;=\begin{pmatrix}0&amp;e_i^{\mathsf T}\\ -e_i&amp;0\end{pmatrix}\in\mathbf R^{4\times4},\\
+C&amp;=\begin{pmatrix}K_1&amp;K_2&amp;K_3\end{pmatrix}\in\mathbf R^{4\times12}.
+\end{aligned}
+\]</span>
+For matrices <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(U\otimes V\)">\(U\otimes V\)</span> denotes the block matrix with blocks <span class="math" data-tex="\(U_{ij}V\)">\(U_{ij}V\)</span>.</p>
+<p><strong>Lemma 3.4.</strong> For every <span class="math" data-tex="\(T\in\mathbb S^4\)">\(T\in\mathbb S^4\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi_y(T)&amp;=\sum_{i,j=1}^3Q(y)_{ij}K_iTK_j^{\mathsf T}\\
+&amp;=C\bigl(Q(y)\otimes T\bigr)C^{\mathsf T}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi_y(T)&amp;=\sum_{i,j=1}^3Q(y)_{ij}K_iTK_j^{\mathsf T}\\
+&amp;=C\bigl(Q(y)\otimes T\bigr)C^{\mathsf T}.
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(\epsilon_0,\dots,\epsilon_3\)">\(\epsilon_0,\dots,\epsilon_3\)</span> for the standard basis of <span class="math" data-tex="\(\mathbf R^4\)">\(\mathbf R^4\)</span>, so that <span class="math" data-tex="\(K_i=\epsilon_0\epsilon_i^{\mathsf T}-\epsilon_i\epsilon_0^{\mathsf T}\)">\(K_i=\epsilon_0\epsilon_i^{\mathsf T}-\epsilon_i\epsilon_0^{\mathsf T}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_iTK_j^{\mathsf T}={}&amp;T_{ij}\,\epsilon_0\epsilon_0^{\mathsf T}-T_{i0}\,\epsilon_0\epsilon_j^{\mathsf T}\\
+&amp;-T_{0j}\,\epsilon_i\epsilon_0^{\mathsf T}+T_{00}\,\epsilon_i\epsilon_j^{\mathsf T}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+K_iTK_j^{\mathsf T}={}&amp;T_{ij}\,\epsilon_0\epsilon_0^{\mathsf T}-T_{i0}\,\epsilon_0\epsilon_j^{\mathsf T}\\
+&amp;-T_{0j}\,\epsilon_i\epsilon_0^{\mathsf T}+T_{00}\,\epsilon_i\epsilon_j^{\mathsf T}.
+\end{aligned}
+\]</span>
+Multiply by <span class="math" data-tex="\(Q(y)_{ij}\)">\(Q(y)_{ij}\)</span> and sum: the <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> entry is <span class="math" data-tex="\(\operatorname{tr}(Q(y)T&#x27;)\)">\(\operatorname{tr}(Q(y)T&#x27;)\)</span> for the lower block <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>, the first row is <span class="math" data-tex="\(-r^{\mathsf T}Q(y)\)">\(-r^{\mathsf T}Q(y)\)</span>, the first column <span class="math" data-tex="\(-Q(y)r\)">\(-Q(y)r\)</span>, and the lower block <span class="math" data-tex="\(T_{00}Q(y)\)">\(T_{00}Q(y)\)</span>, which is the definition of <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span>. The second formula is the first written with block matrices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Corollary B.</em> Define the polynomial <span class="math" data-tex="\(q(X,Z,y)\)">\(q(X,Z,y)\)</span> by
+<span class="math math-display" data-tex="\[
+q=\det\begin{pmatrix}I_3\otimes X&amp;C^{\mathsf T}\\ C\bigl(Q(y)\otimes I_4\bigr)&amp;Z\end{pmatrix}.
+\]">\[
+q=\det\begin{pmatrix}I_3\otimes X&amp;C^{\mathsf T}\\ C\bigl(Q(y)\otimes I_4\bigr)&amp;Z\end{pmatrix}.
+\]</span>
+For invertible <span class="math" data-tex="\(X\)">\(X\)</span>, the block <span class="math" data-tex="\(I_3\otimes X\)">\(I_3\otimes X\)</span> is invertible with determinant <span class="math" data-tex="\((\det X)^3\)">\((\det X)^3\)</span>, and the determinant of a block matrix with invertible upper left block <span class="math" data-tex="\(P\)">\(P\)</span> is <span class="math" data-tex="\(\det P\)">\(\det P\)</span> times the determinant of the Schur complement. Since <span class="math" data-tex="\(\bigl(Q(y)\otimes I_4\bigr)\bigl(I_3\otimes X^{-1}\bigr)=Q(y)\otimes X^{-1}\)">\(\bigl(Q(y)\otimes I_4\bigr)\bigl(I_3\otimes X^{-1}\bigr)=Q(y)\otimes X^{-1}\)</span>, Lemma 3.4 gives
+<span class="math math-display" data-tex="\[
+q=(\det X)^3\det\bigl(Z-\Phi_y(X^{-1})\bigr).
+\]">\[
+q=(\det X)^3\det\bigl(Z-\Phi_y(X^{-1})\bigr).
+\]</span>
+With the inverse formula, <span class="math" data-tex="\(p=(\det X)\,q\)">\(p=(\det X)\,q\)</span> wherever <span class="math" data-tex="\(X\)">\(X\)</span> is invertible, hence everywhere, as both sides are polynomials. So <span class="math" data-tex="\(q\)">\(q\)</span> is homogeneous of degree <span class="math" data-tex="\(20-4=16\)">\(20-4=16\)</span>, <span class="math" data-tex="\(q(e)=1\)">\(q(e)=1\)</span>, and <span class="math" data-tex="\(q=p/\det X\)">\(q=p/\det X\)</span>.</p>
+<p>For real <span class="math" data-tex="\(x=(X,Z,y)\)">\(x=(X,Z,y)\)</span>, <span class="math" data-tex="\(p(te-x)=\det(tI-X)\,q(te-x)\)">\(p(te-x)=\det(tI-X)\,q(te-x)\)</span>, so the roots of <span class="math" data-tex="\(t\mapsto q(te-x)\)">\(t\mapsto q(te-x)\)</span> are among the real roots of <span class="math" data-tex="\(t\mapsto p(te-x)\)">\(t\mapsto p(te-x)\)</span>: <span class="math" data-tex="\(q\)">\(q\)</span> is hyperbolic with respect to <span class="math" data-tex="\(e\)">\(e\)</span>. The roots of <span class="math" data-tex="\(\det(tI-X)\)">\(\det(tI-X)\)</span> are the eigenvalues of <span class="math" data-tex="\(X\)">\(X\)</span>, so, writing <span class="math" data-tex="\(K_q=\Lambda_+(q,e)\)">\(K_q=\Lambda_+(q,e)\)</span>,
+<span class="math math-display" data-tex="\[
+K=\{(X,Z,y):X\succeq0\}\cap K_q .
+\]">\[
+K=\{(X,Z,y):X\succeq0\}\cap K_q .
+\]</span>
+It remains to show <span class="math" data-tex="\(K_q\subseteq\{X\succeq0\}\)">\(K_q\subseteq\{X\succeq0\}\)</span>. Since <span class="math" data-tex="\(Q(-y)=Q(y)\)">\(Q(-y)=Q(y)\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span> is even in <span class="math" data-tex="\(y\)">\(y\)</span>, so <span class="math" data-tex="\((X,Z,y)\in K_q\)">\((X,Z,y)\in K_q\)</span> implies <span class="math" data-tex="\((X,Z,-y)\in K_q\)">\((X,Z,-y)\in K_q\)</span>. By Gårding's theorem, Theorem 1.2(3) of the first lesson, <span class="math" data-tex="\(K_q\)">\(K_q\)</span> is convex, so <span class="math" data-tex="\((X,Z,0)\in K_q\)">\((X,Z,0)\in K_q\)</span>. But <span class="math" data-tex="\(q(X,Z,0)=(\det X)^3\det Z\)">\(q(X,Z,0)=(\det X)^3\det Z\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;q\bigl(te-(X,Z,0)\bigr)\\
+&amp;\quad=\det(tI-X)^3\det(tI-Z),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;q\bigl(te-(X,Z,0)\bigr)\\
+&amp;\quad=\det(tI-X)^3\det(tI-Z),
+\end{aligned}
+\]</span>
+whose roots are nonnegative only if <span class="math" data-tex="\(X\succeq0\)">\(X\succeq0\)</span>. Hence <span class="math" data-tex="\(K_q=K\)">\(K_q=K\)</span>, and Theorem A shows that it is not spectrahedral. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The determinant identity for block matrices used here is <span class="math" data-tex="\(\bigl(\begin{smallmatrix}P&amp;B&#x27;\\C&#x27;&amp;D&#x27;\end{smallmatrix}\bigr)=\bigl(\begin{smallmatrix}I&amp;0\\C&#x27;P^{-1}&amp;I\end{smallmatrix}\bigr)\bigl(\begin{smallmatrix}P&amp;B&#x27;\\0&amp;D&#x27;-C&#x27;P^{-1}B&#x27;\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}P&amp;B&#x27;\\C&#x27;&amp;D&#x27;\end{smallmatrix}\bigr)=\bigl(\begin{smallmatrix}I&amp;0\\C&#x27;P^{-1}&amp;I\end{smallmatrix}\bigr)\bigl(\begin{smallmatrix}P&amp;B&#x27;\\0&amp;D&#x27;-C&#x27;P^{-1}B&#x27;\end{smallmatrix}\bigr)\)</span>, with determinants <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\det P\det(D&#x27;-C&#x27;P^{-1}B&#x27;)\)">\(\det P\det(D&#x27;-C&#x27;P^{-1}B&#x27;)\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>3.1</strong> (easy). Compute <span class="math" data-tex="\(\Phi_y(I_4)\)">\(\Phi_y(I_4)\)</span> and show that <span class="math" data-tex="\(\Phi_y(I_4)=\operatorname{diag}\bigl(\operatorname{tr}Q(y),Q(y)\bigr)\)">\(\Phi_y(I_4)=\operatorname{diag}\bigl(\operatorname{tr}Q(y),Q(y)\bigr)\)</span>, with <span class="math" data-tex="\(\operatorname{tr}Q(y)=2\|y\|^2\)">\(\operatorname{tr}Q(y)=2\|y\|^2\)</span>.</p>
+<p><strong>3.2</strong> (medium). Show that <span class="math" data-tex="\(\Phi_y\)">\(\Phi_y\)</span> is not <em>completely positive</em> in the following weak sense: there are no linear maps <span class="math" data-tex="\(V_k:\mathbf R^4\to\mathbf R^4\)">\(V_k:\mathbf R^4\to\mathbf R^4\)</span>, depending linearly on <span class="math" data-tex="\(y\)">\(y\)</span>, with <span class="math" data-tex="\(\Phi_y(T)=\sum_kV_kTV_k^{\mathsf T}\)">\(\Phi_y(T)=\sum_kV_kTV_k^{\mathsf T}\)</span> for all <span class="math" data-tex="\(T\)">\(T\)</span>. (Hint: with <span class="math" data-tex="\(T=vv^{\mathsf T}\)">\(T=vv^{\mathsf T}\)</span>, Lemma 3.1 would write <span class="math" data-tex="\(b\)">\(b\)</span> as a sum of squares of bilinear forms; use Corollary 2.4.)</p>
+<p><strong>3.3</strong> (easy). Check the slice description for <span class="math" data-tex="\(X=I_4\)">\(X=I_4\)</span>, <span class="math" data-tex="\(y=e_1\)">\(y=e_1\)</span>: show that <span class="math" data-tex="\((I_4,Z,e_1)\in K\)">\((I_4,Z,e_1)\in K\)</span> if and only if <span class="math" data-tex="\(Z\succeq\Phi_{e_1}(I_4)\)">\(Z\succeq\Phi_{e_1}(I_4)\)</span>, and compute <span class="math" data-tex="\(Q(e_1)\)">\(Q(e_1)\)</span>.</p>
+<p><strong>3.4</strong> (easy). Show that <span class="math" data-tex="\(p(X,Z,y)=0\)">\(p(X,Z,y)=0\)</span> whenever <span class="math" data-tex="\(X\)">\(X\)</span> has rank at most two, using that <span class="math" data-tex="\(\operatorname{adj}X\)">\(\operatorname{adj}X\)</span> then vanishes.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>3.1.</strong> With <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(r=0\)">\(r=0\)</span> and <span class="math" data-tex="\(T=I_3\)">\(T=I_3\)</span>, the definition gives the stated block diagonal matrix. The diagonal of <span class="math" data-tex="\(Q(y)\)">\(Q(y)\)</span> is <span class="math" data-tex="\(y_i^2+y_{i+1}^2\)">\(y_i^2+y_{i+1}^2\)</span>, with sum <span class="math" data-tex="\(2\|y\|^2\)">\(2\|y\|^2\)</span>.</p>
+<p><strong>3.2.</strong> Suppose <span class="math" data-tex="\(\Phi_y(T)=\sum_kV_k(y)TV_k(y)^{\mathsf T}\)">\(\Phi_y(T)=\sum_kV_k(y)TV_k(y)^{\mathsf T}\)</span> with <span class="math" data-tex="\(V_k\)">\(V_k\)</span> linear in <span class="math" data-tex="\(y\)">\(y\)</span>. By Lemma 3.1, <span class="math" data-tex="\(b(v_0u&#x27;-u_0v&#x27;,y)=\sum_k\bigl(u^{\mathsf T}V_k(y)v\bigr)^2\)">\(b(v_0u&#x27;-u_0v&#x27;,y)=\sum_k\bigl(u^{\mathsf T}V_k(y)v\bigr)^2\)</span>. Take <span class="math" data-tex="\(v=\epsilon_0\)">\(v=\epsilon_0\)</span>, so that <span class="math" data-tex="\(v_0u&#x27;-u_0v&#x27;=u&#x27;\)">\(v_0u&#x27;-u_0v&#x27;=u&#x27;\)</span>: then <span class="math" data-tex="\(b(u&#x27;,y)=\sum_k(u^{\mathsf T}V_k(y)\epsilon_0)^2\)">\(b(u&#x27;,y)=\sum_k(u^{\mathsf T}V_k(y)\epsilon_0)^2\)</span> with <span class="math" data-tex="\(u=(0,u&#x27;)\)">\(u=(0,u&#x27;)\)</span>, a sum of squares of bilinear forms in <span class="math" data-tex="\((u&#x27;,y)\)">\((u&#x27;,y)\)</span>. This contradicts Corollary 2.4.</p>
+<p><strong>3.3.</strong> <span class="math" data-tex="\(Q(e_1)=\operatorname{diag}(1,0,1)\)">\(Q(e_1)=\operatorname{diag}(1,0,1)\)</span>: its diagonal entries are <span class="math" data-tex="\(y_1^2+y_2^2=1\)">\(y_1^2+y_2^2=1\)</span>, <span class="math" data-tex="\(y_2^2+y_3^2=0\)">\(y_2^2+y_3^2=0\)</span> and <span class="math" data-tex="\(y_3^2+y_1^2=1\)">\(y_3^2+y_1^2=1\)</span>, and its off-diagonal entries vanish. By Proposition 3.3 with <span class="math" data-tex="\(X^{-1}=I_4\)">\(X^{-1}=I_4\)</span>, <span class="math" data-tex="\((I_4,Z,e_1)\in K\)">\((I_4,Z,e_1)\in K\)</span> if and only if <span class="math" data-tex="\(Z\succeq\Phi_{e_1}(I_4)=\operatorname{diag}(2,1,0,1)\)">\(Z\succeq\Phi_{e_1}(I_4)=\operatorname{diag}(2,1,0,1)\)</span>.</p>
+<p><strong>3.4.</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> has rank at most two, all its minors of order three vanish, so <span class="math" data-tex="\(\operatorname{adj}X=0\)">\(\operatorname{adj}X=0\)</span>; also <span class="math" data-tex="\(\det X=0\)">\(\det X=0\)</span>. Then <span class="math" data-tex="\((\det X)Z-\Phi_y(\operatorname{adj}X)=0\)">\((\det X)Z-\Phi_y(\operatorname{adj}X)=0\)</span> and <span class="math" data-tex="\(p=0\)">\(p=0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-NS] OpenAI, <em>A nonspectrahedral hyperbolicity cone</em>, OpenAI Math Release preprint, 24 September 2026, Sections 3 and 7. https://github.com/openai/math/tree/main/preprints/A-Nonspectrahedral-Hyperbolicity-Cone-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

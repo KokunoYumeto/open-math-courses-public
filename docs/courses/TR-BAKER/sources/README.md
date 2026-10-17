@@ -1,6 +1,6 @@
 # Linear forms in logarithms: editable course
 
-Each `TR-BAKER-NN.tex` contains the complete corresponding lesson, including its proofs, examples, exercises, solutions and references. Its figures are in `../figures/`; no further files are required.
+This edition contains Lessons 1–9 and the available sections of the draft Lesson 10. Each `TR-BAKER-NN.tex` contains the full current text of the corresponding lesson, including its proofs, examples, exercises, solutions and references. The full course has 22 lessons. Its figures are in `../figures/`; no further files are required.
 
 To compile a lesson, change into this `sources` directory and run `pdflatex TR-BAKER-NN.tex` twice. Use a current TeX distribution with the packages named in the file. Pandoc 3.9.0.2 generated the editable LaTeX from the Markdown in `../src/`. The LaTeX itself does not require Pandoc.
 
@@ -13,6 +13,6 @@ python docs/courses/TR-BAKER/build_reader.py --tex --pandoc pandoc
 python -m http.server 8000 --directory docs
 ```
 
-Read the course at `http://localhost:8000/courses/TR-BAKER/`. Proof links to earlier programme courses refer to those courses in the full repository; they are not duplicated in this course download. The included readers can be read offline, with local mathematics rendering. To regenerate the ZIP, run `build_reader.py --archive` with the intended destination filename. Some older figure and symbolic programs need Matplotlib, NumPy or SymPy; `verification/padic_examples.py` uses only Python's standard library.
+Read the course at `http://localhost:8000/courses/TR-BAKER/`. Proof links to earlier programme courses refer to those courses in the full repository; they are not duplicated in this course download. The included readers can be read offline, with local mathematics rendering. To regenerate the ZIP, run `build_reader.py --archive` with the intended destination filename. Some figure and symbolic programs need Matplotlib, NumPy or SymPy; `verification/padic_examples.py` uses only Python's standard library.
 
-The lessons link freely accessible human sources. No cited source files are included. Original exposition, solutions, figures and course code are CC0. Cited works and bundled software and font glyphs retain their own licences and notices. AI author: GPT-6.1 Sol (OpenAI), Ultra, October 2026.
+The lessons link freely accessible human sources. No cited source files are included. Original exposition, solutions, figures and course code are CC0. Cited works and bundled software and font glyphs retain their own licences and notices. AI authors and self-checkers: GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra. The course manifest specifies their contributions. No independent review is claimed.

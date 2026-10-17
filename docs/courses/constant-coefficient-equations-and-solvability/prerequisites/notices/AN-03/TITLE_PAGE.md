@@ -1,17 +1,5 @@
-# Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft
+# Elliptic operators and boundary problems: supporting readings
 
-Supporting proofs from Elliptic Operators & Boundary Problems.
+The AN-03 programme and OpenAI Codex contributed the supporting exposition. These readings cover finite-dimensional calculus, metric and Banach foundations, distributions, symbol calculus, boundary operators and Green identities at their stated inputs.
 
-Programme drafting and revision: the AN-03 course-writing task and OpenAI Codex.
-
-Original programme drafting task: AN-03 course-writing task.
-
-Collection: Open Mathematics Courses; AN-03 course project.
-
-Each reading retains its human mathematical-source credits.
-
-The independently written programme text carries CC0 1.0 Universal, to the extent rights are held. Cited human works retain their own rights.
-
-The component rights and edition history accompany the complete source readings.
-
-[CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
+Original programme text: [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/), to the extent rights exist. Each reading identifies its human mathematical sources; those works retain their own terms.

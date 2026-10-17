@@ -278,7 +278,7 @@ All assigned geometric unramifiedness, diagonal, rigidity and formal-uniqueness 
 
 The local factorization of an unramified morphism as a closed immersion followed by an étale morphism is developed in **Étale morphisms and their local structure**. No such factorization was assumed to prove this lesson's diagonal theorem.
 
-The proper quasi-finite factorization is Zariski’s Main Theorem, Theorem 4.2, in the morphisms course. The factorization argument is written; its nonaffine relative-integral-completion support, Theorem 4.1 of that same lesson, remains a planned prerequisite proof. The stronger locally-finite-type, separated, universally closed, finite-fibre criterion is a planned support statement in Affine morphisms, relative Spec, integral and finite morphisms, the same course’s lesson 5. Its written integral and finite criteria are in Sections 4–5; the complete proof of this stronger criterion remains a prerequisite bridge there. This is the exact condition used for the universal-closedness extension above.
+The proper quasi-finite factorization is Zariski’s Main Theorem, Theorem 4.2. Its scheme-level relative-integral-completion input is Theorem 4.1 of that lesson, with the full arbitrary-base argument in AG-RG-S04, Theorem D5.2. The stronger locally-finite-type, separated, universally closed, finite-fibre criterion is Four equivalent criteria for a finite morphism, condition 4, in the algebraic-spaces course. Its proof uses the clopen étale finite-piece decomposition, removes the closed image of the complementary component, and descends finiteness. It does not assume quasi-compactness in advance. This is the exact criterion used for the universal-closedness extension above.
 
 ## References
 

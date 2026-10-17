@@ -1,0 +1,109 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A differential injectivity lemma</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Quadratic stabilization of the Foulkes–Howe map)</a><a href="symmetric-powers-and-the-foulkes-howe-map.html">Previous lesson</a><a href="vanishing-on-products.html">Next lesson</a><a href="src/a-differential-injectivity-lemma.md">Editable source</a></nav><main><article><h1 id="a-differential-injectivity-lemma">A differential injectivity lemma</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The proof of Theorem A in <a href="vanishing-on-products.html">Vanishing on products</a> recovers a polynomial from a sequence of its directional derivatives. Each derivative moves one degree from a vector variable <span class="math" data-tex="\(U\)">\(U\)</span> to another variable <span class="math" data-tex="\(Y\)">\(Y\)</span>, and it can be undone, in the sense that it is injective, whenever the degree in <span class="math" data-tex="\(U\)">\(U\)</span> exceeds the degree in <span class="math" data-tex="\(Y\)">\(Y\)</span>. This lesson proves that statement, following OpenAI [OpenAI-FH, Section 3], with an inner product on polynomials for which differentiation and multiplication are adjoint. It is the injectivity of a raising operator on the positive weights of an <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>-representation.</p>
+<h2 id="1-vector-variables-and-directional-derivatives">1. Vector variables and directional derivatives</h2>
+<p>Fix a basis of <span class="math" data-tex="\(V\)">\(V\)</span>, of dimension <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. A <em>vector variable</em> <span class="math" data-tex="\(U\)">\(U\)</span> is a block <span class="math" data-tex="\(U=(U_1,\dots,U_n)\)">\(U=(U_1,\dots,U_n)\)</span> of <span class="math" data-tex="\(n\)">\(n\)</span> independent scalar variables; a polynomial in several vector variables is a polynomial in all their coordinates, with complex coefficients. Substituting vectors of <span class="math" data-tex="\(V\)">\(V\)</span> for the vector variables, through their coordinates, gives the values of the polynomial. A polynomial that vanishes at every point is zero; this follows by induction on the number of variables, since a nonzero polynomial in one variable has finitely many roots.</p>
+<p>For two vector variables <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> put
+<span class="math math-display" data-tex="\[
+D_{Y,U}=\sum_{k=1}^nY_k\frac{\partial}{\partial U_k}.
+\]">\[
+D_{Y,U}=\sum_{k=1}^nY_k\frac{\partial}{\partial U_k}.
+\]</span>
+It lowers the degree in <span class="math" data-tex="\(U\)">\(U\)</span> by one and raises the degree in <span class="math" data-tex="\(Y\)">\(Y\)</span> by one. If <span class="math" data-tex="\(F(U)\)">\(F(U)\)</span> is a polynomial and <span class="math" data-tex="\(y\in V\)">\(y\in V\)</span>, then substituting <span class="math" data-tex="\(Y=y\)">\(Y=y\)</span> in <span class="math" data-tex="\(D_{Y,U}F\)">\(D_{Y,U}F\)</span> gives the derivative of <span class="math" data-tex="\(F\)">\(F\)</span> in the direction <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p>In the symmetric algebra <span class="math" data-tex="\(\operatorname{Sym}V\)">\(\operatorname{Sym}V\)</span>, with coordinates through the basis, <span class="math" data-tex="\(D_{Y,U}(U^j)=j\,U^{j-1}Y\)">\(D_{Y,U}(U^j)=j\,U^{j-1}Y\)</span>: the map <span class="math" data-tex="\(U\mapsto U^j\)">\(U\mapsto U^j\)</span> has derivative <span class="math" data-tex="\(y\mapsto jU^{j-1}y\)">\(y\mapsto jU^{j-1}y\)</span> by the product rule. If <span class="math" data-tex="\(T\)">\(T\)</span> is a symmetric multilinear form on <span class="math" data-tex="\(\operatorname{Sym}^bV\)">\(\operatorname{Sym}^bV\)</span> and <span class="math" data-tex="\(w_1,\dots,w_{a-1}\in\operatorname{Sym}^bV\)">\(w_1,\dots,w_{a-1}\in\operatorname{Sym}^bV\)</span> do not depend on <span class="math" data-tex="\(U\)">\(U\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;D_{Y,U}\,T(w_1,\dots,w_{a-1},U^b)\\
+&amp;\quad=b\,T(w_1,\dots,w_{a-1},U^{b-1}Y),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;D_{Y,U}\,T(w_1,\dots,w_{a-1},U^b)\\
+&amp;\quad=b\,T(w_1,\dots,w_{a-1},U^{b-1}Y),
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(T\)">\(T\)</span> is linear in its last argument.</p>
+<h2 id="2-the-fischer-inner-product">2. The Fischer inner product</h2>
+<p>Let <span class="math" data-tex="\(X=(X_1,\dots,X_N)\)">\(X=(X_1,\dots,X_N)\)</span> list all the scalar variables in use. For polynomials <span class="math" data-tex="\(f=\sum_\alpha f_\alpha X^\alpha\)">\(f=\sum_\alpha f_\alpha X^\alpha\)</span> and <span class="math" data-tex="\(g=\sum_\alpha g_\alpha X^\alpha\)">\(g=\sum_\alpha g_\alpha X^\alpha\)</span> put
+<span class="math math-display" data-tex="\[
+\langle f,g\rangle=\sum_\alpha\alpha!\,f_\alpha\overline{g_\alpha},\qquad\alpha!=\prod_k\alpha_k! .
+\]">\[
+\langle f,g\rangle=\sum_\alpha\alpha!\,f_\alpha\overline{g_\alpha},\qquad\alpha!=\prod_k\alpha_k! .
+\]</span>
+This is a positive definite Hermitian inner product, in which distinct monomials are orthogonal and <span class="math" data-tex="\(\|X^\alpha\|^2=\alpha!\)">\(\|X^\alpha\|^2=\alpha!\)</span>. It is the <em>Fischer</em> or <em>apolar</em> inner product.</p>
+<p><strong>Lemma 2.1.</strong> For every <span class="math" data-tex="\(k\)">\(k\)</span>, differentiation by <span class="math" data-tex="\(X_k\)">\(X_k\)</span> and multiplication by <span class="math" data-tex="\(X_k\)">\(X_k\)</span> are adjoint: <span class="math" data-tex="\(\langle\partial f/\partial X_k,g\rangle=\langle f,X_kg\rangle\)">\(\langle\partial f/\partial X_k,g\rangle=\langle f,X_kg\rangle\)</span>.</p>
+<p><em>Proof.</em> By linearity it suffices to take monomials <span class="math" data-tex="\(f=X^\alpha\)">\(f=X^\alpha\)</span> and <span class="math" data-tex="\(g=X^\beta\)">\(g=X^\beta\)</span>. Then <span class="math" data-tex="\(\partial f/\partial X_k=\alpha_kX^{\alpha-e_k}\)">\(\partial f/\partial X_k=\alpha_kX^{\alpha-e_k}\)</span> (zero if <span class="math" data-tex="\(\alpha_k=0\)">\(\alpha_k=0\)</span>), and both sides are <span class="math" data-tex="\(\alpha!\)">\(\alpha!\)</span> if <span class="math" data-tex="\(\alpha=\beta+e_k\)">\(\alpha=\beta+e_k\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-lemma">3. The lemma</h2>
+<p><strong>Lemma 3.1</strong> (OpenAI). Let <span class="math" data-tex="\(p,q\ge0\)">\(p,q\ge0\)</span> be integers, and <span class="math" data-tex="\(U,Y\)">\(U,Y\)</span> two vector variables. Let <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> be the space of polynomials, possibly involving further variables, that are homogeneous of degree <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span> and of degree <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(Y\)">\(Y\)</span>. If <span class="math" data-tex="\(p&gt;q\)">\(p&gt;q\)</span>, then <span class="math" data-tex="\(D_{Y,U}\)">\(D_{Y,U}\)</span> is injective on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(D=D_{Y,U}\)">\(D=D_{Y,U}\)</span> and <span class="math" data-tex="\(E=D_{U,Y}=\sum_kU_k\,\partial/\partial Y_k\)">\(E=D_{U,Y}=\sum_kU_k\,\partial/\partial Y_k\)</span>. By Lemma 2.1, the adjoint of <span class="math" data-tex="\(Y_k\,\partial/\partial U_k\)">\(Y_k\,\partial/\partial U_k\)</span> is <span class="math" data-tex="\(U_k\,\partial/\partial Y_k\)">\(U_k\,\partial/\partial Y_k\)</span>, so <span class="math" data-tex="\(D^*=E\)">\(D^*=E\)</span>. A direct computation, using that variables of different blocks commute with each other's derivatives, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+ED-DE=N_U-N_Y,\\
+N_U=\sum_kU_k\frac{\partial}{\partial U_k},\\
+N_Y=\sum_kY_k\frac{\partial}{\partial Y_k} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+ED-DE=N_U-N_Y,\\
+N_U=\sum_kU_k\frac{\partial}{\partial U_k},\\
+N_Y=\sum_kY_k\frac{\partial}{\partial Y_k} .
+\end{gathered}
+\]</span>
+Indeed,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;U_k\partial_{Y_k}Y_l\partial_{U_l}-Y_l\partial_{U_l}U_k\partial_{Y_k}\\
+&amp;\quad=\delta_{kl}(U_k\partial_{U_l}-Y_l\partial_{Y_k}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;U_k\partial_{Y_k}Y_l\partial_{U_l}-Y_l\partial_{U_l}U_k\partial_{Y_k}\\
+&amp;\quad=\delta_{kl}(U_k\partial_{U_l}-Y_l\partial_{Y_k}).
+\end{aligned}
+\]</span>
+By Euler's identity, <span class="math" data-tex="\(N_Uh=ph\)">\(N_Uh=ph\)</span> and <span class="math" data-tex="\(N_Yh=qh\)">\(N_Yh=qh\)</span> for <span class="math" data-tex="\(h\in\mathcal H\)">\(h\in\mathcal H\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|Dh\|^2-\|Eh\|^2\\
+&amp;\quad=\langle EDh,h\rangle-\langle DEh,h\rangle\\
+&amp;\quad=(p-q)\|h\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|Dh\|^2-\|Eh\|^2\\
+&amp;\quad=\langle EDh,h\rangle-\langle DEh,h\rangle\\
+&amp;\quad=(p-q)\|h\|^2 .
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(Dh=0\)">\(Dh=0\)</span>, the left side is <span class="math" data-tex="\(-\|Eh\|^2\le0\)">\(-\|Eh\|^2\le0\)</span>, while the right side is <span class="math" data-tex="\((p-q)\|h\|^2\ge0\)">\((p-q)\|h\|^2\ge0\)</span>, with equality only for <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A composition of such operators is injective on a space of homogeneous polynomials when, before each operator, the polynomials it is applied to have source degree larger than target degree: each operator then maps an injectivity domain of Lemma 3.1 into the domain of the next one.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Let <span class="math" data-tex="\(n=2\)">\(n=2\)</span>. Show that <span class="math" data-tex="\(h=U_1Y_2-U_2Y_1\)">\(h=U_1Y_2-U_2Y_1\)</span> is a nonzero polynomial of degree <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span> and in <span class="math" data-tex="\(Y\)">\(Y\)</span> with <span class="math" data-tex="\(D_{Y,U}h=0\)">\(D_{Y,U}h=0\)</span>. So Lemma 3.1 fails for <span class="math" data-tex="\(p=q\)">\(p=q\)</span>.</p>
+<p><strong>4.2</strong> (easy). Verify <span class="math" data-tex="\(\|Dh\|^2-\|Eh\|^2=(p-q)\|h\|^2\)">\(\|Dh\|^2-\|Eh\|^2=(p-q)\|h\|^2\)</span> for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> and <span class="math" data-tex="\(h=U^pY^q\)">\(h=U^pY^q\)</span>.</p>
+<p><strong>4.3</strong> (medium). For polynomials in the variables <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> only, show that <span class="math" data-tex="\(D_{Y,U}\)">\(D_{Y,U}\)</span> maps the polynomials of bidegree <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> onto those of bidegree <span class="math" data-tex="\((p-1,q+1)\)">\((p-1,q+1)\)</span> when <span class="math" data-tex="\(p\le q+1\)">\(p\le q+1\)</span>. (Hint: <span class="math" data-tex="\(E=D^*\)">\(E=D^*\)</span> is injective on bidegree <span class="math" data-tex="\((p-1,q+1)\)">\((p-1,q+1)\)</span> when <span class="math" data-tex="\(q+1&gt;p-1\)">\(q+1&gt;p-1\)</span>.)</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(D_{Y,U}h=Y_1Y_2-Y_2Y_1=0\)">\(D_{Y,U}h=Y_1Y_2-Y_2Y_1=0\)</span>.</p>
+<p><strong>4.2.</strong> <span class="math" data-tex="\(Dh=pU^{p-1}Y^{q+1}\)">\(Dh=pU^{p-1}Y^{q+1}\)</span> and <span class="math" data-tex="\(Eh=qU^{p+1}Y^{q-1}\)">\(Eh=qU^{p+1}Y^{q-1}\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|Dh\|^2-\|Eh\|^2\\
+&amp;\quad=p^2(p-1)!\,(q+1)!\\
+&amp;\qquad-q^2(p+1)!\,(q-1)!\\
+&amp;\quad=p!\,q!\,\bigl(p(q+1)-q(p+1)\bigr)\\
+&amp;\quad=(p-q)\|h\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|Dh\|^2-\|Eh\|^2\\
+&amp;\quad=p^2(p-1)!\,(q+1)!\\
+&amp;\qquad-q^2(p+1)!\,(q-1)!\\
+&amp;\quad=p!\,q!\,\bigl(p(q+1)-q(p+1)\bigr)\\
+&amp;\quad=(p-q)\|h\|^2 .
+\end{aligned}
+\]</span></p>
+<p><strong>4.3.</strong> By Lemma 3.1 with the roles of <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> exchanged, <span class="math" data-tex="\(E\)">\(E\)</span> is injective on bidegree <span class="math" data-tex="\((p-1,q+1)\)">\((p-1,q+1)\)</span> when <span class="math" data-tex="\(q+1&gt;p-1\)">\(q+1&gt;p-1\)</span>. For a linear map <span class="math" data-tex="\(D\)">\(D\)</span> between finite-dimensional inner product spaces, the image of <span class="math" data-tex="\(D\)">\(D\)</span> is the orthogonal complement of the kernel of <span class="math" data-tex="\(D^*=E\)">\(D^*=E\)</span>, so <span class="math" data-tex="\(D\)">\(D\)</span> is onto.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-FH] OpenAI, <em>Quadratic stabilization of the canonical Foulkes–Howe map</em>, OpenAI Math Release preprint, 25 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Quadratic-Stabilization-of-the-Canonical-Foulkes-Howe-Map-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

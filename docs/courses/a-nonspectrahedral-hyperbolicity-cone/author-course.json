@@ -1,0 +1,48 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "a-nonspectrahedral-hyperbolicity-cone",
+  "title": "A nonspectrahedral hyperbolicity cone",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-17",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's counterexample (2026) to the geometric generalized Lax conjecture: the polynomial p(X,Z,y) = det((det X)Z - Phi_y(adj X)) of degree 20 in 23 variables, built from the Choi-Lam biquadratic form, is hyperbolic with respect to (I,I,0), and its hyperbolicity cone is not described by any linear matrix inequality of any size; the quotient p/det X of degree 16 has the same cone. Hyperbolic polynomials and Garding's convexity theorem with a complete proof; the Choi-Lam form is nonnegative but dominates no nonzero bilinear square; the positive map Phi_y, hyperbolicity of p and the slice Z >= Phi_y(X^-1); a hypothetical pencil is normalized to a Schur-complement inequality, rank-one limits give a norm identity, and its first variation produces a bilinear form whose square lies below the Choi-Lam form. OpenAI's companion theorem: the same cone is the projection of a spectrahedron of size 100 with 307 auxiliary variables. On each plane y = eta(cos t, sin t, 0) + xi(0, 0, 1) a Gram factorization of Q(y) gives a linear matrix inequality of size 20 for the slice; a moment functional on trigonometric polynomials with a degree-two matching identity replaces the angle.",
+  "prerequisites": [
+    "linear algebra over R and C: determinants, adjugates, eigenvalues and orthogonal diagonalization of real symmetric matrices",
+    "derivatives of matrix-valued functions; Rouche's theorem from complex analysis"
+  ],
+  "lessons": [
+    "hyperbolic-polynomials-and-spectrahedral-cones",
+    "the-choi-lam-form",
+    "a-positive-map-and-a-hyperbolic-polynomial",
+    "no-linear-matrix-inequality-describes-the-cone",
+    "angular-slices-of-the-cone",
+    "a-finite-semidefinite-lift"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "reading": "The manuscript 'A nonspectrahedral hyperbolicity cone' (OpenAI, 24 Sep 2026; build/main.tex and eight section files, about 40 kB of TeX; local library copy openai-math-20261006) was read in full on 17 Oct 2026, and every step was derived again while the lessons were written. No error was found. Changes of form in the course: (1) Garding's theorem, used for the degree-16 corollary, is proved in the course: hyperbolicity in every direction of the open cone through the roots of p(w + tau x + i alpha e) and Rouche's theorem, then convexity; (2) the facts on real symmetric matrices are collected and proved (the spectral theorem by the Rayleigh quotient, square roots, the Schur complement, kernels of sums, continuity of the largest eigenvalue); (3) the principal-minor criterion for positive semidefiniteness is proved through the characteristic polynomial; (4) added: the Choi-Lam form is not a sum of squares of bilinear forms (Corollary 2.4), Phi_y is not a sum of congruences linear in y (Exercise 3.2), and the role of v_0 != 0 in the last step (Exercise 4.1); (5) the appendix of OpenAI's text, a one-variable path contradicting an intermediate assertion in a preprint of Gonzalez Nevado, is not reproduced. Field state on 17 Oct 2026: Kummer and Netzer (arXiv:2609.24542, 21 Sep 2026) prove the conjecture for strictly hyperbolic polynomials; p is not strictly hyperbolic. The second manuscript of the family treated here, 'An exact semidefinite lift of a nonspectrahedral hyperbolicity cone' (OpenAI, 5 Oct 2026; main.tex and five section files, about 30 kB of TeX), was read in full on 17 Oct 2026, and every step was derived again; no error found. Changes of form: the polarized Gram identity is stated separately; the frequencies in the matching lemma are derived explicitly; the matrices of the lift are named G_j to keep B_j = B(r_j); exercises add the case S = 0 and the point (0, I, k), whose characteristic polynomial t^13 (t-1)(t-2)(t+1)(t^2-t-1)^2 has negative roots.",
+    "exact_checks": "plan/checks_20261017/nonspectrahedral_cone_check.py (sympy 1.13.1, mpmath 1.3.0; 2,189 checks, 0 problems, about 40 s, peak 129 MB): the Choi-Lam form as z^T Q(y) z and y^T M(z) y, the principal minors and det M(z), its zeros and the fourth-order curves, nonnegativity at 2,000 rational points, the sign averages; the rank-one identity u^T Phi_y(vv^T) u = b(v_0 u' - u_0 v', y) and Phi_y = C(Q(y) (x) T)C^T (symbolic); positivity of Phi_y on random rank-two matrices (exact principal minors); homogeneity of degree 20, the inverse formula, real-rootedness of t -> p(te - x) at random rational points (Sturm sequences on squarefree parts), the slice y = 0 and p(te - w) = (t-1)^16 t^4; the slice X > 0 at interior, boundary and outside points; p = (det X) q, homogeneity of degree 16, q(te - w) = (t-1)^12 t^4; the kernel limit of [I + (t-1)H]^(-1/2). Lessons 5 and 6: plan/checks_20261017/semidefinite_lift_check.py (655 checks, 0 problems): the angular Gram factorization (symbolic); sum_j B(r_j)^T W B(r_j) = Phi_y(W) (symbolic); the determinant of the slice pencil equal to p at exact rational points with Pythagorean angles; the matching lemma for random indefinite S (unitarity, the Gram and pairing identities at random angles, the frequencies 0 and -2 of a and conj(b)); the identities in the proof of the lift; the completed square for singular X; the sizes 330, 307 and 100. Exercise 5.4 checked with sympy.",
+    "lint": "gp_lint.py (scratch): headings, provenance line, banned wording, balanced TeX delimiters, sibling links; 0 problems.",
+    "render": "ns_render_check.py (scratch): all formulas survive the programme renderer; no formula is flagged by its private-path detector.",
+    "layout": "Tested on 17 Oct 2026 with the site's MathJax at 375 px against the 328 px text column (288 px in lists) before staging: 65 formulas of the first draft were rewritten (displays set on several lines, quantifiers moved into the text, six equation tags replaced by named references). Measured in the staged reader on 17 Oct 2026: the six lessons have 370, 131, 260, 316, 195 and 338 formulas (1,610 in all), 0 rendering errors, 0 formulas wider than the column, no sideways page scroll."
+  },
+  "open_obligations": [
+    "The OpenAI repository has a Lean entry for this family (lean/docs/095.md); it and the Lean files were not read, and the course does not depend on them.",
+    "The family's manuscript on hyperbolicity cones without semidefinite lifts (98 kB), which disproves the projected form of the conjecture, is not treated in this course.",
+    "The lessons were written and checked by one model in one session; they have not been checked by a second reader."
+  ],
+  "free_sources": [
+    "OpenAI, A nonspectrahedral hyperbolicity cone (OpenAI Math Release preprint, 24 Sep 2026), https://github.com/openai/math/tree/main/preprints/A-Nonspectrahedral-Hyperbolicity-Cone-September-24-2026",
+    "OpenAI, An exact semidefinite lift of a nonspectrahedral hyperbolicity cone (5 Oct 2026); Hyperbolicity cones without semidefinite lifts (5 Oct 2026), OpenAI Math Release preprints",
+    "J. W. Helton and V. Vinnikov, Linear matrix inequality representation of sets, arXiv:math/0306180",
+    "P. Branden, Obstructions to determinantal representability, arXiv:1004.1382",
+    "M. Kummer, A note on the hyperbolicity cone of the specialized Vamos polynomial, arXiv:1306.4483",
+    "P. Raghavendra, N. Ryder, N. Srivastava and B. Weitz, Exponential lower bounds on spectrahedral representations of hyperbolicity cones, arXiv:1711.11497",
+    "T. Netzer and R. Sanyal, Smooth hyperbolicity cones are spectrahedral shadows, arXiv:1208.0441",
+    "M. Kummer and T. Netzer, The generalized Lax conjecture for strictly hyperbolic polynomials, arXiv:2609.24542",
+    "C. Scheiderer, Spectrahedral shadows, arXiv:1612.07048",
+    "R. Pemantle, Hyperbolicity and stable polynomials in combinatorics and probability, arXiv:1210.3231",
+    "G. Blekherman, B. Raita, I. Shankar and R. Sinn, Weak and strong extremal biquadratics, arXiv:2204.10625"
+  ]
+}

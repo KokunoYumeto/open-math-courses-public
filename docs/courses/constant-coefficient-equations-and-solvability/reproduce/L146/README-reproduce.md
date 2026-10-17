@@ -56,6 +56,4 @@ local-test discussion following Proposition 9.1.2, printed pp. 326–328,
 Original exposition, examples, solutions and artwork use CC0 1.0; see
 `LICENSE.txt`. DejaVu Sans retains its separate included font license.
 Native protected book pages, private reading scripts and task state are
-excluded from the distributable original packet. No TeX process, browser
-profile, worker or backup copy is required. Remaining Chapter 15 and 16
-targets and the entire assigned course retain their own unfinished scope.
+excluded from the distributable original packet. 

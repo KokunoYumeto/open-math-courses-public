@@ -1,0 +1,208 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Interpolation on a projected integer box</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Uniform exclusion of Landau–Siegel zeros)</a><a href="real-zeros-and-the-prime-bias.html">Previous lesson</a><a href="a-weighted-determinant-in-a-biquadratic-field.html">Next lesson</a><a href="src/interpolation-on-a-projected-integer-box.md">Editable source</a></nav><main><article><h1 id="interpolation-on-a-projected-integer-box">Interpolation on a projected integer box</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The determinant of <a href="a-weighted-determinant-in-a-biquadratic-field.html">A weighted determinant in a biquadratic field</a> is formed from evaluation rows: monomials <span class="math" data-tex="\(z_1^{\alpha_1}z_2^{\alpha_2}z_3^{\alpha_3}\)">\(z_1^{\alpha_1}z_2^{\alpha_2}z_3^{\alpha_3}\)</span> evaluated at the <span class="math" data-tex="\(N^4\)">\(N^4\)</span> points <span class="math" data-tex="\(An\in\mathbf C^3\)">\(An\in\mathbf C^3\)</span>, where <span class="math" data-tex="\(n\)">\(n\)</span> runs over the integer box <span class="math" data-tex="\(\{0,\dots,N-1\}^4\)">\(\{0,\dots,N-1\}^4\)</span> and <span class="math" data-tex="\(A:\mathbf C^4\to\mathbf C^3\)">\(A:\mathbf C^4\to\mathbf C^3\)</span> is linear. For that determinant to be nonzero, enough of the rows must be linearly independent. This lesson proves that polynomials with separately bounded degrees <span class="math" data-tex="\(t_1,t_2,t_3\)">\(t_1,t_2,t_3\)</span> take arbitrary values at these points once <span class="math" data-tex="\(\prod_j(t_j-3(N-1)+1)&gt;(4N-3)^4\)">\(\prod_j(t_j-3(N-1)+1)&gt;(4N-3)^4\)</span>, provided the kernel of <span class="math" data-tex="\(A\)">\(A\)</span> is spanned by a vector whose coordinates are linearly independent over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. The three degrees may be very unequal. The proof, which follows OpenAI [OpenAI-LS, Section 3], combines a dimension count, a nearest-point argument for an integer polytope, and Lagrange interpolation on one of its faces.</p>
+<h2 id="1-convex-sets">1. Convex sets</h2>
+<p>For a finite set <span class="math" data-tex="\(S\subset\mathbf R^k\)">\(S\subset\mathbf R^k\)</span>, <span class="math" data-tex="\(\operatorname{conv}(S)\)">\(\operatorname{conv}(S)\)</span> is the set of convex combinations of points of <span class="math" data-tex="\(S\)">\(S\)</span>; it is compact and convex. For a convex set <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, put <span class="math" data-tex="\(tP=\{tv:v\in P\}\)">\(tP=\{tv:v\in P\}\)</span>. If <span class="math" data-tex="\(s,t\ge0\)">\(s,t\ge0\)</span> and <span class="math" data-tex="\(s+t&gt;0\)">\(s+t&gt;0\)</span>, then
+<span class="math math-display" data-tex="\[
+sP+tP=(s+t)P,
+\]">\[
+sP+tP=(s+t)P,
+\]</span>
+because <span class="math" data-tex="\(sv+tw=(s+t)\bigl(\tfrac s{s+t}v+\tfrac t{s+t}w\bigr)\)">\(sv+tw=(s+t)\bigl(\tfrac s{s+t}v+\tfrac t{s+t}w\bigr)\)</span> and <span class="math" data-tex="\((s+t)v=sv+tv\)">\((s+t)v=sv+tv\)</span> for <span class="math" data-tex="\(v,w\in P\)">\(v,w\in P\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (nearest points). Let <span class="math" data-tex="\(\mathcal K\subset\mathbf R^k\)">\(\mathcal K\subset\mathbf R^k\)</span> be nonempty, compact and convex, and <span class="math" data-tex="\(m\in\mathbf R^k\)">\(m\in\mathbf R^k\)</span>. Some point <span class="math" data-tex="\(y\in\mathcal K\)">\(y\in\mathcal K\)</span> is nearest to <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(h=m-y\)">\(h=m-y\)</span> satisfies <span class="math" data-tex="\(h\cdot(x-y)\le0\)">\(h\cdot(x-y)\le0\)</span> for every <span class="math" data-tex="\(x\in\mathcal K\)">\(x\in\mathcal K\)</span>.</p>
+<p><em>Proof.</em> The distance to <span class="math" data-tex="\(m\)">\(m\)</span> is continuous on the compact set <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, so it has a minimum at some <span class="math" data-tex="\(y\)">\(y\)</span>. For <span class="math" data-tex="\(x\in\mathcal K\)">\(x\in\mathcal K\)</span> and <span class="math" data-tex="\(0&lt;t\le1\)">\(0&lt;t\le1\)</span>, the point <span class="math" data-tex="\(y+t(x-y)\)">\(y+t(x-y)\)</span> lies in <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|h-t(x-y)\|^2-\|h\|^2\\
+&amp;\quad=-2t\,h\cdot(x-y)+t^2\|x-y\|^2\ge0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|h-t(x-y)\|^2-\|h\|^2\\
+&amp;\quad=-2t\,h\cdot(x-y)+t^2\|x-y\|^2\ge0 .
+\end{aligned}
+\]</span>
+Divide by <span class="math" data-tex="\(t\)">\(t\)</span> and let <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2</strong> (faces). Let <span class="math" data-tex="\(S\subset\mathbf R^k\)">\(S\subset\mathbf R^k\)</span> be finite and nonempty, <span class="math" data-tex="\(P=\operatorname{conv}(S)\)">\(P=\operatorname{conv}(S)\)</span>, <span class="math" data-tex="\(h\in\mathbf R^k\)">\(h\in\mathbf R^k\)</span>, and
+<span class="math math-display" data-tex="\[
+G=\{v\in P:h\cdot v=\max_{w\in P}h\cdot w\}.
+\]">\[
+G=\{v\in P:h\cdot v=\max_{w\in P}h\cdot w\}.
+\]</span>
+Then <span class="math" data-tex="\(G=\operatorname{conv}(S\cap G)\)">\(G=\operatorname{conv}(S\cap G)\)</span>. If <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span>, then <span class="math" data-tex="\(G\)">\(G\)</span> lies in an affine hyperplane.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(\mu=\max_Ph\cdot w\)">\(\mu=\max_Ph\cdot w\)</span>. If <span class="math" data-tex="\(v=\sum_i\lambda_is_i\)">\(v=\sum_i\lambda_is_i\)</span> is a convex combination of points <span class="math" data-tex="\(s_i\in S\)">\(s_i\in S\)</span> with all <span class="math" data-tex="\(\lambda_i&gt;0\)">\(\lambda_i&gt;0\)</span> and <span class="math" data-tex="\(v\in G\)">\(v\in G\)</span>, then <span class="math" data-tex="\(\sum_i\lambda_i(\mu-h\cdot s_i)=0\)">\(\sum_i\lambda_i(\mu-h\cdot s_i)=0\)</span> with nonnegative terms, so every <span class="math" data-tex="\(s_i\)">\(s_i\)</span> lies in <span class="math" data-tex="\(G\)">\(G\)</span>. Hence <span class="math" data-tex="\(G\subset\operatorname{conv}(S\cap G)\)">\(G\subset\operatorname{conv}(S\cap G)\)</span>. Conversely <span class="math" data-tex="\(G\)">\(G\)</span> is convex and contains <span class="math" data-tex="\(S\cap G\)">\(S\cap G\)</span>. If <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span>, then <span class="math" data-tex="\(G\)">\(G\)</span> lies in the hyperplane <span class="math" data-tex="\(\{v:h\cdot v=\mu\}\)">\(\{v:h\cdot v=\mu\}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3</strong> (Carathéodory). Let <span class="math" data-tex="\(T\subset\mathbf R^k\)">\(T\subset\mathbf R^k\)</span> lie in an affine subspace of dimension <span class="math" data-tex="\(e\)">\(e\)</span>. Every convex combination of points of <span class="math" data-tex="\(T\)">\(T\)</span> is a convex combination of at most <span class="math" data-tex="\(e+1\)">\(e+1\)</span> points of <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(v=\sum_{i=1}^r\lambda_it_i\)">\(v=\sum_{i=1}^r\lambda_it_i\)</span> with <span class="math" data-tex="\(t_i\in T\)">\(t_i\in T\)</span>, <span class="math" data-tex="\(\lambda_i&gt;0\)">\(\lambda_i&gt;0\)</span>, <span class="math" data-tex="\(\sum_i\lambda_i=1\)">\(\sum_i\lambda_i=1\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span> least. If <span class="math" data-tex="\(r&gt;e+1\)">\(r&gt;e+1\)</span>, the points <span class="math" data-tex="\(t_i\)">\(t_i\)</span> are affinely dependent: there are real <span class="math" data-tex="\(\mu_i\)">\(\mu_i\)</span>, not all zero, with <span class="math" data-tex="\(\sum_i\mu_it_i=0\)">\(\sum_i\mu_it_i=0\)</span> and <span class="math" data-tex="\(\sum_i\mu_i=0\)">\(\sum_i\mu_i=0\)</span>. Some <span class="math" data-tex="\(\mu_i\)">\(\mu_i\)</span> is positive. Let <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> be the least value of <span class="math" data-tex="\(\lambda_i/\mu_i\)">\(\lambda_i/\mu_i\)</span> over the indices with <span class="math" data-tex="\(\mu_i&gt;0\)">\(\mu_i&gt;0\)</span>. The coefficients <span class="math" data-tex="\(\lambda_i-\kappa\mu_i\)">\(\lambda_i-\kappa\mu_i\)</span> are nonnegative, have sum <span class="math" data-tex="\(1\)">\(1\)</span>, represent <span class="math" data-tex="\(v\)">\(v\)</span>, and at least one of them is zero. This contradicts the minimality of <span class="math" data-tex="\(r\)">\(r\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-polynomials">2. Polynomials</h2>
+<p><strong>Lemma 2.4.</strong> A polynomial in <span class="math" data-tex="\(k\)">\(k\)</span> variables with complex coefficients that vanishes at every point of <span class="math" data-tex="\(\mathbf Z^k\)">\(\mathbf Z^k\)</span> is zero.</p>
+<p><em>Proof.</em> Induction on <span class="math" data-tex="\(k\)">\(k\)</span>; for <span class="math" data-tex="\(k=0\)">\(k=0\)</span> there is nothing to prove. Write <span class="math" data-tex="\(f=\sum_jf_j(x_1,\dots,x_{k-1})x_k^j\)">\(f=\sum_jf_j(x_1,\dots,x_{k-1})x_k^j\)</span>. For each <span class="math" data-tex="\(x&#x27;\in\mathbf Z^{k-1}\)">\(x&#x27;\in\mathbf Z^{k-1}\)</span>, the polynomial <span class="math" data-tex="\(f(x&#x27;,x_k)\)">\(f(x&#x27;,x_k)\)</span> in one variable has infinitely many roots, so all <span class="math" data-tex="\(f_j(x&#x27;)\)">\(f_j(x&#x27;)\)</span> vanish. By induction every <span class="math" data-tex="\(f_j\)">\(f_j\)</span> is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The polynomials <span class="math" data-tex="\(B\in\mathbf C[z_1,z_2,z_3]\)">\(B\in\mathbf C[z_1,z_2,z_3]\)</span> with <span class="math" data-tex="\(\deg_{z_j}B\le b_j\)">\(\deg_{z_j}B\le b_j\)</span> for <span class="math" data-tex="\(j=1,2,3\)">\(j=1,2,3\)</span> form a vector space with basis the monomials <span class="math" data-tex="\(z^\alpha=z_1^{\alpha_1}z_2^{\alpha_2}z_3^{\alpha_3}\)">\(z^\alpha=z_1^{\alpha_1}z_2^{\alpha_2}z_3^{\alpha_3}\)</span>, <span class="math" data-tex="\(0\le\alpha_j\le b_j\)">\(0\le\alpha_j\le b_j\)</span>, of dimension <span class="math" data-tex="\(\prod_j(b_j+1)\)">\(\prod_j(b_j+1)\)</span>. Translating the variable, <span class="math" data-tex="\(B(z)\mapsto B(z+w)\)">\(B(z)\mapsto B(z+w)\)</span>, preserves each separate degree, and a polynomial of total degree at most <span class="math" data-tex="\(D\)">\(D\)</span> has each separate degree at most <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<h2 id="3-the-interpolation-theorem">3. The interpolation theorem</h2>
+<p>Write <span class="math" data-tex="\(E_N=\{0,\dots,N-1\}^4\)">\(E_N=\{0,\dots,N-1\}^4\)</span>. For integers <span class="math" data-tex="\(t_1,t_2,t_3\ge0\)">\(t_1,t_2,t_3\ge0\)</span>, let <span class="math" data-tex="\(\mathcal P_t\)">\(\mathcal P_t\)</span> be the space of <span class="math" data-tex="\(B\in\mathbf C[z_1,z_2,z_3]\)">\(B\in\mathbf C[z_1,z_2,z_3]\)</span> with <span class="math" data-tex="\(\deg_{z_j}B\le t_j\)">\(\deg_{z_j}B\le t_j\)</span> for <span class="math" data-tex="\(j=1,2,3\)">\(j=1,2,3\)</span>.</p>
+<p><strong>Theorem 2.5</strong> (OpenAI). Let <span class="math" data-tex="\(A:\mathbf C^4\to\mathbf C^3\)">\(A:\mathbf C^4\to\mathbf C^3\)</span> be a surjective linear map whose kernel is spanned by a vector <span class="math" data-tex="\(c\)">\(c\)</span> whose four coordinates are linearly independent over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Let <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> and <span class="math" data-tex="\(t_1,t_2,t_3\)">\(t_1,t_2,t_3\)</span> be integers with <span class="math" data-tex="\(t_j\ge3(N-1)\)">\(t_j\ge3(N-1)\)</span> for <span class="math" data-tex="\(j=1,2,3\)">\(j=1,2,3\)</span> and
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^3\bigl(t_j-3(N-1)+1\bigr)&gt;(4N-3)^4 .
+\]">\[
+\prod_{j=1}^3\bigl(t_j-3(N-1)+1\bigr)&gt;(4N-3)^4 .
+\]</span>
+Then the evaluation map <span class="math" data-tex="\(\mathcal P_t\to\mathbf C^{E_N}\)">\(\mathcal P_t\to\mathbf C^{E_N}\)</span>, <span class="math" data-tex="\(B\mapsto(B(An))_{n\in E_N}\)">\(B\mapsto(B(An))_{n\in E_N}\)</span>, is surjective.</p>
+<p><em>Proof.</em> Suppose the image is a proper subspace. A nonzero linear form vanishes on it: there are complex numbers <span class="math" data-tex="\(v_n\)">\(v_n\)</span>, not all zero, such that for every <span class="math" data-tex="\(B\in\mathcal P_t\)">\(B\in\mathcal P_t\)</span>
+<span class="math math-display" data-tex="\[
+\sum_{n\in E_N}v_nB(An)=0 .
+\tag{2.1}
+\]">\[
+\sum_{n\in E_N}v_nB(An)=0 .
+\tag{2.1}
+\]</span>
+Let <span class="math" data-tex="\(S=\{n\in E_N:v_n\ne0\}\)">\(S=\{n\in E_N:v_n\ne0\}\)</span>, <span class="math" data-tex="\(P=\operatorname{conv}(S)\subset\mathbf R^4\)">\(P=\operatorname{conv}(S)\subset\mathbf R^4\)</span> and <span class="math" data-tex="\(\mathcal K=4P\)">\(\mathcal K=4P\)</span>.</p>
+<p><em>Step 1: an auxiliary polynomial.</em> Put <span class="math" data-tex="\(b_j=t_j-3(N-1)\ge0\)">\(b_j=t_j-3(N-1)\ge0\)</span>. Since <span class="math" data-tex="\(\mathcal K\subset[0,4(N-1)]^4\)">\(\mathcal K\subset[0,4(N-1)]^4\)</span>, it contains at most <span class="math" data-tex="\((4N-3)^4\)">\((4N-3)^4\)</span> integer points. Vanishing at the points <span class="math" data-tex="\(Am\)">\(Am\)</span>, <span class="math" data-tex="\(m\in\mathcal K\cap\mathbf Z^4\)">\(m\in\mathcal K\cap\mathbf Z^4\)</span>, imposes at most <span class="math" data-tex="\((4N-3)^4\)">\((4N-3)^4\)</span> linear conditions on the space of polynomials with <span class="math" data-tex="\(\deg_{z_j}\le b_j\)">\(\deg_{z_j}\le b_j\)</span>, whose dimension <span class="math" data-tex="\(\prod_j(b_j+1)\)">\(\prod_j(b_j+1)\)</span> is larger. So there is a nonzero <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(\deg_{z_j}R\le b_j\)">\(\deg_{z_j}R\le b_j\)</span> such that, for every <span class="math" data-tex="\(m\in\mathcal K\cap\mathbf Z^4\)">\(m\in\mathcal K\cap\mathbf Z^4\)</span>,
+<span class="math math-display" data-tex="\[
+R(Am)=0 .
+\tag{2.2}
+\]">\[
+R(Am)=0 .
+\tag{2.2}
+\]</span></p>
+<p><em>Step 2: the nearest nonzero value.</em> The polynomial <span class="math" data-tex="\(R\circ A\)">\(R\circ A\)</span> on <span class="math" data-tex="\(\mathbf C^4\)">\(\mathbf C^4\)</span> is nonzero: otherwise <span class="math" data-tex="\(R\)">\(R\)</span> would vanish on <span class="math" data-tex="\(A(\mathbf C^4)=\mathbf C^3\)">\(A(\mathbf C^4)=\mathbf C^3\)</span>. By Lemma 2.4 some <span class="math" data-tex="\(m\in\mathbf Z^4\)">\(m\in\mathbf Z^4\)</span> has <span class="math" data-tex="\(R(Am)\ne0\)">\(R(Am)\ne0\)</span>. Choose such an <span class="math" data-tex="\(m\)">\(m\)</span> at least distance from <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>; this is possible because only finitely many integer points lie within a given distance of the bounded set <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. By Lemma 2.1 some <span class="math" data-tex="\(y\in\mathcal K\)">\(y\in\mathcal K\)</span> is nearest to <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(h=m-y\)">\(h=m-y\)</span> satisfies <span class="math" data-tex="\(h\cdot(x-y)\le0\)">\(h\cdot(x-y)\le0\)</span> for <span class="math" data-tex="\(x\in\mathcal K\)">\(x\in\mathcal K\)</span>. By (2.2), <span class="math" data-tex="\(m\notin\mathcal K\)">\(m\notin\mathcal K\)</span>, so <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span>.</p>
+<p><em>Step 3: a face and one of its points.</em> Let <span class="math" data-tex="\(G=\{v\in P:h\cdot v=\max_Ph\cdot w\}\)">\(G=\{v\in P:h\cdot v=\max_Ph\cdot w\}\)</span>. For <span class="math" data-tex="\(v\in P\)">\(v\in P\)</span>, <span class="math" data-tex="\(4v\in\mathcal K\)">\(4v\in\mathcal K\)</span> gives <span class="math" data-tex="\(h\cdot v\le h\cdot(y/4)\)">\(h\cdot v\le h\cdot(y/4)\)</span>, and <span class="math" data-tex="\(y/4\in P\)">\(y/4\in P\)</span>; so <span class="math" data-tex="\(y/4\in G\)">\(y/4\in G\)</span>. By Lemma 2.2, <span class="math" data-tex="\(G=\operatorname{conv}(S\cap G)\)">\(G=\operatorname{conv}(S\cap G)\)</span>, and <span class="math" data-tex="\(S\cap G\)">\(S\cap G\)</span> lies in an affine hyperplane. By Lemma 2.3,
+<span class="math math-display" data-tex="\[
+\frac y4=\sum_{i=1}^r\lambda_iu_i,\qquad r\le4,\quad u_i\in S\cap G,
+\]">\[
+\frac y4=\sum_{i=1}^r\lambda_iu_i,\qquad r\le4,\quad u_i\in S\cap G,
+\]</span>
+with <span class="math" data-tex="\(\lambda_i&gt;0\)">\(\lambda_i&gt;0\)</span> and <span class="math" data-tex="\(\sum_i\lambda_i=1\)">\(\sum_i\lambda_i=1\)</span>. Some <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> is at least <span class="math" data-tex="\(\frac14\)">\(\frac14\)</span>; let <span class="math" data-tex="\(u\)">\(u\)</span> be its point. In
+<span class="math math-display" data-tex="\[
+y-u=(4\lambda_u-1)u+\sum_{u_i\ne u}4\lambda_iu_i
+\]">\[
+y-u=(4\lambda_u-1)u+\sum_{u_i\ne u}4\lambda_iu_i
+\]</span>
+the coefficients are nonnegative with sum <span class="math" data-tex="\(3\)">\(3\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+u\in S\cap G,\quad y-u\in3P .
+\tag{2.3}
+\]">\[
+u\in S\cap G,\quad y-u\in3P .
+\tag{2.3}
+\]</span></p>
+<p><em>Step 4: vanishing off the face.</em> Let <span class="math" data-tex="\(n\in S\setminus G\)">\(n\in S\setminus G\)</span>. By (2.3), <span class="math" data-tex="\(y&#x27;=y+n-u\)">\(y&#x27;=y+n-u\)</span> lies in <span class="math" data-tex="\(3P+P=\mathcal K\)">\(3P+P=\mathcal K\)</span>, and <span class="math" data-tex="\(m&#x27;=m+n-u=y&#x27;+h\)">\(m&#x27;=m+n-u=y&#x27;+h\)</span> is an integer point. Since <span class="math" data-tex="\(u\in G\)">\(u\in G\)</span> and <span class="math" data-tex="\(n\notin G\)">\(n\notin G\)</span>, <span class="math" data-tex="\(h\cdot(u-n)&gt;0\)">\(h\cdot(u-n)&gt;0\)</span>. For <span class="math" data-tex="\(0&lt;\eta\le1\)">\(0&lt;\eta\le1\)</span> the point <span class="math" data-tex="\(y&#x27;+\eta(y-y&#x27;)\)">\(y&#x27;+\eta(y-y&#x27;)\)</span> lies in <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, and as <span class="math" data-tex="\(y-y&#x27;=u-n\)">\(y-y&#x27;=u-n\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|m&#x27;-y&#x27;-\eta(y-y&#x27;)\|^2\\
+&amp;\quad=\|h\|^2-2\eta\,h\cdot(u-n)\\
+&amp;\qquad+\eta^2\|u-n\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|m&#x27;-y&#x27;-\eta(y-y&#x27;)\|^2\\
+&amp;\quad=\|h\|^2-2\eta\,h\cdot(u-n)\\
+&amp;\qquad+\eta^2\|u-n\|^2 .
+\end{aligned}
+\]</span>
+For small <span class="math" data-tex="\(\eta\)">\(\eta\)</span> this is less than <span class="math" data-tex="\(\|h\|^2\)">\(\|h\|^2\)</span>. So <span class="math" data-tex="\(m&#x27;\)">\(m&#x27;\)</span> is closer to <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> than <span class="math" data-tex="\(m\)">\(m\)</span>, and the choice of <span class="math" data-tex="\(m\)">\(m\)</span> gives, for every <span class="math" data-tex="\(n\in S\setminus G\)">\(n\in S\setminus G\)</span>,
+<span class="math math-display" data-tex="\[
+R\bigl(A(m+n-u)\bigr)=0 .
+\tag{2.4}
+\]">\[
+R\bigl(A(m+n-u)\bigr)=0 .
+\tag{2.4}
+\]</span></p>
+<p><em>Step 5: a rational hyperplane through the face.</em> Fix <span class="math" data-tex="\(u_0\in S\cap G\)">\(u_0\in S\cap G\)</span>. The integer vectors <span class="math" data-tex="\(w-u_0\)">\(w-u_0\)</span>, <span class="math" data-tex="\(w\in S\cap G\)">\(w\in S\cap G\)</span>, span a real subspace of dimension at most <span class="math" data-tex="\(3\)">\(3\)</span>; since they are rational, their span over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> has the same dimension. Choose <span class="math" data-tex="\(0\ne r\in\mathbf Z^4\)">\(0\ne r\in\mathbf Z^4\)</span> orthogonal to all of them, and put <span class="math" data-tex="\(k=r\cdot u_0\in\mathbf Z\)">\(k=r\cdot u_0\in\mathbf Z\)</span>. The complex hyperplane
+<span class="math math-display" data-tex="\[
+\Pi=\{x\in\mathbf C^4:r\cdot x=k\}
+\]">\[
+\Pi=\{x\in\mathbf C^4:r\cdot x=k\}
+\]</span>
+contains <span class="math" data-tex="\(S\cap G\)">\(S\cap G\)</span>. As <span class="math" data-tex="\(r\)">\(r\)</span> is a nonzero integer vector and the coordinates of <span class="math" data-tex="\(c\)">\(c\)</span> are linearly independent over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, <span class="math" data-tex="\(r\cdot c\ne0\)">\(r\cdot c\ne0\)</span>. Consequently <span class="math" data-tex="\(A\)">\(A\)</span> maps <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> bijectively onto <span class="math" data-tex="\(\mathbf C^3\)">\(\mathbf C^3\)</span>. Indeed, two points of <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> with the same image differ by a multiple <span class="math" data-tex="\(tc\)">\(tc\)</span> with <span class="math" data-tex="\(t\,(r\cdot c)=0\)">\(t\,(r\cdot c)=0\)</span>, hence coincide. And for <span class="math" data-tex="\(z\in\mathbf C^3\)">\(z\in\mathbf C^3\)</span>, choose <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(Ax=z\)">\(Ax=z\)</span>; the point <span class="math" data-tex="\(x+tc\)">\(x+tc\)</span> with <span class="math" data-tex="\(t=(k-r\cdot x)/(r\cdot c)\)">\(t=(k-r\cdot x)/(r\cdot c)\)</span> lies in <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> and maps to <span class="math" data-tex="\(z\)">\(z\)</span>. The inverse is affine: if <span class="math" data-tex="\(x_0\in\Pi\)">\(x_0\in\Pi\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> is the inverse of the linear bijection <span class="math" data-tex="\(A\)">\(A\)</span> from <span class="math" data-tex="\(\{r\cdot x=0\}\)">\(\{r\cdot x=0\}\)</span> onto <span class="math" data-tex="\(\mathbf C^3\)">\(\mathbf C^3\)</span>, the inverse sends <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(x_0+L(z-Ax_0)\)">\(x_0+L(z-Ax_0)\)</span>. Let <span class="math" data-tex="\(\lambda_1(z),\dots,\lambda_4(z)\)">\(\lambda_1(z),\dots,\lambda_4(z)\)</span> be its coordinates, polynomials of degree at most <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(z\)">\(z\)</span>. Then <span class="math" data-tex="\(\lambda_i(An)=n_i\)">\(\lambda_i(An)=n_i\)</span> for <span class="math" data-tex="\(n\in\Pi\)">\(n\in\Pi\)</span>.</p>
+<p><em>Step 6: Lagrange interpolation on the face.</em> Choose <span class="math" data-tex="\(i_0\)">\(i_0\)</span> with <span class="math" data-tex="\(r_{i_0}\ne0\)">\(r_{i_0}\ne0\)</span>, and put
+<span class="math math-display" data-tex="\[
+Q(z)=\prod_{i\ne i_0}\ \prod_{\substack{0\le a&lt;N\\ a\ne u_i}}\frac{\lambda_i(z)-a}{u_i-a},
+\]">\[
+Q(z)=\prod_{i\ne i_0}\ \prod_{\substack{0\le a&lt;N\\ a\ne u_i}}\frac{\lambda_i(z)-a}{u_i-a},
+\]</span>
+with empty products equal to <span class="math" data-tex="\(1\)">\(1\)</span>. Its total degree is at most <span class="math" data-tex="\(3(N-1)\)">\(3(N-1)\)</span>. Let <span class="math" data-tex="\(n\in S\cap G\)">\(n\in S\cap G\)</span>. Then <span class="math" data-tex="\(n\in\Pi\)">\(n\in\Pi\)</span> and
+<span class="math math-display" data-tex="\[
+Q(An)=\prod_{i\ne i_0}\ \prod_{a\ne u_i}\frac{n_i-a}{u_i-a}.
+\]">\[
+Q(An)=\prod_{i\ne i_0}\ \prod_{a\ne u_i}\frac{n_i-a}{u_i-a}.
+\]</span>
+If <span class="math" data-tex="\(n_i\ne u_i\)">\(n_i\ne u_i\)</span> for some <span class="math" data-tex="\(i\ne i_0\)">\(i\ne i_0\)</span>, then <span class="math" data-tex="\(n_i\in\{0,\dots,N-1\}\)">\(n_i\in\{0,\dots,N-1\}\)</span> is one of the excluded values <span class="math" data-tex="\(a\)">\(a\)</span>, and <span class="math" data-tex="\(Q(An)=0\)">\(Q(An)=0\)</span>. Otherwise <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> agree outside the coordinate <span class="math" data-tex="\(i_0\)">\(i_0\)</span>, and <span class="math" data-tex="\(r\cdot n=k=r\cdot u\)">\(r\cdot n=k=r\cdot u\)</span> forces <span class="math" data-tex="\(n=u\)">\(n=u\)</span>. Thus
+<span class="math math-display" data-tex="\[
+Q(An)=\begin{cases}1,&amp;n=u,\\0,&amp;n\in(S\cap G)\setminus\{u\}.\end{cases}
+\]">\[
+Q(An)=\begin{cases}1,&amp;n=u,\\0,&amp;n\in(S\cap G)\setminus\{u\}.\end{cases}
+\]</span></p>
+<p><em>Step 7: the contradiction.</em> Let <span class="math" data-tex="\(B(z)=Q(z)R(z+A(m-u))\)">\(B(z)=Q(z)R(z+A(m-u))\)</span>. By Section 2, <span class="math" data-tex="\(\deg_{z_j}B\le3(N-1)+b_j=t_j\)">\(\deg_{z_j}B\le3(N-1)+b_j=t_j\)</span>, so <span class="math" data-tex="\(B\in\mathcal P_t\)">\(B\in\mathcal P_t\)</span>. Since <span class="math" data-tex="\(B(An)=Q(An)R(A(m+n-u))\)">\(B(An)=Q(An)R(A(m+n-u))\)</span>, (2.1) gives
+<span class="math math-display" data-tex="\[
+0=\sum_{n\in S}v_nQ(An)R\bigl(A(m+n-u)\bigr).
+\]">\[
+0=\sum_{n\in S}v_nQ(An)R\bigl(A(m+n-u)\bigr).
+\]</span>
+By (2.4) the terms with <span class="math" data-tex="\(n\notin G\)">\(n\notin G\)</span> vanish, and by Step 6 so do the terms with <span class="math" data-tex="\(n\in G\)">\(n\in G\)</span>, <span class="math" data-tex="\(n\ne u\)">\(n\ne u\)</span>. The remaining term is <span class="math" data-tex="\(v_uR(Am)\ne0\)">\(v_uR(Am)\ne0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof never bounds the coefficients of <span class="math" data-tex="\(R\)">\(R\)</span> or <span class="math" data-tex="\(Q\)">\(Q\)</span>; the theorem is a statement of linear algebra, uniform in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="4-rectangular-boxes-of-exponents">4. Rectangular boxes of exponents</h2>
+<p><strong>Corollary 2.6</strong> (OpenAI). Let <span class="math" data-tex="\(A\)">\(A\)</span> be as in Theorem 2.5, and let <span class="math" data-tex="\(H,N\)">\(H,N\)</span> be integers with <span class="math" data-tex="\(1\le H\le N\)">\(1\le H\le N\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U&amp;=N^{4/3},\qquad T_1=32H^{2/3}U,\\
+T_2&amp;=T_3=32H^{-1/3}U .
+\end{aligned}
+\]">\[
+\begin{aligned}
+U&amp;=N^{4/3},\qquad T_1=32H^{2/3}U,\\
+T_2&amp;=T_3=32H^{-1/3}U .
+\end{aligned}
+\]</span>
+The vectors <span class="math" data-tex="\(\bigl((An)^\alpha\bigr)_{n\in E_N}\)">\(\bigl((An)^\alpha\bigr)_{n\in E_N}\)</span>, for <span class="math" data-tex="\(\alpha\in\mathbf Z_{\ge0}^3\)">\(\alpha\in\mathbf Z_{\ge0}^3\)</span> with <span class="math" data-tex="\(\alpha_j\le T_j\)">\(\alpha_j\le T_j\)</span> for <span class="math" data-tex="\(j=1,2,3\)">\(j=1,2,3\)</span>, span <span class="math" data-tex="\(\mathbf C^{E_N}\)">\(\mathbf C^{E_N}\)</span>. Here <span class="math" data-tex="\((An)^\alpha=(An)_1^{\alpha_1}(An)_2^{\alpha_2}(An)_3^{\alpha_3}\)">\((An)^\alpha=(An)_1^{\alpha_1}(An)_2^{\alpha_2}(An)_3^{\alpha_3}\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(t_j=\lfloor T_j\rfloor\)">\(t_j=\lfloor T_j\rfloor\)</span>. Since <span class="math" data-tex="\(H\le N\)">\(H\le N\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_1&amp;\ge32N^{4/3}\ge32N,\\
+T_2&amp;=32H^{-1/3}N^{4/3}\ge32N,
+\end{aligned}
+\]">\[
+\begin{aligned}
+T_1&amp;\ge32N^{4/3}\ge32N,\\
+T_2&amp;=32H^{-1/3}N^{4/3}\ge32N,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(T_1T_2T_3=32^3N^4\)">\(T_1T_2T_3=32^3N^4\)</span>. As <span class="math" data-tex="\(32N\)">\(32N\)</span> is an integer, <span class="math" data-tex="\(t_j\ge32N\ge3(N-1)\)">\(t_j\ge32N\ge3(N-1)\)</span>. Also <span class="math" data-tex="\(t_j+1&gt;T_j\)">\(t_j+1&gt;T_j\)</span> and <span class="math" data-tex="\(T_j\ge6(N-1)\)">\(T_j\ge6(N-1)\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\prod_{j=1}^3\bigl(t_j-3(N-1)+1\bigr)\\
+&amp;\quad&gt;\prod_{j=1}^3\bigl(T_j-3(N-1)\bigr)\\
+&amp;\quad\ge\frac{T_1T_2T_3}8=4096N^4\\
+&amp;\quad=(8N)^4&gt;(4N-3)^4 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\prod_{j=1}^3\bigl(t_j-3(N-1)+1\bigr)\\
+&amp;\quad&gt;\prod_{j=1}^3\bigl(T_j-3(N-1)\bigr)\\
+&amp;\quad\ge\frac{T_1T_2T_3}8=4096N^4\\
+&amp;\quad=(8N)^4&gt;(4N-3)^4 .
+\end{aligned}
+\]</span>
+By Theorem 2.5 the evaluation map on <span class="math" data-tex="\(\mathcal P_t\)">\(\mathcal P_t\)</span> is surjective. Its image is spanned by the images of the monomials <span class="math" data-tex="\(z^\alpha\)">\(z^\alpha\)</span> with <span class="math" data-tex="\(\alpha_j\le t_j\)">\(\alpha_j\le t_j\)</span>, and for integers <span class="math" data-tex="\(\alpha_j\le t_j\)">\(\alpha_j\le t_j\)</span> is the same as <span class="math" data-tex="\(\alpha_j\le T_j\)">\(\alpha_j\le T_j\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>With <span class="math" data-tex="\(H\)">\(H\)</span> large, the box is long in the first exponent and short in the other two: <span class="math" data-tex="\(T_1/T_2=H\)">\(T_1/T_2=H\)</span>, while the number of exponents stays of order <span class="math" data-tex="\(N^4\)">\(N^4\)</span>. This is what the third lesson uses.</p>
+<p><strong>Remark 2.7</strong> (derivations on a torus). On <span class="math" data-tex="\((\mathbf C^\times)^4\)">\((\mathbf C^\times)^4\)</span> put <span class="math" data-tex="\(D_j=\sum_iA_{ji}x_i\,\partial/\partial x_i\)">\(D_j=\sum_iA_{ji}x_i\,\partial/\partial x_i\)</span> for <span class="math" data-tex="\(j=1,2,3\)">\(j=1,2,3\)</span>. For the monomial <span class="math" data-tex="\(x^n=x_1^{n_1}\cdots x_4^{n_4}\)">\(x^n=x_1^{n_1}\cdots x_4^{n_4}\)</span>, <span class="math" data-tex="\(x_i\partial x^n/\partial x_i=n_ix^n\)">\(x_i\partial x^n/\partial x_i=n_ix^n\)</span>, so <span class="math" data-tex="\(D_jx^n=(An)_jx^n\)">\(D_jx^n=(An)_jx^n\)</span> and
+<span class="math math-display" data-tex="\[
+\bigl(D_1^{\alpha_1}D_2^{\alpha_2}D_3^{\alpha_3}x^n\bigr)(1,1,1,1)=(An)^\alpha .
+\]">\[
+\bigl(D_1^{\alpha_1}D_2^{\alpha_2}D_3^{\alpha_3}x^n\bigr)(1,1,1,1)=(An)^\alpha .
+\]</span>
+Corollary 2.6 therefore says that no nonzero combination of the monomials <span class="math" data-tex="\(x^n\)">\(x^n\)</span>, <span class="math" data-tex="\(n\in E_N\)">\(n\in E_N\)</span>, vanishes at <span class="math" data-tex="\((1,1,1,1)\)">\((1,1,1,1)\)</span> together with all derivatives <span class="math" data-tex="\(D^\alpha\)">\(D^\alpha\)</span>, <span class="math" data-tex="\(\alpha_j\le T_j\)">\(\alpha_j\le T_j\)</span>. Statements of this kind are multiplicity estimates; Philippon [Philippon] proved general multiplicity estimates on commutative algebraic groups.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>2.1</strong> (easy). Suppose the kernel of <span class="math" data-tex="\(A\)">\(A\)</span> is spanned by a nonzero integer vector <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(\max_i|w_i|\le N-1\)">\(\max_i|w_i|\le N-1\)</span>. Show that the evaluation map of Theorem 2.5 is not surjective, whatever <span class="math" data-tex="\(t\)">\(t\)</span> is.</p>
+<p><strong>2.2</strong> (easy). For <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, show that the evaluation map is surjective for all <span class="math" data-tex="\(t_1,t_2,t_3\ge0\)">\(t_1,t_2,t_3\ge0\)</span>, although the hypothesis <span class="math" data-tex="\(\prod_j(t_j+1)&gt;1\)">\(\prod_j(t_j+1)&gt;1\)</span> of Theorem 2.5 fails for <span class="math" data-tex="\(t=(0,0,0)\)">\(t=(0,0,0)\)</span>. So the hypothesis is sufficient, not necessary.</p>
+<p><strong>2.3</strong> (easy). Show that <span class="math" data-tex="\(P+P=2P\)">\(P+P=2P\)</span> can fail for a set <span class="math" data-tex="\(P\)">\(P\)</span> that is not convex.</p>
+<p><strong>2.4</strong> (medium). Suppose the first row <span class="math" data-tex="\((A_{11},\dots,A_{14})\)">\((A_{11},\dots,A_{14})\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> has entries that are linearly independent over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Show that the numbers <span class="math" data-tex="\((An)_1\)">\((An)_1\)</span>, <span class="math" data-tex="\(n\in E_N\)">\(n\in E_N\)</span>, are pairwise distinct and that the vectors <span class="math" data-tex="\(\bigl((An)_1^j\bigr)_{n\in E_N}\)">\(\bigl((An)_1^j\bigr)_{n\in E_N}\)</span>, <span class="math" data-tex="\(0\le j&lt;N^4\)">\(0\le j&lt;N^4\)</span>, span <span class="math" data-tex="\(\mathbf C^{E_N}\)">\(\mathbf C^{E_N}\)</span>. Thus a single exponent of size <span class="math" data-tex="\(N^4\)">\(N^4\)</span> suffices; Corollary 2.6 keeps every exponent of order <span class="math" data-tex="\(N^{4/3}H^{2/3}\)">\(N^{4/3}H^{2/3}\)</span> at most.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>2.1.</strong> Choose <span class="math" data-tex="\(n\in E_N\)">\(n\in E_N\)</span> with <span class="math" data-tex="\(n+w\in E_N\)">\(n+w\in E_N\)</span>: take <span class="math" data-tex="\(n_i=0\)">\(n_i=0\)</span> if <span class="math" data-tex="\(w_i\ge0\)">\(w_i\ge0\)</span> and <span class="math" data-tex="\(n_i=-w_i\)">\(n_i=-w_i\)</span> otherwise. Then <span class="math" data-tex="\(A(n+w)=An\)">\(A(n+w)=An\)</span>, so every vector in the image has equal entries at <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(n+w\)">\(n+w\)</span>, two different points of <span class="math" data-tex="\(E_N\)">\(E_N\)</span>.</p>
+<p><strong>2.2.</strong> <span class="math" data-tex="\(E_1=\{0\}\)">\(E_1=\{0\}\)</span>, and the constant polynomial <span class="math" data-tex="\(1\)">\(1\)</span> lies in every <span class="math" data-tex="\(\mathcal P_t\)">\(\mathcal P_t\)</span> and has the value <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(A0\)">\(A0\)</span>.</p>
+<p><strong>2.3.</strong> For <span class="math" data-tex="\(P=\{0,1\}\subset\mathbf R\)">\(P=\{0,1\}\subset\mathbf R\)</span>, <span class="math" data-tex="\(P+P=\{0,1,2\}\)">\(P+P=\{0,1,2\}\)</span> and <span class="math" data-tex="\(2P=\{0,2\}\)">\(2P=\{0,2\}\)</span>.</p>
+<p><strong>2.4.</strong> If <span class="math" data-tex="\((An)_1=(An&#x27;)_1\)">\((An)_1=(An&#x27;)_1\)</span>, then <span class="math" data-tex="\(\sum_iA_{1i}(n_i-n&#x27;_i)=0\)">\(\sum_iA_{1i}(n_i-n&#x27;_i)=0\)</span> with integer coefficients, so <span class="math" data-tex="\(n=n&#x27;\)">\(n=n&#x27;\)</span>. The matrix <span class="math" data-tex="\(\bigl((An)_1^j\bigr)\)">\(\bigl((An)_1^j\bigr)\)</span> is a Vandermonde matrix in <span class="math" data-tex="\(N^4\)">\(N^4\)</span> distinct numbers, and its determinant is nonzero.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-LS] OpenAI, <em>Uniform exclusion of Landau–Siegel zeros</em>, OpenAI Math Release preprint, 1 October 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Uniform-exclusion-of-Landau-Siegel-zeros-October-1-2026</li>
+<li>[Philippon] P. Philippon, <em>Lemmes de zéros dans les groupes algébriques commutatifs</em>, Bulletin de la Société Mathématique de France 114 (1986), 355–383. https://www.numdam.org/item/BSMF_1986__114__355_0/</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

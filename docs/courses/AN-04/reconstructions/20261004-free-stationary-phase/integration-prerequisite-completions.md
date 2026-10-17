@@ -1,10 +1,32 @@
 # Mixed derivatives and the compact-interval integral
 
-Prerequisite companion. It follows Jiří Lebl, *Basic Analysis*, version 6.3, [freely accessible author edition](https://www.jirka.org/ra/). Original text: public domain (CC0).
-The source sections actually read for these arguments are §§5.1–5.3, 7.5,
-8.6 and 9.1. Complete earlier programme proofs are retained and bound in
-`integration-proof-chain.json`; this companion supplies their used omissions
-and the integral Taylor formula needed by the Morse reduction.
+This companion proves the equivalence of the usual higher-derivative
+definitions, symmetry of mixed partials, and the compact-interval integral
+rules used in parameter-dependent quadratic reduction. It includes
+Darboux estimates, vector integral bounds, the fundamental theorem,
+integration by parts, the integral Taylor remainder and smooth dependence
+on finitely many parameters.
+
+Mathematical source: Jiří Lebl, *Basic Analysis* (the theorem numbering
+follows version 6.3), freely available in the [author edition](https://www.jirka.org/ra/).
+The relevant sections are [Riemann integration, §5.1](https://www.jirka.org/ra/html/sec_rint.html),
+[integral properties, §5.2](https://www.jirka.org/ra/html/sec_rintprop.html),
+[the fundamental theorem, §5.3](https://www.jirka.org/ra/html/sec_ftc.html),
+[the scalar mean-value theorem, §4.2](https://www.jirka.org/ra/html/sec_mvt.html),
+[Euclidean norms, §7.1](https://www.jirka.org/ra/html/sec_metric.html),
+[the total derivative, §8.3](https://www.jirka.org/ra/html/sec_svtheder.html),
+[continuous derivatives, §8.4](https://www.jirka.org/ra/html/sec_svthedercont.html),
+[higher derivatives, §8.6](https://www.jirka.org/ra/html/sec_mvhighordders.html),
+and [differentiation of compact integrals, §9.1](https://www.jirka.org/ra/html/sec_diffunderint.html).
+The human-proof reference guide
+identifies the external statements and proofs, which retain their own
+terms. The programme proof index locates the local
+arguments and their precise inputs. Human text is separate from this
+independent programme exposition.
+
+Independent programme text: CC0 to the extent rights exist. Local
+mixed-partial proof and source notes: GPT-6.1 Sol (OpenAI), Ultra.
+Earlier programme components retain their own terms.
 
 The earlier topology and differential chains, including the ordered complete
 real-field axioms, finite-dimensional norms, derivative rules, mean-value
@@ -26,7 +48,7 @@ First, a map \(f=(f_1,\ldots,f_m)\) is differentiable exactly when all
 its components are differentiable. If \(Df(p)=A\), applying a coordinate
 projection to its remainder gives the component derivative, since a
 coordinate's absolute value is at most the vector norm. Conversely assemble
-the component derivatives into a matrix \(A\). If \(r_j(h)\) is the
+the component derivatives into a matrix \(A\). For \(m\geq1\), if \(r_j(h)\) is the
 \(j\)th component remainder, then
 \[
  \frac{|f(p+h)-f(p)-Ah|}{|h|}
@@ -34,7 +56,9 @@ the component derivatives into a matrix \(A\). If \(r_j(h)\) is the
  \tag{P11.1}
 \]
 The finite maximum tends to zero by taking the minimum of the component
-thresholds. Empty coordinate blocks give the unique zero map. The same
+thresholds. For \(m=0\) the target consists only of zero. For a zero-dimensional
+domain every map is locally constant and its derivative is zero.
+Both assertions therefore hold in these cases directly. The same
 coordinate inequalities characterize continuity. By induction on \(r\),
 they characterize recursive \(C^r\) regularity as well, because the
 derivative matrices consist of finitely many component derivatives.
@@ -57,14 +81,62 @@ was assumed in this argument. \(\square\)
 
 ### P11.2. The exact scope of the mixed-partial proof
 
-The programme contains the full double-mean-value proof of Proposition
-8.6.2 at `sec_mvhighordders.html#sec_mvhighordders-10`. It compares the same
-rectangle difference quotient in both orders. For distinct indices, choose
+The [mixed-partial theorem and proof](https://www.jirka.org/ra/html/sec_mvhighordders.html#sec_mvhighordders-10) is Proposition 8.6.2. Let \(f:U\to\mathbb R\)
+be \(C^2\). We prove the symmetry at any \(p\in U\) by calculating one
+rectangle difference in the two coordinate orders. For distinct indices, choose
 \(B(p,r)\subset U\) and \(0<s,t<r/3\); all points of the closed
 rectangle, including its edges, lie in this ball, since their distance
 from \(p\) is at most \(s+t<2r/3\).
 
-The source supplies points \(p_0,p_1\) in that rectangle with
+To construct points \(p_0,p_1\) in that rectangle, define
+\[
+ \begin{aligned}
+ \Delta(s,t)&=f(p+se_\ell+te_m)-f(p+se_\ell)\\
+            &\quad-f(p+te_m)+f(p),\\
+ G(s,t)&=\frac{\Delta(s,t)}{st}.
+ \end{aligned}
+\]
+First regard the difference between the two parallel edges as a function
+of the coordinate in direction \(e_m\). The scalar mean-value theorem
+applied to
+\[
+ y\longmapsto f(p+se_\ell+ye_m)-f(p+ye_m),
+ \qquad 0\leq y\leq t,
+\]
+gives some \(0<\theta<t\) for which
+\[
+ G(s,t)=
+ \frac{\partial_m f(p+se_\ell+\theta e_m)
+       -\partial_m f(p+\theta e_m)}s.
+\]
+The restriction of \(\partial_m f\) to the horizontal segment is
+continuously differentiable, since \(f\) is \(C^2\). A second
+mean-value application gives \(0<\xi<s\) and
+\[
+ G(s,t)=\partial_\ell\partial_m f
+                  (p+\xi e_\ell+\theta e_m).
+\]
+For the other order, apply the same theorem first to
+\[
+ x\longmapsto f(p+xe_\ell+te_m)-f(p+xe_\ell),
+ \qquad 0\leq x\leq s.
+\]
+For some \(0<\eta<s\), it yields the first equality below. Applying
+the theorem to \(\partial_\ell f\) on the vertical segment gives
+\(0<\zeta<t\) and the second:
+\[
+ \begin{aligned}
+ G(s,t)
+ &=\frac{\partial_\ell f(p+\eta e_\ell+te_m)
+          -\partial_\ell f(p+\eta e_\ell)}t\\
+ &=\partial_m\partial_\ell f(p+\eta e_\ell+\zeta e_m).
+ \end{aligned}
+\]
+All four applications take place on closed segments inside the chosen
+rectangle, so continuity at their endpoints and differentiability in
+their interiors follow from the stated hypothesis. Put
+\(p_0=p+\xi e_\ell+\theta e_m\) and
+\(p_1=p+\eta e_\ell+\zeta e_m\). Thus
 \[
  G(s,t)=\partial_\ell\partial_m f(p_0)
        =\partial_m\partial_\ell f(p_1).
@@ -80,8 +152,8 @@ for \(G\) gives
 \]
 If the left side were positive, taking \(\varepsilon\) smaller than
 half of it would contradict this bound. Thus it is zero. Equal indices
-already give the same expression. This records the boundary and limit
-steps in the existing proof without replacing its mean-value argument.
+already give the same expression. The two mean-value calculations and their common limit prove the
+mixed-partial identity throughout the open domain.
 P11.1 verifies that its \(C^2\) hypothesis agrees with the one used here.
 
 For a \(C^k\) function, any two orders of a fixed list of at most
@@ -253,8 +325,8 @@ not assume that an arbitrary pointwise limit can pass through an integral.
 
 ### P12.5. Endpoint and domain details in the fundamental theorem
 
-The programme supplies the full proofs of both forms of the fundamental
-theorem, Theorems 5.3.1 and 5.3.3. In the latter, a derivative at an
+The [two human fundamental-theorem proofs](https://www.jirka.org/ra/html/sec_ftc.html#sec_ftc-3-4) are Theorems 5.3.1 and
+[5.3.3](https://www.jirka.org/ra/html/sec_ftc.html#sec_ftc-4-4). In the latter, a derivative at an
 endpoint of \([a,b]\) means the appropriate one-sided derivative. At
 interior points it is the ordinary two-sided derivative. P12.3 justifies
 its signed integral differences when the increment is negative. Its final
@@ -348,8 +420,7 @@ this product uniformly continuous.
 For \(z\to z_0\), this gives
 \(\sup_t|f(t,z)-f(t,z_0)|\to0\). P12.4 proves continuity of \(H\).
 For a coordinate increment \(he_j\) sufficiently small to stay in the
-interior of \(K\), the one-variable mean-value argument of the existing
-Theorem 9.1.1 gives, for each scalar component, a point \(\theta\)
+interior of \(K\), the scalar mean-value theorem gives, for each scalar component, a point \(\theta\)
 between 0 and \(h\) with
 \[
  \frac{f(t,z+he_j)-f(t,z)}h=\partial_j f(t,z+\theta e_j).
@@ -373,4 +444,12 @@ integral is the zero map. These cases satisfy the same conclusion directly.
 
 ## Use in the Morse reduction
 
-P11 supplies the mixed-partial input in the Schur-complement calculation P4. P12 supplies the precise Taylor and compact-parameter integration inputs in M1. The full earlier inverse/implicit and signature proofs remain unchanged. The global Fourier integrals, exponential identities and multidimensional Jacobian substitutions needed by the analytic module are still separate obligations.
+The [Schur-complement argument P4](prerequisite-completions.html#proof-P4)
+uses the mixed-partial identity. The [parameter Morse reduction M1](parameter-morse-reduction.html#proof-M1)
+uses the integral Taylor remainder and smooth compact-parameter rule;
+the [stationary-phase reading](stationary-phase-and-critical-manifolds.html)
+uses them in the quadratic coordinate construction and parameter estimates.
+The [exponential reading](exponential-prerequisite-completions.html)
+uses the compact-integral norm bound and fundamental theorem to pass
+uniform derivative limits. Global absolute integrals and multidimensional
+substitution are treated in their respective readings.
