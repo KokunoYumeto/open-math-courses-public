@@ -15035,6 +15035,1889 @@ Editable SVG, exact data, and reproducible source.
 Editable SVG, exact data, and reproducible source.
 
 
+### 5.50. Full infinite coefficient support depth and finite duality
+
+Put \(A=\mathcal E\) and \(B=\mathcal E^\infty\), with the actual geometric product on a complex projective cotangent chart \(V\). If every local component of a closed analytic subset \(Z\subset V\) has complex codimension at least \(c\), then
+\[
+\mathcal H_Z^q(B)=0\quad(q<c).
+\tag{SD.1}
+\]
+This includes singular points, components of different dimensions and nonreduced defining ideals: the support functor depends on the underlying closed subset. For a bounded complex \(Q\) of finite locally projective right \(A\)-modules there is a natural comparison
+\[
+\begin{gathered}
+R\Gamma_Z\mathcal Hom_{A^{\mathrm{op}}}(Q,B)
+\\ \simeq\mathcal Hom_{A^{\mathrm{op}}}(Q,R\Gamma_ZB).
+\end{gathered}
+\tag{SD.2}
+\]
+Its right-hand supported representative has the actual commuting left \(B\) and right \(A\) actions. The proof retains both homogeneous growth regimes, every spatial index and fixed derivative on common coefficient domains. The final finite-dual argument gives the support bound for modules under its stated Ext-concentration hypothesis.
+
+The full coefficient identification and product are [§5.44, IK.1–IK.3 and AN.1–AN.5](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) and [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The scalar existence theorem used below is the complete [§5.43, DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure), including its graph-domain and exhaustion-weight proof. Distributional holomorphicity, partitions and acyclic resolutions are [§5.34, R.1–R.7](#5-34-full-current-resolutions-and-controlled-proper-image-comparison); the supported complement cube with its signs is [§5.35, V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace). These are proof dependencies. The freely accessible [Kashiwara–Kawai, Holonomic systems III, I.2.2, printed pp.841–842](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf) is additional reading; none of its recalled results substitutes for the argument.
+
+#### SD.A. An exact auxiliary-variable realization of the entire coefficient sheaf
+
+Use fixed base coordinates \(u=(t,x)\), and the normalization \(\tau=1\),
+\(z=\xi/\tau\). Write \(v=(u,z)\), of complex dimension m. The earlier proved sheaf
+identification IG.1--IG.5 identifies \(B|_V\) with sequences \(p_j\in\mathcal O(V)\),
+\(j\in\mathbf Z\), with, on each compact \(K\) contained in \(V\),
+\[
+\begin{gathered}
+\sup_K|p_{-n}|\le B_K C_K^n n!
+\\ (n\ge1),
+\\ \sup_K|p_j|\le B_{K,\epsilon}\epsilon^j/j!
+\\ (j\ge0,\ \epsilon>0).
+\end{gathered}
+\tag{SD.3}
+\]
+One coefficient domain supports every index. Both restrictions and
+equalities are actual sheaf restrictions/equalities on a common smaller
+domain. Split the sequence into its nonnegative and negative parts,
+writing \(B=B_+\oplus B_-\) as sheaves of complex vector spaces. This
+splitting is used for analytic depth, not asserted to be a ring or
+right-A splitting.
+
+Let \(\pi:V\times\mathbf C_s\to V\) be projection and \(i:V\to V\times\mathbf C_s\) the zero
+section. Define
+\[
+\begin{gathered}
+F_+(v,s)=\sum_{j\ge0}j!p_j(v)s^j,
+\\ F_-(v,s)=\sum_{n\ge1}\frac{p_{-n}(v)}{n!}s^{n-1}.
+\end{gathered}
+\tag{SD.4}
+\]
+These give exact sheaf isomorphisms
+\[
+\begin{gathered}
+B_+=\pi_*\mathcal O_{V\times\mathbb C},
+\\ B_-=i^{-1}\mathcal O_{V\times\mathbb C}.
+\end{gathered}
+\tag{SD.5}
+\]
+Here inverse image denotes germs on neighbourhoods of the zero section;
+it is not restriction modulo the auxiliary coordinate. In particular,
+\(B_-\) is not \(\mathcal O_V\) and not a formal power-series sheaf.
+
+For the first assertion fix a compact \(K\) in \(V\) and \(R>0\). Choose \(\epsilon\)
+with \(\epsilon R<1\). SD.3 bounds the entire positive sum and its tail by
+\[
+\begin{gathered}
+\sup_{K\times\{|s|\le R\}}|F_+|
+\le\frac{B_{K,\epsilon}}{1-\epsilon R},
+\\ \sup|\text{tail}_{j\ge J}|
+\le\frac{B_{K,\epsilon}(\epsilon R)^J}{1-\epsilon R}.
+\end{gathered}
+\tag{SD.6}
+\]
+Thus \(F_+\) is jointly holomorphic on the whole \(V\times\mathbf C\). Conversely, for
+\(F\) holomorphic on that product, the fixed auxiliary contour \(|s|=R\) gives
+\[
+\begin{gathered}
+p_j(v)=\frac1{j!}\frac1{2\pi i}
+\\ \int_{|s|=R}\frac{F(v,s)}{s^{j+1}}\,ds,
+\\ |p_j|_K\le M_{K,R}R^{-j}/j!.
+\end{gathered}
+\tag{SD.7}
+\]
+Given \(\epsilon\), take \(R=1/\epsilon\). The \(v\)-domain is unchanged as \(\epsilon\)
+varies. Taylor uniqueness proves both inverse identities.
+
+For the negative assertion SD.3 makes \(F_-\) normally convergent for
+\(|s|<1/C_K\) near \(K\), with the actual tail bound
+\[
+\begin{gathered}
+\sup_{K,\ |s|\le r}|\text{tail}_{n\ge L}|
+\\ \le\frac{B_K C_K(C_Kr)^{L-1}}{1-C_Kr},
+\\ C_Kr<1.
+\end{gathered}
+\tag{SD.8}
+\]
+These local holomorphic functions agree by their coefficient expansions,
+and hence define a holomorphic germ along \(V\times\{0\}\). Conversely such
+a germ has, near each compact \(K\), one radius \(r>0\) on which it has a
+representative bounded by \(M\) on \(|s|=r\). Cauchy gives
+\[
+\begin{gathered}
+p_{-n}=n![s^{n-1}]F_-,
+\\ |p_{-n}|_K\le M r^{1-n}n!,
+\end{gathered}
+\tag{SD.9}
+\]
+which is SD.3 with, for example, \(C=\max(1,r^{-1})\) and an enlarged finite
+constant. A compact is covered by finitely many representative products,
+so one positive radius works for that compact. The radius may decrease
+towards the boundary of \(V\); the coefficient domain \(V\) itself does not.
+Germ equality of \(F_-\) gives all coefficient equalities on one smaller
+\(v\)-domain, and the converse follows by the same expansions. This proves
+SD.5 as an actual sheaf assertion, not only as stalkwise vector spaces.
+
+Every fixed \(v\)-derivative preserves these constructions and tail bounds:
+first reserve a compact enlargement in the one \(v\)-domain, then apply its
+Cauchy integral to SD.6 or SD.8. The derivative cost is independent of
+\(j\), \(n\) and the cutoff. If \(p_j\) is Taylor-expanded in any spatial covariable
+polydisc, its complete coefficients \(p_{j,\beta}\) are extracted on fixed
+circles with bounds
+\[
+\begin{gathered}
+|p_{j,\beta}|\le B_\epsilon\epsilon^j R^{-\beta}/j!
+\\ (j\ge0),
+\\ |p_{-n,\beta}|\le B C^n n!R^{-\beta}.
+\end{gathered}
+\tag{SD.10}
+\]
+All multiindices \(\beta\) are retained. No finite spatial-degree truncation
+occurs anywhere below. The earlier proved IK/AN normal kernel extraction then
+retains its positive-homogeneous/negative-normal mixed terms as well.
+
+For analytic depth we may compose every \(p_j\) with any biholomorphic change
+of the \(v\)-coordinates. Compact preimages prove SD.3 with unchanged
+quantifiers. This is an auxiliary presentation of the underlying
+complex-vector sheaf to flatten a smooth analytic support. It does not
+assert that an arbitrary biholomorphism mixing \(u\) and \(z\) is a quantized
+contact transformation or a ring transition. The actual ring transition
+and right action remain those of the earlier proved geometric identification.
+
+#### SD.B. Actual fine resolutions and acyclicity of the auxiliary families
+
+The exact earlier programme analytic inputs are DLH.1--DLH.4, including its
+graph-core proof and explicit simultaneous convex-exhaustion weight,
+and R.1--R.7, including distributional holomorphicity, actual injective
+resolutions and their chain comparison. The precise earlier proof locators are linked above. We use their proved result: on a domain
+having a smooth strictly plurisubharmonic exhaustion, every closed
+positive-degree locally \(L^2\) Dolbeault form has a locally \(L^2\) primitive.
+We do not use a named Stein or vector-valued existence theorem as an
+unproved premise.
+
+Let \(L^q\) be the maximal locally \(L^2\) graph sheaf of (0,\(q\))-forms on the
+(\(m\)+1) dimensional auxiliary product: both a form and its distributional
+Dolbeault differential are locally \(L^2\). Its differential is the full
+Dolbeault differential in \(v\) and s. The complex
+\[
+\begin{gathered}
+0\longrightarrow\mathcal O\longrightarrow L^0
+\\ \xrightarrow{\bar\partial}\cdots\longrightarrow L^{m+1}
+\longrightarrow0
+\end{gathered}
+\tag{SD.11}
+\]
+is exact. Positive-degree local exactness is DLH.1–DLH.4 on a small polydisc;
+a primitive has the given \(L^2\) differential, so lies in the graph sheaf.
+Degree zero is exactly O by the complete R.3 distributional
+holomorphicity proof. Multiplication by a smooth function preserves both
+graph conditions by the product rule.
+
+First consider \(B_+\). The sheaves \(\pi_*L^q\) are modules over \(\mathcal C^\infty_V\):
+multiply by the pullback of a smooth base function. They are therefore
+ordinary-section acyclic by the explicit partition/injective proof
+R.5. Their augmented complex resolves \(\pi_*\mathcal O\) locally. Indeed, a closed
+germ is represented on \(U\times\mathbf C\); after shrinking \(U\) to a polydisc,
+that product has the strict proper exhaustion
+\[
+\begin{gathered}
+|v|^2+|s|^2
+\\ {}+\sum_a-\log(R_a^2-|v_a|^2),
+\end{gathered}
+\tag{SD.12}
+\]
+translated by a constant if necessary. DLH.1–DLH.4 solve its closed form on the
+whole product, so the image germ is exact. Thus \(\pi_*L^*\) is a finite
+ordinary-section-acyclic resolution of \(B_+\). R.6'\(s\) finite double-complex
+comparison applies to it, and computes actual derived sections.
+
+Next consider \(B_-\). Inverse image is exact on sheaves (stalks are filtered
+germ colimits, whose finite equations/witnesses occur at a common later
+index). Hence \(i^{-1}L^*\) resolves \(i^{-1}\mathcal O\). It is a
+\(\mathcal C^\infty_V\)-module termwise, again using smooth multiplication in \(v\),
+and is ordinary-section acyclic by R.5. We need an actual global
+primitive for any closed section over a punctured product, not a
+separately chosen primitive for each n.
+
+Let \(U\) be a product of discs and punctured discs in v. It has the smooth
+nonnegative strict exhaustion
+\[
+\begin{gathered}
+\psi_0(v)=|v|^2
+\\ {}+\sum_a-\log(R_a^2-|v_a|^2)
+\\ {}+\sum_{a\text{ punctured}}|v_a^{-1}|^2+K.
+\end{gathered}
+\tag{SD.13}
+\]
+Each barrier is psh; differentiation of \(-\log(R^2-|w|^2)\) gives positive
+Levi form \(R^2/(R^2-|w|^2)^2\), and \(|w^{-1}|^2\) is the squared modulus of
+a holomorphic function. Boundary or puncture approach forces divergence.
+The coordinate norm makes the sum strict.
+
+A section of \(i^{-1}L^q\) on \(U\) is represented by an \(L^q\) form on some open
+neighbourhood of \(U\times\{0\}\). Here is the precise neighbourhood argument.
+Choose local representatives on products above a locally finite,
+relatively compact cover of U. Refining it by open sets whose closures
+lie inside the original base sets leaves only finitely many relevant
+representatives near each base point. Equality of the germ sections
+gives equality on a still smaller auxiliary neighbourhood of that point
+for each of these finitely many pairs. Their finite minimum is positive
+locally. A positive continuous minorant is obtained from a subordinate
+partition of unity and sufficiently small positive constants on each
+refinement member. Shrink the auxiliary radius below that minorant.
+The representatives now agree on all overlaps and glue. If the section
+is closed as a germ, apply the same construction once more to its zero
+Dolbeault differential. It is then represented by a literally closed
+form \(g\) on a neighbourhood \(T\) of the entire zero section. No coefficient
+index has been chosen in this construction.
+
+Every such \(T\) contains a tube
+\[
+\begin{gathered}
+\Omega_\chi=\{(v,s):v\in U,
+\\ |s|<\exp[-\chi(\psi_0(v))]\},
+\end{gathered}
+\tag{SD.14}
+\]
+for a smooth nonnegative increasing convex \(\chi\). To choose it, on each
+compact sublevel \(\{\psi_0\le k\}\) take a positive lower bound for the tube
+radii inside T. Choose increasing constants bounding the negative
+logarithms of these lower bounds through level \(k\)+2. The explicit smooth
+step-function construction of DLH.4 gives an increasing convex \(\chi\) above
+these constants on their levels. Increasing its initial constant
+handles the first compact. Thus SD.14 is cofinal among the actual
+neighbourhoods used by these germ sections.
+
+This tube has a smooth strictly psh proper exhaustion. Put
+\[
+\begin{gathered}
+t(v,s)=e^{2\chi(\psi_0(v))}|s|^2,
+\\ \rho(v,s)=\psi_0(v)+|s|^2
+\\ {}-\log(1-t(v,s)).
+\end{gathered}
+\tag{SD.15}
+\]
+For \(s\) nonzero, \(\log t=2\chi(\psi_0)+\log|s|^2\) is psh and exponentiation is
+convex increasing, so \(t\) is psh there. It is smooth also at \(s=0\); its
+Levi form there is the nonnegative limit of the Levi forms away from
+zero. The function \(-\log(1-t)\) is convex increasing for \(t<1\), with
+nonnegative first and second derivatives. The Hessian chain rule makes
+it psh. The term \(\psi_0\) is strict in \(v\) and \(|s|^2\) is strict in \(s\), hence
+\(\rho\) is strict in all \(m\)+1 coordinates. A \(\rho\)-sublevel bounds \(\psi_0\) and
+\(t\) away from 1. The base then lies in a compact in \(U\), and the auxiliary
+coordinate stays uniformly inside the tube boundary, so that sublevel
+is compact in \(\Omega_\chi\). This proves properness, including at \(s=0\).
+
+Apply the complete DLH.1–DLH.4 proof on \(\Omega_\chi\) to g. It gives one actual
+primitive on that tube for every positive degree. Its inverse-image
+germ solves the original section equation on U. This proves
+\[
+\begin{gathered}
+H^q(U,B_-)=0\quad(q>0),
+\\ H^q(U,B_+)=0\quad(q>0).
+\end{gathered}
+\tag{SD.16}
+\]
+For \(B_+\), use the product \(U\times\mathbf C\) and the exhaustion \(\psi_0+|s|^2\).
+For \(B_-\), use \(i^{-1}L^*\), its ordinary-section acyclicity and R.6, just
+as for \(B_+\). No neighbourhood-cohomology continuity theorem is assumed.
+
+SD.16 proves acyclicity for the full family at once. Intermediate graph
+forms are auxiliary forms on one domain/tube; every holomorphic output
+is recovered by the Cauchy maps SD.7/SD.9 with exactly SD.3 and all fixed
+derivatives SD.10. Scalar existence alone without SD.5, these actual resolutions,
+cofinal tubes and inverse Cauchy estimates would not prove this claim.
+The possible datum-adapted variable Hilbert-weight route is unnecessary:
+no assertion about uniform graph cores for degree-dependent weights is
+used here. The present argument neither certifies nor needs that route.
+
+#### SD.C. Smooth support: a full-family Laurent cube with literal primitives
+
+Let \(S\) be a smooth complex submanifold of codimension c. Flatten it by
+ordinary holomorphic \(v\)-coordinates, permissible for the underlying
+coefficient sheaf by SD.A. Near a chosen point take one polydisc
+\(D=\Delta^c_w\times\Delta^{m-c}_y\) with \(S=(w_1=\cdots=w_c=0)\). For
+\(I\) contained in \(\{1,\ldots,c\}\), let \(D_I\) puncture precisely the \(w_i\) with \(i\) in \(I\);
+\(D_\varnothing=D\). The complement \(D\setminus S\) has the finite ordered cover \(D_{i}\).
+The exact support/injective comparison of R.7 and finite complement-cube
+proof V.6 apply to the graph resolutions of SD.B. The partition homotopy
+uses functions of \(v\), so is valid for both \(\pi_*L\) and \(i^{-1}L\).
+Every \(D_I\) is acyclic for \(B\) by SD.16. Eliminating the finitely many
+positive graph columns therefore reduces actual derived supported
+sections to the holomorphic-family cube
+\[
+\begin{gathered}
+K^p(D,B)=\bigoplus_{|I|=p}B(D_I),
+\\ 0\le p\le c,
+\\ (dc)_I={}
+\\ \sum_{r=1}^{|I|}(-1)^{r-1}
+c_{I\setminus\{i_r\}}|_{D_I}.
+\end{gathered}
+\tag{SD.17}
+\]
+The empty term has degree zero, so this is the shifted support cone,
+not the unshifted complement Cech complex. The actual map from the
+injective supported resolution to this cube is the R.7/V.6 roof,
+with their declared cone signs. SD.16 supplies its needed family
+acyclicity; it is not a coefficientwise formal use of V.6.
+
+We now prove exactness below degree \(c\), including actual family
+primitives. In a punctured coordinate \(w\) use its Laurent expansion.
+Write \(\Pi_i^-\) for the sum of strictly negative \(w_i\) powers and \(\Pi_i^+\)
+for the sum of nonnegative powers. Its coefficients are the actual
+Cauchy integrals on circles lying within the common input domain. The
+positive sum extends across \(w_i=0\) on a smaller disc; the negative sum
+is holomorphic on the punctured disc. Contour independence follows
+from Cauchy'\(s\) theorem on a compact annulus. The expansions converge
+normally on smaller product annuli by the geometric series bounds
+from those circles.
+
+Here those are family projections, not isolated scalar projections.
+For \(B_+\), apply them to \(F_+\) on \(D_I\times\mathbf C\). Fixed normal circles preserve
+holomorphicity for every auxiliary \(s\), so the output is still an entire
+auxiliary family on its one base domain. For \(B_-\), represent \(F_-\) on a
+tube above \(D_I\). On each compact in the remaining variables, fixed
+normal circles are a compact subset of \(D_I\) and have a uniform positive
+auxiliary radius in the tube. For \(\Pi^+\) choose circles outside the
+smaller output \(w\)-disc; its positive geometric sum then extends on
+that whole disc and that auxiliary radius. For \(\Pi^-\) choose circles
+inside the output punctured annulus, giving its negative geometric sum.
+Contours on overlapping compact annuli give the same auxiliary germs
+by Cauchy'\(s\) theorem after taking the finite minimum of their auxiliary
+radii. Thus the projections glue to an actual holomorphic germ along
+the output zero section. Its radius can vary on punctured base compacts,
+as allowed in SD.3; there is no index-dependent base domain. SD.7/SD.9
+recover all original homogeneous indices, with the exact every-\(\epsilon\)
+and factorial bounds. Fixed derivatives use one more common margin.
+
+Here are the explicit uniform estimates, including their tails. For
+one normal coordinate, on an output annulus \(a\le|w|\le b\) choose contours
+\(\rho_-<a\le b<\rho_+\) inside the common input normal annulus. If the function
+on those contours is bounded by \(M_-\) and \(M_+\), then Cauchy gives
+\[
+\begin{gathered}
+|c_k|\le M_+\rho_+^{-k}
+\\ (k\ge0),
+\\ |c_{-h}|\le M_-\rho_-^h
+\\ (h\ge1).
+\end{gathered}
+\tag{SD.17a}
+\]
+Thus the positive and negative sums are bounded, respectively, by
+\(M_+/(1-b/\rho_+)\) and \(M_-(\rho_-/a)/(1-\rho_-/a)\). Their tails starting at
+normal degrees \(L\) and -\(L\) are bounded by the same denominators times
+\((b/\rho_+)^L\) and \((\rho_-/a)^L\). For several projected coordinates use the
+product contour; its coefficient bound is the product of the respective
+contour powers times one bound \(M\) for the full function, and summing
+gives the product of the displayed geometric denominators. A cutoff
+in any coordinate is controlled by its corresponding geometric tail
+times the other denominators. All contours for the finitely many cube
+entries are chosen on one common product before any index summation.
+
+For \(F_+\), on every auxiliary circle \(|s|=L_0\) the full product normal
+contour bound is finite. If \(G\) is any projected family and \(A_K\) is that
+product of geometric denominators, auxiliary Cauchy gives
+\[
+\begin{gathered}
+|p_j^G|_K
+\\ \le A_K M_{K,L_0}L_0^{-j}/j!,
+\\ |p_{-n}^G|_K
+\\ \le A_K M_{K,r_0}r_0^{1-n}n!.
+\end{gathered}
+\tag{SD.17b}
+\]
+The first inequality pertains to \(F_+\); choose \(L_0=1/\epsilon\), possible
+for every \(\epsilon\) on the same projected base product. The second
+pertains to \(F_-\), with one \(r_0>0\) smaller than the tube radii on the
+compact product of all required normal contours. Choose \(r_0\) once
+before \(n\) is varied. These inequalities prove the actual output
+quantifiers. For a fixed derivative enlarge its coefficient compact
+within the projected domain and apply its Cauchy derivative cost to
+these bounds and tails. Spatial Taylor extraction then applies SD.10
+on fixed additional circles for every \(\beta\). This supplies explicit
+full-family primitive bounds as well as the sheaf existence assertion.
+
+Projections in distinct coordinates commute by the finite product
+contour integral and its normally convergent geometric sums. Consequently
+each cube entry has the direct decomposition
+\[
+\begin{gathered}
+B(D_I)=\bigoplus_{J\subset I}T_J,
+\\ T_J=\{\text{families strictly}
+\\ \text{negative in every }w_j,
+\\ j\in J,\text{ holomorphic}
+\\ \text{across every}
+\\ \text{other normal coordinate}\}.
+\end{gathered}
+\tag{SD.18}
+\]
+This equality is used after a single common polydisc shrink for the
+finitely many cube entries. Each \(T_J\) is represented on \(D_J\); extending
+the nonnegative variables is exactly the construction just proved.
+The decomposition is unique by Laurent uniqueness. In any overlap or
+restriction the projections agree, so it is a decomposition of the
+local cube germs. The shrinking is chosen before recovering any
+homogeneous coefficient or spatial Taylor index.
+
+The cube now splits into finitely many blocks indexed by J. In block \(J\)
+the entries are \(T_J\) for each \(I\) containing \(J\); the differential adds
+indices in \(\{1,\ldots,c\}\setminus J\) with SD.17'\(s\) alternating signs. It is an identity
+map on that same actual \(T_J\). If \(J\) is not the whole index set, choose
+a in its complement. The homotopy removes a from \(I\) when a is present,
+with sign (-1) to the number of elements of \(I\) before a, and is zero
+when a is absent. Checking the two cases shows
+\[
+ dh+hd=1.                                                         \tag{SD.19}
+\]
+The term that adds/removes a supplies the identity. Every other added
+index \(b\) occurs twice with opposite signs, since moving past a changes
+its ordered position by one. Removing a never removes an element of \(J\),
+so the homotopy remains inside the block. If \(J\) is the whole index set,
+there is only \(I=J\) in degree c. Therefore the entire cube has zero
+cohomology in degrees below c. Its actual lower-degree primitive is
+the sum of the finitely many block homotopies of its actual projected
+families. The estimates, domains and fixed derivatives of these
+primitives were established before their inverse coefficient recovery.
+
+Taking the filtered limit over smaller polydiscs is exact: every finite
+equation, and every witness to its being a boundary, already holds at
+one common later neighbourhood. Thus this proves
+\[
+ \mathcal H_S^q(B)=0\quad(q<c)                                     \tag{SD.20}
+\]
+as a sheaf assertion for every smooth \(S\), with all coefficients retained.
+For \(c=0\) the below-zero conclusion is automatic; empty support has zero
+supported complex. No globally uniform polydisc on a whole chart is
+claimed for a local sheaf theorem, but each datum/primitive uses one
+actual domain for every infinite index and fixed derivative.
+
+#### SD.D. Singular analytic support by closed exceptional-set induction
+
+The earlier programme lesson Analytic germs, local parametrization and the Nullstellensatz supplies the following results with their complete proofs. Proposition1.2 gives the finite irreducible germ
+decomposition; Theorem4.1 gives for every positive-dimensional
+irreducible component a finite projection and a nonzero discriminant,
+with a dense smooth covering outside its inverse image; Theorem5.4 and
+Proposition5.5 give its dimension and strict dimension drop of every
+proper analytic subset. These are exact earlier programme proof
+dependencies, not a stratification theorem imported from HolIII.
+
+At any point choose a small representative with finitely many
+irreducible components \(Z_a\). For each positive-dimensional component
+of maximum dimension \(d\) choose the closed analytic exceptional set
+\(E_a\) cut out on it by its finite-projection discriminant. It is proper,
+and has dimension less than d. Put \(W\) equal to the union of those \(E_a\),
+all intersections of distinct maximum-dimensional components, and
+all lower-dimensional components. These are finitely many closed
+analytic sets on a common neighbourhood; their union is analytic
+(multiply their finite local vanishing ideals). Every intersection
+is proper in each distinct component, by irredundancy and
+Proposition5.5, hence has dimension below d. Thus \(\dim W<d\), and outside
+\(W\) the set \(Z\) is a disjoint smooth submanifold, of codimension \(m\)-d.
+Zero-dimensional reduced components are isolated points on a small
+representative and already satisfy the smooth computation. Nothing
+about a Whitney condition or a globally finite stratification is used.
+
+For completeness the exact localization step, including the derived
+bound, is proved on the actual injective model. For a complex-vector
+sheaf \(F\) use R.5'\(s\) functor
+\[
+\begin{gathered}
+G(F)(U)=\prod_{x\in U}F_x,
+\\ I^q(F)=G(Q^qF),
+\\ QF=G(F)/F.
+\end{gathered}
+\tag{SD.21}
+\]
+It is an injective resolution. The proof is the stalk-map adjunction:
+maps to \(i_{x*}T\) are maps of stalks to the vector space \(T\), and such maps
+extend from subspaces; products of these skyscraper injectives are
+injective. Its exact quotient iteration and chain comparison are
+the complete R.5--R.6 proofs. If \(T\) is closed,
+\[
+ \Gamma_TG(F)(U)=\prod_{x\in U\cap T}F_x                            \tag{SD.22}
+\]
+with zero components elsewhere. Indeed vanishing on \(U\setminus T\) is precisely
+that condition. The right side is itself a product of skyscraper
+injectives. Open restriction commutes with \(G\) and the quotient iteration.
+
+For \(W\subset Z\) and \(j:V\setminus W\to V\), SD.22 gives the degreewise exact
+sequence of injective complex-vector sheaves
+\[
+\begin{gathered}
+0\longrightarrow\Gamma_W I^*(F)
+\\ \longrightarrow\Gamma_Z I^*(F)
+\\ \longrightarrow j_*\Gamma_{Z\setminus W}
+(I^*(F)|_{V\setminus W})
+\\ \longrightarrow0.
+\end{gathered}
+\tag{SD.23}
+\]
+The last arrow forgets components indexed by \(W\), and is surjective by
+zero extension of the other components. Its last complex represents
+\(Rj_*R\Gamma_{Z\setminus W}(F|_{V\setminus W})\), since its source terms
+are injective by SD.22 and \(j_*\) sends injectives to injectives
+(it is right adjoint to exact open restriction).
+
+We also spell out why \(Rj_*\) cannot introduce lower cohomology. Suppose
+a bounded-below complex \(C\) has \(H^q(C)=0\) for \(q<c\). Its good truncation
+\(T\) has zero terms below \(c\), \(T^c=C^c/\operatorname{im}(d^{c-1})\), and the unchanged terms
+above c. The natural \(C\to T\) is a quasi-isomorphism by direct computation
+of its kernels/images. Apply the exact Godement functors \(I^r\) to \(T\),
+\(r\ge0\), and totalize with differential \(d_T+(-1)^q d_I\) on \(T\)-degree q.
+Every diagonal has finitely many entries: \(c\le q\le\text{total degree}\). The
+vertical-resolution elimination of R.6 proves its augmentation is a
+quasi-isomorphism, and its total terms are injective. It has no terms
+below c. For an already injective representative of \(C\), compare it to
+this total through its Godement double complex. The R.6 exact-cone
+contraction for bounded-below injective complexes makes both comparisons
+homotopy equivalences; applying \(j_*\) preserves their actual homotopies.
+Thus \(Rj_*C\) can be represented with no terms below \(c\), proving the bound
+without assuming \(j_*\) exact on arbitrary sheaves.
+
+Now induct on the maximum dimension \(d\) of Z. The zero-dimensional
+case is SD.C. Let all components of \(Z\) have codimension at least \(c\),
+so \(d\le m-c\). The constructed \(W\) has dimension at most \(d\)-1; by induction,
+\(\mathcal H_W^q(B)=0\) for \(q<m-d+1\), in particular for \(q<c+1\).
+On \(V\setminus W\) the support \(Z\setminus W\) is smooth of codimension \(m-d\ge c\), so SD.C
+makes its support complex concentrated in degrees at least c.
+The proved \(Rj_*\) bound preserves that lower bound. The long exact
+cohomology sequence of SD.23 then gives
+\(\mathcal H_Z^q(B)=0\) for \(q<c\). This includes points in \(W\) itself:
+the conclusion comes from the supported complexes at those stalks,
+not extension by continuity from regular points. The induction
+terminates after finitely many dimension drops near every point.
+This proves SD.1 for arbitrary singular and non-pure-dimensional Z.
+
+All chart passages are legitimate. The geometric identification gives
+the actual \(B\) sheaf on each normalized complex projective chart. The
+coefficient presentation used above proves its underlying support
+cohomology, and these local zero assertions glue. For a homogeneous
+analytic set upstairs, its projective chart support is analytic;
+the local nonzero radial product does not change its complex
+codimension. The requested homogeneous supports are therefore included.
+
+#### SD.E. The actual support-preserving right \(E\) action
+
+The earlier proved IK.1--IK.3 and IM.1--IM.6 identify the full canonical
+geometric product with the normally convergent coefficient contraction
+\[
+\begin{gathered}
+(b\circ a)_\ell(v)
+\\ =\left.\begin{gathered}
+\sum_{j+k-|\alpha|=\ell}\frac1{\alpha!}
+\\ {}\cdot\partial_\zeta^\alpha(\tau^jp_j(u,z))
+\\ {}\cdot\partial_u^\alpha(\tau^ka_k(u,z))
+\end{gathered}\right|_{\tau=1,\xi=z},
+\\ a\in A,\ b\in B.
+\end{gathered}
+\tag{SD.24}
+\]
+The earlier exact numerical factorial estimates bound every fixed
+degree'\(s\) full infinite contraction, retain all spatial indices, give
+actual tails and every fixed derivative tail on common enlarged/smaller
+products, and recover the exact SD.3 quantifiers. Earlier proved \(M\) proves
+that this is the source-defined product, with actual geometric
+common supports/trace maps. Hence \(b\cdot a=b\circ a\) defines the actual
+right-A sheaf action, not a formal module action.
+
+If \(b\) vanishes on an open set, all \(p_j\) vanish there and every derivative
+in SD.24 vanishes there; its normally convergent sum is zero. Equivalently
+the earlier proved sheaf product restricts to the product of restrictions.
+Therefore
+\[
+ \operatorname{supp}(b\cdot a)\subset\operatorname{supp}(b).          \tag{SD.25}
+\]
+No smooth multiplier or fixed-order truncation of \(B\) is used to assert
+this support property. For a finite family of a and \(b\), the earlier proved
+finite-diagram common-domain property takes the finite intersection of
+their coefficient domains and reserves the Cauchy margins before all
+infinite sums. This is sufficient for every matrix and homotopy below.
+
+On SD.21 put, for a in A(\(U\)),
+\[
+ ((t_x)_{x\in U}\cdot a)_x=t_x\cdot a_x.                            \tag{SD.26}
+\]
+Restrictions commute with this formula. The augmentation \(F\to G(F)\),
+quotient \(Q\), its iterations and all differentials are right-A linear
+whenever \(F\) is a right-A sheaf. For \(F=B\) this is an actual right-A
+injective resolution in the category of underlying complex-vector
+sheaves; injectivity as right-A sheaves is neither needed nor claimed.
+SD.22 is a right-A subsheaf because its zero components remain zero.
+Thus
+\[
+ C_Z=\Gamma_Z I^*(B)                                               \tag{SD.27}
+\]
+is an actual right-A representative of \(R\Gamma_Z B\), with SD.1 as its
+cohomological lower bound. The geometric/auxiliary computation and this
+module representative identify the same derived support object through
+the actual injective augmentation. We do not demand that the auxiliary
+Dolbeault differential admit a coefficientwise microdifferential action.
+An acyclic vector-space model was used to prove the bound; the actual
+right action is present on the canonical model SD.27.
+
+The same construction retains the actual left-\(B\) action. Left product
+with a local \(B\) section restricts to zero wherever its target section
+is zero, since the earlier proved product is a sheaf product. On stalk products
+use left multiplication by its germ. Earlier proved associativity makes this
+commute with the right-A action. Both actions descend to every quotient
+\(Q^qB\), commute with every Godement differential, and preserve SD.22.
+Hence \(C_Z\) is in fact a (\(B\),A) bimodule complex, and the evaluation and
+finite-Hom maps below are left-\(B\) linear as well as the required
+right-A target maps. This retains the operator action in the actual
+module reconstruction.
+
+This model also represents derived support in the category of right-A
+sheaves, if that category is used to define it. Here is the verification.
+Let \(U_0\) be the exact forgetful functor to complex-vector sheaves. Its
+left adjoint sends \(F\) to \(F\otimes_{\mathbf C}A\) with right multiplication in A;
+it is exact since stalk tensor products over the field \(C\) are exact.
+Consequently \(U_0\) sends injective right-A sheaves to injective
+complex-vector sheaves: extend a map through that exact left adjoint
+and use its adjunction. There are enough injective right-A sheaves.
+For a complex-vector injective \(J\), the internal sheaf
+\(\mathcal Hom_{\mathbf C}(A,J)\), with right action
+\( (\phi\cdot a)(b)=\phi(ab)\), is right-A injective. Its adjunction
+with \(U_0\) sends a right-A map to evaluation at 1, and sends a
+complex-vector map \(f:U_0F\to J\) to the right-A map taking \(t\) to
+\(b\mapsto f(tb)\). Thus a map from a right-A subobject extends by
+complex-vector injectivity of J. Choose an embedding \(U_0F\to J\);
+the resulting coinduced map \(F\to\mathcal Hom_{\mathbf C}(A,J)\) is injective because
+evaluation at 1 is that embedding. Iterate its quotient to obtain
+a right-A injective resolution. Its underlying complex is a
+complex-vector injective resolution, by the just-proved forgetful
+property. \(\Gamma_Z\) commutes with \(U_0\) on sections. The underlying
+right-A derived support therefore is the ordinary complex-vector
+derived support, with its actual right action. In particular every
+underlying complex-vector injective right-A sheaf is \(\Gamma_Z\)-acyclic
+in the right-A category, even if it is not right-A injective.
+Applying the acyclic-resolution comparison to SD.21 proves that
+SD.27 represents that module-derived support as well. This closes
+the category comparison instead of inferring it from vector-space
+quasi-isomorphisms without a right action.
+
+#### SD.F. Finite-Hom/support comparison on sheaves and common resolutions
+
+For any right-A sheaf \(Q\) and right-A sheaf \(F\) the literal equality is
+\[
+\begin{gathered}
+\Gamma_Z\mathcal Hom_{A^{op}}(Q,F)
+\\ =\mathcal Hom_{A^{op}}(Q,\Gamma_ZF).
+\end{gathered}
+\tag{SD.28}
+\]
+Over \(U\) the left side consists of right-A sheaf morphisms \(Q|_U\to F|_U\)
+whose restriction on \(U\setminus Z\) is zero. Such a morphism sends every local
+section of \(Q\) to a section vanishing off \(Z\), hence factors uniquely through
+the kernel subsheaf \(\Gamma_ZF\). Conversely a morphism into that kernel
+restricts to zero off Z. This proves equality on sections, compatible
+with restrictions and natural in all right-linear maps. It uses sheaf
+morphisms on every subopen, not only module maps between global sections.
+
+If \(Q\) is finite locally projective, locally choose a finite free right
+A-module \(A^h\), an idempotent e, and \(Q=eA^h\), with inclusion/projection
+whose composition is the identity on Q. Then Hom(\(Q\),\(F\)) is the image of
+precomposition with e on \(F^h\). It is a direct summand of \(F^h\) as a
+complex-vector sheaf. Consequently Hom(\(Q\),-) is exact: finite products
+preserve an exact stalk sequence, and an idempotent summand preserves
+surjectivity (apply the idempotent to a lift) and kernels. All matrices
+and equations are actual sheaf matrices on one neighbourhood.
+
+For the same local splitting,
+\(\mathcal Hom_{A^{op}}(Q,I^q(B))\) is a direct summand of
+\(I^q(B)^h\). Its higher supported cohomology is zero. Indeed the latter
+is injective as a complex-vector sheaf by SD.21, so its derived supported
+complex has only degree zero; naturality carries the idempotent through
+that complex, and the direct summand has zero higher cohomology too.
+This is a local assertion and suffices for the sheaf functor \(R\Gamma_Z\).
+Exactness of finite Hom makes \(\mathcal Hom(Q,I^*(B))\) a resolution of \(\mathcal Hom(Q,B)\).
+The finite acyclic-resolution comparison R.6 (with \(\Gamma_Z\) in place of
+its left exact functor) therefore gives the actual comparison
+\[
+\begin{gathered}
+R\Gamma_Z\mathcal Hom_{A^{op}}(Q,B)
+\\ \simeq\Gamma_Z\mathcal Hom_{A^{op}}(Q,I^*(B))
+\\ =\mathcal Hom_{A^{op}}(Q,C_Z).
+\end{gathered}
+\tag{SD.29}
+\]
+The equality is SD.28 in each degree; this identifies the natural map.
+It is not a chosen stalk vector-space isomorphism. Left multiplication
+on the target commutes with all maps, so this is left-\(B\) linear on the
+actual bimodule model just constructed.
+
+For a bounded finite-projective complex \(Q\), use the total Hom differential
+\[
+\begin{gathered}
+(dF)^n={}
+\\ d_I F^n-(-1)^n F^n d_Q,
+\\ \mathcal Hom(Q,I)^n
+\\ =\bigoplus_i\mathcal Hom(Q^i,I^{i+n}).
+\end{gathered}
+\tag{SD.30}
+\]
+There are only finitely many i. Each total term is a finite sum of the
+proved supported-acyclic summands. Applying the exact finite Hom
+functors to the augmented resolution, finite-diagonal column
+elimination proves the quasi-isomorphism
+\(\mathcal Hom(Q,B)\to\operatorname{Tot}\mathcal Hom(Q,I)\). The same acyclic-resolution comparison then
+computes its derived support. SD.28 commutes with both source
+precomposition and target differentials; it therefore gives a literal
+identity of the supported total complexes. This proves SD.2 with the
+precise differential SD.30 and actual right-A target \(C_Z\).
+
+The result is natural under actual chain maps \(Q\to Q'\). It is also
+independent of the chosen finite resolution, with the required sheaf
+and domain qualifications. For two bounded finite locally projective
+resolutions \(R\),\(S\) of a sheaf \(N\), a stalk lifting is constructed downwards:
+lift \(R^0\to N\) through \(S^0\to N\); then lift \(f^{i+1}d_R^i\) through
+\(S^i\to\ker d_S^i\). Projectivity provides these lifts. A difference \(k\)
+of two lifts is similarly lifted to \(h^i\), giving
+\[
+ k^i=d_S^{i-1}h^i+h^{i+1}d_R^i.                                   \tag{SD.31}
+\]
+These are finitely many maps between finite summands. Their entries
+are actual \(E\) germs; represent all entries, splitting idempotents and
+equalities on one common neighbourhood, and shrink once for the
+finitely many relations. Stalk surjectivity supplies a neighbourhood
+for each required lift of finitely many generating sections; the finite
+intersection supplies the single comparison domain. No assertion of
+global projectivity of a locally projective sheaf is used. Maps in
+both directions lift the identity, so their compositions are homotopic
+to the identities by SD.31.
+
+For a target complex \(C\) the induced Hom homotopy on degree \(n\) is
+\(K(F)=(-1)^n Fh\). Expanding SD.30 gives
+\[
+\begin{gathered}
+dK(F)+K(dF)
+\\ =F(d_Sh+hd_R)=Fk.
+\end{gathered}
+\tag{SD.32}
+\]
+The two target-differential terms cancel. The remaining two source
+terms have sign plus. Equality SD.28 commutes with these homotopies
+because every right action and every map restricts off Z. Hence
+different finite resolution choices induce the same actual derived
+finite-Hom/support morphism on their common sheaf neighbourhoods.
+All target sections are full \(B\) sections; their infinite coefficients
+already have common domains, and there are finitely many source
+operator entries. This is the sheaf comparison needed by the finite-dual reduction.
+
+#### SD.G. Coefficient families, the support cube and the auxiliary tube
+
+![Full coefficient realization and the singular support depth mechanism](assets/full-coefficient-depth-mechanism.png)
+
+The figure is an exact mechanism diagram, not a drawing of an analytic
+set's embedding. Its top arrows are the actual SD.4/SD.7/SD.9 inverse
+maps; the auxiliary disc in the negative box represents a variable-radius
+germ neighbourhood, not a globally uniform radius. Its middle \(c=2\)
+cube shows all four Laurent-sign blocks and SD.19's contraction for
+every proper \(J\); only \(J=\{1,2\}\) remains, in degree two. Its bottom exact
+sequence shows SD.23 with \(\dim W<\dim Z\) and the proved lower bound for
+\(Rj_*\). It explicitly includes singular points. The reproducible source, exact data, PNG and editable SVG accompany the diagram. The free human source is HolIII
+I.2.2; the complete proof locators are SD.A--SD.F.
+
+![Exact variable-radius auxiliary tube](assets/auxiliary-variable-tube.png)
+
+This second figure plots the real \(v,s\) slice of the actual complex tube
+with \(U\) the unit complex disc, \(\psi_0=-\log(1-|v|^2)\), \(\chi(t)=1+t\), and
+\(|s|<\exp(-1)(1-|v|^2)\). The displayed sample coordinates have \(v\)-spacing
+1/250 and the exact analytic radius formula; open boundary points are
+excluded. The complex domain and all signs/constants are stated in the
+right panel, and SD.15 proves its smooth strict proper exhaustion.
+For general data SD.14 chooses \(\chi\) to fit the actual representative;
+the figure is an exact special example of that construction, not an
+assertion of a fixed tube radius for all data. Reproducible source, exact samples, full PNG and editable SVG give this slice.
+
+
+#### FD.1. Finite duality and a support-degree bound
+
+Let \(A\) be an associative unital ring, let \(A\to B\) be a unital homomorphism, and let \(M\) have a resolution \(P\) of finite projective left \(A\)-modules in cochain degrees \(-m,\ldots,0\). Assume that \(B\) is flat as a right \(A\)-module. Put \(Q=\operatorname{Hom}_A(P,A)\), a complex of right modules. Suppose
+\[
+\begin{gathered}
+H^j(Q)=0\quad(j\ne r),
+\\ N=H^r(Q),
+\\ 0\le r\le m.
+\end{gathered}
+\tag{FD.1}
+\]
+Our conventions are \(K[s]^i=K^{i+s}\), \(d_{K[s]}=(-1)^s d_K\), and
+\[
+\begin{gathered}
+d(f)={}
+\\ d_{\mathrm{target}}f-(-1)^i f d_{\mathrm{source}}
+\\ \text{for a Hom element}
+\\ \text{of degree }i.
+\end{gathered}
+\tag{FD.2}
+\]
+
+**Proposition FD.1.** The right module \(N\) has a resolution \(R\) of finite projective right modules in degrees \(-r,\ldots,0\), and there is a natural derived isomorphism of left \(B\)-modules
+\[
+\begin{gathered}
+B\otimes_A M
+\\ \simeq R\operatorname{Hom}_{A^{\mathrm{op}}}(N,B)[r].
+\end{gathered}
+\tag{FD.3}
+\]
+If a bounded-below right-module complex \(C\) has \(H^q(C)=0\) for \(q<c\), then
+\[
+\begin{gathered}
+H^j\!\left(\operatorname{Hom}_{A^{\mathrm{op}}}(R,C)[r]\right)=0
+\\ (j<c-r).
+\end{gathered}
+\tag{FD.4}
+\]
+All tensors and Homs here are algebraic. No completion or growth comparison is implicit.
+
+**Finite projective duals.** A finite generating set of a projective left module \(L\) gives a split surjection \(A^h\to L\). Its dual makes \(L^\vee=\operatorname{Hom}_A(L,A)\) a finite projective right module. When \(L\) is free with basis \(e_a\), evaluation is the isomorphism
+\[
+\begin{gathered}
+B\otimes_A L\longrightarrow
+\operatorname{Hom}_{A^{\mathrm{op}}}(L^\vee,B),
+\\ b\otimes l\longmapsto\bigl(f\longmapsto bf(l)\bigr),
+\\ g\longmapsto\sum_a g(e_a^\vee)\otimes e_a
+\\ \text{in the inverse direction}.
+\end{gathered}
+\tag{FD.5}
+\]
+Balancing is the identity \(ba f(l)=b f(al)\). Passing to complementary summands proves the same isomorphism for finite projective \(L\). It commutes with maps between such modules.
+
+**Removing the exact tail.** Every \(Q^j\) is finite projective. If its largest nonzero degree \(t\) exceeds \(r\), exactness makes \(Q^{t-1}\to Q^t\) surjective. Split this map using projectivity of \(Q^t\). The decomposition of \(Q^{t-1}\) into its kernel and the chosen copy of \(Q^t\) separates a contractible identity complex \(Q^t\to Q^t\); the preceding differential lands in the kernel because its composite is zero. Removing this summand leaves finite projectives. Repeating finitely gives a complex \(Q'\) in degrees \(0,\ldots,r\) with the same cohomology and explicit homotopy equivalence \(Q\simeq Q'\). Set \(R=Q'[r]\) and augment its degree-zero term to \(N\) by the quotient of cycles by boundaries. FD.1 gives exactness in negative degrees and the required degree-zero cohomology. Thus \(R\) is the asserted resolution and
+\[
+Q\simeq Q'=R[-r].
+\tag{FD.6}
+\]
+No projectivity of \(N\) is assumed.
+
+**Evaluation and its signs.** For \(p\in P^i\), define
+\[
+\begin{gathered}
+J^i(b\otimes p)(f)=(-1)^i bf(p),
+\\ f\in Q^{-i}.
+\end{gathered}
+\tag{FD.7}
+\]
+By FD.5 this is balanced, right linear in \(f\), and an isomorphism in each degree. The dual differential is \(d_Q^q(f)=(-1)^{q+1}f d_P^{-q-1}\). Consequently, evaluated on \(f\in Q^{-i-1}\),
+\[
+\begin{gathered}
+d_{\operatorname{Hom}}J^i(b\otimes p)(f)
+\\ =(-1)^{i+1}bf(d_Pp)
+\\ =J^{i+1}(b\otimes d_Pp)(f).
+\end{gathered}
+\tag{FD.8}
+\]
+Therefore \(J:B\otimes_A P\to\operatorname{Hom}_{A^{\mathrm{op}}}(Q,B)\) is a chain isomorphism and is left \(B\)-linear. Right flatness of \(B\) preserves every kernel/image sequence of the augmented resolution \(P\), so its tensor complex has cohomology \(B\otimes_A M\) in degree zero and zero elsewhere. Hom of each removed identity complex is contractible. FD.6 thus replaces the right-hand complex by \(\operatorname{Hom}(R[-r],B)\). The isomorphism
+\[
+\begin{gathered}
+\operatorname{Hom}(R[-r],B)
+\\ \longrightarrow\operatorname{Hom}(R,B)[r]
+\end{gathered}
+\tag{FD.9}
+\]
+multiplies a map of degree \(i\) by \((-1)^{ri}\). Indeed, the source differential is \((-1)^{i+r+1}f d_R\), while the target differential is \((-1)^{i+1}f d_R\). The exponents \(ri+i+1\) and \(r(i+1)+i+r+1\) differ by \(2r\), verifying the chain identity. This proves FD.3 once the derived-Hom and resolution comparisons are justified.
+
+#### FD.2. Cone, target and resolution comparisons
+
+For a chain map \(u:C\to C'\), its cone has
+\[
+\begin{gathered}
+T^n=C'^n\oplus C^{n+1},
+\\ d_T(v,w)={}
+\\ (d_{C'}v+uw,-d_Cw).
+\end{gathered}
+\tag{FD.10}
+\]
+The square is zero because \(u\) commutes with differentials. We prove directly that the cone is acyclic exactly when \(u\) is a quasi-isomorphism.
+
+Suppose first that \(u\) is a quasi-isomorphism and \((v,w)\) is a cone cycle. Then \(w\) is a cycle and \(uw=-d_{C'}v\). Injectivity on cohomology gives \(w=d_Ca\), with \(a\in C^n\). Subtracting the boundary \(d_T(0,-a)=(-ua,w)\) leaves the cycle \((v+ua,0)\). Surjectivity on cohomology gives \(v+ua=ub+d_{C'}t\), where \(b\in C^n\) is a cycle and \(t\in C'^{n-1}\). The original cycle is therefore \(d_T(t,b-a)\).
+
+Conversely, suppose \(T\) is acyclic. If \(w\in C^n\) is a cycle and \(uw=d_{C'}v\), then \((-v,w)\) is a cone cycle in degree \(n-1\). Writing it as a boundary shows \(w=-d_Ca\), proving injectivity of \(H^n(u)\). For any cycle \(v\in C'^n\), acyclicity writes \((v,0)=(d_{C'}t+ua,-d_Ca)\). Thus \(a\) is a cycle and \([v]=H^n(u)[a]\), proving surjectivity.
+
+If \(L\) is projective and \(T\) acyclic, a cycle \(f:L\to T^n\) factors through \(Z^n(T)\). The surjection \(T^{n-1}\to Z^n(T)\) admits a lift of \(f\) by projectivity, so \(f=dg\). Hence \(\operatorname{Hom}(L,T)\) is acyclic.
+
+To pass to the whole bounded source \(R\), let \(R_{\ge k}\) contain degrees \(k,\ldots,0\). These are subcomplexes, and
+\[
+\begin{gathered}
+0\longrightarrow R_{\ge k+1}\longrightarrow R_{\ge k}
+\\ \longrightarrow R^k[-k]\longrightarrow0
+\end{gathered}
+\tag{FD.11}
+\]
+is degreewise split. Applying \(\operatorname{Hom}(-,T)\) gives a reversed degreewise split exact sequence. Its left term is a shift of \(\operatorname{Hom}(R^k,T)\), and its right term is \(\operatorname{Hom}(R_{\ge k+1},T)\). In an exact sequence of complexes with acyclic ends, a middle cycle maps to a quotient boundary \(dv\). Lift \(v\) to \(w\); subtracting \(dw\) leaves a cycle coming from the subcomplex. That cycle is a boundary there, so the original middle cycle is a boundary. Starting at \(k=0\) and proceeding finitely to \(-r\) proves acyclicity of \(\operatorname{Hom}(R,T)\).
+
+Under the component identification \((f,g)\),
+\[
+\begin{gathered}
+\operatorname{Hom}(R,\operatorname{cone}u)
+\\ =\operatorname{cone}\bigl(\operatorname{Hom}(R,u)\bigr).
+\end{gathered}
+\tag{FD.12}
+\]
+Here \(f\) has Hom degree \(n\), \(g\) has degree \(n+1\), and the differential is \((d_{\operatorname{Hom}}f+ug,-d_{\operatorname{Hom}}g)\). Its second component is \(-d_Cg-(-1)^n g d_R\), exactly the degree-\(n+1\) Hom sign. The cone criterion therefore shows that Hom from \(R\) preserves target quasi-isomorphisms.
+
+For resolution independence, let \(R,S\) be finite projective resolutions of the same right module \(N\), extended by zero outside their bounded nonpositive ranges. Lift \(R^0\to N\) through \(S^0\to N\). Once \(f^{i+1}\) is defined, \(f^{i+1}d_R^i\) lands in the kernel of the next differential of \(S\), using the augmentation at degree zero. Exactness makes \(S^i\) surject onto that kernel, and projectivity of \(R^i\) supplies \(f^i\). This constructs \(f:R\to S\) lifting the identity. Interchanging \(R,S\) gives \(g\).
+
+Any difference \(k\) of two lifts is null-homotopic. First lift \(k^0\), whose image is in \(\ker(S^0\to N)\), to \(h^0:R^0\to S^{-1}\). Given \(h^{i+1}\), applying \(d_S^i\) to \(k^i-h^{i+1}d_R^i\) gives zero by the previous-degree identity. Exactness and projectivity lift this map to \(h^i\). Thus
+\[
+k^i=d_S^{i-1}h^i+h^{i+1}d_R^i.
+\tag{FD.13}
+\]
+In particular \(gf\) and \(fg\) are homotopic to the identities. For a target complex \(C\), the induced Hom homotopy on a degree-\(n\) map is
+\[
+\begin{gathered}
+K(F)=(-1)^n Fh,
+\\ dK(F)+K(dF)
+\\ =F(d_Sh+hd_R)=Fk.
+\end{gathered}
+\tag{FD.14}
+\]
+The two target-differential terms cancel and both source terms have positive sign. Hom therefore turns the resolution comparisons into homotopy equivalences. Together with FD.12 this proves that the bounded projective complex computes the resolution-independent derived Hom in FD.3. Each total degree uses only finitely many source terms.
+
+#### FD.3. The lower bound and the actual support interface
+
+Replace \(C\) by its good truncation \(C_{\ge c}\): it has zero terms below \(c\), term \(C^c/\operatorname{im}d_C^{c-1}\) at \(c\), and the original terms above it. The natural quotient map is a quasi-isomorphism because \(H^q(C)=0\) for \(q<c\). At degree \(c\) both cohomologies are \(\ker d_C^c/\operatorname{im}d_C^{c-1}\); above it they agree and below it they vanish. FD.2 proves that \(\operatorname{Hom}(R,-)\) preserves this map.
+
+A term of \(\operatorname{Hom}(R,C_{\ge c})\) has total degree \(p+q\), where \(0\le p\le r\) and \(q\ge c\). Each total degree is a finite sum. The complex has no terms below \(c\); shifting by \([r]\) gives
+\[
+p+q-r\ge c-r.
+\tag{FD.15}
+\]
+This proves FD.4 for the entire finite projective resolution.
+
+![Finite dual degree bounds](assets/finite-dual-degree-bound.png)
+
+*Figure FD.1. For \(r=2\), \(c=3\), all resolution columns \(p=0,1,2\) are shown, with the finite window \(q=3,4,5\) and an upward arrow for the remaining rows. Each cell has degree \(p+q\ge3\); the shift \([2]\) lowers the minimum to one. The general bound is FD.15. This diagram proves no analytic coefficient depth by itself. Reproducible source, exact data, PNG and editable SVG. Free human context: [Holonomic systems III, I.2.2 and I.3.8](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf); the complete algebraic argument is FD.1–FD.3 above.*
+
+For sheaves the same argument is applied locally. Splittings, lifts and their identities involve finitely many operator entries; represent their germs and shrink once to make all identities literal. SD.F proves the natural sheaf Hom/support comparison and its compatibility with these finite-resolution maps. Consequently the following implication retains the actual actions and common domains. Suppose an actual finite \(E\)-module \(M\) has a finite locally projective resolution, its dual Ext is concentrated in degree \(r\), and \(B=E^\infty\) is right flat over \(E\). If \(Z\) has complex codimension at least \(c\), then
+\[
+\begin{gathered}
+\mathcal H_Z^j(B\otimes_E M)=0
+\\ (j<c-r).
+\end{gathered}
+\tag{FD.16}
+\]
+Indeed FD.3 identifies the module with the shifted finite Hom complex. SD.2 takes its derived support to \(\operatorname{Hom}_{E^{\mathrm{op}}}(R,C_Z)[r]\), with the actual bimodule representative \(C_Z\) of SD.27. SD.1 supplies its lower bound, so FD.4 gives FD.16. In particular a local section supported on such a \(Z\) is zero when \(c>r\). Right flatness here is the complete [§5.47 finite-matrix theorem](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). The concentrated-Ext condition remains an explicit hypothesis of FD.16. Neither this implication nor coefficient depth alone establishes the real-module injection, arbitrary-section separation or the full moving-sector comparison.
+
+
+
+### 5.51. Actual analytic microlocal Ext and support purity
+
+For every coherent holonomic left module over the actual finite-order analytic microdifferential sheaf, the dual Ext vanishes outside degree \(n=\dim_{\mathbf C}X\). The shifted dual \(R\mathcal Hom_E(M,E)[n]\) is a right holonomic module in degree zero. This statement includes singular, reducible and nonreduced holonomic germs. The proof below supplies the full commutative analytic estimate, actual principal-Hom injection, right-side estimates and contact-rank argument. Its support-purity consequence concerns every section of the full extension \(E^\infty\otimes_E M\).
+
+#### EC.0. Conventions and earlier actual operator proofs
+
+Let the base dimension be \(n=d+1\), and use a nonzero-covector chart
+
+\[
+\begin{gathered}
+u=(t,x_1,\ldots,x_d),
+\\ \rho=(\tau,\xi_1,\ldots,\xi_d),
+\\ h=\tau^{-1},\qquad z_i=\xi_i/\tau.
+\end{gathered}
+\tag{EC.0}
+\]
+
+The normalized contact chart has dimension \(m=2d+1=2n-1\). Its holomorphic
+germ ring is \(R=\mathbf C\{u,z\}\). Write \(A=E_0=\mathscr E(0)\) and
+
+\[
+\begin{gathered}
+E=A[h^{-1}],
+\\ A/(h)=R,
+\\ ha=\sigma(a)h,
+\\ \sigma(a)\equiv a\pmod h.
+\end{gathered}
+\tag{EC.1}
+\]
+
+All localizations here are actual finite-order normal localizations.
+They consist of finite-order shifts of actual factorial-growth symbols.
+The target statement uses the right module
+
+\[
+\begin{gathered}
+\mathcal Ext_E^j(M,E),
+\\ \mathbb D_E^r(M)
+\\ =R\mathcal Hom_E(M,E)[r].
+\end{gathered}
+\tag{EC.2}
+\]
+
+No left side change is implicit. With cohomological shift
+
+\[
+ K[r]^i=K^{i+r},
+ \tag{EC.3}
+\]
+
+concentration in Ext degree \(n\) means that \(\mathbb D_E^n(M)\) is a
+right module in degree zero. Thus the integer called \(r\) in the support
+reduction and in HolIII I.3.8 is exactly \(n=\dim_{\mathbf C}X\) in this
+holonomic application.
+
+The earlier actual operator proofs used here are:
+
+1. [Sections 5.19–5.20, S.1–S.4 and B.1–B.3.1](#5-19-actual-factorial-growth-symbols-and-ordered-jets): homogeneous normal symbols, their actual Leibniz product, common-domain factorial estimates and elliptic inversion.
+2. [Sections 5.21 and 5.24, Theorems 5.21.1 and 5.24.2](#5-21-actual-simultaneous-division-and-finite-stalk-relations): finite actual left relations and common-neighbourhood coherence.
+3. [Section 5.22.1](#5-22-exact-faithful-positive-degree-completion-at-the-dummy-zero-section), equations 5.22a–5.22b: both actual normal automorphisms and the trivial reduction of their normal action modulo \(h\).
+4. [Section 5.32, J.1–J.3](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ): actual coherent \(h\)-injective lattices, exact reduced principal/actual support, and whole-germ contact reduction with a finite principal fibre. The actual contact isomorphism is [§5.28, Q.1–Q.7](#5-28-convergent-contact-quantization-and-whole-germ-generic-position).
+5. [Section 5.31, L.3–L.6](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices): a finite free actual lattice resolution with exact principal reduction on one neighbourhood, and its actual normal localization. Its bound is \(q=2d+1\).
+
+The first-order trace input is the complete subargument of Good filtrations and the characteristic variety, Theorem 7.0, from “Localization of first-order modules” through “Return to the radical ideal”, equations 7.1d–7.1s. It applies to a rational first-order ring with central square-zero \(\epsilon\), commutative Noetherian quotient, and \(\ker\epsilon=\epsilon B\), together with a finite module satisfying \(\ker\epsilon=\epsilon V\). It proves that each minimal support prime of \(V/\epsilon V\) is involutive for the commutator biderivation. Its denominator localization, coefficient field in the finite Artin quotient and finite-length trace are proved there. It assumes neither finite type over a field nor Jacobi for that biderivation. EC.D below checks all these hypotheses on the actual quotients.
+
+Analytic component, parametrization, vanishing-ideal and dimension assertions are the complete Analytic germs, Theorems 4.1, 5.1, 5.4 and Proposition 5.5. The analytic Ext proof below identifies the other exact earlier local-algebra inputs.
+
+#### EC.A. The commutative analytic Ext estimate
+
+The required statement is for the analytic ring itself:
+
+\[
+\begin{gathered}
+R=\mathbf C\{w_1,\ldots,w_m\},
+\\ N\text{ finite over }R,
+\\ c=m-\dim\operatorname{Supp}N,
+\\ \operatorname{Ext}_R^j(N,R)=0\quad(j<c),
+\\ \operatorname{Supp}\operatorname{Ext}_R^j(N,R)
+\\ \subseteq\operatorname{Supp}N,
+\\ \dim\operatorname{Supp}\operatorname{Ext}_R^j(N,R)
+\\ \le m-j.
+\end{gathered}
+\tag{EC.A}
+\]
+
+The zero module has zero Ext in every degree. Here is the complete analytic proof of the displayed estimate.
+
+##### AC.A. The ambient local hypotheses
+
+Let
+\[
+R=\mathbf C\{w_1,\ldots,w_m\},\qquad m\geq0.
+\]
+The following facts genuinely apply to this ring and every algebraic prime localization of it:
+
+1. It is Noetherian local, with maximal ideal \(\mathfrak m=(w_1,\ldots,w_m)\); every finite module and every submodule of a finite module is Noetherian and finite.
+2. It is regular local of dimension \(m\), and each \(R_{\mathfrak p}\) is regular local of dimension \(\operatorname{ht}_R\mathfrak p\).
+3. Each such local ring is Cohen–Macaulay; a regular element in the maximal ideal of a nonzero finite module drops its depth exactly by one.
+4. For every prime \(\mathfrak p\),
+   \[
+\begin{gathered}
+\dim(R/\mathfrak p)
+\\ =m-\operatorname{ht}_R\mathfrak p.
+\end{gathered}
+\tag{AC.1}
+\]
+5. Every finite \(R_{\mathfrak p}\)-module has a finite free resolution of length at most \(\operatorname{ht}_R\mathfrak p\).
+
+The exact earlier proofs appear in AC.B. Their hypotheses apply to convergent germs and every prime localization. In particular AC.1 is the general Cohen–Macaulay local-ring dimension formula. The arguments below establish the analytic Ext bounds directly over this ring.
+
+##### AC.B. Exact earlier programme proofs
+
+The following are earlier programme proofs at their stated Noetherian, local, regular or Cohen–Macaulay hypotheses. No finite-type hypothesis over a field is imposed on the convergent ring or its prime localizations.
+
+| Result used | Complete earlier programme proof |
+|---|---|
+| Convergent units, Weierstrass preparation and division, analytic Noetherianity | Analytification, Section 2 and Lemma 2.1 |
+| Finite modules and submodules; localization of Noetherian rings | Noetherian and Artinian rings, Proposition 1.2 and Theorem 2.1 |
+| Exact localization, prime correspondence, Nakayama and support detection | Localization, Theorems 2.1, 3.1, 4.2, 5.1 and Proposition 6.1 |
+| General local dimension bound and regular-element dimension drop | Local dimension, Theorem 3.2 and Proposition 4.2 |
+| Associated primes, zero divisors, localization, finite prime avoidance and prime filtrations | Associated primes, Lemma 1.1, Theorems 1.2, 2.2, 3.1–3.2 and Solution 8.5 |
+| Depth zero and exact depth drop | Depth, Lemmas 2.1–2.2 and Theorem 2.3 |
+| Cohen–Macaulay associated components, localization and the general local dimension formula | Depth, Theorems 3.1, 4.1, 5.1 and Lemma 5.4 |
+| Regular local rings are Cohen–Macaulay; regular quotients remain Cohen–Macaulay | Depth, Theorem 6.1 and Corollary 6.2 |
+| Minimal resolutions, Auslander–Buchsbaum and the finite free-resolution bound | Projective dimension, Theorem 2.2 and Corollary 4.3, with complete Sections 1–4 |
+| Regularity at every prime localization | Regular local rings, Lemma 3.1 and Theorem 3.2, with Lemma 2.1 and Theorem 2.2 |
+| Resolution comparison, homotopies and the second-variable Ext exact sequence | Resolutions, Tor and Ext, Theorem 1.1 and Sections 2 and 4 |
+| Finite analytic parametrization, Nullstellensatz and analytic dimension | Analytic germs, Theorems 4.1, 5.1, 5.4 and Proposition 5.5 |
+| Exact actual lattice and principal support for the whole coherent germ | [Section 5.32, J.0–J.2](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ) |
+
+
+##### AC.C. The convergent ambient ring
+
+**AC.2 (the analytic ambient ring).** The ring \(R\) is Noetherian regular local of dimension \(m\).
+
+**Proof.** The constant-term unit test makes \(R\) local. A germ with zero constant term is a finite sum \(\sum_iw_if_i\) with convergent \(f_i\): assign each nonconstant Taylor monomial to the first coordinate dividing it. The assigned subseries converge absolutely on a smaller polydisc, and division by the assigned coordinate is only a fixed monomial shift. Thus the maximal ideal is exactly \((w_1,\ldots,w_m)\). Taylor coefficients show that the classes of the \(w_i\) give a basis of \(\mathfrak m/\mathfrak m^2\): there are no nonzero linear terms in \(\mathfrak m^2\), and every term of degree at least two is a finite sum of degree-two monomials times convergent germs by the same assignment. Hence the embedding dimension is \(m\).
+
+Here is the earlier analytic Noetherian argument with its analytic hypothesis retained. Induct on \(m\), starting from \(\mathbf C\). If \(I\ne0\), choose a nonzero \(f\in I\). A complex linear coordinate change makes its first nonzero homogeneous part nonzero on the last coordinate axis. Analytic Weierstrass preparation gives a monic polynomial \(P\in I\), of degree \(r\) in that variable, whose lower coefficients belong to \(R_{m-1}=\mathbf C\{w_1,\ldots,w_{m-1}\}\). Analytic division identifies \(R/(P)\) as the finite free \(R_{m-1}\)-module of polynomial remainders of degree less than \(r\). By induction and Noetherian Proposition 1.2 it is a Noetherian module. The image of \(I\) in it has finitely many generators. Their lifts, together with \(P\), generate \(I\) over \(R\). The zero ideal needs no generators. This is the earlier analytification Lemma 2.1, with its complete Section 2 preparation/division proof; it concerns convergent germs throughout.
+
+The coordinate ideals
+\[
+\begin{gathered}
+(0)\subsetneq(w_1)\subsetneq\cdots
+\\ \subsetneq(w_1,\ldots,w_m)
+\end{gathered}
+\tag{AC.3}
+\]
+are prime. Indeed their quotients are the remaining convergent power-series rings; these are domains because the lowest nonzero total-degree homogeneous pieces of two nonzero series have nonzero product in a polynomial ring. The containments are strict by Taylor coefficients. Thus \(\dim R\geq m\). The general Noetherian local Proposition 4.2 in the earlier local-dimension lesson gives \(\dim R\leq\operatorname{embdim}R=m\). Equality proves regularity. At \(m=0\) this is the field case, with empty coordinate list. \(\square\)
+
+Consequently the earlier regular-local lesson Theorem 3.2 applies to **every algebraic prime** \(\mathfrak p\) of \(R\), not just primes representing smooth analytic components. Its proof localizes arbitrary projective resolutions, uses finite global dimension and the proved regularity characterization. The height equality is the exact prime-chain correspondence. By the earlier depth lesson Theorem 6.1 all these localizations are CM. By the earlier projective-dimension lesson Corollary 4.3, or the earlier regular-local lesson Theorem 2.2, their finite modules have finite free resolutions bounded by their dimensions.
+
+For clarity, the dimension formula used here is also the following exact CM argument. Write \(h=\dim R_{\mathfrak p}\). The proof of the earlier depth lesson Theorem 5.1 constructs an \(R\)-regular list \(a_1,\ldots,a_h\) inside \(\mathfrak p\). Its quotient \(Q\) is CM of dimension \(m-h\), by the exact dimension/depth drops. Its localization at \(\mathfrak p\) is nonzero by Nakayama and has dimension zero by the same drops in the CM ring \(R_{\mathfrak p}\). Thus \(\mathfrak p\) is minimal over the list: a smaller prime over the list would give a positive-length chain in that localized quotient. The CM associated-component Theorem 4.1 then gives
+\[
+\dim(R/\mathfrak p)=\dim Q=m-h.
+\]
+This is exactly earlier Lemma 5.4. It uses neither algebraic Noether normalization nor finite type over \(\mathbf C\). Together with \(h=\operatorname{ht}\mathfrak p\), it proves AC.1.
+
+##### AC.D. Regular sequences inside annihilator ideals
+
+**AC.4.** Let \(A\) be a Noetherian regular local ring, and let \(I\subsetneq A\). If every prime containing \(I\) has height at least \(r\), then \(I\) contains an \(A\)-regular sequence of length \(r\).
+
+**Proof.** Suppose \(a_1,\ldots,a_j\in I\) have been chosen regularly, with \(j<r\), and set \(Q_j=A/(a_1,\ldots,a_j)\). It is a nonzero finite module. For \(\mathfrak q\in\operatorname{Ass}_A Q_j\), an associated element survives at \(\mathfrak q\): a denominator outside \(\mathfrak q\) could not annihilate it. It is annihilated there by the maximal ideal. The depth-zero test therefore gives \(\operatorname{depth}_{A_{\mathfrak q}}(Q_j)_{\mathfrak q}=0\). Each earlier sequence entry belongs to \(\mathfrak q\), since it annihilates \(Q_j\). Exact localization preserves its injectivity, and all intermediate localized quotients are nonzero since the final quotient is nonzero. The localized sequence is consequently regular. The localized ambient ring is regular and CM, so the exact depth drops give
+\[
+\begin{gathered}
+0=\operatorname{depth}_{A_{\mathfrak q}}(Q_j)_{\mathfrak q}
+\\ =\operatorname{ht}_A\mathfrak q-j.
+\end{gathered}
+\tag{AC.5}
+\]
+Every associated prime of \(Q_j\) therefore has height \(j<r\), so none contains \(I\). Its associated-prime set is finite. Finite prime avoidance selects \(a_{j+1}\in I\) outside the union of these primes. The zero-divisor theorem makes multiplication by it injective on \(Q_j\). Since \(I\) is proper in a local ring, it lies in the maximal ideal, and Nakayama keeps the next quotient nonzero. Induction constructs the desired list. For \(r=0\), use the empty sequence. \(\square\)
+
+The quotients \(Q_j\) are not asserted to be regular. The only regular rings in this argument are \(A\) and its prime localizations.
+
+##### AC.E. Direct lower Ext vanishing
+
+**AC.6.** Let \(A\) be a commutative ring, \(N,T\) modules, and suppose \(a_1,\ldots,a_r\) annihilate \(N\) and act as a regular sequence on \(T\). Then
+\[
+\begin{gathered}
+\operatorname{Ext}_A^j(N,T)=0
+\\ (0\leq j<r).
+\end{gathered}
+\tag{AC.7}
+\]
+No finiteness or injective resolution is needed for this assertion.
+
+**Proof.** Choose a free resolution \(F_\bullet\to N\). If \(aN=0\), multiplication by \(a\) on \(F_\bullet\) is homotopic to zero. Here is the actual construction. Put \(s_{-1}=0\). Since the image of \(a:F_0\to F_0\) lies in the kernel of the augmentation, freeness lifts it across \(d_1:F_1\twoheadrightarrow\ker\epsilon\), giving \(s_0\) with \(d_1s_0=a\operatorname{id}_{F_0}\). Once the lower \(s_i\)'s have been chosen, the map
+\[
+a\operatorname{id}_{F_i}-s_{i-1}d_i
+\]
+has image in \(\ker d_i\), because
+\[
+\begin{gathered}
+d_i(a\operatorname{id}_{F_i}-s_{i-1}d_i)
+\\ =a d_i-(a\operatorname{id}_{F_{i-1}}-s_{i-2}d_{i-1})d_i
+\\ =0.
+\end{gathered}
+\]
+Lift it across \(d_{i+1}\) to \(s_i\). Thus
+\[
+a\operatorname{id}_{F_i}=d_{i+1}s_i+s_{i-1}d_i
+\tag{AC.8}
+\]
+in every degree. This is also the comparison proof in the earlier resolution lesson Theorem 1.1 specialized to the zero endomorphism of \(N\).
+
+In \(\operatorname{Hom}_A(F_\bullet,T)\), precomposition with multiplication by \(a\) equals coefficient multiplication by \(a\), since \(A\) is commutative. Precomposition with the \(s_i\)'s gives a cochain homotopy from that map to zero by AC.8. Thus every \(a\in\operatorname{ann}_A N\) kills \(\operatorname{Ext}_A^j(N,T)\) for all \(j\) and every target \(T\).
+
+Induct on \(r\). The assertion is vacuous for \(r=0\). For \(r\geq1\), every map \(N\to T\) has image annihilated by \(a_1\). Injectivity of \(a_1\) on \(T\) makes this image zero. This proves degree zero. Put \(T'=T/a_1T\). The remaining \(a_2,\ldots,a_r\) are regular on \(T'\) and still annihilate \(N\). The degreewise exact Hom complexes for
+\[
+0\longrightarrow T\xrightarrow{a_1}T\longrightarrow T'\longrightarrow0
+\]
+give, for \(1\leq j<r\), the exact segment
+\[
+\begin{gathered}
+\operatorname{Ext}_A^{j-1}(N,T')
+\\ \longrightarrow\operatorname{Ext}_A^j(N,T)
+\\ \xrightarrow{a_1}\operatorname{Ext}_A^j(N,T).
+\end{gathered}
+\tag{AC.9}
+\]
+The first term is zero by induction, since \(j-1<r-1\). The last arrow is therefore injective. It is also zero by AC.8, since \(a_1N=0\). Hence its source is zero. This proves every degree in AC.7. The connecting-homomorphism construction is the explicit one in the earlier resolution lesson Section 2. \(\square\)
+
+This argument works directly over the actual convergent ring and uses no change-of-rings premise or finite-type hypothesis.
+
+##### AC.F. The analytic Ext theorem
+
+**AC.10.** For every finite \(R\)-module \(N\) and every integer \(j\geq0\), \(\operatorname{Ext}_R^j(N,R)\) is finite and
+\[
+\begin{gathered}
+\operatorname{Supp}_R\operatorname{Ext}_R^j(N,R)
+\\ \subseteq\operatorname{Supp}_R N
+\\ {}\cap\{\mathfrak p:\operatorname{ht}_R\mathfrak p\geq j\}.
+\end{gathered}
+\tag{AC.11}
+\]
+Consequently
+\[
+\begin{gathered}
+\dim\operatorname{Supp}_R\operatorname{Ext}_R^j(N,R)
+\\ \leq m-j.
+\end{gathered}
+\tag{AC.12}
+\]
+For \(N\ne0\), put \(c=m-\dim\operatorname{Supp}_R N\). Then
+\[
+\begin{gathered}
+\operatorname{Ext}_R^j(N,R)=0
+\\ (0\leq j<c).
+\end{gathered}
+\tag{AC.13}
+\]
+For \(N=0\), all groups vanish. Empty support has dimension \(-\infty\).
+
+**Proof.** Noetherianity gives a resolution by finite free modules: choose finite generators, then finite generators of the finite kernel, and repeat. Applying Hom into \(R\) gives a cochain complex of finite free modules, so every kernel, image and cohomology module is finite. Exact localization and Hom from finite free modules give
+\[
+\begin{gathered}
+\operatorname{Ext}_R^j(N,R)_{\mathfrak p}
+\\ \cong\operatorname{Ext}_{R_{\mathfrak p}}^j
+(N_{\mathfrak p},R_{\mathfrak p}).
+\end{gathered}
+\tag{AC.14}
+\]
+This is zero if \(N_{\mathfrak p}=0\). It is also zero for \(j>\operatorname{ht}\mathfrak p\), because AC.2 and the exact regular-local theorem give a finite free resolution of \(N_{\mathfrak p}\) of length at most \(\dim R_{\mathfrak p}=\operatorname{ht}\mathfrak p\); resolution comparison identifies its Ext with AC.14. This proves AC.11.
+
+Let \(Q=\operatorname{Ext}_R^j(N,R)\). If \(Q\ne0\), every prime of its support has height at least \(j\), so AC.1 gives \(\dim(R/\mathfrak p)\leq m-j\) for each such prime. More explicitly, the finite prime-filtration theorem makes \(\operatorname{Supp}Q\) a finite union of the closures \(V(\mathfrak p_i)\) of its filtration primes. Each filtration factor \(R/\mathfrak p_i\) is supported inside \(\operatorname{Supp}Q\), by exact localization, so its height is at least \(j\). A finite closed union has dimension the maximum of the component dimensions. Hence \(\dim\operatorname{Supp}Q\leq m-j\). If \(j>m\), AC.11 already makes the support empty, hence \(Q=0\) by local detection. The zero case satisfies AC.12 under the empty-support convention.
+
+For the lower vanishing assume \(N\ne0\) and put \(I=\operatorname{ann}_R N\). Finiteness proves \(\operatorname{Supp}N=V(I)\): if \(N_{\mathfrak p}=0\), each member of a finite generating set is killed by a denominator outside \(\mathfrak p\); their product is in \(I\setminus\mathfrak p\). Conversely an element of \(I\setminus\mathfrak p\) becomes an invertible annihilator, so kills the whole localization. The ideal \(I\) is proper.
+
+The support dimension is the maximum of \(\dim(R/\mathfrak q)\) over its finitely many minimal support primes. To see the finite-union dimension statement directly, these primes give a finite closed cover of \(V(I)\). Any chain in a finite union of closed sets lies entirely in the member containing its generic point: closedness contains all the specializations in the chain. Thus its dimension is the maximum of their dimensions. AC.1 now gives
+\[
+\begin{gathered}
+c=m-\dim\operatorname{Supp}N
+\\ =\min_{\mathfrak q\in\operatorname{Supp}N}
+\operatorname{ht}_R\mathfrak q.
+\end{gathered}
+\tag{AC.15}
+\]
+In particular every prime containing \(I\) has height at least \(c\). AC.4 constructs an \(R\)-regular sequence of length \(c\) lying **in the annihilator** \(I\), so every entry kills \(N\) itself. Apply AC.6 with target \(T=R\). This proves AC.13. No CM, reducedness, smoothness, equidimensionality or generic freeness was imposed on \(N\) or on \(R/I\). \(\square\)
+
+##### AC.G. Analytic support and the actual principal module
+
+The support dimensions in AC.10 are the analytic germ dimensions needed in the microdifferential application. An ideal and its radical have the same prime spectrum and Krull dimension. The analytic Nullstellensatz and analytic-dimension Theorem 5.4 in the earlier analytic-germ lesson identify \(\dim(R/I)\) with the dimension of its reduced analytic zero germ, component by component. Here is the finite-module support interface without an additional coherence premise. Present \(N\) as the cokernel of a finite matrix \(R^a\to R^b\), and represent all its entries on one common neighbourhood. Its finite-type analytic cokernel has zero stalk at a point exactly when that matrix is surjective over the local holomorphic ring, which finite Nakayama makes equivalent to rank \(b\) over its residue field. Its support is therefore the zero germ of the \(b\times b\) minors. The same criterion at an algebraic prime \(\mathfrak p\) of \(R\), over the residue field of \(R_{\mathfrak p}\), says that the prime zero set of those minors is \(\operatorname{Supp}_R N=V(\operatorname{ann}N)\). Thus their radical equals \(\sqrt{\operatorname{ann}N}\), and the analytic Nullstellensatz identifies the analytic support germ with the zero germ of that annihilator. When there are fewer than \(b\) columns, the minor ideal is zero; when \(b=0\), the module is zero and the support is empty. The same construction applies to the finite Ext modules. All nilpotent/embedded relations remain in the modules used by the proof. Only the dimension measurement uses the reduced zero set.
+
+For the microlocal application with \(R=\mathbf C\{t,x_1,\ldots,x_d,z_1,\ldots,z_d\}\), the precise ambient dimension is \(m=2d+1\). For a finite principal module of support dimension \(s\), AC.13 gives vanishing below \(2d+1-s\). AC.12 gives the upper support estimate \(\dim\operatorname{Supp}\operatorname{Ext}_R^j(N,R)\leq2d+1-j\). Section 5.32, J.1–J.2 is the earlier **actual finite-order** lattice/principal support input; it is not replaced by a formal support argument. A homogeneous analytic Lagrangian support in the full nonzero cotangent space has its dimension lowered by one on the transverse \(\tau=1\) slice. In the usual base dimension \(d+1\), this slice has dimension \(d\), so the principal codimension is \(d+1\).
+
+
+#### EC.B. The actual opposite ring and right finiteness
+
+For clarity we supply the actual-domain side check needed by the dual
+complex. This also permits use of the left support construction for a
+right module without changing its normalized contact support.
+
+##### EC.B.1. The adjoint remains an actual symbol
+
+Write an order-zero normal symbol as
+
+\[
+\begin{gathered}
+P(u,\rho)=\sum_{a\ge0}p_{-a}(u,\rho),
+\\ p_{-a}=a_a(u,z)\tau^{-a}.
+\end{gathered}
+\tag{EC.B1}
+\]
+
+Its coefficients on every fixed smaller common polydisc satisfy
+\(\lvert a_a\rvert\le B C^a a!\). Define
+
+\[
+\begin{gathered}
+T(P)(u,\rho)={}
+\\ \sum_{\alpha\in\mathbf N^n}\frac{1}{\alpha!}
+\partial_\rho^\alpha\partial_u^\alpha P(u,-\rho).
+\end{gathered}
+\tag{EC.B2}
+\]
+
+The homogeneous coefficient of order \(-N\) uses exactly
+\(a+|\alpha|=N\). It is a finite sum. The antipodal change has the same
+normalized coordinates \(z\), and only multiplies the coefficient
+of order \(-a\) by \((-1)^a\).
+
+Choose a compact target polydisc in \((u,z)\). Choose two positive fixed
+Cauchy radii \(\delta_u,\delta_\rho\) such that its complex \(u\)- and
+\(\rho\)-polydiscs remain in one common original coefficient domain,
+and \(\lvert\tau\rvert\ge1-r>0\) on the latter. This is possible by
+continuity of \((\tau,\xi)\mapsto\xi/\tau\). Homogeneity gives
+
+\[
+\begin{gathered}
+\lvert p_{-a}(u,-\rho)\rvert\le B C_1^a a!,
+\\ C_1=C/(1-r).
+\end{gathered}
+\tag{EC.B3}
+\]
+
+The two independent Cauchy estimates, for \(k=|\alpha|\), give
+
+\[
+\begin{gathered}
+\left|\frac{1}{\alpha!}
+\partial_\rho^\alpha\partial_u^\alpha p_{-a}(u,-\rho)\right|
+\\ \le B C_1^a a!\,\alpha! D^k
+\\ \le B C_1^a D^k N!,
+\\ D=(\delta_u\delta_\rho)^{-1}.
+\end{gathered}
+\tag{EC.B4}
+\]
+
+Here \(\alpha!\le k!\) and \(a!k!\le(a+k)!=N!\).
+There are \(\binom{k+n-1}{n-1}\le2^{k+n-1}\) such multi-indices.
+Summing over \(a+k=N\), using that every binomial coefficient is at
+least one, yields the explicit actual-class bound
+
+\[
+\begin{gathered}
+\lvert (TP)_{-N}\rvert
+\\ \le B2^{n-1}(C_1+2D)^N N!.
+\end{gathered}
+\tag{EC.B5}
+\]
+
+Thus (EC.B2) defines an actual order-zero symbol on the one chosen
+smaller common domain. It is not a passage from an arbitrary formal
+series to an analytic operator. The same estimate after a finite order
+shift handles every finite-order symbol.
+
+##### EC.B.2. It is an anti-involution
+
+Put \(J(P)(u,\rho)=P(u,-\rho)\) and
+\(D_*=\sum_i\partial_{u_i}\partial_{\rho_i}\). Then \(T=e^{D_*}J\).
+All exponential expressions in this paragraph mean finite expressions
+at each homogeneous coefficient. Since \(JD_*=-D_*J\),
+
+\[
+\begin{gathered}
+T^2=e^{D_*}Je^{D_*}J
+\\ =e^{D_*}e^{-D_*}=1.
+\end{gathered}
+\tag{EC.B6}
+\]
+
+This equality can be read coefficientwise: at every positive derivative
+order its coefficient is the binomial sum
+\(\sum_{a=0}^k\binom{k}{a}(-1)^a=0\).
+
+For the product, let \(\mu\) denote ordinary multiplication and put
+
+\[
+ B_* =\sum_i\partial_{\rho_i}\otimes\partial_{u_i},\qquad
+ C_* =\sum_i\partial_{u_i}\otimes\partial_{\rho_i}.
+\]
+
+The actual homogeneous Leibniz product is
+\(P\circ Q=\mu e^{B_*}(P\otimes Q)\).
+The ordinary product rule gives
+
+\[
+ D_*\mu=\mu(D_*\otimes1+1\otimes D_*+B_*+C_*).
+\]
+
+All the constant coefficient derivatives commute. Antipodal change
+converts \(B_*\) to \(-B_*\). Consequently
+
+\[
+\begin{gathered}
+T(P\circ Q)
+\\ =\mu e^{D_*\otimes1+1\otimes D_*+B_*+C_*}
+\\ {}e^{-B_*}(JP\otimes JQ)
+\\ =\mu e^{C_*}(TP\otimes TQ)
+\\ =TQ\circ TP.
+\end{gathered}
+\tag{EC.B7}
+\]
+
+Each coefficient here has finitely many summands; B.1 and the earlier
+actual product estimate ensure that both endpoints are actual symbols
+on a common smaller domain. Equations (EC.B6)--(EC.B7) prove an actual
+anti-isomorphism \(A\simeq A^{\mathrm{op}}\). Its principal action on
+\(R=A/(h)\) is the identity, and \(T(h)=-h\).
+
+The same formula on sheaf germs commutes with restriction, and the
+bounded domain check just proved lets every finite list of entries be
+represented on one common smaller domain. Left actual Noetherianity
+and finite-matrix coherence therefore imply their right versions:
+apply \(T\) entrywise to a right relation matrix, reverse products, use
+the earlier finite left kernel list, and transpose back. This operation
+preserves the normalized principal support. It is an auxiliary local
+side check; the dual in (EC.2) itself remains on the right.
+
+##### EC.B.3. Actual right Nakayama
+
+The earlier actual unit theorem makes every \(1-ah\) invertible in
+\(A\), because its principal symbol is one. If a finite right module
+\(V\) satisfies \(V=Vh\), choose a generating list of least length.
+For a last generator \(v_s\), write
+
+\[
+ v_s=\sum_{i=1}^s v_i a_i h.
+\]
+
+Then
+\(v_s(1-a_sh)=\sum_{i<s}v_i a_i h\). Multiplying on the right by
+the actual inverse of \(1-a_sh\) eliminates \(v_s\), contradicting
+minimality unless \(V=0\). This proves precisely the finite right
+Nakayama consequence needed below. No completeness assertion is used.
+
+#### EC.C. A finite actual principal-Hom injection
+
+Let \(M_0\subset M\) be the actual \(h\)-injective lattice and let
+
+\[
+\begin{gathered}
+0\longrightarrow L_q\xrightarrow{d_q}L_{q-1}
+\\ \longrightarrow\cdots\xrightarrow{d_1}L_0
+\\ \longrightarrow M_0\longrightarrow0
+\end{gathered}
+\tag{EC.C1}
+\]
+
+be the bounded actual free \(A\)-resolution supplied by Section 5.31,
+L.4--L.6. Its quotient modulo \(h\) is an exact finite free
+\(R\)-resolution of \(\bar M_0=M_0/hM_0\). This exact principal
+resolution, proved there for the whole lattice, is retained; it is not
+the principal matrix of an arbitrary uncorrected generating list.
+
+Set
+
+\[
+\begin{gathered}
+C^j=\operatorname{Hom}_A(L_j,A),
+\\ \delta^j(f)=f\,d_{j+1}.
+\end{gathered}
+\tag{EC.C2}
+\]
+
+These are finite free right \(A\)-modules, and
+\(\delta^{j+1}\delta^j=0\). Their cohomology is the actual
+\(H^j=\operatorname{Ext}_A^j(M_0,A)\). It is a finite coherent right
+module by B.2 and the finite kernel/image constructions. Evaluation on
+the finite bases gives the exact identity of finite complexes
+
+\[
+\begin{gathered}
+C^\bullet/C^\bullet h
+\\ =\operatorname{Hom}_R(L_\bullet/hL_\bullet,R).
+\end{gathered}
+\tag{EC.C3}
+\]
+
+In particular its degree-\(j\) cohomology is
+\(F^j=\operatorname{Ext}_R^j(\bar M_0,R)\).
+
+**Finite principal-Hom injection.** There is an injective map of
+right \(R\)-modules
+
+\[
+ H^j/H^j h\ \hookrightarrow\ F^j.
+ \tag{EC.C4}
+\]
+
+**Proof.** Reduce an actual cycle \(z\in C^j\) modulo \(h\) and take
+its class in the cohomology of (EC.C3). A boundary reduces to a boundary,
+and a multiple of \(h\) reduces to zero, so the map is well defined.
+If its value is zero, lift its finite principal boundary to
+\(y\in C^{j-1}\). There is an actual \(w\in C^j\) with
+
+\[
+ z-\delta y=w h.
+ \tag{EC.C5}
+\]
+
+Right \(A\)-linearity gives \((\delta w)h=0\). Multiplication by
+\(h\) is injective on the free right term \(C^{j+1}\): in the actual
+normal symbol a right factor \(h\) is an exact coefficient shift, and
+has zero product only on the zero symbol. Thus \(\delta w=0\).
+Equation (EC.C5) says \([z]=[w]h\), proving that the kernel before
+quotienting is exactly \(H^jh\). Right \(R\)-linearity follows by reducing
+the actual right action, whose differential commutes with every right
+coefficient. This proves (EC.C4). \(\square\)
+
+At a contact-chart point where \(F^j\) has zero stalk, (EC.C4) and
+B.3 force \(H^j=0\). Consequently
+
+\[
+ \operatorname{Supp}H^j\subseteq\operatorname{Supp}F^j.
+ \tag{EC.C6}
+\]
+
+This is a statement about the actual coherent right Ext module. The
+injection (EC.C4) is stronger than the local vanishing implication. It
+retains all nilpotents and all actual sections of the original module.
+It uses one principal reduction and one actual boundary lift per tested
+cycle. There is no infinite descending-order reduction, formal
+completion, filtration-page stabilization or analytic/algebraic
+comparison in this argument.
+
+##### EC.C.1. Finite-order localization and degree signs
+
+Normal localization of (EC.C1) gives the actual free \(E\)-resolution
+of \(M\) already proved in L.4--L.6. Evaluation on each finite free
+basis identifies its dual complex with \(C^\bullet[h^{-1}]\).
+For a right module, an element of the normal localization is represented
+by a finite fraction \(v h^{-k}\), and it is zero exactly when
+\(vh^a=0\) for some finite \(a\ge0\). Normality moves coefficients
+across denominators using \(\sigma\), so finitely many fractions have
+a common denominator. The fraction criterion proves exactness: for a
+fraction killed in a localized quotient, a finite further power of
+\(h\) sends its numerator to the original kernel; its shifted fraction
+then comes from that kernel. Surjections lift numerators. Thus the
+localization commutes with the finite cycle and boundary sequences,
+and
+
+\[
+\begin{gathered}
+\operatorname{Ext}_E^j(M,E)=H^j[h^{-1}],
+\\ \operatorname{Supp}\operatorname{Ext}_E^j(M,E)
+\\ \subseteq\operatorname{Supp}F^j.
+\end{gathered}
+\tag{EC.C7}
+\]
+
+The right Ext is coherent by B.2 and the corresponding finite localized
+kernel construction. Its support in (EC.C7) is normalized contact
+support. Passing back to the conic cotangent chart adds precisely the
+one nonzero scaling coordinate.
+
+For explicit cohomological signs, put \(P^{-j}=L_j\) and use
+\(d_P^{-j}=d_j\). The standard Hom differential is
+
+\[
+ d_{\mathrm{Hom}}^j(f)=(-1)^{j+1}f\,d_{j+1}.
+ \tag{EC.C8}
+\]
+
+Multiplication in degree \(j\) by
+\(\kappa_j=(-1)^{j(j+1)/2}\) is a chain isomorphism from (EC.C2)
+to that standard Hom complex, since
+\(\kappa_{j+1}=(-1)^{j+1}\kappa_j\). Therefore no Ext degree or
+shift changes when using (EC.C2). Every degree uses the finite number
+of terms of (EC.C1); there is no infinite totalization.
+
+#### EC.D. Actual analytic microlocal Bernstein bound
+
+We prove the minimum support dimension for every nonzero coherent
+actual \(E\)-module, without importing the algebraic \(D\)-module
+inequality and without assuming a smooth holonomic normal form.
+
+Let \(V\ne0\) be such a left module. Section 5.32, J.1--J.2 constructs
+a finite actual \(h\)-injective lattice \(V_0\subset V\), and proves
+
+\[
+ \operatorname{Supp}V=
+ \operatorname{Supp}(V_0/hV_0)
+ \tag{EC.D1}
+\]
+
+on the normalized chart. This part of J.1--J.2 applies to every coherent
+module, independently of holonomicity or the finite-fibre argument J.3.
+
+Form the actual finite first-order quotients
+
+\[
+\begin{gathered}
+B=A/h^2A,
+\\ W=V_0/h^2V_0,
+\\ \epsilon=h.
+\end{gathered}
+\tag{EC.D2}
+\]
+
+Equation (EC.1) makes \(\epsilon\) central in \(B\), because
+\([h,a]=(\sigma(a)-a)h\in h^2A\). Its square is zero. Cancellation
+of the injective normal \(h\) action gives
+
+\[
+\begin{gathered}
+\ker(\epsilon:B\to B)=\epsilon B,
+\\ \ker(\epsilon:W\to W)=\epsilon W.
+\end{gathered}
+\tag{EC.D3}
+\]
+
+For example, \(hv\in h^2V_0\) means \(hv=h^2w\), hence \(v=hw\).
+The same cancellation holds in \(A\). The quotient ring is \(R\), and
+\(W/\epsilon W=\bar V_0\) is finite over \(R\). Also \(W\) is finite
+over \(B\) by any finite generating set of \(V_0\). The two kernel/image
+identities prove flatness over the dual numbers exactly as in the
+earlier first-order trace proof: choose a rational vector-space basis
+of the quotient, lift it, and use reduction and one multiplication by
+\(\epsilon\) to prove generation and independence. No infinite-order
+coefficient tensor product is present.
+
+The exact earlier first-order trace lemma consequently proves that
+every minimal support prime of \(\bar V_0\) is involutive for the
+commutator biderivation of (EC.D2). We now compute that biderivation
+and the precise resulting dimension bound.
+
+For principal functions \(a(u,z),b(u,z)\), the first contraction in
+the actual normal product gives
+
+\[
+\begin{gathered}
+\{a,b\}_c=\sum_{i=1}^d\Bigl[
+\\ (\partial_{z_i}a)(\partial_{x_i}-z_i\partial_t)b
+\\ {}-(\partial_{z_i}b)(\partial_{x_i}-z_i\partial_t)a
+\Bigr],
+\\ \{z_i,x_j\}_c=\delta_{ij},
+\\ \{z_i,t\}_c=-z_i.
+\end{gathered}
+\tag{EC.D4}
+\]
+
+Indeed \(\partial_{\xi_i}a=h\partial_{z_i}a\) and
+\(\partial_\tau a=-h\sum_i z_i\partial_{z_i}a\); all second and
+higher contractions, or contractions involving a positive \(h\)-order
+coefficient, vanish after reduction of the commutator modulo \(h^2\).
+This is the antisymmetric biderivation
+
+\[
+\begin{gathered}
+\Pi=\sum_{i=1}^d
+\\ \partial_{z_i}\wedge(\partial_{x_i}-z_i\partial_t).
+\end{gathered}
+\tag{EC.D5}
+\]
+
+Its rank is exactly \(2d\). Its kernel on covectors is the one-dimensional
+span of
+
+\[
+ \alpha=dt+\sum_i z_i\,dx_i.
+ \tag{EC.D6}
+\]
+
+The \(2d\) vectors in (EC.D5) are independent and span \(\ker\alpha\),
+and their paired coefficients in \(\Pi\) are nondegenerate. These
+observations prove both rank and kernel. No assertion of Jacobi for
+(EC.D4) is made or required: this contact-chart biderivation is the
+one supplied by the actual first-order normal quotient.
+
+Here is the finite-witness passage from prime involutivity to conormal
+isotropy. Fix one minimal analytic support prime \(\mathfrak p\), and
+write \(s=\dim R/\mathfrak p\). If \(s=m\), its conormal is zero
+and the required dimension bound is immediate. Otherwise the exact
+earlier analytic-germs Lemma 3.4 and Theorem 4.1 produce adapted linear
+coordinates \(w=(w',w'')\), a primitive coordinate \(a=w_{s+1}\),
+a monic minimal polynomial \(W_a(w',T)\), a nonzero discriminant
+\(\delta(w')\), and the explicit finite equation list
+
+\[
+\begin{gathered}
+g_0=W_a(w',a),
+\\ g_k=\delta(w')w_k
+\\ {}-B_k(w',a)
+\\ (s+2\le k\le m),
+\\ (g_0,g_{s+2},\ldots,g_m)\subseteq\mathfrak p.
+\end{gathered}
+\tag{EC.D6a}
+\]
+
+Their zero set on \(\delta\ne0\) is the generic-sheet support of that
+component. At each of its points their normal derivative determinant is
+\(\partial_TW_a(w',a)\,\delta^{m-s-1}\ne0\), by the simple-root
+part of Theorem 4.1. Thus their differentials span its entire
+\((m-s)\)-dimensional conormal space. This uses actual finite equations,
+rather than arbitrary newly chosen graph germs.
+
+The trace lemma gives \(\{g_a,g_b\}_c\in\mathfrak p\) for every
+pair from this finite list. Choose finite generators of
+\(\mathfrak p\) and represent these finitely many ideal-membership
+identities on one smaller common neighbourhood. Their brackets then
+vanish everywhere on its component, by the analytic Nullstellensatz.
+Choose a point of its dense generic-sheet locus away from the other
+components. The exact earlier proper-subset dimension drop ensures
+that such points exist. At this point the bracket identities and
+(EC.D4)--(EC.D5) give \(\Pi|_{U\times U}=0\) for its full conormal
+space \(U\). No new reduced-ideal sheaf coherence theorem is required
+for this finite list and its finite identities.
+
+On covectors modulo the one-dimensional kernel of \(\Pi\), this is
+an isotropic subspace of a \(2d\)-dimensional symplectic vector space.
+Its dimension is at most \(d\): for an isotropic subspace \(S\), the
+isomorphism of a nondegenerate alternating form with the vector-space
+dual gives \(\dim S^\perp=2d-\dim S\), and \(S\subseteq S^\perp\).
+Thus
+
+\[
+\begin{gathered}
+\dim U\le d+1,
+\\ \dim\operatorname{Supp}V
+\\ \ge(2d+1)
+\\ {}-(d+1)=d.
+\end{gathered}
+\tag{EC.D7}
+\]
+
+The analytic component dimension equals the dimension of its dense
+smooth pieces, by the exact earlier analytic dimension proof. Hence
+every component has dimension at least \(d\); in particular a nonzero
+coherent actual \(E\)-module has normalized support dimension at least
+\(d=n-1\), or conic cotangent support dimension at least \(n\).
+
+For a right module apply B.2 to make it a left module. Its principal
+action is the identity on \(R\), so the normalized support is the same.
+Alternatively the opposite first-order ring reverses the sign of
+(EC.D4), which preserves isotropic subspaces and their dimension bound.
+This proves (EC.D7) on both sides. The zero module is excluded only
+from the minimum-dimension assertion. For \(d=0\), (EC.D7) is the
+correct trivial bound zero.
+
+#### EC.E. Full holonomic concentration
+
+Let \(M\) be an arbitrary coherent holonomic actual \(E\)-module germ.
+If \(M=0\), all its Ext groups are zero. Otherwise its conic support is
+Lagrangian of pure dimension \(n\); its normalized support therefore has
+pure dimension \(d=n-1\). Section 5.32, J.1--J.3 supplies the actual
+coherent lattice, whole-germ contact reduction and bounded resolution
+used in C, without removing any branch or nilpotent part. Its principal
+module \(\bar M_0\) has exactly this reduced support by J.2. Thus
+
+\[
+\begin{gathered}
+\operatorname{codim}_R\operatorname{Supp}\bar M_0
+\\ =(2d+1)-d
+\\ =d+1=n.
+\end{gathered}
+\tag{EC.E1}
+\]
+
+Apply (EC.A). For \(j<n\), \(F^j=0\); (EC.C4), actual finite right
+Nakayama and (EC.C7) give
+
+\[
+\begin{gathered}
+\operatorname{Ext}_E^j(M,E)=0
+\\ (j<n).
+\end{gathered}
+\tag{EC.E2}
+\]
+
+For every \(j\), the actual support estimate is
+
+\[
+\begin{gathered}
+\operatorname{Supp}\operatorname{Ext}_E^j(M,E)
+\\ \subseteq\operatorname{Supp}F^j
+\subseteq\operatorname{Supp}M,
+\\ \dim\operatorname{Supp}\operatorname{Ext}_E^j(M,E)
+\\ \le m-j=2n-1-j.
+\end{gathered}
+\tag{EC.E3}
+\]
+
+If \(j>n\), the last bound is strictly less than \(n-1=d\). A nonzero
+right coherent actual \(E\)-module would violate the independently proved
+actual bound (EC.D7). Hence
+
+\[
+\begin{gathered}
+\operatorname{Ext}_E^j(M,E)=0
+\\ (j>n).
+\end{gathered}
+\tag{EC.E4}
+\]
+
+For \(j=n\), (EC.E3) gives contained support of dimension at most \(d\).
+Any nonzero component has dimension at least \(d\) by D. At its smooth
+points away from the other components it lies in the original
+Lagrangian component of the same dimension, so its tangent space agrees
+there with that Lagrangian tangent space. The exact earlier
+proper-analytic-subset dimension drop makes such a contained component
+an original component. Thus the right Ext is holonomic, or is zero.
+
+Consequently the exact result proved by this complete local argument is
+
+\[
+\begin{gathered}
+\boxed{\begin{gathered}
+\mathcal Ext_{\mathscr E_X}^j(M,\mathscr E_X)=0
+\\ (j\ne n),
+\\ n=\dim_{\mathbf C}X.
+\end{gathered}}
+\end{gathered}
+\tag{EC.E5}
+\]
+
+All arguments are local on actual common domains and commute with
+restriction. Under the earlier actual contact ring isomorphism, transport
+the whole finite resolution and apply that isomorphism to every finite
+matrix entry and every Hom value. This identifies both dual complexes,
+their right action and their cohomology; the contact biholomorphism
+preserves the support dimensions. Thus the theorem transports back to
+the original germ after the generic-position construction. It applies
+at every germ in every nonzero-covector cotangent chart of the actual
+\(E\) sheaf defined by Sections 5.19--5.33. Right Ext and the shift \([n]\) in
+(EC.2)--(EC.3) have precisely the convention required in the finite dual
+support reduction.
+
+
+![The actual principal-Hom injection and exact contact support degree bounds](assets/actual-microlocal-ext-mechanism.png)
+
+*Figure EC.1. The left panels show the actual injection (EC.C4), its one
+finite boundary lift (EC.C5), and the rank/conormal estimate
+(EC.D5)--(EC.D7). The right panel uses the exact illustrative dimensions
+\(d=2\), \(n=3\), \(m=q=5\): commutative codimension is three, and
+degree \(j=4\) would have support dimension at most one, below the actual
+nonzero minimum two. The general integer is \(r=n\). It illustrates
+the full mechanism without imposing those illustrative dimensions on
+the theorem. Free human reading: the first-order trace discussion in
+Ginzburg I.2 and HolIII I.3.8, linked below. The complete reproducible source, SVG, full PNG and exact data accompany the figure. No infinite-coefficient depth
+or I23 section-separation statement is inferred.*
+
+
+#### EC.F. Actual domains and the remaining comparison scope
+
+The explicit finite injection EC.C4 supplies the principal comparison. The proof needs neither negative-order completeness nor an interchange of analytic microlocalization and formal completion. Its actual bounded lattice resolution and exact principal reduction are L.4–L.6; the actual lattice for the arbitrary coherent Ext module is J.1–J.2. The first-order trace theorem has exactly the ring and module hypotheses checked in EC.D2–EC.D3.
+
+Free human reading context is [Kashiwara–Kawai, Holonomic systems III, I.3.8, printed p.847](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), and [Ginzburg, Lectures on D-modules, I.2](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf). These freely accessible texts provide additional reading. Every result used in the argument is proved above or at the precise earlier programme proofs, and a citation supplies no omitted proof step.
+
+#### PG.1. Support purity for the full infinite-order extension
+
+Let \(n=\dim_{\mathbf C}X\ge1\), let \(V\) be a normalized nonzero-covector chart of dimension \(2n-1\), and let \(M\) be any coherent holonomic left \(E\)-module on a sufficiently small common neighbourhood. Put \(B=E^\infty\) and \(M^\infty=B\otimes_E M\), with the ordinary algebraic tensor product. For every closed complex analytic subset \(Z\subset V\) whose local components have codimension at least \(c\),
+\[
+\mathcal H_Z^j(M^\infty)=0
+\quad(j<c-n).
+\tag{PG.1}
+\]
+In particular, if \(c>n\), restriction to the complement is injective:
+\[
+\begin{gathered}
+M^\infty\longrightarrow j_*\bigl(M^\infty|_{V\setminus Z}\bigr),
+\\ j:V\setminus Z\hookrightarrow V.
+\end{gathered}
+\tag{PG.2}
+\]
+The assertion includes singular and nonreduced holonomic germs and every section of the full coefficient extension. It assumes containment of the section's support in this analytic \(Z\); it makes no claim for arbitrary closed subsets of a smaller topological dimension.
+
+**Proof.** The zero module is immediate. Otherwise EC.E proves that
+\(N=\mathcal Ext_E^n(M,E)\) is a coherent right module and that all other dual cohomology vanishes. The actual bounded finite resolution is the one used in EC.C. Proposition FD.1 of [§5.50](#5-50-full-infinite-coefficient-support-depth-and-finite-duality) removes the exact positive dual tail by finite projective splittings. It supplies a finite locally projective right resolution \(R\) of \(N\), in degrees \(-n,\ldots,0\), and the left \(B\)-linear identification
+\[
+M^\infty\simeq
+\mathcal Hom_{E^{\mathrm{op}}}(R,B)[n].
+\tag{PG.3}
+\]
+Here the right flatness is precisely [§5.47, MF.1–MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). The evaluation sign and the shift sign are FD.7–FD.9. This identifies the actual tensor module, with degree-zero cohomology, rather than a formal completion.
+
+Let \(C_Z\) be the actual \((B,E)\)-bimodule representative of \(R\Gamma_ZB\) constructed in SD.E. SD.1 gives \(H^q(C_Z)=0\) for \(q<c\). The natural finite-Hom/support map SD.2 and its signed total differential give
+\[
+\begin{gathered}
+R\Gamma_Z M^\infty
+\\ \simeq\mathcal Hom_{E^{\mathrm{op}}}(R,C_Z)[n].
+\end{gathered}
+\tag{PG.4}
+\]
+Both maps are the actual sheaf maps of SD.F and FD.1–FD.3 and are left \(B\)-linear. To see the degree bound explicitly, replace \(C_Z\) by its good truncation at \(c\), with quotient by the degree-\(c\) boundaries and zero terms below \(c\). The two actions commute with the differential and preserve its images, so this truncation retains the bimodule structure. It is quasi-isomorphic to \(C_Z\). FD.2 proves that Hom from the bounded projective resolution preserves this quasi-isomorphism. A surviving Hom term then has source degree \(-p\), target degree \(q\), and shifted total degree
+\[
+\begin{gathered}
+p+q-n\ge c-n,
+\\ 0\le p\le n,\quad q\ge c.
+\end{gathered}
+\tag{PG.5}
+\]
+Only finitely many \(p\)'s occur in each total degree. Hence the right side of PG.4 has no cohomology below \(c-n\), proving PG.1. Splittings, lifts, idempotents and chain identities involve finitely many actual operator entries; SD.F represents all of them on one common neighbourhood before any infinite coefficient sum. All positive every-epsilon bounds, negative factorial bounds, spatial indices and fixed derivatives therefore remain those of the full sheaf \(B\).
+
+For a sheaf in degree zero, \(\mathcal H_Z^0\) is the kernel of restriction off \(Z\): directly, its sections are the local sections zero on that complement. If \(c>n\), PG.1 kills this kernel and proves PG.2. Thus a full \(M^\infty\)-section vanishing off \(Z\) is zero. No coherence of that section's own support is needed. \(\square\)
+
+#### PG.2. Extension across the singular exceptional set
+
+The reduced normalized support \(Y\) of a nonzero holonomic \(M\) is pure of dimension \(n-1\). Choose the closed analytic exceptional set \(W\subset Y\) by the finite discriminant/component construction of SD.D: include the exceptional loci of its irreducible components and their pairwise intersections. Outside \(W\) the components are disjoint smooth submanifolds. The earlier analytic dimension-drop proof gives
+\[
+\begin{gathered}
+\dim W\le n-2,
+\\ \operatorname{codim}_V W\ge n+1.
+\end{gathered}
+\tag{PG.6}
+\]
+For \(n=1\), the support consists locally of isolated smooth points and \(W\) can be empty. Applying PG.2 in all other cases proves that restriction off \(W\) detects every section of \(M^\infty\). In particular a section zero on the complement of this exceptional set cannot survive on its singular points or component intersections. The proof uses supported complexes at those points, not continuity from regular points.
+
+![Contact support, its exceptional point and the finite-dual degree bound](assets/holonomic-support-purity.png)
+
+*Figure PG.1. The geometric panel is the real slice \(t=0\), \(x,z\in\mathbf R\), of the exact complex analytic set \(Y=\{t=0,\ xz=0\}\subset\mathbf C^3_{t,x,z}\), with exceptional set \(W=\{0\}\). The two complex branches are Legendrian for \(\alpha=dt+z\,dx\): on the \(x\)-branch \(z=dt=0\), and on the \(z\)-branch \(dx=dt=0\). On either nonzero radial conification the tautological form \(\theta=\tau\alpha\) consequently pulls back to zero. Its differential pulls back to zero as well, and the smooth cone has dimension two, half the ambient symplectic dimension four; it is therefore Lagrangian. This illustrates the support geometry for base dimension \(n=2\); it assumes no classification or selected presentation of \(M\). Here \(\operatorname{codim}W=3\), so \(c-n=1\). The other panels give the actual general maps PG.3–PG.4 and inequality PG.5, which leave no degree-zero section supported on \(W\). Hollow branch points depict the complement of \(W\); the node itself remains part of \(Y\). Reproducible source, exact data, full PNG and editable SVG. Free human context: [Holonomic systems III, I.3.8 and IV.6.2](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf); the complete argument is PG.1–PG.2 above.*
+
+This support-purity theorem supplies the extension step once vanishing off the analytic exceptional set is known. It does not establish that vanishing from solution pairings, construct a common solution family, or solve the finite-matrix relation lifting from \(E^\infty\) to \(E^{\mathrm R}\). The real-module injection, moving-sector comparison and full I23/I24 separation assertions retain those distinct requirements.
+
+
+
 ## 6. What monodromy misses in the irregular world
 
 Consider $\partial_t e=t^{-2}e$. A horizontal coefficient is $e^{1/t}$; its ordinary monodromy is trivial. The trivial connection also has trivial monodromy, but (1.5) proves these meromorphic connections are not isomorphic. For $t=r e^{i\theta}$,

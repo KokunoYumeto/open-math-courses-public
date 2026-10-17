@@ -1,6 +1,6 @@
 # Fibre products and base change
 
-*Written by OpenAI GPT-6.1 Sol in Codex at Ultra; writing-AI self-check completed. No independent review is claimed. Original exposition, proofs, exercises and figures: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 A fibre product makes two maps to the same base agree. On test schemes its points are pairs of compatible maps. On affine charts its ring is a tensor product. These descriptions fit together because the compatible-map functor is a Zariski sheaf with affine open charts. They also explain why the underlying points of a scheme fibre product need not be just pairs of underlying points: there can be several ways to combine their residue fields.
 
@@ -217,7 +217,7 @@ For example, scheme-theoretic inverse image of an affine closed subscheme cut ou
 
 ## Proof dependencies
 
-Affine fibre products use the full arbitrary-test-space mapping proof in the affine lesson. General existence uses the preceding representability criterion, whose openness and sheaf hypotheses are verified here. Point classification uses ordinary quotient and localization prime correspondence from the written internal commutative algebra lessons; the inverse correspondences and residue fields are checked explicitly. Closed-immersion base change and composition use the preceding affine quotient classification and the explicit tensor identities. No flatness, descent, intersection multiplicity or cohomology theorem is assumed.
+Affine fibre products use the mapping property of spectra for arbitrary test spaces. The preceding representability criterion extends this construction to general schemes by open gluing. Point classification combines quotient and localization prime correspondence with residue-field tensor products. Closed-immersion base change and composition use the preceding affine quotient classification and the explicit tensor identities. No flatness, descent, intersection multiplicity or cohomology theorem is assumed.
 
 ## References
 

@@ -4,7 +4,7 @@
 
 A maximal torus describes a reductive group by diagonal symmetries. A regular semisimple element describes the same torus by one element: the torus is the identity component of its centralizer. This observation is useful in families, where the centralizer of a section is easier to specify than a choice of eigenvectors.
 
-We use the torus deformation and conjugacy arguments of Tori, maximal tori and their conjugacy. The classical geometric input concerning Borel subgroups is used below to prove the centralizer theorem, rather than importing that theorem from a reference. All centralizers are scheme-theoretic. Over a field, a geometric assertion means an assertion after algebraic closure.
+We use the torus deformation and conjugacy arguments of [Tori, maximal tori and their conjugacy](AG-RG-01.md). The classical geometric input concerning Borel subgroups is used below to prove the centralizer theorem, rather than importing that theorem from a reference. All centralizers are scheme-theoretic. Over a field, a geometric assertion means an assertion after algebraic closure.
 
 ## 1. The geometry behind the centralizer theorem
 
@@ -557,23 +557,33 @@ If semisimplicity is instead specified by diagonalizability of $\operatorname{ad
 
 For a general smooth connected affine group over a field, a **Cartan subgroup** is $C_G(T)$ for a geometrically maximal torus. The complete field centralizer proof of Lemma 1.1 gives smoothness and geometric connectedness. Over an algebraic closure $T$ is central and still maximal in this centralizer, so the entire central-maximal-torus proof of Lemma 1.C gives $C_G(T)=T\times U_C$ with $U_C$ smooth connected unipotent. Here nilpotence is explicit. Embed $U_C$ in upper unitriangular $m$-by-$m$ matrices by RG01 Lemma 2.A. Let $I_h$ be the matrices whose entries vanish unless column minus row is at least $h$. Matrix multiplication gives $I_hI_j\subset I_{h+j}$, and $I_m=0$. The inverse of $1+X$ is the finite geometric series, since $X^m=0$. Modulo $I_{h+j}$ the products of an $I_h$ and an $I_j$ entry vanish in either order, so $[1+I_h,1+I_j]\subset1+I_{h+j}$ on every test algebra. Intersecting these subgroups with $U_C$ makes its lower central series vanish by step $m$. The central product with $T$ is therefore nilpotent as well. These nested commutator identities descend through the faithful field extension, so the original Cartan group is nilpotent. Conjugacy of maximal tori, proved in RG01 Theorem 2.2, conjugates their entire centralizers. In a reductive group Theorem 2.1 makes that centralizer the torus itself. Thus Cartan subgroups are precisely the maximal tori in the reductive case. We make no additional general-base Cartan representability assertion here.
 
-## 6. Exercises and solutions
+## 6. Exercises
 
 **Exercise 6.1 (first steps).** Compute the centralizer of a diagonal matrix with distinct eigenvalues in $\operatorname{GL}_n$. If its eigenvalues have multiplicities $m_1,\ldots,m_a$, compute the dimension of its centralizer.
 
-**Solution.** The equations $(a_j-a_i)a_{ij}=0$ allow matrix entries only between equal-eigenvalue subspaces. The centralizer is $\prod_i\operatorname{GL}_{m_i}$ and has dimension $\sum_i m_i^2$. For distinct eigenvalues all $m_i=1$, giving the diagonal torus and dimension $n$.
-
 **Exercise 6.2 (centralizers).** In characteristic different from two, prove $C_{\operatorname{SL}_2}(u)=\mu_2\times U$ for the upper unipotent element displayed above. Determine its component group. Explain what changes in characteristic two.
-
-**Solution.** Multiplying out gives $c=0$, $a=d$ and $a^2=1$. The map $(a,x)\mapsto\begin{pmatrix}a&ax\\0&a\end{pmatrix}$ is an isomorphism of group schemes. In characteristic different from two, $\mu_2$ is étale with two points, so the component group is the constant group of order two. In characteristic two $\mu_2$ is connected and nonreduced, and the centralizer has one geometric component and a two-dimensional tangent space despite having dimension one.
 
 **Exercise 6.3 (universal equations).** Over an arbitrary base scheme, prove that the centralizer of the diagonal torus in $\operatorname{GL}_n$ is that torus. Why is checking only the base field's rational points insufficient?
 
-**Solution.** Use the universal diagonal matrix with independent Laurent coordinates $z_i$. The equation $a_{ij}(z_i-z_j)=0$ forces $a_{ij}=0$ for $i\ne j$ by independence of Laurent monomials over every ring. The diagonal entries are units since the matrix is invertible. Over a finite field the rational points of a torus may not separate all its characters, and over nonreduced algebras rational-point equations may miss infinitesimal conditions; the universal computation avoids both problems.
-
 **Exercise 6.4 (geometry).** Show that the regular semisimple locus of $\operatorname{GL}_n$ is exactly the nonvanishing locus of the discriminant of its characteristic polynomial, and is dense over every algebraically closed field.
 
-**Solution.** If the roots are $a_i$, the discriminant is $\prod_{i<j}(a_i-a_j)^2$, a symmetric polynomial in them. The complete lexicographic elementary-symmetric reduction of S06 Section 1 proves that it is a polynomial in the characteristic coefficients, including in positive characteristic. It is nonzero precisely when all eigenvalues are distinct. A matrix with this property is diagonalizable, and Exercise 6.1 gives its torus centralizer. Conversely a semisimple matrix with repeated eigenvalues has larger centralizer, so is not regular semisimple. The polynomial does not vanish identically: choose distinct nonzero elements in the infinite algebraically closed field and take their diagonal matrix. Its nonvanishing locus in the irreducible variety $\operatorname{GL}_n$ is therefore open dense. No assertion that this locus has a rational point over every finite field is needed.
+## Solutions
+
+### Solution 6.1
+
+The equations $(a_j-a_i)a_{ij}=0$ allow matrix entries only between equal-eigenvalue subspaces. The centralizer is $\prod_i\operatorname{GL}_{m_i}$ and has dimension $\sum_i m_i^2$. For distinct eigenvalues all $m_i=1$, giving the diagonal torus and dimension $n$.
+
+### Solution 6.2
+
+Multiplying out gives $c=0$, $a=d$ and $a^2=1$. The map $(a,x)\mapsto\begin{pmatrix}a&ax\\0&a\end{pmatrix}$ is an isomorphism of group schemes. In characteristic different from two, $\mu_2$ is étale with two points, so the component group is the constant group of order two. In characteristic two $\mu_2$ is connected and nonreduced, and the centralizer has one geometric component and a two-dimensional tangent space despite having dimension one.
+
+### Solution 6.3
+
+Use the universal diagonal matrix with independent Laurent coordinates $z_i$. The equation $a_{ij}(z_i-z_j)=0$ forces $a_{ij}=0$ for $i\ne j$ by independence of Laurent monomials over every ring. The diagonal entries are units since the matrix is invertible. Over a finite field the rational points of a torus may not separate all its characters, and over nonreduced algebras rational-point equations may miss infinitesimal conditions; the universal computation avoids both problems.
+
+### Solution 6.4
+
+If the roots are $a_i$, the discriminant is $\prod_{i<j}(a_i-a_j)^2$, a symmetric polynomial in them. The complete lexicographic elementary-symmetric reduction of S06 Section 1 proves that it is a polynomial in the characteristic coefficients, including in positive characteristic. It is nonzero precisely when all eigenvalues are distinct. A matrix with this property is diagonalizable, and Exercise 6.1 gives its torus centralizer. Conversely a semisimple matrix with repeated eigenvalues has larger centralizer, so is not regular semisimple. The polynomial does not vanish identically: choose distinct nonzero elements in the infinite algebraically closed field and take their diagonal matrix. Its nonvanishing locus in the irreducible variety $\operatorname{GL}_n$ is therefore open dense. No assertion that this locus has a rational point over every finite field is needed.
 
 The course prerequisite guide records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
 

@@ -596,11 +596,167 @@ Unweighted height integration would be locally invariant and could not supply (I
 
 For a nonzero separable-predual type III\(_0\) factor, a **discrete associated system** is a presentation \(M\cong N\rtimes_\alpha\mathbb Z\) with the entire existence package of [ZDC](OA-FLOW-ZDC.md#zdc-setting): type II\(_\infty\) coefficient algebra, nonatomic center, centrally ergodic automorphism, and a faithful n.s.f. trace uniformly contracted on the whole positive cone. Equation (IC4) proves uniqueness up to conjugacy after inducing on nonzero central corners. The definition retains contraction.
 
+<a id="ic-inner-perturbations"></a>
+## 14. Inner perturbations on the full algebra and on return corners
+
+We first allow any von Neumann algebra \(B\), any normal automorphism \(\alpha\), and any unitary \(v\in B\). No separability, factor or trace assumption is needed for this first construction. Put
+\[
+                  \beta=\operatorname{Ad}v\circ\alpha .
+ \tag{IC61}
+\]
+There is a normal isomorphism of the regular crossed products
+\[
+ \begin{aligned}
+  \Psi_v:B\rtimes_\beta\mathbb Z&\longrightarrow B\rtimes_\alpha\mathbb Z,\\
+  \Psi_v(x)&=x,\qquad \Psi_v(u_\beta)=v u_\alpha .
+ \end{aligned}
+ \tag{IC62}
+\]
+We prove normality, surjectivity and the inverse directly.
+
+Define \(v_0=1\), \(v_1=v\), and, for \(n>0\),
+\[
+ v_n=v\alpha(v)\cdots\alpha^{n-1}(v),\qquad
+ v_{-n}=\alpha^{-n}(v_n^*).
+ \tag{IC63}
+\]
+These are unitaries, and the recursion \(v_{k+1}=v_k\alpha^k(v)\) holds for every integer \(k\). For the negative indices this follows by taking the adjoint of the positive product and applying \(\alpha^{-n}\). Fix \(n\). The two sequences \(v_{n+m}\) and \(v_n\alpha^n(v_m)\), indexed by \(m\), agree at zero and obey the same recursion in both directions. Consequently
+\[
+ v_{n+m}=v_n\alpha^n(v_m),\qquad
+                  \beta^n=\operatorname{Ad}v_n\circ\alpha^n
+                     \quad(n,m\in\mathbb Z).
+ \tag{IC64}
+\]
+The second identity follows by the same induction; the negative step uses the inverses of the automorphisms.
+
+Represent \(B\) faithfully normally on \(H\), and use the regular formulas of (IC1) for both actions on \(\ell^2(\mathbb Z,H)\). The coordinatewise operator
+\[
+                  (V\xi)(k)=v_{-k}^*\xi(k)
+ \tag{IC65}
+\]
+is an onto unitary: its inverse multiplies coordinate \(k\) by \(v_{-k}\). The first identity below uses \(\beta^{-k}(x)=v_{-k}\alpha^{-k}(x)v_{-k}^*\); the second uses \(v_{1-k}=v_{-k}\alpha^{-k}(v)\):
+\[
+ \begin{aligned}
+  V\pi_\beta(x)V^*&=\pi_\alpha(x),\\
+  (Vu_\beta V^*\xi)(k)
+     &=v_{-k}^*v_{1-k}\xi(k-1)
+       =\alpha^{-k}(v)\xi(k-1).
+ \end{aligned}
+ \tag{IC66}
+\]
+Thus conjugation by \(V\) gives (IC62). Its range contains all of \(B\) and also
+\(u_\alpha=v^*\Psi_v(u_\beta)\), so it is the entire crossed product. The inverse is conjugation by \(V^*\); on generators it fixes \(B\) and sends \(u_\alpha\) to \(v^*u_\beta\). These are normal maps with normal inverses because they are spatial conjugations. [NR4](OA-FLOW-NR.md#oa-flow.nr.4) transports the construction to any other faithful normal regular realization.
+
+The coefficient expectations are also preserved:
+\[
+                        E_\alpha\Psi_v=E_\beta .
+ \tag{IC67}
+\]
+Indeed \(v_0=1\), so the \((0,0)\) compression in Section 2 is unchanged by \(V\). This proves (IC67) on every element, rather than only on a polynomial. If \(\tau\) is a faithful n.s.f. trace on \(B\), the dual weights \(\tau E_\alpha\) and \(\tau E_\beta\) therefore correspond on their whole positive cones, including infinite values. The map also intertwines the circle dual actions: multiplication of coordinate \(k\) by \(z^k\), \(z\in\mathbb T\), commutes with \(V\).
+
+Return now to \(N,\alpha\) of the opening setting and a nonzero central projection \(e\). Inner conjugation fixes the center, so \(\beta\) and \(\alpha\) have the same center transformation and the same return projections \(e_n\). Also
+\(\beta^n(e_n)=\alpha^n(e_n)\). Put
+\[
+                  v_e=\sum_{n\ge1}v_n\alpha^n(e_n)\ \in Ne .
+ \tag{IC68}
+\]
+Each summand has the same initial and final support \(\alpha^n(e_n)\): these projections are central and hence commute with \(v_n\). The second partition in (IC7) makes both sums of supports equal \(e\). Thus (IC68) and its adjoint converge strongly, with
+\(v_e^*v_e=v_ev_e^*=e\). This is a unitary of the *corner* \(Ne\), whose unit is \(e\).
+
+For every \(x\in Ne\), normality and the two orthogonal partitions give
+\[
+ \begin{aligned}
+  \beta_e(x)
+     &=\sum_{n\ge1}v_n\alpha^n(xe_n)v_n^*\\
+     &=v_e\alpha_e(x)v_e^* .
+ \end{aligned}
+ \tag{IC69}
+\]
+This proves that passage to a return section carries an inner perturbation to the explicitly specified inner perturbation \(v_e\). The return cocycle depends on the whole integer product \(v_n\) on the \(n\)-step piece; replacing it by \(ve\) need not give (IC69).
+
+The normal maps commute with the return-corner identifications. Let \(K_e^\alpha,K_e^\beta\) be the maps (IC17), and let \(\Psi_{v_e}\) be (IC62) for the actions \(\alpha_e,\beta_e\) on \(Ne\). Since \(\Psi_v\) fixes \(e\), it restricts to a map between the two crossed-product corners. On coefficients all four maps fix \(Ne\). On the return generator, use (IC64) and the second return partition to obtain
+\[
+ \Psi_v\!\left(\sum_{n\ge1}u_\beta^ne_n\right)
+       =\sum_{n\ge1}v_nu_\alpha^ne_n
+       =v_e\sum_{n\ge1}u_\alpha^ne_n .
+\]
+Every sum is bounded and converges strongly-star. Conjugation by \(V\) preserves these limits, and (IC14) supplies normal generation. Hence the identity on the entire algebras is
+\[
+             \Psi_v|_{\,e(N\rtimes_\beta\mathbb Z)e}\ K_e^\beta
+                       =K_e^\alpha\Psi_{v_e}.
+ \tag{IC70}
+\]
+
+The trace hypothesis survives both operations. For a faithful n.s.f. trace \(\tau\) with \(\tau\alpha\le c\tau\), \(0<c<1\), traciality gives
+\(\tau(vyv^*)=\tau(y)\) for every \(y\ge0\), including infinite trace. Thus \(\tau\beta=\tau\alpha\le c\tau\). On \(Ne\), its restriction \(\tau_e\) is faithful, normal and semifinite. Semifiniteness follows by compressing finite-trace approximants with the central projection \(e\). For \(x\in(Ne)_+\), iteration of the original inequality and normality on the positive return sums give
+\[
+ \begin{aligned}
+  \tau_e(\alpha_e(x))
+     &=\sum_{n\ge1}\tau(\alpha^n(xe_n))
+       \le\sum_{n\ge1}c^n\tau(xe_n)
+       \le c\,\tau_e(x),\\
+                  \tau_e\beta_e&=\tau_e\alpha_e .
+ \end{aligned}
+ \tag{IC71}
+\]
+These inequalities are in \([0,\infty]\). They require no finite-value assumption on \(x\).
+
+<a id="ic-cocycle-uniqueness"></a>
+## 15. The inner-perturbation form of discrete uniqueness
+
+Let the two systems \((N_i,\alpha_i,\tau_i)\) have all the hypotheses of (IC3): separable predual, type \(\mathrm{II}_\infty\), nonatomic center, central ergodicity, and uniform trace contraction on the entire positive cone. Put \(M_i=N_i\rtimes_{\alpha_i}\mathbb Z\). The following three conditions are equivalent:
+
+1. \(M_1\) and \(M_2\) are normally isomorphic.
+2. Some nonzero central induced systems are normally conjugate, as in (IC4).
+3. There exist nonzero \(e_i\in Z(N_i)\), a normal isomorphism \(J:N_1e_1\to N_2e_2\), and a unitary \(v\in N_2e_2\) such that
+\[
+       J(\alpha_1)_{e_1}J^{-1}
+                     =\operatorname{Ad}v\circ(\alpha_2)_{e_2}.
+ \tag{IC72}
+\]
+
+Condition 3 is often called **cocycle conjugacy of the induced automorphisms**. For an integer action, the one unitary \(v\) specifies the whole cocycle by (IC63)–(IC64). In particular the precise inner-automorphism condition is that
+\[
+       J(\alpha_1)_{e_1}J^{-1}(\alpha_2)_{e_2}^{-1}
+\]
+be inner on \(N_2e_2\), in that order. The statement does not require \(J\) to preserve the originally displayed traces.
+
+The implication 1 to 2 is the full coefficient comparison in Sections 7–10. It uses the contracting trace and the normal continuous-system isomorphism; a conjugacy of center flows alone is insufficient for that proof. Condition 2 gives condition 3 with \(v=e_2\), the unit of the second corner.
+
+For the remaining implication, write \(A_i=(\alpha_i)_{e_i}\) and
+\(\gamma=JA_1J^{-1}\). Section 2 transports the regular crossed product normally from \((N_1e_1,A_1)\) to \((N_2e_2,\gamma)\), fixing the integer label. Apply Section 14 with \(\alpha=A_2\) and \(\beta=\gamma=\operatorname{Ad}v\,A_2\). The composite is an onto normal map
+\[
+ \begin{aligned}
+  \Psi:N_1e_1\rtimes_{A_1}\mathbb Z
+          &\longrightarrow N_2e_2\rtimes_{A_2}\mathbb Z,\\
+  \Psi(x)&=J(x),\qquad \Psi(u_1)=v u_2 .
+ \end{aligned}
+ \tag{IC73}
+\]
+Its normal inverse restricts to \(J^{-1}\) and sends
+\(u_2\) to \(J^{-1}(v^*)u_1\). Direct substitution gives the identity on both sets of generators; normal generation then gives it everywhere. The regular-unitary proof establishes faithfulness and normality, which covariance of the displayed generators alone would not establish.
+
+Finally combine \(\Psi\) with the whole-corner and corner-removal maps of Sections 3–4:
+\[
+           L_{e_2}K_{e_2}\,\Psi\,K_{e_1}^{-1}L_{e_1}^{-1}
+                            :M_1\longrightarrow M_2 .
+ \tag{IC74}
+\]
+All five maps are normal and have the normal inverses already constructed there and in (IC73). This proves 3 to 1, and completes the equivalence. The implication 3 to 1 itself uses only the opening coefficient hypotheses needed for the return and fullness constructions; uniform trace contraction is needed for the reverse classification.
+
+Together with [ZDC's existence theorem](OA-FLOW-ZDC.md#zdc-4), this gives the cocycle form of the discrete-system classification for every type \(\mathrm{III}_0\) factor with separable predual. The nonzero central corners and the unitary \(v\) are part of the criterion. Equation (IC72) does not assert that the original uncut automorphisms are conjugate, nor that this particular \(v\) is a coboundary.
+
+![An inner perturbation acts by an explicit regular unitary; first returns replace its one-step unitary by the sum of the integer cocycle products on the arrival partition.](../assets/induced-corners/cocycle-comparison.svg)
+
+*Figure 2.* The top row is the restriction of (IC62) to the return corners. The lower row is the map for the induced automorphisms, with unit \(e\). The vertical maps are the normal return-corner identifications (IC17); the square commutes by (IC70). The sum defining \(v_e\) uses the arrival projections \(\alpha^n(e_n)\). They are central, orthogonal and sum to \(e\). [Editable vector source](../assets/induced-corners/cocycle-comparison.svg) and component terms.
+
 <a id="ic-sources"></a>
-## 14. Sources
+## 16. Sources
 
 The antecedent is Takesaki, *Theory of Operator Algebras II*, Theorem XII.3.7(iii) and Definition XII.3.8, printed pp.394–397, [book DOI](https://doi.org/10.1007/978-3-662-10451-4). The opening of XII.3 on printed p.384 imposes separability. The literal list (a), (b), (c) in (iii) omits the trace condition used in its reverse proof. Section 6 gives a concrete obstruction to that wider conclusion; Sections 7–10 prove the reverse implication with uniform contraction. The pairing permits coincident hits, and the proof transports whole coefficient algebras through nonsingular products.
 
 The entropy identity and its attribution are developed in [Entropy at return times](OA-FLOW-IE.md#IE-sources); its full proof supplies Section 5. The discrete associated system records the entire coefficient algebra and its automorphism, including the contracting trace hypothesis used by the reverse classification.
+
+The induced-automorphism criterion appears in Alain Connes, [*Une classification des facteurs de type III*](https://www.numdam.org/item/ASENS_1973_4_6_2_133_0/), Annales scientifiques de l’École normale supérieure, série 4, 6 (1973), 133–252, Definition 5.4.1 and Theorem 5.4.2, printed pp.240–241; the proof is on pp.245–246. Sections 14–15 above give the integer-cocycle maps and the equivalent criterion in the separable-predual setting of this lesson. The normal maps and their inverses are proved here and in the indicated earlier sections.
 
 Original exposition, figure, data and renderer are dedicated to CC0-1.0 to the extent of rights held. Cited works and bundled font components retain their own terms.

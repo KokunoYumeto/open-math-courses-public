@@ -33,7 +33,7 @@ x\delta_e=\sum_{g\in G}\widehat x(g)\delta_g,
 \]
 These are Hilbert-space expansions, not assertions of operator-norm Fourier convergence. In particular, \(\tau(x^*y)=\langle x\delta_e,y\delta_e\rangle\), so trace Cauchy–Schwarz follows from Hilbert-space Cauchy–Schwarz.
 
-For a subgroup \(H\), write \(A=L(H)\subset M\). The subgroup compression proved in [G03](regular-group-operator-foundations.md#g03) gives the trace expectation \(E_A\). On trace vectors it is the orthogonal projection onto \(\overline{A\delta_e}=\ell^2(H)\). Consequently
+For a subgroup \(H\), write \(A=L(H)\subset M\). The subgroup compression proved in [G04](regular-group-operator-foundations.md#g04) gives the trace expectation \(E_A\). On trace vectors it is the orthogonal projection onto \(\overline{A\delta_e}=\ell^2(H)\). Consequently
 \[
 \widehat{E_A(x)}(g)=1_H(g)\widehat x(g).
 \tag{4}
@@ -245,3 +245,25 @@ Allan M. Sinclair and Roger R. Smith, [*The Pukánszky invariant for masas in gr
 Sorin Popa, [*Orthogonal pairs of subalgebras in finite factors*](https://imar.ro/~increst/1981/89_1981.pdf), INCREST preprint 89/1981, October 1981. Lemma 1.3 and the opening of §2, printed pp. 2–3 (PDF pp. 6–7), prove normalizer confinement using orthogonality for malnormal subgroups. Theorem 2.1, printed pp. 3–4, is a subfactor construction that uses the rational full affine group as an auxiliary group.
 
 Claire Anantharaman and Sorin Popa, [*An introduction to II1 factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author-hosted draft. §1.3.1, printed pp. 6–9 (PDF pp. 12–15), develops the group trace, convolution adjoint, regular commutation and ICC criterion; Theorem 9.1.2 and Remark 9.1.3, printed p. 140 (PDF p. 146), prove the trace expectation and its orthogonal-projection interpretation. The subgroup-orbit criterion and the extension to arbitrary infinite dilation subgroups are proved above in full.
+
+## Bounded subgroup operators and normalizers
+
+The subgroup algebra in (4) is the actual algebra on \(\ell^2(G)\), not just a copy of its Hilbert space. [G03](regular-group-operator-foundations.md#g03) identifies it through the right-coset amplification
+\[
+\iota_H(b)=\bigoplus_{Ht}U_t bU_t^*,
+\qquad U_t\delta_h=\delta_{ht}.
+\]
+Every block has norm \(\|b\|\), and restricting to the identity coset gives the reverse norm inequality. Thus this amplification is an isometric unital star homomorphism. The full block-commutant calculation in G03 identifies its range with \(\lambda_G(H)''\). In [G04](regular-group-operator-foundations.md#g04), compression of \(x\in L(G)\) to \(\ell^2(H)\) commutes with the right regular representation of \(H\); [G00](regular-group-operator-foundations.md#g00) puts that compression in \(L(H)\). Amplifying it gives the bounded operator \(E_A(x)\), with \(E_A(x)\delta_e=P_Hx\delta_e\). Compression and amplification preserve positivity at every matrix level. Their series-vector pullbacks prove ultraweak continuity, and the identity vector proves trace preservation and faithfulness. These complete arguments establish the expectation used in (4) without the general positive-cone theorem for arbitrary finite subalgebras.
+
+For an abelian subgroup, \(A\) really is abelian under the double-commutant definition. Put \(S=\lambda(H)\). Commutativity gives \(S\subset S'\), hence \(S''\subset S'\). If \(x,y\in S''\), then \(x\in S'\) and \(y\) commutes with every element of \(S'\). Therefore \(xy=yx\). Also an operator commuting with \(S\) commutes with all of \(S''\): it belongs to \(S'\), whose elements commute with \(S''\) by definition. This justifies both directions of the orbit argument without assuming an operator-norm Fourier approximation. [G01](regular-group-operator-foundations.md#g01) supplies the trace for all bounded operators, [G02](regular-group-operator-foundations.md#g02) supplies the square-summable coefficients, and [H03](regular-group-operator-foundations.md#h03) and [H04](regular-group-operator-foundations.md#h04) supply respectively the separable predual and the infinite-dimensional finite-factor classification used in Proposition 3.1.
+
+The finite exclusions in Lemma 4.2 work in every characteristic. For an ordered distinct pair \((a,b),(a',b')\), different first coordinates give no collision. With equal first coordinates, \(b'=0\) permits a collision only if \(b=0\), which would make the pair equal; if \(b'\ne0\), the only possible parameter is \(t=b/b'\). There are at most \(|B|(|B|-1)\) parameters from distinct ordered pairs. Removing those and \(1\) from the infinite set \(H\) leaves an admissible parameter. The same argument applies to the finite translated set \(Bg_0^{-1}\). It uses no ordering of the field, no assumption of characteristic zero and no finite-index hypothesis.
+
+Each truncation in (17) is a bounded operator, since its norm is at most the finite number \(\sum_{s\in B}|\widehat u(s)|\). Those numbers need not have a common bound. For the second term of (18), the precise Hilbert-space pairing is
+\[
+\tau\bigl(v^*x_B^*w(u-x_B)\bigr)
+=\tau\bigl((x_Bv)^*w(u-x_B)\bigr).
+\]
+Its absolute value is at most \(\|x_B\|_2\|u-x_B\|_2\). Cyclicity puts the other term in the pairing of \(u-x_B\) with \(wuv^*\), whose trace-square norm is \(\|u\|_2\). This proves the uniform bound even when the two group unitaries vary with \(B\). The inverse normalizer relation is available too: multiplying \(uAu^*=A\) by \(u^*\) and \(u\) gives \(u^*Au=A\).
+
+Finally the unitaries of \(A\) generate \(A\). If \(h=h^*\in A\) is a contraction, continuous functional calculus gives \(v=h+i(1-h^2)^{1/2}\in A\). Its two factors commute, so \(vv^*=v^*v=1\), and \(h=(v+v^*)/2\). Scaling and taking real and imaginary parts expresses every element as a linear combination of unitaries. Theorem 5.1 therefore makes the entire normalizer algebra equal to \(A\), as used in Exercise 9. The double-coset calculation has no hidden finiteness requirement: \((a,b)\), with \(a\in H\), is carried to \((1,b)\) by taking \(s=1,t=a\) in (20). Nonzero representatives are consequently classified exactly by \(bH\), for finite or infinite multiplicative index.

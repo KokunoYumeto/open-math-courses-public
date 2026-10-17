@@ -1,8 +1,8 @@
 # Course contents
 
-All 72 authored lessons and their used prerequisite routes are self-checked by the writing AI. The reader includes exact prerequisite copies, editable sources and a verified offline archive.
+Seventy-seven lessons treat distributions and their order, kernels, boundary values, singular powers, convolution, wave kernels, Fourier growth, derivative-growth classes, wavefront localization, analytic substitution and spherical holomorphic decompositions of tempered distributions. The reader includes editable lesson sources, reproducible illustrations and the prerequisite readings used by its proofs.
 
-[Learning guide](LEARNING_GUIDE.md) · [Supplied prerequisites](ONLINE-PREREQUISITES.md) · Offline reader and editable sources
+[Learning guide](LEARNING_GUIDE.md) · [Prerequisite readings](ONLINE-PREREQUISITES.md) · [Offline reader and sources](downloads/README.md)
 
 - [Distributions as kernels of continuous operators](reader/AN01-U001.html)
 - [When a kernel is smooth](reader/AN01-U002.html)
@@ -76,3 +76,8 @@ All 72 authored lessons and their used prerequisite routes are self-checked by t
 - Classical finite-order preparation and division
 - [Smooth complex equations and flat remainders](reader/AN01-U071.html)
 - [An oriented coordinate normal form for a real finite-order zero](reader/AN01-U072.html)
+- [Derivative growth and finite-order localization](reader/AN01-U073.html)
+- [Cones and derivative-growth wavefronts](reader/AN01-U074.html)
+- [Holomorphic boundaries and analytic directions](reader/AN01-U075.html)
+- [Analytic maps and derivative growth](reader/AN01-U076.html)
+- [Holomorphic decompositions of tempered distributions](reader/AN01-U077.html)

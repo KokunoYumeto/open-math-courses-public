@@ -1,0 +1,179 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Separating a shared leg</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Matrix multiplication with exponent at most 9/4)</a><a href="characters-and-degenerations.html">Previous lesson</a><a href="two-inequalities-for-polynomial-multiplication.html">Next lesson</a><a href="src/separating-a-shared-leg.md">Editable source</a></nav><main><article><h1 id="separating-a-shared-leg">Separating a shared leg</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A full direct sum requires disjoint variables on all three legs. Often the useful pieces of a tensor have disjoint variables on two legs but share the third. This lesson separates <span class="math" data-tex="\(M\)">\(M\)</span> such pieces, at the cost of <span class="math" data-tex="\(5M\)">\(5M\)</span> copies of the tensor, by a Fourier projection followed by a degeneration whose weight is the square of a label mismatch (Proposition 3.2); each separated piece carries a dot product of length <span class="math" data-tex="\(M\)">\(M\)</span>. Counting words of a given composition then turns the construction into an entropy inequality for characters (Corollary 3.4). The construction is OpenAI's [OpenAI-MM, Section 3]. Notation from <a href="tensors-rank-and-the-exponent.html">Tensors, rank and the exponent</a> and <a href="characters-and-degenerations.html">Characters and degenerations</a> is used throughout.</p>
+<h2 id="1-roots-of-unity">1. Roots of unity</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span> and let <span class="math" data-tex="\(\zeta\in F\)">\(\zeta\in F\)</span> be a primitive <span class="math" data-tex="\(L\)">\(L\)</span>-th root of unity. For every integer <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+\frac1L\sum_{r=0}^{L-1}\zeta^{rn}=\begin{cases}1&amp;\text{if }L\mid n,\\0&amp;\text{otherwise.}\end{cases}
+\]">\[
+\frac1L\sum_{r=0}^{L-1}\zeta^{rn}=\begin{cases}1&amp;\text{if }L\mid n,\\0&amp;\text{otherwise.}\end{cases}
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(L\mid n\)">\(L\mid n\)</span>, every term is <span class="math" data-tex="\(1\)">\(1\)</span>. Otherwise <span class="math" data-tex="\(\zeta^n\ne1\)">\(\zeta^n\ne1\)</span>, and the geometric sum equals <span class="math" data-tex="\((\zeta^{nL}-1)/(\zeta^n-1)=0\)">\((\zeta^{nL}-1)/(\zeta^n-1)=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-finite-separation">2. Finite separation</h2>
+<p><strong>Definition.</strong> Let <span class="math" data-tex="\(A_1,\dots,A_M\)">\(A_1,\dots,A_M\)</span> be tensors that have the same <span class="math" data-tex="\(X\)">\(X\)</span>-variables, pairwise disjoint sets of <span class="math" data-tex="\(Y\)">\(Y\)</span>-variables and pairwise disjoint sets of <span class="math" data-tex="\(Z\)">\(Z\)</span>-variables. The sum of forms <span class="math" data-tex="\(A=A_1+\dots+A_M\)">\(A=A_1+\dots+A_M\)</span> is called a <em>sum with a shared <span class="math" data-tex="\(X\)">\(X\)</span>-leg and matched sectors</em>, and the <span class="math" data-tex="\(A_h\)">\(A_h\)</span> are its <em>sectors</em>. Thus every term of <span class="math" data-tex="\(A\)">\(A\)</span> contains a <span class="math" data-tex="\(Y\)">\(Y\)</span>-variable and a <span class="math" data-tex="\(Z\)">\(Z\)</span>-variable of the same sector.</p>
+<p><strong>Proposition 3.2</strong> (finite separation). Let <span class="math" data-tex="\(A=A_1+\dots+A_M\)">\(A=A_1+\dots+A_M\)</span> be a sum with a shared <span class="math" data-tex="\(X\)">\(X\)</span>-leg and matched sectors. Then
+<span class="math math-display" data-tex="\[
+5M\cdot A\;\rightsquigarrow\;\bigoplus_{h=1}^M\bigl(A_h\otimes B_X(M)\bigr),
+\]">\[
+5M\cdot A\;\rightsquigarrow\;\bigoplus_{h=1}^M\bigl(A_h\otimes B_X(M)\bigr),
+\]</span>
+where on the right the summands have disjoint variables on all three legs; in particular each <span class="math" data-tex="\(A_h\)">\(A_h\)</span> has its own copy of the <span class="math" data-tex="\(X\)">\(X\)</span>-variables.</p>
+<p><strong>Proof.</strong> Write the <span class="math" data-tex="\(X\)">\(X\)</span>-variables as <span class="math" data-tex="\(x_a\)">\(x_a\)</span>, the <span class="math" data-tex="\(Y\)">\(Y\)</span>-variables of <span class="math" data-tex="\(A_h\)">\(A_h\)</span> as <span class="math" data-tex="\(y_{h,b}\)">\(y_{h,b}\)</span> and its <span class="math" data-tex="\(Z\)">\(Z\)</span>-variables as <span class="math" data-tex="\(z_{h,c}\)">\(z_{h,c}\)</span>, so that
+<span class="math math-display" data-tex="\[
+A=\sum_{h,a,b,c}c_{h,a,b,c}\,x_a\,y_{h,b}\,z_{h,c}.
+\]">\[
+A=\sum_{h,a,b,c}c_{h,a,b,c}\,x_a\,y_{h,b}\,z_{h,c}.
+\]</span>
+Put <span class="math" data-tex="\(L=5M\)">\(L=5M\)</span> and let <span class="math" data-tex="\(\zeta\in F\)">\(\zeta\in F\)</span> be a primitive <span class="math" data-tex="\(L\)">\(L\)</span>-th root of unity. The tensor <span class="math" data-tex="\(5M\cdot A\)">\(5M\cdot A\)</span> is the direct sum of <span class="math" data-tex="\(L\)">\(L\)</span> copies of <span class="math" data-tex="\(A\)">\(A\)</span>; give the variables of the copy number <span class="math" data-tex="\(r\in\{0,\dots,L-1\}\)">\(r\in\{0,\dots,L-1\}\)</span> the superscript <span class="math" data-tex="\((r)\)">\((r)\)</span>. Introduce new variables <span class="math" data-tex="\(X_{a,g}\)">\(X_{a,g}\)</span>, <span class="math" data-tex="\(Y_{h,b,u}\)">\(Y_{h,b,u}\)</span>, <span class="math" data-tex="\(Z_{h,c,v}\)">\(Z_{h,c,v}\)</span> with <span class="math" data-tex="\(g,u,v\in\{1,\dots,M\}\)">\(g,u,v\in\{1,\dots,M\}\)</span>, and substitute, for every <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x_a^{(r)}&amp;=\sum_{g=1}^M\zeta^{2rg}X_{a,g},\\
+y_{h,b}^{(r)}&amp;=\sum_{u=1}^M\zeta^{r(u-h)}Y_{h,b,u},\\
+z_{h,c}^{(r)}&amp;=\frac1L\sum_{v=1}^M\zeta^{-r(v+h)}Z_{h,c,v}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+x_a^{(r)}&amp;=\sum_{g=1}^M\zeta^{2rg}X_{a,g},\\
+y_{h,b}^{(r)}&amp;=\sum_{u=1}^M\zeta^{r(u-h)}Y_{h,b,u},\\
+z_{h,c}^{(r)}&amp;=\frac1L\sum_{v=1}^M\zeta^{-r(v+h)}Z_{h,c,v}.
+\end{aligned}
+\]</span>
+All copies are mapped into the same new variables, so the result <span class="math" data-tex="\(A&#x27;&#x27;\)">\(A&#x27;&#x27;\)</span> is a restriction of <span class="math" data-tex="\(5M\cdot A\)">\(5M\cdot A\)</span>. The term <span class="math" data-tex="\(c_{h,a,b,c}x_a^{(r)}y_{h,b}^{(r)}z_{h,c}^{(r)}\)">\(c_{h,a,b,c}x_a^{(r)}y_{h,b}^{(r)}z_{h,c}^{(r)}\)</span> contributes <span class="math" data-tex="\(\frac1Lc_{h,a,b,c}\zeta^{r(u-v+2(g-h))}\)">\(\frac1Lc_{h,a,b,c}\zeta^{r(u-v+2(g-h))}\)</span> to the coefficient of <span class="math" data-tex="\(X_{a,g}Y_{h,b,u}Z_{h,c,v}\)">\(X_{a,g}Y_{h,b,u}Z_{h,c,v}\)</span>. Summing over <span class="math" data-tex="\(r\)">\(r\)</span> and using Lemma 3.1,
+<span class="math math-display" data-tex="\[
+A&#x27;&#x27;=\sum c_{h,a,b,c}\,X_{a,g}\,Y_{h,b,u}\,Z_{h,c,v},
+\]">\[
+A&#x27;&#x27;=\sum c_{h,a,b,c}\,X_{a,g}\,Y_{h,b,u}\,Z_{h,c,v},
+\]</span>
+the sum over all <span class="math" data-tex="\(h,a,b,c\)">\(h,a,b,c\)</span> and over the <span class="math" data-tex="\(g,u,v\)">\(g,u,v\)</span> with <span class="math" data-tex="\(L\mid u-v+2(g-h)\)">\(L\mid u-v+2(g-h)\)</span>. Since <span class="math" data-tex="\(|u-v+2(g-h)|\le3(M-1)&lt;L\)">\(|u-v+2(g-h)|\le3(M-1)&lt;L\)</span>, the condition is
+<span class="math math-display" data-tex="\[
+u-v+2(g-h)=0. \tag{3.1}
+\]">\[
+u-v+2(g-h)=0. \tag{3.1}
+\]</span></p>
+<p>Give the new variables the weights
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+w(X_{a,g})&amp;=g^2,\\
+w(Y_{h,b,u})&amp;=hu-h^2,\\
+w(Z_{h,c,v})&amp;=-hv.
+\end{aligned}
+\]">\[
+\begin{aligned}
+w(X_{a,g})&amp;=g^2,\\
+w(Y_{h,b,u})&amp;=hu-h^2,\\
+w(Z_{h,c,v})&amp;=-hv.
+\end{aligned}
+\]</span>
+By (3.1), <span class="math" data-tex="\(v=u+2(g-h)\)">\(v=u+2(g-h)\)</span> on every term of <span class="math" data-tex="\(A&#x27;&#x27;\)">\(A&#x27;&#x27;\)</span>, and the weight of the term is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;g^2+hu-h^2-h\bigl(u+2(g-h)\bigr)\\
+&amp;\qquad=(g-h)^2\ge0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;g^2+hu-h^2-h\bigl(u+2(g-h)\bigr)\\
+&amp;\qquad=(g-h)^2\ge0.
+\end{aligned}
+\]</span>
+The terms of weight zero are those with <span class="math" data-tex="\(g=h\)">\(g=h\)</span>, and then <span class="math" data-tex="\(v=u\)">\(v=u\)</span>. So the degeneration is
+<span class="math math-display" data-tex="\[
+A&#x27;=\sum_{h,a,b,c,u}c_{h,a,b,c}\,X_{a,h}\,Y_{h,b,u}\,Z_{h,c,u}.
+\]">\[
+A&#x27;=\sum_{h,a,b,c,u}c_{h,a,b,c}\,X_{a,h}\,Y_{h,b,u}\,Z_{h,c,u}.
+\]</span>
+For fixed <span class="math" data-tex="\(h\)">\(h\)</span>, the part of <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> with this <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\(A_h\otimes B_X(M)\)">\(A_h\otimes B_X(M)\)</span>, with <span class="math" data-tex="\(X_{a,h}\)">\(X_{a,h}\)</span> for <span class="math" data-tex="\(x_a\otimes x\)">\(x_a\otimes x\)</span>, <span class="math" data-tex="\(Y_{h,b,u}\)">\(Y_{h,b,u}\)</span> for <span class="math" data-tex="\(y_{h,b}\otimes y_u\)">\(y_{h,b}\otimes y_u\)</span> and <span class="math" data-tex="\(Z_{h,c,u}\)">\(Z_{h,c,u}\)</span> for <span class="math" data-tex="\(z_{h,c}\otimes z_u\)">\(z_{h,c}\otimes z_u\)</span>. Parts with different <span class="math" data-tex="\(h\)">\(h\)</span> have disjoint variables on all three legs, so <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> is the direct sum in the statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction uses two different multiplicities: the right side has <span class="math" data-tex="\(M\)">\(M\)</span> direct summands, and each carries a dot product of length <span class="math" data-tex="\(M\)">\(M\)</span>. The dot products do not label additional direct summands; their value under a character, <span class="math" data-tex="\(M^{p_X}\)">\(M^{p_X}\)</span>, is the gain that Corollary 3.4 exploits.</p>
+<h2 id="3-counting-words">3. Counting words</h2>
+<p>For a probability vector <span class="math" data-tex="\(q=(q_1,\dots,q_s)\)">\(q=(q_1,\dots,q_s)\)</span> write <span class="math" data-tex="\(H(q)=-\sum_iq_i\log q_i\)">\(H(q)=-\sum_iq_i\log q_i\)</span>, with natural logarithms and <span class="math" data-tex="\(0\log0=0\)">\(0\log0=0\)</span>.</p>
+<p><strong>Lemma 3.3.</strong> Let <span class="math" data-tex="\(q\)">\(q\)</span> be a probability vector and <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> an integer such that all <span class="math" data-tex="\(Nq_i\)">\(Nq_i\)</span> are integers. Then the multinomial coefficient <span class="math" data-tex="\(M=N!/\prod_i(Nq_i)!\)">\(M=N!/\prod_i(Nq_i)!\)</span> satisfies
+<span class="math math-display" data-tex="\[
+(N+1)^{-s}e^{NH(q)}\le M\le e^{NH(q)}.
+\]">\[
+(N+1)^{-s}e^{NH(q)}\le M\le e^{NH(q)}.
+\]</span></p>
+<p><strong>Proof.</strong> For integers <span class="math" data-tex="\(n_1,\dots,n_s\ge0\)">\(n_1,\dots,n_s\ge0\)</span> with <span class="math" data-tex="\(\sum_in_i=N\)">\(\sum_in_i=N\)</span> put
+<span class="math math-display" data-tex="\[
+\Pi(n)=\frac{N!}{\prod_in_i!}\prod_iq_i^{n_i}.
+\]">\[
+\Pi(n)=\frac{N!}{\prod_in_i!}\prod_iq_i^{n_i}.
+\]</span>
+By the multinomial theorem, <span class="math" data-tex="\(\sum_n\Pi(n)=(q_1+\dots+q_s)^N=1\)">\(\sum_n\Pi(n)=(q_1+\dots+q_s)^N=1\)</span>. For integers <span class="math" data-tex="\(m,k\ge0\)">\(m,k\ge0\)</span> one has <span class="math" data-tex="\(m!/k!\ge k^{m-k}\)">\(m!/k!\ge k^{m-k}\)</span>: for <span class="math" data-tex="\(m\ge k\)">\(m\ge k\)</span> the quotient is a product of <span class="math" data-tex="\(m-k\)">\(m-k\)</span> factors greater than <span class="math" data-tex="\(k\)">\(k\)</span>, and for <span class="math" data-tex="\(m&lt;k\)">\(m&lt;k\)</span> it is the reciprocal of a product of <span class="math" data-tex="\(k-m\)">\(k-m\)</span> factors at most <span class="math" data-tex="\(k\)">\(k\)</span>. Let <span class="math" data-tex="\(n^*=(Nq_i)_i\)">\(n^*=(Nq_i)_i\)</span>. If <span class="math" data-tex="\(\Pi(n)&gt;0\)">\(\Pi(n)&gt;0\)</span>, then <span class="math" data-tex="\(n_i=0\)">\(n_i=0\)</span> whenever <span class="math" data-tex="\(q_i=0\)">\(q_i=0\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\Pi(n^*)}{\Pi(n)}&amp;=\prod_{q_i&gt;0}\frac{n_i!}{(Nq_i)!}\,q_i^{Nq_i-n_i}\\
+&amp;\ge\prod_{q_i&gt;0}N^{n_i-Nq_i}=1.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\Pi(n^*)}{\Pi(n)}&amp;=\prod_{q_i&gt;0}\frac{n_i!}{(Nq_i)!}\,q_i^{Nq_i-n_i}\\
+&amp;\ge\prod_{q_i&gt;0}N^{n_i-Nq_i}=1.
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(\Pi(n^*)\)">\(\Pi(n^*)\)</span> is the largest of at most <span class="math" data-tex="\((N+1)^s\)">\((N+1)^s\)</span> numbers with sum <span class="math" data-tex="\(1\)">\(1\)</span>, whence <span class="math" data-tex="\((N+1)^{-s}\le\Pi(n^*)\le1\)">\((N+1)^{-s}\le\Pi(n^*)\le1\)</span>. Finally <span class="math" data-tex="\(\Pi(n^*)=M\prod_iq_i^{Nq_i}=Me^{-NH(q)}\)">\(\Pi(n^*)=M\prod_iq_i^{Nq_i}=Me^{-NH(q)}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-shared-leg-entropy-inequality">4. The shared-leg entropy inequality</h2>
+<p><strong>Corollary 3.4.</strong> Let <span class="math" data-tex="\(T=T_1+\dots+T_s\)">\(T=T_1+\dots+T_s\)</span> be a sum with a shared <span class="math" data-tex="\(X\)">\(X\)</span>-leg and matched sectors, with all <span class="math" data-tex="\(T_i\ne0\)">\(T_i\ne0\)</span>. For every character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and every probability vector <span class="math" data-tex="\(q=(q_1,\dots,q_s)\)">\(q=(q_1,\dots,q_s)\)</span>,
+<span class="math math-display" data-tex="\[
+\lambda(T)\ge e^{p_X(\lambda)H(q)}\prod_{i=1}^s\lambda(T_i)^{q_i}.
+\]">\[
+\lambda(T)\ge e^{p_X(\lambda)H(q)}\prod_{i=1}^s\lambda(T_i)^{q_i}.
+\]</span></p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(q\)">\(q\)</span> be rational, and let <span class="math" data-tex="\(N\)">\(N\)</span> run through the multiples of a common denominator of the <span class="math" data-tex="\(q_i\)">\(q_i\)</span>. The tensor power <span class="math" data-tex="\(T^{\otimes N}\)">\(T^{\otimes N}\)</span> is the sum of the tensors <span class="math" data-tex="\(T_\mathbf w=T_{w_1}\otimes\dots\otimes T_{w_N}\)">\(T_\mathbf w=T_{w_1}\otimes\dots\otimes T_{w_N}\)</span> over all words <span class="math" data-tex="\(\mathbf w=(w_1,\dots,w_N)\in\{1,\dots,s\}^N\)">\(\mathbf w=(w_1,\dots,w_N)\in\{1,\dots,s\}^N\)</span>. Every <span class="math" data-tex="\(Y\)">\(Y\)</span>-variable of <span class="math" data-tex="\(T^{\otimes N}\)">\(T^{\otimes N}\)</span> is an <span class="math" data-tex="\(N\)">\(N\)</span>-tuple of <span class="math" data-tex="\(Y\)">\(Y\)</span>-variables of <span class="math" data-tex="\(T\)">\(T\)</span>, each belonging to one sector, so it has a word in <span class="math" data-tex="\(\{1,\dots,s\}^N\)">\(\{1,\dots,s\}^N\)</span>; the same holds for the <span class="math" data-tex="\(Z\)">\(Z\)</span>-variables, and a term of <span class="math" data-tex="\(T_\mathbf w\)">\(T_\mathbf w\)</span> has <span class="math" data-tex="\(Y\)">\(Y\)</span>- and <span class="math" data-tex="\(Z\)">\(Z\)</span>-variables of word <span class="math" data-tex="\(\mathbf w\)">\(\mathbf w\)</span>. Substitute <span class="math" data-tex="\(0\)">\(0\)</span> for every <span class="math" data-tex="\(Y\)">\(Y\)</span>-variable whose word does not contain each letter <span class="math" data-tex="\(i\)">\(i\)</span> exactly <span class="math" data-tex="\(Nq_i\)">\(Nq_i\)</span> times. The result
+<span class="math math-display" data-tex="\[
+A=\sum_{\mathbf w\text{ of type }q}T_\mathbf w
+\]">\[
+A=\sum_{\mathbf w\text{ of type }q}T_\mathbf w
+\]</span>
+is a restriction of <span class="math" data-tex="\(T^{\otimes N}\)">\(T^{\otimes N}\)</span>, and it is a sum with a shared <span class="math" data-tex="\(X\)">\(X\)</span>-leg and matched sectors, the <span class="math" data-tex="\(T_\mathbf w\)">\(T_\mathbf w\)</span>, whose number is the multinomial coefficient <span class="math" data-tex="\(M\)">\(M\)</span> of Lemma 3.3. Reordering the factors shows <span class="math" data-tex="\(T_\mathbf w\cong\prod_iT_i^{\otimes Nq_i}\)">\(T_\mathbf w\cong\prod_iT_i^{\otimes Nq_i}\)</span>, so <span class="math" data-tex="\(\lambda(T_\mathbf w)=\prod_i\lambda(T_i)^{Nq_i}=:c_N\)">\(\lambda(T_\mathbf w)=\prod_i\lambda(T_i)^{Nq_i}=:c_N\)</span> for each of these words. By Proposition 3.2 and Lemma 2.9,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+5M\,\lambda(T)^N&amp;\ge5M\,\lambda(A)\\
+&amp;\ge\sum_\mathbf w\lambda(T_\mathbf w)\,\lambda(B_X(M))\\
+&amp;=M^{1+p_X}c_N.
+\end{aligned}
+\]">\[
+\begin{aligned}
+5M\,\lambda(T)^N&amp;\ge5M\,\lambda(A)\\
+&amp;\ge\sum_\mathbf w\lambda(T_\mathbf w)\,\lambda(B_X(M))\\
+&amp;=M^{1+p_X}c_N.
+\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(\lambda(T)\ge5^{-1/N}M^{p_X/N}\prod_i\lambda(T_i)^{q_i}\)">\(\lambda(T)\ge5^{-1/N}M^{p_X/N}\prod_i\lambda(T_i)^{q_i}\)</span>. By Lemma 3.3, <span class="math" data-tex="\(M^{1/N}\ge(N+1)^{-s/N}e^{H(q)}\)">\(M^{1/N}\ge(N+1)^{-s/N}e^{H(q)}\)</span>; letting <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span> proves the inequality for rational <span class="math" data-tex="\(q\)">\(q\)</span>. Since <span class="math" data-tex="\(\lambda(T_i)\ge1\)">\(\lambda(T_i)\ge1\)</span>, the right side is a continuous function of <span class="math" data-tex="\(q\)">\(q\)</span> on the set of probability vectors, in which the rational ones are dense. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For each fixed <span class="math" data-tex="\(N\)">\(N\)</span> the proof uses one degeneration; nothing is required about how the weights of these degenerations grow with <span class="math" data-tex="\(N\)">\(N\)</span>, because Lemma 2.9 is applied separately for each <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<h2 id="5-a-maximum">5. A maximum</h2>
+<p><strong>Lemma 3.5.</strong> Let <span class="math" data-tex="\(\alpha_1,\dots,\alpha_s&gt;0\)">\(\alpha_1,\dots,\alpha_s&gt;0\)</span>. For every probability vector <span class="math" data-tex="\(q\)">\(q\)</span>,
+<span class="math math-display" data-tex="\[
+e^{H(q)}\prod_i\alpha_i^{q_i}\le\sum_i\alpha_i,
+\]">\[
+e^{H(q)}\prod_i\alpha_i^{q_i}\le\sum_i\alpha_i,
+\]</span>
+with equality for <span class="math" data-tex="\(q_i=\alpha_i/\sum_j\alpha_j\)">\(q_i=\alpha_i/\sum_j\alpha_j\)</span>.</p>
+<p><strong>Proof.</strong> By the concavity of the logarithm (the weighted inequality between the arithmetic and the geometric mean),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{q_i&gt;0}q_i\log\frac{\alpha_i}{q_i}&amp;\le\log\sum_{q_i&gt;0}q_i\frac{\alpha_i}{q_i}\\
+&amp;\le\log\sum_i\alpha_i,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{q_i&gt;0}q_i\log\frac{\alpha_i}{q_i}&amp;\le\log\sum_{q_i&gt;0}q_i\frac{\alpha_i}{q_i}\\
+&amp;\le\log\sum_i\alpha_i,
+\end{aligned}
+\]</span>
+and the left side is the logarithm of <span class="math" data-tex="\(e^{H(q)}\prod_i\alpha_i^{q_i}\)">\(e^{H(q)}\prod_i\alpha_i^{q_i}\)</span>. For <span class="math" data-tex="\(q_i=\alpha_i/\sum_j\alpha_j\)">\(q_i=\alpha_i/\sum_j\alpha_j\)</span>, every quotient <span class="math" data-tex="\(\alpha_i/q_i\)">\(\alpha_i/q_i\)</span> equals <span class="math" data-tex="\(\sum_j\alpha_j\)">\(\sum_j\alpha_j\)</span>, and both inequalities are equalities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>3.1</strong> (easy). Let <span class="math" data-tex="\(T=B_X(s)\)">\(T=B_X(s)\)</span>, the sum of the sectors <span class="math" data-tex="\(T_i=xy_iz_i\)">\(T_i=xy_iz_i\)</span>. Show that Corollary 3.4 with the uniform vector <span class="math" data-tex="\(q\)">\(q\)</span> is an equality.</p>
+<p><strong>3.2</strong> (medium). In the setting of Corollary 3.4, show that <span class="math" data-tex="\(\lambda(T)\ge\bigl(\sum_i\lambda(T_i)^{1/p}\bigr)^p\)">\(\lambda(T)\ge\bigl(\sum_i\lambda(T_i)^{1/p}\bigr)^p\)</span> if <span class="math" data-tex="\(p=p_X(\lambda)&gt;0\)">\(p=p_X(\lambda)&gt;0\)</span>, and <span class="math" data-tex="\(\lambda(T)\ge\max_i\lambda(T_i)\)">\(\lambda(T)\ge\max_i\lambda(T_i)\)</span> if <span class="math" data-tex="\(p_X(\lambda)=0\)">\(p_X(\lambda)=0\)</span>.</p>
+<p><strong>3.3</strong> (easy). Check Lemma 3.3 for <span class="math" data-tex="\(s=2\)">\(s=2\)</span>, <span class="math" data-tex="\(q=(\frac12,\frac12)\)">\(q=(\frac12,\frac12)\)</span> and <span class="math" data-tex="\(N=2,4,6\)">\(N=2,4,6\)</span>.</p>
+<p><strong>3.4</strong> (medium). Show that Proposition 3.2 remains true with <span class="math" data-tex="\(5M\)">\(5M\)</span> replaced by any integer <span class="math" data-tex="\(L&gt;3(M-1)\)">\(L&gt;3(M-1)\)</span>, and find a sum with a shared <span class="math" data-tex="\(X\)">\(X\)</span>-leg and matched sectors for which the substitution of the proof with <span class="math" data-tex="\(M=2\)">\(M=2\)</span> and <span class="math" data-tex="\(L=3\)">\(L=3\)</span> produces a term of weight zero with <span class="math" data-tex="\(g\ne h\)">\(g\ne h\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>3.1.</strong> Here <span class="math" data-tex="\(\lambda(T_i)=1\)">\(\lambda(T_i)=1\)</span>, <span class="math" data-tex="\(H(q)=\log s\)">\(H(q)=\log s\)</span>, and the right side is <span class="math" data-tex="\(e^{p_X\log s}=s^{p_X}=\lambda(B_X(s))\)">\(e^{p_X\log s}=s^{p_X}=\lambda(B_X(s))\)</span> by Lemma 2.4.</p>
+<p><strong>3.2.</strong> If <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, the right side of Corollary 3.4 is <span class="math" data-tex="\(\bigl(e^{H(q)}\prod_i(\lambda(T_i)^{1/p})^{q_i}\bigr)^p\)">\(\bigl(e^{H(q)}\prod_i(\lambda(T_i)^{1/p})^{q_i}\bigr)^p\)</span>; choose <span class="math" data-tex="\(q_i\)">\(q_i\)</span> proportional to <span class="math" data-tex="\(\lambda(T_i)^{1/p}\)">\(\lambda(T_i)^{1/p}\)</span> and apply the equality case of Lemma 3.5. If <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, take for <span class="math" data-tex="\(q\)">\(q\)</span> the unit vector at an index <span class="math" data-tex="\(i\)">\(i\)</span> with the largest <span class="math" data-tex="\(\lambda(T_i)\)">\(\lambda(T_i)\)</span>. (This case also follows from <span class="math" data-tex="\(T\ge T_i\)">\(T\ge T_i\)</span>.)</p>
+<p><strong>3.3.</strong> The coefficients are <span class="math" data-tex="\(M=2,6,20\)">\(M=2,6,20\)</span>; the lower bounds <span class="math" data-tex="\(9^{-1}\cdot4\)">\(9^{-1}\cdot4\)</span>, <span class="math" data-tex="\(25^{-1}\cdot16\)">\(25^{-1}\cdot16\)</span>, <span class="math" data-tex="\(49^{-1}\cdot64\)">\(49^{-1}\cdot64\)</span> are below <span class="math" data-tex="\(2\)">\(2\)</span>; the upper bounds are <span class="math" data-tex="\(e^{N\log2}=4,16,64\)">\(e^{N\log2}=4,16,64\)</span>.</p>
+<p><strong>3.4.</strong> The proof uses <span class="math" data-tex="\(L=5M\)">\(L=5M\)</span> only through <span class="math" data-tex="\(|u-v+2(g-h)|\le3(M-1)&lt;L\)">\(|u-v+2(g-h)|\le3(M-1)&lt;L\)</span>, which holds for every <span class="math" data-tex="\(L&gt;3(M-1)\)">\(L&gt;3(M-1)\)</span>; the weight computation does not involve <span class="math" data-tex="\(L\)">\(L\)</span>. For <span class="math" data-tex="\(M=2\)">\(M=2\)</span> and <span class="math" data-tex="\(L=3\)">\(L=3\)</span>, take <span class="math" data-tex="\(A_1=xy_1z_1\)">\(A_1=xy_1z_1\)</span> and <span class="math" data-tex="\(A_2=xy_2z_2\)">\(A_2=xy_2z_2\)</span>, so <span class="math" data-tex="\(A=B_X(2)\)">\(A=B_X(2)\)</span>. With <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, <span class="math" data-tex="\(h=2\)">\(h=2\)</span>, <span class="math" data-tex="\(u=1\)">\(u=1\)</span> and <span class="math" data-tex="\(v=2\)">\(v=2\)</span> one has <span class="math" data-tex="\(u-v+2(g-h)=-3\)">\(u-v+2(g-h)=-3\)</span>, which is divisible by <span class="math" data-tex="\(3\)">\(3\)</span>, so the term <span class="math" data-tex="\(X_{1,1}Y_{2,1,1}Z_{2,1,2}\)">\(X_{1,1}Y_{2,1,1}Z_{2,1,2}\)</span> occurs in <span class="math" data-tex="\(A&#x27;&#x27;\)">\(A&#x27;&#x27;\)</span> with coefficient <span class="math" data-tex="\(1\)">\(1\)</span> (here the indices <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span> take the single value <span class="math" data-tex="\(1\)">\(1\)</span>). Its weight is <span class="math" data-tex="\(1+(2-4)-4=-5\)">\(1+(2-4)-4=-5\)</span>, smaller than the weight zero of the intended terms; so the least weight is negative and the degeneration is not the intended direct sum.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-MM] OpenAI, <em>An upper bound of 9/4 for the matrix multiplication exponent</em>, OpenAI Math Release preprint, 2 October 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026</li>
+<li>[LG] F. Le Gall, <em>Powers of tensors and fast matrix multiplication</em>, in Proceedings of the 39th International Symposium on Symbolic and Algebraic Computation (2014), 296–303; full version arXiv:1401.7714, Appendix A (counting words of a fixed composition in tensor-power arguments). https://arxiv.org/abs/1401.7714</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,6 +1,6 @@
 # The functor of points and representability
 
-*Written by OpenAI GPT-6.1 Sol in Codex at Ultra; writing-AI self-check completed. No independent review is claimed. Original exposition, proofs and exercises: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 A scheme can be studied by the maps into it. Testing only with fields records its points and residue fields; testing with dual numbers also records tangent directions. Testing with every scheme records the entire scheme, including its morphisms. The functor of points makes this statement precise, and its gluing criterion lets us build a scheme from a geometric description of its families.
 
@@ -207,7 +207,7 @@ The transported maps to \(X_i\) agree by the cocycle and glue uniquely on \(V_i\
 
 ## Proof dependencies
 
-The scheme-specific affine-test theorem, open-subfunctor theorem and representability criterion are proved here. The full Yoneda calculation is included, with [Stacks, Tag 001P] as the primary reference. Maps into spectra and open-chart gluing use the written proofs in the preceding two lessons. The Picard example uses the preceding lesson's actual solved exercise rather than a future Picard-group calculation. No general descent for modules, quotient construction or projective representability theorem is being assumed.
+The Yoneda calculation identifies schemes through their maps from test schemes; see [Stacks, Tag 001P]. Maps into spectra and open-chart gluing from the preceding two lessons give the affine-test and representability criteria. The Picard example uses the invertible-sheaf calculation in the preceding lesson's Exercise 6. No general descent for modules, quotient construction or projective representability theorem is being assumed.
 
 ## References
 

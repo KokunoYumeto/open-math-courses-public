@@ -56,7 +56,7 @@ using (S4). For the last formula, \(W=(X_i-M_i)_+\) is nonnegative, \(\mathbb EW
 
 ## 3. Ehrhard's inequality
 
-The following theorem is used without proof.
+The following theorem is Theorem A of the course [Ehrhard's inequality for convex sets](course:ehrhards-inequality-for-convex-sets/gaussian-heat-semigroups-and-a-gradient-bound#the-theorem), where it is proved in full; Corollary 3.4 there is the concavity statement of Lemma 3.1 below.
 
 **(EHR) Ehrhard's inequality.** Let \(K,L\subseteq\mathbb R^d\) be closed convex sets with \(\gamma_d(K),\gamma_d(L)\in(0,1)\), and \(0\le\lambda\le1\). Then
 \[
@@ -67,7 +67,7 @@ The following theorem is used without proof.
 \end{aligned}
 \]
 
-Ehrhard proved it for convex sets by a Gaussian symmetrization [Ehrhard]. Latała extended it to the case in which only one set is convex, and Borell to arbitrary Borel sets; van Handel [vH] and Neeman and Paouris [NP] gave further proofs, by a stochastic game and by interpolation along the Ornstein–Uhlenbeck semigroup. For parallel half-spaces \(\{\langle e,x\rangle\le a\}\) and \(\{\langle e,x\rangle\le b\}\) both sides equal \(\lambda a+(1-\lambda)b\), so the inequality is sharp.
+Ehrhard proved it for convex sets by a Gaussian symmetrization [Ehrhard]. Latała extended it to the case in which only one set is convex, and Borell to arbitrary Borel sets; van Handel [vH] and Neeman and Paouris [NP] gave further proofs, by a stochastic game and by interpolation along the Ornstein–Uhlenbeck semigroup; the course cited above follows the interpolation method with the heat semigroup. For parallel half-spaces \(\{\langle e,x\rangle\le a\}\) and \(\{\langle e,x\rangle\le b\}\) both sides equal \(\lambda a+(1-\lambda)b\), so the inequality is sharp.
 
 **Lemma 3.1.** The function \(u\mapsto\Phi^{-1}(p_i(u))\) is concave on \(\mathbb R\).
 

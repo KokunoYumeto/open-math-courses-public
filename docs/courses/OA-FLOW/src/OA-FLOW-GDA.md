@@ -547,7 +547,7 @@ D(q(\widehat\Delta_{\psi,\varphi}))
 \]
 The output field is strongly measurable by the same bounded-resolvent approximation and truncated norm limit. These exact domains include positive square roots, real/complex powers and logarithms; the operators have no zero eigenvector. The single-input GNS/involution domains are the already proved GDW domains, and the full relative graph and polar domains are BC2's restrictions of the complete balanced graph. No measurable disintegration or finite-state shortcut is used.
 
-This proves the general whole-cone averaging map, all-normal-input extension, equality with every faithful n.s.f. GDW construction and the normalized comparison of two such dual weights. It does not prove arbitrary cocycle realization, induction, disintegration, normal LCA recognition, a factor classification or whole-course closure.
+This proves the general whole-cone averaging map, all-normal-input extension, equality with every faithful n.s.f. GDW construction and the normalized comparison of two such dual weights.
 
 <a id="gda-10"></a>
 
@@ -654,6 +654,25 @@ With \(\chi\) and \(\beta\) as in GDA11, let \(R_2=M_2(M)\rtimes_\beta G\). The 
 \]
 
 identifies \(R_2\) normally with \(M_2(R)\). The coefficient generators become \([\pi(a_{ij})]\), and the group generator becomes \(\lambda_s\otimes I_2\). These generate all \(M_2(R)\): the coefficient algebra contains \(I\otimes E_{ij}\), and the diagonal regular generators give every entry of \(R\). [NR4](OA-FLOW-NR.md#oa-flow.nr.4) transports this identification to the faithful GNS regular model of \(\chi\).
+
+The compact function algebras and their integrated operators have the same identification. Write \(\mathscr K_\alpha\) for [GDW1's](OA-FLOW-GDW.md#gdw-1) bounded, compactly supported, strongly* continuous coefficient functions, and define \(\mathscr K_\beta\) in the same way. A matrix field \(F=[f_{ij}]\) is strongly* continuous exactly when its four entries are: apply the coordinate inclusions and projections in one direction, and take the finite sum of the resulting vector norms in the other. Each entry inherits a norm bound and a compact carrier from \(F\). Conversely the union of four compact carriers is compact and \(\|F(s)\|\leq\sum_{i,j}\|f_{ij}(s)\|\). Consequently
+<a id="equation-gdad1a"></a>
+\[
+ \mathscr K_\beta=M_2(\mathscr K_\alpha)
+ =\mathscr K_\alpha\odot M_2(\mathbb C),\qquad
+ (F*H)_{ij}=\sum_{k=1}^2 f_{ik}*h_{kj},\qquad
+ (F^\#)_{ij}=(f_{ji})^\# .
+ \tag{GDAD1a}
+\]
+Here \(\odot\) denotes the algebraic tensor product; no completion is needed for the four matrix coordinates. The convolution and involution identities follow by substituting into (GDW2): \(\beta\) acts entrywise, matrix multiplication contributes the finite sum, and the Haar modular factor is the same for every entry. Under the coordinate unitary (GDAD1),
+<a id="equation-gdad1b"></a>
+\[
+ L_F^\beta
+ =\int_G(\lambda_s\otimes I_2)[\pi(f_{ij}(s))]\,ds
+ =[L_{f_{ij}}^\alpha] .
+ \tag{GDAD1b}
+\]
+To justify the integral equality, pair with arbitrary two-component Hilbert vectors. Each pairing is a finite sum of scalar integrals of bounded functions on a compact carrier, so the sum and integral interchange. Equality of all these pairings proves the bounded-operator identity. This verifies the identification on the full compact coefficient algebra as well as on the generating operators.
 
 **Theorem.** Under(GDAD1), every \(X=[X_{ij}]\in M_2(R)_+\) satisfies
 

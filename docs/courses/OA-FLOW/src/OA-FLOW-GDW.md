@@ -363,7 +363,7 @@ It is not asserted that \(L(\mathscr B)\) is the entire finite ideal; its actual
 
 <a id="gdw-7"></a>
 
-## GDW7. Modular formulas and the formerly missing joint continuity
+## GDW7. Modular formulas and joint cocycle continuity
 
 Write \(u(t,r)=(D(\varphi\circ\alpha_t):D\varphi)_r\), with BC4's balanced-weight definition. BC3's whole-Hilbert formula at entry one gives
 
@@ -399,7 +399,7 @@ u(t,r)u(g^{-1}t,r)^*
 \]
 Indeed \(t=gs\), so the two weights on the left are \((\varphi\circ\alpha_g)\circ\alpha_s\) and \(\varphi\circ\alpha_s\), and their cocycle is \(\alpha_{s^{-1}}(u(g,r))\). This is exactly the coefficient of \(\lambda_g\pi(u(g,r))\) in the regular model. Each fixed \(g,r\) gives equality of bounded operators on all of \(K\); no common exceptional set over the whole group is required.
 
-Finally (GDW27) proves the joint continuity originally needed in the older construction:
+Finally (GDW27) also gives joint cocycle continuity:
 
 <a id="equation-gdw29"></a>
 

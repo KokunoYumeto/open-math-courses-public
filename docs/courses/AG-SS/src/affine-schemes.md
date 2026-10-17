@@ -1,6 +1,6 @@
 # Affine schemes
 
-*Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 The prime spectrum records where algebraic equations vanish. Its structure sheaf records which fractions are available near those points. This turns a ring into a locally ringed space, and turns a module into a sheaf with the same localization behaviour. The central result is that every quasi-coherent module on this space comes from a single module over the ring.
 
@@ -274,7 +274,7 @@ The fibre is \(M\otimes_Rk=k\). If \(M\) were locally free, it would be free on 
 
 ## Proof dependencies
 
-The algebraic inputs are the radical criterion and quasi-compactness in Spectra of rings, Theorem 1.2, Proposition 2.3 and Theorem 3.1, and exact localization, its tensor description and prime correspondence in Localization, local properties and support, Proposition 1.3 and Theorems 2.1 and 3.1. These are written internal proofs. The finite-cover gluing identity and affine lifting argument are proved in this lesson. The previous lessons supply basis extension, stalkwise sheaf criteria, module tensors, extension by zero and quasi-coherent local presentations. Cohomology vanishing is not needed for the extension argument; later cohomology courses develop its higher-degree counterparts.
+The algebraic inputs are the radical criterion and quasi-compactness in Spectra of rings, Theorem 1.2, Proposition 2.3 and Theorem 3.1, and exact localization, its tensor description and prime correspondence in Localization, local properties and support, Proposition 1.3 and Theorems 2.1 and 3.1. The finite-cover gluing identity and affine lifting argument connect these localizations to the structure sheaf and quasi-coherent modules. The previous lessons supply basis extension, stalkwise sheaf criteria, module tensors, extension by zero and quasi-coherent local presentations. Cohomology vanishing is not needed for the extension argument; later cohomology courses develop its higher-degree counterparts.
 
 ## References
 

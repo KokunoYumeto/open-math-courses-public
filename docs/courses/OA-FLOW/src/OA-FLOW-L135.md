@@ -544,6 +544,43 @@ $$\operatorname{Aut}(M)_0=\operatorname{Int}(M), \tag{50}$$
 
 where the left side is the principal norm-connected component.
 
+<a id="smallaut.corners"></a>
+
+## A full fixed corner detects innerness
+
+For a projection $e$ in a von Neumann algebra $M$, its ambient central support $z_M(e)$ is the least central projection of $M$ above $e$. Call $e$ full when $z_M(e)=1$. If a normal automorphism $\alpha$ fixes $e$, its restriction $\alpha_e$ is an automorphism of the von Neumann algebra $eMe$, whose identity is $e$.
+
+**Theorem.** Let $M\ne0$ be an arbitrary von Neumann algebra and let $\alpha$ be a normal automorphism. The following conditions are equivalent:
+
+1. $\alpha$ is inner.
+2. There is a full fixed projection $e$ such that $\|\alpha_e-\operatorname{id}_{eMe}\|<2$.
+3. For every $\varepsilon>0$, there is a full fixed projection $e$ such that $\|\alpha_e-\operatorname{id}_{eMe}\|<\varepsilon$.
+
+No separability, factor or finiteness assumption is required. In particular, if $\alpha$ is outer, then every full fixed projection satisfies
+
+$$\|\alpha_e-\operatorname{id}_{eMe}\|=2. \tag{FC1}$$
+
+**Proof.** Suppose condition 2 holds. Fullness and $M\ne0$ imply $e\ne0$, so the small-automorphism theorem (48) applies to the nonzero von Neumann algebra $eMe$. It gives a unitary $v$ of that corner such that
+
+$$v^*v=vv^*=e,\qquad
+\alpha(x)=vxv^*\quad(x\in eMe). \tag{FC2}$$
+
+The [full fixed-corner theorem](OA-FLOW-L34.md#oa-flow.l34.9) now gives a unitary of $M$ implementing $\alpha$. Its proof is valid for arbitrary index sets: it extends the corner implementer by $1-e$, then assembles partial isometries with initial projections below $e$ and orthogonal final projections summing strongly to $1$. Equality on every matrix coefficient gives the implementation on all of $M$. Thus condition 2 implies condition 1; neither a countable decomposition nor fullness in the fixed algebra is needed.
+
+Suppose condition 1 holds, say $\alpha=\operatorname{Ad}u$. Apply the [finite central localization theorem](OA-FLOW-L34.md#oa-flow.l34.8a) to this unitary and the prescribed $\varepsilon>0$. It constructs a projection commuting with $u$, with ambient central support $1$, on which the restriction differs from the identity by less than $\varepsilon$. More precisely, that proof chooses $0<\delta<\varepsilon/4$, constructs finitely many disjoint central cuts $z_j$ and corresponding projections $p_j$ commuting with $u$, and sets
+
+$$e=\sum_jz_jp_j,\qquad
+z_M(e)=1,\qquad
+\|\alpha_e-\operatorname{id}_{eMe}\|\le4\delta<\varepsilon. \tag{FC3}$$
+
+The central-cut identity $z_M(z_jp_j)=z_jz_M(p_j)$ ensures fullness; the norm on the finite central sum is the maximum of the component norms. These are exactly the support and estimate assertions proved there. Hence condition 1 implies condition 3. Taking $\varepsilon=2$ proves that condition 3 implies condition 2.
+
+Finally, an automorphism of a C*-algebra is isometric, so $\|\alpha_e-\operatorname{id}_{eMe}\|\le2$. If $\alpha$ is outer, condition 2 fails for every full fixed projection. The opposite inequality follows, proving (FC1). The family is nonempty since $e=1$ is full and fixed. $\square$
+
+**Why the inequality is strict.** On $M=\mathbb C\oplus\mathbb C$, let $\alpha(s,t)=(t,s)$. This is a normal automorphism of an abelian algebra, so it is outer: conjugation by any unitary acts trivially, whereas $\alpha$ moves $(1,0)$. Here $e=1$ is full and fixed. The element $(1,-1)$ has norm $1$ and its difference from its image has norm $2$. Thus $\|\alpha-\operatorname{id}\|=2$, and replacing $<2$ by $\le2$ would give a false criterion.
+
+**Why ambient fullness matters.** On $N=\mathbb C\oplus\mathbb C\oplus\mathbb C$, let $\beta(s,t,r)=(s,r,t)$. The projection $f=(1,0,0)$ is fixed, and the restriction to $fNf$ is the identity, at distance $0$. But $\beta$ is outer because $N$ is abelian and $\beta$ is not the identity. Its ambient central support is $z_N(f)=f\ne1$. The corner test therefore gives no conclusion for this projection. For the zero algebra, the identity automorphism is inner and the corresponding assertions hold with $e=0=1$; the outer case is empty.
+
 <a id="smallaut.sharp"></a>
 
 ## The order-three rotation proves sharpness
@@ -581,4 +618,4 @@ $$\|\rho-\operatorname{id}\|=2. \tag{57}$$
 
 Finally, every inner automorphism of an abelian algebra is the identity, whereas $\rho\neq\operatorname{id}$. Hence $\rho$ is outer. Equations (54) and (57) show that both constants in (45) are sharp and that both inequalities must remain strict.
 
-The mathematical sources are M. Takesaki, *Theory of Operator Algebras II*, Theorem XI.3.6, Lemma XI.3.7, Corollary XI.3.8 and Remark XI.3.9, printed pages 355–356, with the principal branch introduced on page 354 ([edition record](https://doi.org/10.1007/978-3-662-10451-4)); and *Theory of Operator Algebras I*, first edition, Chapter I, exercise 4, printed page 57. The proofs above treat arbitrary C*-algebras, bounded Banach-algebra groups and arbitrary von Neumann algebras with their stated norms and topologies.
+The mathematical sources are M. Takesaki, *Theory of Operator Algebras II*, Theorem XI.3.6, Lemma XI.3.7, Corollary XI.3.8, Remark XI.3.9 and Proposition XI.3.10, printed pages 355–357, with the principal branch introduced on page 354 ([edition record](https://doi.org/10.1007/978-3-662-10451-4)); and *Theory of Operator Algebras I*, first edition, Chapter I, exercise 4, printed page 57. The proofs above treat arbitrary C*-algebras, bounded Banach-algebra groups and arbitrary von Neumann algebras with their stated norms and topologies.

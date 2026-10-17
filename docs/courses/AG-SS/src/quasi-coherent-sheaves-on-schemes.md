@@ -1,6 +1,6 @@
 # Quasi-coherent sheaves on schemes
 
-*Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 On an affine scheme, a quasi-coherent sheaf is a module written in geometric language. On a general scheme, modules on different charts must agree on their overlaps. Many operations respect this agreement automatically. Taking sections over a large open set requires extra care: a finite cover and finite overlap covers let us clear all denominators at once. This is the role of quasi-compactness and quasi-separatedness.
 
@@ -223,7 +223,7 @@ Sections on \(X\) are pairs \((a,b)\in A^2\) with equal restrictions on \(V\). T
 
 ## Proof dependencies
 
-All six assigned targets are proved above, including finite-type exhaustion and coherent extension. The affine equivalence and affine extension-closure proof are exact internal inputs from *Affine schemes*, Theorem 3.2 and Corollary 3.4. Proposition 5.3 uses the written algebraic Artin–Rees theorem specified there. The two sharpness examples are fully verified in Solutions 5 and 6. General theory of diagonals, higher direct images and proper pushforward is outside this lesson.
+Finite-type exhaustion and coherent extension combine the affine equivalence and extension closure from *Affine schemes*, Theorem 3.2 and Corollary 3.4, with gluing. Proposition 5.3 uses the Artin–Rees theorem linked there. Solutions 5 and 6 describe the limits of these statements. General theory of diagonals, higher direct images and proper pushforward is outside this lesson.
 
 ## References
 

@@ -1,0 +1,22 @@
+"""Reproducible map and support diagram; no sampled-kernel representation."""
+from pathlib import Path
+import xml.etree.ElementTree as ET
+p=Path(__file__).with_name('global-boundary-residual-factors.svg')
+parts=['''<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="570" viewBox="0 0 1100 570" role="img" aria-labelledby="title desc">
+<title id="title">One scalar global residual test</title><desc id="desc">The atlas factor DJ equals V S_Y. A compact normal convolution yields a scalar boundary residual with the exact ratio support exp(-R) to exp(R). The auxiliary Hilbert space belongs to the bounded right factor.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#315d6a" stroke-width="1.4"/></marker></defs>
+<rect width="1100" height="570" rx="12" fill="#f3f7f8"/>
+<g font-family="Arial,sans-serif" fill="#152d3a"><text x="35" y="40" font-size="25">A scalar test across the entire boundary</text>
+<text x="35" y="69" font-size="17">H_Y = L²(Y, dν);  auxiliary space ℋ = ⊕ᵢ L²(𝕋ᵈ)</text>
+''']
+for x,y,label,sub in [(70,120,'H_Y','scalar input'),(440,120,'ℋ','atlas components'),(830,120,'ℋ','weighted frame'),(440,280,'H_Y','scalar smoothing output')]:
+ parts.append(f'<rect x="{x}" y="{y}" width="200" height="78" rx="8" fill="white" stroke="#7da2af"/><text x="{x+100}" y="{y+33}" text-anchor="middle" font-size="25">{label}</text><text x="{x+100}" y="{y+59}" text-anchor="middle" font-size="16">{sub}</text>')
+parts.append('''<g stroke="#315d6a" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M270 159 L430 159"/><path d="M640 159 L820 159"/><path d="M200 198 L440 310"/><path d="M640 316 L860 205"/></g>
+<g font-size="20"><text x="341" y="145">J</text><text x="716" y="145">D</text><text x="235" y="300">S_Y = √(J*D²J)</text><text x="743" y="287">V isometry</text></g>
+<text x="70" y="395" font-size="22">DJ = V S_Y     and     ‖DJ f‖ = ‖S_Y f‖</text>
+<text x="70" y="435" font-size="20">S = U⁻¹ p(D_v) S_Y U χ ;    Rᵇ = U⁻¹ Op(C) V U S</text>
+<text x="70" y="473" font-size="18">|v − v′| ≤ R  ⇔  e⁻ᴿ x′ ≤ x ≤ eᴿ x′;  all y, y′ ∈ Y are allowed.</text>
+<text x="70" y="510" font-size="17">Full corner residuals are retained. Only the flat-input remainder uses the Banach bound.</text>
+<text x="70" y="543" font-size="16">Map and support schematic. Proof: J0–J2, P0–P2, N0–N3; kernel formula GR16.</text></g></svg>''')
+p.write_text(''.join(parts),'utf-8');ET.parse(p)
+print(p.name)

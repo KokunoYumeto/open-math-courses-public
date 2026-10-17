@@ -4,7 +4,7 @@
 
 A root datum determines a pinned split reductive group, but it does not remove the geometry of its subgroups or the possibility of descent. This lesson treats both. Parabolic subgroups provide the geometry needed to move Borel pairs; the pinned isomorphism theorem then determines all automorphisms; torsors record how these local descriptions descend.
 
-Throughout, a reductive group over a scheme is smooth and affine, with connected reductive geometric fibres. A split group has a constant root datum and trivial root lines. Statements with one fixed datum are made on the corresponding open and closed part of the base. We use the preceding lessons on maximal tori, torus centralizers, root groups and the pinned isomorphism theorem. The supporting descent results are the supporting lessons Faithfully flat descent and [Quotients and torsors](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-GS/AG-GS-04.html): effective descent of affine schemes and group laws, and the classification of torsors by nonabelian first cohomology. We give the group-specific arguments here.
+Throughout, a reductive group over a scheme is smooth and affine, with connected reductive geometric fibres. A split group has a constant root datum and trivial root lines. Statements with one fixed datum are made on the corresponding open and closed part of the base. We use the preceding lessons on maximal tori, torus centralizers, root groups and the pinned isomorphism theorem. The supporting descent results are the supporting lessons Faithfully flat descent and [Quotients and torsors](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AG-GS/AG-GS-04.html): effective descent of affine schemes and group laws, and the classification of torsors by nonabelian first cohomology. We give the group-specific arguments here.
 
 ## 1. Parabolic subgroups over a field
 
@@ -55,7 +55,7 @@ Over $S$, it is useful initially to allow a smooth affine monomorphism $P\to G$ 
 
 The differential of the monomorphism $P\to G$ is a fibrewise injection of vector bundles; hence its image is a locally direct summand of $\operatorname{Lie}G$. As a $T$-module it contains $\operatorname{Lie}T$ and either the whole of each root line or none of it. The selection is locally constant. Choose $\lambda$ from the parabolic pattern in the chosen fibre. All weights of $\operatorname{Lie}P$ have nonnegative pairing with $\lambda$. The dynamic subgroup $P_P(\lambda)\subset P$ is smooth and has exactly those nonnegative tangent weights, by the graded-coordinate proof in the third lesson. Its inclusion is therefore étale; on every geometric fibre it is an isomorphism, since that fibre is the connected parabolic with this pattern. It follows that $P_P(\lambda)=P$. The limit functor now factors $P\to G$ through $P_G(\lambda)$. This is a monomorphism between smooth schemes, with an isomorphism on every geometric fibre; its differential is an isomorphism, so it is an étale, surjective monomorphism, and hence an isomorphism. In particular the original $P\to G$ is closed.
 
-The [formal separation and normalizer lemmas](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/AG-RG-03.html#formal-separation-and-normalizers) in the rank-one lesson show that $N_G(P)$ is closed of finite presentation and commutes with every base change. Their proof uses a finite prime filtration, Artin–Rees and the determinant trick to detect subgroup equations over a universal Noetherian coefficient ring; it therefore also applies on test schemes with nilpotents. Its geometric fibres are the normalizers calculated in Theorem 1.1.
+The [formal separation and normalizer lemmas](AG-RG-03.md#formal-separation-and-normalizers) in the rank-one lesson show that $N_G(P)$ is closed of finite presentation and commutes with every base change. Their proof uses a finite prime filtration, Artin–Rees and the determinant trick to detect subgroup equations over a universal Noetherian coefficient ring; it therefore also applies on test schemes with nilpotents. Its geometric fibres are the normalizers calculated in Theorem 1.1.
 
 We use the flat-source criterion proved in the rank-one lesson directly over the original base. Locally a finitely presented closed immersion \(X\hookrightarrow Y\) over \(\operatorname{Spec}R\) has a finitely generated ideal \(I\subset C=\mathcal O(Y)\). If \(C/I\) is \(R\)-flat, tensoring \(0\to I\to C\to C/I\to0\) with \(\kappa(s)\) makes \(I\otimes_R\kappa(s)\to C\otimes_R\kappa(s)\) injective. Equality of every geometric fibre makes this ideal zero, first after a faithful field extension and then over \(\kappa(s)\). For a prime \(x\subset C\) over \(s\), this says \(I_x=\mathfrak p_sI_x\); the finitely generated \(C_x\)-module \(I_x\) vanishes by Nakayama. Hence \(I=0\). Apply this to \(P\hookrightarrow N_G(P)\), using the fibre equality in Theorem 1.1 and flatness of \(P/S\). Neither Noetherianity of the base nor flatness of the normalizer is required.
 
@@ -145,7 +145,7 @@ Changing the $\phi_i$'s changes this cocycle by a coboundary. Equivalently, $\op
 
 For the remaining fibre assertion, take a geometric point $\operatorname{Spec}\Omega\to S$, with $\Omega$ algebraically closed. The pulled-back étale cover is nonempty. A nonempty affine chart of it is of finite type over $\Omega$, so a maximal ideal gives an $\Omega$-point by AG-CA-06, Theorem 2.1, whose field-algebra proof is Theorem 1.3 there. Pulling a covering isomorphism back along that point identifies the descended geometric fibre with $(G_0)_\Omega$. Hence that fibre is connected and reductive. This proves reductivity over every geometric point of the arbitrary base.
 
-The two constructions recover each other's cocycles and local isomorphisms. Compatibility and uniqueness in S04, Lemma A1.5, identify their descended objects and morphisms, so they are mutually inverse on isomorphism classes. This is the concrete torsor argument from [Quotients and torsors](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-GS/AG-GS-04.html), applied to the automorphism sheaf $A$. $\square$
+The two constructions recover each other's cocycles and local isomorphisms. Compatibility and uniqueness in S04, Lemma A1.5, identify their descended objects and morphisms, so they are mutually inverse on isomorphism classes. This is the concrete torsor argument from [Quotients and torsors](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AG-GS/AG-GS-04.html), applied to the automorphism sheaf $A$. $\square$
 
 For split pinned $G_0$, an **inner form with inner structure** is obtained from a $G_0^{\mathrm{ad}}$-torsor by conjugation. These structures are classified by $H^1(S,G_0^{\mathrm{ad}})$. Forgetting the inner structure need not be injective on isomorphism classes. The exact sequence split by the pinning is
 
@@ -318,11 +318,23 @@ Every map, root-coordinate closed immersion and open chart used here commutes wi
 
 For $G=\operatorname{GL}_n$ and block type $(n_1,\ldots,n_r)$ this applies to the flag scheme just constructed, with $W=S_n$ and $W_J=S_{n_1}\times\cdots\times S_{n_r}$. Indeed each simple-root reflection swaps adjacent coordinates. These swaps generate every permutation: move its last coordinate into place by adjacent swaps and induct on the remaining coordinates. Restricting to the simple roots within each block gives exactly the displayed product of block permutation groups. It retains the ordered block type and the locally direct-summand condition on flags. For a nonsplit form, these globally indexed affine cells are not asserted: étale-local splitting of its parameter scheme alone does not give such a global stratification.
 
-## 8. Exercises and solutions
+## 8. Exercises
 
 **Exercise 1 $easy$.** Show that $\tau(g)=(g^T)^{-1}$ is outer on $\operatorname{SL}_n$ for $n\geq3$, and is conjugation by $\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$ on $\operatorname{SL}_2$.
 
-**Solution.** Reversing the order twice makes transpose-inverse a homomorphism; it is an involution. If it were inner by $h$, its preservation of the diagonal torus would put $h$ in that torus's normalizer. Its action on $X^*(T)=\mathbf Z^n/\mathbf Z(1,\ldots,1)$ is $-1$, whereas the Weyl action is a coordinate permutation. For three distinct indices, a permutation carrying $e_i-e_j$ to $e_j-e_i$ for every pair would have to exchange both $(i,j)$ and $(i,k)$, which is impossible. Thus $-1$ is not a Weyl action for $n\geq3$. For $n=2$, direct multiplication, using $ad-bc=1$, gives
+**Exercise 2 $medium$.** Classify the inner forms of $\operatorname{SL}_n$ over a field, specifying what changes when the inner structure is forgotten.
+
+**Exercise 3 $medium$.** Classify the parabolics of $\operatorname{GL}_n$ containing the upper triangular Borel.
+
+**Exercise 4 $hard$.** Prove that the Borel subgroup functor of $\operatorname{GL}_n$ is represented by a smooth projective flag scheme over an arbitrary base.
+
+**Exercise 5 $medium$.** Explain why the automorphism group of a split torus need not be of finite type, and verify the central automorphism (3.2).
+
+## Solutions
+
+### Solution 1
+
+Reversing the order twice makes transpose-inverse a homomorphism; it is an involution. If it were inner by $h$, its preservation of the diagonal torus would put $h$ in that torus's normalizer. Its action on $X^*(T)=\mathbf Z^n/\mathbf Z(1,\ldots,1)$ is $-1$, whereas the Weyl action is a coordinate permutation. For three distinct indices, a permutation carrying $e_i-e_j$ to $e_j-e_i$ for every pair would have to exchange both $(i,j)$ and $(i,k)$, which is impossible. Thus $-1$ is not a Weyl action for $n\geq3$. For $n=2$, direct multiplication, using $ad-bc=1$, gives
 
 $$
 \begin{pmatrix}0&1\\-1&0\end{pmatrix}
@@ -334,21 +346,21 @@ $$
 
 The identities hold over every ring, including characteristic two.
 
-**Exercise 2 $medium$.** Classify the inner forms of $\operatorname{SL}_n$ over a field, specifying what changes when the inner structure is forgotten.
+### Solution 2
 
-**Solution.** Its adjoint group is $\operatorname{PGL}_n$. Lemma 6.1 sends a torsor to a degree-$n$ central simple algebra $A$; applying that torsor to the determinant-one matrix group gives $\operatorname{SL}_1(A)$. Conversely the local splitting isomorphisms of $A$ give the same torsor. This proves the classification with inner structure. For $n\geq3$, forgetting it divides by the diagram involution, which sends $A$ to $A^{\mathrm{op}}$, as the transpose calculation in Section 6 shows. The inversion map supplies the corresponding group isomorphism. The distinction concerns the marking; it does not create an additional family of inner groups.
+Its adjoint group is $\operatorname{PGL}_n$. Lemma 6.1 sends a torsor to a degree-$n$ central simple algebra $A$; applying that torsor to the determinant-one matrix group gives $\operatorname{SL}_1(A)$. Conversely the local splitting isomorphisms of $A$ give the same torsor. This proves the classification with inner structure. For $n\geq3$, forgetting it divides by the diagram involution, which sends $A$ to $A^{\mathrm{op}}$, as the transpose calculation in Section 6 shows. The inversion map supplies the corresponding group isomorphism. The distinction concerns the marking; it does not create an additional family of inner groups.
 
-**Exercise 3 $medium$.** Classify the parabolics of $\operatorname{GL}_n$ containing the upper triangular Borel.
+### Solution 3
 
-**Solution.** The simple roots are $e_i-e_{i+1}$, for $1\leq i<n$. A subset $J$ joins consecutive indices into blocks: put a cut at $i$ precisely when $e_i-e_{i+1}\notin J$. The resulting ordered block sizes are positive and sum to $n$. The roots in the Levi are exactly differences within blocks; the other permitted root entries are above the blocks. Thus Theorem 1.1 gives exactly the block upper triangular groups. Recovering their cuts recovers $J$, so there is neither repetition nor omission. For $n=3$, the four types are $(1,1,1),(1,2),(2,1),(3)$.
+The simple roots are $e_i-e_{i+1}$, for $1\leq i<n$. A subset $J$ joins consecutive indices into blocks: put a cut at $i$ precisely when $e_i-e_{i+1}\notin J$. The resulting ordered block sizes are positive and sum to $n$. The roots in the Levi are exactly differences within blocks; the other permitted root entries are above the blocks. Thus Theorem 1.1 gives exactly the block upper triangular groups. Recovering their cuts recovers $J$, so there is neither repetition nor omission. For $n=3$, the four types are $(1,1,1),(1,2),(2,1),(3)$.
 
-**Exercise 4 $hard$.** Prove that the Borel subgroup functor of $\operatorname{GL}_n$ is represented by a smooth projective flag scheme over an arbitrary base.
+### Solution 4
 
-**Solution.** Form the closed incidence subscheme in $\prod_{d=1}^{n-1}\operatorname{Gr}(d,n)$ defined by $F_d\subset F_{d+1}$. Its test points are exactly full locally split flags. The Plücker embeddings and the incidence equations prove projectivity. Adapted bases give local lifts to $\operatorname{GL}_n$; their transition matrices preserve the flag exactly when upper triangular, so this scheme represents $\operatorname{GL}_n/B$. The lower unitriangular charts have $n(n-1)/2$ free coordinates and prove smoothness. By Theorem 2.1 a Borel is locally a conjugate of $B$, and its normalizer is $B$. Hence it determines exactly one quotient section, with descent on overlaps. This identifies the flag and Borel functors on all schemes, rather than merely on field-valued points.
+Form the closed incidence subscheme in $\prod_{d=1}^{n-1}\operatorname{Gr}(d,n)$ defined by $F_d\subset F_{d+1}$. Its test points are exactly full locally split flags. The Plücker embeddings and the incidence equations prove projectivity. Adapted bases give local lifts to $\operatorname{GL}_n$; their transition matrices preserve the flag exactly when upper triangular, so this scheme represents $\operatorname{GL}_n/B$. The lower unitriangular charts have $n(n-1)/2$ free coordinates and prove smoothness. By Theorem 2.1 a Borel is locally a conjugate of $B$, and its normalizer is $B$. Hence it determines exactly one quotient section, with descent on overlaps. This identifies the flag and Borel functors on all schemes, rather than merely on field-valued points.
 
-**Exercise 5 $medium$.** Explain why the automorphism group of a split torus need not be of finite type, and verify the central automorphism (3.2).
+### Solution 5
 
-**Solution.** A torus automorphism is an invertible integral change of its character basis, so the representing scheme is the disjoint union of copies of the base indexed by $\operatorname{GL}_r(\mathbf Z)$. For $r\geq2$ it has infinitely many components, since the matrices $\left(\begin{smallmatrix}1&m\\0&1\end{smallmatrix}\right)$ are distinct. On $\operatorname{GL}_2$, centrality of the determinant factor proves that (3.2) is a homomorphism. Its determinant is $\det(g)^{-1}$, so applying it twice returns $g$. On scalar matrices it sends $zI$ to $z^{-1}I$, whereas every inner automorphism fixes them. Thus it is a nontrivial outer automorphism arising from the central lattice direction.
+A torus automorphism is an invertible integral change of its character basis, so the representing scheme is the disjoint union of copies of the base indexed by $\operatorname{GL}_r(\mathbf Z)$. For $r\geq2$ it has infinitely many components, since the matrices $\left(\begin{smallmatrix}1&m\\0&1\end{smallmatrix}\right)$ are distinct. On $\operatorname{GL}_2$, centrality of the determinant factor proves that (3.2) is a homomorphism. Its determinant is $\det(g)^{-1}$, so applying it twice returns $g$. On scalar matrices it sends $zI$ to $z^{-1}I$, whereas every inner automorphism fixes them. Thus it is a nontrivial outer automorphism arising from the central lattice direction.
 
 The course prerequisite guide records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
 

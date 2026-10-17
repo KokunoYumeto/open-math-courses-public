@@ -1,6 +1,6 @@
 # Quasi-coherent, coherent and locally free modules
 
-*Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 A sheaf of modules can require infinitely many local generators, infinitely many relations, or both. Finiteness conditions control these two difficulties separately. Local freeness adds a geometric condition: near each point there is a basis, although the bases need not fit together globally. An invertible module is the simplest example of this distinction between local and global triviality.
 
@@ -291,7 +291,7 @@ Its endpoint values have the same sign, so \(c\) and \(d\) must have the same si
 
 ## Proof dependencies
 
-The abelian category and stalkwise exactness of module sheaves are Module sheaves, Theorem 2.1; extension by zero is its Lemma 5.2. Tensor, pullback and gluing are proved in the two preceding lessons. Exercise 4 uses Noetherian and Artinian rings, Proposition 1.2. Quasi-coherent modules on an arbitrary ringed space have the presentation definition used here; their abelian and extension properties on schemes will be proved in the next lesson and in *Quasi-coherent sheaves on schemes*.
+The abelian category and stalkwise exactness of module sheaves are Module sheaves, Theorem 2.1; extension by zero is its Lemma 5.2. Tensor products, pullback and gluing use the constructions in the two preceding lessons. Exercise 4 uses Noetherian and Artinian rings, Proposition 1.2. Quasi-coherent modules on an arbitrary ringed space have the presentation definition used here; their abelian and extension properties on schemes will be proved in the next lesson and in *Quasi-coherent sheaves on schemes*.
 
 ## References
 

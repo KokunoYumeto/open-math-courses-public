@@ -15147,7 +15147,2506 @@ Human-source context: the selected-support induction in Section 11 of
 and the second constants in Section 1.1 of his
 [freely accessible 2013 paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).
 
-## 65. Exercises with solutions
+## 65. The complete second-scale integer zero block
+
+The first enlargement can be repeated without changing the coefficient
+vector or its field. The real interval grows by q at each step, while
+the available derivative order is multiplied by \(\eta\). We prove
+the comparison for every rank, including the accumulated integer
+rounding and ordinary-jet costs.
+
+**Theorem 10.198 (all integer stages at the second scale).** Retain
+all hypotheses and notation of Section 64, and choose the coefficient
+vector of Proposition 10.196. Under \(v_p(\Xi-1)\ge U_r\),
+
+\[
+\Phi(s;\boldsymbol t)=0
+\quad\text{if }s\in\mathbb Z,\quad |s|\le q^jS,
+\quad |\boldsymbol t|\le\eta^jT,
+\qquad 0\le j\le r.
+\tag{10.835}
+\]
+
+These are the original prepared values at contraction depth zero.
+In particular the conclusion through \(q^rS\) retains the actual
+global field K and every original polynomial column.
+
+**Proof.** Put \(y=1/(r+1)\). The initial stage is Theorem 10.184,
+and the step from zero to one is Theorem 10.197. We establish the
+input and arithmetic comparisons for the remaining steps
+\(1\le j\le r-1\).
+
+At step j set
+
+\[
+R_j=q^jS,\qquad s_j=\lfloor R_j\rfloor,\qquad
+\mu_j=\left\lfloor\frac{c_5\eta^jT}{r+1}\right\rfloor+1.
+\tag{10.836}
+\]
+
+Bernoulli's inequality, proved by induction after multiplying by
+\(1-c_5/(r+1)\), gives \(\eta^j>1-c_5\) for \(j\le r\).
+Equation (10.709) therefore gives
+
+\[
+\frac{r+1}{c_5\eta^jT}
+<\frac{29}{12c_5(1-c_5)12^r}
+\le\frac{725}{82944}<\frac1{100},
+\qquad
+\mu_j<\frac{101}{100}\frac{c_5\eta^jT}{r+1}.
+\tag{10.837}
+\]
+
+Here both choices of \(c_5\) satisfy
+\(c_5(1-c_5)\ge4/25\). The exact floor inequality gives
+
+\[
+\lfloor\eta^{j+1}T\rfloor+\mu_j-1
+\le\lfloor\eta^jT\rfloor.
+\tag{10.838}
+\]
+
+Thus the preceding block supplies every ordinary input jet.
+
+We next control its separation cost. The proof of (10.756) gives
+\(\log(2S)<H/2+3+r+\log d\). Since \(j\le r\),
+\(q\le3\), and \(\log3<11/10\),
+
+\[
+\log(2R_j)<H/2+3+(21/10)r+\log d<H.
+\tag{10.839}
+\]
+
+For the last inequality use (10.755). After discarding the nonnegative
+\((r-1)\log d/2\), the difference between its lower bound for
+\(H/2\) and \(3+(21/10)r+\log d\) is at least
+\((15r^2-r-25)/10>0\). Consequently the full interval separation
+bound of Theorem 10.34 and the original coefficient and lcm costs obey
+\(M_j\le H/\log p<SN/3\), exactly as in (10.757)–(10.758).
+
+Using \(S>16\), \(j\le r-1\), and
+\(U_r=c_1q^rSTN/(r+1)\), we obtain
+
+\[
+\frac{\mu_j[(2s_j+1)N+M_j]}{U_r}
+<\frac{101}{100}\frac{c_5}{c_1q}
+       \left(2+\frac1{16}+\frac13\right)<\frac{15}{16}.
+\tag{10.840}
+\]
+
+The two upper bounds, using only \(c_1\ge7/10\), are
+\(20907/22400\) for q = 2 and \(2323/2520\) for q = 3.
+Strict normality is unchanged from Theorem 10.190. Theorem 10.182
+therefore gives at every target integer node
+
+\[
+v_p(\Phi(s;\boldsymbol t))-\beta
+\ge (2s_j+1)\mu_jN-D_{\mathrm a}(N+1/(p-1)).
+\tag{10.841}
+\]
+
+It remains to force exact zeros by the global comparison. Use the
+same scale \(\mathcal Z=Zd/(et)\), the same case data
+\(a_*,d_*,\gamma=c_3qd_*\), and the same normalizing upper bound
+\(\mathcal N\) as in Theorem 10.197. The positive analytic term is
+strictly greater than \(\mathcal Z\mathcal L_j(y)\), where
+
+\[
+\mathcal L_j(y)=\frac{2c_5q^{j+1}}{c_1}(1-c_5y)^j
+ -\frac{c_5q}{c_1\gamma}y^2(1-c_5y)^j.
+\tag{10.842}
+\]
+
+This retains \(2\lfloor q^jS\rfloor+1>2q^jS-1\).
+If a target value is nonzero, it is in K by Theorem 10.55.
+There is no q-denominator at these integer nodes and depth zero.
+Theorem 10.92, Lemma 10.194 and Proposition 10.196 then bound its
+arithmetic height, with the normalizing loss added, by
+\(\mathcal Z\mathcal A_j(y,A_0)\), as follows:
+
+\[
+\begin{aligned}
+\ell_q&=\begin{cases}7/50,&q=2,\\11/50,&q=3,\end{cases}\\
+B_j&=\lambda\bigl(1+(j+1)\ell_q+10/17\bigr),\\
+K_j(y)&=\left(\frac{107}{103}+\frac38y\right)(1-c_5y)^{j+1}
+           +\frac{10}{17}\left(1-\frac{483}{824}y\right),\\
+\mathcal A_j(y,A_0)&=\frac{q^{j+1}}{c_1c_2}
+ +\frac{10}{17}\frac1{2c_1c_2}\left(1+\frac{y^2}{2\gamma}\right)
+\\
+&\quad+\frac{y^2}{2}+\frac{22}{17}\frac{13}{18000}
+ +\frac{27}{17}e_0+\mathcal N\\
+&\quad+\frac{101}{100c_1}
+       \frac{B_jA_0/c_4+K_j(y)/c_3}{1+A_0}.
+\end{aligned}
+\tag{10.843}
+\]
+
+Indeed \(q^{j+1}S+2k\le q^{j+1}(S+2k)\), and
+\(\log q/A_r<\ell_q\) because \(A_r>5\). The pointwise
+derivative term is bounded using
+\(a/H\le107/103+3y/8\) at order \(\eta^{j+1}T\).
+The initial mean term uses \(C_r\le1-483y/824\).
+Every other contribution is exactly the corresponding bound in
+Theorem 10.197, with its actual d,e,f. In particular this comparison
+does not discard the coefficient-field or logarithmic column term.
+
+Here is a finite exact verification for steps 1 through 4, followed
+by a uniform argument for all later steps. For fixed y, the last
+fraction is fractional linear in \(A_0\), so it lies between its
+value at \(a_*\) and its limit at infinity. At either endpoint
+\(\mathcal L_j-\mathcal A_j\) is a polynomial P of degree at most
+\(n=j+2\). Its required interval is
+
+\[
+0\le y\le b_j:=\frac1{\max\{4,j+2\}},
+\tag{10.844}
+\]
+
+since \(r\ge3\) and \(j\le r-1\). Write
+\(P(y)=\sum_{k=0}^n a_ky^k\) and define
+
+\[
+v_i=\sum_{k=0}^i a_kb_j^k
+                \frac{\binom ik}{\binom nk},\qquad
+P(y)=\sum_{i=0}^n v_i\binom ni
+       (y/b_j)^i(1-y/b_j)^{n-i}.
+\tag{10.845}
+\]
+
+To prove the identity, substitute the first formula into the second
+and use
+\(\binom ni\binom ik=\binom nk\binom{n-k}{i-k}\).
+The inner binomial sum is one after taking out \((y/b_j)^k\).
+The displayed weights are nonnegative and sum to one. Thus P is at
+least the smallest of the rational numbers \(v_i\). Substitution
+of the seven case rows gives the strict lower bounds in the second
+column of the table below. This checks 56 polynomials with 308
+coefficients; the identity proves that the checks cover whole
+intervals, rather than a sample of ranks.
+
+For the tail first observe
+
+\[
+\eta^j\ge\eta^r>\exp(-c_5)>z_q,
+\qquad
+z_2=29/50,\quad z_3=4/9.
+\tag{10.846}
+\]
+
+Integration gives \(\log(1-x)>-x/(1-x)\) for \(0<x<1\).
+Taking \(x=c_5/(r+1)\) yields
+\(r\log\eta>-rc_5/(r+1-c_5)>-c_5\).
+For the rational exponential bounds, at c = 27/50 and c = 4/5,
+respectively, the positive series gives
+
+\[
+\exp(c)\le\sum_{k=0}^6\frac{c^k}{k!}
+ +\frac{c^7}{7!}\frac1{1-c/8}
+ <\begin{cases}50/29,&c=27/50,\\9/4,&c=4/5.\end{cases}
+\tag{10.847}
+\]
+
+The tail majorant follows because every ratio after the seventh
+term is at most c/8; both final comparisons are rational.
+
+For \(j\ge5\), put \(K=107/103+10/17\),
+\(\xi=101/100\), \(\varepsilon=13/18000\), and define
+
+\[
+\begin{aligned}
+\mathfrak a&=\frac{2c_5z_q-1/c_2}{c_1},
+&\mathfrak c&=\frac{\xi\lambda\ell_q}{c_1c_4},\\
+\mathfrak b&=\frac{c_5q}{16c_1\gamma}
+ +\frac{10}{17}\frac1{2c_1c_2}\left(1+\frac1{32\gamma}\right)
+ +\frac1{32}+\frac{22}{17}\varepsilon+\frac{27}{17}e_0+\mathcal N\\
+&\quad+\frac\xi{c_1}
+  \left[\frac{\lambda(1+10/17)}{c_4}
+                  +\frac K{c_3(1+a_*)}\right].
+\end{aligned}
+\tag{10.848}
+\]
+
+The bound in Theorem 10.197 implies
+\((107/103+3y/8)\eta^{j+1}\le107/103\), so \(K_j(y)\le K\).
+Use \(y\le1/4\), \(A_0/(1+A_0)\le1\), and
+\(1/(1+A_0)\le1/(1+a_*)\). The preceding estimates give
+
+\[
+\mathcal L_j-\mathcal A_j
+>F_j:=\mathfrak a q^{j+1}-\mathfrak b-\mathfrak c(j+1).
+\tag{10.849}
+\]
+
+In every case \(\mathfrak a>0\),
+\(\mathfrak a(q-1)q^6-\mathfrak c>0\), and the third
+column below is a strict lower bound for \(F_5\).
+Consequently \(F_{j+1}-F_j>0\) for every \(j\ge5\).
+
+| Case | Steps 1–4: every coefficient greater than | Tail: \(F_5\) greater than |
+|---|---:|---:|
+| I.1 | \(7/10\) | \(12/5\) |
+| I.2 | \(69/100\) | \(119/50\) |
+| II | \(93/100\) | \(67/25\) |
+| III.1 | \(73/100\) | \(67/50\) |
+| III.2 | \(18/25\) | \(33/25\) |
+| IV | \(93/100\) | \(41/50\) |
+| V | \(9/2\) | \(57/10\) |
+
+The [exact calculation](../figure_sources/yu_second_integer_extension.py)
+records all rational coefficients, both exponential bounds, and each
+tail increment. Every table entry is greater than 1/2. We have therefore
+proved \(\mathcal L_j-\mathcal A_j>1/2\) for every remaining
+integer step and every admissible rank and field. A nonzero target
+value would violate the two bounds for its valuation, so it is zero.
+Together with the exact jet inequality, induction completes all
+stages through r. Above-degree additive orders vanish identically,
+as in Theorem 10.197. \(\square\)
+
+![The growing integer intervals and decreasing derivative cutoffs, with exact uniform comparison bounds in all seven field cases.](../figures/yu-second-integer-extension.png)
+
+*Figure 10.58.* Left: the radii \(q^jS\) and orders \(\eta^jT\)
+of Theorem 10.198 at r = 6 and q = 2, for j from zero to six.
+The points show the real cutoffs; the proof retains their integer
+floors. Right: the smallest Bernstein coefficient over steps 1–4
+and the tail lower bound \(F_5\) in each field case. Both give a
+strict gap greater than 1/2 in units of \(Zd/(et)\); the first
+step has the separate bound in Theorem 10.197. The conclusion is
+an integer zero block at depth zero. Fractional values and support
+contractions require their additional field and denominator estimates.
+[Reproducible calculation and figure](../figure_sources/yu_second_integer_extension.py).
+Human-source context: Section 11 of
+[Yu's freely accessible 1999 paper](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf)
+and the second constants in Section 1.1 of his
+[freely accessible 2013 paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).
+
+## 66. The first fractional block at the second scale
+
+The integer intervals contain a nested collection of derivative data.
+Their smaller intervals retain higher orders, and all these orders can
+be used together. At a fractional node the global root field still
+has to be paid for. Two quantitative features of the selected
+construction supply the comparison: its actual coefficient surplus
+and the strict room between its auxiliary scale and the stated
+second constant.
+
+Retain Sections 61–65, including the original coefficient conditions
+(10.806), the saturated phase data and compatible principal roots of
+Theorems 10.51 and 10.56. Write
+
+\[
+\mathcal Z=\frac{Zd}{et},\qquad
+y=\frac1{r+1},\qquad \eta=1-c_5y,\qquad
+\mathfrak h=\eta^{r+1},\qquad
+S_1=\mathfrak h^{-1}S,\quad T_1=\mathfrak h T.
+\tag{10.853}
+\]
+
+Thus H continues to mean \(h+\log J\); it is distinct from
+the order fraction \(\mathfrak h\). The constants \(c_5\)
+are those of Theorem 10.197.
+
+### The coefficient surplus and the scale comparison
+
+**Lemma 10.199 (retaining the full selected-column surplus).** Let M
+be the full number of initial equations in Theorem 10.184. Its selected
+columns satisfy
+
+\[
+\frac{N_c}{M}>c_0p^{fA_0}
+       \frac{\delta_r\mathcal R_r}{p^f-1}>c_0p^{fA_0}.
+\tag{10.854}
+\]
+
+In particular the kernel may be chosen with the bound (10.823)
+in which the factor \(10/17\) is replaced by w from this table:
+
+| Case | w | \(\chi\) |
+|---|---:|---:|
+| I.1 | \(2/25\) | \(11/10\) |
+| I.2 | \(2/25\) | \(51/50\) |
+| II | \(1/134\) | \(21/20\) |
+| III.1 | \(10/71\) | \(109/100\) |
+| III.2 | \(10/71\) | \(6/5\) |
+| IV | \(4/23\) | \(13/10\) |
+| V | \(5/211\) | \(7/6\) |
+
+Every such choice still satisfies Proposition 10.196 and Theorem
+10.198.
+
+**Proof.** Use the column and row bounds in the proof of Theorem
+10.184, retaining the factor \(p^{-fA_0}\) in (10.668).
+The ratio of the actual column lower bound to the full row upper
+bound is strictly greater than
+
+\[
+c_0\ell_d\,
+\frac{2+1/g_S}{2+1/S}\,
+\frac{\delta_r\mathcal R_r}{p^f-1}\,p^{fA_0}.
+\tag{10.855}
+\]
+
+This follows by substituting (10.702) into the sufficient column
+inequality (10.713): the factors \(\zeta_2^r\),
+\((1+\tau)^r\), the powers of t and all factorials cancel.
+Here \(S\ge g_S\) and \(\ell_d\ge1\). Also
+\(\delta_r\mathcal R_r\ge p^f\). These inequalities give
+the two asserted strict bounds.
+
+The weighted integral Siegel proof in Proposition 10.183 uses the
+row-to-surplus ratio \(M/(N_c-M)\). It is now smaller than
+\((c_0p^{fA_0}-1)^{-1}\). In the seven cases, respectively,
+the following are lower bounds for \(p^{fA_0}\):
+
+\[
+5,\quad5,\quad50,\quad3,\quad3,\quad5/2,\quad16.
+\tag{10.856}
+\]
+
+For I use \(p=3,A_0\ge3/2\) and \(3^3>5^2\).
+For II use \(p=5,A_0\ge5/2\) and \(5^5>50^2\).
+For III use \(p\ge5,A_0\ge3/4\) and \(5^3>3^4\).
+For IV use \(p\ge7,A_0\ge1/2\) and
+\(7>(5/2)^2\). In V, \(p^f\ge4,A_0\ge2\),
+so 16 is allowed with equality. Substitution of these bounds and
+\(c_0=27/10\) gives exactly w. The strict column inequality
+makes the final ratio strict also in V.
+
+Apply the same complete-simplex mean estimate of Lemma 10.194 to
+the same full list of equations. The coefficient-field generator
+term and the leading logarithmic column term are unchanged; only
+the row-height multiplier decreases to w. This proves the claimed
+height bound. All its bracket terms are nonnegative. Since every
+w is less than \(10/17\), the former height bound and all
+its integer-zero consequences remain valid. \(\square\)
+
+**Lemma 10.200 (room in the second constant).** With \(\chi\)
+in the table, the same parameters satisfy
+
+\[
+\chi eU_r<C_2(r,d,p,\boldsymbol\alpha)\,h\Omega_r.
+\tag{10.857}
+\]
+
+The rank-transfer conclusion of Lemma 10.187 remains valid with
+\(\chi U_r\) in place of \(U_r\).
+
+**Proof.** In the seven rows of Proposition 10.186, multiply its
+upper prefactors 627, 631, 627, 452, 454, 1763, 343 by
+the corresponding \(\chi\). The results are strictly below
+1438, 648, 690, 495, 557, 2418, 406, respectively. All these
+are rational comparisons; for example
+\(631(51/50)=32181/50<648\). In III the common
+\(1/\vartheta\) remains cancelled on both sides. Every other
+factor in that proposition is unchanged. The rank transfer uses
+exactly the same cancellation of \(\mathcal R_r\) and the
+same strict factorial ratio as Lemma 10.187; \(\chi\) depends
+on the field case, not the rank. \(\square\)
+
+### Nested interpolation with the selected monomials
+
+**Theorem 10.201 (the first second-scale fractional zeros).** Choose
+the kernel of Lemma 10.199. Under
+\(v_p(\Xi-1)\ge\chi U_r\), its original prepared values
+satisfy
+
+\[
+\Phi(s/q;\boldsymbol t)=0
+\quad\text{for all }s\in\mathbb Z,\quad
+|s|\le q(\lfloor S_1\rfloor+1),\quad
+|\boldsymbol t|\le T_1.
+\tag{10.858}
+\]
+
+The global root field may have degree as large as \(q^rd\).
+The assertion retains that degree and the complete rational
+denominator at these fractional nodes.
+
+**Proof.** Since \(\chi>1\), Theorem 10.198 supplies every
+integer block. Set
+
+\[
+\begin{aligned}
+R_j&=\lfloor q^jS\rfloor,&
+\mu_j&=\lfloor\eta^jT\rfloor-\lfloor\mathfrak h T\rfloor+1,
+                 &&0\le j\le r,\\
+N_*&=(2R_0+1)\mu_0+
+              2\sum_{j=1}^r(R_j-R_{j-1})\mu_j,&
+B&=\lfloor\log_p(2R_r)\rfloor,\\
+M_*&=\max\{B,v_p(V(k)),v_p(b_n)\},&
+Q_D&=D_{\mathrm a}(N+1/(p-1)).
+\end{aligned}
+\tag{10.859}
+\]
+
+The radii are strictly increasing, and the multiplicities are positive
+and nonincreasing. Every required ordinary jet is available, since
+an output index has order at most \(\lfloor\mathfrak h T\rfloor\).
+The proofs of (10.839) and (10.757) give
+\(M_*\le H/\log p\).
+
+We use the normal-series interpolation of Lemma 10.94 with the
+selected combined frequencies. Theorem 10.180 normalizes the
+projected function by a scalar of valuation
+\(Q_D-\beta\), where \(\beta\) is the minimum valuation
+of its nonzero auxiliary coefficients. Its strict disc conditions
+follow from Theorem 10.190, since the counterhypothesis is stronger.
+The prepared projection error has valuation at least
+\(\beta+\kappa+\chi U_r-v_p(b_n)\). Lemma 10.38 gives
+the ordinary-jet loss \(lC_0\), with
+\(C_0=\max\{v_p(V(k)),v_p(b_n)\}\), exactly as in
+Theorem 10.182.
+
+In Lemma 10.94 the complete cardinal polynomial at a node of
+multiplicity \(\mu(s)\) loses at most
+\(B(\mu_0-\mu(s))\); its Taylor inverse of degree a
+loses at most aB. In a term using jet l, one has
+\(a+l\le\mu(s)-1\). Its total loss is consequently at
+most \((\mu_0-1)M_*\). The monic quotient contributes
+\(N_*N\). Subtracting the normalization and then adding back
+the projection error proves, for every \(x\in\mathbb Z_p\),
+
+\[
+\begin{aligned}
+v_p(\Phi(x;\boldsymbol t))-\beta
+&\ge\min\{N_*N-Q_D,\\
+&\qquad\kappa+\chi U_r-v_p(b_n)-(\mu_0-1)M_*\}.
+\end{aligned}
+\tag{10.860}
+\]
+
+This proves the needed selected-support nested bound directly from
+the general interpolation lemma. It makes no assertion about the
+unverified last uniform-multiplicity input at scale \(U_r\).
+
+### The two analytic lower bounds
+
+Let \(d_*\) and \(a_*\) have their case values in Theorem
+10.197, and put
+
+\[
+\begin{aligned}
+S_-&=c_3qd_*(r+1)^2,&
+T_-&=\frac{12}{29}(r+1)12^r,\\
+\Gamma_r&=\frac{2c_5q}{q^r}\sum_{j=0}^r(q\eta)^j
+-\frac{q(r+1)}{q^rS_-}
+ \left[1-\mathfrak h+2\sum_{j=1}^r(\eta^j-\mathfrak h)\right],\\
+\mathcal I_r&=c_1q\chi-
+\frac{101}{100}\frac{1-\mathfrak h+2/T_-}
+                         {q^rc_3(1+a_*)}.
+\end{aligned}
+\tag{10.861}
+\]
+
+Counting the annuli, with
+\(\mu_j>(\eta^j-\mathfrak h)T\), gives
+
+\[
+\frac{c_1N_*N}{q^r\mathcal Z}>\Gamma_r.
+\tag{10.862}
+\]
+
+For completeness, the inner node count exceeds \(2S-1\), and
+the j-th annulus count exceeds
+\(2(q^j-q^{j-1})S-2>0\). Their principal real mass is
+\(2c_5ST\sum_{j=0}^r(q\eta)^j/(r+1)\).
+Their removed floor mass is at most
+\(T[1-\mathfrak h+2\sum_{j=1}^r(\eta^j-\mathfrak h)]\).
+Now \(c_1STN/\mathcal Z=q(r+1)\) and \(S\ge S_-\).
+This proves the bound, including the differences of radius floors.
+
+For the second entry, retain the original integer coefficient:
+\(v_p(b_n)\le H/\log p\). Also
+\(\mu_0-1\le(1-\mathfrak h)T+1\). Since \(d\ge ef\),
+
+\[
+\frac{c_1TH}{\mathcal Z\log p}
+=\frac f{dc_3N}
+\le\frac1{c_3eN}
+<\frac{101}{100c_3(1+A_0)}.
+\tag{10.863}
+\]
+
+Discarding only the nonnegative \(\kappa\), and using
+\(T>T_-\), shows that the second entry multiplied by
+\(c_1/(q^r\mathcal Z)\) exceeds \(\mathcal I_r\).
+Write \(\mathcal N\) for the casewise normalizing upper
+bound in Theorem 10.197. The first entry in this same normalization
+exceeds \(\Gamma_r-c_1\mathcal N/q^r\).
+
+### The arithmetic upper bound in the actual field
+
+Theorem 10.56 applies to the actual selected support, which is still
+in its original phase class. Its normalized fractional value lies
+in \(E_\Lambda\), of degree \(q^{h_\Lambda}d\),
+where \(h_\Lambda\le r\). The chosen local degrees are e,f.
+The common principal-unit monomial removed in normalizing the value
+has valuation zero. Thus it suffices to compare the normalized
+algebraic value V with the same local lower bound.
+
+Use \(\varepsilon_r,e_0\) from Lemma 10.195, taking the sharper
+\(e_r=1/79+1/(71928b_r)\) in place of its rank-three
+upper bound when convenient. Set \(\lambda=59/58\),
+\(\xi=101/100\), and
+\(\ell_2=7/50,\ell_3=11/50\). Define
+
+\[
+\begin{aligned}
+J_r={}&\frac{\mathfrak h^{-1}+S_-^{-1}}{c_2}
+ +\frac w{2c_2}\left(1+\frac1{2S_-}\right)
+ +\frac{y^2}{c_2c_3q}
+ +(1+w/2)c_1\varepsilon_r+(1+w)c_1e_r,\\
+B_r={}&\lambda\left(1+\ell_q+w+\frac q{q-1}\ell_q\right),\\
+K_r={}&\left(\frac{107}{103}+\frac38y\right)\mathfrak h
+                         +w\left(1-\frac{483}{824}y\right),\\
+\mathcal B_r(A_0)={}&J_r+
+       \xi\frac{B_rA_0/c_4+K_r/c_3}{1+A_0}.
+\end{aligned}
+\tag{10.864}
+\]
+
+If V is nonzero, the global product-formula proof in Theorems 10.57
+and 10.92, with Lemma 10.199 for its coefficients, gives
+
+\[
+\frac{c_1}{q^r\mathcal Z}(v_p(V)-\beta)
+\le\mathcal B_r(A_0).
+\tag{10.865}
+\]
+
+Here is each contribution. The torus radius obeys
+\(X/S\le\mathfrak h^{-1}+S_-^{-1}<q\), giving the first
+term of \(J_r\). The mean torus term in the initial coefficient
+height gives its second. The coefficient-field generator gives its
+third. The leading coefficient count, the row count in that height
+bound, and the further \((\log N_c)/2\) give
+\((1+w/2)c_1\varepsilon_r\). The two scalar remainders give
+\((1+w)c_1e_r\).
+
+The pointwise additive term at \(X<qS\) is bounded as in
+Theorem 10.197 by \(\lambda(1+\ell_q)\), and the mean
+additive term has multiplier \(w\lambda\). The fractional
+denominator is bounded by
+\(D_{\mathrm a}(1+1/(q-1))\), using (10.243) at
+depth zero and root denominator q. Corollary 10.185 and
+\(\log q/A_r<\ell_q\) therefore add precisely
+\(\lambda q\ell_q/(q-1)\) to \(B_r\). The individual
+derivative bound at order \(\mathfrak h T\) and the initial
+complete-simplex mean give \(K_r\), by Lemma 10.194.
+Finally \(eN>(1+A_0)/\xi\) gives the last displayed
+fraction. In this argument the entire nonnegative global height
+majorant is multiplied by \(q^{h_\Lambda}\le q^r\).
+No multiplicity of primes or equality of conjugate valuations is
+assumed.
+
+To verify the radius inequality just used, the function
+\((1-c/v)^v\) increases for \(v>c\): its logarithmic
+derivative is \(\log(1-z)+z/(1-z)>0\), where \(z=c/v\).
+The latter inequality follows by integrating
+\(1/(1-u)<1/(1-z)\) from zero to z. It follows that
+\(\mathfrak h^{-1}+S_-^{-1}\) decreases with r.
+At odd primes check r = 3 and the smallest \(c_3d_*\)
+in its row; in V check r = 4. The seven resulting rational
+numbers are less than q. Rank three is excluded in V by the
+positive-optimizer argument in Proposition 10.186.
+
+### Uniform strict comparisons
+
+The required two inequalities are
+
+\[
+\Gamma_r-\frac{c_1\mathcal N}{q^r}-\mathcal B_r(A_0)>
+\frac12,\qquad
+\mathcal I_r-\mathcal B_r(A_0)>\frac1{1000}.
+\tag{10.866}
+\]
+
+We give finite rational reductions that cover all ranks. At fixed
+r the dependence on \(A_0\) is fractional linear. Its maximum
+is therefore at \(A_0=a_*\) or its limit at infinity. For
+r = 3 through 7, omitting the impossible r = 3 row in V, all
+displayed quantities are rational and can be substituted exactly.
+
+For every r at least eight, put
+
+\[
+\begin{aligned}
+H_-&=(1-c_5/9)^9,\\
+E_-&=\sum_{j=0}^{10}\frac{c_5^j}{j!},&
+E_+&=E_-+\frac{c_5^{11}}{11!(1-c_5/12)},&
+H_+&=E_-^{-1}.
+\end{aligned}
+\tag{10.867}
+\]
+
+The positive exponential series gives
+\(E_-<\exp(c_5)<E_+\). The monotonicity just proved and
+\(\log(1-z)<-z\) give
+\(H_-\le\mathfrak h<\exp(-c_5)<H_+\).
+Equation (10.846) also gives \(\eta^r>\exp(-c_5)>1/E_+\).
+In the reversed geometric sum defining \(\Gamma_r\), retain
+its last four terms and use \(q\eta<q\). This proves
+
+\[
+\Gamma_r>
+\frac{2c_5q}{E_+}\sum_{j=0}^{3}q^{-j}
+-\frac{153q}{q^8S_-(8)}.
+\tag{10.868}
+\]
+
+Indeed the removed floor term is at most
+\(q(r+1)(2r+1)/(q^rS_-(r))\). Since
+\(S_-(r)=c_3qd_*(r+1)^2\), this bound decreases for
+\(r\ge8\): its consecutive ratio is
+\((2r+3)(r+1)/(q(2r+1)(r+2))<1\).
+
+For the arithmetic upper bound replace y by \(1/9\),
+\(S_-,b_r,\varepsilon_r,e_r\) by their conservative
+rank-eight values, \(\mathfrak h^{-1}\) by \(H_-^{-1}\),
+and the factor \(\mathfrak h\) in \(K_r\) by \(H_+\).
+Replace \(1-483y/824\) there by one. All these substitutions
+increase the bound. For the input lower bound, use \(H_-\),
+\(T_-(8)\) and \(q^8\); these substitutions decrease it.
+Use \(q^8\) also for the upper normalizing loss. This reduces
+every remaining rank to two more rational comparisons per case.
+
+There are 34 finite-rank rows and seven uniform rows, each with two
+endpoints, for 82 comparisons. The following are strict lower bounds
+for their smaller differences:
+
+| Case | Mass minus normalization and arithmetic | Input minus arithmetic |
+|---|---:|---:|
+| I.1 | \(99/100\) | \(3/25\) |
+| I.2 | \(99/100\) | \(3/2000\) |
+| II | \(109/100\) | \(3/20\) |
+| III.1 | \(93/100\) | \(1/20\) |
+| III.2 | \(93/100\) | \(19/100\) |
+| IV | \(51/50\) | \(11/25\) |
+| V | \(27/25\) | \(69/100\) |
+
+The [exact calculation](../figure_sources/yu_second_fractional_profile.py)
+records every rational endpoint and difference, the seven radius
+bounds and the seven comparisons with the second constant. The
+uniform reductions above prove why these finite computations cover
+all allowed ranks and fields. Each column exceeds its asserted
+common lower bound. Thus both entries of the analytic minimum
+strictly exceed the arithmetic upper bound for a nonzero V.
+This contradiction proves V = 0, hence the original prepared value
+is zero. Indices whose additive order exceeds \(D_{\mathrm a}\)
+vanish by degree. This completes the whole stated fractional block.
+\(\square\)
+
+![The improved coefficient-height multipliers and the positive fractional input margins in all seven field cases.](../figures/yu-second-fractional-profile.png)
+
+*Figure 10.59.* Left: the row-to-surplus upper bounds of Lemma
+10.199, compared with the sufficient \(10/17\) bound of
+Proposition 10.196. Right: the smaller exact input margin among
+all finite-rank and uniform-tail endpoint comparisons in Theorem
+10.201, in units \(q^rZd/(c_1et)\). Both the full root-field
+degree and the q-denominator are included. The theorem concerns
+the first fractional block; subsequent support contractions retain
+their separate depth costs.
+[Reproducible calculation and figure](../figure_sources/yu_second_fractional_profile.py).
+Human-source context: the selected-support induction in Section 11
+of [Yu's freely accessible 1999 paper](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf)
+and the second constants in Section 1.1 of his
+[freely accessible 2013 paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).
+
+## 67. The first support contraction at the second scale
+
+The fractional zeros separate the exponent classes. This produces a
+smaller nonzero polynomial whose coefficients are selected from the
+original kernel. The new integer values lie in the original number
+field. Their rational denominators still contribute to the height
+bound, and filling the missing multiples of q uses both losses in
+the interpolation formula for a q-deleted interval.
+
+Retain the parameters, kernel and counterhypothesis of Theorem 10.201.
+In particular, \(c=c_5\), \(\mathfrak h=\eta^{r+1}\),
+\(S_1=S/\mathfrak h\), \(T_1=\mathfrak h T\), and
+\(v_p(\Xi-1)\ge\chi U_r\). Let \(\beta\) be the
+minimum valuation of the nonzero initial coefficients. The meanings
+of H, N and \(\mathcal Z\) remain unchanged.
+
+**Theorem 10.202 (the first full contracted block at the second scale).**
+There is a nonzero contracted polynomial with an integral coefficient
+subvector of the kernel in Lemma 10.199. Its coefficient minimum is
+\(\beta\), its coefficient height does not increase, its torus
+widths are at most \(D_i/q\), and its additive argument is x/q.
+Its phase family \(\Phi_1\) has every integer value in K. Put
+
+\[
+R=q(\lfloor S_1\rfloor+1).
+\tag{10.872}
+\]
+
+The family satisfies both collections of zeros
+
+\[
+\begin{aligned}
+\Phi_1(s;\boldsymbol t)&=0
+ &&(|s|\le R,\ q\nmid s,\ |\boldsymbol t|\le\lfloor T_1\rfloor),\\
+\Phi_1(s;\boldsymbol t)&=0
+ &&(|s|\le R,\ |\boldsymbol t|\le\lfloor\eta T_1\rfloor).
+\end{aligned}
+\tag{10.873}
+\]
+
+Its selected combined-frequency congruence retains the depth of
+Theorem 10.176. The stronger first collection remains available for
+subsequent interpolation.
+
+**Proof.** Apply the exact phase and support passage of Theorem 10.51
+to the fractional zeros of Theorem 10.201. Include the second phase
+partition when q divides \(G_0\). The saturated root-monomial
+basis separates the exponent classes at every integer s prime to q.
+Choose a class containing a coefficient attaining \(\beta\).
+The resulting subvector is nonzero and integral, preserves its
+minimum valuation, and has no larger projective or Euclidean
+coefficient height, by the place-by-place subset inequalities in
+Theorem 10.48.
+
+The affine prepared-jet transfer in that theorem preserves the whole
+total-order cutoff: its triangular leading factors are powers of q,
+which are units at p. The new widths and additive argument are
+exactly those of (10.141)–(10.142). All additive polynomial indices
+remain in each selected exponent fibre. Their independence in
+Lemma 10.29 therefore makes the contracted polynomial nonzero.
+The phase identity in Theorem 10.55 puts its integer prepared values
+in K. These arguments prove the first collection of zeros.
+
+Restriction to a q-class followed by division by q preserves the
+selected congruence, by the final assertion of Theorem 10.176.
+Consequently Theorem 10.180 and Corollary 10.179 still give the
+normalization with the same N. The new coefficient minimum is
+still \(\beta\), so the normalizing valuation is
+\(Q_D-\beta\), where
+\(Q_D=D_{\mathrm a}(N+1/(p-1))\). The projection estimate
+retains the original coefficient \(b_n\) and the original
+Euler directions. The strict disc conditions follow from Theorem
+10.190, as in Theorem 10.201.
+
+### Filling the missing nodes
+
+Set
+
+\[
+\begin{aligned}
+M&=\left\lfloor\frac{cT_1}{r+1}\right\rfloor+1,&
+n_E&=2(q-1)(\lfloor S_1\rfloor+1),\\
+B&=\lfloor\log_p(2R)\rfloor,&
+M_*&=\max\{B,v_p(V(k)),v_p(b_n)\}.
+\end{aligned}
+\tag{10.874}
+\]
+
+The q-deleted interval has exactly \(n_E\) nodes, since q divides R.
+The elementary inequality \(\lfloor a\rfloor+\lfloor b\rfloor
+\le\lfloor a+b\rfloor\), applied to
+\(a=\eta T_1\) and \(b=cT_1/(r+1)\), gives
+
+\[
+\lfloor\eta T_1\rfloor+M-1\le\lfloor T_1\rfloor.
+\tag{10.875}
+\]
+
+Thus all required ordinary jets are present. The radius inequality
+in Theorem 10.201 gives \(R<q^2S\le q^rS\).
+The proof of (10.839), including the original coefficient and
+least-common-multiple bounds, therefore gives
+\(M_*\le H/\log p\).
+
+Apply the q-deleted form (10.690) of Theorem 10.182, before imposing
+its sufficient one-term budget. For every output order in the second
+collection and every \(x\in\mathbb Z_p\), it gives
+
+\[
+\begin{aligned}
+v_p(\Phi_1(x;\boldsymbol t))-\beta\ge
+\min\{&n_EMN-Q_D,\\
+ &\kappa+\chi U_r-v_p(b_n)-MB-(M-1)M_*\}.
+\end{aligned}
+\tag{10.876}
+\]
+
+Here MB is the additional deleted-node loss; the inverse-polynomial
+and ordinary-jet loss is the separate term \((M-1)M_*\).
+Together with the original coefficient loss they are at most
+\(2MM_*\), since both B and \(v_p(b_n)\) are at most
+\(M_*\).
+
+Write \(\xi=101/100\) and retain \(a_*\),
+\(T_-\), \(\mathcal N\), and
+\(\mathcal B_r(A_0)\) from Theorem 10.201. Define
+
+\[
+\mathcal I_r^{\mathrm c}
+=c_1\chi q^{r+1}
+-\frac{\xi\bigl(2c\mathfrak h/(r+1)+2/T_-\bigr)}
+            {c_3(1+a_*)}.
+\tag{10.877}
+\]
+
+Since \(M>cT_1/(r+1)\), \(\lfloor S_1\rfloor+1>S_1\),
+and \(S_1T_1=ST\), the identity in the proof of (10.862) yields
+
+\[
+\frac{c_1n_EMN}{\mathcal Z}>2cq(q-1),\qquad
+\frac{c_1Q_D}{\mathcal Z}<c_1\mathcal N.
+\tag{10.878}
+\]
+
+For the other entry use \(M\le cT_1/(r+1)+1\),
+\(T>T_-\), and the complete original-coefficient identity
+(10.863). Discarding only the nonnegative \(\kappa\) gives
+
+\[
+\frac{c_1}{\mathcal Z}
+ \bigl(\kappa+\chi U_r-v_p(b_n)-MB-(M-1)M_*\bigr)
+>\mathcal I_r^{\mathrm c}.
+\tag{10.879}
+\]
+
+### The original-field arithmetic comparison
+
+At a target integer, the value lies in K by the proved phase
+identity. If it were nonzero, the same product-formula derivation
+as (10.865) would give
+
+\[
+\frac{c_1}{\mathcal Z}
+       \bigl(v_p(\Phi_1(s;\boldsymbol t))-\beta\bigr)
+\le\mathcal B_r(A_0).
+\tag{10.880}
+\]
+
+We justify each changed argument in that bound. The coefficient
+height and minimum have their original bounds, and the number of
+remaining columns is no larger. The torus contribution has radius
+\(q^{-1}R/S\le\mathfrak h^{-1}+S_-^{-1}\).
+The additive scalar is evaluated at an argument of absolute value
+at most \(q^{-1}R=\lfloor S_1\rfloor+1<qS\).
+The derivative order \(\eta T_1\) is smaller than \(T_1\).
+For the Euler remainder, the depth-one bound (10.808) gives
+
+\[
+\frac{E_1}{Z}<\frac1{79q}+\frac{r-1}{999Z}<e_r.
+\tag{10.881}
+\]
+
+Only this common upper envelope is required; no comparison of the
+exact numerical remainders at successive depths is assumed. Finally,
+(10.243) gives the full rational clearing cost
+\(\Xi_{1,0,u}\le D_{\mathrm a}(1+1/(q-1))\).
+Thus every term in (10.864) remains an upper bound. The normalization
+here is \(c_1/\mathcal Z\): the actual global field is K,
+of degree d, with its original local degrees e and f. The factor
+\(q^r\) paid at fractional nodes is absent, while the
+q-denominator remains included.
+
+### Strict inequalities at every permitted rank
+
+The two comparisons are
+
+\[
+2cq(q-1)-c_1\mathcal N-\mathcal B_r(A_0)>\frac35,
+\qquad
+\mathcal I_r^{\mathrm c}-\mathcal B_r(A_0)>9.
+\tag{10.882}
+\]
+
+Here is a finite rational reduction covering every rank. Use the
+34 finite-rank rows and seven uniform rows of Theorem 10.201, with
+the two endpoints \(A_0=a_*\) and \(A_0\to\infty\).
+The arithmetic expression is the same (10.864), so its proved
+fractional-linear endpoint reduction and uniform upper envelope
+apply unchanged. The normalizing loss is now
+\(c_1\mathcal N=\lambda\nu/c_4\), with the same casewise
+factor \(\nu\) used there, and has no dependence on r.
+
+For the input comparison at every \(r\ge8\), use
+\(q^{r+1}\ge q^9\), \(\mathfrak h<H_+\),
+\(1/(r+1)\le1/9\), and \(T_-\ge T_-(8)\).
+Each substitution decreases the displayed input lower bound.
+Thus the same 82 rational endpoint comparisons prove the result
+for all ranks. Strict lower bounds for their smallest differences
+are as follows:
+
+| Case | Mass minus normalization and arithmetic | Input minus arithmetic |
+|---|---:|---:|
+| I.1 | \(61/100\) | 10 |
+| I.2 | \(3/5\) | 9 |
+| II | \(37/50\) | 10 |
+| III.1 | \(63/100\) | 10 |
+| III.2 | \(31/50\) | 11 |
+| IV | \(69/100\) | 13 |
+| V | \(71/10\) | 230 |
+
+The [exact calculation](../figure_sources/yu_second_first_contraction.py)
+lists every rational endpoint and verifies these strict bounds.
+The finite computations certify the rational inequalities after
+the proved reductions; the uniform rows cover the infinite tail.
+Both entries of the analytic minimum therefore exceed the arithmetic
+upper bound for a nonzero target value. Each such value must be zero.
+Additive orders above \(D_{\mathrm a}\) vanish by degree.
+This proves the full second collection, while retaining the first.
+\(\square\)
+
+![The higher-order odd-node data, the completed integer block, and the interpolation jet budget.](../figures/yu-second-first-contraction.png)
+
+*Figure 10.60.* The exact counting example of Solution 81 has
+\(q=2\), R = 38, input order 671 and output order 581.
+The 38 odd nodes retain order 671; interpolation of multiplicity
+91 adds the 39 even nodes at order 581. Its cardinal polynomial
+has degree 3458. The displayed orders describe available vanishing
+conditions, not function values. The example illustrates the exact
+floors and node counts, without claiming that these small numbers
+are an instance of the second-scale parameter construction.
+The field and precision statements are proved in Theorem 10.202.
+[Reproducible calculation and figure](../figure_sources/yu_second_first_contraction.py).
+
+## 68. Saturation and the cost of contraction depth
+
+The q-primary saturation index contributes both a factor to the lattice
+count and a logarithmic cost to repeated contraction. These two effects
+can be balanced in the polynomial scale. We give the construction, its
+geometric stopping bounds and the arithmetic estimate for integer nodes.
+
+### A scale that includes the saturation index
+
+Retain the field and height assumptions of Sections 61–67, including
+(10.806). Write \(A=A_r\), \(x=\log J\), \(B=A+x\),
+\(H=h+x\), and \(g=B/A\). Define
+
+\[
+\widehat{\mathcal D}=g\mathcal D,\qquad
+\widehat T=gT,\qquad \widehat D_i=gD_i,\qquad
+\widehat Z=\frac{S\widehat{\mathcal D}}d,\qquad
+\widehat{\mathcal Z}=\frac{S\widehat{\mathcal D}}{et}.
+\tag{10.884}
+\]
+
+Keep \(S,k,N,c_i,\eta\) and the field and residue data fixed. In
+the polynomial parameter (10.703), use
+
+\[
+\widehat X=
+\frac{S\widehat{\mathcal D}}{c_1c_4(N/\vartheta)dBk}=X,
+\qquad \widehat L=L,\qquad
+\widehat D_{\mathrm a}=D_{\mathrm a},\qquad
+\widehat U_r=q^{r+1}\widehat{\mathcal Z}.
+\tag{10.885}
+\]
+
+**Theorem 10.203 (the kernel with a saturation-dependent scale).**
+There is an integral kernel for these parameters with the full
+selected-column surplus of Lemma 10.199. The coefficient-height bounds
+of Lemmas 10.194–10.195 and Proposition 10.196 hold with hats on the
+scales and with the same rational envelopes. Under
+\(v_p(\Xi-1)\ge\chi\widehat U_r\), its integer, fractional
+and first contracted zero blocks satisfy Theorems 10.198, 10.201 and
+10.202 with the hatted parameters. Moreover,
+
+\[
+\chi e\widehat U_r
+<C_2(r,d,p,\boldsymbol\alpha)\,h\Omega_r.
+\tag{10.886}
+\]
+
+The coefficients are chosen for the hatted system of equations. The
+construction retains its actual row field and a coefficient of minimum
+valuation throughout phase extraction.
+
+**Proof.** The integer polynomial parameters are unchanged because
+\(\widehat{\mathcal D}/B=\mathcal D/A\). Both the width
+volume and the real derivative count acquire a factor \(g^r\).
+Equivalently, substitute \(\widehat{\mathcal D},B\) in (10.713):
+both sides acquire the factor g. The lattice, phase and unit-congruence
+selections of Proposition 10.183 apply to this box. The floor estimates
+(10.711)–(10.712) hold because \(\widehat T\ge T>101r^2\)
+and \(\widehat X=X>58\). Keeping the factors in (10.855) gives
+the same strict column-to-row surplus, and hence the same w in Lemma
+10.199. Choose its integral coefficient vector for the complete hatted
+initial row list.
+
+We check the estimates used in the stated consequences. Corollary
+10.185 gives the degree bound with \(\widehat{\mathcal D},B\).
+The normalizing estimate (10.832) uses only \(B\ge A\ge t\).
+The generating-series proof of Lemma 10.194 applies at arbitrary widths
+and orders: (10.812), divided by \(\widehat Z\), has the same
+leading term and a smaller \((r-1)/(999\widehat Z)\). The
+derivative coefficient still satisfies
+\(a/H\le107/103+3/[8(r+1)]\), and the complete-simplex mean
+(10.810) is unchanged. Estimate (10.824) uses only \(S,k,H\),
+so its logarithm is less than \(A\le B\). Also
+
+\[
+\frac{\widehat T H}{\widehat Z}=\frac1{c_1c_3eN},\qquad
+P\sum_i\widehat D_i\sigma_i
+       =\frac{\widehat{\mathcal D}}{c_1c_2d}.
+\tag{10.887}
+\]
+
+Thus the normalized mean derivative and coefficient-generator bounds
+remain valid. For Lemma 10.195 use
+\(\widehat{\mathcal D}/A\ge\mathcal D/A>b_r\).
+The actual lattice count still gives (10.821) with
+\(\widehat{\mathcal D}\). The functions \(\log z/z\)
+decrease on the same ranges, and \(rx/\widehat Z\) decreases.
+Consequently the same \(\varepsilon_r,e_r\) bound all column
+and scalar remainders. This proves the asserted coefficient bound.
+
+The radius S and its lower bound \(S_-\) are unchanged, while
+\(\widehat T>T_-\). Identity (10.863) is unchanged with hats.
+The proof of (10.839), including the bounds for the original
+\(v_p(b_n)\) and \(V(k)\), still gives
+\(\log(2q^rS)<H\). Strict normality follows from Theorems
+10.180 and 10.190 with \(\widehat U_r\ge U_r\). Every
+normalized positive interpolation mass uses the unchanged identity
+\(c_1S\widehat TN/\widehat{\mathcal Z}=q(r+1)\).
+Thus the floor, ordinary-jet, normalization and arithmetic arguments
+in Theorems 10.198, 10.201 and 10.202 apply to this kernel. Their
+denominator terms use \(\log q/B\le\log q/A\), so all
+their rational endpoint comparisons remain valid.
+
+For the final constant, substitute the hatted parameters in
+(10.719)–(10.720), retaining the factor \(H/J\). The resulting
+saturation factor is \(HB/J\). Since \(h>40,A>5,x\ge0\),
+
+\[
+\left(1+\frac xh\right)\left(1+\frac xA\right)
+\le1+\frac9{40}x+\frac{x^2}{200}
+\le1+x+\frac{x^2}{2}\le\exp x.
+\tag{10.888}
+\]
+
+The last inequality is the positive exponential series. Hence
+\(HB/J\le hA\), with equality only at \(x=0\).
+After this substitution the prefactors of Lemma 10.200 are identical,
+proving the strict claimed bound. The factorial and residue cancellation
+in Lemma 10.187 uses this same final bound, so its rank-transfer
+conclusion also applies. \(\square\)
+
+### The geometric stop and its rank product
+
+Write \(\mathfrak h=\eta^{r+1}\), \(Q=q\mathfrak h\).
+Let I be a nonnegative integer with
+
+\[
+E=Q^I>\exp(3B),\qquad
+\bar S=q\mathfrak h^{-I}S,\qquad
+\bar T=\eta\mathfrak h^I\widehat T.
+\tag{10.889}
+\]
+
+Use \(\mathsf D_0=D_{\mathrm a}\),
+\(\mathsf D_j=2Jq^{-I}\widehat D_j\), and the integer
+allocations (10.769) with these \(\bar S,\bar T\).
+
+**Theorem 10.204 (degree and rank bounds at the logarithmic stop).**
+All the allocation and degree hypotheses of Theorem 10.25 hold. More
+precisely,
+
+\[
+\begin{gathered}
+\mathsf D_0>20\mathsf D_j\ (1\le j\le r),\qquad
+\mathsf D_0>4\bar T,\qquad \mathsf D_0>4r,\\
+\mathcal R_0>\frac{32}{11},\qquad
+\mathcal R_{m,J'}>\frac{2^{10}}{29}\ (1\le m<r),\qquad
+\mathcal R_r>31.
+\end{gathered}
+\tag{10.890}
+\]
+
+If the nonzero contracted family has the full prepared integer zeros
+through \(\bar S\) and order \(\bar T\), with the independent
+bases and hyperplane hypotheses of Corollary 10.192, its rank conclusion
+holds with the strict factor \(10^{-6}\) in (10.787), including
+the actual residue maxima of both families.
+
+**Proof.** As in (10.773), \(Q>1\), while
+\(q\mathfrak h^2<1\). Thus
+\(\mathfrak h^{-I}>E\) and
+\(q^I/J>E/J>\exp(3A+2x)\).
+The derivative of \(\exp(2x)/(A+x)\) is positive for
+\(x\ge0\), since \(2-1/(A+x)>0\). Consequently
+
+\[
+\frac{q^I}{JB}>\frac{\exp(3A)}A,\qquad
+\frac{\exp(3B)}B\ge\frac{\exp(3A)}A.
+\tag{10.891}
+\]
+
+The cancellation (10.775), with B in the denominator, gives
+\(\mathsf D_0/\mathsf D_j>
+(9/392)(r+1)^2d\sigma_j\exp(3A)/A\).
+Use \(d\sigma_j>1/(87d^2)\),
+\(\exp(2A)>256(r+1)^2d^2\),
+\(\exp(A)/A>32/5\), and \(r+1\ge4\). The resulting
+rational lower bound is
+\(9\cdot256^2\cdot32/(392\cdot87\cdot5)>20\).
+Similarly, the cancellation in (10.777) gives
+\(\mathsf D_0/\bar T>(3/35)\exp(3A)/A>
+(3/35)2^{15}/5>4\). Finally \(kL>58(r+1)>4r\).
+The allocation floors still obey (10.778). Formula (10.779) has B in
+place of A, so \(B\ge t\) gives \(\mathcal R_0>32/11\).
+
+For an m-coordinate subset, (10.780) holds with this value of
+\(B_0\). Its bracket exceeds \((6/7)d\exp(3A)\).
+Apply the height-product estimate (10.781), \(\mathrm e<3\),
+and
+
+\[
+\frac27\exp(3A)>
+\frac27\,2^{13}(r+1)^2d^2>
+2^{11}(r+1)^2d^2.
+\tag{10.892}
+\]
+
+Here the two factors arise from \(2A\) and A separately, using
+\(A\ge4+\log((r+1)d)>5\). The factorial and field-degree
+argument of (10.782) now yields
+
+\[
+\mathcal R_{m,J'}>
+\frac4{29}\frac{(2^{11})^m}{(m+1)^3}
+\ge\frac{2^{10}}{29}.
+\tag{10.893}
+\]
+
+The last expression increases with m: its consecutive ratio is at
+least \(2^{11}(2/3)^3>1\). In the full-rank cancellation
+(10.783), B cancels with the same factor in
+\(\widehat{\mathcal D}\). Also
+\(J^{1-r}E^r>\exp(3rA)J^{2r+1}\ge\exp(3rA)\).
+Using (10.784)–(10.785) gives
+
+\[
+\begin{aligned}
+\mathcal R_r
+&>\frac{\exp((3r-1)A)}
+ {6r(r+1)![12(r+1)]^r\ell_d A}\\
+&>\frac{16^{2r}}{6r(r+1)12^r}>31.
+\end{aligned}
+\tag{10.894}
+\]
+
+For the middle inequality use \(\exp((r-1)A)>A\),
+\(\exp(2rA)>[16(r+1)d]^{2r}\),
+\((r+1)!\le(r+1)^{r+1}\), and \(d^{2r}\ge\ell_d\).
+The final expression has consecutive ratio
+\((256/12)r/(r+2)>1\) for \(r\ge3\), and its value at
+three is \(32768/243>31\). This proves the degree and allocation
+claims.
+
+It remains to check the rank-product constant. Under the stipulated
+zeros, Theorem 10.25 and Corollary 10.26 supply the rank output exactly
+as in Corollary 10.192. The cancellation (10.789) is unchanged:
+the explicit B in \(\widehat{\mathcal D}\) cancels its
+polynomial denominator. Its last depth factor satisfies
+
+\[
+J^{m-1}\frac{\mathfrak h^I}{E^m}
+<\exp(-3(m+1)A)J^{-2m-4}
+\le\exp(-3(m+1)A).
+\tag{10.895}
+\]
+
+Let \(\mathcal Q\) denote the normalized product quotient in
+the proof of Corollary 10.192. Keeping all its factorials and its
+bound \(\mathcal R_m\le\exp(A)A\), we obtain
+
+\[
+\mathcal Q<6r(m+1)!m!\ell_d A(35r)^m
+                         \exp(-(3m+2)A).
+\tag{10.896}
+\]
+
+Set \(V=(r+1)d\). The function
+\(z\exp(-(3m+2)z)\) decreases for \(z\ge5\).
+Since \(A\ge4+\log V\), \(4+\log V\le5V\), and
+\(\ell_d\le d\),
+
+\[
+\mathcal Q<30\cdot35^m\exp(-12m-8)F_{r,m,d},\qquad
+F_{r,m,d}=\frac{r^{m+1}(m+1)!m!}
+                  {(r+1)^{3m+1}d^{3m}}.
+\tag{10.897}
+\]
+
+For \(m=1,r\ge3\), differentiation gives
+\(F_{r,1,d}\le2r^2/(r+1)^4\le9/128\).
+For \(m\ge2\), the function
+\(r^{m+1}/(r+1)^{3m+1}\) decreases for \(r\ge m+1\):
+the numerator of its logarithmic derivative is \(m+1-2mr<0\).
+Use the already proved factorial inequality
+\(n!\le n^n/2^{n-1}\) at \(n=m,m+1\), followed by
+\(r=m+1\). This gives
+\(F_{r,m,d}<2(m+1)/4^m\le1\).
+Now \(\mathrm e>27/10\) gives the exact rational bounds
+
+\[
+\begin{aligned}
+m=1:&\quad
+\mathcal Q<\frac{9450}{128}\left(\frac{10}{27}\right)^{20}<10^{-6},\\
+m\ge2:&\quad
+\mathcal Q<30\cdot35^2\left(\frac{10}{27}\right)^{32}<10^{-6}.
+\end{aligned}
+\tag{10.898}
+\]
+
+The second bound decreases as m increases, since
+\(35(10/27)^{12}<1\). These are integer comparisons after
+clearing denominators. They prove the claimed product estimate,
+with all field and independence assertions provided by Corollary
+10.26. \(\square\)
+
+### The full denominator at an integer stage
+
+**Lemma 10.205 (scalar costs before the logarithmic stop).** Let a
+selected family be at integer depth \(I\ge0\), with widths
+\(q^{-I}\widehat D_i\) and additive argument \(q^{-I}x\).
+Take \(j\ge1\), \(S_I=\mathfrak h^{-I}S\), and target
+radius \(R=q^{j+1}S_I\). Suppose \(I\log Q\le3B\).
+For every additive order \(u\le D_{\mathrm a}\),
+
+\[
+\begin{aligned}
+\frac{c_1}{\widehat Z}
+\left[\Xi_{I,0,u}\log q+
+ PRq^{-I}\sum_i\widehat D_i\sigma_i\right]
+&\le\frac{q^{j+1}}{c_2}
+ +\frac{\lambda\vartheta\log q}{c_4NB(q-1)},\\
+\frac{D_{\mathrm a}\log(q^{-I}R+2k)-L\log(k!)}{\widehat Z}
+&<\frac{\lambda\vartheta}{c_1c_4N}
+               \left(1+\frac{(j+1)\log q}{B}\right).
+\end{aligned}
+\tag{10.899}
+\]
+
+Here \(\lambda=59/58\), and \(\Xi_{0,0,u}=0\). The
+exponent \(\Xi_{I,0,u}\) is the full denominator exponent
+from (10.243).
+
+**Proof.** That formula bounds
+\(\Xi_{I,0,u}\le D_{\mathrm a}(I+1/(q-1))\).
+The hatted degree estimate gives
+\(c_1D_{\mathrm a}/\widehat Z<
+\lambda\vartheta/(c_4NB)\). The torus contribution is exactly
+\(q^{j+1}Q^{-I}/c_2\). Put
+\(a_j=q^{j+1}/c_2\),
+\(b=\lambda\vartheta\log q/(c_4NB)\).
+The second derivative of \(a_jQ^{-z}+bz\) is positive.
+On \(0\le z\le3B/\log Q\), convexity therefore bounds
+this function by the larger endpoint value. At zero it is \(a_j\).
+At the other endpoint its ratio to \(a_j\) is
+
+\[
+\exp(-3B)+
+\frac{3\lambda(\vartheta/N)c_2\log q}
+                  {c_4q^{j+1}\log Q}.
+\tag{10.900}
+\]
+
+We have \(\vartheta/N<1+\tau<101/100=\xi\).
+At \(q=2\), use \(Q\ge2(173/200)^4\). At \(q=3\),
+rank three is excluded by the optimizer condition, so
+\(Q\ge3(21/25)^5\). These follow from the increasing function
+\((1-c/v)^v\) proved in Theorem 10.201. Also
+\(\log Q>2(Q-1)/(Q+1)\): integrate \(2/(1-z^2)>2\)
+from zero to \((Q-1)/(Q+1)\). With
+\(\log2<7/10\), \(\log3<11/10\), and the largest
+\(c_2\) in each q-case, exact substitution bounds the second
+term by \(3/5\) at two and \(2/5\) at three. The
+[rational calculation](../figure_sources/yu_second_depth_buffer.py)
+records every field case. The first term is less than \(1/1000\),
+since \(B>5\) and \(\exp(15)>2^{15}>1000\).
+Thus the depth-proportional cost is absorbed. The remaining
+\(1/(q-1)\) term gives precisely the displayed remainder.
+
+For the additive scalar use \(Q^{-I}\le1\) and
+\(q^{-I}R+2k\le q^{j+1}(S+2k)\).
+The factorial argument of (10.824) bounds
+\(\log[\mathrm e(S+2k)/k]\) by \(A\le B\).
+Substitution of the hatted degree bound proves the second inequality.
+\(\square\)
+
+The lemma charges all denominator primes in the global height. Later
+zero-production comparisons must combine this arithmetic bound with
+the selected-series interpolation bound; fractional nodes also require
+their actual global root-field degree.
+
+![The saturation factor and the convex bound for the cost of contraction depth.](../figures/yu-second-depth-buffer.png)
+
+*Figure 10.61.* Left: the ratio \((h+x)(A+x)/(hA\exp x)\)
+at \(h=41,A=6\); Theorem 10.203 proves its upper bound for
+every admissible height. The curve uses continuous x; actual saturation
+indices have \(x=\nu\log q\). Right: the convex endpoint
+argument of Lemma 10.205 at \(B=6,j=1\), with
+\((q,r)=(2,3),(3,4)\) and \(\vartheta/N\) replaced by
+its upper bound \(101/100\). The separate factorial-denominator
+remainder remains in the lemma. These parameter illustrations explain
+the inequalities; they are not full arithmetic instances.
+[Reproducible figure and exact comparisons](../figure_sources/yu_second_depth_buffer.py).
+Human-source context: the selected-support and contraction methods in
+Sections 10–11 of [Yu's freely accessible 1999 paper](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf);
+the parameter, depth and product inequalities used here are proved above.
+
+## 69. Integer zeros at a contracted depth
+
+Contraction increases the integer radius while decreasing the available
+derivative order. Their product remains fixed. The scalar denominator
+grows with depth, but Lemma 10.205 absorbs its depth-dependent part into
+the torus-height budget. We now combine that arithmetic estimate with
+the selected-function interpolation theorem.
+
+**Theorem 10.206 (the integer extension after contraction).** Use the
+hatted kernel of Theorem 10.203 and assume
+\(v_p(\Xi-1)\ge\chi\widehat U_r\). Put
+\(c=c_5\), \(\mathfrak h=\eta^{r+1}\), and \(Q=q\mathfrak h\).
+Let \(I\ge1\) be an integer with \(I\log Q\le3B\), and set
+
+\[
+S_I=\mathfrak h^{-I}S,\qquad T_I=\mathfrak h^I\widehat T.
+\tag{10.901}
+\]
+
+Suppose a nonzero phase family \(\Phi_I\) is obtained by the
+prime-to-p support and phase restrictions of Theorems 10.48, 10.51
+and 10.176, retaining a coefficient of the original minimum valuation
+\(\beta\). Its widths are at most \(q^{-I}\widehat D_i\),
+its additive argument is \(q^{-I}x\), and its integer values
+belong to K. If
+
+\[
+\Phi_I(s;\boldsymbol t)=0
+\quad(s\in\mathbb Z,\ |s|\le qS_I,\
+                         |\boldsymbol t|\le\eta T_I),
+\tag{10.902}
+\]
+
+then, for every \(1\le j\le r\),
+
+\[
+\Phi_I(s;\boldsymbol t)=0
+\quad(s\in\mathbb Z,\ |s|\le q^jS_I,\
+                         |\boldsymbol t|\le\eta^jT_I).
+\tag{10.903}
+\]
+
+All cutoffs mean their integer floors. The coefficient vector, its
+height bound and its minimum valuation remain unchanged in these
+extensions. In particular, Theorems 10.202–10.203 provide the required
+starting block at \(I=1\); its higher-order q-deleted block remains
+available. At later depths this theorem applies once the stated
+starting block has been obtained.
+
+**Proof.** Let \(1\le j\le r-1\), and assume the j-th block.
+Use the full node interval \(|s|\le s_j\), where
+
+\[
+s_j=\lfloor q^jS_I\rfloor,\qquad
+\mu_j=\left\lfloor\frac{c\eta^jT_I}{r+1}\right\rfloor+1,
+\qquad
+\lfloor\eta^{j+1}T_I\rfloor+\mu_j-1
+\le\lfloor\eta^jT_I\rfloor.
+\tag{10.904}
+\]
+
+The last inequality follows from
+\(\eta^{j+1}T_I+c\eta^jT_I/(r+1)=\eta^jT_I\)
+and the elementary floor inequality. It holds even when
+\(\mu_j=1\). Thus all ordinary jets required by Theorem 10.182
+are supplied by the assumed prepared zeros.
+
+### The two interpolation bounds
+
+Write \(M_*\) for the maximum of the full-interval separation
+cost, \(v_p(V(k))\), and the original \(v_p(b_n)\).
+Equation (10.839) and \(H>40>1\) imply
+
+\[
+\begin{aligned}
+\log(2q^jS_I)&<H+I\log(\mathfrak h^{-1})
+                      \le\mathfrak h^{-I}H,\\
+M_*&\le\frac{\mathfrak h^{-I}H}{\log p},\qquad
+v_p(b_n)\le\frac H{\log p}.
+\end{aligned}
+\tag{10.905}
+\]
+
+Indeed \(1+z\le\exp z\) for \(z\ge0\), so
+\(H+z\le H\exp z\). The separation bound is
+\(\lfloor\log_p(2q^jS_I)\rfloor\), and the other two
+costs have the bounds already proved in (10.757). The last displayed
+bound is kept separately; it is the original integer coefficient,
+not a coefficient enlarged by contraction.
+
+All phase restrictions retain the selected combined-frequency
+congruence by Theorem 10.176. The strict disc conditions of Theorem
+10.180 consequently persist, and its perturbation still uses the
+original \(b_n\). Theorem 10.190 and
+\(\chi\widehat U_r\ge U_r\) give the strict perturbation
+condition. Multiplication of the additive argument by the p-adic
+unit \(q^{-I}\) changes neither its coefficient integrality nor
+its degree \(D_{\mathrm a}\). Thus Corollary 10.179 supplies
+the normalizing valuation \(Q_D-\beta\), where
+\(Q_D=D_{\mathrm a}(N+1/(p-1))\).
+
+The prepared projection error of Lemma 10.181 at every integer
+node has valuation at least
+\(\beta+\kappa+\chi\widehat U_r-v_p(b_n)\).
+Its ordinary divided jets are those of the original selected
+directions, as in the proof of Theorem 10.182; their l-th cost is
+at most \(l\max\{v_p(V(k)),v_p(b_n)\}\).
+The full-cardinal interpolation bound (10.690) therefore gives,
+for every target integer and every permitted output order,
+
+\[
+v_p(\Phi_I(s;\boldsymbol t))-\beta\ge
+\min\left\{
+ (2s_j+1)\mu_jN-Q_D,\quad
+ \kappa+\chi\widehat U_r-v_p(b_n)-(\mu_j-1)M_*
+\right\}.
+\tag{10.906}
+\]
+
+There is no deleted-node loss in this full interval. In particular,
+the second entry is used as it stands, without replacing it by the
+stronger sufficient one-term budget (10.691).
+
+Put \(y=1/(r+1)\), \(\lambda=59/58\), and \(\xi=101/100\).
+Retain the case constants \(a_*,d_*\) of Theorem 10.197,
+\(\gamma=c_3qd_*\), and its normalizing factor \(\nu\), so
+\(c_1Q_D/\widehat{\mathcal Z}<\lambda\nu/c_4\).
+The lower bound \(S\ge\gamma/y^2\), the identity
+\(S_IT_I=S\widehat T\), and
+\(c_1S\widehat TN/\widehat{\mathcal Z}=q(r+1)\) give
+
+\[
+\begin{aligned}
+\frac{c_1((2s_j+1)\mu_jN-Q_D)}
+     {q^j\widehat{\mathcal Z}}
+&>\mathcal L_j(y),\\
+\mathcal L_j(y)
+&=2cq(1-cy)^j\left(1-\frac{y^2}{2q^j\gamma}\right)
+                      -\frac{\lambda\nu}{c_4q^j}.
+\end{aligned}
+\tag{10.907}
+\]
+
+Here \(2\lfloor q^jS_I\rfloor+1>2q^jS_I-1\) and
+\(\mu_j>c\eta^jT_I/(r+1)\); no multiplicity rounding is
+discarded. Also \(\mu_j-1\le c\eta^jT_I/(r+1)\).
+Applying the hatted identity (10.863), and discarding only
+\(\kappa\ge0\), gives the following strict lower bound for the other normalized entry:
+
+\[
+\mathcal I_j
+=c_1\chi q^{r+1-j}
+-\frac{\xi}{q^jc_3(1+a_*)}
+       \left(\frac1{\widehat T}+\frac{c\eta^j}{r+1}\right).
+\tag{10.908}
+\]
+
+That is, the entry is greater than \(\mathcal I_j\). The term
+\(1/\widehat T\) accounts for the original \(b_n\), and the
+second term accounts for the ordinary jets and separation.
+
+### The arithmetic upper bound
+
+The phase identity (10.151), retained at each restriction, puts every
+target integer value in K. Its global degree and local degrees are
+therefore d,e,f. Restricting the coefficient vector does not increase
+\(h_2(c)\) or its column count, and the retained minimum is
+\(\beta\). Theorem 10.92 applies with its full q-denominator.
+
+For an explicit envelope, put \(\varepsilon=13/18000\),
+\(e_0=1/79+1/(71928\cdot1500)\), and
+\(\ell_q=7/50\) at two and \(11/50\) at three. Let
+\(E_-(c),E_+(c)\) be the degree-ten rational exponential
+bounds in Theorem 10.201, and write \(H_+=1/E_-(c)\).
+In particular \(\exp(-c)<H_+\). Define
+
+\[
+\begin{aligned}
+W(y)&=\frac w{2c_2}\left(1+\frac{y^2}{2\gamma}\right)
+ +\frac{y^2}{c_2c_3q}
+ +(1+w/2)c_1\varepsilon+(1+w)c_1e_0,\\
+b_j&=\lambda\left(1+(j+1)\ell_q+w+
+                                  \frac{\ell_q}{q-1}\right),\\
+k_j(y)&=\left(\frac{107}{103}+\frac38y\right)
+                    (1-cy)^{j+1}H_+
+                      +w\left(1-\frac{483}{824}y\right),\\
+\mathcal A_j(y,A_0)&=\frac q{c_2}+\frac{W(y)}{q^j}
+ +\frac{\xi}{q^j}
+       \frac{b_jA_0/c_4+k_j(y)/c_3}{1+A_0}.
+\end{aligned}
+\tag{10.909}
+\]
+
+If a target value is nonzero, we claim
+
+\[
+\frac{c_1}{q^j\widehat{\mathcal Z}}
+       (v_p(\Phi_I(s;\boldsymbol t))-\beta)
+\le\mathcal A_j(y,A_0).
+\tag{10.910}
+\]
+
+To check every term, apply (10.244) with
+\(R=q^{j+1}S_I\) and output order
+\(O\le\eta^{j+1}T_I\). Since \(t=f\log p\), its
+field factor converts the height normalization into
+\(c_1/(q^j\widehat Z)\).
+Lemma 10.205 bounds the combined torus and depth-dependent scalar
+cost by \(q/c_2\), with the remaining
+\(\lambda\ell_q/(q-1)\) contribution to \(b_j\).
+Its additive-factorial bound gives
+\(\lambda(1+(j+1)\ell_q)\), since \(\log q/B<\ell_q\).
+The initial mean additive cost adds \(w\lambda\).
+Use \(\vartheta/N<\xi A_0/(1+A_0)\) for these terms.
+
+The initial mean torus cost, coefficient-field generator, logarithmic
+column counts and scalar remainders give the four terms of W,
+respectively, exactly as in (10.864). We used
+\(\varepsilon_r\le\varepsilon\), \(e_r\le e_0\),
+and the arbitrary-depth bound \(E_I/\widehat Z<e_0\)
+from Lemmas 10.194–10.195. For the pointwise derivative cost,
+\(a/H\le107/103+3y/8\) and
+\(\mathfrak h^I\le\mathfrak h<\exp(-c)<H_+\): the
+strict exponential inequality follows by integrating
+\(1/(1-z)>1\) to obtain \(\log(1-z)<-z\).
+The mean derivative cost has the multiplier
+\(wC_r\le w(1-483y/824)\). Finally
+\(1/(eN)<\xi/(1+A_0)\) gives exactly \(k_j\).
+This proves the complete arithmetic bound in the actual field.
+
+### Comparisons for every rank and integer step
+
+We prove that both analytic entries are strictly larger than this
+arithmetic bound. For fixed y, its dependence on \(A_0\ge a_*\)
+is fractional linear, so its maximum is at \(a_*\) or at its
+limit at infinity. For \(1\le j\le4\), at either endpoint
+\(P(y)=\mathcal L_j(y)-\mathcal A_j(y,A_0)\) is a
+polynomial of degree at most \(j+2\). Its required interval is
+
+\[
+0\le y\le\frac1{\max\{r_0+1,j+2\}},\qquad
+r_0=\begin{cases}3,&q=2,\\4,&q=3.\end{cases}
+\tag{10.911}
+\]
+
+The q = 3 rank restriction is the positive-optimizer consequence in
+Proposition 10.186. Use the Bernstein identity (10.845) on this
+interval. Substitution of the seven case rows gives 56 polynomials,
+with 308 rational Bernstein coefficients, all greater than 1/4.
+The [exact calculation](../figure_sources/yu_second_later_integer.py)
+constructs the coefficients from the displayed formulas and reconstructs
+each polynomial exactly. The nonnegative weights in (10.845) sum to
+one, so the comparison holds on the whole interval.
+
+For \(j\ge5\), one has \(r\ge j+1\ge6\), hence
+\(y\le1/7\). The inequality
+\(\log(1-z)>-z/(1-z)\) used in (10.846) gives
+\(\eta^j\ge\eta^{r-1}>\exp(-c)>1/E_+(c)\).
+Both \(q^{-j}\) and \((j+1)q^{-j}\) decrease with j.
+Replace y by 1/7 in W, replace \(k_j\) by
+\((107/103+3/56)H_++w\), and replace j by five in the
+remaining decreasing costs. This bounds the mass from below and
+the arithmetic expression from above by
+
+\[
+\begin{aligned}
+L_*&=\frac{2cq}{E_+(c)}
+       \left(1-\frac1{98q^5\gamma}\right)
+                         -\frac{\lambda\nu}{c_4q^5},\\
+A_*(A_0)&=\frac q{c_2}+\frac{W(1/7)}{q^5}
+ +\frac\xi{q^5}
+ \frac{b_5A_0/c_4+[(107/103+3/56)H_++w]/c_3}{1+A_0}.
+\end{aligned}
+\tag{10.912}
+\]
+
+The same two endpoints reduce this tail to 14 rational comparisons.
+Each gives \(L_*-A_*>3/100\).
+
+For the input entry put \(y_0=1/(r_0+1)\) and
+\(T_0=(12/29)(r_0+1)12^{r_0}\). Since
+\(\widehat T>T_0\), \(r+1-j\ge2\), and \(q^j\ge q\),
+the input is greater than
+
+\[
+I_*=c_1\chi q^2-
+       \frac{\xi(1/T_0+cy_0)}{qc_3(1+a_*)}.
+\tag{10.913}
+\]
+
+Meanwhile \((j+1)/q^j\le2/q\), \(W(y)\le W(y_0)\),
+and \(\eta^{j+1}\le1\) give the uniform arithmetic upper bound
+
+\[
+U_*=\frac q{c_2}+\frac{W(y_0)}q+
+\frac\xi q\left[
+ \frac{\lambda(1+w+\ell_q/(q-1)+2\ell_q)}{c_4}
+ +\frac{(107/103+3y_0/8)H_++w}{c_3(1+a_*)}
+\right].
+\tag{10.914}
+\]
+
+Each of the seven rational differences \(I_*-U_*\) exceeds
+7/5. Thus the finite-step mass gap exceeds 1/4, the remaining
+mass gap exceeds 3/100, and the input gap exceeds 7/5, all in
+the normalization \(c_1/(q^j\widehat{\mathcal Z})\).
+These are exact rational comparisons after the analytic reductions;
+no rank or contraction depth is left to numerical sampling.
+
+A nonzero target value would have its normalized valuation at most
+\(\mathcal A_j\) and strictly greater than that quantity by both
+entries of the interpolation minimum. It must therefore be zero.
+Additive orders greater than \(D_{\mathrm a}\) vanish identically.
+Induction proves every asserted block through j = r. The phase family
+is unchanged during this induction, so all previously known zeros,
+including a stronger q-deleted block, are retained.
+
+At depth one, Theorem 10.202 supplies a full radius
+\(q(\lfloor S_1\rfloor+1)>qS_1\) with order
+\(\lfloor\eta T_1\rfloor\). Also \(\log Q<\log3<3B\).
+This verifies the stated unconditional application at that depth.
+\(\square\)
+
+![Floored integer radii and derivative orders at a contracted depth, and strict lower comparison margins.](../figures/yu-second-later-integer.png)
+
+*Figure 10.62.* Left: the counting example of Solution 83 at
+\(q=2,r=3,I=2,S=21/2,\widehat T=1200\). Each full integer
+interval carries the displayed derivative order; the arrows give
+the ordinary interpolation multiplicities. This is an illustration
+of exact floor arithmetic, not a number-field instance of the parameter
+construction. Right: exact strict lower margins from Theorem 10.206,
+in units of \(c_1/(q^j\widehat{\mathcal Z})\): 1/4 for
+steps 1–4, 3/100 for the infinite tail, and 7/5 for the input entry.
+The proof connects these comparisons to the actual selected functions.
+[Reproducible calculation and figure](../figure_sources/yu_second_later_integer.py).
+Human-source context: the extrapolation and contraction methods of
+Section 11 of [Yu's freely accessible 1999 paper](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf);
+the selected-function and height estimates used here are proved in
+this lesson.
+
+## 70. Fractional zeros and successive contractions
+
+At a contracted depth, the inner interval retains two different orders:
+a higher order away from multiples of q, and a lower order at every
+integer. The outer integer intervals supplied by Theorem 10.206 add
+further layers. We use all these layers, while retaining the denominator
+of the fractional target and the degree of its actual root field.
+
+Use the hatted kernel of Theorem 10.203 throughout. Put
+\(a=r+1\), \(c=c_5\), \(\mathfrak h=\eta^a\),
+\(Q=q\mathfrak h\), and
+
+\[
+S_I=\mathfrak h^{-I}S,\qquad
+T_I=\mathfrak h^I\widehat T,\qquad
+\widehat{\mathcal Z}=\frac{S\widehat{\mathcal D}}{et}.
+\tag{10.917}
+\]
+
+The logarithmic scale is \(B=A_r+\log J\); it is distinct from
+the integer separation cost used below. Retain the counterhypothesis
+\(v_p(\Xi-1)\ge\chi\widehat U_r\), including the casewise
+\(\chi\) and coefficient-height multiplier w of Lemma 10.199.
+
+### The complete mixed fractional step
+
+**Theorem 10.207 (fractional zeros after a contraction).** Let
+\(I\ge1\) be an integer satisfying
+
+\[
+I\log Q\le3B,\qquad \frac{cT_{I+1}}a\ge1.
+\tag{10.918}
+\]
+
+Suppose a nonzero selected family \(\Phi_I\) has been obtained
+by the support and phase restrictions of Theorems 10.48, 10.51 and
+10.176. It retains the original coefficient minimum \(\beta\),
+an integral coefficient subvector, the complete polynomial-index
+fibres, widths \(q^{-I}\widehat D_i\), and additive argument
+\(q^{-I}x\). Put
+\(R_1=q(\lfloor S_I\rfloor+1)\) and
+\(R_j=\lfloor q^jS_I\rfloor\) for \(2\le j\le r\).
+Suppose its prepared zeros comprise:
+
+- the q-deleted integers through \(R_1\), to order \(\lfloor T_I\rfloor\);
+- every integer through \(R_1\), to order \(\lfloor\eta T_I\rfloor\);
+- every integer through \(R_j\), to order \(\lfloor\eta^jT_I\rfloor\), for \(2\le j\le r\).
+
+Then
+
+\[
+\Phi_I(s/q;\boldsymbol t)=0
+\quad\left(s\in\mathbb Z,\quad
+ |s|\le q(\lfloor S_{I+1}\rfloor+1),\quad
+ |\boldsymbol t|\le\lfloor T_{I+1}\rfloor\right).
+\tag{10.919}
+\]
+
+**Proof.** Set \(O=\lfloor T_{I+1}\rfloor\) and define
+
+\[
+\begin{aligned}
+\mu_j&=\lfloor\eta^jT_I\rfloor-O+1 &&(0\le j\le r),\\
+E&=\mu_0-\mu_1,\qquad M=\mu_0,\\
+N_I&=(2R_r+1)\mu_r+
+ \sum_{j=1}^{r-1}(2R_j+1)(\mu_j-\mu_{j+1})
+ +2(q-1)(\lfloor S_I\rfloor+1)E,\\
+B_I&=\lfloor\log_p(2R_r)\rfloor,\qquad
+M_* =\max\{B_I,v_p(V(k)),v_p(b_n)\},\\
+Q_D&=D_{\mathrm a}\bigl(N+1/(p-1)\bigr).
+\end{aligned}
+\tag{10.920}
+\]
+
+These are legitimate nested radii and multiplicities. Indeed
+\(S_I\ge S>16\) gives
+\(q(q-1)S_I-q-1>0\), hence \(R_2>R_1\), and all
+subsequent radii increase. The last real order difference is
+\((\eta^r-\mathfrak h)T_I=c\eta^rT_I/a\ge1/\eta>1\).
+Thus every \(\mu_j\) is positive, and they are nonincreasing.
+At a node in layer j, an output order at most O plus its largest
+ordinary-jet order is at most \(O+\mu_j-1\), exactly the
+provided input floor. The deleted increment E is a nonnegative integer.
+
+Apply the normal-series assertion (10.351) of Theorem 10.132,
+with the deleted radius equal to \(R_1\). Theorem 10.180 gives
+the normalizing scalar valuation \(Q_D-\beta\). Theorem
+10.182 and Lemma 10.38 give the ordinary-jet loss
+\(l\max\{v_p(V(k)),v_p(b_n)\}\), with original baseline
+\(\beta+\kappa+\chi\widehat U_r-v_p(b_n)\).
+Theorem 10.176 preserves the combined-frequency congruence under
+each stipulated restriction; the factor \(q^{-I}\) is a
+p-adic unit. The normal-disc conditions are those of Theorem
+10.190 for the hatted scale. Subtract the normalizing valuation
+after applying (10.351), and add back the projection error. This gives
+
+\[
+\begin{aligned}
+v_p(\Phi_I(x;\boldsymbol t))-\beta\ge
+\min\{&N_IN-Q_D,\\
+ &\kappa+\chi\widehat U_r-v_p(b_n)
+             -EB_I-(\mu_0-1)M_*\}
+\qquad(x\in\mathbb Z_p).
+\end{aligned}
+\tag{10.921}
+\]
+
+In particular, both the deleted-cardinal cost and the inverse/jet
+cost remain. No prepared-family constants from (10.352) or (10.353)
+are substituted for this selected-family normalization.
+
+The proof of (10.839), together with \(H>1\), gives
+
+\[
+\log(2q^rS_I)<H+I\log(\mathfrak h^{-1})
+ \le\mathfrak h^{-I}H,\qquad
+M_*\le\frac{\mathfrak h^{-I}H}{\log p},\qquad
+v_p(b_n)\le\frac H{\log p}.
+\tag{10.922}
+\]
+
+For the middle inequality use \(H+z\le H\exp z\) for
+\(z\ge0\). Keep the original coefficient bound separately.
+The floor estimates are \(E\le cT_I/a+1\) and
+\(\mu_0-1\le(1-\mathfrak h)T_I+1\).
+Using (10.863), \(T_I=\mathfrak h^I\widehat T\), and
+\(2/T_I\le2c\mathfrak h/a\), the second analytic entry,
+multiplied by \(c_1/(q^r\widehat{\mathcal Z})\), is strictly
+greater than
+
+\[
+\mathcal I_r=c_1q\chi-
+ \frac{\xi}{q^rc_3(1+a_*)}
+ \left[1-\mathfrak h+\frac{c(1+2\mathfrak h)}a+\frac1{T_-}\right],
+\quad \xi=\frac{101}{100},\quad
+T_- =\frac{12}{29}a12^r.
+\tag{10.923}
+\]
+
+Here \(a_*\) is the casewise lower bound for \(A_0\) in
+Theorem 10.197. The term \(1/T_-\) pays for the original
+\(b_n\); it is additional to the two rounded interpolation losses.
+
+To count the first entry, separate the inner deleted nodes, the
+remaining inner multiples of q, and the outer annuli. Their counts are
+\(2(q-1)(\lfloor S_I\rfloor+1)\),
+\(2(\lfloor S_I\rfloor+1)+1\), and
+\(2(R_j-R_{j-1})\). The first two exceed
+\(2(q-1)S_I\) and \(2S_I\). The first annulus exceeds
+\(2(q^2-q)S_I-2(q+1)>0\); later annuli exceed
+\(2(q^j-q^{j-1})S_I-2>0\). Also
+\(\mu_j>(\eta^j-\mathfrak h)T_I\). Telescoping gives
+
+\[
+\begin{aligned}
+&(q-1)(1-\mathfrak h)+(\eta-\mathfrak h)
+ +\sum_{j=2}^r(q^j-q^{j-1})(\eta^j-\mathfrak h)\\
+&\hspace{25mm}=\frac ca
+       \left[\sum_{j=0}^r(q\eta)^j+q-2\right].
+\end{aligned}
+\tag{10.924}
+\]
+
+Use \(S_IT_I=S\widehat T\),
+\(c_1S\widehat TN/\widehat{\mathcal Z}=qa\), and
+\(S_I\ge S_-=c_3qd_*a^2\). The normalized mass is strictly
+greater than
+
+\[
+\begin{aligned}
+\Gamma_r={}&\frac{2cq}{q^r}
+       \left[\sum_{j=0}^r(q\eta)^j+q-2\right]\\
+&-\frac{qa}{q^rS_-}
+ \left[2(q+1)(\eta^2-\mathfrak h)
+       +2\sum_{j=3}^r(\eta^j-\mathfrak h)\right].
+\end{aligned}
+\tag{10.925}
+\]
+
+The first analytic entry therefore exceeds
+\(\Gamma_r-\lambda\nu/(c_4q^r)\), where
+\(\lambda=59/58\) and \(\nu\) is the case factor in
+Theorem 10.197, so that \(c_1\mathcal N=\lambda\nu/c_4\).
+
+### The full fractional denominator over the permitted depths
+
+Let \(X=\lfloor S_{I+1}\rfloor+1\), the absolute target
+radius for \(x=s/q\). By Theorem 10.56 its normalized value
+V lies in the actual root field of degree at most \(q^rd\),
+with chosen local degrees e,f. Removing its common principal-unit
+monomial does not change the valuation. The original minimum
+\(\beta\) and the coefficient-height bound of Lemma 10.199
+remain valid for the subvector.
+
+Put \(y=1/a\), let \(\varepsilon_r,e_r\) be the bounds of
+Lemma 10.195, and use \(\ell_2=7/50,\ell_3=11/50\). Define
+
+\[
+\begin{aligned}
+u_r&=\frac{\mathfrak h^{-1}+S_-^{-1}}{c_2},\\
+W_r&=\frac w{2c_2}\left(1+\frac1{2S_-}\right)
+ +\frac{y^2}{c_2c_3q}
+ +(1+w/2)c_1\varepsilon_r+(1+w)c_1e_r,\\
+b_r'&=\lambda\left(1+\ell_q+w+\frac q{q-1}\ell_q\right),\\
+k_r'&=\left(\frac{107}{103}+\frac38y\right)\mathfrak h^2
+                 +w\left(1-\frac{483}{824}y\right),\\
+L_Q&=\frac{2(Q-1)}{Q+1},\qquad
+v_r=\frac{3\lambda l_q}{c_4L_Q},\qquad
+l_2=\frac7{10},\quad l_3=\frac{11}{10},\\
+\mathcal B_{r,0}(A_0)&=u_r+W_r+
+ \xi\frac{b_r'A_0/c_4+k_r'/c_3}{1+A_0},\\
+\mathcal B_{r,1}(A_0)&=\frac{u_r}{32768}+W_r+
+ \xi\frac{(b_r'/c_4+v_r)A_0+k_r'/c_3}{1+A_0}.
+\end{aligned}
+\tag{10.926}
+\]
+
+If V is nonzero, Theorem 10.92 and the same height contributions
+as in Theorem 10.201 give
+
+\[
+\frac{c_1}{q^r\widehat{\mathcal Z}}(v_p(V)-\beta)
+ \le\max\{\mathcal B_{r,0}(A_0),\mathcal B_{r,1}(A_0)\}.
+\tag{10.927}
+\]
+
+Here is the depth estimate and a check of the other contributions.
+Since \(q^{-I}\le Q^{-I}\), the torus cost is at most
+\(u_rQ^{-I}\). Formula (10.243) bounds the full denominator by
+\(D_{\mathrm a}(I+1+1/(q-1))\). Its part proportional to I
+has normalized height at most
+\(\lambda(\vartheta/N)I\log q/(c_4B)\). The sum of this
+linear term and \(u_rQ^{-I}\) is convex as a function of real
+I on \([0,3B/\log Q]\). At zero its value is \(u_r\).
+At the other endpoint it is bounded by
+
+\[
+u_r\exp(-3B)+\frac{3\lambda(\vartheta/N)\log q}{c_4\log Q}
+ <\frac{u_r}{32768}+\xi\frac{A_0}{1+A_0}v_r.
+\tag{10.928}
+\]
+
+Indeed \(B>5\), \(\exp(15)>2^{15}\),
+\(\vartheta/N=(1+\tau)A_0/(m+A_0)<\xi A_0/(1+A_0)\),
+\(\log q<l_q\), and \(\log Q>L_Q>0\), as proved
+in Lemma 10.205. Convexity bounds every intermediate integer depth.
+The remainder \(1+1/(q-1)\) gives exactly the term
+\(\lambda q\ell_q/(q-1)\) in \(b_r'\).
+
+The mean torus, coefficient generator, coefficient count and scalar
+remainders give \(W_r\), with the same terms as in (10.864).
+The scalar radius obeys
+\(q^{-I}X\le\mathfrak h^{-1}S+1<qS\), by Theorem
+10.201. Thus its additive term is bounded by
+\(\lambda(1+\ell_q)\), while the initial mean contributes
+\(w\lambda\). The target derivative order is at most
+\(T_{I+1}\le\mathfrak h^2\widehat T\), because \(I\ge1\).
+Together with the unchanged initial complete-simplex mean, Lemma
+10.194 gives \(k_r'\). At depth I its Euler remainder is
+bounded by \(1/(q^I79)+(r-1)/(999\widehat Z)<e_r\).
+Finally use \(eN>(1+A_0)/\xi\), retaining the full factor
+\(q^r\) on every nonnegative height contribution. No equality
+between valuations at different primes is assumed.
+
+### Exact comparisons covering every rank
+
+For the finite ranks 3 through 7, or 4 through 7 in case V, use
+the optimizer hypothesis from Theorem 10.184:
+
+\[
+\frac rt>A_0+\frac35,\qquad t>1,
+\qquad a_*\le A_0<r.
+\tag{10.929}
+\]
+
+Each \(\mathcal B_{r,i}\) is fractional linear in \(A_0\).
+Its maximum on this interval is bounded by its values at \(a_*\)
+and r. This uses the actual rank restriction even when the upper
+endpoint r itself is not attainable.
+
+For all ranks at least eight, use the exponential bounds
+\(H_-=(1-c/9)^9\), \(H_+=E_-^{-1}\), and \(E_+\)
+from Theorem 10.201. They give
+\(H_-\le\mathfrak h<\exp(-c)<H_+\) and
+\(\eta^r>1/E_+\). Keeping the last four geometric terms
+and bounding every removed order fraction by one gives
+
+\[
+\Gamma_r>
+\frac{2cq}{E_+}\sum_{j=0}^3q^{-j}
+-\frac{18q(q+7)}{q^8S_-(8)}.
+\tag{10.930}
+\]
+
+The discarded floor term is at most
+\(2q(r+1)(q+r-1)/(q^rS_-(r))\). It decreases with r:
+its consecutive ratio is
+\((q+r)(r+1)/(q(q+r-1)(r+2))<1\).
+
+For both arithmetic endpoints, replace y and all decreasing size
+remainders by their rank-eight bounds, replace
+\(\mathfrak h^{-1}\) by \(H_-^{-1}\), the derivative factor
+\(\mathfrak h^2\) by \(H_+^2\), and
+\(1-483y/824\) by one. The function \(2(Q-1)/(Q+1)\)
+increases with Q, so using \(Q=qH_-\) increases \(v_r\).
+All these changes increase the arithmetic bounds. In the input loss,
+use \(1-H_-+c(1+2H_+)/9+1/T_-(8)\), and use \(q^8\)
+in its denominator and in the normalizing loss. These changes decrease
+the two analytic lower bounds. The resulting arithmetic expressions
+are again fractional linear; their extrema on \([a_*,\infty)\)
+are bounded by the value at \(a_*\) and the limit at infinity.
+
+There are 34 finite-rank rows and seven uniform rows, with two depth
+endpoints and two parameter endpoints each. Exact rational substitution
+in these 164 comparisons gives the following strict lower bounds:
+
+| Case | Mass minus normalization and arithmetic | Input minus arithmetic |
+|---|---:|---:|
+| I.1 | \(107/100\) | \(1/5\) |
+| I.2 | \(107/100\) | \(2/25\) |
+| II | \(11/10\) | \(21/100\) |
+| III.1 | \(103/100\) | \(13/100\) |
+| III.2 | \(51/50\) | \(7/25\) |
+| IV | \(26/25\) | \(49/100\) |
+| V | \(18/25\) | \(39/100\) |
+
+The [exact calculation](../figure_sources/yu_second_later_fractional.py)
+records every rational difference. The reductions above prove why
+these comparisons cover all permitted depths, ranks and field
+parameters. In particular both analytic entries strictly exceed the
+nonzero-value arithmetic bound, by more than \(7/10\) and
+\(2/25\), respectively. Thus V, and hence the original prepared
+value, is zero. Additive orders above \(D_{\mathrm a}\) vanish
+by degree. This proves the entire stated fractional block. \(\square\)
+
+### The following integer block
+
+**Theorem 10.208 (the next contracted starting profile).** Under the
+hypotheses of Theorem 10.207, a support and phase restriction produces
+a nonzero family \(\Phi_{I+1}\) of the same kind at depth
+\(I+1\), with the same minimum \(\beta\). At
+\(R=q(\lfloor S_{I+1}\rfloor+1)\), it has q-deleted zeros
+through order \(\lfloor T_{I+1}\rfloor\) and full integer
+zeros through order \(\lfloor\eta T_{I+1}\rfloor\).
+
+**Proof.** Apply the exact phase/coset passage of Theorems 10.48
+and 10.51 to the whole fractional block, including the extra phase
+partition when q divides \(G_0\). Keep the class containing an
+original coefficient of minimum valuation. The Kummer monomial
+basis separates the classes for \(q\nmid s\). The affine jet
+change is triangular with diagonal powers of q, so it retains every
+provided index. Theorem 10.55 identifies the new integer values
+in K itself. Theorems 10.29 and 10.176 preserve nonzero support,
+the polynomial-index fibres, and the combined-frequency congruence.
+Thus the same argument as Theorem 10.202 gives the stipulated
+q-deleted zeros, widths \(q^{-I-1}\widehat D_i\), and
+additive argument \(q^{-I-1}x\).
+
+To fill the multiples of q, put \(T'=T_{I+1}\) and
+\(M'=\lfloor cT'/a\rfloor+1\). Then
+\(\lfloor\eta T'\rfloor+M'-1\le\lfloor T'\rfloor\).
+There are exactly \(n_E=2(q-1)(\lfloor S_{I+1}\rfloor+1)\)
+input nodes. Their separation maximum is at most
+\(\mathfrak h^{-I-1}H/\log p\), since
+\(R<q^2S_{I+1}\le q^rS_{I+1}\). The q-deleted form of
+Theorem 10.182 consequently gives analytic entries
+
+\[
+n_EM'N-Q_D,\qquad
+\kappa+\chi\widehat U_r-v_p(b_n)
+ -M'\lfloor\log_p(2R)\rfloor-(M'-1)M_*.
+\tag{10.931}
+\]
+
+In normalization \(c_1/\widehat{\mathcal Z}\), their strict
+lower bounds are
+
+\[
+2cq(q-1)-\frac{\lambda\nu}{c_4},\qquad
+\mathcal I_r^{\rm c}=c_1\chi q^{r+1}
+ -\frac{\xi}{c_3(1+a_*)}\left(\frac{3c}{a}+\frac1{T_-}\right).
+\tag{10.932}
+\]
+
+For the first use \(n_E>2(q-1)S_{I+1}\),
+\(M'>cT'/a\), and \(S_{I+1}T'=S\widehat T\).
+For the second, the two separation/jet terms have total multiplier
+\(2M'-1\le2cT'/a+1\). Since \(cT'/a\ge1\), their
+normalized loss is at most \(3c/a\); the original coefficient
+again contributes the separate \(1/T_-\).
+
+The arithmetic upper bound is the same maximum of
+\(\mathcal B_{r,0},\mathcal B_{r,1}\), now in this integer
+normalization. Indeed the actual field is K; the torus radius is
+\(q^{-I-1}R=q^{-I}(\lfloor S_{I+1}\rfloor+1)\), precisely
+the preceding fractional radius after scaling. Formula (10.243)
+has the same total depth \(I+1\). The derivative order has
+decreased, and the coefficient height has not increased. These facts
+preserve each contribution to the preceding height bound. The convex
+estimate still uses the previous I, so it remains valid even if
+\((I+1)\log Q>3B\).
+
+For the same 164 endpoint comparisons the two new differences exceed
+\(7/10\) and 9, respectively. In the uniform rank-eight row,
+\(q^{r+1}\) is replaced by \(q^9\) in the positive term,
+and the loss uses \(a=9,T_-(8)\). All substitutions have
+the required direction. Thus a nonzero integer value would contradict
+the product-formula bound. Every missing multiple of q is filled,
+and the stronger q-deleted block remains available. \(\square\)
+
+**Corollary 10.209 (iteration up to the geometric or order threshold).**
+Define
+
+\[
+I_G=\min\{I\ge1:Q^I>\exp(3B)\},\qquad
+I_M=\max\{I\ge1:cT_I/a\ge1\}.
+\tag{10.933}
+\]
+
+These are finite integers. At every
+\(1\le I\le\min(I_G,I_M)\), an actual nonzero selected
+family exists with the two rounded starting blocks of Theorem
+10.208. At every such I with \(I<I_G\), it also has all
+the outer integer blocks required by Theorem 10.207. If
+\(I_G\le I_M\), the actual family at \(I_G\) supplies the
+zeros in Theorem 10.204 and hence its rank conclusion whenever the
+remaining independence and hyperplane hypotheses there hold.
+
+**Proof.** The inequalities \(Q>1\) and \(0<\mathfrak h<1\)
+give finiteness. The set defining \(I_M\) is nonempty:
+\(\mathfrak h>1/3\), checked at the least rank in each q-case
+using its monotonicity, and
+\(cT_1/a>(27/50)(1/3)(12/29)12^3>1\).
+Theorems 10.202–10.203 construct the rounded depth-one profile.
+If \(I<I_G\), Theorem 10.206 supplies its outer integer
+blocks, since \(I\log Q\le3B\). If also \(I<I_M\),
+then \(cT_{I+1}/a\ge1\), so Theorems 10.207–10.208
+construct the next profile. Induction proves the whole interval.
+At \(I_G\), its rounded full interval contains
+\(|s|\le qS_{I_G}\), with the required order
+\(\eta T_{I_G}\); these are exactly the zeros in Theorem
+10.204. \(\square\)
+
+When \(I_M<I_G\), the constructed family has reached the
+order threshold first. The corollary does not extend the mixed step
+past its multiplicity hypothesis. That endpoint requires a separate
+argument with a fixed derivative order.
+
+![Nested mixed multiplicities at a contracted depth, and uniform positive interpolation margins in all seven field cases.](../figures/yu-second-later-fractional.png)
+
+*Figure 10.63.* Left: the exact node types and multiplicities for
+\(q=2,r=3,I=1,S=21/2,\widehat T=1200,c=27/50\), with
+output order \(\lfloor T_2\rfloor\). This is a counting
+illustration, not a complete number-field parameter instance. Right:
+strict rational lower bounds for the input-minus-arithmetic margins
+in Theorem 10.207; each includes both depth endpoints and every
+rank in its field case. Theorem 10.208 supplies the next starting
+block, and Corollary 10.209 states the resulting finite induction.
+[Reproducible exact calculation and figure](../figure_sources/yu_second_later_fractional.py).
+Human-source context: Section 11 of
+[Yu's freely accessible 1999 paper](https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf)
+and the second constants in Section 1.1 of his
+[freely accessible 2013 paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).
+
+## 71. The last integer extension and the fixed-order endpoint
+
+The derivative-order threshold leaves one more full integer extension
+available. This extension identifies the actual starting interval for a
+continuation at fixed order. We then prove the contradiction that such a
+continuation must reach; the intermediate fractional steps are a separate
+requirement.
+
+**Theorem 10.210 (the last integer extension).** Under the hypotheses
+of Theorem 10.206, the same selected family satisfies
+
+\[
+\Phi_I(s;\boldsymbol t)=0
+\quad(s\in\mathbb Z,\ |s|\le q^{r+1}S_I,
+                         |\boldsymbol t|\le\mathfrak h T_I).
+\tag{10.936}
+\]
+
+All cutoffs mean their integer floors. This assertion does not require
+\(cT_{I+1}/(r+1)\ge1\).
+
+**Proof.** Write \(a=r+1\). Theorem 10.206 supplies the full
+integer interval of radius \(s_r=\lfloor q^rS_I\rfloor\)
+through order \(\lfloor\eta^rT_I\rfloor\). Set
+
+\[
+\mu=\left\lfloor\frac{c\eta^rT_I}{a}\right\rfloor+1,
+\qquad
+\lfloor\mathfrak h T_I\rfloor+\mu-1
+\le\lfloor\eta^rT_I\rfloor.
+\tag{10.937}
+\]
+
+The second inequality follows from
+\(\mathfrak h T_I+c\eta^rT_I/a=\eta^rT_I\).
+It holds when \(\mu=1\) as well. Thus every ordinary divided jet
+required by Theorem 10.182 is available for each asserted target order.
+
+Retain the original minimum coefficient valuation \(\beta\),
+the normalizing cost \(Q_D=D_{\mathrm a}(N+1/(p-1))\),
+and the original integer \(b_n\). The input nodes form a complete
+integer interval. The interpolation bound is therefore
+
+\[
+v_p(\Phi_I(s;\boldsymbol t))-\beta\ge
+\min\left\{
+ (2s_r+1)\mu N-Q_D,\quad
+ \kappa+\chi\widehat U_r-v_p(b_n)-(\mu-1)M_*
+\right\}.
+\tag{10.938}
+\]
+
+There is no deleted-node loss. The separation and jet estimate
+\(M_*\le\mathfrak h^{-I}H/\log p\) remains valid at \(j=r\):
+equation (10.839) bounds \(\log(2q^rS)\), and the proof of
+(10.905) then applies unchanged. The original coefficient separately
+satisfies \(v_p(b_n)\le H/\log p\). The strict disc, perturbation,
+phase and congruence conditions are those verified in Theorem 10.206.
+The integer target lies in K, and the family has not changed.
+
+Use \(y=1/a\), \(\lambda=59/58\), \(\xi=101/100\),
+and the case data \(a_*,d_*,w,\nu,\chi\) of Theorem
+10.197 and Lemmas 10.199–10.200. Define
+
+\[
+S_-=c_3qd_*a^2,\qquad T_-=(12/29)a12^r.
+\tag{10.939}
+\]
+
+In units \(c_1/(q^r\widehat{\mathcal Z})\), the two
+interpolation entries are strictly greater than
+
+\[
+\begin{aligned}
+L_r&=2cq\eta^r\left(1-\frac1{2q^rS_-}\right)
+                          -\frac{\lambda\nu}{c_4q^r},\\
+J_r&=c_1\chi q-
+ \frac{\xi(1/T_-+c\eta^r/a)}{q^rc_3(1+a_*)}.
+\end{aligned}
+\tag{10.940}
+\]
+
+For the first entry use \(\mu>c\eta^rT_I/a\),
+\(2s_r+1>2q^rS_I-1\), and
+\(c_1S_IT_IN/\widehat{\mathcal Z}=qa\).
+For the second use \(\mu-1\le c\eta^rT_I/a\), the separate
+original coefficient bound, and (10.863). The strict lower bound
+\(\widehat T>T_-\) preserves the strict inequality even at a
+floor endpoint.
+
+Here is the arithmetic estimate with all terms retained. Put
+\(\ell_q=7/50\) for \(q=2\), and \(\ell_q=11/50\) for
+\(q=3\). Let \(E_-(c)<\exp c<E_+(c)\) be the rational
+bounds from Theorem 10.201 and set \(H_+=1/E_-(c)\). Define
+
+\[
+\begin{aligned}
+\epsilon&=\frac{13}{18000},\qquad
+e_0=\frac1{79}+\frac1{71928\cdot1500},\\
+W_r&=\frac{w}{2c_2}\left(1+\frac1{2S_-}\right)
+ +\frac{y^2}{c_2c_3q}
+ +(1+w/2)c_1\epsilon+(1+w)c_1e_0,\\
+b_r&=\lambda\left(1+(r+1)\ell_q+w+
+                                      \frac{\ell_q}{q-1}\right),\\
+k_r&=\left(\frac{107}{103}+\frac{3y}{8}\right)
+                   \eta^{r+1}H_+
+                   +w\left(1-\frac{483y}{824}\right),\\
+\mathcal A_r(z)&=\frac q{c_2}+\frac{W_r}{q^r}
+       +\frac{\xi}{q^r}\frac{b_rz/c_4+k_r/c_3}{1+z}.
+\end{aligned}
+\tag{10.941}
+\]
+
+For a nonzero target,
+\(c_1(v_p(\Phi_I)-\beta)/(q^r\widehat{\mathcal Z})
+\le\mathcal A_r(A_0)\). To verify this endpoint of the
+arithmetic argument in Theorem 10.206, first apply Lemma 10.205
+at \(j=r\). Its statement covers every \(j\ge1\), and absorbs
+the complete depth-dependent denominator and torus cost. The remaining
+constant denominator gives \(\ell_q/(q-1)\). The physical
+radius is at most \(q^{r+1}S\), giving the additive factorial
+term \(\lambda(1+(r+1)\ell_q)\); the initial mean contributes
+\(w\lambda\). These terms are multiplied by
+\(\vartheta/N<\xi A_0/(1+A_0)\).
+
+The derivative order is at most
+\(\eta^{r+1}\mathfrak h^I\widehat T\). Since \(I\ge1\)
+and \(\mathfrak h<\exp(-c)<H_+\), its pointwise contribution
+is bounded by the first part of \(k_r\). The mean derivative
+contribution is the second part. The remaining coefficient-generator,
+mean torus, column-count and scalar-remainder terms are exactly
+\(W_r\), with the uniform remainder bounds used in Theorem 10.206.
+Thus the arithmetic argument applies at \(j=r\); its numerical
+comparison is supplied below.
+
+For ranks 3 through 7, or 4 through 7 in case V, evaluate
+\(\mathcal A_r(z)\) at \(z=a_*\) and at infinity. A function
+\((bz+k)/(1+z)\) has derivative \((b-k)/(1+z)^2\), so its
+maximum on \([a_*,\infty)\) occurs at one of these endpoints.
+
+For every \(r\ge8\) use
+\(y_8=1/9\), \(S_8=c_3qd_*9^2\), and
+\(T_8=(12/29)9\cdot12^8\). The integral inequality
+\(\log(1-u)>-u/(1-u)\) gives
+\(\eta^r>\exp(-c)>1/E_+(c)\), because \(r<a-c\).
+Consequently uniform lower bounds for the two entries are
+
+\[
+\begin{aligned}
+L_{\ge8}&=\frac{2cq}{E_+(c)}
+          \left(1-\frac1{2q^8S_8}\right)
+                           -\frac{\lambda\nu}{c_4q^8},\\
+J_{\ge8}&=c_1\chi q-
+       \frac{\xi(1/T_8+c/9)}{q^8c_3(1+a_*)}.
+\end{aligned}
+\tag{10.942}
+\]
+
+For an upper bound on \(\mathcal A_r\), use \(y_8,S_8\)
+in \(W_r\), bound \(\eta^{r+1}H_+\) by \(H_+^2\),
+and bound \(1-483y/824\) by 1. Each replacement increases its
+nonnegative term. Finally use \(r=8\) in \(q^{-r}\) and
+\((r+1)q^{-r}\); both decrease for \(r\ge8\).
+These operations give a uniform upper bound for all remaining ranks.
+
+The resulting exact rational differences exceed the following values.
+
+| Case | Mass minus arithmetic | Input minus arithmetic |
+| --- | ---: | ---: |
+| I.1 | \(91/1000\) | \(33/100\) |
+| I.2 | \(91/1000\) | \(11/50\) |
+| II | \(91/1000\) | \(27/100\) |
+| III.1 | \(66/1000\) | \(29/100\) |
+| III.2 | \(66/1000\) | \(11/25\) |
+| IV | \(49/1000\) | \(29/50\) |
+| V | \(1/20\) | \(3/4\) |
+
+There are 34 finite-rank rows and seven uniform tail rows, each with
+two parameter endpoints. The displayed formulas therefore reduce the
+proof to 82 comparisons of each interpolation entry with its arithmetic
+bound. The exact rational calculations, including the tail substitutions,
+are given in the reproducible source
+[`yu_second_terminal_parameters.py`](../figure_sources/yu_second_terminal_parameters.py).
+They yield the strict margins in the table. Hence each entry exceeds
+the arithmetic upper bound, contradicting a nonzero target. Additive
+orders above \(D_{\mathrm a}\) vanish by degree. \(\square\)
+
+**Lemma 10.211 (the actual fixed-order starting interval).** Suppose
+\(I_M<I_G\) in Corollary 10.209. Put
+\(I_1=I_M\), \(S_1=\mathfrak h^{-I_1}S\), and
+\(T_1=\mathfrak h^{I_1}\widehat T\).
+There is a unique integer \(0\le j_0\le r\) for which
+
+\[
+1\le\frac{c\eta^{j_0}T_1}{a}<\frac1\eta.
+\tag{10.943}
+\]
+
+Define
+
+\[
+\begin{aligned}
+T_{\mathrm f}&=\eta^{j_0+1}T_1,\qquad
+O=\lfloor T_{\mathrm f}\rfloor,\qquad
+R=q\lfloor q^{j_0}S_1\rfloor,\\
+I_2&=\left\lfloor\frac{3B-I_1\log Q}{\log q}\right\rfloor+1,
+\qquad I_3=I_1+I_2.
+\end{aligned}
+\tag{10.944}
+\]
+
+Then \(\eta\le cT_{\mathrm f}/a<1\), \(I_2\ge1\), and
+
+\[
+q^{I_3}\mathfrak h^{I_1}>\exp(3B).
+\tag{10.945}
+\]
+
+The actual family at \(I_1\) from Corollary 10.209 has all integer
+zeros \(|s|\le R\) through order O. Its original minimum
+coefficient, phase, integral coefficient subvector and complete polynomial
+fibres are retained.
+
+**Proof.** The definition of \(I_M\) gives \(cT_1/a\ge1\)
+and \(c\mathfrak h T_1/a<1\). The sequence
+\(c\eta^jT_1/a\) decreases strictly. Its last index with value
+at least 1 is therefore a unique \(j_0\in\{0,\ldots,r\}\).
+Multiplication by \(\eta\) gives the asserted interval for
+\(cT_{\mathrm f}/a\).
+
+Since \(I_1<I_G\), we have \(I_1\log Q\le3B\), hence
+\(I_2\ge1\). The floor plus one is strictly larger than its
+argument, including when that argument is an integer. Thus
+\(Q^{I_1}q^{I_2}>\exp(3B)\), as asserted.
+
+If \(j_0=0\), the rounded starting interval from Corollary
+10.209 contains \(|s|\le q\lfloor S_1\rfloor\) through
+order \(\lfloor\eta T_1\rfloor\). If \(1\le j_0<r\),
+Theorem 10.206 gives radius \(\lfloor q^{j_0+1}S_1\rfloor\)
+and order \(\lfloor\eta^{j_0+1}T_1\rfloor\). If \(j_0=r\),
+Theorem 10.210 gives the final integer level with the same order.
+In every case \(q\lfloor q^{j_0}S_1\rfloor
+\le\lfloor q^{j_0+1}S_1\rfloor\), so the required interval is
+present. None of these extensions changes the family. \(\square\)
+
+**Proposition 10.212 (the final additive-polynomial contradiction).**
+Suppose a stage-\(I_3\) family retains a nonzero integral coefficient
+subvector of the hatted kernel of Theorem 10.203, its complete polynomial
+fibres, and the integral normalized support of Proposition 10.31, with
+widths at most \(q^{-I_3}\widehat D_i\). Suppose its prepared
+values vanish at every integer \(|s|\le R\) through order O,
+where \(R,O,I_3\) are defined in Lemma 10.211. Then such a family
+cannot exist. Each torus degree is strictly less than
+\(609/163840\), whereas the number of integer roots exceeds
+\((1305/236)D_{\mathrm a}\).
+
+**Proof.** The coordinate-degree bound from Proposition 10.31 and Theorem 10.191
+is \(2Jq^{-I_3}\widehat D_i\). The strict stopping inequality
+of Lemma 10.211 and \(T_1<a/(c\mathfrak h)\) give
+
+\[
+\begin{aligned}
+2Jq^{-I_3}\widehat D_i
+&<2JT_1\frac{\widehat D_i}{\widehat T}\exp(-3B)\\
+&<\frac{2eNt}{cc_2qrP\mathfrak h d\sigma_i}\exp(-3A).
+\end{aligned}
+\tag{10.946}
+\]
+
+Equation (10.702) and Theorem 10.203 give the ratio
+\(\widehat D_i/\widehat T=eNt/(c_2qraPd\sigma_i)\).
+The remaining exponential factor satisfies
+\(J\exp(-3B)=J^{-2}\exp(-3A)\le\exp(-3A)\).
+The optimizer gives \(eNt<\zeta_1r<7r/5\). Also
+\(c>1/2\), \(c_2q>3\), \(P\ge1\), and
+\(\mathfrak h>1/3\). The one-base height bound in Theorem
+10.18 gives \(1/(d\sigma_i)<87d^2\). Therefore the degree is
+strictly less than \((2436/5)d^2\exp(-3A)\).
+
+Since \(A\ge4+\log(ad)>5\), \(a\ge4\), and \(\exp(1)>2\),
+
+\[
+d^2\exp(-2A)\le\frac{\exp(-8)}{a^2},\qquad
+\frac{2436}{5}d^2\exp(-3A)
+ <\frac{2436}{5\cdot16\cdot2^{13}}
+ =\frac{609}{163840}<1.
+\tag{10.947}
+\]
+
+The nonnegative integer torus degree is thus zero. The remaining
+ordinary polynomial depends only on the additive coordinate and has
+degree at most \(D_{\mathrm a}\). It is nonzero: its retained
+coefficient vector is nonzero, and the complete polynomial fibres are
+expressed in the independent polynomial basis proved in Lemma 10.29
+and Proposition 10.31.
+
+Finally \(S_1\ge S>16\) and \(j_0\ge0\) give
+\(2R+1>2q(S_1-1)>(15/8)qS_1\). The hatted degree bound
+from Corollary 10.185 is
+
+\[
+D_{\mathrm a}<
+\frac{\lambda S\widehat D}{c_1c_4(N/\vartheta)dB}.
+\tag{10.948}
+\]
+
+Using \(S_1/S=\widehat T/T_1\) and
+\(\widehat T=qa\widehat D/(c_1eNt)\), we obtain
+
+\[
+\begin{aligned}
+\frac{2R+1}{D_{\mathrm a}}
+&>\frac{15q^2ac_4dB}{8\lambda e\vartheta tT_1}\\
+&>\frac{15q^2cc_4\mathfrak h}{8\lambda\vartheta}
+                         \frac de\frac Bt
+ >\frac{45}{8\lambda}=\frac{1305}{236}>1.
+\end{aligned}
+\tag{10.949}
+\]
+
+For the last step use \(q\mathfrak h>1\), \(q\ge2\),
+\(c>1/2\), \(c_4\ge6\), \(d/e\ge1\), \(B/t\ge1\),
+and \(\vartheta\le2\). Order zero is available since
+\(O\ge0\). By Proposition 10.31 these zeros yield \(2R+1\)
+distinct additive roots. For each distinct root, division by its linear factor gives zero
+remainder. Induction on the number of distinct roots therefore makes
+their product divide the polynomial. Its degree cannot exceed that of
+the nonzero polynomial, contradicting the displayed strict inequality. \(\square\)
+
+Proposition 10.212 is conditional on the existence of the final family
+and its zeros. Lemma 10.211 constructs the starting family at
+\(I_1\). To apply the proposition one must still propagate the
+zeros through the fractional steps and restore full integer intervals
+at the unchanged order O, using the second-scale constants and the
+complete root-field and rational-denominator costs.
+
+![Final integer comparison margins and the conditional additive-polynomial contradiction.](../figures/yu-second-terminal-parameters.png)
+
+*Figure 10.64. Left: the strict rational lower margins proved in
+Theorem 10.210, in units \(c_1/(q^r\widehat{\mathcal Z})\).
+The proof includes every rank through its finite rows and uniform tail.
+Right: Proposition 10.212, conditional on obtaining the final-stage
+zeros. Integral support collapses to the additive coordinate; the
+nonzero polynomial then has more roots than its degree. Its normalized
+support bound is half the coordinate-degree bound. The reproducible
+figure source is
+[`yu_second_terminal_parameters.py`](../figure_sources/yu_second_terminal_parameters.py).
+The stopping alternatives in the freely accessible Yu (2013), Section 7,
+provide context; every mathematical input and bound used here is proved
+in this programme.*
+
+## 72. Exercises with solutions
 
 1. **Easy.** Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.
 2. **Medium.** Derive (10.34) from (10.22), including the maximum in \(H\).
@@ -15441,6 +17940,74 @@ and arithmetic bounds in Theorem 10.197 and prove their difference
 exceeds \(41/1000\); (d) prove the floor inequality that supplies
 all ordinary input jets, and identify the two additional costs that
 prevent this integer argument from proving a fractional extension by itself.
+
+**Exercise 79 (uniform integer stages; advanced).**
+(a) Derive the Bernstein coefficient identity in Theorem 10.198 and
+use it to prove \(1-2y+3y^2\ge11/16\) on \(0\le y\le1/4\).
+(b) For r = 6 and q = 2, compute the final radius and derivative
+cutoff as exact multiples of S and T. Explain how the floors enter.
+(c) Verify both strict local-input margins below \(15U_r/16\)
+and count the polynomials and coefficients in the finite comparison.
+(d) Prove that the stated positive tail increment at five controls
+every subsequent integer j. Explain why the result does not by itself
+supply the first fractional block.
+
+80. **The full first fractional budget (advanced).** (a) In case I.2,
+show directly that the actual selected-column ratio is greater than
+\(27/2\), so the row-to-surplus ratio is less than \(2/25\).
+(b) Verify the reserve in Lemma 10.200 for that case, including its
+strict remaining rational margin. (c) For the illustrative nested
+counts \(S=21/2,T=1200,r=3,q=2,c_5=27/50\), compute
+all four radii, derivative cutoffs and multiplicities of Theorem
+10.201, and their total interpolation mass. These are a counting
+example, not an assertion that this T meets the second-scale
+construction. Compare the mass with that of the final interval alone.
+(d) In \(\mathbb Q_7\), let \(\alpha^2=2\) with
+\(\alpha\equiv3\pmod7\). Prove that
+\(v_7(\alpha-3)=1\) and \(v_7(-\alpha-3)=0\).
+Explain what this says about replacing the global root-field degree
+by its chosen local degree. (e) Explain which inequalities in the
+proof make the seven rank-eight comparisons cover all larger ranks.
+
+81. **The first contracted block.** Use the exact counting data of
+    Solution 80: \(S=21/2\), T = 1200, r = 3, q = 2,
+    \(c=27/50\) and \(\eta=173/200\).
+    Compute R, the input and output order floors, the interpolation
+    multiplicity M, the number of q-deleted nodes and the cardinal
+    degree. Check the available ordinary-jet order. Explain why
+    the actual value field at an integer of the contracted family
+    is K and why this does not remove its rational q-denominator.
+
+82. **Saturation and the depth cost (advanced).** (a) For \(h>40,A>5,x\ge0\), prove \((h+x)(A+x)\le hA\exp x\) by comparing the coefficients of a quadratic. (b) At \(q=2,r=3\), use \(c_2=8750/5101\), \(c_4=14\), \(\lambda=59/58\) and \(\xi=101/100\) to verify exactly that the linear endpoint ratio in Lemma 10.205 is below \(3/5\). (c) Explain why the geometric assertions in Theorem 10.204 alone do not supply the zeros assumed in its rank conclusion.
+
+83. **Hard.** In the counting illustration of Figure 10.62 take
+\(q=2,r=3,I=2,S=21/2,\widehat T=1200,c=27/50\).
+Compute the three integer radii and derivative cutoffs in Theorem
+10.206, both interpolation multiplicities, and both cardinal degrees.
+Verify the exact floor inequalities. Explain why the term
+\((\mu_j-1)M_*\) has a bound independent of I after expressing
+it in terms of \(\widehat T\), while the original coefficient
+loss contributes \(1/\widehat T\). Do these counting data alone
+establish the existence of a depth-two auxiliary family?
+
+84. **Mixed profiles (advanced).** In Figure 10.63 use
+\(q=2,r=3,I=1,S=21/2,\widehat T=1200,c=27/50\).
+Compute the three radii, four multiplicities, deleted increment,
+and total interpolation degree, both by disjoint node types and
+by nested layers. Verify every required jet-order floor. Explain
+why the finite-rank arithmetic comparison in Theorem 10.207
+uses \(A_0\le r\), and why Theorem 10.208 can supply the
+first integer block beyond \(I\log Q\le3B\) without
+discarding a denominator. Does Corollary 10.209 handle a family
+that reaches the derivative-order threshold first?
+
+85. **The last integer block (advanced).** Use the counting data
+\(q=2,r=3,c=27/50,\eta=173/200,S_1=40,T_1=12\).
+Find \(j_0,R,O\) from Lemma 10.211 and check the final jet-order
+floor in Theorem 10.210. Explain why \(\mu=1\) would also be
+allowed. Derive the constants \(609/163840\) and \(1305/236\)
+in Proposition 10.212. Which additional assertion is needed to turn
+that proposition into a contradiction for the starting family?
 
 **Solution 1.** Put \(q_i=v(\alpha_i)\). If \(b_1q_1\ne b_2q_2\), the ultrametric inequality gives the exact valuation \(\min(b_1q_1,b_2q_2)\), so no cancellation estimate is needed. If they are equal, choose \(\pi=p^{1/e}\) in an algebraic extension and set \(\epsilon_i=\alpha_i\pi^{-e q_i}\). The exponents \(e q_i\) are integers, the \(\epsilon_i\) are units, and
 
@@ -17449,6 +20016,356 @@ At a fractional node, the scalar q-denominator in (10.243) may
 be nonzero, and the consistent torus roots may generate a larger
 global value field. Both costs belong in (10.244). Neither has
 been bounded by this depth-zero integer calculation.
+
+**Solution 79.** (a) For \(u=y/b\), expand the proposed Bernstein
+sum and interchange its two finite sums. The contribution of
+\(a_kb^k\) is
+
+\[
+\sum_{i=k}^n\frac{\binom ik}{\binom nk}\binom ni
+ u^i(1-u)^{n-i}
+=u^k\sum_{i=k}^n\binom{n-k}{i-k}
+ u^{i-k}(1-u)^{n-i}=u^k.
+\tag{10.850}
+\]
+
+This proves the identity. The weights are nonnegative on the unit
+interval and their sum is one. For the proposed quadratic, b = 1/4
+and n = 2 give coefficients \(1,3/4,11/16\). The polynomial
+is therefore at least \(11/16\), attained at y = 1/4.
+
+(b) Here \(\eta=1-(27/50)/7=323/350\). The final real radius
+is \(64S\) and the derivative cutoff is \((323/350)^6T\).
+The actual nodes are the integers of absolute value at most
+\(\lfloor64S\rfloor\), and the prepared indices have total
+order at most \(\lfloor(323/350)^6T\rfloor\). At each prior
+step the difference of the real cutoffs is
+\(c_5\eta^jT/(r+1)\). Taking its floor and adding one gives
+\(\mu_j\), and the floor-sum inequality supplies every required
+jet through \(\mu_j-1\).
+
+(c) Direct subtraction gives
+
+\[
+\frac{15}{16}-\frac{20907}{22400}=\frac{93}{22400}>0,
+\qquad
+\frac{15}{16}-\frac{2323}{2520}=\frac{79}{5040}>0.
+\tag{10.851}
+\]
+
+There are seven field cases, four step numbers, and two endpoints
+of the fractional-linear function: \(7\cdot4\cdot2=56\)
+polynomials. Their degrees are at most 3,4,5,6, hence their
+Bernstein lists have 4,5,6,7 entries. The total is
+\(7\cdot2(4+5+6+7)=308\). These are coefficient checks;
+the convex-combination identity, rather than a list of sampled
+ranks, proves positivity throughout each required interval.
+
+(d) The tail has the form
+\(F_j=\mathfrak a q^{j+1}-\mathfrak b-\mathfrak c(j+1)\)
+with \(\mathfrak a>0\) and q greater than one. Thus
+
+\[
+F_{j+1}-F_j=\mathfrak a(q-1)q^{j+1}-\mathfrak c
+\ge\mathfrak a(q-1)q^6-\mathfrak c>0
+\quad(j\ge5).
+\tag{10.852}
+\]
+
+The lower bound for \(F_5\) controls the entire tail. In the
+local-input proof the step number satisfies \(j\le r-1\),
+which supplied \(q^{j-r}\le1/q\). A further step has not been
+included in that estimate. Moreover fractional prepared scalars
+may have a q-denominator and their torus roots may enlarge the
+global field of the value. The arithmetic comparison here used
+neither cost because every target was an integer at depth zero.
+They must be included before a fractional extension can be concluded.
+
+**Solution 80.** (a) Here \(p=3,A_0\ge3/2\).
+Since \(27>25\), one has \(3\sqrt3>5\). Lemma
+10.199 therefore gives
+
+\[
+\frac{N_c}{M}>\frac{27}{10}3\sqrt3>\frac{27}{2},
+\qquad \frac{M}{N_c-M}<\frac1{27/2-1}=\frac2{25}.
+\tag{10.869}
+\]
+
+(b) The upper prefactor multiplied by the proposed reserve is
+
+\[
+631\frac{51}{50}=\frac{32181}{50},\qquad
+648-\frac{32181}{50}=\frac{219}{50}>0.
+\tag{10.870}
+\]
+
+Thus the multiplier still fits strictly below the stated second
+constant, in every rank covered by the original prefactor bound.
+
+(c) Here \(\eta=173/200\). Exact floors give
+
+\[
+\begin{aligned}
+(R_0,R_1,R_2,R_3)&=(10,21,42,84),\\
+(\lfloor T\rfloor,\lfloor\eta T\rfloor,
+ \lfloor\eta^2T\rfloor,\lfloor\eta^3T\rfloor)
+ &=(1200,1038,897,776),\\
+\lfloor\eta^4T\rfloor&=671,\\
+(\mu_0,\mu_1,\mu_2,\mu_3)&=(530,368,227,106),\\
+N_*&=21(530)+22(368)+42(227)+84(106)=37664.
+\end{aligned}
+\tag{10.871}
+\]
+
+Using only the final interval would give
+\(169(106)=17914\), omitting 19750 valid jet conditions.
+The inequalities \(\lfloor\eta^4T\rfloor+\mu_j-1
+=\lfloor\eta^jT\rfloor\) check every required order exactly.
+
+(d) The root exists by successive lifting: if
+\(a_m^2\equiv2\pmod{7^m}\) and \(a_m\equiv3\pmod7\),
+there is a unique digit \(t\in\{0,\ldots,6\}\) such
+that \(a_{m+1}=a_m+t7^m\) solves the congruence modulo
+\(7^{m+1}\), because \(2a_m\equiv6\pmod7\) is
+invertible. The compatible sequence converges in \(\mathbb Q_7\)
+to the indicated root. Now
+\((\alpha-3)(\alpha+3)=-7\) and
+\(\alpha+3\equiv6\pmod7\). The second factor is a unit,
+so the first has valuation one. Also
+\(-\alpha-3\equiv1\pmod7\) is a unit. The global field
+\(\mathbb Q(\sqrt2)\) has degree two, while the chosen
+completion has degree one; its two embeddings give different
+valuations for the same algebraic expression. Chosen-completion
+membership alone therefore supplies no equality of conjugate
+valuations that would cancel the global factor.
+
+(e) The function \((1-c/v)^v\) increases, and its limit is
+bounded using the explicit positive exponential series. These facts
+bound both \(\mathfrak h\) and its inverse in the required
+directions. The radius-floor loss decreases with rank after division
+by \(q^rS_-\), while \(S_-,T_-,b_r,q^r\) increase and
+\(\varepsilon_r,e_r\) decrease. The proof keeps the last
+four terms of a positive reversed geometric sum. Finally the
+fractional-linear dependence on \(A_0\) requires only its
+two endpoints. These are uniform inequalities, so the tail rows
+prove all larger ranks rather than sampling them.
+
+**Solution 81.** The fraction is
+\(\mathfrak h=(173/200)^4=895745041/1600000000\).
+Consequently
+
+\[
+\begin{aligned}
+S_1&=\frac{16800000000}{895745041},&
+T_1&=\frac{2687235123}{4000000},\\
+R&=2(18+1)=38,&
+\lfloor T_1\rfloor&=671,\\
+M&=\left\lfloor\frac{27T_1}{200}\right\rfloor+1=91,&
+\lfloor\eta T_1\rfloor&=581.
+\end{aligned}
+\tag{10.883}
+\]
+
+There are 19 positive odd nodes and 19 negative odd nodes in
+the interval, so \(n_E=38\) and \(n_EM=3458\).
+The largest required total jet order is
+\(581+91-1=671\), exactly the available input order.
+Among the 77 integers in the interval, the other 39 are even,
+including zero. Theorem 10.202 fills these at order 581 while
+retaining the odd-node zeros through order 671. These counts
+illustrate the interpolation formula; the small S and T are
+not asserted to satisfy the full parameter construction.
+
+For the field assertion, Theorem 10.51 first separates the actual
+root-monomial classes, including its second phase partition when
+needed. After restriction and division of the exponents, the
+remaining phases are powers of the root of unity in K, and the
+torus bases belong to K. Theorem 10.55 therefore puts the integer
+prepared value in K. The additive polynomial is nevertheless
+evaluated at s/q, so its rational denominator must still be cleared.
+The bound \(\Xi_{1,0,u}\le D_{\mathrm a}(1+1/(q-1))\)
+is included in the arithmetic comparison. Membership of a rational
+number in K imposes no integrality condition on that number.
+
+**Solution 82.** Dividing the first inequality by hA gives
+\(1+(1/h+1/A)x+x^2/(hA)\).
+Its linear coefficient is smaller than \(9/40<1\), and its
+quadratic coefficient is smaller than \(1/200<1/2\).
+The positive exponential series gives the required inequality, strictly
+for \(x>0\) and with equality at zero.
+
+For (b), \(Q\ge2(173/200)^4=895745041/800000000\).
+Consequently
+\(\log Q>191490082/1695745041\).
+An exact upper bound for the linear endpoint ratio is
+\((3\cdot59\cdot101\cdot8750\cdot7\cdot1695745041)/
+(58\cdot100\cdot5101\cdot10\cdot14\cdot4\cdot191490082)\).
+Multiplication by the positive denominator verifies that this is less
+than \(3/5\). Adding the bound \(1/1000\) for the exponential
+endpoint term still gives less than one. Convexity then covers every
+intermediate depth; the separate \(1/(q-1)\) denominator term
+is retained in Lemma 10.205.
+
+For (c), degree and allocation inequalities control the possible
+multiplicity output. They do not assert that the auxiliary polynomial
+vanishes at any particular point. The rank conclusion explicitly uses
+the full prepared integer zeros through \(\bar S\) and order
+\(\bar T\), and those zeros require their analytic and arithmetic
+comparisons. The parameter construction supplies only the specific
+blocks stated in Theorem 10.203.
+
+**Solution 83.** Here \(\eta=173/200\),
+\(\mathfrak h=(173/200)^4\), and the exact contracted parameters
+are
+
+\[
+S_2=\frac{26880000000000000000}{802359178476091681},\qquad
+T_2=\frac{2407077535428275043}{6400000000000000}.
+\tag{10.915}
+\]
+
+Integer division of the positive numerators by their denominators
+gives the following values. All radii count both endpoints.
+
+| j | \(\lfloor2^jS_2\rfloor\) | \(\lfloor\eta^jT_2\rfloor\) | \(\mu_j\) for the next step | Cardinal degree |
+|---|---:|---:|---:|---:|
+| 1 | 67 | 325 | 44 | 5940 |
+| 2 | 134 | 281 | 38 | 10222 |
+| 3 | 268 | 243 | — | — |
+
+The two degrees are \(135\cdot44\) and \(269\cdot38\).
+The jet requirements are \(281+43=324\le325\) and
+\(243+37=280\le281\). Thus no unprovided derivative is used.
+
+At general depth, the two opposite powers cancel:
+
+\[
+(\mu_j-1)M_*
+\le\frac{c\eta^j\mathfrak h^I\widehat T}{r+1}
+       \frac{\mathfrak h^{-I}H}{\log p}
+=\frac{c\eta^j\widehat TH}{(r+1)\log p}.
+\tag{10.916}
+\]
+
+The separate original bound is \(v_p(b_n)\le H/\log p\).
+Factoring \(\widehat TH/\log p\) out of the sum therefore
+leaves \(c\eta^j/(r+1)+1/\widehat T\), exactly the
+bracket in the input estimate of Theorem 10.206. Replacing
+\(\mu_j-1\) by an unnecessarily rounded upper bound would
+lose this exact cancellation.
+
+These data demonstrate integer counting and jet availability. They
+do not construct the required number field, support or kernel at
+depth two. The theorem's application there also needs its starting
+integer block and the stipulated phase-family hypotheses. The
+depth-one starting block is supplied by Theorems 10.202–10.203;
+the stronger q-deleted data survive the integer extensions.
+
+**Solution 84.** The exact parameters are
+
+\[
+\eta=\frac{173}{200},\qquad
+S_1=\frac{16800000000}{895745041},\qquad
+T_1=\frac{2687235123}{4000000},\qquad
+O=\lfloor T_2\rfloor=376.
+\tag{10.934}
+\]
+
+The radii are 38, 75 and 150. The input floors are 671, 581,
+502 and 434, so the four multiplicities are 296, 206, 127 and
+59. Their jet-order checks are the exact equalities
+\(376+295=671\), \(376+205=581\),
+\(376+126=502\), and \(376+58=434\).
+The deleted increment is \(296-206=90\).
+
+There are 38 odd inner nodes, 39 even inner nodes including zero,
+74 nodes in the first annulus and 150 in the second. Thus
+
+\[
+\begin{aligned}
+N_I&=38\cdot296+39\cdot206+74\cdot127+150\cdot59\\
+   &=301\cdot59+151(127-59)+77(206-127)+38\cdot90\\
+   &=37530.
+\end{aligned}
+\tag{10.935}
+\]
+
+The first line counts disjoint node types. The second starts with
+the full outer layer, then adds two full inner increments and the
+deleted increment. In particular the inner full layer contains
+\(2\cdot38+1=77\) nodes, not just the 39 multiples of q.
+The multiplicity hypothesis holds because \(T_2>376\) and
+\((27/50)376/4>1\). These are counting data; they do not
+specify a complete number field and auxiliary kernel.
+
+The optimizer gives \(r/t>A_0+3/5\), with \(t>1\),
+hence \(A_0<r\). A fractional-linear arithmetic bound can
+therefore be checked at the two endpoints \(a_*\) and r
+for each fixed small rank. An unrestricted endpoint at infinity
+would ignore this hypothesis and may give an insufficient bound.
+
+The depth-I fractional value and the following depth-\(I+1\)
+integer value have the same scaled radius and the same total
+denominator depth \(I+1\) in (10.243). The latter has a smaller
+derivative order and lies in K. Thus the already proved bound at
+depth I supplies its arithmetic cost, even if the new depth is
+the first one beyond the logarithmic threshold. No denominator
+is removed in this passage.
+
+Corollary 10.209 constructs the family only through
+\(\min(I_G,I_M)\). If \(I_M<I_G\), it has not justified
+a further application of the mixed step: the required derivative
+order can be too small. The terminal argument with a fixed order
+is a distinct remaining mathematical requirement.
+
+**Solution 85.** The five successive threshold quantities are
+
+\[
+\frac{c\eta^jT_1}{4}=
+\frac{81}{50},\quad \frac{14013}{10000},\quad
+\frac{2424249}{2000000},\quad
+\frac{419395077}{400000000},\quad
+\frac{72555348321}{80000000000}
+\quad(j=0,1,2,3,4).
+\tag{10.950}
+\]
+
+The last one at least 1 occurs at \(j_0=3\). Hence
+\(R=2\lfloor8\cdot40\rfloor=640\) and
+\(O=\lfloor(173/200)^4\cdot12\rfloor=6\).
+The input interval has radius \(\lfloor8\cdot40\rfloor=320\)
+and order \(\lfloor(173/200)^3\cdot12\rfloor=7\).
+Its interpolation multiplicity is
+\(\mu=\lfloor419395077/400000000\rfloor+1=2\), so the
+jet-order test is exactly \(6+2-1=7\). These are counting data,
+not a complete number-field auxiliary-kernel instance.
+
+If \(\mu=1\), only the ordinary jet of order zero is used at
+each node. The floor inequality still holds, and the loss
+\((\mu-1)M_*\) is zero. The separate original
+\(v_p(b_n)\) loss remains; it must not be discarded with the jet loss.
+
+The torus-degree estimate is
+
+\[
+\frac{2436}{5}d^2\exp(-3A)
+ <\frac{2436}{5\cdot16\cdot2^{13}}
+ =\frac{609}{163840}<1.
+\tag{10.951}
+\]
+
+Here the factors \(16,2^8,2^5\) come respectively from
+\(a^2\ge16\), \(\exp(8)>2^8\), and \(\exp(A)>2^5\).
+For the root count, \(\lambda=59/58\) gives
+\(45/(8\lambda)=45\cdot58/(8\cdot59)=1305/236>1\).
+Both estimates are strict. The first leaves a nonzero polynomial in
+the additive variable; the second gives more distinct roots than its degree.
+
+One must still construct every intervening selected family through
+\(I_3\), retaining a nonzero coefficient subvector, complete fibres
+and the full integer interval through order O. Lemma 10.211 gives
+only the starting family at \(I_1\). The endpoint contradiction
+does not itself prove these intervening zeros.
 
 ## References
 

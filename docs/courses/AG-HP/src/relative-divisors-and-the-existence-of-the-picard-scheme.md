@@ -4,7 +4,7 @@
 
 A nonzero section of a line bundle on an integral projective variety cuts out a divisor. Vary the section while keeping the bundle fixed, and the resulting divisors form a projective space. Vary the bundle as well, and these projective spaces become the fibres of the Abel map. This gives a way to construct the space of line-bundle classes from the already constructed Hilbert scheme.
 
-The proof has three distinct jobs. We must construct complete linear systems over arbitrary parameter schemes, including nilpotent ones. We must show that linear equivalence defines a proper flat relation on a suitable open divisor scheme. We must then construct the quotient as a scheme. We carry out that last step by parametrizing the equivalence classes themselves as closed subschemes in a Hilbert scheme.
+The proof has three distinct jobs. We must construct complete linear systems over arbitrary parameter schemes, including nilpotent ones. We must show that linear equivalence defines a proper flat relation on a suitable open divisor scheme. We must then construct the quotient as a scheme. We carry out that last step by parametrizing the equivalence classes themselves as closed subschemes in a Hilbert scheme. We then construct affine gluing parameters for closed unions, prove affine restriction through nilpotent thickenings over a field, and construct Picard schemes by finite-flat Stein reduction and restriction of scalars.
 
 For the main existence theorem, \(S\) is Noetherian and \(f:X\to S\) is projective and flat, with geometrically integral fibres. Fix a relatively very ample bundle \(\mathcal O_X(1)\). The complete-linear-system theorem has the broader hypothesis that \(f\) is proper, flat and finitely presented. Throughout, \(\operatorname{Pic}_{X/S}\) denotes the étale Picard sheaf. It equals the fppf Picard sheaf under these hypotheses, by *The Picard functor and the Picard scheme of a curve*, Theorem 3.1.
 
@@ -406,6 +406,398 @@ For any \(S'\to S\), evaluation of the relative Picard sheaf of \(X_{S'}/S'\) on
 
 The result is local finite type, rather than finite type for the whole Picard scheme. Already \(\operatorname{Pic}_{\mathbb P^n_S/S}\) for \(n\geq1\) has one copy of \(S\) for every integer. Finiteness statements for appropriate parts belong to *The structure of the Picard scheme*.
 
+### 8.2 Closed unions and their gluing parameters
+
+The relative divisor construction has geometrically integral fibres. Closed unions and nilpotent thickenings require different coordinates. We now prove the affine restriction statements for these operations. In this subsection and the next, write \(P_{Y/B}\) for the **fppf** Picard sheaf. Under the universal-functions condition, its agreement with the étale sheaf is the comparison proved in The Picard functor and the Picard scheme of a curve, Sections 1–3. The field constructions below also give this agreement when the global-function algebra is larger than the field.
+
+**Lemma 8.2 (patching across a closed union).** Let \(X_1,X_2\) be closed subschemes of an \(S\)-scheme \(X\), with ideal sheaves \(I_1,I_2\), and put \(Z=X_1\cap X_2\). Suppose \(I_1\cap I_2=0\), and \(\mathcal O_Z\) is flat over \(S\). Then, after every base change \(T\to S\), a line bundle on \(X_T\) is equivalent to two line bundles \(L_i\) on \(X_{i,T}\) and a specified isomorphism
+
+\[
+u:L_1|_{Z_T}\xrightarrow{\sim}L_2|_{Z_T}.
+\tag{8.2}
+\]
+
+Arrows are pairs of bundle isomorphisms compatible with \(u\).
+
+**Proof.** On \(X\) the closed union gives the exact sequence
+
+\[
+\begin{gathered}
+0\longrightarrow\mathcal O_X
+\longrightarrow\mathcal O_{X_1}\oplus\mathcal O_{X_2}\\
+\longrightarrow\mathcal O_Z\longrightarrow0,\\
+(a,b)\longmapsto a|_Z-b|_Z.
+\end{gathered}
+\tag{8.3}
+\]
+
+Flatness of its last term over \(S\) preserves this sequence after every parameter base change. Thus the affine ring square is still
+\(A=A_1\times_C A_2\), with both \(A_i\to C\) surjective. Given (8.2), take the kernel of the difference of the two restriction maps to \(L_2|_{Z_T}\). This is a quasi-coherent module on \(X_T\).
+
+We check that it is invertible and recovers both branches. At a point in \(Z_T\), trivialize the two bundles. Their gluing map is a unit of the quotient local ring \(C\). It lifts to a unit of either branch local ring: an element whose residue in a quotient of a local ring is a unit is outside its maximal ideal. Change one trivialization by this lift. The difference map is now the ordinary difference \(A_1\oplus A_2\to C\), and its kernel is \(A\). These trivializations and the lifted unit exist on a neighbourhood of the point. Away from \(Z_T\), one branch is absent and the kernel is the bundle on the other. Hence the kernel is locally free of rank one and has the asserted restrictions. A compatible pair of arrows preserves the kernel. Conversely an arrow on that kernel is determined by its two restrictions, because it injects into their direct sum. Starting with an invertible module, tensor (8.3) with it to recover exactly this kernel. These constructions are inverse, including arrows, and commute with every base change. \(\square\)
+
+**Theorem 8.3 (relative affine gluing).** Let \(S\) be Noetherian, \(X/S\) proper, and \(X_1,X_2\subset X\) closed, flat over \(S\), with coherent ideals satisfying \(I_1\cap I_2=0\). Suppose \(Z=X_1\cap X_2\) is flat over \(S\), and, for every \(s\in S\),
+
+\[
+H^0(X_{i,s},\mathcal O_{X_{i,s}})=\kappa(s)
+\qquad(i=1,2).
+\tag{8.4}
+\]
+
+Then restriction
+
+\[
+P_{X/S}\longrightarrow P_{X_1/S}\times_S P_{X_2/S}
+\tag{8.5}
+\]
+
+is representable by affine morphisms of finite presentation. In particular, if both target Picard sheaves are schemes, so is \(P_{X/S}\). The affine assertion holds after arbitrary base change on \(S\).
+
+**Proof.** First (8.4) implies the universal identity \((f_i)_*\mathcal O_{X_i}=\mathcal O_S\). Here is the argument over a possibly nonreduced base. Properness and flatness give the nonnegative finite projective cohomology complex of Base change and the Grothendieck complex, Theorem 3.2. The unit section maps to a basis of the degree-zero fibre cohomology by (8.4). Thus its degree-zero comparison is surjective. The proof of Semicontinuity and Grauert's theorem, Theorem 3.1 cancels the invertible differential blocks and kills the outgoing differential. There is no incoming term in negative degree. The kernel is consequently a line bundle, with every base change, and its unit section is a basis by Nakayama. This proves the identity universally, without requiring \(S\) reduced.
+
+The nonempty-fibre locus of \(Z\to S\) is open and closed. It is open because this map is flat and of finite presentation, and closed because it is proper. Over its complementary locus, \(X=X_1\amalg X_2\) by (8.3). The fppf Picard sheaf of a disjoint union is the product of the two Picard sheaves: representatives and their base factors may be chosen locally, where all base line bundles are trivial. Thus (8.5) is an isomorphism there.
+
+On the nonempty locus the cover \(Z\to S\) is fppf. Make this base change. Its diagonal supplies a section \(\sigma\) of \(Z\), hence of both branches and of \(X\). The universal form of (8.3) shows that \((f_T)_*\mathcal O_{X_T}\) is the kernel of
+
+\[
+\begin{gathered}
+\mathcal O_T\oplus\mathcal O_T
+\longrightarrow (Z_T\to T)_*\mathcal O_{Z_T},\\
+(a,b)\longmapsto a-b.
+\end{gathered}
+\]
+
+The unit of the last algebra is injective, since restriction along \(\sigma_T\) is a left inverse. The kernel is the diagonal copy of \(\mathcal O_T\). Thus \(X\), as well as both branches, satisfies the universal-functions condition on this cover. It is flat over the base too: in (8.3) the middle and last terms are base-flat, so its kernel is base-flat.
+
+By Theorem 2.1 of the curve-Picard lesson, all three Picard sheaves are now the functors of actual bundles normalized at \(\sigma\); isomorphisms respecting the normalization are unique. For any parameter scheme \(T\) and any pair of its normalized bundles \(L_1,L_2\), form
+
+\[
+\mathcal I=\underline{\operatorname{Isom}}_{Z_T/T}
+                 (L_1|_{Z_T},L_2|_{Z_T}).
+\]
+
+This is affine of finite presentation over \(T\), by Moduli stacks are algebraic, Corollary 1.3. Both bundles are finitely presented, base-flat and have proper support: the flatness of \(Z/S\) is used here. The two normalizations identify restriction of an isomorphism along \(\sigma_T\) with an element of \(\mathbf G_{m,T}\). Requiring that element to be \(1\) cuts out a closed subscheme \(\mathcal I^1\subset\mathcal I\), of finite presentation.
+
+Lemma 8.2 patches the universal isomorphism over \(\mathcal I^1\) to a normalized line bundle on \(X\). Conversely a point of the fibre of (8.5) has unique normalized identifications on the two branches and therefore exactly this gluing isomorphism. These constructions are inverse on all \(T\)-schemes. Thus \(\mathcal I^1\) represents the required fibre. Affine morphisms and finite presentation descend under the fppf section cover, proving the theorem. The entire construction used (8.3) after arbitrary base change, so proves the last assertion as well. \(\square\)
+
+Over a field the scalar algebras need not be \(k\). They contribute an affine group of gluing parameters rather than preventing affineness.
+
+**Theorem 8.4 (field unions and components).** Let \(X/k\) be proper and \(X=X_1\cup X_2\) a closed union with \(I_1\cap I_2=0\). There are no restrictions on the global-function algebras, the intersection or the field. The map
+
+\[
+P_{X/k}\longrightarrow P_{X_1/k}\times_kP_{X_2/k}
+\tag{8.6}
+\]
+
+is affine of finite presentation. Consequently, for every proper reduced \(k\)-scheme, restriction to its reduced irreducible components is affine of finite presentation. This includes every geometrically reduced proper scheme.
+
+**Proof.** Use the separated proper-field Picard schemes constructed in The structure of the Picard scheme, Theorem 1.2. We prove the affine maps using these schemes; this is independent of the earlier relative divisor existence construction.
+
+Put \(Z=X_1\cap X_2\). If it is empty, the map is the product isomorphism already considered. Otherwise put \(C_i=H^0(X_i,\mathcal O_{X_i})\) and \(C_Z=H^0(Z,\mathcal O_Z)\). These are finite \(k\)-algebras by proper coherent cohomology. A finite affine-cover complex, tensored over the field, gives
+
+\[
+(Y_T\to T)_*\mathcal O_{Y_T}
+=H^0(Y,\mathcal O_Y)\otimes_k\mathcal O_T
+\tag{8.7}
+\]
+
+for \(Y=X_1,X_2,Z\) and every parameter \(T\). Write \(U(C)\) for the smooth affine unit group of a finite algebra \(C\): it is the determinant-nonvanishing open of its underlying vector space.
+
+Take \(T\to P_{X_1/k}\times P_{X_2/k}\). Work fppf locally on \(T\) so the two classes have actual representatives \(L_i\). Equality of their restricted classes on \(Z\) is a closed subscheme \(B\subset T\), by the separated diagonal of \(P_{Z/k}\). Over \(B\) the scheme
+
+\[
+\mathcal I=\underline{\operatorname{Isom}}_{Z_B/B}
+                         (L_1|_{Z_B},L_2|_{Z_B})
+\]
+
+is a \(U(C_Z)_B\)-torsor. Indeed, equality of relative classes supplies an actual isomorphism locally after also trivializing the possible base line bundle; every two isomorphisms differ uniquely by a unit in (8.7). The same affine Isom theorem proves that this torsor is affine and of finite presentation.
+
+The two branch automorphisms act through
+
+\[
+\begin{gathered}
+U(C_1)\times U(C_2)\longrightarrow U(C_Z),\\
+(a_1,a_2)\longmapsto a_2|_Z(a_1|_Z)^{-1}.
+\end{gathered}
+\tag{8.8}
+\]
+
+Its fppf image is a closed affine subgroup \(A\). This is the field case of Quotients and torsors, Corollary 11.10: the kernel is a group scheme over a field and hence flat, so the map onto its closed image is fppf. All these groups are commutative. Thus \(A\) is normal, and
+
+\[
+Q=U(C_Z)/A
+\tag{8.9}
+\]
+
+is an affine finite-type group scheme by Quotients and torsors, Theorem 11.1d. The normal-subgroup hypothesis is essential to this application. The quotient sheaf \(\mathcal I/A_B\) is a \(Q_B\)-torsor: trivialize \(\mathcal I\) fppf locally, take the quotient there, and descend its affine coordinate algebra. It is therefore affine of finite presentation over \(B\), and hence over \(T\).
+
+This quotient is the fibre of (8.6). Locally every line-bundle class in that fibre has actual identifications with the chosen \(L_i\). Lemma 8.2 then gives an isomorphism in \(\mathcal I\). Changing the two identifications acts by (8.8). Conversely an isomorphism between two patched relative classes becomes an actual bundle isomorphism after a covering that trivializes its base factor; its restrictions are precisely two branch automorphisms. Hence its effect on the gluing is in \(A\). These assertions identify the quotient as fppf sheaves, including nilpotent tests. Descent along our initial cover of \(T\) proves the affine assertion globally.
+
+A proper reduced scheme has finitely many irreducible components. The union of any selection, with its reduced structure, is again proper and reduced. When the selections are complementary, the two ideals have zero intersection, since the intersection of all minimal primes of a reduced ring is zero. Apply (8.6) repeatedly to these unions. Products, base changes and compositions of affine morphisms of finite presentation have the same property. This proves the component assertion. \(\square\)
+
+### 8.3 Finite frames and nilpotent restriction
+
+For a square-zero thickening, the exact sequence of units gives lifting obstructions, but it also remembers automorphisms. Finite frames remove those automorphisms before we take a quotient.
+
+**Lemma 8.5 (framed lifts).** Let \(X/k\) be proper, \(X_0\subset X\) defined by \(I\) with \(I^2=0\), and choose a finite closed subscheme \(Z\subset X\). Put \(Z_0=Z\cap X_0\). Suppose restriction detects both global-function algebras:
+
+\[
+\begin{gathered}
+H^0(X,\mathcal O_X)\hookrightarrow H^0(Z,\mathcal O_Z),\\
+H^0(X_0,\mathcal O_{X_0})\hookrightarrow H^0(Z_0,\mathcal O_{Z_0}).
+\end{gathered}
+\tag{8.10}
+\]
+
+Let \(R_Z,R_{Z_0}\) be the sheaves of line bundles with a specified trivialization on their indicated finite subschemes. For \(J=I\cap I_Z\), restriction \(R_Z\to R_{Z_0}\) is affine of finite presentation. Over an affine test \(T=\operatorname{Spec}B\to R_{Z_0}\), the obstruction lies in
+
+\[
+H^2(X_0,J)\otimes_k B.
+\tag{8.11}
+\]
+
+Its vanishing cuts out a closed subscheme of \(T\). Over that subscheme, the lifts form a torsor under the vector group \(V=H^1(X_0,J)\).
+
+**Proof.** Write \(\mathcal U_Z\) for the sheaf of units of \(\mathcal O_X\) equal to \(1\) on \(Z\), and define \(\mathcal U_{Z_0}\) similarly on \(X_0\). The spaces underlying \(X\) and \(X_0\) agree. On this space there is an exact sequence of abelian sheaves
+
+\[
+0\longrightarrow J
+\xrightarrow{j\mapsto1+j}\mathcal U_Z
+\longrightarrow\mathcal U_{Z_0}\longrightarrow1.
+\tag{8.12}
+\]
+
+The kernel is as displayed, and multiplication there is addition because \(I^2=0\). For local surjectivity use the ring identity
+
+\[
+A/(I\cap I_Z)
+\simeq A/I\times_{A/(I+I_Z)}A/I_Z.
+\]
+
+A unit on \(X_0\) equal to \(1\) on \(Z_0\) pairs with the unit \(1\) on \(Z\), giving a unit of this fibre product. Units lift through its square-zero kernel \(I\cap I_Z\). This proves (8.12), and proves it after every \(k\)-parameter base change. Also \(J\) is a coherent \(\mathcal O_{X_0}\)-module, since \(I J=0\).
+
+First cohomology of \(\mathcal U_Z\) classifies framed bundles. To see the framing explicitly, trivialize a bundle locally by frames extending its specified frame on \(Z\). A unit on the closed subscheme lifts to a unit near each of its points, so such local choices exist. Their transition functions equal \(1\) on \(Z\); changing the local choices gives exactly a coboundary. This identifies their classes with \(H^1(\mathcal U_Z)\). An automorphism is a global section of \(\mathcal U_Z\). It is the identity by (8.10) and (8.7). The same assertions hold for \(Z_0\). Uniqueness of frame-preserving isomorphisms makes these class functors fppf sheaves, by effective descent.
+
+The cohomology sequence of (8.12) therefore gives (8.11) as the lifting obstruction, and makes the lifts, when nonempty, a simply transitive set under \(H^1(X_{0,T},J_T)\). No quotient by global units remains, since \(H^0(\mathcal U_{Z_0})=1\). Finite affine-cover cohomology and exact tensoring over \(k\) give
+
+\[
+H^q(X_{0,T},J_T)=H^q(X_0,J)\otimes_k B.
+\tag{8.13}
+\]
+
+Proper coherent finiteness makes these vector spaces finite-dimensional. Expand the obstruction in a basis of \(H^2(X_0,J)\); its finitely many coefficients generate the ideal of its zero subscheme \(T'\subset T\). Naturality of the connecting map and (8.13) show that every \(T\)-algebra factors through \(T'\) exactly when its obstruction vanishes. On the affine \(T'\), the cohomology sequence supplies an actual framed lift. Tensoring with the framed bundles represented by \(H^1(J)\) identifies all its lifts with \(V_{T'}\), functorially on affine tests. The chosen lift extends this identification to arbitrary tests by the sheaf property. Different choices change it by a translation; intrinsically the fibre is a \(V_{T'}\)-torsor. This is affine of finite presentation, as is its composition with \(T'\hookrightarrow T\). These constructions glue over affine tests of \(R_{Z_0}\), proving the lemma. \(\square\)
+
+**Theorem 8.6 (affine nilpotent restriction).** Let \(X\) be any proper scheme over a field \(k\), and let \(X_0\subset X\) be a closed subscheme defined by a nilpotent ideal. Then
+
+\[
+P_{X/k}\longrightarrow P_{X_0/k}
+\tag{8.14}
+\]
+
+is affine of finite presentation. This statement includes nonreduced schemes, arbitrary finite algebras of global functions and every residue characteristic.
+
+**Proof.** If \(X\) is empty, both sheaves are trivial. First suppose \(I^2=0\). Choose a finite \(Z\) satisfying (8.10). Such a common frame exists by the finite-jet construction in the proof of proper-field Theorem 1.2. In more detail, a nonzero germ of a global function is detected by a sufficiently high jet at a closed point, by Krull intersection. The finite-dimensionality of the two global-function spaces makes finitely many such jets suffice. For functions on \(X_0\), choose the same jets as intersections with jets in \(X\): at a selected point these are the quotients by \(I+\mathfrak m^n\). Enlarging the finitely many exponents and taking the union of these finite subschemes detects both spaces at once.
+
+Set
+
+\[
+\begin{gathered}
+C=H^0(X,\mathcal O_X),\quad D=H^0(Z,\mathcal O_Z),\\
+C_0=H^0(X_0,\mathcal O_{X_0}),\quad
+D_0=H^0(Z_0,\mathcal O_{Z_0}).
+\end{gathered}
+\]
+
+The inclusions in (8.10) identify \(U(C)\subset U(D)\) and \(U(C_0)\subset U(D_0)\) as closed subgroups, on every parameter algebra. One verification is to choose a vector-space complement to \(C\) in \(D\). Multiplication by an element of \(C\) has a block triangular matrix. If it is invertible on \(D\), its determinant on \(C\) is a unit, so it is already a unit of \(C\). This identifies the unit open of that closed linear subspace with \(U(C)\), including after tensoring. The same argument applies to \(C_0\subset D_0\).
+
+Their commutative affine quotients
+
+\[
+\begin{gathered}
+K=U(D)/U(C),\\
+K_0=U(D_0)/U(C_0).
+\end{gathered}
+\tag{8.15}
+\]
+
+exist and are affine of finite type by the normal-quotient theorem cited in (8.9). As in proper-field Theorem 1.2, changing the frame makes
+
+\[
+R_Z\longrightarrow P_{X/k},\qquad
+R_{Z_0}\longrightarrow P_{X_0/k}
+\tag{8.16}
+\]
+
+torsors under \(K\) and \(K_0\), respectively. Every line bundle acquires a frame locally on the parameter: over a finite Artinian fibre algebra it is free, and a lifted fibre generator stays a generator on an open parameter neighbourhood by its nonzero determinant. Two frames of the same bundle differ by \(U(D)\), and global automorphisms identify precisely its subgroup \(U(C)\). The resulting \(K\)-action on framed classes is free. This proves (8.16) as fppf sheaf identities. Since the proper-field Picard schemes exist and the groups in (8.15) are affine, affine descent also represents both frame sheaves by schemes.
+
+The map \(D\twoheadrightarrow D_0\) has square-zero kernel, so every unit of \(D_0\otimes B\) lifts to \(D\otimes B\): lift it and its inverse and invert the error \(1+i\) using \((1+i)^{-1}=1-i\). Thus \(K\to K_0\) is an fppf epimorphism. Let \(H\) be its kernel, a closed affine finite-type group.
+
+Put \(V=H^1(X_0,I\cap I_Z)\), with its vector-group structure. There is a canonical closed subgroup inclusion
+
+\[
+H\hookrightarrow V.
+\tag{8.17}
+\]
+
+To construct it, use the trivial bundle with trivial frame as origin in (8.16). Then \(K\) is the fibre over the trivial unframed class, and \(H\) consists of its elements whose restriction is the trivial framed class on \(X_0\). Lemma 8.5 identifies that latter kernel, for framed bundles, with \(V\). It gives the homomorphism in (8.17); injectivity follows from the free \(K\)-action on \(R_Z\). The field case of the same image-factorization theorem used in (8.8), applied to this finite-type monomorphism, makes it a closed immersion. It does not require \(H\) reduced or smooth. Since \(V\) is commutative, \(V/H\) is affine of finite type by the normal-quotient theorem.
+
+Base change (8.14) by \(R_{Z_0}\to P_{X_0/k}\). The resulting source is
+
+\[
+R_Z/H.
+\tag{8.18}
+\]
+
+For this identity, a point of the base change is an unframed class on \(X\) and a specified framed class for its restriction. Locally choose a frame on its bundle. Surjectivity of \(K\to K_0\) lets us adjust that frame so that its restriction is the specified one. The choices differ exactly by \(H\). This proves (8.18) on all tests after sheafification.
+
+For any affine \(T\to R_{Z_0}\), Lemma 8.5 represents its framed lifts by a \(V\)-torsor over a closed \(T'\subset T\). The action of \(H\) on this torsor is translation through (8.17): changing a frame is tensoring with the corresponding framed trivial bundle, independently of the particular lift. Its quotient is consequently a \((V/H)\)-torsor over \(T'\), obtained by taking that affine quotient on local trivializations and descending. This is affine of finite presentation over \(T\). Hence (8.18) is affine of finite presentation over \(R_{Z_0}\). Descent along the fppf cover in (8.16) proves (8.14) in the square-zero case.
+
+Finally, if \(I^N=0\), the closed subschemes defined by \(I^n\), \(1\leq n\leq N\), give a finite sequence from \(X_0\) to \(X\). The ideal of the \(n\)-th inclusion is \(I^n/I^{n+1}\); its square vanishes because \(2n\geq n+1\). Apply the square-zero assertion to each restriction map and compose. Affineness and finite presentation are preserved by this finite composition. \(\square\)
+
+The field sheaves in Theorems 8.4 and 8.6 agree with their étale versions as well. Indeed \(U(C)\) and \(U(D)\) are smooth. The quotient \(K\) in (8.15) is smooth, since \(U(D)\to K\) is a smooth surjective \(U(C)\)-torsor and smoothness descends. Thus \(R_Z\to P_{X/k}\) is a smooth surjection and has étale-local sections. The universal framed bundle on \(R_Z\) supplies actual representatives on that cover. Equality of two representatives is étale-locally an actual isomorphism for the same reason: its isomorphism sheaf is a torsor under the smooth \(U(C)\). Consequently étale sheafification already has all the classes and identifications of the fppf sheaf. This proves the comparison without assuming \(C=k\).
+
+Together, (8.5), (8.6) and (8.14) give the relative closed-union and field component/nilpotent affine reductions of Grothendieck's FGA 232, §6. They assert representability of the entire relative fibre functor, including its nilpotent parameters. The field existence input is the proper-field theorem proved in the Picard-structure lesson.
+
+
+### 8.4 Finite-flat Stein factors and restriction of scalars
+
+There is another way for a family to have more than one global scalar: its global functions can form a finite flat algebra over the base. Restriction of scalars retains these scalars and the components they distinguish. We construct the restriction as a scheme, and also prove why geometric local integrality makes the Stein algebra étale.
+
+For a finite locally free morphism \(\pi:S'\to S\) and an \(S'\)-scheme \(Q\), its **Weil restriction** is the functor
+
+\[
+\begin{gathered}
+\operatorname{Res}_{S'/S}(Q)(T)\\
+=\operatorname{Hom}_{S'}(S'\times_S T,Q).
+\end{gathered}
+\tag{8.19}
+\]
+
+It is an fppf sheaf, since morphisms to a scheme descend. We need an affine-neighbourhood condition to represent it by a scheme.
+
+**Lemma 8.7 (scheme coordinates for finite restriction).** Suppose \(S\) is Noetherian, \(\pi\) finite locally free, and \(Q/S'\) separated and locally of finite type. Assume that, over every affine open \(V\subset S\), every finite set of points of \(Q\) lying over one point of \(V\) is contained in an affine open of \(Q_V\). Then (8.19) is a separated scheme locally of finite presentation over \(S\). It has the same finite-set affine-neighbourhood property, and its formation commutes with arbitrary base change.
+
+**Proof.** Work over \(V=\operatorname{Spec}A\), and locally trivialize the finite locally free algebra \(B=\Gamma(S'_V,\mathcal O)\), with basis \(b_1,\ldots,b_r\). For an affine open \(W=\operatorname{Spec}C\subset Q_V\), the algebra \(C\) is finitely presented over \(B\): the morphism is locally of finite type over a Noetherian base, and this affine open is quasi-compact. Write
+
+\[
+C=B[x_1,\ldots,x_n]/(f_1,\ldots,f_m).
+\]
+
+The images of the \(x_i\) in \(B\otimes_A R\) are uniquely \(\sum_j b_j z_{ij}\). Expand each relation \(f_a\) in the basis of \(B\), using its multiplication constants. Its \(r\) coefficients are polynomial equations in the \(nr\) variables \(z_{ij}\). Their affine zero scheme over \(A\) represents \(\operatorname{Res}(W)\), on every \(A\)-algebra, and is of finite presentation. Different bases give the same represented functor and glue. The rank-zero case has no variables and gives the terminal scheme over that base piece.
+
+The inclusion \(\operatorname{Res}(W)\subset\operatorname{Res}(Q)\) is an open subfunctor. For a map \(S'_T\to Q\), its image lies in \(W\) precisely off the image in \(T\) of the inverse image of \(Q\setminus W\). That inverse image is closed, and its image is closed because \(S'_T\to T\) is finite. On the resulting open the map factors through \(W\), including all nilpotent parameters. These opens cover: over any point \(t\in T\), the finite scheme \(S'_{\kappa(t)}\) has a finite image in \(Q\); the hypothesis supplies an affine \(W\) containing it. The point \(t\) then belongs to its open locus. Thus the affine restrictions glue along their represented open intersections to represent (8.19).
+
+For separatedness, take two maps from \(S'_T\) to \(Q\), with \(T\) affine. Their equality locus is a closed subscheme of \(S'_T\), since \(Q/S'\) is separated. Locally write the finite free algebra of \(S'_T\) in a basis. The condition that the entire finite scheme lie in this equality locus is that every coefficient of its defining ideal vanish. This is a closed condition on \(T\). It proves that the diagonal of the restriction is closed. Finite presentation of these diagonal conditions follows as well, since the affine equality ideals are finitely generated here.
+
+For a finite set of points in one fibre of the restriction, take the finite union of the images in \(Q\) of their finite parameter schemes \(S'_{\kappa(t)}\). All lie over the same point of \(S\). A common affine \(W\) contains this union, so the affine open \(\operatorname{Res}(W)\) contains the original finite set. Finally, evaluation on a scheme over any new base gives exactly the right-hand side of (8.19) with both bases pulled back. The same scheme therefore represents the base-changed functor. \(\square\)
+
+The Picard scheme of Theorem 8.1 satisfies the hypothesis of Lemma 8.7 even when the finite set lies over several points of \(S'\) above one point of \(S\). Indeed, work over affine \(S\), so \(S'\) is affine. The increasing opens
+\(P_+-m\xi\) of Lemma 5.1 contain any finite set for one sufficiently large \(m\). Inside that open only finitely many inverse Hilbert polynomials, and finitely many base Hilbert-polynomial pieces, occur at the chosen points. The corresponding charts form a finite disjoint union of schemes quasi-projective over \(S'\). It has an ample line bundle: take the ample bundles on the finitely many charts, and extend a section by zero on the other charts. Quotients and torsors, Lemma 5.4 supplies an affine open containing the entire finite set. Translate it back by \(-m\xi\). This proves exactly the required common-neighbourhood property, rather than assuming that a locally quasi-projective scheme automatically has it.
+
+**Theorem 8.8 (finite-flat Stein reduction).** Let \(S\) be Noetherian and \(f:X\to S\) projective and flat. Suppose its Stein factorization is
+
+\[
+X\xrightarrow{g}S'\xrightarrow{\pi}S,
+\tag{8.20}
+\]
+
+where \(g\) is flat with geometrically integral fibres and \(\pi\) is finite flat. Then its fppf and étale Picard sheaves agree and are represented by the separated, locally finite-type group scheme
+
+\[
+P_{X/S}\simeq
+\operatorname{Res}_{S'/S}(P_{X/S'}).
+\tag{8.21}
+\]
+
+It has affine neighbourhoods of every finite set in a fibre over an affine base neighbourhood, and formation commutes with arbitrary base change.
+
+**Proof.** The morphism \(g\) is projective. Its graph into \(X\times_S S'\) is closed because \(S'/S\) is separated, and that product is projective over \(S'\). Thus Theorem 8.1 constructs \(P_{X/S'}\). Its universal-functions condition follows from proper flatness and geometric integrality, as in the degree-zero argument of Theorem 8.3. The preceding paragraph and Lemma 8.7 represent the right-hand side of (8.21) by a separated scheme with the asserted finiteness and neighbourhood properties.
+
+We now prove the sheaf identity, including a local-representative issue caused by the two different bases. A line bundle on a finite locally free \(S'_T\) is trivial Zariski locally on \(T\). To verify this, take \(T=\operatorname{Spec}A\). Its pushforward is a finite locally free \(A\)-module of the same rank as \(\pi_*\mathcal O_{S'_T}\). On a fibre, an invertible module over a finite Artinian algebra is free of rank one. Lift a generator to a section on \(S'_T\). Multiplication by it is a map between finite locally free \(A\)-modules of equal rank; its determinant is a unit on a neighbourhood of the chosen base point. It is an isomorphism there. These neighbourhoods prove the assertion.
+
+Restriction of relative classes defines a map from the left-hand side of (8.21) to the right. If an actual bundle \(L\) maps to zero, the universal-functions condition for \(g\) and the injectivity argument in Section 1 of the curve-Picard lesson imply
+\(L\simeq g_T^*N\) for an actual line bundle \(N\) on \(S'_T\). This conclusion is global on \(S'_T\): the local identifications descend through their scalar transition units. The preceding determinant argument makes \(N\) trivial locally on \(T\). Thus \(L\) has zero Picard-sheaf class there. Since every class has a representative locally on \(T\), the map is injective.
+
+For surjectivity, let \(T\) be affine and take a point of \(P_{X/S'}(S'_T)\). It is represented by a bundle after an étale cover of \(S'_T\), by Theorem 8.1 and its sheaf comparison. Choose a finite collection of affine members of this cover whose images cover the affine scheme \(S'_T\), and let their disjoint union be \(U\). Then \(U\to S'_T\) is affine, étale, surjective and of finite presentation, and carries a representative bundle on \(X_U\).
+
+Its affine Weil restriction over \(T\) exists by the coefficient calculation in Lemma 8.7. It is étale: on a square-zero extension, a map from the finite affine parameter scheme into \(U\) lifts uniquely, by formal étaleness of \(U/S'_T\); together with finite presentation this is the étale criterion. It is surjective as well. Over an algebraically closed point of \(T\), the finite parameter algebra is a product of local Artinian algebras with algebraically closed residue field. Every surjective étale cover has a section over each of these strictly henselian Artinian algebras. One direct justification is to lift a residue-field point successively through the nilpotent maximal-ideal powers by formal étaleness. Taking the sections on all factors gives a section over the finite parameter algebra. Thus every geometric fibre of the affine restriction is nonempty.
+
+After this étale surjective cover of \(T\), there is consequently a map \(S'_T\to U\). Pull its representative bundle back to \(X_T\). It represents the chosen restriction point. This proves surjectivity, even in the étale topology on \(T\), and proves agreement of the two Picard sheaves in (8.21). The group operations are induced by tensor product, and base change and the remaining scheme properties follow from Lemma 8.7. No étaleness of \(\pi\) was assumed. \(\square\)
+
+**Lemma 8.9 (the étale Stein algebra).** Let \(f:X\to S\) be proper, flat and finitely presented over a Noetherian scheme, with geometrically reduced fibres. Then \(C=f_*\mathcal O_X\) is a finite locally free étale \(\mathcal O_S\)-algebra, and its formation commutes with every base change. In the Stein factorization \(X\to S'\to S\), the first map is flat with geometrically connected and geometrically reduced fibres, and the second map is finite étale.
+
+**Proof.** Proper coherent finiteness makes \(C\) finite. Work at a local ring \((A,\mathfrak m,\kappa)\) of \(S\). The finite algebra \(H^0(X_\kappa,\mathcal O)\) is étale over \(\kappa\). Indeed after an algebraic closure it is the product of one copy of the field for each connected component of the reduced proper fibre, by the global-functions calculation of Proper coherent cohomology, Section 5. Field extension commutes with this cohomology, so reducedness after algebraic closure makes the original finite algebra étale.
+
+Choose a finite separable extension \(\ell/\kappa\) splitting this algebra. Lift a monic minimal polynomial for a primitive generator of \(\ell\) to \(A\). Its discriminant is a unit because its residue polynomial is separable. It therefore defines a finite free étale faithfully flat local algebra \(A'\), with residue field \(\ell\); the simple-root lifting criterion is Formally smooth, unramified and étale ring maps, Proposition 6.1. It is local because its reduction modulo \(\mathfrak m\) is a field and it is finite over the local ring. Flat base change identifies \(C\otimes_A A'\) with the global functions on \(X_{A'}\). It suffices to prove the étale assertion after this faithfully flat extension.
+
+Write \(A_n=A'/\mathfrak m_{A'}^n\), and \(X_n=X_{A_n}\). The closed fibre has global-function algebra \(\ell^r\). Its \(r\) idempotents give its open and closed connected components. They lift uniquely through every nilpotent thickening \(X_n\), and compatibly in \(n\). For completeness, an idempotent lifts through a square-zero ring ideal by correcting a lift using the inverse of \(2e-1\); this element is a unit since its square is \(1\) modulo that ideal. The same calculation makes the lift unique. Iterate the nilpotent filtration and glue the local lifts by uniqueness. It follows that \(X_n\) is the disjoint union of \(r\) proper flat \(A_n\)-schemes.
+
+Each of their sole residue fibres is geometrically reduced and geometrically connected. The connectedness follows also from its global functions \(\ell\): the field case of Stein factorization, Theorem 3.1 gives geometric connectedness when the unit is an isomorphism. Semicontinuity and Grauert's theorem, Theorem 5.2 then gives, with the compatible labelling,
+
+\[
+H^0(X_n,\mathcal O_{X_n})=A_n^r.
+\tag{8.22}
+\]
+
+The degree-zero theorem on formal functions, Theorem 4.1 identifies the completed finite algebra with the limit of (8.22):
+
+\[
+\begin{gathered}
+(C\otimes_A A')\otimes_{A'}\widehat {A'}\\
+\simeq\varprojlim_n H^0(X_n,\mathcal O_{X_n})\\
+\simeq(\widehat {A'})^r.
+\end{gathered}
+\tag{8.23}
+\]
+
+These are algebra isomorphisms: the formal-functions comparison in degree zero is induced by restriction of functions and preserves multiplication. Completion of a Noetherian local ring is faithfully flat by Completion, Theorem 3.2. Finite étaleness descends through that map and then through \(A'/A\), so \(C\) is finite étale at the original point. In particular it is locally free.
+
+Reduction of the same comparison (8.23) modulo the maximal ideal is the actual degree-zero fibre comparison and identifies it with \(\ell^r\to H^0(X_\ell,\mathcal O)\). It is an isomorphism. Faithful flatness of \(\ell/\kappa\) proves surjectivity of the original comparison at every point of \(S\). The degree-zero cohomology/base-change criterion of Theorem 3.1 of the semicontinuity lesson now gives arbitrary base change for \(C\), including nonreduced parameters.
+
+Thus every geometric Stein fibre selects one of the connected components of \(X_{\bar s}\), with its reduced scheme structure. The Stein connected-fibre assertion is also supplied by the cited Stein theorem. To check flatness of \(g:X\to S'\), work étale locally on \(S\) where the finite étale \(S'\) is a disjoint union of copies of \(S\). The corresponding parts of \(X\) are open and closed, so their flatness follows from that of \(X/S\). Flatness descends. Their geometric fibres are the selected geometrically reduced connected components, proving the remaining assertions. \(\square\)
+
+**Corollary 8.10 (geometrically locally integral fibres).** Let \(S\) be Noetherian and \(X/S\) projective and flat with geometrically locally integral fibres. Then its étale and fppf Picard sheaves are represented by a separated group scheme locally of finite type, with arbitrary base-change compatibility. With \(\xi\) the class of a chosen relatively very ample bundle, it has an open \(U\), a disjoint union of schemes quasi-projective over \(S\), such that
+
+\[
+\begin{gathered}
+U+\xi\subset U,\\
+P_{X/S}=\bigcup_{m\geq0}(U-m\xi).
+\end{gathered}
+\tag{8.24}
+\]
+
+The displayed union is increasing. Empty fibres are allowed, with the trivial relative Picard scheme on their open and closed base locus.
+
+**Proof.** A geometrically locally integral fibre is geometrically reduced. Its irreducible components are disjoint: two components through a point would give two distinct minimal primes of that local ring, contradicting its being a domain. Since the fibre is Noetherian, its components are finitely many and open and closed. Consequently every geometric connected component is integral. Lemma 8.9 makes the Stein morphism finite étale and its first map flat with geometrically integral fibres. Theorem 8.8 applies.
+
+It remains to retain the positive-chart structure in (8.24). On \(S'\), let \(U'=P_+\) for \(g\), using the given very ample bundle, and let \(\xi'\) be its class. Lemma 5.1 and Theorem 8.1 give the disjoint quasi-projective charts of \(U'\), its stability under \(+\xi'\), and the increasing cover by \(U'-m\xi'\). Set
+
+\[
+U=\operatorname{Res}_{S'/S}(U')\subset P_{X/S}.
+\]
+
+This is open by the finite-image argument of Lemma 8.7 and is stable under \(+\xi\). A finite Stein fibre has only finitely many image points in \(P_{X/S'}\), so one sufficiently large \(m\) puts all of them in \(U'-m\xi'\). The same open-locus argument puts a neighbourhood of the parameter point in \(U-m\xi\). This proves the increasing cover.
+
+We verify the disjoint quasi-projective decomposition, rather than presuming that arbitrary scheme descent preserves quasi-projectivity. Work on an open and closed base piece where \(\pi\) has constant rank \(r>0\). The ordering scheme \(E\) of its \(r\) sheets is a finite étale surjection, with the constant symmetric group \(\mathfrak S_r\) acting simply transitively on the orderings. Explicitly \(E\) is the open and closed part of \((S')^r\) where all coordinates are distinct; its geometric fibres are precisely the orderings of \(r\) points. It splits \(S'_E\) into \(r\) copies of \(E\).
+
+Index the disjoint charts of \(U'\) by their inverse Hilbert polynomials and the open and closed base pieces used in their construction, taking an empty chart off its base piece. Over \(E\), the scheme \(U_E\) is the product of the \(r\) pulled-back unions of these charts. Decompose this product by the multiplicities of its finitely many chart labels. For each multiset of \(r\) labels, the resulting piece is a finite disjoint union of products of quasi-projective charts, hence is quasi-projective over \(E\). It is preserved by permutation of the sheets. These pieces descend to disjoint open and closed subschemes \(U_a\subset U\) and cover \(U\).
+
+To prove \(U_a/S\) quasi-projective, choose a relatively ample line bundle \(L\) on \((U_a)_E\). Form
+
+\[
+M=\bigotimes_{\gamma\in\mathfrak S_r}\gamma^*L.
+\tag{8.25}
+\]
+
+It is relatively ample and has the canonical descent datum which permutes its tensor factors. For ampleness, locally on the affine base take a common very ample power of the finitely many factors; the product embeddings and the Segre embedding make the corresponding power of their tensor product very ample. Effective line-bundle descent gives a bundle \(N\) on \(U_a\) whose pullback is \(M\).
+
+Here is why \(N\) is relatively ample. Work over an affine open in \(S\), so its finite étale ordering cover is affine. For any point of \(U_a\), its finite preimage in \((U_a)_E\) lies in an affine nonvanishing open of a section \(t\) of a positive power of \(M\), by the ample-section proof of Lemma 5.4 cited above. The product of its \(\mathfrak S_r\)-translates is an invariant section of a power of \(M\), so descends to a section of a power of \(N\). Its nonvanishing open upstairs is the finite intersection of the translated affine opens; it is affine since the scheme is separated over the affine base. It contains the entire preimage of our point. Affine descent along the finite étale cover makes the corresponding nonvanishing open downstairs affine as well. Such sections cover \(U_a\), proving that \(N\) is relatively ample. Finite type of \(U_a/S\) descends from the same finite cover. Hence \(U_a\) is quasi-projective over \(S\). The rank-zero piece is trivial. This proves every assertion of (8.24). \(\square\)
+
+The representability, affine-morphism and base-change assertions of Sections 8.2–8.4 are local on the base. They therefore also hold over locally Noetherian bases: apply the proofs on Noetherian affine opens. The universal functors identify the representing schemes and maps on overlaps and force the cocycle condition, so these glue.
+
+Theorem 8.8 and Corollary 8.10 give the finite-flat Stein and geometrically locally integral reductions of FGA 232, §6. The possibly nonétale Stein factor in the first theorem is retained; the second obtains étaleness from geometric reducedness and proves the full positive-chart structure.
+
+
 ## 9 Examples and the boundary of the theorem
 
 ### Hypersurfaces as divisors in projective space
@@ -468,7 +860,7 @@ The tensor group law on the target transports to the elliptic group law with ori
 
 The existence theorem uses geometric integrality, not just properness, flatness and (3.1). The broader scheme-existence conjecture in FGA 232, Remark 5.2, was explicitly withdrawn in its erratum, p. 303. That erratum also adds the algebraically closed residue-field qualification to the complete-local-base remark. The full algebraic-space theorem under proper flat finite presentation and the universal condition (3.1) is proved in Moduli stacks are algebraic, Theorem 7.3. It rigidifies the algebraic stack of line bundles after an fppf cover supplying a section, and then descends its algebraic-space coordinates. This is a different conclusion from scheme representability and is consistent with the historical corrections; its Stacks comparison is Tag 0D2C.
 
-One mechanism is visible already in our proof. On a reducible fibre a nonzero section need not be regular. Regular sections form an open inside the projective parameter scheme, and that open need not be proper. The relation projections then lose the properness needed in Theorem 7.1. The historical nonexistence of a Picard scheme in some such cases means failure of representation by a scheme; it does not assert failure of the applicable modern algebraic-space theorem. The general reductions and finiteness results of FGA 232 §6 and FGA 236 require their own additional arguments.
+One mechanism is visible already in our proof. On a reducible fibre a nonzero section need not be regular. Regular sections form an open inside the projective parameter scheme, and that open need not be proper. The relation projections then lose the properness needed in Theorem 7.1. The historical nonexistence of a Picard scheme in some such cases means failure of representation by a scheme; it does not assert failure of the applicable modern algebraic-space theorem. The affine maps of Section 8 describe closed unions and nilpotent thickenings. The finite-flat Stein reduction and the geometrically locally integral case, including their scheme coordinates and positive-chart structure, are proved in Section 8.4.
 
 ## 10 Exercises
 
@@ -481,6 +873,14 @@ One mechanism is visible already in our proof. On a reducible fibre a nonzero se
 4. **Separatedness.** Prove the diagonal assertion for the étale Picard sheaf of the main theorem. Do not assume in advance that the target is a scheme. Explain why merely proving uniqueness of geometric specializations would miss a required part of the argument.
 
 5. **The curve quotient.** Let \(C/k\) be smooth projective geometrically connected, with a point, and let \(d\geq0\), \(d\geq2g-1\). Construct \(\operatorname{Pic}^d_C\) completely as \(\operatorname{Sym}^dC\) modulo linear equivalence. Show the equivalence relation is proper and flat, construct its Hilbert-scheme quotient, identify its sheaf of points and compute the relative dimension of the quotient map. Include \(g=0,d=0\).
+
+6. **Two components and a multiplicative parameter.** Over \(k=\mathbf Q\), let \(X\subset\mathbb P^1_k\times\mathbb P^1_k\) be the reduced union of the graphs of \(t\mapsto t\) and \(t\mapsto2t\). Identify their scheme-theoretic intersection. Compute the kernel of restriction \(P_{X/k}\to\underline{\mathbf Z}_k^2\) as a group scheme, on arbitrary parameter schemes. Give compatible choices of gluing frames which split this map. Explain why independent scalar automorphisms on the two branches remove one parameter.
+
+7. **A square-zero curve and an additive parameter.** Let \(d\geq2\), let \(C=\mathbb P^1_k\) over any field, and put \(X=\operatorname{Spec}_C(\mathcal O_C\oplus\mathcal O_C(-d))\), with the second summand a square-zero ideal. Compute \(P_{X/k}\to P_{C/k}\), including its splitting and its kernel on nonreduced parameter schemes. Why does the kernel have an additive, rather than a multiplicative, group law?
+
+8. **A nonétale Stein factor.** Let \(E/k\) be an elliptic curve with origin, put \(A=k[\epsilon]/(\epsilon^2)\), and view \(X=E_A\) as a proper \(k\)-scheme. Identify its Stein factor and use Theorem 8.8 to compute \(P_{X/k}\). Show that restriction to \(E\) has kernel the vector group of \(H^1(E,\mathcal O_E)\), and determine its group law on arbitrary \(k\)-algebras. Explain why the extra factor cannot be replaced by a second copy of \(P_{E/k}\).
+
+9. **Two conjugate components.** Regard \(X=\mathbb P^1_{\mathbf C}\) as a projective \(\mathbf R\)-scheme. Compute its Picard scheme over \(\mathbf R\), including its decomposition into copies of \(\operatorname{Spec}\mathbf R\) and \(\operatorname{Spec}\mathbf C\). Determine its real points and its geometric component group. Why would its group of actual line bundles alone give an incorrect constant-scheme answer?
 
 ## 11 Solutions
 
@@ -498,9 +898,47 @@ Define \(R\subset Y\times Y\) by equality of the two divisor-bundle classes. Pro
 
 Every Picard class acquires an effective divisor étale locally, because its positive-rank section bundle locally has a quotient line of its dual. The Abel map is therefore an epimorphism of étale sheaves with kernel pair \(R\). The universal local-lift argument identifies its target with \(h_Q\). Thus \(Q\) is exactly \(\operatorname{Pic}^d_C\), constructed without presupposing its existence. The quotient map has relative dimension \(d-g\); as \(Y\) has dimension \(d\), the quotient has dimension \(g\). In the boundary case \(g=d=0\), the section rank is one, \(Y=\operatorname{Sym}^0C=\operatorname{Spec}k\), the relation is the identity and the quotient map has relative dimension zero. Properness of \(Q\) can also be read from the projective \(Y\): for any base change, the inverse image of a closed subset of \(Q\) is closed in \(Y\), and surjectivity makes their images in the base equal. This proves universal closedness; finite type and separatedness were already established.
 
+**6.** In homogeneous coordinates, the two graph equations restrict on the first graph to a nonzero scalar multiple of \(x_0x_1\). Thus they meet in the two reduced rational points \(0,\infty\). Each component has global-function algebra \(k\), and the intersection has algebra \(k\times k\). Formula (8.8) maps the two scalar units to the same ratio on both intersection points. Its image is the diagonal subgroup of \(\mathbf G_m^2\). Consequently (8.9) is \(\mathbf G_m^2/\mathbf G_m\simeq\mathbf G_m\), with coordinate the quotient of the two gluing multipliers. This is a scheme identity on all test algebras, with inverses and scalar changes computed in their unit groups.
+
+More explicitly, for the trivial bundle on each branch normalize the gluing at \(0\) to \(1\). The remaining gluing value at \(\infty\) is an arbitrary unit, uniquely determining its relative class. For a splitting over \(\underline{\mathbf Z}_k^2\), choose frames at \(0,\infty\) for \(\mathcal O(1)\) on each branch. Glue \((\mathcal O(1),\mathcal O)\) using these frames, and similarly glue \((\mathcal O,\mathcal O(1))\). Tensor powers, with the dual frames for negative exponents, provide compatible lifts of every degree pair. Lemma 8.2 supplies the bundles and their tensor identities. Hence \(P_{X/k}\simeq\mathbf G_m\times\underline{\mathbf Z}_k^2\), after these choices. Without dividing by branch automorphisms one would incorrectly retain two gluing parameters.
+
+**7.** The finite projection \(r:X\to C\) is a retraction of the closed immersion \(C\subset X\), so pullback along \(r\) splits restriction of Picard sheaves. On the common underlying space, units fit into the split sequence
+\[
+0\longrightarrow\mathcal O_C(-d)
+\xrightarrow{a\mapsto1+a}\mathcal O_X^\times
+\longrightarrow\mathcal O_C^\times\longrightarrow1.
+\]
+Here \((1+a)(1+b)=1+(a+b)\). For an affine parameter \(T=\operatorname{Spec}B\), its cohomology kernel is \(H^1(C,\mathcal O_C(-d))\otimes_kB\); there is no quotient by global units because the unit sequence is split. The standard two-chart computation on \(\mathbb P^1\) identifies this vector space with \(B^{d-1}\): in a Laurent coordinate the surviving cocycles may be represented by \(t^{-1},\ldots,t^{-(d-1)}\). This tensor calculation holds for every \(B\), including rings with nilpotents. Sheafification and the splitting therefore give
+\[
+P_{X/k}\simeq\mathbf G_a^{d-1}\times\underline{\mathbf Z}_k.
+\]
+The projection to the second factor is the affine restriction morphism of Theorem 8.6. Its additive law follows from the square-zero multiplication just computed, in every characteristic.
+
+**8.** The constants are \(A\), so the Stein factor is \(\operatorname{Spec}A\to\operatorname{Spec}k\). The first map is the smooth projective genus-one family \(E_A/A\); the second is finite flat of rank two and is not étale. Let \(P=P_{E/k}\). Base change for the Picard scheme gives \(P_{X/A}=P_A\), and Theorem 8.8 yields
+\[
+P_{X/k}=\operatorname{Res}_{A/k}(P_A).
+\]
+For a \(k\)-algebra \(B\), reduction \(P(B[\epsilon])\to P(B)\) is split by the constant inclusion \(B\to B[\epsilon]\). At any \(p\in P(B)\), the lifts are derivations of its coordinate functions into \(\epsilon B\), hence are sections of the pulled-back tangent bundle. Translation by \(p^{-1}\) identifies that bundle with \(\operatorname{Lie}(P)\otimes_k B\). It follows on all affine tests, and then by descent, that
+\[
+\begin{gathered}
+P_{X/k}\simeq P\times\mathbf V(\operatorname{Lie}(P)),\\
+\operatorname{Lie}(P)=H^1(E,\mathcal O_E),\qquad
+\dim_k H^1(E,\mathcal O_E)=1.
+\end{gathered}
+\]
+Here \(\mathbf V(W)(B)=W\otimes_kB\). The tangent-space identification is Proposition 2.1 of the Picard-structure lesson. For a commutative group the translated tangent vectors add under multiplication: differentiate the multiplication map, whose restrictions along both identity axes are the identity. Thus the isomorphism is one of group schemes, with direct-product law. Choosing a basis gives \(P_{X/k}\simeq P\times\mathbf G_a\). The finite dual-number algebra has one underlying point and an infinitesimal direction; its maps encode tangent vectors, whereas a split étale rank-two algebra encodes two independent points. Replacing it by \(k\times k\) would therefore give the wrong group scheme.
+
+**9.** The Stein factor is \(\operatorname{Spec}\mathbf C\to\operatorname{Spec}\mathbf R\), finite étale of degree two, and the geometric fibre is two disjoint projective lines. Thus
+\[
+P_{X/\mathbf R}=
+\operatorname{Res}_{\mathbf C/\mathbf R}
+              (\underline{\mathbf Z}_{\mathbf C}).
+\]
+After extension to \(\mathbf C\), this is the constant scheme on \(\mathbf Z^2\). Conjugation interchanges the two coordinates, since it interchanges the two sheets of the Stein factor. Its fixed pairs \((a,a)\) each descend to \(\operatorname{Spec}\mathbf R\); every two-element orbit \(\{(a,b),(b,a)\}\), \(a\ne b\), descends to \(\operatorname{Spec}\mathbf C\). Their disjoint union is the required étale real group scheme, with addition descended from coordinatewise addition on \(\mathbf Z^2\). In particular its real points are the diagonal \(\mathbf Z\), while its geometric component group is \(\mathbf Z^2\). Actual bundles on \(\mathbb P^1_{\mathbf C}\) also form \(\mathbf Z\), but that real-point calculation does not determine the represented functor or its conjugate geometric components.
+
 ## What this lesson does not prove
 
-The divisor locus, module of sections, complete-linear-system correspondence, Picard diagonal, positive-locus construction, effective quotient and gluing proof are established here. In particular the proper-flat quotient is not an unproved input.
+The divisor locus, module of sections, complete-linear-system correspondence, Picard diagonal, positive-locus construction, effective quotient, closed-union affine maps, affine nilpotent restriction and finite-flat Stein/Weil-restriction reductions are established here. In particular the proper-flat quotient is not an unproved input.
 
 The foundational results used are these precise ones:
 
@@ -509,9 +947,11 @@ The foundational results used are these precise ones:
 - Serre vanishing and generation on projective Noetherian families [Tags 01XO, 0B5T and 02O1]. Finite-presentation descent of modules, morphisms and identities in affine inverse limits [Tag 01ZR] is used to extend the open-locus argument to arbitrary test schemes.
 - Effective faithfully flat descent of quasi-coherent modules and their ideals [Tag 023R]. We supply the actual descent datum for the quotient ideal in Section 7. Smoothness, properness and finite presentation descend under an étale or fppf cover; smooth surjections have étale-local sections.
 - Proper morphisms with finite fibres are finite [Tag 02LS]; finite monomorphisms are closed immersions [Tag 03BB]. Projective schemes and their Proj quotient-line property are used in convention (0.1).
+- The affine Isom construction is Moduli stacks are algebraic, Corollary 1.3, with both sheaves flat and finitely presented and of proper support. Affine normal quotients and closed flat images of finite-type field groups are Quotients and torsors, Theorem 11.1d and Corollary 11.10. Proper-field Picard schemes and their finite frames are proved in The structure of the Picard scheme, Theorem 1.2. The proofs above supply the patching, obstruction, translation action and quotient identifications used with these inputs.
+- The degree-zero theorem on formal functions is The theorem on formal functions, Theorem 4.1. Its proved Rees-module and cofinal-filtration argument supplies the completed scalar algebra in (8.23). Finite-type Stein factorization and its geometric connectedness are Zariski connectedness and Stein factorization, Theorem 3.1. Lemma 8.9 supplies the extra finite-étale and arbitrary-base-change assertions, using the degree-zero comparison and constants theorem of the semicontinuity lesson.
 - *Hilbert and Quot schemes* proves fixed-polynomial projective Hilbert representability; its proper-support open construction gives Hilbert schemes for quasi-projective ambient schemes. *The Picard functor and the Picard scheme of a curve* proves the sheaf comparison and injection of the raw relative quotient under (3.1), and the all-characteristic symmetric-power statement comes from *Hilbert and Quot schemes*. The Hilbert-polynomial dimension and leading-coefficient facts come from *Castelnuovo–Mumford regularity and boundedness*.
 
-The general algebraic-space theorem is Moduli stacks are algebraic, Theorem 7.3, with its complete scalar-rigidification and section-removal proof. It delineates the boundary of the scheme theorem and is not used in our projective quotient construction. The reductions of FGA 232 §6, component finiteness and the theorem of the base are not proved here. Nor do we assert that a universal line bundle exists without a section, or that the Picard scheme is smooth in arbitrary dimension.
+The general algebraic-space theorem is Moduli stacks are algebraic, Theorem 7.3, with its complete scalar-rigidification and section-removal proof. It delineates the boundary of the scheme theorem and is not used in our projective quotient construction. The finite-flat Stein reduction and the geometrically locally integral existence theorem, with the increasing positive-chart structure, are proved in Section 8.4. Component finiteness, numerical boundedness and the theorem of the base are proved in The structure of the Picard scheme, Sections 6–7. Nor do we assert that a universal line bundle exists without a section, or that the Picard scheme is smooth in arbitrary dimension.
 
 ## References
 

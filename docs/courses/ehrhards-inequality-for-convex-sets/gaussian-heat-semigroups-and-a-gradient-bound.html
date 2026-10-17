@@ -1,0 +1,245 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gaussian heat semigroups and a gradient bound</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Ehrhard&#x27;s inequality for convex sets)</a><a href="a-quantity-monotone-along-the-heat-flow.html">Next lesson</a><a href="src/gaussian-heat-semigroups-and-a-gradient-bound.md">Editable source</a></nav><main><article><h1 id="gaussian-heat-semigroups-and-a-gradient-bound">Gaussian heat semigroups and a gradient bound</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Ehrhard's inequality is the Gaussian analogue of the Brunn–Minkowski inequality. Write <span class="math" data-tex="\(\gamma_n\)">\(\gamma_n\)</span> for the standard Gaussian measure on <span class="math" data-tex="\(\mathbf R^n\)">\(\mathbf R^n\)</span>, <span class="math" data-tex="\(\varphi(x)=(2\pi)^{-1/2}e^{-x^2/2}\)">\(\varphi(x)=(2\pi)^{-1/2}e^{-x^2/2}\)</span>, and <span class="math" data-tex="\(\Phi(x)=\int_{-\infty}^x\varphi\)">\(\Phi(x)=\int_{-\infty}^x\varphi\)</span>, an increasing bijection of <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span> onto <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>; put <span class="math" data-tex="\(\Phi^{-1}(0)=-\infty\)">\(\Phi^{-1}(0)=-\infty\)</span> and <span class="math" data-tex="\(\Phi^{-1}(1)=+\infty\)">\(\Phi^{-1}(1)=+\infty\)</span>.</p>
+<h2 id="the-theorem">The theorem</h2>
+<p><strong>Theorem A</strong> (Ehrhard). Let <span class="math" data-tex="\(K,L\subseteq\mathbf R^n\)">\(K,L\subseteq\mathbf R^n\)</span> be closed convex sets with <span class="math" data-tex="\(\gamma_n(K),\gamma_n(L)\in(0,1)\)">\(\gamma_n(K),\gamma_n(L)\in(0,1)\)</span>, and <span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Phi^{-1}\bigl(\gamma_n(\lambda K+(1-\lambda)L)\bigr)\\
+&amp;\quad\ge\lambda\,\Phi^{-1}(\gamma_n(K))\\
+&amp;\qquad+(1-\lambda)\,\Phi^{-1}(\gamma_n(L)).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Phi^{-1}\bigl(\gamma_n(\lambda K+(1-\lambda)L)\bigr)\\
+&amp;\quad\ge\lambda\,\Phi^{-1}(\gamma_n(K))\\
+&amp;\qquad+(1-\lambda)\,\Phi^{-1}(\gamma_n(L)).
+\end{aligned}
+\]</span></p>
+<p>Ehrhard proved it with a Gaussian symmetrization [E]; Latała extended it to the case in which only one of the sets is convex, and Borell to arbitrary Borel sets. For parallel half-spaces <span class="math" data-tex="\(\{\langle e,x\rangle\le a\}\)">\(\{\langle e,x\rangle\le a\}\)</span> and <span class="math" data-tex="\(\{\langle e,x\rangle\le b\}\)">\(\{\langle e,x\rangle\le b\}\)</span>, with <span class="math" data-tex="\(|e|=1\)">\(|e|=1\)</span>, both sides equal <span class="math" data-tex="\(\lambda a+(1-\lambda)b\)">\(\lambda a+(1-\lambda)b\)</span>. The left side can be <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>: for the half-planes <span class="math" data-tex="\(\{x_1\le0\}\)">\(\{x_1\le0\}\)</span> and <span class="math" data-tex="\(\{x_1\ge0\}\)">\(\{x_1\ge0\}\)</span> and <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, <span class="math" data-tex="\(\lambda K+(1-\lambda)L=\mathbf R^n\)">\(\lambda K+(1-\lambda)L=\mathbf R^n\)</span>.</p>
+<p>This course proves Theorem A by the interpolation method of Neeman and Paouris [NP]: a quantity built from the three functions <span class="math" data-tex="\(\mathbf 1_K\)">\(\mathbf 1_K\)</span>, <span class="math" data-tex="\(\mathbf 1_L\)">\(\mathbf 1_L\)</span> and <span class="math" data-tex="\(\mathbf 1_{\lambda K+(1-\lambda)L}\)">\(\mathbf 1_{\lambda K+(1-\lambda)L}\)</span>, smoothed by Gaussian semigroups, is monotone in time. The course uses the heat semigroup in place of the Ornstein–Uhlenbeck semigroup of [NP], proves the gradient bound it needs from an elementary rearrangement argument, and carries out the approximation steps for convex sets. van Handel gave another proof, by a stochastic game [vH].</p>
+<p><strong>The course.</strong></p>
+<ol>
+<li>This lesson: Gaussian heat semigroups, their smoothing and the heat equation, a moving function under the semigroup, and the gradient bound <span class="math" data-tex="\(|\nabla Q_tf|\le t^{-1/2}I(Q_tf)\)">\(|\nabla Q_tf|\le t^{-1/2}I(Q_tf)\)</span>.</li>
+<li><a href="a-quantity-monotone-along-the-heat-flow.html">A quantity monotone along the heat flow</a>: the function <span class="math" data-tex="\(J=\Phi(r\Xi)\)">\(J=\Phi(r\Xi)\)</span>, a matrix inequality, and the monotonicity theorem.</li>
+<li><a href="ehrhards-inequality-for-convex-sets.html">Ehrhard's inequality for convex sets</a>: from smooth functions to convex sets, and the proof of Theorem A.</li>
+</ol>
+<p><strong>What the course assumes.</strong> Multivariable calculus and linear algebra (positive semidefinite matrices); measure and integration as in Fremlin's <em>Measure Theory</em> in the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>, cited by number: the dominated convergence theorem (123C), differentiating through an integral (123D), Fubini's theorem (252B), and the linear change of variables (263A).</p>
+<h2 id="1-notation">1. Notation</h2>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be a positive definite symmetric <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> matrix. The Gaussian measure <span class="math" data-tex="\(\gamma_C\)">\(\gamma_C\)</span> on <span class="math" data-tex="\(\mathbf R^d\)">\(\mathbf R^d\)</span> has density
+<span class="math math-display" data-tex="\[
+g_C(w)=\frac{e^{-\langle w,C^{-1}w\rangle/2}}{(2\pi)^{d/2}(\det C)^{1/2}},
+\]">\[
+g_C(w)=\frac{e^{-\langle w,C^{-1}w\rangle/2}}{(2\pi)^{d/2}(\det C)^{1/2}},
+\]</span>
+and <span class="math" data-tex="\(\gamma_d=\gamma_{I_d}\)">\(\gamma_d=\gamma_{I_d}\)</span>. For a bounded measurable <span class="math" data-tex="\(F:\mathbf R^d\to\mathbf R\)">\(F:\mathbf R^d\to\mathbf R\)</span> and <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> put
+<span class="math math-display" data-tex="\[
+Q^C_tF(z)=\int F(z+\sqrt t\,w)\,d\gamma_C(w),
+\]">\[
+Q^C_tF(z)=\int F(z+\sqrt t\,w)\,d\gamma_C(w),
+\]</span>
+and <span class="math" data-tex="\(Q_t=Q^{I_d}_t\)">\(Q_t=Q^{I_d}_t\)</span>. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the change of variables <span class="math" data-tex="\(y=z+\sqrt t\,w\)">\(y=z+\sqrt t\,w\)</span> (263A) gives
+<span class="math math-display" data-tex="\[
+Q^C_tF(z)=\int F(y)\,g_{tC}(y-z)\,dy .
+\]">\[
+Q^C_tF(z)=\int F(y)\,g_{tC}(y-z)\,dy .
+\]</span>
+If <span class="math" data-tex="\(C=\sigma^2I_d\)">\(C=\sigma^2I_d\)</span>, then <span class="math" data-tex="\(Q^C_t=Q_{\sigma^2t}\)">\(Q^C_t=Q_{\sigma^2t}\)</span>. For <span class="math" data-tex="\(H\in C^2(\mathbf R^d)\)">\(H\in C^2(\mathbf R^d)\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal L_CH&amp;=\frac12\sum_{i,j}C_{ij}\,\partial_i\partial_jH,\\
+\Gamma_C(H_1,H_2)&amp;=\langle\nabla H_1,C\nabla H_2\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal L_CH&amp;=\frac12\sum_{i,j}C_{ij}\,\partial_i\partial_jH,\\
+\Gamma_C(H_1,H_2)&amp;=\langle\nabla H_1,C\nabla H_2\rangle .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(C^2_b(\mathbf R^d)\)">\(C^2_b(\mathbf R^d)\)</span> is the space of twice continuously differentiable functions that are bounded with bounded first and second derivatives. Finally, <span class="math" data-tex="\(I(p)=\varphi(\Phi^{-1}(p))\)">\(I(p)=\varphi(\Phi^{-1}(p))\)</span> for <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span> and <span class="math" data-tex="\(I(0)=I(1)=0\)">\(I(0)=I(1)=0\)</span>; <span class="math" data-tex="\(I\)">\(I\)</span> is continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and <span class="math" data-tex="\(I(1-p)=I(p)\)">\(I(1-p)=I(p)\)</span>.</p>
+<h2 id="2-gaussian-integration-by-parts">2. Gaussian integration by parts</h2>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(\psi\in C^1(\mathbf R^d)\)">\(\psi\in C^1(\mathbf R^d)\)</span> satisfy <span class="math" data-tex="\(|\psi(w)|+|\nabla\psi(w)|\le ae^{b|w|}\)">\(|\psi(w)|+|\nabla\psi(w)|\le ae^{b|w|}\)</span> for some constants <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Then, for each <span class="math" data-tex="\(i\)">\(i\)</span>,
+<span class="math math-display" data-tex="\[
+\int w_i\,\psi(w)\,d\gamma_C(w)=\sum_jC_{ij}\int\partial_j\psi\,d\gamma_C .
+\]">\[
+\int w_i\,\psi(w)\,d\gamma_C(w)=\sum_jC_{ij}\int\partial_j\psi\,d\gamma_C .
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\partial_jg_C(w)=-(C^{-1}w)_j\,g_C(w)\)">\(\partial_jg_C(w)=-(C^{-1}w)_j\,g_C(w)\)</span>. Integrating by parts in the variable <span class="math" data-tex="\(w_j\)">\(w_j\)</span>, with Fubini's theorem (252B) for the other variables and no boundary terms because of the Gaussian decay,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int\partial_j\psi\,g_C\,dw&amp;=-\int\psi\,\partial_jg_C\,dw\\
+&amp;=\int(C^{-1}w)_j\,\psi\,g_C\,dw .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int\partial_j\psi\,g_C\,dw&amp;=-\int\psi\,\partial_jg_C\,dw\\
+&amp;=\int(C^{-1}w)_j\,\psi\,g_C\,dw .
+\end{aligned}
+\]</span>
+Multiply by <span class="math" data-tex="\(C_{ij}\)">\(C_{ij}\)</span> and sum over <span class="math" data-tex="\(j\)">\(j\)</span>; <span class="math" data-tex="\(\sum_jC_{ij}(C^{-1}w)_j=w_i\)">\(\sum_jC_{ij}(C^{-1}w)_j=w_i\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-smoothing-and-the-heat-equation">3. Smoothing and the heat equation</h2>
+<p><strong>Proposition 1.2.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be bounded and measurable. On <span class="math" data-tex="\((0,\infty)\times\mathbf R^d\)">\((0,\infty)\times\mathbf R^d\)</span>, the function <span class="math" data-tex="\((t,z)\mapsto Q^C_tF(z)\)">\((t,z)\mapsto Q^C_tF(z)\)</span> has continuous partial derivatives of all orders in <span class="math" data-tex="\(z\)">\(z\)</span> and a continuous derivative in <span class="math" data-tex="\(t\)">\(t\)</span>, and:</p>
+<ol>
+<li>every derivative <span class="math" data-tex="\(\partial^\alpha_zQ^C_tF\)">\(\partial^\alpha_zQ^C_tF\)</span> is bounded by <span class="math" data-tex="\(c_\alpha t^{-|\alpha|/2}\sup|F|\)">\(c_\alpha t^{-|\alpha|/2}\sup|F|\)</span>, with <span class="math" data-tex="\(c_\alpha\)">\(c_\alpha\)</span> depending only on <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span>;</li>
+<li><span class="math" data-tex="\(\nabla Q^C_tF(z)\)">\(\nabla Q^C_tF(z)\)</span> is <span class="math" data-tex="\(t^{-1/2}\)">\(t^{-1/2}\)</span> times the integral of <span class="math" data-tex="\(F(z+\sqrt t\,w)\,C^{-1}w\)">\(F(z+\sqrt t\,w)\,C^{-1}w\)</span> against <span class="math" data-tex="\(\gamma_C(w)\)">\(\gamma_C(w)\)</span>;</li>
+<li><span class="math" data-tex="\(\partial_tQ^C_tF=\mathcal L_CQ^C_tF\)">\(\partial_tQ^C_tF=\mathcal L_CQ^C_tF\)</span>.</li>
+</ol>
+<p><em>Proof.</em> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(k(t,z,y)=g_{tC}(y-z)\)">\(k(t,z,y)=g_{tC}(y-z)\)</span> is infinitely differentiable in <span class="math" data-tex="\((t,z)\)">\((t,z)\)</span>. Each derivative <span class="math" data-tex="\(\partial_t^a\partial^\alpha_zk\)">\(\partial_t^a\partial^\alpha_zk\)</span> is a polynomial in <span class="math" data-tex="\(y-z\)">\(y-z\)</span>, <span class="math" data-tex="\(t^{-1/2}\)">\(t^{-1/2}\)</span> and the entries of <span class="math" data-tex="\(C^{-1}\)">\(C^{-1}\)</span> times <span class="math" data-tex="\(k\)">\(k\)</span>; on a set <span class="math" data-tex="\(\{t_0\le t\le t_1,\ |z|\le z_1\}\)">\(\{t_0\le t\le t_1,\ |z|\le z_1\}\)</span> it is bounded by a polynomial in <span class="math" data-tex="\(|y|\)">\(|y|\)</span> times <span class="math" data-tex="\(e^{-c|y|^2}\)">\(e^{-c|y|^2}\)</span> for some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, which is integrable. So all these derivatives may be taken under the integral sign (123D), and they are continuous by dominated convergence (123C). For the bound in (1), <span class="math" data-tex="\(\partial^\alpha_zk(t,z,y)=t^{-|\alpha|/2}P_\alpha((y-z)/\sqrt t)\,k\)">\(\partial^\alpha_zk(t,z,y)=t^{-|\alpha|/2}P_\alpha((y-z)/\sqrt t)\,k\)</span> with a polynomial <span class="math" data-tex="\(P_\alpha\)">\(P_\alpha\)</span>, and the substitution <span class="math" data-tex="\(y=z+\sqrt t\,w\)">\(y=z+\sqrt t\,w\)</span> gives <span class="math" data-tex="\(|\partial^\alpha_zQ^C_tF(z)|\le\sup|F|\,t^{-|\alpha|/2}\int|P_\alpha|\,d\gamma_C\)">\(|\partial^\alpha_zQ^C_tF(z)|\le\sup|F|\,t^{-|\alpha|/2}\int|P_\alpha|\,d\gamma_C\)</span>. For (2), <span class="math" data-tex="\(\nabla_zk=t^{-1}C^{-1}(y-z)\,k\)">\(\nabla_zk=t^{-1}C^{-1}(y-z)\,k\)</span>. For (3), with <span class="math" data-tex="\(v=y-z\)">\(v=y-z\)</span>,
+<span class="math math-display" data-tex="\[
+\partial_t\log g_{tC}(v)=-\frac d{2t}+\frac{\langle v,C^{-1}v\rangle}{2t^2},
+\]">\[
+\partial_t\log g_{tC}(v)=-\frac d{2t}+\frac{\langle v,C^{-1}v\rangle}{2t^2},
+\]</span>
+and, with <span class="math" data-tex="\(c_i=(C^{-1}v)_i\)">\(c_i=(C^{-1}v)_i\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{\partial_i\partial_jg_{tC}(v)}{g_{tC}(v)}=\frac{c_ic_j}{t^2}-\frac{(C^{-1})_{ij}}t ,
+\]">\[
+\frac{\partial_i\partial_jg_{tC}(v)}{g_{tC}(v)}=\frac{c_ic_j}{t^2}-\frac{(C^{-1})_{ij}}t ,
+\]</span>
+so <span class="math" data-tex="\(\frac12\sum_{i,j}C_{ij}\partial_i\partial_jg_{tC}=\partial_tg_{tC}\)">\(\frac12\sum_{i,j}C_{ij}\partial_i\partial_jg_{tC}=\partial_tg_{tC}\)</span>; since <span class="math" data-tex="\(\partial_{z_i}\partial_{z_j}k=(\partial_i\partial_jg_{tC})(y-z)\)">\(\partial_{z_i}\partial_{z_j}k=(\partial_i\partial_jg_{tC})(y-z)\)</span>, integrating against <span class="math" data-tex="\(F(y)\)">\(F(y)\)</span> gives (3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.3.</strong> Let <span class="math" data-tex="\(H\in C^2_b(\mathbf R^d)\)">\(H\in C^2_b(\mathbf R^d)\)</span>. For every <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(\tau\mapsto Q^C_\tau H(z)\)">\(\tau\mapsto Q^C_\tau H(z)\)</span> is continuously differentiable on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> with derivative <span class="math" data-tex="\(Q^C_\tau(\mathcal L_CH)(z)\)">\(Q^C_\tau(\mathcal L_CH)(z)\)</span>. In particular <span class="math" data-tex="\(|Q^C_\tau H(z)-H(z)|\le\tau\sup|\mathcal L_CH|\)">\(|Q^C_\tau H(z)-H(z)|\le\tau\sup|\mathcal L_CH|\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(\tau\ge\tau_0&gt;0\)">\(\tau\ge\tau_0&gt;0\)</span>, the derivative of <span class="math" data-tex="\(H(z+\sqrt\tau\,w)\)">\(H(z+\sqrt\tau\,w)\)</span> in <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is <span class="math" data-tex="\(\langle\nabla H(z+\sqrt\tau\,w),w\rangle/(2\sqrt\tau)\)">\(\langle\nabla H(z+\sqrt\tau\,w),w\rangle/(2\sqrt\tau)\)</span>, bounded by <span class="math" data-tex="\(\sup|\nabla H|\,|w|/(2\sqrt{\tau_0})\)">\(\sup|\nabla H|\,|w|/(2\sqrt{\tau_0})\)</span>. By 123D and Lemma 1.1 with <span class="math" data-tex="\(\psi(w)=\partial_iH(z+\sqrt\tau\,w)\)">\(\psi(w)=\partial_iH(z+\sqrt\tau\,w)\)</span>, <span class="math" data-tex="\(\partial_j\psi=\sqrt\tau\,\partial_j\partial_iH(z+\sqrt\tau\,w)\)">\(\partial_j\psi=\sqrt\tau\,\partial_j\partial_iH(z+\sqrt\tau\,w)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac d{d\tau}Q^C_\tau H(z)&amp;=\frac12\sum_{i,j}C_{ij}\,Q^C_\tau(\partial_i\partial_jH)(z)\\
+&amp;=Q^C_\tau(\mathcal L_CH)(z),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac d{d\tau}Q^C_\tau H(z)&amp;=\frac12\sum_{i,j}C_{ij}\,Q^C_\tau(\partial_i\partial_jH)(z)\\
+&amp;=Q^C_\tau(\mathcal L_CH)(z),
+\end{aligned}
+\]</span>
+the factors <span class="math" data-tex="\(\sqrt\tau\)">\(\sqrt\tau\)</span> cancelling.
+The right side is continuous on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> by dominated convergence, because <span class="math" data-tex="\(\mathcal L_CH\)">\(\mathcal L_CH\)</span> is bounded and continuous, and <span class="math" data-tex="\(\tau\mapsto Q^C_\tau H(z)\)">\(\tau\mapsto Q^C_\tau H(z)\)</span> is continuous at <span class="math" data-tex="\(0\)">\(0\)</span> for the same reason. By the mean value theorem, the derivative at <span class="math" data-tex="\(0\)">\(0\)</span> exists and equals <span class="math" data-tex="\(\mathcal L_CH(z)\)">\(\mathcal L_CH(z)\)</span>, and the bound follows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-a-moving-function-under-the-semigroup">4. A moving function under the semigroup</h2>
+<p><strong>Lemma 1.4</strong> (chain rule). Let <span class="math" data-tex="\(U\subseteq\mathbf R^k\)">\(U\subseteq\mathbf R^k\)</span> be open, <span class="math" data-tex="\(\Psi\in C^2(U)\)">\(\Psi\in C^2(U)\)</span>, and <span class="math" data-tex="\(F=(F_1,\dots,F_k)\in C^2(\mathbf R^d,U)\)">\(F=(F_1,\dots,F_k)\in C^2(\mathbf R^d,U)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal L_C(\Psi\circ F)={}&amp;\sum_i\Psi_i\,\mathcal L_CF_i\\
+&amp;+\frac12\sum_{i,j}\Psi_{ij}\,\Gamma_C(F_i,F_j),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal L_C(\Psi\circ F)={}&amp;\sum_i\Psi_i\,\mathcal L_CF_i\\
+&amp;+\frac12\sum_{i,j}\Psi_{ij}\,\Gamma_C(F_i,F_j),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\Psi_i=\partial_i\Psi(F)\)">\(\Psi_i=\partial_i\Psi(F)\)</span> and <span class="math" data-tex="\(\Psi_{ij}=\partial_i\partial_j\Psi(F)\)">\(\Psi_{ij}=\partial_i\partial_j\Psi(F)\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\partial_a(\Psi\circ F)=\sum_i\Psi_i\,\partial_aF_i\)">\(\partial_a(\Psi\circ F)=\sum_i\Psi_i\,\partial_aF_i\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_b\partial_a(\Psi\circ F)={}&amp;\sum_i\Psi_i\,\partial_b\partial_aF_i\\
+&amp;+\sum_{i,j}\Psi_{ij}\,\partial_aF_i\,\partial_bF_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_b\partial_a(\Psi\circ F)={}&amp;\sum_i\Psi_i\,\partial_b\partial_aF_i\\
+&amp;+\sum_{i,j}\Psi_{ij}\,\partial_aF_i\,\partial_bF_j .
+\end{aligned}
+\]</span>
+Multiply by <span class="math" data-tex="\(\frac12C_{ab}\)">\(\frac12C_{ab}\)</span> and sum over <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.5.</strong> Let <span class="math" data-tex="\(0\le a&lt;b\)">\(0\le a&lt;b\)</span>, and let <span class="math" data-tex="\(H\)">\(H\)</span> be a function on <span class="math" data-tex="\([a,b]\times\mathbf R^d\)">\([a,b]\times\mathbf R^d\)</span>, written <span class="math" data-tex="\(H_u(z)\)">\(H_u(z)\)</span>, such that <span class="math" data-tex="\(H_u\in C^2_b(\mathbf R^d)\)">\(H_u\in C^2_b(\mathbf R^d)\)</span> for each <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(\partial_uH_u\)">\(\partial_uH_u\)</span>, <span class="math" data-tex="\(\nabla H_u\)">\(\nabla H_u\)</span> and <span class="math" data-tex="\(\nabla^2H_u\)">\(\nabla^2H_u\)</span> exist, are continuous on <span class="math" data-tex="\([a,b]\times\mathbf R^d\)">\([a,b]\times\mathbf R^d\)</span> and are bounded there. Then for every <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(u\mapsto Q^C_{b-u}H_u(z)\)">\(u\mapsto Q^C_{b-u}H_u(z)\)</span> is continuously differentiable on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, with derivative
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac d{du}Q^C_{b-u}H_u(z)\\
+&amp;\quad=Q^C_{b-u}\bigl(\partial_uH_u-\mathcal L_CH_u\bigr)(z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac d{du}Q^C_{b-u}H_u(z)\\
+&amp;\quad=Q^C_{b-u}\bigl(\partial_uH_u-\mathcal L_CH_u\bigr)(z).
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(u+\eta\)">\(u+\eta\)</span> in <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;Q^C_{b-u-\eta}H_{u+\eta}-Q^C_{b-u}H_u\\
+&amp;\quad=Q^C_{b-u-\eta}(H_{u+\eta}-H_u)\\
+&amp;\qquad+\bigl(Q^C_{b-u-\eta}H_u-Q^C_{b-u}H_u\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;Q^C_{b-u-\eta}H_{u+\eta}-Q^C_{b-u}H_u\\
+&amp;\quad=Q^C_{b-u-\eta}(H_{u+\eta}-H_u)\\
+&amp;\qquad+\bigl(Q^C_{b-u-\eta}H_u-Q^C_{b-u}H_u\bigr).
+\end{aligned}
+\]</span>
+By the mean value theorem, <span class="math" data-tex="\((H_{u+\eta}-H_u)(y)/\eta\)">\((H_{u+\eta}-H_u)(y)/\eta\)</span> is bounded by <span class="math" data-tex="\(\sup|\partial_uH|\)">\(\sup|\partial_uH|\)</span> and tends to <span class="math" data-tex="\(\partial_uH_u(y)\)">\(\partial_uH_u(y)\)</span>, locally uniformly in <span class="math" data-tex="\(y\)">\(y\)</span> by the uniform continuity of <span class="math" data-tex="\(\partial_uH\)">\(\partial_uH\)</span> on compact sets. So the first term divided by <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, which is the integral of <span class="math" data-tex="\((H_{u+\eta}-H_u)(z+\sqrt{b-u-\eta}\,w)/\eta\)">\((H_{u+\eta}-H_u)(z+\sqrt{b-u-\eta}\,w)/\eta\)</span> against <span class="math" data-tex="\(\gamma_C\)">\(\gamma_C\)</span>, tends to <span class="math" data-tex="\(Q^C_{b-u}(\partial_uH_u)(z)\)">\(Q^C_{b-u}(\partial_uH_u)(z)\)</span> by dominated convergence. The second term divided by <span class="math" data-tex="\(\eta\)">\(\eta\)</span> tends to <span class="math" data-tex="\(-Q^C_{b-u}(\mathcal L_CH_u)(z)\)">\(-Q^C_{b-u}(\mathcal L_CH_u)(z)\)</span> by Proposition 1.3. The derivative <span class="math" data-tex="\(Q^C_{b-u}(\partial_uH_u-\mathcal L_CH_u)(z)\)">\(Q^C_{b-u}(\partial_uH_u-\mathcal L_CH_u)(z)\)</span> is continuous in <span class="math" data-tex="\(u\)">\(u\)</span>, again by dominated convergence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-gradient-bound">5. The gradient bound</h2>
+<p><strong>Lemma 1.6</strong> (rearrangement). Let <span class="math" data-tex="\(G:\mathbf R\to[0,1]\)">\(G:\mathbf R\to[0,1]\)</span> be measurable and <span class="math" data-tex="\(p=\int G\,d\gamma_1\)">\(p=\int G\,d\gamma_1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\int s\,G(s)\,d\gamma_1(s)\le I(p).
+\]">\[
+\int s\,G(s)\,d\gamma_1(s)\le I(p).
+\]</span></p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(p=0\)">\(p=0\)</span> or <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, then <span class="math" data-tex="\(G=0\)">\(G=0\)</span> or <span class="math" data-tex="\(G=1\)">\(G=1\)</span> almost everywhere and both sides are <span class="math" data-tex="\(0\)">\(0\)</span>. Otherwise let <span class="math" data-tex="\(a=\Phi^{-1}(1-p)\)">\(a=\Phi^{-1}(1-p)\)</span>, so that <span class="math" data-tex="\(\gamma_1((a,\infty))=p\)">\(\gamma_1((a,\infty))=p\)</span>, and put <span class="math" data-tex="\(G&#x27;=G-\mathbf 1_{(a,\infty)}\)">\(G&#x27;=G-\mathbf 1_{(a,\infty)}\)</span>, so that <span class="math" data-tex="\(\int G&#x27;\,d\gamma_1=0\)">\(\int G&#x27;\,d\gamma_1=0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\int s\,G&#x27;\,d\gamma_1=\int(s-a)\,G&#x27;\,d\gamma_1\le0,
+\]">\[
+\int s\,G&#x27;\,d\gamma_1=\int(s-a)\,G&#x27;\,d\gamma_1\le0,
+\]</span>
+because the integrand is at most <span class="math" data-tex="\(0\)">\(0\)</span> both for <span class="math" data-tex="\(s&gt;a\)">\(s&gt;a\)</span> (where <span class="math" data-tex="\(G-1\le0\)">\(G-1\le0\)</span>) and for <span class="math" data-tex="\(s\le a\)">\(s\le a\)</span> (where <span class="math" data-tex="\(G\ge0\)">\(G\ge0\)</span>). Finally <span class="math" data-tex="\(\int_a^\infty s\varphi(s)\,ds=\varphi(a)=I(1-p)=I(p)\)">\(\int_a^\infty s\varphi(s)\,ds=\varphi(a)=I(1-p)=I(p)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.7</strong> (gradient bound). Let <span class="math" data-tex="\(f:\mathbf R^n\to[0,1]\)">\(f:\mathbf R^n\to[0,1]\)</span> be measurable and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Then for every <span class="math" data-tex="\(z\in\mathbf R^n\)">\(z\in\mathbf R^n\)</span>
+<span class="math math-display" data-tex="\[
+|\nabla Q_tf(z)|\le t^{-1/2}\,I\bigl(Q_tf(z)\bigr).
+\]">\[
+|\nabla Q_tf(z)|\le t^{-1/2}\,I\bigl(Q_tf(z)\bigr).
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(e\)">\(e\)</span> be a unit vector and <span class="math" data-tex="\(O\)">\(O\)</span> an orthogonal matrix with <span class="math" data-tex="\(Oe_1=e\)">\(Oe_1=e\)</span>. By Proposition 1.2(2) with <span class="math" data-tex="\(C=I_n\)">\(C=I_n\)</span>, and the change of variables <span class="math" data-tex="\(w=Ow&#x27;\)">\(w=Ow&#x27;\)</span> (263A), under which <span class="math" data-tex="\(\gamma_n\)">\(\gamma_n\)</span> is invariant,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle\nabla Q_tf(z),e\rangle\\
+&amp;\quad=t^{-1/2}\int f(z+\sqrt t\,Ow&#x27;)\,w&#x27;_1\,d\gamma_n(w&#x27;).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle\nabla Q_tf(z),e\rangle\\
+&amp;\quad=t^{-1/2}\int f(z+\sqrt t\,Ow&#x27;)\,w&#x27;_1\,d\gamma_n(w&#x27;).
+\end{aligned}
+\]</span>
+By Fubini's theorem this is <span class="math" data-tex="\(t^{-1/2}\int s\,G(s)\,d\gamma_1(s)\)">\(t^{-1/2}\int s\,G(s)\,d\gamma_1(s)\)</span>, where <span class="math" data-tex="\(G(s)=\int f(z+\sqrt t\,O(s,w&#x27;&#x27;))\,d\gamma_{n-1}(w&#x27;&#x27;)\)">\(G(s)=\int f(z+\sqrt t\,O(s,w&#x27;&#x27;))\,d\gamma_{n-1}(w&#x27;&#x27;)\)</span> takes values in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and <span class="math" data-tex="\(\int G\,d\gamma_1=Q_tf(z)\)">\(\int G\,d\gamma_1=Q_tf(z)\)</span>. By Lemma 1.6, <span class="math" data-tex="\(\langle\nabla Q_tf(z),e\rangle\le t^{-1/2}I(Q_tf(z))\)">\(\langle\nabla Q_tf(z),e\rangle\le t^{-1/2}I(Q_tf(z))\)</span>. Taking <span class="math" data-tex="\(e\)">\(e\)</span> in the direction of <span class="math" data-tex="\(\nabla Q_tf(z)\)">\(\nabla Q_tf(z)\)</span> proves the bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(f=\mathbf 1_{\{x_1\le a\}}\)">\(f=\mathbf 1_{\{x_1\le a\}}\)</span>, <span class="math" data-tex="\(Q_tf(z)=\Phi((a-z_1)/\sqrt t)\)">\(Q_tf(z)=\Phi((a-z_1)/\sqrt t)\)</span> and <span class="math" data-tex="\(|\nabla Q_tf(z)|=t^{-1/2}\varphi((a-z_1)/\sqrt t)\)">\(|\nabla Q_tf(z)|=t^{-1/2}\varphi((a-z_1)/\sqrt t)\)</span>, which is <span class="math" data-tex="\(t^{-1/2}I(Q_tf(z))\)">\(t^{-1/2}I(Q_tf(z))\)</span>: the bound is attained by half-spaces. Applied with <span class="math" data-tex="\(t\)">\(t\)</span> replaced by <span class="math" data-tex="\(\sigma^2t\)">\(\sigma^2t\)</span>, Proposition 1.7 gives <span class="math" data-tex="\(|\nabla Q_{\sigma^2t}f|\le(\sigma^2t)^{-1/2}I(Q_{\sigma^2t}f)\)">\(|\nabla Q_{\sigma^2t}f|\le(\sigma^2t)^{-1/2}I(Q_{\sigma^2t}f)\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>1.1</strong> (easy). Show that <span class="math" data-tex="\(I\)">\(I\)</span> is concave on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, with <span class="math" data-tex="\(I&#x27;(p)=-\Phi^{-1}(p)\)">\(I&#x27;(p)=-\Phi^{-1}(p)\)</span> and <span class="math" data-tex="\(I(p)I&#x27;&#x27;(p)=-1\)">\(I(p)I&#x27;&#x27;(p)=-1\)</span> for <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>.</p>
+<p><strong>1.2</strong> (easy). Show that <span class="math" data-tex="\(Q^C_t\)">\(Q^C_t\)</span> maps functions with values in an interval <span class="math" data-tex="\([\alpha,\beta]\)">\([\alpha,\beta]\)</span> to functions with values in <span class="math" data-tex="\([\alpha,\beta]\)">\([\alpha,\beta]\)</span>, and that <span class="math" data-tex="\(\int Q^C_tF\,d\gamma_C\)">\(\int Q^C_tF\,d\gamma_C\)</span> need not equal <span class="math" data-tex="\(\int F\,d\gamma_C\)">\(\int F\,d\gamma_C\)</span> for the heat semigroup (compare <span class="math" data-tex="\(F=\mathbf 1_{[-1,1]}\)">\(F=\mathbf 1_{[-1,1]}\)</span> on <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span>).</p>
+<p><strong>1.3</strong> (medium). Show that <span class="math" data-tex="\(Q^C_sQ^C_t=Q^C_{s+t}\)">\(Q^C_sQ^C_t=Q^C_{s+t}\)</span> for <span class="math" data-tex="\(s,t\ge0\)">\(s,t\ge0\)</span>. (Hint: compute <span class="math" data-tex="\(g_{sC}*g_{tC}\)">\(g_{sC}*g_{tC}\)</span> by completing the square, or by Fourier transforms.)</p>
+<p><strong>1.4</strong> (medium). Let <span class="math" data-tex="\(f=\mathbf 1_{[a,b]}\)">\(f=\mathbf 1_{[a,b]}\)</span> on <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span> with <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>. Verify Proposition 1.7 directly: with <span class="math" data-tex="\(\alpha=(a-z)/\sqrt t&lt;\beta=(b-z)/\sqrt t\)">\(\alpha=(a-z)/\sqrt t&lt;\beta=(b-z)/\sqrt t\)</span>, show <span class="math" data-tex="\(|\varphi(\alpha)-\varphi(\beta)|\le I(\Phi(\beta)-\Phi(\alpha))\)">\(|\varphi(\alpha)-\varphi(\beta)|\le I(\Phi(\beta)-\Phi(\alpha))\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>1.1.</strong> With <span class="math" data-tex="\(x=\Phi^{-1}(p)\)">\(x=\Phi^{-1}(p)\)</span>, <span class="math" data-tex="\(dx/dp=1/\varphi(x)\)">\(dx/dp=1/\varphi(x)\)</span> and <span class="math" data-tex="\(I=\varphi(x)\)">\(I=\varphi(x)\)</span>, so <span class="math" data-tex="\(I&#x27;(p)=\varphi&#x27;(x)/\varphi(x)=-x\)">\(I&#x27;(p)=\varphi&#x27;(x)/\varphi(x)=-x\)</span> and <span class="math" data-tex="\(I&#x27;&#x27;(p)=-1/\varphi(x)=-1/I(p)&lt;0\)">\(I&#x27;&#x27;(p)=-1/\varphi(x)=-1/I(p)&lt;0\)</span>. Continuity at <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> gives concavity on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<p><strong>1.2.</strong> <span class="math" data-tex="\(\gamma_C\)">\(\gamma_C\)</span> is a probability measure, so <span class="math" data-tex="\(Q^C_tF(z)\)">\(Q^C_tF(z)\)</span> is an average of values of <span class="math" data-tex="\(F\)">\(F\)</span>. For <span class="math" data-tex="\(F=\mathbf 1_{[-1,1]}\)">\(F=\mathbf 1_{[-1,1]}\)</span> and <span class="math" data-tex="\(C=1\)">\(C=1\)</span>, <span class="math" data-tex="\(\int Q_tF\,d\gamma_1\)">\(\int Q_tF\,d\gamma_1\)</span> is the probability that <span class="math" data-tex="\(|X+\sqrt t\,W|\le1\)">\(|X+\sqrt t\,W|\le1\)</span> for independent standard Gaussian <span class="math" data-tex="\(X,W\)">\(X,W\)</span>; as <span class="math" data-tex="\(X+\sqrt t\,W\)">\(X+\sqrt t\,W\)</span> is centred Gaussian with variance <span class="math" data-tex="\(1+t\)">\(1+t\)</span> (Exercise 1.3), this is <span class="math" data-tex="\(\gamma_1([-a,a])\)">\(\gamma_1([-a,a])\)</span> with <span class="math" data-tex="\(a=(1+t)^{-1/2}\)">\(a=(1+t)^{-1/2}\)</span>, which is smaller than <span class="math" data-tex="\(\gamma_1([-1,1])\)">\(\gamma_1([-1,1])\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>.</p>
+<p><strong>1.3.</strong> Write <span class="math" data-tex="\(\langle a,b\rangle_C=\langle a,C^{-1}b\rangle\)">\(\langle a,b\rangle_C=\langle a,C^{-1}b\rangle\)</span>. The exponent of <span class="math" data-tex="\(g_{sC}(y)g_{tC}(x-y)\)">\(g_{sC}(y)g_{tC}(x-y)\)</span> is <span class="math" data-tex="\(-\frac12\)">\(-\frac12\)</span> times
+<span class="math math-display" data-tex="\[
+\frac{\langle y,y\rangle_C}s+\frac{\langle x-y,x-y\rangle_C}t ,
+\]">\[
+\frac{\langle y,y\rangle_C}s+\frac{\langle x-y,x-y\rangle_C}t ,
+\]</span>
+and completing the square in <span class="math" data-tex="\(y\)">\(y\)</span>, with <span class="math" data-tex="\(y_0=\frac s{s+t}x\)">\(y_0=\frac s{s+t}x\)</span>, turns this into
+<span class="math math-display" data-tex="\[
+\frac{s+t}{st}\langle y-y_0,y-y_0\rangle_C+\frac{\langle x,x\rangle_C}{s+t} .
+\]">\[
+\frac{s+t}{st}\langle y-y_0,y-y_0\rangle_C+\frac{\langle x,x\rangle_C}{s+t} .
+\]</span>
+Integrating in <span class="math" data-tex="\(y\)">\(y\)</span> gives <span class="math" data-tex="\(g_{sC}*g_{tC}=g_{(s+t)C}\)">\(g_{sC}*g_{tC}=g_{(s+t)C}\)</span>. Since <span class="math" data-tex="\(Q^C_tF(z+y)=\int F(z+x)\,g_{tC}(x-y)\,dx\)">\(Q^C_tF(z+y)=\int F(z+x)\,g_{tC}(x-y)\,dx\)</span>, Fubini's theorem gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;Q^C_sQ^C_tF(z)\\
+&amp;\quad=\int F(z+x)\,(g_{sC}*g_{tC})(x)\,dx\\
+&amp;\quad=Q^C_{s+t}F(z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;Q^C_sQ^C_tF(z)\\
+&amp;\quad=\int F(z+x)\,(g_{sC}*g_{tC})(x)\,dx\\
+&amp;\quad=Q^C_{s+t}F(z).
+\end{aligned}
+\]</span></p>
+<p><strong>1.4.</strong> <span class="math" data-tex="\(Q_tf(z)=\Phi(\beta)-\Phi(\alpha)=p\)">\(Q_tf(z)=\Phi(\beta)-\Phi(\alpha)=p\)</span> and <span class="math" data-tex="\((Q_tf)&#x27;(z)=t^{-1/2}(\varphi(\alpha)-\varphi(\beta))\)">\((Q_tf)&#x27;(z)=t^{-1/2}(\varphi(\alpha)-\varphi(\beta))\)</span>. By Lemma 1.6 applied to <span class="math" data-tex="\(G=\mathbf 1_{[\alpha,\beta]}\)">\(G=\mathbf 1_{[\alpha,\beta]}\)</span> and to <span class="math" data-tex="\(G(s)=\mathbf 1_{[\alpha,\beta]}(-s)\)">\(G(s)=\mathbf 1_{[\alpha,\beta]}(-s)\)</span>, <span class="math" data-tex="\(\pm\int_\alpha^\beta s\varphi(s)\,ds=\pm(\varphi(\alpha)-\varphi(\beta))\le I(p)\)">\(\pm\int_\alpha^\beta s\varphi(s)\,ds=\pm(\varphi(\alpha)-\varphi(\beta))\le I(p)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[E] A. Ehrhard, <em>Symétrisation dans l'espace de Gauss</em>, Mathematica Scandinavica 53 (1983), 281–301. https://journals.msp.org/mscand/article/view/1636</li>
+<li>[NP] J. Neeman and G. Paouris, <em>An interpolation proof of Ehrhard's inequality</em>, arXiv:1605.07233. https://arxiv.org/abs/1605.07233</li>
+<li>[vH] R. van Handel, <em>The Borell–Ehrhard game</em>, Probability Theory and Related Fields 170 (2018), 555–585; arXiv:1605.00285. https://arxiv.org/abs/1605.00285</li>
+<li>D. H. Fremlin, <em>Measure Theory</em>, volumes 1 and 2, in the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

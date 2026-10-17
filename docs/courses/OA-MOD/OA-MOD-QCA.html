@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quotient cocycles and reconstruction · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/quotient-cocycles-and-reconstruction.md">Editable Markdown</a></nav><article class="lesson"><h1 id="quotient-cocycles-and-reconstruction">Quotient cocycles and reconstruction</h1>
+<p>Passing from a group to a quotient need not produce an action of the quotient. A chosen representative of a product can differ from the product of the representatives by a nontrivial subgroup element. This lesson keeps that element, the subgroup's unitary cocycle, and the order of every coefficient. It then proves how a relative commutant absorbs the resulting defects and how a correction on the quotient recovers the cocycle on the entire group.</p>
+<p>All algebras below are unital von Neumann algebras, all inclusions preserve the unit, and all automorphisms are normal. The algebraic arguments do not require factoriality, amenability, injectivity, or a splitting of the group extension. The countable discrete group setting suffices for the intended application. No existence of a cohomology correction is assumed until it is explicitly stated in Section 7.</p>
+<h2 id="a-group-that-records-a-cocycle-action"><span id="OA-MOD-QCA-01"></span><span id="oa-mod-qca-01"></span>A group that records a cocycle action</h2>
+<p>A <strong>normalized cocycle action</strong> of a group <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span> consists of automorphisms <span class="math" data-tex="\(\alpha_g\)">\(\alpha_g\)</span> and unitaries <span class="math" data-tex="\(v(g,h)\in M\)">\(v(g,h)\in M\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_e=\operatorname{id},\qquad v(e,g)=v(g,e)=1,\\
+\alpha_g\alpha_h=\operatorname{Ad}(v(g,h))\alpha_{gh},\\
+v(g,h)v(gh,k)=\alpha_g(v(h,k))v(g,hk).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\alpha_e=\operatorname{id},\qquad v(e,g)=v(g,e)=1,\\
+\alpha_g\alpha_h=\operatorname{Ad}(v(g,h))\alpha_{gh},\\
+v(g,h)v(gh,k)=\alpha_g(v(h,k))v(g,hk).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The second line alone would allow a central associativity defect. The third line requires exact equality of unitaries.</p>
+<p><strong>Proposition.</strong> On <span class="math" data-tex="\(\mathcal U(M)\times G\)">\(\mathcal U(M)\times G\)</span>, the multiplication</p>
+<span class="math math-display" data-tex="\[
+(a,g)(b,h)=(a\alpha_g(b)v(g,h),gh)
+\tag{1.2}
+\]">\[
+(a,g)(b,h)=(a\alpha_g(b)v(g,h),gh)
+\tag{1.2}
+\]</span>
+<p>defines a group. If <span class="math" data-tex="\(L_g=(1,g)\)">\(L_g=(1,g)\)</span> and <span class="math" data-tex="\(a\in\mathcal U(M)\)">\(a\in\mathcal U(M)\)</span> is identified with <span class="math" data-tex="\((a,e)\)">\((a,e)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+L_g a=\alpha_g(a)L_g,\qquad
+L_gL_h=v(g,h)L_{gh}.
+\tag{1.3}
+\]">\[
+L_g a=\alpha_g(a)L_g,\qquad
+L_gL_h=v(g,h)L_{gh}.
+\tag{1.3}
+\]</span>
+<p>The coefficient in an expression <span class="math" data-tex="\(aL_g\)">\(aL_g\)</span> is unique.</p>
+<p><strong>Proof.</strong> The coefficients of the two bracketings of three factors are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;a\alpha_g(b)v(g,h)\alpha_{gh}(c)v(gh,k),\\
+&amp;a\alpha_g(b)\alpha_g\alpha_h(c)\alpha_g(v(h,k))v(g,hk).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;a\alpha_g(b)v(g,h)\alpha_{gh}(c)v(gh,k),\\
+&amp;a\alpha_g(b)\alpha_g\alpha_h(c)\alpha_g(v(h,k))v(g,hk).
+\end{aligned}
+\]</span>
+<p>Replace <span class="math" data-tex="\(\alpha_g\alpha_h(c)\)">\(\alpha_g\alpha_h(c)\)</span> by
+<span class="math" data-tex="\(v(g,h)\alpha_{gh}(c)v(g,h)^*\)">\(v(g,h)\alpha_{gh}(c)v(g,h)^*\)</span> in the second expression. The last line of (1.1) cancels the remaining <span class="math" data-tex="\(v(g,h)^*\)">\(v(g,h)^*\)</span>, producing the first expression. Thus multiplication is associative. The identity is <span class="math" data-tex="\((1,e)\)">\((1,e)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+(a,g)^{-1}
+=\bigl(\alpha_g^{-1}(a^*v(g,g^{-1})^*),g^{-1}\bigr).
+\tag{1.4}
+\]">\[
+(a,g)^{-1}
+=\bigl(\alpha_g^{-1}(a^*v(g,g^{-1})^*),g^{-1}\bigr).
+\tag{1.4}
+\]</span>
+<p>Multiplication on the right gives the identity directly. Every element has such a right inverse. In any associative monoid with that property, a right inverse <span class="math" data-tex="\(y\)">\(y\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, and a right inverse <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(y\)">\(y\)</span>, satisfy <span class="math" data-tex="\(x=x(yz)=(xy)z=z\)">\(x=x(yz)=(xy)z=z\)</span>; hence <span class="math" data-tex="\(yx=yz=1\)">\(yx=yz=1\)</span>. So (1.4) is also a left inverse. Equations (1.3) follow from (1.2), and uniqueness follows from equality of ordered pairs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This group is an algebraic device for tracking coefficients; no operator-algebraic crossed-product construction is needed in this proof.</p>
+<h2 id="a-section-and-its-subgroup-defect"><span id="OA-MOD-QCA-02"></span><span id="oa-mod-qca-02"></span>A section and its subgroup defect</h2>
+<p>Let <span class="math" data-tex="\(N\)">\(N\)</span> be a normal subgroup of <span class="math" data-tex="\(G\)">\(G\)</span>, let <span class="math" data-tex="\(P=G/N\)">\(P=G/N\)</span>, and choose a section <span class="math" data-tex="\(s:P\to G\)">\(s:P\to G\)</span> with <span class="math" data-tex="\(s(e)=e\)">\(s(e)=e\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m(p,q)=s(pq)^{-1}s(p)s(q)\in N,\\
+s(p)s(q)=s(pq)m(p,q),\\
+\sigma_n=\alpha_n,\qquad w(m,n)=v(m,n)\quad(m,n\in N).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+m(p,q)=s(pq)^{-1}s(p)s(q)\in N,\\
+s(p)s(q)=s(pq)m(p,q),\\
+\sigma_n=\alpha_n,\qquad w(m,n)=v(m,n)\quad(m,n\in N).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>The convention places the subgroup defect on the <strong>right</strong>.</p>
+<p><strong>Proposition.</strong> The section defects satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;m(pq,r)s(r)^{-1}m(p,q)s(r)\\
+&amp;\hspace{1cm}=m(p,qr)m(q,r).
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+&amp;m(pq,r)s(r)^{-1}m(p,q)s(r)\\
+&amp;\hspace{1cm}=m(p,qr)m(q,r).
+\end{aligned}
+\tag{2.2}
+\]</span>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c(p,q)&amp;=v(s(p),s(q))v(s(pq),m(p,q))^*,\\
+\delta(g,n)&amp;=v(g,g^{-1}ng)v(n,g)^*.
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+c(p,q)&amp;=v(s(p),s(q))v(s(pq),m(p,q))^*,\\
+\delta(g,n)&amp;=v(g,g^{-1}ng)v(n,g)^*.
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_{s(p)}L_{s(q)}=c(p,q)L_{s(pq)}L_{m(p,q)},\\
+L_nL_g=\delta(g,n)^*L_gL_{g^{-1}ng},\\
+\alpha_{s(p)}\alpha_{s(q)}
+=\operatorname{Ad}(c(p,q))\alpha_{s(pq)}\sigma_{m(p,q)}.
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+L_{s(p)}L_{s(q)}=c(p,q)L_{s(pq)}L_{m(p,q)},\\
+L_nL_g=\delta(g,n)^*L_gL_{g^{-1}ng},\\
+\alpha_{s(p)}\alpha_{s(q)}
+=\operatorname{Ad}(c(p,q))\alpha_{s(pq)}\sigma_{m(p,q)}.
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p>In particular <span class="math" data-tex="\(c(e,p)=c(p,e)=1\)">\(c(e,p)=c(p,e)=1\)</span>.</p>
+<p><strong>Proof.</strong> Expand <span class="math" data-tex="\((s(p)s(q))s(r)\)">\((s(p)s(q))s(r)\)</span> using (2.1), and move <span class="math" data-tex="\(m(p,q)\)">\(m(p,q)\)</span> past <span class="math" data-tex="\(s(r)\)">\(s(r)\)</span> by conjugation. The result is</p>
+<span class="math math-display" data-tex="\[
+s(pqr)m(pq,r)s(r)^{-1}m(p,q)s(r).
+\]">\[
+s(pqr)m(pq,r)s(r)^{-1}m(p,q)s(r).
+\]</span>
+<p>The other bracketing gives <span class="math" data-tex="\(s(pqr)m(p,qr)m(q,r)\)">\(s(pqr)m(p,qr)m(q,r)\)</span>. Cancel the common left factor to obtain (2.2). For the first identity in (2.4), the coefficient on the right is <span class="math" data-tex="\(c(p,q)v(s(pq),m(p,q))=v(s(p),s(q))\)">\(c(p,q)v(s(pq),m(p,q))=v(s(p),s(q))\)</span>; the group coordinates also agree. For the second, the right coefficient is
+<span class="math" data-tex="\(\delta(g,n)^*v(g,g^{-1}ng)=v(n,g)\)">\(\delta(g,n)^*v(g,g^{-1}ng)=v(n,g)\)</span>.
+For the last identity, apply (1.1) separately to <span class="math" data-tex="\((s(p),s(q))\)">\((s(p),s(q))\)</span> and to <span class="math" data-tex="\((s(pq),m(p,q))\)">\((s(pq),m(p,q))\)</span>; their products in <span class="math" data-tex="\(G\)">\(G\)</span> agree, and (2.3) gives the difference between their inner coefficients. This proves equality of the automorphisms on all of <span class="math" data-tex="\(M\)">\(M\)</span>. Finally <span class="math" data-tex="\(m(e,p)=m(p,e)=e\)">\(m(e,p)=m(p,e)=e\)</span>, so normalization follows from (1.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We call the data in the last line of (2.4) a <strong>quasi-cocycle action on the quotient</strong>. This phrase retains the maps <span class="math" data-tex="\(\sigma_{m(p,q)}\)">\(\sigma_{m(p,q)}\)</span>; it does not declare them to be the identity.</p>
+<h2 id="the-full-associator-including-the-subgroup-cocycle"><span id="OA-MOD-QCA-03"></span><span id="oa-mod-qca-03"></span>The full associator, including the subgroup cocycle</h2>
+<p>For <span class="math" data-tex="\(p,q,r\in P\)">\(p,q,r\in P\)</span>, abbreviate</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+n=s(r)^{-1}m(p,q)s(r),\\
+a=m(pq,r),\quad b=m(p,qr),\quad d=m(q,r),\\
+\kappa=an=bd.
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+n=s(r)^{-1}m(p,q)s(r),\\
+a=m(pq,r),\quad b=m(p,qr),\quad d=m(q,r),\\
+\kappa=an=bd.
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>The equality defining <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is (2.2).</p>
+<p><strong>Theorem.</strong> Without assuming <span class="math" data-tex="\(w=1\)">\(w=1\)</span>, the quotient coefficients obey</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;c(p,q)\alpha_{s(pq)}(\delta(s(r),m(p,q))^*)\\
+&amp;\qquad{}\cdot c(pq,r)\alpha_{s(pqr)}(w(a,n))\\
+&amp;=\alpha_{s(p)}(c(q,r))c(p,qr)
+\alpha_{s(pqr)}(w(b,d)).
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+&amp;c(p,q)\alpha_{s(pq)}(\delta(s(r),m(p,q))^*)\\
+&amp;\qquad{}\cdot c(pq,r)\alpha_{s(pqr)}(w(a,n))\\
+&amp;=\alpha_{s(p)}(c(q,r))c(p,qr)
+\alpha_{s(pqr)}(w(b,d)).
+\end{aligned}
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Apply the first identity of (2.4) to the first two factors of
+<span class="math" data-tex="\(L_{s(p)}L_{s(q)}L_{s(r)}\)">\(L_{s(p)}L_{s(q)}L_{s(r)}\)</span>. Apply the second identity to move
+<span class="math" data-tex="\(L_{m(p,q)}\)">\(L_{m(p,q)}\)</span> past <span class="math" data-tex="\(L_{s(r)}\)">\(L_{s(r)}\)</span>. Moving its coefficient to the left of
+<span class="math" data-tex="\(L_{s(pq)}\)">\(L_{s(pq)}\)</span>, and then using (2.4) once more, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;c(p,q)\alpha_{s(pq)}(\delta(s(r),m(p,q))^*)\\
+&amp;\qquad{}\cdot c(pq,r)L_{s(pqr)}L_aL_n.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;c(p,q)\alpha_{s(pq)}(\delta(s(r),m(p,q))^*)\\
+&amp;\qquad{}\cdot c(pq,r)L_{s(pqr)}L_aL_n.
+\end{aligned}
+\]</span>
+<p>Now <span class="math" data-tex="\(L_aL_n=w(a,n)L_\kappa\)">\(L_aL_n=w(a,n)L_\kappa\)</span>. Move <span class="math" data-tex="\(w(a,n)\)">\(w(a,n)\)</span> across
+<span class="math" data-tex="\(L_{s(pqr)}\)">\(L_{s(pqr)}\)</span>. The resulting expression is the left side of (3.2) times
+<span class="math" data-tex="\(L_{s(pqr)}L_\kappa\)">\(L_{s(pqr)}L_\kappa\)</span>.</p>
+<p>For the other bracketing, first replace <span class="math" data-tex="\(L_{s(q)}L_{s(r)}\)">\(L_{s(q)}L_{s(r)}\)</span> by
+<span class="math" data-tex="\(c(q,r)L_{s(qr)}L_d\)">\(c(q,r)L_{s(qr)}L_d\)</span>. Moving <span class="math" data-tex="\(c(q,r)\)">\(c(q,r)\)</span> past <span class="math" data-tex="\(L_{s(p)}\)">\(L_{s(p)}\)</span> and multiplying the two section representatives gives</p>
+<span class="math math-display" data-tex="\[
+\alpha_{s(p)}(c(q,r))c(p,qr)L_{s(pqr)}L_bL_d.
+\]">\[
+\alpha_{s(p)}(c(q,r))c(p,qr)L_{s(pqr)}L_bL_d.
+\]</span>
+<p>Replace <span class="math" data-tex="\(L_bL_d\)">\(L_bL_d\)</span> by <span class="math" data-tex="\(w(b,d)L_\kappa\)">\(w(b,d)L_\kappa\)</span> and move that coefficient left as before. Associativity from Section 1 and cancellation of the common right group element prove (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><img src="assets/quotient-cocycles-and-reconstruction.svg" alt="Two bracketings retain the subgroup cocycle before relative cancellation" /></p>
+<p><em>Both routes end at the same group element <span class="math" data-tex="\(s(pqr)\kappa\)">\(s(pqr)\kappa\)</span>. Their unitary coefficients contain the two generally different factors <span class="math" data-tex="\(w(a,n)\)">\(w(a,n)\)</span> and <span class="math" data-tex="\(w(b,d)\)">\(w(b,d)\)</span>. Equation (3.2) equates the complete ordered coefficients. Section 6 cancels these factors only after comparing two systems with the same subgroup and mixed coefficients.</em></p>
+<p>If <span class="math" data-tex="\(w=1\)">\(w=1\)</span>, the two final factors disappear. If the section is a homomorphism, every <span class="math" data-tex="\(m(p,q)=e\)">\(m(p,q)=e\)</span>, and (3.2) reduces to the usual cocycle identity. These are separate simplifications.</p>
+<h2 id="perturbing-the-action-without-losing-the-quotient-terms"><span id="OA-MOD-QCA-04"></span><span id="oa-mod-qca-04"></span>Perturbing the action without losing the quotient terms</h2>
+<p>Let <span class="math" data-tex="\(b_g\in\mathcal U(M)\)">\(b_g\in\mathcal U(M)\)</span>, with <span class="math" data-tex="\(b_e=1\)">\(b_e=1\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\gamma_g&amp;=\operatorname{Ad}(b_g)\alpha_g,\\
+V(g,h)&amp;=b_g\alpha_g(b_h)v(g,h)b_{gh}^*.
+\end{aligned}
+\tag{4.1}
+\]">\[
+\begin{aligned}
+\gamma_g&amp;=\operatorname{Ad}(b_g)\alpha_g,\\
+V(g,h)&amp;=b_g\alpha_g(b_h)v(g,h)b_{gh}^*.
+\end{aligned}
+\tag{4.1}
+\]</span>
+<p><strong>Proposition.</strong> These formulas define a normalized cocycle action. For the same section, its quotient coefficient is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_\gamma(p,q)
+={}&amp;b_{s(p)}\alpha_{s(p)}(b_{s(q)})c(p,q)\\
+&amp;{}\cdot\alpha_{s(pq)}(b_{m(p,q)}^*)b_{s(pq)}^*.
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+c_\gamma(p,q)
+={}&amp;b_{s(p)}\alpha_{s(p)}(b_{s(q)})c(p,q)\\
+&amp;{}\cdot\alpha_{s(pq)}(b_{m(p,q)}^*)b_{s(pq)}^*.
+\end{aligned}
+\tag{4.2}
+\]</span>
+<p>If <span class="math" data-tex="\(b_n=1\)">\(b_n=1\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>, the restriction <span class="math" data-tex="\((\sigma,w)\)">\((\sigma,w)\)</span> is unchanged, and the penultimate factor in (4.2) is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Proof.</strong> Direct composition of the maps in (4.1) gives
+<span class="math" data-tex="\(\gamma_g\gamma_h=\operatorname{Ad}(V(g,h))\gamma_{gh}\)">\(\gamma_g\gamma_h=\operatorname{Ad}(V(g,h))\gamma_{gh}\)</span>.
+For the cocycle identity, cancellation of <span class="math" data-tex="\(b_{gh}^*b_{gh}\)">\(b_{gh}^*b_{gh}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+V(g,h)V(gh,k)
+={}&amp;b_g\alpha_g(b_h)v(g,h)\alpha_{gh}(b_k)\\
+&amp;{}\cdot v(gh,k)b_{ghk}^*.
+\end{aligned}
+\]">\[
+\begin{aligned}
+V(g,h)V(gh,k)
+={}&amp;b_g\alpha_g(b_h)v(g,h)\alpha_{gh}(b_k)\\
+&amp;{}\cdot v(gh,k)b_{ghk}^*.
+\end{aligned}
+\]</span>
+<p>Replace <span class="math" data-tex="\(v(g,h)\alpha_{gh}(b_k)\)">\(v(g,h)\alpha_{gh}(b_k)\)</span> by
+<span class="math" data-tex="\(\alpha_g\alpha_h(b_k)v(g,h)\)">\(\alpha_g\alpha_h(b_k)v(g,h)\)</span>, and use (1.1). The result is</p>
+<span class="math math-display" data-tex="\[
+b_g\alpha_g(b_h\alpha_h(b_k)v(h,k))v(g,hk)b_{ghk}^*.
+\]">\[
+b_g\alpha_g(b_h\alpha_h(b_k)v(h,k))v(g,hk)b_{ghk}^*.
+\]</span>
+<p>Expanding <span class="math" data-tex="\(\gamma_g(V(h,k))V(g,hk)\)">\(\gamma_g(V(h,k))V(g,hk)\)</span> and cancelling the intervening
+<span class="math" data-tex="\(b_g^*b_g\)">\(b_g^*b_g\)</span> and <span class="math" data-tex="\(\alpha_g(b_{hk}^*b_{hk})\)">\(\alpha_g(b_{hk}^*b_{hk})\)</span> gives exactly this expression. Normalization follows directly.</p>
+<p>To prove (4.2), multiply <span class="math" data-tex="\(V(s(p),s(q))\)">\(V(s(p),s(q))\)</span> by <span class="math" data-tex="\(V(s(pq),m(p,q))^*\)">\(V(s(pq),m(p,q))^*\)</span>.
+Their <span class="math" data-tex="\(b_{s(p)s(q)}\)">\(b_{s(p)s(q)}\)</span> factors cancel, because
+<span class="math" data-tex="\(s(p)s(q)=s(pq)m(p,q)\)">\(s(p)s(q)=s(pq)m(p,q)\)</span>. The remaining factors are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;b_{s(p)}\alpha_{s(p)}(b_{s(q)})
+v(s(p),s(q))v(s(pq),m(p,q))^*\\
+&amp;\hspace{2cm}{}\cdot\alpha_{s(pq)}(b_{m(p,q)}^*)b_{s(pq)}^*,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;b_{s(p)}\alpha_{s(p)}(b_{s(q)})
+v(s(p),s(q))v(s(pq),m(p,q))^*\\
+&amp;\hspace{2cm}{}\cdot\alpha_{s(pq)}(b_{m(p,q)}^*)b_{s(pq)}^*,
+\end{aligned}
+\]</span>
+<p>as asserted. Substitution in (4.1) proves the claim on <span class="math" data-tex="\(N\)">\(N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also an exact group isomorphism from the group of <span class="math" data-tex="\((\gamma,V)\)">\((\gamma,V)\)</span> to that of <span class="math" data-tex="\((\alpha,v)\)">\((\alpha,v)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+(u,g)\longmapsto (ub_g,g).
+\tag{4.3}
+\]">\[
+(u,g)\longmapsto (ub_g,g).
+\tag{4.3}
+\]</span>
+<p>Indeed, the image of a product has coefficient
+<span class="math" data-tex="\(u b_g\alpha_g(t b_h)v(g,h)\)">\(u b_g\alpha_g(t b_h)v(g,h)\)</span>, which is the product of the images of <span class="math" data-tex="\((u,g)\)">\((u,g)\)</span> and <span class="math" data-tex="\((t,h)\)">\((t,h)\)</span>. Its inverse sends <span class="math" data-tex="\((u,g)\)">\((u,g)\)</span> to <span class="math" data-tex="\((ub_g^*,g)\)">\((ub_g^*,g)\)</span>. Thus the perturbation changes the chosen lifts, with every group identity preserved.</p>
+<h2 id="matching-the-subgroup-through-flow-compatible-lifts"><span id="OA-MOD-QCA-05"></span><span id="oa-mod-qca-05"></span>Matching the subgroup through flow-compatible lifts</h2>
+<p>This section explains how identical characteristic coefficients give an exact comparison on a subgroup. Suppose <span class="math" data-tex="\(M\subset Q\)">\(M\subset Q\)</span> and a flow <span class="math" data-tex="\(\theta\)">\(\theta\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span> are supplied with fixed-point algebra <span class="math" data-tex="\(Q^\theta=M\)">\(Q^\theta=M\)</span>. Suppose two cocycle actions <span class="math" data-tex="\((\alpha,v^\alpha)\)">\((\alpha,v^\alpha)\)</span> and <span class="math" data-tex="\((\beta,v^\beta)\)">\((\beta,v^\beta)\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span> have extensions to <span class="math" data-tex="\(Q\)">\(Q\)</span>, denoted by the same letters, with the same <span class="math" data-tex="\(M\)">\(M\)</span>-valued cocycles. Let <span class="math" data-tex="\(N\le G\)">\(N\le G\)</span> and suppose there are unitaries <span class="math" data-tex="\(A_n,B_n\in Q\)">\(A_n,B_n\in Q\)</span>, normalized at <span class="math" data-tex="\(e\)">\(e\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_n=\operatorname{Ad}(A_n),\qquad
+\beta_n=\operatorname{Ad}(B_n)\quad\hbox{on }Q,\\
+A_mA_n=\mu(m,n)v^\alpha(m,n)A_{mn},\\
+B_mB_n=\mu(m,n)v^\beta(m,n)B_{mn},\\
+\theta_t(A_n)=c_t(n)A_n,\qquad
+\theta_t(B_n)=c_t(n)B_n.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\alpha_n=\operatorname{Ad}(A_n),\qquad
+\beta_n=\operatorname{Ad}(B_n)\quad\hbox{on }Q,\\
+A_mA_n=\mu(m,n)v^\alpha(m,n)A_{mn},\\
+B_mB_n=\mu(m,n)v^\beta(m,n)B_{mn},\\
+\theta_t(A_n)=c_t(n)A_n,\qquad
+\theta_t(B_n)=c_t(n)B_n.
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mu(m,n)\)">\(\mu(m,n)\)</span> and <span class="math" data-tex="\(c_t(n)\)">\(c_t(n)\)</span> are unitaries in <span class="math" data-tex="\(Z(Q)\)">\(Z(Q)\)</span>, identical for the two systems. These are hypotheses about the chosen lifts; a core construction and the existence of such lifts are not asserted in this section.</p>
+<p><strong>Proposition.</strong> The unitaries <span class="math" data-tex="\(t_n=A_nB_n^*\)">\(t_n=A_nB_n^*\)</span> belong to <span class="math" data-tex="\(M\)">\(M\)</span> and satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_n=\operatorname{Ad}(t_n)\beta_n,\\
+t_m\beta_m(t_n)v^\beta(m,n)t_{mn}^*
+=v^\alpha(m,n).
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+\alpha_n=\operatorname{Ad}(t_n)\beta_n,\\
+t_m\beta_m(t_n)v^\beta(m,n)t_{mn}^*
+=v^\alpha(m,n).
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>Consequently a perturbation of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, equal to <span class="math" data-tex="\(t_n^*\)">\(t_n^*\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>, makes both its automorphisms and its cocycle equal to those of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Proof.</strong> Centrality of <span class="math" data-tex="\(c_t(n)\)">\(c_t(n)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\theta_t(t_n)=c_t(n)A_nB_n^*c_t(n)^*=t_n.
+\]">\[
+\theta_t(t_n)=c_t(n)A_nB_n^*c_t(n)^*=t_n.
+\]</span>
+<p>The fixed-point hypothesis puts <span class="math" data-tex="\(t_n\)">\(t_n\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. Composition of the inner automorphisms gives the first identity in (5.2), first on <span class="math" data-tex="\(Q\)">\(Q\)</span> and hence on <span class="math" data-tex="\(M\)">\(M\)</span>. The left side of the second identity expands to</p>
+<span class="math math-display" data-tex="\[
+A_m A_n B_n^*B_m^*v^\beta(m,n)B_{mn}A_{mn}^*.
+\]">\[
+A_m A_n B_n^*B_m^*v^\beta(m,n)B_{mn}A_{mn}^*.
+\]</span>
+<p>The equation for <span class="math" data-tex="\(B_mB_n\)">\(B_mB_n\)</span> implies</p>
+<span class="math math-display" data-tex="\[
+B_n^*B_m^*v^\beta(m,n)B_{mn}=\mu(m,n)^*.
+\]">\[
+B_n^*B_m^*v^\beta(m,n)B_{mn}=\mu(m,n)^*.
+\]</span>
+<p>Move this central factor to the left and apply the equation for <span class="math" data-tex="\(A_mA_n\)">\(A_mA_n\)</span>. The result is <span class="math" data-tex="\(v^\alpha(m,n)\)">\(v^\alpha(m,n)\)</span>.</p>
+<p>For completeness, reversing this perturbation gives</p>
+<span class="math math-display" data-tex="\[
+t_m^*\alpha_m(t_n^*)v^\alpha(m,n)t_{mn}
+=v^\beta(m,n):
+\]">\[
+t_m^*\alpha_m(t_n^*)v^\alpha(m,n)t_{mn}
+=v^\beta(m,n):
+\]</span>
+<p>substitute <span class="math" data-tex="\(\alpha_m=\operatorname{Ad}(t_m)\beta_m\)">\(\alpha_m=\operatorname{Ad}(t_m)\beta_m\)</span> and the second identity of (5.2), and cancel <span class="math" data-tex="\(t_m^*t_m\)">\(t_m^*t_m\)</span>, <span class="math" data-tex="\(\beta_m(t_n^*)\beta_m(t_n)\)">\(\beta_m(t_n^*)\beta_m(t_n)\)</span>, and <span class="math" data-tex="\(t_{mn}^*t_{mn}\)">\(t_{mn}^*t_{mn}\)</span> in that order. Choose arbitrary unitaries, for example <span class="math" data-tex="\(1\)">\(1\)</span>, at elements outside <span class="math" data-tex="\(N\)">\(N\)</span>, and apply Section 4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This comparison preserves the possibly nontrivial common subgroup cocycle. It does not require a separate realization theorem to replace that cocycle by <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="a-genuine-quotient-cocycle-in-the-relative-commutant"><span id="OA-MOD-QCA-06"></span><span id="oa-mod-qca-06"></span>A genuine quotient cocycle in the relative commutant</h2>
+<p>Suppose <span class="math" data-tex="\(M\subset B\)">\(M\subset B\)</span>, and let <span class="math" data-tex="\(C=M&#x27;\cap B\)">\(C=M&#x27;\cap B\)</span>. Let <span class="math" data-tex="\((\alpha,v)\)">\((\alpha,v)\)</span> be a cocycle action on <span class="math" data-tex="\(M\)">\(M\)</span>, and let <span class="math" data-tex="\((\Gamma,V)\)">\((\Gamma,V)\)</span> be one on <span class="math" data-tex="\(B\)">\(B\)</span>. Assume</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma_g|_M=\alpha_g,\\
+V(n,g)=v(n,g),\qquad V(g,n)=v(g,n)
+\quad(n\in N,\ g\in G),\\
+\Gamma_n|_C=\operatorname{id}\quad(n\in N).
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+\Gamma_g|_M=\alpha_g,\\
+V(n,g)=v(n,g),\qquad V(g,n)=v(g,n)
+\quad(n\in N,\ g\in G),\\
+\Gamma_n|_C=\operatorname{id}\quad(n\in N).
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>The mixed equalities are equalities of unitaries in <span class="math" data-tex="\(B\)">\(B\)</span>, with the right sides in <span class="math" data-tex="\(M\)">\(M\)</span>. They are stronger than equality of the induced inner automorphisms.</p>
+<p>Use the same section as before, and put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d(p,q)&amp;=V(s(p),s(q))V(s(pq),m(p,q))^*,\\
+z(p,q)&amp;=d(p,q)c(p,q)^*,\\
+\varphi_p&amp;=\Gamma_{s(p)}|_C.
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+d(p,q)&amp;=V(s(p),s(q))V(s(pq),m(p,q))^*,\\
+z(p,q)&amp;=d(p,q)c(p,q)^*,\\
+\varphi_p&amp;=\Gamma_{s(p)}|_C.
+\end{aligned}
+\tag{6.2}
+\]</span>
+<p><strong>Theorem.</strong> The pair <span class="math" data-tex="\((\varphi,z)\)">\((\varphi,z)\)</span> is a normalized cocycle action of <span class="math" data-tex="\(P\)">\(P\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+z(p,q)\in\mathcal U(C),\\
+\varphi_p\varphi_q=\operatorname{Ad}(z(p,q))\varphi_{pq},\\
+z(p,q)z(pq,r)=\varphi_p(z(q,r))z(p,qr).
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+z(p,q)\in\mathcal U(C),\\
+\varphi_p\varphi_q=\operatorname{Ad}(z(p,q))\varphi_{pq},\\
+z(p,q)z(pq,r)=\varphi_p(z(q,r))z(p,qr).
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>No commutativity of <span class="math" data-tex="\(C\)">\(C\)</span>, and no triviality of <span class="math" data-tex="\(w=v|_{N\times N}\)">\(w=v|_{N\times N}\)</span>, is required.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\Gamma_g(M)=M\)">\(\Gamma_g(M)=M\)</span>, both <span class="math" data-tex="\(\Gamma_g\)">\(\Gamma_g\)</span> and its inverse preserve <span class="math" data-tex="\(M&#x27;\cap B\)">\(M&#x27;\cap B\)</span>. Thus <span class="math" data-tex="\(\varphi_p\)">\(\varphi_p\)</span> is a normal automorphism of <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>Apply the last equation in (2.4) to the two systems and restrict the <span class="math" data-tex="\(B\)">\(B\)</span>-system to <span class="math" data-tex="\(M\)">\(M\)</span>. It follows that</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ad}(d(p,q))\alpha_{s(pq)}\alpha_{m(p,q)}
+=\operatorname{Ad}(c(p,q))\alpha_{s(pq)}\alpha_{m(p,q)}.
+\]">\[
+\operatorname{Ad}(d(p,q))\alpha_{s(pq)}\alpha_{m(p,q)}
+=\operatorname{Ad}(c(p,q))\alpha_{s(pq)}\alpha_{m(p,q)}.
+\]</span>
+<p>The common automorphism on the right is onto <span class="math" data-tex="\(M\)">\(M\)</span>. Cancelling it shows
+<span class="math" data-tex="\(c(p,q)^*d(p,q)\in C\)">\(c(p,q)^*d(p,q)\in C\)</span>. Elements of <span class="math" data-tex="\(C\)">\(C\)</span> commute with the coefficient <span class="math" data-tex="\(c(p,q)\in M\)">\(c(p,q)\in M\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+z(p,q)=c(p,q)^*d(p,q)\in\mathcal U(C),
+\qquad d(p,q)=z(p,q)c(p,q).
+\tag{6.4}
+\]">\[
+z(p,q)=c(p,q)^*d(p,q)\in\mathcal U(C),
+\qquad d(p,q)=z(p,q)c(p,q).
+\tag{6.4}
+\]</span>
+<p>Restricting the quotient composition formula to <span class="math" data-tex="\(C\)">\(C\)</span>, the map
+<span class="math" data-tex="\(\Gamma_{m(p,q)}\)">\(\Gamma_{m(p,q)}\)</span> becomes the identity by (6.1), and conjugation by <span class="math" data-tex="\(c(p,q)\)">\(c(p,q)\)</span> also becomes the identity. This proves the second line of (6.3).</p>
+<p>It remains to prove exact associativity of the cocycle. In the notation (3.1), set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K={}&amp;c(p,q)\alpha_{s(pq)}(\delta(s(r),m(p,q))^*)\\
+&amp;{}\cdot c(pq,r)\alpha_{s(pqr)}(w(a,n)).
+\end{aligned}
+\tag{6.5}
+\]">\[
+\begin{aligned}
+K={}&amp;c(p,q)\alpha_{s(pq)}(\delta(s(r),m(p,q))^*)\\
+&amp;{}\cdot c(pq,r)\alpha_{s(pqr)}(w(a,n)).
+\end{aligned}
+\tag{6.5}
+\]</span>
+<p>Equation (3.2) expresses the same unitary <span class="math" data-tex="\(K\in M\)">\(K\in M\)</span> as</p>
+<span class="math math-display" data-tex="\[
+K=\alpha_{s(p)}(c(q,r))c(p,qr)\alpha_{s(pqr)}(w(b,d)).
+\tag{6.6}
+\]">\[
+K=\alpha_{s(p)}(c(q,r))c(p,qr)\alpha_{s(pqr)}(w(b,d)).
+\tag{6.6}
+\]</span>
+<p>In this display <span class="math" data-tex="\(d=m(q,r)\)">\(d=m(q,r)\)</span> is the subgroup element from (3.1), not the two-variable coefficient <span class="math" data-tex="\(d(p,q)\)">\(d(p,q)\)</span>.</p>
+<p>The mixed equalities in (6.1) imply</p>
+<span class="math math-display" data-tex="\[
+\delta_V(g,n)=\delta(g,n),\qquad
+V(m,n)=w(m,n)\quad(m,n\in N).
+\tag{6.7}
+\]">\[
+\delta_V(g,n)=\delta(g,n),\qquad
+V(m,n)=w(m,n)\quad(m,n\in N).
+\tag{6.7}
+\]</span>
+<p>Apply (3.2) to <span class="math" data-tex="\((\Gamma,V)\)">\((\Gamma,V)\)</span>. Replace each quotient coefficient by
+<span class="math" data-tex="\(z(p,q)c(p,q)\)">\(z(p,q)c(p,q)\)</span>, and use <span class="math" data-tex="\(\Gamma_g|_M=\alpha_g\)">\(\Gamma_g|_M=\alpha_g\)</span>. Every <span class="math" data-tex="\(z\)">\(z\)</span> lies in <span class="math" data-tex="\(C\)">\(C\)</span> and therefore commutes with every displayed <span class="math" data-tex="\(M\)">\(M\)</span>-coefficient. The left side becomes</p>
+<span class="math math-display" data-tex="\[
+z(p,q)z(pq,r)K.
+\]">\[
+z(p,q)z(pq,r)K.
+\]</span>
+<p>The right side becomes</p>
+<span class="math math-display" data-tex="\[
+\varphi_p(z(q,r))z(p,qr)K.
+\]">\[
+\varphi_p(z(q,r))z(p,qr)K.
+\]</span>
+<p>Right multiplication by <span class="math" data-tex="\(K^*\)">\(K^*\)</span> proves the last line of (6.3). This cancellation retains both subgroup-cocycle factors throughout. Finally <span class="math" data-tex="\(c,d,z\)">\(c,d,z\)</span> are normalized, and <span class="math" data-tex="\(\varphi_e=\operatorname{id}\)">\(\varphi_e=\operatorname{id}\)</span>, by their definitions and the normalization in Section 2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Subalgebra version.</strong> Suppose instead that <span class="math" data-tex="\(C_0\)">\(C_0\)</span> is a unital von Neumann subalgebra of <span class="math" data-tex="\(M&#x27;\cap B\)">\(M&#x27;\cap B\)</span>, invariant under each <span class="math" data-tex="\(\Gamma_g\)">\(\Gamma_g\)</span> and its inverse. Assume the first two lines of (6.1), assume <span class="math" data-tex="\(\Gamma_n|_{C_0}=\operatorname{id}\)">\(\Gamma_n|_{C_0}=\operatorname{id}\)</span> for <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>, and assume, separately, that</p>
+<span class="math math-display" data-tex="\[
+d(p,q)c(p,q)^*\in C_0\quad(p,q\in P).
+\tag{6.8}
+\]">\[
+d(p,q)c(p,q)^*\in C_0\quad(p,q\in P).
+\tag{6.8}
+\]</span>
+<p>Then (6.3) holds on <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, with <span class="math" data-tex="\(\varphi_p=\Gamma_{s(p)}|_{C_0}\)">\(\varphi_p=\Gamma_{s(p)}|_{C_0}\)</span>.
+Indeed, the membership assertion is now (6.8); invariance makes every restriction an automorphism; the quotient composition and the cancellation of <span class="math" data-tex="\(K\)">\(K\)</span> use only commutation with <span class="math" data-tex="\(M\)">\(M\)</span> and the stated identity action of <span class="math" data-tex="\(N\)">\(N\)</span>. Each line of the preceding proof therefore applies with <span class="math" data-tex="\(C_0\)">\(C_0\)</span> in place of <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>This distinction matters for central sequence algebras: membership in a designated subalgebra of <span class="math" data-tex="\(M&#x27;\cap B\)">\(M&#x27;\cap B\)</span> does not follow just from commutation with <span class="math" data-tex="\(M\)">\(M\)</span>. The stronger membership statement must be proved using its defining conditions. Neither version of the theorem asserts that <span class="math" data-tex="\(z\)">\(z\)</span> is a coboundary.</p>
+<h2 id="from-a-quotient-correction-to-every-group-coefficient"><span id="OA-MOD-QCA-07"></span><span id="oa-mod-qca-07"></span>From a quotient correction to every group coefficient</h2>
+<p>Continue with the hypotheses of Section 6. Suppose a normalized family <span class="math" data-tex="\(a_p\in\mathcal U(C)\)">\(a_p\in\mathcal U(C)\)</span> has been supplied such that</p>
+<span class="math math-display" data-tex="\[
+a_p\varphi_p(a_q)z(p,q)a_{pq}^*=1
+\qquad(p,q\in P).
+\tag{7.1}
+\]">\[
+a_p\varphi_p(a_q)z(p,q)a_{pq}^*=1
+\qquad(p,q\in P).
+\tag{7.1}
+\]</span>
+<p>Define <span class="math" data-tex="\(b_g=a_{gN}\)">\(b_g=a_{gN}\)</span>, and perturb <span class="math" data-tex="\((\Gamma,V)\)">\((\Gamma,V)\)</span> by this family as in Section 4:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Omega_g&amp;=\operatorname{Ad}(b_g)\Gamma_g,\\
+W(g,h)&amp;=b_g\Gamma_g(b_h)V(g,h)b_{gh}^*.
+\end{aligned}
+\tag{7.2}
+\]">\[
+\begin{aligned}
+\Omega_g&amp;=\operatorname{Ad}(b_g)\Gamma_g,\\
+W(g,h)&amp;=b_g\Gamma_g(b_h)V(g,h)b_{gh}^*.
+\end{aligned}
+\tag{7.2}
+\]</span>
+<p><strong>Theorem.</strong> This perturbation preserves the action on <span class="math" data-tex="\(M\)">\(M\)</span> and corrects the entire cocycle:</p>
+<span class="math math-display" data-tex="\[
+\Omega_g|_M=\alpha_g,\qquad
+W(g,h)=v(g,h)\quad(g,h\in G).
+\tag{7.3}
+\]">\[
+\Omega_g|_M=\alpha_g,\qquad
+W(g,h)=v(g,h)\quad(g,h\in G).
+\tag{7.3}
+\]</span>
+<p><strong>Proof.</strong> Each <span class="math" data-tex="\(b_g\)">\(b_g\)</span> commutes with <span class="math" data-tex="\(M\)">\(M\)</span>, so the first assertion holds. If <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>, then <span class="math" data-tex="\(b_n=1\)">\(b_n=1\)</span>, and <span class="math" data-tex="\(ng\)">\(ng\)</span> and <span class="math" data-tex="\(gn\)">\(gn\)</span> have the same coset as <span class="math" data-tex="\(g\)">\(g\)</span>. By (6.1),</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(n,g)&amp;=\Gamma_n(b_g)v(n,g)b_g^*
+=b_gv(n,g)b_g^*=v(n,g),\\
+W(g,n)&amp;=b_gv(g,n)b_g^*=v(g,n).
+\end{aligned}
+\tag{7.4}
+\]">\[
+\begin{aligned}
+W(n,g)&amp;=\Gamma_n(b_g)v(n,g)b_g^*
+=b_gv(n,g)b_g^*=v(n,g),\\
+W(g,n)&amp;=b_gv(g,n)b_g^*=v(g,n).
+\end{aligned}
+\tag{7.4}
+\]</span>
+<p>The quotient coefficient of <span class="math" data-tex="\(W\)">\(W\)</span>, using (4.2) with <span class="math" data-tex="\(b_n=1\)">\(b_n=1\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+a_p\Gamma_{s(p)}(a_q)d(p,q)a_{pq}^*.
+\]">\[
+a_p\Gamma_{s(p)}(a_q)d(p,q)a_{pq}^*.
+\]</span>
+<p>Substitute <span class="math" data-tex="\(d=zc\)">\(d=zc\)</span>, commute the <span class="math" data-tex="\(M\)">\(M\)</span>-coefficient <span class="math" data-tex="\(c\)">\(c\)</span> past <span class="math" data-tex="\(a_{pq}^*\)">\(a_{pq}^*\)</span>, and apply (7.1). The result is exactly <span class="math" data-tex="\(c(p,q)\)">\(c(p,q)\)</span>. Since (7.4) already identifies <span class="math" data-tex="\(W(s(pq),m(p,q))\)">\(W(s(pq),m(p,q))\)</span>, the definition of <span class="math" data-tex="\(c\)">\(c\)</span> now gives</p>
+<span class="math math-display" data-tex="\[
+W(s(p),s(q))=v(s(p),s(q)).
+\tag{7.5}
+\]">\[
+W(s(p),s(q))=v(s(p),s(q)).
+\tag{7.5}
+\]</span>
+<p>Every <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> has a unique expression <span class="math" data-tex="\(g=n s(p)\)">\(g=n s(p)\)</span>, with
+<span class="math" data-tex="\(n=g s(gN)^{-1}\in N\)">\(n=g s(gN)^{-1}\in N\)</span>. The cocycle identity for <span class="math" data-tex="\(W\)">\(W\)</span>, applied to
+<span class="math" data-tex="\((n,s(p),s(q))\)">\((n,s(p),s(q))\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(n s(p),s(q))
+={}&amp;W(n,s(p))^*\Omega_n(W(s(p),s(q)))\\
+&amp;{}\cdot W(n,s(p)s(q)).
+\end{aligned}
+\tag{7.6}
+\]">\[
+\begin{aligned}
+W(n s(p),s(q))
+={}&amp;W(n,s(p))^*\Omega_n(W(s(p),s(q)))\\
+&amp;{}\cdot W(n,s(p)s(q)).
+\end{aligned}
+\tag{7.6}
+\]</span>
+<p>All three coefficients on the right are known from (7.4) and (7.5), and <span class="math" data-tex="\(\Omega_n|_M=\alpha_n\)">\(\Omega_n|_M=\alpha_n\)</span>. Substituting them and using the cocycle identity for <span class="math" data-tex="\(v\)">\(v\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+W(g,s(q))=v(g,s(q))\quad(g\in G,\ q\in P).
+\tag{7.7}
+\]">\[
+W(g,s(q))=v(g,s(q))\quad(g\in G,\ q\in P).
+\tag{7.7}
+\]</span>
+<p>For arbitrary <span class="math" data-tex="\(h=n s(q)\)">\(h=n s(q)\)</span>, apply the cocycle identity to <span class="math" data-tex="\((g,n,s(q))\)">\((g,n,s(q))\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(g,n s(q))
+={}&amp;\Omega_g(W(n,s(q)))^*W(g,n)W(gn,s(q))\\
+={}&amp;\alpha_g(v(n,s(q)))^*v(g,n)v(gn,s(q))\\
+={}&amp;v(g,n s(q)).
+\end{aligned}
+\tag{7.8}
+\]">\[
+\begin{aligned}
+W(g,n s(q))
+={}&amp;\Omega_g(W(n,s(q)))^*W(g,n)W(gn,s(q))\\
+={}&amp;\alpha_g(v(n,s(q)))^*v(g,n)v(gn,s(q))\\
+={}&amp;v(g,n s(q)).
+\end{aligned}
+\tag{7.8}
+\]</span>
+<p>This proves (7.3) for every pair. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An explicit comparison-unitary version is useful. If</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma_g=\operatorname{Ad}(U_g)\beta_g,\\
+V(g,h)=U_g\beta_g(U_h)v^\beta(g,h)U_{gh}^*
+\end{gathered}
+\tag{7.9}
+\]">\[
+\begin{gathered}
+\Gamma_g=\operatorname{Ad}(U_g)\beta_g,\\
+V(g,h)=U_g\beta_g(U_h)v^\beta(g,h)U_{gh}^*
+\end{gathered}
+\tag{7.9}
+\]</span>
+<p>on <span class="math" data-tex="\(B\)">\(B\)</span>, then <span class="math" data-tex="\(T_g=b_gU_g\)">\(T_g=b_gU_g\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Ad}(T_g)\beta_g|_M=\alpha_g,\\
+T_g\beta_g(T_h)v^\beta(g,h)T_{gh}^*=v(g,h).
+\end{gathered}
+\tag{7.10}
+\]">\[
+\begin{gathered}
+\operatorname{Ad}(T_g)\beta_g|_M=\alpha_g,\\
+T_g\beta_g(T_h)v^\beta(g,h)T_{gh}^*=v(g,h).
+\end{gathered}
+\tag{7.10}
+\]</span>
+<p>Indeed, expansion of the left side of the second equation gives
+<span class="math" data-tex="\(b_g\Gamma_g(b_h)V(g,h)b_{gh}^*=W(g,h)\)">\(b_g\Gamma_g(b_h)V(g,h)b_{gh}^*=W(g,h)\)</span>.
+These are identities in <span class="math" data-tex="\(B\)">\(B\)</span>. To obtain a comparison implemented inside <span class="math" data-tex="\(M\)">\(M\)</span>, one must additionally prove that the comparison unitaries lie in <span class="math" data-tex="\(M\)">\(M\)</span>, or supply the approximation and intertwining argument that produces such unitaries there.</p>
+<p>The same reconstruction holds in the subalgebra version of Section 6, with <span class="math" data-tex="\(a_p\in\mathcal U(C_0)\)">\(a_p\in\mathcal U(C_0)\)</span>. All uses of <span class="math" data-tex="\(C\)">\(C\)</span> in (7.4)–(7.8) require only commutation with <span class="math" data-tex="\(M\)">\(M\)</span>, invariance under the quotient representatives, and trivial action of <span class="math" data-tex="\(N\)">\(N\)</span>; these properties were explicitly retained for <span class="math" data-tex="\(C_0\)">\(C_0\)</span>.</p>
+<h2 id="a-non-split-example-with-a-nontrivial-inner-kernel"><span id="OA-MOD-QCA-08"></span><span id="oa-mod-qca-08"></span>A non-split example with a nontrivial inner kernel</h2>
+<p>Use additive notation for <span class="math" data-tex="\(G=\mathbb Z/4\mathbb Z\)">\(G=\mathbb Z/4\mathbb Z\)</span>, and let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M=M_2(\mathbb C)\oplus M_2(\mathbb C),\qquad
+D=\begin{pmatrix}1&amp;0\\0&amp;i\end{pmatrix},\\
+\alpha_1(x,y)=(DyD^*,DxD^*),\qquad
+\alpha_k=\alpha_1^k,\qquad v(k,l)=1.
+\end{gathered}
+\tag{8.1}
+\]">\[
+\begin{gathered}
+M=M_2(\mathbb C)\oplus M_2(\mathbb C),\qquad
+D=\begin{pmatrix}1&amp;0\\0&amp;i\end{pmatrix},\\
+\alpha_1(x,y)=(DyD^*,DxD^*),\qquad
+\alpha_k=\alpha_1^k,\qquad v(k,l)=1.
+\end{gathered}
+\tag{8.1}
+\]</span>
+<p>The identities</p>
+<span class="math math-display" data-tex="\[
+\alpha_2(x,y)=(D^2xD^{-2},D^2yD^{-2}),
+\qquad \alpha_4=\operatorname{id}
+\tag{8.2}
+\]">\[
+\alpha_2(x,y)=(D^2xD^{-2},D^2yD^{-2}),
+\qquad \alpha_4=\operatorname{id}
+\tag{8.2}
+\]</span>
+<p>show directly that this is an action. Its inner kernel is precisely
+<span class="math" data-tex="\(N=\{0,2\}\)">\(N=\{0,2\}\)</span>. Indeed, <span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span> is implemented by
+<span class="math" data-tex="\((D^2,D^2)\)">\((D^2,D^2)\)</span>, whereas the odd powers interchange the central projections
+<span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. An inner automorphism fixes a central element <span class="math" data-tex="\(z\)">\(z\)</span>, since <span class="math" data-tex="\(uzu^*=zuu^*=z\)">\(uzu^*=zuu^*=z\)</span>. Hence the odd powers are not inner.</p>
+<p>Identify <span class="math" data-tex="\(P=G/N\)">\(P=G/N\)</span> with <span class="math" data-tex="\(\mathbb Z/2\mathbb Z\)">\(\mathbb Z/2\mathbb Z\)</span> and choose <span class="math" data-tex="\(s(0)=0,s(1)=1\)">\(s(0)=0,s(1)=1\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+m(1,1)=2,\qquad c(1,1)=1,\qquad
+\alpha_{s(1)}^2=\sigma_2\ne\operatorname{id}.
+\tag{8.3}
+\]">\[
+m(1,1)=2,\qquad c(1,1)=1,\qquad
+\alpha_{s(1)}^2=\sigma_2\ne\operatorname{id}.
+\tag{8.3}
+\]</span>
+<p>For example <span class="math" data-tex="\(\sigma_2(E_{12},0)=(-E_{12},0)\)">\(\sigma_2(E_{12},0)=(-E_{12},0)\)</span>.
+Thus the quotient representatives do not form an action, despite all the original unitary cocycles being <span class="math" data-tex="\(1\)">\(1\)</span>. No homomorphic section exists: an element mapping to the nontrivial quotient class is odd, and every odd element of <span class="math" data-tex="\(G\)">\(G\)</span> has order four.</p>
+<p>This example exhibits the subgroup-map defect in (2.4). Equation (3.2) describes the additional coefficient defects when the original cocycle is nontrivial. Sections 6 and 7 explain exactly which equalities permit their cancellation and reconstruction.</p>
+<p><strong>Further reading.</strong> T. Masuda, <em>Unified approach to classification of actions of discrete amenable groups on injective factors</em>, <a href="https://arxiv.org/abs/1006.1176">free author preprint, arXiv:1006.1176</a>, Section 3 (especially Lemmas 3.1 and 3.3 and the remark following 3.3), and Section 4, Lemmas 4.2–4.4 and 4.7. The arguments above retain a general subgroup cocycle and state the ambient-algebra hypotheses explicitly. The analytic cohomology-vanishing theorem and the classification theorem are not used as substitutes for any proof here.</p>
+<p><strong>Provenance.</strong> Original exposition and proofs prepared and checked by OpenAI GPT-6 Astra at Ultra reasoning effort. This is not independent review. The new prose and editable figure are dedicated under CC0.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

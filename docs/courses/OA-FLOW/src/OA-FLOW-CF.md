@@ -73,7 +73,7 @@ For $s>0$ the integral
 
 $$v=\int_0^\infty e^{-st}e^{ith}\,dt$$
 
-converges in norm. Differentiation of the integrand and the fundamental theorem proved in Section 1 give $(s1-ih)v=v(s1-ih)=1$, with $\|v\|\le1/s$. Applying this to the self-adjoint $r1-h$ shows that $r+is-h=i(s1-i(r1-h))$ is invertible. Negative imaginary parts follow by taking adjoints. Thus $\sigma(h)\subset\mathbb R$. This local Laplace-integral argument avoids the holomorphic functional-calculus chain in the earlier CF proof.
+converges in norm. Differentiation of the integrand and the fundamental theorem proved in Section 1 give $(s1-ih)v=v(s1-ih)=1$, with $\|v\|\le1/s$. Applying this to the self-adjoint $r1-h$ shows that $r+is-h=i(s1-i(r1-h))$ is invertible. Negative imaginary parts follow by taking adjoints. Thus $\sigma(h)\subset\mathbb R$. The integral constructs the inverse within the same C*-algebra.
 
 If $x$ is normal, then $\|x^2\|^2=\|(x^*x)^2\|=\|x^*x\|^2=\|x\|^4$; the middle equality uses the C\*-identity on the self-adjoint $x^*x$. Induction yields $\|x^{2^k}\|=\|x\|^{2^k}$. Section 2's spectral-radius formula now gives $\|x\|=r(x)$ for every normal $x$.
 

@@ -1,6 +1,6 @@
 # Ringed spaces and sheaves of modules
 
-*Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 A geometric space carries a notion of functions. The functions need not be determined by their values: they may retain derivatives or nilpotent information. A ringed space records functions as a sheaf of rings. Its module sheaves then describe objects on which functions act. This lesson explains how modules combine and how they move along a map of spaces.
 
@@ -252,7 +252,7 @@ The canonical map from the presheaf sends a finite sum \(\sum_{j=1}^r s_j\otimes
 
 ## What this lesson does not prove
 
-The abelian category of module sheaves and stalkwise exactness are Sheaves of modules and their derived categories, Theorem 2.1. The existence and sectionwise-sheafification descriptions of colimits are its Theorem 3.1. Exact inverse image is that lesson's Theorem 4.1, parts (1)–(3). These are already written internal prerequisites. The inverse-image module adjunction, tensor product and all module-pullback assertions taught here have been proved here.
+The abelian category of module sheaves and stalkwise exactness are Sheaves of modules and their derived categories, Theorem 2.1. The existence and sectionwise-sheafification descriptions of colimits are its Theorem 3.1. Exact inverse image is that lesson's Theorem 4.1, parts (1)–(3). The tensor product and module-pullback constructions combine these sheaf operations with the ring maps of the underlying ringed spaces.
 
 ## References
 

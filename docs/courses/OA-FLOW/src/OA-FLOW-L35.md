@@ -333,6 +333,14 @@ Lemma 7 proves $\alpha=\Phi$. Differentiating their norm-convergent series at ze
 
 $$d(x)=i[b,x]. \tag{31}$$
 
+The fixed algebra and the location of the implementing group can now be identified exactly:
+
+$$M^\alpha=\ker d=\{x\in M:bx=xb\},
+\qquad b\in Z(M^\alpha),
+\qquad e^{itb}\in\mathcal U(Z(M^\alpha))\quad(t\in\mathbb R). \tag{31a}$$
+
+Indeed, if $\alpha_t(x)=x$ for every $t$, differentiation at zero gives $d(x)=0$. Conversely, $d(x)=0$ implies $d^n(x)=0$ for every $n\ge1$, so the norm-convergent series for $e^{td}(x)$ is just $x$. Equation (31) identifies this kernel with the commutant of $b$ inside $M$. Since $b$ commutes with itself, it lies in that kernel, and it commutes with every other element of the kernel. This proves $b\in Z(M^\alpha)$. Every partial sum of the exponential series for $e^{itb}$ is central in $M^\alpha$, and the center is norm closed: multiplication by each fixed element preserves norm limits. The series limit is unitary, with inverse $e^{-itb}$, so it belongs to the displayed unitary group. Finally, integrating the norm derivative $ib e^{itb}$ gives $\|e^{itb}-e^{isb}\|\le\|b\||t-s|$. Thus the implementing group is norm continuous, and in particular strongly continuous. Centrality here is in the fixed algebra; it is not a claim that $b$ is central in $M$.
+
 ![Commuting actions and difference-frequency localization](../assets/l35-reconstruction/figures/commuting-localization.png)
 
 *Band comparison places the possible joint frequencies on $\lambda=\mu$. A test of the difference action has symbol $H(\lambda-\mu)$; when $H$ is supported away from zero, the joint filter misses that diagonal and vanishes by rectangle localization. The illustrated strip is the specific filter condition $\operatorname{supp}H\subseteq[1,2]$, and the drawn boxes illustrate pieces of a finite cover rather than its entirety. Proof: Lemma 7, (20)–(21). Free mathematical ancestry: Olesen.*

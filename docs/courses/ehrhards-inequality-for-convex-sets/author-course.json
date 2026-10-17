@@ -1,0 +1,37 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "ehrhards-inequality-for-convex-sets",
+  "title": "Ehrhard's inequality for convex sets",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-17",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "A complete proof of Ehrhard's inequality Phi^{-1}(gamma_n(lambda K + (1 - lambda) L)) >= lambda Phi^{-1}(gamma_n(K)) + (1 - lambda) Phi^{-1}(gamma_n(L)) for closed convex sets of Gaussian measure in (0,1), by the interpolation method of Neeman and Paouris, written with the heat semigroup: Gaussian heat semigroups, their smoothing, the heat equation and a moving function under the semigroup; the gradient bound |grad Q_t f| <= t^(-1/2) I(Q_t f) from a rearrangement inequality; the Hessian of Phi(r Xi), a perturbation lemma for positive semidefinite matrices and a quantity monotone along the heat flow; approximation of convex sets by Lipschitz functions and the limit of correlated Gaussian vectors. Concavity of Phi^{-1} of the Gaussian measure of translates of a convex set follows; the Gaussian propeller course uses it.",
+  "prerequisites": [
+    "multivariable calculus and linear algebra (positive semidefinite matrices)",
+    "measure and integration as in Fremlin's Measure Theory (core course Measure and Integration), cited by number: 123A, 123C, 123D, 252B, 263A"
+  ],
+  "lessons": [
+    "gaussian-heat-semigroups-and-a-gradient-bound",
+    "a-quantity-monotone-along-the-heat-flow",
+    "ehrhards-inequality-for-convex-sets"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "reading": "J. Neeman and G. Paouris, 'An interpolation proof of Ehrhard's inequality' (arXiv:1605.07233v1, 44 kB of TeX, local copy arxiv_latex/_topic_fetch/gaussian_propeller/1605.07233) was read in full on 17 Oct 2026; the course follows its method and derives every step again. Changes of form and repairs: (1) the heat semigroup on R^(2n) with covariance C (x) I_n replaces the Ornstein-Uhlenbeck semigroup and the degenerate three-variable Gaussian, so that the final time is 1 and no limit t -> infinity is needed; (2) the gradient bound |grad Q_t f| <= t^(-1/2) I(Q_t f), for which [NP] cites Bakry and Ledoux, is proved from a one-dimensional rearrangement inequality; (3) the time factor r(u) = R (eps + u)^((1+delta)/2) replaces R sqrt(1 - e^(-2t-eps)); (4) [NP]'s Corollary 4.2 asks for positivity on the sublevel set {J < a} while their Lemma 4.4 supplies it only where Xi <= -eps; the course runs the induction with a threshold on Xi itself (Theorem 2.1, Steps 1-3); (5) the last step of [NP] states that every measurable f: R -> [0,1] is a pointwise almost everywhere limit from below of continuous functions; this is false (the indicator of a closed nowhere dense set of positive measure has no continuous minorant other than functions <= 0); the course proves the inequality for uniformly continuous functions and reaches convex sets by Lipschitz approximations of the indicator functions of their interiors and of the Minkowski combination, which is all that the Gaussian propeller course needs; (6) typographical slips in [NP]: R^2 (1 - e^epsilon) for R^2 (1 - e^(-epsilon)) in the proof of Lemma 4.4, and D^2 for D in Lemma 4.1. The theorem itself is not in doubt: Borell proved it for all Borel sets, and the general case also follows from [NP]'s inequality for continuous functions by inner approximation with compact sets and outer approximation with open neighbourhoods. van Handel's proof (arXiv:1605.00285) was not needed.",
+    "exact_checks": "plan/checks_20261017/ehrhard_check.py (numpy, sympy; 2,247 checks, 0 problems, about 30 s, peak 94 MB): the gradient bound for unions of intervals in dimension one and unions of rectangles in dimension two (closed formulas); the rearrangement lemma with Gauss-Hermite quadrature; the Hessian of Phi(r Xi) (sympy, exact); B theta' = 0, B >= 0 of rank two, theta'^T D theta' = Xi, theta'^T E theta' = 1 and the Hadamard identities on random parameters; the perturbation lemma on random instances; the key matrix inequality on random points of the box with Xi <= -eps2; the monotone quantity G(u) for the construction of the last lesson in dimension one (decreasing from about 0.09 to 0 in three cases); Ehrhard's inequality for 60 random pairs of convex polygons with their Minkowski combinations; equality for parallel half-planes.",
+    "lint": "gp_lint.py (scratch): headings, provenance line, banned wording, balanced TeX delimiters, sibling links; 0 problems.",
+    "render": "eh_render_check.py (scratch): all formulas survive the programme renderer; find_private_math.py: 0 flagged.",
+    "layout": "Tested on 17 Oct 2026 with the site's MathJax at 375 px against the 328 px text column (288 px in lists) before staging: 57 formulas of the first draft were wider and were rewritten (five of them in further passes). Measured in the staged reader on 17 Oct 2026: the three lessons have 271, 359 and 282 formulas (912 in all), 0 rendering errors, 0 formulas wider than the column, no sideways page scroll."
+  },
+  "open_obligations": [
+    "The course proves Ehrhard's inequality for closed convex sets, the case used in the programme. The extensions to one convex and one Borel set (Latala) and to two Borel sets (Borell) are stated in the first lesson without proof and are not used.",
+    "The lessons were written and checked by one model in one session; they have not been checked by a second reader."
+  ],
+  "free_sources": [
+    "J. Neeman and G. Paouris, An interpolation proof of Ehrhard's inequality, arXiv:1605.07233",
+    "R. van Handel, The Borell-Ehrhard game, arXiv:1605.00285",
+    "A. Ehrhard, Symetrisation dans l'espace de Gauss, Mathematica Scandinavica 53 (1983), https://journals.msp.org/mscand/article/view/1636",
+    "D. H. Fremlin, Measure Theory, volumes 1 and 2 (core course Measure and Integration), https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10"
+  ]
+}

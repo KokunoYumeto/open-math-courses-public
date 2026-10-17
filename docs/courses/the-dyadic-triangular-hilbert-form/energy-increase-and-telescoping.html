@@ -1,0 +1,153 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Energy increase and telescoping</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The dyadic triangular Hilbert form)</a><a href="a-matrix-energy-and-a-trace-inequality.html">Previous lesson</a><a href="src/energy-increase-and-telescoping.md">Editable source</a></nav><main><article><h1 id="energy-increase-and-telescoping">Energy increase and telescoping</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves Theorem A of <a href="dyadic-triangles-and-the-main-estimate.html">Dyadic triangles and the main estimate</a>. For a step function input, each admissible triple <span class="math" data-tex="\(\mathbf I\)">\(\mathbf I\)</span> carries an energy <span class="math" data-tex="\(e(\mathbf I)\)">\(e(\mathbf I)\)</span>, a sum of three values of <span class="math" data-tex="\(\Phi(P)=\operatorname{tr}(P^{3/2})\)">\(\Phi(P)=\operatorname{tr}(P^{3/2})\)</span>. Splitting <span class="math" data-tex="\(\mathbf I\)">\(\mathbf I\)</span> into its four children raises the average energy by at least a fixed multiple of <span class="math" data-tex="\(|\tau(\mathbf I)|\)">\(|\tau(\mathbf I)|\)</span> (Proposition 3.1), and with the weights <span class="math" data-tex="\(2^{2k}\)">\(2^{2k}\)</span> the increases telescope across the scales while the total energy at every scale is at most <span class="math" data-tex="\(2\sqrt2\)">\(2\sqrt2\)</span> times the sum of the cubed <span class="math" data-tex="\(L^3\)">\(L^3\)</span> norms (Lemma 3.2). This is OpenAI's argument [OpenAI-D, Sections 4 and 5]; energy arguments of this kind go back to Kovač's Bellman function method for paraproducts [K1], [K2].</p>
+<p>Notation is that of the first lesson (atoms of level <span class="math" data-tex="\(m\)">\(m\)</span>, the spaces <span class="math" data-tex="\(H_v\)">\(H_v\)</span>, the maps <span class="math" data-tex="\(W_v\)">\(W_v\)</span>, <span class="math" data-tex="\(D_v\)">\(D_v\)</span> and <span class="math" data-tex="\(\tau(\mathbf I)\)">\(\tau(\mathbf I)\)</span>, the children <span class="math" data-tex="\(\operatorname{ch}(\mathbf I)\)">\(\operatorname{ch}(\mathbf I)\)</span>) and of <a href="a-matrix-energy-and-a-trace-inequality.html">A matrix energy and a trace inequality</a> (<span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, <span class="math" data-tex="\(b_P\)">\(b_P\)</span>, row stars <span class="math" data-tex="\(R_v\)">\(R_v\)</span>, <span class="math" data-tex="\(T_v=R_v^{\mathsf T}R_v\)">\(T_v=R_v^{\mathsf T}R_v\)</span>). Throughout, <span class="math" data-tex="\(F_0,F_1,F_2\)">\(F_0,F_1,F_2\)</span> are bounded step functions with bounded support, constant on products of atoms of level <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<h2 id="1-the-energy-of-an-admissible-triple">1. The energy of an admissible triple</h2>
+<p>For <span class="math" data-tex="\(\mathbf I\in\mathcal A_k\)">\(\mathbf I\in\mathcal A_k\)</span>, <span class="math" data-tex="\(k\ge m\)">\(k\ge m\)</span>, with the maps <span class="math" data-tex="\(W_v\)">\(W_v\)</span> of Section 1 of the first lesson and their row stars <span class="math" data-tex="\(R_v\)">\(R_v\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e_v(\mathbf I)&amp;=\Phi(R_vR_v^{\mathsf T})=\Phi(T_v),\\
+e(\mathbf I)&amp;=\sum_{v=0}^2e_v(\mathbf I).
+\end{aligned}
+\]">\[
+\begin{aligned}
+e_v(\mathbf I)&amp;=\Phi(R_vR_v^{\mathsf T})=\Phi(T_v),\\
+e(\mathbf I)&amp;=\sum_{v=0}^2e_v(\mathbf I).
+\end{aligned}
+\]</span></p>
+<p><strong>Proposition 3.1</strong> (local energy increase). For <span class="math" data-tex="\(\mathbf I\in\mathcal A_k\)">\(\mathbf I\in\mathcal A_k\)</span> with <span class="math" data-tex="\(k\ge m+1\)">\(k\ge m+1\)</span>, the number
+<span class="math math-display" data-tex="\[
+\delta(\mathbf I)=\frac14\sum_{\mathbf I&#x27;\in\operatorname{ch}(\mathbf I)}e(\mathbf I&#x27;)-e(\mathbf I)
+\]">\[
+\delta(\mathbf I)=\frac14\sum_{\mathbf I&#x27;\in\operatorname{ch}(\mathbf I)}e(\mathbf I&#x27;)-e(\mathbf I)
+\]</span>
+is nonnegative, and
+<span class="math math-display" data-tex="\[
+|\tau(\mathbf I)|\le\frac{10\sqrt2}3\,\delta(\mathbf I).
+\]">\[
+|\tau(\mathbf I)|\le\frac{10\sqrt2}3\,\delta(\mathbf I).
+\]</span></p>
+<p><em>Proof.</em> Keep the spaces <span class="math" data-tex="\(H_v\)">\(H_v\)</span> of <span class="math" data-tex="\(\mathbf I\)">\(\mathbf I\)</span>, and view the spaces of a child, spanned by the atoms of the chosen halves, as subspaces. For a sign <span class="math" data-tex="\(s_v=\pm1\)">\(s_v=\pm1\)</span> put
+<span class="math math-display" data-tex="\[
+C_v=(I+s_vD_v)^{1/2},
+\]">\[
+C_v=(I+s_vD_v)^{1/2},
+\]</span>
+which is <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> times the orthogonal projection onto the atoms of the half of <span class="math" data-tex="\(I_v\)">\(I_v\)</span> chosen by <span class="math" data-tex="\(s_v\)">\(s_v\)</span> (the diagonal of <span class="math" data-tex="\(I+s_vD_v\)">\(I+s_vD_v\)</span> has the entries <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>). In a child the weight of an atom doubles, from <span class="math" data-tex="\(w\)">\(w\)</span> to <span class="math" data-tex="\(2w\)">\(2w\)</span>, so its matrix for <span class="math" data-tex="\(F_v\)">\(F_v\)</span>, extended by zero, is <span class="math" data-tex="\(C_vW_vC_{v+1}\)">\(C_vW_vC_{v+1}\)</span>, and its row star is <span class="math" data-tex="\(R_v(s)=C_vR_v\operatorname{diag}(C_{v+1},C_{v-1})\)">\(R_v(s)=C_vR_v\operatorname{diag}(C_{v+1},C_{v-1})\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;R_v(s)R_v(s)^{\mathsf T}\\
+&amp;\quad=C_v\bigl(W_vC_{v+1}^2W_v^{\mathsf T}\\
+&amp;\qquad+W_{v-1}^{\mathsf T}C_{v-1}^2W_{v-1}\bigr)C_v .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;R_v(s)R_v(s)^{\mathsf T}\\
+&amp;\quad=C_v\bigl(W_vC_{v+1}^2W_v^{\mathsf T}\\
+&amp;\qquad+W_{v-1}^{\mathsf T}C_{v-1}^2W_{v-1}\bigr)C_v .
+\end{aligned}
+\]</span>
+Choose a child uniformly at random. Conditionally on <span class="math" data-tex="\(s_v\)">\(s_v\)</span>, the signs <span class="math" data-tex="\(s_{v+1}\)">\(s_{v+1}\)</span> and <span class="math" data-tex="\(s_{v-1}\)">\(s_{v-1}\)</span> are each <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> with probability <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> (Lemma 1.2), so <span class="math" data-tex="\(C_{v\pm1}^2=I+s_{v\pm1}D_{v\pm1}\)">\(C_{v\pm1}^2=I+s_{v\pm1}D_{v\pm1}\)</span> has conditional expectation <span class="math" data-tex="\(I\)">\(I\)</span>. The displayed matrix contains no product of the two multipliers <span class="math" data-tex="\(C_{v+1}^2\)">\(C_{v+1}^2\)</span> and <span class="math" data-tex="\(C_{v-1}^2\)">\(C_{v-1}^2\)</span>, although <span class="math" data-tex="\(s_{v+1}\)">\(s_{v+1}\)</span> and <span class="math" data-tex="\(s_{v-1}\)">\(s_{v-1}\)</span> are not independent, so
+<span class="math math-display" data-tex="\[
+\mathbb E\bigl[R_v(s)R_v(s)^{\mathsf T}\bigm|s_v\bigr]=C_vR_vR_v^{\mathsf T}C_v .
+\]">\[
+\mathbb E\bigl[R_v(s)R_v(s)^{\mathsf T}\bigm|s_v\bigr]=C_vR_vR_v^{\mathsf T}C_v .
+\]</span>
+By the convexity of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> (Lemma 2.1) and Jensen's inequality for the two equally likely children,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\bigl[e_v(\mathbf I(s))\bigm|s_v\bigr]&amp;\ge\Phi(C_vR_vR_v^{\mathsf T}C_v)\\
+&amp;=\Phi(T_v+s_vU_v),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\bigl[e_v(\mathbf I(s))\bigm|s_v\bigr]&amp;\ge\Phi(C_vR_vR_v^{\mathsf T}C_v)\\
+&amp;=\Phi(T_v+s_vU_v),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(U_v=R_v^{\mathsf T}D_vR_v\)">\(U_v=R_v^{\mathsf T}D_vR_v\)</span>. The equality holds because the Gram matrices <span class="math" data-tex="\((C_vR_v)(C_vR_v)^{\mathsf T}\)">\((C_vR_v)(C_vR_v)^{\mathsf T}\)</span> and <span class="math" data-tex="\((C_vR_v)^{\mathsf T}(C_vR_v)=R_v^{\mathsf T}(I+s_vD_v)R_v\)">\((C_vR_v)^{\mathsf T}(C_vR_v)=R_v^{\mathsf T}(I+s_vD_v)R_v\)</span> have the same nonzero eigenvalues. Since <span class="math" data-tex="\(\|D_v\|\le1\)">\(\|D_v\|\le1\)</span>, <span class="math" data-tex="\(-T_v\le U_v\le T_v\)">\(-T_v\le U_v\le T_v\)</span>. Averaging over <span class="math" data-tex="\(s_v=\pm1\)">\(s_v=\pm1\)</span> and applying Corollary 2.4,
+<span class="math math-display" data-tex="\[
+\frac14\sum_{\mathbf I&#x27;\in\operatorname{ch}(\mathbf I)}e_v(\mathbf I&#x27;)-e_v(\mathbf I)\ge\frac{b_{T_v}(U_v)}{2\sqrt2}.
+\]">\[
+\frac14\sum_{\mathbf I&#x27;\in\operatorname{ch}(\mathbf I)}e_v(\mathbf I&#x27;)-e_v(\mathbf I)\ge\frac{b_{T_v}(U_v)}{2\sqrt2}.
+\]</span>
+Summing over <span class="math" data-tex="\(v\)">\(v\)</span> gives <span class="math" data-tex="\(\delta(\mathbf I)\ge0\)">\(\delta(\mathbf I)\ge0\)</span>, and Proposition 2.5 gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\tau(\mathbf I)|&amp;\le\frac53\sum_vb_{T_v}(U_v)\\
+&amp;\le\frac{10\sqrt2}3\,\delta(\mathbf I).
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\tau(\mathbf I)|&amp;\le\frac53\sum_vb_{T_v}(U_v)\\
+&amp;\le\frac{10\sqrt2}3\,\delta(\mathbf I).
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-total-energy-and-telescoping">2. Total energy and telescoping</h2>
+<p><strong>Lemma 3.2.</strong> For <span class="math" data-tex="\(k\ge m\)">\(k\ge m\)</span> put <span class="math" data-tex="\(J_k=\sum_{\mathbf I\in\mathcal A_k}2^{2k}e(\mathbf I)\)">\(J_k=\sum_{\mathbf I\in\mathcal A_k}2^{2k}e(\mathbf I)\)</span>. Then
+<span class="math math-display" data-tex="\[
+0\le J_k\le2\sqrt2\sum_{v=0}^2\|F_v\|_3^3,
+\]">\[
+0\le J_k\le2\sqrt2\sum_{v=0}^2\|F_v\|_3^3,
+\]</span>
+and for <span class="math" data-tex="\(k\ge m+1\)">\(k\ge m+1\)</span>
+<span class="math math-display" data-tex="\[
+\sum_{\mathbf I\in\mathcal A_k}2^{2k}\delta(\mathbf I)=J_{k-1}-J_k .
+\]">\[
+\sum_{\mathbf I\in\mathcal A_k}2^{2k}\delta(\mathbf I)=J_{k-1}-J_k .
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be the Hilbert–Schmidt norms of the two blocks of <span class="math" data-tex="\(R_v\)">\(R_v\)</span>. By Exercise 2.2 of the previous lesson and the power mean inequality,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e_v(\mathbf I)&amp;\le(\operatorname{tr}T_v)^{3/2}=(\alpha^2+\beta^2)^{3/2}\\
+&amp;\le\sqrt2(\alpha^3+\beta^3).
+\end{aligned}
+\]">\[
+\begin{aligned}
+e_v(\mathbf I)&amp;\le(\operatorname{tr}T_v)^{3/2}=(\alpha^2+\beta^2)^{3/2}\\
+&amp;\le\sqrt2(\alpha^3+\beta^3).
+\end{aligned}
+\]</span>
+For each block, <span class="math" data-tex="\(\|W_v\|_{\rm HS}^2=\sum_{i,j}w^2F_v(i,j)^2\)">\(\|W_v\|_{\rm HS}^2=\sum_{i,j}w^2F_v(i,j)^2\)</span> is the mean of <span class="math" data-tex="\(F_v^2\)">\(F_v^2\)</span> over <span class="math" data-tex="\(I_v\times I_{v+1}\)">\(I_v\times I_{v+1}\)</span>, so by Hölder's inequality
+<span class="math math-display" data-tex="\[
+\|W_v\|_{\rm HS}^3\le\frac1{|I_v||I_{v+1}|}\int_{I_v\times I_{v+1}}|F_v|^3 .
+\]">\[
+\|W_v\|_{\rm HS}^3\le\frac1{|I_v||I_{v+1}|}\int_{I_v\times I_{v+1}}|F_v|^3 .
+\]</span>
+Every block occurs in two row stars, and every pair <span class="math" data-tex="\((I_v,I_{v+1})\in\mathcal D_k^2\)">\((I_v,I_{v+1})\in\mathcal D_k^2\)</span> lies in exactly one admissible triple; as <span class="math" data-tex="\(2^{2k}=|I_v||I_{v+1}|\)">\(2^{2k}=|I_v||I_{v+1}|\)</span>, summation gives <span class="math" data-tex="\(J_k\le2\sqrt2\sum_v\|F_v\|_3^3\)">\(J_k\le2\sqrt2\sum_v\|F_v\|_3^3\)</span>. The sums are finite, since only finitely many blocks are nonzero.</p>
+<p>By Lemma 1.2(2), every admissible triple of scale <span class="math" data-tex="\(k-1\)">\(k-1\)</span> is a child of exactly one admissible triple of scale <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(2^{2k}/4=2^{2(k-1)}\)">\(2^{2k}/4=2^{2(k-1)}\)</span>. So the child terms of <span class="math" data-tex="\(\sum_{\mathbf I\in\mathcal A_k}2^{2k}\delta(\mathbf I)\)">\(\sum_{\mathbf I\in\mathcal A_k}2^{2k}\delta(\mathbf I)\)</span> add up to <span class="math" data-tex="\(J_{k-1}\)">\(J_{k-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-proof-of-theorem-a">3. Proof of Theorem A</h2>
+<p>By Lemma 1.4 of the first lesson, it suffices to prove the inequality for bounded step functions with bounded support, constant on products of atoms of a level <span class="math" data-tex="\(m\le\min S-1\)">\(m\le\min S-1\)</span>. The case <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span> is trivial. Otherwise let <span class="math" data-tex="\(k_-=\min S\)">\(k_-=\min S\)</span> and <span class="math" data-tex="\(k_+=\max S\)">\(k_+=\max S\)</span>. By Lemma 1.1, Proposition 3.1 and Lemma 3.2, and because every <span class="math" data-tex="\(\delta(\mathbf I)\)">\(\delta(\mathbf I)\)</span> is nonnegative, so that the scales between <span class="math" data-tex="\(k_-\)">\(k_-\)</span> and <span class="math" data-tex="\(k_+\)">\(k_+\)</span> not in <span class="math" data-tex="\(S\)">\(S\)</span> may be added,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{k\in S}\sum_{\mathbf I\in\mathcal A_k}|L_{\mathbf I}|=\sum_{k\in S}\sum_{\mathbf I\in\mathcal A_k}2^{2k}|\tau(\mathbf I)|\\
+&amp;\quad\le\frac{10\sqrt2}3\sum_{k=k_-}^{k_+}(J_{k-1}-J_k)\\
+&amp;\quad\le\frac{10\sqrt2}3J_{k_--1}\le\frac{40}3\sum_{v=0}^2\|F_v\|_3^3 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{k\in S}\sum_{\mathbf I\in\mathcal A_k}|L_{\mathbf I}|=\sum_{k\in S}\sum_{\mathbf I\in\mathcal A_k}2^{2k}|\tau(\mathbf I)|\\
+&amp;\quad\le\frac{10\sqrt2}3\sum_{k=k_-}^{k_+}(J_{k-1}-J_k)\\
+&amp;\quad\le\frac{10\sqrt2}3J_{k_--1}\le\frac{40}3\sum_{v=0}^2\|F_v\|_3^3 .
+\end{aligned}
+\]</span>
+If some <span class="math" data-tex="\(F_v\)">\(F_v\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span> in <span class="math" data-tex="\(L^3\)">\(L^3\)</span>, every local form vanishes. Otherwise apply this to <span class="math" data-tex="\(F_v/\|F_v\|_3\)">\(F_v/\|F_v\|_3\)</span>: each local form is trilinear, and the right side becomes <span class="math" data-tex="\(\frac{40}3\cdot3=40\)">\(\frac{40}3\cdot3=40\)</span>. This proves Theorem A. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof never used the coefficients <span class="math" data-tex="\(\epsilon_k\)">\(\epsilon_k\)</span> or the signs of the local forms, which is why the bound holds for the sum of absolute values. Lemma 1.3 of the first lesson gives the much weaker bound <span class="math" data-tex="\(|S|\prod_v\|F_v\|_3\)">\(|S|\prod_v\|F_v\|_3\)</span>; the telescoping of the energies removes the factor <span class="math" data-tex="\(|S|\)">\(|S|\)</span>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>3.1</strong> (easy). Deduce from Proposition 3.1 and Lemma 3.2 that <span class="math" data-tex="\(J_k\le J_{k-1}\)">\(J_k\le J_{k-1}\)</span> for <span class="math" data-tex="\(k\ge m+1\)">\(k\ge m+1\)</span>, so that the weighted energies increase towards finer scales and stay below <span class="math" data-tex="\(2\sqrt2\sum_v\|F_v\|_3^3\)">\(2\sqrt2\sum_v\|F_v\|_3^3\)</span>.</p>
+<p><strong>3.2</strong> (easy). For <span class="math" data-tex="\(F_0=F_1=F_2=\mathbf 1_{[0,1)^2}\)">\(F_0=F_1=F_2=\mathbf 1_{[0,1)^2}\)</span>, <span class="math" data-tex="\(m=0\)">\(m=0\)</span> and <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, compute <span class="math" data-tex="\(e(\mathbf I)\)">\(e(\mathbf I)\)</span> for <span class="math" data-tex="\(\mathbf I=([0,1),[0,1),[0,1))\)">\(\mathbf I=([0,1),[0,1),[0,1))\)</span>, and check <span class="math" data-tex="\(J_0\le2\sqrt2\sum_v\|F_v\|_3^3\)">\(J_0\le2\sqrt2\sum_v\|F_v\|_3^3\)</span>.</p>
+<p><strong>3.3</strong> (medium). Show that the matrix <span class="math" data-tex="\(C_v=(I+s_vD_v)^{1/2}\)">\(C_v=(I+s_vD_v)^{1/2}\)</span> used in Proposition 3.1 satisfies <span class="math" data-tex="\(C_v^2=I+s_vD_v\)">\(C_v^2=I+s_vD_v\)</span>, <span class="math" data-tex="\(\frac12(C_v^2|_{s_v=1}+C_v^2|_{s_v=-1})=I\)">\(\frac12(C_v^2|_{s_v=1}+C_v^2|_{s_v=-1})=I\)</span>, and that <span class="math" data-tex="\(C_vW_vC_{v+1}\)">\(C_vW_vC_{v+1}\)</span> is the matrix of <span class="math" data-tex="\(F_v\)">\(F_v\)</span> for the child, with the child's atom weights <span class="math" data-tex="\(2w\)">\(2w\)</span>.</p>
+<p><strong>3.4</strong> (medium). Show that <span class="math" data-tex="\(|L_{\mathbf I}|\le\frac{10\sqrt2}3\,2^{2k}\delta(\mathbf I)\)">\(|L_{\mathbf I}|\le\frac{10\sqrt2}3\,2^{2k}\delta(\mathbf I)\)</span> for every <span class="math" data-tex="\(k\ge m+1\)">\(k\ge m+1\)</span> and <span class="math" data-tex="\(\mathbf I\in\mathcal A_k\)">\(\mathbf I\in\mathcal A_k\)</span>, and deduce that <span class="math" data-tex="\(\sum_{k=m+1}^K\sum_{\mathbf I\in\mathcal A_k}|L_{\mathbf I}|\le\frac{10\sqrt2}3J_m\)">\(\sum_{k=m+1}^K\sum_{\mathbf I\in\mathcal A_k}|L_{\mathbf I}|\le\frac{10\sqrt2}3J_m\)</span> for every <span class="math" data-tex="\(K\ge m+1\)">\(K\ge m+1\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>3.1.</strong> By Lemma 3.2, <span class="math" data-tex="\(J_{k-1}-J_k=\sum_{\mathbf I\in\mathcal A_k}2^{2k}\delta(\mathbf I)\)">\(J_{k-1}-J_k=\sum_{\mathbf I\in\mathcal A_k}2^{2k}\delta(\mathbf I)\)</span>, a sum of nonnegative terms by Proposition 3.1. So <span class="math" data-tex="\(J_k\le J_{k-1}\le\dots\le J_m\le2\sqrt2\sum_v\|F_v\|_3^3\)">\(J_k\le J_{k-1}\le\dots\le J_m\le2\sqrt2\sum_v\|F_v\|_3^3\)</span>.</p>
+<p><strong>3.2.</strong> Each <span class="math" data-tex="\(H_v\)">\(H_v\)</span> is one-dimensional and <span class="math" data-tex="\(w=1\)">\(w=1\)</span>, so <span class="math" data-tex="\(W_v=(1)\)">\(W_v=(1)\)</span>, <span class="math" data-tex="\(R_v=(1,1)\)">\(R_v=(1,1)\)</span>, <span class="math" data-tex="\(T_v\)">\(T_v\)</span> has the single positive eigenvalue <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(e_v(\mathbf I)=2^{3/2}\)">\(e_v(\mathbf I)=2^{3/2}\)</span>. So <span class="math" data-tex="\(e(\mathbf I)=3\cdot2^{3/2}=6\sqrt2\)">\(e(\mathbf I)=3\cdot2^{3/2}=6\sqrt2\)</span>. Every other admissible triple of scale <span class="math" data-tex="\(0\)">\(0\)</span> has the form <span class="math" data-tex="\((0,a,a)\)">\((0,a,a)\)</span>, <span class="math" data-tex="\((a,0,a)\)">\((a,0,a)\)</span>, <span class="math" data-tex="\((a,a,0)\)">\((a,a,0)\)</span> or has three nonzero indices, with <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>; each of its blocks involves an interval other than <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> and vanishes. So <span class="math" data-tex="\(J_0=6\sqrt2\)">\(J_0=6\sqrt2\)</span>, while <span class="math" data-tex="\(2\sqrt2\sum_v\|F_v\|_3^3=6\sqrt2\)">\(2\sqrt2\sum_v\|F_v\|_3^3=6\sqrt2\)</span>: equality.</p>
+<p><strong>3.3.</strong> <span class="math" data-tex="\(D_v\)">\(D_v\)</span> is diagonal with entries <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, so <span class="math" data-tex="\(I+s_vD_v\)">\(I+s_vD_v\)</span> is diagonal with entries <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>: <span class="math" data-tex="\(2\)">\(2\)</span> on the atoms where <span class="math" data-tex="\(h_{I_v}=s_v\)">\(h_{I_v}=s_v\)</span>, that is, on the half chosen by <span class="math" data-tex="\(s_v\)">\(s_v\)</span>. Its square root <span class="math" data-tex="\(C_v\)">\(C_v\)</span> has entries <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, and the average of <span class="math" data-tex="\(I+D_v\)">\(I+D_v\)</span> and <span class="math" data-tex="\(I-D_v\)">\(I-D_v\)</span> is <span class="math" data-tex="\(I\)">\(I\)</span>. For atoms <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(j\)">\(j\)</span> in the chosen halves, <span class="math" data-tex="\((C_vW_vC_{v+1})(i,j)=2wF_v(i,j)\)">\((C_vW_vC_{v+1})(i,j)=2wF_v(i,j)\)</span>, the child's entry <span class="math" data-tex="\(\sqrt{2w\cdot2w}\,F_v(i,j)\)">\(\sqrt{2w\cdot2w}\,F_v(i,j)\)</span>; other entries vanish.</p>
+<p><strong>3.4.</strong> By Lemma 1.1 and Proposition 3.1, <span class="math" data-tex="\(|L_{\mathbf I}|=2^{2k}|\tau(\mathbf I)|\le\frac{10\sqrt2}32^{2k}\delta(\mathbf I)\)">\(|L_{\mathbf I}|=2^{2k}|\tau(\mathbf I)|\le\frac{10\sqrt2}32^{2k}\delta(\mathbf I)\)</span>. Summing over <span class="math" data-tex="\(\mathbf I\in\mathcal A_k\)">\(\mathbf I\in\mathcal A_k\)</span> and over <span class="math" data-tex="\(m+1\le k\le K\)">\(m+1\le k\le K\)</span> and using Lemma 3.2, the sum telescopes to <span class="math" data-tex="\(\frac{10\sqrt2}3(J_m-J_K)\le\frac{10\sqrt2}3J_m\)">\(\frac{10\sqrt2}3(J_m-J_K)\le\frac{10\sqrt2}3J_m\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-D] OpenAI, <em>An <span class="math" data-tex="\(L^3\)">\(L^3\)</span> bound for the dyadic triangular Hilbert form</em>, OpenAI Math Release preprint, 5 October 2026, Sections 4 and 5. https://github.com/openai/math/tree/main/preprints/An-L3-bound-for-the-dyadic-triangular-Hilbert-form-October-5-2026</li>
+<li>[K1] V. Kovač, <em>Bellman function technique for multilinear estimates and an application to generalized paraproducts</em>, Indiana University Mathematics Journal 60 (2011), 813–846; arXiv:1108.0917. https://arxiv.org/abs/1108.0917</li>
+<li>[K2] V. Kovač, <em>Boundedness of the twisted paraproduct</em>, Revista Matemática Iberoamericana 28 (2012), 1143–1164; arXiv:1011.6140. https://arxiv.org/abs/1011.6140</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

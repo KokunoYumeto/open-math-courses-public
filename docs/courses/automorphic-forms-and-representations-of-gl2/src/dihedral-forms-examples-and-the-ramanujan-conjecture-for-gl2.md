@@ -356,8 +356,6 @@ The summand is zero at a zero of the cubic. There is one point at infinity, and 
 | \(\#E(\mathbb F_p)\) | 4 | 8 | 8 | 8 | 16 | 40 | 40 | 32 |
 | \(a_p(E)=a_p(f_{32})\) | 0 | −2 | 0 | 6 | 2 | −10 | −2 | 10 |
 
-To identify the forms for all coefficients, use elliptic modularity, stated in Allen–Anderson–Hamakiotes–Oltsik–Swisher, Theorem 1.1, and the exact conductor-32 record for [LMFDB curve 32.a3](https://www.lmfdb.org/EllipticCurve/Q/32/a/3). It gives a normalized \(g_E\in S_2(\Gamma_0(32))\). The curve has additive reduction at two, so its local factor there is one. Equations (4.4) at \(3,5,7\) and the elliptic Euler-product recurrence give all coefficients through eight: only \(a_1=1\) and \(a_5=-2\) are nonzero. They agree with (4.2).
-
 Here is the needed finite-index uniqueness argument, which we will also use at level 23. If \(h\ne0\) is a holomorphic weight-\(k\) form with a finite-order character on a subgroup \(\Gamma\) of index \(d\), form
 \(P=\prod_{\gamma\in\Gamma\backslash\mathrm{SL}_2(\mathbb Z)}h|_k\gamma\).
 Right multiplication permutes cosets and contributes values of the character. If its order divides \(r\), then \(P^r\) is a level-one form of weight \(rkd\). Every factor is bounded at infinity, because \(h\) is holomorphic at every cusp. The identity factor shows \(v_\infty(P^r)\ge r v_\infty(h)\). The valence bound of [LG-MF-05](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-05.html), Theorem 1.1, implies
@@ -367,7 +365,91 @@ v_\infty(h)\le kd/12.
 \]
 The factors may individually have fractional cusp exponents, but their product power is level one, and all of their orders are nonnegative. No assumption that each has period one is needed.
 
-For \(\Gamma_0(32)\), \(d=32(1+1/2)=48\). If \(g_E-f_{32}\) were nonzero it would have order at least nine, exceeding \(2\cdot48/12=8\). Thus \(g_E=f_{32}\). The conductor and elliptic modularity are precisely stated inputs; the coefficient calculations and the all-coefficient identification are proved here.
+### 4.1. Every prime trace from a Jacobi sum
+
+A quartic Jacobi sum identifies the finite point counts with the primary generators at every odd prime. We use characters extended by zero at zero.
+
+**Lemma 4.1 — the Gaussian prime selected by the curve.** Suppose \(p\equiv1\pmod4\), let \(\varphi\) be the quadratic character of \(\mathbb F_p^\times\), and choose a character \(\chi\) of order four with \(\chi^2=\varphi\). Put
+\[
+ J=\sum_{t\in\mathbb F_p}\chi(t)\varphi(1-t).
+ \tag{4.6}
+\]
+Then \(-J\in\mathbb Z[i]\) has norm \(p\) and is congruent to one modulo \((1+i)^3\). The two primary generators of norm \(p\) are \(-J,-\overline J\), and
+\[
+ a_p(E)=-(J+\overline J)=a_p(f_{32}).
+ \tag{4.7}
+\]
+
+**Proof.** First, an order-four character exists. A finite subgroup \(H\) of the multiplicative group of a field is cyclic: its exponent \(d\) is attained by multiplying elements of maximal prime-power orders, and every member is a root of \(X^d-1\). The polynomial root bound gives \(|H|\le d\), while an element of order \(d\) gives the reverse inequality. Send a generator of \(\mathbb F_p^\times\) to \(i\). Its square is the quadratic character; taking the inverse gives the other choice. Every summand of \(J\) is a Gaussian integer.
+
+To compute its norm, for a nontrivial character \(A\) set
+\(G(A)=\sum_x A(x)e^{2\pi ix/p}\). Multiplying its squared absolute value and writing the two nonzero variables as \(ty,y\) gives
+\[
+ |G(A)|^2
+ =\sum_{t\ne0}A(t)\sum_{y\ne0}e^{2\pi i(t-1)y/p}
+ =(p-1)-\sum_{t\ne0,1}A(t)=p.
+\]
+Here \(\sum_{t\ne0}A(t)=0\), since multiplication by an element on which \(A\ne1\) multiplies that sum by a nontrivial scalar. If \(A,B,AB\) are nontrivial, grouping the product \(G(A)G(B)\) by \(z=x+y\) gives
+\[
+ G(A)G(B)=J(A,B)G(AB).
+\]
+For \(z\ne0\), put \(x=zt,y=z(1-t)\); the term \(z=0\) vanishes by orthogonality of \(AB\). Thus \(|J(A,B)|^2=p\). Apply this with \(A=\chi,B=\varphi\): their product is \(\chi^3\), which is nontrivial. Consequently \(J\overline J=p\).
+
+The sign and unit of this Gaussian prime matter. Write \(p=4k+1\). The residues \(2,4,\ldots,p-1\), each replaced by its representative up to sign in \(\{1,\ldots,(p-1)/2\}\), give a permutation of that set. Exactly \(k\) of them need a negative sign. Cancelling its factorial in their product gives \(2^{(p-1)/2}=(-1)^k\) in \(\mathbb F_p\), hence
+\(\varphi(2)=(-1)^k=\chi(-1)\).
+
+For \(t\ne0,1\) put \(b(t)=\chi(t)\varphi(1-t)\). Inversion preserves this summand, because \(\varphi(-1)=1\) and
+\[
+ b(t^{-1})=\chi(t)^{-1}\varphi(t-1)\varphi(t)=b(t).
+\]
+Its only fixed point in that domain is \(-1\), and \(b(-1)=\chi(-1)\varphi(2)=1\). The other points form \((p-3)/2\) pairs. Every nonzero Gaussian unit is one modulo \(1+i\). Therefore, writing one representative from each pair,
+\[
+ J=1+2\sum b(t)\equiv p-2\equiv-1
+                \pmod{(1+i)^3}.
+\]
+The first congruence uses \(2(1+i)\in((1+i)^3)\); the second uses \(4\mid p-1\). Hence \(-J\) is the primary generator of its prime ideal. Its conjugate is also primary and belongs to the other prime above \(p\). They are distinct: a real Gaussian integer cannot have the nonsquare norm \(p\). The Euclidean argument at the start of Section 4 gives uniqueness of the primary generator of either prime ideal.
+
+It remains to connect the sum to the cubic. Since \(\varphi(-1)=1\),
+\[
+ \sum_x\varphi(x^3-x)=\sum_x\varphi(x)\varphi(1-x^2).
+\]
+Group the right side by \(t=x^2\). At a nonzero square, \(\chi(t)=\varphi(x)\), and its two square roots have the same quadratic character. At a nonsquare, \(\chi(t)+\chi(t)^{-1}=0\). The zero terms contribute zero. It follows that this sum is \(J+\overline J\). Equation (4.4) now gives (4.7), since the ideal series adds the two primary generators. Replacing \(\chi\) by \(\chi^{-1}\) simply exchanges them. \(\square\)
+
+Together with the cancellation at \(p\equiv3\pmod4\), this proves the trace equality at every odd prime. The elementary Gauss identities also appear in Conrad, *Gauss and Jacobi sums on finite fields and \(\mathbb Z/m\mathbb Z\)*, Theorems 2.2 and 2.4 and Corollary 2.5; the proof above includes them and determines the required primary congruence.
+
+### 4.2. The prime two and the exact conductor
+
+We use the written conductor and model results of *Elliptic curves over local fields*: Lemma 6.0A for the two-component additive model, Section 6.0I for its identification with the minimal regular model, and Section 6.0BI.5, equation (JM30), for
+\[
+ v_p(\Delta_{\min})=M-1+f_p(E).
+ \tag{4.8}
+\]
+Here \(M\) is the number of geometric components, and \(f_p(E)\) is the Artin conductor exponent of the elliptic Tate module. That earlier proof includes dyadic wild ramification. Its Theorem 5.1 gives the additive local factor one.
+
+**Proposition 4.2 — the conductor and the bad factor.** The curve \(E:y^2=x^3-x\) has minimal discriminant \(64\), conductor \(32\), and local factor one at two.
+
+**Proof.** The coefficient formulas give \(c_4=48\) and \(\Delta=64\). Thus the model is smooth at every odd prime. At two its discriminant valuation is six. Every change to another integral Weierstrass equation changes that valuation by a multiple of twelve, and an integral nonsingular equation has nonnegative discriminant valuation. No smaller nonnegative value is congruent to six modulo twelve, so this equation is minimal at two.
+
+Make the integral change \(x=X+1,y=Y+X\). It gives
+\[
+ Y^2+2XY=X^3+2X^2+2X.
+ \tag{4.9}
+\]
+Thus \(a_1=a_2=a_4=2\), \(a_3=a_6=0\), and \(b_8=-4\). The second test in the proved Lemma 6.0A applies: \(4\mid a_6\) and \(8\nmid b_8\). It gives two smooth rational components, each of multiplicity one, meeting with intersection length two.
+
+One can see this intersection directly. In the blowup chart \(2=Xv,Y=Xu\), the strict-transform equation is
+\[
+ u^2+Xvu-X-Xv-v=0,\qquad 2=Xv.
+ \tag{4.10}
+\]
+Its \(v\)-coefficient at the intersection is a unit, so the surface is regular there. The two components are \(X=0\) and \(v=0\); their intersection has ring \(\mathbb F_2[u]/(u^2)\). The other charts and relative minimality are the remaining assertions of Lemma 6.0A and Section 6.0I. Hence this is the type-\(III\) minimal regular fibre and \(M=2\). Formula (4.8) gives
+\(f_2(E)=6-2+1=5\). All odd exponents are zero, so the conductor is \(2^5=32\). The special cubic in (4.9) is cuspidal, hence additive; its local factor is one by the same earlier local theorem. \(\square\)
+
+**Corollary 4.3 — all Euler factors and all coefficients.** The arithmetic Euler product of \(E\) equals the classical finite \(L\)-function of \(f_{32}\).
+
+**Proof.** At a good prime both factors are
+\((1-a_p p^{-s}+p^{1-2s})^{-1}\). Lemma 4.1 proves equality of their traces at split primes, and the cancellation following (4.4) proves it at inert primes. At two, Proposition 4.2 gives the curve factor one, agreeing with the missing even-ideal factor of \(f_{32}\). The Euler products therefore agree term by term in a right half-plane. Their prime-power recurrences and multiplicativity give equality of every Dirichlet coefficient. Theorem 3.1 already proves that \(f_{32}\) is a normalized primitive weight-two form of exact level 32 and trivial character. This identifies the specified curve's \(L\)-function with that newform, including its bad prime and conductor. \(\square\)
+
 
 ## 5. A dihedral weight-one form of level 23
 
@@ -377,7 +459,10 @@ Put \(K=\mathbb Q(\sqrt{-23})\), \(\vartheta=(1+\sqrt{-23})/2\). Then
 N(a+b\vartheta)=a^2+ab+6b^2.
 \tag{5.1}
 \]
-The norm equals \((a+b/2)^2+23b^2/4\), so the only units are \(\pm1\). We calculate the class group, rather than assuming its order. Minkowski's ideal-class bound gives an integral representative of norm at most \((2/\pi)\sqrt{23}<4\). The primes two and three split, since their defining polynomial is \(X(X-1)\) modulo each. Set \(\mathfrak p=(2,\vartheta)\) and \(\mathfrak q=(3,\vartheta)\). Then
+The norm equals \((a+b/2)^2+23b^2/4\), so the only units are \(\pm1\). We calculate the class group, rather than assuming its order. Here is the small ideal-class bound needed for this field. In the complex embedding, the lattice \(\mathcal O_K\) has basis \(1,\vartheta\) and covolume \(\sqrt{23}/2\). An integral ideal \(A\) has index \(NA\), so its lattice covolume is \(NA\sqrt{23}/2\). For any planar lattice \(L\) of covolume \(v\), an open disk of area greater than \(4v\), centred at zero, contains a nonzero lattice point. To prove this, partition the disk of half that radius by translates of a half-open fundamental parallelogram and translate the finitely many pieces back into the parallelogram. Their areas sum to more than \(v\), so two pieces overlap. The corresponding points differ by a nonzero lattice vector; the difference lies in the original disk by the triangle inequality. This proves the disk assertion directly.
+
+Choose a squared radius \(R^2\) with
+\((2/\pi)\sqrt{23}\,NA<R^2<4NA\); such a choice exists since \(\sqrt{23}<2\pi\). The disk assertion produces \(0\ne\alpha\in A\) with \(|\alpha|^2<4NA\). The ideal \(B=(\alpha)A^{-1}\) is integral, represents the inverse class of \(A\), and has integer norm \(NB=|\alpha|^2/NA<4\). Every fractional ideal class has an integral representative after multiplication by a nonzero integer, so every class has an integral representative of norm at most three. This is the required bound; no unproved general geometry-of-numbers theorem is used. The primes two and three split, since their defining polynomial is \(X(X-1)\) modulo each. Set \(\mathfrak p=(2,\vartheta)\) and \(\mathfrak q=(3,\vartheta)\). Then
 \[
 (\vartheta)=\mathfrak p\mathfrak q,
 \qquad (\vartheta+1)=\overline{\mathfrak p}^{\,3}.
@@ -401,7 +486,144 @@ F(z)=\sum_{\mathfrak a\subset\mathcal O_K}\xi(\mathfrak a)q^{N\mathfrak a}
 \]
 To prove the equality, for a representative ideal \(A\), integral ideals in class \([A]^{-1}\) are \((\alpha)A^{-1}\) with \(0\ne\alpha\in A\), modulo the two units, and have norm \(N\alpha/NA\). For \(A=\mathcal O_K\) this gives \((\Theta_0-1)/2\). The basis \(2,\vartheta\) of \(\mathfrak p\) gives \(N(2a+b\vartheta)/2=2a^2+ab+3b^2\). Its conjugate gives the minus cross term, with the same theta series after \(a\mapsto-a\). The two class weights add to \(\zeta_3+\zeta_3^{-1}=-1\), giving (5.4); the constant terms cancel.
 
-The two Gram matrices are \(A_0=\bigl(\begin{smallmatrix}2&1\\1&12\end{smallmatrix}\bigr)\), \(A_1=\bigl(\begin{smallmatrix}4&1\\1&6\end{smallmatrix}\bigr)\). Each has determinant 23 and lattice level 23, since \(23A_j^{-1}\) is integral with even diagonal and no smaller positive integer has that property. The stated lattice-theta theorem of [LG-MF-14](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-14.html), Theorem 6.1, gives weight one and character \(\epsilon_{-23}\), including holomorphy at every cusp.
+The two Gram matrices are \(A_0=\bigl(\begin{smallmatrix}2&1\\1&12\end{smallmatrix}\bigr)\), \(A_1=\bigl(\begin{smallmatrix}4&1\\1&6\end{smallmatrix}\bigr)\). Each has determinant 23 and lattice level 23, since \(23A_j^{-1}\) is integral with even diagonal and no smaller positive integer has that property.
+
+### 5.1. The binary theta transformation and all cusps
+
+**Theorem 5.1.** The two series in (5.3) belong to
+\(M_1(\Gamma_0(23),\epsilon_{-23})\). Their difference is cuspidal.
+
+**Proof.** We give the finite transformation calculation. Put \(p=23\),
+\(e_p(t)=\exp(2\pi it/p)\), and let \(\chi\) be the quadratic character of
+\(\mathbb F_p^\times\). For the lattice \(L=\mathbb Z^2\) with Gram matrix
+\(A_j\), the discriminant group \(L^\vee/L\) is cyclic of order \(p\).
+Generators are \(v_0=(-1,2)/23\) and \(v_1=(-1,4)/23\), respectively.
+Writing \(Q(x)=x^tA_jx/2\), their quadratic values are \(1/23\) and
+\(2/23\). Thus in either case the discriminant quadratic form is
+\(Q(tv_j)=\alpha t^2/p\pmod{\mathbb Z}\), where \(\alpha=1\) or \(2\).
+Define the column vector
+\[
+ \theta_t(z)=\sum_{x\in L+tv_j}\exp(2\pi izQ(x)),
+ \qquad t\in\mathbb F_p.
+\tag{5.4a}
+\]
+Positive definiteness bounds the summands, and every derivative on a compact
+subset of the half-plane, by a polynomial times a convergent Gaussian sum.
+The series are holomorphic. They have only nonnegative rational exponents;
+their constant-term vector is the vector \(e_0\) supported at \(t=0\).
+Also \(\theta_{-t}=\theta_t\).
+
+Let \(S=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)\) and
+\(T=\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)\). With the
+ordinary weight-one slash, shifted Poisson summation gives
+\[
+ \theta|_1T=\mathcal T\theta,
+ \quad (\mathcal Tf)(x)=e_p(\alpha x^2)f(x),
+ \qquad
+ \theta|_1S=\mathcal S\theta,
+ \quad (\mathcal Sf)(x)=\frac{-i}{\sqrt p}
+       \sum_{y\in\mathbb F_p}e_p(-2\alpha xy)f(y).
+\tag{5.4b}
+\]
+Here and below a matrix acts on the column of component functions. To check
+the Poisson factor, use the Fourier kernel \(e^{-2\pi i x\cdot u}\): the
+covolume is \(\sqrt{\det A_j}=\sqrt p\), the rank-two Gaussian contributes
+\(-iz\), and the coset pairing is \(2\alpha xy/p\). The plus sign in the
+shifted Poisson exponential can equally be changed to the displayed minus
+sign by \(y\mapsto-y\), because \(\theta_y=\theta_{-y}\).
+The real Gaussian and Schwartz Poisson formula, with convergence proved,
+are Theta functions and sums of squares,
+Theorem 1.1. Applying that formula to the shifted function and making a
+linear change of variables gives the lattice version: the Fourier
+transform acquires the factor \(1/\sqrt p\) and the dual lattice. First
+apply it at \(z=it\), \(t>0\), and extend the identity to the half-plane by
+holomorphy. This proves (5.4b), including its phase.
+
+We also determine the finite Gaussian phase, rather than assuming it. Put
+\(G_\alpha=\sum_y e_p(\alpha y^2)\). Completion of the square gives
+\[
+ \sum_y e_p\bigl(\alpha(ty^2+2uy)\bigr)
+ =\begin{cases}
+ \chi(t)G_\alpha e_p(-\alpha u^2/t),&t\ne0,\\
+ p,&t=0, u=0,\\
+ 0,&t=0, u\ne0.
+ \end{cases}
+\tag{5.4c}
+\]
+Indeed a nonzero square has two square roots, zero has one, and a
+nonsquare has none. Summing by \(y^2\), then changing variable, proves
+\(\sum_y e_p(\alpha ty^2)=\chi(t)G_\alpha\); translation by \(u/t\)
+proves the first line. The remaining lines are finite geometric sums.
+Using this calculation twice shows
+\((\mathcal S\mathcal T)^3=(iG_\alpha/\sqrt p)R\), where
+\((Rf)(x)=f(-x)\). On the actual theta vector,
+\((ST)^3=-I\) gives \((\mathcal S\mathcal T)^3\theta=-\theta\).
+Since \(R\theta=\theta\) and \(\theta_0(it)>0\), it follows that
+\(G_\alpha=i\sqrt p\). In particular \(G_\alpha^2=-p\).
+
+For \(g=\left(\begin{smallmatrix}A&B\\C&D\end{smallmatrix}\right)
+\in\mathrm{SL}_2(\mathbb F_p)\), define
+\[
+ (\rho_\alpha(g)f)(x)=
+ \begin{cases}
+ \chi(A)e_p(\alpha ABx^2)f(Ax),&C=0,\\[2pt]
+ \displaystyle\frac{\chi(C)}{G_\alpha}
+ \sum_y e_p\!\left(\frac{\alpha}{C}
+       (Ax^2-2xy+Dy^2)\right)f(y),&C\ne0.
+ \end{cases}
+\tag{5.4d}
+\]
+These operators form a representation. Here is the multiplication check.
+If the two lower-left entries \(C_1,C_2\) are nonzero, the coefficient of
+the intermediate variable's square in the composite kernel is
+\(t=D_1/C_1+A_2/C_2=C_{12}/(C_1C_2)\).
+For \(C_{12}\ne0\), (5.4c) makes the prefactor
+\(\chi(C_1C_2)\chi(t)/G_\alpha=\chi(C_{12})/G_\alpha\).
+Completing the square makes the three remaining coefficients
+\(A_{12}/C_{12},-2/C_{12},D_{12}/C_{12}\): for instance
+\(A_1/C_1-1/(C_1^2t)=A_{12}/C_{12}\), using
+\(A_1D_1-B_1C_1=1\). If \(C_{12}=0\), the geometric sum vanishes unless
+\(y=-C_2x/C_1=A_{12}x\). Its factor is
+\(p\chi(C_1C_2)/G_\alpha^2=-\chi(C_1C_2)=\chi(A_{12})\),
+since \(\chi(-1)=-1\); the remaining phase is
+\(e_p(\alpha A_{12}B_{12}x^2)\). This is the triangular line of (5.4d).
+If the first factor is triangular, substitute \(x\mapsto A_1x\) in the
+second kernel. Its new lower-left entry is \(C_2/A_1\), its coefficient
+of \(x^2\) is \(A_1^2A_2/C_2+A_1B_1\), and its prefactor is
+\(\chi(A_1C_2)/G_\alpha\), exactly the product formula. If the second
+factor is triangular, substitute \(y\mapsto y/A_2\); the new lower-left
+entry is \(C_1A_2\), and the coefficient of \(y^2\) is
+\(D_1/(C_1A_2^2)+B_2/A_2\), again the required formula. When both are
+triangular, multiplying their permutation and diagonal factors gives
+\(A_{12}=A_1A_2\) and
+\(A_{12}B_{12}=A_1B_1+A_1^2A_2B_2\). This covers all cases.
+
+Formula (5.4d) agrees with \(\mathcal S,\mathcal T\) at the reductions of
+\(S,T\). Those two integral matrices generate \(\mathrm{SL}_2(\mathbb Z)\):
+left multiplication by powers of \(T\), followed by \(S\), is the
+Euclidean algorithm on the first column, reducing it to \((\pm1,0)^t\);
+\(S^2=-I\) and a final power of \(T\) finish the reduction. Consequently
+\(\theta|_1\gamma=\rho_\alpha(\overline\gamma)\theta\) for every integral
+\(\gamma\). For \(\gamma\in\Gamma_0(23)\), its reduction is triangular,
+and the zero component in (5.4d) is multiplied by
+\(\chi(A)=\chi(D)\). Thus \(\Theta_j|_1\gamma=\chi(d)\Theta_j\).
+This is \(\epsilon_{-23}(d)\): quadratic reciprocity gives
+\((-23/\ell)=(\ell/23)\) for every odd prime \(\ell\ne23\), while at
+\(2\) both sides are one, as \(-23\equiv1\pmod8\) and \(2=5^2\pmod{23}\), and at \(-1\) both
+are minus one. Multiplicativity proves the assertion for every integer
+prime to 23. The reciprocity law used here is proved in
+The global reciprocity law,
+Section 7.
+
+For an arbitrary cusp representative \(\gamma\), every component of
+\(\theta|_1\gamma\) is a finite linear combination of the convergent
+series (5.4a). Its exponents are nonnegative and its growth is bounded at
+infinity. Thus every cusp is holomorphic. Finally \(2=5^2\pmod{23}\)
+identifies the discriminant form for \(A_1\) with that for \(A_0\), by
+sending its index \(t\) to \(5t\). Their transformation matrices in this
+common indexing are identical, as are their constant vectors \(e_0\).
+After any \(\gamma\), the constant terms of their zero components are
+therefore identical. Their difference vanishes at every cusp. \(\square\)
 
 There are two cusps, infinity and zero. At infinity the constant term of each \(\Theta_j\) is one. At zero use ordinary two-dimensional Poisson summation:
 \[
@@ -410,12 +632,169 @@ There are two cusps, infinity and zero. At infinity the constant term of each \(
 \]
 Indeed \(\theta_A(-1/z)=(-iz)(\det A)^{-1/2}\theta_{A^{-1}}(z)\); replacing \(z\) by \(23z\) yields (5.5), because \(23A^{-1}=\operatorname{adj}(A)=JAJ^t\) for \(J=\bigl(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\bigr)\), an integral change of basis. With determinant-normalized weight-one Fricke slash, the constants at zero are the same common nonzero multiple of the constants at infinity. Their difference is zero. Thus \(F\) is cuspidal, with first terms \(q-q^2-q^3+\cdots\).
 
-The eta-quotient criterion, stated in Allen–Anderson–Hamakiotes–Oltsik–Swisher, Theorems 1.2 and 1.4, shows
+### 5.2. The eta product and its two cusp orders
+
+We prove the eta calculation for this level, including its character.
+Write \(\zeta_{24}=e^{\pi i/12}\). The product definition and the
+identity \(\eta^{24}=\Delta\), proved in
+The valence formula and the ring of modular forms of level one,
+Theorem 4.1, give
+\[
+ \eta(z+1)=\zeta_{24}\eta(z),
+ \qquad \eta(-1/z)=\sqrt{-iz}\,\eta(z).
+\tag{5.5a}
+\]
+The root is the analytic branch positive at \(z=i\). To verify the second
+identity rather than leave a root of unity unspecified, take its ratio.
+Its twenty-fourth power is one, because \(\Delta(-1/z)=z^{12}\Delta(z)\)
+and \((-iz)^{12}=z^{12}\). The ratio is holomorphic and nonzero on the
+connected half-plane and so constant; at \(i\) it is one. The infinite
+product is nonzero there and throughout the half-plane, by local uniform
+convergence of its logarithm as in the cited proof.
+
+**Lemma 5.2 — an integer recursion for the multiplier.** Let
+\(g=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)
+\in\mathrm{SL}_2(\mathbb Z)\), with \(c>0\). Starting with this matrix,
+repeat
+\[
+ q=\lceil a/c\rceil,
+ \qquad
+ (a,b,c,d)\longmapsto(c,d,qc-a,qd-b).
+\tag{5.5b}
+\]
+Add \(q-3\) at each step. When the matrix becomes
+\(\left(\begin{smallmatrix}1&B\\0&1\end{smallmatrix}\right)\), add \(B\).
+Let the resulting integer, reduced modulo 24, be \(e(g)\). Then, with
+principal square root of \(cz+d\),
+\[
+ \eta(gz)=\zeta_{24}^{e(g)}(cz+d)^{1/2}\eta(z).
+\tag{5.5c}
+\]
+
+**Proof.** The new lower-left entry \(r=qc-a\) lies in \([0,c)\), so the
+process terminates. The new top-left entry is the previous positive
+\(c\); determinant one forces both diagonal entries in the terminal
+triangular matrix to equal one. If \(g_1\) denotes the new matrix, direct
+multiplication gives \(g=T^qSg_1\). Formula (5.5a) gives
+\(\eta(gz)=\zeta_{24}^q\sqrt{-ig_1z}\,\eta(g_1z)\).
+If the lower row of \(g_1\) is \((r,s)\), the product of square roots is
+\[
+ \sqrt{-ig_1z}\,\sqrt{rz+s}
+       =e^{-\pi i/4}\sqrt{cz+d}.
+\]
+Both sides have square \(-i(cz+d)\). Their ratio is a constant sign,
+and is plus one at the limit \(z=it\), \(t\to\infty\): when \(r>0\),
+\(g_1(it)\to c/r>0\), while \(\arg(rit+s)\) and \(\arg(cit+d)\) tend to \(\pi/2\);
+when \(r=0\), \(g_1z=z+B\), and the same equality follows directly
+from its argument in \((0,\pi)\). Continuity gives the equality for all
+\(z\). Thus every step adds \(q-3\) to the exponent, and the terminal
+translation adds \(B\). This proves the recursion and (5.5c). \(\square\)
+
+**Proposition 5.3.** The product \(G=\eta(z)\eta(23z)\) has weight one,
+character \(\epsilon_{-23}\), and order one at each cusp of
+\(\Gamma_0(23)\).
+
+**Proof: the group and character.** For
+\(\gamma=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)
+\in\Gamma_0(23)\), put
+\(\gamma^*=\left(\begin{smallmatrix}a&23b\\c/23&d\end{smallmatrix}\right)\).
+Then \(23\gamma z=\gamma^*(23z)\). Since
+\(G^{24}=\Delta(z)\Delta(23z)\), the weight-one ratio
+\(\nu(\gamma)=G|_1\gamma/G\) has twenty-fourth power one. It is a
+constant, and the slash composition law makes \(\nu\) a character.
+We calculate it on a finite generating set.
+
+The left cosets \(\Gamma_0(23)\backslash\mathrm{SL}_2(\mathbb Z)\) are
+represented by \(I\) and \(ST^j\), \(0\le j\le22\): the bottom row
+modulo 23 gives respectively the points \((0:1)\) and \((1:j)\).
+Two matrices have the same point precisely when their quotient has lower-left
+entry divisible by 23. Multiplying the representatives on the right by
+\(T,S\) and returning to this list gives the generators
+\(T,-I,U\), where \(U=\left(\begin{smallmatrix}1&0\\23&1\end{smallmatrix}\right)\),
+and
+\[
+ h_j=\begin{pmatrix}-k&-1\\23m&j\end{pmatrix},
+ \qquad 1\le j\le22,\quad
+ 1\le k\le22,\quad jk\equiv-1\pmod{23},\quad m=(jk+1)/23.
+\]
+Indeed the \(T\)-transition is trivial except at \(ST^{22}\), where it
+produces \(U^{-1}\). The \(S\)-transition at \(S\) produces \(-I\),
+and at \(ST^j\), \(j\ne0\), it returns to \(ST^k\) and gives
+\(ST^jS(ST^k)^{-1}=h_j\). A word in \(S,T\) belonging to the subgroup
+is a product of these transitions: insert the chosen coset representative
+and its inverse after each prefix. Inverse transitions give inverse
+generators. This proves generation, rather than assuming a presentation
+of the subgroup.
+
+One has \(\nu(T)=\zeta_{24}^{1+23}=1\) and \(\nu(-I)=-1\).
+Lemma 5.2 gives \(e(U)=1\), \(e(U^*)=23\), modulo 24, so
+\(\nu(U)=1\). For each \(h_j\), both lower-left entries are positive.
+The two square roots in (5.5c) are identical, since
+\((23m)z+j=m(23z)+j\). Their product cancels the weight-one slash
+factor. Hence \(\nu(h_j)=\zeta_{24}^{e(h_j)+e(h_j^*)}\).
+Here is the complete integer calculation; each column is obtained by
+(5.5b), with all entries in the two exponent columns reduced modulo 24.
+
+| \(j\) | \(k\) | \(m\) | \(e(h_j)\) | \(e(h_j^*)\) | sum modulo 24 |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 22 | 1 | 0 | 0 | 0 |
+| 2 | 11 | 1 | 12 | 12 | 0 |
+| 3 | 15 | 2 | 9 | 15 | 0 |
+| 4 | 17 | 3 | 8 | 16 | 0 |
+| 5 | 9 | 2 | 17 | 19 | 12 |
+| 6 | 19 | 5 | 8 | 16 | 0 |
+| 7 | 13 | 4 | 15 | 21 | 12 |
+| 8 | 20 | 7 | 9 | 15 | 0 |
+| 9 | 5 | 2 | 1 | 23 | 0 |
+| 10 | 16 | 7 | 15 | 21 | 12 |
+| 11 | 2 | 1 | 6 | 6 | 12 |
+| 12 | 21 | 11 | 12 | 12 | 0 |
+| 13 | 7 | 4 | 3 | 21 | 0 |
+| 14 | 18 | 11 | 17 | 19 | 12 |
+| 15 | 3 | 2 | 9 | 3 | 12 |
+| 16 | 10 | 7 | 3 | 21 | 0 |
+| 17 | 4 | 3 | 10 | 2 | 12 |
+| 18 | 14 | 11 | 1 | 23 | 0 |
+| 19 | 6 | 5 | 10 | 2 | 12 |
+| 20 | 8 | 7 | 9 | 3 | 12 |
+| 21 | 12 | 11 | 6 | 6 | 12 |
+| 22 | 1 | 1 | 18 | 18 | 12 |
+
+The nonzero squares modulo 23 are
+\(1,2,3,4,6,8,9,12,13,16,18\), by squaring \(1,\ldots,11\).
+Exactly these rows have sum zero; the other rows have sum twelve.
+Thus \(\nu(h_j)=\chi(j)\). The lower-right entries of \(T,U,-I\) give
+the same character values. For matrices in \(\Gamma_0(23)\), the
+lower-right entry of a product is the product of the lower-right entries
+modulo 23. Consequently the generator calculation proves
+\(\nu(\gamma)=\chi(d)=\epsilon_{-23}(d)\) for every \(\gamma\).
+
+**Proof: the cusps.** A reduced rational number \(a/c\) with \(23\mid c\)
+is the image of infinity under an element of \(\Gamma_0(23)\): complete
+its first column by Bezout. If \(23\nmid c\), solve
+\(uc-23va=1\); the matrix
+\(\left(\begin{smallmatrix}u&a\\23v&c\end{smallmatrix}\right)\)
+sends zero to \(a/c\). These two cases are disjoint, since the divisibility
+of a cusp denominator by 23 is unchanged by the subgroup. There are
+therefore exactly two cusps. The product expansion gives
+\(G=q+O(q^2)\), so its order at infinity is one.
+For \(W_{23}=\left(\begin{smallmatrix}0&-1\\23&0\end{smallmatrix}\right)\),
+use the determinant-normalized weight-one slash. Formula (5.5a) gives
+\[
+ G|_1W_{23}
+ =\frac{\eta(-1/(23z))\eta(-1/z)}{\sqrt{23}\,z}
+ =-iG(z).
+\]
+Thus the local expansion at zero also has order one. The product is
+holomorphic on the half-plane and at both cusps, with zero constants.
+This proves the proposition. \(\square\)
+
+Consequently
 \[
 G(z)=\eta(z)\eta(23z)\in S_1(\Gamma_0(23),\epsilon_{-23}).
 \tag{5.6}
 \]
-Both required sums are \(1+23=24\); the character is \((\frac{-23}{d})\). The cusp-order formula gives order one at each cusp. Also
+The product expansion is
 \(G=q\prod_{n\ge1}(1-q^n)(1-q^{23n})=q-q^2+O(q^3)\).
 If \(F-G\) were nonzero it would have order at least three, whereas (4.5) gives the bound \(1\cdot24/12=2\). Therefore \(F=G\). Direct expansion gives
 \[
@@ -545,7 +924,250 @@ The comparison locators are Jacquet–Langlands, Lemmas 12.3–12.4, printed pp.
 
 ### 6.2. Character interpolation and the two stability calculations
 
-The Artin local constants in this section have Tate's one-dimensional normalization, are multiplicative on virtual representations, and obey induction for virtual dimension zero. Their existence and full global functional equation are the Artin–Hecke inputs in Section 6. The written local conductor and epsilon prerequisites use geometric reciprocity. Here a one-dimensional Weil character is first transported to the actual idèlic character in this course’s arithmetic convention, and its epsilon factor is Tate’s positive-kernel factor for that character. Inertia invariants, conductor sums, induction of dimension-zero differences and determinant transfer are independent of the Frobenius choice. Every phase below is then derived from the idèlic character formula; no geometric Frobenius eigenvalue or root number is copied into an arithmetic formula. We use self-dual measures and the positive Fourier kernel throughout. These are explicit inputs; writing a Brauer product alone would not prove their existence or its independence of choices.
+The local constants in this section use arithmetic reciprocity, Tate’s positive Fourier kernel and self-dual measures. Proposition 6.4A binds their existence, independence and conductor rules to the earlier complete local proofs. Lemma 6.4B and Proposition 6.4C prove the full meromorphic Artin–Hecke equation over every global field and for every quasicharacter twist. The entire, bounded all-twist premise in (6.1) remains the separate analytic hypothesis.
+
+**Proposition 6.4A — local constants in the arithmetic convention.** At a finite place, let \(R\) be a finite-dimensional smooth Weil representation. Write \(\Phi_{\mathrm{ar}}\) for arithmetic Frobenius and use arithmetic reciprocity to identify a Weil line with its idèlic character. There is a unique family of local epsilon constants with Tate's positive Fourier kernel, multiplicativity, measure degree \(\dim R\), and induction for virtual dimension zero. It has the conductor and additive-character rules used below.
+
+**Proof.** The earlier Local L-factors and epsilon factors, Theorem 3.0 and Sections 3A–3D, constructs the geometric-convention family and proves independence from every Brauer relation. Theorem 3.2 proves uniqueness for every smooth representation, including arbitrary unramified twists. Its construction uses finite character sums, the earlier integer Brauer theorem and rank-one global Tate equations; no automorphy or higher-dimensional Artin holomorphy occurs in it. We give the exact conversion, rather than changing a Frobenius label while keeping its eigenvalue.
+
+Let \(\omega_s^{\mathrm{geo}}\) be the earlier norm character, with
+\(\omega_s^{\mathrm{geo}}(\Phi_{\mathrm{geo}})=q^{-s}\). Define
+\[
+ \epsilon_F^{\mathrm{ar}}(s,R,\psi)
+ =\epsilon_F^{\mathrm{geo}}
+       (R^\vee\otimes\omega_s^{\mathrm{geo}},\psi,dx_\psi),
+ \qquad
+ L_F^{\mathrm{ar}}(s,R)=L_F^{\mathrm{geo}}(s,R^\vee).
+\tag{6.6a}
+\]
+The second equality gives precisely the arithmetic Euler factor. Averaging over the finite inertia image identifies
+\(((R^\vee)^{I_F})=(R^{I_F})^\vee\). On this space,
+\(R^\vee(\Phi_{\mathrm{geo}})\) is the transpose of
+\(R(\Phi_{\mathrm{ar}})\), because the two lifts are inverse up to inertia. Their determinant polynomials agree. For a line, geometric reciprocity is the inverse of arithmetic reciprocity, so
+\[
+ R^\vee(\operatorname{Art}_{\mathrm{geo}}a)
+       =R(\operatorname{Art}_{\mathrm{ar}}a).
+\tag{6.6b}
+\]
+Thus (6.6a) has exactly the desired idèlic Tate character, not its inverse.
+
+Duality is exact and preserves dimension. In a finite-index coset model,
+the sum of the dual pairings on matching cosets is nondegenerate and
+invariant; hence \((\operatorname{Ind}U)^\vee\simeq
+\operatorname{Ind}(U^\vee)\). Also
+\(\omega_{F,s}^{\mathrm{geo}}|_{W_E}=\omega_{E,s}^{\mathrm{geo}}\),
+since a degree-one Frobenius over \(E\) has degree \(f(E/F)\) over \(F\).
+These facts transport multiplicativity and rank-zero induction to (6.6a).
+Applying duality again transports any competing arithmetic family back to
+the geometric family, so its proved uniqueness gives uniqueness here.
+
+For every finite ramification group, invariants of the dual have the
+same dimension, by the averaging idempotent and its transpose. Therefore
+\(a_F(R^\vee)=a_F(R)\). The earlier
+conductor lesson,
+Lemma 1.6, Lemma 2.4, Theorem 2.6 and Theorem 4.1, proves quotient
+compatibility, the character conductor, integrality and
+\(a_F(\operatorname{Ind}U)=\dim U\,\delta_{E/F}+f(E/F)a_E(U)\).
+No conductor integrality assumption is added here. Applying the exponent
+and additive-change proofs of the epsilon lesson, Section 4, to (6.6a)
+gives
+\[
+ \begin{aligned}
+ \epsilon_F^{\mathrm{ar}}(s,R,\psi)
+ &=\epsilon_F^{\mathrm{ar}}(0,R,\psi)
+       q^{-(a_F(R)+n_F(\psi)\dim R)s},\\
+ \epsilon_F^{\mathrm{ar}}(s,R,\psi_a)
+ &=\det R(\operatorname{Art}_{\mathrm{ar}}a)
+       |a|^{(s-1/2)\dim R}
+       \epsilon_F^{\mathrm{ar}}(s,R,\psi).
+ \end{aligned}
+\tag{6.6c}
+\]
+In the second line each side uses its own self-dual measure:
+\(dx_{\psi_a}=|a|^{1/2}dx_\psi\). Equation (6.6b) fixes its determinant
+phase. At infinity we use the positive-kernel real and complex Tate
+constants already calculated in Lesson 11; there is no residue Frobenius
+to invert. This proves all local properties used in this section. \(\square\)
+
+**Lemma 6.4B — integral Hecke-character decomposition.** Let \(R\) be a continuous finite-dimensional representation of a finite relative Weil group \(W_{M/F}\). In its Grothendieck group,
+\[
+ [R]=\sum_j n_j[\operatorname{Ind}_{W_{M/E_j}}^{W_{M/F}}\gamma_j],
+ \qquad n_j\in\mathbb Z,
+\tag{6.6d}
+\]
+where each \(\gamma_j\) is a continuous Hecke quasicharacter of the intermediate global field \(E_j\). This is an integer identity, so it can be used in products of meromorphic functions.
+
+**Proof.** First let \(R\) be irreducible. Its coefficient group \(C_M\)
+acts diagonally: a commuting family has a common eigenvector, the sum of
+its actual joint eigenspaces is nonzero and Weil-invariant, and
+irreducibility makes that sum the whole space. The finite quotient
+\(G=\operatorname{Gal}(M/F)\) permutes the coefficient characters.
+Choose one, \(\theta\), let \(H\leq G\) be its stabilizer, and let \(T\)
+be the representation on its weight space. The direct sum over the orbit
+is the coset model \(R=\operatorname{Ind}_{W_H}^{W_{M/F}}T\).
+On \(C_M\), \(T\) is the scalar character \(\theta\).
+
+Choose lifts \(t_h\) for \(h\in H\), with \(t_1=1\), and write
+\(t_ht_k=c(h,k)t_{hk}\), \(c(h,k)\in C_M\). Put \(d=\dim T\) and
+choose \(a_h\in\mathbb C^\times\) with
+\(a_h^d=\det T(t_h)\), \(a_1=1\). Then
+\[
+ U_h=a_h^{-1}T(t_h),\qquad
+ U_hU_k=\zeta(h,k)U_{hk},\qquad
+ \zeta(h,k)=\frac{\theta(c(h,k))a_{hk}}{a_ha_k}\in\mu_d.
+\tag{6.6e}
+\]
+The last membership follows by taking determinants. Associativity gives
+the cocycle law. Thus \(\widetilde H=\mu_d\times H\), with multiplication
+\((z,h)(w,k)=(zw\zeta(h,k),hk)\), is a finite group, and
+\((z,h)\mapsto zU_h\) is an ordinary representation. Its central subgroup
+\(Z=\mu_d\) acts by its tautological character \(\kappa(z)=z\).
+
+Apply the integer Brauer theorem proved in
+Brauer's induction theorem,
+Theorem 5.1, to this finite representation. In the resulting integer sum,
+project each induced term \(\operatorname{Ind}_E^{\widetilde H}\lambda\)
+to its central \(\kappa\)-part. If
+\(\lambda|_{E\cap Z}\ne\kappa|_{E\cap Z}\), that part is zero.
+Otherwise it is exactly
+\(\operatorname{Ind}_{EZ}^{\widetilde H}\widetilde\lambda\), where
+\(\widetilde\lambda(ez)=\lambda(e)\kappa(z)\).
+This is an actual representation identity: in the induced coset model,
+the central eigenspace imposes the relation \(zv=\kappa(z)v\), and the
+cosets of \(EZ\) give its basis. In particular this direct-summand operation keeps the coefficients
+in the representation ring integral. Every surviving subgroup contains \(Z\) and
+is the full inverse image of some \(J\leq H\).
+
+There is an exact correspondence between representations of
+\(\widetilde H\) with central character \(\kappa\) and representations
+of \(W_H\) with scalar coefficient character \(\theta\). It sends \(U\)
+to
+\(ct_h\mapsto\theta(c)a_hU(1,h)\).
+Equations (6.6e) verify multiplication; its inverse divides the lift
+operators by \(a_h\). The same construction works on every \(J\), and
+commutes with restriction. It therefore commutes with induction: the
+finite-index induction adjunction follows by evaluating an intertwiner on
+the identity coset and extending equivariantly to the other cosets, so
+the two induced objects have identical intertwiner spaces. Equivalently,
+the same coset basis verifies the assertion directly.
+
+A surviving line consequently becomes the character
+\(\gamma(ct_h)=\theta(c)a_h\widetilde\lambda(1,h)\) of \(W_J\).
+Its character law is also immediate from (6.6e); it is continuous on each
+of the finitely many open coefficient cosets. The proved relative-Weil
+abelianization in Proposition 1.2 identifies it with a Hecke
+quasicharacter of the fixed field of \(J\). Induction in stages proves
+(6.6d) for the irreducible \(R\). A composition series and additivity prove
+it for every \(R\). Negative coefficients are permitted throughout.
+\(\square\)
+
+For example, the matrices
+\(I=\operatorname{diag}(i,-i)\) and
+\(J=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\)
+satisfy \(I^2=J^2=-1\) and \(IJ=-JI.\) They give a projective
+representation of \(C_2\times C_2\) whose central cover is the quaternion
+group. Its two-dimensional character is induced from the line
+\(I\mapsto i\) on \(\langle I\rangle\): both characters have values
+\(2,-2\) at \(1,-1\), and zero at the other six elements. The centre
+acts by its nontrivial character. Projecting the regular representation
+to this central character gives
+\(\operatorname{Ind}_{\{1,-1\}}^{Q_8}\kappa\), while projecting an
+induced line trivial on \(-1\) gives zero. These are the compatible and
+incompatible central projections used in the proof.
+
+**Proposition 6.4C — the Artin–Hecke equation used here.** For every global field \(F\), every continuous finite-dimensional relative-Weil representation \(R\), and every Hecke quasicharacter \(\omega\), the full function \(L^*(s,R\otimes\omega)\) is meromorphic. With the local constants of Proposition 6.4A and the positive-kernel archimedean constants, it satisfies
+\[
+ L^*(s,R\otimes\omega)
+ =\left(\prod_v\epsilon_v(s,R_v\otimes\omega_v,\psi_v)\right)
+ L^*(1-s,R^\vee\otimes\omega^{-1}).
+\tag{6.6f}
+\]
+Here \(L^*\) includes every finite Euler factor and every infinite gamma
+factor, and \(\psi\) is a global additive character trivial on \(F\).
+The product of local constants has only finitely many nontrivial factors.
+This is a functional equation and meromorphy theorem; it asserts no
+entireness of an irreducible Artin L-function.
+
+**Proof: rank one.** The number-field rank-one continuation and equation
+are the proved Tate statements in NT-ADL-09, Theorem 9.2, and NT-ADL-10,
+Theorem 10.1. Over a function field, the full finite Poisson proof is
+Artin L-functions, conductors and discriminants,
+Section 6, equations (27)–(34). It is stated there for finite-order
+characters, but its proof gives every unitary character: convergence uses
+only modulus one; the compact norm-one average uses only orthogonality;
+and the displayed correction is a geometric series in the arbitrary
+unit-modulus value \(\omega(c)\) on a generator of the norm image.
+Its rational continuation and cancellation at norm one are unchanged.
+A general quasicharacter is a unitary character times a real norm power,
+since its modulus is trivial on the compact norm-one group and is a
+continuous positive character of the real or discrete norm group.
+Replacing \(s\) by its translate proves the general rank-one equation.
+The primitive local tests and positive-kernel character equations give
+exactly the product in (6.6f), in either characteristic.
+
+**Proof: finite-image representations and the global induction constant.**
+First let \(V\) have finite image, of dimension \(d\). The rank-zero
+Brauer refinement, Lemma 6.5 below, writes
+\(V-d1=\sum_j m_j\operatorname{Ind}(\chi_j-1)\).
+The full local Euler induction identity follows by cycling the induced
+inertia-fixed cosets; its cyclic block determinant is
+\(\det(1-t^f A)\). At infinity the same identity is the real/complex
+Tate gamma duplication formula. These are proved in the earlier epsilon
+lesson, Theorem 1.1 and Section 1. Hence
+\[
+ \frac{L^*_F(s,V)}{L^*_F(s,1)^d}
+ =\prod_j\left(\frac{L^*_{E_j}(s,\chi_j)}
+                         {L^*_{E_j}(s,1)}\right)^{m_j}.
+\]
+This integer product proves meromorphy and agrees with the initial Euler
+product. Take the rank-one functional equations of its factors, including
+the base \(L^*_F(s,1)^d\). Rank-zero induction for local constants makes
+the resulting multiplier precisely \(\prod_v\epsilon_v(s,V_v,\psi_v)\).
+Duality commutes with induction by the coset pairing in Proposition 6.4A.
+Thus (6.6f) holds for \(V\).
+
+For a finite separable \(E/F\), the full local induction formula has the
+constant
+\(\lambda(E_u/F_v,\psi_v)=
+\epsilon_v(s,\operatorname{Ind}1,\psi_v)/
+\epsilon_u(s,1,\psi_v\operatorname{Tr})\).
+It is independent of \(s\) and of the inducing representation; the
+finite-place proof, including all smooth twists, is Section 3D,
+equation (10J), of the epsilon lesson. At infinity the real/complex Tate
+phases give the same assertion. Their global product is one. Indeed
+apply the just-proved finite-image equation to the permutation
+representation \(\operatorname{Ind}_{E}^{F}1\), which factors through a
+finite normal closure. Its full L-function is \(L_E^*(s,1)\). Comparing
+its equation with the rank-one equation over \(E\), on an open set where
+the meromorphic functions are finite and nonzero, gives
+\[
+ \prod_v\prod_{u\mid v}\lambda(E_u/F_v,\psi_v)=1.
+\]
+This argument proves the global constant identity before using it for
+an arbitrary Weil representation.
+
+**Proof: the general representation and all twists.** Use the integer
+Hecke-character expression (6.6d). Complete local Euler induction gives
+\(L_F^*(s,R)=\prod_j L_{E_j}^*(s,\gamma_j)^{n_j}\), initially in a common
+right half-plane, and hence a meromorphic continuation. Taking its
+rank-one equations gives the dual product and a multiplier
+\(\prod_j\prod_u\epsilon_u(s,\gamma_{j,u})^{n_j}\).
+The full local induction formula and the just-proved global product of
+\(\lambda\) identify this with \(\prod_v\epsilon_v(s,R_v,\psi_v)\).
+Thus there is no unproved choice of a Brauer product in (6.6f).
+
+Twisting the coset model by \(\omega\) replaces each \(\gamma_j\) by
+\(\gamma_j(\omega\circ N_{E_j/F})\), as proved by the norm and transfer
+identities in Proposition 1.2. This proves the assertion for every
+\(\omega\), at every local factor. The constant and function are
+independent of the integer expression because they are already the
+specified local factors and their initial Euler product. Outside a finite
+set of places all characters, extensions and additive characters in this
+finite expression are unramified, with unit self-dual volume, so the local
+constant is one. The conductor exponent and its discriminant terms are
+those of the proved conductor induction formula; the gamma factors are
+the actual archimedean Tate factors. None of these steps proves the
+entire all-twist premise in Section 6. \(\square\)
 
 **Lemma 6.5 — the rank-zero Brauer refinement.** For a finite group \(G\), every virtual representation \(X\) of dimension zero is an integer sum of \(\operatorname{Ind}_H^G(\theta-1)\), with \(\theta\) one-dimensional.
 
@@ -781,7 +1403,7 @@ For real principal-series parameter \(it\), \(\lambda=1/4+t^2\). This is the sta
 
 These exhaust the possibilities: \(b\) is even with \(|b|\le4\), \(a\) is odd, and the congruence selects the displayed signs. Norms \(2,3,4,6,7,8,10,11,12,14,15,16\) have no primary generator of those norms. The complete expansion is therefore \(q-2q^5-3q^9+6q^{13}+2q^{17}+O(q^{18})\). The norm of an ideal prime to \(\varpi\) is odd, so every even coefficient is zero. The inert prime three has one ideal of norm nine, namely \((3)\), whose primary generator is \(-3\). This gives the negative coefficient independently of the Hecke recurrence.
 
-For the curve, the quadratic character sums in (4.4) at \(3,5,7,13,17\) are respectively \(0,2,0,-6,-2\), giving point counts \(4,8,8,8,16\). For example at five the values of \(x^3-x\), for \(x=0,1,2,3,4\), are \(0,0,1,4,0\); the sum is two. These give prime traces \(0,-2,0,6,2\), exactly the theta values. The discriminant is 64, so the curve has good reduction at every odd prime; its additive factor at two is one. The Euler factor at three gives \(a_9=a_3^2-3=-3\), and the missing two-factor gives every even coefficient zero. Finally Section 4 proves equality of the modular forms using coefficients through eight and (4.5), so the finite computations extend to an all-coefficient identification through the stated modularity input.
+For the curve, the quadratic character sums in (4.4) at \(3,5,7,13,17\) are respectively \(0,2,0,-6,-2\), giving point counts \(4,8,8,8,16\). For example at five the values of \(x^3-x\), for \(x=0,1,2,3,4\), are \(0,0,1,4,0\); the sum is two. These give prime traces \(0,-2,0,6,2\), exactly the theta values. The discriminant is 64, so the curve has good reduction at every odd prime; its additive factor at two is one. The Euler factor at three gives \(a_9=a_3^2-3=-3\), and the missing two-factor gives every even coefficient zero. Lemma 4.1 proves the trace equality at every odd prime by a quartic Jacobi sum. Proposition 4.2 computes the missing factor at two and the exact conductor 32. Corollary 4.3 then identifies every Euler factor and every Dirichlet coefficient with the primitive form constructed in Theorem 3.1.
 
 ### 8.3. Which splitting gives which trace? — medium
 
@@ -805,16 +1427,16 @@ The real induction has infinity type \(D_{m+1}\). Equality of the primitive Heck
 
 ## 9. What this lesson does not prove
 
-The induction identity, the arbitrary-quasicharacter norm/transfer/determinant identities, the strip estimate, the full quadratic induction theorem over every global field and for every quasicharacter, the full primitive CM theta theorem for \(k\ge2\), both explicit examples, the finite-index valence deduction and all four solutions are proved above. The proof of the theta theorem is relative to the following precisely stated prerequisites; it does not assume the theta theorem itself.
+The induction identity, the arbitrary-quasicharacter norm/transfer/determinant identities, the strip estimate, the full quadratic induction theorem over every global field and for every quasicharacter, the full primitive CM theta theorem for \(k\ge2\), the conductor-32 curve identification, the binary-theta and eta-product identification, class-group and coefficient calculations at level 23, the finite-index valence deduction and all four solutions are proved above. The proof of the theta theorem is relative to the following precisely stated prerequisites; it does not assume the theta theorem itself.
 
 - The ideal/idelic Hecke-character dictionary is NT-ADL-06, Theorem 6.3. The compact norm-one group, Poisson identity, uniform theta estimate and Tate continuation are NT-ADL-09, the theta lemma, Lemma 9.3 and Theorem 9.2. Exact primitive tests, gamma factors and the conductor equation are NT-ADL-10, equations (2)–(3) and Theorem 10.1.
 - Reciprocity, existence and norm compatibility are now the written proofs in [The global reciprocity law](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/the-global-reciprocity-law.html), Proposition 16.1 and Theorem 16.4, and [Global existence and the idèlic class field correspondence](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/global-existence-and-the-idelic-class-field-correspondence.html), Theorems 17.1–17.2. They prove the exact finite abelian norm quotient, norm functoriality with arithmetic Frobenius, realization of every open finite-index subgroup, and local ramification/splitting criteria, including function fields. The conductor-one case gives the Hilbert class field used above. Original locators are Milne, *Class Field Theory*, V.3.3, V.3.5–3.6 and V.5.2–5.5. The number-field relative Weil construction, topological abelianization, transfer, tower maps and local decomposition compatibility are now the written proof in [Brauer groups of local and global fields](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/brauer-groups-of-local-and-global-fields.html), Theorem 24.6 and Section 7, equations (29)–(39). Proposition 1.2 derives both idelic directions, the norm-factor criterion and the determinant/twist identities for arbitrary continuous Hecke quasicharacters. The primary-source convention is Jacquet–Langlands, Section 12 opening; the function-field continuous abelianization is NT-CFT-17, Section 8.
 - Local quadratic construction and matching twisted factors are proved in Lesson 10, Theorems 6.3–6.5, including the norm-factor case and epsilon induction constant in every residue characteristic. Original locators are Jacquet–Langlands, Theorem 4.7 and §12 before Proposition 12.1. Real and complex factors and classification are proved in Lesson 11, Sections 3–6 and Theorems 3.2, 5.1 and 6.1. The global converse is proved in Lesson 15, Theorem 4.1 and Lemmas 4.2–4.4; the original theorem is Jacquet–Langlands, Theorem 11.3. The general-global-field Proposition 12.1 is now proved in Theorem 2.1 and Section 2.1, using the all-field converse of Lesson 15, Theorem 4.5. Proposition 1.3 and Lemma 2.4 supply the function-field relative group, exact Poisson covolume, primitive local Fourier constants and full Hecke equation/strip estimate. The analytic Artin Theorem 12.2 is now proved in Theorem 6.10, with the exact all-twist hypotheses and Artin–Hecke functional-equation inputs; historical Proposition 12.6 retains its separate universal hypothesis. Corollary 2.3 proves the rational induction assertion for every quasicharacter by an automorphic determinant twist.
-- The conditional analytic criterion is proved in Lemmas 6.1–6.9 and Theorem 6.10. Lesson 15, Theorem 4.10, Lemmas 4.11–4.12 and Corollary 4.13, proves its exceptional-set converse and full cuspidal constituent selection. The written [Brauer induction](https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/brauers-induction-theorem.html), Theorems 1.2 and 5.1, supplies nilpotent monomiality and ordinary integral induction; Lemma 6.5 proves the needed rank-zero refinement here. The written [local conductor lesson](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/conductors-of-weil-group-representations.html), Sections 1–4, records the ramification, conductor integrality and character-conductor inputs and proves their smooth induction/single-break consequences. The written [local epsilon lesson](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/local-l-factors-and-epsilon-factors.html), Sections 3–4, states Langlands–Deligne existence, including independence of Brauer choices, and derives the exponent, induction and determinant rules. Its reciprocity is geometric; Section 6.2 binds these formal rules to this course’s arithmetic idèlic Tate normalization and derives the actual phases. The local existence theorem is Deligne 1973, Theorem 4.1; conductor integrality (Artin) and upper ramification are taken as known; the abelian case of the Hasse–Arf theorem is proved in [Abelian ramification, conductors and Hasse–Arf](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/abelian-ramification-conductors-and-hasse-arf.html). These are stated foundational inputs. The Artin–Hecke global functional equations are the stated inputs to the criterion, not a proof of its universal all-twist analytic premise. Lemmas 6.6–6.8 prove the required high-character stability directly; the provider’s stated Deligne–Henniart theorem is not used as a proved input.
+- The conditional analytic criterion is proved in Lemmas 6.1–6.9 and Theorem 6.10. Lesson 15, Theorem 4.10, Lemmas 4.11–4.12 and Corollary 4.13, proves its exceptional-set converse and full cuspidal constituent selection. The written [Brauer induction](https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/brauers-induction-theorem.html), Theorems 1.2 and 5.1, supplies nilpotent monomiality and ordinary integral induction; Lemma 6.5 proves the needed rank-zero refinement here. The written [local conductor lesson](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/conductors-of-weil-group-representations.html), Lemma 1.6, Lemma 2.4, Theorem 2.6 and Theorem 4.1, proves upper quotient compatibility, character conductors, integrality and induction. The written [local epsilon lesson](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/local-l-factors-and-epsilon-factors.html), Theorems 3.0 and 3.2 and Sections 3A–3D, proves existence and uniqueness, including independence of every Brauer decomposition and arbitrary smooth unramified twists; its Section 4 proves the exponent and additive-change rules. Its convention is geometric. Proposition 6.4A gives the arithmetic dualization, the actual idèlic character and every determinant phase used here. Lemma 6.4B proves integral induction from Hecke characters for the full relative Weil group, and Proposition 6.4C derives the all-field, all-quasicharacter Artin–Hecke equation, including the global product of induction constants, from the earlier rank-one Tate proofs. This proves the functional-equation input; it supplies no entireness assertion for the all-twist family. Lemmas 6.6–6.8 prove the required high-character stability directly; the provider’s stated Deligne–Henniart theorem is not used as a proved input.
 
 - Local conductors, the newvector line and primitive classical decomposition are Lessons 8–9, especially Lesson 8, Theorem 5.1. The full finite-function/classical shift and global conductor normalization are Lesson 14, Section 6. The holomorphic real type is Lesson 11, Theorem 7.1. The classical Mellin input is LG-MF-12, Theorem 4.1; its specialized Weil theorem is not used as a general-character theorem.
-- The lattice-theta theorem, including all-cusp holomorphy, is LG-MF-14, Theorem 6.1, with its exact Voight locators 40.4.4–40.4.5. Minkowski's ideal-class bound is Milne, *Algebraic Number Theory*, Theorem 4.3. Ideal factorization and polynomial factorization are Theorems 3.7 and 3.41; the discriminant criterion is Theorem 3.35. The local inertia facts are Theorem 7.58 and Corollary 7.59, with global decomposition groups and their tower compatibility in Propositions 8.10–8.13. The computations in Section 5 determine the specific class group, ideal norm forms and unramified cubic extension.
-- Eta transformation and cusp orders are Allen–Anderson–Hamakiotes–Oltsik–Swisher, Theorems 1.2 and 1.4, citing Ono, Theorems 1.64–1.65. The level-one valence bound is LG-MF-05, Theorem 1.1; congruence index and the two prime-level cusps are LG-MF-03, Section 3, and Lesson 19, Theorem 4.2. Elliptic modularity is Allen–Anderson–Hamakiotes–Oltsik–Swisher, Theorem 1.1; the conductor and additive reduction of the specified curve are the LMFDB 32.a3 record. We prove its finite coefficient comparisons and the valence identification, not elliptic modularity or the general Tate algorithm.
+- The determinant-23 binary-theta transformation and all-cusp holomorphy are proved in Theorem 5.1, using the Schwartz Poisson formula proved in LG-MF-13, Theorem 1.1. The finite representation and its Gaussian phase are calculated in (5.4a)–(5.4d). The norm-at-most-three ideal-class bound is proved by the planar disk argument at the start of Section 5; Milne, *Algebraic Number Theory*, Theorem 4.3, gives the general comparison. Ideal factorization and polynomial factorization are Theorems 3.7 and 3.41; the discriminant criterion is Theorem 3.35. The local inertia facts are Theorem 7.58 and Corollary 7.59, with global decomposition groups and their tower compatibility in Propositions 8.10–8.13. The computations in Section 5 determine the specific class group, ideal norm forms and unramified cubic extension.
+- The level-23 eta transformation and both cusp orders are proved in Lemma 5.2 and Proposition 5.3, with every subgroup generator included. The eta twenty-fourth-power input is proved in LG-MF-05, Theorem 4.1; the needed square-root phases are fixed in (5.5a)–(5.5c). Allen–Anderson–Hamakiotes–Oltsik–Swisher, Theorems 1.2 and 1.4, gives a general comparison. The level-one valence bound is LG-MF-05, Theorem 1.1; congruence index and the two prime-level cusps are LG-MF-03, Section 3, and Lesson 19, Theorem 4.2. The curve calculation is Lemma 4.1, Proposition 4.2 and Corollary 4.3. Its required local model and dyadic conductor identity are the earlier proved Lemma 6.0A and Section 6.0BI.5, equation (JM30), of Elliptic curves over local fields.
 - Deligne's purity input is LG-GAL-12, Section 4, equation (22), based on Deligne, Theorem (8.2). The weight-one representation and primitive factor theorem are Deligne–Serre, Theorems 4.1 and 4.6 and Corollary 4.2. The finite unitary and tempered classifications used to extend good-prime temperedness are proved in Lesson 7, Theorems 7.1–7.2. The Maass bounds are Sarnak, §1, equations (23)–(25); their proofs and the general Ramanujan conjecture are outside this lesson. Getz–Hahn, §13.4, states the Artin automorphy results mentioned in Section 6. The later Langlands–Tunnell and Deligne–Serre lessons develop those stated results further.
 
 ## References
@@ -824,8 +1446,10 @@ The induction identity, the arbitrary-quasicharacter norm/transfer/determinant i
 - P. Sarnak, “Notes on the generalized Ramanujan conjectures,” in *Harmonic Analysis, the Trace Formula, and Shimura Varieties*, Clay Mathematics Proceedings 4, 2005, §1 equations (23)–(25). [Clay volume](https://www.claymath.org/wp-content/uploads/2022/03/cmip04c.pdf).
 - P. Deligne and J.-P. Serre, “Formes modulaires de poids 1,” *Annales scientifiques de l'École Normale Supérieure* **7** (1974), 507–530, Theorems 4.1 and 4.6 and Corollary 4.2. [Journal article](https://www.numdam.org/articles/10.24033/asens.1277/).
 - P. Deligne, *La conjecture de Weil. I*, *Publications Mathématiques de l'IHÉS* **43** (1974), 273–307, Theorem (8.2), used through the exact LG-GAL-12 prerequisite.
-- M. Allen, N. Anderson, A. Hamakiotes, B. Oltsik and H. Swisher, “Eta-quotients of prime or semiprime level and elliptic curves,” *Involve* **13** (2020), 879–901, Theorems 1.1–1.4. [Primary article](https://msp.org/involve/2020/13-5/involve-v13-n5-p12-s.pdf).
+- M. Allen, N. Anderson, A. Hamakiotes, B. Oltsik and H. Swisher, “Eta-quotients of prime or semiprime level and elliptic curves,” *Involve* **13** (2020), 879–901, Theorems 1.2–1.4. [Primary article](https://msp.org/involve/2020/13-5/involve-v13-n5-p12-s.pdf).
 - J. S. Milne, *Class Field Theory*, Chapter V, §§3–5. [Author's notes](https://www.jmilne.org/math/CourseNotes/CFT.pdf). Also *Algebraic Number Theory*, Theorem 4.3 and the ideal/ramification theory in Chapters 3 and 8. [Author's notes](https://www.jmilne.org/math/CourseNotes/ANT.pdf).
 - E. Frenkel, *Lectures on the Langlands program and conformal field theory*, §1, for the modular-form, elliptic-curve and representation viewpoint. [Author preprint](https://arxiv.org/abs/hep-th/0512172).
 - J. R. Getz and H. Hahn, [*An Introduction to Automorphic Representations*](https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf), draft of 22 April 2022, §§6.7–6.8, for the passage from classical forms to automorphic representations and the unitary normalization of the classical example.
 - T. Huang and S. Zhao, *On Ramanujan Primes for Hecke-Maass cusp forms*, 2026, introduction, equation (1.1), for the contemporary status comparison of the finite-prime bound. [Primary preprint](https://arxiv.org/html/2605.09807v1).
+
+- K. Conrad, [*Gauss and Jacobi sums on finite fields and \(\mathbb Z/m\mathbb Z\)*](https://kconrad.math.uconn.edu/blurbs/gradnumthy/Gauss-Jacobi-sums.pdf), Theorems 2.2 and 2.4 and Corollary 2.5. Lemma 4.1 supplies the needed character-sum proof and primary normalization.

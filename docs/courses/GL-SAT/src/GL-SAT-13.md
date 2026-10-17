@@ -19272,13 +19272,1082 @@ distinction. \(\square\)
 
 Theorem C.75.1.1 gives the actual normalized tensor projection and its contracted kernel; Theorem C.75.2.1 gives the full shuffle span and exact counit square. Exercises C.75.3.1–C.75.3.2 compute the odd commutator, actual finite kernel dimensions and surviving scalar tensor term. Editable SVG source.
 
+### C.76. Finite-factor tensor comparisons and ordered cuts
+
+Every finite ordered family has a common normalized tensor input. Its
+projection, full multishuffle and regrouping squares retain all unit and
+unary terms. One finite contraction commutes with every ordered cut,
+so all intermediate tensor kernels inherit compatible primitives.
+
+#### C.76.1. All finite factors and one contraction for every ordered cut
+
+Let \(A_1,\ldots,A_m\) be unital dg categories over the split coefficients
+of Section C.30.1. Put \(T_m=T(A_1,\ldots,A_m)\), as in Theorem C.74.1.1.
+Keep their literal object tuples and their original factor mapping words.
+Define \(\rho_m:T_m\to\bigotimes_iQ^{\mathrm u}(A_i)\) on a free
+generator by its pure-factor value if exactly one factor word is nonempty,
+and by zero otherwise. The products use the actual graded tensor signs.
+
+More generally, for an ordered partition \(\pi=(I_1|\cdots|I_r)\) into
+nonempty consecutive blocks write \(T_{I_j}=T(A_i:i\in I_j)\) and define
+\[
+ \begin{gathered}\kappa_\pi:T_m\\
+\quad\longrightarrow\bigotimes_jT_{I_j}.\end{gathered}
+ \tag{C.76.1}
+\]
+It keeps a generator in its single supporting group and kills it if its
+nonempty factor words meet two groups. Let \(s_\pi\) be the linear
+section that orders the group blocks consecutively, and set
+\(P_\pi=s_\pi\kappa_\pi\). For an elementary cut \(c\) write
+\(P_c\). A partition can be specified by its set \(C\) of cuts.
+
+**Theorem C.76.1.1 (finite-factor resolution with simultaneous cut contraction).**
+The maps \(\rho_m\) and every \(\kappa_\pi\) are strict unital dg
+functors, graded-surjective and mapping quasi-isomorphisms. Their linear
+sections are actual chain sections. The cut projections satisfy
+\[
+ \begin{gathered}P_CP_D=P_DP_C\\
+\quad=P_{C\cup D}.\end{gathered}
+ \tag{C.76.2}
+\]
+Successive refined \(\kappa\) regroupings are exactly the direct finer
+regrouping, under the stated ordered tensor identifications.
+
+There is one normalized linear mapping SDR for \(\rho_m\), finite on
+every original factor word, whose homotopy commutes with every \(P_C\).
+Its restriction contracts each actual \(\ker\kappa_\pi\).
+The canonical projection and regrouping maps are strictly natural for entire
+normalized unital factor functors. No naturality of an arbitrary auxiliary
+contraction under unrelated factor functors is asserted. At zero factors
+the maps are coefficient identities; at one factor \(\rho_1\) is the
+identity of the normalized unital resolution.
+
+**Proof.** The chain calculation for \(\rho_m\) is the same mixed-cut
+calculation as in Theorem C.75.1.1. A cut can have two nonzero projected
+outputs only if the generator's support lies in two factors. Those two
+orientations cancel with the tensor interchange sign. With three or more
+nonempty factors at least one cut output is mixed and projects to zero.
+Pure generators have their ordinary factor differential. The same argument
+with group coalgebra degrees proves that every \(\kappa_\pi\) is a
+dg functor. The unit relations descend by Theorem C.74.1.1: a higher unit
+input is either mixed and killed or remains degenerate in its one group.
+The normal ordered group lift is a graded section. Its differential is
+exactly the tensor derivation differential on those groups, including
+scalar outputs. Thus it is also a linear chain section.
+
+Here is the leading quasi-isomorphism for arbitrary \(m\). Retain all
+original reduced-letter counts \(\mathbf p=(p_1,\ldots,p_m)\). Keep
+the full quotient-unary differential and every cobar cut as \(D_0\).
+For fixed ordered factor words, a cobar word with \(k\) blocks is a
+chain of \(k-1\) proper interior vertices in the product grid
+\(\prod_i[0,p_i]\). The endpoints are the zero and full count tuples.
+All monotone nonzero steps are retained, including simultaneous steps.
+
+Write \(w_{j,i}\) for the suspended word in block \(j\), factor \(i\).
+The permutation taking the original factor order to the block order has
+Koszul exponent
+\[
+ \begin{gathered}\Pi=\sum_{j<\ell}\sum_{u>v}\\
+\qquad|w_{j,u}||w_{\ell,v}|.\end{gathered}
+ \tag{C.76.3}
+\]
+Rescale a source chain by
+\[
+ \begin{gathered}\lambda=(-1)^{\Pi+k-1+\nu},\\
+\nu=\sum_xd(x),\end{gathered}
+ \tag{C.76.4}
+\]
+where \(d(x)\) is the suspended original prefix degree at each internal
+vertex. Cutting a block changes \(\Pi\) by the tensor-cut exponent
+\(\sum_{i<j}|r_i||l_j|\). The additional vertex changes the rest of
+the exponent by \(1+d(x)\). Exactly as in Theorem C.75.1.1, the resulting cut
+coefficient is the ordinary order-cochain insertion sign. On a unary
+term the permutation sign restores the original factor order and the
+prefix-degree change counts the later vertices; with the preceding block
+count their total is \(k-1\). Thus the entire leading source block is
+the finite augmented grid-order cochain complex tensored with the original
+factor-letter complex equipped with minus its unary differential, followed
+by the even shift \([-2]\). This identifies the full unary complex,
+rather than only its graded letters.
+
+If some \(p_i\geq2\), choose the atom with coordinate one in that
+position and zero elsewhere. Joining a proper vertex with that atom never
+reaches the top. The identity and constant-atom order maps are both below
+this closure. The explicit prism of Theorem C.75.1.1 therefore contracts the proper
+grid's augmented complex, with the full original unary terms after the
+displayed rescaling. The target's corresponding leading tensor block is
+contracted by the first-boundary contraction in that factor, with the
+preceding factor tensor signs. Both blocks are acyclic.
+
+It remains to examine profiles with every \(p_i\) zero or one. Ignore
+only the inactive grid coordinates in this calculation; their actual
+coefficient object labels are still retained in the category. If \(s\)
+coordinates are active, the proper grid is the poset \(\mathcal P_s\)
+of nonempty proper subsets of \(\{1,\ldots,s\}\). Its augmented
+cochain complex has one-dimensional cohomology in degree \(s-2\), and
+no other cohomology. The following finite induction proves this fact.
+
+For \(s=1\) the poset is empty and its augmented chain complex is the
+coefficient field in degree minus one. For \(s\geq2\), remove the
+coatom \(b=\{1,\ldots,s-1\}\). The remaining poset contracts by
+adjoining the atom \(\{s\}\): its join can be the top only at the
+removed coatom. This is again the explicit comparable-order-map prism of
+C.75.1. The relative augmented chains of the full poset modulo this
+contracted subcomplex consist exactly of \([\sigma|b]\), where
+\(\sigma\) is an augmented chain in \(\mathcal P_{s-1}\), including
+its empty chain. The boundary deleting \(b\) lies in the removed
+subcomplex, and the other boundary terms are \([\partial\sigma|b]\).
+Thus relative homology is that of \(\mathcal P_{s-1}\) one degree
+higher. A standard shifted chain convention inserts the degree sign;
+the displayed relative boundary formula specifies it without ambiguity.
+Quotienting by an acyclic subcomplex preserves homology: lift a quotient
+cycle, correct its boundary in the acyclic subcomplex, and use the same
+primitive argument for boundaries. This direct argument proves the
+induction. Dualizing the finite chain spaces proves the stated cohomology.
+
+The leading projection is its orientation functional on maximal chains.
+Such a chain is a permutation \(\sigma\) of the \(s\) active factors,
+added one at a time. Its two Koszul exponents, from suspended block order
+and unsuspended tensor order, together with the prefix rescaling give
+\[
+ \begin{gathered}\operatorname{sgn}(\sigma)\Theta,\\
+\Theta=(-1)^\eta,\\
+\eta=s-1\\
+\quad+\sum_i(s-i)(|a_i|-1).\end{gathered}
+ \tag{C.76.5}
+\]
+To verify this sign, interchange two adjacent added factors. The two
+Koszul exponents change by \(|a|+|b|+1\) modulo two, and the prefix
+sum changes by \(|a|+|b|\). Their total changes by one. For the
+identity order the overall sign is the displayed \(\Theta\), proving
+the formula for every permutation. Rescale the target by \(\Theta\).
+Its unary sign at factor \(i\) is the original unsuspended tensor sign
+plus \(s-i\), which equals the top source sign
+\((-1)^{s-1}d_{\rm orig}\) at that position. The functional therefore
+has the full unary compatibility as well.
+
+This signed maximal-chain functional kills a cochain boundary: the two
+refinements at a missing maximal-chain vertex differ by an adjacent
+transposition and cancel. It takes value one on the identity-order top
+cochain. Since the cohomology of the finite poset complex is one-dimensional
+in precisely that degree, the functional is a quasi-isomorphism to that
+line. Its finite split kernel contraction tensors with the original full
+letter complex. This proves the leading projection's quasi-isomorphism
+also in these profiles. The all-zero profile is the actual coefficient
+identity, handled separately.
+
+For each ordered partition, the exact identity on generators is
+\[
+ \begin{gathered}(\bigotimes_j\rho_{I_j})\kappa_\pi\\
+\qquad=\rho_m.\end{gathered}
+ \tag{C.76.6}
+\]
+With the leading differentials, the target tensor of group projections
+is a quasi-isomorphism by the preceding arbitrary-grid argument and the
+split tensor contractions of C.30.1. The displayed equation consequently
+proves the leading quasi-isomorphism of \(\kappa_\pi\). Its leading
+mapping kernel is therefore acyclic, with full unary terms retained.
+The actual quasi-isomorphisms will follow from the simultaneous perturbed
+kernel contraction below; they are not assumed in this leading step.
+
+We now arrange one contraction for all cuts. On a free cobar word,
+\(P_C\) kills it unless every generator's support lies wholly in one
+\(C\)-block. On the survivors it stably sorts those generators by their
+ordered block, with the Koszul sign of that permutation. Applying two
+ordered sorts kills precisely the generators crossing either cut set and
+then gives the unique stable sort for the common finer blocks. Each pair
+that needs interchanging is interchanged once; the product of its degree
+signs is therefore the same in either order. This proves
+\(P_CP_D=P_{C\cup D}\), including coefficient balancing. The same
+single-support generator test proves exact successive \(\kappa\)
+regrouping on generators; the dg tensor products extend it to all words.
+
+The elementary commuting chain idempotents split each leading original
+profile into their finite joint sectors
+\[
+ \begin{gathered}E_J=\prod_{c\in J}(1-P_c)\\
+\qquad\cdot\prod_{c\notin J}P_c.\end{gathered}
+ \tag{C.76.7}
+\]
+They are orthogonal, sum to the identity and commute with \(D_0\).
+Their nonempty \(J\) sectors sum to the kernel of the finest projection,
+which is the actual graded kernel of \(\rho_m\). Any such sector is
+a chain direct summand of some acyclic \(\ker P_c\), and hence is
+acyclic: project a primitive in that kernel by \(E_J\). Choose a
+coefficient-linear normalized contraction separately on every such full
+unary sector and original profile, by C.30.1. Their sum \(H_0\)
+commutes with every \(P_c\) and preserves the original counts.
+
+The remaining binary, scalar-binary and scalar-unary terms strictly lower
+total original count. They commute with every \(P_c\), because both
+the full differential and \(D_0\) commute with those projections. They
+preserve each actual kernel. The finite perturbation
+\(H=H_0(1+\delta H_0)^{-1}\) consequently contracts the full kernel,
+is normalized, and still commutes with all cut projections. Each
+\(\ker\kappa_\pi=\ker P_\pi\) is contained in \(\ker\rho_m\),
+so restriction gives its contraction as well. Extend by the finest
+kernel projector to obtain the full \(\rho_m\) SDR with its actual
+normal-order chain section. Every value is finite in original total count.
+Together with the already proved graded surjectivity, these actual kernel
+contractions prove all the asserted full quasi-isomorphisms.
+
+Finally the entire normalized factor bar functors preserve nonempty bar
+outputs before the actual coefficient relations are imposed. The same
+support test therefore gives strict naturality of all projection and
+regrouping maps, including coefficient-valued higher outputs. Coefficient
+identities give \(m=0\); \(T_1=Q^{\mathrm u}(A_1)\) gives \(m=1\).
+Zero-identity objects are handled as in Theorem C.72.1.1. For finite
+additive envelopes use the elementary matrix-unit balanced-tensor
+calculation in the proof of Theorem C.38.1.1: it identifies every
+composable matrix word with its outer rectangular matrix entry, and
+cuts and merges agree entry by entry. That calculation is independent
+of the positivity assertions later in that theorem. It applies to the
+present unit relations and coefficient-linear contractions as well.
+No native
+nonidentity arrow is identified with a formal identity merely because
+its image happens to be a unit. This proves all assertions. \(\square\)
+
+#### C.76.2. Full shuffle spans and exact regrouping squares
+
+For the same ordered partition set \(A_{I_j}=\bigotimes_{i\in I_j}A_i\).
+Let \(\zeta_m:T_m\to Q^{\mathrm u}(\bigotimes_iA_i)\) be the full
+multishuffle. Applying the group shuffles inside the original tensor bar
+and then cobar gives
+\[
+ \begin{gathered}L_\pi:T_m\\
+\quad\longrightarrow T(A_{I_1},\ldots,A_{I_r}).\end{gathered}
+ \tag{C.76.8}
+\]
+
+**Theorem C.76.2.1 (one common input for all ordered tensor regroupings).** These
+are strict unital dg mapping quasi-isomorphisms. They satisfy the exact
+entire equations
+\[
+ \begin{gathered}\epsilon_{\otimes_iA_i}\zeta_m\\
+\quad=(\bigotimes_i\epsilon_{A_i})\rho_m,\\
+\rho_rL_\pi\\
+\quad=(\bigotimes_j\zeta_{I_j})\kappa_\pi,\\
+\zeta_rL_\pi=\zeta_m.\end{gathered}
+ \tag{C.76.9}
+\]
+Successive group-shuffle regroupings are exactly the direct group shuffle.
+The shuffle and group-shuffle maps are strictly natural for strict dg
+factor maps. All zero- and one-factor maps are the coefficient and factor
+identities already specified.
+
+**Proof.** The full multishuffle is the sum over all interleavings of the
+ordered factor words, with their suspended Koszul signs. Cutting such an
+interleaving is exactly cutting each original factor word and shuffling
+the two parts. Binary bar products of adjacent distinct-factor letters
+cancel in pairs by graded commutation in the tensor category. Unary and
+same-factor binary terms give the factor differential. These are the
+full chain and coalgebra calculations of Section C.39.3 and Theorem C.75.2.1, with every
+ordinary unit output retained. A coefficient input becomes a global
+coefficient letter in each affected group. The higher degenerate
+generators therefore vanish in the normalized target; single coefficient
+generators become their actual coefficients. This proves that both
+\(\zeta_m\) and \(L_\pi\) descend as strict unital dg functors.
+
+The first counit equation is checked on a single pure letter and on every
+higher generator exactly as in Theorem C.75.2.1, then on products. By Theorem C.76.1.1,
+the actual factor counits of Theorem C.72.1.1 and split tensor contractions, its
+right-hand composite is a quasi-isomorphism. Its left-hand counit is
+also one. Hence \(\zeta_m\) is a quasi-isomorphism.
+
+For the second equation test a free generator's support among the groups.
+If it meets more than one group, both sides project to zero. If it meets
+one group, both sides are that group's entire shuffle, in its designated
+tensor slot. Single coefficients also agree. This proves the equation
+on all products with the graded tensor signs. Since \(\rho_r\),
+every \(\zeta_{I_j}\) and \(\kappa_\pi\) are quasi-isomorphisms,
+the equation proves that \(L_\pi\) is one too.
+
+For the last equation and successive regrouping, an interleaving of
+interleavings has a unique flat interleaving. Conversely a flat ordered
+interleaving uniquely determines all its grouped interleavings by reading
+the original factor labels. Their signs multiply to the sign of the same
+permutation of the original suspended letters. Thus every full bar word,
+not only its one-letter projection, agrees exactly. Cobar and the unit
+quotients preserve that equality. On zero or one factors the formulas
+are the specified identities. Strict dg factor maps preserve these
+original letters, products and coefficients, proving the claimed
+naturality. A tensor product of general original \(A_\infty\) functors
+has not been introduced in this argument. \(\square\)
+
+#### C.76.3. Solved Boolean and overlapping-cut calculations
+
+**Exercise C.76.3.1 (a Boolean cut class must be retained; advanced).** Let each
+\(A_i=k1\oplus ka_i\), for \(i=1,2,3\), be the unital dg algebra
+with \(|a_i|=1\), \(a_i^2=0\), and zero differential. In the part
+of \(T_3\) containing exactly one original \(a_i\) in each factor,
+compute the complete cut complex and its cohomology. Describe its
+projection to \(Q(A_1)\otimes Q(A_2)\otimes Q(A_3)\).
+
+**Solution.** For a nonempty subset \(S\subseteq\{1,2,3\}\), let
+\(x_S\) be the single cobar generator with letter \(sa_i\) in
+factor \(i\in S\) and empty word otherwise. Every suspended letter
+has degree zero, so every \(x_S\) has degree one. At this original
+profile, each source cobar word is an ordered partition of the three
+factor labels. There is one one-block word, six two-block words and
+six three-block words. Their complex is
+
+\[
+ k^1\longrightarrow k^6\longrightarrow k^6,
+ \tag{C.76.10}
+\]
+
+in degrees one, two and three. The actual differential here is entirely
+its cut differential: the original unary maps are zero, and two original
+letters never occur in the same factor. For example, with
+\(z=x_{\{1,2,3\}}\),
+
+\[
+ \begin{gathered}Dz\\
+\quad=-\sum_{S\in\mathcal P_3}x_Sx_{S^c}.\end{gathered}
+ \tag{C.76.11}
+\]
+
+The proper Boolean poset has singleton and two-element-subset vertices;
+the six strict inclusion edges form a hexagon. Its augmented incidence
+map has rank one at the first step. A function on its six vertices has
+zero edge differences exactly when it is constant, since the hexagon is
+connected. Thus the next incidence map has rank five. It follows that
+the displayed source complex has zero cohomology in degrees one and two
+and one-dimensional cohomology in degree three.
+
+Write \(X=x_{\{1\}}\), \(Y=x_{\{2\}}\), \(Z=x_{\{3\}}\).
+The projection kills every word with a mixed generator. On the maximal
+word \(W_\sigma=X_{\sigma(1)}X_{\sigma(2)}X_{\sigma(3)}\) it gives
+
+\[
+ \begin{gathered}\rho_3(W_\sigma)=\operatorname{sgn}(\sigma)\\
+\qquad\cdot\bigl(x_{a_1}\otimes x_{a_2}\\
+\qquad\otimes x_{a_3}\bigr).\end{gathered}
+ \tag{C.76.12}
+\]
+
+The sign is the permutation of three odd, unsuspended pure generators.
+The signed maximal-chain functional is therefore the actual projection
+onto this one surviving class. In particular \(XYZ\) is not a boundary:
+its actual tensor counit image is \(a_1\otimes a_2\otimes a_3\ne0\)
+in a target with zero differential. Its kernel is contracted; the
+surviving tensor class is retained. \(\square\)
+
+**Exercise C.76.3.2 (one primitive equation does not fix every cut value;
+advanced).** In the same three-factor example take
+\(v=ZXY\). Let \(P_1\) correspond to \(1|23\) and \(P_2\)
+to \(12|3\). Compute both projections and their two composites.
+Find a primitive in \(\ker\rho_3\) for \(v-XYZ\) with zero
+\(P_2\)-value, and exhibit a second kernel primitive whose
+\(P_2\)-value is nonzero.
+
+**Solution.** Stable graded sorting gives
+
+\[
+ \begin{gathered}P_1(ZXY)=-XZY,\\
+P_2(ZXY)=XYZ,\\
+P_1P_2(ZXY)=XYZ,\\
+P_2P_1(ZXY)=XYZ.\end{gathered}
+ \tag{C.76.13}
+\]
+
+The first projection interchanges two odd generators; the second moves
+\(Z\) across two of them. Set \(x_{13}=x_{\{1,3\}}\) and
+\(x_{23}=x_{\{2,3\}}\). The mixed cut formulas give
+\(Dx_{13}=-XZ-ZX\) and \(Dx_{23}=-YZ-ZY\). Consequently
+
+\[
+ \begin{gathered}K=-x_{13}Y-Xx_{23},\\
+DK=ZXY-XYZ,\\
+\rho_3K=0,\quad P_2K=0.\end{gathered}
+ \tag{C.76.14}
+\]
+
+For the derivative, the two terms in \(XZY\) cancel by the degree-one
+product sign. Each term of \(K\) has a generator crossing the
+\(12|3\) cut, so its \(P_2\)-projection is zero. This is the
+required projected primitive equation.
+
+In the entire source complex the degree-two cochain \(s=XY+YX\)
+is closed, lies in \(\ker\rho_3\), and is nonzero as an actual
+free-algebra vector. It is itself the boundary of \(-x_{\{1,2\}}\).
+It has a different original profile from \(K\), which is allowed when
+choosing an arbitrary primitive in the whole complex. Adding it gives
+
+\[
+ \begin{gathered}D(K+s)\\
+\quad=ZXY-XYZ,\\
+\rho_3(K+s)=0,\\
+P_2(K+s)=s\ne0.\end{gathered}
+ \tag{C.76.15}
+\]
+
+Thus the primitive equation and even its zero whole-tensor projection
+do not force the required intermediate cut value. The contraction of
+Theorem C.76.1.1 commutes with \(P_2\), so on \(v-XYZ\in\ker P_2\)
+it chooses a primitive with exactly zero \(P_2\)-value. Its simultaneous
+cut property is additional structure, not a conclusion from an
+unconstrained primitive. \(\square\)
+
+![The common finite-factor tensor input retains strict regrouping, the Boolean orientation class and one contraction compatible with every ordered cut](assets/multifactor-tensor-cuts.png)
+
+Theorem C.76.1.1 gives every finite-factor projection with a simultaneous ordered-cut contraction; Theorem C.76.2.1 gives exact full multishuffle and regrouping squares. Exercises C.76.3.1–C.76.3.2 retain the Boolean tensor class and compute a primitive with its required intermediate cut value. Editable SVG source.
+
+### C.77. Entire evaluation and coherent native operator cubes
+
+An exact whole evaluation identity is preserved when lifted operators
+and their comparison cubes are composed. It supplies one compatible
+boundary for each sequential native composition, whose relative kernel
+filler retains every formal-unit degeneracy and higher source component.
+
+#### C.77.1. The exact projected-evaluation condition is preserved by composition
+
+For a dg category \(A\), write \(Q_A=Q^{\mathrm u}(A)\), with
+\(\epsilon_A\) and \(\iota_A\) as in Theorem C.72.2.1. Let \(K\) be a full
+conilpotent relative parameter coalgebra with its original object labels.
+Let \(J=I^{\otimes d}\) be the actual cube coalgebra of Theorem C.74.2.1,
+including all cells and ordinary faces. Parameters are normalized at their
+coefficient units; cube variables have their stated counit.
+
+Suppose \(\Phi:K\to B_{\rm full}\operatorname{Fun}_\infty(A,B)\)
+is an entire native parameter map. Write
+\(\mathcal U_{A,B}=\operatorname{Fun}_\infty(Q_A,Q_B)\).
+A cube of its operator lifts is a
+chain coalgebra map
+\[
+ \begin{gathered}\widehat\Phi:K\otimes J\\
+\quad\longrightarrow B_{\rm full}\mathcal U_{A,B}.\end{gathered}
+ \tag{C.77.1}
+\]
+whose object values are the strict dg operators \(QF\). Its positive
+Taylor map vanishes on the coefficient coaugmentation of \(K\), even
+when the cube variable is nonempty. Thus the object values are fixed
+throughout the cube. Call such a lift admissible if its *entire* bar
+restriction along \(\iota_A\) is
+\[
+ \begin{gathered}B(r_{A,B})\widehat\Phi\\
+\quad=B((\iota_B)_*)\Phi\\
+\qquad\cdot(1_K\otimes\epsilon_J).\end{gathered}
+ \tag{C.77.2}
+\]
+Here \((\iota_B)_*\) includes every higher postcomposition operation
+of Theorem C.69.2.1. Its linear component alone is not substituted for
+that bar map.
+
+**Theorem C.77.1.1 (entire projected evaluation and its closure).** Admissibility
+is equivalent to the following exact equation on all source and parameter
+words:
+\[
+ \begin{gathered}\widehat E=\operatorname{ev}_{Q_A,Q_B}\\
+\qquad\circ(\widehat\Phi\otimes B\iota_A),\\
+E=\operatorname{ev}_{A,B}(\Phi\otimes1)\\
+\qquad\circ(1_K\otimes\epsilon_J\otimes1),\\
+\widehat E=B\iota_B\,E.\end{gathered}
+ \tag{C.77.3}
+\]
+All sides retain ordinary identity outputs and source-unary terms.
+Horizontal composition of any admissible lifted cubes is admissible for
+the corresponding entire native composite, with tensor cube coordinates
+and the actual Koszul interchange. Restrictions to ordinary cube faces
+and full supplied parameter subcoalgebras remain admissible.
+
+**Proof.** Precomposition by an entire functor is a strict dg functor on
+full Nat categories. The exact evaluation identity of Theorem C.69.2.1
+therefore identifies evaluation of the left restriction map with
+evaluation of \(\widehat\Phi\) on \(B\iota_A\). The same identity
+identifies evaluation after entire postcomposition by \(\iota_B\)
+with \(B\iota_B\) after original evaluation. Substituting the displayed
+admissibility equation gives the required evaluation equation.
+
+Conversely, project the evaluation equation to a single target mapping
+letter and evaluate on every original \(A\)-word, including the empty
+word at each object. This recovers every full Nat Taylor component of
+the one-parameter-letter projections on the two proposed bar maps.
+A cofree target bar map is determined by these projections and its
+coefficient map, as proved in Theorem C.69.2.1. Their coefficient maps
+are already the same fixed object maps. Hence their entire bar maps
+are equal, which is precisely admissibility.
+
+For closure let \(\widehat\Psi\) be an admissible cube from \(B\)
+to a third dg category \(C\), with native map \(\Psi\). On their
+full parameter and cube tensor product form the entire horizontal map
+\(M_Q(\widehat\Psi\otimes\widehat\Phi)\), moving the original
+homogeneous factors through the required tensor permutation. Evaluate
+it on \(B\iota_A\). By the exact nested evaluation identity this is
+first the entire inner evaluation and then the entire outer evaluation.
+Inner admissibility says its full output is exactly \(B\iota_B\)
+of the native inner output, with the inner cube counit. It is therefore
+in the precise input of outer admissibility, including every ordinary
+unit and every higher output word. Outer admissibility now makes the
+whole result \(B\iota_C\) of the nested native evaluations, with
+both cube counits. Applying the nested identity again gives the native
+horizontal composite. This is the required evaluation equation for that
+composite, so the equivalence just proved gives its admissibility.
+Its object types agree exactly because \(QG\,QF=Q(GF)\), by Theorem C.72.2.1.
+
+This argument applies to arbitrary higher kernel corrections that still
+obey the entire admissibility equation. It does not assume that a bare
+postcomposition projection is horizontally multiplicative on unrelated
+Nat cochains. The whole inner output lying in \(B\iota_B\)'s image
+is the step that permits the outer evaluation equation to be used.
+
+For finiteness, the cubical coalgebra is finite, although its vertices
+are group-like. The positive twist is zero on the coefficient part of
+\(K\). Consequently every nonzero positive output piece consumes
+positive original parameter rank; there are at most that many pieces.
+For each fixed number of pieces, the iterated cube diagonal is a finite
+sum. Full evaluation has the finite marked bound of C69 on every original
+source word. Thus the reconstructed maps and all equations are actual
+finite sums, without assuming that the cube itself is conilpotent.
+Composing with a face or a supplied parameter subcoalgebra simply
+restricts these same equations. This proves every assertion. \(\square\)
+
+#### C.77.2. One coherent family for every sequential native composition
+
+Fix dg categories \(A_0,\ldots,A_n\) and let
+\(\mathcal O_i=\operatorname{Fun}_\infty(A_{i-1},A_i)\), with
+its full normalized Nat dg category. The native sequential composition
+is the entire associative map \(M\) of Theorem C.69.2.1. The common
+parameter category is
+\(T_n=T(\mathcal O_n,\ldots,\mathcal O_1)\), with all original
+operator labels and the actual normalized unit relations of C74.
+
+**Theorem C.77.2.1 (strictly unital coherent operator-model cubes).** The operator
+maps \(\mathcal Q\) of Theorem C.73.2.1 extend to a family
+\(W_n\) of admissible cubes of dimension \(n-1\), defined on the
+entire common parameter coalgebra of \(T_n\). Their fixed object
+value is \(Q(F_n\cdots F_1)\). They have the following ordinary faces.
+At coordinate zero, the chain of native operators splits there and
+the face is the entire horizontal composition of the two smaller cubes.
+At coordinate one, the two adjacent native slots merge by their full
+native \(M\), and the face is the smaller cube pulled back along that
+full merge map. The coordinates retain their original seam labels.
+
+The whole family can retain any previously supplied compatible
+free-generator faces and their full cubes. Choose it once before full
+native parameter restrictions. Its pullbacks then agree exactly on all
+shared native full faces and include every original higher cell.
+Formal identity-functor slots have the normalized degeneracies described
+below; identity-valued nonidentity native arrows retain their own labels.
+The empty sequential chain has its actual identity operator and no
+positive cube coordinate.
+
+**Proof.** At \(n=1\), take the entire \(\mathcal Q\) of C73.
+Its exact restriction is the admissibility equation by Theorem C.73.2.1.
+Suppose all smaller cubes have been chosen simultaneously. On the boundary
+of \(I^{n-1}\) prescribe the faces in the statement. Splitting a zero
+coordinate uses the two smaller cubes, with their parameter and cube
+factors regrouped by the actual tensor coalgebra interchange. Merging a
+one coordinate uses the full native composition coalgebra map, followed
+by the previously chosen smaller cube. Both descend through the actual
+parameter-unit relations, by C69 and Theorem C.74.1.1.
+
+These are compatible *whole* boundary values. On an intersection of two
+zero faces, both expressions are the entire three-level horizontal
+composition of the same smaller cubes; exact associativity of \(M_Q\)
+in C69 makes them equal. On two one faces, both expressions are the
+same smaller cube pulled back along the two full native merges. If the
+merges are disjoint they commute under tensor interchange; if adjacent
+they agree by entire native associativity. On a zero and a distinct one
+face, the native merge occurs inside one of the two split pieces.
+Both orders give that same smaller cube's prescribed face, composed
+with the other piece. Tensor-factor permutations move the same original
+homogeneous elements through the same permutation in every case, so
+the Koszul signs agree. All codimension-two intersections therefore agree;
+every higher face intersection is their literal iterated restriction.
+
+Every boundary face is admissible by Theorem C.77.1.1 and the induction.
+Its exact projected map is the one \((\iota_{A_n})_*\) of the entire
+native \(n\)-fold composition, independent of the cube coordinates.
+The operator object is likewise independent of its parenthesization,
+since the strict Q-models compose exactly. Use the actual restriction
+projection of Theorem C.73.1.1 on that fixed labelled object family.
+It is a graded-surjective mapping quasi-isomorphism with an actual
+contracted kernel. The relative cube extension of Theorem C.74.2.1
+therefore fills precisely this supplied boundary, with precisely this
+entire projected map. Its domain \(T_n\) retains the full source-unary
+generator differential and all constants, as required by that theorem.
+The filler is consequently admissible. No absolute Nat acyclicity has
+been used.
+
+Here are the formal-unit degeneracies and their compatibility. Define
+\(\mu:I\otimes I\to I\) by the minimum of the two vertices and by
+\[
+ \begin{gathered}\mu(e\otimes v_1)=e,\\
+\mu(v_1\otimes e)=e,\\
+\mu(e\otimes v_0)=0,\\
+\mu(v_0\otimes e)=0,\\
+\mu(e\otimes e)=0.\end{gathered}
+ \tag{C.77.4}
+\]
+It is a dg coalgebra map. On a vertex this follows from its group-like
+diagonal. On an edge with other vertex \(v_1\), its two diagonal
+terms are exactly \(e\otimes v_1+v_0\otimes e\) after applying
+\(\mu\) to both factors. With other vertex \(v_0\), every term has
+a zero edge factor. On \(e\otimes e\), both middle diagonal terms
+have a factor of this latter kind, and the two extreme terms also give
+zero. This proves the coalgebra equation on all nine basis elements.
+The chain equation on two edges is \(e-0-e+0=0\); the edge-vertex
+equations are the corresponding vertex differences. Its unit is
+\(v_1\) and its absorbing vertex is \(v_0\).
+
+It is associative: at vertices this is associativity of minimum. With
+one edge, the result is that edge exactly when all other vertices are
+\(v_1\); otherwise it is zero. With at least two edges both
+parenthesizations are zero. This covers every homogeneous triple and
+all successive products.
+
+When an interior operator slot is the formal identity functor with only
+its coefficient parameters, delete that slot and pull back the smaller
+cube by \(\mu\) on its two adjacent seam coordinates. At an endpoint
+identity slot delete its one adjacent coordinate by the interval counit.
+These prescriptions agree with the already assigned zero and one faces:
+\(\mu(v_0,-)\) is the constant zero vertex, while
+\(\mu(v_1,-)\) is the identity coordinate. This is exactly the split
+versus native-merge face rule. Several identity deletions agree by
+associativity of \(\mu\), its counit equation and strict native/Q
+identity composition. They also agree on ordinary parameter-unit faces
+by normalized unitality of C69 and C73. No interval reversal is used.
+
+The no-letter formal-unit parameter faces are actual differential-stable
+free-generator faces of \(T_n\), by Theorem C.74.1.1. The preceding
+compatible smaller cubes prescribe their entire cubical values. Apply
+the relative clause of C74's extension to retain them exactly along
+with any other compatible assigned free-generator-face cubes. An
+already assigned family must have these same entire boundaries; no
+extension assertion is made for an arbitrary inconsistent face list.
+This completes the induction in \(n\).
+
+Finally each actual native string or joint parameter diagram enters by
+its supplied full parameter coalgebra map to the original \(\mathcal O_i\)
+categories. Pull back the whole chosen \(W_n\) along those maps and
+the actual cube faces. Two such pullbacks to the same full native face
+are the same literal map, because the original native maps already agree
+there and the family was chosen globally first. All ordinary unit
+outputs, higher native transformations, original composite labels and
+nonminimal source-unary terms are therefore retained. This is a
+restriction of the entire supplied native diagram, not its reconstruction
+from unrelated edge classes. A nonrectangular compatible joint domain
+uses its actual whole index coalgebra as in C64; this construction clips
+no shuffle and inserts no missing intermediate object. This proves the
+claimed operator-model comparison family. \(\square\)
+
+#### C.77.3. Solved cube calculations
+
+**Exercise C.77.3.1 (a whole boundary needs its interior value; advanced).**
+Let \(E=k1\oplus kx\oplus ky\), with \(|x|=-1\), \(|y|=-2\),
+\(dy=x\), \(dx=0\), and square-zero ideal \((x,y)\).
+The quotient \(p:E\to k\) kills that ideal. For the free unital dg
+algebra on a degree-zero closed generator \(a\), prescribe a relative
+square with zero vertex values, value \(x\) on the bottom edge
+\(e\otimes v_0\), and zero on its other three edges. Fill it over
+the zero quotient image and compute what happens if its top cell is
+omitted.
+
+**Solution.** A degree-zero cochain \(\phi:I^2\to E\) takes the
+top cell to degree minus two. The entire tensor differential is
+\[
+ \begin{gathered}d(e\otimes e)\\
+\quad=v_1\otimes e-v_0\otimes e\\
+\qquad-e\otimes v_1+e\otimes v_0.\end{gathered}
+ \tag{C.77.5}
+\]
+The given boundary consequently has value \(x\) on that derivative.
+Set \(\phi(e\otimes e)=y\). Then its Hom differential on the top
+cell is \(dy-\phi(d(e\otimes e))=x-x=0\). The edge and vertex
+equations hold because \(dx=0\). All its values are in \(\ker p\),
+so its quotient is the required constant zero. Sending \(a\) to this
+closed convolution cochain and extending by products gives the whole
+strict dg map. If the top value is set to zero, the differential instead
+has value \(-x\ne0\) on that cell. The boundary itself has not
+changed; its needed interior primitive is the substantive filler.
+\(\square\)
+
+**Exercise C.77.3.2 (an identity slot can have a nonconstant cubical degeneracy;
+advanced).** Let \(E=k1\oplus k\alpha\oplus k\beta\), with
+\(|\alpha|=0\), \(|\beta|=-1\), \(d\beta=\alpha\), and
+square-zero ideal \((\alpha,\beta)\). The interval cochain
+\(\psi\) has values zero at \(v_0\), \(\alpha\) at \(v_1\),
+and \(\beta\) at \(e\). Compute the full square \(\psi\mu\)
+that occurs when a middle formal identity slot is deleted.
+
+**Solution.** The interval Hom differential is zero:
+\(d\beta-(\alpha-0)=0\). The minimum map gives only one nonzero
+vertex value of its square, at \(v_1\otimes v_1\), equal to
+\(\alpha\). Its two edges with the other coordinate \(v_1\)
+have value \(\beta\); its two edges with other coordinate \(v_0\)
+have value zero. Its top value is zero. On the top derivative in
+Exercise C.77.3.1 these values give \(\beta-0-\beta+0=0\), and the
+remaining differential equations are the same interval equation.
+Thus the full square is closed, as required by the coalgebra pullback.
+
+It is not the constant zero square even though its inserted native
+operator is an identity: its \((v_1,v_1)\) value is the original
+\(\alpha\), and its two edge components are the original homotopy.
+The formal identity fixes the specified degeneracy, including all of
+these components. It does not erase an already nonconstant comparison.
+\(\square\)
+
+![Entire projected evaluation is closed under composition, with compatible native operator cubes retaining their actual interior and formal identity degeneracies](assets/native-operator-cubes.png)
+
+Theorem C.77.1.1 proves the exact projected-evaluation law and closure; Theorem C.77.2.1 constructs the coherent native sequential operator cubes. Exercises C.77.3.1–C.77.3.2 compute a required square interior and a nonconstant formal-unit degeneracy. Editable SVG source.
+
+### C.78. Full tensor-unit restriction and external comparisons
+
+The full normalized tensor-unit restriction records the entire mapping
+complex and has an actual finite kernel contraction. Its canonical tensor
+and shuffle squares lift supplied whole native external comparisons
+while keeping the original source differential and coefficient outputs.
+
+#### C.78.1. The tensor unit records the entire mapping complex
+
+Let \(A_1,\ldots,A_m\) be unital dg categories over the split
+degree-zero coefficients of Section C.30.1. Set
+\(K=\bigotimes_iB_{\rm full}A_i\) and \(T=T(A_1,\ldots,A_m)\).
+The canonical full coalgebra map
+\[
+ \eta:K\longrightarrow B_{\rm full}T,
+ \tag{C.78.1}
+\]
+is the bar-cobar unit of Lemma C.39.4.1 followed by the actual normalized quotient
+of Theorem C.74.1.1. In particular this is a map between genuine *full* dg coalgebras.
+We do not declare their naive reduced unit quotients dg coalgebras:
+scalar differential or product outputs can give those quotients curvature.
+
+Fix normalized uncurved unital functors \(F,G:T\to D\), with \(D\)
+a dg target. Their full bar maps precomposed with \(\eta\) are full
+multi-input functors on \(K\). Full multi-Nat cochains between them
+have one central target mapping value on each original tuple of input
+words, including the empty tuple. Their differential and vertical product
+are the full coalgebra/coderivation convolution formulas on \(K\).
+Normalize positive cochains by making them zero at any ordinary
+coefficient input in any factor. This normalization concerns inputs,
+and retains actual coefficient outputs.
+
+**Theorem C.78.1.1 (full normalized tensor-unit restriction).** Restriction gives
+a graded-surjective dg functor on the labelled operator family,
+\[
+ \begin{gathered}r_\eta:\operatorname{Nat}_\infty(F,G)\\
+\quad\longrightarrow\operatorname{Nat}_K(F\eta,G\eta).\end{gathered}
+ \tag{C.78.2}
+\]
+It is a quasi-isomorphism on the complete mapping complexes. Its actual
+kernel has a normalized contraction finite on every original reduced
+factor-letter input. Thus the unit records full transformation classes,
+primitives and their whole higher coherent diagrams, not only bare values.
+No augmentation or positive cohomological mapping degrees are assumed.
+
+**Proof.** A normalized Nat cochain on \(T\) is determined by its central
+Taylor values on the normalized graded source inputs. In the graded free
+description of C74 these are outer bar words of nonempty cobar monomials;
+each cobar generator is a nonempty tuple of original reduced factor words.
+For an original reduced tuple \(c\), the unit's one-bar-letter,
+one-cobar-generator component is exactly \(s(\mathsf tc)\). Its other
+components have several outer bar letters. This exhibits an injective
+graded map on the normalized input tuples: the displayed distinguished
+components are separate for every \(c\). Any central multi-Nat cochain
+therefore extends by assigning its value on those components and zero on
+all other positive source inputs, with the same bare value. This proves
+graded surjectivity, without asserting that this graded section is a
+chain section.
+
+If an original input has a coefficient argument, every surviving term of
+its unit image contains an ordinary coefficient input in an outer bar
+slot. A higher cobar block containing it has already vanished by C74;
+a surviving one-letter coefficient block is the actual coefficient.
+Thus normalized Nat cochains restrict to precisely the stated normalized
+multi-Nat cochains. Before this normalization, restriction is a chain map
+and preserves the cofree composition formula because \(\eta\) is a
+chain coalgebra map. It consequently preserves both on the normalized
+spaces as well. For clarity their stability can also be deduced from the
+graded extension just given: if \(\psi=r_\eta\phi\), then
+\(d\psi=r_\eta(d\phi)\) is again normalized. The same argument
+applies to products. This defines the normalized dg mapping category
+directly from the genuine full complexes; no curved reduced-bar
+square-zero assertion is hidden in this step.
+
+Count all original reduced \(A_i/S_i\) letters in a tuple and in an
+outer bar word of cobar monomials. Let the total be \(R\). For the
+leading differential retain the full projected original unary complexes,
+the cobar splits and the outer bar multiplication of cobar monomials.
+Discard native factor bar multiplications, scalar outputs and positive
+functor-action terms only for this leading calculation. Write
+\(K_0=\bigotimes_iT^c(s(A_i/S_i))\), with its projected unary
+differential. Then the leading source is the genuine augmented
+\(T_0=\Omega K_0\), and its normalized input bar is
+\(B_{\rm red}\Omega K_0\). The leading unit is the same graded
+iterated-coproduct formula as \(\eta\).
+
+In every fixed original rank the leading unit is a quasi-isomorphism.
+Here is the finite argument, independent of cohomological degree bounds.
+Filter \(B_{\rm red}\Omega K_0\) by the number \(r_0\) of original
+noncoaugmented \(K_0\)-elements before they are grouped into cobar
+monomials and outer bars. Each such element contains positive original
+rank, so \(r_0\leq R\). Cobar splitting increases \(r_0\); the
+original unary and outer bar merge preserve it. At fixed
+\(r_0\geq2\), the associated quotient is the first-boundary cut
+complex of C.39.4. Its contraction inserts a missing outer cut after the
+first original \(\mathsf tc_1\), with coefficient
+\((-1)^{|c_1|}\), and is zero if that cut is present. Cutting then
+merging gives the identity. Every other merge cancels in the two orders,
+and the same coefficient makes the original unary terms cancel as proved
+in C.39.4. Thus this contracts the full quotient, including its unary
+complex. At \(r_0=1\), the unit is the identity on the original
+\(K_0\)-element. Finite elimination in its comparison cone through
+\(1\leq r_0\leq R\) proves acyclicity of that cone in the exact
+original-rank block. At rank zero the unit is the coefficient identity.
+
+The leading unit is graded-injective, so its quotient input complex is
+acyclic. Choose a coefficient-linear normalized contraction \(h_Q\)
+on that quotient, separately in its original-rank and endpoint blocks,
+using C.30.1. Identify the leading restriction kernel with central Hom
+cochains on this quotient. The Nat convention requires its sign to be
+stated: for a degree-\(r\) central cochain,
+\[
+ \begin{gathered}D_0\phi=d_D\phi\\
+\qquad+(-1)^r\phi b_0.\end{gathered}
+ \tag{C.78.3}
+\]
+It is the ordinary Hom convention with source differential \(-b_0\).
+Consequently its kernel contraction is
+\[
+ H_0\phi=(-1)^{r+1}\phi h_Q.
+ \tag{C.78.4}
+\]
+Indeed the two target-unary terms in \(D_0H_0+H_0D_0\) cancel, and
+the remaining terms are \(\phi(h_Qb_0+b_0h_Q)=\phi\). The square
+and side conditions follow from the normalized \(h_Q\). This retains
+the bare central target differential and the complete source unary,
+cobar and bar-merge terms; it is not a Hom calculation on cohomology.
+
+Now restore the full mapping differential \(D_0+\delta\). A native
+factor bar multiplication lowers original rank; its scalar output lowers
+it further. Scalar unary outputs also lower it. Every nontrivial source
+or target functor action consumes a positive-rank piece of the original
+input. Even when that action's output is a coefficient it has consumed
+that input piece. Ordinary unit-input terms have already canceled in
+the normalized complex; they do not supply a rank-zero positive action.
+Hence \(\delta\phi\) on rank \(R\) uses \(\phi\) only on smaller
+ranks. The restriction kernel is stable under the full differential
+and under the leading differential. On that same actual kernel the
+finite perturbation
+\[
+ \begin{gathered}H\\
+\quad=H_0(1+\delta H_0)^{-1}.\end{gathered}
+ \tag{C.78.5}
+\]
+therefore terminates word by word. Lemma C.35.1.1 gives
+\(DH+HD=1\), \(H^2=0\). The kernel is contracted, and the
+graded-surjective chain restriction is consequently a quasi-isomorphism.
+Its full dg composition property was already proved. This proves the
+entire assertion. \(\square\)
+
+#### C.78.2. The actual full tensor squares and lifted native comparisons
+
+For the same family write \(\rho_A:T(A_i)\to\bigotimes_iQ_{A_i}\)
+and \(\zeta_A:T(A_i)\to Q_{\otimes_iA_i}\) for C76's actual
+maps. Let \(\operatorname{sh}_A\) denote the full factor-bar shuffle.
+All unit maps here are their actual entire bar-cobar units followed by
+the indicated normalized quotients.
+
+**Theorem C.78.2.1 (canonical multi-input model and actual comparison lifting).**
+The exact whole coalgebra identities are
+\[
+ \begin{gathered}B\rho_A\,\eta_A\\
+\quad=\operatorname{sh}_{Q_A}\\
+\qquad\circ(\bigotimes_iB\iota_{A_i}),\\
+B\zeta_A\,\eta_A\\
+\quad=B\iota_{\otimes_iA_i}\operatorname{sh}_A.\end{gathered}
+ \tag{C.78.6}
+\]
+For normalized unital factor functors \(F_i:A_i\to B_i\), the
+actual strict dg common-input map \(T(F_i)\) of C74 satisfies
+\[
+ \begin{gathered}\rho_BT(F_i)\\
+\quad=(\bigotimes_iQF_i)\rho_A.\end{gathered}
+ \tag{C.78.7}
+\]
+and
+\[
+ \begin{gathered}B(\zeta_BT(F_i))\eta_A\\
+\quad=B\iota_{\otimes_iB_i}\\
+\qquad\circ\operatorname{sh}_B\\
+\qquad\circ(\bigotimes_iBF_i).\end{gathered}
+ \tag{C.78.8}
+\]
+These equations define a full multi-input comparison without introducing
+a tensor product of general original \(A_\infty\) functors.
+
+If an actual native external operator \(F_{\rm ext}\) and its supplied
+full comparison with the right multi-input expression are given, that
+comparison, its inverses and its higher covariance lift through the
+specific contracted mapping kernel of Theorem C.78.1.1. Compatible prescribed
+free-generator faces and their full projection data can be retained.
+
+**Proof.** Project the first proposed unit identity to one target bar
+letter. A reduced input tuple supported in one factor maps on each side
+to its corresponding one normalized cobar block in that factor. If
+several factor words are nonempty, the left projection is zero by the
+generator rule for \(\rho_A\). On the right, each nonempty factor
+has at least one output letter before the full shuffle, so the total
+output has at least two letters and also has zero one-letter projection.
+Coefficient terms agree by their actual unit relations. Both sides are
+coalgebra maps. Cofree uniqueness therefore proves the whole first
+identity, with every higher output and tensor-cut sign.
+
+The second is naturality of the explicit coalgebra unit under the full
+shuffle coalgebra map, followed by the two actual quotient maps. The
+unit formula sums the same consecutive coproduct pieces on both sides;
+cuts of a shuffle are the shuffled factor cuts, as proved in C.75.2 and
+C.76.2. This gives the whole equation, including ordinary unit outputs.
+
+The middle projection equation is the entire factor naturality of
+C.76.1. For the last equation, the unit's naturality for
+\(\bigotimes_iBF_i\) gives
+\(B(T(F_i))\eta_A=\eta_B(\bigotimes_iBF_i)\).
+Compose with \(B\zeta_B\) and use the second unit identity. This
+proves all the stated equations on full bars, not just on generators
+after forgetting the source-ending maps.
+
+To spell out the native comparison types, the supplied external operator
+gives a strict dg common-input model
+\(L=QF_{\rm ext}\,\zeta_A:T(A_i)\to Q_{\otimes_iB_i}\).
+The independent factor map gives
+\(P=\zeta_BT(F_i)\) with that same source and target. Their exact
+restrictions by the two identities are respectively
+\(B\iota_{\otimes_iB_i}\,BF_{\rm ext}\operatorname{sh}_A\)
+and
+\(B\iota_{\otimes_iB_i}\operatorname{sh}_B(\bigotimes_iBF_i)\).
+Apply full postcomposition by \(\iota_{\otimes_iB_i}\) to the
+*supplied whole native comparison* between the original two multi-input
+maps. It becomes an actual full multi-Nat comparison between \(L\eta_A\)
+and \(P\eta_A\), including all its higher parameter components.
+
+For a closed homogeneous comparison \(\psi\), choose a graded
+preimage \(\phi_0\) under Theorem C.78.1.1's restriction. Its defect
+\(D\phi_0\) is a closed element of the actual restriction kernel.
+The correction \(\phi=\phi_0-H(D\phi_0)\) has the prescribed
+restriction and is closed. The bare component is unchanged because the
+unit is the identity there and the kernel has zero bare component.
+If the native comparison has pointwise homotopy-equivalence components,
+these remain its actual bare equivalences. Its full inverse classes and
+primitives are retained because restriction is a dg mapping
+quasi-isomorphism. For a whole free coherent parameter diagram use this
+same fixed-object dg projection in the relative free-generator induction
+of Theorem C.46.2.1. It lifts the entire diagram, rather than choosing
+unrelated closed edges. The relative clause retains the already assigned
+compatible generator faces and their full projection data. Cube boundaries
+use Theorem C.74.2.1 with this actual kernel.
+
+This construction uses the given native external comparison; it does
+not infer it from a matching cohomology ring or unrelated endpoint
+equivalences. It supplies a specific full common-input lift of that
+comparison. Its simultaneous assembly with the actual native positive
+common graphs and the prescribed graft/field comparison remains a
+separate obligation. \(\square\)
+
+#### C.78.3. Solved full-bar and mapping-sign calculations
+
+**Exercise C.78.3.1 (the Nat contraction has the shifted Hom sign; advanced).**
+Take \(A=k1\oplus ka\), \(|a|=0\), \(da=a^2=0\), and
+\(T=Q^{\mathrm u}(A)\). Let \(F=G:T\to k\) be its augmentation.
+Write \(x=\mathsf t(sa)\), \(h=\mathsf t(sa|sa)\). At original
+rank two consider source bar inputs
+\(u=s h\), \(v=s(x^2)\), \(w=sx|sx\). Find the restriction
+kernel differential and the primitive of the cochain \(g(u)=-1\),
+\(g(w)=1\), \(g(v)=0\). Check the sign in Theorem C.78.1.1.
+
+**Solution.** Here \(|x|=0\), \(|h|=-1\), and \(Dh=x^2\).
+The actual bar differential and unit values are
+
+\[
+ \begin{gathered}b(u)=v,\quad b(w)=-v,\\
+b(v)=0,\\
+\eta(sa|sa)=u+w.\end{gathered}
+ \tag{C.78.9}
+\]
+
+The input quotient has \(u=-w\), so its contraction can be chosen
+as \(h_Q(v)=-w\), \(h_Q(w)=0\). A central scalar cochain \(f\)
+with \(f(v)=1\) and all other values zero has degree one, since
+\(|v|=-1\). The Nat sign gives \(Df=-f b=g\), of degree two.
+In particular \(g\eta=0\), and the full augmentation actions are
+zero on all positive inputs. No higher original-rank components occur
+in this example. The actual restriction-kernel homotopy satisfies
+
+\[
+ \begin{gathered}(Hg)(v)\\
+\quad=(-1)^3g(-w)=1,\\
+Hg=f.\end{gathered}
+ \tag{C.78.10}
+\]
+
+Thus \(D(Hg)=g\). Using instead the unshifted sign
+\((-1)^{|g|}\) with this same \(h_Q\) gives \(-f\) and
+differentiates to \(-g\), not \(g\). This verifies the coefficient
+\((-1)^{r+1}\) required by the full Nat convention.
+\(\square\)
+
+**Exercise C.78.3.2 (mixed and ordinary-unit outputs of the full tensor unit;
+advanced).** Let \(a,b\) be closed degree-zero mappings in the two
+factors and write
+\(X=\mathsf t(sa\otimes1)\),
+\(Y=\mathsf t(1\otimes sb)\),
+\(z=\mathsf t(sa\otimes sb)\).
+Compute \(\eta(sa\otimes sb)\), its full \(B\rho\)-image and
+its full shuffle comparison. Then specialize \(a\) to the actual
+coefficient unit of its factor.
+
+**Solution.** Both original suspended letters have degree minus one.
+The full tensor coproduct has the two proper cut orientations with
+opposite signs. The canonical unit is consequently
+
+\[
+ \begin{gathered}\eta(sa\otimes sb)=sz\\
+\qquad+sX|sY-sY|sX.\end{gathered}
+ \tag{C.78.11}
+\]
+
+The first projection kills the mixed generator \(z\) and keeps the
+other two terms, exactly the shuffle of \(s x_a\) and \(s x_b\)
+in their designated tensor slots. This is the first entire unit square,
+including its two distinct outer-bar words.
+
+For the second square put \(u=a\otimes1\), \(v=1\otimes b\).
+Its one-output part is
+\(s\mathsf t(su|sv)-s\mathsf t(sv|su)\); its two-output part is
+\(s x_u|s x_v-s x_v|s x_u\). Together these are exactly
+\(B\iota_{A\otimes B}\) of the original full shuffle
+\(su|sv-sv|su\). Taking only one of these output lengths would
+lose the entire comparison equation.
+
+If \(a=1\), the normalized relations give \(X=1\), \(z=0\),
+and kill both higher cobar blocks containing the global unit. The full
+unit image is still
+
+\[
+ s1|sY-sY|s1.
+ \tag{C.78.12}
+\]
+
+These are ordinary coefficient *output* letters of the full bar. They
+are retained in the coalgebra identity. A normalized positive Nat
+cochain evaluates this image to zero because each word contains a unit
+input; that explains the cochain normalization without deleting either
+full-bar output word. The full identity and its normalized evaluation
+are different operations. \(\square\)
+
+![Full tensor-unit restriction has a contracted actual mapping kernel, with the shifted Nat sign and ordinary unit outputs kept in the exact tensor squares](assets/tensor-unit-mapping.png)
+
+Theorem C.78.1.1 gives the full tensor-unit mapping restriction; Theorem C.78.2.1 gives canonical entire tensor squares and the lift of supplied native external comparisons. Exercises C.78.3.1–C.78.3.2 check the shifted Hom sign and the full mixed/unit-output words. Editable SVG source.
+
 ## 11. Scope and free reading
 
 Sections 2–7 establish the unit self-Ext formula,the invariant-polynomial classifying-space ring,the torus tensor model over characteristic-zero fields,the Koszul endomorphism and generated-category calculations,and the distinction between compact and bounded objects. The examples and exercises retain the specified shifts,coefficient fields and support conditions.
 
 Appendix A develops stabilizer cohomology,equivariant Ext purity,minimal-model transfer,Frobenius formality and spherical generator envelopes. Appendix B treats the polynomial Kostant slice,the universal centralizer,equivariant coherent restriction and composition on free dual polynomial generators. Appendix C.1–C.29 develops the geometric generator mapping comparison,finite-jet and constant-group comparisons,the graded tensor cohomology functor,determinant and primitive cup operators,geometric Kostant modules,and the arithmetic enhanced symmetric monoidal finite-envelope equivalence. Its Betti and trait comparisons retain the full action nerves,trace normalizations and ordered convolution data.
 
-Appendix C.30–C.75 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator. Global locally forward finite root indices support one fixed-profile product normalization whose finite-corner and full-face restrictions agree on their intersections. The full joint-execution grafting domain has its original bar map; complete product shuffles lie in it exactly under the outer-final/inner-initial prerequisite condition. Entire coherent diagrams in a specified dg category admit explicit full-string transport and strictly associative staged model contraction, retaining their path comparisons. Typed kernel cotensors preserve their intermediate frontier cores, and the actual canonical-state projection has an acyclic full Nat kernel for relative coherent operator lifting. Canonical cobar sources admit an actual dg retraction to strict operator objects, and full marked postcomposition carries entire higher model-change diagrams. Actual dg model bridges retain geometric object representatives and give relative fixed-outer-type native operator diagrams without requiring source augmentations. Full marked evaluation gives entire associative horizontal substitution, retaining the mixed cochain homotopy and nonlinear model-change terms. A full-differential relative contraction preserves the complete split source image and yields exact unit comparisons for transport across changing intermediate types. The actual native joint diagram has normalized formal units, retains every positive index label, and carries its supplied full comparison through the model bridges. Normalized unital cobar models retain actual scalar constants and give strict dg operator objects with exact composition and full unit naturality. Their full transformation restriction has an exact section, a contracted kernel and an entire projected horizontal comparison. Full tensor-parameter categories and relative coherent cube extensions retain prescribed compatible boundaries and all original unary and unit data. Their actual binary tensor projection has a finite kernel contraction, and the full shuffle gives a common unital tensor input with the exact counit square.
+Appendix C.30–C.78 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator. Global locally forward finite root indices support one fixed-profile product normalization whose finite-corner and full-face restrictions agree on their intersections. The full joint-execution grafting domain has its original bar map; complete product shuffles lie in it exactly under the outer-final/inner-initial prerequisite condition. Entire coherent diagrams in a specified dg category admit explicit full-string transport and strictly associative staged model contraction, retaining their path comparisons. Typed kernel cotensors preserve their intermediate frontier cores, and the actual canonical-state projection has an acyclic full Nat kernel for relative coherent operator lifting. Canonical cobar sources admit an actual dg retraction to strict operator objects, and full marked postcomposition carries entire higher model-change diagrams. Actual dg model bridges retain geometric object representatives and give relative fixed-outer-type native operator diagrams without requiring source augmentations. Full marked evaluation gives entire associative horizontal substitution, retaining the mixed cochain homotopy and nonlinear model-change terms. A full-differential relative contraction preserves the complete split source image and yields exact unit comparisons for transport across changing intermediate types. The actual native joint diagram has normalized formal units, retains every positive index label, and carries its supplied full comparison through the model bridges. Normalized unital cobar models retain actual scalar constants and give strict dg operator objects with exact composition and full unit naturality. Their full transformation restriction has an exact section, a contracted kernel and an entire projected horizontal comparison. Full tensor-parameter categories and relative coherent cube extensions retain prescribed compatible boundaries and all original unary and unit data. Their actual binary tensor projection has a finite kernel contraction, and the full shuffle gives a common unital tensor input with the exact counit square. Finite ordered families share exact regrouping and multishuffle squares, with one contraction compatible with all ordered tensor cuts. Entire projected evaluation is preserved under composition, yielding compatible strictly unital native sequential operator cubes with their full parameter restrictions. Full tensor-unit mapping restriction retains all transformation classes and primitives, and its exact tensor squares lift supplied native external comparisons.
 
 A full strong monoidal descent to arbitrary characteristic-zero coefficients additionally requires the transferred profile-changing joint-execution and external grafting data,with every higher covariance equation on its complete compatible domain. The fixed-profile restriction result does not identify those domains with independent root products. The quantum/loop-rotation,renormalized,singular-support and Ran/factorization equivalences of Section 8 require arguments beyond the results established here.
 

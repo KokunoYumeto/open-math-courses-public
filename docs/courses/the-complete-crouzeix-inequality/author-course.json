@@ -1,0 +1,48 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "the-complete-crouzeix-inequality",
+  "title": "The complete Crouzeix inequality",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-17",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's theorem (2026) that ||P[A]|| <= 2 max over the numerical range W(A) of ||P(z)|| for every complex square matrix A and every polynomial P with matrix coefficients of any size, with the sharp constant 2; this is the complete form of Crouzeix's conjecture. Convex domains with analytic polar boundaries approximate W(A) from outside; the Riemann map of the inverted exterior extends across the boundary; the Faber polynomials of the domain give a nonnegative kernel with marginals one and a two-sided estimate of boundary norms by coefficients; the resolvent q(lambda)(h(lambda)I - A)^(-1) has positive Hermitian part on the circle; testing it with the singular vectors of F[A] and the products FG and GF in both orders gives the constant 2.",
+  "prerequisites": [
+    "linear algebra over C: tensor products of matrices, Hermitian and positive semidefinite matrices, the Hilbert-Schmidt norm, singular vectors",
+    "complex analysis as in the core course Complex Analysis (Lebl's Guide to Cultivating Complex Analysis, cited by number at each use): Cauchy's integral formula and estimates, Laurent series, the residue theorem, Rouche's theorem, the open mapping theorem, the Riemann mapping theorem, harmonic conjugates and the reflection principle for harmonic functions"
+  ],
+  "lessons": [
+    "the-numerical-range-and-the-crouzeix-inequality",
+    "smooth-convex-neighbourhoods",
+    "an-exterior-conformal-coordinate",
+    "faber-polynomials-and-a-positive-kernel",
+    "the-bound-on-a-smooth-convex-domain"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "reading": "The manuscript 'A direct proof of the complete Crouzeix inequality' (OpenAI, 26 Sep 2026; build/main.tex, 622 lines, 36 kB of TeX, with its figures and references; local library copy openai-math-20261006) was read in full on 17 Oct 2026, and every step was derived again while the lessons were written. No error was found. Changes of form in the course: (1) the exterior coordinate (the manuscript's appendix) is constructed without Caratheodory's theorem on Jordan domains: the inverse Riemann map is extended across the boundary first, in boundary charts given by the analytic polar parametrization, by the reflection principle for harmonic functions applied to log|phi o Gamma| and a harmonic conjugate; the derivative is nonzero on the boundary by a sign argument on the lowest-order term; continuity of the Riemann map on the closed disc and its injectivity on the boundary follow from the local inverses; the boundary-chart, extension and patching results are stated for any bounded domain star-shaped about 0 with analytic polar boundary; (2) the analytic polar boundary of the outer approximations is proved with Rouche's theorem, the residue theorem and Morera's theorem (a holomorphic implicit function in one variable); (3) the joint expansion of s(lambda, mu) uses a lemma on continuous, separately holomorphic functions on a bidisc proved by iterated Cauchy integrals, so no several-variable theory is needed; (4) the Faber polynomials are given by an explicit recursion, and the identification of the Taylor coefficients of the resolvent with b_k(A) uses the same recursion; (5) the supporting line at a boundary point is obtained by a nearest-point argument and identified with the direction of q(lambda) by first-order conditions along the circle and along the radius; (6) the exercises add the uniqueness of the exterior map, the ellipse (Chebyshev polynomials, the Poisson kernel), Beckermann's bound ||b_k(A)|| <= 2 and its version for linear combinations. Follow-up literature on 17 Oct 2026 (arXiv searches for Crouzeix and for numerical range with spectral, sorted by date): no later work on the complete inequality was found; Crouzeix and Greenbaum, arXiv:2609.22460 (spectral constants of other regions from the scalar theorem), cited in the first lesson; Badea, O'Loughlin and Virtanen, arXiv:2609.03637 (the Clouatre-Ostermann-Ransford conjecture). The attribution of the case of order 2 to Badea, Crouzeix and Delyon was checked in the TeX source of Ahag, Czyz and Virtanen (arXiv:2608.27346v4, Section 1).",
+    "exact_checks": "plan/checks_20261017/crouzeix_check.py (numpy, sympy; 2,050 checks, 0 problems, about 40 s, peak 86 MB): the numerical range (support points, the Toeplitz-Hausdorff map); the complete inequality on random matrices (largest ratio 1.8454) and the sharp example; for the ellipse lambda + 0.35/lambda: Faber polynomials from Laurent coefficients, the boundary identity, s_kj, kernel positivity and marginals, the coefficient estimate, the resolvent expansion and R + R^* >= 0, the quantities of the main proof (weighted dual bounds, boundary norms, block inequality, pairing identity); the outer approximations of random convex polygons (distance bound, polar radius from the argument principle); for the non-symmetric domain 1.3 lambda + k0 + k1/lambda + k2/lambda^2: convexity, the recursion of Proposition 4.1 against Laurent coefficients, the boundary identity, s = S(1/lambda, 1/mu) and its double series, the support inequality, the kernel, the coefficient estimate, the resolvent, Theorem B, Exercises 5.2 and 5.3; Exercises 2.2, 3.2, 3.4 and 4.3 numerically; Exercises 4.1, 4.3 (Chebyshev form) and 5.4 and the ellipse identity b_k(mu + a/mu) = mu^k + a^k mu^(-k) exactly with sympy.",
+    "lint": "gp_lint.py (scratch): headings, provenance line, banned wording, balanced TeX delimiters, sibling links; 0 problems.",
+    "render": "cr_render_check.py (scratch): all 1,663 formulas survive the programme renderer; find_private_math.py: 0 flagged.",
+    "layout": "Tested on 17 Oct 2026 with the site's MathJax at 375 px against the 328 px text column (288 px in lists) before staging: 56 formulas of the first draft were wider and were rewritten (six of them in a second pass). Measured in the staged reader on 17 Oct 2026: the five lessons have 166, 240, 637, 318 and 302 formulas (1,663 in all), 0 rendering errors, 0 formulas wider than the column, no sideways page scroll."
+  },
+  "open_obligations": [
+    "The OpenAI repository has a Lean entry for family 325 (lean/docs/325.md); it and the Lean files were not read, and the course does not depend on them.",
+    "OpenAI's other manuscript of the family, 'The complete Crouzeix theorem: optimal similarity and a common positive boundary representation' (23 Sep 2026), which proves the theorem through a similarity S with ||S|| ||S^(-1)|| <= 2, is not treated; the first lesson mentions it as a stated result.",
+    "The lessons were written and checked by one model in one session; they have not been checked by a second reader."
+  ],
+  "free_sources": [
+    "OpenAI, A direct proof of the complete Crouzeix inequality (OpenAI Math Release preprint, 26 Sep 2026), https://github.com/openai/math/tree/main/preprints/A-direct-proof-of-the-complete-Crouzeix-inequality-September-26-2026",
+    "OpenAI, The complete Crouzeix theorem: optimal similarity and a common positive boundary representation (OpenAI Math Release preprint, 23 Sep 2026), https://github.com/openai/math/tree/main/preprints/The-complete-Crouzeix-theorem-September-23-2026",
+    "M. Crouzeix and C. Palencia, The numerical range is a (1+sqrt 2)-spectral set, arXiv:1702.00668",
+    "T. Ransford and F. L. Schwenninger, Remarks on the Crouzeix-Palencia proof, arXiv:1708.08633",
+    "S. Jin, The numerical range is a 2-spectral set, Preprints.org 202607.1919 v4",
+    "E. Lorist and F. L. Schwenninger, A solution to Crouzeix's conjecture, arXiv:2608.03841",
+    "Q. Luo, Two boundary-certificate proofs of the Crouzeix theorem, Preprints.org 202608.1661 v2",
+    "P. Ahag, R. Czyz and J. Virtanen, The complete Crouzeix conjecture in dimension three, arXiv:2608.27346",
+    "M. Crouzeix and A. Greenbaum, Update to: Spectral sets: numerical range and beyond, arXiv:2609.22460",
+    "B. Delyon and F. Delyon, Generalization of von Neumann's spectral sets and integral representation of operators, Bull. SMF 127 (1999), https://www.numdam.org/item/?id=BSMF_1999__127_1_25_0",
+    "B. Beckermann and M. Crouzeix, Faber polynomials of matrices for non-convex sets, arXiv:1310.1356",
+    "J. Lebl, Guide to Cultivating Complex Analysis, version 1.9 (core course Complex Analysis), https://www.jirka.org/ca/"
+  ]
+}

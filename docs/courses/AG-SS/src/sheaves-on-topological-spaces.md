@@ -1,6 +1,6 @@
 # Sheaves on topological spaces
 
-*Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 A function can be described on small open sets and reconstructed by agreement on overlaps. A germ remembers the function near one point, with the size of the neighbourhood forgotten. Sheaves separate these two operations: restricting information and reconstructing information. This lesson develops the constructions that let us describe geometric objects locally and then assemble them.
 
@@ -300,7 +300,7 @@ A tuple in (6.1) gives germs by choosing a basis neighbourhood at each point. In
 
 ## What this lesson does not prove
 
-For a sheaf of rings \(\mathcal R\), sheaves of \(\mathcal R\)-modules form an abelian category. Kernels are computed on sections, cokernels by sheafifying sectionwise cokernels, and a sequence is exact exactly when its stalk sequences are exact. These are Sheaves of modules and their derived categories, Theorem 2.1; they apply to abelian sheaves by taking \(\mathcal R=\mathbb Z_X\). The exactness of inverse image on abelian sheaves is proved in that lesson's Theorem 4.1. We have proved its prerequisite sheafification, stalk-isomorphism and inverse-image constructions here.
+For a sheaf of rings \(\mathcal R\), sheaves of \(\mathcal R\)-modules form an abelian category. Kernels are computed on sections, cokernels by sheafifying sectionwise cokernels, and a sequence is exact exactly when its stalk sequences are exact. These are Sheaves of modules and their derived categories, Theorem 2.1; they apply to abelian sheaves by taking \(\mathcal R=\mathbb Z_X\). The exactness of inverse image on abelian sheaves is proved in that lesson's Theorem 4.1. These exactness statements use the sheafification, stalk and inverse-image constructions developed above.
 
 ## References
 

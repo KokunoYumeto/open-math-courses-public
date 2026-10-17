@@ -579,235 +579,170 @@ It holds pointwise by local constancy. On \(F^\times\) the same equality follows
 
 ### 7.1. Why every supercuspidal is compactly induced
 
-We prove the exhaustion assertion over every nonarchimedean local field, including positive characteristic and residue characteristic two. This proof uses the admissibility, Jacquet averaging and compact-coefficient theorems already proved in Lesson 6, together with the compact-induction criterion of Theorem 2.1. It does not use a local Langlands parametrization or assume the quadratic construction exhausts the representations.
+The problem is to find a finite-dimensional compact block whose translates cannot overlap in the wrong places. We will find that block inside the given representation, using its compact coefficients and four-entry matrix calculations. No parametrization by Weil representations is needed. Throughout this subsection the local field can have either characteristic, and its residue characteristic can be two.
 
-For the filtration argument choose an auxiliary additive character \(\psi_*\) with conductor \(\mathfrak p\): it is trivial on \(\mathfrak p\) and nontrivial on \(\mathcal O\). This choice concerns compact characters only and does not change the additive character or self-dual measures of Section 6.
-
-Put \(\mathcal A=M_2(F)\). Two orders and their radicals will suffice:
+Choose an auxiliary additive character \(\psi_*\) trivial on \(\mathfrak p\) and nontrivial on \(\mathcal O\). It will only label compact characters. Put
 \[
 \begin{aligned}
-\mathfrak M&=M_2(\mathcal O),&
-\mathfrak P_{\mathfrak M}&=\varpi\mathfrak M,\\
-\mathfrak I&=\begin{pmatrix}\mathcal O&\mathcal O\\
-                   \mathfrak p&\mathcal O\end{pmatrix},&
-\mathfrak P_{\mathfrak I}&=\begin{pmatrix}\mathfrak p&\mathcal O\\
-                   \mathfrak p&\mathfrak p\end{pmatrix}.
+\mathfrak M&=M_2(\mathcal O),&\mathfrak P_{\mathfrak M}&=\varpi M_2(\mathcal O),\\
+\mathfrak I&=\begin{pmatrix}\mathcal O&\mathcal O\\\mathfrak p&\mathcal O\end{pmatrix},&
+\mathfrak P_{\mathfrak I}&=\begin{pmatrix}\mathfrak p&\mathcal O\\\mathfrak p&\mathfrak p\end{pmatrix}.
 \end{aligned}
 \tag{7.4}
 \]
-Their periods are \(e_{\mathfrak M}=1\), \(e_{\mathfrak I}=2\). For either order, or a conjugate \(\mathfrak A\), write \(\mathfrak P=\operatorname{rad}\mathfrak A\) and
-\[
-U_{\mathfrak A}=\mathfrak A^\times,\qquad
-U_{\mathfrak A}^j=1+\mathfrak P^j\quad(j\ge1).
-\]
-All integer powers are lattices: for \(\mathfrak I\),
-\(\Pi=\left(\begin{smallmatrix}0&1\\\varpi&0\end{smallmatrix}\right)\)
-has \(\mathfrak P=\Pi\mathfrak I=\mathfrak I\Pi\), and
-\(\Pi^2=\varpi I\). These orders preserve respectively the chains
-\(\{\varpi^j\mathcal O^2\}\) and
-\(\{\varpi^j\mathcal O^2,\varpi^j(\mathcal O\oplus\mathfrak p)\}\).
+For either order, and for its conjugates, write \(U_{\mathfrak A}=\mathfrak A^\times\) and \(U_{\mathfrak A}^j=1+\mathfrak P^j\), \(j\geq1\). The periods are \(e_{\mathfrak M}=1\) and \(e_{\mathfrak I}=2\). Indeed, with
+\(\Pi=\left(\begin{smallmatrix}0&1\\\varpi&0\end{smallmatrix}\right)\), one has \(\mathfrak P_{\mathfrak I}=\Pi\mathfrak I=\mathfrak I\Pi\) and \(\Pi^2=\varpi I\).
 
-There are no other chains of the required kind. Between a lattice \(L\) and \(\varpi L\), a strict chain gives a strict flag in the two-dimensional space \(L/\varpi L\); it has either one step or two. A basis carrying its possible intermediate line to the first coordinate gives exactly the two chains above. Their orders are their simultaneous lattice endomorphisms. Conversely the diagonal idempotents in either order decompose every stable lattice as \(\mathfrak p^a\oplus\mathfrak p^b\). The off-diagonal entries force \(a=b\) in the first case and \(a\le b\le a+1\) in the second. Thus each order recovers its chain.
+Here is the lattice meaning of these matrices. The first order preserves all \(\varpi^a\mathcal O^2\); the second also preserves \(\varpi^a(\mathcal O\oplus\mathfrak p)\). Conversely these are their full chains of stable lattices, up to a common change of basis. To check this, use the two diagonal idempotents to write a stable lattice as \(\mathfrak p^a\oplus\mathfrak p^b\). The two off-diagonal entries impose \(a=b\) for \(\mathfrak M\), and \(a\leq b\leq a+1\) for \(\mathfrak I\). A strict periodic lattice chain in a two-dimensional space has no other form: its intermediate lattices give a strict flag in the two-dimensional residue space. Thus these two explicit orders describe both possible chains.
 
-The trace-character pairing has the exact annihilator
+We will repeatedly use the following trace pairing, including its shift by one:
 \[
-(\mathfrak P^j)^\perp=\mathfrak P^{\,1-j},
-\qquad
-x^\perp:\ \psi_*(\operatorname{tr}(xy))=1.
+ (\mathfrak P^j)^\perp=\mathfrak P^{1-j},
+ \qquad L^\perp=\{y:\psi_*(\operatorname{tr}(xy))=1\text{ for every }x\in L\}.
 \tag{7.5}
 \]
-For \(\mathfrak M\), check the four entries against \(\varpi^j\mathcal O\). For \(\mathfrak I\), its even powers are \(\varpi^a\mathfrak I\) and its odd powers are \(\varpi^a\mathfrak P_{\mathfrak I}\); pairing opposite off-diagonal entries and equal diagonal entries verifies (7.5) in each parity. In particular
+For the maximal order it follows by pairing each matrix entry with its transposed entry. For the other order use
+\(\mathfrak P^{2a}=\varpi^a\mathfrak I\) and
+\(\mathfrak P^{2a+1}=\varpi^a\mathfrak P_{\mathfrak I}\): the diagonal entries pair with diagonal entries and the upper-right with the lower-left. This checks both parities, also for negative powers. Consequently, if \(2r\geq n+1\) and \(1\leq r\leq n\), all characters of \(U_{\mathfrak A}^r/U_{\mathfrak A}^{n+1}\) are
 \[
-\theta_\alpha(1+x)=\psi_*(\operatorname{tr}(\alpha x))
+ \theta_\alpha(1+x)=\psi_*(\operatorname{tr}(\alpha x)),
+ \qquad \alpha\in\mathfrak P^{-n}/\mathfrak P^{1-r}.
 \tag{7.6}
 \]
-is a character of \(U_{\mathfrak A}^r/U_{\mathfrak A}^{n+1}\) whenever
-\(\alpha\in\mathfrak P^{-n}\), \(2r\ge n+1\), and \(r\le n\). Multiplication adds \(x,y\) modulo \(\mathfrak P^{n+1}\), so it is a character; (7.5) shows that all characters of this quotient have this form, with \(\alpha\) determined modulo \(\mathfrak P^{1-r}\).
+The inequality makes the product term \(xy\) invisible to the pairing; (7.5) proves both exhaustion and the asserted ambiguity. Admissibility from Lesson 6 makes every character space occurring below finite dimensional: its compact open kernel fixes that entire space.
 
-Here and below a nonzero character space means its full isotypic space in \(V\); it is finite dimensional by the proved admissibility theorem, since the character's kernel is compact open.
+We first exclude the two ways a compact block could still see a split direction.
 
 **Lemma 7.4 — the Iwahori obstruction.** A supercuspidal representation has no nonzero vector fixed by \(U_{\mathfrak I}^1\).
 
-**Proof.** Let \(I=U_{\mathfrak I}\). A vector fixed by \(U_{\mathfrak I}^1\) generates a representation of
-\(I/U_{\mathfrak I}^1=k^\times\times k^\times\). Choose a nonzero character space \(V^\phi\), with
-\(\phi(i)=\phi_1(\bar i_{11})\phi_2(\bar i_{22})\), and let \(E_\phi\) be its normalized compact projector. Put
+**Proof.** Set \(I=U_{\mathfrak I}\). If such a vector exists, the finite abelian quotient \(I/U_{\mathfrak I}^1=k^\times\times k^\times\) gives a nonzero character space \(V^\phi\), where \(\phi=\phi_1\otimes\phi_2\). Denote its averaging projector by \(E_\phi\). Let
 \[
-s_0=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
-j_0=\begin{pmatrix}0&1\\\varpi&0\end{pmatrix},\quad
-d=s_0j_0=\operatorname{diag}(\varpi,1).
+ s=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+ j=\begin{pmatrix}0&1\\\varpi&0\end{pmatrix},\qquad
+ t=sj=\operatorname{diag}(\varpi,1).
 \]
-The element \(j_0\) normalizes \(I\) and exchanges \(\phi_1,\phi_2\). Write \(\phi^w\) for that exchange. The compact reflection operator
+The operator \(A_\phi=E_{\phi^w}\pi(s)E_\phi\) exchanges the two character spaces. In the finite \(K/K(1)\)-module it satisfies
 \[
-A_\phi=E_{\phi^w}\pi(s_0)E_\phi:
- V^\phi\longrightarrow V^{\phi^w}
-\]
-is invertible. The exact finite-group calculation is
-\[
-A_{\phi^w}A_\phi=q^{-1}1\quad(\phi_1\ne\phi_2);
-\qquad
-A_\phi^2=q^{-1}1+
- \phi_1(-1)(1-q^{-1})A_\phi\quad(\phi_1=\phi_2).
+\begin{cases}
+ A_{\phi^w}A_\phi=q^{-1}1,&\phi_1\ne\phi_2,\\
+ A_\phi^2=q^{-1}1+\phi_1(-1)(1-q^{-1})A_\phi,&\phi_1=\phi_2.
+\end{cases}
 \tag{7.7}
 \]
-We supply its calculation rather than use a Hecke-algebra classification. Work in the finite quotient of \(K\) acting on the \(K(1)\)-fixed vectors. The right cosets of the upper Borel double coset of \(s_0\) are \(n(x)s_0 B(k)\), \(x\in k\). Thus the normalized operator is \(q^{-1}\sum_x\pi(n(x)s_0)\) on the appropriate Borel character space. In multiplying the two sums, the terms with the second root parameter zero give \(q^{-1}1\). For a nonzero second parameter \(y\), use
+Here is the calculation. On a Borel-character vector, averaging \(\pi(s)\) over the Borel is \(q^{-1}\sum_{x\in k}\pi(n(x)s)\). Multiply the two averages. The zero lower-root parameter gives \(q^{-1}1\). For a nonzero lower parameter \(y\), use the matrix identity
 \[
-n(x)l(y)=n(x+y^{-1})
-  \operatorname{diag}(-y^{-1},y)s_0n(y^{-1}).
+ n(x)l(y)=n(x+y^{-1})
+       \operatorname{diag}(-y^{-1},y)s n(y^{-1}).
 \]
-The first root parameters run through all of \(k\). The diagonal character contributes
-\(\phi_2(-1)(\phi_1\phi_2^{-1})(y)\).
-Its sum over \(k^\times\) is zero when the characters differ and
-\(\phi_1(-1)(q-1)\) when they agree. This is (7.7). The calculation holds on any finite \(K\)-module; the compact projector has already placed the vectors in that quotient. The first identity gives an inverse immediately; the second gives
-\(A_\phi^{-1}=qA_\phi-\phi_1(-1)(q-1)1\).
+The remaining coefficient is the sum of \(\phi_2(-1)(\phi_1\phi_2^{-1})(y)\) over \(k^\times\), divided by the averaging factors. That sum is zero for unequal characters and \(\phi_1(-1)(q-1)\) for equal characters, giving (7.7). Thus each \(A_\phi\) is invertible: use \(qA_{\phi^w}\) in the first case and \(qA_\phi-\phi_1(-1)(q-1)1\) in the second.
 
-Since \(\pi(j_0)\) is invertible between the exchanged spaces,
+Since \(j\) normalizes \(I\) and exchanges the two diagonal characters, the operator
+\(T=E_\phi\pi(t)E_\phi=A_{\phi^w}\pi(j)|_{V^\phi}\) is invertible. On the other hand, the upper-root representatives for \(It^aI/I\) are \(n(x)t^a\), \(x\in\mathcal O/\mathfrak p^a\). Multiplying these representatives appends one base-\(\varpi\) digit, so normalized averaging gives
 \[
-T=E_\phi\pi(d)E_\phi
-  =A_{\phi^w}\pi(j_0)\big|_{V^\phi}
-\]
-is invertible on the nonzero finite-dimensional space \(V^\phi\).
-It cannot be invertible in a supercuspidal. Indeed the \(I\)-cosets in \(IdI\) have representatives \(n(x)dI\), \(x\in\mathcal O/\varpi\mathcal O\). The character is trivial on both root groups and unchanged on the diagonal intersection. Therefore the same normalized coset multiplication as in Lemma 7.2 gives
-\[
-T^a=E_\phi\pi(d^a)E_\phi\qquad(a\ge1).
+ T^a=E_\phi\pi(t^a)E_\phi\qquad(a\geq1).
 \tag{7.8}
 \]
-The upper parameters in the product run once through
-\(\mathcal O/\varpi^a\mathcal O\), with coefficient \(q^{-a}\).
-The finitely many matrix coefficients needed on \(V^\phi\) are compact modulo \(Z\), by Lesson 6. The images of \(d^a\) leave every compact subset of \(\mathrm{PGL}_2(F)\). Thus the right side of (7.8) is zero for all sufficiently large \(a\). This contradicts invertibility. \(\square\)
+The characters contribute no extra factor: they are trivial on these root groups and agree on the conjugated diagonal intersection. By Lesson 6 all the finitely many matrix coefficients defining this operator on \(V^\phi\) have compact support modulo the centre. The class of \(t^a\) leaves every such compact set. Hence (7.8) is zero for sufficiently large \(a\), contradicting invertibility. \(\square\)
 
-**Lemma 7.5 — a split compact character cannot occur.** Suppose \(n\ge1\), \(a,b\in\mathcal O\), and \(a-b\) is a unit. A supercuspidal cannot contain on \(K(n)\) the character associated by (7.6) to
-\(\alpha=\varpi^{-n}\operatorname{diag}(a,b)\).
+**Lemma 7.5 — a split compact character cannot occur.** Suppose \(n\geq1\), \(a,b\in\mathcal O\), and \(a-b\in\mathcal O^\times\). No supercuspidal contains the character of \(K(n)\) given by \(\alpha=\varpi^{-n}\operatorname{diag}(a,b)\) in (7.6).
 
-**Proof.** Let \(\xi=\theta_\alpha|_{K(n)}\), and suppose its finite-dimensional character space \(W\) is nonzero. Since \(V_N=0\), the Jacquet averaging lemma says that each vector in \(W\) is killed by averaging some compact upper-root group. Choose one group for a basis, and hence for all of \(W\). Writing \(N_j=n(\mathfrak p^j)\), choose the largest \(j\) such that
-\(E_{N_j}W=0\). Such a largest integer exists: vanishing persists as \(j\) decreases, whereas \(N_n\) fixes \(W\). Choose \(v\in W\) with \(E_{N_{j+1}}v\ne0\).
+**Proof.** Suppose its character space \(W\) is nonzero. Put \(N_i=n(\mathfrak p^i)\). The vanishing Jacquet module and Lesson 6's averaging criterion give \(E_{N_i}W=0\) for some \(i\), by choosing one averaging group for a basis of \(W\). Such vanishing persists as \(i\) decreases. It fails for \(i=n\), since \(N_n\) fixes \(W\). There is therefore a largest \(i\) with vanishing. Choose \(v\in W\) with \(E_{N_{i+1}}v\ne0\), and put \(v'=\pi(t^{-1})v\), where \(t=\operatorname{diag}(\varpi,1)\). Then \(E_{N_i}v'\ne0\).
 
-Put \(t=\operatorname{diag}(\varpi,1)\). The vector \(v'=\pi(t^{-1})v\) has
+The vector \(v'\) has the same diagonal character on
 \[
-E_{N_j}v'=\pi(t^{-1})E_{N_{j+1}}v\ne0.
+ Y=K(n)\cap t^{-1}K(n)t
+   =1+\begin{pmatrix}\mathfrak p^n&\mathfrak p^n\\
+                     \mathfrak p^{n+1}&\mathfrak p^n\end{pmatrix}.
 \]
-It transforms by \(\xi\) on
-\[
-Y=K(n)\cap t^{-1}K(n)t
-=1+\begin{pmatrix}\mathfrak p^n&\mathfrak p^n\\
-                    \mathfrak p^{n+1}&\mathfrak p^n\end{pmatrix};
-\]
-conjugation by \(t\) does not change the diagonal trace. Since \(Y\) contains \(K(n+1)\), the \(K(n)\)-orbit span of \(v'\) is in the finite abelian quotient \(K(n)/K(n+1)\). Decompose \(v'\) into its character components. Every character extending \(\xi|_Y\) corresponds to
-\[
-\varpi^{-n}\begin{pmatrix}a&c\\0&b\end{pmatrix}
-\pmod{\mathfrak p^{1-n}\mathfrak M}.
-\]
-Conjugating by \(n(z)\), \(z\in\mathcal O\), changes \(c\) by a multiple of \(b-a\). Thus each such character is \(N_0\)-conjugate to \(\xi\). Some component has nonzero \(N_j\)-average, since the average of \(v'\) is nonzero. Carry that component back to \(W\) by the indicated \(n(z)\). Upper-root translations commute with \(E_{N_j}\), giving a vector in \(W\) with nonzero average. This contradicts the choice of \(j\). \(\square\)
+In particular \(K(n+1)\) fixes it. Decompose its finite \(K(n)/K(n+1)\)-span into characters. Pairing the four entries shows that every character extending the one on \(Y\) has parameter
+\(\varpi^{-n}\left(\begin{smallmatrix}a&c\\0&b\end{smallmatrix}\right)\) modulo \(\mathfrak p^{1-n}\mathfrak M\). Conjugation by an upper unit \(n(z)\), \(z\in\mathcal O\), removes \(c\), because \(a-b\) is a unit. Some component still has nonzero \(N_i\)-average. Carrying that component back by this upper unit puts it in \(W\); upper-root translations commute with the averaging operator. This contradicts \(E_{N_i}W=0\). \(\square\)
 
-We now find the compact character to which the intertwining calculation will apply. Define the normalized level by
+Next select a compact character without presupposing any list of inducing types. For a smooth representation set
 \[
-\ell(\pi)=\min\left\{\frac n{e_{\mathfrak A}}:
- n\ge0,\quad V^{U_{\mathfrak A}^{n+1}}\ne0,\quad
- \mathfrak A\text{ a conjugate of }\mathfrak M\text{ or }\mathfrak I
- \right\}.
+ \ell(\pi)=\min\left\{n/e_{\mathfrak A}:n\geq0,
+       \ V^{U_{\mathfrak A}^{n+1}}\ne0\right\},
 \tag{7.9}
 \]
-Smoothness makes the set nonempty, and its values lie in
-\(\tfrac12\mathbf Z_{\ge0}\), so the minimum exists. Among determinant twists of \(\pi\), choose one with least normalized level; again a minimum exists in this same discrete set. Twisting preserves supercuspidality.
+where both chains and all their conjugates are allowed. Smoothness makes the set nonempty; its values belong to \(\tfrac12\mathbb Z_{\geq0}\), so a minimum is attained. Choose a determinant twist with the least possible level. Twisting preserves vanishing of the Jacquet module and compactness of coefficients modulo the centre.
 
-**Lemma 7.6 — the elliptic alternative.** For that least-level twist, either it contains an inflated finite cuspidal representation of \(K\), or it contains a character \(\theta_\alpha\) on \(U_{\mathfrak A}^n\) of one of the following two forms:
+**Lemma 7.6 — the elliptic alternative.** This least-level twist either contains an inflated finite cuspidal \(K\)-type, or contains a first-layer character with one of these parameters:
 
-- \(\mathfrak A=\mathfrak M\), \(n\ge1\), and the reduction of \(\varpi^n\alpha\) has irreducible characteristic polynomial over \(k\);
-- \(\mathfrak A=\mathfrak I\), \(n\ge1\) odd, and
-  \(\alpha\mathfrak A=\mathfrak P^{-n}\).
+- \(\mathfrak A=\mathfrak M\), \(n\geq1\), and \(\varpi^n\alpha\) has irreducible quadratic reduction;
+- \(\mathfrak A=\mathfrak I\), \(n=2m+1\), and \(\alpha\mathfrak I=\mathfrak P^{-n}\).
 
-In either positive-level case \(F[\alpha]\) is a quadratic field and its integral lattice chain is the chain of \(\mathfrak A\).
+In both positive-level cases every parameter in \(\alpha+\mathfrak P^{1-n}\) generates a quadratic field whose full integral lattice chain is the chosen chain.
 
-**Proof.** At level zero there is a \(K(1)\)-fixed vector. Indeed
-\(K(1)\subset U_{\mathfrak I}^1\), so either order giving level zero implies this assertion. Pick an irreducible constituent of its finite \(K\)-orbit. If it has upper-unipotent invariants in \(\mathrm{GL}_2(k)\), those vectors, after inflation, are fixed by \(U_{\mathfrak I}^1\). Lemma 7.4 excludes this. Thus the constituent is finite cuspidal.
+**Proof.** At level zero either chain gives a \(K(1)\)-fixed vector, because \(K(1)\subset U_{\mathfrak I}^1\). Take a finite irreducible \(K/K(1)\)-constituent. Upper-unipotent invariants in it would give \(U_{\mathfrak I}^1\)-invariants, contrary to Lemma 7.4. Thus it is finite cuspidal.
 
-At positive integral level \(n\), use \(\mathfrak M\): if a minimizing order was \(\mathfrak I\) with index \(2n\), the inclusion
-\(K(n+1)\subset U_{\mathfrak I}^{2n+1}\) supplies a \(K(n+1)\)-fixed vector as well. Decompose that space under the abelian group \(K(n)/K(n+1)\). Its characters are \(\theta_\alpha\) with
-\(\alpha=\varpi^{-n}A_0\), \(A_0\in\mathfrak M\), determined modulo \(\varpi\mathfrak M\). The trivial character would lower the level. If \(\bar A_0\) is nonzero nilpotent, a finite basis change makes it strictly upper triangular. Take the corresponding nilpotent representative. Its trace character is trivial on
-\(U_{\mathfrak I}^{2n} =1+\varpi^n\mathfrak I\), since its lower-left entries lie in \(\mathfrak p^{n+1}\). Its vector is therefore fixed by that group and has level at most \(n-\tfrac12\), a contradiction.
+At a positive integral level \(n\), a maximal-order vector is available even if the minimizing chain had period two: \(K(n+1)\subset U_{\mathfrak I}^{2n+1}\). Its characters on \(K(n)/K(n+1)\) correspond to matrices \(\bar A\in M_2(k)\). Zero lowers the level. A nonzero nilpotent can be put in strictly upper triangular form; its character is trivial on \(1+\varpi^n\mathfrak I\), giving level \(n-\tfrac12\), again impossible. If \(\bar A\) has a repeated eigenvalue \(c\), subtract \(cI\) by a determinant twist. Explicitly extend the character
+\(1+x\mapsto\psi_*(-c\varpi^{-n}x)\) of \((1+\mathfrak p^n)/(1+\mathfrak p^{n+1})\) to \(F^\times\). For clarity, characters of a subgroup of a finite abelian group extend by adjoining one element at a time: if its coset has order \(d\), choose a \(d\)-th root of the prescribed value on its \(d\)-th power. The resulting character is well defined on the enlarged subgroup. Apply this to \(\mathcal O^\times/(1+\mathfrak p^{n+1})\), then extend to \(F^\times=\varpi^{\mathbb Z}\mathcal O^\times\). Since \(\det(1+X)\equiv1+\operatorname{tr}X\pmod{\mathfrak p^{n+1}}\), this produces the already excluded nilpotent case at a lower level of a twist. Distinct residue eigenvalues are excluded by Lemma 7.5. The remaining quadratic reduction is irreducible.
 
-If \(\bar A_0\) has a repeated nonzero eigenvalue \(c\), its difference from \(cI\) is nilpotent. Choose a character \(\chi\) of \(F^\times\) whose restriction to \(1+\mathfrak p^n\) is
-\(\chi(1+x)=\psi_*(-c\varpi^{-n}x)\), and is trivial on \(1+\mathfrak p^{n+1}\). Such a character exists: this formula defines a character on that finite unit quotient, and characters extend to the finite abelian unit group and then to \(F^\times=\varpi^{\mathbf Z}\mathcal O^\times\). On \(K(n)\),
-\(\det(1+X)=1+\operatorname{tr}X+\det X\), and the last term belongs to \(\mathfrak p^{n+1}\). Thus twisting subtracts \(cI\) from \(\bar A_0\), yielding the nilpotent case and a lower normalized level. This contradicts minimality among twists. Distinct eigenvalues in \(k\) are excluded by Lemma 7.5, after a finite basis change. The only possibility left is an irreducible quadratic polynomial.
-
-At half-integral level \(m+\tfrac12\), the minimizing order is \(\mathfrak I\), with \(n=2m+1\). The characters on \(U_{\mathfrak I}^n/U_{\mathfrak I}^{n+1}\) have representatives
+At level \(m+\tfrac12\), the first character of the period-two chain can be represented by
 \[
-\alpha=\begin{pmatrix}0&\varpi^{-m-1}u\\
-                            \varpi^{-m}v&0\end{pmatrix},
-\qquad u,v\in\mathcal O\pmod{\mathfrak p}.
+ \alpha=\begin{pmatrix}0&\varpi^{-m-1}u\\
+                         \varpi^{-m}v&0\end{pmatrix},
+ \qquad u,v\in\mathcal O\pmod{\mathfrak p}.
 \]
-If \(u=0\), its character is trivial on \(K(m+1)\), a subgroup of \(U_{\mathfrak I}^{2m+1}\), and its vector has level at most \(m\). If \(v=0\), use the other adjacent maximal order
-\(\operatorname{diag}(\varpi^{-1},1)\mathfrak M\operatorname{diag}(\varpi,1)\);
-its \((m+1)\)-st congruence subgroup lies in \(U_{\mathfrak I}^{2m+1}\) and the same trace check is zero. Both possibilities contradict minimality. Hence \(u,v\) are units, which is exactly
-\(\alpha\mathfrak I=\mathfrak P_{\mathfrak I}^{-n}\).
+If \(u=0\), that character is trivial on \(K(m+1)\); if \(v=0\), it is trivial on the corresponding subgroup for the other adjacent maximal order \(\operatorname{diag}(\varpi^{-1},1)\mathfrak M\operatorname{diag}(\varpi,1)\). In either case the vector has level at most \(m\). Thus both entries are units, which says exactly \(\alpha\mathfrak I=\mathfrak P^{-n}\).
 
-For the maximal-order case, \(\alpha_0=\varpi^n\alpha\) has an irreducible quadratic reduction, so \(E=F[\alpha]\) is unramified quadratic and
-\(\mathcal O_E=\mathcal O[\alpha_0]\). One can prove the last equality by lifting the residue-field basis \(1,\bar\alpha_0\) successively in powers of \(\varpi\); completeness gives all of \(\mathcal O_E\).
-For the Iwahori case, \(\alpha_0=\varpi^{m+1}\alpha\) has determinant valuation one and trace in \(\mathfrak p\). Its polynomial is Eisenstein. Thus \(E=F[\alpha]\) is totally ramified quadratic,
-\(\alpha_0\) is a uniformizer, and \(\mathcal O_E=\mathcal O[\alpha_0]\).
-For this last equality the valuations of \(a+b\alpha_0\) have distinct parities when both coefficients are nonzero; integrality forces \(a,b\in\mathcal O\). In both cases the chain is the chain of all fractional \(\mathcal O_E\)-ideals in the one-dimensional \(E\)-space \(F^2\). The same conclusions hold for every representative of \(\alpha+\mathfrak P^{1-n}\), since the irreducible reduction or Eisenstein conditions have not changed. \(\square\)
+In the maximal-order case \(\beta=\varpi^n\alpha\) generates the unramified quadratic extension and \(\mathcal O[\beta]=\mathcal O_E\). To see the equality, lift the residue basis \(1,\bar\beta\) successively and use completeness. In the period-two case \(\beta=\varpi^{m+1}\alpha\) has trace in \(\mathfrak p\) and determinant of valuation one. Its polynomial is Eisenstein, and \(\mathcal O[\beta]=\mathcal O_E\): the two terms of \(a+b\beta\) have different valuation parity, so an integral element has \(a,b\in\mathcal O\). This also covers an inseparable quadratic extension in characteristic two. Changing the parameter by \(\mathfrak P^{1-n}\) preserves these reduction or Eisenstein conditions. In the one-dimensional \(E\)-space \(F^2\), integral field lattices are precisely the fractional ideals of \(\mathcal O_E\). Their chain is exactly the one described in (7.4). \(\square\)
 
-Refine a positive-level character to
+Refine the chosen first character as follows:
 \[
-r=\lfloor n/2\rfloor+1,\qquad
-l=\lfloor(n+1)/2\rfloor,\qquad
-H=U_{\mathfrak A}^r.
+ r=\lfloor n/2\rfloor+1,\qquad l=n+1-r,
+ \qquad H=U_{\mathfrak A}^r.
 \tag{7.10}
 \]
-The nonzero first character space inside \(V^{U_{\mathfrak A}^{n+1}}\) is stable under \(H\). Its action factors through the abelian group \(H/U_{\mathfrak A}^{n+1}\), because \(2r\ge n+1\). Choose a character component. Equation (7.5) gives it as \(\theta_\alpha\) on \(H\), with the same first character and therefore with the elliptic properties of Lemma 7.6. In characteristic two, if its quadratic polynomial is inseparable, alter its trace by a nonzero sufficiently small diagonal entry in \(\mathfrak P^{1-r}\). This does not alter the character on \(H\) or its first elliptic conditions, and makes the polynomial separable. We may therefore take \(E/F\) separable, although the compact-intertwining argument also works without this adjustment.
+The first character space in \(V^{U_{\mathfrak A}^{n+1}}\) is stable under \(H\), whose action there factors through an abelian group. Select one character component. Formula (7.6) supplies a parameter \(\alpha\) for it, retaining the first layer and hence Lemma 7.6's conditions. If the period-two quadratic polynomial is inseparable, add a sufficiently small diagonal entry in \(\mathfrak P^{1-r}\). Its trace becomes nonzero, without changing the character or its Eisenstein property. We can take \(E=F[\alpha]\) separable.
 
-**Lemma 7.7 — the full intertwining set.** For these data,
+**Lemma 7.7 — the full intertwining set.** The character just selected has
 \[
-I_G(\theta_\alpha|_H)
- =\{g:g\text{ normalizes }H\text{ and its character}\}
- =J_\alpha:=E^\times U_{\mathfrak A}^{\,l}.
+ I_G(\theta_\alpha|_H)
+   =\{g:gHg^{-1}=H,\ \theta_\alpha^g=\theta_\alpha\}
+   =E^\times U_{\mathfrak A}^{l}=:J_\alpha.
 \tag{7.11}
 \]
-In particular \(J_\alpha\) is open, contains \(Z\), and is compact modulo \(Z\).
+This group is open, contains the centre, and is compact modulo it.
 
-**Proof.** We give both the exclusion of remote translates and the congruence normalizer. For any two additive lattices \(L_1,L_2\) in \(M_2(F)\),
-\((L_1\cap L_2)^\perp=L_1^\perp+L_2^\perp\).
-To verify the equality, put both lattices between two scalar matrix lattices and use their finite additive quotient. The trace pairing is perfect there by its entry calculation. Annihilator cardinalities, and
-\(|L_1+L_2||L_1\cap L_2|=|L_1||L_2|\), give the equality; the inclusion in one direction is immediate. Conjugation preserves the trace pairing.
-
-If \(g\) intertwines the restriction to \(U_{\mathfrak A}^n\), this identity and (7.5) say exactly that
+**Proof.** We must first rule out intertwiners moving the chain. For additive lattices in \(M_2(F)\),
+\((L_1\cap L_2)^\perp=L_1^\perp+L_2^\perp\). This is finite abelian duality: place both lattices between two scalar matrix lattices, use the perfect four-entry pairing on the quotient, and apply \(|L_1+L_2||L_1\cap L_2|=|L_1||L_2|\). In particular, intertwining the first-layer character gives
 \[
-(\alpha+\mathfrak P^{1-n})\cap
- g^{-1}(\alpha+\mathfrak P^{1-n})g\ne\varnothing.
+ (\alpha+\mathfrak P^{1-n})\cap
+       g^{-1}(\alpha+\mathfrak P^{1-n})g\ne\varnothing.
 \tag{7.12}
 \]
-Choose \(\gamma\) in the intersection. By Lemma 7.6, both \(\gamma\) and \(g\gamma g^{-1}\) are elliptic minimal representatives. Their integral field rings are generated by the normalized representatives just described. Both have the chain of \(\mathfrak A\) as their full chain of integral field lattices. Conjugating the first chain by \(g\) gives the second. Consequently \(g\) preserves that chain, and
-\(g\mathfrak A g^{-1}=\mathfrak A\).
-An intertwiner of the character on \(H\) also intertwines its restriction to \(U_{\mathfrak A}^n\); hence it belongs to this chain normalizer. It now normalizes \(H\), so intertwining means equality of its character on the entire \(H\).
+This follows by testing equality of the two characters on
+\(1+(\mathfrak P^n\cap g^{-1}\mathfrak P^ng)\), and applying (7.5).
 
-The chain normalizer is \(E^\times U_{\mathfrak A}\). Indeed it permutes the chain by an index translation; a power of an \(E\)-uniformizer performs that same translation, and what remains fixes every lattice and lies in \(U_{\mathfrak A}\). Remove the field factor, so \(g\in U_{\mathfrak A}\). Character equality, by (7.5), is
+Choose \(\gamma\) in that intersection. Lemma 7.6 identifies the full chain of \(\mathcal O_{F[\gamma]}\)-lattices with the chosen chain. It does the same for \(g\gamma g^{-1}\). Conjugation by \(g\) carries the first full chain onto the second, so \(g\) preserves the chain and normalizes \(\mathfrak A\). Any intertwiner on \(H\) intertwines the first layer, since \(U_{\mathfrak A}^n\subset H\), so this conclusion applies to it. It now normalizes \(H\); intertwining becomes equality of its characters on all of \(H\).
+
+The chain normalizer is \(E^\times U_{\mathfrak A}\). An element preserving the chain translates its integer index; a power of a field uniformizer effects that same translation, leaving an element fixing every lattice. This remainder is an order unit. After removing the field factor we may suppose \(g\in U_{\mathfrak A}\). The character equality is
+\(g^{-1}\alpha g-\alpha\in\mathfrak P^{1-r}\). Since \(\alpha\mathfrak A=\mathfrak P^{-n}\), multiplication by the unit and by \(\alpha^{-1}\) makes this equivalent to
 \[
-g^{-1}\alpha g-\alpha\in\mathfrak P^{1-r}.
-\]
-Since \(\alpha\mathfrak A=\mathfrak P^{-n}\), this is equivalent to
-\[
-\alpha g\alpha^{-1}-g\in\mathfrak P^{\,l},
-\qquad n+1-r=l.
+ \alpha g\alpha^{-1}-g\in\mathfrak P^l.
 \tag{7.13}
 \]
-The congruence centralizer in \(\mathfrak A\) is
+
+Here is the required congruence calculation, without a centralizer theorem:
 \[
-\{x\in\mathfrak A:\alpha x\alpha^{-1}-x\in\mathfrak P^a\}
- =\mathcal O_E+\mathfrak P^a\quad(a\ge1).
+ \{x\in\mathfrak A:\alpha x\alpha^{-1}-x\in\mathfrak P^a\}
+       =\mathcal O_E+\mathfrak P^a\qquad(a\geq1).
 \tag{7.14}
 \]
-Here is a proof in every residue characteristic. In the unramified case, the first-layer centralizer in \(M_2(k)\) of the generating quadratic residue field is that field itself: a commuting endomorphism is multiplication by its value at \(1\). In the ramified case, \(\mathfrak A/\mathfrak P=k\oplus k\), and conjugation by \(\alpha\), whose chain shift is odd, exchanges the two factors. Its fixed space is their diagonal, exactly the image of \(\mathcal O_E\). This proves (7.14) at \(a=1\). Inductively subtract the already constructed element of \(\mathcal O_E\), leaving \(x\in\mathfrak P^{a-1}\). Divide by an \(E\)-uniformizer to the power \(a-1\); it commutes with \(\alpha\) and takes this lattice to \(\mathfrak A\). The first-layer result provides another integral field element, which after multiplication supplies the next correction in \(\mathcal O_E\). This proves (7.14) for all \(a\).
+For the maximal order, reduce modulo \(\mathfrak P\). A linear map commuting with multiplication by the generating residue element of \(k_2\) is multiplication by its value at \(1\); thus its residue lies in \(k_2\). For the other order, \(\mathfrak I/\mathfrak P=k\oplus k\), and conjugation by \(\alpha\) exchanges these factors. The fixed pairs are \((c,c)\), the image of \(\mathcal O_E\). This proves (7.14) for \(a=1\).
 
-For a unit \(g\), its approximation by \(\mathcal O_E\) in (7.14) is an \(E\)-unit, so (7.13) gives \(g\in\mathcal O_E^\times U_{\mathfrak A}^l\). Restoring the field factor proves the inclusion in \(J_\alpha\). Conversely every field factor commutes with \(\alpha\), and for \(y\in\mathfrak P^l\), \(x\in\mathfrak P^r\), conjugation by \(1+y\) changes \(x\) by an element of \(\mathfrak P^{l+r}=\mathfrak P^{n+1}\). Thus \(J_\alpha\) preserves the character exactly. Finally \(U_{\mathfrak A}^l\) is compact open and \(E^\times/F^\times\) is compact by valuation classes and compact units. This proves all assertions. \(\square\)
+For higher \(a\), subtract that integral field approximation, leaving \(x\in\mathfrak P\). More generally, after \(a-1\) layers the remainder lies in \(\mathfrak P^{a-1}\). Divide it on the left by the \((a-1)\)-st power of an \(E\)-uniformizer. This takes that lattice to \(\mathfrak A\), commutes with \(\alpha\), and reduces the desired next layer to the case just proved. Multiply back and add the resulting integral field element. This gives the next approximation, proving (7.14) by induction. The reverse inclusion follows because field elements commute with \(\alpha\), which normalizes every \(\mathfrak P^a\).
 
-**Theorem 7.8 — full compact-induction exhaustion.** Every irreducible supercuspidal of \(\mathrm{GL}_2(F)\) is compactly induced from a finite-dimensional irreducible smooth representation of an open subgroup containing \(Z\) and compact modulo \(Z\).
+If \(g\) is a unit, the field approximation in (7.14) is an \(E\)-unit; hence (7.13) puts it in \(\mathcal O_E^\times U_{\mathfrak A}^l\). Restoring the field factor gives the required upper bound for the intertwining set. Conversely \(E^\times\) commutes with \(\alpha\), and conjugation by \(1+y\), \(y\in\mathfrak P^l\), changes \(x\in\mathfrak P^r\) only by \(\mathfrak P^{l+r}=\mathfrak P^{n+1}\). This preserves the character, proving equality. Finally \(U_{\mathfrak A}^l\) is compact open, and \(E^\times/F^\times\) is compact: valuation classes form a finite quotient, and unit classes are compact. \(\square\)
 
-**Proof.** Make the least-level determinant twist above. In its level-zero case, Lemma 7.6 gives an inflated finite cuspidal \(K\)-type \(\tau\). The central character extends it to \(ZK\): its scalar-unit values already agree with the centre of that type, and the central value at \(\varpi I\) fixes the extension. Theorem 3.1 proves that this extension has intertwining exactly \(ZK\). Its compact induction is irreducible. Compact Frobenius reciprocity supplies a nonzero map from that induction to \(\pi\), hence an isomorphism.
+**Theorem 7.8 — full compact-induction exhaustion.** Every irreducible supercuspidal of \(\mathrm{GL}_2(F)\) is compactly induced from a finite-dimensional irreducible smooth representation of an open subgroup containing the centre and compact modulo it.
 
-At positive level, let \(W=V^{\theta_\alpha|_H}\) for the refined character. It is finite dimensional, nonzero, and stable under \(J_\alpha\), by Lemma 7.7. Choose an irreducible \(J_\alpha\)-subrepresentation \(\tau\) of \(W\). Such a constituent exists without a Hilbert-unitarity assumption: the representation is finite dimensional and smooth, and \(J_\alpha/Z\) is compact. After the centre acts by its fixed scalar character, its finite quotient action is a projective representation of a finite group; the usual finite averaging proves complete reducibility. Equivalently choose a minimal nonzero invariant subspace, which is enough for the existence used here. Its restriction to \(H\) is a multiple of \(\theta_\alpha\).
+**Proof.** Apply the preceding selection to a least-level determinant twist. At level zero, its finite cuspidal \(K\)-type extends to \(ZK\) using the representation's central character: scalar units already act correctly, and the value at \(\varpi I\) determines the extension. Theorem 3.1 gives intertwining exactly \(ZK\). The irreducibility criterion of Theorem 2.1 and compact Frobenius reciprocity give a nonzero map from that irreducible compact induction onto the given irreducible representation, hence an isomorphism.
 
-Any \(G\)-intertwiner of \(\tau\) must therefore intertwine that character on \(H\) and its conjugate intersection. Lemma 7.7 puts it in \(J_\alpha\); every element of \(J_\alpha\) intertwines its own irreducible representation. Hence \(I_G(\tau)=J_\alpha\). Theorem 2.1 proves that \(\mathrm{c\!-\!Ind}_{J_\alpha}^G\tau\) is irreducible and supercuspidal. Its nonzero map to \(\pi\), given by the chosen constituent and compact Frobenius reciprocity, is an isomorphism. Remove the initial determinant twist by twisting \(\tau\) on its same inducing subgroup. This proves exhaustion for the original representation. \(\square\)
+At positive level, take the nonzero finite-dimensional space \(W=V^{\theta_\alpha|_H}\). Lemma 7.7 makes it a \(J_\alpha\)-module. Choose a nonzero invariant subspace of minimum dimension; it is an irreducible smooth representation \(\tau\), and \(\tau|_H\) is a multiple of the chosen character. An intertwiner of \(\tau\) must therefore intertwine that character on the intersection of \(H\) and its conjugate. Lemma 7.7 puts it in \(J_\alpha\), so \(I_G(\tau)=J_\alpha\). Theorem 2.1 makes its compact induction irreducible and supercuspidal. Compact Frobenius reciprocity maps it nontrivially to the given representation, again an isomorphism. Twisting \(\tau\) back on the same subgroup removes the initial determinant twist. This proves the assertion in every characteristic. \(\square\)
 
-The classical exhaustion is due to Kutzko. A counting proof for general linear groups of prime rank, in characteristic zero, is Carayol 1984, Théorème 8.1. Lemmas 7.4–7.7 and Theorem 7.8 supply the complete argument here with the two explicit matrix orders, rather than import that theorem.
+The compact field-lattice construction is treated in Gérardin–Kutzko, *Facteurs locaux pour GL(2)*, Section 5.3, for the ramified lattice filtration. The proof above also selects the required character inside an arbitrary supercuspidal and computes its entire intertwining set. Carayol's Théorème 8.1 gives a counting approach for prime rank in characteristic zero. Neither an external exhaustion theorem nor a local parameter correspondence is an input to the argument here.
+
 
 ### 7.2. Exhaustion by the quadratic Weil models in odd residue characteristic
 
@@ -1262,4 +1197,5 @@ Bibliographic authorities are:
 - P. Deligne, [*Le support du caractère d'une représentation supercuspidale*](https://publications.ias.edu/sites/default/files/31_LeSupport.pdf), C. R. Acad. Sci. Paris, Série A **283** (1976), 155–157.
 - J. R. Getz and H. Hahn, [*An Introduction to Automorphic Representations*](https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf), consulted 2022 draft, §8.1 for local representation context and §8.5 for distribution characters and coefficients. These sections are not used as an unlocated substitute for a depth-zero construction proof.
 
+- P. Gérardin and P. Kutzko, [*Facteurs locaux pour GL(2)*](https://www.numdam.org/articles/10.24033/asens.1386/), Annales scientifiques de l’École Normale Supérieure **13** (1980), 349–384, Section 5.3, pp. 373–374.
 - H. Carayol, [*Représentations cuspidales du groupe linéaire*](https://www.numdam.org/item/ASENS_1984_4_17_2_191_0/), Annales scientifiques de l'École normale supérieure **17** (1984), 191–225, Théorème 8.1. The complete compact-exhaustion argument is supplied here in Section 7.1.

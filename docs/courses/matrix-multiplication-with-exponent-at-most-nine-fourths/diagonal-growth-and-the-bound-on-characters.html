@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Diagonal growth and the bound on characters</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Matrix multiplication with exponent at most 9/4)</a><a href="two-inequalities-for-polynomial-multiplication.html">Previous lesson</a><a href="states-and-a-catalytic-comparison.html">Next lesson</a><a href="src/diagonal-growth-and-the-bound-on-characters.md">Editable source</a></nav><main><article><h1 id="diagonal-growth-and-the-bound-on-characters">Diagonal growth and the bound on characters</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The profile <span class="math" data-tex="\(P(a,b)\)">\(P(a,b)\)</span> of a character, defined in <a href="two-inequalities-for-polynomial-multiplication.html">Two inequalities for polynomial multiplication</a>, is symmetric, equals <span class="math" data-tex="\(b\)">\(b\)</span> at <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, is discretely concave in each argument and satisfies shifted tripling. This lesson shows that these four properties alone force <span class="math" data-tex="\(P(a,a)\ge a^{4/3}\)">\(P(a,a)\ge a^{4/3}\)</span> (Lemma 5.1). Since the rank of polynomial multiplication gives <span class="math" data-tex="\(P(a,a)\le(2a-1)^{1/t}\)">\(P(a,a)\le(2a-1)^{1/t}\)</span>, every character satisfies <span class="math" data-tex="\(t\le\frac34\)">\(t\le\frac34\)</span>, that is, <span class="math" data-tex="\(\lambda(T_d)\le d^{9/4}\)">\(\lambda(T_d)\le d^{9/4}\)</span> (Theorem 5.2). The argument is OpenAI's [OpenAI-MM, Section 5].</p>
+<h2 id="1-diagonal-growth">1. Diagonal growth</h2>
+<p><strong>Lemma 5.1.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be a function from pairs of positive integers to positive reals such that, for all positive integers <span class="math" data-tex="\(a,b,h\)">\(a,b,h\)</span>,</p>
+<ol>
+<li><span class="math" data-tex="\(P(a,b)=P(b,a)\)">\(P(a,b)=P(b,a)\)</span> and <span class="math" data-tex="\(P(1,b)=b\)">\(P(1,b)=b\)</span>;</li>
+<li>if <span class="math" data-tex="\(b\ge2\)">\(b\ge2\)</span>, then <span class="math" data-tex="\(2P(a,b)\)">\(2P(a,b)\)</span> is at least <span class="math" data-tex="\(P(a,b+1)+P(a,b-1)\)">\(P(a,b+1)+P(a,b-1)\)</span>;</li>
+<li><span class="math" data-tex="\(P(a,3h+a-1)\ge3P(a,h)\)">\(P(a,3h+a-1)\ge3P(a,h)\)</span>.</li>
+</ol>
+<p>Then <span class="math" data-tex="\(P(a,a)\ge a^{4/3}\)">\(P(a,a)\ge a^{4/3}\)</span> for every <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span>.</p>
+<p><strong>Proof.</strong> For fixed <span class="math" data-tex="\(a\)">\(a\)</span> put <span class="math" data-tex="\(\Delta_{a,h}=P(a,h+1)-P(a,h)\)">\(\Delta_{a,h}=P(a,h+1)-P(a,h)\)</span> for <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>. Condition 2 says that <span class="math" data-tex="\(\Delta_{a,h}\)">\(\Delta_{a,h}\)</span> is nonincreasing in <span class="math" data-tex="\(h\)">\(h\)</span>. Put <span class="math" data-tex="\(D_a=P(a,a)\)">\(D_a=P(a,a)\)</span> and <span class="math" data-tex="\(H_a=2D_a/(3a-1)\)">\(H_a=2D_a/(3a-1)\)</span>.</p>
+<p><em>Step 1.</em> Condition 3 with <span class="math" data-tex="\(h=a\)">\(h=a\)</span> gives <span class="math" data-tex="\(P(a,4a-1)\ge3D_a\)">\(P(a,4a-1)\ge3D_a\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+2D_a&amp;\le P(a,4a-1)-D_a\\
+&amp;=\sum_{h=a}^{4a-2}\Delta_{a,h}\le(3a-1)\Delta_{a,a},
+\end{aligned}
+\]">\[
+\begin{aligned}
+2D_a&amp;\le P(a,4a-1)-D_a\\
+&amp;=\sum_{h=a}^{4a-2}\Delta_{a,h}\le(3a-1)\Delta_{a,a},
+\end{aligned}
+\]</span>
+because the sum has <span class="math" data-tex="\(3a-1\)">\(3a-1\)</span> terms, each at most <span class="math" data-tex="\(\Delta_{a,a}\)">\(\Delta_{a,a}\)</span>. So <span class="math" data-tex="\(\Delta_{a,a}\ge H_a\)">\(\Delta_{a,a}\ge H_a\)</span>.</p>
+<p><em>Step 2.</em> Let <span class="math" data-tex="\(a\ge2\)">\(a\ge2\)</span>. By symmetry, <span class="math" data-tex="\(P(a-1,a)=P(a,a-1)\)">\(P(a-1,a)=P(a,a-1)\)</span>, so
+<span class="math math-display" data-tex="\[
+D_a-D_{a-1}=\Delta_{a-1,a-1}+\Delta_{a,a-1}.
+\]">\[
+D_a-D_{a-1}=\Delta_{a-1,a-1}+\Delta_{a,a-1}.
+\]</span>
+Step 1 for <span class="math" data-tex="\(a-1\)">\(a-1\)</span> gives <span class="math" data-tex="\(\Delta_{a-1,a-1}\ge H_{a-1}\)">\(\Delta_{a-1,a-1}\ge H_{a-1}\)</span>, and monotonicity with Step 1 gives <span class="math" data-tex="\(\Delta_{a,a-1}\ge\Delta_{a,a}\ge H_a\)">\(\Delta_{a,a-1}\ge\Delta_{a,a}\ge H_a\)</span>. Hence <span class="math" data-tex="\(D_a-D_{a-1}\ge H_{a-1}+H_a\)">\(D_a-D_{a-1}\ge H_{a-1}+H_a\)</span>. Substituting <span class="math" data-tex="\(D_a=\frac12(3a-1)H_a\)">\(D_a=\frac12(3a-1)H_a\)</span> and <span class="math" data-tex="\(D_{a-1}=\frac12(3a-4)H_{a-1}\)">\(D_{a-1}=\frac12(3a-4)H_{a-1}\)</span> and rearranging,
+<span class="math math-display" data-tex="\[
+\tfrac12(3a-3)\,H_a\ge\tfrac12(3a-2)\,H_{a-1},
+\]">\[
+\tfrac12(3a-3)\,H_a\ge\tfrac12(3a-2)\,H_{a-1},
+\]</span>
+that is,
+<span class="math math-display" data-tex="\[
+H_a\ge\Bigl(1+\frac1{3(a-1)}\Bigr)H_{a-1}.
+\]">\[
+H_a\ge\Bigl(1+\frac1{3(a-1)}\Bigr)H_{a-1}.
+\]</span></p>
+<p><em>Step 3.</em> Since <span class="math" data-tex="\(H_1=D_1=P(1,1)=1\)">\(H_1=D_1=P(1,1)=1\)</span>, induction gives
+<span class="math math-display" data-tex="\[
+H_a\ge\prod_{m=1}^{a-1}\Bigl(1+\frac1{3m}\Bigr)\qquad(a\ge1),
+\]">\[
+H_a\ge\prod_{m=1}^{a-1}\Bigl(1+\frac1{3m}\Bigr)\qquad(a\ge1),
+\]</span>
+the empty product being <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, <span class="math" data-tex="\((1+\frac1{3m})^3\ge1+\frac1m\)">\((1+\frac1{3m})^3\ge1+\frac1m\)</span> (expand the cube). The product <span class="math" data-tex="\(\prod_{m=1}^{a-1}(1+\frac1m)\)">\(\prod_{m=1}^{a-1}(1+\frac1m)\)</span> telescopes to <span class="math" data-tex="\(a\)">\(a\)</span>, so <span class="math" data-tex="\(H_a^3\ge a\)">\(H_a^3\ge a\)</span>. Finally <span class="math" data-tex="\(\frac12(3a-1)\ge a\)">\(\frac12(3a-1)\ge a\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_a&amp;=\tfrac12(3a-1)H_a\\
+&amp;\ge a\cdot a^{1/3}=a^{4/3}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+D_a&amp;=\tfrac12(3a-1)H_a\\
+&amp;\ge a\cdot a^{1/3}=a^{4/3}.
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-bound-on-characters">2. The bound on characters</h2>
+<p><strong>Theorem 5.2.</strong> Every character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> satisfies <span class="math" data-tex="\(t(\lambda)\le\frac34\)">\(t(\lambda)\le\frac34\)</span>. Equivalently, <span class="math" data-tex="\(\lambda(T_d)\le d^{9/4}\)">\(\lambda(T_d)\le d^{9/4}\)</span> for every <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(t=t(\lambda)\)">\(t=t(\lambda)\)</span> and let <span class="math" data-tex="\(P\)">\(P\)</span> be the profile of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. By Lemmas 4.1, 4.3 and 4.4, <span class="math" data-tex="\(P\)">\(P\)</span> satisfies the conditions of Lemma 5.1, so for every <span class="math" data-tex="\(a\ge2\)">\(a\ge2\)</span>
+<span class="math math-display" data-tex="\[
+a^{4/3}\le P(a,a)\le(2a-1)^{1/t}&lt;(2a)^{1/t},
+\]">\[
+a^{4/3}\le P(a,a)\le(2a-1)^{1/t}&lt;(2a)^{1/t},
+\]</span>
+using Lemma 4.1 for the upper bound. Taking logarithms, <span class="math" data-tex="\(\frac43\log a&lt;\frac1t(\log2+\log a)\)">\(\frac43\log a&lt;\frac1t(\log2+\log a)\)</span>. Divide by <span class="math" data-tex="\(\log a\)">\(\log a\)</span> and let <span class="math" data-tex="\(a\to\infty\)">\(a\to\infty\)</span>: <span class="math" data-tex="\(\frac43\le\frac1t\)">\(\frac43\le\frac1t\)</span>, so <span class="math" data-tex="\(t\le\frac34\)">\(t\le\frac34\)</span>. By Lemma 2.5, <span class="math" data-tex="\(\lambda(T_d)=d^{3t}\le d^{9/4}\)">\(\lambda(T_d)=d^{3t}\le d^{9/4}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-what-the-bound-says">3. What the bound says</h2>
+<p>The flattening ranks have <span class="math" data-tex="\(t=\frac23\)">\(t=\frac23\)</span> and value <span class="math" data-tex="\(d^2\)">\(d^2\)</span> on <span class="math" data-tex="\(T_d\)">\(T_d\)</span> (Example 2.6). Theorem 7.3 and Exercise 7.1 show that the supremum of <span class="math" data-tex="\(3t(\lambda)\)">\(3t(\lambda)\)</span> over all characters equals <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. So Theorem 5.2 is equivalent to <span class="math" data-tex="\(\nu\le9/4\)">\(\nu\le9/4\)</span>, and <span class="math" data-tex="\(\nu=2\)">\(\nu=2\)</span> would mean that no character has <span class="math" data-tex="\(t&gt;\frac23\)">\(t&gt;\frac23\)</span>. The hypotheses of Lemma 5.1 use only three properties of the profile: symmetry with its boundary values, discrete concavity, and shifted tripling.</p>
+<p>From these hypotheses alone, the bound of Step 3 is the best possible, at least numerically. For every <span class="math" data-tex="\(a\le16\)">\(a\le16\)</span>, linear programming over all functions that satisfy the hypotheses of Lemma 5.1 on the pairs with <span class="math" data-tex="\(a,b\le64\)">\(a,b\le64\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\min P(a,a)&amp;=\tfrac12(3a-1)\\
+&amp;\quad\times\prod_{m=1}^{a-1}\Bigl(1+\frac1{3m}\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\min P(a,a)&amp;=\tfrac12(3a-1)\\
+&amp;\quad\times\prod_{m=1}^{a-1}\Bigl(1+\frac1{3m}\Bigr),
+\end{aligned}
+\]</span>
+for example <span class="math" data-tex="\(10/3\)">\(10/3\)</span> at <span class="math" data-tex="\(a=2\)">\(a=2\)</span> and <span class="math" data-tex="\(56/9\)">\(56/9\)</span> at <span class="math" data-tex="\(a=3\)">\(a=3\)</span>. Since <span class="math" data-tex="\(1+x\le e^x\)">\(1+x\le e^x\)</span> and <span class="math" data-tex="\(\sum_{m=1}^{a-1}\frac1m\le1+\log a\)">\(\sum_{m=1}^{a-1}\frac1m\le1+\log a\)</span>, this bound is at most <span class="math" data-tex="\(\frac32e^{1/3}a^{4/3}&lt;2.1\,a^{4/3}\)">\(\frac32e^{1/3}a^{4/3}&lt;2.1\,a^{4/3}\)</span>. On this evidence, a bound below <span class="math" data-tex="\(9/4\)">\(9/4\)</span> by the same route needs further inequalities valid for all profiles.</p>
+<p>The profile of <span class="math" data-tex="\(\rho_X\)">\(\rho_X\)</span> is <span class="math" data-tex="\(P(a,b)=\sqrt{ab(a+b-1)}\)">\(P(a,b)=\sqrt{ab(a+b-1)}\)</span> (Exercise 4.1), so <span class="math" data-tex="\(P(a,a)=a\sqrt{2a-1}\)">\(P(a,a)=a\sqrt{2a-1}\)</span>, which grows like <span class="math" data-tex="\(a^{3/2}\)">\(a^{3/2}\)</span>. For a profile with <span class="math" data-tex="\(t=\frac23\)">\(t=\frac23\)</span>, the bound of Lemma 4.1 is <span class="math" data-tex="\((2a-1)^{3/2}\)">\((2a-1)^{3/2}\)</span>, of the same order.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>5.1</strong> (easy). Check that <span class="math" data-tex="\((1+\frac1{3m})^3\ge1+\frac1m\)">\((1+\frac1{3m})^3\ge1+\frac1m\)</span> for every <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, and that <span class="math" data-tex="\(\prod_{m=1}^{a-1}(1+\frac1m)=a\)">\(\prod_{m=1}^{a-1}(1+\frac1m)=a\)</span>.</p>
+<p><strong>5.2</strong> (easy). Follow the proof of Lemma 5.1 for <span class="math" data-tex="\(a=2\)">\(a=2\)</span>: show <span class="math" data-tex="\(H_2\ge\frac43\)">\(H_2\ge\frac43\)</span> and <span class="math" data-tex="\(D_2\ge\frac{10}3\)">\(D_2\ge\frac{10}3\)</span>, and compare with <span class="math" data-tex="\(2^{4/3}\)">\(2^{4/3}\)</span>.</p>
+<p><strong>5.3</strong> (medium). Show that the function <span class="math" data-tex="\(P(a,b)=a+b-1\)">\(P(a,b)=a+b-1\)</span> satisfies conditions 1 and 2 of Lemma 5.1 but not condition 3, and that the conclusion of Lemma 5.1 fails for it.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\((1+x)^3=1+3x+3x^2+x^3\ge1+3x\)">\((1+x)^3=1+3x+3x^2+x^3\ge1+3x\)</span> for <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>; take <span class="math" data-tex="\(x=\frac1{3m}\)">\(x=\frac1{3m}\)</span>. The product is <span class="math" data-tex="\(\prod_{m=1}^{a-1}\frac{m+1}m=a\)">\(\prod_{m=1}^{a-1}\frac{m+1}m=a\)</span>.</p>
+<p><strong>5.2.</strong> Step 3 gives <span class="math" data-tex="\(H_2\ge H_1(1+\frac13)=\frac43\)">\(H_2\ge H_1(1+\frac13)=\frac43\)</span>, and <span class="math" data-tex="\(D_2=\frac52H_2\ge\frac{10}3\approx3.33\)">\(D_2=\frac52H_2\ge\frac{10}3\approx3.33\)</span>, larger than <span class="math" data-tex="\(2^{4/3}\approx2.52\)">\(2^{4/3}\approx2.52\)</span>.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(P\)">\(P\)</span> is symmetric, <span class="math" data-tex="\(P(1,b)=b\)">\(P(1,b)=b\)</span>, and <span class="math" data-tex="\(P\)">\(P\)</span> is affine in <span class="math" data-tex="\(b\)">\(b\)</span>, so condition 2 holds with equality. For condition 3, <span class="math" data-tex="\(P(a,3h+a-1)=3h+2a-2\)">\(P(a,3h+a-1)=3h+2a-2\)</span> and <span class="math" data-tex="\(3P(a,h)=3h+3a-3\)">\(3P(a,h)=3h+3a-3\)</span>; the first is smaller as soon as <span class="math" data-tex="\(a\ge2\)">\(a\ge2\)</span>. Finally <span class="math" data-tex="\(P(a,a)=2a-1&lt;a^{4/3}\)">\(P(a,a)=2a-1&lt;a^{4/3}\)</span> for large <span class="math" data-tex="\(a\)">\(a\)</span>, for example <span class="math" data-tex="\(a=8\)">\(a=8\)</span>: <span class="math" data-tex="\(15&lt;16\)">\(15&lt;16\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-MM] OpenAI, <em>An upper bound of 9/4 for the matrix multiplication exponent</em>, OpenAI Math Release preprint, 2 October 2026, Section 5. https://github.com/openai/math/tree/main/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

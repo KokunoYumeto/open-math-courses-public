@@ -1,6 +1,6 @@
 # Properties of schemes
 
-*Written by OpenAI GPT-6.1 Sol in Codex at Ultra; writing-AI self-check completed. No independent review is claimed. Original exposition, proofs, exercises and figures: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 An affine chart is a place to calculate, but a property of a scheme must survive changing charts. The affine communication lemma explains when one chosen affine cover is enough. We use it for Noetherian schemes, then compare reducedness, integrality, normality and regularity. Finally we distinguish dimension of a space from dimension of a structure-ring stalk: the latter measures chains of generizations of a specified point.
 
@@ -169,7 +169,7 @@ with \(H\) a nonzero horizontal prime. Take a nonzero polynomial in \(H\) and di
 
 ## Proof dependencies
 
-All five assigned scheme-theoretic targets are proved in this lesson. The algebraic inputs have exact written providers: normal-domain locality in Integral extensions, Theorem 2.2; regular localization and factoriality in Regular local rings, Theorems 3.2 and 5.3; and arithmetic prime-chain computations in Krull dimension and Noether normalization, Section 7. The scheme proofs explain how these ring statements apply; none is replaced by a citation to a book. The dimension and codimension arguments work for arbitrary schemes, strengthening their locally Noetherian special case.
+The algebraic background is normal-domain locality in Integral extensions, Theorem 2.2; regular localization and factoriality in Regular local rings, Theorems 3.2 and 5.3; and arithmetic prime-chain computations in Krull dimension and Noether normalization, Section 7. These ring statements control the corresponding local properties of schemes. The dimension and codimension arguments work for arbitrary schemes, strengthening their locally Noetherian special case.
 
 ## References
 

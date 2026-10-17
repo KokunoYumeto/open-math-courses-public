@@ -1,0 +1,372 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Monoidal fibres, bialgebras and duality reconstruction</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="monoidal-fibres-bialgebras-and-duality-reconstruction">Monoidal fibres, bialgebras and duality reconstruction</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).</em></p>
+<p>An exact faithful finite-dimensional observation functor recovers a coalgebra. Its tensor comparisons recover multiplication. Evaluation and coevaluation then determine an antipode, and the two directions of duality determine whether that antipode is invertible. We construct each structure and prove the converse, keeping the order of right-comodule coefficients explicit.</p>
+<p>Fix a field <span class="math" data-tex="\(k\)">\(k\)</span>, an essentially small <span class="math" data-tex="\(k\)">\(k\)</span>-linear abelian monoidal category <span class="math" data-tex="\(A\)">\(A\)</span>, and an exact faithful <span class="math" data-tex="\(k\)">\(k\)</span>-linear strong monoidal functor <span class="math" data-tex="\(F:A\to\operatorname{Vect}^{\rm fd}_k\)">\(F:A\to\operatorname{Vect}^{\rm fd}_k\)</span>. Its comparisons have direction</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+J_{a,b}:F(a)\otimes F(b)\xrightarrow{\ \sim\ }F(a\otimes b),\\
+j_0:k\xrightarrow{\ \sim\ }F(\mathbf1).
+\end{gathered}
+\tag{0.1}
+\]">\[
+\begin{gathered}
+J_{a,b}:F(a)\otimes F(b)\xrightarrow{\ \sim\ }F(a\otimes b),\\
+j_0:k\xrightarrow{\ \sim\ }F(\mathbf1).
+\end{gathered}
+\tag{0.1}
+\]</span>
+<p>All sums, diagrams and categories of representatives are small in fixed universes. Parentheses in vector tensors use their usual associativity maps. No permutation of factors in <span class="math" data-tex="\(A\)">\(A\)</span> is implicit.</p>
+<p><a href="coend-coalgebras-and-reconstruction-from-finite-fibres.html#1-the-coefficient-quotient-and-its-coalgebra">Coend coalgebras and reconstruction from finite fibres</a> proves the full underlying equivalence with finite right comodules, including its actual Ind inverse and finite-part argument. Write <span class="math" data-tex="\(H=C_F\)">\(H=C_F\)</span> for that coefficient coalgebra. For <span class="math" data-tex="\(v\in F(a)\)">\(v\in F(a)\)</span>, <span class="math" data-tex="\(\phi\in F(a)^*\)">\(\phi\in F(a)^*\)</span>, and <span class="math" data-tex="\(f:a\to b\)">\(f:a\to b\)</span>, its defining relations and coproduct are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+{}[\psi\otimes F(f)v]_b\\
+=[\psi F(f)\otimes v]_a,\\
+\Delta[\phi\otimes v]_a\\
+=\sum_i[\phi\otimes e_i]_a\otimes[e_i^*\otimes v]_a,\\
+\epsilon[\phi\otimes v]_a=\phi(v).
+\end{gathered}
+\tag{0.2}
+\]">\[
+\begin{gathered}
+{}[\psi\otimes F(f)v]_b\\
+=[\psi F(f)\otimes v]_a,\\
+\Delta[\phi\otimes v]_a\\
+=\sum_i[\phi\otimes e_i]_a\otimes[e_i^*\otimes v]_a,\\
+\epsilon[\phi\otimes v]_a=\phi(v).
+\end{gathered}
+\tag{0.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(e_i,e_i^*\)">\(e_i,e_i^*\)</span> are any dual bases of <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span>. The canonical coaction is <span class="math" data-tex="\(\rho_a(v)=\sum_i e_i\otimes[e_i^*\otimes v]_a\)">\(\rho_a(v)=\sum_i e_i\otimes[e_i^*\otimes v]_a\)</span>.</p>
+<p><a href="tensor-duality-and-coherent-inverses.html#2-the-two-directions-of-tensor-duality">Tensor duality, Sections 2–3</a> proves both triangle identities and the uniqueness of chosen duals. <a href="strict-monoidal-models-and-transport-of-algebra-objects.html#1-evaluation-and-the-concatenation-comparisons">Strict monoidal models, Sections 1–3</a> supplies the ordered coherence convention; the structural maps below retain their indicated domains. <a href="completed-tensors-and-continuous-algebra-objects.html#5-continuous-algebras-and-locally-finite-coalgebras">Completed tensors, Section 5</a> treats duality of already specified bialgebra structures. The construction from the fibre functor is proved here. Classical reconstruction context is [EGNO], Sections 5.3–5.4.</p>
+<p>We use <strong>Hopf algebra</strong> to mean a bialgebra with an antipode satisfying both convolution equations. When its antipode is required to be bijective, we say so explicitly.</p>
+<h2 id="1-multiplication-and-unit-from-the-strong-comparisons">1. Multiplication and unit from the strong comparisons</h2>
+<p>For two coefficients define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+{}[\phi\otimes v]_a[\psi\otimes w]_b\\
+=\bigl[(\phi\otimes\psi)J_{a,b}^{-1}\otimes\\
+J_{a,b}(v\otimes w)\bigr]_{a\otimes b},\\
+1_H=[j_0^{-1}\otimes j_0(1)]_{\mathbf1}.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+{}[\phi\otimes v]_a[\psi\otimes w]_b\\
+=\bigl[(\phi\otimes\psi)J_{a,b}^{-1}\otimes\\
+J_{a,b}(v\otimes w)\bigr]_{a\otimes b},\\
+1_H=[j_0^{-1}\otimes j_0(1)]_{\mathbf1}.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The inverse tensor comparison in the functional and the forward comparison in the vector are both part of this formula. Let <span class="math" data-tex="\(u:k\to H,\ \lambda\mapsto\lambda1_H\)">\(u:k\to H,\ \lambda\mapsto\lambda1_H\)</span>, be the unit map.</p>
+<p><strong>Lemma 1.1.</strong> This descends to a unital associative multiplication on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof: relations.</strong> For <span class="math" data-tex="\(f:a\to a&#x27;\)">\(f:a\to a&#x27;\)</span>, naturality gives <span class="math" data-tex="\(F(f\otimes1)J_{a,b}=J_{a&#x27;,b}(F(f)\otimes1)\)">\(F(f\otimes1)J_{a,b}=J_{a&#x27;,b}(F(f)\otimes1)\)</span>. Apply relation (0.2) to <span class="math" data-tex="\(f\otimes1_b\)">\(f\otimes1_b\)</span>, using that equality for its vector and inverse equality for its functional. It identifies the two products obtained from <span class="math" data-tex="\([\phi&#x27;\otimes F(f)v]_{a&#x27;}=[\phi&#x27;F(f)\otimes v]_a\)">\([\phi&#x27;\otimes F(f)v]_{a&#x27;}=[\phi&#x27;F(f)\otimes v]_a\)</span>. The same argument with <span class="math" data-tex="\(1_a\otimes g\)">\(1_a\otimes g\)</span> handles every relation in the second input. Bilinearity therefore gives the product on the quotient.</p>
+<p><strong>Proof: associativity.</strong> For three inputs, let <span class="math" data-tex="\(J_L\)">\(J_L\)</span> combine them first in <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, then with <span class="math" data-tex="\(c\)">\(c\)</span>; let <span class="math" data-tex="\(J_R\)">\(J_R\)</span> combine <span class="math" data-tex="\(b,c\)">\(b,c\)</span> first. The strong monoidal coherence equation is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+F(\alpha_{a,b,c})J_L=J_R,
+\tag{1.2}
+\]">\[
+F(\alpha_{a,b,c})J_L=J_R,
+\tag{1.2}
+\]</span>
+<p>with the ordinary vector associator understood. The two iterated products have vectors <span class="math" data-tex="\(J_L(v\otimes w\otimes z)\)">\(J_L(v\otimes w\otimes z)\)</span>, <span class="math" data-tex="\(J_R(v\otimes w\otimes z)\)">\(J_R(v\otimes w\otimes z)\)</span>, and functionals <span class="math" data-tex="\((\phi\otimes\psi\otimes\chi)J_L^{-1}\)">\((\phi\otimes\psi\otimes\chi)J_L^{-1}\)</span>, <span class="math" data-tex="\((\phi\otimes\psi\otimes\chi)J_R^{-1}\)">\((\phi\otimes\psi\otimes\chi)J_R^{-1}\)</span>. Relation (0.2) for the actual associator identifies them. Thus the products agree on all spanning coefficients.</p>
+<p>The strong unit equations say that <span class="math" data-tex="\(F(l_a)J_{\mathbf1,a}(j_0\otimes1)\)">\(F(l_a)J_{\mathbf1,a}(j_0\otimes1)\)</span> and <span class="math" data-tex="\(F(r_a)J_{a,\mathbf1}(1\otimes j_0)\)">\(F(r_a)J_{a,\mathbf1}(1\otimes j_0)\)</span> are the standard vector unit maps. Apply relation (0.2) to those unitors in (1.1). Both products with the specified <span class="math" data-tex="\(1_H\)">\(1_H\)</span> are the original coefficient. This proves both unit laws. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2.</strong> With (0.2), this is a bialgebra.</p>
+<p><strong>Proof.</strong> For coefficients <span class="math" data-tex="\(x=[\phi\otimes v]_a\)">\(x=[\phi\otimes v]_a\)</span>, <span class="math" data-tex="\(y=[\psi\otimes w]_b\)">\(y=[\psi\otimes w]_b\)</span>, choose bases <span class="math" data-tex="\(e_i,f_j\)">\(e_i,f_j\)</span>. A basis of <span class="math" data-tex="\(F(a\otimes b)\)">\(F(a\otimes b)\)</span> is <span class="math" data-tex="\(J_{a,b}(e_i\otimes f_j)\)">\(J_{a,b}(e_i\otimes f_j)\)</span>, with the corresponding inverse-comparison dual functionals. Substitution in (0.2) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\Delta(xy)\\
+=\sum_{i,j}
+\bigl([\phi\otimes e_i]_a[\psi\otimes f_j]_b\bigr)\\
+\otimes
+\bigl([e_i^*\otimes v]_a[f_j^*\otimes w]_b\bigr).
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+\Delta(xy)\\
+=\sum_{i,j}
+\bigl([\phi\otimes e_i]_a[\psi\otimes f_j]_b\bigr)\\
+\otimes
+\bigl([e_i^*\otimes v]_a[f_j^*\otimes w]_b\bigr).
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>This is exactly <span class="math" data-tex="\(\Delta(x)\Delta(y)\)">\(\Delta(x)\Delta(y)\)</span> in the tensor-product algebra, with the middle vector-space interchange included. The counit of (1.1) is <span class="math" data-tex="\(\phi(v)\psi(w)=\epsilon(x)\epsilon(y)\)">\(\phi(v)\psi(w)=\epsilon(x)\epsilon(y)\)</span>. Because <span class="math" data-tex="\(F(\mathbf1)\)">\(F(\mathbf1)\)</span> is one-dimensional with basis <span class="math" data-tex="\(j_0(1)\)">\(j_0(1)\)</span>, its unit coefficient satisfies <span class="math" data-tex="\(\Delta(1_H)=1_H\otimes1_H\)">\(\Delta(1_H)=1_H\otimes1_H\)</span> and <span class="math" data-tex="\(\epsilon(1_H)=1\)">\(\epsilon(1_H)=1\)</span>. These are all compatibility equations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-monoidal-equivalence-and-its-morphisms">2. The monoidal equivalence and its morphisms</h2>
+<p>For any bialgebra <span class="math" data-tex="\(H\)">\(H\)</span>, right comodules have the tensor coaction</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\rho(m\otimes n)\\
+=\sum m_{(0)}\otimes n_{(0)}
+\otimes m_{(1)}n_{(1)}.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\rho(m\otimes n)\\
+=\sum m_{(0)}\otimes n_{(0)}
+\otimes m_{(1)}n_{(1)}.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>Every displayed Sweedler sum is a finite tensor expression on each vector. Coassociativity follows by applying the two original coaction equations and <span class="math" data-tex="\(\Delta(xy)=\Delta(x)\Delta(y)\)">\(\Delta(xy)=\Delta(x)\Delta(y)\)</span>. The counit follows from its multiplicativity. The unit comodule is <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(1\mapsto1\otimes1_H\)">\(1\mapsto1\otimes1_H\)</span>. Associativity and both unit identifications are comodule maps by associativity and the unit laws in <span class="math" data-tex="\(H\)">\(H\)</span>; their coherence is that of the underlying vector maps. Tensoring two comodule maps respects (2.1) by their individual intertwining equations.</p>
+<p>For the reconstructed <span class="math" data-tex="\(H\)">\(H\)</span>, formula (1.1) makes <span class="math" data-tex="\(J_{a,b}\)">\(J_{a,b}\)</span> a comodule map: use the tensor basis of Proposition 1.2 in the coaction of <span class="math" data-tex="\(F(a\otimes b)\)">\(F(a\otimes b)\)</span>, and obtain (2.1) transported through <span class="math" data-tex="\(J_{a,b}\)">\(J_{a,b}\)</span>. The unit coefficient makes <span class="math" data-tex="\(j_0\)">\(j_0\)</span> a comodule map. Hence the underlying equivalence from the coend lesson is a <strong>strong monoidal equivalence</strong>, using these very comparisons and all its previously proved maps. Tensor is exact in each variable: the vector tensor is exact over a field, and the exact faithful underlying functor on comodules reflects exactness.</p>
+<p>These structures are forced by the requirement. Equating the two coactions for a proposed <span class="math" data-tex="\(J_{a,b}\)">\(J_{a,b}\)</span> and applying the functional <span class="math" data-tex="\(\phi\otimes\psi\)">\(\phi\otimes\psi\)</span> to the first tensor factor recovers the coefficient product (1.1). The unit comparison similarly forces <span class="math" data-tex="\(1_H\)">\(1_H\)</span>. Since coefficients span, no other multiplication or unit can satisfy the same requirements.</p>
+<p>Conversely begin with a bialgebra <span class="math" data-tex="\(H\)">\(H\)</span> and its finite comodule category with its usual forgetful functor and (2.1). The coefficient isomorphism of the coend lesson sends <span class="math" data-tex="\([\phi\otimes m]_M\)">\([\phi\otimes m]_M\)</span> to <span class="math" data-tex="\((\phi\otimes1)\rho_M(m)\)">\((\phi\otimes1)\rho_M(m)\)</span>. Formula (2.1) makes it respect multiplication and unit, so it recovers the original bialgebra, not just its coalgebra. This proves reconstruction up to equivalence preserving the strong fibre functor and up to bialgebra isomorphism.</p>
+<p>For explicit functoriality, let <span class="math" data-tex="\(G:A\to A&#x27;\)">\(G:A\to A&#x27;\)</span> be a strong monoidal <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor and let <span class="math" data-tex="\(\theta:F&#x27;G\xrightarrow{\sim}F\)">\(\theta:F&#x27;G\xrightarrow{\sim}F\)</span> be a monoidal natural isomorphism. It induces</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+[\phi\otimes v]_a
+\longmapsto
+[\phi\theta_a\otimes\theta_a^{-1}v]_{G(a)}.
+\tag{2.2}
+\]">\[
+[\phi\otimes v]_a
+\longmapsto
+[\phi\theta_a\otimes\theta_a^{-1}v]_{G(a)}.
+\tag{2.2}
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> respects every coefficient relation, so this is a coalgebra map. The commuting tensor-comparison square for a monoidal <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and the unit square make (2.2) respect (1.1). Thus it is a bialgebra map. Identities and composites follow on these coefficients. No claim that an arbitrary underlying natural isomorphism respects multiplication is being made.</p>
+<h2 id="3-left-duals-give-the-antipode-coefficient-map">3. Left duals give the antipode coefficient map</h2>
+<p>Our <strong>left dual</strong> <span class="math" data-tex="\(a^\vee\)">\(a^\vee\)</span> has evaluation <span class="math" data-tex="\(\operatorname{ev}_a:a^\vee\otimes a\to\mathbf1\)">\(\operatorname{ev}_a:a^\vee\otimes a\to\mathbf1\)</span> and coevaluation <span class="math" data-tex="\(\operatorname{coev}_a:\mathbf1\to a\otimes a^\vee\)">\(\operatorname{coev}_a:\mathbf1\to a\otimes a^\vee\)</span>, with both triangle identities. The actual transported maps are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.0); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+b_a=j_0^{-1}F(\operatorname{ev}_a)J_{a^\vee,a},\\
+c_a=J_{a,a^\vee}^{-1}F(\operatorname{coev}_a)j_0.
+\end{gathered}
+\tag{3.0}
+\]">\[
+\begin{gathered}
+b_a=j_0^{-1}F(\operatorname{ev}_a)J_{a^\vee,a},\\
+c_a=J_{a,a^\vee}^{-1}F(\operatorname{coev}_a)j_0.
+\end{gathered}
+\tag{3.0}
+\]</span>
+<p>They are a pairing <span class="math" data-tex="\(F(a^\vee)\otimes F(a)\to k\)">\(F(a^\vee)\otimes F(a)\to k\)</span> and a coevaluation tensor in <span class="math" data-tex="\(F(a)\otimes F(a^\vee)\)">\(F(a)\otimes F(a^\vee)\)</span>. Strong monoidal coherence transports the two specified triangles to the two vector-space triangles.</p>
+<p>They identify <span class="math" data-tex="\(F(a^\vee)\)">\(F(a^\vee)\)</span> with <span class="math" data-tex="\(F(a)^*\)">\(F(a)^*\)</span>. Explicitly put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+d_a:F(a^\vee)\xrightarrow{\ \sim\ }F(a)^*,\\
+d_a(u)(v)=b_a(u,v).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+d_a:F(a^\vee)\xrightarrow{\ \sim\ }F(a)^*,\\
+d_a(u)(v)=b_a(u,v).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>For completeness, if the transported coevaluation is <span class="math" data-tex="\(\sum_s v_s\otimes u_s\)">\(\sum_s v_s\otimes u_s\)</span>, its inverse sends <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to <span class="math" data-tex="\(\sum_s\phi(v_s)u_s\)">\(\sum_s\phi(v_s)u_s\)</span>. The first triangle makes <span class="math" data-tex="\(d_ad_a^{-1}\phi=\phi\)">\(d_ad_a^{-1}\phi=\phi\)</span>, and the second makes <span class="math" data-tex="\(d_a^{-1}d_a(u)=u\)">\(d_a^{-1}d_a(u)=u\)</span>. This proves nondegeneracy without assuming a basis pairing beforehand.</p>
+<p>For <span class="math" data-tex="\(f:a\to b\)">\(f:a\to b\)</span>, its dual <span class="math" data-tex="\(f^\vee:b^\vee\to a^\vee\)">\(f^\vee:b^\vee\to a^\vee\)</span> is obtained by inserting the coevaluation of <span class="math" data-tex="\(a\)">\(a\)</span>, applying <span class="math" data-tex="\(1\otimes f\otimes1\)">\(1\otimes f\otimes1\)</span>, then evaluating <span class="math" data-tex="\(b^\vee\otimes b\)">\(b^\vee\otimes b\)</span>. Both triangles show that its evaluation equation is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+d_aF(f^\vee)=F(f)^*d_b.
+\tag{3.2}
+\]">\[
+d_aF(f^\vee)=F(f)^*d_b.
+\tag{3.2}
+\]</span>
+<p>That equation characterizes its fibre map; the ordinary dual-map uniqueness in <span class="math" data-tex="\(A\)">\(A\)</span> follows from the two triangle factorizations. In particular identities and reversed composites give the actual contravariant dual functor.</p>
+<p>Suppose every object has a left dual. For <span class="math" data-tex="\(v\in F(a)\)">\(v\in F(a)\)</span>, let <span class="math" data-tex="\(\widehat v:F(a)^*\to k\)">\(\widehat v:F(a)^*\to k\)</span> be evaluation at <span class="math" data-tex="\(v\)">\(v\)</span>. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+S([\phi\otimes v]_a)
+=[\,\widehat v\,d_a\otimes d_a^{-1}\phi\,]_{a^\vee}.
+\tag{3.3}
+\]">\[
+S([\phi\otimes v]_a)
+=[\,\widehat v\,d_a\otimes d_a^{-1}\phi\,]_{a^\vee}.
+\tag{3.3}
+\]</span>
+<p>This respects the relation for every <span class="math" data-tex="\(f:a\to b\)">\(f:a\to b\)</span>. Indeed (3.2) identifies <span class="math" data-tex="\(\widehat{F(f)v}d_b\)">\(\widehat{F(f)v}d_b\)</span> with <span class="math" data-tex="\(\widehat v\,d_aF(f^\vee)\)">\(\widehat v\,d_aF(f^\vee)\)</span>; relation (0.2) for <span class="math" data-tex="\(f^\vee\)">\(f^\vee\)</span> moves that map into the vector factor, giving <span class="math" data-tex="\(d_a^{-1}(\phi F(f))\)">\(d_a^{-1}(\phi F(f))\)</span> there. These are exactly the two images of the original relation. Thus (3.3) gives a well-defined linear map <span class="math" data-tex="\(S:H\to H\)">\(S:H\to H\)</span>.</p>
+<h2 id="4-both-antipode-equations-and-the-opposite-laws">4. Both antipode equations and the opposite laws</h2>
+<p>In a basis of <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span>, put <span class="math" data-tex="\(h_{ij}=[e_i^*\otimes e_j]_a\)">\(h_{ij}=[e_i^*\otimes e_j]_a\)</span>. Identify the dual fibre by <span class="math" data-tex="\(d_a\)">\(d_a\)</span>, and let <span class="math" data-tex="\(k_{ij}\)">\(k_{ij}\)</span> be its coefficient matrix in the dual basis. Formula (3.3) says <span class="math" data-tex="\(S(h_{ij})=k_{ji}\)">\(S(h_{ij})=k_{ji}\)</span>. Since evaluation and coevaluation are comodule maps, their coefficients give respectively</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\sum_r k_{ri}h_{rj}=\delta_{ij}1_H,\\
+\sum_r h_{ir}k_{jr}=\delta_{ij}1_H.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\sum_r k_{ri}h_{rj}=\delta_{ij}1_H,\\
+\sum_r h_{ir}k_{jr}=\delta_{ij}1_H.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>The first follows by evaluating the coaction of <span class="math" data-tex="\(e_i^*\otimes e_j\)">\(e_i^*\otimes e_j\)</span>; the second by comparing the coefficients of <span class="math" data-tex="\(\sum_r e_r\otimes e_r^*\)">\(\sum_r e_r\otimes e_r^*\)</span>. With the stated transpose these are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\sum_r S(h_{ir})h_{rj}=\delta_{ij}1_H,\\
+\sum_r h_{ir}S(h_{rj})=\delta_{ij}1_H.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\sum_r S(h_{ir})h_{rj}=\delta_{ij}1_H,\\
+\sum_r h_{ir}S(h_{rj})=\delta_{ij}1_H.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>Since all these coefficients span <span class="math" data-tex="\(H\)">\(H\)</span>, (4.2) proves both antipode equations <span class="math" data-tex="\(S*\operatorname{id}_H=\operatorname{id}_H*S=u\epsilon\)">\(S*\operatorname{id}_H=\operatorname{id}_H*S=u\epsilon\)</span>.</p>
+<p>Here convolution of maps from a coalgebra to an algebra means <span class="math" data-tex="\(p*q=m(p\otimes q)\Delta\)">\(p*q=m(p\otimes q)\Delta\)</span>; its associativity and unit follow by expanding the two triple sums and using the coassociative coproduct and associative product. Two two-sided inverses in any such algebra are equal: <span class="math" data-tex="\(p=p*(f*q)=(p*f)*q=q\)">\(p=p*(f*q)=(p*f)*q=q\)</span>. Thus the antipode is unique. Changing the choices of left duals cannot change it.</p>
+<p><strong>Lemma 4.1.</strong> The antipode satisfies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+S(xy)=S(y)S(x),\\
+S(1_H)=1_H,\\
+\Delta S=(S\otimes S)\tau\Delta,\\
+\epsilon S=\epsilon.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+S(xy)=S(y)S(x),\\
+S(1_H)=1_H,\\
+\Delta S=(S\otimes S)\tau\Delta,\\
+\epsilon S=\epsilon.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p><strong>Proof: multiplication.</strong> In the convolution algebra of maps <span class="math" data-tex="\(H\otimes H\to H\)">\(H\otimes H\to H\)</span>, the map <span class="math" data-tex="\(S\circ m\)">\(S\circ m\)</span> is inverse to <span class="math" data-tex="\(m\)">\(m\)</span>, by multiplicativity of the coproduct and both antipode equations. The map <span class="math" data-tex="\((x,y)\mapsto S(y)S(x)\)">\((x,y)\mapsto S(y)S(x)\)</span> is another inverse. For one composite its sum is <span class="math" data-tex="\(\sum S(y_1)S(x_1)x_2y_2=\epsilon(x)\epsilon(y)1_H\)">\(\sum S(y_1)S(x_1)x_2y_2=\epsilon(x)\epsilon(y)1_H\)</span>; for the other use <span class="math" data-tex="\(\sum x_1y_1S(y_2)S(x_2)\)">\(\sum x_1y_1S(y_2)S(x_2)\)</span> and cancel the middle <span class="math" data-tex="\(y\)">\(y\)</span>-pair first. Uniqueness proves the product identity. Evaluating the antipode equation at the grouplike <span class="math" data-tex="\(1_H\)">\(1_H\)</span> gives <span class="math" data-tex="\(S(1_H)=1_H\)">\(S(1_H)=1_H\)</span>.</p>
+<p><strong>Proof: coproduct.</strong> In convolution of maps <span class="math" data-tex="\(H\to H\otimes H\)">\(H\to H\otimes H\)</span>, the map <span class="math" data-tex="\(\Delta S\)">\(\Delta S\)</span> is inverse to <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, because <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is an algebra map. A second inverse is <span class="math" data-tex="\(T_0=(S\otimes S)\tau\Delta\)">\(T_0=(S\otimes S)\tau\Delta\)</span>. In a fourfold coassociative expansion, its two composites with <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+(T_0*\Delta)(h)\\
+=\sum S(h_2)h_3\otimes S(h_1)h_4,\\
+(\Delta*T_0)(h)\\
+=\sum h_1S(h_4)\otimes h_2S(h_3).
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+(T_0*\Delta)(h)\\
+=\sum S(h_2)h_3\otimes S(h_1)h_4,\\
+(\Delta*T_0)(h)\\
+=\sum h_1S(h_4)\otimes h_2S(h_3).
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>In the first, cancel <span class="math" data-tex="\(S(h_2)h_3\)">\(S(h_2)h_3\)</span>, then the remaining <span class="math" data-tex="\(S(h_1)h_2\)">\(S(h_1)h_2\)</span>; in the second cancel <span class="math" data-tex="\(h_2S(h_3)\)">\(h_2S(h_3)\)</span>, then <span class="math" data-tex="\(h_1S(h_2)\)">\(h_1S(h_2)\)</span>. Both become <span class="math" data-tex="\(\epsilon(h)(1_H\otimes1_H)\)">\(\epsilon(h)(1_H\otimes1_H)\)</span>. Uniqueness gives the coproduct identity. Applying <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> to the antipode equation gives <span class="math" data-tex="\((\epsilon S)*\epsilon=\epsilon\)">\((\epsilon S)*\epsilon=\epsilon\)</span> in the scalar convolution algebra, whose unit is <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Hence <span class="math" data-tex="\(\epsilon S=\epsilon\)">\(\epsilon S=\epsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-right-duals-give-an-actual-inverse-antipode">5. Right duals give an actual inverse antipode</h2>
+<p>A <strong>right dual</strong> <span class="math" data-tex="\(a^r\)">\(a^r\)</span> has evaluation <span class="math" data-tex="\(a\otimes a^r\to\mathbf1\)">\(a\otimes a^r\to\mathbf1\)</span> and coevaluation <span class="math" data-tex="\(\mathbf1\to a^r\otimes a\)">\(\mathbf1\to a^r\otimes a\)</span>. Its transported pairing identifies <span class="math" data-tex="\(F(a^r)\)">\(F(a^r)\)</span> with <span class="math" data-tex="\(F(a)^*\)">\(F(a)^*\)</span>, just as in Section 3 but with the factors in this specified order.</p>
+<p>Write <span class="math" data-tex="\(d_a^r:F(a^r)\xrightarrow{\sim}F(a)^*\)">\(d_a^r:F(a^r)\xrightarrow{\sim}F(a)^*\)</span> for the right-pairing identification. Its inverse is obtained by contracting the right coevaluation, with the two inverse identities proved by the two right triangles. For <span class="math" data-tex="\(f:a\to b\)">\(f:a\to b\)</span>, insert the coevaluation of <span class="math" data-tex="\(a\)">\(a\)</span> on the left of <span class="math" data-tex="\(b^r\)">\(b^r\)</span>, apply <span class="math" data-tex="\(1\otimes f\otimes1\)">\(1\otimes f\otimes1\)</span>, and evaluate <span class="math" data-tex="\(b\otimes b^r\)">\(b\otimes b^r\)</span>. This gives <span class="math" data-tex="\(f^r:b^r\to a^r\)">\(f^r:b^r\to a^r\)</span> and the identity <span class="math" data-tex="\(d_a^rF(f^r)=F(f)^*d_b^r\)">\(d_a^rF(f^r)=F(f)^*d_b^r\)</span>.</p>
+<p>If every object has such a right dual, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.0); horizontal scroll when needed" data-tex="\[
+T([\phi\otimes v]_a)
+=[\,\widehat v\,d_a^r\otimes(d_a^r)^{-1}\phi\,]_{a^r}.
+\tag{5.0}
+\]">\[
+T([\phi\otimes v]_a)
+=[\,\widehat v\,d_a^r\otimes(d_a^r)^{-1}\phi\,]_{a^r}.
+\tag{5.0}
+\]</span>
+<p>For a defining coefficient relation, the preceding dual-map identity moves <span class="math" data-tex="\(F(f^r)\)">\(F(f^r)\)</span> from the functional to the vector by (0.2), giving exactly the two images under this formula. Thus it descends, with every variance specified. Let the right-dual coefficient matrix be <span class="math" data-tex="\(r_{ij}\)">\(r_{ij}\)</span>, so <span class="math" data-tex="\(T(h_{ij})=r_{ji}\)">\(T(h_{ij})=r_{ji}\)</span>. Evaluation and coevaluation in their right-dual order now give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\sum_p h_{pj}r_{pi}=\delta_{ij}1_H,\\
+\sum_p r_{jp}h_{ip}=\delta_{ij}1_H.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\sum_p h_{pj}r_{pi}=\delta_{ij}1_H,\\
+\sum_p r_{jp}h_{ip}=\delta_{ij}1_H.
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>For example the first evaluates <span class="math" data-tex="\(e_j\otimes e_i^*\)">\(e_j\otimes e_i^*\)</span>; the second compares the coefficients of <span class="math" data-tex="\(\sum_p e_p^*\otimes e_p\)">\(\sum_p e_p^*\otimes e_p\)</span>. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\sum_p h_{pj}T(h_{ip})=\delta_{ij}1_H,\\
+\sum_p T(h_{pj})h_{ip}=\delta_{ij}1_H.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+\sum_p h_{pj}T(h_{ip})=\delta_{ij}1_H,\\
+\sum_p T(h_{pj})h_{ip}=\delta_{ij}1_H.
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>These are the two antipode equations for the co-opposite bialgebra <span class="math" data-tex="\(H^{\rm cop}\)">\(H^{\rm cop}\)</span>, with coproduct <span class="math" data-tex="\(\tau\Delta\)">\(\tau\Delta\)</span>. That is a bialgebra: the flip is an algebra map from the tensor-product algebra to itself, and the two bialgebra compatibility equations are preserved. Hence Lemma 4.1 also makes <span class="math" data-tex="\(T\)">\(T\)</span> anti-multiplicative.</p>
+<p>Suppose both left and right duals exist. Apply the anti-multiplicative <span class="math" data-tex="\(S\)">\(S\)</span> to the two opposite equations for <span class="math" data-tex="\(T\)">\(T\)</span>. In ordinary convolution the resulting equations say that <span class="math" data-tex="\(S\circ T\)">\(S\circ T\)</span> is a two-sided inverse to <span class="math" data-tex="\(S\)">\(S\)</span>. The identity map is already such an inverse by (4.2). Uniqueness therefore gives <span class="math" data-tex="\(S\circ T=\operatorname{id}_H\)">\(S\circ T=\operatorname{id}_H\)</span>.</p>
+<p>Apply the anti-multiplicative <span class="math" data-tex="\(T\)">\(T\)</span> to the ordinary equations for <span class="math" data-tex="\(S\)">\(S\)</span>. In opposite convolution <span class="math" data-tex="\(p*_{\rm cop}q=m(p\otimes q)\tau\Delta\)">\(p*_{\rm cop}q=m(p\otimes q)\tau\Delta\)</span>, the resulting equations make <span class="math" data-tex="\(T\circ S\)">\(T\circ S\)</span> a two-sided inverse to <span class="math" data-tex="\(T\)">\(T\)</span>. The identity is already that inverse by (5.2). Hence <span class="math" data-tex="\(T\circ S=\operatorname{id}_H\)">\(T\circ S=\operatorname{id}_H\)</span>. This proves actual bijectivity, with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+T=S^{-1}.
+\tag{5.3}
+\]">\[
+T=S^{-1}.
+\tag{5.3}
+\]</span>
+<p>No finite-dimensionality of the entire coalgebra was used. One direction of duality supplies its specified antipode equations; the second direction is what supplied this inverse.</p>
+<h2 id="6-converse-duals-and-ordinary-symmetry">6. Converse duals and ordinary symmetry</h2>
+<p>Conversely, let <span class="math" data-tex="\(H\)">\(H\)</span> be a bialgebra with an antipode <span class="math" data-tex="\(S\)">\(S\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> be a finite right comodule with coefficient matrix <span class="math" data-tex="\(h_{ij}\)">\(h_{ij}\)</span>. Define a coaction on the ordinary dual basis by the matrix</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+k_{ij}=S(h_{ji}).
+\tag{6.1}
+\]">\[
+k_{ij}=S(h_{ji}).
+\tag{6.1}
+\]</span>
+<p>The anti-coalgebra identity in (4.3) gives <span class="math" data-tex="\(\Delta k_{ij}=\sum_r k_{ir}\otimes k_{rj}\)">\(\Delta k_{ij}=\sum_r k_{ir}\otimes k_{rj}\)</span>, and the counit gives <span class="math" data-tex="\(\epsilon k_{ij}=\delta_{ij}\)">\(\epsilon k_{ij}=\delta_{ij}\)</span>. Thus this really is a coaction. Equations (4.2) say exactly that the ordinary evaluation <span class="math" data-tex="\(V^*\otimes V\to k\)">\(V^*\otimes V\to k\)</span> and coevaluation <span class="math" data-tex="\(k\to V\otimes V^*\)">\(k\to V\otimes V^*\)</span> are comodule maps. Their ordinary vector triangles are identities, so they give a left dual. Transposing a comodule map respects these coactions by its coefficient equation and linearity of <span class="math" data-tex="\(S\)">\(S\)</span>, hence supplies all dual maps.</p>
+<p>If <span class="math" data-tex="\(S\)">\(S\)</span> is bijective, (4.3) makes <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> anti-multiplicative and anti-coalgebraic as well. Applying <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> to the antipode equations in reverse product order gives its two equations for <span class="math" data-tex="\(H^{\rm cop}\)">\(H^{\rm cop}\)</span>. The matrix <span class="math" data-tex="\(r_{ij}=S^{-1}(h_{ji})\)">\(r_{ij}=S^{-1}(h_{ji})\)</span> therefore gives the right dual, with evaluation <span class="math" data-tex="\(V\otimes V^*\to k\)">\(V\otimes V^*\to k\)</span> and coevaluation <span class="math" data-tex="\(k\to V^*\otimes V\)">\(k\to V^*\otimes V\)</span>, by (5.1). Consequently finite comodules have both duals exactly when the reconstructed antipode is bijective; the reverse implication was Section 5 applied to all their fibres. Their coefficients span <span class="math" data-tex="\(H\)">\(H\)</span>, as proved in the coend reconstruction lesson.</p>
+<p>For a bialgebra map <span class="math" data-tex="\(q:H\to H&#x27;\)">\(q:H\to H&#x27;\)</span> between bialgebras with antipodes, <span class="math" data-tex="\(qS\)">\(qS\)</span> and <span class="math" data-tex="\(S&#x27;q\)">\(S&#x27;q\)</span> are both convolution inverses to <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(\operatorname{Hom}(H,H&#x27;)\)">\(\operatorname{Hom}(H,H&#x27;)\)</span>, by its coalgebra, algebra and unit equations. Therefore <span class="math" data-tex="\(qS=S&#x27;q\)">\(qS=S&#x27;q\)</span>. In particular the map (2.2) preserves antipodes whenever the dual hypotheses supply them.</p>
+<p>Finally the ordinary vector flip <span class="math" data-tex="\(V\otimes W\to W\otimes V\)">\(V\otimes W\to W\otimes V\)</span> is a comodule map for all finite comodules if and only if <span class="math" data-tex="\(H\)">\(H\)</span> is commutative. In the forward direction compare the two tensor coactions and apply a pair of fibre functionals: every coefficient of <span class="math" data-tex="\(V\)">\(V\)</span> commutes with every coefficient of <span class="math" data-tex="\(W\)">\(W\)</span>. Such coefficients span <span class="math" data-tex="\(H\)">\(H\)</span>, so all products commute. In the reverse direction the two coactions (2.1) agree after flipping because their last coefficients commute.</p>
+<p>Thus a symmetry on <span class="math" data-tex="\(A\)">\(A\)</span> preserved by <span class="math" data-tex="\(F\)">\(F\)</span> forces commutativity. Conversely commutativity gives the usual flip symmetry on finite comodules, which the strong monoidal equivalence transports to <span class="math" data-tex="\(A\)">\(A\)</span>. Full faithfulness gives its actual symmetry maps; the symmetry and hexagon laws follow because their vector maps satisfy them and <span class="math" data-tex="\(F\)">\(F\)</span> is faithful. This criterion concerns the ordinary flip; no claim that an arbitrary abstract braiding forces commutativity is involved.</p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-foundation-a-monoid-grading-need-not-have-duals">Exercise 1 (foundation: a monoid grading need not have duals)</h3>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a small monoid. Give finite-dimensional <span class="math" data-tex="\(M\)">\(M\)</span>-graded vector spaces the ordered tensor grading <span class="math" data-tex="\(g\cdot h\)">\(g\cdot h\)</span>. Reconstruct its bialgebra and determine exactly when it has an antipode. Explain the obstruction for the nonnegative-integer grading.</p>
+<p><strong>Solution.</strong> The underlying graded category and forgetful functor satisfy the hypotheses: kernels and cokernels are grade by grade, and forgetting is exact and faithful. The tensor is the direct sum of <span class="math" data-tex="\(V_g\otimes W_h\)">\(V_g\otimes W_h\)</span> in grade <span class="math" data-tex="\(gh\)">\(gh\)</span>; associativity and the identity grade give its strong ordinary forgetful comparisons.</p>
+<p>The graded coefficient calculation in the coend lesson gives the basis <span class="math" data-tex="\(g_m\)">\(g_m\)</span>, <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span>, with <span class="math" data-tex="\(\Delta g_m=g_m\otimes g_m\)">\(\Delta g_m=g_m\otimes g_m\)</span> and <span class="math" data-tex="\(\epsilon g_m=1\)">\(\epsilon g_m=1\)</span>. Formula (1.1) gives <span class="math" data-tex="\(g_mg_n=g_{mn}\)">\(g_mg_n=g_{mn}\)</span> and <span class="math" data-tex="\(1_H=g_e\)">\(1_H=g_e\)</span>. This is the monoid bialgebra <span class="math" data-tex="\(k[M]\)">\(k[M]\)</span>.</p>
+<p>Its grouplike elements are precisely the <span class="math" data-tex="\(g_m\)">\(g_m\)</span>. Indeed write a grouplike as a finite sum <span class="math" data-tex="\(\sum a_mg_m\)">\(\sum a_mg_m\)</span>. Comparing its coproduct with its tensor square makes <span class="math" data-tex="\(a_ma_n=0\)">\(a_ma_n=0\)</span> for <span class="math" data-tex="\(m\ne n\)">\(m\ne n\)</span>, and <span class="math" data-tex="\(a_m=a_m^2\)">\(a_m=a_m^2\)</span>. The counit is <span class="math" data-tex="\(1\)">\(1\)</span>, so exactly one coefficient is <span class="math" data-tex="\(1\)">\(1\)</span>. If an antipode exists, (4.3) makes <span class="math" data-tex="\(S(g_m)\)">\(S(g_m)\)</span> grouplike, and its two equations make the corresponding monoid element a two-sided inverse to <span class="math" data-tex="\(m\)">\(m\)</span>. Hence every <span class="math" data-tex="\(m\)">\(m\)</span> is invertible and <span class="math" data-tex="\(M\)">\(M\)</span> is a group. Conversely for a group, <span class="math" data-tex="\(S(g_m)=g_{m^{-1}}\)">\(S(g_m)=g_{m^{-1}}\)</span> satisfies both equations on each basis vector and is bijective.</p>
+<p>For <span class="math" data-tex="\(M=\mathbb N\)">\(M=\mathbb N\)</span> under addition the bialgebra is <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span> with <span class="math" data-tex="\(t\)">\(t\)</span> grouplike, rather than primitive. There is no inverse to the degree-one monoid element, so no antipode. A degree-one line cannot have a left or right dual within nonnegative gradings: every tensor with it has grades at least one, so an evaluation to the degree-zero unit is zero and cannot satisfy its triangle. This gives the same obstruction directly in the category.</p>
+<h3 id="exercise-2-standard-finite-groups-in-every-characteristic">Exercise 2 (standard: finite groups in every characteristic)</h3>
+<p>For a finite group <span class="math" data-tex="\(G\)">\(G\)</span>, reconstruct the bialgebra of its finite-dimensional representations with their ordinary tensor and forgetful functor. Compute its antipode, and separate commutativity from cocommutativity without assuming semisimplicity.</p>
+<p><strong>Solution.</strong> Send a coefficient to the function <span class="math" data-tex="\(g\mapsto\phi(gv)\)">\(g\mapsto\phi(gv)\)</span>. It respects every representation-map relation. Every function occurs from a coefficient of the regular module <span class="math" data-tex="\(k[G]\)">\(k[G]\)</span>, using the vector <span class="math" data-tex="\(1\)">\(1\)</span> and an arbitrary functional on <span class="math" data-tex="\(k[G]\)">\(k[G]\)</span>. Conversely the module map <span class="math" data-tex="\(k[G]\to V\)">\(k[G]\to V\)</span>, <span class="math" data-tex="\(r\mapsto rv\)">\(r\mapsto rv\)</span>, moves any coefficient to the regular module with vector <span class="math" data-tex="\(1\)">\(1\)</span>, just as in the regular-module calculation of the coend lesson. A zero coefficient function then gives the zero functional there; finite sums combine through direct sums. This proves the coalgebra isomorphism <span class="math" data-tex="\(H=k^G\)">\(H=k^G\)</span>.</p>
+<p>The tensor action gives pointwise multiplication of coefficient functions, and the unit is the constant function <span class="math" data-tex="\(1\)">\(1\)</span>. The coproduct, counit and antipode are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+(\Delta f)(g,h)=f(gh),\\
+\epsilon(f)=f(e),\\
+(Sf)(g)=f(g^{-1}).
+\end{gathered}
+\tag{7.1}
+\]">\[
+\begin{gathered}
+(\Delta f)(g,h)=f(gh),\\
+\epsilon(f)=f(e),\\
+(Sf)(g)=f(g^{-1}).
+\end{gathered}
+\tag{7.1}
+\]</span>
+<p>Evaluating the two antipode composites on <span class="math" data-tex="\(g\)">\(g\)</span> gives <span class="math" data-tex="\(f(g^{-1}g)=f(e)\)">\(f(g^{-1}g)=f(e)\)</span> and <span class="math" data-tex="\(f(gg^{-1})=f(e)\)">\(f(gg^{-1})=f(e)\)</span>, so both equations hold and <span class="math" data-tex="\(S^2=1\)">\(S^2=1\)</span>. Pointwise multiplication is commutative, in accordance with the usual flip symmetry on representations. The coproduct is cocommutative exactly when <span class="math" data-tex="\(G\)">\(G\)</span> is abelian: if <span class="math" data-tex="\(gh\ne hg\)">\(gh\ne hg\)</span>, the indicator function of <span class="math" data-tex="\(gh\)">\(gh\)</span> distinguishes the two values of the coproduct. These calculations use neither averaging nor a decomposition into irreducibles, and hold when the characteristic divides <span class="math" data-tex="\(|G|\)">\(|G|\)</span>.</p>
+<h3 id="exercise-3-advanced-the-characteristic-two-obstruction">Exercise 3 (advanced: the characteristic-two obstruction)</h3>
+<p>Let the coalgebra <span class="math" data-tex="\(C\)">\(C\)</span> have basis <span class="math" data-tex="\(1,x\)">\(1,x\)</span>, with <span class="math" data-tex="\(\Delta1=1\otimes1\)">\(\Delta1=1\otimes1\)</span>, <span class="math" data-tex="\(\Delta x=1\otimes x+x\otimes1\)">\(\Delta x=1\otimes x+x\otimes1\)</span>, and counit <span class="math" data-tex="\(\epsilon1=1,\epsilon x=0\)">\(\epsilon1=1,\epsilon x=0\)</span>. Determine when the proposed multiplication <span class="math" data-tex="\(x^2=0\)">\(x^2=0\)</span> makes it a bialgebra. Relate this to tensoring two square-zero operators, and determine whether a different unital multiplication could work in characteristic other than two.</p>
+<p><strong>Solution.</strong> Multiplicativity of the coproduct requires</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+0=\Delta(x^2)=(\Delta x)^2=2x\otimes x.
+\tag{7.2}
+\]">\[
+0=\Delta(x^2)=(\Delta x)^2=2x\otimes x.
+\tag{7.2}
+\]</span>
+<p>Since <span class="math" data-tex="\(x\otimes x\ne0\)">\(x\otimes x\ne0\)</span>, this forces characteristic two. In characteristic two the relation is preserved, so the product defines a bialgebra: multiplication on the unit and counit is compatible, and the displayed calculation checks the only defining relation. The map <span class="math" data-tex="\(S(1)=1,S(x)=-x=x\)">\(S(1)=1,S(x)=-x=x\)</span> satisfies both antipode equations on the basis, and is its own inverse.</p>
+<p>For square-zero operators <span class="math" data-tex="\(N,M\)">\(N,M\)</span>, the primitive tensor prescription is <span class="math" data-tex="\(N\otimes1+1\otimes M\)">\(N\otimes1+1\otimes M\)</span>. Its square is <span class="math" data-tex="\(2N\otimes M\)">\(2N\otimes M\)</span>. Taking both to be nonzero Jordan blocks of size two makes <span class="math" data-tex="\(N\otimes M\ne0\)">\(N\otimes M\ne0\)</span>, so the tensor prescription fails outside characteristic two. In characteristic two it is again square-zero; ordinary tensor associativity and the zero operator on the unit preserve these sums. Tensoring intertwining maps respects them, giving the strong forgetful tensor structure. The ordinary dual has operator <span class="math" data-tex="\(-N^*\)">\(-N^*\)</span>; evaluation and coevaluation commute with these sums, and the vector triangles give both duals.</p>
+<p>There is no alternative bialgebra multiplication on this coalgebra outside characteristic two. First its only grouplike element is <span class="math" data-tex="\(1\)">\(1\)</span>: a grouplike with counit one has form <span class="math" data-tex="\(1+ax\)">\(1+ax\)</span>, and comparison of coproduct with tensor square gives <span class="math" data-tex="\(a^2=0\)">\(a^2=0\)</span>, hence <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Thus a bialgebra unit would have to be this <span class="math" data-tex="\(1\)">\(1\)</span>. Write <span class="math" data-tex="\(x^2=b1+cx\)">\(x^2=b1+cx\)</span>; multiplicativity of the counit gives <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Comparing <span class="math" data-tex="\(\Delta(x^2)\)">\(\Delta(x^2)\)</span> with <span class="math" data-tex="\((\Delta x)^2\)">\((\Delta x)^2\)</span> still leaves the term <span class="math" data-tex="\(2x\otimes x\)">\(2x\otimes x\)</span>, so it forces characteristic two regardless of <span class="math" data-tex="\(c\)">\(c\)</span>. This is an obstruction to compatible multiplication, even though the coalgebra and its finite-comodule category exist over every field.</p>
+<h3 id="exercise-4-synthesis-a-valid-lax-functor-is-not-sufficient">Exercise 4 (synthesis: a valid lax functor is not sufficient)</h3>
+<p>Let <span class="math" data-tex="\(B=k\times k\)">\(B=k\times k\)</span>, and set <span class="math" data-tex="\(F_B(V)=V\otimes B\)">\(F_B(V)=V\otimes B\)</span> on finite-dimensional vector spaces. Give it its lax tensor comparison using multiplication in <span class="math" data-tex="\(B\)">\(B\)</span> and its lax unit using <span class="math" data-tex="\(1_B\)">\(1_B\)</span>. Verify that it is exact and faithful but not strong. Compute its coefficient coalgebra and show that this coalgebra admits no bialgebra structure.</p>
+<p><strong>Solution.</strong> The lax comparison first interchanges the middle <span class="math" data-tex="\(B\)">\(B\)</span> and vector factors, then multiplies the two <span class="math" data-tex="\(B\)">\(B\)</span>'s; its unit sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1_B\)">\(1_B\)</span>. The associativity and both unit equations are exactly those of the unital algebra <span class="math" data-tex="\(B\)">\(B\)</span>, with ordinary vector reassociation. Thus this is a valid lax monoidal functor. Tensor with the nonzero vector space <span class="math" data-tex="\(B\)">\(B\)</span> is exact over the field and detects every nonzero map, so it is exact and faithful. Its unit has dimensions <span class="math" data-tex="\(1\to2\)">\(1\to2\)</span>, and its tensor comparison at <span class="math" data-tex="\(k,k\)">\(k,k\)</span> has dimensions <span class="math" data-tex="\(4\to2\)">\(4\to2\)</span>; neither is invertible.</p>
+<p>Its coefficient coalgebra is the matrix coalgebra <span class="math" data-tex="\(B^*\otimes B\)">\(B^*\otimes B\)</span>. To prove the quotient identification, write a vector in <span class="math" data-tex="\(V\otimes B\)">\(V\otimes B\)</span> as <span class="math" data-tex="\(\sum_i v_i\otimes b_i\)">\(\sum_i v_i\otimes b_i\)</span>, and send its coefficient with functional <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+\sum_i\bigl(b\mapsto\phi(v_i\otimes b)\bigr)\otimes b_i.
+\tag{7.3}
+\]">\[
+\sum_i\bigl(b\mapsto\phi(v_i\otimes b)\bigr)\otimes b_i.
+\tag{7.3}
+\]</span>
+<p>This is independent of the tensor expression by its bilinear universal property, and respects all linear maps on <span class="math" data-tex="\(V\)">\(V\)</span>. Conversely the coefficients at the object <span class="math" data-tex="\(k\)">\(k\)</span>, whose fibre is <span class="math" data-tex="\(B\)">\(B\)</span>, give an inverse: the maps <span class="math" data-tex="\(k\to V\)">\(k\to V\)</span>, <span class="math" data-tex="\(1\mapsto v_i\)">\(1\mapsto v_i\)</span>, turn the defining coefficient relations into exactly (7.3). Formula (0.2) gives its usual matrix coproduct, so its dual algebra is <span class="math" data-tex="\(\operatorname{End}_k(B)\simeq M_2(k)\)">\(\operatorname{End}_k(B)\simeq M_2(k)\)</span>.</p>
+<p>A grouplike element of this coalgebra would give, by evaluation, a unital algebra map <span class="math" data-tex="\(M_2(k)\to k\)">\(M_2(k)\to k\)</span>. Such a map cannot exist. Its values on <span class="math" data-tex="\(E_{11},E_{22}\)">\(E_{11},E_{22}\)</span> are orthogonal idempotents adding to <span class="math" data-tex="\(1\)">\(1\)</span>, so one is <span class="math" data-tex="\(1\)">\(1\)</span> and the other <span class="math" data-tex="\(0\)">\(0\)</span>. But the scalar products of the images of <span class="math" data-tex="\(E_{12},E_{21}\)">\(E_{12},E_{21}\)</span> commute, whereas their products in the two orders are <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span> and <span class="math" data-tex="\(E_{22}\)">\(E_{22}\)</span>, forcing their images equal. This is a contradiction over every field.</p>
+<p>There is therefore no grouplike element, and a bialgebra unit would have to be grouplike with counit one. No bialgebra structure exists on this coalgebra. Exactness, faithfulness and valid lax coherence do not supply the invertible comparisons needed in (1.1).</p>
+<h2 id="references">References</h2>
+<p><strong>[EGNO]</strong> Pavel Etingof, Shlomo Gelaki, Dmitri Nikshych and Victor Ostrik, <em>Tensor Categories</em>, Sections 5.3–5.4, especially Theorem 5.4.1. <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf">Freely available author-hosted final version</a>. These sections give classical bialgebra and duality reconstruction context. The coefficient operations, their compatibility proofs, the explicit left/right antipodes and inverse, and the counterexamples used here are given above, with the linked underlying coalgebra reconstruction.</p>
+</main></body></html>

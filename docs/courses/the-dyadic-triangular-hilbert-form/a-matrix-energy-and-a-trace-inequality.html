@@ -1,0 +1,201 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A matrix energy and a trace inequality</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The dyadic triangular Hilbert form)</a><a href="dyadic-triangles-and-the-main-estimate.html">Previous lesson</a><a href="energy-increase-and-telescoping.html">Next lesson</a><a href="src/a-matrix-energy-and-a-trace-inequality.md">Editable source</a></nav><main><article><h1 id="a-matrix-energy-and-a-trace-inequality">A matrix energy and a trace inequality</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the two finite-dimensional facts behind Theorem A of <a href="dyadic-triangles-and-the-main-estimate.html">Dyadic triangles and the main estimate</a>. The first concerns the energy <span class="math" data-tex="\(\Phi(P)=\operatorname{tr}(P^{3/2})\)">\(\Phi(P)=\operatorname{tr}(P^{3/2})\)</span> of a positive semidefinite matrix: its second derivative <span class="math" data-tex="\(b_P\)">\(b_P\)</span> decreases by at most the factor <span class="math" data-tex="\(a^{-1/2}\)">\(a^{-1/2}\)</span> when <span class="math" data-tex="\(P\)">\(P\)</span> is replaced by a matrix at most <span class="math" data-tex="\(a\)">\(a\)</span> times as large (Lemma 2.3), and this gives a midpoint gap (Corollary 2.4). The second is a bound for the trace of a cyclic product of three matrices and three symmetric contractions by these second derivatives, with a constant independent of the dimensions (Proposition 2.5). Both are due to OpenAI [OpenAI-M, Sections 2 and 3], [OpenAI-D, Sections 2 and 3].</p>
+<p>All matrices are real, and <span class="math" data-tex="\(X^{\mathsf T}\)">\(X^{\mathsf T}\)</span> is the transpose. For symmetric matrices, <span class="math" data-tex="\(X\le Y\)">\(X\le Y\)</span> means that <span class="math" data-tex="\(Y-X\)">\(Y-X\)</span> is positive semidefinite. <span class="math" data-tex="\(\langle X,Y\rangle=\operatorname{tr}(X^{\mathsf T}Y)\)">\(\langle X,Y\rangle=\operatorname{tr}(X^{\mathsf T}Y)\)</span> is the Hilbert–Schmidt inner product and <span class="math" data-tex="\(\|X\|\)">\(\|X\|\)</span> the operator norm.</p>
+<h2 id="1-the-energy-and-its-hessian">1. The energy and its Hessian</h2>
+<p>For a positive semidefinite matrix <span class="math" data-tex="\(P\)">\(P\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi(P)&amp;=\operatorname{tr}(P^{3/2}),\\
+\operatorname{supp}P&amp;=(\ker P)^\perp .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi(P)&amp;=\operatorname{tr}(P^{3/2}),\\
+\operatorname{supp}P&amp;=(\ker P)^\perp .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is continuous, because the eigenvalues of <span class="math" data-tex="\(P\)">\(P\)</span> depend continuously on <span class="math" data-tex="\(P\)">\(P\)</span>. A symmetric matrix <span class="math" data-tex="\(K\)">\(K\)</span> is <em>supported on</em> <span class="math" data-tex="\(P\)">\(P\)</span> if <span class="math" data-tex="\(K\)">\(K\)</span> vanishes on <span class="math" data-tex="\(\ker P\)">\(\ker P\)</span>; then its range lies in <span class="math" data-tex="\(\operatorname{supp}P\)">\(\operatorname{supp}P\)</span> as well. For such <span class="math" data-tex="\(K\)">\(K\)</span> put
+<span class="math math-display" data-tex="\[
+b_P(K)=\frac32\sum_{i,j}\frac{K_{ij}^2}{\sqrt{p_i}+\sqrt{p_j}},
+\]">\[
+b_P(K)=\frac32\sum_{i,j}\frac{K_{ij}^2}{\sqrt{p_i}+\sqrt{p_j}},
+\]</span>
+where <span class="math" data-tex="\(p_i&gt;0\)">\(p_i&gt;0\)</span> are the eigenvalues of <span class="math" data-tex="\(P\)">\(P\)</span> on <span class="math" data-tex="\(\operatorname{supp}P\)">\(\operatorname{supp}P\)</span> and <span class="math" data-tex="\(K_{ij}\)">\(K_{ij}\)</span> are the entries of <span class="math" data-tex="\(K\)">\(K\)</span> in an orthonormal eigenbasis of <span class="math" data-tex="\(\operatorname{supp}P\)">\(\operatorname{supp}P\)</span>; <span class="math" data-tex="\(b_0(0)=0\)">\(b_0(0)=0\)</span>. Simultaneous orthogonal conjugation of <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>, and extension of both by zero to a larger space, change neither <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> nor <span class="math" data-tex="\(b\)">\(b\)</span>. For a matrix <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(\mathcal L_B(X)=BX+XB\)">\(\mathcal L_B(X)=BX+XB\)</span> on the space of all matrices.</p>
+<p><strong>Lemma 2.1</strong> (Hessian). Let <span class="math" data-tex="\(V\)">\(V\)</span> be a subspace. On the set of positive semidefinite <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(\operatorname{supp}P=V\)">\(\operatorname{supp}P=V\)</span>, viewed as positive definite matrices on <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is smooth, and for symmetric <span class="math" data-tex="\(K\)">\(K\)</span> supported on <span class="math" data-tex="\(V\)">\(V\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d\Phi_P(K)&amp;=\tfrac32\operatorname{tr}(\sqrt P\,K),\\
+d^2\Phi_P(K,K)&amp;=b_P(K)=\tfrac32\langle K,\mathcal L_{\sqrt P}^{-1}K\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+d\Phi_P(K)&amp;=\tfrac32\operatorname{tr}(\sqrt P\,K),\\
+d^2\Phi_P(K,K)&amp;=b_P(K)=\tfrac32\langle K,\mathcal L_{\sqrt P}^{-1}K\rangle .
+\end{aligned}
+\]</span>
+In particular <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is convex on the positive semidefinite matrices.</p>
+<p><em>Proof.</em> Work on <span class="math" data-tex="\(V\)">\(V\)</span> and put <span class="math" data-tex="\(B=\sqrt P\)">\(B=\sqrt P\)</span>. The derivative of <span class="math" data-tex="\(X\mapsto X^2\)">\(X\mapsto X^2\)</span> at <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(\mathcal L_B\)">\(\mathcal L_B\)</span>; in an eigenbasis of <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(\mathcal L_B\)">\(\mathcal L_B\)</span> multiplies the entry <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> by <span class="math" data-tex="\(\sqrt{p_i}+\sqrt{p_j}&gt;0\)">\(\sqrt{p_i}+\sqrt{p_j}&gt;0\)</span>, so it is invertible. By the inverse function theorem, squaring has a smooth local inverse near <span class="math" data-tex="\(B\)">\(B\)</span>, which agrees with the positive square root because squaring is injective on positive definite matrices and the positive square root is continuous. Its derivative <span class="math" data-tex="\(X\)">\(X\)</span> in the direction <span class="math" data-tex="\(K\)">\(K\)</span> solves <span class="math" data-tex="\(BX+XB=K\)">\(BX+XB=K\)</span>. Since <span class="math" data-tex="\(\operatorname{tr}(B^2X)=\operatorname{tr}(BXB)\)">\(\operatorname{tr}(B^2X)=\operatorname{tr}(BXB)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d\Phi_P(K)&amp;=3\operatorname{tr}(B^2X)\\
+&amp;=\tfrac32\operatorname{tr}\bigl(B(BX+XB)\bigr)\\
+&amp;=\tfrac32\operatorname{tr}(BK).
+\end{aligned}
+\]">\[
+\begin{aligned}
+d\Phi_P(K)&amp;=3\operatorname{tr}(B^2X)\\
+&amp;=\tfrac32\operatorname{tr}\bigl(B(BX+XB)\bigr)\\
+&amp;=\tfrac32\operatorname{tr}(BK).
+\end{aligned}
+\]</span>
+Differentiating once more, <span class="math" data-tex="\(d^2\Phi_P(K,K)=\frac32\operatorname{tr}(XK)\)">\(d^2\Phi_P(K,K)=\frac32\operatorname{tr}(XK)\)</span> with <span class="math" data-tex="\(X=\mathcal L_B^{-1}K\)">\(X=\mathcal L_B^{-1}K\)</span>; in the eigenbasis, <span class="math" data-tex="\(X_{ij}=K_{ij}/(\sqrt{p_i}+\sqrt{p_j})\)">\(X_{ij}=K_{ij}/(\sqrt{p_i}+\sqrt{p_j})\)</span>, so this is <span class="math" data-tex="\(b_P(K)\ge0\)">\(b_P(K)\ge0\)</span>. For positive semidefinite <span class="math" data-tex="\(P_0,P_1\)">\(P_0,P_1\)</span> and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, the matrices <span class="math" data-tex="\((1-t)P_0+tP_1+\eta I\)">\((1-t)P_0+tP_1+\eta I\)</span> are positive definite, so <span class="math" data-tex="\(t\mapsto\Phi((1-t)P_0+tP_1+\eta I)\)">\(t\mapsto\Phi((1-t)P_0+tP_1+\eta I)\)</span> is convex on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>; letting <span class="math" data-tex="\(\eta\to0\)">\(\eta\to0\)</span> proves convexity of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-order-comparison">2. Order comparison</h2>
+<p><strong>Lemma 2.2.</strong> Let <span class="math" data-tex="\(0&lt;X\le Y\)">\(0&lt;X\le Y\)</span> be positive definite. Then <span class="math" data-tex="\(Y^{-1}\le X^{-1}\)">\(Y^{-1}\le X^{-1}\)</span> and <span class="math" data-tex="\(\sqrt X\le\sqrt Y\)">\(\sqrt X\le\sqrt Y\)</span>. The first statement holds for positive definite self-adjoint operators on any finite-dimensional inner product space.</p>
+<p><em>Proof.</em> Conjugation preserves the order, so <span class="math" data-tex="\(I\le X^{-1/2}YX^{-1/2}\)">\(I\le X^{-1/2}YX^{-1/2}\)</span>; the inverse of a positive definite matrix that is at least <span class="math" data-tex="\(I\)">\(I\)</span> is at most <span class="math" data-tex="\(I\)">\(I\)</span>, so <span class="math" data-tex="\(X^{1/2}Y^{-1}X^{1/2}\le I\)">\(X^{1/2}Y^{-1}X^{1/2}\le I\)</span>, and conjugating back gives <span class="math" data-tex="\(Y^{-1}\le X^{-1}\)">\(Y^{-1}\le X^{-1}\)</span>. For <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, the substitution <span class="math" data-tex="\(t=xs^2\)">\(t=xs^2\)</span> gives <span class="math" data-tex="\(\int_0^\infty t^{-1/2}(x+t)^{-1}\,dt=\pi/\sqrt x\)">\(\int_0^\infty t^{-1/2}(x+t)^{-1}\,dt=\pi/\sqrt x\)</span>, hence
+<span class="math math-display" data-tex="\[
+\sqrt x=\frac1\pi\int_0^\infty\Bigl(1-\frac t{x+t}\Bigr)\frac{dt}{\sqrt t},
+\]">\[
+\sqrt x=\frac1\pi\int_0^\infty\Bigl(1-\frac t{x+t}\Bigr)\frac{dt}{\sqrt t},
+\]</span>
+and applying this to the eigenvalues,
+<span class="math math-display" data-tex="\[
+\sqrt X=\frac1\pi\int_0^\infty\bigl(I-t(X+tI)^{-1}\bigr)\frac{dt}{\sqrt t}.
+\]">\[
+\sqrt X=\frac1\pi\int_0^\infty\bigl(I-t(X+tI)^{-1}\bigr)\frac{dt}{\sqrt t}.
+\]</span>
+Since <span class="math" data-tex="\((X+tI)^{-1}\ge(Y+tI)^{-1}\)">\((X+tI)^{-1}\ge(Y+tI)^{-1}\)</span> by the first statement, the integrand for <span class="math" data-tex="\(X\)">\(X\)</span> is at most the one for <span class="math" data-tex="\(Y\)">\(Y\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3</strong> (order comparison). Let <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> be positive semidefinite, <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span> and <span class="math" data-tex="\(P\le aQ\)">\(P\le aQ\)</span>. Then every symmetric <span class="math" data-tex="\(K\)">\(K\)</span> supported on <span class="math" data-tex="\(P\)">\(P\)</span> is supported on <span class="math" data-tex="\(Q\)">\(Q\)</span>, and
+<span class="math math-display" data-tex="\[
+b_P(K)\ge a^{-1/2}\,b_Q(K).
+\]">\[
+b_P(K)\ge a^{-1/2}\,b_Q(K).
+\]</span></p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(Qx=0\)">\(Qx=0\)</span>, then <span class="math" data-tex="\(0\le\langle Px,x\rangle\le a\langle Qx,x\rangle=0\)">\(0\le\langle Px,x\rangle\le a\langle Qx,x\rangle=0\)</span>, so <span class="math" data-tex="\(Px=0\)">\(Px=0\)</span>; thus <span class="math" data-tex="\(\ker Q\subseteq\ker P\)">\(\ker Q\subseteq\ker P\)</span>, which gives the first statement.</p>
+<p>Suppose first that <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> are positive definite. By Lemma 2.2, <span class="math" data-tex="\(\sqrt P\le\sqrt{aQ}=\sqrt a\sqrt Q\)">\(\sqrt P\le\sqrt{aQ}=\sqrt a\sqrt Q\)</span>. For a positive semidefinite <span class="math" data-tex="\(A\)">\(A\)</span>, the quadratic form of <span class="math" data-tex="\(\mathcal L_A\)">\(\mathcal L_A\)</span> is <span class="math" data-tex="\(\langle X,\mathcal L_AX\rangle=\operatorname{tr}(X^{\mathsf T}AX)+\operatorname{tr}(XAX^{\mathsf T})\)">\(\langle X,\mathcal L_AX\rangle=\operatorname{tr}(X^{\mathsf T}AX)+\operatorname{tr}(XAX^{\mathsf T})\)</span>, which is nonnegative and increasing in <span class="math" data-tex="\(A\)">\(A\)</span>. Hence <span class="math" data-tex="\(\mathcal L_{\sqrt P}\le\sqrt a\,\mathcal L_{\sqrt Q}\)">\(\mathcal L_{\sqrt P}\le\sqrt a\,\mathcal L_{\sqrt Q}\)</span> as operators on the space of matrices, and by Lemma 2.2, <span class="math" data-tex="\(\mathcal L_{\sqrt P}^{-1}\ge a^{-1/2}\mathcal L_{\sqrt Q}^{-1}\)">\(\mathcal L_{\sqrt P}^{-1}\ge a^{-1/2}\mathcal L_{\sqrt Q}^{-1}\)</span>. The formula <span class="math" data-tex="\(b_P(K)=\frac32\langle K,\mathcal L_{\sqrt P}^{-1}K\rangle\)">\(b_P(K)=\frac32\langle K,\mathcal L_{\sqrt P}^{-1}K\rangle\)</span> of Lemma 2.1 gives the inequality.</p>
+<p>In general, <span class="math" data-tex="\(P+\eta I\le a(Q+\eta I)\)">\(P+\eta I\le a(Q+\eta I)\)</span> for <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, as <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span>. In an eigenbasis of <span class="math" data-tex="\(P\)">\(P\)</span> on the whole space, the entries of <span class="math" data-tex="\(K\)">\(K\)</span> in rows or columns belonging to <span class="math" data-tex="\(\ker P\)">\(\ker P\)</span> vanish, so <span class="math" data-tex="\(b_{P+\eta I}(K)\to b_P(K)\)">\(b_{P+\eta I}(K)\to b_P(K)\)</span> as <span class="math" data-tex="\(\eta\to0\)">\(\eta\to0\)</span>; likewise <span class="math" data-tex="\(b_{Q+\eta I}(K)\to b_Q(K)\)">\(b_{Q+\eta I}(K)\to b_Q(K)\)</span>, since <span class="math" data-tex="\(K\)">\(K\)</span> is supported on <span class="math" data-tex="\(Q\)">\(Q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.4</strong> (midpoint gap). Let <span class="math" data-tex="\(T\)">\(T\)</span> be positive semidefinite and <span class="math" data-tex="\(U\)">\(U\)</span> symmetric with <span class="math" data-tex="\(-T\le U\le T\)">\(-T\le U\le T\)</span>. Then <span class="math" data-tex="\(U\)">\(U\)</span> is supported on <span class="math" data-tex="\(T\)">\(T\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{\Phi(T+U)+\Phi(T-U)}2-\Phi(T)\\
+&amp;\quad\ge\frac{b_T(U)}{2\sqrt2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{\Phi(T+U)+\Phi(T-U)}2-\Phi(T)\\
+&amp;\quad\ge\frac{b_T(U)}{2\sqrt2}.
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(Tx=0\)">\(Tx=0\)</span>, the positive semidefinite matrices <span class="math" data-tex="\(T\pm U\)">\(T\pm U\)</span> have quadratic forms vanishing at <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\((T\pm U)x=0\)">\((T\pm U)x=0\)</span> and <span class="math" data-tex="\(Ux=0\)">\(Ux=0\)</span>. If <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, all terms vanish. For <span class="math" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+(1-|t|)T\le T+tU\le(1+|t|)T\le2T,
+\]">\[
+(1-|t|)T\le T+tU\le(1+|t|)T\le2T,
+\]</span>
+so <span class="math" data-tex="\(T+tU\)">\(T+tU\)</span> is positive semidefinite with the same kernel as <span class="math" data-tex="\(T\)">\(T\)</span>. By Lemmas 2.1 and 2.3 (with <span class="math" data-tex="\(a=2\)">\(a=2\)</span>), <span class="math" data-tex="\(f(t)=\Phi(T+tU)\)">\(f(t)=\Phi(T+tU)\)</span> has <span class="math" data-tex="\(f&#x27;&#x27;(t)=b_{T+tU}(U)\ge2^{-1/2}b_T(U)\)">\(f&#x27;&#x27;(t)=b_{T+tU}(U)\ge2^{-1/2}b_T(U)\)</span> on <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>. So <span class="math" data-tex="\(f(t)-b_T(U)t^2/(2\sqrt2)\)">\(f(t)-b_T(U)t^2/(2\sqrt2)\)</span> is convex on <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> and continuous on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, and its midpoint inequality at <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> is the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-triangular-trace-estimate">3. A triangular trace estimate</h2>
+<p>Let <span class="math" data-tex="\(H_0,H_1,H_2\)">\(H_0,H_1,H_2\)</span> be finite-dimensional real inner product spaces, indices modulo <span class="math" data-tex="\(3\)">\(3\)</span>, and <span class="math" data-tex="\(W_v:H_{v+1}\to H_v\)">\(W_v:H_{v+1}\to H_v\)</span> linear maps. The <em>row star</em> at <span class="math" data-tex="\(v\)">\(v\)</span> is the map <span class="math" data-tex="\(R_v=[\,W_v\ \ W_{v-1}^{\mathsf T}\,]\)">\(R_v=[\,W_v\ \ W_{v-1}^{\mathsf T}\,]\)</span> from <span class="math" data-tex="\(H_{v+1}\oplus H_{v-1}\)">\(H_{v+1}\oplus H_{v-1}\)</span> to <span class="math" data-tex="\(H_v\)">\(H_v\)</span>, and <span class="math" data-tex="\(T_v=R_v^{\mathsf T}R_v\)">\(T_v=R_v^{\mathsf T}R_v\)</span>.
+The matrices <span class="math" data-tex="\(R_v^{\mathsf T}R_v\)">\(R_v^{\mathsf T}R_v\)</span> and <span class="math" data-tex="\(R_vR_v^{\mathsf T}\)">\(R_vR_v^{\mathsf T}\)</span> have the same nonzero eigenvalues with multiplicities, so they have the same energy <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p><strong>Proposition 2.5</strong> (mixed trace estimate). Let <span class="math" data-tex="\(D_v\)">\(D_v\)</span> be symmetric on <span class="math" data-tex="\(H_v\)">\(H_v\)</span> with <span class="math" data-tex="\(\|D_v\|\le1\)">\(\|D_v\|\le1\)</span>, and <span class="math" data-tex="\(U_v=R_v^{\mathsf T}D_vR_v\)">\(U_v=R_v^{\mathsf T}D_vR_v\)</span>. Then <span class="math" data-tex="\(U_v\)">\(U_v\)</span> is supported on <span class="math" data-tex="\(T_v\)">\(T_v\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl|\operatorname{tr}(D_0W_0D_1W_1D_2W_2)\bigr|\\
+&amp;\quad\le\frac53\sum_{v=0}^2b_{T_v}(U_v).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl|\operatorname{tr}(D_0W_0D_1W_1D_2W_2)\bigr|\\
+&amp;\quad\le\frac53\sum_{v=0}^2b_{T_v}(U_v).
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\ker T_v=\ker R_v\)">\(\ker T_v=\ker R_v\)</span>, and <span class="math" data-tex="\(U_v\)">\(U_v\)</span> vanishes there.</p>
+<p><em>A common quadratic form.</em> On <span class="math" data-tex="\(H=H_0\oplus H_1\oplus H_2\)">\(H=H_0\oplus H_1\oplus H_2\)</span> let
+<span class="math math-display" data-tex="\[
+M=\begin{pmatrix}0&amp;W_0&amp;W_2^{\mathsf T}\\W_0^{\mathsf T}&amp;0&amp;W_1\\W_2&amp;W_1^{\mathsf T}&amp;0\end{pmatrix}
+\]">\[
+M=\begin{pmatrix}0&amp;W_0&amp;W_2^{\mathsf T}\\W_0^{\mathsf T}&amp;0&amp;W_1\\W_2&amp;W_1^{\mathsf T}&amp;0\end{pmatrix}
+\]</span>
+and <span class="math" data-tex="\(D=\operatorname{diag}(D_0,D_1,D_2)\)">\(D=\operatorname{diag}(D_0,D_1,D_2)\)</span>, both symmetric, with <span class="math" data-tex="\(\|D\|\le1\)">\(\|D\|\le1\)</span>. Let <span class="math" data-tex="\(P_v\)">\(P_v\)</span> be the orthogonal projection onto <span class="math" data-tex="\(H_v\)">\(H_v\)</span>, and <span class="math" data-tex="\(A_v=MP_vM\)">\(A_v=MP_vM\)</span>, <span class="math" data-tex="\(K_v=MP_vDM\)">\(K_v=MP_vDM\)</span>. The only nonzero block row of <span class="math" data-tex="\(P_vM\)">\(P_vM\)</span> is <span class="math" data-tex="\(R_v\)">\(R_v\)</span>, with its blocks placed according to the vertices, so after a permutation of blocks and extension by zero, <span class="math" data-tex="\(A_v\)">\(A_v\)</span> is <span class="math" data-tex="\(T_v\)">\(T_v\)</span> and <span class="math" data-tex="\(K_v\)">\(K_v\)</span> is <span class="math" data-tex="\(U_v\)">\(U_v\)</span>. As <span class="math" data-tex="\(P_vD=DP_v\)">\(P_vD=DP_v\)</span>, <span class="math" data-tex="\(K_v\)">\(K_v\)</span> is symmetric, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\le A_v&amp;\le\sum_uA_u=M^2,\\
+\sum_vK_v&amp;=MDM .
+\end{aligned}
+\]">\[
+\begin{aligned}
+0\le A_v&amp;\le\sum_uA_u=M^2,\\
+\sum_vK_v&amp;=MDM .
+\end{aligned}
+\]</span>
+By Lemma 2.3 with <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, and since <span class="math" data-tex="\(b_{M^2}\)">\(b_{M^2}\)</span> is a positive semidefinite quadratic form, for which <span class="math" data-tex="\(b(K_0+K_1+K_2)\le3\sum_vb(K_v)\)">\(b(K_0+K_1+K_2)\le3\sum_vb(K_v)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal E:=\sum_vb_{T_v}(U_v)=\sum_vb_{A_v}(K_v)\\
+&amp;\quad\ge\sum_vb_{M^2}(K_v)\ge\tfrac13b_{M^2}(MDM).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal E:=\sum_vb_{T_v}(U_v)=\sum_vb_{A_v}(K_v)\\
+&amp;\quad\ge\sum_vb_{M^2}(K_v)\ge\tfrac13b_{M^2}(MDM).
+\end{aligned}
+\]</span></p>
+<p><em>The cubic trace.</em> Choose an orthonormal eigenbasis of <span class="math" data-tex="\(M\)">\(M\)</span> with eigenvalues <span class="math" data-tex="\(m_i\)">\(m_i\)</span>, ordered so that <span class="math" data-tex="\(q_i=|m_i|\)">\(q_i=|m_i|\)</span> is nonincreasing, and write <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> for the entries of <span class="math" data-tex="\(D\)">\(D\)</span> in it. Then <span class="math" data-tex="\((MDM)_{ij}=m_im_jD_{ij}\)">\((MDM)_{ij}=m_im_jD_{ij}\)</span>, and the square roots of the eigenvalues of <span class="math" data-tex="\(M^2\)">\(M^2\)</span> are the <span class="math" data-tex="\(q_i\)">\(q_i\)</span>, so
+<span class="math math-display" data-tex="\[
+\mathcal E\ge\frac12Q,\qquad Q=\sum_{q_i+q_j&gt;0}\frac{q_i^2q_j^2}{q_i+q_j}D_{ij}^2 .
+\]">\[
+\mathcal E\ge\frac12Q,\qquad Q=\sum_{q_i+q_j&gt;0}\frac{q_i^2q_j^2}{q_i+q_j}D_{ij}^2 .
+\]</span>
+Put <span class="math" data-tex="\(A_i=q_i^3D_{ii}^2\)">\(A_i=q_i^3D_{ii}^2\)</span>, <span class="math" data-tex="\(E_i=q_i\sum_{j&gt;i}q_j^2D_{ij}^2\)">\(E_i=q_i\sum_{j&gt;i}q_j^2D_{ij}^2\)</span>, <span class="math" data-tex="\(A=\sum_iA_i\)">\(A=\sum_iA_i\)</span> and <span class="math" data-tex="\(E=\sum_iE_i\)">\(E=\sum_iE_i\)</span>. The diagonal terms of <span class="math" data-tex="\(Q\)">\(Q\)</span> add up to <span class="math" data-tex="\(A/2\)">\(A/2\)</span>, and for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> the two terms <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>, <span class="math" data-tex="\((j,i)\)">\((j,i)\)</span> add up to <span class="math" data-tex="\(2q_i^2q_j^2D_{ij}^2/(q_i+q_j)\ge q_iq_j^2D_{ij}^2\)">\(2q_i^2q_j^2D_{ij}^2/(q_i+q_j)\ge q_iq_j^2D_{ij}^2\)</span>, because <span class="math" data-tex="\(q_i\ge q_j\)">\(q_i\ge q_j\)</span>; so <span class="math" data-tex="\(Q\ge A/2+E\)">\(Q\ge A/2+E\)</span>.</p>
+<p>Expand
+<span class="math math-display" data-tex="\[
+\operatorname{tr}\bigl((DM)^3\bigr)=\sum_{i,j,k}m_im_jm_kD_{ij}D_{jk}D_{ki},
+\]">\[
+\operatorname{tr}\bigl((DM)^3\bigr)=\sum_{i,j,k}m_im_jm_kD_{ij}D_{jk}D_{ki},
+\]</span>
+and sort the terms by the smallest index <span class="math" data-tex="\(i\)">\(i\)</span> among <span class="math" data-tex="\(\{i,j,k\}\)">\(\{i,j,k\}\)</span> and the number of times it occurs.</p>
+<ul>
+<li><em>Once.</em> The three positions of <span class="math" data-tex="\(i\)">\(i\)</span> contribute equally, giving <span class="math" data-tex="\(3m_i\sum_{j,k&gt;i}x_jD_{jk}x_k\)">\(3m_i\sum_{j,k&gt;i}x_jD_{jk}x_k\)</span> with <span class="math" data-tex="\(x_j=m_jD_{ji}\)">\(x_j=m_jD_{ji}\)</span>. The compression of <span class="math" data-tex="\(D\)">\(D\)</span> to the indices larger than <span class="math" data-tex="\(i\)">\(i\)</span> is a contraction, so this is at most <span class="math" data-tex="\(3q_i\sum_{j&gt;i}m_j^2D_{ij}^2=3E_i\)">\(3q_i\sum_{j&gt;i}m_j^2D_{ij}^2=3E_i\)</span> in absolute value.</li>
+<li><em>Twice.</em> The contribution is <span class="math" data-tex="\(3m_i^2D_{ii}\sum_{j&gt;i}m_jD_{ij}^2\)">\(3m_i^2D_{ii}\sum_{j&gt;i}m_jD_{ij}^2\)</span>. The rows of <span class="math" data-tex="\(D\)">\(D\)</span> have norm at most <span class="math" data-tex="\(1\)">\(1\)</span>, so by the Cauchy–Schwarz inequality its absolute value is at most <span class="math" data-tex="\(3q_i^2|D_{ii}|(\sum_{j&gt;i}q_j^2D_{ij}^2)^{1/2}\)">\(3q_i^2|D_{ii}|(\sum_{j&gt;i}q_j^2D_{ij}^2)^{1/2}\)</span>, which is <span class="math" data-tex="\(3\sqrt{A_iE_i}\)">\(3\sqrt{A_iE_i}\)</span>.</li>
+<li><em>Three times.</em> <span class="math" data-tex="\(|m_i^3D_{ii}^3|\le A_i\)">\(|m_i^3D_{ii}^3|\le A_i\)</span>, as <span class="math" data-tex="\(|D_{ii}|\le1\)">\(|D_{ii}|\le1\)</span>.</li>
+</ul>
+<p>Summing, and using <span class="math" data-tex="\(\sum_i\sqrt{A_iE_i}\le\sqrt{AE}\le(A+E)/2\)">\(\sum_i\sqrt{A_iE_i}\le\sqrt{AE}\le(A+E)/2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bigl|\operatorname{tr}((DM)^3)\bigr|&amp;\le A+3E+3\sqrt{AE}\\
+&amp;\le\tfrac52A+\tfrac92E\le5Q .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\bigl|\operatorname{tr}((DM)^3)\bigr|&amp;\le A+3E+3\sqrt{AE}\\
+&amp;\le\tfrac52A+\tfrac92E\le5Q .
+\end{aligned}
+\]</span></p>
+<p><em>Back to the triangle.</em> <span class="math" data-tex="\(M\)">\(M\)</span> has zero diagonal blocks, so a nonzero term of <span class="math" data-tex="\(\operatorname{tr}((DM)^3)\)">\(\operatorname{tr}((DM)^3)\)</span> in block form runs once around the triangle of vertices. The three starting vertices in one direction give <span class="math" data-tex="\(\tau=\operatorname{tr}(D_0W_0D_1W_1D_2W_2)\)">\(\tau=\operatorname{tr}(D_0W_0D_1W_1D_2W_2)\)</span> each, by cyclicity of the trace, and the other direction gives the trace of the transpose, again <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. So <span class="math" data-tex="\(\operatorname{tr}((DM)^3)=6\tau\)">\(\operatorname{tr}((DM)^3)=6\tau\)</span>, and <span class="math" data-tex="\(6|\tau|\le5Q\le10\mathcal E\)">\(6|\tau|\le5Q\le10\mathcal E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constant does not depend on the dimensions of <span class="math" data-tex="\(H_0,H_1,H_2\)">\(H_0,H_1,H_2\)</span>; this is what allows arbitrarily fine step functions in <a href="energy-increase-and-telescoping.html">Energy increase and telescoping</a>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>2.1</strong> (easy). For positive definite <span class="math" data-tex="\(P=\operatorname{diag}(p_1,p_2)\)">\(P=\operatorname{diag}(p_1,p_2)\)</span> and <span class="math" data-tex="\(K=\operatorname{diag}(k_1,k_2)\)">\(K=\operatorname{diag}(k_1,k_2)\)</span>, compute <span class="math" data-tex="\(\frac{d^2}{dt^2}\Phi(P+tK)\)">\(\frac{d^2}{dt^2}\Phi(P+tK)\)</span> at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> directly and compare with <span class="math" data-tex="\(b_P(K)\)">\(b_P(K)\)</span>.</p>
+<p><strong>2.2</strong> (easy). Show that <span class="math" data-tex="\(\Phi(T)\le(\operatorname{tr}T)^{3/2}\)">\(\Phi(T)\le(\operatorname{tr}T)^{3/2}\)</span> for positive semidefinite <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><strong>2.3</strong> (medium). Show that <span class="math" data-tex="\(X\mapsto X^2\)">\(X\mapsto X^2\)</span> is not monotone: for <span class="math" data-tex="\(X=\bigl(\begin{smallmatrix}1&amp;0\\0&amp;0\end{smallmatrix}\bigr)\)">\(X=\bigl(\begin{smallmatrix}1&amp;0\\0&amp;0\end{smallmatrix}\bigr)\)</span> and <span class="math" data-tex="\(Y=\bigl(\begin{smallmatrix}2&amp;1\\1&amp;1\end{smallmatrix}\bigr)\)">\(Y=\bigl(\begin{smallmatrix}2&amp;1\\1&amp;1\end{smallmatrix}\bigr)\)</span>, <span class="math" data-tex="\(0\le X\le Y\)">\(0\le X\le Y\)</span> but <span class="math" data-tex="\(X^2\not\le Y^2\)">\(X^2\not\le Y^2\)</span>.</p>
+<p><strong>2.4</strong> (medium). Let <span class="math" data-tex="\(H_0,H_1,H_2\)">\(H_0,H_1,H_2\)</span> be one-dimensional, <span class="math" data-tex="\(W_v=(w_v)\)">\(W_v=(w_v)\)</span> and <span class="math" data-tex="\(D_v=(d_v)\)">\(D_v=(d_v)\)</span> with <span class="math" data-tex="\(|d_v|\le1\)">\(|d_v|\le1\)</span>. Show that <span class="math" data-tex="\(b_{T_v}(U_v)=\frac34d_v^2(w_v^2+w_{v-1}^2)^{3/2}\)">\(b_{T_v}(U_v)=\frac34d_v^2(w_v^2+w_{v-1}^2)^{3/2}\)</span>, and check Proposition 2.5 for <span class="math" data-tex="\(w_v=d_v=1\)">\(w_v=d_v=1\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>2.1.</strong> <span class="math" data-tex="\(\Phi(P+tK)\)">\(\Phi(P+tK)\)</span> is <span class="math" data-tex="\((p_1+tk_1)^{3/2}+(p_2+tk_2)^{3/2}\)">\((p_1+tk_1)^{3/2}+(p_2+tk_2)^{3/2}\)</span>, with second derivative <span class="math" data-tex="\(\frac34(k_1^2p_1^{-1/2}+k_2^2p_2^{-1/2})\)">\(\frac34(k_1^2p_1^{-1/2}+k_2^2p_2^{-1/2})\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span>. The formula gives <span class="math" data-tex="\(b_P(K)=\frac32\bigl(k_1^2/(2\sqrt{p_1})+k_2^2/(2\sqrt{p_2})\bigr)\)">\(b_P(K)=\frac32\bigl(k_1^2/(2\sqrt{p_1})+k_2^2/(2\sqrt{p_2})\bigr)\)</span>, the same.</p>
+<p><strong>2.2.</strong> With eigenvalues <span class="math" data-tex="\(t_i\ge0\)">\(t_i\ge0\)</span> and <span class="math" data-tex="\(s=\sum_it_i&gt;0\)">\(s=\sum_it_i&gt;0\)</span>, since <span class="math" data-tex="\(t_i/s\le1\)">\(t_i/s\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_it_i^{3/2}&amp;=s^{3/2}\sum_i(t_i/s)^{3/2}\\
+&amp;\le s^{3/2}\sum_it_i/s=s^{3/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_it_i^{3/2}&amp;=s^{3/2}\sum_i(t_i/s)^{3/2}\\
+&amp;\le s^{3/2}\sum_it_i/s=s^{3/2}.
+\end{aligned}
+\]</span></p>
+<p><strong>2.3.</strong> <span class="math" data-tex="\(Y-X=\bigl(\begin{smallmatrix}1&amp;1\\1&amp;1\end{smallmatrix}\bigr)\ge0\)">\(Y-X=\bigl(\begin{smallmatrix}1&amp;1\\1&amp;1\end{smallmatrix}\bigr)\ge0\)</span>, and <span class="math" data-tex="\(Y^2-X^2=\bigl(\begin{smallmatrix}4&amp;3\\3&amp;2\end{smallmatrix}\bigr)\)">\(Y^2-X^2=\bigl(\begin{smallmatrix}4&amp;3\\3&amp;2\end{smallmatrix}\bigr)\)</span> has determinant <span class="math" data-tex="\(-1&lt;0\)">\(-1&lt;0\)</span>.</p>
+<p><strong>2.4.</strong> <span class="math" data-tex="\(R_v=(w_v,w_{v-1})\)">\(R_v=(w_v,w_{v-1})\)</span>, so <span class="math" data-tex="\(T_v=R_v^{\mathsf T}R_v\)">\(T_v=R_v^{\mathsf T}R_v\)</span> has the single positive eigenvalue <span class="math" data-tex="\(t_v=w_v^2+w_{v-1}^2\)">\(t_v=w_v^2+w_{v-1}^2\)</span> with unit eigenvector <span class="math" data-tex="\(R_v^{\mathsf T}/\sqrt{t_v}\)">\(R_v^{\mathsf T}/\sqrt{t_v}\)</span>, and <span class="math" data-tex="\(U_v=d_vT_v\)">\(U_v=d_vT_v\)</span> has the entry <span class="math" data-tex="\(d_vt_v\)">\(d_vt_v\)</span> there. So <span class="math" data-tex="\(b_{T_v}(U_v)=\frac32d_v^2t_v^2/(2\sqrt{t_v})=\frac34d_v^2t_v^{3/2}\)">\(b_{T_v}(U_v)=\frac32d_v^2t_v^2/(2\sqrt{t_v})=\frac34d_v^2t_v^{3/2}\)</span>. For <span class="math" data-tex="\(w_v=d_v=1\)">\(w_v=d_v=1\)</span>, <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span> and <span class="math" data-tex="\(\frac53\sum_vb_{T_v}(U_v)=\frac53\cdot3\cdot\frac34\cdot2^{3/2}\)">\(\frac53\sum_vb_{T_v}(U_v)=\frac53\cdot3\cdot\frac34\cdot2^{3/2}\)</span>, which is <span class="math" data-tex="\(15/\sqrt2\approx10.6\)">\(15/\sqrt2\approx10.6\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-D] OpenAI, <em>An <span class="math" data-tex="\(L^3\)">\(L^3\)</span> bound for the dyadic triangular Hilbert form</em>, OpenAI Math Release preprint, 5 October 2026, Sections 2 and 3. https://github.com/openai/math/tree/main/preprints/An-L3-bound-for-the-dyadic-triangular-Hilbert-form-October-5-2026</li>
+<li>[OpenAI-M] OpenAI, <em>The maximal triangular Hilbert transform at the symmetric point</em>, OpenAI Math Release preprint, 24 September 2026, Sections 2 and 3. https://github.com/openai/math/tree/main/preprints/The-maximal-triangular-Hilbert-transform-at-the-symmetric-point-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

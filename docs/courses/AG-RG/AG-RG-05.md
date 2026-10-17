@@ -1,6 +1,6 @@
 # Pinnings and the classification of split reductive groups
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original text: public domain (CC0). The one-dimensional affine-open lemma follows the Stacks Project's proof; see History.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original text: public domain (CC0).*
 
 The integral root datum remembers a reductive group up to isomorphism. A pinning removes the conjugation ambiguity and makes this assertion functorial. The main work is to show that the multiplication of root groups is forced by the datum, including over rings in which two or three vanish. We first do those calculations and glue them across the open cell. We then construct groups in characteristic zero and pass to an integral model.
 
@@ -1307,27 +1307,39 @@ For \(\operatorname{SL}_n\), \(X=\mathbf Z^n/\mathbf Z(1,\ldots,1)\) and \(X^\ve
 
 For type \(C_n\), the simply connected symplectic group has character lattice \(\mathbf Z^n\), roots \(\pm e_i\pm e_j,\pm2e_i\), and coroots \(\pm e_i\pm e_j,\pm e_i\). Its dual datum is the adjoint datum of type \(B_n\), the split odd orthogonal group. In characteristic two this notation means the smooth split reductive group of that datum; a naive odd-dimensional bilinear-form stabilizer need not be the correct smooth group scheme. Both assertions about dual groups concern their characteristic-zero complex groups.
 
-## 12. Exercises and solutions
+## 12. Exercises
 
 **Exercise 1 (easy).** Write the pinning, coroot and simple Weyl representative of \(\operatorname{SL}_2\), and check its square.
 
-**Solution.** Take \(T=\{\operatorname{diag}(z,z^{-1})\}\), the upper triangular Borel, and \(E_\alpha=E_{12}\). Its paired negative frame is \(E_{21}\), its coroot is \(z\mapsto\operatorname{diag}(z,z^{-1})\), and (1.1) gives \(n_\alpha=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\). The square is \(-I=\alpha^\vee(-1)\). The same matrix identity holds over any ring.
-
 **Exercise 2 (medium).** Verify that the data of \(\operatorname{SL}_n\) and \(\operatorname{PGL}_n\) are dual.
-
-**Solution.** A character of the determinant-one diagonal torus is a monomial modulo the relation \(\prod t_i=1\), giving \(X_{\mathrm{SL}}=\mathbf Z^n/\mathbf Z(1,\ldots,1)\). A cocharacter must have \(\sum a_i=0\). In the scalar quotient torus, a character is a monomial trivial on scalars, so has exponent sum zero, and its cocharacter lattice is the quotient by the scalar vector. The roots and coroots in both descriptions are the differences of the corresponding basis vectors. Exchanging the two lattices therefore exchanges the full data, not just their common \(A_{n-1}\) root system.
 
 **Exercise 3 (medium).** Verify the duality between the symplectic and adjoint odd orthogonal data, and explain which root becomes long.
 
-**Solution.** The symplectic torus is \(\operatorname{diag}(t_1,\ldots,t_n,t_1^{-1},\ldots,t_n^{-1})\), with character lattice \(\mathbf Z^n\). Its long root \(2e_i\) has coroot \(e_i\), while \(e_i\pm e_j\) has the same-coordinate coroot \(e_i\pm e_j\). The dual roots are therefore the \(B_n\) roots \(e_i,e_i\pm e_j\). Its coroot corresponding to \(e_i\) is \(2e_i\). The lattice is the root lattice of \(B_n\), so the dual group is adjoint. A long \(C_n\) root becomes a short \(B_n\) root; duality reverses the length ratio. The rank-two roots-and-coroots figure in the preceding lesson shows this metric reversal explicitly.
-
 **Exercise 4 (hard).** Deduce that two globally split reductive groups of the same constant root datum over a nonempty scheme are isomorphic. Is the isomorphism canonical without pinnings?
-
-**Solution.** Choose positive systems corresponding under the datum isomorphism, and choose frames in their globally trivial simple root lines. Theorem 5.1 gives a unique isomorphism preserving these pinnings. Forgetting the chosen frames gives an isomorphism of the original groups. It need not be unique: conjugation by an element of the adjoint torus can scale the frames while preserving the datum. For example \(\operatorname{SL}_2\) admits nontrivial diagonal conjugations.
 
 **Exercise 5 (medium).** In \(\operatorname{SL}_3\), show that a product using each simple reflection once need not be the longest element, and that \(T[2]\) need not commute with a simple representative.
 
-**Solution.** The Weyl group is \(S_3\), with \(s_1=(12),s_2=(23)\). The product \(s_1s_2\) is a three-cycle and has length two, whereas \(w_0=s_1s_2s_1\) reverses the three positions and has length three. Over a field of characteristic different from two, take \(t=\operatorname{diag}(-1,-1,1)\). It belongs to \(T[2]\). Conjugation by the representative swapping positions two and three sends it to \(\operatorname{diag}(-1,1,-1)\), which is different. The representative does normalize \(T[2]\), since it acts on the torus by the corresponding permutation.
+## Solutions
+
+### Solution 1
+
+Take \(T=\{\operatorname{diag}(z,z^{-1})\}\), the upper triangular Borel, and \(E_\alpha=E_{12}\). Its paired negative frame is \(E_{21}\), its coroot is \(z\mapsto\operatorname{diag}(z,z^{-1})\), and (1.1) gives \(n_\alpha=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\). The square is \(-I=\alpha^\vee(-1)\). The same matrix identity holds over any ring.
+
+### Solution 2
+
+A character of the determinant-one diagonal torus is a monomial modulo the relation \(\prod t_i=1\), giving \(X_{\mathrm{SL}}=\mathbf Z^n/\mathbf Z(1,\ldots,1)\). A cocharacter must have \(\sum a_i=0\). In the scalar quotient torus, a character is a monomial trivial on scalars, so has exponent sum zero, and its cocharacter lattice is the quotient by the scalar vector. The roots and coroots in both descriptions are the differences of the corresponding basis vectors. Exchanging the two lattices therefore exchanges the full data, not just their common \(A_{n-1}\) root system.
+
+### Solution 3
+
+The symplectic torus is \(\operatorname{diag}(t_1,\ldots,t_n,t_1^{-1},\ldots,t_n^{-1})\), with character lattice \(\mathbf Z^n\). Its long root \(2e_i\) has coroot \(e_i\), while \(e_i\pm e_j\) has the same-coordinate coroot \(e_i\pm e_j\). The dual roots are therefore the \(B_n\) roots \(e_i,e_i\pm e_j\). Its coroot corresponding to \(e_i\) is \(2e_i\). The lattice is the root lattice of \(B_n\), so the dual group is adjoint. A long \(C_n\) root becomes a short \(B_n\) root; duality reverses the length ratio. The rank-two roots-and-coroots figure in the preceding lesson shows this metric reversal explicitly.
+
+### Solution 4
+
+Choose positive systems corresponding under the datum isomorphism, and choose frames in their globally trivial simple root lines. Theorem 5.1 gives a unique isomorphism preserving these pinnings. Forgetting the chosen frames gives an isomorphism of the original groups. It need not be unique: conjugation by an element of the adjoint torus can scale the frames while preserving the datum. For example \(\operatorname{SL}_2\) admits nontrivial diagonal conjugations.
+
+### Solution 5
+
+The Weyl group is \(S_3\), with \(s_1=(12),s_2=(23)\). The product \(s_1s_2\) is a three-cycle and has length two, whereas \(w_0=s_1s_2s_1\) reverses the three positions and has length three. Over a field of characteristic different from two, take \(t=\operatorname{diag}(-1,-1,1)\). It belongs to \(T[2]\). Conjugation by the representative swapping positions two and three sends it to \(\operatorname{diag}(-1,1,-1)\), which is different. The representative does normalize \(T[2]\), since it acts on the torus by the corresponding permutation.
 
 The course prerequisite guide records the exact supporting statements and full proof routes.
 
@@ -1341,10 +1353,8 @@ The course prerequisite guide records the exact supporting statements and full p
 
 The complete Lie proof route is [the preceding Lie lesson](AG-RG-S06.md): Theorem 1.A (ordered words), Section 5 (root geometry), Theorem 6.2 (rational Serre construction), Section 7 (finite absolutely irreducible highest-weight presentations), Theorem 4.2 (complete reducibility), and Proposition 3.3 (inner derivations). Lemma 6.1 above also gives the polynomial rank-one actions explicitly. The Weyl-group presentation for Sections 2 and 5 is proved in the preceding root-data lesson, Section 3. The group isomorphism theorem is proved in this lesson.
 
-The geometric prerequisites are likewise exact supporting lessons: [Flat quotient bootstrap](AG-RG-S07.md), Theorem 8.2, proving the algebraic-space quotient of an arbitrary-base flat locally finitely presented equivalence relation; [Zariski's Main Theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-MO/AG-MO-12.html), the open-into-finite factorization and the normal birational open-immersion consequence, proved in [Affine descent, Zariski Main and recognition of spaces](AG-RG-S04.md), Theorem D7.1 and Corollary D7.4; Limits of schemes and Noetherian approximation, spreading finite-presentation constructions and their affineness; [Quasi-coherent cohomology](AG-RG-S01.md), Sections 4–6 and 9, proving affine vanishing, the finite-cover and filtered-complex comparisons, arbitrary flat cohomology base change and the complete ideal-sheaf affine criterion. Section 9 of the present lesson also writes out the entire flat-base-change and one-dimensional affine-open proofs. The algebraic-space normalization proof used in Section 9 is present in the preceding rank-one lesson. These are supporting results, not substitutes for the integral group construction in Sections 7–10.
+The geometric prerequisites are likewise exact supporting lessons: [Flat quotient bootstrap](AG-RG-S07.md), Theorem 8.2, proving the algebraic-space quotient of an arbitrary-base flat locally finitely presented equivalence relation; [Zariski's Main Theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AG-MO/AG-MO-12.html), the open-into-finite factorization and the normal birational open-immersion consequence, proved in [Affine descent, Zariski Main and recognition of spaces](AG-RG-S04.md), Theorem D7.1 and Corollary D7.4; Limits of schemes and Noetherian approximation, spreading finite-presentation constructions and their affineness; [Quasi-coherent cohomology](AG-RG-S01.md), Sections 4–6 and 9, proving affine vanishing, the finite-cover and filtered-complex comparisons, arbitrary flat cohomology base change and the complete ideal-sheaf affine criterion. Section 9 of the present lesson also writes out the entire flat-base-change and one-dimensional affine-open proofs. The algebraic-space normalization proof used in Section 9 is present in the preceding rank-one lesson. These are supporting results, not substitutes for the integral group construction in Sections 7–10.
 
-## History
+## Source credit
 
-This lesson's exposition, group constructions, calculations, examples and solutions were written by GPT-6.1 Sol (OpenAI), Ultra setting, in October 2026, and are dedicated to the public domain under CC0.
-
-The one-dimensional affine-open lemma and its proof follow the Stacks authors' argument in *The Stacks Project*, *Varieties*, Tag 09N9, read through the AI Integrated Stacks Project English source edition on 1 October 2026 ([versioned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/varieties.tex)). The proof is explained for its use in the integral affineness argument. The Stacks Project itself is distributed under the GNU FDL 1.2 or later.
+The Stacks Project Authors, [Tag 09N9](https://stacks.math.columbia.edu/tag/09N9), with the [consulted varieties chapter](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/varieties.tex).

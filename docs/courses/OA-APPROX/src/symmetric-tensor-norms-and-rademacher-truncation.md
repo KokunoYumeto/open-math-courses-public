@@ -459,3 +459,49 @@ If \(M=0\), positivity makes every \(a_j,b_j\) zero, so \(u=0\) and one may take
 Gilles Pisier, [*Grothendieck's Theorem, past and present*, expanded UNCUT author version, 21 August 2013](https://webusers.imj-prg.fr/~gilles.pisier/grothendieck.UNCUT.pdf), Section 9, Lemma 9.2 and the real truncation proof of Theorem 9.1, printed pp.29–31 (PDF pp.31–33). The [arXiv:1101.4195v3 version](https://arxiv.org/pdf/1101.4195v3) contains the selected argument on printed pp.28–30 (PDF pp.30–32). These are distinct versions.
 
 The source supplies the real clipping and iterative coefficient-lift method. Its fourth-moment lemma is stated by reference, and its closing complex reduction is described without the full calculations. Here (9) is proved directly in operator order, (14) retains the double residual, and (C1)–(C3) retain the completed approximation error. The normalization gives \(27/16\), \(2/3\) and \(81/16\); those coefficients are not Pisier's Khintchine constants. The scalar calculus, order, norm-preserving extension and tensor completions used here are the precise local constructions linked above.
+
+
+## State squares and a quantitative final tolerance
+
+The state estimate in (5) can be obtained directly from a scalar quadratic. Let \(\Phi\) be the positive normalized extension to the forced unitization used above. Positivity makes \(\Phi(h)\) real for self-adjoint \(h\), because \(h\) is a difference of positive parts. Decomposing an arbitrary element into its real and imaginary parts therefore gives \(\Phi(x^*)=\overline{\Phi(x)}\). For \(u,v\) in that unitization put
+\[
+\alpha=\Phi(u^*u),\qquad \beta=\Phi(v^*v),\qquad z=\Phi(v^*u).
+\]
+For every complex \(t\), positivity gives
+\[
+0\le\Phi((u-tv)^*(u-tv))
+=\alpha-t\overline z-\overline t z+|t|^2\beta.
+\]
+If \(\beta>0\), taking \(t=z/\beta\) proves \(|z|^2\le\alpha\beta\). If \(\beta=0\) and \(z\ne0\), taking \(t=sz\) for sufficiently large positive real \(s\) makes the right side \(\alpha-2s|z|^2<0\), a contradiction. Thus the same inequality holds when a squared norm vanishes. Taking \(v=1\) gives \(|\Phi(u)|^2\le\Phi(u^*u)\). Applying it to \(u^*\) and averaging gives
+\[
+|\varphi(x)|^2\le\tfrac12\varphi(x^*x+xx^*)=\varphi(q(x)),\qquad x\in A.
+\]
+The restriction \(\varphi\) is the original state. This establishes the exact square estimate for every original-algebra element, with no identity required in \(A\). The real and complex functional extensions used to construct these states are proved in full in [Section 8.1](tensor-completion-injectivity-and-state-domination.md#8-1-the-precise-norming-functional-input); a freely accessible primary comparison is Jacob Shapiro, [*Functional Analysis*, MAT520, Fall 2025](https://web.math.princeton.edu/~shapiro/PDFs/teaching/MAT520_fall_2025/MAT520_Lecture_Notes.pdf), Theorems 4.4–4.5, pp. 36–37. The local construction includes both signs in the one-dimensional real extension, the chain argument, the zero bound and the complex phase estimate.
+
+There is also an explicit choice of the two parameters in (C3). For \(u\ne0\) and a requested \(\varepsilon>0\), take
+\[
+t=\min\left(\frac1{48},\frac{\varepsilon}{132\|u\|_\sigma}\right),\qquad \eta=\theta=t.
+\]
+These parameters are strictly positive. Writing
+\[
+D=\frac13-t-\left(\frac53+t\right)t,
+\]
+one has \(D\ge71/256>1/4\), by substituting the largest allowed \(t=1/48\) into this decreasing polynomial. In particular the admissibility condition \(\theta<(1-b)/(1+b)\) holds. The excess of the coefficient in (C3) over its limiting value is exactly
+\[
+\frac{(27/16+t)(1+t)}{D}-\frac{81}{16}
+=\frac{259t+97t^2}{16D}
+\le\frac{259+97/48}{4}\,t<66t.
+\]
+Multiplication by \(\|u\|_\sigma\) bounds the excess by \(\varepsilon/2<\varepsilon\). This proves the requested positive tolerance with actual admissible parameters; it asserts no uniqueness or attainment of an infimum. For \(u=0\), the zero lift gives every requested tolerance without dividing by its norm.
+
+## The finite affine example
+
+The segment in the figure has the parametrization
+\[
+y(t)=(-2+t,1-2t),\qquad 0\le t\le1.
+\]
+The nearest point of the nonnegative orthant to any real vector is obtained by replacing each negative coordinate by zero: in each coordinate this minimizes its squared distance on the nonnegative half-line, and the two squared distances add. For \(0\le t\le1/2\), the squared distance from \(y(t)\) to the orthant is therefore \((-2+t)^2\ge9/4\). For \(1/2\le t\le1\), it is
+\[
+(-2+t)^2+(1-2t)^2=5(t-4/5)^2+9/5.
+\]
+Thus the unique nearest pair is \(y_0=y(4/5)=(-6/5,-3/5)\) and \(z_0=(0,0)\), with squared distance \(9/5\). Its normal is \(w=z_0-y_0=(6/5,3/5)\). Direct multiplication gives \(w\cdot y(t)=-9/5=-\|w\|^2\) for every point of the segment, whereas \(w\cdot z\ge0\) for every \(z\) in the orthant. These are the exact separation inequalities displayed in the figure.

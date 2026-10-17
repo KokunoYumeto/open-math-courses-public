@@ -1,0 +1,403 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coend coalgebras and reconstruction from finite fibres</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="coend-coalgebras-and-reconstruction-from-finite-fibres">Coend coalgebras and reconstruction from finite fibres</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).</em></p>
+<p>Finite-dimensional observations can recover a category without a projective generator or a finite list of simple objects. The information they recover is naturally a coalgebra. We construct its matrix coefficients, prove that they recover every object and morphism, and identify the completed algebra of natural operators on the observations.</p>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be any field. Let <span class="math" data-tex="\(A\)">\(A\)</span> be an essentially small <span class="math" data-tex="\(k\)">\(k\)</span>-linear abelian category and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+F:A\longrightarrow\operatorname{Vect}^{\rm fd}_k
+\tag{0.1}
+\]">\[
+F:A\longrightarrow\operatorname{Vect}^{\rm fd}_k
+\tag{0.1}
+\]</span>
+<p>an exact faithful <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor. Choose a small equivalent category when forming sums over its objects and arrows. All vector spaces, diagrams and tensor products belong to fixed universes, and tensors are over <span class="math" data-tex="\(k\)">\(k\)</span>. No monoidal structure on <span class="math" data-tex="\(A\)">\(A\)</span> or on <span class="math" data-tex="\(F\)">\(F\)</span> is assumed.</p>
+<p>The result is a coalgebra <span class="math" data-tex="\(C_F\)">\(C_F\)</span>, together with equivalences over the indicated underlying vector-space functors:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+A\simeq\operatorname{Comod}^{\rm fd}(C_F),\\
+\operatorname{Ind}(A)\simeq\operatorname{Comod}(C_F).
+\end{gathered}
+\tag{0.2}
+\]">\[
+\begin{gathered}
+A\simeq\operatorname{Comod}^{\rm fd}(C_F),\\
+\operatorname{Ind}(A)\simeq\operatorname{Comod}(C_F).
+\end{gathered}
+\tag{0.2}
+\]</span>
+<p>Comodules are right comodules. Their coaction is <span class="math" data-tex="\(M\to M\otimes C_F\)">\(M\to M\otimes C_F\)</span>.</p>
+<p>Use <a href="ind-objects-through-their-elements.html#3-extend-a-functor-by-its-values-on-pieces">Ind-objects through their elements, Section 3</a>, and <a href="ind-abelian-categories-and-controlled-exact-sequences.html#2-recognition-and-universal-stage-computations">Two cokernels and abelian completion, Sections 2–6</a>, for the exact constant embedding, common arrow models, exact Ind extension and all small colimits. <a href="presentable-probes-and-accessible-adjoint-functors.html#7-colimit-preservation-gives-the-other-adjoint">Presentable probes, Section 7</a> proves the cocontinuous adjoint criterion used below. <a href="finite-subcoalgebras-and-profinite-algebra-reconstruction.html#1-finite-subcomodules-and-coefficient-coalgebras">Finite subcoalgebras, Section 1</a> proves the finite-subcomodule theorem. <a href="comodules-rational-modules-and-cofree-injective-resolutions.html#1-the-abelian-comodule-category">Comodules and rational modules, Sections 1–5</a> gives the abelian comodule category, finite-piece realization and actual cofree adjunction. These are proved prerequisites; reconstruction from <span class="math" data-tex="\(F\)">\(F\)</span> will be proved here. A classical account of the reconstruction statement is [EGNO], Section 1.10.</p>
+<h2 id="1-the-coefficient-quotient-and-its-coalgebra">1. The coefficient quotient and its coalgebra</h2>
+<p>Form the vector space</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+C_F=\left(\bigoplus_{a\in A}F(a)^*\otimes F(a)\right)/R,\\
+[\psi\otimes F(f)v]_b
+=[\psi F(f)\otimes v]_a,\\
+f:a\to b,\\
+v\in F(a),\quad\psi\in F(b)^*.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+C_F=\left(\bigoplus_{a\in A}F(a)^*\otimes F(a)\right)/R,\\
+[\psi\otimes F(f)v]_b
+=[\psi F(f)\otimes v]_a,\\
+f:a\to b,\\
+v\in F(a),\quad\psi\in F(b)^*.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(R\)">\(R\)</span> is the span of the differences in the second line; brackets name the corresponding quotient classes. This is a small sum with a small set of relations. Its universal property is that linear maps out of <span class="math" data-tex="\(C_F\)">\(C_F\)</span> are families of bilinear coefficient maps respecting exactly those relations.</p>
+<p>For a basis <span class="math" data-tex="\(e_i\)">\(e_i\)</span> of <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span>, with dual basis <span class="math" data-tex="\(e_i^*\)">\(e_i^*\)</span>, prescribe</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\Delta[\phi\otimes v]_a\\
+=\sum_i[\phi\otimes e_i]_a\otimes[e_i^*\otimes v]_a,\\
+\epsilon[\phi\otimes v]_a=\phi(v).
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\Delta[\phi\otimes v]_a\\
+=\sum_i[\phi\otimes e_i]_a\otimes[e_i^*\otimes v]_a,\\
+\epsilon[\phi\otimes v]_a=\phi(v).
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>The tensor <span class="math" data-tex="\(\sum_i e_i\otimes e_i^*\)">\(\sum_i e_i\otimes e_i^*\)</span> corresponds to the identity endomorphism of <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span>, so is basis independent. Thus the proposed coproduct is basis independent before imposing any relations.</p>
+<p><strong>Lemma 1.1.</strong> These formulas descend and make <span class="math" data-tex="\(C_F\)">\(C_F\)</span> a coalgebra.</p>
+<p><strong>Proof: the relations.</strong> Let <span class="math" data-tex="\(e_i\)">\(e_i\)</span> be a basis of <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span> and <span class="math" data-tex="\(w_j\)">\(w_j\)</span> a basis of <span class="math" data-tex="\(F(b)\)">\(F(b)\)</span>. In the coproduct of <span class="math" data-tex="\([\psi\otimes F(f)v]_b\)">\([\psi\otimes F(f)v]_b\)</span>, use (1.1) on the second tensor factor to obtain</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\sum_j[\psi\otimes w_j]_b
+\otimes[w_j^*F(f)\otimes v]_a.
+\tag{1.3}
+\]">\[
+\sum_j[\psi\otimes w_j]_b
+\otimes[w_j^*F(f)\otimes v]_a.
+\tag{1.3}
+\]</span>
+<p>In the coproduct of <span class="math" data-tex="\([\psi F(f)\otimes v]_a\)">\([\psi F(f)\otimes v]_a\)</span>, use (1.1) on the first factor, expand <span class="math" data-tex="\(F(f)e_i\)">\(F(f)e_i\)</span> in the <span class="math" data-tex="\(w_j\)">\(w_j\)</span>, and collect terms. The second factor becomes the functional <span class="math" data-tex="\(\sum_i w_j^*(F(f)e_i)e_i^*=w_j^*F(f)\)">\(\sum_i w_j^*(F(f)e_i)e_i^*=w_j^*F(f)\)</span>, so the result is (1.3). Thus the coproduct respects every generating relation. The two counit values both equal <span class="math" data-tex="\(\psi(F(f)v)\)">\(\psi(F(f)v)\)</span>, so it descends as well.</p>
+<p><strong>Proof: the identities.</strong> Applying either iterated coproduct to a coefficient gives, after renaming the two finite indices,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\sum_{i,j}[\phi\otimes e_i]_a\otimes
+[e_i^*\otimes e_j]_a\otimes\\
+[e_j^*\otimes v]_a.
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+\sum_{i,j}[\phi\otimes e_i]_a\otimes
+[e_i^*\otimes e_j]_a\otimes\\
+[e_j^*\otimes v]_a.
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>This proves coassociativity. Applying the counit in the first factor of (1.2) uses <span class="math" data-tex="\(\sum_i\phi(e_i)e_i^*=\phi\)">\(\sum_i\phi(e_i)e_i^*=\phi\)</span>; applying it in the second uses <span class="math" data-tex="\(\sum_i e_i e_i^*(v)=v\)">\(\sum_i e_i e_i^*(v)=v\)</span>. Both give the original coefficient. Since coefficients span the quotient, both counit identities hold. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a canonical coaction on every fibre:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+\rho_a(v)=\sum_i e_i\otimes[e_i^*\otimes v]_a.
+\tag{1.5}
+\]">\[
+\rho_a(v)=\sum_i e_i\otimes[e_i^*\otimes v]_a.
+\tag{1.5}
+\]</span>
+<p>It is basis independent by the same identity tensor. Equations (1.2) give its coassociativity and counit. For <span class="math" data-tex="\(f:a\to b\)">\(f:a\to b\)</span>, expanding in the two bases and using (1.1) gives <span class="math" data-tex="\((F(f)\otimes1)\rho_a=\rho_bF(f)\)">\((F(f)\otimes1)\rho_a=\rho_bF(f)\)</span>. Thus <span class="math" data-tex="\(F\)">\(F\)</span> lifts to a <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor <span class="math" data-tex="\(K_0:A\to\operatorname{Comod}^{\rm fd}(C_F)\)">\(K_0:A\to\operatorname{Comod}^{\rm fd}(C_F)\)</span>.</p>
+<p>The remaining task is to prove that this particular functor is an equivalence. Defining the coefficient coalgebra alone does not prove that assertion.</p>
+<h2 id="2-extend-the-observations-to-the-abelian-ind-category">2. Extend the observations to the abelian Ind category</h2>
+<p>Put <span class="math" data-tex="\(B=\operatorname{Ind}(A)\)">\(B=\operatorname{Ind}(A)\)</span>, with constant objects still denoted by <span class="math" data-tex="\(a\)">\(a\)</span>. Extend <span class="math" data-tex="\(F\)">\(F\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+U\left(\operatorname{colim}^{\rm form}_j a_j\right)
+=\operatorname{colim}_j F(a_j).
+\tag{2.1}
+\]">\[
+U\left(\operatorname{colim}^{\rm form}_j a_j\right)
+=\operatorname{colim}_j F(a_j).
+\tag{2.1}
+\]</span>
+<p>The Ind Hom formula defines it on every arrow by applying <span class="math" data-tex="\(F\)">\(F\)</span> to stage representatives and then using the target colimit. Eventual equality makes this independent of representatives, and the same formula preserves identities, composition and <span class="math" data-tex="\(k\)">\(k\)</span>-linear combinations. This is the extension proved in the Ind prerequisite. Its abelian common-arrow theorem and exactness of <span class="math" data-tex="\(F\)">\(F\)</span> make <span class="math" data-tex="\(U\)">\(U\)</span> exact: kernels and cokernels are computed at a common filtered stage, and the vector-space filtered colimit preserves those exact comparisons.</p>
+<p>It preserves small coproducts. A coproduct is the filtered colimit of finite sums of its entries, and <span class="math" data-tex="\(U\)">\(U\)</span> preserves those finite sums and filtered colimits. Together with cokernel preservation, the usual sum-and-relations construction of a diagram colimit shows that <span class="math" data-tex="\(U\)">\(U\)</span> preserves all small colimits. These are actual comparisons with the specified colimit maps.</p>
+<p><strong>Lemma 2.1.</strong> The functor <span class="math" data-tex="\(U\)">\(U\)</span> is faithful and reflects isomorphisms.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(U(X)=0\)">\(U(X)=0\)</span>, with <span class="math" data-tex="\(X\)">\(X\)</span> presented as in (2.1). For a map <span class="math" data-tex="\(h:a\to X\)">\(h:a\to X\)</span>, compactness of the constant <span class="math" data-tex="\(a\)">\(a\)</span> represents it by <span class="math" data-tex="\(h_j:a\to a_j\)">\(h_j:a\to a_j\)</span> at a stage. The map <span class="math" data-tex="\(F(a)\to\operatorname{colim}_jF(a_j)\)">\(F(a)\to\operatorname{colim}_jF(a_j)\)</span> is zero. A basis of <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span> is finite, so its finitely many zero witnesses occur at a common later stage. The resulting stage composite of <span class="math" data-tex="\(F(h_j)\)">\(F(h_j)\)</span> is zero. Faithfulness of <span class="math" data-tex="\(F\)">\(F\)</span> makes the corresponding composite in <span class="math" data-tex="\(A\)">\(A\)</span> zero; thus <span class="math" data-tex="\(h=0\)">\(h=0\)</span>.</p>
+<p>The constants jointly detect objects: <span class="math" data-tex="\(X\)">\(X\)</span>, as its represented filtered-colimit presheaf, is zero when all the groups <span class="math" data-tex="\(\operatorname{Hom}_B(a,X)\)">\(\operatorname{Hom}_B(a,X)\)</span> are zero. Hence <span class="math" data-tex="\(X=0\)">\(X=0\)</span>. If <span class="math" data-tex="\(U(g)=0\)">\(U(g)=0\)</span>, exactness gives <span class="math" data-tex="\(U(\operatorname{im}g)=0\)">\(U(\operatorname{im}g)=0\)</span>, so <span class="math" data-tex="\(\operatorname{im}g=0\)">\(\operatorname{im}g=0\)</span> and <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. Additivity now proves faithfulness on each Hom space. Finally, if <span class="math" data-tex="\(U(g)\)">\(U(g)\)</span> is invertible, exactness makes its kernel and cokernel zero under <span class="math" data-tex="\(U\)">\(U\)</span>, hence zero in <span class="math" data-tex="\(B\)">\(B\)</span>. The abelian coimage-to-image theorem makes <span class="math" data-tex="\(g\)">\(g\)</span> invertible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The category <span class="math" data-tex="\(B\)">\(B\)</span> is locally finitely presentable: it has all small colimits by the abelian completion theorem; its small constant family consists of finitely presentable objects by the Ind Hom formula; and every object is a filtered colimit of that family by definition. The cocontinuous adjoint criterion therefore gives a right adjoint</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+U: B\rightleftarrows\operatorname{Vect}_k:R,
+\qquad U\dashv R.
+\tag{2.2}
+\]">\[
+U: B\rightleftarrows\operatorname{Vect}_k:R,
+\qquad U\dashv R.
+\tag{2.2}
+\]</span>
+<p>Write <span class="math" data-tex="\(\eta:1_B\to RU\)">\(\eta:1_B\to RU\)</span> for the unit and <span class="math" data-tex="\(\varepsilon:UR\to1\)">\(\varepsilon:UR\to1\)</span> for the counit. The adjunction's actual Hom bijection is <span class="math" data-tex="\(k\)">\(k\)</span>-linear: its forward map sends <span class="math" data-tex="\(h:X\to R(V)\)">\(h:X\to R(V)\)</span> to <span class="math" data-tex="\(\varepsilon_VU(h)\)">\(\varepsilon_VU(h)\)</span>, which is linear in <span class="math" data-tex="\(h\)">\(h\)</span>. Consequently <span class="math" data-tex="\(R\)">\(R\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>-linear as well, since its action on maps is tested through these linear bijections.</p>
+<h2 id="3-the-right-adjoint-is-cocontinuous-and-gives-a-coalgebra">3. The right adjoint is cocontinuous and gives a coalgebra</h2>
+<p><strong>Lemma 3.1.</strong> The functor <span class="math" data-tex="\(R\)">\(R\)</span> preserves all small colimits.</p>
+<p><strong>Proof.</strong> Every short exact vector-space sequence splits, by extending a basis. The additive functor <span class="math" data-tex="\(R\)">\(R\)</span> preserves its splitting equations and finite biproducts, so the image row is split exact in <span class="math" data-tex="\(B\)">\(B\)</span>. Thus <span class="math" data-tex="\(R\)">\(R\)</span> is exact.</p>
+<p>For a small family <span class="math" data-tex="\(V_s\)">\(V_s\)</span>, test the canonical map <span class="math" data-tex="\(\bigoplus_sR(V_s)\to R(\bigoplus_sV_s)\)">\(\bigoplus_sR(V_s)\to R(\bigoplus_sV_s)\)</span> against a constant <span class="math" data-tex="\(a\)">\(a\)</span>. Compactness of <span class="math" data-tex="\(a\)">\(a\)</span>, the description of a sum by finite partial sums, and the adjunction identify its Hom map with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\bigoplus_s\operatorname{Hom}_k(F(a),V_s)\\
+\longrightarrow
+\operatorname{Hom}_k\!\left(F(a),\bigoplus_sV_s\right).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\bigoplus_s\operatorname{Hom}_k(F(a),V_s)\\
+\longrightarrow
+\operatorname{Hom}_k\!\left(F(a),\bigoplus_sV_s\right).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>It is bijective: the images of finitely many basis vectors have supports contained in one finite set, and equality is componentwise. The constants jointly reflect isomorphisms, because their Hom values are the Ind presheaf itself. Hence the canonical sum map is invertible. Exactness supplies cokernels, and coproducts with cokernels supply all small colimits. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(Q=UR\)">\(Q=UR\)</span>, with comultiplication <span class="math" data-tex="\(\delta=U\eta R\)">\(\delta=U\eta R\)</span> and counit <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>; the adjunction identities give its comonad identities. These are also direct consequences of naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and the two triangles. Put <span class="math" data-tex="\(H=Q(k)\)">\(H=Q(k)\)</span>. There is a canonical natural isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\alpha_V:V\otimes H\xrightarrow{\ \sim\ }Q(V),\\
+v\otimes h\longmapsto Q(\ell_v)(h),\\
+\ell_v:k\to V,\quad1\mapsto v.
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+\alpha_V:V\otimes H\xrightarrow{\ \sim\ }Q(V),\\
+v\otimes h\longmapsto Q(\ell_v)(h),\\
+\ell_v:k\to V,\quad1\mapsto v.
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>Linearity of <span class="math" data-tex="\(Q\)">\(Q\)</span> makes the rule bilinear. A basis decomposition of <span class="math" data-tex="\(V\)">\(V\)</span> into a coproduct of copies of <span class="math" data-tex="\(k\)">\(k\)</span>, together with coproduct preservation, proves that it is invertible. Its definition proves naturality without choosing bases naturally.</p>
+<p>Transport <span class="math" data-tex="\(\delta_k\)">\(\delta_k\)</span> by <span class="math" data-tex="\(\alpha_H^{-1}\)">\(\alpha_H^{-1}\)</span> to <span class="math" data-tex="\(\Delta_H:H\to H\otimes H\)">\(\Delta_H:H\to H\otimes H\)</span>, and put <span class="math" data-tex="\(\epsilon_H=\varepsilon_k:H\to k\)">\(\epsilon_H=\varepsilon_k:H\to k\)</span>. Naturality at all <span class="math" data-tex="\(\ell_v\)">\(\ell_v\)</span> says that under (3.2), <span class="math" data-tex="\(\delta_V\)">\(\delta_V\)</span> is <span class="math" data-tex="\(1_V\otimes\Delta_H\)">\(1_V\otimes\Delta_H\)</span> and <span class="math" data-tex="\(\varepsilon_V\)">\(\varepsilon_V\)</span> is <span class="math" data-tex="\(1_V\otimes\epsilon_H\)">\(1_V\otimes\epsilon_H\)</span>. Thus the comonad identities are exactly coassociativity and the two counit identities for <span class="math" data-tex="\(H\)">\(H\)</span>. We use the canonical associativity of ordinary tensors in making these identifications.</p>
+<p>The comparison sends <span class="math" data-tex="\(X\in B\)">\(X\in B\)</span> to <span class="math" data-tex="\(U(X)\)">\(U(X)\)</span> with coaction</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+U(X)\xrightarrow{\,U(\eta_X)\,}Q(U(X))\\
+\xrightarrow{\,\alpha_{U(X)}^{-1}\,}U(X)\otimes H.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+U(X)\xrightarrow{\,U(\eta_X)\,}Q(U(X))\\
+\xrightarrow{\,\alpha_{U(X)}^{-1}\,}U(X)\otimes H.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> makes every <span class="math" data-tex="\(U(g)\)">\(U(g)\)</span> a comodule map. Its coassociativity follows from naturality at <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span>, and its counit equation is the adjunction triangle. We next prove this comparison is an equivalence by constructing its inverse.</p>
+<h2 id="4-an-actual-equalizer-inverse-on-all-comodules">4. An actual equalizer inverse on all comodules</h2>
+<p>Temporarily write an <span class="math" data-tex="\(H\)">\(H\)</span>-coaction as a <span class="math" data-tex="\(Q\)">\(Q\)</span>-coaction <span class="math" data-tex="\(\rho:V\to Q(V)\)">\(\rho:V\to Q(V)\)</span> using (3.2). For it form in <span class="math" data-tex="\(B\)">\(B\)</span></p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+E_\rho\xrightarrow{\,j_\rho\,}R(V),\\
+E_\rho=\operatorname{Eq}
+\bigl(R(\rho),\eta_{R(V)}\bigr).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+E_\rho\xrightarrow{\,j_\rho\,}R(V),\\
+E_\rho=\operatorname{Eq}
+\bigl(R(\rho),\eta_{R(V)}\bigr).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>The two arrows have common target <span class="math" data-tex="\(RQ(V)\)">\(RQ(V)\)</span>; the equalizer exists as the kernel of their difference in the abelian category <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> The map <span class="math" data-tex="\(\rho\)">\(\rho\)</span> exhibits <span class="math" data-tex="\(V\)">\(V\)</span> as the equalizer in vector spaces of <span class="math" data-tex="\(Q(\rho)\)">\(Q(\rho)\)</span> and <span class="math" data-tex="\(\delta_V\)">\(\delta_V\)</span>.</p>
+<p><strong>Proof.</strong> Coassociativity gives the equalizing equation, and <span class="math" data-tex="\(\varepsilon_V\rho=1_V\)">\(\varepsilon_V\rho=1_V\)</span> makes <span class="math" data-tex="\(\rho\)">\(\rho\)</span> monic. If <span class="math" data-tex="\(t:W\to Q(V)\)">\(t:W\to Q(V)\)</span> equalizes the pair, put <span class="math" data-tex="\(s=\varepsilon_Vt\)">\(s=\varepsilon_Vt\)</span>. Naturality of the counit and its comonad identity give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\rho s
+=\varepsilon_{Q(V)}Q(\rho)t\\
+=\varepsilon_{Q(V)}\delta_Vt=t.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\rho s
+=\varepsilon_{Q(V)}Q(\rho)t\\
+=\varepsilon_{Q(V)}\delta_Vt=t.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The left inverse <span class="math" data-tex="\(\varepsilon_V\)">\(\varepsilon_V\)</span> makes <span class="math" data-tex="\(s\)">\(s\)</span> the unique factor. This proves the universal property, not just a split injection. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Since <span class="math" data-tex="\(U\)">\(U\)</span> is exact, <span class="math" data-tex="\(U(j_\rho)\)">\(U(j_\rho)\)</span> is the equalizer of the same two maps. There are inverse natural vector-space isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\theta_\rho:V\xrightarrow{\ \sim\ }U(E_\rho),\\
+U(j_\rho)\theta_\rho=\rho,\qquad
+\theta_\rho^{-1}=\varepsilon_VU(j_\rho).
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\theta_\rho:V\xrightarrow{\ \sim\ }U(E_\rho),\\
+U(j_\rho)\theta_\rho=\rho,\qquad
+\theta_\rho^{-1}=\varepsilon_VU(j_\rho).
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>They follow by comparing the two equalizer universal properties.</p>
+<p>This is a comodule isomorphism. To verify the assertion, compare <span class="math" data-tex="\(Q(\theta_\rho)\rho\)">\(Q(\theta_\rho)\rho\)</span> and <span class="math" data-tex="\(U(\eta_{E_\rho})\theta_\rho\)">\(U(\eta_{E_\rho})\theta_\rho\)</span> after <span class="math" data-tex="\(Q(U(j_\rho))\)">\(Q(U(j_\rho))\)</span>. Naturality of the unit identifies their composites with <span class="math" data-tex="\(Q(\rho)\rho\)">\(Q(\rho)\rho\)</span> and <span class="math" data-tex="\(\delta_V\rho\)">\(\delta_V\rho\)</span>, respectively. These are equal by the comodule law. The comparison map <span class="math" data-tex="\(Q(U(j_\rho))\)">\(Q(U(j_\rho))\)</span> is monic, since both <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> are exact. Cancel it to obtain the required comodule equation.</p>
+<p>For a comodule map <span class="math" data-tex="\(f:(V,\rho)\to(W,\sigma)\)">\(f:(V,\rho)\to(W,\sigma)\)</span>, the map <span class="math" data-tex="\(R(f)j_\rho\)">\(R(f)j_\rho\)</span> equalizes <span class="math" data-tex="\(R(\sigma)\)">\(R(\sigma)\)</span> and <span class="math" data-tex="\(\eta_{R(W)}\)">\(\eta_{R(W)}\)</span>. Indeed <span class="math" data-tex="\(\sigma f=Q(f)\rho\)">\(\sigma f=Q(f)\rho\)</span>, and naturality of the unit at <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span> identifies the two resulting composites. It therefore factors uniquely to <span class="math" data-tex="\(E(f):E_\rho\to E_\sigma\)">\(E(f):E_\rho\to E_\sigma\)</span>. Uniqueness gives its identity and composition laws; equations (4.3) give naturality of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</p>
+<p>Conversely for <span class="math" data-tex="\(X\in B\)">\(X\in B\)</span>, naturality at <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> makes <span class="math" data-tex="\(\eta_X:X\to RU(X)\)">\(\eta_X:X\to RU(X)\)</span> equalize the pair for its comparison coaction <span class="math" data-tex="\(U(\eta_X)\)">\(U(\eta_X)\)</span>. It factors to <span class="math" data-tex="\(s_X:X\to E_{U(\eta_X)}\)">\(s_X:X\to E_{U(\eta_X)}\)</span>. Applying <span class="math" data-tex="\(U\)">\(U\)</span>, Lemma 4.1 and the equalizer comparison show that <span class="math" data-tex="\(U(s_X)\)">\(U(s_X)\)</span> is invertible. Lemma 2.1 then makes <span class="math" data-tex="\(s_X\)">\(s_X\)</span> invertible. The factorization uniqueness proves naturality in <span class="math" data-tex="\(X\)">\(X\)</span>. These <span class="math" data-tex="\(s_X\)">\(s_X\)</span> and <span class="math" data-tex="\(\theta_\rho\)">\(\theta_\rho\)</span> give inverse functor equivalences on all objects and all morphisms:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+B\simeq\operatorname{Comod}(H),\\
+\text{with underlying functor }U.
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+B\simeq\operatorname{Comod}(H),\\
+\text{with underlying functor }U.
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>No separate comonadicity theorem is left as a prerequisite; (4.1) is the inverse just proved.</p>
+<h2 id="5-the-finite-part-is-exactly-the-original-category">5. The finite part is exactly the original category</h2>
+<p><strong>Lemma 5.1.</strong> An object <span class="math" data-tex="\(X\in B\)">\(X\in B\)</span> is isomorphic to a constant object of <span class="math" data-tex="\(A\)">\(A\)</span> if and only if <span class="math" data-tex="\(U(X)\)">\(U(X)\)</span> is finite-dimensional.</p>
+<p><strong>Proof: subobjects of constants.</strong> Let <span class="math" data-tex="\(Z\subseteq a\)">\(Z\subseteq a\)</span>, with <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. Present <span class="math" data-tex="\(Z\)">\(Z\)</span> as a filtered colimit of constants <span class="math" data-tex="\(b_j\)">\(b_j\)</span>. Exact filtered colimits in <span class="math" data-tex="\(B\)">\(B\)</span> make <span class="math" data-tex="\(Z\)">\(Z\)</span> the directed union of the images of the composites <span class="math" data-tex="\(b_j\to a\)">\(b_j\to a\)</span>. Each composite is a map in <span class="math" data-tex="\(A\)">\(A\)</span>, by full faithfulness of the constant embedding, and its image is a constant object because that embedding is exact.</p>
+<p>The images under <span class="math" data-tex="\(U\)">\(U\)</span> form a directed family of subspaces of the finite-dimensional <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span>. A member of greatest dimension exists. Directedness implies that it contains every member: any common upper member has the same maximal dimension. Faithfulness and exactness of <span class="math" data-tex="\(U\)">\(U\)</span> reflect the resulting equalities of subobjects. Thus this member is all of <span class="math" data-tex="\(Z\)">\(Z\)</span>, proving <span class="math" data-tex="\(Z\)">\(Z\)</span> is constant. Its quotient in <span class="math" data-tex="\(a\)">\(a\)</span> is constant too, by exactness of the embedding.</p>
+<p><strong>Proof: arbitrary finite fibres.</strong> Present <span class="math" data-tex="\(X\)">\(X\)</span> as a filtered colimit of constants <span class="math" data-tex="\(a_j\)">\(a_j\)</span>. Its image subobjects form a directed union equal to <span class="math" data-tex="\(X\)">\(X\)</span>. The kernel of each <span class="math" data-tex="\(a_j\to X\)">\(a_j\to X\)</span> is a subobject of a constant and hence constant by the first part. Consequently its quotient image is also constant. If <span class="math" data-tex="\(U(X)\)">\(U(X)\)</span> is finite-dimensional, the same greatest-dimension argument shows that one image is all of <span class="math" data-tex="\(X\)">\(X\)</span>. Thus <span class="math" data-tex="\(X\)">\(X\)</span> is constant. The other implication is the definition of <span class="math" data-tex="\(F\)">\(F\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It follows from (4.4) that its restriction is an equivalence <span class="math" data-tex="\(A\simeq\operatorname{Comod}^{\rm fd}(H)\)">\(A\simeq\operatorname{Comod}^{\rm fd}(H)\)</span>, over <span class="math" data-tex="\(F\)">\(F\)</span>. In particular all finite comodules occur, not just the images of a chosen family of generators.</p>
+<p>The hypotheses also imply that every object of <span class="math" data-tex="\(A\)">\(A\)</span> has finite length and that every Hom space is finite-dimensional. Strict subobject inclusions give strict inclusions under the exact faithful <span class="math" data-tex="\(F\)">\(F\)</span>, so the dimension strictly increases; quotient chains give the corresponding decreasing bound. These bounds produce a finite composition series by successively taking a maximal proper subobject until zero. Faithfulness embeds <span class="math" data-tex="\(\operatorname{Hom}_A(a,b)\)">\(\operatorname{Hom}_A(a,b)\)</span> into the finite-dimensional space of linear maps <span class="math" data-tex="\(F(a)\to F(b)\)">\(F(a)\to F(b)\)</span>. Neither assertion requires a finite number of isomorphism classes of simple objects.</p>
+<h2 id="6-identify-the-coefficient-quotient-with-the-recovered-coalgebra">6. Identify the coefficient quotient with the recovered coalgebra</h2>
+<p>The equivalence so far produces <span class="math" data-tex="\(H\)">\(H\)</span> from the right adjoint. We must identify it with the explicit <span class="math" data-tex="\(C_F\)">\(C_F\)</span> of (1.1).</p>
+<p>For any coalgebra <span class="math" data-tex="\(H\)">\(H\)</span>, and a finite-dimensional right comodule <span class="math" data-tex="\(M\)">\(M\)</span>, write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+c_M(\phi,m)=(\phi\otimes1)\rho_M(m)\in H.
+\tag{6.1}
+\]">\[
+c_M(\phi,m)=(\phi\otimes1)\rho_M(m)\in H.
+\tag{6.1}
+\]</span>
+<p>These coefficients respect every comodule morphism and therefore induce a map from the coefficient quotient of the forgetful functor on finite comodules to <span class="math" data-tex="\(H\)">\(H\)</span>. Formula (1.2) and the coaction equation show it is a coalgebra map.</p>
+<p><strong>Proposition 6.1.</strong> This coefficient map is invertible.</p>
+<p><strong>Proof: surjectivity.</strong> Every <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, considered in its regular right comodule, lies in a finite-dimensional subcomodule <span class="math" data-tex="\(M\)">\(M\)</span>, by the finite-subcomodule theorem. Take <span class="math" data-tex="\(\phi=\epsilon_H|_M\)">\(\phi=\epsilon_H|_M\)</span>. The counit identity gives <span class="math" data-tex="\(c_M(\phi,h)=h\)">\(c_M(\phi,h)=h\)</span>, so coefficients span all of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof: injectivity.</strong> A finite sum of coefficient classes can be written as one class <span class="math" data-tex="\([\phi\otimes m]_M\)">\([\phi\otimes m]_M\)</span>, by taking the direct sum of its finite comodules and using the inclusions to combine the classes. Suppose its coefficient is zero. The map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+g:M\longrightarrow H,\\
+x\longmapsto(\phi\otimes1)\rho_M(x)
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+g:M\longrightarrow H,\\
+x\longmapsto(\phi\otimes1)\rho_M(x)
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>is a comodule map, by coassociativity. Its image <span class="math" data-tex="\(E\)">\(E\)</span> is a finite-dimensional subcomodule of the regular comodule, and we may regard <span class="math" data-tex="\(g\)">\(g\)</span> as a map <span class="math" data-tex="\(M\to E\)">\(M\to E\)</span>. The counit gives <span class="math" data-tex="\(\epsilon_H|_E\,g=\phi\)">\(\epsilon_H|_E\,g=\phi\)</span>. Relation (1.1) in this finite-comodule category now yields</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+[\phi\otimes m]_M
+=[\epsilon_H|_E\otimes g(m)]_E=0.
+\tag{6.3}
+\]">\[
+[\phi\otimes m]_M
+=[\epsilon_H|_E\otimes g(m)]_E=0.
+\tag{6.3}
+\]</span>
+<p>Thus every kernel class is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply the proposition to the equivalence from Section 5. Coefficient quotients are unchanged by an equivalence preserving the underlying functor up to its specified natural isomorphism: send the coefficient at each object through that isomorphism; full faithfulness carries every relation to a relation, and essential surjectivity represents every object. A quasi-inverse gives the inverse coefficient map, and the natural isomorphisms make the two composites identities by (1.1). Hence <span class="math" data-tex="\(C_F\simeq H\)">\(C_F\simeq H\)</span> as coalgebras.</p>
+<p>Under this identification the coaction of each <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span> is precisely (1.5), because evaluating its coefficients against each basis functional recovers (6.1). Thus the original, explicitly defined <span class="math" data-tex="\(K_0\)">\(K_0\)</span> is the finite equivalence. Combining it with (4.4) proves both equivalences in (0.2), with the stated underlying functors. This also proves independence of the small representative category and of the chosen adjoint: the universal coefficient relations provide the canonical compatible coalgebra isomorphisms.</p>
+<h2 id="7-natural-operators-and-the-finite-topology">7. Natural operators and the finite topology</h2>
+<p>Let <span class="math" data-tex="\(\operatorname{End}(F)\)">\(\operatorname{End}(F)\)</span> be the algebra of all natural endomorphisms of <span class="math" data-tex="\(F\)">\(F\)</span>, with composition as multiplication. There are inverse linear identifications</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{End}(F)\simeq C_F^*,\\
+t\longmapsto
+\bigl([\phi\otimes v]_a\mapsto\phi(t_a(v))\bigr).
+\end{gathered}
+\tag{7.1}
+\]">\[
+\begin{gathered}
+\operatorname{End}(F)\simeq C_F^*,\\
+t\longmapsto
+\bigl([\phi\otimes v]_a\mapsto\phi(t_a(v))\bigr).
+\end{gathered}
+\tag{7.1}
+\]</span>
+<p>Naturality is exactly relation (1.1), so the displayed functional is well defined. Conversely a functional on <span class="math" data-tex="\(C_F\)">\(C_F\)</span> gives, for each <span class="math" data-tex="\(v\in F(a)\)">\(v\in F(a)\)</span>, a functional on <span class="math" data-tex="\(F(a)^*\)">\(F(a)^*\)</span>. Finite-dimensional biduality gives its unique vector <span class="math" data-tex="\(t_a(v)\)">\(t_a(v)\)</span>; linearity gives an endomorphism, and (1.1) gives its naturality. These procedures are inverse.</p>
+<p>In basis notation <span class="math" data-tex="\(h_{ij}=[e_i^*\otimes e_j]_a\)">\(h_{ij}=[e_i^*\otimes e_j]_a\)</span>, formula (1.2) is <span class="math" data-tex="\(\Delta h_{ij}=\sum_\ell h_{i\ell}\otimes h_{\ell j}\)">\(\Delta h_{ij}=\sum_\ell h_{i\ell}\otimes h_{\ell j}\)</span>. Hence the matrix of the transformation for <span class="math" data-tex="\(q\in C_F^*\)">\(q\in C_F^*\)</span> is <span class="math" data-tex="\((q(h_{ij}))\)">\((q(h_{ij}))\)</span>, and multiplication of two such matrices is convolution:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+(pq)(h_{ij})
+=\sum_\ell p(h_{i\ell})q(h_{\ell j}).
+\tag{7.2}
+\]">\[
+(pq)(h_{ij})
+=\sum_\ell p(h_{i\ell})q(h_{\ell j}).
+\tag{7.2}
+\]</span>
+<p>Thus (7.1) is an algebra isomorphism in the stated composition order, and its unit is the counit of <span class="math" data-tex="\(C_F\)">\(C_F\)</span>.</p>
+<p>Give <span class="math" data-tex="\(\operatorname{End}(F)\)">\(\operatorname{End}(F)\)</span> the topology whose basic neighbourhoods of zero are finite intersections of kernels of <span class="math" data-tex="\(t\mapsto t_a\)">\(t\mapsto t_a\)</span>. These kernels are two-sided ideals. Under (7.1), the kernel for <span class="math" data-tex="\(a\)">\(a\)</span> annihilates exactly the span of its matrix coefficients, a finite-dimensional subcoalgebra by (1.2).</p>
+<p>Conversely every finite-dimensional subcoalgebra <span class="math" data-tex="\(E\subseteq C_F\)">\(E\subseteq C_F\)</span> is a finite right comodule, and Section 5 realizes it as some fibre comodule. Its matrix coefficient span is all of <span class="math" data-tex="\(E\)">\(E\)</span>, since applying its restricted counit recovers each element as in Proposition 6.1. Thus these coefficient spans are cofinal among finite-dimensional subcoalgebras. The topology in (7.1) is exactly the finite topology, with open ideals <span class="math" data-tex="\(E^\perp\)">\(E^\perp\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{End}(F)
+\simeq\varprojlim_{E\subseteq C_F}E^*,\\
+\operatorname{End}(F)^\vee\simeq C_F.
+\end{gathered}
+\tag{7.3}
+\]">\[
+\begin{gathered}
+\operatorname{End}(F)
+\simeq\varprojlim_{E\subseteq C_F}E^*,\\
+\operatorname{End}(F)^\vee\simeq C_F.
+\end{gathered}
+\tag{7.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(E\)">\(E\)</span> ranges over finite-dimensional subcoalgebras and <span class="math" data-tex="\({}^\vee\)">\({}^\vee\)</span> means continuous linear dual to the discrete field. For the first assertion, a compatible family of restrictions defines a unique functional on their union <span class="math" data-tex="\(C_F\)">\(C_F\)</span>; finite sums of subcoalgebras give common bounds. For the second, a continuous functional on <span class="math" data-tex="\(C_F^*\)">\(C_F^*\)</span> kills some <span class="math" data-tex="\(E^\perp\)">\(E^\perp\)</span>, hence factors through <span class="math" data-tex="\(E^*\)">\(E^*\)</span>, whose dual is <span class="math" data-tex="\(E\)">\(E\)</span>. Conversely evaluation at any element of <span class="math" data-tex="\(C_F\)">\(C_F\)</span> has that continuity. These are inverse identifications.</p>
+<p>The complete algebra is not generally finite-dimensional or discrete. By the rational-module equivalence in the comodule prerequisite, <span class="math" data-tex="\(A\)">\(A\)</span> is also the category of finite-dimensional discrete continuous left modules over <span class="math" data-tex="\(\operatorname{End}(F)\)">\(\operatorname{End}(F)\)</span>, with the same underlying vector spaces and all module maps. Continuity is part of this assertion; arbitrary algebraic modules over its underlying algebra give a different category in general.</p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-foundation-ordinary-finite-vector-spaces">Exercise 1 (foundation: ordinary finite vector spaces)</h3>
+<p>Take <span class="math" data-tex="\(A=\operatorname{Vect}^{\rm fd}_k\)">\(A=\operatorname{Vect}^{\rm fd}_k\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> its identity functor, using a small skeleton. Compute <span class="math" data-tex="\(C_F\)">\(C_F\)</span>, its coproduct and counit, and all natural operators on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>, use the map <span class="math" data-tex="\(\ell_v:k\to V\)">\(\ell_v:k\to V\)</span> in relation (1.1). It gives <span class="math" data-tex="\([\phi\otimes v]_V=\phi(v)g\)">\([\phi\otimes v]_V=\phi(v)g\)</span>, where <span class="math" data-tex="\(g=[1^*\otimes1]_k\)">\(g=[1^*\otimes1]_k\)</span>. The counit sends <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, so this is a one-dimensional quotient, not a further quotient of it. Formula (1.2) gives <span class="math" data-tex="\(\Delta g=g\otimes g\)">\(\Delta g=g\otimes g\)</span> and <span class="math" data-tex="\(\epsilon g=1\)">\(\epsilon g=1\)</span>. Hence <span class="math" data-tex="\(C_F=k\)">\(C_F=k\)</span> with its usual one-dimensional coalgebra.</p>
+<p>Every natural operator is scalar multiplication: its value on <span class="math" data-tex="\(k\)">\(k\)</span> is multiplication by a scalar, and naturality at all <span class="math" data-tex="\(\ell_v\)">\(\ell_v\)</span> gives that scalar on every vector. Conversely scalar multiplication is natural. Thus <span class="math" data-tex="\(\operatorname{End}(F)=k\)">\(\operatorname{End}(F)=k\)</span> with its discrete topology, since its evaluation on <span class="math" data-tex="\(k\)">\(k\)</span> is faithful. A right <span class="math" data-tex="\(k\)">\(k\)</span>-coaction has to be <span class="math" data-tex="\(v\mapsto v\otimes g\)">\(v\mapsto v\otimes g\)</span> by its counit equation. Therefore finite and arbitrary comodules recover finite and arbitrary vector spaces. The Ind equivalence is the union of finite-dimensional subspaces with the usual linear maps.</p>
+<h3 id="exercise-2-standard-finite-fibres-can-reconstruct-an-infinite-coalgebra">Exercise 2 (standard: finite fibres can reconstruct an infinite coalgebra)</h3>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be any infinite small set, and let <span class="math" data-tex="\(A\)">\(A\)</span> consist of finite-dimensional <span class="math" data-tex="\(I\)">\(I\)</span>-graded vector spaces, with grade-preserving maps. Let <span class="math" data-tex="\(F\)">\(F\)</span> forget the grading. Compute the coalgebra and topological operator algebra, and describe all comodules of the reconstructed coalgebra.</p>
+<p><strong>Solution.</strong> This is an essentially small abelian <span class="math" data-tex="\(k\)">\(k\)</span>-linear category, with kernels and cokernels in each grade; <span class="math" data-tex="\(F\)">\(F\)</span> is exact and faithful. Each object has only finitely many nonzero grades. Let <span class="math" data-tex="\(k_i\)">\(k_i\)</span> be a one-dimensional object in grade <span class="math" data-tex="\(i\)">\(i\)</span>, and let <span class="math" data-tex="\(g_i\)">\(g_i\)</span> be its coefficient class.</p>
+<p>The inclusions of the grade summands, and maps <span class="math" data-tex="\(k_i\to V_i\)">\(k_i\to V_i\)</span> taking <span class="math" data-tex="\(1\)">\(1\)</span> to each vector, show as in Exercise 1 that every coefficient is a linear combination of the <span class="math" data-tex="\(g_i\)">\(g_i\)</span>. These classes are independent: the rule sending <span class="math" data-tex="\([\phi\otimes v]_V\)">\([\phi\otimes v]_V\)</span> to <span class="math" data-tex="\(\sum_i\phi(v_i)g_i\)">\(\sum_i\phi(v_i)g_i\)</span> in the abstract direct sum <span class="math" data-tex="\(\bigoplus_i kg_i\)">\(\bigoplus_i kg_i\)</span> respects all grade-preserving maps and sends each named class to its distinct basis vector. Thus it is an inverse to the spanning map.</p>
+<p>The coproduct and counit are <span class="math" data-tex="\(\Delta g_i=g_i\otimes g_i\)">\(\Delta g_i=g_i\otimes g_i\)</span>, <span class="math" data-tex="\(\epsilon g_i=1\)">\(\epsilon g_i=1\)</span>. Hence <span class="math" data-tex="\(C_F=\bigoplus_i kg_i\)">\(C_F=\bigoplus_i kg_i\)</span> as a coalgebra. Equation (7.1) gives <span class="math" data-tex="\(\operatorname{End}(F)=\prod_i k\)">\(\operatorname{End}(F)=\prod_i k\)</span>, with pointwise multiplication. Its topology is the product of discrete copies of <span class="math" data-tex="\(k\)">\(k\)</span>: killing the operators on finitely many <span class="math" data-tex="\(k_i\)">\(k_i\)</span>'s fixes precisely finitely many coordinates, and any finite graded object uses only finitely many coordinates.</p>
+<p>For a right comodule, write its finite coefficient expression as <span class="math" data-tex="\(\rho(m)=\sum_i p_i(m)\otimes g_i\)">\(\rho(m)=\sum_i p_i(m)\otimes g_i\)</span>. Coassociativity gives <span class="math" data-tex="\(p_jp_i=0\)">\(p_jp_i=0\)</span> for <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span> and <span class="math" data-tex="\(p_i^2=p_i\)">\(p_i^2=p_i\)</span>, while the counit gives <span class="math" data-tex="\(m=\sum_i p_i(m)\)">\(m=\sum_i p_i(m)\)</span>, with finitely many terms for each vector. Thus <span class="math" data-tex="\(M=\bigoplus_i\operatorname{im}p_i\)">\(M=\bigoplus_i\operatorname{im}p_i\)</span>, and its maps are exactly grade-preserving maps. Conversely every such direct-sum grading gives that coaction and satisfies both laws. Finite comodules have finite total dimension, so recover exactly <span class="math" data-tex="\(A\)">\(A\)</span>; arbitrary graded spaces give its Ind category. Infinite <span class="math" data-tex="\(I\)">\(I\)</span> makes the coalgebra infinite-dimensional and its dual topology nondiscrete, despite every original fibre being finite-dimensional.</p>
+<h3 id="exercise-3-advanced-dual-numbers-and-the-actual-cofree-adjoint">Exercise 3 (advanced: dual numbers and the actual cofree adjoint)</h3>
+<p>Let <span class="math" data-tex="\(D=k[z]/(z^2)\)">\(D=k[z]/(z^2)\)</span>, let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional left <span class="math" data-tex="\(D\)">\(D\)</span>-modules, and let <span class="math" data-tex="\(F\)">\(F\)</span> forget their actions. Identify <span class="math" data-tex="\(C_F\)">\(C_F\)</span> with <span class="math" data-tex="\(D^*\)">\(D^*\)</span>, calculate its two basis coproducts, and give the coaction corresponding to a square-zero operator. Compute the right adjoint of the extended forgetful functor.</p>
+<p><strong>Solution.</strong> For a coefficient <span class="math" data-tex="\([\phi\otimes m]_M\)">\([\phi\otimes m]_M\)</span>, define its image in <span class="math" data-tex="\(D^*\)">\(D^*\)</span> by <span class="math" data-tex="\(d\mapsto\phi(dm)\)">\(d\mapsto\phi(dm)\)</span>. Module-map naturality proves the coefficient relation. Every functional on <span class="math" data-tex="\(D\)">\(D\)</span> occurs by using the regular module <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(m=1\)">\(m=1\)</span>. Conversely the module map <span class="math" data-tex="\(D\to M\)">\(D\to M\)</span>, <span class="math" data-tex="\(d\mapsto dm\)">\(d\mapsto dm\)</span>, gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+[\phi\otimes m]_M
+=[\,d\mapsto\phi(dm)\ \otimes1\,]_D.
+\tag{8.1}
+\]">\[
+[\phi\otimes m]_M
+=[\,d\mapsto\phi(dm)\ \otimes1\,]_D.
+\tag{8.1}
+\]</span>
+<p>Thus any kernel coefficient is zero, and finite sums combine by direct sums. This proves the map is an isomorphism. Its coproduct is dual to multiplication in <span class="math" data-tex="\(D\)">\(D\)</span>, as follows by evaluating both factors at two elements and using associativity of the action.</p>
+<p>Let <span class="math" data-tex="\(c_0,c_1\)">\(c_0,c_1\)</span> be dual to <span class="math" data-tex="\(1,z\)">\(1,z\)</span>. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\Delta c_0=c_0\otimes c_0,\\
+\epsilon c_0=1,\\
+\Delta c_1=c_0\otimes c_1+c_1\otimes c_0,\\
+\epsilon c_1=0.
+\end{gathered}
+\tag{8.2}
+\]">\[
+\begin{gathered}
+\Delta c_0=c_0\otimes c_0,\\
+\epsilon c_0=1,\\
+\Delta c_1=c_0\otimes c_1+c_1\otimes c_0,\\
+\epsilon c_1=0.
+\end{gathered}
+\tag{8.2}
+\]</span>
+<p>A module with <span class="math" data-tex="\(z\)">\(z\)</span>-action <span class="math" data-tex="\(N\)">\(N\)</span> has coaction <span class="math" data-tex="\(\rho(m)=m\otimes c_0+N(m)\otimes c_1\)">\(\rho(m)=m\otimes c_0+N(m)\otimes c_1\)</span>. Expanding the two iterated coactions shows that their difference has coefficient <span class="math" data-tex="\(N^2(m)\)">\(N^2(m)\)</span> at <span class="math" data-tex="\(c_1\otimes c_1\)">\(c_1\otimes c_1\)</span>; all other coefficients agree. Hence its coassociativity is exactly <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>, and its counit is identity. Intertwining these coactions is precisely commuting with <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>The Ind category is all <span class="math" data-tex="\(D\)">\(D\)</span>-modules: each vector's cyclic module is spanned by <span class="math" data-tex="\(m,Nm\)">\(m,Nm\)</span>, and finite sums give the directed union of finite-dimensional submodules; the finite-basis and finite-action equations give the filtered Hom comparison. The right adjoint is <span class="math" data-tex="\(R(V)=\operatorname{Hom}_k(D,V)\)">\(R(V)=\operatorname{Hom}_k(D,V)\)</span>, with <span class="math" data-tex="\((d\cdot h)(r)=h(rd)\)">\((d\cdot h)(r)=h(rd)\)</span>. A linear map <span class="math" data-tex="\(t:M\to V\)">\(t:M\to V\)</span> corresponds to the module map <span class="math" data-tex="\(m\mapsto(r\mapsto t(rm))\)">\(m\mapsto(r\mapsto t(rm))\)</span>; evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> is its inverse. These formulas verify naturality and both inverse identities. Finally <span class="math" data-tex="\(\operatorname{Hom}_k(D,V)\simeq V\otimes D^*\)">\(\operatorname{Hom}_k(D,V)\simeq V\otimes D^*\)</span> because <span class="math" data-tex="\(D\)">\(D\)</span> is finite-dimensional. Thus the adjoint coalgebra is exactly the one computed above, including its cofree structure on arbitrary <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<h3 id="exercise-4-synthesis-faithfulness-cannot-replace-exactness">Exercise 4 (synthesis: faithfulness cannot replace exactness)</h3>
+<p>For the same <span class="math" data-tex="\(D\)">\(D\)</span>, let <span class="math" data-tex="\(s=D/(z)\)">\(s=D/(z)\)</span>, and define <span class="math" data-tex="\(F&#x27;(M)=U(M)\oplus\operatorname{Hom}_D(s,M)\)">\(F&#x27;(M)=U(M)\oplus\operatorname{Hom}_D(s,M)\)</span> on finite-dimensional modules, where <span class="math" data-tex="\(U\)">\(U\)</span> forgets the action. Prove that it is a faithful <span class="math" data-tex="\(k\)">\(k\)</span>-linear finite-fibre functor, but that its canonical coefficient-comodule comparison cannot be an equivalence.</p>
+<p><strong>Solution.</strong> Both summands are additive and <span class="math" data-tex="\(k\)">\(k\)</span>-linear on maps, and the first detects every nonzero map. They are finite-dimensional for finite <span class="math" data-tex="\(M\)">\(M\)</span>, so <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> has the asserted properties. Consider the short exact sequence <span class="math" data-tex="\(0\to s\to D\xrightarrow{q}s\to0\)">\(0\to s\to D\xrightarrow{q}s\to0\)</span>, where <span class="math" data-tex="\(s\to D\)">\(s\to D\)</span> sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-tex="\(q\)">\(q\)</span> is the quotient.</p>
+<p>The space <span class="math" data-tex="\(\operatorname{Hom}_D(s,M)\)">\(\operatorname{Hom}_D(s,M)\)</span> identifies with the kernel of the <span class="math" data-tex="\(z\)">\(z\)</span>-action on <span class="math" data-tex="\(M\)">\(M\)</span>. It is one-dimensional both for <span class="math" data-tex="\(M=D\)">\(M=D\)</span>, generated by the map with value <span class="math" data-tex="\(z\)">\(z\)</span>, and for <span class="math" data-tex="\(M=s\)">\(M=s\)</span>. Postcomposition with <span class="math" data-tex="\(q\)">\(q\)</span> sends the first generator to zero. Therefore <span class="math" data-tex="\(F&#x27;(q)\)">\(F&#x27;(q)\)</span> is the direct sum of the surjective map <span class="math" data-tex="\(U(D)\to U(s)\)">\(U(D)\to U(s)\)</span> and a zero map <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span>. Its target is two-dimensional and its image one-dimensional, so it is not surjective. In particular <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> is not exact; the dimensions of the middle and end fibres are also <span class="math" data-tex="\(3,2,2\)">\(3,2,2\)</span>.</p>
+<p>The coefficient quotient and its canonical comparison still exist, because Section 1 needed only finite-dimensional linear fibres. If that comparison were an equivalence with finite-dimensional comodules, it would be an exact functor between abelian categories: equivalences preserve kernels and cokernels by their universal properties. Composing with the exact underlying-vector functor on comodules would make <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> exact, contradicting the computed <span class="math" data-tex="\(F&#x27;(q)\)">\(F&#x27;(q)\)</span>. Thus the comparison is not an equivalence. This pinpoints the hypothesis that the reconstruction proof needs rather than invalidating the coefficient construction itself.</p>
+<h2 id="references">References</h2>
+<p><strong>[EGNO]</strong> Pavel Etingof, Shlomo Gelaki, Dmitri Nikshych and Victor Ostrik, <em>Tensor Categories</em>, Section 1.10, especially Theorem 1.10.1. <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf">Freely available author-hosted final version</a>. This gives classical reconstruction context. The Ind extension, tensor-comonad identification, equalizer inverse, finite-part argument and coefficient identification used for the result above are supplied here with the linked course prerequisites.</p>
+</main></body></html>

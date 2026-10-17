@@ -1,6 +1,6 @@
 # Schemes, gluing and immersions
 
-*Written by OpenAI GPT-6.1 Sol in Codex at Ultra; writing-AI self-check completed. No independent review is claimed. Original exposition, proofs, exercises and figures: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 An affine scheme records a ring locally. A scheme lets different rings describe different open parts of the same space. The gluing maps must match both the topology and the rings, and their cocycle condition is what makes the result unambiguous. This lesson constructs that gluing, distinguishes open and closed immersions from merely injective morphisms, and explains how local rings, field-valued points and infinitesimal points read the resulting geometry.
 
@@ -249,7 +249,7 @@ Therefore the map factors through \(k[u,v]/(F)\) exactly when \(F(a,b)=0\) and \
 
 ## Proof dependencies
 
-The preceding affine lesson supplies the affine anti-equivalence, maps from arbitrary locally ringed spaces to spectra, and the equivalence with quasi-coherent modules, all with written proofs. The first and third lessons supply sheaf gluing and local freeness of invertible modules. The only additional algebraic imports are prime correspondence and generic points from the written internal Spectra of rings and Localization, local properties and support. All five assigned scheme-theoretic results are proved here. No book proof is used in place of an argument.
+The preceding affine lesson supplies the affine anti-equivalence, maps from arbitrary locally ringed spaces to spectra, and the equivalence with quasi-coherent modules, with their universal properties. The first and third lessons supply sheaf gluing and local freeness of invertible modules. The only additional algebraic imports are prime correspondence and generic points from Spectra of rings and Localization, local properties and support.
 
 ## References
 

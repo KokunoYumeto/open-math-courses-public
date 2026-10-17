@@ -1,6 +1,6 @@
 # Closed subschemes and scheme-theoretic images
 
-*Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text: CC0 1.0.*
 
 A closed subset records which points are present. A closed subscheme also records which functions vanish, including how many orders of vanishing survive. Images therefore have two different descriptions: closure of the points that occur, and the equations forced by the morphism. They agree topologically under a useful finiteness hypothesis, but their scheme structures retain more information.
 
@@ -173,7 +173,7 @@ Conversely, suppose an associated point \(\mathfrak p\) on a chart \(V=\operator
 
 ## Proof dependencies
 
-All four assigned results are proved in Theorems 1.1 and 2.1, Proposition 1.2, Theorems 4.1–4.2 and Theorem 5.1. The reduced induced structure and all six exercises are also proved. The algebraic associated-prime inputs in Solution 5 have the exact written internal providers specified there. The scheme-theoretic kernel formula uses quasi-compactness alone; existence for arbitrary morphisms uses the largest quasi-coherent ideal contained in the kernel.
+Solution 5 uses the associated-prime results linked there. Closed subschemes correspond to quasi-coherent ideals, and their module sheaves identify with the quasi-coherent modules annihilated by the defining ideal. The scheme-theoretic kernel formula uses quasi-compactness alone; existence for arbitrary morphisms uses the largest quasi-coherent ideal contained in the kernel.
 
 ## References
 

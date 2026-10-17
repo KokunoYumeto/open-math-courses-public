@@ -1,0 +1,338 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Faber polynomials and a positive kernel</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The complete Crouzeix inequality)</a><a href="an-exterior-conformal-coordinate.html">Previous lesson</a><a href="the-bound-on-a-smooth-convex-domain.html">Next lesson</a><a href="src/faber-polynomials-and-a-positive-kernel.md">Editable source</a></nav><main><article><h1 id="faber-polynomials-and-a-positive-kernel">Faber polynomials and a positive kernel</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>On the unit circle, a polynomial in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is determined by its Fourier coefficients, and Parseval's identity computes its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm from them. On the boundary of a smooth convex domain <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> the role of the powers <span class="math" data-tex="\(\lambda^k\)">\(\lambda^k\)</span> is played by the <em>Faber polynomials</em> <span class="math" data-tex="\(b_k\)">\(b_k\)</span>: in the exterior coordinate <span class="math" data-tex="\(h\)">\(h\)</span> of <a href="an-exterior-conformal-coordinate.html">An exterior conformal coordinate</a>, <span class="math" data-tex="\(b_k(h(\mu))\)">\(b_k(h(\mu))\)</span> is <span class="math" data-tex="\(\mu^k\)">\(\mu^k\)</span> plus a series in negative powers of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. This lesson defines the Faber polynomials, proves that their negative parts are given by coefficients <span class="math" data-tex="\(s_{kj}\)">\(s_{kj}\)</span> of a function <span class="math" data-tex="\(s(\lambda,\mu)\)">\(s(\lambda,\mu)\)</span> holomorphic near <span class="math" data-tex="\(\mathbf T\times\mathbf T\)">\(\mathbf T\times\mathbf T\)</span>, shows that convexity of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> makes the kernel <span class="math" data-tex="\(K=1+s+\bar s\)">\(K=1+s+\bar s\)</span> nonnegative with both marginals equal to one, and deduces a two-sided estimate of boundary norms by coefficients (Proposition 4.6). The kernel and the estimate are due to OpenAI [OpenAI-DC, Section 2]; Faber polynomials of a convex domain evaluated at a matrix were studied by Beckermann and Crouzeix [BC]. In classical terms, the <span class="math" data-tex="\(s_{kj}\)">\(s_{kj}\)</span> are differentiated Grunsky coefficients of <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>Setting.</strong> <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is a smooth convex domain, and <span class="math" data-tex="\(h(\lambda)=c\lambda+\kappa(1/\lambda)\)">\(h(\lambda)=c\lambda+\kappa(1/\lambda)\)</span>, <span class="math" data-tex="\(r_0\)">\(r_0\)</span> and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> are as in Theorem 3.7 of <a href="an-exterior-conformal-coordinate.html">An exterior conformal coordinate</a>: <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is holomorphic on <span class="math" data-tex="\(\{|u|&lt;R_0\}\)">\(\{|u|&lt;R_0\}\)</span> with <span class="math" data-tex="\(R_0=1/r_0&gt;1\)">\(R_0=1/r_0&gt;1\)</span>, <span class="math" data-tex="\(h\)">\(h\)</span> is injective with <span class="math" data-tex="\(h&#x27;\ne0\)">\(h&#x27;\ne0\)</span> on <span class="math" data-tex="\(\{|\lambda|&gt;r_0\}\)">\(\{|\lambda|&gt;r_0\}\)</span>, and for <span class="math" data-tex="\(\lambda\in\mathbf T\)">\(\lambda\in\mathbf T\)</span>, <span class="math" data-tex="\(q(\lambda)=\lambda h&#x27;(\lambda)\)">\(q(\lambda)=\lambda h&#x27;(\lambda)\)</span> satisfies the support inequality
+<span class="math math-display" data-tex="\[
+\operatorname{Re}\Bigl(\overline{q(\lambda)}\bigl(h(\lambda)-z\bigr)\Bigr)\ge0\qquad(z\in\overline\Omega).
+\]">\[
+\operatorname{Re}\Bigl(\overline{q(\lambda)}\bigl(h(\lambda)-z\bigr)\Bigr)\ge0\qquad(z\in\overline\Omega).
+\]</span>
+Write <span class="math" data-tex="\(\kappa(u)=\sum_{j\ge0}\kappa_ju^j\)">\(\kappa(u)=\sum_{j\ge0}\kappa_ju^j\)</span>. Integrals over <span class="math" data-tex="\(\mathbf T\)">\(\mathbf T\)</span> use <span class="math" data-tex="\(d\tau(e^{it})=dt/2\pi\)">\(d\tau(e^{it})=dt/2\pi\)</span>. For a matrix <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\(\|C\|\)">\(\|C\|\)</span> is the operator norm and <span class="math" data-tex="\(\|C\|_2=(\operatorname{tr}C^*C)^{1/2}\)">\(\|C\|_2=(\operatorname{tr}C^*C)^{1/2}\)</span> the Hilbert–Schmidt norm, which makes <span class="math" data-tex="\(M_m(\mathbf C)\)">\(M_m(\mathbf C)\)</span> a Hilbert space with inner product <span class="math" data-tex="\(\operatorname{tr}(D^*C)\)">\(\operatorname{tr}(D^*C)\)</span>. Results of complex analysis are cited by number from Lebl's guide in the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis</a>.</p>
+<h2 id="1-faber-polynomials">1. Faber polynomials</h2>
+<p>In the variable <span class="math" data-tex="\(u=1/\lambda\)">\(u=1/\lambda\)</span>, <span class="math" data-tex="\(h(\lambda)=c/u+\kappa(u)\)">\(h(\lambda)=c/u+\kappa(u)\)</span> and <span class="math" data-tex="\(q(\lambda)=c/u-u\kappa&#x27;(u)\)">\(q(\lambda)=c/u-u\kappa&#x27;(u)\)</span>, so for <span class="math" data-tex="\(z\in\mathbf C\)">\(z\in\mathbf C\)</span>
+<span class="math math-display" data-tex="\[
+\frac{q(\lambda)}{h(\lambda)-z}=\frac{c-u^2\kappa&#x27;(u)}{c+u\bigl(\kappa(u)-z\bigr)} .
+\]">\[
+\frac{q(\lambda)}{h(\lambda)-z}=\frac{c-u^2\kappa&#x27;(u)}{c+u\bigl(\kappa(u)-z\bigr)} .
+\]</span>
+The right side is holomorphic on a disc <span class="math" data-tex="\(|u|&lt;\epsilon_z\)">\(|u|&lt;\epsilon_z\)</span>, <span class="math" data-tex="\(\epsilon_z\le R_0\)">\(\epsilon_z\le R_0\)</span>, on which the denominator does not vanish, and equals <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(u=0\)">\(u=0\)</span>.</p>
+<p><strong>Proposition 4.1</strong> (Faber polynomials). Define <span class="math" data-tex="\(b_k(z)\)">\(b_k(z)\)</span>, for <span class="math" data-tex="\(|\lambda|&gt;1/\epsilon_z\)">\(|\lambda|&gt;1/\epsilon_z\)</span>, by the expansion
+<span class="math math-display" data-tex="\[
+\frac{q(\lambda)}{h(\lambda)-z}=\sum_{k\ge0}b_k(z)\lambda^{-k}.
+\]">\[
+\frac{q(\lambda)}{h(\lambda)-z}=\sum_{k\ge0}b_k(z)\lambda^{-k}.
+\]</span>
+Then <span class="math" data-tex="\(b_0=1\)">\(b_0=1\)</span>, and for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+cb_n(z)={}&amp;(z-\kappa_0)b_{n-1}(z)-(n-1)\kappa_{n-1}\\
+&amp;-\sum_{j=1}^{n-1}\kappa_jb_{n-1-j}(z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+cb_n(z)={}&amp;(z-\kappa_0)b_{n-1}(z)-(n-1)\kappa_{n-1}\\
+&amp;-\sum_{j=1}^{n-1}\kappa_jb_{n-1-j}(z).
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(b_k\)">\(b_k\)</span> is a polynomial of degree <span class="math" data-tex="\(k\)">\(k\)</span> with leading coefficient <span class="math" data-tex="\(c^{-k}\)">\(c^{-k}\)</span>. Every polynomial of degree at most <span class="math" data-tex="\(N\)">\(N\)</span> with coefficients in <span class="math" data-tex="\(M_m(\mathbf C)\)">\(M_m(\mathbf C)\)</span> is <span class="math" data-tex="\(\sum_{k=0}^Nb_kC_k\)">\(\sum_{k=0}^Nb_kC_k\)</span> for unique <span class="math" data-tex="\(C_0,\dots,C_N\in M_m(\mathbf C)\)">\(C_0,\dots,C_N\in M_m(\mathbf C)\)</span>.</p>
+<p><em>Proof.</em> Multiply the expansion by the denominator:
+<span class="math math-display" data-tex="\[
+c-u^2\kappa&#x27;(u)=D_z(u)\sum_{k\ge0}b_k(z)u^k,
+\]">\[
+c-u^2\kappa&#x27;(u)=D_z(u)\sum_{k\ge0}b_k(z)u^k,
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_z(u)&amp;=c+u\bigl(\kappa(u)-z\bigr)\\
+&amp;=c+(\kappa_0-z)u+\sum_{j\ge1}\kappa_ju^{j+1}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+D_z(u)&amp;=c+u\bigl(\kappa(u)-z\bigr)\\
+&amp;=c+(\kappa_0-z)u+\sum_{j\ge1}\kappa_ju^{j+1}.
+\end{aligned}
+\]</span>
+The coefficient of <span class="math" data-tex="\(u^n\)">\(u^n\)</span> on the left is <span class="math" data-tex="\(c\)">\(c\)</span> for <span class="math" data-tex="\(n=0\)">\(n=0\)</span> and <span class="math" data-tex="\(-(n-1)\kappa_{n-1}\)">\(-(n-1)\kappa_{n-1}\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>; on the right it is <span class="math" data-tex="\(cb_n+(\kappa_0-z)b_{n-1}+\sum_{j=1}^{n-1}\kappa_jb_{n-1-j}\)">\(cb_n+(\kappa_0-z)b_{n-1}+\sum_{j=1}^{n-1}\kappa_jb_{n-1-j}\)</span> (with <span class="math" data-tex="\(b_{-1}=0\)">\(b_{-1}=0\)</span>). Comparing gives <span class="math" data-tex="\(b_0=1\)">\(b_0=1\)</span> and the recursion. By induction on <span class="math" data-tex="\(n\)">\(n\)</span>, the term <span class="math" data-tex="\((z-\kappa_0)b_{n-1}/c\)">\((z-\kappa_0)b_{n-1}/c\)</span> has degree <span class="math" data-tex="\(n\)">\(n\)</span> and leading coefficient <span class="math" data-tex="\(c^{-n}\)">\(c^{-n}\)</span>, and the other terms have degree less than <span class="math" data-tex="\(n\)">\(n\)</span>. A matrix polynomial <span class="math" data-tex="\(\sum_{i\le N}D_iz^i\)">\(\sum_{i\le N}D_iz^i\)</span> is then expanded by subtracting <span class="math" data-tex="\(b_NC_N\)">\(b_NC_N\)</span> with <span class="math" data-tex="\(C_N=c^ND_N\)">\(C_N=c^ND_N\)</span> and proceeding downwards; uniqueness holds because <span class="math" data-tex="\(b_0,\dots,b_N\)">\(b_0,\dots,b_N\)</span> are linearly independent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the disc <span class="math" data-tex="\(h(\lambda)=z_0+R\lambda\)">\(h(\lambda)=z_0+R\lambda\)</span> the recursion gives <span class="math" data-tex="\(b_k(z)=((z-z_0)/R)^k\)">\(b_k(z)=((z-z_0)/R)^k\)</span>. For the ellipse <span class="math" data-tex="\(h(\lambda)=\lambda+a/\lambda\)">\(h(\lambda)=\lambda+a/\lambda\)</span> of the example in <a href="an-exterior-conformal-coordinate.html">An exterior conformal coordinate</a>, it gives <span class="math" data-tex="\(b_1=z\)">\(b_1=z\)</span>, <span class="math" data-tex="\(b_2=z^2-2a\)">\(b_2=z^2-2a\)</span>, <span class="math" data-tex="\(b_3=z^3-3az\)">\(b_3=z^3-3az\)</span>.</p>
+<h2 id="2-separately-holomorphic-functions-on-a-bidisc">2. Separately holomorphic functions on a bidisc</h2>
+<p><strong>Lemma 4.2.</strong> Let <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, <span class="math" data-tex="\(\Delta=\{|u|&lt;R\}\)">\(\Delta=\{|u|&lt;R\}\)</span>, and let <span class="math" data-tex="\(S:\Delta\times\Delta\to\mathbf C\)">\(S:\Delta\times\Delta\to\mathbf C\)</span> be continuous and holomorphic in each variable when the other is fixed. Then there are numbers <span class="math" data-tex="\(\sigma_{kj}\)">\(\sigma_{kj}\)</span> (<span class="math" data-tex="\(k,j\ge0\)">\(k,j\ge0\)</span>) with
+<span class="math math-display" data-tex="\[
+S(u,v)=\sum_{k,j\ge0}\sigma_{kj}u^kv^j\qquad(u,v\in\Delta),
+\]">\[
+S(u,v)=\sum_{k,j\ge0}\sigma_{kj}u^kv^j\qquad(u,v\in\Delta),
+\]</span>
+and for <span class="math" data-tex="\(0&lt;t&lt;R\)">\(0&lt;t&lt;R\)</span>, <span class="math" data-tex="\(|\sigma_{kj}|\le M_tt^{-k-j}\)">\(|\sigma_{kj}|\le M_tt^{-k-j}\)</span> with <span class="math" data-tex="\(M_t=\max_{|u|=|v|=t}|S(u,v)|\)">\(M_t=\max_{|u|=|v|=t}|S(u,v)|\)</span>. The series converges absolutely and uniformly on <span class="math" data-tex="\(\{|u|,|v|\le t&#x27;\}\)">\(\{|u|,|v|\le t&#x27;\}\)</span> for every <span class="math" data-tex="\(t&#x27;&lt;R\)">\(t&#x27;&lt;R\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(0&lt;t&#x27;&lt;t&lt;R\)">\(0&lt;t&#x27;&lt;t&lt;R\)</span> and <span class="math" data-tex="\(|u|,|v|\le t&#x27;\)">\(|u|,|v|\le t&#x27;\)</span>. Let <span class="math" data-tex="\(C_t\)">\(C_t\)</span> be the circle of radius <span class="math" data-tex="\(t\)">\(t\)</span> about <span class="math" data-tex="\(0\)">\(0\)</span>. The Cauchy integral formula in a disc (Theorem 3.2.15), applied in <span class="math" data-tex="\(v\)">\(v\)</span> and then in <span class="math" data-tex="\(u\)">\(u\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S(u,v)&amp;=\frac1{2\pi i}\oint_{C_t}\frac{S(u,\eta)}{\eta-v}\,d\eta,\\
+S(u,\eta)&amp;=\frac1{2\pi i}\oint_{C_t}\frac{S(\xi,\eta)}{\xi-u}\,d\xi .
+\end{aligned}
+\]">\[
+\begin{aligned}
+S(u,v)&amp;=\frac1{2\pi i}\oint_{C_t}\frac{S(u,\eta)}{\eta-v}\,d\eta,\\
+S(u,\eta)&amp;=\frac1{2\pi i}\oint_{C_t}\frac{S(\xi,\eta)}{\xi-u}\,d\xi .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(S(u,v)\)">\(S(u,v)\)</span> is the iterated integral over <span class="math" data-tex="\(C_t\times C_t\)">\(C_t\times C_t\)</span> of <span class="math" data-tex="\(S(\xi,\eta)k_{u,v}(\xi,\eta)/(2\pi i)^2\)">\(S(\xi,\eta)k_{u,v}(\xi,\eta)/(2\pi i)^2\)</span>, where <span class="math" data-tex="\(k_{u,v}(\xi,\eta)=1/((\xi-u)(\eta-v))\)">\(k_{u,v}(\xi,\eta)=1/((\xi-u)(\eta-v))\)</span>. On the circles, <span class="math" data-tex="\(k_{u,v}=\sum_{k,j}u^kv^j\xi^{-k-1}\eta^{-j-1}\)">\(k_{u,v}=\sum_{k,j}u^kv^j\xi^{-k-1}\eta^{-j-1}\)</span>, absolutely and uniformly convergent. Integrating term by term gives the expansion with
+<span class="math math-display" data-tex="\[
+\sigma_{kj}=\frac1{(2\pi i)^2}\oint_{C_t}\oint_{C_t}\frac{S(\xi,\eta)\,d\xi\,d\eta}{\xi^{k+1}\eta^{j+1}},
+\]">\[
+\sigma_{kj}=\frac1{(2\pi i)^2}\oint_{C_t}\oint_{C_t}\frac{S(\xi,\eta)\,d\xi\,d\eta}{\xi^{k+1}\eta^{j+1}},
+\]</span>
+so <span class="math" data-tex="\(|\sigma_{kj}|\le M_tt^{-k-j}\)">\(|\sigma_{kj}|\le M_tt^{-k-j}\)</span>, and <span class="math" data-tex="\(|\sigma_{kj}u^kv^j|\le M_t(t&#x27;/t)^{k+j}\)">\(|\sigma_{kj}u^kv^j|\le M_t(t&#x27;/t)^{k+j}\)</span>. The <span class="math" data-tex="\(\sigma_{kj}\)">\(\sigma_{kj}\)</span> do not depend on <span class="math" data-tex="\(t\)">\(t\)</span>: for fixed <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(\sum_j\sigma_{kj}v^j\)">\(\sum_j\sigma_{kj}v^j\)</span> is the <span class="math" data-tex="\(k\)">\(k\)</span>th Taylor coefficient of <span class="math" data-tex="\(S(\cdot,v)\)">\(S(\cdot,v)\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span>, and <span class="math" data-tex="\(\sigma_{kj}\)">\(\sigma_{kj}\)</span> is the <span class="math" data-tex="\(j\)">\(j\)</span>th Taylor coefficient of this function of <span class="math" data-tex="\(v\)">\(v\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-mixed-coefficients">3. The mixed coefficients</h2>
+<p>For <span class="math" data-tex="\(|\lambda|,|\mu|&gt;r_0\)">\(|\lambda|,|\mu|&gt;r_0\)</span> with <span class="math" data-tex="\(\lambda\ne\mu\)">\(\lambda\ne\mu\)</span> put
+<span class="math math-display" data-tex="\[
+s(\lambda,\mu)=\frac{q(\lambda)}{h(\lambda)-h(\mu)}-\frac\lambda{\lambda-\mu} .
+\]">\[
+s(\lambda,\mu)=\frac{q(\lambda)}{h(\lambda)-h(\mu)}-\frac\lambda{\lambda-\mu} .
+\]</span>
+It is defined because <span class="math" data-tex="\(h\)">\(h\)</span> is injective.</p>
+<p><strong>Theorem 4.3</strong> (OpenAI). There are numbers <span class="math" data-tex="\(s_{kj}\)">\(s_{kj}\)</span> (<span class="math" data-tex="\(k,j\ge1\)">\(k,j\ge1\)</span>) with the following properties.</p>
+<ol>
+<li><span class="math" data-tex="\(s(\lambda,\mu)=\sum_{k,j\ge1}s_{kj}\lambda^{-k}\mu^{-j}\)">\(s(\lambda,\mu)=\sum_{k,j\ge1}s_{kj}\lambda^{-k}\mu^{-j}\)</span> for <span class="math" data-tex="\(|\lambda|,|\mu|&gt;r_0\)">\(|\lambda|,|\mu|&gt;r_0\)</span>, <span class="math" data-tex="\(\lambda\ne\mu\)">\(\lambda\ne\mu\)</span>; the series converges absolutely and uniformly on <span class="math" data-tex="\(\{|\lambda|,|\mu|\ge r\}\)">\(\{|\lambda|,|\mu|\ge r\}\)</span> for every <span class="math" data-tex="\(r&gt;r_0\)">\(r&gt;r_0\)</span>, and so defines <span class="math" data-tex="\(s\)">\(s\)</span> continuously on the diagonal as well.</li>
+<li>For every <span class="math" data-tex="\(\rho\in(r_0,1)\)">\(\rho\in(r_0,1)\)</span> there is <span class="math" data-tex="\(C_\rho\)">\(C_\rho\)</span> with <span class="math" data-tex="\(|s_{kj}|\le C_\rho\rho^{k+j}\)">\(|s_{kj}|\le C_\rho\rho^{k+j}\)</span>.</li>
+<li>For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> and <span class="math" data-tex="\(|\mu|&gt;r_0\)">\(|\mu|&gt;r_0\)</span>,
+<span class="math math-display" data-tex="\[
+b_k(h(\mu))=\mu^k+\sum_{j\ge1}s_{kj}\mu^{-j}.
+\]">\[
+b_k(h(\mu))=\mu^k+\sum_{j\ge1}s_{kj}\mu^{-j}.
+\]</span></li>
+</ol>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\Delta=\{|u|&lt;R_0\}\)">\(\Delta=\{|u|&lt;R_0\}\)</span>. The divided difference
+<span class="math math-display" data-tex="\[
+\kappa^{[1]}(u,v)=\int_0^1\kappa&#x27;\bigl(v+x(u-v)\bigr)\,dx
+\]">\[
+\kappa^{[1]}(u,v)=\int_0^1\kappa&#x27;\bigl(v+x(u-v)\bigr)\,dx
+\]</span>
+is continuous on <span class="math" data-tex="\(\Delta\times\Delta\)">\(\Delta\times\Delta\)</span> and holomorphic in each variable (by Morera's theorem, as in the proof of Proposition 2.3 of <a href="smooth-convex-neighbourhoods.html">Smooth convex neighbourhoods</a>); it equals <span class="math" data-tex="\((\kappa(u)-\kappa(v))/(u-v)\)">\((\kappa(u)-\kappa(v))/(u-v)\)</span> for <span class="math" data-tex="\(u\ne v\)">\(u\ne v\)</span> and <span class="math" data-tex="\(\kappa&#x27;(u)\)">\(\kappa&#x27;(u)\)</span> for <span class="math" data-tex="\(u=v\)">\(u=v\)</span>. So does <span class="math" data-tex="\(\partial_u\kappa^{[1]}(u,v)=\int_0^1x\,\kappa&#x27;&#x27;(v+x(u-v))\,dx\)">\(\partial_u\kappa^{[1]}(u,v)=\int_0^1x\,\kappa&#x27;&#x27;(v+x(u-v))\,dx\)</span>. Put
+<span class="math math-display" data-tex="\[
+\tilde H(u,v)=c-uv\,\kappa^{[1]}(u,v).
+\]">\[
+\tilde H(u,v)=c-uv\,\kappa^{[1]}(u,v).
+\]</span>
+For <span class="math" data-tex="\(u=1/\lambda\)">\(u=1/\lambda\)</span> and <span class="math" data-tex="\(v=1/\mu\)">\(v=1/\mu\)</span> nonzero,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h(\lambda)-h(\mu)&amp;=\frac{c(v-u)}{uv}+\kappa(u)-\kappa(v),\\
+\lambda-\mu&amp;=\frac{v-u}{uv},
+\end{aligned}
+\]">\[
+\begin{aligned}
+h(\lambda)-h(\mu)&amp;=\frac{c(v-u)}{uv}+\kappa(u)-\kappa(v),\\
+\lambda-\mu&amp;=\frac{v-u}{uv},
+\end{aligned}
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tilde H(u,v)&amp;=\frac{h(\lambda)-h(\mu)}{\lambda-\mu}\quad(u\ne v),\\
+\tilde H(u,u)&amp;=h&#x27;(\lambda).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tilde H(u,v)&amp;=\frac{h(\lambda)-h(\mu)}{\lambda-\mu}\quad(u\ne v),\\
+\tilde H(u,u)&amp;=h&#x27;(\lambda).
+\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(\tilde H\)">\(\tilde H\)</span> has no zeros on <span class="math" data-tex="\(\Delta\times\Delta\)">\(\Delta\times\Delta\)</span>: for <span class="math" data-tex="\(u\ne v\)">\(u\ne v\)</span>, both nonzero, by injectivity of <span class="math" data-tex="\(h\)">\(h\)</span>; on the diagonal because <span class="math" data-tex="\(h&#x27;\ne0\)">\(h&#x27;\ne0\)</span>; and <span class="math" data-tex="\(\tilde H=c\)">\(\tilde H=c\)</span> where <span class="math" data-tex="\(u=0\)">\(u=0\)</span> or <span class="math" data-tex="\(v=0\)">\(v=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(\lambda\ne\mu\)">\(\lambda\ne\mu\)</span>, the function <span class="math" data-tex="\(H(\lambda,\mu)=(h(\lambda)-h(\mu))/(\lambda-\mu)\)">\(H(\lambda,\mu)=(h(\lambda)-h(\mu))/(\lambda-\mu)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\lambda\partial_\lambda H=\frac{q(\lambda)}{\lambda-\mu}-\frac{\lambda H}{\lambda-\mu},
+\]">\[
+\lambda\partial_\lambda H=\frac{q(\lambda)}{\lambda-\mu}-\frac{\lambda H}{\lambda-\mu},
+\]</span>
+so <span class="math" data-tex="\(\lambda\partial_\lambda H/H=s\)">\(\lambda\partial_\lambda H/H=s\)</span>. As <span class="math" data-tex="\(\lambda\partial_\lambda=-u\partial_u\)">\(\lambda\partial_\lambda=-u\partial_u\)</span>, <span class="math" data-tex="\(s(\lambda,\mu)=S(u,v)\)">\(s(\lambda,\mu)=S(u,v)\)</span> with
+<span class="math math-display" data-tex="\[
+S=\frac{uv\bigl(\kappa^{[1]}+u\,\partial_u\kappa^{[1]}\bigr)}{\tilde H}.
+\]">\[
+S=\frac{uv\bigl(\kappa^{[1]}+u\,\partial_u\kappa^{[1]}\bigr)}{\tilde H}.
+\]</span>
+The function <span class="math" data-tex="\(S\)">\(S\)</span> is continuous on <span class="math" data-tex="\(\Delta\times\Delta\)">\(\Delta\times\Delta\)</span>, holomorphic in each variable, and vanishes where <span class="math" data-tex="\(u=0\)">\(u=0\)</span> or <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. By Lemma 4.2, <span class="math" data-tex="\(S=\sum\sigma_{kj}u^kv^j\)">\(S=\sum\sigma_{kj}u^kv^j\)</span>; since <span class="math" data-tex="\(S(0,v)=0=S(u,0)\)">\(S(0,v)=0=S(u,0)\)</span>, <span class="math" data-tex="\(\sigma_{0j}=\sigma_{k0}=0\)">\(\sigma_{0j}=\sigma_{k0}=0\)</span>. Put <span class="math" data-tex="\(s_{kj}=\sigma_{kj}\)">\(s_{kj}=\sigma_{kj}\)</span> for <span class="math" data-tex="\(k,j\ge1\)">\(k,j\ge1\)</span>. This gives (1), with uniform convergence on <span class="math" data-tex="\(\{|u|,|v|\le1/r\}\)">\(\{|u|,|v|\le1/r\}\)</span>, and (2) with <span class="math" data-tex="\(t=1/\rho\)">\(t=1/\rho\)</span> and <span class="math" data-tex="\(C_\rho=M_{1/\rho}\)">\(C_\rho=M_{1/\rho}\)</span>.</p>
+<p>For (3) fix <span class="math" data-tex="\(\mu\)">\(\mu\)</span> with <span class="math" data-tex="\(|\mu|&gt;r_0\)">\(|\mu|&gt;r_0\)</span> and put <span class="math" data-tex="\(z=h(\mu)\)">\(z=h(\mu)\)</span>. For <span class="math" data-tex="\(|\lambda|\)">\(|\lambda|\)</span> large,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{q(\lambda)}{h(\lambda)-z}&amp;=\frac\lambda{\lambda-\mu}+s(\lambda,\mu)\\
+&amp;=\sum_{k\ge0}\mu^k\lambda^{-k}\\
+&amp;\quad+\sum_{k\ge1}\Bigl(\sum_{j\ge1}s_{kj}\mu^{-j}\Bigr)\lambda^{-k},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{q(\lambda)}{h(\lambda)-z}&amp;=\frac\lambda{\lambda-\mu}+s(\lambda,\mu)\\
+&amp;=\sum_{k\ge0}\mu^k\lambda^{-k}\\
+&amp;\quad+\sum_{k\ge1}\Bigl(\sum_{j\ge1}s_{kj}\mu^{-j}\Bigr)\lambda^{-k},
+\end{aligned}
+\]</span>
+the double series being rearranged by absolute convergence. Both sides are power series in <span class="math" data-tex="\(1/\lambda\)">\(1/\lambda\)</span>, and comparing coefficients with Proposition 4.1 gives (3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Statement (3) identifies <span class="math" data-tex="\(b_k\)">\(b_k\)</span>: if <span class="math" data-tex="\(\Phi=h^{-1}\)">\(\Phi=h^{-1}\)</span> on <span class="math" data-tex="\(\mathbf C\setminus\overline\Omega\)">\(\mathbf C\setminus\overline\Omega\)</span>, then <span class="math" data-tex="\(b_k(z)-\Phi(z)^k\to0\)">\(b_k(z)-\Phi(z)^k\to0\)</span> as <span class="math" data-tex="\(z\to\infty\)">\(z\to\infty\)</span>, so <span class="math" data-tex="\(b_k\)">\(b_k\)</span> is the polynomial part of the Laurent expansion of <span class="math" data-tex="\(\Phi^k\)">\(\Phi^k\)</span> at infinity. This is Faber's classical definition.</p>
+<h2 id="4-the-kernel">4. The kernel</h2>
+<p><strong>Theorem 4.4</strong> (OpenAI). The function on <span class="math" data-tex="\(\mathbf T\times\mathbf T\)">\(\mathbf T\times\mathbf T\)</span>
+<span class="math math-display" data-tex="\[
+K(\lambda,\mu)=1+s(\lambda,\mu)+\overline{s(\lambda,\mu)}
+\]">\[
+K(\lambda,\mu)=1+s(\lambda,\mu)+\overline{s(\lambda,\mu)}
+\]</span>
+is continuous and nonnegative, and for all <span class="math" data-tex="\(\lambda,\mu\in\mathbf T\)">\(\lambda,\mu\in\mathbf T\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_{\mathbf T}K(\lambda&#x27;,\mu)\,d\tau(\lambda&#x27;)&amp;=1,\\
+\int_{\mathbf T}K(\lambda,\mu&#x27;)\,d\tau(\mu&#x27;)&amp;=1.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_{\mathbf T}K(\lambda&#x27;,\mu)\,d\tau(\lambda&#x27;)&amp;=1,\\
+\int_{\mathbf T}K(\lambda,\mu&#x27;)\,d\tau(\mu&#x27;)&amp;=1.
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Continuity follows from Theorem 4.3(1). For distinct <span class="math" data-tex="\(\lambda,\mu\in\mathbf T\)">\(\lambda,\mu\in\mathbf T\)</span>, <span class="math" data-tex="\(w=\mu/\lambda\ne1\)">\(w=\mu/\lambda\ne1\)</span> has modulus one, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+2\operatorname{Re}\frac\lambda{\lambda-\mu}&amp;=\frac1{1-w}+\frac1{1-\bar w}\\
+&amp;=\frac{2-w-\bar w}{|1-w|^2}=1.
+\end{aligned}
+\]">\[
+\begin{aligned}
+2\operatorname{Re}\frac\lambda{\lambda-\mu}&amp;=\frac1{1-w}+\frac1{1-\bar w}\\
+&amp;=\frac{2-w-\bar w}{|1-w|^2}=1.
+\end{aligned}
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K(\lambda,\mu)&amp;=2\operatorname{Re}\frac{q(\lambda)}{h(\lambda)-h(\mu)}\\
+&amp;=\frac{2\operatorname{Re}\bigl(\overline{q(\lambda)}(h(\lambda)-h(\mu))\bigr)}{|h(\lambda)-h(\mu)|^2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+K(\lambda,\mu)&amp;=2\operatorname{Re}\frac{q(\lambda)}{h(\lambda)-h(\mu)}\\
+&amp;=\frac{2\operatorname{Re}\bigl(\overline{q(\lambda)}(h(\lambda)-h(\mu))\bigr)}{|h(\lambda)-h(\mu)|^2},
+\end{aligned}
+\]</span>
+which is nonnegative by the support inequality with <span class="math" data-tex="\(z=h(\mu)\in\partial\Omega\)">\(z=h(\mu)\in\partial\Omega\)</span>. By continuity, <span class="math" data-tex="\(K\ge0\)">\(K\ge0\)</span> on the diagonal too. Every term of the absolutely and uniformly convergent series for <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span> on <span class="math" data-tex="\(\mathbf T\times\mathbf T\)">\(\mathbf T\times\mathbf T\)</span> contains a nonzero power of each variable, so its integral in either variable vanishes, and integrating term by term gives both identities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Convexity enters only through the support inequality, that is, through <span class="math" data-tex="\(K\ge0\)">\(K\ge0\)</span>.</p>
+<h2 id="5-the-coefficient-estimate">5. The coefficient estimate</h2>
+<p><strong>Lemma 4.5</strong> (Parseval). Let <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> be a finite-dimensional complex inner product space, and let <span class="math" data-tex="\(a_n\in\mathcal H\)">\(a_n\in\mathcal H\)</span> (<span class="math" data-tex="\(n\in\mathbf Z\)">\(n\in\mathbf Z\)</span>) with <span class="math" data-tex="\(\sum_n\|a_n\|&lt;\infty\)">\(\sum_n\|a_n\|&lt;\infty\)</span>. Then <span class="math" data-tex="\(f(\mu)=\sum_na_n\mu^n\)">\(f(\mu)=\sum_na_n\mu^n\)</span> satisfies <span class="math" data-tex="\(\int_{\mathbf T}\|f\|^2\,d\tau=\sum_n\|a_n\|^2\)">\(\int_{\mathbf T}\|f\|^2\,d\tau=\sum_n\|a_n\|^2\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\|f(\mu)\|^2=\sum_{n,n&#x27;}\langle a_n,a_{n&#x27;}\rangle\mu^n\bar\mu^{n&#x27;}\)">\(\|f(\mu)\|^2=\sum_{n,n&#x27;}\langle a_n,a_{n&#x27;}\rangle\mu^n\bar\mu^{n&#x27;}\)</span>, an absolutely and uniformly convergent double series, and <span class="math" data-tex="\(\int_{\mathbf T}\mu^n\bar\mu^{n&#x27;}d\tau\)">\(\int_{\mathbf T}\mu^n\bar\mu^{n&#x27;}d\tau\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(n=n&#x27;\)">\(n=n&#x27;\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.6</strong> (OpenAI, coefficient estimate). For every <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and every <span class="math" data-tex="\(G=\sum_{k=0}^Nb_kC_k\)">\(G=\sum_{k=0}^Nb_kC_k\)</span> with <span class="math" data-tex="\(C_k\in M_m(\mathbf C)\)">\(C_k\in M_m(\mathbf C)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{k=0}^N\|C_k\|_2^2&amp;\le\int_{\mathbf T}\|G(h(\mu))\|_2^2\,d\tau(\mu)\\
+&amp;\le\|C_0\|_2^2+2\sum_{k=1}^N\|C_k\|_2^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{k=0}^N\|C_k\|_2^2&amp;\le\int_{\mathbf T}\|G(h(\mu))\|_2^2\,d\tau(\mu)\\
+&amp;\le\|C_0\|_2^2+2\sum_{k=1}^N\|C_k\|_2^2 .
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> For a continuous <span class="math" data-tex="\(f:\mathbf T\to M_m(\mathbf C)\)">\(f:\mathbf T\to M_m(\mathbf C)\)</span> put
+<span class="math math-display" data-tex="\[
+(Tf)(\mu)=\int_{\mathbf T}K(\lambda,\mu)f(\lambda)\,d\tau(\lambda).
+\]">\[
+(Tf)(\mu)=\int_{\mathbf T}K(\lambda,\mu)f(\lambda)\,d\tau(\lambda).
+\]</span>
+Since <span class="math" data-tex="\(K(\cdot,\mu)\,d\tau\)">\(K(\cdot,\mu)\,d\tau\)</span> is a probability measure (Theorem 4.4), the Cauchy–Schwarz inequality gives
+<span class="math math-display" data-tex="\[
+\|(Tf)(\mu)\|_2^2\le\int_{\mathbf T}K(\lambda,\mu)\|f(\lambda)\|_2^2\,d\tau(\lambda),
+\]">\[
+\|(Tf)(\mu)\|_2^2\le\int_{\mathbf T}K(\lambda,\mu)\|f(\lambda)\|_2^2\,d\tau(\lambda),
+\]</span>
+and integrating in <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, with the other marginal,
+<span class="math math-display" data-tex="\[
+\int_{\mathbf T}\|Tf\|_2^2\,d\tau\le\int_{\mathbf T}\|f\|_2^2\,d\tau .
+\]">\[
+\int_{\mathbf T}\|Tf\|_2^2\,d\tau\le\int_{\mathbf T}\|f\|_2^2\,d\tau .
+\]</span>
+Take <span class="math" data-tex="\(f(\lambda)=\sum_{k=1}^NC_k\lambda^k\)">\(f(\lambda)=\sum_{k=1}^NC_k\lambda^k\)</span>. In <span class="math" data-tex="\(\int K(\lambda,\mu)f(\lambda)\,d\tau(\lambda)\)">\(\int K(\lambda,\mu)f(\lambda)\,d\tau(\lambda)\)</span>, the term <span class="math" data-tex="\(1\)">\(1\)</span> contributes <span class="math" data-tex="\(0\)">\(0\)</span>, each term <span class="math" data-tex="\(\overline{s_{k&#x27;j}}\lambda^{k&#x27;}\mu^j\)">\(\overline{s_{k&#x27;j}}\lambda^{k&#x27;}\mu^j\)</span> of <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span> contributes <span class="math" data-tex="\(0\)">\(0\)</span> because <span class="math" data-tex="\(k&#x27;+k\ge2\)">\(k&#x27;+k\ge2\)</span>, and the terms of <span class="math" data-tex="\(s\)">\(s\)</span> give
+<span class="math math-display" data-tex="\[
+(Tf)(\mu)=\sum_{j\ge1}\Bigl(\sum_{k=1}^Ns_{kj}C_k\Bigr)\mu^{-j}.
+\]">\[
+(Tf)(\mu)=\sum_{j\ge1}\Bigl(\sum_{k=1}^Ns_{kj}C_k\Bigr)\mu^{-j}.
+\]</span>
+By Lemma 4.5 on both sides of the contraction inequality,
+<span class="math math-display" data-tex="\[
+\sum_{j\ge1}\Bigl\|\sum_{k=1}^Ns_{kj}C_k\Bigr\|_2^2\le\sum_{k=1}^N\|C_k\|_2^2 .
+\]">\[
+\sum_{j\ge1}\Bigl\|\sum_{k=1}^Ns_{kj}C_k\Bigr\|_2^2\le\sum_{k=1}^N\|C_k\|_2^2 .
+\]</span>
+By Theorem 4.3(3),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G(h(\mu))={}&amp;C_0+\sum_{k=1}^NC_k\mu^k\\
+&amp;+\sum_{j\ge1}\Bigl(\sum_{k=1}^Ns_{kj}C_k\Bigr)\mu^{-j},
+\end{aligned}
+\]">\[
+\begin{aligned}
+G(h(\mu))={}&amp;C_0+\sum_{k=1}^NC_k\mu^k\\
+&amp;+\sum_{j\ge1}\Bigl(\sum_{k=1}^Ns_{kj}C_k\Bigr)\mu^{-j},
+\end{aligned}
+\]</span>
+and Lemma 4.5 gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_{\mathbf T}\|G\circ h\|_2^2\,d\tau={}&amp;\|C_0\|_2^2+\sum_{k=1}^N\|C_k\|_2^2\\
+&amp;+\sum_{j\ge1}\Bigl\|\sum_{k=1}^Ns_{kj}C_k\Bigr\|_2^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_{\mathbf T}\|G\circ h\|_2^2\,d\tau={}&amp;\|C_0\|_2^2+\sum_{k=1}^N\|C_k\|_2^2\\
+&amp;+\sum_{j\ge1}\Bigl\|\sum_{k=1}^Ns_{kj}C_k\Bigr\|_2^2 .
+\end{aligned}
+\]</span>
+The last sum lies between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(\sum_{k\ge1}\|C_k\|_2^2\)">\(\sum_{k\ge1}\|C_k\|_2^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example (ellipses).</strong> For <span class="math" data-tex="\(h(\lambda)=\lambda+a/\lambda\)">\(h(\lambda)=\lambda+a/\lambda\)</span> with <span class="math" data-tex="\(0\le a&lt;1\)">\(0\le a&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+s(\lambda,\mu)=\frac{a/(\lambda\mu)}{1-a/(\lambda\mu)}=\sum_{k\ge1}a^k(\lambda\mu)^{-k},
+\]">\[
+s(\lambda,\mu)=\frac{a/(\lambda\mu)}{1-a/(\lambda\mu)}=\sum_{k\ge1}a^k(\lambda\mu)^{-k},
+\]</span>
+so <span class="math" data-tex="\(s_{kj}=a^k\)">\(s_{kj}=a^k\)</span> for <span class="math" data-tex="\(j=k\)">\(j=k\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise, <span class="math" data-tex="\(b_k(h(\mu))=\mu^k+a^k\mu^{-k}\)">\(b_k(h(\mu))=\mu^k+a^k\mu^{-k}\)</span>, and <span class="math" data-tex="\(K\)">\(K\)</span> is a Poisson kernel (Exercise 4.3). The middle term of Proposition 4.6 is <span class="math" data-tex="\(\|C_0\|_2^2+\sum_{k\ge1}(1+a^{2k})\|C_k\|_2^2\)">\(\|C_0\|_2^2+\sum_{k\ge1}(1+a^{2k})\|C_k\|_2^2\)</span>, which approaches the upper bound when <span class="math" data-tex="\(a\)">\(a\)</span> is close to <span class="math" data-tex="\(1\)">\(1\)</span>, that is, when the ellipse is close to the segment <span class="math" data-tex="\([-2,2]\)">\([-2,2]\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>4.1</strong> (easy). Show that <span class="math" data-tex="\(b_1(z)=(z-\kappa_0)/c\)">\(b_1(z)=(z-\kappa_0)/c\)</span> and <span class="math" data-tex="\(b_2(z)=(z-\kappa_0)^2/c^2-2\kappa_1/c\)">\(b_2(z)=(z-\kappa_0)^2/c^2-2\kappa_1/c\)</span>.</p>
+<p><strong>4.2</strong> (easy). Show that <span class="math" data-tex="\(\sum_{j\ge1}|s_{kj}|^2\le1\)">\(\sum_{j\ge1}|s_{kj}|^2\le1\)</span> for every <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>.</p>
+<p><strong>4.3</strong> (medium). For <span class="math" data-tex="\(h(\lambda)=\lambda+a/\lambda\)">\(h(\lambda)=\lambda+a/\lambda\)</span> with <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, verify the formula for <span class="math" data-tex="\(s\)">\(s\)</span> in the example, show that
+<span class="math math-display" data-tex="\[
+K(\lambda,\mu)=\frac{1-a^2}{|1-a\bar\lambda\bar\mu|^2}\qquad(\lambda,\mu\in\mathbf T),
+\]">\[
+K(\lambda,\mu)=\frac{1-a^2}{|1-a\bar\lambda\bar\mu|^2}\qquad(\lambda,\mu\in\mathbf T),
+\]</span>
+and show that <span class="math" data-tex="\(b_k(2\sqrt a\,x)=2a^{k/2}T_k(x)\)">\(b_k(2\sqrt a\,x)=2a^{k/2}T_k(x)\)</span> for <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, where <span class="math" data-tex="\(T_k\)">\(T_k\)</span> is the Chebyshev polynomial with <span class="math" data-tex="\(T_k(\cos\theta)=\cos k\theta\)">\(T_k(\cos\theta)=\cos k\theta\)</span>.</p>
+<p><strong>4.4</strong> (medium). Show that the lower inequality in Proposition 4.6 is an equality for every <span class="math" data-tex="\(G\)">\(G\)</span> if and only if <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, and that this happens exactly when <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is a disc.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>4.1.</strong> The recursion with <span class="math" data-tex="\(n=1\)">\(n=1\)</span> gives <span class="math" data-tex="\(cb_1=z-\kappa_0\)">\(cb_1=z-\kappa_0\)</span>. With <span class="math" data-tex="\(n=2\)">\(n=2\)</span> it gives <span class="math" data-tex="\(cb_2=(z-\kappa_0)b_1-\kappa_1-\kappa_1b_0\)">\(cb_2=(z-\kappa_0)b_1-\kappa_1-\kappa_1b_0\)</span>, which is <span class="math" data-tex="\((z-\kappa_0)^2/c-2\kappa_1\)">\((z-\kappa_0)^2/c-2\kappa_1\)</span>.</p>
+<p><strong>4.2.</strong> Take <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-tex="\(C_k=1\)">\(C_k=1\)</span> and all other coefficients <span class="math" data-tex="\(0\)">\(0\)</span> in the inequality <span class="math" data-tex="\(\sum_j|\sum_ks_{kj}C_k|^2\le\sum_k|C_k|^2\)">\(\sum_j|\sum_ks_{kj}C_k|^2\le\sum_k|C_k|^2\)</span> from the proof of Proposition 4.6.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(h(\lambda)-h(\mu)=(\lambda-\mu)(1-a/(\lambda\mu))\)">\(h(\lambda)-h(\mu)=(\lambda-\mu)(1-a/(\lambda\mu))\)</span> and <span class="math" data-tex="\(q(\lambda)=\lambda-a/\lambda\)">\(q(\lambda)=\lambda-a/\lambda\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+s&amp;=\frac{\lambda-a/\lambda-\lambda+a/\mu}{(\lambda-\mu)(1-a/(\lambda\mu))}\\
+&amp;=\frac{a/(\lambda\mu)}{1-a/(\lambda\mu)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+s&amp;=\frac{\lambda-a/\lambda-\lambda+a/\mu}{(\lambda-\mu)(1-a/(\lambda\mu))}\\
+&amp;=\frac{a/(\lambda\mu)}{1-a/(\lambda\mu)} .
+\end{aligned}
+\]</span>
+On <span class="math" data-tex="\(\mathbf T\)">\(\mathbf T\)</span>, <span class="math" data-tex="\(1/(\lambda\mu)=\bar\lambda\bar\mu\)">\(1/(\lambda\mu)=\bar\lambda\bar\mu\)</span>; with <span class="math" data-tex="\(w=a\bar\lambda\bar\mu\)">\(w=a\bar\lambda\bar\mu\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K&amp;=1+2\operatorname{Re}\sum_{k\ge1}w^k\\
+&amp;=\operatorname{Re}\frac{1+w}{1-w}=\frac{1-|w|^2}{|1-w|^2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+K&amp;=1+2\operatorname{Re}\sum_{k\ge1}w^k\\
+&amp;=\operatorname{Re}\frac{1+w}{1-w}=\frac{1-|w|^2}{|1-w|^2}.
+\end{aligned}
+\]</span>
+The identity <span class="math" data-tex="\(b_k(h(\mu))=\mu^k+a^k\mu^{-k}\)">\(b_k(h(\mu))=\mu^k+a^k\mu^{-k}\)</span> holds for <span class="math" data-tex="\(|\mu|&gt;r_0\)">\(|\mu|&gt;r_0\)</span>, and both sides are holomorphic on <span class="math" data-tex="\(\mathbf C\setminus\{0\}\)">\(\mathbf C\setminus\{0\}\)</span>, so it holds there by the identity theorem. At <span class="math" data-tex="\(\mu=\sqrt ae^{i\theta}\)">\(\mu=\sqrt ae^{i\theta}\)</span>, <span class="math" data-tex="\(h(\mu)=2\sqrt a\cos\theta\)">\(h(\mu)=2\sqrt a\cos\theta\)</span> and the right side is <span class="math" data-tex="\(2a^{k/2}\cos k\theta\)">\(2a^{k/2}\cos k\theta\)</span>. So the two polynomials <span class="math" data-tex="\(b_k(2\sqrt a\,x)\)">\(b_k(2\sqrt a\,x)\)</span> and <span class="math" data-tex="\(2a^{k/2}T_k(x)\)">\(2a^{k/2}T_k(x)\)</span> agree on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, hence everywhere.</p>
+<p><strong>4.4.</strong> By the last formula in the proof of Proposition 4.6, equality for all <span class="math" data-tex="\(G\)">\(G\)</span> means <span class="math" data-tex="\(\sum_ks_{kj}C_k=0\)">\(\sum_ks_{kj}C_k=0\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span> and all choices of <span class="math" data-tex="\(C_k\)">\(C_k\)</span>, that is, <span class="math" data-tex="\(s_{kj}=0\)">\(s_{kj}=0\)</span> for all <span class="math" data-tex="\(k,j\)">\(k,j\)</span>. If <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, Theorem 4.3(3) gives <span class="math" data-tex="\(b_1(h(\mu))=\mu\)">\(b_1(h(\mu))=\mu\)</span>, so <span class="math" data-tex="\(h(\mu)=c\mu+\kappa_0\)">\(h(\mu)=c\mu+\kappa_0\)</span> and <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is the disc <span class="math" data-tex="\(\{|z-\kappa_0|&lt;c\}\)">\(\{|z-\kappa_0|&lt;c\}\)</span>. Conversely, for a disc <span class="math" data-tex="\(\{|z-z_0|&lt;R\}\)">\(\{|z-z_0|&lt;R\}\)</span>, the map <span class="math" data-tex="\(z_0+R\lambda\)">\(z_0+R\lambda\)</span> satisfies (1) and (2) of Theorem 3.7 in <a href="an-exterior-conformal-coordinate.html">An exterior conformal coordinate</a>, so by the uniqueness in Exercise 3.3 there it equals <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(\{|\lambda|&gt;1\}\)">\(\{|\lambda|&gt;1\}\)</span>, and on the whole collar by the identity theorem. For this <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(s=R\lambda/(R\lambda-R\mu)-\lambda/(\lambda-\mu)=0\)">\(s=R\lambda/(R\lambda-R\mu)-\lambda/(\lambda-\mu)=0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-DC] OpenAI, <em>A direct proof of the complete Crouzeix inequality</em>, OpenAI Math Release preprint, 26 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/A-direct-proof-of-the-complete-Crouzeix-inequality-September-26-2026</li>
+<li>[BC] B. Beckermann and M. Crouzeix, <em>Faber polynomials of matrices for non-convex sets</em>, Jaen Journal on Approximation 6 (2014), 219–231; arXiv:1310.1356. https://arxiv.org/abs/1310.1356</li>
+<li>J. Lebl, <em>Guide to Cultivating Complex Analysis: Working the Complex Field</em>, version 1.9, in the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis</a>.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
